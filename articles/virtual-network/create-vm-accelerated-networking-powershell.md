@@ -12,15 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 12/20/2017
+ms.date: 01/04/2018
 ms.author: jimdial
-ms.openlocfilehash: 8c2cc9ef487ee754f904f04e604ef76c3f9e07af
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: f4908963e0650be9b12b745f6868a1ba6ad933e4
+ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/05/2018
 ---
 # <a name="create-a-windows-virtual-machine-with-accelerated-networking"></a>A hálózat elérését gyorsítja fel Windows virtuális gép létrehozása
+
+> [!IMPORTANT] 
+> Virtuális gépek léteznie kell a hálózat elérését gyorsítja fel engedélyezve van. Ez a funkció nem engedélyezhető a meglévő virtuális gépeken. Lehetővé teszik az gyorsított hálózatkezelés az alábbi lépések követésével
+>   1. A virtuális gép törlése
+>   2. Hozza létre újra a virtuális gép gyorsított hálózattal engedélyezve
+>
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan hozzon létre egy Windows rendszerű virtuális gép (VM) a hálózat elérését gyorsítja fel. Gyorsított hálózatkezelés lehetővé teszi, hogy az egygyökerű i/o-virtualizálás (SR-IOV) egy virtuális géphez, a hálózati teljesítmény nagy mértékben javítva. A nagy teljesítményű elérési út nincs hatással a gazdagép a datapath, így csökkentve a késést, a jitter és a CPU felhasználását, a legnagyobb igénybevételt jelentő munkaterheléseit támogatott Virtuálisgép-típusokon való használatra. Az alábbi képen látható rendelkező és anélküli gyorsított hálózatkezelés két virtuális gépek közötti kommunikáció:
 

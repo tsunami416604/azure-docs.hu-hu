@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2018
+ms.date: 01/05/2018
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b852712edd897e99c89341a90a44ae50538212a1
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 0032a00883cedfe754e14293dc13a1009f6dd3a0
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/05/2018
@@ -35,9 +35,9 @@ Az Azure Cosmos Adatbázisba tárolására és az ahhoz az ezredmásodperces vá
 
 Tárolók logikai erőforrások, és egy vagy több fizikai partíciók, sem kiszolgálók is kiterjedhetnek. A partíciók számának Azure Cosmos DB a tárhely méretét és a létesített átviteli sebesség a tároló alapján határozza meg. 
 
-A fizikai partíciója fenntartott SSD-biztonsági tároló egy 10 GB-os maximális a rögzített méretű. Minden fizikai partíció replikálódik a magas rendelkezésre állás érdekében. Egy vagy több fizikai partíció jött létre egy tárolót. Fizikai partíció felügyeleti teljes mértékben felügyelt Azure Cosmos DB, és nem kell összetett kód írása, és a partíciók kezeléséhez. Azure Cosmos DB tárolók olyan tárolási és átviteli korlátlan. 
+A fizikai partíciója fenntartott SSD-biztonsági tárolási rögzített méretű. Minden fizikai partíció replikálódik a magas rendelkezésre állás érdekében. Egy vagy több fizikai partíció jött létre egy tárolót. Fizikai partíció felügyeleti teljes mértékben felügyelt Azure Cosmos DB, és nem kell összetett kód írása, és a partíciók kezeléséhez. Azure Cosmos DB tárolók olyan tárolási és átviteli korlátlan. 
 
-Egy logikai partíciót egy partíciót, amely egy egyetlen partíciókulcs-értékkel kapcsolódó összes adat tárolja a fizikai partíciókon belül. Az alábbi ábra egyetlen tárolót három logikai partíciókkal rendelkezik. Minden logikai partíciót eltárolja a egy partíciókulcsot, LAX AMS és MEL kulcsattribútumokkal. Minden olyan LAX AMS és MEL logikai partíció nem lehet nagyobb legyen a maximális fizikai partíció 10 GB-os korlátot. 
+Egy logikai partíciót egy olyan partíció fizikai javasoljuk, hogy az összes adatot tárolja egy egyetlen partíciókulcs-értékkel társított belül. Egy logikai partíciót egy 10 GB-os maximális rendelkezik. Az alábbi ábra egyetlen tárolót három logikai partíciókkal rendelkezik. Minden logikai partíciót eltárolja a egy partíciókulcsot, LAX AMS és MEL kulcsattribútumokkal. Minden olyan LAX AMS és MEL logikai partíció nem lehet nagyobb legyen a maximális logikai partíciót 10 GB-os korlátját. 
 
 ![Erőforrás particionálás](./media/introduction/azure-cosmos-db-partitioning.png) 
 
@@ -45,7 +45,7 @@ Ha a gyűjtemény megfelel a [Előfeltételek particionálás](#prerequisites), 
 
 ## <a name="how-does-partitioning-work"></a>Particionálás működése
 
-Particionálás működése Minden elem rendelkeznie kell egy partíció és sor kulcsot, amely egyedileg azonosítja. A partíciós kulcs úgy működik, mint az adatok logikai partíció, és a természetes határ Azure Cosmos DB biztosít osztja el az adatok között partíciókat. Ne feledje, hogy egy logikai partíciót is kiterjedhetnek több fizikai partíció, de a fizikai partíció felügyeleti Azure Cosmos DB kezeli. 
+Particionálás működése Minden elem rendelkeznie kell egy partíció és sor kulcsot, amely egyedileg azonosítja. A partíciós kulcs úgy működik, mint az adatok logikai partíció, és a természetes határ Azure Cosmos DB biztosít osztja el az adatokat fizikai partíciók között. Ne feledje, hogy az adatok logikai egypartíciós belül egyetlen fizikai partícióján kell lennie, de fizikai partíció felügyeleti Azure Cosmos DB kezeli. 
 
 Röviden itt található particionálási hogyan működik az Azure Cosmos DB:
 

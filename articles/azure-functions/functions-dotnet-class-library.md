@@ -1,467 +1,323 @@
 ---
-title: "Alkalmazás használatával az Azure Functions |} Microsoft Docs"
-description: "Megtudhatja, hogyan hozhat létre forgatókönyveket alkalmazás használható az Azure Functions"
+title: "Az Azure Functions C# fejlesztői leírás"
+description: "Megtudhatja, hogyan fejleszthet Azure Functions használatával C#."
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
 editor: 
 tags: 
-keywords: "Azure functions, Funkciók, Eseményfeldolgozási, dinamikus számítási kiszolgáló nélküli architektúrája"
-ms.assetid: 9f5db0c2-a88e-4fa8-9b59-37a7096fc828
+keywords: "azure-függvények, függvények, eseményfeldolgozás, webhookok, dinamikus számítás, kiszolgáló nélküli architektúra"
 ms.service: functions
-ms.devlang: multiple
+ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 10/10/2017
+ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: 6f6f89d62f1442198f80247cc5c433aa0c54030b
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 8bd46adc475af35d32b9e329a3765e064120a6e3
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 01/05/2018
 ---
-# <a name="using-net-class-libraries-with-azure-functions"></a>Alkalmazás az Azure Functions használatával
+# <a name="azure-functions-c-developer-reference"></a>Az Azure Functions C# fejlesztői leírás
 
-Parancsfájl fájlok mellett az Azure Functions támogatja egy osztálytár közzététele, egy vagy több funkciók végrehajtására. Azt javasoljuk, hogy használja a [Azure Functions Visual Studio 2017 eszközök](https://blogs.msdn.microsoft.com/webdev/2017/05/10/azure-function-tools-for-visual-studio-2017/).
+<!-- When updating this article, make corresponding changes to any duplicate content in functions-reference-csharp.md -->
 
-## <a name="prerequisites"></a>Előfeltételek 
+Ebben a cikkben megismerkedhet az Azure Functions használatával C# alkalmazás fejlesztése.
 
-Ez a cikk előfeltételei a következők:
+Az Azure Functions támogatja a C# és C# programozási nyelvek parancsfájl. Ha a keresett útmutatást [C# segítségével az Azure portálon](functions-create-function-app-portal.md), lásd: [C# a parancsfájlt (.csx) fejlesztői leírás](functions-reference-csharp.md).
 
-- [A Visual Studio 2017 verzió 15.3](https://www.visualstudio.com/vs/), vagy egy újabb verziója.
-- Telepítse a **Azure fejlesztési** munkaterhelés.
+Ez a cikk feltételezi, hogy Ön már elolvasta a következő cikkeket:
+
+* [Az Azure Functions fejlesztői útmutatója](functions-reference.md)
+* [Azure Functions Visual Studio 2017 eszközök](functions-develop-vs.md)
 
 ## <a name="functions-class-library-project"></a>Functions hordozhatóosztálytár-projektjének
 
-A Visual Studio eszközből az Azure Functions új projekt létrehozása. Az új projekt sablont hoz létre a fájlok *host.json* és *local.settings.json*. Is [host.json az Azure Functions futásidejű beállításokat](functions-host-json.md). 
+A Visual Studio a **Azure Functions** projektsablon hoz létre egy C# hordozhatóosztálytár-projektjének, amely a következő fájlokat tartalmazza:
 
-A fájl *local.settings.json* tárolja Alkalmazásbeállítások, a kapcsolati karakterláncok és az Azure Functions Core eszközök beállításait. A struktúra kapcsolatos további információkért lásd: [kódot és az Azure functions helyi tesztelése](functions-run-local.md#local-settings-file).
+* [Host.JSON](functions-host-json.md) -konfigurációs beállítások, amelyek hatással vannak a projekt összes funkciójának futtatásakor, helyileg vagy az Azure-ban tárolja.
+* [Local.Settings.JSON](functions-run-local.md#local-settings-file) -Alkalmazásbeállítások és a helyi futtatás során használt kapcsolati karakterláncok tárolja.
 
-### <a name="functionname-attribute"></a>Függvénynév attribútum
+### <a name="functionname-and-trigger-attributes"></a>Eseményindító és függvénynév attribútumok
 
-Az attribútum [ `FunctionNameAttribute` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/FunctionNameAttribute.cs) jelöli meg a metódus egy függvény belépési pontként. Pontosan egy eseményindító együtt kell használni, és 0 vagy több bemeneti és kimeneti kötéseket.
-
-### <a name="conversion-to-functionjson"></a>Function.json átalakítása
-
-Az Azure Functions projekt építésekor egy *function.json* fájl jön létre, a függvény könyvtárban. A könyvtár neve megegyezik a függvény neve, amely a `[FunctionName]` attribútum határozza meg. A *function.json* fájl tartalmazza az eseményindítók és kötések és a projekt szerelvényfájl mutat.
-
-Az átalakításhoz végzi el a NuGet-csomag [Microsoft\.NET\.Sdk\.funkciók](http://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). A forrás álljon rendelkezésre a GitHub-tárházban [azure\-funkciók\-vs\-build\-sdk](https://github.com/Azure/azure-functions-vs-build-sdk).
-
-## <a name="triggers-and-bindings"></a>Eseményindítók és kötések 
-
-A következő táblázat az eseményindítók és kötések az Azure Functions hordozhatóosztálytár-projektjének elérhető. A következő névtérbeli attribútumok összes `Microsoft.Azure.WebJobs`.
-
-| Kötelező | Attribútum | NuGet-csomag |
-|------   | ------    | ------        |
-| [A BLOB storage eseményindító, bemeneti, kimeneti](#blob-storage) | [BlobAttribute], [StorageAccountAttribute] | [Microsoft.Azure.WebJobs] | [A blob storage] |
-| [A cosmos DB eseményindító](#cosmos-db) | [CosmosDBTriggerAttribute] | [Microsoft.Azure.WebJobs.Extensions.DocumentDB] | 
-| [A cosmos DB bemeneti és kimeneti](#cosmos-db) | [DocumentDBAttribute] | [Microsoft.Azure.WebJobs.Extensions.DocumentDB] |
-| [Event Hubs eseményindító és a kimeneti](#event-hub) | [EventHubTriggerAttribute], [EventHubAttribute] | [Microsoft.Azure.WebJobs.ServiceBus] |
-| [Külső fájl bemeneti és kimeneti](#api-hub) | [ApiHubFileAttribute] | [Microsoft.Azure.WebJobs.Extensions.ApiHub] |
-| [A HTTP és a webhook eseményindító](#http) | [HttpTriggerAttribute] | [Microsoft.Azure.WebJobs.Extensions.Http] |
-| [Mobile Apps bemeneti és kimeneti](#mobile-apps) | [MobileTableAttribute] | [Microsoft.Azure.WebJobs.Extensions.MobileApps] | 
-| [Notification Hubs kimeneti](#nh) | [NotificationHubAttribute] | [Microsoft.Azure.WebJobs.Extensions.NotificationHubs] | 
-| [Várólista tárolási eseményindító és a kimeneti](#queue) | [QueueAttribute], [StorageAccountAttribute] | [Microsoft.Azure.WebJobs] | 
-| [SendGrid kimeneti](#sendgrid) | [SendGridAttribute] | [Microsoft.Azure.WebJobs.Extensions.SendGrid] | 
-| [A Service Bus eseményindító és a kimeneti](#service-bus) | [ServiceBusAttribute], [ServiceBusAccountAttribute] | [Microsoft.Azure.WebJobs.ServiceBus]
-| [TABLE storage bemeneti és kimeneti](#table) | [TableAttribute], [StorageAccountAttribute] | [Microsoft.Azure.WebJobs] | 
-| [Időzítő eseményindító](#timer) | [TimerTriggerAttribute] | [Microsoft.Azure.WebJobs.Extensions] | 
-| [Twilio-kimenet](#twilio) | [TwilioSmsAttribute] | [Microsoft.Azure.WebJobs.Extensions.Twilio] | 
-
-<a name="blob-storage"></a>
-
-### <a name="blob-storage-trigger-input-bindings-and-output-bindings"></a>BLOB storage eseményindító, kötések bemeneti és kimeneti kötések
-
-Az Azure Functions támogatja eseményindító, adjon meg, és kimeneti Azure Blob Storage tárolóban kötéseit. A kötés kifejezések és a metaadatok további információkért lásd: [Azure Functions Blob storage kötések](functions-bindings-storage-blob.md).
-
-Egy blob eseményindító van definiálva a `[BlobTrigger]` attribútum. Az attribútum használható `[StorageAccount]` , amely tartalmazza a kapcsolati karakterláncot a tárfiók egy teljes vagy a osztály által használt alkalmazás-beállítás nevének meghatározásához.
+Egy osztály könyvtárban, a függvény egy statikus metódus egy `FunctionName` és egy eseményindító attribútum, az alábbi példában látható módon:
 
 ```csharp
-[StorageAccount("AzureWebJobsStorage")]
-[FunctionName("BlobTriggerCSharp")]        
-public static void Run([BlobTrigger("samples-workitems/{name}")] Stream myBlob, string name, TraceWriter log)
+public static class SimpleExample
 {
-    log.Info($"C# Blob trigger function Processed blob\n Name:{name} \n Size: {myBlob.Length} Bytes");
-}
-```
-
-BLOB bemeneti és kimeneti meghatározása a `[Blob]` attribútumot, jelszavat rendelkező egy `FileAccess` paraméter jelző olvasására vagy írására. Az alábbi példában egy blob eseményindító és blob kimeneti kötése.
-
-```csharp
-[FunctionName("ResizeImage")]
-[StorageAccount("AzureWebJobsStorage")]
-public static void Run(
-    [BlobTrigger("sample-images/{name}")] Stream image, 
-    [Blob("sample-images-sm/{name}", FileAccess.Write)] Stream imageSmall, 
-    [Blob("sample-images-md/{name}", FileAccess.Write)] Stream imageMedium)
-{
-    var imageBuilder = ImageResizer.ImageBuilder.Current;
-    var size = imageDimensionsTable[ImageSize.Small];
-
-    imageBuilder.Build(image, imageSmall,
-        new ResizeSettings(size.Item1, size.Item2, FitMode.Max, null), false);
-
-    image.Position = 0;
-    size = imageDimensionsTable[ImageSize.Medium];
-
-    imageBuilder.Build(image, imageMedium,
-        new ResizeSettings(size.Item1, size.Item2, FitMode.Max, null), false);
-}
-
-public enum ImageSize { ExtraSmall, Small, Medium }
-
-private static Dictionary<ImageSize, (int, int)> imageDimensionsTable = new Dictionary<ImageSize, (int, int)>() {
-    { ImageSize.ExtraSmall, (320, 200) },
-    { ImageSize.Small,      (640, 400) },
-    { ImageSize.Medium,     (800, 600) }
-};
-```        
-
-<a name="cosmos-db"></a>
-
-### <a name="cosmos-db-trigger-input-bindings-and-output-bindings"></a>Cosmos DB eseményindító, kötések bemeneti és kimeneti kötések
-
-Az Azure Functions támogatja az eseményindítók és bemeneti és kimeneti Cosmos DB kötései. A Cosmos DB kötés funkciókkal kapcsolatos további tudnivalókért lásd: [Azure Functions Cosmos DB kötések](functions-bindings-documentdb.md).
-
-Egy Cosmos DB dokumentumból indításához használja a attribútum `[CosmosDBTrigger]` a NuGet-csomagot a [Microsoft.Azure.WebJobs.Extensions.DocumentDB]. A következő példa eseményindítók egy meghatározott `database` és `collection`. A beállítás `myCosmosDB` Cosmos DB példány kapcsolatot tartalmazza. 
-
-```csharp
-[FunctionName("DocumentUpdates")]
-public static void Run(
-    [CosmosDBTrigger("database", "collection", ConnectionStringSetting = "myCosmosDB")]
-IReadOnlyList<Document> documents, TraceWriter log)
-{
-        log.Info("Documents modified " + documents.Count);
-        log.Info("First document Id " + documents[0].Id);
-}
-```
-
-Kötési Cosmos DB dokumentumhoz, használja a attribútum `[DocumentDB]` a NuGet-csomagot a [Microsoft.Azure.WebJobs.Extensions.DocumentDB]. A következő példa egy várólista eseményindító és a DocumentDB API kimeneti kötése rendelkezik.
-
-```csharp
-[FunctionName("QueueToDocDB")]        
-public static void Run(
-    [QueueTrigger("myqueue-items", Connection = "AzureWebJobsStorage")] string myQueueItem, 
-    [DocumentDB("ToDoList", "Items", Id = "id", ConnectionStringSetting = "myCosmosDB")] out dynamic document)
-{
-    document = new { Text = myQueueItem, id = Guid.NewGuid() };
-}
-
-```
-
-<a name="event-hub"></a>
-
-### <a name="event-hubs-trigger-and-output"></a>Event Hubs eseményindító és a kimeneti
-
-Az Azure Functions támogatja indítható el, és az Event Hubs kötései kimeneti. További információkért lásd: [Azure Functions Eseményközpont kötések](functions-bindings-event-hubs.md).
-
-A típusok `[Microsoft.Azure.WebJobs.ServiceBus.EventHubTriggerAttribute]` és `[Microsoft.Azure.WebJobs.ServiceBus.EventHubAttribute]` határozzák meg a NuGet-csomag [Microsoft.Azure.WebJobs.ServiceBus]. 
-
-A következő példában egy Eseményközpontba eseményindító:
-
-```csharp
-[FunctionName("EventHubTriggerCSharp")]
-public static void Run([EventHubTrigger("samples-workitems", Connection = "EventHubConnection")] string myEventHubMessage, TraceWriter log)
-{
-    log.Info($"C# Event Hub trigger function processed a message: {myEventHubMessage}");
-}
-```
-
-A következő példa egy Eseményközpontba kimeneti, a metódus visszatérési értéket használja, mint a kimeneti rendelkezik:
-
-```csharp
-[FunctionName("EventHubOutput")]
-[return: EventHub("outputEventHubMessage", Connection = "EventHubConnection")]
-public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, TraceWriter log)
-{
-    log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
-    return $"{DateTime.Now}";
-}
-```
-
-<a name="api-hub"></a>
-
-### <a name="external-file-input-and-output"></a>Külső fájl bemeneti és kimeneti
-
-Az Azure Functions támogatja eseményindító, bemeneti és kimeneti kötések külső fájlokat, például a Google-meghajtó, a Dropbox és a onedrive vállalati verzió. További tudnivalókért lásd: [Azure Functions külső fájl kötések](functions-bindings-external-file.md). Az attribútumok `[ExternalFileTrigger]` és `[ExternalFile]` határozzák meg a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.ApiHub].
-
-A következő C# példa bemutatja a külső fájlban bemeneti és kimeneti kötése. A kódot másolja a kimeneti fájl a bemeneti fájl.
-
-```csharp
-[StorageAccount("MyStorageConnection")]
-[FunctionName("ExternalFile")]
-[return: ApiHubFile("MyFileConnection", "samples-workitems/{queueTrigger}-Copy", FileAccess.Write)]
-public static string Run([QueueTrigger("myqueue-items")] string myQueueItem, 
-    [ApiHubFile("MyFileConnection", "samples-workitems/{queueTrigger}", FileAccess.Read)] string myInputFile, 
-    TraceWriter log)
-{
-    log.Info($"C# Queue trigger function processed: {myQueueItem}");
-    return myInputFile;
-}
-```
-
-<a name="http"></a>
-
-### <a name="http-and-webhooks"></a>HTTP és webhookok
-
-Használja a `HttpTrigger` attribútum használatával definiálja a egy HTTP-eseményindítóval vagy webhook. Ez az attribútum van megadva a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.Http]. A jogosultsági szintet, a webhook típusa, az útvonal és a metódusok személyre is szabhatja. Az alábbi példa meghatározza a névtelen hitelesítés egy HTTP-eseményindítóval és _genericJson_ webhook típusa.
-
-```csharp
-[FunctionName("HttpTriggerCSharp")]
-public static HttpResponseMessage Run([HttpTrigger(AuthorizationLevel.Anonymous, WebHookType = "genericJson")] HttpRequestMessage req)
-{
-    return req.CreateResponse(HttpStatusCode.OK);
-}
-```
-
-<a name="mobile-apps"></a>
-
-### <a name="mobile-apps-input-and-output"></a>Mobile Apps bemeneti és kimeneti
-
-Azure Functions támogatja bemeneti és kimeneti Mobile Apps kötéseit. További tudnivalókért lásd: [Azure Functions Mobile Apps kötések](functions-bindings-mobile-apps.md). Az attribútum `[MobileTable]` definiálva van a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.MobileApps].
-
-A következő példa bemutatja a Mobile Apps kimeneti kötése:
-
-```csharp
-[FunctionName("MobileAppsOutput")]        
-[return: MobileTable(ApiKeySetting = "MyMobileAppKey", TableName = "MyTable", MobileAppUriSetting = "MyMobileAppUri")]
-public static object Run([QueueTrigger("myqueue-items", Connection = "AzureWebJobsStorage")] string myQueueItem, TraceWriter log)
-{
-    return new { Text = $"I'm running in a C# function! {myQueueItem}" };
-}
-```
-
-<a name="nh"></a>
-
-### <a name="notification-hubs-output"></a>Notification Hubs kimeneti
-
-Az Azure Functions a Notification Hubs egy kimeneti kötése támogatja. További tudnivalókért lásd: [Azure Functions Notification Hub kimeneti kötése](functions-bindings-notification-hubs.md). Az attribútum `[NotificationHub]` definiálva van a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.NotificationHubs].
-
-<a name="queue"></a>
-
-### <a name="queue-storage-trigger-and-output"></a>Várólista tárolási eseményindító és a kimeneti
-
-Az Azure Functions támogatja aktiválhatja, és kimeneti Azure várólisták kötései. További információkért lásd: [Azure Functions a Queue Storage kötések](functions-bindings-storage-queue.md).
-
-A következő példa bemutatja, hogyan használható a függvény visszatérési típusa egy várólista kimeneti kötelező, segítségével a `[Queue]` attribútum. 
-
-```csharp
-[StorageAccount("AzureWebJobsStorage")]
-public static class QueueFunctions
-{
-    // HTTP trigger with queue output binding
-    [FunctionName("QueueOutput")]
-    [return: Queue("myqueue-items")]
-    public static string QueueOutput([HttpTrigger] dynamic input,  TraceWriter log)
-    {
-        log.Info($"C# function processed: {input.Text}");
-        return input.Text;
-    }
-}
-
-```
-
-A várólista eseményindító megadásához használja a `[QueueTrigger]` attribútum.
-```csharp
-[StorageAccount("AzureWebJobsStorage")]
-public static class QueueFunctions
-{
-    // Queue trigger
     [FunctionName("QueueTrigger")]
-    [StorageAccount("AzureWebJobsStorage")]
-    public static void QueueTrigger([QueueTrigger("myqueue-items")] string myQueueItem, TraceWriter log)
+    public static void Run(
+        [QueueTrigger("myqueue-items")] string myQueueItem, 
+        TraceWriter log)
     {
         log.Info($"C# function processed: {myQueueItem}");
     }
-}
-
+} 
 ```
 
+A `FunctionName` attribútummal jelöli meg a metódus egy függvény belépési pontként. A név egy projekten belül egyedinek kell lennie.
 
-<a name="sendgrid"></a>
+Az eseményindító attribútum az eseményindító adja meg, és a bemeneti adatok kötődik metódusparaméter. A példa függvény váltja ki egy üzenetsor-üzenetet, és az üzenetsorban lévő üzenetet továbbítódik metódust a `myQueueItem` paraméter.
 
-### <a name="sendgrid-output"></a>SendGrid kimeneti
+### <a name="additional-binding-attributes"></a>További kötés attribútumok
 
-Az Azure Functions támogatja a SendGrid kimeneti kötése programozott módon küld e-mailt. További tudnivalókért lásd: [Azure Functions SendGrid kötések](functions-bindings-sendgrid.md).
-
-Az attribútum `[SendGrid]` definiálva van a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.SendGrid]. A SendGrid kötésben szükséges-e egy alkalmazás nevű beállításával `AzureWebJobsSendGridApiKey`, amely tartalmazza a SendGrid API-kulcsot. Ez az alapértelmezett beállítás neve a SendGrid API-kulcsot. Ha egynél több SendGrid kulcs, vagy válasszon egy másik beállítás neve van szüksége, beállíthatja azt a nevet használja a `ApiKey` tulajdonsága a `SendGrid` kötés attribútum, az alábbi példában látható módon:
-
-    [SendGrid(ApiKey = "MyCustomSendGridKeyName")]
-
-Az alábbiakban egy példa Service Bus várólista eseményindítót használ, és a SendGrid kimeneti kötés használatával `SendGridMessage`:
+További bemeneti és kimeneti kötelező attribútum is használható. A következő példa egy kimeneti várólista-kötés hozzáadásával előző egy módosítja. A függvény a bemeneti várólista üzenetet ír egy új üzenetsor-üzenetet egy másik várólistához.
 
 ```csharp
-[FunctionName("SendEmail")]
-public static void Run(
-    [ServiceBusTrigger("myqueue", AccessRights.Manage, Connection = "ServiceBusConnection")] OutgoingEmail email,
-    [SendGrid] out SendGridMessage message)
+public static class SimpleExampleWithOutput
 {
-    message = new SendGridMessage();
-    message.AddTo(email.To);
-    message.AddContent("text/html", email.Body);
-    message.SetFrom(new EmailAddress(email.From));
-    message.SetSubject(email.Subject);
-}
-
-public class OutgoingEmail
-{
-    public string To { get; set; }
-    public string From { get; set; }
-    public string Subject { get; set; }
-    public string Body { get; set; }
-}
-```
-Vegye figyelembe, hogy ez a példa futtatásához szükséges a SendGrid API-kulcs tárolási nevű beállításával alkalmazás kell `AzureWebJobsSendGridApiKey`.
-
-<a name="service-bus"></a>
-
-### <a name="service-bus-trigger-and-output"></a>A Service Bus eseményindító és a kimeneti
-
-Az Azure Functions támogatja aktiválhatja és Service Bus-üzenetsorok és témakörök kimeneti. Kötések konfigurálásával kapcsolatos további információkért lásd: [Azure Functions Service Bus kötések](functions-bindings-service-bus.md).
-
-Az attribútumok `[ServiceBusTrigger]` és `[ServiceBus]` határozzák meg a NuGet-csomag [Microsoft.Azure.WebJobs.ServiceBus]. 
-
-A következő egy példa egy Service Bus várólista eseményindító:
-
-```csharp
-[FunctionName("ServiceBusQueueTriggerCSharp")]                    
-public static void Run([ServiceBusTrigger("myqueue", AccessRights.Manage, Connection = "ServiceBusConnection")] string myQueueItem, TraceWriter log)
-{
-    log.Info($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
-}
-```
-
-A következő egy példa egy Service Bus: kötelező, segítségével a metódus visszatérési típusának kimeneteként:
-
-```csharp
-[FunctionName("ServiceBusOutput")]
-[return: ServiceBus("myqueue", Connection = "ServiceBusConnection")]
-public static string ServiceBusOutput([HttpTrigger] dynamic input, TraceWriter log)
-{
-    log.Info($"C# function processed: {input.Text}");
-    return input.Text;
-}
-```        
-
-<a name="table"></a>
-
-### <a name="table-storage-input-and-output"></a>TABLE storage bemeneti és kimeneti
-
-Az Azure Functions támogatja bemeneti és kimeneti Azure Table storage kötései. További tudnivalókért lásd: [Azure Functions Table storage kötések](functions-bindings-storage-table.md).
-
-A következő példa az osztály két függvényekkel, table storage kimeneti és a bemeneti kötések, amely tartalmazza. 
-
-```csharp
-[StorageAccount("AzureWebJobsStorage")]
-public class TableStorage
-{
-    public class MyPoco
+    [FunctionName("CopyQueueMessage")]
+    public static void Run(
+        [QueueTrigger("myqueue-items-source")] string myQueueItem, 
+        [Queue("myqueue-items-destination")] out string myQueueItemCopy,
+        TraceWriter log)
     {
-        public string PartitionKey { get; set; }
-        public string RowKey { get; set; }
-        public string Text { get; set; }
-    }
-
-    [FunctionName("TableOutput")]
-    [return: Table("MyTable")]
-    public static MyPoco TableOutput([HttpTrigger] dynamic input, TraceWriter log)
-    {
-        log.Info($"C# http trigger function processed: {input.Text}");
-        return new MyPoco { PartitionKey = "Http", RowKey = Guid.NewGuid().ToString(), Text = input.Text };
-    }
-
-    // use the metadata parameter "queueTrigger" to bind the queue payload
-    [FunctionName("TableInput")]
-    public static void TableInput([QueueTrigger("table-items")] string input, [Table("MyTable", "Http", "{queueTrigger}")] MyPoco poco, TraceWriter log)
-    {
-        log.Info($"C# function processed: {poco.Text}");
+        log.Info($"CopyQueueMessage function processed: {myQueueItem}");
+        myQueueItemCopy = myQueueItem;
     }
 }
-
 ```
 
-<a name="timer"></a>
+### <a name="conversion-to-functionjson"></a>Function.json átalakítása
 
-### <a name="timer-trigger"></a>Időzítő eseményindító
+Az összeállítási folyamat létrehoz egy *function.json* fájlban egy függvény a build mappában. Ez a fájl nem célja, hogy közvetlenül szerkeszthetők. Nem kötelező konfigurációjának módosítása, vagy tiltsa le a függvény a fájl szerkesztésével. 
 
-Az Azure Functions lehetővé teszi, hogy a kódra a függvény a meghatározott ütemezés szerint időzítő eseményindító-kötéssel rendelkezik. A kötés funkciókkal kapcsolatos további tudnivalókért lásd: [kód végrehajtását az Azure Functions](functions-bindings-timer.md).
+Ezt a fájlt az a célja, hogy kapcsolatban nyújtanak információkat a méretezési vezérlő használandó [döntések méretezésének a fogyasztás terv](functions-scale.md#how-the-consumption-plan-works). Ezért a fájl csak eseményindító adatait nem bemeneti vagy kimeneti kötések rendelkezik.
 
-A felhasználási terv ütemezés a definiálhat egy [CRON-kifejezés](http://en.wikipedia.org/wiki/Cron#CRON_expression). Használata egy App Service-csomag, a TimeSpan karakterlánc is használható. 
+A létrehozott *function.json* fájl tartalmaz egy `configurationSource` tulajdonság, amely közli a futtatókörnyezet kötések, a .NET-attribútumok használata helyett *function.json* konfigurációs. Íme egy példa:
 
-Az alábbi példa meghatározza, hogy egy időzítő indítófeltételt, ötpercenként futtató:
+{"generatedBy": "Microsoft.NET.Sdk.Functions-1.0.0.0", "configurationSource": "attribútumok", "bindings": [{"type": "queueTrigger", "queueName": "% bemeneti várólistacímke %", "name": "myQueueItem"}], "letiltott": false, "parancsfájl": "... \\bin\\FunctionApp1.dll ","belépési pont":"FunctionApp1.QueueTrigger.Run"}
 
-```csharp
-[FunctionName("TimerTriggerCSharp")]
-public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, TraceWriter log)
-{
-    log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
-}
-```
+A *function.json* fájl létrehozása végzi el a NuGet-csomag [Microsoft\.NET\.Sdk\.funkciók](http://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). A forráskód érhető el a GitHub-tárház [azure\-funkciók\-vs\-build\-sdk](https://github.com/Azure/azure-functions-vs-build-sdk).
 
-<a name="twilio"></a>
+## <a name="supported-types-for-bindings"></a>A kötések támogatott típusok
 
-### <a name="twilio-output"></a>Twilio-kimenet
+Minden kötésnek rendelkezik saját támogatott típusok; például egy blob eseményindító attribútum is alkalmazható egy karakterlánc-paramétert, egy POCO paraméter egy `CloudBlockBlob` paraméter, sem annak több más támogatott típusok. A [kötés áttekintésével foglalkozó cikkben blob kötések](functions-bindings-storage-blob.md#trigger---usage) felsorolja az összes támogatott különböző. További információkért lásd: [eseményindítók és kötések](functions-triggers-bindings.md) és a [kötési hivatkozási docs az egyes kötés](functions-triggers-bindings.md#next-steps).
 
-Az Azure Functions támogatja a Twilio kimeneti kötések SMS szöveges üzenetek küldéséhez a funkciók engedélyezéséhez. További tudnivalókért lásd: [az SMS küldése az Azure Functions használatával a Twilio kimeneti kötése](functions-bindings-twilio.md). 
+[!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
-Az attribútum `[TwilioSms]` a csomagban van definiálva [Microsoft.Azure.WebJobs.Extensions.Twilio].
+## <a name="binding-to-method-return-value"></a>Kötése metódus visszatérési értéke
 
-Az alábbi C# példában várólista eseményindító és a Twilio kimeneti kötése:
+A metódus visszatérési érték használhat egy kimeneti kötése a következő példában látható módon:
 
 ```csharp
-[FunctionName("QueueTwilio")]
-[return: TwilioSms(AccountSidSetting = "TwilioAccountSid", AuthTokenSetting = "TwilioAuthToken", From = "+1425XXXXXXX" )]
-public static SMSMessage Run([QueueTrigger("myqueue-items", Connection = "AzureWebJobsStorage")] JObject order, TraceWriter log)
+public static class ReturnValueOutputBinding
 {
-    log.Info($"C# Queue trigger function processed: {order}");
-
-    var message = new SMSMessage()
+    [FunctionName("CopyQueueMessageUsingReturnValue")]
+    [return: Queue("myqueue-items-destination")]
+    public static string Run(
+        [QueueTrigger("myqueue-items-source-2")] string myQueueItem,
+        TraceWriter log)
     {
-        Body = $"Hello {order["name"]}, thanks for your order!",
-        To = order["mobileNumber"].ToString()
-    };
-
-    return message;
+        log.Info($"C# function processed: {myQueueItem}");
+        return myQueueItem;
+    }
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="writing-multiple-output-values"></a>Több kimeneti értékeinek írása
+
+Több érték írni egy kimeneti kötése, használja a [ `ICollector` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) vagy [ `IAsyncCollector` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) típusok. Ezek a típusok csak írható gyűjtemények metódus befejezésekor a kimeneti kötés írt.
+
+Ebben a példában több üzenetek ír be várólista használatával `ICollector`:
+
+```csharp
+public static class ICollectorExample
+{
+    [FunctionName("CopyQueueMessageICollector")]
+    public static void Run(
+        [QueueTrigger("myqueue-items-source-3")] string myQueueItem,
+        [Queue("myqueue-items-destination")] ICollector<string> myQueueItemCopy,
+        TraceWriter log)
+    {
+        log.Info($"C# function processed: {myQueueItem}");
+        myQueueItemCopy.Add($"Copy 1: {myQueueItem}");
+        myQueueItemCopy.Add($"Copy 2: {myQueueItem}");
+    }
+}
+```
+
+## <a name="logging"></a>Naplózás
+
+A folyamatos átviteli naplók, a C# kimeneti jelentkeznek, tartalmazza a típusú argumentumot `TraceWriter`. Ajánlott nevezze el `log`. Kerülje a `Console.Write` az Azure Functions. 
+
+`TraceWriter`a van definiálva a [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/TraceWriter.cs). A naplózási szint a `TraceWriter` konfigurálható [host.json](functions-host-json.md).
+
+```csharp
+public static class SimpleExample
+{
+    [FunctionName("QueueTrigger")]
+    public static void Run(
+        [QueueTrigger("myqueue-items")] string myQueueItem, 
+        TraceWriter log)
+    {
+        log.Info($"C# function processed: {myQueueItem}");
+    }
+} 
+```
+
+> [!NOTE]
+> Egy újabb naplózási keretrendszert, melyekkel ahelyett, hogy információt `TraceWriter`, lásd: [írási naplói a C# funkciók](functions-monitoring.md#write-logs-in-c-functions) a a **figyelése az Azure Functions** cikk.
+
+## <a name="async"></a>Aszinkron
+
+Ahhoz, hogy egy függvény aszinkron, használja a `async` kulcsszót, és térjen vissza a `Task` objektum.
+
+```csharp
+public static class AsyncExample
+{
+    [FunctionName("BlobCopy")]
+    public static async Task RunAsync(
+        [BlobTrigger("sample-images/{blobName}")] Stream blobInput,
+        [Blob("sample-images-copies/{blobName}", FileAccess.Write)] Stream blobOutput,
+        CancellationToken token,
+        TraceWriter log)
+    {
+        log.Info($"BlobCopy function processed.");
+        await blobInput.CopyToAsync(blobOutput, 4096, token);
+    }
+}
+```
+
+## <a name="cancellation-tokens"></a>Megszakítási jogkivonatok
+
+Egyes műveletek szabályos leállítást igényel. Mindig is írhat kódot, amelyet kezelni tud összeomló ajánlott, azokban az esetekben, ahol szeretné kezelni leállítási kérelmeket, adja meg a [CancellationToken](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) megadott argumentum.  A `CancellationToken` valósul meg, hogy jelezze, hogy a gazdagép leállítása elindul.
+
+```csharp
+public static class CancellationTokenExample
+{
+    [FunctionName("BlobCopy")]
+    public static async Task RunAsync(
+        [BlobTrigger("sample-images/{blobName}")] Stream blobInput,
+        [Blob("sample-images-copies/{blobName}", FileAccess.Write)] Stream blobOutput,
+        CancellationToken token)
+    {
+        await blobInput.CopyToAsync(blobOutput, 4096, token);
+    }
+}
+```
+
+## <a name="environment-variables"></a>Környezeti változók
+
+Egy környezeti változó vagy olyan alkalmazás, beállítás értékét, amelyet `System.Environment.GetEnvironmentVariable`, ahogy az az alábbi példakód:
+
+```csharp
+public static class EnvironmentVariablesExample
+{
+    [FunctionName("GetEnvironmentVariables")]
+    public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, TraceWriter log)
+    {
+        log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
+        log.Info(GetEnvironmentVariable("AzureWebJobsStorage"));
+        log.Info(GetEnvironmentVariable("WEBSITE_SITE_NAME"));
+    }
+
+    public static string GetEnvironmentVariable(string name)
+    {
+        return name + ": " +
+            System.Environment.GetEnvironmentVariable(name, EnvironmentVariableTarget.Process);
+    }
+}
+```
+
+## <a name="binding-at-runtime"></a>Futásidejű kötés
+
+C# és egyéb .NET nyelven, használhat egy [imperatív](https://en.wikipedia.org/wiki/Imperative_programming) kötés mintát, nem pedig a [ *deklaratív* ](https://en.wikipedia.org/wiki/Declarative_programming) attribútumok kötések. Imperatív kötés akkor hasznos, ha a kötési paraméterekhez kell számítani a Tervező helyett futásidejű időpontban. Az ebben a mintában köthető támogatott bemeneti és kimeneti kötések az azonnali a függvény kódban.
+
+Adja meg a következő kötés dolgozik:
+
+- **Ne** fel egy attribútumot a függvényaláíráshoz a kívánt imperatív kötések számára.
+- A bemeneti paraméter fázis [ `Binder binder` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) vagy [ `IBinder binder` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs).
+- A következő C# minta segítségével hajtható végre a adatkötés.
+
+  ```cs
+  using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
+  {
+      ...
+  }
+  ```
+
+  `BindingTypeAttribute`a .NET-attribútum, amely meghatározza a kötés és `T` bemeneti vagy kimeneti típus a kötési típus által támogatott. `T`nem lehet egy `out` típusú paraméter (például `out JObject`). Például a Mobile Apps tábla kimeneti kötése támogatja [hat kimeneti típusok](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), de csak használható [ICollector<T> ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) vagy [IAsyncCollector<T> ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs)imperatív kötést.
+
+### <a name="single-attribute-example"></a>Egyetlen attribútum – példa
+
+Az alábbi példakód létrehoz egy [tárolási blob kimeneti kötése](functions-bindings-storage-blob.md#input--output) blobbal együtt futási időben megadott elérési út ezután ír egy karakterláncot a blobra mutató.
+
+```cs
+public static class IBinderExample
+{
+    [FunctionName("CreateBlobUsingBinder")]
+    public static void Run(
+        [QueueTrigger("myqueue-items-source-4")] string myQueueItem,
+        IBinder binder,
+        TraceWriter log)
+    {
+        log.Info($"CreateBlobUsingBinder function processed: {myQueueItem}");
+        using (var writer = binder.Bind<TextWriter>(new BlobAttribute(
+                    $"samples-output/{myQueueItem}", FileAccess.Write)))
+        {
+            writer.Write("Hello World!");
+        };
+    }
+}
+```
+
+[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) határozza meg a [tárolási blob](functions-bindings-storage-blob.md) bemeneti vagy kimeneti kötelező, és [TextWriter](https://msdn.microsoft.com/library/system.io.textwriter.aspx) támogatott kimeneti kötési típus.
+
+### <a name="multiple-attribute-example"></a>Több attribútum – példa
+
+Az előző példában lekérdezi az alkalmazás beállítása a függvény alkalmazás fő tárolási fiók kapcsolati karakterlánc (amely `AzureWebJobsStorage`). Megadhat egy egyéni alkalmazás beállítást, a tárfiók hozzáadásával a [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) , és átadja a attribútum tömb be `BindAsync<T>()`. Használja a `Binder` paraméter nem `IBinder`.  Példa:
+
+```cs
+public static class IBinderExampleMultipleAttributes
+{
+    [FunctionName("CreateBlobInDifferentStorageAccount")]
+    public async static Task RunAsync(
+            [QueueTrigger("myqueue-items-source-binder2")] string myQueueItem,
+            Binder binder,
+            TraceWriter log)
+    {
+        log.Info($"CreateBlobInDifferentStorageAccount function processed: {myQueueItem}");
+        var attributes = new Attribute[]
+        {
+        new BlobAttribute($"samples-output/{myQueueItem}", FileAccess.Write),
+        new StorageAccountAttribute("MyStorageAccount")
+        };
+        using (var writer = await binder.BindAsync<TextWriter>(attributes))
+        {
+            await writer.WriteAsync("Hello World!!");
+        }
+    }
+}
+```
+
+## <a name="triggers-and-bindings"></a>Eseményindítók és kötések 
+
+A következő táblázat a eseményindító és kötés attribútumok, amelyek az Azure Functions hordozhatóosztálytár-projektjének érhető el. A következő névtérbeli attribútumok összes `Microsoft.Azure.WebJobs`.
+
+| Eseményindító | Input (Bemenet) | Kimenet|
+|------   | ------    | ------  |
+| [BlobTrigger](functions-bindings-storage-blob.md#trigger---attributes)| [A BLOB](functions-bindings-storage-blob.md#input--output---attributes)| [A BLOB](functions-bindings-storage-blob.md#input--output---attributes)|
+| [CosmosDBTrigger](functions-bindings-documentdb.md#trigger---attributes)| [DocumentDB](functions-bindings-documentdb.md#input---attributes)| [DocumentDB](functions-bindings-documentdb.md#output---attributes) |
+| [EventHubTrigger](functions-bindings-event-hubs.md#trigger---attributes)|| [Az EventHub](functions-bindings-event-hubs.md#output---attributes) |
+| [HTTPTrigger](functions-bindings-http-webhook.md#trigger---attributes)|||
+| [QueueTrigger](functions-bindings-storage-queue.md#trigger---attributes)|| [Várólista](functions-bindings-storage-queue.md#output---attributes) |
+| [ServiceBusTrigger](functions-bindings-service-bus.md#trigger---attributes)|| [A Szolgáltatásbusz](functions-bindings-service-bus.md#output---attributes) |
+| [TimerTrigger](functions-bindings-timer.md#attributes) | ||
+| |[ApiHubFile](functions-bindings-external-file.md)| [ApiHubFile](functions-bindings-external-file.md)|
+| |[MobileTable](functions-bindings-mobile-apps.md#input---attributes)| [MobileTable](functions-bindings-mobile-apps.md#output---attributes) | 
+| |[Tábla](functions-bindings-storage-table.md#input---attributes)| [Tábla](functions-bindings-storage-table.md#output---attributes)  | 
+| ||[NotificationHub](functions-bindings-notification-hubs.md#attributes) |
+| ||[SendGrid](functions-bindings-sendgrid.md#attributes) |
+| ||[Twilio](functions-bindings-twilio.md#attributes)| 
+
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [További tudnivalók az Azure functions eseményindítók és kötések](functions-triggers-bindings.md)
+> [További tudnivalók az eseményindítók és kötések](functions-triggers-bindings.md)
 
-<!-- NuGet packages --> 
-[Microsoft.Azure.WebJobs]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs/2.1.0-beta1
-[Microsoft.Azure.WebJobs.Extensions.DocumentDB]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB/1.1.0-beta4
-[Microsoft.Azure.WebJobs.ServiceBus]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus/2.1.0-beta1
-[Microsoft.Azure.WebJobs.Extensions.MobileApps]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps/1.1.0-beta1
-[Microsoft.Azure.WebJobs.Extensions.NotificationHubs]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.NotificationHubs/1.1.0-beta1
-[Microsoft.Azure.WebJobs.ServiceBus]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus/2.1.0-beta1
-[Microsoft.Azure.WebJobs.Extensions.SendGrid]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid/2.1.0-beta1
-[Microsoft.Azure.WebJobs.Extensions.Http]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http/1.0.0-beta1
-[Microsoft.Azure.WebJobs.Extensions.BotFramework]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.BotFramework/1.0.15-beta
-[Microsoft.Azure.WebJobs.Extensions.ApiHub]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ApiHub/1.0.0-beta4
-[Microsoft.Azure.WebJobs.Extensions.Twilio]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio/1.1.0-beta1
-[Microsoft.Azure.WebJobs.Extensions]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions/2.1.0-beta1
-
-
-<!-- Links to source --> 
-[DocumentDBAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.DocumentDB/DocumentDBAttribute.cs
-[CosmosDBTriggerAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.DocumentDB/Trigger/CosmosDBTriggerAttribute.cs
-[EventHubAttribute]: https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs
-[EventHubTriggerAttribute]: https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubTriggerAttribute.cs
-[MobileTableAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs
-[NotificationHubAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.NotificationHubs/NotificationHubAttribute.cs 
-[ServiceBusAttribute]: https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAttribute.cs
-[ServiceBusAccountAttribute]: https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs
-[QueueAttribute]: https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs
-[StorageAccountAttribute]: https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs
-[BlobAttribute]: https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs
-[TableAttribute]: https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs
-[TwilioSmsAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs
-[SendGridAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs
-[HttpTriggerAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions.Http/HttpTriggerAttribute.cs
-[ApiHubFileAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.ApiHub/ApiHubFileAttribute.cs
-[TimerTriggerAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs
+> [!div class="nextstepaction"]
+> [További információk a gyakorlati tanácsok az Azure Functions](functions-best-practices.md)

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2017
 ms.author: zivr
-ms.openlocfilehash: 7be60bfebee80e92c69f87432124ff9b667ab4f1
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: ae9955253647f3277729e7905baf7bb07645de42
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="azure-metadata-service-scheduled-events-preview-for-linux-vms"></a>Az Azure metaadat-szolgáltatás: Ütemezett események (előzetes verzió) Linux virtuális gépekhez
 
@@ -136,7 +136,7 @@ Abban az esetben, ahol ütemezett események, a válasz események tömbjét tar
 | Eseményazonosító | Ez az esemény globálisan egyedi azonosítóját. <br><br> Példa: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
 | Esemény típusa | Ez az esemény hatására hatása. <br><br> Értékek: <br><ul><li> `Freeze`: A virtuális gép felfüggesztése néhány másodpercig van ütemezve. A Processzor fel van függesztve, de nincs hatással a memória, a megnyitott fájlokat vagy a hálózati kapcsolat van. <li>`Reboot`: A virtuális gép ütemezett újraindítás. (Nem állandó memória elvész.) <li>`Redeploy`: A virtuális gép áthelyezése egy másik csomópontra van ütemezve. (A rövid élettartamú lemezeket is elvesznek.) |
 | ResourceType | Ez az esemény érinti erőforrás típusát. <br><br> Értékek: <ul><li>`VirtualMachine`|
-| Erőforrások| Ez az esemény érinti erőforrások listáját. A listában legalább egy gépeket tartalmazhat garantáltan [frissítési tartomány](manage-availability.md), de nem tartalmaz a UD összes gép. <br><br> Példa: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
+| További források| Ez az esemény érinti erőforrások listáját. A listában legalább egy gépeket tartalmazhat garantáltan [frissítési tartomány](manage-availability.md), de nem tartalmaz a UD összes gép. <br><br> Példa: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | Ez az esemény állapotát. <br><br> Értékek: <ul><li>`Scheduled`: Ez az esemény után a megadott ideig történő futásra van ütemezve a `NotBefore` tulajdonság.<li>`Started`: Ez az esemény elindult.</ul> Nem `Completed` vagy hasonló állapot valaha is biztosítja. Az esemény már nem ad vissza, amikor befejeződött az esemény.
 | NotBefore| Idő elteltével ezt az eseményt elindíthatja. <br><br> Példa: <br><ul><li> 2016-09-19T18:29:47Z  |
 
@@ -184,7 +184,7 @@ import urllib2
 import socket
 import sys
 
-metadata_url = "http://169.254.169.254/metadata/scheduledevents?api-version=2017-03-01"
+metadata_url = "http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01"
 headers = "{Metadata:true}"
 this_host = socket.gethostname()
 
@@ -204,19 +204,20 @@ def handle_scheduled_events(data):
         resourcetype = evt['ResourceType']
         notbefore = evt['NotBefore'].replace(" ","_")
         if this_host in resources:
-            print "+ Scheduled Event. This host is scheduled for " + eventype + " not before " + notbefore
+            print "+ Scheduled Event. This host " + this_host + " is scheduled for " + eventtype + " not before " + notbefore
             # Add logic for handling events here
+
 
 def main():
    data = get_scheduled_events()
    handle_scheduled_events(data)
-   
+
 if __name__ == '__main__':
   main()
   sys.exit(0)
 ```
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 - Tekintse át az ütemezett események mintakódok a [Azure példány metaadatok ütemezett események Github-tárházban](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm).
 - További információk az API-k által biztosított a [példány metaadat-szolgáltatás](instance-metadata-service.md).
 - További tudnivalók [a tervezett karbantartások Linux virtuális gépek Azure-ban](planned-maintenance.md).

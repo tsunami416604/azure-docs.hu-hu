@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.custom: mvc
 ms.topic: article
-ms.date: 11/03/2017
-ms.openlocfilehash: dbb88e033d5be73b7b069d69c095d8df2c1faf1b
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.date: 12/04/2017
+ms.openlocfilehash: 6dbed1a834d74047178a9f996683d65520047e66
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Az Azure-adatbázis PostgreSQL korlátozásai
 Az Azure-adatbázis PostgreSQL szolgáltatás nyilvános előzetes verzió van. A következő szakaszok ismertetik a kapacitás és az adatbázis szolgáltatásban működik korlátok.
@@ -27,12 +27,12 @@ Nincs kapcsolatok, a számítási egység és a tárolás, az egyes szolgáltat�
 | | |
 | :------------------------- | :---------------- |
 | **Kapcsolatok maximális száma**        |                   |
-| Alapszintű 50 számítási egység     | 50 kapcsolatok    |
-| Alapszintű 100 számítási egység    | 100 kapcsolatok száma   |
-| Standard 100 számítási egység | 200 kapcsolatok   |
-| Standard 200 számítási egység | 300 kapcsolatok   |
-| Standard 400 számítási egység | 400 kapcsolatok   |
-| Standard 800 számítási egység | 500 kapcsolatok száma   |
+| Alapszintű 50 számítási egység     | 55 kapcsolatok    |
+| Alapszintű 100 számítási egység    | 105 kapcsolatok   |
+| Standard 100 számítási egység | 150 kapcsolatok   |
+| Standard 200 számítási egység | 250 kapcsolatok   |
+| Standard 400 számítási egység | 480 kapcsolatok   |
+| Standard 800 számítási egység | 950 kapcsolatok   |
 | **Maximális számítási egység**      |                   |
 | Alapszintű szolgáltatásszint         | 100 számítási egység |
 | Standard szolgáltatásszint      | 800 számítási egység |
@@ -40,8 +40,9 @@ Nincs kapcsolatok, a számítási egység és a tárolás, az egyes szolgáltat�
 | Alapszintű szolgáltatásszint         | 1 TB              |
 | Standard szolgáltatásszint      | 1 TB              |
 
-Túl sok a kapcsolat elérésekor a következő hibaüzenet jelenhet meg:
+Az Azure rendszer figyelése az Azure-adatbázishoz PostgreSQL-kiszolgáló öt kapcsolatot igényel. Túl sok a kapcsolat elérésekor a következő hibaüzenet jelenhet meg:
 > Súlyos hiba: sajnos már túl sok ügyfél
+
 
 ## <a name="preview-functional-limitations"></a>Előzetes verzió működési korlátozásai
 ### <a name="scale-operations"></a>A skálázási műveletek
@@ -52,14 +53,14 @@ Túl sok a kapcsolat elérésekor a következő hibaüzenet jelenhet meg:
 ### <a name="server-version-upgrades"></a>Kiszolgáló verziófrissítések
 - Fő adatbázis motor verziók közötti automatikus áttelepítési jelenleg nem támogatott.
 
-### <a name="subscription-management"></a>Előfizetés-kezelés
+### <a name="subscription-management"></a>Előfizetés kezelése
 - Dinamikusan áthelyezése előfizetés és az erőforráscsoport előre létrehozott kiszolgálók jelenleg nem támogatott.
 
 ### <a name="point-in-time-restore"></a>Időponthoz kötött visszaállítás
 1.  Különböző szolgáltatási rétegben és/vagy számítási egység és a tárhely mérete visszaállítása nem engedélyezett.
 2.  Az eldobott kiszolgáló visszaállítása nem támogatott.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Megértéséhez [egyes tarifacsomagok elérhető](concepts-service-tiers.md)
 - Megértéséhez [támogatott PostgreSQL-adatbázis verziója](concepts-supported-versions.md)
 - Felülvizsgálati [készítsen biztonsági másolatot, és a kiszolgáló Azure-adatbázis visszaállítása az Azure portál használatával PostgreSQL](howto-restore-server-portal.md)

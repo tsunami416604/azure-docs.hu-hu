@@ -1,6 +1,6 @@
 ---
-title: "A Cortana Intelligence Gallery az egyéni modulok |} Microsoft Docs"
-description: "A Cortana Intelligence Gallery egyéni gépi tanulási modulok felderítése."
+title: "Az Azure AI gyűjtemény egyéni modulok |} Microsoft Docs"
+description: "Egyéni gépi tanulási modulok Azure Eszközintelligencia-katalógus felderítése."
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: roopalik;garye
-ms.openlocfilehash: 4bab94c04f09261eaa88b9e6a225c05f57992ab0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 278a24c44b76e6df097355b91d94a146be4aa9a9
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
-# <a name="discover-custom-machine-learning-modules-in-cortana-intelligence-gallery"></a>A Cortana Intelligence Gallery egyéni gépi tanulási modulok felderítése
+# <a name="discover-custom-machine-learning-modules-in-azure-ai-gallery"></a>Egyéni gépi tanulási modulok Azure Eszközintelligencia-katalógus felderítése
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
 ## <a name="custom-modules-for-machine-learning-studio"></a>A Machine Learning Studióban az egyéni modulok
-A Cortana Intelligence Gallery kínál számos [az egyéni modulok](https://gallery.cortanaintelligence.com/customModules) , bontsa ki az Azure Machine Learning Studio képességeit. Importálhatja a modulokat használ a kísérletekben, így még akkor is speciális prediktív elemzési megoldások fejleszthet.
+AI Azure katalógusában számos kínál [az egyéni modulok](https://gallery.cortanaintelligence.com/customModules) , bontsa ki az Azure Machine Learning Studio képességeit. Importálhatja a modulokat használ a kísérletekben, így még akkor is speciális prediktív elemzési megoldások fejleszthet.
 
 Jelenleg a gyűjtemény kínál a modulok *time series analytics*, *társítási szabályok*, *algoritmusok Fürtszolgáltatás* (túl a k-közép), és  *képi megjelenítések*, és más workhorse segédprogram modulok.
 
@@ -52,7 +52,7 @@ A Részletek lap egyéni modulon a **megjegyzések** szakaszban lehet megjegyzé
 ## <a name="import"></a>Importálás
 A saját kísérletek importálhatja bármely egyéni modul a gyűjteményből.
 
-A Cortana Intelligence Gallery kétféleképpen egy példányát a modul importálásához:
+AI Azure katalógusában kétféleképpen egy példányát a modul importálásához:
 
 * **A gyűjteményből**. Egyéni modul importálása a katalógusból, ha egy minta kísérletet, amely lehetővé teszi az példa bemutatja, hogyan modulját is kap.
 * **A számítógép-Learning Studio**. A Machine Learning Studióban használata közben bármely egyéni modul importálható (ebben az esetben nem kap a mintakísérletet).

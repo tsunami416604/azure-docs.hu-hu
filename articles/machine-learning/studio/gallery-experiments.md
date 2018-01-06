@@ -1,6 +1,6 @@
 ---
-title: "A Cortana Intelligence Gallery kísérleteket |} Microsoft Docs"
-description: "Felderíteni, és megoszthatja a Cortana Intelligence Galleryben található kísérletek."
+title: "AI Azure katalógusában kísérleteket |} Microsoft Docs"
+description: "Fedezze fel, és megoszthatja a kísérletek Azure Eszközintelligencia-katalógus."
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: roopalik;garye
-ms.openlocfilehash: 472ecac4ac1d9a86f0a3ad8271dd96257c331e5f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ad41d431b78a69e54bb5e4df3aaea1ec7c858b7f
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
-# <a name="discover-experiments-in-cortana-intelligence-gallery"></a>A Cortana Intelligence Gallery kísérletek felderítése
+# <a name="discover-experiments-in-azure-ai-gallery"></a>Azure Eszközintelligencia-katalógus kísérletek felderítése
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
 ## <a name="experiments-for-machine-learning-studio"></a>A Machine Learning Studio kísérletek
@@ -45,7 +45,7 @@ További információ a kísérlet kísérlet részleteit megjelenítő oldalon 
 ## <a name="download"></a>Letöltés
 A Machine Learning Studio munkaterület letöltheti a katalógusban kísérletek másolatát. Módosíthatja majd, a Másolás a saját megoldások létrehozásához.
 
-A Cortana Intelligence Gallery kétféleképpen importálásához a kísérlet egy példányát:
+AI Azure katalógusában kétféleképpen importálásához a kísérlet egy példányát:
 
 * **A gyűjteményből**. Ha a kísérlet, amely az oldalon van lehetősége, töltse le, és nyissa meg a Machine Learning Studio munkaterületén.
 * **A számítógép-Learning Studio**. A Machine Learning Studióban segítségével bármilyen kísérlet a dokumentumtárban sablonként új kísérlet létrehozása.

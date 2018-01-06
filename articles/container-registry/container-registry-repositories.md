@@ -1,50 +1,57 @@
 ---
-title: "Azure-tárolót beállításjegyzék adattárak"
-description: "Azure-tároló beállításjegyzék adattárak Docker lemezképek használata"
+title: "Az Azure tároló beállításjegyzék tárházak találhatók, az Azure-portálon"
+description: "How Azure tároló beállításjegyzék adattárak megtekintéséhez az Azure portálon."
 services: container-registry
 author: cristy
 manager: timlt
 ms.service: container-registry
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 01/05/2018
 ms.author: cristyg
-ms.openlocfilehash: 3321dd1d8bbd1b8232c26491edd8c374df16b813
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 593972e972207a27d1232fcb0c1bf220ac3a8def
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/05/2018
 ---
-# <a name="azure-container-registry-repositories"></a>Azure-tárolót beállításjegyzék adattárak
+# <a name="view-container-registry-repositories-in-the-azure-portal"></a>Tároló beállításjegyzék adattárak tekintse meg az Azure-portálon
 
-Azure-tárolót beállításjegyzék tároló lemezképek tárolása adattárak teszi lehetővé. Lemezképek tárolása tárházak találhatók, akkor elkülönített környezetben csoportok lemezképet (vagy képeket verzióját). A tárolóhelyekkel történő képek leküldése a beállításjegyzék megadhat.
-
+Az Azure tároló beállításjegyzék tárolását teszi Docker adattárak lemezképeit tároló. Lemezképek tárolása tárházak találhatók, elkülönített környezetben tárolhatja a képet (vagy a lemezképek verzióit) csoportját. Megadhatja a tárolóhelyekkel képek leküldése a beállításjegyzékben, és a tartalom megtekintéséhez az Azure portálon.
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **Azure Container Registry** – Létrehozhat egy tároló-beállításjegyzéket Azure-előfizetésében. Ehhez például használhatja az [Azure Portalt](container-registry-get-started-portal.md) vagy az [Azure CLI 2.0-t](container-registry-get-started-azure-cli.md).
-* **A Docker parancssori felülete** – Ha szeretné helyi számítógépét Docker-gazdagépként beállítani és elérni a Docker parancssori felületének parancsait, telepítse a [Docker Engine-t](https://docs.docker.com/engine/installation/).
-* **A képfájl lekéréses** - lemezkép nyilvános Docker Hub beállításjegyzékből való lekérésére, címkével, és hogy a beállításjegyzék. Útmutatás a leküldéses és lekéréses képek, lásd: [leküldéses Docker kép Azure személyes beállítási](container-registry-get-started-docker-cli.md).
 
+* **Tároló beállításjegyzék**: hozzon létre egy tároló beállításjegyzék az Azure-előfizetéshez. Tegyük fel például, a [Azure-portálon](container-registry-get-started-portal.md) vagy a [Azure CLI](container-registry-get-started-azure-cli.md).
+* **A docker parancssori felület**: telepítése [Docker] [ docker-install] a helyi számítógépen, amely lehetővé teszi a Docker parancssori felületet.
+* **Tároló kép**: lemezkép leküldése a tároló beállításjegyzék. Leküldéses és lekéréses képek kapcsolatos útmutatásért lásd: [leküldéses és lekéréses lemezkép](container-registry-get-started-docker-cli.md).
 
-## <a name="viewing-repositories-in-the-portal"></a>A portálon megtekintik adattárak
+## <a name="view-repositories-in-azure-portal"></a>Nézet adattárak Azure-portálon
 
-A tároló beállításjegyzék képek rendelkezik leküldött, miután az Azure-portálon a lemezképeket tároló adattárak listáját láthatja.
+A képek, valamint a lemezkép címkéket, az Azure portálon üzemeltető adattárak listáját láthatja.
 
-Ha követte a lépéseket a [leküldéses Docker kép Azure személyes beállítási](container-registry-get-started-docker-cli.md) cikk, most rendelkeznie kell egy Nginx-lemezképet a tároló beállításjegyzékben. Utasításokat részeként kell adta meg a lemezkép egy névteret. Az alábbi példában a parancs a "minták" tárházba NGinx kép leküldéses értesítések:
+Ha követte a lépéseket [leküldéses és lekéréses lemezkép](container-registry-get-started-docker-cli.md) (és később nem törli a kép), a tároló beállításjegyzékben kell Nginx-lemezkép. A cikkben lévő utasítások meg, hogy a címke a kép névtérrel, a "minták" `/samples/nginx`. A frissítő, mint a [docker leküldéses] [ docker-push] cikkben megadva parancs a következő volt:
 
-```
+```Bash
 docker push myregistry.azurecr.io/samples/nginx
 ```
- Az Azure Container Registry támogatja a többszintű adattárnévtereket. Ezzel a szolgáltatással egy adott alkalmazáshoz vagy alkalmazások gyűjteményéhez kapcsolódó rendszerképek gyűjteményeit csoportba rendezheti az egyes fejlesztői és üzemeltetői csoportok számára. További lásd: a tároló nyilvántartó adattárak [saját Docker-tároló nyilvántartó az Azure-ban](container-registry-intro.md).
 
-A tároló beállításjegyzék adattárak megtekintése:
+ Azure-tároló beállításjegyzék támogatja az ilyen többszintű tárház névterek, mert hatókörét megadhatja egy adott alkalmazást, vagy az alkalmazások különböző fejlesztési vagy működési gyűjtemény kapcsolódó képek gyűjteményei. További lásd: a tároló nyilvántartó adattárak [saját Docker-tároló nyilvántartó az Azure-ban](container-registry-intro.md).
 
-1. Jelentkezzen be az Azure portálra.
-2. Az a **Azure tároló beállításjegyzék** panelen válassza ki a megvizsgálni kívánt beállításjegyzék
-3. A beállításjegyzék paneljén kattintson **Tárházak** a tárolóhelyekkel és a képek listájának megjelenítéséhez
-4. (Választható) Válasszon ki egy adott lemezképet címkék megtekintéséhez
+A tárház megtekintése:
+
+1. Jelentkezzen be a [Azure-portálon][portal]
+1. Válassza ki a **Azure tároló beállításjegyzék** , amelyhez a Nginx kép leküldött
+1. Válassza ki **Tárházak** a beállításjegyzékben a képet tartalmazó adattárak listájának megtekintéséhez
+1. Válassza ki a tárház tekintse meg a lemezkép címkék adott tárház belül
+
+Például, ha Ön leküldött Nginx képként arra utasította a [leküldéses és lekéréses lemezkép](container-registry-get-started-docker-cli.md), megtekintheti az alábbihoz hasonlót:
 
 ![A tárolóhelyekkel a portálon](./media/container-registry-repositories/container-registry-repositories.png)
 
+## <a name="next-steps"></a>További lépések
 
-## <a name="next-steps"></a>Következő lépések
-Most, hogy elsajátította az alapokat, készen áll a beállításjegyzéke használatára. Például üzembe helyezhet tárolórendszerképeket egy [Azure Container Service](https://azure.microsoft.com/documentation/services/container-service/)-fürtön.
+Most, hogy tudja, megtekintése és használata a portálon adattárak alapjait, próbálja meg az Azure-tároló beállításjegyzék használatával egy [Azure tároló szolgáltatás (AKS)](../aks/tutorial-kubernetes-prepare-app.md) fürt.
+
+<!-- LINKS - External -->
+[docker-install]: https://docs.docker.com/engine/installation/
+[docker-push]: https://docs.docker.com/engine/reference/commandline/push/
+[portal]: https://portal.azure.com

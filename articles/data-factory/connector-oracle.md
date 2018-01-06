@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 01/05/2018
 ms.author: jingwang
-ms.openlocfilehash: 8742860ce5950271189b8903f281d5643eac4a5f
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: ff5dc0d2c5f744cb42da715713977fdc89a96edf
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="copy-data-from-and-to-oracle-using-azure-data-factory"></a>Másolja az adatokat, a kezdő és a Oracle Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -45,7 +45,7 @@ Pontosabban az Oracle-összekötő Oracle-adatbázishoz a következő verzióit 
 
 Az adatok másolása az/Oracle-adatbázishoz, amely nincs nyilvánosan elérhető, akkor be kell állítania egy Self-hosted integrációs futásidejű. Lásd: [Self-hosted integrációs futásidejű](create-self-hosted-integration-runtime.md) szóló cikkben olvashat integrációs futásidejű. Integrációs futásidejű biztosít egy beépített Oracle-illesztőprogramot, ezért nem, manuálisan kell telepítenie minden olyan illesztőprogram a/az Oracle adatok másolásakor kell.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 A másolási tevékenység során .NET SDK, a Python SDK, az Azure PowerShell, a REST API-t vagy a Azure Resource Manager-sablon használatával hozhat létre egy folyamatot. Lásd: [másolási tevékenység oktatóanyag](quickstart-create-data-factory-dot-net.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját.
 
 A következő szakaszok részletesen bemutatják megadhatók a Data Factory tartozó entitások Oracle-összekötőhöz használt tulajdonságokat.
@@ -57,7 +57,7 @@ Oracle kapcsolódó szolgáltatás támogatott a következő tulajdonságokkal:
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **Oracle** | Igen |
-| connectionString | Adja meg az Oracle-adatbázispéldány való kapcsolódáshoz szükséges adatokat. Ez a mező megjelölése a SecureString. | Igen |
+| connectionString | Adja meg az Oracle-adatbázispéldány való kapcsolódáshoz szükséges adatokat. Ez a mező megjelölése a SecureString.<br><br>**Kapcsolat típusa támogatott**: szeretne használni **Oracle SID** vagy **Oracle szolgáltatásnév** az adatbázis azonosításához:<br>-SID használata:`Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>-Szolgáltatás neve használatával:`Host=<host>;Port=<port>;ServiceName=<sid>;User Id=<username>;Password=<password>;` | Igen |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhatja Self-hosted integrációs futásidejű vagy Azure integrációs futásidejű (ha az adattároló nyilvánosan elérhető). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
 
 **Példa**
@@ -210,7 +210,7 @@ A/az Oracle adatok másolásakor a következő megfeleltetéseket szolgálnak az
 | A BLOB |Byte]<br/>(csak támogatja az Oracle 10g és újabb) |
 | KARAKTER |Karakterlánc |
 | CLOB |Karakterlánc |
-| DÁTUM |Dátum és idő |
+| DATE |DateTime |
 | LEBEGŐPONTOS |Decimális, karakterlánc (Ha pontosság > 28) |
 | EGÉSZ SZÁM |Decimális, karakterlánc (Ha pontosság > 28) |
 | HOSSZÚ |Karakterlánc |
@@ -221,7 +221,7 @@ A/az Oracle adatok másolásakor a következő megfeleltetéseket szolgálnak az
 | NVARCHAR2 |Karakterlánc |
 | NYERS |Byte] |
 | ROWID |Karakterlánc |
-| IDŐBÉLYEG |Dátum és idő |
+| IDŐBÉLYEG |DateTime |
 | A HELYI IDŐZÓNÁRA IDŐBÉLYEG |Karakterlánc |
 | AZ IDŐZÓNA IDŐBÉLYEG |Karakterlánc |
 | ELŐJEL NÉLKÜLI EGÉSZKÉNT. |Szám |
@@ -232,5 +232,5 @@ A/az Oracle adatok másolásakor a következő megfeleltetéseket szolgálnak az
 > Adattípus IDŐKÖZ év, hónap és nap TO IDŐKÖZ második nem támogatottak.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md##supported-data-stores-and-formats).

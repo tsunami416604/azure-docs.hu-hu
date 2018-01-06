@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2018
+ms.date: 01/05/2018
 ms.author: alfredop
-ms.openlocfilehash: 5008c2a7764a17a937c8ab2025ac430f05b780cf
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 9ec0b0456a0e7bc5f86f33981d4be6289f5fbc71
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="frequently-asked-questions-in-azure-stack-usage-api"></a>Gyakori kérdések az Azure-verem használata API
 Ebben a cikkben megválaszolunk néhány kapcsolatos gyakori kérdések az Azure verem használati API-t.
@@ -31,23 +31,23 @@ Használat esetén jelentést kap a következő erőforrás-szolgáltatók.
 | **Hálózat** |F271A8A388C44D93956A063E1D2FA80B |Statikus IP-cím használata |IP-címek| Használt száma az IP-címek |
 | |9E2739BA86744796B465F64674B822BA |Dinamikus IP-cím használata |IP-címek| Használt száma az IP-címek |
 | **Storage** |B4438D5D-453B-4EE1-B42A-DC72E377F1E4 |TableCapacity |GB\*üzemideje (óra) |Tábla által felhasznált teljes kapacitás |
-| | B5C15376-6C94-4FDD-B655-1A69D138ACA3 |PageBlobCapacity |GB\*üzemideje (óra) |Lapblobokat által felhasznált teljes kapacitás |
-| | B03C6AE7-B080-4BFA-84A3-22C800F315C6 |QueueCapacity |GB\*üzemideje (óra) |Várólista által felhasznált teljes kapacitás |
-| | 09F8879E-87E9-4305-A572-4B7BE209F857 |BlockBlobCapacity |GB\*üzemideje (óra) |Blokkblobok által felhasznált teljes kapacitás |
-| | B9FF3CD0-28AA-4762-84BB-FF8FBAEA6A90 |TableTransactions |10 000 db kérelmek száma |TABLE szolgáltatási kérelmek (10 000 db) |
-| | 50A1AEAF-8ECA-48A0-8973-A5B3077FEE0D |TableDataTransIn |Érkező adatok GB-ban |TABLE szolgáltatás adatok érkező GB-ban |
-| | 1B8C1DEC-EE42-414B-AA36-6229CF199370 |TableDataTransOut |Kimenő forgalom GB-ban |TABLE szolgáltatás adatforgalommal GB-ban |
-| | 43DAF82B-4618-444A-B994-40C23F7CD438 |BlobTransactions |Kérések száma 10 000 db |A BLOB szolgáltatási kérelmek (10 000 db) |
-| | 9764F92C-E44A-498E-8DC1-AAD66587A810 |BlobDataTransIn |Érkező adatok GB-ban |BLOB szolgáltatás adatok érkező GB-ban |
-| | 3023FEF4-ECA5-4D7B-87B3-CFBC061931E8 |BlobDataTransOut |Kimenő forgalom GB-ban |BLOB szolgáltatás adatforgalommal GB-ban |
-| | EB43DD12-1AA6-4C4B-872C-FAF15A6785EA |QueueTransactions |Kérések száma 10 000 db |Várólista szolgáltatási kérelmek (10 000 db) |
-| | E518E809-E369-4A45-9274-2017B29FFF25 |QueueDataTransIn |Érkező adatok GB-ban |Várólista szolgáltatás adatok érkező GB-ban |
-| | DD0A10BA-A5D6-4CB6-88C0-7D585CEF9FC2 |QueueDataTransOut |Kimenő forgalom GB-ban |Várólista szolgáltatás adatforgalommal GB-ban |
+| |B5C15376-6C94-4FDD-B655-1A69D138ACA3 |PageBlobCapacity |GB\*üzemideje (óra) |Lapblobokat által felhasznált teljes kapacitás |
+| |B03C6AE7-B080-4BFA-84A3-22C800F315C6 |QueueCapacity |GB\*üzemideje (óra) |Várólista által felhasznált teljes kapacitás |
+| |09F8879E-87E9-4305-A572-4B7BE209F857 |BlockBlobCapacity |GB\*üzemideje (óra) |Blokkblobok által felhasznált teljes kapacitás |
+| |B9FF3CD0-28AA-4762-84BB-FF8FBAEA6A90 |TableTransactions |10., 000's kérelmek száma |TABLE szolgáltatás kérelmek (10, 000's) |
+| |50A1AEAF-8ECA-48A0-8973-A5B3077FEE0D |TableDataTransIn |Érkező adatok GB-ban |TABLE szolgáltatás adatok érkező GB-ban |
+| |1B8C1DEC-EE42-414B-AA36-6229CF199370 |TableDataTransOut |Kimenő forgalom GB-ban |TABLE szolgáltatás adatforgalommal GB-ban |
+| |43DAF82B-4618-444A-B994-40C23F7CD438 |BlobTransactions |10., 000's kérelmek száma |BLOB szolgáltatás kérelmek (10, 000's) |
+| |9764F92C-E44A-498E-8DC1-AAD66587A810 |BlobDataTransIn |Érkező adatok GB-ban |BLOB szolgáltatás adatok érkező GB-ban |
+| |3023FEF4-ECA5-4D7B-87B3-CFBC061931E8 |BlobDataTransOut |Kimenő forgalom GB-ban |BLOB szolgáltatás adatforgalommal GB-ban |
+| |EB43DD12-1AA6-4C4B-872C-FAF15A6785EA |QueueTransactions |10., 000's kérelmek száma |Várólista szolgáltatás kérelmek (10, 000's) |
+| |E518E809-E369-4A45-9274-2017B29FFF25 |QueueDataTransIn |Érkező adatok GB-ban |Várólista szolgáltatás adatok érkező GB-ban |
+| |DD0A10BA-A5D6-4CB6-88C0-7D585CEF9FC2 |QueueDataTransOut |Kimenő forgalom GB-ban |Várólista szolgáltatás adatforgalommal GB-ban |
 | **Számítás** |FAB6EB84-500B-4A09-A8CA-7358F8BBAEA5 |Alapszintű VM-méret órák |Virtuális core perc | Virtuális magok száma alkalommal fordult elő a virtuális gép futott perc |
 | |9CD92D4C-BAFD-4492-B278-BEDC2DE8232A |Windows virtuális gép mérete üzemideje (óra) |Virtuális core perc | Virtuális magok száma alkalommal fordult elő a virtuális gép futott perc |
 | |6DAB500F-A4FD-49C4-956D-229BB9C8C793 |Virtuális gép mérete üzemideje (óra) |Virtuális gép üzemideje (óra) |Kiinduló és a Windows virtuális gép rögzíti. Nem igazítja a magok |
-| **Key Vault** | EBF13B9F-B3EA-46FE-BF54-396E93D48AB4 |Key Vault tranzakciók | 10 000 db kérelmek száma| Kulcstároló adatainak vezérlősík által fogadott REST API-kérelmek száma |
-
+| **Key Vault** |EBF13B9F-B3EA-46FE-BF54-396E93D48AB4 |Key Vault tranzakciók | 10., 000's kérelmek száma| Kulcstároló adatainak vezérlősík által fogadott REST API-kérelmek száma |
+| **Az App service** |190C935E-9ADA-48FF-9AB8-56EA1CF9ADAA  | App Service   | Virtuális processzor-üzemóra  | Az app service futtatásához használt virtuális magok száma |
 
 ## <a name="how-do-the-azure-stack-usage-apis-compare-to-the-azure-usage-apihttpsmsdnmicrosoftcomlibraryazure1ea5b323-54bb-423d-916f-190de96c6a3c-currently-in-public-preview"></a>Az API-k összehasonlítják Azure verem használati módja a [Azure használati API](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c) (jelenleg a nyilvános előzetes verzió)?
 * A bérlő használati API konzisztensek legyenek az Azure API, egy kivétellel: a *showDetails* jelző jelenleg nem támogatott Azure-készletben.

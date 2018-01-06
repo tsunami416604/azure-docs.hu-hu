@@ -1,6 +1,6 @@
 ---
 title: "Runbookok beállításainak |} Microsoft Docs"
-description: "Azure Automation és módosítsa őket az Azure felügyeleti portálon és a Windows PowerShell használatával az egyes runbookok konfigurációs beállításokat ismerteti."
+description: "Azure Automation és módosítsa őket az Azure portál és a Windows PowerShell használatával az egyes runbookok konfigurációs beállításokat ismerteti."
 services: automation
 documentationcenter: 
 author: georgewallace
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/11/2016
 ms.author: bwren
-ms.openlocfilehash: 8d626465bcfdb4efa9cf85c41a2ee679e30eadaf
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 527c40c4a0c5c9a0eb4745f542a8afcc63281416
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="runbook-settings"></a>Runbook beállításai
 Azure Automation minden egyes runbookja több beállítással, amelyek segítenek azonosítani és módosítani annak naplózási viselkedését rendelkezik. Egyes beállítások alábbiakban módosításukhoz szükséges eljárások leírását.
@@ -55,7 +55,7 @@ Az alábbi Példaparancsok szemléltetik egy runbook tulajdonságainak beállít
     Set-AzureRmAutomationRunbook -ResourceGroupName "ResourceGroup01" `
     –AutomationAccountName $automationAccountName –Name $runbookName –LogVerbose $true –Tags $tags
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Megtudhatja, hogyan hozhat létre és runbook-kimenet és a hiba üzeneteket beolvasni, lásd: [Runbook-kimenet és üzenetek](automation-runbook-output-and-messages.md) 
 * Annak megértése, hogyan hozzáadása egy runbookot, amely már fejlesztette ki a közösségi vagy más forrásból, és a saját runbook létrehozásáról [létrehozása vagy egy Runbook importálása](automation-creating-importing-runbook.md) 
 

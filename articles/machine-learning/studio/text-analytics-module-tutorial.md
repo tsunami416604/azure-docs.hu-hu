@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: roastala
-ms.openlocfilehash: 5f45a500c7cc28b6d6ad3fcac780791d43067ff3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a43dc7162be4b2f3cfd122c6a87921caf2e3e418
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="create-text-analytics-models-in-azure-machine-learning-studio"></a>Szövegelemzési modellek létrehozása az Azure Machine Learning Studio használatával
 Azure Machine Learning segítségével hozza létre, és azok szöveg elemzési modelljeit. Ezek a modellek segítségével, például dokumentum besorolását vagy a céggel kapcsolatos véleményeket elemzés előforduló problémák megoldásához.
@@ -33,7 +33,7 @@ Az a szöveg elemzési kísérletet üzembe helyezése rendszerint:
 
 Ebben az oktatóanyagban elsajátíthatja, ezeket a lépéseket, azt végezze el a céggel kapcsolatos véleményeket elemzési modellek Amazon könyv értékelést adatkészlet (lásd a tanulmány "adatainak, Bollywood, elterjedése-Box és Blenders: tartomány kiigazítása véleményeket besorolási" John Blitzer, be van jelölve Dredze és Fernando Pereira; Társítás számítási Linguistics (ACL), a 2007.) Ez az adatkészlet felülvizsgálati pontszámok (1-2 vagy 4-5) és a szabad formátumú szöveget áll. A cél az, hogy a felülvizsgálati pontszám előrejelzése: alacsony (1 - 2) vagy nagy (4-5).
 
-Ebben az oktatóanyagban a Cortana Intelligence Gallery kísérletek található:
+Az oktatóanyag: Azure Eszközintelligencia-katalógus kísérletek található:
 
 [Könyv értékelést előrejelzése](https://gallery.cortanaintelligence.com/Experiment/Predict-Book-Reviews-1)
 
@@ -88,6 +88,6 @@ Azt a beszúrandó oszlopok kiválasztása az adathalmaz modul előfeldolgozása
 
 Most van egy kísérlet, amely egy webszolgáltatás közzétett és neve a kérés-válasz vagy kötegelt végrehajtási API-k használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tudnivalók a szöveg analytics modulok [az MSDN dokumentációjában tájékozódhat](https://msdn.microsoft.com/library/azure/dn905886.aspx).
 

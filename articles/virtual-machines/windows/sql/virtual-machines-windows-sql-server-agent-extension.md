@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 12/12/2017
+ms.date: 01/05/2018
 ms.author: jroth
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 414c985d21112d658b6e22473f67ed1c3afd00ef
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 1d2b681660ae6f59dec8a287baa853085c64ebeb
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-resource-manager"></a>Azure virtuális gépeken kiterjesztésű SQL Server Agent (erőforrás-kezelő) felügyeleti feladatok automatizálásához
 > [!div class="op_single_selector"]
@@ -72,6 +71,9 @@ Az SQL Server IaaS ügynöke bővítmény automatikusan települ, amikor egy SQL
 Set-AzureRmVMSqlServerExtension -ResourceGroupName "resourcegroupname" -VMName "vmname" -Name "SQLIaasExtension" -Version "1.2" -Location "East US 2"
 ```
 
+> [!IMPORTANT]
+> Ha a kiterjesztés már nincs telepítve, a bővítmény telepítése újraindítja az SQL Server szolgáltatást.
+
 Akkor is telepíteni az SQL Server infrastruktúra-szolgáltatási ügynök kiterjesztés csak az operációs rendszer Windows Server virtuális géphez. Ez csak akkor támogatott, ha manuálisan is, hogy a gép van telepítve az SQL Server. Majd telepítse a bővítmény manuálisan azonos **Set-AzureVMSqlServerExtension** PowerShell-parancsmagot.
 
 > [!NOTE]
@@ -101,7 +103,7 @@ Használhatja a **Remove-AzureRmVMSqlServerExtension** PowerShell-parancsmagot.
 
     Remove-AzureRmVMSqlServerExtension -ResourceGroupName "resourcegroupname" -VMName "vmname" -Name "SQLIaasExtension"
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A bővítmény által támogatott szolgáltatások használatának megkezdéséhez. További részletekért lásd: a cikk a [támogatott szolgáltatások](#supported-services) című szakaszát.
 
 További információ az SQL Servert futtató Azure virtuális gépeken: [SQL Server Azure virtuális gépek – áttekintés](virtual-machines-windows-sql-server-iaas-overview.md).

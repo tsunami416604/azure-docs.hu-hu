@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2017
+ms.date: 01/05/2018
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.openlocfilehash: d485d2e7d22ea79a87dc52dbc063a811f4a1a2ec
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6b454ed7257e8d3f91e585cee2b559c54371fb15
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="configure-expiration-for-office-365-groups-preview"></a>Az Office 365-csoportok (előzetes verzió) lejárati konfigurálása
 
@@ -30,9 +30,7 @@ Kezelheti az Office 365-csoportok életciklusát lejárati szolgáltatások beá
 -   Minden Office 365-csoportot, amely törlődik csoport tulajdonosai vagy a rendszergazda által visszaállítható számított 30 napon belül
 
 > [!NOTE]
-> Az Office 365-csoportok lejárati beállításához egy Azure AD Premium licenc vagy egy Azure AD alapvető oktatási licencet, amelyhez a csoportok minden tagját a lejárati beállítások érvényesek.
-> 
-> Az Azure AD alapvető oktatási licenccel rendelkező felhasználók: először konfigurálja a házirendet, használja az Azure Active Directory PowerShell-parancsmagok. Ezt követően a PowerShell vagy az Azure AD portálon használatával egy olyan fiókkal, amely a felhasználói fiók rendszergazdájához vagy a globális rendszergazda az Azure AD-bérlő lejárati beállítások segítségével frissítheti.
+> Az Office 365-csoportok lejárati beállításához az Azure AD prémium licenccel, amelyhez a csoportok minden tagját a lejárati beállítások érvényesek.
 
 Töltse le és telepítse a Azure AD PowerShell-parancsmagokkal kapcsolatos információkért lásd: [Azure Active Directory PowerShell diagramhoz – a nyilvános előzetes 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137).
 
@@ -73,7 +71,7 @@ Ha most visszaállítása a csoport tartalmazza a dokumentumok, SharePoint-webhe
 >   Például csoport 400 nappal ezelőtt lett létrehozva, és a lejárati időköz értéke 180 nap. Lejárati beállítások alkalmazásakor csoport rendelkezik 30 nap elteltével törlődik, kivéve, ha a tulajdonos megújítja azt.
 > * Ha egy dinamikus csoport törlése és visszaállítása, látható egy új csoportot, és újra fel az a szabály alapján. Ez a folyamat akár 24 óráig is eltarthat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ezek a cikkek kiegészítő információt nyújt az Azure Active Directory csoportokat.
 
 * [Tekintse meg a meglévő csoportok](active-directory-groups-view-azure-portal.md)

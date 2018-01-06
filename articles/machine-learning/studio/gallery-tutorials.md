@@ -1,6 +1,6 @@
 ---
-title: "A Cortana Intelligence Gallery oktatóanyagok |} Microsoft Docs"
-description: "Fedezze fel, és oktatóanyagok megoszthatja a Cortana Intelligence Gallery."
+title: "Az Azure AI gyűjtemény oktatóanyagok |} Microsoft Docs"
+description: "Fedezze fel, és megoszthatja oktatóanyagok Azure Eszközintelligencia-katalógus."
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: roopalik;garye
-ms.openlocfilehash: eee86899c14905655c4217d5fcf3865ca594366f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: be5ecf81c71dbf39593b2afb46ac0ae09ede466a
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
-# <a name="discover-and-share-tutorials-in-cortana-intelligence-gallery"></a>Fedezze fel és oktatóanyagok megoszthatja a Cortana Intelligence Gallery
+# <a name="discover-and-share-tutorials-in-azure-ai-gallery"></a>Fedezze fel, és megoszthatja oktatóanyagok Azure Eszközintelligencia-katalógus
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
 ## <a name="tutorials"></a>Oktatóanyagok
-A Cortana Intelligence Gallery kínál számos [oktatóanyagok](https://gallery.cortanaintelligence.com/tutorials) , amely képes végigvezetik Önt machine learning technológiák és fogalmak. Oktatóanyagokat is ír le speciális módszerei a machine learning problémák megoldásához.
+AI Azure katalógusában számos kínál [oktatóanyagok](https://gallery.cortanaintelligence.com/tutorials) , amely képes végigvezetik Önt machine learning technológiák és fogalmak. Oktatóanyagokat is ír le speciális módszerei a machine learning problémák megoldásához.
 
 ## <a name="discover"></a>Ismertetők
 Oktatóanyagok tallózással [a katalógusban](http://gallery.cortanaintelligence.com)a **további**, jelölje be **oktatóanyagok**.
@@ -72,7 +72,7 @@ A gyűjtemény egy probléma megoldásához, vagy további elvét más felhaszn�
 
 7. Kattintson a **Létrehozás** gombra.
 
-Az oktatóanyag Cortana Intelligence Gallery van. Az oktatóprogramok találhatók, a fiók lapon a a **elemek** fülre.
+Az oktatóanyag Azure AI gyűjteménye van. Az oktatóprogramok találhatók, a fiók lapon a a **elemek** fülre.
 
 **[Ugrás a katalógusban](http://gallery.cortanaintelligence.com)**
 

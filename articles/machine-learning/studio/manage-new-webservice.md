@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2017
 ms.author: v-donglo
-ms.openlocfilehash: 9024bc82c0de5b8058a848cc809a2571baa7ce83
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: 2e71fa46f88ce219bee96a223a034078a037b4d3
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-web-services-portal"></a>Kezelheti egy webszolgáltatás-bővítmény, az Azure Machine Learning webszolgáltatások portál használatával
 A Machine Learning új és a Microsoft Azure Machine Learning webszolgáltatások portálon klasszikus webszolgáltatások segítségével kezelheti. Klasszikus webszolgáltatások és új webes szolgáltatások különböző alapul szolgáló technológiák alapján, mert némileg eltérő felügyeleti képességek állnak a rendelkezésére az egyes őket.
@@ -110,7 +110,7 @@ A terv irányítópult a következő adatokat tartalmazza:
 
 ## <a name="manage-classic-web-services"></a>Klasszikus webszolgáltatások kezelése
 > [!NOTE]
-> A jelen szakaszban ismertetett eljárások szempontjából kezelése a klasszikus webszolgáltatások az Azure Machine Learning webszolgáltatások portálon keresztül. A Machine Learning Studio és a klasszikus Azure portálon keresztül klasszikus webszolgáltatások kezeléséről további információért lásd: [kezelése az Azure Machine Learning-munkaterület](manage-workspace.md).
+> A jelen szakaszban ismertetett eljárások szempontjából kezelése a klasszikus webszolgáltatások az Azure Machine Learning webszolgáltatások portálon keresztül. A Machine Learning Studio és az Azure-portálon keresztül klasszikus webszolgáltatások kezeléséről további információért lásd: [kezelése az Azure Machine Learning-munkaterület](manage-workspace.md).
 > 
 > 
 

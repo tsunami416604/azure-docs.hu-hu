@@ -1,42 +1,43 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált MobileXpense |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és MobileXpense között."
+title: "Oktatóanyag: Azure Active Directoryval integrált Mobile Xpense |} Microsoft Docs"
+description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a mobil Xpense között."
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
+ms.reviewer: joflore
 ms.assetid: e649fc4e-3e15-4948-b977-00bfe9f7db13
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/25/2017
+ms.date: 01/05/2018
 ms.author: jeedes
-ms.openlocfilehash: f1d65a2404fc90943bba4921158f5366bc9778ac
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3beea4dc7889d84ba2724b9b4ebf88d2fae3a284
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mobilexpense"></a>Oktatóanyag: Azure Active Directoryval integrált MobileXpense
+# <a name="tutorial-azure-active-directory-integration-with-mobile-xpense"></a>Oktatóanyag: Azure Active Directoryval integrált Mobile Xpense
 
-Ebben az oktatóanyagban elsajátíthatja MobileXpense integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja Mobile Xpense integrálása az Azure Active Directory (Azure AD).
 
-MobileXpense integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Mobile Xpense integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
 
-- Megadhatja a MobileXpense hozzáféréssel rendelkező Azure AD-ben
-- Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett MobileXpense (egyszeri bejelentkezés) számára a saját Azure AD-fiókok
-- Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
+- Az Azure AD, aki hozzáfér Mobile Xpense szabályozhatja.
+- Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni aláírt a Mobile Xpense (egyszeri bejelentkezés).
+- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
 
 Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Konfigurálása az Azure AD-integrációs MobileXpense, a következőkre van szükség:
+Az Azure AD-integráció konfigurálása a Mobile Xpense, a következőkre van szükség:
 
 - Az Azure AD szolgáltatásra
-- Egy MobileXpense egyszeri bejelentkezés engedélyezve van az előfizetésben
+- A Mobile Xpense egyszeri bejelentkezés engedélyezve van az előfizetésben
 
 > [!NOTE]
 > Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
@@ -44,155 +45,154 @@ Konfigurálása az Azure AD-integrációs MobileXpense, a következőkre van sz�
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
 - Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, egy hónapos próbaverzió kaphat [Itt](https://azure.microsoft.com/pricing/free-trial/).
+- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
 
-1. A gyűjteményből MobileXpense hozzáadása
+1. Mobile Xpense hozzáadása a gyűjteményből
 2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
 
-## <a name="adding-mobilexpense-from-the-gallery"></a>A gyűjteményből MobileXpense hozzáadása
-Az Azure AD integrálása a MobileXpense konfigurálásához kell hozzáadnia MobileXpense a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-mobile-xpense-from-the-gallery"></a>Mobile Xpense hozzáadása a gyűjteményből
+Az Azure AD integrálása a Mobile Xpense konfigurálásához kell hozzáadnia Mobile Xpense a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
 
-**A gyűjteményből MobileXpense hozzáadásához hajtsa végre az alábbi lépéseket:**
+**A gyűjteményből Mobile Xpense hozzáadásához hajtsa végre az alábbi lépéseket:**
 
 1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
 
-    ![Active Directory][1]
+    ![Az Azure Active Directory gomb][1]
 
 2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
 
-    ![Alkalmazások][2]
+    ![A vállalati alkalmazások panel][2]
     
 3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
 
-    ![Alkalmazások][3]
+    ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **MobileXpense**.
+4. Írja be a keresőmezőbe, **Mobile Xpense**, jelölje be **Mobile Xpense** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-mobilexpense-tutorial/tutorial_mobilexpense_search.png)
+    ![Az eredménylistában Mobile Xpense](./media/active-directory-saas-mobilexpense-tutorial/tutorial_mobilexpense_addfromgallery.png)
 
-5. Az eredmények panelen válassza ki a **MobileXpense**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-mobilexpense-tutorial/tutorial_mobilexpense_addfromgallery.png)
+Ebben a szakaszban, konfigurálás és tesztelés az Azure AD az egyszeri bejelentkezés Mobile Xpense "Britta Simon" nevű tesztfelhasználó alapján.
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
-Ebben a szakaszban konfigurálása, és tesztelés az Azure AD egyszeri bejelentkezéshez "Britta Simon." nevű tesztfelhasználó alapján MobileXpense
+Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a Mobile Xpense tartozó felhasználót a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a Mobile Xpense közötti kapcsolat kapcsolatot kell létrehozni.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó MobileXpense a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a MobileXpense közötti kapcsolat kapcsolatot kell létrehozni.
+Mobile Xpense, rendelje hozzá a értékének a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
 
-MobileXpense, rendelje hozzá a értékének a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+Az Azure AD egyszeri bejelentkezést a Mobile Xpense tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
 
-Az Azure AD egyszeri bejelentkezést a MobileXpense tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
+2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
+3. **[Mobile Xpense tesztfelhasználó létrehozása](#create-a-mobile-xpense-test-user)**  - való egy megfelelője a Britta Simon Mobile Xpense, amely csatolva van a felhasználó az Azure AD-ábrázolását.
+4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Az Azure AD tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[MobileXpense tesztfelhasználó létrehozása](#creating-a-mobilexpense-test-user)**  - való Britta Simon valami MobileXpense, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Az Azure AD-teszt felhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
-5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az Mobile Xpense alkalmazásban.
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az MobileXpense alkalmazásban.
+**Mobile Xpense konfigurálása az Azure AD egyszeri bejelentkezést, hajtsa végre az alábbi lépéseket:**
 
-**Konfigurálása az Azure AD az egyszeri bejelentkezés MobileXpense, hajtsa végre az alábbi lépéseket:**
+1. Az Azure portálon a a **Mobile Xpense** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
 
-1. Az Azure portálon a a **MobileXpense** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
-
-    ![Egyszeri bejelentkezés konfigurálása][4]
+    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
 
 2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
  
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-mobilexpense-tutorial/tutorial_mobilexpense_samlbase.png)
+    ![Egyszeri bejelentkezés párbeszédpanel](./media/active-directory-saas-mobilexpense-tutorial/tutorial_mobilexpense_samlbase.png)
 
-3. Az a **MobileXpense tartomány és az URL-címek** szakaszban, ha szeretne beállítani az alkalmazás **IDP** kezdeményezett mód:
+3. Az a **Mobile Xpense tartomány és az URL-címek** szakaszban, ha szeretne beállítani az alkalmazás által kezdeményezett IDP módban, hajtsa végre az alábbi lépéseket:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-mobilexpense-tutorial/tutorial_mobilexpense_url11.png)
+    ![Az egyszeri bejelentkezés információk Mobile Xpense tartomány és az URL-címek](./media/active-directory-saas-mobilexpense-tutorial/tutorial_mobilexpense_url11.png)
 
-    Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:`https://<sub domain>.mobilexpense.com/SSO/SAML20/SAML/AssertionConsumerService.aspx`
+    a. Az a **azonosító** szövegmezőhöz URL-címet írja be:`https://mobilexpense.com/ServiceProvider`
 
-4. Ellenőrizze **megjelenítése speciális URL-beállításainak**, ha szeretne beállítani az alkalmazás **SP** kezdeményezett mód:
+    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:`https://<sub-domain>.mobilexpense.com/NET/SSO/SAML20/SAML/AssertionConsumerService.aspx`
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-mobilexpense-tutorial/tutorial_mobilexpense_url22.png)
+4. Ellenőrizze **megjelenítése speciális URL-beállításainak** , és végezze el a következő lépés, ha szeretne beállítani az alkalmazás **SP** kezdeményezett mód:
 
-Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-cím::`https://<sub domain>.mobilexpense.com/<customername>`
+    ![Az egyszeri bejelentkezés információk Mobile Xpense tartomány és az URL-címek](./media/active-directory-saas-mobilexpense-tutorial/tutorial_mobilexpense_url22.png)
 
-> [!NOTE] 
-> Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges válasz URL-CÍMEN és bejelentkezési URL-cím. Ügyfél [MobileXpense ügyfél-támogatási csoport](http://www.mobilexpense.net/contact) beolvasni ezeket az értékeket. 
+    Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<sub-domain>.mobilexpense.com/<customername>`
+     
+    > [!NOTE] 
+    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges válasz URL-CÍMEN, és a bejelentkezési URL-cím. Ügyfél [Mobile Xpense ügyfél-támogatási csoport](http://www.mobilexpense.net/contact) beolvasni ezeket az értékeket. 
 
 5. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-mobilexpense-tutorial/tutorial_mobilexpense_certificate.png) 
+    ![A tanúsítvány letöltési hivatkozását](./media/active-directory-saas-mobilexpense-tutorial/tutorial_mobilexpense_certificate.png) 
 
 6. Kattintson a **mentése** gombra.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-mobilexpense-tutorial/tutorial_general_400.png)
+    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/active-directory-saas-mobilexpense-tutorial/tutorial_general_400.png)
 
-8. Egyszeri bejelentkezés konfigurálása **MobileXpense** oldalon kell küldeniük a letöltött **metaadatainak XML-kódja** való [MobileXpense támogatási csoport](http://www.mobilexpense.net/contact).
+7. Egyszeri bejelentkezés konfigurálása **Mobile Xpense** oldalon kell küldeniük a letöltött **metaadatainak XML-kódja** való [Mobile Xpense támogatási csoport](http://www.mobilexpense.net/contact). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
+
 Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
 
-![Az Azure AD-felhasználó létrehozása][100]
+   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **Azure-portálon**, a bal oldali navigációs ablaktábláján kattintson **Azure Active Directory** ikonra.
+1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-mobilexpense-tutorial/create_aaduser_01.png) 
+    ![Az Azure Active Directory gomb](./media/active-directory-saas-mobilexpense-tutorial/create_aaduser_01.png)
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok** kattintson **minden felhasználó**.
-    
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-mobilexpense-tutorial/create_aaduser_02.png) 
+2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
 
-3. Lehetőségre a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** párbeszédpanel tetején.
- 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-mobilexpense-tutorial/create_aaduser_03.png) 
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/active-directory-saas-mobilexpense-tutorial/create_aaduser_02.png)
 
-4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
- 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-mobilexpense-tutorial/create_aaduser_04.png) 
+3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
 
-    a. Az a **neve** szövegmezőhöz típus **BrittaSimon**.
+    ![A Hozzáadás gombra.](./media/active-directory-saas-mobilexpense-tutorial/create_aaduser_03.png)
 
-    b. Az a **felhasználónév** szövegmezőhöz típusa a **e-mail cím** a BrittaSimon.
+4. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
 
-    c. Válassza ki **megjelenítése jelszó** írja le a értékének a **jelszó**.
+    ![A felhasználó párbeszédpanel](./media/active-directory-saas-mobilexpense-tutorial/create_aaduser_04.png)
+
+    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+
+    b. Az a **felhasználónév** mezőbe írja be a felhasználó e-mail címe az Britta Simon.
+
+    c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
-### <a name="creating-a-mobilexpense-test-user"></a>MobileXpense tesztfelhasználó létrehozása
+### <a name="create-a-mobile-xpense-test-user"></a>Mobile Xpense tesztfelhasználó létrehozása
 
 Ebben a szakaszban egy MobileXpense Britta Simon nevű felhasználót hoz létre. a [MobileXpense támogatási csoport](http://www.mobilexpense.net/contact) a felhasználók hozzáadása a MobileXpense platform. Felhasználók kell létrehoznia és aktiválni az egyszeri bejelentkezés használata előtt. 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés MobileXpense Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban Britta Simon hozzáférés biztosítása a Mobile Xpense által használandó Azure egyszeri bejelentkezés engedélyezése.
 
-![Felhasználó hozzárendelése][200] 
+![A felhasználói szerepkör hozzárendelése][200] 
 
-**Britta Simon hozzárendelése MobileXpense, hajtsa végre az alábbi lépéseket:**
+**Britta Simon hozzárendelése Mobile Xpense, hajtsa végre az alábbi lépéseket:**
 
 1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **MobileXpense**.
+2. Az alkalmazások listában válassza ki a **Mobile Xpense**.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-mobilexpense-tutorial/tutorial_mobilexpense_app.png) 
+    ![Az alkalmazások listáját a Mobile Xpense hivatkozás](./media/active-directory-saas-mobilexpense-tutorial/tutorial_mobilexpense_app.png)  
 
 3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
 
-    ![Felhasználó hozzárendelése][202] 
+    ![A "Felhasználók és csoportok" hivatkozásra][202]
 
 4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
 
-    ![Felhasználó hozzárendelése][203]
+    ![A hozzárendelés hozzáadása panelen][203]
 
 5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
 
@@ -200,12 +200,12 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
     
-### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
 
-Ha a hozzáférési panelen MobileXpense csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az MobileXpense alkalmazására.
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](https://msdn.microsoft.com/library/dn308586). 
+Ha a hozzáférési panelen Mobile Xpense csempére kattint, meg kell beolvasása automatikusan bejelentkezett a Mobile Xpense alkalmazásba.
+A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
 

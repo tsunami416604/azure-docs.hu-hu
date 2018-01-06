@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 
 ms.author: haroldw
-ms.openlocfilehash: eb2bdd203bfbd170992358f48cde6f7b5c0bdf16
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 5e287cd29fb305e78fe6338782838929007b17fc
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="common-prerequisites-for-deploying-openshift-in-azure"></a>Az Azure-ban OpenShift telepítésének közös előfeltételei
 
@@ -94,7 +94,7 @@ Az SSH-kulcsok a Windows további információkért lásd: [létrehozása az SSH
 A OpenShift telepítéshez való biztonságos hozzáférés a OpenShift fő létrehozott SSH-kulcsot használ. Ahhoz, hogy az SSH-kulcs biztonságosan lekérhessék a központi telepítés, tárolja a kulcsot a Key Vault a következő paranccsal:
 
 ```azurecli
-az keyvault secret set --vault-name keyvault --name keysecret --file ~/.ssh/openshift.rsa
+az keyvault secret set --vault-name keyvault --name keysecret --file ~/.ssh/openshift_rsa
 ```
 
 ## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása 
@@ -125,7 +125,7 @@ Jegyezze fel a parancs által visszaadott appId-tulajdonság:
 
 A szolgáltatás rendszerbiztonsági tagok további információkért lásd: [hozzon létre egy Azure szolgáltatás egyszerű Azure CLI 2.0](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk ismerteti a következő témaköröket:
 > [!div class="checklist"]

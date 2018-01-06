@@ -1,5 +1,5 @@
 ---
-title: "Újdonságok a Microsoft Power BI Embedded? | Microsoft Docs"
+title: "A beágyazott Azure Power BI alkalmazásról |} Microsoft Docs"
 description: "A Power BI Embedded készült egyszerűbbé teheti az ISV-k és a fejlesztők használatát a Power BI képességeit, ezáltal hatásos látványelemeket, jelentések és irányítópultok gyorsan hozzáadhatja az alkalmazásokba."
 services: power-bi-embedded
 documentationcenter: 
@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 09/28/2017
+ms.date: 01/04/2018
 ms.author: asaxton
-ms.openlocfilehash: 03ac36b2b3f3e26770f681b101824ddeca29b61f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2e96575e74e20c80a79803ea56cdcbd4542e54a2
+ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/05/2018
 ---
-# <a name="what-is-power-bi-embedded"></a>A Power BI Embedded bemutatása
+# <a name="about-power-bi-embedded"></a>Információ a Power BI Embedded
 
 A Power BI Embedded célja, hogy hogyan használják az ISV-k és a fejlesztők a Power BI képességek egyszerűsítése. A Power BI Embedded leegyszerűsíti a Power BI képességek segítenek hatásos látványelemeket, jelentések és irányítópultok gyorsan hozzáadhatja saját alkalmazásokba. A Microsoft Azure használata szolgáltatásokat, mint a Machine Learning- és IoT épülő alkalmazások hasonló. Egyszerűen lépjen az adatok feltárása a saját alkalmazásaikban lévő engedélyezésével ISV-k engedélyezése az ügyfeleknek a környezetben gyors és megalapozott döntéseket.
 
@@ -52,7 +52,7 @@ A REST API használatával, a Power BI Embedded lehetővé teszi a fejlesztés a
 * [A Power BI ötleteket](https://ideas.powerbi.com): kérelem és a szolgáltatások szavazni
 * [Reddit](https://www.reddit.com/r/PowerBI/): ismertetik a Power bi-ban
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg a [árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/power-bi-embedded/) kapacitás csomópont részleteiről.
 

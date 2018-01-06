@@ -1,5 +1,5 @@
 ---
-title: "Frissítse a biztonsági másolatok tárolóját a Recovery Services-tároló (előzetes verzió) |} Microsoft Docs"
+title: "Frissítse a biztonsági másolatok tárolóját a Recovery Services-tároló |} Microsoft Docs"
 description: "Útmutatás és támogatási információk frissítése a Recovery Services-tároló az Azure Backup-tárolóban."
 services: backup
 documentationcenter: dev-center-name
@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/09/2017
+ms.date: 1/4/2018
 ms.author: sogup;markgal;arunak
-ms.openlocfilehash: c50095ef5aef750787ec65d64ab92b0e06e20d2c
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: 8396a7276fde10eb95a22ed07fa61625acfdd77f
+ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>Frissítse a biztonsági másolatok tárolóját a Recovery Services-tároló
 
@@ -120,7 +120,7 @@ Miután a Recovery Services-tároló frissít, jelentések konfigurálása az Az
 Nem. A folyamatban levő biztonsági másolatok megszakításmentes folytatásához során, és a frissítés után.
 
 **Ha szeretnék frissítéséről hamarosan nem tervezi, mi történik a tárolók?**</br>
-Mivel az összes új szolgáltatás csak a Recovery Services-tárolók vonatkoznak, javasoljuk, hogy a tároló frissítésére. A Microsoft felé fog érvényteleníthető a klasszikus portálon. 2017. szeptember 1., kezdési Microsoft megkezdődik a mentési tárolók automatikus frissítése a Recovery Services-tárolók. Utáni novemberi 30,2017, akkor már nem hozhatók létre mentési tárolókban PowerShell használatával. A tároló frissíthetők automatikusan az között bármikor. A Microsoft azt javasolja, hogy minél hamarabb frissítse a tárolóban.
+Mivel az összes új szolgáltatás csak a Recovery Services-tárolók vonatkoznak, javasoljuk, hogy a tároló frissítésére. 2017. szeptember 1., kezdési Microsoft megkezdődik a mentési tárolók automatikus frissítése a Recovery Services-tárolók. Utáni novemberi 30,2017, akkor már nem hozhatók létre mentési tárolókban PowerShell használatával. A tároló frissíthetők automatikusan az között bármikor. A Microsoft azt javasolja, hogy minél hamarabb frissítse a tárolóban.
 
 **A meglévő eszközt használunk erre a frissítési középértéket funkciója?**</br>
 Frissítse az eszközt használunk erre a Resource Manager üzembe helyezési modellben. Tárolók jelentek meg a helyreállítási szolgáltatások használata a Resource Manager üzembe helyezési modellben. A Resource Manager üzembe helyezési modellel tervezéséről és a különbség a tárolók elszámolása fontos. 
@@ -133,9 +133,6 @@ Nem. Miután az erőforrások frissítése sikeresen befejeződött a rollback u
 
 **Az előfizetés vagy az erőforrások megjelenítéséhez, ha fontosságúak képes a frissítés is ellenőrzi?**</br>
 Igen. A frissítés első lépése ellenőrzi, hogy az erőforrások frissítés. Abban az esetben, ha a szükséges előfeltételek ellenőrzése sikertelen, üzeneteket fogadni a frissítés nem hajtható végre okok miatt.
-
-**Milyen engedélyekkel kell rendelkeznie elindítható a tároló frissítés?**</br>
-A tároló frissítéshez kell hozzáadni, a klasszikus Azure portálon az előfizetés társadminisztrátoraként. Ez elengedhetetlen, még akkor is, ha már fel van sorolva az Azure portálon tulajdonosa. Próbálja meg hozzáadni egy az előfizetés társadminisztrátoraként a klasszikus Azure portálon, ha szeretné tudni, hogy-e az előfizetés társadminisztrátoraként. Ha nem tud társadminisztrátorának hozzáadni, lépjen kapcsolatba a szolgáltatás-rendszergazdai vagy társadminisztrátori az előfizetés, akik felvehesse Önt társadminisztrátoraként.
 
 **Frissíthetem a CSP-alapú biztonsági mentés tárolójának?**</br>
 Nem. Mentési tárolók CSP-alapú jelenleg nem frissíthető. A Microsoft támogatni fogják a CSP-alapú biztonsági mentési tárolók a következő kiadásokban az frissítése.

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5d30a0a6e293bd6659c8d39f94f11b0bb448e166
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5e7b0aa1fc555f0fe4773b6bd67db87a55d85bcf
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="upgrade-windows-azure-active-directory-sync-and-azure-active-directory-sync"></a>Frissítse a Windows Azure Active Directory-szinkronizálás és az Azure Active Directory-szinkronizálás
 Az Azure AD Connect a legjobb megoldás, ha a helyszíni címtárat az Azure AD-hez és az Office 365-höz szeretné csatlakoztatni. Ez az ideje, mivel ezek az eszközök most már elavultak, és már nem támogatott 2017. április 13-től a Windows Azure Active Directory-szinkronizálás (DirSync) vagy az Azure AD Sync az Azure AD Connect frissítése.
@@ -62,7 +62,7 @@ Ha meg szeretné tekinteni a helyben frissítés menete a Dirsync szolgáltatás
 Az értesítési is elküldte az Azure AD Connect használatával a buildszámot 1.0-ügyfél számára. \*.0 (előtti-1.1 kiadási használatával). A Microsoft azt javasolja, hogy az ügyfelek számára az Azure AD Connect kiadásainak mindig naprakész. A [automatikus frissítés](active-directory-aadconnect-feature-automatic-upgrade.md) 1.1 bevezetett szolgáltatás segítségével egyszerűen mindig a telepítve az Azure AD Connect legújabb verziójával rendelkezik.
 
 **K: fog DirSync vagy az Azure AD Sync működni azon 2017. április 13?**  
-A DirSync vagy az Azure AD Sync továbbra is működnek majd a 2017. április 13.  Azonban az Azure AD nem fogadja el a DirSync vagy az Azure AD Sync folytatott kommunikáció 2017. December 31. után.
+A DirSync vagy az Azure AD Sync továbbra is működnek majd a 2017. április 13.  Azonban az Azure AD előfordulhat, hogy már nem fogadja el a DirSync vagy az Azure AD Sync folytatott kommunikáció 2017. December 31. után.
 
 **K: DirSync verzióinak frissíthető?**  
 A jelenleg használt DirSync kiadás verzióról támogatott. Vegye figyelembe, hogy helyszíni frissítés a Dirsync szolgáltatásról az Azure AD Connect nem támogatott. December 31-edik 2017 után. Az ügyfelek, akik adott dátumot követően a DirSync használ, és át szeretne helyezni az Azure AD Connect lehet szükség az Azure AD Connect friss telepítés helyett.

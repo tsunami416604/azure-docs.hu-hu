@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2017
 ms.author: glenga
-ms.openlocfilehash: 0b7746125c9bcff64bd721f6ec5d2ea2c73f6f18
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: ed1d8298123597fe8330b54f89fd580095f21ec7
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="azure-functions-tools-for-visual-studio"></a>Az Azure Functions Tools for Visual Studio  
 
@@ -46,7 +46,8 @@ Hozzon létre, és funkciók telepítése, akkor is szüksége lesz:
 
 * Aktív Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [fiókok szabad](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) érhetők el.
 
-* Egy Azure Storage-fiókot. A storage-fiók létrehozásához lásd: [hozzon létre egy tárfiókot](../storage/common/storage-create-storage-account.md#create-a-storage-account).  
+* Egy Azure Storage-fiókot. A storage-fiók létrehozásához lásd: [hozzon létre egy tárfiókot](../storage/common/storage-create-storage-account.md#create-a-storage-account).
+
 ## <a name="create-an-azure-functions-project"></a>Az Azure Functions projekt létrehozása 
 
 [!INCLUDE [Create a project using the Azure Functions](../../includes/functions-vstools-create.md)]
@@ -136,4 +137,4 @@ Az Azure Functions Core eszközök használatával kapcsolatos további tudnival
 További információ az Azure Functions eszközök című rész a gyakori kérdéseket a [Azure Functions Visual Studio 2017 eszközök](https://blogs.msdn.microsoft.com/webdev/2017/05/10/azure-function-tools-for-visual-studio-2017/) blogbejegyzést.
 
 Az Azure Functions alapvető eszközökkel kapcsolatos további tudnivalókért lásd: [kódot és az Azure functions helyi tesztelése](functions-run-local.md).  
-A függvények .NET-osztálytárakként való fejlesztéséről további információért lásd [a .NET-osztálytárak és az Azure Functions használatát](functions-dotnet-class-library.md) ismertető cikket. Ez a témakör is példákat attribútumok használata a különféle az Azure Functions által támogatott kötések deklarálnia.    
+Alkalmazás feladatok fejlesztésével kapcsolatos további tudnivalókért lásd: [Azure Functions C# fejlesztői leírás](functions-dotnet-class-library.md). A témakör hivatkozásokat is tartalmaz példákat attribútumok használata a különféle az Azure Functions által támogatott kötések deklarálnia.    

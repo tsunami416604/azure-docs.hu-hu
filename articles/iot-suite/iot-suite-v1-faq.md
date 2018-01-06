@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: corywink
-ms.openlocfilehash: db928795cc38dea4ca9fc441e6053e3bb44da23e
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: 6c644395aa7ad51c289cdc4a23b02e9e0239a0fe
+ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="frequently-asked-questions-for-iot-suite"></a>Gyakran ismételt kérdések az IoT Suite-ról
 
@@ -86,17 +86,20 @@ Kettőt. Az Azure-előfizetéssel csak két belső tranzakciók szintjét 1 a Bi
 
 ### <a name="can-i-create-a-preconfigured-solution-if-i-have-microsoft-azure-for-dreamspark"></a>Létrehozhatok előre konfigurált megoldást, ha Microsoft Azure for DreamSpark-fiókom van?
 
-Jelenleg nem hozható létre egy előre konfigurált megoldást egy [dreamspark révén a Microsoft Azure] [ lnk-dreamspark] fiók. Azonban létrehozhat egy [ingyenes próba-fiókot az Azure-] [ lnk-30daytrial] mindössze néhány percet, amely lehetővé teszi az előkonfigurált megoldás létrehozása.
+> [!NOTE]
+> Dreamspark révén a Microsoft Azure mostantól a diákok a Microsoft Imagine néven.
+
+Jelenleg nem hozható létre egy előre konfigurált megoldást egy [dreamspark révén a Microsoft Azure](https://azure.microsoft.com/pricing/member-offers/imagine/) fiók. Azonban létrehozhat egy [ingyenes próba-fiókot az Azure-](https://azure.microsoft.com/free/) mindössze néhány percet, amely lehetővé teszi az előkonfigurált megoldás létrehozása.
 
 ### <a name="can-i-create-a-preconfigured-solution-if-i-have-cloud-solution-provider-csp-subscription"></a>Létrehozhatók előkonfigurált megoldás, ha a Cloud Solution Provider (CSP) előfizetés van?
 
 A Cloud Solution Provider (CSP) előfizetést jelenleg nem hozható létre előre konfigurált megoldást. Azonban létrehozhat egy [ingyenes próba-fiókot az Azure-] [ lnk-30daytrial] mindössze néhány percet, amely lehetővé teszi az előkonfigurált megoldás létrehozása.
 
-### <a name="how-do-i-delete-an-aad-tenant"></a>Hogyan törölhetek egy AAD-bérlőt?
+### <a name="how-do-i-delete-an-azure-ad-tenant"></a>Hogyan törli a Azure AD-bérlő?
 
 Eric Golpe blogbejegyzésből [bemutató az Azure AD-bérlő törlésével][lnk-delete-aad-tennant].
 
-### <a name="next-steps"></a>Következő lépések
+### <a name="next-steps"></a>További lépések
 
 Megismerheti az IoT Suite előre konfigurált megoldásának egyéb szolgáltatásait és funkcióit is:
 

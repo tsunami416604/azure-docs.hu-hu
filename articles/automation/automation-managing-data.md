@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/02/201
 ms.author: magoedte;bwren;sngun
-ms.openlocfilehash: 58ba74585f650c570b5962408a3935e9cd2e591c
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 2afcf918ffa104bd0e13048c152e04992f55ffe1
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="managing-azure-automation-data"></a>Azure Automation-adatok kezelése
 Ez a cikk egy Azure Automation-környezet kezelése több témaköröket tartalmazza.
@@ -49,13 +49,13 @@ Azonban ha megőrizhetők az adatok egy hosszabb ideig van szüksége, továbbí
 A Microsoft Azure automation-fiók törlésekor a fiók összes objektum törlődnek, beleértve a runbookok, modulok, konfigurációk, beállítások, feladatok és eszközök. Az objektumok nem állítható helyre, miután a fiókot törölték.  Az alábbi információk segítségével biztonsági mentés a tartalmát az automation-fiók törlése előtt. 
 
 ### <a name="runbooks"></a>Runbookok
-A runbookok exportálása parancsfájlok vagy az Azure felügyeleti portál használatával vagy a [Get-AzureAutomationRunbookDefinition](https://msdn.microsoft.com/library/dn690269.aspx) a Windows PowerShell parancsmag.  Ezek a parancsfájlok importálhatja egy másik automation-fiók leírtaknak megfelelően [létrehozása vagy importálása egy Runbook](https://msdn.microsoft.com/library/dn643637.aspx).
+A runbookok exportálása parancsfájlok vagy az Azure portál használatával vagy a [Get-AzureAutomationRunbookDefinition](https://msdn.microsoft.com/library/dn690269.aspx) a Windows PowerShell parancsmag.  Ezek a parancsfájlok importálhatja egy másik automation-fiók leírtaknak megfelelően [létrehozása vagy importálása egy Runbook](https://msdn.microsoft.com/library/dn643637.aspx).
 
 ### <a name="integration-modules"></a>Integrációs modulok
 Azure Automation integrációs modulok nem exportálható.  Gondoskodnia kell arról, hogy elérhetők, kívül az automation-fiók.
 
 ### <a name="assets"></a>Objektumok
-Nem lehet exportálni [eszközök](https://msdn.microsoft.com/library/dn939988.aspx) Azure Automation.  Az Azure felügyeleti portál használatával kell vegye figyelembe a változók, a hitelesítő adatokat, a tanúsítványok, a kapcsolatok és a ütemezések részleteit.  Ezután manuálisan kell létrehozni minden egy másik automation alkalmazásba importált runbookok által használt eszközök.
+Nem lehet exportálni [eszközök](https://msdn.microsoft.com/library/dn939988.aspx) Azure Automation.  Az Azure portál használatával kell vegye figyelembe a változók, a hitelesítő adatokat, a tanúsítványok, a kapcsolatok és a ütemezések részleteit.  Ezután manuálisan kell létrehozni minden egy másik automation alkalmazásba importált runbookok által használt eszközök.
 
 Használhat [Azure-parancsmagokkal](https://msdn.microsoft.com/library/dn690262.aspx) beolvasni részleteit titkosítatlan eszközök, és menti azokat a jövőben, vagy ezzel egyenértékű eszközöket egy másik automation-fiókban létrehozni.
 
@@ -64,7 +64,7 @@ A titkosított változók vagy a jelszó mező parancsmagokkal hitelesítő adat
 Azure Automation tanúsítványok nem exportálható.  Gondoskodnia kell arról, hogy elérhetők-e a tanúsítványok Azure-on kívüli.
 
 ### <a name="dsc-configurations"></a>A DSC-konfigurációk
-A beállítások exportálhatók arra a parancsfájlok vagy az Azure felügyeleti portál használatával vagy a [Export-AzureRmAutomationDscConfiguration](https://msdn.microsoft.com/library/mt603485.aspx) a Windows PowerShell parancsmag. Ezek a konfigurációk importálja, majd egy másik automation-fiókot használni.
+A beállítások exportálhatók arra a parancsfájlok vagy az Azure portál használatával vagy a [Export-AzureRmAutomationDscConfiguration](https://msdn.microsoft.com/library/mt603485.aspx) a Windows PowerShell parancsmag. Ezek a konfigurációk importálja, majd egy másik automation-fiókot használni.
 
 ## <a name="geo-replication-in-azure-automation"></a>Az Azure Automationben georeplikáció
 Georeplikáció, az Azure Automation-fiók, standard biztonsági másolatot készít fiók adatait más földrajzi régióban a redundancia érdekében. Választhat egy elsődleges régióban, a fiók beállításakor, és ezután egy másodlagos régióban nem rendel hozzá automatikusan. A másodlagos adatok, az elsődleges régióban, átmásolva folyamatosan frissítjük adatvesztés esetén.  

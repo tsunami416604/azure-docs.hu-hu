@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 01/04/2018
 ms.author: billmath
-ms.openlocfilehash: 12ebfdfaaf9325ba57fe3972ee073fa5181cdbff
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 077a60949b5eed24cb9a1c56008a0073693f121e
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Az Azure Active Directory áteresztő hitelesítés: Gyakran ismételt kérdések
 
@@ -82,6 +82,12 @@ Igen. Webes Proxy automatikus felderítését a lekérdezés (WPA) engedélyezve
 
 Nem, csak telepíthető egy csatlakoztatott hitelesítési ügynök egyetlen kiszolgálóra. Ha szeretne áteresztő hitelesítés konfigurálása a magas rendelkezésre állású, kövesse az utasításokat a [Azure Active Directory áteresztő hitelesítés: gyors üzembe helyezési](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability).
 
+## <a name="how-do-i-remove-a-pass-through-authentication-agent"></a>Hogyan el egy átmenő hitelesítés ügynök?
+
+Mindaddig, amíg egy áteresztő hitelesítés ügynök fut-e, aktív marad, és folyamatosan kezeli a felhasználói bejelentkezési kérelmek. Ha el szeretné távolítani egy hitelesítési ügynök, folytassa a **Vezérlőpult -> Programok -> Programok és szolgáltatások** és távolíthatja el a **Microsoft Azure AD Connect hitelesítési ügynök** és a  **A Microsoft Azure AD Connect ügynök Frissítőjének** programok.
+
+Ha bejelöli az áteresztő hitelesítés panel a a [Azure Active Directory felügyeleti központ](https://aad.portal.azure.com) az előző lépés befejezése után megjelenik a hitelesítési ügynök azt jelzi, **inaktív**. Ez az _várt_. A hitelesítési ügynök automatikusan néhány nap múlva törlődnek a listából.
+
 ## <a name="i-already-use-ad-fs-to-sign-in-to-azure-ad-how-do-i-switch-it-to-pass-through-authentication"></a>Már alkalmazni az AD FS az Azure AD bejelentkezés. Hogyan váltani az áteresztő hitelesítés?
 
 Ha konfigurálta az AD FS az Azure AD Connect varázsló lépéseinek bejelentkezni az módszerként, módosítsa a a módszerrel, amely a felhasználó bejelentkezni az áteresztő hitelesítés. Ez a módosítás lehetővé teszi, hogy átmenő hitelesítést a tenant, és konvertálja _összes_ az összevont tartományt a felügyelt tartományok. Áteresztő hitelesítés bejelentkezni a bérlő az összes további kérelmet kezeli. Jelenleg nem támogatott az Azure AD Connect belül használatának módja az AD FS és az áteresztő hitelesítés különböző tartományokban.
@@ -122,7 +128,7 @@ Az Azure AD Connect varázsló ismételt futtatása, és módosítsa a felhaszn�
 
 Ha egy csatlakoztatott hitelesítési ügynök eltávolítása a kiszolgálóról, azt eredményezi, a kiszolgáló bejelentkezési kérelmek fogadását. Ha el szeretné kerülni a felhasználói bejelentkezési képesség a tenant, ellenőrizze, hogy egy másik hitelesítési ügynök fut egy csatlakoztatott hitelesítési ügynök eltávolítása előtt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Aktuális korlátozások](active-directory-aadconnect-pass-through-authentication-current-limitations.md): megtudhatja, mely forgatókönyvek is támogatottak, és melyek nem.
 - [Gyors üzembe helyezési](active-directory-aadconnect-pass-through-authentication-quick-start.md):, amelyekből megismerheti az Azure AD áteresztő hitelesítés.
 - [Intelligens zárolás](active-directory-aadconnect-pass-through-authentication-smart-lockout.md): megtudhatja, hogyan konfigurálja az intelligens zárolás funkció a bérlő felhasználói fiókok védelme.

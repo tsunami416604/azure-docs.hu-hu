@@ -1,6 +1,6 @@
 ---
-title: A Cortana Intelligence Gallery versenyek |} Microsoft Docs
-description: "A Cortana Intelligence Gallery a versenyek felderítése."
+title: "Azure AI gyűjtemény versenyek |} Microsoft Docs"
+description: "Az Azure Eszközintelligencia-katalógus versenyek felderítése."
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: roopalik;garye
-ms.openlocfilehash: e9c1ae9448ad7179c33bbbafa34a4643a4840d0a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1e39d636b3322201465700a4c9de83dda1bbefcc
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
-# <a name="discover-competitions-in-the-cortana-intelligence-gallery"></a>A Cortana Intelligence Gallery a versenyek felderítése
+# <a name="discover-competitions-in-the-azure-ai-gallery"></a>Az Azure Eszközintelligencia-katalógus versenyek felderítése
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
 ## <a name="cortana-intelligence-competitions"></a>A Cortana Intelligence versenyek
@@ -29,12 +29,12 @@ ms.lasthandoff: 10/11/2017
 Versenyek gyakran feltett kérdésekre adott válaszok, lásd: [Microsoft Cortana Intelligence versenyek gyakran ismételt kérdések](competition-faq.md).
 
 ## <a name="discover"></a>Ismertetők
-  Tallózás a gyűjteményben versenyvizsgákhoz, nyissa meg a [gyűjtemény](http://gallery.cortanaintelligence.com), mutasson az egérrel való **további** tetején található a gyűjteményelem lapot, és válassza ki **versenyek**.
+A  **[versenyek](https://gallery.cortanaintelligence.com/competitions)**  lap ([aka.ms/CIComp](http://aka.ms/CIComp)) a legnépszerűbb versenyek listáját jeleníti meg.
 
 ![Válassza ki a gyűjtemény kezdőlap versenyek](./media/gallery-competitions/select-competitions-in-gallery.png)
 
- A  **[versenyek](https://gallery.cortanaintelligence.com/competitions)**  lap megjeleníti a legnépszerűbb versenyek listáját.
-Kattintson a **láthatja az összes** összes versenyek megtekintéséhez.
+ 
+ Kattintson a **láthatja az összes** összes versenyek megtekintéséhez.
 Ezen a lapon keresse meg a katalógusban az összes versenyek. Is kereshet; ehhez válassza a bal felső belépés keresési feltételek és a szűrési feltételeket.
 
  Kattintson a versenyt nyissa meg a verseny részleteit megjelenítő oldalra, és további információt. Ezen az oldalon megjegyzést, visszajelzést, vagy kérdései vannak a Megjegyzések szakasz keresztül. Barátok vagy a megosztás képességeivel LinkedIn-vagy Twitter munkatársak is megoszthatja azt. Is is e-mailben elküldi a más felhasználók számára a weblap megtekintéséhez a meghívott verseny mutató hivatkozást.

@@ -6,11 +6,11 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: raynew
-ms.openlocfilehash: 2b274244cc7b7fd0fc3eee22a57a51db77370370
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: b8075f0e1149a6fc5194347fc34e2a16d5eb2ffc
+ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="assessment-calculations"></a>Értékelési számítások
 
@@ -47,10 +47,11 @@ Az Azure-bA áttelepíteni kívánt gépeknek meg kell felelniük, Azure-követe
 
 Után a gép Azure alkalmas van megjelölve, Azure áttelepítése felel meg azt a Virtuálisgép-méretet, a következő feltételek alapján, az Azure-ban:
 
-- **Tárolási ellenőrzés**: Azure áttelepítése megkísérli minden a gép az Azure-ban a lemez csatlakoztatott lemez:-Azure áttelepítése szorozza meg az i/o másodpercenként (IOPS) a megerősítő tényezővel. Azt is Többszörösök minden lemez megerősítő tényező (a MB/s) átviteli sebesség. Ez biztosítja, hogy a hatályos IOPS és-átviteli sebességet. Ennek alapján, a lemez standard vagy prémium szintű Azure-ban Azure át rendeli.
-    - Ha a szolgáltatás nem találja a szükséges IOPS & átviteli lemezzel, az Azure-jelöli céljaira nem használható gépként.
-    - Ha úgy találja, hogy a megfelelő lemezek egy készlete, Azure áttelepítése kiválasztja a meglévők közül, amelyek támogatják a tárolási redundancia módját, valamint a assessment beállításokban megadott helyre.
-    - Ha több jogosult lemezek vannak, a másikat a legalacsonyabb költséget választja ki.
+- **Tárolási ellenőrzés**: Azure áttelepítése megkísérli minden a gép az Azure-ban a lemez csatlakoztatott lemez:
+    - Azure áttelepítése a megerősítő tényezővel szorozza meg az i/o másodpercenként (IOPS). Azt is Többszörösök minden lemez megerősítő tényező (a MB/s) átviteli sebesség. Ez biztosítja, hogy a hatályos IOPS és-átviteli sebességet. Ennek alapján, a lemez standard vagy prémium szintű Azure-ban Azure át rendeli.
+      - Ha a szolgáltatás nem találja a szükséges IOPS & átviteli lemezzel, az Azure-jelöli céljaira nem használható gépként.
+      - Ha úgy találja, hogy a megfelelő lemezek egy készlete, Azure áttelepítése kiválasztja a meglévők közül, amelyek támogatják a tárolási redundancia módját, valamint a assessment beállításokban megadott helyre.
+      - Ha több jogosult lemezek vannak, a másikat a legalacsonyabb költséget választja ki.
 - **Tárolási lemez teljesítmény**: [további](../azure-subscription-service-limits.md#storage-limits) kapcsolatos Azure korlátozza a lemez és virtuális gép.
 - **Lemez típusa**: Azure áttelepítése támogatja a csak a felügyelt lemezeket.
 - **Ellenőrizze a hálózati**: Azure áttelepítése próbál meg megtalálni egy Azure virtuális Gépen, amely képes támogatni a hálózati adapterek száma a helyi számítógépen.
@@ -73,6 +74,6 @@ Méretezési javaslatok befejezését követően a Azure áttelepítése az átt
 Az értékelés beállításaiban megadott pénznemben költségek jelennek meg. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Helyszíni VMware virtuális gépek értékelés beállítása](tutorial-assessment-vmware.md)

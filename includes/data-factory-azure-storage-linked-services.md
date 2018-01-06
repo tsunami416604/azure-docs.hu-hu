@@ -27,7 +27,10 @@ A közös hozzáférésű jogosultságkód (SAS) delegált hozzáférést biztos
 
 > [!IMPORTANT]
 > Az Azure Data Factory most csak támogatja **szolgáltatás SAS** , de nem fiók SAS. Lásd: [típusok a megosztott hozzáférési aláírásokkal](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures) kétféle típusú és létrehozására vonatkozó további információért. Megjegyzés: az Azure-portálon generable SAS URL-címet, vagy a Tártallózó egy fiók SAS, ami nem támogatott.
-> 
+
+> [!TIP]
+> Alább a tárfiók (a név felülírandó a hely-tartozó felhasználók számára, és engedélyezze a szükséges engedéllyel) szolgáltatás SAS-kód létrehozása a PowerShell-parancsokat hajthat végre:`$context = New-AzureStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
+> `New-AzureStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
 
 A társított Azure Storage SAS-szolgáltatás lehetővé teszi egy Azure Storage-fiók összekapcsolása egy Azure data factory egy közös hozzáférésű Jogosultságkód (SAS) használatával. Az adat-előállítóban minden/specifikus erőforrások (blobtárolóban /) a tárolóban lévő korlátozott/időhöz kötött hozzáférést biztosít. A következő táblázat a JSON-elemek szerepelnek Azure Storage SAS kapcsolódó szolgáltatásra vonatkozó leírást. 
 

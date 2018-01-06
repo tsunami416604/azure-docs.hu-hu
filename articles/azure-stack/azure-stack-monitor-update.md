@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: mabrigg
-ms.openlocfilehash: 55688ad4959d59e41dca9be2d00011e1d41ebd8c
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 96eebf340f13f2f5e9e922fee8032d04fce1d130
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="monitor-updates-in-azure-stack-using-the-privileged-endpoint"></a>Használatával a privilegizált végpont Azure verem frissítéseit
 
 *A következőkre vonatkozik: Azure verem integrált rendszerek*
 
-A privilegizált végpont Azure verem frissítési állapotának figyelésére, és folytatja a sikertelen frissítés esetén futtassa a legutóbbi sikeres lépésben használható. 
+Egy Azure verem frissítés futtató előrehaladásának figyeléséhez használhatja a kiemelt végpont, és folytatja a sikertelen frissítés esetén futtassa a legutóbbi sikeres lépésben kell az Azure-verem portal elérhetetlenné válik.  A verem Azure portál használata az ajánlott módszer a frissítések kezeléséhez a Azure verem.
 
 A következő új PowerShell-parancsmagok a kezeléséhez integrált Azure verem rendszerek 1710 frissítésének szerepelnek.
 
@@ -194,7 +194,7 @@ Invoke-Command -Session $pepSession -ScriptBlock { Resume-AzureStackUpdate }
 
 A privilegizált végpont összes ERCS virtuális gépet az Azure-verem környezetben érhető el. A kapcsolat nem egy magas rendelkezésre állású végpontra, mert tapasztalhatja alkalmi megszakításokat, figyelmeztető vagy hibaüzenetek. Ezek az üzenetek azt jelezheti, hogy a munkamenet meg lett szakítva, vagy hogy hiba történt a Dokumentumokat szolgáltatással folytatott kommunikáció. Ez az elvárt viselkedés. Próbálja megismételni a műveletet, néhány perc múlva, vagy kiemelt végpont új munkamenetet létrehozni egy más ERCS virtuális gépeket. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure-készletben frissítések kezelése](azure-stack-updates.md) 
 
