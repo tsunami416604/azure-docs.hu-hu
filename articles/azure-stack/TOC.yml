@@ -10,6 +10,8 @@
           href: azure-stack-asdk-release-notes.md
         - name: Integrált rendszerek kibocsátási megjegyzései
           items:
+            - name: 1712 frissítés
+              href: azure-stack-update-1712.md
             - name: 1711 frissítés
               href: azure-stack-update-1711.md
             - name: 1710 frissítés
