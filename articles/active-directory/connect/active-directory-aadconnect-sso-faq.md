@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/03/2018
+ms.date: 01/04/2018
 ms.author: billmath
-ms.openlocfilehash: a91e46d3aa0b04015b60837ae4aef020acd42279
-ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
+ms.openlocfilehash: bbaed9ee5db895810fac476ea5bf560800b0bdec
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyakran ismételt kérdések
 
@@ -38,11 +38,17 @@ Nem. Zökkenőmentes SSO csak érhető el a világméretű az Azure AD-példány
 
 ## <a name="what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso"></a>Milyen alkalmazások előnyeit `domain_hint` vagy `login_hint` zökkenőmentes SSO-paraméter képességét?
 
-A lista az alkalmazások, amelyek ezeket a paramétereket, és a meglévők közül, amelyek nem küldenek fordítása végezzük. Ha olyan alkalmazásokkal rendelkezik, érdekelt, ossza meg velünk megjegyzéseit szakaszában.
+A lista az alkalmazások, amelyek ezeket a paramétereket, és a meglévők közül, amelyek nem küldenek fordítása végezzük. Ha olyan alkalmazásokkal rendelkezik érdekli, ossza meg velünk megjegyzéseit szakaszában.
 
 ## <a name="does-seamless-sso-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>Zökkenőmentes egyszeri Bejelentkezést támogatja `Alternate ID` , a felhasználónév helyett `userPrincipalName`?
 
 Igen. Zökkenőmentes egyszeri Bejelentkezést támogatja `Alternate ID` konfigurálásakor az Azure AD Connectben látható felhasználónévként [Itt](active-directory-aadconnect-get-started-custom.md). Nem minden Office 365-alkalmazások támogatják a `Alternate ID`. Tekintse meg a támogatási nyilatkozattal az adott alkalmazás dokumentációját.
+
+## <a name="what-is-the-difference-between-the-single-sign-on-experience-provided-by-azure-ad-joinactive-directory-azureadjoin-overviewmd-and-seamless-sso"></a>Mi a különbség a között az egyszeri bejelentkezést által biztosított [az Azure AD Join](../active-directory-azureadjoin-overview.md) és zökkenőmentes SSO?
+
+[Az Azure AD Join](../active-directory-azureadjoin-overview.md) felhasználók számára lehetővé SSO, ha az eszközeiket az Azure ad-vel regisztrált. Ezek az eszközök nem feltétlenül kell lennie a tartományhoz. Egyszeri bejelentkezés használatával megadott *elsődleges frissítési jogkivonatokat* vagy *PRTs*, és nem a Kerberos. A felhasználói élmény a Windows 10 rendszerű eszközökön legoptimálisabb. Egyszeri bejelentkezés az Edge böngésző automatikusan történik. Azt is működik a Chrome egy bővítmény használatával.
+
+Az Azure AD Join és zökkenőmentes egyszeri Bejelentkezést a bérlő használhat. Ez a két funkció kiegészítik. Ha mindkét funkciók be vannak kapcsolva, majd egyszeri bejelentkezés az Azure AD Join elsőbbséget élvez zökkenőmentes egyszeri Bejelentkezést.
 
 ## <a name="i-want-to-register-non-windows-10-devices-with-azure-ad-without-using-ad-fs-can-i-use-seamless-sso-instead"></a>Kívánt Windows 10-eszközök regisztrálása az Azure ad-vel, az AD FS használata nélkül. Használható is zökkenőmentes SSO helyett?
 

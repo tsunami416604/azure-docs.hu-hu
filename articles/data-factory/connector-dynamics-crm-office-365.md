@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/21/2017
+ms.date: 01/05/2018
 ms.author: jingwang
-ms.openlocfilehash: b0906ef180359cef2f83042d9aa5a0f8296bac8a
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.openlocfilehash: b9b7091a8cb1de3eefcce77cbf82eedfcb33c787
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="copy-data-fromto-dynamics-365dynamics-crm-using-azure-data-factory"></a>Másolja az adatokat, vagy Dynamics 365 / Dynamics CRM, Azure Data Factory használatával
 
@@ -68,10 +68,10 @@ Dynamics társított szolgáltatás támogatott a következő tulajdonságokkal:
 | AuthenticationType | A hitelesítési típus Dynamics kiszolgálóhoz való csatlakozáshoz. Adja meg **"Office365"** Dynamics Online. | Igen |
 | felhasználónév | Adja meg a felhasználónevet a Dynamics való kapcsolódáshoz. | Igen |
 | jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. A jelszó be az Azure Key Vault, és a jelszót, mint a "AzureKeyVaultSecret" konfigurálása rendelkezik. A további [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). | Igen |
-| connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. | Nem a forrást, a fogadó Igen |
+| connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. | Nincs forrás, Igen a fogadó Ha forrás társított szolgáltatás nem rendelkezik IR |
 
 >[!IMPORTANT]
->Használatával adatait átmásolhatja Dynamics, explicit módon [hozzon létre egy Azure-IR](create-azure-integration-runtime.md#create-azure-ir) a következő példa a Dynamics, és a hivatkozott szolgáltatásban található társítható közelében hellyel rendelkező.
+>Ha az adatok másolásának **történő** Dynamics Azure integrációs futásidejű hajtható végre a példány nem használható alapértelmezett. A más word, ha a forrás társított szolgáltatás nem rendelkezik megadott IR, explicit módon [hozzon létre egy Azure-IR](create-azure-integration-runtime.md#create-azure-ir) a következő példa a Dynamics, és a Dynamics hivatkozott szolgáltatásban található társítható közelében hellyel rendelkező.
 
 **Példa: A Dynamics online Office365-hitelesítés használatával**
 

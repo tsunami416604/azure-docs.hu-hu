@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: v-donglo
-ms.openlocfilehash: 75b1862f288152fa2ff4619f807b86f94dc00e3f
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: ad18d82109e3048625f32d90af9677956350fb84
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="retrain-a-classic-web-service"></a>Klasszikus webszolgáltatás újratanítása
 A prediktív telepített webes szolgáltatás az alapértelmezett érték scoring-végpontja. Alapértelmezett végpontok szinkronban vannak az eredeti képzési és kísérletek pontozási tárolják, és ezért a betanított modell alapértelmezett végpont nem cserélhető le. A webszolgáltatás működik, hozzá kell adnia egy új végpont a webszolgáltatással. 
@@ -54,7 +54,7 @@ Pontozó végpontjaitól jelen mintakód is hozzáadhat [github-tárházban](htt
 ### <a name="use-the-microsoft-azure-web-services-portal-to-add-an-endpoint"></a>Végpont hozzáadása a Microsoft Azure Web Services portál használatával
 1. A Machine Learning Studio a bal oldali oszlopban kattintson a webszolgáltatásokat.
 2. A webes szolgáltatás irányítópultját alján kattintson **kezelése végpontok előzetes**.
-3. Kattintson az **Add** (Hozzáadás) parancsra.
+3. Kattintson a **Hozzáadás** parancsra.
 4. Írja be nevét és leírását, az új végpont. Válassza ki a naplózási szint, és hogy engedélyezve van-e mintaadatokat. További információt a naplózást, [naplózását a Machine Learning webszolgáltatások](web-services-logging.md).
 
 ## <a name="update-the-added-endpoints-trained-model"></a>A hozzáadott végpont betanított modell frissítése
@@ -116,7 +116,7 @@ A *apiKey* és a *végponti URL-cím* vonatkozó hívása végpont irányítópu
 
 Értékét a *neve* paraméterének *erőforrások* meg kell felelnie a prediktív kísérletté a mentett betanított modell erőforrás neve. Az erőforrásnév beolvasása:
 
-1. Jelentkezzen be a [klasszikus Azure portálon](https://manage.windowsazure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A bal oldali menüben kattintson **Machine Learning**.
 3. A név, kattintson a munkaterület majd **webszolgáltatások**.
 4. A név, kattintson a **nyilvántartásba modell [prediktív exp].** .
@@ -128,12 +128,12 @@ Ha befejezte a végpont frissítése a SAS-jogkivonat nem, el kell végeznie egy
 
 Amikor a kód sikeresen lefutott, az új végpont kell kezdődnie, körülbelül 30 másodpercet retrained modellt használja.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Az Átképezési API-kkal, frissítheti a betanított modell egy prediktív webszolgáltatás forgatókönyvek például engedélyezése:
 
 * Az új adatokat átképezési rendszeres modell.
 * Terjesztési ügyfelek-modell, azzal a céllal, hogy működik a modell használatával saját adataikat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [A klasszikus Azure Machine Learning webszolgáltatás átképezési hibaelhárítása](troubleshooting-retraining-models.md)
 

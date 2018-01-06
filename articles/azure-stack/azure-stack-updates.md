@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: mabrigg
-ms.openlocfilehash: 4355e7a8c220dea03df5eda54ed4e94d6ebc5c94
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 23b05909bda7785b45aeaeed0bd75a90de9ffe50
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="manage-updates-in-azure-stack-overview"></a>Kezelheti a frissítéseket a Azure verem – áttekintés
 
 *A következőkre vonatkozik: Azure verem integrált rendszerek*
 
-A Microsoft ki lesz integrált Azure verem rendszerek rendszeres ütemben történik, amely általában minden hónap, a negyedik keddjén fog esni frissítési csomagokat általánosan rendelkezésre álló indítása. Az OEM és kérdezze meg a megadott értesítési folyamat frissítési értesítések reach biztosításához a szervezet, vagy jelölje be a Concepts\Release notes\Integrated rendszerek adott verziókról további tudnivalókat.
+A Microsoft ki lesz integrált Azure verem rendszerek rendszeres ütemben történik, amely általában minden hónap, a negyedik keddjén fog esni frissítési csomagokat általánosan rendelkezésre álló indítása. Az OEM és kérdezze meg a megadott értesítési folyamat frissítési értesítések reach biztosításához a szervezet, vagy jelölje be a Overview\Release Notes\Integrated rendszerek adott verziókról további tudnivalókat.
 
 A Microsoft minden kiadása van kötegelt egyetlen frissítési csomag. Azure verem kezelőként könnyen importálhatja, telepítés és a figyelő a telepítési folyamat ezen a felügyeleti portálon-csomagok frissítése. 
 
@@ -62,7 +62,7 @@ A frissítés csempe Azure verem aktuális verzióját jeleníti meg. A frissít
  
 - Az a **régió felügyeleti** csempére, kattintson a régió nevét. Megtekintheti a jelenlegi verziót a **frissítés** csempére.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure verem karbantartása házirend](azure-stack-servicing-policy.md) 
 - [Azure-készletben régió kezelése](azure-stack-region-management.md)     

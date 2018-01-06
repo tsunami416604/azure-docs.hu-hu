@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 12/07/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: a48fc35574b13133ad28c5b58f4288ff390674cc
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 59c8932f7676a5388413baf2edb5d9e259769f93
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="azure-active-directory-risk-events"></a>Az Azure Active Directory kockázati események
 
@@ -36,7 +36,7 @@ Jelenleg Azure Active Directory észlelt kockázati események típusai hat:
 
 ![Kockázati esemény](./media/active-directory-reporting-risk-events/91.png)
 
-A a észlelt kockázati események történő betekintést az Azure AD-előfizetés van kötve. Ha az Azure AD Premium P1 edition (EMS E3 ajánlat szerepel), amelyek nem tartoznak a licenc jelentett **bejelentkezés az észlelt további kockázat**. Ez azt jelenti megjelenik egy bejelentkezési kockázat esemény észlelhető a következőnél: Azure AD Identity Protection előfizetőknek kizárólagos észlelések további kockázattal.
+A a észlelt kockázati események történő betekintést az Azure AD-előfizetés van kötve. Az Azure AD Premium P2 kiadásával kap minden alapul szolgáló észlelések részletesebb információt. Az Azure AD Premium P1 kiadásával, amelyek nem tartoznak a licenc jelennek meg a kockázat esemény **bejelentkezés az észlelt további kockázat**.
 
 
 Ez a témakör minden, a rendszer milyen kockázati események részletes áttekintést nyújt, és hogyan használhatja az Azure AD védő.

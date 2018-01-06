@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: c136016ba885ec9ba999cb72ee6c1d4fc8770a0b
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 5c18444b5a2767ccdd9a61a3bc9218fa4c0aac04
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Azure Automation runbookjai gyermek
 Az Azure Automationben egy más runbookok által használható önálló funkcióval újrafelhasználható, moduláris runbookok írása a legjobb. Gyakran a szülő runbook fel fogja hívni egy vagy több gyermek runbook végrehajtani a kért funkciót. A gyermek runbook hívásához két módja van, és mindegyik rendelkezik-e különböző módszer közötti különbségeket tisztában kell lennie, hogy megállapíthassa, amely a különböző forgatókönyvek esetén ajánlott lesz.
@@ -30,7 +30,7 @@ A beágyazottan indított runbook meghívásakor ugyanazt a feladatot, mint a sz
 
 Egy runbook közzétételekor runbookok gyermekrunbookoknak már közzé kell tenni. Ennek oka az Azure Automation runbookok társítást hoz létre, amikor gyermekrunbookkal. Ellenkező esetben a szülőrunbook közzététele sikeres megjelenik, de kivételt hoz létre, amikor elindul. Ez akkor fordul elő, ha a szülő runbook újbóli ahhoz, hogy a megfelelő hivatkozást a gyermekrunbookokra. Nem kell a szülő runbook ismételt közzététele, ha a gyermekrunbookokra bármelyikét van módosítani, mert a társítás fog létre lett hozva.
 
-A gyermekrunbook beágyazottan meghívott paraméterei bármilyen adattípusúak, többek között összetett objektumok lehet, és nincs nincs [JSON-szerializálás](automation-starting-a-runbook.md#runbook-parameters) , ha a runbook az Azure felügyeleti portál használatával, vagy a a Start-AzureRmAutomationRunbook parancsmag.
+A gyermekrunbook beágyazottan meghívott paraméterei bármilyen adattípusúak, többek között összetett objektumok lehet, és nincs nincs [JSON-szerializálás](automation-starting-a-runbook.md#runbook-parameters) , ha a runbook az Azure portál használatával, vagy a a Start-AzureRmAutomationRunbook parancsmag.
 
 ### <a name="runbook-types"></a>Runbook-típusok
 Milyen típusú hívhatják meg egymással:
@@ -83,7 +83,7 @@ A következő táblázat összefoglalja, a két módszer egy runbook másik runb
 | Automation-fiók |Szülő runbook használja a gyermek runbook ugyanazt az automation-fiókban. |Szülő runbook bármely azonos Azure-előfizetést, és még egy másik előfizetésben található automation-fiók a gyermekrunbook is használhat, ha a hozzá való csatlakozást. |
 | Közzététel |Gyermekrunbook közzé kell tenni, mielőtt a szülőrunbook közzététele. |Gyermekrunbook közzé kell tenni a szülőrunbook indítása előtt. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Runbook elindítása az Azure Automationben](automation-starting-a-runbook.md)
 * [Runbook-kimenet és üzenetek az Azure Automationben](automation-runbook-output-and-messages.md)
 

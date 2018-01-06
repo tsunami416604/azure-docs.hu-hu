@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/18/2017
 ms.author: trinadhk;pullabhk;
-ms.openlocfilehash: bc5b97192e0d4ad896d6d74a8745a3866d053a25
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 5ba381e366bea78e2d0ace3651c52b7c03e18275
+ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="questions-about-the-azure-vm-backup-service"></a>Kérdések az Azure VM Backup szolgáltatással kapcsolatban
 A cikk gyakori kérdésekre adott válaszokat tartalmazó szakaszaiban gyorsan áttekinthető az Azure VM Backup összetevőinek működése. Egyes válaszokban részletes információkat tartalmazó cikkekre mutató hivatkozások találhatók. Emellett egy fórumbejegyzésben is feltehet kérdéseket az Azure Backup szolgáltatással kapcsolatban a [vitafórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -51,6 +51,9 @@ Igen. Akkor is, ha egy gép leállását, biztonsági mentések használhatók, 
 
 ### <a name="can-i-cancel-an-in-progress-backup-job"></a>Egy folyamatban lévő biztonsági mentési feladatot is megszakítja?
 Igen. Megszakíthatja a biztonsági mentési feladatot, ha "Pillanatkép" szakaszában. **Egy feladat nem szakítható meg, ha folyamatban van az adatátvitelt pillanatképből**. 
+
+### <a name="i-enabled-resource-group-lock-on-my-backed-up-managed-disk-vms-will-my-backups-continue-to-work"></a>Erőforráscsoport lock bekapcsolva a biztonsági másolat felügyelt lemezes virtuális gépek A biztonsági mentések továbbra is működni fognak?
+A felhasználó zárolja az erőforráscsoportot, biztonsági mentési szolgáltatás esetén nem tudja törölni a régi helyreállítási pontokat. Emiatt új biztonsági másolatok meghiúsul, a háttérrendszerből meghatározott maximális 18 visszaállítási pontok maximális. Ha a biztonsági mentések sikertelenek belső hiba történt az RG zárolása után, kövesse az alábbi [eltávolítása a visszaállítási lépések pont gyűjtemény](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock).
 
 ## <a name="restore"></a>Visszaállítás
 ### <a name="how-do-i-decide-between-restoring-disks-versus-full-vm-restore"></a>A lemezek visszaállítását vagy a teljes virtuális gép visszaállítását válasszam?

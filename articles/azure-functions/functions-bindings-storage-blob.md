@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/27/2017
 ms.author: glenga
-ms.openlocfilehash: f00bda8e4700676e70f958eff511495f0ea564b1
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 923bc54d9edc9aecdf27c674d3020c2f82f03b3d
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Az Azure Functions az Azure Blob storage kötések
 
@@ -210,10 +210,12 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 ## <a name="trigger---usage"></a>Eseményindító - használat
 
-C# és C# a parancsfájlt, nyissa meg a blobadatokat metódusparaméter használatával `Stream paramName`. A C# parancsfájl `paramName` érték szerepel a `name` tulajdonsága *function.json*. Köthető a következő típusok:
+C# és C# a parancsfájlt, nyissa meg a blobadatokat metódusparaméter használatával `T paramName`. A C# parancsfájl `paramName` érték szerepel a `name` tulajdonsága *function.json*. Köthető a következő típusok:
 
-* `TextReader`
 * `Stream`
+* `TextReader`
+* `Byte[]`
+* `string`
 * `ICloudBlob`("inout" kötés irányban szükséges *function.json*)
 * `CloudBlockBlob`("inout" kötés irányban szükséges *function.json*)
 * `CloudPageBlob`("inout" kötés irányban szükséges *function.json*)
@@ -498,10 +500,16 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 C# osztálykönyvtárakhoz és C# a parancsfájlt, nyissa meg a blob metódusparaméter használatával `Stream paramName`. A C# parancsfájl `paramName` érték szerepel a `name` tulajdonsága *function.json*. Köthető a következő típusok:
 
-* `out string`
-* `TextWriter` 
-* `TextReader`
+* `TextReader`(csak a bemeneti)
+* `string`(csak a bemeneti)
+* `Byte[]`(csak a bemeneti)
+* `TextWriter`(csak a kimeneti)
+* `out string`(csak a kimeneti)
+* `out Byte[]`(csak a kimeneti)
+*  `CloudBlobStream`(csak a kimeneti)
 * `Stream`
+* `CloudBlobContainer`
+* `CloudBlobDirectory`
 * `ICloudBlob`("inout" kötés irányban szükséges *function.json*)
 * `CloudBlockBlob`("inout" kötés irányban szükséges *function.json*)
 * `CloudPageBlob`("inout" kötés irányban szükséges *function.json*)

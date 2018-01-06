@@ -1,6 +1,6 @@
 ---
-title: A Cortana Intelligence Galleryben |} Microsoft Docs
-description: "Ossza meg, majd és az annál a Cortana Intelligence Gallery analytics erőforrások felderítéséhez. Ismerje meg, mások, és a saját hozzájárulások tegye a közösségi."
+title: "Az Azure AI gyűjtemény |} Microsoft Docs"
+description: "Ossza meg, és Fedezze fel az elemzés erőforrások és az Azure Eszközintelligencia-katalógus több. Ismerje meg, mások, és a saját hozzájárulások tegye a közösségi."
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: roopalik;garye
-ms.openlocfilehash: 9da6cc9d306930fbec33ecebc85784d0d1e1532d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d60815e848277637e3d692a676dbde838b249754
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
-# <a name="share-and-discover-resources-in-the-cortana-intelligence-gallery"></a>Ossza meg, majd a Cortana Intelligence Gallery erőforrások felderítése
+# <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Ossza meg, majd az Azure Eszközintelligencia-katalógus erőforrások felderítéséhez
 [!INCLUDE [gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
 <!-- separating these 2 includes -->
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/11/2017
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ## <a name="what-can-i-find-in-the-gallery"></a>Mi található a katalógusban?
-A Cortana Intelligence Gallery erőforrásokat, amelyek segítségével a saját elemzési megoldások fejlesztése különböző tartalmaz.
+Az Azure Eszközintelligencia-katalógus erőforrásokat, amelyek segítségével a saját elemzési megoldások fejlesztése különböző tartalmaz.
 
 * **[Kísérletek](gallery-experiments.md)**  – a gyűjtemény tartalmazza az Azure Machine Learning Studióban kifejlesztő kísérletek széles választékát. Ezek közé gyors a koncepció igazolása kísérleteket, amely egy adott gépi tanulási technika, az összetett gépi tanulás problémák megoldásait teljesen fejlett bemutatása.
 * **[Jupyter notebookok](gallery-jupyter-notebooks.md)**  – Jupyter notebookok közé tartozik a kódot, az adatmegjelenítéseket, és egyetlen, interaktív dokumentáció vászonra.
@@ -48,7 +48,7 @@ Ezen alapszintű galéria-erőforrásai foghatók egybe logikailag néhány kül
 
 Végezetül  **[versenyek](gallery-competitions.md)**  befolyásolják a Közösség adatok scientsts a Cortana Intelligence Suite segítségével összetett problémák megoldására izgalmas lehetőséget kínálnak.
 
-![A Cortana Intelligence Gallery kezdőlap](./media/gallery-how-to-use-contribute-publish/gallery-home-page.png)
+![Az Azure AI gyűjtemény kezdőlap](./media/gallery-how-to-use-contribute-publish/gallery-home-page.png)
 
 ## <a name="discover-and-learn"></a>Fedezze fel, és ismerje meg
 Bárki, keresse meg és a különböző típusú erőforrások keresése a Microsoft és a speciális elemzés közösségi hozzájáruló gyűjteményben.

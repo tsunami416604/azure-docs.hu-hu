@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/22/2017
+ms.date: 01/05/2018
 ms.author: bryanla
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 74d732709e1cc3c97b485cc45e3a4e2c8e3cd11e
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.openlocfilehash: c5f71d27a9e07cc6d6a260b809e91aaa2a50270c
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="sign-in-using-a-vm-user-assigned-managed-service-identity-msi"></a>Jelentkezzen be egy virtuális Gépet, felhasználó által hozzárendelt felügyelt szolgáltatás identitásának (MSI)
 
@@ -51,7 +51,7 @@ Az alábbi parancsfájl bemutatja, hogyan:
 2. Azure Resource Manager hívja, és a virtuális gépek az Azure-régiót helyét. Parancssori felület jogkivonat beszerzése vagy használata automatikusan kezelése az Ön gondoskodik. Ügyeljen arra, hogy a virtuális gép nevét `<VM NAME>`, és a felhasználó által hozzárendelt MSI erőforrás-azonosító a `<MSI ID>`. Az MSI erőforrás-azonosító eredmény abban az esetben a `id` tulajdonság egy felhasználó által hozzárendelt MSI-fájl létrehozása során (lásd: [egy felhasználó által hozzárendelt felügyelt szolgáltatás identitásának (MSI) konfigurálja a virtuális gépek Azure parancssori felület használatával](msi-qs-configure-cli-windows-vm.md) példákat a `az identity create` parancs ).
 
     ```azurecli
-    az login -–msi –u <MSI ID>
+    az login --msi –u <MSI ID>
    
     vmLocation=$(az resource list -n <VM NAME> --query [*].location --out tsv)
     echo The VM region location is $vmLocation

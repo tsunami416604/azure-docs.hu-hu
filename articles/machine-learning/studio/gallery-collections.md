@@ -1,6 +1,6 @@
 ---
-title: "A Cortana Intelligence Gallery gyűjtemények |} Microsoft Docs"
-description: "Fedezze fel, és megoszthatja a Cortana Intelligence Gallery gyűjtemények."
+title: "Az Azure AI gyűjtemény gyűjtemények |} Microsoft Docs"
+description: "Fedezze fel, és megoszthatja a gyűjtemények Azure Eszközintelligencia-katalógus."
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: roopalik;garye
-ms.openlocfilehash: 9ca9b45bf977a562982535feb4093fcee0f10a05
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a90686d42aa3187e358d9ba3c8c5c3fb579a1d5e
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
-# <a name="discover-and-share-collections-in-cortana-intelligence-gallery"></a>Fedezze fel, és megoszthatja a Cortana Intelligence Gallery gyűjtemények
+# <a name="discover-and-share-collections-in-azure-ai-gallery"></a>Fedezze fel, és gyűjtemények Azure Eszközintelligencia-katalógus megosztása
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
 ## <a name="collections"></a>Gyűjtemények
@@ -71,7 +71,7 @@ Például egy olyan témával kapcsolatban a gyűjtemény elemeit csoportosítha
     ![Válassza ki a "Public" vagy "Fel nem sorolt"](./media/gallery-collections/create-collection-page-3.png)
 7. Kattintson a **Létrehozás** gombra.
 
-A gyűjtemény jelenleg a Cortana Intelligence Gallery. A gyűjtemények szerepel a fiók lapon a **gyűjtemény** fülre.
+A gyűjtemény már Azure Eszközintelligencia-katalógus. A gyűjtemények szerepel a fiók lapon a **gyűjtemény** fülre.
 
 ### <a name="add-items-to-a-collection"></a>Elemek hozzáadására a gyűjteményhez
 Elemek hozzáadására a gyűjteményhez, nyissa meg a gyűjteményt, jelölje ki **szerkesztése**, majd válassza ki **elem hozzáadása**.

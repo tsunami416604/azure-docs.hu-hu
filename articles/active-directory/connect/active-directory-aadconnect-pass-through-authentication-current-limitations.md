@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2017
+ms.date: 01/04/2018
 ms.author: billmath
-ms.openlocfilehash: 98de47eab2636277acfd6393a7574ae18487bc6a
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 02faf589db532222208ca53dd97b8d7a8ed92965
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Az Azure Active Directory átmenő hitelesítést: Aktuális korlátozások
 
@@ -45,6 +45,7 @@ A következő forgatókönyvek _nem_ támogatja:
 - A multi-factor Authentication alkalmazásjelszókat.
 - A felhasználók észlelési [hitelesítő adatok szivárgását](../active-directory-reporting-risk-events.md#leaked-credentials).
 - Azure AD tartományi szolgáltatások Jelszókivonat-szinkronizálást a bérlő engedélyezni kell. Ezért az átmenő hitelesítést használó bérlők _csak_ nem működik az Azure AD tartományi szolgáltatásokat igénylő forgatókönyvek.
+- Áteresztő hitelesítés nincs integrálva a [az Azure AD Connect Health](../connect-health/active-directory-aadconnect-health.md).
 
 >[!IMPORTANT]
 >Nem támogatott forgatókönyvek megoldás _csak_, engedélyezze a Jelszókivonat-szinkronizálást a a [választható szolgáltatások](active-directory-aadconnect-get-started-custom.md#optional-features) az Azure AD Connect varázsló lapján.
@@ -52,7 +53,7 @@ A következő forgatókönyvek _nem_ támogatja:
 >[!NOTE]
 Jelszókivonat-szinkronizálást engedélyezése lehetővé teszi az feladatátvételi hitelesítési lehetőséget, ha a helyszíni infrastruktúra megszakad. Nincs automatikus a feladatátvétel az áteresztő hitelesítés az Active Directory Jelszókivonat-szinkronizálást. Váltás a bejelentkezési módszer segítségével manuálisan az Azure AD Connect lesz szüksége. Ha az Azure AD Connect szolgáltatást futtató kiszolgáló leáll, szüksége lesz súgó a Microsoft Support áteresztő hitelesítés kikapcsolása.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Gyors üzembe helyezési](active-directory-aadconnect-pass-through-authentication-quick-start.md):, amelyekből megismerheti az Azure AD átmenő hitelesítéssel.
 - [Intelligens zárolás](active-directory-aadconnect-pass-through-authentication-smart-lockout.md): megtudhatja, hogyan konfigurálja az intelligens zárolás funkció a bérlő felhasználói fiókok védelme.
 - [Műszaki mélyreható](active-directory-aadconnect-pass-through-authentication-how-it-works.md): a csatlakoztatott hitelesítési szolgáltatás működésének megismerése.

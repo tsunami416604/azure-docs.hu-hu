@@ -1,5 +1,5 @@
 ---
-title: "Az Azure Functions külső táblakötéssel (előzetes verzió) |} Microsoft Docs"
+title: "Az Azure Functions (kísérleti) külső tábla kötése"
 description: "A külső tábla kötések az Azure Functions használatával"
 services: functions
 documentationcenter: 
@@ -14,24 +14,28 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: alkarche
-ms.openlocfilehash: 1d983a6924a939a8eb89355fab0c90596dbf2ed3
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: 8a4358fa67e45d0b7a2df1519d649099b5ef5850
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 01/05/2018
 ---
-# <a name="azure-functions-external-table-binding-preview"></a>Az Azure Functions külső táblakötéssel (előzetes verzió)
-Ez a cikk bemutatja, hogyan kezelheti a Szolgáltatottszoftver-szolgáltatók (például a Sharepoint, a Dynamics) táblázatos adatok a függvényen belül beépített definiált kötésekkel. Az Azure Functions bemeneti és kimeneti kötések támogatja a külső táblákhoz.
+# <a name="external-table-binding-for-azure-functions-experimental"></a>Az Azure Functions (kísérleti) külső tábla kötése
+
+Ez a cikk azt ismerteti, hogyan táblázatos adatok a Szolgáltatottszoftver-szolgáltatók, köztük a Sharepoint és Dynamics, az Azure Functions használatát. Azure Functions támogatja bemeneti és kimeneti kötések a külső táblákhoz.
+
+> [!IMPORTANT]
+> A külső tábla kötés kísérleti, és előfordulhat, hogy soha nem érik el az általánosan rendelkezésre álló (GA) állapotát. Csak az Azure-ban tartalmazza 1.x működik, és nincs tervbe veheti fel az Azure Functions 2.x. A Szolgáltatottszoftver-szolgáltatók adatok elérését igénylő forgatókönyvek esetén érdemes [a logic apps függvényekké hívó](functions-twitter-email.md).
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 ## <a name="api-connections"></a>API-kapcsolatok
 
-Tábla kötések használja ki a 3. fél Szolgáltatottszoftver-szolgáltatók való hitelesítéshez szükséges külső API-kapcsolatokat. 
+Tábla kötések külső API-kapcsolatok hitelesítéséhez külső Szolgáltatottszoftver-szolgáltatókkal használja ki. 
 
-A kötés hozzárendelésekor új API-kapcsolatot létrehozni, vagy belül ugyanabban az erőforráscsoportban meglévő API-kapcsolat használata
+A kötés hozzárendelésekor hozzon létre egy új API-kapcsolat, vagy belül ugyanabban az erőforráscsoportban meglévő API-kapcsolat használata.
 
-### <a name="supported-api-connections-tables"></a>Támogatott API-kapcsolatok (tábla) s
+### <a name="available-api-connections-tables"></a>Lehetséges API-kapcsolatok (táblák)
 
 |Összekötő|Eseményindító|Input (Bemenet)|Kimenet|
 |:-----|:---:|:---:|:---:|
@@ -52,26 +56,35 @@ A kötés hozzárendelésekor új API-kapcsolatot létrehozni, vagy belül ugyan
 |UserVoice||x|x
 |Zendesk||x|x
 
-
 > [!NOTE]
-> Külső tábla kapcsolatok is használható a [Azure Logic Apps](https://docs.microsoft.com/azure/connectors/apis-list)
+> Külső tábla kapcsolatok is használható a [Azure Logic Apps](https://docs.microsoft.com/azure/connectors/apis-list).
 
-### <a name="creating-an-api-connection-step-by-step"></a>Az API-kapcsolat létrehozása: lépésről lépésre
+## <a name="creating-an-api-connection-step-by-step"></a>Az API-kapcsolat létrehozása: lépésről lépésre
 
-1. Hozzon létre egy függvényt > egyéni függvény ![egyéni függvény létrehozása](./media/functions-bindings-storage-table/create-custom-function.jpg)
-1. A forgatókönyv `Experimental`  >  `ExternalTable-CSharp` sablon > hozzon létre egy új `External Table connection` 
- ![bemeneti sablon kiválasztása](./media/functions-bindings-storage-table/create-template-table.jpg)
-1. Válassza ki azt a Szolgáltatottszoftver-szolgáltatót > Válassza ki vagy hozzon létre kapcsolatot ![konfigurálása Szolgáltatottszoftver-kapcsolat](./media/functions-bindings-storage-table/authorize-API-connection.jpg)
-1. Válassza ki az API-kapcsolatot > a függvény létrehozása ![tábla függvény létrehozása](./media/functions-bindings-storage-table/table-template-options.jpg)
-1. Válassza ki`Integrate` > `External Table`
-    1. Állítsa be a kapcsolatot a céloldali tábla használja. Ezek a beállítások nagyon Szolgáltatottszoftver-szolgáltatók között lesz. -E az alábbi vázlat [adatforrás-beállítások](#datasourcesettings)
-![konfigurálása tábla](./media/functions-bindings-storage-table/configure-API-connection.jpg)
+1. A függvény alkalmazás az Azure portál lapját, válassza ki a plusz jelre (**+**) létrehozza a függvényt.
 
-## <a name="usage"></a>Használat
+1. Az a **forgatókönyv** mezőben válassza **kísérleti**.
+
+1. Válassza ki **külső tábla**.
+
+1. Válasszon egy nyelvet.
+
+2. A **külső tábla kapcsolat**, jelöljön ki egy létező kapcsolatot vagy **új**.
+
+1. Új kapcsolat, adja meg a beállításokat, és válassza ki **engedélyezés**.
+
+1. Válassza ki **létrehozása** a függvény létrehozásához.
+
+1. Válassza ki **integrálni > külső tábla**.
+
+1. Állítsa be a kapcsolatot a céloldali tábla használja. Ezeket a beállításokat a Szolgáltatottszoftver-szolgáltatók között változhat. Példák a következő szakaszban szerepelnek.
+
+## <a name="example"></a>Példa
 
 Ebben a példában az azonosító, a Vezetéknév és a Vezetéknév oszlopokat "Ügyfél" nevű tábla kapcsolódik. A kód a Contact entitásokat a táblázat sorolja fel, és a vezeték- és keresztneveket naplózza.
 
-### <a name="bindings"></a>Kötések
+Itt a *function.json* fájlt:
+
 ```json
 {
   "bindings": [
@@ -93,29 +106,8 @@ Ebben a példában az azonosító, a Vezetéknév és a Vezetéknév oszlopokat 
   "disabled": false
 }
 ```
-`entityId`a tábla kötések üresnek kell lennie.
 
-`ConnectionAppSettingsKey`az Alkalmazásbeállítás, amely tárolja az API-kapcsolati karakterlánc azonosítja. Az Alkalmazásbeállítás automatikusan létrejön, amikor hozzáadja az API-kapcsolat az integráció felhasználói felületén.
-
-A táblázatos összekötő adatkészletek biztosít, és minden egyes táblát tartalmaz. Az alapértelmezett adatkészlet neve nem "alapértelmezett". A DataSet adatkészlet és a táblázat a különböző Szolgáltatottszoftver-szolgáltatók címeit az alábbiak:
-
-|Összekötő|Adathalmaz|Tábla|
-|:-----|:---|:---| 
-|**SharePoint**|Hely|SharePoint-lista
-|**SQL**|Adatbázis|Tábla 
-|**Google lap**|Számolótábla|Munkalap 
-|**Excel**|Excel-fájl|Táblázat 
-
-<!--
-See the language-specific sample that copies the input file to the output file.
-
-* [C#](#incsharp)
-* [Node.js](#innodejs)
-
--->
-<a name="incsharp"></a>
-
-### <a name="usage-in-c"></a>A C# szintaxis #
+A C# parancsfájl kód itt látható:
 
 ```cs
 #r "Microsoft.Azure.ApiHub.Sdk"
@@ -154,25 +146,9 @@ public static async Task Run(string input, ITable<Contact> table, TraceWriter lo
 }
 ```
 
-<!--
-<a name="innodejs"></a>
+### <a name="sql-server-data-source"></a>SQL Server-adatforrás
 
-### Usage in Node.js
-
-```javascript
-module.exports = function(context) {
-    context.log('Node.js Queue trigger function processed', context.bindings.myQueueItem);
-    context.bindings.myOutputFile = context.bindings.myInputFile;
-    context.done();
-};
-```
--->
-<a name="datasourcesettings"></a>
-##Az adatforrás-beállítások
-
-### <a name="sql-server"></a>SQL Server
-
-A parancsfájl létrehozása és feltöltése az ügyfél tábla nem éri el. dataSetName az "alapértelmezett".
+Létrehoz egy táblát az SQL Server használata ebben a példában, hogy ez a parancsfájl. `dataSetName`az "alapértelmezett".
 
 ```sql
 CREATE TABLE Contact
@@ -191,11 +167,36 @@ INSERT INTO Contact(Id, LastName, FirstName)
 GO
 ```
 
-### <a name="google-sheets"></a>Google Táblázatok
-A Google Docs, hozzon létre egy táblázatot nevű `Contact`. Az összekötő számolótábla megjelenítési név nem használható. A belső nevét (félkövér) kell használható dataSetName, például: `docs.google.com/spreadsheets/d/`  **`1UIz545JF_cx6Chm_5HpSPVOenU4DZh4bDxbFgJOSMz0`**  adja hozzá az oszlopnevek `Id`, `LastName`, `FirstName` első sorának, majd töltse fel a következő sorokban adatokat.
+### <a name="google-sheets-data-source"></a>Google-lapok adatforrás
+
+Ebben a példában a Google Docs használandó tábla létrehozásához hozzon létre egy táblázatot nevű `Contact`. Az összekötő számolótábla megjelenítési név nem használható. A belső nevét (félkövér) kell használható dataSetName, például: `docs.google.com/spreadsheets/d/`  **`1UIz545JF_cx6Chm_5HpSPVOenU4DZh4bDxbFgJOSMz0`**  adja hozzá az oszlopnevek `Id`, `LastName`, `FirstName` első sorának, majd töltse fel a következő sorokban adatokat.
 
 ### <a name="salesforce"></a>Salesforce
-dataSetName az "alapértelmezett".
+
+Ez a példa használata Salesforce, `dataSetName` "alapértelmezett".
+
+## <a name="configuration"></a>Konfiguráció
+
+Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdonságok a *function.json* fájlt.
+
+|Function.JSON tulajdonság | Leírás|
+|---------|----------------------|
+|**típusa** | meg kell `apiHubTable`. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon.|
+|**iránya** | meg kell `in`. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon. |
+|**név** | Esemény-elem funkciókódot jelölő neve. | 
+|**kapcsolat**| Az Alkalmazásbeállítás, amely tárolja az API-kapcsolati karakterlánc azonosítja. Az Alkalmazásbeállítás automatikusan létrejön, amikor hozzáadja az API-kapcsolat az integráció felhasználói felületén.|
+|**dataSetName**|A tábla olvasni tartalmazó adatkészlet nevét.|
+|**Táblanév**|A tábla neve|
+|**entityid beállítást**|A tábla kötések üresnek kell lennie.
+
+A táblázatos összekötő adatkészletek biztosít, és minden egyes táblát tartalmaz. Az alapértelmezett adatkészlet neve nem "alapértelmezett". A DataSet adatkészlet és a táblázat a különböző Szolgáltatottszoftver-szolgáltatók címeit az alábbiak:
+
+|Összekötő|Adathalmaz|Tábla|
+|:-----|:---|:---| 
+|**SharePoint**|Hely|SharePoint-lista
+|**SQL**|Adatbázis|Tábla 
+|**Google lap**|Számolótábla|Munkalap 
+|**Excel**|Excel-fájl|Táblázat 
 
 ## <a name="next-steps"></a>További lépések
 

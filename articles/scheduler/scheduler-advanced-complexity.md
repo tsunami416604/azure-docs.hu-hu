@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/18/2016
 ms.author: deli
-ms.openlocfilehash: 20c3e3c1cb85308cad47054c2efa87f61cae0f22
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e1e45d394a4c442a4fb255ed6d838a589e98860e
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="how-to-build-complex-schedules-and-advanced-recurrence-with-azure-scheduler"></a>Hogyan hozhat létre ütemezése összetett és speciális ismétlődési az Azure Schedulerrel
 ## <a name="overview"></a>Áttekintés
@@ -59,7 +59,7 @@ Létrehozni egy egyszerű ütemezés használata a [Azure Scheduler REST API](ht
         "recurrence":                     // optional
         {
             "frequency": "week",     // can be "year" "month" "day" "week" "hour" "minute"
-            "interval": 1,                // optional, how often to fire (default to 1)
+            "interval": 1,                // how often to fire
             "schedule":                   // optional (advanced scheduling specifics)
             {
                 "weekDays": ["monday", "wednesday", "friday"],
@@ -90,10 +90,10 @@ Ez az áttekintés után most tárgyalják részletesen ezeket az elemeket.
 | **JSON-név** | **Érték típusa** | **Kötelező megadni?** | **Alapértelmezett érték** | **Érvényes értékek** | **Példa** |
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | ***Kezdő időpont*** |Karakterlánc |Nem |None |ISO-8601 dátum-idők |<code>"startTime" : "2013-01-09T09:30:00-08:00"</code> |
-| ***Ismétlődés*** |Objektum |Nem |None |Recurrence objektum |<code>"recurrence" : { "frequency" : "monthly", "interval" : 1 }</code> |
-| ***gyakoriság*** |Karakterlánc |Igen |None |"perc", "hour", "day", "hetente", "honap" |<code>"frequency" : "hour"</code> |
-| ***időköz*** |Szám |Nem |1 |1 és 1000 között. |<code>"interval":10</code> |
-| ***Befejezés időpontja*** |Karakterlánc |Nem |None |Egy jövőbeli időpontot jelölő dátum-idő |<code>"endTime" : "2013-02-09T09:30:00-08:00"</code> |
+| ***Ismétlődés*** |Objektum |Nem |Nincs |Recurrence objektum |<code>"recurrence" : { "frequency" : "monthly", "interval" : 1 }</code> |
+| ***gyakoriság*** |Karakterlánc |Igen |Nincs |"perc", "hour", "day", "hetente", "honap" |<code>"frequency" : "hour"</code> |
+| ***időköz*** |Szám |Igen |Nincs |1 és 1000 között. |<code>"interval":10</code> |
+| ***Befejezés időpontja*** |Karakterlánc |Nem |Nincs |Egy jövőbeli időpontot jelölő dátum-idő |<code>"endTime" : "2013-02-09T09:30:00-08:00"</code> |
 | ***száma*** |Szám |Nem |None |>= 1 |<code>"count": 5</code> |
 | ***ütemezés*** |Objektum |Nem |None |Schedule objektum |<code>"schedule" : { "minute" : [30], "hour" : [8,17] }</code> |
 
@@ -125,11 +125,11 @@ A következő táblázat ismerteti *ütemezés* elemek részletei.
 
 | **JSON-név** | **Leírás** | **Érvényes értékek** |
 |:--- |:--- |:--- |
-| **perc** |A feladat fut, amelyen az óra perc |<ul><li>Egész szám, vagy</li><li>Egész számok tömbje</li></ul> |
-| **üzemideje (óra)** |A feladat fut, amelyen napot |<ul><li>Egész szám, vagy</li><li>Egész számok tömbje</li></ul> |
-| **hétköznapokon** |A feladat fut a hét nap. Csak heti gyakoriság mellett adható meg. |<ul><li>"Hétfő", "Kedd", "Szerda", "Csütörtök", "Péntek", "Szombat" vagy "Vasárnap"</li><li>Az előző értékek bármelyikének tömbje (a tömb maximális mérete 7)</li></ul>*Nem* kis-és nagybetűket |
+| **perc** |A feladat fut, amelyen az óra perc |<ul><li>Egész számok tömbje</li></ul> |
+| **üzemideje (óra)** |A feladat fut, amelyen napot |<ul><li>Egész számok tömbje</li></ul> |
+| **hétköznapokon** |A feladat fut a hét nap. Csak heti gyakoriság mellett adható meg. |<ul><li>Bármely tömb az alábbi értékek (maximális tömbméret 7)<ul><li>"Hétfő"</li><li>"Kedd"</li><li>"Szerda"</li><li>"Csütörtök"</li><li>"Péntek"</li><li>"Szombat"</li><li>"Vasárnap"</li></ul></li></ul>*Nem* kis-és nagybetűket |
 | **monthlyOccurrences** |Meghatározza, hogy a feladat a hónap melyik napjain fog futni. Csak havi gyakoriság mellett adható meg. |<ul><li>MonthlyOccurrence objektumokból álló tömb:</li></ul> <pre>{ "day": *day*,<br />  "occurrence": *occurrence*<br />}</pre><p> *nap* -e a hét napja, a feladat fut, pl. {vasárnap} van-e a hónap minden vasárnap. Kötelező.</p><p>Az előfordulási érték *előfordulási* során a hónap napjának pl. {vasárnap, -1} hónap utolsó vasárnap. Választható.</p> |
-| **monthDays** |A feladat fut a hónap napja. Csak havi gyakoriság mellett adható meg. |<ul><li>Bármely értéke < = -1 és > =-31.</li><li>Bármely érték > = 1 és < = 31.</li><li>A fenti értékek tömbje</li></ul> |
+| **monthDays** |A feladat fut a hónap napja. Csak havi gyakoriság mellett adható meg. |<ul><li>Értékek alatt álló tömb</li><ul><li>Bármely értéke < = -1 és > =-31.</li><li>Bármely érték > = 1 és < = 31.</li></ul></ul> |
 
 ## <a name="examples-recurrence-schedules"></a>Példák: Ismétlődési ütemezés
 A következő példák különböző ismétlődés ütemezésének – az ütemterv objektum és az alárendelt elemei.

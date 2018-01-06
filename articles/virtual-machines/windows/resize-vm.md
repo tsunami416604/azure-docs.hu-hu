@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2016
 ms.author: drewm
-ms.openlocfilehash: 742efd1496de9ce76b1e5636297ef30f546bd108
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a3d4b6e5db8835b23b014b344f0c9daae68adc09
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="resize-a-windows-vm"></a>A Windows virtuális gép átméretezése
 Ez a cikk bemutatja, hogyan méretezze át egy Windows virtuális Gépet, a Resource Manager üzembe helyezési modellel Azure Powershell használatával létrehozni.
@@ -35,7 +35,7 @@ Miután létrehozta a virtuális gép (VM), méretezhető a virtuális gép felf
 2. Ha a kívánt méretet, a következő parancsokat a virtuális gép átméretezésével. Ha nem jelenik meg a kívánt méretet, folytassa a 3. lépésre.
    
     ```powershell
-    $vm = Get-AzureRmVM -ResourceGroupName <resourceGroupName> -VMName <vmName>
+    $vm = Get-AzureRmVM -ResourceGroupName <resourceGroupName> -Name <vmName>
     $vm.HardwareProfile.VmSize = "<newVMsize>"
     Update-AzureRmVM -VM $vm -ResourceGroupName <resourceGroupName>
     ```
@@ -44,8 +44,8 @@ Miután létrehozta a virtuális gép (VM), méretezhető a virtuális gép felf
     ```powershell
     $rgname = "<resourceGroupName>"
     $vmname = "<vmName>"
-    Stop-AzureRmVM -ResourceGroupName $rgname -VMName $vmname -Force
-    $vm = Get-AzureRmVM -ResourceGroupName $rgname -VMName $vmname
+    Stop-AzureRmVM -ResourceGroupName $rgname -Name $vmname -Force
+    $vm = Get-AzureRmVM -ResourceGroupName $rgname -Name $vmname
     $vm.HardwareProfile.VmSize = "<newVMSize>"
     Update-AzureRmVM -VM $vm -ResourceGroupName $rgname
     Start-AzureRmVM -ResourceGroupName $rgname -Name $vmname
@@ -67,7 +67,7 @@ Ha egy virtuális gép rendelkezésre állási csoportba új mérete nem érhet�
 2. Ha a kívánt méretet, a következő parancsokat a virtuális gép átméretezésével. Ha nem szerepel, folytassa a 3.
    
     ```powershell
-    $vm = Get-AzureRmVM -ResourceGroupName <resourceGroupName> -VMName <vmName>
+    $vm = Get-AzureRmVM -ResourceGroupName <resourceGroupName> -Name <vmName>
     $vm.HardwareProfile.VmSize = "<newVmSize>"
     Update-AzureRmVM -VM $vm -ResourceGroupName <resourceGroupName>
     ```
@@ -101,6 +101,6 @@ Ha egy virtuális gép rendelkezésre állási csoportba új mérete nem érhet�
    }
    ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További méretezhetőséget, a virtuális gép több példányának futtatása, és kiterjesztése. További információkért lásd: [automatikus méretezése a Windows-alapú gépek egy virtuálisgép-méretezési csoportban lévő](../../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md).
 

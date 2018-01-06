@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/07/2017
+ms.date: 01/05/2018
 ms.author: jingwang
-ms.openlocfilehash: a80a947f5dc6176aaa6334a10eabf1a2b4be5847
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 0275a7b3965a7691ae396c9dbb2f164a9a47a3d4
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="copy-data-to-or-from-azure-table-using-azure-data-factory"></a>Másolja az adatokat, vagy az Azure Data Factory használatához Azure táblából
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -81,7 +81,10 @@ Egy közös hozzáférésű Jogosultságkód (SAS) delegált hozzáférést bizt
 
 > [!IMPORTANT]
 > Az Azure Data Factory most csak támogatja **szolgáltatás SAS** , de nem fiók SAS. Lásd: [típusok a megosztott hozzáférési aláírásokkal](../storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures) kétféle típusú és létrehozására vonatkozó további információért. Az Azure-portálon generable SAS URL-cím vagy Tártallózó egy fiók SAS, ami nem támogatott.
->
+
+> [!TIP]
+> Alább a tárfiók (a név felülírandó a hely-tartozó felhasználók számára, és engedélyezze a szükséges engedéllyel) szolgáltatás SAS-kód létrehozása a PowerShell-parancsokat hajthat végre:`$context = New-AzureStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
+> `New-AzureStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
 
 Szolgáltatás SAS-hitelesítés használatához a következő tulajdonságok támogatottak:
 
@@ -273,5 +276,5 @@ Ha megköveteli az adatok & Azure táblából, a következő [Azure Table szolg�
 | Edm.Int64 |Int64 |Egy 64 bites egész számot. |
 | Edm.String |Karakterlánc |Az UTF-16 kódolású érték. Karakterlánc-értékek legfeljebb 64 KB lehet. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats).

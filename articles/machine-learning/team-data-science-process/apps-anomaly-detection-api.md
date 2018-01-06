@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/05/2017
 ms.author: alok;rotimpe
-ms.openlocfilehash: 519ac38c484b9631a3fc096a17be026e9378a178
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: e2adfffa00a726fe2c452c25dd777ef054319b04
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Számítógép-tanulási Anomáliadetektálás API
 ## <a name="overview"></a>Áttekintés
@@ -44,7 +44,7 @@ Az Anomáliadetektálás elérhető az első lépésekhez hasznos eszközök tar
 >
 
 ## <a name="api-deployment"></a>API-telepítés
-Ahhoz, hogy az API-t, telepítenie kell azt az Azure-előfizetéshez ahol tárolható egy Azure Machine Learning webszolgáltatásként.  Az ehhez a [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2).  Ezzel telepít két AzureML-webszolgáltatásokat (és a kapcsolódó erőforrások) az Azure-előfizetés - egy, a szezonalitás értékének észlelési közüli és egy szezonalitás értékének észlelési nélkül.  A telepítés befejezése után lesz az API-kat kezelheti a [AzureML webszolgáltatások](https://services.azureml.net/webservices/) lap.  Ezen az oldalon lesz találhatók a végpontok helyére, API-kulcsokat, valamint mintakódot az API felület meghívásakor.  Részletes útmutatás érhető el [Itt](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice).
+Ahhoz, hogy az API-t, telepítenie kell azt az Azure-előfizetéshez ahol tárolható egy Azure Machine Learning webszolgáltatásként.  Az ehhez a [Azure Eszközintelligencia-katalógus](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2).  Ezzel telepít két AzureML-webszolgáltatásokat (és a kapcsolódó erőforrások) az Azure-előfizetés - egy, a szezonalitás értékének észlelési közüli és egy szezonalitás értékének észlelési nélkül.  A telepítés befejezése után lesz az API-kat kezelheti a [AzureML webszolgáltatások](https://services.azureml.net/webservices/) lap.  Ezen az oldalon lesz találhatók a végpontok helyére, API-kulcsokat, valamint mintakódot az API felület meghívásakor.  Részletes útmutatás érhető el [Itt](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice).
 
 ## <a name="scaling-the-api"></a>Az API-t skálázás
 Alapértelmezés szerint a központi telepítés lesz egy ingyenes fejlesztési és tesztelési célú számlázási tervet, amely 1000 tranzakciók/és 2 számítási órák/hónap.  Frissíthet egy másik terv igényeinek megfelelően.  A különböző tervek az árakkal kapcsolatos információk [Itt](https://azure.microsoft.com/en-us/pricing/details/machine-learning/) "Éles webes API-k árképzési" alatt.
@@ -122,11 +122,11 @@ Részletesebb információ ezen bemeneti paraméterek, az alábbi táblázatban 
 | --- | --- | --- | --- | --- | --- |
 | detectors.historyWindow |Anomáliadetektálási pontszám számításhoz használt előzményeket (az adatpontok száma) |500 |egész szám |10-2000 |Idősorozat függő |
 | detectors.spikesdips | Hogy-e csak napra, csak immerzióban vagy mindkettő |Mindkettő |számbavétele |Mindkét, teljesítményt, immerzióban |Mindkettő |
-| bileveldetector.Sensitivity |Érzékenységi kétirányú szint módosítása érzékelő. |3.25 |Dupla |None |(A kisebb értékek jelenti érzékenyebb) 3,25 5 |
-| trenddetector.Sensitivity |Érzékenysége a pozitív trend érzékelő. |3.25 |Dupla |None |(A kisebb értékek jelenti érzékenyebb) 3,25 5 |
+| bileveldetector.Sensitivity |Érzékenységi kétirányú szint módosítása érzékelő. |3.25 |duplaszó |Nincs |(A kisebb értékek jelenti érzékenyebb) 3,25 5 |
+| trenddetector.Sensitivity |Érzékenysége a pozitív trend érzékelő. |3.25 |duplaszó |Nincs |(A kisebb értékek jelenti érzékenyebb) 3,25 5 |
 | tspikedetector.Sensitivity |Érzékenysége a TSpike érzékelő |3 |egész szám |1-10 |3-5 (a kisebb értékek jelenti érzékenyebb) |
 | zspikedetector.Sensitivity |Érzékenysége a ZSpike érzékelő |3 |egész szám |1-10 |3-5 (a kisebb értékek jelenti érzékenyebb) |
-| postprocess.tailRows |Meg kell őrizni, a kimeneti eredmények a legfrissebb adatpontok száma |0 |egész szám |a 0 (tartani minden adatpontok), vagy adja meg, hány pontot kell eredmények megőrzése |N/A |
+| postprocess.tailRows |Meg kell őrizni, a kimeneti eredmények a legfrissebb adatpontok száma |0 |egész szám |a 0 (tartani minden adatpontok), vagy adja meg, hány pontot kell eredmények megőrzése |– |
 
 ### <a name="output"></a>Kimenet
 Az API-t az az idő adatsorok összes érzékelők fut, és anomáliadetektálási pontszámokat és az egyes bináris csúcs mutatók időt adja vissza. Az alábbi táblázat felsorolja az API-t kimeneteinek. 
@@ -157,19 +157,19 @@ Részletesebb információ ezen bemeneti paraméterek, az alábbi táblázatban 
 | A bemeneti paraméterek | Leírás | Alapértelmezett beállítás | Típus | Érvényes értékek | Javasolt tartomány |
 | --- | --- | --- | --- | --- | --- |
 | preprocess.aggregationInterval |Az aggregációs időköznek másodpercben összesítéséhez szükséges tartományt adjon meg a time series |0 (nincs összesítési történik) |egész szám |0: ellenkező esetben hagyja ki az összesítés, amely > 0 |1 nap, idősorozat függő 5 perc |
-| preprocess.aggregationFunc |A megadott AggregationInterval az adatok összesítéséhez szükséges tartományt függvény |témakörök |számbavétele |átlagos, sum, hossza |N/A |
-| preprocess.replaceMissing |Hiányzó adatok imputálására értékek |LKV (utolsó ismert érték) |számbavétele |nulla, lkv, középérték |N/A |
+| preprocess.aggregationFunc |A megadott AggregationInterval az adatok összesítéséhez szükséges tartományt függvény |témakörök |számbavétele |átlagos, sum, hossza |– |
+| preprocess.replaceMissing |Hiányzó adatok imputálására értékek |LKV (utolsó ismert érték) |számbavétele |nulla, lkv, középérték |– |
 | detectors.historyWindow |Anomáliadetektálási pontszám számításhoz használt előzményeket (az adatpontok száma) |500 |egész szám |10-2000 |Idősorozat függő |
 | detectors.spikesdips | Hogy-e csak napra, csak immerzióban vagy mindkettő |Mindkettő |számbavétele |Mindkét, teljesítményt, immerzióban |Mindkettő |
-| bileveldetector.Sensitivity |Érzékenységi kétirányú szint módosítása érzékelő. |3.25 |Dupla |None |(A kisebb értékek jelenti érzékenyebb) 3,25 5 |
-| postrenddetector.Sensitivity |Érzékenysége a pozitív trend érzékelő. |3.25 |Dupla |None |(A kisebb értékek jelenti érzékenyebb) 3,25 5 |
-| negtrenddetector.Sensitivity |A negatív trend érzékelő érzékenységi. |3.25 |Dupla |None |(A kisebb értékek jelenti érzékenyebb) 3,25 5 |
+| bileveldetector.Sensitivity |Érzékenységi kétirányú szint módosítása érzékelő. |3.25 |duplaszó |Nincs |(A kisebb értékek jelenti érzékenyebb) 3,25 5 |
+| postrenddetector.Sensitivity |Érzékenysége a pozitív trend érzékelő. |3.25 |duplaszó |Nincs |(A kisebb értékek jelenti érzékenyebb) 3,25 5 |
+| negtrenddetector.Sensitivity |A negatív trend érzékelő érzékenységi. |3.25 |duplaszó |None |(A kisebb értékek jelenti érzékenyebb) 3,25 5 |
 | tspikedetector.Sensitivity |Érzékenysége a TSpike érzékelő |3 |egész szám |1-10 |3-5 (a kisebb értékek jelenti érzékenyebb) |
 | zspikedetector.Sensitivity |Érzékenysége a ZSpike érzékelő |3 |egész szám |1-10 |3-5 (a kisebb értékek jelenti érzékenyebb) |
-| seasonality.enable |Szezonalitás értékének elemzés hajtható végre, hogy van-e |igaz |Logikai érték |IGAZ, hamis |Idősorozat függő |
+| seasonality.enable |Szezonalitás értékének elemzés hajtható végre, hogy van-e |igaz |logikai |IGAZ, hamis |Idősorozat függő |
 | seasonality.numSeasonality |Észleltnek rendszeres ciklusok maximális száma |1 |egész szám |1, 2 |1-2 |
-| seasonality.Transform |E határozza (és) anomáliadetektálás alkalmazása előtt el kell távolítani a trend összetevők |deseason |számbavétele |nincs, deseason, deseasontrend |N/A |
-| postprocess.tailRows |Meg kell őrizni, a kimeneti eredmények a legfrissebb adatpontok száma |0 |egész szám |a 0 (tartani minden adatpontok), vagy adja meg, hány pontot kell eredmények megőrzése |N/A |
+| seasonality.Transform |E határozza (és) anomáliadetektálás alkalmazása előtt el kell távolítani a trend összetevők |deseason |számbavétele |nincs, deseason, deseasontrend |– |
+| postprocess.tailRows |Meg kell őrizni, a kimeneti eredmények a legfrissebb adatpontok száma |0 |egész szám |a 0 (tartani minden adatpontok), vagy adja meg, hány pontot kell eredmények megőrzése |– |
 
 ### <a name="output"></a>Kimenet
 Az API-t az az idő adatsorok összes érzékelők fut, és anomáliadetektálási pontszámokat és az egyes bináris csúcs mutatók időt adja vissza. Az alábbi táblázat felsorolja az API-t kimeneteinek. 

@@ -15,15 +15,16 @@ ms.workload: na
 ms.date: 10/19/2017
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: afadedf72562452e4d57d4545efe59cd8d37c907
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: 3b2b2877efe5f898b5759c03ac0ddcf3ecc03901
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Ismertetés és az IoT Hub eszköz twins használata
 
 *Eszköz twins* JSON-dokumentumokat tároló eszköz állapotának adatai, beleértve a metaadatok, a konfiguráció és a feltételek vannak. Azure IoT Hub fenntartja az egyes eszközök, amikor csatlakozik az IoT-központot egy eszköz iker. Ez a cikk ismerteti:
+
 
 * Az eszköz iker szerkezete: *címkék*, *kívánt* és *tulajdonságok jelentett*.
 * Eszköz twins eszközeinek alkalmazásait és hátsó akkor ér véget végezhető műveletek.
@@ -51,8 +52,7 @@ Egy eszköz iker tartalmazó JSON-dokumentumhoz:
 * **Címkék**. A JSON-dokumentum, amely a megoldás háttérrendszeréhez olvasni és írni egy része. Címkék nem láthatók az eszközön futó alkalmazások.
 * **Szükségeskonfiguráció-tulajdonságok**. Eszközök konfigurálása és a feltételek szinkronizálásához használt jelentett tulajdonságok együtt. A megoldás háttérrendszeréhez is beállíthatja a kívánt tulajdonságokat, és az eszköz alkalmazás is olvashatja őket. Az eszköz alkalmazás akkor is jelentkezhet változások értesítések kívánt tulajdonságai.
 * **Tulajdonságok jelentett**. Eszközök konfigurálása és feltételek szinkronizálásához használni kívánt tulajdonságokkal együtt. Az eszköz alkalmazás állíthatja be a jelentésben szereplő tulajdonságok, és a megoldás háttérrendszeréhez, olvassa el, és lekérdezheti.
-
-Emellett az eszköz iker JSON-dokumentum gyökerébe tartalmazza a megfelelő eszközidentitás tárolja a csak olvasható tulajdonságok a [identitásjegyzékhez][lnk-identity].
+* **Eszköztulajdonságok identitás**. Az eszköz iker JSON-dokumentum gyökerébe tartalmazza a megfelelő eszközidentitás tárolja a csak olvasható tulajdonságok a [identitásjegyzékhez][lnk-identity].
 
 ![][img-twin]
 
@@ -60,13 +60,19 @@ A következő példa bemutatja egy eszköz iker JSON-dokumentum:
 
         {
             "deviceId": "devA",
-            "generationId": "123",
+            "etag": "AAAAAAAAAAc=", 
             "status": "enabled",
             "statusReason": "provisioned",
+            "statusUpdateTime": "0001-01-01T00:00:00",
             "connectionState": "connected",
-            "connectionStateUpdatedTime": "2015-02-28T16:24:48.789Z",
             "lastActivityTime": "2015-02-30T16:24:48.789Z",
-
+            "cloudToDeviceMessageCount": 0, 
+            "authenticationType": "sas",
+            "x509Thumbprint": {     
+                "primaryThumbprint": null, 
+                "secondaryThumbprint": null 
+            }, 
+            "version": 2, 
             "tags": {
                 "$etag": "123",
                 "deploymentLocation": {
@@ -94,7 +100,7 @@ A következő példa bemutatja egy eszköz iker JSON-dokumentum:
             }
         }
 
-A legfelső szintű objektum, a rendszer tulajdonságai, és a tárolóobjektumok `tags` és mindkét `reported` és `desired` tulajdonságok. A `properties` tároló néhány írásvédett elemet tartalmaz (`$metadata`, `$etag`, és `$version`) ismertetett a [eszköz iker metaadatok] [ lnk-twin-metadata] és [egyidejű hozzáférések optimista] [ lnk-concurrency] szakaszok.
+A legfelső szintű objektum az eszköz azonosító tulajdonságainak, és a tárolóobjektumok `tags` és mindkét `reported` és `desired` tulajdonságok. A `properties` tároló néhány írásvédett elemet tartalmaz (`$metadata`, `$etag`, és `$version`) ismertetett a [eszköz iker metaadatok] [ lnk-twin-metadata] és [egyidejű hozzáférések optimista] [ lnk-concurrency] szakaszok.
 
 ### <a name="reported-property-example"></a>Jelentett tulajdonság – példa
 Az előző példában az eszköz iker tartalmaz egy `batteryLevel` az eszköz alkalmazás által jelentett tulajdonság. Ez a tulajdonság lekérdezése, és az utolsó jelentett akkumulátor szint alapján eszközökön működik lehetővé teszi. További példák lehetnek az alkalmazás jelentéskészítési eszköz eszközképességek vagy kapcsolati lehetőségek.
@@ -158,7 +164,7 @@ A megoldás háttérrendszeréhez végez műveleteket ezeken az eszköz a két a
 
     - Tulajdonságok
 
-    | Név | Érték |
+    | Name (Név) | Érték |
     | --- | --- |
     $content-típus | application/json |
     $iothub-enqueuedtime |  Ha az értesítés küldése idő |
@@ -240,7 +246,7 @@ Címkék, a kívánt tulajdonságokat és a jelentésben szereplő tulajdonságo
 * Az összes karakterlánc-értékek legfeljebb 4 KB-os hossza.
 
 ## <a name="device-twin-size"></a>Eszköz iker mérete
-Az IoT-központ kikényszeríti egy 8 KB-os méret korlátozás teljes értékeit `tags`, `properties/desired`, és `properties/reported`, kivéve a csak olvasható elemeket.
+Az IoT-központ kikényszeríti egy 8 KB-os méret korlátozás a megfelelő teljes értékek az egyes `tags`, `properties/desired`, és `properties/reported`, kivéve a csak olvasható elemeket.
 A méret UNICODE vezérlőkaraktereket (szegmensek C0 és C1) kivételével minden karakter alapján számított és szóközöket a karakterlánckonstansokat kívül esnek.
 Az IoT-központ hibával elutasítja a összes művelet lenne növelje a mérete meghaladja a közzétett dokumentumokat.
 
@@ -324,7 +330,7 @@ Az IoT Hub fejlesztői útmutató más hivatkozás témaköröket tartalmazza:
 * A [IoT-központ lekérdezési nyelv eszköz twins, feladatok és üzenet útválasztási] [ lnk-query] a cikk ismerteti az IoT-központ lekérdezési nyelv segítségével IoT Hub eszköz twins és feladatok kapcsolatos adatok lekérését.
 * A [IoT Hub MQTT támogatási] [ lnk-devguide-mqtt] cikkben olvashat az IoT-Központ támogatja a MQTT protokollt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most már rendelkezik megismerte eszköz twins, előfordulhat, hogy érdeklődik a következő IoT Hub fejlesztői útmutató témakörei:
 
 * [Az eszközön közvetlen metódus][lnk-methods]

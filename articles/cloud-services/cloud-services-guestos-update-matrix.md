@@ -14,8 +14,8 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 1/4/2018
 ms.author: raiye
-ms.openlocfilehash: 4172af775c041cc23663ed5572a46f0a49fdf5d3
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: e645d57dfff040eb05f4d395fac058b2b485933b
+ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/05/2018
@@ -42,6 +42,8 @@ Itt való naprakész információkat a legújabb Azure vendég operációs rends
 Nem tudja, hogy milyen a vendég operációs rendszer, vagy hogyan a vendég operációs rendszer feloldja a munkát? Olvasási [ez](#how-it-works) szakasz.
 
 ## <a name="news-updates"></a>Hírek
+###### <a name="january-4-2018"></a>**2018. január 4.**
+Az operációs rendszer családok 4-es kiadása a január vendég operációs rendszer (WA-VENDÉG-operációsrendszer-4.50_201801-01) & 5 (WA-VENDÉG-az operációs rendszer-5.15_201801-01) és fontos biztonsági javításokat tartalmaz.  
 
 ###### <a name="january-4-2018"></a>**2018. január 4.**
 December vendég operációs rendszer adott ki.
@@ -88,6 +90,7 @@ Június vendég operációs rendszer bevezetés. június 16 indul, és a terveze
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum | Lejárt dátum |
 | --- | --- | --- | --- |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-5.15_201801-01 |2018. január 4. |POST 5.17 |TBD |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-5.14_201712-01 |2018. január 4. |POST 5.16 |TBD |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-5.13_201711-01 |2017. december 14. |POST 5.15 |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.12_201710-02~~ |2017. november 8. |2018. január 4. |TBD |
@@ -112,6 +115,7 @@ Június vendég operációs rendszer bevezetés. június 16 indul, és a terveze
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum | Lejárt dátum |
 | --- | --- | --- | --- |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-4.50_201801-01 |2018. január 4. |POST 4.52-es |TBD |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-4.49_201712-01 |2018. január 4. |POST 4.51 |TBD |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-4.48_201711-01 |2017. december 14. |POST 4,50 |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.47_201710-02~~ |2017. november 8. |2018. január 4. |TBD |

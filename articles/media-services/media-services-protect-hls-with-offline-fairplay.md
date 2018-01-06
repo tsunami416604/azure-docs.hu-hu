@@ -15,44 +15,50 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: willzhan, dwgeo
-ms.openlocfilehash: b68ceac2056f0a9a7a9c4df7984789858c77a626
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 15f6d422f3171ae5161e0d4d4bcd8ec98529c766
+ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="offline-fairplay-streaming"></a>Adatfolyam-kapcsolat nélküli FairPlay
-A Microsoft Azure Media Services számos tetszetős [védelmi szolgáltatások tartalom](https://azure.microsoft.com/services/media-services/content-protection/), amely:
+ Az Azure Media Services számos tetszetős [védelmi szolgáltatások tartalom](https://azure.microsoft.com/services/media-services/content-protection/) adott tartalma:
+
 - Microsoft PlayReady
 - Google Widevine
 - Apple FairPlay
 - AES-128 titkosítást
 
-Tartalom DRM/AES titkosítási dinamikusan történik a különböző adatfolyam-továbbítási protokollok kérésre. DRM licenc/AES visszafejtési kulcs licenctovábbítási szolgáltatások is Azure Media Services által biztosított.
+Digitális tartalomvédelmi (DRM) / tartalom Advanced Encryption Standard (AES) titkosítást dinamikusan történik a különböző adatfolyam-továbbítási protokollok kérésre. DRM licenc/AES visszafejtési kulcs licenctovábbítási szolgáltatások is által biztosított Media Services.
 
 Amellett, hogy az online adatfolyamként történő keresztül különböző adatfolyam-továbbítási protokollok tartalomvédelemről, a védett tartalom kapcsolat nélküli módban az is gyakran kért szolgáltatása. Kapcsolat nélküli módban támogatja a következő forgatókönyvek esetén van szükség:
-1. A lejátszás Internet kapcsolat esetén nem érhető el, például közben;
-2. Néhány tartalomszolgáltatók DRM licenc kézbesítési ország szegély túl lehet letiltása. Ha egy felhasználó kíván tartalom megtekintése a külföldön utazás közben, kapcsolat nélküli letöltési van szükség.
-3. Egyes országokban Internet rendelkezésre állási és/vagy a sávszélesség nem mindig korlátozott. Előfordulhat, hogy a felhasználók eldönthetik nézheti felbontása kielégítő megtekintését a tartalom letöltéséhez először. Ebben az esetben gyakrabban, a probléma nem a hálózat rendelkezésre állásának, ahelyett, hogy korlátozott hálózati sávszélesség. OTT/OVP szolgáltatók arra utasítja a kapcsolat nélküli módban támogatásához.
 
-Ez a cikk FairPlay Streaming (FPS) kapcsolat nélküli módban használatát, 10 vagy újabb iOS rendszerű eszközök célzó vesszük alapul. Ez a funkció nem támogatott macOS más Apple platformok például watchOS, tvOS vagy Safari.
+* A lejátszás során internetkapcsolat esetén nem érhető el, például utazás közben.
+* Néhány tartalomszolgáltatók DRM licenc kézbesítési ország szegély túl lehet, hogy letiltása. Szeretnék tekintse meg a tartalom országán kívül utazás közben, kapcsolat nélküli letöltési van szükség.
+* Egyes országokban internet rendelkezésre állási és/vagy a sávszélesség nem mindig korlátozott. Előfordulhat, hogy a felhasználók eldönthetik nézheti-felbontást eredményez, amely már elég magas kielégítő megtekintését a tartalom letöltéséhez először. Ebben az esetben a probléma általában nem hálózati rendelkezésre állását, de korlátozott hálózati sávszélesség. Over-az-felső (OTT) / online videó platform (OVP) szolgáltatók kapcsolat nélküli módban támogatási kérelem.
+
+Ez a cikk a FairPlay Streaming (FPS) kapcsolat nélküli módban használatát, amelynek célpontja 10 vagy újabb iOS rendszerű eszközök vesszük alapul. Ez a szolgáltatás más Apple platformokon, például watchOS, tvOS vagy Safari macOS a nem támogatott.
 
 ## <a name="preliminary-steps"></a>Első lépések
-Kapcsolat nélküli DRM megvalósításához FairPlay 10 + iOS-eszközön, mielőtt első kell:
-1. Ismerkedjen meg FairPlay online tartalmak védelmét. Ez részletesen is ismertetjük a következő cikkek minták:
-- [Azure Media Services általánosan elérhető Streaming FairPlay Apple](https://azure.microsoft.com/blog/apple-FairPlay-streaming-for-azure-media-services-generally-available/)
-- [A tartalom Apple FairPlay vagy a Microsoft PlayReady HLS védelme](https://docs.microsoft.com/azure/media-services/media-services-protect-hls-with-FairPlay)
-- [Az online FPS adatfolyamként történő minta](https://azure.microsoft.com/resources/samples/media-services-dotnet-dynamic-encryption-with-FairPlay/)
-2. Szerezze be a FPS SDK Apple Developer hálózatról. FPS SDK két összetevőkből áll:
-- FPS Server SDK-t, amely tartalmaz KSM (kulcs biztonsági modul), a ügyfél minták, a specifikáció és a teszt veszélyének; készlete
-- FPS központi telepítési csomag, amely a D függvény, valamint leírja, hogyan a FPS tanúsítványt, a specifikus titkos kulcs és az alkalmazás titkos kulcs (KÉRJEN) specifikáció tartalmazza. Apple bocsát ki FPS központi telepítési csomag csak a licencelt tartalomszolgáltatók.
+10 + iOS-eszközön a FairPlay implementálásához offline DRM:
 
-## <a name="configuration-in-azure-media-services"></a>Az Azure Media Services konfigurációs
-FPS kapcsolat nélküli módban konfiguráció keresztül [Azure Media Services .NET SDK](https://www.nuget.org/packages/windowsazure.mediaservices), kell használnia az Azure Media Services .NET SDK-v. 4.0.0.4, vagy később, amely biztosítja, hogy FPS kapcsolat nélküli módban konfigurálja a szükséges API-t.
-A fenti előfeltételek jelöltük feltételezzük, hogy van működő kódjának online módban FPS tartalomvédelem konfigurálásáról. Miután a tartalom védelmének online módban FPS beállítása kódját, csak akkor kell a következő két módosításokat.
+* Ismerkedjen meg FairPlay online tartalmak védelmét. További információkért tekintse meg a következő cikkek és minták:
 
-## <a name="code-change-in-fairplay-configuration"></a>FairPlay konfigurációban kód módosítása
-Is határozza meg az IGAZ, ha engedélyezve van a kapcsolat nélküli DRM-forgatókönyv egy "engedélyezése kapcsolat nélküli módba" logikai, hívott objDRMSettings.EnableOfflineMode. Attól függően, hogy ez a jelző azt az alábbi módosítást a FairPlay konfiguráció:
+    - [Általánosan elérhető az Azure Media Services Streaming FairPlay Apple](https://azure.microsoft.com/blog/apple-FairPlay-streaming-for-azure-media-services-generally-available/)
+    - [A tartalom Apple FairPlay vagy a Microsoft PlayReady HLS védelme](https://docs.microsoft.com/azure/media-services/media-services-protect-hls-with-FairPlay)
+    - [Az online FPS adatfolyamként történő minta](https://azure.microsoft.com/resources/samples/media-services-dotnet-dynamic-encryption-with-FairPlay/)
+
+* A FPS SDK beszerzése az Apple Developer hálózatról. A FPS SDK két összetevőkből áll:
+
+    - A FPS Server SDK csomagot, amely tartalmazza a kulcs biztonsági modul (KSM), a ügyfél minták, a specifikáció és a teszt vektorok készlete.
+    - A FPS központi telepítési csomag, amely a D függvény-meghatározást tartalmaz, valamint leírja, hogyan a FPS tanúsítványt, a specifikus titkos kulcs és az alkalmazás titkos kulcs létrehozásához. Apple bocsát ki a FPS központi telepítési csomag csak a licencelt tartalomszolgáltatók.
+
+## <a name="configuration-in-media-services"></a>A Media Services konfigurációs
+FPS kapcsolat nélküli módban konfiguráció segítségével a [Media Services .NET SDK](https://www.nuget.org/packages/windowsazure.mediaservices), a Media Services .NET SDK 4.0.0.4 verzióját használja, vagy később, amely biztosítja a szükséges API FPS offline mód konfigurálása.
+Meg kell online módú FPS content protection konfigurálása a működő kódot is. Miután beszerezte a kód FPS online módú tartalmak védelmének konfigurálásához, csak a következő két módosításokat kell.
+
+## <a name="code-change-in-the-fairplay-configuration"></a>FairPlay konfigurációjában kód módosítása
+Az első módosítást, hogy adja meg az "enable kapcsolat nélküli módba" logikai érték, úgynevezett objDRMSettings.EnableOfflineMode, lehetővé teszi, hogy a kapcsolat nélküli DRM-forgatókönyv esetén true. Attól függően, hogy a mutató az alábbi módosítást kell FairPlay konfigurációját:
 
 ```csharp
 if (objDRMSettings.EnableOfflineMode)
@@ -77,9 +83,10 @@ if (objDRMSettings.EnableOfflineMode)
     }
 ```
 
-## <a name="code-change-in-asset-delivery-policy-configuration"></a>Az eszköz továbbítási szabályzat konfigurációjához kód módosítása
-A második módosításnak a célja a harmadik kulcs a szótárban szótár < AssetDeliveryPolicyConfigurationKey, karakterlánc > vegyen fel.
-A harmadik AssetDeliveryPolicyConfigurationKey hozzá kell adni az alábbiak szerint: 
+## <a name="code-change-in-the-asset-delivery-policy-configuration"></a>Az eszköz továbbítási szabályzat konfigurációjához kód módosítása
+A második módosításnak a célja a harmadik kulcs szótár < AssetDeliveryPolicyConfigurationKey, karakterlánc > vegyen fel.
+Adja hozzá a AssetDeliveryPolicyConfigurationKey, ahogy az itt látható:
+ 
 ```csharp
 // FPS offline mode
     if (drmSettings.EnableOfflineMode)
@@ -96,25 +103,29 @@ A harmadik AssetDeliveryPolicyConfigurationKey hozzá kell adni az alábbiak sze
             objDictionary_AssetDeliveryPolicyConfigurationKey);
 ```
 
-Ez a lépés után a szótár < AssetDeliveryPolicyConfigurationKey, karakterlánc > FPS objektumtovábbítási szabályzat az alábbi három bejegyzéseket fogja tartalmazni:
-1. AssetDeliveryPolicyConfigurationKey.FairPlayBaseLicenseAcquisitionUrl vagy AssetDeliveryPolicyConfigurationKey.FairPlayLicenseAcquisitionUrl használt FPS KSM/kulcs kiszolgáló, és hogy szeretnénk az azonos eszköz kézbesítési újból például tényezőktől függően Több eszköz között házirend
-2. AssetDeliveryPolicyConfigurationKey.CommonEncryptionIVForCbcs
-3. AssetDeliveryPolicyConfigurationKey.AllowPersistentLicense
+Elvégezte a lépést a < Dictionary_AssetDeliveryPolicyConfigurationKey > karakterláncot a FPS adategység továbbítási házirendjét a következő három bejegyzést tartalmaz:
 
-A media services-fiókkal van konfigurálva offline FairPlay-licenc-i.
+* AssetDeliveryPolicyConfigurationKey.FairPlayBaseLicenseAcquisitionUrl vagy AssetDeliveryPolicyConfigurationKey.FairPlayLicenseAcquisitionUrl, attól függően, hogy a FPS KSM/kiszolgáló használt tényezők és e használja fel az azonos eszköz kézbesítés több eszköz között házirend
+* AssetDeliveryPolicyConfigurationKey.CommonEncryptionIVForCbcs
+* AssetDeliveryPolicyConfigurationKey.AllowPersistentLicense
+
+A Media Services-fiók most már képes biztosítani a kapcsolat nélküli FairPlay-licenc van konfigurálva.
 
 ## <a name="sample-ios-player"></a>A minta iOS Player
-Először azt kell vegye figyelembe, hogy FPS offline mód támogatása csak az iOS 10 és újabb verziói. Igazolnia kell kapnia FPS Server SDK (3.0-s verzió vagy újabb) tartalmazó dokumentumok és minta FPS offline módban. Pontosabban, a FPS Server SDK (3.0-s verzió vagy újabb) kapcsolat nélküli üzemmódban kapcsolódik a következő két elemet tartalmaz:
-1. A dokumentum: Kapcsolat nélküli lejátszás FairPlay adatfolyam- és HTTP élő adatfolyam. Apple, 9/14/2016. A FPS Server SDK v 4.0-s verzióját a dokumentum a fő FPS adatfolyam doc egyesített.
-2. Példakód: kapcsolat nélküli módban FPS \FairPlay Streaming Server SDK v3.1\Development\Client\HLSCatalog_With_FPS\HLSCatalog\ HLSCatalog minta. A HLSCatalog mintaalkalmazást a következő kód fájlok különösen a kapcsolat nélküli módban szolgáltatások:
-- AssetPersistenceManager.swift kódfájl: AssetPersistenceManager Ez a példa azt mutatja be, a fő osztály
-    - Letöltése HLS-adatfolyamok, például az API-k és letöltés megszakítása törlése a felhasználó eszközén; ki meglévő eszközök kezelése
-    - Útmutató letöltési előrehaladásának figyeléséhez.
-- A kód fájlok AssetListTableViewController.swift és AssetListTableViewCell.swift: AssetListTableViewController Ez a minta a fő felületet. A minta lejátszása, töltse le, törölheti, vagy szakítsa meg a letöltési eszközök listájának biztosít. 
+A rendszer csak az iOS 10 és újabb verziói FPS kapcsolat nélküli módban támogatja. A FPS Server SDK (3.0-s vagy újabb verzió) tartalmaz a dokumentum és a minta FPS offline módban. FPS Server SDK (3.0-s vagy újabb verzió), a kapcsolat nélküli módban kapcsolatos következő két elemet tartalmazza:
 
-Az alábbiakban egy futó iOS player beállításával kapcsolatos részletes lépéseket. Tegyük fel, a HLSCatalog mintából FPS Server SDK v 4.0.1 megkezdése.  A következő kód módosításokat kell:
+* Dokumentum: "Offline lejátszás FairPlay adatfolyam- és HTTP élő adatfolyam-továbbítási." Apple, 2016 szeptemberétől 14. Ez a dokumentum FPS Server SDK 4.0-s verzióját, a fő FPS dokumentumhoz egyesített.
+* Példakód: HLSCatalog mintát eredményez, amely a \FairPlay Streaming Server SDK verzió 3.1\Development\Client\HLSCatalog_With_FPS\HLSCatalog\ FPS offline módban. A következő kód fájlok HLSCatalog mintaalkalmazás, kapcsolat nélküli módban funkciók végrehajtásához szerepelnek:
 
-A HLSCatalog\Shared\Managers\ContentKeyDelegate.swift, valósítja meg a `requestContentKeyFromKeySecurityModule(spcData: Data, assetID: String)` a következő kóddal: legyen drmUr egy változóhoz, a HLS-streamelési URL-címet hozzárendelni.
+    - AssetPersistenceManager.swift kódfájl: AssetPersistenceManager a fő osztályban, ez a példa bemutatja, hogyan:
+
+        - Kezelése letöltése HLS adatfolyamok, például az API-khoz használt indítása és szakítsa meg a letöltött fájl, és törölje a meglévő eszközök eszközök ki.
+        - Letöltési előrehaladásának figyeléséhez.
+    - A kód fájlok AssetListTableViewController.swift és AssetListTableViewCell.swift: AssetListTableViewController Ez a minta a fő felületet. A minta lejátszása, töltse le, törlése, vagy szakítsa meg a letöltési használható eszközök listája biztosít. 
+
+Lépések bemutatják, hogyan állíthat be egy futó iOS player. Feltéve, hogy a HLSCatalog mintából FPS Server SDK verzió 4.0.1 indítása, a következő módosításokat kódot:
+
+A HLSCatalog\Shared\Managers\ContentKeyDelegate.swift, valósítja meg a `requestContentKeyFromKeySecurityModule(spcData: Data, assetID: String)` az alábbi kód használatával. A HLS URL-címhez hozzárendelt változó legyen "drmUr".
 
 ```swift
     var ckcData: Data? = nil
@@ -147,7 +158,7 @@ A HLSCatalog\Shared\Managers\ContentKeyDelegate.swift, valósítja meg a `reques
     return ckcData
 ```
 
-A HLSCatalog\Shared\Managers\ContentKeyDelegate.swift, valósítja meg a `requestApplicationCertificate()`. Ez a megvalósítás attól függ, hogy a tanúsítvány (csak a nyilvános kulcs) beágyazása az eszköz vagy a tanúsítvány a webhely üzemeltetésére. Alább az üzemeltetett alkalmazás tanúsítvánnyal, a vizsgálati minták használt megvalósítása. Az alkalmazás tanúsítványának URL-CÍMÉT tartalmazó változó lehet certUrl segítségével.
+A HLSCatalog\Shared\Managers\ContentKeyDelegate.swift, valósítja meg a `requestApplicationCertificate()`. Ez a megvalósítás attól függ, hogy a tanúsítvány (csak a nyilvános kulcs) beágyazása az eszköz vagy a tanúsítvány a webhely üzemeltetésére. Az alábbi a teszt mintában használt üzemeltetett alkalmazás tanúsítványt használ. Az alkalmazás tanúsítványának URL-CÍMÉT tartalmazó változó legyen "certUrl".
 
 ```swift
 func requestApplicationCertificate() throws -> Data {
@@ -163,36 +174,38 @@ func requestApplicationCertificate() throws -> Data {
     }
 ```
 
-A végső integrált teszteléséhez Videó URL és a tanúsítvány URL-címe fognak adni a "Integrált teszt" szakaszában.
+A végső integrált tesztjéhez, mind a Videó URL és a tanúsítvány URL-címe van a szakaszban megadott "Integrált Test."
 
-HLSCatalog\Shared\Resources\Streams.plist, adja hozzá a teszt Videó URL és a tartalomkulcs-azonosító használjuk FairPlay-licenc licenckérési URL-cím skd protokoll egyedi értékkel.
+HLSCatalog\Shared\Resources\Streams.plist adja hozzá a teszt Videó URL-CÍMÉT. A tartalom kulcs azonosítója, használja a FairPlay licenc licenckérési URL-cím a skd protokoll egyedi értékkel.
 
 ![Kapcsolat nélküli FairPlay iOS App adatfolyamok](media/media-services-protect-hls-with-offline-FairPlay/media-services-offline-FairPlay-ios-app-streams.png)
 
-A teszt Videó URL, a FairPlay-licenc licenckérési URL-cím és a tanúsítvány URL-címe használhatja a saját, ha őket beállítani, vagy továbbra is a következő szakaszban vizsgálati minták tartalmazó.
+A saját ellenőrző Videó URL-t, a FairPlay-licenc licenckérési URL-cím és a tanúsítvány URL-címe, használhat, ha azokat beállítása. Vagy továbbra is vizsgálati minták tartalmazza a következő szakaszban.
 
 ## <a name="integrated-test"></a>Integrált tesztelése
-Azure Media Services, amely a következő három forgatókönyvekhez három vizsgálati minták hoztak létre:
-1.  FPS védi, video-, hang- és alternatív hang követése;
-2.  Védett, videót, hangot, de nincs másik hang követése; FPS
-3.  FPS védelme, a videó csak, hang nélkül.
+A Media Services vizsgálati mintát a következő három forgatókönyv terjed ki:
 
-Ezeket a mintákat található ezzel [bemutató hely](http://aka.ms/poc#22), a megfelelő tanúsítvánnyal alkalmazás Azure-webalkalmazás tárolva.
-A Microsoft észrevette, hogy FPS Server SDK v3 vagy v4 példával, ha egy fő lista tartalmaz alternatív hang-, kapcsolat nélküli üzemmódban lejátszás hang csak. Ezért igazolnia kell a másodlagos hang sáv. Más szóval a három minta fent, (2) és (3) között működik online és offline módban. De hangfájl lejátszása közben online adatfolyam működő kapcsolat nélküli módban során csak jól (1) lesz.
+* FPS védi, video-, hang- és alternatív hang nyomon követése
+* FPS védi, videó- és hang, de nincs másik hang nyomon követése
+* Védett, csak a videó és nincsenek hang FPS
+
+Ezeket a mintákat: található [bemutató webhely](http://aka.ms/poc#22), a megfelelő alkalmazás tanúsítvánnyal tárolt Azure-webalkalmazás.
+A 3-as verziója vagy a FPS Server SDK minta 4-es verzióját Ha egy fő lista tartalmaz alternatív hang-, kapcsolat nélküli üzemmódban lejátszás hang csak. Ezért kell a másodlagos hang sáv. A második és harmadik minták felsorolt más szóval a korábban működnek online és offline módban. A felsorolt minta először játszik hang csak kapcsolat nélküli üzemmódban közben online streaming megfelelően működik.
 
 ## <a name="faq"></a>GYIK
-Néhány gyakori kérdést talál a hibaelhárítási:
-- **Miért nem csak hang play, de nincs kép offline üzemmódban?** Ez a viselkedés úgy tűnik, hogy úgy lett kialakítva, a mintaalkalmazást. Ha másik hang nyomon követése jelentenek a kapcsolat nélküli módban, mindkét iOS 10 során (amely a helyzet HLS), és iOS 11 rendszer alternatív hang nyomon követése az alapértelmezett. Ez a viselkedés kártalanítja FPS kapcsolat nélküli módban, távolítsa el a másodlagos hang nyomon követése az adatfolyamból kell. Ehhez az Azure Media Services ügyféloldali is egyszerűen hozzáadjuk a dinamikus jegyzék szűrő "csak = false." Ez azt jelenti a HLS URL-címének .ism/manifest(format=m3u8-aapl,audio-only=false) multiplicitású lenne. 
-- **Miért azt még játssza le a hang videó nélkül csak kapcsolat nélküli üzemmódban után csak hozzáadott = false?** Attól függően, hogy a CDN gyorsítótár tervezési a tartalom azokat gyorsítótárazni. A gyorsítótár kiürítése kell.
-- **FPS offline üzemmód is támogatott iOS 11 iOS 10 mellett?** Igen, FPS offline mód iOS 10-es és iOS 11 is támogatott.
-- **Miért nem található FPS Server SDK a dokumentum Offline FairPlay adatfolyam- és HTTP Live Streaming lejátszás?** FPS Server SDK v 4, mert ez a dokumentum egyesített FairPlay Streaming programozási útmutató dokumentumot.
+A következő gyakori kérdések a hibaelhárítási segítséget nyújt:
+
+- **Miért csak hang játssza le nem videó azonban offline üzemmódban?** Ez a viselkedés úgy tűnik, hogy úgy lett kialakítva, a mintaalkalmazást. Egy másik hang nyomon követése esetén (Ez az eset a HLS) jelenleg kapcsolat nélküli üzemmódban, iOS 10 és a másodlagos hang nyomon követendő iOS 11 alapértelmezett is. Ez a viselkedés kártalanítja FPS kapcsolat nélküli módban, távolítsa el a másodlagos hang nyomon követése az adatfolyamból. Ehhez a Media Services, a dinamikus manifest-szűrő hozzáadása "csak = false." Más szóval egy HLS URL-CÍMÉT .ism/manifest(format=m3u8-aapl,audio-only=false) végződik. 
+- **Miért azt még játssza le a hang videó nélkül csak kapcsolat nélküli üzemmódban után csak hozzáadok = false?** Attól függően, hogy a tartalomkézbesítési hálózat (CDN) gyorsítótár tervezési előfordulhat, hogy azokat gyorsítótárazni a tartalmat. A gyorsítótár kiürítése.
+- **FPS offline üzemmód is támogatott iOS 11 iOS 10 mellett?** Igen. Kapcsolat nélküli módban FPS iOS 10-es és iOS 11 esetén támogatott.
+- **Miért nem található a FPS Server SDK a dokumentum "Offline lejátszás rendelkező FairPlay adatfolyam-és HTTP élő adatfolyam-továbbítási"?** FPS Server SDK 4-es verzióját, mert ez a dokumentum egyesítve volt a "FairPlay Streaming programozási útmutatója."
 - **Mit nem az utolsó paraméter alakítson ki a következő API-t a kapcsolat nélküli módban FPS?**
 `Microsoft.WindowsAzure.MediaServices.Client.FairPlay.FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration(objX509Certificate2, pfxPassword, pfxPasswordId, askId, iv, RentalAndLeaseKeyType.PersistentUnlimited, 0x9999);`
 
-Ez az API dokumentációjában található [Itt](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.FairPlay.FairPlayconfiguration.createserializedFairPlayoptionconfiguration?view=azure-dotnet). A paraméter jelöli a egységként óra offline bérleti időtartama.
-- **Mi az az iOS-eszközökön a letöltött vagy offline állapotban fájlstruktúra?** A letöltött fájl struktúra iOS-eszközön a következőképpen néz (képernyőkép) alatt. `_keys`mappában tárolja letöltött FPS licencek egy tárolófájl minden licenc szolgáltatás állomás számára. `.movpkg`a mappa tárolja a hang-és videotartalmakhoz. Az első mappa egy numerikus követ kötőjellel végződő nevű videotartalom tartalmazza. A numerikus értéke a videó interpretációk "PeakBandwidth". 0 követ kötőjellel végződő nevű második mappa tartalmát tartalmazza. A harmadik "Data" nevű mappát a fő lista FPS tartalmat tartalmazza. Boot.XML teljes leírását itt `.movpkg` mappa tartalma (lásd lent boot.xml mintafájl).
+    Az API-JÁNAK dokumentációja, lásd: [FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration metódus](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.FairPlay.FairPlayconfiguration.createserializedFairPlayoptionconfiguration?view=azure-dotnet). A paraméter a kapcsolat nélküli bérleti óra a egységként időtartama jelöli.
+- **Mi az az iOS-eszközökön a letöltött vagy offline állapotban fájlstruktúra?** A letöltött fájl struktúra iOS-eszközön az alábbi képernyőfelvételen tűnik. A `_keys` mappában tárolja letöltött FPS licencek, az egyes licenc szolgáltatásgazda egy tároló-fájllal. A `.movpkg` a mappa tárolja a hang-és videotartalmakhoz. Az első mappa egy numerikus követ kötőjellel végződő nevű videotartalom tartalmazza. A numerikus értéke a videó interpretációk PeakBandwidth. A második 0 követ kötőjellel végződő nevű mappa tartalmát tartalmazza. A harmadik "Data" nevű mappát a fő lista FPS tartalmat tartalmazza. Végezetül boot.xml teljes leírást ad a `.movpkg` mappa tartalmát. 
 
-![Kapcsolat nélküli FairPlay iOS Sample App fájlstruktúra](media/media-services-protect-hls-with-offline-FairPlay/media-services-offline-FairPlay-file-structure.png)
+![Kapcsolat nélküli FairPlay iOS sample app fájlstruktúra](media/media-services-protect-hls-with-offline-FairPlay/media-services-offline-FairPlay-file-structure.png)
 
 Egy minta boot.xml fájlt:
 ```xml
@@ -223,9 +236,10 @@ Egy minta boot.xml fájlt:
 </HLSMoviePackage>
 ```
 
-## <a name="summary"></a>Összefoglalás
-Ebben a dokumentumban adtunk a részletes lépéseket és az adatok megvalósításának FPS kapcsolat nélküli módban, beleértve:
-1. Az Azure Media Services tartalomvédelem konfigurációs AMS .NET API-n keresztül esetén. Ezzel a dinamikus FairPlay titkosítási és FairPlay-licenc kézbesítési AMS.
-2. iOS player az Apple FPS Server SDK minta alapján. Ez lenne állítson be egy játszhatja FPS iOS player tartalom vagy online adatfolyam-továbbítási vagy kapcsolat nélküli üzemmódban.
-3. FPS Mintavideók kapcsolat nélküli módban és online streaming teszteléséhez.
-4. Gyakori kérdések FPS kapcsolat nélküli módban.
+## <a name="summary"></a>Összegzés
+Ez a dokumentum tartalmaz a következő lépéseket és információkat FPS kapcsolat nélküli módban végrehajtásához használhatja:
+
+* A Media Services content védelmi konfigurációt a Media Services .NET API-n keresztül a dinamikus FairPlay titkosítás és a FairPlay-licenc kézbesítési a Media Services konfigurálása.
+* Az iOS player az FPS Server SDK-ból a minta alapján állít be egy játszhatja FPS iOS player tartalom vagy online adatfolyam-továbbítási vagy kapcsolat nélküli üzemmódban.
+* Mintavideók FPS kapcsolat nélküli módban, és online adatfolyamként történő továbbítását teszteléséhez vannak használva.
+* A gyakran ismételt kérdések FPS kapcsolat nélküli módban kapcsolatos kérdésekre ad választ.

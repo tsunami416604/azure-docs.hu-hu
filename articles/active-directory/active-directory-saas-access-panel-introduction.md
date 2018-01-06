@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/21/2017
+ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 23f932f6a82a041ba7c54d00cdee7aa98bfce479
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 4178b07f59885a67b12f0863129995542ee0752a
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="what-is-the-access-panel"></a>Mi az a hozzáférési panel?
 
@@ -70,7 +70,31 @@ Amikor megtörténik, kezelheti az alkalmazásokat, amelyek a rendszergazda a k�
 
 Legalább a hozzáférési panel igényel, amely támogatja a JavaScript egy böngészőt, és CSS engedélyezte. A felhasználó bejelentkezhet a jelszó-alapú egyszeri bejelentkezést (SSO) alkalmazások a böngésző a hozzáférési panel bővítményét kell telepíteni. A bővítmény le automatikusan, amikor kiválaszt egy alkalmazást, amely jelszóalapú SSO van konfigurálva.
 
-A hozzáférési panel bővítmény érhető el jelenleg Internet Explorer 8 és újabb verziók, Firefox, biztonsági és Chrome böngésző.
+A hozzáférési panel bővítmény érhető el jelenleg:
+-   Peremhálózati Windows 10 évforduló Edition vagy újabb 
+
+-   Chrome – A Windows 7 vagy újabb, és MacOS X rendszeren vagy újabb
+
+-   Firefox 26.0 vagy újabb – a Windows XP SP2 vagy újabb, és a Mac OS X 10,6 vagy újabb verzió
+
+-   Internet Explorer 8, 9, 10, 11 – a Windows 7 vagy újabb (korlátozott támogatás)
+
+## <a name="my-apps-secure-sign-in-extension"></a>Saját alkalmazások biztonságos bejelentkezési bővítménye
+A bővítmény szükség a felhasználók számára, hogy jelentkezzen be a jelszó-alapú egyszeri bejelentkezést. Miután telepített felhasználók további funkciók is engedélyezheti Ha bejelentkezik a bővítmény kattintva **jelentkezzen be a kezdéshez**. 
+
+- A felhasználók regisztrálhatnak az alkalmazásokat közvetlenül az alkalmazás felkeresésével **bejelentkezési URL-cím**. Amikor a felhasználók megnyitják az alkalmazás bejelentkezési URL-CÍMÉT a bővítmény észleli ezt, és adja meg a beállítást, a bővítmény jelentkezni a felhasználó számára.
+- Felhasználók is elindítható bármelyik a hozzáférési panel a alkalmazásaikat a **Gyorskeresés** szolgáltatás a bővítményt. 
+- A bővítmény is megjelenítése felhasználók, az utolsó három alkalmazásokat, azok alapján indított **legutóbbi** szakasz.
+> [!NOTE]
+> További funkciók él, Chrome, Firefox csak érhetők el.
+
+
+Egy másik saját alkalmazások URL-címet mint https://myapps.microsoft.com használata majd konfigurálnia kell az alapértelmezett URL-cím, ha az alábbi lépéseket:
+1. Amíg nem írta be a bővítmény **kattintson a jobb gombbal** a bővítmény ikonra.
+2. Kattintson a **válassza ki a saját alkalmazások URL-cím** a menüből.
+3. **Válassza ki** az alapértelmezett URL-cím.
+4. Kattintson a bővítmény ikonra.
+5. Jelentkezzen be a bővítmény kiválasztásával **jelentkezzen be a kezdéshez**.
 
 ## <a name="mobile-app-support"></a>Mobilalkalmazás-támogatás
 

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: joflore
 ms.reviewer: richagi
-ms.openlocfilehash: fb83e957a206bff29132973d2dd3e9a7b5f9f060
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 696f4ae3cb479a208e73e53a9a9a437caeabd294
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Azure multi-factor Authentication jelentései
 
@@ -28,6 +28,7 @@ Az Azure multi-factor Authentication segítségével, és a szervezet az Azure-p
 |:--- |:--- |:--- |
 | Blokkolt felhasználó – előzmények | Az Azure AD > multi-factor Authentication kiszolgáló > felhasználó blokkolása/feloldása | A felhasználók blokkolása és feloldása kérelmek előzményeit jeleníti meg. |
 | Használati és csalás riasztások | Az Azure AD > bejelentkezések | Információt nyújt összesített használatát, a – felhasználói összefoglalás és a felhasználó adatait; csakúgy, mint a megadott dátumtartományban küldött visszaélési riasztások előzményeit. |
+| A helyszíni összetevők használata | Az Azure AD > multi-factor Authentication kiszolgáló > tevékenységgel kapcsolatos jelentés | Ez a témakör információkat összesített használatát a multi-factor Authentication bővítményével NPS, AD FS, és a multi-factor Authentication kiszolgáló. |
 | Mellőzött felhasználó – előzmények | Az Azure AD > multi-factor Authentication kiszolgáló > egyszeri Mellőzés | A felhasználó átugorja a multi-factor Authentication kérelmek előzményeit biztosítja. |
 | Kiszolgáló állapota | Az Azure AD > multi-factor Authentication kiszolgáló > kiszolgáló állapota | A fiókjához társított multi-factor Authentication kiszolgálók állapotát jeleníti meg. |
 

@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2017
 ms.author: nitinme
-ms.openlocfilehash: c2921c6d7a0f46322fc4e0b3c84b743ee98e4a4d
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 13c24a9fc08b4479a63d37fadb0fd02624e51b64
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="use-script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Parancsfájlművelet használata Jupyter notebookok külső Python-csomagokat telepíteni az Apache Spark on hdinsight-fürtök
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ ms.lasthandoff: 12/21/2017
 > 
 > 
 
-Kereshet az [csomagindexet](https://pypi.python.org/pypi) csomagok rendelkezésre álló teljes listáját. Más forrásból is megkapható elérhető csomagok listáját. Például telepíthet keresztül elérhető csomagok [Anaconda](https://docs.continuum.io/anaconda/pkg-docs) vagy [conda-forge](https://conda-forge.github.io/feedstocks.html).
+Kereshet az [csomagindexet](https://pypi.python.org/pypi) csomagok rendelkezésre álló teljes listáját. Más forrásból is megkapható elérhető csomagok listáját. Például telepíthet keresztül elérhető csomagok [Anaconda](https://docs.continuum.io/anaconda/pkg-docs) vagy [conda-forge](https://conda-forge.org/feedstocks/).
 
 Ebből a cikkből megtanulhatja, hogyan telepítheti a [TensorFlow](https://www.tensorflow.org/) csomag parancsfájlművelet használatával a fürtön, és a Jupyter notebook keresztül használni.
 

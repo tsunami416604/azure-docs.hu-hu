@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 07/05/2017
+ms.date: 01/05/2018
 ms.author: jroth
-ms.openlocfilehash: 91aab896dd5f06c950ee0ed8f36cc6a953d91611
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 281aac8229c55cde1f36857a8f1042aa08f7e372
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>Automatikus biztonsági mentés SQL Server 2014 virtuális gépek (erőforrás-kezelő)
 
@@ -129,11 +129,14 @@ Ha az SQL Server IaaS-ügynök bővítmény telepítve van, megjelenik az "SqlIa
 Ha van telepítve, vagy nem telepítése sikertelen volt, a következő paranccsal telepítheti. A virtuális gép nevét és az erőforrás csoporton felül meg kell adnia a régióban (**$region**), amely a virtuális gép található.
 
 ```powershell
-$region = “EASTUS2”
+$region = "EASTUS2"
 Set-AzureRmVMSqlServerExtension -VMName $vmname `
     -ResourceGroupName $resourcegroupname -Name "SQLIaasExtension" `
     -Version "1.2" -Location $region
 ```
+
+> [!IMPORTANT]
+> Ha a kiterjesztés már nincs telepítve, a bővítmény telepítése újraindítja az SQL Server szolgáltatást.
 
 ### <a id="verifysettings"></a>Aktuális beállításainak ellenőrzése
 

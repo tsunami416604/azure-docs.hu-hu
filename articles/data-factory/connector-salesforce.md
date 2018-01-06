@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/24/2017
+ms.date: 01/05/2018
 ms.author: jingwang
-ms.openlocfilehash: d5bad9a3be9c3165e5d26001353b8955ff81a764
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 9ce027ca6c9ad71f2884d5187786d69a5ba1134f
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="copy-data-fromto-salesforce-using-azure-data-factory"></a>Másolja az adatokat, vagy a Salesforce Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -51,7 +51,7 @@ Salesforce rendelkezik mind az API-kérelmek teljes száma, és a egyidejű API-
 
 A "REQUEST_LIMIT_EXCEEDED" hiba mindkét forgatókönyvet is akkor fordulhat elő. A "API kérelmekre vonatkozó korlátok" című a [Salesforce fejlesztői korlátok](http://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf) cikkben alább.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 A másolási tevékenység során .NET SDK, a Python SDK, az Azure PowerShell, a REST API-t vagy a Azure Resource Manager-sablon használatával hozhat létre egy folyamatot. Lásd: [másolási tevékenység oktatóanyag](quickstart-create-data-factory-dot-net.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját.
 
 A következő szakaszok részletesen bemutatják adat-előállító tartozó entitások megadhatók a Salesforce-összekötőhöz használt tulajdonságokat.
@@ -67,10 +67,10 @@ Salesforce kapcsolódó szolgáltatás támogatott a következő tulajdonságokk
 | felhasználónév |Adja meg a felhasználói fiók felhasználói nevét. |Igen |
 | jelszó |Adja meg a felhasználói fiókhoz tartozó jelszót.<br/><br/>Ez a mező megjelölése a SecureString tárolja biztonságos helyen az ADF, vagy a jelszó tárolása az Azure Key Vault választhat, és lehetővé teszik a másolási tevékenységek lekéréses ott adatmásolás végrehajtása során – további információhoz [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). |Igen |
 | securityToken |Adja meg a felhasználói fiók biztonsági jogkivonatot. Lásd: [biztonsági jogkivonatának beszerzéséhez](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) útmutatást, ha alaphelyzetbe állítása/get egy biztonsági jogkivonatot. Általános biztonsági jogkivonatokat kapcsolatos további tudnivalókért lásd: [biztonsági és az API-t](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm).<br/><br/>Ez a mező megjelölése a SecureString tárolja biztonságos helyen az ADF, vagy tárolja a biztonsági jogkivonatot az Azure Key Vault választhat, és lehetővé teszik a másolási tevékenységek lekéréses ott adatmásolás végrehajtása során – további információhoz [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). |Igen |
-| connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. | Nem a forrást, a fogadó Igen |
+| connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. | Nincs forrás, Igen a fogadó Ha forrás társított szolgáltatás nem rendelkezik IR |
 
 >[!IMPORTANT]
->Adatok másolása a Salesforce, explicit módon [hozzon létre egy Azure-IR](create-azure-integration-runtime.md#create-azure-ir) után, például a Salesforce és a hivatkozott szolgáltatásban található társítható közelében hellyel rendelkező.
+>Ha az adatok másolásának **be** Salesforce, alapértelmezett Azure integrációs futásidejű hajtható végre a példány nem használható. A más word, ha a forrás társított szolgáltatás nem rendelkezik megadott IR, explicit módon [hozzon létre egy Azure-IR](create-azure-integration-runtime.md#create-azure-ir) közelében a Salesforce és a Salesforce társítható hellyel rendelkező társított a szolgáltatás a következő példa.
 
 **Példa: hitelesítő adatok tárolása az ADF**
 
@@ -303,8 +303,8 @@ Amikor adatokat másol Salesforce, a következő megfeleltetéseket szolgálnak 
 | Automatikus szám |Karakterlánc |
 | Jelölőnégyzet |Logikai |
 | Currency (Pénznem) |Dupla |
-| Dátum |Dátum és idő |
-| Dátum és idő |Dátum és idő |
+| Dátum |DateTime |
+| Dátum/idő |DateTime |
 | E-mail cím |Karakterlánc |
 | Azonosító |Karakterlánc |
 | Keresési kapcsolat |Karakterlánc |
@@ -320,5 +320,5 @@ Amikor adatokat másol Salesforce, a következő megfeleltetéseket szolgálnak 
 | Szöveg (titkosítva) |Karakterlánc |
 | URL-cím |Karakterlánc |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats).
