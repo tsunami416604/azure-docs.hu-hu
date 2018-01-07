@@ -1,6 +1,6 @@
 ---
-title: "Ajánlott eljárások az Azure-ban spekulatív végrehajtási kiküszöböléséhez |} Microsoft Docs"
-description: "Gyakorlati tanácsok kiküszöböléséhez spekulatív végrehajtási ügyféloldali csatorna biztonsági rések az Azure-ban."
+title: "Útmutató az Azure-ban spekulatív végrehajtási kiküszöböléséhez |} Microsoft Docs"
+description: "Az Azure-ban spekulatív végrehajtási ügyféloldali csatorna biztonsági rések kiküszöböléséhez útmutatást."
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 58d68a71785b1fc4a682c6d5dca1cf000457ee65
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: 55cabb1df612474dd67a0bf7429ef10f63c6d193
+ms.sourcegitcommit: 113fe856a110b5522d2759ba1788b01697ae2b32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 01/07/2018
 ---
-# <a name="best-practices-for-mitigating-speculative-execution-side-channel-vulnerabilities"></a>Gyakorlati tanácsok spekulatív végrehajtási ügyféloldali csatorna biztonsági rések kiküszöböléséhez
+# <a name="guidance-for-mitigating-speculative-execution-side-channel-vulnerabilities"></a>Útmutató a spekulatív végrehajtási ügyféloldali csatorna biztonsági rések orvoslása
 
 [!INCLUDE [virtual-machines-common-mitigate-se](../../../includes/virtual-machines-common-mitigate-se.md)]
