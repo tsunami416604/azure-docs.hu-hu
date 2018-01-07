@@ -10,7 +10,11 @@ Amikor hoz létre egy új virtuális gép (VM) erőforráscsoportban lemezképek
 > 
 
 ## <a name="resize-the-os-drive"></a>Az operációs rendszer meghajtójának átméretezése
-Ez a cikk az operációs rendszer meghajtójának az [Azure Powershell](/powershell/azureps-cmdlets-docs) erőforrás-kezelő moduljaival történő átméretezését ismerteti. Nyissa meg a Powershell ISE-t vagy PowerShell-ablakot rendszergazdai módban, és kövesse az alábbi lépéseket:
+Ez a cikk az operációs rendszer meghajtójának az [Azure Powershell](/powershell/azureps-cmdlets-docs) erőforrás-kezelő moduljaival történő átméretezését ismerteti. Bemutatjuk az operációs rendszer meghajtó Unamanged és a felügyelt lemezek átméretezése, mivel mindkét lemeztípusok eltérnek a lemezek átméretezése módja.
+
+### <a name="for-resizing-unmanaged-disks"></a>Nem felügyelt lemezek átméretezéséhez:
+
+Nyissa meg a Powershell ISE-t vagy PowerShell-ablakot rendszergazdai módban, és kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be a Microsoft Azure-fiókjába erőforrás-kezelő módban, és válassza ki az előfizetését a következő módon:
    
@@ -34,7 +38,7 @@ Ez a cikk az operációs rendszer meghajtójának az [Azure Powershell](/powersh
     ```Powershell
     Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName
     ```
-5. Íme a pillanat, amire vártunk! Állítsa az operációsrendszer-lemez méretét a kívánt értékre, és frissítse a virtuális gépet a következő módon:
+5. Íme a pillanat, amire vártunk! A nem felügyelt operációsrendszer-lemez méretének beállítása a kívánt értéket, és frissítse a virtuális Gépet az alábbiak szerint:
    
    ```Powershell
    $vm.StorageProfile.OSDisk.DiskSizeGB = 1023
@@ -42,7 +46,50 @@ Ez a cikk az operációs rendszer meghajtójának az [Azure Powershell](/powersh
    ```
    
    > [!WARNING]
-   > Az új méretnek nagyobbnak kell lennie a meglévő lemezméretnél. A megengedett: 2048 GB. (Bontsa ki a Virtuálismerevlemez-blobot, ez a méret túl lehet, de az operációs rendszer csak az első 2048 GB lemezterületet dolgozhasson.)
+   > Az új méretnek nagyobbnak kell lennie a meglévő lemezméretnél. A megengedett maximális: 2048 GB operációsrendszer-lemezek. (Bontsa ki a Virtuálismerevlemez-blobot, ez a méret túl lehet, de az operációs rendszer csak az első 2048 GB lemezterületet dolgozhasson.)
+   > 
+   > 
+6. A virtuális gép frissítése eltarthat néhány másodpercig. Miután a parancs végrehajtása befejeződött, indítsa újra a virtuális gépet a következő módon:
+   
+   ```Powershell
+   Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
+   ```
+
+### <a name="for-resizing-managed-disks"></a>Felügyelt lemezek átméretezéséhez:
+
+Nyissa meg a Powershell ISE-t vagy PowerShell-ablakot rendszergazdai módban, és kövesse az alábbi lépéseket:
+
+1. Jelentkezzen be a Microsoft Azure-fiókjába erőforrás-kezelő módban, és válassza ki az előfizetését a következő módon:
+   
+   ```Powershell
+   Login-AzureRmAccount
+   Select-AzureRmSubscription –SubscriptionName 'my-subscription-name'
+   ```
+2. Állítsa az erőforráscsoport és a virtuális gép nevét a következőre:
+   
+   ```Powershell
+   $rgName = 'my-resource-group-name'
+   $vmName = 'my-vm-name'
+   ```
+3. Szerezzen be egy hivatkozást a virtuális gépre a következő módon:
+   
+   ```Powershell
+   $vm = Get-AzureRmVM -ResourceGroupName $rgName -Name $vmName
+   ```
+4. A lemez átméretezése előtt állítsa le a virtuális gépet a következő módon:
+   
+    ```Powershell
+    Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName
+    ```
+5. Szerezzen be egy hivatkozást a felügyelt operációsrendszer-lemezt. A felügyelt operációsrendszer-lemez méretének beállítása a kívánt értéket, és a lemez frissítése az alábbiak szerint:
+   
+   ```Powershell
+   $disk= Get-AzureRmDisk -ResourceGroupName $rgName -DiskName $vm.StorageProfile.OsDisk.Name
+   $disk.DiskSizeGB = 1023
+   Update-AzureRmDisk -ResourceGroupName $rgName -Disk $disk -DiskName $disk.Name
+   ```   
+   > [!WARNING]
+   > Az új méretnek nagyobbnak kell lennie a meglévő lemezméretnél. A megengedett maximális: 2048 GB operációsrendszer-lemezek. (Bontsa ki a Virtuálismerevlemez-blobot, ez a méret túl lehet, de az operációs rendszer csak az első 2048 GB lemezterületet dolgozhasson.)
    > 
    > 
 6. A virtuális gép frissítése eltarthat néhány másodpercig. Miután a parancs végrehajtása befejeződött, indítsa újra a virtuális gépet a következő módon:
@@ -53,8 +100,10 @@ Ez a cikk az operációs rendszer meghajtójának az [Azure Powershell](/powersh
 
 Készen is van. Csatlakozzon RDP-kapcsolaton keresztül a virtuális géphez, nyissa meg a Számítógép-kezelés (vagy Lemezkezelés) elemet, és bővítse ki a meghajtót az újonnan kiosztott tárhellyel.
 
-## <a name="summary"></a>Összefoglalás
-Ebben a cikkben a Powershell Azure Resource Manager-moduljaival bővítettük egy IaaS-beli virtuális gép operációsrendszer-meghajtóját. Az alábbiakban találja a teljes szkriptet:
+## <a name="summary"></a>Összegzés
+Ebben a cikkben a Powershell Azure Resource Manager-moduljaival bővítettük egy IaaS-beli virtuális gép operációsrendszer-meghajtóját. Mind a nem kezelt, mind a kezelt referenciaként a teljes parancsfájl másolható alatt van:
+
+Unamanged lemezek:
 
 ```Powershell
 Login-AzureRmAccount
@@ -67,17 +116,43 @@ $vm.StorageProfile.OSDisk.DiskSizeGB = 1023
 Update-AzureRmVM -ResourceGroupName $rgName -VM $vm
 Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
 ```
+Managed Disks:
 
-## <a name="next-steps"></a>Következő lépések
-Ez a cikk elsősorban a virtuális gép operációsrendszer-lemezének bővítéséről szól, azonban a létrehozott szkript egyetlen sor módosításával a virtuális géphez csatolt adatlemezek bővítésére is használható. A virtuális géphez csatolt első adatlemez bővítéséhez például cserélje ki a ```StorageProfile``` ```OSDisk``` objektumát a ```DataDisks``` tömbre, és egy numerikus indexszel szerezzen be az első csatolt adatlemezre mutató hivatkozást az alább látható módon:
+```Powershell
+Login-AzureRmAccount
+Select-AzureRmSubscription -SubscriptionName 'my-subscription-name'
+$rgName = 'my-resource-group-name'
+$vmName = 'my-vm-name'
+$vm = Get-AzureRmVM -ResourceGroupName $rgName -Name $vmName
+Stop-AzureRMVM -ResourceGroupName $rgName -Name $vmName
+$disk= Get-AzureRmDisk -ResourceGroupName $rgName -DiskName $vm.StorageProfile.OsDisk.Name
+$disk.DiskSizeGB = 1023
+Update-AzureRmDisk -ResourceGroupName $rgName -Disk $disk -DiskName $disk.Name
+Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
+```
 
+## <a name="next-steps"></a>További lépések
+Bár ebben a cikkben azt összpontosított elsősorban az Unamanged/felügyelt operációsrendszer-lemezképet a virtuális gép bővíteni, a fejlett parancsfájlt is felhasználhatók a bővített a adatlemezt csatolni a virtuális géphez. A virtuális géphez csatolt első adatlemez bővítéséhez például cserélje ki a ```StorageProfile``` ```OSDisk``` objektumát a ```DataDisks``` tömbre, és egy numerikus indexszel szerezzen be az első csatolt adatlemezre mutató hivatkozást az alább látható módon:
+
+Unamanged lemez:
 ```Powershell
 $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
 ```
+Felügyelt lemezes:
+```Powershell
+$disk= Get-AzureRmDisk -ResourceGroupName $rgName -DiskName $vm.StorageProfile.DataDisks[0].Name
+$disk.DiskSizeGB = 1023
+```
+
 Hasonlóképpen hivatkozhat más, a virtuális géphez csatolt adatlemezekre is, akár a fent látható módon egy index használatával, akár a lemez ```Name``` tulajdonságával, az alább látható módon:
 
+Unamanged lemez:
 ```Powershell
-($vm.StorageProfile.DataDisks | Where {$_.Name -eq 'my-second-data-disk'})[0].DiskSizeGB = 1023
+($vm.StorageProfile.DataDisks | Where ({$_.Name -eq 'my-second-data-disk'}).DiskSizeGB = 1023
+```
+Hierarchiája lemez:
+```Powershell
+(Get-AzureRmDisk -ResourceGroupName $rgName -DiskName ($vm.StorageProfile.DataDisks | Where ({$_.Name -eq 'my-second-data-disk'})).Name).DiskSizeGB = 1023
 ```
 
 Ha arról szeretne tájékozódni, hogyan csatlakoztathat lemezeket egy Azure Resource Manager-alapú virtuális géphez, tekintse meg ezt a [cikket](../articles/virtual-machines/windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
