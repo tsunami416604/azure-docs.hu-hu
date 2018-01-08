@@ -13,14 +13,14 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 09/18/2017
+ms.date: 12/18/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 68409d7832985bea635e4b6de341ea6aec6f560d
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 694d75b57d0f1b26640848344fbbe268fe285009
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Virtuális gép biztonsági mentése az Azure-ban
 Az Azure biztonsági másolatok létrehozhatók az Azure Portal segítségével. Ez a módszer egy böngészőalapú felhasználói felületet biztosít az Azure biztonsági másolatok, valamint az összes kapcsolódó erőforrás létrehozásához és konfigurálásához. Adatai védelme érdekében érdemes rendszeres időközönként biztonság mentést végeznie. Az Azure Backup georedundáns helyreállítási tárolókban tárolható helyreállítási pontokat hoz létre. Ez a cikk a virtuális gépek (VM-ek) az Azure Portal használatával való biztonsági mentését mutatja be részletesen. 
@@ -35,14 +35,14 @@ Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
 Hozzon létre egy egyszerű, ütemezett napi biztonsági mentést egy Recovery Services-tárolóba. 
 
 1. A bal oldali menüben válassza a **Virtuális gépek** elemet. 
-2. Válasszon egy virtuális gépet a listából, amelyről biztonsági mentést kíván készíteni. Ha a virtuális gépet a gyors üzembehelyezési példaparancsok használatával hozta létre, a virtuális gép *myVM* néven szerepel a *myResourceGroup* erőforráscsoportban.
-3. A **Beállítások** szakaszban válassza a **Biztonsági mentés** lehetőséget. Megnyílik a **Biztonsági mentés engedélyezése** ablak.
+2. Válasszon egy virtuális gépet a listából, amelyről biztonsági mentést kíván készíteni. Ha a virtuális gépet a gyors üzembe helyezés példaparancsai használatával hozta létre, a virtuális gép *myVM* néven szerepel a *myResourceGroup* erőforráscsoportban.
+3. A **Műveletek** szakaszban válassza a **Biztonsági mentés** lehetőséget. Megnyílik a **Biztonsági mentés engedélyezése** ablak.
 
 
 ## <a name="enable-backup-on-a-vm"></a>Biztonsági mentés engedélyezése egy virtuális gépen
 A Recovery Services-tároló egy logikai tároló, amely az egyes védett erőforrások, például az Azure-beli virtuális gépek biztonsági másolatainak adatait tárolja. Amikor egy védett erőforrás biztonsági mentésének feladata fut, a rendszer egy helyreállítási pontot hoz létre a Recovery Services-tárolóban. Ezt követően ezen helyreállítási pontok egyikével állíthatja vissza az adatokat egy adott időpontra.
 
-1. Válassza ki az **Új létrehozása** elemet, és adja meg az új tároló nevét – például **myRecoveryServicesVault**.
+1. Válassza ki az **Új létrehozása** elemet, és adja meg az új tároló nevét – például *myRecoveryServicesVault*.
 2. Ha még nem lenne kiválasztva, válassza a **Meglévő használata** beállítást, majd válassza ki a virtuális gép erőforráscsoportját a legördülő menüből.
 
     ![Virtuális gép biztonsági mentésének engedélyezése az Azure Portalon](./media/quick-backup-vm-portal/enable-backup.png)
@@ -52,6 +52,8 @@ A Recovery Services-tároló egy logikai tároló, amely az egyes védett erőfo
     Házirendek létrehozásával és használatával határozhatja meg, hogy a rendszer mikor futtassa a biztonsági mentési feladatokat, és meddig tárolja a helyreállítási pontokat. Az alapértelmezett védelmi házirend naponta egyszer futtat biztonsági mentési feladatot, és 30 napig őrzi meg a helyreállítási pontokat. Ezekkel az alapértelmezett értékekkel gyorsan biztosíthatja virtuális gépe védelmét. 
 
 3. Az alapértelmezett biztonsági mentés házirend értékeinek elfogadásához válassza a **Biztonsági mentés engedélyezése** lehetőséget.
+
+A Recovery Services-tároló létrehozása igénybe vehet pár másodpercet.
 
 
 ## <a name="start-a-backup-job"></a>Biztonsági mentési feladat indítása
@@ -86,13 +88,13 @@ Ha egy Biztonsági mentéssel foglalkozó oktatóanyaggal folytatja, amely a vir
     Miután a virtuális gép biztonsági mentése leállt, és a helyreállítási pontok is ellettek távolítva, törölheti az erőforráscsoportot. Ha egy meglévő virtuális gépet használt, megtarthatja az erőforráscsoportot és a virtuális gépet.
 
 5. A bal oldali menüben válassza az **Erőforráscsoportok** lehetőséget. 
-6. Válassza ki az erőforráscsoportot a listáról. Ha a virtuális gépet a gyors üzembehelyezési példaparancsok használatával hozta létre, az erőforráscsoport *myResourceGroup* néven szerepel.
+6. Válassza ki az erőforráscsoportot a listáról. Ha a virtuális gépet a gyors üzembe helyezés példaparancsai használatával hozta létre, az erőforráscsoport neve *myResourceGroup*.
 7. Válassza az **Erőforráscsoport törlése** elemet. A megerősítéshez adja meg az erőforráscsoport nevét, majd válassza a **Törlés** lehetőséget.
 
     ![Az erőforráscsoport törlése az Azure Portal használatával](./media/quick-backup-vm-portal/delete-resource-group.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A rövid útmutató során létrehozott egy Recovery Services-tárolót, engedélyezte a védelmet a virtuális gépen, valamint létrehozta a kezdeti helyreállítási pontot. Ha bővebb információra van szüksége az Azure Backup és a Recovery Services szolgáltatásokkal kapcsolatban, lépjen tovább a következő oktatóanyagokra.
 
 > [!div class="nextstepaction"]

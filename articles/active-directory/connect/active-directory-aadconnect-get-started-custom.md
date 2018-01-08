@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/02/2017
+ms.date: 01/02/2018
 ms.author: billmath
-ms.openlocfilehash: 724ccfbe6849c53f7c7e4e20444ac87197763e65
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a12bd2ec296acfb810c8805c92941e5bf70c6ccb
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Az Azure AD Connect testreszabott telepítése
 Az Azure AD Connect **Custom settings** (Egyéni beállítások) menüje akkor használható, ha részletesebb beállításokra van szükség a telepítéshez. Akkor van rá szükség, ha több erdővel rendelkezik vagy ha választható szolgáltatásokat kíván konfigurálni, amelyeket a gyorstelepítés nem tartalmaz. Minden olyan esetben szükséges, ahol a [**gyorstelepítés**](active-directory-aadconnect-get-started-express.md) beállítás nem megfelelő az üzemelő példányhoz vagy a topológiához.
@@ -50,12 +50,10 @@ A szükséges összetevők telepítését követően a rendszer megkéri, hogy v
 | Egyszeri bejelentkezési beállítás | Leírás |
 | --- | --- |
 | Jelszókivonat szinkronizálása |A felhasználók a Microsoft felhőszolgáltatásaiba, például az Office 365-be ugyanazzal a jelszóval jelentkezhetnek be, amelyet a helyszíni hálózaton is használnak. A felhasználók jelszavai szinkronizálva vannak az Azure AD szolgáltatásba jelszókivonatként, és a hitelesítés a felhőben történik. További információkért lásd a [jelszókivonat szinkronizálásával](active-directory-aadconnectsync-implement-password-synchronization.md) foglalkozó részt. |
-|Átmenő hitelesítés|A felhasználók a Microsoft felhőszolgáltatásaiba, például az Office 365-be ugyanazzal a jelszóval jelentkezhetnek be, amelyet a helyszíni hálózaton is használnak.  A rendszer a felhasználói jelszókat az őket ellenőrző helyszíni Active Directory-vezérlőn keresztül továbbítja.
+|Átmenő hitelesítés|A felhasználók a Microsoft felhőszolgáltatásaiba, például az Office 365-be ugyanazzal a jelszóval jelentkezhetnek be, amelyet a helyszíni hálózaton is használnak.  A rendszer a felhasználói jelszavakat az őket ellenőrző helyszíni Active Directory-tartományvezérlőn keresztül továbbítja.
 | Összevonás az AD FS rendszerrel |A felhasználók a Microsoft felhőszolgáltatásaiba, például az Office 365-be ugyanazzal a jelszóval jelentkezhetnek be, amelyet a helyszíni hálózaton is használnak.  A rendszer átirányítja a felhasználókat helyszíni AD FS-példányukra a bejelentkezéshez, és a hitelesítés a helyszíni rendszeren történik. |
-| Nincs konfigurálás |Egyik szolgáltatás sincs telepítve és konfigurálva. Válassza ezt a lehetőséget, ha már rendelkezik külső fél által biztosított összevonási kiszolgálóval vagy más meglévő megoldással. |
-|Egyszeri bejelentkezés engedélyezése|Ez a lehetőség jelszó-szinkronizálás és átmenő hitelesítés mellett is elérhető, és egyszeri bejelentkezést biztosít az asztali gépek felhasználóinak a vállalati hálózaton.  További információkért tekintse meg az [egyszeri bejelentkezést](active-directory-aadconnect-sso.md) ismertető témakört. </br>Vegye figyelembe, hogy ez a lehetőség az AD FS-ügyfelek számára nem érhető el, mert az AD FS már tartalmaz ennek megfelelő szintű egyszeri bejelentkezési funkciót.</br>(Ha az átmenő hitelesítés ugyanakkor nincs kibocsátva.)
-|Bejelentkezési beállítás|Ez a lehetőség a jelszókivonat-szinkronizálást alkalmazó ügyfelek számára érhető el, és egyszeri bejelentkezést biztosít az asztali gépek felhasználóinak a vállalati hálózaton.  </br>További információkért tekintse meg az [egyszeri bejelentkezést](active-directory-aadconnect-sso.md) ismertető témakört. </br>Vegye figyelembe, hogy ez a lehetőség az AD FS-ügyfelek számára nem érhető el, mert az AD FS már tartalmaz ennek megfelelő szintű egyszeri bejelentkezési funkciót.
-
+| Nincs konfigurálás |Nincs telepítve és konfigurálva felhasználói bejelentkezési szolgáltatás. Válassza ezt a lehetőséget, ha már rendelkezik külső fél által biztosított összevonási kiszolgálóval vagy más meglévő megoldással. |
+|Egyszeri bejelentkezés engedélyezése|Ez a lehetőség jelszó-szinkronizálás és átmenő hitelesítés mellett is elérhető, és egyszeri bejelentkezést biztosít az asztali gépek felhasználóinak a vállalati hálózaton. További információkért tekintse meg az [egyszeri bejelentkezést](active-directory-aadconnect-sso.md) ismertető témakört. </br>Vegye figyelembe, hogy ez a lehetőség az AD FS-ügyfelek számára nem érhető el, mert az AD FS már tartalmaz ennek megfelelő szintű egyszeri bejelentkezési funkciót.</br>
 
 ### <a name="connect-to-azure-ad"></a>Csatlakozás az Azure AD szolgáltatáshoz
 A Csatlakozás az Azure AD szolgáltatáshoz képernyőn adjon meg egy globális rendszergazdai fiókot és jelszót. Ha az előző oldalon az **Összevonás az AD FS rendszerrel** lehetőséget választotta, ne olyan fiókkal jelentkezzen be, amely egy, az összevonásra engedélyezni kívánt tartományban található. Javasoljuk, hogy egy, az Azure AD címtárral kapott alapértelmezett **onmicrosoft.com** tartományban lévő fiókot használjon.
@@ -81,11 +79,10 @@ Miután beírta az erdő nevét és a **Címtár hozzáadása** gombra kattintot
 
 | Beállítás | Leírás |
 | --- | --- |
-| Meglévő fiók használata | Válassza ezt a lehetőséget, ha meglévő AD DS-fiókot szeretne megadni az Azure AD Connect számára, amellyel csatlakozhat az AD-erdőhöz a címtár szinkronizálása során. A tartományrészt megadhatja NetBios- vagy FQDN-formátumban, vagyis FABRIKAM\syncuser vagy fabrikam.com\syncuser alakban. A fiók lehet normál felhasználói fiók is, mivel csupán az alapértelmezett olvasási engedélyek szükségesek. A forgatókönyvtől függően azonban más engedélyekre is szüksége lehet. További információkért lásd: [Azure AD Connect-fiókok és -engedélyek](active-directory-aadconnect-accounts-permissions.md#create-the-ad-ds-account). |
 | Új fiók létrehozása | Válassza ezt a lehetőséget, ha az Azure AD Connect varázslójával szeretné létrehozni az AD DS-fiókot az Azure AD Connect számára, amellyel csatlakozhat az AD-erdőhöz a címtár szinkronizálása során. Ha ezt a lehetőséget választja, adja meg egy vállalati rendszergazdai fiók felhasználónevét és jelszavát. Az Azure AD Connect varázsló a megadott vállalati rendszergazdai fiók használatával hozza létre a szükséges AD DS-fiókot. A tartományrészt megadhatja NetBios- vagy FQDN-formátumban, vagyis FABRIKAM\rendszergazda vagy fabrikam.com\rendszergazda alakban. |
+| Meglévő fiók használata | Válassza ezt a lehetőséget, ha meglévő AD DS-fiókot szeretne megadni az Azure AD Connect számára, amellyel csatlakozhat az AD-erdőhöz a címtár szinkronizálása során. A tartományrészt megadhatja NetBios- vagy FQDN-formátumban, vagyis FABRIKAM\syncuser vagy fabrikam.com\syncuser alakban. A fiók lehet normál felhasználói fiók is, mivel csupán az alapértelmezett olvasási engedélyek szükségesek. A forgatókönyvtől függően azonban más engedélyekre is szüksége lehet. További információkért lásd: [Azure AD Connect-fiókok és -engedélyek](active-directory-aadconnect-accounts-permissions.md#create-the-ad-ds-account). |
 
 ![Címtár csatlakoztatása](./media/active-directory-aadconnect-get-started-custom/connectdir02.png)
-
 
 ### <a name="azure-ad-sign-in-configuration"></a>Azure AD-bejelentkezés konfigurálása
 Ezen az oldalon áttekintheti a helyszíni AD DS rendszerben jelenlévő és az Azure AD szolgáltatásban ellenőrzött UPN-tartományokat. Az oldalon emellett konfigurálhatja a userPrincipalName tulajdonsághoz használt attribútumot is.
@@ -239,7 +236,7 @@ Az AD FS konfigurálása az Azure AD Connecttel egyszerű feladat, amely mindös
 >Az AD FS-farm SSL-tanúsítványát akkor is frissítheti az Azure AD Connect használatával, ha nem azzal kezeli az összevonási megbízhatósági kapcsolatot.
 
 ### <a name="ad-fs-configuration-pre-requisites"></a>Az AD FS konfigurálásának előfeltételei
-Az AD FS farm konfigurálásához az Azure AD Connect használatával ellenőrizze, hogy a WinRM engedélyezve van-e a távoli kiszolgálókon. Emellett tekintse át a [3. táblázat – Azure AD Connect and Federation Servers/WAP](active-directory-aadconnect-ports.md#table-3---azure-ad-connect-and-ad-fs-federation-serverswap) (Azure AD Connect és az összevonási kiszolgálók/WAP) listában szereplő portkövetelményeket.
+Az AD FS farm konfigurálásához az Azure AD Connect használatával ellenőrizze, hogy a WinRM engedélyezve van-e a távoli kiszolgálókon. Győződjön meg róla, hogy végrehajtotta a többi feladatot az [összevonási előfeltételekben](active-directory-aadconnect-prerequisites.md#prerequisites-for-federation-installation-and-configuration). Emellett tekintse át a [3. táblázat – Azure AD Connect and Federation Servers/WAP](active-directory-aadconnect-ports.md#table-3---azure-ad-connect-and-ad-fs-federation-serverswap) (Azure AD Connect és az összevonási kiszolgálók/WAP) listában szereplő portkövetelményeket.
 
 ### <a name="create-a-new-ad-fs-farm-or-use-an-existing-ad-fs-farm"></a>Új AD FS farm létrehozása vagy meglévő AD FS farm használata
 Használhat egy meglévő AD FS farmot, vagy dönthet úgy, hogy létrehoz egy újat. Amennyiben úgy dönt, hogy újat hoz létre, meg kell adnia az SSL-tanúsítványt. Ha az SSL-tanúsítvány jelszóval védett, a rendszer kéri a jelszót.
@@ -252,7 +249,7 @@ Ha úgy döntött, hogy egy meglévő farmot használ, a következő lépés az 
 >Az Azure AD Connect segítségével csak egy AD FS-farm kezelhető. Ha rendelkezik meglévő összevonási megbízhatósági kapcsolattal, és a kiválasztott AD FS-farmon konfigurálva van az Azure AD, az Azure AD Connect akkor is teljesen újraépíti majd a megbízhatósági kapcsolatot.
 
 ### <a name="specify-the-ad-fs-servers"></a>Az AD FS kiszolgálók megadása
-Határozza meg a kiszolgálókat, amelyekre az AD FS szolgáltatást telepíteni kívánja. Egy vagy több kiszolgálót is hozzáadhat kapacitástervezési igényeitől függően. Csatlakoztassa az összes kiszolgálót az Active Directory szolgáltatáshoz, mielőtt elvégezné ezt a konfigurációt. A Microsoft a teszt- és próbatelepítésekhez egyetlen AD FS-kiszolgáló üzembe helyezését javasolja. Később, a kezdeti konfigurációt követően az Azure AD Connect ismételt futtatásával további kiszolgálókat adhat hozzá és helyezhet üzembe méretezési igényeitől függően.
+Határozza meg a kiszolgálókat, amelyekre az AD FS szolgáltatást telepíteni kívánja. Egy vagy több kiszolgálót is hozzáadhat kapacitástervezési igényeitől függően. Csatlakoztassa az összes AD FS-kiszolgálót (WAP-kiszolgálók esetén nem szükséges) az Active Directoryhoz, mielőtt elvégezné ezt a konfigurálást. A Microsoft a teszt- és próbatelepítésekhez egyetlen AD FS-kiszolgáló üzembe helyezését javasolja. Később, a kezdeti konfigurációt követően az Azure AD Connect ismételt futtatásával további kiszolgálókat adhat hozzá és helyezhet üzembe méretezési igényeitől függően.
 
 > [!NOTE]
 > A konfiguráció végrehajtását megelőzően bizonyosodjon meg róla, hogy mindegyik kiszolgáló csatlakozik egy AD-tartományhoz.
@@ -265,7 +262,7 @@ Határozza meg a kiszolgálókat, amelyekre az AD FS szolgáltatást telepíteni
 Határozza meg a webalkalmazás-proxy kiszolgálóként használni kívánt kiszolgálókat. A webalkalmazás-proxy kiszolgáló a szegélyhálózaton (DMZ-ben) lesz üzembe helyezve (az extranet oldalon), és az extranetről érkező hitelesítési kéréseket támogatja. Egy vagy több kiszolgálót is hozzáadhat kapacitástervezési igényeitől függően. A Microsoft a teszt- és próbatelepítésekhez egyetlen webalkalmazás-proxykiszolgáló üzembe helyezését javasolja. Később, a kezdeti konfigurációt követően az Azure AD Connect ismételt futtatásával további kiszolgálókat adhat hozzá és helyezhet üzembe méretezési igényeitől függően. Javasoljuk, hogy ugyanennyi proxykiszolgálóval rendelkezzen az intranetről érkező hitelesítési kérések kiszolgálására.
 
 > [!NOTE]
-> <li> Amennyiben a használt fiók nem helyi rendszergazda az AD FS-kiszolgálókon, a rendszer rendszergazdai hitelesítő adatokat kér.</li>
+> <li> Amennyiben a használt fiók nem helyi rendszergazda a WAP-kiszolgálókon, a rendszer rendszergazdai hitelesítő adatokat kér.</li>
 > <li> A jelen lépés végrehajtása előtt győződjön meg róla, hogy fennáll a HTTP/HTTPS kapcsolat az Azure AD Connect-kiszolgáló és a webalkalmazás-proxy kiszolgáló közt.</li>
 > <li> A hitelesítési kérések zavartalan áramlása érdekében győződjön meg róla, hogy fennáll a HTTP/HTTPS kapcsolat a webalkalmazás-kiszolgáló és az AD FS-kiszolgáló közt.</li>
 >
@@ -345,7 +342,7 @@ Ezen felül hajtsa végre a következő ellenőrzési lépéseket:
 * Ellenőrizze, hogy be tud jelentkezni egy, az extraneten lévő eszközről. Egy otthoni gépről vagy mobileszközről csatlakozzon a https://myapps.microsoft.com helyre, és adja meg hitelesítő adatait.
 * Ellenőrizze a gazdag ügyféllel való bejelentkezést. Csatlakozzon a https://testconnectivity.microsoft.com helyhez, lépjen az **Office 365** lapra, és válassza az **Office 365 Single Sign-On Test** (Office 365 egyszeri bejelentkezés tesztelése) lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Miután a telepítés befejeződött, jelentkezzen ki, majd ismét jelentkezzen be a Windowsba, mielőtt a Synchronization Service Managert (Szinkronizálási szolgáltatás kezelőjét) vagy a Synchronization Rule Editort (Szinkronizálási szabályok szerkesztőjét) használná.
 
 Miután az Azure AD Connect telepítése megtörtént, [ellenőrizheti a telepítést, és hozzárendelheti a licenceket](active-directory-aadconnect-whats-next.md).

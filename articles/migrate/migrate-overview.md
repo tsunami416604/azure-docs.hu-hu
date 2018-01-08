@@ -1,24 +1,16 @@
 ---
 title: "Az Azure Migrate bemutatása | Microsoft Docs"
 description: "A cikk áttekintést nyújt az Azure Migrate szolgáltatásról."
-services: migrate
-documentationcenter: 
 author: rayne-wiselman
-manager: carmonm
-editor: 
-ms.assetid: 7b313bb4-c8f4-43ad-883c-789824add3288
-ms.service: migrate
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 11/23/2017
+ms.service: azure-migrate
+ms.topic: overview
+ms.date: 12/19/2017
 ms.author: raynew
-ms.openlocfilehash: 5c78f68c481b68cff31bdc5fd410549c2d44ba5a
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: e998a085399718340e2e3ce2524244844f4e6a14
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="about-azure-migrate"></a>Az Azure Migrate bemutatása
 
@@ -41,13 +33,12 @@ Az Azure Migrate az alábbiakban nyújt segítséget:
 - Jelenleg értékelheti a helyszíni VMware virtuális gépeket az Azure-beli virtuális gépekre való migráláshoz.
 
 > [!NOTE]
-> A Hyper-V támogatása az ütemterv részét képezi, és néhány hónapon belül engedélyezve lesz. Addig is az Azure Site Recovery Deployment Planner használatát javasoljuk a Hyper-V számítási feladatok migrálásának megtervezéséhez. 
+> A Hyper-V támogatása az ütemterv részét képezi, és hamarosan engedélyezve lesz. Addig is az [Azure Site Recovery Deployment Planner](http://aka.ms/asr-dp-hyperv-doc) használatát javasoljuk a Hyper-V-alapú számítási feladatok migrálásának megtervezéséhez. 
 
-- Egyetlen értékeléssel akár 1000 virtuális gépet, egyetlen Azure Migrate-projekt részeként pedig akár 1500 gépet értékelhet. Ha ennél többet kell értékelnie, növelheti a projektek vagy értékelések számát. [További információk](how-to-scale-assessment.md).
+- Egyetlen felderítéssel akár 1000 virtuális gépet, egyetlen projekt részeként pedig akár 1500 virtuális gépet is felderíthet. Ezenkívül egyetlen értékeléssel akár 400 virtuális gépet is értékelhet. Ha ennél többet kell felderítenie vagy értékelnie, növelheti a felderítések vagy az értékelések számát. [További információk](how-to-scale-assessment.md).
 - Az értékelni kívánt virtuális gépet egy 5.5-ös, 6.0-s vagy 6.5-ös verziójú vCenter Servernek kell felügyelnie.
 - Azure Migrate-projektet csak az USA középnyugati régiójában lehet létrehozni. Ez azonban nem befolyásolja a migrálás megtervezését egy másik Azure-beli célhelyre. A migrálási projekt helyét a rendszer csak a helyszíni környezetből felderített metaadatok tárolására használja.
-- Az Azure Migrate portál jelenleg csak angol nyelven érhető el. 
-- Az Azure Migrate jelenleg csak a [helyileg redundáns tárolás (LRS)](../storage/common/storage-introduction.md#replication) típusú replikációt támogatja.
+- Az Azure Migrate kizárólag a felügyelt lemezek migrálásfelmérését támogatja.
 
 ## <a name="what-do-i-need-to-pay-for"></a>Mi az, amiért fizetnem kell?
 
@@ -91,7 +82,7 @@ A táblázat összefoglalja az Azure Migrate kommunikációjához szükséges po
 |-------------------|------------------------|---------------|---------|
 |Gyűjtő          |Azure Migrate szolgáltatás   |443-as TCP        |A gyűjtő a 443-as SSL-porton keresztül csatlakozik a szolgáltatáshoz|
 |Gyűjtő          |vCenter Server          |9443-as alapértelmezett   | Alapértelmezés szerint a gyűjtő a 9443-as porton csatlakozik a vCenter Serverhez. Ha a kiszolgáló egy másik porton figyel, azt kimenő portként kell konfigurálni a gyűjtő virtuális gépen. |
-|Helyszíni virtuális gép     | Operations Management Suite (OMS) Workspace          |[443-as TCP](../log-analytics/log-analytics-windows-agents.md#system-requirements-and-required-configuration) |Az MMA-ügynök a 443-as TCP-portot használja a Log Analyticshez való csatlakozáshoz. Erre a portra csak akkor van szükség, ha a függőségmegjelenítési funkciót használja, és telepíti a Microsoft Monitoring Agent (MMA) ügynököt. |
+|Helyszíni virtuális gép     | Operations Management Suite (OMS) Workspace          |[443-as TCP](../log-analytics/log-analytics-windows-agent.md) |Az MMA-ügynök a 443-as TCP-portot használja a Log Analyticshez való csatlakozáshoz. Erre a portra csak akkor van szükség, ha a függőségmegjelenítési funkciót használja, és telepíti a Microsoft Monitoring Agent (MMA) ügynököt. |
 
 
   
@@ -110,5 +101,5 @@ Miután értékelte a helyszíni gépeket az Azure Migrate szolgáltatással tö
 
 
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 [Kövesse az oktatóanyag](tutorial-assessment-vmware.md) lépéseit értékelés létrehozásához egy helyszíni VMware virtuális gép számára.

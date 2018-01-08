@@ -1,11 +1,11 @@
 ---
-title: "Leküldéses értesítések küldése iOS-re az Azure Notification Hubs használatával | Microsoft Docs"
+title: "Az iOS-alkalmazásokhoz készült Azure Notification Hubs használatának első lépései | Microsoft Docs"
 description: "Ebből az oktatóanyagból elsajátíthatja, hogy miként használható az Azure Notification Hubs leküldéses értesítések küldéséhez iOS-alkalmazások esetén."
 services: notification-hubs
 documentationcenter: ios
 keywords: "leküldéses értesítés,leküldéses értesítések,ios leküldéses értesítések"
-author: ysxu
-manager: erikre
+author: jwhitedev
+manager: kpiteira
 editor: 
 ms.assetid: b7fcd916-8db8-41a6-ae88-fc02d57cb914
 ms.service: notification-hubs
@@ -13,15 +13,15 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: hero-article
-ms.date: 10/03/2016
-ms.author: yuaxu
-ms.openlocfilehash: 2ca6507fba0895b4f551ead5341d4febbd402b8f
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.date: 12/22/2017
+ms.author: jawh
+ms.openlocfilehash: 0e9e7ab196eef790b74074be319cd8122cf3ff5c
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/02/2018
 ---
-# <a name="sending-push-notifications-to-ios-with-azure-notification-hubs"></a>Leküldéses értesítések küldése iOS-re az Azure Notification Hubs használatával
+# <a name="get-started-with-azure-notification-hubs-for-ios-apps"></a>Az iOS-alkalmazásokhoz készült Azure Notification Hubs használatának első lépései
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 ## <a name="overview"></a>Áttekintés
@@ -30,7 +30,7 @@ ms.lasthandoff: 12/12/2017
 > 
 > 
 
-Ez az oktatóanyag azt mutatja be, hogy hogyan használható az Azure Notification Hubs leküldéses értesítések küldésére iOS-alkalmazásokba. Létre fog hozni egy üres iOS-alkalmazást, amely leküldéses értesítéseket fogad az [Apple Push Notification szolgáltatás (APNs)](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html) használatával. 
+Ez az oktatóanyag azt mutatja be, hogy hogyan használható az Azure Notification Hubs leküldéses értesítések küldésére iOS-alkalmazásokba. Létre fog hozni egy üres iOS-alkalmazást, amely leküldéses értesítéseket fogad az [Apple Push Notification szolgáltatás (APNs)](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1) használatával. 
 
 Amikor végzett, képes lesz az értesítési központ használatával leküldéses értesítéseket küldeni az alkalmazást futtató összes eszközre.
 
@@ -42,9 +42,9 @@ Az oktatóanyag teljes kódja megtalálható a [GitHubon](https://github.com/Azu
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyaghoz az alábbiakra lesz szükség:
 
-* [Mobile Services iOS SDK 1.2.4-es verzióját]
+* [Microsoft Azure üzenetkezelési keretrendszert]
 * Az [Xcode] legújabb verziója
-* Az iOS 8-cal (vagy újabb verzióval) kompatibilis eszköz
+* Az iOS 10-zel (vagy újabb verzióval) kompatibilis eszköz
 * Tagság az [Apple fejlesztői programjában](https://developer.apple.com/programs/).
   
   > [!NOTE]
@@ -57,7 +57,7 @@ Ennek az oktatóanyagnak az elvégzése előfeltétel minden további, iOS-alkal
 [!INCLUDE [Notification Hubs Enable Apple Push Notifications](../../includes/notification-hubs-enable-apple-push-notifications.md)]
 
 ## <a name="configure-your-notification-hub-for-ios-push-notifications"></a>Az értesítési központ konfigurálása iOS leküldéses értesítésekhez
-Ez a szakasz végigvezeti egy új értesítési központ létrehozásának és az APNS-hitelesítés konfigurálásának folyamatán a létrehozott **.p12** leküldéses tanúsítvány használatával. Ha egy már korábban létrehozott értesítési központot kíván használni, egyből az 5. lépésre ugorhat.
+Ez a szakasz végigvezeti egy új értesítési központ létrehozásának, valamint az APNS-hitelesítés korábban létrehozott **.p12** leküldéses tanúsítvánnyal történő konfigurálásának lépésein. Ha egy már korábban létrehozott értesítési központot kíván használni, egyből az 5. lépésre ugorhat.
 
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
@@ -65,41 +65,43 @@ Ez a szakasz végigvezeti egy új értesítési központ létrehozásának és a
 
 <li>
 
-<p>A <b>Beállítások</b> panelen kattintson az <b>Értesítési szolgáltatások</b> gombra, majd válassza az <b>Apple (APNS)</b> lehetőséget. Kattintson a <b>Tanúsítvány feltöltése</b> lehetőségre, és válassza a korábban exportált <b>.p12</b> fájlt. Ügyeljen rá, hogy a helyes jelszót adja meg.</p>
+<p>Az <b>Értesítési szolgáltatások</b> területen válassza az <b>Apple (APNS)</b> lehetőséget. Válassza a <b>Tanúsítvány</b> lehetőséget, kattintson a fájl ikonra, és válassza ki a korábban exportált <b>.p12</b> fájlt. Ügyeljen rá, hogy a helyes jelszót adja meg.</p>
 
 <p>Válassza a <b>Védőfal</b> módot, mivel ez használható fejlesztéshez. Az <b>Éles</b> beállítást kizárólag akkor használja, ha olyan felhasználóknak szeretne leküldéses értesítéseket küldeni, akik megvásárolták az alkalmazást az áruházból.</p>
 </li>
 </ol>
-&emsp;&emsp;&emsp;&emsp;![APNS konfigurálása az Azure Portalon](./media/notification-hubs-ios-get-started/notification-hubs-apple-config.png)
+&emsp;&emsp;&emsp;&emsp;![APNS konfigurálása az Azure Portalon][6]
 
-&emsp;&emsp;&emsp;&emsp;![APNS-tanúsítvány konfigurálása az Azure Portalon](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png)
+&emsp;&emsp;&emsp;&emsp;![APNS-tanúsítvány konfigurálása az Azure Portalon][7]
 
-Az értesítési központ konfigurálva lett az APNS-sel való együttműködésre, és rendelkezik a kapcsolati karakterláncokkal az alkalmazás regisztrálásához és leküldéses értesítések küldéséhez.
+Konfigurálta az értesítési központot az APNS-sel való együttműködésre, és rendelkezik a kapcsolati karakterláncokkal az alkalmazás regisztrálásához és leküldéses értesítések küldéséhez.
 
 ## <a name="connect-your-ios-app-to-notification-hubs"></a>iOS-alkalmazás összekapcsolása a Notification Hubs szogáltatással
 1. Az Xcode-ban hozzon létre egy új iOS-projektet, és válassza az **Single View Application** (Egynézetes alkalmazás) sablont.
    
     ![Xcode – Egynézetes alkalmazás][8]
     
-2. Amikor megadja az új projekt beállításait, győződjön meg róla, hogy a **Product Name** (Terméknév) és az **Organization Identifier** (Szervezetazonosító) ugyanaz, mint amit az Apple fejlesztői portálján a csomagazonosító beállításakor használt.
+2. Amikor megadja az új projekt beállításait, győződjön meg arról, hogy a **Terméknév** és a **Szervezetazonosító** ugyanaz, mint amit az Apple fejlesztői portálján a csomagazonosító beállításakor használt.
    
     ![Xcode – projektbeállítások][11]
     
-3. A **Targets** (Célok) alatt kattintson a projektnévre, majd a **Build Settings** (Létrehozási beállítások) lapra, és bontsa ki a **Code Signing Identity** (Kódaláíró identitás) lehetőséget, majd a **Debug** (Hibakeresés) alatt állítsa be a kódaláíró identitását. A **Levels** (Szintek) esetében a **Basic** (Alapszintű) beállítást módosítsa **All** (Összes) értékre, és a **Provisioning Profile** (Létesítési profil) értékeként állítsa be a korábban létrehozott létesítési profilt.
+3. A Projektkezelőben kattintson a projekt nevére, kattintson az **Általános** lapra, majd keresse meg az **Aláírás** elemet. Győződjön meg arról, hogy a megfelelő csoportot választja ki az Apple Developer-fiókjához. Az Xcode a csomagazonosító alapján automatikusan lekéri a korábban létrehozott kiépítési profilt.
    
     Ha nem jelenik meg az Xcode-ban létrehozott új létesítési profil, frissítse az aláíró identitása profiljait. A menüsoron kattintson az **Xcode** elemre, majd a **Preferences** (Beállítások) lehetőségre, az **Account** (Fiók) lapra és a **View Details** (Részletek megtekintése) gombra. Ezután kattintson az aláírási identitására, majd kattintson a frissítési gombra a jobb alsó sarokban.
-   
+
     ![Xcode – Létesítési profil][9]
-4. Töltse le a [Mobile Services iOS SDK 1.2.4-es verzióját], és bontsa ki a fájlt. Az Xcode-ban kattintson a jobb gombbal a projektjére, majd kattintson az **Add Files to** (Fájlok hozzáadása a következőhöz:) lehetőségre a **WindowsAzureMessaging.framework** mappa az Xcode-projektjéhez adásához. Válassza a **Copy items if needed** (Elemek másolása, ha szükséges) lehetőséget, majd kattintson az **Add** (Hozzáadás) gombra.
+
+4. Válassza a **Képességek** lapot, és engedélyezze a leküldéses értesítéseket.
+
+    ![Xcode – leküldési képességek][12]
    
-   > [!NOTE]
-   > A Notification Hubs SDK jelenleg nem támogatja a bitcode-ot az Xcode 7-ben.  Állítsa az **Enable Bitcode** (Bitcode engedélyezése) beállítást **No** (Nem) értékűre a projektre vonatkozó **Build Options** (Létrehozási beállítások) között.
-   > 
-   > 
-   
+5. Töltse le a [Microsoft Azure üzenetkezelési keretrendszert], és bontsa ki a fájlt. Az Xcode-ban kattintson a jobb gombbal a projektjére, majd kattintson az **Add Files to** (Fájlok hozzáadása a következőhöz:) lehetőségre a **WindowsAzureMessaging.framework** mappa az Xcode-projektjéhez adásához. Válassza a **Beállítások** lehetőséget, és győződjön meg arról, hogy az **Elemek másolása, ha szükséges** elem be van jelölve, majd kattintson a **Hozzáadás** elemre.
+
     ![Az Azure SDK kicsomagolása][10]
-5. Adjon hozzá egy `HubInfo.h` nevű új fejlécfájlt a projektjéhez. Ez a fájl tárolja majd az állandókat az értesítési központjához.  Adja hozzá a következő definíciókat, és cserélje le a szövegkonstans helyőrzőit a *központnévre* és a *DefaultListenSharedAccessSignature* változóra, amelyet korábban feljegyzett.
-   
+
+6. Adjon hozzá egy **HubInfo.h** nevű új fejlécfájlt a projektjéhez. Ez a fájl tárolja majd az állandókat az értesítési központjához. Adja hozzá a következő definíciókat, és cserélje le a szövegkonstans helyőrzőit a *központ nevére* és a korábban feljegyzett *DefaultListenSharedAccessSignature* változóra.
+
+    ```obj-c
         #ifndef HubInfo_h
         #define HubInfo_h
    
@@ -107,323 +109,70 @@ Az értesítési központ konfigurálva lett az APNS-sel való együttműködés
             #define HUBLISTENACCESS @"<Enter your DefaultListenSharedAccess connection string"
    
         #endif /* HubInfo_h */
-6. Nyissa meg az `AppDelegate.h` fájlt, és adja hozzá a következő importálási irányelveket:
-   
-         #import <WindowsAzureMessaging/WindowsAzureMessaging.h> 
-         #import "HubInfo.h"
-7. Adja hozzá a következő kódot az `AppDelegate.m file` `didFinishLaunchingWithOptions` metódusában az iOS verziójától függően. Ez a kód regisztrálja az eszközleíróját az APNs szolgáltatással:
-   
-    iOS 8 esetén:
-   
-         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeSound |
-                                                UIUserNotificationTypeAlert | UIUserNotificationTypeBadge categories:nil];
+    ```
+    
+7. Nyissa meg az **AppDelegate.h** fájlt, és adja hozzá a következő importálási irányelveket:
+
+    ```obj-c
+        #import <WindowsAzureMessaging/WindowsAzureMessaging.h>
+        #import <UserNotifications/UserNotifications.h> 
+        #import "HubInfo.h"
+    ```
+8. Az **AppDelegate.m** fájlban adja hozzá a következő kódot az **didFinishLaunchingWithOptions** metódushoz az iOS-verziójától függően. Ez a kód regisztrálja az eszközleíróját az APNs szolgáltatással:
+
+    ```obj-c
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeSound |
+            UIUserNotificationTypeAlert | UIUserNotificationTypeBadge categories:nil];
    
         [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
         [[UIApplication sharedApplication] registerForRemoteNotifications];
+    ```
    
-    Az iOS 8-nál régebbi verziók esetén:
-   
-         [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
-8. Ugyanebben a fájlban adja hozzá a következő metódusokat. Ez a kód a HubInfo.h-ban megadott kapcsolati információk használatával kapcsolódik az értesítési központhoz. Ezután megadja az eszköz jogkivonatát az értesítési központnak, így az képes értesítéseket küldeni:
-   
-        - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *) deviceToken {
-            SBNotificationHub* hub = [[SBNotificationHub alloc] initWithConnectionString:HUBLISTENACCESS
+9. Ugyanebben a fájlban adja hozzá a következő metódusokat:
+
+    ```obj-c
+         - (void) application:(UIApplication *) application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *) deviceToken {
+           SBNotificationHub* hub = [[SBNotificationHub alloc] initWithConnectionString:HUBLISTENACCESS
                                         notificationHubPath:HUBNAME];
    
             [hub registerNativeWithDeviceToken:deviceToken tags:nil completion:^(NSError* error) {
-                if (error != nil) {
-                    NSLog(@"Error registering for notifications: %@", error);
+               if (error != nil) {
+                   NSLog(@"Error registering for notifications: %@", error);
                 }
                 else {
-                    [self MessageBox:@"Registration Status" message:@"Registered"];
-                }
-            }];
-        }
+                   [self MessageBox:@"Registration Status" message:@"Registered"];
+              }
+          }];
+         }
    
-        -(void)MessageBox:(NSString *)title message:(NSString *)messageText
+        -(void)MessageBox:(NSString *) title message:(NSString *)messageText
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:messageText delegate:self
+         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:messageText delegate:self
                 cancelButtonTitle:@"OK" otherButtonTitles: nil];
             [alert show];
         }
-9. Ugyanebben a fájlban adja hozzá a következő metódust egy **UIAlert** megjelenítéséhez, ha értesítés érkezik, amikor az alkalmazás aktív:
+    ```
 
-        - (void)application:(UIApplication *)application didReceiveRemoteNotification: (NSDictionary *)userInfo {
-            NSLog(@"%@", userInfo);
-            [self MessageBox:@"Notification" message:[[userInfo objectForKey:@"aps"] valueForKey:@"alert"]];
-        }
+    Ez a kód a HubInfo.h-ban megadott kapcsolati információk használatával kapcsolódik az értesítési központhoz. Ezután megadja az eszköz jogkivonatát az értesítési központnak, így az képes értesítéseket küldeni.
 
-1. Hozza létre és futtassa az alkalmazást az eszközön a hibák ellenőrzése érdekében.
+10. Ugyanebben a fájlban adja hozzá a következő metódust egy **UIAlert** megjelenítéséhez, ha értesítés érkezik, amikor az alkalmazás aktív:
+
+    ```obj-c
+            - (void)application:(UIApplication *)application didReceiveRemoteNotification: (NSDictionary *)userInfo {
+               NSLog(@"%@", userInfo);
+               [self MessageBox:@"Notification" message:[[userInfo objectForKey:@"aps"] valueForKey:@"alert"]];
+           }
+    ```
+
+11. Hozza létre és futtassa az alkalmazást az eszközön az esetleges hibák kereséséhez.
 
 ## <a name="send-test-push-notifications"></a>Teszt leküldéses értesítések küldése
-A leküldéses értesítések fogadásának az alkalmazásban való teszteléséhez leküldéses értesítéseket küldhet az [Azure Portal], a központ paneljének **Hibaelhárítás** részéből (használja a *Küldés tesztelése* lehetőséget).
+Az [Azure Portalról] *Tesztküldés* lehetőségével tesztelheti az alkalmazásban az értesítések fogadását. Ez egy leküldéses tesztértesítést küld az eszközre.
 
-![Azure portál – Küldés tesztelése][30]
+![Azure Portal – Küldés tesztelése][30]
 
 [!INCLUDE [notification-hubs-sending-notifications-from-the-portal](../../includes/notification-hubs-sending-notifications-from-the-portal.md)]
 
-## <a name="optional-send-push-notifications-from-the-app"></a>(Nem kötelező) Leküldéses értesítések küldése az alkalmazásból
-> [!IMPORTANT]
-> Az ügyfélalkalmazásból értesítések küldését bemutató jelen példa kizárólag tanulási célt szolgál. Mivel ehhez a `DefaultFullSharedAccessSignature` meglétére van szükség az ügyfélalkalmazásban, ez olyan kockázatot jelent az értesítési központ számára, hogy egyes felhasználók jogosulatlan értesítésküldést hajthatnak végre az ügyfelei irányába.
-> 
-> 
-
-Ha az alkalmazáson belülről szeretne leküldéses értesítéseket küldeni, ez a szakasz egy példát mutat be, hogy ez hogyan lehetséges a REST-felület használatával.
-
-1. Az Xcode-ban nyissa meg a `Main.storyboard` elemet, majd adja hozzá a következő felhasználói felületi összetevőket az objektumtárból, hogy engedélyezze a felhasználó számára a leküldéses értesítések küldését az alkalmazásban:
-   
-   * Egy címke címkeszöveg nélkül. Ez az értesítések küldése közbeni hibák jelentéséhez lesz használva. A **Vonalak** tulajdonságot állítsa **0** értékre, így automatikusan korlátozza a méretet a jobb és bal oldali margókhoz és a nézet tetejéhez.
-   * Egy **Helyőrző** szöveggel rendelkező szövegmező **Értesítési üzenet beírása** beállításra állítva. Kényszerezze a mezőt pont a címke alá, ahogy az az alábbi ábrán látszik. Állítsa be a Nézetvezérlőt kimeneti delegáltként.
-   * Egy **Értesítés küldése** című gomb pont a szövegmező alá és vízszintesen középre kényszerezve.
-     
-     A nézetnek az alábbihoz kell hasonlítania:
-     
-     ![Xcode-tervező][32]
-2. [Adjon hozzá kimeneteket](https://developer.apple.com/library/ios/recipes/xcode_help-IB_connections/chapters/CreatingOutlet.html) a nézethez kapcsolt felirat- és szövegmezőkhöz, és frissítse az `interface` definícióját a `UITextFieldDelegate` és az `NSXMLParserDelegate` támogatása érdekében. Adja hozzá az alábbi három tulajdonságdeklarációt a REST API hívásának és a válasz elemzésének támogatása érdekében.
-   
-    A ViewController.h fájlnak az alábbihoz kell hasonlítania:
-   
-        #import <UIKit/UIKit.h>
-   
-        @interface ViewController : UIViewController <UITextFieldDelegate, NSXMLParserDelegate>
-        {
-            NSXMLParser *xmlParser;
-        }
-   
-        // Make sure these outlets are connected to your UI by ctrl+dragging
-        @property (weak, nonatomic) IBOutlet UITextField *notificationMessage;
-        @property (weak, nonatomic) IBOutlet UILabel *sendResults;
-   
-        @property (copy, nonatomic) NSString *statusResult;
-        @property (copy, nonatomic) NSString *currentElement;
-   
-        @end
-3. Nyissa meg a `HubInfo.h`-t, majd adja hozzá a következő állandókat, amelyek az értesítések a központnak történő elküldéséhez lesznek használva. Cserélje le a helyőrző szövegkonstanst az aktuális *DefaultFullSharedAccessSignature* kapcsolati karakterláncra.
-   
-        #define API_VERSION @"?api-version=2015-01"
-        #define HUBFULLACCESS @"<Enter Your DefaultFullSharedAccess Connection string>"
-4. Adja hozzá a következő `#import` utasításokat a `ViewController.h` fájlhoz.
-   
-        #import <CommonCrypto/CommonHMAC.h>
-        #import "HubInfo.h"
-5. A `ViewController.m` fájlban adja hozzá a következő kódot a felhasználói felület megvalósításához. Ez a kód fogja elemezni a *DefaultFullSharedAccessSignature* kapcsolati karakterláncot. A [REST API-referenciában](http://msdn.microsoft.com/library/azure/dn495627.aspx) említetteknek megfelelően ezzel az elemzett információval lesz létrehozva egy SaS-jogkivonat a **hitelesítési** kérelem fejlécéhez.
-   
-        NSString *HubEndpoint;
-        NSString *HubSasKeyName;
-        NSString *HubSasKeyValue;
-   
-        -(void)ParseConnectionString
-        {
-            NSArray *parts = [HUBFULLACCESS componentsSeparatedByString:@";"];
-            NSString *part;
-   
-            if ([parts count] != 3)
-            {
-                NSException* parseException = [NSException exceptionWithName:@"ConnectionStringParseException"
-                    reason:@"Invalid full shared access connection string" userInfo:nil];
-   
-                @throw parseException;
-            }
-   
-            for (part in parts)
-            {
-                if ([part hasPrefix:@"Endpoint"])
-                {
-                    HubEndpoint = [NSString stringWithFormat:@"https%@",[part substringFromIndex:11]];
-                }
-                else if ([part hasPrefix:@"SharedAccessKeyName"])
-                {
-                    HubSasKeyName = [part substringFromIndex:20];
-                }
-                else if ([part hasPrefix:@"SharedAccessKey"])
-                {
-                    HubSasKeyValue = [part substringFromIndex:16];
-                }
-            }
-        }
-6. Frissítse a `ViewController.m` `viewDidLoad` metódusát, hogy a rendszer elemezze a kapcsolati karakterláncot a nézet betöltésekor. Emellett adja hozzá az alább látható segédprogram-metódusokat a felhasználói felület megvalósításához.  
-
-        - (void)viewDidLoad
-        {
-            [super viewDidLoad];
-            [self ParseConnectionString];
-            [_notificationMessage setDelegate:self];
-        }
-
-        -(NSString *)CF_URLEncodedString:(NSString *)inputString
-        {
-           return (__bridge NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)inputString,
-                NULL, (CFStringRef)@"!*'();:@&=+$,/?%#[]", kCFStringEncodingUTF8);
-        }
-
-        -(void)MessageBox:(NSString *)title message:(NSString *)messageText
-        {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:messageText delegate:self
-                cancelButtonTitle:@"OK" otherButtonTitles: nil];
-            [alert show];
-        }
-
-
-
-
-
-1. A(z) `ViewController.m` helyen adja hozzá a következő kódot a felhasználói felület bevezetéséhez az SaS-hitelesítő jogkivonatának létrehozásához, amely a **Hitelesítés** fejlécben lesz tartalmazva a [REST API-referenciában](http://msdn.microsoft.com/library/azure/dn495627.aspx) említettek szerint.
-   
-        -(NSString*) generateSasToken:(NSString*)uri
-        {
-            NSString *targetUri;
-            NSString* utf8LowercasedUri = NULL;
-            NSString *signature = NULL;
-            NSString *token = NULL;
-   
-            @try
-            {
-                // Add expiration
-                uri = [uri lowercaseString];
-                utf8LowercasedUri = [self CF_URLEncodedString:uri];
-                targetUri = [utf8LowercasedUri lowercaseString];
-                NSTimeInterval expiresOnDate = [[NSDate date] timeIntervalSince1970];
-                int expiresInMins = 60; // 1 hour
-                expiresOnDate += expiresInMins * 60;
-                UInt64 expires = trunc(expiresOnDate);
-                NSString* toSign = [NSString stringWithFormat:@"%@\n%qu", targetUri, expires];
-   
-                // Get an hmac_sha1 Mac instance and initialize with the signing key
-                const char *cKey  = [HubSasKeyValue cStringUsingEncoding:NSUTF8StringEncoding];
-                const char *cData = [toSign cStringUsingEncoding:NSUTF8StringEncoding];
-                unsigned char cHMAC[CC_SHA256_DIGEST_LENGTH];
-                CCHmac(kCCHmacAlgSHA256, cKey, strlen(cKey), cData, strlen(cData), cHMAC);
-                NSData *rawHmac = [[NSData alloc] initWithBytes:cHMAC length:sizeof(cHMAC)];
-                signature = [self CF_URLEncodedString:[rawHmac base64EncodedStringWithOptions:0]];
-   
-                // Construct authorization token string
-                token = [NSString stringWithFormat:@"SharedAccessSignature sig=%@&se=%qu&skn=%@&sr=%@",
-                    signature, expires, HubSasKeyName, targetUri];
-            }
-            @catch (NSException *exception)
-            {
-                [self MessageBox:@"Exception Generating SaS Token" message:[exception reason]];
-            }
-            @finally
-            {
-                if (utf8LowercasedUri != NULL)
-                    CFRelease((CFStringRef)utf8LowercasedUri);
-                if (signature != NULL)
-                CFRelease((CFStringRef)signature);
-            }
-   
-            return token;
-        }
-2. A Ctrl gomb lenyomása közben húzza az **Értesítés küldése** gombtól a(z) `ViewController.m` helyig, hogy hozzáadjon egy **SendNotificationMessage** nevű műveletet a **Touch Down** eseményhez. Frissítse a metódust a következő kóddal az értesítés a REST API használatával való elküldéséhez.
-   
-        - (IBAction)SendNotificationMessage:(id)sender
-        {
-            self.sendResults.text = @"";
-            [self SendNotificationRESTAPI];
-        }
-   
-        - (void)SendNotificationRESTAPI
-        {
-            NSURLSession* session = [NSURLSession
-                             sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
-                             delegate:nil delegateQueue:nil];
-   
-            // Apple Notification format of the notification message
-            NSString *json = [NSString stringWithFormat:@"{\"aps\":{\"alert\":\"%@\"}}",
-                                self.notificationMessage.text];
-   
-            // Construct the message's REST endpoint
-            NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@/messages/%@", HubEndpoint,
-                                                HUBNAME, API_VERSION]];
-   
-            // Generate the token to be used in the authorization header
-            NSString* authorizationToken = [self generateSasToken:[url absoluteString]];
-   
-            //Create the request to add the APNs notification message to the hub
-            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-            [request setHTTPMethod:@"POST"];
-            [request setValue:@"application/json;charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-   
-            // Signify Apple notification format
-            [request setValue:@"apple" forHTTPHeaderField:@"ServiceBusNotification-Format"];
-   
-            //Authenticate the notification message POST request with the SaS token
-            [request setValue:authorizationToken forHTTPHeaderField:@"Authorization"];
-   
-            //Add the notification message body
-            [request setHTTPBody:[json dataUsingEncoding:NSUTF8StringEncoding]];
-   
-            // Send the REST request
-            NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request
-                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
-            {
-                NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*) response;
-                if (error || (httpResponse.statusCode != 200 && httpResponse.statusCode != 201))
-                {
-                    NSLog(@"\nError status: %d\nError: %@", httpResponse.statusCode, error);
-                }
-                if (data != NULL)
-                {
-                    xmlParser = [[NSXMLParser alloc] initWithData:data];
-                    [xmlParser setDelegate:self];
-                       [xmlParser parse];
-                }
-            }];
-            [dataTask resume];
-        }
-3. Adja hozzá a következő delegált metódust a szövegmező számára a billentyűzet bezárásának támogatásához itt: `ViewController.m`. A Ctrl gomb lenyomása közben húzza a szövegmezőtől a Nézetvezérlő ikonra a felülettervezőben, hogy a kimeneti delegáltra állítsa a nézetvezérlőt.
-   
-        //===[ Implement UITextFieldDelegate methods ]===
-   
-        -(BOOL)textFieldShouldReturn:(UITextField *)textField
-        {
-            [textField resignFirstResponder];
-            return YES;
-        }
-4. Adja hozzá a következő delegáltmetódusokat a válasz `NSXMLParser` használatával történő elemzésének támogatásához itt: `ViewController.m`.
-   
-       //===[ Implement NSXMLParserDelegate methods ]===
-   
-       -(void)parserDidStartDocument:(NSXMLParser *)parser
-       {
-           self.statusResult = @"";
-       }
-   
-       -(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName
-           namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
-           attributes:(NSDictionary *)attributeDict
-       {
-           NSString * element = [elementName lowercaseString];
-           NSLog(@"*** New element parsed : %@ ***",element);
-   
-           if ([element isEqualToString:@"code"] | [element isEqualToString:@"detail"])
-           {
-               self.currentElement = element;
-           }
-       }
-   
-       -(void) parser:(NSXMLParser *)parser foundCharacters:(NSString *)parsedString
-       {
-           self.statusResult = [self.statusResult stringByAppendingString:
-               [NSString stringWithFormat:@"%@ : %@\n", self.currentElement, parsedString]];
-       }
-   
-       -(void)parserDidEndDocument:(NSXMLParser *)parser
-       {
-           // Set the status label text on the UI thread
-           dispatch_async(dispatch_get_main_queue(),
-           ^{
-               [self.sendResults setText:self.statusResult];
-           });
-       }
-5. Hozza létre a projektet, és ellenőrizze, hogy nincsenek-e hibák.
-
-> [!NOTE]
-> Ha egy bitcode-támogatással kapcsolatos létrehozási hibával találkozik az Xcode 7-ben, meg kell változtatni a **Build Settings (Létrehozási beállítások)** > **Enable Bitcode (ENABLE_BITCODE) (Bitcode engedélyezése (ENABLE_BITCODE))** beállítását **NO (NEM)** értékűre az Xcode-ban. A Notification Hubs SDK jelenleg nem támogatja a bitcode-ot. 
-> 
-> 
-
-Az összes lehetséges hasznos értesítési adatot megtalálja az Apple [helyi és leküldéses értesítések programozásával foglalkozó útmutatójában].
 
 ## <a name="checking-if-your-app-can-receive-push-notifications"></a>Annak ellenőrzése, hogy az alkalmazás képes-e leküldéses értesítéseket fogadni
 A leküldéses értesítések iOS rendszeren történő teszteléséhez üzembe kell helyezni az alkalmazást egy fizikai iOS-eszközön. Nem lehet Apple leküldéses értesítéseket küldeni az iOS-szimulátor használatával.
@@ -431,15 +180,14 @@ A leküldéses értesítések iOS rendszeren történő teszteléséhez üzembe 
 1. Futtassa az alkalmazást és ellenőrizze, hogy a regisztráció sikeres-e, majd nyomja meg az **OK** gombot.
    
     ![iOS-alkalmazás leküldésesértesítés-regisztrációs tesztje][33]
-2. Az [Azure Portal] a fent leírtak szerint küldhet teszt leküldéses értesítést. Ha hozzáadott kódot leküldési értesítések az alkalmazásban való küldéséhez, érintse meg a szövegmezőt értesítési üzenet beírásához. Ezután nyomja meg a **Küldés** gombot a billentyűzeten, vagy az **Értesítés küldése** gombot a nézetben az értesítési üzenet elküldéséhez.
-   
-    ![iOS-alkalmazás leküldésesértesítés-küldési tesztje][34]
+2. Ezután egy leküldéses tesztértesítést küld az [Azure Portalról] a fent leírtak szerint. 
+
 3. A leküldéses értesítést a rendszer az összes, az adott értesítési központból érkező értesítések fogadására regisztrált eszközre elküldi.
    
     ![iOS-alkalmazás leküldésesértesítés-fogadási tesztje][35]
 
-## <a name="next-steps"></a>Következő lépések
-Ebben az egyszerű példában leküldéses értesítéseket küldött az összes regisztrált iOS-eszközre. A tanulás következő lépéseként azt javasoljuk, hogy folytassa az [Azure Notification Hubs – felhasználók értesítése iOS rendszerhez .NET-háttérrendszerrel] oktatóanyaggal, amely végigvezeti leküldéses értesítések címkék használatával való küldéséhez használható háttérrendszer létrehozásának lépésein. 
+## <a name="next-steps"></a>További lépések
+Ebben az egyszerű példában leküldéses értesítéseket küldött az összes regisztrált iOS-eszközre. A tanulási folyamat következő lépéseként ajánljuk az [Azure Notification Hubs – felhasználók értesítése iOS rendszerhez .NET-háttérrendszerrel] oktatóanyag áttekintését. Ez az útmutató végigvezeti leküldéses értesítések címkékkel való küldéséhez használható háttérrendszer létrehozásának lépésein. 
 
 Ha a felhasználókat érdeklődési körök alapján szeretné szegmentálni, továbbléphet a [Use Notification Hubs to send breaking news] (Friss hírek küldése Notification Hubs használatával) című témakörre. 
 
@@ -447,24 +195,25 @@ A Notification Hubs használatával kapcsolatban a [Notification Hubs használat
 
 <!-- Images. -->
 
-[6]: ./media/notification-hubs-ios-get-started/notification-hubs-configure-ios.png
+[6]: ./media/notification-hubs-ios-get-started/notification-hubs-apple-config.png
+[7]: ./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png
 [8]: ./media/notification-hubs-ios-get-started/notification-hubs-create-ios-app.png
 [9]: ./media/notification-hubs-ios-get-started/notification-hubs-create-ios-app2.png
 [10]: ./media/notification-hubs-ios-get-started/notification-hubs-create-ios-app3.png
 [11]: ./media/notification-hubs-ios-get-started/notification-hubs-xcode-product-name.png
+[12]: ./media/notification-hubs-ios-get-started/notification-hubs-enable-push.png
 
 [30]: ./media/notification-hubs-ios-get-started/notification-hubs-test-send.png
 
 [31]: ./media/notification-hubs-ios-get-started/notification-hubs-ios-ui.png
 [32]: ./media/notification-hubs-ios-get-started/notification-hubs-storyboard-view.png
 [33]: ./media/notification-hubs-ios-get-started/notification-hubs-test1.png
-[34]: ./media/notification-hubs-ios-get-started/notification-hubs-test2.png
 [35]: ./media/notification-hubs-ios-get-started/notification-hubs-test3.png
 
 
 
 <!-- URLs. -->
-[Mobile Services iOS SDK 1.2.4-es verzióját]: http://aka.ms/kymw2g
+[Microsoft Azure üzenetkezelési keretrendszert]: http://go.microsoft.com/fwlink/?LinkID=799698&clcid=0x409
 [Mobile Services iOS SDK]: http://go.microsoft.com/fwLink/?LinkID=266533
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
@@ -479,5 +228,5 @@ A Notification Hubs használatával kapcsolatban a [Notification Hubs használat
 [Azure Notification Hubs – felhasználók értesítése iOS rendszerhez .NET-háttérrendszerrel]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-ios-xplat-segmented-apns-push-notification.md
 
-[helyi és leküldéses értesítések programozásával foglalkozó útmutatójában]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
-[Azure Portal]: https://portal.azure.com
+[Local and Push Notification Programming Guide]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
+[Azure Portalról]: https://portal.azure.com

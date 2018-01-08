@@ -1,27 +1,27 @@
 ---
-title: "Leküldéses értesítések küldése az Azure Notification Hubs használatával Windows Phone rendszerű eszközökre | Microsoft Docs"
+title: "Ismerkedés az Azure Notification Hubs Windows Phone-alkalmazásokkal való használatával | Microsoft Docs"
 description: "Ebben az oktatóanyagban elsajátíthatja, hogy hogyan használható az Azure Notification Hubs leküldéses értesítések küldésére Windows Phone 8 és Windows Phone 8.1 rendszeren futó Silverlight-alkalmazásokba."
 services: notification-hubs
 documentationcenter: windows
 keywords: "leküldéses értesítés,leküldéses értesítés,windows phone leküldéses értesítés"
-author: ysxu
-manager: erikre
-editor: erikre
+author: jwhitedev
+manager: kpiteira
+editor: 
 ms.assetid: d872d8dc-4658-4d65-9e71-fa8e34fae96e
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows-phone
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 10/03/2016
-ms.author: yuaxu
-ms.openlocfilehash: f0bfe81f849813d146d644b32490af657b1071b5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/22/2017
+ms.author: jawh
+ms.openlocfilehash: 7d44d0a0f8683ad6ad55136ad17879e98e26498b
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
-# <a name="sending-push-notifications-with-azure-notification-hubs-on-windows-phone"></a>Leküldéses értesítések küldése az Azure Notification Hubs használatával Windows Phone rendszerű eszközökre
+# <a name="get-started-with-azure-notification-hubs-for-windows-phone-apps"></a>Ismerkedés az Azure Notification Hubs Windows Phone-alkalmazásokkal való használatával
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 ## <a name="overview"></a>Áttekintés
@@ -51,11 +51,11 @@ Ennek az oktatóanyagnak az elvégzése előfeltétel minden további, Windows P
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
 <ol start="6">
-<li><p>Kattintson a <b>Notification Services</b> (Értesítési szolgáltatások) szakaszra (a <i>Beállítások</i> között), majd a <b>Windows Phone (MPNS)</b> lehetőségre, végül jelölje be az <b>Enable unauthenticated push</b> (Nem hitelesített leküldés engedélyezése) jelölőnégyzetet.</p>
+<li><p>Az <b>Értesítési szolgáltatások</b> szakaszban válassza ki a <b>Windows Phone (MPNS)</b> lehetőséget, majd kattintson az <b>Nem hitelesített leküldéses értesítések engedélyezése</b> jelölőnégyzetre.</p>
 </li>
 </ol>
 
-&emsp;&emsp;![Azure portál – Nem hitelesített leküldéses értesítések engedélyezése](./media/notification-hubs-windows-phone-get-started/azure-portal-unauth.png)
+&emsp;&emsp;![Azure Portal – Nem hitelesített leküldéses értesítések engedélyezése](./media/notification-hubs-windows-phone-get-started/azure-portal-unauth.png)
 
 A szolgáltatás létrehozza a központot, és nem hitelesített értesítések Windows Phone rendszerű eszközökre való küldésére konfigurálja.
 
@@ -129,64 +129,9 @@ A szolgáltatás létrehozza a központot, és nem hitelesített értesítések 
    
    > [!NOTE]
    > A bejelentési leküldéses értesítések fogadásához az alkalmazás nem futhat az előtérben.
-   > 
-   > 
+   >
 
-## <a name="send-push-notifications-from-your-backend"></a>Leküldéses értesítések küldése a háttérrendszerből
-A Notification Hubs használatával bármilyen háttérrendszerből küldhet leküldéses értesítést a nyilvános <a href="http://msdn.microsoft.com/library/windowsazure/dn223264.aspx">REST-felületen</a> keresztül. Ebben az oktatóanyagban leküldéses értesítéseket küld egy .NET-konzolalkalmazás használatával. 
-
-Az [Azure Notification Hubs Notify Users with .NET backend](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md) (Azure Notification Hubs – felhasználók értesítése .NET-háttérrendszerrel) című témakörben találhat példát arra, hogy hogyan küldhetők leküldéses értesítések a Notification Hubs szolgáltatással integrált ASP.NET WebAPI háttérrendszerből.  
-
-A [How to use Notification Hubs from Java](notification-hubs-java-push-notification-tutorial.md) (A Notification Hubs használata Javából) és a [How to use Notification Hubs from PHP](notification-hubs-php-push-notification-tutorial.md) (A Notification Hubs használata PHP-ből) című témakörben találhat példát arra, hogy hogyan küldhetők leküldéses értesítések a [REST API-k](https://msdn.microsoft.com/library/azure/dn223264.aspx) használatával.
-
-1. Kattintson a jobb gombbal a megoldásra, válassza a **Hozzáadás** és az **Új projekt…** elemet, majd a **Visual C#** részen kattintson a **Windows** és a **Konzolalkalmazás** elemre, majd az **OK** gombra.
-   
-       ![Visual Studio - New Project - Console Application][6]
-   
-    Ezzel hozzáad egy új Visual C#-konzolalkalmazást a megoldáshoz. Ezt egy külön megoldásban is megteheti.
-2. Kattintson az **Eszközök**, a **Library Package Manager** (Kódtár-csomagkezelő), majd a **Package Manager Console** (Csomagkezelő konzol) elemre.
-   
-    Megjelenik a Package Manager Console (Csomagkezelő konzol) ablak.
-3. A **Package Manager Console** (Csomagkezelő konzol) ablakban az **Alapértelmezett projekt** értékeként adja meg az új konzolalkalmazás-projektet, majd a konzolablakban hajtsa végre az alábbi parancsot:
-   
-       Install-Package Microsoft.Azure.NotificationHubs
-   
-   Ezzel hozzáad a <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet-csomagot</a> használó Azure Notification Hubs SDK-ra mutató hivatkozást.
-4. Nyissa meg a `Program.cs` fájlt, és adja hozzá a következő `using` utasítást:
-   
-        using Microsoft.Azure.NotificationHubs;
-5. A `Program` osztályban adja hozzá a következő metódust:
-   
-        private static async void SendNotificationAsync()
-        {
-            NotificationHubClient hub = NotificationHubClient
-                .CreateClientFromConnectionString("<connection string with full access>", "<hub name>");
-            string toast = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-                "<wp:Notification xmlns:wp=\"WPNotification\">" +
-                   "<wp:Toast>" +
-                        "<wp:Text1>Hello from a .NET App!</wp:Text1>" +
-                   "</wp:Toast> " +
-                "</wp:Notification>";
-            await hub.SendMpnsNativeNotificationAsync(toast);
-        }
-   
-    A `<hub name>` helyőrzőt cserélje le az értesítési központnak a portálon megjelenő nevére. Továbbá cserélje le a kapcsolati karakterlánc helyőrzőjét „Az értesítési központ konfigurálása” szakaszban beszerzett **DefaultFullSharedAccessSignature** nevű kapcsolati karakterláncra.
-   
-   > [!NOTE]
-   > A kapcsolati karakterláncot **Teljes**, és ne **Figyelési** hozzáféréssel használja. A Figyelési hozzáféréssel rendelkező kapcsolati karakterláncok nem rendelkeznek jogosultsággal leküldéses értesítések küldéséhez.
-   > 
-   > 
-6. Adja hozzá a következő sort a `Main` metódusban:
-   
-         SendNotificationAsync();
-         Console.ReadLine();
-7. Futtassa a Windows Phone-emulátort, és zárja be az alkalmazást, majd állítsa be a konzolalkalmazás-projektet az alapértelmezett indulási projektként, végül nyomja le az `F5` billentyűt az alkalmazás futtatásához.
-   
-    Egy bejelentési leküldéses értesítést fog kapni. A bejelentési szalagcímre kattintva a rendszer betölti az alkalmazást.
-
-Az összes lehetséges hasznos adatot megtalálja az MSDN [bejelentéskatalógussal] és [csempekatalógussal] foglalkozó témakörében.
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az egyszerű példában leküldéses értesítéseket küldött az összes Windows Phone 8 rendszerű eszközre. 
 
 Ha adott felhasználóknak szeretne értesítést küldeni, tekintse meg [A Notification Hubs használata leküldéses értesítések küldéséhez felhasználók számára] oktatóanyagot. 
@@ -220,7 +165,7 @@ A Notification Hubs használatával kapcsolatban a [Notification Hubs használat
 [MPNS authenticated mode]: http://msdn.microsoft.com/library/windowsphone/develop/ff941099(v=vs.105).aspx
 [A Notification Hubs használata leküldéses értesítések küldéséhez felhasználók számára]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md
-[bejelentéskatalógussal]: http://msdn.microsoft.com/library/windowsphone/develop/jj662938(v=vs.105).aspx
-[csempekatalógussal]: http://msdn.microsoft.com/library/windowsphone/develop/hh202948(v=vs.105).aspx
+[toast catalog]: http://msdn.microsoft.com/library/windowsphone/develop/jj662938(v=vs.105).aspx
+[tile catalog]: http://msdn.microsoft.com/library/windowsphone/develop/hh202948(v=vs.105).aspx
 [Notification Hubs – Windows Phone Silverlight-oktatóanyagot]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSLPhoneApp
 
