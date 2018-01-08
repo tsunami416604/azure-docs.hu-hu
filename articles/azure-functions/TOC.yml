@@ -35,7 +35,7 @@
           href: functions-create-storage-queue-triggered-function.md
     - name: Integrálás
       items:
-        - name: Storage
+        - name: Tárolás
           href: functions-integrate-storage-queue-output-binding.md
         - name: Azure Cosmos DB
           href: functions-integrate-store-unstructured-data-cosmosdb.md
@@ -71,10 +71,10 @@
       items:
         - name: Támogatott nyelvek
           href: supported-languages.md
-        - name: 'C#-szkript'
-          href: functions-reference-csharp.md
-        - name: .NET-osztálytár
+        - name: 'C# (osztálytár)'
           href: functions-dotnet-class-library.md
+        - name: 'C#-szkript (.csx)'
+          href: functions-reference-csharp.md
         - name: 'F#'
           href: functions-reference-fsharp.md
         - name: JavaScript
@@ -215,7 +215,7 @@
       href: functions-app-settings.md
     - name: OpenAPI-referencia
       href: functions-api-definition.md
-- name: Erőforrások
+- name: További források
   items:
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=compute'

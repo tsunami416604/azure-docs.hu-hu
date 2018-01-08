@@ -62,7 +62,7 @@
 #### [Külső B2B- és Office 365-megosztás](active-directory-b2b-o365-external-user.md)
 #### [B2B-licencelés](active-directory-b2b-licensing.md)
 #### [Aktuális korlátozások](active-directory-b2b-current-limitations.md)
-#### [Gyakori kérdések](active-directory-b2b-faq.md)
+#### [GYIK](active-directory-b2b-faq.md)
 #### [B2B-hibaelhárítás](active-directory-b2b-troubleshooting.md)
 #### [A B2B-felhasználók ismertetése](active-directory-b2b-user-properties.md)
 #### [B2B-felhasználói jogkivonat](active-directory-b2b-user-token.md)
@@ -103,7 +103,7 @@
 ### [Veszélyeztetett felhasználók](active-directory-reporting-security-user-at-risk.md)
 ### [Kockázatos bejelentkezések](active-directory-reporting-security-risky-sign-ins.md)
 ### [Kockázati események](active-directory-reporting-risk-events.md)
-### [Gyakori kérdések](active-directory-reporting-faq.md)
+### [GYIK](active-directory-reporting-faq.md)
 ### Feladatok
 #### [Nevesített helyek konfigurálása](active-directory-named-locations.md)
 #### [Tevékenységjelentések keresése](active-directory-reporting-migration.md)
@@ -144,7 +144,7 @@
 ### [SSPR licenc](active-directory-passwords-licensing.md)
 ### [Jelszóvisszaíró](active-directory-passwords-writeback.md)
 ### [Hibaelhárítás](active-directory-passwords-troubleshoot.md)
-### [Gyakori kérdések](active-directory-passwords-faq.md)
+### [GYIK](active-directory-passwords-faq.md)
 
 
 ## Eszközök kezelése
@@ -164,7 +164,7 @@
 
 ## Alkalmazások kezelése
 ### [Áttekintés](active-directory-enable-sso-scenario.md)
-### [Első lépések](active-directory-integrating-applications-getting-started.md)
+### [Bevezetés](active-directory-integrating-applications-getting-started.md)
 ### [SaaS-alkalmazások integrációjának oktatóanyagai](active-directory-saas-tutorial-list.md)
 ### [Felhőalkalmazások felderítése](cloudappdiscovery-get-started.md)
 #### [Pillanatkép-jelentések létrehozása](cloudappdiscovery-set-up-snapshots.md)
@@ -349,14 +349,14 @@
 ## [.NET API](/active-directory/adal/microsoft.identitymodel.clients.activedirectory)
 ## [Szolgáltatási korlátozások](active-directory-service-limits-restrictions.md)
 
-# Kapcsolódó
+# Kapcsolódó témakörök
 ## [Többtényezős hitelesítés](/azure/multi-factor-authentication/)
 ## [Azure AD Connect](./connect/active-directory-aadconnect.md)
 ## [Azure AD Connect Health](./connect-health/active-directory-aadconnect-health.md)
 ## [Azure AD fejlesztőknek](./develop/active-directory-how-to-integrate.md)
 ## [Azure AD Privileged Identity Management](./privileged-identity-management/active-directory-securing-privileged-access.md)
 
-# Erőforrások
+# További források
 ## [Azure visszajelzési fórum](https://feedback.azure.com/forums/169401-azure-active-directory)
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD)
