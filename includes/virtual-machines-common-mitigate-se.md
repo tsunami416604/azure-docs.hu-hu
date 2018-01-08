@@ -1,74 +1,52 @@
 
- 
-A legutóbbi közzétételének egy [CPU biztonsági rések új osztály](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002) néven ismert spekulatív végrehajtási ügyféloldali csatorna támadások, így további egyértelműség kérő ügyfelek kérdéseket. 
+**Utolsó dokumentálja a frissítés**: január 6, 6:30 ESTE.
 
- 
-## <a name="azure-infrastructure"></a>Azure-infrastruktúra
+A legutóbbi közzétételének egy [CPU biztonsági rések új osztály](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002) néven ismert spekulatív végrehajtási ügyféloldali csatorna támadások, így további egyértelműség kérő ügyfelek kérdéseket.  
 
-A hipervizor határ kihagyásával két közös futtatott virtuális gépek közötti memória közzétételének engedélyezése a biztonsági rések felfedése ismertetett problémák használható. Egy korábbi jelentett [blogbejegyzés](https://azure.microsoft.com/blog/securing-azure-customers-from-cpu-vulnerability/), Azure alkalmazva van-e azok mérséklési felhasználók biztonsági rés elleni védelme érdekében.  A Microsoft ajánlott biztonsági eljárások az összes biztonsági frissítések telepíthet az operációs rendszer gyártójától származó virtuális gép képeit telepítését mindig javasolja.
+Az infrastruktúra, amely Azure elkülöníti egymástól ügyfél munkaterheléseinek védett.  Ez azt jelenti, hogy más Azure-on futó ügyfelek nem támadható meg az alkalmazás biztonsági rések használatával.
 
-## <a name="paas-services-on-azure"></a>A PaaS szolgáltatások az Azure-on
-Azure PaaS ajánlatok azok mérséklési alapértelmezés szerint telepítve van. Nincs szükség felhasználói műveletek ügyfelek. Lásd az alábbi Azure Felhőszolgáltatások kivétel.  
+## <a name="keeping-your-operating-systems-up-to-date"></a>Az operációs rendszer frissítése
 
+Bár egy operációsrendszer-frissítést nem szükséges a más felhasználóktól Azure-on futó Azure-on futó alkalmazások elkülönítése, ez a beállítás mindig ajánlott eljárás az operációsrendszer-verziók naprakész állapotban tartása érdekében. 
 
-## <a name="azure-cloud-services"></a>Azure Cloud Services
+Az a következő ajánlatok az alábbiakban az operációs rendszer frissítésére a javasolt művelet: 
 
-[Azure Cloud Services](https://azure.microsoft.com/services/cloud-services/) automatikus frissítés engedélyezése automatikusan történik, a verzió a vendég operációs rendszer, amely tartalmazza a biztonsági rések megoldást jusson. 
+<table>
+<tr>
+<th>Az ajánlat</th> <th>Ajánlott művelet </th>
+</tr>
+<tr>
+<td>Azure Cloud Services </td>  <td>Automatikus frissítés engedélyezéséhez, vagy ellenőrizni kell, hogy a legújabb vendég operációs rendszer.</td>
+</tr>
+<tr>
+<td>Az Azure Linux virtuális gépek</td> <td>Frissítések telepítése az operációs rendszer szolgáltatótól, ha elérhető. </td>
+</tr>
+<tr>
+<td>A Windows Azure virtuális gépek </td> <td><ul><li>Győződjön meg arról, hogy egy támogatott víruskereső alkalmazást futtatja, az operációs rendszer frissítéseinek telepítése előtt. Lépjen kapcsolatba a víruskereső szoftver gyártójával kompatibilitási információt. </li> <li> Telepítse a [január a biztonság összegzése](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002). </li></ul></td>
+</tr>
+<tr>
+<td>Egyéb Azure PaaS szolgáltatások</td> <td>Nincs szükség a ezeket a szolgáltatásokat használó ügyfelek számára. Azure szolgáltatás automatikusan az operációsrendszer-verziók naprakész. </td>
+</tr>
+</table>
 
-A következő vendég operációs rendszer kiadásai spekulatív végrehajtási ügyféloldali csatorna biztonsági rések elleni védelem frissítések:
+## <a name="additional-guidance-if-you-are-running-untrusted-code"></a>További útmutatás, ha a nem megbízható kód futtatja 
 
-* WA-VENDÉG-OPERÁCIÓSRENDSZER-5.15_201801-01
-* WA-VENDÉG-OPERÁCIÓSRENDSZER-4.50_201801-01
-
-
-Azure Cloud Services használata a gazdagép nem megbízható kód ügyfelek kis számú is engedélyezze a [Kernel virtuális cím árnyékozása](#enabling-kernel-virtual-address-shadowing-on-windows-server) mellett a vendég operációs rendszer frissítése. Ügyféloldali csatorna biztonsági rések ez nyújt további védelmet biztosít a spekulatív végrehajtása. Ehhez egy indítási feladattal. További információ arról, hogy mely ügyfelek és a használati forgatókönyvek igényel a szolgáltatásról és az engedélyezéshez, lejjebb tekinthetők meg.
-
-
-## <a name="azure-virtual-machines-windows--linux"></a>Az Azure virtuális gépek (a Windows és Linux)
-
-A Microsoft javasolja mindig, minden biztonsági frissítés telepítését. 
-
-A január 2018 a biztonság összegzése és a biztonsági rések javításait tartalmazzák. Győződjön meg arról, hogy egy támogatott víruskereső alkalmazást futtatja, az operációs rendszer frissítéseinek telepítése előtt. Lépjen kapcsolatba a víruskereső szoftver gyártójával kompatibilitási információt. 
-
-A cím spekulatív végrehajtási biztonsági réseinek, a Linux kernel lesz szükség, és ha elérhető terjesztési szolgáltatótól származó frissítések. 
-
-A gazdagép nem megbízható kód Azure virtuális gép (Windows) használó ügyfelek kis számú is engedélyezze a [Kernel virtuális cím árnyékozása](#enabling-kernel-virtual-address-shadowing-on-windows-server) biztosító további védelmet biztosít a spekulatív végrehajtási ügyféloldali csatorna biztonsági rések.  Mely ügyfelek, valamint a használati esetekben szükséges a szolgáltatásról és az engedélyezéshez további információk lejjebb tekinthetők meg.
-
-
-## <a name="enabling-kernel-virtual-address-shadowing-on-windows-server"></a>A Windows Server árnyékozása Kernel virtuáliscím engedélyezése
-
-Az ügyfelek, akik a Windows Servert használják a nem megbízható kód végrehajtása engedélyezze nevezett, Kernel virtuális cím árnyékozása rendszerek védelmét biztosító ahol nem megbízható kód végrehajtja az alacsony felhasználói jogosultságokkal szolgáltatással.
-
-A további védelem kihathat a teljesítményre, és alapértelmezés szerint ki van kapcsolva. Kernel virtuális cím árnyékozása folyamat-folyamat és a kernel-folyamat adatokhoz való illetéktelen hozzáférés elleni védelmet nyújt.
-
-A virtuális gépek, a Cloud Services vagy a helyszíni kiszolgálók van kitéve, ha az az alábbi kategóriák valamelyikébe tartoznak:
-
-* Azure beágyazott virtualizálási Hyper-V-gazdagépek
-* A távoli asztali szolgáltatások Hosts (RDSH)
-* Virtuális gépek vagy a felhőben futó szolgáltatások például tárolók vagy nem megbízható bővítmények adatbázis, a nem megbízható webes tartalom vagy a munkaterhelések nem megbízható kód, amely a kódra külső forrásból biztosított.
-
-Példa egy olyan forgatókönyvet, ahol Kernel virtuális cím árnyékozása szükség: 
-
-|     |
-|-----|
-|Egy Azure virtuális gépet egy szolgáltatást futtat ahol elküldheti a nem megbízható felhasználók JavaScript-kód, amely végrehajtja a rendszer korlátozott jogosultságokkal rendelkező. Az azonos virtuális gépen van egy magas szintű jogosultsággal rendelkező folyamattal, amely tartalmazza a titkos adatok, amelyek nem legyen elérhető a felhasználók számára. Ebben a helyzetben Kernel virtuális cím árnyékozása szükség, a két közzététele elleni védelem biztosításához.|
-|     | 
-
-A Kernel virtuális cím árnyékozása funkció engedélyezésével konkrét utasításokat keresztül érhetők el [Windows Server KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution).
+Nincsenek további felhasználói beavatkozásra van szükség, kivéve, ha futtatja a nem megbízható kód. Ha engedélyezi a kódot, amely nem bízik meg (például engedélyezi egy bináris vagy kódrészletet, amely, majd hajtsa végre a felhőben az alkalmazáson belül feltölteni az ügyfelek), akkor a következő további lépéseket kell tenni.  
 
 
-> [!NOTE]
-> A kiadvány időpontjában Kernel virtuális cím árnyékozása csak érhető el a Windows Server 2016-os, Windows Server 2012 R2 és Windows Server 2008 R2.  
->
->
+### <a name="windows"></a>Windows 
+Ha Windows használ, és nem megbízható kód üzemeltet, is ki kell jelölni egy Windows-szolgáltatás néven Kernel virtuális cím (KVA) Shadowing, így további védelmet spekulatív végrehajtási ügyféloldali csatorna sebezhetőségekkel szemben. Ez a funkció alapértelmezés szerint ki van kapcsolva, és befolyásolhatja a teljesítményt, ha engedélyezve van. Hajtsa végre a [Windows Server KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) utasításokat a védelem engedélyezése a kiszolgálón. Ha Azure Felhőszolgáltatások futtat, győződjön meg arról, hogy futnak-e WA-VENDÉG-operációsrendszer-5.15_201801-01 vagy WA-VENDÉG-OS-4.50_201801-01 (rendszertől érhető el a 10. január) és engedélyezése a beállításjegyzék-kulcs egy indítási feladattal.
 
-Ha a Linux-kiszolgálón futtatja, tekintse meg a gyártó által az operációs rendszerek frissítések és az utasításokat.
 
-## <a name="branch-target-injection-mitigation-support-microcode"></a>Fiókirodai cél beszúrására szolgáló megoldás támogatási (mikrokód)
+### <a name="linux"></a>Linux
+Ha Linux használunk, és nem megbízható kód üzemeltető, frissítse is Linux egy újabb verzióra, amely rendszermag lap-tábla elkülönítési (KPTI), amely elválasztja a felhasználói felület tartozó a rendszermag által használt lap táblák. Ezek azok mérséklési Linux operációs rendszert futtató frissíteni, és ha elérhető terjesztési szolgáltatótól származó. Az operációs rendszer szolgáltató segítségével megállapíthatja, hogy e védelmet engedélyezett vagy letiltott alapértelmezés szerint.
 
-Az ügyfelek eszközökkel, melyek észlelik mikrokód alapú azok mérséklési megléte jelentést, hogy az Azure a nem javított. Az adatok helytelenek. A kiadvány időpontjában fiókirodai cél beszúrására szolgáló megoldás támogatás nem lesz közzétéve az Azure-hipervizorról Azure virtuális gépek vagy Azure Cloud Services. Ez azt jelenti, hogy a virtuális gépek nem tudnak a mikrokód meglétét, és nem használható a kibővített utasítás set. Ez nem jelenti azt, hogy Azure a kereszt-VM spekulatív végrehajtási ügyféloldali csatorna támadásokkal szemben sebezhető.
- 
-Mivel dolgozunk az iparági partnerekkel további frissítések rendelkezésre állásúvá válhat.
+
+
+
+
+
+
 
 ## <a name="next-steps"></a>További lépések
 

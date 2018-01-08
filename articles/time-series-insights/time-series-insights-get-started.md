@@ -3,19 +3,19 @@ title: "Azure Time Series Insights-környezet létrehozása | Microsoft Docs"
 description: "A cikkből megtudhatja, hogyan használható az Azure-portálon hozzon létre egy új idő adatsorozat Insights környezetet."
 services: time-series-insights
 ms.service: time-series-insights
-author: op-ravi
-ms.author: omravi
+author: ashannon7
+ms.author: anshan
 manager: jhubbard
 editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: article
 ms.date: 11/15/2017
-ms.openlocfilehash: 6dba703851161a1eebce0101be8076682f09c76f
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 20156432e17d5eca90779271bd18dc49fa988d7c
+ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>Új Time Series Insights-környezet létrehozása az Azure Portalon
 A cikkből megtudhatja, hogyan hozzon létre egy új idő adatsorozat Insights környezetet az Azure portál használatával.
@@ -41,7 +41,7 @@ Kövesse az alábbi lépéseket olyan környezetet hozhat létre:
    
    Beállítás|Ajánlott érték|Leírás
    ---|---|---
-   A környezeti neve | Egy egyedi nevet | Ez a név azt a környezet [idő adatsorozat explorer](https://insights.timeseries.azure.com)
+   Környezet neve | Egy egyedi nevet | Ez a név azt a környezet [idő adatsorozat explorer](https://insights.timeseries.azure.com)
    Előfizetés | Az Ön előfizetése | Ha több előfizetéssel rendelkezik, válassza ki az előfizetést, az eseményforrás lehetőleg tartalmazza. A Time Series Insights képes automatikusan észlelni az azonos előfizetésben lévő Azure IoT Hub- és Event Hub-erőforrásokat.
    Erőforráscsoport | Hozzon létre egy új vagy meglévő | Az erőforráscsoport olyan Azure-erőforrások gyűjteménye, amelyeket együtt használnak. Választhat egy létező erőforráscsoportot, például azt, amelyik az IoT-központ vagy az Event Hubs tartalmazza. Vagy egy új teheti meg, ha az egyéb erőforrások nem kapcsolódik ehhez az erőforráshoz.
    Hely | A forrás legközelebbi | Lehetőleg válassza a data center ugyanott elkerülése érdekében a esemény forrásadatok tartalmazó hozzáadja a kereszt-régió, és a kereszt-zóna sávszélességgel kapcsolatos költségek, és késés hozzá, amikor a régió kívül megköveteli az adatok.
@@ -60,7 +60,7 @@ Kövesse az alábbi lépéseket olyan környezetet hozhat létre:
 
 Amikor a telepítés sikeres, választhat **forrást** tulajdonságainak beállítása, állítsa be a biztonsági adatok hozzáférési házirendekkel, adja hozzá a eseményforrások és egyéb műveleteket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Adja meg az adat-hozzáférési házirendjeit](time-series-insights-data-access.md) biztonságossá tételéhez a környezetben.
 * [Adja hozzá az Eseményközpont eseményforrást](time-series-insights-how-to-add-an-event-source-eventhub.md) az Azure idő adatsorozat Insights környezethez. 
 * [Események küldése](time-series-insights-send-events.md) esemény forrását.

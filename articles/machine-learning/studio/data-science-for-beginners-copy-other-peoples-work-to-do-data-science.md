@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2018
 ms.author: cgronlun
-ms.openlocfilehash: f63911d8b48393ec8b0f041b1340bec40c768f38
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 52edc2158e5e74fc544d03efbba2f7e29290e424
+ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>Más emberek munkájának lemásolása az adatelemzéshez
 ## <a name="video-5-data-science-for-beginners-series"></a>5. Videó: Adattudomány kezdők sorozat
 A kereskedelmi titkok tudományos adatok egyik munkavégzésre, mások kezd. A csoportosítási algoritmus példa található Azure Eszközintelligencia-katalógus saját gépi tanulási kísérlet esetén használandó.
 
 > [!IMPORTANT]
-> A Cortana Intelligence Gallery át lett nevezve **Azure Eszközintelligencia-katalógus**. Ennek eredményeképpen szöveget és a képeket a a beszélgetés szövegében eltérőek lehetnek kissé a című videót, amely a korábbi nevét használja.
+> **A Cortana Intelligence Gallery** át lett nevezve **Azure Eszközintelligencia-katalógus**. Ennek eredményeképpen szöveget és a képeket a a beszélgetés szövegében eltérőek lehetnek kissé a című videót, amely a korábbi nevét használja.
 >
 
 Ahhoz, hogy minél hatékonyabb működtetését az adatsorozat, tekintse meg azokat. [Ugrás a videók listája](#other-videos-in-this-series)
@@ -52,7 +52,7 @@ Ezt a telepítést egy helyen található példákat is kölcsönkap a kiindulá
 
 A kereskedelmi titkok tudományos adatok egyik munkavégzésre, mások kezd.
 
-## <a name="find-examples-in-the-azure-ai-intelligence-gallery"></a>Példák keresése a Azure AI az Eszközintelligencia-katalógus
+## <a name="find-examples-in-the-azure-ai-gallery"></a>Példák keresése a Azure Eszközintelligencia-katalógus
 
 A Microsoftnál nevű felhő alapú szolgáltatás [Azure Machine Learning Studio](https://azure.microsoft.com/services/machine-learning-studio/) még szabad próbálja Üdvözöljük. Biztosítja a munkaterület különböző gépi tanulási algoritmusok kísérletezhet és azokat, ha a megoldás alakít ki van, egy webszolgáltatás indítása.
 

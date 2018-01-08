@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Security Center az operációs rendszer biztonsági réseivel kapcsolat javítása |} Microsoft Docs"
-description: "Ez a dokumentum azt ismerteti, hogyan valósítja meg az Azure Security Center ajánlás ** szervizelje az operációs rendszer biztonsági rések **."
+title: "Az Azure Security Center biztonsági beállításokkal szervizelése |} Microsoft Docs"
+description: "Ez a dokumentum azt ismerteti, hogyan valósítja meg az Azure Security Center ajánlás **biztonsági beállításokkal szervizelése**."
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,33 +12,30 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/11/2017
+ms.date: 01/04/2018
 ms.author: terrylan
-ms.openlocfilehash: 39879c22278a55f841e294cda5a89bec2bdf6988
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 412234b1486fa15cbc399bcf43be8ce90aac252a
+ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
-# <a name="remediate-os-vulnerabilities-in-azure-security-center"></a>Az Azure Security Center az operációs rendszer biztonsági réseivel kapcsolat javítása
-Az Azure Security Center naponta elemzi az operációs rendszer (operációs rendszer) a virtuális gépek (VM) és a konfiguráció esetén, hogy a virtuális gépek és a számítógépek támadásokkal szemben. A Security Center azt javasolja, hogy a biztonsági rések oldható fel, amikor az operációs rendszer konfigurációja nem egyezik meg az ajánlott konfiguráció szabályok és konfigurációmódosításokat javasol, a biztonsági rések javasolja.
+# <a name="remediate-security-configurations-in-azure-security-center"></a>Az Azure Security Center biztonsági beállításokkal javítása
+Az Azure Security Center naponta elemzi az operációs rendszer (operációs rendszer) a virtuális gépek (VM) és a konfiguráció esetén, hogy a virtuális gépek és a számítógépek támadásokkal szemben. A Security Center azt javasolja, hogy a biztonsági rések oldható fel, amikor az operációs rendszer konfigurációja nem egyezik meg a javasolt biztonsági konfigurációs szabályok és konfigurációmódosításokat javasol, a biztonsági rések javasolja.
 
-> [!NOTE]
-> Által figyelt konfigurációkkal kapcsolatban lásd: a [ajánlott konfiguráció szabályok listája](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335).
->
->
+Által figyelt konfigurációkkal kapcsolatban lásd: a [ajánlott konfiguráció szabályok listája](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335). Lásd: [operációsrendszer-biztonsági beállítások testreszabása](security-center-customize-os-security-config.md) megtudhatja, hogyan szabhatja testre a Security Center biztonsági konfiguráció értékeléseket.
 
 ## <a name="implement-the-recommendation"></a>A javaslat megvalósítása
-Javítsa az operációs rendszer biztonsági rések jelölőnégyzetként jelenik meg a Security Center ajánlást. Ez a javaslat jelenik meg a **javaslatok** és a **számítási**.
+Konfigurációk eltérés jelölőnégyzetként jelenik meg a javaslat a Security Center biztonsági kijavítani. Ez a javaslat jelenik meg a **javaslatok** és a **számítási**.
 
-Ebben a példában követően áttekintjük a **szervizelje az operációs rendszer biztonsági rés (a Microsoft)** ajánlás szerint **számítási**.
+Ebben a példában követően áttekintjük a **biztonsági beállításokkal szervizelése** ajánlás szerint **számítási**.
 1. Válassza ki **számítási** a Security Center fő menüjében.
 
-   ![Operációs rendszerek sebezhetőségeinek javítása][1]
+   ![Biztonsági beállításokkal javítása][1]
 
-2. A **számítási**, jelölje be **szervizelje az operációs rendszer biztonsági rés (a Microsoft)**. A **az operációs rendszer biztonsági rés (a Microsoft) eltérő** irányítópult megnyitása.
+2. A **számítási**, jelölje be **biztonsági beállításokkal szervizelése**. **Biztonsági beállításokkal** nyílik meg.
 
-   ![Operációs rendszerek sebezhetőségeinek javítása][2]
+   ![Biztonsági beállításokkal][2]
 
   Az irányítópult tetején biztosítja:
 
@@ -77,11 +74,11 @@ Ebben a példában követően áttekintjük a **szervizelje az operációs rends
   - TÉNYLEGES érték--Értéket adott vissza a szabállyal szemben a virtuális gép operációs rendszere konfiguráció elemzése után
   - --A szabály szabály művelet során a virtuális gép operációs rendszer konfigurációja a szabállyal szemben elemzése a Security Center által használt
 
-4. Válassza ki a **keresési** ikonra a felső szalagon. Keresési listát munkaterületek rendelkező virtuális gépek és azokét, amelyekre a kijelölt operációs rendszer biztonsági rése nyílik meg. Ha a kiválasztott szabály vonatkozik-e több virtuális gépek különböző munkaterületekkel csatlakozó munkaterület kiválasztása panel csak látható.
+4. Válassza ki a **keresési** ikonra a felső szalagon. Keresési listát munkaterületek rendelkező virtuális gépek és azokét, amelyekre a kijelölt biztonsági konfigurációk eltérés nyílik meg. Ha a kiválasztott szabály vonatkozik-e több virtuális gépek különböző munkaterületekkel csatlakozó munkaterület kiválasztása panel csak látható.
 
   ![Felsorolt munkaterületek][4]
 
-5. Jelöljön ki egy munkaterületet. A Naplóelemzési keresési lekérdezés nyílik meg az operációs rendszer biztonsági rése szűrt a munkaterületre.
+5. Jelöljön ki egy munkaterületet. Naplóelemzési keresési lekérdezés megnyitja a munkaterületet, és a biztonsági konfigurációkat eltérés szűrt.
 
   ![Az operációs rendszer biztonsági rése munkaterület][5]
 
@@ -89,8 +86,10 @@ Ebben a példában követően áttekintjük a **szervizelje az operációs rends
 
   ![Az adott számítógépen szűrve][6]
 
-## <a name="next-steps"></a>Következő lépések
-Ez a cikk bemutatta megvalósításához a Security Center javaslat "Szervizelése az operációs rendszer biztonsági rések." Tekintse át a konfigurációs szabályok készletét [Itt](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335). A Security Center CCE (közös konfigurációs enumerálási) használatával rendelje hozzá a konfigurációs szabályok egyedi azonosítót. Látogasson el a [CCE](https://nvd.nist.gov/cce/index.cfm) webhelyen olvashat.
+## <a name="next-steps"></a>További lépések
+Ez a cikk bemutatta megvalósításához a Security Center javaslat "Szervizelése biztonsági beállításokkal." Lásd: [operációsrendszer-biztonsági beállítások testreszabása](security-center-customize-os-security-config.md) megtudhatja, hogyan szabhatja testre a Security Center biztonsági konfiguráció értékeléseket.
+
+Tekintse át a konfigurációs szabályok készletét [Itt](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335). A Security Center CCE (közös konfigurációs enumerálási) használatával rendelje hozzá a konfigurációs szabályok egyedi azonosítót. Látogasson el a [CCE](https://nvd.nist.gov/cce/index.cfm) webhelyen olvashat.
 
 Security Centerrel kapcsolatos további tudnivalókért lásd a következőket:
 

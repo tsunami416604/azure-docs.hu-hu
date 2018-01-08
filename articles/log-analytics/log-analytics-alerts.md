@@ -4,7 +4,7 @@ description: "Naplóelemzési riasztások határozza meg az OMS-adattárban lév
 services: log-analytics
 documentationcenter: 
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: 6cfd2a46-b6a2-4f79-a67b-08ce488f9a91
 ms.service: log-analytics
@@ -12,23 +12,31 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/13/2017
+ms.date: 01/05/2018
 ms.author: bwren
-ms.openlocfilehash: a0897113660f764cb23239b066bc93c479a9a553
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: 07e8312d5e113eeb9016dcc832b1cf66f8001c5f
+ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="understanding-alerts-in-log-analytics"></a>A Naplóelemzési riasztások ismertetése
 
-Log Analytics riasztások határozza meg a Naplóelemzési tárházban fontos adatokat.  Ez a cikk részletesen ismerteti, hogyan riasztási szabályok Naplóelemzési munka, és különböző típusú riasztási szabályok közötti különbségeket ismerteti.
+Log Analytics riasztások határozza meg a Naplóelemzési tárházban fontos adatokat.  Ez a cikk ismerteti a tervezési szempontokat sorát kell elvégezni a gyűjtemény gyakoriság az éppen lekérdezett, véletlenszerű késleltetése oka valószínűleg a hálózati késés vagy feldolgozási kapacitás és az adatok véglegesítése naplóba adatfeldolgozást az adatok alapján Elemzés tárházba.  Részletesen ismerteti, hogyan riasztási szabályok használatát Naplóelemzési munkahelyi és a különböző típusú riasztási szabályok közötti különbségeket ismerteti.
 
 A riasztási szabályok létrehozásának folyamatán tekintse meg a következő cikkeket:
 
 - Riasztási szabályok létrehozására [Azure-portálon](log-analytics-alerts-creating.md)
 - Riasztási szabályok létrehozására [Resource Manager-sablon](../operations-management-suite/operations-management-suite-solutions-resources-searches-alerts.md)
 - Riasztási szabályok létrehozására [REST API-n](log-analytics-api-alerts.md)
+
+## <a name="considerations"></a>Megfontolandó szempontok
+
+Információk a adatainak gyűjtési gyakoriságát, a különböző megoldások és adattípus érhetők el a [az gyűjtemény adatait](log-analytics-add-solutions.md#data-collection-details) megoldások áttekintése cikk. Amint ez a cikk, gyűjtési gyakoriságát szerint ritkán előforduló mint hét naponta történő lehet *értesítésre kattinthat*. Fontos megérteni, és vegye figyelembe a adatainak gyűjtési gyakoriságát riasztás beállítása előtt. 
+
+- A gyűjtemény gyakorisága határozza meg, milyen gyakran az OMS-ügynököt a gépeken adatokat küld a Naplóelemzési. Például gyűjtési gyakoriságát 10 percet, és nincs más késések fordulnak elő a rendszerben, ha majd az átvitt adatok időbélyeggel lehet, hogy bárhonnan közötti nulla és a régi előtt a tárházba való felvétel alatt 10 perc és kereshető a Naplóelemzési.
+
+- Is elindítható a riasztást, mielőtt az adatokat kell írni a tárház úgy, hogy az elérhető történő lekérdezéskor. A fent leírt késleltetése miatt a gyűjtemény gyakoriság értéke nem ugyanaz, mint a lekérdezések érhetők el az adatok időpontja. Például előfordulhat, hogy az adatok gyűjthetők pontosan minden 10 percig, amíg az adatok lesznek elérhetőek a szabálytalan időközönként adatok tárházban. Hypothetically nulla, 10 és 20 perces időközönként összegyűjtött adatok valószínűleg használható keresési 25, 28 és 35 perccel rendre, vagy más szabálytalan időközben adatfeldolgozást késés befolyásol. Ezek a késleltetések a legrosszabb esetben részletes ismertetését lásd: a [Naplóelemzési SLA](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_1), nem tartalmaz, amelyek rendszerben jelent meg a gyűjtemény gyakorisága vagy a hálózati késés korlátozza a számítógép és a Naplóelemzés szolgáltatás közötti késleltetés.
 
 
 ## <a name="alert-rules"></a>Riasztási szabályok
@@ -37,11 +45,27 @@ A riasztási szabályok, amelyek automatikusan futnak a napló keresések rendsz
 
 ![Log Analytics-riasztások](media/log-analytics-alerts/overview.png)
 
+Mivel a naplóadatok adatfeldolgozást az egy várható késés, abszolút adatokat, és elérhető indexelő is lennie előre nem látható.  A gyűjtött adatok közel valós idejű rendelkezésre állását a riasztási szabályok definiálása során figyelembe kell venni.    
+
+Nincs megbízhatósági riasztások és értesítések válaszképességének között. Dönthet úgy, hogy minimalizálja a téves riasztások és a hiányzó riasztások riasztási paramétereinek a konfigurálása, vagy választhat gyorsan reagál a feltételeket, amelyek figyelés alatt áll, de időnként hamis vagy kihagyott riasztásokat generál a riasztási paraméterekkel.
+
 A riasztási szabályok határozzák meg a következő adatokat:
 
 - **Naplófájl-keresési**.  A lekérdezés, amely futtatja a minden alkalommal, amikor a riasztási szabály következik be.  Ez a lekérdezés által visszaadott rekordok segítségével határozza meg, hogy riasztás jöjjön létre.
-- **Időablak**.  Adja meg a lekérdezés időintervallumát.  A lekérdezés visszaadja csak azt jelzi, hogy az aktuális időponthoz képest ebben a tartományban jöttek létre.  Ez bármilyen 5 perc és 24 óra közötti érték lehet. Például ha a időszak 60 percre van beállítva, és a lekérdezés futtatása, 1:15 előtti, csak a 12:15 előtti és 1:15 előtti között létrejövő rekordok ad vissza.
-- **Gyakoriság**.  Meghatározza, hogy milyen gyakran kell futtatni a lekérdezést. Bármely érték 5 perc és 24 óra közötti lehet. A időszak kisebbnek vagy azzal egyenlőnek kell lennie.  Ha az érték nagyobb, mint az időszak, majd azzal kockáztatja alatt nem talált rekordokat.<br>Vegye figyelembe például egy olyan időkeretet, 30 perc és 60 perc gyakorisága.  Ha a lekérdezés futtatása, 1:00, 12:30 és 1:00 PM rekordok adja vissza.  A következő szeretné futtatni a lekérdezést ideje 2:00 amikor meghaladná a 1:30 és 2:00 között rögzíti.  1:00 és 1:30 között létrejövő rekordok volna soha nem értékelhető ki.
+- **Időablak**.  Adja meg a lekérdezés időintervallumát.  A lekérdezés visszaadja csak azt jelzi, hogy az aktuális időponthoz képest ebben a tartományban jöttek létre.  Ez lehet öt perc és 24 óra közötti értéket. A tartományban kell lennie fér adatfeldolgozást ésszerű késést befogadásához. Az időszak kell lennie a leghosszabb tudja kezelni kívánt késleltetés hosszát kétszer.<br> Például ha azt szeretné, hogy a riasztásokat a 30 perces késést megbízható, majd a tartományban kell lennie egy óra.  
+
+    Nincsenek két jelenségek sikerült tapasztal, ha az időtartományt túl kicsi.
+
+    - **Hiányzik a riasztások**. Tegyük fel, az adatfeldolgozást késleltetés néha 60 perc, de az esetek többségében 15 perc.  Ha a időszak 30 percre van beállítva majd azt nem teljesíti az riasztást, amikor a késleltetési idő legyen a 60 perc, mert az adatok nem lesz elérhető a Keresés a riasztási lekérdezés végrehajtásakor. 
+   
+        >[!NOTE]
+        >Próbál megállapításához, hogy a rendszer nem talált meg a riasztás miért nem lehetséges. Például a fenti esetben a adatot ír a tárház 60 perc után a riasztási lekérdezés végre lett hajtva. Ha azt az első fellépése a következő napon kimaradt egy riasztást, és a következő napon a lekérdezés végrehajtása a helyes időre időszakban, a naplófájl-keresési feltételeknek megfelelő eredménye. Úgy tűnik, hogy a riasztás kell rendelkeznie lett elindítva. Valójában a riasztás volt nem indulnak el, mivel az adatok még nem voltak elérhetők a riasztási lekérdezés végrehajtásakor. 
+        >
+ 
+    - **Téves riasztások**. Egyes esetekben riasztási lekérések úgy terveztek, hogy az események hiányára. Egy példa erre van annak ellenőrzése, ha egy virtuális gép kapcsolat nélküli a kihagyott szívverések keresve. A fenti a szívverés nem érhető el keresési belül a riasztási időszak, ha majd riasztást fog hozható létre, mert a szívverés adatok még nem volt kereshető, és ezért hiányzik. Ez az ugyanazt az eredményt, mintha a virtuális gép szabályosan offline állapotban volt, és nincs által generált szívverés adatot nem. A lekérdezés végrehajtásakor, a következő napon keresztül a helyes időre ablakban jelennek meg, hogy nincsenek-szívverés és riasztási nem sikerült. Valójában a szívverések fejeződtek nem érhető el a kereséshez, mert a riasztás időszak túl kicsi volt beállítva.  
+
+- **Gyakoriság**.  Itt adhatja meg, milyen gyakran a lekérdezés kell futtatni, és a riasztások a normál esetben gyorsabb végrehajtásához használható. Az érték 5 perc és 24 óra közötti lehet, és a riasztási időszak-nél kisebb vagy azzal egyenlőnek kell lennie.  Ha az érték nagyobb, mint az időszak, majd azzal kockáztatja alatt nem talált rekordokat.<br>A cél az, ha a megbízható késlelteti akár 30 percet és normál késleltetési idő legyen 10 perc, a időszak egy óra és a gyakoriság értéke 10 percnek kell lennie. Ez megjelenik egy figyelmeztetés, amelynek a 10 és 20 perc, a riasztási adatok létrehozásának 10 perces adatfeldolgozást késleltetés adatokkal.<br>Az adatok több riasztásokat hoznak létre, mert a időszak túl széles elkerülése érdekében a [figyelmeztetések mellőzése](log-analytics-tutorial-response.md#create-alerts) beállítás használható arra, hogy letiltsa a riasztások legalább, amíg a időszak.
+  
 - **Küszöbérték**.  A naplófájl-keresési eredmények kiértékelése annak meghatározásához, hogy riasztást kell létrehozni.  A küszöbérték nem azonos a különböző típusú riasztási szabályok.
 
 A Naplóelemzési minden riasztási szabály a két típus egyike.  Ezek a típusok leírását a következő szakaszok részletesen.
@@ -76,18 +100,15 @@ Bizonyos esetekben érdemes lehet egy esemény hiányában hozzon létre egy ria
 
 Ha szeretné a processzor futtatásakor riasztás például több mint 90 %, használhatja a következő lekérdezést a küszöbértékkel a riasztási szabály **0-nál nagyobb**.
 
-    Perf | where ObjectName=="Processor" and CounterName=="% Processor Time" and CounterValue>90
+    Type=Perf ObjectName=Processor CounterName="% Processor Time" CounterValue>90
 
-    
+Riasztás, ha a processzor átlagosan több mint 90 %-át egy adott időtartomány szeretne, ha szeretné használni egy lekérdezés segítségével a [parancs mérésére](log-analytics-search-reference.md#commands) , például a küszöbértéket, a riasztási szabály a következőre **0-nálnagyobb**.
 
-Ha riasztást küld, ha a processzor átlagosan több mint 90 %-át egy adott időtartomány, használhatja a következő lekérdezést a küszöbértékkel a riasztási szabály **0-nál nagyobb**.
+    Type=Perf ObjectName=Processor CounterName="% Processor Time" | measure avg(CounterValue) by Computer | where AggregatedValue>90
 
-    Perf | where ObjectName=="Processor" and CounterName=="% Processor Time" | where CounterValue>90 | summarize avg(CounterValue) by Computer
-
-    
 >[!NOTE]
-> Ha a munkaterületet van még nincsenek frissítve az a [új Log Analytics lekérdezési nyelv](log-analytics-log-search-upgrade.md), majd a fenti lekérdezések megváltozna a ez utóbbi használatával a következő a [parancs mérésére](log-analytics-search-reference.md#commands):`Type=Perf ObjectName=Processor CounterName="% Processor Time" CounterValue>90`
-> `Type=Perf ObjectName=Processor CounterName="% Processor Time" | measure avg(CounterValue) by Computer | where AggregatedValue>90`
+> Ha a munkaterületet lett frissítve a [új Log Analytics lekérdezési nyelv](log-analytics-log-search-upgrade.md), majd a fenti lekérdezések megváltozna a következők:`Perf | where ObjectName=="Processor" and CounterName=="% Processor Time" and CounterValue>90`
+> `Perf | where ObjectName=="Processor" and CounterName=="% Processor Time" | summarize avg(CounterValue) by Computer | where CounterValue>90`
 
 
 ## <a name="metric-measurement-alert-rules"></a>Metrika mérési riasztási szabályok
@@ -102,7 +123,7 @@ Használhatja a lekérdezés egy **eredmények száma** riasztás szabályok von
 
 - **Összesítő függvény**.  Meghatározza a számítás, amely történik, és potenciálisan egy numerikus összesítendő mező.  Például **count()** visszatér a rekordok számát a lekérdezésben **avg(CounterValue)** arra az időtartamra, lesz a ellenértéknek mező átlagának visszaadása.
 - **Csoport mező**.  Az összesített érték egy rekord jön létre minden egyes példányánál ebben a mezőben, és a riasztás is generálható minden.  Például, ha az egyes számítógépek riasztás létrehozása, használhatja **számítógépenként**.   
-- **Időköz**.  Az időtartam alatt, amelyben az adatokat összesített értéket határoz meg.  Például, ha a megadott **5minutes**, létrehozott egy rekordot az a csoportmező, 5 perces időközönként a riasztás megadott időszak alatt összesített értéket minden egyes példányánál.
+- **Időköz**.  Az időtartam alatt, amelyben az adatokat összesített értéket határoz meg.  Például, ha a megadott **5 perc**, létrehozott egy rekordot az a csoportmező, 5 perces időközönként a riasztás megadott időszak alatt összesített értéket minden egyes példányánál.
 
 #### <a name="threshold"></a>Küszöbérték
 Riasztási szabályok metrika mérési küszöbértéke összesítő érték és a behatolások határozzák meg.  A naplófájl-keresési bármely adatpont meghaladja ezt az értéket, ha a jövőben éri figyelembe.  Ha megszegése az összes objektum az eredmények száma meghaladja a megadott értéket, majd riasztást hoz létre, hogy az objektum.
@@ -110,11 +131,11 @@ Riasztási szabályok metrika mérési küszöbértéke összesítő érték és
 #### <a name="example"></a>Példa
 Fontolja meg egy olyan forgatókönyvet, ahol keresett riasztást, ha a számítógép számát processzorhasználat 90 %-os háromszor több mint 30 perc.  Riasztási szabály okozna a következő részletekkel.  
 
-**Lekérdezés:** telj |} ahol ObjectName == "Processzor" és a CounterName == "kihasználtsága (%) |} AggregatedValue összefoglalója bin (TimeGenerated, 5 m), a számítógép által avg(CounterValue) =<br>
+**Lekérdezés:** típus = telj ObjectName processzor CounterName = "kihasználtsága (%) = |} avg(CounterValue) mértékcsoport által számítógép időköz 5 perc<br>
 **Időablak:** 30 perc<br>
 **Riasztási gyakoriságot:** 5 perc<br>
 **Értéket összesítő:** 90-nél több<br>
-**Eseményindító riasztás alapján:** összesen feltöri nagyobb, mint 2<br>
+**Eseményindító riasztás alapján:** összege nagyobb, mint 5 feltöri<br>
 
 A lekérdezés 5 perces időközönként hozna létre az egyes számítógépek átlagos értékét.  Ez a lekérdezés az előző 30 perc át 5 percenként összegyűjtött adatok kell futnak.  Mintaadatokat három számítógépek alább láthatók.
 
@@ -146,5 +167,5 @@ Más típusú által létrehozott riasztás rekordok léteznek a [riasztás fel�
 ## <a name="next-steps"></a>További lépések
 * Telepítse a [Riasztáskezelési megoldás](log-analytics-solution-alert-management.md) Naplóelemzési begyűjti a System Center Operations Manager riasztásokat együtt létrehozott riasztások elemzéséhez.
 * Tudjon meg többet az [keresések jelentkezzen](log-analytics-log-searches.md) , amely riasztást generál.
-* A forgatókönyv a [konfigurálása egy webhook](log-analytics-alerts-webhooks.md) a riasztási szabályt.  
+* A forgatókönyv a [konfigurálása egy webook](log-analytics-alerts-webhooks.md) a riasztási szabályt.  
 * Ismerje meg, hogyan írhat [az Azure Automation runbookjai](https://azure.microsoft.com/documentation/services/automation) riasztások által azonosított problémák megoldásáról.
