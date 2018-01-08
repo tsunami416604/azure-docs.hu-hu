@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/13/2017
 ms.author: cgronlun
-ms.openlocfilehash: ba2a14e3f327fd8ab4f1ebfe329a64b4aa1a25a1
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 49ec2f305c1aef50fcff977d60ff3ce0079ff5af
+ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="introduction-to-azure-hdinsight-the-hadoop-and-spark-technology-stack"></a>Az Azure HDInsight, a Hadoop- és Spark-technológiák bemutatása
 Ez a cikk bemutatja az Azure HDInsight szolgáltatást, amely egy vállalatok számára készült, teljes mértékben felügyelt, teljes spektrumú, nyílt forráskódú elemezési szolgáltatás. Használhat olyan nyílt forráskódú keretrendszereket, mint a Hadoop, a Spark, a Hive, az LLAP, a Kafka, a Storm, az R stb. 
@@ -137,6 +137,7 @@ A jól ismert üzletiintelligencia- (BI-) eszközök a Power Query beépülő mo
 
 * [Az Apache Spark BI adatvizualizációs eszközeinek használata az Azure HDInsighttal](../spark/apache-spark-use-bi-tools.md)
 * [Hive-adatok vizualizálása a Microsoft Power BI segítségével az Azure HDInsightban](apache-hadoop-connect-hive-power-bi.md) 
+* [Interaktív lekérdezéses Hive-adatok vizualizálása a Microsoft Power BI segítségével az Azure HDInsightban](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)
 * [Az Excel és a Hadoop csatlakoztatása a Power Query segítségével](apache-hadoop-connect-excel-power-query.md): Megtudhatja, hogyan csatlakoztathatja az Excelt a HDInsight-fürtből származó adatokat tároló Azure Storage-fiókhoz az Excelhez készült Microsoft Power Queryvel. Használatához Windows-munkaállomás szükséges. 
 * [Az Excel és a Hadoop csatlakoztatása a Microsoft Hive ODBC-illesztő segítségével](apache-hadoop-connect-excel-hive-odbc-driver.md): megtudhatja, hogyan importálhat adatokat a HDInsight-ból a Microsoft Hive ODBC-illesztővel. Használatához Windows-munkaállomás szükséges. 
 * [Microsoft Cloud platform](http://www.microsoft.com/server-cloud/solutions/business-intelligence/default.aspx): további információt szerezhet az Office 365-höz készült Power BI szolgáltatásról, letöltheti az SQL Server próbaverzióját, és beállíthatja a SharePoint Server 2013-at és az SQL Server BI-t.
@@ -144,7 +145,7 @@ A jól ismert üzletiintelligencia- (BI-) eszközök a Power Query beépülő mo
 * [SQL Server Reporting Services](http://msdn.microsoft.com/library/ms159106.aspx)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A Hadoop használatának első lépései a HDInsightban](apache-hadoop-linux-tutorial-get-started.md)
 * [A Spark használatának első lépései a HDInsightban](../spark/apache-spark-jupyter-spark-sql.md)

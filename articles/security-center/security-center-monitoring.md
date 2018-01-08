@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/07/2017
+ms.date: 12/28/2017
 ms.author: yurid
-ms.openlocfilehash: d610a4ae97657013f6bb784790f073c3d986959f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a14528013b34b912f4f2e1bc07094c7b20a0f63c
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="security-health-monitoring-in-azure-security-center"></a>Biztonsági állapotfigyelés az Azure Security Centerben
 Ez a cikk az Azure Security Center figyelési funkcióknak használatához nyújt segítséget a szabályzatoknak való megfelelés ellenőrzése érdekében.
@@ -45,13 +45,14 @@ A **Számítás** csempére kattintva a következő három lap jelenik meg:
 
 ![Hiányzó rendszerfrissítések virtuális gépenként](./media/security-center-monitoring/security-center-monitoring-fig1-sep2017.png)
 
-Minden egyes lap esetében több szakaszt hozhat létre, és az egyes szakaszokban elérhető lehetőségek kiválasztásával további részleteket tudhat meg az adott probléma megoldásához szükséges lépésekről. 
+Minden egyes lap esetében több szakaszt hozhat létre, és az egyes szakaszokban elérhető lehetőségek kiválasztásával további részleteket tudhat meg az adott probléma megoldásához szükséges lépésekről.
 
 #### <a name="monitoring-recommendations"></a>Figyelési javaslatok
-Ebben a szakaszban tekintheti meg az összes automatikus üzembe helyezésre beállított virtuális gépet és számítógépet, valamint azok aktuális állapotát. Ha erre a bejegyzésre kattint, megnyílik **A virtuálisgép-ügynök hiányzik vagy nem válaszol** panel. 
+Ebben a szakaszban tekintheti meg az összes automatikus üzembe helyezésre beállított virtuális gépet és számítógépet, valamint azok aktuális állapotát. Ha erre a bejegyzésre kattint, megnyílik **A Monitoring Agent állapotproblémái** panel.
 
-![Hiányzó rendszerfrissítések virtuális gépenként](./media/security-center-monitoring/security-center-monitoring-fig1-new003-2017.png)
+![A Monitoring Agent állapotproblémái](./media/security-center-monitoring/security-center-monitoring-fig1-new003-2017.png)
 
+Itt szerepelnek azok a virtuális gépek és számítógépek, amelyeket a Security Center nem tud sikeresen monitorozni. Részletes információkért válasszon ki egy virtuális gépet vagy számítógépet. A **FIGYELÉS ÁLLAPOTA** határozza meg a problémát.
 
 #### <a name="recommendations"></a>Javaslatok
 Ebben a szakaszban az Azure Security Center által megfigyelt [virtuális gépekre és számítógépekre vonatkozó javaslatokat](security-center-virtual-machine-recommendations.md) olvashat. Az első oszlop a javaslatokat sorolja fel. A második oszlop az adott javaslat által érintett virtuális gépek és számítógépek számát tartalmazza. A harmadik oszlop a probléma súlyosságát mutatja, ahogyan az alábbi képernyőfelvételen látható:
@@ -79,7 +80,7 @@ A **Hiányzó rendszerfrissítések** grafikus formátumban összegzi a kritikus
   * **Medium** (Közepes): nem kritikus vagy kiegészítő lépések elvégzése szükséges egy folyamat befejezéséhez vagy egy biztonsági rés megszüntetéséhez.
   * **Low** (Alacsony): a biztonsági rést be kell tömni, de a probléma nem igényel azonnali beavatkozást. (Az alacsony súlyosságú javaslatok alapértelmezés szerint nem láthatók, de a szűrővel bekapcsolhatja megjelenítésüket.)
 
-A javaslat részleteinek megtekintéséhez kattintson a hiányzó frissítés nevére a listában. 
+A javaslat részleteinek megtekintéséhez kattintson a hiányzó frissítés nevére a listában.
 
 ![Adott virtuális gép hiányzó rendszerfrissítései](./media/security-center-monitoring/security-center-monitoring-fig4-sep2017.png)
 
@@ -121,7 +122,7 @@ Olyan esetekben, ahol valóban rendelkezik javaslattal (az előző példa nem il
 
 ![Felhőszolgáltatás adatai](./media/security-center-monitoring/security-center-monitoring-fig8-new3.png)
 
-Ha előírásszerűbb magyarázatot kíván megtekinteni erről a javaslatról, a **DESCRIPTION** (LEÍRÁS) oszlopban kattintson az **Update OS version** (Operációs rendszer verziójának frissítése) elemre. 
+Ha előírásszerűbb magyarázatot kíván megtekinteni erről a javaslatról, a **DESCRIPTION** (LEÍRÁS) oszlopban kattintson az **Update OS version** (Operációs rendszer verziójának frissítése) elemre.
 
 ![Felhőszolgáltatásokkal kapcsolatos javaslatok](./media/security-center-monitoring/security-center-monitoring-fig8-new4.png)  
 
@@ -213,7 +214,7 @@ Itt megjelenik az alkalmazáshoz tartozó összes javaslat listája. A **Webalka
 
 ![Az Add Web Application Firewall (Webalkalmazás-tűzfal hozzáadása) párbeszédpanel](./media/security-center-monitoring/security-center-monitoring-fig18-ga.png)
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 Ebben a cikkben megismerkedhetett az Azure Security Center figyelési funkcióinak használatával. Az Azure Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Biztonsági szabályzatok beállítása az Azure Security Centerben](security-center-policies.md): Ez a cikk bemutatja, hogyan konfigurálhat biztonsági beállításokat az Azure Security Centerben.

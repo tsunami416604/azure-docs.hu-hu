@@ -15,11 +15,11 @@ ms.date: 08/23/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro;oldportal
-ms.openlocfilehash: 7adaf2aa51d2a48116a816d83b42ba8416c157cb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0218365a21f241b5672774005cd6e0417fba358b
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="manage-your-azure-ad-directory"></a>Azure AD-címtár kezelése
 
@@ -80,7 +80,6 @@ E portálok (vagy parancsmagok) a következőket teszik lehetővé:
 * Helyszíni integráció beállítása az Azure AD identitás- és hitelesítési szolgáltatásaival
 
 Az Azure AD felügyeleti központ, az Office 365 felügyeleti központ, a Microsoft Intune-fiókportál és az Azure AD-parancsmagok mind egyetlen, a szervezet címtárához társított megosztott Azure AD-példányba írnak és onnan olvasnak. Ezeknek az eszközöknek mindegyike a címtáradatok bekérésére vagy módosítására használt kezelőfelületként működik.
-
 Ha valamelyik portál vagy parancsmag használatával módosítja a szervezeti adatokat, miközben be van jelentkezve az egyik szolgáltatásba, a változtatás a legközelebbi bejelentkezés alkalmával a többi portálon is megjelenik. Az adatokat az összes olyan Microsoft-felhőszolgáltatáson meg vannak osztva, amelyekre feliratkozott.
 
 Ha például egy felhasználó bejelentkezésének blokkolására az Office 365 felügyeleti központját használja, ezzel az adott felhasználó bármely másik, a szervezete által aktuálisan előfizetett szolgáltatásra történő bejelentkezését is blokkolja. Ha ugyanezt a felhasználót a Microsoft Intune fiókportálján tekinti meg, ott is azt látja majd, hogy a felhasználó blokkolva van.
@@ -116,9 +115,9 @@ A rendszer a következő feltételek teljesülését ellenőrzi:
 * Törölni kell minden, a címtárhoz társított Microsoft Online Services-előfizetést, például a Microsoft Azure-t, az Office 365-öt vagy a Prémium szintű Azure AD-t. Ha például az alapértelmezett címtár az Azure-ban lett létrehozva, nem törölheti azt mindaddig, amíg Azure-előfizetésének hitelesítése továbbra is ezen a címtáron alapul. Hasonlóképpen olyan címtárat sem törölhet, amelyhez egy másik felhasználó előfizetést társított. 
 
 
-## <a name="next-steps"></a>Következő lépések
-* [Azure AD fórum](https://social.msdn.microsoft.com/Forums/home?forum=WindowsAzureAD)
-* [Azure Multi-Factor Authentication fórum](https://social.msdn.microsoft.com/Forums/home?forum=windowsazureactiveauthentication)
-* [Azure Stack Overflow-kérdések](http://stackoverflow.com/questions/tagged/azure)
+## <a name="next-steps"></a>További lépések
+* [Azure AD fórum](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=windowsazuread)
+* [Azure Multi-Factor Authentication fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=windowsazureactiveauthentication)
+* [Azure StackOverflow-kérdések](https://stackoverflow.com/questions/tagged/azure-active-directory)
 * [Azure Active Directory PowerShell](https://docs.microsoft.com/powershell/azure/active-directory)
 * [Rendszergazdai szerepkörök hozzárendelése az Azure AD-ben](active-directory-assign-admin-roles-azure-portal.md)

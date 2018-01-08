@@ -3,22 +3,22 @@ title: "Ismerkedés az Azure Notification Hubs Univerzális Windows-platformon f
 description: "Ebből az oktatóanyagból elsajátíthatja, hogyan használható az Azure Notification Hubs leküldéses értesítések univerzális platformon futó Windows-alkalmazásra történő küldéséhez."
 services: notification-hubs
 documentationcenter: windows
-author: ysxu
-manager: erikre
-editor: erikre
+author: jwhitedev
+manager: kpiteira
+editor: 
 ms.assetid: cf307cf3-8c58-4628-9c63-8751e6a0ef43
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 10/03/2016
-ms.author: yuaxu
-ms.openlocfilehash: e18a810bcdbd97c79418f53c647df8723ecb6076
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/22/2017
+ms.author: jawh
+ms.openlocfilehash: c09621d1152aafbe15039130f6ca24082dc5bd21
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="get-started-with-notification-hubs-for-universal-windows-platform-apps"></a>Ismerkedés a Notification Hubs Univerzális Windows-platformon futó alkalmazásokkal való használatával
 
@@ -81,8 +81,8 @@ A leküldéses értesítések UWP-alkalmazásokba irányuló küldéséhez társ
 ## <a name="configure-your-notification-hub"></a>Az értesítési központ konfigurálása
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
-<ol start="5">
-<li><p>Válassza az <b>Értesítési szolgáltatások</b> > <b>Windows (WNS)</b> elemet, majd írja be az alkalmazáskulcs jelszót a <b>Biztonsági kulcs</b> mezőbe. A <b>Csomag biztonsági azonosítója</b> mezőben adja meg a WNS-ből az előző szakaszban beszerzett értéket, majd válassza a <b>Mentés</b> lehetőséget.</p>
+<ol start="6">
+<li><p>Az <b>Értesítési szolgáltatások</b> területen válassza a <b>Windows (WNS)</b> elemet, majd írja be az alkalmazás titkos jelszavát a <b>Biztonsági kulcs</b> mezőbe. A <b>Csomag biztonsági azonosítója</b> mezőben adja meg a WNS-ből az előző szakaszban beszerzett értéket, majd válassza a <b>Mentés</b> lehetőséget.</p>
 </li>
 </ol>
 
@@ -162,57 +162,7 @@ Ebben az oktatóanyagban az ügyfélalkalmazás teszteléséhez egy háttérszol
     * [Java](notification-hubs-java-push-notification-tutorial.md)
     * [PHP](notification-hubs-php-push-notification-tutorial.md)
 
-## <a name="optional-send-notifications-from-a-console-app"></a>(Választható) Értesítések küldése konzolalkalmazásból
-Ha .NET-konzolalkalmazással szeretne értesítéseket küldeni, tegye a következőket: 
-
-1. Kattintson a jobb gombbal a megoldásra, válassza a **Hozzáadás** > **Új projekt** elemet, majd a **Visual C#** részen válassza a **Windows** és a **Konzolalkalmazás** lehetőséget, majd kattintson az **OK** gombra.
-   
-    Ezzel hozzáad egy új Visual C#-konzolalkalmazást a megoldáshoz. A projektet hozzáadhatja egy külön megoldásban is.
-
-2. A Visual Studióban válassza a **Tools** (Eszközök), a **NuGet Package Manager** (NuGet-csomagkezelő), majd a **Package Manager Console** (Csomagkezelő konzol) elemet.
-   
-    A Package Manager Console (Csomagkezelő konzol) megnyílik a Visual Studióban.
-
-3. A Package Manager Console (Csomagkezelő konzol) ablakban az **Alapértelmezett projekt** értékeként adja meg az új konzolalkalmazás-projektet, majd a konzolablakban futtassa az alábbi parancsot:
-   
-        Install-Package Microsoft.Azure.NotificationHubs
-   
-    Ez a művelet hozzáad egy, az Azure Notification Hubs SDK-ra mutató hivatkozást a [Microsoft.Azure.Notification Hubs NuGet-csomag](http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) használatával.
-   
-    ![Az „Alapértelmezett projekt” név](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
-
-4. Nyissa meg a Program.cs fájlt, majd adja hozzá a következő `using` utasítást:
-   
-        using Microsoft.Azure.NotificationHubs;
-
-5. A **Program** osztályban adja hozzá a következő metódust:
-   
-        private static async void SendNotificationAsync()
-        {
-            NotificationHubClient hub = NotificationHubClient
-                .CreateClientFromConnectionString("<connection string with full access>", "<hub name>");
-            var toast = @"<toast><visual><binding template=""ToastText01""><text id=""1"">Hello from a .NET App!</text></binding></visual></toast>";
-            await hub.SendWindowsNativeNotificationAsync(toast);
-        }
-   
-    >[!NOTE]
-    >* A **hub name** helyőrzőt cserélje le az értesítési központ Azure Portalon megjelenő nevére. 
-    >* Cserélje le a kapcsolati karakterlánc helyőrzőjét „Az értesítési központ konfigurálása” szakaszban az értesítési központ **Hozzáférési szabályzatok** oldaláról beszerzett **DefaultFullSharedAccessSignature** kapcsolati karakterláncra.
-    >* Olyan kapcsolati karakterláncot használjon, amely nem *figyelési*, hanem *teljes* hozzáféréssel rendelkezik. A Figyelési hozzáféréssel rendelkező kapcsolati karakterláncok nem rendelkeznek jogosultsággal értesítések küldéséhez.
-   > 
-   > 
-6. A **Main** metódusban adja hozzá a következő sorokat:
-   
-         SendNotificationAsync();
-         Console.ReadLine();
-
-7. Kattintson a jobb gombbal a konzolalkalmazás-projektre a Visual Studióban, majd válassza a **Set as StartUp Project** (Beállítás kezdőprojektként) elemet a projekt kezdőprojektként való beállításához. Ezután nyomja le az **F5** billentyűt az alkalmazás futtatásához.
-   
-    Egy bejelentési értesítést fog kapni az összes regisztrált eszközön. A bejelentési szalagcímre kattintva vagy koppintva a rendszer betölti az alkalmazást.
-
-Az összes támogatott hasznos adatot megtalálja az MSDN [bejelentéskatalógussal], [csempekatalógussal] és a [jelvények áttekintésével] foglalkozó témakörében.
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az egyszerű példában értesítéseket küldött az összes Windows rendszerű eszközre a portál vagy egy konzolalkalmazás használatával. Következő lépésként javasoljuk [A Notification Hubs használata leküldéses értesítések küldéséhez felhasználók számára] oktatóanyag megtekintését. Ebben bemutatjuk, hogy hogyan küldhet értesítéseket ASP.NET-háttérrendszerből címkék használatával adott felhasználók számára.
 
 Ha a felhasználókat érdeklődési körök alapján szeretné szegmentálni, olvassa el a [Use Notification Hubs to send breaking news] (Friss hírek küldése Notification Hubs használatával) című témakört. 
@@ -230,7 +180,7 @@ A Notification Hubs használatával kapcsolatban a [Notification Hubs használat
 [A Notification Hubs használata leküldéses értesítések küldéséhez felhasználók számára]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
 
-[bejelentéskatalógussal]: http://msdn.microsoft.com/library/windows/apps/hh761494.aspx
-[csempekatalógussal]: http://msdn.microsoft.com/library/windows/apps/hh761491.aspx
-[jelvények áttekintésével]: http://msdn.microsoft.com/library/windows/apps/hh779719.aspx
+[toast catalog]: http://msdn.microsoft.com/library/windows/apps/hh761494.aspx
+[tile catalog]: http://msdn.microsoft.com/library/windows/apps/hh761491.aspx
+[badge overview]: http://msdn.microsoft.com/library/windows/apps/hh779719.aspx
  

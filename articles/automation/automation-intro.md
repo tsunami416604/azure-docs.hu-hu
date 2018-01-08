@@ -1,86 +1,83 @@
 ---
-title: "Az Azure Automation bemutatása | Microsoft Docs"
-description: "Megtudhatja, mit kínál az Azure Automation, és választ kaphat gyakori kérdésekre, hogy nekiláthasson a forgatókönyvek Azure Automation DSC-ben való létrehozásának és használatának."
+title: "Az Azure Automation áttekintése | Microsoft Docs"
+description: "Útmutató az Azure Automation az infrastruktúra és az alkalmazások életciklusának automatizálásához történő használatához."
 services: automation
+author: eamonoreilly
 documentationcenter: 
-author: georgewallace
-manager: jwhit
-editor: 
-keywords: "az Automation ismertetése, Azure Automation, Azure Automation példák"
+keywords: "azure automation, DSC, powershell, desired state configuration, frissítéskezelés, változáskövetés, leltár, runbookok, python, grafikus"
 ms.assetid: 0cf1f3e8-dd30-4f33-b52a-e148e97802a9
 ms.service: automation
-ms.workload: tbd
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/10/2016
-ms.author: magoedte;bwren
-ms.openlocfilehash: ae2b607be9a02e688a6b513d593f79eeb985ca93
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 12/13/2017
+ms.author: eamono
+ms.openlocfilehash: aab15392187a00aebf707f553a097961ce438194
+ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 12/22/2017
 ---
-# <a name="azure-automation-overview"></a>Az Azure Automation áttekintése
-A Microsoft Azure Automation segítségével a felhasználók automatizálhatják a manuális, hosszan tartó, sok hibalehetőséget rejtő és gyakran ismétlődő feladatokat, amelyeket gyakran hajtanak végre a felhőben és vállalati környezetben. Ezzel idő takarítható meg, továbbá nő a rendszeres adminisztratív feladatok megbízhatósága, valamint még ütemezhetők is a feladatok, hogy adott időközönként automatikusan végrehajtsa őket a rendszer. A folyamatokat automatizálhatja forgatókönyvek segítségével, vagy automatizálhat konfigurációkezelést a Célállapot-konfigurációval (DSC). Ez a cikk röviden áttekinti az Azure Automationt, valamint választ ad néhány gyakran felmerülő kérdésre. A különböző témakörök részletesebb leírásáért tekintse meg a könyvtár egyéb cikkeit.
+# <a name="an-introduction-to-azure-automation"></a>Az Azure Automation bemutatása
 
-## <a name="automating-processes-with-runbooks"></a>Folyamatok automatizálása forgatókönyvekkel
-A forgatókönyv egy feladatkészlet, amely bizonyos automatizált folyamatokat hajt végre az Azure Automationben. Ez lehet egy egyszerű folyamat, mint például egy virtuális gép elindítása vagy egy naplóbejegyzés létrehozása, illetve a forgatókönyv lehet komplex, amely más, kisebb forgatókönyveket összekapcsolva több erőforrásban, vagy akár több felhőben és helyszíni környezetben dolgozik.  
+Az Azure Automation egy felhőalapú automatizálási és konfigurálási szolgáltatást kínál, amely biztosítja az Azure-beli és nem Azure-beli környezetek konzisztens felügyeletét. Folyamatautomatizálást, frissítéskezelést és konfigurálási szolgáltatásokat foglal magában. Az Azure Automation teljes körű felügyeletet biztosít a számítási feladatok és erőforrások üzembe helyezése, üzemeltetése és leszerelése során.
+Ez a cikk röviden áttekinti az Azure Automationt, valamint választ ad néhány gyakran felmerülő kérdésre. A különböző képességekkel kapcsolatos további információért kattintson a jelen áttekintésben található hivatkozásokra.
 
-Ha például van egy meglévő manuális eljárása egy SQL-adatbázis csonkolására abban az esetben, ha elérte a maximális méretet, és ez az eljárás több lépést tartalmaz, például egy kiszolgálóhoz való csatlakozást, az adatbázishoz való csatlakozást, az adatbázis aktuális méretének lekérését, valamint a küszöbérték elérésének ellenőrzését, majd a csonkolást és a felhasználó értesítését. Ahelyett, hogy ezeket a lépéseket manuálisan hajtaná végre, létrehozhat egy forgatókönyvet, amely egyetlen folyamatban hajtja végre az összes feladatot. A forgatókönyv elindításakor meg kell adnia a szükséges információkat, például az SQL-kiszolgáló nevét, az adatbázis nevét és a címzett e-mail-címét, és onnantól hátradőlve figyelheti, ahogy a folyamat lezajlik. 
+## <a name="azure-automation-capabilities"></a>Az Azure Automation képességei
 
-## <a name="what-can-runbooks-automate"></a>Mit lehet automatizálni forgatókönyvekkel?
-Az Azure Automation forgatókönyvek Windows PowerShellen vagy Windows PowerShell-munkafolyamaton alapulnak, tehát képesek mindenre, amire a PowerShell. Ha egy alkalmazás vagy szolgáltatás rendelkezik API-val, a forgatókönyv tudja azt használni. Ha van PowerShell-modulja az alkalmazáshoz, akkor betöltheti a modult az Azure Automationbe, és szerepeltetheti annak a parancsmagjait a fogatókönyvében. Az Azure Automation forgatókönyvek az Azure-felhőben futnak, és bármilyen felhőalapú erőforráshoz vagy külső erőforráshoz hozzáférnek, amely elérhető a felhőből. Egy [hibrid forgatókönyv-feldolgozó](automation-hybrid-runbook-worker.md) segítségével a forgatókönyvek futtathatók a helyi adatközpontban, és kezelhetők velük helyi erőforrások. 
+![Az Automation képességeinek áttekintése](media/automation-overview/automation-overview.png)
 
-## <a name="getting-runbooks-from-the-community"></a>Forgatókönyvek beszerzése a közösségtől
-A [Forgatókönyv galéria](automation-runbook-gallery.md#runbooks-in-runbook-gallery) a Microsoft és a közösség forgatókönyveit tartalmazza. Ezeket felhasználhatja módosítás nélkül a környezetében, vagy testreszabhatja őket, hogy megfeleljenek a céljainak. Referenciaként is hasznosak annak megtanulásához, hogy miként hozhatja létre a saját forgatókönyveit. A saját forgatókönyveit is hozzáadhatja a galériához, ha más felhasználók számára is hasznosnak gondolja. 
+### <a name="process-automation"></a>Folyamatautomatizálás
 
-## <a name="creating-runbooks-with-azure-automation"></a>Forgatókönyvek létrehozása Azure Automationnel
-[Létrehozhatja a saját forgatókönyveit](automation-creating-importing-runbook.md) az alapoktól felépítve, vagy módosíthat a [Forgatókönyv galériából](http://msdn.microsoft.com/library/azure/dn781422.aspx) szerzett forgatókönyveket a saját igényeinek megfelelően. Négy különböző [forgatókönyvtípus](automation-runbook-types.md) közül választhat az igényei és a PowerShell-tapasztalata alapján. Ha közvetlenül a PowerShell-kóddal szeretne dolgozni, offline vagy az Azure portál [szöveges szerkesztőjével](http://msdn.microsoft.com/library/azure/dn879137.aspx) szerkesztheti a [PowerShell-forgatókönyvet](automation-runbook-types.md#powershell-runbooks) vagy a [PowerShell-alapú munkafolyamat-forgatókönyvet](automation-runbook-types.md#powershell-workflow-runbooks). Ha inkább a kód közvetlen manipulálása nélkül szeretne szerkeszteni egy forgatókönyvet, létrehozhat egy [grafikus forgatókönyvet](automation-runbook-types.md#graphical-runbooks) az Azure portál [grafikus szerkesztőjével](automation-graphical-authoring-intro.md). 
+Az Azure Automation segítségével automatizálhatja a gyakori, időigényes és hibalehetőségekkel teli felhőfelügyeleti feladatokat. Az automatizálásnak köszönhetően így azokra a feladatokra koncentrálhat, amelyek valóban üzleti értéket teremtenek. A hibák csökkentése és a hatékonyság növelése révén az üzemeltetési költségek is csökkennek. A folyamatok teljes körű üzembe helyezéséhez, konfigurálásához és felügyeletéhez szükséges Azure-szolgáltatások és egyéb nyilvános rendszerek integrálhatók. A szolgáltatás segítségével grafikus úton [hozhat létre runbookokat](automation-runbook-types.md) PowerShellben vagy Pythonban. Hibrid runbook-feldolgozók használatával és a helyszíni környezetek irányításának összevonásával egységesítheti a felügyeleti tevékenységeket. A [webhookok](automation-webhooks.md) biztosítják a kérések teljesítését és a folyamatos szolgáltatást és üzemeltetést az ITSM-, DevOps- és monitorozási rendszerek automatizált folyamatainak aktiválásával.
 
-Inkább néz videót olvasás helyett? Tekintse meg az alábbi videót a Microsoft Ignite 2015. májusi üléséről. Megjegyzés: Noha a videóban tárgyalt koncepciók és szolgáltatások helyesek, az Azure Automation sokat fejlődött a videó rögzítése óta. Mostanra kiterjedtebb a felhasználói felülete az Azure portálon, és további képességeket is biztosít.
+### <a name="configuration-management"></a>Konfigurációkezelés
 
-> [!VIDEO https://channel9.msdn.com/Events/Ignite/2015/BRK3451/player]
-> 
-> 
+Az Azure Automation [desired state configuration](automation-dsc-overview.md) egy felhőalapú megoldás a PowerShell DSC-hez, amely vállalati környezetekhez szükséges szolgáltatásokat biztosít. A DSC-erőforrásait kezelheti az Azure Automationben, és konfigurációkat alkalmazhat a virtuális és fizikai gépekre az Azure-felhőben lévő DSC lekérési kiszolgálóról. Gazdag jelentések készíthetők, amelyek tájékoztatást adnak olyan fontos eseményekről, mint például amikor a csomópontok eltérnek a hozzájuk rendelt konfigurációtól. Monitorozhatja és automatizálhatja a gépkonfigurációkat a fizikai és virtuális gépeken, Windows vagy Linux rendszeren, felhőbeli vagy helyszíni környezetekben egyaránt.
 
-## <a name="automating-configuration-management-with-desired-state-configuration"></a>A konfigurációkezelés automatizálása a célállapot-konfigurációval (DSC)
-A [PowerShell DSC](https://technet.microsoft.com/library/dn249912.aspx) egy felügyeleti platform, amely lehetővé teszi fizikai gazdagépek és virtuális gépek konfigurációjának kezelését, telepítését és kényszerítését egy deklaratív PowerShell-szintaxis segítségével. Meghatározhat a célgépeken automatikusan lekérhető és alkalmazható konfigurációkat egy központi DSC lekéréses kiszolgálón. A DSC biztosít egy PowerShell-parancsmagkészletet, amely segítségével automatikusan kezelheti a konfigurációkat és erőforrásokat.  
+A vendégen futtatott erőforrások leltáradatai révén betekintést nyerhet a telepített alkalmazásokról és egyéb konfigurációs elemekről. A rendelkezésre álló gazdag jelentéskészítési és keresési funkciókkal gyorsan lekérhető részletes információk segítségével könnyedén áttekinthető az operációs rendszerek konfigurációja. Nyomon követhetők a szolgáltatások, démonok, szoftverek, beállításjegyzékek és fájlok változásai, így gyorsan azonosítható, hogy mi okozza a hibákat. Emellett a DSC képes diagnosztizálni és jelezni a környezet nem kívánt változásait.
 
-Az [Azure Automation DSC](automation-dsc-overview.md) egy felhőalapú megoldás a PowerShell DSC-hez, amely vállalati környezetekhez szükséges szolgáltatásokat biztosít.  A DSC-erőforrásait kezelheti az Azure Automationben, és alkalmazhat konfigurációkat virtuális és fizikai gépekre, amelyek azokat az Azure-felhőben lévő DSC lekéréses kiszolgálóról szerzik be.  Jelentéskészítési szolgáltatásokat is biztosít, amelyek tájékoztatást adnak olyan fontos eseményekről, mint a csomók letérése a kijelölt konfigurációról vagy egy új konfiguráció alkalmazása 
+### <a name="update-management"></a>Frissítéskezelés
 
-## <a name="creating-your-own-dsc-configurations-with-azure-automation"></a>Saját DSC-konfigurációk létrehozása az Azure Automationnel
-A [DSC-konfigurációk](automation-dsc-overview.md) meghatározzák a csomópont kívánt állapotát.  Több csomópont alkalmazhatja ugyanazt a konfigurációt annak biztosítására, hogy mind azonos állapotot tartsanak fenn.  Létrehozhat egy konfigurációt bármilyen szövegszerkesztővel a helyi gépén, majd importálhatja az Azure Automationbe, ahol lefordíthatja, majd alkalmazhatja a csomópontokra.
+Az Azure Automationnel frissítheti a windowsos és linuxos rendszereket a hibrid környezetekben. Így láthatóvá válik a frissítési megfelelőség az Azure-beli, a helyszíni és egyéb felhőkben. Ütemezett üzembe helyezéseket hozhat létre a frissítések telepítésének egy adott karbantartási időablakban való végrehajtatásához. Ha egy adott frissítést nem szeretne telepíteni a gépekre, kizárhatja azt az üzembe helyezésből.
 
-## <a name="getting-modules-and-configurations"></a>Modulok és konfigurációk beszerzése
-A forgatókönyveiben és a DSC-konfigurációiban használható parancsmagokat tartalmazó [PowerShell-modulokat](automation-runbook-gallery.md#modules-in-powershell-gallery) beszerezhet a [PowerShell-galériából](http://www.powershellgallery.com/). Ezt a galériát az Azure portálról indíthatja el, a modulokat pedig importálhatja közvetlenül az Azure Automationbe, vagy letöltheti őket, és importálhatja manuálisan. A modulokat nem telepítheti közvetlenül az Azure portálról, de letöltheti, majd telepítheti őket, mint bármely egyéb modult. 
+### <a name="shared-capabilities"></a>Közös képességek
 
-## <a name="example-practical-applications-of-azure-automation"></a>Az Azure Automation gyakorlati alkalmazásai
-Az alábbiakban csupán néhány példát láthat arra, hogy milyen automatizálási forgatókönyvek képzelhetők el az Azure Automation használatával. 
+Az Azure Automation megosztott erőforrásainak segítségével könnyebben automatizálhatja és konfigurálhatja a nagy méretű környezeteket.
 
-* Különböző Azure-előfizetésekben lévő virtuális gépek létrehozása és másolása. 
-* Fájlmásolások ütemezése egy helyi gépről egy Azure Blob Storage tárolóba. 
-* Biztonsági funkciók automatizálása (pl. egy ügyfél kéréseinek megtagadása, amikor a rendszer szolgáltatásmegtagadási támadást észlel). 
-* Annak biztosítása, hogy a gépek folyamatosan igazodnak a konfigurált biztonsági házirendhez.
-* Az alkalmazáskód folyamatos telepítése a felhőben és a helyszíni infrastruktúrán. 
-* Active Directory-erdő létrehozása az Azure-ban a tesztkörnyezethez. 
-* Tábla csonkolása egy SQL-adatbázisban, ha az adatbázis már majdnem elérte a maximális méretet. 
-* A környezeti beállítások távoli frissítése egy Azure-webhelyhez. 
+* **[Szerepköralapú hozzáférés-vezérlés](automation-role-based-access-control.md)** – Az Automation-kezelői szerepkör segítségével szabályozhatja a fiókhoz való hozzáférést, mivel ez a szerepkör feladatokat futtathat, írási jogokkal azonban nem rendelkezik.
+* **[Változók](automation-variables.md)** – A változókban olyan tartalmakat tárolhat, amelyek több runbookban és konfigurációban is felhasználhatók. Az értékeket anélkül módosíthatja, hogy szerkesztenie kellene az azokra hivatkozó runbookokat és konfigurációkat.
+* **[Hitelesítő adatok](automation-credentials.md)** – A runbookokban és konfigurációkban használt bizalmas adatok biztonságosan tárolhatók.
+* **[Tanúsítványok](automation-certificates.md)** – A tanúsítványok tárolhatók, és futásidőben elérhetővé tehetők, így hitelesítésre és az üzembe helyezett erőforrások védelmére használhatók.
+* **[Kapcsolatok](automation-connections.md)** – Gyakori adatokat tartalmazó név-érték adatpárokat tárolhat a kapcsolati erőforrásokban lévő rendszerekhez való kapcsolódáshoz. A kapcsolatokat a modul létrehozója definiálja a runbookokban és konfigurációkban való futásidejű használatra.
+* **[Ütemezések](automation-schedules.md)** – Az ütemezések használatával az automatizmusok előre meghatározott időpontokban aktiválhatók.
+* **[Verziókövetés-integráció](automation-source-control-integration.md)** – Segíti a kóddal való konfigurálást, amennyiben a runbookok és a konfigurációk beadhatók egy verziókövetési rendszerbe.
+* **[PowerShell-modulok](automation-integration-modules.md)** – A modulok segítségével felügyelhető az Azure és az egyéb rendszerek. Importálhatók az Automation-fiókba a Microsofttól, külső felektől vagy a közösségtől származó, illetve az egyénileg definiált parancsmagokhoz és DSC-erőforrásokhoz.
 
-## <a name="how-does-azure-automation-relate-to-other-automation-tools"></a>Hogyan kapcsolódik az Azure Automation más automatizálási eszközökhöz?
-A [Service Management Automation (SMA)](http://technet.microsoft.com/library/dn469260.aspx) célja a felügyeleti feladatok automatizálása a privát felhőben. Helyben van telepítve az adatközpontban a [Microsoft Azure csomag](https://www.microsoft.com/en-us/server-cloud/) részeként. Az SMA és az Azure Automation ugyanazt a Windows PowerShellen és Windows PowerShell-munkafolyamaton alapuló forgatókönyv-formátumot használja, azonban az SMA nem támogatja a [grafikus forgatókönyveket](automation-graphical-authoring-intro.md).  
+### <a name="windows-and-linux"></a>Windows és Linux
 
-A [System Center 2012 Orchestrator](http://technet.microsoft.com/library/hh237242.aspx) célja a helyszíni erőforrások automatizálása. Más forgatókönyv-formátumot használ, mint az Azure Automation és a Service Management Automation, valamint a grafikus felület segítségével parancsfájlkezelés nélkül lehet létrehozni forgatókönyveket. A forgatókönyvei kifejezetten az Orchestrator számára írt integrációs csomag tevékenységeiből állnak össze. 
+Az Azure Automation úgy lett kifejlesztve, hogy együttműködjön a hibrid felhőkörnyezetekkel, valamint a Windows- és Linux-környezetekkel. Egy egységes platformot biztosít az üzembe helyezett számítási feladatok és az azokat futtató operációs rendszerek automatizálásához és konfigurálásához.
 
-## <a name="where-can-i-get-more-information"></a>Hol kaphatok további információkat?
-Számos erőforrás áll rendelkezésére, hogy további információkat kapjon az Azure Automationről és a saját forgatókönyvei létrehozásáról. 
+### <a name="community-gallery"></a>Közösségi katalógus
 
-* Az **Azure Automation Library** a hely, ahol jelenleg van. A könyvtár cikkei átfogó dokumentációt biztosítanak az Azure Automation konfigurálásával és adminisztrációjával, valamint a saját forgatókönyvei létrehozásával kapcsolatban. 
-* Az [Azure PowerShell-parancsmagok](http://msdn.microsoft.com/library/jj156055.aspx) az Azure műveletek Windows PowerShell segítségével való automatizálásáról nyújtanak információkat. A forgatókönyvek ezen parancsmagok segítségével használják az Azure-erőforrásokat. 
-* A [Felügyeleti blog](https://azure.microsoft.com/blog/tag/azure-automation/) a legújabb információt biztosítja az Azure Automation és a Microsoft egyéb felügyeleti technológiáinak vonatkozásában. Erre a blogra előfizetve mindig naprakészen követheti az Azure Automation csapatának legfrissebb híreit. 
-* Az [Automation fórum](http://go.microsoft.com/fwlink/p/?LinkId=390561) lehetővé teszi, hogy kérdéseket tegyen fel az Azure Automationről, és választ kapjon a Microsofttól vagy az Automation közösségtől. 
-* Az [Azure Automation parancsmagok](https://msdn.microsoft.com/library/mt244122.aspx) az adminisztrációs feladatok automatizálásához nyújtanak információt. Parancsmagokat tartalmaz az Automation-fiókok, adategységek, forgatókönyvek és a DSC kezeléséhez.
+Az [Automation-katalógus](automation-runbook-gallery.md) runbookjai és moduljai használatával gyorsan nekiláthat saját folyamatai a PowerShell-galéria és a Microsoft Script Center segítségével történő integrálásának és kialakításának.
 
-## <a name="can-i-provide-feedback"></a>Küldhetek visszajelzést?
-**Várjuk a visszajelzését!** Ha egy Azure Automation-forgatókönyv megoldást vagy egy integrációs modult keres, küldjön egy Parancsfájlkérelmet a Script Centerbe. Ha visszajelzést vagy funkciókérést küldene az Azure Automation vonatkozásában, tegye azt közzé a [User Voice](http://feedback.windowsazure.com/forums/34192--general-feedback) fórumon. Köszönjük! 
+## <a name="common-scenarios-for-automation"></a>Általános példák az Automation használatára
 
+Az Azure Automationnel az infrastruktúra és az alkalmazások életciklusát felügyelheti. A használatával beadhatja a rendszerbe a vállalat számítási feladatainak működésével és karbantartásával kapcsolatos adatokat. A forgatókönyveket különféle gyakori nyelveken, például PowerShell, DSC vagy Python nyelven, illetve grafikus runbookként hozhatja létre. Az üzembe helyezett erőforrásokról teljes leltár áll a rendelkezésére célkezelési, jelentéskészítési és megfelelőségi célokra. Azonosíthatja azokat a változtatásokat, amelyek hibás konfigurációt okozhatnak, és javíthatja a működési megfelelőséget.
+
+* **Erőforrások kiépítése és üzembe helyezése** – Üzembe helyezhet virtuális gépeket a hibrid környezetekben runbookok és Azure Resource Manager-sablonok használatával. A rendszert integrálhatja a Jenkinsszel, a Visual Studio Team Services használatával és egyéb fejlesztői eszközökkel.
+* **Virtuális gépek konfigurálása** – Felmérheti a windowsos és linuxos gépek állapotát, és konfigurálhatja azokat az infrastruktúrának és az alkalmazásoknak megfelelő kívánt beállításokkal.
+* **Monitorozás** – Azonosíthatja a problémákat okozó gépeken ejtett módosításokat, és kijavíthatja azokat, vagy felterjesztheti a felügyeleti rendszerekre.
+* **Védelem** – Biztonsági riasztás esetén karanténba helyezheti a virtuális gépeket. Megadhatja a vendégen futtatott rendszerekre vonatkozó követelményeket.
+* **Irányítás** – Szerepköralapú hozzáférés-vezérlést állíthat be csapatok számára. Visszanyerheti a nem használt erőforrásokat.
+
+## <a name="pricing-for-automation"></a>Az Automation szolgáltatás díjszabása
+
+Az Azure Automation árait a [díjszabást](https://azure.microsoft.com/pricing/details/automation/) ismertető oldalon tekintheti meg.
+
+## <a name="next-steps"></a>További lépések
+
+> [!div class="nextstepaction"]
+> [Automation-fiók létrehozása](automation-quickstart-create-account.md)

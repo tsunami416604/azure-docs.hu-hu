@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/13/2017
+ms.date: 01/02/2018
 ms.author: yurid
-ms.openlocfilehash: 71dcafab92a9045388c2e602c0dc297aed32e527
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: b54dfc454cfcdefb56bfda9b242412e0f213b50b
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="adaptive-application-controls-in-azure-security-center-preview"></a>Adaptív alkalmazásvezérlők az Azure Security Centerben (előzetes verzió)
 Az útmutató azt ismerteti, hogyan konfigurálható az alkalmazásvezérlés az Azure Security Centerben.
@@ -36,12 +36,11 @@ Az adaptív alkalmazásvezérlők segítségével szabályozhatja, hogy mely alk
 ## <a name="how-to-enable-adaptive-application-controls"></a>Az adaptív alkalmazásvezérlők engedélyezése
 Az adaptív alkalmazásvezérlők segítségével meghatározhatja a konfigurált erőforráscsoportokon futtatható alkalmazások csoportját. Ez a funkció csak Windows rendszerű (akár klasszikus, akár Azure Resource Manager típusú) gépeken használható. A következő lépésekkel konfigurálhatók az alkalmazások engedélyezési listái a Security Centerben:
 
-1.  Nyissa meg a **Security Center** irányítópultját, és kattintson az **Áttekintés** elemre.
-2.  A **Speciális felhővédelem** terület **Adaptív alkalmazásvezérlés** csempéjén tekinthető át, hogy az összes virtuális gép közül hányon működik éppen a vezérlés. A csempe emellett az elmúlt hét folyamán felmerült problémák számát is mutatja: 
+1.  Nyissa meg a **Security Center** irányítópultot, majd kattintson a bal oldali navigációs ablaktábla **Speciális felhővédelem** szakaszának területén az **Adaptív alkalmazásvezérlők** elemre.
 
-    ![Adaptív alkalmazásvezérlők](./media/security-center-adaptive-application\security-center-adaptive-application-fig1.png)
+    ![Védelem](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png)
 
-3. A további beállítások megjelenítéséhez kattintson az **Adaptív alkalmazásvezérlők** csempére.
+2. Megjelenik az **Adaptív alkalmazásvezérlők** oldal.
 
     ![vezérlők](./media/security-center-adaptive-application/security-center-adaptive-application-fig2.png)
 
@@ -144,7 +143,7 @@ A lista a következőket tartalmazza:
 - **NAME** (Név): az előfizetés és az erőforráscsoport neve.
 - **VMS** (Virtuális gépek): a virtuális gépek száma az erőforráscsoportban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a dokumentumban megismerte, hogyan használhatja az adaptív alkalmazásvezérlőket az Azure Security Centerben az Azure-beli virtuális gépeken futó alkalmazások engedélyezési listákra való felvételéhez. Az Azure Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). A Security Center-riasztások kezelését és a biztonsági eseményekre való válaszadást ismertető útmutató.

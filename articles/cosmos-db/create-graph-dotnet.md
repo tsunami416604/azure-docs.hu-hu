@@ -3,7 +3,7 @@ title: "Azure Cosmos DB .NET-keretrendszer vagy Core-alkalmazás létrehozása a
 description: "Egy .NET-keretrendszer/Core-kódmintát mutat be, amellyel csatlakozhat egy Cosmos DB-adatbázishoz, és lekérdezéseket hajthat végre."
 services: cosmos-db
 documentationcenter: 
-author: dennyglee
+author: luisbosquez
 manager: jhubbard
 editor: 
 ms.assetid: daacbabf-1bb5-497f-92db-079910703046
@@ -13,19 +13,19 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 10/06/2017
-ms.author: denlee
-ms.openlocfilehash: 4c90ead99c513a56f8891b889e2c873952a33ec8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 01/02/2018
+ms.author: lbosq
+ms.openlocfilehash: 29153180da576f144a3f21718c3044b7b843eafb
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-cosmos-db-build-a-net-framework-or-core-application-using-the-graph-api"></a>Azure Cosmos DB: .NET-keretrendszer vagy Core-alkalmazás létrehozása a Graph API használatával
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum-, kulcs/érték és gráf típusú adatbázisokat, melyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
+Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
 
-A bevezető bemutatja, hogyan hozhat létre az Azure Portal segítségével Azure Cosmos DB-fiókot, adatbázist és gráfot (tárolót). Ezután megtudhatja hogyan hozhat létre és futtathat egy a [Graph API](graph-sdk-dotnet.md) előzetes verziójával létrehozott konzolalkalmazást.  
+A bevezető bemutatja, hogyan hozhat létre az Azure Portal segítségével Azure Cosmos DB-fiókot, adatbázist és gráfot (tárolót). Ezután megtudhatja hogyan hozhat létre és futtathat egy, a [Graph API-val](graph-sdk-dotnet.md) létrehozott konzolalkalmazást.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -88,7 +88,7 @@ Tekintsük át, hogy mi történik az alkalmazásban. Nyissa meg a Program.cs f�
         new DocumentCollection { Id = "graph" },
         new RequestOptions { OfferThroughput = 1000 });
     ```
-* A `CreateGremlinQuery` metódus használatával a program végrehajtja a Gremlin lépéssorozatot.
+* A `CreateGremlinQuery` metódus használatával a program Gremlinnel kapcsolatos lépések sorozatát hajtja végre.
 
     ```csharp
     // The CreateGremlinQuery method extensions allow you to execute Gremlin queries and iterate
@@ -108,19 +108,31 @@ Tekintsük át, hogy mi történik az alkalmazásban. Nyissa meg a Program.cs f�
 
 Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd másolja be azokat az alkalmazásba.
 
-1. Nyissa meg a appsettings.json fájlt a Visual Studio 2017 alkalmazásban. 
+1. Az [Azure Portalon](http://portal.azure.com/) kattintson a **Kulcsok** lehetőségre. 
 
-2. Az Azure Portalon az Azure Cosmos DB-fiók bal oldali navigációs sávján kattintson a **Kulcsok** elemre. 
+    Másolja az URI érték első részét.
 
-    ![Elsődleges kulcs megtekintése és másolása az Azure Portal Kulcsok oldalán](./media/create-graph-dotnet/keys.png)
+    ![Hozzáférési kulcs megtekintése és másolása az Azure Portal Kulcsok oldalán](./media/create-graph-dotnet/keys.png)
 
-3. Másolja az **URI** értéket a portálról, és adja meg az appsettings.json fájl végpontkulcsának értékeként. Az értéket az előző képernyőképen látható Másolás gombbal másolhatja.
+2. Nyissa meg a appsettings.json fájlt a Visual Studio 2017-ben, majd illessze be az értéket a `FILLME` helyére a következőben: `endpoint`. 
 
     `"endpoint": "https://FILLME.documents.azure.com:443/",`
+
+    A végpontértéknek most így kell kinéznie:
+
+    `"endpoint": "https://testgraphacct.documents.azure.com:443/",`
+
+3. Ha a gráfadatbázis-fiókot 2017. november 27. előtt hozta létre, módosítsa az `endpoint` értékét `documents` helyett `graphs`ra. Ha a gráfadatbázis-fiókot 2017. november 27-én vagy később hozta létre, módosítsa az `endpoint` értékét `documents` helyett a következőre: `gremlin.cosmosdb`.
+
+    A végpontértéknek most így kell kinéznie:
+
+    `"endpoint": "https://testgraphacct.graphs.azure.com:443/",` vagy `"endpoint": "https://testgraphacct.gremlin.cosmosdb.azure.com:443/",`
 
 4. Másolja az **ELSŐDLEGES KULCS** értékét a portálról, és adja meg az App.config fájl AuthKey kulcsaként, majd mentse a módosításokat. 
 
     `"authkey": "FILLME"`
+
+5. Mentse az appsettings.json fájlt. 
 
 Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. 
 
@@ -163,7 +175,7 @@ Ha az alkalmazást már nem használja, akkor a következő lépésekkel a minta
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a létrehozott erőforrás nevére. 
 2. Az erőforráscsoport lapján kattintson a **Törlés** elemre, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd kattintson a **Törlés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban bemutattuk, hogyan lehet Azure Cosmos DB-fiókot létrehozni, hogyan lehet az Adatkezelő segítségével gráfot készíteni, és hogyan lehet futtatni az alkalmazást. Most már készen áll arra, hogy a Gremlin használatával összetettebb lekérdezéseket hozzon létre és hatékony gráfbejárási logikákat implementáljon. 
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: 5c5fa4927073ff52418a940fce59ca1f6b57daa6
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: c9e0441ec42e5710f43bbe7fa8af4a9fe7447a69
+ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="what-is-azure-iot-suite"></a>Mi az Azure IoT Suite?
 
@@ -30,6 +30,10 @@ Az Azure IoT Suite *előre konfigurált megoldások* készlete, amely:
 * Testreszabható az igényeinek megfelelően
 
 Az *IoT Suite* előre konfigurált megoldásai mind azonos elvek és célok szerint lettek megtervezve.
+
+A következő videó az előre konfigurált távoli monitorozási megoldás áttekintését nyújtja:
+
+>[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Meet-the-new-Remote-Monitoring-accelerator-for-Azure-IoT/Player]
 
 ## <a name="preconfigured-solutions-overview"></a>Előre konfigurált megoldások áttekintése
 
@@ -142,7 +146,7 @@ Ha szeretné más nyelven is megtekinteni a megvalósítást, vegyen fel egy ké
 
 A felhasználói felület a [React](https://facebook.github.io/react/) javascript-könyvtár használatával lett létrehozva. A forráskódja nyílt forráskódú, így letölthető és testreszabható.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy áttekintette az IoT Suite előre konfigurált megoldásokat, íme a javasolt következő lépések az egyes előre konfigurált megoldásokhoz:
 
