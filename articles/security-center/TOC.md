@@ -85,13 +85,14 @@
 # Referencia
 ## [REST](https://msdn.microsoft.com/en-US/library/mt704034(Azure.100).aspx)
 
-# Kapcsolódó
+# Kapcsolódó témakörök
 ## [Azure Security](/azure/security/)
 
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=security-identity)
+## [A Security Center első lépéseinek útmutatója](security-center-readiness-roadmap.md)
 ## [Azure biztonsági, adatvédelmi és megfelelőségi blog](http://blogs.msdn.com/b/azuresecurity/)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
-## [Szolgáltatás áttekintése](https://azure.microsoft.com/services/security-center/)
+## [A szolgáltatás áttekintése](https://azure.microsoft.com/services/security-center/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=security-center)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=security-center)

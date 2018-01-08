@@ -303,6 +303,8 @@
       items:
         - name: Ütemezési eseményindító létrehozása
           href: how-to-create-schedule-trigger.md
+        - name: Átfedésmentes ablak eseményindítójának létrehozása
+          href: how-to-create-tumbling-window-trigger.md
 - name: Referencia
   items:
     - name: .NET
@@ -313,7 +315,7 @@
       href: /rest/api/datafactory
     - name: Python
       href: /python/api/overview/azure/datafactory?view=azure-python
-- name: Erőforrások
+- name: További források
   items:
     - name: GYIK
       href: frequently-asked-questions.md

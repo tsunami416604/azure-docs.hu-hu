@@ -39,21 +39,25 @@
       href: kubernetes-helm.md
     - name: Alkalmazások fejlesztése a Draft használatával
       href: kubernetes-draft.md
-    - name: Adatok megőrzése az Azure Files segítségével
-      href: azure-files.md
     - name: Integrálás az Azure-ral az OSBA használatával
       href: integrate-azure.md
     - name: A Kubernetes-irányítópult használata
       href: kubernetes-dashboard.md
     - name: Egyszerű szolgáltatás létrehozása
       href: kubernetes-service-principal.md
+    - name: Adatkötetek konfigurálása
+      items:
+        - name: Azure Files – Tartós kötet
+          href: azure-files-dynamic-pv.md
+        - name: Azure Files – Kötet
+          href: azure-files.md
 - name: Referencia
   items:
     - name: Azure CLI
       href: /cli/azure/aks
     - name: REST
       href: /rest/api/aks
-- name: Erőforrások
+- name: További források
   items:
     - name: Régiónkénti elérhetőség
       href: 'https://azure.microsoft.com/regions/services/'

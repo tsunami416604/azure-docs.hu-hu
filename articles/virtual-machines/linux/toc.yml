@@ -197,6 +197,8 @@
               href: update-agent.md
         - name: Tervezett karbantartás
           href: maintenance-notifications.md
+        - name: Spekulatív végrehajtás kockázatának csökkentése
+          href: mitigate-se.md
         - name: Gyorsított karbantartás – GYIK
           href: accelerated-maintenance.md
         - name: Ütemezett események

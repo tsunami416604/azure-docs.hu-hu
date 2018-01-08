@@ -1,5 +1,5 @@
 # Áttekintés
-## [Mi a Power BI Embedded?](what-is-power-bi-embedded.md)
+## [A Power BI Embedded](what-is-power-bi-embedded.md)
 
 # Bevezetés
 ## [Ismerkedés a Power BI Embedded szolgáltatással](get-started.md)
@@ -21,22 +21,20 @@
 # Példák
 ## [Kódminták](https://github.com/Microsoft/PowerBI-Developer-Samples)
 ## [Mintaútmutató](https://powerbi.microsoft.com/documentation/powerbi-developer-embed-sample-app-owns-data/)
+## [JavaScript beágyazási minta](https://microsoft.github.io/PowerBI-JavaScript/demo/)
 
 # Referencia
 ## API-k
 ### [Az Azure erőforráskezelési REST API-jai](https://docs.microsoft.com/rest/api/power-bi-embedded/)
-### [REST API-k](https://msdn.microsoft.com/en-us/library/mt147898.aspx)
-## SDK-k
-### [.NET SDK letöltése](https://www.nuget.org/packages/Microsoft.PowerBI.Api/)
-### [A JavaScript SDK letöltése](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)
+### [A Power BI REST API-jai](https://msdn.microsoft.com/en-us/library/mt147898.aspx)
 
-# Erőforrások
-## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=intelligence-analytics)
-## [JavaScript beágyazási minta](https://microsoft.github.io/PowerBI-JavaScript/demo/)
-## [Apiary](http://docs.powerbi.apiary.io/)
+# További források
+## [Power BI-közösség](http://community.powerbi.com/t5/Developer/bd-p/Developer)
+## [.NET SDK letöltése](https://www.nuget.org/packages/Microsoft.PowerBI.Api/)
+## [A JavaScript SDK letöltése](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## GitHub-adattárak
-### [.NET](https://github.com/Microsoft/PowerBI-CSharp)
-### [JavaScript](https://github.com/Microsoft/PowerBI-JavaScript)
-## [Power BI-közösség](http://community.powerbi.com/t5/Developer/bd-p/Developer)
+### [.NET a Power BI-ban](https://github.com/Microsoft/PowerBI-CSharp)
+### [JavaScript a Power BI-ban](https://github.com/Microsoft/PowerBI-JavaScript)
+
 

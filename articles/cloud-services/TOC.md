@@ -34,7 +34,7 @@
 #### [A .NET telepítése egy Cloud Service szerepkörre feladat használatával](cloud-services-dotnet-install-dotnet.md)
 
 ### A Távoli asztal konfigurálása
-#### [Portál](cloud-services-role-enable-remote-desktop-new-portal.md)
+#### [Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
 #### [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 
 ## Üzembe helyezés
@@ -44,6 +44,7 @@
 ### [Csatlakoztatás egyéni tartományvezérlőhöz](cloud-services-connect-to-custom-domain.md)
 
 ## Szolgáltatás kezelése
+### [Spekulatív végrehajtás kockázatának csökkentése](mitigate-se.md}
 ### [Gyakori felügyeleti feladatok](cloud-services-how-to-manage-portal.md)
 ### [Felhőszolgáltatás konfigurálása](cloud-services-how-to-configure-portal.md)
 ### [Egy Cloud Service felügyelete az Azure Automationnel](automation-manage-cloud-services.md)
@@ -104,7 +105,7 @@
 ### [NetworkConfiguration séma](schema-cscfg-networkconfiguration.md)
 ## [REST](/rest/api/compute/cloudservices/)
 
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=compute)
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/cloud-services/)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-us/home?forum=windowsazuredevelopment)
