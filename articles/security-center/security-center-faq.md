@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/03/2017
+ms.date: 01/05/2018
 ms.author: terrylan
-ms.openlocfilehash: e71d407050f210c770bcac30259b9c2f2fb27aa3
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 428587830af9299f5768c42e4c5fcf555701d09f
+ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure Security Center – gyakori kérdések
 Ez a GYIK az Azure Security Center, egy szolgáltatás, amely segít a megakadályozása, észlelésében és kezelésében fenyegetések láthatóság növelésével és a Microsoft Azure-erőforrások védelmét kapcsolatos kérdésekre ad választ.
@@ -41,7 +41,7 @@ A Security Center érhető el, a két réteg:
 
 A **ingyenes szint** biztosít a biztonsági állapotát az Azure-erőforrások, az alapvető biztonsági házirend, a biztonsági javaslatok és a integrációs láthatósága biztonsági termékeinek és szolgáltatásainak partnertől.
 
-A **Standard csomagra** hozzáadja az advanced threat az észlelési képességek, beleértve az eszközintelligencia, viselkedéssel összefüggő elemzésekkel, anomáliadetektálás, biztonsági incidensek fenyegetés, és a fenyegetés szolgáló jelentések. A Standard csomag szabad az első 60 nap. Választja 60 napon túl a szolgáltatás használatának folytatásához, automatikusan először a szolgáltatás igénybe.  Frissítéséhez válassza [Tarifacsomagot](https://docs.microsoft.com/azure/security-center/security-center-pricing) a biztonsági házirendben.
+A **Standard csomagra** hozzáadja az advanced threat az észlelési képességek, beleértve az eszközintelligencia, viselkedéssel összefüggő elemzésekkel, anomáliadetektálás, biztonsági incidensek fenyegetés, és a fenyegetés szolgáló jelentések. A standard szint 60 napig ingyenesen használható. Választja 60 napon túl a szolgáltatás használatának folytatásához, automatikusan először a szolgáltatás igénybe.  Frissítéséhez válassza [Tarifacsomagot](https://docs.microsoft.com/azure/security-center/security-center-pricing) a biztonsági házirendben.
 
 ## <a name="permissions"></a>Engedélyek
 Az Azure Security Center [szerepköralapú hozzáférés-vezérlést (RBAC)](../active-directory/role-based-access-control-configure.md) használ, amelynek [beépített szerepköreit](../active-directory/role-based-access-built-in-roles.md) az Azure különböző csoportjaihoz, felhasználóihoz és szolgáltatásaihoz rendelheti.
@@ -131,7 +131,7 @@ Ez az üzenet akkor jelenik meg, amikor nincs a virtuális gépek vizsgálat ada
 ### <a name="how-often-does-security-center-scan-for-operating-system-vulnerabilities-system-updates-and-endpoint-protection-issues"></a>Milyen gyakran nem Security Center operációs rendszer biztonsági rések, rendszerfrissítések és vizsgálatára végpontvédelmi problémákkal?
 A Tiltás késése a Security Center ellenőrzi a biztonsági frissítések, és problémákat:
 
-- Operációs rendszer biztonsági rés (amelyet a Microsoft) – adatok 48 órán belül frissítése
+- Operációs rendszer biztonsági beállításokkal – adatok frissül 48 órán belül
 - Rendszerfrissítések – adatok frissül 24 órában
 - Az Endpoint Protection állít – 8 órán belül adatok frissítése
 

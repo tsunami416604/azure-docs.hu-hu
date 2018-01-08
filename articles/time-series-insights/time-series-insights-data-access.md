@@ -3,19 +3,19 @@ title: "Férhessen hozzá és felügyelhesse Azure idő adatsorozat Insights biz
 description: "Ez a cikk ismerteti, hogyan biztonsági és engedélyek beállítása a felügyeleti hozzáférési házirendek és az adat-hozzáférési szabályzatok Azure idő adatsorozat Insights biztonságossá."
 services: time-series-insights
 ms.service: time-series-insights
-author: op-ravi
-ms.author: omravi
+author: ashannon7
+ms.author: anshan
 manager: jhubbard
 editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: article
 ms.date: 11/15/2017
-ms.openlocfilehash: 22c8e4481f2ba4163a55cc1bbb6b33c10379a605
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: c7d4079c9106226e0d07aa97c4a52c16ddb257c3
+ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="grant-data-access-to-a-time-series-insights-environment-using-azure-portal"></a>Adathozzáférés biztosítása egy Time Series Insights-környezethez az Azure Portal segítségével
 
@@ -66,7 +66,7 @@ Kövesse az alábbi adatok hozzáférést egy felhasználó egyszerű lépéseke
 
    ![A Time Series Insights-forrás felügyelete – eredmények](media/data-access/getstarted-grant-data-access5.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Ismerje meg, [egy Eseményközpontba eseményforrás felvétele az Azure idő adatsorozat Insights környezet](time-series-insights-how-to-add-an-event-source-eventhub.md).
 * [Események küldése](time-series-insights-send-events.md) esemény forrását.
 * A környezet megtekintése [idő adatsorozat Insights explorer](https://insights.timeseries.azure.com).

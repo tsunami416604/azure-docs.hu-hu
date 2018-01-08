@@ -3,19 +3,19 @@ title: "Mi az Azure idő adatsorozat Insights? | Microsoft Docs"
 description: "Bevezetés az Azure idő adatsorozat Insights, egy új szolgáltatás idő adatsorozat adatelemzés és az IoT-megoldások."
 services: time-series-insights
 ms.service: time-series-insights
-author: op-ravi
-ms.author: omravi
+author: ashannon7
+ms.author: anshan
 manager: jhubbard
 editor: MarkMcGeeAtAquent
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: article
 ms.date: 11/15/2017
-ms.openlocfilehash: 95cb26ada6f8ea39bc1a437a755f80ee7ddb7698
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: cb4b3c701f3d3ec52addd1b98c01b97c2220ae34
+ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="what-is-azure-time-series-insights"></a>Mi az Azure idő adatsorozat Insights?
 
@@ -50,7 +50,7 @@ Nincs nincs új nyelv további; Idő adatsorozat Insights egy részletes, szabad
 - **Egyéni megoldások:** beágyazása Azure idő adatsorozat Insights adatokat a meglévő alkalmazások, vagy hozzon létre új egyéni megoldások idő adatsorozat Insights REST API-k. Fedezze fel az elemzések másoknak megoszthatja személyre szabott nézetek létrehozása.
 - **Méretezhetőség:** idő adatsorozat elemzések célja léptékű IoT támogatásához. 1 millió a 100 millió esemény napi egy alapértelmezett megőrzést span 31 napos érkező használhatja. Megjelenítheti és az élő adatok elemzése lévő adatfolyamok majdnem valós időben, előzményadatokat mellett. Bemenő és a megőrzési díjszabás növeli soron, hogy megfeleljen a vállalati méretű.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 Első lépések kevesebb, mint 5 percet vesz igénybe. 
 
 1.  A beolvasandó elindítva, rendelkezni a idő adatsorozat Insights környezet az Azure portálon. 
@@ -58,11 +58,11 @@ Első lépések kevesebb, mint 5 percet vesz igénybe.
 3.  Töltse fel a referenciaadatok (ez nem egy másik szolgáltatást).
 4.  Az adatok megjelenítéséhez idő adatsorozat Insights Explorer percben.
 
-## <a name="time-series-insights-explorer"></a>Adatsorozat Insights explorer idő
+## <a name="time-series-insights-explorer"></a>Time Series Insights Explorer
 Ez az ábra szemlélteti, a time series insights megtekinteni az Intéző:! [Idő adatsorozat Insights explorer] (media/time-series-insights-explorer/explorer4.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
  - [Megismerkedhet a bemutató környezetben idő adatsorozat Insights Explorerrel](./time-series-quickstart.md)
  - [Saját idő adatsorozat Insights környezet megtervezése](time-series-insights-environment-planning.md)
 

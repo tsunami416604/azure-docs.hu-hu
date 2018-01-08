@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: banders
-ms.openlocfilehash: 6785bfcefb09fa6135ba451fafa76efc8c2e6c76
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 7acf0cbd4f4cba885e6cc91dfe3cb68306a3649a
+ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>Adatforrások csatlakoztatása a Configuration Manager szolgáltatáshoz
 Csatlakozhat a System Center Configuration Manager az OMS szolgáltatáshoz szinkronizálási eszköz gyűjtemény adatait. Így az adatok a Configuration Manager hierarchiából OMS érhető el.
@@ -30,8 +30,8 @@ A Naplóelemzési támogatja a System Center Configuration Manager aktuális ág
 ## <a name="configuration-overview"></a>Konfigurálása – áttekintés
 A következő lépésekkel foglalható össze a Configuration Manager szolgáltatáshoz kapcsolódni.  
 
-1. Az Azure felügyeleti portálon regisztrálja a Configuration Manager egy webalkalmazás és/vagy webes API-alkalmazást, és gondoskodjon arról, hogy az ügyfél-azonosító és a titkos ügyfélkulcsot a regisztráció az Azure Active Directoryból származó. Lásd: [erőforrásokat elérő alkalmazás és szolgáltatás egyszerű létrehozásához az Active Directory használata portal](../azure-resource-manager/resource-group-create-service-principal-portal.md) részletesen bemutatja, hogyan hajthat végre ezt a lépést.
-2. Az Azure felügyeleti portálon [adja meg a Configuration Manager (a regisztrált webalkalmazás) OMS hozzáféréssel rendelkező](#provide-configuration-manager-with-permissions-to-oms).
+1. Az Azure portálon regisztrálja a Configuration Manager egy webalkalmazás és/vagy webes API-alkalmazást, és gondoskodjon arról, hogy az ügyfél-azonosító és a titkos ügyfélkulcsot a regisztráció az Azure Active Directoryból származó. Lásd: [erőforrásokat elérő alkalmazás és szolgáltatás egyszerű létrehozásához az Active Directory használata portal](../azure-resource-manager/resource-group-create-service-principal-portal.md) részletesen bemutatja, hogyan hajthat végre ezt a lépést.
+2. Az Azure-portálon [adja meg a Configuration Manager (a regisztrált webalkalmazás) OMS hozzáféréssel rendelkező](#provide-configuration-manager-with-permissions-to-oms).
 3. A Configuration Managerben [-kapcsolatot az OMS-kapcsolat hozzáadása varázsló használatával](#add-an-oms-connection-to-configuration-manager).
 4. A Configuration Managerben [a kapcsolat tulajdonságainak frissítéséhez](#update-oms-connection-properties) Ha a jelszó vagy ügyfél titkos kulcs soha lejár vagy elvész.
 5. Az OMS-portálon adataival [töltse le és telepítse a Microsoft Monitoring Agent](#download-and-install-the-agent) futtató számítógépen a Configuration Manager service szolgáltatáskapcsolódási pont helyrendszer-szerepkörrel. Az ügynök küld OMS Configuration Manager-adatokat.
@@ -41,7 +41,7 @@ A következő lépésekkel foglalható össze a Configuration Manager szolgálta
 További az OMS-be, a Configuration Manager összekapcsolásával kapcsolatos [szinkronizálni az adatokat a Configuration Manager a Microsoft Operations Management Suite](https://technet.microsoft.com/library/mt757374.aspx).
 
 ## <a name="provide-configuration-manager-with-permissions-to-oms"></a>Adja meg a Configuration Manager engedélyekkel az OMS-be
-Az alábbi eljárás biztosít az Azure felügyeleti portálon, amelyik megfelelő engedélyekkel rendelkezik az OMS Szolgáltatáshoz. Pontosabban, meg kell adnia a *közreműködői szerepkör* a felhasználók számára az erőforráscsoportot, annak érdekében, hogy az Azure felügyeleti portál csatlakozni a Configuration Manager az OMS Szolgáltatáshoz.
+Az alábbi eljárás biztosítja az OMS hozzáférő Azure-portálon. Pontosabban, meg kell adnia a *közreműködői szerepkör* felhasználóknak annak érdekében, hogy az Azure-portálon az erőforráscsoporthoz tartozik, hogy a Configuration Manager csatlakoztatni az OMS Szolgáltatáshoz.
 
 > [!NOTE]
 > A Configuration Manager OMS engedélyeket kell megadnia. Ellenkező esetben hibaüzenetet kap, ha a konfigurációs varázsló a Configuration Manager alkalmazásban.
@@ -81,9 +81,9 @@ Ahhoz, hogy az OMS-kapcsolat hozzáadása, a Configuration Manager környezetet 
 1. Az a **felügyeleti** munkaterület a Configuration Manager, válassza ki **OMS összekötő**. Ekkor megnyílik a **OMS kapcsolat varázsló**. Válassza ki **következő**.
 2. Az a **általános** képernyőjén ellenőrizze, hogy elvégezte-e az alábbi műveleteket, és, hogy az egyes elemekről részletek rendelkezik, majd válassza ki, **következő**.
 
-   1. Az Azure felügyeleti portálon, a webalkalmazás és/vagy webes API-alkalmazás néven már regisztrált a Configuration Manager, és hogy rendelkezik a [a regisztrációt az ügyfél-azonosító](../active-directory/active-directory-integrating-applications.md).
-   2. Az Azure felügyeleti portálon létrehozott egy alkalmazás titkos kulcs a regisztrált alkalmazás Azure Active Directoryban.  
-   3. Az Azure felügyeleti portálon a megadott a regisztrált web app az OMS hozzáférési engedélyt.  
+   1. Az Azure portálon, a webalkalmazás és/vagy webes API-alkalmazás néven már regisztrált a Configuration Manager, és hogy rendelkezik a [a regisztrációt az ügyfél-azonosító](../active-directory/active-directory-integrating-applications.md).
+   2. Az Azure-portálon létrehozott egy alkalmazás titkos kulcs a regisztrált alkalmazás Azure Active Directoryban.  
+   3. Az Azure portálon a megadott a regisztrált web app az OMS hozzáférési engedélyt.  
       ![Kapcsolat az OMS varázsló Általános lapja](./media/log-analytics-sccm/sccm-console-general01.png)
 3. Az a **Azure Active Directory** képernyőn, a kapcsolat konfigurálása az OMS-be azáltal, hogy a **bérlői**, **ügyfél-azonosító**, és **ügyfél titkos kulcs** , majd jelölje be **következő**.  
    ![Kapcsolat az OMS varázsló Azure Active Directory lap](./media/log-analytics-sccm/sccm-wizard-tenant-filled03.png)
@@ -132,5 +132,5 @@ Miután a gyűjtemények importálása, lásd: gyűjteménytagságok, hogy hány
 
 Amikor egy kattint, keresési jelenik meg, amelyen az importált csoportok minden vagy minden csoporthoz tartozó összes számítógép. Használatával [naplófájl-keresési](log-analytics-log-searches.md), elindíthatja a Configuration Manager-adatokat részletes elemzéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Használjon [naplófájl-keresési](log-analytics-log-searches.md) a Configuration Manager adatokkal kapcsolatos részletes információk megtekintéséhez.

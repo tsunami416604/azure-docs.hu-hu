@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/09/2017
+ms.date: 01/04/2018
 ms.author: terrylan
-ms.openlocfilehash: 32735a7dfaafd8bbfb983dd809b2204fb1b2fa10
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 2cb4a1c944d6893ca7913eef4e93620059f2a839
+ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="managing-security-recommendations-in-azure-security-center"></a>Biztonsági javaslatok kezelése az Azure Security Centerben
 Ez a dokumentum végigvezeti javaslatok használata az Azure Security Centerben az Azure-erőforrások védelméhez.
@@ -73,7 +73,7 @@ Az alábbi táblázatban használja hivatkozásként segít megérteni a rendelk
 | Ajánlás | Leírás |
 | --- | --- |
 | [Adatgyűjtés engedélyezése az előfizetések számára](security-center-enable-data-collection.md) |Javasolja, hogy kapcsolja be a biztonsági házirend adatgyűjtés az egyes az előfizetések és az összes Azure virtuális gépek (VM) és az Azure-számítógépek. |
-| [Operációs rendszerek sebezhetőségeinek javítása](security-center-remediate-os-vulnerabilities.md) |Javasolja, hogy az operációs rendszer azon konfigurációit a az ajánlott konfiguráció szabályokat, például igazítása, ne engedélyezze a jelszavak menteni. |
+| [Biztonsági beállításokkal javítása](security-center-remediate-os-vulnerabilities.md) |Javasolja, hogy az operációs rendszer azon konfigurációit a javasolt biztonsági konfigurációs szabályokat, például igazítása, ne engedélyezze a jelszavak menteni. |
 | [Rendszerfrissítések alkalmazása](security-center-apply-system-updates.md) |Javasolja, hogy telepít hiányzó rendszer biztonsági és kritikus frissítések a Windows és a Linux virtuális gépek és a számítógépek. |
 | [A közvetlenül időponthoz kötött alkalmazni a hálózati hozzáférés-vezérlés](security-center-just-in-time.md) | Csak a virtuális gép elérhető telepítését javasolja. A szolgáltatás egyelőre időben csak és érhető el a Security Center Standard csomagra. Lásd: [árazás](security-center-pricing.md) további bővebben a Security Center által tarifacsomag szükséges. |
 | [Rendszerfrissítések utáni újraindítás](security-center-apply-system-updates.md#reboot-after-system-updates) |Javasolja, hogy a rendszerfrissítések alkalmazási folyamatának befejezéséhez indítson újra egy virtuális gépet. |
@@ -108,7 +108,7 @@ Miután megtekintette a ajánlások, döntse el, amely egy alkalmazza először.
 
 A fenti ajánlásokat tábla válassza ki azt ajánljuk, és végezze el az példa bemutatja, hogyan alkalmaz egy javaslatot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a dokumentumban megismerhette a Security Center biztonsági javaslatok. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Biztonsági szabályzatok beállítása az Azure Security Center](security-center-policies.md) – útmutató az Azure-előfizetések és -erőforráscsoportok biztonsági szabályzatainak konfigurálásához.

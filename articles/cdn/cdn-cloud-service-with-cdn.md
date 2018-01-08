@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: f2849fe25fd0d5b3dc26598ffba7591cb7433161
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f131eb021d85766f12b0fb6cb8b5a07f965f9c97
+ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="intro"></a>Egy felhőalapú szolgáltatás integrálása az Azure CDN szolgáltatás használata
 Egy felhőalapú szolgáltatás Azure CDN-t, a tartalom a felhőszolgáltatás helyről integrálható. Ez a megközelítés lehetővé teszi a következő előnyökkel jár:
@@ -111,7 +111,7 @@ A CDN-profil CDN-végpontok gyűjteménye.  Minden profil egy vagy több CDN-vé
 ## <a name="create-a-new-cdn-endpoint"></a>Új CDN-végpont létrehozása
 **A tárfiók új CDN-végpont létrehozása**
 
-1. Az a [Azure felügyeleti portálon](https://portal.azure.com), keresse meg a CDN-profilt.  Lehetséges, hogy a profilt az előző lépésben az irányítópulton rögzítette.  Amennyiben nem rögzítette, kattintson **Tallózás** gombra, majd a **CDN-profilok** elemre, végül kattintson arra a profilra, amelyet hozzá szeretne adni a végponthoz.
+1. Az [Azure Portalon](https://portal.azure.com) lépjen a CDN-profilra.  Lehetséges, hogy a profilt az előző lépésben az irányítópulton rögzítette.  Amennyiben nem rögzítette, kattintson **Tallózás** gombra, majd a **CDN-profilok** elemre, végül kattintson arra a profilra, amelyet hozzá szeretne adni a végponthoz.
    
     Megjelenik a CDN-profil panelje.
    

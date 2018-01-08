@@ -16,11 +16,11 @@ ms.topic: sample
 ms.date: 04/10/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: fbc94734f3c49e7318734b05b30e0ef6b8767004
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: f8e8570d9c3093b5f49b000916644888304eed4e
+ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="bind-a-custom-ssl-certificate-to-a-function-app"></a>Egy egyéni SSL-tanúsítvány kötését függvény alkalmazásokhoz
 
@@ -35,7 +35,7 @@ Egy SSL-tanúsítványt kötni, a függvény app léteznie kell az App Service-c
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure parancssori felületének 2.0-s vagy annál újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha telepítése és a parancssori felület helyileg használata mellett dönt, akkor futnia kell az Azure parancssori felület verzió 2.0-s vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
 
 ## <a name="sample-script"></a>Mintaparancsfájl
 
@@ -56,7 +56,7 @@ A parancsfájl a következő parancsokat. Minden egyes parancsa a tábla-parancs
 | [az App Service web config ssl feltöltése](https://docs.microsoft.com/cli/azure/appservice/web/config/ssl#az_appservice_web_config_ssl_upload) | Az SSL-tanúsítvány feltöltése függvény-alkalmazásokhoz. |
 | [az App Service web config ssl-kötés](https://docs.microsoft.com/cli/azure/appservice/web/config/ssl#az_appservice_web_config_ssl_bind) | Egy függvény app feltöltött SSL-tanúsítvány van kötve. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az Azure parancssori felület: [Azure CLI dokumentáció](https://docs.microsoft.com/cli/azure/overview).
 

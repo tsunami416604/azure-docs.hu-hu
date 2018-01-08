@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 01/08/2018
 ms.author: andredm
-ms.openlocfilehash: 92708909a472f98b45492f3c0c807634f1c204d7
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: fadd72d76862694af96b51d198b6693e104c05de
+ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="azure-stack-1712-update"></a>Az Azure verem 1712 frissítés
 
@@ -31,17 +31,9 @@ Ez a cikk fejlesztést és a frissítési csomag ismert problémái ebben a kiad
 
 ## <a name="build-reference"></a>Hivatkozás létrehozása
 
-Az Azure verem 1712 frissítés buildszáma **180103.2**.
+Az Azure verem 1712 frissítés buildszáma **180106.1**. Ha az ügyfél telepítve van **180103.2** korábban, nem kell alkalmazni a **180106.1**.
 
 ## <a name="before-you-begin"></a>Előkészületek
-
-> [!WARNING]
-> Ha jelenleg aktív interaktív EGP távoli munkamenet éppen, akkor lépjen ki a munkamenetből a Azure verem telepítési folyamat kezdeményezése előtt. Beírhatja **kilépéshez** a távoli konzol a munkamenet kilép.
-> Azt is ellenőrizze, hogy minden meglévő EGP távoli munkamenetek először két PowerShell-parancsok futtatásával **Get-PSSession** minden aktív távoli munkamenetek, majd sorolja fel, amelyek **Remove-PSSession** leáll és Távolítsa el az aktív távoli munkamenetek. A PowerShell-parancsokat kell az Azure-verem környezetben EGP távoli munkamenetek létrehozásához használt gépi-ről lesz futtatható. A PowerShell-parancs minta a következő:
-```
-Get-PSSession | Remove-PSSession
-```
-Ezenkívül nem EGP munkamenet létrehozása után is az Azure-verem frissítése megkezdődött.
 
 > [!IMPORTANT]
 > Ne hozzon létre virtuális gépek a 1712 telepítési folyamat során. Lásd: [kezelheti a frissítéseket az Azure-verem áttekintés](https://docs.microsoft.com/azure/azure-stack/azure-stack-updates#plan-for-updates) további részleteket.
@@ -100,7 +92,7 @@ Ez a szakasz a 1712 frissítés telepítése során előforduló ismert problém
 
 ### <a name="known-issues-post-installation"></a>Ismert problémák (telepítés utáni)
 
-Ez a szakasz telepítés utáni build szolgáltatással kapcsolatos ismert problémák **180103.2**.
+Ez a szakasz telepítés utáni build szolgáltatással kapcsolatos ismert problémák **180106.1**.
 
 #### <a name="portal"></a>Portál
 
@@ -161,6 +153,11 @@ Az Azure Active Directory összevonási szolgáltatások (ADFS) környezetben te
 
 Letöltheti az Azure verem 1712 frissítési csomagot [Itt](https://aka.ms/azurestackupdatedownload).
 
+## <a name="more-information"></a>További információ
+
+A Microsoft közzétett segítségével figyelheti, és folytathatja a használatával a privilegizált végpont (EGP) frissítés 1712 telepített frissítések.
+
+- Tekintse meg a [figyelése Azure-készletben a rendszerjogosultságú végpont dokumentációnak frissítések](https://docs.microsoft.com/azure/azure-stack/azure-stack-monitor-update). 
 ## <a name="see-also"></a>Lásd még
 
 - Lásd: [kezelheti a frissítéseket az Azure-verem áttekintés](azure-stack-updates.md) a frissítéskezelés Azure verem áttekintését.

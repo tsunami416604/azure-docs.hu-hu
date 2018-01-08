@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/09/2017
+ms.date: 01/04/2018
 ms.author: terrylan
-ms.openlocfilehash: 6121717a8ce5661c70947e32dc877c6a898a9777
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 54375f6f98b4989a7af8bcde649d967f77c6c862
+ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="protecting-your-virtual-machines-in-azure-security-center"></a>Az Azure Security Centerben a virtuális gépek védelme
 Az Azure Security Center elemzi az Azure-erőforrások biztonsági állapotát. Amikor a Security Center a potenciális biztonsági hiányosságokat azonosít, ajánlásokat, amely végigvezeti Önt a szükséges szabályozási folyamatán hoz létre.  Javaslat alkalmazható azonban az Azure erőforrás típusa: virtuális gépek (VM), hálózati, SQL és alkalmazások.
@@ -30,7 +30,7 @@ Ez a cikk foglalkozik, amelyek érvényesek a virtuális gépekhez ajánlott.  V
 | --- | --- |
 | [Adatgyűjtés engedélyezése az előfizetések számára](security-center-enable-data-collection.md) |Javasolja, hogy minden egyes előfizetés és virtuális gép (VM) esetében kapcsolja be az adatgyűjtést az előfizetéseinek biztonsági házirendjében. |
 | [Engedélyezze a titkosítást az Azure Storage-fiók](security-center-enable-encryption-for-storage-account.md) | Az inaktív adatok Azure Storage szolgáltatás titkosítási engedélyezését javasolja. Storage Service Encryption (SSE) beolvasása előtt visszafejti és az Azure storage beíródik esetén az adatok titkosításával működik. SSE jelenleg csak az Azure Blob szolgáltatáshoz érhető el, és nem használható blokkblobokat, lapblobokat, és hozzáfűző blobokat. További tudnivalókért lásd: [Storage szolgáltatás titkosítási az inaktív adatok](../storage/common/storage-service-encryption.md).</br>SSE csak erőforrás-kezelő tárfiókok esetén támogatott. Klasszikus tárfiókokba jelenleg nem támogatottak. A klasszikus és Resource Manager üzembe helyezési modell ismertetése: [Azure üzembe helyezési modellel](../azure-classic-rm.md). |
-| [Operációs rendszerek sebezhetőségeinek javítása](security-center-remediate-os-vulnerabilities.md) |Javasolja, hogy az operációs rendszer konfigurálását az ajánlott konfigurációs szabályok szerint végezze, például ne engedélyezze a jelszavak mentését. |
+| [Biztonsági beállításokkal javítása](security-center-remediate-os-vulnerabilities.md) |Javasolja, hogy a az operációs rendszer azon konfigurációit a javasolt biztonsági konfigurációs szabályokkal igazodnak például nem engedélyezik a jelszavak menteni. |
 | [Rendszerfrissítések alkalmazása](security-center-apply-system-updates.md) |Javasolja, hogy végezze el a hiányzó rendszerbiztonsági és kritikus frissítések központi telepítését a virtuális gépeken. |
 | [A közvetlenül időponthoz kötött alkalmazni a hálózati hozzáférés-vezérlés](security-center-just-in-time.md) | Csak a virtuális gép elérhető telepítését javasolja. A szolgáltatás egyelőre időben csak és érhető el a Security Center Standard csomagra. Lásd: [árazás](security-center-pricing.md) további bővebben a Security Center által tarifacsomag szükséges. |
 | [Rendszerfrissítések utáni újraindítás](security-center-apply-system-updates.md#reboot-after-system-updates) |Javasolja, hogy a rendszerfrissítések alkalmazási folyamatának befejezéséhez indítson újra egy virtuális gépet. |
@@ -41,7 +41,7 @@ Ez a cikk foglalkozik, amelyek érvényesek a virtuális gépekhez ajánlott.  V
 | [A sebezhetőségi felmérés nincs telepítve](security-center-vulnerability-assessment-recommendations.md) |Javasolja, hogy telepítsen egy biztonsági rések felmérése szolgáló megoldást a virtuális gépére. |
 | [Sebezhetőségek javítása](security-center-vulnerability-assessment-recommendations.md#review-the-recommendation) |Lehetővé teszi a virtuális gépre telepített sebezhetőségfelmérő megoldás által észlelt rendszer- és alkalmazássebezhetőségek megtekintését. |
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 Egyéb Azure erőforrástípusok vonatkozó javaslatok kapcsolatos további tudnivalókért olvassa el a következőket:
 
 * [Az alkalmazások az Azure Security Centerben védelme](security-center-application-recommendations.md)
