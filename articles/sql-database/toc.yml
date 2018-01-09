@@ -37,7 +37,7 @@
           href: sql-database-connect-query-python.md
         - name: Ruby
           href: sql-database-connect-query-ruby.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: 1 – Adatbázis tervezése az SSMS használatával
       href: sql-database-design-first-database.md
@@ -279,7 +279,7 @@
         - name: Adatok betöltése a BCP használatával
           href: sql-database-load-from-csv-with-bcp.md
         - name: Adatok betöltése az ADF használatával
-          href: ../data-factory/v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
+          href: ../data-factory/connector-azure-sql-database.md
         - name: Adatok szinkronizálása
           href: sql-database-get-started-sql-data-sync.md
     - name: Monitorozás és hangolás
@@ -432,7 +432,7 @@
           href: /sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server
         - name: ODBC
           href: /sql/connect/odbc/microsoft-odbc-driver-for-sql-server
-- name: Erőforrások
+- name: További források
   items:
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'
