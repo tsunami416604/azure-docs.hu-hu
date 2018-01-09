@@ -193,9 +193,9 @@
       href: /rest/api/machinelearning
     - name: Webszolgáltatás hibakódjai
       href: web-service-error-codes.md
-- name: Kapcsolódó
+- name: Kapcsolódó témakörök
   items:
-    - name: Cortana Intelligence Gallery
+    - name: Azure AI katalógus
       items:
         - name: Áttekintés
           href: gallery-how-to-use-contribute-publish.md
@@ -211,13 +211,13 @@
           href: gallery-competitions.md
         - name: Versenyekkel kapcsolatos gyakori kérdések
           href: competition-faq.md
-        - name: oktatóanyagokat
+        - name: Oktatóanyagok
           href: gallery-tutorials.md
         - name: Gyűjtemények
           href: gallery-collections.md
         - name: Egyéni modulok
           href: gallery-custom-modules.md
-- name: Erőforrások
+- name: További források
   items:
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'
