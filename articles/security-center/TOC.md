@@ -21,6 +21,7 @@
 ### [Biztonsági szabályzat az Azure Policyval](security-center-azure-policy.md)
 ### [E-mail-értesítések](security-center-provide-security-contact-details.md)
 ### [Tarifacsomag](security-center-pricing.md)
+### [Biztonsági konfigurációk](security-center-customize-os-security-config.md)
 
 ## [Előkészítés](security-center-onboarding.md)
 ## [Események](security-center-events-dashboard.md)
@@ -54,7 +55,7 @@
 #### [Virtuálisgép-ügynök engedélyezése](security-center-enable-vm-agent.md)
 #### [Endpoint Protection telepítése](security-center-install-endpoint-protection.md)
 #### [Rendszerfrissítések utáni újraindítás](security-center-apply-system-updates.md#reboot-after-system-updates)
-#### [Operációs rendszerek sebezhetőségeinek javítása](security-center-remediate-os-vulnerabilities.md)
+#### [Biztonsági konfigurációk javítása](security-center-remediate-os-vulnerabilities.md)
 #### [Operációs rendszer verziójának frissítése](security-center-update-os-version.md)
 #### [A sebezhetőségi felmérés nincs telepítve](security-center-vulnerability-assessment-recommendations.md)
 ### [A biztonsági állapot figyelése](security-center-monitoring.md)
@@ -90,7 +91,7 @@
 
 # További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=security-identity)
-## [A Security Center első lépéseinek útmutatója](security-center-readiness-roadmap.md)
+## [Készültségi ütemterv](security-center-readiness-roadmap.md)
 ## [Azure biztonsági, adatvédelmi és megfelelőségi blog](http://blogs.msdn.com/b/azuresecurity/)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [A szolgáltatás áttekintése](https://azure.microsoft.com/services/security-center/)
