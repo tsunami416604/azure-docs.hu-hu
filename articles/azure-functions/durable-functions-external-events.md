@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 23c99031ae3146a83867d10bd97d4eee8878188a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1f581be0abaff542285abc0d4c2f4bffe7281d20
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>A tartós függvények (az Azure Functions) külső események kezelésére
 
@@ -26,7 +26,7 @@ Az orchestrator várja meg, és a külső események figyelésére van. Ez a szo
 
 ## <a name="wait-for-events"></a>Várjon, amíg az események
 
-A [WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) módszer lehetővé teszi, hogy az orchestrator függvény aszinkron módon várja meg, és a külső esemény figyelésére. A hívó deklarálja a *neve* az esemény és a *adatok alakzat* kíván fogadni.
+A [WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) módszer lehetővé teszi, hogy az orchestrator függvény aszinkron módon várja meg, és a külső esemény figyelésére. A figyelő az orchestrator függvény deklarálja a *neve* az esemény és a *alakzat adatok* kíván fogadni.
 
 ```csharp
 [FunctionName("BudgetApproval")]
@@ -45,7 +45,7 @@ public static async Task Run(
 }
 ```
 
-Az előző példában figyeli az egy adott eseményhez, és végrehajtja a műveletet, amikor a fogadja.
+Az előző példában figyeli az adott eseményhez, és végrehajtja a műveletet, amikor a fogadja.
 
 Több események figyelheti meg egyidejűleg, például a következő példának, amely három lehetséges eseményértesítések vár a.
 
@@ -97,7 +97,7 @@ public static async Task Run(
 [WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) néhány bemeneti határozatlan ideig vár.  Lehet, hogy a függvény app biztonságosan memóriából való várakozás során. Egy esemény érkezik a vezénylési példány, ha automatikusan aktiválva van, és azonnal dolgozza fel az eseményt.
 
 > [!NOTE]
-> Adatforgalmi díjak sem merülnek fel, amíg az orchestrator függvény vár a feladat `WaitForExternalEvent`, függetlenül attól, hogy mennyi ideig vár.
+> Függvény alkalmazása használja-e a felhasználási tervezze meg, ha adatforgalmi díjak sem merülnek fel, amíg az orchestrator függvény vár a feladat `WaitForExternalEvent`, függetlenül attól, hogy mennyi ideig vár.
 
 Ha az eseménytartalom nem konvertálható a várt típus `T`, kivétel történik.
 
@@ -122,7 +122,7 @@ Belsőleg `RaiseEventAsync` enqueues egy üzenetet, amely a várakozási orchest
 > [!WARNING]
 > Ha nincs vezénylési példány a megadott *-példány azonosítója* , vagy ha a példány nem vár a megadott *eseménynév*, a rendszer törli az eseményüzenet. Ez a viselkedés kapcsolatos további információkért tekintse meg a [GitHub probléma](https://github.com/Azure/azure-functions-durable-extension/issues/29).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Ismerje meg, hogyan állíthat be eternal álló üzenettípusok összehangolását](durable-functions-eternal-orchestrations.md)

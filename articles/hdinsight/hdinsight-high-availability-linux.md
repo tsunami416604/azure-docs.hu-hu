@@ -15,13 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 01/08/2017
 ms.author: larryfr
-ms.openlocfilehash: 39894ba73c691ad547d8b5ab67ec9d5786a5229c
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: bf1840f77ebd39761a5ba1fd8fd1f98891dd8eca
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="availability-and-reliability-of-hadoop-clusters-in-hdinsight"></a>A HDInsight-beli Hadoop-fürtök rendelkezésre állása és megbízhatósága
 
@@ -60,7 +60,7 @@ Nimbus csomópont alatt futó Storm-fürtökkel érhetők el. A Nimbus csomópon
 
 Munkavégző csomópontokhoz hajtsa végre a tényleges adatok elemzéséhez, amikor egy feladatot a fürt. Ha egy feldolgozó csomópont leáll, a feladat azt végző elküldve a worker egy másik csomópontra. Alapértelmezés szerint a HDInsight létrehoz négy munkavégző csomópontokhoz. Ez a szám a igényeinek alatt és a fürt létrehozása után módosíthatja.
 
-### <a name="edge-node"></a>Élcsomópont
+### <a name="edge-node"></a>Határcsomópont
 
 Egy élcsomópontot aktívan nem vesz részt a fürtön belül adatelemzés. Amikor olyan Hadoop fejlesztők vagy adatszakértőkön szolgál. Élcsomópont él, mint a fürt többi csomópontjának azonos Azure virtuális hálózatban, és közvetlenül hozzáférhet az összes csomóponton. Élcsomópont kritikus Hadoop-szolgáltatás vagy a feladatok távol erőforrások anélkül is használható.
 
@@ -224,7 +224,7 @@ A fürt létrehozásakor megadhatja a csomópontok méretét. Az alábbi inform�
 
 * **Az Azure PowerShell**: használata esetén a `New-AzureRmHDInsightCluster` parancsmag, beállíthatja a head munkavégző és ZooKeeper csomópontok méretének használatával a `-HeadNodeVMSize`, `-WorkerNodeSize`, és `-ZookeeperNodeSize` paraméterek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbi hivatkozások segítségével további ebben a dokumentumban említett szempontot.
 

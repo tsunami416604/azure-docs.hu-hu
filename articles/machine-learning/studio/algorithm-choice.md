@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 12/18/2017
 ms.author: garye
-ms.openlocfilehash: f645890fc5e08dd468002c1ff0af79ba636ccce3
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: 1b30e4dbf20cac653c323720de779aa5f8edba68
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="how-to-choose-algorithms-for-microsoft-azure-machine-learning"></a>A Microsoft Azure Machine Learning-algoritmusok kiválasztása
 A "Milyen gépi tanulási algoritmus érdemes használni?" kérdésre adott válasz mindig kapcsolva "Attól függ." Azt a mérete, a minőségi és a adatok jellegének függ. Ez attól függ, hogy mit kíván tenni a választ. Ez attól függ, hogy hogyan algoritmus matematikai utasításokat a számítógépet, hogy lett lefordítva. Annak függvénye, és mennyi idővel rendelkezik. Még a legtöbb tapasztalt adatszakértőkön nem sikerült megállapítani, mely algoritmus hajtja végre a legjobb előtt őket.
@@ -42,7 +42,7 @@ Olvassa el a diagram elérési útját és algoritmus címkéinek "a  *&lt;elér
 Egyes esetekben tökéletes egyikük sem. Ezek éppen használhatók szabály az USB-a javaslatok, így nem kell aggódni pontos alatt.
 Több adatszakértőkön I volt szó, az említett, amely a csak meg arról, hogy a legjobb algoritmus található módja próbálja az összes.
 
-A példában a [Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com/) egy kísérlet, amely megpróbál több algoritmusok elleni ugyanazokat az adatokat, és összehasonlítja az eredményeket: [több osztály osztályozó összehasonlítása: felismerés betűs](http://gallery.cortanaintelligence.com/Details/a635502fc98b402a890efe21cec65b92).
+A példában a [Azure Eszközintelligencia-katalógus](http://gallery.cortanaintelligence.com/) egy kísérlet, amely megpróbál több algoritmusok elleni ugyanazokat az adatokat, és összehasonlítja az eredményeket: [több osztály osztályozó összehasonlítása: felismerés betűs](http://gallery.cortanaintelligence.com/Details/a635502fc98b402a890efe21cec65b92).
 
 > [!TIP]
 > Ha szeretne egy letölthető és kinyomtatható diagramot a Machine Learning Studio funkcióiról, tekintse meg [Az Azure Machine Learning Studio funkcióit bemutató diagram](studio-overview-diagram.md) című cikket.

@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 11/03/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: 9aea299738eb5cac6fe6d3b633707862d978fff0
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 3bfa37ddd59091558d37a7531fe0c5820cfafe05
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="filter-network-traffic-with-network-and-application-security-groups-preview"></a>Hálózati forgalom szűrésére, hálózati és az alkalmazás biztonsági csoportok (előzetes verzió)
 
@@ -42,14 +42,14 @@ Az Azure parancssori felület parancsait megegyeznek, hogy a parancsok a Windows
 3. Jelentkezzen be Azure-bA a `az login` parancsot.
 4. Az előzetes rögzítése a következő parancsok beírásával:
     
-    ```azurecli-interactive
+    ```azurecli
     az feature register --name AllowApplicationSecurityGroups --namespace Microsoft.Network
     az provider register --namespace Microsoft.Network
     ``` 
 
 5. Győződjön meg arról, hogy be vannak jegyezve a az előzetes a következő parancs beírásával:
 
-    ```azurecli-interactive
+    ```azurecli
     az feature show --name AllowApplicationSecurityGroups --namespace Microsoft.Network
     ```
 
@@ -58,7 +58,7 @@ Az Azure parancssori felület parancsait megegyeznek, hogy a parancsok a Windows
 
 6. Futtassa a következő bash erőforráscsoport létrehozása:
 
-    ```azurecli-interactive
+    ```azurecli
     #!/bin/bash
     
     az group create \
@@ -68,7 +68,7 @@ Az Azure parancssori felület parancsait megegyeznek, hogy a parancsok a Windows
 
 7. Hozzon létre három alkalmazás biztonsági csoportokat, egy, az egyes kiszolgáló:
 
-    ```azurecli-interactive
+    ```azurecli
     az network asg create \
       --resource-group myResourceGroup \
       --name WebServers \
@@ -87,7 +87,7 @@ Az Azure parancssori felület parancsait megegyeznek, hogy a parancsok a Windows
 
 8. Hálózati biztonsági csoport létrehozása:
 
-    ```azurecli-interactive
+    ```azurecli
     az network nsg create \
       --resource-group myResourceGroup \
       --name myNsg \
@@ -96,7 +96,7 @@ Az Azure parancssori felület parancsait megegyeznek, hogy a parancsok a Windows
 
 9. Hozza létre a biztonsági szabályok az NSG-t a biztonsági csoportok beállítása célhelyként belül:
     
-    ```azurecli-interactive    
+    ```azurecli    
     az network nsg rule create \
       --resource-group myResourceGroup \
       --nsg-name myNsg \
@@ -136,7 +136,7 @@ Az Azure parancssori felület parancsait megegyeznek, hogy a parancsok a Windows
 
 10. Virtuális hálózat létrehozása: 
     
-    ```azurecli-interactive
+    ```azurecli
     az network vnet create \
       --name myVnet \
       --resource-group myResourceGroup \
@@ -147,7 +147,7 @@ Az Azure parancssori felület parancsait megegyeznek, hogy a parancsok a Windows
 
 11. Társítsa a hálózati biztonsági csoportot a virtuális hálózat az alhálózatnak:
 
-    ```azurecli-interactive
+    ```azurecli
     az network vnet subnet update \
       --name mySubnet \
       --resource-group myResourceGroup \
@@ -157,7 +157,7 @@ Az Azure parancssori felület parancsait megegyeznek, hogy a parancsok a Windows
     
 12. Hozzon létre egy, az egyes kiszolgáló három hálózati adapterek: 
 
-    ```azurecli-interactive
+    ```azurecli
     az network nic create \
       --resource-group myResourceGroup \
       --name myNic1 \
@@ -183,11 +183,11 @@ Az Azure parancssori felület parancsait megegyeznek, hogy a parancsok a Windows
       --application-security-groups "DatabaseServers"
     ```
 
-    A hálózati illesztő a hálózati illesztő tagja alkalmazás biztonsági csoport alapján csak a megfelelő biztonsági szabály 9. lépésében létrehozott vonatkozik. Például csak a *WebRule* érvényben *myNic1*, mert a hálózati illesztő tagja a *webkiszolgálók* alkalmazás biztonsági csoport és a szabály Megadja a *webkiszolgálók* alkalmazás biztonsági csoport az helyeként. A *AppRule* és *DatabaseRule* szabályok nem érvényesek *myNic1*, mert a hálózati illesztő nem tagja a *AppServers*és *DatabaseServers* biztonsági csoportok.
+    A hálózati illesztő a hálózati illesztő tagja alkalmazás biztonsági csoport alapján csak a megfelelő biztonsági szabály 9. lépésében létrehozott vonatkozik. Ha például csak a *AppRule* szabály érvényben *myNic2*, mert a hálózati illesztő tagja a *AppServers* alkalmazás biztonsági csoport és a szabály Megadja a *AppServers* alkalmazás biztonsági csoport az helyeként. A *WebRule* és *DatabaseRule* szabályok nem érvényesek *myNic2*, mert a hálózati illesztő nem tagja a *webkiszolgálók*és *DatabaseServers* biztonsági csoportok. Mindkét a *WebRule* és *AppRule* szabályok érvényben *myNic1* , mert a *myNic1* hálózati illesztő tagja mind a *webkiszolgálók* és *AppServers* biztonsági csoportok és a szabályok adja meg a *webkiszolgálók* és *AppServers* biztonsági csoportok a célként. 
 
 13. Hozzon létre egy virtuális gépet az egyes kiszolgáló, a megfelelő hálózati illesztő csatolása minden egyes virtuális géphez. Ebben a példában a Windows virtuális gépeket hoz létre, de bármikor módosíthatja *win2016datacenter* való *UbuntuLTS* helyette Linux virtuális gépek létrehozásához.
 
-    ```azurecli-interactive
+    ```azurecli
     # Update for your admin password
     AdminPassword=ChangeYourAdminPassword1
 
@@ -198,7 +198,8 @@ Az Azure parancssori felület parancsait megegyeznek, hogy a parancsok a Windows
       --nics myNic1 \
       --image win2016datacenter \
       --admin-username azureuser \
-      --admin-password $AdminPassword
+      --admin-password $AdminPassword \
+      --no-wait
 
     az vm create \
       --resource-group myResourceGroup \
@@ -207,7 +208,8 @@ Az Azure parancssori felület parancsait megegyeznek, hogy a parancsok a Windows
       --nics myNic2 \
       --image win2016datacenter \
       --admin-username azureuser \
-      --admin-password $AdminPassword
+      --admin-password $AdminPassword \
+      --no-wait
 
     az vm create \
       --resource-group myResourceGroup \
@@ -281,8 +283,8 @@ Az Azure parancssori felület parancsait megegyeznek, hogy a parancsok a Windows
       -SourceAddressPrefix Internet `
       -SourcePortRange * `
       -DestinationApplicationSecurityGroupId $webAsg.id `
-      -DestinationPortRange 80  
-
+      -DestinationPortRange 80
+    
     $appRule = New-AzureRmNetworkSecurityRuleConfig `
       -Name "AppRule" `
       -Access Allow `
@@ -292,8 +294,8 @@ Az Azure parancssori felület parancsait megegyeznek, hogy a parancsok a Windows
       -SourceApplicationSecurityGroupId $webAsg.id `
       -SourcePortRange * `
       -DestinationApplicationSecurityGroupId $appAsg.id `
-      -DestinationPortRange 443 
-
+      -DestinationPortRange 443
+      
     $databaseRule = New-AzureRmNetworkSecurityRuleConfig `
       -Name "DatabaseRule" `
       -Access Allow `
@@ -303,7 +305,7 @@ Az Azure parancssori felület parancsait megegyeznek, hogy a parancsok a Windows
       -SourceApplicationSecurityGroupId $appAsg.id `
       -SourcePortRange * `
       -DestinationApplicationSecurityGroupId $databaseAsg.id `
-      -DestinationPortRange 1336    
+      -DestinationPortRange 1336
     ``` 
 
 9. Hálózati biztonsági csoport létrehozása:
@@ -361,7 +363,7 @@ Az Azure parancssori felület parancsait megegyeznek, hogy a parancsok a Windows
       -ApplicationSecurityGroup $databaseAsg
     ```
 
-    A hálózati illesztő a hálózati illesztő tagja alkalmazás biztonsági csoport alapján csak a megfelelő biztonsági szabály 8. lépésben létrehozott vonatkozik. Például csak a *WebRule* érvényben *myNic1*, mert a hálózati illesztő tagja a *webkiszolgálók* alkalmazás biztonsági csoport és a szabály Megadja a *webkiszolgálók* alkalmazás biztonsági csoport az helyeként. A *AppRule* és *DatabaseRule* szabályok nem érvényesek *myNic1*, mert a hálózati illesztő nem tagja a *AppServers*és *DatabaseServers* biztonsági csoportok.
+    A hálózati illesztő a hálózati illesztő tagja alkalmazás biztonsági csoport alapján csak a megfelelő biztonsági szabály 8. lépésben létrehozott vonatkozik. Ha például csak a *AppRule* szabály érvényben *myNic2*, mert a hálózati illesztő tagja a *AppServers* alkalmazás biztonsági csoport és a szabály Megadja a *AppServers* alkalmazás biztonsági csoport az helyeként. A *WebRule* és *DatabaseRule* szabályok nem érvényesek *myNic2*, mert a hálózati illesztő nem tagja a *webkiszolgálók*és *DatabaseServers* biztonsági csoportok. Mindkét a *WebRule* és *AppRule* szabályok érvényben *myNic1* , mert a *myNic1* hálózati illesztő tagja mind a *webkiszolgálók* és *AppServers* biztonsági csoportok és a szabályok adja meg a *webkiszolgálók* és *AppServers* biztonsági csoportok a célként. 
 
 13. Hozzon létre egy virtuális gépet az egyes kiszolgáló, a megfelelő hálózati illesztő csatolása minden egyes virtuális géphez. Ebben a példában a Windows virtuális gépeket hoz létre, de a parancsfájl végrehajtása előtt módosíthatja *-Windows* való *- Linux*, *MicrosoftWindowsServer* való *Kanonikus*, *WindowsServer* való *UbuntuServer* és *2016-Datacenter* való *14.04.2-LTS*helyette Linux virtuális gépek létrehozásához.
 
@@ -429,6 +431,33 @@ Az Azure parancssori felület parancsait megegyeznek, hogy a parancsok a Windows
 
 14. **Nem kötelező**: törli az Ön által létrehozott ebben az oktatóanyagban szereplő lépések végrehajtásával erőforrást [törli az erőforrást](#delete-cli).
 
+## <a name="remove-a-nic-from-an-asg"></a>Távolítsa el a hálózati adapter egy ASG
+Ha eltávolít egy adott hálózati csatoló alkalmazás biztonsági csoportból, egyetlen adja meg az alkalmazáscsoport biztonsági szabály alkalmazása a hálózati adapter eltávolítása.
+
+### <a name="azure-cli"></a>Azure CLI
+
+Az eltávolítandó *myNic3* minden biztonsági csoportok, adja meg a következő parancsot:
+
+```azurecli
+az network nic update \
+  --name myNic3 \
+  --resource-group myResourceGroup \
+  --remove ipConfigurations[0].applicationSecurityGroups
+```
+
+### <a name="powershell"></a>PowerShell
+
+Az eltávolítandó *myNic3* minden biztonsági csoportok, adja meg a következő parancsokat:
+
+```powershell
+$nic=Get-AzureRmNetworkInterface `
+  -Name myNic3 `
+  -ResourceGroupName myResourceGroup
+
+$nic.IpConfigurations[0].ApplicationSecurityGroups = $null
+$nic | Set-AzureRmNetworkInterface 
+```
+
 ## <a name="delete"></a>Erőforrások törlése
 
 Ez az oktatóanyag befejezése után előfordulhat, hogy törölni kívánja az erőforrásokat, amelyek hozott létre, így használati költségek. Erőforráscsoport törlésével, az erőforráscsoport összes erőforrást is törli.
@@ -443,7 +472,7 @@ Ez az oktatóanyag befejezése után előfordulhat, hogy törölni kívánja az 
 
 Adja meg egy parancssori munkamenetet a következő parancsot:
 
-```azurecli-interactive
+```azurecli
 az group delete --name myResourceGroup --yes
 ```
 

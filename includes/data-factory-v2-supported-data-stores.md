@@ -61,9 +61,9 @@
 | &nbsp; |[A ServiceNow (béta)](../articles/data-factory/connector-servicenow.md) |✓ | |✓ |✓  |
 | &nbsp; |[Shopify (béta)](../articles/data-factory/connector-shopify.md) |✓ | |✓ |✓  |
 | &nbsp; |[Négyzetes (béta)](../articles/data-factory/connector-square.md) |✓ | |✓ |✓  |
-| &nbsp; |[Webtábla (HTML-tábla)](../articles/data-factory/connector-web-table.md) |✓ | |✓ |✓  |
+| &nbsp; |[Webtábla (HTML-tábla)](../articles/data-factory/connector-web-table.md) |✓ | | |✓  |
 | &nbsp; |[A Xero (béta)](../articles/data-factory/connector-xero.md) |✓ | |✓ |✓  |
 | &nbsp; |[Zoho (béta)](../articles/data-factory/connector-zoho.md) |✓ | |✓ |✓  |
 
 > [!NOTE]
-> A csatlakozókat jelölésű *Beta* azt jelenti, hogy megpróbálhatja azt ki, és küldjön visszajelzést, és ne használja éles környezetben.
+> A csatlakozókat jelölésű *Beta* azt jelenti, hogy próbálja ki, és küldjön visszajelzést. Ha szeretne egy függőséget végrehajtása a béta-összekötők a megoldásban, lépjen kapcsolatba [az Azure támogatási](https://azure.microsoft.com/support/).

@@ -7,6 +7,5 @@
 -   Ha le szeretné kérdezni a legjobb teljesítmény érdekében a virtuális géphez, korlátozza a vCPU / 2 lemezekre adatlemezek száma.
 - **Hálózati sávszélesség várt** maximális összesített értéket [VM típusonkénti lefoglalt sávszélesség](../articles/virtual-network/virtual-machine-network-throughput.md) hálózati adapterek összes, az összes cél. A felső határértékek nem garantáltak, csak útmutatóul szolgálnak a kívánt alkalmazásra megfelelő VM-típus kiválasztásához. A tényleges hálózati teljesítmény számos tényezőtől függ, többek között a hálózat túlterhelésétől, az alkalmazás terhelésétől, valamint az alkalmazás hálózati beállításaitól. A hálózati átviteli sebesség optimalizálásával kapcsolatos információkért lásd: [A hálózati átviteli sebesség optimalizálása Windows és Linux rendszeren](../articles/virtual-network/virtual-network-optimize-network-bandwidth.md). Linux vagy Windows rendszeren a várt hálózati teljesítmény eléréséhez egy adott verzió kiválasztására vagy a virtuális gép optimalizálására lehet szükség. További információkért lásd: [Virtuális gépek átviteli sebességének megbízható tesztelése](../articles/virtual-network/virtual-network-bandwidth-testing.md).
 
-- &#8224; A 16 vCPU teljesítménye egy soron következő kiadásban tartósan eléri a felső határértéket.
 
 

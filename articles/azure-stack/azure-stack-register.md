@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/5/2018
+ms.date: 1/8/2018
 ms.author: jeffgilb
-ms.openlocfilehash: c2edafbf483692d5a11771268a1755c11b74521f
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: b58b3fc538d2237c12a860d268d550c4223155ba
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="register-azure-stack-with-your-azure-subscription"></a>Az Azure verem regisztrálása az Azure-előfizetéshez
 
@@ -36,7 +36,7 @@ Mielőtt regisztrálná az Azure-vermet az Azure-ral, rendelkeznie kell:
 
 - Az előfizetés-azonosító az Azure-előfizetéssel. Ahhoz, hogy az azonosító, jelentkezzen be az Azure-ba, és kattintson **további szolgáltatások** > **előfizetések**, kattintson az előfizetést szeretné használni, és a **Essentials** megtalálhatja a **Előfizetés-azonosító**. Kínai, német és US government felhőalapú előfizetések jelenleg nem támogatottak.
 - A felhasználónév és jelszó egy olyan fiók, amely az előfizetés tulajdonosa (a felügyelt Szolgáltatásfiók/2FA fiókok támogatottak).
-- *Nem kötelező Azure verem 1712 frissítés verziójától (1.0.180103.2):* az Azure Active Directory az Azure-előfizetéséhez. Ez a könyvtár az Azure-ban fölé a profilképet, az Azure-portál jobb felső sarkában található.
+- *Nem kötelező Azure verem 1712 frissítés verziójától (180106.1):* az Azure Active Directory az Azure-előfizetéséhez. Ez a könyvtár az Azure-ban fölé a profilképet, az Azure-portál jobb felső sarkában található.
 
 Ha nem rendelkezik Azure-előfizetéssel, amely megfelel ezeknek a követelményeknek, akkor [ingyenes Azure-fiók létrehozása itt](https://azure.microsoft.com/en-us/free/?b=17.06). Azure verem regisztrálása költséget nem áll, az Azure-előfizetése.
 
@@ -126,7 +126,7 @@ Ha azt szeretné, a számlázási modellt vagy az együttműködési szolgáltat
 
 
 ## <a name="disconnected-registration"></a>Kapcsolat nélküli regisztráció
-*Az itt olvasható információk az Azure verem 1712 frissített verzióra (1.0.180103.2) kezdődő vonatkozik, és korábbi verzióiban nem támogatott.*
+*Az itt olvasható információk az Azure verem 1712 frissített verzióra (180106.1) kezdődő vonatkozik, és korábbi verzióiban nem támogatott.*
 
 Ha Azure verem leválasztott környezetben regisztrál, regisztráció-token beszerzése a Azure verem környezetből, majd a jogkivonatot, amely csatlakozni tudna Azure regisztrálási gépen szüksége.  
 

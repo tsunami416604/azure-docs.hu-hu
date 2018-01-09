@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
 ms.author: mimig
-ms.openlocfilehash: 8ec4cf774306a5b74627adc0d405bab09645ec9a
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 39481322d88a7674fce712dc24ef1f32f627f3cc
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Az Azure Cosmos DB: Kiszolgáló nélküli adatbázis számítási Azure Functions használatával
 
@@ -34,6 +34,9 @@ Az Azure Cosmos-adatbázis és az Azure Functions lehetővé teszik az adatbázi
 * Azt is megteheti, egy Azure-függvény kötése egy Azure Cosmos DB gyűjtemény használja egy **kötés bemeneti**. Bemeneti kötések adatokat olvasni egy tároló, a függvény végrehajtásakor a.
 * Egy Azure Cosmos DB gyűjtemény használja kötést létrehozni a következő függvényt egy **kimeneti kötése**. Kimeneti kötések adatokat írni egy tároló, egy olyan függvényt befejezéséről.
 
+> [!NOTE]
+> Jelenleg az Azure Cosmos DB eseményindító, a bemeneti kötések és a kimeneti kötések működik, csak SQL API-t és a Graph API fiókokhoz.
+
 A következő ábra szemlélteti a három integrációja: 
 
 ![Hogyan Azure Cosmos adatbázis és az Azure Functions integrálása](./media/serverless-computing-database/cosmos-db-azure-functions-integration.png)
@@ -42,9 +45,6 @@ Az Azure Cosmos DB eseményindító, a bemeneti kötése és a kimeneti kötése
 * Egy Azure Cosmos DB eseményindító használható egy másik Azure Cosmos DB tárolóhoz kimeneti kötést. Egy függvény műveletet végezne a módosítás hírcsatorna elem után írhat egy másik tárolóhoz (érkezett tárolóhoz hatékonyan eredményezne rekurzív hurkot írása). Vagy egy Azure Cosmos DB eseményindító segítségével hatékonyan át minden módosítatlan elemekkel több tároló egy másik tárolóhoz egy kimeneti kötés használatával.
 * Kötések bemeneti és kimeneti kötései Azure Cosmos DB azonos Azure függvényben használható. Ez a módszer jól azokban az esetekben, amikor bizonyos adatok található a bemeneti kötése, módosítsa az Azure-függvény, és mentse a tárolóhoz, vagy egy másik tárolóhoz, a módosítás után.
 * Egy bemeneti kötése egy Cosmos-DB Azure-tárolót egy Azure Cosmos DB eseményindító ugyanabban a függvényben használható, és használható vagy azok nélkül is kötelező kimenettel. Segítségével kombinációban történő alkalmazására naprakész pénznem exchange (lekért be egy bemeneti kötése egy exchange-tárolót) a módosítás hírcsatorna új rendelések a vásárlási bevásárlókocsiból szolgáltatásban. A frissített bevásárlási bevásárlókocsiból teljes, a jelenlegi pénznemátváltásoknál alkalmazza, a csak írható harmadik tárolóhely egy kimeneti kötése.
-
-> [!NOTE]
-> Jelenleg az Azure Cosmos DB eseményindító, a bemeneti kötések és a kimeneti kötések működik, csak SQL API-t és a Graph API fiókokhoz.
 
 ## <a name="use-cases"></a>Használati esetek
 
@@ -146,7 +146,7 @@ Az Azure Functions előnyei:
 
 Ha nem biztos abban, hogy folyamata, a Logic Apps, az Azure Functions vagy a webjobs-feladatok-e hoznia ajánlott, lásd: [válasszon a folyamatot, a Logic Apps, a funkciók és a webjobs-feladatok](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most tegyük csatlakozás Azure Cosmos adatbázis és az Azure Functions Ha valós: 
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: f09819a1bfd380cd826a478471e673b6d5ff9ee7
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: f4ca7004432d28233888483424164456b008e992
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="enterprise-integration-with-xml-transforms"></a>XML-átalakítók vállalati integrációja
 ## <a name="overview"></a>Áttekintés
@@ -72,6 +72,28 @@ Az átalakítási kérelmet a HTTP-végpont, így most tesztelheti.
 * A teszt térkép szolgáltatás használatával adja hozzá a minta XML üzenet. Egyszerű kattintással a létrehozott leképezés tesztelése, és tekintse meg a létrehozott kimeneti.  
 * Töltse fel a meglévő leképezéseket  
 * Az XML-formátuma támogatását is magában foglalja.
+
+## <a name="adanced-features"></a>Adanced szolgáltatások
+A következő funkciók csak érhetők el a kód nézetre.
+
+### <a name="byte-order-mark"></a>Bájt rendelés be van jelölve
+Alapértelmezés szerint az átalakítás válasza a bájt rendelés jel (AJ) indul el. Ez a funkció letiltásához adja meg a `disableByteOrderMark` a a `transformOptions` tulajdonság:
+
+````json
+"Transform_XML": {
+    "inputs": {
+        "content": "@{triggerBody()}",
+        "integrationAccount": {
+            "map": {
+                "name": "TestMap"
+            }
+        },
+        "transformOptions": "disableByteOrderMark"
+    },
+    "runAfter": {},
+    "type": "Xslt"
+}
+````
 
 ## <a name="learn-more"></a>Részletek
 * [További tudnivalók a vállalati integrációs csomag](../logic-apps/logic-apps-enterprise-integration-overview.md "további információ a vállalati integrációs csomag")  

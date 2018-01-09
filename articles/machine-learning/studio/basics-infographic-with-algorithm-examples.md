@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
 ms.author: garye
-ms.openlocfilehash: 9a7ad0cd7865923ed7356599044dfd79ff9e58cb
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: 8c392740eb0c06b7a3c47e07e5beb667b17117ae
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Letölthető infografika: a gépi tanulás alapjai algoritmuspéldákkal
 Töltse le a machine learning alapjai további információt a machine learning gyakori kérdések megválaszolása használt népszerű algoritmusok könnyen érthető infographic áttekintése. Algoritmus példák segítségével a machine learning kezdő melyik algoritmust használja, és azok még felhasználási területének ismertetése.
 
 ## <a name="popular-algorithms-in-machine-learning-studio"></a>A Machine Learning Studióban népszerű algoritmusok
-[Az Azure Machine Learning Studio](https://studio.azureml.net/) a prediktív elemzés algoritmusok hatalmas katalógusában tartalmaz. A infographic - regressziós, anomáliadetektálás, fürtözési és besorolási - algoritmusok négy népszerű termékcsaládok azonosítja, és hivatkozásokat ad működő szereplő példák a [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com/). A gyűjtemény példa kísérletek és oktatóprogramot kínál, amelyek bemutatják, hogyan lehet alkalmazni ezeket az algoritmusokat sok valós megoldásokban tartalmazza.
+[Az Azure Machine Learning Studio](https://studio.azureml.net/) a prediktív elemzés algoritmusok hatalmas katalógusában tartalmaz. A infographic - regressziós, anomáliadetektálás, fürtözési és besorolási - algoritmusok négy népszerű termékcsaládok azonosítja, és hivatkozásokat ad működő szereplő példák a [Azure Eszközintelligencia-katalógus](https://gallery.cortanaintelligence.com/). A gyűjtemény példa kísérletek és oktatóprogramot kínál, amelyek bemutatják, hogyan lehet alkalmazni ezeket az algoritmusokat sok valós megoldásokban tartalmazza.
 
 ## <a name="download-the-infographic-with-algorithm-examples"></a>Töltse le a infographic algoritmus-példákkal
 **[Letöltés: Infographic a machine learning alapjai algoritmus példák (PDF) mutató hivatkozásokkal](http://download.microsoft.com/download/0/5/A/05AE6B94-E688-403E-90A5-6035DBE9EEC5/machine-learning-basics-infographic-with-algorithm-examples.pdf)**
@@ -37,7 +37,7 @@ Töltse le a machine learning alapjai további információt a machine learning 
 * Kategória a Machine Learning Studióban elérhető összes gépi tanulási algoritmusok listájáért lásd: [inicializálása modell] [ initialize-model] a Machine Learning Studio algoritmus és a modul segítségével.
 * Teljes betűrendben listáját az algoritmusok és a modulok a Machine Learning Studióban, tekintse meg a [a Machine Learning Studio moduljai A-Z listában] [ a-z-list] a Machine Learning Studio algoritmus és a modul segítségével.
 * Ha szeretne egy letölthető és kinyomtatható diagramot a Machine Learning Studio funkcióiról, tekintse meg [Az Azure Machine Learning Studio funkcióit bemutató diagram](studio-overview-diagram.md) című cikket.
-* A Cortana Intelligence Gallery és a rendelkezésre álló számos Közösség által készített erőforrások áttekintését, lásd: [megosztást, és felderítik a Cortana Intelligence Gallery erőforrások](gallery-how-to-use-contribute-publish.md).
+* Az Azure Eszközintelligencia-katalógus és a rendelkezésre álló számos Közösség által készített erőforrások áttekintését, lásd: [megosztás és az Azure Eszközintelligencia-katalógus erőforrások felderítéséhez](gallery-how-to-use-contribute-publish.md).
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 

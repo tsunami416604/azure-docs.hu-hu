@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: 84d6c6b134d74e3d739fd1d65134672f2285787f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 40b684fe5681123f3c32d3984b2725f97b427f1b
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="azure-instance-metadata-service"></a>Az Azure példány metaadat-szolgáltatás
 
@@ -75,8 +75,8 @@ A következő táblázat a más adatok formátumok API-k támogathatja a hivatko
 
 API | Alapértelmezett adatformátum | Eltérő formátumban
 --------|---------------------|--------------
-/instance | JSON-ban | Szöveg
-/scheduledevents | JSON-ban | nincs
+/instance | JSON | Szöveg
+/scheduledevents | JSON | nincs
 
 Egy nem alapértelmezett válaszformátum szeretne használni, adja meg a kért formátumát a kérelem lekérdezési karakterlánc paraméterként. Példa:
 
@@ -377,13 +377,16 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 Nyelv | Példa 
 ---------|----------------
 Ruby     | https://github.com/Microsoft/azureimds/BLOB/Master/IMDSSample.RB
-Nyissa meg Lang  | https://github.com/Microsoft/azureimds/BLOB/Master/imdssample.go            
+Indítás  | https://github.com/Microsoft/azureimds/BLOB/Master/imdssample.go            
 Python   | https://github.com/Microsoft/azureimds/BLOB/Master/IMDSSample.PY
 C++      | https://github.com/Microsoft/azureimds/BLOB/Master/IMDSSample-Windows.cpp
 C#       | https://github.com/Microsoft/azureimds/BLOB/Master/IMDSSample.cs
 JavaScript | https://github.com/Microsoft/azureimds/BLOB/Master/IMDSSample.js
 PowerShell | https://github.com/Microsoft/azureimds/BLOB/Master/IMDSSample.ps1
 Bash       | https://github.com/Microsoft/azureimds/BLOB/Master/IMDSSample.SH
+Perl       | https://github.com/Microsoft/azureimds/BLOB/Master/IMDSSample.pl
+Java       | https://github.com/Microsoft/azureimds/BLOB/Master/imdssample.Java
+Visual Basic | https://github.com/Microsoft/azureimds/BLOB/Master/IMDSSample.vb
     
 
 ## <a name="faq"></a>GYIK
@@ -406,6 +409,6 @@ Bash       | https://github.com/Microsoft/azureimds/BLOB/Master/IMDSSample.SH
 
    ![Példány metaadatok támogatása](./media/instance-metadata-service/InstanceMetadata-support.png)
     
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [ütemezett események](scheduled-events.md) API **nyilvános előzetes verziójában** a példány metaadat-szolgáltatás által biztosított.

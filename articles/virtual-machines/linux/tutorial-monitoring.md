@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/08/2017
 ms.author: davidmu
 ms.custom: mvc
-ms.openlocfilehash: 70c17d9a8f7bf6d9106efcb56eee7cd996460c18
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cde484dd59ec6e2821678766726c02362222d496
+ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="how-to-monitor-and-update-a-linux-virtual-machine-in-azure"></a>Hogyan figyelheti és frissítheti a Linux virtuális gép az Azure-ban
 
@@ -130,7 +130,7 @@ A Linux virtuális gépek dedikált-állomással rendelkezik, amely hatással va
 >
 > A Linux diagnosztikai bővítmény 3.0-s verziója a helyette engedélyezhető. További információkért lásd: [dokumentációjában](./diagnostic-extension.md).
 
-Az alapvető állomás adatok gyűjtése le elérhető, de a részletesebb és Virtuálisgép-specifikus metrika, meg kell telepítenie az Azure diagnostics bővítményt a virtuális Gépen. Az Azure diagnostics bővítmény lehetővé teszi, hogy további figyelési és diagnosztikai adatokat beolvasni a virtuális gépről. Megtekintheti a metrikák és riasztások alapján hogyan hajtja végre a virtuális gép létrehozása. A diagnosztikai bővítmény telepítve van az Azure portálon keresztül az alábbiak szerint:
+Az alapvető gazdagép metrikák érhetők el, de a részletes és a Virtuálisgép-specifikus metrikák megtekintéséhez telepítenie kell az Azure diagnostics bővítményt a virtuális Gépen. Az Azure diagnostics bővítmény lehetővé teszi, hogy további figyelési és diagnosztikai adatokat beolvasni a virtuális gépről. Megtekintheti a metrikák és riasztások alapján hogyan hajtja végre a virtuális gép létrehozása. A diagnosztikai bővítmény telepítve van az Azure portálon keresztül az alábbiak szerint:
 
 1. Az Azure portálon kattintson **erőforráscsoportok**, jelölje be **myResourceGroup**, majd válassza ki **myVM** erőforrás listájában.
 1. Kattintson a **diagnosztikai beállítások**. A lista azt mutatja, hogy *rendszerindítási diagnosztika* már engedélyezve van az előző szakaszából. Jelölje be a jelölőnégyzetet a *alapvető metrikák*.
@@ -167,7 +167,7 @@ A következő példa az átlagos processzorhasználat riasztást hoz létre.
 
 Frissítéskezelés használatával kezelheti csomag frissítések és javítások a Azure Linux virtuális gépekhez. Közvetlenül a virtuális gépről, gyorsan mérje fel a rendelkezésre álló frissítések állapotát, kötelező frissítések telepítésének ütemezése, és tekintse át a központi telepítési eredmények ellenőrzése a frissítések alkalmazása sikeresen megtörtént a virtuális géphez.
 
-Díjszabási információkért lásd: [Automation frissítéskezelés az díjszabása](https://azure.microsoft.com/pricing/details/automation/)
+Díjszabási információkért tekintse meg az [Automation Update Management-díjszabását](https://azure.microsoft.com/pricing/details/automation/) ismertető cikket.
 
 ### <a name="enable-update-management-preview"></a>Engedélyezze frissítéskezelésről (előzetes verzió)
 
@@ -177,40 +177,40 @@ A virtuális gép frissítéskezelés engedélyezése
 1. A listában jelölje ki a virtuális gépek.
 1. A virtuális gép képernyőn a a **műveletek** kattintson **frissítéskezelés**. A **engedélyezze frissítéskezelésről** képernyőn megnyílik.
 
-Az érvényesség annak meghatározásához, hogy engedélyezve van-e frissítéskezelésről a virtuális gép. Az érvényesítési tartalmaz ellenőrzi a Naplóelemzési munkaterület és a csatolt Automation-fiók, és ha a megoldás a munkaterületen.
+A rendszer ellenőrzi, hogy az Update Management engedélyezve van-e a virtuális gépen. A rendszer eközben azt is ellenőrzi, hogy létezik-e Log Analytics-munkaterület és egy csatlakoztatott Automation-fiók, valamint hogy a megoldás már jelen van-e a munkaterületen.
 
-A Naplóelemzési munkaterület funkciókat és szolgáltatásokat, például a frissítéskezelés által generált adatok összegyűjtésére szolgál. A munkaterületen áttekintheti, és a különböző forrásokból származó adatok elemzése egyetlen helyen. A virtuális gépeken, amelyek a frissítés szükséges további művelet végrehajtásához Azure Automation futtatását teszi-szkriptek használatát a virtuális gépek, többek között letöltéséhez, és alkalmazza a frissítéseket.
+A Naplóelemzési munkaterület funkciókat és szolgáltatásokat, például a frissítéskezelés által generált adatok összegyűjtésére szolgál. A munkaterület egyetlen központi helyet biztosít a több forrásból származó adatok áttekintéséhez és elemzéséhez. A virtuális gépeken, amelyek a frissítés szükséges további művelet végrehajtásához Azure Automation futtatását teszi-szkriptek használatát a virtuális gépek, többek között letöltéséhez, és alkalmazza a frissítéseket.
 
-Az érvényesítési folyamat is ellenőrzi, hogy ha a virtuális gép ki van építve a Microsoft Monitoring Agent (MMA) és a hibrid feldolgozó. Ez az ügynök segítségével kommunikálnak a virtuális gép és a frissítési állapot kapcsolatos információkhoz. 
+Az ellenőrzési folyamat arra is kiterjed, hogy a virtuális gépen működik-e a Microsoft Monitoring Agent (MMA) és egy hibrid feldolgozó. Ez az ügynök kommunikál a virtuális géppel, továbbá begyűjti a frissítési állapottal kapcsolatos információkat. 
 
 Ha az előfeltételek nem teljesülnek, a megoldás lehetővé teszi lehetővé teszi egy fejléc jelenik meg.
 
-![Felügyeleti előkészítésére konfigurációs szalagcím frissítése](./media/tutorial-monitoring/manage-updates-onboard-solution-banner.png)
+![Az Update Management felvételének konfigurációs szalagcíme](./media/tutorial-monitoring/manage-updates-onboard-solution-banner.png)
 
 A megoldás engedélyezéséhez kattintson a szalagcímre. Ha az ellenőrzés után nem található a következő előfeltételek bármelyike található, akkor automatikusan megkapja:
 
-* [Naplófájl Analytics](../../log-analytics/log-analytics-overview.md) munkaterület
+* [Log Analytics](../../log-analytics/log-analytics-overview.md)-munkaterület
 * [Automatizálás](../../automation/automation-offering-get-started.md)
-* A [hibrid forgatókönyv-feldolgozó](../../automation/automation-hybrid-runbook-worker.md) engedélyezve van a virtuális Gépen
+* Engedélyezett [hibrid runbook-feldolgozó](../../automation/automation-hybrid-runbook-worker.md) a virtuális gépen
 
 A **engedélyezze Frissítéskezelésről** képernyőn megnyílik. Adja meg a beállításokat, és kattintson a **engedélyezése**.
 
 ![Frissítés felügyeleti megoldás engedélyezése](./media/tutorial-monitoring/manage-updates-update-enable.png)
 
 A megoldás engedélyezése akár 15 percig is eltarthat, és ebben az időszakban, akkor nem zárja be a böngészőablakot. A megoldás engedélyezése után a virtuális Gépen a Csomagkezelő a hiányzó frissítésekkel kapcsolatos információk szolgáltatáshoz zajlik.
-30 perc és 6 óra elemzéshez használható az adatok között is igénybe vehet.
+Az adatok legalább 30 perc és legfeljebb 6 óra múlva állnak készen az elemzésre.
 
 ### <a name="view-update-assessment"></a>A frissítésfelmérés megtekintése
 
 Miután a **frissítéskezelés** megoldás engedélyezve van, a **frissítéskezelés** képernyő jelenik meg. A **Hiányzó frissítések** lapon a hiányzó frissítések listája látható.
 
-![Frissítési állapotának megtekintése](./media/tutorial-monitoring/manage-updates-view-status-linux.png)
+![Frissítés állapotának megtekintése](./media/tutorial-monitoring/manage-updates-view-status-linux.png)
 
 ### <a name="schedule-an-update-deployment"></a>Frissítéstelepítés ütemezése
 
 Frissítések telepítéséhez a központi telepítés utáni a kiadási ütemezés és a karbantartási időszak ütemezése.
 
-A virtuális Gépet egy új központi telepítésének ütemezése kattintva **ütemezés központi telepítésének** tetején a **frissítéskezelés** képernyő. Az a **új üzemelő példány frissítése** képernyőn, adja meg a következőket:
+A virtuális Gépet egy új központi telepítésének ütemezése kattintva **ütemezés központi telepítésének** tetején a **frissítéskezelés** képernyő. Az **Új frissítéstelepítés** képernyőn adja meg a következő információkat:
 
 * **Név** – Adjon meg egy egyedi nevet a frissítéstelepítés azonosításához.
 * **Frissítések kizárandó** – válassza ezt a csomagot kell zárni a frissítés adja meg.
@@ -235,18 +235,18 @@ Ha éppen fut, az állapota **Folyamatban**. Ha sikeresen befejeződik, **Sikere
 Ha hiba történik a központi telepítésben lévő egy vagy több frissítésekkel, az állapot értéke **sikertelen**.
 Ha rákattint a befejezett frissítéstelepítésre, megjelenik az adott frissítéstelepítés irányítópultja.
 
-![Frissítés telepítési állapotát irányítópult az adott központi telepítéshez](./media/tutorial-monitoring/manage-updates-view-results.png)
+![Adott telepítés frissítéstelepítési állapot-irányítópultja](./media/tutorial-monitoring/manage-updates-view-results.png)
 
 A **frissítésének elmulasztása az** csempe a frissítések és a virtuális gép telepítési eredmények száma összegzését.
 A jobb oldali táblázat az egyes frissítések részletes áttekintését és a telepítés eredményét tartalmazza, amely a következők egyike lehet:
 
-* **Nem történt kísérlet** – a frissítés nem lett telepítve, mert nincs elegendő rendelkezésre álló idő definiált karbantartási ablak időtartam alapján.
+* **Nem lett megkísérelve** – a frissítés nem lett telepítve, mert a megadott karbantartási időszak alapján nem lett volna rá elég idő.
 * **Sikeres** – a frissítés sikeresen letöltötte és telepítette a virtuális Gépen
 * **Nem sikerült** – a frissítés letöltése vagy telepítése a virtuális gépen nem sikerült.
 
 Kattintson a **Minden napló** csempére a telepítés által létrehozott összes naplóbejegyzés megtekintéséhez.
 
-Kattintson a **kimeneti** csempe a runbook a frissítés telepítése a cél virtuális gép kezeléséért feladatstream megjelenítéséhez.
+Kattintson a **Kimenet** csempére azon runbook feladatstreamjének megtekintéséhez, amely a frissítések telepítését kezeli a cél virtuális gépen.
 
 Kattintson a **Hibák** csempére a telepítés közben felmerülő hibák részletes információinak megtekintéséhez.
 
@@ -271,7 +271,7 @@ Az OMS-portálon naplófájl-keresési paneljén láthatja *myVM* például az a
 
 ![OMS panel](./media/tutorial-monitoring/tutorial-monitor-oms.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban konfigurálhatók, tekintse át, és a virtuális gépek frissítések kezelhetők. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

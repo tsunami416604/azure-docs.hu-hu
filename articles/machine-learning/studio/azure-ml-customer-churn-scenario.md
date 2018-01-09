@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
 ms.author: jeannt
-ms.openlocfilehash: 57044afe946e21d4b3cfa991772e780e59a1710e
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: e0b82fe8e8c8bc4ac9c45370d90fa9330d749878
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="analyzing-customer-churn-by-using-azure-machine-learning"></a>Az ügyfél változásainak elemzése az Azure Machine Learning segítségével
 ## <a name="overview"></a>Áttekintés
@@ -28,14 +28,14 @@ Ez a cikk bemutatja a felhasználói forgalom elemzése projekt, Azure Machine L
 Ehhez a kísérlethez fejlesztette ki és tesztelt Serge Berger, egyszerű adatok tudósok Microsoft és Roger Barga, a Microsoft Azure Machine Learning korábban termék Manager. Az Azure dokumentációs csapattól gratefully elfogadja a saját ismereteit, és Köszönjük őket, hogy ez a dokumentum megosztása.
 
 > [!NOTE]
-> Ehhez a kísérlethez használt adatok nincs nyilvánosan elérhető. Példa bemutatja, hogyan hozhat létre a gépi tanulási modell a forgalom elemzése, lásd: [kereskedelmi kavarog folyamatmodell-sablont](https://gallery.cortanaintelligence.com/Collection/Retail-Customer-Churn-Prediction-Template-1) a [Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com/)
+> Ehhez a kísérlethez használt adatok nincs nyilvánosan elérhető. Példa bemutatja, hogyan hozhat létre a gépi tanulási modell a forgalom elemzése, lásd: [kereskedelmi kavarog folyamatmodell-sablont](https://gallery.cortanaintelligence.com/Collection/Retail-Customer-Churn-Prediction-Template-1) a [Azure Eszközintelligencia-katalógus](http://gallery.cortanaintelligence.com/)
 > 
 > 
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ## <a name="the-problem-of-customer-churn"></a>A probléma az ügyfél os forgalom
-A fogyasztó piacon és az összes vállalati ágazatban vállalatok rendelkeznek, forgalom kezelésére. Egyes esetekben adatforgalom túlzott, és hogyan befolyásolja a szabályozási döntések. A hagyományos megoldás, hogy magas-innovációkká alakuljon churners előrejelzése és azok marketingkampányok segítõ szolgáltatáson keresztül vagy különleges felmentésekről alkalmazásával igények kielégítéséhez. Ezek a módszerek iparági iparág és még egy adott felhasználó fürtről egy másik belül (például távközlési) egy iparági eltérőek lehetnek.
+A fogyasztó piacon és az összes vállalati ágazatban vállalatok rendelkeznek, forgalom kezelésére. Egyes esetekben adatforgalom túlzott, és hogyan befolyásolja a szabályozási döntések. A hagyományos megoldás, hogy magas-innovációkká alakuljon churners előrejelzése és azok marketingkampányok segítõ szolgáltatáson keresztül vagy különleges felmentésekről alkalmazásával igények kielégítéséhez. Ezek a módszerek iparági iparági eltérőek lehetnek. Azok még akkor is eltérőek lehetnek adott fogyasztói fürtről a másikra (például távközlési) egy iparági.
 
 A közös tényező, hogy a vállalkozások kell ilyen speciális ügyfél megőrzési erőfeszítések minimalizálása érdekében. Ebből kifolyólag természetes módszer lehet a pontszám forgalom valószínűségét minden ügyfélnek, és oldja meg a felső N néhányat a meglévők közül. Előfordulhat, hogy a felső ügyfelek legnyereségesebb megfelelően. Például az összetettebb forgatókönyveket nyereség függvény alkalmaznak a különleges felmentéssel jelöltek kiválasztása során. Ezeket a szempontokat azonban csak a teljes forgalom kapcsolatos stratégia részét képezik. Vállalatok számára is figyelembe fiók kockázat (és társított kockázattűrése), a szinten, és a beavatkozás és egyértelmű felhasználói szegmentálást költsége.  
 
@@ -109,7 +109,7 @@ Az alábbi ábrák bemutatják a használt adatokat.
  
 
 > Vegye figyelembe, hogy ezek az adatok személyes, és ezért a modell és az adatok nem osztható meg.
-> Azonban egy hasonló modell nyilvánosan elérhető adatok használatával, lásd: a minta a kísérletezhet a [Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com/): [Telco ügyfél Kavarog](http://gallery.cortanaintelligence.com/Experiment/31c19425ee874f628c847f7e2d93e383).
+> Azonban egy hasonló modell nyilvánosan elérhető adatok használatával, lásd: a minta a kísérletezhet a [Azure Eszközintelligencia-katalógus](http://gallery.cortanaintelligence.com/): [Telco ügyfél Kavarog](http://gallery.cortanaintelligence.com/Experiment/31c19425ee874f628c847f7e2d93e383).
 > 
 > Hogyan implementálható a forgalom elemzési modellek Cortana Intelligence Suite használatával kapcsolatos további tudnivalókért is javasoljuk [Ez a videó](https://info.microsoft.com/Webinar-Harness-Predictive-Customer-Churn-Model.html) által kiemelt Programvezető hétköznapon Hyong Tok. 
 > 
@@ -222,7 +222,7 @@ A dokumentum ismerteti egy ésszerű megközelítése problémájának közös �
 
 [4] [big Data típusú adatok Marketing: hatékonyabban végezhetnek az ügyfelek és a meghajtó érték](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
 
-[5] [Telco kavarog folyamatmodell-sablont](http://gallery.cortanaintelligence.com/Experiment/Telco-Customer-Churn-5) a [Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com/) 
+[5] [Telco kavarog folyamatmodell-sablont](http://gallery.cortanaintelligence.com/Experiment/Telco-Customer-Churn-5) a [Azure Eszközintelligencia-katalógus](http://gallery.cortanaintelligence.com/) 
  
 
 ## <a name="appendix"></a>Függelék:

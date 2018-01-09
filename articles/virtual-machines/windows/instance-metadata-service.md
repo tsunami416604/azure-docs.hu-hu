@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: d1f2f77dbdfc96adc616e8e5dae8f5839c176096
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: 5a09895f32d5cc559cda9ec8794c3ce982d99774
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="azure-instance-metadata-service"></a>Az Azure példány metaadat-szolgáltatás
 
@@ -75,8 +75,8 @@ A következő táblázat a más adatok formátumok API-k támogathatja a hivatko
 
 API | Alapértelmezett adatformátum | Eltérő formátumban
 --------|---------------------|--------------
-/instance | JSON-ban | Szöveg
-/scheduledevents | JSON-ban | Egyik sem
+/instance | JSON | Szöveg
+/scheduledevents | JSON | nincs
 
 Egy nem alapértelmezett válaszformátum szeretne használni, adja meg a kért formátumát a kérelem lekérdezési karakterlánc paraméterként. Példa:
 
@@ -283,10 +283,10 @@ Adatok | Leírás | Bevezetett verziója
 -----|-------------|-----------------------
 location | Azure-régió, a virtuális gép fut. | 2017-04-02 
 név | A virtuális gép neve | 2017-04-02
-az ajánlat | A VM-lemezkép információkat nyújtanak. Kép: Azure-galériából telepített lemezképek nincs csak ezt az értéket. | 2017-04-02
+ajánlat | A VM-lemezkép információkat nyújtanak. Kép: Azure-galériából telepített lemezképek nincs csak ezt az értéket. | 2017-04-02
 Közzétevő | A Virtuálisgép-lemezkép kiadója | 2017-04-02
 Termékváltozat | A VM-lemezkép adott Termékváltozat | 2017-04-02
-Verzió | A Virtuálisgép-lemezkép verziója | 2017-04-02
+verzió: | A Virtuálisgép-lemezkép verziója | 2017-04-02
 osType | Linux- vagy Windows | 2017-04-02
 platformUpdateDomain |  [Frissítési tartományok](manage-availability.md) a virtuális gép fut. | 2017-04-02
 platformFaultDomain | [Tartalék tartomány](manage-availability.md) a virtuális gép fut. | 2017-04-02
@@ -377,13 +377,16 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 Nyelv | Példa 
 ---------|----------------
 Ruby     | https://github.com/Microsoft/azureimds/BLOB/Master/IMDSSample.RB
-Nyissa meg Lang  | https://github.com/Microsoft/azureimds/BLOB/Master/imdssample.go            
+Indítás  | https://github.com/Microsoft/azureimds/BLOB/Master/imdssample.go            
 Python   | https://github.com/Microsoft/azureimds/BLOB/Master/IMDSSample.PY
 C++      | https://github.com/Microsoft/azureimds/BLOB/Master/IMDSSample-Windows.cpp
 C#       | https://github.com/Microsoft/azureimds/BLOB/Master/IMDSSample.cs
 JavaScript | https://github.com/Microsoft/azureimds/BLOB/Master/IMDSSample.js
 PowerShell | https://github.com/Microsoft/azureimds/BLOB/Master/IMDSSample.ps1
 Bash       | https://github.com/Microsoft/azureimds/BLOB/Master/IMDSSample.SH
+Perl       | https://github.com/Microsoft/azureimds/BLOB/Master/IMDSSample.pl
+Java       | https://github.com/Microsoft/azureimds/BLOB/Master/imdssample.Java
+Visual Basic | https://github.com/Microsoft/azureimds/BLOB/Master/IMDSSample.vb
     
 
 ## <a name="faq"></a>GYIK
@@ -406,6 +409,6 @@ Bash       | https://github.com/Microsoft/azureimds/BLOB/Master/IMDSSample.SH
 
    ![Példány metaadatok támogatása](./media/instance-metadata-service/InstanceMetadata-support.png)
     
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [ütemezett események](scheduled-events.md) API **nyilvános előzetes verziójában** a példány metaadat-szolgáltatás által biztosított.

@@ -1,24 +1,23 @@
 ---
-title: "Fájlok feltöltése a Media Services-fiók használatával REST |} Microsoft Docs"
+title: "Fájlok feltöltése be egy Azure Media Services-fiókhoz használó többi |} Microsoft Docs"
 description: "Útmutató a médiatartalom feltölti a Media Services létrehozásával és feltöltésével eszközök."
 services: media-services
 documentationcenter: 
 author: Juliako
 manager: cfowler
 editor: 
-ms.assetid: 41df7cbe-b8e2-48c1-a86c-361ec4e5251f
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 01/07/2017
 ms.author: juliako
-ms.openlocfilehash: f198de0bf212f4ae566193954a319bece1e421f6
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: c02584e53790ccafe6ed9a5aeffab3f9e40e8b29
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Fájlok feltöltése a Media Services-fiók használatával REST
 > [!div class="op_single_selector"]
@@ -26,497 +25,204 @@ ms.lasthandoff: 12/18/2017
 > * [REST](media-services-rest-upload-files.md)
 > * [Portál](media-services-portal-upload-files.md)
 > 
-> 
 
 A Media Services szolgáltatásban a digitális fájlok feltöltése egy adategységbe történik. A [eszköz](https://docs.microsoft.com/rest/api/media/operations/asset) entitás tartalmazhat videót, hang, képek, miniatűröket, szöveg nyomon követi és feliratfájlokat fájlokat (és a mindezen fájlok metaadatait.)  Ha a fájlok feltöltése az objektumba, a lesz biztonságosan tárolva a tartalom további feldolgozás és adatfolyam-felhő. 
 
-> [!NOTE]
-> A következők érvényesek:
-> 
-> * A Media Services a IAssetFile.Name tulajdonság értékét használja, amikor az adatfolyam-tartalmak (például http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) a URL-címek kiépítéséhez Emiatt százalék-kódolás nem engedélyezett. Értékét a **neve** tulajdonság nem lehet a következő [százalék kódolás-fenntartott karakterek](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Emellett csak lehet egy "." a fájlnévkiterjesztés.
-> * A név hossza nem lehet hosszabb 260 karakternél.
-> * A Media Services által feldolgozható maximális támogatott fájlméret korlátozott. Lásd: [ez](media-services-quotas-and-limitations.md) szóló cikkben olvashat a méretű fájlt választhat.
-> 
+Ebben az oktatóanyagban elsajátíthatja, hogyan töltse fel a fájl- és egyéb művelet:
 
-A következő alapvető munkafolyamattal eszközök feltöltése a következő szakaszokat tartalmazza:
+> [!div class="checklist"]
+> * A feltöltési művelet Postman beállítása
+> * Kapcsolódás a Media Services szolgáltatáshoz 
+> * Írási engedéllyel rendelkező hozzáférési házirend létrehozása
+> * Egy eszköz létrehozása
+> * Az SAS-kereső létrehozása és a feltöltés URL-cím létrehozása
+> * Fájl feltöltése a blob storage a feltöltési URL-cím használatával
+> * A metaadatok a médiafájl feltöltött eszköz létrehozása
 
-* Egy eszköz létrehozása
-* Az objektum titkosítására használható (nem kötelező)
-* A blob storage-fájl feltöltése
+## <a name="prerequisites"></a>Előfeltételek
 
-AMS is lehetővé teszi az eszközök tömeges feltöltéséhez. További információ [itt](media-services-rest-upload-files.md#upload_in_bulk) érhető el.
+- Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) a virtuális gép létrehozásának megkezdése előtt.
+- [Az Azure portál használatával Azure Media Services-fiók létrehozása](media-services-portal-create-account.md).
+- Tekintse át a [eléréséhez Azure Media Services API-t az AAD-hitelesítés áttekintése](media-services-use-aad-auth-to-access-ams-api.md) cikk.
+- Konfigurálás **Postman** leírtak [konfigurálása Postman Media Services REST API-hívások](media-rest-apis-with-postman.md).
 
-> [!NOTE]
-> A Media Services entitások elérésekor be kell meghatározott fejlécmezők és értékek a HTTP-kérelmekre. További információkért lásd: [a Media Services REST API fejlesztési telepítő](media-services-rest-how-to-use.md).
-> 
+## <a name="considerations"></a>Megfontolandó szempontok
+
+Media Services REST API használatával az alábbiakat is érvényesek:
+ 
+* Media Services REST API használatával entitások elérésekor be kell meghatározott fejlécmezők és értékek a HTTP-kérelmekre. További információkért lásd: [a Media Services REST API fejlesztési telepítő](media-services-rest-how-to-use.md). <br/>A jelen oktatóanyagban használt Postman gyűjtemény gondoskodik a szükséges fejlécek beállítása.
+* A Media Services a IAssetFile.Name tulajdonság értékét használja, amikor az adatfolyam-tartalmak (például http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) a URL-címek kiépítéséhez Emiatt százalék-kódolás nem engedélyezett. Értékét a **neve** tulajdonság nem lehet a következő [százalék kódolás-fenntartott karakterek](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Emellett csak lehet egy "." a fájlnévkiterjesztés.
+* A név hossza nem lehet hosszabb 260 karakternél.
+* A Media Services által feldolgozható maximális támogatott fájlméret korlátozott. Lásd: [ez](media-services-quotas-and-limitations.md) szóló cikkben olvashat a méretű fájlt választhat.
+
+## <a name="set-up-postman"></a>Postman beállítása
+
+Ez az oktatóanyag Postman beállítása lépéseiért lásd: [konfigurálása Postman](media-rest-apis-with-postman.md).
 
 ## <a name="connect-to-media-services"></a>Kapcsolódás a Media Services szolgáltatáshoz
 
-Az AMS API-hoz kapcsolódáshoz információkért lásd: [elérni az Azure Media Services API-t az Azure AD-alapú hitelesítés](media-services-use-aad-auth-to-access-ams-api.md). 
+1. Kapcsolat értékek hozzá a környezethez. 
 
-## <a name="upload-assets"></a>Töltse fel az eszközök
+    Bizonyos változókat, amelyek részei a **MediaServices** [környezet](postman-environment.md) definiált műveletek végrehajtása előtt kézzel meg kell adnia a [gyűjtemény](postman-collection.md).
 
-### <a name="create-an-asset"></a>Egy eszköz létrehozása
+    Ahhoz, hogy az értékek az első öt változók, lásd: [elérni az Azure Media Services API-t az Azure AD-alapú hitelesítés](media-services-use-aad-auth-to-access-ams-api.md). 
 
-Az eszköz egy olyan tároló, típusok vagy a Media Services, beleértve a videó, hang, képeket, miniatűröket, szöveges nyomon követi és feliratfájlokat fájlok objektumokat. A REST API-ban az eszköz létrehozásához POST kérést küld a Media Services és az eszköz minden tulajdonságadatokat helyezi el a kérés törzsében.
+    ![Fájl feltöltése](./media/media-services-rest-upload-files/postman-import-env.png)
+2. Adja meg az értéket a **MediaFileName** környezeti változó.
 
-A tulajdonságokat, amelyeket megadhat egy eszköz létrehozása esetén egyik **beállítások**. **Beállítások** számbavételi érték, amely leírja a titkosítási beállításokat, hogy egy eszköz hozhatók létre. Érvényes értéket a értékeket az alábbi listán, nem az értékek egy kombinációját kell. 
+    Adja meg az adathordozó azt tervezi, hogy töltse fel a fájl nevét. Ebben a példában fogjuk a BigBuckBunny.mp4 feltöltése. 
+3. Vizsgálja meg a **AzureMediaServices.postman_environment.json** fájlt. Látni fogja, hogy szinte minden műveletet a gyűjtemény a "teszt" parancsfájl végrehajtása. A parancsfájlok igénybe vehet néhány érték, a válasz által visszaadott, és állítsa be a megfelelő környezeti változókat.
 
-* **Nincs** = **0**: Nincs titkosítás. Ez az alapértelmezett érték. Ez a beállítás használatakor a tartalom nem védett átvitel, sem tárolás közben.
-    Ha egy MP4-fájlt progresszív letöltés útján tervez továbbítani, használja ezt a lehetőséget. 
-* **StorageEncrypted** = **1**: Adja meg, ha a fájlok AES-256 bites titkosítással feltöltés és tárolás titkosítását.
-  
-    Ha az adategységen tárolótitkosítást alkalmaz, konfigurálnia kell az adategység továbbítási házirendjét. További információkért lásd: [objektumtovábbítási szabályzat konfigurálása](media-services-rest-configure-asset-delivery-policy.md).
-* **CommonEncryptionProtected** = **2**: Adja meg, ha meg feltölteni egy közös titkosítási módszerrel (például PlayReady) védett fájlokkal. 
-* **EnvelopeEncryptionProtected** = **4**: Adja meg, ha AES fájlok titkosított HLS meg feltölteni. A fájlok kell kódolni és Transform Manager használatával titkosított.
+    Például az első művelet szolgáltatáshozzáférési tokent kap, és állítsa be a **AccessToken** környezeti változó, amely az összes többi műveletnél szolgál.
 
-> [!NOTE]
-> Ha az eszköz-titkosítást használ, létre kell hoznia egy **ContentKey** , és az eszköz a következő cikkben leírtak szerint: [létrehozása egy ContentKey](media-services-rest-create-contentkey.md). A fájlok feltöltése az objektumba, után frissítenie kell a titkosítási tulajdonságok a a **AssetFile** entitás során kapott értékekkel a **eszköz** titkosítás. Használatával teheti a **EGYESÍTÉSE** HTTP-kérelem. 
-> 
-> 
-
-A következő példa bemutatja, hogyan hozzon létre egy eszközt.
-
-**HTTP-kérelem**
-
-    POST https://media.windows.net/api/Assets HTTP/1.1
-    Content-Type: application/json
-    DataServiceVersion: 1.0;NetFx
-    MaxDataServiceVersion: 3.0;NetFx
-    Accept: application/json
-    Accept-Charset: UTF-8
-    Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-6753-2233-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421640053&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=vlG%2fPYdFDMS1zKc36qcFVWnaNh07UCkhYj3B71%2fk1YA%3d
-    x-ms-version: 2.17
-    Host: media.windows.net
-
-    {"Name":"BigBuckBunny.mp4"}
-
-**HTTP-válasz**
-
-Ha sikeres, a következő adja vissza:
-
-    HTP/1.1 201 Created
-    Cache-Control: no-cache
-    Content-Length: 452
-    Content-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8
-    Location: https://wamsbayclus001rest-hs.cloudapp.net/api/Assets('nb%3Acid%3AUUID%3A9bc8ff20-24fb-4fdb-9d7c-b04c7ee573a1')
-    Server: Microsoft-IIS/8.5
-    x-ms-client-request-id: c59de965-bc89-4295-9a57-75d897e5221e
-    request-id: e98be122-ae09-473a-8072-0ccd234a0657
-    x-ms-request-id: e98be122-ae09-473a-8072-0ccd234a0657
-    X-Content-Type-Options: nosniff
-    DataServiceVersion: 3.0;
-    Strict-Transport-Security: max-age=31536000; includeSubDomains
-    Date: Sun, 18 Jan 2015 22:06:40 GMT
-    {  
-       "odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#Assets/@Element",
-       "Id":"nb:cid:UUID:9bc8ff20-24fb-4fdb-9d7c-b04c7ee573a1",
-       "State":0,
-       "Created":"2015-01-18T22:06:40.6010903Z",
-       "LastModified":"2015-01-18T22:06:40.6010903Z",
-       "AlternateId":null,
-       "Name":"BigBuckBunny.mp4",
-       "Options":0,
-       "Uri":"https://storagetestaccount001.blob.core.windows.net/asset-9bc8ff20-24fb-4fdb-9d7c-b04c7ee573a1",
-       "StorageAccountName":"storagetestaccount001"
+    ```    
+    "listen": "test",
+    "script": {
+        "type": "text/javascript",
+        "exec": [
+            "var json = JSON.parse(responseBody);",
+            "postman.setEnvironmentVariable(\"AccessToken\", json.access_token);"
+        ]
     }
+    ```
+4. A bal oldalon a **Postman** ablakban kattintson a **1. Az AAD-hitelesítési token beszerzése** -> **első Azure AD jogkivonat szolgáltatás egyszerű**.
 
-### <a name="create-an-assetfile"></a>Hozzon létre egy AssetFile
-A [AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) entitás egy blob-tárolóban tárolt video- vagy fájlt jelöli. Egy eszköz fájl mindig társítva van egy eszköz, és egy eszköz egy vagy több eszköz fájlt tartalmaz. A Media Services kódoló feladat sikertelen lesz, ha egy eszköz fájl objektumhoz nincs társítva egy digitális fájlhoz egy blob-tárolóban.
+    Az URL-cím részét a rendszer beírja a **AzureADSTSEndpoint** környezeti változó (melynek értéke meg ez az oktatóanyag korábbi részében).
+    
+5. Kattintson a **Küldés** gombra.
 
-A **AssetFile** példány és a tényleges médiafájl két különböző objektum. A AssetFile példány media fájl metaadatainak tartalmaz, míg a médiafájl tartalmazza a tényleges médiatartalmakat.
+    ![Fájl feltöltése](./media/media-services-rest-upload-files/postment-get-token.png)
 
-A digitális adathordozójának fájl feltöltése a blob-tárolóba, után fogja használni a **EGYESÍTÉSE** HTTP-kérelem frissíti a AssetFile a médiafájl információit tartalmazó (a cikk későbbi részében látható). 
+    A válasz, amely tartalmazza a "access_token" tekintheti meg. A "test" parancsfájl fogadja el ezt az értéket, és beállítja a **AccessToken** környezeti változó (a fentiekben ismertetett). Ha a környezeti változók megvizsgálja, látni fogja, hogy ez a változó most már tartalmazza a hozzáférési jogkivonat (tulajdonosi jogkivonattal) érték, amelynek a többi művelet. 
 
-**HTTP-kérelem**
+    Ha a jogkivonat lejár halad át a "Get Azure AD jogkivonat a szolgáltatás egyszerű" lépéssel újra. 
 
-    POST https://media.windows.net/api/Files HTTP/1.1
-    Content-Type: application/json
-    DataServiceVersion: 1.0;NetFx
-    MaxDataServiceVersion: 3.0;NetFx
-    Accept: application/json
-    Accept-Charset: UTF-8
-    Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-6753-4ca2-2233-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421640053&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=vlG%2fPYdFDMS1zKc36qcFVWnaNh07UCkhYj3B71%2fk1YA%3d
-    x-ms-version: 2.17
-    Host: media.windows.net
-    Content-Length: 164
+## <a name="create-an-access-policy-with-write-permission"></a>Írási engedéllyel rendelkező hozzáférési házirend létrehozása
 
-    {  
-       "IsEncrypted":"false",
-       "IsPrimary":"false",
-       "MimeType":"video/mp4",
-       "Name":"BigBuckBunny.mp4",
-       "ParentAssetId":"nb:cid:UUID:9bc8ff20-24fb-4fdb-9d7c-b04c7ee573a1"
-    }
-
-**HTTP-válasz**
-
-    HTTP/1.1 201 Created
-    Cache-Control: no-cache
-    Content-Length: 535
-    Content-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8
-    Location: https://wamsbayclus001rest-hs.cloudapp.net/api/Files('nb%3Acid%3AUUID%3Af13a0137-0a62-9d4c-b3b9-ca944b5142c5')
-    Server: Microsoft-IIS/8.5
-    request-id: 98a30e2d-f379-4495-988e-0b79edc9b80e
-    x-ms-request-id: 98a30e2d-f379-4495-988e-0b79edc9b80e
-    X-Content-Type-Options: nosniff
-    DataServiceVersion: 3.0;
-    X-Powered-By: ASP.NET
-    Strict-Transport-Security: max-age=31536000; includeSubDomains
-    Date: Mon, 19 Jan 2015 00:34:07 GMT
-
-    {  
-       "odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#Files/@Element",
-       "Id":"nb:cid:UUID:f13a0137-0a62-9d4c-b3b9-ca944b5142c5",
-       "Name":"BigBuckBunny.mp4",
-       "ContentFileSize":"0",
-       "ParentAssetId":"nb:cid:UUID:9bc8ff20-24fb-4fdb-9d7c-b04c7ee573a1",
-       "EncryptionVersion":null,
-       "EncryptionScheme":null,
-       "IsEncrypted":false,
-       "EncryptionKeyId":null,
-       "InitializationVector":null,
-       "IsPrimary":false,
-       "LastModified":"2015-01-19T00:34:08.1934137Z",
-       "Created":"2015-01-19T00:34:08.1934137Z",
-       "MimeType":"video/mp4",
-       "ContentChecksum":null
-    }
-
-### <a name="creating-the-accesspolicy-with-write-permission"></a>A AccessPolicy létrehozása írási engedéllyel.
+### <a name="overview"></a>Áttekintés 
 
 >[!NOTE]
 >A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Ha mindig ugyanazokat a napokat/hozzáférési engedélyeket használja (például olyan keresők szabályzatait, amelyek hosszú ideig érvényben maradnak, vagyis nem feltöltött szabályzatokat), a szabályzatazonosítónak is ugyanannak kell lennie. További információkért tekintse meg [ezt](media-services-dotnet-manage-entities.md#limit-access-policies) a cikket.
 
 Fájlok feltöltése a blob-tárolóba, mielőtt írásra, hogy egy eszköz házirend jogosultságok a hozzáférés beállítása. Ehhez a AccessPolicies entitáskészlet HTTP-kérelmek POST. Adjon meg egy DurationInMinutes számot a létrehozása után, vagy egy belső kiszolgálót 500 hibaüzenetet kapja vissza válaszként. A AccessPolicies további információkért lásd: [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy).
 
-A következő példa bemutatja, hogyan hozzon létre egy AccessPolicy:
+### <a name="create-an-access-policy"></a>Hozzáférési házirend létrehozása
 
-**HTTP-kérelem**
+1. Válassza ki **AccessPolicy** -> **AccessPolicy létrehozása feltöltésének**.
+2. Kattintson a **Küldés** gombra.
 
-    POST https://media.windows.net/api/AccessPolicies HTTP/1.1
-    Content-Type: application/json
-    DataServiceVersion: 1.0;NetFx
-    MaxDataServiceVersion: 3.0;NetFx
-    Accept: application/json
-    Accept-Charset: UTF-8
-    Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-6753-2233-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421640053&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=vlG%2fPYdFDMS1zKc36qcFVWnaNh07UCkhYj3B71%2fk1YA%3d
-    x-ms-version: 2.17
-    Host: media.windows.net
+    ![Fájl feltöltése](./media/media-services-rest-upload-files/postman-access-policy.png)
 
-    {"Name":"NewUploadPolicy", "DurationInMinutes":"440", "Permissions":"2"} 
+    A "test" parancsfájl AccessPolicy azonosítóját és a megfelelő környezeti változó beállítása.
 
-**HTTP-kérelem**
+## <a name="create-an-asset"></a>Egy eszköz létrehozása
 
-    If successful, the following response is returned:
+### <a name="overview"></a>Áttekintés
 
-    HTTP/1.1 201 Created
-    Cache-Control: no-cache
-    Content-Length: 312
-    Content-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8
-    Location: https://wamsbayclus001rest-hs.cloudapp.net/api/AccessPolicies('nb%3Apid%3AUUID%3Abe0ac48d-af7d-4877-9d60-1805d68bffae')
-    Server: Microsoft-IIS/8.5
-    request-id: 74c74545-7e0a-4cd6-a440-c1c48074a970
-    x-ms-request-id: 74c74545-7e0a-4cd6-a440-c1c48074a970
-    X-Content-Type-Options: nosniff
-    DataServiceVersion: 3.0;
-    Strict-Transport-Security: max-age=31536000; includeSubDomains
-    Date: Sun, 18 Jan 2015 22:18:06 GMT
+Egy [eszköz](https://docs.microsoft.com/rest/api/media/operations/asset) több típusok vagy a Media Services, beleértve a videó, hang, képeket, miniatűröket, szöveges nyomon követi és feliratfájlokat fájlok objektumainak tárolója. A REST API-ban az eszköz létrehozásához POST kérést küld a Media Services és az eszköz minden tulajdonságadatokat helyezi el a kérés törzsében.
 
-    {  
-       "odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#AccessPolicies/@Element",
-       "Id":"nb:pid:UUID:be0ac48d-af7d-4877-9d60-1805d68bffae",
-       "Created":"2015-01-18T22:18:06.6370575Z",
-       "LastModified":"2015-01-18T22:18:06.6370575Z",
-       "Name":"NewUploadPolicy",
-       "DurationInMinutes":440.0,
-       "Permissions":2
-    }
+A tulajdonságokat, amelyeket hozzáadhat egy eszköz létrehozásakor egyik **beállítások**. A következő titkosítási beállítások közül az egyik adható meg: **nincs** (alapértelmezés szerint nincs titkosítás használata) esetén **StorageEncrypted** (használja a tartalomhoz, amelyet a storage ügyféloldali titkosítás előzetes titkosítással), **CommonEncryptionProtected**, vagy **EnvelopeEncryptionProtected**. Ha egy titkosított eszköz, kell konfigurálni a továbbítási szabályzatban. További információkért lásd: [konfigurálása az adategység továbbítási házirendjeit](media-services-rest-configure-asset-delivery-policy.md).
 
-### <a name="get-the-upload-url"></a>A feltöltés URL-cím beszerzése
-A tényleges feltöltés URL-címet kap, hozzon létre egy SAS-kereső. Keresők meghatározása a kezdési idő és a csatlakozási végpont típusú ügyfelek számára, szeretné, hogy egy eszköz lévő fájlok eléréséhez. Létrehozhat több lokátor entitás egy adott AccessPolicy és eszköz párhoz különböző ügyfélkérelmek és kell kezelni. A Lokátorokat mindegyikének használja a StartTime érték és a AccessPolicy DurationInMinutes értékének mennyi ideig egy URL-cím használható. További információkért lásd: [lokátor](https://docs.microsoft.com/rest/api/media/operations/locator).
+Ha az eszköz titkosítva van, létre kell hoznia egy **ContentKey** , és az eszköz a következő cikkben leírtak szerint: [létrehozása egy ContentKey](media-services-rest-create-contentkey.md). A fájlok feltöltése az objektumba, után frissítenie kell a titkosítási tulajdonságok a a **AssetFile** entitás során kapott értékekkel a **eszköz** titkosítás. Használatával teheti a **EGYESÍTÉSE** HTTP-kérelem. 
+
+Ebben a példában azt egy titkosítatlan eszköz létrehozásához. 
+
+### <a name="create-an-asset"></a>Egy eszköz létrehozása
+
+1. Válassza ki **eszközök** -> **eszköz létrehozása**.
+2. Kattintson a **Küldés** gombra.
+
+    ![Fájl feltöltése](./media/media-services-rest-upload-files/postman-create-asset.png)
+
+    A "test" parancsfájlt az eszköz azonosítója és a megfelelő környezeti változó beállítása.
+
+## <a name="create-a-sas-locator-and-create-the-upload-url"></a>Hozzon létre egy SAS-kereső és a feltöltése URL-cím létrehozása
+
+### <a name="overview"></a>Áttekintés
+
+Miután a AccessPolicy és lokátor beállítása, a rendszer a tényleges fájl feltöltése, egy Azure Blob Storage tárolóban, az Azure Storage REST API-k használatával. A fájlok blokkblobként kell feltöltenie. Lapblobokat nem Azure Media Services által támogatott.  
+
+Az Azure storage blobs munkavégzés további információkért lásd: [Blob szolgáltatás REST API](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
+
+A tényleges feltöltés URL-címet kap, hozzon létre egy SAS-kereső (lásd alább). Keresők meghatározása a kezdési idő és a csatlakozási végpont típusú ügyfelek számára, szeretné, hogy egy eszköz lévő fájlok eléréséhez. Létrehozhat több lokátor entitás egy adott AccessPolicy és eszköz párhoz különböző ügyfélkérelmek és kell kezelni. A Lokátorokat mindegyikének használja a StartTime érték és a AccessPolicy DurationInMinutes értékének mennyi ideig egy URL-cím használható. További információkért lásd: [lokátor](https://docs.microsoft.com/rest/api/media/operations/locator).
 
 A SAS URL-cím formátuma a következő:
 
     {https://myaccount.blob.core.windows.net}/{asset name}/{video file name}?{SAS signature}
 
+### <a name="considerations"></a>Megfontolandó szempontok
+
 Vegye figyelembe a következőket:
 
 * Egy adott eszközhöz társított egyszerre legfeljebb öt egyedi keresők tartalmazhat. További információkért tekintse meg a lokátor.
 * Ha szeretné azonnal töltse fel a fájlokat, akkor a StartTime érték az aktuális időpont előtt öt percet kell beállítania. Ennek az az oka lehet óra eltérésére az ügyfélszámítógép és a Media Services között. Ezenkívül a StartTime érték a következő dátum és idő formátumban kell lennie: éééé-hh-SSz (például "2014-05-23T17:53:50Z").    
-* Előfordulhat, hogy a 30-40 második késleltetése, ha használható a lokátor létrehozása után. A probléma a SAS URL-cím és a forrás keresők egyaránt vonatkoznak.
+* Előfordulhat, hogy a 30-40 második késleltetése, ha használható a lokátor létrehozása után.
 
-A következő példa bemutatja, hogyan egy SAS URL-cím lokátor létrehozása a kérés törzsében ("1" egy SAS-kereső) és egy az Igényalapú származási kereső "2" típusú tulajdonság által meghatározott módon. A **elérési** visszaadott tulajdonsága tartalmazza az URL-címet, fel kell töltenie a fájlt kell használnia.
+### <a name="create-a-sas-locator"></a>Hozzon létre egy SAS-lokátor
 
-**HTTP-kérelem**
+1. Válassza ki **lokátor** -> **SAS-kereső létrehozása**.
+2. Kattintson a **Küldés** gombra.
 
-    POST https://media.windows.net/api/Locators HTTP/1.1
-    Content-Type: application/json
-    DataServiceVersion: 1.0;NetFx
-    MaxDataServiceVersion: 3.0;NetFx
-    Accept: application/json
-    Accept-Charset: UTF-8
-    Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-6753-4ca2-2233-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421640053&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=vlG%2fPYdFDMS1zKc36qcFVWnaNh07UCkhYj3B71%2fk1YA%3d
-    x-ms-version: 2.17
-    Host: media.windows.net
-    {  
-       "AccessPolicyId":"nb:pid:UUID:be0ac48d-af7d-4877-9d60-1805d68bffae",
-       "AssetId":"nb:cid:UUID:9bc8ff20-24fb-4fdb-9d7c-b04c7ee573a1",
-       "StartTime":"2015-02-18T16:45:53",
-       "Type":1
-    }
+    A "test" parancsfájl létrehozza a "Feltöltés URL" a megadott adathordozó-fájl neve alapján, és a SAS-lokátor információkat, és beállítja a megfelelő környezeti változó.
 
-**HTTP-válasz**
+    ![Fájl feltöltése](./media/media-services-rest-upload-files/postman-create-sas-locator.png)
 
-Ha sikeres, a következő választ ad vissza:
+## <a name="upload-a-file-to-blob-storage-using-the-upload-url"></a>Fájl feltöltése a blob storage a feltöltési URL-cím használatával
 
-    HTTP/1.1 201 Created
-    Cache-Control: no-cache
-    Content-Length: 949
-    Content-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8
-    Location: https://wamsbayclus001rest-hs.cloudapp.net/api/Locators('nb%3Alid%3AUUID%3Aaf57bdd8-6751-4e84-b403-f3c140444b54')
-    Server: Microsoft-IIS/8.5
-    request-id: 2adeb1f8-89c5-4cc8-aa4f-08cdfef33ae0
-    x-ms-request-id: 2adeb1f8-89c5-4cc8-aa4f-08cdfef33ae0
-    X-Content-Type-Options: nosniff
-    DataServiceVersion: 3.0;
-    X-Powered-By: ASP.NET
-    Strict-Transport-Security: max-age=31536000; includeSubDomains
-    Date: Mon, 19 Jan 2015 03:01:29 GMT
+### <a name="overview"></a>Áttekintés
 
-    {  
-       "odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#Locators/@Element",
-       "Id":"nb:lid:UUID:af57bdd8-6751-4e84-b403-f3c140444b54",
-       "ExpirationDateTime":"2015-02-19T00:05:53",
-       "Type":1,
-       "Path":"https://storagetestaccount001.blob.core.windows.net/asset-f438649c-313c-46e2-8d68-7d2550288247?sv=2012-02-12&sr=c&si=af57bdd8-6751-4e84-b403-f3c140444b54&sig=fE4btwEfZtVQFeC0Wh3Kwks2OFPQfzl5qTMW5YytiuY%3D&st=2015-02-18T16%3A45%3A53Z&se=2015-02-19T00%3A05%3A53Z",
-       "BaseUri":"https://storagetestaccount001.blob.core.windows.net/asset-f438649c-313c-46e2-8d68-7d2550288247",
-       "ContentAccessComponent":"?sv=2012-02-12&sr=c&si=af57bdd8-6751-4e84-b403-f3c140444b54&sig=fE4btwEfZtVQFeC0Wh3Kwks2OFPQfzl5qTMW5YytiuY%3D&st=2015-02-18T16%3A45%3A53Z&se=2015-02-19T00%3A05%3A53Z",
-       "AccessPolicyId":"nb:pid:UUID:be0ac48d-af7d-4877-9d60-1805d68bffae",
-       "AssetId":"nb:cid:UUID:9bc8ff20-24fb-4fdb-9d7c-b04c7ee573a1",
-       "StartTime":"2015-02-18T16:45:53",
-       "Name":null
-    }
+Most, hogy a feltöltési URL-címet, meg kell írnia egy kódrészletet az Azure Blob API-kkal közvetlenül fel kell töltenie a fájlt a SAS-tárolóhoz. További információkért tekintse át a következő cikkeket:
 
-### <a name="upload-a-file-into-a-blob-storage-container"></a>Egy blob storage tárolóba-fájl feltöltése
-Miután a AccessPolicy és lokátor beállítása, a rendszer a tényleges fájl feltöltése, egy Azure Blob Storage tárolóban, az Azure Storage REST API-k használatával. A fájlok blokkblobként kell feltöltenie. Lapblobokat nem Azure Media Services által támogatott.  
+- https://docs.microsoft.com/REST/API/storageservices/PUT-BLOB 
+- https://docs.microsoft.com/Azure/Storage/Common/Storage-use-azcopy#Upload-blobs-to-BLOB-Storage
+- https://docs.microsoft.com/Azure/Storage/blobs/Storage-DotNet-How-to-use-blobs#Upload-a-BLOB-INTO-a-Container
 
-> [!NOTE]
-> Hozzá kell adni a fájlnevet a lokátor feltölteni kívánt fájl **elérési** érték érkezett az előző szakaszban. Például https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . . 
-> 
-> 
+### <a name="upload-a-file-with-postman"></a>Postman rendelkező fájlt tölthet fel
 
-Az Azure storage blobs munkavégzés további információkért lásd: [Blob szolgáltatás REST API](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
+Például a Postman a kis .mp4 fájl feltöltéséhez használjuk. Lehet egy fájl maximális mérete feltöltése bináris Postman keresztül.
 
-### <a name="update-the-assetfile"></a>Frissítés a AssetFile
-Most, hogy a fájl feltöltése a FileAsset méret (és más) adatainak frissítése. Példa:
+A feltöltés kérelme, mert az nem része a **AzureMedia** gyűjtemény. 
 
-    MERGE https://media.windows.net/api/Files('nb%3Acid%3AUUID%3Af13a0137-0a62-9d4c-b3b9-ca944b5142c5') HTTP/1.1
-    Content-Type: application/json
-    DataServiceVersion: 1.0;NetFx
-    MaxDataServiceVersion: 3.0;NetFx
-    Accept: application/json
-    Accept-Charset: UTF-8
-    Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-6753-4ca2-2233-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421662918&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=utmoXXbm9Q7j4tW1yJuMVA3egRiQy5FPygwadkmPeaY%3d
-    x-ms-version: 2.17
-    Host: media.windows.net
+Hozza létre, és állítson be egy új kérelmet:
+1. Nyomja le az  **+** , hogy hozzon létre egy új kérelmet a lapon.
+2. Válassza ki **PUT** művelet és a Beillesztés **{{UploadURL}}** az URL-címben.
+2. Hagyja **engedélyezési** lapon, mert a (számára ne adja meg azt a **tulajdonosi jogkivonat**).
+3. Az a **fejlécek** lapra, adja meg: **kulcs**: "x-ms-blob-type" és **érték**: "BlockBlob".
+2. Az a **törzs** lapra, majd **bináris**.
+4. Válassza ki a megadott nevű fájlt a **MediaFileName** környezeti változó.
+5. Kattintson a **Küldés** gombra.
 
-    {  
-       "ContentFileSize":"1186540",
-       "Id":"nb:cid:UUID:f13a0137-0a62-9d4c-b3b9-ca944b5142c5",
-       "MimeType":"video/mp4",
-       "Name":"BigBuckBunny.mp4",
-       "ParentAssetId":"nb:cid:UUID:9bc8ff20-24fb-4fdb-9d7c-b04c7ee573a1"
-    }
+    ![Fájl feltöltése](./media/media-services-rest-upload-files/postman-upload-file.png)
 
+##  <a name="create-a-metadata-in-the-asset"></a>Hozzon létre egy metaadat az eszköz
 
-**HTTP-válasz**
+A fájl feltöltése után az eszköz a médiafájl az eszközhöz társított blob tárolóba feltöltött metaadat létrehozásához szükséges.
 
-Ha sikeres, a következőket adja vissza: HTTP/1.1 204 nem tartalom
+1. Válassza ki **AssetFiles** -> **CreateFileInfos**.
+2. Kattintson a **Küldés** gombra.
 
-### <a name="delete-the-locator-and-accesspolicy"></a>A lokátor és AccessPolicy törlése
-**HTTP-kérelem**
+    ![Fájl feltöltése](./media/media-services-rest-upload-files/postman-create-file-info.png)
 
-    DELETE https://media.windows.net/api/Locators('nb%3Alid%3AUUID%3Aaf57bdd8-6751-4e84-b403-f3c140444b54') HTTP/1.1
-    DataServiceVersion: 1.0;NetFx
-    MaxDataServiceVersion: 3.0;NetFx
-    Accept: application/json
-    Accept-Charset: UTF-8
-    Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-6753-2233-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421662918&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=utmoXXbm9Q7j4tW1yJuMVA3egRiQy5FPygwadkmPeaY%3d
-    x-ms-version: 2.17
-    Host: media.windows.net
+Fel kell tölteni a fájlt, és állítsa a metaadatait.
 
-**HTTP-válasz**
+## <a name="validate"></a>Érvényesítés
 
-Ha sikeres, a következő adja vissza:
+Ellenőrzése, hogy a fájl sikeresen fel lett töltve, előfordulhat, hogy szeretné lekérdezni a [AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) és hasonlítsa össze a **ContentFileSize** (vagy egyéb részletek) szolgáltatásokat az új eszköz jeleníteni. 
 
-    HTTP/1.1 204 No Content 
-    ...
+Például a következő **beolvasása** művelet fájl adatokat gyűjtenek a eszköz-fájl (a és a nagybetűk, a BigBuckBunny.mp4 fájlt). A lekérdezés használ a [környezeti változók](postman-environment.md) korábban beállított.
 
-**HTTP-kérelem**
+    {{RESTAPIEndpoint}}/Assets('{{LastAssetId}}')/Files
 
-    DELETE https://media.windows.net/api/AccessPolicies('nb%3Apid%3AUUID%3Abe0ac48d-af7d-4877-9d60-1805d68bffae') HTTP/1.1
-    DataServiceVersion: 1.0;NetFx
-    MaxDataServiceVersion: 3.0;NetFx
-    Accept: application/json
-    Accept-Charset: UTF-8
-    Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-6753-2233-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421662918&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=utmoXXbm9Q7j4tW1yJuMVA3egRiQy5FPygwadkmPeaY%3d
-    x-ms-version: 2.17
-    Host: media.windows.net
+Válasz mérete, nevét és egyéb információkat fogja tartalmazni.
 
-**HTTP-válasz**
-
-Ha sikeres, a következő adja vissza:
-
-    HTTP/1.1 204 No Content 
-    ...
-
-## <a id="upload_in_bulk"></a>Eszközök tömeges feltöltése
-### <a name="create-the-ingestmanifest"></a>A IngestManifest létrehozása
-A IngestManifest egy olyan tároló, azon eszközök, eszköz fájlok és statisztikai adatainak tömeges választásával dolgozhat fel, a csoport állapotának meghatározására használható.
-
-**HTTP-kérelem**
-
-    POST https:// media.windows.net/API/IngestManifests HTTP/1.1
-    Content-Type: application/json;odata=verbose
-    Accept: application/json;odata=verbose
-    DataServiceVersion: 3.0
-    MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
-    Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=070500D0-F35C-4A5A-9249-485BBF4EC70B&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1334275521&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=GxdBb%2fmEyN7iHdNxbawawHRftLhPFFqxX1JZckuv3hY%3d
-    Host: media.windows.net
-    Content-Length: 36
-    Expect: 100-continue
-
-    { "Name" : "ExampleManifestREST" }
-
-### <a name="create-assets"></a>Eszközök létrehozása
-Mielőtt létrehozná a IngestManifestAsset, létrehozásához szükséges az eszköz, amely segítségével tömegesen választásával dolgozhat fel befejeződik. Az eszköz egy olyan tároló, típusok vagy a Media Services, beleértve a videó, hang, képeket, miniatűröket, szöveges nyomon követi és feliratfájlokat fájlok objektumokat. A REST API-ban az eszköz létrehozásához HTTP POST-kérelmet küld a Microsoft Azure Media Services és az eszköz minden tulajdonságadatokat helyezi el a kérés törzsében. Ebben a példában az eszköz jön létre, a kérelem törzsében található StorageEncrption(1) funkcióval.
-
-**HTTP-válasz**
-
-    POST https://media.windows.net/API/Assets HTTP/1.1
-    Content-Type: application/json;odata=verbose
-    Accept: application/json;odata=verbose
-    DataServiceVersion: 3.0
-    MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
-    Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=070500D0-F35C-4A5A-9249-485BBF4EC70B&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1334275521&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=GxdBb%2fmEyN7iHdNxbawawHRftLhPFFqxX1JZckuv3hY%3d
-    Host: media.windows.net
-    Content-Length: 55
-    Expect: 100-continue
-
-    { "Name" : "ExampleManifestREST_Asset", "Options" : 1 }
-
-### <a name="create-the-ingestmanifestassets"></a>A IngestManifestAssets létrehozása
-IngestManifestAssets belül egy IngestManifest eszközök tömeges választásával dolgozhat fel használt jelölik. A alapvetően az eszköz kapcsolódik a jegyzékfájlban. Az Azure Media Services belső a fájl feltöltése a IngestManifestAsset társított IngestManifestFiles gyűjtemény alapján figyeli. Ha ezek a fájlok feltöltése után az eszköz befejeződött. Létrehozhat egy új IngestManifestAsset HTTP POST-kérelmet. A kérelem törzsében szereplő közé tartozik a IngestManifest azonosítója és az eszköz azonosítója, amely a IngestManifestAsset kell összeköt tömeges választásával dolgozhat fel.
-
-**HTTP-válasz**
-
-    POST https://media.windows.net/API/IngestManifestAssets HTTP/1.1
-    Content-Type: application/json;odata=verbose
-    Accept: application/json;odata=verbose
-    DataServiceVersion: 3.0
-    MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
-    Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=070500D0-F35C-4A5A-9249-485BBF4EC70B&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1334275521&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=GxdBb%2fmEyN7iHdNxbawawHRftLhPFFqxX1JZckuv3hY%3d
-    Host: media.windows.net
-    Content-Length: 152
-    Expect: 100-continue
-    { "ParentIngestManifestId" : "nb:mid:UUID:5c77f186-414f-8b48-8231-17f9264e2048", "Asset" : { "Id" : "nb:cid:UUID:b757929a-5a57-430b-b33e-c05c6cbef02e"}}
-
-
-### <a name="create-the-ingestmanifestfiles-for-each-asset"></a>Az egyes eszközök a IngestManifestFiles létrehozása
-Egy IngestManifestFile tömeges választásával dolgozhat fel, az eszközhöz tartozó részeként feltöltött tényleges video- vagy blob objektumot jelöl. Titkosítással kapcsolatos tulajdonságok esetén nincs szükség, kivéve, ha az eszköz egy titkosítási beállítást használja. A jelen szakaszban használt példa bemutatja, a korábban létrehozott eszköz használó StorageEncryption egy IngestManifestFile létrehozása.
-
-**HTTP-válasz**
-
-    POST https://media.windows.net/API/IngestManifestFiles HTTP/1.1
-    Content-Type: application/json;odata=verbose
-    Accept: application/json;odata=verbose
-    DataServiceVersion: 3.0
-    MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
-    Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=070500D0-F35C-4A5A-9249-485BBF4EC70B&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1334275521&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=GxdBb%2fmEyN7iHdNxbawawHRftLhPFFqxX1JZckuv3hY%3d
-    Host: media.windows.net
-    Content-Length: 367
-    Expect: 100-continue
-
-    { "Name" : "REST_Example_File.wmv", "ParentIngestManifestId" : "nb:mid:UUID:5c77f186-414f-8b48-8231-17f9264e2048", "ParentIngestManifestAssetId" : "nb:maid:UUID:beed8531-9a03-9043-b1d8-6a6d1044cdda", "IsEncrypted" : "true", "EncryptionScheme" : "StorageEncryption", "EncryptionVersion" : "1.0", "EncryptionKeyId" : "nb:kid:UUID:32e6efaf-5fba-4538-b115-9d1cefe43510" }
-
-### <a name="upload-the-files-to-blob-storage"></a>A fájlok feltöltése a Blob Storage
-A nagy sebességű ügyfélalkalmazás képes az eszköz fájlok feltöltése a blob storage tárolót a IngestManifest BlobStorageUriForUpload tulajdonsága által biztosított Uri használható. Egy fontos a nagy sebességű feltöltési szolgáltatás [Aspera igény szerinti Azure alkalmazáshoz](http://go.microsoft.com/fwlink/?LinkId=272001).
-
-### <a name="monitor-bulk-ingest-progress"></a>A figyelő tömeges betöltési folyamatban
-Az előrehaladást tömeges választásával dolgozhat fel egy IngestManifest műveletek a IngestManifest statisztika tulajdonságának lekérdezésével. Hogy a tulajdonság egy összetett típus [IngestManifestStatistics](https://docs.microsoft.com/rest/api/media/operations/ingestmanifeststatistics). A statisztika tulajdonság lekérdezésére, küldje el a HTTP GET kérelemre átadja a IngestManifest azonosítóját.
-
-## <a name="create-contentkeys-used-for-encryption"></a>A titkosításhoz használt ContentKeys létrehozása
-Ha az eszköz-titkosítást használ, létre kell hoznia az adategység-fájloknak létrehozása előtt titkosításhoz használandó ContentKey. A tárolás titkosítását a következő tulajdonságok tartozhatnak a kérés törzsében.
-
-| Kérelem törzse tulajdonság | Leírás |
-| --- | --- |
-| Azonosító |A ragozott formáival a következő formátumban, azt készítése ContentKey azonosítója "nb:kid:UUID:<NEW GUID>". |
-| ContentKeyType |Ez az a tartalom írja be a tartalom kulcs egész szám lehet. Az érték 1 storage-titkosítás továbbítja azt. |
-| EncryptedContentKey |A Microsoft hozzon létre egy új tartalom kulcs értéket, amely a 256 bites (32 bájt) értéket. A kulcs titkosított tárolási titkosítási X.509-tanúsítvány a következő HTTP GET kérelemre futtatásával GetProtectionKeyId és GetProtectionKey módszerek nem beolvasni a Microsoft Azure Media Services használatával. |
-| ProtectionKeyId |Ez az a védelmi tároló titkosítási X.509-tanúsítvány, amely a tartalom kulcs titkosításához használt kulcs azonosítója. |
-| ProtectionKeyType |Ez egy, a védelem a tartalom kulcs titkosításához használt kulcs a titkosítási típus. Ez az érték a fenti példában StorageEncryption(1). |
-| Ellenőrzőösszeg |Az MD5 számított ellenőrzőösszeg a tartalomkulcsot. A tartalom azonosítója a tartalom kulccsal titkosítja számítja ki. A mintakód bemutatja, hogyan ellenőrzőösszeg számítása. |
-
-**HTTP-válasz**
-
-    POST https://media.windows.net/api/ContentKeys HTTP/1.1
-    Content-Type: application/json;odata=verbose
-    Accept: application/json;odata=verbose
-    DataServiceVersion: 3.0
-    MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
-    Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=070500D0-F35C-4A5A-9249-485BBF4EC70B&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1334275521&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=GxdBb%2fmEyN7iHdNxbawawHRftLhPFFqxX1JZckuv3hY%3d
-    Host: media.windows.net
-    Content-Length: 572
-    Expect: 100-continue
-
-    {"Id" : "nb:kid:UUID:316d14d4-b603-4d90-b8db-0fede8aa48f8", "ContentKeyType" : 1, "EncryptedContentKey" : "Y4NPej7heOFa2vsd8ZEOcjjpu/qOq3RJ6GRfxa8CCwtAM83d6J2mKOeQFUmMyVXUSsBCCOdufmieTKi+hOUtNAbyNM4lY4AXI537b9GaY8oSeje0NGU8+QCOuf7jGdRac5B9uIk7WwD76RAJnqyep6U/OdvQV4RLvvZ9w7nO4bY8RHaUaLxC2u4aIRRaZtLu5rm8GKBPy87OzQVXNgnLM01I8s3Z4wJ3i7jXqkknDy4VkIyLBSQvIvUzxYHeNdMVWDmS+jPN9ScVmolUwGzH1A23td8UWFHOjTjXHLjNm5Yq+7MIOoaxeMlKPYXRFKofRY8Qh5o5tqvycSAJ9KUqfg==", "ProtectionKeyId" : "7D9BB04D9D0A4A24800CADBFEF232689E048F69C", "ProtectionKeyType" : 1, "Checksum" : "TfXtjCIlq1Y=" }
-
-### <a name="link-the-contentkey-to-the-asset"></a>Az eszköz a ContentKey csatolása
-A ContentKey úgy, hogy a HTTP POST-kérelmet küld egy vagy több eszköz társítva. A következő kérelme, mert az azonosítója. példa az eszköznek a példa ContentKey csatolása példa
-
-**HTTP-válasz**
-
-    POST https://media.windows.net/API/Assets('nb:cid:UUID:b3023475-09b4-4647-9d6d-6fc242822e68')/$links/ContentKeys HTTP/1.1
-    Content-Type: application/json;odata=verbose
-    Accept: application/json;odata=verbose
-    DataServiceVersion: 3.0
-    MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
-    Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=070500D0-F35C-4A5A-9249-485BBF4EC70B&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1334275521&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=GxdBb%2fmEyN7iHdNxbawawHRftLhPFFqxX1JZckuv3hY%3d
-    Host: media.windows.net
-    Content-Length: 113
-    Expect: 100-continue
-
-    { "uri": "https://media.windows.net/api/ContentKeys('nb%3Akid%3AUUID%3A32e6efaf-5fba-4538-b115-9d1cefe43510')"}
-
-**HTTP-válasz**
-
-    GET https://media.windows.net/API/IngestManifests('nb:mid:UUID:5c77f186-414f-8b48-8231-17f9264e2048') HTTP/1.1
-    Content-Type: application/json;odata=verbose
-    Accept: application/json;odata=verbose
-    DataServiceVersion: 3.0
-    MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
-    Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=070500D0-F35C-4A5A-9249-485BBF4EC70B&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1334275521&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=GxdBb%2fmEyN7iHdNxbawawHRftLhPFFqxX1JZckuv3hY%3d
-    Host: media.windows.net
-
-## <a name="next-steps"></a>Következő lépések
+    "Id": "nb:cid:UUID:69e72ede-2886-4f2a-8d36-80a59da09913",
+    "Name": "BigBuckBunny.mp4",
+    "ContentFileSize": "3186542",
+    "ParentAssetId": "nb:cid:UUID:0b8f3b04-72fb-4f38-8e7b-d7dd78888938",
+            
+## <a name="next-steps"></a>További lépések
 
 Most már kódolhatja a feltöltött adategységeket. További információ: [Encode Assets](media-services-portal-encode.md) (Adategységek kódolása).
 
 Emellett az Azure Functions használatával is elindíthatja a kódolási feladatokat a konfigurált tárolóba érkező fájlok alapján. További információkért tekintse meg [ezt a mintát](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ ).
-
-## <a name="media-services-learning-paths"></a>Media Services képzési tervek
-[!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
-
-## <a name="provide-feedback"></a>Visszajelzés küldése
-[!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-[How to Get a Media Processor]: media-services-get-media-processor.md
 

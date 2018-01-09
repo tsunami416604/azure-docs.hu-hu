@@ -101,6 +101,10 @@ Azure-lemezeket felügyelt jelenleg csak a helyileg redundáns tárolás felügy
 
 Nem. Ez a funkció jelenleg nem támogatott. 
 
+**Is a címbérlet is megszakíthatja a lemezen?**
+
+Nem. Ez nem támogatott jelenleg, a címbérlet jelen, hogy véletlen törlésének megakadályozása, amikor a lemezt használja.
+
 **Módosítható a számítógép neve tulajdonság amikor egy speciális (nem hozta létre a rendszer-előkészítő eszközzel vagy általánosított) operációsrendszer-lemez a virtuális gép létrehozásához használt?**
 
 Nem. A számítógép name tulajdonság nem frissíthető. Az új virtuális gép örökli a szülő virtuális gép, amelyen az operációsrendszer-lemez létrehozásához használt. 

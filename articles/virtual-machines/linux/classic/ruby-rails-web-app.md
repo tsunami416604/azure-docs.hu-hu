@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: robmcm
 ms.openlocfilehash: fb6ded1dcba2ac0f78fc6f1f4f7de9238cd752bd
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="ruby-on-rails-web-application-on-an-azure-vm"></a>A Ruby on Rails webalkalmazás használata Azure-beli virtuális gépen
 Ez az oktatóanyag bemutatja, hogyan sínek webhelyen Azure fonetikus üzemeltetésére Linux virtuális gépek használata.  
@@ -127,7 +127,7 @@ Az alábbihoz hasonló kimenetnek kell megjelennie.
 
     ![alapértelmezett sínek lap][default-rails-cloud]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban hasonló lépéseket a legtöbb manuálisan. Éles környezetben kívánja írni az alkalmazást a fejlesztési számítógépen, majd központilag telepítenie kell az Azure virtuális Géphez. Is a legtöbb éles környezetben a sínek alkalmazás, például az Apache vagy NginX, mely kezeli a kérelem a sínek alkalmazás több példánya történő továbbítást, és statikus erőforrások kiszolgáló egy másik kiszolgáló folyamat együtt üzemeltetéséhez. További információkért lásd: http://rubyonrails.org/deploy/.
 
 Ruby sínen kapcsolatos további információkért látogasson el a [sínek útmutatók a Ruby][rails-guides].

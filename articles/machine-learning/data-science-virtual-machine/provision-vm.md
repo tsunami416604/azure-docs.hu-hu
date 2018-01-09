@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: bradsev
-ms.openlocfilehash: d0a9926f49e2be66a9d51a1bb0e4e19342205880
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: d71d8e44d0327515ed302c5c902ce87587e36c7d
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>A Windows Data tudományos virtuális gépet az Azure telepítéséhez
 A Microsoft adatokat tudományos virtuális gép, a Windows Azure virtuális gép (VM) előtelepített és konfigurált számos népszerű eszköz adatelemzés és a gépi tanulás általánosan használt lemezkép. A rendszer részét képező eszközök:
@@ -192,7 +192,7 @@ A [ **Microsoft Webplatform-telepítő** ](https://www.microsoft.com/web/downloa
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az alábbiakban a lépéseket, ahol folytathatja a tanulási és kutatási funkciójával. 
 
 * Megismerkedhet a különböző adatok tudományos eszközök az adatok tudományos virtuális gép által a start menü és az a menü felsorolt eszközök.
@@ -200,5 +200,5 @@ Az alábbiakban a lépéseket, ahol folytathatja a tanulási és kutatási funkc
 * Navigáljon a **C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts** mintákat az R, amely támogatja a vállalati léptékű adatelemzés RevoScaleR szalagtár használatával.  
 * A következő cikkben: [10 lehetősége van az adatok tudományos virtuális gép](http://aka.ms/dsvmtenthings)
 * Ismerje meg, hogyan hozhat létre a teljes körű elemzési megoldásokat rendszeresen használatával a [Team adatok tudományos folyamat](https://azure.microsoft.com/documentation/learning-paths/data-science-process/).
-* Látogasson el a [Azure Machine Learning-katalógus](http://gallery.cortanaintelligence.com) Azure machine learning és adatok analytics minták Azure Machine learning és a kapcsolódó adatokat használó szolgáltatási. Egy ikont is adtunk meg a **Start** menü és a virtuális gépet a tár az asztalon.
+* Látogasson el a [Azure Eszközintelligencia-katalógus](http://gallery.cortanaintelligence.com) Azure machine learning és adatok analytics minták Azure Machine learning és a kapcsolódó adatokat használó szolgáltatási. Egy ikont is adtunk meg a **Start** menü és a virtuális gépet a tár az asztalon.
 

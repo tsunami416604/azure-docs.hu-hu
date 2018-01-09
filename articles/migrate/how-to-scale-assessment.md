@@ -4,13 +4,13 @@ description: "Ismerteti, hogyan lehet az Azure áttelepítése szolgáltatás ha
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 12/19/2017
+ms.date: 01/08/2018
 ms.author: raynew
-ms.openlocfilehash: 9b457252fdb7a1ad62b7e6038b341451df2e1590
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 67661e03e65cde3ec2f1aafd5ef755899cf0c77b
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Fedezze fel és nagy VMware-környezet felmérése
 
@@ -84,21 +84,21 @@ Ellenőrizze, hogy a petesejtek fájlt biztonságos telepítése előtt:
    Példa használati:```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
 3. Győződjön meg arról, hogy a létrehozott kivonatoló megegyezik-e a következő beállításokat.
  
-    A petesejtek verziója 1.0.8.38:
+    1.0.8.49 petesejtek verziójához
+
     **Algoritmus** | **Kivonat értéke**
     --- | ---
-    MD5 | dd27dd6ace28f9195a2b5d52a4003067 
-    SHA1 | d2349e06a5d4693fc2a1c0619591b9e45c36d695
-    SHA256 | 1492a0c6d6ef76e79269d5cd6f6a22f336341e1accbc9e3dfa5dad3049be6798
+    MD5 | 8779eea842a1ac465942295c988ac0c7
+    SHA1 | c136c52a0f785e1fd98865e16479dd103704887d
+    SHA256 | 5143b1144836f01dd4eaf84ff94bc1d2c53f51ad04b1ca43ade0d14a527ac3f9
 
     A petesejtek verziója 1.0.8.40:
+
     **Algoritmus** | **Kivonat értéke**
     --- | ---
-    MD5 | afbae5a2e7142829659c21fd8a9def3f
+    MD5 |afbae5a2e7142829659c21fd8a9def3f
     SHA1 | 1751849c1d709cdaef0b02a7350834a754b0e71d
     SHA256 | d093a940aebf6afdc6f616626049e97b1f9f70742a094511277c5f59eacc41ad
-
-
 
 ## <a name="create-the-collector-vm"></a>A gyűjtő virtuális gép létrehozása
 
@@ -168,9 +168,6 @@ Minden felderítés, végre kell hajtania a gyűjtő felderítéséhez szükség
     - Adja meg a név (FQDN) vagy a vCenter-kiszolgáló IP-címét.
     - A **felhasználónév** és **jelszó**, adja meg a csak olvasható fiók hitelesítő adatait, amelyet a gyűjtő virtuális gépek felderítése a vCenter Server fog használni.
     - A **hatókörét**, válassza ki a virtuális gép felderítési hatókörét. A gyűjtő képes felderíteni csak az adott hatókörben lévő virtuális gépek. Egy adott mappában, a datacenter vagy a fürt állítható be hatókör. Hogy 1000-nél több virtuális gép nem tartalmaz. 
-    - A **vCenter címke kategória csoportosításhoz**, jelölje be **nincs**.
-
-    ![Hatókör kijelölése](./media/how-to-scale-assessment/select-scope.png)
 
 6. A **megadása áttelepítési projekt**, adja meg az Azonosítót, és a projekt kulcsát. Nem másolja őket, ha a gyűjtő VM nyissa meg az Azure-portálon. A projekt **áttekintése** lapon jelölje be **gépek felderítése** , és másolja az értékeket.  
 7. A **gyűjtemény folyamatjelző**, a felderítési folyamat figyelésére, és győződjön meg arról, hogy a virtuális gépek gyűjtött metaadatai a hatókörben. A gyűjtő megadja egy hozzávetőleges felderítés időtartamát.

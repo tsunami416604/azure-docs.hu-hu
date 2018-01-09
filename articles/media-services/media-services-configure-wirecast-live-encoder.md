@@ -14,11 +14,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: c4df14f24650ce431dfb31cc774cab6d3cf3aef0
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 0e4fb0b7c915969da1760eaccc77aa399030752e
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Használja a Wirecast kódoló egyféle sávszélességű élő adatfolyamot küldeni
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.lasthandoff: 12/21/2017
 >
 >
 
-Ez a témakör ismerteti, hogyan konfigurálható a [Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm) élő kódoló egy egyfajta sávszélességű adatfolyamot AMS-csatorna is küldhet a valós idejű kódolásra engedélyezve vannak.  További információk: [Az Azure Media Services segítségével élő kódolásra képes csatornák használata](media-services-manage-live-encoder-enabled-channels.md)
+Ez a cikk ismerteti, hogyan konfigurálható a [Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm) élő kódoló egy egyfajta sávszélességű adatfolyamot AMS-csatorna is küldhet a valós idejű kódolásra engedélyezve vannak.  További információk: [Az Azure Media Services segítségével élő kódolásra képes csatornák használata](media-services-manage-live-encoder-enabled-channels.md)
 
 Ez az oktatóanyag bemutatja, hogyan kezelheti az Azure Media Services (AMS) Azure Media Services Explorer (AMSE) eszközzel. Ez az eszköz csak a Windows rendszerű Számítógépeken fut. Ha Mac vagy Linux, létrehozásához használja az Azure-portálon [csatornák](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) és [programok](media-services-portal-creating-live-encoder-enabled-channel.md).
 
@@ -41,11 +41,11 @@ Ez az oktatóanyag bemutatja, hogyan kezelheti az Azure Media Services (AMS) Azu
 
 ## <a name="tips"></a>Tippek
 * Amikor csak lehetséges, hardveresen rögzített beállítású internetkapcsolat használatának.
-* Jó tapasztalatok sávszélesség-követelményekkel meghatározásakor, hogy az adatfolyam-továbbítási bitrates duplán. Ez nem kötelezők, ez segít csökkenteni a hálózati torlódás hatását.
-* Ha szoftverrel kódolók, zárja be az el a felesleges programokat.
+* Jó tapasztalatok sávszélesség-követelményekkel meghatározásakor, hogy az adatfolyam-továbbítási bitrates duplán. Ez nem kötelezők, segít csökkenteni a hálózati torlódás hatását.
+* Szoftveres kódolók használatakor lezárható a felesleges programokat.
 
 ## <a name="create-a-channel"></a>Csatorna létrehozása
-1. Az AMSE eszköz navigáljon a **Live** lapot, és a csatorna területen kattintson a jobb gombbal. Válassza ki **csatorna létrehozása...** a menüből.
+1. Az AMSE eszköz navigáljon a **Live** lapot, és kattintson a jobb gombbal a csatorna területen belül. Válassza ki **csatorna létrehozása...** a menüből.
 
     ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast1.png)
 
@@ -62,10 +62,10 @@ Ez az oktatóanyag bemutatja, hogyan kezelheti az Azure Media Services (AMS) Azu
 >
 >
 
-A csatorna indítása közben is [a kódoló](media-services-configure-wirecast-live-encoder.md#configure_wirecast_rtmp).
+A csatorna indul, míg is [a kódoló](media-services-configure-wirecast-live-encoder.md#configure_wirecast_rtmp).
 
 > [!IMPORTANT]
-> Vegye figyelembe, hogy a számlázás indul, amint csatorna kész állapotba kerül. További információkért lásd: [csatorna állapotok](media-services-manage-live-encoder-enabled-channels.md#states).
+> A számlázás indul, amint csatorna kész állapotba kerül. További információkért lásd: [csatorna állapotok](media-services-manage-live-encoder-enabled-channels.md#states).
 >
 >
 
@@ -94,7 +94,7 @@ Ebben az oktatóanyagban a következő kimeneti beállításokat használják. E
 3. Kattintson az **OK** gombra.
 4. A beállítások lapon állítsa be a **cél** mezőre, amely **Azure Media Services**.
 
-    A kódolás profil csak az előre kiválasztott **Azure H.264 720 p 16:9 (1280 x 720)**. Ezek a beállítások testreszabásához jelölje ki a fogaskerék ikonra az vetett jobb le, és válassza **új készletet**.
+    A kódolás profil csak az előre kiválasztott **Azure H.264 720 p 16:9 (1280 x 720)**. Ezek a beállítások testreszabásához fogaskerék ikonra kattintva jobb oldalán a legördülő listán válassza ki, és válassza **új készletet**.
 
     ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast3.png)
 5. Kódoló készletek beállítása.
@@ -132,7 +132,7 @@ Ebben az oktatóanyagban a következő kimeneti beállításokat használják. E
     ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast5.png)
 
 1. Kattintson az **OK** gombra.
-2. A fő **Wirecast** képernyőjén ellenőrizze a bemeneti forrás a videó és hang készen áll, majd nyomja le **adatfolyam** felső bal oldali sarokban.
+2. A fő **Wirecast** képernyőjén ellenőrizze a bemeneti forrás a videó és hang készen áll, majd nyomja le **adatfolyam** bal felső sarokban.
 
    ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast7.png)
 
@@ -150,10 +150,10 @@ Keresse meg az AMSE eszköz, és kattintson a jobb gombbal a csatornát kell tes
 
 Ha az adatfolyam a Windows Media player jelenik meg, majd a kódoló megfelelően van konfigurálva AMS való kapcsolódáshoz.
 
-Ha hibaüzenetet kap, a csatorna le kell állítani, és kódoló beállításai módosul. Tekintse meg a [hibaelhárítási](media-services-troubleshooting-live-streaming.md) témakör útmutatást.  
+Ha hibaüzenetet kap, a csatorna kell állítani, és kódoló beállításai módosul. Tekintse meg a [hibaelhárítási](media-services-troubleshooting-live-streaming.md) a cikk útmutatást.  
 
 ## <a name="create-a-program"></a>Hozzon létre egy programot
-1. Miután csatorna lejátszás megerősítjük, hozzon létre egy programot. Az a **Live** az AMSE eszköz lapján, a program területen kattintson a jobb gombbal, és válassza ki **hozzon létre új Program**.  
+1. Miután csatorna lejátszás megerősítjük, hozzon létre egy programot. Az a **Live** az AMSE eszköz a lapot, kattintson a jobb gombbal a program területen belül, és válasszon **hozzon létre új Program**.  
 
     ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast9.png)
 2. A program neve, és szükség esetén módosítsa a **az archiválási időtartam** (amely alapértelmezés szerint 4 óra). Adja meg a tárolási helyet is, vagy hagyja meg az alapértelmezett.  
@@ -163,13 +163,13 @@ Ha hibaüzenetet kap, a csatorna le kell állítani, és kódoló beállításai
    >[!NOTE]
    >Program létrehozása gyorsabb a csatorna létrehozása.
        
-5. Ha a program fut, erősítse meg a lejátszás jobb gombbal kattint rá a program, és lépjen az **lejátszás a programokról** és jelölje be **Azure Media Player**.  
-6. Ha megerősítette, kattintson a jobb gombbal a program újra, és válassza ki **a kimeneti URL-Címének másolása a vágólapra** (vagy az adatok lekérésére a **Program információk és beállítások** lehetőséget a menüből).
+5. Ha a program fut, erősítse meg a lejátszás kattintson a jobb gombbal a program, és lépjen az **lejátszás a programokról** és jelölje be **Azure Media Player**.  
+6. Ha megerősítette, kattintson ismét a jobb gombbal a program, és válassza ki **a kimeneti URL-Címének másolása a vágólapra** (vagy az adatok lekérésére a **Program információk és beállítások** lehetőséget a menüből).
 
 Az adatfolyam egy Player beágyazott, vagy olyan célközönségnek juttathatja el élő megtekintésre elosztott készen áll.  
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
-Tekintse meg a [hibaelhárítási](media-services-troubleshooting-live-streaming.md) témakör útmutatást.
+Tekintse meg a [hibaelhárítási](media-services-troubleshooting-live-streaming.md) a cikk útmutatást.
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

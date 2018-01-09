@@ -61,7 +61,7 @@ ACU: 160–180
 
 <sup>1</sup> M-sorozat VM szolgáltatás Intel® Hyper-Threading technológia
 
-<sup>2</sup> 64-nél több vCPU szükséges a támogatott vendég operációs rendszer: Windows Server 2016, az Ubuntu 16.04 LTS, a SLES 12 SP2, és a Red Hat Enterprise Linux vagy a CentOS 7.3 a LIS 4.2.1. 
+<sup>2</sup> 64-nél több vCPU szükséges a támogatott vendég operációs rendszer: Windows Server 2016-os, Ubuntu 16.04 LTS, SLES 12 SP2, és Red Hat Enterprise Linux, CentOS 7.3 vagy Oracle Linux 7.3 a LIS 4.2.1. 
 
 <sup>3</sup> használható core méret korlátozott.
 

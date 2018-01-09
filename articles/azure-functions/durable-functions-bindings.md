@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 02c3e0e919b556bc6d4bb41d9c66b4a6d29bdd68
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 3be59e32de22e0939ee887fba1d20829f1ef22eb
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Kötések tartós függvények (az Azure Functions)
 
@@ -66,7 +66,7 @@ Belső eseményindító kötés kérdezze le az alapértelmezett tárfiókot, a 
 
 A bemeneti és kimeneti az orchestration eseményindító kötése támogatja. A következőkben bemeneti és kimeneti kezelése:
 
-* **bemenetek** -támogatás csak Vezénylési működik [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) paramétertípusaként. Közvetlenül a függvényaláíráshoz a deszerializálás bemenetek nem támogatottak. Kódot kell használnia a [GetInput\<T >](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetInput__1) metódus lehívása orchestrator függvény bemenet. A bemeneti JSON-szerializálható típusnak kell lennie.
+* **bemenetek** -támogatás csak Vezénylési működik [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) paramétertípusaként. Közvetlenül a függvényaláíráshoz a bemeneti adatok deszerializálása nem támogatott. Kódot kell használnia a [GetInput\<T >](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetInput__1) metódus lehívása orchestrator függvény bemenet. A bemeneti JSON-szerializálható típusnak kell lennie.
 * **kimeneti** -Vezénylési eseményindítók támogatja a kimeneti értékeit, valamint a bemeneti adatok. A függvény visszatérési értéke a kimeneti értéket hozzárendelni szolgál, és JSON-szerializálhatónak kell lennie. Ha egy olyan függvényt ad vissza `Task` vagy `void`, egy `null` értéket a rendszer menti a kimenetként.
 
 > [!NOTE]
@@ -85,7 +85,7 @@ public static string Run([OrchestrationTrigger] DurableOrchestrationContext cont
 }
 ```
 
-A legtöbb orchestrator függvény egyéb funkciók hívható meg, a "Hello, World" példa azt mutatja be, hogyan hívhatja meg egy olyan függvényt:
+A legtöbb orchestrator függvény tevékenység funkciók, hívható meg, a "Hello, World" példa azt mutatja be, hogyan hívhatja meg egy tevékenység függvényben:
 
 ```csharp
 [FunctionName("HelloWorld")]
@@ -141,7 +141,7 @@ Az alábbiakban néhány tevékenység eseményindító megjegyzéseket:
 A bemeneti és kimeneti, csakúgy, mint a vezénylési eseményindító a tevékenység indítási kötése támogatja. A következőkben bemeneti és kimeneti kezelése:
 
 * **bemenetek** -tevékenység funkciók natív módon használja [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) paramétertípusaként. Alternatív megoldásként egy tevékenység függvény deklarálható szerializálhatók a JSON paraméter típussal. Amikor `DurableActivityContext`, hívása [GetInput\<T >](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html#Microsoft_Azure_WebJobs_DurableActivityContext_GetInput__1) beolvasásához és a tevékenység függvény deszerializálni adjon meg.
-* **kimeneti** -tevékenység eseményindítók támogatja a kimeneti értékeit, valamint a bemeneti adatok. A függvény visszatérési értéke a kimeneti értéket hozzárendelni szolgál, és JSON-szerializálhatónak kell lennie. Ha egy olyan függvényt ad vissza `Task` vagy `void`, egy `null` értéket a rendszer menti a kimenetként.
+* **kimeneti** -tevékenység funkciókat támogatja a kimeneti értékeit, valamint a bemeneti adatok. A függvény visszatérési értéke a kimeneti értéket hozzárendelni szolgál, és JSON-szerializálhatónak kell lennie. Ha egy olyan függvényt ad vissza `Task` vagy `void`, egy `null` értéket a rendszer menti a kimenetként.
 * **metaadatok** -tevékenység funkciók köthető egy `string instanceId` paraméter használatával beolvassa az a szülő vezénylési Példányazonosítója.
 
 > [!NOTE]
@@ -180,7 +180,7 @@ Az orchestration ügyfél kötés lehetővé teszi az orchestrator functions int
 
 Ha a Visual Studio használata esetén köthető az orchestration ügyfél használatával a [OrchestrationClientAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationClientAttribute.html) .NET attribútum.
 
-Parancsprogramnyelv használata (pl. *.csx* fájlok) fejlesztési, a vezénylési eseményindító határozzák meg a következő JSON-objektum a `bindings` function.json tömbje:
+Parancsprogramnyelv használata (pl. *.csx* fájlok) fejlesztési, a vezénylési eseményindító határozzák meg a következő JSON-objektum a `bindings` tömbje *function.json*:
 
 ```json
 {
@@ -193,7 +193,7 @@ Parancsprogramnyelv használata (pl. *.csx* fájlok) fejlesztési, a vezénylés
 ```
 
 * `taskHub`-Forgatókönyvekben, ahol több függvény alkalmazás megosztása ugyanazt a tárfiókot, de el legyen különítve egymástól kell használni. Ha nincs megadva, az alapértelmezett érték a `host.json` szolgál. Ezt az értéket meg kell egyeznie a cél az orchestrator függvény által használt érték.
-* `connectionName`-A, amely tartalmazza a tárolási kapcsolati karakterlánc alkalmazásbeállítás neve. Ez a kapcsolati karakterlánc által képviselt tárfiók azonosnak kell lennie a cél az orchestrator-funkciók által alkalmazott. Ha nincs megadva, a függvény alkalmazás alapértelmezett kapcsolati karakterlánca szolgál.
+* `connectionName`-A tárolási fiók kapcsolati karakterláncot tartalmazó alkalmazásbeállítás neve. Ez a kapcsolati karakterlánc által képviselt tárfiók azonosnak kell lennie a cél az orchestrator-funkciók által alkalmazott. Ha nincs megadva, a függvény alkalmazás alapértelmezett tárolási fiók kapcsolati karakterlánca szolgál.
 
 > [!NOTE]
 > A legtöbb esetben azt javasoljuk, hogy hagyja ki ezeket a tulajdonságokat, és az alapértelmezett viselkedés támaszkodnak.
@@ -228,7 +228,7 @@ public static Task Run(
 
 ### <a name="client-sample-not-visual-studio"></a>Ügyfél-mintát (nem a Visual Studio)
 
-Ha nem használja a Visual Studio fejlesztési, a következő function.json fájlt létrehozhatja. A példa bemutatja, hogyan konfigurálhatja a várólista-eseményindítóval aktivált függvény, amely a kötés tartós vezénylési ügyfélprogramot használ:
+Ha nem használja a Visual Studio fejlesztési, hozhat létre a következő *function.json* fájlt. A példa bemutatja, hogyan konfigurálhatja a várólista-eseményindítóval aktivált függvény, amely a kötés tartós vezénylési ügyfélprogramot használ:
 
 ```json
 {
@@ -283,7 +283,7 @@ module.exports = function (context, input) {
 
 További részleteket a példányok indítása található [példány felügyeleti](durable-functions-instance-management.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [További tudnivalók az ellenőrzőpontok létrehozása és a visszajátszás viselkedések](durable-functions-checkpointing-and-replay.md)

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/29/2017
 ms.author: bradsev;ankarlof;garye
-ms.openlocfilehash: 1cd2bbb6adecaba908252bd42fce292654a5cf5a
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 16442a30f130e7cc9b60d2d9ae9c86d7282471ff
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="author-custom-r-modules-in-azure-machine-learning"></a>Egyéni R-modul létrehozása az Azure Machine Learningben
 Ez a témakör ismerteti a létrehozásáról és központi telepítése az Azure Machine Learning egy egyéni R modult. Egyéni R modul és a megadásukhoz használt fájlokat ismerteti. Azt mutatja be, hogyan készítse a fájlokat, a modulok meghatározásához és a Machine Learning-munkaterület központi telepítés modul regisztrálása. Az elemek és attribútumok az egyéni modul definíciójában használja majd ismerteti részletesen. Kiegészítő funkciók és a fájlok és a több kimenet használata is ismertet. 
@@ -28,7 +28,7 @@ Ez a témakör ismerteti a létrehozásáról és központi telepítése az Azur
 ## <a name="what-is-a-custom-r-module"></a>Mi az, hogy egy egyéni R modult?
 A **egyéni modul** egy felhasználó által definiált modul, amely fel van töltve a munkaterület, és az Azure Machine Learning kísérlet részeként végre. A **egyéni R modul** egy egyéni modul, amely végrehajtja a felhasználó által definiált R függvény. **R** statisztikai számítások és grafikus statisztikusok és az adatok kutatók által algoritmusok megvalósításának széles körben használt programozási nyelv. R jelenleg az egyetlen támogatott egyéni modulokkal, de támogatja a későbbi kiadásokban további nyelvek van ütemezve nyelv.
 
-Az egyéni modulok rendelkezik **első osztályú állapot** az Azure Machine Learning abban az értelemben, hogy azok csakúgy, mint bármely más modul használható. Az egyéb modulok, közzétett kísérletek vagy a képi megjelenítések végrehajthatók. A modul, a bemeneti és kimeneti portok használandó, a modellezési paraméterek és más különböző futásidejű viselkedések által megvalósított algoritmus befolyásolni. A kísérlet, amely tartalmazza az egyéni modulok is be a Cortana Intelligence Gallery az egyszerű tehetők közzé.
+Az egyéni modulok rendelkezik **első osztályú állapot** az Azure Machine Learning abban az értelemben, hogy azok csakúgy, mint bármely más modul használható. Az egyéb modulok, közzétett kísérletek vagy a képi megjelenítések végrehajthatók. A modul, a bemeneti és kimeneti portok használandó, a modellezési paraméterek és más különböző futásidejű viselkedések által megvalósított algoritmus befolyásolni. A kísérlet, amely tartalmazza az egyéni modulok is azokat az Azure Eszközintelligencia-katalógus az egyszerű tehetők közzé.
 
 ## <a name="files-in-a-custom-r-module"></a>Egy egyéni R modul fájlok
 Egy egyéni R modul egy .zip fájlt, amely legalább két fájlt tartalmaz határozzák meg:
@@ -295,7 +295,7 @@ A modul paraméter használatával van definiálva a **Arg** gyermekeleme a **ar
     * Összes
   * **alapértelmezett** -érvényes alapértelmezett beállításokat az Oszlopválasztó a következők: 
     
-    * None
+    * Nincs
     * NumericFeature
     * NumericLabel
     * NumericScore
