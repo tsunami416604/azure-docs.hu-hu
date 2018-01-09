@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0e659c1906c99415ab1b53785a606330ef9068c8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2eb0958169b175813b0dca775e9250da1cb364d4
+ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="back-up-linux--virtual-machines-in-azure"></a>Készítsen biztonsági másolatot a Linux virtuális gépek Azure-ban
 
@@ -62,7 +62,7 @@ Az első biztonsági mentés körülbelül 20 percet vesz igénybe. A biztonság
 
 ## <a name="restore-a-file"></a>Fájl visszaállítása
 
-Ha véletlenül törli vagy módosítja a fájlt, a fájlok helyreállítása használatával állítsa vissza a fájlt a biztonsági mentési tárolóból. A fájlok helyreállítása a helyreállítási pont helyi meghajtóként csatlakoztatni a virtuális gép futó parancsfájlt használ. Ezek a meghajtók marad csatlakoztatott 12 óra, hogy a fájlok másolását a helyreállítási pont, és állítsa vissza őket a virtuális Gépet.  
+Ha véletlenül törli vagy módosítja a fájlt, a fájlok helyreállítása használatával állítsa vissza a fájlt a biztonsági mentési tárolóból. A fájlok helyreállítása a helyreállítási pontot egy helyi meghajtó csatlakoztatása a virtuális gép futó parancsfájlt használ. Ezek a meghajtók marad csatlakoztatott 12 óra, hogy a fájlok másolását a helyreállítási pont, és állítsa vissza őket a virtuális Gépet.  
 
 Ebben a példában megmutatjuk, az alapértelmezett nginx weblap /var/www/html/index.nginx-debian.html helyreállítása. A nyilvános IP-cím, az ebben a példában a virtuális gép *13.69.75.209*. Az IP-cím a virtuálisgép-használatával található:
 
@@ -157,10 +157,10 @@ Ebben a példában megmutatjuk, az alapértelmezett nginx weblap /var/www/html/i
 
     ![Alapértelmezett nginx-weblap](./media/tutorial-backup-vms/nginx-working.png)
 
-18. A helyi számítógépen, térjen vissza az Azure portál és a böngészőlapon **3. lépés: a lemez leválasztása a helyreállítás után** kattintson a **lemez leválasztása** gombra. Ha ezt a lépést, a kapcsolat a csatlakozási pont nem automatikusan Bezárás 12 óra elteltével. E 12 óra elteltével le kell töltenie egy új parancsfájl egy új csatlakoztatási pont létrehozásához.
+18. A helyi számítógépen, térjen vissza az Azure portál és a böngészőlapon **3. lépés: a lemez leválasztása a helyreállítás után** kattintson a **lemez leválasztása** gombra. Ha ezt a lépést, a kapcsolat a csatlakoztatási pont 12 óra elteltével automatikusan lezáródik. E 12 óra elteltével le kell töltenie egy új parancsfájl egy új csatlakoztatási pont létrehozásához.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

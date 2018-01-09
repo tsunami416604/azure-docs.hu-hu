@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2017
+ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 17ebb1d61f3fff85580fe4f616477c5084d1537a
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 4f2005e753e1892989fd902cb259bd5545f1e9a4
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Adatok áthelyezése az Azure Data Factory használatával webes tábla forrásból
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -36,7 +36,24 @@ Adat-előállító jelenleg csak áthelyezése egy webes tábla adatai más adat
 > [!IMPORTANT]
 > A webalkalmazás-összekötőjének jelenleg csak kibontása tábla tartalma HTML-lapon. A HTTP/s végpont adatok lekéréséhez használja [HTTP összekötő](data-factory-http-connector.md) helyette.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="prerequisites"></a>Előfeltételek
+
+A webes tábla összekötő használata esetén kell egy Self-hosted integrációs futásidejű (más néven az adatkezelési átjáró) beállítása és konfigurálása a `gatewayName` tulajdonság a gyűjtő a társított szolgáltatás. Például webes tábla másolása Azure Blob Storage tárolóban, állítsa be az Azure tárolás társított szolgáltatása a következők:
+
+```json
+{
+  "name": "AzureStorageLinkedService",
+  "properties": {
+    "type": "AzureStorage",
+    "typeProperties": {
+      "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>",
+      "gatewayName": "<gateway name>"
+    }
+  }
+}
+```
+
+## <a name="getting-started"></a>Első lépések
 A másolási tevékenység, mely az adatok egy helyszíni Cassandra adattároló különböző eszközök/API-k használatával létrehozhat egy folyamatot. 
 
 - Hozzon létre egy folyamatot a legegyszerűbb módja használatára a **másolása varázsló**. Lásd: [oktatóanyag: hozzon létre egy folyamatot, másolása varázslóval](data-factory-copy-data-wizard-tutorial.md) létrehozásával egy folyamatot, az adatok másolása varázsló segítségével gyorsan útmutatást. 
@@ -86,8 +103,8 @@ A **typeProperties** szakasz eltérő adatkészlet egyes típusai és informáci
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type |A dataset típusa. meg kell **Webtábla** |Igen |
-| Elérési út |Az erőforrás, amely tartalmazza a tábla relatív URL-CÍMÉT. |Nem. Ha nincs megadva, csak a megadott URL-cím a társított szolgáltatás definíciójának használja. |
-| Index |Annak az erőforrás a táblának az indexe. Lásd: [Get index egy tábla egy HTML-lapon](#get-index-of-a-table-in-an-html-page) szakasz lépéseit egy tábla indexének első HTML-lapon. |Igen |
+| elérési út |Az erőforrás, amely tartalmazza a tábla relatív URL-CÍMÉT. |Nem. Ha nincs megadva, csak a megadott URL-cím a társított szolgáltatás definíciójának használja. |
+| index |Annak az erőforrás a táblának az indexe. Lásd: [Get index egy tábla egy HTML-lapon](#get-index-of-a-table-in-an-html-page) szakasz lépéseit egy tábla indexének első HTML-lapon. |Igen |
 
 **Példa**
 
@@ -156,7 +173,8 @@ A következő példa bemutatja, hogyan adatok másolása az Azure blob egy webes
   "properties": {
     "type": "AzureStorage",
     "typeProperties": {
-      "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
+      "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>",
+      "gatewayName": "<gateway name>"
     }
   }
 }
@@ -189,7 +207,7 @@ A következő példa bemutatja, hogyan adatok másolása az Azure blob egy webes
 ```
 
 
-**Az Azure Blob kimeneti adatkészlet**
+**Azure blobkimeneti adatkészlet**
 
 Adatot ír egy új blob minden órában (gyakoriság: óra, időköz: 1).
 

@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/10/2017
+ms.date: 01/05/2018
 ms.author: jingwang
-ms.openlocfilehash: 990bffa728977efead7b2b20847ff2adaa63a7f8
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 293ffb2a56ae970c71d495d7d929720ddf758307
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/08/2018
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>A másolási tevékenység során az Azure Data Factory hibatűrés
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -39,6 +39,9 @@ Másolási tevékenység észlelésekor, kihagyása és naplózási adatok nem k
 - **A forrás adattípus és a fogadó natív típusa között kompatibilitási**. <br/><br/> Például: adatok másolása az a Blob-tároló CSV-fájl az SQL-adatbázis egy séma-definícióval, amely három INT típusú oszlopot tartalmaz. Numerikus adatok, például 123,456,789 tartalmazó CSV-fájl sorok sikeresen másolta a fogadó tárolójába. Azonban 123,456, például a nem numerikus értékeket tartalmazó sorok abc észlelhetők a nem kompatibilis, és kimarad.
 - **A forrás- és a fogadó között oszlopok száma nem egyezik**. <br/><br/> Például: adatok másolása az a Blob-tároló CSV-fájl az SQL-adatbázis egy séma-definícióval, amely hat oszlopokat tartalmaz. A fogadó tároló hat oszlopokat tartalmazó CSV-fájl sorok sikeresen lesz másolva. A több vagy kevesebb, mint hat oszlopot tartalmazó CSV-fájl sorok észlelhetők a nem kompatibilis, és kimarad.
 - **Elsődleges kulcs megsértése egy relációs adatbázis írásakor**.<br/><br/> Például: adatok másolása az SQL server az SQL-adatbázis. A fogadó SQL-adatbázis elsődleges kulcs van definiálva, de nincs ilyen elsődleges kulcs van definiálva a forrás SQL-kiszolgálón. A duplikált sorokat, amely szerepel a forrás nem lehet másolni a fogadó. Másolási tevékenység során az adatok csak az első sor a fogadó másolja. Ismétlődő elsődleges kulcs értéke a következő adatforrás a sorokat a rendszer észleli a rendszer nem kompatibilis, és kimarad a.
+
+>[!NOTE]
+>Ez a funkció nem vonatkozik a másolási tevékenység során konfigurált-mechanizmus többek között külső Adatbetöltési meghívása [Azure SQL Data Warehouse PolyBase](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) vagy [Amazon Redshift Unload](connector-amazon-redshift.md#use-unload-to-copy-data-from-amazon-redshift). Adatok betöltése az SQL Data Warehouse PolyBase használatával, használja a PolyBase által natív hiba tolerancia támogatási megadásával "[kapcsolódó polyBaseSettings](connector-azure-sql-data-warehouse.md#azure-sql-data-warehouse-as-sink)" a másolási tevékenység.
 
 ## <a name="configuration"></a>Konfiguráció
 A következő példa egy JSON-definícióból, a másolási tevékenység nem kompatibilis sorok kihagyása konfigurálása biztosítja:
@@ -67,7 +70,7 @@ Tulajdonság | Leírás | Megengedett értékek | Szükséges
 enableSkipIncompatibleRow | Megadja, hogy nem kompatibilis sorok kihagyása másolása során, vagy nem. | True (Igaz)<br/>Hamis (alapértelmezés) | Nem
 redirectIncompatibleRowSettings | Egy csoport, amely tulajdonságok meg, ha azt szeretné, a nem kompatibilis sorok bejelentkezni. | &nbsp; | Nem
 linkedServiceName | A társított szolgáltatás [Azure Storage](connector-azure-blob-storage.md#linked-service-properties) vagy [Azure Data Lake Store](connector-azure-data-lake-store.md#linked-service-properties) a naplót, hogy a rendszer kihagyta sorokat tartalmaz-e tárolni. | A neve egy `AzureStorage` vagy `AzureDataLakeStore` írja be a társított szolgáltatás, amely ahhoz a példányhoz, a naplófájl tárolási használni kívánt hivatkozik. | Nem
-Elérési út | A rendszer kihagyta sorokat tartalmaz-e a naplófájl elérési útja | Adja meg az útvonalat, amelyet a nem kompatibilis adatokat naplózhatnak használni kívánt. Ha nem ad meg egy elérési utat, a szolgáltatás létrehoz egy tárolót. | Nem
+elérési út | A rendszer kihagyta sorokat tartalmaz-e a naplófájl elérési útja | Adja meg az útvonalat, amelyet a nem kompatibilis adatokat naplózhatnak használni kívánt. Ha nem ad meg egy elérési utat, a szolgáltatás létrehoz egy tárolót. | Nem
 
 ## <a name="monitor-skipped-rows"></a>A rendszer kihagyta sorok figyelése
 A másolási tevékenység során futtatása után megtekintheti a másolási tevékenység kimenet kihagyott sorok száma:
@@ -96,7 +99,7 @@ data1, data2, data3, "UserErrorInvalidDataValue", "Column 'Prop_2' contains an i
 data4, data5, data6, "2627", "Violation of PRIMARY KEY constraint 'PK_tblintstrdatetimewithpk'. Cannot insert duplicate key in object 'dbo.tblintstrdatetimewithpk'. The duplicate key value is (data4)."
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A másolási tevékenység cikkekben talál:
 
 - [Tevékenység – áttekintés](copy-activity-overview.md)

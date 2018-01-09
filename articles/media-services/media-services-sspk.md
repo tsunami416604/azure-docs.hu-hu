@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: xpouyat
-ms.openlocfilehash: b5a36ac6771bef220afe29446cd56c1b65a498d9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 87a5a1981b05722f25a70fcb73a06db65bcbe0fd
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>Licencelési Microsoft® zökkenőmentes adatfolyam ügyfél Kit eljárás
 ## <a name="overview"></a>Áttekintés
-Microsoft Smooth Streaming ügyfél eljárás Kit (**SSPK** röviden) a Smooth Streaming ügyfél megvalósítása, amely arra optimalizálták, hogy a beágyazott eszközgyártók, kábel és mobil operátorok, tartalom szolgáltatók, kézibeszélő gyártók, független szoftvergyártók (ISV-k) és megoldásszállítók termékek és szolgáltatások folyamatos adaptív adatfolyam tartalmának Smooth Streaming formátumban létrehozása. SSPK egy Smooth Streaming, bármely eszköz és a platform licencbe által is tartalomfájlokat ügyfél és a platformok független megvalósítása. 
+Microsoft Smooth Streaming ügyfél eljárás Kit (**SSPK** röviden) a Smooth Streaming ügyfél megvalósítása érdekében a beágyazott eszközgyártók, a kábel és a mobil operátorok, a tartalom szolgáltatók, a kézibeszélő optimalizált gyártók, független szoftvergyártók (ISV-k) és megoldásszállítók termékei és szolgáltatásai az Smooth Streaming formátumban adaptív tartalom adatfolyamként történő létrehozásához. SSPK egy eszköz és platformfüggetlen végrehajtásának Smooth Streaming ügyfél, amely a licencbe bármely eszköz és a platform által használatát is. 
 
-Alábbi egy magas szintű architektúra és IIS Smooth Streaming eljárás Kit Smooth Streaming ügyfél megvalósítása a Microsoft által biztosított és Smooth Streaming tartalom lejátszását az alapvető logikát tartalmaz. Ez az majd legelterjedtebb partnerek egy adott eszköz vagy a platform által megfelelő felületek alkalmazásával. 
+Alábbi egy magas szintű architektúra és IIS Smooth Streaming eljárás Kit Smooth Streaming ügyfél megvalósítása a Microsoft által biztosított és Smooth Streaming tartalom lejátszását az alapvető logikát tartalmaz. Ezt a tartalmat egy adott eszköz vagy a platform partnerek majd legelterjedtebb a megfelelő adapterek alkalmazásával. 
 
 ![SSPK](./media/media-services-sspk/sspk-arch.png)
 
@@ -70,7 +70,7 @@ A Smooth Streaming ügyfél végső termék alatt, a kiemelt modellben kínálj�
 * Nincsenek kiemelt első 10 000 eszköz-megvalósítások esetében minden évben 
 
 ## <a name="licensing-procedure-and-sspk-access"></a>Licencelési eljárás és SSPK hozzáférés
-Írjon e-mailt [ sspkinfo@microsoft.com ](mailto:sspkinfo@microsoft.com) összes licencelési lekérdezések.
+E-mailek [ sspkinfo@microsoft.com ](mailto:sspkinfo@microsoft.com) összes licencelési lekérdezések.
 
 A [SSPK terjesztési portal](https://microsoft.sharepoint.com/teams/SSPKDOWNLOAD/) regisztrált ideiglenes licenctulajdonosok esetében érhető el.
 
@@ -103,7 +103,7 @@ Ideiglenes és végső SSPK licenctulajdonosok esetében is elküldhetik technik
 * SoftAtHome
 * Sony Corporation
 * Tatung technológia Inc.
-* TCL Technoly Electronics (Huizhou) Co., Ltd
+* TCL technológia Electronics (Huizhou) Co., Ltd
 * Felső győzelem beruházások értékét, Ltd
 * Ticaret A.S. Vestel Elektronik Sanayi megtörtént
 * VisualOn, Inc.

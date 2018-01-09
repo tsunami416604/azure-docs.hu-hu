@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 10/25/2017
 ms.author: cbrooks
-ms.openlocfilehash: 2ea1c217031761e93d393aefa07eedd03f88d9b0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 91738c1222548f9036daf19626b3ac20ddb4a76f
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks-preview"></a>Azure Storage tűzfalak és a virtuális hálózatok (előzetes verzió) konfigurálása
 Az Azure Storage lehetővé téve a storage-fiókok egy meghatározott engedélyezett hálózatok biztonságos többrétegű biztonsági modellt biztosít.  Ha hálózati szabályok úgy vannak konfigurálva, csak az engedélyezett hálózatokhoz alkalmazások férhet hozzá a tárfiók.  Egy engedélyezett hálózatból meghívásakor az alkalmazások továbbra is szükséges megfelelő jogosultságokkal (egy érvényes tárelérési kulccsal vagy SAS-token) a tárfiók eléréséhez szükséges.
@@ -298,7 +298,6 @@ Ha a "Megbízható Microsoft-szolgáltatások" kivétel engedélyezve van, a kö
 |Azure Event Hubs|Microsoft.EventHub|Az Event Hubs rögzítése archiválja.  [További](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview).|
 |Az Azure HDInsight|Microsoft.HDInsight|Fürtök kiépítése és telepítés.  [További információk](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-blob-storage).|
 |Azure-hálózatok|Microsoft.Networking|Tárolásához és hálózati forgalmi naplók elemzése.  [További információk](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview).|
-|Azure Backup|Microsoft.RecoveryServices|Biztonsági mentés és visszaállítás a nem felügyelt lemezek.  [További információk](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup).|
 ||||
 
 ### <a name="storage-analytics-data-access"></a>Storage analytics adatok elérése
@@ -356,7 +355,7 @@ az storage account update --resource-group "myresourcegroup" --name "mystorageac
 > Ügyeljen arra, hogy [állítani az alapértelmezett szabályt](#change-the-default-network-access-rule) megtagadás, vagy a kivételek eltávolítása nem lesz hatása.
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További tudnivalók az Azure hálózati szolgáltatás végpontok [Szolgáltatásvégpontok](/azure/virtual-network/virtual-network-service-endpoints-overview).
 
 Az Azure Storage biztonsági mélyebben Dig [Azure Storage biztonsági útmutató](storage-security-guide.md).

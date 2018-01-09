@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 07/18/2017
 ms.author: adegeo
-ms.openlocfilehash: 1ba56eb9539a4295fdaaab523cfd2a7e1587ef54
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a5ac8c46f17d2d1c2f20ed2cc2348f50b7739ddf
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="sizes-for-cloud-services"></a>A Felhőszolgáltatások mérete
 Ez a témakör ismerteti az elérhető méretek és a felhőalapú szolgáltatás szerepkörpéldányokat (webes és feldolgozói szerepkörök) beállításokat. Telepítési szempontok kell ügyelnie, ha tervezi, hogy használja ezeket az erőforrásokat is biztosít. Minden méretét helyezett Azonosítóval rendelkezik a [szolgáltatásdefiníciós fájl](cloud-services-model-and-package.md#csdef). Egyes árak érhetők el a [Cloud Services díjszabása](https://azure.microsoft.com/pricing/details/cloud-services/) lap.
@@ -188,12 +188,12 @@ A munkaterhelési változások vagy új Virtuálisgép-méretek rendelkezésre �
 >
 
 ## <a name="get-a-list-of-sizes"></a>Méretek listáját
-PowerShell vagy a REST API használatával méretek listáját. A REST API dokumentált [Itt](https://msdn.microsoft.com/library/azure/dn469422.aspx). A következő kód egy PowerShell-parancsot minden jelenleg elérhető méretek fog szerepelni a felhőszolgáltatás.
+PowerShell vagy a REST API használatával méretek listáját. A REST API dokumentált [Itt](https://msdn.microsoft.com/library/azure/dn469422.aspx). A következő kód egy PowerShell-parancsot, amely felsorolja a különböző méretű egy adott hely. 
 
 ```powershell
-Get-AzureRoleSize | where SupportedByWebWorkerRoles -eq $true | select InstanceSize
+Get-AzureRmVMSize -Location 'West Europe'
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Ismerje meg [az Azure-előfizetések és -szolgáltatások korlátozásait, kvótáit és megkötéseit](../azure-subscription-service-limits.md).
 * További [kapcsolatos nagy teljesítményű számítási a Virtuálisgép-méretek](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) HPC-munkaterhelések.

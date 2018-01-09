@@ -22,7 +22,7 @@ Az a következő ajánlatok az alábbiakban az operációs rendszer frissítés�
 <td>Az Azure Linux virtuális gépek</td> <td>Frissítések telepítése az operációs rendszer szolgáltatótól, ha elérhető. </td>
 </tr>
 <tr>
-<td>A Windows Azure virtuális gépek </td> <td><ul><li>Győződjön meg arról, hogy egy támogatott víruskereső alkalmazást futtatja, az operációs rendszer frissítéseinek telepítése előtt. Lépjen kapcsolatba a víruskereső szoftver gyártójával kompatibilitási információt. </li> <li> Telepítse a [január a biztonság összegzése](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002). </li></ul></td>
+<td>A Windows Azure virtuális gépek </td> <td>Győződjön meg arról, hogy egy támogatott víruskereső alkalmazást futtatja, az operációs rendszer frissítéseinek telepítése előtt. Lépjen kapcsolatba a víruskereső szoftver gyártójával kompatibilitási információt.<p> Telepítse a [január a biztonság összegzése](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002). </p></td>
 </tr>
 <tr>
 <td>Egyéb Azure PaaS szolgáltatások</td> <td>Nincs szükség a ezeket a szolgáltatásokat használó ügyfelek számára. Azure szolgáltatás automatikusan az operációsrendszer-verziók naprakész. </td>

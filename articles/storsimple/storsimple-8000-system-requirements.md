@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: 485320e500d71bd85b69cfcd9628e133ad1c417c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4458187999d0795be8637f6f5615e4900ddd94cc
+ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>A StorSimple 8000 series szoftver, a magas rendelkezésre állás és a hálózati követelmények
 
@@ -95,7 +95,7 @@ Azt javasoljuk, hogy állítsa a tűzfalszabályok a kimenő forgalom liberally 
 
 | Az URL-minta | Összetevő/funkció | Eszköz IP-címek |
 | --- | --- | --- |
-| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*`<br>`https://login.windows.net` |A StorSimple eszköz kezelő szolgáltatás<br>Access Control Service<br>Azure Service Bus<br>Hitelesítési szolgáltatás |A felhőalapú hálózati illesztők |
+| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*`<br>`https://login.windows.net` |StorSimple-eszközkezelő szolgáltatás<br>Access Control Service<br>Azure Service Bus<br>Hitelesítési szolgáltatás |A felhőalapú hálózati illesztők |
 | `https://*.backup.windowsazure.com` |Eszközregisztráció |DATA 0 csak |
 | `http://crl.microsoft.com/pki/*`<br>`http://www.microsoft.com/pki/*` |Tanúsítvány-visszavonás |A felhőalapú hálózati illesztők |
 | `https://*.core.windows.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Az Azure storage-fiókok és figyelése |A felhőalapú hálózati illesztők |
@@ -107,7 +107,7 @@ Azt javasoljuk, hogy állítsa a tűzfalszabályok a kimenő forgalom liberally 
 
 | Az URL-minta | Összetevő/funkció | Eszköz IP-címek |
 | --- | --- | --- |
-| `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*`<br>`https://login-us.microsoftonline.com` |A StorSimple eszköz kezelő szolgáltatás<br>Access Control Service<br>Azure Service Bus<br>Hitelesítési szolgáltatás |A felhőalapú hálózati illesztők |
+| `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*`<br>`https://login-us.microsoftonline.com`<br>`https://login.microsoftonline.us` |StorSimple-eszközkezelő szolgáltatás<br>Access Control Service<br>Azure Service Bus<br>Hitelesítési szolgáltatás |A felhőalapú hálózati illesztők |
 | `https://*.backup.windowsazure.us` |Eszközregisztráció |DATA 0 csak |
 | `http://crl.microsoft.com/pki/*`<br>`http://www.microsoft.com/pki/*` |Tanúsítvány-visszavonás |A felhőalapú hálózati illesztők |
 | `https://*.core.usgovcloudapi.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Az Azure storage-fiókok és figyelése |A felhőalapú hálózati illesztők |
@@ -241,7 +241,7 @@ Gondosan tekintse át az alábbi gyakorlati tanácsok a StorSimple eszköz csatl
 * Konfigurálja a StorSimple [két csomópontos fájlkiszolgáló fürt-konfigurációkkal][1]. Hiba és a redundanciát a fogadó oldalon a hibaérzékeny pontokat eltávolításával a teljes megoldás magas rendelkezésre állású lesz.
 * Használjon folyamatosan rendelkezésre álló (CA) megosztásokat érhető el a Windows Server 2012 (SMB 3.0 esetében) a magas rendelkezésre állás a tárolóvezérlők feladatátvétele során. További információt a Windows Server 2012 fájlkiszolgáló fürtök és a folyamatosan elérhető fájlmegosztásokat konfigurálásához, tekintse meg a [bemutató videó](http://channel9.msdn.com/Events/IT-Camps/IT-Camps-On-Demand-Windows-Server-2012/DEMO-Continuously-Available-File-Shares).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [További tudnivalók a StorSimple rendszer korlátok](storsimple-8000-limits.md).
 * [A StorSimple megoldásban telepítése](storsimple-8000-deployment-walkthrough-u2.md).

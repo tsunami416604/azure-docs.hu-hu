@@ -17,11 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/14/2017
 ms.author: jgao
-ms.openlocfilehash: 052e65b72cc382168296dc1a4965000107d08881
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: af4538bb398e6b18aeb9703ba5099b0e2c70fa64
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="set-up-clusters-in-hdinsight-with-hadoop-spark-kafka-and-more"></a>Hdinsight Hadoop, Spark, Kafka és több fürt beállítása
 
@@ -248,7 +248,7 @@ Ha a megoldást igényel, amely több HDInsight-fürttípusok, vannak elosztva e
 
 További információ az Azure virtuális hálózat használatával a hdinsight eszközzel, lásd: [kiterjesztése HDInsight az Azure virtuális hálózatokkal](hdinsight-extend-hadoop-virtual-network.md).
 
-Például egy Azure virtuális hálózaton belül, kétféle fürt használatával, [elemezhet érzékelőadatokat a Storm és HBase](storm/apache-storm-sensor-data-analysis.md). HDInsight használatával egy virtuális hálózattal, beleértve a virtuális hálózat, megadott konfigurációs követelményekkel kapcsolatos további információk: [kiterjesztése HDInsight képességek az Azure Virtual Network használatával](hdinsight-extend-hadoop-virtual-network.md).
+Például egy Azure virtuális hálózaton belül, kétféle fürt használatával, [használata Spark strukturált Stream továbbítása Kafka](hdinsight-apache-kafka-spark-structured-streaming.md). HDInsight használatával egy virtuális hálózattal, beleértve a virtuális hálózat, megadott konfigurációs követelményekkel kapcsolatos további információk: [kiterjesztése HDInsight képességek az Azure Virtual Network használatával](hdinsight-extend-hadoop-virtual-network.md).
 
 ## <a name="troubleshoot-access-control-issues"></a>Hozzáférés-vezérlő elhárítása
 

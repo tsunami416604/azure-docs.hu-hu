@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: d89e51e61b52e7337b8faf28f42944ec29f1b94f
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: b43eb5e78b70f38226e3e8cb53d1530d348c7c20
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Version History (Az Azure AD Connect Health verzióelőzményei)
 Az Azure Active Directory ügyfélszolgálata rendszeresen frissíti az Azure AD Connect Health új szolgáltatásait és funkcióit. Ez a cikk felsorolja a kiadott szolgáltatások és verziókat.
@@ -34,6 +34,12 @@ Az Azure Active Directory ügyfélszolgálata rendszeresen frissíti az Azure AD
   1. A hozzáadott új ügynök hibaelhárítási parancsok
   2. Ügynök rendelkezésre állással kapcsolatos fejlesztések 
   3. Hibajavításokat tartalmaz, és általános fejlesztések
+  
+## <a name="october-2017"></a>2017. október
+**Ügynök frissítése:**
+
+ * Az Azure AD Connect Health-ügynök (verzió: 3.0.129.0)-szinkronizáláshoz az Azure AD Connect 1.1.649.0 verziója, amely a
+<br></br> Az Azure AD Connect és az Azure AD Connect Health szinkronizálási ügynöke közötti verziójú kompatibilitási probléma rögzített. A probléma hatással van az ügyfelek, akik az Azure AD Connect helybeni frissítést verzióra 1.1.647.0 hajt végre, de a rendszerállapot-ügynöke 3.0.127.0 verziója van. A frissítés után a rendszerállapot-ügynöke már nem küldhet az Azure AD Connect szinkronizálási szolgáltatás állapotának adatait az Azure AD Health Service. A javítás a rendszerállapot-ügynöke 3.0.129.0 verziója telepítve van az Azure AD Connect helybeni frissítés során. Rendszerállapot-ügynöke 3.0.129.0 verzió nincs kompatibilitási probléma az Azure AD Connect 1.1.649.0 verziója.
 
 ## <a name="july-2017"></a>2017. július
 **Ügynök frissítése:**
@@ -44,6 +50,8 @@ Az Azure Active Directory ügyfélszolgálata rendszeresen frissíti az Azure AD
 *   Az Azure AD Connect Health-ügynök az AD FS (3.0.68.0 verzió)
   1. Hibajavításokat tartalmaz, és általános fejlesztések
   2. Szuverén felhő támogatása
+* Az Azure AD Connect Health-ügynök (verzió: 3.0.68.0)-szinkronizáláshoz az Azure AD Connect 1.1.614.0 verziója, amely a
+1. Támogatja a Microsoft Azure Government felhő és a Microsoft Cloud Németország
 
 ## <a name="april-2017"></a>2017. április      
 **Ügynök frissítése:**
@@ -58,13 +66,13 @@ Az Azure Active Directory ügyfélszolgálata rendszeresen frissíti az Azure AD
 **Ügynök frissítése:**
 
 * Az Azure AD Connect Health-ügynök az AD FS \(2.6.408.0 verziója\)
-  1. A hitelesítési kérések ügyfél IP-címek kimutatására fejlesztései
-  2. Hibajavítások kapcsolatos riasztások
+1. A hitelesítési kérések ügyfél IP-címek kimutatására fejlesztései
+2. Hibajavítások kapcsolatos riasztások
 * Az Azure AD Connect Health-ügynök az AD DS (2.6.408.0 verzió)
-  1. Riasztások kapcsolatos hibajavítások.
+1. Riasztások kapcsolatos hibajavítások.
 * Az Azure AD Connect Health-ügynök (verzió: 2.6.353.0)-szinkronizáláshoz az Azure AD Connect 1.1.281.0 verziója, amely a
-  1. A szinkronizálás hibajelentések adja meg a szükséges adatokat.
-  2. Riasztások kapcsolatos hibajavítások
+1. A szinkronizálás hibajelentések adja meg a szükséges adatokat.
+2. Riasztások kapcsolatos hibajavítások
 
 **Új előzetes verziójú funkciók:**
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2017
 ms.author: mimig
-ms.openlocfilehash: 40390c6f92136d5731ac9d6857f06852c8ee6d85
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: c7aadb4e535ed221f882f251324b6d4e633c2d5e
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Az Azure Cosmos DB egység kérése
 Most már hozzáférhető: Azure Cosmos DB [kérelem egység Számológép](https://www.documentdb.com/capacityplanner). További információ: [megbecsülheti, az átviteli sebesség kell](request-units.md#estimating-throughput-needs).
@@ -210,7 +210,7 @@ Példa:
 5. Jegyezze fel a kérelem egység ingyenesen elérhető bármely egyéni parancsfájlok (tárolt eljárások, eseményindítók, felhasználó által definiált függvények) használja ki az alkalmazást
 6. A megadott műveletek másodpercenkénti futtatásához várhatóan becsült száma szükséges kérelemegység kiszámításához.
 
-### <a id="GetLastRequestStatistics"></a>A MongoDB GetLastRequestStatistics parancshoz használható API
+## <a id="GetLastRequestStatistics"></a>A MongoDB GetLastRequestStatistics parancshoz használható API
 Mongodb-protokolltámogatással API támogatja egy egyéni parancs *getLastRequestStatistics*, a kérelem kell fizetni a megadott műveletek beolvasásakor.
 
 Például a Mongo rendszerhéj hajtható végre a kérelem díjat ellenőrizni szeretné a műveletet.

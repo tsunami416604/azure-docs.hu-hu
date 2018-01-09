@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2017
+ms.date: 01/05/2018
 ms.author: barlan
 ms.custom: end-user
-ms.openlocfilehash: 166a04fa18a57b239c195cbdd7b53a3baafbad65
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 55ca5ada0db30440e4599c77b7a6834ef671c7a4
+ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="what-are-app-passwords-in-azure-multi-factor-authentication"></a>Mik a Azure multi-factor Authentication Alkalmazásjelszókat?
 Bizonyos böngészőn kívüli alkalmazások, például az Apple natív e-mail-ügyfélprogram, amely használja az Exchange Active Sync jelenleg nem támogatják a multi-factor authentication. Többtényezős hitelesítést felhasználónként kell engedélyezni. Ez azt jelenti, hogy ha a felhasználó a többtényezős hitelesítés engedélyezve van, és böngészőn kívüli alkalmazások használatához megpróbálnak, fogják tudni megnyitni. Az alkalmazásjelszó lehetővé teszi, hogy ez megtörténik. Ha a feltételes hozzáférési házirendek és felhasználói MFA révén nem kényszeríti a multi-factor Authentication, nem hozható létre alkalmazásjelszókat. Hozzáférés-vezérlésének feltételes hozzáférési házirendeket használó alkalmazásokat nem kell alkalmazásjelszókat.
@@ -55,30 +55,12 @@ Az első bejelentkezés során lehetősége van az alkalmazásjelszó használha
 ## <a name="manage-app-passwords-in-the-azure-portal"></a>Az Azure portálon app jelszavak kezelése
 Az Azure-ral használatakor a kétlépéses ellenőrzést, hozzon létre az Azure portálon keresztül szeretné.
 
-### <a name="to-create-app-passwords-in-the-azure-portal"></a>Alkalmazásjelszók létrehozása az Azure-portálon
-1. Jelentkezzen be a klasszikus Azure portálra.
-2. A lap tetején kattintson a jobb gombbal a felhasználónevét, és válassza ki a további biztonsági ellenőrzés.
-3. A proofup lapon, a lap tetején jelölje ki az alkalmazásjelszók
-4. Kattintson a **Create** (Létrehozás) gombra.
-5. Adjon meg egy nevet a jelszót, és kattintson a **következő**
-6. A jelszót a vágólapra másolja és illessze be az alkalmazást.
-
-   ![Felhő](./media/multi-factor-authentication-end-user-app-passwords/app2.png)
-
-
-### <a name="to-delete-app-passwords-in-the-azure-portal"></a>Az Azure portálon alkalmazásjelszók törlése
-1. Jelentkezzen be a klasszikus Azure portálra.
-2. A lap tetején kattintson a jobb gombbal a felhasználónevét, és válassza ki a további biztonsági ellenőrzés.
-3. A lap tetején mellett további biztonsági ellenőrzési, válasszon **alkalmazásjelszókat.**
-4. A törölni kívánt alkalmazásjelszót, mellett válassza ki **törlése**.
-5. Kattintson a törlés jóváhagyásához **Igen**.
-6. Az alkalmazásjelszót a törölt kattinthat **bezárása**.
 
 
 ## <a name="manage-app-passwords-with-the-myapps-portal"></a>A MyApps portal szolgáltatással használt alkalmazásjelszók kezelése.
 Ha nem biztos abban, hogy a multi-factor authentication használatát, majd bármikor létrehozása és törlése a myapps portálon keresztül alkalmazásjelszókat.
 
-### <a name="to-create-an-app-password-using-the-myapps-portal"></a>A hozza létre az alkalmazásjelszót a Myapps portál használatával
+### <a name="to-create-an-app-password-using-the-myapps-portal"></a>A hozza létre az alkalmazásjelszót a MyApps portál használatával
 1. Jelentkezzen be [https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. Kattintson a jobb felső sarokban, és válassza a **profil**.
 3. Válassza ki **további biztonsági ellenőrzés**.
@@ -92,7 +74,7 @@ Ha nem biztos abban, hogy a multi-factor authentication használatát, majd bár
 7. A jelszót a vágólapra másolja és illessze be az alkalmazást.
    ![Hozza létre az alkalmazásjelszót](./media/multi-factor-authentication-end-user-app-passwords/create2.png)
 
-### <a name="to-delete-an-app-password-using-the-myapps-portal"></a>Törli az alkalmazásjelszó Myapps portál használatával
+### <a name="to-delete-an-app-password-using-the-myapps-portal"></a>Törli az alkalmazásjelszó MyApps portál használatával
 1. Jelentkezzen be [https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. A lap tetején jelölje ki a profilt.
 3. Válassza ki **további biztonsági ellenőrzés**.
@@ -110,7 +92,7 @@ Ha nem biztos abban, hogy a multi-factor authentication használatát, majd bár
 6. Győződjön meg arról, hogy szeretné-e, hogy a jelszó törlése gombra kattintva **Igen**.
 7. Az alkalmazásjelszót a törölt kattinthat **bezárása**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A kétlépéses ellenőrzés beállításait kezelheti](multi-factor-authentication-end-user-manage-settings.md)
 

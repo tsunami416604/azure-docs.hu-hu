@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 1ca825d14b7d2bb7424883362a3053f243123462
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: 5e1c3df24b0fc3e733981ab3f8814a9e6641f5f1
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-store"></a>Diagnosztikai naplók az Azure Data Lake Store elérése
 További diagnosztikai a Data Lake Store-fiók és a fiókja gyűjtött naplók megtekintéséhez a naplózás engedélyezéséhez.
 
-A szervezetek diagnosztikai naplózását is az Azure Data Lake Store fiók gyűjthet adatokat a fájlhozzáférés napló ellenőrzését, amely bemutatja, például a listát a felhasználók fér hozzá az adatokhoz, hogy milyen gyakran az adatokhoz, mennyi adatot a fiók tárolva van stb.
+A szervezetek diagnosztikai naplózását is az Azure Data Lake Store fiók gyűjthet adatokat a fájlhozzáférés napló ellenőrzését, amely bemutatja, például a listát a felhasználók fér hozzá az adatokhoz, hogy milyen gyakran az adatokhoz, mennyi adatot a fiók tárolva van stb. Ha engedélyezve van, a diagnosztika és/vagy a kérelmek bejelentkezett legjobb alapon. Kérések és a diagnosztika naplóbejegyzések jönnek létre, csak ha nincs a szolgáltatási végpont ellen.
 
 ## <a name="prerequisites"></a>Előfeltételek
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
@@ -114,7 +114,7 @@ A naplózási és kérelem naplók JSON formátumban vannak. Ez a szakasz azt n�
     }
 
 #### <a name="request-log-schema"></a>Kérelem séma
-| Név | Típus | Leírás |
+| Name (Név) | Típus | Leírás |
 | --- | --- | --- |
 | time |Karakterlánc |Az időbélyeg (UTC szerint) a napló |
 | resourceId |Karakterlánc |Helyezze a művelet erőforrás azonosítója |
@@ -127,7 +127,7 @@ A naplózási és kérelem naplók JSON formátumban vannak. Ez a szakasz azt n�
 | properties |JSON |További információ alább olvasható |
 
 #### <a name="request-log-properties-schema"></a>Kérelem tulajdonságok séma
-| Név | Típus | Leírás |
+| Name (Név) | Típus | Leírás |
 | --- | --- | --- |
 | HttpMethod |Karakterlánc |A művelethez használt HTTP-metódust. Például beolvasása. |
 | Útvonal |Karakterlánc |Az elérési út a művelet végrehajtásának ideje |
@@ -160,7 +160,7 @@ A naplózási és kérelem naplók JSON formátumban vannak. Ez a szakasz azt n�
     }
 
 #### <a name="audit-log-schema"></a>Naplózási séma
-| Név | Típus | Leírás |
+| Name (Név) | Típus | Leírás |
 | --- | --- | --- |
 | time |Karakterlánc |Az időbélyeg (UTC szerint) a napló |
 | resourceId |Karakterlánc |Helyezze a művelet erőforrás azonosítója |
@@ -172,7 +172,7 @@ A naplózási és kérelem naplók JSON formátumban vannak. Ez a szakasz azt n�
 | properties |JSON |További információ alább olvasható |
 
 #### <a name="audit-log-properties-schema"></a>Naplózási tulajdonságai séma
-| Név | Típus | Leírás |
+| Name (Név) | Típus | Leírás |
 | --- | --- | --- |
 | StreamName |Karakterlánc |Az elérési út a művelet végrehajtásának ideje |
 
@@ -188,7 +188,7 @@ search *
 
 Azure Data Lake Store minta hogyan feldolgozhatja és elemezheti a naplózási adatokat biztosít. A minta a található [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample). 
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Az Azure Data Lake Store áttekintése](data-lake-store-overview.md)
 * [Biztonságos adattárolás a Data Lake Store-ban](data-lake-store-secure-data.md)
 

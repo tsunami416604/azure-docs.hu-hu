@@ -14,17 +14,17 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 27312846caf4f51e708b48655578846a52cbd1c3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e29e472860890e3f44af79c42c31ff524acb9276
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>A tartós függvények (az Azure Functions) időzítők
 
 [Tartós funkciók](durable-functions-overview.md) biztosít *tartós időzítők* orchestrator funkciók késések végrehajtásához vagy aszinkron műveletek időtúllépése beállításához használható. Orchestrator funkcióit a tartós időzítők használandó `Thread.Sleep` vagy `Task.Delay`.
 
-Létrehozhat egy tartós időzítő meghívásával [CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_). A metódus visszaadja egy feladatot, amely a megadott napon és időpontban folytatódik.
+Létrehozhat egy tartós időzítő meghívásával a [CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) metódus a [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html). A metódus visszaadja egy feladatot, amely a megadott napon és időpontban folytatódik.
 
 ## <a name="timer-limitations"></a>Időzítő korlátozásai
 
@@ -95,7 +95,7 @@ A mechanizmus ténylegesen állítsa le a folyamatban lévő tevékenységek fü
 
 Például egy részletesebb időtúllépések megvalósításának orchestrator funkciókkal, tekintse meg a [emberi beavatkozást igényel & időtúllépések - Telefonszám ellenőrzése a](durable-functions-phone-verification.md) forgatókönyv.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Megtudhatja, hogyan és külső események kezelésére](durable-functions-external-events.md)

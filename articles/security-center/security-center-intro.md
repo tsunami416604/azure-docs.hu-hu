@@ -1,5 +1,5 @@
 ---
-title: "Azure Security Center bemutatása |} Microsoft Docs"
+title: Mi az Azure Security Center? |} Microsoft Docs
 description: "Információk az Azure Security Centerről, annak főbb funkcióiról és működéséről."
 services: security-center
 documentationcenter: na
@@ -12,65 +12,105 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2017
+ms.date: 01/08/2018
 ms.author: terrylan
-ms.openlocfilehash: 21415af0d449d639d000e07afdb4de3680a64774
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 50a54b8d2a73807aa9a0217f7ccf971b8c516494
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
-# <a name="introduction-to-azure-security-center"></a>Az Azure Security Center bemutatása
-Információk az Azure Security Centerről, annak főbb funkcióiról és működéséről.
+# <a name="what-is-azure-security-center"></a>Mi az az Azure Security Center?
+Az Azure Security Center hibrid felhő-munkaterhelések egységes biztonsági kezelése és az advanced threat protection lehetővé teszi. A Security Center biztonsági szabályzatokat alkalmazhat a munkaterhelések, korlátozza a fenyegetéseket, és észleléséhez és válaszol a támadásokkal szemben.
 
-## <a name="what-is-azure-security-center"></a>Mi az az Azure Security Center?
-Az Azure Security Center egységes biztonsági kezelése és az advanced threat protection az Azure, a helyszíni és a többi felhőből futó számítási feladatok biztosít.  Hibrid felhő-munkaterhelések, aktív védelmet, amely csökkenti a fenyegetéseket, és intelligens észlelési segítséget nyújtanak a gyorsan fejlődő cyberattacks tartani át és szabályozhatja biztosítja.
+Miért használja a Security Centert?
 
-A Security Center áttekintése révén a biztonsági állapotát az Azure és az-Azure munkaterhelések, gyors képet, így felderítése és a munkaterhelések biztonsági értékeléséhez és azonosítása és a kockázatnak a mérséklése.
+- **Csoportházirend-kezelés központi** – győződjön meg arról a vállalat megfelelőségi és szabályozási biztonsági követelmények által központilag a hibrid felhő munkaterhelések között a biztonsági házirendek kezelése.
+- **A folyamatos biztonsági értékelést** – a biztonsági gépek, a hálózatok, a tárolási szolgáltatásait, és a potenciális biztonsági problémákat felderítéséhez alkalmazások figyeléséhez.
+- **Végrehajthatóként javaslatok** – biztonsági rések javítása előtt is kihasználható a támadók a rangsorolt és végrehajthatóként biztonsági javaslatok.
+- **Speciális felhő védelmekkel** – fenyegető veszélyek az csak az elérhető felügyeleti portokat és engedélyezése csökkenti a virtuális gépeken futó vezérlő alkalmazásokhoz.
+- **Riasztások és incidensek prioritása** -arra utalnak, a kritikus fontosságú fenyegetések először a rangsorolt biztonsági riasztások és incidensek.
+- **Integrált biztonsági megoldások** - gyűjtése, keressen, és különböző forrásokból, beleértve az összekapcsolt partnermegoldások biztonsági adatok elemzését.
 
-![Áttekintés](./media/security-center-intro/security-center-intro-fig1.png)
+A **Security Center – áttekintés** révén a biztonsági állapotát az Azure és az-Azure munkaterhelések, így felderítése és a munkaterhelések biztonsági értékeléséhez és azonosítása és a kockázatnak a mérséklése gyors képet. A beépített irányítópult a biztonsági riasztások és biztonsági rések, figyelmet igénylő azonnali betekintést nyújt.
 
-## <a name="why-use-security-center"></a>Miért használja a Security Centert?
+![Áttekintés][1]
 
-**Egyesített figyelemmel kísérelhetik és vezérelhetik**
+## <a name="centralized-policy-management"></a>Központi Csoportházirend kezelése
+A biztonsági szabályzat határozza meg a számítási feladatokhoz tartozó kívánt konfigurációkat, és segít biztosítani a vállalati vagy hatósági követelményeknek való megfelelést. A Security Center házirendek meghatározása és testre is szabhatja azokat a típusú vagy az adatok érzékenységének.
 
-- **Biztonsági állapotát megértéséhez hibrid munkaterhelések között**. Kezeli a biztonságot az összes a hibrid felhő-munkaterhelések – helyszíni Azure és más felhőplatformokkal – egyetlen konzolon. Beépített irányítópultok betekintést azonnali figyelmet igénylő biztonsági problémákat.
-- **Felhő-munkaterhelések láthatósága**. Lépést tartani a sűrűn módosuló felhő-munkaterhelések. Automatikus észlelését, és a bevezetni új erőforrások létrehozott Azure-előfizetését.
-- **Csoportházirend-kezelés központi**. Központilag a hibrid felhő munkaterhelések között a biztonsági házirendek kezelése biztosíthatja a vállalat megfelelőségi vagy jogszabályi biztonsági követelményeinek.
-- **Biztonsági adatok számos más forrásból**. Gyűjtése, keresése és különböző forrásokból, beleértve az összekapcsolt partneri megoldások, például a hálózati tűzfalak és más Microsoft-szolgáltatásokban biztonsági adatok elemzését. 
-- **Integráció a meglévő biztonsági munkafolyamatok**. Hozzáférési integrálása és REST API-k használata a meglévő eszközeivel és eljárásaival csatlakozáshoz biztonsági adatainak elemzése.
-- **Megfelelőségi jelentések készítéséhez**. Biztonsági adatok és insights segítségével megfelelőségi bemutatása, és könnyedén generálhatnak bizonyító adatok ellenőrök számára alkalmas.
+A Security Center-szabályzatok a következő összetevőkből állnak:
 
-**Adaptív fenyegetés megelőzése**
+- **Adatgyűjtés**: meghatározza, hogy a kiépítési ügynök és a biztonsági [adatgyűjtés](security-center-enable-data-collection.md) beállításait.
+- **Biztonsági házirend**: határozzák meg, amely szabályozza a Security Center figyelők és szerkesztésével javasolja a [biztonsági házirend](security-center-policies.md).
+- **E-mail értesítések**: meghatározza, hogy a biztonsági névjegyeket és [értesítési e-mail](security-center-provide-security-contact-details.md) beállításait.
+- **IP-címek**: szabad határozza meg, vagy Standard [kijelölés árképzési](security-center-pricing.md). A réteg úgy dönt, határozza meg, mely a Security Center funkciók érhetők el az erőforrások hatókörében.
 
-- **A folyamatos biztonsági értékelést**. Gépek, hálózatokon és az Azure-szolgáltatások beépített biztonsági vizsgálatok során több száz használatával biztonsági figyelése, vagy hozza létre a sajátját. Azonosítsa a szoftverek és konfigurációk, amelyek a támadásokkal szemben.
-- **Végrehajthatóként javaslatok**. Biztonsági rések kijavítani, mielőtt is kihasználható a támadók a rangsorolt, végrehajthatóként biztonsági javaslatok és a beépített automatizálást playbooks.
-- **Adaptív alkalmazás vezérlők**. Kártevő szoftverek és más nemkívánatos alkalmazások blokkolása a bizonyos Azure munkaterhelések igazodó és gépi tanulási technológiával engedélyezett javaslatok alkalmazásával. 
-- **Hálózati hozzáférés-biztonságot**. A hálózati támadási felület csökkentése just-in-time, ellenőrzött hozzáféréssel rendelkező felügyeleti portokhoz Azure virtuális gépeken, ami rendkívüli mértékben csökkenti a találgatásos és egyéb hálózati támadásoktól.
+![Biztonsági házirend][2]
 
-**Intelligens fenyegetések észlelése és a válasz**
+Lásd: [biztonsági házirendek – áttekintés](security-center-policies-overview.md) további információt.
 
-- **A fenyegetés eszközintelligencia iparági legteljesebb**. Koppintson a Microsoft intelligens biztonsági diagramot, használja a Microsoft-szolgáltatások és a világ minden táján rendszerek jelek trillions új fenyegető veszélyek azonosításához azokat.
-- **A fenyegetésészlelés speciális**. Használja a beépített viselkedéselemzés és a gépi tanulás támadások és nulla napos biztonsági rések azonosítása. Figyelheti a bejövő támadásokat és az incidens utáni tevékenységeket a hálózatokon, a gépeken és a felhőszolgáltatásokon.
-- **Riasztások és incidensek prioritása**. A legfontosabb fenyegetések először a rangsorolt biztonsági riasztások és incidensek, amelyek különböző típusú riasztások az egyetlen támadás kampány összpontosítanak. Hozzon létre a saját egyéni biztonsági riasztásokat is.
-- **Zökkenőmentes vizsgálat**. Gyorsan felmérheti a hatókör és vizuális, interaktív nyújthassunk támadás hatását. Használja az előre definiált vagy alkalmi lekérdezések mélyebb feltárási biztonsági adatok. 
-- **Környezetfüggő fenyegetésfelderítési adataival**. A forrás egy interaktív globális térképen támadások megjelenítése. Betekintést értékes a technikák és az ismert rosszindulatú szereplője célkitűzéseinek a beépített fenyegetés az eszközintelligencia jelentései.
+## <a name="continuous-security-assessment"></a>A folyamatos biztonsági értékelést
+A Security Center elemzi a számítási erőforrásokat, a virtuális hálózatok, a tárolás és a adatszolgáltatások és az alkalmazások biztonsági állapotát. Folyamatos assessment segít felderíteni a potenciális biztonsági problémákat, például a rendszer a hiányzó biztonsági frissítések vagy kitett hálózati portok. Válasszon ki egy csempét a megelőzési szakaszban, ha további információkat, beleértve az erőforrások és a biztonsági rések azonosított listáját.
 
-## <a name="get-started"></a>Bevezetés
-A kezdéshez a Security Center szüksége van a Microsoft Azure-előfizetéssel. A Security Center engedélyezve van Azure- előfizetéséhez. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/). 
+![Biztonsági állapotfigyelés][3]
 
-[Ismerkedés az Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-get-started) gyorsan megismerheti a Security Center biztonsági biztonságfelügyeleti és szabályzat-kezelési összetevőit. 
+Lásd: [biztonsági állapotfigyelés](security-center-monitoring.md) további információt.
+
+## <a name="actionable-recommendations"></a>Végrehajthatóként javaslatok
+A Security Center elemzi a potenciális biztonsági hiányosságok azonosítása az Azure és az Azure-erőforrások biztonsági állapotát. Rangsorolt biztonsági javaslatok listája végigvezeti a biztonsági kérdések kielégíteni.
+
+![Javaslatok][4]
+
+Lásd: [biztonsági javaslatok kezelése](security-center-recommendations.md) további információt.
+
+## <a name="just-in-time-vm-access"></a>Virtuális gépek igény szerinti elérése
+A hálózati támadási felületének csökkentése JIT, Azure virtuális gépeken, ami rendkívüli mértékben csökkenti a találgatásos és más hálózati támadásoknak való kitettség kezelőportjai ellenőrzött elérésére.
+
+![Virtuális gépek igény szerinti elérése][5]
+
+Adja meg, hogyan felhasználók csatlakozhatnak virtuális gépek szabályait. Szükség esetén hozzáférést igényelhet a Security Center vagy a PowerShell segítségével. Mindaddig, amíg a kérelem megfelel a szabályoknak, automatikusan hozzáférés kért alkalommal.
+
+Lásd: [JIT-virtuális gép hozzáférés kezelése](security-center-just-in-time.md) további információt.
+
+## <a name="adaptive-application-controls"></a>Adaptív alkalmazásvezérlők
+Kártevő szoftverek és más nemkívánatos alkalmazások blokkolása a bizonyos Azure munkaterhelések igazodó és gépi tanulási technológiával engedélyezett javaslatok alkalmazásával.
+
+![Adaptív alkalmazásvezérlők][6]
+
+Tekintse át, és kattintson a Security Center által generált ajánlott alkalmazás engedélyezett szabályok vonatkoznak, vagy már be van állítva szabályok szerkesztése.
+
+Lásd: [adaptív alkalmazás vezérlők](security-center-adaptive-application.md) további információt.
+
+## <a name="prioritized-alerts-and-incidents"></a>Rangsorolt riasztásokat és incidensek
+A Security Center speciális elemzés és globális fenyegetésfelderítési adataival használja a bejövő támadások észlelésére és utáni megsértik a tevékenység. Riasztások prioritása és csoportosítva incidensek, segítve a koncentrálhat, a kritikus fontosságú fenyegetések először. Létrehozhat saját egyéni biztonsági riasztásokat is.
+
+![Rangsorolt riasztásokat és incidensek][7]
+
+Gyorsan hatókör és vizuális, interaktív vizsgálat nyújthassunk támadás hatásának értékelése, és használja az előre definiált vagy alkalmi lekérdezések mélyebb feltárási biztonsági adatok.
+
+Lásd: [kezelése és a biztonsági riasztásokra való reagálásról](security-center-managing-and-responding-alerts.md) további információt.
+
+## <a name="integrate-your-security-solutions"></a>A biztonsági megoldások integrálása
+Gyűjtése, keressen, és különböző forrásokból, összekapcsolt partneri megoldások, például a hálózati tűzfalak és más Microsoft-szolgáltatásokban, beleértve a Security Center biztonsági adatok elemzését.
+
+![Biztonsági megoldások integrálása][8]
+
+Lásd: [integrálhatja biztonsági megoldásokat](security-center-partner-integration.md) további információt.
+
+## <a name="next-steps"></a>További lépések
+
+- A kezdéshez a Security Center szüksége van a Microsoft Azure-előfizetéssel. Ha nem rendelkezik előfizetéssel, regisztrálhat az egy [ingyenes próbaverzió](https://azure.microsoft.com/free/).
+- A Security Center az ingyenes tarifacsomag engedélyezve van Azure-előfizetéséhez. A speciális biztonsági felügyeleti és a fenyegetések az észlelési képességek kihasználásához, frissítenie kell a Standard tarifacsomag. A standard szint 60 napig ingyenesen használható. Tekintse meg a [árképzést ismertető oldalra a Security Center](https://azure.microsoft.com/pricing/details/security-center/) további információt.
+- Ha készen áll a Security Center szabványos engedélyezése, a [gyors üzembe helyezés: bevezetni a Security Center Standard Azure-előfizetése](security-center-get-started.md) végigvezeti a lépéseken.
 
 
-## <a name="next-steps"></a>Következő lépések
-Ebben a dokumentumban megismerhette a Security Centert, annak főbb funkcióit és használatának első lépéseit. További tudnivalókért lásd a következőket:
-
-* [Az Azure Security Center tervezésével és műveletek útmutatója](security-center-planning-and-operations-guide.md) – megtudhatja, hogyan optimalizálható a Security Center alapján a vállalat biztonsági igényeinek és felhőfelügyeleti modelljének használatára.
-* [Biztonsági szabályzatok beállítása](https://docs.microsoft.com/azure/security-center/security-center-policies) – útmutató az Azure-előfizetések és -erőforráscsoportok biztonsági szabályzatainak konfigurálásához.
-* [Biztonsági javaslatok kezelése](https://docs.microsoft.com/azure/security-center/security-center-recommendations) – megtudhatja, miként könnyítik meg a javaslatok az Azure és az-Azure erőforrások védelmében.
-* [Biztonsági állapotfigyelés](https://docs.microsoft.com/azure/security-center/security-center-monitoring) – útmutató az Azure és az-Azure erőforrások állapotának figyelésére.
-* [Kezelése és válaszadás a biztonsági riasztások](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts) – útmutató kezelése és válaszadás a biztonsági riasztásokra.
-* [Partnermegoldások figyelése](https://docs.microsoft.com/azure/security-center/security-center-partner-solutions) – megtudhatja, hogyan figyelheti a partnermegoldások biztonsági állapotát.
-* [Security Center: GYIK](https://docs.microsoft.com/azure/security-center/security-center-faq) – gyakori kérdések a Security Center használatáról.
-
-
+<!--Image references-->
+[1]: ./media/security-center-intro/overview.png
+[2]: ./media/security-center-intro/security-policy.png
+[3]: ./media/security-center-intro/compute.png
+[4]: ./media/security-center-intro/recommendations.png
+[5]: ./media/security-center-intro/just-in-time-vm-access.png
+[6]: ./media/security-center-intro/adaptive-app-controls.png
+[7]: ./media/security-center-intro/security-alerts.png
+[8]: ./media/security-center-intro/security-solutions.png

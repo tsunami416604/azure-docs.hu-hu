@@ -10,13 +10,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 01/05/2017
 ms.author: lbosq
-ms.openlocfilehash: 4ae7d7e2c6ac54a6063d9ac0342083105610f026
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 14921dbeb0b670e4ec29a224caca07da12bfb82b
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="introduction-to-azure-cosmos-db-graph-api"></a>Bevezetés az Azure Cosmos DB: Graph API
 
@@ -103,7 +103,7 @@ Azure Cosmos-adatbázis a következő differenciált szolgáltatásokat a többi
 Azure Cosmos-adatbázis is használhat, több modellek, például a dokumentum és a graph belül az azonos tárolók adatbázisokat. Egy dokumentum gyűjtemény segítségével Diagramadatok és dokumentumok tárolására. SQL-lekérdezések JSON keresztül és a Gremlin lekérdezések segítségével egy grafikonon ugyanazokat az adatokat lekérdezni.
 
 ## <a name="get-started"></a>Bevezetés
-Használhatja az Azure parancssori felület (CLI), Azure PowerShell vagy az Azure-portál támogatással rendelkező Graph API Azure Cosmos DB fiókokat létrehozni. Miután létrehozta a fiókok, az Azure-portál például biztosít-e egy végpontot, `https://<youraccount>.graphs.azure.com`, biztosít egy WebSocket előtér Gremlin számára. Konfigurálhatja a TinkerPop-kompatibilis eszközök, például a [Gremlin konzol](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console), hogy ehhez a végponthoz kapcsolódni, és a Java, Node.js vagy bármely Gremlin ügyfél-illesztőprogram alkalmazások.
+Használhatja az Azure parancssori felület (CLI), Azure PowerShell vagy az Azure-portál támogatással rendelkező Graph API Azure Cosmos DB fiókokat létrehozni. Miután létrehozta a fiókok, az Azure-portál például biztosít-e egy végpontot, `https://<youraccount>.gremlin.cosmosdb.azure.com`, biztosít egy WebSocket előtér Gremlin számára. Konfigurálhatja a TinkerPop-kompatibilis eszközök, például a [Gremlin konzol](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console), hogy ehhez a végponthoz kapcsolódni, és a Java, Node.js vagy bármely Gremlin ügyfél-illesztőprogram alkalmazások.
 
 Az alábbi táblázat a népszerű Gremlin illesztőprogramok szemben Azure Cosmos DB használható:
 
@@ -143,7 +143,7 @@ Az alábbiakban néhány forgatókönyv graph támogatási Azure Cosmos-adatbáz
 
  A hálózati és egy grafikonon modellezve az IoT-eszközök közötti kapcsolatokat az eszközök és az eszközök állapotának jobb megértése hozhat létre. Is is megismerheti, hogyan a hálózat egy részét a módosítások hatással lehet egy másik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az Azure Cosmos Adatbázisba graph-támogatással kapcsolatos további tudnivalókért lásd:
 
 * Az első lépései a [Azure Cosmos DB graph oktatóanyag](create-graph-dotnet.md).

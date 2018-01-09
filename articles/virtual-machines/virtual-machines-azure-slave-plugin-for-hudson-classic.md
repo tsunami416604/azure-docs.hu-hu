@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
 ms.openlocfilehash: c11b59f8ea432075b147a391de4b7bd3331e639e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="how-to-use-the-azure-slave-plug-in-with-hudson-continuous-integration"></a>Az Azure alárendelt beépülő modul használata Hudson folyamatos integrációt
 Az Azure alárendelt Hudson beépülő modul lehetővé teszi, hogy hozzon létre az alárendelt csomópontok az Azure-on, amikor fut elosztott alkot.
@@ -181,7 +181,7 @@ Ebben a szakaszban egy alárendelt csomópont az Azure-on futó Hudson feladat c
 
 Hudson majd hozható létre az előző szakaszban létrehozott sablon használatával az alárendelt csomópont, és futtassa a parancsfájlt a feladathoz build lépésben megadott.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az Azure Javával való használatáról további információ: [Azure Java fejlesztői központ].
 
 <!-- URL List -->

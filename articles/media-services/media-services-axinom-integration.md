@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: willzhan;Mingfeiy;rajputam;Juliako
-ms.openlocfilehash: 64e8d4a88ea78e0de065e5a2c12dba4885e08bad
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 9a3aa1680ada03e4472db3a198a3b806511671ed
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>Az Axinom használata a Widevine-licencek kézbestéséhez az Azure Media Servicesbe
 > [!div class="op_single_selector"]
@@ -36,9 +36,9 @@ Ez a cikk ismerteti, hogyan integrálható, és tesztelje a Widevine licenckiszo
 
 * Konfigurálja a dynamic Common Encryption multi-DRM (PlayReady és Widevine) megfelelő licenc licenckérési URL;
 * A JWT jogkivonat létrehozása érdekében végzett eszközfigyelés a kiszolgáló licenckövetelmények;
-* Fejlesztés az Azure Media Player alkalmazást, mert a licenc beszerzési JWT jogkivonat hitelesítéssel; kezeli
+* Fejlesztés az Azure Media Player alkalmazást, amely kezeli a JWT jogkivonat hitelesítéssel; licenc beszerzése
 
-A teljes rendszer és a kulcs, kulcs azonosítója, kulcs kezdőérték, JTW token és a jogcímek az alábbi ábra legjobb jelentheti tartalom továbbítását.
+A teljes rendszert vagy a tartalomkulcsot, áramló kulcs azonosítója, kulcs kezdőérték, JTW token és a jogcímek legjobb jelentheti a következő ábra:
 
 ![VONAL- és CENC](./media/media-services-axinom-integration/media-services-axinom1.png)
 
@@ -47,13 +47,13 @@ A dinamikus védelem és a kulcs objektumtovábbítási szabályzat konfigurál�
 
 Dinamikus CENC védelmet az adatfolyam-rendelkeznek a következő mindkét DASH multi-DRM konfigurálható:
 
-1. PlayReady védelme MS Edge és IE11, amely a token engedélyezési korlátozások rendelkezhetnek. A token korlátozott házirend által a Secure Token Service (STS), például az Azure Active Directory; kiadott tokennek kell fűzni
+1. PlayReady-védelem MS Edge és IE11, amelynek a token engedélyezési korlátozás. A token korlátozott házirend által a Secure Token Service (STS), például az Azure Active Directory; kiadott tokennek kell fűzni
 2. Chrome Widevine védelmét, akkor lehet szükség tokent használó hitelesítés az egy másik STS által kibocsátott jogkivonatot. 
 
-Ellenőrizze a [JWT jogkivonat generációs](media-services-axinom-integration.md#jwt-token-generation) miért Azure Active Directory nem használható az STS szolgáltatással Axinom tartozó Widevine licenckiszolgáló szakaszát.
+Lásd: [JWT jogkivonat generációs](media-services-axinom-integration.md#jwt-token-generation) miért Azure Active Directory nem használható az STS szolgáltatással Axinom tartozó Widevine licenckiszolgáló szakaszát.
 
 ### <a name="considerations"></a>Megfontolandó szempontok
-1. A megadott Axinom kell használnia kulcs kezdőérték (8888000000000000000000000000000000000000) és a létrehozott vagy kiválasztott kulcs azonosítója a tartalomkulcs kulcs kézbesítési szolgáltatás létrehozásához. Licenckiszolgáló Axinom azonos kulcs mag, amely érvényes a teszteléshez és éles alapján tartalomkulcs tartalmazó összes licencet állít ki.
+1. A megadott Axinom kell használnia kulcs kezdőérték (8888000000000000000000000000000000000000) és a létrehozott vagy kiválasztott kulcs azonosítója a tartalomkulcs kulcs kézbesítési szolgáltatás létrehozásához. Axinom licenckiszolgáló azonos kulcs mag, amely érvényes a teszteléshez és éles alapján tartalomkulcs tartalmazó összes licencet.
 2. A Widevine licenc licenckérési URL-cím tesztelési: [https://drm-widevine-licensing.axtest.net/AcquireLicense](https://drm-widevine-licensing.axtest.net/AcquireLicense). A HTTP és a HTTS engedélyezettek.
 
 ## <a name="azure-media-player-preparation"></a>Az Azure Media Player előkészítése
@@ -65,14 +65,14 @@ A Widevine licenckiszolgáló Axinom által biztosított JWT jogkivonat hiteles�
 
 A többi AMP kód AMP dokumentumot mint szabványos AMP API [Itt](http://amp.azure.net/libs/amp/latest/docs/).
 
-Vegye figyelembe, hogy a fenti javascript beállítás egyéni engedélyezési fejléc továbbra is a rövid távú megközelítést, a hosszú távú megközelítést AMP felszabadul hivatalos előtt.
+A fenti javascript beállítás egyéni engedélyezési fejléc még mindig a rövid távú megközelítést előtt a hivatalos hosszú távú megközelítést AMP megjelenik.
 
 ## <a name="jwt-token-generation"></a>JWT jogkivonat létrehozása
 Tesztelési Axinom Widevine licenckiszolgáló JWT jogkivonat hitelesítés szükséges. Emellett a jogcímeket a JWT jogkivonat egyik egy összetett típusú egyszerű adattípus helyett.
 
 Sajnos az Azure AD csak abban az esetben JWT-jogkivonatokat a primitív típusú. Hasonlóképpen .NET-keretrendszer API (System.IdentityModel.Tokens.SecurityTokenHandler és JwtPayload) csak lehetővé teszi összetett objektumtípus bemeneti jogcímekként. Azonban a jogcímek továbbra is karakterláncként szerializálni. Ezért nem tudjuk használni, a két a JWT jogkivonat Widevine-licenc kérelem generálásához bármelyikét.
 
-John Sheehan [JWT Nuget-csomag](https://www.nuget.org/packages/JWT) megfelel az igényeinek, így a Nuget csomagot használni fogjuk.
+John Sheehan [JWT NuGet-csomag](https://www.nuget.org/packages/JWT) megfelel az igényeinek, így a NuGet csomagot használni fogjuk.
 
 Az alábbiakban van a kódot a szükséges JOGCÍMEKKEL Axinom Widevine licenckiszolgáló által megkövetelt tesztelési előállítása JWT jogkivonat esetében:
 
@@ -136,12 +136,12 @@ Licenckiszolgáló Axinom Widevine
 
 ### <a name="considerations"></a>Megfontolandó szempontok
 1. Annak ellenére, hogy AMS PlayReady-licenctovábbítási szolgáltatásra szükséges "tulajdonosi =" megelőző egy hitelesítési jogkivonatot, Axinom Widevine licenckiszolgáló nem használja fel.
-2. A Axinom kommunikációs kulcs aláírási kulcs lesz. Vegye figyelembe, hogy a kulcs egy hexadecimális karakterláncban azonban kezelni kell bájt karakterlánc sorozataként kódolás esetén. Ez a metódus ConvertHexStringToByteArray érhető el.
+2. A Axinom kommunikációs kulcs aláírási kulcs lesz. Fontos, hexadecimális karakterláncnak, de kezelni kell bájt karakterlánc sorozataként kódolás esetén. Ez a metódus ConvertHexStringToByteArray érhető el.
 
 ## <a name="retrieving-key-id"></a>Kulcsazonosítója beolvasása
 Talán észrevette, hogy a kód generálásához jwt-t a token, kulcs azonosító megadása kötelező. Mivel a JWT jogkivonat kell lennie a előtt betöltése AMP player, készen áll a kulcs Azonosítójának kell létrehozni a JWT jogkivonat kérhető.
 
-Az állomásokon többféleképpen is beolvasása tárolásához kulcs azonosítóját. Például tárolhatjuk egy kulcs azonosítója és egy adatbázisban tartalmak metaadatait. Vagy kérheti le kulcsazonosító DASH MPD (Media bemutató leírása) fájlból. Az alábbi kódot a ez utóbbi van.
+Természetesen többféleképpen is kulcs fenntartási beolvasandó azonosítóját. Például tárolhatjuk egy kulcs azonosítója és egy adatbázisban tartalmak metaadatait. Vagy kérheti le kulcsazonosító DASH MPD (Media bemutató leírása) fájlból. Az alábbi kódot a ez utóbbi van.
 
     //get key_id from DASH MPD
     public static string GetKeyID(string dashUrl)

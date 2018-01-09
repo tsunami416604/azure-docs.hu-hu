@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
 ms.author: garye
-ms.openlocfilehash: 31251e039414ee6f268aeb54f3eef755fcde9cb3
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: 5ecd569f68c2eada921193f2b7b88fe788120a9b
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-microsoft-azure-machine-learning-studio"></a>Gyorsreferencia a Machine Learning-algoritmusokhoz a Microsoft Azure Machine Learning Studióban
 A **Microsoft Azure Machine Learning algoritmus Cheat lap** segít kiválasztani, a jobb oldali egy prediktív elemzési modell algoritmusa.
@@ -53,7 +53,7 @@ Töltse le és lapot tud kinyomtatni a Machine Learning algoritmus Cheat tabloid
 
 * A javaslatok érhető el az algoritmus-Adatlap hozzávetőleges szabályok-az-görgetőgomb. Néhány hajlított, és néhány is lehet flagrantly betartva. Ennek célja felajánlja a kiindulási pontot. Ne ijedjen head-to-head verseny futtatásához több algoritmusok a adatai között. Nincs egyszerűen nem helyettesíti a ismertetése az egyes algoritmustípusok modelljeinek ezeket az alapelveket és a rendszer az adatokat létrehozó ismertetése.
 
-* Minden gépi tanulási algoritmus rendelkezik saját stílus vagy *induktív időeltérés*. Egy adott probléma lehet, hogy több algoritmusok megfelelő, és egy algoritmus lehet, mint a többire jobban megfelelnek. Azonban úgy is nem mindig tudja előre, ez az a legjobb térkihasználás érdekében. Ilyen esetekben több algoritmusok szereplő együtt a Adatlap. Próbálja meg egy algoritmust, és ha az eredmények még nem kielégítő, próbálja ki, a többi lehet a megfelelő stratégiát. A példában a [Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com/) egy kísérlet, amely megpróbál több algoritmusok elleni ugyanazokat az adatokat, és összehasonlítja az eredményeket: [több osztály osztályozó összehasonlítása: felismerés betűs](http://gallery.cortanaintelligence.com/Details/a635502fc98b402a890efe21cec65b92).
+* Minden gépi tanulási algoritmus rendelkezik saját stílus vagy *induktív időeltérés*. Egy adott probléma lehet, hogy több algoritmusok megfelelő, és egy algoritmus lehet, mint a többire jobban megfelelnek. Azonban úgy is nem mindig tudja előre, ez az a legjobb térkihasználás érdekében. Ilyen esetekben több algoritmusok szereplő együtt a Adatlap. Próbálja meg egy algoritmust, és ha az eredmények még nem kielégítő, próbálja ki, a többi lehet a megfelelő stratégiát. A példában a [Azure Eszközintelligencia-katalógus](http://gallery.cortanaintelligence.com/) egy kísérlet, amely megpróbál több algoritmusok elleni ugyanazokat az adatokat, és összehasonlítja az eredményeket: [több osztály osztályozó összehasonlítása: felismerés betűs](http://gallery.cortanaintelligence.com/Details/a635502fc98b402a890efe21cec65b92).
 
 * Gépi tanulás három fő kategóriába sorolhatók: **felügyelt tanítással**, **felügyelt tanítást**, és **megerősítése tanulási**.
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako;anilmur
-ms.openlocfilehash: 1115408443e11c8b0d26b83217c5f63e4b6ba819
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 036c192c5f52a1943bc2799ad6c7e6db7bbffcc4
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard-formátumok és -kodekek
 Ez a dokumentum a leggyakrabban használt importálási és exportálási fájlformátumot is használhatja a Media Encoder Standard listáját tartalmazza.
@@ -39,20 +39,20 @@ Ez a dokumentum a leggyakrabban használt importálási és exportálási fájlf
 | QuickTime (.mov) |Igen |
 
 > [!NOTE]
-> Újabb van a gyakrabban észlelt kiterjesztések listája. Media Encoder Standard támogatja számos más (például: .m2ts, .mpeg2video, .qt). Ha egy fájl kódolása próbál, és egy hibaüzenet jelenik meg a formátum nem támogatott kapcsolatos, adja meg a visszajelzés [Itt](https://feedback.azure.com/forums/169396-media-services/category/144411-encoding-and-processing/).
+> Újabb van a gyakrabban észlelt kiterjesztések listája. Media Encoder Standard támogatja számos más (például: .m2ts, .mpeg2video, .qt). Ha egy fájl kódolása próbál, és egy hibaüzenet jelenik meg a formátum nem támogatott kapcsolatos, visszajelzést a [Itt](https://feedback.azure.com/forums/169396-media-services/category/144411-encoding-and-processing/).
 > 
 > 
 
 ### <a name="audio-formats-in-input-containers"></a>A bemeneti tárolók hang formátumok
 Media Encoder Standard támogatja a következő hang formátumú bemeneti tárolókban lévő elvégzéséhez:
 
-* MXF, GXF és QuickTime fájlok, amely rendelkezik a időosztásos sztereó zeneszámok vagy 5.1 minták
+* MXF, GXF és QuickTime fájlok, amelyek zeneszámok időosztásos sztereó vagy 5.1 minták
 
 vagy
 
-* Amikor a hang végzik, külön PCM nyomon követi, de a csatorna hozzárendelését (sztereó vagy 5.1) a fájlok metaadatait is származtatható MXF, GXF és QuickTime fájlok
+* Amennyiben a hang külön PCM nyomon követi, de a csatorna hozzárendelését (sztereó vagy 5.1) végzik MXF GXF és QuickTime fájlok is származtatható a fájlok metaadatait
 
-Vegye figyelembe a támogató, explicit vagy felhasználó által megadott csatorna leképezés a közeljövőben megadni.
+A csatorna explicit vagy felhasználó által megadott leképezést támogatást nyújtanak a közeljövőben.
 
 ## <a name="input-video-codecs"></a>A bemeneti videó kodekek
 | A bemeneti videó kodekek | Támogatott |
@@ -107,7 +107,7 @@ A következő táblázat a kodekeket és a fájl formátumot, az Exportálás t�
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 [Az Azure Media Services kódolási igény tartalom](media-services-encode-asset.md)
 
 [A Media Encoder Standard kódolással](media-services-dotnet-encode-with-media-encoder-standard.md)

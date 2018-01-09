@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2017
 ms.author: wgries
-ms.openlocfilehash: 7d6cb91f97020ad60bd2ea74b24df76511956f38
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: d5864b8df85a5b3cec086d4cb2edc6d288f1639a
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="deploy-azure-file-sync-preview"></a>Azure fájlszinkronizálás (előzetes verzió) telepítése
 Sync szolgáltatás használatával Azure fájl (előzetes verzió) központosítása fájlmegosztások a szervezet Azure fájlokban, ugyanakkor változatlanul megőrizze a rugalmasság, a teljesítmény és a kompatibilitási egy helyszíni fájlkiszolgáló. Azure fájlszinkronizálás átalakítja a Windows Server az Azure fájlmegosztás gyors gyorsítótárába. Minden protokoll, amely a Windows Server helyileg, az adatok eléréséhez használhatja, többek között a ftps-t, SMB és NFS. Akkor is annyi gyorsítótárak világszerte szükség szerint.
@@ -72,6 +72,7 @@ Az Azure fájlszinkronizálás ügynök csomag egy letölthető, amely lehetőv�
 > [!Important]  
 > Ha szeretne használni az Azure fájlszinkronizálás feladatátvevő fürttel, az Azure fájlszinkronizálás ügynököt telepíteni kell a fürt minden csomópontján.
 
+
 Az Azure fájlszinkronizálás ügynök telepítési csomag viszonylag gyorsan és túl sok további kérdések nélkül kell telepíteni. Azt javasoljuk, tegye a következőket:
 - Hagyja meg az alapértelmezett telepítési útvonal (C:\Program Files\Azure\StorageSyncAgent), egyszerűbbé teheti a hibaelhárítás és a kiszolgáló.
 - Engedélyezheti a Microsoft Update Azure fájlszinkronizálás naprakészen tartásához. Minden frissítés Azure fájlszinkronizálás ügynökkel, beleértve a szolgáltatás-frissítéseket és gyorsjavításokat, fordulhat elő, a Microsoft Update szolgáltatásból. Azt javasoljuk, hogy a legújabb frissítés telepítése az Azure fájl Sync. További információkért lásd: [Azure fájlszinkronizálás házirend](storage-sync-files-planning.md#azure-file-sync-agent-update-policy).
@@ -119,6 +120,36 @@ A kiszolgáló végpont hozzáadásához válassza **létrehozása**. A fájlok 
 > [!Important]  
 > Felhő endpoint vagy a szinkronizálási csoport végpontját módosításokat végezheti el, és a fájlok szinkronizálta már a sync csoport végpontja. Ha módosítja a felhő végpontnak (Azure fájlmegosztás) közvetlenül, módosítások először kell egy Azure fájlszinkronizálás módosítás észlelése észlelhetők. A módosítás észlelése a felhőbeli végpont 24 óránként csak egyszer indítható. További információkért lásd: [Azure fájlok gyakran ismételt kérdések](storage-files-faq.md#afs-change-detection).
 
+## <a name="onboarding-with-azure-file-sync"></a>Bevezetés az Azure File-szinkronizálással
+A javasolt lépéseket érheti az Azure fájlszinkronizálás az első az állásidő nulla teljes fájl rögzített adatainak megőrzése mellett, és hozzáférés-vezérlési lista (ACL) a következők:
+ 
+1.  A tároló szinkronizálási szolgáltatás telepítése.
+2.  Hozzon létre egy szinkronizálási csoportot.
+3.  Azure fájl Sync-ügynök telepítése a kiszolgálón, a teljes adatkészlet.
+4.  Regisztrálja a kiszolgálót, és a kiszolgáló-végpont létrehozása a megosztáson. 
+5.  Tegye a teljes feltöltése az Azure fájlmegosztások (felhővégpontnak) szinkronizálás segítségével.  
+6.  A kezdeti feltöltés befejeződése után Azure fájlszinkronizálás ügynök telepítése minden egyes többi kiszolgálóját.
+7.  Új fájlmegosztásokat hozhat létre mindegyik a többi kiszolgálón.
+8.  Szükség esetén hozzon létre server végpontok felhő rétegzési házirendet, az új fájlmegosztások. (Ez a lépés szükséges további tárhely szükséges a kezdeti beállítás.)
+9.  A teljes névtér nélkül a tényleges adatátvitel gyors helyreállításával Azure fájlszinkronizálás ügynök segítségével. Névtér teljes szinkronizálása után a szinkronizálási motor betelik a helyi lemezterületet a felhő rétegzési házirendet a kiszolgáló végpont alapján. 
+10. Győződjön meg arról, szinkronizálás befejeződött, és tesztelje a topológia a kívánt módon működjenek. 
+11. Átirányítás a felhasználók és az alkalmazások erre a megosztásra.
+12. Opcionálisan törölheti bármely ismétlődő megosztások a kiszolgálókon.
+ 
+Ha nem rendelkezik a kezdeti bevezetése – megnövelt tárhely és a meglévő megosztások csatlakoztatni szeretne, akkor is előre feltöltheti az adatokat az Azure fájlmegosztásokat. Javasolt ezt a módszert használja, csak ha fogadja el az állásidőt, és feltétlenül garantálja az adatok változzon, a kiszolgálómegosztásokon a kezdeti bevezetési folyamat során. 
+ 
+1.  Győződjön meg arról, hogy bármely kiszolgálón lévő adatok a bevezetési folyamat során nem módosítható.
+2.  Előre vetőmag Azure fájlmegosztások bármely átviteli eszköz például az SMB protokollt használó kiszolgáló-adatokkal Robocopy, a közvetlen SMB-másolásra. Mivel az AzCopy nem feltölteni az adatokat az SMB-n keresztül, az előre összehangolása nem használható.
+3.  Hozzon létre Azure fájlszinkronizálás topológia a kívánt kiszolgálóhoz végpontok a meglévő megosztások mutat.
+4.  Egyeztetés folyamat összes végponton Befejezés szinkronizálás segítségével. 
+5.  Egyeztetés befejezése után megnyithatja a megosztások változásait.
+ 
+Felhívjuk a figyelmét arra, hogy jelenleg előzetes összehangolása megközelítés korlátai néhány- 
+- A fájlok teljes visszaadása nem őrződik meg. Például a fájlok ACL-EK és időbélyeg helyi időre megszakad.
+- Adatok módosításait a kiszolgálóra, mielőtt a szinkronizálási topológia teljes körűen működik-e és fut a kiszolgáló végpontok az ütközéseket okozhat.  
+- A felhőbeli végpont létrehozását követően a Azure fájlszinkronizálás futtat egy folyamatot, a fájlok észleléséhez a felhőben a kezdeti szinkronizálás indítása előtt. A folyamat befejezéséhez szükséges idő függ a számos tényező befolyásolja, például a hálózat sebességétől, a rendelkezésre álló sávszélesség és a fájlok és mappák száma. Az előzetes kiadásban nyers becsléséhez észlelési folyamat során lefuttat körülbelül 10 fájlok/mp.  Ezért, akkor is, ha előre összehangolása gyors fut, a teljes idő lekérni a teljes futó rendszer jelentősen hosszabb lehet a felhőben előzetesen kiemelt nem használt adatok.
+
+
 ## <a name="migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync"></a>Elosztott fájlrendszer replikációs szolgáltatása (DFS-R) központi telepítés Azure fájlszinkronizálás áttelepítése
 A DFS-R-telepítés át Azure fájlszinkronizálás:
 
@@ -135,6 +166,6 @@ A DFS-R-telepítés át Azure fájlszinkronizálás:
 
 További információkért lásd: [Azure fájlszinkronizálás együttműködési az elosztott fájlrendszer (DFS)](storage-sync-files-planning.md#distributed-file-system-dfs).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Hozzáadni vagy eltávolítani egy Azure-beli fájl szinkronizáló kiszolgáló végpont](storage-sync-files-server-endpoint.md)
 - [Regisztrálja, vagy a kiszolgáló regisztrációját az Azure fájlszinkronizálás](storage-sync-files-server-registration.md)

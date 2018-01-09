@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: juliako
-ms.openlocfilehash: c175d359f93e7cd8cd73aa498ad8b71c4ec497f2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c8792535eeeb71e7233c42bd9ea2a446a1c4d43c
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="output-metadata"></a>Kimeneti metaadatok
 ## <a name="overview"></a>Áttekintés
@@ -26,10 +26,10 @@ A kódolási feladat vagy társítva egy bemeneti eszköz (eszközök) a kíván
 
 Ha meg szeretne vizsgálni a metaadat-fájlt, akkor létrehozhat egy **SAS** lokátor és letöltés a fájlt a helyi számítógépen.  
 
-Ez a témakör ismerteti a elemek és az XML-séma típusú amelyiken a kimeneti metada (&lt;source_file_name&gt;_manifest.xml) alapul. A bemeneti eszköz metaadatait tartalmazó fájl kapcsolatos információkért lásd: [bemeneti metaadatok](media-services-input-metadata-schema.md).  
+Ez a cikk ismerteti a elemek és az XML-séma típusú amelyiken a kimeneti metada (&lt;source_file_name&gt;_manifest.xml) alapul. A bemeneti eszköz metaadatait tartalmazó fájl kapcsolatos információkért lásd: [bemeneti metaadatok](media-services-input-metadata-schema.md).  
 
 > [!NOTE]
-> A teljes séma kódot és az XML-példa Ez a témakör végén található.  
+> A teljes séma kódot és az XML-példa Ez a cikk végén található.  
 >
 >
 
@@ -37,7 +37,7 @@ Ez a témakör ismerteti a elemek és az XML-séma típusú amelyiken a kimeneti
 A kódolási feladat AssetFile bejegyzések gyűjteményét.  
 
 ### <a name="child-elements"></a>Gyermekelemek
-| Név | Leírás |
+| Name (Név) | Leírás |
 | --- | --- |
 | **AssetFile**<br/><br/> minOccurs = "0" maxOccurs = "1" |Egy [AssetFile elem](media-services-output-metadata-schema.md) részét képező a AssetFiles gyűjteményben. |
 
@@ -45,17 +45,17 @@ A kódolási feladat AssetFile bejegyzések gyűjteményét.
 Az XML-példa található [XML-példa](media-services-output-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Attribútumok
-| Név | Típus | Leírás |
+| Name (Név) | Típus | Leírás |
 | --- | --- | --- |
 | **Name (Név)**<br/><br/> Szükséges |**xs:String** |A media eszköz fájl neve. |
 | **Méret**<br/><br/> minInclusive = "0"<br/><br/> Szükséges |**xs:Long** |Fájl mérete, az eszköz bájt. |
 | **Időtartam**<br/><br/> Szükséges |**DURATION típusú** |Tartalom play hátsó időtartama. |
 
 ### <a name="child-elements"></a>Gyermekelemek
-| Név | Leírás |
+| Name (Név) | Leírás |
 | --- | --- |
 | **Adatforrások** |Gyűjtemény bemeneti/media forrásfájlok, annak érdekében, hogy a AssetFile feldolgozott. További információkért lásd: [Forráselem](media-services-output-metadata-schema.md). |
-| **VideoTracks**<br/><br/> minOccurs = "0" maxOccurs = "1" |Minden egyes fizikai AssetFile nulla vagy több videó nyomon követi a megfelelő tárolót formátumra időosztásos azt is tartalmazhat. Ez az adott videó nyomon követi a gyűjteménye. További információkért lásd: [VideoTracks elem](media-services-output-metadata-schema.md). |
+| **VideoTracks**<br/><br/> minOccurs = "0" maxOccurs = "1" |Azt minden fizikai AssetFile nulla vagy több videók tartalmazhat egy megfelelő tárolót formátumra időosztásos követi nyomon. További információkért lásd: [VideoTracks elem](media-services-output-metadata-schema.md). |
 | **AudioTracks**<br/><br/> minOccurs = "0" maxOccurs = "1" |Minden fizikai AssetFile azt egy megfelelő tárolót formátumra időosztásos nulla vagy több zeneszámok tartalmazhat. Ez az összes adott zeneszámok gyűjteménye. További információkért lásd: [AudioTracks elem](media-services-output-metadata-schema.md). |
 
 ## <a name="Sources "></a>Adatforrások elem
@@ -64,9 +64,9 @@ Gyűjtemény bemeneti/media forrásfájlok, annak érdekében, hogy a AssetFile 
 Az XML-példa található [XML-példa](media-services-output-metadata-schema.md#xml).  
 
 ### <a name="child-elements"></a>Gyermekelemek
-| Név | Leírás |
+| Name (Név) | Leírás |
 | --- | --- |
-| **Forrás**<br/><br/> minOccurs = "1" maxOccurs = "unbounded" |Egy bemeneti/forrásfájl Ez az eszköz létrehozásához használt. További információ: [Forráselem](media-services-output-metadata-schema.md). |
+| **Forrás**<br/><br/> minOccurs = "1" maxOccurs = "unbounded" |Egy bemeneti/forrásfájl Ez az eszköz létrehozásához használt. További információkért lásd: [Forráselem](media-services-output-metadata-schema.md). |
 
 ## <a name="Source "></a>Adatforrás
 Egy bemeneti/forrásfájl Ez az eszköz létrehozásához használt.  
@@ -74,17 +74,17 @@ Egy bemeneti/forrásfájl Ez az eszköz létrehozásához használt.
 Az XML-példa található [XML-példa](media-services-output-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Attribútumok
-| Név | Típus | Leírás |
+| Name (Név) | Típus | Leírás |
 | --- | --- | --- |
 | **Name (Név)**<br/><br/> Szükséges |**xs:String** |Bemeneti forrásfájl neve. |
 
 ## <a name="VideoTracks "></a>VideoTracks elem
-Minden egyes fizikai AssetFile nulla vagy több videó nyomon követi a megfelelő tárolót formátumra időosztásos azt is tartalmazhat. Ez az adott videó nyomon követi a gyűjteménye.  
+Azt minden fizikai AssetFile nulla vagy több videók tartalmazhat egy megfelelő tárolót formátumra időosztásos követi nyomon. A **VideoTracks** elem számoknak a videó követi nyomon.  
 
 Az XML-példa található [XML-példa](media-services-output-metadata-schema.md#xml).  
 
 ### <a name="child-elements"></a>Gyermekelemek
-| Név | Leírás |
+| Name (Név) | Leírás |
 | --- | --- |
 | **VideoTrack**<br/><br/> minOccurs = "1" maxOccurs = "unbounded" |Egy adott videót a szülő AssetFile nyomon. További információkért lásd: [VideoTrack elem](media-services-output-metadata-schema.md#VideoTrack). |
 
@@ -94,9 +94,9 @@ Egy adott videót a szülő AssetFile nyomon.
 Az XML-példa található [XML-példa](media-services-output-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Attribútumok
-| Név | Típus | Leírás |
+| Name (Név) | Típus | Leírás |
 | --- | --- | --- |
-| **Azonosítója**<br/><br/> minInclusive = "0"<br/><br/> Szükséges |**xs:INT** |Ez a videó track nulla alapú indexét. **Megjegyzés:** ez nem feltétlenül a TrackID használt MP4-fájlokat. |
+| **Azonosítója**<br/><br/> minInclusive = "0"<br/><br/> Szükséges |**xs:INT** |Ez a videó track nulla alapú indexét. **Megjegyzés:** ez **azonosító** nincs feltétlenül a TrackID használt MP4-fájlokat. |
 | **FourCC**<br/><br/> Szükséges |**xs:String** |Videó kodek FourCC kódot. |
 | **Profil** |**xs:String** |H264 profil (H264 kodek csak érvényes). |
 | **Szint** |**xs:String** |H264 szint (H264 kodek csak érvényes). |
@@ -111,12 +111,12 @@ Az XML-példa található [XML-példa](media-services-output-metadata-schema.md#
 | **MaxGOPBitrate**<br/><br/> minInclusive = "0" |**xs:INT** |Maximális GOP a videó nyomon követése, a kilobit / másodperc átlagos sávszélességű. |
 
 ## <a name="AudioTracks "></a>AudioTracks elem
-Minden fizikai AssetFile azt egy megfelelő tárolót formátumra időosztásos nulla vagy több zeneszámok tartalmazhat. Ez az összes adott zeneszámok gyűjteménye.  
+Minden fizikai AssetFile azt egy megfelelő tárolót formátumra időosztásos nulla vagy több zeneszámok tartalmazhat. A **AudioTracks** elem minden e zeneszámok gyűjteményét jelképezi.  
 
 Az XML-példa található [XML-példa](media-services-output-metadata-schema.md#xml).  
 
 ### <a name="child-elements"></a>Gyermekelemek
-| Név | Leírás |
+| Name (Név) | Leírás |
 | --- | --- |
 | **AudioTrack**<br/><br/> minOccurs = "1" maxOccurs = "unbounded" |Egy adott hang a szülő AssetFile nyomon. További információkért lásd: [AudioTrack elem](media-services-output-metadata-schema.md). |
 
@@ -126,7 +126,7 @@ Egy adott hang a szülő AssetFile nyomon.
 Az XML-példa található [XML-példa](media-services-output-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Attribútumok
-| Név | Típus | Leírás |
+| Name (Név) | Típus | Leírás |
 | --- | --- | --- |
 | **Azonosítója**<br/><br/> minInclusive = "0"<br/><br/> Szükséges |**xs:INT** |A hang követése nulla alapú indexét. **Megjegyzés:** ez nem feltétlenül a TrackID használt MP4-fájlokat. |
 | **Kodek** |**xs:String** |Zenei kodek karakterlánc. |
@@ -137,7 +137,7 @@ Az XML-példa található [XML-példa](media-services-output-metadata-schema.md#
 | **A BitsPerSample**<br/><br/> minInclusive = "0"<br/><br/> Szükséges |**xs:INT** |Bit / mintát eredményez, amely a wFormatTag formátumban írja be. |
 
 ### <a name="child-elements"></a>Gyermekelemek
-| Név | Leírás |
+| Name (Név) | Leírás |
 | --- | --- |
 | **LoudnessMeteringResultParameters**<br/><br/> minOccurs = "0" maxOccurs = "1" |Hangerő mérési eredmények paraméterek. További információkért lásd: [LoudnessMeteringResultParameters elem](media-services-output-metadata-schema.md). |
 
@@ -147,7 +147,7 @@ Hangerő mérési eredmények paraméterek.
 Az XML-példa található [XML-példa](media-services-output-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Attribútumok
-| Név | Típus | Leírás |
+| Name (Név) | Típus | Leírás |
 | --- | --- | --- |
 | **DPLMVersionInformation** |**xs:String** |**Dolby** szakmai hangerő mérési fejlesztési csomag verzióját. |
 | **DialogNormalization**<br/><br/> minInclusive = "-31" maxInclusive "-1" =<br/><br/> Szükséges |**xs:INT** |DPLM, kötelező, ha a LoudnessMetering beállítása során generált DialogNormalization |
@@ -510,7 +510,8 @@ Az XML-példa található [XML-példa](media-services-output-metadata-schema.md#
 
 
 ## <a name="xml"></a>XML-példa
- A kimeneti metaadatait tartalmazó fájl egy példát a következő:  
+
+A következő XML-kódja egy példa a kimeneti metaadatait tartalmazó fájl.  
 
     <AssetFiles xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"   
                 xmlns="http://schemas.microsoft.com/windowsazure/mediaservices/2013/05/mediaencoder/metadata">  
@@ -598,7 +599,7 @@ Az XML-példa található [XML-példa](media-services-output-metadata-schema.md#
       </AssetFile>  
     </AssetFiles>  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése

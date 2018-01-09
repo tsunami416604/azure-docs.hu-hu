@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2017
 ms.author: v-jysur
-ms.openlocfilehash: d1f6d3af5fc414d06f4a6d3aeda660b759a88353
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: ee5d8d118234ca0335922be1a29c6ce1e68eb7b6
+ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector-preview"></a>Csatlakozás ITSM termékek vagy szolgáltatások IT Service Management Connector (előzetes verzió)
 Ez a cikk tájékoztatást ad azokról a ITSM termékszolgáltatásból az informatikai szolgáltatás Management Connector (ITSMC) az OMS csatlakoztatása, és a munkaelemek központi kezelését. ITSMC kapcsolatos további információkért lásd: [áttekintése](log-analytics-itsmc-overview.md).
@@ -90,7 +90,7 @@ Használja az automatizált [parancsfájl](log-analytics-itsmc-service-manager-s
 Futtassa a parancsfájlt a következő szükséges adatok megadásával:
 
 - Azure-előfizetés részletei
-- Az erőforráscsoport neve
+- Erőforráscsoport neve
 - Hely
 - A Service Manager-kiszolgálóadatok (kiszolgáló neve, tartomány, felhasználónév és jelszó)
 - A webalkalmazás hely előtagja
@@ -171,17 +171,21 @@ Az alábbi minta kép a sikeres kapcsolat részleteit jeleníti meg:
 A következő szakaszok részletesen bemutatják a ServiceNow termék csatlakoztatása ITSMC az OMS Szolgáltatáshoz.
 
 ### <a name="prerequisites"></a>Előfeltételek
-
 Győződjön meg arról, a következő előfeltételek teljesülését:
-
 - A ITSMC telepítve. További információ: [felvétele az IT Service Connector megoldás](log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution).
-- A ServiceNow verzió – Fudzsi, Geneva, Helsinki támogatott.
+- A ServiceNow támogatott verziók: Dzsakarta, Isztambul, Helsinki, Geneva
 
-A ServiceNow rendszergazdák kell tegye a következőket a ServiceNow példányban:
-- Ügyfél-azonosító és a ServiceNow termék ügyfélkulcs létrehozása. Ügyfél-azonosító és a titkos kulcs létrehozása módjáról további információkért lásd: [OAuth telepítését](http://wiki.servicenow.com/index.php?title=OAuth_Setup).
-- Telepítse a Microsoft OMS-integráció (ServiceNow alkalmazás) felhasználói alkalmazás. [További információk](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.0 ).
+**A ServiceNow rendszergazdák a következőképpen kell a ServiceNow példányban**:
+- Ügyfél-azonosító és a ServiceNow termék ügyfélkulcs létrehozása. Ügyfél-azonosító és a titkos kulcs létrehozása módjáról további információkért lásd: a következő információkat szükség szerint:
+
+    - [A Dzsakarta OAuth beállítása](https://docs.servicenow.com/bundle/jakarta-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
+    - [A Isztambuli OAuth beállítása](https://docs.servicenow.com/bundle/istanbul-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
+    - [A Helsinki OAuth beállítása](https://docs.servicenow.com/bundle/helsinki-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
+    - [Geneva az OAuth beállítása](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
+
+
+- Telepítse a Microsoft OMS-integráció (ServiceNow alkalmazás) felhasználói alkalmazás. [További információk](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1).
 - A felhasználó az alkalmazás telepítve van az integráció felhasználói szerepkört létrehozni. Az integráció felhasználói szerepkör létrehozása található [Itt](#create-integration-user-role-in-servicenow-app).
-
 
 ### <a name="connection-procedure"></a>**Kapcsolat létesítése**
 A következő eljárással ServiceNow VPN-kapcsolat létrehozásához:
@@ -361,7 +365,7 @@ Az ügyfél-azonosító/kulcs Cherwell előállításához, a következő eljár
     ![Cherwell felhasználói azonosító](./media/log-analytics-itsmc/itsmc-cherwell-client-id.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
  - [Az OMS-értesítések ITSM munkaelemek létrehozása](log-analytics-itsmc-overview.md#create-itsm-work-items-for-oms-alerts)
  - [Az OMS-naplók ITSM munkaelemek létrehozása](log-analytics-itsmc-overview.md#create-itsm-work-items-from-oms-logs)
  - [Az Azure riasztásokból ITSM munkaelemek létrehozása](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)

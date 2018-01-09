@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/24/2017
 ms.author: elioda
-ms.openlocfilehash: 104c7465968f9dd063561dec011b8fd50f3ebaa8
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: 450f2d38f7b641bcf6b8be061969404a1b582b4c
+ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="iot-hub-query-language-for-device-twins-jobs-and-message-routing"></a>Az IoT-központ lekérdezési nyelv eszköz twins, a feladatok és az üzenet-útválasztás
 
@@ -153,7 +153,7 @@ A csoportosítás lekérdezés eredménye meghaladná az alábbi példához haso
 A leképezési lekérdezésekre a fejlesztők olyan érdeklő tulajdonságait adja vissza. Például az összes tevékenység legutóbbi beolvasása le eszközök használata a következő lekérdezést:
 
 ```sql
-SELECT LastActivityTime FROM devices WHERE ConnectionState = 'Disconnected'
+SELECT LastActivityTime FROM devices WHERE status = 'enabled'
 ```
 
 ### <a name="c-example"></a>C# – példa
