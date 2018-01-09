@@ -35,7 +35,9 @@
 #### [A Media Services frissítése tárelérési kulcsok váltása után](media-services-roll-storage-access-keys.md)
 #### [Adategységek felügyelete több tárfiókban](meda-services-managing-multiple-storage-accounts.md)
 ### [Kvóták és korlátozások](media-services-quotas-and-limitations.md)
-
+## [Postman konfigurálása](media-rest-apis-with-postman.md)
+### [Környezet](postman-environment.md)
+### [Gyűjtemény](postman-collection.md)
 ## Tartalom feltöltése
 ### Fájlok feltöltése egy fiókba
 #### [Azure Portal](media-services-portal-upload-files.md)
@@ -121,7 +123,7 @@
 ### [Specifikáció: darabolt MP4 élő feldolgozása](media-services-fmp4-live-ingest-overview.md)
 
 ## [Klipekkel kapcsolatos tartalmak](media-services-azure-media-clipper-overview.md)
-### [Első lépések](media-services-azure-media-clipper-getting-started.md)
+### [Bevezetés](media-services-azure-media-clipper-getting-started.md)
 ### [Videók betöltése](media-services-azure-media-clipper-load-assets.md)
 ### [Billentyűparancsok konfigurálása](media-services-azure-media-clipper-keyboard-shortcuts.md)
 ### [Honosítás konfigurálása](media-services-azure-media-clipper-localization.md)
@@ -227,10 +229,10 @@
 ## [.NET](/dotnet/api/microsoft.windowsazure.mediaservices.client)
 ## [REST](/rest/api/media/mediaservice)  
 
-# Erőforrások
+# További források
 ## [Azure Media Services-közösség](media-services-community.md)
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=web-mobile)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/media-services/)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
-## [Kibocsátási megjegyzések](media-services-release-notes.md)
+## [Kiadási megjegyzések](media-services-release-notes.md)
 ## [Videók](https://azure.microsoft.com/resources/videos/index/?services=media-services)
