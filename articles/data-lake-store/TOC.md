@@ -12,7 +12,7 @@
 
 # Útmutató
 ## Adatok betöltése és áthelyezése
-### [Az Azure Data Factory használata](../data-factory/data-factory-azure-datalake-connector.md)
+### [Az Azure Data Factory használata](../data-factory/connector-azure-data-lake-store.md)
 ### [Az AdlCopy használata](data-lake-store-copy-data-azure-storage-blob.md)
 ### [A DistCp használata](data-lake-store-copy-data-wasb-distcp.md)
 ### [A Sqoop használata](data-lake-store-data-transfer-sql-sqoop.md)
@@ -89,7 +89,7 @@
 ## [REST](/rest/api/datalakestore)
 ## [Azure CLI](https://docs.microsoft.com/cli/azure/dls)
 
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Data Lake Store blog](https://blogs.msdn.microsoft.com/azuredatalake/)
 ## [Visszajelzés küldése a UserVoice-ról](https://feedback.azure.com/forums/327234-data-lake)
