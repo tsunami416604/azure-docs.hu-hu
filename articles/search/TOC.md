@@ -51,7 +51,7 @@
 ### [Azure Blob Storage-indexelő](search-howto-indexing-azure-blob-storage.md)
 ### [Azure Table Storage-indexelő](search-howto-indexing-azure-tables.md)
 ### [Azure SQL-indexelő](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-### [Azure Cosmos DB-indexelő](search-howto-index-documentdb.md)
+### [Azure Cosmos DB-indexelő](search-howto-index-cosmosdb.md)
 ### [CSV-blobok indexelése](search-howto-index-csv-blobs.md)
 ### [JSON-blobok indexelése](search-howto-index-json-blobs.md)
 ### [Az indexelő az Azure virtuális gépen futó SQL Serverhez való csatlakozásának konfigurálása](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
@@ -84,7 +84,7 @@
 ### [Forgalmi elemzések keresése](search-traffic-analytics.md)
 ### [Teljesítmény és optimalizálás](search-performance-optimization.md)
 
-# Referencia
+# Hivatkozás
 
 ## [.NET](/dotnet/api/?term=microsoft.azure.search)
 ## [.NET (Felügyelet)](/dotnet/api/?term=microsoft.azure.management.search)
@@ -93,7 +93,7 @@
 ## [.REST (Felügyelet)](/rest/api/searchmanagement)
 ## [Szolgáltatási REST (előzetes verzió)](search-api-2016-09-01-preview.md)
 
-# Erőforrások
+# További források
 
 ## [GYIK – Gyakori kérdések](search-faq-frequently-asked-questions.md)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/search/)
