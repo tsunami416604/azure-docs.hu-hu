@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: maheshu
-ms.openlocfilehash: 4e95cd128c0c8ee8492e7bd224afc317101f346c
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
-ms.translationtype: MT
+ms.openlocfilehash: 52eaf66f829f22313c72bd6eeea38b796ff18465
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Az Azure Active Directory tartományi szolgáltatások: Gyakran ismételt kérdések (GYIK)
 Ezen a lapon az Azure Active Directory tartományi szolgáltatások kapcsolatos gyakori kérdésekre. Tartsa biztonsági frissítések keresése.
@@ -47,9 +47,6 @@ A szolgáltatás nem támogatja közvetlenül ebben a forgatókönyvben. A felü
 
 #### <a name="can-i-enable-azure-ad-domain-services-using-powershell"></a>PowerShell-lel Azure AD tartományi szolgáltatások engedélyezése
 Igen. Lásd: [engedélyezése az Azure AD tartományi szolgáltatások a PowerShell használatával hogyan](active-directory-ds-enable-using-powershell.md).
-
-#### <a name="is-azure-ad-domain-services-available-in-the-new-azure-portal"></a>Azure AD tartományi szolgáltatások érhető el az új Azure-portálon?
-Igen. Azure AD tartományi szolgáltatások használatával konfigurálható a [Azure-portálon](https://portal.azure.com). A [klasszikus Azure portálon](https://manage.windowsazure.com) már nem támogatott.
 
 #### <a name="can-i-enable-azure-ad-domain-services-using-a-resource-manager-template"></a>A Resource Manager sablonnal Azure AD tartományi szolgáltatások engedélyezése
 Igen. Lásd: [engedélyezése az Azure AD tartományi szolgáltatások a PowerShell használatával hogyan](active-directory-ds-enable-using-powershell.md).

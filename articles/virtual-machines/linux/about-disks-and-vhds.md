@@ -1,24 +1,20 @@
 ---
 title: "Hamarosan nem felügyelt (lapblobokat) és a lemezek tárolási felügyelt Microsoft Azure Linux virtuális gépek |} Microsoft Docs"
 description: "További tudnivalók a alapjait nem felügyelt (lapblobokat) és a felügyelt Linux virtuális gépek Azure-lemezeket tároló."
-services: storage
-documentationcenter: 
-author: robinsh
-manager: timlt
-editor: tysonn
-ms.assetid: 7be8dd52-98f7-4187-9b78-55197915bc9b
-ms.service: storage
+services: virtual-machines
+author: iainfoulds
+manager: jeconnoc
+ms.service: virtual-machines
 ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.tgt_pltfrm: linux
 ms.topic: article
 ms.date: 11/15/2017
-ms.author: robinsh
-ms.openlocfilehash: fee78c87c1d73f2a0816d6e52ad48a93eef8dfc3
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.author: iainfou
+ms.openlocfilehash: 107e332a0f8c9d5a84a74de685ca458fb29caa8b
+ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="about-disks-storage-for-azure-linux-vms"></a>Lemezek tárolás Azure Linux virtuális gépekhez
 Csakúgy, mint bármely más számítógépre az Azure virtuális gépek lemezek használatával egy olyan hely az operációs rendszerek, alkalmazások és adatok tárolására. Minden Azure virtuális gépek legalább két lemezt – a Linux operációs rendszer és egy ideiglenes lemezzel rendelkezik. Az operációs rendszer lemez létrehozása lemezkép, és mind az operációsrendszer-lemez, és a lemezkép ténylegesen tárolt virtuális merevlemezek (VHD) az Azure storage-fiók. Virtuális gépek is rendelkeznek legalább egy adatlemezt, virtuális merevlemezekként is tárolt. 
@@ -45,7 +41,7 @@ Hogyan Azure használja az ideiglenes lemez a további információkért lásd: 
 Adatlemezt tartalmazó virtuális merevlemez csatolva van egy virtuális gép tárolásához, alkalmazás vagy egyéb adatok szüksége. Az adatlemezek SCSI meghajtóként regisztrálva van, és az Ön által betűvel fel van tüntetve. Minden egyes adatlemez 4095 GB maximális kapacitása nem. A virtuális gép mérete határozza meg, hány adatlemezt csatol, és a tároló típusa szerinti használhatja a lemezek.
 
 > [!NOTE]
-> Virtuális gépek kapacitások kapcsolatos további tudnivalókért lásd: [Linux virtuális gépek méretei](../windows/sizes.md).
+> Virtuális gépek kapacitások kapcsolatos további tudnivalókért lásd: [Linux virtuális gépek méretei](./sizes.md).
 > 
 
 Azure operációsrendszer-lemez hoz létre, amikor egy virtuális gépet hoz létre a lemezkép. Ha adatlemezt tartalmaz egy képet, a Azure is létrehoz az adatlemezek, amikor létrehozza a virtuális gép. Ellenkező esetben az adatlemezek hozzáadása, a virtuális gép létrehozása után.
@@ -57,7 +53,7 @@ Adhat hozzá adatlemezt egy virtuális gép bármikor, az **csatolása** a lemez
 ## <a name="troubleshooting"></a>Hibaelhárítás
 [!INCLUDE [virtual-machines-linux-lunzero](../../../includes/virtual-machines-linux-lunzero.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A lemez csatolása](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) további tárhely hozzáadása a virtuális gép számára.
 * [Pillanatkép létrehozása](snapshot-copy-managed-disk.md).
 * [Alakítsa át a felügyelt](convert-unmanaged-to-managed-disks.md).

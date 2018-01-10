@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/13/2016
 ms.author: aelnably
-ms.openlocfilehash: dc252903571857b5fc89d1d9a2c63cd6b44e9021
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8f58464ac212b84623d2287205271301dbaa0ffb
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>Azure App Service alkalmazás klónozása a PowerShell használatával
 A Microsoft Azure PowerShell verziója 1.1.0-ás kiadása egy új beállítás klónozni egy már meglévő webalkalmazás egy újonnan létrehozott alkalmazás egy másik régióban vagy ugyanabban a régióban képes tenné a felhasználónak új AzureRMWebApp bővült. Ez lehetővé teszi az ügyfelek központi telepítése a alkalmazások számos különböző régiókban teljes gyorsan és egyszerűen.
@@ -102,6 +102,7 @@ Ez a funkció jelenleg előzetes verzióban érhetők, új képességeket adhat 
 * A kudu bővítmény nem klónozható vannak
 * Tipp szabályok nem klónozható vannak
 * Adatbázis-tartalom nem klónozható vannak
+* Kimenő IP-címek változik, ha a Klónozás egy másik skálázási egység
 
 ### <a name="references"></a>Referencia
 * [Webes alkalmazás klónozása](app-service-web-app-cloning.md)

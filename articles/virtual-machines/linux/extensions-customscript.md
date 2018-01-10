@@ -15,14 +15,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: danis
-ms.openlocfilehash: 3f8eeb71027d9bdd5c72570bd07d673136646e6c
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 53a241f12373acdb5d40575915d8d6c2f3c86b9a
+ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="using-the-azure-custom-script-extension-with-linux-virtual-machines"></a>Az Azure egyéni parancsprogramok futtatására szolgáló bővítmény használata a Linux virtuális gépek
-Az egyéni parancsprogramok futtatására szolgáló bővítmény és hajtanak végre a parancsfájl az Azure virtuális gépeken. A bővítmény akkor hasznos, ha a feladás egy vagy több központi telepítés konfigurálása, a szoftver telepítése vagy a más beállításokat / kezelési feladatot. Parancsfájlok le: az Azure storage vagy más elérhető internet helyen, vagy a bővítmény futásidejű megadott. Az egyéni parancsprogramok futtatására szolgáló bővítmény integrálódik az Azure Resource Manager-sablonok, és is futtathat az Azure parancssori felület, PowerShell, Azure-portálon vagy az Azure virtuális gép REST API használatával.
+Az egyéni parancsprogramok futtatására szolgáló bővítmény és hajtanak végre a parancsfájl az Azure virtuális gépeken. A bővítmény az üzembe helyezést követő konfiguráció, szoftvertelepítés, illetve bármely konfigurációs/felügyeleti feladat végrehajtása során hasznos. Parancsfájlok le: az Azure storage vagy más elérhető internet helyen, vagy a bővítmény futásidejű megadott. Az egyéni parancsprogramok futtatására szolgáló bővítmény integrálódik az Azure Resource Manager-sablonok, és is futtathat az Azure parancssori felület, PowerShell, Azure-portálon vagy az Azure virtuális gép REST API használatával.
 
 Ez a dokumentum az Azure parancssori felület és az Azure Resource Manager-sablon az egyéni parancsprogramok futtatására szolgáló bővítmény használatával, és adatokat is a Linux rendszereken hibaelhárítási lépéseket részletezi.
 
@@ -77,7 +77,7 @@ az vm extension set '
   --vm-name exttest `
   --name customScript `
   --publisher Microsoft.Azure.Extensions `
-  --settings '{"fileUris": ["https://raw.githubusercontent.com/neilpeterson/test-extension/master/test.sh"],"commandToExecute": "./test.sh"}'
+  --settings '{"fileUris": ["https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-linux/scripts/config-music.sh"],"commandToExecute": "./config-music.sh"}'
 ```
 
 ### <a name="azure-cli-examples"></a>Az Azure CLI példák
@@ -86,8 +86,8 @@ az vm extension set '
 
 ```json
 {
-  "fileUris": ["https://raw.githubusercontent.com/neilpeterson/test-extension/master/test.sh"],
-  "commandToExecute": "./test.sh"
+  "fileUris": ["https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-linux/scripts/config-music.sh"],
+  "commandToExecute": "./config-music.sh"
 }
 ```
 
@@ -199,7 +199,7 @@ Az Azure egyéni parancsprogramok futtatására szolgáló bővítmény futtatha
 }
 ```
 
-Lásd: a .net Core zene tároló bemutató teljes példa - [zene tároló bemutató](https://github.com/neilpeterson/nepeters-azure-templates/tree/master/dotnet-core-music-linux-vm-sql-db).
+Lásd: a .net Core zene tároló bemutató teljes példa - [zene tároló bemutató](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux).
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 Ha az egyéni parancsprogramok futtatására szolgáló bővítmény fut, a parancsfájl létrehozásakor vagy egy olyan könyvtárba, az alábbi példához hasonló letöltött. A parancs kimenetében is menti a könyvtárba, amely a `stdout` és `stderr` fájlt.
@@ -232,6 +232,6 @@ data:    Microsoft.OSTCExtensions    Microsoft.Insights.VMDiagnosticsSettings  2
 info:    vm extension get command OK
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A többi virtuális gép parancsfájl-kiterjesztés információkért lásd: [Linux Azure parancsprogramok futtatására szolgáló bővítmény áttekintése](extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 

@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 08/04/2017
 ms.author: yoelh
-ms.openlocfilehash: 54bf10acfb885042278c4457a70ec86248c96c1c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d389a44ce38d84e510060f3b0a53cda58513dee5
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="azure-active-directory-b2c-add-google-as-an-oauth2-identity-provider-using-custom-policies"></a>Az Azure Active Directory B2C: Hozzáadása Google + identitás-szolgáltatóként OAuth2 egyéni házirendekkel
 
@@ -175,7 +175,7 @@ Az identitásszolgáltató beállítása.  Azonban nincs sem a sign-Close-Up/sig
 1.  Nyissa meg a házirend (például TrustFrameworkBase.xml) Alap fájlt.
 2.  Keresés a `<UserJourneys>` elem és a teljes tartalmának másolása a `<UserJourneys>` csomópont.
 3.  Nyissa meg a bővítmény (például TrustFrameworkExtensions.xml) fájlt, és keresse a `<UserJourneys>` elemet. Ha az elem nem létezik, vegyen fel egyet.
-4.  Illessze be a teljes tartalmát `<UserJournesy>` csomópont gyermekeként másolt a `<UserJourneys>` elemet.
+4.  Illessze be a teljes tartalmát `<UserJourney>` csomópont gyermekeként másolt a `<UserJourneys>` elemet.
 
 ### <a name="display-the-button"></a>A gomb megjelenítése
 A `<ClaimsProviderSelections>` elem definiálja a jogcímeket szolgáltató tanúsítványválasztási beállítások és a sorrendjük listáját.  `<ClaimsProviderSelection>`a elem egy identity provider gombra a sign-Close-Up/sign-in oldalán hasonló. Ha ad hozzá egy `<ClaimsProviderSelection>` elem Google + fiókhoz, egy új gomb megjelenik, amikor egy felhasználó fájljai az oldalon. Ez az elem hozzáadása:
@@ -243,6 +243,14 @@ Most, hogy a gomb helyen, hogy egy művelet kapcsolódnia kell. A műveleti fió
 ```xml
 <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAUTH" />
 ```
+
+### <a name="upload-the-policy-to-your-tenant"></a>A házirend a bérlő feltöltése
+1.  A a [Azure-portálon](https://portal.azure.com), átváltani a [az Azure AD B2C-bérlő kontextusában](active-directory-b2c-navigate-to-b2c-context.md), és nyissa meg a **az Azure AD B2C** panelen.
+2.  Válassza ki **identitás élmény keretrendszer**.
+3.  Nyissa meg a **házirend** panelen.
+4.  Válassza ki **házirend feltöltése**.
+5.  Ellenőrizze a **felülírja a házirendet, ha létezik** mezőbe.
+6.  **Töltse fel** TrustFrameworkExtensions.xml, és győződjön meg arról, hogy azt nem az érvényesítés.
 
 ### <a name="test-the-custom-profile-edit-policy-by-using-run-now"></a>Tesztelje az egyéni házirend profil-módosítása segítségével futtatása most
 

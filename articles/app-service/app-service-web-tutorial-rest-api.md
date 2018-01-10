@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 06/13/2017
 ms.author: rachelap
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 2170ac7df3b894c8d19b432abdcfef5c7fd75ff4
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 81d08e047a3689d110195f2325b52c6c0457e644
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="build-a-nodejs-restful-api-and-deploy-it-to-an-api-app-in-azure"></a>Node.js RESTful API buildjének elkészítése és telepítése Azure-ban futó API-alkalmazásba
 
@@ -84,7 +84,7 @@ Amikor a Swaggerize egy projekt nevének megadását kéri, használja a *Contac
 1. Másolja a *lib* mappát a `yo swaggerize` által létrehozott *ContactList* mappába, majd lépjen a *ContactList* könyvtárába.
 
     ```bash
-    cp -r lib/ ContactList/
+    cp -r lib ContactList/
     cd ContactList
     ```
 
@@ -246,14 +246,22 @@ Ebben a szakaszban az Azure CLI 2.0 használatával hozhatja létre az API Azure
     node_modules/
     ```
     Ellenőrizze, hogy a rendszer figyelmen kívül hagyja-e a `node_modules`-mappát a `git status` állapottal.
+    
+4. Adja hozzá a következő sorokat `package.json`. A Swaggerize által generált kódot nem adja meg a Node.js motor egy verziót. A verzió megadása nélkül Azure verzióját használja, az alapértelmezett `0.10.18`, amely nem felel meg a generált kódot.
 
-4. Véglegesítse a tárházon végzett módosításokat.
+    ```javascript
+    "engines": {
+        "node": "~0.10.22"
+    },
+    ```
+
+5. Véglegesítse a tárházon végzett módosításokat.
     ```bash
     git add .
     git commit -m "initial version"
     ```
 
-5. [!INCLUDE [Push to Azure](../../includes/app-service-api-git-push-to-azure.md)]  
+6. [!INCLUDE [Push to Azure](../../includes/app-service-api-git-push-to-azure.md)]  
  
 ## <a name="test-the-api--in-azure"></a>Az API tesztelése az Azure-ban
 

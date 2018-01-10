@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2017
 ms.author: markvi
-ms.openlocfilehash: 7f9431a695f2acaa2067e623788a0c3c3b4183c9
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 054705e802867fda666c80217396db197c60f50e
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="settings-and-data-roaming-faq"></a>Beállítások és adatroaming GYIK
 Ez a témakör néhány rendszergazdák rendelkezhet beállításait, valamint az alkalmazás adatszinkronizálás kérdésekre ad választ.
@@ -72,7 +72,7 @@ Windows 10 November 2015-ös vagy újabb kiadásaiban a vállalati Állapothordo
 ## <a name="do-settings-sync-for-azure-ad-accounts-from-multiple-tenants"></a>Azure AD-fiókok több bérlő beállítások is szinkronizálja?
 Ha több Azure AD különböző fiókok Azure AD bérlőre ugyanarra az eszközre, frissítenie kell az eszköz beállításjegyzékébe minden Azure AD-bérlő az Azure Rights Management (Azure RMS) folytatott kommunikációhoz.  
 
-1. Minden Azure AD-bérlő a GUID keresése. Nyissa meg az Azure-portálon, és válassza ki az Azure AD-bérlő. A bérlőhöz tartozó GUID szerepel az URL-CÍMÉT a böngésző címsorába. Például:`https://manage.windowsazure.com/YourAccount.onmicrosoft.com#Workspaces/ActiveDirectoryExtension/Directory/Tenant GUID/directoryQuickStart`
+1. Minden Azure AD-bérlő a GUID keresése. Nyissa meg az Azure-portálon, és válassza ki az Azure AD-bérlő. A bérlőhöz tartozó GUID még a Tulajdonságok lapon a kiválasztott bérlő (https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) címkével **könyvtár-azonosítója**. 
 2. Miután a globálisan egyedi Azonosítót, akkor a beállításkulcs **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<bérlői azonosító GUID >**.
    Az a **bérlői azonosító GUID** kulcsot, hozzon létre egy új karakterláncsoros értéket (REG-MULTI-SZ) **AllowedRMSServerUrls**. Az adatait adja meg a licencelési terjesztési pont URL-címei a más Azure bérlőre, az eszköz hozzáférő.
 3. A terjesztési pont licencelési URL-címeket található futtatásával a **Get-AadrmConfiguration** parancsmag. Ha az értékek a **LicensingIntranetDistributionPointUrl** és **LicensingExtranetDistributionPointUrl** eltérőek, mindkét értéket adni. Ha az értékek megegyeznek, csak egyszer adja meg az értéket.

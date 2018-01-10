@@ -1,5 +1,5 @@
 ---
-title: "Az Azure részletes használatának megértéséhez |} Microsoft Docs"
+title: "Az Azure részletes használatának megismerése"
 description: "Megtudhatja, hogyan Elolvastam és megértettem a részletes használati CSV Azure-előfizetése szakasza"
 services: 
 documentationcenter: 
@@ -14,13 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: tonguyen
-ms.openlocfilehash: a99e0dfea16f9fe9776d24fc94eac9ee18c7b2b6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 999f24b5a5c1bd5d259b785f9107697d2928b4eb
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="understand-terms-on-your-microsoft-azure-detailed-usage-charges"></a>A Microsoft Azure részletes használati költségek feltételek megismerése 
+
 A részletes használati költségek CSV-fájlt az aktuális elszámolási időszak napi és mérési szintű használati díjak tartalmazza. 
 
 A részletes használati fájl megtekinteni [beszerzéséről a számla és a napi használati adatok számlázási Azure](billing-download-azure-invoice-daily-usage-date.md).
@@ -28,15 +29,14 @@ Rendszerben elérhető megnyithat egy táblázat alkalmazásban vesszővel tagol
 
 Használati díjak az összes **havi** költségek az előfizetést. A használati díjak ne vegye figyelembe, bármely kreditek és az esetleges kedvezményeket.
 
-
-<div style="padding-top: 56.25%; position: relative; width: 100%;">
-<iframe style="position: absolute;top: 0;left: 0;right: 0;bottom: 0;" width="100%" height="100%" src="https://www.youtube.com/embed/p13S350M2Vk" frameborder="0" allowfullscreen></iframe>
-</div>
+>[!VIDEO https://www.youtube.com/embed/p13S350M2Vk]
 
 ## <a name="detailed-terms-and-descriptions-of-your-detailed-usage-file"></a>Részletes feltételeket és a részletes használati fájl leírása
+
 A következő szakaszok ismertetik a fontos fogalmakat tartalmazza a 2-es verziójának a részletes használati fájl is látható.
 
 ### <a name="statement"></a>Utasítás
+
 A részletes használati CSV-fájl felső részén látható a szolgáltatások Számlázási hónap során használt. A következő táblázat a használati leírása itt látható.
 
 | Időtartam | Leírás |

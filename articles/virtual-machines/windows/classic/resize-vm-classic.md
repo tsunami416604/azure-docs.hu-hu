@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/19/2016
 ms.author: drewm
 ms.openlocfilehash: 4277bc8394c7ba140291e9dc776162e87deab96b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="resize-a-windows-vm-created-in-the-classic-deployment-model"></a>A Windows virtuális gép létrehozása a klasszikus üzembe helyezési modellel átméretezése
 Ez a cikk bemutatja, hogyan méretezze át egy Windows virtuális Gépet, a klasszikus üzembe helyezési modellel, az Azure Powershell használatával létrehozni.
@@ -66,6 +66,6 @@ A virtuális gép nem érhető el, a hardver-fürt a virtuális Gépet, a felhő
 
 Egy minta parancsfájlt törlése és újbóli létrehozása egy felhőszolgáltatás, új Virtuálisgép-méretet használó található [Itt](https://github.com/Azure/azure-vm-scripts). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A virtuális gép létrehozása a Resource Manager üzembe helyezési modellel átméretezése](../resize-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

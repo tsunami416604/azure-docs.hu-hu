@@ -1,5 +1,5 @@
 ---
-title: "Az Azure számla ismertetése |} Microsoft Docs"
+title: "Az Azure számla ismertetése"
 description: "Az Azure-előfizetés használatának és számlájának értelmezése"
 services: 
 documentationcenter: 
@@ -14,13 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: tonguyen
-ms.openlocfilehash: edd4702ccab9162329bf83993d236eec9ec40b3f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 54de5e123dbb51948eb62d90b444ebd78f9879cb
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>A Microsoft Azure számlán feltételek megismerése
+
 A számla összefoglalja a költségek, és fizetésre vonatkozó utasításokat tartalmazza. A Portable Document Format (.pdf) a letölthető érhető el a [Azure-portálon](https://portal.azure.com/) vagy e-mailben küldhetők el. További információkért lásd: [beszerzéséről a számla és a napi használati adatok számlázási Azure](billing-download-azure-invoice-daily-usage-date.md).
 
 Néhány dolgot figyelembe venni:
@@ -31,9 +32,7 @@ Néhány dolgot figyelembe venni:
 
 -   A nemzetközi ügyfelek számlázási utasítás szerepel költségek olyan jelleggel becslése. Előfordulhat, hogy a bankokkal átváltási különböző költségeit.
 
-<div style="padding-top: 56.25%; position: relative; width: 100%;">
-<iframe style="position: absolute;top: 0;left: 0;right: 0;bottom: 0;" width="100%" height="100%" src="https://www.youtube.com/embed/jWG1lyJe3Mg" frameborder="0" allowfullscreen></iframe>
-</div>
+>[!VIDEO https://www.youtube.com/embed/jWG1lyJe3Mg]
 
 ## <a name="detailed-terms-and-descriptions-of-your-invoice"></a>Részletes feltételeket és a számla leírása
 Az alábbi szakaszok tartalmazzák a fontos fogalmakat tartalmazza, megtekintheti a számla és leírások minden kifejezéshez.
@@ -99,7 +98,7 @@ A következő táblázat ismerteti a használati díjak oszlopfejlécek a száml
 
 | Időtartam |Leírás |
 | --- | --- |
-| Név |A legfelső szintű szolgáltatást a használati azonosító |
+| Name (Név) |A legfelső szintű szolgáltatást a használati azonosító |
 | Típus |Az Azure szolgáltatás típusa, amelyek hatással lehetnek a sebesség meghatározása |
 | Erőforrás |A mérő feldolgozottként mértékegysége azonosítja. |
 | Régió |Az egyes szolgáltatások árú datacenter helye alapján adatközpont helye |

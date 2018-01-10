@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/3/2017
 ms.author: jeedes
-ms.openlocfilehash: c8c56cd3e222e8e9ebf4cd3bb5109b6f552ec387
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: b4d96df72fd7f8f817140e7599e22a63ddd79910
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws"></a>Oktatóanyag: Azure Active Directory-integráció Amazon Web Services (AWS)
 
@@ -116,8 +116,8 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     
     | Attribútum neve  | Attribútum értéke | Névtér |
     | --------------- | --------------- | --------------- |
-    | rolesessionname | User.userPrincipalName | https://AWS.amazon.com/SAML/Attributes |
-    | szerepkör            | User.assignedroles |  https://AWS.amazon.com/SAML/Attributes |
+    | RoleSessionName | User.userPrincipalName | https://AWS.amazon.com/SAML/Attributes |
+    | Szerepkör            | User.assignedroles |  https://AWS.amazon.com/SAML/Attributes |
     
     >[!TIP]
     >Szeretne beállítani, hogy a felhasználók átadása a szerepkörök beolvasása a AWS konzol az Azure AD-ben. Tekintse meg az alábbi üzembe helyezési lépéseket.

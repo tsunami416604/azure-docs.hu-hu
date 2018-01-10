@@ -15,15 +15,19 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/27/2017
 ms.author: glenga
-ms.openlocfilehash: 923bc54d9edc9aecdf27c674d3020c2f82f03b3d
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: 6985d631bdac7114a72f105716c9483d0c5733ba
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Az Azure Functions az Azure Blob storage kötések
 
-Ez a cikk ismerteti az Azure Functions kötések Azure Blob storage használata. Az Azure Functions támogatja indítás, bemeneti és kimeneti BLOB kötései.
+Ez a cikk ismerteti az Azure Functions kötések Azure Blob storage használata. Az Azure Functions támogatja indítás, bemeneti és kimeneti BLOB kötései. A cikk tartalmaz minden kötéshez szakaszt:
+
+* [A BLOB eseményindító](#trigger)
+* [A BLOB bemeneti kötése](#input)
+* [BLOB-kimeneti kötése](#output)
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -37,7 +41,7 @@ A Blob storage eseményindító segítségével indítsa el a következő függv
 > [!NOTE]
 > Egy blob eseményindító használatakor a fogyasztás terven létezhet legfeljebb 10 perces késleltetést új blobok feldolgozása után egy függvény app inaktív állapotba került. A függvény alkalmazás futtatása után blobok feldolgozása azonnal megtörténik. A kezdeti késleltetés elkerülése érdekében fontolja meg az alábbi lehetőségek közül:
 > - Használja az App Service-csomag a mindig engedélyezve van.
-> - Egy másik mechanizmus használatával indul el, a blob feldolgozására, például egy üzenetsor-üzenetet, amely tartalmazza a blob neve. Egy vonatkozó példáért lásd: a [blob bemeneti/kimeneti kötések példa a cikk későbbi részében](#input--output---example).
+> - Egy másik mechanizmus használatával indul el, a blob feldolgozására, például egy üzenetsor-üzenetet, amely tartalmazza a blob neve. Egy vonatkozó példáért lásd: a [blob bemeneti kötések példa a cikk későbbi részében](#input---example).
 
 ## <a name="trigger---example"></a>Eseményindító – példa
 
@@ -310,52 +314,37 @@ Minden 5 próbálkozás sikertelen lesz, ha az Azure Functions ad hozzá egy üz
 
 Ha a figyelt blob tároló több mint 10 000 blobot tartalmaz, a funkciók futásidejű vizsgálatok a naplófájlok új vagy módosított blobok figyelendő. Ez a folyamat késést okozhat. Egy függvény előfordulhat, hogy nem get indulnak el, néhány percig, vagy már a blob létrehozása után. Emellett [tárolási naplófájlokat hoz létre a lehető legjobb rendezését,"a](/rest/api/storageservices/About-Storage-Analytics-Logging) alapján. Nincs nem garantálja, hogy a rendszer rögzíti-e az összes esemény. Bizonyos körülmények között a naplók kimaradhatnak. Ha a gyorsabb és megbízhatóbb blob feldolgozási van szüksége, érdemes létrehozni egy [üzenetsor](../storage/queues/storage-dotnet-how-to-use-queues.md) a blob létrehozásakor. Ezután egy [várólista eseményindító](functions-bindings-storage-queue.md) helyett egy blob eseményindító a blob feldolgozni. Egy másik lehetőség, hogy használja az esemény rács; Tekintse meg az [automatizálás átméretezése feltöltött lemezképeket rácshoz esemény](../event-grid/resize-images-on-storage-blob-upload-event.md).
 
-## <a name="input--output"></a>Bemeneti és kimeneti
+## <a name="input"></a>Input (Bemenet)
 
-Használja a Blob storage bemeneti, és kimeneti kötések írási és olvasási blobokat.
+A Blob storage bemeneti kötése segítségével olvassa el a blobokat.
 
-## <a name="input--output---example"></a>Bemeneti és kimeneti – példa
+## <a name="input---example"></a>Bemenet – példa
 
 Tekintse meg a nyelvspecifikus példát:
 
-* [C#](#input--output---c-example)
-* [C# parancsfájl (.csx)](#input--output---c-script-example)
-* [JavaScript](#input--output---javascript-example)
+* [C#](#input---c-example)
+* [C# parancsfájl (.csx)](#input---c-script-example)
+* [JavaScript](#input---javascript-example)
 
-### <a name="input--output---c-example"></a>Bemeneti és kimeneti - C# – példa
+### <a name="input---c-example"></a>Bemenet – C# – példa
 
-A következő példa egy [C# függvény](functions-dotnet-class-library.md) , amely egy blob eseményindítót használ, és két kimeneti blob kötéseket. A függvény egy kép blob létrehozását váltja ki a *minta-lemezképek* tároló. Szülőlemezkép kis és közepes méretű másolatot hoz létre. 
+A következő példa egy [C# függvény](functions-dotnet-class-library.md) , amely a várólista eseményindító és egy bemeneti blob-kötést használja. A várólista messagge tartalmaz a blob neve, és a függvény naplózza a blob mérete.
 
 ```csharp
-[FunctionName("ResizeImage")]
+[FunctionName("BlobInput")]
 public static void Run(
-    [BlobTrigger("sample-images/{name}")] Stream image, 
-    [Blob("sample-images-sm/{name}", FileAccess.Write)] Stream imageSmall, 
-    [Blob("sample-images-md/{name}", FileAccess.Write)] Stream imageMedium)
+    [QueueTrigger("myqueue-items")] string myQueueItem,
+    [Blob("samples-workitems/{queueTrigger}", FileAccess.Read)] Stream myBlob,
+    TraceWriter log)
 {
-    var imageBuilder = ImageResizer.ImageBuilder.Current;
-    var size = imageDimensionsTable[ImageSize.Small];
+    log.Info($"BlobInput processed blob\n Name:{myQueueItem} \n Size: {myBlob.Length} bytes");
 
-    imageBuilder.Build(image, imageSmall,
-        new ResizeSettings(size.Item1, size.Item2, FitMode.Max, null), false);
-
-    image.Position = 0;
-    size = imageDimensionsTable[ImageSize.Medium];
-
-    imageBuilder.Build(image, imageMedium,
-        new ResizeSettings(size.Item1, size.Item2, FitMode.Max, null), false);
 }
-
-public enum ImageSize { ExtraSmall, Small, Medium }
-
-private static Dictionary<ImageSize, (int, int)> imageDimensionsTable = new Dictionary<ImageSize, (int, int)>() {
-    { ImageSize.ExtraSmall, (320, 200) },
-    { ImageSize.Small,      (640, 400) },
-    { ImageSize.Medium,     (800, 600) }
-};
 ```        
 
-### <a name="input--output---c-script-example"></a>Bemeneti és kimeneti - C# mintaparancsfájl
+### <a name="input---c-script-example"></a>Bemenet – C# parancsfájl – példa
+
+<!--Same example for input and output. -->
 
 A következő példa bemutatja a blob bemeneti és kimeneti kötések egy *function.json* fájl és [C# parancsfájl (.csx)](functions-reference-csharp.md) kódokat, amelyek a kötéseket. A függvény a szöveges blob másolatot készít. A függvény egy üzenetsor-üzenetet, amely tartalmazza a nevét, a BLOB másolása váltja ki. Az új blob neve *{originalblobname}-másolási*.
 
@@ -390,7 +379,7 @@ Az a *function.json* fájl, a `queueTrigger` metaadat-tulajdonságnak a blob nev
 }
 ``` 
 
-A [konfigurációs](#input--output---configuration) a szakasz ismerteti ezeket a tulajdonságokat.
+A [konfigurációs](#input---configuration) a szakasz ismerteti ezeket a tulajdonságokat.
 
 A C# parancsfájl kód itt látható:
 
@@ -402,7 +391,9 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
 }
 ```
 
-### <a name="input--output---javascript-example"></a>Bemeneti és kimeneti - JavaScript – példa
+### <a name="input---javascript-example"></a>Bemenet – JavaScript – példa
+
+<!--Same example for input and output. -->
 
 A következő példa bemutatja a blob bemeneti és kimeneti kötések egy *function.json* fájl- és [JavaScript-kód] (funkciók-referencia-node.md), amely használja a kötéseket. A funkció lehetővé teszi a blob egy példányát. A függvény egy üzenetsor-üzenetet, amely tartalmazza a nevét, a BLOB másolása váltja ki. Az új blob neve *{originalblobname}-másolási*.
 
@@ -437,7 +428,7 @@ Az a *function.json* fájl, a `queueTrigger` metaadat-tulajdonságnak a blob nev
 }
 ``` 
 
-A [konfigurációs](#input--output---configuration) a szakasz ismerteti ezeket a tulajdonságokat.
+A [konfigurációs](#input---configuration) a szakasz ismerteti ezeket a tulajdonságokat.
 
 A JavaScript-kód itt látható:
 
@@ -449,7 +440,219 @@ module.exports = function(context) {
 };
 ```
 
-## <a name="input--output---attributes"></a>Bemeneti és kimeneti - attribútumok
+## <a name="input---attributes"></a>Bemenet – attribútumok
+
+A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs), amely van megadva a NuGet-csomag [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs).
+
+Az attribútum konstruktora a blob vesz igénybe az elérési utat és egy `FileAccess` paraméter, amely jelzi, olvasási vagy írási, a következő példában látható módon:
+
+```csharp
+[FunctionName("BlobInput")]
+public static void Run(
+    [QueueTrigger("myqueue-items")] string myQueueItem,
+    [Blob("samples-workitems/{queueTrigger}", FileAccess.Read)] Stream myBlob,
+    TraceWriter log)
+{
+    log.Info($"BlobInput processed blob\n Name:{myQueueItem} \n Size: {myBlob.Length} bytes");
+}
+
+```
+
+Beállíthatja a `Connection` tulajdonság adja meg a tárfiókot, a következő példában látható módon:
+
+```csharp
+[FunctionName("BlobInput")]
+public static void Run(
+    [QueueTrigger("myqueue-items")] string myQueueItem,
+    [Blob("samples-workitems/{queueTrigger}", FileAccess.Read, Connection = "StorageConnectionAppSetting")] Stream myBlob,
+    TraceWriter log)
+{
+    log.Info($"BlobInput processed blob\n Name:{myQueueItem} \n Size: {myBlob.Length} bytes");
+}
+```
+
+Használhatja a `StorageAccount` attribútum segítségével adhatja meg a tárfiók osztály, módszer vagy paraméter szinten. További információkért lásd: [eseményindító - attribútumok](#trigger---attributes).
+
+## <a name="input---configuration"></a>Adjon meg - konfiguráció
+
+Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdonságok a *function.json* fájl és a `Blob` attribútum.
+
+|Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
+|---------|---------|----------------------|
+|**típusa** | n/a | meg kell `blob`. |
+|**iránya** | n/a | meg kell `in`. A kivételeket jeleztük a [használati](#input---usage) szakasz. |
+|**név** | n/a | A blob függvény kódban jelölő neve.|
+|**elérési út** |**BlobPath** | A blob elérési útja. | 
+|**kapcsolat** |**Kapcsolat**| A tárolási kapcsolati karakterlánc az ehhez a kötéshez használandó tartalmazó alkalmazásbeállítás neve. Ha az alkalmazás neve "AzureWebJobs" kezdődik, megadhatja a nevét itt csak a maradékot. Ha például `connection` "MyStorage", hogy a Functions futtatókörnyezete keresi, hogy az alkalmazás neve "AzureWebJobsMyStorage." Ha nem adja meg `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc az nevű Alkalmazásbeállítás `AzureWebJobsStorage`.<br><br>A kapcsolati karakterlánc nem lehet egy általános célú tárfiók olyan [csak a blob storage-fiók](../storage/common/storage-create-storage-account.md#blob-storage-accounts).|
+|n/a | **Access (Hozzáférés)** | Azt jelzi, hogy meg kell olvasása vagy írása. |
+
+[!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
+
+## <a name="input---usage"></a>Bemenet - használat
+
+C# osztálykönyvtárakhoz és C# a parancsfájlt, nyissa meg a blob metódusparaméter használatával `Stream paramName`. A C# parancsfájl `paramName` érték szerepel a `name` tulajdonsága *function.json*. Köthető a következő típusok:
+
+* `TextReader`
+* `string`
+* `Byte[]`
+* `Stream`
+* `CloudBlobContainer`
+* `CloudBlobDirectory`
+* `ICloudBlob`("inout" kötés irányban szükséges *function.json*)
+* `CloudBlockBlob`("inout" kötés irányban szükséges *function.json*)
+* `CloudPageBlob`("inout" kötés irányban szükséges *function.json*)
+* `CloudAppendBlob`("inout" kötés irányban szükséges *function.json*)
+
+Amint, néhány, a következő típusú szükséges egy `inout` irányban kötés *function.json*. Ebben az irányban nem támogatja a szokásos szerkesztő az Azure portálon, így a speciális szerkesztő kell használni.
+
+Ha szöveges BLOB olvas, köthető egy `string` típusa. Ez a típus csak akkor javasolt, ha blob mérete kisebb, mint a teljes blob tartalmát a memóriába betöltött. Általában célszerű használni egy `Stream` vagy `CloudBlockBlob` típusa.
+
+JavaScript, nyissa meg a blob adatainak használatával `context.bindings.<name>`.
+
+## <a name="output"></a>Kimenet
+
+A Blob storage kimeneti kötések segítségével írhat blobokat.
+
+## <a name="output---example"></a>Kimeneti – példa
+
+Tekintse meg a nyelvspecifikus példát:
+
+* [C#](#output---c-example)
+* [C# parancsfájl (.csx)](#output---c-script-example)
+* [JavaScript](#output---javascript-example)
+
+### <a name="output---c-example"></a>Kimeneti - C# – példa
+
+A következő példa egy [C# függvény](functions-dotnet-class-library.md) , amely egy blob eseményindítót használ, és két kimeneti blob kötéseket. A függvény egy kép blob létrehozását váltja ki a *minta-lemezképek* tároló. Szülőlemezkép kis és közepes méretű másolatot hoz létre. 
+
+```csharp
+[FunctionName("ResizeImage")]
+public static void Run(
+    [BlobTrigger("sample-images/{name}")] Stream image, 
+    [Blob("sample-images-sm/{name}", FileAccess.Write)] Stream imageSmall, 
+    [Blob("sample-images-md/{name}", FileAccess.Write)] Stream imageMedium)
+{
+    var imageBuilder = ImageResizer.ImageBuilder.Current;
+    var size = imageDimensionsTable[ImageSize.Small];
+
+    imageBuilder.Build(image, imageSmall,
+        new ResizeSettings(size.Item1, size.Item2, FitMode.Max, null), false);
+
+    image.Position = 0;
+    size = imageDimensionsTable[ImageSize.Medium];
+
+    imageBuilder.Build(image, imageMedium,
+        new ResizeSettings(size.Item1, size.Item2, FitMode.Max, null), false);
+}
+
+public enum ImageSize { ExtraSmall, Small, Medium }
+
+private static Dictionary<ImageSize, (int, int)> imageDimensionsTable = new Dictionary<ImageSize, (int, int)>() {
+    { ImageSize.ExtraSmall, (320, 200) },
+    { ImageSize.Small,      (640, 400) },
+    { ImageSize.Medium,     (800, 600) }
+};
+```        
+
+### <a name="output---c-script-example"></a>Kimeneti - C# parancsfájl – példa
+
+<!--Same example for input and output. -->
+
+A következő példa bemutatja a blob bemeneti és kimeneti kötések egy *function.json* fájl és [C# parancsfájl (.csx)](functions-reference-csharp.md) kódokat, amelyek a kötéseket. A függvény a szöveges blob másolatot készít. A függvény egy üzenetsor-üzenetet, amely tartalmazza a nevét, a BLOB másolása váltja ki. Az új blob neve *{originalblobname}-másolási*.
+
+Az a *function.json* fájl, a `queueTrigger` metaadat-tulajdonságnak a blob nevének megadására szolgál a `path` tulajdonságok:
+
+```json
+{
+  "bindings": [
+    {
+      "queueName": "myqueue-items",
+      "connection": "MyStorageConnectionAppSetting",
+      "name": "myQueueItem",
+      "type": "queueTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "myInputBlob",
+      "type": "blob",
+      "path": "samples-workitems/{queueTrigger}",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "in"
+    },
+    {
+      "name": "myOutputBlob",
+      "type": "blob",
+      "path": "samples-workitems/{queueTrigger}-Copy",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
+``` 
+
+A [konfigurációs](#output---configuration) a szakasz ismerteti ezeket a tulajdonságokat.
+
+A C# parancsfájl kód itt látható:
+
+```cs
+public static void Run(string myQueueItem, string myInputBlob, out string myOutputBlob, TraceWriter log)
+{
+    log.Info($"C# Queue trigger function processed: {myQueueItem}");
+    myOutputBlob = myInputBlob;
+}
+```
+
+### <a name="output---javascript-example"></a>Kimeneti - JavaScript – példa
+
+<!--Same example for input and output. -->
+
+A következő példa bemutatja a blob bemeneti és kimeneti kötések egy *function.json* fájl- és [JavaScript-kód] (funkciók-referencia-node.md), amely használja a kötéseket. A funkció lehetővé teszi a blob egy példányát. A függvény egy üzenetsor-üzenetet, amely tartalmazza a nevét, a BLOB másolása váltja ki. Az új blob neve *{originalblobname}-másolási*.
+
+Az a *function.json* fájl, a `queueTrigger` metaadat-tulajdonságnak a blob nevének megadására szolgál a `path` tulajdonságok:
+
+```json
+{
+  "bindings": [
+    {
+      "queueName": "myqueue-items",
+      "connection": "MyStorageConnectionAppSetting",
+      "name": "myQueueItem",
+      "type": "queueTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "myInputBlob",
+      "type": "blob",
+      "path": "samples-workitems/{queueTrigger}",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "in"
+    },
+    {
+      "name": "myOutputBlob",
+      "type": "blob",
+      "path": "samples-workitems/{queueTrigger}-Copy",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
+``` 
+
+A [konfigurációs](#output---configuration) a szakasz ismerteti ezeket a tulajdonságokat.
+
+A JavaScript-kód itt látható:
+
+```javascript
+module.exports = function(context) {
+    context.log('Node.js Queue trigger function processed', context.bindings.myQueueItem);
+    context.bindings.myOutputBlob = context.bindings.myInputBlob;
+    context.done();
+};
+```
+
+## <a name="output---attributes"></a>Kimeneti - attribútumok
 
 A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs), amely van megadva a NuGet-csomag [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs).
 
@@ -477,18 +680,18 @@ public static void Run(
 }
 ```
 
-Tekintse meg a teljes például [bemeneti és kimeneti - C# példa](#input--output---c-example).
+Tekintse meg a teljes például [kimeneti - C# példa](#output---c-example).
 
 Használhatja a `StorageAccount` attribútum segítségével adhatja meg a tárfiók osztály, módszer vagy paraméter szinten. További információkért lásd: [eseményindító - attribútumok](#trigger---attributes).
 
-## <a name="input--output---configuration"></a>Bemeneti és kimeneti - konfiguráció
+## <a name="output---configuration"></a>Kimeneti - konfiguráció
 
 Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdonságok a *function.json* fájl és a `Blob` attribútum.
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**típusa** | n/a | meg kell `blob`. |
-|**iránya** | n/a | Meg kell `in` egy bemeneti kötés vagy `out` egy kimeneti kötés. A kivételeket jeleztük a [használati](#input--output---usage) szakasz. |
+|**iránya** | n/a | Meg kell `out` egy kimeneti kötés. A kivételeket jeleztük a [használati](#output---usage) szakasz. |
 |**név** | n/a | A blob függvény kódban jelölő neve.  Beállítása `$return` hivatkozni, a függvény visszatérési értéke.|
 |**elérési út** |**BlobPath** | A blob elérési útja. | 
 |**kapcsolat** |**Kapcsolat**| A tárolási kapcsolati karakterlánc az ehhez a kötéshez használandó tartalmazó alkalmazásbeállítás neve. Ha az alkalmazás neve "AzureWebJobs" kezdődik, megadhatja a nevét itt csak a maradékot. Ha például `connection` "MyStorage", hogy a Functions futtatókörnyezete keresi, hogy az alkalmazás neve "AzureWebJobsMyStorage." Ha nem adja meg `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc az nevű Alkalmazásbeállítás `AzureWebJobsStorage`.<br><br>A kapcsolati karakterlánc nem lehet egy általános célú tárfiók olyan [csak a blob storage-fiók](../storage/common/storage-create-storage-account.md#blob-storage-accounts).|
@@ -496,17 +699,14 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="input--output---usage"></a>Bemeneti és kimeneti - használat
+## <a name="output---usage"></a>Kimeneti - használat
 
 C# osztálykönyvtárakhoz és C# a parancsfájlt, nyissa meg a blob metódusparaméter használatával `Stream paramName`. A C# parancsfájl `paramName` érték szerepel a `name` tulajdonsága *function.json*. Köthető a következő típusok:
 
-* `TextReader`(csak a bemeneti)
-* `string`(csak a bemeneti)
-* `Byte[]`(csak a bemeneti)
-* `TextWriter`(csak a kimeneti)
-* `out string`(csak a kimeneti)
-* `out Byte[]`(csak a kimeneti)
-*  `CloudBlobStream`(csak a kimeneti)
+* `TextWriter`
+* `out string`
+* `out Byte[]`
+* `CloudBlobStream`
 * `Stream`
 * `CloudBlobContainer`
 * `CloudBlobDirectory`

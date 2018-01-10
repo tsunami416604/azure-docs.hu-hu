@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: f48c9ef6b66cb3c9a687f1d063859e413866e88c
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 57edd392d25be20c237185d6780335e4ca9ba3e4
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="azure-functions-c-developer-reference"></a>Az Azure Functions C# fejlesztői leírás
 
@@ -259,7 +259,7 @@ Adja meg a következő kötés dolgozik:
 
 ### <a name="single-attribute-example"></a>Egyetlen attribútum – példa
 
-Az alábbi példakód létrehoz egy [tárolási blob kimeneti kötése](functions-bindings-storage-blob.md#input--output) blobbal együtt futási időben megadott elérési út ezután ír egy karakterláncot a blobra mutató.
+Az alábbi példakód létrehoz egy [tárolási blob kimeneti kötése](functions-bindings-storage-blob.md#output) blobbal együtt futási időben megadott elérési út ezután ír egy karakterláncot a blobra mutató.
 
 ```cs
 public static class IBinderExample
@@ -315,7 +315,7 @@ A következő táblázat a eseményindító és kötés attribútumok, amelyek a
 
 | Eseményindító | Input (Bemenet) | Kimenet|
 |------   | ------    | ------  |
-| [BlobTrigger](functions-bindings-storage-blob.md#trigger---attributes)| [A BLOB](functions-bindings-storage-blob.md#input--output---attributes)| [A BLOB](functions-bindings-storage-blob.md#input--output---attributes)|
+| [BlobTrigger](functions-bindings-storage-blob.md#trigger---attributes)| [A BLOB](functions-bindings-storage-blob.md#input---attributes)| [A BLOB](functions-bindings-storage-blob.md#output---attributes)|
 | [CosmosDBTrigger](functions-bindings-documentdb.md#trigger---attributes)| [DocumentDB](functions-bindings-documentdb.md#input---attributes)| [DocumentDB](functions-bindings-documentdb.md#output---attributes) |
 | [EventHubTrigger](functions-bindings-event-hubs.md#trigger---attributes)|| [Az EventHub](functions-bindings-event-hubs.md#output---attributes) |
 | [HTTPTrigger](functions-bindings-http-webhook.md#trigger---attributes)|||

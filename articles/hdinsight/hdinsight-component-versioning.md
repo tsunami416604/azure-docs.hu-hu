@@ -15,13 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/13/2017
+ms.date: 01/09/2018
 ms.author: bprakash
-ms.openlocfilehash: 45cccb09753c85ae4a6d077d49cbd58630a9788a
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 009b909f9d92c6a21babffae3984be36a7682476
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>Mik azok a Hadoop-összetevők és a hdinsight eszközzel verziók?
 
@@ -74,26 +74,38 @@ Windows-fürtök esetén egy másik összetevő verziójának módja távoli asz
 Lásd: [HDInsight kibocsátási megjegyzések](hdinsight-release-notes.md) további kibocsátási megjegyzések a HDInsight legújabb verziói.
 
 ## <a name="supported-hdinsight-versions"></a>Támogatott HDInsight-verziókról
-A következő táblázat az Azure-portál jelenleg rendelkezésre álló HDInsight-verziók listája olvasható. Az, hogy minden HDInsight-verzió HDP-verziók szerepelnek a listán, a termék kiadási dátum együtt. A támogatás lejárati és a használatból való kivonást dátumát is biztosít, ha azok még ismert.
+Az alábbi táblázatok a HDInsight-verziók. Az, hogy minden HDInsight-verzió HDP-verziók szerepelnek a listán, a termék kiadási dátum együtt. A támogatás lejárati és a használatból való kivonást dátumát is biztosít, ha azok még ismert.
+
+### <a name="available-versions"></a>Elérhető verzió
+
+A következő táblázat használható az Azure portál, valamint egyéb deployement módszerek, például a PowerShell és a .NET SDK-val a HDInsight-verziók listája olvasható.
+
+| HDInsight-verzió | HDP verzió | VIRTUÁLIS GÉP OPERÁCIÓS RENDSZERE | Kiadási dátum | Támogatás lejárati dátuma | Kivezetési dátum | Magas rendelkezésre állás |  Az Azure portálon rendelkezésre állása | 
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| HDInsight 3.6. |2.6 HDP |Ubuntu 16.0.4 LTS |2017. április 4. | | |Igen |Igen |
+| HDInsight 3.5 |2.5 HDP |Ubuntu 16.0.4 LTS |2016. Szeptembertől 30. |2017. szeptember 5. |2018. május 31-ig. |Igen |Igen |
+| HDInsight 3.3 |2.3 HDP |Windows Server 2012 R2 |2015. december 2. |2016. június 27. |2018. július 31-ig. |Igen |Nem |
 
 > [!NOTE]
 > Támogatási után az egy lejárt, azt nem feltétlenül érhető el a Microsoft Azure portálon keresztül. Azonban fürt verziók továbbra is a rendelkezésre álló használatával a `Version` a Windows PowerShell paraméter [New-AzureRmHDInsightCluster](https://msdn.microsoft.com/library/mt619331.aspx) parancs és a .NET SDK, amíg a verzió kivezetési dátum.
-> 
-> Magas rendelkezésre állású fürtök két átjárócsomópontokkal a HDInsight-verzió 2.1-es és újabb verziók esetében alapértelmezés szerint vannak telepítve. Nem elérhetők a HDInsight-fürtök 1.6-os verzióra.
+>
 
-| HDInsight-verzió | HDP verzió | VIRTUÁLIS GÉP OPERÁCIÓS RENDSZERE | Magas rendelkezésre állás | Kiadási dátum | Az Azure portálon rendelkezésre állása | Támogatás lejárati dátuma | Kivezetési dátum |
+### <a name="retired-versions"></a>Elavult verzió
+
+A következő táblázat, amelyek a HDInsight-verziók listája olvasható **nem** elérhető az Azure portálon.
+
+| HDInsight-verzió | HDP verzió | VIRTUÁLIS GÉP OPERÁCIÓS RENDSZERE | Kiadási dátum | Támogatás lejárati dátuma | Kivezetési dátum | Magas rendelkezésre állás |  Az Azure portálon rendelkezésre állása | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 3.6. |2.6 HDP |Ubuntu 16 |Igen |2017. április 4. |Igen | | |
-| HDInsight 3.5 |2.5 HDP |Ubuntu 16 |Igen |2016. Szeptembertől 30. |Igen |2017. szeptember 5. |2018. május 31-ig. |
-| HDInsight 3.4 |2.4 HDP |Ubuntu 14.0.4 LTS |Igen |2016. március 29. |Igen |2016. december 29. |2018. január 9. |
-| HDInsight 3.3 |2.3 HDP |Windows Server 2012 R2 |Igen |2015. december 2. |Igen |2016. június 27. |2018. július 31-ig. |
-| HDInsight 3.3 |2.3 HDP |Ubuntu 14.0.4 LTS |Igen |2015. december 2. |Igen |2016. június 27. |2017. július 31-ig. |
-| A HDInsight 3.2. |2.2 HDP |Ubuntu, 12.04 LTS, vagy a Windows Server 2012 R2 rendszerben |Igen |2015. február 18. |Nem |2016. március 1. |2017. április 1. |
-| HDInsight 3.1 |2.1 HDP |Windows Server 2012 R2 |Igen |2014. június 24. |Nem |2015. május 18. |2016. június 30. |
-| A HDInsight 3.0 |HDP 2.0 |Windows Server 2012 R2 |Igen |2014. február 11. |Nem |2014. szeptember 17. |2015. június 30. |
-| A HDInsight 2.1-es verziója |1.3 HDP |Windows Server 2012 R2 |Igen |2013. október 28. |Nem |2014. május 12. |2015. május 31-ig. |
-| HDInsight 1.6-os |1.1 HDP | |Nem |2013. október 28. |Nem |2014. április 26. |2015. május 31-ig. |
+| HDInsight 3.4 |2.4 HDP |Ubuntu 14.0.4 LTS |2016. március 29. |2016. december 29. |2018. január 9. |Igen |Nem |
+| HDInsight 3.3 |2.3 HDP |Ubuntu 14.0.4 LTS |2015. december 2. |2016. június 27. |2017. július 31-ig. |Igen |Nem |
+| A HDInsight 3.2. |2.2 HDP |Ubuntu, 12.04 LTS, vagy a Windows Server 2012 R2 rendszerben |2015. február 18. |2016. március 1. |2017. április 1. |Igen |Nem |
+| HDInsight 3.1 |2.1 HDP |Windows Server 2012 R2 |2014. június 24. |2015. május 18. |2016. június 30. |Igen |Nem |
+| A HDInsight 3.0 |HDP 2.0 |Windows Server 2012 R2 |2014. február 11. |2014. szeptember 17. |2015. június 30. |Igen |Nem |
+| A HDInsight 2.1-es verziója |1.3 HDP |Windows Server 2012 R2 |2013. október 28. |2014. május 12. |2015. május 31-ig. |Igen |Nem |
+| HDInsight 1.6-os |1.1 HDP | |2013. október 28. |2014. április 26. |2015. május 31-ig. |Nem |Nem |
 
+> [!NOTE]
+> Magas rendelkezésre állású fürtök két átjárócsomópontokkal a HDInsight-verzió 2.1-es és újabb verziók esetében alapértelmezés szerint vannak telepítve. Nem elérhetők a HDInsight-fürtök 1.6-os verzióra.
 
 ## <a name="enterprise-security-package-for-hdinsight"></a>A HDInsight a vállalati biztonsági csomag
 
@@ -144,7 +156,7 @@ HDInsight 3.4-es verziójú verziótól kezdődően a Microsoft közzétette a H
 ## <a name="faqs"></a>Gyakori kérdések
 
 ### <a name="what-is-the-timeline-for-retiring-hdinsight-on-windows"></a>Mi az az ütemterv HDInsight eltávolítása Windows?
-2018. július 31. a Windows a HDInsight a kivezetési dátum. Ha a tervezett kivezetési dátum eltér a régió, hogy értesítést kap külön-külön. 
+2018. július 31. a Windows a HDInsight a kivezetési dátum. Ha a tervezett kivezetési dátum eltér a régió, értesítést kap külön-külön. 
 
 ### <a name="what-is-the-impact-of-retiring-hdinsight-on-windows-for-existing-customers"></a>Mi az a Windows HDInsight eltávolítása a meglévő ügyfeleknek hatását?
 A Windows HDInsight kivonását követően nem egy új HDInsight Windows-fürt létrehozása, vagy egy meglévő HDInsight-Windows-fürt méretezése. HDInsight 3.3-as verzió támogatása lejárt 2016. június 27. Ezért nincs támogatási vagy a HDInsight 3.3-as vagy korábbi verziójú hibajavításokat tartalmaz. A HDInsight a későbbi kiadásokban csak a Linux operációs rendszeren érhetők el. Nincs HDInsight a Windows későbbi kiadásaiban lesz.

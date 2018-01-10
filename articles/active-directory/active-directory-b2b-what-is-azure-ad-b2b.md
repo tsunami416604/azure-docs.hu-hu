@@ -17,15 +17,15 @@ ms.date: 06/27/2017
 ms.author: curtand
 ms.custom: aaddev
 ms.reviewer: sasubram
-ms.openlocfilehash: eef95f80f8107c13cd057c56eb5219a353acc854
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d3167b0b4b33eee11f388efd1d2088f6bc5cc639
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="what-is-azure-ad-b2b-collaboration"></a>Mi az az Azure AD B2B együttműködés?
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/AhwrweCBdsc" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/AhwrweCBdsc]
 
 Az Azure AD-vállalatok (B2B) együttműködési képességek engedélyezése bármely szervezet használata az Azure AD biztonságos felhasználók bármilyen más szervezettől származik, minimális és maximális mérete. Azon szervezetek lehet az Azure ad-vel vagy nélkül, vagy akár egy informatikai szervezet vagy anélkül. 
 
@@ -100,7 +100,7 @@ Használja a [B2B együttműködés meghívó API-k](https://developer.microsoft
 
 Az Azure AD B2B együttműködés a partnerkapcsolatok oly módon, hogy a végfelhasználók számára egyszerű és intuitív található védelméhez az Azure AD a teljes power kérheti le. Ezért induljon el, a külső együttműködés az Azure AD B2B már használó szervezetek több ezer csatlakozáshoz!
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Rendszergazdai élmény találhatók a [Azure-portálon](https://portal.azure.com).
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.openlocfilehash: 247cc4175b70e31c9496df7037d45e8c7e2c7494
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 860099b2634765f3088199c89341f0b48b20b801
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 01/09/2018
 ---
 #<a name="introduction-to-r-server-and-open-source-r-capabilities-on-hdinsight"></a>R Server, és nyílt forráskódú R képességek a HDInsight bemutatása
 
@@ -46,7 +46,7 @@ Lehetősége van további Blob való hozzáférés hozzáadása, és a Data lake
 Is [Azure fájlok](../../storage/files/storage-how-to-use-files-linux.md) tárolási beállításként való használatra a peremhálózati csomóponton. Az Azure Files lehetővé teszi a fájlmegosztást, amelyet a Linux fájlrendszerben létrejött az Azure Storage csatlakoztatni. HDInsight-fürt az R Serverhez adatok tárolási lehetőségek kapcsolatos további információkért lásd: [Azure Storage vonatkozó az R Server on HDInsight-fürtök beállítások](r-server-storage.md).
 
 ## <a name="access-r-server-on-the-cluster"></a>Hozzáférés az R Server on a fürt
-R Server élcsomópontjához egy böngészőben a csatlakozhat. Telepíti a rendszer alapértelmezés szerint a fürt létrehozása során. További információkért lásd: [az R Server on HDInsight az beszerzése stared](r-server-get-started.md).
+R Server élcsomópontjához egy böngészőben a csatlakozhat. Telepíti a rendszer alapértelmezés szerint a fürt létrehozása során. További információkért lásd: [az R Server on HDInsight használatába](r-server-get-started.md).
 
 Akkor is csatlakozhatnak a R Server a parancssor az R-konzol eléréséhez a SSH/PuTTY használatával. 
 
@@ -100,7 +100,7 @@ Végül, az R Server konzolra élcsomópont begépelésével érhetik el **R** S
 ## <a name="learn-about-pricing"></a>További tudnivalók díjszabása
 A díjak, az R Server a HDInsight-fürtök rendelt hasonlóan a szabványos HDInsight-fürtök díja van felépítve. Az alapul szolgáló virtuális gépek méretezési a neve, adatokat és peremhálózati csomópontok, azonban kiegészül a core órás uplift alapulnak. HDInsight árazással kapcsolatos további információért lásd: [HDInsight árképzési](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 R Server használata a HDInsight-fürtökkel kapcsolatos további tudnivalókért tekintse meg a következő témaköröket:
 
 * [Bevezetés az R Server on HDInsight használatába](r-server-get-started.md)

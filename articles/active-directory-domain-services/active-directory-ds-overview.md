@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: maheshu
-ms.openlocfilehash: 23506804ee41688bfebeb0674d99154ff1c77e61
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2c00d324adfc1b71d436cb017214af98ff3002cf
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="azure-active-directory-ad-domain-services"></a>Az Azure Active Directory (AD) tartományi szolgáltatásokban
 ## <a name="overview"></a>Áttekintés
@@ -37,15 +37,17 @@ Ezek a módszerek érinti a magas költség- és adminisztratív terhelés melle
 A könnyebb más Azure AD tartományi szolgáltatások célja azt.
 
 ### <a name="watch-an-introductory-video"></a>Egy bevezető videó
-<iframe width="560" height="315" src="https://www.youtube.com/embed/T1Nd9APNceQ" frameborder="0" allowfullscreen></iframe>
 
+>[!VIDEO https://www.youtube.com/embed/T1Nd9APNceQ]
 
 ## <a name="introducing-azure-ad-domain-services"></a>Azure AD tartományi szolgáltatások bemutatása
+
 Azure AD tartományi szolgáltatások által kezelt tartomány szolgáltatásokat, például a tartományhoz való csatlakozást, csoport házirend, az LDAP, Kerberos vagy NTLM-hitelesítés, amelyek a teljes mértékben kompatibilis a Windows Server Active Directory nyújt. A tartományi szolgáltatások telepítése, kezelése és javítására, de a felhőben tartományvezérlők szükségessége nélkül is felhasználhatnak. Azure AD tartományi szolgáltatások integrálható a meglévő Azure AD-bérlőn, így lehetővé teszi a felhasználók számára, hogy jelentkezzen be a vállalati hitelesítő adatok. Emellett használhatja meglévő csoportok és felhasználói fiókok való biztonságos hozzáférés a erőforrásokhoz, biztosítva ezzel a gördülékenyebb "növekedési-és-shift" az Azure infrastruktúra-szolgáltatásokat a helyszíni erőforrásokat.
 
 Függetlenül attól, hogy az Azure AD-bérlő csak felhőalapú vagy a helyszíni Active Directoryval szinkronizált Azure AD tartományi szolgáltatások funkcióit problémamentesen működik.
 
 ### <a name="azure-ad-domain-services-for-cloud-only-organizations"></a>A szervezetek csak felhőalapú Azure AD tartományi szolgáltatások
+
 Egy kizárólag felhőalapú Azure AD-bérlő (más néven "felügyelt bérlők") nem rendelkezik a helyszíni identitás erőforrásigényét. Ez azt jelenti felhasználói fiókok, a jelszavakat és a csoporttagságokat az összes natív módon felhőalapú – Ez azt jelenti, hogy létre és kezelhető az Azure ad-ben. Érdemes lehet egy kis ideig, hogy a Contoso egy kizárólag felhőalapú Azure AD-bérlő. A következő ábrán látható módon Contoso-rendszergazda konfigurált virtuális hálózatot az Azure infrastruktúra-szolgáltatásokat. Alkalmazások és a kiszolgáló-munkaterhelések vannak telepítve a virtuális hálózat az Azure virtuális gépeken. Mivel a Contoso egy kizárólag felhőalapú bérlői, minden felhasználói identitások, a hitelesítő adatokat és a csoporttagságokat létrehozása és kezelése az Azure ad-ben.
 
 ![Az Azure AD tartományi szolgáltatások áttekintése](./media/active-directory-domain-services-overview/aadds-overview.png)
@@ -88,7 +90,7 @@ Az Azure AD tartományi szolgáltatásokkal a következő előnyöket élvezheti
 * **Költséghatékony** – az Azure AD tartományi szolgáltatásokkal, elkerülheti a az infrastruktúra és a felügyeleti terheket társított identitás-infrastruktúra támogatja a hagyományos címtár-kompatibilis alkalmazásokat kezeléséhez. Helyezze át való Azure Infrastruktúraszolgáltatásai ezeket az alkalmazásokat, és jelentősebb megtakarítást tesznek lehetővé a működési költségeket kihasználhassa.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 ### <a name="learn-more-about-azure-ad-domain-services"></a>További tudnivalók az Azure AD tartományi szolgáltatások
 * [Szolgáltatások](active-directory-ds-features.md)
 * [Központi telepítési forgatókönyvek](active-directory-ds-scenarios.md)

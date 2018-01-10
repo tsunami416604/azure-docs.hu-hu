@@ -3,8 +3,8 @@ title: "Az Azure-ban kimenő kapcsolatok ismertetése |} Microsoft Docs"
 description: "Ez a cikk azt ismerteti, hogyan Azure lehetővé teszi a virtuális gépek nyilvános internetes szolgáltatásokkal kommunikálni."
 services: load-balancer
 documentationcenter: na
-author: kumudd
-manager: timlt
+author: KumudD
+manager: jeconnoc
 editor: 
 ms.assetid: 5f666f2a-3a63-405a-abcd-b2e34d40e001
 ms.service: load-balancer
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: d02960017b8793eccc2990a17e3d854991e877b6
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: b8e225ba4374c73dbabac3dddab9ba37fa798a5a
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="understanding-outbound-connections-in-azure"></a>Kimenő kapcsolatok áttekintése az Azure-ban
 
@@ -46,7 +46,7 @@ Használhat [terheléselosztóhoz tartozó Naplóelemzési](load-balancer-monito
 
 ## <a name="load-balanced-vm-with-no-instance-level-public-ip-address"></a>Virtuális gép elosztott terhelésű és példány szint nyilvános IP-cím
 
-Ebben a forgatókönyvben a virtuális Gépet az Azure Load Balancer beállított része.  A virtuális gép nem rendelkezik a nyilvános IP-cím hozzárendelve. A Load Balancer erőforrás be kell állítani egy szabályt, hogy a nyilvános IP-előtérbeli a háttérkészlet hivatkozásra.  Ha nem tölti ki ezt a konfigurációt, a rendszer nem az előző szakaszban leírtak szerint [önálló virtuális gép, és nem példány szint nyilvános IP-cím](load-balancer-outbound-connections.md#standalone-vm-with-no-instance-level-public-ip-address).
+Ebben a forgatókönyvben a virtuális Gépet az Azure Load Balancer beállított része.  A virtuális gép nem rendelkezik a nyilvános IP-cím hozzárendelve. A terheléselosztó erőforrás olyan terheléselosztó szabályhoz a nyilvános IP-előtérbeli a háttérkészlet közötti kapcsolat létrehozásához kell konfigurálni. Ha nem tölti ki ezt a konfigurációt, a rendszer nem az előző szakaszban leírtak szerint [önálló virtuális gép, és nem példány szint nyilvános IP-cím](load-balancer-outbound-connections.md#standalone-vm-with-no-instance-level-public-ip-address).
 
 A terheléselosztással rendelkező virtuális Gépet egy kimenő folyam hoz létre, amikor az Azure eszköz a személyes forrás IP-címét a kimenő folyam a nyilvános terheléselosztó előtérbeli nyilvános IP-címére. Azure forrás hálózati cím fordítási (SNAT) használja ezt a funkciót. A Load Balancer nyilvános IP-cím elmúló port segítségével különböztetheti meg egymástól a virtuális gép által az egyes adatfolyamok. SNAT dinamikusan kioszt elmúló port a kimenő forgalom létrehozásakor. Ebben a környezetben használt SNAT porttartomány nevezzük SNAT portok.
 

@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 12/12/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 83431c58fedd85e469ab1bf2903fd517e6338e15
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 5be2fe57287f816434b6d6fdf40dbbcb0dd435f4
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Az Azure Functions méretezése és üzemeltetéséhez
 
@@ -97,7 +97,7 @@ A felhasználás üzemeltetési terv használatakor függvény kódfájlok Azure
 > [!NOTE]
 > Egy blob eseményindító használatakor a fogyasztás terven lehet legfeljebb 10 perces késleltetést új blobok feldolgozása, ha egy függvény app inaktív állapotba került. A függvény alkalmazás futtatása után blobok feldolgozása azonnal megtörténik. A kezdeti késleltetés elkerülése érdekében fontolja meg az alábbi lehetőségek közül:
 > - Gazdagép a függvény alkalmazást, az App Service-csomagot, a mindig engedélyezve van.
-> - Egy másik mechanizmus használatával indul el, a blob feldolgozására, például egy esemény rács előfizetés vagy egy üzenetsor-üzenetet, amely tartalmazza a blob neve. Egy vonatkozó példáért lásd: a [C# a parancsfájlt és a JavaScript-példák a BLOB bemeneti és kimeneti kötések](functions-bindings-storage-blob.md#input--output---example).
+> - Egy másik mechanizmus használatával indul el, a blob feldolgozására, például egy esemény rács előfizetés vagy egy üzenetsor-üzenetet, amely tartalmazza a blob neve. Egy vonatkozó példáért lásd: a [példák a BLOB bemeneti kötése](functions-bindings-storage-blob.md#input---example).
 
 ### <a name="runtime-scaling"></a>Futásidejű skálázás
 

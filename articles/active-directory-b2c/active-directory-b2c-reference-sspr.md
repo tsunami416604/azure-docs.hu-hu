@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
-ms.openlocfilehash: 27bc191c66b195692e324d1a10ab276b561ef129
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c0a10869477647820828b22b6291522be255844d
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="azure-active-directory-b2c-set-up-self-service-password-reset-for-your-consumers"></a>Az Azure Active Directory B2C: Az önkiszolgáló jelszó-visszaállítást a felhasználók beállítása
 Az önkiszolgáló jelszó-visszaállítási szolgáltatással (akiknek regisztráltak-e helyi fiókok esetében) a felhasználók alaphelyzetbe állíthatja a saját maguk a jelszavukat. Ez jelentősen csökkenti a jelentős terhet róhat a támogató személyzete számára, különösen akkor, ha az alkalmazás rendelkezik több millió fogyasztók rendszeresen használja azt. Jelenleg csak támogatjuk egy helyreállítási módszer az egy ellenőrzött és érvényes e-mail címet. A jövőben további helyreállítási módszerek (ellenőrzött telefonszám, a biztonsági kérdések stb.) adunk hozzá.
@@ -30,14 +30,11 @@ Az önkiszolgáló jelszó-visszaállítási szolgáltatással (akiknek regisztr
 
 Alapértelmezés szerint a címtárban nincs önkiszolgáló jelszó-visszaállítási-e kapcsolva. Az alábbi lépések segítségével kapcsolja be:
 
-1. Jelentkezzen be a [klasszikus Azure-portálra](https://manage.windowsazure.com/) előfizetés-rendszergazdaként. Ez az ugyanaz a munkahelyi vagy iskolai fiók vagy a Microsoft-fiók, mint amellyel a címtárban.
-2. Lépjen a bal oldalon található navigációs sávban az Active Directory bővítményre.
-3. A könyvtár alatt található a **Directory** fülre, és kattintson rá.
-4. Kattintson a **Configure** (Konfigurálás) lapra.
-5. Görgessen le a **felhasználói jelszó-visszaállítási házirend** szakasz és váltása a **jelszó-visszaállításhoz engedélyezett felhasználók** lehetőséggel **Igen**. Figyelje meg, hogy a **másodlagos E-mail-cím** beállítást; hagyja, mert az.
-   
-    ![Új jelszó önkiszolgáló kérése](./media/active-directory-b2c-reference-sspr/sspr.png)
-6. Kattintson a lap alján található **Mentés** gombra. Elkészült!
+1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com/) előfizetés-rendszergazdaként. Ez az ugyanaz a munkahelyi vagy iskolai fiók vagy a Microsoft-fiók, mint amellyel a címtárban.
+2. Nyissa meg az Active Directory (a bal oldali navigációs sáv).
+3. Válassza ki **tulajdonságok**.
+4. Görgessen le a **önkiszolgáló jelszó-visszaállításhoz engedélyezett** szakaszt, és úgy, hogy váltása **összes**. 
+5. Kattintson a **mentése** az oldal tetején. Elkészült!
 
 Teszteléséhez használja a "Futtatás most" a szolgáltatás bármely bejelentkezési házirend, amely rendelkezik a helyi fiókok identitás-szolgáltatóként. A helyi fiók bejelentkezési a lapon (ha ad meg egy e-mail címet és jelszót, vagy felhasználónév és jelszó), kattintson **nem fér hozzá a fiókjához?** ellenőrizheti a felhasználói élmény.
 

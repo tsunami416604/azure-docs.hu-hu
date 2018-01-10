@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: crdun
-ms.openlocfilehash: 124c36063482aa3b36844104c0b83b8a6e9598cb
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 9c7d56b19a72ec82ff834929790e5049b9369797
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="add-push-notifications-to-your-xamarinforms-app"></a>Leküldéses értesítések hozzáadása a Xamarin.Forms-alkalmazás
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
@@ -49,221 +49,154 @@ Ez a szakasz az Android a Xamarin.Forms Droid-projektek a leküldéses értesít
 ### <a name="add-push-notifications-to-the-android-project"></a>Leküldéses értesítések hozzáadása az Android-projekt
 A háttérrendszer működésében FCM konfigurált adhat hozzá összetevők és kódok FCM regisztrálni az ügyfelet. A Mobile Apps háttér keresztül az Azure Notification Hubs leküldéses értesítések regisztrálása, és értesítéseket is.
 
-1. Az a **Droid** projektre, kattintson a jobb gombbal a **összetevők** mappára, majd kattintson **több összetevők beolvasása...** . Majd keresse meg a **Google Cloud Messaging Client** összetevő, és adja hozzá a projekthez. Ez az összetevő a Xamarin Android-projekt leküldéses értesítések támogat.
-2. Nyissa meg a MainActivity.cs projektfájlt, és a fájl elejéhez adja hozzá a következő utasítást:
+1. Az a **Droid** projektre, kattintson a jobb gombbal **hivatkozások > Manage NuGet Packages...** .
+1. A NuGet-Csomagkezelő ablakban keresse meg a **Xamarin.Firebase.Messaging** csomagot, majd adja hozzá a projekthez.
+1. A projekt properies a a a **Droid** projektre, állítsa be az alkalmazás fordítása Android 7.0 vagy újabb verzió használatával.
+1. Adja hozzá a **google-services.json** gyökérmappájában Firebase konzoljában letöltött fájlok a **Droid** projektre, és állítsa be a létrehozási művelet **GoogleServicesJson**. További információkért lásd: [adja hozzá a Google szolgáltatás JSON-fájl](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/#Add_the_Google_Services_JSON_File).
 
-        using Gcm.Client;
-3. Adja hozzá a következő kódot a **OnCreate** metódus hívása után **LoadApplication**:
+#### <a name="registering-with-firebase-cloud-messaging"></a>Regisztrálás az Firebase Cloud Messaging
 
-        try
+1. Nyissa meg a **AndroidManifest.xml** fájlt, és illessze be a következő `<receiver>` az elemeket a `<application>` elem:
+
+        <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
+        <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:exported="true" android:permission="com.google.android.c2dm.permission.SEND">
+          <intent-filter>
+            <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+            <category android:name="${applicationId}" />
+          </intent-filter>
+        </receiver>
+
+#### <a name="implementing-the-firebase-instance-id-service"></a>A Firebase példány azonosítója szolgáltatás megvalósítása
+
+1. Az új osztályt a **Droid** nevű projekt `FirebaseRegistrationService`, és győződjön meg arról, hogy a következő `using` utasításokat a fájl elején szerepelnek:
+
+        using System.Threading.Tasks;
+        using Android.App;
+        using Android.Util;
+        using Firebase.Iid;
+        using Microsoft.WindowsAzure.MobileServices;
+
+1. Cserélje le az üres `FirebaseRegistrationService` osztály az alábbi kódra:
+
+        [Service]
+        [IntentFilter(new[] { "com.google.firebase.INSTANCE_ID_EVENT" })]
+        public class FirebaseRegistrationService : FirebaseInstanceIdService
         {
-            // Check to ensure everything's set up right
-            GcmClient.CheckDevice(this);
-            GcmClient.CheckManifest(this);
+            const string TAG = "FirebaseRegistrationService";
 
-            // Register for push notifications
-            System.Diagnostics.Debug.WriteLine("Registering...");
-            GcmClient.Register(this, PushHandlerBroadcastReceiver.SENDER_IDS);
-        }
-        catch (Java.Net.MalformedURLException)
-        {
-            CreateAndShowDialog("There was an error creating the client. Verify the URL.", "Error");
-        }
-        catch (Exception e)
-        {
-            CreateAndShowDialog(e.Message, "Error");
-        }
-4. Adjon hozzá egy új **CreateAndShowDialog** segítő módszert az alábbiak szerint:
-
-        private void CreateAndShowDialog(String message, String title)
-        {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-            builder.SetMessage (message);
-            builder.SetTitle (title);
-            builder.Create().Show ();
-        }
-5. Adja hozzá a következő kódot a **MainActivity** osztály:
-
-        // Create a new instance field for this activity.
-        static MainActivity instance = null;
-
-        // Return the current activity instance.
-        public static MainActivity CurrentActivity
-        {
-            get
+            public override void OnTokenRefresh()
             {
-                return instance;
+                var refreshedToken = FirebaseInstanceId.Instance.Token;
+                Log.Debug(TAG, "Refreshed token: " + refreshedToken);
+                SendRegistrationTokenToAzureNotificationHub(refreshedToken);
+            }
+
+            void SendRegistrationTokenToAzureNotificationHub(string token)
+            {
+                // Update notification hub registration
+                Task.Run(async () =>
+                {
+                    await AzureNotificationHubService.RegisterAsync(TodoItemManager.DefaultManager.CurrentClient.GetPush(), token);
+                });
             }
         }
 
-    Ez mutatja az aktuális **MainActivity** példány, ezért a fő felhasználói felület szálán végezhetünk.
-6. Inicializálni a `instance` változó elején a **OnCreate** módszert az alábbiak szerint.
+    A `FirebaseRegistrationService` osztály biztonsági jogkivonatokat, amelyek az alkalmazás eléréséhez FCM létrehozásáért felelős. A `OnTokenRefresh` metódus nyílik meg, ha az alkalmazás egy regisztrációs jogkivonatot kap FCM. A metódus lekéri a jogkivonatot a `FirebaseInstanceId.Instance.Token` tulajdonságot, amelynek FCM aszinkron módon frissül. A `OnTokenRefresh` metódus ritkán meghívták, mert a jogkivonat csak akkor frissül, amikor az alkalmazás telepítésének vagy eltávolításának, amikor a felhasználó törli az adatokat, amikor az alkalmazás törli az azonosítója, vagy ha a biztonsági jogkivonat lett sérülés esetén. Emellett a FCM Példányazonosító szolgáltatás kérni fogja, hogy az alkalmazás frissíti a token rendszeres időközönként, általában minden hatodik hónapban.
 
-        // Set the current instance of MainActivity.
-        instance = this;
-7. Új osztály fájl hozzáadásához a **Droid** nevű projekt `GcmService.cs`, és győződjön meg arról, hogy a következő **használatával** utasításokat a fájl elején szerepelnek:
+    A `OnTokenRefresh` metódus Ezenfelül meghívja a `SendRegistrationTokenToAzureNotificationHub` metódus, amely a felhasználói regisztrációs jogkivonat társítása az Azure Notification Hub használatával.
+
+#### <a name="registering-with-the-azure-notification-hub"></a>Az Azure Notification Hub regisztrálása
+
+1. Az új osztályt a **Droid** nevű projekt `AzureNotificationHubService`, és győződjön meg arról, hogy a következő `using` utasításokat a fájl elején szerepelnek:
+
+        using System;
+        using System.Threading.Tasks;
+        using Android.Util;
+        using Microsoft.WindowsAzure.MobileServices;
+        using Newtonsoft.Json.Linq;
+
+1. Cserélje le az üres `AzureNotificationHubService` osztály az alábbi kódra:
+
+        public class AzureNotificationHubService
+        {
+            const string TAG = "AzureNotificationHubService";
+
+            public static async Task RegisterAsync(Push push, string token)
+            {
+                try
+                {
+                    const string templateBody = "{\"data\":{\"message\":\"$(messageParam)\"}}";
+                    JObject templates = new JObject();
+                    templates["genericMessage"] = new JObject
+                    {
+                        {"body", templateBody}
+                    };
+
+                    await push.RegisterAsync(token, templates);
+                    Log.Info("Push Installation Id: ", push.InstallationId.ToString());
+                }
+                catch (Exception ex)
+                {
+                    Log.Error(TAG, "Could not register with Notification Hub: " + ex.Message);
+                }
+            }
+        }
+
+    A `RegisterAsync` hoz létre egy egyszerű értesítési üzenet sablon JSON-ban, és regiszterekben sablon értesítések fogadása az értesítési központnak a Firebase regisztrációs jogkivonat használatával. Ez biztosítja, hogy az Azure Notification Hub küldött értesítések által megcélzott az eszköz a regisztrációs jogkivonat képviseli.
+
+#### <a name="displaying-the-contents-of-a-push-notification"></a>Leküldéses értesítés tartalmának megjelenítése
+
+1. Az új osztályt a **Droid** nevű projekt `FirebaseNotificationService`, és győződjön meg arról, hogy a következő `using` utasításokat a fájl elején szerepelnek:
 
         using Android.App;
         using Android.Content;
         using Android.Media;
-        using Android.Support.V4.App;
         using Android.Util;
-        using Gcm.Client;
-        using Microsoft.WindowsAzure.MobileServices;
-        using Newtonsoft.Json.Linq;
-        using System;
-        using System.Collections.Generic;
-        using System.Diagnostics;
-        using System.Text;
-8. A következő engedélykéréseket tetején található a fájl hozzáadása után a **használatával** utasítások és előtt a **névtér** nyilatkozatot.
+        using Firebase.Messaging;
 
-        [assembly: Permission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
-        [assembly: UsesPermission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
-        [assembly: UsesPermission(Name = "com.google.android.c2dm.permission.RECEIVE")]
-        [assembly: UsesPermission(Name = "android.permission.INTERNET")]
-        [assembly: UsesPermission(Name = "android.permission.WAKE_LOCK")]
-        //GET_ACCOUNTS is only needed for android versions 4.0.3 and below
-        [assembly: UsesPermission(Name = "android.permission.GET_ACCOUNTS")]
-9. A következő osztálydefiníció hozzáadása a névtérhez.
+1. Cserélje le az üres `FirebaseNotificationService` osztály az alábbi kódra:
 
-       [BroadcastReceiver(Permission = Gcm.Client.Constants.PERMISSION_GCM_INTENTS)]
-       [IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_MESSAGE }, Categories = new string[] { "@PACKAGE_NAME@" })]
-       [IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_REGISTRATION_CALLBACK }, Categories = new string[] { "@PACKAGE_NAME@" })]
-       [IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_LIBRARY_RETRY }, Categories = new string[] { "@PACKAGE_NAME@" })]
-       public class PushHandlerBroadcastReceiver : GcmBroadcastReceiverBase<GcmService>
-       {
-           public static string[] SENDER_IDS = new string[] { "<PROJECT_NUMBER>" };
-       }
-
-   > [!NOTE]
-   > Cserélje le **< PROJECT_NUMBER >** a projekt számát, amelyet korábban feljegyzett.    
-   >
-   >
-10. Cserélje le az üres **GcmService** osztály a következő kóddal, amely az új szórásos receiver használja:
-
-         [Service]
-         public class GcmService : GcmServiceBase
-         {
-             public static string RegistrationID { get; private set; }
-
-             public GcmService()
-                 : base(PushHandlerBroadcastReceiver.SENDER_IDS){}
-         }
-11. Adja hozzá a következő kódot a **GcmService** osztály. A rendszer felülírja a **OnRegistered** eseménykezelő és megvalósít egy **regisztrálása** metódust.
-
-        protected override void OnRegistered(Context context, string registrationId)
+        [Service]
+        [IntentFilter(new[] { "com.google.firebase.MESSAGING_EVENT" })]
+        public class FirebaseNotificationService : FirebaseMessagingService
         {
-            Log.Verbose("PushHandlerBroadcastReceiver", "GCM Registered: " + registrationId);
-            RegistrationID = registrationId;
+            const string TAG = "FirebaseNotificationService";
 
-            var push = TodoItemManager.DefaultManager.CurrentClient.GetPush();
-
-            MainActivity.CurrentActivity.RunOnUiThread(() => Register(push, null));
-        }
-
-        public async void Register(Microsoft.WindowsAzure.MobileServices.Push push, IEnumerable<string> tags)
-        {
-            try
+            public override void OnMessageReceived(RemoteMessage message)
             {
-                const string templateBodyGCM = "{\"data\":{\"message\":\"$(messageParam)\"}}";
+                Log.Debug(TAG, "From: " + message.From);
 
-                JObject templates = new JObject();
-                templates["genericMessage"] = new JObject
-                {
-                    {"body", templateBodyGCM}
-                };
+                // Pull message body out of the template
+                var messageBody = message.Data["message"];
+                if (string.IsNullOrWhiteSpace(messageBody))
+                    return;
 
-                await push.RegisterAsync(RegistrationID, templates);
-                Log.Info("Push Installation Id", push.InstallationId.ToString());
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine(ex.Message);
-                Debugger.Break();
-            }
-        }
-
-    Vegye figyelembe, hogy ezt a kódot használja a `messageParam` paraméter a sablon regisztrációhoz.
-12. Az alábbi kódot, amely megvalósítja az **OnMessage**:
-
-        protected override void OnMessage(Context context, Intent intent)
-        {
-            Log.Info("PushHandlerBroadcastReceiver", "GCM Message Received!");
-
-            var msg = new StringBuilder();
-
-            if (intent != null && intent.Extras != null)
-            {
-                foreach (var key in intent.Extras.KeySet())
-                    msg.AppendLine(key + "=" + intent.Extras.Get(key).ToString());
+                Log.Debug(TAG, "Notification message body: " + messageBody);
+                SendNotification(messageBody);
             }
 
-            //Store the message
-            var prefs = GetSharedPreferences(context.PackageName, FileCreationMode.Private);
-            var edit = prefs.Edit();
-            edit.PutString("last_msg", msg.ToString());
-            edit.Commit();
-
-            string message = intent.Extras.GetString("message");
-            if (!string.IsNullOrEmpty(message))
+            void SendNotification(string messageBody)
             {
-                createNotification("New todo item!", "Todo item: " + message);
-                return;
-            }
+                var intent = new Intent(this, typeof(MainActivity));
+                intent.AddFlags(ActivityFlags.ClearTop);
+                var pendingIntent = PendingIntent.GetActivity(this, 0, intent, PendingIntentFlags.OneShot);
 
-            string msg2 = intent.Extras.GetString("msg");
-            if (!string.IsNullOrEmpty(msg2))
-            {
-                createNotification("New hub message!", msg2);
-                return;
-            }
-
-            createNotification("Unknown message details", msg.ToString());
-        }
-
-        void createNotification(string title, string desc)
-        {
-            //Create notification
-            var notificationManager = GetSystemService(Context.NotificationService) as NotificationManager;
-
-            //Create an intent to show ui
-            var uiIntent = new Intent(this, typeof(MainActivity));
-
-            //Use Notification Builder
-            NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
-
-            //Create the notification
-            //we use the pending intent, passing our ui intent over which will get called
-            //when the notification is tapped.
-            var notification = builder.SetContentIntent(PendingIntent.GetActivity(this, 0, uiIntent, 0))
-                    .SetSmallIcon(Android.Resource.Drawable.SymActionEmail)
-                    .SetTicker(title)
-                    .SetContentTitle(title)
-                    .SetContentText(desc)
-
-                    //Set the notification sound
+                var notificationBuilder = new Notification.Builder(this)
+                    .SetSmallIcon(Resource.Drawable.ic_stat_ic_notification)
+                    .SetContentTitle("New Todo Item")
+                    .SetContentText(messageBody)
+                    .SetContentIntent(pendingIntent)
                     .SetSound(RingtoneManager.GetDefaultUri(RingtoneType.Notification))
+                    .SetAutoCancel(true);
 
-                    //Auto cancel will remove the notification once the user touches it
-                    .SetAutoCancel(true).Build();
-
-            //Show the notification
-            notificationManager.Notify(1, notification);
+                var notificationManager = NotificationManager.FromContext(this);
+                notificationManager.Notify(0, notificationBuilder.Build());
+            }
         }
 
-    Ez a bejövő értesítések kezeli, és elküldi azokat a notification manager megjeleníteni.
-13. **GcmServiceBase** is szükséges, hogy implementálja a **OnUnRegistered** és **hibára** kezelő módszerrel, amely a következőképpen teheti:
 
-        protected override void OnUnRegistered(Context context, string registrationId)
-        {
-            Log.Error("PushHandlerBroadcastReceiver", "Unregistered RegisterationId : " + registrationId);
-        }
-
-        protected override void OnError(Context context, string errorId)
-        {
-            Log.Error("PushHandlerBroadcastReceiver", "GCM Error: " + errorId);
-        }
+    A `OnMessageReceived` módszert, amelyet ha egy alkalmazás FCM értesítést kap, az üzenet a tartalom kibontása, és meghívja a `SendNotification` metódust. Ez a módszer az üzenet tartalma alakítja át, amely nincs elindítva, az alkalmazás futása közben, az értesítési területen megjelenő értesítéssel helyi értesítést.
 
 Most már áll készen áll a teszt leküldéses értesítések Android-eszközön vagy az emulátor futnak az alkalmazásban.
 
@@ -418,6 +351,9 @@ Ez a szakasz a a Xamarin.Forms WinApp és a Windows-eszközök WinPhone81 projek
 ## <a name="next-steps"></a>További lépések
 További tudnivalók leküldéses értesítések:
 
+* [Leküldéses értesítések küldése az Azure Mobile Apps szolgáltatásban](https://developer.xamarin.com/guides/xamarin-forms/cloud-services/push-notifications/azure/)
+* [Firebase Cloud Messaging](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/firebase-cloud-messaging/)
+* [Távoli értesítések küldése a Firebase Cloud Messaging](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/)
 * [Leküldéses értesítési eseményadatokat](../notification-hubs/notification-hubs-push-notification-fixer.md)  
   Oka különböző miért kerülhetnek vagy értesítések nem végül az eszközökön. Ez a témakör bemutatja, hogyan elemezheti és mérje fel, az alapvető ok leküldéses értesítés sikertelen.
 

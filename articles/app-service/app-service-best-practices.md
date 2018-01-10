@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2016
 ms.author: dariagrigoriu
-ms.openlocfilehash: 251ce238b745734bdfb508b30097304a9a650a8c
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 1a36c11fcce33c0148fa7d0a4e947a9cc37cd276
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="best-practices-for-azure-app-service"></a>Azure App Service – ajánlott eljárások
 Ez a cikk foglalja össze az ajánlott eljárások a [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714). 
@@ -35,9 +35,9 @@ Közös elhelyezés ugyanabban a régióban ideális megoldás például egy web
 Ha egy alkalmazás felügyelet jelöli a vártnál több memóriát fogyaszt, vagy fontolja meg a szolgáltatási javaslatokat figyelje a [App Service automatikus javítás funkció](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites). A memória küszöbértéke alapuló egyéni műveletek tart az automatikus javítás funkció lehetőségek közül. Műveletek a vizsgálat a helyszíni megoldás a memóriakép keresztül az értesítő e-mailek pontszámot span újrahasznosítása a munkavégző folyamat által. Automatikus javítás konfigurálható és egy rövid felhasználói felületen keresztül Web.config fájlban a következő blogbejegyzésben a részben ismertetett módon a [szolgáltatás támogatási webhely bővítmény](https://azure.microsoft.com/blog/additional-updates-to-support-site-extension-for-azure-app-service-web-apps).   
 
 ## <a name="CPUresources"></a>Ha használja a vártnál több CPU-alkalmazások
-Ha azt észleli az alkalmazás feldolgozó további CPU mint várt vagy nem észlel ismétlődő CPU igényeiben jelentkező felügyelet jelöli, vagy szolgáltatási javaslatokat távolítsa el a vertikális felskálázásával vagy az App Service-csomag kiterjesztése. Az alkalmazás statefull, vertikális felskálázásával akkor lehetőség, amíg az alkalmazás esetén állapotmentes, méretezési ki fogja diktálni nagyobb rugalmasságot és nagyobb skálázási lehetséges. 
+Ha azt észleli az alkalmazás feldolgozó további CPU mint várt vagy nem észlel ismétlődő CPU igényeiben jelentkező felügyelet jelöli, vagy szolgáltatási javaslatokat távolítsa el a vertikális felskálázásával vagy az App Service-csomag kiterjesztése. Az alkalmazás állapotalapú, vertikális felskálázásával akkor lehetőség, amíg az alkalmazás esetén állapotmentes, méretezési ki fogja diktálni nagyobb rugalmasságot és nagyobb skálázási lehetséges. 
 
-"Statefull" vagy "állapotmentes" alkalmazások kapcsolatos információkért tekintse meg a videót: [méretezhető-végpontok Többrétegű alkalmazások tervezése a Microsoft Azure Web Apps](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid). App Service méretezés és az automatikus skálázás beállításokkal kapcsolatos további információkért olvassa el: [egy webalkalmazás skálázása az Azure App Service](web-sites-scale.md).  
+"Állapotalapú" vagy "állapotmentes" alkalmazások kapcsolatos információkért tekintse meg a videót: [méretezhető-végpontok Többrétegű alkalmazások tervezése a Microsoft Azure Web Apps](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid). App Service méretezés és az automatikus skálázás beállításokkal kapcsolatos további információkért olvassa el: [egy webalkalmazás skálázása az Azure App Service](web-sites-scale.md).  
 
 ## <a name="socketresources"></a>A szoftvercsatorna-erőforrások elfogytak, amikor
 Egy skálázását kimenő TCP-kapcsolatok gyakori oka klienskódtárait, amelyek nem felelnek meg ismét felhasználni, TCP-kapcsolatok, illetve a magasabb szintű protokoll, például a HTTP - Keep-Alive nem alkalmazhatók használatát. Tekintse át a könyvtárak, az App Service-csomag van konfigurálva vagy érhető el a kódban, a kimenő kapcsolatok hatékony használatának biztosításához az alkalmazások által hivatkozott dokumentációját. Is útmutatását library dokumentációjában megfelelő létrehozására és kiadás vagy karbantartási kapcsolatok megakadályozására elkerülése érdekében. Az ilyen ügyfelek szalagtárak vizsgálatokat végrehajtása közben folyamatban hatás mérsékelheti kiterjesztése több példánya.

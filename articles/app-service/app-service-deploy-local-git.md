@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2016
 ms.author: dariagrigoriu
-ms.openlocfilehash: ed0239df7bf1e4d37987aaa929d0c67bec595b30
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 19681564ef48649d4d44da1d0a2a65044f494ce4
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Helyi üzembe helyezés Git használatával az Azure App Service szolgáltatásban
-Ez az oktatóanyag bemutatja, hogyan üzembe az alkalmazást, amely [Azure Web Apps](app-service-web-overview.md) a Git-tárházat a helyi számítógépen. App Service támogatja ezt a módszert a a **helyi Git** a központi telepítési lehetőség a [Azure Portal].  
+Ez az oktatóanyag bemutatja, hogyan üzembe az alkalmazást, amely [Azure Web Apps](app-service-web-overview.md) a Git-tárházat a helyi számítógépen. App Service támogatja ezt a módszert a a **helyi Git** a központi telepítési lehetőség a [Azure Portalra].  
 A jelen cikkben ismertetett Git-parancsok többsége automatikusan megtörténik, egy App Service alkalmazás használatával létrehozásakor a [Azure parancssori felület] leírtak [Itt](app-service-web-get-started-dotnet.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -68,11 +68,11 @@ git commit -m "Hello Azure App Service"
 ## <a name="Step3"></a>3. lépés: Az App Service alkalmazás tárház engedélyezése
 A következő lépésekkel ahhoz, hogy egy App Service-alkalmazás Git-tárházat.
 
-1. Jelentkezzen be az [Azure Portal].
+1. Jelentkezzen be az [Azure Portalra].
 2. Az App Service-alkalmazás paneljén kattintson **beállítások > központi telepítés forrásának**. Kattintson a **forrás választása**, majd kattintson a **helyi Git-tárház**, és kattintson a **OK**.  
    
-    ![Helyi Git-tárház](./media/app-service-deploy-local-git/local_git_selection.png)
-3. Ha ez az első idő beállítása a tárházat az Azure-ban, a bejelentkezési hitelesítő adatok létrehozása az szeretné. Jelentkezzen be a Azure tárház és leküldéses módosítása a helyi Git-tárház a őket használandó. Az alkalmazás paneljén kattintson **beállítások > üzembe helyezési hitelesítő adatok**, majd konfigurálja a központi telepítés felhasználónevét és jelszavát. Amikor elkészült, kattintson a **mentése**.
+    ![Helyi git-tárház](./media/app-service-deploy-local-git/local_git_selection.png)
+3. Ha ez az első idő beállítása a tárházat az Azure-ban, a bejelentkezési hitelesítő adatok létrehozása az szeretné. Jelentkezzen be a Azure tárház és leküldéses módosítása a helyi Git-tárház a őket használandó. Az alkalmazás paneljén kattintson **telepítési > üzembe helyezési hitelesítő adatok**, majd konfigurálja a központi telepítés felhasználónevét és jelszavát. Amikor elkészült, kattintson a **mentése**.
    
     ![](./media/app-service-deploy-local-git/deployment_credentials.png)
 
@@ -168,12 +168,12 @@ git config --global http.postBuffer 524288000
 ## <a name="additional-resources"></a>További források
 * [A Git dokumentációja](http://git-scm.com/documentation)
 * [Project Kudu dokumentációja](https://github.com/projectkudu/kudu/wiki)
-* [Folyamatos telepítés az Azure App Service](app-service-continuous-deployment.md)
+* [Folyamatos üzembe helyezés az Azure App Service](app-service-continuous-deployment.md)
 * [A PowerShell használata az Azure-ban](/powershell/azure/overview)
 * [Az Azure parancssori felület használatával](../cli-install-nodejs.md)
 
 [Azure Developer Center]: http://www.windowsazure.com/en-us/develop/overview/
-[Azure Portal]: https://portal.azure.com
+[Azure Portalra]: https://portal.azure.com
 [Git website]: http://git-scm.com
 [Installing Git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
 [Azure parancssori felület]: https://azure.microsoft.com/en-us/documentation/articles/xplat-cli-azure-resource-manager/

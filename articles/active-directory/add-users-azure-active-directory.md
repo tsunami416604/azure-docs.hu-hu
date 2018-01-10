@@ -11,18 +11,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/07/2017
+ms.date: 01/08/2018
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: 3b914bb72d9d0d6b6021c221c6019aea69a964a6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f0f18f377f194e78c05e63e9b6cbc31c1b945335
+ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="quickstart-add-new-users-to-azure-active-directory"></a>Gyors üzembe helyezés: Új felhasználók hozzáadása az Azure Active Directoryban
-Ez a cikk azt ismerteti, hogyan vehet fel új felhasználókat a szervezet az Azure Active Directory (Azure AD) egyik az Azure portál használatával egyszerre, vagy a helyi Windows Server AD felhasználói fiók adatok szinkronizálása. 
+Ez a cikk ismerteti a címkék törlése és felhasználók hozzáadása a szervezet az Azure portál használatával a orgnization Azure Active Directory (Azure AD) bérlői vagy szinkronizálása a helyszíni Windows Server AD felhasználói fiók adatait. 
 
 ## <a name="add-cloud-based-users"></a>Adja hozzá a felhőalapú felhasználók
 1. Jelentkezzen be a [Azure Active Directory felügyeleti központ](https://aad.portal.azure.com) egy olyan fiókkal, amely a címtár globális rendszergazdája.
@@ -48,10 +48,13 @@ Ez a cikk azt ismerteti, hogyan vehet fel új felhasználókat a szervezet az Az
 
 ### <a name="learn-more"></a>Részletek 
 * [Egy másik címtárból adja hozzá a vendégfelhasználók számára](active-directory-b2b-what-is-azure-ad-b2b.md) 
-
 * [Felhasználó hozzárendelése egy szerepkörhöz az Azure AD-ben](active-directory-users-assign-role-azure-portal.md)
+* [Felhasználói profilok kezelése](active-directory-users-profile-azure-portal.md)
+* [A törölt felhasználói visszaállítása](active-directory-users-restore.md)
 
-## <a name="next-steps"></a>Következő lépések
+
+
+## <a name="next-steps"></a>További lépések
 A gyors üzembe helyezés az új felhasználók felvétele az Azure AD Premium hogy megismerte. 
 
 A következő hivatkozás használatával hozzon létre egy új felhasználót az Azure-portálon az Azure AD-ben.
