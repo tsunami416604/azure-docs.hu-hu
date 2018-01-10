@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2017
 ms.author: xshi
-ms.openlocfilehash: 7d3f610674d9491f7689cc911ba21de0b6b615d7
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 1ad9200376bc4959e7572ae8d5be11b278a42cc0
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub-in-the-cloud"></a>IoT DevKit AZ3166 csatlakozni az Azure IoT Hub a felhőben
 
@@ -104,7 +104,7 @@ Az alapértelmezett alkalmazás a DevKit futó ellenőrzi a belső vezérlőprog
 > [!NOTE] 
 > 1.1, óta DevKit engedélyezi ST SZÁLBIZTOS rendszertöltő. Belső vezérlőprogram frissítése, ha le v1.1 ahhoz, hogy a helyes működéséhez valószínűleg szüksége.
 
-Ha a belső vezérlőprogram frissítése, a képernyő megjeleníti az aktuális és a legújabb belső vezérlőprogramjának következő verziójával. A frissítéshez kövesse a [belső vezérlőprogram frissítése](https://microsoft.github.io/azure-iot-developer-kit/docs/upgrading/) útmutató.
+Ha a belső vezérlőprogram frissítése, a képernyő megjeleníti az aktuális és a legújabb belső vezérlőprogramjának következő verziójával. A frissítéshez kövesse a [belső vezérlőprogram frissítése](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/) útmutató.
 
 ![Megjeleníti a jelenlegi és a legújabb belső vezérlőprogramjának következő verziójával](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/firmware.jpg)
 
@@ -297,7 +297,7 @@ A mintaalkalmazás sikeresen futása közben a következő eredményt látja:
 
 Ha problémákat tapasztal, található [– gyakori kérdések](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/). Akkor is is küldjön visszajelzést Megjegyzés mivel ezen a lapon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Egy MXChip IoT DevKit sikeresen csatlakozott az IoT hub, és a rögzített érzékelő adatokat küldött az IoT hub.
 

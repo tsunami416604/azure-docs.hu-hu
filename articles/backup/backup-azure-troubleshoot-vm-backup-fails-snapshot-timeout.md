@@ -13,13 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 09/08/2017
+ms.date: 01/09/2018
 ms.author: genli;markgal;sogup;
-ms.openlocfilehash: 2112d332faba194285ac35cf936000b399cd3e83
-ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
+ms.openlocfilehash: 5eb326dfd89d9cc64eb0e05286e64c87e090e0a1
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-agent-andor-extension"></a>Azure biztonsági mentési hiba elhárítása: ügynök és/vagy kiterjesztés problémái
 
@@ -28,7 +28,14 @@ A cikkben az ügynök és Virtuálisgép-bővítmény kommunikációs a problém
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## <a name="vm-agent-unable-to-communicate-with-azure-backup"></a>Nem lehet kommunikálni az Azure biztonsági mentés Virtuálisgép-ügynök
+
+> [!NOTE]
+> Ha az Azure Linux virtuális gép biztonsági mentések indult el, vagy azt követően 2018 január 4. a hiba miatt sikertelenül működő az érintett virtuális gépek a következő parancsot, majd próbálja megismételni a biztonsági másolatok
+
+    sudo rm -f /var/lib/waagent/*.[0-9]*.xml
+
 Miután regisztrálja, és egy virtuális Gépet az Azure Backup szolgáltatás a ütemezése, a biztonsági mentés kezdeményezi a a feladat úgy pont időponthoz kötött pillanatképet készít a virtuális gép ügynökkel folytatott kommunikáció. A következő feltételek megakadályozhatja, hogy a pillanatfelvételt a elindul, ami viszont biztonsági mentés sikertelen. Kövesse az alábbi lépéseket a megadott sorrendben, majd próbálja megismételni a műveletet.
+
 ##### <a name="cause-1-the-vm-has-no-internet-accessthe-vm-has-no-internet-access"></a>1. ok: [a virtuális gép nincs Internet-hozzáféréssel rendelkező](#the-vm-has-no-internet-access)
 ##### <a name="cause-2-the-agent-is-installed-in-the-vm-but-is-unresponsive-for-windows-vmsthe-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>2. ok: [az ügynök telepítve van-e a virtuális Géphez, de nem válaszol a (virtuális gépekhez Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)
 ##### <a name="cause-3-the-agent-installed-in-the-vm-is-out-of-date-for-linux-vmsthe-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>3. ok: [a virtuális gépen telepített ügynök elavult (a Linux virtuális gépek)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)

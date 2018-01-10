@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: f1efbfc1f85f4c2fa404742e2d71344b3426c94d
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: f3cdcaf49999d2d5d1ee639cb41916a2584b84f2
+ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>A .NET-alkalmazásokban kivételek pillanatképek hibakeresése
 
@@ -75,8 +75,8 @@ A következő környezetekben támogatottak:
 
 1. [Az Application Insights engedélyezése az ASP.NET Core web app alkalmazásban](app-insights-asp-net-core.md), ha még nincs kész.
 
-> [!NOTE]
-> Arról, hogy az alkalmazás hivatkozik 2.1.1 verzió vagy újabb, a Microsoft.ApplicationInsights.AspNetCore csomag lehet.
+    > [!NOTE]
+    > Arról, hogy az alkalmazás hivatkozik 2.1.1 verzió vagy újabb, a Microsoft.ApplicationInsights.AspNetCore csomag lehet.
 
 2. Tartalmazza a [Microsoft.ApplicationInsights.SnapshotCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-csomag az alkalmazásban.
 
@@ -275,15 +275,39 @@ MinidumpUploader.exe Information: 0 : Deleted PDB scan marker D:\local\Temp\Dump
 
 Az alkalmazások, amelyek _nem_ üzemelteti az App Service-ben, a feltöltése feldolgozásra a tömörített memóriaképek ugyanabban a mappában: `%TEMP%\Dumps\<ikey>` (ahol `<ikey>` a rendszerállapot-kulcs).
 
-Cloud Services szerepkörénél az alapértelmezett ideiglenes mappa túl kicsi ahhoz, hogy a memóriaképfájl lehet. Ebben az esetben megadhat egy másik mappát TempFolder tulajdonságon keresztül ApplicationInsights.config.
+### <a name="troubleshooting-cloud-services"></a>Hibaelhárítási Cloud Services csomag
+Cloud Services szerepkörénél az alapértelmezett ideiglenes mappa túl kicsi ahhoz, hogy a memóriaképfájl, ami elveszett pillanatképek lehet.
+A lemezterületre van szükség az alkalmazás és a megfelelő számú párhuzamos pillanatkép teljes munkakészletének függ.
+A 32 bites ASP.NET webes szerepkör munkakészletének általában 200 MB és 500 MB közé esik.
+Legalább két egyidejű pillanatkép-készítési engedélyezze.
+Például ha az alkalmazás teljes munkakészletének 1 GB, akkor győződjön meg arról, hogy van-e legalább 2 GB szabad lemezterület-pillanatképek.
+Kövesse az alábbi lépéseket a felhőalapú szolgáltatás szerepkör konfigurálása a pillanatképek helyi dedikált erőforrással.
 
+1. A felhőalapú szolgáltatás egy új helyi erőforrás hozzáadása a felhőalapú szolgáltatás definíciós (.csdf) fájl szerkesztésével. Az alábbi példa meghatározza egy nevű erőforrást `SnapshotStore` 5 GB méretű.
 ```xml
-<TelemetryProcessors>
-  <Add Type="Microsoft.ApplicationInsights.SnapshotCollector.SnapshotCollectorTelemetryProcessor, Microsoft.ApplicationInsights.SnapshotCollector">
-    <!-- Use an alternative folder for minidumps -->
-    <TempFolder>C:\Snapshots\Go\Here</TempFolder>
+   <LocalResources>
+     <LocalStorage name="SnapshotStore" cleanOnRoleRecycle="false" sizeInMB="5120" />
+   </LocalResources>
+```
+
+2. A szerepkör módosítása `OnStart` adható hozzá egy környezeti változó mutat, a `SnapshotStore` helyi erőforrás.
+```C#
+   public override bool OnStart()
+   {
+       Environment.SetEnvironmentVariable("SNAPSHOTSTORE", RoleEnvironment.GetLocalResource("SnapshotStore").RootPath);
+       return base.OnStart();
+   }
+```
+
+3. A szerepkör ApplicationInsights.config fájl az ideiglenes mappa helye által használt felülbírálására frissítése`SnapshotCollector`
+```xml
+  <TelemetryProcessors>
+    <Add Type="Microsoft.ApplicationInsights.SnapshotCollector.SnapshotCollectorTelemetryProcessor, Microsoft.ApplicationInsights.SnapshotCollector">
+      <!-- Use the SnapshotStore local resource for snapshots -->
+      <TempFolder>%SNAPSHOTSTORE%</TempFolder>
+      <!-- Other SnapshotCollector configuration options -->
     </Add>
-</TelemetryProcessors>
+  </TelemetryProcessors>
 ```
 
 ### <a name="use-application-insights-search-to-find-exceptions-with-snapshots"></a>Használja az Application Insights keresési pillanatképekkel kivételek kereséséhez

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: saeeda
-ms.openlocfilehash: 81da88c895bdd3407d8ddd51124afc405b774cb9
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 38f33f2a5d0bba4686cfeef121f2087326e1897d
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Az Azure AD B2C: Gyakori kérdések (GYIK) 
 Ezen a lapon az Azure Active Directory (Azure AD) B2C kapcsolatos gyakori kérdésekre ad választ. Tartsa biztonsági frissítések keresése.
@@ -105,7 +105,7 @@ Az Azure AD B2C nem, nem támogatja ugyanazokat a jelentések szerint az Azure A
 Igen!  További információ a [nyelvi testreszabási](active-directory-b2c-reference-language-customization.md), amely nyilvános előzetes verzió van.  Azt a fordítások 36 nyelvet a, és az igényeinek bármilyen karakterlánc lehet felülbírálni.
 
 ### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-loginmicrosoftonlinecom-to-logincontosocom"></a>Használható önállóan URL-címeket a regisztrációs és a bejelentkezési oldalon, az Azure AD B2C által szolgáltatott? Például módosítható az URL-címet a login.microsoftonline.com való login.contoso.com?
-Jelenleg nem. Ez a funkció a terv van. A tartomány ellenőrzése a **tartományok** a klasszikus Azure portálra a lap nem ezen cél megvalósításához.
+Jelenleg nem. Ez a funkció a terv van. A tartomány ellenőrzése a **tartományok** fülre az Azure portálon nem ezen cél megvalósításához.
 
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>Hogyan törli a saját Azure AD B2C-bérlő?
 Kövesse az alábbi lépéseket az Azure AD B2C-bérlő törlése:

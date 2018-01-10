@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 12/18/2017
 ms.author: saurse;nkolli;trinadhk
-ms.openlocfilehash: c58aafda21e02e12984e09ef605f7ea13200e381
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: 32a48a34711a7f053a74e103deb6853150de3903
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Offline biztonsági mentési munkafolyamat az Azure Backupban
 Azure biztonsági mentés számos beépített hatékonyság, hálózati és tárolási költségek csökkentése során a kezdeti teljes biztonsági mentés az Azure-bA rendelkezik. Kezdeti teljes biztonsági mentés általában nagy adatmennyiségek átvitelét, és azt követő biztonsági mentéseket, amely csak az eltérések/növekményes átviteli képest nagyobb hálózati sávszélesség szükséges. Azure biztonsági mentés tömöríti a kezdeti biztonsági mentéseket. A folyamatot, amely offline összehangolása Azure biztonsági mentési lemezek is használhatók a tömörített kezdeti biztonsági másolati adatokat kapcsolat nélküli feltöltése az Azure-bA.  
@@ -46,7 +46,7 @@ Az Azure a biztonsági mentési adatok feltöltése után Azure biztonsági ment
   * Létrejött az Azure Backup-tárolóban.
   * Letöltött tárolói hitelesítő adatokat.
   * Az Azure Backup szolgáltatás ügynöke telepítve van a Windows Server és Windows-ügyfélen vagy a System Center Data Protection Manager-kiszolgálón, és a számítógép regisztrálva van az Azure Backup-tárolóban.
-* [A fájl Azure közzétételi beállítások letöltése](https://manage.windowsazure.com/publishsettings) használni kívánt biztonsági másolatot az adatairól a számítógépen.
+* [A fájl Azure közzétételi beállítások letöltése](https://portal.azure.com/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) használni kívánt biztonsági másolatot az adatairól a számítógépen.
 * Készítsen elő egy ideiglenes helyet, amely lehet, hogy egy hálózati megosztásra vagy további meghajtó a számítógépen. Az ideiglenes helyet az átmeneti tároló, és a munkafolyamat ideiglenesen során használt. Győződjön meg arról, hogy rendelkezik-e elég szabad lemezterület ahhoz, hogy a kezdeti másolatot az ideiglenes helyet. Például ha próbál 500 GB-os fájlkiszolgáló biztonsági mentése, győződjön meg arról, hogy az átmeneti területre legalább 500 GB. (Tömörítés miatt a kisebb méretű használja.)
 * Győződjön meg arról, hogy támogatott meghajtó használ. 2,5 hüvelykes csak SSD vagy 2.5-ös vagy 3,5 hüvelykes SATA II/III belső merevlemez-meghajtók támogatottak az Import/Export szolgáltatás való használatra. Merevlemez-meghajtókat is használhat legfeljebb 10 TB. Ellenőrizze a [Azure Import/Export szolgáltatás dokumentációja](../storage/common/storage-import-export-service.md#hard-disk-drives) meghajtók, a szolgáltatás által támogatott legújabb készlete esetében.
 * A BitLocker engedélyezése a számítógépen, amelyre a SATA-meghajtó író csatlakoztatva van.
@@ -67,7 +67,7 @@ Ebben a szakaszban található információk segítséget, hogy az adatok egy Az
 
     * **Átmeneti hely**:, amelyhez a kezdeti biztonsági másolatot írása ideiglenes tárolási helyét. Ez lehet egy hálózati megosztásra vagy a helyi számítógépen. A másolási számítógép és a forrásszámítógép nem egyezik, azt javasoljuk, hogy megadja a teljes elérési útja az átmeneti tárolási helyét.
     * **Az Azure importálási feladat nevének**: mely Azure Import alapján szolgáltatás és az Azure Backup követésére küldött adatok továbbítása lemezeken Azure egyedi nevét.
-    * **Az Azure közzétételi beállítási**: az XML-fájl, amely tartalmazza az előfizetési profillal kapcsolatos információk. Az előfizetéshez társított biztonságos hitelesítő adatokat is tartalmaz. Is [töltse le a fájlt](https://manage.windowsazure.com/publishsettings). Adja meg a közzétételi beállítások fájlja helyi elérési útja.
+    * **Az Azure közzétételi beállítási**: az XML-fájl, amely tartalmazza az előfizetési profillal kapcsolatos információk. Az előfizetéshez társított biztonságos hitelesítő adatokat is tartalmaz. Is [töltse le a fájlt](https://portal.azure.com/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade). Adja meg a közzétételi beállítások fájlja helyi elérési útja.
     * **Az Azure előfizetés-azonosító**: az Azure-előfizetési Azonosítót, az előfizetés, ahonnan az Azure importálási feladatnak kezdeményezni szeretné. Ha több Azure-előfizetéssel rendelkezik, az importálási feladat társítani kívánt az előfizetés Azonosítóját használnia.
     * **Az Azure Storage-fiók**: A tárfiókot az Azure importálási feladattal társított Azure-előfizetésben.
     * **Az Azure Storage-tároló**: a cél tárolási blob, ahol ez a feladat adatok importálása az Azure storage-fiók nevét.

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: billmath
-ms.openlocfilehash: 02b1b3f2a567f6073b891a0376eddbc87cd268aa
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5a559c749bc7ba3cabbbb1a171605b8baf601eef
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Felhasználó bejelentkezhet az Azure Active Directory áteresztő hitelesítés
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 12/11/2017
 
 Az Azure Active Directory (Azure AD) áteresztő hitelesítés lehetővé teszi, hogy a felhasználók számára a helyszíni és a felhőalapú alkalmazások azonos jelszóval bejelentkezni. Ez a szolgáltatás biztosít a felhasználók hatékonyabb működését - ne feledje, hogy egy kisebb jelszó és csökkenti az informatikai segélyszolgálat költségeket, mivel a felhasználók bejelentkezés elfelejti kevésbé valószínű. Amikor a felhasználók bejelentkeznek az Azure AD, ez a szolgáltatás ellenőrzi a felhasználói jelszavak közvetlenül a helyszíni Active Directory általi.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/PyeAC85Gm7w" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
 Ez a szolgáltatás nem helyett [Azure AD Jelszókivonat-szinkronizálást](active-directory-aadconnectsync-implement-password-synchronization.md), amely biztosítja, hogy az azonos előnye, hogy a szervezetek számára a felhőalapú hitelesítés. Azonban egyes szervezetek biztonsági és megfelelőségi házirendek nem lehetővé teszik a szervezetek számára küldése a felhasználói jelszavakat, még akkor is, kivonatolt formában, a belső határain kívül. Áteresztő hitelesítés az olyan szervezetek ideális megoldás.
 
@@ -64,7 +64,7 @@ Ez a szolgáltatás nem helyett [Azure AD Jelszókivonat-szinkronizálást](acti
 - Több ügynökök telepítése bejelentkezési kérelmek magas rendelkezésre állású biztosít.
 - Az [védi](active-directory-aadconnect-pass-through-authentication-smart-lockout.md) a helyszíni fiókok elleni találgatásos kényszerítése jelszó támadások a felhőben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [**Gyors üzembe helyezési** ](active-directory-aadconnect-pass-through-authentication-quick-start.md) - létrehozásához, és fut az Azure AD áteresztő hitelesítés.
 - [**Intelligens zárolás** ](active-directory-aadconnect-pass-through-authentication-smart-lockout.md) -intelligens zárolás konfigurálása képességet a bérlő a felhasználói fiókok védelme.

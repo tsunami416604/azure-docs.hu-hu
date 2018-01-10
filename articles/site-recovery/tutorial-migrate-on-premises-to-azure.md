@@ -2,66 +2,70 @@
 title: "A helyszíni gépeket áttelepíteni az Azure szolgáltatásban az Azure Site Recovery |} Microsoft Docs"
 description: "A cikkből megtudhatja, hogyan telepítheti át a helyszíni gépeket az Azure-bA az Azure Site Recovery."
 services: site-recovery
-documentationcenter: 
 author: rayne-wiselman
-manager: jwhit
-editor: 
-ms.assetid: ddb412fd-32a8-4afa-9e39-738b11b91118
 ms.service: site-recovery
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 11/01/2017
+ms.topic: tutorial
+ms.date: 01/07/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: cfd44f7f06faa7d1d00efa9427dbf5d1d0a89ef1
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: ee9397406cbca21d8bd53019d9daac5a037f508c
+ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Helyszíni gépek áttelepítése az Azure-ba
 
-A [Azure Site Recovery](site-recovery-overview.md) szolgáltatás kezeli, és koordinálja a replikációt, a feladatátvételi és a feladat-visszavétel a helyszíni gépeket, és az Azure virtuális gépek (VM).
+Használata mellett a [Azure Site Recovery](site-recovery-overview.md) szolgáltatás kezeléséhez és vészhelyreállítás Azure virtuális gépek és a helyszíni gépeket levezényelni üzleti folytonossági és vészhelyreállítási (BCDR) céljából is használhatja a helyhez Visszaállítás a helyszíni gépeket az Azure-bA áttelepítésének kezelése.
 
-Az oktatóanyag bemutatja, hogyan kell áttelepíteni a helyszíni virtuális gépek és fizikai kiszolgálók Azure Site Recovery szolgáltatással. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+
+Az oktatóanyag bemutatja, hogyan telepítheti át a helyszíni virtuális gépek és fizikai kiszolgálók Azure-bA. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Állítsa be a telepítési előfeltételek
-> * A Site Recovery Recovery Services-tároló létrehozása
-> * A helyi felügyeleti kiszolgálók központi telepítése
-> * Állítson be egy replikációs házirendet és a replikáció engedélyezése
-> * Futtassa egy vész-helyreállítási részletezéshez való győződjön meg arról, hogy minden működik
+> * Replikációs cél
+> * A forrás és cél környezet beállítása
+> * A replikációs házirend beállítása
+> * A replikáció engedélyezése
+> * Teszt migrálással azonban győződjön meg arról, hogy minden a várt módon működik
 > * Egyszeri feladatátvételt végez az Azure
 
-## <a name="overview"></a>Áttekintés
+Ez az egy sorozat harmadik oktatóanyaga. Ez az oktatóanyag feltételezi, hogy már végrehajtotta a feladatokat a az előző oktatóanyagok:
 
-Telepít át a gépek replikációját engedélyezésével, és az Azure-bA feladatátvétele.
+1. [Az Azure előkészítése](tutorial-prepare-azure.md)
+2. Készítse elő a helyi [VMware](tutorial-prepare-on-premises-vmware.md) vagy a Hyper-V kiszolgálók.
+
+Mielőtt elkezdené, érdemes tekintse át a [VMware](concepts-vmware-to-azure-architecture.md) vagy [Hyper-V](concepts-hyper-v-to-azure-architecture.md) vész-helyreállítási architektúrák.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az oktatóanyag elvégzéséhez szükséges.
-
-- [Készítse elő](tutorial-prepare-azure.md) Azure-erőforrások, például az Azure-előfizetéssel, Azure virtuális hálózat és a storage-fiók.
-- [Készítse elő](tutorial-prepare-on-premises-vmware.md) VMware helyszíni VMware-kiszolgálók és virtuális gépek.
-- Vegye figyelembe, hogy paravirtualized illesztőprogramok által exportált eszközökön nem támogatottak.
+Paravirtualized illesztőprogramok által exportált eszközökön nem támogatottak.
 
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
-[!INCLUDE [site-recovery-create-vault](../../includes/site-recovery-create-vault.md)]
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com) > **Recovery Services** szolgáltatásba.
+2. Kattintson az **Új** > **Felügyelet és kezelés** > **Backup és Site Recovery** lehetőségre.
+3. A **neve**, adja meg a rövid név **ContosoVMVault**. Ha egynél több előfizetéssel rendelkezik, jelölje ki a megfelelő.
+4. Hozzon létre egy erőforráscsoportot **ContosoRG**.
+5. Válassza ki a kívánt Azure-régiót. A támogatott régiók megtekintéséhez olvassa el az [Azure Site Recovery – Díjszabás](https://azure.microsoft.com/pricing/details/site-recovery/) című cikknek a földrajzi elérhetőséggel foglalkozó részét.
+6. Gyors hozzáférést a tárolóhoz az irányítópultról, kattintson a **rögzítés az irányítópulton** majd **létrehozása**.
 
-## <a name="select-a-protection-goal"></a>Válassza ki a védelmi cél
+   ![Új tároló](./media/tutorial-migrate-on-premises-to-azure/onprem-to-azure-vault.png)
+
+Az új tároló hozzáadódik a **irányítópult** alatt **összes erőforrás**, majd a fő **Recovery Services-tárolók** lap.
+
+
+
+## <a name="select-a-replication-goal"></a>Replikációs cél
 
 Válassza ki, hogy mit szeretne replikálni, és hová.
 1. Kattintson a **Recovery Services-tárolók** > tárolóban.
 2. Az erőforrás menüjében kattintson **Site Recovery** > **infrastruktúra előkészítése** > **védelmi cél**.
-3. A **védelmi cél**, jelölje be:
+3. A **védelmi cél**, válassza ki az áttelepíteni kívánt.
     - **VMware**: válasszon **az Azure-bA** > **Igen, amelyen a VMWare vSphere Hipervizorra**.
     - **Fizikai gép**: válasszon **az Azure-bA** > **nem virtualizált vagy egyéb**.
-    - **A Hyper-V**: válasszon **Azure** > **Igen, a Hyper-V-vel**.
+    - **A Hyper-V**: válasszon **Azure** > **Igen, a Hyper-V-vel**. Ha a Hyper-V virtuális gépek a VMM által felügyelt, válassza ki a **Igen**.
 
 
 ## <a name="set-up-the-source-environment"></a>A forráskörnyezet beállítása
@@ -75,17 +79,21 @@ Válassza ki, hogy mit szeretne replikálni, és hová.
 Válassza ki, és ellenőrizze a tároló erőforrásait.
 
 1. Kattintson az **Infrastruktúra előkészítése** > **Cél** elemre, majd válassza ki a használni kívánt Azure-előfizetést.
-2. Adja meg a tároló üzembe helyezési modellben.
+2. Adja meg a Resource Manager üzembe helyezési modellben.
 3. A Site Recovery ellenőrzi, hogy rendelkezik-e legalább egy kompatibilis Azure-tárfiókkal és -hálózattal.
 
-## <a name="create-a-replication-policy"></a>Replikációs házirend létrehozása
+## <a name="set-up-a-replication-policy"></a>A replikációs házirend beállítása
 
 - [A replikációs házirend beállításához](tutorial-vmware-to-azure.md#create-a-replication-policy) VMware virtuális gépek esetén.
+- [A replikációs házirend beállításához](tutorial-physical-to-azure.md#create-a-replication-policy) fizikai kiszolgálók számára.
+- [A replikációs házirend beállításához](tutorial-hyper-v-to-azure.md#set-up-a-replication-policy) Hyper-V virtuális gépek esetén.
 
 
 ## <a name="enable-replication"></a>A replikáció engedélyezése
 
 - [Engedélyezze a replikálást](tutorial-vmware-to-azure.md#enable-replication) VMware virtuális gépek esetén.
+- [Engedélyezze a replikálást](tutorial-physical-to-azure.md#enable-replication) fizikai kiszolgálók számára.
+- [Engedélyezze a replikálást](tutorial-hyper-v-to-azure.md#enable-replication) Hyper-V virtuális gépek esetén.
 
 
 ## <a name="run-a-test-migration"></a>Egy teszt áttelepítés futtatása
@@ -100,7 +108,7 @@ Az áttelepíteni kívánt gépek a feladatátvételt.
 1. A **beállítások** > **replikált elemek** kattintson a gépre > **feladatátvételi**.
 2. A **feladatátvételi** válassza ki a **helyreállítási pont** feladatokat. Válassza ki a legutóbbi helyreállítási pontot.
 3. A titkosítási kulcs beállítás nem releváns ebben a forgatókönyvben.
-4. Válassza ki **gép leállítása a feladatátvétel megkezdése előtt** Ha azt szeretné, hogy a hely helyreállításával lehet engedélyezi ezt a forrás virtuális gépek leállítása a feladatátvétel elindítása előtt. Feladatátvételi továbbra is fennáll, akkor is, ha a leállítása sikertelen. A feladatátvételi folyamat előrehaladásának követheti a **feladatok** lap.
+4. Válassza ki **gép leállítása a feladatátvétel megkezdése előtt**. A Site Recovery megkísérli a forrás virtuális gépek leállítása tegye ahhoz, hogy kiváltsa a feladatátvételt. Feladatátvételi továbbra is fennáll, akkor is, ha a leállítása sikertelen. A feladatátvételi folyamat előrehaladásának követheti a **feladatok** lap.
 5. Ellenőrizze, hogy az Azure virtuális gép megjelenik az Azure-ban várt módon.
 6. A **replikált elemek**, kattintson a jobb gombbal a virtuális gép > **az áttelepítés végrehajtásához**. Ez az áttelepítési folyamat befejeződik, leállítja a virtuális gép replikációs és a Site Recovery számlázási a virtuális gép leáll.
 
@@ -108,12 +116,14 @@ Az áttelepíteni kívánt gépek a feladatátvételt.
 
 
 > [!WARNING]
-> **Ne szakítsa meg a folyamatban lévő feladatátvételi**: elindítani a feladatátvételt, mielőtt a virtuális gép replikációs le van állítva. Ha megszakítja a folyamatban lévő feladatátvételi leáll, a feladatátvétel, de a virtuális gép nem fog újra replikálni.
+> **Ne szakítsa meg a folyamatban lévő feladatátvételi**: le van állítva a Virtuálisgép-replikációt, feladatátvétel megkezdése előtt. Ha megszakítja a folyamatban lévő feladatátvételi leáll, a feladatátvétel, de a virtuális gép nem fog újra replikálni.
 
 Bizonyos esetekben feladatátvételi igényel, amely körülbelül nyolc-tíz perc végezze el a további feldolgozást. Bizonyára észrevette, hogy már a feladatátvételi idő a fizikai kiszolgálók, a VMware Linux gépek, a VMware virtuális gépek, amelyek nem rendelkeznek a DHCP szolgáltatás lehetővé teszi, hogy és a VMware virtuális gépek, amelyek nem rendelkeznek a következő rendszerindító illesztőprogramok tesztelése: storvsc, vmbus, storflt, intelide, atapi.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
+
+Ebben az oktatóanyagban a helyszíni virtuális gépek Azure virtuális gépek áttelepítése. Vész-helyreállítási most már konfigurálhatja az Azure virtuális gépekhez.
 
 > [!div class="nextstepaction"]
-> [Egy másik régióban Azure virtuális gépek replikálása Azure való áttelepítése után](site-recovery-azure-to-azure-after-migration.md)
+> [Vész-helyreállítási](site-recovery-azure-to-azure-after-migration.md) Azure virtuális gépek egy helyszíni hely az áttelepítés után.

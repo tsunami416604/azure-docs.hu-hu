@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2017
+ms.date: 01/08/2018
 ms.author: denlee
-ms.openlocfilehash: bcd29d0b21d7624f6de10fc27e3dfce2fb3406c6
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 4ba8a53f2018727cc4fa225b2d4ce14d9f1d7467
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="accelerate-real-time-big-data-analytics-with-the-spark-to-azure-cosmos-db-connector"></a>A Spark a valós idejű big data elemzések érdekében, és Azure Cosmos DB-összekötő
 
@@ -54,9 +54,9 @@ Hivatalos támogatott verziók:
 
 | Összetevő | Verzió |
 |---------|-------|
-|Apache Spark|2.0+|
-| Scala| 2.11|
-| Az Azure Cosmos DB SQL Java SDK | 1.10.0 |
+|Apache Spark|2.0.2, 2.1.0, 2.2.0|
+| Scala| 2.10, 2.11|
+| Az Azure Cosmos DB SQL Java SDK | 1.14.0, 1.15.0 |
 
 Ez a cikk segít néhány egyszerű példák futtatása Python (a pyDocumentDB) keresztül és a Scala-felületek használatával.
 
@@ -181,21 +181,22 @@ Emellett letöltheti a legújabb verzióját a JAR a [ *kiadott* mappa](https://
 ### <a name="include-the-azure-cosmos-db-spark-jar"></a>Az Azure Cosmos DB külső JAR tartalmazza
 A kód végrehajtása előtt meg kell adnia az Azure Cosmos DB külső JAR.  Használatakor a **spark-rendszerhéj**, majd a használatával megadhatja a JAR a **--JAR-fájlok kivételével** lehetőséget.  
 
-```
-spark-shell --master $master --jars /$location/azure-cosmosdb-spark-0.0.3-jar-with-dependencies.jar
+```bash
+spark-shell --master $master --jars /$location/azure-cosmosdb-spark_2.1.0_2.11-1.0.0-uber.jar
 ```
 
 A JAR függőségek nélkül végrehajtani, használja a következő kódot:
 
 ```bash
-spark-shell --master $master --jars /$location/azure-cosmosdb-spark-0.0.3.jar,/$location/azure-documentdb-1.10.0.jar
+spark-shell --master $master --jars /$location/azure-cosmosdb-spark_2.1.0_2.11-1.0.0.jar,/$location/azure-documentdb-1.14.0.jar,/$location/azure-documentdb-rx-0.9.0-rc2.jar,/$location/json-20140107.jar,/$location/rxjava-1.3.0.jar,/$location/rxnetty-0.4.20.jar 
 ```
 
 Ha a notebook szolgáltatással, például az Azure HDInsight Jupyter notebook szolgáltatást használ, akkor használhatja a **spark magic** parancsokat:
 
 ```
 %%configure
-{ "jars": ["wasb:///example/jars/azure-documentdb-1.10.0.jar","wasb:///example/jars/azure-cosmosdb-spark-0.0.3.jar"],
+{ "name":"Spark-to-Cosmos_DB_Connector", 
+  "jars": ["wasb:///example/jars/1.0.0/azure-cosmosdb-spark_2.1.0_2.11-1.0.0.jar", "wasb:///example/jars/1.0.0/azure-documentdb-1.14.0.jar", "wasb:///example/jars/1.0.0/azure-documentdb-rx-0.9.0-rc2.jar", "wasb:///example/jars/1.0.0/json-20140107.jar", "wasb:///example/jars/1.0.0/rxjava-1.3.0.jar", "wasb:///example/jars/1.0.0/rxnetty-0.4.20.jar"],
   "conf": {
     "spark.jars.excludes": "org.scala-lang:scala-reflect"
    }
@@ -207,7 +208,7 @@ A **JAR-fájlok kivételével** parancs lehetővé teszi a két JAR-fájlok kiv�
 ### <a name="connect-spark-to-azure-cosmos-db-using-the-connector"></a>Spark csatlakozzon az összekötővel Azure Cosmos Adatbázishoz.
 Bár a kommunikációs átviteli egy kicsit bonyolultabb, a lekérdezés végrehajtása a Spark on Azure Cosmos DB-összekötő segítségével is jelentősen gyorsabb.
 
-A következő kódrészletet bemutatja, hogyan Spark környezetben az összekötő használatára.
+A következő kódrészletet mutatja be az összekötő használatára egy Spark-munkamenetben; Tekintse meg `azure-cosmosdb-spark` [GitHub-tárház](https://github.com/Azure/azure-cosmosdb-spark) Python minták.
 
 ```
 // Import Necessary Libraries
@@ -218,7 +219,7 @@ import com.microsoft.azure.cosmosdb.spark._
 import com.microsoft.azure.cosmosdb.spark.config.Config
 
 // Configure connection to your collection
-val readConfig2 = Config(Map("Endpoint" -> "https://doctorwho.documents.azure.com:443/",
+val baseConfig = Config(Map("Endpoint" -> "https://doctorwho.documents.azure.com:443/",
 "Masterkey" -> "le1n99i1w5l7uvokJs3RT5ZAH8dc3ql7lx2CG0h0kK4lVWPkQnwpRLyAN0nwS1z4Cyd1lJgvGUfMWR3v8vkXKA==",
 "Database" -> "DepartureDelays",
 "preferredRegions" -> "Central US;East US2;",
@@ -226,7 +227,7 @@ val readConfig2 = Config(Map("Endpoint" -> "https://doctorwho.documents.azure.co
 "SamplingRatio" -> "1.0"))
 
 // Create collection connection
-val coll = spark.sqlContext.read.cosmosDB(readConfig2)
+val coll = spark.sqlContext.read.cosmosDB(baseConfig)
 coll.createOrReplaceTempView("c")
 ```
 
@@ -255,7 +256,7 @@ df.show()
 
 Forgatókönyvek általában Spark csatlakozik Azure Cosmos DB-összekötővel van ahol:
 
-* Scala használja, és frissítse úgy, hogy tartalmazzák a Python-burkoló leírtaknak megfelelően [probléma 3: hozzáadása Python burkoló és példák](https://github.com/Azure/azure-cosmosdb-spark/issues/3).
+* Python és/vagy Scala használni kívánt.
 * Rendelkezik egy nagy mennyiségű adatot Apache Spark- és Azure Cosmos DB közötti átviteléhez.
 
 Segítenek a lekérdezés teljesítménybeli különbség az, tekintse meg a [lekérdezés teszt futtatása wiki](https://github.com/Azure/azure-cosmosdb-spark/wiki/Query-Test-Runs).
@@ -348,7 +349,7 @@ order by percentile_approx(delay, 0.5)
 
 ![Spark közepes késések diagramhoz](./media/spark-connector/median-delays-graph.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha még nem tette meg, töltse le a Spark on Azure Cosmos DB-összekötőt a [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark) GitHub-tárházban és vizsgálja meg a tárházban további források:
 

@@ -9,11 +9,11 @@ ms.date: 10/31/2017
 ms.topic: article
 ms.service: azure-policy
 ms.custom: 
-ms.openlocfilehash: 1b8fd12e071bfbd01567803370e510e7e07ccb99
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: c4cb8acd12cbda5784d0ea48f7782e47f57db8b5
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -200,7 +200,6 @@ A házirend hatása a következő típusú támogatja:
 * **Hozzáfűzendő**: a definiált mezők halmaza alapján ad a kéréshez
 * **AuditIfNotExists**: lehetővé teszi a naplózást, ha egy erőforrás nem létezik.
 * **DeployIfNotExists**: erőforrás telepíti, ha még nem létezik. Ebből a célból beépített házirendeken keresztül jelenleg csak támogatott.
-* **DenyIfNotExists**: megtagadja egy exist létrehozása, ha még nem létezik
 
 A **hozzáfűzése**, meg kell adnia a következő adatokat:
 
@@ -216,11 +215,11 @@ A **hozzáfűzése**, meg kell adnia a következő adatokat:
 
 Az érték lehet egy karakterlánc vagy egy JSON-formátumú objektum.
 
-A **AuditIfNotExists**, **DeployIfNotExists**, és **DenyIfNotExists**, értékelje ki a gyermek-erőforrás meglétét, és alkalmazza a szabályt és egy megfelelő hatást Ha adott erőforrás nem létezik. Például megkövetelheti, hogy egy hálózati figyelőt az összes virtuális hálózathoz van-e telepítve.
+A **AuditIfNotExists** és **DeployIfNotExists** értékelje ki a gyermek-erőforrás meglétét, és alkalmazza a szabályt, és a megfelelő hatása, ha adott erőforrás nem létezik. Például megkövetelheti, hogy egy hálózati figyelőt az összes virtuális hálózathoz van-e telepítve.
 Példa a naplózást, ha egy virtuálisgép-bővítmény nincs telepítve, tekintse meg [kiterjesztés nem található naplózási](scripts/audit-ext-not-exist.md).
 
 
-## <a name="aliases"></a>Aliasok
+## <a name="aliases"></a>Aliasnevek
 
 Egy erőforrás típusára vonatkozó tulajdonságokat eléréséhez használt tulajdonságának aliasokat. Aliasok engedélyezi, hogy milyen értékeket, vagy a feltételek engedélyezve van a erőforrás-tulajdonságok korlátozása. Mindegyik aliasnak elérési utak a különböző API-verziók egy adott erőforrástípusra van leképezve. Házirend kiértékelése közben a házirendmotor lekérdezi az adott API-verzió útvonal.
 
@@ -417,6 +416,6 @@ A következő példa bemutatja, hogyan létrehozása kezelési két címkék kez
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át az Azure házirend sablon minták [sablonok Azure házirend](json-samples.md).

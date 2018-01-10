@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 6392a14f6bbc3c4708b36e3e1ab0b5b45a4d0671
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: b8c181282dd28582a8fb02f611424ffd608fd1ec
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="api-management-advanced-policies"></a>Házirendek speciális API Management
 Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [házirendek az API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -289,8 +289,8 @@ Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozz
   
 |Attribútum|Leírás|Szükséges|Alapértelmezett|  
 |---------------|-----------------|--------------|--------------|  
-|kulcs|Egy karakterláncot. A kifejezés engedélyezett. Meghatározza azt a feldolgozási hatókört. Megoszthatók több házirendet.|Igen|N/A|  
-|maximális száma|Egy egész számot. Megadja, hogy mely adja meg a házirend kérelmek maximális számát.|Igen|N/A|  
+|kulcs|Egy karakterláncot. A kifejezés engedélyezett. Meghatározza azt a feldolgozási hatókört. Megoszthatók több házirendet.|Igen|–|  
+|maximális száma|Egy egész számot. Megadja, hogy mely adja meg a házirend kérelmek maximális számát.|Igen|–|  
   
 ### <a name="usage"></a>Használat  
  Ez a házirend használható a következő házirend [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
@@ -383,7 +383,7 @@ status code and media type. If no example or schema found, the content is empty.
 |Attribútum|Leírás|Szükséges|Alapértelmezett|  
 |---------------|-----------------|--------------|--------------|  
 |állapotkód-:|Válasz állapotkódja határozza meg, és válassza ki a megfelelő példa vagy séma használatával.|Nem|200|  
-|tartalomtípus|Itt adhatja meg `Content-Type` válasz állomásfejléc-érték, és válassza ki a megfelelő példa vagy séma.|Nem|None|  
+|tartalomtípus|Itt adhatja meg `Content-Type` válasz állomásfejléc-érték, és válassza ki a megfelelő példa vagy séma.|Nem|Nincs|  
   
 ### <a name="usage"></a>Használat  
  Ez a házirend használható a következő házirend [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
@@ -412,7 +412,7 @@ status code and media type. If no example or schema found, the content is empty.
 ```  
   
 ### <a name="example"></a>Példa  
- A következő példa egy kérelem a forewarding a rendszer ismét megkísérli legfeljebb algoritmus tízszeresének használatával exponenciális próbálkozzon újra. Mivel `first-fast-retry` beállítva hamis értékre, az összes újrapróbálkozások lépnek a exponsntial újrapróbálkozási algoritmust.  
+ A következő példában a kérelmet továbbító a rendszer ismét megkísérli legfeljebb tízszeresének exponenciális újrapróbálkozási algoritmust használ. Mivel `first-fast-retry` beállítva hamis értékre, az összes újrapróbálkozások vonatkoznak az exponenciális újrapróbálkozási algoritmust.  
   
 ```xml  
   
@@ -438,11 +438,11 @@ status code and media type. If no example or schema found, the content is empty.
   
 |Attribútum|Leírás|Szükséges|Alapértelmezett|  
 |---------------|-----------------|--------------|-------------|  
-|feltétel|Logikai szövegkonstans vagy [kifejezés](api-management-policy-expressions.md) adja meg, ha az újrapróbálkozások le kell állítani (`false`) vagy továbbra is (`true`).|Igen|N/A|  
-|darab|Egy pozitív szám, amely megadja az újrapróbálkozások maximális számát kísérlet.|Igen|N/A|  
-|interval|Próbálja meg egy pozitív szám, a között az újrapróbálkozási időköz megadása másodpercben.|Igen|N/A|  
-|maximális-időköz|Egy pozitív szám, a maximális megadása másodpercben Várjon, amíg az újrapróbálkozási kísérletek közötti időközt. Az exponenciális újrapróbálkozási algoritmust végrehajtásához szolgál.|Nem|N/A|  
-|különbözeti|Egy pozitív szám, a várakozási időközt növekmény megadása másodpercben. A lineáris és exponenciális újrapróbálkozási algoritmust végrehajtására szolgál.|Nem|N/A|  
+|feltétel|Logikai szövegkonstans vagy [kifejezés](api-management-policy-expressions.md) adja meg, ha az újrapróbálkozások le kell állítani (`false`) vagy továbbra is (`true`).|Igen|–|  
+|darab|Egy pozitív szám, amely megadja az újrapróbálkozások maximális számát kísérlet.|Igen|–|  
+|interval|Próbálja meg egy pozitív szám, a között az újrapróbálkozási időköz megadása másodpercben.|Igen|–|  
+|maximális-időköz|Egy pozitív szám, a maximális megadása másodpercben Várjon, amíg az újrapróbálkozási kísérletek közötti időközt. Az exponenciális újrapróbálkozási algoritmust végrehajtásához szolgál.|Nem|–|  
+|különbözeti|Egy pozitív szám, a várakozási időközt növekmény megadása másodpercben. A lineáris és exponenciális újrapróbálkozási algoritmust végrehajtására szolgál.|Nem|–|  
 |első fast-újrapróbálkozási|Ha beállítása `true` , az első újrapróbálkozások azonnal megtörténik.|Nem|`false`|  
   
 > [!NOTE]
@@ -564,7 +564,7 @@ status code and media type. If no example or schema found, the content is empty.
 |Attribútum|Leírás|Szükséges|Alapértelmezett|  
 |---------------|-----------------|--------------|-------------|  
 |mód = "karakterlánc"|Meghatározza, hogy ez egy új kérelmet vagy a jelenlegi kérelem egy példányát. Kimenő módban mód = másolása nem sikerült a kérés törzsében.|Nem|Új|  
-|név|A neve a fejléc kell beállítani.|Igen|N/A|  
+|név|A neve a fejléc kell beállítani.|Igen|–|  
 |létezik-e művelet|Megadja, milyen műveletet hajtson végre a fejléc már meg van adva. Ez az attribútum a következő értékek egyikének kell lennie.<br /><br /> -felülbírálás - lecseréli a meglévő fejléc értékének.<br />-skip – nem helyettesíti a meglévő-fejléc értékét.<br />-hozzáfűzése - az érték hozzáfűzi a meglévő állomásfejléc-érték.<br />-törlés - eltávolítja a fejlécet a kérelemből.<br /><br /> Ha beállítása `override` történő besorolásakor ugyanazzal a névvel több bejegyzést eredményez az összes bejegyzés (amely jelennek meg több alkalommal) megfelelően történő beállítása fejléc; csak a listában szereplő értékek be lesznek állítva az eredményt.|Nem|felülbírálás|  
   
 ### <a name="usage"></a>Használat  
@@ -643,10 +643,10 @@ status code and media type. If no example or schema found, the content is empty.
 |Attribútum|Leírás|Szükséges|Alapértelmezett|  
 |---------------|-----------------|--------------|-------------|  
 |mód = "karakterlánc"|Meghatározza, hogy ez egy új kérelmet vagy a jelenlegi kérelem egy példányát. Kimenő módban mód = másolása nem sikerült a kérés törzsében.|Nem|Új|  
-|válasz-változó-name = "karakterlánc"|Ha nincs jelen, `context.Response` szolgál.|Nem|N/A|  
+|válasz-változó-name = "karakterlánc"|Ha nincs jelen, `context.Response` szolgál.|Nem|–|  
 |Időtúllépés = "integer"|Nem sikerül a időkorlátja, másodpercben. az URL-cím hívása előtt.|Nem|60|  
 |Hiba mellőzése|Ha igaz, és hiba történt a kérelem eredményezi:<br /><br /> -Ha a válasz-változó-név lett megadva, null értéket tartalmaz.<br />-Ha a válasz-változó-neve nincs megadva, a környezetben. Kérés nem fog frissülni.|Nem|false|  
-|név|A neve a fejléc kell beállítani.|Igen|N/A|  
+|név|A neve a fejléc kell beállítani.|Igen|–|  
 |létezik-e művelet|Megadja, milyen műveletet hajtson végre a fejléc már meg van adva. Ez az attribútum a következő értékek egyikének kell lennie.<br /><br /> -felülbírálás - lecseréli a meglévő fejléc értékének.<br />-skip – nem helyettesíti a meglévő-fejléc értékét.<br />-hozzáfűzése - az érték hozzáfűzi a meglévő állomásfejléc-érték.<br />-törlés - eltávolítja a fejlécet a kérelemből.<br /><br /> Ha beállítása `override` történő besorolásakor ugyanazzal a névvel több bejegyzést eredményez az összes bejegyzés (amely jelennek meg több alkalommal) megfelelően történő beállítása fejléc; csak a listában szereplő értékek be lesznek állítva az eredményt.|Nem|felülbírálás|  
   
 ### <a name="usage"></a>Használat  
@@ -684,9 +684,9 @@ Vegye figyelembe a használatát [tulajdonságok](api-management-howto-propertie
   
 |Attribútum|Leírás|Szükséges|Alapértelmezett|  
 |---------------|-----------------|--------------|-------------|  
-|URL-cím = "karakterlánc"|Proxy URL http://host:port formájában.|Igen|N/A|  
-|felhasználónév = "karakterlánc"|A proxy-nal való hitelesítéshez használt felhasználónevet.|Nem|N/A|  
-|jelszó = "karakterlánc"|A proxy-hitelesítéshez használandó jelszó.|Nem|N/A|  
+|URL-cím = "karakterlánc"|Proxy URL http://host:port formájában.|Igen|–|  
+|felhasználónév = "karakterlánc"|A proxy-nal való hitelesítéshez használt felhasználónevet.|Nem|–|  
+|jelszó = "karakterlánc"|A proxy-hitelesítéshez használandó jelszó.|Nem|–|  
 
 ### <a name="usage"></a>Használat  
  Ez a házirend használható a következő házirend [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
@@ -784,8 +784,8 @@ Vegye figyelembe a használatát [tulajdonságok](api-management-howto-propertie
   
 |Attribútum|Leírás|Szükséges|Alapértelmezett|  
 |---------------|-----------------|--------------|-------------|  
-|kód = "integer"|A HTTP-állapotkód való visszatéréshez.|Igen|N/A|  
-|oka = "karakterlánc"|Az az oka az állapotkód: visszaadó leírását.|Igen|N/A|  
+|kód = "integer"|A HTTP-állapotkód való visszatéréshez.|Igen|–|  
+|oka = "karakterlánc"|Az az oka az állapotkód: visszaadó leírását.|Igen|–|  
   
 ### <a name="usage"></a>Használat  
  Ez a házirend használható a következő házirend [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
@@ -886,7 +886,7 @@ Vegye figyelembe a használatát [tulajdonságok](api-management-howto-propertie
   
 |Attribútum|Leírás|Szükséges|Alapértelmezett|  
 |---------------|-----------------|--------------|-------------|  
-|forrás|A literál karakterlánc kifejező a trace viewer, és adja meg az üzenet forrása.|Igen|N/A|  
+|forrás|A literál karakterlánc kifejező a trace viewer, és adja meg az üzenet forrása.|Igen|–|  
   
 ### <a name="usage"></a>Használat  
  Ez a házirend használható a következő házirend [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) .  
@@ -953,7 +953,7 @@ Vegye figyelembe a használatát [tulajdonságok](api-management-howto-propertie
   
 |Attribútum|Leírás|Szükséges|Alapértelmezett|  
 |---------------|-----------------|--------------|-------------|  
-|ehhez:|Meghatározza, hogy a `wait` házirend megvárja-e a minden közvetlenül alárendelt házirendek befejezett vagy egyszerűen lesz. Engedélyezett értékek a következők:<br /><br /> -   `all`-Várjon, amíg befejeződik az összes közvetlenül alárendelt házirendek<br />-a - Várjon, amíg egy-egy közvetlen alárendelt házirend befejezéséhez. Az első közvetlenül alárendelt házirend befejezése után a `wait` házirend befejeződött, és bármely más közvetlenül alárendelt házirendek végrehajtása megszakadt.|Nem|összes|  
+|a következőhöz:|Meghatározza, hogy a `wait` házirend megvárja-e a minden közvetlenül alárendelt házirendek befejezett vagy egyszerűen lesz. Engedélyezett értékek a következők:<br /><br /> -   `all`-Várjon, amíg befejeződik az összes közvetlenül alárendelt házirendek<br />-a - Várjon, amíg egy-egy közvetlen alárendelt házirend befejezéséhez. Az első közvetlenül alárendelt házirend befejezése után a `wait` házirend befejeződött, és bármely más közvetlenül alárendelt házirendek végrehajtása megszakadt.|Nem|összes|  
   
 ### <a name="usage"></a>Használat  
  
@@ -962,7 +962,7 @@ Ez a házirend használható a következő házirend [szakaszok](http://azure.mi
 -   **Házirend szakaszok:** bejövő, kimenő háttér  
 -   **Házirend hatókörök:** minden hatókör  
   
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Házirendek használata további információkért lásd:
 + [Az API Management házirendek](api-management-howto-policies.md) 

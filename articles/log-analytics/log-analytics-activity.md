@@ -1,5 +1,5 @@
 ---
-title: "A Naplóelemzési Azure tevékenység naplók megtekintése |} Microsoft Docs"
+title: "Összegyűjti és elemzi az Azure tevékenységi naplóit a Log Analyticshez |} Microsoft Docs"
 description: "Az Azure tevékenységi naplóit megoldás segítségével elemezheti és az összes Azure-előfizetések az Azure tevékenységnapló keresést."
 services: log-analytics
 documentationcenter: 
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2017
 ms.author: banders
-ms.openlocfilehash: fa8f51d621bc262ec72ef03929689c4af3c339a6
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: e4f112a221221c7f68cc31c80fb43417bb617632
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="view-azure-activity-logs"></a>Az Azure tevékenység naplók megtekintése
+# <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Összegyűjti és elemzi az Azure tevékenység Log Analytics-naplók
 
 ![Az Azure tevékenységi naplóit szimbólum](./media/log-analytics-activity/activity-log-analytics.png)
 
@@ -97,7 +97,7 @@ Tevékenység naplóadatokat csak akkor jelenik meg *után* a tevékenységi nap
 
 ![Az Azure tevékenységi naplóit irányítópult](./media/log-analytics-activity/activity-log-dash.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Hozzon létre egy [riasztás](log-analytics-alerts-creating.md) Ha egy adott tevékenységre történik.
 - Használjon [naplófájl-keresési](log-analytics-log-searches.md) a tevékenységi naplóit a részletes információk megtekintéséhez.

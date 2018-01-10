@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 1/04/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: d468944883cca80946001724c38dd5ec9ba0d94f
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: 4873b98c8ba4f1e574be20baebef3b6860341529
+ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="persistent-volumes-with-azure-files---dynamic-provisioning"></a>Állandó kötetek az Azure files - dinamikus kiosztás
 
@@ -79,7 +79,7 @@ parameters:
 Egy állandó kötet jogcímet a tárolási osztály objektum használatával dinamikusan létesítenek egy tárolási adat. Egy Azure-fájlok használata esetén az Azure fájlmegosztások a tárfiók kiválasztva, vagy a tárolási osztály objektumban megadott jön létre.
 
 >  [!NOTE]
->   Győződjön meg arról, hogy a megfelelő tárfiók előre jöjjön létre a AKS fürtként ugyanabban az erőforráscsoportban. Az állandó kötet jogcím kiépítése az Azure fájlmegosztás Ha nem érhető el a storage-fiókok nem. 
+>   Ellenőrizze, hogy a megfelelő storage-fiók ugyanabban az erőforráscsoportban AKS fürterőforrások előre létrehozott lett. Ez az erőforráscsoport neve például van *MC_myAKSCluster_myAKSCluster_eastus*. Az állandó kötet jogcím kiépítése az Azure fájlmegosztás Ha nem érhető el a storage-fiókok nem. 
 
 A következő jegyzékfájl segítségével hozzon létre egy állandó kötet jogcím `5GB` a méreténél `ReadWriteOnce` hozzáférést. A PVC hozzáférési módok további információkért lásd: [hozzáférési][access-modes].
 

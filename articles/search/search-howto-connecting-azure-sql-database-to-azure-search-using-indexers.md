@@ -14,11 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 07/13/2017
 ms.author: eugenesh
-ms.openlocfilehash: 8b0f3941526214455992ba2f0f6299df24323c9c
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 2ec1e02ccc8d8916f6d9d50ce787f2562f33fd7d
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>Csatlakozás Azure SQL adatbázis Azure Search használatával az indexelők
 
@@ -26,7 +26,7 @@ Mielőtt kérdezheti le egy [Azure Search-index](search-what-is-an-index.md), fe
 
 Ez a cikk ismerteti a beállítás használata esetén [indexelők](search-indexer-overview.md), de csak Azure SQL-adatbázisok (például az integrált változáskövetés) elérhető szolgáltatások is ismerteti. 
 
-Azure SQL-adatbázisok, továbbá Azure Search nyújt az indexelők [Azure Cosmos DB](search-howto-index-documentdb.md), [Azure Blob Storage tárolóban](search-howto-indexing-azure-blob-storage.md), és [Azure table storage](search-howto-indexing-azure-tables.md). Kérjen támogatást más adatforrások, a visszajelzést adhat a [Azure Search-visszajelzési fórumon](https://feedback.azure.com/forums/263029-azure-search/).
+Azure SQL-adatbázisok, továbbá Azure Search nyújt az indexelők [Azure Cosmos DB](search-howto-index-cosmosdb.md), [Azure Blob Storage tárolóban](search-howto-indexing-azure-blob-storage.md), és [Azure table storage](search-howto-indexing-azure-tables.md). Kérjen támogatást más adatforrások, a visszajelzést adhat a [Azure Search-visszajelzési fórumon](https://feedback.azure.com/forums/263029-azure-search/).
 
 ## <a name="indexers-and-data-sources"></a>Indexelők és adatforrások
 
@@ -294,8 +294,8 @@ A **softDeleteMarkerValue** kell egy karakterlánc – használja a tényleges �
 | smalldatetime, dátum és idő, datetime2, dátum, datetimeoffset |Edm.DateTimeOffset, Edm.String | |
 | uniqueidentifer |Edm.String | |
 | földrajzi hely |Edm.GeographyPoint |Csak az srid-Azonosítónak 4326 (Ez az alapértelmezett) pontra típusú geográfiai példányban támogatottak. |
-| ROWVERSION |N/A |Sor verziójú oszlopok nem lehet tárolni a search-index, de a változások követése is használhatók |
-| idő, timespan, binary, varbinary, kép, xml, geometriai, CLR-típus |N/A |Nem támogatott |
+| ROWVERSION |– |Sor verziójú oszlopok nem lehet tárolni a search-index, de a változások követése is használhatók |
+| idő, timespan, binary, varbinary, kép, xml, geometriai, CLR-típus |– |Nem támogatott |
 
 ## <a name="configuration-settings"></a>Konfigurációs beállítások
 SQL indexelő számos konfigurációs beállítás közzétesz:
@@ -303,7 +303,7 @@ SQL indexelő számos konfigurációs beállítás közzétesz:
 | Beállítás | Adattípus | Cél | Alapértelmezett érték |
 | --- | --- | --- | --- |
 | queryTimeout |karakterlánc |Beállítja az SQL-lekérdezés végrehajtása időtúllépés |5 perc ("00: 05:00") |
-| disableOrderByHighWaterMarkColumn |logikai érték |Az SQL-lekérdezés ORDER BY záradékban hagyja el a magas vízjel alapján házirend segítségével okoz. Lásd: [magas vízjel alapján házirend](#HighWaterMarkPolicy) |hamis |
+| disableOrderByHighWaterMarkColumn |logikai érték |Az SQL-lekérdezés ORDER BY záradékban hagyja el a magas vízjel alapján házirend segítségével okoz. Lásd: [magas vízjel alapján házirend](#HighWaterMarkPolicy) |false |
 
 Ezek a beállítások szerepelnek a `parameters.configuration` objektum indexelő definíciójában. Például szeretné beállítani a lekérdezés időkorlátja 10 percig, hozzon létre, vagy az indexelő frissítése a következő beállításokkal:
 

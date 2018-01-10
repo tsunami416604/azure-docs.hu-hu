@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 07/05/2017
 ms.author: sstein
-ms.openlocfilehash: 3c621fc557ed466ddf2b514136a32d98be454325
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 2b725c60dbcb9737b00ffd5fb43273b26dda1ea8
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Keresse meg és teljesítmény javaslatok alkalmazása
 
@@ -41,7 +41,7 @@ Teljesítmény javaslatok hasonlít az alábbi ábrán látható egy táblázatb
 
 Javaslatok a potenciális gyakorolt hatása az alábbi kategóriákba vannak rendezve:
 
-| Gyakorolt hatás | Leírás |
+| Hatás | Leírás |
 |:--- |:--- |
 | Magas |Nagy jelentőségű ajánlásokat kell biztosítania a legjelentősebb teljesítményre gyakorolt hatást. |
 | Közepes |Közepes hatás ajánlásokat kell teljesítmény javítása érdekében, de nem jelentősen. |
@@ -91,13 +91,17 @@ Ha szükséges, hozzáadhat, biztonsági elvetett elemek a **javaslatok** listá
 2. Válasszon egy eldobott elemet a listából, a részletek megtekintéséhez.
 3. Ha úgy gondolja, a **visszavonása elvetése** vissza a fő listáját az index hozzáadása **javaslatok**.
 
+> [!NOTE]
+> Vegye figyelembe, hogy ha az SQL-adatbázis [automatikus hangolása](sql-database-automatic-tuning.md) engedélyezve van, és ha manuálisan elvetett ajánlása alapján a lista ilyen javaslat soha nem alkalmazza a rendszer automatikusan. Eldobja az ajánlás olyan környezetekben alkalmas a felhasználók automatikus hangolása igénylésekor, hogy egy adott javaslat nem alkalmazható azokban az esetekben engedélyezve van.
+> Ez a viselkedés visszaállhat hozzáadásával elvetett javaslatok a javaslatok listához visszavonása elvetése beállítás kiválasztásával.
+> 
 
 ### <a name="enable-automatic-tuning"></a>Automatikus hangolás engedélyezése
 Beállíthatja, hogy az Azure SQL Database javaslatok automatikus végrehajtása érdekében. Amint elérhetővé válnak a javaslatok, akkor automatikusan alkalmazni. Csakúgy, mint a teljesítményre gyakorolt hatás negatív esetén a szolgáltatás által kezelt összes javaslatot a javaslat tért vissza.
 
 1. Az a **javaslatok** kattintson **automatizálás**:
    
-    ![Az Advisor-beállítások](./media/sql-database-advisor-portal/settings.png)
+    ![Advisor-beállítások](./media/sql-database-advisor-portal/settings.png)
 2. Válassza ki az automatikus műveleteket:
    
     ![Ajánlott indexek](./media/sql-database-advisor-portal/automation.png)
@@ -119,12 +123,12 @@ A javaslat alkalmazása nem fordulhat elő, azonnal. A portál részletesen ajá
 | status | Leírás |
 |:--- |:--- |
 | Függőben |A javaslat parancs érkezett, és a végrehajtásra ütemezett alkalmazni. |
-| Végrehajtása |A javaslat vonatkozik. |
+| Végrehajtás |A javaslat vonatkozik. |
 | Ellenőrzése |A javaslat alkalmazása sikeresen, és a szolgáltatás a következő előnyöket mérés. |
 | Sikeres |A javaslat alkalmazása sikeresen és előnyök mért lett. |
 | Hiba |Hiba történt az ajánlás alkalmazásának folyamatában. Ez lehet átmeneti jellegű probléma, vagy esetleg a séma módosítsa a táblázat, és a parancsfájl már nem érvényes. |
 | Visszaállítás |A javaslat alkalmazta, de nem performant megállapítása, és automatikusan vissza. |
-| Vissza |A javaslat vissza lett állítva. |
+| Visszaállítva |A javaslat vissza lett állítva. |
 
 Kattintson egy folyamaton belüli ajánlott megoldás a listából a további részletek:
 
@@ -143,10 +147,10 @@ Javaslatok sikeres végrehajtása után (jelenleg, műveletek index, és csak a 
 
 ![A figyelő teljesítményre gyakorolt hatás](./media/sql-database-advisor-portal/query-insights.png)
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Az Azure SQL-adatbázis SQL-adatbázis teljesítményének javítására vonatkozó javaslatokkal szolgál. T-SQL-parancsfájlok megadásával, kérhet segítséget az adatbázis optimalizálása és végső soron a lekérdezési teljesítmény javítása.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A javaslatok figyelése, és továbbra is alkalmazandó, pontosítsa a teljesítményt. Adatbázis-terhelések dinamikusak, és folyamatosan módosítása. Az Azure SQL-adatbázis továbbra is fennáll, figyeléséhez, és adja meg a javaslatok, javíthatja az adatbázis teljesítménye. 
 
 * Lásd: [automatikus hangolása](sql-database-automatic-tuning.md) tudhat meg többet az Azure SQL-adatbázis automatikus hangolása.

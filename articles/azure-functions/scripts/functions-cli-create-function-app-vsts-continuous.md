@@ -1,32 +1,32 @@
 ---
-title: "Függvény-alkalmazás létrehozása és központi telepítése a Visual Studio Team Services funkciókódot |} Microsoft Docs"
+title: "Függvény létrehozása a Visual Studio Team Services telepített Azure-ban |} Microsoft Docs"
 description: "Függvény-alkalmazás létrehozása és központi telepítése a Visual Studio Team Services funkciókódot"
 services: functions
 keywords: 
 author: syntaxc4
 ms.author: cfowler
-ms.date: 04/28/2017
+ms.date: 01/09/2018
 ms.topic: sample
 ms.service: functions
 ms.custom: mvc
-ms.openlocfilehash: 15d4001e656c456c2fbe3b3d63cdd094498940c8
-ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
+ms.openlocfilehash: bf9428f23e851bae3485ec3d724dfb9ccd2af4c1
+ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 01/10/2018
 ---
-# <a name="create-an-app-service"></a>Hozzon létre egy App Service
+# <a name="create-a-function-in-azure-that-is-deployed-from-visual-studio-team-services"></a>Függvény létrehozása a Visual Studio Team Services telepített Azure-ban
 
-Ebben a forgatókönyvben megismerheti, hogyan hozzon létre egy függvény alkalmazást használó a [fogyasztás terv](../functions-scale.md#consumption-plan) és a Visual Studio Team Services (VSTS) tárházból folyamatos üzembe helyezés beállítása. Ez a minta van szüksége:
+Ez a témakör bemutatja, hogyan Azure Functions használatával hozzon létre egy [kiszolgáló nélküli](https://azure.microsoft.com/overview/serverless-computing/) függvény alkalmazás használata a [fogyasztás terv](../functions-scale.md#consumption-plan). A függvény alkalmazást, amely a funkciók tárolója, folyamatosan van telepítve a Visual Studio Team Services (VSTS) tárházból. Ez a témakör elvégzése kell rendelkeznie:
 
-* Egy VSTS-tárházat funkciók kóddal, a rendszergazdai jogosultsággal kell rendelkeznie.
-* A [személyes hozzáférési jogkivonat (PAT)](https://help.github.com/articles/creating-an-access-token-for-command-line-use) a GitHub-fiókjában.
+* Egy VSTS-tárházat, amely tartalmazza a függvény app projektet, és rendszergazdai engedélyekkel rendelkeznie.
+* A [személyes hozzáférési jogkivonat (PAT)](https://docs.microsoft.com/vsts/accounts/use-personal-access-tokens-to-authenticate) a VSTS-tárház eléréséhez.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha telepítése és a parancssori felület helyileg használata mellett dönt, akkor futnia kell az Azure parancssori felület verzió 2.0-s vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha inkább használja az Azure parancssori felület helyileg, akkor telepítse, és 2.0-s vagy újabb verzióját használja. Azt az Azure CLI-verziót, `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
 
 ## <a name="sample-script"></a>Mintaparancsfájl
 
@@ -38,7 +38,7 @@ Ez a minta egy Azure-függvény alkalmazást hoz létre, és telepíti a Visual 
 
 ## <a name="script-explanation"></a>Parancsfájl ismertetése
 
-A parancsfájl a következő parancsokat egy erőforráscsoport, webalkalmazás, a documentdb és minden kapcsolódó erőforrások létrehozásához. Minden egyes parancsa a tábla-parancs adott dokumentációjára mutató hivatkozásokat.
+A parancsfájl a következő parancsokat egy erőforráscsoport, a tárfiók, függvény alkalmazás és minden kapcsolódó erőforrás létrehozásához. Minden egyes parancsa a tábla-parancs adott dokumentációjára mutató hivatkozásokat.
 
 | Parancs | Megjegyzések |
 |---|---|

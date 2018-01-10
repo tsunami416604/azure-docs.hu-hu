@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: cephalin
-ms.openlocfilehash: 69c7984d0620b4a0fd40252129023093c09d6e56
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: c78fb7883559e46ebaa1d8dab59a15c55fb76fdf
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="configuring-a-custom-domain-name-for-a-web-app-in-azure-app-service-using-traffic-manager"></a>A webalkalmazáshoz tartozó egyéni tartománynév konfigurálása az Azure App Service szolgáltatásban a Traffic Managerrel
 [!INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
@@ -56,7 +56,7 @@ Az egyéni tartomány társítandó egy webalkalmazást az Azure App Service-ben
 Minden tartomány-szolgáltató a mintaadatokról eltérők lehetnek, amíg leképez *a* az egyéni tartománynevet (például **contoso.com**) *való* a Traffic Manager szolgáltatásbeli tartománynevére ( **contoso.trafficmanager.NET**), amely integrálva van a webes alkalmazást.
    
 > [!NOTE]
-> Ha a bejegyzést már használatban van, és pre-emptively kötni az alkalmazások azt szeretné, egy további CNAME-rekordot is létrehozhat. Ahhoz például, hogy pre-emptively kötési **www.contoso.com** a webes alkalmazás, hozzon létre egy CNAME rekordot a **awverify.www** való **contoso.trafficmanager.net**. A webalkalmazás a "www" CNAME rekord módosítása nélkül Ezután felvehet "www.contoso.com". További információkért lásd: [hozzon létre DNS-rekordok az egyéni tartomány webalkalmazáshoz][CREATEDNS].
+> Ha egy olyan rekordot már használatban van, és megelőző jelleggel kötni az alkalmazások azt szeretné, egy további CNAME-rekordot is létrehozhat. Ahhoz például, hogy megelőző jelleggel kötési **www.contoso.com** a webes alkalmazás, hozzon létre egy CNAME rekordot a **awverify.www** való **contoso.trafficmanager.net**. A webalkalmazás a "www" CNAME rekord módosítása nélkül Ezután felvehet "www.contoso.com". További információkért lásd: [hozzon létre DNS-rekordok az egyéni tartomány webalkalmazáshoz][CREATEDNS].
 > 
 > 
 
@@ -67,7 +67,7 @@ Miután befejezte a hozzáadása vagy módosítása a tartomány DNS-szolgáltat
 ## <a name="enable-traffic-manager"></a>A Traffic Manager engedélyezése
 [!INCLUDE [modes](../../includes/custom-dns-web-site-enable-on-traffic-manager.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információk: [Node.js fejlesztői központ](/develop/nodejs/).
 
 [!INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]

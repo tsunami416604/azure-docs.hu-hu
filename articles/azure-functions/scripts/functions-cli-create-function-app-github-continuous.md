@@ -1,22 +1,22 @@
 ---
-title: "Függvény-alkalmazás létrehozása és központi telepítése a Githubból funkciókódot |} Microsoft Docs"
-description: "Függvény-alkalmazás létrehozása és központi telepítése a Githubból funkciókódot"
+title: "Hozzon létre egy függvényt, amely a Githubból a rendszer az Azure-ban |} Microsoft Docs"
+description: "Egy függvény alkalmazás létrehozása és telepítése az Azure Functions használatával GitHub-tárházban funkciókódot."
 services: functions
 ms.service: functions
 keywords: 
 ms.devlang: azurecli
 author: syntaxc4
 ms.author: cfowler
-ms.date: 04/27/2017
+ms.date: 01/09/2018
 ms.topic: sample
 ms.custom: mvc
-ms.openlocfilehash: 8b148651d041bbc27e2deccec57b1759ce0095d0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c4224bc7973cd1e3ca36799db9f23a124fcba807
+ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
-# <a name="create-an-app-service"></a>Hozzon létre egy App Service
+# <a name="create-a-function-in-azure-that-is-deployed-from-github"></a>Hozzon létre egy függvényt, amely a Githubból a rendszer az Azure-ban
 
 Ez a parancsfájlpélda hoz létre, a függvény alkalmazás használatával az [fogyasztás terv](../functions-scale.md#consumption-plan) kapcsolódó erőforrásokkal, és folyamatosan telepíti a funkciókódot a GitHub-tárházban. Ez a példa lesz szüksége:
 
@@ -27,7 +27,7 @@ Ez a parancsfájlpélda hoz létre, a függvény alkalmazás használatával az 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure parancssori felületének 2.0-s vagy annál újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha inkább használja az Azure parancssori felület helyileg, akkor telepítse, és 2.0-s vagy újabb verzióját használja. Azt az Azure CLI-verziót, `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
 
 ## <a name="sample-script"></a>Mintaparancsfájl
 
@@ -39,7 +39,7 @@ Ez a minta egy Azure-függvény alkalmazás létrehozza, és telepíti a Githubr
 
 ## <a name="script-explanation"></a>Parancsfájl ismertetése
 
-Minden egyes parancsa a tábla-parancs adott dokumentációjára mutató hivatkozásokat. Ezt a parancsfájlt használja a következő:
+Minden egyes parancsa a tábla-parancs adott dokumentációjára mutató hivatkozásokat. Ezt a parancsfájlt az alábbi parancsokat használja:
 
 | Parancs | Megjegyzések |
 |---|---|
@@ -48,7 +48,7 @@ Minden egyes parancsa a tábla-parancs adott dokumentációjára mutató hivatko
 | [az functionapp létrehozása](https://docs.microsoft.com/cli/azure/appservice/web#az_appservice_web_delete) |
 | [az App Service web verziókezelő konfiguráció](https://docs.microsoft.com/cli/azure/appservice/web/source-control#az_appservice_web_source_control_config) | Egy függvény app társítja a Git vagy Mercurial tárházba. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az Azure parancssori felület: [Azure CLI dokumentáció](https://docs.microsoft.com/cli/azure/overview).
 

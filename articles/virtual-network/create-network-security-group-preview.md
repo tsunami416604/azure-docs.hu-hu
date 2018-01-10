@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 11/03/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: 3bfa37ddd59091558d37a7531fe0c5820cfafe05
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: ac9a1a8c59a26393d32f9c543e630c302b7ced9d
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="filter-network-traffic-with-network-and-application-security-groups-preview"></a>Hálózati forgalom szűrésére, hálózati és az alkalmazás biztonsági csoportok (előzetes verzió)
 
@@ -31,7 +31,7 @@ A következő szakaszok tartalmazzák a lépéseket, amelyek hálózati biztons�
 Ez a cikk lépéseit hozza létre a hálózati biztonsági csoportokat a Resource Manager telepítési modell, amely a hálózati biztonsági csoportok létrehozásakor használjon telepítési modell használatával. Ha létrehoz egy hálózati biztonsági csoportot (klasszikus) van szüksége, tekintse meg [hozzon létre egy hálózati biztonsági csoportot (klasszikus)](virtual-networks-create-nsg-classic-ps.md). Ha nem ismeri az Azure üzembe helyezési modellel, lásd: [megértéséhez Azure üzembe helyezési modellel](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 > [!NOTE]
-> Ez az oktatóanyag használja a hálózati biztonsági csoport funkciókat, amelyek jelenleg előzetes kiadásban. Az előzetes funkciók nem rendelkeznek, az azonos rendelkezésre állásának és megbízhatóságának funkciókat, általában kiadási. Kép nézetben, a szolgáltatások elérhetők csak a következő régióban: WestCentralUS. Ha azt szeretné, valósítja meg a hálózati biztonsági csoportok csak olyan szolgáltatását használja, általában a kiadási kapcsolatos tudnivalókat lásd: [hálózati biztonsági csoport létrehozása](virtual-networks-create-nsg-arm-pportal.md). 
+> Ez az oktatóanyag használja a hálózati biztonsági csoport funkciókat, amelyek jelenleg előzetes kiadásban. Az előzetes funkciók nem rendelkeznek, az azonos rendelkezésre állásának és megbízhatóságának funkciókat, általában kiadási. Ha azt szeretné, valósítja meg a hálózati biztonsági csoportok csak olyan szolgáltatását használja, általában a kiadási kapcsolatos tudnivalókat lásd: [hálózati biztonsági csoport létrehozása](virtual-networks-create-nsg-arm-pportal.md). 
 
 ## <a name="azure-cli"></a>Azure CLI
 

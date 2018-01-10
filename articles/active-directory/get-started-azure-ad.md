@@ -15,18 +15,18 @@ ms.technology:
 ms.assetid: 
 services: active-directory
 ms.custom: it-pro
-ms.openlocfilehash: eb428b6ce8af85f06506fb9edc2696477d87c70e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9e1a7337c2477455aa0b56f2147f46f3bf5293a8
+ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="get-started-with-azure-ad"></a>Ismerkedés az Azure AD szolgáltatással
 Az Identitáskezelés a modern szükséges méretezhető, egységes reliablity annak biztosítása érdekében az alkalmazások és szolgáltatások csak a hitelesített felhasználók elérhetőségét. A felhasználók, az informatikai részlegnek identity management igényeinek megfelelően támogatásához oly módon, mint egy szolgáltatott szoftverként (SaaS) alkalmazások jóváhagyott, nyilvános szoftver elérésére, a gazdagép belső üzletági alkalmazások, és a még akkor is, módjairól a helyszíni alkalmazások fejlesztéséhez és használati. Az összes követelménynek mutasson a felhőalapú identitás-kezelési megoldás a szükséges.      
 
 Azure Active Directory (Azure AD) érték a Microsoft által a több-bérlős, a felhő alapú címtár- és identitáskezelési felügyeleti szolgáltatás. Az Azure AD directory alapszolgáltatásokat, speciális identitás irányítás és alkalmazáshozzáférés-kezeléshez egyesíti. A több-bérlős, földrajzilag elosztott, magas rendelkezésre állású kialakítása az Azure AD azt jelenti, hogy támaszkodhat a kritikus fontosságú üzleti igényeknek.
 
-Az Azure AD identitáskezelési funkciói szinkronizálhatók a helyi erőforrás adatai, beleértve a teljes csomag magában foglalja testreszabható vállalati arculat megjelenítése, egyszerű licenckezeléssel és még önkiszolgáló jelszókezelés.  Ezek egyszerű képességek segítheti biztonságos felhőalapú alkalmazásokhoz az Azure AD használatának első, IT-folyamatok egyszerűsítésére, költségeket, valamint győződjön meg arról, hogy a vállalati megfelelőség célok teljesülnek-e.
+Az Azure AD identitáskezelési funkciói szinkronizálhatók a helyi erőforrás adatai, beleértve a teljes csomag magában foglalja testreszabható vállalati arculat megjelenítése, egyszerű licenckezeléssel és még önkiszolgáló jelszókezelés. Ezek a könnyen telepíthető képességek segítségével Ismerkedés az Azure AD segítségével biztonságos felhőalapú alkalmazások, IT-folyamatok egyszerűsítésére, költségeket, és biztosítja, hogy a vállalati megfelelőség célok teljesülnek-e.
 
 ![Azure AD ](./media/get-started-azure-ad/Azure_Active_Directory.png)
 
@@ -80,14 +80,14 @@ A csoport-alapú licenc-hozzárendelést segítségével többek között a köv
 ### <a name="verification-step"></a>Ellenőrzési lépés
 Hozzárendelt áttekintése és a rendelkezésre álló licencek **Azure Active Directory** > **licencek** > **összes**.
 
-## <a name="configure-self-service-password-reset"></a>Önkiszolgáló jelszóátállítás beállítása
+## <a name="configure-self-service-password-reset"></a>Önkiszolgáló jelszóátállítás konfigurálása
 [Az önkiszolgáló jelszó-változtatási (SSPR)](active-directory-passwords-getting-started.md) nyújt egy egyszerű azt jelenti, hogy a rendszergazdák engedélyezése a felhasználók visszaállíthassák vagy a jelszavak és a fiókok zárolásának feloldásához. A rendszer részletes, követhető jelentést tartalmaz a felhasználók rendszerhasználatáról, továbbá értesítőkkel figyelmeztet az illetéktelen használatra vagy visszaélésre.
 
 ### <a name="verification-step"></a>Ellenőrzési lépés
 Tekintse át az önkiszolgáló jelszó-Változtatási tulajdonságok engedélyezve **Azure Active Directory** > **jelszó-átállítási** annak érdekében, hogy a megfelelő felhasználói és a csoport-hozzárendelések lettek bevezetve. 
 
 
-## <a name="next-steps"></a>Következő lépések
-[Az Azure Active Directory termék oldalát](https://azure.microsoft.com/services/active-directory/)
+## <a name="next-steps"></a>További lépések
+[Az Azure Active Directory szolgáltatás lap](https://azure.microsoft.com/services/active-directory/)
 
 [Az Azure Active Directory árképzési adatai lap](https://azure.microsoft.com/pricing/details/active-directory/)

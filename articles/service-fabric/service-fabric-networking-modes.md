@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/9/2017
+ms.date: 1/5/2018
 ms.author: subramar
-ms.openlocfilehash: 1dacbbef915580b0095ef588f3dafad35daf1bde
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: d541e5a1af5e57cd5956a026d7772076509c8514
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="service-fabric-container-networking-modes"></a>A Service Fabric tároló hálózati módok
 
@@ -179,7 +179,7 @@ A tárolószolgáltatás újraindítja vagy a fürt egy másik csomópontjára h
    |Beállítás |Érték | |
    | --- | --- | --- |
    |Prioritás |2000 | |
-   |Név |Custom_Dns  | |
+   |Name (Név) |Custom_Dns  | |
    |Forrás |VirtualNetwork | |
    |Cél | VirtualNetwork | |
    |Szolgáltatás | DNS (UDP/53) | |
@@ -221,7 +221,17 @@ A tárolószolgáltatás újraindítja vagy a fürt egy másik csomópontjára h
     >Linux-fürtök esetén a különböző szolgáltatásokhoz hálózati módok keverése nem támogatott. 
     >
 
-## <a name="next-steps"></a>Következő lépések
+5. Amikor a **nyitott** módot választja, a **végpont** meghatározása a szolgáltatás jegyzékben kell explicit módon mutasson a végpontnak megfelelő kódcsomag akkor is, ha a szolgáltatáscsomag csak egy kódot Ez a csomag. 
+   
+   ```xml
+   <Resources>
+     <Endpoints>
+       <Endpoint Name="ServiceEndpoint" Protocol="http" Port="80" CodePackageRef="Code"/>
+     </Endpoints>
+   </Resources>
+   ```
+
+## <a name="next-steps"></a>További lépések
 * [A Service Fabric-alkalmazásmodell megismerése](service-fabric-application-model.md)
 * [További tudnivalók a Service Fabric service manifest erőforrások](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-manifest-resources)
 * [A Service Fabric Windows Server 2016 egy Windows-tároló telepítése](service-fabric-get-started-containers.md)

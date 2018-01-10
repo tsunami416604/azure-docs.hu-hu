@@ -1,5 +1,5 @@
 ---
-title: "A számlázási megismerése az Azure-bA |} Microsoft Docs"
+title: "A számlázási megismerése az Azure-bA"
 description: "Elolvastam és megértettem a használati és az Azure-előfizetéshez tartozó számlázási útmutató"
 services: 
 documentationcenter: 
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: tonguyen
-ms.openlocfilehash: ade40f8937d56cc561741e251095c4f14b4bb304
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: be15c74456b0cec64455f03dd72b8b64eef2bd5d
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>A Microsoft Azure-hoz kapcsolódó számlák magyarázata
 Az Azure számlázásának ismertetése, hasonlítsa össze a számla a részletes napi használati fájl és a költségek jelentések az Azure portálon.
@@ -34,9 +34,8 @@ Részletes feltételeket és a számla és a napi használat fájl részletes le
 További részletek a felügyeleti költségek jelentésekre: [Azure-portálon költségkezelésére](https://docs.microsoft.com/azure/billing/billing-getting-started).
 
 ## <a name="charges"></a>Hogyan tehetem meg arról, hogy helyesen-e a költségeket a számla?
-<div style="padding-top: 56.25%; position: relative; width: 100%;">
-<iframe style="position: absolute;top: 0;left: 0;right: 0;bottom: 0;" width="100%" height="100%" src="https://www.youtube.com/embed/3YegFD769Pk" frameborder="0" allowfullscreen></iframe>
-</div>
+
+>[!VIDEO https://www.youtube.com/embed/3YegFD769Pk]
 
 Ha a kívánt további részleteket a számlán járnak, többféle beállítások.
 
@@ -49,7 +48,7 @@ A használati díjak jelennek meg a mérési szinten. A következő feltételek 
  | Számla (PDF) | A részletes használati (CSV)|
  | --- | --- |
 |Billing Cycle (Számlázási ciklus) | Billing Period (Számlázási időszak) |
- |Név |Meter Category (Mérési kategória) |
+ |Name (Név) |Meter Category (Mérési kategória) |
  |Típus |A mérési alkategória |
  |Erőforrás |Meter Name (Mérés neve) |
  |Régió |Meter Region (Mérési régió) |

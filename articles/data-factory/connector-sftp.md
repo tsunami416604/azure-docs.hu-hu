@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: bfe4ab71bb7311d1bbca27f8de196b2297c2a994
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 65ddd1efac11bd7f4795e7319e0f66c17f8d5a4f
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="copy-data-from-sftp-server-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory SFTP-kiszolgáló
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -50,8 +50,8 @@ Kapcsolódó SFTP szolgáltatás támogatott a következő tulajdonságokkal:
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **Sftp**. |Igen |
-| állomás | Az SFTP-kiszolgáló neve vagy IP-címét. |Igen |
-| port | Port, amelyen az SFTP kiszolgáló figyel.<br/>Két érték engedélyezett: egész szám, (alapértelmezett) értéke **22**. |Nem |
+| gazdagép | Az SFTP-kiszolgáló neve vagy IP-címét. |Igen |
+| port | Port, amelyen az SFTP kiszolgáló figyel.<br/>Két érték engedélyezett: egész szám, alapértelmezett értéke **22**. |Nem |
 | skipHostKeyValidation | Adja meg, hogy a gazdagép kulcs ellenőrzésének kihagyására.<br/>Két érték engedélyezett: **igaz**, **hamis** (alapértelmezett).  | Nem |
 | hostKeyFingerprint | Adja meg a gazdagép kulcs az ujjlenyomat. | Igen, ha a "skipHostKeyValidation" hamis értékre van állítva.  |
 | AuthenticationType | Adja meg a hitelesítés típusát.<br/>Két érték engedélyezett: **alapvető**, **SshPublicKey**. Tekintse meg [használja az egyszerű hitelesítés](#using-basic-authentication) és [használatával SSH nyilvános kulcsos hitelesítés](#using-ssh-public-key-authentication) további tulajdonságokat és JSON-minták szakasz. |Igen |
@@ -253,5 +253,5 @@ Adatok másolása SFTP, állítsa be a forrás típusa a másolási tevékenysé
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md##supported-data-stores-and-formats).
