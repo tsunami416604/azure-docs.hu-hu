@@ -134,7 +134,7 @@ Windows virtuális gép, lemezt vagy tárolási készletek konfigurációt, telj
 | Nyomkövetési a következő helyen                      |                            |                                    |                          |                                |                      | Igen                  |
 | StorPort-nyomkövetési                   |                            |                                    |                          |                                |                      | Igen                  |
 | Hálózati nyomkövetés futtatása                    |                            |                                    |                          |                                | Igen                  | Igen                  |
-| A Diskspd teljesítményteszt nyomkövetési x      |                            | Igen                                |                          | Igen                            |                      |                      |
+| A Diskspd teljesítményteszt nyomkövetési ***      |                            | Igen                                |                          | Igen                            |                      |                      |
 |       |                            |                         |                                                   |                      |                      |
 
 ### <a name="performance-diagnostics-trace-"></a>Teljesítmény-diagnosztikai nyomkövetési (*)
