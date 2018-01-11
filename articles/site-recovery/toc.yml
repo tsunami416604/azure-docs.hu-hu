@@ -1,9 +1,5 @@
 - name: A Site Recovery dokumentációja
   href: index.yml
-- name: Helyszíni gépek és Azure-beli virtuális gépek migrálása
-  href: migrate/tutorial-migrate-on-premises-to-azure.md
-- name: Vészhelyreállítás Azure-ról Azure-ra
-  href: azure-to-azure/azure-to-azure-quickstart.md
 - name: Áttekintés
   items:
     - name: Mi a Site Recovery?
@@ -35,14 +31,30 @@
           href: tutorial-dr-drill-azure.md
         - name: Feladatátvétel és feladat-visszavétel futtatása
           href: tutorial-vmware-to-azure-failover-failback.md
-    - name: Áttelepítés az Azure-ba
+    - name: Hyper-V virtuális gépek
       items:
         - name: Az Azure előkészítése
+          href: tutorial-prepare-azure.md
+        - name: Helyszíni Hyper-V előkészítése
+          href: tutorial-prepare-on-premises-hyper-v.md
+        - name: Vészhelyreállítás beállítása Hyper-V virtuális gépekhez
+          href: tutorial-hyper-v-to-azure.md
+        - name: Vészhelyreállítás beállítása VMM-felhőben lévő Hyper-V virtuális gépekhez
+          href: tutorial-hyper-v-vmm-to-azure.md
+        - name: Vészhelyreállítási próba végrehajtása
+          href: tutorial-dr-drill-azure.md
+        - name: Feladatátvétel és feladat-visszavétel futtatása
+          href: tutorial-hyper-v-to-azure-failover-failback.md
+    - name: Áttelepítés az Azure-ba
+      items:
+        - name: Az Azure előkészítése helyszíni replikációhoz
           href: tutorial-prepare-azure.md
         - name: Helyszíni gépek áttelepítése az Azure-ba
           href: tutorial-migrate-on-premises-to-azure.md
         - name: AWS-példányok áttelepítése az Azure-ba
           href: tutorial-migrate-aws-to-azure.md
+        - name: Azure-beli virtuális gépek migrálása másik régióba
+          href: tutorial-migrate-azure-to-azure.md
 - name: Alapelvek
   items:
     - name: Azure-ról Azure-ra architektúra
@@ -89,45 +101,36 @@
           href: site-recovery-manage-network-interfaces-on-premises-to-azure.md
     - name: Vészhelyreállítás
       items:
-        - name: Hyper-V előkészítése Azure-ra végzett replikációhoz
-          href: tutorial-prepare-on-premises-hyper-v.md
-        - name: Hyper-V virtuális gépek az Azure-ba
-          href: tutorial-hyper-v-to-azure.md
-        - name: VMM-felhőben lévő Hyper-V virtuális gépek az Azure-ba
-          href: tutorial-hyper-v-vmm-to-azure.md
-        - name: Fizikai kiszolgálók az Azure-ba
+        - name: Azure-beli virtuális gépek vészhelyreállítása az Azure-ba való migrálás után
+          href: site-recovery-azure-to-azure-after-migration.md
+        - name: Fizikai kiszolgálók vészhelyreállítása az Azure-ba
           href: tutorial-physical-to-azure.md
-        - name: Hyper-V virtuális gépek másodlagos helyre
+        - name: Hyper-V virtuális gépek replikálása másodlagos helyre
           href: tutorial-vmm-to-vmm.md
-        - name: VMware-alapú virtuális gépek és fizikai kiszolgálók másodlagos helyre
+        - name: VMware-alapú virtuális gépek és fizikai kiszolgálók replikálása másodlagos helyre
           href: tutorial-vmware-to-vmware.md
         - name: Vészhelyreállítási próba végrehajtása az Azure-ba
-          href: tutorial-dr-drill-azure.md
+          href: site-recovery-test-failover-to-azure.md
         - name: Vészhelyreállítási próba végrehajtása másodlagos helyre
-          href: tutorial-dr-drill-secondary.md
+          href: site-recovery-test-failover-vmm-to-vmm.md
         - name: Több bérlős támogatással rendelkező VMware virtuális gépek az Azure-ba
           href: site-recovery-multi-tenant-support-vmware-using-csp.md
-    - name: Feladatátvétel és feladat-visszavétel
+    - name: Feladatátadás és feladatátvétel
       items:
         - name: Helyreállítási tervek beállítása
           href: site-recovery-create-recovery-plans.md
+        - name: Azure runbookok hozzáadása helyreállítási tervekhez
+          href: site-recovery-runbook-automation.md
+        - name: Feladatátvétel
           items:
-            - name: Azure runbookok hozzáadása helyreállítási tervekhez
-              href: site-recovery-runbook-automation.md
-        - name: Feladatátvételi teszt futtatása
-          items:
-            - name: Azure-ba irányuló feladatátvételi teszt futtatása
-              href: site-recovery-test-failover-to-azure.md
-            - name: VMM-felhők közötti feladatátvételi teszt futtatása
-              href: site-recovery-test-failover-vmm-to-vmm.md
-        - name: Védett gépek feladatátvétele
-          href: site-recovery-failover.md
-        - name: Feladatátvétel és feladat-visszavétel futtatása fizikai kiszolgálókhoz
-          href: tutorial-vmware-to-azure-failover-failback.md
-        - name: Feladatátvétel és feladat-visszavétel futtatása Hyper-V rendszerű virtuális gépekhez
-          href: tutorial-hyper-v-to-azure-failover-failback.md
-        - name: Feladatátvétel és feladat-visszavétel futtatása helyszíni helyek között
-          href: tutorial-vmm-to-vmm-failover-failback.md
+            - name: Tudnivalók a feladatátvételről
+              href: site-recovery-failover.md
+            - name: Másodlagos helyre irányuló feladatátvételi teszt futtatása
+              href: tutorial-dr-drill-secondary.md
+            - name: Feladatátvétel és feladat-visszavétel futtatása fizikai kiszolgálókhoz
+              href: physical-to-azure-failover-failback.md
+            - name: Feladatátvétel és feladat-visszavétel futtatása helyszíni helyek között
+              href: tutorial-vmm-to-vmm-failover-failback.md
         - name: Gépek ismételt védelme feladatátvétel után
           items:
             - name: Ismételt védelem – Egy másodlagos Azure-régióról egy elsődlegesre
@@ -186,25 +189,28 @@
               href: site-recovery-prepare-target-vmware-to-azure.md
             - name: 'Célkörnyezet: fizikairól az Azure-ba'
               href: site-recovery-prepare-target-physical-to-azure.md
-        - name: A VMware–Azure replikálás beállításainak konfigurálása
-          href: site-recovery-setup-replication-settings-vmware.md
-        - name: Lemezek kizárása a VMware–Azure replikációból
-          href: site-recovery-exclude-disk.md
-        - name: Lemezek kizárása a Hyper-V–Azure replikációból
-          href: site-recovery-hyper-v-exclude-disk.md
-        - name: A mobilitási szolgáltatás üzembe helyezése VMware-replikáláshoz
-          href: site-recovery-vmware-to-azure-install-mob-svc.md
+        - name: Replikációs beállítások konfigurálása
           items:
-            - name: A mobilitási szolgáltatás üzembe helyezése a System Center Configuration Managerrel
-              href: site-recovery-install-mobility-service-using-sccm.md
-            - name: A mobilitási szolgáltatás üzembe helyezése az Azure Automation DSC-vel
-              href: site-recovery-automate-mobility-service-install.md
+            - name: A VMware–Azure replikálás beállításainak konfigurálása
+              href: site-recovery-setup-replication-settings-vmware.md
+            - name: Lemezek kizárása a VMware–Azure replikációból
+              href: site-recovery-exclude-disk.md
+            - name: Lemezek kizárása a Hyper-V–Azure replikációból
+              href: site-recovery-hyper-v-exclude-disk.md
         - name: A replikáció engedélyezése
           items:
             - name: Azure-ról Azure-ba történő replikálás engedélyezése
               href: site-recovery-replicate-azure-to-azure.md
             - name: VMware-ről Azure-ba történő replikálás engedélyezése
               href: site-recovery-replicate-vmware-to-azure.md
+        - name: A VMware-hez készült mobilitási szolgáltatás üzembe helyezése
+          items:
+            - name: Tudnivalók a mobilitási szolgáltatásról
+              href: site-recovery-vmware-to-azure-install-mob-svc.md
+            - name: A mobilitási szolgáltatás üzembe helyezése a System Center Configuration Managerrel
+              href: site-recovery-install-mobility-service-using-sccm.md
+            - name: A mobilitási szolgáltatás üzembe helyezése az Azure Automation DSC-vel
+              href: site-recovery-automate-mobility-service-install.md
     - name: Automatizálás
       items:
         - name: VMware virtuális gépek replikálása az Azure-ba PowerShell használatával
@@ -215,12 +221,6 @@
           href: site-recovery-vmm-to-azure-powershell-resource-manager.md
         - name: Hyper-V-replikálás beállítása másodlagos VMM-helyre a PowerShell-lel
           href: site-recovery-vmm-to-vmm-powershell-resource-manager.md
-    - name: Migrate (Áttelepítés)
-      items:
-        - name: Azure-beli virtuális gépek migrálása másik Azure-régióba
-          href: site-recovery-migrate-azure-to-azure.md
-        - name: Migrált gépek replikálása másik Azure-régióba
-          href: site-recovery-azure-to-azure-after-migration.md
     - name: Számítási feladatok
       items:
         - name: Active Directory és DNS
@@ -273,7 +273,7 @@
           href: site-recovery-failover-to-azure-troubleshoot.md
         - name: Naplók gyűjtése és helyszíni problémák hibaelhárítása
           href: site-recovery-monitoring-and-troubleshooting.md
-- name: Referencia
+- name: Hivatkozás
   items:
     - name: Azure PowerShell
       href: /powershell/module/azurerm.recoveryservices.siterecovery
