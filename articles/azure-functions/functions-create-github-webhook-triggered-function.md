@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: d70186513b7313c8181092bc93a723f21154f7bc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cdfb5db7b304a18d6945328abc0ca7ebf2f9ec6a
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="create-a-function-triggered-by-a-github-webhook"></a>GitHub-webhookok által meghívott függvények létrehozása
 
@@ -51,9 +51,13 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
 
     ![Függvények gyors létrehozásának oldala az Azure Portalon](./media/functions-create-github-webhook-triggered-function/add-first-function.png)
 
-2. Kattintson a kívánt nyelvhez tartozó **GitHub WebHook**-sablonra. **Nevezze el a függvényt**, majd kattintson a **Létrehozás** elemre.
+2. A keresés mezőbe írja be a `github` kifejezést, majd válassza ki a kívánt nyelvet a GitHub-webhook eseményindító sablonjához. 
 
-     ![GitHub-webhook által aktivált függvény létrehozása az Azure Portalon](./media/functions-create-github-webhook-triggered-function/functions-create-github-webhook-trigger.png) 
+     ![A GitHub-webhook eseményindító sablonjának kiválasztása](./media/functions-create-github-webhook-triggered-function/functions-create-github-webhook-trigger.png) 
+
+2. Adja meg a függvény **nevét**, majd válassza a **Létrehozás** elemet. 
+
+     ![GitHub-webhook által meghívott függvény konfigurálása az Azure Portalon](./media/functions-create-github-webhook-triggered-function/functions-create-github-webhook-trigger-2.png) 
 
 3. Az új függvényben kattintson a **</> Függvény URL-címének lekérése** elemre, majd másolja és mentse az értékeket. Járjon el ugyanígy a **</> GitHub-titok lekérése** esetében. Ezekre az értékekre a GitHub-webhook konfigurálásához lesz szükség.
 

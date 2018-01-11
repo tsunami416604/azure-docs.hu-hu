@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 11/03/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 03246846484878f7155449ad11b009aeffe8a576
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 3136bccb7724c95c4001e353d7feeecb045f1273
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="choose-between-flow-logic-apps-functions-and-webjobs"></a>Választás a következők közül: Flow, Logic Apps, Functions és WebJobs
 Ez a cikk az integrációs problémák megoldására és üzleti folyamatok automatizálására alkalmas alábbi Microsoft Cloud-szolgáltatásokat hasonlítja össze:
@@ -41,18 +41,18 @@ A Microsoft Flow és az Azure Logic Apps szolgáltatásokat áttekinthetjük pá
 * Ugyanazzal a munkafolyamat-tervezővel rendelkeznek
 * Az egyik szolgáltatásban működő [összekötők](../connectors/apis-list.md) működhetnek a másikban is
 
-A Flow segítségével bármely irodai dolgozó képes végrehajtani egyszerű integrációkat (például SMS üzenet küldése mobiltelefonra fontos e-mail érkezésekor) anélkül, hogy a fejlesztőkhöz vagy informatikai szakemberhez kellene fordulnia. A Logic Apps viszont ehetővé tesz olyan haladó szintű vagy alapvető fontosságú integrációkat (például B2B folyamatokat), amelyekben vállalati szintű DevOps és biztonsági gyakorlatok szükségesek. Az üzleti munkafolyamatokra jellemző, hogy idővel egyre összetettebbé válnak. Ennek megfelelően kezdhet egy folyamattal, majd szükség szerint átalakíthatja logikai alkalmazássá.
+A Flow segítségével bármely irodai dolgozó képes végrehajtani egyszerű integrációkat (például egy SharePoint-dokumentumtár jóváhagyási folyamata) anélkül, hogy a fejlesztőkhöz vagy informatikai szakemberhez kellene fordulnia. A Logic Apps viszont lehetővé tesz olyan haladó szintű integrációkat (például B2B folyamatokat), amelyekben vállalati szintű DevOps és biztonsági gyakorlatok szükségesek. Az üzleti munkafolyamatokra jellemző, hogy idővel egyre összetettebbé válnak. Ennek megfelelően kezdhet egy folyamattal, majd szükség szerint átalakíthatja logikai alkalmazássá.
 
 Az alábbi táblázat segítségével eldöntheti, hogy a Flow vagy a Logic Apps felel meg Önnek jobban egy adott integráció esetében.
 
 |  | Folyamat | Logic Apps |
 | --- | --- | --- |
-| Célközönség |Irodai dolgozók, üzleti felhasználók |Informatikai szakemberek, fejlesztők |
-| Forgatókönyvek |Önkiszolgáló |Alapvető fontosságú |
+| Célközönség |Irodai dolgozók, üzleti felhasználók, SharePoint-adminisztrátorok |Professzionális integrátorok és fejlesztők, informatikai szakemberek |
+| Forgatókönyvek |Önkiszolgáló |Speciális integrációk |
 | Tervezőeszköz |Böngészőbeli és mobilalkalmazás, kizárólag felhasználói felület |Böngészőbeli, [Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md), [Kódnézet](../logic-apps/logic-apps-author-definitions.md) elérhető |
-| DevOps |Ad hoc, fejlesztés éles környezetben |verziókövetés, tesztelés, támogatás, automatizálás és kezelhetőség az [Azure Resource Management](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) eszközzel |
-| Rendszergazdai feladatok |[https://flow.microsoft.com](https://flow.microsoft.com) |[https://portal.azure.com](https://portal.azure.com) |
-| Biztonság |Általános gyakorlatok: [adatszuverenitás](https://wikipedia.org/wiki/Technological_Sovereignty), bizalmas adatok [titkosítása inaktív állapotban](https://wikipedia.org/wiki/Data_at_rest#Encryption), stb. |Az Azure által garantált biztonság: [Azure Security](https://www.microsoft.com/trustcenter/Security/AzureSecurity), [Biztonsági Központ](https://azure.microsoft.com/services/security-center/), [naplók](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/), stb. |
+| Alkalmazások életciklus-felügyelete |Tervezés és tesztelés nem éles környezetekben, majd ezek elkészültével előléptetés éles környezetbe. |DevOps: verziókövetés, tesztelés, támogatás, automatizálás és kezelhetőség az [Azure Resource Management](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) eszközzel |
+| Rendszergazdai feladatok |Flow-környezetek és adatveszteség-megelőzési szabályzatok kezelése, licencek nyomon követése [https://admin.flow.microsoft.com](https://admin.flow.microsoft.com) |Erőforráscsoportok kezelése, kapcsolatok, hozzáférés-kezelés és naplózás [https://portal.azure.com](https://portal.azure.com) |
+| Biztonság |Az Office 365 biztonsági és megfelelőségi auditnaplói, adatveszteség-megelőzési szabályzatok, érzékeny adatok [titkosítása inaktív állapotban](https://wikipedia.org/wiki/Data_at_rest#Encryption) stb. |Az Azure által garantált biztonság: [Azure Security](https://www.microsoft.com/trustcenter/Security/AzureSecurity), [Biztonsági Központ](https://azure.microsoft.com/services/security-center/), [naplók](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/), stb. |
 
 <a name="function"></a>
 
@@ -106,7 +106,7 @@ A Functions és a WebJobs közötti választás attól függ, eddig mire haszná
 Mint azt korábban említettük, az adott helyzettől függ, melyik a legmegfelelőbb szolgáltatás az Ön számára. 
 
 * Egyszerű vállalati optimalizáláshoz használja a Flow szolgáltatást.
-* Ha integrációs forgatókönyve túl összetett a Flow számára, vagy a DevOps-környezet funkcióira és biztonsági megfelelőségre van szüksége, használja a Logic Apps szolgáltatást.
+* Ha integrációs forgatókönyve túl összetett a Flow számára, vagy a DevOps-környezet funkcióira van szüksége, használja a Logic Apps szolgáltatást.
 * Ha az integrációs forgatókönyvének egy lépéséhez nagyfokú egyéni átalakításra vagy specializált kódra van szükség, írjon egy függvényt, és aktiválja műveletként a logikai alkalmazásban.
 
 Meghívhat egy logikai alkalmazást egy folyamatban. Függvényt is meghívhat egy logikai alkalmazásban, és logikai alkalmazást is egy függvényben. A Flow, a Logic Apps és a Functions közötti integráció folyamatosan javul. Amit létrehoz az egyik szolgáltatásban, használhatja a többiben. Ezért a három technológia bármelyikébe megéri befektetni.

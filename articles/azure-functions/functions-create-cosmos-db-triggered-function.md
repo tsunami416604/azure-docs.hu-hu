@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 12/05/2017
+ms.date: 12/07/2017
 ms.author: glenga
 ms.custom: 
-ms.openlocfilehash: 2d2c83b1ce718e6954e908beb9080ace12a12a34
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 2a4037d68413fb02ab3fe0c9a82af2ae22d10e68
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Azure Cosmos DB által aktivált függvény létrehozása
 
@@ -50,9 +50,9 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
 
     ![Függvények gyors létrehozásának oldala az Azure Portalon](./media/functions-create-cosmos-db-triggered-function/add-first-function.png)
 
-2. Keresse meg és válassza ki a kívánt nyelvű **Azure CosmosDBTrigger** sablont.
+2. A keresés mezőbe írja be a `cosmos` kifejezést, majd válassza ki a kívánt nyelvet az Azure Cosmos DB-webhook eseményindító sablonjához.
 
-    ![Az Azure Cosmos DB-eseményindító létrehozása](./media/functions-create-cosmos-db-triggered-function/select-cosmos-db-trigger-portal.png)
+    ![Azure Cosmos DB-eseményindító kiválasztása](./media/functions-create-cosmos-db-triggered-function/select-cosmos-db-trigger-portal.png)
 
 3. Az új eseményindító létrehozásához használja az ábra alatti táblázatban megadott beállításokat.
 
@@ -60,10 +60,10 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
     
     | Beállítás      | Ajánlott érték  | Leírás                                |
     | ------------ | ---------------- | ------------------------------------------ |
-    | **A függvény neve** | Alapértelmezett | Használja a sablonban javasolt alapértelmezett függvénynevet. |
-    | **Adatbázis neve** | Feladatok | A monitorozni kívánt gyűjteményt tartalmazó adatbázis neve. |
+    | **Name (Név)** | Alapértelmezett | Használja a sablonban javasolt alapértelmezett függvénynevet. |
     | **Gyűjtemény neve** | Elemek | A monitorozni kívánt gyűjtemény neve. |
     | **A bérletek gyűjteményének létrehozása, ha az nem létezik** | Bejelölve | A gyűjtemény még nem létezik, hozza létre. |
+    | **Adatbázis neve** | Feladatok | A monitorozni kívánt gyűjteményt tartalmazó adatbázis neve. |
 
 4. Kattintson az **Új** gombra az **Azure Cosmos DB-fiókkapcsolat** címke mellett, és válasszon egy meglévő Cosmos DB-fiókot, vagy kattintson az **+ Új létrehozása** elemre. 
  
