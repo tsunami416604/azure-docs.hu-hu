@@ -6,22 +6,22 @@ author: mmacy
 manager: timlt
 ms.service: container-registry
 ms.topic: quickstart
-ms.date: 10/31/2017
+ms.date: 12/06/2017
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: e6338ca03bcb0daa040a62b06cfa3ad7ba66a1b2
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: c6ce1c16a3f7d5b52a3fcb47213618eb75183149
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="create-a-container-registry-using-the-azure-portal"></a>Tároló-beállításjegyzék létrehozása az Azure Portalon
 
 Az Azure-beli tároló-beállításjegyzék egy privát Docker-tárolójegyzék az Azure-ban, amelyben tárolhatja és kezelheti privát Docker-tárolóinak rendszerképeit. Ebben a rövid útmutatóban létrehozhat egy tároló-beállításjegyzéket az Azure Portallal.
 
-A rövid útmutató elvégzéséhez a Docker helyi telepítése szükséges. A Docker csomagokat biztosít, amelyekkel a Docker egyszerűen konfigurálható bármely [Mac](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) vagy [Linux](https://docs.docker.com/engine/installation/#supported-platforms) rendszeren.
+A rövid útmutató elvégzéséhez a Docker helyi telepítése szükséges. A Docker csomagokat biztosít, amelyekkel a Docker egyszerűen konfigurálható bármely [Mac][docker-mac], [Windows][docker-windows] vagy [Linux][docker-linux] rendszeren.
 
-## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
+## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
 Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
@@ -35,7 +35,7 @@ Adjon meg értékeket az **Adatbázis neve** és **Erőforráscsoport** mezőkbe
 
 ![Tároló-beállításjegyzék létrehozása az Azure Portalon][qs-portal-03]
 
-Ebben a rövid útmutatóban egy *Alapszintű* beállításjegyzéket hozunk létre. Az Azure Container Registry több különböző termékváltozatban érhető el, amelyek rövid leírása az alábbi táblázatban található. A termékváltozatokkal kapcsolatos további részletekért látogasson el ide: [Tároló-beállításjegyzék termékváltozatai](container-registry-skus.md).
+Ebben a rövid útmutatóban egy *Alapszintű* beállításjegyzéket hozunk létre. Az Azure Container Registry több különböző termékváltozatban érhető el, amelyek rövid leírása az alábbi táblázatban található. Bővebb részletekért lásd a [Container Registry termékváltozatait][container-registry-skus] ismertető cikket.
 
 [!INCLUDE [container-registry-sku-matrix](../../includes/container-registry-sku-matrix.md)]
 
@@ -55,13 +55,13 @@ Ezekre az értékekre a következő lépésekben, a beállításjegyzékben a Do
 
 ## <a name="log-in-to-acr"></a>Jelentkezzen be az ACR-be
 
-A tárolórendszerképek mozgatásához először be kell jelentkeznie az ACR-példányba. Ehhez használja a [docker login](https://docs.docker.com/engine/reference/commandline/login/) parancsot. Cserélje le a *felhasználónév*, *jelszó*, és *bejelentkezési kiszolgáló* értékeket az előző lépésben feljegyzett értékekre.
+A tárolórendszerképek mozgatásához először be kell jelentkeznie az ACR-példányba. Ehhez használja a [docker login][docker-login] parancsot. Cserélje le a *felhasználónév*, *jelszó*, és *bejelentkezési kiszolgáló* értékeket az előző lépésben feljegyzett értékekre.
 
 ```bash
 docker login --username <username> --password <password> <login server>
 ```
 
-A parancs a `Login Succeeded` üzenetet adja vissza, ha befejeződött. Előfordulhat, hogy megjelenik egy biztonsági figyelmeztetés, amely a `--password-stdin` paraméter használatát javasolja. Bár a paraméter használatát a cikk nem tárgyalja, javasoljuk, kövesse ezt az ajánlott eljárást. További információkért tekintse át a [docker login](https://docs.docker.com/engine/reference/commandline/login/) parancs leírását.
+A parancs a `Login Succeeded` üzenetet adja vissza, ha befejeződött. Előfordulhat, hogy megjelenik egy biztonsági figyelmeztetés, amely a `--password-stdin` paraméter használatát javasolja. Bár a paraméter használatát a cikk nem tárgyalja, javasoljuk, kövesse ezt az ajánlott eljárást. További információkért tekintse át a [docker login][docker-login] parancs leírását.
 
 ## <a name="push-image-to-acr"></a>Rendszerkép leküldése az ACR-be
 
@@ -71,13 +71,13 @@ Ahhoz, hogy rendszerképet tudjon küldeni az Azure Container Registry-be, elős
 docker pull microsoft/aci-helloworld
 ```
 
-Mielőtt leküldi a rendszerképet a beállításjegyzékbe, fel kell címkéznie az ACR bejelentkezési kiszolgáló nevével. Címkézze fel a rendszerképet a [docker tag](https://docs.docker.com/engine/reference/commandline/tag/) parancs használatával. Cserélje le a *bejelentkezési kiszolgáló* értéket a korábban feljegyzett bejelentkezési kiszolgáló nevére.
+Mielőtt leküldi a rendszerképet a beállításjegyzékbe, fel kell címkéznie az ACR bejelentkezési kiszolgáló nevével. Címkézze fel a rendszerképet a [docker tag][docker-tag] parancs használatával. Cserélje le a *bejelentkezési kiszolgáló* értéket a korábban feljegyzett bejelentkezési kiszolgáló nevére.
 
 ```
 docker tag microsoft/aci-helloworld <login server>/aci-helloworld:v1
 ```
 
-Végül a [docker push](https://docs.docker.com/engine/reference/commandline/push/) paranccsal küldje le a rendszerképet az ACR-példányba. Cserélje le a *bejelentkezési kiszolgáló* értéket ACR-példánya bejelentkezési kiszolgálójának nevére.
+Végül a [docker push][docker-push] paranccsal küldje le a rendszerképet az ACR-példányba. Cserélje le a *bejelentkezési kiszolgáló* értéket ACR-példánya bejelentkezési kiszolgálójának nevére.
 
 ```
 docker push <login server>/aci-helloworld:v1
@@ -115,7 +115,7 @@ Ha már nincs rá szükség, törölje a **myResourceGroup** erőforráscsoporto
 Ebben a rövid útmutatóban létrehozott egy Azure-beli tároló-beállításjegyzéket az Azure CLI segítségével. Ha az Azure Container Registry és az Azure Container Instances együttes használatának módját szeretné megismerni, folytassa az Azure Container Instances oktatóanyagával.
 
 > [!div class="nextstepaction"]
-> [Az Azure Container Instances oktatóanyagai](../container-instances/container-instances-tutorial-prepare-app.md)
+> [Az Azure Container Instances oktatóanyagai][container-instances-tutorial-prepare-app]
 
 <!-- IMAGES -->
 [qs-portal-01]: ./media/container-registry-get-started-portal/qs-portal-01.png
@@ -127,3 +127,15 @@ Ebben a rövid útmutatóban létrehozott egy Azure-beli tároló-beállításje
 [qs-portal-07]: ./media/container-registry-get-started-portal/qs-portal-07.png
 [qs-portal-08]: ./media/container-registry-get-started-portal/qs-portal-08.png
 [qs-portal-09]: ./media/container-registry-get-started-portal/qs-portal-09.png
+
+<!-- LINKS - external -->
+[docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms
+[docker-login]: https://docs.docker.com/engine/reference/commandline/login/
+[docker-mac]: https://docs.docker.com/docker-for-mac/
+[docker-push]: https://docs.docker.com/engine/reference/commandline/push/
+[docker-tag]: https://docs.docker.com/engine/reference/commandline/tag/
+[docker-windows]: https://docs.docker.com/docker-for-windows/
+
+<!-- LINKS - internal -->
+[container-instances-tutorial-prepare-app]: ../container-instances/container-instances-tutorial-prepare-app.md
+[container-registry-skus]: container-registry-skus.md

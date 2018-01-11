@@ -8,26 +8,26 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 12/05/2017
 ms.author: seozerca
-ms.openlocfilehash: 18d082a1cd07e0b3572c93ea24b4e1edd92cad2a
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 339e600f18613e8cf4e5529c759ad33076d48654
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>Integrálás az Azure által kezelt szolgáltatásokkal az Open Service Broker for Azure (OSBA) használatával
 
-A [Kubernetes szolgáltatáskatalógussal](https://github.com/kubernetes-incubator/service-catalog) együtt az Open Service Broker for Azure (OSBA) lehetővé teszi a fejlesztők számára, hogy az Azure által kezelt szolgáltatásokat használhassák a Kubernetesben. Ez az útmutató a Kubernetes szolgáltatáskatalógus, az Open Service Broker for Azure (OSBA) és olyan alkalmazások üzembe helyezésére összpontosít, amelyek a Kubernetes használatával vesznek igénybe Azure által kezelt szolgáltatásokat.
+A [Kubernetes szolgáltatáskatalógussal][kubernetes-service-catalog] együtt az Open Service Broker for Azure (OSBA) lehetővé teszi a fejlesztők számára, hogy az Azure által kezelt szolgáltatásokat használhassák a Kubernetesben. Ez az útmutató a Kubernetes szolgáltatáskatalógus, az Open Service Broker for Azure (OSBA) és olyan alkalmazások üzembe helyezésére összpontosít, amelyek a Kubernetes használatával vesznek igénybe Azure által kezelt szolgáltatásokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Azure-előfizetés
 
-* Azure CLI 2.0: [Telepítheti helyileg](/cli/azure/install-azure-cli), vagy használhatja az [Azure Cloud Shellben](../cloud-shell/overview.md).
+* Azure CLI 2.0: [Telepítheti helyileg][azure-cli-install], vagy használhatja az [Azure Cloud Shellben][azure-cloud-shell].
 
-* Helm CLI 2.7+: [Telepítheti helyileg](kubernetes-helm.md#install-helm-cli), vagy használhatja az [Azure Cloud Shellben](../cloud-shell/overview.md).
+* Helm CLI 2.7+: [Telepítheti helyileg][helm-cli-install], vagy használhatja az [Azure Cloud Shellben][azure-cloud-shell].
 
 * Engedély egyszerű szolgáltatás létrehozásához Azure-előfizetése Közreműködő szerepkörében
 
-* Egy létező Azure Container Service- (AKS-) fürt. Ha egy AKS-fürtre van szüksége, kövesse az [AKS-fürt létrehozása](kubernetes-walkthrough.md) című rövid útmutatót.
+* Egy létező Azure Container Service- (AKS-) fürt. Ha egy AKS-fürtre van szüksége, kövesse az [AKS-fürt létrehozása][create-aks-cluster] című rövid útmutatót.
 
 ## <a name="install-service-catalog"></a>Szolgáltatáskatalógus telepítése
 
@@ -68,7 +68,7 @@ v1beta1.storage.k8s.io               10
 
 ## <a name="install-open-service-broker-for-azure"></a>Az Open Service Broker for Azure telepítése
 
-A következő lépés az [Open Service Broker for Azure](https://github.com/Azure/open-service-broker-azure) telepítése, amely tartalmazza az Azure által kezelt szolgáltatások katalógusát. Az elérhető Azure-szolgáltatások között megtalálható például az Azure Database for PostgreSQL, az Azure Redis Cache, az Azure Database for MySQL, az Azure Cosmos DB és az Azure SQL Database.
+A következő lépés az [Open Service Broker for Azure][open-service-broker-azure] telepítése, amely tartalmazza az Azure által kezelt szolgáltatások katalógusát. Az elérhető Azure-szolgáltatások között megtalálható például az Azure Database for PostgreSQL, az Azure Redis Cache, az Azure Database for MySQL, az Azure Cosmos DB és az Azure SQL Database.
 
 Kezdésnek adja hozzá az Open Service Broker for Azure-t az Azure Helm-adattárhoz:
 
@@ -76,7 +76,7 @@ Kezdésnek adja hozzá az Open Service Broker for Azure-t az Azure Helm-adattár
 helm repo add azure https://kubernetescharts.blob.core.windows.net/azure
 ```
 
-Hozzon létre egy [egyszerű szolgáltatást](kubernetes-service-principal.md) az alábbi Azure CLI-paranccsal:
+Hozzon létre egy [egyszerű szolgáltatást][create-service-principal] az alábbi Azure CLI-paranccsal:
 
 ```azurecli-interactive
 az ad sp create-for-rbac
@@ -124,7 +124,7 @@ helm install azure/open-service-broker-azure --name osba --namespace osba \
     --set azure.clientSecret=$AZURE_CLIENT_SECRET
 ```
 
-Ha az OSBA üzembe helyezése befejeződött, telepítse a [szolgáltatáskatalógus CLI-jét](https://github.com/Azure/service-catalog-cli). Ez egy könnyen használható parancssori felület, amellyel lekérdezhetőek többek között a szolgáltatásközvetítők, a szolgáltatásosztályok és a szolgáltatáscsomagok.
+Ha az OSBA üzembe helyezése befejeződött, telepítse a [szolgáltatáskatalógus CLI-jét][service-catalog-cli]. Ez egy könnyen használható parancssori felület, amellyel lekérdezhetők többek között a szolgáltatásközvetítők, a szolgáltatásosztályok és a szolgáltatáscsomagok.
 
 Hajtsa végre az alábbi parancsokat a szolgáltatáskatalógus parancssori felületi binárisának telepítéséhez:
 
@@ -184,4 +184,18 @@ kubectl get secrets -n wordpress -o yaml
 
 A cikk útmutatásait követve üzembe helyezte a szolgáltatáskatalógust egy Azure Container Service- (AKS-) fürtön. Az Open Service Broker for Azure használatával üzembe helyezett egy WordPress-példányt, amely az Azure által kezelt szolgáltatásokat használja, ebben az esetben az Azure Database for MySQL-t.
 
-További frissített, OSBA-alapú Helm-diagramok eléréséhez tekintse meg az [Azure/helm-charts](https://github.com/Azure/helm-charts) adattárat. Ha szeretné saját, az OSBA-val működő diagramjait létrehozni, tekintse meg az [új diagram létrehozását](https://github.com/Azure/helm-charts#creating-a-new-chart) ismertető részt.
+További frissített, OSBA-alapú Helm-diagramok eléréséhez tekintse meg az [Azure/helm-charts][helm-charts] adattárat. Ha szeretné saját, az OSBA-val működő diagramjait létrehozni, tekintse meg az [új diagram létrehozását][helm-create-new-chart] ismertető részt.
+
+<!-- LINKS - external -->
+[helm-charts]: https://github.com/Azure/helm-charts
+[helm-cli-install]: kubernetes-helm.md#install-helm-cli
+[helm-create-new-chart]: https://github.com/Azure/helm-charts#creating-a-new-chart
+[kubernetes-service-catalog]: https://github.com/kubernetes-incubator/service-catalog
+[open-service-broker-azure]: https://github.com/Azure/open-service-broker-azure
+[service-catalog-cli]: https://github.com/Azure/service-catalog-cli
+
+<!-- LINKS - internal -->
+[azure-cli-install]: /cli/azure/install-azure-cli
+[azure-cloud-shell]: ../cloud-shell/overview.md
+[create-aks-cluster]: ./kubernetes-walkthrough.md
+[create-service-principal]: ./kubernetes-service-principal.md

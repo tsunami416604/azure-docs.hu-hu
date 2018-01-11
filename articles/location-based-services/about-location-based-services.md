@@ -1,41 +1,41 @@
 ---
-title: "Azure-beli hely áttekintése alapú szolgáltatások |} Microsoft Docs"
-description: "Megismerkedhet az Azure-alapú helyszolgáltatás (előzetes verzió)"
+title: "Az Azure Location Based Services áttekintése | Microsoft Docs"
+description: "Az Azure Location Based Services (előzetes verzió) bemutatása"
 services: location-based-services
 keywords: 
 author: dsk-2015
 ms.author: dkshir
 ms.date: 11/28/2017
-ms.topic: article
+ms.topic: overview
 ms.service: location-based-services
 documentationcenter: 
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: c8ebce06a72bcaf769a11ec954702463d7489aa0
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
-ms.translationtype: MT
+ms.openlocfilehash: 9b4b54c3a4cf0ed4350f570259f6997e4398682b
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/07/2017
 ---
-# <a name="an-introduction-to-azure-location-based-services-preview"></a>Megismerkedhet az Azure-alapú helyszolgáltatás (előzetes verzió)
-Az Azure-alapú helyszolgáltatás egy portfóliót földrajzi szolgáltatás, amely tartalmazza az API-k szolgáltatás Maps, Search, útválasztás, forgalom és időzóna. Azure OneAPI kompatibilis szolgáltatások portfóliót lehetővé teszi a megszokott fejlesztőeszközök segítségével gyorsan fejlesztése és helyére vonatkozó információkat integrálása az Azure megoldások méretezési megoldásokat. Az Azure-alapú helyszolgáltatás hatékony földrajzi képességek csomagolt friss leképezési adatok dolgozik a webes és mobilalkalmazások földrajzi környezetet biztosít az összes iparágakban a fejlesztők biztosít. Az Azure-alapú helyszolgáltatás egy egy Azure egy API-val kompatibilis REST API-k egy webalapú JavaScript-vezérléssel együtt, hogy fejlesztési super könnyen, rugalmas és hordozható több adathordozók között. 
+# <a name="an-introduction-to-azure-location-based-services-preview"></a>Az Azure Location Based Services (előzetes verzió) bemutatása
+Az Azure Location Based Services olyan térinformatikai szolgáltatások portfóliója, amelyek elérhetővé teszik a térképek, a keresés, az útválasztás, a forgalom és az időzónák API-jainak elérését. Az Azure OneAPI kompatibilis szolgáltatásainak portfóliója lehetővé teszi, hogy ismerős fejlesztői eszközökkel gyorsan fejlesszen és méretezzen olyan megoldásokat, amelyek helyadatokat tesznek elérhetővé az Azure-megoldásokban. Az Azure Location Based Services a webes és mobilalkalmazások földrajzi kontextusának biztosításához szükséges, friss térképadatokat használó, hatékony térinformatikai funkciókat biztosít minden iparág fejlesztői számára. Az Azure Location Based Services egy Azure One API-kompatibilis REST API-készlet, amely webalapú JavaScript-vezérlővel rendelkezik a rendkívül egyszerű, rugalmas és különböző médiumokon elérhető fejlesztés érdekében. 
 
-Az Azure-alapú helyszolgáltatás földrajzi környezetet igénylő Azure alkalmazásokhoz fokozni öt elsődleges szolgáltatásból áll. Egyes szolgáltatások esetén, tekintse meg az alábbi részletesen.
+Az Azure Location Based Services öt fő szolgáltatást tartalmaz a földrajzi kontextust igénylő Azure-alkalmazások támogatására. Az alábbiakban ezen szolgáltatások mindegyikét részletesen ismertetjük.
 
-**Szolgálatot** – célja, hogy a leképezési szolgáltatás a fejlesztők számára webes és mobilalkalmazásokhoz körül leképezés létrehozásához. A szolgáltatás minőségi bitképes képek, 19 nagyítási szint érhető el, vagy teljes mértékben testreszabható vektoros formátum térképi képeit használja.
+**Render Service** – A Render Service segítségéve a fejlesztők térképészeti jellegű webes és mobilalkalmazásokat fejleszthetnek. A szolgáltatás használhat nagy felbontású rasztergrafikákat, amelyek 19 nagyítási szinten érhetők el, vagy teljes körűen testreszabható, vektorformátumú térképeket.
 
-![Azure-beli hely alapú szolgáltatások Map.png](media/about-location-based-services/Introduction_Map.png)
+![Azure Location Based Services Map.png](media/about-location-based-services/Introduction_Map.png)
 
-**Útvonal-szolgáltatás** – az útválasztási szolgáltatás valós robusztus infrastruktúrát geometriai számítások és több szállítására mód irányban épül. A szolgáltatás lehetővé teszi a fejlesztők számára a irányban kiszámításához utazás módok autó, teherautó, kerékpárgyártó vagy érdekében; például méretét valamint a bemeneti adatok, például forgalom feltételek, a súly korlátozások vagy veszélyes jelentős átviteli száma.
+**Route Service** – A Route Service valós infrastruktúra-geometriai számításokat és több közlekedési formához kapcsolódó útvonalakat tartalmaz. A szolgáltatás lehetővé teszi a fejlesztők számára, hogy többféle közlekedési formára (autó, teherautó, kerékpár, gyalog) vonatkozóan számítsák ki az útvonalakat, továbbá figyelembe vegyenek számos egyéb tényezőt, köztük a forgalmi viszonyokat, súlykorlátozásokat vagy a veszélyes anyagok szállítását.
 
-![Azure-beli hely alapú szolgáltatások Route.png](media/about-location-based-services/Introduction_Route.png)
+![Azure Location Based Services Route.png](media/about-location-based-services/Introduction_Route.png)
 
-**Keresési szolgáltatás** – a keresési szolgáltatás végzi a fejlesztők címek, helyek, név vagy a kategória üzleti listák és egyéb földrajzi információk keresése. A keresési szolgáltatás is [geocode fordított](https://en.wikipedia.org/wiki/Reverse_geocoding) címek és alhálózatok közötti utca a szélesség/hosszúsági alapján. 
+**Search Service** – A Search Service lehetővé teszi a fejlesztők számára, hogy címeket, helyeket és cégjegyzékeket keressenek név, kategória vagy egyéb földrajzi adatok alapján. A Search Service képes [fordított geokódolással](https://en.wikipedia.org/wiki/Reverse_geocoding) meghatározni a címeket és útkereszteződéseket a hosszúsági/szélességi koordináták alapján. 
 
-![Azure-beli hely alapú szolgáltatások Search.png](media/about-location-based-services/Introduction_Search.png)
+![Azure Location Based Services Search.png](media/about-location-based-services/Introduction_Search.png)
 
-**Időzóna szolgáltatás** – az időzóna-szolgáltatás lehetővé teszi a lekérdezés aktuális, a korábbi és a jövőbeni időzóna-információk használata vagy szélességi-hosszúsági párok vagy egy [IANA azonosítója](http://www.iana.org/). Az időzóna-szolgáltatás is lehetővé teszi, hogy a Microsoft Windows időzóna azonosítók konvertálása IANA időzónák, UTC időzóna-eltolódás beolvasása és a jelenlegi időpontnál első megfelelő időzónára. Egy tipikus JSON-válasz egy lekérdezés az időzóna szolgáltatáshoz a következőképpen néznek:
+**Time Zone Service** – A Time Zone Service lehetővé teszi jelenlegi, korábbi és jövőbeli időzónaadatok lekérdezését hosszúsági/szélességi koordináták vagy egy [IANA-azonosító](http://www.iana.org/) alapján. Emellett a Time Zone Service használatával a Microsoft Windows időzóna-azonosítói IANA-időzónákká alakíthatók egy adott időzóna UTC-hez képest számolt eltérésének és az aktuális helyi idejének lekérésével. A Time Zone Service lekérdezéseire adott tipikus JSON-válasz a következőhöz hasonló:
 
 ```JSON
 {
@@ -55,22 +55,22 @@ Az Azure-alapú helyszolgáltatás földrajzi környezetet igénylő Azure alkal
 }
 ```
 
-**Szolgáltatás forgalom** – a forgalom szolgáltatás webes és mobilalkalmazásokhoz forgalom igénylő létrehozásához a fejlesztők számára tervezett webszolgáltatások együttese. Az elérhető a következő ossza fel:
-1. Forgalom bonyolódjon - biztosít a valós idejű megfigyelt sebesség és a hálózat; minden kulcs utak idejének utazik Emellett a 
-2. Incidensek forgalom - forgalom dzsemek és incidensek a közúti hálózati körül pontos nézete.
+**Traffic Service** – A Traffic Service egy fejlesztők számára készült webszolgáltatás-csomag, amellyel forgalmi adatokat igénylő webes és mobilalkalmazásokat fejleszthetnek. A szolgáltatás a következő részekre oszlik:
+1. Forgalom áramlása – valós időben megfigyelt menetsebességeket és menetidőket biztosít a hálózaton belüli összes fontos útra vonatkozóan; 
+2. Forgalmi zavarok – pontos képet ad az úthálózaton fennálló forgalmi dugókról és zavarokról.
 
-![Azure-beli hely alapú szolgáltatások forgalmát](media/about-location-based-services/Introduction_Traffic.png)
+![Azure Location Based Services Traffic](media/about-location-based-services/Introduction_Traffic.png)
 
-Az Azure-alapú helyszolgáltatás a mobilitás épül, és platformfüggetlen alkalmazások is teljesítmény, mivel független a programozási modellel, és támogatja a JSON-kimenetét REST API-k segítségével. Ezenfelül az Azure LBS egy kényelmes JavaScript térkép vezérlőelem a web- és mobilalkalmazások gyors könnyen fejlesztési egyszerű programozási modellt biztosít. 
+Az Azure Location Based Services a mobilitás jegyében készült, valamint különböző platformokon futó alkalmazásokat is képes kiszolgálni, mivel a programozási modell platformfüggetlen és támogatja a JSON-kimeneteket a REST API-k használatával. Az Azure LBS továbbá tartalmaz egy kényelmes JavaScript-térképvezérlőt, amelynek egyszerű programozási modellje lehetővé teszi a webes és mobilalkalmazások gyors és egyszerű fejlesztését. 
 
-Az Azure-alapú helyszolgáltatás egy kulcs-alapú hitelesítési sémát használja, a el a szolgáltatások, így kell navigáljon a [Azure-portálon](http://portal.azure.com) és Azure hely alapú Services-fiók létrehozása. Fiókja meg előre generált két kulcsot tartalmaz. Indítsa el a integrálása ezen hely képességek közvetlenül az alkalmazások az Azure-alapú helyszolgáltatás kéréseket a kulcsok használatával.
+Az Azure Location Based Services egy kulcsalapú hitelesítési sémát használ, így a szolgáltatások eléréséhez csupán létre kell hozni egy Azure Location Based Services-fiókot az [Azure Portal](http://portal.azure.com) használatával. A fiókhoz két előre létrehozott kulcs is jár. Használja ezen kulcsok egyikét az Azure Location Based Services szolgáltatás felé küldött kérésekben a helyalapú szolgáltatások közvetlenül az alkalmazásokba való integrálásának megkezdéséhez.
 
-Regisztráljon egy [Azure-alapú helyszolgáltatás fiók még ma!](http://aka.ms/azurelbsportal)
+Regisztráljon [Azure Location Based Services-fiókot még ma!](http://aka.ms/azurelbsportal)
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most már rendelkezik egy áttekintést az Azure-alapú helyszolgáltatás (előzetes verzió). A következő lépés egy mintaalkalmazást a területeknek a hely alapú szolgáltatások kipróbálására, valamint hozzon létre egy végpont forgatókönyvben a webalkalmazás-hoz.
+A cikk az Azure Location Based Services (előzetes verzió) szolgáltatásról nyújtott áttekintést. A következő lépésben kipróbálunk egy mintaalkalmazást, amely bemutatja a Location Based Services szolgáltatást, valamint létrehozunk egy átfogó forgatókönyvet a webalkalmazásban.
 
 > [!div class="nextstepaction"]
-> [Indítsa el a bemutató interaktív térkép keresések Azure hely alapú szolgáltatások (előzetes verzió)](quick-demo-map-app.md)
-> [közelben pont használatával, Azure-alapú helyszolgáltatás keresés](tutorial-search-location.md)
+> [Bemutató interaktív térképes keresés indítása az Azure Location Based Services (előzetes verzió) használatával](quick-demo-map-app.md)
+> [Közeli hasznos helyek keresése az Azure Location Based Services használatával](tutorial-search-location.md)
