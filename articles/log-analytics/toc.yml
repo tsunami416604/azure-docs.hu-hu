@@ -73,8 +73,6 @@
               href: log-analytics-sccm.md
             - name: OMS-átjáró
               href: log-analytics-oms-gateway.md
-            - name: Linux-ügynök hibaelhárítása
-              href: log-analytics-agent-linux-support.md
         - name: Adatforrások
           items:
             - name: Az adatforrások áttekintése
@@ -99,6 +97,8 @@
               href: log-analytics-data-sources-custom-logs.md
             - name: Egyéni mezők
               href: log-analytics-custom-fields.md
+            - name: Data collector API
+              href: log-analytics-data-collector-api.md
     - name: Adatok lekérdezése
       items:
         - name: Nyelvi dokumentáció
@@ -164,15 +164,25 @@
           href: log-analytics-manage-cost-storage.md
         - name: Munkaterület törlése
           href: log-analytics-manage-del-workspace.md
+    - name: Hibaelhárítás
+      items:
+        - name: Virtuálisgép-bővítmény hibaelhárítása
+          href: log-analytics-azure-vmext-troubleshoot.md
+        - name: Linux-ügynök hibaelhárítása
+          href: log-analytics-agent-linux-support.md
     - name: Megoldások használata
       items:
         - name: Megoldások áttekintése
           href: log-analytics-add-solutions.md
         - name: Célmegoldások
           href: ../operations-management-suite/operations-management-suite-solution-targeting.md?toc=%2fazure%2flog-analytics%2ftoc.json
-        - name: Activity Log Analytics
-          href: log-analytics-activity.md
-        - name: AD állapotának ellenőrzése
+        - name: Azure-tevékenységnaplók
+          items:
+            - name: Elemzés
+              href: log-analytics-activity.md
+            - name: Gyűjtés több előfizetésben
+              href: log-analytics-activity-logs-subscriptions.md
+        - name: AD Assessment
           href: log-analytics-ad-assessment.md
         - name: AD Replication Status
           href: log-analytics-ad-replication-status.md
@@ -244,8 +254,6 @@
           href: log-analytics-wire-data.md
     - name: Fejlesztés
       items:
-        - name: Data collector API
-          href: log-analytics-data-collector-api.md
         - name: PowerShell-parancsmagok
           href: log-analytics-powershell-workspace-configuration.md
         - name: Resource Manager-sablonok
@@ -257,7 +265,7 @@
               href: log-analytics-log-search-api-python.md
         - name: Alert API
           href: log-analytics-api-alerts.md
-- name: Referencia
+- name: Hivatkozás
   items:
     - name: Nyelvi referencia
       href: 'https://docs.loganalytics.io/docs/Language-Reference'
@@ -265,7 +273,7 @@
       href: /powershell/module/azurerm.operationalinsights
     - name: REST
       href: /rest/api/loganalytics
-- name: Erőforrások
+- name: További források
   items:
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'

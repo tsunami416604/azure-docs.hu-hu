@@ -254,6 +254,8 @@
               href: mongodb-mongochef.md
             - name: A Robomongo használata
               href: mongodb-robomongo.md
+            - name: A Mongoose használata
+              href: mongodb-mongoose.md
             - name: A MongoDB-funkciók támogatása
               href: mongodb-feature-support.md
             - name: Angular oktatóanyag-sorozat
@@ -380,7 +382,7 @@
           href: odbc-driver.md
         - name: Spring Boot Starter használata SQL API-kkal
           href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db.md
-- name: Referencia
+- name: Hivatkozás
   items:
     - name: Kódminták
       href: 'https://azure.microsoft.com/en-us/resources/samples/?service=cosmos-db'

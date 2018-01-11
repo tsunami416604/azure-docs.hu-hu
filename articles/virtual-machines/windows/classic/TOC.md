@@ -1,63 +1,39 @@
 # Áttekintés
 ## [Információ a virtuális gépekről](../../virtual-machines-windows-about.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-## [Lemezek és virtuális merevlemezek](../about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-## [Virtuális hálózatok](../../../virtual-network/virtual-networks-overview.md)
-## [Gyakori kérdések](faq.md)
-## [Virtuális gépek, webhelyek és felhőszolgáltatások összehasonlítása](../../../app-service/choose-web-site-cloud-service-vm.md)
-## [Tárolók](../../virtual-machines-windows-containers.md)
+## [GYIK](faq-classic.md)
 
 # Bevezetés
-## [Virtuális gép létrehozása az Azure Portalon](tutorial.md)
-## [Bejelentkezés virtuális gépre](connect-logon.md)
-## [Az Azure PowerShell telepítése](/powershell/azure/overview)
-## [Az Azure parancssori felület telepítése](../../../cli-install-nodejs.md)
+## [Virtuális gép létrehozása az Azure Portalon](tutorial-classic.md)
+## [Bejelentkezés virtuális gépre](connect-logon-classic.md)
 
 # Útmutató
-
 ## A Storage használata
-### [Adatlemez csatolása](attach-disk.md)
-### [Adatlemez leválasztása](detach-disk.md)
-### [A „D:” meghajtó használata adatlemezként](../../virtual-machines-windows-change-drive-letter.md)
+### [Adatlemez csatolása](attach-disk-classic.md)
+### [Adatlemez leválasztása](detach-disk-classic.md)
 
 ## Network (Hálózat)
 ### [Végpontok beállítása](setup-endpoints.md)
-### [Virtuális gépek csatlakoztatása virtuális hálózathoz vagy felhőszolgáltatáshoz](connect-vms.md)
-### [Klasszikus virtuális hálózatok csatlakoztatása Resource Manager-alapú virtuális hálózatokhoz](../../../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
-### [Terheléselosztó létrehozása](../../../load-balancer/load-balancer-get-started-internet-classic-portal.md)
-### [NSG-k kezelése az Azure PowerShell-lel](../../../virtual-network/virtual-networks-create-nsg-classic-ps.md)
+### [Virtuális gépek csatlakoztatása virtuális hálózathoz vagy felhőszolgáltatáshoz](connect-vms-classic.md)
 
 ## Üzembe helyezés
-### [Egyéni virtuális gép létrehozása](createportal.md)
-### [Virtuális gép létrehozása és konfigurálása az Azure PowerShell-lel](create-powershell.md)
-### [Windows rendszerű virtuális gép rögzítése](capture-image.md)
-### [Virtuális merevlemez létrehozása és feltöltése a PowerShell-lel](createupload-vhd.md)
-### [Az Azure-beli virtuális gépek üzembe helyezésének automatizálása a Chef szolgáltatással](../../virtual-machines-windows-chef-automation.md)
-### [Virtuális gépek létrehozása és kezelése a Visual Studióban](manage-visual-studio.md)
-### [Webalkalmazáshoz tartozó virtuális gép létrehozása a Visual Studióban](web-app-visual-studio.md)
+### [Egyéni virtuális gép létrehozása](createportal-classic.md)
+### [Windows rendszerű virtuális gép rögzítése](capture-image-classic.md)
 ### [Számításigényes feladat futtatása Java környezetben](java-run-compute-intensive-task.md)
 ### [Django Hello World webalkalmazás](python-django-web-app.md)
 
 ## Konfigurálás
-### [Jelszó vagy távoli asztali szolgáltatás visszaállítása](../../virtual-machines-windows-reset-rdp.md)
 ### [A Symantec Endpoint Protection telepítése és konfigurálása](install-symantec.md)
 ### [A Trend Micro Deep Security telepítése és konfigurálása szolgáltatásként](install-trend.md)
-### [Rendelkezésre állási csoport konfigurálása](configure-availability.md)
-### [A klasszikus üzemi modellben létrehozott Windows-alapú virtuális gépek átméretezése](resize-vm.md)
-### [Karbantartás](planned-maintenance-schedule.md)
+### [Rendelkezésre állási csoport konfigurálása](configure-availability-classic.md)
+### [A klasszikus üzemi modellben létrehozott Windows-alapú virtuális gépek átméretezése](resize-vm-classic.md)
+### [Karbantartás](planned-maintenance-schedule-classic.md)
 
 ## Kezelés
 ### [Áttelepítés klasszikusról Resource Manager-alapú környezetbe](../../virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
-### [Virtuális gépek kezelése az Azure PowerShell-lel](manage-psh.md)
-### [További információk a virtuálisgép-ügynökről és -bővítményekről](agents-and-extensions.md)
-### [Virtuálisgép-bővítmények kezelése](manage-extensions.md)
-### [Egyéni parancsfájl-bővítmény virtuális gépek számára](extensions-customscript.md)
-### [Egyéni adatok betöltése Azure virtuális gépbe](inject-custom-data.md)
-
-## Felkészülés
-### [További információk a rendszerképekről](about-images.md)
-### [A virtuális gépek mérete](../../virtual-machines-windows-sizes.md)
-### [Az Azure-beli virtuális gépek tervezett karbantartása](../../virtual-machines-windows-planned-maintenance.md)
-### [Az Azure infrastruktúra-szolgáltatások megvalósítási irányelvei](../../virtual-machines-windows-infrastructure-subscription-accounts-guidelines.md)
+### [Virtuális gépek kezelése az Azure PowerShell-lel](manage-psh-classic.md)
+### [További információk a virtuálisgép-ügynökről és -bővítményekről](agents-and-extensions-classic.md)
+### [Virtuálisgép-bővítmények kezelése](manage-extensions-classic.md)
+### [Egyéni parancsfájl-bővítmény virtuális gépek számára](extensions-customscript-classic.md)
 
 ## Számítási feladatok kezelése
 ### [Nagy teljesítményű feldolgozás (HPC)](../../virtual-machines-windows-hpcpack-cluster-options.md)
@@ -66,25 +42,18 @@
 #### [Fürt létrehozása](hpcpack-cluster-powershell-script.md)
 #### [Fürt beállítása MPI-alkalmazások futtatására](hpcpack-rdma-cluster.md)
 #### [Excel és SOA típusú számítási feladatok futtatása](../../virtual-machines-windows-excel-cluster-hpcpack.md)
-#### [Piactéri rendszerképet használó átjárócsomópont létrehozása](../../virtual-machines-windows-hpcpack-cluster-headnode.md)
+#### [Marketplace-ről származó rendszerképet használó átjárócsomópont létrehozása](../../virtual-machines-windows-hpcpack-cluster-headnode.md)
 #### [Helyszíni feladatok küldése az Azure-ba](../../virtual-machines-windows-hpcpack-cluster-submit-jobs.md)
-### [MongoDB](install-mongodb.md)
 ### [MySQL](mysql-2008r2.md)
-### [Oracle](../../workloads/oracle/oracle-considerations.md)
-### [SAP](sap-get-started.md)
-### [SQL Server](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
 ### [Tomcat](java-run-tomcat-app-server.md)
 
 ## Hibaelhárítás
-### [Távoli asztali kapcsolatok](../../virtual-machines-windows-troubleshoot-rdp-connection.md)
-####[Távoli asztali kapcsolatok problémáinak részletes hibaelhárítási lépései](../../virtual-machines-windows-detailed-troubleshoot-rdp.md)
-### [Hozzáférés alkalmazáshoz](../../virtual-machines-windows-troubleshoot-app-connection.md)
 ### [Klasszikus üzembe helyezési hibák új virtuális gép létrehozásakor](troubleshoot-deployment-new-vm.md)
 ### [Klasszikus üzembe helyezési hibák meglévő virtuális gép újraindításakor vagy átméretezésekor](virtual-machines-windows-classic-restart-resize-error-troubleshooting.md)
 ### [RDP-jelszó visszaállítása](reset-rdp.md)
 ### [Virtuális merevlemez csatlakoztatása a hibaelhárító virtuális géphez](troubleshoot-recovery-disks-portal.md)
 
-# Referencia
+# Hivatkozás
 ## [Azure PowerShell](/powershell/azure/overview)
 ## [Azure CLI](/cli/azure/vm)
 ## [Java](/java/api)
@@ -95,7 +64,7 @@
 ## [Hálózati REST](https://msdn.microsoft.com/library/jj157182.aspx)
 ## [Tárolási REST](https://msdn.microsoft.com/library/ee460790.aspx)
 
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=compute)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)

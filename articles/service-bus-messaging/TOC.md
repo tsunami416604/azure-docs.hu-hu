@@ -64,6 +64,7 @@
 #### [Entitások láncolása automatikus továbbítással](service-bus-auto-forwarding.md)
 #### [Tranzakciófeldolgozás](service-bus-transactions.md)
 #### [Párosított névterek implementációja](service-bus-paired-namespaces.md)
+### [Átfogó nyomkövetés és diagnosztika](service-bus-end-to-end-tracing.md)
 ## Kezelés
 ### [Service Bus monitorozása az Azure Monitoring segítségével](service-bus-metrics-azure-monitor.md)
 ### [Service Bus felügyeleti könyvtárak](service-bus-management-libraries.md)
@@ -78,7 +79,7 @@
 #### 
 ### [Az Azure PowerShell használata entitások üzembe helyezésére](service-bus-manage-with-ps.md)
 
-# Referencia
+# Hivatkozás
 ## .NET
 ### [Microsoft.ServiceBus.Messaging (.NET-keretrendszer)](/dotnet/api/microsoft.servicebus.messaging)
 ### [Microsoft.Azure.ServiceBus (.NET Standard)](/dotnet/api/microsoft.azure.servicebus)

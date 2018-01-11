@@ -44,6 +44,7 @@
 ### [Felhasználói profilok kezelése](active-directory-users-profile-azure-portal.md)
 ### [Fiókok megosztása](active-directory-sharing-accounts.md)
 ### [Felhasználók hozzárendelése rendszergazdai szerepkörökhöz ](active-directory-users-assign-role-azure-portal.md)
+### [Törölt felhasználó visszaállítása](active-directory-users-restore.md)
 ### [Vendég felhasználók hozzáadása másik címtárból (B2B)](active-directory-b2b-what-is-azure-ad-b2b.md)
 #### [B2B-felhasználók rendszergazdák általi hozzáadása](active-directory-b2b-admin-add-users.md)
 #### [B2B-felhasználók infomunkások általi hozzáadása](active-directory-b2b-iw-add-users.md)
@@ -108,7 +109,7 @@
 #### [Nevesített helyek konfigurálása](active-directory-named-locations.md)
 #### [Tevékenységjelentések keresése](active-directory-reporting-migration.md)
 #### [Az Azure Active Directory Power BI-tartalomcsomag használata](active-directory-reporting-power-bi-content-pack-how-to.md)
-### Referencia
+### Hivatkozás
 #### [Megőrzés](active-directory-reporting-retention.md)
 #### [Késések](active-directory-reporting-latencies-azure-portal.md)
 #### [Értesítések](active-directory-reporting-notifications.md)
@@ -342,7 +343,7 @@
 ### [PoC-útmutató: Építőelemek](active-directory-playbook-building-blocks.md)
 
 
-# Referencia
+# Hivatkozás
 ## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
 ## [Azure PowerShell-parancsmagok](/powershell/azure/overview)
 ## [Java API-referencia](/java/api)
