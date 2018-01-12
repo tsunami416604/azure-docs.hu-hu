@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/10/2017
 ms.author: mabrigg
-ms.openlocfilehash: ed62f2f8441220eb37aea7f4c848702e9821698b
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: f88ac4da58279ea9642bd93ac5f971d8047e310b
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="add-the-windows-server-2016-vm-image-to-the-azure-stack-marketplace"></a>A Windows Server 2016 Virtuálisgép-lemezkép hozzáadása a verem Azure piactéren
 
@@ -34,11 +34,11 @@ Alapértelmezés szerint nem virtuálisgép-lemezképek érhetők el a veremben 
 
 2. Válassza ki **további szolgáltatások** > **piactér felügyeleti** > **hozzáadása az Azure-ból**. 
 
-3. Található, vagy keresse meg a **Windows Server 2016 Datacenter – Eval** lemezképet, majd válassza ki **letöltése**.
+3. Található, vagy keresse meg a **Windows Server 2016 Datacenter** lemezképet, majd válassza ki **letöltése**.
 
    ![Töltse le a lemezképet az Azure-ból](media/azure-stack-add-default-image/download-image.png)
 
-A letöltést, a kép érhető el a **piactér felügyeleti**. A kép is érhető el a **virtuális gépek**.
+A letöltést, a kép érhető el a **piactér felügyeleti**. A kép is érhető el a **számítási** és új virtuális gépek létrehozásához használható.
 
 ## <a name="add-the-image-by-using-powershell"></a>A lemezkép hozzáadása a PowerShell használatával
 
@@ -113,7 +113,7 @@ Futtassa a következő előfeltételek teljesülését, vagy a [szoftverfejleszt
       -GraphAudience $GraphAudience `
       -EnableAdfsAuthentication:$true
 
-   $TenantID = Get-AzsDirectoryTenantId `
+    $TenantID = Get-AzsDirectoryTenantId `
      -ADFS `
      -EnvironmentName "AzureStackAdmin" 
 
@@ -137,18 +137,18 @@ Győződjön meg arról, hogy a Windows Server 2016 Virtuálisgép-lemezkép van
 
 ## <a name="parameters"></a>Paraméterek
 
-|Új AzsServer2016VMImage paraméterek|Kötelező?|Leírás|
+|Új AzsServer2016VMImage paraméterek|Szükséges|Leírás|
 |-----|-----|------|
 |ISOPath|Igen|A Windows Server 2016 ISO letöltött teljes elérési útja.|
 |Net35|Nem|A .NET 3.5 futásidejű telepít a Windows Server 2016-lemezképet. Alapértelmezés szerint ez az érték értéke **igaz**.|
 |Verzió|Nem|Adja meg **Core**, **teljes**, vagy **mindkét** Windows Server 2016-lemezképeket. Alapértelmezés szerint ez az érték értéke **teljes**.|
 |VHDSizeInMB|Nem|Beállítja a mérete (MB) a virtuális merevlemez lemezképet, fel kell venni a verem Azure környezetben. Alapértelmezés szerint a értéke 40 960 MB-ra.|
 |CreateGalleryItem|Nem|Meghatározza, hogy a Piactéri elemet kell létrehozni a Windows Server 2016-lemezképet. Alapértelmezés szerint ez az érték értéke **igaz**.|
-|hely |Nem |Adja meg a helyet, amelyhez a Windows Server 2016 kép közzé kell tenni.|
-|IncludeLatestCU|Nem|A legújabb Windows Server 2016-os összesítő frissítéssel vonatkozik az új virtuális Merevlemezt.|
+|location |Nem |Adja meg a helyet, amelyhez a Windows Server 2016 kép közzé kell tenni.|
+|IncludeLatestCU|Nem|A legújabb Windows Server 2016-os összesítő frissítéssel vonatkozik az új virtuális merevlemez (Ellenőrizze a parancsfájl annak érdekében, hogy a legújabb frissítés, vagy használja a következő két lehetőség közül mutat). |
 |CUUri |Nem |A Windows Server 2016 beállítása összegző frissítés egy adott URI-ről futtatva. |
 |CUPath |Nem |Beállítja a Windows Server 2016 összegző frissítés futtatásához helyi útvonalon. Ez a beállítás akkor hasznos, ha telepítette az Azure-verem példány leválasztott környezetben.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Virtuális gép kiépítése](azure-stack-provision-vm.md)

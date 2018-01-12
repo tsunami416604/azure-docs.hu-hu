@@ -38,7 +38,9 @@
       href: event-grid-event-hubs-integration.md
     - name: Sablonok esemény-előfizetésekhez
       href: event-subscription-template.md
-- name: Referencia
+    - name: Eseménykézbesítés figyelése
+      href: monitor-event-delivery.md
+- name: Hivatkozás
   items:
     - name: Azure CLI
       href: /cli/azure/eventgrid

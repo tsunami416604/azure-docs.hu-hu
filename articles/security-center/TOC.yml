@@ -1,0 +1,190 @@
+- name: A Security Center dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Tudnivalók a Security Centerről
+      href: security-center-intro.md
+- name: Gyors útmutatók
+  expanded: true
+  items:
+    - name: Azure-előfizetések
+      href: security-center-get-started.md
+    - name: Windows rendszerű számítógépek
+      href: quick-onboard-windows-computer.md
+    - name: Linux rendszerű számítógépek
+      href: quick-onboard-linux-computer.md
+    - name: Biztonsági megoldások
+      href: quick-security-solutions.md
+- name: Oktatóanyagok
+  items:
+    - name: Biztonsági szabályzatok meghatározása
+      href: tutorial-security-policy.md
+    - name: Az erőforrások védelme
+      href: tutorial-protect-resources.md
+    - name: Reagálás incidensekre
+      href: tutorial-security-incident.md
+- name: Alapelvek
+  items:
+    - name: Engedélyek
+      href: security-center-permissions.md
+    - name: Adatbiztonság
+      href: security-center-data-security.md
+- name: Útmutatók
+  items:
+    - name: Frissítés speciális biztonsági megoldásra
+      href: security-center-onboarding.md
+    - name: Biztonsági szabályzat beállítása
+      href: security-center-policies-overview.md
+      items:
+        - name: Adatgyűjtés
+          href: security-center-enable-data-collection.md
+        - name: Szabályzatdefiníciók
+          href: security-center-policies.md
+        - name: E-mail-értesítések
+          href: security-center-provide-security-contact-details.md
+        - name: Tarifacsomag
+          href: security-center-pricing.md
+        - name: Biztonsági konfigurációk
+          href: security-center-customize-os-security-config.md
+        - name: Biztonsági szabályzat az Azure Policyval
+          href: security-center-azure-policy.md
+    - name: A biztonsági állapot figyelése
+      href: security-center-monitoring.md
+    - name: Identitás és hozzáférés
+      href: security-center-identity-access.md
+    - name: Biztonsági javaslatok megvalósítása
+      href: security-center-recommendations.md
+    - name: Számítási biztonság
+      href: security-center-virtual-machine-recommendations.md
+      items:
+        - name: Lemeztitkosítás alkalmazása
+          href: security-center-apply-disk-encryption.md
+        - name: Rendszerfrissítések alkalmazása
+          href: security-center-apply-system-updates.md
+        - name: Titkosítás engedélyezése tárfiókokon
+          href: security-center-enable-encryption-for-storage-account.md
+        - name: Virtuálisgép-ügynök engedélyezése
+          href: security-center-enable-vm-agent.md
+        - name: Endpoint Protection telepítése
+          href: security-center-install-endpoint-protection.md
+        - name: Rendszerfrissítések utáni újraindítás
+          href: 'security-center-apply-system-updates.md#reboot-after-system-updates'
+        - name: Biztonsági konfigurációk javítása
+          href: security-center-remediate-os-vulnerabilities.md
+        - name: Operációs rendszer verziójának frissítése
+          href: security-center-update-os-version.md
+        - name: A sebezhetőségi felmérés nincs telepítve
+          href: security-center-vulnerability-assessment-recommendations.md
+    - name: Hálózati biztonság
+      href: security-center-network-recommendations.md
+      items:
+        - name: Új generációs tűzfal hozzáadása
+          href: security-center-add-next-generation-firewall.md
+        - name: Hálózati biztonsági csoportok engedélyezése
+          href: security-center-enable-network-security-groups.md
+        - name: Az internetre kapcsolódó végpontok hozzáférésének korlátozása
+          href: security-center-restrict-access-through-internet-facing-endpoints.md
+        - name: Csak az újgenerációs tűzfalon keresztül haladjon a forgalom
+          href: 'security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only'
+    - name: Tárolás- és adatbiztonság
+      href: security-center-sql-service-recommendations.md
+      items:
+        - name: Naplózás és fenyegetésészlelés engedélyezése az SQL-adatbázisokon
+          href: security-center-enable-auditing-on-sql-databases.md
+        - name: Naplózás és fenyegetésészlelés engedélyezése az SQL Servereken
+          href: security-center-enable-auditing-on-sql-servers.md
+        - name: Transzparens adattitkosítás engedélyezése
+          href: security-center-enable-transparent-data-encryption.md
+    - name: Alkalmazások biztonsága
+      href: security-center-application-recommendations.md
+      items:
+        - name: Webalkalmazási tűzfal hozzáadása
+          href: security-center-add-web-application-firewall.md
+        - name: Alkalmazásvédelem véglegesítése
+          href: 'security-center-add-web-application-firewall.md#finalize-application-protection'
+    - name: Felhővédelmi funkciók
+      items:
+        - name: Igény szerinti hozzáférés
+          href: security-center-just-in-time.md
+        - name: Adaptív alkalmazásvezérlők
+          href: security-center-adaptive-application.md
+    - name: Biztonsági megoldások kezelése
+      href: security-center-partner-integration.md
+      items:
+        - name: Csatlakoztatott megoldások
+          href: security-center-partner-solutions.md
+        - name: A Microsoft ATA csatlakoztatása
+          href: security-center-ata-integration.md
+        - name: Az Azure AD Identity Protection csatlakoztatása
+          href: security-center-aadip-integration.md
+    - name: Fenyegetések vizsgálata
+      href: security-center-detection-capabilities.md
+      items:
+        - name: Biztonsági riasztások
+          href: security-center-managing-and-responding-alerts.md
+        - name: Biztonsági incidensek
+          href: security-center-incident.md
+        - name: Fenyegetésekkel kapcsolatos jelentések
+          href: security-center-threat-report.md
+        - name: Riasztástípusok
+          href: security-center-alerts-type.md
+        - name: Egyéni riasztások
+          href: security-center-custom-alert.md
+        - name: Riasztások érvényesítése
+          href: security-center-alert-validation.md
+        - name: Fenyegetésfelderítési térkép
+          href: security-center-threat-intel.md
+        - name: Vizsgálat
+          href: security-center-investigation.md
+    - name: Automatizálás és vezénylés
+      items:
+        - name: Logic Apps-forgatókönyvek
+          href: security-center-playbooks.md
+        - name: Események megtekintése
+          href: security-center-events-dashboard.md
+        - name: Keresés
+          href: security-center-search.md
+    - name: Azure-naplók integrációja
+      href: security-center-integrating-alerts-with-log-integration.md
+    - name: Forgatókönyvek
+      items:
+        - name: Incidensmegoldás
+          href: security-center-incident-response.md
+        - name: Javaslatok használata a biztonság növelése érdekében
+          href: security-center-using-recommendations.md
+    - name: Hibaelhárítás
+      href: security-center-troubleshooting-guide.md
+- name: Hivatkozás
+  items:
+    - name: REST API-k
+      href: 'https://msdn.microsoft.com/library/mt704034(Azure.100).aspx'
+- name: További források
+  items:
+    - name: GYIK
+      href: security-center-faq.md
+    - name: Támogatott platformok
+      href: security-center-os-coverage.md
+    - name: Platformok migrálása
+      href: security-center-platform-migration.md
+    - name: Platformok migrálásával kapcsolatos gyakori kérdések
+      href: security-center-platform-migration-faq.md
+    - name: Tervezés és műveletek
+      href: security-center-planning-and-operations-guide.md
+    - name: Azure Security
+      href: /azure/security/
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: Készültségi ütemterv
+      href: security-center-readiness-roadmap.md
+    - name: 'Azure biztonsági, adatvédelmi és megfelelőségi blog'
+      href: 'http://blogs.msdn.com/b/azuresecurity/'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/search?q=security-center'
+    - name: Videók
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=security-center'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/security-center/'
+    - name: Szolgáltatási hírek
+      href: 'https://azure.microsoft.com/updates/?product=security-center'
+    - name: Régiónkénti rendelkezésre állás
+      href: 'https://azure.microsoft.com/regions/services/'
