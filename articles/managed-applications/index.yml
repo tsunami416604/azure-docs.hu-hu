@@ -13,11 +13,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 10/25/2017
   ms.author: tomfitz
-  ms.openlocfilehash: a51f2d028dc09bfe8d58357d2ade7c3dfa6e3fef
-  ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+  ms.openlocfilehash: 85f4d5d37dabfa5a8781a4f9ed0fb52d7c6e0297
+  ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 12/08/2017
+  ms.lasthandoff: 01/12/2018
 abstract:
   description: "Az Azure felügyelt alkalmazásokkal belső és külső ügyfeleinek is kínálhat felhőalapú megoldásokat. Meghatározhatja a megoldás infrastruktúráját és folyamatos felügyelet feltételeit. Megoldásának számlázása az Azure-számlázáson keresztül kezelhető."
 sections:
@@ -37,11 +37,11 @@ sections:
   - type: paragraph
     text: "Ismerje meg, hogyan fejleszthet felügyelt alkalmazásokat, illetve hogyan kínálhatja azokat az Azure Marketplace-en keresztül."
   - type: list
-    style: unordered
-    className: spaced noBullet
+    style: ordered
     items:
     - html: "<a href=\"/azure/managed-applications/publish-service-catalog-app\">Felügyelt alkalmazás közzététele belső felhasználók számára</a>"
-- title: Referencia
+    - html: "<a href=\"/azure/managed-applications/publish-marketplace-app\">Felügyelt alkalmazás közzététele külső felhasználók számára</a>"
+- title: "Hivatkozás"
   items:
   - type: list
     style: cards

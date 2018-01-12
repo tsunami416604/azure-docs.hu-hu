@@ -12,6 +12,8 @@
   items:
     - name: Felügyelt alkalmazásfájlok létrehozása
       href: publish-service-catalog-app.md
+    - name: Piactéren elérhető alkalmazás létrehozása
+      href: publish-marketplace-app.md
 - name: Példák
   items:
     - name: Azure CLI
@@ -28,7 +30,7 @@
       href: update-managed-resources.md
     - name: Közzététel a portál használatával
       href: publish-portal.md
-- name: Referencia
+- name: Hivatkozás
   items:
     - name: Azure CLI
       href: /cli/azure/managedapp
@@ -69,13 +71,13 @@
               href: microsoft-network-publicipaddresscombo.md
             - name: VirtualNetworkCombo
               href: microsoft-network-virtualnetworkcombo.md
-        - name: Storage
+        - name: Tárolás
           items:
             - name: MultiStorageAccountCombo
               href: microsoft-storage-multistorageaccountcombo.md
             - name: StorageAccountSelector
               href: microsoft-storage-storageaccountselector.md
-- name: Erőforrások
+- name: További források
   items:
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'
