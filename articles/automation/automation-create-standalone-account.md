@@ -11,14 +11,14 @@ ms.service: automation
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 08/18/2017
 ms.author: magoedte
-ms.openlocfilehash: dc4bfa4a94eaa2fb4e0e821c4931dcd1963f3109
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
-ms.translationtype: HT
+ms.openlocfilehash: 0397b45753ea64d1a33916d5e0dff12d6e1d80aa
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Önálló Azure Automation-fiók létrehozása
 Ez a témakör bemutatja, hogyan hozhat létre Automation-fiókot az Azure Portalról, ha szeretné kipróbálni és megismerni az Azure Automationt anélkül, hogy más felügyeleti megoldásokat vagy OMS Log Analytics-integrációt venne igénybe a runbook-feladatok hatékonyabb figyeléséhez.  A felügyeleti megoldások, illetve a Log Analytics-integráció a későbbiekben bármikor igénybe vehetőek.  Az Automation-fiókkal hitelesítheti az Azure Resource Managerben vagy a klasszikus Azure üzemelő példányokon lévő erőforrásokat kezelő runbookokat.
@@ -85,7 +85,7 @@ Az alábbi táblázat a klasszikus futtató fiókhoz kapcsolódó erőforrásoka
 | AzureClassicRunAsConnection |Automatikusan létrejövő kapcsolatobjektum, amely Azure-hitelesítésre használható, így a klasszikus Azure-erőforrások is kezelhetők a forgatókönyvekből. |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információk a grafikus létrehozásról: [Grafikus létrehozás az Azure Automationben](automation-graphical-authoring-intro.md).
 * A PowerShell-forgatókönyvek használatának megismeréséhez tekintse meg a következőt: [Az első PowerShell-runbookom](automation-first-runbook-textual-powershell.md).
 * A PowerShell-alapú munkafolyamat-runbookok első lépéseit [Az első PowerShell-alapú munkafolyamat-runbookom](automation-first-runbook-textual.md) című témakör ismerteti.

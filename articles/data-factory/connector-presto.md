@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: jingwang
-ms.openlocfilehash: 80a0b0d1ef23dad55e2c2bb54825a8db3dfbbf1f
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 9d272072ce77aca159edb36a6b7a78c94aee476d
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-presto-using-azure-data-factory-beta"></a>Adatok másolása az Azure Data Factory (béta) használatával Presto
 
@@ -35,9 +35,9 @@ Adatok bármely támogatott fogadó adattárolóhoz Presto másolhatja. Adattár
 
 Az Azure Data Factory kapcsolódásának engedélyezése beépített illesztőprogramot tartalmaz, ezért nem szükséges manuálisan kell telepítenie minden olyan illesztőprogram ezt az összekötőt használja.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 
-A másolási tevékenység során .NET SDK, a Python SDK, az Azure PowerShell, a REST API-t vagy a Azure Resource Manager-sablon használatával hozhat létre egy folyamatot. Lásd: [másolási tevékenység oktatóanyag](quickstart-create-data-factory-dot-net.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját.
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 A következő szakaszok részletesen bemutatják való Presto összekötő adat-előállító tartozó entitások meghatározásához használt tulajdonságokat.
 
@@ -48,7 +48,7 @@ A következő tulajdonságok Presto kapcsolódó szolgáltatás támogatottak:
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **Presto** | Igen |
-| állomás | A kiszolgáló IP-címét vagy állomásnevét kiszolgálónevét a Presto. (azaz 192.168.222.160)  | Igen |
+| gazdagép | A kiszolgáló IP-címét vagy állomásnevét kiszolgálónevét a Presto. (azaz 192.168.222.160)  | Igen |
 | OWA | A Presto server verziója. (azaz 0.148-t)  | Igen |
 | katalógus | A kiszolgáló felé irányuló összes kérését a katalógus környezetben.  | Igen |
 | port | A TCP-portot, amelyen a Presto kiszolgáló ügyfélkapcsolatokat. Az alapértelmezett érték: 8080-as.  | Nem |
@@ -152,5 +152,5 @@ Adatok másolása Presto, állítsa be a forrás típusa a másolási tevékenys
 ]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats).

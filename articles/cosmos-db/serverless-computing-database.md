@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
 ms.author: mimig
-ms.openlocfilehash: 39481322d88a7674fce712dc24ef1f32f627f3cc
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: aeef39294bbf3ad4192fe116c6972e52bfa1c816
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Az Azure Cosmos DB: Kiszolgáló nélküli adatbázis számítási Azure Functions használatával
 
@@ -153,7 +153,7 @@ Most tegyük csatlakozás Azure Cosmos adatbázis és az Azure Functions Ha val�
 * [Egy Azure Cosmos DB eseményindító létrehozása az Azure portálon](https://aka.ms/cosmosdbtriggerportalfunc)
 * [Az Azure Functions HTTP-eseményindítóval hozzon létre egy Azure Cosmos DB bemeneti kötése](https://aka.ms/cosmosdbinputbind)
 * [Az Azure Functions és Cosmos DB strukturálatlan adatok tárolásához](../azure-functions/functions-integrate-store-unstructured-data-cosmosdb.md)
-* [Az Azure Cosmos DB kötései és eseményindítók](../azure-functions/functions-bindings-documentdb.md)
+* [Az Azure Cosmos DB kötései és eseményindítók](../azure-functions/functions-bindings-cosmosdb.md)
 
 
  

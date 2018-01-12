@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2017
 ms.author: jingwang
-ms.openlocfilehash: 2b6219dc509b1af8f196f056b489a31fa331acaf
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 844efa74aba8a5dbc3a116456900d59dab3bafab
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>Adatok másolása az Azure Search-index Azure Data Factory használatával
 
@@ -34,8 +34,9 @@ Ez a cikk ismerteti, hogyan használható a másolási tevékenység során az A
 
 Bármely támogatott forrás adattár adatok átmásolhatja az Azure Search-index. Adattároló források/mosdók, a másolási tevékenység által támogatott listájáért lásd: a [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
-## <a name="getting-started"></a>Bevezetés
-A másolási tevékenység során .NET SDK, a Python SDK, az Azure PowerShell, a REST API-t vagy a Azure Resource Manager-sablon használatával hozhat létre egy folyamatot. Lásd: [másolási tevékenység oktatóanyag](quickstart-create-data-factory-dot-net.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját.
+## <a name="getting-started"></a>Első lépések
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 A következő szakaszok részletesen bemutatják megadhatók a Data Factory tartozó entitások Azure Search-összekötőhöz használt tulajdonságokat.
 
@@ -46,7 +47,7 @@ Csatolt Azure Search szolgáltatás támogatott a következő tulajdonságokkal:
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **AzureSearch** | Igen |
-| URL-címe | Az Azure Search szolgáltatás URL-címe. | Igen |
+| url | Az Azure Search szolgáltatás URL-címe. | Igen |
 | kulcs | Az Azure Search szolgáltatás adminisztrációs kulcsot. Ez a mező megjelölése a SecureString. | Igen |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhat Azure integrációs futásidejű vagy Self-hosted integrációs futásidejű (amennyiben az adattároló magánhálózaton található). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
 
@@ -180,5 +181,5 @@ Az alábbi táblázat felsorolja, hogy az Azure Search adattípus támogatott-e,
 | Karakterlánc-tömbben | N |
 | GeographyPoint | N |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md##supported-data-stores-and-formats).

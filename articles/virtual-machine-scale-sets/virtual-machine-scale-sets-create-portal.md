@@ -1,5 +1,5 @@
 ---
-title: "Hozzon létre egy Linux virtuálisgép-méretezési beállítása az Azure portálon |} Microsoft Docs"
+title: "Egy virtuálisgép-méretezési készlet létrehozása az Azure portálon |} Microsoft Docs"
 description: "Ismerje meg, hogyan hozhat létre gyorsan egy virtuálisgép-méretezési az Azure-portálon"
 keywords: "Virtuálisgép-méretezési csoportok"
 services: virtual-machine-scale-sets
@@ -17,14 +17,14 @@ ms.topic: article
 ms.date: 12/19/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fa6bf6b34d8b93ffa9aceaf7c6112c63d4cb9f1c
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: a501a852a317ec7d087904c3a675ebefce1bece0
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Egy virtuálisgép-méretezési készlet létrehozása az Azure portálon
-A virtuálisgép-méretezési csoport lehetővé teszi, telepítéséhez és kezeléséhez azonos, az automatikus skálázást virtuális gépek halmazát jelenti. A méretezési csoportban lévő virtuális gépek száma manuálisan méretezhető, vagy szabályokat definiálhat, például a Processzor, memória igény szerint vagy a hálózati forgalom erőforrás-használat alapján automatikus skálázást. Első lépések cikkben hozzon létre egy virtuálisgép-méretezési beállítása az Azure portálon. Is létrehozhat egy méretezési állítható be a [Azure CLI 2.0](virtual-machine-scale-sets-create-cli.md) vagy [Azure PowerShell](virtual-machine-scale-sets-create-powershell.md).
+A virtuálisgép-méretezési csoportok segítségével azonos, automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti. A méretezési csoportban lévő virtuális gépek számát skálázhatja manuálisan, vagy megadhat automatikus skálázási szabályokat is az erőforrás-használat (például processzorhasználat, memóriaigény vagy hálózati forgalom) alapján. Első lépések cikkben hozzon létre egy virtuálisgép-méretezési beállítása az Azure portálon. Is létrehozhat egy méretezési állítható be a [Azure CLI 2.0](virtual-machine-scale-sets-create-cli.md) vagy [Azure PowerShell](virtual-machine-scale-sets-create-powershell.md).
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -76,8 +76,8 @@ Már nem szükséges, törölje a csoportot, ha a virtuális gépek méretezési
 
 
 ## <a name="next-steps"></a>További lépések
-Első lépések cikkben egy alapszintű méretezési készletben az Azure-portálon létrehozott. A jobb méretezhetőség és automatizálás bontsa ki a skála állítható be a következő útmutatók:
+Első lépések cikkben egy alapszintű méretezési készletben az Azure-portálon létrehozott. A nagyobb méretezhetőség és automatizáció érdekében bővítse méretezési csoportját az alábbi útmutatók segítségével:
 
-- [A virtuálisgép-méretezési csoportok az alkalmazás központi telepítése](virtual-machine-scale-sets-deploy-app.md)
-- Automatikusan átméretezi [Azure PowerShell](virtual-machine-scale-sets-autoscale-powershell.md), a [Azure CLI](virtual-machine-scale-sets-autoscale-cli.md), vagy a [Azure-portálon](virtual-machine-scale-sets-autoscale-portal.md)
-- [Automatikus OS frissítéseket használja a méretezési készlet Virtuálisgép-példányok](virtual-machine-scale-sets-automatic-upgrade.md)
+- [Alkalmazások üzembe helyezése virtuálisgép-méretezési csoportokon](virtual-machine-scale-sets-deploy-app.md)
+- Automatikus méretezés az [Azure PowerShell](virtual-machine-scale-sets-autoscale-powershell.md), az [Azure CLI](virtual-machine-scale-sets-autoscale-cli.md), illetve az [Azure Portal](virtual-machine-scale-sets-autoscale-portal.md) használatával.
+- [Az operációs rendszer automatikus frissítéseinek használata a méretezési csoport virtuálisgép-példányain](virtual-machine-scale-sets-automatic-upgrade.md)

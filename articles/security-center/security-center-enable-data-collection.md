@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/11/2017
+ms.date: 01/11/2018
 ms.author: terrylan
-ms.openlocfilehash: 226fc82abf7aa24a0aa1bd3c21279158e1ce8e95
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 138611c8e476ba267c9111a33bd83e1db0672a7d
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="data-collection-in-azure-security-center"></a>Adatgyűjtés az Azure Security Centerben
 A Security Center az Azure virtuális gépek (VM) és a nem Azure számítógépek számára figyeli, hogy a biztonsági réseket és a fenyegetések adatait gyűjti. Adatgyűjtés használata a Microsoft Monitoring Agent, különböző biztonsági konfigurációkat és Eseménynapló beolvassa a számítógépről, és másolja az adatokat a munkaterületre elemzés céljából. A gyűjtött adatok például a következők: az operációs rendszer típusa és verziója, az operációs rendszer naplói (Windows-eseménynaplók), a futó folyamatok, a gép neve, az IP-címek, a bejelentkezett felhasználó és a bérlő azonosítója. A Microsoft Monitoring Agent összeomlási memóriaképek is másolja a munkaterületre.
@@ -40,7 +40,7 @@ Az a Microsoft Monitoring Agent automatikus kiépítés engedélyezéséhez:
 
 ![Automatikus kiépítés engedélyezése][1]
 
-## <a name="default-workspace-configuration"></a>Alapértelmezett munkaterület konfigurálása
+## <a name="default-workspace-configuration"></a>Alapértelmezett munkaterület-konfiguráció
 A Security Center által gyűjtött adatok Naplóelemzési munkaterületek tárolja.  Adatok összegyűjtése az Azure virtuális gépek munkaterületek Security Center által létrehozott vagy egy meglévő munkaterületen létrehozott tárolt választhatja.
 
 A meglévő Naplóelemzési munkaterület használata:
@@ -90,14 +90,24 @@ A Security Center csökkentheti a események mennyiségének elég események vi
 
 Az eseményeket, fog tartozni meghatározásához a **közös** és **minimális** események, ezért előre az ügyfelek és az ipari szabványok további információt a szűretlen gyakran jelennek meg minden esemény és használatát. Ez a folyamat a következő irányelveket is használt:
 
-- **Minimális** -győződjön meg arról, hogy ez csak a sikeres biztonsági szabályok megsértésére utaló események és a fontos eseményeket, amelyek rendelkeznek egy nagyon kis terjedelmű tartalmazza-e. Például a felhasználó sikeres és sikertelen bejelentkezés (esemény azonosítók 4624 4625) tartalmazza, de nem tartalmaz jelentkezzen ki, amely fontos a naplózáshoz, de nem értelmezhető az észlelést, és viszonylag nagy mennyiségű. Ezen adatok mennyisége a legtöbb a bejelentkezési eseményeket és a folyamat létrehozásának esemény (event ID 4688).
+- **Minimális** -győződjön meg arról, hogy ez csak a sikeres biztonsági szabályok megsértésére utaló események és a fontos eseményeket, amelyek rendelkeznek egy nagyon kis terjedelmű tartalmazza-e. Például a felhasználó sikeres és sikertelen bejelentkezés (esemény azonosítók 4624 4625) tartalmazza, de nem tartalmaz jelentkezzen ki, amely fontos a naplózáshoz, de nem értelmezhető az észlelést, és viszonylag nagy mennyiségű. Ezen adatok mennyisége a legtöbb a bejelentkezési eseményeket és a folyamat létrehozásának esemény (event ID 4688, tekintse meg a Security Center [gyakran ismételt kérdések](security-center-faq.md#what-happens-when-data-collection-is-enabled) folyamat létrehozása esemény 4688 olvashat).
 - **Közös** -adjon meg egy teljes felhasználói napló ebben a készletben. Ebben a készletben például felhasználói bejelentkezést és a felhasználó kijelentkezése (event ID 4634) tartalmazza. Például a biztonsági csoport módosításait, kulcs tartományvezérlő Kerberos műveleteiről és az eseményeket, amelyek a szervezetek által ajánlott műveletek naplózása magában foglalja.
 
 A közös állítja be a fő kifejlesztésének kiválasztása az eseményekre is csökkenthető a, és nem meghatározott események kiszűrésére foglalt eseményeket, amelyek nagyon alacsony.
 
 A biztonsági és alkalmazás tároló eseményazonosítót minden teljes részletes információkat a következő:
 
-   ![Eseményazonosítók][4]
+| Adatszint | Összegyűjtött esemény mutatók |
+| --- | --- |
+| minimális | 1102,4624,4625,4657,4663,4688,4700,4702,4719,4720,4722,4723,4724,4727,4728,4732,4735,4737,4739,4740,4754,4755, |
+| | 4756,4767,4799,4825,4946,4948,4956,5024,5033,8001,8002,8003,8004,8005,8006,8007,8222 |
+| Közös (alapértelmezett) | 1,299,300,324,340,403,404,410,411,412,413,431,500,501,1100,1102,1107,1108,4608,4610,4611,4614,461,4622, |
+| |  4624,4625,4634,4647,4648,4649,4657,4661,4662,4663,4665,4666,4667,4688,4670,4672,4673,4674,4675,4689,4697, |
+| | 4700,4702,4704,4705,4716,4717,4718,4719,4720,4722,4723,4724,4725,4726,4727,4728,4729,4733,4732,4735,4737, |
+| | 4738,4739,4740,4742,4744,4745,4746,4750,4751,4752,4754,4755,4756,4757,4760,4761,4762,4764,4767,4768,4771, |
+| | 4774,4778,4779,4781,4793,4797,4798,4799,4800,4801,4802,4803,4825,4826,4870,4886,4887,4888,4893,4898,4902, |
+| | 4904,4905,4907,4931,4932,4933,4946,4948,4956,4985,5024,5033,5059,5136,5137,5140,5145,5632,6144,6145,6272, |
+| | 6273,6278,6416,6423,6424,8001,8002,8003,8004,8005,8006,8007,8222,26401,30004 |
 
 A szűrési házirend kiválasztása:
 1. Az a **biztonsági házirend & beállítások** panelen válassza ki a szűrési házirendet a **biztonsági események**.
@@ -121,7 +131,7 @@ Automatikus kiépítés erőforrásokból bármikor ezt a beállítást, a bizto
 3. A a **biztonsági szabályzat – adatgyűjtés** panelen, a **bevezetési** válasszon **ki** automatikus kiépítés letiltása.
 4. Kattintson a **Mentés** gombra.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez a cikk bemutatta, hogyan gyűjti az adatokat, és a Security Center works automatikus kiépítés. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Biztonsági szabályzatok beállítása az Azure Security Centerben](security-center-policies.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
@@ -137,6 +147,5 @@ Ez a cikk bemutatta, hogyan gyűjti az adatokat, és a Security Center works aut
 [1]: ./media/security-center-enable-data-collection/enable-automatic-provisioning.png
 [2]: ./media/security-center-enable-data-collection/use-another-workspace.png
 [3]: ./media/security-center-enable-data-collection/reconfigure-monitored-vm.png
-[4]: ./media/security-center-enable-data-collection/event-id.png
 [5]: ./media/security-center-enable-data-collection/data-collection-tiers.png
 [6]: ./media/security-center-enable-data-collection/disable-automatic-provisioning.png

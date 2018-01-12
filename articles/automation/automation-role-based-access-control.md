@@ -10,16 +10,16 @@ keywords: "automation rbac, szerepköralapú hozzáférés-vezérlés, azure rba
 ms.assetid: 04b5625e-0ee8-4b5b-85cd-7734c1b3d4a3
 ms.service: automation
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/30/2016
 ms.author: magoedte;sngun
-ms.openlocfilehash: 59ec4000645583b8cd35f7e8e475b95ea5499232
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
-ms.translationtype: HT
+ms.openlocfilehash: 9a115301e173b3d5cb3a4ac527ed1b01bc9cc421
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Szerepköralapú hozzáférés-vezérlés az Azure Automationben
 ## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
@@ -225,7 +225,7 @@ A szerepköralapú hozzáférés konfigurálható egy Automation-fiókra az alá
 
 A fenti példákban cserélje ki a **bejelentkezési azonosítót**, az **előfizetés azonosítóját**, az **erőforráscsoport nevét** és az **Automation-fiók nevét** a saját fiókja adataira. Ha a rendszer rákérdez, hogy tényleg szeretné-e törölni a szerepkör-hozzárendelést, kattintson az **Igen** gombra.   
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Az RBAC for Azure Automation konfigurálásának különböző módjaira vonatkozó további információért lásd [az RBAC Azure PowerShellel folytatott kezelésével](../active-directory/role-based-access-control-manage-access-powershell.md) foglalkozó témakört.
 * További információk a forgatókönyvek elindításának különböző módjairól: [Forgatókönyv elindítása](automation-starting-a-runbook.md).
 * További információk a különböző forgatókönyv-típusokról: [Az Azure Automation forgatókönyveinek típusai](automation-runbook-types.md)

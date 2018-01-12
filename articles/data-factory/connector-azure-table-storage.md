@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: jingwang
-ms.openlocfilehash: 0275a7b3965a7691ae396c9dbb2f164a9a47a3d4
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: 9aa0a1ed7bb07609e087e82d64f5f1c80bb590d9
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-to-or-from-azure-table-using-azure-data-factory"></a>Másolja az adatokat, vagy az Azure Data Factory használatához Azure táblából
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -36,7 +36,8 @@ Adatok másolása az egyetlen támogatott forrás adattár az Azure Table vagy a
 Pontosabban, az Azure Table-összekötő támogatja az adatok másolását a szolgáltatást is használja **fiókkulcs** és **szolgáltatás SAS** (közös hozzáférésű Jogosultságkód) hitelesítés.
 
 ## <a name="get-started"></a>Bevezetés
-A másolási tevékenység során .NET SDK, a Python SDK, az Azure PowerShell, a REST API-t vagy a Azure Resource Manager-sablon használatával hozhat létre egy folyamatot. Lásd: [másolási tevékenység oktatóanyag](quickstart-create-data-factory-dot-net.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját.
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 A következő szakaszok részletesen bemutatják való Azure Table Storage a Data Factory tartozó entitások meghatározásához használt tulajdonságokat.
 

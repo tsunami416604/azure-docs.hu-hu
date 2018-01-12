@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: renash
-ms.openlocfilehash: 32e33d5fe99d884801e451b8f7e7989f979074e3
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: 0a87f8572af2620420faa0e3c2e575aa8add42ab
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="use-azure-files-with-linux"></a>Az Azure Files használata Linux
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure fájlmegosztások a Linux terjesztéseket segítségével lehet csatlakoztatni az [CIFS kernel ügyfél](https://wiki.samba.org/index.php/LinuxCIFS). Ez a cikk bemutatja egy Azure fájlmegosztás csatlakoztatásához kétféleképpen: az igény a `mount` parancs és a rendszerindítási bejegyzés létrehozásával `/etc/fstab`.
@@ -97,8 +97,11 @@ Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használhat
 3. **Az alábbi parancs segítségével az alábbi sor hozzáfűzése `/etc/fstab`** : ne felejtse el lecserélni `<storage-account-name>`, `<share-name>`, és `<storage-account-key>` a megfelelő adatokkal.
 
     ```
-    sudo bash -c 'echo "//<storage-account-name>.file.core.windows.net/<share-name> /mymountpoint cifs vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
+    sudo bash -c 'echo "//<storage-account-name>.file.core.windows.net/<share-name> /mymountpoint cifs nofail,vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
     ```
+
+> [!Note]  
+> Győződjön meg arról, hogy hozzáadta a `nofail` beállítást a `/etc/fstab` bejegyzést, egyébként pedig a virtuális gép lefagyhat egy helytelen beállítás vagy egyéb hiba esetén a rendszerindítás során az Azure fájlmegosztás csatlakoztatása.
 
 > [!Note]  
 > Használhat `sudo mount -a` módosítása után az Azure fájlmegosztás csatlakoztatásához `/etc/fstab` újraindítása helyett.

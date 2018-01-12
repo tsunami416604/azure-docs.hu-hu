@@ -3,7 +3,7 @@ title: "Hozzáférés engedélyezése az Azure SQL Database-hez | Microsoft Docs
 description: "A Microsoft Azure SQL Database hozzáférésének engedélyezésére vonatkozó tudnivalók."
 services: sql-database
 documentationcenter: 
-author: BYHAM
+author: CarlRabeler
 manager: jhubbard
 editor: 
 tags: 
@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 02/06/2017
-ms.author: rickbyh
-ms.openlocfilehash: 79281de7a644af79092efd7ba52c03f687d9d029
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.author: carlrab
+ms.openlocfilehash: 28c1ec79752f822939fefe6ce3686ace8ad1b6b0
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="azure-sql-database-access-control"></a>Az Azure SQL Database hozzáférés-vezérlése
 A biztonság garantálása érdekében az SQL Database IP-cím alapján történő kapcsolatkorlátozást érvényesítő tűzfalszabályokkal, a felhasználói identitás igazolását megkövetelő hitelesítési mechanizmusokkal, illetve csak bizonyos műveletek és adatok elérését lehetővé tévő engedélyezési mechanizmusokkal vezérli a hozzáférést. 
@@ -35,7 +35,7 @@ Az Azure SQL Database szolgáltatás kizárólag a 1433-as TCP-porton keresztül
 
 A kapcsolódási folyamat részeként az Azure virtuális gépektől érkező kapcsolatok az egyes feldolgozói szerepkörök egyedi IP-címeire és portjaira lesznek átirányítva. A portszám a 11000-től 11999-ig terjedő tartományban található. További információ a TCP-portok: [kívüli ADO.NET 4.5 és SQL Database2 1433-as portokon](sql-database-develop-direct-route-ports-adonet-v12.md).
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
 Az SQL Database két hitelesítési típust támogat:
 
@@ -60,7 +60,7 @@ A `master` adatbázishoz általában csak a rendszergazdáknak kell hozzáférni
 * Az [adatmaszkolás](sql-database-dynamic-data-masking-get-started.md) használatával korlátozhatja a bizalmas adatok megjelenítését.
 * A [tárolt eljárások](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) segítségével korlátozhatja az adatbázisban végezhető műveleteket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az SQL Database biztonsági szolgáltatásairól [az SQL biztonsági szolgáltatásainak áttekintése](sql-database-security-overview.md) biztosít további információkat.
 - Tűzfalszabályok kapcsolatos további információkért lásd: [tűzfal-szabályok](sql-database-firewall-configure.md).

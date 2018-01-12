@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: ab9e7b1b287be408f2d53ea005bad3815dc45f83
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: a8d0cf5e50fdc31aef110c359713be32fc09c8a7
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>Másolja az adatokat, vagy az Azure Data Factory használatához Azure Cosmos-Adatbázisból
 
@@ -41,8 +41,9 @@ Konkrétan ez Azure Cosmos DB az összekötő támogatja:
 
 Másolja a dokumentumokat-van/JSON-fájlokat vagy egy másik Cosmos DB gyűjteményhez, lásd: [Import/Export JSON-dokumentumok](#importexport-json-documents).
 
-## <a name="getting-started"></a>Bevezetés
-A másolási tevékenység során .NET SDK, a Python SDK, az Azure PowerShell, a REST API-t vagy a Azure Resource Manager-sablon használatával hozhat létre egy folyamatot. Lásd: [másolási tevékenység oktatóanyag](quickstart-create-data-factory-dot-net.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját.
+## <a name="getting-started"></a>Első lépések
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 A következő szakaszok részletesen bemutatják való Azure Cosmos DB Data Factory tartozó entitások meghatározásához használt tulajdonságokat.
 
@@ -213,5 +214,5 @@ A séma-független másolat eléréséhez:
 - A Cosmos DB adatkészlet(ek), ne adja meg a "structure" szakasz; és a másolási tevékenység Cosmos DB forrás/fogadó, nem adja meg a "nestingSeparator".
 - Amikor importálja / exportálása a JSON-fájlokat a megfelelő fájlt tároló adatkészlet, adja meg formázási típusa "JsonFormat" és a konfiguráció "filePattern" megfelelően (lásd: [JSON formátumban](supported-file-formats-and-compression-codecs.md#json-format) szakaszát), majd nem adja meg a "structure "szakaszt, és hagyja ki a többi formátum beállításait.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md##supported-data-stores-and-formats).

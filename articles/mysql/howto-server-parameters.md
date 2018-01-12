@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
 ms.date: 10/10/2017
-ms.openlocfilehash: 22e19ca3377b623ae15a28a109cb5de419247ba4
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: f3b32c1f6b33bc60b50f1496414a300db468dc92
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Hogyan állítsa be a kiszolgáló adatait az Azure Database MySQL az Azure portál használatával
 
@@ -32,8 +32,7 @@ Azure MySQL-adatbázis támogatja az egyes kiszolgáló-paraméterek konfigurác
 A támogatott kiszolgálói paraméterek listáját folyamatosan nő. Azure-portálon a kiszolgáló Paraméterek lap segítségével a definíciójának lekérdezése, és konfigurálja a kiszolgáló adatait az alkalmazás követelmények alapján. 
 
 ## <a name="nonconfigurable-server-parameters"></a>Nonconfigurable server paraméterek
-
-A következő paraméterek nincsenek konfigurálható és kötött a [tarifacsomag](concepts-service-tiers.md). 
+InnoDB pufferkészlet és a kapcsolatok maximális számának elérésekor nincsenek konfigurálható és kötött a [tarifacsomag](concepts-service-tiers.md). 
 
 | **Tarifacsomag** | **InnoDB pufferkészlet (MB)** | **Kapcsolatok maximális száma** |
 | :------------------------ | :-------- | :----------- |
@@ -44,9 +43,13 @@ A következő paraméterek nincsenek konfigurálható és kötött a [tarifacsom
 | Standard 400 | 10240 | 800 | 
 | Standard 800 | 20480 | 1600 |
 
- Alapszintű rétegben Innodb_file_per_table: kikapcsolása
+A további kiszolgáló paraméterei nonconfigurable a rendszerben <br>
+ Alapszintű rétegben Innodb_file_per_table: kikapcsolása<br>
+ innodb_flush_log_at_trx_commit = 1<br>
+ sync_binlog = 1<br>
+ innodb_log_file_size = 512MB<br>
  
-Minden más kiszolgálói paraméter, amely nem az előző táblázatban szereplő van beállítva az alapértelmezett értékükön verzióihoz [5.7](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html) és [5.6](https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html).
+Egyéb kiszolgáló adatait, amely nem az itt felsorolt MySQL out-of-box alapértékekre verzióihoz értékre van beállítva [5.7](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html) és [5.6](https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html).
 
 ## <a name="next-steps"></a>További lépések
 - [MySQL az Azure-adatbázis adatkapcsolattárak](concepts-connection-libraries.md).

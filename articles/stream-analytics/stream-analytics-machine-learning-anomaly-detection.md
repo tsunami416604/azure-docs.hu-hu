@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: dubansal
-ms.openlocfilehash: db72b1ca936e69a049d64f939d3399bfd9cdf89c
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: ff8571c6447f32ef9a435f5200803e76f6013ffa
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="using-the-anomalydetection-operator"></a>A ANOMALYDETECTION operátorral
 
@@ -89,7 +89,7 @@ Az anomáliadetektálási egy adott típusú észlelt a anomáliadetektálási p
 
 **ANOMALYDETECTION** ablak szemantikáját, ami azt jelenti, hogy a számítási kerül, a függvény eseményenként végrehajtja a pontszám hozzák esemény késleltetett használ. A számítási alkatrészek cserélhetőségének Martingales, amelyek működnek, ha a terjesztés az esemény értékek módosultak ellenőrzésével alapul. Ha igen, a potenciális anomáliadetektálási talált. A visszaadott érték utalhat, hogy az adott anomáliadetektálási a megbízhatósági szint. Egy belső optimalizálás **ANOMALYDETECTION** az anomáliadetektálási pontszám olyan esemény alapján kiszámítja *d* való *2d* eseményeit, ahol *d*a megadott észlelési ablak mérete.
 
-**ANOMALYDETECTION** egységes bemeneti idősorozatban vár. Az eseménystream egy átfedésmentes keresztül összesítése vagy ablak hopping egységes is végezhető. Forgatókönyvekben, ahol események közötti résnek mindig kisebb, mint az összesítési ablakban a átfedésmentes ablak is elegendő az idősorozatban egységes ellenőrizze. Résnek nagyobb is lehet, ha hézagok is ki kell tölteni az utolsó értékét ugróablakok többszöri használatával. Az alábbi példa mindkét eshetőség kezelhetik. Jelenleg a `FillInMissingValuesStep` lépés nem figyelmen kívül hagyja. Nem rendelkezik ezzel a lépéssel fordítási hiba okozza.
+**ANOMALYDETECTION** egységes bemeneti idősorozatban vár. Az eseménystream egy átfedésmentes keresztül összesítése vagy ablak hopping egységes is végezhető. Forgatókönyvekben, ahol események közötti résnek mindig kisebb, mint az összesítési ablakban a átfedésmentes ablak is elegendő az idősorozatban egységes ellenőrizze. Résnek nagyobb is lehet, ha hézagok is ki kell tölteni az utolsó értékét ugróablakok többszöri használatával. Az alábbi példa mindkét eshetőség kezelhetik.
 
 ## <a name="performance-guidance"></a>Teljesítmény útmutató
 
@@ -105,8 +105,6 @@ Az anomáliadetektálási egy adott típusú észlelt a anomáliadetektálási p
 
 A következő lekérdezés kimeneti riasztást, ha a rendszer észlelt egy anomáliadetektálási használható.
 Ha a bemeneti adatfolyam nem egységes, az összesítő lépés segíthet irányítópulttá, egységes idősor. A példa **AVG** , de az összesítési típusát attól függ, a felhasználói forgatókönyvnek. Továbbá amikor idősor nagyobb, mint az összesítési ablak hézagok, lesz események eseményindító anomáliadetektálás (visszamenőleges késleltetett ablak szemantikáját) idősorozatban található. Ennek eredményeképpen egységességének feltételezve megszakad a következő esemény érkezésekor. Ilyen helyzetekben lévő idősorozatban található hézagok töltés úgy kell. Egy lehetséges módszer kerül az utolsó esemény minden Ugrás ablakban alább látható módon.
-
-Amint azt megelőzően nem hagyja ki a `FillInMissingValuesStep` lépés a lépést. A lépés kihagyása fordítási hiba okozza.
 
     WITH AggregationStep AS 
     (
@@ -177,7 +175,7 @@ Amint azt megelőzően nem hagyja ki a `FillInMissingValuesStep` lépés a lép�
 ## <a name="get-support"></a>Támogatás kérése
 Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)

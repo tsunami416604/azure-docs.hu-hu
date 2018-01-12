@@ -3,7 +3,7 @@ title: "Frissítés Azure verem 1712 |} Microsoft Docs"
 description: "További tudnivalók az Azure-verem 1712 frissítés Újdonságok integrált rendszerek, az ismert problémák és letöltéséről a frissítést."
 services: azure-stack
 documentationcenter: 
-author: andredm7
+author: brenduns
 manager: femila
 editor: 
 ms.assetid: b14f79ad-025f-45d8-9e1d-e53d2b420bb1
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/08/2018
-ms.author: andredm
-ms.openlocfilehash: 344fe7496a9129ea1653881a72139fea8a202ff0
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.date: 01/11/2018
+ms.author: brenduns
+ms.openlocfilehash: 0456a202990d383370051d99112f829533b1b101
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="azure-stack-1712-update"></a>Az Azure verem 1712 frissítés
 
@@ -58,7 +58,7 @@ A frissítés tartalmazza a következő fejlesztéseket és javításokat Azure 
 - Teszt-AzureStack parancsmag segítségével Azure verem felhőbe privilegizált végpont keresztül érhető el
 - Azure verem leválasztott telepítésénél regisztrálása
 - A tanúsítvány és a felhasználói fiók lejárati figyelési riasztások
-- A BMC-jelszó Elforgatás EGP a hozzáadott frissítés-BMCCredential parancsmag
+- A BMC-jelszó Elforgatás EGP a hozzáadott Set-BmcPassword parancsmag
 - Igény szerinti naplózás támogatásához a hálózati naplózás frissítések
 - Támogatja a lemezkép-visszaállítási művelet a virtuális gép méretezik beállítása (VMSS)
 - Teljes képernyős mód ERCS virtuális gépen CloudAdmin bejelentkezés engedélyezése

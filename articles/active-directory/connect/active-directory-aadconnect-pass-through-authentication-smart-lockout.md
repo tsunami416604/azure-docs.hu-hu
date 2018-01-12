@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 01/09/2018
 ms.author: billmath
-ms.openlocfilehash: abd9b8559cb70be6d03b85cfe19a6b37b7069985
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: fc46fe1d68538757ba5a8c5aa1acb4b51f8a171b
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="azure-active-directory-pass-through-authentication-smart-lockout"></a>Az Azure Active Directory áteresztő hitelesítés: Az intelligens zárolás
 
@@ -36,7 +36,7 @@ Intelligens zárolás is az eredeti felhasználó bejelentkezéseket és a táma
 Áteresztő hitelesítés továbbítja a jelszó érvényesítése kérések a helyszíni Active Directory, ezért meg kell akadályozni, hogy a támadók a felhasználók Active Directory-fiókok zárolásának. Az Active Directory rendelkezik saját fiókzárolási házirendek, pontosabban [fiókzárolás küszöbértékénél](https://technet.microsoft.com/library/hh994574(v=ws.11).aspx) és [fiókzárolás számlálójának visszaállítása után](https://technet.microsoft.com/library/hh994568(v=ws.11).aspx) házirendek. Az Azure AD fiókzárolás küszöbértéke és fiókzárolási Duration típusú értékek megfelelő konfigurálása a helyszíni Active Directory elérése előtti támadások a felhőben kiszűrésére.
 
 >[!NOTE]
->Az intelligens zárolás funkciót szabad és _a_ alapértelmezés szerint az összes ügyfél számára. De ha szeretné módosítani az Azure AD fiókzárolás küszöbértéke és fiókzárolási Duration típusú értékek Graph API használatával, a bérlő rendelkezik legalább egy Azure AD Premium P2-licenccel. Nem kell az Azure AD Premium P2 licencek _felhasználónként_ átmenő hitelesítéssel intelligens zárolási funkció eléréséhez.
+>>Az intelligens zárolás funkciót szabad és _a_ alapértelmezés szerint az összes ügyfél számára. Azonban az Azure AD bejelentkezési próbálkozásra van lehetőségük és a Graph API-jával fiókzárolási Duration típusú értékek módosítása szükséges a bérlő aktiválódik az Azure AD Premium P2. 
 
 Győződjön meg arról, hogy a felhasználók a helyszíni Active Directory-fiókokat is védett, ellenőrizze, hogy kell:
 
@@ -148,5 +148,5 @@ Kövesse az alábbi lépéseket a bérlői intelligens zárolás értékek friss
 
 Győződjön meg arról, hogy frissítette a bérlő intelligens zárolás értékek megfelelően a lépések segítségével [nézet intelligens zárolás értékek](#view-smart-lockout-values).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): az Azure Active Directory fórumán használja a következő fájl új frissítéseiről.

@@ -8,12 +8,12 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 12/09/2017
-ms.openlocfilehash: e16982e4e57ba9f2f11e9ee59f88f24b3fe3fe3f
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.date: 01/11/2018
+ms.openlocfilehash: f0f9a10f987f19d8ae77a07038cffe23446856fd
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>MySQL az Azure-adatbázis korlátozásai
 Az Azure-adatbázishoz a MySQL-szolgáltatás nyilvános előzetes verziójában van. A következő szakaszok ismertetik a kapacitás, tárolási motor támogatja, jogosultság, adatok adatkezelési utasítás támogatásának, és az adatbázis szolgáltatásban működik korlátok. Lásd még: [általános korlátozások](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) a MySQL adatbázis-kezelő alkalmazandó.
@@ -87,7 +87,7 @@ Túl sok a kapcsolat elérésekor a következő hibaüzenet jelenhet meg:
 ### <a name="subscription-management"></a>Előfizetés kezelése
 - Dinamikusan áthelyezése előfizetés és az erőforráscsoport előre létrehozott kiszolgálók jelenleg nem támogatott.
 
-## <a name="current-known-issues"></a>Jelenlegi ismert problémák:
+## <a name="current-known-issues"></a>Jelenlegi ismert problémái
 - Kapcsolat létrejötte után a MySQL server-példány helytelen verzióját jeleníti meg. A megfelelő kiszolgálói példány versioning használatához válassza version(); a MySQL-parancssorba parancsot.
 
 ## <a name="next-steps"></a>További lépések

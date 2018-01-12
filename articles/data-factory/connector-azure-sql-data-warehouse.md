@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
 ms.author: jingwang
-ms.openlocfilehash: 6cf6b6b59f222f68036dab68e4d20db0d0b9dd6d
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 9360c0ee90f9a4ffdffd7649505699f656833bbe
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Másolja a adatok vagy az Azure SQL Data Warehouse Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -40,7 +40,8 @@ Pontosabban az Azure SQL Data Warehouse-összekötő támogatja:
 - Adatokat betöltése, a fogadó, **PolyBase** vagy a tömeges beszúrás. Az előző van **ajánlott** másolási teljesítmény növelése érdekében.
 
 ## <a name="getting-started"></a>Első lépések
-A másolási tevékenység során .NET SDK, a Python SDK, az Azure PowerShell, a REST API-t vagy a Azure Resource Manager-sablon használatával hozhat létre egy folyamatot. Lásd: [másolási tevékenység oktatóanyag](quickstart-create-data-factory-dot-net.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját.
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 A következő szakaszok részletesen bemutatják, amely segítségével határozza meg a Data Factory tartozó entitások és Azure SQL Data Warehouse-összekötő tulajdonságait.
 

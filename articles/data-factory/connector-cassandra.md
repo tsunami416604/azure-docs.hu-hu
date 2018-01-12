@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: eba08c38a5502368beda7ca7f84559ecca011133
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 4f83d61ff51b87b0a1dc120c62f3f986b46c6c8c
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával Cassandra
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -43,8 +43,9 @@ Konkrétan ez Cassandra az összekötő támogatja:
 
 Adatok másolása nem nyilvánosan elérhető Cassandra adatbázist, akkor be kell állítania egy Self-hosted integrációs futásidejű. Lásd: [Self-hosted integrációs futásidejű](create-self-hosted-integration-runtime.md) cikk további részleteket. Az integrációs futásidejű beépített Cassandra illesztőprogram biztosít, ezért nem, manuálisan kell telepítenie minden olyan illesztőprogram Cassandra a/az adatok másolásakor kell.
 
-## <a name="getting-started"></a>Bevezetés
-A másolási tevékenység során .NET SDK, a Python SDK, az Azure PowerShell, a REST API-t vagy a Azure Resource Manager-sablon használatával hozhat létre egy folyamatot. Lásd: [másolási tevékenység oktatóanyag](quickstart-create-data-factory-dot-net.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját.
+## <a name="getting-started"></a>Első lépések
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 A következő szakaszok részletesen bemutatják való Cassandra összekötő adat-előállító tartozó entitások meghatározásához használt tulajdonságokat.
 
@@ -55,7 +56,7 @@ A következő tulajdonságok Cassandra kapcsolódó szolgáltatás támogatottak
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type |A type tulajdonságot kell beállítani: **Cassandra** |Igen |
-| állomás |Egy vagy több IP-címek vagy Cassandra kiszolgálók állomás nevét.<br/>IP-címek vagy állomásnevek kiszolgálókhoz való kapcsolódáshoz összes egyidejűleg vesszővel tagolt listáját adja meg. |Igen |
+| gazdagép |Egy vagy több IP-címek vagy Cassandra kiszolgálók állomás nevét.<br/>IP-címek vagy állomásnevek kiszolgálókhoz való kapcsolódáshoz összes egyidejűleg vesszővel tagolt listáját adja meg. |Igen |
 | port |A TCP-portot, amelyen a Cassandra kiszolgáló ügyfélkapcsolatokat. |Nem (alapértelmezett érték 9042) |
 | AuthenticationType | A Cassandra adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Két érték engedélyezett: **alapvető**, és **névtelen**. |Igen |
 | felhasználónév |Adja meg a felhasználói fiók felhasználónevét. |Igen, ha authenticationType beállítása alapszintű. |
@@ -173,14 +174,14 @@ Az adatok másolása Cassandra, amikor az Azure Data Factory ideiglenes adattíp
 | ASCII |Karakterlánc |
 | BIGINT |Int64 |
 | A BLOB |Byte] |
-| LOGIKAI ÉRTÉK |Logikai érték |
+| LOGIKAI ÉRTÉK |Logikai |
 | DECIMÁLIS |Decimális |
 | DUPLA |Dupla |
-| LEBEGŐPONTOS |Egyetlen |
+| LEBEGŐPONTOS |Egyedülálló |
 | INET |Karakterlánc |
 | INT |Int32 |
 | SZÖVEG |Karakterlánc |
-| IDŐBÉLYEG |Dátum és idő |
+| IDŐBÉLYEG |DateTime |
 | TIMEUUID |GUID |
 | UUID |GUID |
 | VARCHAR |Karakterlánc |
@@ -255,5 +256,5 @@ Az alábbi táblázatok bemutatják az adatokat a listában, térkép és String
 | 3 |A |
 | 3 |E |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md##supported-data-stores-and-formats).

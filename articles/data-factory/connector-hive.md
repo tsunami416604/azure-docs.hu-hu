@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: jingwang
-ms.openlocfilehash: af9050d41502f55b0426b858654b8af6985b93ca
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 0a1d8ff4b9821b0d41b6225872472a9d5aedffc7
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-hive-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával struktúra 
 
@@ -32,9 +32,9 @@ Hive adatok bármely támogatott fogadó adattárolóhoz másolhatja. Adattárol
 
 Az Azure Data Factory kapcsolódásának engedélyezése beépített illesztőprogramot tartalmaz, ezért nem szükséges manuálisan kell telepítenie minden olyan illesztőprogram ezt az összekötőt használja.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 
-A másolási tevékenység során .NET SDK, a Python SDK, az Azure PowerShell, a REST API-t vagy a Azure Resource Manager-sablon használatával hozhat létre egy folyamatot. Lásd: [másolási tevékenység oktatóanyag](quickstart-create-data-factory-dot-net.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját.
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 A következő szakaszok részletesen bemutatják, amely segítségével határozza meg a Data Factory tartozó entitások és Hive-összekötő tulajdonságait.
 
@@ -45,7 +45,7 @@ A következő tulajdonságok Hive kapcsolódó szolgáltatás támogatottak:
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **struktúra** | Igen |
-| állomás | Kiszolgáló IP-címét vagy állomásnevét kiszolgálónevét a Hive, elválasztva (;) több gazdagépek (csak ha serviceDiscoveryMode engedélyezése).  | Igen |
+| gazdagép | Kiszolgáló IP-címét vagy állomásnevét kiszolgálónevét a Hive, elválasztva (;) több gazdagépek (csak ha serviceDiscoveryMode engedélyezése).  | Igen |
 | port | A TCP-portot, amelyen a Hive kiszolgáló ügyfélkapcsolatokat.  | Nem |
 | serverType típusa | A Hive kiszolgáló típusa. <br/>Két érték engedélyezett: **HiveServer1**, **hiveserver2-n**, **HiveThriftServer** | Nem |
 | thriftTransportProtocol | Az átviteli protokoll a Thrift-rétegben használatára. <br/>Két érték engedélyezett: **bináris**, **SASL**, ** HTTP ** | Nem |
@@ -151,5 +151,5 @@ Adatok másolása struktúra, állítsa be a forrás típusa a másolási tevék
 ]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats).

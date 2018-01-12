@@ -6,14 +6,14 @@ keywords: "változás, követés, automatizálás"
 author: jennyhunter-msft
 ms.author: jehunte
 ms.date: 12/14/2017
-ms.topic: hero-article
+ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: ae9ac6baaaeca418fcd3478145c50d1fa7917d7e
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
-ms.translationtype: HT
+ms.openlocfilehash: 0aefa175d676bd7e98841d3a1e9ff5a8c90b7deb
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>A környezet változásainak hibaelhárítása
 
@@ -158,7 +158,7 @@ A Change Tracking és az Inventory megoldás engedélyezését követően az ere
 
 A virtuális gépen kattintson a **Change Tracking** elemre a **MŰVELETEK** területen.
 
-![Riasztás létrehozása az OMS klasszikus portálon](./media/automation-tutorial-troubleshoot-changes/change-tracking-list.png)
+![Képernyőkép a azokat a változásokat a virtuális géphez](./media/automation-tutorial-troubleshoot-changes/change-tracking-list.png)
 
 A diagram az eltelt idő alatt bekövetkezett változásokat mutatja.
 A Tevékenységnapló-kapcsolat hozzáadása után a felül látható vonaldiagramon az Azure tevékenységnapló eseményei jelennek meg.

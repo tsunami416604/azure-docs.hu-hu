@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: jingwang
-ms.openlocfilehash: 28ac55dd21e9496a9e7c480d984a518dd03e4c94
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 6918081600074b05cf357c848778ab4e66e07fff
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory-beta"></a>Adatok másolása az Azure Data Factory (béta) használata a ServiceNow
 
@@ -35,9 +35,9 @@ A ServiceNow adatok bármely támogatott fogadó adattárolóhoz másolhatja. Ad
 
 Az Azure Data Factory kapcsolódásának engedélyezése beépített illesztőprogramot tartalmaz, ezért nem szükséges manuálisan kell telepítenie minden olyan illesztőprogram ezt az összekötőt használja.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 
-A másolási tevékenység során .NET SDK, a Python SDK, az Azure PowerShell, a REST API-t vagy a Azure Resource Manager-sablon használatával hozhat létre egy folyamatot. Lásd: [másolási tevékenység oktatóanyag](quickstart-create-data-factory-dot-net.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját.
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 A következő szakaszok részletesen bemutatják való ServiceNow összekötő adat-előállító tartozó entitások meghatározásához használt tulajdonságokat.
 
@@ -48,7 +48,7 @@ A következő tulajdonságok ServiceNow kapcsolódó szolgáltatás támogatotta
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **ServiceNow** | Igen |
-| végpont | A végpont a ServiceNow kiszolgáló. (Ez azt jelenti, hogy http://ServiceNowData.com)  | Igen |
+| endpoint | A végpont a ServiceNow kiszolgáló. (Ez azt jelenti, hogy http://ServiceNowData.com)  | Igen |
 | AuthenticationType | A használandó hitelesítési típus. <br/>Két érték engedélyezett: **alapvető**, **OAuth2** | Igen |
 | felhasználónév | A ServiceNow kiszolgáló alapszintű és az OAuth2 hitelesítési való csatlakozáshoz használt felhasználónevet.  | Nem |
 | jelszó | A jelszó, a felhasználónevet Basic és az OAuth2 hitelesítési megfelelő. Ez a mező megjelölése a SecureString tárolja biztonságos helyen az ADF, vagy a jelszó tárolása az Azure Key Vault választhat, és lehetővé teszik a másolási tevékenység lekéréses ott adatmásolás végrehajtása során – további információhoz [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). | Nem |
@@ -144,5 +144,5 @@ Adatok másolása a ServiceNow, állítsa be a forrás típusa a másolási tev�
 ]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats).

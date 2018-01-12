@@ -1,6 +1,6 @@
 ---
 title: "Widevine-licenc sablon áttekintése |} Microsoft Docs"
-description: "Ez a témakör áttekintést a Widevine-licencsablon, Widevine-licencek konfigurálására használhatók."
+description: "Ez a témakör áttekintést nyújt a Widevine-licencek konfigurálásához használt Widevine-licencsablon."
 author: juliako
 manager: cfowler
 editor: 
@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
-ms.openlocfilehash: 68d519cd36d41728f57419cd6cecd2a79d65a4af
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 85de5765975b0c55fafe9bb4c14a1c1f435a6d5c
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="widevine-license-template-overview"></a>Widevine-licenc sablon – áttekintés
-Az Azure Media Services lehetővé teszi, hogy konfigurálja és Widevine-licencek kérelem. Ha a végfelhasználó player próbál Widevine védett tartalom lejátszása, a licenc beszerzésével kérelmet küldött a kézbesítési szolgáltatás. Ha a szolgáltatás a kérelem jóváhagyása, a licenc, amely az ügyfélnek küldött és fejti vissza és a megadott tartalom lejátszásához használható ad ki.
+Azure Media Services segítségével konfigurálhatja és a Google Widevine-licencek kérelmekre. Amikor a Windows Media player számára, hogy a Widevine-védelemmel ellátott tartalomhoz, a licenc beszerzésével kérelmet küldött a licenctovábbítási szolgáltatásra. Ha a szolgáltatás a kérelem jóváhagyása, a szolgáltatás a licencet ad ki. Az ügyfélnek küldött, és a megadott tartalom lejátszása és visszafejtésére szolgál.
 
-Widevine-licenc kérelem JSON üzenet formátuma.  
+A Widevine-licenc kérelem JSON üzenet formátuma.  
 
 >[!NOTE]
-> Ha szeretné, létrehozhat egy üres értékek nélküli csak "{}", és egy licenc-sablon létrehozza az összes alapértelmezett. Az alapértelmezett működik a legtöbb esetben. Például a MS-alapú licenc kézbesítési esetében, amely alapértelmezett mindig kell lennie. Állítsa be a "provider" és "content_id" értékeket kell, ha egy szolgáltató Google Widevine hitelesítő adatok meg kell egyeznie.
+> Létrehozhat egy üres üzenetet értékek nélküli csak "{}." A licenc sablonja majd az alapértelmezett jön létre. Az alapértelmezett működik a legtöbb esetben. Microsoft-alapú licenc-kézbesítés forgatókönyvek mindig az alapértelmezett értékeket kell használni. Állítsa be a "provider" és "content_id" értékeket kell, ha egy szolgáltató Widevine hitelesítő adatok meg kell egyeznie.
 
     {  
        “payload”:“<license challenge>”,
@@ -58,59 +58,59 @@ Widevine-licenc kérelem JSON üzenet formátuma.
     }
 
 ## <a name="json-message"></a>JSON-üzenet
-| Név | Érték | Leírás |
+| Name (Név) | Érték | Leírás |
 | --- | --- | --- |
 | tartalom |A Base64 kódolású karakterlánc |Az ügyfelek által küldött licenc kérelem. |
-| content_id |A Base64 kódolású karakterlánc |Használható KeyId(s) és a tartalom kulcsoknak az egyes content_key_specs.track_type azonosítója. |
-| Szolgáltató |Karakterlánc |Tartalom kulcsok és a házirendek kikereséséhez használandó. MS kulcs kézbesítési Widevine-licenc kézbesítésre használata esetén a rendszer figyelmen kívül hagyja ezt a paramétert. |
-| házirendnév |Karakterlánc |Egy korábban regisztrált házirend nevét. Optional |
-| allowed_track_types |Enum |SD_ONLY vagy SD_HD. Vezérlők, amelyek kulcsok tartalom szerepelnie kell egy licencet |
-| content_key_specs |a tömb JSON struktúrák, lásd: **tartalom kulcs specifikációk** alatt |Egy egyeztetését megbízhatatlanná vezérlő a tartalmat a kulcsok való visszatéréshez. Tartalom kulcs Spec alatt talál információt.  Allowed_track_types és content_key_specs csak egy adható meg. |
-| use_policy_overrides_exclusively |Logikai érték. IGAZ vagy HAMIS eredményt ad |Policy_overrides által megadott házirend attribútumok használata, és hagyja el az összes korábban tárolt házirend. |
-| policy_overrides |JSON-struktúrát, lásd: **házirend felülírja** alatt |Ez a licenc házirend beállításait.  Abban az esetben, ha ez az eszköz egy előre definiált szabályzattal rendelkezik, a megadott értékeket fogja használni. |
-| session_init |JSON-struktúrát, lásd: **munkamenet inicializálási** alatt |Választható adatok kapott licencet. |
-| parse_only |Logikai érték. IGAZ vagy HAMIS eredményt ad |A licenc kérelem elemzi, de licenc nem jelenik meg. Azonban értékek a licenc-kérelmet a válaszban visszaadott képernyő. |
+| content_id |A Base64 kódolású karakterlánc |Azonosító használható fel a kulcs azonosító és a tartalom minden content_key_specs.track_type kulcsát. |
+| Szolgáltató |karakterlánc |Tartalom kulcsok és a házirendek kikereséséhez használandó. A Microsoft kulcsfontosságú kézbesítési Widevine-licenc kézbesítésre használata esetén a rendszer figyelmen kívül hagyja ezt a paramétert. |
+| házirendnév |karakterlánc |Egy korábban regisztrált házirend nevét. Választható. |
+| allowed_track_types |Enum |SD_ONLY vagy SD_HD. Vezérlők, amelyek tartalom kulcsok szerepelnek licencet. |
+| content_key_specs |JSON tömbje struktúrák, című témakör "Tartalom kulcs specifikációk."  |Térjen vissza a tartalom billentyűket egyeztetését megbízhatatlanná levő. További információkért lásd: a szakasz "Tartalom kulcs specifikációk." Csak a allowed_track_types és content_key_specs értékek egyike adható meg. |
+| use_policy_overrides_exclusively |Logikai érték, IGAZ vagy hamis |Policy_overrides által megadott házirend attribútumok használata, és hagyja el az összes korábban tárolt házirend. |
+| policy_overrides |JSON struktúra, című témakör "Házirend felülbírálások." |Ez a licenc házirend beállításait.  Abban az esetben, ha ez az eszköz egy előre definiált szabályzattal rendelkezik, a megadott értékeket fogja használni. |
+| session_init |JSON struktúra, című témakör "Munkamenet inicializálása." |Nem kötelező adatok kerülnek a licenc. |
+| parse_only |Logikai érték, IGAZ vagy hamis |A licenc kérelem elemzi, de licenc nem jelenik meg. Azonban a licenc kérelemből értékek vannak a visszatérő válaszban. |
 
 ## <a name="content-key-specs"></a>Tartalom kulcs specifikációk
-Ha egy már meglévő házirend létezik, nincs szükség van valamely értékét adja meg a tartalom kulcs specifikációi.  A már meglévő házirend ehhez a tartalomhoz társított használandó a kimeneti védelmet, például HDCP és CGMS határozza meg.  Ha egy már meglévő házirend a Widevine-licenc kiszolgáló nincs regisztrálva, a tartalomszolgáltató is behelyezése az értékeket a licenc kérelmet.   
+Ha egy már meglévő házirend létezik, nincs szükség van valamely értékét adja meg a tartalom kulcs beállítása. Ehhez a tartalomhoz társított már meglévő házirend segítségével határozza meg a kimeneti védelmet, például a nagy sávszélességű digitális tartalom HDCP védelmi és a példány általános felügyeleti rendszer (CGMS). Ha egy már meglévő házirend a Widevine-licenc kiszolgáló nincs regisztrálva, a tartalomszolgáltató is behelyezése az értékeket a licenc kérelmet.   
 
-Minden egyes content_key_specs összes nyomon követi, függetlenül a beállítás use_policy_overrides_exclusively kell adni. 
+Minden egyes content_key_specs értéknek meg kell adni az összes nyomon követi, függetlenül a use_policy_overrides_exclusively lehetőséget. 
 
-| Név | Érték | Leírás |
+| Name (Név) | Érték | Leírás |
 | --- | --- | --- |
-| content_key_specs. track_type |Karakterlánc |Track adattípus neve. Ha a licenc kérelem content_key_specs van beállítva, ellenőrizze, hogy minden nyomon típusokat explicit módon. Elmulasztása eredményez hiba lejátszásához elmúlt 10 másodperc. |
-| content_key_specs  <br/> security_level |UInt32 |Meghatározza a lejátszás ügyfél szolgáltatás megbízhatóságára követelményeit. <br/> 1 - szoftveres whitebox titkosítási szükség. <br/> 2 - szoftver titkosítási és egy rejtjelezett dekóder szükség. <br/> 3 - a hardveres biztonsági megbízható végrehajtási környezetekben a kulcsokat tárol, és a titkosítási műveleteket kell elvégezni. <br/> 4 – a titkosítás és a tartalom dekódolási hardver megbízható végrehajtási biztonsági környezetben kell végrehajtani.  <br/> 5 - a titkosítási, dekódolási és az adathordozó (tömörített és tömörítetlen) összes kezelési hardver megbízható végrehajtási biztonsági környezetben kell kezelni. |
-| content_key_specs <br/> required_output_protection.hDC |karakterlánc - egyikét: HDCP_NONE, HDCP_V1, HDCP_V2 |Azt jelzi, hogy szükség van-e a HDCP |
-| content_key_specs <br/>kulcs |a Base64 <br/>kódolású karakterlánc |Az a szám használandó tartalomkulcsot. Ha meg van adva, a track_type vagy key_id megadása kötelező.  Ez a beállítás lehetővé teszi, hogy a tartalomszolgáltató szúrjon a tartalomkulcsot a track ahelyett, hogy a Widevine licenckiszolgáló létrehozni, vagy keresési kulcs. |
-| content_key_specs.key_id |Base64 kódolású karakterlánc bináris, 16 bájt |A kulcs egyedi azonosítója. |
+| content_key_specs. track_type |karakterlánc |Track adattípus neve. Ha a licenc kérelem content_key_specs van beállítva, ellenőrizze, hogy minden nyomon típusokat explicit módon. Elmulasztása lejátszásához elmúlt 10 másodperc hibát eredményez. |
+| content_key_specs  <br/> security_level |UInt32 |Meghatározza a lejátszás ügyfél szolgáltatás megbízhatóságára követelményeit. <br/> -Szoftver-alapú fehér beépített titkosítási szükség. <br/> -Szoftver titkosítás és egy rejtjelezett dekóder szükség. <br/> -A kulcs anyagok és a titkosítási műveletek megbízható végrehajtási hardveres biztonsági környezetben kell végrehajtani. <br/> – A titkosítás és a tartalom dekódolási megbízható végrehajtási hardveres biztonsági környezetben kell végrehajtani.  <br/> – A titkosítás, a dekódolás és az összes kezelése az adathordozót (tömörített és tömörítetlen) megbízható végrehajtási hardveres biztonsági környezetben kell kezelni. |
+| content_key_specs <br/> required_output_protection.hDC |karakterlánc, HDCP_NONE, HDCP_V1, HDCP_V2 egyik |Azt jelzi, hogy szükség-e HDCP. |
+| content_key_specs <br/>kulcs |A Base64-<br/>kódolású karakterlánc |Az a szám használandó tartalomkulcsot. Ha meg van adva, a track_type vagy key_id megadása kötelező. A tartalomszolgáltató a tartalomkulcsot a track ahelyett, hogy a Widevine licenckiszolgáló generálni, vagy kereshet meg egy kulcs szúrjon használhatja ezt a beállítást. |
+| content_key_specs.key_id |A Base64 kódolású karakterlánc bináris, 16 bájt |A kulcs egyedi azonosítója. |
 
 ## <a name="policy-overrides"></a>Házirend felülbírálása
-| Név | Érték | Leírás |
+| Name (Név) | Érték | Leírás |
 | --- | --- | --- |
-| policy_overrides. can_play |Logikai érték. IGAZ vagy HAMIS eredményt ad |Azt jelzi, hogy a tartalom lejátszását engedélyezett. Alapértelmezett értéke false. |
-| policy_overrides. can_persist |Logikai érték. IGAZ vagy HAMIS eredményt ad |Azt jelzi, hogy a licenc előfordulhat, hogy sikerült-e megőrizni a nem felejtő kapcsolat nélküli használatra. Alapértelmezett értéke false. |
-| policy_overrides. can_renew |logikai változó értéke IGAZ vagy HAMIS eredményt ad |Azt jelzi, hogy ez a licenc megújítása. Amennyiben az értéke igaz, a licenc időtartama szívverés lehet kiterjeszteni. Alapértelmezett értéke false. |
+| policy_overrides. can_play |Logikai érték, IGAZ vagy hamis |Azt jelzi, hogy a tartalom lejátszását engedélyezett. Alapértelmezett értéke false. |
+| policy_overrides. can_persist |Logikai érték, IGAZ vagy hamis |Azt jelzi, hogy a licenc előfordulhat, hogy sikerült megőrizni a nem felejtő tárolási kapcsolat nélküli használatra. Alapértelmezett értéke false. |
+| policy_overrides. can_renew |Logikai érték, IGAZ vagy hamis |Azt jelzi, hogy ez a licenc megújítása. Amennyiben az értéke igaz, a licenc időtartama szívverés lehet kiterjeszteni. Alapértelmezett értéke false. |
 | policy_overrides. license_duration_seconds |Int64 |Azt jelzi, hogy az adott licenccsoport időablakot. A 0 érték azt jelzi, hogy nincs-e korlát időtartama. Alapértelmezett érték 0. |
 | policy_overrides. rental_duration_seconds |Int64 |Azt jelzi, a időszak, amíg a lejátszás engedélyezett. A 0 érték azt jelzi, hogy nincs-e korlát időtartama. Alapértelmezett érték 0. |
-| policy_overrides. playback_duration_seconds |Int64 |Az idő után a lejátszás elindítása a licenc időtartama belül megtekintése ablak. A 0 érték azt jelzi, hogy nincs-e korlát időtartama. Alapértelmezett érték 0. |
-| policy_overrides. renewal_server_url |Karakterlánc |Ez a licenc vonatkozó összes szívverés (megújítási) kell arra, hogy a megadott URL-cím. Ha igaz can_renew csak használja ezt a mezőt. |
-| policy_overrides. renewal_delay_seconds |Int64 |Hány másodperc után license_start_time, megújítási először megkísérlése előtt. Ha igaz can_renew csak használja ezt a mezőt. Az alapértelmezett érték: 0 |
-| policy_overrides. renewal_retry_interval_seconds |Int64 |Adja meg a késleltetés között további licenc megújítási kérelmeket, hiba esetén. Ha igaz can_renew csak használja ezt a mezőt. |
-| policy_overrides. renewal_recovery_duration_seconds |Int64 |Az ablak az időt, amelyben a lejátszás lehet folytatni, amíg a megújítási időtartama a licenckiszolgáló megkísérelt, de sikertelen, mert a háttérrendszer problémáit. A 0 érték azt jelzi, hogy nincs-e korlát időtartama. Ha igaz can_renew csak használja ezt a mezőt. |
-| policy_overrides. renew_with_usage |logikai változó értéke IGAZ vagy HAMIS eredményt ad |Azt jelzi, hogy a licenc küldik a megújítási használat indításakor. Ha igaz can_renew csak használja ezt a mezőt. |
+| policy_overrides. playback_duration_seconds |Int64 |A követő lejátszás elindítása a licenc időtartama belül megtekintése ablakot. A 0 érték azt jelzi, hogy nincs-e korlát időtartama. Alapértelmezett érték 0. |
+| policy_overrides. renewal_server_url |karakterlánc |Ez a licenc vonatkozó összes szívverés (megújítási) a megadott URL-CÍMRE irányítja. Csak akkor, ha can_renew igaz használja ezt a mezőt. |
+| policy_overrides. renewal_delay_seconds |Int64 |Hány másodperc után license_start_time megújítási először megkísérlése előtt. Csak akkor, ha can_renew igaz használja ezt a mezőt. Alapértelmezett érték 0. |
+| policy_overrides. renewal_retry_interval_seconds |Int64 |Adja meg a késleltetés között további licenc megújítási kérelmeket, hiba esetén. Csak akkor, ha can_renew igaz használja ezt a mezőt. |
+| policy_overrides. renewal_recovery_duration_seconds |Int64 |Az ablakot, az melyik lejátszás lehet folytatni, amíg a megújítási kísérlet történik, de a licenckiszolgáló háttér-problémák miatt sikertelen. A 0 érték azt jelzi, hogy nincs-e korlát időtartama. Csak akkor, ha can_renew igaz használja ezt a mezőt. |
+| policy_overrides. renew_with_usage |Logikai érték, IGAZ vagy hamis |Azt jelzi, hogy a licenc küldeni megújítási, használat indításakor. Csak akkor, ha can_renew igaz használja ezt a mezőt. |
 
 ## <a name="session-initialization"></a>Munkamenet-inicializálása
-| Név | Érték | Leírás |
+| Name (Név) | Érték | Leírás |
 | --- | --- | --- |
-| provider_session_token |A Base64 kódolású karakterlánc |A munkamenet jogkivonatából átadott vissza a licenc, és ezt követő megújításokat van jelen.  A munkameneti jogkivonat nem fogja megőrizni munkamenetek túl. |
-| provider_client_token |A Base64 kódolású karakterlánc |Ügyfél jogkivonatának visszaállítása a licenc válaszul küldendő.  Ha a licenc kérelem ügyfél jogkivonatot tartalmaz, a rendszer figyelmen kívül hagyja ezt az értéket. Az ügyfél jogkivonatának licenc munkamenetek túl fogja is. |
-| override_provider_client_token |Logikai érték. IGAZ vagy HAMIS eredményt ad |Ha hamis, valamint a licenc kérelem olyan ügyfél-jogkivonatot tartalmaz, akkor is, ha egy ügyfél jogkivonatának volt megadva, ez a struktúra a használja a jogkivonatot a kérelemből.  Igaz értéke esetén mindig használja a lexikális elem van megadva a struktúrában. |
+| provider_session_token |A Base64 kódolású karakterlánc |A munkamenet jogkivonatából átadott vissza a licenc, és ezt követő megújításokat szerepel. A munkamenet jogkivonatából munkamenetek túl nem is. |
+| provider_client_token |A Base64 kódolású karakterlánc |Ügyfél jogkivonatának visszaállítása a licenc válaszul küldendő. Ha a licenc kérelem ügyfél jogkivonatot tartalmaz, a rendszer figyelmen kívül hagyja ezt az értéket. Az ügyfél jogkivonatának továbbra is fennáll, licenc munkamenetek túl. |
+| override_provider_client_token |Logikai érték, IGAZ vagy hamis |Ha hamis, valamint a licenc kérelem olyan ügyfél-jogkivonatot tartalmaz, akkor is, ha egy ügyfél jogkivonatának volt megadva, ez a struktúra a használja a jogkivonatot a kérelemből. Igaz értéke esetén mindig használja a lexikális elem van megadva a struktúrában. |
 
-## <a name="configure-your-widevine-licenses-using-net-types"></a>A .NET-típus használatával Widevine-licencek konfigurálása
-A Media Services .NET API-k, amelyek lehetővé teszik a Widevine-licencek konfigurálása biztosít. 
+## <a name="configure-your-widevine-licenses-by-using-net-types"></a>A Widevine-licencek konfigurálása .NET típusok használatával
+A Media Services .NET API-k, amelyek segítségével konfigurálhatja a Widevine-licenceket biztosít. 
 
 ### <a name="classes-as-defined-in-the-media-services-net-sdk"></a>A Media Services .NET SDK osztályok
-Az alábbiakban a következő típusú definíciókat.
+A következő osztályok láthatók a következő típusú meghatározásai:
 
     public class WidevineMessage
     {
@@ -160,7 +160,7 @@ Az alábbiakban a következő típusú definíciókat.
     }
 
 ### <a name="example"></a>Példa
-A következő példa bemutatja, hogyan egy egyszerű Widevine-licenc konfigurálása a .NET API-k segítségével.
+A következő példa bemutatja, hogyan egy egyszerű Widevine-licenc konfigurálása a .NET API-k segítségével:
 
     private static string ConfigureWidevineLicenseTemplate()
     {
@@ -195,6 +195,6 @@ A következő példa bemutatja, hogyan egy egyszerű Widevine-licenc konfigurál
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>Lásd még:
-[PlayReady és/vagy Widevine Dynamic Common Encryption használatával](media-services-protect-with-playready-widevine.md)
+## <a name="see-also"></a>Lásd még
+[A dynamic common encryption PlayReady és/vagy Widevine használatára](media-services-protect-with-playready-widevine.md)
 

@@ -4,7 +4,7 @@ description: "Kicsomagolása, állványra szerelése és központi telepítése 
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: jeconnoc
 editor: 
 ms.assetid: 6098a01e-c031-488a-a8d7-0b607ce665e1
 ms.service: storsimple
@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/17/2016
+ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 102dffcd73f3d3b9362d7b2853faa060e9c645dd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5fbc407a9792d033037fdaa2b14f4055d94c15ab
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>Kicsomagolása, állványra-csatlakoztatási, és a StorSimple 8100 bekábelezése
 ## <a name="overview"></a>Áttekintés
@@ -38,7 +38,7 @@ Mielőtt az eszköz csomagolja ki, áttekintheti a következőket.
 Ezután kövesse az alábbi lépéseket az eszköz kicsomagolásához.
 
 #### <a name="to-unpack-your-device"></a>Az eszköz kicsomagolása
-1. Vizsgálja meg a és a crushes, darabok, vízjel sérülés vagy más egyértelmű károkért csomagolás használatos. Ha a lista vagy a csomag súlyosan sérült, nem a megnyitása. Adjon [forduljon a Microsoft Support](storsimple-contact-microsoft-support.md) segítséget ellenőrzéséhez, hogy az eszköz működőképes állapotban van.
+1. Vizsgálja meg a és a crushes, darabok, vízjel sérülés vagy más egyértelmű károkért csomagolás használatos. Ha a lista vagy a csomag súlyosan sérült, nem a megnyitása. Adjon [forduljon a Microsoft Support](storsimple-8000-contact-microsoft-support.md) segítséget ellenőrzéséhez, hogy az eszköz működőképes állapotban van.
 2. Bontsa ki a jelölőnégyzetet. A következő kép bemutatja a StorSimple eszköz kibontott nézete.
    
      ![Bontsa ki a tárolóeszköz](./media/storsimple-8100-hardware-installation/HCSUnpackyour2Udevice.png)
@@ -64,7 +64,7 @@ Ezután kövesse az alábbi lépéseket az eszköz kicsomagolásához.
    * 1. állvány-csatlakoztatási kit (2 ügyféloldali sínek csatlakoztatni hardverkonfiguráción)
    * Getting Started dokumentáció
      
-     Ha Ön nem kapta meg az elemek, a fent felsorolt [forduljon a Microsoft Support](storsimple-contact-microsoft-support.md).
+     Ha Ön nem kapta meg az elemek, a fent felsorolt [forduljon a Microsoft Support](storsimple-8000-contact-microsoft-support.md).
 
 A következő lépés, hogy az eszköz állvány csatlakoztatást.
 
@@ -220,7 +220,7 @@ Vegye figyelembe a magas rendelkezésre állás és teljesítmény:
 * Ha lehetséges, állítsa be két hálózati csatoló a felhőelérést (1 gbe-s) és az iSCSI (ajánlott 10 GbE) egy másik pár minden tartományvezérlőn.
 * Ha lehetséges, kapcsolódó hálózati adapterek minden vezérlő két különböző kapcsolókhoz egy kapcsoló meghibásodása elleni rendelkezésre állásának biztosításához. Az ábra azt mutatja be, a két 10 GbE hálózati adapterek, DATA 2 és a DATA 3 két különböző kapcsolókhoz csatlakozik, minden tartományvezérlőről.
 
-További információkért tekintse meg a **hálózati illesztőt** alatt a [a StorSimple eszköz követelményei magas rendelkezésre állású](storsimple-system-requirements.md#high-availability-requirements-for-storsimple).
+További információkért tekintse meg a **hálózati illesztőt** alatt a [a StorSimple eszköz követelményei magas rendelkezésre állású](storsimple-8000-system-requirements.md#high-availability-requirements-for-storsimple).
 
 > [!NOTE]
 > Ha a 10 GbE hálózati adapterek SFP + adó használ, használja a megadott QSFP-SFP + adapterek. További információkért látogasson el [támogatott hardvert a 10 GbE hálózati adapterek a StorSimple eszköz](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
@@ -245,6 +245,6 @@ A következő lépésekkel bekábelezése a soros port.
 
 Az eszköz most már bekábelezte a tápellátáshoz, a hálózati hozzáférés és a soros kapcsolat. A következő lépés, hogy a szoftver konfigurálása és az eszköz üzembe helyezése.
 
-## <a name="next-steps"></a>Következő lépések
-Megtudhatja, hogyan [központi telepítése és konfigurálása a helyszíni StorSimple eszköz](storsimple-deployment-walkthrough-u2.md).
+## <a name="next-steps"></a>További lépések
+Megtudhatja, hogyan [központi telepítése és konfigurálása a helyszíni StorSimple eszköz](storsimple-8000-deployment-walkthrough-u2.md).
 

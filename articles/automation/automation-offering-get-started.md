@@ -11,14 +11,14 @@ ms.service: automation
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 08/31/2017
 ms.author: magoedte
-ms.openlocfilehash: 2a57b60a2222d6e2ea864410edc6a32a0bf0c76c
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
-ms.translationtype: HT
+ms.openlocfilehash: 69670d789d75a99d69538821d88427bd8ac397be
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="getting-started-with-azure-automation"></a>Bevezetés az Azure Automation használatába
 
@@ -87,10 +87,6 @@ Minden automatizálási feladatot, amelyet az Azure Automation parancsmagjaival 
 * **Runbookok** – feladatkészletek, amelyek bizonyos automatizált folyamatokat hajtanak végre az Azure Automationben a Windows PowerShell alapján.    
 
 Az Azure-fiókokhoz tartozó Automation-erőforrások egy Azure-régióhoz tartoznak, de az Automation-fiókok képesek az előfizetés összes erőforrását kezelni. Ha olyan szabályzatokkal rendelkezik, amelyek az adatok és erőforrások adott régióban való elkülönítését írják elő, hozzon létre Automation-fiókokat különböző régiókban.
-
-> [!NOTE]
-> Az Azure portálon létrehozott Automation-fiókok, valamint a rajtuk tárolt erőforrások nem érhetők el a klasszikus Azure portálról. Ha ezeket fiókokat vagy az erőforrásaikat Windows PowerShellel felügyeli, az Azure Resource Manager modulokat kell használnia.
-> 
 
 Amikor létrehoz egy Automation-fiókot az Azure Portalon, automatikusan két hitelesítési entitás jön létre:
 
@@ -187,7 +183,7 @@ Az Automation bevezetésének ajánlott módja a Marketplace Automatizálás és
 
 Az ajánlat bevezetését követően hozzáláthat a runbookok létrehozásához, az engedélyezett felügyeleti megoldások használatához, egy [hibrid runbook-feldolgozó](automation-hybrid-runbook-worker.md) szerepkör üzembe helyezéséhez, vagy a felhőalapú vagy helyszíni környezet erőforrásai által előállított adatok [Log Analytics](https://docs.microsoft.com/azure/log-analytics) segítségével történő gyűjtéséhez.   
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Ellenőrizheti, hogy az új Automation-fiók el tudja végezni a hitelesítést az Azure-erőforrásokkal: [Azure Automation futtató fiók hitelesítésének tesztelése](automation-verify-runas-authentication.md).
 * A runbookok létrehozásának első lépéseihez először tekintse át a támogatott [Automation-runbooktípusokat](automation-runbook-types.md) és a kapcsolódó szempontokat.
 

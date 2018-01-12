@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: jingwang
-ms.openlocfilehash: 80c377938005ba699c8632003b215bf2c52b6c33
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: 20cac53847f9f93805f8064bd8ad5c682b5a8452
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-beta"></a>Adatok másolása az Azure Data Factory (béta) használatával Marketo
 
@@ -37,7 +37,7 @@ Az Azure Data Factory kapcsolódásának engedélyezése beépített illesztőpr
 
 ## <a name="getting-started"></a>Első lépések
 
-A másolási tevékenység során .NET SDK, a Python SDK, az Azure PowerShell, a REST API-t vagy a Azure Resource Manager-sablon használatával hozhat létre egy folyamatot. Lásd: [másolási tevékenység oktatóanyag](quickstart-create-data-factory-dot-net.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját.
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 A következő szakaszok részletesen bemutatják megadhatók a Data Factory tartozó entitások Marketo-összekötőhöz használt tulajdonságokat.
 
@@ -48,7 +48,7 @@ A következő tulajdonságok társított Marketo szolgáltatás támogatottak:
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **Marketo** | Igen |
-| végpont | A végpont a Marketo-kiszolgáló. (azaz 123-ABC-321.mktorest.com)  | Igen |
+| endpoint | A végpont a Marketo-kiszolgáló. (azaz 123-ABC-321.mktorest.com)  | Igen |
 | clientId | Az ügyfél-azonosítóját a Marketo-szolgáltatás.  | Igen |
 | clientSecret | A Marketo szolgáltatás ügyfélkulcsot. Ha szeretné, ebben a mezőben megjelölése a SecureString tárolja biztonságos helyen az ADF, vagy a jelszó tárolása az Azure Key Vault, és lehetővé teszik az ADF másolja át a tevékenységek lekéréses ott adatmásolás végrehajtása során – további információhoz [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). | Igen |
 | useEncryptedEndpoints | Meghatározza, hogy a data source végpontok titkosítása HTTPS használatával. Az alapértelmezett érték: igaz.  | Nem |

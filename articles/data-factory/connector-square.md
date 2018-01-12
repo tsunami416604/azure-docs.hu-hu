@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: jingwang
-ms.openlocfilehash: 08b931c7c172578191cbc2628d8fabca0984a6e0
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 71c73f034a3c32c9bdf1532106a3aba9521afb17
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-square-using-azure-data-factory-beta"></a>Adatok másolása az Azure Data Factory (béta) használatával szögletes
 
@@ -35,9 +35,9 @@ Adatok bármely támogatott fogadó adattárolóhoz szögletes másolhatja. Adat
 
 Az Azure Data Factory kapcsolódásának engedélyezése beépített illesztőprogramot tartalmaz, ezért nem szükséges manuálisan kell telepítenie minden olyan illesztőprogram ezt az összekötőt használja.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 
-A másolási tevékenység során .NET SDK, a Python SDK, az Azure PowerShell, a REST API-t vagy a Azure Resource Manager-sablon használatával hozhat létre egy folyamatot. Lásd: [másolási tevékenység oktatóanyag](quickstart-create-data-factory-dot-net.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját.
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 A következő szakaszok részletesen bemutatják való négyzetes összekötő adat-előállító tartozó entitások meghatározásához használt tulajdonságokat.
 
@@ -48,7 +48,7 @@ Négyzetes társított szolgáltatás támogatott a következő tulajdonságokka
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **szögletes** | Igen |
-| állomás | A négyszögletű példány URL-CÍMÉT. (azaz mystore.mysquare.com)  | Igen |
+| gazdagép | A négyszögletű példány URL-CÍMÉT. (azaz mystore.mysquare.com)  | Igen |
 | clientId | A négyszögletű az alkalmazáshoz tartozó ügyfél-azonosító.  | Igen |
 | clientSecret | A négyszögletű az alkalmazáshoz tartozó titkos ügyfélkulcsot. Ez a mező megjelölése a SecureString tárolja biztonságos helyen az ADF, vagy a jelszó tárolása az Azure Key Vault választhat, és lehetővé teszik a másolási tevékenység lekéréses ott adatmásolás végrehajtása során – további információhoz [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). | Igen |
 | redirectUri | Az átirányítási URL-cím hozzárendelése az négyzetes irányítópult. (azaz http://localhost:2500)  | Igen |
@@ -142,5 +142,5 @@ Adatok másolása szögletes, állítsa be a forrás típusa a másolási tevék
 ]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats).

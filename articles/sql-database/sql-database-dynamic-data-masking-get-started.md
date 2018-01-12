@@ -4,7 +4,7 @@ description: "SQL-adatbázis dinamikus adatmaszkolási korlátozza a bizalmas ad
 services: sql-database
 documentationcenter: 
 author: ronitr
-manager: jhubbard
+manager: shaik
 editor: 
 ms.assetid: 4b36d78e-7749-4f26-9774-eed1120a9182
 ms.service: sql-database
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: On Demand
 ms.date: 03/09/2017
-ms.author: ronitr; ronmat
-ms.openlocfilehash: b75f170870a5f595fcda41196f4de81f237f88b8
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.author: ronitr
+ms.openlocfilehash: 883a00176207701a0bbda8d196114d9964ce8f17
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="sql-database-dynamic-data-masking"></a>SQL-adatbázis dinamikus adatmaszkolási
 
@@ -44,7 +44,7 @@ Dinamikus adatmaszkolási konfigurálhatja az Azure-adatbázis rendszergazdai, k
 | --- | --- |
 | **Alapértelmezett** |**A kijelölt mezők az adattípusok alapján teljes maszkolási**<br/><br/>• Az XXXX vagy kevesebb Xs, ha a mező mérete legalább 4 karakterből kell állnia a karakterláncos adattípusokkal (nchar, ntext, nvarchar).<br/>• A numerikus adattípusú (bigint, bit, decimal, int, pénzt, numerikus, smallint, kis pénz típusú értékké, tinyint, lebegőpontos, valós) nulla értéket használja.<br/>• Az 01-01-1900 dátum és idő adattípus (dátum, datetime2, datetime, datetimeoffset, smalldatetime, idő).<br/>• Az SQL variant, az alapértelmezett érték az aktuális típus használatos.<br/>• A dokumentum XML- <masked/> szolgál.<br/>• Különleges adattípust alkotnak üres értéket használ (időbélyeg táblázatra, hierarchyid, GUID, binary, image, varbinary térbeli típusok). |
 | **Hitelkártya** |**Módszer, amely a kijelölt mezők utolsó négy számjegye maszkolás** , és hozzáadja egy állandó karakterlánc hitelkártya formájában előtagjaként.<br/><br/>XXXX-XXXX-XXXX-1234 |
-| **E-mailek** |**Maszkolás metódus, amely az első betűjének mutatja, és a tartomány helyére XXX.com** egy e-mail cím egy állandó karakterlánc-előtagot használja.<br/><br/>aXX@XXXX.com |
+| **E-mail** |**Maszkolás metódus, amely az első betűjének mutatja, és a tartomány helyére XXX.com** egy e-mail cím egy állandó karakterlánc-előtagot használja.<br/><br/>aXX@XXXX.com |
 | **Véletlenszerű számot** |**Módszer, amely véletlenszerűen generálja maszkolás** a kiválasztott határokat és a tényleges adatok típusa alapján. Ha a kijelölt határokon azonos, majd a maszkolási függvény számának állandó.<br/><br/>![Navigációs ablaktábla](./media/sql-database-dynamic-data-masking-get-started/1_DDM_Random_number.png) |
 | **Egyéni szöveg** |**Módszer, amely az első és utolsó karakter maszkolás** és egy egyéni kitöltési karakterláncot hozzáadja a középső. Ha az eredeti karakterláncot rövidebb, mint a kitett előtag és utótagot, csak a kitöltési karakterláncot kell használni. <br/>[kitöltési] előtag utótag<br/><br/>![Navigációs ablaktábla](./media/sql-database-dynamic-data-masking-get-started/2_DDM_Custom_text.png) |
 

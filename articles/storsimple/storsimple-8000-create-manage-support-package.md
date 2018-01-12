@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2017
+ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 641109970865ea915f83d48488f1bdf5cb2d5242
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: c83caae58e73d6f2d0fe086938e0bbc5cfdf80c4
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>Hozzon létre és kezelheti a StorSimple 8000 Series támogatási csomag
 
@@ -144,9 +144,9 @@ A következő példa bemutatja, hogyan visszafejtése, szerkesztése és egy tá
 
         PS C:\WINDOWS\system32>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További tudnivalók a [gyűjtött információkat a támogatási csomag](https://support.microsoft.com/help/3193606/storsimple-support-packages-and-device-logs)
-* Megtudhatja, hogyan [támogatási csomag és eszköznaplók segítségével eszköz hibaelhárítás](storsimple-troubleshoot-deployment.md#support-packages-and-device-logs-available-for-troubleshooting).
+* Megtudhatja, hogyan [támogatási csomag és eszköznaplók segítségével eszköz hibaelhárítás](storsimple-8000-troubleshoot-deployment.md#support-packages-and-device-logs-available-for-troubleshooting).
 * Megtudhatja, hogyan [felügyelete a StorSimple eszközt a StorSimple Device Manager szolgáltatással](storsimple-8000-manager-service-administration.md).
 

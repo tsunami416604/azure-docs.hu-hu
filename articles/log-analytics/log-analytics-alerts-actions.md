@@ -1,6 +1,6 @@
 ---
-title: "Riasztások az OMS szolgáltatáshoz válaszokat |} Microsoft Docs"
-description: "Naplóelemzési riasztások határozza meg az OMS-adattárban lévő fontos adatokat és is proaktív értesítést küldenek, problémák vagy meghívása műveletek kijavításának őket.  Ez a cikk ismerteti a riasztási szabály és a részletek a különböző általuk végezhető műveletek létrehozása."
+title: "A riasztásokra az Azure Naplóelemzés válaszok |} Microsoft Docs"
+description: "Naplóelemzési riasztások határozza meg az Azure munkaterületen fontos adatokat és is proaktív értesítést küldenek, problémák vagy meghívása műveletek kijavításának őket.  Ez a cikk ismerteti a riasztási szabály és a részletek a különböző általuk végezhető műveletek létrehozása."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/24/2017
+ms.date: 01/08/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d936cf467ee7043b171cfc845f247f891f52f599
-ms.sourcegitcommit: 4d90200f49cc60d63015bada2f3fc4445b34d4cb
+ms.openlocfilehash: e80481f074bc196caae7c03f54134eaef0fb46d5
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="add-actions-to-alert-rules-in-log-analytics"></a>Műveletek hozzáadni a Naplóelemzési riasztási szabályok
 Ha egy [riasztást hoz létre a Naplóelemzési](log-analytics-alerts.md), lehetősége van a [a riasztási szabály konfigurálása](log-analytics-alerts.md) egy vagy több műveletek elvégzéséhez.  Ez a cikk ismerteti a rendelkezésre álló különféle műveletek és a részletek konfigurálásával összes típusához.
 
 | Műveletek | Leírás |
 |:--|:--|
-| [E-mailek](#email-actions) | A riasztás részleteit e-mailt küldeni egy vagy több címzett. |
+| [E-mail](#email-actions) | A riasztás részleteit e-mailt küldeni egy vagy több címzett. |
 | [Webhook](#webhook-actions) | Egy külső folyamatban egy HTTP POST kérelemben keresztül meghívni. |
 | [A Runbook](#runbook-actions) | Elindít egy forgatókönyvet az Azure Automation. |
 
@@ -57,7 +57,7 @@ Webhookműveletek igényelnek a tulajdonságok az alábbi táblázatban.
 Webhook URL-címet és a hasznos adatok között, amely a külső szolgáltatásnak továbbított adatok JSON formátumú, tartalmazza.  Alapértelmezés szerint a tartalom a következő táblázat tartalmazza az értékeket.  Ha szeretné, ezek a hasznos adatok kicseréli a saját egyéni egy.  Ebben az esetben használhatja a változók a táblázatban az egyes paraméterek egyéni adattartalmat értékük felvenni.
 
 >[!NOTE]
-> Ha a munkaterületet lett frissítve a [új Log Analytics lekérdezési nyelv](log-analytics-log-search-upgrade.md), akkor a webook tartalom módosult.  A formátum részleteket [Azure napló Analytics REST API](https://aka.ms/loganalyticsapiresponse).  A példa látható [minták](#sample-payload) alatt.
+> Ha a munkaterülete frissítve lett az [új Log Analytics lekérdezési nyelvre](log-analytics-log-search-upgrade.md), akkor a webhook hasznos adatai módosultak.  A formátum részletei: [Azure Log Analytics REST API](https://aka.ms/loganalyticsapiresponse).  A példa látható [minták](#sample-payload) alatt.
 
 | Paraméter | Változó | Leírás |
 |:--- |:--- |:--- |
@@ -71,7 +71,7 @@ Webhook URL-címet és a hasznos adatok között, amely a külső szolgáltatás
 | SearchIntervalStartTimeUtc |#searchintervalstarttimeutc |Indítsa el a lekérdezések ideje UTC formátumban. |
 | SearchQuery |#searchquery |Naplófájl-keresési lekérdezés a riasztási szabály által használt. |
 | SearchResults |Lásd az alábbi |A lekérdezés JSON formátumban rögzíti.  Az első 5000 rekordok korlátozva. |
-| WorkspaceID |#workspaceid |Az OMS-munkaterület azonosítója. |
+| WorkspaceID |#workspaceid |A Naplóelemzési munkaterület azonosítója. |
 
 Például megadhatja a következő egyéni payload nevű egyetlen paramétert tartalmazó *szöveg*.  A szolgáltatás, amely behívja a webhook a ennek a paraméternek, akkor rendszer.
 
@@ -97,11 +97,11 @@ Például egy egyéni adattartalom, amely tartalmazza a riasztás neve és a ker
     }
 
 
-Riasztási szabály létrehozása a webhook: egy külső szolgáltatás indítására átfogó példát keresztül végigvezetheti [riasztási webhook művelet létrehozása az OMS szolgáltatáshoz üzenetet küldeni a Slackhez](log-analytics-alerts-webhooks.md).
+Riasztási szabály létrehozása a webhook: egy külső szolgáltatás indítására átfogó példát keresztül végigvezetheti [riasztási webhook művelet létrehozása a Log Analyticshez üzenetet küldeni a Slackhez](log-analytics-alerts-webhooks.md).
 
 
 ## <a name="runbook-actions"></a>Runbook-műveletek
-Runbook műveletek az Azure Automationben runbook indítása.  Ahhoz, hogy a művelet típusát, rendelkeznie kell a [Folyamatautomatizálási megoldása](log-analytics-add-solutions.md) telepítve, és az OMS-munkaterület konfigurálva.  Az automation-fiókban az Automation-megoldás beállított runbookok közül választhat.
+Runbook műveletek az Azure Automationben runbook indítása.  Ahhoz, hogy a művelet típusát, rendelkeznie kell a [Folyamatautomatizálási megoldása](log-analytics-add-solutions.md) telepített és konfigurált Naplóelemzési munkaterületet.  Az automation-fiókban az Automation-megoldás beállított runbookok közül választhat.
 
 Runbook műveleteket igényelnek a tulajdonságok az alábbi táblázatban.
 
@@ -115,7 +115,7 @@ Runbook műveletek indíthatja a runbook egy [webhook](../automation/automation-
 Nem közvetlenül tölthető fel a runbook paramétereket, de a [$WebhookData paraméter](../automation/automation-webhooks.md) a riasztást, többek között az azt létrehozó napló keresési eredmények részleteit tartalmazza.  A runbook kell megadni **$WebhookData** úgy, hogy a riasztás tulajdonságai érhetők el a paramétert.  A riasztási adatokat érhető el egyetlen tulajdonságot, json formátumban **SearchResult** (a runbook-műveletek és a szabványos tartalom webhookműveletek) vagy **SearchResults** (webhookműveletek együtt egyéni hasznos beleértve **IncludeSearchResults ": true**) az a **RequestBody** tulajdonsága **$WebhookData**.  Ez az alábbi táblázatban a tulajdonságokkal fog rendelkezni.
 
 >[!NOTE]
-> Ha a munkaterületet lett frissítve a [új Log Analytics lekérdezési nyelv](log-analytics-log-search-upgrade.md), akkor a runbook tartalom módosult.  A formátum részleteket [Azure napló Analytics REST API](https://aka.ms/loganalyticsapiresponse).  A példa látható [minták](#sample-payload) alatt.  
+> Ha a munkaterületet lett frissítve a [új Log Analytics lekérdezési nyelv](log-analytics-log-search-upgrade.md), akkor a runbook tartalom módosult.  A formátum részletei: [Azure Log Analytics REST API](https://aka.ms/loganalyticsapiresponse).  A példa látható [minták](#sample-payload) alatt.  
 
 | Csomópont | Leírás |
 |:--- |:--- |
@@ -620,6 +620,6 @@ Az alábbiakban látható egy minta hasznos a runbook műveletet egy frissített
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - A forgatókönyv a [konfigurálása egy webook](log-analytics-alerts-webhooks.md) a riasztási szabályt.  
 - Ismerje meg, hogyan írhat [az Azure Automation runbookjai](https://azure.microsoft.com/documentation/services/automation) riasztások által azonosított problémák megoldásáról.

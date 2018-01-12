@@ -4,7 +4,7 @@ description: "Távolítsa el, cserélje le, és a biztonsági mentési akkumulá
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 
 ms.service: storsimple
@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 06/05/2017
+ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 174a3163082594ea6a49b7f5a78857848f8f0566
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f8071cde67017ff031418f0d97da15a618c4969b
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="replace-the-backup-battery-module-on-your-storsimple-device"></a>Cserélje le a biztonsági mentési akkumulátor modul a StorSimple eszköz
 
@@ -67,7 +67,7 @@ A biztonsági mentési akkumulátor modul, a StorSimple eszközt a rendszer a te
    | 4 |PCM OK |
    | 5 |DC áramszünet esetén |
    | 6 |Kifogástalan akkumulátor |
-3. A sikertelen akkumulátor PCM eltávolításához kövesse [távolítsa el a PCM](storsimple-power-cooling-module-replacement.md#remove-a-pcm).
+3. A sikertelen akkumulátor PCM eltávolításához kövesse [távolítsa el a PCM](storsimple-8000-power-cooling-module-replacement.md#remove-a-pcm).
 4. A eltávolított PCM növekedési felfelé elforgatása az akkumulátor modul leíróját a következő, az alábbi ábrán jelzett és lekéréses, akár az akkumulátor eltávolítása.
    
     ![PCM akkumulátor eltávolítása](./media/storsimple-battery-replacement/IC741019.png)
@@ -82,7 +82,7 @@ A következő lépésekkel telepíti a helyettesítő akkumulátor modulját az 
 #### <a name="to-install-the-battery-module"></a>A akkumulátor modul telepítése
 1. A biztonsági mentési akkumulátor modul elhelyezni a PCM a megfelelő helyzetben.
 2. Nyomja le az akkumulátor modul leíróját a következő egészen az, hogy az összekötő ülés.
-3. Cserélje le az elsődleges szolgáltatással PCM a következő [energia- és hűtési modul lecseréli a StorSimple eszköz](storsimple-power-cooling-module-replacement.md).
+3. Cserélje le az elsődleges szolgáltatással PCM a következő [energia- és hűtési modul lecseréli a StorSimple eszköz](storsimple-8000-power-cooling-module-replacement.md).
 4. A Csere befejezése után nyissa meg az eszközre, és folytassa a **figyelő** > **hardver állapotának** az Azure portálon. Győződjön meg arról, hogy a telepítés sikeres volt-e az akkumulátor állapotának ellenőrzése. Zöld állapot azt jelzi, hogy az akkumulátor állapota kifogástalan.
 
 ## <a name="maintain-the-backup-battery-module"></a>A biztonsági mentési akkumulátor modul karbantartása
@@ -105,6 +105,6 @@ Ha a **csökkentett teljesítményű** állapot jelenik meg, az alábbi intézke
 > [!IMPORTANT]
 > Számolja fel a sikertelen akkumulátor nemzeti és regionális szabályok szerint.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ [StorSimple hardver összetevő cseréje](storsimple-8000-hardware-component-replacement.md).
 

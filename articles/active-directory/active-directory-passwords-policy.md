@@ -1,5 +1,5 @@
 ---
-title: "Házirend: Azure AD SSPR |} Microsoft Docs"
+title: "Az önkiszolgáló jelszó-átállítási házirendek – Azure Active Directoryban"
 description: "Az Azure AD az önkiszolgáló jelszó-változtatási házirend-beállításokban"
 services: active-directory
 keywords: "Az Active directory-jelszókezelés, jelszókezelés, az Azure AD self service jelszó alaphelyzetbe állítása"
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2017
+ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 6b1abd23c6f578a3a776e6174d1ea0f47b3ba27d
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 51eb7c594c02310c083b42b6c0d964b4af239d76
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Jelszóházirendek és -korlátozások az Azure Active Directoryban
 
@@ -37,16 +37,16 @@ A két-kapu házirendnek a rendszergazdák használhatja a biztonsági kérdése
 * A következő Azure-rendszergazdai szerepkörök érintettek:
   * Segélyszolgálat rendszergazda
   * Szolgáltatás-rendszergazda
-  * Számlázási rendszergazda
-  * Partner Tier1 támogatása
-  * Partner Tier2 támogatása
-  * Exchange szolgáltatás-rendszergazda
-  * Lync szolgáltatás-rendszergazda
+  * Számlázási adminisztrátor
+  * 1. szintű partnertámogatás
+  * 2. szintű partnertámogatás
+  * Exchange-szolgáltatások rendszergazdája
+  * Lync-szolgáltatások rendszergazdája
   * Felhasználói fiók rendszergazdája
-  * Directory írók
+  * Címtárírók
   * Globális rendszergazda vagy a vállalati rendszergazda
   * A SharePoint szolgáltatás-rendszergazda
-  * Megfelelőségi rendszergazda
+  * Szabályozási ügyintéző
   * Alkalmazás-rendszergazda
   * Biztonsági rendszergazda
   * Kiemelt szerepkörű rendszergazda
@@ -103,7 +103,7 @@ A következő táblázat ismerteti a rendelkezésre álló jelszó házirend-be�
 | Jelszó lejárata |<ul><li>Alapértelmezett érték: **hamis** nap (azt jelzi, hogy a jelszó lejárati engedélyezve van).</li><li>Az érték beállítható az egyes felhasználói fiókok használatával a `Set-MsolUser` parancsmag.</li></ul> |
 | Jelszó-változtatási |Az utolsó jelszó *nem* újra használható, ha a felhasználó megváltoztatja a jelszavát. |
 | Jelszó-átállítási előzmények | Az utolsó jelszó *is* újra használható, amikor a felhasználó visszaállítja az elfelejtett jelszavát. |
-| A fiókzárolásra |10 sikertelen bejelentkezési kísérlet után helytelen jelszóval a felhasználó zárolva van egy percig. További helytelen bejelentkezési kísérletek zár ki a felhasználói idő időtartamok növelése. |
+| Fiókzárolás |10 sikertelen bejelentkezési kísérlet után helytelen jelszóval a felhasználó zárolva van egy percig. További helytelen bejelentkezési kísérletek zár ki a felhasználói idő időtartamok növelése. |
 
 ## <a name="set-password-expiration-policies-in-azure-ad"></a>Jelszó lejárati házirendek beállítása az Azure ad-ben
 
@@ -146,7 +146,7 @@ A kezdéshez kell [töltse le és telepítse az Azure AD PowerShell modult](http
    > [!WARNING]
    > Jelszavak beállítása `-PasswordNeverExpires $true` életkor alapján még a `pwdLastSet` attribútum. Beállíthatja a felhasználói jelszavakat nem jár le, és 90 nap folytassa, ha a jelszavak lejárnak. Alapján a `pwdLastSet` attribútumot, ha módosítja a lejárati `-PasswordNeverExpires $false`, jelszavak, amelyek rendelkeznek egy `pwdLastSet` régebbi, mint 90 nappal a felhasználónak a módosításukra, a következő bejelentkezéskor. Ez a módosítás hatással lehet a felhasználók nagy számú. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkekben talál további információt nyújtanak azokról az Azure AD használatával új jelszó.
 

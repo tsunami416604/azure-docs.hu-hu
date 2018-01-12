@@ -4,7 +4,7 @@ description: "A CentOS 6.6 futó Linux-állomáshoz csatlakoztatott StorSimple a
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: jeconnoc
 editor: tysonn
 ms.assetid: ca289eed-12b7-4e2e-9117-adf7e2034f2f
 ms.service: storsimple
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/01/2016
+ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: add539351066f9ff94febeebfd5334773b360e8f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2fbae15c1c6a9ec886f57f9df903612ae10d8e12
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Az MPIO konfigurálása a StorSimple gazdagépen fut a CentOS
 Ez a cikk ismerteti a Centos 6.6 gazdakiszolgáló többutas I/O (MPIO) konfigurálásához szükséges lépéseket. A kiszolgáló csatlakozik-e a Microsoft Azure StorSimple eszközt a magas rendelkezésre álláshoz az iSCSI-kezdeményezők keresztül. Ismerteti részletesen a automatikus felderítés többutas eszközről és beállításai csak a StorSimple-köteteket.
@@ -26,9 +26,8 @@ Ez a cikk ismerteti a Centos 6.6 gazdakiszolgáló többutas I/O (MPIO) konfigur
 Ez az eljárás akkor alkalmazható a StorSimple 8000 sorozat eszközeire összes modellt.
 
 > [!NOTE]
-> Ez az eljárás nem használható a StorSimple virtuális eszköz. További információkért tekintse meg a virtuális eszköz kiszolgálók konfigurálása.
-> 
-> 
+> Ez az eljárás nem használható a StorSimple felhő alapplatformjaként. További információkért tekintse meg a felhő alapplatformjaként kiszolgálók konfigurálása.
+
 
 ## <a name="about-multipathing"></a>Többutas kapcsolatos
 A többutas funkció lehetővé teszi a kiszolgáló és a tárolóeszköz közötti több i/o-útvonal konfigurálásához. Az i/o-elérési utak, amelyek külön kábelek, a kapcsolók, a hálózati adapterek és a tartományvezérlők fizikai SAN-kapcsolatokat. Többutas i/o elérési utak társított összes összesített görbét új eszköz beállítása összesíti.
@@ -298,7 +297,7 @@ A terheléselosztási algoritmust a rendelkezésre álló multipaths, az aktív 
 
     Ha csak egy állomás felület, és itt két elérési utak, akkor szüksége ahhoz, hogy az iSCSI-gazdagép két a felülethez. Kövesse a [részletes utasításokat Linux dokumentációjának](https://access.redhat.com/documentation/Red_Hat_Enterprise_Linux/5/html/Online_Storage_Reconfiguration_Guide/iscsioffloadmain.html).
 
-2. A kötet a StorSimple eszközön a CentOS kiszolgáló van kitéve. További információkért lásd: [6. lépés: kötet létrehozása](storsimple-deployment-walkthrough.md#step-6-create-a-volume) a StorSimple eszköz a klasszikus Azure portálon keresztül.
+2. A kötet a StorSimple eszközön a CentOS kiszolgáló van kitéve. További információkért lásd: [6. lépés: kötet létrehozása](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume) a StorSimple eszköz Azure-portálon.
 
 3. Ellenőrizze a rendelkezésre álló elérési utat. Típus:
 
@@ -341,7 +340,7 @@ A. Ha végzett módosításokat a `multipath.conf` fájl, akkor a többutas szol
 
 Q. A StorSimple eszköz két hálózati adapterrel és két hálózati adapterrel a gazdagépen engedélyezve van. A rendelkezésre álló útvonalak felsorolásához a csak két elérési útnak jelenik meg. Várt négy elérhető elérési utakat megjelenítéséhez.
 
-A. Győződjön meg arról, hogy az elérési utat ugyanazon az alhálózaton és irányítható. Ha a hálózati adapterek különböző VLAN-on, és nem irányítható, látni fogja csak két elérési útnak. Ez győződhet, győződjön meg arról, hogy mindkét a gazdagép illesztőket egy adott hálózati csatoló a StorSimple eszköz érhető el. Szüksége lesz a [forduljon a Microsoft Support](storsimple-contact-microsoft-support.md) , ez az ellenőrzés csak akkor lehet elvégezni a támogatási munkameneten keresztül.
+A. Győződjön meg arról, hogy az elérési utat ugyanazon az alhálózaton és irányítható. Ha a hálózati adapterek különböző VLAN-on, és nem irányítható, látni fogja csak két elérési útnak. Ez győződhet, győződjön meg arról, hogy mindkét a gazdagép illesztőket egy adott hálózati csatoló a StorSimple eszköz érhető el. Szüksége lesz a [forduljon a Microsoft Support](storsimple-8000-contact-microsoft-support.md) , ez az ellenőrzés csak akkor lehet elvégezni a támogatási munkameneten keresztül.
 
 Q. Amikor a rendelkezésre álló útvonalak felsorolásához kimenetet nem látható.
 
@@ -441,7 +440,7 @@ További információkért látogasson el [hibaelhárítási többutas interakt�
 | &nbsp; |`mpathconf --enable` |A minta mulitpath.conf fájl létrehozása`/etc/mulitpath.conf` |
 |  | | |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Konfigurálja az MPIO Linux-gazdagépre, mert is szükség lehet a következő CentoS 6.6 dokumentumok hivatkozik:
 
 * [A CentOS MPIO beállítása](http://www.centos.org/docs/5/html/5.1/DM_Multipath/setup_procedure.html)

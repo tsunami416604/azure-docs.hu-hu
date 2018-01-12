@@ -6,14 +6,14 @@ author: neilpeterson
 manager: timlt
 ms.service: container-instances
 ms.topic: article
-ms.date: 12/19/2017
+ms.date: 01/10/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 2ffebf06e2e013f909410fa4861420a5ae3d4dcf
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 41a47adb1f1da417038757934f0a6cf7e11555da
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="deploy-a-container-group"></a>A tároló csoport telepítése
 
@@ -28,89 +28,95 @@ Ez a dokumentum végigvezeti egy egyszerű több tároló oldalkocsi konfigurác
 
 Hozzon létre egy fájlt `azuredeploy.json` és a következő JSON másolása.
 
-Ebben a mintában a tároló két tárolók és a nyilvános IP-cím van definiálva. A csoportban lévő első tároló internetre alkalmazást futtat. A második tároló, a oldalkocsi egy HTTP kérést küld az elsődleges webes alkalmazás a csoporthoz tartozó helyi hálózaton keresztül.
+Ez a példa egy tárolócsoport két tárolókhoz, egy nyilvános IP-címet, két kitett port meg van adva. A csoportban lévő első tároló internetre alkalmazást futtat. A második tároló, a oldalkocsi egy HTTP kérést küld az elsődleges webes alkalmazás a csoporthoz tartozó helyi hálózaton keresztül.
 
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
-  "parameters": {
-  },
+  "parameters": {},
   "variables": {
     "container1name": "aci-tutorial-app",
     "container1image": "microsoft/aci-helloworld:latest",
     "container2name": "aci-tutorial-sidecar",
     "container2image": "microsoft/aci-tutorial-sidecar"
   },
-    "resources": [
-      {
-        "name": "myContainerGroup",
-        "type": "Microsoft.ContainerInstance/containerGroups",
-        "apiVersion": "2017-08-01-preview",
-        "location": "[resourceGroup().location]",
-        "properties": {
-          "containers": [
-            {
-              "name": "[variables('container1name')]",
-              "properties": {
-                "image": "[variables('container1image')]",
-                "resources": {
-                  "requests": {
-                    "cpu": 1,
-                    "memoryInGb": 1.5
-                    }
+  "resources": [
+    {
+      "name": "myContainerGroup",
+      "type": "Microsoft.ContainerInstance/containerGroups",
+      "apiVersion": "2017-10-01-preview",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "containers": [
+          {
+            "name": "[variables('container1name')]",
+            "properties": {
+              "image": "[variables('container1image')]",
+              "resources": {
+                "requests": {
+                  "cpu": 1,
+                  "memoryInGb": 1.5
+                }
+              },
+              "ports": [
+                {
+                  "port": 80
                 },
-                "ports": [
-                  {
-                    "port": 80
-                  }
-                ]
-              }
-            },
-            {
-              "name": "[variables('container2name')]",
-              "properties": {
-                "image": "[variables('container2image')]",
-                "resources": {
-                  "requests": {
-                    "cpu": 1,
-                    "memoryInGb": 1.5
-                    }
+                {
+                  "port": 8080
+                }
+              ]
+            }
+          },
+          {
+            "name": "[variables('container2name')]",
+            "properties": {
+              "image": "[variables('container2image')]",
+              "resources": {
+                "requests": {
+                  "cpu": 1,
+                  "memoryInGb": 1.5
                 }
               }
             }
-          ],
-          "osType": "Linux",
-          "ipAddress": {
-            "type": "Public",
-            "ports": [
-              {
-                "protocol": "tcp",
-                "port": "80"
-              }
-            ]
           }
+        ],
+        "osType": "Linux",
+        "ipAddress": {
+          "type": "Public",
+          "ports": [
+            {
+              "protocol": "tcp",
+              "port": "80"
+            },
+            {
+                "protocol": "tcp",
+                "port": "8080"
+            }
+          ]
         }
       }
-    ],
-    "outputs": {
-      "containerIPv4Address": {
-        "type": "string",
-        "value": "[reference(resourceId('Microsoft.ContainerInstance/containerGroups/', 'myContainerGroup')).ipAddress.ip]"
-      }
+    }
+  ],
+  "outputs": {
+    "containerIPv4Address": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.ContainerInstance/containerGroups/', 'myContainerGroup')).ipAddress.ip]"
     }
   }
+}
 ```
 
 Egy tároló titkos kép beállításjegyzék használatát, az objektum hozzáadása a JSON-dokumentum, az alábbi formátumban.
 
 ```json
 "imageRegistryCredentials": [
-    {
+  {
     "server": "[parameters('imageRegistryLoginServer')]",
     "username": "[parameters('imageRegistryUsername')]",
     "password": "[parameters('imageRegistryPassword')]"
-    }
+  }
 ]
 ```
 
@@ -141,9 +147,9 @@ az container show --resource-group myResourceGroup --name myContainerGroup --out
 Kimenet:
 
 ```bash
-Name              ResourceGroup    ProvisioningState    Image                                                             IP:ports           CPU/Memory    OsType    Location
-----------------  ---------------  -------------------  ----------------------------------------------------------------  -----------------  ------------  --------  ----------
-myContainerGroup  myResourceGroup  Succeeded            microsoft/aci-tutorial-sidecar,microsoft/aci-tutorial-app:v1      40.118.253.154:80  1.0 core/1.5 gb   Linux     westus
+Name              ResourceGroup    ProvisioningState    Image                                                           IP:ports               CPU/Memory       OsType    Location
+----------------  ---------------  -------------------  --------------------------------------------------------------  ---------------------  ---------------  --------  ----------
+myContainerGroup  myResourceGroup  Succeeded            microsoft/aci-helloworld:latest,microsoft/aci-tutorial-sidecar  52.168.26.124:80,8080  1.0 core/1.5 gb  Linux     westus
 ```
 
 ## <a name="view-logs"></a>Naplók megtekintése
@@ -158,9 +164,9 @@ Kimenet:
 
 ```bash
 listening on port 80
-::1 - - [18/Dec/2017:21:31:08 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
-::1 - - [18/Dec/2017:21:31:11 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
-::1 - - [18/Dec/2017:21:31:15 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
+::1 - - [09/Jan/2018:23:17:48 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
+::1 - - [09/Jan/2018:23:17:51 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
+::1 - - [09/Jan/2018:23:17:54 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
 ```
 
 A kiszolgálóoldali-car tároló a naplók megtekintéséhez futtassa a ugyanazzal a paranccsal a második tároló nevének megadását.
@@ -172,7 +178,7 @@ az container logs --resource-group myResourceGroup --name myContainerGroup --con
 Kimenet:
 
 ```bash
-Every 3s: curl -I http://localhost                          2017-12-18 23:19:34
+Every 3s: curl -I http://localhost                          2018-01-09 23:25:11
 
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
@@ -185,7 +191,7 @@ Last-Modified: Wed, 29 Nov 2017 06:40:40 GMT
 ETag: W/"67f-16006818640"
 Content-Type: text/html; charset=UTF-8
 Content-Length: 1663
-Date: Mon, 18 Dec 2017 23:19:34 GMT
+Date: Tue, 09 Jan 2018 23:25:11 GMT
 Connection: keep-alive
 ```
 

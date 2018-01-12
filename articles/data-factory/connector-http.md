@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: jingwang
-ms.openlocfilehash: 54afc7d993058ac2b3d2990ba131d334e9332555
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: cdf4e808045bb649b3a2406e8f7c1ef30e34fe7b
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-http-endpoint-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával HTTP-végpont
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -41,8 +41,9 @@ Pontosabban a HTTP-összekötő támogatja:
 
 Ez az összekötő különbségének és a [webes tábla összekötő](connector-web-table.md) a, hogy az utóbbi használt tábla tartalom kibontása HTML weblapot.
 
-## <a name="getting-started"></a>Bevezetés
-A másolási tevékenység során .NET SDK, a Python SDK, az Azure PowerShell, a REST API-t vagy a Azure Resource Manager-sablon használatával hozhat létre egy folyamatot. Lásd: [másolási tevékenység oktatóanyag](quickstart-create-data-factory-dot-net.md)) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját.
+## <a name="getting-started"></a>Első lépések
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 A következő szakaszok részletesen bemutatják megadhatók a Data Factory tartozó entitások HTTP-összekötőhöz használt tulajdonságokat.
 
@@ -53,7 +54,7 @@ Kapcsolódó HTTP-szolgáltatás támogatott a következő tulajdonságokkal:
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **HttpServer**. | Igen |
-| URL-címe | A webkiszolgáló alap URL-címe | Igen |
+| url | A webkiszolgáló alap URL-címe | Igen |
 | enableServerCertificateValidation | Adja meg, hogy engedélyezze a kiszolgálói SSL-tanúsítvány hitelesítése, HTTP-végponttal való kapcsolódáskor. | Nem, alapértelmezett érték true |
 | AuthenticationType | Megadja a hitelesítési típus. Két érték engedélyezett: **névtelen**, **alapvető**, **kivonatoló**, **Windows**, **ClientCertificate**. <br><br> Tekintse meg a további tulajdonságok és adott hitelesítési típusok JSON-példák a táblázat alatti részek kulcsattribútumokkal. | Igen |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhat Azure integrációs futásidejű vagy Self-hosted integrációs futásidejű (amennyiben az adattároló magánhálózaton található). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
@@ -253,5 +254,5 @@ Adatok másolása HTTP, állítsa be a forrás típusa a másolási tevékenysé
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats).

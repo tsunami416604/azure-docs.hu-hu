@@ -1,5 +1,5 @@
 ---
-title: "A Naplóelemzési számítógépcsoportok jelentkezzen keresések |} Microsoft Docs"
+title: "Az Azure Naplóelemzés számítógépcsoportok jelentkezzen keresések |} Microsoft Docs"
 description: "A Naplóelemzési számítógépcsoportok lehetővé teszik hatókör napló kereséseket számítógépek egy adott készletét.  Ez a cikk ismerteti a különböző módszerek segítségével hozzon létre számítógépcsoportokat és a naplófájl-keresési használatával."
 services: log-analytics
 documentationcenter: 
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2017
+ms.date: 01/09/2018
 ms.author: bwren
-ms.openlocfilehash: 17a59a38b6a445a7f42df171a711669f95fc84c2
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 4d6a80082711f09e9c189d53fb4fda00a7d73c29
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>A Naplóelemzési számítógépcsoportok jelentkezzen keresések
 
@@ -46,7 +46,7 @@ A következő táblázat ismerteti a számítógépcsoport meghatározó tulajdo
 
 | Tulajdonság | Leírás |
 |:---|:---|
-| Megjelenített név   | A Keresés a portálon megjelenítendő neve. |
+| Megjelenítendő név   | A Keresés a portálon megjelenítendő neve. |
 | Kategória       | A portál a keres rendszerezésére kategóriát. |
 | Lekérdezés          | A lekérdezés a számítógép (csoport). |
 | Függvény aliasa | Egy egyedi alias alapján határozza meg a számítógépcsoport a lekérdezésben. |
@@ -83,7 +83,7 @@ Konfigurálja az Active Directory biztonsági csoportok importálása Naplóelem
 Ha csoportok importálta, a menü észlelt csoporttagsággal rendelkező számítógépek számát és a csoportok importálása számát sorolja fel.  Akár a hivatkozások való visszatéréshez kattintson a **ComputerGroup** ezeket az adatokat rögzíti.
 
 ### <a name="windows-server-update-service"></a>A Windows Server Update Service
-Konfigurálja a WSUS-csoporttagságok importálása Naplóelemzési, megvizsgálja a célcsoport-kezelési csoportba tartozik az OMS-ügynökkel rendelkező számítógépek.  Használata ügyféloldali célcsoport-kezelési, OMS csatlakozik, és a WSUS részét számítógépek csoportok megcélzása rendelkezik Naplóelemzési importált csoport tagságát. Használata Kiszolgálóoldali célcsoport-meghatározás esetén az OMS ügynököt kell telepíteni ahhoz, hogy a csoporttagsági információkat lehet importálni az OMS-be a WSUS-kiszolgálón.  A csoporttagság folyamatosan frissítjük 4 óránként. 
+Konfigurálja a WSUS-csoporttagságok importálása Naplóelemzési, megvizsgálja a célcsoport-kezelési csoportba tartozik az OMS-ügynökkel rendelkező számítógépek.  Használata ügyféloldali célcsoport-kezelési, Log Analyticshez csatlakozik, és a WSUS részét számítógépek csoportok megcélzása rendelkezik Naplóelemzési importált csoport tagságát. Használata Kiszolgálóoldali célcsoport-kezelési, a OMS ügynököt kell telepíteni ahhoz, hogy a csoporttagsági információkat Naplóelemzési importálásra WSUS-kiszolgálón.  A csoporttagság folyamatosan frissítjük 4 óránként. 
 
 Konfigurálhatja a WSUS-csoportok importálása Naplóelemzési Naplóelemzési **speciális beállítások** az Azure portálon.  Válassza ki **számítógépcsoportok**, **WSUS**, majd **importálási WSUS-csoporttagságok**.  Nincs szükség további konfigurációra.
 
@@ -145,7 +145,7 @@ A következő lekérdezés csak a számítógépek UpdateSummary rekordok meghal
 
 
 ## <a name="computer-group-records"></a>Számítógép rekordcsoportjának
-Minden létrehozott Active Directory vagy a WSUS számítógépcsoport-tagság OMS tárháza rekord jön létre.  Ezeket a rekordokat típusa lehet **ComputerGroup** , és a tulajdonságok az alábbi táblázatban.  Rekordok nem jönnek létre a napló keresések alapján számítógépcsoportokhoz.
+A Naplóelemzési munkaterület minden létrehozott Active Directory vagy a WSUS számítógépcsoport-tagság a rekord jön létre.  Ezeket a rekordokat típusa lehet **ComputerGroup** , és a tulajdonságok az alábbi táblázatban.  Rekordok nem jönnek létre a napló keresések alapján számítógépcsoportokhoz.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
@@ -159,6 +159,6 @@ Minden létrehozott Active Directory vagy a WSUS számítógépcsoport-tagság O
 | ManagementGroupName |A felügyeleti csoport neve SCOM-ügynökök esetén.  Más ügynökök, ez pedig AOI -\<munkaterület azonosítója\> |
 | TimeGenerated |Dátum és idő, a számítógép csoport létrehozásakor vagy frissítésekor. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További tudnivalók [keresések jelentkezzen](log-analytics-log-searches.md) az adatforrások és a megoldások gyűjtött adatok elemzésére.  
 

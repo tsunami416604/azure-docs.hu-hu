@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2017
 ms.author: steveesp
-ms.openlocfilehash: d424eae90d82c7306b4ef948dbc793d867c8b26f
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 998956d00ae6d3be605163b566f5667a3bb95f38
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>Az Azure virtuális gépek hálózati teljesítmény optimalizálása
 
@@ -46,7 +46,7 @@ Ha a Windows virtuális gép támogatja [az elérését gyorsítja fel hálózat
     ```powershell
     Name                    : Ethernet
     InterfaceDescription    : Microsoft Hyper-V Network Adapter
-    Enabled              : True
+    Enabled                  : True
     ```
 
 ## <a name="linux-vm"></a>Linux virtuális gép
@@ -154,4 +154,5 @@ Tudjon meg többet a Linux integrációs szolgáltatások verzió 4.2 a Hyper-V 
 
 ## <a name="next-steps"></a>További lépések
 * Az optimalizált eredményt a [sávszélesség/átviteli Azure virtuális gép tesztelési](virtual-network-bandwidth-testing.md) a forgatókönyvéhez.
+* Megtudhatja, hogyan [sávszélességet a virtuális gépek] (virtuális-machine-hálózati-throughput.md)
 * Ismerje meg [Azure Virtual Network gyakori kérdések (GYIK)](virtual-networks-faq.md)

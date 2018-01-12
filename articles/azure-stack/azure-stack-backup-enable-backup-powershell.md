@@ -1,6 +1,6 @@
 ---
 title: "Biztonsági mentés engedélyezése a PowerShell-lel Azure verem |} Microsoft Docs"
-description: "Az infrastruktúra vissza szolgáltatás engedélyezése a Windows PowerShell segítségével, hogy az Azure-verem állítható vissza, ha hiba történik."
+description: "Engedélyezze az infrastruktúra biztonsági másolat szolgáltatás a Windows PowerShell használatával, hogy az Azure-verem állítható vissza, ha hiba történik."
 services: azure-stack
 documentationcenter: 
 author: mattbriggs
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: mabrigg
-ms.openlocfilehash: b4f48b7fd07c5fb590b6989e04e9084c86142d2a
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: 5326aa5af174c9027729b98eac62a314e3ecc122
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="enable-backup-for-azure-stack-with-powershell"></a>Azure verem PowerShell és a biztonsági mentés engedélyezése
 
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
-Az infrastruktúra vissza szolgáltatás engedélyezése a Windows PowerShell segítségével, hogy az Azure-verem állítható vissza, ha hiba történik. A PowerShell-parancsmagokat engedélyezése a biztonsági mentés, indítsa el a biztonsági mentési és biztonsági mentési adatok a operátor felügyeleti végpont keresztül érheti el.
+Engedélyezze az infrastruktúra biztonsági másolat szolgáltatás a Windows PowerShell használatával, hogy az Azure-verem állítható vissza, ha hiba történik. A PowerShell-parancsmagokat engedélyezése a biztonsági mentés, indítsa el a biztonsági mentési és biztonsági mentési adatok a operátor felügyeleti végpont keresztül érheti el.
 
 ## <a name="download-azure-stack-tools"></a>Töltse le az Azure verem eszközök
 
@@ -90,6 +90,9 @@ Az ugyanazon PowerShell-munkamenetben futtassa a következő parancsokat:
    $encryptionkey = New-EncryptionKeyBase64
    ```
 
+> [!Warning]  
+> A kulcs létrehozásához a AzureStack-eszközöket kell használnia.
+
 ## <a name="provide-the-backup-share-credentials-and-encryption-key-to-enable-backup"></a>Adja meg a biztonsági mentési megosztást, a hitelesítő adatokat és a titkosítási kulcs biztonsági mentés engedélyezése
 
 Ugyanabban a PowerShell munkamenetben szerkessze a következő PowerShell-parancsfájlt a környezetnek a változók hozzáadásával. A frissített parancsprogrammal adja meg a biztonsági mentési megosztást, a hitelesítő adatokat és a titkosítási kulcs infrastruktúra a biztonsági mentési szolgáltatás.
@@ -98,18 +101,18 @@ Ugyanabban a PowerShell munkamenetben szerkessze a következő PowerShell-paranc
 |---              |---                                        |
 | $username       | Típus a **felhasználónév** megosztott meghajtóhelyét a tartomány és felhasználónév használatával. Például: `Contoso\administrator`. |
 | $password       | Típus a **jelszó** a felhasználó számára. |
-| $sharepath      | Írja be a elérési útját a **biztonsági másolat tárolási helye**. Egy univerzális elnevezési konvenció (UNC) szerinti karakterlánc kell használnia egy különálló eszköz üzemeltetett fájlmegosztás elérési útja. UNC-karakterláncnak erőforrások, például a megosztott fájlok vagy az eszközök helyét adja meg. Ahhoz, hogy a biztonsági mentési adatok rendelkezésre állását, az eszköz külön kell lennie. |
+| $sharepath      | Írja be a elérési útját a **biztonsági másolat tárolási helye**. Egy különálló eszköz üzemeltetett fájlmegosztás elérési útja egy univerzális elnevezési konvenció (UNC) szerinti karakterlánc kell használnia. UNC-karakterláncnak erőforrások, például a megosztott fájlok vagy az eszközök helyét adja meg. Ahhoz, hogy a biztonsági mentési adatok rendelkezésre állását, az eszköz külön kell lennie. |
 
    ```powershell
-   $username = "domain\backupoadmin"
+    $username = "domain\backupoadmin"
     $password = "password"
     $credential = New-Object System.Management.Automation.PSCredential($username, ($password| ConvertTo-SecureString -asPlainText -Force))  
     $location = Get-AzsLocation
     $sharepath = "\\serverIP\AzSBackupStore\contoso.com\seattle"
-
-Set-AzSBackupShare -Location $location -Path $sharepath -UserName $credential.UserName -Password $credential.GetNetworkCredential().password -EncryptionKey $encryptionkey 
-
+    
+    Set-AzSBackupShare -Location $location.Name -Path $sharepath -UserName $credential.UserName -Password $credential.GetNetworkCredential().password -EncryptionKey $encryptionkey
    ```
+   
 ##  <a name="confirm-backup-settings"></a>Biztonsági mentési beállításainak megerősítése
 
 Az ugyanazon PowerShell-munkamenetben futtassa a következő parancsokat:

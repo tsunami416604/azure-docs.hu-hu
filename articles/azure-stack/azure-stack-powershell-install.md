@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: mabrigg
-ms.openlocfilehash: b44129400e878e9032623e4d0962153d50303660
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 25b89571277e393fbad7cdd6e193d9b3f02f3ee5
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="install-powershell-for-azure-stack"></a>A verem az Azure PowerShell telepítése  
 
@@ -31,7 +31,7 @@ Ez a cikk tartalmaz részletes utasításokat verem Azure PowerShell telepítés
 > [!NOTE]
 > A következő lépések végrehajtásához szükséges PowerShell 5.0. A verzió ellenőrzéséhez $PSVersionTable.PSVersion futtatása, és hasonlítsa össze a "Fő" verziószáma.
 
-Azure verem PowerShell-parancsokat a PowerShell-galériában keresztül telepített. A PSGallery tárház regiser nyissa meg egy rendszergazda jogú PowerShell-munkamenetet a csomag vagy a Windows-alapú külső ügyfél Ha VPN-en keresztül csatlakozó és a következő parancsot:
+Azure verem PowerShell-parancsokat a PowerShell-galériában keresztül telepített. Regisztrálja a PSGallery tárház, nyissa meg egy rendszergazda jogú PowerShell-munkamenetet a csomag vagy a Windows-alapú külső ügyfél Ha VPN-en keresztül csatlakozó és a következő parancsot:
 
 ```powershell
 Set-PSRepository `
@@ -49,7 +49,7 @@ A szükséges verzió telepítése előtt győződjön meg arról, hogy távolí
    Get-Module -ListAvailable | where-Object {$_.Name -like “Azure*”} | Uninstall-Module
    ```
 
-* Jelentkezzen be a csomagban található, vagy a Windows-alapú külső ügyfél Ha azt tervezi, hogy a VPN-kapcsolatot. Kezdje az "Azure" összes mappa törlése a `C:\Program Files (x86)\WindowsPowerShell\Modules` és `C:\Users\AzureStackAdmin\Documents\WindowsPowerShell\Modules` mappák. Törli a "AzureStackAdmin" és "globális" felhasználói hatókörök meglévő PowerShell modul. 
+* Jelentkezzen be a csomagban található, vagy a Windows-alapú külső ügyfél Ha azt tervezi, hogy a VPN-kapcsolatot. Kezdje az "Azure" összes mappa törlése a `C:\Program Files\WindowsPowerShell\Modules` és `C:\Users\AzureStackAdmin\Documents\WindowsPowerShell\Modules` mappák. Törli a "AzureStackAdmin" és "globális" felhasználói hatókörök meglévő PowerShell modul. 
 
 A következő szakaszok ismertetik a verem Azure PowerShell telepítéséhez szükséges lépéseket. PowerShell működtetett csatlakoztatva, részben kapcsolódó Azure-veremben, vagy egy leválasztott forgatókönyvben telepíthető. 
 
@@ -126,7 +126,6 @@ Kapcsolat nélküli forgatókönyv esetében először töltse le a PowerShell-m
      -SourceLocation $SourceLocation `
      -InstallationPolicy Trusted
 
-   ```powershell
    Install-Module AzureRM `
      -Repository $RepoName
 
@@ -134,7 +133,7 @@ Kapcsolat nélküli forgatókönyv esetében először töltse le a PowerShell-m
      -Repository $RepoName 
    ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Töltse le az Azure-verem eszközök a Githubról](azure-stack-powershell-download.md)
 * [Az Azure-verem felhasználói PowerShell környezet konfigurálása](user/azure-stack-powershell-configure-user.md)  

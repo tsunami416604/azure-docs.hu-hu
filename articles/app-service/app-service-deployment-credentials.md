@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/05/2016
 ms.author: dariagrigoriu
-ms.openlocfilehash: 3039d29bbb92280c12d683702aeef54cb6c538cb
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: d66b5aa4eb2ad90596dfe9e26bbc18996c967295
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Telepítési hitelesítő adatok beállítása az Azure App Service
 [Az Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) támogatja a hitelesítő adatok kétféle [helyi Git-telepítésének](app-service-deploy-local-git.md) és [FTP/S telepítési](app-service-deploy-ftp.md). Ezek olyan nem ugyanaz, mint az Azure Active Directorybeli hitelesítő adatokat.
@@ -55,7 +55,7 @@ Az üzembe helyezési hitelesítő adatok megadása után található a *Git* az
 
 ![](./media/app-service-deployment-credentials/deployment_credentials_overview.png)
 
-és és *FTP* az alkalmazás központi telepítési felhasználónév **tulajdonságok**.
+és *FTP* az alkalmazás központi telepítési felhasználónév **tulajdonságok**.
 
 ![](./media/app-service-deployment-credentials/deployment_credentials_properties.png)
 
@@ -90,6 +90,6 @@ Az alkalmazási szintű hitelesítő adatok alaphelyzetbe állítása:
 
     A reset művelet érvényteleníti a korábban letöltött. PublishSettings-fájlok.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan telepítse az alkalmazást a rendszer ezen hitelesítő adatok segítségével [helyi Git](app-service-deploy-local-git.md) vagy [FTP/S](app-service-deploy-ftp.md).

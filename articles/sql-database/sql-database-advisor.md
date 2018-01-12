@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 09/20/2017
 ms.author: sstein
-ms.openlocfilehash: 84706837aeb416d13dab617f51a33d62a934c016
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: ea1069d4ec29ad66562a6798a8b13998d0d2ef89
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/10/2018
 ---
-# <a name="performance-recommendations"></a>Teljesítmény javaslatok
+# <a name="performance-recommendations"></a>Teljesítménnyel kapcsolatos javaslatok
 
 Az Azure SQL Database Tanulja meg, és alkalmazkodik az alkalmazással, és ajánlásokat testreszabott így lehetővé teszi az SQL-adatbázisok a teljesítmény maximalizálásához. A teljesítmény folyamatosan megfelelőségét ellenőrizni kell az SQL-adatbázis használati előzmények elemzésével. A javaslatok, amelyek egy adatbázis egyedi munkaterhelés mintát alapulnak, és a teljesítmény növelése érdekében.
 
@@ -36,7 +36,7 @@ Javaslatok használatával létrehozott indexek mindig auto_created indexek szer
 
 A create index javaslat van érvényben, miután az Azure SQL Database összehasonlítja alapteljesítményének a lekérdezések teljesítményét. Ha új index fejlesztései a teljesítmény, javaslat lesz megjelölve, sikeres, és hatás jelentés lesz elérhető. Abban az esetben, ha az index nem kapcsolja a következő előnyöket, akkor a rendszer automatikusan visszaállítja. Így az Azure SQL Database biztosítja, hogy javaslatokat használatával csak javítja az adatbázis teljesítménye.
 
-Bármely **Create index** javaslat rendelkezik egy biztonsági házirendet, amely nem engedélyezi a javaslat alkalmazása, ha az elmúlt 20 perc, vagy ha a tárhely 90 %-a használati 80 % felett volt az adatbázis vagy a készlet DTU-használatát ki. Ebben az esetben a javaslat lesz elhalasztva.
+Bármely **Create index** javaslat rendelkezik egy biztonsági házirendet, amely nem engedélyezi a javaslat alkalmazása, ha az erőforrás-felhasználás egy adatbázis vagy az alkalmazáskészlet magas ki. Biztonsági házirendek fiók CPU, az adatok IO, a napló IO és a rendelkezésre álló tár veszi. Ha a CPU, az adatok IO vagy a napló IO nem nagyobb, mint 80 %-ot az elmúlt 30 perc létrehozása index el kell halasztani. Rendelkezésre álló tár 10 % alatt lenne, az index létrehozása után, ha a javaslat hiba állapotba kerül. Ha néhány nap után automatikus hangolása továbbra is úgy véli, hogy az index hasznos lehet a folyamat ismét elindul. Ez a folyamat ismétlődik mindaddig, amíg nincs elég rendelkezésre álló tár index létrehozása vagy az index nem látható, előnyös többé.
 
 ## <a name="drop-index-recommendations"></a>Indexek elvetésére vonatkozó javaslatok
 Mellett egy hiányzó index észlelésére, az Azure SQL Database folyamatosan elemzi a létező indexek teljesítményét. Ha az index nem használható, az Azure SQL Database azt javasolja, eldobása. Az index elvetése két esetekben ajánlott:
@@ -78,7 +78,7 @@ Ha ez a javaslat alkalmaz, lehetővé teszi az kényszerített (egyszerű) param
 | 2812 |Nem található a tárolt eljárás ' *'. |
 | 8144 |Az eljárás vagy függvény * megadott túl sok argumentum tartozik. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A javaslatok figyelése, és továbbra is alkalmazandó, pontosítsa a teljesítményt. Adatbázis-terhelések dinamikusak, és folyamatosan módosítása. SQL Database advisor továbbra is fennáll, figyeléséhez, és adja meg a javaslatok, javíthatja az adatbázis teljesítménye. 
 
 * Lásd: [Azure SQL Database automatikus hangolása](sql-database-automatic-tuning.md) az adatbázis-indexek és a lekérdezés végrehajtási tervek automatikus hangolása.

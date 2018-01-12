@@ -9,16 +9,17 @@ editor:
 ms.assetid: edae1156-2dc7-4dab-9e5c-bf253d3971d0
 ms.service: automation
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/11/2017
 ms.author: eamono
-ms.openlocfilehash: 25ad5e04c96aab9dddd39cdb4d33bd8411817e8e
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.custom: mvc
+ms.openlocfilehash: e277aa44dfe625780d72a78010f0638c73a6b182
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="onboard-update-and-change-tracking-solutions-to-azure-automation"></a>A bevezetni frissítés és a változáskövetési megoldás az Azure Automation
 
@@ -37,7 +38,7 @@ Az oktatóanyag teljesítéséhez a következőkre szükség:
 
 * Egy Azure-előfizetés. Ha még nem rendelkezik fiókkal, [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), illetve [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Automation-fiók](automation-offering-get-started.md) gépek kezeléséhez.
-* A [virtuális gép](../virtual-machines/windows/quick-create-portal.md) bevezetni.
+* A szolgáltatásba felvenni kívánt [virtuális gép](../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="onboard-an-azure-vm"></a>A bevezetni az Azure virtuális gép
 

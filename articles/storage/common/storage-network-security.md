@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 10/25/2017
 ms.author: cbrooks
-ms.openlocfilehash: 91738c1222548f9036daf19626b3ac20ddb4a76f
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 9b00faa06684be353cfcf5f67f182a56511210c5
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks-preview"></a>Azure Storage tűzfalak és a virtuális hálózatok (előzetes verzió) konfigurálása
 Az Azure Storage lehetővé téve a storage-fiókok egy meghatározott engedélyezett hálózatok biztonságos többrétegű biztonsági modellt biztosít.  Ha hálózati szabályok úgy vannak konfigurálva, csak az engedélyezett hálózatokhoz alkalmazások férhet hozzá a tárfiók.  Egy engedélyezett hálózatból meghívásakor az alkalmazások továbbra is szükséges megfelelő jogosultságokkal (egy érvényes tárelérési kulccsal vagy SAS-token) a tárfiók eléréséhez szükséges.
@@ -39,6 +39,10 @@ Hálózati szabályok alkalmazhatók a meglévő vagy új tárfiók létrehozás
 Ha a hálózati szabályok vonatkoznak, azok minden olyan kérelem esetében érvényesek lesznek.  Hozzáférést egy adott IP-cím szolgáltatás SAS-tokenje osztja ki az **korlát** a hozzáférési jogkivonat a jogosult azonban nem új hozzáférést meghaladja a beállított hálózati szabályok tegye. 
 
 Virtuális gép lemezét forgalom (beleértve a csatlakoztatási és műveletek leválasztásához és lemez IO) **nem** hálózati-szabályok.  Lapblobokat REST hozzáférést hálózati szabályok védik.
+
+> [!NOTE]
+> Biztonsági mentése és visszaállítása a virtuális gépek használata a nem felügyelt lemezek tárfiókokban hálózati szabálya jelenleg nem támogatott.  További információkért lásd: [vonatkozó korlátozások biztonsági mentése és visszaállítása egy virtuális gép](/azure/backup/backup-azure-arm-vms-prepare#limitations-when-backing-up-and-restoring-a-vm)
+>
 
 Klasszikus tárfiókokat **nem** támogatja a tűzfalak és a virtuális hálózatok.
 

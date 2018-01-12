@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: ancav
-ms.openlocfilehash: 198aa74622c0f938aabe6540e2321e16aa9beb21
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: 4a95e9882515e6a2861292829a44847e11f39063
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Az Azure portál használatával megtekintheti a szolgáltatás állapotával kapcsolatos értesítésekre
 
@@ -41,7 +41,7 @@ csatornák | A következő értékek egyikét: **Admin** vagy **művelet**.
 correlationId | Általában egy GUID Azonosítót a karakterlánc formátuma. Ugyanaz a művelet általában tartozó események az azonos correlationId megosztani.
 eventDataId | Az esemény egyedi azonosítója.
 EventName | Egy esemény címe.
-szint | Egy esemény szintje. A következő értékek egyikét: **kritikus**, **hiba**, **figyelmeztetés**, **tájékoztató**, vagy **részletes** .
+szint | Egy esemény szintje. A következő értékek egyikét: **kritikus**, **hiba**, **figyelmeztetés** vagy **tájékoztató**.
 resourceProviderName | Az erőforrás-szolgáltató az érintett erőforrás neve.
 a resourceType| Az erőforrás az érintett erőforrás típusát.
 a részállapot | Általában a megfelelő REST HTTP-állapotkód: hívja, de más egy részállapot leíró karakterláncok is használható. Például: OK (HTTP-állapotkód:: 200), létrehozott (HTTP-állapotkód:: 201-es), fogadja el (HTTP-állapotkód:: 202), nem a tartalom (HTTP-állapotkód: 204), hibás kérés (HTTP-állapotkód:: 400), nem található (HTTP-állapotkód: 404-es), ütközés (HTTP-állapotkód:: 409), belső kiszolgáló Hiba (HTTP-állapotkód: 500), a Service nem érhető el (HTTP-állapotkód: 503-as), és az átjáró időtúllépése (HTTP-állapotkód: 504).

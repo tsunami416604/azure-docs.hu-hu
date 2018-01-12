@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: mbullwin
-ms.openlocfilehash: 384f875702f2dee3bf0e806675a7df9f190d93bd
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: afdef7898ef68930ef702ddf67baaadae9360236
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Az Application Insights és Naplóelemzési által használt IP-címek
 A [Azure Application Insights](app-insights-overview.md) szolgáltatás által használt IP-címek száma. Szükség lehet tudja ezeket a címeket, ha a figyelt alkalmazás egy tűzfal mögött található.
@@ -135,6 +135,7 @@ SE : Stockholm
 94.245.78.41
 94.245.78.42
 94.245.78.45
+GB : United Kingdom
 51.141.25.219
 51.141.32.101
 51.141.35.167
@@ -262,14 +263,14 @@ Megjegyzés: *. loganalytics.io tartomány a Log Analyticshez csapat tulajdonáb
 
 | Cél | URI | IP | Portok |
 | --- | --- | --- | --- |
-| Ügynök | Agent.azureserviceprofiler.NET<br/>*. agent.azureserviceprofiler.net | dinamikus | 443
+| Ügynök | Agent.azureserviceprofiler.NET<br/>*. agent.azureserviceprofiler.net | 51.143.96.206<br/>51.143.98.157<br/>52.161.8.88<br/>52.161.29.225<br/>52.178.149.106<br/>52.178.147.66<br/>40.68.32.221<br/>104.40.217.71 | 443
 | Portál | Gateway.azureserviceprofiler.NET | dinamikus | 443
-| Storage | *. core.windows.net | dinamikus | 443
+| Tárolás | *. core.windows.net | dinamikus | 443
 
 ## <a name="snapshot-debugger"></a>Pillanatkép-hibakereső
 
 | Cél | URI | IP | Portok |
 | --- | --- | --- | --- |
-| Ügynök | PPE.azureserviceprofiler.NET<br/>*. ppe.azureserviceprofiler.net | dinamikus | 443
+| Ügynök | PPE.azureserviceprofiler.NET<br/>*. ppe.azureserviceprofiler.net | 23.101.68.84<br/>52.174.44.101<br/>52.250.121.195<br/>51.143.88.187<br/> | 443
 | Portál | PPE.Gateway.azureserviceprofiler.NET | dinamikus | 443
-| Storage | *. core.windows.net | dinamikus | 443
+| Tárolás | *. core.windows.net | dinamikus | 443

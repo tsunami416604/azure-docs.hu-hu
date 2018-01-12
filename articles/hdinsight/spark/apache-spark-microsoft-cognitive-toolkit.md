@@ -3,7 +3,7 @@ title: "Microsoft Azure HDInsight Spark mély biztonságával és kognitív eszk
 description: "Ismerje meg, hogyan kognitív eszközkészlet Microsoft mély tanulási modell betanítását alkalmazhatja a Spark Python API használatát egy Azure HDInsight Spark-fürt dataset."
 services: hdinsight
 documentationcenter: 
-author: nitinme
+author: mumian
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
-ms.author: nitinme
-ms.openlocfilehash: e4bf0b176817daf3c128f26f407cde2ce1adba4c
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.author: jgao
+ms.openlocfilehash: 036efd040370a821befbbd57beec24372fd0d204
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Microsoft kognitív eszközkészlet mély tanulása Azure HDInsight Spark-fürt használatára
 
@@ -91,7 +91,7 @@ A Microsoft kognitív eszközkészlet használata az Azure HDInsight Spark-fürt
 
 5. A notebook feltöltése, után kattintson a notebook neve, és kövesse a saját magát a notebook töltse be az adatokat, és hajtsa végre az oktatóanyag utasításait.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Forgatókönyvek

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2017
 ms.author: jingwang
-ms.openlocfilehash: 41842806aecfc0ed6ac663262305785a23c5ba5d
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 7316ad5637fbfc11f3da48394874f814dc47be31
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Másolja az adatokat, és az SQL-kiszolgáló Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -44,8 +44,9 @@ Pontosabban az SQL Server-összekötő támogatja:
 
 Szeretné használni az adatok másolása az SQL Server-adatbázis, amely nincs nyilvánosan elérhető, akkor be kell állítania egy Self-hosted integrációs futásidejű. Lásd: [Self-hosted integrációs futásidejű](create-self-hosted-integration-runtime.md) cikkben alább. Az integrációs futásidejű biztosít egy beépített SQL Server adatbázis-illesztőprogramját, ezért nem, manuálisan kell telepítenie minden olyan illesztőprogram /, az SQL Server-adatbázis az adatok másolásakor kell.
 
-## <a name="getting-started"></a>Bevezetés
-A másolási tevékenység során .NET SDK, a Python SDK, az Azure PowerShell, a REST API-t vagy a Azure Resource Manager-sablon használatával hozhat létre egy folyamatot. Lásd: [másolási tevékenység oktatóanyag](quickstart-create-data-factory-dot-net.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját.
+## <a name="getting-started"></a>Első lépések
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 A következő szakaszok részletesen bemutatják adat-előállító entitások adott SQL Server adatbázis-összekötővel meghatározásához használt tulajdonságokat.
 
@@ -482,11 +483,11 @@ Ha másol adatokat az/SQL Server, a következő megfeleltetéseket segítségév
 |:--- |:--- |
 | bigint |Int64 |
 | Bináris |Byte] |
-| bit |Logikai érték |
+| bit |Logikai |
 | Karakter |Karakterlánc, Char] |
-| Dátum |Dátum és idő |
-| Dátum és idő |Dátum és idő |
-| datetime2 |Dátum és idő |
+| dátum |DateTime |
+| Dátum és idő |DateTime |
+| datetime2 |DateTime |
 | datetimeoffset |DateTimeOffset |
 | Decimális |Decimális |
 | A FILESTREAM attribútum (varbinary(max)) |Byte] |
@@ -498,9 +499,9 @@ Ha másol adatokat az/SQL Server, a következő megfeleltetéseket segítségév
 | ntext |Karakterlánc, Char] |
 | Numerikus |Decimális |
 | nvarchar |Karakterlánc, Char] |
-| valós |Egyetlen |
+| valós |Egyedülálló |
 | ROWVERSION |Byte] |
-| smalldatetime |Dátum és idő |
+| smalldatetime |DateTime |
 | smallint |Int16 |
 | kis pénz típusú értéknél |Decimális |
 | sql_variant |Objektum * |
@@ -533,5 +534,5 @@ Ha másol adatokat az/SQL Server, a következő megfeleltetéseket segítségév
 6. **Ellenőrizze a kapcsolat**: teljesen minősített nevet az SQL Serverhez való kapcsolódáshoz használja az SQL Server Management Studio egy másik gépről. Például: `"<machine>.<domain>.corp.<company>.com,1433"`.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md##supported-data-stores-and-formats).

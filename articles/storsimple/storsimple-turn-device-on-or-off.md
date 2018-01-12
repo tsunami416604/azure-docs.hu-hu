@@ -4,7 +4,7 @@ description: "Egy új StorSimple eszközön beállítás bekapcsolását, leáll
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 8e9c6e6c-965c-4a81-81bd-e1c523a14c82
 ms.service: storsimple
@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 11/03/2017
+ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e6a6b0ab5c493aa99438f27222d1112053951c97
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 95fd00608be9cfafb4c703c32ec3ed4713855ca5
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>Kapcsolja be, vagy kapcsolja ki a StorSimple 8000 series eszköz
 
@@ -147,16 +147,16 @@ Fut a StorSimple eszköz esetleg le kell állítani, ha áthelyezik, végrehajto
 * [EBOD ház eszköz](#8600a)
 
 ### <a name="device-with-primary-enclosure-a-name8100a"></a>Elsődleges ház eszköz<a name="8100a">
-A leállítás előtt az eszköz zavartalan és szabályozott módon ezt megteheti a klasszikus Azure portálon keresztül a Windows PowerShell vagy a StorSimple. 
+A leállítás előtt az eszköz zavartalan és szabályozott módon is elvégezheti az Azure portálon keresztül vagy a Windows PowerShell segítségével a StorSimple. 
 
 > [!IMPORTANT]
 > Nem állnak le egy futó eszköz a főkapcsoló hátulján olvasható az eszköz használatával.
 > 
-> Az eszköz leállítása, előtt ellenőrizze, hogy az eszköz összetevők kifogástalan. A klasszikus Azure portálon lépjen a **eszközök** > **karbantartási** > **hardverállapot**, és győződjön meg arról, hogy az összes összetevő állapota a rendszer zöld. Ez igaz csak egy kifogástalan rendszer. Ha a rendszer épp most állítja le a hibás összetevő lecseréléséhez jelenik meg (piros) sikertelen vagy csökkentett teljesítményű megfelelő összetevőjének (sárga) állapota a **hardverállapot**.
+> Az eszköz leállítása, előtt ellenőrizze, hogy az eszköz összetevők kifogástalan. Az Azure-portálon lépjen a **eszközök** > **figyelő** > **hardver állapotának**, és győződjön meg arról, hogy az összes összetevő állapota zöld. Ez igaz csak egy kifogástalan rendszer. Ha a rendszer épp most állítja le a hibás összetevő lecseréléséhez jelenik meg (piros) sikertelen vagy csökkentett teljesítményű megfelelő összetevőjének (sárga) állapota a **hardverállapot**.
 > 
 > 
 
-Ha hozzáfér a Windows PowerShell StorSimple vagy a klasszikus Azure portálra, kövesse a [állítsa le a StorSimple eszköz](storsimple-manage-device-controller.md#shut-down-a-storsimple-device). 
+Miután a StorSimple vagy az Azure-portálon fér hozzá a Windows PowerShell, kövesse a [állítsa le a StorSimple eszköz](storsimple-8000-manage-device-controller.md#shut-down-a-storsimple-device). 
 
 ### <a name="device-with-ebod-enclosure-a-name8600a"></a>EBOD ház eszköz<a name="8600a">
 > [!IMPORTANT]
@@ -171,6 +171,6 @@ Ha hozzáfér a Windows PowerShell StorSimple vagy a klasszikus Azure portálra,
 > [!NOTE]
 > A SAS-kábel, amely segítségével a EBOD ház csatlakozzon az elsődleges ház tilos megvonni amíg után a rendszer leállítása.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Forduljon a Microsoft Support](storsimple-8000-contact-microsoft-support.md) Ha problémába ütközik a bekapcsolását, vagy a StorSimple eszköz leállítása.
 

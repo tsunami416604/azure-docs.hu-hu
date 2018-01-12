@@ -1,6 +1,6 @@
 ---
-title: "A Content Delivery Network szabálymotor vonatkozó feltételek egyeznek |} Microsoft Docs"
-description: "Az Azure Content Delivery Network referenciadokumentációt szabályok motor egyezés feltételek és a szolgáltatások."
+title: "Az Azure CDN szabálymotor vonatkozó feltételek egyeznek |} Microsoft Docs"
+description: "Az Azure Content Delivery Network referenciadokumentációt szabályok motor egyeztetési feltételeknek."
 services: cdn
 documentationcenter: 
 author: Lichard
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
-ms.openlocfilehash: 944675f4b055c3d0c2559db53e4807a5c00bda64
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 9986e654b076df099e3912f9da628728723b5c3d
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/11/2018
 ---
-# <a name="match-conditions-for-the-content-delivery-network-rules-engine"></a>A Content Delivery Network szabálymotor vonatkozó feltételek egyeznek
-Ez a cikk az Azure Content Delivery Network szabad feltételei részletes leírását tartalmazza [szabálymotor](cdn-rules-engine.md).
+# <a name="match-conditions-for-the-azure-cdn-rules-engine"></a>Az Azure CDN szabálymotor vonatkozó feltételek egyeznek
+Ez a cikk a rendelkezésre álló egyezés feltételek esetében az Azure Content Delivery Network (CDN) részletes leírását tartalmazza [szabálymotor](cdn-rules-engine.md).
 
 A szabály második része a egyezés feltétel. Egy egyezés feltétel azonosítja az adott típusú kérelmet, amely funkciókat érvényesül.
 
@@ -106,7 +106,7 @@ Lekérdezés helyettesítő URL-címe | A megadott érték szemben a lekérdezé
 
 A mindig egyezés feltétel alapértelmezés szerinti szolgáltatások összes kérelem vonatkozik.
 
-[Lap tetejére](#azure-cdn-rules-engine-match-conditions)
+[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
 
 </br>
 
@@ -125,7 +125,7 @@ Kapcsolatos információkat:
   - Figyelmen kívül hagyja az eredeti No-Cache
   - Belső maximális elavult
 
-[Lap tetejére](#azure-cdn-rules-engine-match-conditions)
+[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
 
 </br>
 
@@ -141,7 +141,7 @@ Kapcsolatos információkat:
  - A tartalom-hozzáférési pont azonosítja a szolgáltatást, amely a kért tartalom szolgálhat.
  - Ne használjon az és IF utasítást bizonyos egyezés feltételek kombinálhatók. Például egy ügyfél eredeti egyezik a feltétellel CDN származási egyezés feltétel kombinálásával hozna létre egy egyező mintát, amely soha nem feleltethető. Ezért két CDN származási egyezés feltételek nem használható együtt az és IF utasítást keresztül.
 
-[Lap tetejére](#azure-cdn-rules-engine-match-conditions)
+[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
 
 </br>
 
@@ -164,7 +164,7 @@ Kapcsolatos információkat:
   - Figyelmen kívül hagyja az eredeti No-Cache
   - Belső maximális elavult
 
-[Lap tetejére](#azure-cdn-rules-engine-match-conditions)
+[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
 
 </br>
 
@@ -193,7 +193,7 @@ Kapcsolatos információkat:
   - Figyelmen kívül hagyja az eredeti No-Cache
   - Belső maximális elavult
 
-[Lap tetejére](#azure-cdn-rules-engine-match-conditions)
+[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
 
 </br>
 
@@ -222,7 +222,7 @@ Kapcsolatos információkat:
   - Figyelmen kívül hagyja az eredeti No-Cache
   - Belső maximális elavult
 
-[Lap tetejére](#azure-cdn-rules-engine-match-conditions)
+[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
 
 </br>
 
@@ -243,7 +243,7 @@ Kapcsolatos információkat:
   - Figyelmen kívül hagyja az eredeti No-Cache
   - Belső maximális elavult
 
-[Lap tetejére](#azure-cdn-rules-engine-match-conditions)
+[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
 
 </br>
 
@@ -257,7 +257,7 @@ Kapcsolatos információkat:
   - Egy peremhálózati CNAME-konfiguráció
 - Ne használjon az és IF utasítást bizonyos egyezés feltételek kombinálhatók. Például a CDN-forrása egyezik a feltétellel ügyfél eredeti egyezés feltétel kombinálásával hozna létre egy egyező mintát, amely soha nem feleltethető. Ezért két felhasználói származási egyezés feltétel nem használható együtt keresztül az és IF utasítást.
 
-[Lap tetejére](#azure-cdn-rules-engine-match-conditions)
+[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
 
 </br>
 
@@ -292,7 +292,7 @@ Kiadás dátuma | a(z) % {wurfl_cap_release_date} | Egy olyan karakterlánc, ame
 Megoldási magassága | a(z) % {wurfl_cap_resolution_height} | Az eszköz magassága képpontban jelző egész számot. | 768
 Megoldási szélessége | a(z) % {wurfl_cap_resolution_width} | Az eszköz szélességét képpontban jelző egész számot. | 1024
 
-[Lap tetejére](#azure-cdn-rules-engine-match-conditions)
+[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
 
 </br>
 
@@ -309,7 +309,7 @@ Kapcsolatos információkat:
   - Figyelmen kívül hagyja az eredeti No-Cache
   - Belső maximális elavult
 
-[Lap tetejére](#azure-cdn-rules-engine-match-conditions)
+[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
 
 </br>
 
@@ -329,7 +329,7 @@ Kapcsolatos információkat:
   - Figyelmen kívül hagyja az eredeti No-Cache
   - Belső maximális elavult
 
-[Lap tetejére](#azure-cdn-rules-engine-match-conditions)
+[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
 
 </br>
 
@@ -350,7 +350,7 @@ Kapcsolatos információkat:
   - Figyelmen kívül hagyja az eredeti No-Cache
   - Belső maximális elavult
 
-[Lap tetejére](#azure-cdn-rules-engine-match-conditions)
+[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
 
 </br>
 
@@ -377,7 +377,7 @@ Kapcsolatos információkat:
   - Figyelmen kívül hagyja az eredeti No-Cache
   - Belső maximális elavult 
 
-[Lap tetejére](#azure-cdn-rules-engine-match-conditions)
+[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
 
 </br>
 
@@ -405,7 +405,7 @@ Kapcsolatos információkat:
   - Figyelmen kívül hagyja az eredeti No-Cache
   - Belső maximális elavult
 
-[Lap tetejére](#azure-cdn-rules-engine-match-conditions)
+[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
 
 </br>
 
@@ -430,7 +430,7 @@ Kapcsolatos információkat:
   - Figyelmen kívül hagyja az eredeti No-Cache
   - Belső maximális elavult
 
-[Lap tetejére](#azure-cdn-rules-engine-match-conditions)
+[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
 
 </br>
 
@@ -446,7 +446,7 @@ Kapcsolatos információkat:
   - Figyelmen kívül hagyja az eredeti No-Cache
   - Belső maximális elavult
 
-[Lap tetejére](#azure-cdn-rules-engine-match-conditions)
+[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
 
 </br>
 

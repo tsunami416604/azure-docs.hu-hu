@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: jingwang
-ms.openlocfilehash: b422b3a721511a25b976586cd324d65f383ad140
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: ba25bb71857ee91cc078fd87de074f0ea954b558
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-spark-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatához Spark 
 
@@ -33,9 +33,9 @@ Külső adatok bármely támogatott fogadó adattárolóhoz másolhatja. Adattá
 
 Az Azure Data Factory kapcsolódásának engedélyezése beépített illesztőprogramot tartalmaz, ezért nem szükséges manuálisan kell telepítenie minden olyan illesztőprogram ezt az összekötőt használja.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 
-A másolási tevékenység során .NET SDK, a Python SDK, az Azure PowerShell, a REST API-t vagy a Azure Resource Manager-sablon használatával hozhat létre egy folyamatot. Lásd: [másolási tevékenység oktatóanyag](quickstart-create-data-factory-dot-net.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját.
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 A következő szakaszok részletesen bemutatják megadhatók a Data Factory tartozó entitások Spark-összekötőhöz használt tulajdonságokat.
 
@@ -46,7 +46,7 @@ A következő tulajdonságok kapcsolódó Spark szolgáltatást támogatja:
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **Spark** | Igen |
-| állomás | A Spark-kiszolgáló IP-címét vagy állomásnevét kiszolgálónevét  | Igen |
+| gazdagép | A Spark-kiszolgáló IP-címét vagy állomásnevét kiszolgálónevét  | Igen |
 | port | A TCP-portot, amelyen a külső kiszolgáló ügyfélkapcsolatokat.  | Igen |
 | serverType típusa | A külső kiszolgáló típusa. <br/>Két érték engedélyezett: **SharkServer**, **SharkServer2**, **SparkThriftServer** | Nem |
 | thriftTransportProtocol | Az átviteli protokoll a Thrift-rétegben használatára. <br/>Két érték engedélyezett: **bináris**, **SASL**, ** HTTP ** | Nem |
@@ -149,5 +149,5 @@ Adatok másolása Spark, állítsa be a forrás típusa a másolási tevékenys�
 ]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats).

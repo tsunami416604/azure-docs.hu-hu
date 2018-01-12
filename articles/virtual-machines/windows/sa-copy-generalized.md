@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
-ms.openlocfilehash: d7f4a9558175835eba9096e6845726f21c7459d3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ROBOTS: NOINDEX
+ms.openlocfilehash: 39ac47df65743dc807b060f34a6df16977ef49a1
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Egy nem felügyelt Virtuálisgép-lemezkép az Azure virtuális gép létrehozása
 
@@ -57,7 +58,7 @@ Linux virtuális gépet is általánosítása `sudo waagent -deprovision+user` �
 > 
 > 
 
-## <a name="log-in-to-azure-powershell"></a>Jelentkezzen be az Azure PowerShell
+## <a name="log-in-to-azure-powershell"></a>Bejelentkezés az Azure PowerShellbe
 1. Nyissa meg az Azure PowerShell, és jelentkezzen be az Azure-fiókjával.
    
     ```powershell
@@ -251,7 +252,7 @@ Amikor végzett, megjelenik az újonnan létrehozott virtuális gép a [Azure-po
     $vmList.Name
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az új virtuális gépet az Azure PowerShell kezeléséhez, tekintse meg a [kezelése az Azure Resource Manager és a PowerShell használatával virtuális gépek](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 

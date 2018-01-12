@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: jingwang
-ms.openlocfilehash: ff5dc0d2c5f744cb42da715713977fdc89a96edf
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: 10db7959396b4ee9927e4272dec9939ac8c13580
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-and-to-oracle-using-azure-data-factory"></a>Másolja az adatokat, a kezdő és a Oracle Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -46,7 +46,8 @@ Pontosabban az Oracle-összekötő Oracle-adatbázishoz a következő verzióit 
 Az adatok másolása az/Oracle-adatbázishoz, amely nincs nyilvánosan elérhető, akkor be kell állítania egy Self-hosted integrációs futásidejű. Lásd: [Self-hosted integrációs futásidejű](create-self-hosted-integration-runtime.md) szóló cikkben olvashat integrációs futásidejű. Integrációs futásidejű biztosít egy beépített Oracle-illesztőprogramot, ezért nem, manuálisan kell telepítenie minden olyan illesztőprogram a/az Oracle adatok másolásakor kell.
 
 ## <a name="getting-started"></a>Első lépések
-A másolási tevékenység során .NET SDK, a Python SDK, az Azure PowerShell, a REST API-t vagy a Azure Resource Manager-sablon használatával hozhat létre egy folyamatot. Lásd: [másolási tevékenység oktatóanyag](quickstart-create-data-factory-dot-net.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját.
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 A következő szakaszok részletesen bemutatják megadhatók a Data Factory tartozó entitások Oracle-összekötőhöz használt tulajdonságokat.
 

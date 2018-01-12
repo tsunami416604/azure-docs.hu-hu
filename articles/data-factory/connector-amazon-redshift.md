@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: dc8da80a89024d687a10b1539eeb1d90d218e4fb
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 13b317b05e56554e4f6b74a3ecfd3bc268333db0
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával Amazon Redshift
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -44,8 +44,9 @@ Konkrétan ez Amazon Redshift az összekötő támogatja, lekérdezés vagy beé
 * Másolása egy helyszíni adatokhoz adattároló használatával [Self-hosted integrációs futásidejű](create-self-hosted-integration-runtime.md), Amazon Redshift fürthöz hozzáférést engedélyez integrációs futásidejű (használata IP-cím a gép). Lásd: [engedélyezi a hozzáférést a fürthöz](http://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) utasításokat.
 * Adatok másolása az Azure data tárolóhoz, lásd: [Azure Data Center IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653) számítási IP-cím és az Azure-adatok által használt SQL-címtartományok szolgáltatásban.
 
-## <a name="getting-started"></a>Bevezetés
-A másolási tevékenység során .NET SDK, a Python SDK, az Azure PowerShell, a REST API-t vagy a Azure Resource Manager-sablon használatával hozhat létre egy folyamatot. Lásd: [másolási tevékenység oktatóanyag](quickstart-create-data-factory-dot-net.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját.
+## <a name="getting-started"></a>Első lépések
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 A következő szakaszok részletesen bemutatják való Amazon Redshift összekötő adat-előállító tartozó entitások meghatározásához használt tulajdonságokat.
 
@@ -214,15 +215,15 @@ Az adatok másolása Amazon Redshift, amikor az Azure Data Factory ideiglenes ad
 | BIGINT |Int64 |
 | LOGIKAI ÉRTÉK |Karakterlánc |
 | KARAKTER |Karakterlánc |
-| DÁTUM |Dátum és idő |
+| DATE |DateTime |
 | DECIMÁLIS |Decimális |
 | A KÉTSZERES PONTOSSÁG |Dupla |
 | EGÉSZ SZÁM |Int32 |
 | VALÓS |Egyedülálló |
 | SMALLINT |Int16 |
 | SZÖVEG |Karakterlánc |
-| IDŐBÉLYEG |Dátum és idő |
+| IDŐBÉLYEG |DateTime |
 | VARCHAR |Karakterlánc |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md##supported-data-stores-and-formats).

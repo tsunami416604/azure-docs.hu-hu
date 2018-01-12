@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: jingwang
-ms.openlocfilehash: 98f160a17d459bd8bfcc299c3a10d3ec4f5f6106
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: c92b4ce8827087e5e978d7fb43165ba93e1956d9
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-jira-using-azure-data-factory-beta"></a>Adatok másolása az Azure Data Factory (béta) használatával Jira
 
@@ -35,9 +35,9 @@ Adatok bármely támogatott fogadó adattárolóhoz Jira másolhatja. Adattárol
 
 Az Azure Data Factory kapcsolódásának engedélyezése beépített illesztőprogramot tartalmaz, ezért nem szükséges manuálisan kell telepítenie minden olyan illesztőprogram ezt az összekötőt használja.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 
-A másolási tevékenység során .NET SDK, a Python SDK, az Azure PowerShell, a REST API-t vagy a Azure Resource Manager-sablon használatával hozhat létre egy folyamatot. Lásd: [másolási tevékenység oktatóanyag](quickstart-create-data-factory-dot-net.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját.
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 A következő szakaszok részletesen bemutatják való Jira összekötő adat-előállító tartozó entitások meghatározásához használt tulajdonságokat.
 
@@ -48,7 +48,7 @@ A következő tulajdonságok Jira kapcsolódó szolgáltatás támogatottak:
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **Jira** | Igen |
-| állomás | Az IP cím vagy a Jira szolgáltatás neve. (például jira.example.com)  | Igen |
+| gazdagép | Az IP cím vagy a Jira szolgáltatás neve. (például jira.example.com)  | Igen |
 | port | A TCP-portot, amelyen a Jira kiszolgáló ügyfélkapcsolatokat. Az alapértelmezett érték: 443-as, ha HTTPS vagy a 8080-as keresztül kapcsolódik, ha HTTP Protokollon keresztül csatlakozó.  | Nem |
 | felhasználónév | A felhasználónév Jira szolgáltatás eléréséhez használt.  | Igen |
 | jelszó | A jelszót, amit a felhasználónév mezőben megadott felhasználónév megfelelő. Ez a mező megjelölése a SecureString tárolja biztonságos helyen az ADF, vagy a jelszó tárolása az Azure Key Vault választhat, és lehetővé teszik a másolási tevékenység lekéréses ott adatmásolás végrehajtása során – további információhoz [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). | Igen |
@@ -142,5 +142,5 @@ Adatok másolása Jira, állítsa be a forrás típusa a másolási tevékenysé
 ]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats).

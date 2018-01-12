@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/02/2017
+ms.date: 01/10/2018
 ms.author: alexwun
-ms.openlocfilehash: 723cf7d98022e8bbb4f1e3c8c0836a4c53c6a078
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 4b64331a4f25ce0cc01b2ee9f32633ab035e3131
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="understand-the-imagestoreconnectionstring-setting"></a>A előtaggal beállítás ismertetése
 
@@ -46,7 +46,7 @@ A fájlrendszer szolgáltató szolgál a lemezképet tároló szolgáltatás hel
 
 Ezért konfigurálható a előtaggal pedig általában csak az alapértelmezett beállítást használja. Visual Studio használatával Azure közzétételekor a paraméter értéke automatikusan meg ennek megfelelően. Az Azure-ban üzemeltetett fürtökhöz a programozott telepítés, a kapcsolati karakterlánc: mindig "fabric: Lemezképtárolóba". Ha kétségei vannak, az értéke mindig ellenőrizhetők a fürtjegyzékben által lekérésével [PowerShell](https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricclustermanifest), [.NET](https://msdn.microsoft.com/library/azure/mt161375.aspx), vagy [REST](https://docs.microsoft.com/rest/api/servicefabric/get-a-cluster-manifest). Mind a helyszíni tesztelése, és mindig éles fürtök úgy konfigurálni, hogy a lemezkép tárolási szolgáltató használata is.
 
-### <a name="next-steps"></a>Következő lépések
+### <a name="next-steps"></a>További lépések
 [Központi telepítése, és távolítsa el az alkalmazásokat a PowerShell használatával][10]
 
 <!--Image references-->

@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 0631b621c01eb880393d07323cdeb815e564a2e3
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: caa7f58860c4540fa6914b1c0f0cfcba437468fa
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="package-and-deploy-containers-as-a-service-fabric-application"></a>Csomag és a Service Fabric-alkalmazásként tároló üzembe helyezése
 
@@ -65,10 +65,11 @@ A Service fabric állványok eszközöket Yeoman használó alkalmazások létre
     ```bash
     yo azuresfcontainer
     ```
-2. Az alkalmazás "TestContainer" nevet, és a alkalmazás service "azurevotefront" nevet.
-3. Adja meg a tároló lemezképének elérési útja ACR a előtér-tárház – például "test.azurecr.io/azure-vote-front:v1". 
-4. Nyomja le az ENTER billentyűt, hogy a parancsok szakasz üres.
-5. Adjon meg egy példányszámot, 1.
+2. Adja meg az "TestContainer" az alkalmazás neve
+3. Adja meg az "azurevotefront" a szolgáltatás neve.
+4. Adja meg például a tároló lemezképének elérési útja ACR az előtér - tárház "\<acrName >.azurecr.io / azure-szavazat-első: 1-es verzió". A \<acrName > mező, amelyet az előző oktatóanyag használt értékeként azonosnak kell lennie.
+5. Nyomja le az ENTER billentyűt, hogy a parancsok szakasz üres.
+6. Adjon meg egy példányszámot, 1.
 
 A következő példa a bemeneti és kimeneti való futtatásának a yo parancsot:
 
@@ -86,12 +87,12 @@ A következő példa a bemeneti és kimeneti való futtatásának a yo parancsot
    create TestContainer/uninstall.sh
 ```
 
-Ha egy másik tárolószolgáltatást szeretne hozzáadni a Yeoman használatával már létrehozott alkalmazáshoz, hajtsa végre az alábbi lépéseket:
+Egy másik tárolószolgáltatás Yeoman már létrehozott alkalmazáshoz való hozzáadásához hajtsa végre az alábbi lépéseket:
 
-1. A Könyvtárváltás a **TestContainer** könyvtár
+1. Módosítsa a könyvtárat egy szintet a **TestContainer** címtár, például *. / TestContainer*
 2. Futtassa a `yo azuresfcontainer:AddService` parancsot. 
 3. A azurevoteback szolgáltatás neve
-4. Adja meg a tároló lemezképének elérési útja ACR a háttér-tárház – például "test.azurecr.io/azure-vote-back:v1"
+4. Adja meg a tároló kép elérési Redis - "alpine: redis'
 5. Nyomja le az ENTER billentyűt, hogy a parancsok szakasz üres
 6. Adja meg az „1” példányszámát.
 
@@ -99,7 +100,7 @@ A bejegyzések hozzáadásához használja a szolgáltatás összes látható:
 
 ```bash
 ? Name of the application service: azurevoteback
-? Input the Image Name: <acrName>.azurecr.io/azure-vote-back:v1
+? Input the Image Name: alpine:redis
 ? Commands: 
 ? Number of instances of guest container application: 1
    create TestContainer/azurevotebackPkg/ServiceManifest.xml
@@ -107,13 +108,16 @@ A bejegyzések hozzáadásához használja a szolgáltatás összes látható:
    create TestContainer/azurevotebackPkg/code/Dummy.txt
 ```
 
-Ez az oktatóanyag a hátralévő dolgozunk ennek az **TestContainer** könyvtár.
+Ez az oktatóanyag a hátralévő dolgozunk ennek az **TestContainer** könyvtár. Például *./TestContainer/TestContainer*. A könyvtár tartalmának az alábbinak kell lennie.
+```bash
+$ ls
+ApplicationManifest.xml azurevotefrontPkg azurevotebackPkg
+```
 
 ## <a name="configure-the-application-manifest-with-credentials-for-azure-container-registry"></a>Az alkalmazás jegyzékében hitelesítő adatokkal rendelkező Azure tároló beállításjegyzék konfigurálása
 A Service Fabric való lekérésére a tároló képek Azure tároló beállításjegyzékből, adja meg a hitelesítő adatokat kell a **ApplicationManifest.xml**. 
 
-
-Jelentkezzen be a ACR példányát. Használja a [az acr bejelentkezési](/cli/azure/acr#az_acr_login) parancs használatával végrehajtani a műveletet. Adjon meg egyedi név, a tároló beállításjegyzék létrehozásakor.
+Jelentkezzen be a ACR példányát. Használja a **az acr bejelentkezési** parancs használatával végrehajtani a műveletet. Adjon meg egyedi név, a tároló beállításjegyzék létrehozásakor.
 
 ```bash
 az acr login --name <acrName>
@@ -127,7 +131,7 @@ Ezután futtassa a következő parancs használatával beszerezheti a jelszót a
 az acr credential show -n <acrName> --query passwords[0].value
 ```
 
-Az a **ApplicationManifest.xml**, a kódrészletet alatt adja hozzá a **ServiceManifestImport** elem az egyes szolgáltatások. Helyezze be a **acrName** a a **AccountName** mező, és a jelszót, az előző parancs által visszaadott szolgál a **jelszó** mező. Teljes **ApplicationManifest.xml** valósul meg ez a dokumentum végén. 
+Az a **ApplicationManifest.xml**, a kódrészletet alatt adja hozzá a **ServiceManifestImport** elem az előtér-szolgáltatás. Helyezze be a **acrName** a a **AccountName** mező, és a jelszót, az előző parancs által visszaadott szolgál a **jelszó** mező. Teljes **ApplicationManifest.xml** valósul meg ez a dokumentum végén. 
 
 ```xml
 <Policies>
@@ -140,7 +144,7 @@ Az a **ApplicationManifest.xml**, a kódrészletet alatt adja hozzá a **Service
 
 ### <a name="configure-communication-port"></a>Kommunikációs port konfigurálása
 
-Konfiguráljon egy olyan HTTP-végpontot, amelyen az ügyfelek kommunikálhatnak a szolgáltatással.  Nyissa meg a *./TestContainer/azurevotefrontPkg/ServiceManifest.xml* fájlt, és egy végpont erőforrás deklarálja a **ServiceManifest** elemet.  Adja hozzá a protokoll, a port és a név adatokat. A szolgáltatás ebben az oktatóanyagban 80-as porton figyel. 
+Konfiguráljon egy olyan HTTP-végpontot, amelyen az ügyfelek kommunikálhatnak a szolgáltatással. Nyissa meg a *./TestContainer/azurevotefrontPkg/ServiceManifest.xml* fájlt, és egy végpont erőforrás deklarálja a **ServiceManifest** elemet.  Adja hozzá a protokoll, a port és a név adatokat. A szolgáltatás ebben az oktatóanyagban 80-as porton figyel. Az alábbi kódrészletben alatt helyezkedik el, a *ServiceManifest* az erőforrás-címke.
   
 ```xml
 <Resources>
@@ -154,21 +158,21 @@ Konfiguráljon egy olyan HTTP-végpontot, amelyen az ügyfelek kommunikálhatnak
 
 ```
   
-Hasonlóképpen módosítsa a háttérszolgáltatáshoz Service Manifest. Ebben az oktatóanyagban a redis alapértelmezett 6379 megmarad.
+Hasonlóképpen módosítsa a háttérszolgáltatáshoz Service Manifest. Nyissa meg a *./TestContainer/azurevotebackPkg/ServiceManifest.xml* és egy végpont erőforrás deklarálja a **ServiceManifest** elemet. Ebben az oktatóanyagban a redis alapértelmezett 6379 megmarad. Az alábbi kódrészletben alatt helyezkedik el, a *ServiceManifest* az erőforrás-címke.
+
 ```xml
 <Resources>
   <Endpoints>
     <!-- This endpoint is used by the communication listener to obtain the port on which to 
             listen. Please note that if your service is partitioned, this port is shared with 
             replicas of different partitions that are placed in your code. -->
-    <Endpoint Name="azurevotebackTypeEndpoint" UriScheme="http" Port="6379" Protocol="http"/>
+    <Endpoint Name="azurevotebackTypeEndpoint" Port="6379" Protocol="tcp"/>
   </Endpoints>
 </Resources>
 ```
 Így a **UriScheme**automatikusan regisztrálja a tároló végpont a Service Fabric-szolgáltatás felderítése a. A teljes ServiceManifest.xml példafájlja a háttérszolgáltatáshoz példaként, ez a cikk végén valósul meg. 
 
 ### <a name="map-container-ports-to-a-service"></a>Tároló leképezik a szolgáltatáshoz
-    
 Ahhoz, hogy teszi közzé a tárolók a fürtben, azt is kell létrehoznia a "ApplicationManifest.xml" port kötést. A **PortBinding** házirend hivatkozik a **végpontok** a meghatározott a **ServiceManifest.xml** fájlokat. Ezeket a végpontokat bejövő kérelmek tároló portok nyitva, és amelyet itt beolvasása leképezve. Az a **ApplicationManifest.xml** fájlt, az alábbi kódot a végpontok port a 80-as és 6379 kötődni. Teljes **ApplicationManifest.xml** érhető el ez a dokumentum végén. 
   
 ```xml
@@ -195,13 +199,13 @@ A Service Fabric által a háttérszolgáltatáshoz a DNS-név hozzárendelni, a
 </Service>
 ```
 
-Az előtér-szolgáltatás beolvassa a környezeti változó tudni, hogy a Redis-példány DNS-nevét. A környezeti változó definiálva van a Dockerfile látható módon:
+Az előtér-szolgáltatás beolvassa a környezeti változó tudni, hogy a Redis-példány DNS-nevét. A környezeti változó már definiálva van a Dockerfile a Docker-lemezkép létrehozásához használt, és semmilyen műveletet meg kell itt kell venni.
   
 ```Dockerfile
 ENV REDIS redisbackend.testapp
 ```
   
-A python-parancsfájl jeleníti meg az az előtérben célból használja a DNS-beli név megoldani, és csatlakoztassa a háttér redis-tároló:
+A következő kódrészletet mutatja be, hogy az előtér-Python kódját hogyan szerzi be a környezeti változó a Dockerfile ismertetett. Nincs művelet kell itt kell venni. 
 
 ```python
 # Get DNS Name
@@ -218,15 +222,15 @@ Az alkalmazás Azure-fürtön történő üzembe helyezéséhez használhat egy 
 
 A nyilvános fürtök ingyenes, korlátozott időtartamú Azure Service Fabric-fürtök. A Service Fabric csapat, ahol a további tudnivalók a platform bárki és alkalmazások telepítése üzemeltet. A nyilvános fürt eléréséhez [kövesse az alábbi utasításokat](http://aka.ms/tryservicefabric). 
 
-A saját fürt létrehozásával kapcsolatos további információkért lásd: [a Service Fabric-fürt létrehozása az Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
+További információk saját fürtök létrehozásáról: [Service Fabric-fürt létrehozása az Azure-on](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
 
 ## <a name="build-and-deploy-the-application-to-the-cluster"></a>Hozza létre és telepítse központilag az alkalmazást a fürthöz
 Az Azure-fürttel a Service Fabric parancssori felület használatával telepítheti az alkalmazást. Ha a Service Fabric parancssori felület nem települ a számítógépre, kövesse az utasításokat [Itt](service-fabric-get-started-linux.md#set-up-the-service-fabric-cli) a telepítéshez. 
 
-Csatlakozzon az Azure Service Fabric-fürthöz.
+Csatlakozzon az Azure Service Fabric-fürthöz. Cserélje le a helyőrző végpont az Ön által. A végpont egy teljes URL-címet az alábbihoz hasonló kell lennie.
 
 ```bash
-sfctl cluster select --endpoint http://lin4hjim3l4.westus.cloudapp.azure.com:19080
+sfctl cluster select --endpoint <http://lin4hjim3l4.westus.cloudapp.azure.com:19080>
 ```
 
 A megadott telepítési parancsfájl használata a **TestContainer** directory másolja az alkalmazáscsomagot a fürt lemezképtárolóhoz, az alkalmazástípus regisztrálása és az alkalmazás egy példányának létrehozásakor.
@@ -269,7 +273,6 @@ Használja a sablonban megadott eltávolítási szkriptet az alkalmazáspéldán
     <ServiceManifestRef ServiceManifestName="azurevotebackPkg" ServiceManifestVersion="1.0.0"/>
       <Policies> 
         <ContainerHostPolicies CodePackageRef="Code">
-          <RepositoryCredentials AccountName="myaccountname" Password="<password>" PasswordEncrypted="false"/>
           <PortBinding ContainerPort="6379" EndpointRef="azurevotebackTypeEndpoint"/>
         </ContainerHostPolicies>
       </Policies>
@@ -303,7 +306,7 @@ Használja a sablonban megadott eltávolítási szkriptet az alkalmazáspéldán
    <CodePackage Name="code" Version="1.0.0">
       <EntryPoint>
          <ContainerHost>
-            <ImageName>my.azurecr.io/azure-vote-front:v1</ImageName>
+            <ImageName>acrName.azurecr.io/azure-vote-front:v1</ImageName>
             <Commands></Commands>
          </ContainerHost>
       </EntryPoint>
@@ -316,7 +319,7 @@ Használja a sablonban megadott eltávolítási szkriptet az alkalmazáspéldán
       <!-- This endpoint is used by the communication listener to obtain the port on which to 
            listen. Please note that if your service is partitioned, this port is shared with 
            replicas of different partitions that are placed in your code. -->
-      <Endpoint Name="azurevotefrontTypeEndpoint" UriScheme="http" Port="8080" Protocol="http"/>
+      <Endpoint Name="azurevotefrontTypeEndpoint" UriScheme="http" Port="80" Protocol="http"/>
     </Endpoints>
   </Resources>
 
@@ -337,7 +340,7 @@ Használja a sablonban megadott eltávolítási szkriptet az alkalmazáspéldán
    <CodePackage Name="code" Version="1.0.0">
       <EntryPoint>
          <ContainerHost>
-            <ImageName>my.azurecr.io/azure-vote-back:v1</ImageName>
+            <ImageName>alpine:redis</ImageName>
             <Commands></Commands>
          </ContainerHost>
       </EntryPoint>
@@ -349,12 +352,12 @@ Használja a sablonban megadott eltávolítási szkriptet az alkalmazáspéldán
       <!-- This endpoint is used by the communication listener to obtain the port on which to 
            listen. Please note that if your service is partitioned, this port is shared with 
            replicas of different partitions that are placed in your code. -->
-      <Endpoint Name="azurevotebackTypeEndpoint" UriScheme="http" Port="6379" Protocol="http"/>
+      <Endpoint Name="azurevotebackTypeEndpoint" Port="6379" Protocol="tcp"/>
     </Endpoints>
   </Resources>
  </ServiceManifest>
 ```
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban több tároló volt csomagolja a rendszer a Service Fabric-alkalmazás Yeoman használatával. Ez az alkalmazás ezután központilag telepített és futtassa a Service Fabric-fürt. A következő lépéseket hajtotta végre:
 

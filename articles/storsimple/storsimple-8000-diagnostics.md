@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/27/2017
+ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 8fae7bb357f8e5e8eff249edfe3a2aaafe04283c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7199009553eb7aae31db3f913fe4de87e03d74ba
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>A StorSimple diagnosztikai eszköz segítségével 8000 sorozat eszközök kapcsolatos problémák elhárítása
 
@@ -32,15 +32,15 @@ A diagnosztikai eszköz elsődlegesen a StorSimple 8000 series a helyszíni eszk
 
 Ezt az eszközt a StorSimple eszköz a Windows PowerShell felületén keresztül is futtatható. A helyi kapcsolat az eszköz eléréséhez két módja van:
 
-* [A PuTTY használata az eszköz soros konzoljához való csatlakozáshoz](storsimple-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
-* [Távoli eléréséhez a Windows PowerShell eszközt a StorSimple](storsimple-remote-connect.md).
+* [A PuTTY használata az eszköz soros konzoljához való csatlakozáshoz](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
+* [Távoli eléréséhez a Windows PowerShell eszközt a StorSimple](storsimple-8000-remote-connect.md).
 
 Ebben a cikkben azt feltételezzük, hogy az eszköz soros konzoljához PuTTY keresztül csatlakoztatott.
 
 #### <a name="to-run-the-diagnostics-tool"></a>A diagnosztikai eszköz futtatása
 
 Miután csatlakozott az eszköz a Windows PowerShell felületén, hajtsa végre az alábbi lépéseket a parancsmag futtatásához.
-1. Jelentkezzen be az eszköz soros konzoljához lépéseit követve [a PuTTY használata az eszköz soros konzoljához való csatlakozáshoz](storsimple-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
+1. Jelentkezzen be az eszköz soros konzoljához lépéseit követve [a PuTTY használata az eszköz soros konzoljához való csatlakozáshoz](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
 
 2. Írja be a következő parancsot:
 
@@ -85,11 +85,11 @@ Ez a vizsgálat meghatározza a hardverösszetevők, a legpontosabb Beállítás
 * A jelentett hardverösszetevőket összetevőket, a teszt sikertelen, vagy nincsenek jelen a rendszerben.
 * A legpontosabb Beállításhoz belső vezérlőprogram és lemez belsővezérlőprogram-verziók a vezérlő 0, a vezérlő 1 jelzett, és a rendszer a megosztott összetevőit. A teljes listáját, és hardverösszetevők Ugrás:
 
-    * [Elsődleges szolgáltatással összetevők](storsimple-monitor-hardware-status.md#component-list-for-primary-enclosure-of-storsimple-device)
-    * [Összetevők EBOD szolgáltatással](storsimple-monitor-hardware-status.md#component-list-for-ebod-enclosure-of-storsimple-device)
+    * [Elsődleges szolgáltatással összetevők](storsimple-8000-monitor-hardware-status.md#component-list-for-primary-enclosure-of-storsimple-device)
+    * [Összetevők EBOD szolgáltatással](storsimple-8000-monitor-hardware-status.md#component-list-for-ebod-enclosure-of-storsimple-device)
 
 > [!NOTE]
-> Ha a hardver teszt eredményeként összetevő, [jelentkezzen be Microsoft Support szolgáltatáskérés](storsimple-contact-microsoft-support.md).
+> Ha a hardver teszt eredményeként összetevő, [jelentkezzen be Microsoft Support szolgáltatáskérés](storsimple-8000-contact-microsoft-support.md).
 
 #### <a name="sample-output-of-hardware-test-run-on-an-8100-device"></a>Minta kimenet hardveren végzett ellenőrzéshez egy 8100-eszközön fut
 
@@ -210,7 +210,7 @@ Ez a vizsgálat a rendszer-információkat, a rendelkezésre álló frissítése
 * A rendszer-információkat tartalmazza a modell, sorozatszámát, időzóna, tartományvezérlő állapotát, és a rendszeren futó részletes szoftververzió. A kimeneti jelentett különböző rendszer paraméterek megértéséhez, keresse fel [Rendszerinformáció értelmezése](#appendix-interpreting-system-information).
 
 * A frissítés rendelkezésre állási jelenti, hogy elérhetők-e a normál és a karbantartási mód és a csomaghoz kapcsolódó nevek. Ha `RegularUpdates` és `MaintenanceModeUpdates` vannak `false`, ez azt jelzi, hogy a frissítések nem érhetők el. Az eszköz naprakész állapotban.
-* A fürt adatokat a a HCS fürt összes csoport és a hozzájuk megfelelő állapotok logikai összetevők információt tartalmaz. Ha megjelenik egy kapcsolat nélküli fürtcsoport ebben a szakaszban a jelentés [forduljon a Microsoft Support](storsimple-contact-microsoft-support.md).
+* A fürt adatokat a a HCS fürt összes csoport és a hozzájuk megfelelő állapotok logikai összetevők információt tartalmaz. Ha megjelenik egy kapcsolat nélküli fürtcsoport ebben a szakaszban a jelentés [forduljon a Microsoft Support](storsimple-8000-contact-microsoft-support.md).
 * A szolgáltatás információk közé tartozik, a neveket és az eszközön futó összes HCS és a CIS szükségességét Services állapotok. Ez az információ akkor hasznos, for a Microsoft Support az eszköz a probléma elhárításához.
 
 #### <a name="sample-output-of-system-test-run-on-an-8100-device"></a>Minta kimenet egy 8100-eszközön fut, a rendszer vizsgálat
@@ -416,7 +416,7 @@ Ez a táblázat a különböző Windows PowerShell paraméterek a rendszer adato
 | PowerShell-paraméter    | Leírás  |
 |-------------------------|------------------|
 | Instance ID (Példányazonosító)             | Minden tartományvezérlő egyedi azonosítóval rendelkezik, vagy a vele társított egy GUID Azonosítót.|
-| Név                    | Az eszköz üzembe helyezése során az Azure portálon keresztül konfigurált eszköz rövid neve. Az alapértelmezett felhasználóbarát név az eszköz sorozatszámát. |
+| Name (Név)                    | Az eszköz üzembe helyezése során az Azure portálon keresztül konfigurált eszköz rövid neve. Az alapértelmezett felhasználóbarát név az eszköz sorozatszámát. |
 | Modell                   | A StorSimple 8000 series eszköz modelljét. A modell 8100 vagy 8600 lehet.|
 | Sorozatszám            | Az eszköz sorozatszámát gyári hozzá van rendelve, és 15 karakter hosszú. Például 8600-SHX0991003G44HT jelzi:<br> 8600 – az eszköz típusa van.<br>SHX – a gyártási hely.<br> 0991003 - termékekkel is. <br> G44HT – az utolsó 5 számjegy eggyel növekszik, egyedi sorozatszámokat létrehozásához. Ez nem lehet egy soros készlet.|
 | Időzóna                | Az eszköz időzóna eszköz üzembe helyezése során az Azure portálon konfigurált módon.|
@@ -437,7 +437,7 @@ Ez a táblázat a különböző Windows PowerShell paraméterek a rendszer adato
 | RemoteManagementMode    | Azt jelzi, hogy az eszköz távolról felügyelhetik a Windows PowerShell felületén keresztül. |
 | FipsMode                | Azt jelzi, hogy az Amerikai Egyesült Államokban Federal Information Processing Standard (FIPS) mód engedélyezve van-e az eszközön. A FIPS 140 szabvány határozza meg a bizalmas adatok védelmének amerikai szövetségi kormányzati számítógépes rendszerek által jóváhagyott titkosítási algoritmusokat. 4 vagy újabb frissítés rendszerű eszközöket FIPS-módban alapértelmezés szerint engedélyezve van. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg a [az Invoke-HcsDiagnostics parancsmag szintaxisa](https://technet.microsoft.com/library/mt795371.aspx).
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure AD SSPR működése |} Microsoft Docs"
+title: "Az önkiszolgáló jelszó-átállítási működésének - Azure Active Directory"
 description: "Az Azure AD az önkiszolgáló jelszó-átállítási részletes bemutatója"
 services: active-directory
 keywords: 
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2017
+ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: ad1735d618856fb13ec2846f1da4fdaec1c4e614
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 56a57960fc4804c7a1711d8c47b37ec28798357d
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Az önkiszolgáló jelszó-változtatási az Azure AD részletes bemutatója
 
@@ -58,7 +58,7 @@ További információt a jelszó mögötti logika olvassa el a következő lép�
 
 Ha az önkiszolgáló jelszó-Változtatási engedélyezve van, ki kell választania a hitelesítési módszerek az alábbiak közül legalább egyet. Egyes esetekben hallott ezek a beállítások néven "kapuk." Erősen ajánlott legalább két hitelesítési módszerek úgy dönt, hogy a felhasználók több beleszólása van.
 
-* E-mail-cím
+* E-mail cím
 * Mobiltelefon
 * Irodai telefon
 * Biztonsági kérdések
@@ -94,9 +94,9 @@ Ha egy házirendet, amelynek csak egy szükséges hitelesítési módszer az ala
 
 | Több regisztrált módszer | Szükséges módszerek száma | Eredmény |
 | :---: | :---: | :---: |
-| legalább 1 | 1. | **Képes** alaphelyzetbe állítása vagy feloldása |
-| 1. | 2. | **Nem lehet** alaphelyzetbe állítása vagy feloldása |
-| 2 vagy több | 2. | **Képes** alaphelyzetbe állítása vagy feloldása |
+| legalább 1 | 1 | **Képes** alaphelyzetbe állítása vagy feloldása |
+| 1 | 2 | **Nem lehet** alaphelyzetbe állítása vagy feloldása |
+| 2 vagy több | 2 | **Képes** alaphelyzetbe állítása vagy feloldása |
 
 Ha módosítja a hitelesítési módszereket, amelyek a felhasználó típusú, akaratlanul leállhat a felhasználók nem tudnak önkiszolgáló jelszó-Változtatási használja, ha nincs telepítve a minimális mennyiségű adat.
 
@@ -246,7 +246,7 @@ Ez a forgatókönyv teszteléséhez Ugrás http://passwordreset.microsoftonline.
 > [!NOTE]
 > Hozzáférést kapott Vendég az Azure AD-bérlő, például Hotmail.com, Outlook.com-os vagy más személyes e-mail-címeket, amelyek Microsoft-fiókok nem képesek használni az Azure AD SSPR. Jelszó visszaállítása található információk segítségével van szükségük a [mikor nem tud bejelentkezni Microsoft-fiókja](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) cikk.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbi cikkekben az Azure AD jelszóátállításáról olvashat további információkat:
 

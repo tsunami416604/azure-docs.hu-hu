@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/18/2017
 ms.author: tomfitz
-ms.openlocfilehash: f7b2a0de82cfd8fd489387876034487beb49cfd4
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: 48ba938db992ce192d8afb51365d87fba4422590
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>Azure-erőforrások telepítése egynél több előfizetésnek vagy erőforráscsoport
 
@@ -121,7 +121,7 @@ A következő példában két storage-fiókok – egyet-egyet a telepítés sor�
 
 Ha `resourceGroup` , amely nem található erőforráscsoport nevét, a telepítés sikertelen lesz.
 
-A példa sablon telepítéséhez, egy Azure PowerShell vagy Azure CLI-t, előfordulhat, hogy 2017 vagy újabb kiadását használja.
+A példa sablon üzembe helyezése, használja az Azure PowerShell 4.0.0 vagy később, vagy az Azure CLI 2.0.0 vagy újabb.
 
 ## <a name="use-the-resourcegroup-function"></a>A resourceGroup() funkcióval
 

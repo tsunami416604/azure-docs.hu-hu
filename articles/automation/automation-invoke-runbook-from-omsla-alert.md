@@ -11,14 +11,14 @@ ms.service: automation
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 01/31/2017
 ms.author: magoedte
-ms.openlocfilehash: 76d5ab23ef1962733ccb3b36640facdba9ab8acb
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
-ms.translationtype: HT
+ms.openlocfilehash: a10be867965eef9746a0f4cc9b14c4fc429f6e35
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="call-an-azure-automation-runbook-from-a-log-analytics-alert"></a>Azure Automation-runbook hívása Log Analytics-riasztásból
 
@@ -101,7 +101,7 @@ Ha az Automation-fiók nincs az Operations Management Suite munkaterülethez tá
 >[!NOTE]
 > Ha a munkaterülete frissítve lett az [új Log Analytics lekérdezési nyelvre](../log-analytics/log-analytics-log-search-upgrade.md), akkor a webhook hasznos adatai módosultak. A formátum részletei: [Azure Log Analytics REST API](https://aka.ms/loganalyticsapiresponse).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A Log Analytics-riasztásokkal és létrehozásukkal kapcsolatos további információkért lásd: [Riasztások a Log Analyticsben](../log-analytics/log-analytics-alerts.md).
 

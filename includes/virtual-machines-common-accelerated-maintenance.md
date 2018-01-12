@@ -24,7 +24,7 @@ A legtöbb újraindítások körülbelül végzése **30 perc**.
 
 ## <a name="does-the-guest-os-need-to-be-updated"></a>A vendég operációs rendszer frissítenie kell használ? 
 
-Az Azure-infrastruktúra frissítése a biztonsági rést került a hipervizor szintjén, és nem igényel egy frissítést adunk ki a Windows vagy Linux rendszerű virtuális lemezképet. Azonban mindig, mint kell továbbra is ajánlott biztonsági eljárások a Virtuálisgép-lemezképek alkalmazni. Lépjen kapcsolatba a forgalmazójával annak az operációs rendszerek a frissítéseket és az utasításokat, igény szerint. A Windows Server virtuális gép ügyfelek útmutatás most is közzé lett téve, és elérhető [Itt](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV180002).
+Az Azure-infrastruktúra frissítése a biztonsági rést került a hipervizor szintjén, és nem igényel egy frissítést adunk ki a Windows vagy Linux rendszerű virtuális lemezképet. Azonban mindig, mint kell továbbra is ajánlott biztonsági eljárások a Virtuálisgép-lemezképek alkalmazni. Lépjen kapcsolatba a forgalmazójával annak az operációs rendszerek a frissítéseket és az utasításokat, igény szerint. A Windows Server virtuális gép ügyfelek útmutatás most is közzé lett téve, és elérhető [Itt](../articles/virtual-machines/windows/mitigate-se.md).
 
 ## <a name="will-there-be-a-performance-impact-as-a-result-of-resolving-this-update"></a>Lesz-e a teljesítményre gyakorolt hatás feloldása a frissítés eredményeképpen?
 

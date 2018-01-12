@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 07/18/2017
 ms.author: adegeo
-ms.openlocfilehash: a5ac8c46f17d2d1c2f20ed2cc2348f50b7739ddf
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 7bef7643a989caee846f8235e024deb482f4b0a0
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="sizes-for-cloud-services"></a>A Felhőszolgáltatások mérete
 Ez a témakör ismerteti az elérhető méretek és a felhőalapú szolgáltatás szerepkörpéldányokat (webes és feldolgozói szerepkörök) beállításokat. Telepítési szempontok kell ügyelnie, ha tervezi, hogy használja ezeket az erőforrásokat is biztosít. Minden méretét helyezett Azonosítóval rendelkezik a [szolgáltatásdefiníciós fájl](cloud-services-model-and-package.md#csdef). Egyes árak érhetők el a [Cloud Services díjszabása](https://azure.microsoft.com/pricing/details/cloud-services/) lap.
@@ -32,7 +32,7 @@ Ez a témakör ismerteti az elérhető méretek és a felhőalapú szolgáltatá
 Az Azure-ban több standard méret közül választhat. A méretek némelyikével kapcsolatos megfontolások a következők:
 
 * A D-sorozat virtuális gépei nagyobb számítási teljesítményt és ideiglenes lemezteljesítményt igénylő alkalmazások futtatására lettek kialakítva. A D-sorozat virtuális gépei gyorsabb processzorokat, nagyobb magonkénti memóriaarányt, valamint az ideiglenes lemezteljesítményhez SSD meghajtókat kínálnak. Részletekért lásd az Azure blogon megjelent bejelentést [a D-sorozat új virtuális gépméreteit](https://azure.microsoft.com/blog/2014/09/22/new-d-series-virtual-machine-sizes/) ismertető bejegyzésben.
-* A Dv2-sorozat az eredeti D-sorozat újabb verziója, amely nagyobb teljesítményű processzorokat kínál. A Dv2-sorozathoz használt processzor mintegy 35%-kal gyorsabb, mint a D-sorozathoz használt processzorok. A legújabb generációs 2,4 GHz-es Intel Xeon® E5-2673 v3 (Haswell) processzoron alapul, és a teljesítménye az Intel Turbo Boost Technology 2.0 alkalmazásával akár 3,1 GHz-re is növelhető. A Dv2-sorozat ugyanolyan memória- és lemezkonfigurációkban érhető el, mint a D-sorozat.
+* Dv3-sorozat, Dv2-sorozat, a Folytatás, az eredeti D-adatsorozat, nagyobb teljesítményű CPU funkciókat. A Dv2-sorozathoz használt processzor mintegy 35%-kal gyorsabb, mint a D-sorozathoz használt processzorok. A legújabb generációs 2,4 GHz-es Intel Xeon® E5-2673 v3 (Haswell) processzoron alapul, és a teljesítménye az Intel Turbo Boost Technology 2.0 alkalmazásával akár 3,1 GHz-re is növelhető. A Dv2-sorozat ugyanolyan memória- és lemezkonfigurációkban érhető el, mint a D-sorozat.
 * A G-sorozat virtuális gépei kínálják a legtöbb memóriát, és az Intel Xeon E5 V3 család processzorait tartalmazó gazdagépeken futnak.
 * Az A-sorozatú virtuális gépek is telepíthető a különböző hardvertípusok, és a processzorok. A méret folyamatban van, a hardver kínálta konzisztens a processzor teljesítménye a futó példány, függetlenül a telepítették a hardver alapján. Az adott méretet futtató fizikai hardver meghatározásához kérdezze le a virtuális hardvert a virtuális gépen belülről.
 * Az A0 méret esetében a fizikai hardvernek az ideálisnál több előfizetést kell kezelnie. Ennek az egy méretnek az esetében a többi felhasználói üzemelő példány befolyásolhatja a futó számítási feladat teljesítményét. A relatív teljesítmény várható alapértéke az alábbiak szerint alakul, hozzávetőleg 15 százalékos varianciával.
@@ -42,7 +42,7 @@ A virtuális gépek mérete befolyásolja az árképzést. A méret emellett hat
 Az alábbiak segíthetnek a megfelelő méret kiválasztásában:
 
 * Az A8–A11- és a H-sorozat méretei más néven *nagy számítási igényű példányokként* ismertek. Az ezeket a méreteket futtató hardver a nagy számítási és hálózatigényű alkalmazások futtatására lett kialakítva és optimalizálva, ide értve a nagy teljesítményű feldolgozási (HPC) fürtalkalmazásokat, a modellezést és a szimulációkat. Az A8–A11-sorozat Intel Xeon E5-2670 @ 2,6 GHz-es, a H-sorozat pedig Intel Xeon E5-2667 v3 @ 3,2 GHz-es processzorokat használ. Részletes információkat és szempontokat, ezek mérete használatáról, [nagy teljesítményű számítási Virtuálisgép-méretek](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-* Dv2-sorozat, D sorozatú, G-sorozat, alkalmazásokat, amelyek a gyorsabb CPU igény ideálisak, jobb helyi lemez teljesítményét, vagy hogy a nagyobb memória iránti igények kielégítése érdekében. Nagyon hatékony kombinációt kínálnak számos nagyvállalati szintű alkalmazáshoz.
+* Dv3-sorozat, Dv2-sorozat, D sorozatú, G-sorozat, alkalmazások, amelyeknek processzort gyorsító igény, jobb helyi lemez teljesítmény, vagy magasabb memória iránti igények kielégítése érdekében ideális. Nagyon hatékony kombinációt kínálnak számos nagyvállalati szintű alkalmazáshoz.
 * Az Azure-központokban lévő némelyik fizikai gazdagép nem képes futtatni a nagyobb virtuálisgép-méreteket, például az A5–A11 méreteket. Ennek eredményeképpen előfordulhat, hogy a hibaüzenet megtekintéséhez **nem sikerült konfigurálni a virtuális gép {számítógépnév}** vagy **nem sikerült létrehozni a virtuális gép {számítógépnév}** egy meglévő virtuális gépet egy új méretűre; átméretezésekor 2013. április 16.; előtt létrehozott virtuális hálózatban egy új virtuális gép létrehozása vagy egy új virtuális gép hozzáadása egy meglévő felhőszolgáltatáshoz. Lásd: [hiba: "Nem sikerült a virtuális gép konfigurálása"](https://social.msdn.microsoft.com/Forums/9693f56c-fcd3-4d42-850e-5e3b56c7d6be/error-failed-to-configure-virtual-machine-with-a5-a6-or-a7-vm-size?forum=WAVirtualMachinesforWindows) a támogatási fórum a lehetséges megoldások az egyes központi telepítési forgatókönyvek esetén.
 * Az előfizetés is korlátozhatja az egyes családokban üzembe helyezhető magok mennyiségét. A kvóták növelésével kapcsolatban vegye fel a kapcsolatot az Azure ügyfélszolgálatával.
 
@@ -61,12 +61,13 @@ A fogalom, az Azure számítási egység (ACU) lehetővé teszik az Azure termé
 | [ExtraSmall](#a-series) |50 |
 | [Kis ExtraLarge](#a-series) |100 |
 | [A5-7](#a-series) |100 |
-| [Standard_A1-8v2](#av2-series) |100 |
-| [Standard_A2m-8mv2](#av2-series) |100 |
 | [A8-A11](#a-series) |225* |
-| [D1-14](#d-series) |160 |
-| [D1-15v2](#dv2-series) |210 - 250* |
-| [G1-5](#g-series) |180 - 240* |
+| [A v2](#av2-series) |100 |
+| [D](#d-series) |160 |
+| [D v2](#dv2-series) |160 - 190* |
+| [D v3](#dv3-series) |160 - 190* |
+| [E v3](#ev3-series) |160 - 190* |
+| [G](#g-series) |180 - 240* |
 | [H](#h-series) |290 - 300* |
 
 A * jelzésű ACU-értékek Intel® Turbo technológia használatával növelik a processzor órajelét, és ezáltal a teljesítményt. A növekedés mértéke a virtuális gép méretétől és terhelésétől, valamint az ugyanazon a gazdagépen futó számítási feladatoktól függően eltérő lehet.
@@ -142,6 +143,29 @@ További tudnivalókat és szempontokat, ezek mérete használatáról, tekintse
 | Standard_D14_v2 | 16        | 112          | 800                  | 8/rendkívül magas |
 | Standard_D15_v2 | 20        | 140          | 1,000                | 8/rendkívül magas |
 
+## <a name="dv3-series"></a>Dv3-sorozat
+
+| Méret            | Processzormagok | Memória: GiB   | Helyi SSD: GiB       | Hálózati adapterek max. száma/hálózati sávszélesség |
+|---------------- | --------- | ------------- | -------------------- | ---------------------------- |
+| Standard_D2_v3  | 2         | 8             | 16                   | 2/közepes |
+| Standard_D4_v3  | 4         | 16            | 32                   | 2/magas |
+| Standard_D8_v3  | 8         | 32            | 64                   | 4/magas |
+| Standard_D16_v3 | 16        | 64            | 128                  | 8/rendkívül magas |
+| Standard_D32_v3 | 32        | 128           | 256                  | 8/rendkívül magas |
+| Standard_D64_v3 | 64        | 256           | 512                  | 8/rendkívül magas |
+
+## <a name="ev3-series"></a>Ev3-sorozat
+
+| Méret            | Processzormagok | Memória: GiB   | Helyi SSD: GiB       | Hálózati adapterek max. száma/hálózati sávszélesség |
+|---------------- | --------- | ------------- | -------------------- | ---------------------------- |
+| Standard_E2_v3  | 2         | 16            | 32                   | 2/közepes |
+| Standard_E4_v3  | 4         | 32            | 64                   | 2/magas |
+| Standard_E8_v3  | 8         | 64            | 128                  | 4/magas |
+| Standard_E16_v3 | 16        | 128           | 256                  | 8/rendkívül magas |
+| Standard_E32_v3 | 32        | 256           | 512                  | 8/rendkívül magas |
+| Standard_E64_v3 | 64        | 432           | 864                  | 8/rendkívül magas |
+
+
 ## <a name="g-series"></a>G-sorozat
 | Méret            | Processzormagok | Memória: GiB  | Helyi SSD: GiB       | Hálózati adapterek max. száma/hálózati sávszélesség |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
@@ -188,10 +212,10 @@ A munkaterhelési változások vagy új Virtuálisgép-méretek rendelkezésre �
 >
 
 ## <a name="get-a-list-of-sizes"></a>Méretek listáját
-PowerShell vagy a REST API használatával méretek listáját. A REST API dokumentált [Itt](https://msdn.microsoft.com/library/azure/dn469422.aspx). A következő kód egy PowerShell-parancsot, amely felsorolja a különböző méretű egy adott hely. 
+PowerShell vagy a REST API használatával méretek listáját. A REST API dokumentált [Itt](https://msdn.microsoft.com/library/azure/dn469422.aspx). A következő kód egy PowerShell-parancsot, amely minden méretek véve felsorolja a Felhőszolgáltatások. 
 
 ```powershell
-Get-AzureRmVMSize -Location 'West Europe'
+Get-AzureRoleSize | where SupportedByWebWorkerRoles -eq $true | select InstanceSize, RoleSizeLabel
 ```
 
 ## <a name="next-steps"></a>További lépések

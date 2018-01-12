@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/30/2017
+ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ee3462c13101d18921dc488b08c79e1e4e02ff3a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1ace3042cc00cedd005955cdfb82c557fd4a8fb2
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="creating-a-management-solution-file-in-operations-management-suite-oms-preview"></a>A felügyeleti megoldás fájl létrehozása az Operations Management Suite (OMS) (előzetes verzió)
 > [!NOTE]
@@ -39,7 +39,7 @@ Megoldás fájlok szövegszerkesztőben használhatja, de javasoljuk, hogy a kö
 
 
 ## <a name="structure"></a>struktúra
-A felügyeleti megoldás fájl alapvető szerkezete megegyezik egy [Resource Manager-sablon](../azure-resource-manager/resource-group-authoring-templates.md#template-format) Ez az alábbiak szerint.  A legfelső szintű elemeket ismerteti az alábbi szakaszok mindegyikének és és azok tartalmát, a megoldás.  
+A felügyeleti megoldás fájl alapvető szerkezete megegyezik egy [Resource Manager-sablon](../azure-resource-manager/resource-group-authoring-templates.md#template-format), amely a következőképpen történik.  A legfelső szintű elem és azok tartalmát, a megoldás az alábbi szakaszok mindegyikének ismerteti.  
 
     {
        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -86,12 +86,12 @@ Az alábbi táblázat a minden felügyeleti megoldások szabványos paraméterek
 
 | Paraméter | Típus | Leírás |
 |:--- |:--- |:--- |
-| Fióknév |Karakterlánc |Azure Automation-fiók nevét. |
-| pricingTier |Karakterlánc |A Naplóelemzési munkaterület- és Azure Automation-fiók tarifacsomagot. |
-| regionId |Karakterlánc |Az Azure Automation-fiók területet. |
-| Megoldás neve |Karakterlánc |A megoldás neve.  Ha a megoldás gyorsindítási sablonok keresztül telepíti, majd meg kell határozni megoldás neve paraméterként úgy határozhatja meg kell adnia egy felhasználói helyette igénylő karakterlánc. |
-| workspaceName |Karakterlánc |Napló Analytics munkaterület neve. |
-| workspaceRegionId |Karakterlánc |A Naplóelemzési munkaterület területet. |
+| Fióknév |karakterlánc |Azure Automation-fiók nevét. |
+| pricingTier |karakterlánc |A Naplóelemzési munkaterület- és Azure Automation-fiók tarifacsomagot. |
+| regionId |karakterlánc |Az Azure Automation-fiók területet. |
+| Megoldás neve |karakterlánc |A megoldás neve.  Ha a megoldás gyorsindítási sablonok keresztül telepíti, majd meg kell határozni megoldás neve paraméterként úgy határozhatja meg kell adnia egy felhasználói helyette igénylő karakterlánc. |
+| workspaceName |karakterlánc |Napló Analytics munkaterület neve. |
+| workspaceRegionId |karakterlánc |A Naplóelemzési munkaterület területet. |
 
 
 Az alábbiakban olvashatja a szabványos paraméterek, másolja és illessze be a megoldásfájlt szerkezete.  
@@ -161,12 +161,12 @@ Azt is megadhatja, komplex változók értékeinek beállítja, hogy több.  Eze
 
 Ebben az esetben hivatkozik, a megoldással a szintaxissal változók értékeinek **variables('variable name').property**.  Például a megoldás neve változó eléréséhez használja **variables('Solution'). Név**.
 
-## <a name="resources"></a>Erőforrások
+## <a name="resources"></a>További források
 [Erőforrások](../azure-resource-manager/resource-group-authoring-templates.md#resources) határozza meg a különböző erőforrások, amelyek a felügyeleti megoldás telepíteni és konfigurálni fog.  Ez a sablon, a legnagyobb, és a legösszetettebb része lesz.  A struktúra és a teljes leírását az erőforrás-elemek [Azure Resource Manager-sablonok készítése](../azure-resource-manager/resource-group-authoring-templates.md#resources).  Különböző erőforrások, amelyek általában meghatározzák részletes leírást talál további cikkeit a jelen dokumentációban. 
 
 
 ### <a name="dependencies"></a>Függőségek
-A **dependsOn** elemek megadja egy [függőségi](../azure-resource-manager/resource-group-define-dependencies.md) egy másik erőforrás.  A megoldás telepítésekor egy erőforrás nem jön létre, amíg az összes függősége létrejött.  A megoldás lehet például [runbookot](operations-management-suite-solutions-resources-automation.md#runbooks) használatával telepített egy [erőforrás feladat](operations-management-suite-solutions-resources-automation.md#automation-jobs).  A feladat erőforrás lenne erőforrástól függ a runbook győződjön meg arról, hogy a runbook létrehozása, a feladat létrehozása előtt.
+A **dependsOn** elem azt adja meg a [függőségi](../azure-resource-manager/resource-group-define-dependencies.md) egy másik erőforrás.  A megoldás telepítésekor egy erőforrás nem jön létre, amíg az összes függősége létrejött.  A megoldás lehet például [runbookot](operations-management-suite-solutions-resources-automation.md#runbooks) használatával telepített egy [erőforrás feladat](operations-management-suite-solutions-resources-automation.md#automation-jobs).  A feladat erőforrás lenne erőforrástól függ a runbook győződjön meg arról, hogy a runbook létrehozása, a feladat létrehozása előtt.
 
 ### <a name="oms-workspace-and-automation-account"></a>OMS-munkaterület és Automation-fiók
 Megoldások szükséges egy [OMS-munkaterület](../log-analytics/log-analytics-manage-access.md) nézeteket tartalmaz, és egy [Automation-fiók](../automation/automation-security-overview.md#automation-account-overview) magában foglalja a runbookok és kapcsolódó erőforrások.  Ezek előtt elérhetőnek kell lennie a megoldás az erőforrások jönnek létre, és nem lehet megadni, a megoldás magát.  A felhasználó fog [adjon meg egy munkaterület és a fiók](operations-management-suite-solutions.md#oms-workspace-and-automation-account) amikor azok a megoldás üzembe helyezéséhez, de a szerző vegye figyelembe a következő szempontokat.
@@ -176,7 +176,7 @@ Minden egyes megoldáshoz szükségesek egy erőforrás bejegyzés a **erőforr�
 
 
     {
-      "name": "[concat(variables('Solution').Name, '[' ,parameters('workspacename'), ']')]",
+      "name": "[concat(variables('Solution').Name, '[' ,parameters('workspaceName'), ']')]",
       "location": "[parameters('workspaceRegionId')]",
       "tags": { },
       "type": "Microsoft.OperationsManagement/solutions",
@@ -185,7 +185,7 @@ Minden egyes megoldáshoz szükségesek egy erőforrás bejegyzés a **erőforr�
         <list-of-resources>
       ],
       "properties": {
-        "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspacename'))]",
+        "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName'))]",
         "referencedResources": [
             <list-of-referenced-resources>
         ],
@@ -225,20 +225,20 @@ A **terv** entitás a megoldás erőforrás tulajdonságokkal rendelkezik, az al
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | név |A megoldás neve. |
-| Verzió |A megoldás a szerző által meghatározott verziója. |
-| A termék |A megoldás azonosításához egyedi karakterlánc. |
+| verzió: |A megoldás a szerző által meghatározott verziója. |
+| termék |A megoldás azonosításához egyedi karakterlánc. |
 | Közzétevő |A megoldás közzétevője. |
 
 
 
-## <a name="sample"></a>Minta
+## <a name="sample"></a>Sample
 A következő helyeken megoldás erőforrással megoldásfájlok mintáit tekintheti meg.
 
 - [Automation-erőforrások](operations-management-suite-solutions-resources-automation.md#sample)
 - [Keresés és a riasztás erőforrások](operations-management-suite-solutions-resources-searches-alerts.md#sample)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Adja hozzá a mentett keresések és riasztások](operations-management-suite-solutions-resources-searches-alerts.md) a kezelési megoldással.
 * [Nézetek hozzáadása](operations-management-suite-solutions-resources-views.md) a kezelési megoldással.
 * [Adja hozzá a runbookok és egyéb automatizálási erőforrások](operations-management-suite-solutions-resources-automation.md) a kezelési megoldással.
