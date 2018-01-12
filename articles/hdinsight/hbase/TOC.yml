@@ -121,6 +121,8 @@
         - name: Adatok feltöltése Hadoop-feladatokhoz
           href: ../hdinsight-upload-data.md
           maintainContext: true
+        - name: Adatok tömeges betöltése a Phoenixbe a psql használatával
+          href: apache-hbase-phoenix-psql.md
         - name: Több HDInsight-fürt a Data Lake Store-ral
           href: ../hdinsight-multiple-clusters-data-lake-store.md
           maintainContext: true
@@ -161,7 +163,7 @@
         - name: YARN-hibaelhárítás
           href: ../hdinsight-troubleshoot-yarn.md
           maintainContext: true
-        - name: Erőforrások
+        - name: További források
           items:
             - name: Információk a HDInsight Linuxon való használatáról
               href: ../hdinsight-hadoop-linux-information.md
@@ -218,7 +220,7 @@
         - name: Fürtteljesítmény monitorozása
           href: ../hdinsight-key-scenarios-to-monitor.md
           maintainContext: true
-- name: Referencia
+- name: Hivatkozás
   items:
     - name: Kódminták
       href: 'https://azure.microsoft.com/en-us/resources/samples/?service=hdinsight'
@@ -234,7 +236,7 @@
       href: /rest/api/hdinsight/
     - name: REST (Spark)
       href: /rest/api/hdinsightspark/
-- name: Kapcsolódó
+- name: Kapcsolódó témakörök
   items:
     - name: Windows-fürtök
       items:
@@ -289,7 +291,7 @@
         - name: Fürtök figyelése az Ambari API-val
           href: ../hdinsight-monitor-use-ambari-api.md
           maintainContext: true
-- name: Erőforrások
+- name: További források
   items:
     - name: Kibocsátási megjegyzések
       href: ../hdinsight-release-notes.md

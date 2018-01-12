@@ -217,7 +217,7 @@
 #### [Felhasználói fiók üzembe helyezésének kezelése](active-directory-enterprise-apps-manage-provisioning.md)
 #### [Egyszeri bejelentkezés kezelése nagyvállalati alkalmazások esetében](active-directory-enterprise-apps-manage-sso.md)
 #### [Speciális tanúsítvány-aláírás a SAML-alkalmazások számára](active-directory-enterprise-apps-advance-certificate-options.md)
-#### [Külső gyártótól származó alkalmazás elrejtése a felhasználói felületen](active-directory-coreapps-hide-third-party-app.md)
+#### [Alkalmazás elrejtése a felhasználói felületen](active-directory-coreapps-hide-third-party-app.md)
 ### [Bejelentkezés automatikus gyorsításának konfigurálása HRD-szabályzattal](active-directory-auto-acceleration-using-hrd.md)
 
 ### [Alkalmazások hozzáférésének kezelése](active-directory-managing-access-to-apps.md)
@@ -283,6 +283,7 @@
 ## Identitások védelme
 ### [Feltételes hozzáférés](active-directory-conditional-access-azure-portal.md)
 #### [Vezérlők](active-directory-conditional-access-controls.md)
+#### [Helyfeltétel](active-directory-conditional-access-locations.md)
 #### [Első lépések](active-directory-conditional-access-azure-portal-get-started.md)
 #### [Ajánlott eljárások](active-directory-conditional-access-best-practices.md)
 #### [Az Office 365-szolgáltatások eszközszabályzatainak ismertetése](active-directory-conditional-access-device-policies.md)

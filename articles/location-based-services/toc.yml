@@ -31,15 +31,15 @@
       href: how-to-use-map-control.md
     - name: Címek keresésének módjai
       href: how-to-search-for-address.md
-- name: Referencia
+- name: Hivatkozás
   items:
-    - name: Működő API – REST
+    - name: Funkcionális API
       href: 'https://docs.microsoft.com/en-us/rest/api/location-based-services/'
-    - name: Felügyeleti API – REST
+    - name: Felügyeleti API
       href: 'https://docs.microsoft.com/en-us/rest/api/location-based-services-management/'
     - name: Térkép vezérlőelem-API – Javascript
       href: 'https://docs.microsoft.com/en-us/javascript/api/location-based-services-javascript/'
-- name: Erőforrások
+- name: További források
   items:
     - name: Azure IoT fejlesztői központ
       href: 'https://azure.microsoft.com/develop/iot/'

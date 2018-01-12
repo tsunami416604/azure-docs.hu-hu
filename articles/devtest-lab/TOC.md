@@ -16,6 +16,7 @@
 ### [Virtuális gépek létrehozása](devtest-lab-add-vm.md)
 ### [Igényelhető virtuális gépek létrehozása és felügyelete](devtest-lab-add-claimable-vm.md)
 ### [Virtuális gépek létrehozása és kezelése az Azure parancssori felülettel](devtest-lab-vmcli.md)
+### [Virtuális gép létrehozása Resource Manager-sablonból](devtest-lab-use-resource-manager-template.md)
 ### [Virtuális gép újraindítása](devtest-lab-restart-vm.md)
 
 ## Környezetek használata tesztkörnyezetben
@@ -46,7 +47,6 @@
 
 ## Újrahasznosítható sablonok kezelése
 ### [Git-adattár hozzáadása összetevők és sablonok tárolásához](devtest-lab-add-artifact-repo.md)
-### [Resource Manager-sablon használata](devtest-lab-use-resource-manager-template.md)
 ### [Képletek kezelése](devtest-lab-manage-formulas.md)
 
 ## Összetevők kezelése
@@ -65,7 +65,7 @@
 ## Integrálás a CI/CD-vel
 ### [Laborok integrálása VSTS CI/CD-folyamatába](devtest-lab-integrate-ci-cd-vsts.md)
 
-# Referencia
+# Hivatkozás
 ## [CLI 2.0](/cli/azure/lab)
 ## [PowerShell](/powershell/module/azurerm.devtestlabs/#devtest_labs)
 ### [Tesztkörnyezetek automatikus létrehozása vagy módosítása](devtest-lab-use-arm-and-powershell-for-lab-resources.md)
@@ -73,7 +73,7 @@
 ## [Resource Manager-sablonok](https://github.com/Azure/azure-devtestlab/tree/master/Samples)
 
 
-# Kapcsolódó
+# Kapcsolódó témakörök
 ## [Gyakori kérdések](devtest-lab-faq.md)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=devtest-lab)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDevTestLabs)
@@ -83,6 +83,6 @@
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/devtest-lab/)
 
 
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/en-us/roadmap/?category=developer-tools)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)

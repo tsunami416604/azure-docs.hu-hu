@@ -86,10 +86,16 @@
           href: submit-apache-hadoop-jobs-programmatically.md
     - name: Fejlesztés
       items:
+        - name: Egyéni MapReduce programok futtatása
+          href: apache-hadoop-run-custom-programs.md
         - name: 'Streamelő MapReduce programok fejlesztése C# nyelven'
           href: apache-hadoop-dotnet-csharp-mapreduce-streaming.md
         - name: Java MapReduce programok fejlesztése
           href: apache-hadoop-develop-deploy-java-mapreduce-linux.md
+        - name: 'Az Apache Hive használata kinyerési, átalakítási és betöltési (ETL) eszközként'
+          href: apache-hadoop-using-apache-hive-as-an-etl-tool.md
+        - name: 'Kinyerés, átalakítás és betöltés nagy léptékben'
+          href: apache-hadoop-etl-at-scale.md
         - name: Üres élcsomópontok használata
           href: ../hdinsight-apps-use-edge-node.md
           maintainContext: true
@@ -145,6 +151,8 @@
         - name: Application Insights-telemetrianaplók elemzése
           href: ../spark/apache-spark-analyze-application-insight-logs.md
           maintainContext: true
+        - name: Speciális elemzések a HDInsighthoz
+          href: apache-hadoop-deep-dive-advanced-analytics.md
     - name: Fürtök kiterjesztése
       items:
         - name: Fürtök testreszabása a Bootstrap használatával
@@ -378,7 +386,9 @@
         - name: Fürtteljesítmény monitorozása
           href: ../hdinsight-key-scenarios-to-monitor.md
           maintainContext: true
-- name: Referencia
+        - name: Hadoop-naplók elemzése
+          href: apache-hadoop-debug-jobs.md
+- name: Hivatkozás
   items:
     - name: Kódminták
       href: 'https://azure.microsoft.com/en-us/resources/samples/?service=hdinsight'

@@ -154,6 +154,8 @@
               href: Azure-stack-create-service-principals.md
             - name: A több-bérlős üzemmód engedélyezése
               href: azure-stack-enable-multitenancy.md
+        - name: Forgassa el a titkos kulcsok
+          href: azure-stack-rotate-secrets.md
     - name: Szolgáltatások ajánlása
       items:
         - name: Szolgáltatásajánlások áttekintése
@@ -248,6 +250,8 @@
           href: azure-stack-troubleshooting.md
         - name: Diagnosztika az Azure Stackben
           href: azure-stack-diagnostics.md
+        - name: Az Azure verem érvényesítése
+          href: azure-stack-diagnostic-test.md
         - name: Az Azure Stack fejlesztői készlet ismételt üzembe helyezése
           href: azure-stack-redeploy.md
 - name: Leírások
