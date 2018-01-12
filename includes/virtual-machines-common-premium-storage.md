@@ -60,7 +60,7 @@ Az alábbiakban néhány, a prémium szintű Storage szolgáltatásait:
     Azure a tárfiók tárolóként a nem kezelt lemezeken használ. Ha hoz létre egy Azure DS-méretek, DSv2-méretek, GS-méretek, vagy Fs sorozatú virtuális gép, és nem felügyelt lemezeket, és válassza ki a prémium szintű storage-fiók, az operációs rendszer, és adatlemezek vannak tárolva, hogy a tárfiók.
 
 ## <a name="supported-vms"></a>Támogatott virtuális gépek
-Prémium szintű Storage támogatja a DS-méretek, DSv2-méretek, GS-méretek, Ls-sorozat és Fs sorozatú virtuális gépeket. Az ilyen méretű standard és prémium szintű storage lemezek is használhatók. Nem használhat a prémium szintű storage lemezekhez Virtuálisgép-sorozat, amelyek nem prémium szintű Storage-kompatibilis.
+Prémium szintű Storage támogatja a DS-méretek, DSv2-méretek, GS-méretek, Ls-sorozat, Fs-sorozat és a B sorozatú virtuális gépeken. Az ilyen méretű standard és prémium szintű storage lemezek is használhatók. Nem használhat a prémium szintű storage lemezekhez Virtuálisgép-sorozat, amelyek nem prémium szintű Storage-kompatibilis.
 
 További információ a Virtuálisgép-típusokon és a Windows Azure-méretek: [Windows Virtuálisgép-méretek](../articles/virtual-machines/windows/sizes.md). Linux virtuális gép típusát és méretét, az Azure-ban kapcsolatos információkért lásd: [Linux Virtuálisgép-méretek](../articles/virtual-machines/linux/sizes.md).
 
@@ -293,7 +293,7 @@ Regionális katasztrófa utáni helyreállítás, biztonsági másolatot kell k�
 
 Segítségével hozhat létre egy biztonsági mentési feladat időalapú biztonsági könnyű VM-helyreállítás és biztonsági mentési adatmegőrzési, Azure Backup szolgáltatással. Nem felügyelt és a felügyelt biztonsági mentés is használható. További információkért lásd: [Azure biztonsági mentés nem felügyelt lemezzel rendelkező virtuális gépek](../articles/backup/backup-azure-vms-first-look-arm.md) és [felügyelt lemezzel rendelkező virtuális gépek Azure Backup](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Prémium szintű Storage kapcsolatos további információkért tekintse meg a következő cikkekben talál.
 
 ### <a name="design-and-implement-with-premium-storage"></a>Tervezési és a prémium szintű Storage végrehajtása
