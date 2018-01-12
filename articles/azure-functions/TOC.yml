@@ -85,7 +85,7 @@
       href: functions-best-practices.md
     - name: Functions-proxyk
       href: functions-proxies.md
-    - name: A Functions futtatókörnyezete
+    - name: Helyszíni függvények
       href: functions-runtime-overview.md
     - name: Tartós függvények
       items:
@@ -175,14 +175,14 @@
           href: durable-functions-counter.md
         - name: Emberi beavatkozás
           href: durable-functions-phone-verification.md
-- name: Referencia
+- name: Hivatkozás
   items:
     - name: Kötések
       items:
         - name: Blob Storage
           href: functions-bindings-storage-blob.md
         - name: Azure Cosmos DB
-          href: functions-bindings-documentdb.md
+          href: functions-bindings-cosmosdb.md
         - name: Event Hubs
           href: functions-bindings-event-hubs.md
         - name: Külső fájl

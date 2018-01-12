@@ -125,7 +125,11 @@
         - name: 'A C# használata'
           href: csharp.md
         - name: Speciális lemez használata
-          href: create-vm-specialized.md
+          items:
+            - name: Portál
+              href: create-vm-specialized-portal.md
+            - name: PowerShell
+              href: create-vm-specialized.md
         - name: 'Sablon használata a C#-vel'
           href: csharp-template.md
         - name: Virtuális gép létrehozása Chef használatával
@@ -414,7 +418,7 @@
           href: performance-diagnostics-vm-extension.md
         - name: Beágyazott virtualizálás használata
           href: troubleshoot-vm-by-use-nested-virtualization.md
-- name: Referencia
+- name: Hivatkozás
   items:
     - name: Azure CLI
       href: /cli/azure/vm
