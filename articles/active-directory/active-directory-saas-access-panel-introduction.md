@@ -15,11 +15,11 @@ ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4178b07f59885a67b12f0863129995542ee0752a
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: 6b5c139766af9e166b12e8833c2ced8be08e743a
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="what-is-the-access-panel"></a>Mi az a hozzáférési panel?
 
@@ -85,9 +85,11 @@ A bővítmény szükség a felhasználók számára, hogy jelentkezzen be a jels
 - A felhasználók regisztrálhatnak az alkalmazásokat közvetlenül az alkalmazás felkeresésével **bejelentkezési URL-cím**. Amikor a felhasználók megnyitják az alkalmazás bejelentkezési URL-CÍMÉT a bővítmény észleli ezt, és adja meg a beállítást, a bővítmény jelentkezni a felhasználó számára.
 - Felhasználók is elindítható bármelyik a hozzáférési panel a alkalmazásaikat a **Gyorskeresés** szolgáltatás a bővítményt. 
 - A bővítmény is megjelenítése felhasználók, az utolsó három alkalmazásokat, azok alapján indított **legutóbbi** szakasz.
-> [!NOTE]
-> További funkciók él, Chrome, Firefox csak érhetők el.
 
+> [!NOTE]
+> Csak a peremhálózati, Chrome és Firefox további funkciók érhetők el.
+>
+>
 
 Egy másik saját alkalmazások URL-címet mint https://myapps.microsoft.com használata majd konfigurálnia kell az alapértelmezett URL-cím, ha az alábbi lépéseket:
 1. Amíg nem írta be a bővítmény **kattintson a jobb gombbal** a bővítmény ikonra.

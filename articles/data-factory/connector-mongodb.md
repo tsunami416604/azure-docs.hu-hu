@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: 7c1505f93b28008d51ad4a8cd3516ee5c4271071
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 960365d4dc842cf5ce5587599a155861390ebb26
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával MongoDB
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -43,8 +43,9 @@ Pontosabban a MongoDB összekötő támogatja:
 
 Adatok másolása a MongoDB-adatbázist, amely nincs nyilvánosan elérhető, akkor be kell állítania egy Self-hosted integrációs futásidejű. Lásd: [Self-hosted integrációs futásidejű](create-self-hosted-integration-runtime.md) cikk további részleteket. Integrációs futásidejű biztosít egy beépített MongoDB-illesztőprogramot, ezért nem, manuálisan kell telepítenie minden olyan illesztőprogram MongoDB a/az adatok másolásakor kell.
 
-## <a name="getting-started"></a>Bevezetés
-A másolási tevékenység során .NET SDK, a Python SDK, az Azure PowerShell, a REST API-t vagy a Azure Resource Manager-sablon használatával hozhat létre egy folyamatot. Lásd: [másolási tevékenység oktatóanyag](quickstart-create-data-factory-dot-net.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját.
+## <a name="getting-started"></a>Első lépések
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 A következő szakaszok részletesen bemutatják adat-előállító tartozó entitások megadhatók a MongoDB-összekötőhöz használt tulajdonságokat.
 
@@ -177,12 +178,12 @@ Amikor adatokat másol a MongoDB, a következő megfeleltetéseket szolgálnak a
 | MongoDB-adattípus | Data factory ideiglenes adattípus |
 |:--- |:--- |
 | Bináris |Byte] |
-| Logikai érték |Logikai érték |
-| Dátum |Dátum és idő |
+| Logikai |Logikai |
+| Dátum |DateTime |
 | NumberDouble |Dupla |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
-| Objektumazonosító |Karakterlánc |
+| ObjectID |Karakterlánc |
 | Karakterlánc |Karakterlánc |
 | UUID |GUID |
 | Objektum |Renormalized történő egybesimítására "_" beágyazott elválasztójelként oszlopok |
@@ -205,16 +206,16 @@ Virtuális táblák tekintse meg az adatok a valós táblázatban, az illesztőp
 
 Itt ExampleTable például minden cellában – számlákon objektumokból álló tömb egy oszlopot és egy oszlop formájú skaláris típusoknál – minősítések tömbje MongoDB tábla lesz.
 
-| _id | Ügyfél neve | Számlák | Szolgáltatási szint | Minősítések |
+| _id | Ügyfél neve | Számlák | Szolgáltatásszint | Minősítések |
 | --- | --- | --- | --- | --- |
-| 1111 |ABC |[{invoice_id: "123", cikk: "toaster", az ár: "456" kedvezményes: "0,2"}, {invoice_id: "124" elem: "helyezzük", az ár: "1235" kedvezményes: "0,2"}] |Ezüst |[5,6] |
+| 1111 |ABC |[{invoice_id: "123", cikk: "toaster", az ár: "456" kedvezményes: "0,2"}, {invoice_id: "124" elem: "helyezzük", az ár: "1235" kedvezményes: "0,2"}] |Silver |[5,6] |
 | 2222 |XYZ |[{invoice_id: "135", cikk: "kombinált hűtőszekrények", az ár: "12543" kedvezménnyel: "0,0"}] |Arany |[1,2] |
 
 Az illesztőprogram az egyetlen tábla képviselő virtuális táblákat hoz létre. Az első virtuális táblát kell az alaptábla nevű "ExampleTable", a példában látható módon. Az alaptábla az eredeti tábla összes adatot tartalmaz, de az adatokat a tömbök kimaradt, és a virtuális táblázatokban ki van bontva.
 
-| _id | Ügyfél neve | Szolgáltatási szint |
+| _id | Ügyfél neve | Szolgáltatásszint |
 | --- | --- | --- |
-| 1111 |ABC |Ezüst |
+| 1111 |ABC |Silver |
 | 2222 |XYZ |Arany |
 
 Az alábbi táblázatok bemutatják a virtuális táblákat, amelyek megfelelnek a példában az eredeti tömbök. Ezek a táblázatok tartalmazzák a következő:
@@ -241,5 +242,5 @@ Az alábbi táblázatok bemutatják a virtuális táblákat, amelyek megfelelnek
 | 2222 |1 |2 |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md##supported-data-stores-and-formats).

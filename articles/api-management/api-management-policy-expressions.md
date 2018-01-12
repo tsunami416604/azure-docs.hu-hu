@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 58f7f71fd619eea2865ed42d2808fe6ae3e75c1f
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 3133b0166689142a635926077bdb4e0abeba287c
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="api-management-policy-expressions"></a>API-felügyeleti házirend-kifejezések
 Házirend kifejezések szintaxisa a C# 6.0. Minden egyes kifejezés hozzáfér a implicit módon megadott [környezetben](api-management-policy-expressions.md#ContextVariables) változó és egy engedélyezett [részhalmaza](api-management-policy-expressions.md#CLRTypes) .NET-keretrendszer típusú.  
@@ -26,13 +26,13 @@ Házirend kifejezések szintaxisa a C# 6.0. Minden egyes kifejezés hozzáfér a
 > [!TIP]
 >  Házirend-kifejezések kapcsolatos további információkért tekintse meg a [házirend-kifejezések](https://azure.microsoft.com/documentation/videos/policy-expressions-in-azure-api-management/) videó.  
 >   
->  Tekintse meg a házirend-kifejezések használatával házirendek konfigurálásához a bemutatók [felhő fedik le a epizód 177: több API a felügyeleti funkcióinak Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/). Ez a videó tartalmazza a következő házirend-kifejezés bemutatók.  
+>  Tekintse meg a házirend-kifejezések használatával házirendek konfigurálásához a bemutatók [felhő fedik le a epizód 177: több API a felügyeleti funkcióinak Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/). Ez a videó tartalmazza a következő házirend-kifejezés bemutatók:  
 >   
->  -   10:30 - ismerheti meg az API szintjén adja meg a háttérrendszer szolgáltatás történő kontextusadatok házirend alkalmazása a [állítsa be a lekérdezési karakterlánc paraméter](api-management-transformation-policies.md#SetQueryStringParameter) és [be HTTP-fejléc](api-management-transformation-policies.md#SetHTTPheader) házirendek. 12:10 nincs egy bemutatója művelet hívása a fejlesztői portálra, ahol ezek a házirendek munkahelyi láthatók.  
-> -   13:50 - használata című részben találja a [érvényesítése JWT](api-management-access-restriction-policies.md#ValidateJWT) házirend előre a műveletek hozzáférés hitelesítése a token jogcímei alapján. Gyors továbbítsa 15:00, a házirendek a Helyicsoportházirend-szerkesztő konfigurált megjelenítéséhez, majd a művelet hívása a developer portálról, és a szükséges engedélyezési jogkivonat anélkül bemutatója 18:50.  
-> -   21:00 - használata című részben találja egy [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) nyomkövetési házirendek kiértékelése hogyan megtekintéséhez és az eredmények.  
-> -   25:25 – a házirend-kifejezések használata a [lekérni a gyorsítótár](api-management-caching-policies.md#GetFromCache) és [tároló, a gyorsítótár](api-management-caching-policies.md#StoreToCache) a biztonsági másolat szolgáltatás által meghatározott szolgáltatás szabályzatainak használatával konfigurálhatja az API Management válasz gyorsítótár, amely megfelel a háttérrendszer válasz gyorsítótárazás időtartama `Cache-Control` irányelv.  
-> -   34:30 - hogyan hajthat végre a tartalom alapján történő szűrés adatelemek eltávolítása a válasz érkezett a szolgáltatás a háttérrendszer tekintse meg a [folyamatot szabályozhatja](api-management-advanced-policies.md#choose) és [állítsa be a szervezet](api-management-transformation-policies.md#SetBody) házirendek. Megtekinthet egy áttekintést 31:50 kezdjék [a sötét égbolt előrejelzési API](https://developer.forecast.io/) ebben a bemutatóban használt.  
+>  -   10:30 - környezet további információt a háttérszolgáltatás témakörben talál. Használja a [állítsa be a lekérdezési karakterlánc paraméter](api-management-transformation-policies.md#SetQueryStringParameter) és [be HTTP-fejléc](api-management-transformation-policies.md#SetHTTPheader) szabályzatai segítségével automatikusan megadhatja ezt az információt. 12:10 nincs egy bemutatója művelet hívása a fejlesztői portálra, ahol ezek a házirendek munkahelyi láthatók.  
+> -   13:50 - használata című részben találja a [érvényesítése JWT](api-management-access-restriction-policies.md#ValidateJWT) házirend előre a műveletek hozzáférés hitelesítése a token jogcímei alapján. Gyors 15:00, hogy hogyan vannak konfigurálva a házirendek a Helyicsoportházirend-szerkesztő továbbítja. 18:50 tekintse meg a művelet hívása a developer portálról, és anélkül, a szükséges engedélyezési jogkivonat bemutatója.  
+> -   21:00 - használatát egy [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) megtekintéséhez a házirendek kiértékelése hogyan nyomkövetés, ezért ezen eredmények.  
+> -   25:25 - kifejezést használata a [lekérni a gyorsítótár](api-management-caching-policies.md#GetFromCache) és [tároló, a gyorsítótár](api-management-caching-policies.md#StoreToCache) szabályzatainak használatával konfigurálhatja az API Management válasz gyorsítótár. Egy időtartamot, amely megfelel a háttérszolgáltatáshoz a biztonsági másolat szolgáltatás által megadott válaszok gyorsítótárazása `Cache-Control` direktívát.  
+> -   34:30 - lásd: hogyan hajthat végre a tartalom szűrést. Adatok eltávolítása a háttér-a kapott válasz a [folyamatot szabályozhatja](api-management-advanced-policies.md#choose) és [állítsa be a szervezet](api-management-transformation-policies.md#SetBody) házirendek. Megtekinthet egy áttekintést 31:50 kezdjék [a sötét égbolt előrejelzési API](https://developer.forecast.io/) ebben a bemutatóban használt.  
 > -   Ez a videó használt házirend-utasításoknál letöltéséhez lásd: a [api-felügyeleti-minták/házirendek](https://github.com/Azure/api-management-samples/tree/master/policies) github-tárház.  
   
   
@@ -68,10 +68,10 @@ Házirend kifejezések szintaxisa a C# 6.0. Minden egyes kifejezés hozzáfér a
 ```  
   
 ##  <a name="PolicyExpressionsUsage"></a>Használat  
- Kifejezések használhatók attribútum vagy az API Management bármelyikét szöveges értékek [házirendek](api-management-policies.md), kivéve, ha a házirend-hivatkozás ellenkező esetben adja meg.  
+ Kifejezések használhatók attribútum vagy szöveges értékek bármely API Management [házirendek](api-management-policies.md) (kivéve, ha a házirend-hivatkozás határozza meg, ellenkező esetben).  
   
 > [!IMPORTANT]
->  Vegye figyelembe, hogy házirend-kifejezések használata esetén a házirend-kifejezések csak korlátozott ellenőrzése során a házirend lett meghatározva. Mivel a kifejezések hajt végre futás közben a bejövő vagy kimenő feldolgozási az átjáró, a házirend-kifejezések által létrehozott futásidejű kivételek az API-hívásban futásidejű hiba okozza.  
+>  Házirend-kifejezések használata esetén nincs a házirend-kifejezések csak korlátozott vizsgálata során a házirend lett meghatározva. Az átjáró futásidőben, futásidejű hiba eredményez házirend kifejezések által létrehozott kivételek kifejezések végrehajtása.  
   
 ##  <a name="CLRTypes"></a>.NET-keretrendszer típusok engedélyezett a házirend-kifejezések  
  A következő táblázat felsorolja a .NET-keretrendszer típusok és azok tagjait, házirend-kifejezések engedélyezett.  
@@ -140,7 +140,7 @@ Házirend kifejezések szintaxisa a C# 6.0. Minden egyes kifejezés hozzáfér a
 |System.Text.RegularExpressions.Group|Rögzíti, sikeres|  
 |System.Text.RegularExpressions.GroupCollection|Count elem|  
 |System.Text.RegularExpressions.Match|Üres, csoportok, eredménye|  
-|System.Text.RegularExpressions.Regex|a .ctor konstruktor IsMatch, egyezik, megegyezik, cseréje|  
+|System.Text.RegularExpressions.Regex|(Konstruktor) IsMatch, egyezik, megegyezik, cserélje le a következőket:|  
 |System.Text.RegularExpressions.RegexOptions|Lefordított, az IgnoreCase, IgnorePatternWhitespace, többsoros, None, RightToLeft, Singleline|  
 |System.TimeSpan|Összes|  
 |System.Tuple|Összes|  
@@ -173,44 +173,44 @@ Házirend kifejezések szintaxisa a C# 6.0. Minden egyes kifejezés hozzáfér a
 |Környezeti változó|Engedélyezett metódusok, tulajdonságok és értékei|  
 |----------------------|-------------------------------------------------------|  
 |A környezetben|API: IApi<br /><br /> Környezet<br /><br /> Hiba<br /><br /> Művelet<br /><br /> Product<br /><br /> Kérés<br /><br /> Kérelemazonosító: Guid<br /><br /> Válasz<br /><br /> Előfizetés<br /><br /> Nyomkövetés: logikai<br /><br /> Felhasználó<br /><br /> Változók: IReadOnlyDictionary < karakterlánc, objektum ><br /><br /> "void" Trace(message: string)|  
-|a környezetben. API|Azonosító: karakterlánc<br /><br /> Name: karakterlánc<br /><br /> Elérési út: karakterlánc<br /><br /> ServiceUrl: IUrl|  
+|a környezetben. API|Azonosító: karakterlánc<br /><br /> IsRevisionCurrent: logikai<br /><br />  Name: karakterlánc<br /><br /> Elérési út: karakterlánc<br /><br /> Változat: karakterlánc<br /><br /> ServiceUrl: IUrl<br /><br /> Verzió: karakterlánc |  
 |a környezetben. Központi telepítés|A régióban: karakterlánc<br /><br /> Szolgáltatásnév: karakterlánc<br /><br /> Tanúsítványok: IReadOnlyDictionary < karakterlánc, X509Certificate2 >|  
 |a környezetben. Hiba|Forrás: karakterlánc<br /><br /> OK: karakterlánc<br /><br /> Üzenet: karakterlánc<br /><br /> Hatókör: karakterlánc<br /><br /> A szakasz: karakterlánc<br /><br /> Elérési út: karakterlánc<br /><br /> PolicyId: karakterlánc<br /><br /> További információ a környezetben. Hiba, lásd: [hibakezelés](api-management-error-handling-policies.md).|  
 |a környezetben. Művelet|Azonosító: karakterlánc<br /><br /> Módszer: karakterlánc<br /><br /> Name: karakterlánc<br /><br /> UrlTemplate: karakterlánc|  
 |a környezetben. A termék|API-k: IEnumerable < IApi\><br /><br /> ApprovalRequired: logikai<br /><br /> Csoportok: IEnumerable < IGroup\><br /><br /> Azonosító: karakterlánc<br /><br /> Name: karakterlánc<br /><br /> Állapot: enum ProductState {NotPublished, közzétett}<br /><br /> SubscriptionLimit: int?<br /><br /> SubscriptionRequired: logikai|  
 |a környezetben. Kérelem|Törzs: IMessageBody<br /><br /> Tanúsítvány: System.Security.Cryptography.X509Certificates.X509Certificate2<br /><br /> Fejlécek: IReadOnlyDictionary < string, string [] ><br /><br /> IP-cím: karakterlánc<br /><br /> MatchedParameters: IReadOnlyDictionary < karakterlánc, karakterlánc ><br /><br /> Módszer: karakterlánc<br /><br /> OriginalUrl:IUrl<br /><br /> URL-cím: IUrl|  
-|karakterlánc-környezetben. Request.Headers.GetValueOrDefault (fejléc neve: karakterlánc, alapértelmezett érték: karakterlánc)|fejléc neve: karakterlánc<br /><br /> DefaultValue érték: karakterlánc<br /><br /> Beolvasása vesszővel elválasztott kérelem fejléc értékek vagy `defaultValue` Ha a fejléc nem található.|  
+|karakterlánc-környezetben. Request.Headers.GetValueOrDefault (fejléc neve: karakterlánc, alapértelmezett érték: karakterlánc)|fejléc neve: karakterlánc<br /><br /> DefaultValue érték: karakterlánc<br /><br /> Vesszővel tagolt kérelem fejléc értékei adja vissza vagy `defaultValue` Ha a fejléc nem található.|  
 |a környezetben. Válasz|Törzs: IMessageBody<br /><br /> Fejlécek: IReadOnlyDictionary < string, string [] ><br /><br /> StatusCode: int<br /><br /> StatusReason: karakterlánc|  
-|karakterlánc-környezetben. Response.Headers.GetValueOrDefault (fejléc neve: karakterlánc, alapértelmezett érték: karakterlánc)|fejléc neve: karakterlánc<br /><br /> DefaultValue érték: karakterlánc<br /><br /> A fejléc értékei vesszővel elválasztott választ ad vissza, vagy `defaultValue` Ha a fejléc nem található.|  
+|karakterlánc-környezetben. Response.Headers.GetValueOrDefault (fejléc neve: karakterlánc, alapértelmezett érték: karakterlánc)|fejléc neve: karakterlánc<br /><br /> DefaultValue érték: karakterlánc<br /><br /> A fejléc értékei vesszővel tagolt választ ad vissza, vagy `defaultValue` Ha a fejléc nem található.|  
 |a környezetben. Előfizetés|CreatedTime: DateTime<br /><br /> EndDate: DateTime?<br /><br /> Azonosító: karakterlánc<br /><br /> Kulcs: karakterlánc<br /><br /> Name: karakterlánc<br /><br /> PrimaryKey: karakterlánc<br /><br /> Másodlagos kulcs: karakterlánc<br /><br /> A StartDate: DateTime?|  
 |a környezetben. Felhasználó|E-mailek: karakterlánc<br /><br /> Utónév: karakterlánc<br /><br /> Csoportok: IEnumerable < IGroup\><br /><br /> Azonosító: karakterlánc<br /><br /> Identitások: IEnumerable < IUserIdentity\><br /><br /> Vezetéknév: karakterlánc<br /><br /> Megjegyzés: karakterlánc<br /><br /> RegistrationDate: DateTime|  
 |IApi|Azonosító: karakterlánc<br /><br /> Name: karakterlánc<br /><br /> Elérési út: karakterlánc<br /><br /> Protokollok: IEnumerable < karakterlánc\><br /><br /> ServiceUrl: IUrl<br /><br /> SubscriptionKeyParameterNames: ISubscriptionKeyParameterNames|  
 |IGroup|Azonosító: karakterlánc<br /><br /> Name: karakterlánc|  
-|IMessageBody|Mint < T\>(preserveContent: bool = false): Ha T: karakterlánc, JObject, JToken, JArray, XNode, XElement, XDocument<br /><br /> A `context.Request.Body.As<T>` és `context.Response.Body.As<T>` módszerek használhatók egy kérelem-válasz olvasása a megadott típusú üzenettörzs `T`. Alapértelmezés szerint a módszert használja az eredeti üzenet törzsének adatfolyam és reneders ez után adja vissza, nem érhető el. Azzal, hogy a szervezet adatfolyam másolatát működik metódus, amely elkerüléséhez állítsa a `preserveContent` paramétert `true`. Nyissa meg [Itt](api-management-transformation-policies.md#SetBody) lásd például.|  
+|IMessageBody|Mint < T\>(preserveContent: bool = false): Ha T: karakterlánc, JObject, JToken, JArray, XNode, XElement, XDocument<br /><br /> A `context.Request.Body.As<T>` és `context.Response.Body.As<T>` módszerek használhatók egy kérelem-válasz olvasása a megadott típusú üzenettörzs `T`. Alapértelmezés szerint a használja az eredeti üzenet törzsének adatfolyam és válik elérhetetlenné után adja vissza. Azzal, hogy a szervezet adatfolyam másolatát működik metódus, amely elkerüléséhez állítsa a `preserveContent` paramétert `true`. Nyissa meg [Itt](api-management-transformation-policies.md#SetBody) lásd például.|  
 |IUrl|Állomás: karakterlánc<br /><br /> Elérési út: karakterlánc<br /><br /> Port: int<br /><br /> Lekérdezés: IReadOnlyDictionary < string, string [] ><br /><br /> Lekérdezési karakterlánc: karakterlánc<br /><br /> Rendszer: karakterlánc|  
 |IUserIdentity|Azonosító: karakterlánc<br /><br /> Szolgáltató: karakterlánc|  
 |ISubscriptionKeyParameterNames|Fejléc: karakterlánc<br /><br /> Lekérdezés: karakterlánc|  
-|karakterlánc-IUrl.Query.GetValueOrDefault (queryParameterName: karakterlánc, alapértelmezett érték: karakterlánc)|queryParameterName: karakterlánc<br /><br /> DefaultValue érték: karakterlánc<br /><br /> Beolvasása vesszővel elválasztott lekérdezési paraméter értékek vagy `defaultValue` Ha a paraméter nem található.|  
+|karakterlánc-IUrl.Query.GetValueOrDefault (queryParameterName: karakterlánc, alapértelmezett érték: karakterlánc)|queryParameterName: karakterlánc<br /><br /> DefaultValue érték: karakterlánc<br /><br /> Vesszővel tagolt lekérdezés paramétereinek értékét adja vissza vagy `defaultValue` Ha a paraméter nem található.|  
 |T környezetben. Variables.GetValueOrDefault < T\>(variableName: karakterlánc, defaultValue: T)|variableName: karakterlánc<br /><br /> defaultValue: T<br /><br /> Írja be a típusúvá változó értékét adja vissza `T` vagy `defaultValue` Ha a változó nem található.<br /><br /> Ez a metódus kivételt jelez, ha a megadott típus nem egyezik a tényleges típus, a visszaadott változó.|  
 |BasicAuthCredentials AsBasic(input: this string)|bemeneti: karakterlánc<br /><br /> Ha a bemeneti paraméter érvényes HTTP-hitelesítés alapszintű engedélyezési kérelem fejléc értéke tartalmaz, a metódus visszaadja típusú objektum `BasicAuthCredentials`; ellenkező esetben a metódus null értéket ad vissza.|  
-|logikai TryParseBasic (bemenet: a karakterlánc, az eredmény: BasicAuthCredentials kimenő)|bemeneti: karakterlánc<br /><br /> eredmény: BasicAuthCredentials kimenő<br /><br /> Ha a bemeneti paraméter értéke érvényes HTTP-hitelesítés alapszintű engedélyezési kérelem fejléc, a metódus visszaadja `true` és az eredmény paraméter típusú értéket tartalmaz `BasicAuthCredentials`; ellenkező esetben a metódus visszaadja `false`.|  
+|logikai TryParseBasic (bemenet: a karakterlánc, az eredmény: BasicAuthCredentials kimenő)|bemeneti: karakterlánc<br /><br /> eredmény: BasicAuthCredentials kimenő<br /><br /> Ha a bemeneti paraméter értéke érvénytelen egyszerű HTTP-hitelesítés engedélyezési a kérelem fejlécében a metódus visszaadja `true` és az eredmény paraméter típusú értéket tartalmaz `BasicAuthCredentials`; ellenkező esetben a metódus visszaadja `false`.|  
 |BasicAuthCredentials|Jelszó: karakterlánc<br /><br /> Felhasználóazonosító: karakterlánc|  
 |Jwt AsJwt(input: this string)|bemeneti: karakterlánc<br /><br /> A bemeneti paraméter értéke érvényes JWT jogkivonat, ha a metódus visszaadja típusú objektum `Jwt`; ellenkező esetben a metódus visszaadja `null`.|  
 |logikai TryParseJwt (bemenet: a karakterlánc, az eredmény: Jwt kimenő)|bemeneti: karakterlánc<br /><br /> eredmény: Jwt-kimenő<br /><br /> Ha a bemeneti paraméter értéke érvénytelen JWT jogkivonat, a metódus visszaadja `true` és az eredmény paraméter típusú értéket tartalmaz `Jwt`; ellenkező esetben a metódus visszaadja `false`.|  
 |Jwt-t|Algoritmus: karakterlánc<br /><br /> A célközönség: IEnumerable < karakterlánc\><br /><br /> Jogcímek: IReadOnlyDictionary < string, string [] ><br /><br /> ExpirationTime: DateTime?<br /><br /> Azonosító: karakterlánc<br /><br /> Kibocsátó: karakterlánc<br /><br /> NotBefore: DateTime?<br /><br /> Tulajdonos: karakterlánc<br /><br /> Típus: karakterlánc|  
-|karakterlánc-Jwt.Claims.GetValueOrDefault (claimName: karakterlánc, alapértelmezett érték: karakterlánc)|claimName: karakterlánc<br /><br /> DefaultValue érték: karakterlánc<br /><br /> Vesszővel elválasztott jogcímértékek adja vissza vagy `defaultValue` Ha a fejléc nem található.|
+|karakterlánc-Jwt.Claims.GetValueOrDefault (claimName: karakterlánc, alapértelmezett érték: karakterlánc)|claimName: karakterlánc<br /><br /> DefaultValue érték: karakterlánc<br /><br /> Vesszővel elválasztott értéket ad vissza a jogcímérték vagy `defaultValue` Ha a fejléc nem található.|
 |byte [] titkosítása (bemeneti: a byte [], alg: karakterlánc, a kulcs: byte [], a iv:byte[])|bemenet – egyszerű szöveges titkosításához<br /><br />ALG - szimmetrikus titkosítási algoritmus neve<br /><br />kulcs - titkosítási kulcs<br /><br />IV-inicializáló vektort.<br /><br />Vissza titkosított egyszerű szöveg.|
 |byte [] titkosítása (bemeneti: a byte [], alg: System.Security.Cryptography.SymmetricAlgorithm)|bemenet – egyszerű szöveges titkosításához<br /><br />ALG - titkosítási algoritmus<br /><br />Vissza titkosított egyszerű szöveg.|
 |byte [] titkosítása (bemeneti: a byte [], alg: System.Security.Cryptography.SymmetricAlgorithm, kulcs: byte [], iv:byte[])|bemenet – egyszerű szöveges titkosításához<br /><br />ALG - titkosítási algoritmus<br /><br />kulcs - titkosítási kulcs<br /><br />IV-inicializáló vektort.<br /><br />Vissza titkosított egyszerű szöveg.|
-|byte [] visszafejtése (bemeneti: a byte [], alg: karakterlánc, a kulcs: byte [], a iv:byte[])|bemenet – cyphertext vissza kell fejteni<br /><br />ALG - szimmetrikus titkosítási algoritmus neve<br /><br />kulcs - titkosítási kulcs<br /><br />IV-inicializáló vektort.<br /><br />Egyszerű szövegként adja vissza.|
-|byte [] visszafejtése (bemeneti: a byte [], alg: System.Security.Cryptography.SymmetricAlgorithm)|bemenet – cyphertext vissza kell fejteni<br /><br />ALG - titkosítási algoritmus<br /><br />Egyszerű szövegként adja vissza.|
-|byte [] visszafejtése (bemeneti: a byte [], alg: System.Security.Cryptography.SymmetricAlgorithm, kulcs: byte [], iv:byte[])|bemeneti - bemeneti - cyphertext vissza kell fejteni<br /><br />ALG - titkosítási algoritmus<br /><br />kulcs - titkosítási kulcs<br /><br />IV-inicializáló vektort.<br /><br />Egyszerű szövegként adja vissza.|
+|byte [] visszafejtése (bemeneti: a byte [], alg: karakterlánc, a kulcs: byte [], a iv:byte[])|bemenet - rejtjelzésben szöveg vissza kell fejteni<br /><br />ALG - szimmetrikus titkosítási algoritmus neve<br /><br />kulcs - titkosítási kulcs<br /><br />IV-inicializáló vektort.<br /><br />Egyszerű szövegként adja vissza.|
+|byte [] visszafejtése (bemeneti: a byte [], alg: System.Security.Cryptography.SymmetricAlgorithm)|bemenet - rejtjelzésben szöveg vissza kell fejteni<br /><br />ALG - titkosítási algoritmus<br /><br />Egyszerű szövegként adja vissza.|
+|byte [] visszafejtése (bemeneti: a byte [], alg: System.Security.Cryptography.SymmetricAlgorithm, kulcs: byte [], iv:byte[])|visszafejtendő bemeneti - bemeneti - rejtjelzésben szöveg<br /><br />ALG - titkosítási algoritmus<br /><br />kulcs - titkosítási kulcs<br /><br />IV-inicializáló vektort.<br /><br />Egyszerű szövegként adja vissza.|
 
 ## <a name="video"></a>Videó
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Policy-Expressions-in-Azure-API-Management/player] 
 >
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Házirendek használata további információkért lásd:
 

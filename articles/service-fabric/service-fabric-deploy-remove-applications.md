@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/05/2017
 ms.author: ryanwi
-ms.openlocfilehash: f19141919b3c61123e0e94c4513f872e095620c1
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 49f26a6195713a5bcdd8ab5711f3bf715f3e033f
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>Központi telepítése, és távolítsa el az alkalmazásokat a PowerShell használatával
 > [!div class="op_single_selector"]
@@ -31,17 +31,29 @@ ms.lasthandoff: 12/21/2017
 
 Egyszer egy [alkalmazástípus csomagolás][10], az Azure Service Fabric-fürt szolgáltatássablonjaikat használatra kész. Központi telepítés a következő három lépést foglal magában:
 
-1. Az image store az alkalmazáscsomag feltöltése
-2. Az alkalmazástípus regisztrálása
-3. Az alkalmazáspéldány létrehozása
+1. Az alkalmazáscsomag feltöltése a lemezképtárolóhoz.
+2. Az alkalmazástípus regisztrálása kép relatív elérési út tárolása.
+3. Az alkalmazáspéldány létrehozása.
 
-Miután egy alkalmazás lett telepítve, és egy példányát a fürtben fut, törölheti az alkalmazáspéldány és az alkalmazás típusa. Az alkalmazás teljes eltávolítása a fürt a következő lépésekből áll:
+Amikor a telepített alkalmazás már nem szükséges, törölheti az alkalmazáspéldány és az alkalmazás típusa. Az alkalmazás teljes eltávolítása a fürt a következő lépésekből áll:
 
-1. Távolítsa el (vagy törlése) futó alkalmazáspéldány
-2. Az alkalmazástípus regisztrációjának törlése, ha már nincs szüksége
-3. Az alkalmazáscsomag eltávolítása a lemezképtárolóból
+1. Távolítsa el (vagy törlése) futó alkalmazáspéldányt.
+2. Az alkalmazástípus regisztrációjának törlése, ha már nincs szüksége.
+3. Az alkalmazáscsomag eltávolítása a lemezképtárolóból.
 
 Telepítésével és a helyi fejlesztési fürtön lévő alkalmazások hibakeresése a Visual Studio használja, ha az előző lépések kezeli automatikusan egy PowerShell-parancsfájl segítségével.  Ez a parancsfájl megtalálható a *parancsfájlok* mappában található a projektet. Ez a cikk nyújt háttér milyen, hogy a parancsfájl módon, hogy a Visual Studio kívül ugyanazokat a műveleteket végezheti el. 
+
+Alkalmazás központi telepítése egy másik úgy, hogy külső rendelkezés használatával. Az alkalmazáscsomag lehet [, csomagolt `sfpkg` ](service-fabric-package-apps.md#create-an-sfpkg) és fel kell tölteni a külső áruházban. Az image store feltöltés ebben az esetben nincs szükség. Központi telepítés kell az alábbi lépéseket:
+
+1. Töltse fel a `sfpkg` külső tárolóhoz. A külső áruházban bármely tároló, amely közzétesz egy REST http vagy https-végpont lehet.
+2. A külső letöltési URI és az alkalmazás típusinformációt az alkalmazástípus regisztrálása.
+2. Az alkalmazáspéldány létrehozása.
+
+A tisztítás távolítsa el az alkalmazáspéldányok és a alkalmazástípus regisztrációjának törlése. A csomag nem másolta az image store, mert nincs kiürítenie ideiglenes hely. Külső áruházból kiépítése a Service Fabric 6.1-es verziójú kezdődően elérhető.
+
+>[!NOTE]
+> A Visual Studio jelenleg nem támogatja a külső kiépítéséhez.
+
  
 ## <a name="connect-to-the-cluster"></a>Csatlakozás a fürthöz
 Ebben a cikkben a PowerShell-parancsok futtatása, előtt mindig használatával indítsa el [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) csatlakozni a Service Fabric-fürt. Szeretne csatlakozni a helyi fejlesztési fürtöt, futtassa az alábbi parancsot:
@@ -123,7 +135,7 @@ Például ez tömörítési statisztika egyes csomagok, amely a kezdeti és a t�
 |2048|1000|00:01:04.3775554|1231|
 |5012|100|00:02:45.2951288|3074|
 
-Ha egy csomag tömörített, akkor is feltölthetők a egy vagy több Service Fabric-fürtök igény szerint. A központi telepítési módszer használata ugyanabban a tömörített és tömörítetlen csomagokat. Ha a csomag tömörített, a fürt lemezképtárolóhoz ilyen van tárolva, és azt van tömörítetlen a csomóponton, az alkalmazás futtatása előtt.
+Ha egy csomag tömörített, akkor is feltölthetők a egy vagy több Service Fabric-fürtök igény szerint. A központi telepítési módszer használata ugyanabban a tömörített és tömörítetlen csomagokat. Tömörített csomagok ilyen tárolja a fürt lemezképtárolóhoz. A csomagok vannak tömörítetlen a csomóponton, az alkalmazás futtatása előtt.
 
 
 Az alábbi példa feltölti a csomag az image store "MyApplicationV1" nevű mappába:
@@ -162,17 +174,27 @@ Az alkalmazástípus és -verzió az alkalmazás jegyzékében használható vá
 
 Futtassa a [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) parancsmag az alkalmazástípus regisztrálása a fürtben, és lehetővé teszi az üzembe:
 
+### <a name="register-the-application-package-copied-to-image-store"></a>Az alkalmazáscsomag másolva lemezképtárolóhoz regisztrálása
+Ha egy csomag korábban másolta az image store, a regisztrációs műveletet a következő relatív elérési meghatározza az image store.
+
 ```powershell
-PS C:\> Register-ServiceFabricApplicationType MyApplicationV1
+PS C:\> Register-ServiceFabricApplicationType -ApplicationPackagePathInImageStore MyApplicationV1
 Register application type succeeded
 ```
 
 "MyApplicationV1" az image store, ahol az alkalmazáscsomag-e a mappát. Az alkalmazástípus neve "MyApplicationType" és "1.0.0" (egyaránt megtalálható az alkalmazás jegyzékében) verziója most már regisztrálva van a fürtben.
 
+### <a name="register-the-application-package-copied-to-an-external-store"></a>A külső áruházban másolva alkalmazáscsomag regisztrálása
+A Service Fabric 6.1-es verziójú verziótól kezdődően kiépítése támogatja a külső áruházban a csomag letöltése. A letöltési URI elérési útját jelöli a [ `sfpkg` alkalmazáscsomag](service-fabric-package-apps.md#create-an-sfpkg) , amelyről az alkalmazáscsomag letölthető HTTP vagy HTTPS protokollt használ. A csomag kell már korábban feltöltött a külső helyre. Az URI OLVASÁSI hozzáférést kell engedélyeznie, ezért a Service Fabric töltheti le a fájlt. A `sfpkg` fájl ".sfpkg" kiterjesztéssel kell rendelkeznie. A telepítési művelet tartalmaznia kell az alkalmazás típust talált az alkalmazásjegyzékben, adatait.
+
+```
+PS C:\> Register-ServiceFabricApplicationType -ApplicationPackageDownloadUri "https://sftestresources.blob.core.windows.net:443/sfpkgholder/MyAppPackage.sfpkg" -ApplicationTypeName MyApp -ApplicationTypeVersion V1 -Async
+```
+
 A [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) parancs csak azt követően a rendszer sikeresen regisztrálta az alkalmazáscsomag adja vissza. Mennyi ideig regisztrációs vesz méretét és az alkalmazáscsomag tartalmának függ. Ha szükséges, a **- TimeoutSec** paraméter segítségével adjon meg egy hosszabb időtúllépési érték (az alapértelmezett időtúllépési érték 60 másodperc).
 
-Ha egy nagy alkalmazás csomagot, vagy ha időtúllépéseket tapasztalnak, használja a **- aszinkron** paraméter. A parancs ad vissza, ha a fürt elfogadja a register parancsot, és a feldolgozási továbbra is fennáll, igény szerint.
-A [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) parancs megjeleníti az összes sikeresen regisztrált alkalmazástípus-verziók és a regisztrációs állapotot. Ez a parancs segítségével határozható meg, hogy a regisztrációs történik.
+Ha egy nagy alkalmazás csomagot, vagy ha időtúllépéseket tapasztalnak, használja a **- aszinkron** paraméter. A parancs ad vissza, ha a fürt elfogadja a register-parancsot. A regisztrációs műveletet továbbra is fennáll, igény szerint.
+A [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) parancs megjeleníti az alkalmazástípus-verziók és a regisztrációs állapotot. Ez a parancs segítségével határozható meg, hogy a regisztrációs történik.
 
 ```powershell
 PS C:\> Get-ServiceFabricApplicationType
@@ -184,7 +206,7 @@ DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
 ```
 
 ## <a name="remove-an-application-package-from-the-image-store"></a>Az alkalmazáscsomag eltávolítása a lemezképtárolóból
-Ajánlott az alkalmazáscsomag eltávolítása után az alkalmazás regisztrálása sikeres volt.  Rendszererőforrások szabaddá alkalmazáscsomagok az image store való törlésekor.  Nem használt alkalmazáscsomagok használ fel a lemezes tárolás és alkalmazást teljesítményproblémák vezet.
+Ha egy csomag másolta az image store, eltávolítja azt az átmeneti mappából után az alkalmazás regisztrálása sikeres volt. Rendszererőforrások szabaddá alkalmazáscsomagok az image store való törlésekor. Nem használt alkalmazáscsomagok használ fel a lemezes tárolás és alkalmazást teljesítményproblémák vezet.
 
 ```powershell
 PS C:\>Remove-ServiceFabricApplicationPackage -ApplicationPackagePathInImageStore MyApplicationV1
@@ -244,7 +266,7 @@ PS C:\> Get-ServiceFabricApplication
 ```
 
 ## <a name="unregister-an-application-type"></a>Az alkalmazástípus regisztrációjának törlése
-Amikor egy alkalmazás típus adott verziójának már nem szükséges, meg kell regisztrációját használt alkalmazások típusa a [Unregister-ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype?view=azureservicefabricps) parancsmag. Regisztrációjának megszüntetése nem használt alkalmazás típusok kiadásokban tárolóhely bináris alkalmazásfájlokat eltávolításával az image store használják. Az alkalmazástípus regisztrációjának törlése nem távolítja el az alkalmazáscsomagot. Az alkalmazástípus regisztrációjának törlése lehet, mindaddig, amíg nincs alkalmazások létrehozásának rajta, és nem alkalmazás függőben lévő frissítések hivatkozik rá.
+Amikor egy alkalmazás típus adott verziójának már nem szükséges, meg kell regisztrációját használt alkalmazások típusa a [Unregister-ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype?view=azureservicefabricps) parancsmag. Az alkalmazás típusa fájlok törlésével az image store által felhasznált tárterület nem használt alkalmazástípus regisztrációjának kiadását. Az alkalmazástípus regisztrációjának törlése nem távolítja el az alkalmazáscsomag, a lemezkép-tároló ideiglenes mappába, másolja az image store másolás használatakor. Az alkalmazástípus regisztrációjának törlése lehet, mindaddig, amíg nincs alkalmazások létrehozásának rajta, és nem alkalmazás függőben lévő frissítések hivatkozik rá.
 
 Futtatás [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) a fürt jelenleg regisztrált alkalmazás típusának:
 
@@ -334,6 +356,8 @@ DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
 ```
 
 ## <a name="next-steps"></a>További lépések
+[Alkalmazás becsomagolása](service-fabric-package-apps.md)
+
 [A Service Fabric-alkalmazás frissítése](service-fabric-application-upgrade.md)
 
 [A Service Fabric állapotának bemutatása](service-fabric-health-introduction.md)

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/22/2016
 ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: 9de193c95fe881c03cdbd2105b93ee487a2455e0
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: 993dff7657a73803ca21677e19b08946fb89bfa2
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="use-the-service-map-solution-in-operations-management-suite"></a>Az Operations Management Suite a Szolgáltatástérkép megoldás használja
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Szolgáltatástérkép, használatával megtekintheti a kiszolgálók, amelyek Ön szerint egyik módja: összekapcsolt rendszerekhez, hogy a kritikus szolgáltatásokhoz. Szolgáltatástérkép jeleníti meg a kiszolgálók, a folyamatok közötti kapcsolatokat, és portok között bármely TCP-csatlakoztatott architektúra, a konfiguráció nem szükséges másik ügynököt telepíteni.
@@ -333,34 +333,34 @@ Típusú rekordok *ServiceMapProcess_CL* rendelkezik TCP kapcsolódó eljáráso
 ## <a name="sample-log-searches"></a>Naplókeresési minták
 
 ### <a name="list-all-known-machines"></a>Az összes ismert gép felsorolása
-Típus = ServiceMapComputer_CL |} a deduplikáció ResourceId
+ServiceMapComputer_CL |} összefoglalója arg_max(TimeGenerated, *) ResourceId által
 
 ### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>Minden felügyelt számítógéphez fizikai memória kapacitásának listában.
-Típus = ServiceMapComputer_CL |} Válassza ki a PhysicalMemory_d, ComputerName_s |} A Deduplikáció ResourceId
+ServiceMapComputer_CL |} összefoglalója arg_max(TimeGenerated, *) által ResourceId |} Projekt PhysicalMemory_d, ComputerName_s
 
 ### <a name="list-computer-name-dns-ip-and-os"></a>Számítógép neve, a DNS, az IP és a az operációs rendszer.
-Típus = ServiceMapComputer_CL |} Válassza ki a ComputerName_s, OperatingSystemFullName_s, DnsNames_s, IPv4Addresses_s |} a deduplikáció ResourceId
+ServiceMapComputer_CL |} összefoglalója arg_max(TimeGenerated, *) által ResourceId |} a projekt ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s
 
 ### <a name="find-all-processes-with-sql-in-the-command-line"></a>A parancssorban "sql" az összes folyamat keresése
-Típus = ServiceMapProcess_CL CommandLine_s = \*sql\* |} deduplikáció ResourceId
+ServiceMapProcess_CL |} ahol "sql" CommandLine_s contains_cs |} összefoglalója arg_max(TimeGenerated, *) ResourceId által
 
 ### <a name="find-a-machine-most-recent-record-by-resource-name"></a>Található (legutóbbi rekord) gép neve szerint
-Típus = "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" ServiceMapComputer_CL |} a deduplikáció ResourceId
+Keresés helye (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" |} összefoglalója arg_max(TimeGenerated, *) ResourceId által
 
 ### <a name="find-a-machine-most-recent-record-by-ip-address"></a>Található (legutóbbi rekord) gép IP-cím szerint
-Típus = "10.229.243.232" ServiceMapComputer_CL |} a deduplikáció ResourceId
+Keresés helye (ServiceMapComputer_CL) "10.229.243.232" |} összefoglalója arg_max(TimeGenerated, *) ResourceId által
 
 ### <a name="list-all-known-processes-on-a-specified-machine"></a>A megadott számítógép összes ismert folyamat felsorolása
-Típus ServiceMapProcess_CL MachineResourceName_s="m-4b9c93f9-bc37-46df-b43c-899ba829e07b =" |} a deduplikáció ResourceId
+ServiceMapProcess_CL |} Ha MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" |} összefoglalója arg_max(TimeGenerated, *) ResourceId által
 
 ### <a name="list-all-computers-running-sql"></a>Megjeleníti az SQL futtató összes számítógépet
-Típus ServiceMapComputer_CL ResourceName_s IN = {típus = ServiceMapProcess_CL \*sql\* |} Különböző MachineResourceName_s} |} a deduplikáció ResourceId |} Különböző ComputerName_s
+ServiceMapComputer_CL |} Ha a ResourceName_s (((ServiceMapProcess_CL) a keresési "\*sql\*" |} különböző MachineResourceName_s)) |} különböző ComputerName_s
 
 ### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>A saját adatközpont curl összes egyedi termék verziójának felsorolása
-Típus = ServiceMapProcess_CL ExecutableName_s = curl |} Különböző ProductVersion_s
+ServiceMapProcess_CL |} Ha ExecutableName_s == "curl" |} különböző ProductVersion_s
 
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>Hozzon létre egy számítógépcsoportot CentOS rendszerrel működő számítógépek
-Típus = ServiceMapComputer_CL OperatingSystemFullName_s = \*CentOS\* |} Különböző ComputerName_s
+ServiceMapComputer_CL |} ahol "CentOS" OperatingSystemFullName_s contains_cs |} különböző ComputerName_s
 
 
 ## <a name="rest-api"></a>REST API

@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/17/2017
 ms.author: mbullwin
-ms.openlocfilehash: 4cbc423555abfe6beee2c89d9df0760ce7c2fd6e
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: a94a7da29d9f3c6f745df7e91ec9e19b66435eae
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API egyéni események és metrikák
 
@@ -414,32 +414,34 @@ Akkor is is meghívhatja, ha szeretné szimulálni a kéréseket a környezetéb
 Azonban az ajánlott módszer a kérelem telemetriai adatokat küldhet, ahol a kérelem úgy működik, mint egy <a href="#operation-context">műveletkörnyezetet</a>.
 
 ## <a name="operation-context"></a>A művelet a környezetben
-Telemetria elemek együtt is társíthat, hozzájuk rendelve egy közös műveletet. A normál kérés-nyomkövetési modul elvégzi ezt a kivételeket és eseményeket, amelyek küldött HTTP-kérelem feldolgozása közben. A [keresési](app-insights-diagnostic-search.md) és [Analytics](app-insights-analytics.md), az Azonosítót használva követheti könnyedén megtalálhatja a kérelemhez társított eseményeket.
+Telemetria elemek együtt összefüggéseket való műveletet a környezetben. A normál kérés-nyomkövetési modul elvégzi ezt a kivételeket és eseményeket, amelyek küldött HTTP-kérelem feldolgozása közben. A [keresési](app-insights-diagnostic-search.md) és [Analytics](app-insights-analytics.md), könnyedén megtalálhatja a művelettel azonosítóját. a kéréshez társított eseményeket
 
-A legegyszerűbb módja a azonosítóját, hogy egy művelet környezetben állította ezt a mintát használja:
+Lásd: [az Application Insights Telemetria korrelációs](application-insights-correlation.md) korrelációs olvashat.
+
+Ha manuálisan, nyomkövetési telemetria telemetriai korrelációs érdekében ebben a mintában a legegyszerűbb módja:
 
 *C#*
 
 ```C#
 // Establish an operation context and associated telemetry item:
-using (var operation = telemetry.StartOperation<RequestTelemetry>("operationName"))
+using (var operation = telemetryClient.StartOperation<RequestTelemetry>("operationName"))
 {
     // Telemetry sent in here will use the same operation ID.
     ...
-    telemetry.TrackTrace(...); // or other Track* calls
+    telemetryClient.TrackTrace(...); // or other Track* calls
     ...
     // Set properties of containing telemetry item--for example:
     operation.Telemetry.ResponseCode = "200";
 
     // Optional: explicitly send telemetry item:
-    telemetry.StopOperation(operation);
+    telemetryClient.StopOperation(operation);
 
 } // When operation is disposed, telemetry item is sent.
 ```
 
 Egy művelet környezet beállítása mellett `StartOperation` hoz létre a megadott típusú telemetriai elemet. A telemetriai adatok elemet elküldi meg azzal, hogy a művelet, vagy ha explicit módon hívja `StopOperation`. Ha `RequestTelemetry` a telemetria-típusként időtartama közötti kezdési és befejezési rendszeres időközönkénti értékre van állítva.
 
-Művelet környezetek nem ágyazhatók egymásba. Ha már van egy művelet környezetben, akkor Azonosítóval társítva a benne lévő elemek, például a létrehozott elemek `StartOperation`.
+Egy művelet hatókörén belül jelentett telemetriai cikkek ilyen művelet "gyermekeinek" lesz. Sikerült a művelet környezetek beágyazott. 
 
 A Keresés a műveletkörnyezetet létrehozásához használt a **kapcsolódó elemek** listája:
 
@@ -900,7 +902,7 @@ Egyéni telemetria hívások felülbírálhatja az alapértelmezett értékeket 
 
 [Adja hozzá a Tulajdonságok](app-insights-api-filtering-sampling.md#add-properties) való alkalmazásával telemetriai `ITelemetryInitializer`. Például hozzáadhat verziószámok vagy számított értékeket más tulajdonságai közül.
 
-[Szűrés](app-insights-api-filtering-sampling.md#filtering) módosíthatja vagy vesse el a telemetriai adatokat az SDK-ból implementálásával elküldése előtt `ITelemetryProcessor`. Megadhatja, mi küldik vagy elvetett, de a fiókot használja a metrikákat, hatással van. Attól függően, hogy hogyan elveti elemek kapcsolódó elemek közötti navigáláshoz képes elveszhetnek.
+[Szűrés](app-insights-api-filtering-sampling.md#filtering) módosíthatja vagy vesse el a telemetriai adatokat az SDK-ból implementálásával elküldése előtt `ITelemetryProcesor`. Megadhatja, mi küldik vagy elvetett, de a fiókot használja a metrikákat, hatással van. Attól függően, hogy hogyan elveti elemek kapcsolódó elemek közötti navigáláshoz képes elveszhetnek.
 
 [A mintavételi](app-insights-api-filtering-sampling.md) egy csomagolt megoldás a portálra az alkalmazás által küldött adatok mennyisége csökkentése érdekében. Igen, a megjelenő metrikák befolyásolása nélkül. És így nem befolyásolja a problémák diagnosztizálásához például kivételek, a kérelmek és az oldalmegtekintéseket kapcsolódó elemek közötti lépjen arra a képességére kezeli.
 

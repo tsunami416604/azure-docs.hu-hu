@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2017
 ms.author: amsriva
-ms.openlocfilehash: 6a24e9598362b7c4ff9e2d3371d619fbbd41907f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e0099734a81cd8b1edf5cf80cb56b5c322a5feee
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Az Alkalmazásátjáró hibás átjáró hibák elhárítása
 
@@ -80,8 +80,8 @@ Ha telepítve van, győződjön meg arról, hogy a DNS-kiszolgáló tudja megfel
 
 | Mintavételi tulajdonság | Érték | Leírás |
 | --- | --- | --- |
-| A mintavételi URL-címe |http://127.0.0.1/ |URL-címe |
-| időköz |30 |Mintavételi időköz másodpercben |
+| Teszt URL-címe |http://127.0.0.1/ |URL-cím |
+| Időköz |30 |Mintavételi időköz másodpercben |
 | Időtúllépés |30 |Mintavételi időkorlátja másodpercben |
 | Sérült küszöbérték |3 |Mintavételi újrapróbálkozások maximális számát. A háttér-kiszolgálófiók van megjelölve, miután az egymást követő mintavételi hiba száma eléri a sérült küszöbérték. |
 
@@ -102,11 +102,11 @@ Egyéni állapotteljesítmény az alapértelmezett viselkedés probing további 
 
 | Mintavételi tulajdonság | Leírás |
 | --- | --- |
-| Név |A mintavétel neve. Ez a név segítségével tekintse meg a mintavétel a háttér-HTTP-beállításait. |
+| Name (Név) |A mintavétel neve. Ez a név segítségével tekintse meg a mintavétel a háttér-HTTP-beállításait. |
 | Protokoll |A mintavétel küldéséhez használt protokoll. A mintavétel a háttér-HTTP-beállítások között megadott protokollt használ. |
 | Gazdagép |A mintavétel küldendő állomásnevet. Akkor alkalmazható, csak akkor, ha több hely úgy van konfigurálva, az alkalmazás-átjárón. Ez eltér a virtuális gép állomásnevét. |
 | Útvonal |A mintavétel relatív elérési útja. Az érvényes elérési utat elindítja a "/". A mintavétel küldött \<protokoll\>://\<állomás\>:\<port\>\<elérési útja\> |
-| időköz |Mintavételi időköz másodpercben. Ez a két egymást követő mintavételek menüpontban közötti időközt. |
+| Időköz |Mintavételi időköz másodpercben. Ez a két egymást követő mintavételek menüpontban közötti időközt. |
 | Időtúllépés |Mintavételi időtúllépés másodpercben. Egy érvényes válasz nem érkezett meg a megadott időn belül, ha a mintavételi hibás jelölést. |
 | Sérült küszöbérték |Mintavételi újrapróbálkozások maximális számát. A háttér-kiszolgálófiók van megjelölve, miután az egymást követő mintavételi hiba száma eléri a sérült küszöbérték. |
 
@@ -118,8 +118,7 @@ Ellenőrizze, hogy az egyéni állapot-mintavételi megfelelően van konfigurál
 * Ha Alkalmazásátjáró egy adott hely van konfigurálva, a gazdagépen alapértelmezés szerint nevét kell megadni a "127.0.0.1", kivéve, ha az egyéni tesztműveleti egyéb konfigurálni.
 * Győződjön meg arról, hogy http:// hívása\<állomás\>:\<port\>\<elérési\> 200-as HTTP eredmény kódot ad vissza.
 * Ellenőrizze, hogy időköz, időtúllépési és UnhealtyThreshold belül elfogadható tartományban.
-* Ha egy HTTPS-kapcsolaton keresztül mintavételi, győződjön meg arról, hogy a háttérkiszolgáló SNI nincs szükség a háttérkiszolgálón magát a fallback tanúsítvány konfigurálásával. 
-* Gondoskodjon arról, hogy időköz, időtúllépési és UnhealtyThreshold belül elfogadható tartományban.
+* Ha egy HTTPS-kapcsolaton keresztül mintavételi, győződjön meg arról, hogy a háttérkiszolgáló SNI nincs szükség a háttérkiszolgálón magát a fallback tanúsítvány konfigurálásával.
 
 ## <a name="request-time-out"></a>Kérelem időtúllépése
 
@@ -187,7 +186,7 @@ Ha BackendAddressPool összes példánya sérült állapotban, majd Alkalmazás�
 
 Győződjön meg arról, hogy a példány állapota kifogástalan és az alkalmazás megfelelően van konfigurálva. Ellenőrizze, hogy a háttér-példányok képesek-e egy másik virtuális gép ugyanazon virtuális válaszol a pingelésre. Ha be van állítva egy nyilvános végpontot, győződjön meg arról, hogy a böngésző kérést a webalkalmazásnak használható.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha az előző lépések nem a probléma megoldásához nyissa meg a [támogatja a jegy](https://azure.microsoft.com/support/options/).
 

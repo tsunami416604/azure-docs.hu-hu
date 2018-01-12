@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: 925171ab00bcf2e36e1f8109dceac72ad33be51e
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: a2706a1cfa2a99faf20860b23cd6bd401f6f7233
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-ftp-server-by-using-azure-data-factory"></a>Adatok másolása az FTP-kiszolgáló Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -39,7 +39,8 @@ Pontosabban az FTP-összekötő támogatja:
 - Mint a fájlok másolása-fájlok elemzése, vagy a [támogatott formátumok és a tömörítési kodek](supported-file-formats-and-compression-codecs.md).
 
 ## <a name="get-started"></a>Bevezetés
-A másolási tevékenység során .NET SDK, a Python SDK, az Azure PowerShell, a REST API-t vagy a Azure Resource Manager-sablon használatával hozhat létre egy folyamatot. Lásd: [másolási tevékenység oktatóanyag](create-self-hosted-integration-runtime.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját.
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 A következő szakaszok részletesen bemutatják, amely segítségével határozza meg a Data Factory entitások adott FTP-tulajdonságok.
 
@@ -50,7 +51,7 @@ Kapcsolódó FTP-szolgáltatás támogatott a következő tulajdonságokkal:
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **FTP-kiszolgáló**. | Igen |
-| állomás | Adja meg a nevét vagy az FTP-kiszolgáló IP-címét. | Igen |
+| gazdagép | Adja meg a nevét vagy az FTP-kiszolgáló IP-címét. | Igen |
 | port | Adja meg a portot, amelyet az FTP-kiszolgáló figyel.<br/>Két érték engedélyezett: egész szám, alapértelmezett értéke **21**. | Nem |
 | enableSsl | Adja meg, hogy a TLS/SSL csatornán FTP használata.<br/>Két érték engedélyezett: **igaz** (alapértelmezett), **hamis**. | Nem |
 | enableServerCertificateValidation | Adja meg, hogy engedélyezze a kiszolgálói SSL-tanúsítvány hitelesítése a TLS/SSL csatornán keresztül FTP használata esetén.<br/>Két érték engedélyezett: **igaz** (alapértelmezett), **hamis**. | Nem |
@@ -198,5 +199,5 @@ Adatok másolása FTP, állítsa be a forrás típusa a másolási tevékenység
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md##supported-data-stores-and-formats).

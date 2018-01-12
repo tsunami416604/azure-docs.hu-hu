@@ -12,14 +12,14 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 543e8a591acc76918aa7159e6a31b67d85849148
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: a16c5011986c16aae26efaaa6191568b04f46567
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="azure-location-based-services---geocoding-coverage"></a>Azure-beli hely alapú szolgáltatások - Geokódolás érvényességének
-Azure hely-alapú szolgáltatásokhoz (LBS) címek, a helyek és az egyéb a világ különböző földrajzi entitások keresésekor geokódolás részletes információkat nyújt. Ez fontos a felhasználóknak, akik szeretnék tudni, ahonnan és nem várt hűség különböző szintű kereséskor a keresési szolgáltatás címek. Alacsony hűség érvényességének régiók keresésekor alacsonyabb abban, hogy keresési eredmények nem várt. A következő táblázat az Azure LBS keresési Geokódolás érvényességének információkat szolgáltat.
+Azure hely-alapú szolgáltatásokhoz (LBS) címek, a helyek és az egyéb a világ különböző földrajzi entitások keresésekor geokódolás részletes információkat nyújt. Ez fontos a felhasználóknak, akik szeretnék tudni, ahonnan és nem várt hűség különböző szintű kereséskor a keresési szolgáltatás címek. Alacsony hűség érvényességének régiók keresésekor számíthat alacsonyabb abban, hogy keresési eredmények között. A következő táblázat az Azure LBS keresési Geokódolás érvényességének információkat szolgáltat.
 
 
 |Régió  |Cím pontok  |Ház számok |Utca szint|
@@ -135,7 +135,7 @@ Azure hely-alapú szolgáltatásokhoz (LBS) címek, a helyek és az egyéb a vil
 |Törökország     |✓         |✓         |✓         |
 |Ukrajna     |         | ✓        | ✓        |
 |Egyesült Királyság     |✓         | ✓        |✓         |
-|Vatikánváros     |         |         |✓         |
+|Vatikán     |         |         |✓         |
 |     |         |         |         |
 |**Közel-Kelet és Afrika**     |         |         |         |
 |Algéria     |         |         |✓         |

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: jingwang
-ms.openlocfilehash: 62ac7e5d87e1a062ffeb6667377db4f6795b26aa
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 4127123ffcf8eb2ae18c8b9833b2235d7ac219e7
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-quickbooks-using-azure-data-factory-beta"></a>Adatok másolása az Azure Data Factory (béta) használatával QuickBooks
 
@@ -37,9 +37,9 @@ Az Azure Data Factory kapcsolódásának engedélyezése beépített illesztőpr
 
 Jelenleg ez az összekötő csak az 1.0a, ami azt jelenti, hogy szüksége van egy fejlesztői fiókjába az alkalmazásokkal 2017. július 17. előtt létrehozott támogatják.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 
-A másolási tevékenység során .NET SDK, a Python SDK, az Azure PowerShell, a REST API-t vagy a Azure Resource Manager-sablon használatával hozhat létre egy folyamatot. Lásd: [másolási tevékenység oktatóanyag](quickstart-create-data-factory-dot-net.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját.
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 A következő szakaszok részletesen bemutatják való QuickBooks összekötő adat-előállító tartozó entitások meghatározásához használt tulajdonságokat.
 
@@ -50,7 +50,7 @@ A következő tulajdonságok QuickBooks kapcsolódó szolgáltatás támogatotta
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **QuickBooks** | Igen |
-| végpont | A végpont a QuickBooks kiszolgáló. (Ez azt jelenti, hogy quickbooks.api.intuit.com)  | Igen |
+| endpoint | A végpont a QuickBooks kiszolgáló. (Ez azt jelenti, hogy quickbooks.api.intuit.com)  | Igen |
 | companyId | A QuickBooks vállalati engedélyezésére vállalat azonosítója.  | Igen |
 | accessToken | Az OAuth 1.0 hitelesítési jogkivonat. Ez a mező megjelölése a SecureString tárolja biztonságos helyen az ADF, vagy a jelszó tárolása az Azure Key Vault választhat, és lehetővé teszik a másolási tevékenység lekéréses ott adatmásolás végrehajtása során – további információhoz [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). | Igen |
 | accessTokenSecret | A hozzáférési jogkivonat titkos kulcs OAuth 1.0-hitelesítéshez. Ez a mező megjelölése a SecureString tárolja biztonságos helyen az ADF, vagy a jelszó tárolása az Azure Key Vault választhat, és lehetővé teszik a másolási tevékenység lekéréses ott adatmásolás végrehajtása során – további információhoz [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). | Igen |
@@ -146,5 +146,5 @@ Adatok másolása QuickBooks, állítsa be a forrás típusa a másolási tevék
 ]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats).

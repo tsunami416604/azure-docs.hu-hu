@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2017
 ms.author: wgries
-ms.openlocfilehash: 2ab14183a0ca4ade7873dbdece407937a746b663
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 1619b3c67fb68f05c4af999a38794e4a52c22264
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="addremove-an-azure-file-sync-preview-server-endpoint"></a>Egy Azure fájlszinkronizálás (előzetes verzió) kiszolgáló végpont hozzáadása
 Az Azure File Sync (előzetes verzió) lehetővé teszi a szervezet Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. Ezt úgy éri el, hogy átalakítja a Windows-kiszolgálókat az Azure-fájlmegosztás gyors gyorsítótáraivá. A Windows Server rendszeren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl. SMB, NFS vagy FTPS), és annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -32,7 +32,7 @@ Kiszolgáló-végpont létrehozása, akkor előbb ellenőrizze, hogy a következ
 - A kiszolgáló Azure fájl Sync-ügynök van telepítve, és regisztrálva van. Az Azure File szinkronizálási Agent telepítési lépéseit megtalálhatók a [Register/való regisztrációt megszüntetni a kiszolgáló Azure fájlszinkronizálás (előzetes verzió)](storage-sync-files-server-registration.md) cikk. 
 - Győződjön meg arról, hogy a tároló szinkronizálási szolgáltatás van telepítve. Lásd: [Azure fájlszinkronizálás (előzetes verzió) telepítése](storage-sync-files-deployment-guide.md) talál részletes tárolási szinkronizálási szolgáltatás telepítése. 
 - Győződjön meg arról, hogy a szinkronizálási csoport van telepítve. Megtudhatja, hogyan [hozzon létre egy szinkronizálási csoportot](storage-sync-files-deployment-guide.md#create-a-sync-group).
-- Győződjön meg arról, hogy a kiszolgáló csatlakozik-e az internethez, és hogy elérhető Azure.
+- Győződjön meg arról, hogy a kiszolgáló csatlakozik-e az internethez, és hogy elérhető Azure. Az összes kommunikáció a kiszolgáló és a szolgáltatás között a 443-as portot használjuk.
 
 ## <a name="add-a-server-endpoint"></a>A kiszolgáló végpont hozzáadása
 Vegyen fel egy kiszolgáló végpontot, keresse meg a kívánt szinkronizálású csoport, és válassza a "Kiszolgáló végpont hozzáadása".
@@ -69,6 +69,6 @@ A kiszolgáló végpont eltávolítása:
 
     ![A kiszolgáló végpont szinkronizálási csoportból történő eltávolítása](media/storage-sync-files-server-endpoint/remove-server-endpoint-1.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Regisztrálása vagy a kiszolgáló regisztrációját az Azure fájlszinkronizálás (előzetes verzió)](storage-sync-files-server-registration.md)
 - [Egy Azure fájlszinkronizálás központi telepítésének tervezése](storage-sync-files-planning.md)

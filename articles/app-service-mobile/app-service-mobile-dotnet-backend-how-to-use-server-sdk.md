@@ -15,11 +15,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: a88b360821a06bdf106a9a83accce4023b8864ad
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: a1a29d87864bff8cb2ecda70d8a0a7833c70d481
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Az Azure Mobile Appshoz készült .NET háttérkiszolgáló-SDK használata
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -244,6 +244,10 @@ Kiterjesztésével server projektjéhez hitelesítési is hozzáadhat a **Mobile
 Hitelesíti az ügyfeleket a Mobile Apps-háttéralkalmazásának kapcsolatos további tudnivalókért lásd: [hitelesítés hozzáadása az alkalmazáshoz](app-service-mobile-ios-get-started-users.md).
 
 ### <a name="custom-auth"></a>Útmutató: az alkalmazás egyéni hitelesítés használata
+> [!IMPORTANT]
+> Ahhoz, hogy az egyéni hitelesítési, először engedélyeznie kell App Service hitelesítés kiválasztása az App Service egy szolgáltatót az Azure portálon nélkül. Ezzel a lépéssel engedélyezi a WEBSITE_AUTH_SIGNING_KEY környezeti változó, ha azt.
+> 
+> 
 Ha nem szeretné az App Service hitelesítési/engedélyezési szolgáltatók egyikét kell használnia, a saját bejelentkezési rendszer valósíthat meg. Telepítse a [Microsoft.Azure.Mobile.Server.Login] csomag elősegítve ezzel a hitelesítési jogkivonatok létrehozásához.  Adja meg a saját kódot a felhasználó hitelesítő adatainak ellenőrzése. Például ellenőrizze sózott és kivonatolt jelszavakat adatbázisban ellen. Az alábbi példában a `isValidAssertion()` (határozni) metódus felelős az ellenőrzést.
 
 Az egyéni hitelesítési fel van fedve egy ApiController létrehozásával, és az ilyen `register` és `login` műveletek. Az ügyfél által használandó egyéni felhasználói Felületet a Információgyűjtés a felhasználótól.  Az információkat majd szabványos HTTP POST hívja az API számára. Ha a kiszolgáló ellenőrzi a helyességi feltétel, jogkivonat használatával kiadott a `AppServiceLoginHandler.CreateToken()` metódust.  A ApiController **nem kell** használja a `[MobileAppController]` attribútum.

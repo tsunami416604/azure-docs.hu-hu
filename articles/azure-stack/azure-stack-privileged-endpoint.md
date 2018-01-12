@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: mabrigg
-ms.openlocfilehash: 949715317de69064bb66fb470a805e367512bd6f
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 80c3f248edb40b66e3177c512f3caf77295c6c5d
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>Használatával a privilegizált végpont Azure verem
 
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
-Azure verem kezelőként használja az adminisztrációs portálhoz, a PowerShell vagy Azure Resource Manager API-k a napi felügyeleti feladatok. Azonban az egyes közös műveletek kisebb kell használnia a *kiemelt végpont*. Ehhez a végponthoz egy előre konfigurált távoli PowerShell-konzolt, és segítséget nyújtanak a szükséges feladat elvégzésére éppen elegendő képességeket. A végpont PowerShell JEA (csak elég felügyeleti) teszi közzé a parancsmagok csak egy korlátozott készletét használja. Hozzáférni a privilegizált végpontot, és meghívja a parancsmagok korlátozott készletét, egy alacsony jogosultsági szintű fiókot használja. Nem rendszergazdai fiókok szükség. A fokozott biztonság érdekében parancsfájlok nem engedélyezett.
+Azure verem kezelőként használja az adminisztrációs portálhoz, a PowerShell vagy Azure Resource Manager API-k a napi felügyeleti feladatok. Azonban az egyes közös műveletek kisebb kell használnia a *kiemelt végpont* (EGP). Ehhez a végponthoz egy előre konfigurált távoli PowerShell-konzolt, és segítséget nyújtanak a szükséges feladat elvégzésére éppen elegendő képességeket. A végpont PowerShell JEA (csak elég felügyeleti) teszi közzé a parancsmagok csak egy korlátozott készletét használja. Hozzáférni a privilegizált végpontot, és meghívja a parancsmagok korlátozott készletét, egy alacsony jogosultsági szintű fiókot használja. Nem rendszergazdai fiókok szükség. A fokozott biztonság érdekében parancsfájlok nem engedélyezett.
 
 A privilegizált végpont használhatja például a következő feladatok elvégzéséhez:
 
@@ -98,6 +98,7 @@ Azt javasoljuk, hogy csatlakozni a rendszerjogosultságú végpont csak a hardve
     - Remove-CloudAdminUser
     - Select-Object
     - Set-CloudAdminUserPassword
+    - Teszt-AzureStack
     - STOP-AzureStack
     - Get-ClusterLog
 
@@ -122,7 +123,7 @@ A végpont munkamenet lezárása:
 
 Után a Beszélgetés szövegének naplófájlok sikeresen átkerülnek a fájlmegosztáshoz, azok még automatikusan törli a kiemelt végpont. Ha a parancsmagok segítségével zárja be a kiemelt végpont munkamenet `Exit-PSSession` vagy `Exit`, vagy csak zárja be a PowerShell-konzolt, a Beszélgetés szövegének naplók nem átvitele egy fájlmegosztást. A privilegizált végpont maradjanak. A következő futtatásakor `Close-PrivilegedEndpoint` egy fájlmegosztást, és a Beszélgetés szövegének naplók az előző munkamenet is át.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Azure-verem diagnosztikai eszközök](azure-stack-diagnostics.md)
 
 

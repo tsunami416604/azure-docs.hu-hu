@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: ryanwi
-ms.openlocfilehash: 486a27d7ca576c8fe1552c02eb24ece6b8bb2ba8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 93c86f4805257aee8e04ef80e33b3cec0fd3c67d
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="package-an-application"></a>Egy alkalmazás becsomagolása
 Ez a cikk ismerteti, hogyan csomag a Service Fabric-alkalmazás, és lehetővé teszi a telepítésre kész.
@@ -115,11 +115,11 @@ Ha az alkalmazás [alkalmazás paraméterei](service-fabric-manage-multiple-envi
 
 Ha ismeri a fürt, ahol az alkalmazás központi telepítése, adja meg az ajánlott a `ImageStoreConnectionString` paraméter. A csomag ebben az esetben is összevetni az alkalmazás korábbi verziója már fut a fürtön. Például az érvényesítési észleli, hogy egy csomag ugyanazzal a verzióval, de eltérő tartalomra már telepítve lett.  
 
-Miután az alkalmazás megfelelően van csomagolva, és ellenőrzése sikeres, értékelje ki van szüksége a tömörítési méretét és a fájlok száma alapján.
+Miután az alkalmazás megfelelően van csomagolva, és ellenőrzése sikeres, fontolja meg a tömörítés gyorsabb telepítési műveletekhez a csomagot.
 
 ## <a name="compress-a-package"></a>A csomag tömörítése
 Ha nagy vagy sok fájl van egy csomagot, akkor gyorsabb telepítése tömöríthetők. Tömörítés csökkenti a fájlok számát és a csomag mérete.
-A tömörített alkalmazáscsomag [alkalmazáscsomag feltöltése](service-fabric-deploy-remove-applications.md#upload-the-application-package) hosszabb időt vehet igénybe képest feltöltése a kibontott csomagot (ha kifejezetten tömörítési idő Beleszámítja a), de [regisztrálása](service-fabric-deploy-remove-applications.md#register-the-application-package) és [típustár regisztrációjának megszüntetése az alkalmazástípus](service-fabric-deploy-remove-applications.md#unregister-an-application-type) gyorsabb tömörített alkalmazás csomag.
+A tömörített alkalmazáscsomag [alkalmazáscsomag feltöltése](service-fabric-deploy-remove-applications.md#upload-the-application-package) hosszabb időt vehet igénybe képest a tömörített csomag feltöltése különösen akkor, ha a tömörítés másolási részeként történik. A tömörítés [regisztrálása](service-fabric-deploy-remove-applications.md#register-the-application-package) és [típustár regisztrációjának megszüntetése az alkalmazástípus](service-fabric-deploy-remove-applications.md#unregister-an-application-type) gyorsabb.
 
 A központi telepítési módszer használata ugyanabban a tömörített és tömörítetlen csomagokat. Ha a csomag tömörített, a fürt lemezképtárolóhoz ilyen van tárolva, és azt van tömörítetlen a csomóponton, az alkalmazás futtatása előtt.
 A tömörítés a érvényes a Service Fabric-csomag tömörített verziójával váltja fel. A mappa engedélyeznie kell írási engedéllyel. Nincs változás tömörítési futó egy már tömörített csomagot adja eredményül.
@@ -127,8 +127,7 @@ A tömörítés a érvényes a Service Fabric-csomag tömörített verziójával
 A csomag tömörítheti a Powershell-parancs futtatásával [másolási-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) a `CompressPackage` váltani. A csomag azonos kibonthatja parancsot `UncompressPackage` váltani.
 
 A következő parancs a csomag nélkül másolja az image store tömöríti. Másolhatja a tömörített csomag egy vagy több Service Fabric-fürtök használatával szükség szerint [másolási-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) nélkül a `SkipCopy` jelzőt.
-A csomag most már tartalmazza a fájlok kibontását a `code`, `config`, és `data` csomagok. Az alkalmazás jegyzékében és a szolgáltatás jegyzékfájlokat vannak nem zip, mert szükség van a sok belső műveletekhez (például a csomag megosztási, alkalmazás neve és verziója kapcsolattípus kibontása az egyes ellenőrzések).
-A jegyzékfájlokban tömörítés teszi ezeket a műveleteket nem hatékony.
+A csomag most már tartalmazza a fájlok kibontását a `code`, `config`, és `data` csomagok. Az alkalmazás jegyzékében és a szolgáltatás jegyzékfájlokat vannak nem zip, mert a számos belső műveletekhez szükség van. Például, a csomag megosztási, az alkalmazás neve és verziója kapcsolattípus kibontása egyes összes érvényesítést kell férnie a jegyzékfájlban. A jegyzékfájlokban tömörítés teszi ezeket a műveleteket nem hatékony.
 
 ```
 PS D:\temp> tree /f .\MyApplicationType
@@ -169,10 +168,9 @@ Ha a csomag túl nagy, adja meg az időt a csomag tömörítés és a fürt val�
 PS D:\temp> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\MyApplicationType -ApplicationPackagePathInImageStore MyApplicationType -ImageStoreConnectionString fabric:ImageStore -CompressPackage -TimeoutSec 5400
 ```
 
-Belső a Service Fabric kiszámítja az alkalmazáscsomagok érvényesítéshez ellenőrzőösszegeket. Tömörítés használata esetén a ellenőrzőösszegeket minden csomag tömörített verziói vannak számítja.
-Ha a másolt egy alkalmazáscsomag tömörítetlen verzióját, és az ugyanazon csomag tömörítési használni kívánt, módosítania kell a verziók a `code`, `config`, és `data` csomagok nem egyeznek az ellenőrzőösszegek elkerülése érdekében. Ha a csomagok nem változnak, a verzió módosítása helyett, akkor használhatja [különbözeti kiépítés](service-fabric-application-upgrade-advanced.md). Ezzel a beállítással nem tartalmazzák a változatlan csomag ehelyett hivatkozzon a szolgáltatás-jegyzékfájlból.
+Belső a Service Fabric kiszámítja az alkalmazáscsomagok érvényesítéshez ellenőrzőösszegeket. Tömörítés használata esetén a ellenőrzőösszegeket minden csomag tömörített verziói vannak számítja. Egy új zip generálása az ugyanazon alkalmazás csomagból hoz létre a különböző ellenőrzőösszegeket. Megakadályozhatja, hogy érvényesítési hibák [különbözeti kiépítés](service-fabric-application-upgrade-advanced.md). Ezzel a beállítással nem tartalmaznak a változatlan csomagokat az új verzióban. Ehelyett hivatkozzon a azokat közvetlenül a új szolgáltatás jegyzékfájlból.
 
-Hasonlóképpen ha a csomag tömörített változatának feltöltött, és egy tömörített csomagot használni kívánt, frissítenie kell a elkerülése érdekében a nem egyeznek az ellenőrzőösszegek verzióit is.
+Ha különbözeti kiépítése a lehetőség nem érhető el, és meg kell adni a csomagokhoz, létre új verziók a `code`, `config`, és `data` csomagok nem egyeznek az ellenőrzőösszegek elkerülése érdekében. Új verziók változatlan csomagok létrehozásakor szükség, ha egy tömörített csomagot használ, függetlenül attól, hogy korábbi verzióját használja-e tömörítést vagy nem.
 
 A csomag most már megfelelően csomagolt, érvényesítve, és tömörített (ha szükséges), hogy készen álljanak [telepítési](service-fabric-deploy-remove-applications.md) egy vagy több Service Fabric-fürtök.
 
@@ -187,7 +185,27 @@ Visual Studio-csomagokat a központi telepítés, tömörítésére hozzáadás�
     </PublishProfile>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="create-an-sfpkg"></a>Hozzon létre egy sfpkg
+6.1-es verziójától kezdve, a Service Fabric kiépítés engedélyezése külső áruházban.
+Ezzel a beállítással az alkalmazáscsomag nem kell az image store másolva. Ehelyett, létrehozhat egy `sfpkg` , és töltse fel a külső áruházban, majd adja meg a letöltési URI azonosítója a Service Fabric kiépítésekor. Több fürt egyazon csomag építhető ki. Másolja a csomag minden szükséges idő a külső áruházban kiépítés menti.
+
+A `sfpkg` fájl zip, amely tartalmazza a kezdeti alkalmazáscsomagot, és a ".sfpkg" kiterjesztésével rendelkezik.
+A zip belül az alkalmazáscsomag tömörített és tömörítetlen. A tömörítés a alkalmazáscsomag belső a zip teheti meg kódot, a konfigurációs és a csomag szintek, mint a [a korábban említett](service-fabric-package-apps.md#compress-a-package).
+
+Létrehozásához egy `sfpkg`, indítsa el az eredeti alkalmazáscsomagot, tömörített vagy nem tartalmazó mappát. Ezt követően segédprogrammal bármely zip ".sfpkg" kiterjesztésű mappát. Tegyük fel például, [ZipFile.CreateFromDirectory](https://msdn.microsoft.com/library/hh485721(v=vs.110).aspx).
+
+```csharp
+ZipFile.CreateFromDirectory(appPackageDirectoryPath, sfpkgFilePath);
+```
+
+A `sfpkg` fel kell tölteni, a Service Fabric kívül a sávon kívüli külső tárolójába. A külső áruházban bármely tároló, amely közzétesz egy REST http vagy https-végpont lehet. Telepítése során, a Service Fabric letölteni a GET műveletet hajt végre a `sfpkg` alkalmazáscsomagot, így a tároló engedélyezniük kell az OLVASÁSI hozzáférést a csomag.
+
+A csomag létrehozásához használja a külső kiépítését, amelyhez a letöltési URI és az alkalmazás típussal kapcsolatos információk.
+
+>[!NOTE]
+> Kiépítés kép relatív elérési út tárolása alapján jelenleg nem támogatja a `sfpkg` fájlokat. Ezért a `sfpkg` nem kell másolni, hogy az image store.
+
+## <a name="next-steps"></a>További lépések
 [Központi telepítése és távolíthat el alkalmazásokat] [ 10] ismerteti, hogyan lehet alkalmazáspéldányok kezelése a PowerShell használatával
 
 [Alkalmazás paramétereinek több környezet kezelése] [ 11] paramétereket és változókat környezet különböző alkalmazáspéldányok beállításának módját ismerteti.

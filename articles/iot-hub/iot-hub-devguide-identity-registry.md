@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/19/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 32e63b250467f5733b2e691614fe52f96f2f9d91
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: 653c31fb1115c79216f882a52484cd37303e0322
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Az IoT hub a az identitásjegyzékhez ismertetése
 
@@ -84,7 +84,7 @@ Az importálás és exportálás API-k kapcsolatos részletes információkért 
 
 Az eszköz adatok, amelyek egy adott IoT-megoldás tárolja, hogy a megoldás a meghatározott követelmények függ. De legalább egy megoldást kell tárolnia, eszköz identitások és a hitelesítési kulcsokat. Azure IoT Hub tartalmaz egy, az egyes eszközök, például az azonosítók, a hitelesítési kulcsokat, és a állapotkódok értékeket tárolhat identitásjegyzékhez. A megoldás például a table storage, a blob-tároló vagy a Cosmos DB más Azure-szolgáltatásokkal segítségével további adatok tárolására.
 
-*Eszköz kiépítése* folyamata a kezdeti adatok hozzáadása a tároló a megoldásban. Ahhoz, hogy egy új eszközt szeretne az elosztóhoz csatakoztatni, hozzá kell adnia egy Eszközazonosító és a kulcsok az IoT-központ identitásjegyzékhez. A telepítési folyamat részeként szükség lehet inicializálni az eszközre vonatkozó adatokat más megoldás tárolja.
+*Eszköz kiépítése* folyamata a kezdeti adatok hozzáadása a tároló a megoldásban. Ahhoz, hogy egy új eszközt szeretne az elosztóhoz csatakoztatni, hozzá kell adnia egy Eszközazonosító és a kulcsok az IoT-központ identitásjegyzékhez. A telepítési folyamat részeként szükség lehet inicializálni az eszközre vonatkozó adatokat más megoldás tárolja. Az Azure IoT Hub eszköz kiépítése szolgáltatás segítségével is nulla-érintés, közvetlenül az időponthoz kötött emberi beavatkozás nélkül egy vagy több IoT-központok kiépítés engedélyezése. További tudnivalókért tekintse meg a [szolgáltatás dokumentációja kiépítés][lnk-dps].
 
 ## <a name="device-heartbeat"></a>Eszköz szívverés
 
@@ -105,7 +105,7 @@ Az IoT-központ az IoT-megoldásból értesítheti, ha egy eszközidentitás lé
 
 Tulajdonságai: Üzenet Rendszertulajdonságok fűzve előtagként a `'$'` szimbólum.
 
-| Név | Érték |
+| Name (Név) | Érték |
 | --- | --- |
 $content-típus | application/json |
 $iothub-enqueuedtime |  Ha az értesítés küldése idő |
@@ -149,10 +149,10 @@ Eszköz identitások helyettesítik JSON-dokumentumokat az alábbi tulajdonságo
 | deviceId |szükség esetén a frissítések csak olvasható |A kis-és nagybetűket karakterlánc (legfeljebb 128 karakter hosszú) ASCII 7 bites alfanumerikus karaktereket, valamint bizonyos speciális karaktereket: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
 | generationId |szükség esetén csak olvasható |Az IoT hub által létrehozott, a kis-és nagybetűket karakterlánc legfeljebb 128 karakter hosszúságú lehet. Ez az érték azonos eszközök megkülönböztetésére használható **deviceId**, törölt és újból létrehozza. |
 | ETag |szükség esetén csak olvasható |Egy karakterlánc, amely az eszköz identitásának gyenge ETag értékre megfelelően [RFC7232][lnk-rfc7232]. |
-| hitelesítés |Nem kötelező |A hitelesítési adatokat és biztonsági anyagokat tartalmazó összetett objektum. |
-| auth.symkey |Nem kötelező |Egy elsődleges és másodlagos kulcsot, amely egy összetett objektum base64 formátumban tárolja. |
+| hitelesítés |választható |A hitelesítési adatokat és biztonsági anyagokat tartalmazó összetett objektum. |
+| auth.symkey |választható |Egy elsődleges és másodlagos kulcsot, amely egy összetett objektum base64 formátumban tárolja. |
 | status |Szükséges |Az access mutató. Lehet **engedélyezve** vagy **letiltott**. Ha **engedélyezve**, az eszköz csatlakozhat. Ha **letiltott**, az eszköz minden eszköz felé néző végpont nem érhető el. |
-| statusReason |Nem kötelező |128 karakter hosszú karakterlánc, amely tárolja az eszköz identitása állapotát az az oka. Minden UTF-8 karakterek használhatók. |
+| statusReason |választható |128 karakter hosszú karakterlánc, amely tárolja az eszköz identitása állapotát az az oka. Minden UTF-8 karakterek használhatók. |
 | statusUpdateTime |csak olvasható |A historikus mutató, a dátum és az utolsó frissítésének idejét. |
 | connectionState |csak olvasható |A kapcsolat állapotát jelző mező: vagy **csatlakoztatva** vagy **Disconnected**. Ez a mező képviseli az IoT Hub nézetben, az eszköz kapcsolati állapotát. **Fontos**: Ez a mező csak fejlesztési/hibakeresési célokra lehetne felhasználni. A kapcsolat állapota csak az eszközök MQTT vagy AMQP frissül. Is (MQTT ping-üzenetek, illetve AMQP ping-üzenetek) protokoll szintű ping-üzenetek alapul, és csak 5 perces késéssel veheti fel. Ezen okok miatt lehet téves, például a csatlakoztatott eszközöket jelentett, de, amely nem kapcsolódik. |
 | connectionStateUpdatedTime |csak olvasható |A historikus mutató, a dátum és az utolsó idő megjelenítése a kapcsolat állapota frissítve lett. |
@@ -171,7 +171,7 @@ Az IoT Hub fejlesztői útmutató más hivatkozás témaköröket tartalmazza:
 * [Az IoT-központ lekérdezési nyelv] [ lnk-query] a lekérdezési nyelv segítségével adatok lekérését az IoT-központ az eszköz twins és feladatokat ismerteti.
 * [Az IoT Hub MQTT támogatási] [ lnk-devguide-mqtt] IoT-központ támogatásával kapcsolatos további információkat biztosít a MQTT protokoll.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy rendelkezik megtudta, hogyan használható az IoT-központ identitásjegyzékhez, esetleg a következő IoT Hub fejlesztői útmutató témakörei iránt érdeklődik:
 
@@ -183,6 +183,11 @@ Most, hogy rendelkezik megtudta, hogyan használható az IoT-központ identitás
 Ha azt szeretné, hogy próbálja ki azokat a jelen cikkben ismertetett fogalmakat, esetleg megváltozása a következő IoT Hub-oktatóanyag:
 
 * [Ismerkedés az Azure IoT Hub][lnk-getstarted-tutorial]
+
+Az IoT Hub eszköz kiépítése szolgáltatás segítségével nulla-érintés engedélyezése megismeréséhez just-in-time kiépítés, lásd: 
+
+* [Az Azure IoT Hub eszköz-üzembehelyezési szolgáltatás][lnk-dps]
+
 
 <!-- Links and images -->
 
@@ -205,3 +210,4 @@ Ha azt szeretné, hogy próbálja ki azokat a jelen cikkben ismertetett fogalmak
 [lnk-devguide-jobs]: iot-hub-devguide-jobs.md
 
 [lnk-getstarted-tutorial]: iot-hub-csharp-csharp-getstarted.md
+[lnk-dps]: https://azure.microsoft.com/documentation/services/iot-dps

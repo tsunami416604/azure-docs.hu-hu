@@ -4,7 +4,7 @@ description: "Kicsomagolása, állványra szerelése és központi telepítése 
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: jeconnoc
 editor: 
 ms.assetid: 3d82ba5f-3e34-40dc-9c33-50f952bc6be8
 ms.service: storsimple
@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 10/24/2016
+ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 309ceba2d65c0745ba1acac698acb62526ab8078
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5a8b460441323cb668a3d9939cce434636afc44d
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>Kicsomagolása, állványra-csatlakoztatási, és a StorSimple 8600 bekábelezése
 ## <a name="overview"></a>Áttekintés
@@ -38,7 +38,7 @@ Mielőtt az eszköz csomagolja ki, áttekintheti a következőket.
 Ezután kövesse az alábbi lépéseket az eszköz kicsomagolásához.
 
 #### <a name="to-unpack-your-device"></a>Az eszköz kicsomagolása
-1. Vizsgálja meg a és a crushes, darabok, vízjel sérülés vagy más egyértelmű károkért csomagolás használatos. Ha a lista vagy a csomag súlyosan sérült, nem a megnyitása. Adjon [forduljon a Microsoft Support](storsimple-contact-microsoft-support.md) segítséget ellenőrzéséhez, hogy az eszköz működőképes állapotban van.
+1. Vizsgálja meg a és a crushes, darabok, vízjel sérülés vagy más egyértelmű károkért csomagolás használatos. Ha a lista vagy a csomag súlyosan sérült, nem a megnyitása. Adjon [forduljon a Microsoft Support](storsimple-8000-contact-microsoft-support.md) segítséget ellenőrzéséhez, hogy az eszköz működőképes állapotban van.
 2. A külső megnyitásához, és hajtsa végre a megfelelő elsődleges és a EBOD házakat két mező. Az elsődleges és a EBOD ház most csomagolja ki. Az alábbi ábrán a ház egyik kicsomagolt nézetét.
    
     ![Bontsa ki a tárolóeszköz](./media/storsimple-8600-hardware-installation/HCSUnpackyour4Udevice.png)
@@ -66,7 +66,7 @@ Ezután kövesse az alábbi lépéseket az eszköz kicsomagolásához.
    * 2 állványra csatlakoztatási kits (4 ügyféloldali sínek hardver, 2 minden egyes elsődleges ház és EBOD ház csatlakoztatni), minden mezőbe 1
    * Első lépések dokumentáció
      
-     Ha Ön nem kapta meg az elemek, a fent felsorolt [forduljon a Microsoft Support](storsimple-contact-microsoft-support.md).  
+     Ha Ön nem kapta meg az elemek, a fent felsorolt [forduljon a Microsoft Support](storsimple-8000-contact-microsoft-support.md).  
 
 A következő lépés, hogy az eszköz állvány csatlakoztatást.
 
@@ -234,7 +234,7 @@ Az eszköz kábelek, a minimális konfigurációs kell rendelkeznie:
 Vegye figyelembe a magas rendelkezésre állás és teljesítmény:
 
 * Ha lehetséges, állítsa be két hálózati csatoló a felhőelérést (1 gbe-s) és az iSCSI (ajánlott 10 GbE) egy másik pár minden tartományvezérlőn.
-* Ha lehetséges, kapcsolódó hálózati adapterek minden vezérlő két különböző kapcsolókhoz egy kapcsoló meghibásodása elleni rendelkezésre állásának biztosításához. Az ábra azt mutatja be, a két 10 GbE hálózati adapterek, DATA 2 és a DATA 3 két különböző kapcsolókhoz csatlakozik, minden tartományvezérlőről. További információkért tekintse meg a **hálózati illesztőt** alatt a [a StorSimple eszköz követelményei magas rendelkezésre állású](storsimple-system-requirements.md#high-availability-requirements-for-storsimple).
+* Ha lehetséges, kapcsolódó hálózati adapterek minden vezérlő két különböző kapcsolókhoz egy kapcsoló meghibásodása elleni rendelkezésre állásának biztosításához. Az ábra azt mutatja be, a két 10 GbE hálózati adapterek, DATA 2 és a DATA 3 két különböző kapcsolókhoz csatlakozik, minden tartományvezérlőről. További információkért tekintse meg a **hálózati illesztőt** alatt a [a StorSimple eszköz követelményei magas rendelkezésre állású](storsimple-8000-system-requirements.md#high-availability-requirements-for-storsimple).
 
 > [!NOTE]
 > Ha a 10 GbE hálózati adapterek SFP + adó használ, használja a megadott QSFP-SFP + adapterek. További információkért látogasson el [támogatott hardvert a 10 GbE hálózati adapterek a StorSimple eszköz](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
@@ -265,6 +265,6 @@ A következő lépésekkel bekábelezése a soros port.
 
 Az eszköz a tápellátáshoz, a hálózati hozzáférés és a soros kapcsolat kábelek befejeződött. A következő lépés, hogy az eszköz szoftverének konfigurálásához.
 
-## <a name="next-steps"></a>Következő lépések
-Most már készen áll a [központi telepítése és konfigurálása a helyszíni StorSimple eszköz](storsimple-deployment-walkthrough-u2.md).
+## <a name="next-steps"></a>További lépések
+Most már készen áll a [központi telepítése és konfigurálása a helyszíni StorSimple eszköz](storsimple-8000-deployment-walkthrough-u2.md).
 

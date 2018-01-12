@@ -14,11 +14,11 @@ ms.devlang: json
 ms.topic: article
 ms.date: 12/06/2017
 ms.author: richrund
-ms.openlocfilehash: 7fffaf3861feebc0cf3537ca096b1eebb252b7d6
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: cea25429dc6e5f9f12f472d17e8743d272135257
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Log Analytics használata Azure Resource Manager-sablonok kezelése
 Használhat [Azure Resource Manager-sablonok](../azure-resource-manager/resource-group-authoring-templates.md) létrehozása és konfigurálása a Naplóelemzési munkaterület. A sablonok végrehajtható műveletek közé tartoznak:
@@ -63,7 +63,7 @@ A következő sablon minta bemutatja, hogyan:
 10. Egy egyéni napló gyűjtése 
 11. IIS-napló és a Windows eseménynaplóiban keresse meg a storage-fiókok Azure diagnostics által írt gyűjtése
 
-```
+```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -469,10 +469,12 @@ A minta sablon telepítéséhez:
 3. A sablon telepítéséhez PowerShell vagy parancssor használatával
 
 #### <a name="powershell"></a>PowerShell
-`New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile azuredeploy.json`
+```powershell
+New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile azuredeploy.json
+```
 
 #### <a name="command-line"></a>Parancssor
-```
+```cmd
 azure config mode arm
 azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile azuredeploy.json
 ```
@@ -489,6 +491,6 @@ Az Azure gyors üzembe helyezés sablon gyűjtemény Naplóelemzési, beleértve
 * [A Service Fabric-fürt telepítéséhez és figyeléséhez azt egy meglévő Naplóelemzési munkaterület](https://azure.microsoft.com/documentation/templates/service-fabric-oms/)
 * [A Service Fabric-fürt központi telepítése és a figyeléshez Naplóelemzési munkaterület létrehozása](https://azure.microsoft.com/documentation/templates/service-fabric-vmss-oms/)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Ügynökök üzembe helyezés virtuális gépek Azure Resource Manager-sablonok](log-analytics-azure-vm-extension.md)
 

@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/28/2017
+ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 754e65c4bcf8574a16b9620e2f21938ecc62b735
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 80934d3e5ded5c01e473f8450a3484d84c46e94e
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="service-to-service-authentication-with-data-lake-store-using-rest-api"></a>Szolgáltatások közötti hitelesítés a Data Lake Store REST API használatával
 > [!div class="op_single_selector"]
@@ -55,5 +55,4 @@ Ebben a cikkben megtanulta, szolgáltatások közötti hitelesítés használata
 
 * [A Data Lake Store REST API használatával fiókkezelési műveletekhez](data-lake-store-get-started-rest-api.md)
 * [A Data Lake Store REST API használatával adatokat műveletek](data-lake-store-data-operations-rest-api.md)
-
 

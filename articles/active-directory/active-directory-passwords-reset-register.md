@@ -1,5 +1,5 @@
 ---
-title: "Az Azure AD: SSPR regisztrációs |} Microsoft Docs"
+title: "Az önkiszolgáló jelszó-visszaállításhoz - Azure Active Directory regisztrálása"
 description: "Regisztrálja az Azure AD az önkiszolgáló jelszó-hitelesítési adatok alaphelyzetbe állítása"
 services: active-directory
 keywords: 
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/27/2017
+ms.date: 01/11/2018
 ms.author: barlan
 ms.custom: end-user
-ms.openlocfilehash: bae62762decf530521ba10ce684d5db9afa0b86c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 976eb5e710b0ffca48dae268b394b3d31fe2e938
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="register-for-self-service-password-reset"></a>Regisztráció önkiszolgáló jelszó-visszaállításra
 
@@ -58,7 +58,7 @@ A rendszergazdák szükség lehet a hitelesítési módszerek ellenőrzése utá
 | A felhasználói azonosító megadása után jelenik meg a "a nem engedélyezett a jelszó alaphelyzetbe állítása" hiba | A fiók nincs engedélyezve a jelszó alaphelyzetbe állítása. <br> <br> Sajnáljuk, de az informatikai munkatársak nem állította be a fiók a szolgáltatással való használatra. <br> <br> Ha azt szeretné, a jelszó alaphelyzetbe állításához a szervezet rendszergazda is megkereshetjük. | Ezt az üzenetet is lát, mert az informatikai munkatársak nincs engedélyezve a jelszó alaphelyzetbe állítása a szervezete számára a **nem fér hozzá a fiókjához** hivatkozásra, vagy még nem rendelkezik licenccel a funkció használatát. <br> <br> A jelszó alaphelyzetbe állításához, válassza ki a **kérje a rendszergazda** hivatkozásra. E-mailt kapnak a vállalati informatikai személyzetet tart fenn. Az e-mailt lehetővé teszi, hogy ismeri a alaphelyzetbe állítja a jelszót, ez a funkció az Ön is engedélyezhető. |
 | A felhasználói azonosító megadása után jelenik meg a "nem tudtuk ellenőrizni fiókját" hiba | Nem tudtuk ellenőrizni a fiókját. <br> <br> Ha azt szeretné, a jelszó alaphelyzetbe állításához a szervezet rendszergazda is megkereshetjük. | Most azt láthatja ezt az üzenetet, mert a jelszó alaphelyzetbe állítása folyamatban engedélyezve van, de még nem regisztrált a szolgáltatás használatához. Regisztrálhatnak a jelszóváltoztatásra, keresse fel a [jelszó-változtatási regisztrációs lapjához](http://aka.ms/ssprsetup) után fiókjába rendelkeznie helyreállt a hozzáférést. <br> <br> A jelszó alaphelyzetbe állításához, válassza ki a **kérje a rendszergazda** hivatkozás egy e-mailt küldhet a vállalat informatikai személyzetet tart fenn. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A jelszó megváltoztatásához használja az önkiszolgáló jelszóváltoztatás](active-directory-passwords-update-your-own-password.md)
 * [Jelszó-visszaállítási regisztrációs oldal](http://aka.ms/ssprsetup)

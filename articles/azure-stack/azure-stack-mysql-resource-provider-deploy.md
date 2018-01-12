@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 01/10/2018
 ms.author: JeffGo
-ms.openlocfilehash: 065d4cbc9a324f00a0985c4ebed3d4dffc79d91a
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: d0394fd1edf21cdbb863a88a1d3ecef118a7d886
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>A Microsoft Azure verem használható MySQL-adatbázisok
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 01/05/2018
 
 Telepíthet egy MySQL erőforrás-szolgáltató Azure veremben. Miután telepítette az erőforrás-szolgáltató, MySQL-kiszolgálók és adatbázisok Azure Resource Manager központi telepítési sablonok létrehozása, és adja meg a MySQL-adatbázisok szolgáltatásként. MySQL-adatbázisok, amelyek közös webhelyek, támogatja a webhely számos platformon. Tegyük fel az erőforrás-szolgáltató telepítése után létrehozhat WordPress-webhelyek a webalkalmazások Azure platformon, a szolgáltatás (PaaS) bővítmény Azure verem.
 
-A rendszer nem rendelkezik internet-hozzáférés a MySQL-szolgáltató telepítéséhez másolhatja a fájlt [mysql-összekötő-net-6.9.9.msi](https://dev.mysql.com/get/Download/sConnector-Net/mysql-connector-net-6.9.9.msi) helyi megosztáshoz. Ezt követően adja meg, hogy megosztásnevet, amikor a rendszer kéri. Az Azure és az Azure verem PowerShell modulok is telepíteni kell.
+A rendszer nem rendelkezik internet-hozzáférés a MySQL-szolgáltató telepítéséhez másolhatja a fájlt [mysql-összekötő-net-6.10.5.msi](https://dev.mysql.com/get/Download/sConnector-Net/mysql-connector-net-6.10.5.msi) helyi megosztáshoz. Ezt követően adja meg, hogy megosztásnevet, amikor a rendszer kéri. Az Azure és az Azure verem PowerShell modulok is telepíteni kell.
 
 
 ## <a name="mysql-server-resource-provider-adapter-architecture"></a>MySQL kiszolgálóadapter erőforrás szolgáltató architektúrája
@@ -71,10 +71,9 @@ A system fiók következő jogosultságokkal kell rendelkeznie:
 
     | Az Azure verem Build | MySQL RP-telepítő |
     | --- | --- |
-    | 1.0.180102.3 | **Várja meg a további információkat, az aktuális buildek nem telepíthető, de továbbra is futtatható a több csomópontos Azure verem frissítés után.** |
-    | 1.0.171122.1 | [MySQL RP 1.1.12.0 verziója](https://aka.ms/azurestackmysqlrp) |
+    | 1.0.180102.3 vagy 1.0.180106.1 (több csomópontos) | [MySQL RP 1.1.14.0 verziója](https://aka.ms/azurestackmysqlrp1712) |
+    | 1.0.171122.1 | [MySQL RP 1.1.12.0 verziója](https://aka.ms/azurestackmysqlrp1711) |
     | 1.0.171028.1 | [MySQL RP 1.1.8.0 verziója](https://aka.ms/azurestackmysqlrp1710) |
-    | 1.0.170928.3 | [MySQL RP 1.1.3.0 verziója](https://aka.ms/azurestackmysqlrp1709) |
 
 4.  Az Azure-verem legfelső szintű tanúsítvány veszi át a kiemelt végpont. A ASDK önaláírt tanúsítvány jön létre a folyamat során. Több csomópontos meg kell adnia egy megfelelő tanúsítványt.
 
@@ -165,7 +164,7 @@ Ezeket a paramétereket is megadhat a parancssorban. Ha nem, vagy bármely param
 | **AzCredential** | Adja meg a Azure verem szolgáltatás-rendszergazdai fiók hitelesítő adatait. Használja ugyanazokat a hitelesítő adatokat telepítése Azure verem használható). | _szükséges_ |
 | **VMLocalCredential** | Adja meg a MySQL erőforrás-szolgáltató VM a helyi rendszergazdai fiók hitelesítő adatait. | _szükséges_ |
 | **PrivilegedEndpoint** | Adja meg az IP-cím vagy a DNS-neve, a kiemelt végpont. |  _szükséges_ |
-| **DependencyFilesLocalPath** | Egy helyi megosztással tartalmazó elérési [mysql-összekötő-net-6.9.9.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.9.9.msi). Ha megad egy, a tanúsítványfájlt a könyvtárban kell elhelyezni. | _nem kötelező_ (_kötelező_ több csomópont) |
+| **DependencyFilesLocalPath** | Egy helyi megosztással tartalmazó elérési [mysql-összekötő-net-6.10.5.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.10.5.msi). Ha megad egy, a tanúsítványfájlt a könyvtárban kell elhelyezni. | _nem kötelező_ (_kötelező_ több csomópont) |
 | **DefaultSSLCertificatePassword** | A .pfx tanúsítvány jelszava | _szükséges_ |
 | **MaxRetryCount** | Adja meg, majd ismételje meg minden egyes művelet, ha azt szeretné, hogy hány alkalommal hibát.| 2 |
 | **RetryDuration** | Adja meg az időtúllépés másodpercben az újrapróbálkozások között. | 120 |

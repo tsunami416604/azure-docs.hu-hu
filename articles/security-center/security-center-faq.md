@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2018
+ms.date: 01/11/2018
 ms.author: terrylan
-ms.openlocfilehash: 428587830af9299f5768c42e4c5fcf555701d09f
-ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
+ms.openlocfilehash: 2bbd0a8be891bd472cdc631a1f8dc79471d66a77
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure Security Center – gyakori kérdések
 Ez a GYIK az Azure Security Center, egy szolgáltatás, amely segít a megakadályozása, észlelésében és kezelésében fenyegetések láthatóság növelésével és a Microsoft Azure-erőforrások védelmét kapcsolatos kérdésekre ad választ.
@@ -61,6 +61,10 @@ Adatgyűjtés engedélyezheti a biztonsági szabályzatban Azure-előfizetése. 
 
 ### <a name="what-happens-when-data-collection-is-enabled"></a>Mi történik, ha engedélyezve van az adatok gyűjtését?
 Adatgyűjtés engedélyezésekor a rendszer a Microsoft Monitoring Agent automatikusan kiépített összes meglévő, és az előfizetés új támogatott virtuális gépek vannak telepítve.
+
+Az ügynök lehetővé teszi, hogy a folyamat létrehozásának esemény 4688 és a *CommandLine* eseményből 4688 mezőjét. A virtuális Gépre létrehozott új folyamatok EventLog által rögzített, és a Security Center észlelési szolgáltatások által figyelendő. Információk a részletes adatait rögzíti az összes új folyamat: [4688 leírás mezőiben](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields). Az ügynök is létre a virtuális gép 4688 eseményeit, és tárolja őket a keresés.
+
+Ha a Security Center a virtuális gép gyanús tevékenységet észlel, az ügyfél értesítést e-mailben, ha a [biztonsági kapcsolattartási adatokat](security-center-provide-security-contact-details.md) adtak meg. Riasztás egyben a Security Center biztonsági riasztások irányítópulton látható.
 
 ### <a name="does-the-monitoring-agent-impact-the-performance-of-my-servers"></a>Hatással lehet a kiszolgáló teljesítményét a Figyelőügynök?
 Az ügynök névleges mennyisége rendszererőforrásokat fogyaszt, és teljesítményére gyakorolt minimális hatás kell rendelkeznie. A teljesítményre gyakorolt hatás és az ügynök és a bővítmény további információkért lásd: a [tervezési és műveletek útmutató](security-center-planning-and-operations-guide.md#data-collection-and-storage).

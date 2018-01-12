@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/27/2017
 ms.author: robinsh
-ms.openlocfilehash: 73921f7fd4de65513f647db92b737a79f1043182
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 521487c3ed38f191308e14e4d542358438945556
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/12/2018
 ---
-# <a name="using-the-azure-storage-rest-api"></a>Az Azure Storage REST API használatával
+# <a name="using-the-azure-storage-rest-api"></a>Az Azure Storage REST API használata
 
 A cikkből megtudhatja, hogyan használható a Blob Storage szolgáltatás REST API-k és hogyan hitelesítheti a szolgáltatás hívása. Írás a szempontjából, aki semmit REST és nem tudja hogyan végezheti el a REST-hívást, de a fejlesztők. Azt tekintse át a REST-hívást hivatkozás dokumentációját, és azt jelenti azt, hogy egy tényleges REST-hívást – vonatkozó tudnivalókat mezőket Ugrás where? A dokumentum a REST-hívást beállítása után kihasználhatja az ennek az információnak a többi tárolási szolgáltatás REST API-k valamelyikének használatára.
 
@@ -32,7 +32,7 @@ Az alkalmazás egy tárfiók a blob Storage tárolók listája. Próbálja ki eb
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-* Általános célú tárfiókot. Ha nem rendelkezik a storage-fiókok, hozhat létre egy a [Azure-portálon](https://portal.azure.com), [PowerShell](storage-quickstart-create-storage-account-powershell.md), vagy [Azure CLI](storage-quickstart-create-storage-account-cli.md).
+* Általános célú tárfiókot. Ha még nem rendelkezik egy tárfiókot, [hozzon létre egy tárfiókot](storage-quickstart-create-account.md).
 
 * Ebben a cikkben a példa bemutatja, hogyan listázhat a tárolók a tárfiókokban. Kimeneti, vegye fel a blob storage a tárfiókban lévő elindítása előtt bizonyos tárolók.
 
@@ -40,13 +40,13 @@ Az alkalmazás egy tárfiók a blob Storage tárolók listája. Próbálja ki eb
 
 A mintaalkalmazás egy C# nyelven írt konzolalkalmazással.
 
-Használjon [git](https://git-scm.com/) letölteni az alkalmazást a fejlesztési környezet egy példányát. 
+A [git](https://git-scm.com/) használatával töltse le az alkalmazás egy másolatát a fejlesztői környezetbe. 
 
 ```bash
 git clone https://github.com/Azure-Samples/storage-dotnet-rest-api-with-auth.git
 ```
 
-Ez a parancs klónokat a tárházat a helyi git-mappába. Nyissa meg a Visual Studio-megoldást, keresse meg a storage-dotnet-rest-api-with-auth mappát, nyissa meg azt, és kattintson duplán arra a StorageRestApiAuth.sln. 
+Ez a parancs a helyi git mappába klónozza az adattárat. Nyissa meg a Visual Studio-megoldást, keresse meg a storage-dotnet-rest-api-with-auth mappát, nyissa meg azt, és kattintson duplán arra a StorageRestApiAuth.sln. 
 
 ## <a name="why-do-i-need-to-know-rest"></a>Miért kell tudnia a többi?
 
@@ -562,11 +562,11 @@ Content-Length: 1135
 </EnumerationResults>
 ```
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ebben a cikkben megtudta, hogyan indítson egy lekérdezést a blob storage tárolók listája vagy a tárolóban lévő blobok listájának lekéréséhez REST API-t. Azt is megtanulta, az engedélyezési aláírás a REST API-hívások, a többi kérés használatával, és vizsgálja meg a választ.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [BLOB szolgáltatás REST API-n](/rest/api/storageservices/blob-service-rest-api)
 * [File szolgáltatás REST API-n](/rest/api/storageservices/file-service-rest-api)

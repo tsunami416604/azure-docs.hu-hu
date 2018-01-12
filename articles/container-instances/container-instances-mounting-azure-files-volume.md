@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 01/02/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 06a6e91725e751fbea97d9a3b60f48fa50121fc4
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: be502e6aef39ee4ed8cfc1f8926cb556dc1defb1
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="mount-an-azure-file-share-with-azure-container-instances"></a>Azure-tároló osztályt az Azure fájlmegosztások csatlakoztatása
 
@@ -92,6 +92,46 @@ az container show --resource-group $ACI_PERS_RESOURCE_GROUP --name hellofiles --
 ```
 
 Használhatja a [Azure-portálon] [ portal] vagy egy eszköz, például a [Microsoft Azure Tártallózó] [ storage-explorer] kérhető le, és vizsgálja meg a fájl írása a fájlmegosztás.
+
+## <a name="mount-multiple-volumes"></a>Több kötet csatlakoztatása
+
+Egy tároló-példányban több kötet csatlakoztatása, ha már telepítette használatával egy [Azure Resource Manager sablon](/azure/templates/microsoft.containerinstance/containergroups).
+
+Először adja meg a fájlmegosztás adatait, és adja meg a kötetek program kitölti a `volumes` tömb a a `properties` a sablon szakasza. Például, ha a két Azure fájlmegosztásokat nevű létrehozott *megosztas1* és *share2* tárfiókban *myStorageAccount*, a `volumes` tömb jelent. a következőhöz hasonló:
+
+```json
+"volumes": [{
+  "name": "myvolume1",
+  "azureFile": {
+    "shareName": "share1",
+    "storageAccountName": "myStorageAccount",
+    "storageAccountKey": "<storage-account-key>"
+  }
+},
+{
+  "name": "myvolume2",
+  "azureFile": {
+    "shareName": "share2",
+    "storageAccountName": "myStorageAccount",
+    "storageAccountKey": "<storage-account-key>"
+  }
+}]
+```
+
+Ezt követően a tároló csoport, amelyben szeretné csatlakoztatni a kötetek minden egyes tároló esetén feltöltése a `volumeMounts` tömb a a `properties` szakasz tároló-definícióban. Például ez csatlakoztatja a két kötet *myvolume1* és *myvolume2*, korábban definiált:
+
+```json
+"volumeMounts": [{
+  "name": "myvolume1",
+  "mountPath": "/mnt/share1/"
+},
+{
+  "name": "myvolume2",
+  "mountPath": "/mnt/share2/"
+}]
+```
+
+Az Azure Resource Manager sablonnal tároló példány szemléltet, olvassa el [központi telepítése az Azure-tároló esetekben több tárolócsoportok](container-instances-multi-container-group.md).
 
 ## <a name="next-steps"></a>További lépések
 

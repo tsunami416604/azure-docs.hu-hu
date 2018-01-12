@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 01/09/2018
 ms.author: apimpm
-ms.openlocfilehash: aca44e14ab85fcfeb9d1eb3c3eadfff7831c372f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 882bb27c7692f4eaf628d26f6081b1e1015be81b
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="page-templates-in-azure-api-management"></a>Az Azure API Management sablonokat
 Az Azure API Management lehetővé teszi a tartalom developer portálon lapok használatával konfigurálhatja a tartalom-sablonok testreszabása. Használatával [DotLiquid](http://dotliquidmarkup.org/) szintaxisát és az Ön által választott szerkesztőben, mint [tervezőknek DotLiquid](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), és a megadott készlete honosított [karakterlánc-erőforrások](api-management-template-resources.md#strings), [betűkép-erőforrások](api-management-template-resources.md#glyphs), és [vezérlők lapon](api-management-page-controls.md), konfigurálja a tartalmat, a lapok, ahogyan szeretné ezeket a sablonokat használ nagy rugalmasságot biztosítanak.  
@@ -108,16 +108,16 @@ Az Azure API Management lehetővé teszi a tartalom developer portálon lapok ha
 ### <a name="sample-template-data"></a>Mintaadatokat sablon  
   
 ```json  
-{  
-    "Email": null,  
-    "Password": null,  
-    "ReturnUrl": null,  
-    "RememberMe": false,  
-    "RegistrationEnabled": true,  
-    "DelegationEnabled": false,  
-    "DelegationUrl": null,  
-    "SsoSignUpUrl": null,  
-    "AuxServiceUrl": "https://manage.windowsazure.com/#Workspaces/ApiManagementExtension/service/contoso5/dashboard",  
+{
+    "Email": null,
+    "Password": null,
+    "ReturnUrl": null,
+    "RememberMe": false,
+    "RegistrationEnabled": true,
+    "DelegationEnabled": false,
+    "DelegationUrl": null,
+    "SsoSignUpUrl": null,
+    "AuxServiceUrl": "https://portal.azure.com/#resource/subscriptions/{subscription ID}/resourceGroups/Api-Default-West-US/providers/Microsoft.ApiManagement/service/contoso5",
     "Providers": [  
         {  
             "Properties": {  
@@ -127,10 +127,10 @@ Az Azure API Management lehetővé teszi a tartalom developer portálon lapok ha
             "AuthenticationType": "Aad",  
             "Caption": "Azure Active Directory"  
         }  
-    ],  
-    "UserRegistrationTerms": null,  
-    "UserRegistrationTermsEnabled": false  
-}  
+        ],
+    "UserRegistrationTerms": null,
+    "UserRegistrationTermsEnabled": false
+}
 ```  
   
 ##  <a name="SignUp"></a>feliratkozni  
@@ -225,11 +225,11 @@ Az Azure API Management lehetővé teszi a tartalom developer portálon lapok ha
   
 |Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
-|referenceCode|Karakterlánc|A kód jön létre, ha ezen a lapon jelent meg, egy belső hiba miatt.|  
-|Hibakód|Karakterlánc|A kód jön létre, ha ezen a lapon jelent meg, egy belső hiba miatt.|  
-|emailBody|Karakterlánc|Az e-mail törzsének jön létre, ha ezen a lapon jelent meg, egy belső hiba miatt.|  
-|requestedUrl|Karakterlánc|Ha a lap nem található a kért URL-CÍMÉT.|  
-|referrerUrl|Karakterlánc|A kért URL-címre hivatkozó URL.|  
+|referenceCode|karakterlánc|A kód jön létre, ha ezen a lapon jelent meg, egy belső hiba miatt.|  
+|Hibakód|karakterlánc|A kód jön létre, ha ezen a lapon jelent meg, egy belső hiba miatt.|  
+|emailBody|karakterlánc|Az e-mail törzsének jön létre, ha ezen a lapon jelent meg, egy belső hiba miatt.|  
+|requestedUrl|karakterlánc|Ha a lap nem található a kért URL-CÍMÉT.|  
+|referrerUrl|karakterlánc|A kért URL-címre hivatkozó URL.|  
   
 ### <a name="sample-template-data"></a>Mintaadatokat sablon  
   
@@ -243,5 +243,5 @@ Az Azure API Management lehetővé teszi a tartalom developer portálon lapok ha
 }  
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A sablonok használatának kapcsolatos további információkért lásd: [hogyan szabhatja testre a sablonok segítségével az API Management fejlesztői portálján](api-management-developer-portal-templates.md).

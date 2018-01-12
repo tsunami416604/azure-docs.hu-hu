@@ -11,15 +11,15 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/12/2017
-ms.openlocfilehash: 9ceb299b3ee521aeefb45c21920bd3b6e0049d26
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 6f9786b75f5160ceaa4dd269a91d7f3a4b6700d5
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="collect-model-data-by-using-data-collection"></a>Adatgyűjtés a modell adatainak gyűjtéséről
 
-A modell adatok gyűjtemény szolgáltatás Azure Machine Learning munkaterület segítségével archiválja a modell a be- és egy webszolgáltatás-bővítmény által.
+A modell adatok gyűjtemény funkció az Azure Machine Learning segítségével archiválja a modell a be- és egy webszolgáltatás-bővítmény által.
 
 ## <a name="install-the-data-collection-package"></a>Az adatgyűjtési csomag telepítése
 A Linux és Windows natív módon telepítheti a gyűjtemény könyvtára.
@@ -37,6 +37,12 @@ Linux először telepítse a libxml ++ könyvtárban. A következő parancsot, a
 Ezután futtassa a következő parancsot:
 
     pip install azureml.datacollector
+
+## <a name="set-environment-variables"></a>Környezeti változók beállítása
+
+Modell adatgyűjtés két környezeti változók függ. AML_MODEL_DC_STORAGE_ENABLED értékre kell állítani **igaz** (összes, kisbetű) és AML_MODEL_DC_STORAGE értékre kell állítani az Azure-tárfiók kapcsolati karakterlánca hol szeretné tárolni az adatokat.
+
+Ezek a környezeti változók van beállítva, ha a webszolgáltatás fut a fürtön, az Azure-ban. A helyi futtatás során kell saját kezűleg meg őket. Docker használ, ha a parancs futtatása a docker -e paraméterének használatával átadására környezeti változók.
 
 ## <a name="collect-data"></a>Adatok gyűjtése
 

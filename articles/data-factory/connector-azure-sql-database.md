@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2017
 ms.author: jingwang
-ms.openlocfilehash: a5d2994eb1203274454fc31c3ee9bf7a21562f75
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 856ea3e01dad0936d8191a4e57b4137e06eac705
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Másolja a adatok vagy az Azure SQL Database az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -39,8 +39,9 @@ Pontosabban Ez az Azure SQL Database az összekötő támogatja:
 - Forrásként SQL-lekérdezést vagy tárolt eljárás használatával adatok beolvasása.
 - A fogadó, mint Hozzáfűzés adatok, célként megadott táblája vagy egyéni logikával tárolt eljárás meghívása másolása során.
 
-## <a name="getting-started"></a>Bevezetés
-A másolási tevékenység során .NET SDK, a Python SDK, az Azure PowerShell, a REST API-t vagy a Azure Resource Manager-sablon használatával hozhat létre egy folyamatot. Lásd: [másolási tevékenység oktatóanyag](quickstart-create-data-factory-dot-net.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját.
+## <a name="getting-started"></a>Első lépések
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 A következő szakaszok részletesen bemutatják adat-előállító tartozó entitások meghatározásához az Azure SQL Database-összekötőhöz használt tulajdonságokat.
 
@@ -452,11 +453,11 @@ A/az Azure SQL Database adatok másolásakor a következő leképezéseit segít
 |:--- |:--- |
 | bigint |Int64 |
 | Bináris |Byte] |
-| bit |Logikai érték |
+| bit |Logikai |
 | Karakter |Karakterlánc, Char] |
-| Dátum |Dátum és idő |
-| Dátum és idő |Dátum és idő |
-| datetime2 |Dátum és idő |
+| dátum |DateTime |
+| Dátum és idő |DateTime |
+| datetime2 |DateTime |
 | datetimeoffset |DateTimeOffset |
 | Decimális |Decimális |
 | A FILESTREAM attribútum (varbinary(max)) |Byte] |
@@ -468,9 +469,9 @@ A/az Azure SQL Database adatok másolásakor a következő leképezéseit segít
 | ntext |Karakterlánc, Char] |
 | Numerikus |Decimális |
 | nvarchar |Karakterlánc, Char] |
-| valós |Egyetlen |
+| valós |Egyedülálló |
 | ROWVERSION |Byte] |
-| smalldatetime |Dátum és idő |
+| smalldatetime |DateTime |
 | smallint |Int16 |
 | kis pénz típusú értéknél |Decimális |
 | sql_variant |Objektum * |
@@ -483,5 +484,5 @@ A/az Azure SQL Database adatok másolásakor a következő leképezéseit segít
 | varchar |Karakterlánc, Char] |
 | xml |XML |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md##supported-data-stores-and-formats).

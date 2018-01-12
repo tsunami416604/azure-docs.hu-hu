@@ -3,8 +3,8 @@ title: "A többtényezős hitelesítést - Azure SQL |} Microsoft Docs"
 description: "Útmutató az SQL-adatbázis és az SQL Data Warehouse szolgáltatáshoz az SSMS Multi-Factored-hitelesítés használatára."
 services: sql-database
 documentationcenter: 
-author: BYHAM
-manager: jhubbard
+author: GithubMirek
+manager: johammer
 editor: 
 tags: 
 ms.assetid: 
@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Inactive
 ms.date: 09/27/2017
-ms.author: rickbyh
-ms.openlocfilehash: 89a5ee969cf4337dbc0521027f36f80e357c54e5
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: mireks
+ms.openlocfilehash: fe056288fbc04db0a6892c9a501c58ed85967734
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>Az SQL Server Management Studio és az Azure AD többtényezős hitelesítés beállítása
 
@@ -62,7 +62,7 @@ A következő lépések bemutatják, hogyan csatlakozás az SQL Database vagy az
 
 Ha ellenőrzés befejeződött, az SSMS csatlakozik, általában feltéve, hogy érvényes hitelesítő adatokat és a tűzfalon a hozzáférést.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Többtényezős hitelesítés az Azure SQL Database áttekintését lásd: az univerzális hitelesítési [SQL-adatbázis és az SQL Data Warehouse (többtényezős hitelesítés támogatása SSMS)](sql-database-ssms-mfa-authentication.md).  
 - Az adatbázishoz való hozzáférés engedélyezése mások: [SQL adatbázis-hitelesítés és engedélyezés: hozzáférés biztosítása](sql-database-manage-logins.md)  

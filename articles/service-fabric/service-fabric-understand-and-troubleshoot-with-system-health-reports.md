@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/18/2017
+ms.date: 12/11/2017
 ms.author: oanapl
-ms.openlocfilehash: 42dca05c4d7d104ed0e7e21f1e53411e5983cd38
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: cd9a144baf06422b425a0bc6c516600d6fcd4b97
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Rendszerállapot-jelentések használata a hibaelhárítás során
 Azure Service Fabric-összetevők adja meg, hogy közvetlenül a kezdő verzióról a fürt összes entitásának a rendszerállapot-jelentéseket. A [a health Store adatbázisban](service-fabric-health-introduction.md#health-store) hoz létre, és törli a rendszer-jelentéseken alapuló entitásokat. Azt is rendszerezi azokat a hierarchiában, amely rögzíti az entitás interakciókat.
@@ -56,7 +56,7 @@ A jelentés a globális bérleti idejét adja meg az idő-live (TTL). A jelenté
 * **Tulajdonság**: kezdődik **hálózatok** és csomópont információkat tartalmaz.
 * **További lépések**: vizsgálja meg, miért a helyek elvész, például, a fürt csomópontjai közötti kommunikáció.
 
-### <a name="rebuild"></a>Építse újra
+### <a name="rebuild"></a>Újraépítés
 
 A **Feladatátvevőfürt-kezelő** szolgáltatás (**FM**) a fürt csomópontjai kapcsolatos információt. Amikor FM elveszíti az adatokat, és azt nem garantálja az adatvesztéssel hiányzóra rendelkezik a fürtcsomópontokon a legfrissebb információkat. Ebben az esetben a rendszer végighalad egy **újraépítése**, és **System.FM** adatokat gyűjt a fürt összes csomópontján ahhoz, hogy építse újra az állapotát. Egyes esetekben hálózati vagy a csomópont problémák miatt rebuild sikerült akadt-e vagy leállt. Azonos fordulhat elő a **Feladatátvevőfürt-kezelő Master** szolgáltatás (**FMM**). A **FMM** állapotmentes rendszer szolgáltatás, amely nyomon követi a where összes a **FMs** vannak a fürtben. A **FMMs** elsődleges van mindig 0 legközelebbi azonosítójú csomópont. Ha a csomóponton eldobott kapja, egy **építse újra** elindul.
 Az előző feltételek valamelyike esetén fordulhat elő, amikor **System.FM** vagy **System.FMM** megjelölés keresztül egy esetleges hibajelentésben való megjelenítéshez. Újraépítés elakadt egy két lépésből áll:
@@ -100,7 +100,7 @@ HealthEvents          :
 ```
 
 
-### <a name="certificate-expiration"></a>Tanúsítvány lejárta
+### <a name="certificate-expiration"></a>Tanúsítvány lejárata
 **System.FabricNode** jelentések figyelmeztetés, ha a csomópont által használt tanúsítványok lejáró. Három tanúsítvány csomópontonként: **Certificate_cluster**, **Certificate_server**, és **Certificate_default_client**. Legalább két héttel a lejárati esetén a jelentés állapota rendben. A lejárati két héten belül van, a jelentés típusa esetén figyelmeztetés. Ezek az események TTL végtelen, és amikor a csomópont elhagyja a fürt eltávolítja.
 
 * **SourceId**: System.FabricNode
@@ -708,7 +708,7 @@ HealthEvents          :
 ## <a name="deployedapplication-system-health-reports"></a>DeployedApplication rendszerállapot-jelentések
 **System.Hosting** a szervezet az üzembe helyezett entitásokra.
 
-### <a name="activation"></a>az aktiválás
+### <a name="activation"></a>Aktiválás
 System.Hosting jelzi az OK gombra, ha egy alkalmazás aktiválása megtörtént a csomóponton. Ellenkező esetben azt egy hibát jelez.
 
 * **SourceId**: System.Hosting
@@ -842,7 +842,7 @@ System.Hosting jelentések figyelmeztetés, ha a csomópont-kapacitás nem defin
 * **Tulajdonság**: ResourceGovernance
 * **További lépések**: Ez a probléma megoldásához, előnyben részesített módja a módosítása a fürtjegyzékben rendelkezésre álló erőforrások automatikus észleléséhez. Másik módja a fürtjegyzékben frissíti a-es helytelenül megadott csomópont a következő metrikák tekintetében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [A Service Fabric rendszerállapot-jelentések megtekintése](service-fabric-view-entities-aggregated-health.md)
 
 [Jelentés és a szolgáltatás állapotának ellenőrzése](service-fabric-diagnostics-how-to-report-and-check-service-health.md)

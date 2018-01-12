@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: d06dd0a8ec63202825be347c4b69e21a6dd4b7db
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: 637b380dacc91e4ad55044c1d92936be2435138d
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Módosítsa, vagy távolítsa el az Azure hálózati illesztő IP-címek
 
@@ -138,9 +138,9 @@ Alapértelmezés szerint az Azure DHCP-kiszolgálók a privát IPv4-cím hozzár
 > [!WARNING]
 > Ha az elsődleges IP-címét a hálózati adaptert egy virtuális gép operációs rendszerből állítja be az IPv4-cím legalább egyszer eltér a privát IPv4-cím, az elsődleges IP-konfigurációja az elsődleges hálózati adapter rendelt csatolva van egy virtuális gépet az Azure akkor megszakad a kapcsolat a virtuális géphez.
 
-Nincsenek forgatókönyvekben, ahol beállítani a virtuális gép operációs rendszerében a hálózati illesztő IP-címét. Például manuálisan be kell az elsődleges és másodlagos IP-címek, a Windows operációs rendszer amikor több IP-címet ad hozzá egy Azure virtuális gépen. A Linux virtuális gép csak szükség lehet a másodlagos IP-címek kézi beállítására. Lásd: [hozzáadása IP-címek egy virtuális gép operációs rendszerre](virtual-network-multiple-ip-addresses-portal.md#os-config) részleteiről. Manuálisan állítsa be az IP-cím, az operációs rendszerből, esetén ajánlott, hogy mindig rendel a címek a hálózati illesztő a statikus (helyett dinamikus)-hozzárendelési módszert használja az IP-konfiguráció. Rendelje hozzá a statikus metódussal címet biztosítja, hogy a cím nem változtatja meg Azure-ban. Ha valaha is módosítani szeretné az IP-konfigurációt rendelt cím, javasoljuk, hogy:
+Nincsenek forgatókönyvekben, ahol beállítani a virtuális gép operációs rendszerében a hálózati illesztő IP-címét. Például manuálisan be kell az elsődleges és másodlagos IP-címek, a Windows operációs rendszer amikor több IP-címet ad hozzá egy Azure virtuális gépen. A Linux virtuális gép csak szükség lehet a másodlagos IP-címek kézi beállítására. Lásd: [hozzáadása IP-címek egy virtuális gép operációs rendszerre](virtual-network-multiple-ip-addresses-portal.md#os-config) részleteiről. Ha valaha is módosítani szeretné az IP-konfigurációt rendelt cím, javasoljuk, hogy:
 
-1. Győződjön meg arról, a virtuális gépet az Azure DHCP-kiszolgálók egy címet fogad, állítsa vissza az IP-cím hozzárendelése DHCP operációs rendszerből, és indítsa újra a virtuális gépet.
+1. Győződjön meg arról, hogy a virtuális gép egy címet fogadja az Azure DHCP-kiszolgálók. Miután, állítsa vissza az IP-cím hozzárendelése DHCP operációs rendszerből, és indítsa újra a virtuális gépet.
 2. Állítsa le (felszabadítása) a virtuális gép.
 3. Az IP-konfiguráció Azure-ban az IP-címének módosítása.
 4. Virtuális gép elindítása.

@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: billmath
-ms.openlocfilehash: 6f5ca44e08c783fdf22a14d71c56c3019cc2bb52
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1bc669dfa5a41e38b35751af62560ff650575a08
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="claims-mapping-in-azure-active-directory-public-preview"></a>A jogcímek hozzárendelése az Azure Active Directoryban (nyilvános előzetes verzió)
 
@@ -56,7 +56,7 @@ Korlátozott jogcímek házirend használatával nem módosítható. Az adatforr
 |_claim_sources|
 |access_token|
 |account_type|
-|ACR|
+|acr|
 |Aktor|
 |actortoken|
 |aio|
@@ -95,15 +95,15 @@ Korlátozott jogcímek házirend használatával nem módosítható. Az adatforr
 |domain_dns_name|
 |domain_netbios_name|
 |e_exp|
-|e-mailben|
-|végpont|
+|e-mail|
+|endpoint|
 |enfpolids|
 |Exp|
 |expires_on|
 |grant_type|
-|Diagram|
+|gráf|
 |group_sids|
-|Csoportok|
+|csoportok|
 |hasgroups|
 |hash_alg|
 |home_oid|
@@ -156,7 +156,7 @@ Korlátozott jogcímek házirend használatával nem módosítható. Az adatforr
 |request_nonce|
 |erőforrás|
 |szerepkör|
-|szerepkörök|
+|roles|
 |Hatókör|
 |Szolgáltatáskapcsolódási pont|
 |biztonsági azonosító|
@@ -280,12 +280,12 @@ Ha a forrás átalakításában, a **TransformationID** elem szerepelnie kell a 
 Az "ID" elem. azonosítja, hogy melyik tulajdonság a forrás az értéket ad meg a jogcímet. Az alábbi táblázat a forrás-értékek érvényes azonosító értékének.
 
 #### <a name="table-3-valid-id-values-per-source"></a>3. táblázat: Érvényes azonosító értékek forrásonként
-|Forrás|Azonosító|Leírás|
+|Forrás|ID (Azonosító)|Leírás|
 |-----|-----|-----|
 |Felhasználó|Vezetéknév|Család neve|
 |Felhasználó|givenName|Utónév|
-|Felhasználó|DisplayName|Megjelenített név|
-|Felhasználó|objektumazonosító|Objektumazonosító|
+|Felhasználó|DisplayName|Megjelenítendő név|
+|Felhasználó|objektumazonosító|ObjectID|
 |Felhasználó|mail|E-mail cím|
 |Felhasználó|userPrincipalName|Egyszerű felhasználónév|
 |Felhasználó|Szervezeti egység|Részleg|
@@ -295,8 +295,8 @@ Az "ID" elem. azonosítja, hogy melyik tulajdonság a forrás az értéket ad me
 |Felhasználó|onpremisesecurityidentifier|a helyi biztonsági azonosítója|
 |Felhasználó|Cégnév|Szervezet neve|
 |Felhasználó|streetAddress|Utca, házszám|
-|Felhasználó|Irányítószám|Irányítószám|
-|Felhasználó|preferredlanguange|Választott nyelv|
+|Felhasználó|Irányítószám|Postai irányítószám|
+|Felhasználó|preferredlanguange|Elsődleges nyelv|
 |Felhasználó|onpremisesuserprincipalname|a helyszíni egyszerű Felhasználónévvel|
 |Felhasználó|mailnickname|Mail becenév|
 |Felhasználó|extensionAttribute1|Mellék attribútum 1|
@@ -317,14 +317,14 @@ Az "ID" elem. azonosítja, hogy melyik tulajdonság a forrás az értéket ad me
 |Felhasználó|othermail|Más E-mail|
 |Felhasználó|Ország|Ország|
 |Felhasználó|city|Város|
-|Felhasználó|state|Állam|
+|Felhasználó|state|Állapot|
 |Felhasználó|Beosztás|Beosztás|
 |Felhasználó|EmployeeID|Alkalmazott azonosítója|
 |Felhasználó|facsimiletelephonenumber|Fax Telefonszám|
-|alkalmazás, erőforrás, a célközönség|DisplayName|Megjelenített név|
-|alkalmazás, erőforrás, a célközönség|kifogásolt|Objektumazonosító|
-|alkalmazás, erőforrás, a célközönség|címkék|Szolgáltatás egyszerű címke|
-|Vállalat|tenantcountry|Bérlő ország|
+|alkalmazás, erőforrás, a célközönség|DisplayName|Megjelenítendő név|
+|alkalmazás, erőforrás, a célközönség|kifogásolt|ObjectID|
+|alkalmazás, erőforrás, a célközönség|tags|Szolgáltatás egyszerű címke|
+|Cég|tenantcountry|Bérlő ország|
 
 **TransformationID:** TransformationID elemhez meg kell adni, csak akkor, ha a forráselem "átalakítása" értékre van állítva.
 
@@ -378,7 +378,7 @@ Alapján kiválasztott módszert, amelynek bemenetekhez és kimenetekhez várt. 
 **SAML NameID és egyszerű felhasználónév:** , amelyből forrás NameID és UPN értékek és a jogcímek átalakítása, amelyeknél engedélyezve van, attribútumait korlátozottak.
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>5. táblázat: Attribútumok SAML NameID adatforrásként engedélyezett
-|Forrás|Azonosító|Leírás|
+|Forrás|ID (Azonosító)|Leírás|
 |-----|-----|-----|
 |Felhasználó|mail|E-mail cím|
 |Felhasználó|userPrincipalName|Egyszerű felhasználónév|
@@ -490,7 +490,7 @@ Ebben a példában egy házirendet, amely megfelelően kibocsát egy egyéni jog
     1. A házirend létrehozásához futtassa a parancsot: 
      
      ``` powershell
-    New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema":[{"Source":"user","ID":"extensionattribute1"},{"Source":"transformation","ID":"DataJoin","TransformationId":"JoinTheData","JwtClaimType":"JoinedData"}],"ClaimsTransformation":[{"ID":"JoinTheData","TransformationMethod":"Join","InputClaims":[{"ClaimTypeReferenceId":"extensionattribute1","TransformationClaimType":"string1"}], "InputParameters": [{"Id":"string2","Value":"sandbox"},{"Id":"separator","Value":"."}],"OutputClaims":[{"ClaimTypeReferenceId":"DataJoin","TransformationClaimType":"outputClaim"}]}]}}') -DisplayName "TransformClaimsExample” -Type "ClaimsMappingPolicy"
+    New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema":[{"Source":"user","ID":"extensionattribute1"},{"Source":"transformation","ID":"DataJoin","TransformationId":"JoinTheData","JwtClaimType":"JoinedData"}],"ClaimsTransformations":[{"ID":"JoinTheData","TransformationMethod":"Join","InputClaims":[{"ClaimTypeReferenceId":"extensionattribute1","TransformationClaimType":"string1"}], "InputParameters": [{"ID":"string2","Value":"sandbox"},{"ID":"separator","Value":"."}],"OutputClaims":[{"ClaimTypeReferenceId":"DataJoin","TransformationClaimType":"outputClaim"}]}]}}') -DisplayName "TransformClaimsExample" -Type "ClaimsMappingPolicy" 
     ```
     
     2. Az új házirend megtekintéséhez, és hogy beszerezze a szabályzatot ObjectId, futtassa a következő parancsot: 

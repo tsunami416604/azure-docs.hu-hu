@@ -12,19 +12,23 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/09/2017
+ms.date: 01/09/2018
 ms.author: mabrigg
-ms.openlocfilehash: 4b94092f1284abfa2462ddef04b6e84136e54dde
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 55cc0eb3cc187d87e0d2ae96e2433cb9682ab370
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Skálázási egység csomópont műveletek Azure verem
 
 *A következőkre vonatkozik: Azure verem integrált rendszerek*
 
 Ez a cikk ismerteti a méretezési egység és a kapcsolódó csomópontjainak állapotának megtekintése és használata a rendelkezésre álló csomópont műveleteket. Csomópont műveletek bekapcsolás power: kikapcsolva, kiürítésére, folytatása és javítása. Általában akkor használják a csomópont műveletek során a mező helyettesítő részből áll, vagy a csomópont helyreállítási forgatókönyvek esetén.
+
+> [!Important]  
+> A cikkben minden csomópont műveletek egyszerre csak egy célcsomóponttal kell.
+
 
 ## <a name="view-the-status-of-a-scale-unit-and-its-nodes"></a>A skálázási egység és csomópontjainak állapotának megtekintése
 
@@ -75,13 +79,17 @@ A csomópont működési állapotát határozza meg, milyen beállítások érhe
 
 A **kikapcsolásához** művelet kikapcsolja a csomópont. Ugyanaz, mintha a főkapcsoló. Létezik **nem** leállítási jelet küld az operációs rendszer. Műveletek tervezett kikapcsolására győződjön meg arról, először üríti ki a skálázási egység csomópont.
 
-Ez a művelet jellemzően akkor van a csomópont lefagyott állapotban van, és már nem válaszol a kérésekre.  
+Ez a művelet jellemzően akkor van a csomópont lefagyott állapotban van, és már nem válaszol a kérésekre.
+
+> [!Important] 
+> Ez a funkció csak az Powershellen keresztül érhető el. Lesz elérhető a verem Azure felügyeleti portálon újra később.
+
 
 A kikapcsolási művelet Powershellen keresztül futtatása:
 
-  ````PowerShell
+````PowerShell
   Stop-AzsScaleUnitNode -Region <RegionName> -Name <NodeName>
-  ```` 
+```` 
 
 Az valószínű esetében, amelyek a kikapcsolási művelet nem működik használja helyette a BMC webes felületet.
 
@@ -89,11 +97,14 @@ Az valószínű esetében, amelyek a kikapcsolási művelet nem működik haszn�
 
 A **Bekapcsolással** művelet bekapcsolja a csomópont. Ugyanaz, mintha a főkapcsoló. 
 
+> [!Important] 
+> Ez a funkció csak az Powershellen keresztül érhető el. Lesz elérhető a verem Azure felügyeleti portálon újra később.
+
 A power futtatásához a műveletei Powershellen keresztül:
 
-  ````PowerShell
+````PowerShell
   Start-AzsScaleUnitNode -Region <RegionName> -Name <NodeName>
-  ````
+````
 
 A valószínűtlen eset, amely a bekapcsolási művelet nem működik használja helyette a BMC webes felületet.
 

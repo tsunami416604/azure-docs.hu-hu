@@ -15,19 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
-ms.openlocfilehash: 974d89aa96cba94fedfd1acbaf4f1d30ac8e6257
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ROBOTS: NOINDEX
+ms.openlocfilehash: 995437f5a4a6fe1bc99bfe7fee555d0ac53101a8
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Olyan virtuális merevlemezről speciális tárfiók a virtuális gép létrehozása
 
 Hozzon létre egy új virtuális Gépet egy speciális nem kezelt lemez csatolása a Powershell használatával az operációs rendszer lemezeként. A speciális lemez egy példányát egy meglévő virtuális Gépet, amely kezeli a felhasználói fiókok, alkalmazások és más állapot adatait az eredeti virtuális gép virtuális merevlemez. 
 
 Erre két lehetősége van:
-* [VHD feltöltése](create-vm-specialized.md#option-1-upload-a-specialized-vhd)
-* [Egy meglévő Azure virtuális gép virtuális Merevlemezének másolni](create-vm-specialized.md#option-2-copy-an-existing-azure-vm)
+* [VHD feltöltése](sa-create-vm-specialized.md#option-1-upload-a-specialized-vhd)
+* [Egy meglévő Azure virtuális gép virtuális Merevlemezének másolni](sa-create-vm-specialized.md#option-2-copy-an-existing-azure-vm)
 
 ## <a name="before-you-begin"></a>Előkészületek
 Ha a PowerShell segítségével, győződjön meg arról, hogy rendelkezik-e a legújabb verzióját a AzureRM.Compute PowerShell-modult. A következő parancsot a telepítéshez.
@@ -318,6 +319,6 @@ $vmList = Get-AzureRmVM -ResourceGroupName $rgName
 $vmList.Name
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Jelentkezzen be az új virtuális gép, navigáljon a virtuális gép a [portal](https://portal.azure.com), kattintson a **Connect**, és nyissa meg a távoli asztal RDP-fájlt. A fiók hitelesítő adatait az eredeti virtuális gép jelentkezzen be az új virtuális gép használja. További információkért lásd: [csatlakoztatása, és jelentkezzen be a Windowst futtató Azure virtuális gép](connect-logon.md).
 

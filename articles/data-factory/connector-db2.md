@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: 75c3b514b8cb7758399efb92cb9e0738c855f022
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 23bc0ba87abbac0f83e3e5ac9d1049bbf42707c9
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Adatok másolása az DB2 Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -52,8 +52,9 @@ Pontosabban a DB2-összekötő a következő IBM DB2-platformok és verziók ren
 
 Szeretné használni az adatok másolása egy DB2-adatbázisból, amely nincs nyilvánosan elérhető, akkor be kell állítania egy Self-hosted integrációs futásidejű. Önálló üzemeltetett integrációs futtatókörnyezetek kapcsolatos további tudnivalókért lásd: [Self-hosted integrációs futásidejű](create-self-hosted-integration-runtime.md) cikk. Az integrációs futásidejű biztosít egy beépített DB2-illesztőprogramot, ezért nem, manuálisan kell telepítenie minden olyan illesztőprogram DB2-adatok másolásakor kell.
 
-## <a name="getting-started"></a>Bevezetés
-A másolási tevékenység során .NET SDK, a Python SDK, az Azure PowerShell, a REST API-t vagy a Azure Resource Manager-sablon használatával hozhat létre egy folyamatot. Lásd: [másolási tevékenység oktatóanyag](quickstart-create-data-factory-dot-net.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját.
+## <a name="getting-started"></a>Első lépések
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 A következő szakaszok részletesen bemutatják való DB2-összekötő adat-előállító tartozó entitások meghatározásához használt tulajdonságokat.
 
@@ -194,15 +195,15 @@ Az adatok másolása DB2, amikor az Azure Data Factory ideiglenes adattípusok a
 | LongVarChar |Karakterlánc |
 | LongVarGraphic |Karakterlánc |
 | Numerikus |Decimális |
-| Real |Egyetlen |
+| Real |Egyedülálló |
 | SmallInt |Int16 |
 | Time |A TimeSpan |
-| időbélyeg |Dátum és idő |
+| Időbélyeg |DateTime |
 | VarBinary |Byte] |
 | VarChar |Karakterlánc |
 | VarGraphic |Karakterlánc |
 | XML |Byte] |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md##supported-data-stores-and-formats).

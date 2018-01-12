@@ -9,11 +9,11 @@ ms.author: v-masebo
 ms.date: 11/28/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 5c9231f400b00f455f30692c58f007bd63d3cc76
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: f40fb81fc03e796b906db12bf3bf6904b27b46eb
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="deploy-azure-stream-analytics-as-an-iot-edge-module---preview"></a>Azure Stream Analytics egy IoT peremhálózati modulként telepítése – előzetes
 
@@ -153,7 +153,7 @@ Most már készen áll az Azure Stream Analytics-feladat az IoT-peremhálózati 
 
     ![Állítsa a modul][6]
 
-6. Másolja a nevét, az Azure Stream Analytics modul automatikusan lett létrehozva. 
+6. Másolja az Azure Stream Analytics-modul nevét. 
 
     ![hőmérséklet-modul][11]
 
@@ -204,7 +204,7 @@ A gép hőmérséklet fokozatosan növekedésnek 70 fok 30 másodpercig elérés
    ![docker-napló][9]
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban konfigurálta az Azure storage-tároló és a Streaming Analytics-feladat az IoT peremhálózati eszközön lévő adatok elemzésére. Majd betölteni egy egyéni Azure Stream Analytics modul áthelyezni az adatokat az eszközről, az adatfolyam keresztül történő letölthető blob. Hogyan hozhat létre Azure IoT peremhálózati további megoldások az üzleti megtekintéséhez az egyéb oktatóanyagok történik.
 

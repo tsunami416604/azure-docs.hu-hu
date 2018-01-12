@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 09/15/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: ecb70b88f6548e4730bcc1578de2f748cda33b0a
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 9ea5be818cfc104c243ce31cc0e2d0f10135259f
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="create-container-images-for-service-fabric"></a>A Service Fabric tároló lemezképek létrehozása
 
@@ -58,44 +58,40 @@ git clone https://github.com/Azure-Samples/service-fabric-containers.git
 cd service-fabric-containers/Linux/container-tutorial/
 ```
 
-A "tároló-oktatóanyag" directory tartalmaz egy "azure-szavazás" nevű mappát. Az "azure-szavazás" mappa előtér-kódot és egy Dockerfile hozhat létre az előtér-tartalmazza. A "tároló-oktatóanyag" könyvtárat a "redis" könyvtár, amely rendelkezik a redis-lemezkép létrehozásához Dockerfile is tartalmaz. Ezeket a könyvtárakat az oktatóanyag készlet szükséges eszközök tartalmaz. 
+A megoldás két mappát tartalmaz, és a "docker-compse.yml" fájl. Az "azure-szavazás" mappa a Python előtér-szolgáltatás együtt a lemezkép használatával Dockerfile tartalmazza. A "Voting" könyvtárban található a Service Fabric-alkalmazáscsomagot, amely a fürt központi telepítése. Ezeket a könyvtárakat tartalmazza a szükséges eszközök ehhez az oktatóanyaghoz.  
 
 ## <a name="create-container-images"></a>Tároló képek létrehozása
 
-Az "azure-szavazás" könyvtárán belül a következő parancsot az előtér-webkiszolgáló-összetevő lemezkép létrehozására. A parancs a Dockerfile ebben a könyvtárban a lemezkép. 
+Belül a **azure-szavazat** directory, a következő parancsot az előtér-webkiszolgáló-összetevő lemezkép létrehozására. A parancs a Dockerfile ebben a könyvtárban a lemezkép. 
 
 ```bash
 docker build -t azure-vote-front .
 ```
 
-Belső, a "redis" könyvtárat a következő parancsot a lemezképet a redis háttérrendszerének létrehozásához. A parancs a Dockerfile a címtárban a lemezkép. 
-
-```bash
-docker build -t azure-vote-back .
-```
-
-Amikor elkészült, használja a [docker képek](https://docs.docker.com/engine/reference/commandline/images/) parancsot a létrehozott lemezképek.
+Ez a parancs némi időbe telhet, mert a szükséges függőségek igénylése a Docker Hub kell. Amikor elkészült, használja a [docker képek](https://docs.docker.com/engine/reference/commandline/images/) parancsot a létrehozott lemezképek.
 
 ```bash
 docker images
 ```
 
-Figyelje meg, hogy négy képek letöltése vagy létrehozni. A *azure-szavazat-front* rendszerkép tartalmazza az alkalmazás. Az származik a *python* Docker központi lemezkép. A Redis kép letöltött telepítőcsomaggal Docker központ.
+Figyelje meg, hogy két lemezképet letöltése vagy létrehozni. A *azure-szavazat-front* rendszerkép tartalmazza az alkalmazás. Az származik a *python* Docker központi lemezkép.
 
 ```bash
 REPOSITORY                   TAG                 IMAGE ID            CREATED              SIZE
-azure-vote-back              latest              bf9a858a9269        3 seconds ago        107MB
 azure-vote-front             latest              052c549a75bf        About a minute ago   708MB
-redis                        latest              9813a7e8fcc0        2 days ago           107MB
 tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago           707MB
 
 ```
 
 ## <a name="deploy-azure-container-registry"></a>Telepítse az Azure tároló beállításjegyzék
 
-Először futtassa a [az bejelentkezési](/cli/azure/login) parancs futtatásával jelentkezzen be az Azure-fiókjával. 
+Először futtassa a **az bejelentkezési** parancs futtatásával jelentkezzen be az Azure-fiókjával. 
 
-Ezután használhatja a [az fiók](/cli/azure/account#set) parancs segítségével hozza létre az Azure-tárolóba beállításkulcs előfizetése kiválasztásához. 
+```bash
+az login
+```
+
+Ezután használhatja a **az fiók** parancs segítségével hozza létre az Azure-tárolóba beállításkulcs előfizetése kiválasztásához. Meg kell adnia az előfizetés-azonosító az Azure-előfizetés < ELŐFIZETÉS_AZONOSÍTÓJA > helyett. 
 
 ```bash
 az account set --subscription <subscription_id>
@@ -103,23 +99,23 @@ az account set --subscription <subscription_id>
 
 Egy Azure-tároló beállításjegyzék való telepítésekor, először egy erőforráscsoportot. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#create) paranccsal. Ebben a példában az erőforráscsoport neve *myResourceGroup* jön létre a *westus* régióban. Válasszon ki az erőforráscsoportot környéken régióban. 
+Hozzon létre egy erőforráscsoportot az **az group create** paranccsal. Ebben a példában az erőforráscsoport neve *myResourceGroup* jön létre a *westus* régióban.
 
 ```bash
-az group create --name myResourceGroup --location westus
+az group create --name <myResourceGroup> --location westus
 ```
 
-Hozzon létre egy Azure-tárolóba beállításjegyzéket a [az acr létrehozása](/cli/azure/acr#create) parancsot. Egy tároló beállításjegyzék neve **egyedinek kell lennie**.
+Hozzon létre egy Azure-tárolóba beállításjegyzéket a **az acr létrehozása** parancsot. Cserélje le \<acrName > nevű, a tároló beállításjegyzék szeretne létrehozni az előfizetésben. Ez a név nem egyedi és betűket is tartalmazhat. 
 
 ```bash
-az acr create --resource-group myResourceGroup --name <acrName> --sku Basic --admin-enabled true
+az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --admin-enabled true
 ```
 
-Ez az oktatóanyag a többi, egész használjuk "acrname" helyőrzőként a választott beállításjegyzék Tárolónév.
+Ez az oktatóanyag a többi, egész használjuk "acrName" helyőrzőként a választott beállításjegyzék Tárolónév. Ellenőrizze, hogy jegyezze fel ezt az értéket. 
 
 ## <a name="log-in-to-your-container-registry"></a>Jelentkezzen be a tároló beállításjegyzék
 
-Jelentkezzen be a ACR példányát előtt képek rá. Használja a [az acr bejelentkezési](/cli/azure/acr?view=azure-cli-latest#az_acr_login) parancs használatával végrehajtani a műveletet. Adjon meg egyedi név, a tároló beállításjegyzék létrehozásakor.
+Jelentkezzen be a ACR példányát előtt képek rá. Használja a **az acr bejelentkezési** parancs használatával végrehajtani a műveletet. Adjon meg egyedi név, a tároló beállításjegyzék létrehozásakor.
 
 ```bash
 az acr login --name <acrName>
@@ -141,9 +137,7 @@ Kimenet:
 
 ```bash
 REPOSITORY                   TAG                 IMAGE ID            CREATED              SIZE
-azure-vote-back              latest              bf9a858a9269        3 seconds ago        107MB
 azure-vote-front             latest              052c549a75bf        About a minute ago   708MB
-redis                        latest              9813a7e8fcc0        2 days ago           107MB
 tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago           707MB
 ```
 
@@ -153,16 +147,18 @@ Ahhoz, hogy a loginServer nevét, a következő parancsot:
 az acr show --name <acrName> --query loginServer --output table
 ```
 
+Ez adja kimenetként, egy tábla a következő eredményekkel. Ez az eredmény használandó címke a **azure-szavazat-front** kép előtt, a tároló beállításjegyzék a következő lépésben.
+
+```bash
+Result
+------------------
+<acrName>.azurecr.io
+```
+
 Most, címkét a *azure-szavazat-front* a tároló beállításjegyzék loginServer lemezkép. Továbbá adja hozzá `:v1` , a lemezkép neve végén. Ezt a címkét azt jelzi, hogy a lemezkép verziója.
 
 ```bash
-docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v1
-```
-
-A következő címke a *azure visszaírt szavazattal* a tároló beállításjegyzék loginServer lemezkép. Továbbá adja hozzá `:v1` , a lemezkép neve végén. Ezt a címkét azt jelzi, hogy a lemezkép verziója.
-
-```bash
-docker tag azure-vote-back <acrLoginServer>/azure-vote-back:v1
+docker tag azure-vote-front <acrName>.azurecr.io/azure-vote-front:v1
 ```
 
 Miután megjelölve, futtassa az "docker képek" a művelet megerősítéséhez.
@@ -172,11 +168,8 @@ Kimenet:
 
 ```bash
 REPOSITORY                             TAG                 IMAGE ID            CREATED             SIZE
-azure-vote-back                        latest              bf9a858a9269        22 minutes ago      107MB
-<acrName>.azurecr.io/azure-vote-back    v1                  bf9a858a9269        22 minutes ago      107MB
 azure-vote-front                       latest              052c549a75bf        23 minutes ago      708MB
-<acrName>.azurecr.io/azure-vote-front   v1                  052c549a75bf        23 minutes ago      708MB
-redis                                  latest              9813a7e8fcc0        2 days ago          107MB
+<acrName>.azurecr.io/azure-vote-front   v1                  052c549a75bf       23 minutes ago      708MB
 tiangolo/uwsgi-nginx-flask             python3.6           590e17342131        5 days ago          707MB
 
 ```
@@ -188,15 +181,7 @@ Leküldéses a *azure-szavazat-front* kép a beállításjegyzékhez.
 Az alábbi példa használatával, cserélje le a környezetből loginServer loginServer ACR neve.
 
 ```bash
-docker push <acrLoginServer>/azure-vote-front:v1
-```
-
-Leküldéses a *azure visszaírt szavazattal* kép a beállításjegyzékhez. 
-
-Az alábbi példa használatával, cserélje le a környezetből loginServer loginServer ACR neve.
-
-```bash
-docker push <acrLoginServer>/azure-vote-back:v1
+docker push <acrName>.azurecr.io/azure-vote-front:v1
 ```
 
 A docker leküldéses parancsok néhány percet igénybe vehet.
@@ -214,13 +199,12 @@ Kimenet:
 ```bash
 Result
 ----------------
-azure-vote-back
 azure-vote-front
 ```
 
 Oktatóanyag befejezése után a tároló kép rendelkezik lett tárolja, a saját Azure tároló beállításjegyzék-példányban. Ez a rendszerkép rendszer ACR a Service Fabric-fürt a következő útmutatókból.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy alkalmazást a Githubról lett lekért és tároló képek létrehozott és a beállításjegyzék leküldve. A következő lépéseket hajtotta végre:
 

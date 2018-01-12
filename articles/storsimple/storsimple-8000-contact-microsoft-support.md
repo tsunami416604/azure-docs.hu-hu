@@ -4,7 +4,7 @@ description: "Megtudhatja, hogyan jelentkezzen támogatási kérelmet, és a Sto
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 
 ms.service: storsimple
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/25/2017
+ms.date: 01/09/2018
 ms.author: alkohli;
-ms.openlocfilehash: 4b5a14237ce79100f980b2186b2c3c887abaa296
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e0df86e40d0dc1092ad7ff04f01bbc3e5e3d1c4e
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="contact-microsoft-support"></a>Forduljon a Microsoft támogatási szolgálatához.
 
@@ -30,7 +30,7 @@ A StorSimple Device Manager lehetővé teszi a **új támogatási kérelem jelen
 
 Tekintse át a [a StorSimple 8000 Series támogatási SLA-k és információk](https://msdn.microsoft.com/library/mt433077.aspx) a támogatási kérelem létrehozása előtt.
 
-## <a name="create-a-support-request"></a>Támogatási kérés létrehozása
+## <a name="create-a-support-request"></a>Támogatáskérés létrehozása
 
 Attól függően, a [támogatási csomag](https://azure.microsoft.com/support/plans/), létrehozhat támogatási jegyeket egy problémát a StorSimple eszközt a StorSimple Device Manager szolgáltatás összefoglaló blade-ről. A következő lépésekkel hozzon létre egy támogatási kérést:
 
@@ -97,7 +97,7 @@ A következő lépésekkel támogatási munkamenet indításához:
 
 #### <a name="to-start-a-support-session"></a>Támogatási munkamenet indításához
 
-1. Az eszközhöz való hozzáféréshez, közvetlenül a soros konzol használatával, vagy egy telnet-munkamenet távoli számítógépről keresztül. Ehhez kövesse a lépéseket [a PuTTY használata az eszköz soros konzoljához való csatlakozáshoz](storsimple-deployment-walkthrough.md#use-putty-to-connect-to-the-device-serial-console).
+1. Az eszközhöz való hozzáféréshez, közvetlenül a soros konzol használatával, vagy egy telnet-munkamenet távoli számítógépről keresztül. Ehhez kövesse a lépéseket [a PuTTY használata az eszköz soros konzoljához való csatlakozáshoz](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
 2. A megnyitott munkamenetben nyomja le a **Enter** kulcsot használva egy parancssori ablakot.
 3. A soros konzol menüben válassza az 1. lehetőség – **jelentkezzen be a teljes körű hozzáférési**.
 4. A parancssorba írja be a következő jelszóval:
@@ -113,6 +113,6 @@ A következő lépésekkel támogatási munkamenet indításához:
 > Letilthatja a támogatás elérését futtatásával `Disable-HcsSupportAccess`. A StorSimple eszköz megkísérli is támogatási hozzáférés letiltása a 8 órával azt követően, a munkamenet kezdeményezték. A StorSimple eszköz hitelesítő adatok módosítása a támogatási munkamenet kezdeményezése után célszerű.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Megtudhatja, hogyan [diagnosztizálhatja és a StorSimple 8000 series eszköz kapcsolatos problémák megoldásához](storsimple-troubleshoot-deployment.md)
+Megtudhatja, hogyan [diagnosztizálhatja és a StorSimple 8000 series eszköz kapcsolatos problémák megoldásához](storsimple-8000-troubleshoot-deployment.md)

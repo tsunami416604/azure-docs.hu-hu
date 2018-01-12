@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: jingwang
-ms.openlocfilehash: ad3bc7ba38f5ea20586031bdcc3ae44f03f9da0b
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: e580c3f36ce19679d3edcf7a8861e4e492dfa9c5
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Azure Data Factory használatával SAP felhőből ügyfél (C4C) adatok másolása
 
@@ -32,9 +32,9 @@ Adatok másolása az SAP felhő ügyfél az egyetlen támogatott fogadó adattá
 
 Pontosabban az összekötő lehetővé teszi, hogy Azure Data Factoryben az adatok másolása az/SAP felhő többek között a SAP felhő az értékesítés, SAP felhőalapú szolgáltatás és a közösségi Engagement megoldások SAP felhő ügyfél.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 
-A másolási tevékenység során .NET SDK, a Python SDK, az Azure PowerShell, a REST API-t vagy a Azure Resource Manager-sablon használatával hozhat létre egy folyamatot. Lásd: [másolási tevékenység oktatóanyag](quickstart-create-data-factory-dot-net.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját.
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 A következő szakaszok részletesen bemutatják SAP felhőalapú ügyfél-összekötő adat-előállító tartozó entitások meghatározásához használt tulajdonságokat.
 
@@ -210,7 +210,7 @@ Amikor adatokat másol SAP felhő ügyfél, a következő megfeleltetéseket seg
 | Edm.Binary | Byte] |
 | Edm.Boolean | logikai érték |
 | Edm.Byte | Byte] |
-| Edm.DateTime | Dátum és idő |
+| Edm.DateTime | DateTime |
 | Edm.Decimal | Decimális |
 | Edm.Double | Dupla |
 | Edm.Single | Egyedülálló |
@@ -224,5 +224,5 @@ Amikor adatokat másol SAP felhő ügyfél, a következő megfeleltetéseket seg
 | Edm.DateTimeOffset | DateTimeOffset |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats).

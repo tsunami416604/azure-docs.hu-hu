@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/02/2017
 ms.author: bruceper
-ms.openlocfilehash: c5b5fd7f16faf17d16ecc82269fb1264adf4dd06
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5b03f5092ee4236ca3e7b12db37dc47bd6d3a309
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Az Azure Key Vault .NET 2.0 – kibocsátási megjegyzések és az áttelepítési útmutató
 A következő notes és útmutatókat is Azure Key Vault .NET dolgozó fejlesztők számára / C# könyvtár. Az áttérést az 1.0-s verziója a 2.0-s verzióját, a frissítések száma végzett áttelepítés munkahelyi ahhoz, hogy igénybe vehesse az funkciók javításai, és kiegészítéseit, mint a beállítást, a kódban szükség teszi **Key Vault tanúsítványok** támogatja.
@@ -36,8 +36,9 @@ Key Vault tanúsítványok támogatás lehetővé teszi a x509 vezetése a tanú
 
 ## <a name="net-support"></a>.NET-támogatás
 
-* **A .NET 4.0** az Azure Key Vault .NET 2.0-s verziója nem támogatja vagy C# könyvtár
-* **A .NET core** az Azure Key Vault .NET 2.0-s verziója támogatja / C# könyvtár
+* **A .NET 4.0** nem támogatja az Azure Key Vault .NET könyvtár a 2.0-s verziójához
+* **.NET-keretrendszer 4.5.2-es** támogatja az Azure Key Vault .NET könyvtár a 2.0-s verziójához
+* **.NET-szabvány 1.4** támogatja az Azure Key Vault .NET könyvtár a 2.0-s verziójához
 
 ## <a name="namespaces"></a>Névterek
 

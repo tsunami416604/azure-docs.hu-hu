@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: joflore
-ms.openlocfilehash: c7cfd156faf6e4cd56f2b9094c3d63515f86cfde
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7ae89241c67655fbcaa747c4cac224b898947f39
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="building-multi-factor-authentication-into-custom-apps-sdk"></a>Building a multi-factor Authentication egyéni alkalmazásokba (SDK)
 
@@ -38,7 +38,7 @@ Mivel az API-k nincs hozzáférése a felhasználók számára az Azure Active D
 
 
 ## <a name="download-the-sdk"></a>Az SDK letöltése
-Az Azure multi-factor Authentication SDK letöltése szükséges egy [Azure többtényezős hitelesítésszolgáltató](multi-factor-authentication-get-started-auth-provider.md).  Ehhez a teljes Azure-előfizetéssel, akkor is, ha az Azure MFA, az Azure AD Premium vagy a nagyvállalati mobilitási csomag licencek a tulajdonosa. Az SDK letöltése nyilvános módszerek decomissioned törölték, mivel az SDK elavult. Ha le kell töltenie az SDK nyisson meg egy támogatási esetet a Microsofttal.
+Az Azure multi-factor Authentication SDK letöltése szükséges egy [Azure többtényezős hitelesítésszolgáltató](multi-factor-authentication-get-started-auth-provider.md).  Ehhez a teljes Azure-előfizetéssel, akkor is, ha az Azure MFA, az Azure AD Premium vagy a nagyvállalati mobilitási csomag licencek a tulajdonosa. A nyilvános módszerek az SDK letöltése leszerelését lett, mert az SDK elavult. Ha le kell töltenie az SDK nyisson meg egy támogatási esetet a Microsofttal. Az SDK-t, amely már használja az SDK-ügyfél számára csak valósul meg. Új ügyfelek nem lesznek előkészítve.
 
 ## <a name="whats-in-the-sdk"></a>Mi az az SDK-ban
 Az SDK-t a következőket tartalmazza:

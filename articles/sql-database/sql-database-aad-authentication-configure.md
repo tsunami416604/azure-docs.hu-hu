@@ -1,26 +1,23 @@
 ---
 title: "Azure Active Directory-hitelesítés - SQL konfigurálása |} Microsoft Docs"
-description: "Megtudhatja, hogyan Csatlakozás SQL Database és az SQL Data Warehouse Azure Active Directory-hitelesítés használatával."
+description: "Ismerje meg az SQL-adatbázis és az SQL Data Warehouse az Azure AD konfigurálása után az Azure Active Directory Authentication - használatával."
 services: sql-database
-documentationcenter: 
-author: BYHAM
-manager: jhubbard
-editor: 
-tags: 
+author: GithubMirek
+manager: johammer
 ms.assetid: 7e2508a1-347e-4f15-b060-d46602c5ce7e
 ms.service: sql-database
 ms.custom: security
-ms.devlang: na
+ms.devlang: 
 ms.topic: article
-ms.tgt_pltfrm: na
+ms.tgt_pltfrm: 
 ms.workload: Active
-ms.date: 07/10/2017
-ms.author: rickbyh
-ms.openlocfilehash: f0c9578217beff22b4a322b363c7499943311d88
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.date: 01/09/2018
+ms.author: mireks
+ms.openlocfilehash: 93fb39770a0b0c63011c05505be411c7470fea0a
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql-database-or-sql-data-warehouse"></a>Konfigurálhatja és kezelheti az Azure Active Directory-hitelesítés az SQL Database vagy az SQL Data Warehouse
 
@@ -32,33 +29,14 @@ Ez a cikk bemutatja, létrehozása és feltöltése az Azure AD és az Azure AD 
 ## <a name="create-and-populate-an-azure-ad"></a>Létrehozása és feltöltése az Azure AD
 Hozzon létre egy Azure AD és a felhasználókat és csoportokat. Az Azure AD is lehet a kezdeti az Azure AD által felügyelt tartományokhoz. Az Azure AD egy a helyszíni Active Directory tartományi szolgáltatások, amelyek össze van vonva az Azure AD-val is lehet.
 
-További információk a következő témakörökben találhatók: [Helyszíni identitások integrálása az Azure Active Directoryval](../active-directory/active-directory-aadconnect.md), [Saját tartománynév hozzáadása az Azure AD-hez](../active-directory/active-directory-domains-add-azure-portal.md), [A Microsoft Azure mostantól támogatja a Windows Server Active Directoryval való összevonást](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/), [Az Azure AD-címtár felügyelete](https://msdn.microsoft.com/library/azure/hh967611.aspx), [Az Azure AD kezelése Windows PowerShell használatával](/powershell/azure/overview?view=azureadps-2.0) és [Hibrid identitás – szükséges portok és protokollok](../active-directory/active-directory-aadconnect-ports.md).
+További információk a következő témakörökben találhatók: [Helyszíni identitások integrálása az Azure Active Directoryval](../active-directory/active-directory-aadconnect.md), [Saját tartománynév hozzáadása az Azure AD-hez](../active-directory/active-directory-domains-add-azure-portal.md), [A Microsoft Azure mostantól támogatja a Windows Server Active Directoryval való összevonást](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/), [Az Azure AD-címtár felügyelete](../active-directory/active-directory-administer.md), [Az Azure AD kezelése Windows PowerShell használatával](/powershell/azure/overview?view=azureadps-2.0) és [Hibrid identitás – szükséges portok és protokollok](..//active-directory/connect/active-directory-aadconnect-ports.md).
 
-## <a name="optional-associate-or-change-the-active-directory-that-is-currently-associated-with-your-azure-subscription"></a>Választható lehetőség: Hozzárendelése vagy az active directory jelenleg az Azure-előfizetéshez társított módosítása
-Az adatbázis társítja a szervezet Azure AD-címtárral, hajtsa végre a könyvtár egy megbízható könyvtárat az Azure-előfizetés az adatbázis tárolásához. További információkért lásd: [How Azure subscriptions are associated with Azure AD?](https://msdn.microsoft.com/library/azure/dn629581.aspx) (Hogyan kapcsolódnak az Azure-előfizetések az Azure AD-hoz?).
+## <a name="associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Hozzárendelése vagy egy Azure-előfizetés hozzáadása az Azure Active Directoryhoz
 
-**További információ:** minden Azure-előfizetéshez az Azure AD-példányban megbízhatósági kapcsolatban áll. Ez azt jelenti, hogy megbízik ebben a címtárban a felhasználók, szolgáltatások és eszközök hitelesítéséhez. Több előfizetés is megbízhat ugyanabban a címtárban, de egy előfizetés csak egy címtárban bízhat meg. Láthatja, melyik címtárban bízik meg az előfizetése a **beállítások** lapot [https://manage.windowsazure.com/](https://manage.windowsazure.com/). Ez az előfizetés és a címtár közötti bizalmi kapcsolat nem olyan, mint ami az előfizetés és az Azure összes többi erőforrása (webhelyek, adatbázisok stb.) között áll fenn, amelyek inkább az előfizetések gyermekerőforrásainak számítanak. Ha egy előfizetés lejár, akkor az előfizetéssel társított ilyen egyéb erőforrások hozzáférése is lejár. De a címtár az Azure-ban elérhető marad, és más előfizetéseket társíthat ezzel a címtárral, és folytathatja a címtár felhasználóinak kezelését. Erőforrások kapcsolatos további információkért lásd: [az az Azure-erőforrások hozzáférésének megismerése](https://msdn.microsoft.com/library/azure/dn584083.aspx).
+1. Társítsa az Azure-előfizetéshez az Azure Active Directory azáltal, hogy a könyvtár egy megbízható könyvtárat az Azure-előfizetés az adatbázis tárolásához. További információkért lásd: [kapcsolódnak hogyan Azure-előfizetések az Azure AD](../active-directory/active-directory-how-subscriptions-associated-directory.md).
+2. Az Azure-portálon a címtár kapcsoló használatával az előfizetés-tartomány társított váltani.
 
-A következő eljárások bemutatják az adott előfizetéshez tartozó könyvtárat szeretne váltani.
-1. Csatlakozás a [klasszikus Azure portál](https://manage.windowsazure.com/) Azure-előfizetési rendszergazda segítségével.
-2. Válassza ki a bal oldali szalagcím **beállítások**.
-3. Az előfizetések a Beállítások képernyő jelenik meg. Ha nem jelenik meg a kívánt előfizetés, kattintson a **előfizetések** a lap tetején legördülő listán a **szűrő által DIRECTORY** mezőbe, és válassza ki azt a címtárat, amely tartalmazza az előfizetések, és kattintson **ALKALMAZ**.
-   
-    ![Válassza ki az előfizetést][4]
-4. Az a **beállítások** területen kattintson az előfizetéshez, majd **könyvtár szerkesztése** az oldal alján.
-   
-    ![ad-beállítások-portálon][5]
-5. Az a **könyvtár szerkesztése** mezőben, válassza ki az Azure Active Directory, az SQL Server vagy az SQL Data Warehouse társított, majd kattintson a nyílra a Tovább gombra.
-   
-    ![Edit directory jelölje ki][6]
-6. Az a **megerősítése** directory leképezési párbeszédpanelen ellenőrizze, hogy "**összes társrendszergazdák törlődni fog.**"
-   
-    ![Edit directory megerősítése][7]
-7. Kattintson a töltse be újra a portálon.
-
-   > [!NOTE]
-   > Ha a könyvtár hozzáférési társrendszergazdák, az Azure Active Directory-felhasználók és csoportok, módosításához és könyvtár biztonsági erőforrás-felhasználókat törlődnek, és már nem rendelkeznek hozzáféréssel az előfizetés vagy az erőforrások. Csak, szolgáltatás-rendszergazdaként, konfigurálja a hozzáférést a rendszerbiztonsági tagoknak az új könyvtár alapján. Ez a változás jelentős mennyiségű időt propagálódik az összes erőforrást is igénybe vehet. Is módosítása a könyvtárban, az Azure AD-rendszergazda módosította SQL Database és az SQL Data Warehouse és minden meglévő Azure Active Directory-felhasználók adatbázis-hozzáférés letiltása. Az Azure AD admin kell lennie (alább leírtak) alaphelyzetbe állítása és az új Azure AD-felhasználók kell létrehozni.
-   >  
+   **További információ:** minden Azure-előfizetéshez az Azure AD-példányban megbízhatósági kapcsolatban áll. Ez azt jelenti, hogy megbízik ebben a címtárban a felhasználók, szolgáltatások és eszközök hitelesítéséhez. Több előfizetés is megbízhat ugyanabban a címtárban, de egy előfizetés csak egy címtárban bízhat meg. Ez az előfizetés és a címtár közötti bizalmi kapcsolat nem olyan, mint ami az előfizetés és az Azure összes többi erőforrása (webhelyek, adatbázisok stb.) között áll fenn, amelyek inkább az előfizetések gyermekerőforrásainak számítanak. Ha egy előfizetés lejár, akkor az előfizetéssel társított ilyen egyéb erőforrások hozzáférése is lejár. De a címtár az Azure-ban elérhető marad, és más előfizetéseket társíthat ezzel a címtárral, és folytathatja a címtár felhasználóinak kezelését. Erőforrások kapcsolatos további információkért lásd: [az az Azure-erőforrások hozzáférésének megismerése](../active-directory/active-directory-b2b-admin-add-users.md). További tudnivalók ezzel kapcsolatban lásd: megbízható további [társítani, vagy egy Azure-előfizetés hozzáadása az Azure Active Directory](../active-directory/active-directory-how-subscriptions-associated-directory.md).
 
 ## <a name="create-an-azure-ad-administrator-for-azure-sql-server"></a>Az Azure AD-rendszergazda Azure SQL-kiszolgáló létrehozása
 Minden Azure SQL-kiszolgáló (amely egy SQL Database vagy az SQL Data Warehouse) kezdődik-e egy önálló kiszolgáló-rendszergazdai fiók, amely a teljes Azure SQL-kiszolgáló rendszergazdájához. A második SQL kiszolgáló rendszergazdája kell létrehozni, amely egy Azure AD-fiókot. Ez egyszerű tartalmazott adatbázis-felhasználó a master adatbázisban jön létre. A rendszergazdáknak, a kiszolgáló rendszergazdai fiók sem tagja a **db_owner** minden felhasználói szerepkör adatbázisából, és adja meg az egyes felhasználói az adatbázisban, mint a **dbo** felhasználó. A kiszolgáló rendszergazdai fiókokkal kapcsolatos további információkért lásd: [kezelése adatbázisok és bejelentkezések az Azure SQL Database](sql-database-manage-logins.md).
@@ -251,7 +229,7 @@ Ezt a módszert akkor használja, ha a Windows összevont tartományhoz az Azure
 
     ![Válassza ki az adatbázis neve][13]
 
-## <a name="active-directory-password-authentication"></a>Active Directory jelszavas hitelesítést
+## <a name="active-directory-password-authentication"></a>Active Directorybeli jelszavas hitelesítés
 
 Ezt a módszert használja, ha összekapcsolása egy Azure AD egyszerű felhasználónév használata az Azure AD tartományi kezelése. Is használhatja az összevont fiók, például amikor működik-e távolról a tartományhoz való hozzáférés nélkül.
 
@@ -283,7 +261,7 @@ conn.Open();
 
 A kapcsolati karakterlánc kulcsszó ``Integrated Security=True`` nem támogatott az Azure SQL-adatbázishoz szeretne csatlakozni. Ha egy ODBC-kapcsolat, akkor távolítsa el a szóközöket, és állítsa be a "ActiveDirectoryIntegrated" hitelesítési.
 
-### <a name="active-directory-password-authentication"></a>Active Directory jelszavas hitelesítést
+### <a name="active-directory-password-authentication"></a>Active Directorybeli jelszavas hitelesítés
 
 Adatbázishoz való kapcsolódáshoz a beépített hitelesítéssel és az Azure AD identity, a hitelesítési kulcsszó Active Directory-jelszó értékre kell állítani. A kapcsolati karakterláncnak tartalmaznia kell a felhasználói azonosító vagy UID és a jelszó/PWD kulcsszavak és az értékeket. A következő C# kódminta ADO .NET használja.
 
@@ -324,7 +302,7 @@ sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net  -G
 sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyAADPassword -G -l 30
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Az SQL Database hozzáféréseinek és felügyeletének áttekintéséről az [SQL Database-hozzáférés és -felügyelet](sql-database-control-access.md) részben olvashat.
 - Az SQL Database bejelentkezéseinek, felhasználóinak és adatbázis-szerepköreinek áttekintését a [Bejelentkezések, felhasználók és adatbázis-szerepkörök](sql-database-manage-logins.md) részben találja.
 - További információ az adatbázis résztvevőivel kapcsolatban: [Résztvevők](https://msdn.microsoft.com/library/ms181127.aspx).

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/03/2017
 ms.author: dobett
-ms.openlocfilehash: f3fbccdbd00fb64348e2132ca6adc3a06ad18535
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: d2a6660b93fee1e1fc24269eb7075e5243ce88ed
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="manage-your-iot-hub-device-identities-in-bulk"></a>Az IoT Hub eszköz identitásai tömeges kezelése
 
@@ -27,6 +27,8 @@ Minden egyes IoT-központ rendelkezik egy identitásjegyzékhez eszközönkénti
 Importálás és exportálás zajlanak környezetében *feladatok* , amelyek lehetővé teszik az IoT-központ szolgáltatás tömeges műveleteket végrehajtani.
 
 A **RegistryManager** osztály tartalmazza a **ExportDevicesAsync** és **ImportDevicesAsync** módszereket, amelyek a **feladat** keretrendszer. Ezek a módszerek lehetővé teszik a exportálása, importálása és az IoT hub identitásjegyzékhez a a teljes szinkronizálás.
+
+Ez a témakör ismerteti, amelyek használatával a **RegistryManager** osztály és **feladat** rendszer tömeges és -eszközökhöz, illetve onnan az IoT-központ identitásjegyzékhez exportot végrehajtásához. Az Azure IoT Hub eszköz kiépítése szolgáltatás segítségével is nulla-érintés, közvetlenül az időponthoz kötött emberi beavatkozás nélkül egy vagy több IoT-központok kiépítés engedélyezése. További tudnivalókért tekintse meg a [szolgáltatás dokumentációja kiépítés][lnk-dps].
 
 ## <a name="what-are-jobs"></a>Mik azok a feladatok?
 
@@ -395,7 +397,7 @@ static string GetContainerSasUri(CloudBlobContainer container)
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan hajthat végre az identitásjegyzékhez tömeges műveleteket a az IoT-központ. Az alábbi hivatkozásokból tudhat meg többet az Azure IoT Hub kezelése:
 
@@ -405,10 +407,16 @@ Ebben a cikkben megtanulta, hogyan hajthat végre az identitásjegyzékhez töme
 Az IoT-központ képességeit további megismeréséhez lásd:
 
 * [IoT Hub fejlesztői útmutató][lnk-devguide]
-* [Az Azure IoT peremhálózati peremeszközök AI központi telepítése][lnk-iotedge]
+* [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással][lnk-iotedge]
+
+Az IoT Hub eszköz kiépítése szolgáltatás segítségével nulla-érintés engedélyezése megismeréséhez just-in-time kiépítés, lásd: 
+
+* [Az Azure IoT Hub eszköz-üzembehelyezési szolgáltatás][lnk-dps]
+
 
 [lnk-metrics]: iot-hub-metrics.md
 [lnk-monitor]: iot-hub-operations-monitoring.md
 
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
+[lnk-dps]: https://azure.microsoft.com/documentation/services/iot-dps

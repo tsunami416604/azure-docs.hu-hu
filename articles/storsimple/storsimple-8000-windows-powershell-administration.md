@@ -4,7 +4,7 @@ description: "Ismerje meg, hogyan használható a Windows PowerShell-lel a StorS
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 
 ms.service: storsimple
@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 04/03/2017
+ms.date: 01/09/2018
 ms.author: alkohli@microsoft.com
-ms.openlocfilehash: 89e1054117f19e787da5330932021351fb016209
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 291de21d3d98bf9eb65adc7d506f3549171ee0a0
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Az eszköz felügyelete a Windows PowerShell-lel segítségével
 
@@ -126,8 +126,8 @@ A megjelenítési nyelve nem függ a nyelv, amely használatával a **nyelv vál
 
 HTTP vagy HTTPS használatával Windows PowerShell távoli eljáráshívás keresztül csatlakozni. Kövesse az utasításokat az alábbi oktatóanyagok:
 
-* [Csatlakozás távoli a HTTP-n keresztül](storsimple-remote-connect.md#connect-through-http)
-* [Távolról a HTTPS használatával](storsimple-remote-connect.md#connect-through-https)
+* [Csatlakozás távoli a HTTP-n keresztül](storsimple-8000-remote-connect.md#connect-through-http)
+* [Távolról a HTTPS használatával](storsimple-8000-remote-connect.md#connect-through-https)
 
 ## <a name="connection-security-considerations"></a>Kapcsolat biztonsági megfontolások
 
@@ -182,7 +182,7 @@ A Windows PowerShell felületén a Súgó könnyen frissíthető. Frissítéséh
 > Ahhoz, hogy az elérhető parancsmagok listáját térben, jelentkezzen be a megfelelő menüpontot, és futtassa a `Get-Command` parancsmag.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha probléma merül fel élmény a StorSimple eszközt a végrehajtásához a fenti munkafolyamatok egyik, tekintse meg a [StorSimple központi telepítések hibaelhárítási eszközök](storsimple-troubleshoot-deployment.md#tools-for-troubleshooting-storsimple-deployments).
+Ha probléma merül fel élmény a StorSimple eszközt a végrehajtásához a fenti munkafolyamatok egyik, tekintse meg a [StorSimple központi telepítések hibaelhárítási eszközök](storsimple-8000-troubleshoot-deployment.md#tools-for-troubleshooting-storsimple-deployments).
 

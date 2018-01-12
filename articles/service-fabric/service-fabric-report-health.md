@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/19/2017
+ms.date: 12/11/2017
 ms.author: oanapl
-ms.openlocfilehash: ed10eef347d4d93012078456b3a145589e66d30e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 88d80271e744d6f00afd1ff1c3df29180565b59e
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Egyéni Service Fabric-állapotjelentések hozzáadása
 Az Azure Service Fabric vezet be a [állapotmodell](service-fabric-health-introduction.md) úgy tervezték, hogy sérült fürt és az alkalmazás feltételeket az adott entitások jelzőt. A health modellje **állapotfigyelő jelentéskészítők** (rendszer összetevőit és watchdogs). Könnyű és gyors diagnosztikai és javítási célja. Szolgáltatás írók szükség az társaságuk vonatkozó állapotát. Minden olyan esetben, kedvezőtlen hatással lehet az egészségügyi kell kiválasztását, különösen akkor, ha segíthet megközelíti a legfelső szintű jelző problémák. Az állapotadatok is mentheti időt és erőfeszítést Hibakeresés és a vizsgálat. Támogató különösen akkor törölje a jelet, ha a szolgáltatás megfelelően működik, és a felhőben léptékű (magán- vagy Azure).
@@ -300,7 +300,7 @@ HealthEvents          :
 ### <a name="rest"></a>REST
 Nyissa meg a kívánt entitáshoz és a rendszerállapot-jelentés leírása a szervezet rendelkezik POST kérelmek használatával REST állapotjelentések küldése. Például tekintse meg a többi küldése [állapotjelentések fürt](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-cluster) vagy [állapotjelentések szolgáltatás](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service). Minden entitások támogatottak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A rendszerállapot-adatok alapján, szolgáltatás írók és a fürt/rendszergazdái is gondolja, hogy többféleképpen felhasználhatják az információkat. Például azok állíthat be riasztásokat állapot alapján komoly problémát catch ahhoz, azok kiváltó kimaradások esetén. Rendszergazdák is beállíthatnak javítási rendszerek automatikusan problémáinak megoldásával kapcsolatban.
 
 [Bevezetés a Service Fabric állapotának figyelése](service-fabric-health-introduction.md)

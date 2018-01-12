@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/07/2017
 ms.author: larryfr
-ms.openlocfilehash: df767617842d5f331b5c4dda6d87d6a999ee1d1b
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 39734153a757d4665f2a15d3af244d2fab9ad9d7
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="use-spark-structured-streaming-with-kafka-on-hdinsight"></a>Válassza a Spark strukturált hdinsight Kafka Stream továbbítása
 
@@ -127,7 +127,7 @@ A jelen dokumentumban ismertetett példa kódja megtalálható [https://github.c
 
 Az alábbi lépések segítségével töltse fel a notebookok a projektből a Spark on HDInsight-fürt számára:
 
-1. A böngészőben csatlakoztassa a Jupyter notebook a Spark-fürtön. Cserélje le a következő URL-címet, `CLUSTERNAME` a Kafka fürt nevű:
+1. A böngészőben csatlakoztassa a Jupyter notebook a Spark-fürtön. Cserélje le a következő URL-címet, `CLUSTERNAME` nevű, a __Spark__ fürt:
 
         https://CLUSTERNAME.azurehdinsight.net/jupyter
 
@@ -153,7 +153,7 @@ A fájlok feltöltése után válassza a __adatfolyam-Twitter-üzeneteket-To_Kaf
 
 Jupyter Notebook kezdőlapján válassza ki a __Spark-strukturált-adatfolyam-a-Kafka.ipynb__ bejegyzés. Kövesse a notebook Twitter-üzeneteket betölteni a Kafka Spark strukturált Streaming használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte a használata Spark strukturált Streaming rendelkezik, tekintse meg a következő dokumentumok tudhat meg többet a Spark és Kafka használata:
 

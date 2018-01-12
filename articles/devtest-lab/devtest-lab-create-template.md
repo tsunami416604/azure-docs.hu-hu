@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2017
+ms.date: 01/10/2018
 ms.author: v-craic
-ms.openlocfilehash: 7605a65d784a9586a4d88625996f4a1c8f154e9d
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: d1f1b9948fb591484c107818a01e141932effbba
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="create-a-custom-image-from-a-vhd-file"></a>Létrehozhat egyéni rendszerképeket a VHD-fájl
 
@@ -34,15 +34,15 @@ A következő lépések végigvezetik a VHD-fájl az Azure portál használatáv
 
 1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Válassza a **További szolgáltatások**, majd a **DevTest Labs** elemet a listából.
+1. Válassza ki **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából.
 
 1. Válassza ki a kívánt labor labs listájának megtekintéséhez.  
 
-1. A labor paneljén válassza **konfigurációs**. 
+1. A labor főpanelen válassza **konfigurációs és házirendek**. 
 
-1. A tesztlabor a **konfigurációs** panelen válassza **egyéni lemezképeket (VHD)**.
+1. Az a **konfigurációs és házirendek** ablaktáblán válassza előbb **egyéni lemezképek**.
 
-1. Az a **egyéni lemezképek** panelen válassza **+ Hozzáadás**.
+1. Az a **egyéni lemezképek** ablaktáblán válassza előbb **+ Hozzáadás**.
 
     ![Egyéni lemezkép hozzáadása](./media/devtest-lab-create-template/add-custom-image.png)
 
@@ -50,21 +50,21 @@ A következő lépések végigvezetik a VHD-fájl az Azure portál használatáv
 
 1. Adja meg az egyéni lemezkép leírását. A leírást alap képek listája jelenik meg a virtuális gépek létrehozásakor.
 
-1. Válassza ki **VHD**.
+1. A **operációsrendszer-típus**, válassza **Windows** vagy **Linux**.
 
-1. Az a **VHD** panelen válassza ki a kívánt VHD-fájlt.
+    - Ha **Windows**, adja meg a jelölőnégyzet keresztül e *sysprep* már futtatták azon a gépen. 
+    - Ha **Linux**, adja meg a jelölőnégyzet keresztül e *deprovision* már futtatták azon a gépen. 
 
-1. Válassza ki **OK** bezárásához a **VHD** panelen.
+1. Válassza ki a **VHD** a legördülő menüből. Ez az új egyéni lemezkép létrehozásához használandó virtuális merevlemez. Ha szükséges, válassza a **a PowerShell használatával virtuális merevlemez feltöltéséhez**.
 
-1. Válassza ki **operációs rendszer konfigurációja**.
-
-1. Az a **operációs rendszer konfigurációja** lapra, válassza ki vagy **Windows** vagy **Linux**.
-
-1. Ha **Windows** van jelölve, adja meg a jelölőnégyzet keresztül e *Sysprep* már futtatták azon a gépen. 
-
-1. Válassza ki **OK** bezárásához a **operációs rendszer konfigurációja** panelen.
+1. Ha egyéni lemezkép létrehozásához használt kép nem Microsoft által kiadott egy csomag neve, a terv ajánlat és a terv publisher is beírhatja.
 
 1. Válassza ki **OK** egyéni lemezkép létrehozásához.
+
+Néhány perc elteltével az egyéni rendszerképet jön létre, és a tesztkörnyezet tárfiókja belül tárolja. Hozzon létre egy új virtuális Gépet kíván lab-felhasználó, amikor a kép érhető el alap képek listájában.
+
+![Kép: egyéni elérhető alap képek listája](./media/devtest-lab-create-template/custom-image-available-as-base.png)
+
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
@@ -73,6 +73,6 @@ A következő lépések végigvezetik a VHD-fájl az Azure portál használatáv
 - [Egyéni lemezképek vagy képletek?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
 - [Az Azure DevTest Labs között egyéni lemezképek másolása](http://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
-##<a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>További lépések
 
 - [A virtuális gépek hozzáadása a tesztkörnyezet](./devtest-lab-add-vm.md)

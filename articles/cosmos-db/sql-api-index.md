@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2017
 ms.author: mimig
-ms.openlocfilehash: 8de2a541f307adfed1125dbfc25825b3e28d9c48
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 8faa8a08d4a5bc323951a594049002fc61eb56b8
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="azure-cosmos-db-sql-api-documentation"></a>Az Azure Cosmos DB: SQL API-JÁNAK dokumentációja
 
@@ -102,12 +102,12 @@ Az Azure Cosmos DB SDK-k engedélyezése ügyféloldali alkalmazásfejlesztés s
 - [Node.js](sql-api-sdk-node.md)
 - [Python](sql-api-sdk-python.md)
 
-## <a name="reference"></a>Referencia
+## <a name="reference"></a>Leírások
 
 - [REST](/rest/api/documentdb/)
 - [REST erőforrás-szolgáltató](/rest/api/documentdbresourceprovider/)
 - [SQL-lekérdezés hivatkozása](sql-api-sql-query-reference.md)
-- [Az Azure Functions hivatkozik](../azure-functions/functions-bindings-documentdb.md)
+- [Az Azure Functions hivatkozik](../azure-functions/functions-bindings-cosmosdb.md)
 
 ## <a name="samples"></a>Példák
 

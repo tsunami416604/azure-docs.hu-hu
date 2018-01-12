@@ -16,11 +16,11 @@ ms.tgt_pltfrm: sql-database
 ms.workload: On Demand
 ms.date: 06/23/2017
 ms.author: janeng
-ms.openlocfilehash: 65f6600f6810024e00eaa50906d7924bd36768d3
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: fd60a8987e6c57cf72eb7766f6a1b784e46a894d
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database"></a>Az Azure SQL Database az Azure PowerShell-példák
 
@@ -47,5 +47,5 @@ A következő táblázat az Azure SQL Database az Azure PowerShell-mintaparancsf
 | **Adatbázisok között szinkronizálja az adatokat**||
 | [SQL-adatbázisok között szinkronizálja az adatokat](scripts/sql-database-sync-data-between-sql-databases.md?toc=%2fpowershell%2fmodule%2ftoc.json) | A PowerShell parancsfájl adatszinkronizálás több Azure SQL-adatbázisok közötti szinkronizálására konfigurálja. |
 | [SQL Database és SQL Server helyszíni között szinkronizálja az adatokat](scripts/sql-database-sync-data-between-azure-onprem.md?toc=%2fpowershell%2fmodule%2ftoc.json) | A PowerShell parancsfájl adatszinkronizálás Azure SQL-adatbázis és a helyszíni SQL Server-adatbázisok közötti szinkronizálására konfigurálja. |
-|||
+| [Az SQL adatszinkronizálás szinkronizálási séma frissítése](scripts/sql-database-sync-update-schema.md?toc=%2fpowershell%2fmodule%2ftoc.json) | A PowerShell parancsfájl eltávolítása vagy elemek az adatszinkronizálás szinkronizálási sémát. |
 |||

@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/19/2017
+ms.date: 12/11/2017
 ms.author: oanapl
-ms.openlocfilehash: 330ef58d89ebabaa2af7fa8e98e693ddd64dcc4e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 271d02bf5793ccb4ca8cbc4eeb8a6c5cfdd74f03
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>A Service Fabric állapotmonitorozásának bemutatása
 Az Azure Service Fabric egy állapotmodell sokoldalú, rugalmasan és bővíthető állapotának kiértékelését és a jelentéskészítés biztosító vezet be. A modell lehetővé teszi, hogy a fürt és a benne a szolgáltatás állapotának közel valós idejű figyelését. Egyszerűen állapottal kapcsolatos adatok beszerzéséhez, és kijavíthatja az esetleges problémák ahhoz, hogy kaszkádolt és okozhat nagy kimaradások esetén. A tipikus modell szolgáltatások küldjön jelentést a helyi nézetek alapján, és, hogy arra, hogy általános információkat összesíti fürt szintű nézet.
@@ -306,7 +306,7 @@ Egyéb rendszerek rendelkezik egyetlen központi szolgáltatás összes elemzi a
 
 Az állapotmodell fokozottan szolgál a figyelése és diagnosztizálása, a fürt és az alkalmazás állapotának kiértékelésekor és a figyelt frissítésekre. Egyéb szolgáltatások egészségügyi adatok segítségével automatikus javításához, a fürt állapotelőzményeinek elkészítéséhez és a riasztások bizonyos feltételek esetén a probléma.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [A Service Fabric rendszerállapot-jelentések megtekintése](service-fabric-view-entities-aggregated-health.md)
 
 [Rendszerállapot-jelentések használata a hibaelhárításhoz](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)

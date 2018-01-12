@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/01/2017
-ms.author: nitinme
-ms.openlocfilehash: e9467523da10333f1bb3c888f6e2768c2fdee4c1
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.date: 01/09/2018
+ms.author: maxluk
+ms.openlocfilehash: 55ff40165a1b25949cb202d9a5174e1f52fe4630
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="run-spark-from-the-spark-shell"></a>Spark futtassa a Spark-rendszerhéj
 
@@ -73,7 +73,7 @@ A Spark rendszerhéj parancs (`spark-shell`, `pyspark`, vagy `sparkR`) számos p
 | --MAVEN_COORDS csomagok | Maven koordinátáit JAR-fájlok kivételével meg az illesztőprogram és végrehajtó classpaths vesszővel tagolt listája. A helyi maven-tárházban, majd a maven központi keres, és minden további távoli adattárak megadott `--repositories`. A formátum a koordináták *groupId*:*artifactid szakaszát*:*verzió*. | `--packages "com.microsoft.azure:azure-eventhubs:0.14.0"`|
 | --PE-fájlok listája | Python csak .zip, .egg vagy .py fájlok számára, hogy a PYTHONPATH vesszővel tagolt listája. | `--pyfiles "samples.py"` |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd: [a Spark on Azure HDInsight bemutatása](apache-spark-overview.md) áttekintése.
 - Lásd: [Apache Spark-fürt létrehozása az Azure HDInsight](apache-spark-jupyter-spark-sql.md) Spark-fürtök és a sparksql-hez.

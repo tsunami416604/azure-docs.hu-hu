@@ -6,13 +6,13 @@ author: djrosanova
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 01/10/2018
 ms.author: darosa
-ms.openlocfilehash: 4eacb37d6e19b4b69d604aa84fd404479dead1ea
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: fe9089334deceb38186add56ce3fb1d6ecc20363
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Esemény rács üzenetkézbesítést, és próbálkozzon újra 
 
@@ -64,31 +64,8 @@ Esemény rács intervallumokban újra egy kis véletlenszerű hozzáadja.
 
 Az előzetes Azure esemény rács összes eseményt, amely nem érkeznek meg két órán belül lejár.
 
-## <a name="monitoring"></a>Figyelés
-
-A portál segítségével esemény kézbesítések állapotának megtekintése.
-
-Egy esemény-előfizetést metrikáját, keressen **esemény-előfizetések** a szolgáltatásokat, és válassza ki azt.
-
-![Keresse meg az esemény-előfizetések](./media/delivery-and-retry/select-event-subscriptions.png)
-
-Szűrés milyen típusú eseményt, az előfizetésben és helyen. Válassza ki **metrikák** az előfizetés megtekintéséhez.
-
-![Esemény-előfizetések szűrése](./media/delivery-and-retry/filter-events.png)
-
-Tekintse meg az esemény-témakör és az előfizetés metrikákat.
-
-![Nézet esemény metrikák](./media/delivery-and-retry/subscription-metrics.png)
-
-Egy egyéni témakör közzétételekor megtekintheti a metrikák azt. Válassza ki a témakör tartalmazó erőforráscsoportot, és válassza ki a következő témakörben.
-
-![Válassza ki az egyéni témakör](./media/delivery-and-retry/select-custom-topic.png)
-
-Tekintse meg az egyéni esemény-témakör metrikáit.
-
-![Nézet esemény metrikák](./media/delivery-and-retry/custom-topic-metrics.png)
-
 ## <a name="next-steps"></a>További lépések
 
+* Esemény kézbesítések állapotának megtekintése: [figyelő esemény rács üzenetkézbesítést](monitor-event-delivery.md).
 * Esemény rácshoz ismertetőért lásd: [esemény rács](overview.md).
 * Ha gyorsan esemény rács segítségével, lásd: [Azure esemény rácshoz hozza létre és útvonal egyéni események](custom-event-quickstart.md).

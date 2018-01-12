@@ -10,11 +10,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 10/26/2017
 ms.author: tomfitz
-ms.openlocfilehash: 7f0f18062bc426508ec98b190fe0b73e41e88aa2
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: a26cfc632dacb41435b3755409d3e91630f5f3eb
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="azure-managed-applications-overview"></a>Az Azure által felügyelt alkalmazások áttekintése
 
@@ -48,6 +48,8 @@ További információ a szolgáltatáskatalógus kezelt alkalmazás közzététe
 
 A szolgáltatások számlázási kívánó szállítók elérhetővé teheti a kezelt alkalmazás az Azure piactéren keresztül. Miután a szállító közzétesz egy alkalmazást, érhető el a szervezeten kívüli felhasználók számára. A megközelítést, a felügyelt szolgáltató (MSPs), a független szoftvergyártók (ISV-k) és a rendszer kiegészítők (SIs) is a megoldásokat nyújtsanak az összes Azure-ügyfél számára.
 
+További információ a piactéren kezelt alkalmazás közzététele: [piactér-alkalmazás létrehozása](publish-marketplace-app.md).
+
 ## <a name="resource-groups-for-managed-applications"></a>Erőforráscsoportok kezelt alkalmazások
 
 A kezelt alkalmazás erőforrásait általában két erőforráscsoport találhatók. A fogyasztó egy erőforráscsoport, valamint kezelésére a közzétevő a másik erőforráscsoportban. A kezelt alkalmazás meghatározásakor a közzétevő a hozzáférési szintet határozza meg. A következő kép bemutatja egy olyan forgatókönyvet, ahol a közzétevő kéri a tulajdonosi szerepkört, a felügyelt erőforráscsoport. A közzétevő Ez az erőforráscsoport a fogyasztó számára olvasási zárolást helyezni.
@@ -66,8 +68,8 @@ Ez az erőforráscsoport tárolja a kezelt alkalmazás által igényelt összes 
 
 Ha a fogyasztó töröl a kezelt alkalmazás, a felügyelt erőforráscsoportot is törlődik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Bevezető meghatározása, és a kezelt alkalmazás telepítése, lásd: [létrehozása és telepítése az Azure által felügyelt alkalmazás Azure parancssori felülettel](managed-apps-quickstart-cli.md)
 * További információ a belső alkalmazás közzététele: [katalógus szolgáltatásalkalmazás létrehozása](publish-service-catalog-app.md).
-
+* Felügyelt alkalmazások közzétételéhez a piactéren kapcsolatos információkért lásd: [piactér-alkalmazás létrehozása](publish-marketplace-app.md).

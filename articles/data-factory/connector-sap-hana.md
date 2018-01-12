@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: 31fce15ab0c3496e4d74e105134c29373a777c18
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: dc97840e08f29777b56e7cfc9cced699c0eda2ff
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával SAP HANA
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -49,8 +49,9 @@ Az SAP HANA-összekötő használatához meg kell:
 - Állítson be egy Self-hosted integrációs futásidejű. Lásd: [Self-hosted integrációs futásidejű](create-self-hosted-integration-runtime.md) cikkben alább.
 - Az SAP HANA ODBC-illesztő telepítse az integrációs futásidejű számítógépen. Az SAP HANA ODBC-illesztő a programot letöltheti a [SAP szoftverletöltő központból](https://support.sap.com/swdc). Keresés a kulcsszóval **SAP HANA ügyfél Windows**.
 
-## <a name="getting-started"></a>Bevezetés
-A másolási tevékenység során .NET SDK, a Python SDK, az Azure PowerShell, a REST API-t vagy a Azure Resource Manager-sablon használatával hozhat létre egy folyamatot. Lásd: [másolási tevékenység oktatóanyag](quickstart-create-data-factory-dot-net.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját.
+## <a name="getting-started"></a>Első lépések
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 A következő szakaszok részletesen bemutatják megadhatók a Data Factory tartozó entitások SAP HANA-összekötőhöz használt tulajdonságokat.
 
@@ -169,16 +170,16 @@ Amikor adatokat másol SAP HANA, a következő megfeleltetéseket szolgálnak az
 | A BLOB | Byte] |
 | LOGIKAI ÉRTÉK | Bájt |
 | CLOB | Byte] |
-| DÁTUM | Dátum és idő |
+| DATE | DateTime |
 | DECIMÁLIS | Decimális |
-| DUPLA | Egyetlen |
+| DUPLA | Egyedülálló |
 | INT | Int32 |
 | NVARCHAR | Karakterlánc |
-| VALÓS | Egyetlen |
-| SECONDDATE | Dátum és idő |
+| VALÓS | Egyedülálló |
+| SECONDDATE | DateTime |
 | SMALLINT | Int16 |
-| IDŐ | A TimeSpan |
-| IDŐBÉLYEG | Dátum és idő |
+| Időpont | A TimeSpan |
+| IDŐBÉLYEG | DateTime |
 | TINYINT | Bájt |
 | VARCHAR | Karakterlánc |
 
@@ -192,5 +193,5 @@ Ha az adatok másolása SAP HANA, van néhány ismert korlátozásai:
 - Érvényes dátumok csak közötti 1899 – 12/30 és 31-9999-12
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats).

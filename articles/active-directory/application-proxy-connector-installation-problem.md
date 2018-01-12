@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: a02f6cf0923bbe7083ba29fac5f59bcce9f5ab44
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 8fbd707b6708661ab0d655afadff2b18694a981e
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>A probléma az ügynök Proxy összekötőjének telepítése
 
@@ -37,9 +37,9 @@ Az összekötő telepítése nem sikerül, az alapvető ok esetén általában a
 
 **Cél:** ellenőrizze, hogy az összekötő számítógéphez csatlakozni tud-e az AAD alkalmazásproxy regisztrációs végpont, valamint a Microsoft bejelentkezési oldalt.
 
-1.  Nyisson meg egy böngészőt, és nyissa meg a következő weblapra: <https://aadap-portcheck.connectorporttest.msappproxy.net> , és győződjön meg arról, hogy működik-e a csatlakozási porttal 9090 és 9091 központi Amerikai Egyesült Államok és USA keleti régiója adatközpontokhoz.
+1.  Nyisson meg egy böngészőt, és nyissa meg a következő weblapra: <https://aadap-portcheck.connectorporttest.msappproxy.net> , és győződjön meg arról, hogy a kapcsolat központi Amerikai Egyesült Államok és USA keleti régiója adatközpontokhoz 80-as és 443-as porttal működik-e.
 
-2.  Ha ezeket a portokat bármelyike nem sikeres (zöld pipa nem rendelkezik), ellenőrizze, hogy rendelkezik-e a tűzfal- vagy háttéradatbázis proxy \*. msappproxy.net 9090 és helyesen definiálva 9091 porttal.
+2.  Ha ezeket a portokat bármelyike nem sikeres (zöld pipa nem rendelkezik), ellenőrizze, hogy rendelkezik-e a tűzfal- vagy háttéradatbázis proxy \*. a 80-as és 443-as helyesen definiálva portokkal msappproxy.net.
 
 3.  Nyisson meg egy böngészőt (külön lapon), és nyissa meg a következő weblapra: <https://login.microsoftonline.com>, győződjön meg arról, hogy ez az oldal bejelentkezhet.
 
@@ -68,5 +68,5 @@ Csatlakozás <https://login.microsoftonline.com> és ugyanezeket a hitelesítő 
 
 Válassza ki a felhasználói fiókot, majd "Directory szerepkör" az eredményül kapott menüjében. Győződjön meg arról, hogy a kiválasztott "Globális rendszergazda". Ha nem érhető el a oldalakon mentén ezeket a lépéseket, nem egy globális rendszergazdaként.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Az Azure AD-alkalmazásproxy összekötők ismertetése](application-proxy-understand-connectors.md)
