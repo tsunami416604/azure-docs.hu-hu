@@ -12,23 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/12/2017
+ms.date: 01/11/2018
 ms.author: tomfitz
-ms.openlocfilehash: 78e5749369de1dd9865f61baefd70e6ce4bde31d
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 7f88cd2a9e23ec1b142fc754ada49a8562e774bc
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/12/2018
 ---
-# <a name="using-linked-templates-when-deploying-azure-resources"></a>Azure-erőforrások telepítésekor kapcsolt sablonok használata
+# <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Csatolt és beágyazott sablonok Azure-erőforrások telepítése során
 
-A megoldás üzembe helyezéséhez, használhatja ugyanazt a sablont, vagy egy fő sablont több csatolt sablonokkal. A kis-és közepes méretű megoldások ugyanazt a sablont, ezért könnyebben ismertetése és karbantartása. Megtörténik az erőforrások és a értékek egyetlen fájlban. Speciális forgatókönyvek esetén a kapcsolt sablonok lehetővé teszik a célzott összetevők megoldás lebontva, és újra felhasználhatja a sablonokat.
+A megoldás üzembe helyezéséhez, használhatja ugyanazt a sablont, vagy egy fő sablont több kapcsolódó sablonokkal. A kapcsolódó sablon lehet külön fájlt, amely csatolva van a fő sablonból, vagy a sablont, amely a fő sablon van beágyazva.
+
+A kis-és közepes méretű megoldások ugyanazt a sablont, ezért könnyebben ismertetése és karbantartása. Megtörténik az erőforrások és a értékek egyetlen fájlban. Speciális forgatókönyvek esetén a kapcsolt sablonok lehetővé teszik a célzott összetevők megoldás lebontva, és újra felhasználhatja a sablonokat.
 
 Csatolt sablon használata esetén létrehozhat egy fő sablont, amely megkapja a paraméterértékek üzembe helyezése során. A fő sablon tartalmazza az összes csatolt sablonokat, és továbbadja értékek ezeket a sablonokat, igény szerint.
 
 ![csatolt sablonok](./media/resource-group-linked-templates/nestedTemplateDesign.png)
 
-## <a name="link-to-a-template"></a>A sablon csatolása
+## <a name="link-or-nest-a-template"></a>Hivatkozásra, vagy egy sablon egymásba
 
 Kapcsolódik egy másik sablont, vegye fel a **központi telepítések** erőforrás a fő sablont.
 
@@ -40,17 +42,17 @@ Kapcsolódik egy másik sablont, vegye fel a **központi telepítések** erőfor
       "type": "Microsoft.Resources/deployments",
       "properties": {
           "mode": "Incremental",
-          <inline-template-or-external-template>
+          <nested-template-or-external-template>
       }
   }
 ]
 ```
 
-Megadja a központi telepítési erőforrás tulajdonságainak e vannak csatolása külső sablont, vagy egy beágyazott sablon beágyazása a fő sablon függően változhat.
+Megadja a központi telepítési erőforrás tulajdonságainak e vannak csatolása külső sablont, vagy a fő sablonban beágyazott sablonná beágyazási függően változhat.
 
-### <a name="inline-template"></a>Beágyazott sablon
+### <a name="nested-template"></a>Beágyazott sablon
 
-A csatolt sablon beágyazásához használjon a **sablon** tulajdonság és a sablon tartalmazza.
+A sablon fő sablonban beágyazásához, használja a **sablon** tulajdonság, és adja meg a sablon szintaxisáról.
 
 ```json
 "resources": [
@@ -63,8 +65,6 @@ A csatolt sablon beágyazásához használjon a **sablon** tulajdonság és a sa
       "template": {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
         "contentVersion": "1.0.0.0",
-        "parameters": {},
-        "variables": {},
         "resources": [
           {
             "type": "Microsoft.Storage/storageAccounts",
@@ -76,12 +76,13 @@ A csatolt sablon beágyazásához használjon a **sablon** tulajdonság és a sa
             }
           }
         ]
-      },
-      "parameters": {}
+      }
     }
   }
 ]
 ```
+
+A beágyazott sablonok paraméterek vagy beágyazott sablonban meghatározott nem használható. Paraméterek és változók a fő sablonból is használhatja. Az előző példában `[variables('storageName')]` beolvas egy értéket a fő sablonból, nem a beágyazott sablont. Ez a korlátozás nem vonatkozik a külső sablonok.
 
 ### <a name="external-template-and-external-parameters"></a>Külső sablon és a külső paraméterek
 
@@ -176,7 +177,7 @@ Az alábbi példák bemutatják, hogyan lehet egy csatolt sablon hivatkoznak, é
 }
 ```
 
-A szülő-sablon a csatolt sablon telepíti, és lekérdezi a visszaadott érték. Figyelje meg, hogy a név szerint a központi telepítés erőforrásra hivatkozik, és azt a tulajdonságot a csatolt sablon által visszaadott nevét használja.
+A fő sablont a csatolt sablon telepíti, és lekérdezi a visszaadott érték. Figyelje meg, hogy a név szerint a központi telepítés erőforrásra hivatkozik, és azt a tulajdonságot a csatolt sablon által visszaadott nevét használja.
 
 ```json
 {
@@ -309,9 +310,9 @@ Terheléselosztó telepítésekor a fenti sablon a nyilvános IP-cím használat
 }
 ```
 
-## <a name="linked-templates-in-deployment-history"></a>A központi telepítés előzményei kapcsolt sablonok
+## <a name="linked-and-nested-templates-in-deployment-history"></a>A központi telepítés előzményei a csatolt és beágyazott sablonok
 
-Erőforrás-kezelő minden csatolt sablon ennek egy külön központi telepítés központi telepítés előzményei dolgozza fel. Ezért az üzembe helyezési előzményeket, mint a szülő sablon három csatolt sablonnal jelenik meg:
+Erőforrás-kezelő minden sablon ennek egy külön központi telepítés központi telepítés előzményei dolgozza fel. Ezért az üzemelő példány előzményeinek, mint egy fő sablont három csatolt vagy beágyazott sablonnal jelenik meg:
 
 ![Üzembe helyezési előzmények](./media/resource-group-linked-templates/deployment-history.png)
 
@@ -486,7 +487,7 @@ A következő példák azt szemléltetik, gyakori használati módjai kapcsolt s
 |[Nyilvános IP-címmel rendelkező terheléselosztó](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[csatolt sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |Nyilvános IP-címet adja vissza a csatolt sablonból, és beállítja, hogy a terheléselosztó. |
 |[Több IP-cím](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip-parent.json) | [csatolt sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip.json) |Több nyilvános IP-cím csatolt sablont hoz létre.  |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A telepítési sorrendet, az erőforrások meghatározása, lásd: [függőségek meghatározása az Azure Resource Manager-sablonok](resource-group-define-dependencies.md).
 * Adja meg egy erőforrást, de több példányát létrehozni, lásd: [erőforrások több példánya létrehozása az Azure Resource Manager](resource-group-create-multiple.md).

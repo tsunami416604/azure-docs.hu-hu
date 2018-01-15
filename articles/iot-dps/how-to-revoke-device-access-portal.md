@@ -12,17 +12,17 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 7985fba68ef2c6f651c64756f8c534928b573de5
-ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
+ms.openlocfilehash: 6f1dad648b228163219c8f722eed3897f4ba4d22
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="how-to-revoke-device-access-to-your-provisioning-service-in-the-azure-portal"></a>Az üzembe helyezési szolgáltatás az Azure portálon eszköz elérését visszavonása
 
 Magas-profil rendszerek például az IoT-megoldások elengedhetetlen a megfelelő felügyeleti eszköz hitelesítő adatokat. Az ilyen rendszerek esetén ajánlott eljárás, hogy egy tiszta terv mutatja be az eszközök azokban az esetekben, ahol megadhatják hitelesítő adataikat, hogy egy SAS-jogkivonat vagy egy X.509 tanúsítvány feltörhetik a hozzáférés visszavonásához. Ez a cikk ismerteti a kiépítési lépésnél eszközök hozzáférésének visszavonása.
 
-További információt az IoT-központ az eszközök hozzáférésének visszavonása után az eszköz lett kiépítve. Lásd: [letiltása eszközök](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-identity-registry#disable-devices).
+További információt az IoT-központ az eszközök hozzáférésének visszavonása után az eszköz lett kiépítve. Lásd: [letiltása eszközök](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry#disable-devices).
 
 > [!NOTE] 
 > Vegye figyelembe az újrapróbálkozási házirendet az eszközről, amelyen meg visszavonni a hozzáférést. Például egy végtelen újrapróbálkozási házirendje rendelkező eszköz, előfordulhat, hogy folyamatosan próbálja meg regisztrálni az üzembe helyezési szolgáltatással, szolgáltatás-erőforrást kötött, és esetleg a teljesítményt befolyásoló.

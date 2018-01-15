@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: mabrigg
-ms.openlocfilehash: fe655facf4da99d951a430db8ce603cc0ec7f224
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 8367f7897581ff9599b763c7a39232bbe6860b8f
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="considerations-for-virtual-machines-in-azure-stack"></a>Virtuális gépek Azure-készletben szempontjai
 
@@ -40,9 +40,9 @@ Virtuális gépek az igény szerinti, méretezhető számítási erőforrások A
 |Virtuális gép rendelkezésre állási csoportok|Több tartalék tartományok (2 vagy 3 régiónként)<br>Több frissítési tartományt<br>Felügyelt támogatása|Egyetlen tartalék tartomány<br>Egyetlen frissítési tartományi<br>Nem felügyelt támogatása|
 |Virtuálisgép-méretezési csoportok|Támogatott automatikus méretezése|Automatikus skálázása nem támogatott.<br>Adja hozzá a méretezési készletben, a portál, a Resource Manager-sablonok vagy a PowerShell használatával további példányokat.
 
-## <a name="virtual-machine-sizes"></a>Virtuálisgép-méretek 
+## <a name="virtual-machine-sizes"></a>Virtuálisgép-méretek
 
-Az Azure verem szoftverfejlesztői készlet a következő méretek támogatja: 
+Azure verem támogatja a következő méret:
 
 | Típus | Méret | A támogatott méretek tartomány |
 | --- | --- | --- |
@@ -55,9 +55,9 @@ Az Azure verem szoftverfejlesztői készlet a következő méretek támogatja:
 |Memóriaoptimalizált|DS-sorozat|DS11 - DS14|
 |Memóriaoptimalizált |DSv2-sorozat|DS11_v2 - DS14_v2|
 
-Virtuálisgép-méretek és a kapcsolódó erőforrás mennyiségek Azure verem és az Azure közötti megegyeznek. Például ez magában foglalja a memóriamennyiség, magok száma és a szám vagy méretének az adatlemezek hozható létre. Az ugyanazon Virtuálisgép-méretet Azure verem teljesítményét azonban egy adott Azure verem környezetben alapul szolgáló jellemzői függ.
+Virtuálisgép-méretek és a kapcsolódó erőforrás mennyiségek Azure verem és az Azure közötti megegyeznek. A konzisztencia például memória, magok száma és a szám vagy méretének hozható létre az adatlemezek tartalmazza. Az ugyanazon Virtuálisgép-méretet Azure verem teljesítményét azonban egy adott Azure verem környezetben alapul szolgáló jellemzői függ.
 
-## <a name="virtual-machine-extensions"></a>Virtuálisgép-bővítmények 
+## <a name="virtual-machine-extensions"></a>Virtuálisgép-bővítmények
 
  Az Azure verem szoftverfejlesztői készlet a következő virtuális gép bővítmény verzióit támogatja:
 
@@ -65,15 +65,15 @@ Virtuálisgép-méretek és a kapcsolódó erőforrás mennyiségek Azure verem 
 
 A következő PowerShell-parancsfájl segítségével a verem Azure környezetben elérhető virtuálisgép-bővítmények listájának beolvasása:
 
-```powershell 
+```powershell
 Get-AzureRmVmImagePublisher -Location local | `
   Get-AzureRmVMExtensionImageType | `
   Get-AzureRmVMExtensionImage | `
   Select Type, Version | `
-  Format-Table -Property * -AutoSize 
+  Format-Table -Property * -AutoSize
 ```
 
-## <a name="api-versions"></a>API-verziók 
+## <a name="api-versions"></a>API-verziók
 
 Virtuális gépek jellemzői az Azure verem szoftverfejlesztői készlet a következő API-verzióit támogatja:
 
@@ -81,7 +81,7 @@ Virtuális gépek jellemzői az Azure verem szoftverfejlesztői készlet a köve
 
 A következő PowerShell-parancsfájl segítségével az API verziójának lekérése elérhető Azure verem környezetében a virtuális gépek jellemzői:
 
-```powershell 
+```powershell
 Get-AzureRmResourceProvider | `
   Select ProviderNamespace -Expand ResourceTypes | `
   Select * -Expand ApiVersions | `
@@ -90,6 +90,6 @@ Get-AzureRmResourceProvider | `
 ```
 A támogatott erőforrástípusai és API-verziók listáját változhat, ha a felhő üzemeltetője a Azure verem környezet frissíti egy újabb verzióra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Windows virtuális gép létrehozása Azure-készletben a PowerShell használatával](azure-stack-quick-create-vm-windows-powershell.md)

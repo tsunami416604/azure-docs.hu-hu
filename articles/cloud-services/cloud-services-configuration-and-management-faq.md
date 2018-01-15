@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2017
 ms.author: genli
-ms.openlocfilehash: 7a1dc5d755303d12aa070308a19ab81ef2b911fb
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: 916fbb436806c64ded9ebf9fdd9c57c42d0809f0
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Konfigurációs és kezelésének számos Azure-szolgáltatásokhoz: gyakran ismételt kérdések (GYIK)
 
@@ -105,8 +105,8 @@ A **Get-AzurePublishSettingsFile** hoz létre egy új felügyeleti tanúsítván
 Ez a feladat indítási parancsfájl (kötegelt/cmd/PowerShell) segítségével automatizálhatja, és regisztrálja az adott indítási parancsfájl a szolgáltatásdefiníciós fájlban. Adja hozzá az indítási parancsfájl és a tanúsítványok (.p7b fájl) ugyanabban a könyvtárban, az indítási parancsfájl projektmappában.
 
 További információkért tekintse át a következő cikkeket:
-- [Hogyan lehet konfigurálni és egy felhőalapú szolgáltatás indítási feladatok futtatása](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-startup-tasks)
-- [A felhőalapú szolgáltatás indítási gyakori feladatok](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-startup-tasks-common)
+- [Hogyan lehet konfigurálni és egy felhőalapú szolgáltatás indítási feladatok futtatása](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)
+- [A felhőalapú szolgáltatás indítási gyakori feladatok](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks-common)
 
 ## <a name="monitoring-and-logging"></a>Figyelés és naplózás
 

@@ -27,7 +27,7 @@ Az alábbi táblázat az IoT Hub-erőforrásokra vonatkozó korlátokat tartalma
 | A felhőből egy eszközre irányuló üzenetre válaszoló <br/> visszajelzési üzenetek maximális kézbesítésszáma |100 |
 | A felhőből egy eszközre irányuló üzenetre válaszoló <br/> visszajelzési üzenetek maximális élettartama |2 nap |
 | Ikereszköz maximális mérete <br/> (címkék, jelentett tulajdonságok és kívánt tulajdonságok) | 8 KB |
-| Az ikereszköz karakterláncértékének maximális mérete | 512 bájt |
+| Az ikereszköz karakterláncértékének maximális mérete | 4 KB-OS |
 | Az ikereszközben található objektum maximális mélysége | 5 |
 | A közvetlen metódus hasznos adatainak maximális mérete | 8 KB |
 | Feladatelőzmények maximális megőrzési ideje | 30 nap |

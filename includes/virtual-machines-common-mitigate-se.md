@@ -1,5 +1,7 @@
 
-**Utolsó dokumentálja a frissítés**: január 6, 6:30 ESTE.
+
+
+**Utolsó dokumentálja a frissítés**:. január 12-3:00 ESTE.
 
 A legutóbbi közzétételének egy [CPU biztonsági rések új osztály](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002) néven ismert spekulatív végrehajtási ügyféloldali csatorna támadások, így további egyértelműség kérő ügyfelek kérdéseket.  
 
@@ -43,9 +45,7 @@ Ha Linux használunk, és nem megbízható kód üzemeltető, frissítse is Linu
 
 
 
-
-
-
+Az alábbi gyakorlati tanácsok frissíti, az azt mikrokód frissítések kap hardverszállítók folytatjuk. Tekintse meg a biztonsági frissített útmutatást.
 
 
 ## <a name="next-steps"></a>További lépések

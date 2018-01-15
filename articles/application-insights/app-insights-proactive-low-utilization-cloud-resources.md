@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 4c852d07d771a1eef0e6c2e4ef27cd36f31d8ddd
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 8382f6047ae222a01cc0e8d6ca9dcf5593d0dff6
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="low-utilization-of-cloud-resources-preview"></a>Alacsony kihasználtságú felhőalapú erőforrások (előzetes verzió)
 
 Az Application Insights automatikusan elemzi a CPU-felhasználás az összes szerepkör-példány az alkalmazásban, és észleli a példányok biztosítanak alacsony Processzorigény mellett. Az észlelés lehetővé teszi, hogy csökkentse az Azure-erőforrások, és csökkentheti a költségeket, használja az egyes szerepkörökhöz szerepkörpéldányokat számának csökkentésével, vagy a szerepkörök számának csökkentésével.
 
-Ehhez a szolgáltatáshoz nem speciális beállítási eltérő [teljesítményszámlálók konfigurálása](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-performance-counters) az alkalmazásra vonatkozóan. Az akkor aktív, ha az alkalmazás elegendő Processzor teljesítményének számláló telemetriai (% processzoridő) hoz létre.
+Ehhez a szolgáltatáshoz nem speciális beállítási eltérő [teljesítményszámlálók konfigurálása](https://docs.microsoft.com/azure/application-insights/app-insights-performance-counters) az alkalmazásra vonatkozóan. Az akkor aktív, ha az alkalmazás elegendő Processzor teljesítményének számláló telemetriai (% processzoridő) hoz létre.
 
 ## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Ha visszajelzést kap az ilyen típusú intelligens észlelési értesítést?
 Egy tipikus értesítés következik be, amikor a webes/munkavégző szerepkörpéldányokat számos virágot alacsony Processzorigény mellett.

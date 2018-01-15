@@ -12,11 +12,11 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 11/22/2017
-ms.openlocfilehash: 6019437763f82fa14b8677b6c7ec7f0c6938fda7
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: a55209256c29fa62cc2da72f9653fbc7fc0e7c54
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="deep-learning-for-predictive-maintenance-real-world-scenarios"></a>A részletes learning a prediktív karbantartási valós forgatókönyv
 
@@ -28,7 +28,7 @@ A prediktív karbantartási forgatókönyvben adatgyűjtés időszakosan berende
 
 Az oktatóanyag azt egy LSTM hálózat az adatkészlet és a következő témakörben ismertetett forgatókönyv építése [prediktív karbantartási](https://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Template-3). A hálózati repülőgép motorok hasznos élettartama előrejelzése használjuk. A sablon előre jelezni, amikor egy repülőgép alrendszeren sikertelen lesz, a jövőben szimulált repülőgép érzékelő értékeket használja. Az előrejelzés használ, karbantartási is előre meg kell terveznie, probléma megelőzése érdekében.
 
-Ez az oktatóanyag használja a [Keras](https://keras.io/) mély könyvtárban, és a Microsoft kognitív eszközkészlet [CNTK](https://docs.microsoft.com/en-us/cognitive-toolkit/Using-CNTK-with-Keras) háttéradatbázisként.
+Ez az oktatóanyag használja a [Keras](https://keras.io/) mély könyvtárban, és a Microsoft kognitív eszközkészlet [CNTK](https://docs.microsoft.com/cognitive-toolkit/Using-CNTK-with-Keras) háttéradatbázisként.
 
 A nyilvános GitHub-tárházban, amely rendelkezik a mintákat a jelen oktatóanyag jelenleg [https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance).
 
@@ -44,7 +44,7 @@ Javasoljuk, hogy az adatformátum vizsgálja meg, és végezze el a sablon minde
 
 - Egy [Azure-fiók](https://azure.microsoft.com/free/) (az ingyenes próbaverzió érhetők el).
 - Az Azure Machine Learning munkaterület, egy munkaterület létrehozása.
-- A modell operationalization: az Azure Machine Learning Operationalization, egy helyi központi telepítési környezettel, állítsa be, és egy [Azure Machine Learning modell felügyeleti fiók](https://docs.microsoft.com/en-us/azure/machine-learning/preview/model-management-overview).
+- A modell operationalization: az Azure Machine Learning Operationalization, egy helyi központi telepítési környezettel, állítsa be, és egy [Azure Machine Learning modell felügyeleti fiók](https://docs.microsoft.com/azure/machine-learning/preview/model-management-overview).
 
 ## <a name="create-a-new-workbench-project"></a>Új munkaterület-projekt létrehozása
 
@@ -128,7 +128,7 @@ Ebben a forgatókönyvben vonatkozó részeinek szerkesztheti, és próbálja me
 
 ## <a name="references"></a>Referencia
 
-- [A prediktív karbantartási megoldás sablon](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/cortana-analytics-playbook-predictive-maintenance)
+- [A prediktív karbantartási megoldás sablon](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-analytics-playbook-predictive-maintenance)
 - [A prediktív karbantartási Fenyegetésmodellezési útmutatója](https://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Modelling-Guide-1)
 - [Python kalauz modellezési prediktív karbantartás](https://gallery.cortanaintelligence.com/Notebook/Predictive-Maintenance-Modelling-Guide-Python-Notebook-1)
 - [A prediktív karbantartási PySpark használatával](https://gallery.cortanaintelligence.com/Tutorial/Predictive-Maintenance-using-PySpark)

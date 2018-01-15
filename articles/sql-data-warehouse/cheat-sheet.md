@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 12/14/2017
 ms.author: acomet
-ms.openlocfilehash: dc55f4333bef1c609978887f293539bbee8b1c29
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: 2d17385ff255ddf7b85baa81600a2af60d015540
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse lap cheat
 Ezen az oldalon kell alakítsa ki a fő használati esetekben a data warehouse megoldás. Ez formátumához egy kiváló támogatást a használatában világszínvonalú adatraktár létrehozásához kell lennie, de erősen ajánlott minden lépése részletek többet. Először ajánlott a kiváló cikk milyen SQL Data warehouse elolvasása  **[és nem]**.
@@ -45,7 +45,7 @@ Ajánlott első betöltés az adatok  **[az ADLS]**  vagy Azure Blob Storage tá
 |:--- |:--- |
 | Disztribúció | Ciklikus időszeletelés |
 | Indexelés | Halommemória |
-| Particionálás | Nincs |
+| Particionálás | None |
 | Erőforrásosztály | largerc vagy xlargerc |
 
 További információ  **[adatáttelepítés], [az adatok betöltése]**  rendelkező  **[mélyebb útmutatást] betöltése a**. 
@@ -157,8 +157,8 @@ Egy kattintással központi telepítése az SQL-adatbázis SQL DW-adatbázisok a
 [SQL DW kihasználva tipikus architektúrák]: https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/common-isv-application-patterns-using-azure-sql-data-warehouse/
 [és nem]:https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/azure-sql-data-warehouse-workload-patterns-and-anti-patterns/
 [adatáttelepítés]:https://blogs.msdn.microsoft.com/sqlcat/2016/08/18/migrating-data-to-azure-sql-data-warehouse-in-practice/
-[replikált táblák]:https://docs.microsoft.com/en-us/azure/sql-data-warehouse/design-guidance-for-replicated-tables
-[táblák elosztott]:https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-tables-distribute
-[az ADLS]: https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-data-lake-store
-[sys.dm_pdw_nodes_db_partition_stats]: https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql
-[sys.dm_pdw_request_steps]:https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql
+[replikált táblák]:https://docs.microsoft.com/azure/sql-data-warehouse/design-guidance-for-replicated-tables
+[táblák elosztott]:https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-distribute
+[az ADLS]: https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store
+[sys.dm_pdw_nodes_db_partition_stats]: https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql
+[sys.dm_pdw_request_steps]:https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql

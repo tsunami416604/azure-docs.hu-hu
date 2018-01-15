@@ -14,16 +14,20 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/20/2017
 ms.author: msfussell
-ms.openlocfilehash: 9389ab5c3c67525703538cee644af9399417ffd5
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 412107db2dc446eb5a6a433bfb7fc3bc5e760c27
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="service-fabric-and-containers"></a>A Service Fabric és a tárolók
 > [!NOTE]
-> A Service Fabric-fürt a Windows 10-es tárolók telepítése még nem támogatott. 
+> Tárolók telepítése a Windows 10- vagy Docker CE Service Fabric-fürt nem támogatott. 
 >   
+
+> [!NOTE]
+> A Service Fabric 6.1-es verziójú Windows Server verzió 1709 előzetes támogatása rendelkezik. Nyissa meg a hálózat és a Service Fabric DNS-szolgáltatás nem működnek a Windows Server verzió 1709. 
+> 
 
 ## <a name="introduction"></a>Bevezetés
 Az Azure Service fabric egy [orchestrator](service-fabric-cluster-resource-manager-introduction.md) szolgáltatások gépet fürtön belül, használatát és az optimalizálást a jelentős mértékű évnyi szolgáltatásokat, amely Microsoft. Szolgáltatások használatával számos módon fejleszthetők a [programozási modellek Service Fabric](service-fabric-choose-framework.md) telepítésével [Vendég végrehajtható fájlok](service-fabric-deploy-existing-app.md). Alapértelmezés szerint a Service Fabric telepíti, és ezek a szolgáltatások, folyamatok aktiválja. Folyamatok adja meg a leggyorsabb aktiválás és a legmagasabb sűrűség használatát egy fürtön. A Service Fabric szolgáltatások tároló képek is telepítheti. Fontos kombinálhatja a folyamatokat a szolgáltatások és szolgáltatások tárolókban ugyanabban az alkalmazásban.   
@@ -83,7 +87,7 @@ A Service Fabric van több tárolóhoz képességeket, amelyek segítenek a mikr
 * Lehetővé teszi biztonsági hitelesítő adatok beállítása a tárolón.
 * A tárolók hálózati mód választható.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta, tárolók, kapcsolatban, hogy a Service Fabric egy tárolót az orchestrator, és a Service Fabric tárolókat támogató szolgáltatások. A következő lépésben azt ismerteti példák az egyes mutatjuk be, hogyan használhatja ezeket a szolgáltatásokat.
 
 [Az első Service Fabric tároló alkalmazás létrehozása Windows rendszeren](service-fabric-get-started-containers.md)

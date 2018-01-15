@@ -10,7 +10,7 @@ sql-database-elastic-pool.md
 |:---|---:|---:|---:| ---: | ---: | ---: | ---: | ---: |
 | Belefoglalt tárolási készletenként (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
 | Maximális tárolási lehetőségek készletenként (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
-| Maximális memórián belüli online Tranzakciófeldolgozási tárolási készletenként (GB) | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
+| Maximális memórián belüli online Tranzakciófeldolgozási tárolási készletenként (GB) | – | – | – | – | – | – | – | – |
 | Adatbázisok maximális száma készletenként | 100 | 200 | 500 | 500 | 500 | 500 | 500 | 500 |
 | Egyidejű feldolgozók (kérelmek) maximális száma készletenként | 100 | 200 | 400 | 600 | 800 | 1600 | 2400 | 3200 |
 | Egyidejű bejelentkezések maximális száma készletenként | 100 | 200 | 400 | 600 | 800 | 1600 | 2400 | 3200 |
@@ -26,7 +26,7 @@ sql-database-elastic-pool.md
 |:---|---:|---:|---:| ---: | ---: | ---: | 
 | Belefoglalt tárolási készletenként (GB) | 50 | 100 | 200 | 300 | 400 | 800 | 
 | Maximális tárolási lehetőségek (GB) készletenként * | 50, 250, 500 | 100, 250, 500, 750 | 200, 250, 500, 750, 1024 | 300, 500, 750, 1024, 1280 | 400, 500, 750, 1024, 1280, 1536 | 800, 1024, 1280, 1536, 1792, 2048 | 
-| Maximális memórián belüli online Tranzakciófeldolgozási tárolási készletenként (GB) | N/A | N/A | N/A | N/A | N/A | N/A | 
+| Maximális memórián belüli online Tranzakciófeldolgozási tárolási készletenként (GB) | – | – | – | – | – | – | 
 | Adatbázisok maximális száma készletenként | 100 | 200 | 500 | 500 | 500 | 500 | 
 | Egyidejű feldolgozók (kérelmek) maximális száma készletenként | 100 | 200 | 400 | 600 | 800 | 1600 |
 | Egyidejű bejelentkezések maximális száma készletenként | 100 | 200 | 400 | 600 | 800 | 1600 |
@@ -42,7 +42,7 @@ sql-database-elastic-pool.md
 |:---|---:|---:|---:| ---: | ---: |
 | Belefoglalt tárolási készletenként (GB) | 1200 | 1600 | 2000 | 2500 | 3000 | 
 | Maximális tárolási lehetőségek (GB) készletenként * | 1200, 1280, 1536, 1792, 2048, 2304, 2560 | 1600, 1792, 2048, 2304, 2560, 2816, 3072 | 2000, 2048, 2304, 2560, 2816, 3072, 3328, 3584 | 2500, 2560, 2816, 3072, 3328, 3584, 3840, 4096 | 3000, 3072, 3328, 3584, 3840, 4096 |
-| Maximális memórián belüli online Tranzakciófeldolgozási tárolási készletenként (GB) | N/A | N/A | N/A | N/A | N/A | 
+| Maximális memórián belüli online Tranzakciófeldolgozási tárolási készletenként (GB) | – | – | – | – | – | 
 | Adatbázisok maximális száma készletenként | 500 | 500 | 500 | 500 | 500 | 
 | Egyidejű feldolgozók (kérelmek) maximális száma készletenként | 2400 | 3200 | 4000 | 5000 | 6000 |
 | Egyidejű bejelentkezések maximális száma készletenként | 2400 | 3200 | 4000 | 5000 | 6000 |
@@ -103,7 +103,7 @@ sql-database-elastic-pool.md
 > [!IMPORTANT]
 > \* A szolgáltatási keretbe foglaltnál nagyobb tárterületek előzetes verzióban érhetők el, és extra költségek vonatkoznak rájuk. További információkért lásd: a [árképzést ismertető oldalra SQL-adatbázis](https://azure.microsoft.com/pricing/details/sql-database/). Tárolási mérete nagyobb, mint a belefoglalt tárolókapacitást még csak előzetes verziójúak, és további költségek alkalmazni. További információkért lásd: a [árképzést ismertető oldalra SQL-adatbázis](https://azure.microsoft.com/pricing/details/sql-database/).
 >
-> \* Az 1 TB tárhelyméretet meghaladó prémium szintű készletek jelenleg a következő régiókban érhetők el: USA 2. keleti régiója, USA nyugati régiója, USA-beli államigazgatás – Virginia, Nyugat-Európa, Közép-Németország, Délkelet-Ázsia, Kelet-Japán, Kelet-Ausztrália, Közép-Kanada és Kelet-Kanada. 
+> \*Prémium szint több, mint 1 TB-nyi tárhelyre érhető el jelenleg a következő régiókban: Kelet-Ausztrália, Ausztrália délkeleti, Kanada központi, Kanada keleti, Franciaország központi, Németország központi kelet-Japánban, Korea központi déli középső régiója VELÜNK, Dél Kelet-Ázsia, Velünk East2 , USA nyugati régiója, USA – (kormányzati) Virginia és Nyugat-Európában. 
 >
 >\*\*Minimális és maximális Edtu / adatbázis kezdve a 200 edtu-k és az annál magasabb **szabványos** készletek még csak előzetes verziójúak.
 >

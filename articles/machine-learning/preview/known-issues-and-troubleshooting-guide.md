@@ -9,12 +9,12 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
-ms.date: 09/20/2017
-ms.openlocfilehash: ed2c6f3c611f09c6fbec4080eb70e7e43b783f59
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.date: 01/12/2018
+ms.openlocfilehash: d1e3a4fd4415afb995f614ac687096f6fb8ece95
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Az Azure Machine Learning munkaterület - ismert problémák és hibaelhárítási útmutatója 
 Ez a cikk segít keresés és javítsa ki a hibákat, vagy sikertelen műveletek használata az Azure Machine Learning-munkaterület alkalmazás részeként. 
@@ -118,7 +118,7 @@ A bejelentkezés után a munkaterületet üzemeltető alkalmazás előfordulhat,
 3. Indítsa újra az alkalmazást.
 
 ## <a name="cant-delete-experimentation-account"></a>Kísérletezhet fiók nem törölhető.
-Parancssori felület használatával kísérletezhet-fiók törlése, de törölnie kell az alárendelt munkaterületekkel és a gyermek projektek belül e gyermek munkaterületek először. Ellenkező esetben hibaüzenet jelenik meg.
+Parancssori felület használatával kísérletezhet-fiók törlése, de törölnie kell az alárendelt munkaterületekkel és a gyermek projektek belül e gyermek munkaterületek először. Egyéb esetben lásd a hiba a "nem lehet törölni erőforrás beágyazott erőforrások törlése előtt."
 
 ```azure-cli
 # delete a project
@@ -145,6 +145,8 @@ Ha egy kísérletezés, futtatni használatával indítsa el `az ml experiment s
 - A macOS használja a Ctrl-c kiszolgálóra.
 
 Vegye figyelembe, hogy ez csak megzavarja a kimeneti adatfolyamba, a parancssori ablakban. Azt nem ténylegesen leállíthat feladatot végrehajtott. Ha meg kívánja szakítani a folyamatban lévő feladat, `az ml experiment cancel -r <run_id> -t <target name>` parancsot.
+
+A Windows rendszerű számítógépek, amelyeken nincs szünet kulcs billentyűzetek a lehetséges ilyen például a Fn-B, Ctrl-Fn-B vagy Fn + ESC billentyűkombinációt. A hardver gyártójának dokumentációjából tájékozódhat meghatározott billentyűkombináció.
 
 ## <a name="docker-error-read-connection-refused"></a>Docker hiba "olvasható: Kapcsolat elutasítva"
 Végrehajtása egy helyi Docker-tároló, időnként megjelenhet a következő hibával: 
@@ -198,7 +200,7 @@ $ docker system prune -a
 
 Is hozzá adatlemezt, majd konfigurálja a adatlemez lemezképek tárolásához használandó Docker-motorhoz. Itt [adatlemez hozzáadása](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk). Követően [módosítása, ahol a Docker tárolja a képek](https://forums.docker.com/t/how-do-i-change-the-docker-image-installation-directory/1169).
 
-Vagy, bővítheti az operációsrendszer-lemezképet, és nem kell touch Docker motor konfigurációját. Itt [hogyan bővítheti az operációsrendszer-lemezképet](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/expand-disks).
+Vagy, bővítheti az operációsrendszer-lemezképet, és nem kell touch Docker motor konfigurációját. Itt [hogyan bővítheti az operációsrendszer-lemezképet](https://docs.microsoft.com/azure/virtual-machines/linux/expand-disks).
 
 ```azure-cli
 #Deallocate VM (stopping will not work)

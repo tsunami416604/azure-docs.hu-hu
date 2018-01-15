@@ -10,7 +10,7 @@ sql-database-single-database-resources.md
 | DTU-k maximális száma | 5 |
 | Belefoglalt tárhely (GB) | 2 |
 | Maximális tárolási lehetőségek (GB) | 2 |
-| Memóriában tárolt OLTP-k maximális tárterülete (GB) |N/A |
+| Memóriában tárolt OLTP-k maximális tárterülete (GB) |– |
 | Maximális párhuzamos munkavállalók (kérelmek) | 30 |
 | Egyidejű bejelentkezések maximális száma | 30 |
 | Egyidejű munkamenetek maximális száma | 300 |
@@ -22,7 +22,7 @@ sql-database-single-database-resources.md
 | A maximális i ** | 10 | 20 | 50 | 100 |
 | Belefoglalt tárhely (GB) | 250 | 250 | 250 | 250 |
 | Maximális tárolási lehetőségek (GB) * | 250 | 250 | 250 | 250, 500, 750, 1024 |
-| Memóriában tárolt OLTP-k maximális tárterülete (GB) | N/A | N/A | N/A | N/A |
+| Memóriában tárolt OLTP-k maximális tárterülete (GB) | – | – | – | – |
 | Maximális párhuzamos munkavállalók (kérelmek)| 60 | 90 | 120 | 200 |
 | Egyidejű bejelentkezések maximális száma | 60 | 90 | 120 | 200 |
 | Egyidejű munkamenetek maximális száma |600 | 900 | 1200 | 2400 |
@@ -34,7 +34,7 @@ sql-database-single-database-resources.md
 | A maximális i ** | 200 | 400 | 800 | 1600 | 3000 |
 | Belefoglalt tárhely (GB) | 250 | 250 | 250 | 250 | 250 |
 | Maximális tárolási lehetőségek (GB) * | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 |
-| Memóriában tárolt OLTP-k maximális tárterülete (GB) | N/A | N/A | N/A | N/A |N/A |
+| Memóriában tárolt OLTP-k maximális tárterülete (GB) | – | – | – | – |– |
 | Maximális párhuzamos munkavállalók (kérelmek)| 400 | 800 | 1600 | 3200 |6000 |
 | Egyidejű bejelentkezések maximális száma | 400 | 800 | 1600 | 3200 |6000 |
 | Egyidejű munkamenetek maximális száma |4800 | 9600 | 19200 | 30000 |30000 |
@@ -67,7 +67,7 @@ sql-database-single-database-resources.md
 > [!IMPORTANT]
 > \* A szolgáltatási keretbe foglaltnál nagyobb tárterületek előzetes verzióban érhetők el, és extra költségek vonatkoznak rájuk. Részletes információ: [SQL Database – Díjszabás](https://azure.microsoft.com/pricing/details/sql-database/). 
 >
->\* Az 1 TB tárhelyméretet meghaladó prémium szintű készletek jelenleg a következő régiókban érhetők el: USA 2. keleti régiója, USA nyugati régiója, USA-beli államigazgatás – Virginia, Nyugat-Európa, Közép-Németország, Délkelet-Ázsia, Kelet-Japán, Kelet-Ausztrália, Közép-Kanada és Kelet-Kanada. Lásd: [P11–P15 – Aktuális korlátozások](../articles/sql-database/sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+>\*Prémium szint több, mint 1 TB-nyi tárhelyre érhető el jelenleg a következő régiókban: Kelet-Ausztrália, Ausztrália délkeleti, Kanada központi, Kanada keleti, Franciaország központi, Németország központi kelet-Japánban, Korea központi déli középső régiója VELÜNK, Dél Kelet-Ázsia, Velünk East2 , USA nyugati régiója, USA – (kormányzati) Virginia és Nyugat-Európában. Lásd: [P11–P15 – Aktuális korlátozások](../articles/sql-database/sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 > 
 >\*\*Maximális Dtu adatbázisonkénti indítása, 200 dtu-inak száma és az annál magasabb a Standard még csak előzetes verziójúak.
 >

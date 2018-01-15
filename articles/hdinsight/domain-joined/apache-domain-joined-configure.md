@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/15/2017
+ms.date: 01/10/2018
 ms.author: saurinsh
-ms.openlocfilehash: 0a9ed1cad8b8d4c566a0da16ac78d096efe187a5
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: 4921e329c2ec8ce3d5bbf8a0851146e13d5f6cd3
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="configure-domain-joined-hdinsight-sandbox-environment"></a>Tartományhoz csatlakozó HDInsight védőfal mögötti környezet konfigurálása
 
@@ -27,11 +27,18 @@ Ismerje meg, hogyan állíthat be az Active Directory önálló Azure HDInsight-
 
 Nélkül tartományhoz HDInsight-fürtöt, az egyes fürtökön csak van a Hadoop HTTP-felhasználói fiókot, és egy SSH-felhasználói fiókot.  A több felhasználó-hitelesítési elérhető használatával:
 
--   Az Active Directory önálló Azure infrastruktúra-szolgáltatáson futó
--   Azure Active Directory
+-   Az Active Directory önálló Azure infrastruktúra-szolgáltatáson futó.
+-   Az Azure Active Directory.
 -   Az ügyfél helyszíni környezetben futó Active Directory.
 
-Active Directory önálló Ez a cikk az Azure infrastruktúra-szolgáltatáson futó vonatkozik. Az ügyfél követve többfelhasználós támogatás kérése a HDInsight a legegyszerűbb architektúra. 
+Active Directory önálló Ez a cikk az Azure infrastruktúra-szolgáltatáson futó vonatkozik. Az ügyfél követve többfelhasználós támogatás kérése a HDInsight a legegyszerűbb architektúra. Ez a cikk két megközelítés ehhez a konfigurációhoz terjed ki:
+
+- 1. lehetőség: Az önálló active Directoryból és a HDInsight-fürt létrehozásához egy Azure-erőforrás management-sablonnal használ.
+- 2. lehetőség: A teljes folyamat rendszer darabolja fel a következő lépéseket:
+    - Hozzon létre egy Active Directory-sablon használatával.
+    - A telepítő LDAPS.
+    - Active Directory-felhasználók és csoportok létrehozása
+    - HDInsight-fürt létrehozása
 
 > [!IMPORTANT]
 > Oozie nincs engedélyezve a HDInsight-tartományhoz.
@@ -39,7 +46,50 @@ Active Directory önálló Ez a cikk az Azure infrastruktúra-szolgáltatáson f
 ## <a name="prerequisite"></a>Előfeltétel
 * Azure-előfizetés
 
-## <a name="create-an-active-directory"></a>Hozzon létre egy Active Directory
+## <a name="option-1-one-step-approach"></a>1. lehetőség: egylépéses megközelítés
+Ebben a szakaszban egy Azure-erőforrás management-sablon Azure-portálról megnyitásához. A sablon segítségével létrehozhat egy önálló Active Directory és a HDInsight-fürtöt. Jelenleg Hadoop-fürt tartományhoz, a Spark-fürt és a fürt interaktív lekérdezést is létrehozhat.
+
+1. Az alábbi képre kattintva megnyithatja a sablont az Azure Portalon. A sablon található [Azure gyors üzembe helyezési sablonokat](https://azure.microsoft.com/resources/templates/).
+   
+    Spark-fürt létrehozása:
+
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/http%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fdomain-joined%2Fspark%2Ftemplate.json" target="_blank"><img src="../hbase/media/apache-hbase-tutorial-get-started-linux/deploy-to-azure.png" alt="Deploy to Azure"></a>
+
+    Az interaktív lekérdezés fürt létrehozásához:
+
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/http%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fdomain-joined%2Finteractivequery%2Ftemplate.json" target="_blank"><img src="../hbase/media/apache-hbase-tutorial-get-started-linux/deploy-to-azure.png" alt="Deploy to Azure"></a>
+
+    A Hadoop fürtök létrehozásához:
+
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/http%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fdomain-joined%2Fhadoop%2Ftemplate.json" target="_blank"><img src="../hbase/media/apache-hbase-tutorial-get-started-linux/deploy-to-azure.png" alt="Deploy to Azure"></a>
+
+2. Adja meg az értékeket, válasszon **elfogadom a feltételeket és a fenti feltételek**, jelölje be **rögzítés az irányítópulton**, és kattintson a **beszerzési**. Vigye az egérmutatót a magyarázat bejelentkezhet a mezők melletti leírásában olvasható. A legtöbb értékek vannak-e töltve. Az alapértelmezett értékeket, vagy saját értékeket is használhatja.
+
+    - **Erőforráscsoport**: Adjon meg egy Azure erőforráscsoport-név.
+    - **Hely**: Válasszon egy helyet, amely közel található Önhöz.
+    - **Új Tárfiók neve**: Adja meg egy Azure Storage-fiók nevét. Az új tárfiók lesz az elsődleges tartományvezérlő, a tartalék kiszolgáló és a HDInsight-fürthöz az alapértelmezett tárfiók.
+    - **Rendszergazda felhasználóneve**: Adja meg a tartomány rendszergazdai jogosultságú felhasználónevet.
+    - **Rendszergazdai jelszó**: Adja meg a tartományi rendszergazda jelszavával.
+    - **Tartománynév**: az alapértelmezett név az *contoso.com*.  Ha módosítja a tartomány nevét, frissíteni kell a **biztonságos LDAP tanúsítvány** mező és a **szervezeti egységet DN** mező.
+    - **A fürt neve**: Adja meg a HDInsight fürt nevét.
+    - **Fürt típusa**: ne módosítsa ezt az értéket. Ha a fürt típusa módosítani kívánja, használja az adott sablon az előző lépésben.
+
+    Néhány értéket változtatható a sablonban, például a munkavégző csomópont példányszám két.  A kódolt értékek módosításához kattintson **Szerkesztés sablon**.
+
+    ![A HDInsight fürt tartományhoz Szerkesztés sablon](./media/apache-domain-joined-configure/hdinsight-domain-joined-edit-template.png)
+
+A sablon sikeres befejezését követően nincsenek 23 erőforrások létrehozása az erőforráscsoportban.
+
+## <a name="option-2-multi-step-approach"></a>2. lehetőség: többlépéses megközelítés
+
+Ebben a szakaszban négy lépésben történik:
+
+1. Hozzon létre egy Active Directory-sablon használatával.
+2. A telepítő LDAPS.
+3. Active Directory-felhasználók és csoportok létrehozása
+4. HDInsight-fürt létrehozása
+
+### <a name="create-an-active-directory"></a>Hozzon létre egy Active Directory
 
 Az Azure Resource Manager-sablon megkönnyíti az Azure-erőforrások létrehozása. Ebben a szakaszban használhatja egy [Azure gyors üzembe helyezési sablon](https://azure.microsoft.com/resources/templates/active-directory-new-domain-ha-2-dc/) hozzon létre egy új erdő és a tartomány két virtuális gép számára. A két virtuális gép az elsődleges tartományvezérlő és a biztonsági mentési tartományvezérlő szolgál.
 
@@ -69,7 +119,7 @@ Az Azure Resource Manager-sablon megkönnyíti az Azure-erőforrások létrehoz�
 
 Az erőforrások létrehozása nagyjából 20 percet vesz igénybe.
 
-## <a name="setup-ldaps"></a>A telepítő LDAPS
+### <a name="setup-ldaps"></a>A telepítő LDAPS
 
 Olvasási és írási ad a Lightweight Directory Access Protocol (LDAP) segítségével.
 
@@ -102,11 +152,11 @@ Olvasási és írási ad a Lightweight Directory Access Protocol (LDAP) segíts�
 
     ![A HDInsight-tartományhoz AD tanúsítvány konfigurálása](./media/apache-domain-joined-configure/hdinsight-domain-joined-configure-ad-certificate.png)
 
-2. Kattintson a ** a bal oldali szerepkör-szolgáltatások kiválasztása **hitelesítésszolgáltató**, és kattintson a **következő**.
+2. Kattintson a **szerepkör-szolgáltatások** válassza ki a bal oldali **hitelesítésszolgáltató**, és kattintson a **következő**.
 3. Kövesse a varázsló utasításait, az alapértelmezett beállításokat használja az eljárást a többi (kattintson **konfigurálása** az utolsó lépésnél).
 4. A varázsló bezárásához kattintson a **Bezárás** gombra.
 
-## <a name="optional-create-ad-users-and-groups"></a>(Választható) Active Directory-felhasználók és csoportok létrehozása
+### <a name="optional-create-ad-users-and-groups"></a>(Választható) Active Directory-felhasználók és csoportok létrehozása
 
 **Az ad felhasználók és csoportok létrehozása**
 1. Csatlakozzon az elsődleges tartományvezérlő távoli asztali kapcsolattal
@@ -122,7 +172,7 @@ Olvasási és írási ad a Lightweight Directory Access Protocol (LDAP) segíts�
 > [!IMPORTANT]
 > Az elsődleges virtuális gépet egy tartományhoz csatlakozó HDInsight-fürt létrehozása előtt újra kell indítani.
 
-## <a name="create-an-hdinsight-cluster-in-the-vnet"></a>HDInsight-fürtök létrehozása a Vneten belül
+### <a name="create-an-hdinsight-cluster-in-the-vnet"></a>HDInsight-fürtök létrehozása a Vneten belül
 
 Ebben a szakaszban az Azure-portál hozzáadása a HDInsight-fürtöt létrehozni a virtuális hálózatban, az oktatóanyag során korábban küldje el a Resource Manager sablonnal létrehozott használja. Ez a cikk vonatkozik a tartományhoz csatlakoztatott fürtkonfiguráció kapcsolatos adatok.  Általános információkért lásd: [az Azure portál használatával hdinsight létrehozása Linux-alapú fürtökön](../hdinsight-hadoop-create-linux-clusters-portal.md).  
 

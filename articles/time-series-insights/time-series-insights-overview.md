@@ -11,17 +11,24 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: article
 ms.date: 11/15/2017
-ms.openlocfilehash: cb4b3c701f3d3ec52addd1b98c01b97c2220ae34
-ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
+ms.openlocfilehash: 2a0d3e829ed28912b56a022aa6aa82ade1718e35
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="what-is-azure-time-series-insights"></a>Mi az Azure idő adatsorozat Insights?
 
 Idő adatsorozat Insights épül, tárolás, megjeleníteni és nagy mennyiségű időt adatsorozat adatok, például az IoT-eszközök által generált lekérdezése.  Ha szeretné tárolni, kezelheti, lekérdezése vagy idő adatsorozat adato a felhőben, idő adatsorozat Insights valószínű jogot az Ön számára.  
 
-Ha egy alkalmazás, egy belső díjakon vagy külső felhasználók használatához idő adatsorozat Insights alkalmas, egy háttér indexelő, tárolásának és idő adatsorozat-adatok összesítésének.  Létrehozhat egy egyéni képi megjelenítés és a felhasználói élmény felül.  Idő adatsorozat Insights REST lekérdezés API-k ezt a forgatókönyvet mutatja.  
+Idő adatsorozat Insights négy fő feladatok rendelkezik:
+
+- Először teljesen integrálva van felhő átjárókkal, mint az Azure IoT-központ és az Azure Event Hubs. Egyszerű esemény források csatlakozik, és JSON elemzi az üzenetek és a tiszta sorok és oszlopok az adatokat tartalmazó struktúrák. Telemetria metaadatait csatlakozik, és az adatokat egy oszlopos indexeket.
+- Második idő adatsorozat Insights kezeli az adatokat. Adatok garantálása érdekében mindig könnyen hozzáférhető, tárolja az adatok memória és SSD tartozó 400 napig. Események milliárd másodpercben – az igény szerinti interaktív módon lekérdezheti.
+- Idő adatsorozat Insights harmadik, out-of-az-box képi megjelenítés a ÁME Explorerben biztosít.  
+- Negyedik idő adatsorozat Insights lekérdezés szolgáltatást, könnyen integrálható az idő adatsorok beágyazás egyéni alkalmazások API-k használatával mind a ÁME explorer nyújt.  
+
+Ha egy alkalmazás, egy belső díjakon vagy külső ügyfeleket szeretne használni, most felépítése idő adatsorozat Insights indexelő, tárolására és idő adatsorozat-adatok összesítésének, egy háttér-is használható. Létrehozhat egy egyéni képi megjelenítés és a felhasználói élmény felül.  Idő adatsorozat Insights lekérdezés API-k ezt a forgatókönyvet mutatja.  
 
 Ha biztos abban, hogy ha az adatok a time series, itt található tudnivalók.  Adatsorozat időadatok jelöli, hogy egy eszköz vagy folyamat idővel hogyan változik.  Ez abban egyedi, hogy a időbélyeggel rendelkezik, és egy tengely, lényeges.  Adatsorozat időadatok általában időrendjét érkezik, és általában a rendszer az adatbázis frissítése helyett egy INSERT utasítás.  Idő adatsorozat Insights rögzíti, és egy sor minden új esemény tárolja, mert változás mérése adott idő alatt, így lehetővé teszi az előző verziókkal való kereséséhez és előre jelezni jövőbeli változás.  A nagy méretű köteteket tárolása, indexelő, lekérdezése, elemzése és idő adatsor megjelenítése kihívást jelenthet.  
 

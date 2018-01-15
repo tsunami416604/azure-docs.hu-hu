@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: v-craic
-ms.openlocfilehash: db2ee6a25626f0a47bf86c5ee286fddc2441d3f8
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: 6c6bd4fbd89ec87cbbdbfb9ed42f86a484acf7ad
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="integrate-azure-devtest-labs-into-your-vsts-continuous-integration-and-delivery-pipeline"></a>Azure DevTest Labs integrálja a VSTS folyamatos integrációt és a szállítási folyamat
 Használhatja a *Azure DevTest Labs feladatok* bővítményt, amely könnyen települ a Visual Studio Team Services (VSTS) számára a CI/CD build és kiadás folyamat integrálása Azure DevTest Labs szolgáltatásban. A bővítmény telepítését három feladatok: 
@@ -111,7 +111,7 @@ A központi telepítés következő szakasza, ha a virtuális gép használja a 
    > [!NOTE]
    > A virtuális gép használata a következő központi telepítések elvégzéséhez létrehozásához lásd: [Azure DevTest Labs szolgáltatásban feladatok](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks).
 
-   a. A **Azure RM előfizetés**, válassza ki a kapcsolat a **Azure-szolgáltatás rendelkezésre álló kapcsolatok** listában, vagy hozzon létre egy szűkebb engedélyek az Azure-előfizetéshez. További információkért lásd: [Azure Resource Manager szolgáltatási végpont](https://docs.microsoft.com/en-us/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm).
+   a. A **Azure RM előfizetés**, válassza ki a kapcsolat a **Azure-szolgáltatás rendelkezésre álló kapcsolatok** listában, vagy hozzon létre egy szűkebb engedélyek az Azure-előfizetéshez. További információkért lásd: [Azure Resource Manager szolgáltatási végpont](https://docs.microsoft.com/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm).
 
    b. A **tesztkörnyezet nevének**, válassza ki a korábban létrehozott példányának nevét.
 
@@ -141,7 +141,7 @@ A központi telepítés következő szakasza, ha a virtuális gép használja a 
 
    a. A **Azure kapcsolattípus**, jelölje be **Azure Resource Manager**.
 
-   b. A **Azure RM előfizetés**, alatti listából válasszon ki egy kapcsolatot **Azure-szolgáltatás rendelkezésre álló kapcsolatok**, vagy hozzon létre egy szűkebb engedélyek az Azure-előfizetéshez. További információkért lásd: [Azure Resource Manager szolgáltatási végpont](https://docs.microsoft.com/en-us/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm).
+   b. A **Azure RM előfizetés**, alatti listából válasszon ki egy kapcsolatot **Azure-szolgáltatás rendelkezésre álló kapcsolatok**, vagy hozzon létre egy szűkebb engedélyek az Azure-előfizetéshez. További információkért lásd: [Azure Resource Manager szolgáltatási végpont](https://docs.microsoft.com/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm).
 
    c. A **parancsfájl**, jelölje be **parancsfájl**.
  
@@ -168,7 +168,7 @@ A következő szakaszban, ha az újonnan telepített virtuális gép lemezképé
    > [!NOTE]
    > A lemezkép létrehozásához lásd: [Azure DevTest Labs szolgáltatásban feladatok](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks).
 
-   a. A **Azure RM előfizetés**, a a **Azure-szolgáltatás rendelkezésre álló kapcsolatok** listán, válassza ki a kapcsolat a listából, vagy hozzon létre egy szűkebb engedélyek az Azure-előfizetéshez. További információkért lásd: [Azure Resource Manager szolgáltatási végpont](https://docs.microsoft.com/en-us/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm).
+   a. A **Azure RM előfizetés**, a a **Azure-szolgáltatás rendelkezésre álló kapcsolatok** listán, válassza ki a kapcsolat a listából, vagy hozzon létre egy szűkebb engedélyek az Azure-előfizetéshez. További információkért lásd: [Azure Resource Manager szolgáltatási végpont](https://docs.microsoft.com/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm).
 
    b. A **tesztkörnyezet nevének**, válassza ki a korábban létrehozott példány nevét.
 
@@ -189,7 +189,7 @@ A végső szakasz törlése a virtuális Gépet az Azure DevTest Labs-példányt
       > [!NOTE]
       > A virtuális gép törlése, lásd: [Azure DevTest Labs feladatok](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks).
 
-   a. A **Azure RM előfizetés**, válassza ki a kapcsolat a **Azure-szolgáltatás rendelkezésre álló kapcsolatok** listában, vagy hozzon létre egy szűkebb engedélyek az Azure-előfizetéshez. További információkért lásd: [Azure Resource Manager szolgáltatási végpont](https://docs.microsoft.com/en-us/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm).
+   a. A **Azure RM előfizetés**, válassza ki a kapcsolat a **Azure-szolgáltatás rendelkezésre álló kapcsolatok** listában, vagy hozzon létre egy szűkebb engedélyek az Azure-előfizetéshez. További információkért lásd: [Azure Resource Manager szolgáltatási végpont](https://docs.microsoft.com/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm).
  
    b. A **tesztlabor virtuális gép azonosítója**, ha módosította az alapértelmezett nevet, a környezeti változó, amely automatikusan ki van töltve a labor virtuális gép egy korábbi feladat azonosítója Itt szerkesztheti. Az alapértelmezett érték **$(labVMId)**.
 

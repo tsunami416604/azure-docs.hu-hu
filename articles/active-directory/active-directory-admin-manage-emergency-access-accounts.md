@@ -11,11 +11,11 @@ ms.service: active-directory
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
-ms.openlocfilehash: 039012b8ba0b83f6338128a2200d1232ae6467f3
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: 1545fb9a89794a74efbb855c4480040973c3308e
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="manage-emergency-access-administrative-accounts-in-azure-ad"></a>Sürgős-hozzáférési rendszergazdai fiókok kezelése az Azure ad-ben 
 
@@ -48,11 +48,11 @@ Egy lehetőség, hogy a felhasználók állandó tagjai a *globális rendszergaz
 
 Sérült biztonságú jelszó eredő támadások kockázatok csökkentése érdekében az Azure AD azt javasolja, hogy többtényezős hitelesítés megkövetelése minden egyes felhasználó. Ennek a csoportnak kell foglalni, rendszergazdák és az összes többi (például pénzügyi tisztviselő) sérült biztonságú fiók jelentős hatással lenne. 
 
-Azonban ha a szervezet nem rendelkezik megosztott eszközök, a multi-factor Authentication nem esetleg vészhelyzeti hozzáférés fiókok. Ha konfigurál egy feltételes hozzáférési szabályzatot, [minden rendszergazda multi-factor Authentication regisztráció](https://docs.microsoft.com/en-us/azure/multi-factor-authentication/multi-factor-authentication-get-started-user-states) az Azure AD és a kapcsolódó egyéb szoftverek egy szolgáltatott szoftverként (SaaS) alkalmazások, szükség lehet házirend konfigurálása kivételek vészhelyzeti fiókok kizárása ezt a követelményt.
+Azonban ha a szervezet nem rendelkezik megosztott eszközök, a multi-factor Authentication nem esetleg vészhelyzeti hozzáférés fiókok. Ha konfigurál egy feltételes hozzáférési szabályzatot, [minden rendszergazda multi-factor Authentication regisztráció](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-user-states) az Azure AD és a kapcsolódó egyéb szoftverek egy szolgáltatott szoftverként (SaaS) alkalmazások, szükség lehet házirend konfigurálása kivételek vészhelyzeti fiókok kizárása ezt a követelményt.
 
 ### <a name="initial-configuration-with-approvals"></a>A jóváhagyások kezdeti konfiguráció
 
-Lehetősége a felhasználók konfigurálása jogosult és a jóváhagyóknak aktiválásához a *globális rendszergazda* szerepkör. Ezt a beállítást igényel a szervezet Azure AD Premium P2-előfizetéssel rendelkezik. Azt is igényelnének egy multi-factor Authentication beállítása, amely lehetővé teszi több egyéni felhasználók számára és a hálózati környezet között megosztott használatra. Ezek a követelmények azért, mert az aktiválás a *globális rendszergazda* szerepkör megköveteli a felhasználóktól korábban végeztek el a multi-factor Authentication. További információkért lásd: [használatának megkövetelése a többtényezős hitelesítés az Azure AD Privileged Identity Management](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-privileged-identity-management-how-to-require-mfa).
+Lehetősége a felhasználók konfigurálása jogosult és a jóváhagyóknak aktiválásához a *globális rendszergazda* szerepkör. Ezt a beállítást igényel a szervezet Azure AD Premium P2-előfizetéssel rendelkezik. Azt is igényelnének egy multi-factor Authentication beállítása, amely lehetővé teszi több egyéni felhasználók számára és a hálózati környezet között megosztott használatra. Ezek a követelmények azért, mert az aktiválás a *globális rendszergazda* szerepkör megköveteli a felhasználóktól korábban végeztek el a multi-factor Authentication. További információkért lásd: [használatának megkövetelése a többtényezős hitelesítés az Azure AD Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-how-to-require-mfa).
 
 Személyes eszközök vészhelyzeti hozzáférés fiókokhoz tartozó többtényezős hitelesítés használatát nem javasoljuk. Tényleges vészhelyzet esetén a személy, aki hozzá kell férnie a többtényezős hitelesítés regisztrált eszköz nem feltétlenül a személyes eszköz rendelkező azt. 
 
@@ -60,7 +60,7 @@ Is érdemes lehet a fenyegetésekről alkotott képet. Például egy előre nem 
 
 ## <a name="ongoing-monitoring"></a>Figyelése
 
-A figyelő a [naplózza az Azure AD-bejelentkezés és a naplózási](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-reporting-activity-sign-ins) a bármely bejelentkezések és naplózási tevékenység törlődik a sürgős-hozzáférési fiókokat. Ezek a fiókok általában nem kell jelentkezik be, és kell nem lehet módosítása, így azok használata valószínűleg rendellenes és biztonsági vizsgálat szükséges.
+A figyelő a [naplózza az Azure AD-bejelentkezés és a naplózási](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-sign-ins) a bármely bejelentkezések és naplózási tevékenység törlődik a sürgős-hozzáférési fiókokat. Ezek a fiókok általában nem kell jelentkezik be, és kell nem lehet módosítása, így azok használata valószínűleg rendellenes és biztonsági vizsgálat szükséges.
 
 ## <a name="account-check-validation-must-occur-at-regular-intervals"></a>Érvényesítési rendszeres időközönként kell magukat a fiók ellenőrzése
 

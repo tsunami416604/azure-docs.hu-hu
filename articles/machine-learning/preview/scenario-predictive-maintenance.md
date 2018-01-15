@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/05/2017
-ms.openlocfilehash: d8e34924cb29e2e6469d009e40b04d5cee8930a6
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 0299e73aecca3b3e5714b37c8b0b776ec8561e29
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="predictive-maintenance-real-world-scenario"></a>A prediktív karbantartási valós forgatókönyv.
 
@@ -32,7 +32,7 @@ Az alábbiakban látható a hivatkozásra kattintva a nyilvános GitHub-tárház
 
 Eszköz-gyakori iparágakban a vállalatok által tapasztalt az is gépi problémák késések társított jelentős költségeket. A legtöbb vállalat érdekelt előrejelzésére, ha ezek a problémák merülhetnek fel ahhoz, hogy proaktív módon, hogy mielőtt bekövetkeznének. A cél, hogy a költségek csökkentése állásidő csökkentésével, és esetleg a biztonság fokozása. 
 
-Ebben a forgatókönyvben a ötleteket vesz igénybe a [prediktív karbantartási alkalmazástervezési](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/cortana-analytics-playbook-predictive-maintenance) szimulált adatkészlet prediktív modellek létrehozása bemutatásához. A példaadatokat a szokványos elemeket a prediktív karbantartási használata sok esetben megfigyelhető származik.
+Ebben a forgatókönyvben a ötleteket vesz igénybe a [prediktív karbantartási alkalmazástervezési](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-analytics-playbook-predictive-maintenance) szimulált adatkészlet prediktív modellek létrehozása bemutatásához. A példaadatokat a szokványos elemeket a prediktív karbantartási használata sok esetben megfigyelhető származik.
 
 A szimulált adatok az üzleti probléma előre problémák okozta összetevőinek meghibásodása esetén. Az üzleti kérdésre, ezért nem "*mi annak, hogy az összetevő hibája miatt leáll a gép*?" Ez a probléma a multiclass osztályozási problémához (több összetevő gépenként) körbefuttatási, és a gépi tanulási algoritmus a prediktív modell létrehozásához használt. A modell betanítása a korábbi gépekről összegyűjtött adatokat. Ebben a forgatókönyvben a felhasználó végighalad számos lépés végrehajtási modell, az Azure Machine Learning-munkaterület környezeten belül.
 
@@ -133,6 +133,6 @@ A használati eset korábban kidolgozott több platformon:
 * [Python kalauz modellezési prediktív karbantartás](https://gallery.cortanaintelligence.com/Notebook/Predictive-Maintenance-Modelling-Guide-Python-Notebook-1)
 * [A prediktív karbantartási PySpark használatával](https://gallery.cortanaintelligence.com/Tutorial/Predictive-Maintenance-using-PySpark)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Nincsenek elérhető az Azure Machine Learning-munkaterületen, a termék további funkciókat fogunk bemutatni, sok más példaforgatókönyvek. 

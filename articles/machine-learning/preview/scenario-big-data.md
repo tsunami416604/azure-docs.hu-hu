@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: daden
-ms.openlocfilehash: 25c9079bc1a3030b8c65a83e5e9969c4a5a626b3
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: f2482c7a47c72d192f26f3d8d9b9249af53da25d
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="server-workload-forecasting-on-terabytes-of-data"></a>A több terabájtnyi adatot feldolgozó kiszolgálói számítási feladatok előrejelzése
 
@@ -51,7 +51,7 @@ Ez a példa futtatásához az Előfeltételek a következők:
 * Windows 10 (a példában szereplő utasításokat általában azonosak macOS rendszerekhez).
 * Egy adatok tudományos virtuális gép (DSVM) Linux (Ubuntu), lehetőleg USA keleti régiójában, ahol az adatok megkeresi a rendszerhez. Megadhat egy Ubuntu DSVM következő [ezeket az utasításokat](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro). Azt is láthatja, [a gyors üzembe helyezés](https://ms.portal.azure.com/#create/microsoft-ads.linux-data-science-vm-ubuntulinuxdsvmubuntu). Legalább 8 maggal és 32 GB memóriát a virtuális gép használatát javasoljuk. 
 
-Kövesse a [utasítás](https://docs.microsoft.com/en-us/azure/machine-learning/preview/known-issues-and-troubleshooting-guide#remove-vm-execution-error-no-tty-present) a virtuális Gépre jelszó nélküli sudoer hozzáférésének engedélyezésére vonatkozó AML munkaterületet.  Ha szeretné használni [SSH-alapú hitelesítés létrehozásáért és a virtuális gép AML munkaterület](https://docs.microsoft.com/en-us/azure/machine-learning/preview/experimentation-service-configuration#using-ssh-key-based-authentication-for-creating-and-using-compute-targets). Ebben a példában a jelszót a virtuális gép eléréséhez használjuk.  A következő tábla mentése a későbbi lépésekben DSVM információval:
+Kövesse a [utasítás](https://docs.microsoft.com/azure/machine-learning/preview/known-issues-and-troubleshooting-guide#remove-vm-execution-error-no-tty-present) a virtuális Gépre jelszó nélküli sudoer hozzáférésének engedélyezésére vonatkozó AML munkaterületet.  Ha szeretné használni [SSH-alapú hitelesítés létrehozásáért és a virtuális gép AML munkaterület](https://docs.microsoft.com/azure/machine-learning/preview/experimentation-service-configuration#using-ssh-key-based-authentication-for-creating-and-using-compute-targets). Ebben a példában a jelszót a virtuális gép eléréséhez használjuk.  A következő tábla mentése a későbbi lépésekben DSVM információval:
 
  Mező neve| Érték |  
  |------------|------|

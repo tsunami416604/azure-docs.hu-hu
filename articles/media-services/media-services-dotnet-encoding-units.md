@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2017
 ms.author: juliako;milangada;
-ms.openlocfilehash: f45da151472efb4cc6297b005d5bc3844d664928
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 9274e2807beeb0fd517ba1e848cfc26db1c57655
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="how-to-scale-encoding-with-net-sdk"></a>A kódolás méretezése a .NET SDK használatával
 > [!div class="op_single_selector"]
@@ -54,9 +54,6 @@ A fenntartott egységnek típusának és a kódoláshoz fenntartott egység .NET
 
 ## <a name="opening-a-support-ticket"></a>Támogatási jegy megnyitása
 Alapértelmezés szerint minden Media Services-fiók méretezhető legfeljebb 25 kódolás és 5 igény, folyamatos átvitelhez fenntartott egységek. Magasabb határérték kérhet egy támogatási jegy megnyitásával.
-
-### <a name="open-a-support-ticket"></a>Támogatási jegy megnyitása
-Az Azure-portálon lépjen [súgó + támogatás](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest). Ha nem jelentkezik Azure-ba, a hitelesítő adatok megadását kéri.
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

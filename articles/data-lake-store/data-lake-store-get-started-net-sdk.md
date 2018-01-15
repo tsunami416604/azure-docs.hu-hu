@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/13/2017
+ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 018cf772f458bb29712ef9516c3af4e969a94564
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 682e8c9fc9e7f16d6b69cd73535c76e6c53c6b49
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="account-management-operations-on-azure-data-lake-store-using-net-sdk"></a>Fiókkezelési műveletek az Azure Data Lake Store-ban a .NET SDK használatával
 > [!div class="op_single_selector"]
@@ -46,7 +46,7 @@ A Data Lake Store adatkezelési műveleteinek a .NET SDK használatával való v
    | --- | --- |
    | Kategória |Sablonok/Visual C#/Windows |
    | Sablon |Konzolalkalmazás |
-   | Név |CreateADLApplication |
+   | Name (Név) |CreateADLApplication |
 4. A projekt létrehozásához kattintson az **OK** gombra.
 5. Adja hozzá a NuGet-csomagokat a projekthez.
 
@@ -100,7 +100,7 @@ A Data Lake Store adatkezelési műveleteinek a .NET SDK használatával való v
 
 A cikk fennmaradó részéből megtudhatja, hogyan használhatja az elérhető .NET-metódusokat az olyan műveletek elvégzésére, mint a hitelesítés, a fájlok feltöltése stb.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
 * Az alkalmazás végfelhasználói hitelesítésével kapcsolatban lásd: [Végfelhasználói hitelesítés a Data Lake Store-ban a .NET SDK használatával](data-lake-store-end-user-authenticate-net-sdk.md).
 * Az alkalmazás szolgáltatások közötti hitelesítésével kapcsolatban lásd: [Szolgáltatások közötti hitelesítés a Data Lake Store-ban a .NET SDK használatával](data-lake-store-service-to-service-authenticate-net-sdk.md).
@@ -142,9 +142,9 @@ A következő kódrészlet törli a korábban létrehozott Data Lake Store-fiók
     // Delete Data Lake Store account
     _adlsClient.Account.Delete(_resourceGroupName, _adlsAccountName);
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Fájlrendszerműveletek a Data Lake Store-on a .NET SDK használatával](data-lake-store-data-operations-net-sdk.md)
 * [A Data Lake Store .NET SDK dokumentációja](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Biztonságos adattárolás a Data Lake Store-ban](data-lake-store-secure-data.md)

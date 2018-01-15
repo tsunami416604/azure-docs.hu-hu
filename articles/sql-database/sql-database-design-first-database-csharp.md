@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: On Demand
-ms.date: 08/25/2017
+ms.date: 01/12/2018
 ms.author: genemi
-ms.openlocfilehash: 1e13a9a89873b189e1ea05c0208e7c8646881655
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: d99456b488302c9b3fa44510af84641876861afe
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="design-an-azure-sql-database-and-connect-with-cx23-and-adonet"></a>Azure SQL-adatbázis megtervezése, és csatlakozzon a C & #x23; és ADO.NET
 
@@ -54,7 +54,7 @@ And it starts with a ## H2.
 [!INCLUDE [sql-database-csharp-adonet-create-query-2](../../includes/sql-database-csharp-adonet-create-query-2.md)]
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megismerte az alapvető adatbázis-feladatok például egy adatbázis és a táblák létrehozása, betölteni és kérdezhet le adatokat, és állítsa vissza az adatbázist egy korábbi időpontra időben. Megismerte, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]

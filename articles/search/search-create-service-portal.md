@@ -13,15 +13,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 11/07/2017
 ms.author: heidist
-ms.openlocfilehash: eaf317b42026298cc42edcc907bc48169f869460
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: b31844dd0dad1168b12d91ce536589099ab16a7e
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Azure Search szolgáltatás létrehozása a portálon
 
-Megtudhatja, hogyan hozható létre, vagy egy Azure Search szolgáltatás a portálon kiépítése. PowerShell útmutatásért lásd: [Azure Search kezelése a PowerShell-lel](search-manage-powershell.md).
+Megtudhatja, hogyan hozható létre, vagy egy Azure Search szolgáltatás a portálon kiépítése. 
+
+PowerShell inkább? Az Azure Resource Manager használatára [Szolgáltatássablon](https://azure.microsoft.com/resources/templates/101-azure-search-create/). Első lépések útmutatásért lásd: [Azure Search kezelése a PowerShell-lel](search-manage-powershell.md) a háttérben.
 
 ## <a name="subscribe-free-or-paid"></a>Előfizetés (ingyenes és fizetős)
 
@@ -107,7 +109,7 @@ Bár a legtöbb felhasználó csak egy szolgáltatás használatához szolgálta
 
 Egy második szolgáltatás nincs szükség a magas rendelkezésre állás érdekében. Magas rendelkezésre állás a lekérdezések érhető el, ha a 2 vagy több replikákat az ugyanazt a szolgáltatást használ. A replika frissítései egymást követő, ami azt jelenti, hogy legalább egy akkor működik, ha a szolgáltatásfrissítés megkezdődött. Hasznos üzemidő kapcsolatos további információkért lásd: [szolgáltatói szerződések](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Egy Azure Search szolgáltatás kiépítését követően készen áll [index definiálása az](search-what-is-an-index.md) , töltse fel, és keresse meg az adatokat. 
 
 > [!div class="nextstepaction"]

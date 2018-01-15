@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Az Azure Backup dokumentációja
+title: "Az Azure Backup dokumentációja"
 metadata:
-  title: Az Azure Backup dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
-  description: 'Az Azure Backup segítségével biztonsági mentést készíthet helyszíni kiszolgálók, virtuális gépek, virtualizált számítási feladatok, SQL-kiszolgálók, SharePoint-kiszolgálók stb. adatairól. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerheti, hogyan készíthető biztonsági mentés az adatokról, és azok hogyan állíthatók vissza.'
+  title: "Az Azure Backup dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
+  description: "Az Azure Backup segítségével biztonsági mentést készíthet helyszíni kiszolgálók, virtuális gépek, virtualizált számítási feladatok, SQL-kiszolgálók, SharePoint-kiszolgálók stb. adatairól. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerheti, hogyan készíthető biztonsági mentés az adatokról, és azok hogyan állíthatók vissza."
   services: backup
   author: czeumault
   manager: carolz
@@ -13,56 +13,61 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/11/2017
   ms.author: carolz
+  ms.openlocfilehash: f2654916ee61a548537c8887ff7d1923fb6f29ac
+  ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 01/12/2018
 abstract:
-  description: 'Az Azure Backup segítségével biztonsági mentést készíthet helyszíni kiszolgálók, virtuális gépek, virtualizált számítási feladatok, SQL-kiszolgálók, SharePoint-kiszolgálók stb. adatairól. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerheti, hogyan készíthető biztonsági mentés az adatokról, és azok hogyan állíthatók vissza.'
+  description: "Az Azure Backup segítségével biztonsági mentést készíthet helyszíni kiszolgálók, virtuális gépek, virtualizált számítási feladatok, SQL-kiszolgálók, SharePoint-kiszolgálók stb. adatairól. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerheti, hogyan készíthető biztonsági mentés az adatokról, és azok hogyan állíthatók vissza."
 sections:
-  - title: 5 perces gyors útmutatók
+- title: "5 perces gyors útmutatók"
+  items:
+  - type: paragraph
+    text: "Ismerje meg, hogyan készíthet biztonsági mentést Azure-beli virtuális gépekről az Azure-ban."
+  - type: list
+    style: icon48
     items:
-      - type: paragraph
-        text: 'Ismerje meg, hogyan készíthet biztonsági mentést Azure-beli virtuális gépekről az Azure-ban.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/en-us/azure/sql-database/media/index/portal.svg'
-            text: Azure Portal
-            href: quick-backup-vm-portal
-          - image:
-              src: 'https://docs.microsoft.com/en-us/azure/sql-database/media/index/logo_powershell.svg'
-            text: Azure PowerShell
-            href: quick-backup-vm-powershell
-          - image:
-              src: 'https://docs.microsoft.com/media/common/cli.svg'
-            text: Azure CLI
-            href: quick-backup-vm-cli
-  - title: Részletes útmutatók
+    - image:
+        src: https://docs.microsoft.com/azure/sql-database/media/index/portal.svg
+      text: Azure Portal
+      href: quick-backup-vm-portal
+    - image:
+        src: https://docs.microsoft.com/azure/sql-database/media/index/logo_powershell.svg
+      text: Azure PowerShell
+      href: quick-backup-vm-powershell
+    - image:
+        src: https://docs.microsoft.com/media/common/cli.svg
+      text: Azure CLI
+      href: quick-backup-vm-cli
+- title: "Részletes útmutatók"
+  items:
+  - type: paragraph
+    text: "Megtudhatja, hogyan készíthet biztonsági mentést virtuális gépekről az Azure-ban vagy a Windows Serverről, és hogyan állíthatja helyre azokat."
+  - type: list
+    style: ordered
     items:
-      - type: paragraph
-        text: 'Megtudhatja, hogyan készíthet biztonsági mentést virtuális gépekről az Azure-ban vagy a Windows Serverről, és hogyan állíthatja helyre azokat.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-backup-vm-at-scale">Biztonsági mentés készítése több Azure-beli virtuális gépről</a>
-          - html: <a href="tutorial-restore-disk">Lemez visszaállítása és helyreállított virtuális gép létrehozása</a>
-          - html: <a href="tutorial-restore-files">Fájlok visszaállítása egy virtuális gépen az Azure-ban</a>
-          - html: <a href="tutorial-backup-windows-server-to-azure">Biztonsági mentés készítése a Windows Serverről az Azure-ba</a>
-          - html: <a href="tutorial-backup-restore-files-windows-server">Azure-beli fájlok helyreállítása Windows Serverre</a>
-  - title: Példák
+    - html: "<a href=\"tutorial-backup-vm-at-scale\">Biztonsági mentés készítése több Azure-beli virtuális gépről</a>"
+    - html: "<a href=\"tutorial-restore-disk\">Lemez visszaállítása és helyreállított virtuális gép létrehozása</a>"
+    - html: "<a href=\"tutorial-restore-files\">Fájlok visszaállítása egy virtuális gépen az Azure-ban</a>"
+    - html: "<a href=\"tutorial-backup-windows-server-to-azure\">Biztonsági mentés készítése a Windows Serverről az Azure-ba</a>"
+    - html: "<a href=\"tutorial-backup-restore-files-windows-server\">Azure-beli fájlok helyreállítása Windows Serverre</a>"
+- title: "Példák"
+  items:
+  - type: paragraph
+    text: "A következő minták használatával védheti meg adatait az Azure-ban."
+  - type: list
+    style: unordered
+    className: spaced noBullet
     items:
-      - type: paragraph
-        text: A következő minták használatával védheti meg adatait az Azure-ban.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/backup/powershell-backup-samples">Azure PowerShell</a>
-  - title: Referencia
+    - html: <a href="/azure/backup/powershell-backup-samples">Azure PowerShell</a>
+- title: "Hivatkozás"
+  items:
+  - type: list
+    style: cards
+    className: cardsD
     items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Parancssor
-            html: <p><a href="/powershell/resourcemanager/azurerm.backup/v2.3.0/azurerm.backup">Azure PowerShell</a></p>
-          - title: Nyelvek
-            html: <p><a href="/dotnet/api/microsoft.azure.management.backupservices">.NET</a></p>
+    - title: Parancssor
+      html: <p><a href="/powershell/resourcemanager/azurerm.backup/v2.3.0/azurerm.backup">Azure PowerShell</a></p>
+    - title: Nyelvek
+      html: <p><a href="/dotnet/api/microsoft.azure.management.backupservices">.NET</a></p>

@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio
-ms.openlocfilehash: 5e8a410206f8c48affe171fb77b1a9555818953e
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 82580fbab68eab28a2027cd277213f1fb2a76e07
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/12/2018
 ---
 > [!NOTE]
-> Ebben a dokumentációban már nem aktuális pedig nem pontos. Ehelyett nyissa meg az Azure piactérről [értékesítő útmutató](https://docs.microsoft.com/en-us/azure/marketplace/seller-guide/cloud-partner-portal-seller-guide) útmutatót ajánlat közzététele az Azure piactéren.
+> Ebben a dokumentációban már nem aktuális pedig nem pontos. Ehelyett nyissa meg az Azure piactérről [értékesítő útmutató](https://docs.microsoft.com/azure/marketplace/seller-guide/cloud-partner-portal-seller-guide) útmutatót ajánlat közzététele az Azure piactéren.
 
 # <a name="publish-and-manage-an-offer-in-the-azure-marketplace"></a>Közzétehet és kezelhet egy ajánlatot az Azure piactéren
 Ez a cikk segítségével a fejlesztők létrehozásához, telepítéséhez és az egyéb Azure-ügyfél és a partnerek beszerzési és használata az Azure piactéren felsorolt megoldások kezelése valósul meg.

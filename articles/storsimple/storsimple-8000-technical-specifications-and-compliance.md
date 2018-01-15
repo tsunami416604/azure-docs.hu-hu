@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: d7cd31dcb2278284ada6e7ac1d8beab9e1b5b1df
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 95dbd80e740210c3800a0af10071875a6d6f0939
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>Műszaki adatok és a StorSimple eszköz megfelelőségét
 
@@ -35,7 +35,7 @@ A EBOD ház egy 580 W PCM, és elsődleges ház egy 764 W PCM használja. Az al�
 | Meghatározása | 580 W PCM (EBOD) | 764 W PCM (elsődleges) |
 | --- | --- | --- |
 | Maximális kimenő teljesítménye |580 W |764 |
-| gyakoriság |50/60 Hz |50/60 Hz |
+| Gyakoriság |50/60 Hz |50/60 Hz |
 | A feszültség tartomány kiválasztása |Automatikus beállításnak: 90 – 264 V AC, 47/63 Hz |Automatikus beállításnak: 90-264 V AC, 47/63 Hz |
 | Aktuális maximális behatolása |20 A |20 A |
 | Energiagazdálkodási tényező javítása |> 95 % névleges bemeneti feszültségtartomány |> 95 % névleges bemeneti feszültségtartomány |
@@ -80,7 +80,7 @@ A StorSimple eszköz merevlemez-meghajtók és SSD-meghajtót a 8100 és 8600 re
 | Teljes használható kapacitás * |~ 15 TB |~ 38 TB |
 | Megoldás maximális kapacitás (például felhő) |200 TB |500 TB |
 
-<sup>* </sup>- *A teljes használható kapacitás tartalmazza az adatokat, metaadatokat és pufferek rendelkezésre álló kapacitás.*
+<sup>* </sup>- *A teljes használható kapacitás tartalmazza az adatokat, metaadatokat és pufferek rendelkezésre álló kapacitás. Helyileg rögzített kötetekhez létesíthet a 8100 eszközön 8.5 TB-os vagy akár 22.5 TB a nagyobb 8600-eszközön. További információkért látogasson el [StorSimple helyileg rögzített kötetek](storsimple-8000-local-volume-faq.md).*
 
 ## <a name="enclosure-dimensions-and-weight-specifications"></a>Ház dimenziókat és súlyozás specifikációk
 
@@ -92,7 +92,7 @@ A következő táblázat a ház milliméterben és hüvelyk méretei.
 
 | Ház | Milliméterben | Hüvelyk |
 | --- | --- | --- |
-| Magassága |87.9 |3.46 |
+| Magasság |87.9 |3.46 |
 | Szélesség bordában között |483 |19.02 |
 | Ház törzsét között szélessége |443 |17.44 |
 | Az első bordában mélyreható ház törzs vége |577 |22.72 |
@@ -116,7 +116,7 @@ Ez a rész felsorolja a ház-környezetre vonatkozó előírások. A hőmérsék
 
 | Ház | Környezeti hőmérséklet-tartomány | Környezeti relatív nedvességtartalma | Maximális nedves tartályának |
 | --- | --- | --- | --- |
-| Működési |5 C - 35 C (41°-F - 95° F) |80 %-os 20 %-át nem-kondenzációs- |28 C (82° F) |
+| Működik |5 C - 35 C (41°-F - 95° F) |80 %-os 20 %-át nem-kondenzációs- |28 C (82° F) |
 | Nem működő |-40 C - 70° C (40°-F - 158° F) |5-100 % nem kicsapódó |29 C (84° F) |
 
 ### <a name="airflow-altitude-shock-vibration-orientation-safety-and-emc"></a>Légmozgás, magasság, ütés, vibráció, tájolás, biztonsági és EMC
@@ -193,7 +193,7 @@ A plug és a teljes power kábellel szerelvény meg kell felelnie az ország, am
 
 A 10 GbE hálózati adapterek DATA 2 és a DATA 3, tekintse meg a [támogatott hálózati kábelek és a modulok listáját](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most már készen áll az adatközpontban a StorSimple eszköz telepítése. További információkért lásd: [központi telepítése a helyszíni eszközök](storsimple-8000-deployment-walkthrough-u2.md).
 

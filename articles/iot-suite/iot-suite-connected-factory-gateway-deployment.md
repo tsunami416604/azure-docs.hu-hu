@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/11/2017
 ms.author: dobett
-ms.openlocfilehash: 8ae91e0dc0f3173b770bc8360a85abfe5d1e7740
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: c9854c68a95c2c1cc584503eb2f0b0dba6091016
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="deploy-an-edge-gateway-for-the-connected-factory-preconfigured-solution-on-windows-or-linux"></a>A Windows vagy Linux előre konfigurált csatlakoztatott gyári megoldás egy peremhálózati átjáró üzembe helyezéséhez
 
@@ -179,6 +179,6 @@ A saját OPC EE-kiszolgálók hozzáadása a csatlakoztatott gyári előre konfi
 
 ## <a name="next-steps"></a>További lépések
 
-Az előre konfigurált csatlakoztatott gyári megoldás architektúrájával kapcsolatos további tudnivalókért lásd: [csatlakoztatott gyári előre konfigurált megoldás forgatókönyv](https://docs.microsoft.com/en-us/azure/iot-suite/iot-suite-connected-factory-sample-walkthrough).
+Az előre konfigurált csatlakoztatott gyári megoldás architektúrájával kapcsolatos további tudnivalókért lásd: [csatlakoztatott gyári előre konfigurált megoldás forgatókönyv](https://docs.microsoft.com/azure/iot-suite/iot-suite-connected-factory-sample-walkthrough).
 
-További tudnivalók a [OPC Publisher hivatkozás megvalósítási](https://docs.microsoft.com/en-us/azure/iot-suite/iot-suite-connected-factory-publisher).
+További tudnivalók a [OPC Publisher hivatkozás megvalósítási](https://docs.microsoft.com/azure/iot-suite/iot-suite-connected-factory-publisher).

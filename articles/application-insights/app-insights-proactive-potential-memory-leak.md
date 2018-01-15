@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 452d0a9d0231e54df2a7f1df76c3c2c0fcd94d87
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: e98caaa387418d746905990436b69925a591b260
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="memory-leak-detection-preview"></a>Memória észlelését (előzetes verzió)
 
 Az Application Insights automatikusan elemzi a memória-felhasználás az egyes folyamatok, az alkalmazásban, és képes figyelmeztessen a potenciális memóriavesztés vagy nagyobb memória-felhasználás.
 
-Ehhez a szolgáltatáshoz nem speciális beállítási eltérő [teljesítményszámlálók konfigurálása](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-performance-counters) az alkalmazásra vonatkozóan. Aktív, ha elegendő memória teljesítményét számlálók telemetriai adatokat (például a saját memória) állít elő, az alkalmazás.
+Ehhez a szolgáltatáshoz nem speciális beállítási eltérő [teljesítményszámlálók konfigurálása](https://docs.microsoft.com/azure/application-insights/app-insights-performance-counters) az alkalmazásra vonatkozóan. Aktív, ha elegendő memória teljesítményét számlálók telemetriai adatokat (például a saját memória) állít elő, az alkalmazás.
 
 
 ## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Ha visszajelzést kap az ilyen típusú intelligens észlelési értesítést?

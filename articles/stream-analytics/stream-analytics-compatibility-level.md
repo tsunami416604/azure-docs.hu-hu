@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 01/03/2018
 ms.author: sngun
-ms.openlocfilehash: 70aa82f5d8a909121c42742bb5261d6c9b8570de
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 0d89259d54fba0bd57881ec69cb61b5af6d603b5
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics-feladatok kompatibilitási szintje
  
@@ -29,7 +29,7 @@ Kompatibilitási szint gondoskodik arról, hogy futnak-e meglévő feladatok meg
  
 ## <a name="set-a-compatibility-level"></a>A kompatibilitási szint beállítása 
 
-Kompatibilitási szintje a stream analytics-feladat működését vezérli. Beállíthatja azt a kompatibilitási szint Stream Analytics-feladat vagy a portál használatával a [feladat REST API-hívás létrehozása](https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-job). Az Azure Stream Analytics jelenleg két kompatibilitási szint által "1.0" és "1.1". Alapértelmezés szerint a kompatibilitási szintje "1.0" során az Azure Stream Analytics általánosan rendelkezésre álló operációs rendszerben megjelent. Az alapértelmezett érték frissítéséhez nyissa meg a meglévő Stream Analytics-feladat > Válassza ki a **kompatibilitási szint** beállítást **konfigurálása** szakaszt, és módosítsa az értéket. 
+Kompatibilitási szintje a stream analytics-feladat működését vezérli. Beállíthatja azt a kompatibilitási szint Stream Analytics-feladat vagy a portál használatával a [feladat REST API-hívás létrehozása](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job). Az Azure Stream Analytics jelenleg két kompatibilitási szint által "1.0" és "1.1". Alapértelmezés szerint a kompatibilitási szintje "1.0" során az Azure Stream Analytics általánosan rendelkezésre álló operációs rendszerben megjelent. Az alapértelmezett érték frissítéséhez nyissa meg a meglévő Stream Analytics-feladat > Válassza ki a **kompatibilitási szint** beállítást **konfigurálása** szakaszt, és módosítsa az értéket. 
 
 Győződjön meg arról, hogy a kompatibilitási szint frissítése előtt állítsa le a feladatot. A kompatibilitási szintje nem lehet frissíteni, ha a feladat futó állapotban van. 
 

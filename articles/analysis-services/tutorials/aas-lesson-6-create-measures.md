@@ -13,17 +13,15 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: a80500e806d85d0c1dd01d10fea74f59c92fb50a
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: fa47d4ea9aa019464e465c051b016dac7c224dc9
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="lesson-6-create-measures"></a>6. lecke: Mértékek létrehozása
-
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
+# <a name="create-measures"></a>Mértékek létrehozása
 
 Ebben a leckében a modellbe foglalandó mértékeket hoz majd létre. A létrehozott számított oszlopokhoz hasonlóan a mérték is egy DAX-képlet használatával készített számítás. A számított oszlopokkal ellentétben azonban a mértékek kiértékelése a felhasználó által kiválasztott *szűrőkkel* történik. Például egy kimutatás Sorfeliratok mezőjéhez adott oszloppal vagy szeletelővel. Az alkalmazott mérték a szűrő mindegyik cellájára számít egy értéket. A mértékek hatékony, rugalmas számítások, amelyeket szinte minden táblázatos modellbe érdemes bevenni, ha dinamikus számítások numerikus adatokon történő végrehajtására van szükség. További tudnivalókért lásd a [mértékek](https://docs.microsoft.com/sql/analysis-services/tabular-models/measures-ssas-tabular) ismertetését.
   
