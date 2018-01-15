@@ -220,9 +220,15 @@
           href: ../hdinsight-hadoop-manage-ambari.md
           maintainContext: true
           items:
+            - name: Fürtök optimalizálása az Ambari webes felülettel
+              href: ../hdinsight-changing-configs-via-ambari.md
+              maintainContext: true
             - name: Az Ambari REST API használata
               href: ../hdinsight-hadoop-manage-ambari-rest-api.md
               maintainContext: true
+        - name: HDInsight-fürt naplóinak kezelése
+          href: ../hdinsight-log-management.md
+          maintainContext: true
         - name: Tárfiókok hozzáadása
           href: ../hdinsight-hadoop-add-storage.md
           maintainContext: true
@@ -271,6 +277,9 @@
           maintainContext: true
     - name: Hibaelhárítás
       items:
+        - name: Lassú vagy meghibásodott HDInsight-fürt hibaelhárítása
+          href: ../hdinsight-troubleshoot-failed-cluster.md
+          maintainContext: true
         - name: Spark-hibaelhárítás
           href: apache-troubleshoot-spark.md
         - name: HDFS-hibaelhárítás
@@ -281,7 +290,7 @@
           maintainContext: true
         - name: Ismert problémák
           href: apache-spark-known-issues.md
-        - name: Erőforrások
+        - name: További források
           items:
             - name: Információk a HDInsight Linuxon való használatáról
               href: ../hdinsight-hadoop-linux-information.md
@@ -354,7 +363,7 @@
         - name: Fürtteljesítmény monitorozása
           href: ../hdinsight-key-scenarios-to-monitor.md
           maintainContext: true
-- name: Referencia
+- name: Hivatkozás
   items:
     - name: Kódminták
       href: 'https://azure.microsoft.com/en-us/resources/samples/?service=hdinsight'
@@ -370,7 +379,7 @@
       href: /rest/api/hdinsight/
     - name: REST API (Spark)
       href: /rest/api/hdinsightspark/
-- name: Erőforrások
+- name: További források
   items:
     - name: Kibocsátási megjegyzések
       href: ../hdinsight-release-notes.md
