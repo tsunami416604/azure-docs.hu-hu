@@ -6,13 +6,13 @@
       href: how-iot-edge-works.md
 - name: Gyors útmutatók
   items:
-    - name: Üzembe helyezés az Edge-ben – Linux
+    - name: Üzembe helyezés az Edge-ben – Linux/Mac
       href: quickstart-linux.md
     - name: Üzembe helyezés az Edge-ben – Windows
       href: quickstart.md
 - name: Oktatóanyagok
   items:
-    - name: Edge-eszköz szimulálása – Linux
+    - name: Edge-eszköz szimulálása – Linux/Mac
       href: tutorial-simulate-device-linux.md
     - name: Edge-eszköz szimulálása – Windows
       href: tutorial-simulate-device-windows.md

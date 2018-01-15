@@ -16,7 +16,7 @@
 #### [Változók](resource-manager-templates-variables.md)
 #### [Erőforrások](resource-manager-templates-resources.md)
 #### [Kimenetek](resource-manager-templates-outputs.md)
-### [Hivatkozás más sablonokra](resource-group-linked-templates.md)
+### [Kapcsolt és beágyazott sablonok](resource-group-linked-templates.md)
 ### [Függőség megadása két erőforrás között](resource-group-define-dependencies.md)
 ### [Több példány létrehozása](resource-group-create-multiple.md)
 ### [Erőforrás frissítése](/azure/architecture/building-blocks/extending-templates/update-resource)
@@ -80,7 +80,7 @@
 #### [Üzembe helyezési problémák Windows rendszerben](../virtual-machines/windows/troubleshoot-deploy-vm.md)
 ### [A telepítési hibák értelmezése](resource-manager-troubleshoot-tips.md)
 
-# Referencia
+# Hivatkozás
 ## [Sablon formátuma](/azure/templates/)
 ## [Sablonfüggvények](resource-group-template-functions.md)
 ### [Tömb- és objektumfüggvények](resource-group-template-functions-array.md)
@@ -97,7 +97,7 @@
 ## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/resourcemanagement.html)
 ## [REST](/rest/api/resources/)
 
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=azure-resource-manager)
