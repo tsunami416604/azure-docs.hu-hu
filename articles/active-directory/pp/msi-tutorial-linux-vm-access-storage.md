@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: bryanla
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 61d59f3d02a3fd12f251486e76228e67b28e6275
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 91fe06825d1db586b715617241b0ca39115414c0
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="use-a-user-assigned-managed-service-identity-msi-on-a-linux-vm-to-access-azure-storage"></a>A felhasználó által hozzárendelt felügyelt szolgáltatás Identity (MSI) használja a Linux virtuális gép Azure Storage eléréséhez
 
@@ -134,10 +134,10 @@ Mivel a fájlok a blob storage igényel, a blob-tároló, amely tárolja a fájl
 
 Használatával egy olyan MSI Csomaghoz, a kódot, hogy erőforrásokat, amelyek támogatják az Azure AD-alapú hitelesítés hitelesítést hozzáférési jogkivonatok kérheti le. Ebben az oktatóanyagban használhatja az Azure Storage.
 
-Először egy Azure Storage-tárolóhoz MSI identitás hozzáférést engedélyez. Ebben az esetben használhatja a korábban létrehozott tároló. Frissítse az értékeket a `<MSI CLIENTID>`, `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>`, `<STORAGE ACCOUNT NAME>`, és `<CONTAINER NAME>` a környezetnek megfelelően. Cserélje le `<CLIENT ID>` rendelkező a `clientId` tulajdonság által visszaadott a `az identity create` parancsot [hozzon létre egy felhasználó által hozzárendelt MSI](#create-a-user-assigned-msi):
+Először egy Azure Storage-tárolóhoz MSI identitás hozzáférést engedélyez. Ebben az esetben használhatja a korábban létrehozott tároló. Frissítse az értékeket a `<MSI PRINCIPALID>`, `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>`, `<STORAGE ACCOUNT NAME>`, és `<CONTAINER NAME>` a környezetnek megfelelően. Cserélje le `<CLIENT ID>` rendelkező a `clientId` tulajdonság által visszaadott a `az identity create` parancsot [hozzon létre egy felhasználó által hozzárendelt MSI](#create-a-user-assigned-msi):
 
 ```azurecli-interactive
-az role assignment create --assignee <MSI CLIENTID> --role ‘Reader’ --scope "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESOURCE GROUP>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>/blobServices/default/<CONTAINER NAME>"
+az role assignment create --assignee <MSI PRINCIPALID> --role ‘Reader’ --scope "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESOURCE GROUP>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>/blobServices/default/containers/<CONTAINER NAME>"
 ```
 
 A válasz tartalmazza a szerepkör-hozzárendelés létrehozása a részletei:
@@ -189,7 +189,7 @@ Lépések elvégzéséhez szüksége van egy SSH-ügyfél. Windows használ, ha 
 4. A hozzáférési jogkivonat segítségével elérni az Azure Storage, például a mintafájlt, amely korábban a tárolóba feltöltött tartalmának olvasását. Cserélje le az értékeket `<STORAGE ACCOUNT>`, `<CONTAINER NAME>`, és `<FILE NAME>` a korábban megadott értékeket, és `<ACCESS TOKEN>` a jogkivonatok az előző lépés eredményeképpen visszakapott.
 
    ```bash
-   curl https://<STORAGE ACCOUNT>.blob.core.windows.net/<CONTAINER NAME>/<FILE NAME>?api-version=2016-09-01 -H "Authorization: Bearer <ACCESS TOKEN>"
+   curl https://<STORAGE ACCOUNT>.blob.core.windows.net/<CONTAINER NAME>/<FILE NAME>?api-version=2017-11-09 -H "Authorization: Bearer <ACCESS TOKEN>"
    ```
 
    A válasz tartalmazza a fájl tartalma:

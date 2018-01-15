@@ -8,40 +8,39 @@ ms.topic: tutorial
 ms.date: 10/12/2017
 ms.author: v-rogara
 ms.custom: mvc
-ms.openlocfilehash: ea57fa35f09299f95cdfd3c11b44657d35972295
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: a80ae99c2ada00885019ee93e4ef36821340d3a5
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 01/13/2018
 ---
-# <a name="search-semi-structured-data-in-cloud-storage"></a>Keresési félig strukturált adatok felhőben
+# <a name="part-2-search-semi-structured-data-in-cloud-storage"></a>2. lépés: Keresési félig strukturált adatok felhőben
 
-Ezen kétrészes oktatóanyag sorozat megismerheti, hogyan használja az Azure search félig strukturált és strukturálatlan adatok kereséséhez. Ez az oktatóanyag bemutatja, hogyan kereshet félig strukturált adatok, például JSON tárolódnak az Azure-blobokat. Félig strukturált adatok címkéket és az adatok tartalmakra, amelyek jeleinek tartalmazza. Strukturált adatok abban, hogy nem hivatalosan szerkezete a adatmodell, például egy relációs adatbázis-séma abban különbözik.
+Kétlépéses oktatóanyag sorozat megismerheti, hogyan használja az Azure search félig strukturált és strukturálatlan adatok kereséséhez. [1. rész](../storage/blobs/storage-unstructured-search.md) strukturálatlan adatok keresési segítségével, telefonon, de ez az oktatóanyag, például a tárfiók létrehozása fontos előfeltételei is megtalálhatók. 
 
-Ebben a részben azt fedezi hogyan:
+A 2. rész lesz aktuális félig strukturált adatok, például JSON, Azure-blobokat tárolja. Félig strukturált adatok címkéket és az adatok tartalmakra, amelyek jeleinek tartalmazza. Felosztja a strukturálatlan adatok, amelyek wholistically indexelni, és megfelelő adatmodell, például egy relációs adatbázis-séma, amely mező alapon bejárható hivatalosan strukturált adatok közötti különbség.
+
+2. rész, megtudhatja, hogyan:
 
 > [!div class="checklist"]
-> * Hozzon létre és tölthet fel indexet belül az Azure Search szolgáltatást
-> * Az index az Azure Search szolgáltatás segítségével
+> * Egy Azure Search adatforrás az Azure blob-tároló konfigurálása
+> * Létrehozása és feltöltése az Azure Search-index és a bejárás a tárolót, és bontsa ki a kereshető tartalom indexelő
+> * Keresse meg a most létrehozott
 
 > [!NOTE]
-> "A JSON-tömb támogatás az Azure Search előzetes verziójú funkciók nem. Nincs jelenleg elérhető a portálon. Emiatt használunk az előzetes REST API-t, így ez a szolgáltatás és az API REST ügyféleszközökben."
+> Ez az oktatóanyag JSON tömb támogatást, amely jelenleg előzetes verziójú funkciók az Azure Search támaszkodik. Nem érhető el a portálon. Emiatt az előzetes REST API, így ez a szolgáltatás és az API REST ügyfél eszközt használunk.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez:
-* Fejezze be a [előző oktatóanyag](../storage/blobs/storage-unstructured-search.md)
-    * Ez az oktatóanyag használja az előző oktatóanyagban létrehozott tárolási fiók és a keresési szolgáltatást
-* Telepítse a többi ügyfél, és segít megérteni, hogyan hozható létre egy HTTP-kérelem
+* Létrehozása után a [az oktatóanyag előző](../storage/blobs/storage-unstructured-search.md) az előző oktatóanyag létrehozni a tárolási fiók és a keresési szolgáltatást.
 
+* A többi ügyfél és a HTTP-lekérdezés összeállításához megértéséhez telepítését. Ez az oktatóanyag céljából használjuk [Postman](https://www.getpostman.com/). Szabadon használhatja egy másik többi ügyfél, ha már tudjuk, egy adott.
 
-## <a name="set-up-the-rest-client"></a>A többi ügyfél beállítása
+## <a name="set-up-postman"></a>Postman beállítása
 
-Az oktatóanyag teljesítéséhez szüksége van egy REST-ügyfél. Ez az oktatóanyag céljából használjuk [Postman](https://www.getpostman.com/). Szabadon használhatja egy másik többi ügyfél, ha már tudjuk, egy adott.
+Indítsa el a Postman, és állítson be egy HTTP-kérelem. Ha nem ismeri ezt az eszközt, tekintse meg [felfedezés Azure Search REST API-k a Fiddler vagy Postman](search-fiddler.md) további információt.
 
-Miután telepítette a Postman, indítsa el.
-
-Ha az első alkalommal REST-hívások Azure-ba, ez az oktatóanyag a fontos összetevők rövid ismertetése: A kérés minden hívás ebben az oktatóanyagban metódus "POST". A fejléc kulcsai "Content-type" és "api-kulcsot." A fejléc kulcsok értékei a "application/json" és a "adminisztrációs kulcsot" (az adminisztrációs kulcsot helyőrzője az elsődleges kulcs) kulcsattribútumokkal. A szervezetnek, a tényleges tartalmát a hívás helyétől. Attól függően, hogy az ügyfél használ előfordulhat, hogy néhány változata hogyan hozható létre a lekérdezést, de azok alapjait.
+A kérelem minden hívás ebben az oktatóanyagban metódus "POST". A fejléc kulcsai "Content-type" és "api-kulcsot." A fejléc kulcsok értékei a "application/json" és a "adminisztrációs kulcsot" (az adminisztrációs kulcsot helyőrzője az elsődleges kulcs) kulcsattribútumokkal. A szervezetnek, a tényleges tartalmát a hívás helyétől. Attól függően, hogy az ügyfél használ előfordulhat, hogy néhány változata hogyan hozható létre a lekérdezést, de azok alapjait.
 
   ![Félig strukturált keresése](media/search-semi-structured-data/postmanoverview.png)
 
@@ -277,7 +276,7 @@ Ha szeretné kipróbálni, majd próbálja meg néhány további lekérdezések,
 
 A `$filter` paraméter csak akkor vannak megjelölve az index létrehozása szűrhető metaadatokkal működik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóprogramban megismerte félig strukturált adatok, például az az Azure search használatával keresése:
 

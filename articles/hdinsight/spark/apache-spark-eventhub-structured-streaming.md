@@ -16,8 +16,8 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: jgao
-ms.openlocfilehash: f302b84685b1992faef4813c0262223bcb5909aa
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: e0486d2c5f78da1d1e4a12703f120eccef43c305
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/12/2018
@@ -84,7 +84,7 @@ A pont a HDInsight-fürt készen áll. Ha nem, akkor várjon, amíg az befejező
 
 5. Az alkalmazás létrehozása a Spark Streaming Event Hubs csomag szükséges. Indítsa el a Spark, hogy automatikusan kéri le a függőségei közül a [Maven központi](https://search.maven.org), lehet, hogy a csomagokat az alábbiak szerint cserélje a Maven-koordináták ellátására:
 
-        spark-shell --packages "com.microsoft.azure:spark-streaming-eventhubs_2.11:2.1.0"
+        spark-shell --packages "com.microsoft.azure:spark-streaming-eventhubs_2.11:2.1.5"
 
 6. A Spark rendszerhéj befejeződése után betöltése, kell megjelennie:
 
@@ -92,10 +92,10 @@ A pont a HDInsight-fürt készen áll. Ha nem, akkor várjon, amíg az befejező
             ____              __
             / __/__  ___ _____/ /__
             _\ \/ _ \/ _ `/ __/  '_/
-        /___/ .__/\_,_/_/ /_/\_\   version 2.1.0.2.6.0.10-29
+        /___/ .__/\_,_/_/ /_/\_\   version 2.1.1.2.6.2.3-1
             /_/
                 
-        Using Scala version 2.11.8 (OpenJDK 64-Bit Server VM, Java 1.8.0_131)
+        Using Scala version 2.11.8 (OpenJDK 64-Bit Server VM, Java 1.8.0_151)
         Type in expressions to have them evaluated.
         Type :help for more information.
 
@@ -113,8 +113,12 @@ A pont a HDInsight-fürt készen áll. Ha nem, akkor várjon, amíg az befejező
             "eventhubs.progressTrackingDir" -> "/eventhubs/progress",
             "eventhubs.sql.containsProperties" -> "true"
             )
+            
+8. Az EventHub-kompatibilis végpont a következő képernyőn tekinti meg, ha a része, amely beolvassa `iothub-xxxxxxxxxx` az EventHub-kompatibilis Namespace nevét, és nem használható `eventhubs.namespace`. A mező `SharedAccessKeyName` használható `eventhubs.policyname`, és `SharedAccessKey` a `eventhubs.policykey`: 
 
-8. A módosított részlet illessze be a várakozási scala > promptjába, és nyomja le az ENTER visszatérési. A következőhöz hasonló kimenetnek kell megjelennie:
+        Endpoint=sb://iothub-xxxxxxxxxx.servicebus.windows.net/;SharedAccessKeyName=xxxxx;SharedAccessKey=xxxxxxxxxx 
+
+9. A módosított részlet illessze be a várakozási scala > promptjába, és nyomja le az ENTER visszatérési. A következőhöz hasonló kimenetnek kell megjelennie:
 
         scala> val eventhubParameters = Map[String, String] (
             |       "eventhubs.policyname" -> "RootManageSharedAccessKey",
@@ -128,31 +132,31 @@ A pont a HDInsight-fürt készen áll. Ha nem, akkor várjon, amíg az befejező
             |     )
         eventhubParameters: scala.collection.immutable.Map[String,String] = Map(eventhubs.sql.containsProperties -> true, eventhubs.name -> hub1, eventhubs.consumergroup -> $Default, eventhubs.partition.count -> 2, eventhubs.progressTrackingDir -> /eventhubs/progress, eventhubs.policykey -> 2P1Q17Wd1rdLP1OZQYn6dD2S13Bb3nF3h2XZD9hvyyU, eventhubs.namespace -> hdiz-docs-eventhubs, eventhubs.policyname -> RootManageSharedAccessKey)
 
-9. A Tovább, megkezdődik a hozhatnak létre a Spark strukturált adatfolyam-lekérdezést a forrás kell megadni. Illessze be a következő Spark rendszerhéjat, és nyomja le az ENTER visszatérési.
+10. A Tovább, megkezdődik a hozhatnak létre a Spark strukturált adatfolyam-lekérdezést a forrás kell megadni. Illessze be a következő Spark rendszerhéjat, és nyomja le az ENTER visszatérési.
 
         val inputStream = spark.readStream.
         format("eventhubs").
         options(eventhubParameters).
         load()
 
-10. A következőhöz hasonló kimenetnek kell megjelennie:
+11. A következőhöz hasonló kimenetnek kell megjelennie:
 
         inputStream: org.apache.spark.sql.DataFrame = [body: binary, offset: bigint ... 5 more fields]
 
-11. A lekérdezés a következő szerzői, hogy a konzol kimenetét ír. Ehhez a következő beillesztése Spark rendszerhéj, majd nyomja le az visszatérési.
+12. A lekérdezés a következő szerzői, hogy a konzol kimenetét ír. Ehhez a következő beillesztése Spark rendszerhéj, majd nyomja le az visszatérési.
 
         val streamingQuery1 = inputStream.writeStream.
         outputMode("append").
         format("console").start().awaitTermination()
 
-12. Megtekintheti az egyes kötegekben, indítsa el a kimenet az alábbihoz hasonló
+13. Megtekintheti az egyes kötegekben, indítsa el a kimenet az alábbihoz hasonló
 
         -------------------------------------------
         Batch: 0
         -------------------------------------------
         [Stage 0:>                                                          (0 + 2) / 2]
 
-13. Ez a kimeneti eredmények minden microbatch események feldolgozása követi. 
+14. Ez a kimeneti eredmények minden microbatch események feldolgozása követi. 
 
         -------------------------------------------
         Batch: 0
@@ -184,8 +188,8 @@ A pont a HDInsight-fürt készen áll. Ha nem, akkor várjon, amíg az befejező
         +--------------------+------+---------+------------+---------+------------+----------+
         only showing top 20 rows
 
-14. Új események az esemény termelő érkezésekor, akkor dolgozza fel a strukturált adatfolyam-lekérdezés.
-15. Győződjön meg arról, a HDInsight-fürt törlése, ha elkészült, ez a minta futtatása.
+15. Új események az esemény termelő érkezésekor, akkor dolgozza fel a strukturált adatfolyam-lekérdezés.
+16. Győződjön meg arról, a HDInsight-fürt törlése, ha elkészült, ez a minta futtatása.
 
 
 

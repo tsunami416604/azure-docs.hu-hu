@@ -14,21 +14,73 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/25/2016
+ms.date: 01/11/2018
 ms.author: saurinsh
-ms.openlocfilehash: 0fc32960fc2f1ae69315dbfd6bfb8c34c4adc0fa
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 6a43ea602052b9b3338567571075742adc5a3ca0
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="manage-domain-joined-hdinsight-clusters"></a>Tartományhoz csatlakozó HDInsight-fürtök kezelése
 Ismerje meg, a felhasználók és a szerepköröket, a tartományhoz, és a tartományhoz a HDInsight-fürtök kezelése.
 
+## <a name="access-the-clusters-with-enterprise-security-package"></a>Hozzáférés a vállalati biztonsági csomag fürtön.
+
+A vállalati biztonsági csomag (korábbi nevén HDInsight prémium) a fürt, ahol hitelesítési végezhető el az Active Directory és az engedélyezés Apache Pletyka és a tároló hozzáférés-vezérlési listák (ACL-ek ADLS) több felhasználói hozzáférést biztosít. Engedélyezési biztosít a biztonságos határok több felhasználó használ, és lehetővé teszi, hogy csak jogosultsággal rendelkező felhasználók férhetnek hozzá az adatokhoz, a hitelesítési házirendek alapján.
+
+Biztonság és a felhasználó elkülönítési fontosak a HDInsight-fürthöz, a vállalati biztonsági csomag. Ezek a követelmények teljesítéséhez, a vállalati biztonsági csomag fürt SSH-hozzáférését blokkolja. Az alábbi táblázat a minden egyes fürttípus ajánlott hozzáférési metódusokat:
+
+|Számítási feladat|Forgatókönyv|Hozzáférési módszer|
+|--------|--------|-------------|
+|Hadoop|Hive – interaktív feladatok/lekérdezések |<ul><li>[Beeline](#beeline)</li><li>[Hive nézete](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power bi-ban](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio eszközök](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
+|Spark|Interaktív feladatok/lekérdezések, interaktív PySpark|<ul><li>[Beeline](#beeline)</li><li>[A Livy Zeppelin](../spark/apache-spark-zeppelin-notebook.md)</li><li>[Hive nézete](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power bi-ban](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio eszközök](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
+|Spark|Kötegelt forgatókönyvek – Spark küldés, PySpark|<ul><li>[Livy](../spark/apache-spark-livy-rest-interface.md)</li></ul>|
+|Interaktív lekérdezés (LLAP)|Interaktív|<ul><li>[Beeline](#beeline)</li><li>[Hive nézete](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power bi-ban](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio eszközök](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
+|Bármelyik|Egyéni alkalmazás telepítése|<ul><li>[A Parancsfájlműveletek](../hdinsight-hadoop-customize-cluster-linux.md)</li></ul>|
+
+
+Standard API-val segíti a biztonsági szempontból. Ezenkívül töltse le a következő előnyöket biztosítja:
+
+1.  **Felügyeleti** – kezelheti a kódot és a szabványos API-k használatával feladatok automatizálása – Livy, HS2 stb.
+2.  **Naplózási** – az SSH, nincs mód annak vizsgálatához, mely felhasználók SSH volt a fürthöz. Ez nem tudnák arra az esetre, amikor a feladatok össze keresztül szabványos végpontot, azok akkor hajtható végre felhasználó környezetében. 
+
+
+
+### <a name="beeline"></a>Beeline használata 
+Beeline telepítése a számítógépre, és a nyilvános interneten keresztül, az alábbi paraméterekkel: 
+
+```
+- Connection string: -u 'jdbc:hive2://&lt;clustername&gt;.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2'
+- Cluster login name: -n admin
+- Cluster login password -p 'password'
+```
+
+Ha helyileg telepített Beeline, és az Azure virtuális hálózaton keresztül csatlakozni, használja a következő paramétereket: 
+
+```
+- Connection string: -u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'
+```
+
+A teljesen minősített tartománynevét egy headnode található, olvassa el az Ambari REST API-dokumentumok kezeléséhez HDInsight.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## <a name="users-of-domain-joined-hdinsight-clusters"></a>A tartományhoz a HDInsight-fürtök felhasználók
 Egy HDInsight-fürthöz nem csatlakozó tartomány-van két olyan felhasználói fiókot, amely a fürt létrehozása során jönnek létre:
 
-* **Ambari admin**: Ez a fiók akkor is *Hadoop felhasználói* vagy *HTTP felhasználói*. Ez a fiók használható jelentkezhet be az Ambari https://&lt;clustername >. azurehdinsight.net. Is használható lekérdezéseket futtathat az Ambari nézetek, külső eszközök (azaz PowerShell, lépni a Templeton, Visual Studio) keresztül feladatok végrehajtása és a Hive ODBC-illesztővel és az Üzletiintelligencia-eszközök (pl. Excel, Power bi vagy Tableau) a hitelesítést.
+* **Ambari admin**: Ez a fiók akkor is *Hadoop felhasználói* vagy *HTTP felhasználói*. Ez a fiók használható jelentkezhet be az Ambari https://&lt;clustername >. azurehdinsight.net. Is használható lekérdezéseket futtathat az Ambari nézetek, külső eszközök (például PowerShell, lépni a Templeton, Visual Studio) keresztül feladatok végrehajtása és a Hive ODBC-illesztővel és az Üzletiintelligencia-eszközök (például az Excel, Power bi vagy Tableau) a hitelesítést.
 * **SSH-felhasználó**: Ez a fiók SSH együtt, és sudo parancsok. A Linux virtuális gépek legfelső szintű engedélyekkel rendelkezik.
 
 A tartományhoz csatlakoztatott HDInsight-fürt három mellett Ambari rendszergazda új felhasználókat és SSH-felhasználó rendelkezik.
@@ -43,7 +95,7 @@ A tartományhoz csatlakoztatott HDInsight-fürt három mellett Ambari rendszerga
     Megjegyzés: az egyéb AD a felhasználóknak is ezeket a jogokat.
 
     Nincsenek egyes végpontok a fürtben (például lépni a Templeton) Pletyka által nem kezelt, és ezért nem biztonságos. A végpontok az összes felhasználó számára, kivéve a fürt rendszergazdai tartományi felhasználó van zárolva.
-* **Rendszeres**: fürt létrehozása során megadhatja a több active directory-csoportokat. Ebben a csoportokban lévő felhasználók Pletyka és az Ambari lesznek szinkronizálva. Ezek a felhasználók tartományi felhasználók, és hozzáférhetnek csak Pletyka által felügyelt végpontok (például hiveserver2-n). Az RBAC-házirendek és ezek a felhasználók használható naplózási lesz.
+* **Rendszeres**: fürt létrehozása során megadhatja a több active directory-csoportokat. Ebben a csoportokban lévő felhasználók Pletyka és az Ambari vannak szinkronizálva. Ezek a felhasználók tartományi felhasználók, és csak Pletyka által felügyelt végpontok (például hiveserver2-n) hozzáféréssel rendelkeznek. Az RBAC-házirendek és ezek a felhasználók használható naplózási lesz.
 
 ## <a name="roles-of-domain-joined-hdinsight-clusters"></a>A tartományhoz a HDInsight-fürtök szerepkörök
 Tartományhoz csatlakozó HDInsight rendelkezik a következő szerepkörök:
@@ -63,8 +115,9 @@ Tartományhoz csatlakozó HDInsight rendelkezik a következő szerepkörök:
     ![HDInsight szerepkörök engedélyekkel a tartományhoz](./media/apache-domain-joined-manage/hdinsight-domain-joined-roles-permissions.png)
 
 ## <a name="open-the-ambari-management-ui"></a>Nyissa meg az Ambari kezelőfelület
+
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Nyissa meg a HDInsight-fürt egy panelen. Lásd: [listája és megjelenítése fürtök](../hdinsight-administer-use-management-portal.md#list-and-show-clusters).
+2. Nyissa meg a HDInsight-fürthöz. Lásd: [listája és megjelenítése fürtök](../hdinsight-administer-use-management-portal.md#list-and-show-clusters).
 3. Kattintson a **irányítópult** a felső menüben Ambari megnyitásához.
 4. Jelentkezzen be az Ambari segítségével a fürt rendszergazdai tartományi felhasználónevet és jelszót.
 5. Kattintson a **Admin** legördülő menü felső sarokban található jobbra, és kattintson a **kezelése az Ambari**.
@@ -106,7 +159,7 @@ Tartományhoz csatlakozó HDInsight rendelkezik a következő szerepkörök:
 2. Kattintson a bal oldali menü **szerepkörök**.
 3. Kattintson a **felhasználó hozzáadása** vagy **csoport hozzáadása** felhasználók és csoportok hozzárendelése különböző szerepeknek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A tartományhoz csatlakoztatott HDInsight-fürtök konfigurálásához lásd: [Tartományhoz csatlakoztatott HDInsight-fürtök konfigurálása](apache-domain-joined-configure.md).
 * A Hive-házirendek konfigurálásához és a Hive-lekérdezések futtatásához lásd: [Hive-házirendek konfigurálása a tartományhoz csatlakoztatott HDInsight-fürtökben](apache-domain-joined-run-hive.md).
 * Az SSH használata a tartományhoz csatlakoztatott HDInsight-fürtökön Hive-lekérdezéseket futtat, tekintse meg a [az SSH a Hdinsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).

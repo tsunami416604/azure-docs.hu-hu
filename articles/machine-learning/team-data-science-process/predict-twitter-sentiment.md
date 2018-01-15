@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: bradsev;
-ms.openlocfilehash: 20bc3f31897cec4a3cec9ca409062229133102f5
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: df1124ddb436f0cfeec8f4ed9728fa15278b9325
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="predict-twitter-sentiment-with-word-embeddings-by-using-the-team-data-science-process"></a>A word beágyazásokat Twitter sentiment előrejelzése az Team tudományos folyamat használatával
 
@@ -131,7 +131,7 @@ Az utolsó lépés a képzett véleményeket előrejelzési modell webszolgálta
 
 ![Kubernetes irányítópult](./media/predict-twitter-sentiment/kubernetes-dashboard.PNG)
 
-A operationalization folyamatáról további információk: [üzembe helyezése az Azure Machine Learning modell webszolgáltatásként](https://docs.microsoft.com/en-us/azure/machine-learning/preview/model-management-service-deploy).
+A operationalization folyamatáról további információk: [üzembe helyezése az Azure Machine Learning modell webszolgáltatásként](https://docs.microsoft.com/azure/machine-learning/preview/model-management-service-deploy).
 
 ## <a name="conclusion"></a>Összegzés
 
@@ -140,11 +140,11 @@ Ebben a cikkben megismerte a Word2Vec és a céggel kapcsolatos véleményeket-s
 
 ## <a name="references"></a>Referencia
 
-* [Team tudományos folyamata](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/overview) 
+* [Team tudományos folyamata](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview) 
 * [Az Azure Machine Learning Team adatok tudományos folyamat (TDSP) használata](https://aka.ms/how-to-use-tdsp-in-aml)
 * [Az Azure Machine Learninghez TDSP projektsablonjai](https://aka.ms/tdspamlgithubrepo)
-* [Az Azure Machine Learning-munkaterület](https://docs.microsoft.com/en-us/azure/machine-learning/preview/)
+* [Az Azure Machine Learning-munkaterület](https://docs.microsoft.com/azure/machine-learning/preview/)
 * [USA bevétel adatkészlet UCI ML tárházból](https://archive.ics.uci.edu/ml/datasets/adult)
-* [Orvosbiológiai entitás felismerés TDSP sablonok segítségével](https://docs.microsoft.com/en-us/azure/machine-learning/preview/scenario-tdsp-biomedical-recognition)
+* [Orvosbiológiai entitás felismerés TDSP sablonok segítségével](https://docs.microsoft.com/azure/machine-learning/preview/scenario-tdsp-biomedical-recognition)
 * [Mikolov, Tomas, és mások. "Szavak és kifejezések és azok Compositionality ábrázolásai elosztott. Kiadásokban a Neurális adatfeldolgozó rendszerek." 2013.](https://arxiv.org/abs/1310.4546)
 * [Tang, Duyu, és mások. "A tanulási véleményeket-specifikus Word beágyazás Twitter véleményeket besorolási." HOZZÁFÉRÉS-VEZÉRLÉSI LISTA (1). 2014.](http://www.aclweb.org/anthology/P14-1146)

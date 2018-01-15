@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2018
 ms.author: mabrigg
-ms.openlocfilehash: 9b65a3cb5cdcc8a558e5c989026f2eee2f527bb5
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 0a4118a8927e4261fafa307af5b9c29623ce5c3f
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Forgassa el a titkos kulcsok Azure verem
 
@@ -30,7 +30,7 @@ Frissítés Azure verem összetevők egy rendszeres ütemben történik, a jelsz
 
 Az alaplapi felügyeleti vezérlővel (BMC) a kiszolgálók fizikai állapotának figyelése. A paramétereknek, valamint útmutatást a gazdagépben található bmc jelszófrissítés számítógépgyártó (OEM) hardvergyártójához függően változhat.
 
-1. A bmc-n a kiszolgáló frissítése az OEM utasításai szerint. A környezetben minden BMC jelszavát azonosnak kell lennie.
+1. Frissítse a bmc-hez, az Azure-verem fizikai kiszolgálókon az OEM utasításai szerint. A környezetben minden BMC jelszavát azonosnak kell lennie.
 2. Nyissa meg a kiemelt végpont Azure verem munkamenetek. Utasítás, lásd: [használatával a privilegizált végpont Azure verem](azure-stack-privileged-endpoint.md).
 3. Után a PowerShell parancssorba változott **[IP-cím vagy ERCS virtuális gép neve]: PS >** vagy **[azs-ercs01]: PS >**a környezet futtatása attól függően, hogy `Set-BmcPassword` futtatásával `invoke-command`. A privilegizált végpont munkamenet-változó továbbítsa paraméterként.  
 Példa:

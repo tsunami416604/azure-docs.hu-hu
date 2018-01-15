@@ -12,13 +12,13 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2017
+ms.date: 01/04/2018
 ms.author: yurid
-ms.openlocfilehash: f4614ac55cde26e921edfe41160e2766aef6bb2c
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: b304ce8c60aefc417993574a0baa43cfc2298d66
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="understanding-security-alerts-in-azure-security-center"></a>Az Azure Security Center biztonsági riasztásainak megismerése
 Ez a cikk segít megismerni az Azure Security Centerben elérhető biztonsági riasztások különböző típusait, valamint a kapcsolódó elemzéseket. A riasztások és incidensek kezelésével kapcsolatos további információkért olvassa el a [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) című cikket.
@@ -144,7 +144,6 @@ A Security Center fejlett elemzési módszerekkel azonosítja a feltört erőfor
 * **Gyanús hitelesítő adatok dokumentumokhoz**: Ez a riasztás egy gyanús, előre kiszámított, általános jelszókivonatot jelez, amelyet a rosszindulatú programok egy fájl végrehajtásához használnak.
 * **Dinamikus PS-szkript konstrukció**: Ez a riasztás egy PowerShell-szkript dinamikus létrehozását jelzi. Ezt a módszert a támadók szkriptek fokozatos felépítésére használják az illetéktelen hálózati behatolást jelző (IDS) rendszerek megkerülése érdekében.
 * **Metasploitra utaló jelek**: Ez a riasztás a Metasploit-keretrendszerhez kapcsolódó tevékenységet jelez, amely számos, támadáshoz használható funkciót és eszközt biztosít.
-* **SENSE-módosítás**: Ez a riasztás a SENSE, a Windows Defender ATP biztonsági monitorozási szolgáltatásának letiltására tett kísérletet jelez.
 * **Gyanús fióktevékenység**: Ez a riasztás egy géphez való csatlakozásra tett kísérletet jelez egy nemrégiben feltört fiók használatával.
 * **Lehetséges gyanús hozzáférés ütemezési feladatokhoz**: Ez a riasztás egy cron feladat végrehajtását jelzi, amelyet a támadók rosszindulatú programok ütemezett végrehajtásához használnak.
 * **Lehetséges gyanús hozzáférés parancselőzmény-fájlokhoz**: Ez a riasztás a parancsok előzményfájljához való rendellenes hozzáférést jelez.
@@ -189,7 +188,7 @@ A Security Center hálózati fenyegetettség-észlelése úgy működik, hogy au
 
 A Security Center erőforrás-elemzése a PaaS (szolgáltatásként üzemeltetett platform) szolgáltatásokra összpontosít, mint például az [Azure SQL Database fenyegetésészlelés](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection) funkcióval való integrációja. Ezeknek a területeknek az elemzési eredményei alapján a Security Center elindít egy erőforráshoz kapcsolódó riasztást.
 
-* **Lehetséges SQL-injektálás**: Az SQL-injektálás olyan támadás, amely kártékony kódot szúr be a karakterláncokba, amelyeket a rendszer később átad az SQL Server példányának elemzés és végrehajtás céljából. Az SQL-utasításokat létrehozó összes eljárást meg kell vizsgálni az injektálási biztonsági rések felderítéséhez, mivel az SQL Server végrehajtja az összes olyan lekérdezést, amely szintaktikailag érvényes. Az SQL fenyegetésészlelési funkciója gépi tanulás, viselkedéselemzés és rendellenességészlelés alapján határozza meg azokat a gyanús eseményeket, amelyek az Azure SQL-adatbázisokban megtörténhetnek. Példa: 
+* **Lehetséges SQL-injektálás**: Az SQL-injektálás olyan támadás, amely kártékony kódot szúr be a karakterláncokba, amelyeket a rendszer később átad az SQL Server példányának elemzés és végrehajtás céljából. Az SQL-utasításokat létrehozó összes eljárást meg kell vizsgálni az injektálási biztonsági rések felderítéséhez, mivel az SQL Server végrehajtja az összes olyan lekérdezést, amely szintaktikailag érvényes. Az SQL fenyegetésészlelési funkciója gépi tanulás, viselkedéselemzés és rendellenességészlelés alapján határozza meg azokat a gyanús eseményeket, amelyek az Azure SQL-adatbázisokban megtörténhetnek. Például: 
     * Egy korábbi alkalmazott megpróbált hozzáférni az adatbázishoz
     * SQL-injektálási támadások
     * Egy felhasználó szokatlan otthoni hozzáférése a vállalati adatbázishoz
@@ -208,7 +207,7 @@ Ha van további elérhető információ, akkor a biztonsági incidensben, a rias
 ![Szokatlan hozzáférés miatti riasztás](./media/security-center-alerts-type/security-center-alerts-type-fig20.png) 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben dokumentumban megismerhette a Security Center különböző típusú biztonsági riasztásait. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Biztonsági incidensek kezelése az Azure Security Centerben](security-center-incident.md)

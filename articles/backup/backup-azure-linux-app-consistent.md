@@ -1,6 +1,6 @@
 ---
 title: "Az Azure Backup: a Linux virtuális gépek alkalmazáskonzisztens biztonsági mentések |} Microsoft Docs"
-description: "Parancsfájlok segítségével alkalmazáskonzisztens biztonsági mentések garantálja az Azure-ba, a Linux virtuális gépek számára. A parancsfájlok csak Linux virtuális gépek erőforrás-kezelő telepítések; vonatkoznak a parancsfájlok nem vonatkoznak a Windows virtuális gépek vagy a service manager központi telepítéseket. Ez a cikk végigvezeti a parancsfájlok, beleértve a hibaelhárítás konfigurálásának lépéseit."
+description: "Az Azure-ba, a Linux virtuális gépek alkalmazáskonzisztens biztonsági mentés létrehozása. Ez a cikk ismerteti, hogy a parancsfájl-keretrendszer biztonsági mentése Azure telepített Linux virtuális gépek konfigurálása. Ez a cikk hibaelhárítási információkat is."
 services: backup
 documentationcenter: dev-center-name
 author: anuragmehrotra
@@ -12,35 +12,31 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 4/12/2017
+ms.date: 1/12/2018
 ms.author: anuragm;markgal
-ms.openlocfilehash: 378c65bec8fd1f880ed459e76f5e4b5d85e49d2a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c2437b4cd90deda3e7239d87837a47a072f52835
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/13/2018
 ---
-# <a name="application-consistent-backup-of-azure-linux-vms-preview"></a>Alkalmazáskonzisztens biztonsági mentését Azure Linux virtuális gépek (előzetes verzió)
+# <a name="application-consistent-backup-of-azure-linux-vms"></a>Azure Linux virtuális gépek alkalmazáskonzisztens biztonsági mentését
 
-Ez a cikk megbeszélések kapcsolatos a Linux-keretrendszer, és hogyan használható az Azure Linux virtuális gépek alkalmazáskonzisztens biztonsági másolatok készítése utáni parancsfájl, és előre parancsfájlok.
-
-> [!Note]
-> A parancsfájl előtti és utáni parancsfájl keretrendszer csak Azure Resource Manager telepített Linux virtuális gépek esetén támogatott. Parancsfájl-alkalmazás konzisztencia nem támogatottak a Service Manager telepített virtuális gépek vagy windowsos virtuális gépekre.
->
+Ha a virtuális gépek biztonsági mentési pillanatképek készítése, alkalmazás konzisztencia azt jelenti, hogy az alkalmazások indítása, ha a virtuális gépek helyreállítása után indítsa el. Mivel is tekinthető, rendkívül fontos a alkalmazás következetesség. Győződjön meg arról, hogy a Linux virtuális gépek konzisztens, a Linux-parancsfájl előtti és utáni parancsfájl keretrendszer használatával alkalmazáskonzisztens biztonsági másolatok készítése alkalmazás. A parancsfájl előtti és utáni parancsfájl keretrendszer támogatja az Azure Resource Manager telepített Linux virtuális gépek. Parancsfájl-alkalmazás konzisztencia nem támogatják a Service Manager telepített virtuális gépek vagy windowsos virtuális gépekre.
 
 ## <a name="how-the-framework-works"></a>A keretrendszer működése
 
-A keretrendszer egyéni előtti parancsfájlok futtatásához lehetőséget biztosít, és utáni parancsfájlok, amíg a virtuális gép pillanatképek van véve. Előtti parancsfájlok a virtuális gép pillanatképet, és utáni parancsfájlok azonnal, miután a virtuális gép pillanatképének készítése előtt. Ez lehetővé teszi a rugalmasságot az alkalmazás és a környezet szabályozására, amíg a virtuális gép pillanatképek van véve.
+A keretrendszer egyéni előtti parancsfájlok futtatásához lehetőséget biztosít, és utáni parancsfájlok, amíg a virtuális gép pillanatképek van véve. Előtti parancsfájlok futtatása csak a Virtuálisgép-pillanatképét, és rögtön a virtuális gép pillanatkép készítése utáni parancsfájlok végrehajtása előtt. Előtti és utáni parancsfájlok rugalmasság biztosítása a vezérlésére az alkalmazás és a környezet, amíg a virtuális gép pillanatképek van véve.
 
-Ebben a forgatókönyvben fontos alkalmazáskonzisztens a virtuális gép biztonsági mentés. A előtti parancsfájl fokozatosan leválasztani az IOs API-alkalmazás natív elindíthat és memórián belüli tartalom kiüríteni a lemezre. Ez biztosítja, hogy a pillanatkép alkalmazáskonzisztens (Ez azt jelenti, hogy az alkalmazás előre fel a virtuális gép indításakor visszaállítás utáni). Az IOs olvasztása utáni parancsfájl használható. Ennek érdekében alkalmazás natív API-val, hogy az alkalmazás folytathatja a normál működés post-virtuális gép pillanatfelvétele.
+Előtti parancsfájlok el natív alkalmazás API-k, mely fokozatosan leválasztani az IOs, és a memórián belüli tartalom kiüríteni a lemezre. Ezek a műveletek legyen a pillanatkép konzisztens alkalmazás. Utáni parancsfájlok natív alkalmazás API-k segítségével az IOs, amely lehetővé teszi az alkalmazások újraindítani a virtuális gép pillanatkép utáni olvasztása.
 
 ## <a name="steps-to-configure-pre-script-and-post-script"></a>Parancsfájl előtti és utáni parancsfájl konfigurálásának lépései
 
 1. Jelentkezzen be a Linux virtuális gép, amelyet szeretne biztonsági másolatot készíteni a gyökér szintű felhasználóként.
 
-2. Töltse le **VMSnapshotScriptPluginConfig.json** a [GitHub](https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig), és másolja azt a **/etc/azure** mappájában található összes virtuális gépet, készítsen biztonsági másolatot fog. Hozzon létre a **/etc/azure** könyvtárat, ha már nem létezik.
+2. A [GitHub](https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig), töltse le **VMSnapshotScriptPluginConfig.json** és másolja a **/etc/azure** mappa az összes virtuális gépet, készítsen biztonsági másolatot szeretne. Ha a **/etc/azure** mappa nem létezik, hozza létre.
 
-3. Másolja a előtti parancsfájl és utáni parancsfájl az összes virtuális gépet, készítsen biztonsági másolatot szeretne az alkalmazáshoz. A parancsfájlok másolhatja egyik helyen, a virtuális Gépen. Ne felejtse el frissíteni a parancsfájlok az elérési útját a **VMSnapshotScriptPluginConfig.json** fájlt.
+3. Másolja a parancsfájl előtti és utáni parancsfájl az összes virtuális gépet, készítsen biztonsági másolatot szeretne az alkalmazáshoz. A parancsfájlok másolhatja egyik helyen, a virtuális Gépen. Ne felejtse el frissíteni a parancsfájlok az elérési útját a **VMSnapshotScriptPluginConfig.json** fájlt.
 
 4. Ellenőrizze, hogy ezeket a fájlokat az alábbi engedélyeket:
 
@@ -51,8 +47,8 @@ Ebben a forgatókönyvben fontos alkalmazáskonzisztens a virtuális gép bizton
    - **Utáni parancsfájl** engedély "700." Például csak a "Gyökér" felhasználói rendelkeznie kell "Olvasás", "write" és "végrehajtási" engedélyeket ehhez a fájlhoz.
 
    > [!Important]
-   > A keretrendszer teljesítményigényű nyújt a felhasználóknak. Fontos, hogy biztonságos, és csak "Gyökér" felhasználó hozzáfér a kritikus JSON és a parancsfájl fájlokhoz.
-   > A korábbi feltételeknek nem felel meg, ha a parancsprogram nem futott. Az eredmény rendszerösszeomlás/konzisztens biztonsági mentés.
+   > A keretrendszer teljesítményigényű nyújt a felhasználóknak. A keretrendszer biztonságos, és győződjön meg arról, csak a "Gyökér" felhasználó rendelkezik hozzáférési jogosultsággal a kritikus JSON és a parancsfájlokat.
+   > A feltételeknek nem felel meg, ha a parancsfájl futtatásának, mely eredményezi egy fájl rendszerösszeomlás és konzisztens biztonsági mentést.
    >
 
 5. Konfigurálása **VMSnapshotScriptPluginConfig.json** itt leírtak szerint:
@@ -62,9 +58,9 @@ Ebben a forgatókönyvben fontos alkalmazáskonzisztens a virtuális gép bizton
 
     - **postScriptLocation**: Adja meg a utáni parancsfájl elérési útját a virtuális Gépen, amelyet szeretne biztonsági másolatot.
 
-    - **preScriptParams**: Adja meg a választható paraméterek: a előtti parancsfájl átadandó igénylő. Minden paraméter idézőjelek között kell lennie, és vesszővel elválasztva, ha több paramétert kell lennie.
+    - **preScriptParams**: Adja meg a választható paraméterek: a előtti parancsfájl átadandó igénylő. Minden paraméter idézőjelek között kell lennie. Ha több paramétert használja, külön paraméterek vesszővel válassza el.
 
-    - **postScriptParams**: Adja meg a választható paraméterek: a utáni parancsfájl átadandó igénylő. Minden paraméter idézőjelek között kell lennie, és vesszővel elválasztva, ha több paramétert kell lennie.
+    - **postScriptParams**: Adja meg a választható paraméterek: a utáni parancsfájl átadandó igénylő. Minden paraméter idézőjelek között kell lennie. Ha több paramétert használja, külön paraméterek vesszővel válassza el.
 
     - **preScriptNoOfRetries**: a szám, ahányszor a előtti parancsfájl meg kell ismételni, ha hiba történik megszakítása előtt állítsa be. Nulla azt jelenti, hogy csak egy try és nem az újra gombra, ha hiba történik.
 
@@ -95,5 +91,5 @@ Győződjön meg arról, adja hozzá a megfelelő naplózási írásakor, a para
 | Előre-ScriptTimeout | Az alkalmazáskonzisztens biztonsági mentés előtti parancsfájlt időtúllépés miatt megszakadt végrehajtása. | Ellenőrizze a parancsfájl, és növeli az időkorlátot adja meg a **VMSnapshotScriptPluginConfig.json** címen található fájl **/etc/azure**. |
 | POST-ScriptTimeout | A végrehajtás alkalmazáskonzisztens biztonsági mentés utáni parancsfájlja túllépte az időkorlátot. | Ellenőrizze a parancsfájl, és növeli az időkorlátot adja meg a **VMSnapshotScriptPluginConfig.json** címen található fájl **/etc/azure**. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Virtuális gép biztonsági mentést a Recovery Services-tároló konfigurálása](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms)

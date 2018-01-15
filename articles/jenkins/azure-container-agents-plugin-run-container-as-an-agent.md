@@ -14,11 +14,11 @@ ms.workload: web
 ms.date: 12/11/2017
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: 269e936cb79ba4138285f5dbd326413d70d5924d
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 04a60bf021ec6e265a3880264386ad32ec7e8177
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="build-a-project-in-azure-using-jenkins-and-azure-container-instances"></a>Az Azure-ban Jenkins és az Azure-tároló példányok a projekt létrehozása
 
@@ -327,6 +327,6 @@ Ha már nem szeretné használni, az erőforrásokat egy Azure erőforráscsopor
 az group delete -n <resourceGroup>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
-> [Látogasson el a Jenkins Azure központ, a legújabb cikkeket, és minták](https://docs.microsoft.com/en-us/azure/jenkins/)
+> [Látogasson el a Jenkins Azure központ, a legújabb cikkeket, és minták](https://docs.microsoft.com/azure/jenkins/)

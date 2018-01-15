@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Log Analytics – dokumentáció
+title: "Log Analytics – dokumentáció"
 metadata:
-  title: Az Azure Log Analytics dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
-  description: 'A Log Analytics a Microsoft Azure átfogó figyelési megoldásának része.  A Log Analytics figyeli a felhőbeli és helyszíni környezeteket az elérhetőségük és a teljesítményük fenntartása érdekében. Nyerjen betekintést több munkaterhelésbe és rendszerbe az elérhetőség és a teljesítmény fenntartása érdekében. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerheti, hogyan gyűjthetők, elemezhetők és kezelhetők az adatok.'
+  title: "Az Azure Log Analytics dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
+  description: "A Log Analytics a Microsoft Azure átfogó figyelési megoldásának része.  A Log Analytics figyeli a felhőbeli és helyszíni környezeteket az elérhetőségük és a teljesítményük fenntartása érdekében. Nyerjen betekintést több munkaterhelésbe és rendszerbe az elérhetőség és a teljesítmény fenntartása érdekében. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerheti, hogyan gyűjthetők, elemezhetők és kezelhetők az adatok."
   services: log-analytics
   author: czeumault
   manager: carolz
@@ -13,65 +13,70 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/41/2017
   ms.author: carolz
+  ms.openlocfilehash: 889ec9829a76435daedc38bee66fd0f6c2846ba5
+  ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 01/12/2018
 abstract:
-  description: 'A Log Analytics a Microsoft Azure átfogó figyelési megoldásának része. A Log Analytics figyeli a felhőbeli és helyszíni környezeteket az elérhetőségük és a teljesítményük fenntartása érdekében. Nyerjen betekintést több munkaterhelésbe és rendszerbe az elérhetőség és a teljesítmény fenntartása érdekében. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerheti, hogyan gyűjthetők, elemezhetők és kezelhetők az adatok.'
+  description: "A Log Analytics a Microsoft Azure átfogó figyelési megoldásának része. A Log Analytics figyeli a felhőbeli és helyszíni környezeteket az elérhetőségük és a teljesítményük fenntartása érdekében. Nyerjen betekintést több munkaterhelésbe és rendszerbe az elérhetőség és a teljesítmény fenntartása érdekében. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerheti, hogyan gyűjthetők, elemezhetők és kezelhetők az adatok."
 sections:
-  - title: 5 perces gyors útmutatók
+- title: "5 perces gyors útmutatók"
+  items:
+  - type: paragraph
+    text: "Ismerje meg, hogyan helyezheti üzembe a Log Analytics programot, és hogyan konfigurálhat adatkészleteket az Azure-ból, egyéb felhőszolgáltatóktól és helyszíni erőforrásokból."
+  - type: list
+    style: icon48
     items:
-      - type: paragraph
-        text: 'Ismerje meg, hogyan helyezheti üzembe a Log Analytics programot, és hogyan konfigurálhat adatkészleteket az Azure-ból, egyéb felhőszolgáltatóktól és helyszíni erőforrásokból.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/en-us/azure/media/index/virtualmachine.svg'
-            text: Azure-beli virtuális gépek
-            href: /azure/log-analytics/log-analytics-quick-collect-azurevm
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_linux.svg'
-            text: Linux rendszerű számítógép
-            href: /azure/log-analytics/log-analytics-quick-collect-linux-computer
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_Windows.svg'
-            text: Windows rendszerű számítógép
-            href: /azure/log-analytics/log-analytics-quick-collect-windows-computer
-  - title: Részletes útmutatók
+    - image:
+        src: https://docs.microsoft.com/azure/media/index/virtualmachine.svg
+      text: "Azure-beli virtuális gépek"
+      href: /azure/log-analytics/log-analytics-quick-collect-azurevm
+    - image:
+        src: https://docs.microsoft.com/media/logos/logo_linux.svg
+      text: "Linux rendszerű számítógép"
+      href: /azure/log-analytics/log-analytics-quick-collect-linux-computer
+    - image:
+        src: https://docs.microsoft.com/media/logos/logo_Windows.svg
+      text: "Windows rendszerű számítógép"
+      href: /azure/log-analytics/log-analytics-quick-collect-windows-computer
+- title: "Részletes útmutatók"
+  items:
+  - type: paragraph
+    text: "Ismerje meg, hogyan elemezhetők, jeleníthetők meg és kezelhetők a begyűjtött adatok."
+  - type: list
+    style: ordered
     items:
-      - type: paragraph
-        text: 'Ismerje meg, hogyan elemezhetők, jeleníthetők meg és kezelhetők a begyűjtött adatok.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/log-analytics/log-analytics-tutorial-viewdata">A begyűjtött adatok megtekintése és elemzése</a>
-          - html: <a href="/azure/log-analytics/log-analytics-tutorial-dashboards">Irányítópultok létrehozása és megosztása</a>
-          - html: <a href="/azure/log-analytics/log-analytics-tutorial-response">Eseményekre való válaszadás a Log Analytics-riasztásokkal</a>
-  - title: Ingyenes Pluralsight videós képzés
+    - html: "<a href=\"/azure/log-analytics/log-analytics-tutorial-viewdata\">A begyűjtött adatok megtekintése és elemzése</a>"
+    - html: "<a href=\"/azure/log-analytics/log-analytics-tutorial-dashboards\">Irányítópultok létrehozása és megosztása</a>"
+    - html: "<a href=\"/azure/log-analytics/log-analytics-tutorial-response\">Eseményekre való válaszadás a Log Analytics-riasztásokkal</a>"
+- title: "Ingyenes Pluralsight videós képzés"
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
     items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Az IaaS Monitoring használatának első lépései
-            href: 'https://app.pluralsight.com/library/courses/azure-iaas-monitoring-management-getting-started/table-of-contents'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://app.pluralsight.com/library/courses/azure-iaas-monitoring-management-getting-started/table-of-contents'
-  - title: Példák
+    - title: "Az IaaS Monitoring használatának első lépései"
+      href: https://app.pluralsight.com/library/courses/azure-iaas-monitoring-management-getting-started/table-of-contents
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://app.pluralsight.com/library/courses/azure-iaas-monitoring-management-getting-started/table-of-contents
+- title: "Példák"
+  items:
+  - type: paragraph
+    text: "A következő minta használatával konfigurálhatja és kezelheti a Log Analytics programot."
+  - type: list
+    style: unordered
+    className: spaced noBullet
     items:
-      - type: paragraph
-        text: A következő minta használatával konfigurálhatja és kezelheti a Log Analytics programot.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/log-analytics/powershell-samples">Azure PowerShell</a>
-  - title: Referencia
+    - html: <a href="/azure/log-analytics/powershell-samples">Azure PowerShell</a>
+- title: "Hivatkozás"
+  items:
+  - type: list
+    style: cards
+    className: cardsD
     items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Parancssor
-            html: <p><a href="/powershell/module/azurerm.operationalinsights">Azure PowerShell</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/loganalytics">REST API-referencia</a></p>
+    - title: Parancssor
+      html: <p><a href="/powershell/module/azurerm.operationalinsights">Azure PowerShell</a></p>
+    - title: REST
+      html: <p><a href="/rest/api/loganalytics">REST API-referencia</a></p>

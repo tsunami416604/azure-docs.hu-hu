@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: f004e4763106c25d94f585f644560cf3a72d3f1b
-ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
+ms.openlocfilehash: ab2bfff571af659552eef8117de041ca6367ce56
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="iot-hub-device-provisioning-service-security-concepts"></a>IoT Hub eszköz kiépítése szolgáltatáshoz biztonsági fogalmak 
 
@@ -56,13 +56,13 @@ A legfelső szintű kulcsot a TPM tárolja, és alkalmazások által létrehozot
 
 ## <a name="x509-certificates"></a>X.509 tanúsítvány
 
-X.509-tanúsítványokat használ egy igazoló mechanizmusként módja egy kiváló éles méretezhető és egyszerűsítse az eszközök kiépítését. X.509-tanúsítványokat általában bizalmi kapcsolat, amelyben a tanúsítványlánc minden tanúsítványa a következő magasabb tanúsítványt, és így tovább, leállítja az önaláírt legfelső szintű tanúsítvány titkos kulcsával aláírt tanúsítványlánc vannak rendezve. Ezzel megadja a delegált a legfelső szintű tanúsítvány megbízható legfelső szintű hitelesítésszolgáltató (CA) le minden közbenső hitelesítésszolgáltató végfelhasználói tanúsítvány telepítve az eszközön keresztül jön létre megbízhatósági lánc. További tudnivalókért lásd: [X.509 CA-tanúsítványok használatával Device Authentication](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-x509ca-overview). 
+X.509-tanúsítványokat használ egy igazoló mechanizmusként módja egy kiváló éles méretezhető és egyszerűsítse az eszközök kiépítését. X.509-tanúsítványokat általában bizalmi kapcsolat, amelyben a tanúsítványlánc minden tanúsítványa a következő magasabb tanúsítványt, és így tovább, leállítja az önaláírt legfelső szintű tanúsítvány titkos kulcsával aláírt tanúsítványlánc vannak rendezve. Ezzel megadja a delegált a legfelső szintű tanúsítvány megbízható legfelső szintű hitelesítésszolgáltató (CA) le minden közbenső hitelesítésszolgáltató végfelhasználói tanúsítvány telepítve az eszközön keresztül jön létre megbízhatósági lánc. További tudnivalókért lásd: [X.509 CA-tanúsítványok használatával Device Authentication](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview). 
 
-A tanúsítványlánc gyakran bizonyos eszközök társított logikai és fizikai hierarchia jelöli. Például egy gyártó önaláírt legfelső szintű CA-tanúsítvány kiállításához, a tanúsítvány használatával hozhat létre a minden gyári egyedi köztes Hitelesítésszolgáltatói tanúsítványt, egyes gyári tanúsítványt használja minden üzemi egyedi köztes Hitelesítésszolgáltatói tanúsítvány létrehozásához a üzemben. sor, és végül a termelési sor-tanúsítvány használatával az egyes eszközök a sor gyártott (végfelhasználói) az eszköz egyedi tanúsítvány jön létre. További tudnivalókért lásd: [X.509 Hitelesítésszolgáltatói tanúsítványok az IoT-iparág fogalmi ismertetése](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-x509ca-concept). 
+A tanúsítványlánc gyakran bizonyos eszközök társított logikai és fizikai hierarchia jelöli. Például egy gyártó önaláírt legfelső szintű CA-tanúsítvány kiállításához, a tanúsítvány használatával hozhat létre a minden gyári egyedi köztes Hitelesítésszolgáltatói tanúsítványt, egyes gyári tanúsítványt használja minden üzemi egyedi köztes Hitelesítésszolgáltatói tanúsítvány létrehozásához a üzemben. sor, és végül a termelési sor-tanúsítvány használatával az egyes eszközök a sor gyártott (végfelhasználói) az eszköz egyedi tanúsítvány jön létre. További tudnivalókért lásd: [X.509 Hitelesítésszolgáltatói tanúsítványok az IoT-iparág fogalmi ismertetése](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-concept). 
 
 ### <a name="root-certificate"></a>Legfelső szintű tanúsítvány
 
-Egy legfelső szintű tanúsítványt a hitelesítésszolgáltatótól (CA) jelölő önaláírt X.509 tanúsítvány. A pontjáig, vagy megbízhatósági kapcsolati alap, a tanúsítványlánc. Legfelső szintű tanúsítványok saját szervezet által kibocsátott, vagy egy legfelső szintű hitelesítésszolgáltatótól származó. További tudnivalókért lásd: [beolvasása X.509 CA-tanúsítványok](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-security-x509-get-started#get-x509-ca-certificates). A legfelső szintű tanúsítvány is lehet hivatkozni, a legfelső szintű Hitelesítésszolgáltatói tanúsítványt.
+Egy legfelső szintű tanúsítványt a hitelesítésszolgáltatótól (CA) jelölő önaláírt X.509 tanúsítvány. A pontjáig, vagy megbízhatósági kapcsolati alap, a tanúsítványlánc. Legfelső szintű tanúsítványok saját szervezet által kibocsátott, vagy egy legfelső szintű hitelesítésszolgáltatótól származó. További tudnivalókért lásd: [beolvasása X.509 CA-tanúsítványok](https://docs.microsoft.com/azure/iot-hub/iot-hub-security-x509-get-started#get-x509-ca-certificates). A legfelső szintű tanúsítvány is lehet hivatkozni, a legfelső szintű Hitelesítésszolgáltatói tanúsítványt.
 
 ### <a name="intermediate-certificate"></a>Köztes tanúsítvány
 
@@ -70,7 +70,7 @@ Egy köztes tanúsítványhoz egy X.509 tanúsítvány aláírtak a legfelső sz
 
 ### <a name="leaf-certificate"></a>Levéltanúsítvány
 
-A levél tanúsítvány, vagy végfelhasználói tanúsítvány, azonosítja a tanúsítvány tulajdonosa. Rendelkezik a legfelső szintű tanúsítvány a tanúsítványlánc, valamint nulla vagy több köztes tanúsítványa. A levél nem tanúsítvánnyal bármely egyéb tanúsítványok aláírásához. Egyedi módon azonosítja az eszközt, hogy a létesítési szolgáltatás, és az eszköz tanúsítványa néha nevezzük. A hitelesítés során az eszköz használatával a a tanúsítványhoz tartozó titkos kulcs birtokában challenge igazolása válaszolni a szolgáltatás. További tudnivalókért lásd: [eszközök hitelesítése aláírva, X.509 CA-tanúsítványok](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates).
+A levél tanúsítvány, vagy végfelhasználói tanúsítvány, azonosítja a tanúsítvány tulajdonosa. Rendelkezik a legfelső szintű tanúsítvány a tanúsítványlánc, valamint nulla vagy több köztes tanúsítványa. A levél nem tanúsítvánnyal bármely egyéb tanúsítványok aláírásához. Egyedi módon azonosítja az eszközt, hogy a létesítési szolgáltatás, és az eszköz tanúsítványa néha nevezzük. A hitelesítés során az eszköz használatával a a tanúsítványhoz tartozó titkos kulcs birtokában challenge igazolása válaszolni a szolgáltatás. További tudnivalókért lásd: [eszközök hitelesítése aláírva, X.509 CA-tanúsítványok](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates).
 
 ## <a name="controlling-device-access-to-the-provisioning-service-with-x509-certificates"></a>A létesítési szolgáltatás X.509 tanúsítvánnyal rendelkező eszköz-hozzáférés szabályozásáról
 

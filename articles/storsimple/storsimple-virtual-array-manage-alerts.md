@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/27/2017
+ms.date: 01/12/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6a96e52bad725acb70a429c8eaafd6942b13d9b8
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 7d4d680e3460fbeff73c2f334c6461da7967374d
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>Riasztások kezelése a StorSimple virtuális tömb StorSimple Eszközkezelő
 
@@ -125,7 +125,6 @@ A következő táblázat a StorSimple-riasztásokat, amelyek akkor léphetnek fe
 * [Figyelmeztetések](#job-failure-alerts)
 * [Teljesítményével kapcsolatos riasztások](#performance-alerts)
 * [Biztonsági riasztások](#security-alerts)
-* [Riasztások frissítése](#update-alerts)
 
 ### <a name="cloud-connectivity-alerts"></a>Felhő csatlakozási riasztások
 
@@ -165,14 +164,7 @@ A következő táblázat a StorSimple-riasztásokat, amelyek akkor léphetnek fe
 |:--- |:--- |:--- |
 | A jelszó <*eszköznév*> múlva le fog járni <*szám*> nap. |Jelszó figyelmeztetés. |A jelszó lejár < szám < nap. Fontolja meg a jelszót. További információkért látogasson el [megváltoztatása a StorSimple virtuális tömb eszköz rendszergazdai jelszava](storsimple-virtual-array-change-device-admin-password.md). |
 
-### <a name="update-alerts"></a>Riasztások frissítése
-
-| Figyelmeztető szöveg | Esemény | További információ / javasolt műveletek |
-|:--- |:--- |:--- |
-| Új frissítések érhetők el az eszközhöz. |A StorSimple virtuális tömbhöz frissítések érhetők el. |Új frissítések telepítése a **karbantartási** lap. |
-| Sikerült nem új frissítések keresése a <*eszköznév*>. |A frissítés sikertelen. |Hiba történt az új frissítések telepítése közben. Manuálisan telepítheti a frissítéseket. Ha a probléma továbbra is fennáll, forduljon a [Microsoft Support](storsimple-contact-microsoft-support.md). |
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [További tudnivalók a StorSimple virtuális tömb](storsimple-ova-overview.md).
 

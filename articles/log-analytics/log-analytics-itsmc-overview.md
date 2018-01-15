@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: v-jysur
-ms.openlocfilehash: 991f86c328aba9aa184658c7da748f24ee2d6506
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 6a08f042aad8ad00d712420d8f4d3b17305188e1
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="centrally-manage-itsm-work-items-using-it-service-management-connector-preview"></a>Központi kezelését az informatikai szolgáltatás Management Connector (előzetes verzió) segítségével ITSM munkaelemek
 
@@ -102,9 +102,9 @@ ServiceDeskWorkItemType_s = "Esemény"
 - Megoldó
 - Lezárt
 - Forrás
-- Társítás
+- A jog birtokosa
 - Kategória
-- Cím
+- Beosztás
 - Leírás
 - Létrehozás dátuma
 - Lezárás dátuma
@@ -123,8 +123,8 @@ ServiceDeskWorkItemType_s = "módosítási kérés"
 - Létrehozta
 - Lezárt
 - Forrás
-- Társítás
-- Cím
+- A jog birtokosa
+- Beosztás
 - Típus
 - Kategória
 - Állapot
@@ -134,7 +134,7 @@ ServiceDeskWorkItemType_s = "módosítási kérés"
 - Prioritás
 - Kockázat
 - Hatás
-- Társítás
+- A jog birtokosa
 - Létrehozás dátuma
 - Lezárás dátuma
 - Utolsó módosítás dátuma
@@ -156,7 +156,7 @@ ServiceDeskWorkItemType_s = "módosítási kérés"
 | Impact_s |Hatás|
 | Priority_s | Prioritás |
 | CreatedBy_s | Által megnyitott |
-| ResolvedBy_s | Megoldó|
+| ResolvedBy_s | Feloldotta|
 | ClosedBy_s  | Lezárt |
 | Source_s| Kapcsolat típusa |
 | AssignedTo_s | Hozzárendelve  |
@@ -292,11 +292,11 @@ Azure riasztási szabály létrehozása/szerkesztése, során művelet csoportot
 
 ## <a name="troubleshoot-itsm-connections-in-oms"></a>Az OMS ITSM kapcsolatok hibáinak elhárítása
 1.  Ha a kapcsolat hibája esetén a csatlakoztatott adatforrás felhasználói felület egy **hiba történt a kapcsolat mentése** üzenet, a következő lépéseket:
- - A ServiceNow, Cherwell és Provance kapcsolatok esetén  
-        -Győződjön meg arról, megfelelően beírt a felhasználónév, a jelszó, az ügyfél-azonosító és a titkos ügyfélkulcs az egyes kapcsolatok.  
-        -Ellenőrizze, hogy ha a megfelelő engedélyekkel rendelkezik a megfelelő ITSM termékben való csatlakozáshoz.  
- - A Service Manager-kapcsolatok esetén  
-        -Ellenőrizze, hogy a webalkalmazás telepítése sikeres volt, és a hibrid kapcsolat jön létre. Ellenőrizze, hogy sikeresen létrejött a kapcsolat a helyszíni Service Manager számítógéppel, látogasson el a webes alkalmazás URL-CÍMÉT, hogy dokumentációjában ismertetett módon a [a hibrid kapcsolat](log-analytics-itsmc-connections.md#configure-the-hybrid-connection).  
+- A ServiceNow, Cherwell és Provance kapcsolatok esetén  
+       -Győződjön meg arról, megfelelően beírt a felhasználónév, a jelszó, az ügyfél-azonosító és a titkos ügyfélkulcs az egyes kapcsolatok.  
+       -Ellenőrizze, hogy ha a megfelelő engedélyekkel rendelkezik a megfelelő ITSM termékben való csatlakozáshoz.  
+- A Service Manager-kapcsolatok esetén  
+       -Ellenőrizze, hogy a webalkalmazás telepítése sikeres volt, és a hibrid kapcsolat jön létre. Ellenőrizze, hogy sikeresen létrejött a kapcsolat a helyszíni Service Manager számítógéppel, látogasson el a webes alkalmazás URL-CÍMÉT, hogy dokumentációjában ismertetett módon a [a hibrid kapcsolat](log-analytics-itsmc-connections.md#configure-the-hybrid-connection).  
 
 2.  Ha ServiceNow adatait nem első szinkronizálva van a Naplóelemzési, győződjön meg arról, hogy a példány nem alszik ServiceNow. A ServiceNow fejlesztői példányok néha Ugrás üresjáratban alvó hosszú ideig. Más jelentse a hibát.
 3.  Ha OMS riasztások érvényesítést, de működik elemek nem jönnek létre ITSM termék és konfigurációs elemek nincsenek létrehozva/kapcsolódó munkaelemek vagy más általános információkat, keresse meg a következő helyen:
@@ -313,5 +313,5 @@ Azure riasztási szabály létrehozása/szerkesztése, során művelet csoportot
 
 A lekérdezést vagy az informatikai szolgáltatás Management-összekötő visszajelzést, lépjen velünk kapcsolatba [ omsitsmfeedback@microsoft.com ](mailto:omsitsmfeedback@microsoft.com).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [ITSM termékek és szolgáltatások hozzáadása IT Service Management-összekötő](log-analytics-itsmc-connections.md).

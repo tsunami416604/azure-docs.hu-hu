@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: mimig
-ms.openlocfilehash: ca16a7fe424e9c50ce87b150442dd18ff0d6ce91
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.openlocfilehash: 4d7657d305332cc0014187d52396ae3af4818d5e
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/12/2018
 ---
 > [!div class="op_single_selector"]
 > * [Java](performance-tips-java.md)
@@ -80,7 +80,7 @@ Ezért ha még kérése "Hogyan javítható az adatbázis teljesítménye?" Vegy
    <a id="max-connection"></a>
 3. **Növelje az MaxPoolSize értékénél állomásonként átjáró üzemmódban**
 
-    Az Azure Cosmos DB kérelmek átjáró üzemmódban HTTPS/REST keresztül történik, és az alapértelmezett kapcsolati felső határ az egyes állomásnév vagy IP-cím kitéve. Szükség lehet ahhoz a MaxPoolSize értékénél (200-1000) magasabb értékre, hogy az ügyféloldali kódtár nyújthatnak Azure Cosmos DB több egyidejű kapcsolatok. A Java SDK-ban, az alapértelmezett érték [ConnectionPolicy.getMaxPoolSize](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.documentdb._connection_policy.gsetmaxpoolsize) 100. Használjon [setMaxPoolSize]( https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.documentdb._connection_policy.setmaxpoolsize) módosítsa az értéket.
+    Az Azure Cosmos DB kérelmek átjáró üzemmódban HTTPS/REST keresztül történik, és az alapértelmezett kapcsolati felső határ az egyes állomásnév vagy IP-cím kitéve. Szükség lehet ahhoz a MaxPoolSize értékénél (200-1000) magasabb értékre, hogy az ügyféloldali kódtár nyújthatnak Azure Cosmos DB több egyidejű kapcsolatok. A Java SDK-ban, az alapértelmezett érték [ConnectionPolicy.getMaxPoolSize](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_policy.gsetmaxpoolsize) 100. Használjon [setMaxPoolSize]( https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_policy.setmaxpoolsize) módosítsa az értéket.
 
 4. **A particionált gyűjtemények párhuzamos lekérdezések hangolása**
 
@@ -96,7 +96,7 @@ Ezért ha még kérése "Hogyan javítható az adatbázis teljesítménye?" Vegy
 
 5. **Leállítási getRetryAfterInMilliseconds időközönként megvalósítása**
 
-    Teljesítmény tesztelés során terhelés csak a kis mértékben kérelmek get halmozódni növelje meg. Ha szabályozva, az ügyfélalkalmazás kell a késleltetési leállítási a kiszolgáló által megadott újrapróbálkozási időköz. A leállítási tiszteletben biztosítja, hogy az újrapróbálkozások közötti várakozási idő a lehető legrövidebb idő. Újrapróbálkozási házirend támogatása a rendszer része, a verzió 1.8.0 és az újabb, a [Java SDK](documentdb-sdk-java.md). További információkért lásd: [Exceeding fenntartott átviteli sebességének korlátai](request-units.md#RequestRateTooLarge) és [getRetryAfterInMilliseconds](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.documentdb._document_client_exception.getretryafterinmilliseconds).
+    Teljesítmény tesztelés során terhelés csak a kis mértékben kérelmek get halmozódni növelje meg. Ha szabályozva, az ügyfélalkalmazás kell a késleltetési leállítási a kiszolgáló által megadott újrapróbálkozási időköz. A leállítási tiszteletben biztosítja, hogy az újrapróbálkozások közötti várakozási idő a lehető legrövidebb idő. Újrapróbálkozási házirend támogatása a rendszer része, a verzió 1.8.0 és az újabb, a [Java SDK](documentdb-sdk-java.md). További információkért lásd: [Exceeding fenntartott átviteli sebességének korlátai](request-units.md#RequestRateTooLarge) és [getRetryAfterInMilliseconds](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_client_exception.getretryafterinmilliseconds).
 6. **Horizontális felskálázás az ügyfél-alkalmazások és szolgáltatások**
 
     Ha nagy átviteli szinten teszteli (> 50 000 RU/mp), az ügyfélalkalmazás gép határértékét el a Processzor- vagy hálózati kihasználtsága miatt a szűk keresztmetszetek válhat. Ha eléri ezt a pontot, továbbra is az Azure Cosmos DB fiók további leküldéses által az ügyfélalkalmazások kiterjesztése több kiszolgáló között.
@@ -112,7 +112,7 @@ Ezért ha még kérése "Hogyan javítható az adatbázis teljesítménye?" Vegy
 
     Adjon meg kevesebb hálózati kerekíteni összes vonatkozó eredmények beolvasásához szükséges való adatváltások számát, az oldal méretét használatával növelheti a [x-ms-maximális elem-darabszám](https://docs.microsoft.com/rest/api/documentdb/common-documentdb-rest-request-headers) legfeljebb 1000 kérelemfejlécet. Azokban az esetekben, ahol csak néhány eredmények megtekintése céljából kell például a felhasználói felület vagy a kérelem API visszatérési értéke csak 10 egyszerre annak az eredménye, csökkentheti a 10-re csökkenteni a teljesítményt, Olvasás, mind a lekérdezések felhasznált mérete.
 
-    A lap méret használatával is megadhat a a [setPageSize metódus](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.documentdb._feed_options_base.setpagesize#com_microsoft_azure_documentdb__feed_options_base_setPageSize_Integer).
+    A lap méret használatával is megadhat a a [setPageSize metódus](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._feed_options_base.setpagesize#com_microsoft_azure_documentdb__feed_options_base_setPageSize_Integer).
 
 ## <a name="indexing-policy"></a>Indexelési házirend
  
@@ -143,7 +143,7 @@ Ezért ha még kérése "Hogyan javítható az adatbázis teljesítménye?" Vegy
 
     A lekérdezés összetettsége hatással van a kérelem egységek művelet végrehajtásánál. Predikátumok a száma, a predikátum, felhasználó által megadott függvények száma és a forrás adatkészlet összes mérete befolyásolja a lekérdezési műveletek költségét.
 
-    A terhelést növelni az összes műveletet mérésére (létrehozása, frissítése vagy törlése), vizsgálja meg a [x-ms-kérelem-kell fizetni](https://docs.microsoft.com/rest/api/documentdb/common-documentdb-rest-response-headers) fejléc (vagy a megfelelő RequestCharge tulajdonságot az [ResourceResponse<T> ](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._resource_response) vagy [FeedResponse<T> ](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.documentdb._feed_response) ezeket a műveleteket által felhasznált kérelem egységek számának mérésére.
+    A terhelést növelni az összes műveletet mérésére (létrehozása, frissítése vagy törlése), vizsgálja meg a [x-ms-kérelem-kell fizetni](https://docs.microsoft.com/rest/api/documentdb/common-documentdb-rest-response-headers) fejléc (vagy a megfelelő RequestCharge tulajdonságot az [ResourceResponse<T> ](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._resource_response) vagy [FeedResponse<T> ](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._feed_response) ezeket a műveleteket által felhasznált kérelem egységek számának mérésére.
 
     ```Java
     ResourceResponse<Document> response = client.createDocument(collectionLink, documentDefinition, null, false);
@@ -163,7 +163,7 @@ Ezért ha még kérése "Hogyan javítható az adatbázis teljesítménye?" Vegy
 
     Az SDK-k minden implicit módon dolgozza fel ezt a választ, tiszteletben tartják a kiszolgáló által megadott újrapróbálkozási után fejlécet, és próbálkozzon újra a kéréssel. Kivéve, ha a fiók több ügyfélnek egyszerre használja, a következő újrapróbálkozási sikeres lesz.
 
-    Ha egynél több ügyfél felett a kérelmek aránya következetesen összesítve működő, az alapértelmezett újrapróbálkozások száma pillanatnyilag beállított 9 belső az ügyfél nem lehetséges, hogy elegendő; Ebben az esetben az ügyfél jelez a [DocumentClientException](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_client_exception) állapotú code 429 az alkalmazáshoz. Használatával módosíthatja az alapértelmezett újrapróbálkozások maximális számát [setRetryOptions](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.documentdb._connection_policy.setretryoptions) a a [ConnectionPolicy](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_policy) példány. Alapértelmezés szerint a DocumentClientException 429. állapotkód: esetén visszaadott 30 másodperc halmozódó várakozási idő után a kérelem folytatja a működést a kérelmek aránya fent. Ez akkor fordul elő, még ha az aktuális újrapróbálkozások maximális számát nem éri el az újrapróbálkozások maximális száma, hogy azt az alapértelmezett 9 vagy egy felhasználó által definiált értéket.
+    Ha egynél több ügyfél felett a kérelmek aránya következetesen összesítve működő, az alapértelmezett újrapróbálkozások száma pillanatnyilag beállított 9 belső az ügyfél nem lehetséges, hogy elegendő; Ebben az esetben az ügyfél jelez a [DocumentClientException](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_client_exception) állapotú code 429 az alkalmazáshoz. Használatával módosíthatja az alapértelmezett újrapróbálkozások maximális számát [setRetryOptions](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_policy.setretryoptions) a a [ConnectionPolicy](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_policy) példány. Alapértelmezés szerint a DocumentClientException 429. állapotkód: esetén visszaadott 30 másodperc halmozódó várakozási idő után a kérelem folytatja a működést a kérelmek aránya fent. Ez akkor fordul elő, még ha az aktuális újrapróbálkozások maximális számát nem éri el az újrapróbálkozások maximális száma, hogy azt az alapértelmezett 9 vagy egy felhasználó által definiált értéket.
 
     Az automatizált újrapróbálkozásra segít a rugalmasság és a legtöbb alkalmazás használhatóság javítása érdekében, miközben, előfordulhat, hogy térjen bármikor odds teljesítménymutatókat, során, különösen akkor, ha a késleltetés mérése.  Az ügyfél-megfigyelt késés fog lefoglalását, ha a kísérlet a kiszolgáló szabályozásának találatok és következtében az ügyfél SDK használatával beavatkozás nélkül próbálja meg újra. Teljesítmény kísérletek során késleltetés igényeiben jelentkező elkerüléséhez mérjük a díj minden művelet által visszaadott, és győződjön meg arról, hogy a kérelmek működnek-e a fenntartott kérelmek aránya alatt. További információkért lásd: [egységek kérelem](request-units.md).
 3. **Nagyobb átviteli sebesség eléréséhez kisebb dokumentumok kialakítása**

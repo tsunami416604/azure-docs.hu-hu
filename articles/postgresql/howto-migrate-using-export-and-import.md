@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 11/03/2017
-ms.openlocfilehash: 937423d0b844f6ce30e532bbae12b85071a6f8d4
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: ddbfd9ef8b2ae4c3c851afc18b010b234b654c81
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="migrate-your-postgresql-database-using-export-and-import"></a>Telepítse át az exportálási PostgreSQL-adatbázist, és importálása
 Használható [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) kibontásához PostgreSQL-adatbázisból egy parancsfájl fájlba és [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) az adatok importálása a céladatbázis, a fájl számára.
@@ -36,7 +36,7 @@ Például, ha a helyi kiszolgáló és adatbázis **testdb** benne:
 pg_dump --host=localhost --username=masterlogin --dbname=testdb --file=testdb.sql
 ```
 
-## <a name="import-the-data-on-target-azure-database-for-postrgesql"></a>A cél Azure-adatbázis adatok importálása az PostrgeSQL
+## <a name="import-the-data-on-target-azure-database-for-postgresql"></a>A cél Azure-adatbázis adatok importálása az PostgreSQL
 Psql parancssor és a--dbname paramétert (-d) számára az adatok importálása az Azure-adatbázishoz tartozó PostgreSQL kiszolgáló és az adatok betöltése az sql-fájlból.
 ```bash
 psql --file=<database>.sql --host=<server name> --port=5432 --username=<user@servername> --dbname=<target database name>
@@ -46,5 +46,5 @@ Ez a példa psql segédprogram és nevű parancsfájl **testdb.sql** az előző 
 psql --file=testdb.sql --host=mypgserver-20170401.database.windows.net --port=5432 --username=mylogin@mypgserver-20170401 --dbname=mypgsqldb
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Egy PostgreSQL-adatbázist biztonsági másolat és helyreállítás áttelepítéséhez lásd: [telepítse át az PostgreSQL-adatbázist használ a biztonsági másolat és helyreállítás](howto-migrate-using-dump-and-restore.md)

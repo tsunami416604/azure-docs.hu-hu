@@ -6,16 +6,16 @@ keywords:
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 11/16/2017
+ms.date: 01/11/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: bfa6652eac34f88baf09f55353cf58227a20e4cf
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 440b70f4d04728973d77e54e7f6303e1ad7fcd89
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 01/12/2018
 ---
-# <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-linux-device---preview"></a>Gyors üzembe helyezés: Az első IoT peremhálózati modul az Azure-portálon Linux eszközre központi telepítése – előzetes
+# <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-or-mac-device---preview"></a>Gyors üzembe helyezés: Adott központi telepítéséhez az első IoT peremhálózati modul Linux- vagy Mac - megtekintése
 
 Azure IoT peremhálózati felhő power áthelyezi az eszközök internetes hálózatát eszközét. Ebben a témakörben útmutató előre elkészített kód távolról telepítése IoT peremhálózati eszköz a felhő felhasználói felület használata.
 
@@ -23,10 +23,14 @@ Ha nincs egy aktív Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot] 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ennek a feladatnak használja a számítógép vagy virtuális gép egy az eszközök internetes hálózatát eszköz szimulálásához. A következő szolgáltatások sikeres telepítéséhez az IoT-peremhálózati eszköz van szükség:
+A gyors üzembe helyezés használja a számítógépén vagy virtuális gép például az eszközök internetes hálózatát eszközként. Kapcsolja be a számítógép az IoT-peremhálózati eszköz, a következő szolgáltatások szükségesek:
 
-- [Telepítse a Docker Linux] [ lnk-docker-ubuntu] , és győződjön meg arról, hogy fut-e. 
-- A legtöbb Linux terjesztésekről, beleértve az Ubuntu, már telepített Python 2.7. A következő parancs használatával győződjön meg arról, hogy telepítve van-e a pip: `sudo apt-get install python-pip`.
+* Python pip, az IoT-Edge futásidejű telepítéséhez.
+   * Linux: `sudo apt-get install python-pip`.
+   * MacOS: `sudo easy_install pip`.
+* Docker modulok az IoT él futtatásához.
+   * [Telepítse a Docker Linux] [ lnk-docker-ubuntu] , és győződjön meg arról, hogy fut-e. 
+   * [Telepítse a Docker Mac] [ lnk-docker-mac] , és győződjön meg arról, hogy fut-e. 
 
 ## <a name="create-an-iot-hub-with-azure-cli"></a>IoT hub létrehozása az Azure parancssori felülettel
 
@@ -121,7 +125,7 @@ Ha már nincs szüksége az IoT Hub létrehozott, használhatja a [az iot hub de
 az iot hub delete --name {your iot hub name} --resource-group {your resource group name}
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudta, hogyan IoT peremhálózati eszköz egy IoT-Edge-modul telepítéséhez. Próbálja meg különböző modulok, az Azure szolgáltatások üzembe helyezése, hogy elemezheti az adatokat a peremhálózaton. 
 
@@ -135,6 +139,7 @@ Megtudta, hogyan IoT peremhálózati eszköz egy IoT-Edge-modul telepítéséhez
 
 <!-- Links -->
 [lnk-docker-ubuntu]: https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/ 
+[lnk-docker-mac]: https://docs.docker.com/docker-for-mac/install/
 [lnk-iothub-explorer]: https://github.com/azure/iothub-explorer
 [lnk-account]: https://azure.microsoft.com/free
 [lnk-portal]: https://portal.azure.com

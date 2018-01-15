@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/15/2017
 ms.author: tdykstra
-ms.openlocfilehash: 1a8158dd60b6e2eb15a16bf3efb60ef30d602fd6
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: 6f38fe1e99c734bf09a403ea93b6487a71110cac
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="monitor-azure-functions"></a>Az Azure Functions figyelése
 
@@ -37,8 +37,8 @@ Egy függvény alkalmazás adatokat küldhet az Application Insights kell ismern
 
 * [Hozzon létre egy csatlakoztatott Application Insights-példányt, a függvény alkalmazás létrehozásakor](#new-function-app).
 * [Az Application Insights-példány csatlakoztatása egy meglévő függvény alkalmazást](#existing-function-app).
- 
-### <a name="new-function-app"></a>Új függvény alkalmazás
+
+### <a name="new-function-app"></a>Új függvényalkalmazás
 
 Az Application Insights az függvény alkalmazás engedélyezése **létrehozása** lap:
 
@@ -66,6 +66,14 @@ A rendszerállapot-kulcs beszerzése, és mentse azt egy függvény alkalmazásb
 
 1. Kattintson a **Save** (Mentés) gombra.
 
+## <a name="disable-built-in-logging"></a>Beépített naplózás letiltása
+
+Ha engedélyezi az Application Insights, azt javasoljuk, hogy tiltsa le a [beépített naplózást, amely használja az Azure storage](#logging-to-storage). A beépített naplózást hasznos könnyű munkaterhelések szolgáltatással való tesztelés, de nem nagyléptékű üzemi használatra készült. Az éles figyelés az Application Insights ajánlott. Ha beépített naplózási éles környezetben használja, a naplózás rekord az Azure Storage szabályozás miatt hiányosak lehetnek.
+
+Beépített naplózási letiltásához törölje a `AzureWebJobsDashboard` Alkalmazásbeállítás. Az Azure portálon Alkalmazásbeállítások törlésével kapcsolatos információkért lásd: a **Alkalmazásbeállítások** szakasza [egy függvény alkalmazás kezelése](functions-how-to-use-azure-function-app-settings.md#settings).
+
+Az Application Insights és beépített naplózás letiltása, engedélyezése esetén a **figyelő** az Azure portálon függvény viszi Application Insights lapján.
+
 ## <a name="view-telemetry-data"></a>Telemetriai adatok megtekintése
 
 Keresse meg a kapcsolódó Application Insights-példány egy függvény alkalmazásból a portálon, válassza ki a **Application Insights** a függvény app hivatkozásra kattintva **áttekintése** lap.
@@ -78,7 +86,7 @@ A [Metrikaböngésző](../application-insights/app-insights-metrics-explorer.md)
 
 Az a [hibák](../application-insights/app-insights-asp-net-exceptions.md) lapon hozhat létre diagramokat és függvény hibák és a kiszolgáló kivételek alapján riasztásokat. A **műveletnév** függvény neve. Hibák a függőségek nem láthatók, kivéve, ha megvalósítása [egyéni telemetria](#custom-telemetry-in-c-functions) függőségek.
 
-![Hibák](media/functions-monitoring/failures.png)
+![Meghibásodások](media/functions-monitoring/failures.png)
 
 Az a [teljesítmény](../application-insights/app-insights-performance-counters.md) lapon elemezheti a teljesítménnyel kapcsolatos problémákat.
 
@@ -464,58 +472,41 @@ Az Application Insights-integráció funkciók a probléma, vagy egy javaslat va
 
 ## <a name="monitoring-without-application-insights"></a>Az Application Insights nélkül figyelése
 
-Az Application Insights monitorozási funkciók, ez ugyanis további adatok és az adatok elemzésére jobb mód javasolt. De is található telemetriai adatok és a naplózási adatokat az Azure portál lapjai függvény alkalmazások. 
+Az Application Insights monitorozási funkciók, ez ugyanis további adatok és az adatok elemzésére jobb mód javasolt. De is találhatók naplók és telemetriai adatokat az Azure portál lapjai függvény alkalmazások.
 
-Válassza ki a **figyelő** függvény, és a lap függvény végrehajtások listájának lekérése. Válassza ki a függvény végrehajtása az időtartam, a bemeneti adatok, a hibák és a kapcsolódó naplófájlok áttekintéséhez.
+### <a name="logging-to-storage"></a>A naplózás tárolási
 
-> [!IMPORTANT]
-> Használatakor a [üzemeltetési terv fogyasztás](functions-overview.md#pricing) az Azure Functions a **figyelés** a függvény alkalmazás csempe nem jeleníti meg minden adat. Ennek az az oka a platform dinamikusan méretezi, és számítási példányokért az Ön kezeli. Ezen adatok gyűjtése le nem értelmezhető fogyasztás tervezze.
+Beépített naplózást a kapcsolati karakterlánc által meghatározott tárolási fiókját használja a `AzureWebJobsDashboard` Alkalmazásbeállítás. Ha az adott Alkalmazásbeállítás van konfigurálva, megtekintheti a naplózási adatokat az Azure portálon. Függvény app lapon, a függvény, és válassza ki a **figyelő** fülre, és függvény végrehajtások listájának lekérése. Válassza ki a függvény végrehajtása az időtartam, a bemeneti adatok, a hibák és a kapcsolódó naplófájlok áttekintéséhez.
+
+Ha az Application Insights használ, és rendelkezik [beépített naplózás le van tiltva](#disable-built-in-logging), a **figyelő** lapon viszi Application insights szolgáltatással.
 
 ### <a name="real-time-monitoring"></a>Valós idejű figyelése
 
-Valós idejű figyelés kattintva érhető **élő esemény-adatfolyam** a függvény a **figyelő** fülre. Az élő esemény adatfolyam egy grafikonon be egy új böngészőlapon jelenik meg.
+Is adatfolyam formájában a naplófájlokat, hogy egy parancssori munkamenetet egy helyi munkaállomás használatával a [Azure parancssori felület (CLI) 2.0-s](/cli/azure/install-azure-cli) vagy [Azure PowerShell](/powershell/azure/overview).  
 
-> [!NOTE]
-> Nincs egy ismert probléma, amelyek az adatok nem tölthetők fel okozhatnak. Zárja be az élő esemény folyamot tartalmazó böngészőlapon, és kattintson a szeretne **élő esemény-adatfolyam** újra, hogy engedélyezi az esemény-adatfolyam adatok megfelelően feltöltéséhez. 
-
-Ezeket a statisztikákat a valós idejű, de a tényleges megjelenítés a végrehajtási adatok esetleg késés körülbelül 10 másodperc.
-
-### <a name="monitor-log-files-from-a-command-line"></a>A figyelő naplófájlokat a parancssorból
-
-Naplófájlokat, hogy egy parancssori munkamenetet egy helyi munkaállomáson az Azure parancssori felület (CLI) 1.0-s vagy a PowerShell használatával is adatfolyam.
-
-### <a name="monitor-function-app-log-files-with-the-azure-cli-10"></a>Függvény app fájlra, amelynek az Azure CLI 1.0 figyelése
-
-A kezdéshez [telepítse az Azure CLI 1.0](../cli-install-nodejs.md) és [jelentkezzen be Azure](/cli/azure/authenticate-azure-cli).
-
-A következő parancsok segítségével engedélyezi a klasszikus szolgáltatásfelügyelet módban, válassza ki az előfizetés és adatfolyam-naplófájlokat:
+Az Azure CLI 2.0 a következő parancsokkal jelentkezzen be, és válassza ki az előfizetését, és adatfolyam-naplófájlokat:
 
 ```
-azure config mode asm
-azure account list
-azure account set <subscriptionNameOrId>
-azure site log tail -v <function app name>
+az login
+az account list
+az account set <subscriptionNameOrId>
+az appservice web log tail --resource-group <resource group name> --name <function app name>
 ```
 
-### <a name="monitor-function-app-log-files-with-powershell"></a>Figyelje függvény app naplófájlokat a PowerShell használatával
-
-A kezdéshez [Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview).
-
-A következő parancsok segítségével adja hozzá az Azure-fiókjával, válassza ki az előfizetés és adatfolyam-naplófájlokat:
+Azure PowerShell a következő parancsokkal az Azure-fiókja hozzáadásához válassza ki az előfizetését, és adatfolyam-naplófájlokat:
 
 ```
 PS C:\> Add-AzureAccount
 PS C:\> Get-AzureSubscription
-PS C:\> Get-AzureSubscription -SubscriptionName "MyFunctionAppSubscription" | Select-AzureSubscription
-PS C:\> Get-AzureWebSiteLog -Name MyFunctionApp -Tail
+PS C:\> Get-AzureSubscription -SubscriptionName "<subscription name>" | Select-AzureSubscription
+PS C:\> Get-AzureWebSiteLog -Name <function app name> -Tail
 ```
 
-További információkért lásd: [hogyan: adatfolyam-naplókat web Apps](../app-service/web-sites-enable-diagnostic-log.md#streamlogs). 
+További információkért lásd: [hogyan adatfolyam-naplók](../app-service/web-sites-enable-diagnostic-log.md#streamlogs).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [További tudnivalók az Application Insights](https://docs.microsoft.com/azure/application-insights/)
+További információkért lásd a következőket:
 
-> [!div class="nextstepaction"]
-> [További információ a naplózó keretrendszer által használt funkciók](https://docs.microsoft.com/aspnet/core/fundamentals/logging?tabs=aspnetcore2x)
+* [Application Insights](/azure/application-insights/)
+* [Az ASP.NET Core naplózása](/aspnet/core/fundamentals/logging/)

@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 10/05/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: e9e0106c66002ba5b0851833d582d5d5409a18a5
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: 0fb8c55937c1f4c29c542204673a2f41e3ae29db
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="understand-iot-edge-deployments-for-single-devices-or-at-scale---preview"></a>IoT peremhálózati telepítések egyetlen eszközökhöz vagy léptékű megismerése – előzetes
 
@@ -59,7 +59,7 @@ A konfigurációs modulokhoz tartozó metaadatokban:
 
 A célként megadott feltétel folyamatosan bármely új eszközök a követelményeknek, vagy távolítsa el az eszközt, amely már nem programon keresztül az élettartam a központi telepítés értékelése. A központi telepítés újra kell aktiválni, ha a szolgáltatás észleli a célként megadott feltétel változásait. Például, van-e a környezetben A, amely rendelkezik a célként megadott feltétel tags.environment = "termék". A központi telepítés indítsa el, ha nincsenek 10 termék eszközre. A modulok sikeresen ezen 10 eszközök vannak telepítve. Az IoT peremhálózati ügynök állapota megjelenik teljes eszközök 10, 10 sikeresen válaszokat, 0 hiba válaszok és 0 függőben lévő válaszokat. Most a tags.environment 5 további eszközöket ad hozzá = "termék". A szolgáltatás észleli a változást, és az IoT peremhálózati ügynök állapota lesz 15 eszközök teljes száma, 10 sikeresen válaszokat, 0 hiba válaszok és 5 függőben lévő válaszokat során az öt új eszközökre.
 
-Eszköz twins címkék vagy deviceId bármely logikai feltétel segítségével válassza ki a céleszközt. Ha azt szeretné, feltételt is használhat címkékkel, kell hozzáadnia a "címkék" :{} szakasz alatt a Tulajdonságok azonos szinten az eszköz a két. [További tudnivalók az eszköz iker címkék](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-device-twins)
+Eszköz twins címkék vagy deviceId bármely logikai feltétel segítségével válassza ki a céleszközt. Ha azt szeretné, feltételt is használhat címkékkel, kell hozzáadnia a "címkék" :{} szakasz alatt a Tulajdonságok azonos szinten az eszköz a két. [További tudnivalók az eszköz iker címkék](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins)
 
 Cél feltétel példák:
 * deviceId = "linuxprod1"
@@ -116,7 +116,7 @@ Az alábbi sorrendben hajtsa végre a visszagörgetése:
    * A második telepítést most tartalmaznia kell az eszközöket, amelyek vissza lett állítva, a telepítés állapota.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A létrehozása, frissítése vagy törlése a központi telepítés lépéseit ismerteti [központi telepítése és figyelése IoT peremhálózati modulok léptékű][lnk-howto].
 * További információ más IoT peremhálózati fogalmakat, például a [IoT peremhálózati futásidejű] [ lnk-runtime] és [IoT peremhálózati modulok][lnk-modules].

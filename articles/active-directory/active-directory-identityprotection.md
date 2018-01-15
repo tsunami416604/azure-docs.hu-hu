@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: d9a83c1f1adb0a3dedaf7f8f0665de8bb809c4e8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e66d033d95efccf53ea2de889b5811fe2eafb76a
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection
 
@@ -32,7 +32,7 @@ Az Azure Active Directory azonosító adatok védelmét lehetővé teszi az Azur
 - Vizsgálja meg a gyanús incidensek és a megfelelő művelettel hárítsa el őket   
 
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 
 A Microsoft felhőalapú Identitások biztonságossá teszi a több mint egy évtizedben. Az Azure Active Directory azonosító adatok védelmét a környezetben, használhatja a Microsoft használja a biztonságos identitások azonos védelmi rendszerek.
 
@@ -132,7 +132,7 @@ A bejelentkezési kockázati szint feltüntetése (magas, közepes vagy alacsony
 
 A megoldás korlátozhatja, hogy a támadó a sérült biztonságú identitás vagy az eszköz visszaállítja a identitás vagy az eszköz biztonságos kihasználásához műveletet. A megoldás nem oldja meg a identitás vagy az eszköz társított korábbi bejelentkezési kockázati eseményekről.
 
-Kockázatos bejelentkezések automatikusan mérséklése érdekében bejelentkezési kockázat biztonsági policicies is konfigurálhat. Ezek a házirendek használja, akkor fontolja meg a felhasználó vagy a bejelentkezési kockázatos bejelentkezések blokkolni, vagy a felhasználónak a multi-factor authentication végrehajtása a kockázati szintjét. Ezek a műveletek előfordulhat, hogy egy támadó a kihasználhassa egy ellopott identitás való megosztása kárt okozhat, és előfordulhat, hogy néhány időt biztosítanak a identitás biztonságossá.
+Kockázatos bejelentkezések automatikusan mérséklése érdekében bejelentkezési kockázat biztonsági házirendeket konfigurálhat. Ezek a házirendek használja, akkor fontolja meg a felhasználó vagy a bejelentkezési kockázatos bejelentkezések blokkolni, vagy a felhasználónak a multi-factor authentication végrehajtása a kockázati szintjét. Ezek a műveletek előfordulhat, hogy egy támadó a kihasználhassa egy ellopott identitás való megosztása kárt okozhat, és előfordulhat, hogy néhány időt biztosítanak a identitás biztonságossá.
 
 ### <a name="sign-in-risk-security-policy"></a>Bejelentkezési kockázat biztonsági házirend
 A kockázat bejelentkezési házirend egy feltételes hozzáférési szabályzatot, amely egy adott jelentkezik be a kockázat és azok mérséklési előre meghatározott feltételt és a szabályok alapján alkalmazza.
@@ -396,7 +396,7 @@ A kapcsolódó felhasználói szolgáltatások áttekintését lásd:
 
     ![Többtényezős hitelesítési szabályzat](./media/active-directory-identityprotection/1019.png "többtényezős hitelesítési szabályzat")
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [9. csatornán: Az Azure AD és az Identity: Identity Protection előzetes kiadásának](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 * [Az Azure Active Directory-identitás védelem engedélyezése](active-directory-identityprotection-enable.md)

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 12/15/2017
 ms.author: raynew
-ms.openlocfilehash: 3105eaa9e97f02f2337832bef538959a94263ea4
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: 03d311f84a4b9bc5f3a4c3c488ee7c84b1ef49ad
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Milyen számítási feladatokat tud védeni az Azure Site Recovery?
 
@@ -62,7 +62,7 @@ A Site Recovery a támogatott gépeken futó bármilyen alkalmazást képes repl
 | Dynamics AX |I |I |I |I |I|
 | Oracle |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján)|
 | Windows fájlkiszolgáló |I |I |I |I |I|
-| Citrix XenApp és XenDesktop |I|N/A |I |N/A |I |
+| Citrix XenApp és XenDesktop |I|N. a. |I |N. a. |I |
 
 ## <a name="replicate-active-directory-and-dns"></a>Active Directory és DNS replikálása
 A legtöbb vállalati alkalmazás számára elengedhetetlen az Active Directory- és DNS-infrastruktúra használata. A vészhelyreállítás során a számítási feladatok és az alkalmazások helyreállítása előtt ezeket az infrastruktúra-összetevőket meg kell védenie és helyre kell állítania.
@@ -114,7 +114,7 @@ A távoli asztali szolgáltatások (RDS) lehetővé teszik a virtuális asztali 
 | **Készletezett virtuális asztal (kezelt, UPD nélküli)** |Nem|Igen |Nem |Igen |Nem |Igen |Nem |
 | **Távoli alkalmazások és asztali munkamenetek (UPD nélkül)** |Igen|Igen |Igen |Igen |Igen |Igen |Igen |
 
-[Vészhelyreállítás beállítása a távoli asztali szolgáltatásokhoz (RDS) az Azure Site Recovery használatával](https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/rds-disaster-recovery-with-azure).
+[Vészhelyreállítás beállítása a távoli asztali szolgáltatásokhoz (RDS) az Azure Site Recovery használatával](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-disaster-recovery-with-azure).
 
 [Itt részletes tájékoztatást olvashat](https://gallery.technet.microsoft.com/Remote-Desktop-DR-Solution-bdf6ddcb) az RDS védelméről.
 
@@ -161,6 +161,6 @@ A Site Recovery szolgáltatással az alábbi módokon biztosíthatja az üzemel�
 
 [Itt részletesen tájékozódhat](site-recovery-citrix-xenapp-and-xendesktop.md) az üzemelő Citrix XenApp- és XenDesktop-példányok védelméről. Másik lehetőségként megtekintheti [a Citrix tanulmányát](https://aka.ms/citrix-xenapp-xendesktop-with-asr), amely ugyanezt részletezi.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Első lépések:](azure-to-azure-quickstart.md) Azure-beli virtuális gép replikálása.

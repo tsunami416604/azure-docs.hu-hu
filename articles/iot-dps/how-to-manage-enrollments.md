@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: b1d4e1e54d945c6edb0054da7b465b31de8c82a1
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 06cc215e5c4087c7a38937de10eaa066037ac444
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-portal"></a>Az Azure portál eszközbeléptetésnél kezelése
 
@@ -27,7 +27,7 @@ A *eszközregisztráció* létrehoz egy rekordot egyetlen eszközt vagy eszköz�
 
 Az üzembe helyezési szolgáltatással az eszközök regisztrálása két módja van:
 
-* Egy **beléptetési csoport** , amelyek egy közös igazolás mechanizmus X.509-tanúsítványokat, az azonos aláíró tanúsítványnak, amely lehet írja alá az egy eszközcsoportra bejegyzés a [legfelső szintű tanúsítvány](https://docs.microsoft.com/en-us/azure/iot-dps/concepts-security#root-certificate) vagy a [köztes tanúsítvány](https://docs.microsoft.com/en-us/azure/iot-dps/concepts-security#intermediate-certificate), fizikai eszközön eszköz tanúsítvány létrehozásához használt. Azt javasoljuk, egy beléptetési csoport az eszközök, amelyek kívánt kezdeti konfigurációja számos vagy eszközök valamennyi amelyet ugyanannak a bérlőnek. Vegye figyelembe, hogy csak regisztrálhatja az eszközöket, amelyek használják az X.509 tanúsítvány mechanizmust *beléptetési csoportok*. 
+* Egy **beléptetési csoport** , amelyek egy közös igazolás mechanizmus X.509-tanúsítványokat, az azonos aláíró tanúsítványnak, amely lehet írja alá az egy eszközcsoportra bejegyzés a [legfelső szintű tanúsítvány](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate) vagy a [köztes tanúsítvány](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate), fizikai eszközön eszköz tanúsítvány létrehozásához használt. Azt javasoljuk, egy beléptetési csoport az eszközök, amelyek kívánt kezdeti konfigurációja számos vagy eszközök valamennyi amelyet ugyanannak a bérlőnek. Vegye figyelembe, hogy csak regisztrálhatja az eszközöket, amelyek használják az X.509 tanúsítvány mechanizmust *beléptetési csoportok*. 
 
     A portálon, a csoport az eszközök az alábbi lépéseket követve létrehozhat egy beléptetési csoport:
 

@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/13/2017
+ms.date: 01/05/2018
 ms.author: yurid
-ms.openlocfilehash: 045cf83caa15cb2487b4781f3c1f42752880580c
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 5dedad4fa3695d1b210e1174d8f29966d2259889
+ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="integrate-security-center-security-policies-with-azure-policy"></a>A Security Center biztonsági szabályzatainak integrálása az Azure Policyvel
-Ez a cikk segítséget nyújt az Azure Security Center biztonsági szabályzatainak konfigurálásában, amelyek az Azure Policyre épülnek. 
+Ez a cikk segítséget nyújt az Azure Security Center biztonsági szabályzatainak konfigurálásában, amelyek az Azure Policyre épülnek.
 
 ## <a name="how-security-policies-work"></a>A biztonsági szabályzatok működése
 A Security Center automatikusan létrehoz egy alapértelmezett biztonsági szabályzatot minden egyes Azure-előfizetéséhez. A szabályzatokat szerkesztheti a Security Centerben, vagy az [Azure Policy](http://docs.microsoft.com/azure/azure-policy/azure-policy-introduction) segítségével elvégezheti a következőket:
@@ -51,7 +51,7 @@ Az egyes Azure-előfizetések alapértelmezett biztonsági szabályzatait a Secu
 5. Szabályzatdefiníció törléséhez a **Szabályzatok és paraméterek** területen, a törölni kívánt definíció mellett válassza a **Törlés** elemet.
 
 6. Kattintson a **Save** (Mentés) gombra.  
-    Megnyílik az **Elérhető definíciók** ablak, amely a Security Centerhez az Azure Policyn keresztül hozzárendelt alapértelmezett szabályzatot jeleníti meg. 
+    Megnyílik az **Elérhető definíciók** ablak, amely a Security Centerhez az Azure Policyn keresztül hozzárendelt alapértelmezett szabályzatot jeleníti meg.
 
 7. (Nem kötelező) Az **Elérhető definíciók** ablakban a következő lehetőségek közül választhat:
 
@@ -68,12 +68,12 @@ Az egyes Azure-előfizetések alapértelmezett biztonsági szabályzatait a Secu
 
 ## <a name="available-security-policy-definitions"></a>Elérhető biztonságiszabályzat-definíciók
 
-Az alapértelmezett biztonsági szabályzatban elérhető szabályzatdefiníciók megértéséhez tekintse át az alábbi táblázatot: 
+Az alapértelmezett biztonsági szabályzatban elérhető szabályzatdefiníciók megértéséhez tekintse át az alábbi táblázatot:
 
 | Szabályzat | Az engedélyezett szabályzat működése |
 | --- | --- |
 | System updates (Rendszerfrissítések) |Lekéri az elérhető biztonsági és kritikus frissítések napi listáját a Windows Update vagy a Windows Server Update Services szolgáltatástól. A lekért lista a virtuális gépek számára beállított szolgáltatástól függ, és javasolja a hiányzó frissítések alkalmazását. Linux rendszerek esetében a szabályzat a disztribúció által biztosított csomagkezelő rendszert használja az elérhető frissítésekkel rendelkező csomagok meghatározásához. Az [Azure Cloud Services](../cloud-services/cloud-services-how-to-configure-portal.md) virtuális gépeitől származó biztonsági és kritikus frissítéseket is keres. |
-| OS vulnerabilities (Operációs rendszerek sebezhetőségei) |Naponta elemzi az operációs rendszer beállításait olyan problémák meghatározása érdekében, amelyek a virtuális gépet sebezhetővé tehetik a támadásokkal szemben. A szabályzat a biztonsági rések megszüntetését elősegítő konfigurációmódosításokat is javasol. A szabályzat által figyelt konfigurációkkal kapcsolatban lásd [a javasolt alapkonfigurációk listáját](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335). (A Windows Server 2016 jelenleg nem részesül teljes mértékű támogatásban.) |
+| Biztonsági konfigurációk |Naponta elemzi az operációs rendszer beállításait olyan problémák meghatározása érdekében, amelyek a virtuális gépet sebezhetővé tehetik a támadásokkal szemben. A szabályzat a biztonsági rések megszüntetését elősegítő konfigurációmódosításokat is javasol. A szabályzat által figyelt konfigurációkkal kapcsolatban lásd [a javasolt alapkonfigurációk listáját](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335). (A Windows Server 2016 jelenleg nem részesül teljes mértékű támogatásban.) |
 | Endpoint protection (Végpontok védelme) |A szabályzat az összes windowsos virtuális gép (VM) esetében végpontvédelem beállítását javasolja a vírusok, kémprogramok és más kártevőszoftverek hatékonyabb azonosításához és eltávolításához. |
 | Disk encryption (Lemeztitkosítás) |Nyugalmi állapotban az adatvédelmi teljesítmény javításához ajánlja a lemeztitkosítás engedélyezését az összes virtuális gépen. |
 | Network security groups (Hálózati biztonsági csoportok) |[Hálózati biztonsági csoportok](../virtual-network/virtual-networks-nsg.md) konfigurálását ajánlja a be- és kimenő adatforgalom vezérlésére a nyilvános végpontokkal rendelkező virtuális gépek esetében. Az alhálózatra beállított hálózati biztonsági csoportokat az összes virtuális géphez tartozó hálózati adapter örökli, kivéve, ha Ön más beállítást ad meg. Annak figyelése mellett, hogy a hálózati biztonsági csoportok konfigurálása megtörtént-e, ez a szabályzat a bejövő biztonsági szabályokat is ellenőrzi, és azonosítja azokat a szabályokat, amelyek engedélyezik a bejövő forgalmat. |
@@ -86,7 +86,7 @@ Az alapértelmezett biztonsági szabályzatban elérhető szabályzatdefiníció
 | JIT hálózati hozzáférés |Ha az igény szerinti hálózati hozzáférés engedélyezve van, a Security Center minden, az Azure-beli virtuális gépekre érkező forgalmat zárol egy hálózati biztonsági csoport típusú szabály létrehozásával. Ön választja ki a virtuális gép azon portjait, amelyeken a beérkező forgalmat a rendszer zárolja. További információk: [Manage virtual machine access using just in time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) (A virtuális gépekhez való hozzáférés kezelése igény szerinti hozzáférés használata esetén). |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebből a cikkből megismerhette a Security Center biztonsági szabályzatainak konfigurálását. A Security Centerrel kapcsolatos további információkért olvassa el a következő cikkeket:
 
 * [Útmutató az Azure Security Center tervezéséhez és működtetéséhez](security-center-planning-and-operations-guide.md): Az Azure Security Centerhez tartozó tervezési szempontokat ismertető és az azokat figyelembe vevő tervezési folyamatokban segítő útmutató, amely megkönnyíti az Azure Security Center használatát.

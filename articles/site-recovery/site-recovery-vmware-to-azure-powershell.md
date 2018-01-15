@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 14/12/2017
+ms.date: 1/02/2018
 ms.author: bsiva
-ms.openlocfilehash: 3cf2478eb810961604e1218731f5303abd0f611a
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: ee4847a61392a8eacde82ea62c3812d601b489f3
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="replicate-and-failover-vmware-virtual-machines-to-azure-using-azure-site-recovery-powershell"></a>Replikálásához és feladatátvételéhez VMware virtuális gépeket az Azure-ban az Azure Site Recovery PowerShell használatával
 
@@ -109,7 +109,7 @@ Használja a letöltött regisztrációs kulcsával, és kövesse az alábbiakba
 ## <a name="set-the-vault-context"></a>A tároló környezet beállítása
 
 > [!TIP]
-> Az Azure Site Recovery PowerShell modul (AzureRm.RecoveryServices.SiteRecovery modul) könnyen használható aliasok legtöbb parancsmagokat tartalmaz. A modul parancsmagjai formájában  *\<művelet >-**AzureRmRecoveryServicesAsr**\<objektum >* , és ezzel egyenértékű -aliasról, amelyek formájú  *\<művelet >-**ASR**\<objektum >*. Ez a cikk a parancsmag aliasok olvasási könnyű használ.
+> Az Azure Site Recovery PowerShell modul (AzureRm.RecoveryServices.SiteRecovery modul) könnyen használható aliasok legtöbb parancsmagokat tartalmaz. A modul parancsmagjai formájában  *\<művelet >-**AzureRmRecoveryServicesAsr**\<objektum >* és egyenértékű aliast is, amely formájú  *\<Művelet >-**ASR**\<objektum >*. Ez a cikk a parancsmag aliasok olvasási könnyű használ.
 
 Állítsa be a tároló a környezetben, a Set-ASRVaultContext parancsmaggal. Beállítása után további Azure Site Recovery a PowerShell-munkamenetben műveleteket a kijelölt tároló környezetében. Az alábbi példában a $vault tároló adataiból változó segítségével adja meg a tároló környezetet a PowerShell-munkamenethez.
  ```azurepowershell
@@ -329,7 +329,7 @@ Virtuális gépek a vCenter-kiszolgáló felderítését körülbelül 15 – 20
 Szüksége lesz egy felderített virtuális gép védelmét a következő adatokat:
 * A védhető replikálni.
 * A tárfiókot, amelybe replikálhatók a virtuális gépet. A naplók tárolásához, a prémium szintű tárfiók a virtuális gépek védelmére van szükség.
-* A Folyamatkiszolgáló replikálás használandó. Rendelkezésre álló folyamat kiszolgálók listájának lekérése és menti a ***$ProcessServers [0]****(ScaleOut-ProcessServer)* és ***$ProcessServers [1]*** *(ConfigurationServer)* változók.  
+* A Folyamatkiszolgáló replikálás használandó. Rendelkezésre álló folyamat kiszolgálók listájának lekérése és menti a ***$ProcessServers [0]****(ScaleOut-ProcessServer)* és ***$ProcessServers [1]*** *(ConfigurationServer)* változók.
 * A leküldéses telepítés a mobilitási szolgáltatás szoftvereket a gépek használandó fiókot. A rendelkezésre álló fiókok listájának lekérése és tárolja a ***$AccountHandles*** változó.
 * A védelmitároló-leképezés a replikációs házirend-replikációhoz használt.
 * Az erőforráscsoport, amelyben virtuális gépek léteznie kell a feladatátvevő.

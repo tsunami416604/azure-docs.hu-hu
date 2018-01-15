@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 10/30/2017
 ms.author: rajanaki
-ms.openlocfilehash: 1c65c32457c2311304abf07983f698289f67bbc2
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 98f3b1fe5a0f1d7518e8f0ef6f2a478f59559139
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-on-premises-to-azure"></a>Az Azure Site Recovery mátrix a helyszíni replikálása Azure-bA
 
@@ -68,34 +68,34 @@ A következő táblázat összefoglalja a replikált operációs rendszer támog
 
  **VMware vagy fizikai kiszolgáló** | **A Hyper-V (a/VMM nélkül)** |
 --- | --- |
-64 bites Windows Server 2016 (Server Core, az asztali élmény Server)\*, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2: legalább SP1<br/><br/> Red Hat Enterprise Linux: 5.2 való 5.11, 6.1 való 6.9, 7.0 való 7.3 <br/><br/>CentOS: 5.2 való 5.11, 6.1 való 6.9, 7.0 való 7.3 <br/><br/>Ubuntu 14.04 LTS server[ (támogatott kernel verziók)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Ubuntu 16.04 LTS server[ (támogatott kernel verziók)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Debian 7 <br/><br/>Debian 8<br/><br/>Oracle Enterprise Linux 6.4, vagy a Red Hat kompatibilis kernel, vagy a szoros vállalati Kernel kiadás 3 (UEK3) 6.5 <br/><br/>SUSE Linux Enterprise Server 11 SP3 <br/><br/>SUSE Linux Enterprise Server 11 SP4 <br/>(A gépek replikálásához SLES 11 SP3 az SLES 11 SP4 frissítés nem támogatott. Ha a replikált gép SLES 11SP3 az SLES 11 SP4 frissítették, szüksége lesz tiltsa le a replikációt, és a post újra a frissítést a gép védelméhez.) | A vendég operációs rendszer [Azure által támogatott](https://technet.microsoft.com/library/cc794868.aspx)
+64 bites Windows Server 2016 (Server Core, az asztali élmény Server)\*, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2: legalább SP1<br/><br/> Red Hat Enterprise Linux: 5.2 való 5.11, 6.1 való 6.9, 7.0-7.4<br/><br/>CentOS: 5.2 való 5.11, 6.1 való 6.9, 7.0-7.4 <br/><br/>Ubuntu 14.04 LTS server[ (támogatott kernel verziók)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Ubuntu 16.04 LTS server[ (támogatott kernel verziók)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Debian 7 <br/><br/>Debian 8<br/><br/>Oracle Enterprise Linux 6.4, vagy a Red Hat kompatibilis kernel, vagy a szoros vállalati Kernel kiadás 3 (UEK3) 6.5 <br/><br/>SUSE Linux Enterprise Server 11 SP3 <br/><br/>SUSE Linux Enterprise Server 11 SP4 <br/>(A gépek replikálásához SLES 11 SP3 az SLES 11 SP4 frissítés nem támogatott. Ha a replikált gép SLES 11SP3 az SLES 11 SP4 frissítették, szüksége lesz tiltsa le a replikációt, és a post újra a frissítést a gép védelméhez.) | A vendég operációs rendszer [Azure által támogatott](https://technet.microsoft.com/library/cc794868.aspx)
 
 >[!NOTE]
 >
 > \*Windows Server 2016 Nano Server nem támogatott.
-
->[!IMPORTANT]
->(VMware vagy fizikai kiszolgálók replikálása Azure-bA vonatkozik)
 >
-> Red Hat Enterprise Linux Server 7 + és CentOS 7 + kiszolgálókon kernel verzió 3.10.0-514 támogatott az Azure Site Recovery mobilitási szolgáltatás 9.8 verziójával kezdve.<br/><br/>
-> Az ügyfelek a 3.10.0-514 kernel a mobilitási szolgáltatás 9.8 verziónál korábbi verziójával is tiltsa le a replikációt. frissítse a mobilitási szolgáltatás verziója 9.8 verzióra, majd engedélyezze újra a replikációt.
+> A Linux terjesztéseket csak a készlet kernelek alverzió kiadás/frissítése a terjesztési részét képező támogatottak.
+>
+> A Linux-disztribúció egy Azure Site Recovery a fő verziói közötti frissítés VMware rendszerű virtuális gép védett, vagy fizikai kiszolgáló nem támogatott. Az operációs rendszer frissítésekor (például CentOS 6.* CentOS 7.*) Főverziók közötti, tiltsa le a replikációt a gép, frissítse az operációs rendszert a számítógépen, és majd engedélyezze újra a replikációt.
+> 
 
 
 ### <a name="supported-ubuntu-kernel-versions-for-vmwarephysical-servers"></a>Ubuntu kernel támogatott verziók, VMware vagy fizikai kiszolgálók
 
 **Kiadás** | **Mobilitási szolgáltatás verziója** | **Kernel-verzió** |
 --- | --- | --- |
-14.04 LTS | 9.9 | a 3.13.0-117-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-75-generic 4.4.0-21-Generic |
 14.04 LTS | 9.10 | a 3.13.0-121-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-81-generic 4.4.0-21-Generic |
 14.04 LTS | 9.11 | a 3.13.0-128-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-91-generic 4.4.0-21-Generic |
 14.04 LTS | 9.12 | a 3.13.0-132-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-96-generic 4.4.0-21-Generic |
+14.04 LTS | 9.13 | a 3.13.0-137-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-104-generic 4.4.0-21-Generic |
 16.04 LTS | 9.10 | a 4.4.0-81-generic, 4.4.0-21-Generic<br/>a 4.8.0-56-generic, 4.8.0-34-Generic<br/>a 4.10.0-24-generic 4.10.0-14-Generic |
 16.04 LTS | 9.11 | a 4.4.0-91-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-32-generic 4.10.0-14-Generic |
 16.04 LTS | 9.12 | a 4.4.0-96-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-35-generic 4.10.0-14-Generic |
+16.04 LTS | 9.13 | a 4.4.0-104-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic 4.10.0-14-Generic |
 
 ## <a name="supported-file-systems-and-guest-storage-configurations-on-linux-vmwarephysical-servers"></a>Támogatott fájlrendszerek és a Vendég tárolási konfigurációk alakíthatók ki Linux (VMware vagy fizikai kiszolgálók)
 
-A következő fájl rendszerek és a tárolási konfiguráció szoftvereket támogatja a VMware vagy fizikai kiszolgálókon futó Linux-kiszolgálókon:
+A következő fájl rendszerek, valamint a tárolási konfiguráció szoftver támogatottak, VMware vagy fizikai kiszolgálókon futó Linux-kiszolgálókon:
 * Fájlrendszer: ext3, ext4, ReiserFS (Suse Linux Enterprise Server csak), XFS
 * Kötetkezelő: LVM2
 * A többutas szoftver: eszköz leképezője
@@ -105,8 +105,7 @@ Több sor blokk IO eszközökön nem támogatottak.<br/>
 A HP CCISS tárolóvezérlő fizikai kiszolgálók nem támogatottak.<br/>
 
 >[!Note]
-> A Linux-kiszolgálókon a következő könyvtárak (Ha külön partíciók /-fájlrendszerek beállított) kell lennie azon a lemezen (az operációs rendszer lemezének) a forráskiszolgálón: / (gyökér), / Boot, / usr, /usr/local, /var, etc<br/><br/>
-> A metaadatok ellenőrzőösszeg például XFS fájlrendszerek XFSv5 szolgáltatást támogat a mobilitási szolgáltatás 9.10 verziójával kezdve. Ha XFSv5 funkciókat használ, győződjön meg arról, 9.10 vagy későbbi Mobilitásiszolgáltatás-verziót futtat. A xfs_info segédprogram segítségével ellenőrizze a XFS superblock a partíció. Ha ftype értéke 1, majd XFSv5 szolgáltatások használatban van.
+> A Linux-kiszolgálókon a következő könyvtárak (Ha külön partíciók /-fájlrendszerek beállított) kell lennie azon a lemezen (az operációs rendszer lemezének) a forráskiszolgálón: / (gyökér), / Boot, / usr, /usr/local, /var, etc; és a/Boot lemezpartíción legyen, és nem lehet egy LVM kötet<br/><br/>
 >
 
 
@@ -130,7 +129,7 @@ A hálózati adapterek összevonása | Nem | Nem
 IPv4 | Igen | Igen
 IPv6 | Nem | Nem
 Statikus IP-címet (Windows) | Igen | Igen
-Statikus IP-címet (Linux) | Igen <br/><br/>Virtuális gépek feladat-visszavétel DHCP használatára van konfigurálva.  | Nem
+Statikus IP-címet (Linux) | Igen <br/><br/>Virtuális gépek feladat-visszavétel DHCP használatára vannak konfigurálva.  | Nem
 Több hálózati Adapterrel | Igen | Igen
 
 ### <a name="failed-over-azure-vm-network-configuration"></a>Átvevő Azure Virtuálisgép-hálózati konfiguráció

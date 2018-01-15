@@ -13,17 +13,15 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: 99f7fcbd3a2d3b6f6fe48c7fb2703d35d3b3a8fd
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: a73836b784a5e86d01df51fb83d619890d56502a
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="lesson-10-create-partitions"></a>10. lecke: Partíciók létrehozása
-
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
+# <a name="create-partitions"></a>Partíciók létrehozása
 
 Ebben a leckében partíciókat hoz létre a FactInternetSales tábla kisebb logikai részekre való felosztásához, amelyek a többi partíciótól függetlenül dolgozhatók fel (frissíthetők). Alapértelmezés szerint a modellekben foglalt táblák mindegyike egy partícióval rendelkezik, amely az adott tábla összes oszlopát és sorát tartalmazza. A FactInternetSales tábla esetében az adatokat éves bontásban szeretnénk kezelni, a táblában szereplő mind az öt év esetében évenként egy-egy partícióban. Ezután mindegyik partíció egymástól függetlenül kezelhető. További tudnivalókért lásd a [partíciókat](https://docs.microsoft.com/sql/analysis-services/tabular-models/partitions-ssas-tabular) ismertető cikket. 
   

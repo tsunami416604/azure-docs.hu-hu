@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/04/2017
 ms.author: alkohli
-ms.openlocfilehash: 5f31e32bb7cbd747af2e03699cfb2c6418828f8d
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 96dcda25cde2473387842fd01421b6bb619e4ece
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>A StorSimple Device Manager szolgáltatás a StorSimple 8000 sorozat eszközeire üzembe helyezése
 
@@ -27,6 +27,9 @@ ms.lasthandoff: 11/17/2017
 A StorSimple Device Manager szolgáltatás a Microsoft Azure-ban és több StorSimple eszközt csatlakozik. Miután létrehozta a szolgáltatást, ezáltal az adminisztratív terhek minimalizálása egységes, központi helyről, a StorSimple eszköz Manager szolgáltatáshoz csatlakozó eszközök kezelésére használhatja.
 
 Ez az oktatóanyag azt ismerteti, hogyan létrehozása, törlés, a szolgáltatás és a szolgáltatás regisztrációs kulcsának kezelése. Az ebben a cikkben szereplő információ is alkalmazható, csak a StorSimple 8000 sorozat eszközeire. További információ a StorSimple virtuális tömbök Ugrás [a StorSimple virtuális tömb StorSimple Device Manager szolgáltatás telepítése](storsimple-virtual-array-manage-service.md).
+
+> [!NOTE]
+> Klasszikus StorSimple eszköz vezetők automatikusan került az új Azure-portálon. Ha kérdése van, lásd: [– gyakori kérdések: áthelyezése az Azure-portálon](storsimple-8000-move-azure-portal-faq.md). Az Azure Service Management (ASM) PowerShell-parancsmagok használata nem támogatott az új Azure portálra az áthelyezés után. Frissítenie a parancsfájlokat az eszközök kezeléséhez, és keresse meg a [parancsfájlok használata Azure Resource Manager SDK-alapú StorSimple Eszközkezelés](storsimple-8000-automation-azurerm-scripts.md) további információt. Az új Azure-portálon 5.0-s vagy újabb frissítés rendszerű eszközöket támogatja. Ha az eszköz nem naprakész, 5. frissítésétől azonnal kell telepíteni. További információkért látogasson el [telepítése frissítés 5](storsimple-8000-install-update-5.md). A StorSimple felhő készülék (8010-es/8020-as modell) használata, a felhő készülék nem frissíthető. Hozzon létre egy új felhőalapú készülék frissítés 5.0, és ezután átveheti a létrehozott új felhő készülék szoftver legújabb verzióját használja. Minden eszköz 4.0-s vagy régebbi verziót futtató a frissítés fog tapasztalni [felügyeleti funkció csökkenteni](storsimple-8000-manage-service.md#supported-operations-on-devices-running-versions-prior-to-update-5.0). 
 
 ## <a name="create-a-service"></a>Szolgáltatás létrehozása
 Hozzon létre a StorSimple Device Manager szolgáltatást, akkor kell rendelkeznie:
@@ -57,86 +60,6 @@ Minden egyes StorSimple Device Manager szolgáltatás található a következő 
 * **Állapot** – a szolgáltatás, amely lehet állapotának **aktív**, **létrehozása**, vagy **Online**.
 * **Hely** – az a földrajzi hely, amely a StorSimple eszköz telepítve lesz.
 * **Előfizetés** – a számlázási előfizetés, amely kapcsolódik a szolgáltatáshoz.
-
-## <a name="move-a-service-to-azure-portal"></a>Helyezze át a szolgáltatás Azure-portálon
-A StorSimple 8000 series mostantól kezelhető az Azure portálon. Ha rendelkezik meglévő szolgáltatással a StorSimple eszközök kezelésére, javasoljuk, hogy a szolgáltatás helyezi át az Azure-portálon. A StorSimple Manager szolgáltatás a klasszikus Azure portálon 2017. szeptember 30 után már nem támogatott. Ha szeretné helyezni az új Azure-portálra, tekintse meg a [átmenet szempontjai](#considerations-for-transition). 
-
-> [!NOTE]
-> 2017. október 5., kezdve a hagyományos StorSimple eszköz kezelői automatikusan áthelyezi az új Azure-portálon. Ez egy fázisokra bontva történő bevezetéséhez, és meg információkat a e-mailek és a portál értesítések frissítjük. Ha kérdése van, lásd: [– gyakori kérdések: áthelyezése az Azure-portálon](storsimple-8000-move-azure-portal-faq.md).
-
-### <a name="considerations-for-transition"></a>Átmenet szempontjai
-
-Tekintse át a hatását, hogy az új Azure-portálon való áttelepítése előtt helyezze át a szolgáltatást.
-
-> [!NOTE]
-> A meglévő Azure Service Management (ASM) PowerShell-parancsmagok használata nem támogatott, az új Azure-portálon történő áthelyezése után. Frissítse a parancsfájlok az Azure Resource Manager SDK-t az eszközök felügyeletére. További információkért látogasson el a [parancsfájlok használata Azure Resource Manager SDK-alapú StorSimple Eszközkezelés](storsimple-8000-automation-azurerm-scripts.md).
-> Az új Azure-portálon 3.0-s vagy újabb frissítés rendszerű eszközöket támogatja. Ha az eszköz nem naprakész, erősen ajánlott frissítési 5 minél hamarabb alkalmazni.
-
-#### <a name="before-you-transition"></a>Áttérés előtt
-
-* Az eszköz fut frissítés 3.0-s vagy újabb. Ha az eszköz egy régebbi verziója fut, javasoljuk, hogy telepítse az 5. frissítésétől a gyorsjavítások a módszerrel. További információkért látogasson el [telepítése frissítés 5](storsimple-8000-install-update-5.md). Ha egy StorSimple felhő készülék (8010-es/8020-as modell) használ, egy felhőalapú készülék nem frissíthető. Hozzon létre egy új felhőalapú készülék frissítés 5.0, és ezután átveheti a létrehozott új felhő készülék szoftver legújabb verzióját használja.
-
-* Után az új Azure-portálra átalakulnak, a klasszikus Azure portálon kezelheti a StorSimple eszköz nem használhat.
-
-* Az átmenet nem zavaró, és az eszköz nincs leállás.
-
-* A megadott előfizetéshez tartozó összes StorSimple eszköz kezelői átalakulnak.
-
-#### <a name="during-the-transition"></a>Az áttérés közben
-
-* Az eszköz nem tudja kezelni a portálról.
-* Műveletek, például a rétegezési és ütemezett biztonsági mentések továbbra is megtörténik.
-* Ne törölje a régi StorSimple eszköz kezelői, amíg folyamatban van az átmenet.
-
-#### <a name="after-the-transition"></a>Az áttérés után
-
-* Az eszközök már nem kezelheti a klasszikus portálon.
-
-* A meglévő Azure Service Management (ASM) PowerShell-parancsmagok használata nem támogatott. Frissítse a parancsfájlok az Azure Resource Manageren keresztül eszközei kezeléséhez. Erőforrás-kezelő SDK használatával mintaparancsfájlok, tekintse meg a [storsimpledevicemgmttools github](https://github.com/anoobbacker/storsimpledevicemgmttools).
-
-* A szolgáltatás és eszköz konfigurációs megmaradnak. A kötetek és a biztonsági másolatok is átalakulnak az Azure portálon.
-
-### <a name="begin-transition"></a>Átmenet megkezdése
-
-A következő lépésekkel szüntesse meg a szolgáltatás az Azure portálon.
-
-1. Nyissa meg az új Azure-portálon a meglévő StorSimple Manager szolgáltatáshoz.
-    ![További szolgáltatások](./media/storsimple-8000-manage-service/service-browse01.png) ![jelölje be az Eszközkezelő](./media/storsimple-8000-manage-service/service-browse02.png)
-
-2. Megjelenik egy értesítés, amely tájékoztatja, hogy a StorSimple Device Manager szolgáltatás jelenleg elérhető az Azure portálon. Az Azure portálon a szolgáltatás nevezzük a StorSimple eszköz Manager szolgáltatást.
-    ![Áttelepítési értesítés](./media/storsimple-8000-manage-service/service-transition1.jpg)
-    
-    1. Győződjön meg arról, hogy átolvasta az áttelepítés teljes hatását.
-    2. Tekintse át a klasszikus portálon kerül a StorSimple-eszköz kezelők listáját.
-
-3. Kattintson a **áttelepítése**. Az átmenet kezdődik, és néhány percet is igénybe vehet.
-
-Az átmenet befejezése után az eszközök a StorSimple Device Manager szolgáltatás az Azure portálon keresztül is kezelheti. Ha nem látja az lehetőséget az Azure-portálon való áttelepítésre, de szeretné helyezni, akkor [igényelnie](https://aka.ms/ss8000-cx-signup).
-
-## <a name="supported-operations-on-devices-running-versions-prior-to-update-30"></a>Támogatott műveletek előtt frissítés 3.0 verziót futtató eszközök
-Az Azure portálon csak a 3.0-s és újabb rendszer Update futtatása StorSimple-eszközöket támogatja. A régebbi verzióját futtató eszközök csak korlátozottan támogatják. Miután áttelepítette az Azure portálra, az alábbi táblázat segítségével milyen műveletek előtt frissítés 3.0 verziót futtató eszközökön támogatott.
-
-| Művelet                                                                                                                       | Támogatott      |
-|---------------------------------------------------------------------------------------------------------------------------------|----------------|
-| Eszköz regisztrálása                                                                                                               | Igen            |
-| Például az általános beállítások, a hálózati és a biztonság konfigurálása                                                                | Igen            |
-| Vizsgálat, töltse le és telepítse a frissítéseket                                                                                             | Igen            |
-| Eszköz inaktiválása                                                                                                               | Igen            |
-| Eszköz törlése                                                                                                                   | Igen            |
-| Létrehozása, módosítása és törlése a kötettároló                                                                                   | Nem             |
-| Létrehozása, módosítása és kötet törlése                                                                                             | Nem             |
-| Létrehozása, módosítása és törlése a biztonsági mentési házirend                                                                                      | Nem             |
-| Manuális biztonsági mentés készítése                                                                                                            | Nem             |
-| Ütemezett biztonsági mentés készítése                                                                                                         | Nem alkalmazható |
-| Állítsa vissza egy Fájljelző                                                                                                        | Nem             |
-| Klónozza a futtató eszközre, az Update 3.0-s és újabb verziók <br> A forráseszközt előtt frissítés 3.0-s verzióját futtatja.                                | Igen            |
-| Egy korábbi frissítés 3.0 verziók futtató eszközre klónozása                                                                          | Nem             |
-| Forrás eszközként feladatátvétel <br> (futtató eszközről verzióra való frissítés 3.0-t futtató eszközeiken előzetes frissítés 3.0-s és újabb verziók)                                                               | Igen            |
-| Cél eszközként feladatátvétel <br> (az Update 3.0 előtt szoftververziót futtató eszköz)                                                                                   | Nem             |
-| Riasztás törlése                                                                                                                  | Igen            |
-| Biztonsági mentési házirendek, biztonságimásolat-katalógus, kötetek, kötettárolók, figyelési diagramokat, feladatok és a klasszikus portálon létrehozott riasztások megtekintése | Igen            |
-| És eszközvezérlők bekapcsolása                                                                                              | Igen            |
-
 
 ## <a name="delete-a-service"></a>A szolgáltatás törlése
 
@@ -263,7 +186,32 @@ Frissítéséhez hajtsa végre a következő lépéseket a szolgáltatásadat-ti
 
 Ezt a parancsfájlt biztosítja, hogy szolgáltatásadat-titkosítási kulcs az Eszközkezelőben a 8010-es/8020-as modellt felhő készülékek be van állítva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="supported-operations-on-devices-running-versions-prior-to-update-50"></a>Támogatott műveletek előtt frissítés 5.0 verziót futtató eszközök
+Az Azure portálon csak a Update futtatása 5.0-s és újabb rendszer StorSimple-eszközöket támogatja. A régebbi verzióját futtató eszközök csak korlátozottan támogatják. Miután áttelepítette az Azure portálra, az alábbi táblázat segítségével milyen műveletek előtt frissítés 5.0 verziót futtató eszközökön támogatott.
+
+| Művelet                                                                                                                       | Támogatott      |
+|---------------------------------------------------------------------------------------------------------------------------------|----------------|
+| Eszköz regisztrálása                                                                                                               | Igen            |
+| Például az általános beállítások, a hálózati és a biztonság konfigurálása                                                                | Igen            |
+| Vizsgálat, töltse le és telepítse a frissítéseket                                                                                             | Igen            |
+| Eszköz inaktiválása                                                                                                               | Igen            |
+| Eszköz törlése                                                                                                                   | Igen            |
+| Létrehozása, módosítása és törlése a kötettároló                                                                                   | Nem             |
+| Létrehozása, módosítása és kötet törlése                                                                                             | Nem             |
+| Létrehozása, módosítása és törlése a biztonsági mentési házirend                                                                                      | Nem             |
+| Manuális biztonsági mentés készítése                                                                                                            | Nem             |
+| Ütemezett biztonsági mentés készítése                                                                                                         | Nem alkalmazható |
+| Állítsa vissza egy Fájljelző                                                                                                        | Nem             |
+| Klónozza a futtató eszközre, az Update 3.0-s és újabb verziók <br> A forráseszközt előtt frissítés 3.0-s verzióját futtatja.                                | Igen            |
+| Egy korábbi frissítés 3.0 verziók futtató eszközre klónozása                                                                          | Nem             |
+| Forrás eszközként feladatátvétel <br> (futtató eszközről verzióra való frissítés 3.0-t futtató eszközeiken előzetes frissítés 3.0-s és újabb verziók)                                                               | Igen            |
+| Cél eszközként feladatátvétel <br> (az Update 3.0 előtt szoftververziót futtató eszköz)                                                                                   | Nem             |
+| Riasztás törlése                                                                                                                  | Igen            |
+| Biztonsági mentési házirendek, biztonságimásolat-katalógus, kötetek, kötettárolók, figyelési diagramokat, feladatok és a klasszikus portálon létrehozott riasztások megtekintése | Igen            |
+| És eszközvezérlők bekapcsolása                                                                                              | Igen            |
+
+
+## <a name="next-steps"></a>További lépések
 * További információ a [StorSimple telepítési folyamatának](storsimple-8000-deployment-walkthrough-u2.md).
 * További információ [tárfiók felügyelete a StorSimple](storsimple-8000-manage-storage-accounts.md).
 * További tudnivalók a [felügyelete a StorSimple eszközt a StorSimple Device Manager szolgáltatással](storsimple-8000-manager-service-administration.md).

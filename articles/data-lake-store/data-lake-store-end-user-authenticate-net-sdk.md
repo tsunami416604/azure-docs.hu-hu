@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: ad9a66e02318ad4a84d65062114c916721047888
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: ea71743e775da8cfd85ecbd20e9c5981a198e05c
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-net-sdk"></a>Végfelhasználói hitelesítési a Data Lake Store .NET SDK használatával
 > [!div class="op_single_selector"]
@@ -62,27 +62,32 @@ Ebből a cikkből megismerheti az Azure Data Lake Store végfelhasználói hitel
         ![NuGet-forrás hozzáadása](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "Új Azure Data Lake-fiók létrehozása")
    4. Zárja be a **NuGet-csomagkezelőt**.
 
-6. Nyissa meg a **Program.cs** fájlt, törölje a meglévő kódot, majd illessze be az alábbi utasításokat, hogy hivatkozásokat a névterekre való hivatkozásokat tudjon felvenni.
+6. Nyissa meg **Program.cs**
+7. A használatával replease utasítások a következő sort:
 
-        using System;
-        using System.IO;
-        using System.Linq;
-        using System.Text;
-        using System.Threading;
-        using System.Collections.Generic;
-                
-        using Microsoft.Rest;
-        using Microsoft.Rest.Azure.Authentication;
-        using Microsoft.Azure.Management.DataLake.Store;
-        using Microsoft.Azure.Management.DataLake.Store.Models;
-        using Microsoft.IdentityModel.Clients.ActiveDirectory;
-        
+    ```csharp
+    using System;
+    using System.IO;
+    using System.Linq;
+    using System.Text;
+    using System.Threading;
+    using System.Collections.Generic;
+            
+    using Microsoft.Rest;
+    using Microsoft.Rest.Azure.Authentication;
+    using Microsoft.Azure.Management.DataLake.Store;
+    using Microsoft.Azure.Management.DataLake.Store.Models;
+    using Microsoft.IdentityModel.Clients.ActiveDirectory;
+    ```     
 
 ## <a name="end-user-authentication"></a>Végfelhasználói hitelesítés
 Adja hozzá ezt a kódrészletet a .NET-ügyfélalkalmazást. Cserélje le a helyőrző értékeket egy natív Azure AD-alkalmazást, (előfeltétel szerepel) lekért értékekkel. Ezt a kódrészletet lehetővé teszi, hogy az alkalmazás hitelesítéséhez **interaktív** a Data Lake Store, ami azt jelenti, hogy a Azure hitelesítő adatainak megadását kéri.
 
 Könnyű használatra az alábbi kódrészletben ügyfél-Azonosítóját és átirányítási URI-t, amelyek érvényesek a bármely Azure-előfizetéshez tartozó alapértelmezett értékeket használja. Az alábbi kódrészletben szereplő meg kell adnia az értéket a bérlő azonosítóját. Az utasításokat követve a bérlői azonosító le [a bérlőazonosító beszerzése](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id).
     
+- Cserélje le a Main() függvény a következő kódot:
+
+    ```csharp
     private static void Main(string[] args)
     {
         //User login via interactive popup
@@ -96,6 +101,7 @@ Könnyű használatra az alábbi kódrészletben ügyfél-Azonosítóját és á
         var armCreds = GetCreds_User_Popup(TENANT, ARM_TOKEN_AUDIENCE, CLIENTID, tokenCache);
         var adlCreds = GetCreds_User_Popup(TENANT, ADL_TOKEN_AUDIENCE, CLIENTID, tokenCache);
     }
+    ```
 
 Néhány tudnivaló az előző részlet kapcsolatban:
 

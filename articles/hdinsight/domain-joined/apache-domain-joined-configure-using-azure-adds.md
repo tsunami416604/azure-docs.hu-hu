@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/10/2017
 ms.author: saurinsh
-ms.openlocfilehash: cf8532334f03f72691fa09e8dbdd02b78072cf38
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: c5ab129e87c8c7903972bd94286ba0368037a738
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="configure-domain-joined-hdinsight-clusters-using-azure-active-directory-domain-services"></a>Tartományhoz csatlakozó HDInsight-fürtök Azure Active Directory tartományi szolgáltatások konfigurálása
 
@@ -39,7 +39,7 @@ Hozzon létre egy Azure Active Directory tartományi szolgáltatások HDInsight-
 > [!NOTE]
 > A bérlői rendszergazdák csak a jogosult tartományi szolgáltatások létrehozására. 
 
-Után van megadva a tartományi szolgáltatások, a szolgáltatás-fiók létrehozásához szüksége a **az Azure AD-tartományvezérlő rendszergazdák** csoport hozhat létre a HDInsight-fürthöz. A Service fióknak globális rendszergazdának kell lennie az Azure ad-val.
+Után van megadva a tartományi szolgáltatások, a szolgáltatás-fiók létrehozásához szüksége a **az Azure AD-tartományvezérlő rendszergazdák** csoport hozhat létre a HDInsight-fürthöz. A fiók globális rendszergazdának kell lennie az Azure ad-val.
 
 ## <a name="create-a-domain-joined-hdinsight-cluster"></a>Tartományhoz csatlakozó HDInsight-fürt létrehozása
 
@@ -61,7 +61,7 @@ Az alábbi képernyőfelvételen látható a konfigurációkat az Azure-portálo
 ![Azure HDInsight tartományhoz az Active Directory tartományi szolgáltatások konfigurálása](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-domain-joined-configuration-azure-aads-portal.png).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A Hive-házirendek konfigurálásához és a Hive-lekérdezések futtatásához lásd: [Hive-házirendek konfigurálása a tartományhoz csatlakoztatott HDInsight-fürtökben](apache-domain-joined-run-hive.md).
 * Az SSH használatával csatlakozni a tartományhoz a HDInsight-fürtök, lásd: [SSH használata a HDInsight Linux, Unix vagy OS X, Linux-alapú Hadooppal](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
 

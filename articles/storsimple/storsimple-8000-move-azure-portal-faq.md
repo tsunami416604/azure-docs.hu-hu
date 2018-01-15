@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: 06e8d99aa2ad4eb11e594a729c6dab39d5cd1eb6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ac57894e4f180f42f80479d2031f4dd5ddfdb1be
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="move-storsimple-device-manager-service-from-classic-to-azure-portal-frequently-asked-questions-faq"></a>Helyezze át a StorSimple Device Manager szolgáltatás a klasszikus Azure-portálon: gyakori kérdések (GYIK)
 
@@ -38,7 +38,7 @@ Kérdések és válaszok a következő kategóriákba vannak rendezve:
 
 ### <a name="once-i-have-moved-to-azure-portal-can-i-still-create-a-storsimple-manager-service-in-the-classic-portal"></a>Egyszer kell áthelyezett Azure-portálon továbbra is létrehozhatók a StorSimple Manager szolgáltatás a klasszikus portálon?
 
-Nem. Miután áttelepítette a StorSimple Manager szolgáltatás az Azure portálra, a klasszikus portálon nem hozható létre a új szolgáltatás. Is nem tudja kezelni az eszközt, a klasszikus portálon. További információkért látogasson el [helyezze át a szolgáltatás Azure-portálon](storsimple-8000-manage-service.md#move-a-service-to-azure-portal).
+Nem. Miután áttelepítette a StorSimple Manager szolgáltatás az Azure portálra, a klasszikus portálon nem hozható létre a új szolgáltatás. Emellett [a klasszikus portálon nem lesz elérhető a 2018 január 8](https://azure.microsoft.com/updates/azure-portal-updates-for-classic-portal-users). 
 
 ### <a name="i-have-multiple-storsimple-managers-running-in-the-classic-portal-can-i-choose-which-ones-to-move-to-the-azure-portal"></a>A klasszikus portálon futtató több StorSimple kezelők van. Kiválaszthatja a munkaterületek áthelyezése az Azure-portálon?
 
@@ -67,14 +67,14 @@ Igen. A meglévő 8010-es/8020-as modellt felhő berendezések társított virtu
 
 Ha létrehozott StorSimple felhő készülékek modell 8010-es/8020-as modellt frissítés 3.0 fut, és újabb verziók esetén, nem érintettek a szolgáltatás az új Azure-portálra. Teljes körűen kezelhetik a felhő készülékek probléma nélkül kell lennie. 
 
-Ha a klasszikus portálon előtt frissítés 3.0 verziót futtató felhő készülékek, majd csak korlátozott számú funkció érhető el. További információkért látogasson el a [3. frissítés előtti verziót futtató eszközök nem támogatott műveletek listájának](storsimple-8000-manage-service.md#move-a-service-to-azure-portal).
+Ha a klasszikus portálon előtt frissítés 3.0 verziót futtató felhő készülékek, majd csak korlátozott számú funkció érhető el. További információkért látogasson el a [3. frissítés előtti verziót futtató eszközök nem támogatott műveletek listájának](storsimple-8000-manage-service.md##supported-operations-on-devices-running-versions-prior-to-update-50).
 
 A felhőalapú berendezések nem frissíthetők. A szoftver legújabb verziójának segítségével hozzon létre egy új felhőalapú készülék, valamint a meglévő kötettárolók létrehozott új felhő készülékre majd feladatátvétel. További információkért látogasson el [feladatok átadása a felhő készülék](storsimple-8000-cloud-appliance-u2.md#fail-over-to-the-cloud-appliance)
 
 
 ### <a name="my-storsimple-8000-series-device-is-running-update-20-i-migrated-my-service-to-new-azure-portal-my-device-connected-successfully-but-it-seems-that-i-am-not-able-to-fully-manage-my-device-how-do-i-resolve-this-behavior"></a>Eszközöm a StorSimple 8000 series Update 2.0 fut. Új Azure-portálon a szolgáltatás szeretnék áttelepíteni. Az eszköz sikeresen csatlakozott, de úgy tűnik, hogy nem képes vagyok teljes körű felügyeletéhez az eszköz. Hogyan oldja meg ezt a viselkedést?
 
-Az új Azure-portálon akkor támogatott, csak a StorSimple eszközök futtatása frissítés 3.0-s és újabb rendszer. Ha az eszköz futtatása frissítés 2.0, csak korlátozott számú funkció érhető el ehhez az eszközhöz. További információkért látogasson el a [3. frissítés előtti verziót futtató eszközök nem támogatott műveletek listájának](storsimple-8000-manage-service.md#move-a-service-to-azure-portal).
+Az új Azure-portálon akkor támogatott, csak a StorSimple eszközök futtatása frissítés 3.0-s és újabb rendszer. Ha az eszköz futtatása frissítés 2.0, csak korlátozott számú funkció érhető el ehhez az eszközhöz. További információkért látogasson el a [3. frissítés előtti verziót futtató eszközök nem támogatott műveletek listájának](storsimple-8000-manage-service.md##supported-operations-on-devices-running-versions-prior-to-update-50).
 
 Teljes mértékben felügyelhesse az eszközt, telepítse a legújabb frissítést az eszközön. További információkért látogasson el [telepítése frissítés 5](storsimple-8000-install-update-5.md).
 
@@ -130,11 +130,9 @@ Nem. Az új Azure-portálra szolgáltatással kell nincs hatással a Windows Pow
 
 ## <a name="moving-storsimple-data-manager-service"></a>StorSimple adatkezelő szolgáltatás áthelyezése
 
-### <a name="i-am-using-storsimple-data-manager-service-how-should-i-proceed-with-this-move"></a>StorSimple adatkezelő szolgáltatás használata. Hogyan kell az áthelyezés folytatja?
+### <a name="i-am-using-storsimple-data-manager-service-in-classic-azure-portal-how-should-i-proceed-with-this-move"></a>StorSimple adatkezelő szolgáltatást használom a klasszikus Azure portálon. Hogyan kell az áthelyezés folytatja?
 
-StorSimple adatkezelő szolgáltatást használja, ha át kell helyeznie a StorSimple eszköz kezelői először az Azure-portálon. A lépés végrehajtása után hozzon létre új StorSimple adatok kezelők az Azure portálon. Az áthelyezés előtt létrehozott StorSimple adatok kezelők nem működnek.
-
-További információ a StorSimple Device Manager szolgáltatás áttelepítése Ugrás [helyezze át a szolgáltatás Azure-portálon](storsimple-8000-manage-service.md#move-a-service-to-azure-portal). További információ a StorSimple adatkezelő létrehozásakor Ugrás [StorSimple adatkezelő szolgáltatás létrehozása](storsimple-data-manager-ui.md).
+Ha StorSimple adatkezelő szolgáltatást használja, akkor automatikusan helyezte az Azure-portálon.
 
 ## <a name="miscellaneous"></a>Egyéb rendelkezések
 
@@ -146,9 +144,9 @@ Nem. Nincs hatással a StorSimple Snapshot Manager helyezheti a szolgáltatást 
 
 Nem. Eszközök, a kötetek, a kötettárolók vagy a biztonsági mentési házirendek az Azure portálon nem nevezhető át.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Megtudhatja, hogyan részletes [helyezze át a StorSimple eszköz Manager szolgáltatás Azure-portálon](storsimple-8000-manage-service.md#move-a-service-to-azure-portal).
+További információ [műveletek előtt frissítés 5.0 verziót futtató eszközökön támogatott](storsimple-8000-manage-service.md#supported-operations-on-devices-running-versions-prior-to-update-50).
 
 
 
