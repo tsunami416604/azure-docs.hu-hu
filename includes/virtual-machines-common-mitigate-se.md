@@ -15,7 +15,7 @@ Az a következő ajánlatok az alábbiakban az operációs rendszer frissítés�
 
 <table>
 <tr>
-<th>Az ajánlat</th> <th>Ajánlott művelet </th>
+<th>Az ajánlat</th> <th>Javasolt művelet </th>
 </tr>
 <tr>
 <td>Azure Cloud Services </td>  <td>Automatikus frissítés engedélyezéséhez, vagy ellenőrizni kell, hogy a legújabb vendég operációs rendszer.</td>

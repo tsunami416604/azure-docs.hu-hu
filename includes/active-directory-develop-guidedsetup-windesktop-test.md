@@ -20,7 +20,7 @@ Miután bejelentkezik, a felhasználói profil adatait a Microsoft Graph API-hí
 |---------|---------|---------|
 |**Name (Név)** |Felhasználó teljes neve |A felhasználó nagyapja vezeték- és keresztneve.|
 |**Felhasználónév** |<span>user@domain.com</span> |A felhasználónév, amely a felhasználó azonosítására szolgál.|
-|**Jogkivonat lejár** |Dátum és idő |Az az idő, amelynél a jogkivonat lejár. MSAL szükség szerint a token megújításával terjeszti ki a lejárati dátum.|
+|**Jogkivonat lejár** |DateTime |Az az idő, amelynél a jogkivonat lejár. MSAL szükség szerint a token megújításával terjeszti ki a lejárati dátum.|
 |**Hozzáférési jogkivonat** |Karakterlánc |A lexikális elem karakterlánca küldött HTTP-kérelmek igénylő egy *Authorization fejlécet*.|
 
 <!--start-collapse-->

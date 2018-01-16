@@ -161,7 +161,7 @@ Ennek a referenciaarchitektúrának egy üzemelő példánya elérhető a [GitHu
 3. Várjon, amíg az üzembe helyezés befejeződik.
 4. A paraméterfájlokban szerepel egy nem módosítható rendszergazdai felhasználónév és jelszó. Erősen ajánlott mindkettőt azonnal lecserélni. Kattintson az Azure Portalon az `ra-single-vm0 ` nevű virtuális gépre. Ezután kattintson a **Támogatás + hibaelhárítás** szakasz **Jelszó alaphelyzetbe állítása** elemére. A **Mód** legördülő listában válassza a **Jelszó alaphelyzetbe állítása** lehetőséget, majd adjon meg új értéket a **Felhasználónév** és a **Jelszó** mezőben. Az új felhasználó nevének és jelszavának megőrzéséhez kattintson a **Frissítés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A magasabb rendelkezésre állás érdekében helyezzen üzembe két vagy több virtuális gépet egy terheléselosztó mögött. További információkért tekintse meg a [több virtuális gép Azure-on való futtatását][multi-vm] ismertető szakaszt.
 
 <!-- links -->

@@ -83,7 +83,7 @@ A továbbító a megfelelő megoldás, ha közvetlen kommunikációra van szüks
 ## <a name="event-hubs"></a>Event Hubs
 Az Event Hubs egy kiválóan méretezhető fogadórendszer, amely másodpercenként több millió esemény feldolgozására képes, így az alkalmazás a csatlakoztatott eszközök és alkalmazások által létrehozott nagy mennyiségű adatot egyszerűen feldolgozhatja és elemezheti. Egy eseményközpont használható például egy járműflotta élő motorteljesítmény-adatainak gyűjtésére. Az adatoknak az Event Hubs szolgáltatásban való összegyűjtését követően, az adatokat átalakíthatja és tárolhatja bármilyen valós idejű elemzési szolgáltató vagy tárolási fürt használatával. Az Event Hubs kapcsolatos további információkért tekintse meg a [Event Hubs – áttekintés][Event Hubs overview].
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Az alkalmazások összekapcsolása mindig is részét képezte a teljes megoldások kialakításának, és az olyan forgatókönyvek száma, amelyekben az alkalmazásoknak és szolgáltatásoknak kommunikálniuk kell egymással, óhatatlanul nőni fog, ahogy egyre több alkalmazás és eszköz csatlakozik az internetre. A Service Bus célja az, hogy ezt az alapvető fontosságú funkciót könnyebben megvalósíthatóvá és szélesebb körben elérhetővé tegye, felhőalapú technológiákat biztosítva ehhez az üzenetsorok, témakörök, továbbítók és eseményközpontok révén.
 
 [svc-bus]: ./media/hybrid-solutions/SvcBus_01_architecture.png
