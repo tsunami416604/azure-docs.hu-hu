@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 08/25/2016
 ms.author: cherylmc
 ms.openlocfilehash: 37d83d3b6dea1763d85f2411816ba2fee4279100
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/15/2018
 ---
 # <a name="connecting-your-on-premises-network-to-azure"></a>A helyszíni hálózati csatlakozás az Azure-bA
 A Microsoft számos különböző típusú felhőszolgáltatások biztosít. A nyilvános interneten keresztül kapcsolódhatnak az összes szolgáltatáshoz, miközben keresztül is csatlakozhat egyes szolgáltatások használatával egy virtuális magánhálózati (VPN) alagúton, az interneten keresztül, vagy egy közvetlen, személyes Microsoft-kapcsolaton keresztül. Ez a cikk segít meghatározni, mely csatlakozási lehetőség lesz felelnek meg a Microsoft más felhőszolgáltatásaival felhasznált típusú alapján igényeinek. A legtöbb szervezet hasznosítani az alábbiakban több kapcsolattípusokat.
@@ -103,7 +103,7 @@ További információ [ExpressRoute](../expressroute/expressroute-introduction.m
 * A fenti lehetőségek számos rendelkeznek, különböző határok VNet kapcsolatok, átjárókapcsolatokhoz és egyéb feltételek is támogatják. Javasoljuk, hogy tekintse át az Azure [hálózatkezelés korlátok](../azure-subscription-service-limits.md#networking-limits) megértéséhez, ha valamelyiket hatással kapcsolatot használ.
 * Ha azt tervezi, a pont-pont VPN-kapcsolat csatlakozni egy átjáró ugyanazt a virtuális hálózatot, mint egy ExpressRoute-átjárót, tanulmányozza át a fontos megkötések először. Tekintse meg a [ExpressRoute konfigurálása és a pont-pont vizsgálatát a kísérő kapcsolatok](../expressroute/expressroute-howto-coexist-resource-manager.md#limits-and-limitations) cikkben olvashat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az alábbi források valósítja meg a cikkben szereplő kapcsolattípusokat ismerteti.
 
 * [Alkalmazzon egy pont – hely kapcsolat](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)

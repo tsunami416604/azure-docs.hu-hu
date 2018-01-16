@@ -10,7 +10,7 @@ A kezdeti kezdőlapon a felhő rendszerhéj kéri, hogy társítson egy új vagy
 ### <a name="create-new-storage"></a>Új tároló létrehozása
 
 Ha alapszintű beállításokat alkalmazza, és válassza ki az előfizetés csak, felhőalapú rendszerhéj az Ön nevében, akkor a legközelebb esik a támogatott régióban hoz létre három erőforrásokat:
-* Erőforráscsoport:`cloud-shell-storage-<region>`
+* Erőforráscsoport: `cloud-shell-storage-<region>`
 * Storage-fiók:`cs<uniqueGuid>`
 * Fájlmegosztás:`cs-<user>-<domain>-com-<uniqueGuid>`
 

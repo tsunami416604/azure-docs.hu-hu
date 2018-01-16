@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/10/2017
 ms.author: matp; LADocs
 ms.openlocfilehash: d35647921ff540167a3a591fb489d3bab031a5c1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/15/2018
 ---
 # <a name="connect-to-dynamics-365-from-logic-app-workflows"></a>Dynamics 365 csatlakoztatja a logic app munkafolyamatok
 
@@ -113,7 +113,7 @@ A szűrő lekérdezés segítségével például a fiók neve csak az aktív fi�
 
 Érték mező hozzáadásakor meg kell egyeznie a mező típusa, írjon be egy értéket, vagy kiválaszthat egy értéket a dinamikus tartalom listából.
 
-Mező típusa  |A használat módja  |Hol található  |Név  |Adattípus  
+Mezőtípus  |A használat módja  |Hol található  |Name (Név)  |Adattípus  
 ---------|---------|---------|---------|---------
 Szövegmező|Szövegmezők egyetlen sor szöveget vagy a dinamikus tartalmat, amely szöveges típusú mező szükséges. Például a kategória és alkategória mező.|Beállítások > testreszabások > a rendszer testreszabását > entitások > Feladat > mezők |category |Egysoros szövegmező        
 Egész mezők | Egyes mezők egész szám vagy a dinamikus tartalmat a mezőnek egész típus szükséges. Például készültségi szint és időtartama. |Beállítások > testreszabások > a rendszer testreszabását > entitások > Feladat > mezők |KészültségiSzint |Egész szám         
@@ -170,5 +170,5 @@ A logic apps hibaelhárítással kapcsolatos további információkért lásd: [
 
 Bármely eseményindítók és a swagger definiált műveletek megtekintése, és semmilyen határnak a Lásd még: a [connector részleteket](/connectors/crm/). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az egyéb rendelkezésre álló összekötők Logic Apps, megismerkedhet a [API-k lista](apis-list.md).

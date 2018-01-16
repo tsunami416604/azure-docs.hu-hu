@@ -15,10 +15,10 @@ ms.workload: required
 ms.date: mm/dd/yyyy
 ms.author: Your MSFT alias or your full email address;semicolon separates two or more
 ms.openlocfilehash: e791ff0377137557b6e9f38a8e1b6b35be948ab6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/15/2018
 ---
 # <a name="title-maximum-120-characters-target-the-primary-keyword"></a>Cím (legfeljebb 120 karakter, célként megadott elsődleges kulcsszó)
 *A leírás másodlagos kulcsszavak 2-3 használható.*
@@ -67,7 +67,7 @@ A {hibák} |} {Problémákat} {nagyon általános reason}.
 
 *Általában mindaddig, amíg a hiba nem jelzi, "a kért Virtuálisgép-méret nem támogatott", mindig újból megpróbálkozhat egy későbbi időpontban elegendő erőforrás előfordulhat, hogy rendelkezik felszabadult fel a fürt a kérelem olyan módon. Ha a probléma a kért Virtuálisgép-méret nem támogatott, próbálkozzon egy másik Virtuálisgép-méretet; Ellenkező esetben az egyetlen lehetősége a kitűzési korlátozás távolítható el.*
 
-## <a name="troubleshooting-steps"></a>Hibaelhárítási lépések
+## <a name="troubleshooting-steps"></a>Hibaelhárítási útmutató
 *Sorrendjében használhatósága és az egyszerűség, ezért a legegyszerűbb megoldás listában, a hatékony és a hasznos megoldás kell elejére.*
 
 *Válassza ki, amelyek érvényesek az Ön helyzetéhez verziók egyikét.*
@@ -76,7 +76,7 @@ A {hibák} |} {Problémákat} {nagyon általános reason}.
 |:--- |:--- |:--- |
 | <p><h3>[1. probléma] \ |[Hiba 1]</h3><h4>Ok</h4>[OK Részletek]</p><p><h4>1 megoldás</h4><em>(a legegyszerűbb és leghatékonyabb)</em></p><ol><li>[1. lépés]</li><li>[2. lépés]</li></ol><p><h4>Megoldás 2</h4><em>(a kisebb egyszerű és hatékony)</em></p><ol><li>[1. lépés]</li><li>[2. lépés]</li></ol><p><h3>[Probléma 2] \ |[Hiba 2]</h3><h4>Ok</h4>[OK Részletek]</p><p><h4>1 megoldás</h4><em>(a legegyszerűbb és leghatékonyabb)</em></p><ol><li>[1. lépés]</li><li>[2. lépés]</li></ol><p><h4>Megoldás 2</h4><em>(a legegyszerűbb és leghatékonyabb)</em></p><ol><li>[1. lépés]</li><li>[2. lépés]</li></ol><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 *Ezt a szakaszt, ha nincsenek konkrét 1 -3, a felhasználó gyorsabban magas vonatkozó lépéseket tartalmazza. Ha nem a következő lépést törlése. Ez az vonatkozó hivatkozásokat. Ha további lépések mutató hivatkozásokat tartalmaz, győződjön meg arról, annak magyarázata, hogy miért a következő lépésekre vonatkozó / fontos tartalmazza.*
 
 *Ha ez a cikk a számlázási témakör, a következő Megjegyzés: a (az alábbi megjegyzést némileg eltérnek a elején Ez a cikk) a következők:*

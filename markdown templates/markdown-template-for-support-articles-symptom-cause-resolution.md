@@ -15,10 +15,10 @@ ms.workload: required
 ms.date: mm/dd/yyyy
 ms.author: Your MSFT alias or your full email address;semicolon separates two or more
 ms.openlocfilehash: 1f86194857a54ed3a903c2696efc9b23d482c274
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/15/2018
 ---
 # <a name="title-maximum-120-characters-target-the-primary-keyword"></a>Cím (legfeljebb 120 karakter, célként megadott elsődleges kulcsszó)
 *A leírás másodlagos kulcsszavak 2-3 használható.*
@@ -64,7 +64,7 @@ ms.lasthandoff: 10/11/2017
 |:--- |:--- |:--- |
 | <p><h3>1 megoldás</h3><em>(a legegyszerűbb és leghatékonyabb)</em></p><ol><li>[1. lépés]</li><li>[2. lépés]</li></ol><p><h3>Megoldás 2</h3><em>(a kisebb egyszerű és hatékony)</em></p><ol><li>[1. lépés]</li><li>[2. lépés]</li></ol><br /><br /><br /><br /><br /><br /><br /><br /> |<p><h3>1 megoldás</h3><em>(a legegyszerűbb és leghatékonyabb)</em></p><ol><li>[1. lépés]</li><li>Ha a klasszikus üzembe helyezési modellt használ [ehhez információ].<br />Ha a Resource Manager üzembe helyezési modellben [ehhez információ].</li><li>[3. lépés]</li></ol><p><h3>Megoldás 2</h3><em>(a kisebb egyszerű és hatékony)</em></p><ol><li>[1. lépés]</li><li>Ha a klasszikus üzembe helyezési modellt használ [ehhez információ].<br />Ha a Resource Manager üzembe helyezési modellben [ehhez információ].</li><li>[3. lépés]</li></ol> |<img src="media/markdown-template-for-support-articles-symptom-cause-resolution/rm-classic.png" alt="ARM-Classic"><p><h3>1 megoldás</h3><em>(a legegyszerűbb és leghatékonyabb)</em></p><ol><li>[1. lépés]</li><li>[2. lépés]</li></ol><p><h3>Megoldás 2</h3><em>(a kisebb egyszerű és hatékony)</em></p><ol><li>[1. lépés]</li><li>[2. lépés]</li></ol><br /><br /><br /><br /> |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 *Ezt a szakaszt, ha nincsenek konkrét 1 -3, a felhasználó gyorsabban magas vonatkozó lépéseket tartalmazza. Ha nem a következő lépést törlése. Ez az vonatkozó hivatkozásokat. Ha további lépések mutató hivatkozásokat tartalmaz, győződjön meg arról, annak magyarázata, hogy miért a következő lépésekre vonatkozó / fontos tartalmazza.*
 
 *Ha ez a cikk a számlázási témakör, a következő Megjegyzés: a (az alábbi megjegyzést némileg eltérnek a elején Ez a cikk) a következők:*
