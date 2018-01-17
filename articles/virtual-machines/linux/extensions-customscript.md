@@ -15,28 +15,33 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: danis
-ms.openlocfilehash: 53a241f12373acdb5d40575915d8d6c2f3c86b9a
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.openlocfilehash: 53adef0f512c54e036a981dbaa0d08453db6b194
+ms.sourcegitcommit: a0d2423f1f277516ab2a15fe26afbc3db2f66e33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/16/2018
 ---
-# <a name="using-the-azure-custom-script-extension-with-linux-virtual-machines"></a>Az Azure egyéni parancsprogramok futtatására szolgáló bővítmény használata a Linux virtuális gépek
-Az egyéni parancsprogramok futtatására szolgáló bővítmény és hajtanak végre a parancsfájl az Azure virtuális gépeken. A bővítmény az üzembe helyezést követő konfiguráció, szoftvertelepítés, illetve bármely konfigurációs/felügyeleti feladat végrehajtása során hasznos. Parancsfájlok le: az Azure storage vagy más elérhető internet helyen, vagy a bővítmény futásidejű megadott. Az egyéni parancsprogramok futtatására szolgáló bővítmény integrálódik az Azure Resource Manager-sablonok, és is futtathat az Azure parancssori felület, PowerShell, Azure-portálon vagy az Azure virtuális gép REST API használatával.
+# <a name="use-the-azure-custom-script-extension-with-linux-virtual-machines"></a>Az Azure egyéni parancsprogramok futtatására szolgáló bővítmény használata a Linux virtuális gépek
+Az egyéni parancsprogramok futtatására szolgáló bővítmény tölti le, és futtatja a parancsfájlokat, az Azure virtuális gépeken. A bővítmény akkor hasznos, a telepítés utáni konfigurációjának, a szoftver telepítése vagy a bármely egyéb konfigurációs /-felügyeleti feladatot. Azure Storage vagy más elérhető internetes helyről töltheti parancsfájlok, vagy megadhatja azokat a bővítmény futásidejű. 
 
-Ez a dokumentum az Azure parancssori felület és az Azure Resource Manager-sablon az egyéni parancsprogramok futtatására szolgáló bővítmény használatával, és adatokat is a Linux rendszereken hibaelhárítási lépéseket részletezi.
+Az egyéni parancsprogramok futtatására szolgáló bővítmény integrálódik az Azure Resource Manager-sablonok. Is futtathatja az Azure parancssori felület, PowerShell, az Azure-portálon vagy az Azure virtuális gépek REST API használatával.
+
+Ez a cikk részletezi az Azure parancssori Felületet az egyéni parancsprogramok futtatására szolgáló bővítmény használatával, és a bővítmény futtatása az Azure Resource Manager-sablon használatával. Ez a cikk a Linux rendszerek a hibaelhárítási lépéseket is biztosítja.
 
 ## <a name="extension-configuration"></a>Bővítmény konfigurációja
-Az egyéni parancsprogramok futtatására szolgáló bővítmény konfigurációja határozza meg, többek között a parancsfájl helyét és a futtatandó parancsot. Ebben a konfigurációban tárolható konfigurációs fájlok, a parancssorban vagy egy Azure Resource Manager-sablon a megadott. Egy védett konfigurációban, amely titkosított, és csak a virtuális gépen belüli visszafejteni bizalmas adatokat tárolhatja. A védett konfiguráció akkor hasznos, ha a végrehajtási parancs tartalmazza a titkos kulcsokat például a jelszót.
+Az egyéni parancsprogramok futtatására szolgáló bővítmény konfigurációja határozza meg, többek között a parancsfájl helyét és a futtatandó parancsot. Ebben a konfigurációban tárolható konfigurációs fájlok, a parancssorban adja meg azt, vagy adja meg az Azure Resource Manager-sablonok. 
+
+Egy védett konfigurációban, amely titkosított, és csak a virtuális gépen belüli visszafejteni bizalmas adatokat is tárolhatja. A védett konfiguráció akkor hasznos, ha a végrehajtási parancs tartalmazza a titkos kulcsokat például a jelszót.
 
 ### <a name="public-configuration"></a>Nyilvános konfigurációja
-Séma:
+A nyilvános bővítménykonfiguráció sémája a következőképpen történik.
 
-**Megjegyzés:** -e a tulajdonságnevek megkülönböztetik a kis-és nagybetűket. -Neveket használja az alább látható módon telepítési problémák elkerülése érdekében.
+>[!NOTE]
+>A tulajdonságnevek megkülönböztetik a kis-és nagybetűket. Alkalmazástelepítéssel kapcsolatos problémák elkerülése érdekében használja a nevét itt látható módon.
 
-* **commandToExecute**: (szükség esetén karakterlánc) a belépési pont parancsprogram végrehajtására szolgáló
-* **fileUris**: (nem kötelező, karakterlánc-tömbben) a letöltendő fájlok URL-címeit.
-* **Timestamp típusú** (nem kötelező, egész szám) segítségével ebben a mezőben csak egy futtassa újból a parancsfájl indítás, ha megváltoztatja ennek a mezőnek értéket.
+* **commandToExecute** (szükség esetén karakterlánc): A belépési pont parancsfájl futtatásához.
+* **fileUris** (nem kötelező, karakterlánc-tömbben): az URL-címéből letöltendő fájlokat.
+* **Timestamp típusú** (nem kötelező, egész szám): A időbélyegzőjét, parancsfájl. Ez a mező értékének megváltoztatásához aktiválják a parancsfájl egy futtassa újra a műveletet.
 
 ```json
 {
@@ -46,13 +51,14 @@ Séma:
 ```
 
 ### <a name="protected-configuration"></a>Védett konfiguráció
-Séma:
+A védett konfigurációs sémája a következőképpen történik.
 
-**Megjegyzés:** -e a tulajdonságnevek megkülönböztetik a kis-és nagybetűket. -Neveket használja az alább látható módon telepítési problémák elkerülése érdekében.
+>[!NOTE]
+>A tulajdonságnevek megkülönböztetik a kis-és nagybetűket. Alkalmazástelepítéssel kapcsolatos problémák elkerülése érdekében használja a nevét itt látható módon.
 
-* **commandToExecute**: (nem kötelező, karakterlánc) a belépési pont parancsfájl végrehajtására. Ehelyett használja ezt a mezőt, ha a parancs tartalmazza a titkos kulcsok, például jelszavakat.
-* **storageAccountName**: (nem kötelező, karakterlánc) storage-fiók nevét. Ha megadja a tároló hitelesítő adatait, minden fileUris URL-címek az Azure BLOB kell lennie.
-* **storageAccountKey**: (nem kötelező, karakterlánc) storage-fiók hozzáférési kulcsának.
+* **commandToExecute** (nem kötelező, karakterlánc): A belépési pont parancsfájl futtatásához. Ez a mező akkor használja, ha a parancs tartalmazza a titkos kulcsok, például jelszavakat.
+* **storageAccountName** (nem kötelező, karakterlánc): a tárfiók nevét. Tároló hitelesítő adatait adja meg, ha minden fájl URI-azonosítók kell URL-címek az Azure-blobokat.
+* **storageAccountKey** (nem kötelező, karakterlánc): A hozzáférési kulcsot a tárfiók.
 
 ```json
 {
@@ -63,13 +69,13 @@ Séma:
 ```
 
 ## <a name="azure-cli"></a>Azure CLI
-Ha az Azure parancssori felület használatával az egyéni parancsprogramok futtatására szolgáló bővítmény futtatásához, hozzon létre egy konfigurációs fájlban vagy a fájl uri és a parancsfájlt végrehajtó legalább tartalmazó fájlokat.
+Amikor az Azure parancssori felület használja az egyéni parancsprogramok futtatására szolgáló bővítmény futtatásához, hozzon létre egy konfigurációs fájl vagy fájlokat. Legalább a konfigurációs fájlokat tartalmaz, a fájl URI és a parancsprogram-utasítás végrehajtása.
 
 ```azurecli
 az vm extension set --resource-group myResourceGroup --vm-name myVM --name customScript --publisher Microsoft.Azure.Extensions --settings ./script-config.json
 ```
 
-Opcionálisan a beállításokat adhat meg a parancsban JSON formátumú karakterlánc. Ez lehetővé teszi a konfigurációját, és végrehajtása során, és egy külön konfigurációs fájl nem adható meg.
+Ha szükséges megadhatja a beállításokat a parancsban JSON formátumú karakterlánc. Ez lehetővé teszi a konfigurációját, és végrehajtása során, és egy külön konfigurációs fájl nem adható meg.
 
 ```azurecli
 az vm extension set '
@@ -80,9 +86,9 @@ az vm extension set '
   --settings '{"fileUris": ["https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-linux/scripts/config-music.sh"],"commandToExecute": "./config-music.sh"}'
 ```
 
-### <a name="azure-cli-examples"></a>Az Azure CLI példák
+### <a name="azure-cli-examples"></a>Azure parancssori felületi (CLI) példák
 
-**1. példa** -parancsfájl nyilvános konfigurációja.
+#### <a name="public-configuration-with-script-file"></a>Nyilvános parancsfájl-konfiguráció
 
 ```json
 {
@@ -97,7 +103,7 @@ Az Azure CLI-parancsot:
 az vm extension set --resource-group myResourceGroup --vm-name myVM --name customScript --publisher Microsoft.Azure.Extensions --settings ./script-config.json
 ```
 
-**2. példa** -nyilvános konfigurációja nem parancsfájlt.
+#### <a name="public-configuration-with-no-script-file"></a>Nyilvános nincs parancsfájl-konfiguráció
 
 ```json
 {
@@ -111,7 +117,9 @@ Az Azure CLI-parancsot:
 az vm extension set --resource-group myResourceGroup --vm-name myVM --name customScript --publisher Microsoft.Azure.Extensions --settings ./script-config.json
 ```
 
-**3. példa** – nyilvános konfigurációs fájl használatával adja meg a parancsfájl URI és egy védett konfigurációs fájl használatával adja meg a végrehajtani a parancsot.
+#### <a name="public-and-protected-configuration-files"></a>Nyilvános és a védett konfigurációs fájlok
+
+Egy nyilvános konfigurációs fájl segítségével adja meg a parancsfájl URI azonosítója. Egy védett konfigurációs fájl segítségével adja meg a futtatandó parancsot.
 
 Nyilvános konfigurációs fájlban:
 
@@ -136,10 +144,11 @@ az vm extension set --resource-group myResourceGroup --vm-name myVM --name custo
 ```
 
 ## <a name="resource-manager-template"></a>Resource Manager-sablon
-Az Azure egyéni parancsprogramok futtatására szolgáló bővítmény futtatható a virtuális gép központi telepítéskor Resource Manager-sablon használatával. Ehhez a központi telepítési sablont megfelelően formázott JSON hozzá.
+A virtuális gép központi telepítéskor az Azure egyéni parancsprogramok futtatására szolgáló bővítmény futtathatja a Resource Manager-sablon használatával. Ehhez a központi telepítési sablont megfelelően formázott JSON hozzá.
 
 ### <a name="resource-manager-examples"></a>Erőforrás-kezelő példák
-**1. példa** -nyilvános konfigurációjától.
+
+#### <a name="public-configuration"></a>Nyilvános konfigurációja
 
 ```json
 {
@@ -168,7 +177,7 @@ Az Azure egyéni parancsprogramok futtatására szolgáló bővítmény futtatha
 }
 ```
 
-**2. példa** -végrehajtási parancs védett konfigurációban.
+#### <a name="execution-command-in-protected-configuration"></a>Védett konfigurációban végrehajtási parancs
 
 ```json
 {
@@ -199,22 +208,22 @@ Az Azure egyéni parancsprogramok futtatására szolgáló bővítmény futtatha
 }
 ```
 
-Lásd: a .net Core zene tároló bemutató teljes példa - [zene tároló bemutató](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux).
+Teljes példa, tekintse meg a [.NET zeneáruház bemutató](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux).
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
-Ha az egyéni parancsprogramok futtatására szolgáló bővítmény fut, a parancsfájl létrehozásakor vagy egy olyan könyvtárba, az alábbi példához hasonló letöltött. A parancs kimenetében is menti a könyvtárba, amely a `stdout` és `stderr` fájlt.
+Ha az egyéni parancsprogramok futtatására szolgáló bővítmény fut, a parancsfájl létrehozásakor vagy egy olyan könyvtárba, az alábbi példához hasonló le. A parancs kimenetében is menti a könyvtárba, amely a `stdout` és `stderr` fájlokat.
 
 ```bash
 /var/lib/waagent/custom-script/download/0/
 ```
 
-Az Azure parancsprogramok futtatására szolgáló bővítmény hoz létre a napló, amely itt található.
+Az Azure parancsprogramok futtatására szolgáló bővítmény hoz létre a napló, amely itt található:
 
 ```bash
 /var/log/azure/custom-script/handler.log
 ```
 
-Az egyéni parancsprogramok futtatására szolgáló bővítmény végrehajtási állapotát is beolvashatók az Azure parancssori felület segítségével.
+Az egyéni parancsprogramok futtatására szolgáló bővítmény végrehajtási állapotát is Azure parancssori felület használatával kérheti le:
 
 ```azurecli
 az vm extension list -g myResourceGroup --vm-name myVM
@@ -233,5 +242,5 @@ info:    vm extension get command OK
 ```
 
 ## <a name="next-steps"></a>További lépések
-A többi virtuális gép parancsfájl-kiterjesztés információkért lásd: [Linux Azure parancsprogramok futtatására szolgáló bővítmény áttekintése](extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+A többi virtuális gép parancsfájl-kiterjesztés információkért lásd: [linuxos Azure parancsfájl-bővítmény áttekintése](extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 

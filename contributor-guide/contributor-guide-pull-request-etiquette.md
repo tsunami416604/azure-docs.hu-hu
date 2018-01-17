@@ -2,4 +2,4 @@
 
 Ez az útmutató a docs.microsoft.com belső közreműködői útmutató át lett helyezve.
 
-[https://aka.MS/PR-Best-Practices](https://aka.ms/pr-best-practices)
+[https://aka.ms/pr-best-practices](https://aka.ms/pr-best-practices)

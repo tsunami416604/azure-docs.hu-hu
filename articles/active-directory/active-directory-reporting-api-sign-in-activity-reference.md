@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/18/2017
+ms.date: 01/15/2018
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: e213e6fcf10e98cb8e4344692475eb8d41d1afb5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 859459bbce6b81e2e855201d5c310233d88d0393
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="azure-active-directory-sign-in-activity-report-api-reference"></a>Az Azure Active Directory bejelentkezési tevékenység jelentés API-referencia
 Ez a témakör az Azure Active Directory reporting API-val kapcsolatos témakörök gyűjteményét részét képezi.  
@@ -121,7 +121,7 @@ Dátumtartomány használatával
 A datetime paraméter az UTC formátumban kell megadni 
 
 - - -
-### <a name="userid"></a>Felhasználói azonosítóját
+### <a name="userid"></a>userId
 **Támogatott operátorok**: eq
 
 **Példa**:
@@ -146,7 +146,7 @@ A userId értéke karakterlánc-értéke
 UserPrincipalName értéke karakterlánc-értéke
 
 - - -
-### <a name="appid"></a>Alkalmazásazonosító
+### <a name="appid"></a>appId
 **Támogatott operátorok**: eq
 
 **Példa**:
@@ -173,7 +173,7 @@ AppId érték karakterlánc-értéke
 AppDisplayName értéke karakterlánc-értéke
 
 - - -
-### <a name="loginstatus"></a>LoginStatus
+### <a name="loginstatus"></a>loginStatus
 **Támogatott operátorok**: eq
 
 **Példa**:
@@ -186,7 +186,7 @@ AppDisplayName értéke karakterlánc-értéke
 A loginStatus esetén két lehetőség áll rendelkezésre: 0 – sikeres, 1 – hiba
 
 - - -
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Meg szeretné tekinteni a szűrt bejelentkezési tevékenységek példák? Tekintse meg a [Azure Active Directory bejelentkezési tevékenység jelentés API minták](active-directory-reporting-api-sign-in-activity-samples.md).
 * Meg szeretné ismerni az Azure AD reporting API-val kapcsolatos? Lásd: [Bevezetés az Azure Active Directory Reporting API használatába](active-directory-reporting-api-getting-started.md).
 

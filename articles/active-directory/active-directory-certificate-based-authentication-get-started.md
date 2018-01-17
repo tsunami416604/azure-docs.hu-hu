@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/13/2017
+ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 4dfc0d2f334404e4984f677a4b2966fc958ca98d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5c96f33b8f678155dc4b7a84718e5eadc541f441
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Ismerkedés az Azure Active Directory-alapú hitelesítés
 
@@ -110,7 +110,7 @@ A konfigurációt, használhatja a [Azure Active Directory PowerShell 2-es verzi
 
 Első lépésként konfiguráció a bérlő kapcsolatot kell. Amint a bérlő kapcsolat létezik, áttekintheti, adja hozzá, törlése és módosítása a megbízható tanúsítványszolgáltatók, amely a könyvtárban van meghatározva.
 
-### <a name="connect"></a>Csatlakozás
+### <a name="connect"></a>Kapcsolódás
 
 A bérlő-kapcsolatot létrehozni, használja a [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) parancsmagot:
 

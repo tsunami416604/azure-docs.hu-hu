@@ -2,4 +2,4 @@
 
 Ez az útmutató a docs.microsoft.com belső közreműködői útmutató át lett helyezve.
 
-[https://aka.MS/markdown-Links](https://aka.ms/markdown-links)
+[https://aka.ms/markdown-links](https://aka.ms/markdown-links)

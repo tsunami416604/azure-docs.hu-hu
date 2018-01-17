@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: fdbf9b1b77c2c64b3ebfcdbc5463916f317e4881
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: e823aeb4291b3e765b35181c24b41fa58c170cca
+ms.sourcegitcommit: 5108f637c457a276fffcf2b8b332a67774b05981
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Az Azure verem diagnosztikai eszközök
 
@@ -121,21 +121,21 @@ if($s)
    | ACS                     | ACSFabric              | ACSFrontEnd        |
    | ACSTableMaster          | ACSTableServer         | ACSWac             |
    | ADFS                    | ASAppGateway           | BareMetal          |
-   | BRP                     | HITELESÍTÉSSZOLGÁLTATÓ                     | CPI                |
-   | KSZT                     | DeploymentMachine      | DHCP               |
-   | Tartomány                  | DOKUMENTUMOKAT                    | ECESeedRing        | 
+   | BRP                     | CA                     | CPI                |
+   | CRP                     | DeploymentMachine      | DHCP               |
+   | Tartomány                  | ECE                    | ECESeedRing        | 
    | FabricRing              | FabricRingServices     | FRP                |
    | Átjáró                 | HealthMonitoring       | HRP                |   
    | IBC                     | InfraServiceController | KeyVaultAdminResourceProvider|
-   | KeyVaultControlPlane    | KeyVaultDataPlane      | HÁLÓZATI VEZÉRLŐ ÁLTAL                 |   
-   | NonPrivilegedAppGateway | NRP-BEN                    | SeedRing           |
+   | KeyVaultControlPlane    | KeyVaultDataPlane      | NC                 |   
+   | NonPrivilegedAppGateway | NRP                    | SeedRing           |
    | SeedRingServices        | SLB                    | SQL                |   
-   | AZ SRP                     | Storage                | StorageController  |
+   | SRP                     | Tárolás                | StorageController  |
    | URP                     | UsageBridge            | virtuális gép    |  
-   | VOLT                     | WASPUBLIC              | A WDS                |
+   | WAS                     | WASPUBLIC              | WDS                |
 
 
-### <a name="collect-logs-using-a-graphical-user-interface"></a>Naplógyűjtéshez egy grafikus felhasználói felület használatával
+### <a name="bkmk_gui"></a>Naplógyűjtéshez egy grafikus felhasználói felület használatával
 Ahelyett, hogy a Get-AzureStackLog parancsmag Azure verem naplók beolvasása szükséges paraméterek biztosít, kihasználhatja a rendelkezésre álló nyílt forráskódú Azure verem eszközök a fő Azure verem eszközök GitHub eszközök tárházban http://aka.ms/AzureStackTools címen található.
 
 A **ERCS_AzureStackLogs.ps1** PowerShell-parancsfájl a GitHub-tárházban eszközök tárolja, és rendszeresen frissül. Győződjön meg arról, hogy rendelkezik-e az elérhető legújabb verzióra, hogy le kell töltenie azt közvetlenül a http://aka.ms/ERCS. Indította el egy felügyeleti PowerShell-munkamenetet, a parancsfájl a rendszerjogosultságú végpont csatlakozik, és futtatja a Get-AzureStackLog megadott paraméterekkel. Ha paraméter nélkül van megadva, a parancsfájl alapértelmezés szerint az adatkérés paraméterek grafikus felhasználói felületen keresztül.
@@ -157,5 +157,6 @@ További információt a ERCS_AzureStackLogs.ps1 PowerShell-parancsfájlt, figye
 > [!NOTE]
 > Méret és a korszűrő vannak korlátozva a gyűjtött, mivel a tárhely biztosításához a naplók árasztott nem get lehessen a hatékony működést annak biztosítására, hogy a naplók. Azonban ha a probléma diagnosztizálása néha szüksége naplófájlokat, amelyek már nem létezik a korlátok miatt. Így **erősen ajánlott** , hogy a egy külső tárhelyen (egy Azure storage-fiókot, egy további helyszíni tárolóeszközre stb.) a naplók kiürítési 8 – 12 óránként és láthatóan tartja őket nincs 1-3 hónapig, attól függően, a követelmények. Gondoskodjon arról is, a tárolási hely titkosítva van.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [A Microsoft Azure verem hibaelhárítása](azure-stack-troubleshooting.md)
+

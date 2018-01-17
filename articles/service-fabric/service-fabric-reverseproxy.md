@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 7f29860519d4dce76f0b7f866852484b93ce7b02
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 55b201842503a879725fa77328a72c83fe0bbade
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Az Azure Service Fabric fordított proxy
 Azure Service Fabric épített fordított proxy segít a Service Fabric-fürt futó mikroszolgáltatások felderítése és http-végpontokról rendelkező más szolgáltatásokkal kommunikálni.
@@ -39,11 +39,13 @@ Fordított proxy mutatja meg az egyéb szolgáltatásokhoz kérelmek küldéséh
 
 ![Belső kommunikációs][1]
 
+> [!NOTE]
 > **A támogatott platformok**
 >
 > Fordított proxy a Service Fabric jelenleg a következő platformokat támogatja
 > * *Windows-fürt*: Windows 8 és újabb vagy Windows Server 2012-es és újabb verziók
 > * *Linux-fürt*: fordított Proxy már nem érhető el a Linux-fürtök
+>
 
 ## <a name="reaching-microservices-from-outside-the-cluster"></a>A fürtön kívüli a mikroszolgáltatások elérése
 Az alapértelmezett külső kommunikáció modell mikroszolgáltatások létrehozására olyan opt-in modellt, ahol minden szolgáltatás nem érhető el közvetlenül a külső ügyfeleknek. [Az Azure Load Balancer](../load-balancer/load-balancer-overview.md), egy olyan hálózathatárhoz mikroszolgáltatások létrehozására és a külső ügyfelek közötti hálózati címfordítás végez, amely belső IP:port végpontok külső kérelmeket továbbítja. Ahhoz, hogy egy mikroszolgáltatási végpont közvetlenül elérhető külső ügyfelek számára, először konfigurálnia kell a port, amelyet a szolgáltatás használ a fürt forgalmának terheléselosztó. Továbbá a legtöbb mikroszolgáltatások, különösen akkor állapot-nyilvántartó mikroszolgáltatások nem élő a fürt összes csomópontján. A mikroszolgáltatások áthelyezheti a feladatátvételi csomópontjai között. Ebben az esetben a terheléselosztó hatékonyan nem tudja megállapítani a célcsomópont, amelyhez továbbítsa a forgalmat a replikák helyét.
@@ -119,7 +121,7 @@ A Service Fabric fordított proxy próbálja újra feloldani a szolgáltatás c�
 Azonban replikák és a szolgáltatáspéldány egy gazdafolyamaton megoszthatnak, és előfordulhat, hogy is megoszthat egy portot, ha azt egy http.sys alapú webkiszolgálóhoz, beleértve:
 
 * [System.Net.HttpListener](https://msdn.microsoft.com/library/system.net.httplistener%28v=vs.110%29.aspx)
-* [Az ASP.NET Core WebListener](https://docs.asp.net/latest/fundamentals/servers.html#weblistener)
+* [ASP.NET Core WebListener](https://docs.asp.net/latest/fundamentals/servers.html#weblistener)
 * [Katana](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.OwinSelfHost/)
 
 Ebben az esetben valószínű, hogy a webkiszolgáló nem érhető el a gazdagép-folyamat és válaszol a kérelmekre, de a szolgáltatáspéldány megoldott vagy a replika már nem érhető el a gazdagépen. Ebben az esetben az átjáró kap egy HTTP 404-es választ a webkiszolgálón. HTTP 404-es választ, így két különböző jelentését veheti fel:
@@ -309,7 +311,7 @@ Először a sablon lekérése a fürt, amely számára telepíteni kívánja. A 
 > [!NOTE]
 > Tanúsítványokat, amelyek eltérnek a fürt tanúsítvánnyal ahhoz, hogy egy meglévő fürt fordított proxy használata esetén a fordított proxy tanúsítvány telepítése és frissítése a hozzáférés-vezérlési lista a fürtön, mielőtt engedélyezné a fordított proxy. Fejezze be a [Azure Resource Manager sablon](service-fabric-cluster-creation-via-arm.md) központi telepítéskor az említett beállításokkal korábban a központi telepítés engedélyezése a fordított proxy megkezdése előtt a lépések 1-4.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Példa a szolgáltatások közötti HTTP-kommunikációt egy [mintaprojektet a Githubon](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started).
 * [A fordított proxy-továbbítást a biztonságos HTTP-szolgáltatás](service-fabric-reverseproxy-configure-secure-communication.md)
 * [Távoli eljáráshívások a Reliable Services távoli eljáráshívás](service-fabric-reliable-services-communication-remoting.md)

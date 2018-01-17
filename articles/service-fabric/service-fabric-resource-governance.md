@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: ada26a303013139f182721360aaf125ac5b94310
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 974fb5bfa8b10cb5497220825b2a83ca96161b0c
+ms.sourcegitcommit: a0d2423f1f277516ab2a15fe26afbc3db2f66e33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="resource-governance"></a>Erőforrás-irányítás 
 
@@ -115,8 +115,7 @@ Erőforrás-irányítás határértékeken vannak megadva az alkalmazásjegyzék
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
 <ApplicationManifest ApplicationTypeName='TestAppTC1' ApplicationTypeVersion='vTC1' xsi:schemaLocation='http://schemas.microsoft.com/2011/01/fabric ServiceFabricServiceModel.xsd' xmlns='http://schemas.microsoft.com/2011/01/fabric' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
-  <Parameters>
-  </Parameters>
+
   <!--
   ServicePackageA has the number of CPU cores defined, but doesn't have the MemoryInMB defined.
   In this case, Service Fabric sums the limits on code packages and uses the sum as 
@@ -137,6 +136,54 @@ Ebben a példában a szolgáltatáscsomag nevű **ServicePackageA** egy alapvet�
 Így ebben a példában CodeA1 beolvasása, amely alapszintű, és CodeA2 lekérdezi egyharmad részére alapszintű (és ugyanazt a soft-garancia lefoglalása). Ha CpuShares kód csomagok nincsenek megadva, a Service Fabric osztja egyaránt közöttük magok.
 
 Memóriakorlátokat olyan abszolút, úgy, hogy mindkét kód csomag legfeljebb 1024 MB memória (és ugyanazt a soft-garancia lefoglalása). Kód csomagok (tárolók és folyamatok) nem foglalható le ezt a határt, és hajtsa végre a kevés memória kivétel Igen eredményez próbál-nál több memóriát. Az erőforráskorlát érvényesítéséhez a szolgáltatáscsomagokban lévő minden kódcsomaghoz memóriakorlátokat kell meghatároznia.
+
+### <a name="using-application-parameters"></a>Alkalmazás paraméterek használata
+
+Erőforrás-irányítás megadása esetén használható [alkalmazás paraméterei](service-fabric-manage-multiple-environment-app-configuration.md) több alkalmazás konfiguráció kezeléséhez. A következő példa bemutatja, az alkalmazás paraméterek használatát:
+
+```xml
+<?xml version='1.0' encoding='UTF-8'?>
+<ApplicationManifest ApplicationTypeName='TestAppTC1' ApplicationTypeVersion='vTC1' xsi:schemaLocation='http://schemas.microsoft.com/2011/01/fabric ServiceFabricServiceModel.xsd' xmlns='http://schemas.microsoft.com/2011/01/fabric' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+
+  <Parameters>
+    <Parameter Name="CpuCores" DefaultValue="4" />
+    <Parameter Name="CpuSharesA" DefaultValue="512" />
+    <Parameter Name="CpuSharesB" DefaultValue="512" />
+    <Parameter Name="MemoryA" DefaultValue="2048" />
+    <Parameter Name="MemoryB" DefaultValue="2048" />
+  </Parameters>
+
+  <ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName='ServicePackageA' ServiceManifestVersion='v1'/>
+    <Policies>
+      <ServicePackageResourceGovernancePolicy CpuCores="[CpuCores]"/>
+      <ResourceGovernancePolicy CodePackageRef="CodeA1" CpuShares="[CpuSharesA]" MemoryInMB="[MemoryA]" />
+      <ResourceGovernancePolicy CodePackageRef="CodeA2" CpuShares="[CpuSharesB]" MemoryInMB="[MemoryB]" />
+    </Policies>
+  </ServiceManifestImport>
+```
+
+Ebben a példában alapértelmezett paraméter értéke éles környezetben, ahol visszajelzést kap minden szolgáltatáscsomagot, 4 magos és 2 GB memóriát. Alapértelmezett értékeket módosíthatja a alkalmazásparaméter-fájlokat is. Ebben a példában egy paraméterfájl használható az alkalmazás helyi teszteléséhez ahol azt visszajelzést kap kevesebb erőforrást éles környezetben: 
+
+```xml
+<!-- ApplicationParameters\Local.xml -->
+
+<Application Name="fabric:/TestApplication1" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+  <Parameters>
+    <Parameter Name="CpuCores" DefaultValue="2" />
+    <Parameter Name="CpuSharesA" DefaultValue="512" />
+    <Parameter Name="CpuSharesB" DefaultValue="512" />
+    <Parameter Name="MemoryA" DefaultValue="1024" />
+    <Parameter Name="MemoryB" DefaultValue="1024" />
+  </Parameters>
+</Application>
+```
+
+> [!IMPORTANT] 
+> Alkalmazás paraméterek megadásával erőforrás eszközhitelesítéssel érhető el a Service Fabric 6.1-es verziójával kezdve.<br> 
+>
+> Alkalmazás paraméterek megadásához erőforrás irányítás használata esetén a Service Fabric 6.1-es vagy korábbi verzióra nem léptethető vissza. 
+
 
 ## <a name="other-resources-for-containers"></a>Egyéb erőforrások a tárolók
 Processzor és memória mellett is lehet más tárolók erőforrás korlátairól adja meg. Ezek a korlátozások vannak megadva a kódcsomag szinten, és vonatkoznak, a tároló indításakor. Ellentétben a CPU és memória, fürt erőforrás-kezelő nincs tisztában legyen ezekkel az erőforrásokkal és nem ne bármely kapacitás ellenőrzések vagy terheléselosztás számukra. 
@@ -160,6 +207,6 @@ Ezeket az erőforrásokat CPU és memória kombinálva. Íme egy példa bemutatj
     </ServiceManifestImport>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További tudnivalók fürt erőforrás-kezelő, olvassa el [vezet be, a Service Fabric fürt erőforrás-kezelő](service-fabric-cluster-resource-manager-introduction.md).
 * További információ a alkalmazásmodell, szervizcsomagok és kód csomagok--, és hogyan replikák leképezi őket--olvasásához [minta egy alkalmazás a Service Fabric](service-fabric-application-model.md).

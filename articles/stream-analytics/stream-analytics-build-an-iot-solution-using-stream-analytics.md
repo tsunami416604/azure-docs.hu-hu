@@ -4,8 +4,8 @@ description: "A Stream Analytics IoT-megoldás az őrbódét forgatókönyv-beve
 keywords: "IOT-megoldás, ablakban funkciók"
 documentationcenter: 
 services: stream-analytics
-author: samacha
-manager: jhubbard
+author: SnehaGunda
+manager: kfile
 editor: cgronlun
 ms.assetid: a473ea0a-3eaa-4e5b-aaa1-fec7e9069f20
 ms.service: stream-analytics
@@ -13,15 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 03/28/2017
-ms.author: samacha
-ms.openlocfilehash: a93693ef7d40025fa96846594a8eb525a50b6885
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 01/12/2018
+ms.author: sngun
+ms.openlocfilehash: cc84a34a410a750ddf2acb8f19b3bb809d269098
+ms.sourcegitcommit: a0d2423f1f277516ab2a15fe26afbc3db2f66e33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Az IoT-megoldás létrehozása a Stream Analytics segítségével
+
 ## <a name="introduction"></a>Bevezetés
 Ebben az oktatóanyagban megtudhatja hogyan Azure Stream Analytics segítségével valós idejű elemzések lekérése az adataiból. A fejlesztők könnyedén kombinálhatja adatstreamek, például kattintás-adatfolyamok, a naplókat és az eszköz által létrehozott események előzményrekordjaira vagy üzleti elemzéseket kapcsolattípusokból referenciaadatok. Teljes körűen felügyelt, valós idejű stream számítási szolgáltatás, amely a Microsoft Azure-ban Azure Stream Analytics biztosít, beépített hibatűrési, alacsony késéssel és méretezhetőség terén annak érdekében, hogy másolatot és futtató percben.
 
@@ -56,12 +57,12 @@ A bejegyzés adatfolyam autók információkat tartalmaz, téren állomások kap
 
 | TollID | EntryTime | LicensePlate | Állapot | Ellenőrizze | Modell | VehicleType | VehicleWeight | Téren | Címke |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 |2014-09-10 12:01:00.000 |7001 JNB |NY |Honda |CRV |1 |0 |7 | |
-| 1 |2014-09-10 12:02:00.000 |1001 YXZ |NY |Toyota |Camry |1 |0 |4 |123456789 |
-| 3 |2014-09-10 12:02:00.000 |1004 ABC |KI |Ford |Taurus |1 |0 |5 |456789123 |
-| 2 |2014-09-10 12:03:00.000 |XYZ 1003 |KI |Toyota |Corolla |1 |0 |4 | |
-| 1 |2014-09-10 12:03:00.000 |1007 BNJ |NY |Honda |CRV |1 |0 |5 |789123456 |
-| 2 |2014-09-10 12:05:00.000 |1007 CDE |NJ |Toyota |4 x 4 |1 |0 |6 |321987654 |
+| 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1 |0 |7 | |
+| 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
+| 3 |2014-09-10 12:02:00.000 |ABC 1004 |CT |Ford |Taurus |1 |0 |5 |456789123 |
+| 2 |2014-09-10 12:03:00.000 |XYZ 1003 |CT |Toyota |Corolla |1 |0 |4 | |
+| 1 |2014-09-10 12:03:00.000 |BNJ 1007 |NY |Honda |CRV |1 |0 |5 |789123456 |
+| 2 |2014-09-10 12:05:00.000 |CDE 1007 |NJ |Toyota |4x4 |1 |0 |6 |321987654 |
 
 Az oszlopok rövid leírása itt található:
 
@@ -83,12 +84,12 @@ A kilépési adatfolyam a téren állomás elhagyása autók információkat tar
 
 | **TollId** | **ExitTime** | **LicensePlate** |
 | --- | --- | --- |
-| 1 |2014-09-10T12:03:00.0000000Z |7001 JNB |
-| 1 |2014-09-10T12:03:00.0000000Z |1001 YXZ |
-| 3 |2014-09-10T12:04:00.0000000Z |1004 ABC |
+| 1 |2014-09-10T12:03:00.0000000Z |JNB 7001 |
+| 1 |2014-09-10T12:03:00.0000000Z |YXZ 1001 |
+| 3 |2014-09-10T12:04:00.0000000Z |ABC 1004 |
 | 2 |2014-09-10T12:07:00.0000000Z |XYZ 1003 |
-| 1 |2014-09-10T12:08:00.0000000Z |1007 BNJ |
-| 2 |2014-09-10T12:07:00.0000000Z |1007 CDE |
+| 1 |2014-09-10T12:08:00.0000000Z |BNJ 1007 |
+| 2 |2014-09-10T12:07:00.0000000Z |CDE 1007 |
 
 Az oszlopok rövid leírása itt található:
 
@@ -101,11 +102,11 @@ Az oszlopok rövid leírása itt található:
 ### <a name="commercial-vehicle-registration-data"></a>Kereskedelmi vehicle regisztrációs adatok
 Az oktatóprogram egy kereskedelmi vehicle adatbázist statikus pillanatképet.
 
-| LicensePlate | RegistrationId | Lejárt |
+| LicensePlate | RegistrationId | Elévült |
 | --- | --- | --- |
 | SVT 6023 |285429838 |1 |
 | XLZ 3463 |362715656 |0 |
-| 1005 BIZTONSÁGI |876133137 |1 |
+| BAC 1005 |876133137 |1 |
 | RIV 8632 |992711956 |0 |
 | SNY 7188 |592133890 |0 |
 | ELH 9896 |678427724 |1 |
@@ -116,7 +117,7 @@ Az oszlopok rövid leírása itt található:
 | --- | --- |
 | LicensePlate |A vehicle licenc lemez számát |
 | RegistrationId |A vehicle regisztrációs azonosítója |
-| Lejárt |A regisztrációs állapotát a vehicle: 0, ha a vehicle regisztrációs aktív, ha lejárt a regisztrációs 1 |
+| Elévült |A regisztrációs állapotát a vehicle: 0, ha a vehicle regisztrációs aktív, ha lejárt a regisztrációs 1 |
 
 ## <a name="set-up-the-environment-for-azure-stream-analytics"></a>Az Azure Stream Analytics a környezet beállítása
 Az oktatóanyag teljesítéséhez szüksége van a Microsoft Azure-előfizetés. A Microsoft biztosít az ingyenes Microsoft Azure-szolgáltatásokhoz.
@@ -175,24 +176,11 @@ Ezenkívül megjelenik egy másik ablakban az alábbi képernyőfelvételhez has
 Most már megtekintheti az erőforrások az Azure portálon kell lennie. Ugrás a <https://portal.azure.com>, és jelentkezzen be a fiók hitelesítő adataival. Vegye figyelembe, hogy jelenleg bizonyos funkciók használja a klasszikus portálon. Ezeket a lépéseket egyértelműen jelzik.
 
 ### <a name="azure-event-hubs"></a>Azure Event Hubs
-Az Azure portálon kattintson **további szolgáltatások** a bal oldali felügyeleti ablaktábla alján. Típus **az Event hubs** a mezőben megadott, és kattintson a **az Event hubs**. Megnyílik egy új böngészőablakot megjelenítéséhez a **SERVICE BUS** terület a **klasszikus portál**. Itt látható az Event Hubs hozta létre a Setup.ps1 parancsfájl.
 
-![Service Bus](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image8.png)
-
-Kattintson a kezdetű *tolldata*. Kattintson a **EVENT HUBS** fülre. Látni fogja a két az event hubs nevű *bejegyzés* és *kilépéshez* létre ebben a névtérben.
-
-![Event Hubs lapon a klasszikus portálon](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image9.png)
+Az Azure-portálon kattintson **további szolgáltatások** a bal oldali felügyeleti ablaktábla alján. Típus **az Event hubs** mezőbe, megjelenik egy új Eseményközpont névtér kezdetű **tolldata**. A namesapce a Setup.ps1 parancsfájl hozta létre. Látni fogja a két az event hubs nevű **bejegyzés** és **kilépéshez** létre ebben a névtérben.
 
 ### <a name="azure-storage-container"></a>Az Azure Storage-tároló áttekintése
-1. Lépjen vissza a lap a böngészőben nyissa meg az Azure-portálhoz. Kattintson a **tárolási** az oktatóanyagban használt Azure tároló megtekintéséhez az Azure portál bal oldalán.
-   
-    ![Tárolási menüpont](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image11.png)
-2. Kattintson a kezdődő *tolldata*. Kattintson a **TÁROLÓK** fülre, és tekintse meg a létrehozott tároló.
-   
-    ![Az Azure portálon tárolók lap](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image10.png)
-3. Kattintson a **tolldata** tároló, a feltöltött JSON-fájl, amely rendelkezik a vehicle regisztrációs adatainak megjelenítéséhez.
-   
-    ![Képernyőfelvétel a registration.json fájl a tárolóban](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image12.png)
+Azure-portálról, keresse meg a storage-fiókok, láthatja, hogy a tárfiók kezdetű **tolldata**. Kattintson a **tolldata** tároló, a feltöltött JSON-fájl, amely rendelkezik a vehicle regisztrációs adatainak megjelenítéséhez.
 
 ### <a name="azure-sql-database"></a>Azure SQL Database
 1. Az első lapon nyitotta meg a böngészőben lépjen vissza az Azure-portálon. Kattintson a **SQL-ADATBÁZISOK** az Azure portálon, hogy az SQL-adatbázis, amely az oktatóprogram használható, és kattintson a bal oldalán **tolldatadb**.
@@ -285,7 +273,7 @@ Most már az összes bemenet vannak definiálva.
 1. A Stream Analytics-áttekintés ablaktábláján válassza **KIMENETEK**.
    
     ![A kimenet lapon és a "Kimenetnek hozzáadása" lehetőséget](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image37.png)
-2. Kattintson az **Add** (Hozzáadás) parancsra.
+2. Kattintson a **Hozzáadás** parancsra.
 3. Állítsa be a **kimeneti alias** "kimeneti", majd **gyűjtése** való **SQL-adatbázis**.
 3. Válassza ki a kiszolgáló nevét, amely a cikk a "Kapcsolódás az adatbázis a Visual Studio" szakaszában szerepel. Az adatbázisnév **TollDataDB**.
 4. Adja meg **tolladmin** a a **felhasználónév** mezőben **123toll!** az a **jelszó** mező, és **TollDataRefJoin** a a **tábla** mező.
@@ -319,13 +307,13 @@ További részletekért olvassa el [Időkezelést](https://msdn.microsoft.com/li
 ## <a name="testing-azure-stream-analytics-queries"></a>Tesztelés Azure Stream Analytics-lekérdezések
 Most, hogy az első Azure Stream Analytics lekérdezési írt, tesztelheti, akkor a mintaadatfájlok a TollApp mappában található a következő elérési út használatával:
 
-**..\\TollApp\\TollApp\\adatok**
+**.. \\TollApp\\TollApp\\adatok**
 
 Ez a mappa a következő fájlokat tartalmazza:
 
-* Entry.JSON
-* Exit.JSON
-* Registration.JSON
+* Entry.json
+* Exit.json
+* Registration.json
 
 ## <a name="question-1-number-of-vehicles-entering-a-toll-booth"></a>1. kérdés: Sűrítéses egy téren kiállítási száma
 1. Nyissa meg az Azure-portálon, és nyissa meg a létrehozott Azure Stream Analytics-feladathoz. Kattintson a **lekérdezés** lapra, és illessze be a fenti szakaszban leírt lekérdezést.

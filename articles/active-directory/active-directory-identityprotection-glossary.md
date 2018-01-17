@@ -1,6 +1,6 @@
 ---
 title: "Az Azure Active Directory-Identity Protection-szószedet |} Microsoft Docs"
-description: "Az Azure Active Directory-Identity Protection-szószedet"
+description: Azure Active Directory Identity Protection Glossary
 services: active-directory
 keywords: "az Azure active directory azonosító adatok védelmét, a cloud app discovery, alkalmazások, biztonság, kockázati, kockázati szint, biztonsági rést, biztonsági házirend, szószedet kezelése"
 documentationcenter: 
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 9a291a42d72985b9fe8f9083b265807122ae6343
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 30cf3911d0f22e2d9351fc606cd6697ef437e452
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/16/2018
 ---
-# <a name="azure-active-directory-identity-protection-glossary"></a>Az Azure Active Directory-Identity Protection-szószedet
+# <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection Glossary
 ### <a name="at-risk-user"></a>Fennáll a veszélye (felhasználó)
 A felhasználó egy vagy több aktív kockázati események. 
 
@@ -37,7 +37,7 @@ Egy házirend erőforrásokhoz való hozzáférés biztosítása érdekében. Fe
 ### <a name="credentials"></a>Hitelesítő adatok
 Azonosításra és igazolása helyi való hozzáférés és a hálózati erőforrásokhoz való használt azonosító adatokat. A hitelesítő adatok többek között a felhasználónevek és jelszavak, az intelligens kártyák és a tanúsítványok.
 
-### <a name="event"></a>Esemény (event)
+### <a name="event"></a>Esemény
 Az Azure Active Directoryban tevékenység egy olyan rekordot.
 
 ### <a name="false-positive-risk-event"></a>A vakriasztások (kockázat esemény)
@@ -64,7 +64,7 @@ A kockázat aktuális felhasználói hitelesítő adatok (felhasználónév és 
 ### <a name="mitigation"></a>Kezelés
 Egy műveletet korlátozható vagy kiküszöbölheti a támadó lehetőségét a sérült biztonságú identitás vagy az eszköz visszaállítja a identitás vagy az eszköz biztonságos kihasználásához. A megoldás nem oldja meg a identitás vagy az eszköz társított előző kockázati eseményekről.
 
-### <a name="multi-factor-authentication"></a>Többtényezős hitelesítés
+### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 A hitelesítési módszert, amelyhez két vagy több hitelesítési módszert, amelyek magukban foglalhatják valamit a felhasználó rendelkezik, ez a tanúsítvány; valamit a felhasználó ismer, például felhasználóneveket, jelszavakat vagy fázis kifejezések; fizikai attribútumait, például egy ujjlenyomat; és személyes attribútumait, például a személyes aláírás.
 
 ### <a name="offline-detection"></a>Kapcsolat nélküli észlelése
@@ -118,7 +118,7 @@ A biztonsági rés priorizálhatja azokat a műveleteket Identity Protection fel
 ### <a name="secure-identity"></a>Biztonságos (identitás)
 Például a jelszó módosítása vagy a gép, egy biztonsági szempontból sértetlen állapotának visszaállításához a potenciálisan veszélyeztetett identitás különösen szervizelési művelet végrehajtása.
 
-### <a name="security-policy"></a>Biztonsági szabályzat
+### <a name="security-policy"></a>Biztonsági házirend
 Szabályok és az állapot gyűjteménye. Egy házirend entitások, például a felhasználók, csoportok, alkalmazások, eszközök, eszközök, eszköz állapotok, IP-címtartományok és Auth2.0 ügyféltípusokat alkalmazhatja. A házirend engedélyezve van, amikor a házirendben entitás erőforrás jogkivonatot ad ki lesznek kiértékelve.
 
 ### <a name="sign-in-v"></a>Jelentkezzen be (v)
@@ -139,7 +139,7 @@ A kockázat az esemény akkor váltódik ki, miután egy sikeres bejelentkezés 
 ### <a name="sign-in-from-unfamiliar-location"></a>Bejelentkezés ismeretlen helyről
 A kockázat felhasználó sikeresen jelentkezik be egy új helyről (IP, szélesség/hosszúsági és ASN) által elindított esemény.
 
-### <a name="sign-in-risk"></a>Bejelentkezési kockázata
+### <a name="sign-in-risk"></a>Bejelentkezési kockázat
 Tekintse meg a kockázati szintjét (bejelentkezés)
 
 ### <a name="sign-in-risk-policy"></a>Bejelentkezési kockázati házirend
@@ -148,7 +148,7 @@ Feltételes hozzáférési szabályzatot, amely egy adott jelentkezik be a kock�
 ### <a name="user-compromise-risk"></a>Felhasználó biztonsági sérülés kockázata
 Tekintse meg a kockázati szintjét (felhasználói sérült biztonság esetén)
 
-### <a name="user-risk"></a>Felhasználói kockázata
+### <a name="user-risk"></a>Felhasználói kockázat
 Tekintse meg a kockázati szintjét (felhasználói sérült biztonság esetén).
 
 ### <a name="user-risk-policy"></a>Felhasználói kockázati házirend
@@ -160,6 +160,6 @@ Kockázati eseményekről, amelyek aktív vagy szervizelt rendelkező felhaszná
 ### <a name="vulnerability"></a>Biztonsági rés
 Egy konfigurációs vagy az Azure Active Directoryban, így ki vannak téve a biztonsági rések a könyvtár feltétel vagy fenyegetéseket.
 
-## <a name="see-also"></a>Lásd még:
-* [Az Azure Active Directory azonosító adatok védelmét](active-directory-identityprotection.md)
+## <a name="see-also"></a>Lásd még
+* [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
 

@@ -18,7 +18,7 @@ ms.openlocfilehash: 13a61caf9b4dff8ffc08970d5a4c09efa9c5f117
 ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2018
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="buy-a-custom-domain-name-for-azure-web-apps"></a>Egy egyéni tartománynevet, az Azure Web Apps megvásárlása
 
@@ -121,7 +121,7 @@ Ezután válassza ki a kívánt beállításokat a tartomány. Lásd az alábbi 
 Kattintson a **jogi feltételeket** tekintse meg a feltételeket és a költségek, és kattintson a **megvásárlása**.
 
 > [!NOTE]
-> App Service-tartományok Azure DNS használatával a tartományok üzemeltetésére. A tartomány Regisztr mellett Azure DNS-használati díjak vonatkoznak. További információ: [Azure DNS árképzési](https://azure.microsoft.com/pricing/details/dns/).
+> App Service Domains use Azure DNS to host the domains. A tartomány Regisztr mellett Azure DNS-használati díjak vonatkoznak. További információ: [Azure DNS árképzési](https://azure.microsoft.com/pricing/details/dns/).
 >
 >
 
@@ -171,9 +171,9 @@ Válassza ki **állomásnév hozzáadása**.
 ### <a name="configure-hostname"></a>Állomásnév konfigurálása
 Az a **állomásnév hozzáadása** párbeszédpanelen adja meg az App Service tartományhoz vagy bármely altartomány teljesen minősített tartománynevét. Példa:
 
-- kontoso.NET
-- www.kontoso.NET
-- ABC.kontoso.NET
+- kontoso.net
+- www.kontoso.net
+- abc.kontoso.net
 
 Ha elkészült, válassza ki a **ellenőrzése**. Az állomásnév rekordtípus automatikusan ki van jelölve, az Ön.
 
@@ -214,7 +214,7 @@ Manuálisan megújítani a tartományhoz, válassza ki a **megújítási tartom�
 
 <a name="custom"></a>
 
-## <a name="manage-custom-dns-records"></a>Egyéni DNS-rekordok kezelése
+## <a name="manage-custom-dns-records"></a>Manage custom DNS records
 
 Az Azure DNS-rekordok egy App Service-tartomány segítségével felügyelhetők [Azure DNS](https://azure.microsoft.com/services/dns/). Hozzáadhat, távolítsa el, és DNS-rekordok frissítése, akárcsak a beszerzett kívülről tartományban.
 
@@ -226,7 +226,7 @@ Az Azure portálon a bal oldali menüben válassza ki a **több szolgáltatások
 
 Válassza ki a tartományt kezeléséhez. 
 
-### <a name="access-dns-zone"></a>Hozzáférés DNS-zóna
+### <a name="access-dns-zone"></a>Access DNS zone
 
 A tartomány bal oldali menüben válasszon ki **DNS-zóna**.
 

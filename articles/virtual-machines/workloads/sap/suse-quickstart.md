@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/14/2017
 ms.author: hermannd
-ms.openlocfilehash: f7dd532e96540fa297cac8fa3736f9f4a6ccd82f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 072a70c1da74b3b50ad8c0a93ee3c079a724d81f
+ms.sourcegitcommit: a0d2423f1f277516ab2a15fe26afbc3db2f66e33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="running-sap-netweaver-on-microsoft-azure-suse-linux-vms"></a>Az SAP NetWeaver futtatása Microsoft Azure-beli SUSE Linux-alapú virtuális gépeken
 Ez a cikk ismerteti a különböző tényezőt kell figyelembe, hogy a Microsoft Azure SUSE Linux virtuális gépek (VM) SAP NetWeaver futtatja. 2016. május 19-én SAP NetWeaver hivatalosan támogatott SUSE Linux virtuális gépek Azure-on. Linux-verziók, SAP kernel verziók és egyéb előfeltételeket minden részletek megtalálhatók a SAP Megjegyzés 1928533 "SAP-alkalmazások az Azure-on: a támogatott és az Azure Virtuálisgép-típusokon".
@@ -105,7 +105,7 @@ Ha szeretne feltölteni a virtuális gépek a deprovision lépés végén nélk�
 
 Mi a cikkben ismertetett, mellett azt javasoljuk, hogy a fájl eltávolítása:
 
-   /lib/udev/rules.d/75-persistent-NET-Generator.Rules
+   /lib/udev/rules.d/75-persistent-net-generator.rules
 
 Az Azure Linux ügynök (waagent) elkerülése végett lehetséges problémák kezeléséhez, mindaddig, amíg nincsenek több hálózati adapterrel is telepíthet.
 
@@ -162,5 +162,5 @@ Ha a Gnome asztali belül egyetlen virtuális gép – egy SAP grafikus felhaszn
    ```
 
 ## <a name="sap-support-for-oracle-on-linux-in-the-cloud"></a>Oracle Linux a felhőben SAP támogatása
-Nincs a virtualizált környezetet az Oracle Linux támogatás korlátozás. Ez a támogatás korlátozás, de nem egy Azure-specifikus témakör fontos megérteni. SAP nem támogatja a Oracle SUSE vagy nyilvános felhőben működő Azure például Red Hat. Ez a témakör tárgyalja, lépjen kapcsolatba közvetlenül Oracle.
+Nincs a virtualizált környezetet az Oracle Linux támogatás korlátozás. Ez a támogatás korlátozás, de nem egy Azure-specifikus témakör fontos megérteni. SAP nem támogatja a Oracle SUSE vagy nyilvános felhőben működő Azure például Red Hat. Addig is fut, az Azure-ban Oracle adatbázis teljes mértékben támogatja SAP, Oracle Linux (lásd az SAP Megjegyzés 1928533). Ha más kombináció szükség, lépjen kapcsolatba közvetlenül Oracle.
 

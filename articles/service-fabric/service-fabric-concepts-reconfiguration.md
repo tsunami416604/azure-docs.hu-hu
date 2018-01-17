@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/23/2017
+ms.date: 01/10/2018
 ms.author: aprameyr
-ms.openlocfilehash: ee2808286012720210070817d7ee6c2349247858
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8371c4b268e1181e61542261ad7fc5fd04f6e59c
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="reconfiguration-in-azure-service-fabric"></a>Az Azure Service Fabric újrakonfigurálása
 A *konfigurációs* van definiálva, a replikákat és a partíció egy állapotalapú szolgáltatás szerepkörét.
@@ -47,7 +47,7 @@ Egy újrakonfigurálás halad több lépésből áll:
 
 Nincsenek más fázisok csak belső használatra szolgálnak.
 
-## <a name="stuck-reconfigurations"></a>Rögzített újrakonfigurálás
+## <a name="stuck-reconfigurations"></a>Stuck reconfigurations
 Újrakonfigurálás kaphat *akadt* a számos okból. A gyakori okai a következők:
 
 - **Replikák le**: néhány újrakonfigurálás fázisok fel kell a konfigurációban a replikák többsége szükséges.
@@ -56,7 +56,7 @@ Nincsenek más fázisok csak belső használatra szolgálnak.
 
 Használja a rendszer összetevőkből állapotjelentések, például System.FM System.RA vagy System.RAP, ahol egy újrakonfigurálás diagnosztizálásához Beragadt. A [rendszer állapotfigyelő jelentés oldalról](service-fabric-understand-and-troubleshoot-with-system-health-reports.md) ezek állapotjelentések ismerteti.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A Service Fabric fogalmakat további információkért tekintse meg a következő cikkeket:
 
 - [A Reliable Services életciklusa – C#](service-fabric-reliable-services-lifecycle.md)

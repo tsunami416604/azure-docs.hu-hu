@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: f633e76ea7c0df456bff41c450eb136809de12a8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0e227d6e15789b29b40197a9ff71b2116312da78
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="cloud-app-discovery-registry-settings-for-proxy-services"></a>Cloud App Discovery beállításjegyzék-beállítások Proxy szolgáltatások
 Ez a témakör célja, hogyan hajtsa végre a szükséges port beállítása a Cloud App Discovery-ügynököt futtató számítógépeken. Alapértelmezés szerint a Cloud App Discovery-ügynök csak a portok 80-as vagy 443-as használatára van konfigurálva. Ha azt tervezi, a Cloud App Discovery telepítése által használt egyéni portot (80-as, sem 443-as) proxykiszolgálóval környezetben, akkor kell konfigurálni az ügynököket, a port használatára. A konfiguráció egy beállításkulcs megadásával alapul.
@@ -29,7 +29,7 @@ Ez a témakör célja, hogyan hajtsa végre a szükséges port beállítása a C
 ## <a name="modify-the-port-used-by-the-computer-running-the-cloud-app-discovery-agent"></a>Módosítsa a portot használják a Cloud App Discovery-ügynököt futtató számítógépen
 
 1. A beállításjegyzék-szerkesztő elindításához.
-  ![Futtatás](./media/active-directory-cloudappdiscovery-registry-settings-for-proxy-services/proxy01.png)
+  ![Run](./media/active-directory-cloudappdiscovery-registry-settings-for-proxy-services/proxy01.png)
 2. Keresse meg, vagy hozza létre a következő beállításkulcsot: **HKLM_LOCAL_MACHINE\Software\Microsoft\Cloud App Discovery\Endpoint**
 3. Hozzon létre egy új **karakterláncsoros** nevű értéket **portok**. 
   ![Új](./media/active-directory-cloudappdiscovery-registry-settings-for-proxy-services/proxy02.png)
@@ -50,7 +50,7 @@ Ez a témakör célja, hogyan hajtsa végre a szükséges port beállítása a C
    ![Karakterláncsor szerkesztése](./media/active-directory-cloudappdiscovery-registry-settings-for-proxy-services/proxy03.png)
 6. Kattintson a **OK** bezárásához a **Karakterláncsor szerkesztése** párbeszédpanel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Hogyan lehet használt, jóvá nem hagyott felhőalkalmazások felderítése a szervezeten belül](active-directory-cloudappdiscovery-whatis.md) 
 

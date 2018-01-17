@@ -2,23 +2,17 @@
 title: "Oktatóanyag: Titkosításához és visszafejtéséhez az Azure Key Vault használatával Azure Storage blobs is |} Microsoft Docs"
 description: "Hogyan titkosításához és visszafejtéséhez az Azure Key Vault a Microsoft Azure Storage ügyféloldali titkosítással blob."
 services: storage
-documentationcenter: 
-author: adhurwit
-manager: jasonsav
-editor: tysonn
-ms.assetid: 027e8631-c1bf-48c1-9d9b-f6843e88b583
+author: tamram
+manager: jeconnoc
 ms.service: storage
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 01/23/2017
 ms.author: adhurwit
-ms.openlocfilehash: fc4286b39ade5558a9dabd5832be05a7a0d6f0c7
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 405ccb44c9daf8d555946e6c68ef318ed2b82505
+ms.sourcegitcommit: a0d2423f1f277516ab2a15fe26afbc3db2f66e33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>Oktatóanyag: Titkosításához és visszafejtéséhez az Azure Key Vault használatával a Microsoft Azure Storage blobs
 ## <a name="introduction"></a>Bevezetés
@@ -168,10 +162,6 @@ using (var stream = System.IO.File.OpenRead(@"C:\data\MyFile.txt"))
     blob.UploadFromStream(stream, stream.Length, null, options, null);
 ```
 
-Az alábbiakban látható egy Képernyőkép a [klasszikus Azure portál](https://manage.windowsazure.com) egy BLOB, a Key Vault szolgáltatókban tárolt kulcsok ügyféloldali titkosítással titkosított. A **KeyId** tulajdonság a kulcsot a kulcstároló, úgy működik, mint a KEK URI-JÁNAK. A **EncryptedKey** tulajdonság a CEK titkosított verzióját tartalmazza.
-
-![A Blob metaadatai paramétertitkosítási metaadatokat tartalmazó ábrázoló képernyőfelvétel](./media/storage-encrypt-decrypt-blobs-key-vault/blobmetadata.png)
-
 > [!NOTE]
 > Ha megnézi a BlobEncryptionPolicy konstruktor, látni fogja, hogy el tudja fogadni a kulcs és/vagy a feloldó. Vegye figyelembe, hogy most egy feloldó nem használata titkosításhoz, mert jelenleg nem támogatja egy alapértelmezett kulcs.
 > 
@@ -231,7 +221,7 @@ SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
 ```
 Ennyi az egész. Jó munkát!
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Microsoft Azure Storage a C# használatával kapcsolatos további információkért lásd: [Microsoft Azure Storage ügyféloldali kódtára a .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).
 
 A Blob REST API kapcsolatos további információkért lásd: [Blob szolgáltatás REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx).

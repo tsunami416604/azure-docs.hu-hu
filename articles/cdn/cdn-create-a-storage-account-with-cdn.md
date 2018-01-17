@@ -12,112 +12,107 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 01/04/2018
 ms.author: mazha
-ms.openlocfilehash: dbdf263d9d7fdfbe4fbc47db9ba9f30637e8c3ad
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 022071f7825cb9184bd4c815c09e1c202a0a6f91
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="integrate-an-azure-storage-account-with-azure-cdn"></a>Azure-tárfiók integrálása az Azure CDN szolgáltatás használata
-CDN az az Azure storage engedélyezhető a gyorsítótár teljes tartalmát. A fejlesztők a tartalmak nagy sávszélességű kézbesítéséhez a blobok és számítási példányokért fizikai csomópontokon az Egyesült Államok, Európa, Ázsia, Ausztrália és Dél-Amerika a statikus tartalom gyorsítótárazása révén globális megoldást kínál.
+Az Azure storage Azure tartalom Delivery Network (CDN) engedélyezheti a tartalmak gyorsítótárazására való. Az Azure CDN tartalmak nagy sávszélességű kézbesítéséhez globális megoldást kínál a fejlesztők. Azt is a gyorsítótár-blobok és számítási példányokért fizikai csomópontokon az Amerikai Egyesült Államok, Európa, Ázsia, Ausztrália és Dél-Amerika statikus tartalmát.
 
 ## <a name="step-1-create-a-storage-account"></a>1. lépés: Tárfiók létrehozása
-A következő eljárással hozzon létre egy új tárfiókot, Azure-előfizetéssel. A storage-fiók az Azure storage-szolgáltatásokhoz való hozzáférést. A tárfiók eléréséhez szükséges az Azure storage szolgáltatás összetevői a névtér a legmagasabb szintű jelöli: Blob-szolgáltatások, Queue szolgáltatások és Table szolgáltatások. További információkért tekintse meg a [Microsoft Azure Storage bemutatása](../storage/common/storage-introduction.md).
+A következő eljárással hozzon létre egy új tárfiókot, Azure-előfizetésre. A storage-fiókok hozzáférést ad az Azure Storage szolgáltatás. A tárfiók eléréséhez szükséges az Azure Storage szolgáltatás összetevői a névtér a legmagasabb szintű jelöli: Azure Blob, Queue és Table storage. További információkért lásd: [Microsoft Azure Storage bemutatása](../storage/common/storage-introduction.md).
 
-Hozzon létre egy tárfiókot, vagy a szolgáltatás rendszergazdájának vagy társadminisztrátorának a társított előfizetés kell lennie.
+Hozzon létre egy tárfiókot, a szolgáltatás-rendszergazda vagy egy coadministrator a társított előfizetés kell lennie.
 
 > [!NOTE]
-> Többféleképpen hozzon létre egy tárfiókot, beleértve az Azure portál és a Powershell segítségével.  Ebben az oktatóanyagban használni fogjuk az Azure portálon.  
-> 
+> Többféle módszer segítségével hozzon létre egy tárfiókot, beleértve az Azure portál és a PowerShell. Ez az oktatóanyag bemutatja, hogyan használható az Azure-portálon.   
 > 
 
 **A storage-fiók egy Azure-előfizetés létrehozása**
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
-2. Válassza ki a bal felső sarokban, **új**. Az a **új** párbeszédpanelen válassza **adatok + tárolás**, majd kattintson a **tárfiók**.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. A bal felső sarokban válassza **hozzon létre egy erőforrást**. Az a **új** ablaktáblán válassza előbb **tárolási**, majd válassza ki **tárfiók - blob, a fájl, a tábla, a várólista**.
     
-    A **storage-fiók létrehozása** panel jelenik meg.   
+    A **storage-fiók létrehozása** ablaktáblán jelenik meg.   
 
-    ![Tárfiók létrehozása][create-new-storage-account]  
+    ![Tárolási fiók ablaktábla létrehozása](./media/cdn-create-a-storage-account-with-cdn/cdn-create-new-storage-account.png)
 
-3. Az a **neve** mezőbe írja be egy altartomány nevét. Ez a bejegyzés 3-24 kisbetűket és számokat tartalmazhat.
+3. Az a **neve** adjon meg egy altartomány nevet. Ez a bejegyzés 3-24 kisbetűket és számokat tartalmazhat.
    
-    Ez az érték lesz az állomásnév, az előfizetés Blob, sor vagy tábla erőforrásainak címzéséhez használt URI-Azonosítóra belül. Egy tároló-erőforrás a Blob szolgáltatás megoldására használhatja egy URI-t a következő formátumban, ahol  *&lt;StorageAccountLabel&gt;*  hivatkozik a beírt érték **adjon meg egy URL-cím**:
+    Ez az érték lesz az állomásnév az URI blob, sor vagy tábla erőforrások az előfizetés megoldására használt belül. Blob Storage tárolóban erőforrás megoldására URI használ a következő formátumban:
    
     http://*&lt;StorageAcountLabel&gt;*.blob.core.windows.net/*&lt;mycontainer&gt;*
+
+    Ha  *&lt;StorageAccountLabel&gt;*  a megadott érték hivatkozik a **neve** mezőbe.
    
-    **Fontos:** az URL-cím címke űrlapok a tárfiók URI altartomány, és az Azure-ban az összes üzemeltetett szolgáltatások egyedinek kell lennie.
+    > [!IMPORTANT]    
+    > Az URL-cím címke képezi a tárfiók URI altartomány, és az Azure-ban az összes üzemeltetett szolgáltatások egyedinek kell lennie.
    
-    Ezt az értéket is használja a tárfiók a portálon, vagy neveként ezt a fiókot programozott módon való hozzáférés során.
-4. Hagyja meg az alapértelmezett értéket **telepítési modell**, **fiók kind**, **teljesítmény**, és **replikációs**. 
-5. Válassza ki a **előfizetés** , amely a tárolási fiók használandó.
-6. Válasszon ki vagy hozzon létre egy **erőforráscsoportot**.  További információ az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](../azure-resource-manager/resource-group-overview.md#resource-groups).
-7. Válasszon egy helyet a tárfiók.
-8. Kattintson a **Create** (Létrehozás) gombra. A storage-fiók létrehozása eltarthat néhány percet.
+    Ezt az értéket a tárfiók a portálon, vagy ha ezt a fiókot programokon keresztül éri el a neveként is használja.
+    
+4. Az alapértelmezett értéket használja **telepítési modell**, **fiók kind**, **teljesítmény**, és **replikációs**. 
+    
+5. A **előfizetés**, válassza ki az előfizetést a storage-fiók használata.
+    
+6. A **erőforráscsoport**, válassza ki vagy hozzon létre egy erőforráscsoportot. Erőforráscsoportok kapcsolatos információkért lásd: [Azure Resource Manager áttekintése](../azure-resource-manager/resource-group-overview.md#resource-groups).
+    
+7. A **hely**, jelöljön ki egy helyet a tárfiók.
+    
+8. Kattintson a **Létrehozás** gombra. A storage-fiók létrehozásának folyamata befejezéséhez több percig is eltarthat.
 
 ## <a name="step-2-enable-cdn-for-the-storage-account"></a>2. lépés: A tárfiók CDN engedélyezése
 
-Az a legújabb integrációs most engedélyezheti a CDN a tárfiók anélkül, hogy a tároló portálbővítményt. 
+A tárfiók CDN engedélyezheti a tárfiók-ről. 
 
-1. Válassza ki a tárfiókot, keressen a "CDN" vagy a bal oldali navigációs menü görgessen lefelé, majd kattintson az "Azure CDN".
+1. Válasszon egy tárfiókot az irányítópultról, és válasszon **Azure CDN** a bal oldali ablaktáblán. Ha a **Azure CDN** gomb nem jelennek meg azonnal, megadhatja a CDN-t a **keresési** azoknak a bal oldali ablaktáblán.
     
-    A **Azure CDN** panel jelenik meg.
+    A **Azure Content Delivery Network** ablaktáblán jelenik meg.
 
-    ![CDN engedélyezése navigációs][cdn-enable-navigation]
+    ![CDN-végpont létrehozása](./media/cdn-create-a-storage-account-with-cdn/cdn-storage-new-endpoint-creation.png)
     
-2. Írja be a szükséges adatokat az új végpont létrehozásához
-    - **CDN-profil**: hozzon létre egy új, vagy egy meglévő profil.
-    - **IP-címek**: csak akkor kell új CDN-profil létrehozásakor válassza ki a tarifacsomagot.
-    - **CDN-végpont nevének**: Adja meg a választott / egy végpont nevét.
+2. Írja be a szükséges adatokat az új végpont létrehozásához:
+    - **CDN-profil**: hozzon létre egy új CDN-profilt, vagy egy meglévő CDN-profil.
+    - **IP-címek**: egy tarifacsomagra csak akkor, ha a CDN-profil létrehozásakor válassza ki.
+    - **CDN-végpont nevének**: Adja meg a CDN-végpont nevét.
 
     > [!TIP]
-    > A létrehozott CDN-végpont használja az állomásnevet a tárfiók származási alapértelmezés szerint.
+    > Alapértelmezés szerint egy új CDN-végpont a tárfiók állomásneve használja az eredeti kiszolgálóra.
 
-    ! [cdn új végpont létrehozásához] [a cdn-új-végpont-létrehozása]
+3. Kattintson a **Létrehozás** gombra. Miután létrehozta a végpontot, végpont listájában jelenik meg.
 
-3. A létrehozás után az új végpont a fenti végpont listában jelennek meg.
-
-    ![tárolási új CDN-végpont][cdn-storage-new-endpoint]
+    ![Tárolási új CDN-végpont](./media/cdn-create-a-storage-account-with-cdn/cdn-storage-new-endpoint-list.png)
 
 > [!NOTE]
-> Azure CDN-bővítmény engedélyezése a CDN is választhatja. [Az oktatóanyag](#Tutorial-cdn-create-profile).
-> 
-> 
-
-[!INCLUDE [cdn-create-profile](../../includes/cdn-create-profile.md)]  
+> Ha meg szeretné határozni a CDN-végpontot, például a optimalizálási típusát speciális konfigurációs beállításait használhatja a [Azure CDN bővítmény](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint) a CDN-végpontot, vagy a CDN-profil létrehozásához.
 
 ## <a name="step-3-enable-additional-cdn-features"></a>3. lépés: További CDN-funkciók engedélyezése
 
-A storage-fiók "Azure CDN" panelen kattintson a CDN-végpont a listából a CDN konfigurációs panel megnyitásához. További CDN szolgáltatásai engedélyezheti a kézbesítésre, például a tömörítés, lekérdezési karakterláncot, földrajzi szűrést. Adja hozzá az egyéni tartomány leképezése a CDN-végpont is, és az egyéni tartomány HTTPS engedélyezése.
+A tárfiók **Azure CDN** ablaktáblán válassza ki a CDN-végpont a CDN konfigurációs ablaktábla megnyitása a listából. További CDN szolgáltatásai engedélyezheti a kézbesítésre, például tömörítést, a lekérdezési karakterlánc és a földrajzi szűrést. Adja hozzá az egyéni tartomány leképezése a CDN-végpont is, és az egyéni tartomány HTTPS engedélyezése.
     
-![CDN cdn tárolással][cdn-storage-cdn-configuration]
+![Tárolási CDN végpont-konfiguráció](./media/cdn-create-a-storage-account-with-cdn/cdn-storage-endpoint-configuration.png)
 
 ## <a name="step-4-access-cdn-content"></a>4. lépés: Hozzáférési CDN-tartalom
-A CDN a gyorsítótárazott tartalom eléréséhez a CDN a portálon megadott URL-CÍMÉT használja. A gyorsítótárazott blob címet a következőhöz hasonló lesz:
+A CDN a gyorsítótárazott tartalom eléréséhez a CDN a portálon megadott URL-CÍMÉT használja. Az a gyorsítótárba helyezett binárisobjektum-cím formátuma a következő:
 
-http://<*EndpointName*\>.azureedge.net/ <*myPublicContainer*\>/<*Blobnév*\>
+http://<*EndpointName*\>.azureedge.net/<*myPublicContainer*\>/<*BlobName*\>
 
 > [!NOTE]
-> Ha engedélyezi a CDN hozzáférést egy tárfiókba, az összes nyilvánosan elérhető objektumok jogosultak a CDN peremhálózati gyorsítótár. Ha módosítja a CDN jelenleg gyorsítótárazott objektumhoz, az új tartalom nem lesz elérhető a CDN mindaddig, amíg a CDN tartalmát frissíti, a gyorsítótárazott tartalom idő a működés közbeni időszak lejártával.
-> 
-> 
+> Miután engedélyezte a tárfiók CDN hozzáférést, az összes nyilvánosan elérhető objektumok jogosultak a CDN peremhálózati gyorsítótár. Ha módosítja a CDN jelenleg gyorsítótárazott objektumhoz, az új tartalom nem lesznek elérhetők keresztül CDN amíg nem CDN tartalmát frissíti, a gyorsítótárazott tartalom idő a működés közbeni időszak lejárta után.
 
 ## <a name="step-5-remove-content-from-the-cdn"></a>5. lépés: A tartalom eltávolítása a CDN-t
-Ha már nem szeretne gyorsítótárazása az objektum az az Azure Content Delivery Network (CDN), akkor is igénybe vehet az alábbi lépések egyikét:
+Ha már nem szeretné az Azure CDN objektumok gyorsítótárazása, hajthatók végre a következő lépésekből áll:
 
-* Biztosíthatja, hogy a tároló privát nyilvános helyett. További információk: [Manage anonymous read access to containers and blobs](../storage/blobs/storage-manage-access-to-resources.md) (Tárolók és blobok névtelen olvasási hozzáférésének kezelése).
-* Tiltsa le, vagy törölni a CDN-végpontot a felügyeleti portál használatával.
-* Az üzemeltetett szolgáltatás nem válaszol a kérelmekre a objektum módosíthatja.
+* Ellenőrizze a tároló magánfelhő, nyilvános helyett. További információkért lásd: [tárolók és blobok névtelen olvasási hozzáférés kezelése](../storage/blobs/storage-manage-access-to-resources.md).
+* Tiltsa le, vagy a CDN-végpont törlése az Azure-portál használatával.
+* Az üzemeltetett szolgáltatás nem válaszol a kérelmekre a objektum módosítása.
 
-Az objektum már gyorsítótárazza a CDN gyorsítótárában marad, amíg az objektum idő a működés közbeni időszakának lejártáig támogatja, vagy a végpont véglegesen törlődnek. Az idő a működés közbeni időszak lejártával a CDN ellenőrzi, hogy a CDN-végpont továbbra is érvényes, és az objektum névtelenül továbbra is elérhetők maradnak. Ha nem, majd az objektum rendszer már nem gyorsítótárazható.
+Olyan objektum, amely már szerepel a gyorsítótárban Azure CDN gyorsítótárazott marad, amíg az objektum idő a működés közbeni időszakának lejártáig támogatja, vagy a végpont véglegesen törlődnek. Az idő a működés közbeni időszak lejártával Azure CDN ellenőrzi, hogy a CDN-végpont továbbra is érvényes, és az objektum névtelenül továbbra is elérhetők maradnak. Ha nem, az objektum már nem gyorsítótárazható.
 
 ## <a name="additional-resources"></a>További források
-* [CDN-tartalom leképezése egyéni tartományra](cdn-map-content-to-custom-domain.md)
-* [Az egyéni tartomány HTTPS engedélyezése](cdn-custom-ssl.md)
+* [Egyéni tartomány hozzáadása a CDN-végponthoz](cdn-map-content-to-custom-domain.md)
+* [HTTPS egyéni Azure CDN-tartomány konfigurálása](cdn-custom-ssl.md)
 
-[create-new-storage-account]: ./media/cdn-create-a-storage-account-with-cdn/CDN_CreateNewStorageAcct.png
-[cdn-enable-navigation]: ./media/cdn-create-a-storage-account-with-cdn/cdn-storage-new-endpoint-creation.png
-[cdn-storage-new-endpoint]: ./media/cdn-create-a-storage-account-with-cdn/cdn-storage-new-endpoint-list.png
-[cdn-storage-cdn-configuration]: ./media/cdn-create-a-storage-account-with-cdn/cdn-storage-endpoint-configuration.png 

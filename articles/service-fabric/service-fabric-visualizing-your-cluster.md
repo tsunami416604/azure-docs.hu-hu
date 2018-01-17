@@ -1,10 +1,10 @@
 ---
-title: "A Service Fabric Explorerrel fürt megjelenítése |} Microsoft Docs"
-description: "Service Fabric Explorerben talál egy olyan webalapú eszköz ellenőrzi, és a felhőalapú alkalmazások és a Microsoft Azure Service Fabric-fürt csomópontjának kezelése."
+title: "A fürt Azure Service Fabric Explorerrel megjelenítése |} Microsoft Docs"
+description: "Service Fabric Explorer alkalmazás ellenőrzése és kezelése a felhőalapú alkalmazások és a Microsoft Azure Service Fabric-fürt csomópontjának."
 services: service-fabric
 documentationcenter: .net
-author: rwike77
-manager: timlt
+author: mikkelhegn
+manager: msfussell
 editor: 
 ms.assetid: c875b993-b4eb-494b-94b5-e02f5eddbd6a
 ms.service: service-fabric
@@ -12,25 +12,58 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/28/2017
-ms.author: ryanwi
-ms.openlocfilehash: 965ffc0f8cec26cccbe6e6459731afc234111f4d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 01/08/2018
+ms.author: mikhegn
+ms.openlocfilehash: 34e00058591bc5a0a02bc408cfc3fcc11010f17c
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>A fürt megjelenítése a Service Fabric Explorerrel
-Service Fabric Explorerben talál egy olyan webalapú eszköz ellenőrzi, és az alkalmazások és az Azure Service Fabric-fürt csomópontjának kezelése. Service Fabric Explorer gazdája közvetlenül a fürthöz, így az mindig elérhető, függetlenül attól, amelyen fut a fürtön.
+
+Service Fabric Explorer (SFX) egy olyan nyílt forráskódú eszköz ellenőrzi, és az Azure Service Fabric-fürtök kezelése. Service Fabric Explorer egy asztali alkalmazás Windows és Linux. MacOS támogatása hamarosan elérhető.
+
+## <a name="service-fabric-explorer-download"></a>Service Fabric Explorer letöltése
+
+Az alábbi hivatkozásokat követve töltse le a Service Fabric Explorer egy asztali alkalmazás:
+
+- Windows
+  - https://aka.ms/sfx-windows
+
+- Linux
+  - https://aka.ms/sfx-linux-x86
+  - https://aka.ms/sfx-linux-x64
+
+> [!NOTE]
+> A Service Fabric Explorer asztali verzióját rendelkezhet több vagy kevesebb, mint a fürt támogatása szolgáltatások. Ön visszatérhet a teljes szolgáltatás a kompatibilitás érdekében a fürt telepített Service Fabric Explorer verziója.
+>
+>
+
+### <a name="running-service-fabric-explorer-from-the-cluster"></a>Service Fabric Explorer fut a fürtön
+
+Service Fabric Explorer is található a Service Fabric-fürt HTTP felügyeleti végpontja. SFX indítása a böngészőben, tallózással keresse meg a fürt HTTP felügyeleti végpont minden böngészőből – például https://clusterFQDN:19080.
+
+A fejlesztő munkaállomás telepítő elindíthatja a Service Fabric Explorer a helyi fürtön lévő 19080/Explorer útvonalon. Tekintse meg jelen cikk [a fejlesztőkörnyezet előkészítése](service-fabric-get-started.md).
+
+## <a name="connect-to-a-service-fabric-cluster"></a>Csatlakozás a Service Fabric-fürt
+A Service Fabric-fürt csatlakozni kell a a fürtök felügyeleti végpont (FQDN vagy IP-) és a HTTP felügyeleti végpont portja (alapértelmezés szerint 19080). Például https://mysfcluster.westus.cloudapp.azure.com:19080. A "Localhost csatlakozás" jelölőnégyzet segítségével csatlakozzon a helyi fürthöz a munkaállomáson.
+
+### <a name="connect-to-a-secure-cluster"></a>Csatlakozás biztonságos fürthöz
+A Service Fabric fürt tanúsítványok, valamint az Azure Active Directory (AAD) használó ügyfél-hozzáférési szabályozhatja.
+
+Ha egy biztonságos fürt csatlakozni próbál, majd függően a fürtkonfiguráció meg kell ügyfél-tanúsítvány létezik, vagy jelentkezzen be az AAD.
 
 ## <a name="video-tutorial"></a>Oktatóvideó
 
 Megtudhatja, hogyan használhatja a Service Fabric Explorer, a következő Microsoft Virtual Academy videót:
 
-[<center><img src="./media/service-fabric-visualizing-your-cluster/SfxVideo.png" WIDTH="360" HEIGHT="244"></center>](https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=bBTFg46yC_9806218965)
+> [!NOTE]
+> Ez a videó bemutatja, hogy a Service Fabric-fürt, nem asztali verzióját tárolt Service Fabric Explorerben talál.
+>
+>
 
-## <a name="connect-to-service-fabric-explorer"></a>Kapcsolódás a Service Fabric Explorerrel
-Ha már elvégezte az utasításokat [a fejlesztőkörnyezet előkészítése](service-fabric-get-started.md), elindíthatja a Service Fabric Explorer a helyi fürtön lévő 19080/Explorer útvonalon.
+[<center><img src="./media/service-fabric-visualizing-your-cluster/SfxVideo.png" WIDTH="360" HEIGHT="244"></center>](https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=bBTFg46yC_9806218965)
 
 ## <a name="understand-the-service-fabric-explorer-layout"></a>A Service Fabric Explorer elrendezés ismertetése
 Service Fabric Explorer navigálhat a bal oldali fában használatával. A fa gyökerében a fürt irányítópult áttekintése a fürt, beleértve az alkalmazás és a csomópont állapotának összegzését.
@@ -68,25 +101,6 @@ Például egy alkalmazáspéldányt törléséhez válassza ki az alkalmazást a
 > [!TIP]
 > Minden elem jelre kattintva ugyanazokat a műveleteket végezheti el.
 >
->
-
-A következő táblázat felsorolja az egyes entitások esetében elérhető műveleteket:
-
-| **Entitás** | **Művelet** | **Leírás** |
-| --- | --- | --- |
-| Alkalmazás típusa |Típus leépítése |Eltávolítja az alkalmazáscsomagot a fürt lemezképtárolóhoz. Először el kell távolítani az adott típusú összes alkalmazásra van szükség. |
-| Alkalmazás |Alkalmazás törlése |Törli az alkalmazásból, beleértve a hozzá tartozó szolgáltatások és azok állapota (ha van ilyen). |
-| Szolgáltatás |Szolgáltatás törlése |(Ha van ilyen), törölje a szolgáltatást és annak állapotát. |
-| Csomópont |Aktiválás |A csomópont aktiválása. |
-| Csomópont | (Szünet) inaktiválása | A csomópont jelenlegi állapotában felfüggesztése. Szolgáltatások tovább fut, de a Service Fabric proaktív helyezi át a semmit, vagy ki, kivéve, ha arra szükség van kimaradás vagy adatok inkonzisztenciája megelőzése érdekében. Ez a művelet általában segítségével engedélyezheti a hibakeresési szolgáltatásokat annak érdekében, hogy azok helyezi át az ellenőrzés során adott csomóponton. | |
-| Csomópont | Inaktiválás (újraindítás) | Biztonságosan haladhat minden memórián belüli szolgáltatás ki olyan csomópont, és zárja be az állandó szolgáltatásokban. Általában használhatók, ha a gazdagép folyamatainak vagy a gép újra kell indítani. | |
-| Csomópont | (Az adatok eltávolítása) inaktiválása | Biztonságosan zárja be a megfelelő tartalék replikák létrehozása után a csomóponton futó összes szolgáltatás. Jellemzően akkor csomópont (vagy legalább a tárhely) kívül Bizottság véglegesen foglalja. | |
-| Csomópont | Távolítsa el a csomópont állapota | Távolítsa el a fürt egy csomópont replikák ismerete. Általában akkor használható, ha egy már leállt csomópont helyreállíthatatlan tekintendő. | |
-| Csomópont | Újraindítás | Csomópont hiba szimulálása a csomópont újraindításával. További információ [Itt](/powershell/module/servicefabric/restart-servicefabricnode?view=azureservicefabricps) | |
-
-Mivel számos műveletet károsak, a lehetséges, hogy a művelet befejezése előtt, győződjön meg arról, hogy a leképezés kéri.
-
-> [!TIP]
 > Minden művelet, amely a Service Fabric Explorer segítségével végezheti el is PowerShell vagy a REST API-t automatizálására végezhető el.
 >
 >
@@ -96,27 +110,11 @@ Service Fabric Explorer használatával hozzon létre egy adott alkalmazás típ
 ![Az alkalmazáspéldány létrehozása a Service Fabric Explorerben][sfx-create-app-instance]
 
 > [!NOTE]
-> Jelenleg nem paraméterezett Service Fabric Explorer használatával létrehozott alkalmazás-példányokon. Létrehozásuk alapértelmezett paraméterértékek használata.
+> Service Fabric Explorer nem támogatja a paraméterek alkalmazáspéldányok létrehozásakor. Az alkalmazáspéldányok alapértelmezett paraméterértékek használata.
 >
 >
 
-## <a name="connect-to-a-remote-service-fabric-cluster"></a>Csatlakozzon a távoli Service Fabric-fürt
-Ha a fürt végpontja tudja, és rendelkezik a szükséges engedélyekkel a Service Fabric Explorer minden böngészőből végezheti el. Ez azért, mert Service Fabric Explorer egy másik szolgáltatás, amely a fürt futtatja.
-
-### <a name="discover-the-service-fabric-explorer-endpoint-for-a-remote-cluster"></a>A távoli fürt Service Fabric Explorer-végpont felderítése
-Service Fabric Explorer egy adott fürt eléréséhez a böngészőben a pont:
-
-http://&lt;a fürt végpontja&gt;: 19080/Explorer
-
-Az Azure-fürtök esetén a teljes URL-címet is rendelkezésre áll a fürt essentials ablaktábláján az Azure-portálon.
-
-### <a name="connect-to-a-secure-cluster"></a>Csatlakozás biztonságos fürthöz
-A Service Fabric fürt tanúsítványok, valamint az Azure Active Directory (AAD) használó ügyfél-hozzáférési szabályozhatja.
-
-Ha próbál csatlakozni a Service Fabric Explorer egy biztonságos fürtön, majd függően a fürtkonfiguráció akkor lesz kell ügyféltanúsítványt jelen, vagy jelentkezzen be az AAD használja.
-
-## <a name="next-steps"></a>Következő lépések
-* [Tesztelhetőségi áttekintése](service-fabric-testability-overview.md)
+## <a name="next-steps"></a>További lépések
 * [A Visual Studio a Service Fabric-alkalmazások kezelése](service-fabric-manage-application-in-visual-studio.md)
 * [A Service Fabric-alkalmazás központi telepítésének PowerShell használatával](service-fabric-deploy-remove-applications.md)
 

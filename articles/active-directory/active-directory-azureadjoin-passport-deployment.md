@@ -13,13 +13,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 01/15/2018
 ms.author: markvi
-ms.openlocfilehash: b5b48edda76bedc14d5528fa82f1d9b7bfffe53a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0aa16e3466b36b6d1d83308cf37623aa15d61fcb
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="enable-microsoft-windows-hello-for-business-in-your-organization"></a>Engedélyezze a Microsoft vállalati Windows Hello a szervezetben
 Után [Windows 10-tartományhoz csatlakoztatott eszközök csatlakoztatása az Azure Active Directoryval](active-directory-azureadjoin-devices-group-policy.md), engedélyezze a Microsoft vállalati Windows Hello a szervezet érdekében tegye a következőket:
@@ -105,7 +105,7 @@ Ha a helyszíni hitelesítéshez tanúsítvány alapú hitelesítést használ, 
 
 Az a **SCEP-igénylés** lap a tanúsítványprofilok, meg kell adnia **telepítse a Passport for Work szolgáltatásba, másként meghibásodás történik** , a **kulcstároló-szolgáltató**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Vállalati használatú Windows 10: Az eszközök munkahelyi célú használata](active-directory-azureadjoin-windows10-devices-overview.md)
 * [A felhőalapú képességek kiterjesztése a Windows 10-eszközökre az Azure Active Directory Joinon keresztül](active-directory-azureadjoin-user-upgrade.md)
 * [Jelszóhasználat nélküli hitelesítés](active-directory-azureadjoin-passport.md)

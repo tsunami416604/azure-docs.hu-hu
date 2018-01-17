@@ -2,4 +2,4 @@
 
 Ez az útmutató a docs.microsoft.com belső közreműködői útmutató át lett helyezve.
 
-[https://aka.MS/git-commands-Master](https://aka.ms/git-commands-master)
+[https://aka.ms/git-commands-master](https://aka.ms/git-commands-master)

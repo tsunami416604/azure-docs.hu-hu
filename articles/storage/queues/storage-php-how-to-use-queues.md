@@ -12,13 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 01/11/2018
 ms.author: tamram
-ms.openlocfilehash: 5fa4e35184b39bd672bfc8b19b2d41acb164abdf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 02ffd817f34ae7d5fa1557db0a74e8ff06ab69fc
+ms.sourcegitcommit: a0d2423f1f277516ab2a15fe26afbc3db2f66e33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="how-to-use-queue-storage-from-php"></a>How to use Queue storage from PHP (A Queue Storage használata PHP-val)
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -38,7 +38,24 @@ A csak a PHP-alkalmazások létrehozása, amely hozzáfér az Azure Queue storag
 Ebben az útmutatóban használja a várólista tárolási szolgáltatásainak, amely PHP-alkalmazás helyileg, vagy egy Azure webes szerepkörről, a feldolgozói szerepkör vagy a webhely belül futó kód hívása.
 
 ## <a name="get-the-azure-client-libraries"></a>Az Azure Ügyfélkódtárai beolvasása
-[!INCLUDE [get-client-libraries](../../../includes/get-client-libraries.md)]
+### <a name="install-via-composer"></a>Keresztül szerkesztő telepítése
+1. Hozzon létre egy fájlt **composer.json** a projekt gyökérkönyvtárában, és az alábbi kód felvétele:
+   
+    ```json
+    {
+      "require": {
+        "microsoft/azure-storage-queue": "*"
+      }
+    }
+    ```
+2. Töltse le  **[composer.phar] [ composer-phar]**  a projekt gyökérkönyvtárában.
+3. Nyisson meg egy parancssort, és hajtsa végre a következő parancsot a projekt gyökérkönyvtárában
+   
+    ```
+    php composer.phar install
+    ```
+
+Másik lehetőségként keresse fel a [Azure Storage PHP ügyféloldali kódtár] [ download] a Githubon a forráskód klónozását.
 
 ## <a name="configure-your-application-to-access-queue-storage"></a>Állítsa be az alkalmazását, a Queue storage eléréséhez
 Az API-kat az Azure Queue storage használandó kell:
@@ -46,12 +63,11 @@ Az API-kat az Azure Queue storage használandó kell:
 1. Hivatkozzon a robotot használatával a [require_once] utasítást.
 2. Bármely olyan osztállyal, amelynek segítségével lehet hivatkozni.
 
-A következő példa bemutatja, hogyan a robotot fájl és a hivatkozás a **ServicesBuilder** osztály.
+A következő példa bemutatja, hogyan a robotot fájl és a hivatkozás a **QueueRestProxy** osztály.
 
 ```php
 require_once 'vendor/autoload.php';
-use MicrosoftAzure\Storage\Common\ServicesBuilder;
-
+use MicrosoftAzure\Storage\Queue\QueueRestProxy;
 ```
 
 A következő példákban a `require_once` utasítás mindig megjelenik, de csak a szükséges végrehajtandó például osztályok hivatkozott.
@@ -71,7 +87,7 @@ Az emulátor tárolóinak eléréséhez:
 UseDevelopmentStorage=true
 ```
 
-Bármely Azure szolgáltatás ügyfele létrehozásához kell használnia a **ServicesBuilder** osztály. Az alábbi módszerek bármelyikét használhatja:
+Az Azure Queue szolgáltatásügyfél létrehozásához kell használnia a **QueueRestProxy** osztály. Az alábbi módszerek bármelyikét használhatja:
 
 * Átadni a kapcsolati karakterlánc közvetlenül.
 * A webalkalmazás környezeti változók segítségével tárolja a kapcsolati karakterláncot. Lásd: [Azure webalkalmazás-konfigurációs beállítások](../../app-service/web-sites-configure.md) dokumentumában kapcsolati karakterláncok konfigurálása.
@@ -80,10 +96,10 @@ Az itt leírt példák a kapcsolati karakterlánc közvetlenül át.
 ```php
 require_once 'vendor/autoload.php';
 
-use MicrosoftAzure\Storage\Common\ServicesBuilder;
+use MicrosoftAzure\Storage\Queue\QueueRestProxy;
 
 $connectionString = "DefaultEndpointsProtocol=http;AccountName=<accountNameHere>;AccountKey=<accountKeyHere>";
-$queueRestProxy = ServicesBuilder::getInstance()->createQueueService($connectionString);
+$queueClient = QueueRestProxy::createQueueService($connectionString);
 ```
 
 ## <a name="create-a-queue"></a>Üzenetsor létrehozása
@@ -92,14 +108,14 @@ A **QueueRestProxy** objektum lehetővé teszi, hogy a várólista létrehozása
 ```php
 require_once 'vendor/autoload.php';
 
-use MicrosoftAzure\Storage\Common\ServicesBuilder;
-use MicrosoftAzure\Storage\Common\ServiceException;
+use MicrosoftAzure\Storage\Queue\QueueRestProxy;
+use MicrosoftAzure\Storage\Common\Exceptions\ServiceException;
 use MicrosoftAzure\Storage\Queue\Models\CreateQueueOptions;
 
 $connectionString = "DefaultEndpointsProtocol=http;AccountName=<accountNameHere>;AccountKey=<accountKeyHere>";
 
 // Create queue REST proxy.
-$queueRestProxy = ServicesBuilder::getInstance()->createQueueService($connectionString);
+$queueClient = QueueRestProxy::createQueueService($connectionString);
 
 // OPTIONAL: Set queue metadata.
 $createQueueOptions = new CreateQueueOptions();
@@ -108,7 +124,7 @@ $createQueueOptions->addMetaData("key2", "value2");
 
 try    {
     // Create queue.
-    $queueRestProxy->createQueue("myqueue", $createQueueOptions);
+    $queueClient->createQueue("myqueue", $createQueueOptions);
 }
 catch(ServiceException $e){
     // Handle exception based on error codes and messages.
@@ -131,19 +147,19 @@ A várólista adhat hozzá egy üzenetet, **QueueRestProxy -> createMessage**. A
 ```php
 require_once 'vendor/autoload.php';
 
-use MicrosoftAzure\Storage\Common\ServicesBuilder;
-use MicrosoftAzure\Storage\Common\ServiceException;
+use MicrosoftAzure\Storage\Queue\QueueRestProxy;
+use MicrosoftAzure\Storage\Common\Exceptions\ServiceException;
 use MicrosoftAzure\Storage\Queue\Models\CreateMessageOptions;
 
 $connectionString = "DefaultEndpointsProtocol=http;AccountName=<accountNameHere>;AccountKey=<accountKeyHere>";
 
 // Create queue REST proxy.
-$queueRestProxy = ServicesBuilder::getInstance()->createQueueService($connectionString);
+$queueClient = QueueRestProxy::createQueueService($connectionString);
 
 try    {
     // Create message.
     $builder = new ServicesBuilder();
-    $queueRestProxy->createMessage("myqueue", "Hello World!");
+    $queueClient->createMessage("myqueue", "Hello World!");
 }
 catch(ServiceException $e){
     // Handle exception based on error codes and messages.
@@ -161,21 +177,21 @@ Is bepillanthat, hogy egy üzenet (vagy üzenetek) egy sor elején anélkül, ho
 ```php
 require_once 'vendor/autoload.php';
 
-use MicrosoftAzure\Storage\Common\ServicesBuilder;
-use MicrosoftAzure\Storage\Common\ServiceException;
+use MicrosoftAzure\Storage\Queue\QueueRestProxy;
+use MicrosoftAzure\Storage\Common\Exceptions\ServiceException;
 use MicrosoftAzure\Storage\Queue\Models\PeekMessagesOptions;
 
 $connectionString = "DefaultEndpointsProtocol=http;AccountName=<accountNameHere>;AccountKey=<accountKeyHere>";
 
 // Create queue REST proxy.
-$queueRestProxy = ServicesBuilder::getInstance()->createQueueService($connectionString);
+$queueClient = QueueRestProxy::createQueueService($connectionString);
 
 // OPTIONAL: Set peek message options.
 $message_options = new PeekMessagesOptions();
 $message_options->setNumberOfMessages(1); // Default value is 1.
 
 try    {
-    $peekMessagesResult = $queueRestProxy->peekMessages("myqueue", $message_options);
+    $peekMessagesResult = $queueClient->peekMessages("myqueue", $message_options);
 }
 catch(ServiceException $e){
     // Handle exception based on error codes and messages.
@@ -209,16 +225,16 @@ A kód eltávolítja az üzenetet az üzenetsorból két lépést. Először hí
 ```php
 require_once 'vendor/autoload.php';
 
-use MicrosoftAzure\Storage\Common\ServicesBuilder;
-use MicrosoftAzure\Storage\Common\ServiceException;
+use MicrosoftAzure\Storage\Queue\QueueRestProxy;
+use MicrosoftAzure\Storage\Common\Exceptions\ServiceException;
 
 $connectionString = "DefaultEndpointsProtocol=http;AccountName=<accountNameHere>;AccountKey=<accountKeyHere>";
 
 // Create queue REST proxy.
-$queueRestProxy = ServicesBuilder::getInstance()->createQueueService($connectionString);
+$queueClient = QueueRestProxy::createQueueService($connectionString);
 
 // Get message.
-$listMessagesResult = $queueRestProxy->listMessages("myqueue");
+$listMessagesResult = $queueClient->listMessages("myqueue");
 $messages = $listMessagesResult->getQueueMessages();
 $message = $messages[0];
 
@@ -232,7 +248,7 @@ $popReceipt = $message->getPopReceipt();
 
 try    {
     // Delete message.
-    $queueRestProxy->deleteMessage("myqueue", $messageId, $popReceipt);
+    $queueClient->deleteMessage("myqueue", $messageId, $popReceipt);
 }
 catch(ServiceException $e){
     // Handle exception based on error codes and messages.
@@ -250,16 +266,16 @@ Módosíthatja a tartalmát egy üzenet helyben a várólistán lévő meghívá
 ```php
 require_once 'vendor/autoload.php';
 
-use MicrosoftAzure\Storage\Common\ServicesBuilder;
-use MicrosoftAzure\Storage\Common\ServiceException;
+use MicrosoftAzure\Storage\Queue\QueueRestProxy;
+use MicrosoftAzure\Storage\Common\Exceptions\ServiceException;
 
 // Create queue REST proxy.
-$queueRestProxy = ServicesBuilder::getInstance()->createQueueService($connectionString);
+$queueClient = QueueRestProxy::createQueueService($connectionString);
 
 $connectionString = "DefaultEndpointsProtocol=http;AccountName=<accountNameHere>;AccountKey=<accountKeyHere>";
 
 // Get message.
-$listMessagesResult = $queueRestProxy->listMessages("myqueue");
+$listMessagesResult = $queueClient->listMessages("myqueue");
 $messages = $listMessagesResult->getQueueMessages();
 $message = $messages[0];
 
@@ -273,7 +289,7 @@ $popReceipt = $message->getPopReceipt();
 
 try    {
     // Update message.
-    $queueRestProxy->updateMessage("myqueue",
+    $queueClient->updateMessage("myqueue",
                                 $messageId,
                                 $popReceipt,
                                 $new_message_text,
@@ -295,14 +311,14 @@ Két módon, hogy testre szabhatja az üzenetek lekérését egy üzenetsorból.
 ```php
 require_once 'vendor/autoload.php';
 
-use MicrosoftAzure\Storage\Common\ServicesBuilder;
-use MicrosoftAzure\Storage\Common\ServiceException;
+use MicrosoftAzure\Storage\Queue\QueueRestProxy;
+use MicrosoftAzure\Storage\Common\Exceptions\ServiceException;
 use MicrosoftAzure\Storage\Queue\Models\ListMessagesOptions;
 
 $connectionString = "DefaultEndpointsProtocol=http;AccountName=<accountNameHere>;AccountKey=<accountKeyHere>";
 
 // Create queue REST proxy.
-$queueRestProxy = ServicesBuilder::getInstance()->createQueueService($connectionString);
+$queueClient = QueueRestProxy::createQueueService($connectionString);
 
 // Set list message options.
 $message_options = new ListMessagesOptions();
@@ -311,7 +327,7 @@ $message_options->setNumberOfMessages(16);
 
 // Get messages.
 try{
-    $listMessagesResult = $queueRestProxy->listMessages("myqueue",
+    $listMessagesResult = $queueClient->listMessages("myqueue",
                                                      $message_options);
     $messages = $listMessagesResult->getQueueMessages();
 
@@ -326,7 +342,7 @@ try{
         $popReceipt = $message->getPopReceipt();
 
         // Delete message.
-        $queueRestProxy->deleteMessage("myqueue", $messageId, $popReceipt);
+        $queueClient->deleteMessage("myqueue", $messageId, $popReceipt);
     }
 }
 catch(ServiceException $e){
@@ -345,17 +361,17 @@ Megbecsülheti egy üzenetsorban található üzenetek számát. A **QueueRestPr
 ```php
 require_once 'vendor/autoload.php';
 
-use MicrosoftAzure\Storage\Common\ServicesBuilder;
-use MicrosoftAzure\Storage\Common\ServiceException;
+use MicrosoftAzure\Storage\Queue\QueueRestProxy;
+use MicrosoftAzure\Storage\Common\Exceptions\ServiceException;
 
 $connectionString = "DefaultEndpointsProtocol=http;AccountName=<accountNameHere>;AccountKey=<accountKeyHere>";
 
 // Create queue REST proxy.
-$queueRestProxy = ServicesBuilder::getInstance()->createQueueService($connectionString);
+$queueClient = QueueRestProxy::createQueueService($connectionString);
 
 try    {
     // Get queue metadata.
-    $queue_metadata = $queueRestProxy->getQueueMetadata("myqueue");
+    $queue_metadata = $queueClient->getQueueMetadata("myqueue");
     $approx_msg_count = $queue_metadata->getApproximateMessageCount();
 }
 catch(ServiceException $e){
@@ -376,17 +392,17 @@ Egy üzenetsor és a benne lévő összes üzenet törléséhez hívja meg a **Q
 ```php
 require_once 'vendor/autoload.php';
 
-use MicrosoftAzure\Storage\Common\ServicesBuilder;
-use MicrosoftAzure\Storage\Common\ServiceException;
+use MicrosoftAzure\Storage\Queue\QueueRestProxy;
+use MicrosoftAzure\Storage\Common\Exceptions\ServiceException;
 
 $connectionString = "DefaultEndpointsProtocol=http;AccountName=<accountNameHere>;AccountKey=<accountKeyHere>";
 
 // Create queue REST proxy.
-$queueRestProxy = ServicesBuilder::getInstance()->createQueueService($connectionString);
+$queueClient = QueueRestProxy::createQueueService($connectionString);
 
 try    {
     // Delete queue.
-    $queueRestProxy->deleteQueue("myqueue");
+    $queueClient->deleteQueue("myqueue");
 }
 catch(ServiceException $e){
     // Handle exception based on error codes and messages.
@@ -398,7 +414,7 @@ catch(ServiceException $e){
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy megismerte az Azure Queue storage alapjait, az alábbi hivatkozásokból tájékozódhat az összetettebb tárolási feladatok elvégzéséről:
 
 * Látogasson el a [Azure Storage PHP ügyféloldali kódtár API-referencia](http://azure.github.io/azure-storage-php/)
@@ -409,4 +425,5 @@ További információ: a [PHP fejlesztői központ](/develop/php/).
 [download]: https://github.com/Azure/azure-storage-php
 [require_once]: http://www.php.net/manual/en/function.require-once.php
 [Azure Portal]: https://portal.azure.com
+[composer-phar]: http://getcomposer.org/composer.phar
 

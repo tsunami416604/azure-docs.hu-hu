@@ -12,13 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 01/11/2018
 ms.author: tamram
-ms.openlocfilehash: 9de2f7e81d75669267fe6448030c118d06b3f88a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6bc7fd799eddca14e728f965601acd244d88870c
+ms.sourcegitcommit: a0d2423f1f277516ab2a15fe26afbc3db2f66e33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="how-to-use-blob-storage-from-php"></a>Php-ből a blob storage használata
 [!INCLUDE [storage-selector-blob-include](../../../includes/storage-selector-blob-include.md)]
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="overview"></a>Áttekintés
 Az Azure Blob Storage egy olyan szolgáltatás, amely a strukturálatlan adatokat objektumként/blobként tárolja a felhőben. A Blob Storage képes tárolni bármilyen szöveget vagy bináris adatot, például dokumentumot, médiafájlt vagy egy alkalmazástelepítőt. A Blob Storage más néven objektumtárnak is hívható.
 
-Ez az útmutató bemutatja, hogyan hajthat végre a szolgáltatást az Azure blob szolgáltatást használó általános forgatókönyvhöz. A mintákat a PHP és -felhasználási nyelven íródtak a [Azure Storage ügyféloldali kódtára a PHP][download]. Az ismertetett forgatókönyvek **feltöltése**, **felsoroló**, **letöltése**, és **törlése** blobokat. A blobok további információkért lásd: a [további lépések](#next-steps) szakasz.
+Ez az útmutató bemutatja, hogyan hajthat végre a szolgáltatást az Azure blob szolgáltatást használó általános forgatókönyvhöz. A mintákat a PHP és -felhasználási nyelven íródtak a [Azure Storage Blob ügyféloldali kódtára a PHP][download]. Az ismertetett forgatókönyvek **feltöltése**, **felsoroló**, **letöltése**, és **törlése** blobokat. A blobok további információkért lásd: a [további lépések](#next-steps) szakasz.
 
 [!INCLUDE [storage-blob-concepts-include](../../../includes/storage-blob-concepts-include.md)]
 
@@ -40,7 +40,24 @@ Egyetlen követelménye a PHP-alkalmazások létrehozása, amely hozzáfér az A
 Ebben az útmutatóban a Blob storage szolgáltatásainak, helyben vagy egy Azure webes szerepkörről, a feldolgozói szerepkör vagy a webhely belül futó PHP-alkalmazások belül néven használja.
 
 ## <a name="get-the-azure-client-libraries"></a>Az Azure Ügyfélkódtárai beolvasása
-[!INCLUDE [get-client-libraries](../../../includes/get-client-libraries.md)]
+### <a name="install-via-composer"></a>Keresztül szerkesztő telepítése
+1. Hozzon létre egy fájlt **composer.json** a projekt gyökérkönyvtárában, és az alábbi kód felvétele:
+   
+    ```json
+    {
+      "require": {
+        "microsoft/azure-storage-blob": "*"
+      }
+    }
+    ```
+2. Töltse le  **[composer.phar] [ composer-phar]**  a projekt gyökérkönyvtárában.
+3. Nyisson meg egy parancssort, és hajtsa végre a következő parancsot a projekt gyökérkönyvtárában
+   
+    ```
+    php composer.phar install
+    ```
+
+Másik lehetőségként keresse fel a [Azure Storage PHP ügyféloldali kódtár] [ download] a Githubon a forráskód klónozását.
 
 ## <a name="configure-your-application-to-access-the-blob-service"></a>Állítsa be az alkalmazását, a blob szolgáltatás eléréséhez
 Az Azure blob szolgáltatás API-kat használ, meg kell:
@@ -48,11 +65,11 @@ Az Azure blob szolgáltatás API-kat használ, meg kell:
 1. A robotot fájl használatával hivatkozik a [require_once] utasítást, és
 2. Bármely osztályok segítségével lehet hivatkozni.
 
-A következő példa bemutatja, hogyan a robotot fájl és a hivatkozás a **ServicesBuilder** osztály.
+A következő példa bemutatja, hogyan a robotot fájl és a hivatkozás a **BlobRestProxy** osztály.
 
 ```php
 require_once 'vendor/autoload.php';
-use MicrosoftAzure\Storage\Common\ServicesBuilder;
+use MicrosoftAzure\Storage\Blob\BlobRestProxy;
 ```
 
 Az alábbi példákban a `require_once` utasítás mindig megjelenik, de csak a szükséges végrehajtandó például osztályok hivatkozott.
@@ -72,7 +89,7 @@ A storage emulator eléréséhez:
 UseDevelopmentStorage=true
 ```
 
-Bármely Azure szolgáltatás ügyfele létrehozásához kell használnia a **ServicesBuilder** osztály. A következőket teheti:
+Egy Azure Blob szolgáltatásügyfél létrehozásához kell használnia a **BlobRestProxy** osztály. A következőket teheti:
 
 * a kapcsolati karakterláncot adja át a közvetlenül vagy
 * A webalkalmazás környezeti változók segítségével tárolja a kapcsolati karakterláncot. Lásd: [Azure webalkalmazás-konfigurációs beállítások](../../app-service/web-sites-configure.md) dokumentumában kapcsolati karakterláncok konfigurálása.
@@ -82,11 +99,12 @@ Az itt leírt példák a kapcsolati karakterlánc közvetlenül át.
 ```php
 require_once 'vendor/autoload.php';
 
-use MicrosoftAzure\Storage\Common\ServicesBuilder;
+use MicrosoftAzure\Storage\Blob\BlobRestProxy;
+use MicrosoftAzure\Storage\Common\Exceptions\ServiceException;
 
 $connectionString = "DefaultEndpointsProtocol=http;AccountName=<accountNameHere>;AccountKey=<accountKeyHere>";
 
-$blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
+$blobClient = BlobRestProxy::createBlobService($connectionString);
 ```
 
 ## <a name="create-a-container"></a>Tároló létrehozása
@@ -97,15 +115,15 @@ A **BlobRestProxy** objektum lehetővé teszi, hogy a blob tárolókat hozhat l�
 ```php
 require_once 'vendor\autoload.php';
 
-use MicrosoftAzure\Storage\Common\ServicesBuilder;
+use MicrosoftAzure\Storage\Blob\BlobRestProxy;
+use MicrosoftAzure\Storage\Common\Exceptions\ServiceException;
 use MicrosoftAzure\Storage\Blob\Models\CreateContainerOptions;
 use MicrosoftAzure\Storage\Blob\Models\PublicAccessType;
-use MicrosoftAzure\Storage\Common\ServiceException;
 
 $connectionString = "DefaultEndpointsProtocol=http;AccountName=<accountNameHere>;AccountKey=<accountKeyHere>";
 
-// Create blob REST proxy.
-$blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
+// Create blob client.
+$blobClient = BlobRestProxy::createBlobService($connectionString);
 
 
 // OPTIONAL: Set public access policy and metadata.
@@ -134,7 +152,7 @@ $createContainerOptions->addMetaData("key2", "value2");
 
 try    {
     // Create container.
-    $blobRestProxy->createContainer("mycontainer", $createContainerOptions);
+    $blobClient->createContainer("mycontainer", $createContainerOptions);
 }
 catch(ServiceException $e){
     // Handle exception based on error codes and messages.
@@ -156,20 +174,20 @@ Feltölteni a fájlt egy blobba, használja a **BlobRestProxy -> createBlockBlob
 ```php
 require_once 'vendor/autoload.php';
 
-use MicrosoftAzure\Storage\Common\ServicesBuilder;
-use MicrosoftAzure\Storage\Common\ServiceException;
+use MicrosoftAzure\Storage\Blob\BlobRestProxy;
+use MicrosoftAzure\Storage\Common\Exceptions\ServiceException;
 
 $connectionString = "DefaultEndpointsProtocol=http;AccountName=<accountNameHere>;AccountKey=<accountKeyHere>";
 
 // Create blob REST proxy.
-$blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
+$blobClient = BlobRestProxy::createBlobService($connectionString);
 
 $content = fopen("c:\myfile.txt", "r");
 $blob_name = "myblob";
 
 try    {
     //Upload blob
-    $blobRestProxy->createBlockBlob("mycontainer", $blob_name, $content);
+    $blobClient->createBlockBlob("mycontainer", $blob_name, $content);
 }
 catch(ServiceException $e){
     // Handle exception based on error codes and messages.
@@ -189,15 +207,15 @@ A tárolóban lévő blobok listázásához, használja a **BlobRestProxy -> lis
 ```php
 require_once 'vendor/autoload.php';
 
-use MicrosoftAzure\Storage\Common\ServicesBuilder;
-use MicrosoftAzure\Storage\Common\ServiceException;
+use MicrosoftAzure\Storage\Blob\BlobRestProxy;
+use MicrosoftAzure\Storage\Common\Exceptions\ServiceException;
 
 // Create blob REST proxy.
-$blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
+$blobClient = BlobRestProxy::createBlobService($connectionString);
 
 try    {
     // List blobs.
-    $blob_list = $blobRestProxy->listBlobs("mycontainer");
+    $blob_list = $blobClient->listBlobs("mycontainer");
     $blobs = $blob_list->getBlobs();
 
     foreach($blobs as $blob)
@@ -221,16 +239,16 @@ Töltse le a blob, hívja meg a **BlobRestProxy getBlob ->** módszer, majd hív
 ```php
 require_once 'vendor/autoload.php';
 
-use MicrosoftAzure\Storage\Common\ServicesBuilder;
-use MicrosoftAzure\Storage\Common\ServiceException;
+use MicrosoftAzure\Storage\Blob\BlobRestProxy;
+use MicrosoftAzure\Storage\Common\Exceptions\ServiceException;
 
 // Create blob REST proxy.
-$blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
+$blobClient = BlobRestProxy::createBlobService($connectionString);
 
 
 try    {
     // Get blob.
-    $blob = $blobRestProxy->getBlob("mycontainer", "myblob");
+    $blob = $blobClient->getBlob("mycontainer", "myblob");
     fpassthru($blob->getContentStream());
 }
 catch(ServiceException $e){
@@ -251,15 +269,15 @@ Blobok törléséhez, adja át a tároló és a blob neve **BlobRestProxy -> del
 ```php
 require_once 'vendor/autoload.php';
 
-use MicrosoftAzure\Storage\Common\ServicesBuilder;
-use MicrosoftAzure\Storage\Common\ServiceException;
+use MicrosoftAzure\Storage\Blob\BlobRestProxy;
+use MicrosoftAzure\Storage\Common\Exceptions\ServiceException;
 
 // Create blob REST proxy.
-$blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
+$blobClient = BlobRestProxy::createBlobService($connectionString);
 
 try    {
     // Delete blob.
-    $blobRestProxy->deleteBlob("mycontainer", "myblob");
+    $blobClient->deleteBlob("mycontainer", "myblob");
 }
 catch(ServiceException $e){
     // Handle exception based on error codes and messages.
@@ -277,15 +295,15 @@ Végül egy blob-tároló törlése, a tároló nevét át **BlobRestProxy -> de
 ```php
 require_once 'vendor/autoload.php';
 
-use MicrosoftAzure\Storage\Common\ServicesBuilder;
-use MicrosoftAzure\Storage\Common\ServiceException;
+use MicrosoftAzure\Storage\Blob\BlobRestProxy;
+use MicrosoftAzure\Storage\Common\Exceptions\ServiceException;
 
 // Create blob REST proxy.
-$blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
+$blobClient = BlobRestProxy::createBlobService($connectionString);
 
 try    {
     // Delete container.
-    $blobRestProxy->deleteContainer("mycontainer");
+    $blobClient->deleteContainer("mycontainer");
 }
 catch(ServiceException $e){
     // Handle exception based on error codes and messages.
@@ -297,13 +315,11 @@ catch(ServiceException $e){
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy megismerte az Azure blob szolgáltatás alapjait, az alábbi hivatkozásokból tájékozódhat az összetettebb tárolási feladatok elvégzéséről.
 
 * Látogasson el a [Azure Storage PHP ügyféloldali kódtár API-referencia](http://azure.github.io/azure-storage-php/)
 * Tekintse meg a [speciális Blob példa](https://github.com/Azure/azure-storage-php/blob/master/samples/BlobSamples.php).
-
-További információ: a [PHP fejlesztői központ](/develop/php/).
 
 [download]: https://github.com/Azure/azure-storage-php
 [container-acl]: http://msdn.microsoft.com/library/azure/dd179391.aspx
@@ -312,3 +328,5 @@ További információ: a [PHP fejlesztői központ](/develop/php/).
 [require_once]: http://php.net/require_once
 [fopen]: http://www.php.net/fopen
 [stream-get-contents]: http://www.php.net/stream_get_contents
+[install-git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
+[composer-phar]: http://getcomposer.org/composer.phar
