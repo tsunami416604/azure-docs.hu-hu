@@ -10,11 +10,11 @@ ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 12/7/2017
 ms.author: v-ruogun
-ms.openlocfilehash: 30cda1997ca93f237dafd34cfffc2a86b86d6c7c
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 3b0bc01047b9aa7459cf6cc33f004cf7506e5826
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/12/2018
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-ruby"></a>Objektumok továbbítása Azure Blob-tárolókra és -tárolókról a Ruby használatával
 A rövid útmutató azt ismerteti, hogyan használható a Ruby blokkblobok feltöltésére, letöltésére és listázására egy, az Azure Blob Storage-ban található tárolóban. 
@@ -23,7 +23,7 @@ A rövid útmutató azt ismerteti, hogyan használható a Ruby blokkblobok felt�
 
 A gyorsútmutató elvégzéséhez: 
 * Telepítse a [Rubyt](https://www.ruby-lang.org/en/downloads/)
-* Telepítse a [Rubyhoz készült Azure Storage-kódtárat](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-ruby-how-to-use-blob-storage#configure-your-application-to-access-storage) a rubygem csomag használatával. 
+* Telepítse a [Rubyhoz készült Azure Storage-kódtárat](https://docs.microsoft.com/azure/storage/blobs/storage-ruby-how-to-use-blob-storage#configure-your-application-to-access-storage) a rubygem csomag használatával. 
 
 ```
 gem install azure-storage
@@ -170,7 +170,7 @@ File.delete(full_path_to_file)
 File.delete(full_path_to_file2)    
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
  
 Ennek a rövid útmutatónak a segítségével megtanulta, hogyan vihetők át fájlok egy helyi lemez és az Azure Blob Storage között a Ruby használatával. Ha bővebb információra van szüksége a Blob Storage használatával kapcsolatban, lépjen tovább a Blob Storage használati útmutatójára.
 

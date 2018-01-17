@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 01/02/2018
+ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 29153180da576f144a3f21718c3044b7b843eafb
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.openlocfilehash: c7fff37e1b59fd90952826a1410a8dd8c6931e77
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="azure-cosmos-db-build-a-net-framework-or-core-application-using-the-graph-api"></a>Azure Cosmos DB: .NET-keretrendszer vagy Core-alkalmazás létrehozása a Graph API használatával
 
@@ -65,7 +65,7 @@ A mintaprojekt a .NET Core projektformátumot használja, és úgy lett beállí
 
 Tekintsük át, hogy mi történik az alkalmazásban. Nyissa meg a Program.cs fájlt: az itt található kódsorok hozzák létre az Azure Cosmos DB erőforrásokat. 
 
-* A DocumentClient inicializálva van. Az előzetes verzióban hozzáadtunk egy gráfbővítmény API-t az Azure Cosmos DB-ügyfélhez. Jelenleg egy különálló gráfügyfélen dolgozunk, amely az Azure Cosmos DB-ügyféltől és annak erőforrásaitól függetlenül működik.
+* A DocumentClient inicializálva van. 
 
     ```csharp
     using (DocumentClient client = new DocumentClient(
@@ -122,17 +122,11 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
 
     `"endpoint": "https://testgraphacct.documents.azure.com:443/",`
 
-3. Ha a gráfadatbázis-fiókot 2017. november 27. előtt hozta létre, módosítsa az `endpoint` értékét `documents` helyett `graphs`ra. Ha a gráfadatbázis-fiókot 2017. november 27-én vagy később hozta létre, módosítsa az `endpoint` értékét `documents` helyett a következőre: `gremlin.cosmosdb`.
-
-    A végpontértéknek most így kell kinéznie:
-
-    `"endpoint": "https://testgraphacct.graphs.azure.com:443/",` vagy `"endpoint": "https://testgraphacct.gremlin.cosmosdb.azure.com:443/",`
-
-4. Másolja az **ELSŐDLEGES KULCS** értékét a portálról, és adja meg az App.config fájl AuthKey kulcsaként, majd mentse a módosításokat. 
+3. Másolja az **ELSŐDLEGES KULCS** értékét a portálról, és adja meg az App.config fájl AuthKey kulcsaként, majd mentse a módosításokat. 
 
     `"authkey": "FILLME"`
 
-5. Mentse az appsettings.json fájlt. 
+4. Mentse az appsettings.json fájlt. 
 
 Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. 
 

@@ -6,14 +6,14 @@ keywords: "dsc, konfigurálás, automatizálás"
 author: KrisBash
 ms.author: krbash
 ms.date: 12/17/2017
-ms.topic: hero-article
+ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: e9e75f1714217f452d55aba49929fec767df3353
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.openlocfilehash: 7f35acc0d8d553a3f5d1576ae18cbafd1dcbb225
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="configure-a-linux-virtual-machine-with-desired-state-configuration"></a>Konfigurálás Linux rendszerű virtuális gépen a Desired State Configurationnel
 
@@ -31,7 +31,7 @@ A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 Jelentkezzen be az Azure-ba a https://portal.azure.com címen
 
 ## <a name="onboard-a-virtual-machine"></a>Virtuális gép előkészítése
-Különböző módszerekkel készíthetők elő a gépek és engedélyezhető a Desired State Configuration. Ez a rövid útmutató az Automation-fiókon keresztüli előkészítést részletezi. A gépek Desired State Configurationnel való előkészítésének módszereiről az [előkészítéssel](https://docs.microsoft.com/en-us/azure/automation/automation-dsc-onboarding) foglalkozó cikkben talál további információkat.
+Különböző módszerekkel készíthetők elő a gépek és engedélyezhető a Desired State Configuration. Ez a rövid útmutató az Automation-fiókon keresztüli előkészítést részletezi. A gépek Desired State Configurationnel való előkészítésének módszereiről az [előkészítéssel](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding) foglalkozó cikkben talál további információkat.
 
 1. Az Azure Portal bal oldali panelén válassza az **Automation-fiókok** elemet. Ha nem látja ezt az elemet a bal oldali panelen, kattintson a **Minden szolgáltatás** elemre, és keressen rá az eredményül kapott nézetben.
 1. Válasszon egy Automation-fiókot a listában.
@@ -39,7 +39,7 @@ Különböző módszerekkel készíthetők elő a gépek és engedélyezhető a 
 1. Kattintson az **Azure-beli virtuális gép hozzáadása** menüelemére.
 1. Keresse meg azt a virtuális gépet, amelyhez engedélyezni szeretné a DSC-t. A keresőmező és a szűrési lehetőségek használatával kereshet meg egy adott virtuális gépet.
 1. Kattintson a virtuális gépre, majd válassza a **Csatlakozás** elemet.
-1. Válassza ki a virtuális géphez megfelelő DSC-beállításokat. Ha már előkészített egy konfigurációt, megadhatja azt a *Csomópont-konfiguráció neveként*. Beállíthatja a [konfigurációs módot](https://docs.microsoft.com/en-us/powershell/dsc/metaconfig) a gép konfigurációs viselkedésének vezérléséhez.
+1. Válassza ki a virtuális géphez megfelelő DSC-beállításokat. Ha már előkészített egy konfigurációt, megadhatja azt a *Csomópont-konfiguráció neveként*. Beállíthatja a [konfigurációs módot](https://docs.microsoft.com/powershell/dsc/metaconfig) a gép konfigurációs viselkedésének vezérléséhez.
 1. Kattintson az **OK** gombra
 
 ![Azure-beli virtuális gép előkészítése a DSC-hez](./media/automation-quickstart-dsc-configuration/dsc-onboard-azure-vm.png)
@@ -105,7 +105,7 @@ A konfiguráció importálása:
 
 ## <a name="compile-a-configuration"></a>Konfiguráció fordítása
 
-A DSC-konfigurációkat csomópont-konfigurációvá (MOF-dokumentummá) kell fordítani, mielőtt csomóponthoz lehetne rendelni azokat. A fordítás érvényesíti a konfigurációt, és lehetővé teszi a paraméterértékek bevitelét. A konfigurációk fordításáról további információ: [Konfigurációk fordítása az Azure Automation DSC-ben](https://docs.microsoft.com/en-us/azure/automation/automation-dsc-compile)
+A DSC-konfigurációkat csomópont-konfigurációvá (MOF-dokumentummá) kell fordítani, mielőtt csomóponthoz lehetne rendelni azokat. A fordítás érvényesíti a konfigurációt, és lehetővé teszi a paraméterértékek bevitelét. A konfigurációk fordításáról további információ: [Konfigurációk fordítása az Azure Automation DSC-ben](https://docs.microsoft.com/azure/automation/automation-dsc-compile)
 
 Konfiguráció fordítása:
 
@@ -141,6 +141,6 @@ Ebben a rövid útmutatóban előkészített egy Linux rendszerű virtuális gé
 > [!div class="nextstepaction"]
 > [Folyamatos üzembe helyezés virtuális gépre a DSC és a Chocolatey használatával](./automation-dsc-cd-chocolatey.md)
 
-* A PowerShell Desired State Configurationről további információkért lásd: [A PowerShell célállapot-konfiguráló áttekintése](https://docs.microsoft.com/en-us/powershell/dsc/overview).
-* Az Automation DSC PowerShellről való kezeléséről további információkért lásd: [Azure PowerShell](https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/?view=azurermps-5.0.0)
-* A jelentéskészítés és a riasztás érdekében a DSC-jelentések Log Analyticsnek való továbbításáról további információkért lásd: [DSC-jelentések továbbítása a Log Analyticsnek](https://docs.microsoft.com/en-us/azure/automation/automation-dsc-diagnostics) 
+* A PowerShell Desired State Configurationről további információkért lásd: [A PowerShell célállapot-konfiguráló áttekintése](https://docs.microsoft.com/powershell/dsc/overview).
+* Az Automation DSC PowerShellről való kezeléséről további információkért lásd: [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.automation/?view=azurermps-5.0.0)
+* A jelentéskészítés és a riasztás érdekében a DSC-jelentések Log Analyticsnek való továbbításáról további információkért lásd: [DSC-jelentések továbbítása a Log Analyticsnek](https://docs.microsoft.com/azure/automation/automation-dsc-diagnostics) 
