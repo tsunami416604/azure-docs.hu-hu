@@ -4,7 +4,7 @@ description: "HTTP-kérések és REST API-hívások küldése az Azure Searchbe 
 services: search
 documentationcenter: 
 author: HeidiSteen
-manager: jhubbard
+manager: cgronlun
 editor: 
 ms.assetid: 
 ms.service: search
@@ -12,17 +12,17 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 10/17/2017
+ms.date: 01/04/2018
 ms.author: heidist
-ms.openlocfilehash: d8da3f02fab90e0c690e320736409a4d113d634c
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: a9a6bc035ba9f02057e3086a9682b54282da19f3
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="explore-azure-search-rest-apis-using-fiddler-or-postman"></a>Az Azure Search REST API-k vizsgálata a Fiddlerrel vagy a Postmannel
 
-Az [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice) vizsgálatának egyik legegyszerűbb módja a HTTP-kérések összeállítása a Fiddler vagy a Postman használatával, majd a válaszok megvizsgálása. Ebben a cikkben kód írása nélkül kísérletezhet a kérések és válaszok hasznos adataival.
+Az [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice) vizsgálatának egyik legegyszerűbb módja a HTTP-kérések összeállítása a Fiddler vagy a Postman használatával, majd a válaszok megvizsgálása. A megfelelő eszközökkel, ezeket az útmutatásokat követve már azelőtt küldhet kéréseket, és megtekintheti a válaszokat, hogy akár egyetlen sornyi kódot is írna.
 
 > [!div class="checklist"]
 > * Webes API tesztelési eszköz letöltése
@@ -253,7 +253,7 @@ További információk erről az API-ról: [Indexstatisztikák lekérdezése (RE
 
 A Fiddlerben kattintson az **Inspectors** (Vizsgálók), majd a **Headers** (Fejlécek) fülre, végül válassza ki a JSON formátumot. Ekkor megjelenik a dokumentumok száma és a tárhely mérete (KB).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A REST-ügyfelek rendkívül hasznosak a rögtönzött vizsgálatokhoz, most azonban, hogy már ismeri a REST API-k működését, folytathatja a kódolást. A következő lépésekért lásd az alábbi hivatkozásokat:
 

@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 11/01/2017
+ms.date: 01/05/2018
 ms.author: ashmaka
-ms.openlocfilehash: ebf7319f0017b4adef25fe5840864e002c88fea7
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 8394475572502df9d57256dc5123fcdfa72765a6
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/13/2018
 ---
-# <a name="data-import-in-azure-search"></a>Adatok importálása az Azure Searchben
+# <a name="indexing-in-azure-search"></a>Indexelés az Azure Search szolgáltatásban
 > [!div class="op_single_selector"]
 > * [Áttekintés](search-what-is-data-import.md)
 > * [.NET](search-import-data-dotnet.md)
@@ -72,7 +72,7 @@ A dokumentumfeltöltés előzetes gyors ellenőrzésére használhatja a portál
 > [!TIP]
 > Számos [Azure Search kódminta](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search) tartalmaz beágyazott vagy használatra kész adatkészleteket, így segítséget nyújt az első lépésekhez. A portál emellett egy mintaindexelőt és egy adatforrást is kínál, amely egy kisméretű ingatlan-adatkészletet tartalmaz („realestate-us-sample” néven). Amikor futtatja az előre konfigurált indexelőt a mintaadatforráson, a rendszer egy indexet hoz létre, és feltölti dokumentumokkal, amelyek a Keresési ablakban vagy egy erre írt kóddal lekérdezhetők.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 + [Az indexelő áttekintése](search-indexer-overview.md)
 + [Útmutató a Portal használatához: indexek létrehozása, betöltése és lekérdezése](search-get-started-portal.md)
