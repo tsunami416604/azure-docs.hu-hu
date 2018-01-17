@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 09/28/2017
+ms.date: 01/11/2018
 ms.author: asaxton
-ms.openlocfilehash: b32b06e9d6cbaacdfbdfe92e2c72cb6763c9eb52
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 79ec87ad7d7dc4a4dc003e4163c8e609c828f545
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="get-started-with-microsoft-power-bi-embedded"></a>A Mcirosoft Power BI Embedded bemutatása
 
@@ -47,9 +47,12 @@ Az első lépések megtételét különböző minták segítik, lásd az [irány
 
 Hozzon létre Power BI Embedded-kapacitásokat a Microsoft Azure-ban, hogy az alkalmazást áthelyezhesse az éles környezetbe. A kapacitások létrehozásával kapcsolatos információkért lásd a [Power BI Embedded-kapacitások Azure Portalon történő létrehozásával](create-capacity.md) foglalkozó témakört.
 
+> [!IMPORTANT]
+> Mivel a beágyazási jogkivonatok csak fejlesztési tesztelésre vannak szánva, a Power BI-főfiókok által létrehozható beágyazási jogkivonatok száma korlátozott. Beágyazási forgatókönyvek létrehozásához [kapacitást kell vásárolni](https://docs.microsoft.com/power-bi/developer/embedded-faq#technical). Ha vásárol kapacitást, semmi nem korlátozza a beágyazási jogkivonatok létrehozását.
+
 A kapacitásokat a Power BI felügyeleti portálján kezelheti. Nevezzen ki egy munkaterület-kijelölőt, aki segít az alkalmazás munkaterületeinek kezelésében. További információkért lásd: [Kapacitások kezelése a Power BI Premium és a Power BI Embedded szolgáltatásban](https://powerbi.microsoft.com/documentation/powerbi-admin-premium-manage/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha kész létrehozni a Power BI Embedded-kapacitásokat, lásd: [Power BI Embedded-kapacitások létrehozása az Azure Portalon](create-capacity.md).
 

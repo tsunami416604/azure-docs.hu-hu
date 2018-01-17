@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/10/2017
 ms.author: tamram
-ms.openlocfilehash: ff0f6446b51c4549e5a367b5b767d4777a1d946d
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: e0da76d1c99de94762a54f552e49f7ee75eba26f
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="introduction-to-microsoft-azure-storage"></a>A Microsoft Azure Storage bemutatása
 
@@ -35,9 +35,7 @@ Ebben a cikkben megismerkedhet a következőkkel:
 * az adatok a tárolóba vagy a tárolóból való áthelyezése,
 * valamint a számos elérhető Storage ügyfélkódtár.
 
-Az Azure Storage gyors üzembe helyezésével kapcsolatban tekintse meg az alábbi rövid útmutatókat:
-* [Storage-fiók létrehozása a PowerShell-lel](storage-quickstart-create-storage-account-powershell.md)
-* [Storage-fiók létrehozása a CLI-vel](storage-quickstart-create-storage-account-cli.md)
+Az Azure Storage gyors üzembe helyezéséhez lásd a [tárfiók létrehozásával](storage-quickstart-create-account.md) foglalkozó témakört.
 
 ## <a name="introducing-the-azure-storage-services"></a>Az Azure Storage szolgáltatásainak bemutatása
 
@@ -213,15 +211,13 @@ Az Azure Storage-erőforrások bármely olyan nyelvvel hozzáférhetők, amelyek
 * [Storage-parancsmagok a PowerShellhez](/powershell/module/azure.storage/?view=azurermps-4.1.0&viewFallbackFrom=azurermps-4.0.0)
 * [Storage-parancsok a CLI 2.0-hoz](/cli/azure/storage)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [További tudnivalók a Blob Storage-ról](../blobs/storage-blobs-introduction.md)
 * [További tudnivalók a File Storage-ról](../storage-files-introduction.md)
 * [További tudnivalók a Queue Storage-ról](../queues/storage-queues-introduction.md)
 
-Az Azure Storage gyors üzembe helyezésével kapcsolatban tekintse meg az alábbi rövid útmutatókat:
-* [Storage-fiók létrehozása a PowerShell-lel](storage-quickstart-create-storage-account-powershell.md)
-* [Storage-fiók létrehozása a CLI-vel](storage-quickstart-create-storage-account-cli.md)
+Az Azure Storage gyors üzembe helyezéséhez lásd a [tárfiók létrehozásával](storage-quickstart-create-account.md) foglalkozó témakört.
 
 <!-- FIGURE OUT WHAT TO DO WITH ALL THESE LINKS.
 

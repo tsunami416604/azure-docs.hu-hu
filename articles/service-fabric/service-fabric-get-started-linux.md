@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 9/19/2017
+ms.date: 1/5/2018
 ms.author: subramar
-ms.openlocfilehash: c77e357d56fc246de4e0e9af697e770c876d1d78
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 3c59ad25294fe88f6145b6e55bb498cd958dbca2
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>A fejlesztőkörnyezet előkészítése Linuxon
 > [!div class="op_single_selector"]
@@ -128,6 +128,10 @@ sudo apt-get install servicefabricsdkcommon
   > Az önálló fürtök Linuxon nem támogatottak.
   >
 
+
+>   [!TIP]
+    Ha van kéznél egy SSD lemez, az igazán kiváló teljesítmény érdekében érdemes egy SSD-könyvtárútvonalat továbbítani a `--clusterdataroot` és a devclustersetup.sh használatával.
+
 ## <a name="set-up-the-service-fabric-cli"></a>A Service Fabric parancssori felület beállítása
 
 A [Service Fabric parancssori felület](service-fabric-cli.md) a Service Fabric-entitásokkal, többek között fürtökkel és alkalmazásokkal folytatott interakcióra szolgáló parancsokat is tartalmaz.
@@ -180,7 +184,7 @@ A Service Fabric Eclipse beépülő modulját a Java-fejlesztőknek készült Ec
 
 3. A **Work with** (Használat) mezőbe írja be a **http://dl.microsoft.com/eclipse** címet.
 
-4. Kattintson az **Add** (Hozzáadás) parancsra.
+4. Kattintson a **Hozzáadás** parancsra.
 
     ![Az Available Software (Elérhető szoftver) oldal][sf-eclipse-plugin]
 
@@ -215,7 +219,7 @@ sudo npm uninstall generator-azuresfguest
 sudo apt-get install -f
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az első Service Fabric Java-alkalmazás létrehozása és üzembe helyezése Linux rendszeren Yeoman használatával](service-fabric-create-your-first-linux-application-with-java.md)
 * [Az első Service Fabric Java-alkalmazás létrehozása és üzembe helyezése Linux rendszeren az Eclipse Service Fabric beépülő modul használatával](service-fabric-get-started-eclipse.md)

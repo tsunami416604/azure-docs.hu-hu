@@ -16,11 +16,11 @@ ms.date: 12/12/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 4f5275584d75c88ce3ef5b607f315f3b425d2c3f
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: e063e6a46b6b99c4bbe749347e6887a930adb882
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="how-to-associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Azure-előfizetés társítása vagy hozzáadása az Azure Active Directoryhoz
 
@@ -46,7 +46,7 @@ Minden felhasználó egyetlen saját címtárral rendelkezik, amely hitelesíti 
 
     ![A Címtár módosítása felhasználói felület képernyőképe](./media/active-directory-how-subscriptions-associated-directory/edit-directory-ui.PNG)
 5. Kattintson a **Módosítás** elemre.
-6. Sikerült! A címtárváltóval lépjen az új címtárra.
+6. Sikerült! A címtárváltóval lépjen az új címtárra. Akár 10 percig is eltarthat, amíg minden megfelelően megjelenik.
 
     ![A sikeres címtármódosítást jelző értesítés képernyőképe](./media/active-directory-how-subscriptions-associated-directory/edit-directory-success.PNG)
 
@@ -55,7 +55,7 @@ Minden felhasználó egyetlen saját címtárral rendelkezik, amely hitelesíti 
 
 Az előfizetés címtárának módosítása szolgáltatásszintű művelet. Ez nincs hatással az előfizetés számlázási tulajdonjogára, és a fiók rendszergazdája továbbra is módosíthatja a szolgáltatás rendszergazdáját a [Fiókközpontban](https://account.azure.com/subscriptions). Ha törölni kívánja az eredeti címtárat, át kell adnia az előfizetés számlázási tulajdonjogát egy új fiókrendszergazdának. További információ a számlázási tulajdonjog átadásáról: [Azure-előfizetés tulajdonjogának átruházása másik fiókra](../billing/billing-subscription-transfer.md). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ új Azure AD-címtár ingyenes létrehozásáról: [Azure Active Directory-bérlő beszerzése](develop/active-directory-howto-tenant.md)
 * További információ az Azure-előfizetések számlázási tulajdonjogának átadásáról: [Azure-előfizetés tulajdonjogának átruházása másik fiókra](../billing/billing-subscription-transfer.md)

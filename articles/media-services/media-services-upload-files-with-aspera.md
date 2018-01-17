@@ -1,6 +1,6 @@
 ---
 title: "Fájlok feltöltése Azure Media Services-fiókba az Aspera használatával | Microsoft Docs"
-description: "Ez az oktatóanyag végigvezeti azokon a lépéseken, amelyek segítségével fájlokat tölthet fel egy Media Services-fiókhoz társított tárfiókba az Azure **Aspera Server On Demand** szolgáltatásával."
+description: "Ez az oktatóanyag végigvezeti azon lépéseken, amelyek segítségével fájlokat tölthet fel egy Media Services-fiókhoz társított tárfiókba az Azure **Aspera Server On Demand** szolgáltatásával."
 services: media-services
 documentationcenter: 
 author: johndeu
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/17/2017
 ms.author: juliako
-ms.openlocfilehash: e3090da9b2c5b8f99545a1f7f9601bfd8d5221f1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 707d5db04d66760a12d0c947c8a86347fd0c73d9
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="upload-files-into-a-media-services-account-using-the-aspera-server-on-demand-service-on-azure"></a>Fájlok feltöltése Media Services-fiókba az Azure Aspera Server On Demand szolgáltatásával
 
@@ -33,7 +33,7 @@ Ez az oktatóanyag végigvezeti azon lépéseken, amelyek segítségével fájlo
 [Itt](https://github.com/Azure-Samples/media-services-dotnet-functions-integration/tree/master/103-aspera-ingest) találhat egy példát, amely bemutatja az Azure Functions, valamint az Aspera és a Media Services együttes használatát.
 
 >[!NOTE]
->Az Azure Media Services médiafeldolgozókkal (MP-k) feldolgozható maximális támogatott fájlméret korlátozva van. A fájlméretre vonatkozó korlátozással kapcsolatban további információt [ebben](media-services-quotas-and-limitations.md) a témakörben talál.
+>Az Azure Media Services médiafeldolgozókkal (MP-k) feldolgozható maximális támogatott fájlméret korlátozva van. A fájlméretre vonatkozó korlátozással kapcsolatban további információt [ebben](media-services-quotas-and-limitations.md) a cikkben talál.
 >
 
 ## <a name="prerequisites"></a>Előfeltételek 
@@ -56,7 +56,7 @@ Ha bejelentkezett az Azure Marketplace-re, hajtsa végre ezeket az alapvető lé
 
    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera002.png)
 
-3. Adja meg a Server on Demand-előfizetés adatait.
+3. Adja meg a Server on-Demand-előfizetés adatait.
 
    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera003.png)
 
@@ -118,7 +118,7 @@ Ha bejelentkezett az Azure Marketplace-re, hajtsa végre ezeket az alapvető lé
 
     ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera012.png)
 
-## <a name="resources"></a>Erőforrások
+## <a name="resources"></a>További források
 
 A következő források vannak megemlítve ebben a cikkben. 
 
@@ -127,7 +127,7 @@ A következő források vannak megemlítve ebben a cikkben.
 * [Aspera-ügyfél](http://downloads.asperasoft.com/en/downloads/2)
 * [Ügyfélútmutató](http://downloads.asperasoft.com/en/documentation/2)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most már tudja, hogyan [másolhat blobokat egy tárfiókból egy AMS-fiókba](media-services-copying-existing-blob.md#copy-blobs-from-a-storage-account-into-an-ams-account).
 

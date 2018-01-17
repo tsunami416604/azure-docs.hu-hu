@@ -13,23 +13,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/31/2017
+ms.date: 01/03/2018
 ms.author: billmath
 ms.reviewer: jesakowi
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 9f51f46b0dc942bb9749f8e962a2872a8618245a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d3e14c18d5e4cd77f4c68d8a5d9d0b915e896695
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="apps-permissions-and-consent-in-azure-active-directory"></a>Alkalmazások, engedélyek és jóváhagyás az Azure Active Directoryban
-Az Azure Active Directoryban hozzáadhat alkalmazásokat a címtárhoz.  Az alkalmazások az alkalmazás típusától függően eltérőek lehetnek.  Az alkalmazások megtekintéséhez a klasszikus portálon válasszon ki egy címtárat, és válasszon alkalmazásokat.
-
-![](media/active-directory-apps-permissions-consent/apps1.png)
+Az Azure Active Directoryban hozzáadhat alkalmazásokat a címtárhoz.  Az alkalmazások az alkalmazás típusától függően eltérőek lehetnek.  Az alkalmazások portálon való megtekintéséhez válasszon ki egy címtárat, és válasszon alkalmazásokat.
 
 > [!IMPORTANT]
-> A Microsoft javasolja, hogy az Azure Portalon található [Azure AD felügyeleti központból](https://aad.portal.azure.com) kezelje az Azure AD-t az ebben a cikkben javasolt klasszikus Azure portál helyett.
+> A Microsoft javasolja, hogy az Azure Portalon található [Azure AD felügyeleti központból](https://aad.portal.azure.com) kezelje az Azure AD-t az ebben a cikkben javasolt Azure Portal helyett.
 
 ## <a name="types-of-apps"></a>Alkalmazástípusok
 
@@ -73,9 +71,7 @@ Mivel a natív ügyfelek nincsenek hitelesítve, a natív ügyfélalkalmazáské
 
 ## <a name="controls"></a>Vezérlők
 
-Alább az ilyen működési módokhoz elérhető különböző rendszergazdai vezérlők listája látható. A rendszergazdai vezérlők a klasszikus portálon a címtár konfigurálási szakaszánál érhetők el.
-
-![](media/active-directory-apps-permissions-consent/apps7.png)
+Alább az ilyen működési módokhoz elérhető különböző rendszergazdai vezérlők listája látható.
 
 Az Azure Portalon a vezérlőket a **Felhasználói beállítások** **Kezelés** menüpontjában találja meg.
 
@@ -85,18 +81,14 @@ Az Azure Portalon a vezérlőket a **Felhasználói beállítások** **Kezelés*
 
 - Szabályozhatja, hogy a felhasználók jóváhagyhatnak-e alkalmazásokat:
 
-A klasszikus portálon válassza a **Users may give applications permissions to access their data**
-![](media/active-directory-apps-permissions-consent/apps8.png) (A felhasználók engedélyt adhatnak az alkalmazásoknak az adataik elérésére) elemet.
-
 Az Azure Portalon válassza **A felhasználók engedélyezhetik alkalmazások számára az adataikhoz való hozzáférést** elemet.
 ![](media/active-directory-apps-permissions-consent/apps12.png)
 
 
 
-- Szabályozhatja, hogy a felhasználók regisztrálhatják-e saját egybérlős LOB-alkalmazásaikat. A klasszikus portálon válassza a **Users may add integrated applications**
-![](media/active-directory-apps-permissions-consent/apps9.png) (A felhasználók hozzáadhatnak integrált alkalmazásokat) elemet.
+- Szabályozhatja, hogy a felhasználók regisztrálhatják-e saját egybérlős LOB-alkalmazásaikat:
 
-Az Azure Portalon válassza **A felhasználók engedélyezhetik alkalmazások számára az adataikhoz való hozzáférést** elemet.
+Az Azure Portalon válassza **A felhasználók regisztrálhatnak alkalmazásokat** elemet.
 ![](media/active-directory-apps-permissions-consent/apps13.png)
 
 >[!NOTE]
@@ -108,20 +100,6 @@ Az Azure Portalon válassza **A felhasználók engedélyezhetik alkalmazások sz
 >- Egybérlős LOB-alkalmazások regisztrálásakor a felhasználók nem kérhetnek delegált engedélyeket más alkalmazásokhoz, ha az engedélyekhez rendszergazdai jóváhagyásra van szükség.
 >- A felhasználók nem módosíthatnak olyan alkalmazásokat, amelyeknek nem a tulajdonosaik.
 
-
-
-- Szabályozhatja, hogy a felhasználók hozzáadhatnak-e előre integrált, jelszavas egyszeri bejelentkezést (más néven „jelszótárolást”) használó alkalmazásokat. ![](media/active-directory-apps-permissions-consent/apps10.png)
-
-
-
-- Szabályozhatja, hogy az alkalmazások milyen feltételek esetén férhetők hozzá (azaz feltételes hozzáférést is megadhat). Ügyeljen arra, hogy ez az ügyfélalkalmazásra és az erőforrás-alkalmazásra egyaránt vonatkozik. Tegyük fel például, hogy olyan feltételes hozzáférési szabályzatot állít be, amely alapján az „Office 365 Exchange Online” alkalmazás csak a szabályzatnak megfelelő gépekről érhető el.  A szabályzat akkor is érvényesül, ha egy felhasználó olyan ügyfélalkalmazást próbál használni, amely engedélyeket kért az Exchange Online-hoz.
-
-
-
-- Láthatja, hogy mely alkalmazásokat hagytak jóvá, és mely alkalmazásokat használják éppen.
-
-1.  Amikor egy felhasználó jóváhagy egy alkalmazást, a rendszer létrehoz egy ServicePrincipal objektumot a bérlőben. A ServicePrincipal létrehozásának ténye megjelenik a naplózási jelentésben.
-2.  A felhasználói bejelentkezési tevékenységről szóló jelentések tájékoztatják arról, hogy a felhasználó mely alkalmazásba jelentkezik be. 
 
 ## <a name="example"></a>Példa
 

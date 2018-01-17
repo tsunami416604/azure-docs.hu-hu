@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 03/20/2017
 ms.author: garye
-ms.openlocfilehash: 4cc8e78e3ce22d70546d8a25da17b56f4b7cc166
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 11496f0ca225baf0e6647a62aae09b8992f825c8
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="machine-learning-tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Machine Learning-oktatóanyag: Az első adatelemzési kísérlet létrehozása az Azure Machine Learning Studióban
 
@@ -81,7 +81,7 @@ Ebben a Machine Learning oktatóanyagban öt lépés végrehajtásával fogjuk m
 [5. lépés: Új autó árának előrejelzése]: #step-5-predict-new-automobile-prices
 
 > [!TIP] 
-> A [Cortana Intelligence Galleryben](https://gallery.cortanaintelligence.com) megtalálja az alábbi kísérlet egy működő példányát. Lépjen a **[Your first data science experiment - Automobile price prediction](https://gallery.cortanaintelligence.com/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)** (Az első adatelemzési kísérlet – Autó árának előrejelzése) lapra, és kattintson az **Open in Studio** (Megnyitás a Studióban) lehetőségre a kísérlet Machine Learning Studio munkaterületre való letöltéséhez.
+> Az [Azure AI katalógusban](https://gallery.cortanaintelligence.com) megtalálja az alábbi kísérlet egy működő példányát. Lépjen a **[Your first data science experiment - Automobile price prediction](https://gallery.cortanaintelligence.com/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)** (Az első adatelemzési kísérlet – Autó árának előrejelzése) lapra, és kattintson az **Open in Studio** (Megnyitás a Studióban) lehetőségre a kísérlet Machine Learning Studio munkaterületre való letöltéséhez.
 
 
 ## <a name="step-1-get-data"></a>1. lépés: Az adatok beszerzése
@@ -108,7 +108,7 @@ Ha szeretné megtekinteni az adatokat, kattintson az autókat tartalmazó adatha
 
 ![Kattintson a kimeneti portra, majd válassza a „Visualize” (Képi megjelenítés) lehetősége][select-visualize]
 <br/>
-***Kattintson a kimeneti portra, majd válassza a „Visualize” (Képi megjelenítés) lehetőséget***
+***Kattintson a kimeneti portra, majd válassza a „Visualize” (Képi megjelenítés) lehetősége***
 
 > [!TIP]
 > Az adathalmazok és modulok kis körökkel jelölt bemeneti és kimeneti portokkal rendelkeznek – a bemeneti portok felül, a kimeneti portok alul találhatók.
@@ -322,12 +322,12 @@ Az elkészült kísérletnek a következőképpen kell kinéznie:
 <br/>
 ***Az elkészült kísérlet***
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy az első Machine Learning oktatóanyag végére ért, és beállította kísérletét, tovább dolgozhat a modell javításán, majd üzembe helyezheti prediktív webszolgáltatásként.
 
 - **A modell továbbfejlesztése a művelet ismétlésével** – Például módosíthatja az előrejelzéshez használt jellemzők körét. Emellett módosíthatja a [Linear Regression][linear-regression] (Lineáris regresszió) algoritmus tulajdonságait, vagy akár egy teljesen más algoritmust is kipróbálhat. Akár két különböző gépi tanulási algoritmus segítségével is futtathatja a kísérletet, majd az [Evaluate Model][evaluate-model] (Modell kiértékelése) modul használatával összehasonlíthatja az eredményeket.
-Több modell összehasonlítására egyetlen kísérletben a [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com) [Compare Regressors](https://gallery.cortanaintelligence.com/Experiment/Compare-Regressors-5) (Regresszorok összehasonlítása) részében találhat példát.
+Több modell összehasonlítására egyetlen kísérletben az [Azure AI katalógus](https://gallery.cortanaintelligence.com) [Compare Regressors](https://gallery.cortanaintelligence.com/Experiment/Compare-Regressors-5) (Regresszorok összehasonlítása) részében találhat példát.
 
     > [!TIP]
     > Az ismétlések egy példányának másolásához használja az oldal alján található **SAVE AS** (Mentés másként) gombot. A kísérlet összes ismétlésének megtekintéséhez kattintson az oldal alján található **VIEW RUN HISTORY** (Futtatási előzmények megtekintése) parancsra. További információ: [Kísérlet ismétléseinek kezelése az Azure Machine Learning Studióban][runhistory].

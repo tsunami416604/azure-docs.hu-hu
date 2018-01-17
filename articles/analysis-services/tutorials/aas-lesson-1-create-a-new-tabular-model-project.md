@@ -13,19 +13,17 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: a2bfb714e92986465befd79aaa7b12f90b6490e7
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: fbe0784ae133a0b9a54c94b4ba3db317c14b3766
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="lesson-1-create-a-tabular-model-project"></a>1. lecke: Táblázatosmodell-projekt létrehozása
+# <a name="create-a-tabular-model-project"></a>Táblázatosmodell-projekt létrehozása
 
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
-
-Ebben a leckében az SQL Server Data Tools (SSDT) használatával hozhat létre új táblázatosmodell-projektet az 1400-as kompatibilitási szinten. A projekt létrehozása után megkezdheti az adatok hozzáadását és a modell létrehozását. Ez a lecke röviden bemutatja az SSDT táblázatosmodell-létrehozási környezetét is.  
+Ebben a leckében a Visual Studio és az SQL Server Data Tools (SSDT) használatával hozhat létre új táblázatosmodell-projektet az 1400-as kompatibilitási szinten. A projekt létrehozása után megkezdheti az adatok hozzáadását és a modell létrehozását. Ez a lecke röviden bemutatja a Visual Studio táblázatosmodell-létrehozási környezetét is.  
   
 A lecke elvégzésének várható időtartama: **10 perc**.  
   
@@ -36,7 +34,7 @@ Ez a témakör a táblázatos modellek létrehozását ismertető oktatóanyag e
   
 #### <a name="to-create-a-new-tabular-model-project"></a>Új táblázatosmodell-projekt létrehozása  
   
-1.  Az SSDT **Fájl** menüjében kattintson az **Új** > **Projekt** elemre.  
+1.  A Visual Studio **File** (File) menüjében kattintson a **New** (Új) > **Project** (Projekt) elemre.  
   
 2.  Az **Új projekt** párbeszédpanelen bontsa ki a **Telepítve** > **Üzleti intelligencia** > **Analysis Services** elemet, majd kattintson az **Analysis Services rendszerbeli táblázatos projekt** elemre.  
   
@@ -48,7 +46,7 @@ Ez a témakör a táblázatos modellek létrehozását ismertető oktatóanyag e
   
 5.  A **Táblázatos modell tervezője** párbeszédpanelen válassza az **Integrált munkaterület** lehetőséget.  
   
-    A modell létrehozása során a munkaterület egy táblázatos modelladatbázist futtat, amelynek a neve megegyezik a projektével. Az integrált munkaterület azt jelenti, hogy az SSDT egy beépített példányt használ, így nem kell telepítenie egy különálló Analysis Services-kiszolgálópéldányt csak a modell létrehozásához.
+    A modell létrehozása során a munkaterület egy táblázatos modelladatbázist futtat, amelynek a neve megegyezik a projektével. Az integrált munkaterület azt jelenti, hogy a Visual Studio egy beépített példányt használ, így nem kell telepítenie egy különálló Analysis Services-kiszolgálópéldányt csak a modell létrehozásához.
       
 6.  A **Kompatibilitási szint** mezőben válassza az **SQL Server 2017 / Azure Analysis Services (1400)** lehetőséget.   
  
@@ -58,9 +56,9 @@ Ez a témakör a táblázatos modellek létrehozását ismertető oktatóanyag e
       
   
 ## <a name="understanding-the-ssdt-tabular-model-authoring-environment"></a>Az SSDT táblázatosmodell-létrehozási környezetének megismerése  
-Az új táblázatosmodell-projekt létrehozása után szánjon néhány percet az SSDT táblázatosmodell-létrehozási környezetének felfedezésére.  
+Az új táblázatosmodell-projekt létrehozása után szánjon néhány percet a Visual Studio táblázatosmodell-létrehozási környezetének felfedezésére.  
   
-A létrehozott projekt megnyílik az SSDT-ben. A jobb oldalon, a **Táblázatosmodell-tallózóban** láthatja a modellben található objektumok fanézetét. Mivel még nem importált adatokat, a mappák üresek. A jobb gombbal egy objektummappára kattintva műveleteket hajthat végre, a menüsorhoz hasonló módon. Az oktatóanyag elvégzése során a Táblázatosmodell-tallózóval navigálhat a modellprojekt különböző objektumai között.
+A létrehozott projekt megnyílik a Visual Studióban. A jobb oldalon, a **Táblázatosmodell-tallózóban** láthatja a modellben található objektumok fanézetét. Mivel még nem importált adatokat, a mappák üresek. A jobb gombbal egy objektummappára kattintva műveleteket hajthat végre, a menüsorhoz hasonló módon. Az oktatóanyag elvégzése során a Táblázatosmodell-tallózóval navigálhat a modellprojekt különböző objektumai között.
 
 ![aas-lesson1-tme](../tutorials/media/aas-lesson1-tme.png)
 

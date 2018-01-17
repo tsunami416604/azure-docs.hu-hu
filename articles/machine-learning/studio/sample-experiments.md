@@ -1,7 +1,7 @@
 ---
-title: "Machine Learning példakísérletek másolása – Azure | Microsoft Docs"
-description: "Ebből a cikkből megtudhatja, hogyan használhatja a Machine Learning-példakísérleteket új kísérletek létrehozására a Cortana Intelligence Gallery és a Microsoft Azure Machine Learning alkalmazásával."
-keywords: "machine learning példák, mintakísérlet, machine learning minta"
+title: "Kísérletek létrehozása Machine Learning-példákból – Azure | Microsoft Docs"
+description: "Ebből a cikkből megtudhatja, hogyan használhatja a Machine Learning-példakísérleteket új kísérletek létrehozására az Azure AI-katalógus és az Azure Machine Learning alkalmazásával."
+keywords: "machine learning példák, mintakísérlet, machine learning minta, AI példák"
 services: machine-learning
 documentationcenter: 
 author: cjgronlund
@@ -13,16 +13,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/28/2017
+ms.date: 01/05/2018
 ms.author: cgronlun
-ms.openlocfilehash: f798ac1b46d702dbb96a2384d96f2d14eb3cac0e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9ea19f137acb23d3527315aae2624c746e138545
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/05/2018
 ---
-# <a name="copy-example-experiments-to-create-new-machine-learning-experiments"></a>Új Machine Learning-kísérletek létrehozása példakísérletek másolásával
-Ebből a cikkből megtudhatja, hogy teljesen új Machine Learning-kísérletek létrehozása helyett hogyan kezdhet hozzá a munkához a [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com/) példakísérleteivel. A példák segítségével felépítheti saját Machine Learning-megoldását.
+# <a name="create-machine-learning-experiments-from-working-examples-in-azure-ai-gallery"></a>Machine Learning-kísérletek létrehozása munkapéldákból az Azure AI-katalógusban
+
+Ebből a cikkből megtudhatja, hogy teljesen új Machine Learning-kísérletek létrehozása helyett hogyan kezdhet hozzá a munkához az [Azure AI-katalógus](https://gallery.cortanaintelligence.com/) példakísérleteivel. A példák segítségével felépítheti saját Machine Learning-megoldását.
 
 A katalógusban szereplő példakísérleteket a Microsoft Azure Machine Learning csapata készítette, illetve a Machine Learning közösség osztotta meg. Továbbá kérdéseket tehet fel, illetve megjegyzéseket is fűzhet a kísérletekhez.
 
@@ -30,7 +31,7 @@ A katalógus használatának megismeréséhez tekintse meg az [Adatelemzés kezd
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
-## <a name="find-an-experiment-to-copy-in-cortana-intelligence-gallery"></a>Másolni kívánt kísérlet keresése a Cortana Intelligence Galleryben
+## <a name="find-an-experiment-to-copy-in-azure-ai-gallery"></a>Másolni kívánt kísérlet keresése az Azure AI-katalógusban
 Az elérhető kísérletek megtekintéséhez a [Gallery](https://gallery.cortanaintelligence.com/) megnyitása után kattintson az **Experiments** (Kísérletek) fülre az oldal tetején.
 
 ### <a name="find-the-newest-or-most-popular-experiments"></a>A legújabb vagy a legnépszerűbb kísérletek megkeresése
@@ -42,10 +43,10 @@ Az összes kísérlet tallózásához:
 1. Kattintson az **Összes tallózása** fülre az oldal tetején.
 2. A bal oldalon, a **Categories** (Kategóriák) szakasz **Refine by** (Pontosítás) területén válassza a **Experiment** (Kísérlet) fület a Katalógusban található összes kísérlet megtekintéséhez.
 3. A követelményeknek megfelelő kísérletek keresése különféle módokon történhet:
-   * **Válasszon ki szűrőket a bal oldalon.** A PCA-alapú anomáliaészlelő algoritmusokat használó kísérletek böngészéséhez válassza a **Experiment** (Kísérlet) fület a **Categories** (Kategóriák) alatt, majd kattintson az **Show all** (Összes megjelenítése) lehetőségre. Ezt követően a **Algorithms Used** (Használt algoritmusok) alatt válassza a **PCA-Based Anomaly Detection** (PCA-alapú anomáliaészlelés) lehetőséget. <br></br>
-     ![Szűrők kiválasztása](./media/sample-experiments/refine-the-view.png)
+   * **Válasszon ki szűrőket a bal oldalon.** Például a PCA-alapú anomáliaészlelő algoritmusokat használó kísérletek böngészéséhez a **Categories** (Kategóriák) területen kattintson az **Experiment** (Kísérlet) elemre. Ezután az **Algorithms Used** (Használt algoritmusok) területen kattintson a **Show All** (Összes megjelenítése) elemre, és a párbeszédpanelen válassza a **PCA-Based Anomaly Detection** (PCA-alapú anomáliaészlelés) lehetőséget. Lehetséges, hogy le kell görgetnie, hogy ez láthatóvá váljon.<br></br>
+     ![Szűrők kiválasztása](./media/sample-experiments/choose-an-algorithm.png)
    * **Használja a keresőmezőt.** Ha például a Microsoft által közzétett, kétosztályos támogató vektorgép-algoritmust használó, számjegyfelismeréssel kapcsolatos kísérleteket szeretne keresni, a keresőmezőbe írja be a „digit recognition” (számjegyfelismerés) kifejezést. Ezt követően válassza ki az **Experiment** (Kísérlet), a **Microsoft content only** (Kizárólag Microsoft tartalom) és a **Two-Class Support Vector Machine** (Kétosztályos támogató vektorgép) szűrőt:<br></br>
-     ![Használja a keresőmezőt.](./media/sample-experiments/search-for-experiments.png)
+     ![A keresőmező használata](./media/sample-experiments/search-for-experiments.png)
 4. Kattintson a kísérletre, ha többet szeretne megtudni róla.
 5. A kísérlet futtatásához és/vagy módosításához kattintson a **Megnyitás a Studióban** fülre a kísérlet oldalán. <br></br>
 
@@ -64,7 +65,7 @@ A katalógusban található egyik példát sablonként használva új kísérlet
 
 A mintakísérletet példaként használva új kísérlet jön létre a Machine Learning munkaterületén.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Adatok importálása különböző forrásokból](import-data.md)
 * [Gyors üzembe helyezési oktatóanyag az R nyelvhez a Machine Learning eszközben](r-quickstart.md)
 * [Machine Learning webszolgáltatás üzembe helyezése](publish-a-machine-learning-web-service.md)

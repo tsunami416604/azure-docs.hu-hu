@@ -13,27 +13,25 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: 0e223222c482d6d3aeaed85388f3a1ce1b53a78d
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 9b81e011d3e1ed23465bbd554a0c7376b432b585
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="azure-analysis-services---adventure-works-tutorial"></a>Azure Analysis Services – Adventure Works-oktatóanyag
 
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
+Ez az oktatóanyag azzal kapcsolatos leckéket tartalmaz, hogyan hozhat létre és helyezhet üzembe táblázatos modelleket az 1400-as kompatibilitási szinten a Visual Studio és az [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) együttes használatával.  
 
-Ez az oktatóanyag azzal kapcsolatos leckéket tartalmaz, hogyan hozhat létre és helyezhet üzembe táblázatos modelleket az 1400-as kompatibilitási szinten az [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) használatával.  
-
-Ha most ismerkedik az Analysis Services szolgáltatással és a táblázatos modellezéssel, akkor ebből az oktatóanyagból sajátíthatja el leggyorsabban az alapszintű táblázatos modellek létrehozását és üzembe helyezését. Ha az előfeltételek teljesültek, két-három óra szükséges a befejezésig.  
+Ha most ismerkedik az Analysis Services szolgáltatással és a táblázatos modellezéssel, akkor ebből az oktatóanyagból sajátíthatja el leggyorsabban az alapszintű táblázatos modellek Visual Studio használatával történő létrehozását és üzembe helyezését. Ha az előfeltételek teljesültek, két-három óra szükséges a befejezésig.  
   
 ## <a name="what-you-learn"></a>Ismertetett témák   
   
--   Új táblázatosmodell-projekt létrehozása az **1400-as kompatibilitási szinten** az SSDT-ben.
+-   Új táblázatosmodell-projekt létrehozása az **1400-as kompatibilitási szinten** a Visual Studióban az SSDT használatával.
   
--   Adatok importálása relációs adatbázisból táblázatosmodell-projektbe.  
+-   Adatok importálása relációs adatbázisból egy táblázatosmodell-projekt munkaterület-adatbázisába.  
   
 -   A modellben található táblák közötti kapcsolatok létrehozása és kezelése.  
   
@@ -50,13 +48,13 @@ Ha most ismerkedik az Analysis Services szolgáltatással és a táblázatos mod
 ## <a name="prerequisites"></a>Előfeltételek  
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:  
   
--   Egy Azure Analysis Services- vagy SQL Server 2017 Analysis Services-példány, amelyen üzembe helyezheti a modelljét. Regisztráljon az [Azure Analysis Services ingyenes próbaverziójára](https://azure.microsoft.com/services/analysis-services/), és [hozzon létre egy kiszolgálót](../analysis-services-create-server.md). Vagy regisztráljon, és töltse le az [SQL Server 2017 Community Technology Preview verziót](https://www.microsoft.com/evalcenter/evaluate-sql-server-vnext-ctp). 
+-   Egy Azure Analysis Services-kiszolgáló. Regisztráljon az [Azure Analysis Services ingyenes próbaverziójára](https://azure.microsoft.com/services/analysis-services/), és [hozzon létre egy kiszolgálót](../analysis-services-create-server.md). 
 
--   Egy SQL Server- vagy Azure SQL Database-adattárház, amely rendelkezik az [AdventureWorksDW2014 mintaadatbázissal](http://go.microsoft.com/fwlink/?LinkID=335807). Ez a mintaadatbázis tartalmazza a jelen oktatóanyag elvégzéséhez szükséges adatokat. Töltse le az [SQL Server egyik ingyenes verzióját](https://www.microsoft.com/sql-server/sql-server-downloads). Vagy regisztráljon az [Azure SQL Database ingyenes próbaverziójára](https://azure.microsoft.com/services/sql-database/). 
+-   Egy [Azure SQL Data Warehouse](../../sql-data-warehouse/create-data-warehouse-portal.md) adattárház, amely rendelkezik az **AdventureWorksDW mintaadatbázissal** vagy egy SQL Server Data Warehouse, [Adventure Works mintaadatbázissal](http://go.microsoft.com/fwlink/?LinkID=335807).
 
-    **Fontos:** Ha egy helyszíni SQL Server-kiszolgálóra telepíti a mintaadatbázist, és egy Azure Analysis Services-kiszolgálón helyezi üzembe a modellt, akkor szükség van egy [helyszíni adatátjáróra](../analysis-services-gateway.md).
+    **Fontos:** Ha egy helyszíni SQL Server Data Warehouse adattárházba telepíti a mintaadatbázist, és egy Azure Analysis Services-kiszolgálón helyezi üzembe a modellt, akkor szükség van egy [helyszíni adatátjáróra](../analysis-services-gateway.md).
 
--   Az [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx) legújabb verziója.
+-   Az [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx) for Visual Studio legújabb verziója.
 
 -   Az [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) legújabb verziója.    
 
@@ -101,7 +99,7 @@ Ezek a leckék nem kötelezők az oktatóanyag elvégzéséhez, de hasznosak leh
 |[Hézagos hierarchiák](../tutorials/aas-supplemental-lesson-ragged-hierarchies.md)|20 perc| 
 
   
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 Az első lépéseket lásd: [1. lecke: Új táblázatosmodell-projekt létrehozása](../tutorials/aas-lesson-1-create-a-new-tabular-model-project.md).  
   
   
