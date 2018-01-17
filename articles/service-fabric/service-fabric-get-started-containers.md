@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/03/2017
+ms.date: 1/09/2018
 ms.author: ryanwi
-ms.openlocfilehash: 23e8b1023aebd5381fc89535ce265883d6a8fceb
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: ca0817b37b6baaa4ef63dfb76790fb3b3735b55f
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Az első Service Fabric-tárolóalkalmazás létrehozása Windows rendszeren
 > [!div class="op_single_selector"]
@@ -36,6 +36,14 @@ Egy fejlesztői számítógép, amelyen a következők futnak:
 Egy Windows-fürt legalább három, Windows Server 2016 rendszerű, a Containerst futtató csomóponttal. Ehhez [hozzon létre egy fürtöt](service-fabric-cluster-creation-via-portal.md) vagy [próbálja ki ingyen a Service Fabricot](https://aka.ms/tryservicefabric).
 
 Egy Azure Container Registry-beállításjegyzék – ehhez [hozzon létre egy tároló-beállításjegyzéket](../container-registry/container-registry-get-started-portal.md) Azure-előfizetésében.
+
+> [!NOTE]
+> A tárolók üzembe helyezése Service Fabric-fürtökön a Windows 10-ben vagy Docker CE-t futtató fürtökön nem támogatott. Ez az útmutató helyi ellenőrzéseket végez a Docker-motor használatával a Windows 10 rendszeren, majd végül egy Azure-beli, a Docker CE-t futtató Windows Server-fürtön helyezi üzembe a tárolószolgáltatásokat. 
+>   
+
+> [!NOTE]
+> A Service Fabric 6.1-es verziója előzetes verzióban támogatja a Windows Server 1709-es verzióját. A nyílt hálózatkezelés és a Service Fabric DNS-szolgáltatás nem működik a Windows Server 1709-es verziójával. 
+> 
 
 ## <a name="define-the-docker-container"></a>A Docker-tároló definiálása
 Állítson össze egy rendszerképet a Docker Hubban található [Python-rendszerkép](https://hub.docker.com/_/python/) alapján.
@@ -294,7 +302,8 @@ A Windows a tárolók két elkülönítési módját támogatja: a folyamatalap�
 <ContainerHostPolicies CodePackageRef="Code" Isolation="hyperv">
 ```
    > [!NOTE]
-   > A HyperV elkülönítési módja az Azure beágyazott virtualizálástámogatással rendelkező Ev3 és Dv3 SKU-ján érhető el. Ellenőrizze, hogy a hyperv szerepkör telepítve lett-e a gazdagépeken. Ezt a gazdagépekhez való kapcsolódással ellenőrizheti.
+   > A HyperV elkülönítési módja az Azure beágyazott virtualizálástámogatással rendelkező Ev3 és Dv3 SKU-ján érhető el. 
+   >
    >
 
 ## <a name="configure-resource-governance"></a>Az erőforrás-szabályozás konfigurálása
@@ -309,6 +318,31 @@ Az [erőforrás-szabályozás](service-fabric-resource-governance.md) korlátozz
   </Policies>
 </ServiceManifestImport>
 ```
+## <a name="configure-docker-healthcheck"></a>Docker HEALTHCHECK konfigurálása 
+
+A 6.1-es verziótól a Service Fabric automatikusan integrálja a [Docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck)-eseményeit a rendszerállapot-jelentéseibe. Ez azt jelenti, hogy ha a tárolón engedélyezett a **HEALTHCHECK**, a Service Fabric jelenti az állapotát, valahányszor a tároló állapota módosul a Docker jelentése szerint. Egy **OK** állapotjelentés jelenik meg a [Service Fabric Explorerben](service-fabric-visualizing-your-cluster.md), amikor a *health_status* értéke *healthy* (megfelelő), és egy **WARNING** jelenik meg, ha a *health_status* értéke *unhealthy* (nem megfelelő). A tároló állapotának monitorozása céljából ténylegesen elvégzett ellenőrzésre mutató **HEALTHCHECK** utasításnak szerepelnie kell a tárolórendszerkép létrehozásához használt **dockerfile** fájlban. 
+
+![HealthCheckHealthy][3]
+
+![HealthCheckUnealthyApp][4]
+
+![HealthCheckUnhealthyDsp][5]
+
+A **HEALTHCHECK** viselkedését konfigurálhatja az egyes tárolókhoz, ha megadja a **HealthConfig** beállításait a **ContainerHostPolicies** részeként az ApplicationManifest fájlban.
+
+```xml
+<ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="ContainerServicePkg" ServiceManifestVersion="2.0.0" />
+    <Policies>
+      <ContainerHostPolicies CodePackageRef="Code">
+        <HealthConfig IncludeDockerHealthStatusInSystemHealthReport="true" RestartContainerOnUnhealthyDockerHealthStatus="false" />
+      </ContainerHostPolicies>
+    </Policies>
+</ServiceManifestImport>
+```
+Alapértelmezés szerint az *IncludeDockerHealthStatusInSystemHealthReport* beállítása **true**, és a *RestartContainerOnUnhealthyDockerHealthStatus* beállítása **false**. Ha a *RestartContainerOnUnhealthyDockerHealthStatus* beállítása **true**, egy újra és újra nem megfelelő állapotúnak jelentett tároló újraindul (lehetőleg más csomópontokon).
+
+Ha az egész Service Fabric-fürthöz le szeretné tiltani a **HEALTHCHECK** integrációját, az [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) elemet **false** értékre kell állítania.
 
 ## <a name="deploy-the-container-application"></a>A tárolóalkalmazás üzembe helyezése
 Mentse az összes módosítást, és hozza létre az alkalmazást. Az alkalmazás közzétételéhez kattintson a jobb gombbal a **MyFirstContainer** elemre a Megoldáskezelőben, és válassza a **Közzététel** lehetőséget.
@@ -324,7 +358,7 @@ Az alkalmazás akkor kész, amikor ```Ready``` állapotba kerül: ![Kész][2]
 Nyisson meg egy böngészőt, majd navigáljon a http://containercluster.westus2.cloudapp.azure.com:8081 helyre. A „Hello World!” címsornak kell megjelennie a böngészőben.
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
-A fürt futtatása költségekkel jár, ezért érdemes lehet [törölni a fürtöt](service-fabric-tutorial-create-vnet-and-windows-cluster.md#clean-up-resources).  A [nyilvános fürtök](https://try.servicefabric.azure.com/) néhány óra múlva automatikusan törlődnek.
+A fürt futtatása költségekkel jár, ezért érdemes lehet [törölni a fürtöt](service-fabric-cluster-delete.md).  A [nyilvános fürtök](https://try.servicefabric.azure.com/) néhány óra múlva automatikusan törlődnek.
 
 Miután leküldte a rendszerképet a tároló-beállításjegyzékbe, törölheti a helyi rendszerképet a fejlesztői számítógépről:
 
@@ -332,6 +366,34 @@ Miután leküldte a rendszerképet a tároló-beállításjegyzékbe, törölhet
 docker rmi helloworldapp
 docker rmi myregistry.azurecr.io/samples/helloworldapp
 ```
+
+## <a name="specify-os-build-version-specific-container-images"></a>Specifikus tárolórendszerképek megadása az operációs rendszer buildverziója alapján 
+
+A Windows Server-tárolók (folyamatelkülönítési mód) esetleg nem kompatibilisek az operációs rendszer újabb verzióival. Például, a Windows Server 2016-tal létrehozott Windows Server-tárolók nem működnek a Windows Server 1709-es verziójában. Ezért amikor a fürtcsomópontokat a legújabb verzióra frissíti, az operációs rendszer korábbi verzióival létrehozott tárolószolgáltatások esetleg nem működnek majd. Annak érdekében, hogy ezt a futtatókörnyezet 6.1-es vagy újabb verzióiban meggátolja, a Service Fabricban több operációsrendszer-lemezképet lehet tárolóként megadni, és felcímkézni azokat az operációs rendszer buildverzióival (ennek lekéréséhez futtassa a `winver` parancsot egy Windows-parancssorban).  Először javasolt frissíteni az alkalmazásjegyzékeket, és rendszerverziónként külön rendszerkép-felülbírálásokat megadni, mielőtt frissítené az operációs rendszer verzióját a csomópontokon. A következő kódrészlet azt mutatja be, hogyan adható meg több tároló-rendszerkép az **ApplicationManifest.xml** alkalmazásjegyzék-fájlban:
+
+
+```xml
+<ContainerHostPolicies> 
+         <ImageOverrides> 
+               <Image Name="myregistry.azurecr.io/samples/helloworldapp1701" Os="14393" /> 
+               <Image Name="myregistry.azurecr.io/samples/helloworldapp1709" Os="16299" /> 
+         </ImageOverrides> 
+     </ContainerHostPolicies> 
+```
+A Windows Server 2016 buildverziója 14393, a 1709-es verzió buildverziója 16299. A szolgáltatásjegyzék továbbra is csak egy rendszerképet ad meg mindegyik tárolószolgáltatáshoz, ahogy az alábbi kódrészletben is látható:
+
+```xml
+<ContainerHost>
+    <ImageName>myregistry.azurecr.io/samples/helloworldapp</ImageName> 
+</ContainerHost>
+```
+
+   > [!NOTE]
+   > Az operációs rendszer buildverzióját címkéző szolgáltatás csak a Windowson futó Service Fabric esetében érhető el
+   >
+
+Ha a virtuális gép mögöttes operációs rendszerének buildverziója 16299 (1709-es verzió), a Service Fabric az ehhez Windows Server verzióhoz tartozó tárolórendszerképet választja ki.  Ha a felcímkézett tárolórendszerképek mellett egy fel nem címkézett tárolórendszerkép is található az alkalmazásjegyzékben, a Service Fabric a fel nem címkézett rendszerképet az összes verzióban használható rendszerképként kezeli. Javasoljuk, hogy explicit módon címkézze fel a tárolórendszerképeket.
+
 
 ## <a name="complete-example-service-fabric-application-and-service-manifests"></a>Példa teljes Service Fabric-alkalmazásra és szolgáltatásjegyzékre
 Itt találja a jelen cikkben használt teljes szolgáltatás- és alkalmazásjegyzéket.
@@ -451,7 +513,7 @@ Az alapértelmezett időintervallum 10 másodperc. Mivel ez egy dinamikus konfig
 A Service Fabric-fürtöt úgy is konfigurálhatja, hogy eltávolítsa a nem használt tárolórendszerképeket a csomópontról. Ez a konfiguráció lehetővé teszi a lemezterület visszanyerését, ha túl sok tárolórendszerkép található a csomóponton.  A funkció engedélyezéséhez frissítse a fürtjegyzék `Hosting` szakaszát az alábbi kódrészletben látható módon: 
 
 
-```xml
+```json
 {
         "name": "Hosting",
         "parameters": [
@@ -467,8 +529,35 @@ A Service Fabric-fürtöt úgy is konfigurálhatja, hogy eltávolítsa a nem has
 A `ContainerImagesToSkip` paraméternél megadhatja azokat a rendszerképeket, amelyeket nem szabad törölni. 
 
 
+## <a name="configure-container-image-download-time"></a>Tárolórendszerkép letöltési idejének konfigurálása
 
-## <a name="next-steps"></a>Következő lépések
+Alapértelmezés szerint a Service Fabric futásideje 20 percet jelöl ki a tárolórendszerképek letöltésére és kicsomagolására, és ez a tárolórendszerképek többségénél elegendő is. Nagyobb rendszerképek esetében, vagy ha a hálózati kapcsolat lassú, szükséges lehet növelni a rendszerkép letöltésének és kibontásának megszakításáig rendelkezésre álló időtartamot. Ez a **ContainerImageDownloadTimeout** attribútum segítségével állítható be a fürtjegyzék **Üzemeltetés** szakaszában az alábbi kódrészletben látható módon:
+
+```json
+{
+"name": "Hosting",
+        "parameters": [
+          {
+              "name": " ContainerImageDownloadTimeout ",
+              "value": "1200"
+          }
+]
+}
+```
+
+
+## <a name="set-container-retention-policy"></a>Tárolómegőrzési szabályzat megadása
+
+A tárolóindítási hibák diagnosztizálásának elősegítése céljából a Service Fabric (6.1-es vagy újabb verzió esetén) támogatja a megszakadt működésű vagy el sem induló tárolók megőrzését. Ez a szabályzat az **ApplicationManifest.xml** fájlban állítható be az alábbi kódrészletben látható módon:
+
+```xml
+ <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="process" ContainersRetentionCount="2"  RunInteractive="true"> 
+```
+
+A **ContainersRetentionCount** beállítása megadja a hiba esetén megőrzendő tárolók számát. Ha negatív érték van megadva, a rendszer minden olyan tárolót megőriz, amelyen hiba jelentkezik. Ha a **ContainersRetentionCount** attribútum nincs megadva, a rendszer nem őriz meg tárolókat. A **ContainersRetentionCount** attribútum az Alkalmazásparamétereket is támogatja, így a felhasználók különböző értékeket adhatnak meg a tesztelési és az éles fürtökön. Ezen funkciók használatakor javasolt elhelyezésre vonatkozó korlátozások használata, hogy a tárolószolgáltatás egy adott csomóponton maradjon, és a rendszer ne helyezze át más csomópontokra. Az ezzel a funkcióval megőrzött tárolókat manuálisan kell eltávolítani.
+
+
+## <a name="next-steps"></a>További lépések
 * További információk a [tárolók futtatásáról a Service Fabricban](service-fabric-containers-overview.md).
 * Tekintse meg a [.NET-alkalmazás üzembe helyezését](service-fabric-host-app-in-a-container.md) ismertető oktatóanyagot.
 * További információk a Service Fabric [alkalmazásainak élettartamáról](service-fabric-application-lifecycle.md).
@@ -476,3 +565,6 @@ A `ContainerImagesToSkip` paraméternél megadhatja azokat a rendszerképeket, a
 
 [1]: ./media/service-fabric-get-started-containers/MyFirstContainerError.png
 [2]: ./media/service-fabric-get-started-containers/MyFirstContainerReady.png
+[3]: ./media/service-fabric-get-started-containers/HealthCheckHealthy.png
+[4]: ./media/service-fabric-get-started-containers/HealthCheckUnhealthy_App.png
+[5]: ./media/service-fabric-get-started-containers/HealthCheckUnhealthy_Dsp.png

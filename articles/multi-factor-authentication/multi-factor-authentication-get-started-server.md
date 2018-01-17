@@ -16,11 +16,11 @@ ms.date: 10/02/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: 4a3e7bd851c2b7e082caeeb451c865eab4fe6635
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f0209142da5d94e0ed863a07c9ea694232421cfb
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication-kiszolgáló – első lépések
 
@@ -94,7 +94,7 @@ Ha nem használja az eseménymegerősítési szolgáltatást, a felhasználók p
 Az alábbi lépéseket követve töltse le az Azure Multi-Factor Authentication-kiszolgálót az Azure Portalról:
 
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com) felületére rendszergazdaként.
-2. Válassza az **Active Directory** > **Multi-Factor Authentication** lehetőséget.
+2. Válassza az **Active Directory** > **MFA-kiszolgáló** lehetőséget.
 3. Válassza a **Kiszolgálóbeállítások** lehetőséget.
 4. Válassza a **Letöltés** lehetőséget, és kövesse a letöltési oldalon megjelenő utasításokat a telepítő mentéséhez. 
 
@@ -187,7 +187,7 @@ Ha visszaállításra lenne szükség, a következő lépésekkel hajthatja vég
 
 Az új kiszolgáló ezzel használatra kész az eredeti biztonsági másolatban található konfigurációval és felhasználói adatokkal.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A [felhasználói portál](multi-factor-authentication-get-started-portal.md) telepítése és konfigurálása a felhasználói önkiszolgáló funkciókhoz.
 - Az Azure MFA-kiszolgáló telepítése és konfigurálása [Active Directory összevonási szolgáltatásokkal](multi-factor-authentication-get-started-adfs.md), [RADIUS-hitelesítéssel](multi-factor-authentication-get-started-server-radius.md) vagy [LDAP-hitelesítéssel](multi-factor-authentication-get-started-server-ldap.md).
