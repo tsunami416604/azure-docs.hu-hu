@@ -285,6 +285,9 @@
               href: apache-hadoop-use-sqoop-dotnet-sdk.md
             - name: Futtatás az Azure PowerShell használatával
               href: apache-hadoop-use-sqoop-powershell.md
+        - name: Adatelemzési folyamat üzembe helyezése
+          href: ../hdinsight-operationalize-data-pipeline.md
+          maintainContext: true
         - name: Az Oozie használata a munkafolyamatokhoz
           href: ../hdinsight-use-oozie-linux-mac.md
           maintainContext: true
@@ -397,7 +400,7 @@
           maintainContext: true
         - name: Hadoop-naplók elemzése
           href: apache-hadoop-debug-jobs.md
-- name: Hivatkozás
+- name: Referencia
   items:
     - name: Kódminták
       href: 'https://azure.microsoft.com/en-us/resources/samples/?service=hdinsight'

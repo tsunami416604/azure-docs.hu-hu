@@ -96,6 +96,7 @@
 ##### [Alkalmazásfrissítési paraméterek](service-fabric-application-upgrade-parameters.md)
 ##### [Adatok szerializálása az alkalmazásfrissítésekben](service-fabric-application-upgrade-data-serialization.md)
 ##### [Alkalmazásfrissítések – haladó témakörök](service-fabric-application-upgrade-advanced.md)
+#### [Alkalmazások kezelése több környezethez](service-fabric-manage-multiple-environment-app-configuration.md)
 #### [Alkalmazások tesztelése hibaelemzéssel](service-fabric-testability-overview.md)
 #### [Az ImageStoreConnectionString beállítás](service-fabric-image-store-connection-string.md)
 
@@ -226,7 +227,6 @@
 ## Munka a Windows/VS fejlesztői környezetében
 ### [Alkalmazások kezelése a Visual Studióban](service-fabric-manage-application-in-visual-studio.md)
 ### [Biztonságos kapcsolatok konfigurálása a Visual Studióban](service-fabric-visualstudio-configure-secure-connections.md)
-### [Az alkalmazás konfigurálása több környezethez](service-fabric-manage-multiple-environment-app-configuration.md)
 ### [.NET-szolgáltatás hibakeresése a VS-ben](service-fabric-debugging-your-application.md)
 ### [Gyakori hibák és kivételek](service-fabric-errors-and-exceptions.md)
 ### [Helyi monitorozás és diagnosztika](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
@@ -244,6 +244,9 @@
 
 ## Alkalmazások életciklus-kezelése
 ### [Alkalmazás becsomagolása](service-fabric-package-apps.md)
+### [Paraméterek használata konfigurációs fájlokkal](service-fabric-how-to-parameterize-configuration-files.md)
+### [Portszámok megadása paraméterekkel](service-fabric-how-to-specify-port-number-using-parameters.md)
+### [Környezeti változók megadása](service-fabric-how-to-specify-environment-variables.md)
 
 ### Alkalmazások üzembe helyezése vagy eltávolítása
 #### [Alkalmazások telepítése helyi fürtre](service-fabric-get-started-with-a-local-cluster.md)
@@ -328,8 +331,9 @@
 ## [.NET](/dotnet/api/overview/azure/service-fabric?view=azure-dotnet)
 ## [REST](/rest/api/servicefabric)
 ## [Szolgáltatásmodell XML-sémája](service-fabric-service-model-schema.md)
+## [Környezeti változók](service-fabric-environment-variables-reference.md)
 
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Gyakori kérdések](service-fabric-common-questions.md)
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/service-fabric/)
