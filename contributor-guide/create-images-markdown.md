@@ -2,4 +2,4 @@
 
 Ez az útmutató a docs.microsoft.com belső közreműködői útmutató át lett helyezve.
 
-[https://aka.MS/ART-Guidance](https://aka.ms/art-guidance)
+[https://aka.ms/art-guidance](https://aka.ms/art-guidance)

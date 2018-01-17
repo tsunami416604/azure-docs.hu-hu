@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 01/15/2018
 ms.author: markvi
-ms.openlocfilehash: 1ceb2cbe728d2b3bf21f441a595b7ed8e91e3795
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7953e218614ba259db3cd45220de6b6c880608ad
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Identitásszinkronizálás és ismétlődő attribútumok rugalmassága
 Ismétlődő attribútum rugalmasság az Azure Active Directoryban, amely kiküszöböli a okozta súrlódás szolgáltatása **UserPrincipalName** és **ProxyAddress** ütközik a Microsoft egyik futtatásakor szinkronizálási eszközöket.
@@ -168,7 +168,7 @@ A mutató *lépéseit a probléma megoldásához* helytelen:
 
 Mutasson kell [https://aka.ms/duplicateattributeresiliency](https://aka.ms/duplicateattributeresiliency).
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Az Azure AD Connect szinkronizálása](active-directory-aadconnectsync-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md)
 * [Az Office 365-ben a címtár szinkronizálási hibák](https://support.office.com/en-us/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)

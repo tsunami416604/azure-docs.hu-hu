@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/17/2017
+ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: asteen
-ms.openlocfilehash: dc69da316870f897fb126d8033e09a066bf89153
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e825e6be79efad5dfb385f96901a2b5682027963
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="managing-applications-with-azure-active-directory"></a>Alkalmazások kezelése az Azure Active Directoryban
 A tényleges munkafolyamat vagy a tartalom túl vállalatok rendelkeznek összes alkalmazás két alapvető követelményei:
@@ -98,7 +98,7 @@ Egyes alkalmazások automation felületek létrehozására és Eltávolítás (v
 ## <a name="access-management"></a>Hozzáférés-kezelés
 Az Azure AD használatával egyéni alkalmazások vagy alapú hozzárendelések szabály hozzáférés kezelése. Delegálhatja hozzáférés-kezeléshez a szervezet biztosítja a legjobb felügyeletet és a támogató személyzet terhelésének csökkentése a megfelelő személyeknek.
 
-## <a name="on-premises-applications"></a>a helyszíni alkalmazások
+## <a name="on-premises-applications"></a>Helyszíni alkalmazások
 A beépített alkalmazásban proxy lehetővé teszi a felhasználók számára, ami azt eredményezi, a helyszíni alkalmazások közzétételét élmény modern felhőalapú alkalmazására és a következő előnyöket is konzisztens hozzáférést az Azure AD-figyelési, jelentéskészítési és biztonsági képességeket.
 
 ## <a name="reporting-and-monitoring"></a>Jelentéskészítési és figyelés
@@ -107,9 +107,9 @@ Az Azure AD biztosít előre integrált jelentéskészítési és figyelési ké
 ## <a name="related-capabilities"></a>Kapcsolódó képességei
 Az Azure ad-val biztonságossá teheti az alkalmazások részletes hozzáférési házirendek és előre integrált többtényezős Hitelesítést. További információt az Azure MFA lásd [Azure MFA](https://azure.microsoft.com/services/multi-factor-authentication/).
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 Első lépésként alkalmazások integrálása az Azure ad-vel, vessen egy pillantást a [integrálása Azure Active Directory és az alkalmazások első lépések útmutató](active-directory-integrating-applications-getting-started.md).
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 [Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke](active-directory-apps-index.md)
 

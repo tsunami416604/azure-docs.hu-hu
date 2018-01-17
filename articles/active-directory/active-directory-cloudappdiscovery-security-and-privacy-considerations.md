@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 3ebcb5b3b4a84f7a5c25caa3f6b245f97bc8049f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7775bad1503e62e1887e6d85f67c3107f48866bf
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="cloud-app-discovery-security-and-privacy-considerations"></a>Cloud App Discovery biztonsági és adatvédelmi megfontolások
 Ez a témakör azt ismerteti, hogyan adatok gyűjtése, feldolgozása, és Azure Active Directory a Cloud App Discovery belül védett. A Microsoft elkötelezett az Ön adatainak védelmében, és az adatok védelme. A Microsoft biztonságos szoftver fejlesztési életciklus eljárásokat a szolgáltatás működtetéséhez csatlakozik. Biztonságossá tétele és az adatok védelmének a Microsoft a legnagyobb prioritással.
@@ -68,8 +68,8 @@ A következő HTTP-információk:
 
 * Metódus (GET, POST, stb.)
 * Protokoll (HTTP/1.1, stb.)
-* Felhasználói ügynök karakterlánca
-* Gazdagépnév
+* Böngészőazonosító sztring
+* Gazdanév
 * Cél URI (kivéve a lekérdezési karakterlánc)
 * Tartalom típussal kapcsolatos információk
 * Hivatkozó URL-cím adatait (kivéve a lekérdezési karakterlánc)
@@ -156,7 +156,7 @@ Azonban a rendszergazdák kiválaszthatják a hozzáférést biztosíthat más f
 
 Minden olyan felhasználó, a portál, az adatok elérése az Azure AD Premium licenccel rendelkező licenccel kell rendelkezniük.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 * [Hogyan lehet használt, jóvá nem hagyott felhőalkalmazások felderítése a szervezeten belül](active-directory-cloudappdiscovery-whatis.md)
 * [Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke](active-directory-apps-index.md)
 

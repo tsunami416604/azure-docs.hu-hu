@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/07/2017
+ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 8e8eee4155e490beef86d0dd59d272c638e42bf0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c527d4511ab2dd3bb349c10c1defb24723fef59a
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="set-up-sharepoint-online-and-exchange-online-for-azure-active-directory-conditional-access"></a>Az Azure Active Directory feltételes hozzáférés SharePoint Online és Exchange Online beállítása 
 
@@ -76,7 +76,7 @@ Míg az Exchange Active Sync modern hitelesítést támogatja, van néhány korl
 
 - Csak az eszköz platformok feltétel lehet beállítani  
 
-    ![Eszközök](./media/active-directory-conditional-access-no-modern-authentication/05.png)
+    ![Eszközplatformok](./media/active-directory-conditional-access-no-modern-authentication/05.png)
 
 - A multi-factor authentication követelményeinek beállítása nem támogatott  
 
@@ -92,7 +92,7 @@ Hatékony védelmére a hozzáférést az Exchange Online az Exchange ActiveSync
 
     b. Válassza ki **az Exchange Active Sync** , **ügyfélalkalmazás**, majd válassza ki **házirend alkalmazása csak a támogatott platformok**.  
 
-    ![Eszközök](./media/active-directory-conditional-access-no-modern-authentication/03.png)
+    ![Eszközplatformok](./media/active-directory-conditional-access-no-modern-authentication/03.png)
 
 - Letiltja az Exchange ActiveSync Active Directory összevonási szolgáltatások (AD FS) vonatkozó szabályok használatával.
 
@@ -178,7 +178,7 @@ A következő három szabályok alkalmazásával:
     c2:[Type == "http://schemas.microsoft.com/2012/01/requestcontext/claims/x-ms-endpoint-absolute-path", Value =~ "(/adfs/ls)|(/adfs/oauth2)"]
     => issue(Type = "http://schemas.microsoft.com/authorization/claims/permit", Value = "true");
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információkért lásd: [feltételes hozzáférés az Azure Active Directoryban](active-directory-conditional-access-azure-portal.md)
 

@@ -2,4 +2,4 @@
 
 Ez az útmutató a docs.microsoft.com belső közreműködői útmutató át lett helyezve.
 
-[https://aka.MS/retire-or-Rename](https://aka.ms/retire-or-rename)
+[https://aka.ms/retire-or-rename](https://aka.ms/retire-or-rename)

@@ -2,4 +2,4 @@
 
 Ez az útmutató a docs.microsoft.com belső közreműködői útmutató át lett helyezve.
 
-[https://aka.MS/PR-Review-Criteria](https://aka.ms/pr-review-criteria)
+[https://aka.ms/pr-review-criteria](https://aka.ms/pr-review-criteria)

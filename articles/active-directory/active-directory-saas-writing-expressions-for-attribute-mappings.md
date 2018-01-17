@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 01/15/2018
 ms.author: markvi
-ms.openlocfilehash: b916d71cfed55c9e904caa07e8f2167d684639aa
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: 5549fb8f20ac2eb07b52b3b8e1c418873e467c93
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Attribútum-leképezésekhez kifejezések írása az Azure Active Directoryban
 Egy SaaS-alkalmazáshoz történő konfigurálásakor megadhatja attribútum-leképezésekhez típusú egyik egy kifejezés-hozzárendelést. Ezeknél a parancsfájl-szerű kifejezés, amely lehetővé teszi a felhasználók adatok átalakítása több biztosítható a SaaS-alkalmazás formátumokba kell írnia.
@@ -27,7 +27,7 @@ Attribútum-leképezésekhez kifejezések szintaxisa a Visual Basic Applications
 
 * A teljes kifejezés függvények, amelyek a nevét, majd argumentumait zárójelek áll kell meghatározni: <br>
   *Függvénynév (<< argumentumának 1 >>, <<argument N>>)*
-* Előfordulhat, hogy ágyazhatók be funkciók belül egymással. Példa: <br> *FunctionOne (FunctionTwo (<<argument1>>))*
+* Előfordulhat, hogy ágyazhatók be funkciók belül egymással. Példa: <br> *FunctionOne(FunctionTwo(<<argument1>>))*
 * Három különböző típusú argumentumok függvényekké átadhatók:
   
   1. Attribútumok, amelyek négyzetes szögletes zárójelbe kell foglalni. Például: [attributeName]
@@ -48,8 +48,8 @@ Attribútum-leképezésekhez kifejezések szintaxisa a Visual Basic Applications
 
 | Name (Név) | Kötelező / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **forrás** |Szükséges |Karakterlánc |Általában az adatforrás-objektum az az attribútum neve |
-| **utótag** |Szükséges |Karakterlánc |A karakterlánc, amely szeretne hozzáfűzni, az érték végén. |
+| **source** |Szükséges |Karakterlánc |Általában az adatforrás-objektum az az attribútum neve |
+| **suffix** |Szükséges |Karakterlánc |A karakterlánc, amely szeretne hozzáfűzni, az érték végén. |
 
 - - -
 ### <a name="formatdatetime"></a>FormatDateTime
@@ -61,7 +61,7 @@ Attribútum-leképezésekhez kifejezések szintaxisa a Visual Basic Applications
 
 | Name (Név) | Kötelező / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **forrás** |Szükséges |Karakterlánc |Általában az attribútum neve a forrás-objektumból. |
+| **source** |Szükséges |Karakterlánc |Általában az attribútum neve a forrás-objektumból. |
 | **inputFormat** |Szükséges |Karakterlánc |Az érték formátumúak. A támogatott formátumok, lásd: [http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx). |
 | **outputFormat** |Szükséges |Karakterlánc |A kimeneti dátum formátumát. |
 
@@ -77,8 +77,8 @@ Ha a forrás-értékeket egy többértékű attribútum, akkor minden értékét
 
 | Name (Név) | Kötelező / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **elválasztó** |Szükséges |Karakterlánc |A karakterlánc elválasztó forrás értékek, amikor azok a halmaz zónanevének egyetlen karakterlánccá egyesít. Lehet "" Ha nem elválasztó szükség. |
-| ** source1... sourceN ** |Szükség esetén a változó-szám, ahányszor |Karakterlánc |A karakterlánc-értékek együtt tartományhoz. |
+| **separator** |Szükséges |Karakterlánc |A karakterlánc elválasztó forrás értékek, amikor azok a halmaz zónanevének egyetlen karakterlánccá egyesít. Lehet "" Ha nem elválasztó szükség. |
+| **source1  … sourceN ** |Szükség esetén a változó-szám, ahányszor |Karakterlánc |A karakterlánc-értékek együtt tartományhoz. |
 
 - - -
 ### <a name="mid"></a>Mid
@@ -90,13 +90,13 @@ Ha a forrás-értékeket egy többértékű attribútum, akkor minden értékét
 
 | Name (Név) | Kötelező / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **forrás** |Szükséges |Karakterlánc |Általában az attribútum neve. |
+| **source** |Szükséges |Karakterlánc |Általában az attribútum neve. |
 | **start** |Szükséges |egész szám |Az index a **forrás** karakterlánc, ahol a substring kell kezdődnie. A karakterlánc első karaktere az 1 indexe lesz, a második karakter 2 mutatója, és így tovább. |
 | **hossza** |Szükséges |egész szám |A substring hosszát. Hossza kívül lejártát a **forrás** karakterlánc, a függvény karakterláncrészletet ad vissza **start** végét indextől **forrás** karakterlánc. |
 
 - - -
 ### <a name="not"></a>nem
-**Függvény:**<br> Not(Source)
+**Függvény:**<br> Not(source)
 
 **Leírás:**<br> Logikai értéke tükrözi a **forrás**. Ha **forrás** értéke "*igaz*", adja vissza "*hamis*". Ellenkező esetben adja vissza "*igaz*".
 
@@ -104,11 +104,11 @@ Ha a forrás-értékeket egy többértékű attribútum, akkor minden értékét
 
 | Name (Név) | Kötelező / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **forrás** |Szükséges |Logikai típusú karakterlánc |Várt **forrás** értékek: "True" vagy "False". |
+| **source** |Szükséges |Logikai típusú karakterlánc |Várt **forrás** értékek: "True" vagy "False". |
 
 - - -
 ### <a name="replace"></a>Csere
-**Függvény:**<br> ObsoleteReplace (forrás, oldValue, regexPattern, regexGroupName, helyettesítő értéke, replacementAttributeName, sablon)
+**Függvény:**<br> ObsoleteReplace(source, oldValue, regexPattern, regexGroupName, replacementValue, replacementAttributeName, template)
 
 **Leírás:**<br>
 Lecseréli az értékeket karakterláncként. Attól függően, hogy a megadott paraméterek másképp működik:
@@ -131,11 +131,11 @@ Lecseréli az értékeket karakterláncként. Attól függően, hogy a megadott 
 
 | Name (Név) | Kötelező / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **forrás** |Szükséges |Karakterlánc |Általában az attribútum neve a forrás-objektumból. |
+| **source** |Szükséges |Karakterlánc |Általában az attribútum neve a forrás-objektumból. |
 | **oldValue** |Optional |Karakterlánc |A cserélni kívánt érték **forrás** vagy **sablon**. |
 | **regexPattern** |Optional |Karakterlánc |Le kell cserélni az érték reguláris kifejezéssel mintát **forrás**. Vagy a replacementPropertyName használatakor helyettesítő tulajdonság értékének kinyerése mintát. |
 | **regexGroupName** |Optional |Karakterlánc |A csoport nevét **regexPattern**. Csak akkor, ha replacementPropertyName használata esetén azt ki a csoport értékét, helyettesítő helyettesítő tulajdonság értéke. |
-| **helyettesítő értéke** |Optional |Karakterlánc |Új értéket lecseréli a régi kiszolgálóéval. |
+| **replacementValue** |Optional |Karakterlánc |Új értéket lecseréli a régi kiszolgálóéval. |
 | **replacementAttributeName** |Optional |Karakterlánc |Az attribútum értékét, kell használni, ha a forrás értéke nincs neve. |
 | **sablon** |Optional |Karakterlánc |Ha **sablon** érték van megadva, fog keresni **oldValue** belül a sablont, és cserélje le az adatforrás-értéke. |
 
@@ -161,7 +161,7 @@ Lecseréli az értékeket karakterláncként. Attól függően, hogy a megadott 
 
 | Name (Név) | Kötelező / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **forrás** |Szükséges |Karakterlánc |**forrás** érték frissítéséhez. |
+| **source** |Szükséges |Karakterlánc |**forrás** érték frissítéséhez. |
 
 - - -
 ### <a name="switch"></a>Kapcsoló
@@ -173,10 +173,10 @@ Lecseréli az értékeket karakterláncként. Attól függően, hogy a megadott 
 
 | Name (Név) | Kötelező / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **forrás** |Szükséges |Karakterlánc |**Forrás** érték frissítéséhez. |
-| **DefaultValue érték** |Optional |Karakterlánc |Alapértelmezett érték használható, ha a forrás nem felel meg a kulcsokat. Üres karakterlánc lehet (""). |
-| **kulcs** |Szükséges |Karakterlánc |**Kulcs** összehasonlítandó **forrás** az értéket. |
-| **érték** |Szükséges |Karakterlánc |Csere értéke a **forrás** megadott kulccsal. |
+| **source** |Szükséges |Karakterlánc |**Forrás** érték frissítéséhez. |
+| **defaultValue** |Optional |Karakterlánc |Alapértelmezett érték használható, ha a forrás nem felel meg a kulcsokat. Üres karakterlánc lehet (""). |
+| **key** |Szükséges |Karakterlánc |**Kulcs** összehasonlítandó **forrás** az értéket. |
+| **value** |Szükséges |Karakterlánc |Csere értéke a **forrás** megadott kulccsal. |
 
 ## <a name="examples"></a>Példák
 ### <a name="strip-known-domain-name"></a>Sáv ismert tartománynév
@@ -224,8 +224,8 @@ Például szeretné ServiceNow a dátumok formázásához.
 
 **Minta bemeneti/kimeneti:**
 
-* **BEMENETI** (extensionAttribute1): "20150123105347.1Z"
-* **KIMENETI**: "2015-01-23"
+* **INPUT** (extensionAttribute1): "20150123105347.1Z"
+* **OUTPUT**:  "2015-01-23"
 
 ### <a name="replace-a-value-based-on-predefined-set-of-options"></a>Cserélje le egy előre megadott beállítások alapján értékét
 Adja meg a felhasználót az Azure AD-ben tárolt kódja alapján időzónájának kell. <br>

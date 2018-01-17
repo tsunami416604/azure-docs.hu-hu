@@ -19,7 +19,7 @@ ms.openlocfilehash: 37d83d3b6dea1763d85f2411816ba2fee4279100
 ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2018
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="connecting-your-on-premises-network-to-azure"></a>A helyszíni hálózati csatlakozás az Azure-bA
 A Microsoft számos különböző típusú felhőszolgáltatások biztosít. A nyilvános interneten keresztül kapcsolódhatnak az összes szolgáltatáshoz, miközben keresztül is csatlakozhat egyes szolgáltatások használatával egy virtuális magánhálózati (VPN) alagúton, az interneten keresztül, vagy egy közvetlen, személyes Microsoft-kapcsolaton keresztül. Ez a cikk segít meghatározni, mely csatlakozási lehetőség lesz felelnek meg a Microsoft más felhőszolgáltatásaival felhasznált típusú alapján igényeinek. A legtöbb szervezet hasznosítani az alábbiakban több kapcsolattípusokat.

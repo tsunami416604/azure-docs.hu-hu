@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2018
+ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: ec6489f796dab0fa24bbadf542429d4cf853c414
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 5eb53d13ed85093616f43b79b58d43ba62ffbd67
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Hibrid Azure Active Directoryhoz csatlakoztatott eszközök konfigurálása
 
@@ -41,7 +41,7 @@ A leírások olvashatóságának, ez a témakör a következő kifejezést haszn
 
 ### <a name="windows-current-devices"></a>Aktuális Windows-eszközök
 
-- A Windows asztali operációs rendszert futtató eszközökhöz, azt javasoljuk, Windows 10 évforduló frissítés (verzió: 1607) vagy újabb. 
+- A Windows asztali operációs rendszert futtató eszközök esetén a támogatott verziója a Windows 10 évforduló frissítést (1607) vagy újabb. 
 - Aktuális Windows-eszközök regisztrációjának **van** nem összevont környezetekben, például a jelszó kivonatát szinkronizálási konfiguráció támogatott.  
 
 
@@ -69,7 +69,7 @@ Az Azure AD Connect:
 
 Győződjön meg arról, hogy a következő URL-címekkel érhető el az Azure AD, a számítógép regisztrációjához a szervezeti hálózaton belüli számítógépek:
 
-- https://enterpriseregistration.Windows.NET
+- https://enterpriseregistration.windows.net
 
 - https://login.microsoftonline.com
 

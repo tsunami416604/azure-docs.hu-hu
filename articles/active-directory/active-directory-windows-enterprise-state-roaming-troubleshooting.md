@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2017
+ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: tanning
 ms.custom: it-pro
-ms.openlocfilehash: e4977edd19d77b78f08163a6c0ff750fdbefcb3f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 8ee3b523baf562b06bd5f7d652a431e1d4553d5c
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>A vállalati Állapothordozás hibaelhárítási beállítások, az Azure Active Directoryban
 
@@ -109,7 +109,7 @@ A védett adatok adatszivárgás megelőzése érdekében [Windows információv
 
 
 **Javasolt művelet**  
-nincs. A Windows jövőbeli frissítései megoldhatja a problémát.
+Nincs. A Windows jövőbeli frissítései megoldhatja a problémát.
 
 ---
 
@@ -118,7 +118,7 @@ nincs. A Windows jövőbeli frissítései megoldhatja a problémát.
 Tartományhoz csatlakozó eszközök nem fog tapasztalni, szinkronizálás, a beállítás dátum, idő és terület: automatikus idő. Automatikus idő felülbírálhatják a más dátum, idő és terület beállításait, és ezeket a beállításokat nem szinkronizálandó vezethet. 
 
 **Javasolt művelet**  
-nincs. 
+Nincs. 
 
 ---
 
@@ -135,7 +135,7 @@ Győződjön meg arról, hogy a Windows 10 v1511 ügyfél összegző frissítés
 Jelentkezzen be a Windows-eszköz intelligens kártya vagy virtuális intelligens kártya használatával kísérli meg, ha a szinkronizálási beállítások fog tovább működni.     
 
 **Javasolt művelet**  
-nincs. A Windows jövőbeli frissítései megoldhatja a problémát.
+Nincs. A Windows jövőbeli frissítései megoldhatja a problémát.
 
 ---
 
@@ -175,7 +175,7 @@ A felsorolt lépéseket folytatásához [KB3196528](https://support.microsoft.co
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Használja a [User Voice fórum](https://feedback.azure.com/forums/169401-azure-active-directory/category/158658-enterprise-state-roaming) visszajelzést, és javaslatokat a vállalati Állapothordozás javítására.
 

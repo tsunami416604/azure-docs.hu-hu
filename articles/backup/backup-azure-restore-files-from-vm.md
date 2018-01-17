@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 12/20/2017
 ms.author: pullabhk;markgal
-ms.openlocfilehash: f2750b652b7de3c7a41ac5712071999c97d435db
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: d1ebda145b7e355bd9763025dece742d2a23239b
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása Azure virtuális gép biztonsági mentése
 
@@ -64,13 +64,16 @@ Fájlok és mappák visszaállítása a visszaállítási pontról, nyissa meg a
 
     Ha a parancsfájl korlátozott hozzáféréssel rendelkező számítógépen futtatja, győződjön meg arról, érhető el:
 
-    - jövőben a Microsoft
-    - Az Azure virtuális gép biztonsági mentések használt Azure-végpontok
+    - download.microsoft.com
+    - [Az Azure virtuális gép biztonsági mentések használt Azure-végpontok](backup-azure-arm-vms-prepare.md#establish-network-connectivity)
     - 3260-as kimenő port
 
-   A Linux a parancsfájl működéséhez a "Megnyitás-iscsi" és "lshw" összetevőt, a helyreállítási ponthoz való csatlakozáshoz. Az összetevők nem létezik a számítógépen, ahol a parancsfájl futtatása, ha a parancsprogram kéri, az összetevők telepítését. Adja meg a hozzájárulási a szükséges összetevők telepítéséhez.  
-         
-   A parancsfájl minden számítógépen, amelyre a biztonsági másolat virtuális géppel azonos (vagy kompatibilis) operációs rendszer futtatható. Tekintse meg a [kompatibilis operációs rendszer tábla](backup-azure-restore-files-from-vm.md#system-requirements) kompatibilis operációs rendszerekhez. Ha védett virtuális gépet az Azure Windows tárolóhelyek (a Windows Azure virtuális gépeken) vagy LVM/RAID-tömböket (a Linux virtuális gépek) használ, a végrehajtható fájl vagy parancsfájl nem futtatható az azonos virtuális gépen. Ehelyett futtassa a végrehajtható fájl vagy parancsfájl egy kompatibilis operációs rendszer bármelyik olyan gépen.
+    A Linux a parancsfájl működéséhez a "Megnyitás-iscsi" és "lshw" összetevőt, a helyreállítási ponthoz való csatlakozáshoz. Az összetevők nem létezik a számítógépen, ahol a parancsfájl futtatása, ha a parancsprogram kéri, az összetevők telepítését. Adja meg a hozzájárulási a szükséges összetevők telepítéséhez.
+    
+    A jövőben a Microsoft a hozzáférést a gépen, ahol a parancsfájl futtatása és a helyreállítási pont adatai között a biztonságos csatorna létrehozásához használt összetevők letöltése szükséges.         
+
+    A parancsfájl minden számítógépen, amelyre a biztonsági másolat virtuális géppel azonos (vagy kompatibilis) operációs rendszer futtatható. Tekintse meg a [kompatibilis operációs rendszer tábla](backup-azure-restore-files-from-vm.md#system-requirements) kompatibilis operációs rendszerekhez. Ha védett virtuális gépet az Azure Windows tárolóhelyek (a Windows Azure virtuális gépeken) vagy LVM/RAID-tömböket (a Linux virtuális gépek) használ, a végrehajtható fájl vagy parancsfájl nem futtatható az azonos virtuális gépen. Ehelyett futtassa a végrehajtható fájl vagy parancsfájl egy kompatibilis operációs rendszer bármelyik olyan gépen.
+ 
 
 ### <a name="identifying-volumes"></a>Kötetek azonosítása
 
@@ -166,7 +169,7 @@ Ha a RAID-lemez van konfigurálva azt egy másik LVM, majd a fenti eljárással 
 
 Az alábbi táblázat a kiszolgálóhoz és számítógépes operációs rendszerek közötti kompatibilitást. Ha a fájlok helyreállítása nem állítható vissza fájlok egy korábbi vagy későbbi operációs rendszer verziója. Például nem állítható vissza egy fájlt egy Windows Server 2016 virtuális gépről a Windows Server 2012 vagy a Windows 8 rendszerű számítógép. Fájlok állíthatja vissza a virtuális gépek azonos kiszolgálói operációs rendszer, illetve a kompatibilis ügyfél operációs rendszerét.   
 
-|Kiszolgáló OS | Kompatibilis ügyfél OS  |
+|Server OS | Kompatibilis ügyfél OS  |
 | --------------- | ---- |
 | Windows Server 2016    | Windows 10 |
 | Windows Server 2012 R2 | Windows 8.1 |

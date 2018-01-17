@@ -2,4 +2,4 @@
 
 Ez az útmutató a docs.microsoft.com belső közreműködői útmutató át lett helyezve.
 
-Lásd: [https://aka.ms/code-highlighting](https://aka.ms/code-highlighting)
+See [https://aka.ms/code-highlighting](https://aka.ms/code-highlighting)

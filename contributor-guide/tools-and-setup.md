@@ -2,4 +2,4 @@
 
 Ez az útmutató a docs.microsoft.com belső közreműködői útmutató át lett helyezve.
 
-Lásd: [https://aka.ms/tools-and-setup](https://aka.ms/tools-and-setup)
+See [https://aka.ms/tools-and-setup](https://aka.ms/tools-and-setup)

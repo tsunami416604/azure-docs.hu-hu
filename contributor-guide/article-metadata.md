@@ -4,4 +4,4 @@
 
 Ez az útmutató a docs.microsoft.com belső közreműködői útmutató át lett helyezve.
 
-Lásd: [https://aka.ms/azure-docs-metadata](https://aka.ms/azure-docs-metadata)
+See [https://aka.ms/azure-docs-metadata](https://aka.ms/azure-docs-metadata)

@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/23/2017
+ms.date: 01/10/2018
 ms.author: aprameyr
-ms.openlocfilehash: b4a01752cf2658bcc8dea663462336ca5c610d70
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4037fc869d3e26d52f33baa62c626f4621cd11f5
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="replicas-and-instances"></a>Replikák és példányok 
 Ez a cikk áttekintést nyújt az életciklus replikák állapotalapú szolgáltatások és állapot nélküli services példányát.
@@ -97,7 +97,7 @@ Ha az alkalmazást vagy a csomópont egy nyitó másodpéldány összeomlik, át
 
 A replika szerepkör nincs megfelelő állapotban a megnyitásakor.
 
-### <a name="standby-sb"></a>A készenléti (SB)
+### <a name="standby-sb"></a>StandBy (SB)
 A készenléti replikája egy replikát készít egy megőrzött szolgáltatás, amely csökkent, és ezután nyitották meg. Ennek a replikának szüksége lehet a Service Fabric, ha a másik replika hozzáadása (mert a replika már rendelkezik egy részét az állapot és a létrehozási folyamat gyorsabb). A StandByReplicaKeepDuration lejárta után a rendszer törli a készenléti állapotban lévő replikát.
 
 Ha az alkalmazást vagy a csomópont egy készenléti replika összeomlik, átmenetek lefelé állapotát.
@@ -140,7 +140,7 @@ Az alábbi ábrán látható, a replika szerepkör átmenetek és néhány péld
 > Mint a magasabb szintű programozási modellek [Reliable Actors](service-fabric-reliable-actors-introduction.md) és [Reliable Services](service-fabric-reliable-services-introduction.md), a fejlesztőtől származó replika szerepkörök koncepciójának elrejtése. Szereplője a szerepkör fogalmát nem szükséges. A szolgáltatások, nagy mértékben egyszerűsítve a legtöbb forgatókönyvhöz.
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A Service Fabric fogalmakat további információkért tekintse meg a következő cikkben:
 
 [A Reliable Services életciklusa – C#](service-fabric-reliable-services-lifecycle.md)

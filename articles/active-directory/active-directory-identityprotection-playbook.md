@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: e274a9364dcb7bf4d220159e1f906bbd015369aa
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b76d6a31dfe600a4639b830bfbbb5cacfc158dd6
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/16/2018
 ---
-# <a name="azure-active-directory-identity-protection-playbook"></a>Az Azure Active Directory Identity Protection-forgatókönyv
+# <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory Identity Protection playbook
 Ez a forgatókönyv segítséget:
 
 * Az Identity Protection környezetben adatok feltöltése a szimuláció kockázati eseményekről és biztonsági rések
@@ -36,7 +36,7 @@ Ez a szakasz biztosít lépéseket a következő kockázatok eseménytípusok sz
 
 Más kockázati események nem szimulált, biztonságos módon.
 
-### <a name="sign-ins-from-anonymous-ip-addresses"></a>Névtelen IP-címekről bejelentkezések
+### <a name="sign-ins-from-anonymous-ip-addresses"></a>Névtelen IP-címről történő bejelentkezések
 A kockázat esemény a névtelen proxy IP-címként azonosított IP-cím sikeresen bejelentkezett felhasználók azonosítja. Ezek a proxyk szeretné az eszköz IP-címet, és a rosszindulatú behatolással szemben használható személyek által használt.
 
 **Szimulálása a bejelentkezés egy névtelen IP-címről, a következő lépésekkel**:
@@ -47,10 +47,10 @@ A kockázat esemény a névtelen proxy IP-címként azonosított IP-cím sikeres
 
 A bejelentkezés jelennek meg az Identity Protection-irányítópult 5 percen belül. 
 
-### <a name="sign-ins-from-unfamiliar-locations"></a>Ismeretlen helyekről indított bejelentkezések
+### <a name="sign-ins-from-unfamiliar-locations"></a>Ismeretlen helyekről történt bejelentkezések
 Az ismeretlen helyek kockázat egy valós idejű bejelentkezési értékelési mechanizmus, amely a korábbi bejelentkezési helyek figyelembe veszi (szélesség, IP / hosszúság és a ASN) új / ismeretlen helyek meghatározásához. A rendszer tárolja a korábbi IP-címek, szélesség / hosszúság, és a ASN-eket, hogy egy felhasználó és figyelembe veszi azokat a megszokott helyek lehet. A bejelentkezési helye akkor tekinthető ismeri, ha a bejelentkezési helye nem egyezik a meglévő ismerős helyeken.
 
-Az Azure Active Directory azonosító adatok védelmét:  
+Azure Active Directory Identity Protection:  
 
 * kezdeti tanulási időszaka 14 nap során, ami azt nem ez a jelző bármely új helyek ismeretlen helyként.
 * figyelmen kívül hagyja az ismerős eszközöket és a meglévő ismerős hely földrajzilag megközelítik helyek bejelentkezések.
@@ -109,10 +109,10 @@ Biztonsági rések egy hibás szereplő is kihasználható az Azure AD környeze
 11. Kattintson a **Save** (Mentés) gombra.
 12. Kockázati-alapú feltételes hozzáférés egy felhasználó használata egy emelt szintű kockázati szintjét a bejelentkezéssel most tesztelheti. Ha a felhasználó kockázati közepes, attól függően, hogy a házirend konfigurációját, a bejelentkezés vagy letiltása, vagy hogy kényszerítve vannak-e a jelszó módosítása. 
     <br><br>
-    ![Alkalmazástervezési](./media/active-directory-identityprotection-playbook/201.png "forgatókönyv")
+    ![Playbook](./media/active-directory-identityprotection-playbook/201.png "Playbook")
     <br>
 
-## <a name="sign-in-risk"></a>Bejelentkezési kockázata
+## <a name="sign-in-risk"></a>Bejelentkezési kockázat
 **A bejelentkezési kockázatot, hajtsa végre az alábbi lépéseket:**
 
 1. Bejelentkezés az [https://portal.azure.com ](https://portal.azure.com) a bérlő globális rendszergazdai hitelesítő adatokkal.
@@ -131,9 +131,9 @@ Biztonsági rések egy hibás szereplő is kihasználható az Azure AD környeze
 10. Az ismeretlen helyek szimulál most tesztelheti kockázat-alapú feltételes hozzáférés, vagy névtelen IP kockázati események, mivel azok is **Közepes** események kockázatát.
 
 
-![Alkalmazástervezési](./media/active-directory-identityprotection-playbook/200.png "forgatókönyv")
+![Playbook](./media/active-directory-identityprotection-playbook/200.png "Playbook")
 
 
-## <a name="see-also"></a>Lásd még:
-* [Az Azure Active Directory azonosító adatok védelmét](active-directory-identityprotection.md)
+## <a name="see-also"></a>Lásd még
+* [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
 

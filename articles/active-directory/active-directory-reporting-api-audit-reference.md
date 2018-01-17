@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/17/2017
+ms.date: 01/15/2018
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 9294d478ef35cac20bd54c2171eecda7c932e7a6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5cdf80ff1cc49b1582302d411ee6fcc8f193c021
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="azure-active-directory-audit-api-reference"></a>Az Azure Active Directory naplózási API-referencia
 Ez a témakör az Azure Active Directory reporting API-val kapcsolatos témakörök gyűjteményét részét képezi.  
@@ -116,7 +116,7 @@ dátum és idő (UTC) formátumban kell megadni
 | Alapvető könyvtár                   | Címtár |
 | Önkiszolgáló jelszókezelés | SSPR      |
 | Önkiszolgáló csoportkezelés    | SSGM      |
-| Fiók kiépítése             | Szinkronizálás      |
+| Fiók kiépítése             | Sync      |
 | Automatizált jelszóváltás      | Automatizált jelszóváltás |
 | Identity Protection              | IdentityProtection |
 | Meghívott felhasználók                    | Meghívott felhasználók |
@@ -182,7 +182,7 @@ kis-és nagybetűket
 Nem betűérzékeny
 
 - - -
-### <a name="actorobjectid"></a>aktor/objectId
+### <a name="actorobjectid"></a>actor/objectId
 **Támogatott operátorok**: eq
 
 **Példa**:
@@ -237,7 +237,7 @@ Nem betűérzékeny
 * Hozzá kell adnia a teljes névtér Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.ActorUserEntity lekérdezésekor
 
 - - -
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Meg szeretné tekinteni a szűrt rendszertevékenységét példák? Tekintse meg a [Azure Active Directory naplózási API minták](active-directory-reporting-api-audit-samples.md).
 * Meg szeretné ismerni az Azure AD reporting API-val kapcsolatos? Lásd: [Bevezetés az Azure Active Directory Reporting API használatába](active-directory-reporting-api-getting-started.md).
 

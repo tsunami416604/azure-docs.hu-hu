@@ -2,4 +2,4 @@
 
 Ez az útmutató a docs.microsoft.com belső közreműködői útmutató át lett helyezve.
 
-[https://aka.MS/Release-Branches](https://aka.ms/release-branches)
+[https://aka.ms/release-branches](https://aka.ms/release-branches)

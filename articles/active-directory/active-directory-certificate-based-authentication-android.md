@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/13/2017
+ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: d3e2ed44777a5963c8bd88f6479c4c58bebdb940
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 93fe73257378022a4e65f7e241d9a60056f403fb
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Az Android az Azure Active Directory-alapú hitelesítés
 
@@ -40,16 +40,16 @@ Ez a funkció érhető el az előzetes verzió az Office 365 US Government véde
 ## <a name="microsoft-mobile-applications-support"></a>A Microsoft mobilalkalmazás-támogatás
 | Alkalmazások | Támogatás |
 | --- | --- |
-| Azure Information Protection alkalmazás |![Ellenőrzés][1] |
-| Intune vállalati portál |![Ellenőrzés][1] |
-| Microsoft Teams |![Ellenőrzés][1] |
-| OneNote |![Ellenőrzés][1] |
-| OneDrive |![Ellenőrzés][1] |
-| Outlook |![Ellenőrzés][1] |
-| Power BI |![Ellenőrzés][1] |
-| A Skype vállalati verzió |![Ellenőrzés][1] |
-| Word / Excel / PowerPoint |![Ellenőrzés][1] |
-| Yammer |![Ellenőrzés][1] |
+| Azure Information Protection alkalmazás |![Jelölőnégyzet][1] |
+| Intune vállalati portál |![Jelölőnégyzet][1] |
+| Microsoft Teams |![Jelölőnégyzet][1] |
+| OneNote |![Jelölőnégyzet][1] |
+| OneDrive |![Jelölőnégyzet][1] |
+| Outlook |![Jelölőnégyzet][1] |
+| Power BI |![Jelölőnégyzet][1] |
+| Skype Vállalati verzió |![Jelölőnégyzet][1] |
+| Word / Excel / PowerPoint |![Jelölőnégyzet][1] |
+| Yammer |![Jelölőnégyzet][1] |
 
 
 ### <a name="implementation-requirements"></a>Megvalósítás követelményei
@@ -81,7 +81,7 @@ Használhatja a [MSOLDomainFederationSettings](/powershell/module/msonline/set-m
 Egyes Exchange ActiveSync-alkalmazások Android 5.0 (Egyszerű fejrészalakzat) vagy újabb rendszeren támogatott. Határozza meg, ha az e-mail alkalmazás támogatja ezt a szolgáltatást, lépjen kapcsolatba az alkalmazás fejlesztőjének.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha Tanúsítványalapú hitelesítés konfigurálása a környezetben, tekintse meg a [első lépések az Android-alapú hitelesítés](active-directory-certificate-based-authentication-get-started.md) utasításokat.
 

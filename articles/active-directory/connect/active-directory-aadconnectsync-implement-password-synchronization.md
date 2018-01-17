@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/21/2017
+ms.date: 01/15/2018
 ms.author: billmath
-ms.openlocfilehash: 0dbd3bbb9a45b206d9c89a1083b62852c1b2285a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 50534fd1fd94eeb4eec7748857a0b7baf93cb9d2
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="implement-password-synchronization-with-azure-ad-connect-sync"></a>Jelszó-szinkronizálás és az Azure AD Connect-szinkronizálás megvalósítása
 A cikkből megtudhatja, hogy szeretné-e a felhőalapú Azure Active Directory (Azure AD) példánya a helyszíni Active Directory-példányról a felhasználói jelszavakat szinkronizálja.
@@ -159,7 +159,7 @@ Ha a kiszolgáló zárolva lett megfelelően Federal Information Processing Stan
 **A jelszó-szinkronizáláshoz MD5 engedélyezéséhez hajtsa végre az alábbi lépéseket:**
 
 1. Ugrás a %programfiles%\Azure Active Sync\Bin.
-2. Nyissa meg a miiserver.exe.config.
+2. Open miiserver.exe.config.
 3. Nyissa meg a konfiguráció/runtime csomópontot a fájl végén.
 4. Adja hozzá a következő csomópont:`<enforceFIPSPolicy enabled="false"/>`
 5. Mentse a módosításokat.
@@ -179,6 +179,6 @@ További információ a biztonsági és FIPS: [AAD jelszó-szinkronizálás, a t
 ## <a name="troubleshoot-password-synchronization"></a>Jelszó-szinkronizálás hibaelhárítása
 Ha problémába ütközik a jelszó-szinkronizálás, lásd: [jelszó-szinkronizálás hibaelhárítása](active-directory-aadconnectsync-troubleshoot-password-synchronization.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Azure AD Connect szinkronizálása: szinkronizálási beállítások testreszabása](active-directory-aadconnectsync-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md)

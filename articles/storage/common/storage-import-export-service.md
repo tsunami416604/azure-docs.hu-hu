@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2017
 ms.author: muralikk
-ms.openlocfilehash: ffcf0766b89cdab7c79c28dad6bf4c80275e33fc
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 37860425460496c5fc2451713d1d3ec58ac9106d
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>Az adatok átviteléhez az Azure Storage a Microsoft Azure Import/Export szolgáltatás használata
 Ebben a cikkben azt részletes útmutatást nyújtanak az Azure Import/Export szolgáltatás használatával biztonságos átvitelére a nagy mennyiségű adatok Azure Blob storage és Azure fájlok által az Azure adatközpontba szállítási lemezmeghajtókat. Ez a szolgáltatás adatok átviteléhez az Azure storage merevlemez-meghajtók és a helyszíni helyek szállítás is használható. A SATA egyetlen lemezmeghajtó adatait vagy Azure Blob storage-vagy Azure fájlok importálhatók. 
@@ -35,12 +35,12 @@ Kövesse az alábbi lépéseket, ha a lemezen lévő adatok Azure Storage import
 2.  Attól függően, hogy az adatok teljes mérete be kell szereznie a szükséges számú 2,5 hüvelyk SSD vagy 2,5" vagy 3.5-ös" SATA II vagy III merevlemez-meghajtókat.
 3.  Csatlakoztassa közvetlenül használatával SATA merevlemez-meghajtók vagy külső USB-adapterek egy windows-számítógépre.
 4.  Hozzon létre egy NTFS-kötet minden merevlemez-meghajtón, és rendeljen meghajtóbetűjelet a köteten. Nincs csatlakozási pontok le.
-5.  Engedélyezze a bit tároló titkosítást az NTFS-köteten. Kövesse az utasításokat a https://technet.microsoft.com/en-us/library/cc731549(v=ws.10).aspx to enable encryption on the windows machine.
+5.  A windows-gépen titkosítás engedélyezéséhez bit tároló titkosítási az NTFS-köteten. Kövesse az utasításokat a https://technet.microsoft.com/en-us/library/cc731549(v=ws.10).aspx.
 6.  Másolás & Beillesztés húzza & dobja el vagy Robocopy, illetve bármely ilyen eszköz lemezeken ezen titkosított egyetlen kötetek adatok másolása teljesen.
 7.  WAImportExport V1 letöltését https://www.microsoft.com/en-us/download/details.aspx?id=42659
 8.  Csomagolja ki, hogy az alapértelmezett mappa waimportexportv1. Például C:\WaImportExportV1  
 9.  Futtatás rendszergazdaként, és nyissa meg a PowerShell vagy a parancssorból, és módosítsa a könyvtárat a tömörítetlen mappába. Például cd C:\WaImportExportV1
-10. Másolás az alábbi parancssort egy Jegyzettömb és szerkesztésére létrehozása a parancssorból végzi.
+10. Másolja a következő parancsot a Jegyzettömbbe, és szerkesztheti a parancssor létrehozásához.
   ./WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session #1 /sk:***== /t:D /bk:*** /srcdir:D: \ /dstdir:ContainerName / /skipwrite
     
     egy fájl neve /j: napló .jrn kiterjesztésű nevezik. A napló-fájl jön létre minden meghajtó, és ezért javasoljuk, hogy a lemez sorozatszám használata a napló fájlnév.
@@ -55,12 +55,12 @@ Kövesse az alábbi lépéseket, ha a lemezen lévő adatok Azure Storage import
 
 1. Jelentkezzen be a https://portal.azure.com/ és a további szolgáltatások -> tároló -> "importálási/exportálási feladatok" kattintson **létrehozás importálási/exportálási feladatok**.
 
-2. Alapvető beállítások területen válassza ki a "Importálása az Azure", adjon meg egy karakterláncot feladat nevét, válasszon egy előfizetést, adja meg vagy válasszon egy erőforráscsoportot. Adjon meg egy leíró nevet az importálási feladatnak. Vegye figyelembe, hogy a név is tartalmazhat, csak kisbetűket, számokat, kötőjeleket és aláhúzásjeleket tartalmazhat, betűvel kell kezdődnie, és nem tartalmazhat szóközt. Ön úgy dönt, hogy a feladatok követésének, amikor folyamatban van, és azok befejezése után nevét használja.
+2. Alapvető beállítások területen válassza ki a "Importálása az Azure", adjon meg egy karakterláncot feladat nevét, válasszon egy előfizetést, adja meg vagy válasszon egy erőforráscsoportot. Adjon meg egy leíró nevet az importálási feladatnak. Vegye figyelembe, hogy a név is tartalmazhat, csak kisbetűket, számokat, kötőjeleket és aláhúzásjeleket tartalmazhat, betűvel kell kezdődnie, és nem tartalmazhat szóközt. Úgy dönt, hogy a feladatok követésének, amikor folyamatban van, és azok befejezése után a nevet használja.
 
-3. A feladat részletes adatait tartalmazó részben tölt fel a meghajtó napló beolvasott meghajtó előkészítési lépés során. Ha waimportexport.exe version1 használt, szüksége lesz az egyes előkészítette a meghajtót egy fájl feltöltéséhez. Válassza ki a tárfiók, amely az adatok Importálja a tárolási fiók "Importálása a cél" szakaszában. A gyűjtőtár hely adatok automatikusan kitöltődnek a kiválasztott tárfiók régió alapján.
+3. A feladat részletes adatait tartalmazó részben tölt fel a meghajtó napló beolvasott meghajtó előkészítési lépés során. Ha waimportexport.exe version1 lett megadva, akkor minden előkészített meghajtó egy fájl feltöltése. Válassza ki a tárfiók, amely az adatok Importálja a tárolási fiók "Importálása a cél" szakaszában. A gyűjtőtár helyre automatikusan a kiválasztott tárfiók régió alapján van feltöltve.
    
    ![Hozzon létre importálási feladat - 3. lépés](./media/storage-import-export-service/import-job-03.png)
-4. Ismét szállítási adatokra vonatkozó részt, válassza ki a szolgáltatói a legördülő listából, és adjon meg egy érvényes vivőjel-szám, amely adott szolgáltatónként hozott létre. A Microsoft ehhez a fiókhoz használandó küldje el azt a meghajtókat, az importálási feladat befejezése után. Adja meg a teljes és érvényes kapcsolattartójának a neve, telefon, e-mail, utca, házszám, város, zip, állam/proviince és ország vagy régió.
+4. Ismét szállítási adatokra vonatkozó részt, válassza ki a szolgáltatói a legördülő listából, és adja meg egy érvényes szolgáltatója, amely adott szolgáltatónként hozott létre. Microsoft küldje el azt a meghajtókat, az importálási feladat befejezése után ezt a fiókot használja. Adja meg a teljes és érvényes kapcsolattartójának a neve, telefon, e-mail, utca, házszám, város, zip, állam/proviince és ország vagy régió.
    
 5. Összegzési területen a szállítási cím Azure DataCenter Azure DC lemezek szállítási használandó valósul meg. Győződjön meg arról, hogy a feladat neve és a teljes címe szerepelnek a szállítási címkén. 
 
@@ -84,7 +84,7 @@ Forgatókönyvek például használhatja ezt a szolgáltatást:
 * Adat-helyreállítás: nagy mennyiségű storage-ban tárolt adatok helyreállításához, és annak a helyszíni helyre kézbesíteni.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az itt látható a szolgáltatás használatához szükséges előfeltételeket. Olvassa el őket figyelmesen a meghajtók, mielőtt.
+Ebben a szakaszban látható a szolgáltatás használatához szükséges előfeltételeket. Alaposan olvassa át őket a meghajtók, mielőtt.
 
 ### <a name="storage-account"></a>Tárfiók
 Meglévő Azure-előfizetés és az Import/Export szolgáltatás használata egy vagy több storage-fiókokat kell rendelkeznie. Minden feladat adatátvitel vagy a csak egy tárfiókot is használható. Más szóval egy egyetlen importálási/exportálási feladatok nem terjedhetnek ki több tárfiókok között. Új tárfiók létrehozásával kapcsolatos további információkért lásd: [a Storage-fiók létrehozása](storage-create-storage-account.md#create-a-storage-account).
@@ -96,13 +96,16 @@ Azure Import/Export szolgáltatás segítségével az adatok másolása **blokk*
 A megkezdéséhez importálása vagy exportálása a tárolási, először feladatot hoz létre. Egy feladat lehet, az importálási feladat vagy exportálási feladat:
 
 * Hozzon létre egy importálási feladat, ha a kívánt Azure-tárfiókot kell a helyszíni adatok átviteléhez.
-* Exportálási feladat létrehozása, ha azt szeretné, a merevlemez-meghajtókat, amelyek a számunkra mellékeltük a tárfiók jelenleg tárolt adatok átviteléhez. Feladatot hoz létre, amikor Ön értesítést az Import/Export szolgáltatás, hogy Ön lesz kell szállítási legalább egy merevlemez-meghajtók egy Azure adatközpontba.
+* Exportálási feladat létrehozása, ha azt szeretné, a merevlemez-meghajtókat, amelyek Microsoft szállított tárfiók jelenleg tárolt adatok átviteléhez. Feladatot hoz létre, amikor Ön értesítést az Import/Export szolgáltatás, hogy Ön lesz kell szállítási legalább egy merevlemez-meghajtók egy Azure adatközpontba.
 
 * Az importálási feladat meg lesz kell szállítási az adatokat tartalmazó merevlemez-meghajtókat.
 * Az exportálási feladat akkor lesz kell szállítási üres merevlemez-meghajtókat.
 * Legfeljebb 10 merevlemez-meghajtók száma feladat elküldhet.
 
 Az importálás létrehozhat vagy az Azure portál használatával feladat exportálása vagy az [Azure Storage Import/Export REST API felülete](/rest/api/storageimportexport).
+
+> [!Note]
+> Az RDFE API-k nem támogatott 2018. február 28 és újabb verziók esetében. A szolgáltatás használatának folytatásához telepítse át a [ARM Import/Export REST API-k](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/storageimportexport/resource-manager/Microsoft.ImportExport/stable/2016-11-01/storageimportexport.json). 
 
 ### <a name="waimportexport-tool"></a>WAImportExport eszköz
 A létrehozásának első lépése egy **importálása** közzéteendő meghajtó előkészítése az importálási folyamat. Készítse elő a meghajtók, csatlakoztassa a helyi kiszolgálón, és futtassa a WAImportExport eszközt a helyi kiszolgálón. Ez WAImportExport az eszköz lehetővé teszi az adatok másolását a meghajtóra, a meghajtón a BitLocker, az adatok titkosítása és a meghajtó Adatbázisnapló-fájlok generálása.
@@ -114,7 +117,7 @@ A WAImportExport eszköze csak 64 bites Windows operációs rendszerrel kompatib
 Töltse le a legújabb verzióját a [WAImportExport eszköz](http://download.microsoft.com/download/3/6/B/36BFF22A-91C3-4DFC-8717-7567D37D64C5/WAImportExportV2.zip). A WAImportExport eszközzel kapcsolatos további tudnivalókért tekintse meg a [a WAImportExport eszközzel](storage-import-export-tool-how-to.md).
 
 >[!NOTE]
->**Előző verzió:** is [WAImportExpot V1 letöltése](http://download.microsoft.com/download/0/C/D/0CD6ABA7-024F-4202-91A0-CE2656DCE413/WaImportExportV1.zip) az eszköz verzióját, majd tekintse át [WAImportExpot V1 használati útmutató](storage-import-export-tool-how-to-v1.md). Az eszköz WAImportExpot V1-es verzióját támogatást nyújt az **lemezek előkészítése során az adatok már előre írása a lemezre**. Akkor is, WAImportExpot V1-es eszköz használata, ha a rendelkezésre álló csak kulcs SAS-kulcs.
+>**Előző verzió:** is [WAImportExpot V1 letöltése](http://download.microsoft.com/download/0/C/D/0CD6ABA7-024F-4202-91A0-CE2656DCE413/WaImportExportV1.zip) az eszköz verzióját, majd tekintse át [WAImportExpot V1 használati útmutató](storage-import-export-tool-how-to-v1.md). Az eszköz WAImportExpot V1-es verzióját támogatást nyújt az **lemezek előkészítése során az adatok már előre írása a lemezre**. Ha a rendelkezésre álló csak kulcs SAS-kulcs, szüksége WAImportExpot V1 eszközzel.
 
 >
 
@@ -124,18 +127,18 @@ Töltse le a legújabb verzióját a [WAImportExport eszköz](http://download.mi
 Az importálási feladatok csak az első adatmennyiség a meghajtón dolgoz fel. Az adatmennyiség NTFS fájlrendszerrel kell formázni.
 
 > [!IMPORTANT]
-> Külső merevlemez-meghajtók egy beépített USB-adapterrel járó nem támogatja ezt a szolgáltatást. Emellett a kis-és nagybetűhasználat egy külső HDD belül a lemez nem használható; Ne küldjön külső HDD.
+> Külső merevlemez-meghajtók egy beépített USB-adapterrel járó nem támogatja ezt a szolgáltatást. Emellett a kis-és nagybetűhasználat egy külső HDD belül a lemez nem használható; Ne küldjön a külső merevlemez.
 > 
 > 
 
-Alább van az adatok másolása belső HDD használt külső USB-adapterek listáját. Anker 68UPSATAA - 02BU Anker 68UPSHHDS-BU Startech SATADOCK22UE Orico 6628SUS3-C-fekete (6628 sorozat) Thermaltake BlacX gyakran használt adatok-csere SATA külső merevlemez meghajtó rögzített állomás (USB 2.0-s & eSATA)
+Az alábbiakban az adatok másolása belső HDD használt külső USB-adapterek listáját. Anker 68UPSATAA - 02BU Anker 68UPSHHDS-BU Startech SATADOCK22UE Orico 6628SUS3-C-fekete (6628 sorozat) Thermaltake BlacX gyakran használt adatok-csere SATA külső merevlemez meghajtó rögzített állomás (USB 2.0-s & eSATA)
 
 ### <a name="encryption"></a>Titkosítás
-A meghajtón található adatokat titkosítani kell a BitLocker meghajtótitkosítás segítségével. Ez védi az adatokat, amíg az átvitel során.
+A meghajtón található adatokat titkosítani kell a BitLocker meghajtótitkosítás segítségével. A titkosítási védi az adatokat, amíg az átvitel során.
 
 Az importálási feladatok, két módja van a titkosítás végrehajtásához. Az első módja adja meg a beállítást, a WAImportExport eszköz futtatásakor meghajtó előkészítése során dataset CSV-fájl használata esetén. A második módja engedélyezze manuálisan a meghajtón a BitLocker-titkosítást, és adja meg a fürt megosztott kötetei szolgáltatás driveset a titkosítási kulcs WAImportExport eszköz parancssori meghajtó előkészítése során futtatásakor.
 
-Az exportálási feladatok a meghajtók, az adatok másolását követően a szolgáltatás titkosítja a meghajtón a BitLocker használatával, mielőtt azt vissza. A titkosítási kulcsot az Azure-portál Ön számára biztosított.  
+Az exportálási feladatok a meghajtók, az adatok másolását követően a szolgáltatás titkosítja a meghajtón a BitLocker használatával, mielőtt azt vissza. A titkosítási kulcsot az Azure-portálon valósul meg.  
 
 ### <a name="operating-system"></a>Operációs rendszer
 A merevlemez-meghajtót a meghajtó az Azure-ba, mielőtt a WAImportExport eszközzel készítse elő a következő 64 bites operációs rendszerek egyikét használhatja:
@@ -143,7 +146,7 @@ A merevlemez-meghajtót a meghajtó az Azure-ba, mielőtt a WAImportExport eszk�
 Windows 7 Enterprise, Windows 7 Ultimate, Windows 8 Pro, Windows 8 Enterprise, Windows 8.1 Pro, Windows 8.1 Enterprise, Windows 10<sup>1</sup>, Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 rendszerben. Mindegyik említett operációs rendszerektől támogatja, a BitLocker meghajtótitkosítás.
 
 ### <a name="locations"></a>Helyek
-Az Azure Import/Export szolgáltatás támogatja az adatok másolását, és az összes nyilvános Azure storage-fiók. A következő helyek egyikére merevlemez-meghajtók elküldhet. Ha a tárfiók egy nyilvános Azure helyre, amely nincs megadva itt, egy másik szállítási helyre lesz kell megadni, ha a feladatot az Azure-portálon vagy az Import/Export REST API használatával hoz létre.
+Az Azure Import/Export szolgáltatás támogatja az adatok másolását, és az összes nyilvános Azure storage-fiók. A felsorolt helyek valamelyikén merevlemez-meghajtók elküldhet. Ha a tárfiók egy nyilvános Azure helyre, amely nincs megadva itt, egy másik szállítási helyre lesz kell megadni, ha a feladatot az Azure-portálon vagy az Import/Export REST API használatával hoz létre.
 
 Szállítási helyek támogatottak:
 
@@ -180,30 +183,30 @@ Szállítási helyek támogatottak:
 * Közép-Németország
 * Északkelet-Németország
 
-### <a name="shipping"></a>Szállítási
+### <a name="shipping"></a>Szállítás
 **Az Adatközpont meghajtók szállítási:**
 
-Az importálási vagy exportálási feladat létrehozásakor, adja meg a szállítási cím szállítási a meghajtók támogatott helyek közül az egyik. A szállítási cím megadott függ a tárfiók helyét, azonban nem lehet ugyanaz, mint a tárfiókhely.
+Az importálási vagy exportálási feladat létrehozásakor, adja meg a szállítási cím szállítási a meghajtók támogatott helyek közül az egyik. A megadott szállítási címe a tárfiók helyét függ, de nem lehet ugyanaz, mint a tárfiókhely.
 
 FedEx, UPS vagy DHL küldje el a meghajtókat, a szállítási cím használható.
 
 **Az adatközpontból meghajtók szállítási:**
 
-Az importálási vagy exportálási feladat létrehozásakor meg kell adnia egy címet a Microsoft akkor használja, ha a meghajtók szállítási vissza a feladat befejezése után. Ellenőrizze, hogy megadta a feldolgozási késedelmeket elkerülése érdekében egy érvényes címet.
+Az importálási vagy exportálási feladat létrehozásakor meg kell adnia egy címet a Microsoft akkor használja, ha a meghajtók szállítási vissza a feladat befejezése után. Győződjön meg arról, hogy megadta a feldolgozási késedelmeket elkerülése érdekében egy érvényes címet.
 
-A szolgáltatói rendelkeznie kell a megfelelő nyomon követi azokat a felügyeleti lánc fenntartása. Meg kell adnia egy érvényes FedEx, UPS vagy DHL szolgáltatónként számú szállítási a meghajtók vissza a Microsoft által használandó fiók. Egy FedEx, UPS vagy DHL szám meghajtók szállítási vissza a helyekről amerikai és Európai szükség. Egy DHL szám meghajtók szállítási újból az Ázsia és a Ausztrália szükség. Létrehozhat egy [FedEx](http://www.fedex.com/us/oadr/) (az amerikai és európai) vagy [DHL](http://www.dhl.com/) (ázsiai és Ausztrália) szolgáltatónként a fiókot, ha még nem rendelkezik ilyennel. Ha már rendelkezik egy vivőjel-szám, győződjön meg arról, hogy legyen érvényes.
+A szolgáltatói rendelkeznie kell a megfelelő nyomon követi azokat a felügyeleti lánc fenntartása. Meg kell adnia egy érvényes FedEx UPS, vagy DHL szolgáltatónként számát a meghajtók szállítási Microsoft által használandó vissza. Egy FedEx, UPS vagy DHL szám meghajtók szállítási vissza a helyekről amerikai és Európai szükség. Egy DHL szám meghajtók szállítási újból az Ázsia és a Ausztrália szükség. Ha még nem rendelkezik ilyennel, létrehozhat egy [FedEx](http://www.fedex.com/us/oadr/) (az amerikai és európai) vagy [DHL](http://www.dhl.com/) (ázsiai és Ausztrália) vivőjel-fiók. Ha már rendelkezik egy vivőjel-szám, győződjön meg arról, hogy legyen érvényes.
 
 A szállítási a csomagok, hajtsa végre a következő feltételek [Microsoft Azure szolgáltatási feltételek](https://azure.microsoft.com/support/legal/services-terms/).
 
 > [!IMPORTANT]
-> Vegye figyelembe, hogy valóban a fizikai adathordozókat esetleg kereszt-nemzetközi határokon. Biztos, hogy a fizikai adathordozó és adatok vannak importálva és/vagy az alkalmazandó jogszabályok betartása exportált biztosításáért felelős. Még a szállítás előtt a fizikai adathordozó egyeztetni a tanácsadók annak ellenőrzésére, hogy az adathordozót, és adatok jogilag szállítani a azonosított adatközpontba. Ez segít annak érdekében, hogy időben Microsoft eléri. Bármelyik csomag nemzetközi határokon túl fogja keresztezi például kereskedelmi számla (kivéve ha meghaladó határokon belül Európai Unió) csomag, amelyben van szüksége. A kereskedelmi számla szolgáltatónként webhelyéről töltött másolatának sikerült kinyomtatása. Példa kereskedelmi számlák [DHL kereskedelmi számla](http://invoice-template.com/wp-content/uploads/dhl-commercial-invoice-template.pdf) és [FedEx kereskedelmi számla](http://images.fedex.com/downloads/shared/shipdocuments/blankforms/commercialinvoice.pdf). Győződjön meg arról, hogy a Microsoft nem lett tüntetve ennek az az exportáló.
+> Ne feledje, hogy előfordulhat, hogy valóban a fizikai adathordozókat kereszt-nemzetközi határokon. Biztos, hogy a fizikai adathordozó és adatok vannak importálva és/vagy az alkalmazandó jogszabályok betartása exportált biztosításáért felelős. Még a szállítás előtt a fizikai adathordozó egyeztetni a tanácsadók annak ellenőrzésére, hogy az adathordozót, és adatok jogilag szállítani a azonosított adatközpontba. Ezzel biztosíthatja, hogy időben Microsoft eléri. Bármelyik csomag, amely áthalad a nemzetközi határokon túl például kereskedelmi számla (kivéve ha meghaladó határokon belül Európai Unió) csomag, amelyben van szüksége. A kereskedelmi számla szolgáltatónként webhelyéről töltött másolatának sikerült kinyomtatása. Példa kereskedelmi számlák [DHL kereskedelmi számla](http://invoice-template.com/wp-content/uploads/dhl-commercial-invoice-template.pdf) és [FedEx kereskedelmi számla](http://images.fedex.com/downloads/shared/shipdocuments/blankforms/commercialinvoice.pdf). Győződjön meg arról, hogy a Microsoft nem lett tüntetve ennek az az exportáló.
 > 
 > 
 
 ## <a name="how-does-the-azure-importexport-service-work"></a>Hogyan működik az Azure Import/Export szolgáltatás?
 A helyszíni hely és az Azure storage-ban az Azure Import/Export szolgáltatás létrehozása feladatokat és merevlemez-meghajtók egy Azure adatközpontba szállítási közötti küldhetnek adatokat. Minden szállított merevlemez-meghajtó nem tartozik egyetlen feladat. Minden feladat tartozik egy tárfiókot. Tekintse át a [szükséges előfeltételek szakasz](#pre-requisites) gondosan további tudnivalók a mintaadatokról ezt a szolgáltatást, például a támogatott adattípusok, a lemez a típusok, a helyek és a szállítási.
 
-Ez a szakasz azt ismerteti magas szintű lépései importálni és exportálni a feladatokat. Későbbi részében a [gyors üzembe helyezés szakasz](#quick-start), az importálás létrehozni és exportálni a feladat részletes útmutatást nyújtanak az azt.
+Ez a szakasz magas szintű lépései importálásának és exportálásának feladatokat ismerteti. Későbbi részében a [gyors üzembe helyezés szakasz](#quick-start), létrehozása az importálás és exportálása a feladat részletes útmutatóját valósul meg.
 
 ### <a name="inside-an-import-job"></a>Az importálási feladat belül
 Magas szinten az importálási feladat a következő lépéseket foglalja magában:
@@ -242,20 +245,20 @@ Magas szinten exportálási feladat a következő lépéseket foglalja magában:
     ![Ábra 2:Export feladat folyamata](./media/storage-import-export-service/exportjob.png)
 
 ### <a name="viewing-your-job-and-drive-status"></a>A feladat és a meghajtó állapotának megtekintése
-Az importálás állapotának nyomon követése, vagy exportálni a feladatokat az Azure portálról. Kattintson a **Import/Export** fülre. A feladatok listája megjelenik a lap.
+Az importálás állapotának nyomon követése, vagy exportálni a feladatokat az Azure portálról. Kattintson a **Import/Export** fülre. A feladatokra lapján jelenik meg.
 
 ![Feladat állapotának megtekintése](./media/storage-import-export-service/jobstate.png)
 
-A következő feladatállapotok attól függően, hogy a meghajtó a folyamat során az egyik jelenik meg.
+Attól függően, hogy a meghajtó az a folyamat a következő feladatállapotok egyikét látja.
 
 | Feladat állapota | Leírás |
 |:--- |:--- |
 | Létrehozás | A feladat létrehozása után létrehozása állapotában van beállítva. A feladat létrehozása állapotban van, amíg az Import/Export szolgáltatás azt feltételezi, hogy rendelkezik a meghajtók nem lett kiadva az adatközpontban. Egy feladat két héttel, amely után a rendszer automatikusan törli a szolgáltatás létrehozása állapotban maradhat. |
-| Szállítási | Miután a csomag küldje el, frissítenie kell a nyomkövetési információk az Azure portálon.  Ez a feladat ikonná "Szállítási". A feladat két héttel a szállítási állapotban marad. 
+| Szállítás | Miután a csomag küldje el, frissítenie kell a nyomkövetési információk az Azure portálon.  Ez a feladat ikonná "Szállítási". A feladat két héttel a szállítási állapotban marad. 
 | Érkezett | Miután az összes meghajtó az adatközpontban a fogadott, a feladat állapotát állítja be a fogadott. |
-| Átvitele | Miután legalább egy meghajtó már megkezdődött a feldolgozás, a feladat állapotát állítja be a átadása. Című rész a meghajtó állapota alatt részletes információkat. |
-| Csomag | Után az összes meghajtó feldolgozása befejeződött, a feladat kerülnek csomagolás állapota mindaddig, amíg a meghajtók szállítják vissza. |
-| Befejezve | Miután az összes meghajtó még szállított vissza az ügyfél számára, ha a feladat befejezése nem jelenik meg hibaüzenet, majd a kész állapot úgy lesz beállítva, a feladat. A feladat automatikusan törli 90 nap után befejezve állapotban. |
+| Átvitel | Miután legalább egy meghajtó már megkezdődött a feldolgozás, a feladat állapotát állítja be a átadása. Című rész a meghajtó állapota alatt részletes információkat. |
+| Csomagolás | Után az összes meghajtó feldolgozása befejeződött, a feladat kerülnek csomagolás állapota mindaddig, amíg a meghajtók szállítják vissza. |
+| Befejeződött | Miután az összes meghajtó még szállított vissza az ügyfél számára, ha a feladat befejezése nem jelenik meg hibaüzenet, majd a kész állapot úgy lesz beállítva, a feladat. A feladat automatikusan törli 90 nap után befejezve állapotban. |
 | Lezárva | Miután az összes meghajtó még szállított vissza az ügyfél a, ha történt hiba a feladat feldolgozása során, majd a feladat fog szerepelni a lezárt állapotában. A feladat automatikusan törli 90 nap után a lezárt állapotban. |
 
 Az alábbi táblázat ismerteti a meghajtók egyéni életciklusát, akkor átkerül egy importálási vagy exportálási feladat keresztül. Minden olyan meghajtó egy feladat jelenlegi állapota most látható Azure-portálról.
@@ -266,8 +269,8 @@ A következő táblázat ismerteti az egyes állapot esetében egy feladat minde
 | A megadott | Az importálási feladatnak a feladat létrehozásakor az Azure-portálon, a kezdeti egy meghajtó állapota a megadott állapot. Exportálási feladat, a meghajtó nem adható meg a feladat jön létre, mert a kezdeti meghajtó állapota fogadott állapotát. |
 | Érkezett | A meghajtó tér át a kapott állapota, akkor az Import/Export szolgáltatás operátor feldolgozta-e a meghajtókat, hogy az importálás a szállítási vállalati érkezett. Az exportálási feladat kezdeti meghajtó állapota fogadott állapotát. |
 | NeverReceived | A meghajtó NeverReceived állapotát helyezi át, ha a csomag feladat megérkeznek, de a csomag nem tartalmaz a meghajtó. A meghajtó is áthelyezheti a állapotba, ha két héten lett, mert a szolgáltatás a szállítási adatokat kapott, de a csomag még nem érkezett meg az Adatközpont. |
-| Átvitele | A meghajtó átadása állapotát helyezi át, ha a szolgáltatás megkezdi az adatok átvitele a meghajtó Windows Azure Storage. |
-| Befejezve | A meghajtó helyezi át a kész állapot, ha a szolgáltatás sikeresen átadta a hibátlan az adatokat.
+| Átvitel | A meghajtó átadása állapotát helyezi át, ha a szolgáltatás megkezdi az adatok átvitele a meghajtó Windows Azure Storage. |
+| Befejeződött | A meghajtó helyezi át a kész állapot, ha a szolgáltatás sikeresen átadta a hibátlan az adatokat.
 | CompletedMoreInfo | A meghajtó CompletedMoreInfo állapotát helyezi át, ha a szolgáltatás észlelt kapcsolatos néhány problémát ismertetünk az adatok másolásának származó, vagy a meghajtóra. Az információk között szerepelhet hibák, figyelmeztetések és információs üzenetek blobok felülírására.
 | ShippedBack | A meghajtó helyezi át a ShippedBack állapot, amikor azt teljesítették data center hátsó visszatérési címre. |
 
@@ -280,7 +283,7 @@ A következő táblázat ismerteti a meghajtó hiba állapotok és az egyes áll
 | Meghajtó állapotát | Esemény | Megoldás / a következő lépés |
 |:--- |:--- |:--- |
 | NeverReceived | A meghajtó, amely NeverReceived (mert nem érkezett a feladat szállítási részeként) érkezik egy másik szállítási van megjelölve. | A műveleti csapata a meghajtó helyezi át a kapott állapotát. |
-| N/A | A meghajtó, amely nem része semmilyen feladatot megérkezik az Adatközpont egy másik feladat részeként. | A meghajtó egy extra meghajtóként lesz megjelölve, és visszatér az ügyfél az eredeti csomagot kapcsolódó feladat végrehajtását. |
+| – | A meghajtó, amely nem része semmilyen feladatot megérkezik az Adatközpont egy másik feladat részeként. | A meghajtó egy extra meghajtóként lesz megjelölve, és visszatér az ügyfél az eredeti csomagot kapcsolódó feladat végrehajtását. |
 
 ### <a name="time-to-process-job"></a>Feldolgozási feladatot az idő
 Mennyi ideig tart a folyamat, például a szállítási idő különböző tényezőktől függően változik importálási/exportálási feladatok feladat típusa, típusa és másolásának adatok méretétől és a megadott lemez méretét. Az Import/Export szolgáltatás nem rendelkezik egy SLA-t, de a lemezek fogadása után a szolgáltatás nagy hangsúlyt fektet fejezze be a másolási 7 – 10 nap múlva. A REST API használatával hatékonyabban nyomon követheti a feladat előrehaladását. A lista feladatok művelet, amely arra utal, a másolási folyamat százalékban kifejezett teljes paramétere van. Érheti el, ha egy ideje kritikus importálási/exportálási feladatok befejezéséhez becsült van szüksége.
@@ -404,7 +407,7 @@ A meghajtók előkészítése exportálási feladat következő előzetes ellen�
 1. Exportálási feladat létrehozásához keresse meg a további szolgáltatások -> tároló -> "importálási/exportálási feladatok" az Azure portálon. Kattintson a **létrehozás importálási/exportálási feladatok**.
 2. Lépés 1 alapjait, az "Exportálás az Azure", adjon meg egy karakterláncot feladat nevét, válasszon egy előfizetést, adja meg vagy válasszon egy erőforráscsoportot. Adjon meg egy leíró nevet az importálási feladatnak. Vegye figyelembe, hogy a név is tartalmazhat, csak kisbetűket, számokat, kötőjeleket és aláhúzásjeleket tartalmazhat, betűvel kell kezdődnie, és nem tartalmazhat szóközt. Ön úgy dönt, hogy a feladatok követésének, amikor folyamatban van, és azok befejezése után nevét használja. Adja meg az exportálási feladat felelős személy kapcsolattartási adatait. 
 
-3. Lépés 2 feladat részleteit válassza ki a tárfiók, amely az adatok exportálja a tárolási fiók szakaszában. A gyűjtőtár hely rendszer lehet automatikusan beállítja a kiválasztott tárfiók régió alapján. Adja meg, melyik blobadatokat importáljon a tárfiókba exportálja az üres meghajtó vagy a meghajtók kíván. Ha szeretné, exportálja a tárfiókban lévő összes blob adatokat, vagy is megadhat, amely blobok vagy beállítja a bináris objektumok exportálása.
+3. Lépés 2 feladat részleteit válassza ki a tárfiók, amely az adatok exportálja a tárolási fiók szakaszában. A gyűjtőtár hely adatok automatikusan kitöltődnek a kiválasztott tárfiók régió alapján. Adja meg, melyik blobadatokat importáljon a tárfiókba exportálja az üres meghajtó vagy a meghajtók kíván. Ha szeretné, exportálja a tárfiókban lévő összes blob adatokat, vagy is megadhat, amely blobok vagy beállítja a bináris objektumok exportálása.
    
    Adja meg az exportálandó blob, a **Equal To** választó, és adja meg a relatív elérési útját a blob, a tároló neve kezdve. Használjon *$root* adhatja meg a gyökérszintű tárolóban.
    
@@ -426,7 +429,7 @@ A meghajtók előkészítése exportálási feladat következő előzetes ellen�
    
    ![Hozzon létre exportálási feladat - 3. lépés](./media/storage-import-export-service/export-job-03.png)
 
-4. A lépés a 3 vissza szállítási adatait a legördülő listából válassza ki a szolgáltatói, és adja meg egy érvényes szolgáltatója, amely adott szolgáltatónként hozott létre. A Microsoft ehhez a fiókhoz használandó küldje el azt a meghajtókat, az importálási feladat befejezése után. Adja meg a teljes és érvényes kapcsolattartójának a neve, telefon, e-mail, utca, házszám, város, zip, állam/proviince és ország vagy régió...
+4. A lépés a 3 vissza szállítási adatait válassza ki a szolgáltatói a legördülő listából, és adja meg egy érvényes szolgáltatója, amely adott szolgáltatónként hozott létre. A Microsoft ehhez a fiókhoz használandó küldje el azt a meghajtókat, az importálási feladat befejezése után. Adja meg a teljes és érvényes kapcsolattartójának a neve, telefon, e-mail, utca, házszám, város, zip, állam/proviince és ország vagy régió.
    
  5. Az összefoglalás lapon Azure DC lemezek szállítási használt Azure DataCenter szállítási cím valósul meg. Győződjön meg arról, hogy a feladat neve és a teljes címe szerepelnek a szállítási címkén. 
 
@@ -454,7 +457,7 @@ Nyissa meg a gyakran feltett alatt keresztül, az ügyfelek a szolgáltatás has
 
 **Másolhatja az Azure Import/Export szolgáltatás használata Azure File storage?**
 
-Igen, az Azure Import/Export szolgáltatás támogatja az Azure fájl Storge importálás. Azure-fájlok exportálása jelenleg nem támogatja.
+Igen, az Azure Import/Export szolgáltatás támogatja az Azure File Storage import. Azure-fájlok exportálása jelenleg nem támogatja.
 
 **Az Azure Import/Export szolgáltatás érhető el a CSP-előfizetések?**
 
@@ -495,7 +498,7 @@ Nem. Szüksége lesz, küldje el saját meghajtókat is importálni és exportá
 
 ** Hogyan hozzáférhet a szolgáltatás ** importált adatok
 
-Az Azure storage-fiókjában az adatok az Azure portálon keresztül is elérhetők, vagy egy önálló eszközzel hívják meg a Tártallózó alkalmazással. https://docs.microsoft.com/Azure/VS-Azure-Tools-Storage-Manage-with-Storage-Explorer 
+Az Azure storage-fiókjában az adatok az Azure portálon keresztül is elérhetők, vagy egy önálló eszközzel hívják meg a Tártallózó alkalmazással. https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer 
 
 **Az importálási feladat befejezése után mi lesz a adatok néz a tárfiókban lévő? A könyvtár-hierarchia megőrzi?**
 
@@ -536,7 +539,7 @@ Tekintse meg [importálási csendes-óceáni TÉLI fájlok vagy az Office 365 Sh
 
 Tekintse meg [Offline biztonsági másolat munkafolyamat Azure backup](../../backup/backup-azure-backup-import-export.md).
 
-**Mi az a HDD maximális számát egy részletben?**
+**Mi az a maximális számát a HDD egy szállítási?**
 
 Tetszőleges számú HDD lehet egy szállítási, és amennyiben több feladat tartozik a lemezek javasoljuk, hogy a) a megfelelő feladat nevekkel feliratú lemezekkel rendelkeznek. b) a feladatok frissítése követési számnak -1, a utótaggal-2 stb.
   
@@ -558,7 +561,7 @@ Ha használ [WAImportExport eszköz](http://download.microsoft.com/download/3/6/
 DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
 G,AlreadyFormatted,SilentMode,AlreadyEncrypted,060456-014509-132033-080300-252615-584177-672089-411631 |
 ```
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A WAImportExport eszköz beállítása](storage-import-export-tool-how-to.md)
 * [Adatátvitel az AzCopy parancssori segédprogrammal](storage-use-azcopy.md)

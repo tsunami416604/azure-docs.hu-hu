@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/21/2017
+ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d1c1698b1d94131d4f54878306b020c12dc577f2
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b22f387a0338246c7586f0f0735b4612a796691a
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="troubleshooting-azure-active-directory-activity-logs-content-pack-errors"></a>A tartalomcsomag hibákat naplózza hibaelhárítása az Azure Active Directory-tevékenység 
 
@@ -63,7 +63,7 @@ Ez a témakör a lehetséges okok és ezek a hibák megoldásával kapcsolatos i
 | ---   | ---        |
 | A bérlő méretétől függően ez a lépés sikerült igénybe vehet néhány perc és 30 perc. | Csak türelemmel. Ha az üzenet nem változtatja meg az irányítópult megjelenítése egy órán belül, adjon fájl egy támogatási jegy. További részletekért lásd: [hogyan kérhet támogatást az Azure Active Directory](active-directory-troubleshooting-support-howto.md).|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Power BI tartalomcsomag az Azure Active Directory előzetes telepítéséhez kattintson [Itt](https://powerbi.microsoft.com/en-us/blog/azure-active-directory-meets-power-bi/).
 

@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: ce3d50c4c111c2a47b2732cb3a39bf0dfc28853e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 65b1ae76794c812f9fcf2955d09e023195ef6342
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection által észlelt biztonsági rések
 Biztonsági rések a környezetben, amely is kihasználható egy támadó gyengeségei miatt. Azt javasoljuk, hogy a szervezet meghatározott biztonsági előírások javítása érdekében a biztonsági rések cím, és hogy a támadók kihasználva őket.
@@ -58,6 +58,6 @@ Azt javasoljuk, hogy a szervezet Azure AD Privileged Identity Management haszná
 
 További részletekért lásd: [Azure AD Privileged Identity Management](active-directory-privileged-identity-management-configure.md). 
 
-## <a name="see-also"></a>Lásd még:
-* [Az Azure Active Directory azonosító adatok védelmét](active-directory-identityprotection.md)
+## <a name="see-also"></a>Lásd még
+* [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
 
