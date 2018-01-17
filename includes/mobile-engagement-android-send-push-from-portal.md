@@ -2,7 +2,7 @@
 
 Ha engedélyezni szeretné, hogy a Mobile Engagement leküldéses értesítéseket küldjön az Ön nevében, hozzáférést kell biztosítania számára az API-kulcshoz. Ezt a kulcs konfigurálásával, valamint annak a Mobile Engagement portálon történő megadásával teheti meg.
 
-1. A klasszikus Azure portálon győződjön meg arról, hogy be van lépve a projekthez használt alkalmazásba, majd kattintson a lap alján található **Engage** (Aktiválás) gombra:
+1. Az Azure Portalon győződjön meg arról, hogy be van lépve a projekthez használt alkalmazásba, majd kattintson a lap alján található **Aktiválás** gombra:
 
     ![](./media/mobile-engagement-create-app-in-portal-new/engage-button.png)
 

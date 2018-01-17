@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/28/2017
+ms.date: 01/03/2018
 ms.author: yurid
-ms.openlocfilehash: a14528013b34b912f4f2e1bc07094c7b20a0f63c
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 04f2dd3dcaa44a243cb9620ab8192e15aae82a01
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="security-health-monitoring-in-azure-security-center"></a>Biztonsági állapotfigyelés az Azure Security Centerben
 Ez a cikk az Azure Security Center figyelési funkcióknak használatához nyújt segítséget a szabályzatoknak való megfelelés ellenőrzése érdekében.
@@ -48,11 +48,11 @@ A **Számítás** csempére kattintva a következő három lap jelenik meg:
 Minden egyes lap esetében több szakaszt hozhat létre, és az egyes szakaszokban elérhető lehetőségek kiválasztásával további részleteket tudhat meg az adott probléma megoldásához szükséges lépésekről.
 
 #### <a name="monitoring-recommendations"></a>Figyelési javaslatok
-Ebben a szakaszban tekintheti meg az összes automatikus üzembe helyezésre beállított virtuális gépet és számítógépet, valamint azok aktuális állapotát. Ha erre a bejegyzésre kattint, megnyílik **A Monitoring Agent állapotproblémái** panel.
+Ebben a szakaszban tekintheti meg az összes automatikus üzembe helyezésre beállított virtuális gépet és számítógépet, valamint azok aktuális állapotát. A példánkban egy javaslat található: **A Monitoring Agent állapotproblémái**.  Válassza ki ezt a javaslatot.
 
 ![A Monitoring Agent állapotproblémái](./media/security-center-monitoring/security-center-monitoring-fig1-new003-2017.png)
 
-Itt szerepelnek azok a virtuális gépek és számítógépek, amelyeket a Security Center nem tud sikeresen monitorozni. Részletes információkért válasszon ki egy virtuális gépet vagy számítógépet. A **FIGYELÉS ÁLLAPOTA** határozza meg a problémát.
+Megnyílik **A Monitoring Agent állapotproblémái** panel. Itt szerepelnek azok a virtuális gépek és számítógépek, amelyeket a Security Center nem tud sikeresen monitorozni. Részletes információkért válasszon ki egy virtuális gépet vagy számítógépet. A **FIGYELÉS ÁLLAPOTA** megmutatja az okot, amely miatt a Security Center nem tud monitorozni. A **MONITOROZÁS ÁLLAPOTA** értékeinek, leírásainak és a megoldások lépéseinek listáját a [Security Center hibaelhárítási útmutatójában](security-center-troubleshooting-guide.md#monitoring-agent-health-issues) találja.
 
 #### <a name="recommendations"></a>Javaslatok
 Ebben a szakaszban az Azure Security Center által megfigyelt [virtuális gépekre és számítógépekre vonatkozó javaslatokat](security-center-virtual-machine-recommendations.md) olvashat. Az első oszlop a javaslatokat sorolja fel. A második oszlop az adott javaslat által érintett virtuális gépek és számítógépek számát tartalmazza. A harmadik oszlop a probléma súlyosságát mutatja, ahogyan az alábbi képernyőfelvételen látható:

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: briz
-ms.openlocfilehash: 6d667d42bfef2ec61b055009210d5621f51c17df
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 458b316ba76ff7cace56eb21eaf105233e508741
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="overview-of-device-management-with-iot-hub"></a>Az IoT Hub-eszközfelügyelet áttekintése
 ## <a name="introduction"></a>Bevezetés
@@ -57,7 +57,7 @@ A teljes megoldás megvalósításához számos eszközkezelői követelménynek
     *További információk*: [Ikereszközök – első lépések][lnk-twins-getstarted], [Az ikereszközök áttekintése][lnk-twins-devguide], [Az ikertulajdonságok használata][lnk-twin-properties]
 * **Üzembe helyezés**: Lehetővé teszi az új IoT Hub-eszközök biztonságos üzembe helyezését, valamint a kezelők számára az eszközök képességeinek azonnali elsajátítását.  Az IoT Hub-identitásjegyzék alkalmazásával rugalmas eszközidentitások és -hitelesítő adatok hozhatók létre, illetve egy feladat használatával ez a művelet tömegesen is végrehajtható. Az eszközök felépítését úgy végezze el, hogy azok képességei és állapotai az ikereszköz tulajdonságaiban nyomon követhetőek legyenek.
   
-    *További információk*: [Eszközidentitások kezelése][lnk-identity-registry], [Az eszközidentitások tömeges kezelése][lnk-bulk-identity], [Az ikertulajdonságok használata][lnk-twin-properties]
+    *További információk*: [Eszközidentitások kezelése][lnk-identity-registry], [Az eszközidentitások tömeges kezelése][lnk-bulk-identity], [Az ikertulajdonságok használata][lnk-twin-properties], [Azure IoT Hub Device Provisioning Service][lnk-dps].
 * **Konfigurálás**: az eszközök kötegelt konfigurációmódosításainak és belső vezérlőprogramjuk frissítéseinek megkönnyítése üzemi állapotuk és biztonságuk megőrzésével. A kívánt tulajdonságok, illetve közvetlen módszerek és szórásos feladatok használatával ezek az eszközfelügyeleti műveletek tömegesen is végrehajthatók.
   
     *További információk*: [Közvetlen metódusok használata][lnk-c2d-methods], [Közvetlen metódus meghívása egy eszközön][lnk-methods-devguide], [Az ikertulajdonságok használata][lnk-twin-properties], [Feladatok ütemezése és szórása][lnk-jobs], [Feladatok ütemezése több eszközön][lnk-jobs-devguide]
@@ -87,7 +87,7 @@ Az IoT Hub az alábbi eszközfelügyeleti mintákat engedélyezi.  Az [eszközfe
   
     ![Az eszközfelügyelet előrehaladási és állapotmeghatározási jelentéskészítési mintájának ábrája][img-report_progress_pattern]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az IoT Hub eszközfelügyeleti szolgáltatásai által biztosított képességek, minták és kódtárak használatával olyan IoT-alkalmazások hozhatók létre, amelyek az eszköz teljes életciklusában képesek megfelelni a vállalati IoT-kezelők követelményeinek.
 
 Ha szeretne részletesebben is megismerkedni az IoT Hub eszközfelügyeleti funkcióival, tekintse meg az [eszközfelügyelet első lépéseit][lnk-get-started] bemutató oktatóanyagot.
@@ -113,3 +113,4 @@ Ha szeretne részletesebben is megismerkedni az IoT Hub eszközfelügyeleti funk
 [lnk-methods-devguide]: iot-hub-devguide-direct-methods.md
 [lnk-jobs]: iot-hub-node-node-schedule-jobs.md
 [lnk-jobs-devguide]: iot-hub-devguide-jobs.md
+[lnk-dps]: https://azure.microsoft.com/documentation/services/iot-dps

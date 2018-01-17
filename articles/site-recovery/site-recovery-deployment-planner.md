@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/04/2017
 ms.author: nisoneji
-ms.openlocfilehash: 0910d5802d64ca637b3ecd1e392a6df8629c7f25
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 2985ed0b4bf5d9525bc2274d71b703922524f5a8
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Azure Site Recovery Deployment Planner VMware – Azure-hoz
 Ez a cikk az Azure Site Recovery Deployment Planner felhasználói útmutatója a VMware–Azure éles környezetben való üzembe helyezéséhez.
@@ -29,7 +29,7 @@ A VMware virtuális gépek Site Recovery-vel történő védelmének megkezdése
 
 Létre kell hoznia a megfelelő típusú és számú cél Azure-tárfiókot is. Hozzon létre standard vagy prémium szintű tárfiókokat a fokozatosan növekvő használat során megnövekedett éles kiszolgálók miatt. A tárolási típust virtuális gépenként válassza ki, a számítási feladatok jellemzői (például olvasási és írási, bemeneti és kimeneti műveletek másodpercenként [IOPS], vagy adatváltozás) és Site Recovery-korlátok alapján.
 
-Az Azure Site Recovery üzembehelyezés-tervező (2-es verzió) egy Hyper-V – Azure és VMware – Azure vészhelyreállítási forgatókönyvekben elérhető parancssori eszköz. Az eszközzel (termelési hatás nélkül) távolról készítheti el Vmware virtuális gépeit, hogy megismerhesse a sávszélességet és az Azure Storage követelményeit a sikeres replikálás és feladatátvételi teszt érdekében. Az eszközt helyszíni Site Recovery összetevők telepítése nélkül is futtathatja. Az elért átviteli sebesség pontos meghatározása érdekében azonban ajánlott a tervező futtatása egy olyan Windows Serveren, amely teljesíti annak a Site Recovery konfigurációs kiszolgálónak a minimális követelményeit, amelyet végül telepítenie kell az éles környezetben való üzembe helyezés egyik első lépéseként.
+Az Azure Site Recovery üzembehelyezés-tervező egy, a Hyper-V – Azure és VMware – Azure vészhelyreállítási forgatókönyvekben elérhető parancssori eszköz. Az eszközzel (termelési hatás nélkül) távolról készítheti el Vmware virtuális gépeit, hogy megismerhesse a sávszélességet és az Azure Storage követelményeit a sikeres replikálás és feladatátvételi teszt érdekében. Az eszközt helyszíni Site Recovery összetevők telepítése nélkül is futtathatja. Az elért átviteli sebesség pontos meghatározása érdekében azonban ajánlott a tervező futtatása egy olyan Windows Serveren, amely teljesíti annak a Site Recovery konfigurációs kiszolgálónak a minimális követelményeit, amelyet végül telepítenie kell az éles környezetben való üzembe helyezés egyik első lépéseként.
 
 Az eszköz a következő részleteket biztosítja:
 
@@ -106,9 +106,9 @@ A mappa több fájlt és almappát tartalmaz. Az ASRDeploymentPlanner.exe futtat
 
     Példa:  
     Másolja a .zip fájlt az E:\ meghajtóra, és csomagolja ki.
-   E:\ASR Deployment Planner_v2.0zip
+   E:\ASR Deployment Planner_v2.1zip
 
-    E:\ASR Deployment Planner_v2.0\ASRDeploymentPlanner.exe
+    E:\ASR Deployment Planner_v2.1\ASRDeploymentPlanner.exe
 
 ### <a name="updating-to-the-latest-version-of-deployment-planner"></a>Frissítés az üzembehelyezés-tervező a legújabb verzióra
 Ha az üzembehelyezés-tervező korábbi verziójával rendelkezik, tegye az alábbiak egyikét:
@@ -122,5 +122,10 @@ Ha az üzembehelyezés-tervező korábbi verziójával rendelkezik, tegye az al�
  >
  >Minden új Deployment Planner a .zip fájl összegző frissítését jelenti. A legújabb fájlokat nem kell a korábbi mappába másolnia. Létrehozhat és használhat egy új mappát is.
 
-## <a name="next-steps"></a>Következő lépések
+
+## <a name="version-history"></a>Verzióelőzmények
+The legutóbbi ASR Deployment Planner eszköz verziószáma 2.1.
+Az egyes frissítésekben hozzáadott javításokról az [ASR Deployment Planner verzióelőzményeinek oldalán](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx) lehet tájékozódni.
+
+## <a name="next-steps"></a>További lépések
 * [Az üzembehelyezés-tervező futtatása](site-recovery-vmware-deployment-planner-run.md).

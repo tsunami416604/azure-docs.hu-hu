@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: jdial
-ms.openlocfilehash: 38101134beb59d9cae46e8ca00354e14d5c16c54
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: c3cba0c9ba38e7b0539fde7dc6460c76a47a19d6
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="network-security"></a>Hálózati biztonság
 
@@ -48,12 +48,12 @@ A hálózati biztonsági csoportok nulla vagy tetszőleges számú szabályt tar
 
 |Tulajdonság  |Magyarázat  |
 |---------|---------|
-|Név|Egy egyedi név a hálózati biztonsági csoporton belül.|
+|Name (Név)|Egy egyedi név a hálózati biztonsági csoporton belül.|
 |Prioritás | Egy 100 és 4096 közötti szám. A szabályok feldolgozása prioritási sorrendben történik. Az alacsonyabb sorszámúak feldolgozása a magasabb sorszámúak előtt történik, mivel az alacsonyabb sorszámok magasabb prioritást jelölnek. Ha az adatforgalom megfelel valamelyik szabálynak, a feldolgozás leáll. Ennek eredményeképp az olyan alacsonyabb prioritású (magasabb számú) szabályokat, amelyek attribútumai megegyeznek a magasabb prioritású szabályokéival, a rendszer nem dolgozza fel.|
 |Forrás vagy cél| Bármelyik, vagy egy egyéni IP-cím, CIDR-blokk (például 10.0.0.0/24), szolgáltatáscímke vagy alkalmazásbiztonsági csoport. Tudjon meg többet a [szolgáltatáscímkékről](#service-tags) és az [alkalmazásbiztonsági csoportokról](#application-security-groups). Tartományok, szolgáltatáscímkék vagy alkalmazásbiztonsági csoportok megadásával kevesebb biztonsági szabályt kell majd létrehoznia. A több egyéni IP-cím vagy -tartomány megadásának lehetősége (szolgáltatáscímkékből és alkalmazásbiztonsági csoportokból nem adható meg több) az egyes szabályokban kibővített biztonsági szabályok néven érhető el. További információt a [kibővített biztonsági szabályokkal](#augmented-security-rules) foglalkozó cikkben tekinthet meg. Kibővített biztonsági szabályok kizárólag a Resource Manager-alapú üzemi modellben létrehozott hálózati biztonsági csoportokban hozhatóak létre. A klasszikus üzemi modellben létrehozott hálózati biztonsági csoportokban nem adhat meg több IP-címet vagy -címtartományt.|
 |Protokoll     | TCP, UDP, vagy Bármely, amely a TCP, az UDP és az ICMP protokollokat tartalmazza. Az ICMP önmagában nem adható meg, azért ha arra van szüksége, a Bármely lehetőséget kell alkalmaznia. |
 |Irány| Megadja, hogy a szabály a bejövő vagy a kimenő adatforgalomra vonatkozik.|
-|Porttartomány     |Megadhat egy egyéni portot vagy egy porttartományt is. Megadhatja például a 80-as portot vagy a 10000–10005 tartományt. Tartományok megadásával kevesebb biztonsági szabályt kell majd létrehoznia. A több egyéni port vagy tartomány megadásának lehetősége az egyes szabályokban még csak előzetes verzióként érhető el, kibővített biztonsági szabályok néven. A kibővített biztonsági szabályok használata előtt olvassa át az [Előzetes verziók](#preview-features) szakaszban foglalt fontos információkat. Kibővített biztonsági szabályok kizárólag a Resource Manager-alapú üzemi modellben létrehozott hálózati biztonsági csoportokban hozhatóak létre. A klasszikus üzemi modellben létrehozott hálózati biztonsági csoportokban egyazon szabályban nem adhat meg több portot vagy porttartományt.   |
+|Porttartomány     |Megadhat egy egyéni portot vagy egy porttartományt is. Megadhatja például a 80-as portot vagy a 10000–10005 tartományt. Tartományok megadásával kevesebb biztonsági szabályt kell majd létrehoznia. Kibővített biztonsági szabályok kizárólag a Resource Manager-alapú üzemi modellben létrehozott hálózati biztonsági csoportokban hozhatóak létre. A klasszikus üzemi modellben létrehozott hálózati biztonsági csoportokban egyazon szabályban nem adhat meg több portot vagy porttartományt.   |
 |Műveletek     | Engedélyezés vagy letiltás        |
 
 A biztonsági szabályok állapotalapúak. Ha bármely címre meghatároz egy kimenő biztonsági szabályt a 80-as porton keresztül, nem szükséges biztonsági szabályt megadnia a bejövő forgalomra a válaszhoz. Ha a kommunikáció kívülről indul, csak egy bejövő biztonsági szabályt kell meghatároznia. Ennek az ellenkezője is igaz. Ha egy porton engedélyezett a bejövő forgalom, nem szükséges egy kimenő biztonsági szabályt is megadni ugyanazon a porton történő válaszadáshoz. A biztonsági szabályokra vonatkozó korlátozásokkal kapcsolatban lásd: [Az Azure korlátai](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
@@ -144,8 +144,7 @@ Az alkalmazásbiztonsági csoportok létrehozására és a biztonsági szabályo
 Az alkalmazásbiztonsági csoportok előzetes kiadásban érhetőek el. Az előzetes kiadásban elérhető szolgáltatások rendelkezésre állása és megbízhatósága eltér az általánosan elérhető kiadásokban lévőekétől. Az alkalmazásbiztonsági csoportok használata előtt először regisztráljon azok használatára a [hálózati biztonsági csoport alkalmazásbiztonsági csoportokkal való létrehozását](create-network-security-group-preview.md) ismertető cikk Azure-ra vagy PowerShellre vonatkozó szakaszának 1–5. lépése végrehajtásával. Az alkalmazásbiztonsági csoportok a következő korlátozásokkal rendelkeznek:
 
 -   Egy alkalmazásbiztonsági csoportban lévő összes hálózati adapternek ugyanazon a virtuális hálózaton kell lennie. Nem adhat különböző virtuális hálózatokról származó hálózati adaptereket ugyanahhoz az alkalmazásbiztonsági csoporthoz. Az alkalmazásbiztonsági csoporthoz rendelt első hálózati adapter virtuális hálózata határozza meg az összes később hozzárendelt hálózati adapter virtuális hálózatát.
-- Ha biztonsági szabály forrásaként és céljaként határoz meg alkalmazásbiztonsági csoportokat, mindkét alkalmazásbiztonsági csoport hálózati adaptereinek ugyanazon a virtuális hálózaton kell lenniük. Ha például az ABCS1 a VNet1 hálózatról tartalmaz hálózati adaptereket, az ABCS2 pedig a VNet2 hálózatról, nem rendelheti hozzá az ABCS1 csoportot forrásként és az ABCS2 csoportot célként egy szabályban. Minden hálózati adapternek a VNet1 hálózaton kell lennie. 
-- Csak az USA középnyugati régiójában érhető el.
+- Ha biztonsági szabály forrásaként és céljaként határoz meg alkalmazásbiztonsági csoportokat, mindkét alkalmazásbiztonsági csoport hálózati adaptereinek ugyanazon a virtuális hálózaton kell lenniük. Ha például az ABCS1 a VNet1 hálózatról tartalmaz hálózati adaptereket, az ABCS2 pedig a VNet2 hálózatról, nem rendelheti hozzá az ABCS1 csoportot forrásként és az ABCS2 csoportot célként egy szabályban. Minden hálózati adapternek a VNet1 hálózaton kell lennie.
 
 ## <a name="azure-platform-considerations"></a>Tudnivalók az Azure platformhoz
 
@@ -159,12 +158,12 @@ Az alkalmazásbiztonsági csoportok előzetes kiadásban érhetőek el. Az előz
 
      - **Nagyvállalati szerződés**: 25-ös porton keresztüli kimenő kommunikáció engedélyezve. Közvetlenül a virtuális gépekről küldhet kimenő e-maileket a külső e-mail-szolgáltatóknak, és az Azure platform korlátozásai nem érvényesülnek. 
      - **Használatalapú fizetés**: a 25-ös porton keresztüli kimenő kommunikáció minden erőforráson blokkolva van. Ha közvetlenül a virtuális gépéről szeretne e-mailt küldenie egy külső e-mail-szolgáltatónak (hitelesített SMTP-továbbítás használata nélkül), kérheti a korlátozás feloldását. A kérelmeket a Microsoft saját meglátása szerint értékeli és hagyja jóvá, a visszaélések kiküszöbölésére szolgáló megfelelő ellenőrzések elvégzése után. Kérelem benyújtásához támogatási esetet kell nyitnia a *Technikai*, *Virtuális hálózati kapcsolat*, *Sikertelen e-mail-küldés (SMTP/25-ös port)* problématípus kiválasztásával. A támogatási esetben részletesen indokolja, hogy előfizetésének miért kell közvetlenül a levelezési szolgáltatónak e-mailt küldenie a hitelesített SMTP-továbbítás használata helyett. Amennyiben előfizetését felmentik a korlátozás alól, csak a mentesítés dátuma után létrehozott virtuális gépek képesek a 25-ös porton keresztüli kimenő kommunikációra.
-     - **MSDN, Azure Pass, Azure in Open, Education, BizSpark és ingyenes próbaverzió**: a 25-ös porton keresztüli kimenő kommunikáció minden erőforráson blokkolva van. Nem küldhető kérelem a korlátozás feloldására, mert a kérelmek nem teljesíthetők. Amennyiben mindenképpen virtuális gépről szeretne e-mailt küldeni, SMTP-továbbítási szolgáltatást kell használnia.
+     - **Felhőszolgáltató (CSP), MSDN, Azure Pass, Azure in Open, Education, BizSpark és ingyenes próbaverzió**: a 25-ös porton keresztüli kimenő kommunikáció minden erőforráson blokkolva van. Nem küldhető kérelem a korlátozás feloldására, mert a kérelmek nem teljesíthetők. Amennyiben mindenképpen virtuális gépről szeretne e-mailt küldeni, SMTP-továbbítási szolgáltatást kell használnia.
 
   Amennyiben az Azure engedélyezi az e-mailek küldését a 25-ös porton keresztül, a Microsoft nem tudja garantálni, hogy a levelező szolgáltatók elfogadják a virtuális gépről érkező bejövő e-maileket. Amennyiben egy szolgáltató elutasítja a virtuális gépéről érkező leveleket, vele együttműködésben kell megoldania bármely üzenetküldési vagy levélszemétszűrési problémát, vagy SMTP-továbbítási szolgáltatást kell használnia. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Végezze el a [hálózati biztonsági csoport létrehozásáról](virtual-networks-create-nsg-arm-pportal.md) szóló oktatóanyagot
 * Végezze el a [hálózati biztonsági csoport alkalmazásbiztonsági csoportokkal való létrehozásáról](create-network-security-group-preview.md) szóló oktatóanyagot

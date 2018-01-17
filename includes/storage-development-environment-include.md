@@ -2,15 +2,15 @@
 A következő lépésként állítsa be a fejlesztési környezetet a Visual Studióban, hogy kipróbálhassa az útmutatóban megadott példákat.
 
 ### <a name="create-a-windows-console-application-project"></a>Windows-konzolalkalmazás projekt létrehozása
-Hozzon létre egy új Windows-konzolalkalmazást a Visual Studióban. A következő lépések azt mutatják be, hogyan hozhat létre konzolalkalmazást a Visual Studio 2017-ben, de a lépések a Visual Studio más verziói esetén is hasonlók.
+Hozzon létre egy új Windows-konzolalkalmazást a Visual Studióban. A következő lépések azt mutatják be, hogyan hozhat létre konzolalkalmazást a Visual Studio 2017-ben. A lépések a Visual Studio más verziói esetén is hasonlók.
 
 1. Válassza a **File** (Fájl) > **New** (Új) > **Project** (Projekt) lehetőséget.
-2. Válassza az **Installed** (Telepítve) > **Templates** (Sablonok) > **Visual C#** > **Windows Classic Desktop** (Windows klasszikus asztal) lehetőséget
-3. Válassza a **Console App (.NET Framework)** (Konzolalkalmazás (.NET keretrendszer) lehetőséget
-4. Írja be az alkalmazás nevét a **Name:** (Név:) mezőbe
+2. Válassza az **Installed** (Telepítve) > **Templates** (Sablonok) > **Visual C#** > **Windows Classic Desktop** (Windows klasszikus asztal) lehetőséget.
+3. Válassza a **Console App (.NET Framework)** (Konzolalkalmazás (.NET keretrendszer)) lehetőséget.
+4. Írja be az alkalmazás nevét a **Name** (Név) mezőbe.
 5. Kattintson az **OK** gombra.
 
-![A Visual Studio projektlétrehozási párbeszédpanelje](./media/storage-development-environment-include/storage-development-environment-include-1.png)
+![Képernyőkép a Visual Studio New project (Új projekt) párbeszédpaneljéről](./media/storage-development-environment-include/storage-development-environment-include-1.png)
 
 Az oktatóanyagban szereplő példák hozzáadhatók a konzolalkalmazás `Program.cs` fájljában található `Main()` metódushoz.
 
@@ -25,8 +25,8 @@ Két csomagra kell hivatkoznia a projektben az oktatóanyag teljesítéséhez:
 A NuGettel mindkét csomagot beszerezheti. Kövesse az alábbi lépéseket:
 
 1. Kattintson a jobb gombbal a projektjére a **Megoldáskezelőben**, és válassza a **Manage NuGet Packages** (NuGet-csomagok kezelése) lehetőséget.
-2. Keressen rá az interneten a „WindowsAzure.Storage” kifejezésre, és kattintson az **Install** (Telepítés) gombra a Storage ügyféloldali kódtár és függőségeinek telepítéséhez.
-3. Keresse rá az interneten a „WindowsAzure.ConfigurationManager” kifejezésre, és kattintson az **Install** (Telepítés) gombra az Azure Configuration Manager telepítéséhez.
+2. Keressen rá az interneten a „WindowsAzure.Storage” kifejezésre, és válassza az **Install** (Telepítés) gombot a Storage ügyféloldali kódtár és függőségeinek telepítéséhez.
+3. Keressen rá az interneten a „WindowsAzure.ConfigurationManager” kifejezésre, és válassza az **Install** (Telepítés) gombot az Azure Configuration Manager telepítéséhez.
 
 > [!NOTE]
 > A Storage ügyféloldali kódtár csomagja a [.NET-keretrendszerhez készült Azure SDK-ban](https://azure.microsoft.com/downloads/) is megtalálható. Azt javasoljuk azonban, hogy a Storage ügyféloldali kódtárat a NuGetből is telepítse, hogy az ügyféloldali kódtárnak biztosan mindig a legújabb verziójával rendelkezzen.
@@ -39,7 +39,7 @@ A NuGettel mindkét csomagot beszerezheti. Kövesse az alábbi lépéseket:
 Az útmutatóban lévő példákat kétféle környezetben futtathatja:
 
 * A kódot futtathatja a felhőben, egy Azure Storage-fiókban. 
-* A kódot futtathatja az Azure Storage Emulatorban is. A Storage Emulator egy helyi környezet, amely egy Azure Storage-fiókot emulál a felhőben. Az emulátor ingyenes lehetőséget biztosít a kódja tesztelésére és hibakeresésére, amíg az alkalmazása fejlesztés alatt áll. Az emulátor egy jól ismert fiókot és kulcsot használ. További információkért lásd: [Fejlesztés és tesztelés az Azure Storage Emulatorral](../articles/storage/common/storage-use-emulator.md)
+* A kódot futtathatja az Azure Storage Emulatorban is. A Storage Emulator egy helyi környezet, amely egy Azure Storage-fiókot emulál a felhőben. Az emulátor ingyenes lehetőséget biztosít a kódja tesztelésére és hibakeresésére, amíg az alkalmazása fejlesztés alatt áll. Az emulátor egy jól ismert fiókot és kulcsot használ. További információkért lásd: [Fejlesztés és tesztelés az Azure Storage Emulatorral](../articles/storage/common/storage-use-emulator.md).
 
 Ha egy felhőbeli tárfiókot céloz meg, akkor másolja ki a tárfiók elsődleges hívóbetűjét az Azure Portalról. További információért lásd: [View and copy storage access keys](../articles/storage/common/storage-create-storage-account.md#view-and-copy-storage-access-keys) (A tárelérési kulcsok megtekintése és másolása).
 
@@ -51,10 +51,10 @@ Ha egy felhőbeli tárfiókot céloz meg, akkor másolja ki a tárfiók elsődle
 ### <a name="configure-your-storage-connection-string"></a>A tárolási kapcsolati karakterlánc konfigurálása
 A .NET-hez készült Azure Storage ügyféloldali kódtár támogatja a tárolási szolgáltatások eléréséhez használt végpontok és hitelesítő adatok tárolási kapcsolati karakterlánccal történő konfigurálását. A tárolási kapcsolati karakterlánc egy konfigurációs fájlban tartható fenn a legjobban. 
 
-A kapcsolati karakterláncokkel kapcsolatos további információkért lásd: [Az Azure Storage kapcsolati karakterláncának konfigurálása](../articles/storage/common/storage-configure-connection-string.md).
+A kapcsolati sztringekkel kapcsolatos további információkért lásd: [Az Azure Storage kapcsolati sztringjének konfigurálása](../articles/storage/common/storage-configure-connection-string.md).
 
 > [!NOTE]
-> A tárfiók kulcsa hasonlít a tárfiók rendszergazdai jelszavához. Mindig ügyeljen a tárfiók kulcsának védelmére. Ne adja ki másoknak, ne kódolja fixen és ne mentse egy mások számára elérhető egyszerű szöveges fájlban. Ha azt gyanítja, hogy a kulcs biztonsága sérült, az Azure Portal segítségével hozza létre újra.
+> A tárfiók kulcsa hasonlít a tárfiók rendszergazdai jelszavához. Mindig ügyeljen a tárfiók kulcsának védelmére. Ne adja ki másoknak, ne kódolja fixen és ne mentse egy mások számára elérhető egyszerű szöveges fájlban. Ha azt gyanítja, hogy a kulcs biztonsága sérült, az Azure portál segítségével generálja újra.
 > 
 > 
 

@@ -1,5 +1,5 @@
 ---
-title: Mi az az Azure Analysis Services | Microsoft Docs?
+title: "Az Azure Analysis Services áttekintése | Microsoft Docs"
 description: "Az Azure Analysis Services átfogó áttekintése."
 services: analysis-services
 documentationcenter: 
@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 12/08/2017
+ms.date: 01/04/2017
 ms.author: owend
-ms.openlocfilehash: 60097a18afc76e09ecd7d69eececea53e9712bec
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: fe46b3c099c4fd4e04a39e2b2f127c1206711e60
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 01/05/2018
 ---
-# <a name="what-is-azure-analysis-services"></a>Mi az Azure Analysis Services?
+# <a name="azure-analysis-services-overview"></a>Azure Analysis Services – áttekintés
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
 
 Az Azure Analysis Services vállalati szintű adatmodellezést nyújt a felhőben. Ez egy teljes körűen felügyelt platformszolgáltatás, amely integrálva van az Azure adatplatform-szolgáltatásaival. 
@@ -95,7 +95,7 @@ Az olyan kiszolgálóerőforrás-kezelési feladatok, mint például a kiszolgá
 ## <a name="your-data-is-secure"></a>Az adatok biztonságban vannak
 ![Adatmegjelenítések](./media/analysis-services-overview/aas-overview-secure.png)
 
-#### <a name="authentication"></a>Authentication
+#### <a name="authentication"></a>Hitelesítés
 Az Azure Analysis Services felhasználóhitelesítését az [Azure Active Directory (AAD)](../active-directory/active-directory-whatis.md) kezeli. Az Azure Analysis Services-adatbázisba történő bejelentkezési kísérlet során a felhasználók egy szervezeti fiókidentitást használnak, amely hozzáféréssel rendelkezik az elérni kívánt adatbázishoz. A felhasználói identitásoknak az Azure Analysis Services-kiszolgálót tartalmazó előfizetés alapértelmezett Azure Active Directoryja tagjainak kell lenniük. További információ: [Hitelesítés és felhasználói engedélyek](analysis-services-manage-users.md).
 
 #### <a name="data-security"></a>Adatbiztonság
@@ -140,5 +140,5 @@ Javaslatai vagy új funkciókkal kapcsolatos felvetései vannak? Írja meg az [A
 
 Javaslatai vannak a dokumentációval kapcsolatosan? Szóljon hozzá a Livefyre segítségével a cikkek alján.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy már többet tud az Azure Analysis Servicesről, itt az ideje megtenni az első lépéseket. Megtudhatja, hogyan [hozhat létre kiszolgálót](analysis-services-create-server.md) az Azure-ban. Ha a kiszolgáló készen áll, hajtsa végre az [Adventure Works-oktatóanyag](tutorials/aas-adventure-works-tutorial.md) lépéseit. Ezekből megtudhatja, hogyan hozhat létre és helyezhet üzembe a kiszolgálón egy teljes körűen használható táblázatos modellt.

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/02/2017
 ms.author: nisoneji
-ms.openlocfilehash: 815148d2a39ce8b18092619c9687a56b457c8339
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 0baf595266e71fad2df16996d63af3ba7d23a6ac
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="azure-site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Azure Site Recovery Deployment Planner a Hyper-V – Azure-hoz
 Ez a cikk az Azure Site Recovery Deployment Planner felhasználói útmutatója a Hyper-V–Azure éles környezetben való üzembe helyezéséhez.
@@ -28,7 +28,7 @@ A Hyper-V virtuális gépek Site Recoveryvel történő védelmének megkezdése
 
 Létre kell hoznia a megfelelő típusú és számú cél Azure-tárfiókot is. Hozzon létre standard vagy prémium szintű tárfiókokat a fokozatosan növekvő használat során megnövekedett éles kiszolgálók miatt. A tárolási típust virtuális gépenként válassza ki, a számítási feladatok jellemzői (például olvasási és írási I/O-műveletek másodpercenként (IOPS), vagy adatváltozás) és az Azure Site Recovery-korlátok alapján. 
 
-Az Azure Site Recovery üzembehelyezés-tervező (2-es verzió) egy Hyper-V – Azure és VMware – Azure vészhelyreállítási forgatókönyvekben elérhető parancssori eszköz. Az eszközzel (az éles környezet megzavarása nélkül) távolról készítheti el a több Hyper-V-gazdagépen lévő Hyper-V virtuális gépek profilját, és megismerheti a sávszélességet és az Azure Storage követelményeit a sikeres replikálás és feladatátvétel/feladatátvételi teszt érdekében. Az eszközt helyszíni Azure Site Recovery-összetevők telepítése nélkül is futtathatja. Az elért átviteli sebesség pontos meghatározása érdekében azonban ajánlott a tervezőeszköz futtatása egy olyan Windows Serveren, amelynek hardverkonfigurációja megegyezik az Azure-beli vészhelyreállítási védelem biztosításához használt Hyper-V-kiszolgálókéval. 
+Az Azure Site Recovery üzembehelyezés-tervező egy, a Hyper-V – Azure és VMware – Azure vészhelyreállítási forgatókönyvekben elérhető parancssori eszköz. Az eszközzel (az éles környezet megzavarása nélkül) távolról készítheti el a több Hyper-V-gazdagépen lévő Hyper-V virtuális gépek profilját, és megismerheti a sávszélességet és az Azure Storage követelményeit a sikeres replikálás és feladatátvétel/feladatátvételi teszt érdekében. Az eszközt helyszíni Azure Site Recovery-összetevők telepítése nélkül is futtathatja. Az elért átviteli sebesség pontos meghatározása érdekében azonban ajánlott a tervezőeszköz futtatása egy olyan Windows Serveren, amelynek hardverkonfigurációja megegyezik az Azure-beli vészhelyreállítási védelem biztosításához használt Hyper-V-kiszolgálókéval. 
 
 Az eszköz a következő részleteket biztosítja:
 
@@ -121,9 +121,9 @@ A virtuális gép ajánlott konfigurációja: 8 vCPU, 16 GB RAM, 300 GB HDD.
 3.  Csomagolja ki a .zip mappát.
 A mappa több fájlt és almappát tartalmaz. Az ASRDeploymentPlanner.exe futtatható fájl a szülőmappában található.
 
-Példa: másolja a zip-fájlt az E:\ meghajtóra, és csomagolja ki. E:\ASR Deployment Planner_v2.0.zip
+Példa: másolja a zip-fájlt az E:\ meghajtóra, és csomagolja ki. E:\ASR Deployment Planner_v2.1.zip
 
-E:\ASR Deployment Planner_v2.0\ASRDeploymentPlanner.exe
+E:\ASR Deployment Planner_v2.1\ASRDeploymentPlanner.exe
 
 ### <a name="updating-to-the-latest-version-of-deployment-planner"></a>Frissítés az üzembehelyezés-tervező a legújabb verzióra
 Ha az üzembehelyezés-tervező korábbi verziójával rendelkezik, tegye az alábbiak egyikét:
@@ -137,5 +137,10 @@ Ha az üzembehelyezés-tervező korábbi verziójával rendelkezik, tegye az al�
   >
   >Minden új Deployment Planner a .zip fájl összegző frissítését jelenti. Ezért nem kell a legújabb fájlokat a korábbi mappába másolnia. Létrehozhat és használhat egy új mappát is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="version-history"></a>Verzióelőzmények
+A legutóbbi ASR Deployment Planner eszköz verziószáma 2.1.
+Az egyes frissítésekben hozzáadott javításokról az [ASR Deployment Planner verzióelőzményeinek oldalán](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx) lehet tájékozódni.
+
+
+## <a name="next-steps"></a>További lépések
 * [Az üzembehelyezés-tervező futtatása](site-recovery-hyper-v-deployment-planner-run.md).

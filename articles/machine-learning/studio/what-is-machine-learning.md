@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/12/2017
 ms.author: cgronlun;tedway;olgali
-ms.openlocfilehash: 38c5f722029c80d7e61039ebe05346b345573e34
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: adbd1badd8053d3c2b53386b0311e120738099f9
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="introduction-to-machine-learning-in-the-azure-cloud"></a>Bevezetés az Azure-felhőalapú Machine Learning használatába
 
@@ -33,7 +33,7 @@ Az [Adatelemzés kezdőknek](data-science-for-beginners-the-5-questions-data-sci
 ## <a name="what-is-machine-learning-in-the-microsoft-azure-cloud"></a>Mi a Microsoft Azure-felhő Machine Learning funkciója?
 Az Azure Machine Learning egy felhőalapú prediktív elemzési szolgáltatás, amely lehetővé teszi elemzési megoldásként használható prediktív modellek gyors létrehozását és üzembe helyezését.
 
-A használatra kész algoritmusok tárából dolgozhat, az algoritmusokat modellek létrehozására használhatja internetkapcsolattal rendelkező számítógépeken, és a prediktív elemzési megoldást gyorsan üzembe helyezheti. Kezdje a munkát a [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com/) használatra kész példáival és megoldásaival.
+A használatra kész algoritmusok tárából dolgozhat, az algoritmusokat modellek létrehozására használhatja internetkapcsolattal rendelkező számítógépeken, és a prediktív elemzési megoldást gyorsan üzembe helyezheti. Kezdje a munkát az [Azure AI-katalógusban](https://gallery.cortanaintelligence.com/) található használatra kész példákkal és megoldásokkal.
 
 ![Mit jelent a gépi tanulás funkció? A prediktív elemzés működésbe léptetésének alapvető munkafolyamata az Azure Machine Learning szolgáltatásban.](./media/what-is-machine-learning/machine-learning-service-parts-and-workflow.png)
 
@@ -48,9 +48,9 @@ Az Azure Machine Learning szolgáltatásban minden megtalálható, amire szüks�
 ### <a name="machine-learning-studio-create-predictive-models"></a>Machine Learning Studio: Prediktív modellek létrehozása
 Húzással és modulok csatlakoztatásával gyorsan létrehozhat prediktív modelleket a [Machine Learning Studióban](what-is-ml-studio.md). Kísérletezhet a különböző kombinációkkal, amelyeket [ingyenesen ki is próbálhat](https://studio.azureml.net/?selectAccess=true&o=2).
 
-* A [Cortana Intelligence Galleryben](gallery-how-to-use-contribute-publish.md) mások által kifejlesztett elemzési megoldásokat próbálhat ki, vagy létrehozhatja a sajátját. A közösség szívesen segít választ találni kísérletekkel kapcsolatos kérdéseire vagy megjegyzéseire. A kísérletekre mutató hivatkozásait különféle közösségi hálózatokon (például LinkedInen vagy Twitteren) is megoszthatja.
+* Az [Azure AI-katalógusban](gallery-how-to-use-contribute-publish.md) mások által kifejlesztett elemzési megoldásokat próbálhat ki, vagy létrehozhatja a sajátját. A közösség szívesen segít választ találni kísérletekkel kapcsolatos kérdéseire vagy megjegyzéseire. A kísérletekre mutató hivatkozásait különféle közösségi hálózatokon (például LinkedInen vagy Twitteren) is megoszthatja.
 
-  ![Kipróbálhatja mások prediktív kísérleteit, vagy feltöltheti sajátjait az Azure Cortana Intelligence Gallerybe.](./media/what-is-machine-learning/machine-learning-cortana-intelligence-gallery.png)
+  ![Kipróbálhatja mások prediktív kísérleteit, vagy feltöltheti sajátjait az Azure AI-katalógusban.](./media/what-is-machine-learning/machine-learning-cortana-intelligence-gallery.png)
 * A Machine Learning Studióban olyan [Machine Learning-algoritmusok és -modulok](https://msdn.microsoft.com/library/azure/f5c746fd-dcea-4929-ba50-2a79c4c067d7) gazdag tára áll rendelkezésre, amelyek jelentősen felgyorsítják a prediktív modell létrehozását. Mintakísérletek, R- és Python-csomagok, valamint olyan kategóriavezető Microsoft-algoritmusok közül választhat, mint az Xbox és a Bing. A Studio moduljait saját [R-](extend-your-experiment-with-r.md) és [Python-](execute-python-scripts.md)parancsprogramjaival bővítheti ki.
 
   ![A prediktív elemzés bemutatása: prediktív elemzési kísérlet bemutatása az Azure Machine Learning Studióban](./media/what-is-machine-learning/azure-machine-learning-studio-predictive-score-experiment.png)
@@ -108,7 +108,7 @@ Ha elvégezte a modell betanítását, a fennmaradó tesztadatok segítségével
 * **pontszám**: betanított besorolási vagy regressziós modell által, a Machine Learning Studio [Score Model](https://msdn.microsoft.com/library/azure/dn905995.aspx) (Modell pontozása) modulja segítségével generált előre jelzett érték. A besorolási modell az előre jelzett érték valószínűségét jelző pontszámot is visszaad. Ha a modell már alkalmas pontszámok generálására, ellenőrizze a modell pontosságát az [Evaluate Model](https://msdn.microsoft.com/library/azure/dn905915.aspx) (Modell kiértékelése) modul segítségével.
 * **minta**: az adathalmaz olyan része, amely az adathalmaz egészére vonatkozóan is reprezentatívnak tekinthető. A mintát kiválaszthatja véletlenszerűen vagy az adathalmaz konkrét jellemzői alapján.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A prediktív elemzés és a gépi tanulás alapjainak megismeréséhez használja [részletes oktatóanyagainkat](create-experiment.md) vagy [bővíthető mintáinkat](sample-experiments.md).  
 
 <!-- Module References -->

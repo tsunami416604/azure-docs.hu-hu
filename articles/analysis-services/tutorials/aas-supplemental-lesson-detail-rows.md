@@ -13,26 +13,24 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: fbc6187e80a42330c96ebaa1195ea188430894cc
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 5a4dc7004245923fa6bda779114166ecf08d075f
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="supplemental-lesson---detail-rows"></a>Kiegészítő lecke – Részletsorok
-
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
 Ebben a kiegészítő leckében a DAX-szerkesztőt használhatja egy egyéni részletsor-kifejezés megadására. A részletsor-kifejezés egy mérték egy olyan tulajdonsága, amely további információkat nyújt a végfelhasználóknak a mérték aggregált eredményeiről. 
   
 A lecke elvégzésének várható időtartama: **10 perc**.  
   
 ## <a name="prerequisites"></a>Előfeltételek  
-Ez a kiegészítőlecke-témakör a táblázatos modellezésről szóló oktatóanyag része. Az ebben a kiegészítő leckében található feladatok végrehajtása előtt be kell fejeznie minden előző leckét, vagy rendelkeznie kell egy befejezett Adventure Works internetes értékesítési minta modellprojekttel.  
+Ez a kiegészítő lecke a táblázatos modellezésről szóló oktatóanyag része. Az ebben a kiegészítő leckében található feladatok végrehajtása előtt be kell fejeznie minden előző leckét, vagy rendelkeznie kell egy befejezett Adventure Works internetes értékesítési minta modellprojekttel.  
   
-## <a name="what-do-we-need-to-solve"></a>Mit kell megoldanunk?
+## <a name="whats-the-issue"></a>Mi a probléma?
 Vessünk egy pillantást az InternetTotalSales mérték részleteire egy részletsor-kifejezés hozzáadása előtt.
 
 1.  Az SSDT-ben kattintson a **Modell** menü > **Elemzés az Excelben** elemére az Excel megnyitásához és egy üres kimutatás létrehozásához.
@@ -51,7 +49,7 @@ Itt egy olyan, adatokból álló oszlopokat és sorokat tartalmazó táblázatot
 
 #### <a name="to-create-a-detail-rows-expression"></a>Részletsor-kifejezés létrehozása 
   
-1. A modelltervezőben kattintson a **FactInternetSales** táblára. 
+1. A FactInternetSales tábla mértékrácsában kattintson az **InternetTotalSales** mértékre. 
 
 2. A **Tulajdonságok** > **Részletsor-kifejezés** részben kattintson a szerkesztőgombra a DAX-szerkesztő megnyitásához.
 
@@ -81,7 +79,7 @@ Itt egy olyan, adatokból álló oszlopokat és sorokat tartalmazó táblázatot
 5. Helyezze ismét üzembe a modellt.
 
   
-## <a name="see-also"></a>Lásd még:  
-[SELECTCOLUMNS függvény (DAX)](https://msdn.microsoft.com/library/mt761759.aspx)   
+## <a name="see-also"></a>Lásd még  
+[SELECTCOLUMNS függvény (DAX)](https://msdn.microsoft.com/library/mt761759.aspx)  
 [Kiegészítő lecke – Dinamikus biztonság](../tutorials/aas-supplemental-lesson-dynamic-security.md)  
 [Kiegészítő lecke – Hézagos hierarchiák](../tutorials/aas-supplemental-lesson-ragged-hierarchies.md)  
