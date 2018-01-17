@@ -7,11 +7,12 @@ ms.author: csand
 ms.date: 12/14/2017
 ms.topic: quickstart
 ms.service: automation
-ms.openlocfilehash: 55bed1bc4788799465e87e65b136ff9e51318fbd
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.custom: mvc
+ms.openlocfilehash: 34ae160c5e19e161f4412838e377a844c737728d
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="create-an-azure-automation-runbook"></a>Azure Automation-runbook létrehozása
 
@@ -71,7 +72,7 @@ A runbook létrehozása után tesztelje, hogy működik-e a runbook.
 
 1. A **PowerShell-runbook szerkesztése** oldalon kattintson a **Közzététel** lehetőségre, hogy a runbookot a fiókban lévő runbook hivatalos verziójaként tegye közzé.
 
-   ![A runbook áttekintése](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-overview.png)
+   ![Runbook tesztfeladat](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job.png)
 
 ## <a name="run-the-runbook"></a>A runbook futtatása
 
@@ -83,11 +84,11 @@ A runbook közzététele után megjelenik az áttekintő oldal.
 
 1. Hagyja üresen a **Név** mezőt, hogy az alapértelmezett értéket használja, és kattintson az **OK** gombra. Elküldi a runbookfeladatot, és megjelenik a feladat oldala.
 
-   ![Runbook tesztfeladat](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job.png)
+   ![Runbook tesztfeladat](./media/automation-quickstart-create-runbook/automation-job-page.png)
 
 1. Amikor a **Feladat állapota** **Fut** vagy **Befejezve**, kattintson a **Kimenet** lehetőségre a **Kimenet** panel megnyitásához és a runbook kimenetének megtekintéséhez.
 
-    ![Runbook tesztfeladat](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job-output.png)
+   ![Runbook tesztfeladat](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job-output.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

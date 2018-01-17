@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 11/03/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 3136bccb7724c95c4001e353d7feeecb045f1273
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: e61e664ef5cd9e296016c8fc572d67ec1d62c1f7
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="choose-between-flow-logic-apps-functions-and-webjobs"></a>Választás a következők közül: Flow, Logic Apps, Functions és WebJobs
 Ez a cikk az integrációs problémák megoldására és üzleti folyamatok automatizálására alkalmas alábbi Microsoft Cloud-szolgáltatásokat hasonlítja össze:
@@ -81,7 +81,7 @@ Az alábbi táblázat a Functions és a WebJobs közötti különbségeket fogla
 | Méretezés |Konfiguráció nélküli méretezés |Méretezés App Service-csomaggal |
 | Díjszabás |Használatalapú fizetés vagy az App Service-csomag része |Az App Service-csomag része |
 | Futtatási típus |Aktivált, ütemezett (időzítő eseményindító által) |Aktivált, folyamatos, ütemezett |
-| Kiváltó események |[Időzítő](functions-bindings-timer.md), [Azure Cosmos DB](functions-bindings-documentdb.md), [Azure Event Hubs](functions-bindings-event-hubs.md), [HTTP/WebHook (GitHub, Slack)](functions-bindings-http-webhook.md), [Azure App Service Mobile Apps](functions-bindings-mobile-apps.md), [Azure Event Hubs](functions-bindings-event-hubs.md), [Azure Storage üzenetsorok és blobok](functions-bindings-storage-blob.md), [Azure Service Bus üzenetsorok és témakörök](functions-bindings-service-bus.md) |[Azure Storage üzenetsorok és blobok](functions-bindings-storage-blob.md), [Azure Service Bus üzenetsorok és témakörök](functions-bindings-service-bus.md) |
+| Kiváltó események |[Időzítő](functions-bindings-timer.md), [Azure Cosmos DB](functions-bindings-cosmosdb.md), [Azure Event Hubs](functions-bindings-event-hubs.md), [HTTP/WebHook (GitHub, Slack)](functions-bindings-http-webhook.md), [Azure App Service Mobile Apps](functions-bindings-mobile-apps.md), [Azure Event Hubs](functions-bindings-event-hubs.md), [Azure Storage üzenetsorok és blobok](functions-bindings-storage-blob.md), [Azure Service Bus üzenetsorok és témakörök](functions-bindings-service-bus.md) |[Azure Storage üzenetsorok és blobok](functions-bindings-storage-blob.md), [Azure Service Bus üzenetsorok és témakörök](functions-bindings-service-bus.md) |
 | Fejlesztés böngészőben |Támogatott |Nem támogatott |
 | C# |Támogatott |Támogatott |
 | F# |Támogatott |Nem támogatott |
@@ -111,7 +111,7 @@ Mint azt korábban említettük, az adott helyzettől függ, melyik a legmegfele
 
 Meghívhat egy logikai alkalmazást egy folyamatban. Függvényt is meghívhat egy logikai alkalmazásban, és logikai alkalmazást is egy függvényben. A Flow, a Logic Apps és a Functions közötti integráció folyamatosan javul. Amit létrehoz az egyik szolgáltatásban, használhatja a többiben. Ezért a három technológia bármelyikébe megéri befektetni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ismerkedjen meg az egyes szolgáltatásokkal az első folyamat, logikai alkalmazás, függvényalkalmazás vagy WebJob létrehozása révén. Kattintson a következő hivatkozások bármelyikére:
 
 * [A Microsoft Flow használatának első lépései](https://flow.microsoft.com/en-us/documentation/getting-started/)
