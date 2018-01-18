@@ -83,7 +83,7 @@
       items:
         - name: A virtuális gép előkészítése
           items:
-            - name: A Resource Managerrel üzembe helyezett virtuális gépek előkészítése
+            - name: A Resource Manager által telepített virtuális gépek előkészítése
               href: backup-azure-arm-vms-prepare.md
             - name: Linuxos virtuális gépek alkalmazáskonzisztens biztonsági mentései
               href: backup-azure-linux-app-consistent.md
@@ -93,7 +93,7 @@
               href: backup-azure-vms-introduction.md
         - name: Virtuális gépek biztonsági mentése
           items:
-            - name: Azure-beli virtuális gépek biztonsági mentése Recovery Services-tárolóba
+            - name: Azure-beli virtuális gépek biztonsági mentése egy Recovery Services-tárolóba
               href: backup-azure-arm-vms.md
             - name: Titkosított virtuális gépek biztonsági mentése
               href: backup-azure-vms-encryption.md
@@ -101,13 +101,13 @@
           items:
             - name: Azure-beli virtuális gépek biztonsági másolatainak kezelése az Azure Portalon
               href: backup-azure-manage-vms.md
-            - name: Azure-beli virtuális gépek biztonsági másolataival kapcsolatos riasztások figyelése az Azure Portalon
+            - name: Azure-beli virtuális gépek biztonsági mentésével kapcsolatos riasztások monitorozása
               href: backup-azure-monitor-vms.md
         - name: Virtuális gépek adatainak visszaállítása
           items:
             - name: Fájlok helyreállítása Azure-beli virtuális gépek biztonsági másolataiból
               href: backup-azure-restore-files-from-vm.md
-            - name: A Resource Managerrel üzembe helyezett virtuális gépek visszaállítása az Azure Portalon
+            - name: Virtuális gépek visszaállítása az Azure Portalon
               href: backup-azure-arm-restore-vms.md
             - name: Titkosított virtuális gépek visszaállítása
               href: backup-azure-vms-encryption.md
@@ -125,7 +125,7 @@
       items:
         - name: A DPM számítási feladatainak előkészítése az Azure Portalon
           href: backup-azure-dpm-introduction.md
-        - name: A System Center DPM használata Exchange-kiszolgálók biztonsági mentéséhez
+        - name: Exchange-kiszolgáló biztonsági mentése a DPM-mel
           href: backup-azure-backup-exchange-server.md
         - name: Adatok helyreállítása egy másik DPM-kiszolgálóra
           href: backup-azure-alternate-dpm-server.md
@@ -189,7 +189,7 @@
       href: /powershell/module/azurerm.recoveryservices.backup
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.recoveryservices.backup
-- name: Erőforrások
+- name: További források
   items:
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'

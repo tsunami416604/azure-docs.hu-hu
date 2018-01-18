@@ -202,7 +202,7 @@
 ### [StorSimple-höz készült Windows PowerShell-parancsmagok](https://technet.microsoft.com/library/dn688168.aspx)
 
 
-# StorSimple Data Manager (privát előzetes verzió)
+# StorSimple Data Manager
 
 ## Áttekintés
 ### [Mi a megoldás?](storsimple-data-manager-overview.md)

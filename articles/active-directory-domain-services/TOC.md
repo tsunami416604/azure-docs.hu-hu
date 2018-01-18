@@ -44,17 +44,22 @@
 ## Hibaelhárítás
 ### [Gyakori kérdések](active-directory-ds-faqs.md)
 ### [Hibaelhárítási útmutató](active-directory-ds-troubleshooting.md)
+### [Riasztások hibaelhárítása](active-directory-ds-troubleshoot-alerts.md)
+#### [Hálózati biztonsági csoportok hibás konfigurációinak javítása](active-directory-ds-troubleshoot-nsg.md)
+#### [Hiányzó szolgáltatásnevek visszaállítása](active-directory-ds-troubleshoot-service-principals.md)
+#### [A biztonságos LDAP hibái](active-directory-ds-troubleshoot-ldaps.md)
 ### [Eltérő bérlők hibáinak megoldása](active-directory-ds-mismatched-tenant-error.md)
+
 
 # Referencia
 ## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
 
-# Kapcsolódó
+# Kapcsolódó témakörök
 ## [Azure Active Directory](../active-directory/active-directory-whatis.md)
 ## [Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-overview.md)
 ## [Többtényezős hitelesítés](../multi-factor-authentication/multi-factor-authentication.md)
 
-# Erőforrások
+# További források
 ## [Azure AD visszajelzési fórum](https://feedback.azure.com/forums/169401-azure-active-directory)
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [Kapcsolat](active-directory-ds-contact-us.md)

@@ -35,6 +35,7 @@
 ### [Adatmegjelenítés a Web Apps használatával](iot-hub-live-data-visualization-in-web-apps.md)
 ### [Időjárás-előrejelzés az Azure Machine Learning használatával](iot-hub-weather-forecast-machine-learning.md)
 ### [Eszközkezelés az iothub-explorerrel](iot-hub-device-management-iothub-explorer.md)
+### [Eszközfelügyelet az Azure CLI 2.0-hoz készült IoT-bővítménnyel](iot-hub-device-management-iot-extension-azure-cli-2-0.md)
 ### [Távoli figyelés és értesítések a Logic Apps használatával](iot-hub-monitoring-notifications-with-azure-logic-apps.md)
 
 # Útmutatók
