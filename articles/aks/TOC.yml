@@ -29,6 +29,10 @@
       href: tutorial-kubernetes-monitor.md
     - name: 8 – Fürt frissítése
       href: tutorial-kubernetes-upgrade-cluster.md
+- name: Alapelvek
+  items:
+    - name: Kvóták és regionális korlátok
+      href: container-service-quotas.md
 - name: Útmutatók
   items:
     - name: AKS-fürt méretezése
@@ -49,11 +53,13 @@
       href: kubernetes-service-principal.md
     - name: Adatkötetek konfigurálása
       items:
+        - name: Azure-lemezek – tartós kötet
+          href: azure-disks-dynamic-pv.md
         - name: Azure Files – Tartós kötet
           href: azure-files-dynamic-pv.md
         - name: Azure Files – Kötet
           href: azure-files.md
-- name: Hivatkozás
+- name: Referencia
   items:
     - name: Azure CLI
       href: /cli/azure/aks

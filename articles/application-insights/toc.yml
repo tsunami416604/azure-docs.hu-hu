@@ -265,11 +265,13 @@
           href: app-insights-analytics-troubleshooting.md
         - name: Java
           href: app-insights-java-troubleshoot.md
+        - name: Használatelemzés
+          href: app-insights-usage-troubleshoot.md
 - name: Példák
   items:
     - name: Kódminták
       href: 'https://azure.microsoft.com/resources/samples/?service=application-insights&sort=0'
-- name: Hivatkozás
+- name: Referencia
   items:
     - name: Elemzés lekérdezési nyelve
       href: 'https://docs.loganalytics.io/'

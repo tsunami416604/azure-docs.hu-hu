@@ -24,6 +24,8 @@
       href: tutorial-deploy-machine-learning.md
     - name: Az Azure Functions üzembe helyezése
       href: tutorial-deploy-function.md
+    - name: IoT Edge-beli üzemelő példány létrehozása az Azure CLI 2.0-hoz készült IoT-bővítménnyel
+      href: tutorial-create-deployment-with-cli-iot-extension.md
 - name: Útmutatók
   items:
     - name: Átjárók létrehozása

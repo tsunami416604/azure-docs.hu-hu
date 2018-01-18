@@ -69,10 +69,12 @@
       href: concepts-hyper-v-to-secondary-architecture.md
     - name: Azure-ról Azure-ra támogatási mátrix
       href: site-recovery-support-matrix-azure-to-azure.md
-    - name: Helyszíniről Azure-ra támogatási mátrix
-      href: site-recovery-support-matrix-to-azure.md
+    - name: VMware-ről Azure-ra támogatási mátrix
+      href: support-matrix-vmware-to-azure.md
     - name: Hyper-V-ről Azure-ra támogatási mátrix
       href: support-matrix-hyper-v-to-azure.md
+    - name: Helyszíniről Azure-ra támogatási mátrix
+      href: site-recovery-support-matrix-to-azure.md
     - name: Helyszíniről másodlagos helyre támogatási mátrix
       href: site-recovery-support-matrix-to-sec-site.md
     - name: Számítási feladatok vészhelyreállítása
@@ -181,6 +183,8 @@
           items:
             - name: 'Forráskörnyezet: VMware-ről Azure-ba'
               href: site-recovery-set-up-vmware-to-azure.md
+            - name: A VMware-hez és a fizikai kiszolgálókhoz használt konfigurációs kiszolgáló telepítése
+              href: how-to-deploy-configuration-server.md
             - name: 'Forráskörnyezet: fizikairól az Azure-ba'
               href: site-recovery-set-up-physical-to-azure.md
         - name: A célkörnyezet beállítása
@@ -273,7 +277,7 @@
           href: site-recovery-failover-to-azure-troubleshoot.md
         - name: Naplók gyűjtése és helyszíni problémák hibaelhárítása
           href: site-recovery-monitoring-and-troubleshooting.md
-- name: Hivatkozás
+- name: Referencia
   items:
     - name: Azure PowerShell
       href: /powershell/module/azurerm.recoveryservices.siterecovery
