@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/10/2017
+ms.date: 17/01/2018
 ms.author: dobett
-ms.openlocfilehash: c9e0441ec42e5710f43bbe7fa8af4a9fe7447a69
-ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
+ms.openlocfilehash: 0ac6226b1e5773b1212b70172e2c13a0a5c925a8
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="what-is-azure-iot-suite"></a>Mi az Azure IoT Suite?
 
@@ -62,7 +62,7 @@ A következő táblázatban láthatja, hogyan képezhetők le a megoldások adot
 | ------------------------------------------------------------ | -- | -- | -- | -- | -- | -- | -- |
 | [Távoli figyelés](iot-suite-remote-monitoring-explore.md)  |Igen |Igen |Igen |-   |Igen |Igen |-   |
 | [Prediktív karbantartás](iot-suite-predictive-overview.md)   |Igen |Igen |-   |-   |Igen |Igen |Igen |
-| [Csatlakoztatott gyár](iot-suite-connected-factory-overview.md) |Igen |Igen |Igen |Igen |Igen |Igen |-   |
+| [Csatlakoztatott gyár](iot-suite-connected-factory-overview.md) |Igen |- |- |Igen |Igen |Igen |-   |
 
 * *Adatfeldolgozás*: A felhőbe érkező nagy mennyiségű adatforgalom.
 * *Eszközidentitás*: Egyedi eszközidentitások kezelése és eszközhozzáférés biztosítása a megoldáshoz.
@@ -83,11 +83,11 @@ Egy előre konfigurált megoldás üzembe helyezésekor a kiépítési folyamat 
 | IoT Hub              | Igen                |                        | Igen               |
 | Event Hubs           |                    | Igen                    |                   |
 | Time Series Insights |                    |                        | Igen               |
-| Tárolószolgáltatások   | Igen                |                        | Igen               |
+| Tárolószolgáltatások   | Igen                |                        |                   |
 | Stream Analytics     |                    | Igen                    |                   |
 | Web Apps             | Igen                | Igen                    | Igen               |
-| Cosmos DB            | Igen                | Igen                    | Igen               |
-| Azure-táblák         |                    | Igen                    | Igen               |
+| Cosmos DB            | Igen                | Igen                    |                    |
+| Azure Storage         |                    | Igen                    | Igen               |
 
 > [!NOTE]
 > Az előre konfigurált távoli figyelési megoldásban üzembe helyezett erőforrásokkal kapcsolatos további információkért tekintse meg a következő [cikket](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/blob/master/README.md#basic-vs-standard-deployments) a GitHubon.
