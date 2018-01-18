@@ -9,11 +9,11 @@ ms.author: xshi
 ms.date: 12/06/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 01d321dce439e153b494dfd0de52c100dab78f39
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 1ab67cd8aaf59cde3157fcb877ce13f10cb432bb
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="use-visual-studio-code-to-debug-c-module-with-azure-iot-edge"></a>Visual Studio Code Azure IoT peremhálózati hibakeresési C# modul használata
 Ez a cikk részletes utasításokat biztosít [Visual Studio Code](https://code.visualstudio.com/) hibakeresése az IoT-Edge modulok fő fejlesztési eszközként.
@@ -32,6 +32,9 @@ Miután elvégzi az előző oktatóanyag, készen áll, a következő elemeket k
 
 ## <a name="build-your-iot-edge-module-for-debugging-purpose"></a>A hibakeresési célú IoT peremhálózati modul létrehozása
 1. A hibakeresés, kell használnia a **dockerfile.debug** építse újra a docker-lemezképet, és telepítse újra a peremhálózati megoldás. Visual STUDIO Code Explorerben (megoldáskezelőben) kattintson a Docker mappára a megnyitásához. Kattintson a `linux-x64` mappát, kattintson a jobb gombbal a **Dockerfile.debug**, és kattintson a **Build IoT peremhálózati modul Docker kép**.
+
+    ![Hibakeresési lemezkép](./media/how-to-debug-csharp-module/build-debug-image.png)
+
 3. Az a **Mappaválasztás** ablak, írja be vagy keresse meg a `./bin/Debug/netcoreapp2.0/publish`. Kattintson a **mappát adja meg a EXE_DIR**.
 4. Az előugró szövegmezőben a Visual STUDIO Code ablak tetején adja meg a lemezkép nevét. Például: `<your container registry address>/filtermodule:latest`. Ha a helyi beállításjegyzékben telepít, meg kell `localhost:5000/filtermodule:latest`.
 5. A Docker-tárház küldje le a lemezképet. Használja a **peremhálózati: leküldéses IoT peremhálózati modul Docker kép** parancsot, és az előugró mezőben a Visual STUDIO Code ablak tetején adja meg a kép URL-címe. Az azonos kép URL-cím használata fenti lépés szerepel.
@@ -39,9 +42,18 @@ Miután elvégzi az előző oktatóanyag, készen áll, a következő elemeket k
 
 ## <a name="start-debugging-in-vs-code"></a>Indítsa el a Visual STUDIO Code-hibakeresés
 1. Ugrás a Visual STUDIO Code hibakeresési ablakban. Nyomja le az **F5** válassza **IoT Edge(.Net Core)**
+
+    ![Nyomja le az F5 billentyűt](./media/how-to-debug-csharp-module/f5-debug-option.png)
+
 2. A `launch.json`, navigáljon a **Debug IoT peremhálózati egyéni modul (.NET Core)** szakaszt, és töltse ki a `<container_name>`alatt `pipeArgs`. Meg kell `filtermodule` ebben az oktatóanyagban.
+
+    ![PipeArgs módosítása](./media/how-to-debug-csharp-module/f5-debug-option.png)
+
 3. Keresse meg a program.cs fájlt. A Töréspont a `method static async Task<MessageResponse> FilterModule(Message message, object userContext)`.
 4. Nyomja le az **F5** újra. És válassza ki a csatlakoztatni kívánt folyamatot. Ebben az oktatóanyagban a folyamat nevét kell megadni`FilterModule.dll`
+
+    ![Folyamat csatolása](./media/how-to-debug-csharp-module/attach-process.png)
+
 5. A Visual STUDIO Code Debug ablakban megtekintheti a változók a bal oldali panelen. 
 
 > [!NOTE]

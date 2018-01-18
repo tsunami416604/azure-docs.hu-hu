@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/12/2017
 ms.author: byvinyal
-ms.openlocfilehash: e6595c9f49e3b6303ad96c37d4ee5ebea37ce829
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2f10788ed01f5ad5e93ae491a03ca820554df2f9
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="high-density-hosting-on-azure-app-service"></a>Nagy sűrűségű üzemeltetésének Azure App Service
 App Service használata esetén a rendszer leválasztja az alkalmazást a két fogalom által lefoglalt kapacitás:
@@ -87,7 +87,7 @@ Set-AzureRmWebApp $newapp
 ```
 
 > [!IMPORTANT]
-> $newapp. SiteConfig.NumberOfWorkers másik formája $newapp, amely. MaxNumberOfWorkers. Alkalmazásonkénti $newapp skálázás használja. A skála jellemzőit az alkalmazás SiteConfig.NumberOfWorkers.
+> $newapp. SiteConfig.NumberOfWorkers $newapp eltér. MaxNumberOfWorkers. Alkalmazásonkénti $newapp skálázás használja. A skála jellemzőit az alkalmazás SiteConfig.NumberOfWorkers.
 
 ### <a name="per-app-scaling-using-azure-resource-manager"></a>Egy alkalmazás skálázás Azure Resource Manager használatával
 
@@ -158,7 +158,7 @@ Ezek a lépések segítségével állítsa be az alkalmazások közötti üzemel
     - A nagy igénybevételnek kitett alkalmazás állíthatja be **numberOfWorkers** való **3** kell rendelkeznie az adott alkalmazáshoz több feldolgozási kapacitás. 
     - Alacsony használható alkalmazások állítania **numberOfWorkers** való **1**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure App Service-csomagok részletes áttekintése](../azure-web-sites-web-hosting-plans-in-depth-overview.md)
 - [Az App Service Environment bemutatása](app-service-app-service-environment-intro.md)

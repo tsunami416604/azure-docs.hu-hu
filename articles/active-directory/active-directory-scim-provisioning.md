@@ -1,5 +1,5 @@
 ---
-title: "Rendszert használ, a tartományok közötti Identity Management automatikusan létesítsen felhasználók és csoportok az Azure Active Directory alkalmazásokhoz |} Microsoft Docs"
+title: "SCIM használata az Azure Active Directory-alkalmazások létesítési automatizálásához |} Microsoft Docs"
 description: "Az Azure Active Directory automatikusan telepíthetik a felhasználókat és csoportokat a webszolgáltatás által a felülettel, a SCIM protokoll specifikációja definiálva van fronted alkalmazás vagy identitás tároló"
 services: active-directory
 documentationcenter: 
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.custom: aaddev;it-pro
-ms.openlocfilehash: 82649b0da67882a0088876798b6f0d79e46051a7
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.custom: aaddev;it-pro;seohack1
+ms.openlocfilehash: 17732ae616339020f11bc8973dc57b6d0fff4884
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="using-system-for-cross-domain-identity-management-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>A tartományok közötti Identity Management rendszert használ automatikusan a felhasználók és csoportok az Azure Active Directory alkalmazások telepítéséhez
 
@@ -50,7 +50,7 @@ Az Azure AD beállítható úgy, hogy automatikusan a hozzárendelt rendelkezés
 
 Kérje meg az alkalmazás-szolgáltatót, és ezeket a követelményeket is kompatibilisek állapotkimutatások az alkalmazás szolgáltató dokumentációját.
 
-### <a name="getting-started"></a>Bevezetés
+### <a name="getting-started"></a>Első lépések
 Ez a cikk a leírt SCIM profil támogató alkalmazások Azure Active Directory, az Azure AD application gallery a "nem galéria alkalmazás" funkciójával lehet csatlakoztatni. A csatlakozás után a Azure AD át 20 percenként, ahol azt az alkalmazás SCIM végpont hozzárendelt felhasználók és csoportok, lekérdezi és hoz létre vagy módosítja őket a hozzárendelés részletek alapján fut a szinkronizálási folyamat.
 
 **Alkalmazást, amely támogatja a SCIM:**
@@ -124,7 +124,7 @@ Az egy SCIM végpontot, amelyhez is fogadja el a kiépítési kérelmekre, az Az
    Install-Package Microsoft.Owin.Diagnostics
    Install-Package Microsoft.Owin.Host.SystemWeb
   ````
-5. A FileProvisioningAgent projekt felépítéséhez.
+5. Build the FileProvisioningAgent project.
 6. Indítsa el a (rendszergazdaként) a Windows parancssori alkalmazás, és használja a **cd** paranccsal lépjen be a **\AzureAD-BYOA-Provisioning-Samples\ProvisioningAgent\bin\Debug** mappa.
 7. A következő parancsot, a Windows-számítógép IP-cím vagy tartománynév kiszolgálónevét < ip-cím > cseréje:
   ````   
@@ -352,25 +352,25 @@ Felhasználói erőforrásokat azonosítja a sémaazonosítót urn: ietf:params:
 Erőforrások azonosítják a sémaazonosítót http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group.  Táblázat 2, az alábbi, az alapértelmezett leképezést csoportok az Azure Active Directoryban attribútumait http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group erőforrások attribútumát.  
 
 ### <a name="table-1-default-user-attribute-mapping"></a>1. táblázat: Alapértelmezett felhasználói címtárattribútum-leképezésben
-| Az Azure Active Directory-felhasználó | urn: ietf:params:scim:schemas:extension:enterprise:2.0:User |
+| Azure Active Directory user | urn:ietf:params:scim:schemas:extension:enterprise:2.0:User |
 | --- | --- |
 | IsSoftDeleted |aktív |
 | displayName |displayName |
-| Telefax-TelephoneNumber |.value phoneNumbers [típus eq "fax"] |
+| Facsimile-TelephoneNumber |.value phoneNumbers [típus eq "fax"] |
 | givenName |name.givenName |
-| Beosztás |Cím |
+| jobTitle |cím |
 | mail |e-mailek [típus eq "munkahelyi"] .value |
 | mailNickname |externalId |
 | Manager |Manager |
 | Mobileszköz |.value phoneNumbers [típus eq "mobileszköz"] |
-| Objektumazonosító |id |
+| objectId |id |
 | Irányítószám |[típus eq "munkahelyi"] címek .postalCode |
-| proxy-címek |[Írja be az "egyéb" eq] e-maileket. Érték |
-| fizikai-kézbesítés-OfficeName |[Írja be az "egyéb" eq] címek. Formázott |
-| StreetAddress |[típus eq "munkahelyi"] címek .streetAddress |
+| proxy-Addresses |[Írja be az "egyéb" eq] e-maileket. Érték |
+| physical-Delivery-OfficeName |[Írja be az "egyéb" eq] címek. Formázott |
+| streetAddress |[típus eq "munkahelyi"] címek .streetAddress |
 | Vezetéknév |name.familyName |
 | Telefonszám |.value phoneNumbers [típus eq "munkahelyi"] |
-| felhasználó-egyszerű név |Felhasználónév |
+| user-PrincipalName |Felhasználónév |
 
 ### <a name="table-2-default-group-attribute-mapping"></a>2. táblázat: Alapértelmezett attribútum leképezése
 | Azure Active Directory-csoport | http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group |
@@ -379,7 +379,7 @@ Erőforrások azonosítják a sémaazonosítót http://schemas.microsoft.com/200
 | mail |e-mailek [típus eq "munkahelyi"] .value |
 | mailNickname |displayName |
 | tag |tag |
-| Objektumazonosító |id |
+| objectId |id |
 | proxyAddresses |[Írja be az "egyéb" eq] e-maileket. Érték |
 
 ## <a name="user-provisioning-and-de-provisioning"></a>Felhasználói üzembe helyezést és megszüntetést
@@ -442,11 +442,11 @@ A következő ábra azt mutatja, hogy Azure Active Directory küld SCIM szolgál
     }
   ````
   A következő példában a lekérdezés egy felhasználó a externalId attribútum egy megadott értékkel a lekérdezés metódusnak átadott argumentumok értékek a következők: 
-  * a paraméterek. AlternateFilters.Count: 1
-  * a paraméterek. AlternateFilters.ElementAt(0). AttributePath: "externalId"
-  * a paraméterek. AlternateFilters.ElementAt(0). ÖsszehasonlítóOperátor: ComparisonOperator.Equals
+  * parameters.AlternateFilters.Count: 1
+  * parameters.AlternateFilters.ElementAt(0).AttributePath: "externalId"
+  * parameters.AlternateFilters.ElementAt(0).ComparisonOperator: ComparisonOperator.Equals
   * a paraméterek. AlternateFilter.ElementAt(0). ComparisonValue: "jyoung"
-  * correlationIdentifier: System.Net.Http.HttpRequestMessage.GetOwinEnvironment["owin. Kérelemazonosító"] 
+  * correlationIdentifier: System.Net.Http.HttpRequestMessage.GetOwinEnvironment["owin.RequestId"] 
 
 2. Ha egy lekérdezést, amely megfelel a felhasználó a mailNickname attribútum externalId attribútumértékkel rendelkező felhasználó számára a webszolgáltatás válasza nem ad vissza azokat a felhasználókat, Azure Active Directory kéri, hogy a szolgáltatás kiépíteni az Azure Active Directoryban egy megfelelő felhasználó.  Íme egy példa a kérelem: 
   ````
@@ -526,8 +526,8 @@ A következő ábra azt mutatja, hogy Azure Active Directory küld SCIM szolgál
   ````
   A példa egy kérelem a felhasználó aktuális állapotának beolvasására, a paraméterek argumentum értéke a megadott objektum tulajdonságainak értékei a következők: 
   
-  * Azonosító: "54D382A4-2050-4C03-94D1-E769F1D15682"
-  * SchemaIdentifier: "urn: ietf:params:scim:schemas:extension:enterprise:2.0:User"
+  * Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
+  * SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
 4. Ha a hivatkozási attribútum frissíteni kell, majd az Azure Active Directory-e a hivatkozási attribútum identitás tárolójában aktuális értékének fronted a szolgáltatás már meghatározni a szolgáltatás lekérdezi az Azure Active Directoryban ez az attribútum értéke megegyezik. Felhasználók a, amelyek a jelenlegi érték a ily módon le kell kérdezni attribútum esetén a kezelő attribútum. Íme egy példa egy kérelem annak meghatározásához, hogy a kezelő egy adott felhasználó objektum attribútuma van a megadott érték: 
   ````
@@ -538,15 +538,15 @@ A következő ábra azt mutatja, hogy Azure Active Directory küld SCIM szolgál
 
   Ha a szolgáltatás a Microsoft által előírt végrehajtási SCIM szolgáltatások közös nyelvi infrastruktúra könyvtárak segítségével lett létrehozva, majd a kérést lefordítását a szolgáltató lekérdezési metódus hívásakor. A paraméterek argumentumnak az értékeként megadott objektum tulajdonságainak értékének a következők: 
   
-  * a paraméterek. AlternateFilters.Count: 2. régiója
+  * parameters.AlternateFilters.Count: 2
   * a paraméterek. AlternateFilters.ElementAt(x). AttributePath: "id"
-  * a paraméterek. AlternateFilters.ElementAt(x). ÖsszehasonlítóOperátor: ComparisonOperator.Equals
-  * a paraméterek. AlternateFilter.ElementAt(x). ComparisonValue: "54D382A4-2050-4C03-94D1-E769F1D15682"
-  * a paraméterek. AlternateFilters.ElementAt(y). AttributePath: "manager"
+  * parameters.AlternateFilters.ElementAt(x).ComparisonOperator: ComparisonOperator.Equals
+  * parameters.AlternateFilter.ElementAt(x).ComparisonValue: "54D382A4-2050-4C03-94D1-E769F1D15682"
+  * parameters.AlternateFilters.ElementAt(y).AttributePath: "manager"
   * a paraméterek. AlternateFilters.ElementAt(y). ÖsszehasonlítóOperátor: ComparisonOperator.Equals
-  * a paraméterek. AlternateFilter.ElementAt(y). ComparisonValue: "2819c223-7f76-453a-919d-413861904646"
-  * a paraméterek. RequestedAttributePaths.ElementAt(0): "id"
-  * a paraméterek. SchemaIdentifier: "urn: ietf:params:scim:schemas:extension:enterprise:2.0:User"
+  * parameters.AlternateFilter.ElementAt(y).ComparisonValue: "2819c223-7f76-453a-919d-413861904646"
+  * parameters.RequestedAttributePaths.ElementAt(0): "id"
+  * parameters.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
   Itt lehet, hogy az index x értékének 0 és lehet, hogy az index y értéke 1, vagy lehet, hogy az x értéknek 1 és y értékének lehet 0, attól függően, hogy a szűrő lekérdezési paraméter kifejezések sorrendjét.   
 
@@ -654,7 +654,7 @@ A következő ábra azt mutatja, hogy Azure Active Directory küld SCIM szolgál
     A példa egy kérelem egy felhasználó frissítéséhez a javítás argumentum értékeként megadott objektumnak a tulajdonságok értékeit: 
   
   * ResourceIdentifier.Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
-  * ResourceIdentifier.SchemaIdentifier: "urn: ietf:params:scim:schemas:extension:enterprise:2.0:User"
+  * ResourceIdentifier.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
   * (Mint PatchRequest2 PatchRequest). Operations.Count: 1
   * (Mint PatchRequest2 PatchRequest). Operations.ElementAt(0). OperationName: OperationName.Add
   * (Mint PatchRequest2 PatchRequest). Operations.ElementAt(0). Path.AttributePath: "manager"
@@ -680,7 +680,7 @@ A következő ábra azt mutatja, hogy Azure Active Directory küld SCIM szolgál
   A resourceIdentifier argumentumnak az értékeként megadott objektum leépíti a felhasználó kérést példájában a tulajdonságok értékeit az rendelkezik: 
   
   * ResourceIdentifier.Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
-  * ResourceIdentifier.SchemaIdentifier: "urn: ietf:params:scim:schemas:extension:enterprise:2.0:User"
+  * ResourceIdentifier.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
 ## <a name="group-provisioning-and-de-provisioning"></a>Csoport üzembe helyezést és megszüntetést
 A következő ábra azt mutatja, hogy Azure AcD küld a SCIM szolgáltatásnak csoportnak egy másik identitás tárolására az életciklus kezeléséhez az üzeneteket.  Az üzenetek a felhasználók háromféleképpen vonatkozó üzeneteket különböznek: 

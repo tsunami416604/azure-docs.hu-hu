@@ -54,7 +54,10 @@
 ### [Fejlesztés .NET-ben](search-howto-dotnet-sdk.md)
 ### [Fejlesztés Node.js-ben](search-get-started-nodejs.md)
 ### [Fejlesztés Javában](search-get-started-java.md)
-### [Az SDK frissítése](search-dotnet-sdk-migration.md)
+### Az SDK frissítése
+#### [.NET SDK 3.0](search-dotnet-sdk-migration.md)
+#### [.NET SDK 1.1](search-dotnet-sdk-migration-version-1.md)
+#### [.NET Management SDK](search-dotnet-mgmt-sdk-migration.md)
 ### [A REST API frissítése](search-api-migration.md)
 ### [Összetett adattípusok modellezése](search-howto-complex-data-types.md)
 ### [Egyidejű frissítések kezelése](search-howto-concurrency.md)
@@ -94,7 +97,7 @@
 ### [Használat és statisztikák monitorozása](search-monitor-usage.md)
 ### [Forgalmi elemzések keresése](search-traffic-analytics.md)
 
-# Hivatkozás
+# Referencia
 
 ## [.NET](/dotnet/api/?term=microsoft.azure.search)
 ## [.NET (Felügyelet)](/dotnet/api/?term=microsoft.azure.management.search)

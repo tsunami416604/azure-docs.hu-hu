@@ -1,5 +1,5 @@
 ---
-title: "Active Directory összevonási szolgáltatások kezelése és testreszabása az Azure AD Connect |} Microsoft Docs"
+title: "Az Azure AD Connect - AD FS kezelő és a Testreszabás |} Microsoft Docs"
 description: "AD FS felügyelet az Azure AD Connect és felhasználói AD FS bejelentkezési élmény és az Azure AD Connect PowerShell testreszabása."
 keywords: "Az AD FS-, ADFS, az AD FS felügyeleti AAD-csatlakozás, csatlakozás, bejelentkezés, az AD FS testreszabás javítani bizalmi kapcsolat, O365, összevonási, függő entitás"
 services: active-directory
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: e024dd13c6bf25697dbea67ae240a100c27454b8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: 49acea5c08a10ba3b60d0db5f05e30d573f5e507
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Kezelése és testreszabása az Active Directory összevonási szolgáltatások az Azure AD Connect használatával
 Ez a cikk ismerteti a kezelése és testreszabása az Active Directory összevonási szolgáltatások (AD FS) Azure Active Directory (Azure AD) Connect használatával. Egyéb gyakori AD FS feladatok, amelyek hasznosak lehetnek az AD FS-farm teljes konfigurációját is tartalmaz.
@@ -48,11 +49,11 @@ Az Azure AD Connect használatával ellenőrizze az AD FS és az Azure AD megbí
    ![Javítsa az aad-ben és az AD FS megbízható](media/active-directory-aadconnect-federation-management/RepairADTrust1.PNG)
 
 2. Az a **az Azure AD Connect** lapon adja meg az Azure AD globális rendszergazdai hitelesítő adataival, és kattintson a **következő**.
-   ![Az Azure AD Connect](media/active-directory-aadconnect-federation-management/RepairADTrust2.PNG)
+   ![Csatlakozás az Azure AD-hez](media/active-directory-aadconnect-federation-management/RepairADTrust2.PNG)
 
 3. Az a **távelérési hitelesítő adatainak** lapon, a tartományi rendszergazda adja meg a hitelesítő adatait.
 
-   ![Távelérési hitelesítő adatok](media/active-directory-aadconnect-federation-management/RepairADTrust3.PNG)
+   ![Távoli hozzáférési hitelesítő adatok](media/active-directory-aadconnect-federation-management/RepairADTrust3.PNG)
 
     Miután rákattintott **következő**, az Azure AD Connect tanúsítványállapot keres, és az esetleges problémákat jeleníti meg.
 
@@ -164,11 +165,11 @@ Nem lehet összevont Azure AD-val az Azure AD Connect használatával tartomány
 
 3. Az a **távelérési hitelesítő adatainak** lapján adja meg a tartományi rendszergazda hitelesítő adatait.
 
-   ![Távelérési hitelesítő adatok](media/active-directory-aadconnect-federation-management/additionaldomain3.PNG)
+   ![Távoli hozzáférési hitelesítő adatok](media/active-directory-aadconnect-federation-management/additionaldomain3.PNG)
 
 4. A következő oldalon a varázsló a lehet összevonást végezni a helyszíni címtár az Azure AD-tartományok listáját tartalmazza. Válassza ki a tartományt a listából.
 
-   ![Az Azure AD-tartomány](media/active-directory-aadconnect-federation-management/AdditionalDomain4.PNG)
+   ![Azure AD domain](media/active-directory-aadconnect-federation-management/AdditionalDomain4.PNG)
 
     Után úgy dönt, hogy a tartomány, a varázsló nyújt további a varázsló által elvégzendő műveleteket és a hatása a konfiguráció megfelelő információt. Bizonyos esetekben egy tartományhoz, amely még nincs ellenőrizve az Azure ad-ben, ha a varázsló nyújt segítséget, ellenőrizze a tartományt. Lásd: [az egyéni tartománynév hozzáadása az Azure Active Directory](../active-directory-domains-add-azure-portal.md) további részleteket.
 
@@ -269,5 +270,5 @@ A kibocsátó jogcím értéke csak a legfelső szintű tartomány van, módosí
 
     => issue(Type = “http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid“, Value = regexreplace(c.Value, “^((.*)([.|@]))?(?<domain>[^.]*[.].*)$”, “http://${domain}/adfs/services/trust/“));
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ [felhasználói bejelentkezés lehetőségei](active-directory-aadconnect-user-signin.md).

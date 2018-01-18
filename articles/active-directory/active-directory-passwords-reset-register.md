@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: barlan
-ms.custom: end-user
-ms.openlocfilehash: 976eb5e710b0ffca48dae268b394b3d31fe2e938
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.custom: end-user;seohack1
+ms.openlocfilehash: ffdffc0c471970e5a7e7a0bb291658cefe99ed71
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="register-for-self-service-password-reset"></a>Regisztráció önkiszolgáló jelszó-visszaállításra
 
@@ -54,7 +54,7 @@ A rendszergazdák szükség lehet a hitelesítési módszerek ellenőrzése utá
 
 | Hiba eset| Milyen hiba látható?| Megoldás |
 | --- | --- | --- |
-| "Forduljon a rendszergazdához" oldal jelenik meg a felhasználói azonosító megadása után | Lépjen kapcsolatba a rendszergazdával. <br> <br> A rendszer azt észlelte, hogy a felhasználói fiók jelszava nem Microsoft által felügyelt. Ennek eredményeképpen jelenleg nem lehet automatikusan alaphelyzetbe állítja a jelszót. <br> <br> További segítségért lépjen kapcsolatba az informatikai munkatársak. | Most azt láthatja ezt az üzenetet, mert az informatikai munkatársak kezeli a jelszót a helyszíni környezetben, és nem teszi lehetővé a jelszó a **nem fér hozzá a fiókjához** hivatkozásra. <br> <br> A jelszó alaphelyzetbe állításához, lépjen kapcsolatba az informatikai munkatársak közvetlenül segítségét. Tájékoztassa alaphelyzetbe állítja a jelszót, ez a funkció az Ön is engedélyezhető.|
+| "Forduljon a rendszergazdához" oldal jelenik meg a felhasználói azonosító megadása után | Forduljon a rendszergazdához. <br> <br> A rendszer azt észlelte, hogy a felhasználói fiók jelszava nem Microsoft által felügyelt. Ennek eredményeképpen jelenleg nem lehet automatikusan alaphelyzetbe állítja a jelszót. <br> <br> További segítségért lépjen kapcsolatba az informatikai munkatársak. | Most azt láthatja ezt az üzenetet, mert az informatikai munkatársak kezeli a jelszót a helyszíni környezetben, és nem teszi lehetővé a jelszó a **nem fér hozzá a fiókjához** hivatkozásra. <br> <br> A jelszó alaphelyzetbe állításához, lépjen kapcsolatba az informatikai munkatársak közvetlenül segítségét. Tájékoztassa alaphelyzetbe állítja a jelszót, ez a funkció az Ön is engedélyezhető.|
 | A felhasználói azonosító megadása után jelenik meg a "a nem engedélyezett a jelszó alaphelyzetbe állítása" hiba | A fiók nincs engedélyezve a jelszó alaphelyzetbe állítása. <br> <br> Sajnáljuk, de az informatikai munkatársak nem állította be a fiók a szolgáltatással való használatra. <br> <br> Ha azt szeretné, a jelszó alaphelyzetbe állításához a szervezet rendszergazda is megkereshetjük. | Ezt az üzenetet is lát, mert az informatikai munkatársak nincs engedélyezve a jelszó alaphelyzetbe állítása a szervezete számára a **nem fér hozzá a fiókjához** hivatkozásra, vagy még nem rendelkezik licenccel a funkció használatát. <br> <br> A jelszó alaphelyzetbe állításához, válassza ki a **kérje a rendszergazda** hivatkozásra. E-mailt kapnak a vállalati informatikai személyzetet tart fenn. Az e-mailt lehetővé teszi, hogy ismeri a alaphelyzetbe állítja a jelszót, ez a funkció az Ön is engedélyezhető. |
 | A felhasználói azonosító megadása után jelenik meg a "nem tudtuk ellenőrizni fiókját" hiba | Nem tudtuk ellenőrizni a fiókját. <br> <br> Ha azt szeretné, a jelszó alaphelyzetbe állításához a szervezet rendszergazda is megkereshetjük. | Most azt láthatja ezt az üzenetet, mert a jelszó alaphelyzetbe állítása folyamatban engedélyezve van, de még nem regisztrált a szolgáltatás használatához. Regisztrálhatnak a jelszóváltoztatásra, keresse fel a [jelszó-változtatási regisztrációs lapjához](http://aka.ms/ssprsetup) után fiókjába rendelkeznie helyreállt a hozzáférést. <br> <br> A jelszó alaphelyzetbe állításához, válassza ki a **kérje a rendszergazda** hivatkozás egy e-mailt küldhet a vállalat informatikai személyzetet tart fenn. |
 

@@ -1,5 +1,5 @@
 ---
-title: "Az Azure AD Connect: Áteresztő hitelesítés - frissítési előzetes hitelesítés ügynökök |} Microsoft Docs"
+title: "Az Azure AD Connect - áteresztő hitelesítés - frissítési auth ügynökök |} Microsoft Docs"
 description: "A cikkből megtudhatja, hogyan lehet frissíteni az Azure Active Directory (Azure AD) áteresztő hitelesítés konfigurációját."
 services: active-directory
 keywords: "Az Azure AD Connect áteresztő hitelesítés, telepítés Active Directory szükséges összetevőket az Azure AD, SSO, egyszeri bejelentkezést."
@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/04/2017
+ms.date: 01/14/2018
 ms.author: billmath
-ms.openlocfilehash: 96d4e8e240d845be5f04bf0e724d91d740ad9cdf
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: f0a254b7216ca6fda40e26bafb7de57e796a5218
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="azure-active-directory-pass-through-authentication-upgrade-preview-authentication-agents"></a>Az Azure Active Directory áteresztő hitelesítés: Frissítési előzetes hitelesítés ügynökök
 
@@ -84,5 +85,5 @@ Kövesse az alábbi lépéseket a többi kiszolgáló hitelesítési-ügynökök
 >[!NOTE]
 >Ha bejelöli az áteresztő hitelesítés panel a a [Azure Active Directory felügyeleti központ](https://aad.portal.azure.com) után befejezése az előző lépések, látni fogja a két hitelesítési ügynök bejegyzés egy kiszolgálón – a hitelesítési megjelenítő egy bejegyzés Ügynök **aktív** és az egyéb, **inaktív**. Ez az _várt_. A **inaktív** néhány nap múlva automatikusan eltávolítja a bejegyzést.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [**Hibaelhárítás** ](active-directory-aadconnect-troubleshoot-pass-through-authentication.md) -Útmutató: a szolgáltatással kapcsolatos gyakori problémák megoldása.

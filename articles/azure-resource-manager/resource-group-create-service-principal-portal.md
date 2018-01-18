@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2017
+ms.date: 01/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9b5b33f61021bf4b0ae238e88c2926c0d17b4929
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 89f2f834c84cd5ae50b2d5b9d46e792065080d8a
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="use-portal-to-create-an-azure-active-directory-application-and-service-principal-that-can-access-resources"></a>Hozzon létre egy Azure Active Directory-alkalmazást és egy egyszerű szolgáltatást, amely erőforrások eléréséhez a portál használatával
 
@@ -39,7 +39,7 @@ Ez a cikk befejezéséhez megfelelő engedélyekkel rendelkezik alkalmazás regi
 
 1. Válassza ki **az Azure Active Directory**.
 
-   ![Válassza ki az azure active directory](./media/resource-group-create-service-principal-portal/select-active-directory.png)
+   ![select azure active directory](./media/resource-group-create-service-principal-portal/select-active-directory.png)
 
 1. Válassza ki az Azure Active Directoryban, **felhasználói beállítások**.
 
@@ -94,7 +94,7 @@ Ellenőrizze előfizetése engedélyei között:
 1. Az Azure-fiók használatával jelentkezzen be a [Azure-portálon](https://portal.azure.com).
 1. Válassza ki **az Azure Active Directory**.
 
-   ![Válassza ki az azure active directory](./media/resource-group-create-service-principal-portal/select-active-directory.png)
+   ![select azure active directory](./media/resource-group-create-service-principal-portal/select-active-directory.png)
 
 1. Válassza ki **App regisztrációk**.
 
@@ -140,7 +140,7 @@ Bejelentkezéskor programozott módon, kell átadni a hitelesítési kéréshez 
 
 1. Válassza ki **az Azure Active Directory**.
 
-   ![Válassza ki az azure active directory](./media/resource-group-create-service-principal-portal/select-active-directory.png)
+   ![select azure active directory](./media/resource-group-create-service-principal-portal/select-active-directory.png)
 
 1. Válassza ki ahhoz, hogy a bérlő azonosítója, **tulajdonságok** az Azure AD-bérlő.
 
@@ -195,7 +195,7 @@ Az alkalmazás most már be van állítva az Azure Active Directoryban. Rendelke
 * [Python](/python/azure/python-sdk-azure-authenticate?view=azure-python)
 * [Ruby](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-resources-and-groups/)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Egy több-bérlős alkalmazás beállításához tekintse meg a [fejlesztői útmutató az Azure Resource Manager API-val engedélyezési](resource-manager-api-authentication.md).
 * Biztonsági házirendek megadásával kapcsolatos további tudnivalókért lásd: [Azure szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-configure.md).  
 * Elérhető műveleteket, lehet megadott vagy megtagadta a felhasználók listáját lásd: [Azure Resource Manager erőforrás-szolgáltató műveletek](../active-directory/role-based-access-control-resource-provider-operations.md).

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 004e7b0299763be9d31b1df22df2a423dc7c52cf
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 1903655a262583f1ba78b728bf404a81278e2275
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-api-management-faqs"></a>Az Azure API Management – gyakori kérdések
 Válaszok a gyakori kérdéseket, a mintákat és ajánlott eljárások az Azure API Management.
@@ -33,7 +33,6 @@ Válaszok a gyakori kérdéseket, a mintákat és ajánlott eljárások az Azure
 * [Programozott módon is kezelhető az API Management példányt?](#can-i-manage-my-api-management-instance-programmatically)
 * [Hogyan adja hozzá a felhasználó a rendszergazdák csoporthoz?](#how-do-i-add-a-user-to-the-administrators-group)
 * [Miért van a házirendet, amely a felvenni kívánt nem érhető el a Helyicsoportházirend-szerkesztő?](#why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor)
-* [Miként használható az API Management API versioning?](#how-do-i-use-api-versioning-in-api-management)
 * [Hogyan állíthatom be több környezeteknek a egyetlen API-val?](#how-do-i-set-up-multiple-environments-in-a-single-api)
 * [Használhatok SOAP API Management?](#can-i-use-soap-with-api-management)
 * [Az API Management gateway IP cím állandó? Képes használni a tűzfalszabályok?](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules)
@@ -63,7 +62,7 @@ Több lehetőség közül választhat az API Management-átjáró és a háttér
 
 * Egyszerű HTTP-hitelesítést használjon. További információkért lásd: [importálása és az első API-t közzétenni](import-and-publish.md).
 * SSL kölcsönös hitelesítést használ, a [háttérszolgáltatások ügyfél segítségével biztonságossá tétele a tanúsítványhitelesítés az Azure API Management](api-management-howto-mutual-certificates.md).
-* IP-engedélyezése a háttér-szolgáltatáshoz felhasználhat. Ha a Standard vagy prémium szint API Management példánya, állandó marad az átjáró IP-címét. Az engedélyezett címekhez, hogy az IP-cím engedélyezése állíthatja be. A IP-címet a API Management példány kaphat az irányítópulton az Azure portálon.
+* IP-engedélyezése a háttér-szolgáltatáshoz felhasználhat. Minden csomagban API-kezelés, az IP-címet az átjáró állandó marad, néhány [figyelmeztetések](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules). Az engedélyezett címekhez, hogy az IP-cím engedélyezése állíthatja be. A IP-címet a API Management példány kaphat az irányítópulton az Azure portálon.
 * Az API Management-példány csatlakozni az Azure virtuális hálózat.
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>Hogyan másolja az API Management service-példány egy új példányt?
@@ -97,13 +96,6 @@ Az újonnan hozzáadott közreműködői használhatja az Azure PowerShell most 
 ### <a name="why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor"></a>Miért van a házirendet, amely a felvenni kívánt nem érhető el a Helyicsoportházirend-szerkesztő?
 Ha hozzá szeretne adni a házirend megjelenik a szürkén jelenik meg, vagy a Helyicsoportházirend-szerkesztő árnyékolt, arról, hogy a házirend a megfelelő hatókörben vannak-e. Minden egyes házirend-utasítás célja a hatókörökre és házirend szakaszok használata. A házirend szakaszok és egy házirend hatókörök ellenőrzéséhez tekintse meg a Csoportházirend használata című szakaszában található [API-felügyeleti házirendek](https://msdn.microsoft.com/library/azure/dn894080.aspx).
 
-### <a name="how-do-i-use-api-versioning-in-api-management"></a>Miként használható az API Management API versioning?
-Az API Management API versioning használandó néhány lehetőség közül választhat:
-
-* Az API Management konfigurálhatja az API-k határoz meg különböző verziói. Például lehetséges, hogy két különböző API-k, MyAPIv1 és MyAPIv2. Egy fejlesztő választható használni szeretné a fejlesztői verzió.
-* Az API-t egy szolgáltatási URL-cím, amely nem tartalmazza a szegmens verziójával, például https://my.api is konfigurálhatja. Ezt követően konfigurálja a verzió szegmens minden műveletnek [URL-cím újraírása](https://msdn.microsoft.com/library/azure/dn894083.aspx#RewriteURL) sablont. 
-* Ha szeretné megtartani egy "alapértelmezett" verzió szegmens az API-t szolgáltatás URL-címe, a kiválasztott operations használó házirend beállítása a [be háttérszolgáltatás](https://msdn.microsoft.com/library/azure/dn894083.aspx#SetBackendService) házirend számára, hogy a háttér-kérelem elérési útja módosítható.
-
 ### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>Hogyan állíthatom be több környezeteknek a egyetlen API-val?
 Állítsa be több környezetekben, például egy tesztkörnyezetben és éles környezetben a egyetlen API-val, két lehetősége van. A következőket teheti:
 
@@ -114,7 +106,7 @@ Az API Management API versioning használandó néhány lehetőség közül vál
 [SOAP-áteresztő](http://blogs.msdn.microsoft.com/apimanagement/2016/10/13/soap-pass-through/) a rendszer támogatja. -Rendszergazdák importálni tudják a WSDL SOAP szolgáltatása, és az Azure API Management létrehoz egy SOAP-előtér. Fejlesztői portál dokumentációjában, a teszt konzol, a házirendek és a analytics az összes elérhető SOAP-szolgáltatások.
 
 ### <a name="is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules"></a>Az API Management gateway IP cím állandó? Képes használni a tűzfalszabályok?
-A Standard és Premium rétegek, a nyilvános IP-cím (VIP) az API Management-bérlő statikus élettartama idején a bérlő, néhány kivétellel. Az IP-cím módosításainak ilyen körülmények között:
+Az API Management összes rétege a nyilvános IP-cím (VIP) az API Management-bérlő statikus a bérlő teljes néhány kivétellel. Az IP-cím módosításainak ilyen körülmények között:
 
 * A szolgáltatás törlődik, és újból létrehozza majd.
 * A szolgáltatás az előfizetés [felfüggesztve](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) vagy [figyelmezteti](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) (például nonpayment) és majd érvényességét.

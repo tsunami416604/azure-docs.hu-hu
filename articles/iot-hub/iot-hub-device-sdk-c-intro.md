@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/25/2017
 ms.author: obloch
-ms.openlocfilehash: 6e64d2238c36c8f122bbe29b937eeea156df30e0
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 99a430810b915f4ca06d9c07182319eff1fa299e
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Az Azure IoT-eszközök SDK C-hez
 
@@ -68,9 +68,9 @@ Most, hogy a forrás mintakód, a következő lépés az eszköz hitelesítő ad
 Számos nyílt forráskódú eszköz kezeléséhez az IoT hub van.
 
 * Egy nevű Windows-alkalmazás [eszköz explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer).
-* A platformok közötti node.js parancssori eszköz neve [IOT hubbal-explorer](https://github.com/azure/iothub-explorer).
+* A platformok közötti Python CLI eszközének neve [az IoT-bővítmény az Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension).
 
-Ez az oktatóanyag használja a grafikus *eszköz explorer* eszköz. Használhatja a *IOT hubbal-explorer* eszköze, ha szeretné használni a parancssori eszköz.
+Ez az oktatóanyag használja a grafikus *eszköz explorer* eszköz. Használhatja a *az IoT-bővítmény az Azure CLI 2.0* eszköze, ha szeretné használni a parancssori eszköz.
 
 Az eszköz explorer eszközt az Azure IoT szolgáltatás-tárakat használ az IoT-központ, beleértve az eszközök különféle funkciók elvégzésére. Ha az eszköz explorer eszköz segítségével hozzáad egy eszközt, az eszközhöz kapott egy kapcsolati karakterláncot. Ez a kapcsolati karakterlánc a minta-alkalmazások futtatására van szüksége.
 
@@ -562,7 +562,7 @@ serializer_deinit();
 
 Mindegyik funkcióhoz három igazodik a korábban ismertetett három inicializálási funkciók. Ezen API-k hívása biztosítja, hogy a korábban kiosztott erőforrásokat ingyenes.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk a tárak használatának alapjaival jelez a **C-hez készült SDK Azure IoT-eszközök**. Elegendő információt az SDK tartalma megérteni a megadott, az architektúra és első lépések a Windows-minták használata. A következő cikk leírja, hogy az SDK által, amely ismerteti, hogy továbbra is fennáll. [további információk a IoTHubClient könyvtár](iot-hub-device-sdk-c-iothubclient.md).
 
@@ -570,7 +570,7 @@ Az IoT-központ fejlesztésével kapcsolatos további tudnivalókért tekintse m
 
 Az IoT-központ képességeit további megismeréséhez lásd:
 
-* [Az Azure IoT peremhálózati peremeszközök AI központi telepítése][lnk-iotedge]
+* [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással][lnk-iotedge]
 
 [lnk-file upload]: iot-hub-csharp-csharp-file-upload.md
 [lnk-create-hub]: iot-hub-rm-template-powershell.md

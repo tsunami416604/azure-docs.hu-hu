@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: samples
 ms.tgt_pltfrm: 
 ms.workload: 
-ms.date: 11/13/2017
+ms.date: 01/17/2018
 ms.author: banders
 ms.custom: mvc
-ms.openlocfilehash: 4ac9696028b9f24341a630d630b583ac5041cee0
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 783a6bd8c665f1e08d94d2712a581955be8501e9
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="templates-for-azure-policy"></a>Sablonok az Azure-házirend
 
@@ -69,7 +69,7 @@ A következő táblázat az Azure-házirend json sablonok hivatkozásait tartalm
 | [Naplózási szint fenyegetések észlelése beállítást](scripts/audit-sql-ser-threat-det-setting.md) | SQL-adatbázis biztonsági riasztási házirendek eseményeket, ha ezek a házirendek nem meghatározott állapotú. Adjon meg egy értéket, amely jelzi, hogy fenyegetésészlelés engedélyezve vagy letiltva.  |
 | [Azure Active Directory-rendszergazda nélkül naplózása](scripts/audit-no-aad-admin.md) | Ha az SQL-kiszolgáló nem Azure Active Directory rendszergazdája naplózási. |
 | [SQL DB termékváltozatok engedélyezett](scripts/allowed-sql-db-skus.md) | Szükséges SQL-adatbázisok használata egy jóváhagyott Termékváltozat. Megadja az engedélyezett SKU-azonosítók tömbje vagy engedélyezett SKU nevének tömbjét. |
-|**Tárolás**||
+|**Storage**||
 | [A Storage-fiókok és a virtuális gépek engedélyezett termékváltozatok](scripts/allowed-skus-storage.md) | Verziójához jóváhagyott termékváltozatok storage-fiókok és a virtuális gépek használni. Beépített házirendet használja, hogy jóvá SKU. Megadhatja, hogy engedélyezett virtuális gépek termékváltozatok tömbje és jóváhagyott tárfiók termékváltozatok tömbjét. |
 | [Ellenőrizze a tárfiók csak a https-forgalom](scripts/ensure-https-stor-acct.md) | Storage-fiókok használatához a HTTPS-forgalmat igényel.  |
 | [Storage-fiókok rétegezéséhez ritkán használt adatok elérésének megtagadása](scripts/deny-cool-access-tiering.md) | Ez a beállítás letiltja a ritkán használt adatok hozzáférési tárolótömbökhöz blob storage-fiókok használatát.  |

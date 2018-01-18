@@ -5,18 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 12/11/2017
+ms.topic: tutorial
+ms.date: 01/15/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 5810ff908d48fc4ff742d734e7c2457fdfe8cb03
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 8acc8deff8b635c97e8722d65a728aebf0e49bb3
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Helyszíni VMware virtuális gépek Azure-bA vész-helyreállítási beállítása
 
@@ -46,115 +43,75 @@ Mielőtt elkezdené, érdemes [tekintse át a architektúra](concepts-vmware-to-
 
 ## <a name="set-up-the-source-environment"></a>A forráskörnyezet beállítása
 
-Állítsa be a forrás környezetében, töltse le a Site Recovery az egységes telepítő fájlját. Futtatja a telepítőt a helyi Site Recovery-összetevők telepítéséhez, VMware-kiszolgáló regisztrálása a tárolóban és a helyszíni virtuális gépek felderítése.
-
-### <a name="verify-on-premises-site-recovery-requirements"></a>A helyszíni Site Recovery követelményeinek ellenőrzése
-
-Egyetlen, magas rendelkezésre állású, a helyszíni VMware virtuális gép gazdagép helyszíni Site Recovery összetevők kell. Összetevők közé tartoznak a konfigurációs kiszolgáló, a folyamatkiszolgáló és a fő célkiszolgálón.
+Állítsa be a forrás környezetében, egyetlen, magas rendelkezésre állású, a helyi számítógépen, a gazdagép helyi Site Recovery-összetevőkkel van szükség. Összetevők közé tartoznak a konfigurációs kiszolgáló, a folyamatkiszolgáló és a fő célkiszolgálón.
 
 - A konfigurációs kiszolgáló koordinálja a helyszíni rendszer és az Azure közötti kommunikációt, és felügyeli az adatreplikációt.
 - A folyamatkiszolgáló egy replikációs átjáróként működik. Fogadja a replikációs adatokat, gyorsítótárazással, tömörítéssel és titkosítással optimalizálja őket, majd továbbítja az Azure Storage-nak. Szeretne replikálni, virtuális gépeken is telepíti a mobilitási szolgáltatást a folyamatkiszolgáló és a helyszíni VMware virtuális gépek automatikus felderítést hajt végre.
 - A fő célkiszolgáló az Azure-ból a feladat-visszavétel során kezeli a replikációs adatokat.
 
-A virtuális gép az alábbi követelményeknek kell megfelelnie.
+A konfigurációs kiszolgáló, a magas rendelkezésre állású VMware virtuális gépként beállításához előkészített OVF sablon letöltése, és importálja a sablont a VMware virtuális gép létrehozása. Miután beállította a konfigurációs kiszolgáló, akkor regisztrálja a tárolóban lévő állapottal. A regisztrációt követően a Site Recovery a helyszíni VMware virtuális gépek deríti fel.
 
-| **Követelmény** | **Részletek** |
-|-----------------|-------------|
-| Processzormagok száma| 8 |
-| RAM | 12 GB |
-| Lemezek száma | 3 - operációsrendszer-lemez, a folyamat kiszolgáló gyorsítótár lemez vagy az adatmegőrzési meghajtó (a feladat-visszavétel) |
-| – Lemez szabad területe (Folyamatkiszolgálói gyorsítótár) | 600 GB |
-| Lemez szabad területe (adatmegőrzési lemez) | 600 GB |
-| Operációs rendszer verziója | Windows Server 2012 R2 |
-| Operációs rendszer területi beállítása | Angol (en-us) |
-| VMware vSphere PowerCLI verziója | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0") |
-| Windows Server-szerepkörök | Ezek a szerepkörök nem engedélyezi: Active Directory tartományi szolgáltatásokban, az Internet Information Services, a Hyper-V |
-| A hálózati adapter típusa | VMXNET3 |
-| IP-cím típusa | Statikus |
-| Portok | 443 (vezérlőcsatorna-vezénylés)<br/>9443 (Adatátvitel)|
+### <a name="download-the-vm-template"></a>A Virtuálisgép-sablon letöltése
 
-Továbbá: 
-- Győződjön meg arról, hogy a virtuális Gépen a rendszeróra szinkronizálva van-e a kiszolgálót. Idő 15 percen belül kell szinkronizálni. Ha az értéke nagyobb, a telepítés meghiúsul.
-a telepítés meghiúsul.
-- Győződjön meg arról, hogy a konfigurációs kiszolgáló VM hozzáférhet az URL-címek:
+1. A tárolóban, Ugrás **infrastruktúra előkészítése** > **forrás**.
+2. A **forrás előkészítése**, kattintson a **+ konfigurációs kiszolgáló**.
+3. A **kiszolgáló hozzáadása**, ellenőrizze, hogy **VMware konfigurációs kiszolgáló** megjelenik **kiszolgálótípus**.
+4. Töltse le a nyitott virtualizációs formátum (OVF) sablont a konfigurációs kiszolgáló.
 
-    [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]
-    
-- Győződjön meg arról, hogy IP-címeken alapuló tűzfalszabályok szabályok engedélyezik-e a kommunikációt az Azure-bA.
-    - Engedélyezi a [Azure datacenter IP-címtartományok](https://www.microsoft.com/download/confirmation.aspx?id=41653)port 443-as (HTTPS) és port 9443 (adatreplikáció).
-    - Az IP-címtartományok az előfizetés az Azure-régió, valamint a (hozzáférés-vezérlés és identitás kezelésre szolgáló) USA nyugati régiója engedélyezése.
+  > [!TIP]
+  A konfigurációs kiszolgáló sablon legújabb verziója letölthető közvetlenül [Microsoft Download Center](https://aka.ms/asrconfigurationserver).
+
+## <a name="import-the-template-in-vmware"></a>A VMware-sablon importálása
+
+1. Jelentkezzen be a VMware vCenter-kiszolgáló vagy vSphere ESXi-állomáson, a VMWare vSphere Client használatával.
+2. Az a **fájl** menüjében válassza **OVF-sablon telepítése**, azt a OVF-sablon központi telepítése varázsló elindításához.  
+
+     ![OVF-sablon](./media/tutorial-vmware-to-azure/vcenter-wizard.png)
+
+3. A **forrás kiválasztása**, adja meg a letöltött OVF helyét.
+4. A **tekintse át a részletek**, kattintson a **következő**.
+5. A **név és a mappa kiválasztása**, és **válassza konfigurációs**, fogadja el az alapértelmezett beállításokat.
+6. A **válassza ki a tárolási**, amely a legjobb teljesítmény érdekében válasszon **vastag rendelkezés különösen nullázni** a **jelölje be a virtuális lemez formátum**.
+4. A varázsló utasításait a többi fogadja el az alapértelmezett beállításokat.
+5. A **kész befejezni**:
+  - A virtuális Gépet, az alapértelmezett beállításokkal, válassza ki **kapcsolja be a telepítést követően** > **Befejezés**.
+  - Ha hozzá szeretne adni egy hálózati illesztővel, törölje a jelet **kapcsolja be a telepítést követően**, majd válassza ki **Befejezés**. Alapértelmezés szerint a konfigurációs kiszolgáló sablon az egyetlen hálózati adapter van telepítve, de a telepítés után is hozzáadhat további hálózati adapterek.
+
+  
+## <a name="add-an-additional-adapter"></a>Vegyen fel egy további adaptert
+
+Egy olyan további hálózati adapter hozzáadása a konfigurációs kiszolgáló, tegye, mielőtt regisztrálja a kiszolgálót a tárolóban lévő állapottal. Hozzáadás a felesleges adapterek regisztrálás után nem támogatott.
+
+1. A vSphere Client készletben, kattintson a jobb gombbal a virtuális Gépet, és válassza ki **beállításainak szerkesztése**.
+2. A **hardver**, kattintson a **Hozzáadás** > **Ethernet-Adapter**. Ezután kattintson a **Next** (Tovább) gombra.
+3. Válassza ki és hálózatiadapter-típust, és a hálózaton. 
+4. Csatlakozás a virtuális hálózati Adaptert a virtuális gép bekapcsolása, válassza ki **teljesítménnyel csatlakozását a**. Kattintson a **következő** > **Befejezés**, és kattintson a **OK**.
 
 
-### <a name="download-the-site-recovery-unified-setup-file"></a>Töltse le a Site Recovery egyesített telepítő
+## <a name="register-the-configuration-server"></a>Regisztrálja a konfigurációs kiszolgálót. 
 
-1. A tárolóban lévő > **infrastruktúra előkészítése**, kattintson a **forrás**.
-1. A **forrás előkészítése**, kattintson a **+ konfigurációs kiszolgáló**.
-2. A **kiszolgáló hozzáadása**, ellenőrizze, hogy **konfigurációs kiszolgáló** megjelenik **kiszolgálótípus**.
-3. Töltse le a Site Recovery az egységes telepítő telepítőfájlját.
-4. Töltse le a tárolóregisztrációs kulcsot. Ez szükséges az egységes telepítő futtatásakor. A kulcs a generálásától számított öt napig érvényes.
+1. A VMWare vSphere ügyfél konzolról bekapcsolása a virtuális Gépet.
+2. A virtuális Gépet egy Windows Server 2016 telepítésének tapasztalatokat indul el. Fogadja el a licencszerződést, és adjon meg egy rendszergazdai jelszót.
+3. A telepítés befejezése után jelentkezzen be rendszergazdaként, a virtuális Gépet.
+4. Az első alkalommal jelentkezik be, az Azure Site Recovery Configuration Tool indít.
+5. Adjon meg egy nevet, amellyel a konfigurációs kiszolgáló regisztrálása a Site Recovery szolgáltatással. Ezután kattintson a **Next** (Tovább) gombra.
+6. Az eszköz ellenőrzi, hogy a virtuális gép Azure csatlakozhat. A kapcsolat létrejötte után kattintson **bejelentkezés**, hogy jelentkezzen be az Azure-előfizetéshez. A hitelesítő adatokat a tárolóba, ahol a konfigurációs kiszolgáló regisztrálni kívánt hozzáféréssel kell rendelkeznie.
+7. Az eszköz bizonyos konfigurációs feladatokat hajtja végre, és majd újraindul.
+8. A gép újra bejelentkezni. A konfigurációs kiszolgáló kezelése varázsló automatikusan elindul.
 
-   ![A forrás beállítása](./media/tutorial-vmware-to-azure/source-settings.png)
+### <a name="configure-settings-and-connect-to-vmware"></a>Beállítások konfigurálása, és kapcsolódjon a VMware
 
-### <a name="set-up-the-configuration-server"></a>A konfigurációs kiszolgáló beállítása
+1. A konfigurációs kiszolgáló kezelése varázsló > **kapcsolat beállítása**, válassza ki a hálózati Adaptert, amelyek megkapják a replikációs forgalmat. Ezután kattintson a **Save** (Mentés) gombra. Ez a beállítás nem módosítható, miután van konfigurálva.
+2. A **válassza ki a Recovery Services-tároló**, válassza ki az Azure-előfizetéshez, és a megfelelő erőforráscsoport és a tároló.
+3. A **harmadik féltől származó szoftverek telepítése**fogadja el a licenc agreeemtn, és kattintson a **töltse le és telepítse**, MySQL-kiszolgáló telepítéséhez.
+4. Kattintson a **telepíteni a VMware PowerLCI**. Győződjön meg arról, hogy az összes böngészőablakot be van zárva, mielőtt ezt megtehetné. Kattintson a **Folytatás**
+5. A **ellenőrzése készülék konfigurációs**, Előfeltételek a rendszer ellenőrzi a folytatás előtt.
+6. A **vCenter-kiszolgáló vagy vSphere ESXi kiszolgáló konfigurálása**, adja meg az FQDN vagy IP-címet a vCenter-kiszolgáló vagy vSphere-gazdagép, mely virtuális gépeken a replikálni kívánt találhatók. Adja meg a portot, amelyet a kiszolgáló figyel, és egy rövid nevet használt a VMware-kiszolgáló újraregisztrálásával a felhőben.
+7. Adja meg a konfigurációs kiszolgáló által a VMware-kiszolgálóhoz való csatlakozáshoz használandó hitelesítő adatokat. A Site Recovery automatikusan észlelni a VMware virtuális gépek, amelyek érhető(k) el replikálásra ezeket a hitelesítő adatokat használja. Kattintson a **Hozzáadás**, és kattintson a **Folytatás**.
+8. A **virtuális gép hitelesítő adatok beállítása**, adja meg a felhasználónevet és jelszót, hogy a mobilitási szolgáltatás automatikusan telepítse a gépeken, ha engedélyezve van a replikáció történik. Windows-alapú gépek a fiók helyi rendszergazdai jogosultságokkal a replikálni kívánt gépeken kell. Linux adja meg a rendszergazdafiók részletei.
+9. Kattintson a **véglegesítő konfigurációs** és elvégezheti a regisztrálást. 
+10. Az Azure portálon, a regisztráció befejezését követően ellenőrizze, hogy a konfigurációs kiszolgáló és a VMware-kiszolgáló szerepel a **forrás** lap a tárolóban lévő állapottal. Kattintson a **OK** tároló beállításainak konfigurálása.
 
-1. Futtassa az egyesített telepítő fájlját.
-2. A **előkészületek**, jelölje be **a konfigurációs kiszolgáló és a folyamatkiszolgáló telepítése** kattintson **következő**.
-
-3. A **harmadik féltől származó szoftverek licenc**, kattintson a **elfogadom** töltse le és telepítse a MySQL, majd kattintson a **következő**.
-
-4. A **Regisztráció** területen válassza ki a kulcstartóból letöltött regisztrációs kulcsot.
-
-5. Az **Internetbeállítások** területen adja meg, hogy a konfigurációs kiszolgálón futó Provider hogyan csatlakozzon az Azure Site Recoveryhez az interneten keresztül.
-
-   - Ha szeretné csatlakoztatni a jelenleg be van állítva a számítógépen, válassza a proxy **csatlakozás az Azure Site Recovery proxykiszolgálóval**.
-   - Ha azt szeretné, hogy a Provider közvetlenül kapcsolódjon, válassza ki a **Csatlakozás közvetlenül az Azure Site Recovery proxykiszolgáló nélkül**.
-   - Ha a meglévő proxy hitelesítést igényel, vagy ha egyéni proxyt a szolgáltatói kapcsolat, válassza ki a használni kívánt **kapcsolódás egyéni proxybeállításokkal**, és adja meg a címet, a port és a hitelesítő adatokat.
-
-   ![Tűzfal](./media/tutorial-vmware-to-azure/combined-wiz4.png)
-
-6. Az **Előfeltételek ellenőrzése** területen a telepítő ellenőrzi, hogy a telepítés végrehajtható-e. Ha megjelenik egy figyelmeztetés a **globális időszinkron ellenőrzéséről**, ellenőrizze, hogy a rendszeróra ideje (a **Dátum és idő** beállítások) megegyeznek-e az időzónával.
-
-   ![Előfeltételek](./media/tutorial-vmware-to-azure/combined-wiz5.png)
-
-7. A **MySQL-konfiguráció** területen hozza létre a telepített MySQL-kiszolgálópéldányra való bejelentkezéshez szükséges hitelesítő adatokat.
-
-8. A **környezet részletei**, jelölje be **Igen** VMware virtuális gépek védelméhez. A telepítő ellenőrzi, hogy telepítve van-e a PowerCLI 6.0.
-
-9. A **Telepítés helye** területen válassza ki, hová szeretné telepíteni a bináris fájlokat, és hol kívánja tárolni a gyorsítótárat. A kiválasztott meghajtón legalább 5 GB szabad lemezterületre van szükség, de javasoljuk, hogy a gyorsítótárazáshoz használt lemezen legyen legalább 600 GB szabad hely.
-
-10. A **Hálózat kiválasztása** területen adja meg a figyelőt (hálózati adaptert és SSL-portot), amelyen keresztül a konfigurációs kiszolgáló küldi és fogadja a replikált adatokat. A 9443-as port a replikációs forgalom küldésére és fogadására használt alapértelmezett port, ez azonban a környezeti követelményektől függően módosítható. Azt is megnyithatja kell levezényelni a replikálási műveletek használt 443-as porton. Ne használja a 443-as porton és-replikációs forgalom fogadására.
-
-11. Az **Összefoglalás** területen ellenőrizze az adatokat, majd kattintson a **Telepítés** gombra. A telepítő telepíti a konfigurációs kiszolgáló, és regisztrálja azt az Azure Site Recovery szolgáltatásban.
-
-    ![Összefoglalás](./media/tutorial-vmware-to-azure/combined-wiz10.png)
-
-    A telepítés után a rendszer létrehoz egy hozzáférési kódot. Erre szüksége lesz, amikor engedélyezi a replikálást, ezért másolja le, és tárolja biztonságos helyen. A kiszolgáló megjelenik a **beállítások** > **kiszolgálók** ablaktábla a tárolóban lévő állapottal.
-
-### <a name="configure-automatic-discovery"></a>Automatikus felderítés konfigurálása
-
-Virtuális gépek felderítése, a konfigurációs kiszolgáló kapcsolódnia kell a helyszíni VMware-kiszolgálók. Ez az oktatóanyag céljából vegye fel a vCenter-kiszolgáló vagy vSphere-gazdagép, egy olyan fiókkal, amely rendszergazdai jogosultságokkal rendelkezik a kiszolgálón. Ehhez a fiókhoz létrehozott a [az oktatóanyag előző](tutorial-prepare-on-premises-vmware.md). 
-
-Vegye fel a fiókot:
-
-1. A virtuális gép konfigurációs kiszolgálón indítsa el a **CSPSConfigtool.exe**. A parancsikonja elérhető az asztalon, az alkalmazás pedig a *telepítési hely*\home\svsystems\bin mappában található.
-
-2. Kattintson a **Fiókok kezelése** > **Fiók hozzáadása** elemre.
-
-   ![Fiók hozzáadása](./media/tutorial-vmware-to-azure/credentials1.png)
-
-3. A **Fiókadatok** területen adja hozzá az automatikus felderítéshez használandó fiókot.
-
-   ![Részletek](./media/tutorial-vmware-to-azure/credentials2.png)
-
-A VMware-kiszolgáló hozzáadása:
-
-1. Nyissa meg a [Azure-portálon](https://portal.azure.com) , majd kattintson a **összes erőforrás**.
-2. Kattintson a helyreállítási szolgáltatás tárolójából nevű a **ContosoVMVault**.
-3. Kattintson a **helyreállítási hely** > **infrastruktúra előkészítése** > **forrás**
-4. Válassza ki **+ vCenter**, egy vCenter-kiszolgáló vagy vSphere ESXi gazdagéphez való csatlakozásra.
-5. A **vCenter hozzáadása**, adja meg a kiszolgáló rövid nevét. Ezt követően adja meg az IP-cím vagy teljes Tartománynevét.
-6. Hagyja a értékre a 443-as portot, kivéve, ha a VMware-kiszolgálók a kérelmeket egy másik port figyelésére.
-7. Válassza ki a kiszolgálóhoz való csatlakozáshoz használandó fiókot. Kattintson az **OK** gombra.
 
 A Site Recovery VMware-kiszolgálók, a megadott beállítások csatlakozik, és felderíti a virtuális gépek.
 
@@ -210,7 +167,7 @@ Előrehaladásának nyomon követheti a **Védelemengedélyezési** feladat **be
 Figyelheti a virtuális gépeket ad hozzá, ellenőrizheti a legutóbb felfedezett a virtuális gépek **konfigurációs kiszolgálók**
 > **Az utolsó Kapcsolatfelvétel**. Az ütemezett felderítési várakozás nélkül adja hozzá a virtuális gépeket, jelölje ki a konfigurációs kiszolgálót (ne kattintson azt), és kattintson **frissítése**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Vészhelyreállítási próba végrehajtása](site-recovery-test-failover-to-azure.md)

@@ -1,5 +1,5 @@
 ---
-title: "Az Azure Active Directory hibrid identitáskezelési elrendezésével kapcsolatos szempontok - hibrid identitás életciklus bevezetési stratégia meghatározása |} Microsoft Docs"
+title: "Hibrid identitás Tervező - életciklus bevezetési stratégia Azure |} Microsoft Docs"
 description: "Segíti a hibrid identitáskezelési felügyeleti feladatok érhető el az egyes életciklus fázisokban beállításoknak megfelelően adja meg."
 documentationcenter: 
 services: active-directory
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: ef8c4a0f672af2540f071f40eac77dc881eb31ac
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: bfa74c7557819bbef334fc94eb42e5ba83cf3fee
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>Hibrid identitás életciklus bevezetési stratégia meghatározása
 Ebben a feladatban fogja definiálni, a hibrid identitáskezelési megoldás az üzleti követelményeinek megfelelően, amelyet a megadott identity management stratégiája [határozza meg a hibrid identitáskezelési felügyeleti feladatok](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md).

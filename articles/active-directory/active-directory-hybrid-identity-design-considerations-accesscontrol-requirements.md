@@ -1,5 +1,5 @@
 ---
-title: "Az Azure Active Directory hibrid identitáskezelési elrendezésével kapcsolatos szempontok - határozza meg a hozzáférés-vezérlési követelményeinek |} Microsoft Docs"
+title: "Hibrid identitás Tervező hozzáférés-vezérlési követelményeinek Azure |} Microsoft Docs"
 description: "Identitás és a hibrid környezetben a felhasználók az erőforrásokhoz való hozzáférés feltételeit azonosító ismerteti."
 documentationcenter: 
 services: active-directory
@@ -14,16 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 069c83a0bbbb21ba85aea07375c186fe0b11c781
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: 161820e69b0c9d0dc376a62cecceb9cc5e83c8ce
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="determine-access-control-requirements-for-your-hybrid-identity-solution"></a>A hibrid identitáskezelési megoldás hozzáférés-vezérlési követelményeinek meghatározása
 Egy szervezet a hibrid identitáskezelési megoldás rendszer tervezése során ezt a lehetőséget is használhatnak tekintse át az erőforrásokat, azok tervezi, hogy elérhetővé tétele a felhasználók hozzáférési követelményeit. Az adatelérési közötti összes négy oszlopok identitását, amelyek:
 
-* Felügyelet
+* Adminisztráció
 * Hitelesítés
 * Engedélyezés
 * Naplózás
@@ -56,7 +57,7 @@ A szervezet alkalmazott modellt az üzleti igények függvényében változik, s
 * Használ a szervezete egyszeri bejelentkezésre található alkalmazásokhoz a helyszínen vagy a felhőben?
   * Ha igen, az egy hibrid identitás modell bevezetését érinti ez a folyamat?
 
-## <a name="access-control"></a>Hozzáférés-vezérlés
+## <a name="access-control"></a>Access Control
 Hitelesítési és engedélyezési elemei core felhasználó érvényesítési keresztül a vállalati adatokhoz való hozzáférés engedélyezése, amíg fontos is szabályozhatja, hogy ezek a felhasználók lesz, és a rendszergazdák mértékét az azok által kezelt erőforrások keresztül kell hozzáférési szintet. A hibrid identitáskezelési megoldás részletes hozzáférést biztosít erőforrásokat, a delegálással és a szerepköralapú hozzáférés-vezérlést képesnek kell lennie. Győződjön meg arról, hogy a következő kérdésre adott válaszok vonatkozó hozzáférés-vezérlés:
 
 * Rendelkezik a vállalata kezelheti az azonosítási rendszer emelt szintű jogosultságokkal egynél több felhasználó?
@@ -74,7 +75,7 @@ Hitelesítési és engedélyezési elemei core felhasználó érvényesítési k
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Incidensválasz-követelmények meghatározása](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md)
 
 ## <a name="see-also"></a>Lásd még:

@@ -27,9 +27,9 @@ Az alábbi táblázat az IoT Hub-erőforrásokra vonatkozó korlátokat tartalma
 | A felhőből egy eszközre irányuló üzenetre válaszoló <br/> visszajelzési üzenetek maximális kézbesítésszáma |100 |
 | A felhőből egy eszközre irányuló üzenetre válaszoló <br/> visszajelzési üzenetek maximális élettartama |2 nap |
 | Ikereszköz maximális mérete <br/> (címkék, jelentett tulajdonságok és kívánt tulajdonságok) | 8 KB |
-| Az ikereszköz karakterláncértékének maximális mérete | 4 KB-OS |
+| Az ikereszköz karakterláncértékének maximális mérete | 4 KB |
 | Az ikereszközben található objektum maximális mélysége | 5 |
-| A közvetlen metódus hasznos adatainak maximális mérete | 8 KB |
+| A közvetlen metódus hasznos adatainak maximális mérete | 128 KB |
 | Feladatelőzmények maximális megőrzési ideje | 30 nap |
 | Egyidejű feladatok maximális száma | 10 (S3 esetén), 5 (S2 esetén), 1 (S1 esetén) |
 | További végpontok maximális száma | 10 (S1, S2 és S3 esetén) |
@@ -53,7 +53,7 @@ Az IoT Hub szolgáltatás szabályozza a kéréseket az alábbi kvóták átlép
 | Küldések a felhőből az eszközökre | 83.33/sec/Unit (5000/perc/egysége) (S3), 1.67/sec/unit (100 perc/egységenként) (a S1 és S2). |
 | Fogadások a felhőből az eszközökön |833.33/sec/Unit (50000/perc/egysége) (S3), 16.67/sec/unit (1000/perc / (S1 és) egység S2). |
 | Fájlfeltöltési műveletek |83.33 fájl feltöltése értesítések/mp/egység (5000/perc/egysége) (S3), 1.67 fájl feltöltése értesítések/mp / (100 perc/egységenként) (S1 és egység S2). <br/> Egy Azure Storage-tárfiók esetén egyszerre 10000 SAS URI lehet használatban.<br/> Eszközönként egyszerre 10 SAS URI lehet használatban. |
-| Közvetlen metódusok | 3000/mp/egységet (S3), 60 másodperc/egységenként (S2), a 20/mp/egységet (S1) |
+| Közvetlen metódusok | 24MB/s/egységet (S3), (az S1) 160KB/s/egység 480KB/s/egységet (S2),<br/> 8 KB-os sávszélesség-szabályozás mérő mérete alapján. |
 | Ikereszköz-olvasások | 50/mp/egység (S3 esetén), legfeljebb 10/mp vagy 1/mp/egység (S2 esetén), 10/mp (S1 esetén) |
 | Ikereszköz-frissítések | 50/mp/egység (S3 esetén), legfeljebb 10/mp vagy 1/mp/egység (S2 esetén), 10/mp (S1 esetén) |
 | Feladatműveletek <br/> (létrehozás, frissítés, listázás, törlés) | 83.33/sec/Unit (5000/perc/egysége) (S3), 1.67/sec/unit (100 perc/egységenként) (az S2), 1.67/sec/unit (100 perc/egységenként) (a S1) |

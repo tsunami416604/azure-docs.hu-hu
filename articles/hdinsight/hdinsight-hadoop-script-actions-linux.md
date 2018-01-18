@@ -13,13 +13,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/23/2017
+ms.date: 01/17/2018
 ms.author: larryfr
-ms.openlocfilehash: 0cef360de3b7a9be01536b0ebe90769c89e7c432
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: ddf5db3e61633c45e388e161e165637521803094
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="script-action-development-with-hdinsight"></a>Parancsfájl művelet fejlesztése a Hdinsighttal
 
@@ -118,7 +118,7 @@ Az ajánlott eljárás, hogy töltse le és archiválni mindent az Azure Storage
 > [!IMPORTANT]
 > A használt tárfiók más storage-fiók a fürt vagy egy nyilvános, csak olvasható tároló alapértelmezett tárfiókot kell lennie.
 
-Például a Microsoft által biztosított minták tárolódnak a [https://hdiconfigactions.blob.core.windows.net/](https://hdiconfigactions.blob.core.windows.net/) tárfiók. Ez egy olyan nyilvános, csak olvasható tároló, a HDInsight csapat tartja fenn.
+Például a Microsoft által biztosított minták tárolódnak a [https://hdiconfigactions.blob.core.windows.net/](https://hdiconfigactions.blob.core.windows.net/) tárfiók. Ez a hely egy olyan nyilvános, csak olvasható tároló, a HDInsight csapat által fenntartott.
 
 ### <a name="bPS4"></a>Előre lefordított erőforrások használata
 
@@ -314,7 +314,7 @@ fi
 
 ## <a name="deployScript"></a>Ellenőrzőlista a üzembe helyezéséhez egy parancsfájlművelet
 
-Azt a parancsfájlok telepítendő előkészítésekor tartott lépései a következők:
+Parancsfájl telepítendő elkészítésekor az alábbiakban a lépéseket hajtsa végre a megfelelő:
 
 * Helyezze el az egyéni parancsfájlok, amely elérhető a fürt csomópontjai a telepítés során helyen tartalmazó fájlokat. Például az alapértelmezett a fürt tárolóhelyét. Fájlok nyilvánosan olvasható üzemeltetési szolgáltatásokat is tárolhatja.
 * Győződjön meg arról, hogy a parancsfájl impotent. Így lehetővé teszi, hogy a parancsfájl hajthatnak végre több alkalommal ugyanazon a csomóponton.

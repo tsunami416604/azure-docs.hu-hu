@@ -1,5 +1,5 @@
 ---
-title: "Az Azure Active Directory hibrid identitáskezelési elrendezésével kapcsolatos szempontok - identitás követelmények meghatározása |} Microsoft Docs"
+title: "Identitáskövetelmények a hibrid felhőalapú identitás-kialakítási Azure |} Microsoft Docs"
 description: "Azonosítsa a vállalat üzleti igényei, amelyek a hibrid identitáskezelési kialakításának követelményei adható meg."
 documentationcenter: 
 services: active-directory
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: d88648731ef021f2705a15a544d23359e65c64f6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: 90c65ca22ff384bd22819eb589b3f781f8992a4e
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>A hibrid identitáskezelési megoldás az identitás-követelmények meghatározása
 A hibrid identitáskezelési megoldás tervezésének első lépése a követelmények, ez a megoldás kihasználva fog üzleti szervezet.  Hibrid identitás (támogatott minden más felhőalapú megoldás, adja meg a hitelesítés) támogató szerepkörként elindul, és adja meg az új és érdekes képességekkel, amelyek a felhasználók új munkaterhelések feloldásához kerül be.  A munkaterhelések vagy a szolgáltatások, a felhasználók elfogadják kívánt szabja meg, a hibrid identitáskezelési kialakításának követelményei.  Hibrid identitás kihasználhatják a helyszínen kell ezeket a szolgáltatásokat és munkaterhelések és a felhőben.  
@@ -103,9 +104,9 @@ Akkor is, a felhasználói követelmények kiértékeléséhez. Ez a kiértékel
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Címtár-szinkronizálás követelmények meghatározása](active-directory-hybrid-identity-design-considerations-directory-sync-requirements.md)
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 [Kialakítási szempontok áttekintése](active-directory-hybrid-identity-design-considerations-overview.md)
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/31/2017
 ms.author: dekapur
-ms.openlocfilehash: e1a45f9924291382bb1bbdc969e97ee54a7b6132
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 095db20e7d22bd517337f24fc9a81b84988d1465
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="add-the-oms-agent-to-a-cluster"></a>Adja hozzá az OMS-ügynököt a fürthöz
 
@@ -52,7 +52,7 @@ A legjobb módszer az OMS-ügynököt a fürthöz hozzáadni a virtuálisgép-m�
     A Linux-fürt:
 
     ```sh
-    az vmss extension set --name OmsAgentForLinux --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType> --settings "{'workspaceId'}":'<OMSworkspaceId>'}" --protected-settings "{'workspaceKey':'<OMSworkspaceKey>'}"
+    az vmss extension set --name OmsAgentForLinux --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType> --settings "{'workspaceId':'<OMSworkspaceId>'}" --protected-settings "{'workspaceKey':'<OMSworkspaceKey>'}"
     ```
 
     Íme egy példa egy Windows fürtnek való felvétel alatt OMS-ügynököt.
@@ -71,7 +71,7 @@ A minta Resource Manager-sablonok, amelyek központi telepítése egy OMS Napló
 
 Töltse le, és módosítsa a sablon az igényeinek leginkább megfelelő a fürtök telepítése.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Megfelelő gyűjtése [teljesítményszámlálók](service-fabric-diagnostics-event-generation-perf.md). Konfigurálhatja az egyes teljesítményszámlálókra, head (az OMS szolgáltatáshoz erőforrás tetején csatolt) OMS-portálon való átvételéhez OMS-ügynököt. Kattintson a **Kezdőlap > Beállítások > adatok > Windows-teljesítményszámlálók** vagy **Linux teljesítményszámlálók** , és válassza a számlálók szeretne gyűjteni.
 * Konfigurálja az OMS beállítása [riasztás automatikus](../log-analytics/log-analytics-alerts.md) észlelésére és diagnosztika

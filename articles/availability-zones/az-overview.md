@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 11/16/2017
 ms.author: markgal
 ms.custom: mvc I am an ITPro and application developer, and I want to protect (use Availability Zones) my applications and data against data center failure (to build Highly Available applications).
-ms.openlocfilehash: c3a1758ab965d22eabfe44a410e9f72420e0148b
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 2404575d7f4224315b2c3272cb21e8b5ee6515e3
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="overview-of-availability-zones-in-azure-preview"></a>A rendelkezésre állási zónák (előzetes verzió) Azure-ban – áttekintés
 
@@ -31,6 +31,7 @@ Rendelkezésre állási zónák a Súgó gombra a datacenter-szintű hibák elle
 ## <a name="regions-that-support-availability-zones"></a>Rendelkezésre állási zónák támogató régiók
 
 - USA 2. keleti régiója
+- USA középső régiója
 - Nyugat-Európa
 - Közép-Franciaország
 
@@ -40,14 +41,14 @@ Azure-szolgáltatás, amely támogatja a rendelkezésre állási zónák a köve
 
 - Linux rendszerű virtuális gépek
 - Windows rendszerű virtuális gépek
-- Zonal virtuálisgép-méretezési csoportok
+- Virtual Machine Scale Sets
 - Felügyelt lemezek
 - Load Balancer
 - Nyilvános IP-cím
 
 ## <a name="get-started-with-the-availability-zones-preview"></a>Ismerkedjen meg a rendelkezésre állási zónák előzetes verzió
 
-A rendelkezésre állási zónák preview USA keleti régiója 2. régiója, Nyugat-Európa, és az adott Azure-szolgáltatásokhoz központi Franciaország régiók érhető el. 
+A rendelkezésre állási zónák preview elérhető az USA keleti régiója 2, Velünk központi, Nyugat-Európa, és az adott Azure-szolgáltatásokhoz központi Franciaország régiók. 
 
 1. [Bejelentkezés a rendelkezésre állási zónák előzetes](http://aka.ms/azenroll). 
 2. Jelentkezzen be az Azure-előfizetéshez.

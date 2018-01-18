@@ -3,7 +3,7 @@ title: "Azure AD Connect szinkronizálása: funkciók referencia |} Microsoft Do
 description: "Az Azure AD Connect szinkronizálási szolgáltatás deklaratív kiépítés kifejezéseinek hivatkozását."
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 4f525ca0-be0e-4a2e-8da1-09b6b567ed5f
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: d84a31e72d3e97ebb12f1747259fcb6e6b8fdcdc
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 9ce27ca217f99b4f12ca1af0b5a178f5d61a1c89
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect szinkronizálása: funkciók referencia
 Az Azure AD Connectben funkciók segítségével kezelheti egy attribútum értékét a szinkronizálás során.  
@@ -1242,7 +1242,7 @@ A hiba függvénynek, amely akkor adja vissza egyéni érték is lehet.
 Néhány főbb városában szóbeli nyelvét adja eredményül, ellenkező esetben a hibát ad vissza.
 
 - - -
-### <a name="trim"></a>Trim
+### <a name="trim"></a>Levágás
 **Leírás:**  
 A vágás függvény eltávolítja a kezdő és záró szóközök karakterláncból.
 
@@ -1269,7 +1269,7 @@ A UCase függvény egy karakterlánc karaktereinek összes nagybetűvel konvert�
 "TEST" adja vissza.
 
 - - -
-### <a name="where"></a>Ha
+### <a name="where"></a>Ahol (a(z)
 
 **Leírás:**  
 A megadott feltétel alapján többértékű attribútum (vagy egy kifejezés eredményének) értékek egy alhalmazát adja vissza.

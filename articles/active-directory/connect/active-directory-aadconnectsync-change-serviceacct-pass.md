@@ -4,7 +4,7 @@ description: "Ez a témakör a dokumentum útmutatást nyújt a titkosítási ku
 services: active-directory
 keywords: "Azure AD sync szolgáltatás-fiók, jelszó"
 documentationcenter: 
-author: cychua
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 76b19162-8b16-4960-9e22-bd64e6675ecc
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 0e4f143779a33bc2511974884fa16894611050f8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c22dd91f236454c774c00371bff668da245d45c6
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="changing-the-azure-ad-connect-sync-service-account-password"></a>Az Azure AD Connect szinkronizálási szolgáltatásfiók jelszavának módosítása
 Ha módosítja a Azure AD Connect szinkronizálási szolgáltatás fiók jelszavát, a szinkronizálási szolgáltatás nem lesz képes start megfelelően félbehagyná a titkosítási kulcs, és újra lesz inicializálva a Azure AD Connect szinkronizálási szolgáltatás fiók jelszavát. 
@@ -43,7 +43,7 @@ Második meghatározott feltételek mellett frissítése után a jelszót, a szi
 Hibák például jelenik meg:
 
 - A Windows szolgáltatásvezérlő, ha a szinkronizálási szolgáltatás indításakor, és nem tudja lekérni a titkosítási kulcs sikertelen a következő hiba "** a Windows nem sikerült elindítani a Microsoft Azure AD Sync helyi számítógépen. További információkért tekintse át a rendszer-eseménynaplóban találhatók. Ha ez egy nem Microsoft-szolgáltatás, a szállítót, és a szolgáltatásspecifikus hibakódot **-21451857952 x. "
-- A Windows eseménynaplóban, az alkalmazások eseménynaplójában keresse meg a hibát tartalmaz **Event ID 6028** és hibaüzenet *"**nem érhető el a kiszolgáló titkosítási kulcsához.* *"*
+- A Windows eseménynaplóban, az alkalmazások eseménynaplójában keresse meg a hibát tartalmaz **Event ID 6028** és hibaüzenet *"**nem érhető el a kiszolgáló titkosítási kulcsához.**"*
 
 Győződjön meg arról, hogy nem jelenik meg ezeket a hibákat, kövesse az ismertetett [az Azure AD Connect szinkronizálási szolgáltatás titkosítási kulcs kivonásának](#abandoning-the-azure-ad-connect-sync-encryption-key) Ha megváltoztatta a jelszavát.
  
@@ -82,7 +82,7 @@ A meglévő titkosítási kulcs Abandon, így az új titkosítási kulcs is lét
 A meglévő az adatbázisban tárolt jelszavak már nem lehet visszafejteni, mert meg kell adnia a szinkronizálási szolgáltatás az Active Directory tartományi szolgáltatások fiók jelszavát. A szinkronizálási szolgáltatás titkosítja a jelszavakat az új titkosítási kulcs használatával:
 
 1. Indítsa el a Synchronization Service Managert (KEZDŐ → szinkronizálási szolgáltatás).
-</br>![Szinkronizálás a Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/startmenu.png)  
+</br>![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/startmenu.png)  
 2. Lépjen a **összekötők** fülre.
 3. Válassza ki a **Címtárösszekötőben** , amely megfelel a helyszíni AD. Ha több AD-összekötő, esetében ismételje meg az alábbi lépéseket.
 4. A **műveletek**, jelölje be **tulajdonságok**.
@@ -107,7 +107,7 @@ Most, hogy a szinkronizálási szolgáltatás hozzáfér a titkosítási kulcsot
 1. Nyissa meg a Windows szolgáltatásvezérlő kezelőjéhez (KEZDŐ → szolgáltatások).
 2. Válassza ki **Microsoft Azure AD Sync** és levő Újraindítás lehetőségre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 **Áttekintő témakör**
 
 * [Azure AD Connect szinkronizálása: megértéséhez, valamint a szinkronizálás testreszabása](active-directory-aadconnectsync-whatis.md)

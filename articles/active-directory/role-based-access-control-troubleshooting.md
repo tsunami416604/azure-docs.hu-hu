@@ -1,9 +1,9 @@
 ---
-title: "Az Azure RBAC hibaelhárítása |} Microsoft Docs"
+title: "Szerepköralapú hozzáférés-vezérlést Azure RBAC hibaelhárítása |} Microsoft Docs"
 description: "Segítség problémák vagy a szerepköralapú hozzáférés-vezérlés erőforrások kapcsolatos kérdésekre."
 services: azure-portal
 documentationcenter: na
-author: andredm7
+author: curtand
 manager: mtillman
 ms.assetid: df42cca2-02d6-4f3c-9d56-260e1eb7dc44
 ms.service: active-directory
@@ -11,16 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
-ms.author: andredm
+ms.date: 01/14/2018
+ms.author: curtand
 ms.reviewer: rqureshi
-ms.openlocfilehash: b7155ed7613d46329229d8e572c75400041022ce
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: 8ca6c53b24c3e708d4631becabcedc523d436d6b
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/17/2018
 ---
-# <a name="role-based-access-control-troubleshooting"></a>Szerepköralapú hozzáférés-vezérlés hibaelhárítása
+# <a name="troubleshooting-azure-role-based-access-control"></a>Hibaelhárítási Azure szerepköralapú hozzáférés-vezérlés 
 
 A dokumentum cikk a szerepköröket, meghatározott hozzáférési jogosultságai kapcsolatos gyakori kérdésekre ad választ, megállapításához, hogy mi történik, ha használja a szerepkörök az Azure portál és a részleg-hozzáférési problémák megoldása. Ezek a szerepkörök az összes erőforrástípus terjed ki:
 
@@ -41,7 +42,7 @@ Ha megadta a felhasználói csak olvasható hozzáférést egyetlen webalkalmaz�
 * Diagnosztikai naplók konfiguráció
 * Konzol (parancssor)
 * Aktív és a legutóbbi központi telepítéseket (helyi git folyamatos üzembe helyezés)
-* Becsült költségek
+* Becsült költés
 * Webtesztek
 * Virtuális hálózat (csak egy olvasó, ha egy virtuális hálózat már be lett állítva egy írási hozzáféréssel rendelkező felhasználó számára látható).
 
@@ -65,7 +66,7 @@ Ezek az elemek szükség **írási** a teljes hozzáférés **erőforráscsoport
 * SSL-tanúsítványokat és a kötések (SSL-tanúsítványok megoszthatók ugyanabban az erőforráscsoportban a helyek és a földrajzi helyhez között)  
 * Riasztási szabályok  
 * automatikus skálázási beállításokat  
-* Application insights összetevőinek  
+* Application Insights-összetevők  
 * Webtesztek  
 
 ## <a name="virtual-machine-workloads"></a>Virtuális gépek terheléséhez

@@ -1,5 +1,5 @@
 ---
-title: "Az információkkal dolgozó szakemberek hogyan hozzá B2B együttműködés felhasználók Azure Active Directory? | Microsoft Docs"
+title: "Adja hozzá az Infomunkás - Azure Active Directory B2B együttműködés felhasználók |} Microsoft Docs"
 description: "B2B együttműködés lehetővé teszi, hogy az információkkal dolgozó szakemberek a szervezeti felhasználók hozzáadása az Azure AD hozzáférési |} Microsoft Docs"
 services: active-directory
 documentationcenter: 
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/23/2017
 ms.author: sasubram
-ms.openlocfilehash: 255ee5c11aa7e76fec23837d3bdccf2175c2f9fc
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e02f23c055af24b42fd41394b26a4df827cb0fc8
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="how-do-information-workers-add-b2b-collaboration-users-to-azure-active-directory"></a>Az információkkal dolgozó szakemberek hogyan hozzá B2B együttműködés felhasználók Azure Active Directory?
 
@@ -37,7 +37,7 @@ Az információkkal dolgozó szakemberek hasonló módon adhat hozzá a B2B egy�
 > B2B együttműködés felhasználók nem adható hozzá, dinamikus csoportot vagy egy csoportot, amely a helyszíni Active Directoryval van szinkronizálva.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg az Azure AD B2B együttműködés további cikkeit:
 

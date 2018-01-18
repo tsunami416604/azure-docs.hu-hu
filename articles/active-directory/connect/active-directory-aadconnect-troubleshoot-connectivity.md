@@ -3,7 +3,7 @@ title: "Az Azure AD Connect: Csatlakozási problémák elhárítása |} Microsof
 description: "Ismerteti az Azure AD Connect csatlakozási problémák."
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 3aa41bb5-6fcb-49da-9747-e7a3bd780e64
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 09e1858c748c50a084cd66ac8bc8406180d97ace
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1c8bbbde653ed8e927ab1550c32ae86a4dc2ffac
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Az Azure AD Connect csatlakozási problémák
 Ez a cikk ismerteti az Azure AD Connect és az Azure AD közötti kapcsolat megfelelő működésének és a problémák elhárításáról. A problémát valószínűleg a proxykiszolgálóval környezetben kell vizsgálni.
@@ -42,12 +42,12 @@ URL-címek a következő táblázat a abszolút operációs rendszer minimálisa
 
 | URL-cím | Port | Leírás |
 | --- | --- | --- |
-| mscrl.microsoft.com |A HTTP/80 |Töltse le a Visszavonási listák segítségével. |
-| \*. verisign.com |A HTTP/80 |Töltse le a Visszavonási listák segítségével. |
-| \*. entrust.com |A HTTP/80 |Töltse le a Visszavonási listák a multi-factor Authentication használatával. |
-| \*.windows.net |HTTPS/443-AS |Az Azure AD-bejelentkezéshez használt. |
-| Secure.aadcdn.microsoftonline-p.com |HTTPS/443-AS |Használja az MFA szolgáltatásra. |
-| \*.microsoftonline.com |HTTPS/443-AS |Konfigurálja az Azure AD-címtár és az importálási/exportálási adatok szolgál. |
+| mscrl.microsoft.com |HTTP/80 |Töltse le a Visszavonási listák segítségével. |
+| \*.verisign.com |HTTP/80 |Töltse le a Visszavonási listák segítségével. |
+| \*.entrust.com |HTTP/80 |Töltse le a Visszavonási listák a multi-factor Authentication használatával. |
+| \*.windows.net |HTTPS/443 |Az Azure AD-bejelentkezéshez használt. |
+| secure.aadcdn.microsoftonline-p.com |HTTPS/443 |Használja az MFA szolgáltatásra. |
+| \*.microsoftonline.com |HTTPS/443 |Konfigurálja az Azure AD-címtár és az importálási/exportálási adatok szolgál. |
 
 ## <a name="errors-in-the-wizard"></a>A varázsló hibák
 A varázsló által használt két eltérő biztonsági környezetben. Az oldalon **az Azure AD Connect**, akkor a jelenleg bejelentkezett felhasználó nevében használ. Az oldalon **konfigurálása**, vált át a [a szinkronizálási motor szolgáltatást futtató fiók](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-account). Ha probléma van, úgy tűnik, már valószínűleg a **az Azure AD Connect** , a varázsló, mivel a proxy konfigurációs globális lapján.
@@ -108,41 +108,41 @@ Ha követte a fenti lépéseket, és továbbra sem sikerül kapcsolódni, akkor 
 ### <a name="reference-proxy-logs"></a>Hivatkozás proxy naplók
 Ez egy biztonsági másolat egy tényleges proxy naplóból és a telepítési varázsló oldal ahol készült (az azonos végponthoz ismétlődő bejegyzések eltávolítva). Ez a szakasz a saját proxy- és hálózati naplók referenciaként használható. A tényleges végpontok eltérhet a környezetben (különösen az URL-címeket a *dőlt*).
 
-**Az Azure AD Connect**
+**Csatlakozás az Azure AD-hez**
 
 | Time | URL-cím |
 | --- | --- |
-| 1/11/2016 8:31 |Connect://Login.microsoftonline.com:443 |
-| 1/11/2016 8:31 |Connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:32 |Csatlakozás: / /*bba800-rögzítési*. microsoftonline.com:443 |
-| 1/11/2016 8:32 |Connect://Login.microsoftonline.com:443 |
-| 1/11/2016 8:33 |Connect://provisioningapi.microsoftonline.com:443 |
-| 1/11/2016 8:33 |Csatlakozás: / /*bwsc02-továbbítási*. microsoftonline.com:443 |
+| 1/11/2016 8:31 |connect://login.microsoftonline.com:443 |
+| 1/11/2016 8:31 |connect://adminwebservice.microsoftonline.com:443 |
+| 1/11/2016 8:32 |connect://*bba800-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:32 |connect://login.microsoftonline.com:443 |
+| 1/11/2016 8:33 |connect://provisioningapi.microsoftonline.com:443 |
+| 1/11/2016 8:33 |connect://*bwsc02-relay*.microsoftonline.com:443 |
 
 **Konfigurálás**
 
 | Time | URL-cím |
 | --- | --- |
-| 1/11/2016 8:43 |Connect://Login.microsoftonline.com:443 |
-| 1/11/2016 8:43 |Csatlakozás: / /*bba800-rögzítési*. microsoftonline.com:443 |
-| 1/11/2016 8:43 |Connect://Login.microsoftonline.com:443 |
-| 1/11/2016 8:44 |Connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:44 |Csatlakozás: / /*bba900-rögzítési*. microsoftonline.com:443 |
-| 1/11/2016 8:44 |Connect://Login.microsoftonline.com:443 |
-| 1/11/2016 8:44 |Connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:44 |Csatlakozás: / /*bba800-rögzítési*. microsoftonline.com:443 |
-| 1/11/2016 8:44 |Connect://Login.microsoftonline.com:443 |
-| 1/11/2016 8:46 |Connect://provisioningapi.microsoftonline.com:443 |
-| 1/11/2016 8:46 |Csatlakozás: / /*bwsc02-továbbítási*. microsoftonline.com:443 |
+| 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
+| 1/11/2016 8:43 |connect://*bba800-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
+| 1/11/2016 8:44 |connect://adminwebservice.microsoftonline.com:443 |
+| 1/11/2016 8:44 |connect://*bba900-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:44 |connect://login.microsoftonline.com:443 |
+| 1/11/2016 8:44 |connect://adminwebservice.microsoftonline.com:443 |
+| 1/11/2016 8:44 |connect://*bba800-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:44 |connect://login.microsoftonline.com:443 |
+| 1/11/2016 8:46 |connect://provisioningapi.microsoftonline.com:443 |
+| 1/11/2016 8:46 |connect://*bwsc02-relay*.microsoftonline.com:443 |
 
 **Kezdeti szinkronizálás**
 
 | Time | URL-cím |
 | --- | --- |
-| 1/11/2016 8:48 |Connect://Login.Windows.NET:443 |
-| 1/11/2016 8:49 |Connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:49 |Csatlakozás: / /*bba900-rögzítési*. microsoftonline.com:443 |
-| 1/11/2016 8:49 |Csatlakozás: / /*bba800-rögzítési*. microsoftonline.com:443 |
+| 1/11/2016 8:48 |connect://login.windows.net:443 |
+| 1/11/2016 8:49 |connect://adminwebservice.microsoftonline.com:443 |
+| 1/11/2016 8:49 |connect://*bba900-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:49 |connect://*bba800-anchor*.microsoftonline.com:443 |
 
 ## <a name="authentication-errors"></a>Hitelesítési hibák
 Ez a fejezet az adal-t (az Azure AD Connect által használt hitelesítési tár) és PowerShell visszaadható hibák. A hiba azt kell megismerheti a a következő lépéseket.
@@ -187,7 +187,7 @@ Nem várt hiba történt a telepítési varázsló jelenik meg. Akkor fordulhat 
 Kiadásainak kezdve buildszáma 1.1.105.0 (dátuma: 2016. februári), a bejelentkezési segéd lett visszavonva. Ez a szakasz és a konfiguráció már nem szükséges, de hivatkozásként maradnak.
 
 A single-bejelentkezési segéd működjön a winhttp kell konfigurálni. Ez a konfiguráció nem végezhető [ **netsh**](active-directory-aadconnect-prerequisites.md#connectivity).  
-![Netsh](./media/active-directory-aadconnect-troubleshoot-connectivity/netsh.png)
+![netsh](./media/active-directory-aadconnect-troubleshoot-connectivity/netsh.png)
 
 ### <a name="the-sign-in-assistant-has-not-been-correctly-configured"></a>A bejelentkezési segéd nincs megfelelően konfigurálva
 Ez a hiba akkor jelenik meg, amikor a bejelentkezési segéd nem érhető el a proxy vagy a proxykiszolgáló nem engedélyezi, hogy a kérelmet.
@@ -197,5 +197,5 @@ Ez a hiba akkor jelenik meg, amikor a bejelentkezési segéd nem érhető el a p
   ![netshshow](./media/active-directory-aadconnect-troubleshoot-connectivity/netshshow.png)
 * Ha meg, hogy helyes-e, kövesse a lépéseket [ellenőrizze a proxy kapcsolatát](#verify-proxy-connectivity) megjelenítéséhez, ha a probléma a varázslót.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md).

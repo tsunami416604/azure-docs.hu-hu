@@ -3,7 +3,7 @@ title: "Azure AD Connect szinkronizálása: megértéséhez, valamint a szinkron
 description: "Azt ismerteti, hogyan az Azure AD Connect szinkronizálása akkor működik, és hogyan szabható testre."
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: ee4bf802-045b-4da0-986e-90aba2de58d6
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
-ms.openlocfilehash: c3f5d469850cf06d21821bd2f642666dc5c48644
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 20614aaabc05513e93eb001c1676a73f85003947
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Azure AD Connect szinkronizálása: megértéséhez, valamint a szinkronizálás testreszabása
 Az Azure Active Directory Connect szinkronizálási szolgáltatások (az Azure AD Connect szinkronizálása) az Azure AD Connect fő összetevője. Ez gondoskodik az identitás a helyszíni környezetben és az Azure AD közti adatszinkronizálást kapcsolatos műveleteket. Azure AD Connect szinkronizálása a követő DirSync, az Azure AD Sync és a Forefront Identity Manager az az Azure Active Directory Connector konfigurálva.
@@ -49,7 +49,7 @@ A helyszíni két összetevőből áll: a szinkronizálási szolgáltatás **az 
 | [Jelszó-szinkronizálás megvalósítása](active-directory-aadconnectsync-implement-password-synchronization.md) |Jelszó-szinkronizálás, végrehajtásához, és ismerteti és hibaelhárításához. |
 | [Eszközök visszaírásához.](active-directory-aadconnect-feature-device-writeback.md) |Az Azure AD Connectben eszközvisszaíró működését ismerteti. |
 | [Címtárbővítmények](active-directory-aadconnectsync-feature-directory-extensions.md) |Ismerteti, hogyan lehet a saját egyéni attribútumokkal rendelkező Azure AD-séma kiterjesztése. |
-| **A szinkronizálási szolgáltatás** | |
+| **Sync Service** | |
 | [Az Azure AD Connect szinkronizálási szolgáltatások](active-directory-aadconnectsyncservice-features.md) |Ismerteti a szinkronizálási szolgáltatás és a szinkronizálási beállítások módosítása az Azure ad-ben. |
 | [Ismétlődő attribútum rugalmasság](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md) |Ismerteti, hogyan lehet engedélyezése és használata **userPrincipalName** és **proxyAddresses** ismétlődő attribútum-érték rugalmasság. |
 | **Műveletek és a felhasználói felület** | |

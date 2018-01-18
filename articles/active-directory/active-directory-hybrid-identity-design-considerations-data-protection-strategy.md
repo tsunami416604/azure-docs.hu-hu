@@ -1,5 +1,5 @@
 ---
-title: "Az Azure Active Directory hibrid identitáskezelési elrendezésével kapcsolatos szempontok - adatok védelme stratégia kidolgozása |} Microsoft Docs"
+title: "Hibrid identitás Tervező - data protection stratégia Azure |} Microsoft Docs"
 description: "A hibrid identitáskezelési megoldás az üzleti követelményeinek megfelelően, hogy a megadott adatok védelmi stratégia meghatározása"
 documentationcenter: 
 services: active-directory
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/13/2017
 ms.author: billmath
-ms.openlocfilehash: ab8f884449aa21f91ff873901b44753d8e15bcd9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: d43be976f9b3fae7f3cbec1a0033f1a401ede896
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>A hibrid identitáskezelési megoldás az adatok védelme stratégia meghatározása
 Ebben a feladatban fogja definiálni, a data protection stratégiája a hibrid identitáskezelési megoldás az üzleti követelményeinek megfelelően, amelyet a megadott:
@@ -41,9 +42,9 @@ Attól függően, hogy hogyan válaszolt kérdéseit [adatvédelmi követelmény
 
 | Adatok védelmi beállítások | A felhő aktívan | A többi helyszíni | Az átvitel során |
 | --- | --- | --- | --- |
-| A BitLocker titkosítást |X |X | |
+| BitLocker meghajtótitkosítás |X |X | |
 | SQL Server adatbázisok titkosítása |X |X | |
-| VM-VM-titkosítás | | |X |
+| VM-to-VM Encryption | | |X |
 | SSL/TLS | | |X |
 | VPN | | |X |
 
@@ -164,7 +165,7 @@ A fő jelentéskészítési képességet az Azure AD Premium használható az In
 
 Mivel a lehetőségeinek incidensválaszra egy többrétegű módszert használja, ezek a lehetőségek összehasonlítása esetén nem alkalmazható ehhez a feladathoz. Győződjön meg arról, hogy minden beállítás érhető el az egyes forgatókönyvek esetében, amelyek kell használnia az Azure AD jelentéskészítési képességet a vállalat incidensválasz folyamat részeként hasznosítja ki.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Hibrid identitás felügyeleti feladatok meghatározása](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)
 
 ## <a name="see-also"></a>Lásd még:

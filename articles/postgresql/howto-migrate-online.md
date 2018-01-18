@@ -9,28 +9,30 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 01/04/2018
-ms.openlocfilehash: 8c98c58042e7f1d1726eaad6ee03d1531b6c910e
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 429828515411986dc7b3586360cb9923a5bb20de
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="minimal-downtime-migration-to-azure-database-for-postgresql"></a>Az Azure Database-áttelepítés minimális állásidővel PostgreSQL
-Áttelepítheti a meglévő PostgreSQL-adatbázisról Azure Database PostgreSQL az Attunity megfelel a Microsoft Migrations, egy közös szponzorált, közös ajánlat Attunity és az Azure-adatbázis áttelepítése szolgáltatás megfelelően biztosított Microsoft minden Microsoft-ügyfél számára további költség nélkül. Microsoft Migrations Attunity megfelel is lehetővé teszi, hogy az adatbázis áttelepítése az állásidő minimális, és a forrás-adatbázis továbbra is fennáll, az áttelepítési folyamat során működőképes legyen.
+Áttelepítheti a meglévő PostgreSQL-adatbázisban az Azure Database-PostgreSQL az Attunity megfelel a Microsoft Migrations. Attunity megfelel egy közös ajánlat Attunity és a Microsoft. Azure-adatbázis áttelepítése szolgáltatás megfelelően szerepel a Microsoft ügyfelei további költségek nélkül. 
 
-Attunity megfelel egy olyan adatok replikációs eszköz, amely lehetővé teszi a különböző forrásokból és célok, közötti adatszinkronizálás, propagálása a létrehozási parancsprogrammal és az adatbázis társított adatokat. Attunity replikálás nem propagál minden egyéb összetevők (például SP, eseményindítók, Funkciók, stb.) vagy convert, például ilyen összetevők, T-SQL tárolt PL/SQL-kódot.
+Attunity megfelel segít, hogy minimalizálják az állásidőt adatbázis áttelepítések során, és a folyamat során működési tartja a forráshely adatbázisára.
+
+Attunity megfelel egy replikációs eszköz, amely lehetővé teszi a különböző forrásokból és tárolók közötti adatszinkronizálás. Azt a séma-létrehozási parancsprogrammal és az adatbázis kapcsolódó adatok propagálása zajlik. Attunity replikálás nem propagál minden egyéb összetevők (például SP, eseményindítók, Funkciók, és így tovább) vagy convert, például, a PL/SQL-kódot, amely az ilyen összetevők T-SQL.
 
 > [!NOTE]
-> Míg Attunity replikálás áttelepítési forgatókönyvek széles körét támogatja, Microsoft Migrations Attunity megfelel egy adott részének forrás célgazdagép, célfelhő párokból támogatása összpontosít.
+> Bár Attunity replikálás áttelepítési forgatókönyvek széles körét támogatja, egy adott részének forrás célgazdagép, célfelhő párokból támogatása összpontosít.
 
 A folyamat minimális állásidővel áttelepítés áttekintését tartalmazza:
 
-1. **A PostgreSQL-forrás séma áttelepítése** egy Azure Database segítségével PostgreSQL-adatbázishoz a [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) - n paraméterrel parancsot, és használata a [pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html) parancs.
+* **A PostgreSQL-forrás séma áttelepítése** egy Azure Database segítségével PostgreSQL-adatbázishoz a [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) - n paraméterrel parancsot, és használata a [pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html) parancs.
 
-2. **Kezdeti betöltés és az adatok folyamatos szinkronizálásához a forrás-adatbázisból történő beállítása a céladatbázis** Attunity megfelel a Microsoft Migrations. Ezzel minimálisra csökkenti a forrásadatbázis be kell állítania csak olvashatóként Azure váltani a cél PostgreSQL-adatbázisból az alkalmazások előkészítése az idejét.
+* **Kezdeti betöltés és az adatok folyamatos szinkronizálásához a forrás-adatbázisból történő beállítása a céladatbázis** Attunity megfelel a Microsoft Migrations. Ezzel minimálisra csökkenti a forrásadatbázis be kell állítania csak olvashatóként Azure váltani a cél PostgreSQL-adatbázisból az alkalmazások előkészítése az idejét.
 
-Az Attunity megfelel a Microsoft Migrations ajánlat kapcsolatos további információkért tekintse meg a következőket:
- - A Microsoft Migrations Attunity replikálás [weblap](https://aka.ms/attunity-replicate).
- - [Töltse le](http://discover.attunity.com/download-replicate-microsoft-lp6657.html) Attunity megfelel a Microsoft áttelepítésre.
- - Az Attunity replikálás [közösségi](https://microsoft.attunity.com/), az első lépések útmutatója, oktatóanyagok és támogatás.
- - Az Attunity használatával történő PostgreSQL az Azure-adatbázis PostgreSQL áttelepítésének lépésenkénti útmutatásért tekintse meg a [adatbázis áttelepítési útmutató](https://datamigration.microsoft.com/scenario/postgresql-to-azurepostgresql).
+A Attunity megfelel az ajánlat Microsoft Migrations kapcsolatos további információkért lásd a következőket:
+ - Lépjen a [Attunity megfelel a Microsoft Migrations](https://aka.ms/attunity-replicate) weblap.
+ - Töltse le [Attunity megfelel a Microsoft áttelepítések](http://discover.attunity.com/download-replicate-microsoft-lp6657.html).
+ - Lépjen a [Attunity replikálása közösségi](https://microsoft.attunity.com/) első lépések útmutatója, oktatóanyagok és támogatási szolgálathoz.
+ - Az Attunity megfelel használatával történő PostgreSQL az Azure-adatbázis PostgreSQL áttelepítésének lépésenkénti útmutatásért tekintse meg a [adatbázis áttelepítési útmutató](https://datamigration.microsoft.com/scenario/postgresql-to-azurepostgresql).

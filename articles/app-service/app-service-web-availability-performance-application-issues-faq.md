@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 36869eb523706787257160e5859f50b24f7bf08b
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.openlocfilehash: 926005eace0acde27e26619a2787368ba0954351
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Az Azure-webalkalmazások alkalmazásteljesítmény – gyakori kérdések
 
@@ -96,7 +96,7 @@ Alapértelmezés szerint a webalkalmazások a memóriából, ha a beállított i
 2. Válassza ki **Alkalmazásbeállítások**.
 3. A **mindig a**, jelölje be **a**.
 
-## <a name="how-do-i-turned-on-failed-request-tracing"></a>Hogyan kapcsolni a sikertelen kérelmek nyomkövetése?
+## <a name="how-do-i-turn-on-failed-request-tracing"></a>Hogyan sikertelen kérelmek nyomkövetése bekapcsolása?
 
 Sikertelen kérelmek nyomkövetése bekapcsolása:
 

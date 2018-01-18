@@ -1,5 +1,5 @@
 ---
-title: "Az Azure Active Directory hibrid identitás kialakítási szempontok - adja meg, hibrid identitás felügyeleti feladatai |} Microsoft Docs"
+title: "Hibrid identitás Tervező - kezelési feladatainak Azure |} Microsoft Docs"
 description: "Feltételes hozzáférés-vezérlést az Azure Active Directory ellenőrzi a megadott feltételek, ha a felhasználó hitelesítése és az alkalmazáshoz való hozzáférés előtt válasszon. Ha ezek a feltételek teljesülnek, a felhasználó hitelesítése és hozzáférni az alkalmazáshoz engedélyezett."
 documentationcenter: 
 services: active-directory
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 3257b5b9c714103773dfe646093cb632f500d459
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: ed683f1b96172b71cc3dfae2511607e50071739f
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>Hibrid identitás életciklusának tervezése
 Identitás az egyik a vállalati mobilitás és alkalmazás-hozzáférési stratégia alapjainak. A mobileszköz vagy SaaS-alkalmazás meg bejelentkezni, hogy a személyazonosságát jelenti a kulcsot minden hozzáférjenek. A legmagasabb szintjén az identitáskezelési megoldás magában foglalja a egységesíti és az identitás tárházak találhatók, ide tartozik az automatizálását és erőforrások kiépítési folyamat központosítása közötti szinkronizálása. A megoldást egy központosított identitás a helyszíni és a felhő között legyen, és segítségével is identitás-összevonási valamilyen központosított hitelesítés karbantartása biztonságosan megosztani, és a külső felhasználók és a vállalatok közötti együttműködés. Erőforrások operációs rendszereket és alkalmazásokat olyan személyek között, vagy (DEP) részt, a szervezetek. Szervezeti felépítés is lehet módosítva, hogy megfeleljen a kiépítési szabályzatokat és eljárásokat.
@@ -61,7 +62,7 @@ Egyik a célja az identity manager, az identitás-szolgáltatóktól és láthat
 • Az elérhető lehetőségeket egyszeri bejelentkezés Mik?
 • Mik azok a beállítások az identitás-összevonási B2B és B2C között?
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Hibrid identitás kezelés bevezetési stratégiájának meghatározása](active-directory-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md)
 
 ## <a name="see-also"></a>Lásd még:

@@ -1,5 +1,5 @@
 ---
-title: "Az Azure Active Directory hibrid identitáskezelési elrendezésével kapcsolatos szempontok - incidens rResponse követelmények meghatározása |} Microsoft Docs"
+title: "Hibrid identitás Tervező - incidensválasz-követelmények Azure |} Microsoft Docs"
 description: "Határozza meg a figyelési és jelentéskészítési szolgáltatásait a hibrid identitáskezelési megoldás, amely szerint is javítható az informatikai részleg feltételkészleteket azonosításában és kiküszöbölésében potenciális fenyegetések"
 documentationcenter: 
 services: active-directory
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: dd612c0634782ed758835b8bf264fcc884c428fd
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: 1521c3c7353d206df8a95b2cce1f3358c22fc438
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="determine-incident-response-requirements-for-your-hybrid-identity-solution"></a>A hibrid identitáskezelési megoldás incidensválasz-követelmények meghatározása
 Közepes vagy nagy szervezetek valószínűleg fog rendelkezni a [biztonsági incidensekre adott reakciók](https://technet.microsoft.com/library/cc700825.aspx) lehetőségét informatikai műveletek ennek megfelelően az incidens szintjére. Az identity management rendszer fontos összetevője a incidensválasz folyamat oka használható végző felhasználók listáját egy bizonyos művelet a célon azonosítása érdekében. A hibrid identitáskezelési megoldás lehet kell biztosítania a figyelési és jelentéskészítési képességekkel, amelyek szerint kihasználható informatikai azonosításához, és a potenciális fenyegetések mérséklésére műveletekre. Egy tipikus incidensválasz tervben a következő fázisok lesz a terv részeként:
@@ -60,7 +61,7 @@ Kárelhárítási és a kockázatot csökkentő-fázis során fontos gyorsan cs�
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Data protection stratégia meghatározása](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md)
 
 ## <a name="see-also"></a>Lásd még:

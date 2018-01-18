@@ -1,5 +1,5 @@
 ---
-title: "Az Azure Active Directory hibrid identitáskezelési elrendezésével kapcsolatos szempontok - egy hibrid identitás elfogadása stratégia kidolgozása |} Microsoft Docs"
+title: "Hibrid identitás Tervező - bevezetési stratégia Azure |} Microsoft Docs"
 description: "Feltételes hozzáférés-vezérlést az Azure Active Directory ellenőrzi a megadott feltételek, ha a felhasználó hitelesítése és az alkalmazáshoz való hozzáférés előtt válasszon. Ha ezek a feltételek teljesülnek, a felhasználó hitelesítése és hozzáférni az alkalmazáshoz engedélyezett."
 documentationcenter: 
 services: active-directory
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 28d10cd6be93226c93bda98c88cee454ec5cb2c7
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: 238f8451f1d00b14563486ca5df9e77612a32654
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>A hibrid identitás bevezetési stratégia meghatározása
 Ebben a feladatban fogja definiálni, a hibrid identitás bevezetési stratégiát a hibrid identitáskezelési megoldás az üzleti követelményeinek megfelelően, a tárgyalt:
@@ -51,7 +52,7 @@ Az alábbi táblázat segít meghatározni, hogy a előnyeit és hátrányait fo
 | Stratégia | Előnyei | Hátrányok |
 | --- | --- | --- |
 | **Felhőbeli identitások** |Könnyebben kezelhető kis szervezet számára. <br> Semmit nem kell telepítenie a helyi nincs szükség további hardverre<br>Könnyen használható, ha a felhasználó elhagyja a vállalatot |Felhasználók kell bejelentkezni számítási feladatok felhőben való hozzáféréskor <br> Előfordulhat, hogy jelszavakat, és nem lehet azonos a felhőalapú és helyszíni identitások |
-| **Szinkronizálva** |A helyszíni jelszó lesz a helyszíni hitelesítéshez és a felhőcímtárakat <br>Könnyebben kezelhető a kis, közepes vagy nagyméretű szervezet számára <br>Az egyes erőforrások felhasználók rendelkezhetnek egyszeri bejelentkezés (SSO) <br> A szinkronizálás Microsoft előnyben részesített módszer <br> Könnyebben kezelhető |Egyes felhasználók is vonakodhatnak annak a címtárak szinkronizálása a felhővel adott vállalat rendőrségi miatt |
+| **Synchronized** |A helyszíni jelszó lesz a helyszíni hitelesítéshez és a felhőcímtárakat <br>Könnyebben kezelhető a kis, közepes vagy nagyméretű szervezet számára <br>Az egyes erőforrások felhasználók rendelkezhetnek egyszeri bejelentkezés (SSO) <br> A szinkronizálás Microsoft előnyben részesített módszer <br> Könnyebben kezelhető |Egyes felhasználók is vonakodhatnak annak a címtárak szinkronizálása a felhővel adott vállalat rendőrségi miatt |
 | **Összevont** |Felhasználók rendelkezhetnek egyszeri bejelentkezés (SSO) <br>Ha a felhasználó le van állítva, vagy hagyja, a fiókot is, azonnal letiltja, és hozzáférés visszavonása esetén<br> Speciális forgatókönyvek, amelyek nem lehet, hitelesítéstípussal szinkronizálva |További lépések telepítése és konfigurálása <br> Magasabb karbantartás <br> További hardverre lehet szükség az STS-infrastruktúra <br> Az összevonási kiszolgáló telepítése további hardverre lehet szükség. További szoftverek szükség, ha az AD FS szolgál <br> Széles körű beállítása szükséges az egyszeri bejelentkezés <br> Kritikus pont hiba, ha az összevonási kiszolgáló nem működik, felhasználók nem tudják hitelesíteni |
 
 ### <a name="client-experience"></a>Ügyfélélmény
@@ -64,8 +65,8 @@ A használt stratégia szabja meg, a felhasználói bejelentkezési élmény.  A
 | Webböngészők |Űrlapalapú hitelesítés |Adja meg a szervezet azonosítója szükséges a, néha egyszeri bejelentkezéshez |
 | Outlook |Hitelesítő adatok kérése |Hitelesítő adatok kérése |
 | Skype vállalati (Lync). |Hitelesítő adatok kérése |egyszeri bejelentkezést Lync, a hitelesítő adatokat kéri az Exchange-hez |
-| SkyDrive Pro |Hitelesítő adatok kérése |az egyszeri bejelentkezés |
-| Office Pro Plus előfizetés |Hitelesítő adatok kérése |az egyszeri bejelentkezés |
+| SkyDrive Pro |Hitelesítő adatok kérése |egyszeri bejelentkezés |
+| Office Pro Plus előfizetés |Hitelesítő adatok kérése |egyszeri bejelentkezés |
 
 **Külső vagy nem megbízható forrásból**:
 
@@ -192,7 +193,7 @@ Annak ellenére, hogy előfordulhat, hogy kiegyenlítése után a megoldást a s
 | Azure AD és helyszíni AD összevonással az AD FS-sel |Mindkettő |
 | Az Azure AD és a helyszíni AD az Azure AD Connect nem jelszó-szinkronizálás |Mindkettő |
 | Az Azure AD és a helyszíni és a jelszó-szinkronizálás az Azure AD Connect használatával |Mindkettő |
-| A helyszíni AD |Multi-Factor Authentication kiszolgáló |
+| A helyszíni AD |Multi-Factor Authentication-kiszolgáló |
 
 > [!NOTE]
 > Gondoskodnia kell arról, hogy a multi-factor Authentication hitelesítés tervezési beállítás, amely a kijelölt támogatja-e a kívánt szükséges funkciókat.  További információk [válassza ki a multi-factor Authentication biztonsági megoldást,](../multi-factor-authentication/multi-factor-authentication-get-started.md#what-am-i-trying-to-secure).
@@ -207,9 +208,9 @@ Többtényezős hitelesítés alapértelmezés szerint egy Azure Active Director
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Adatvédelmi követelményeinek meghatározása](active-directory-hybrid-identity-design-considerations-dataprotection-requirements.md)
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 [Kialakítási szempontok áttekintése](active-directory-hybrid-identity-design-considerations-overview.md)
 

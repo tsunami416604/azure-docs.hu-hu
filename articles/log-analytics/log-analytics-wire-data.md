@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 01/16/2018
 ms.author: magoedte;banders
-ms.openlocfilehash: 331cc9d27dd416900e0145f3e453dfd3bfcfbcb5
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: b7cb178a24b043fe2c884ef0e4b3ad14ca0d73e4
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>A Naplóelemzési átviteli adatok 2.0 (előzetes verzió) megoldás
 
@@ -186,7 +186,7 @@ Az alábbiakban a támogatott operációs rendszerek a függőségi ügynök lis
 
 #### <a name="dependency-agent-downloads"></a>A függőségi ügynök letöltése
 
-| **Fájl** | **AZ OPERÁCIÓS RENDSZER** | **Verzió** | **AZ SHA-256-RA** |
+| **Fájl** | **OS** | **Verzió** | **SHA-256** |
 | --- | --- | --- | --- |
 | [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.0.5 | 73B3F6A2A76A08D58F72A550947FF839B588591C48E6EDDD6DDF73AA3FD82B43 |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.0.5 | A1BAD0B36EBF79F2B69113A07FCF48C68D90BD169C722689F9C83C69FC032371 |
@@ -219,7 +219,7 @@ Beállítások a következő táblázat segítségével telepítése a parancsso
 
 InstallDependencyAgent-Windows.exe /?
 
-| **Jelzője** | **Leírás** |
+| **Flag** | **Leírás** |
 | --- | --- |
 | <code>/?</code> | A parancssori kapcsolók listájának lekérése. |
 | <code>/S</code> | Felhasználói beavatkozás nélküli telepítés végrehajtásához. |
@@ -244,7 +244,7 @@ A telepítési jelző listájának megtekintéséhez futtassa a telepítőprogra
 InstallDependencyAgent-Linux64.bin -help
 ```
 
-| **Jelzője** | **Leírás** |
+| **Flag** | **Leírás** |
 | --- | --- |
 | <code>-help</code> | A parancssori kapcsolók listájának lekérése. |
 | <code>-s</code> | Felhasználói beavatkozás nélküli telepítés végrehajtásához. |
@@ -254,11 +254,11 @@ A függőségi ügynök fájlok kerülnek, a következő könyvtárban:
 
 | **Fájlok** | **Hely** |
 | --- | --- |
-| Alapvető fájljait | /OPT/Microsoft/Dependency-Agent |
-| Naplófájlok | /var/OPT/Microsoft/Dependency-Agent/log |
-| Olyan konfigurációs fájlt | /ETC/OPT/Microsoft/Dependency-Agent/config |
-| Végrehajtható fájlok | /OPT/Microsoft/Dependency-Agent/bin/Microsoft-Dependency-Agent<br><br>/OPT/Microsoft/Dependency-Agent/bin/Microsoft-Dependency-Agent-Manager |
-| A tároló bináris fájljai | /var/OPT/Microsoft/Dependency-Agent/Storage |
+| Alapvető fájljait | /opt/microsoft/dependency-agent |
+| Naplófájlok | /var/opt/microsoft/dependency-agent/log |
+| Olyan konfigurációs fájlt | /etc/opt/microsoft/dependency-agent/config |
+| Végrehajtható fájlok | /opt/microsoft/dependency-agent/bin/microsoft-dependency-agent<br><br>/opt/microsoft/dependency-agent/bin/microsoft-dependency-agent-manager |
+| A tároló bináris fájljai | /var/opt/microsoft/dependency-agent/storage |
 
 ### <a name="installation-script-examples"></a>Telepítési parancsfájl példák
 
@@ -375,16 +375,13 @@ Az alábbi információk segítségével telepítse és konfigurálja a megoldá
 
 Után az ügynök telepítve van, és a megoldás telepítése, az átvitel közbeni adatok 2.0 csempe jelenik meg a munkaterületen.
 
-> [!NOTE]
-> Jelenleg átviteli adatok megtekintése az OMS-portálon kell használnia. Átviteli adatokat megtekintéséhez nem használható az Azure-portálon.
-
 ![Átviteli adatokat csempe](./media/log-analytics-wire-data/wire-data-tile.png)
 
 ## <a name="using-the-wire-data-20-solution"></a>A vezetékes adatok 2.0 segítségével
 
 Az OMS-portálon kattintson a **átviteli adatok 2.0** csempére kattintva nyissa meg az átviteli adatokat irányítópulton. Az irányítópult a paneleket az alábbi táblázat tartalmazza. Minden egyes panel adott panelhez feltételeknek, a megadott hatókör és időtartomány legfeljebb 10 elemeket sorolja fel. A napló keresési, amely visszaadja az összes rekord kattintva futtathatja **láthatja az összes** alján a panelről, vagy kattintson a panel fejléc.
 
-| **Panel** | **Leírás** |
+| **Blade** | **Leírás** |
 | --- | --- |
 | Hálózati forgalmat rögzítő ügynökök | Az ügynököket, amelyeket a hálózati forgalom rögzítése számát mutatja, és felsorolja a felső 10 számítógépet forgalom rögzítése. Kattintson a napló keresése futtatásához <code>Type:WireData &#124; measure Sum(TotalBytes) by Computer &#124; top 500000</code>. Kattintson egy számítógépre, a listában egy rögzített bájtok teljes száma adatszolgáltató napló keresés futtatásához. |
 | Helyi alhálózatok | Az ügynökök felderített helyi alhálózatok számát mutatja.  Kattintson a napló keresése futtatásához <code>Type:WireData &#124; Measure Sum(TotalBytes) by LocalSubnet</code> összes alhálózatot, amely felsorolja a minden egyes küldött bájtok száma. Kattintson a napló-keresés vissza az alhálózat küldött bájtok teljes száma futtatásához a listában lévő alhálózatot. |
@@ -441,16 +438,16 @@ A típusú rekord _WireData_ jön létre az egyes bemeneti adatokat. WireData r�
 | LocalPortNumber | Helyi port száma |
 | RemoteIP | A távoli számítógép által használt távoli IP-cím |
 | RemotePortNumber | A távoli IP-cím által használt portszám |
-| Munkamenet-azonosító | Két IP-címek közötti kommunikáció munkamenetet azonosító egyedi érték |
+| SessionID | Két IP-címek közötti kommunikáció munkamenetet azonosító egyedi érték |
 | SentBytes | Küldött bájtok száma |
 | TotalBytes | A munkamenetben küldött bájtok teljes száma |
 | ApplicationProtocol | A használt hálózati protokoll típusa   |
-| Folyamatazonosító | Windows-folyamat azonosítója |
+| ProcessID | Windows-folyamat azonosítója |
 | Folyamatnév | A folyamat elérési útját és nevét |
 | RemoteIPLongitude | IP-hosszúság érték |
 | RemoteIPLatitude | IP-szélesség értéke |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Naplók keresése](log-analytics-log-searches.md) részletes vezetékes keresési rekordok megtekintéséhez.

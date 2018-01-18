@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/10/2017
 ms.author: bhanupr
-ms.openlocfilehash: 0dfda9b87e970f7bf0ae2df699897b9c8bb73004
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 4278c631ca7f2ce0417eab22ce2e5b12581dac30
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="configure-domain-joined-hdinsight-clusters-using-azure-active-directory-domain-services"></a>Tartományhoz csatlakozó HDInsight-fürtök Azure Active Directory tartományi szolgáltatások konfigurálása
 
@@ -37,7 +37,7 @@ Ebből a cikkből megismerheti, hogyan konfigurálhatja egy Azure Active Directo
 Hozzon létre egy Azure Active Directory tartományi szolgáltatások HDInsight-fürtök létrehozása előtt kell. Az Azure ad létrehozásához lásd: [engedélyezése Azure Active Directory tartományi szolgáltatások az Azure portál használatával](../../active-directory-domain-services/active-directory-ds-getting-started.md). 
 
 > [!NOTE]
-> A bérlői rendszergazdák csak a jogosult tartományi szolgáltatások létrehozására. Azure Data Lake Storage - esetén AAD bérlői where >> AADDS engedélyeznie kell az alapértelmezett bérlőt az előfizetés ahol hoz létre az Azure Data Lake-tárfiókot és a fürt.
+> A bérlői rendszergazdák csak a jogosult tartományi szolgáltatások létrehozására. Ha az alapértelmezett tároló Azure Data Lake tároló-(ADLS-) használata a HDInsight, majd győződjön meg arról, az alapértelmezett Azure AD bérlője ADLS legyen, mint a tartomány a HDInsight-fürthöz. 
 
 Után van megadva a tartományi szolgáltatások, a szolgáltatás-fiók létrehozásához szüksége a **az Azure AD-tartományvezérlő rendszergazdák** csoport hozhat létre a HDInsight-fürthöz. A fiók globális rendszergazdának kell lennie az Azure ad-val.
 

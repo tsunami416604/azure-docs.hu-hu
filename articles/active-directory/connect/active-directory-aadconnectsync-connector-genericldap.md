@@ -3,7 +3,7 @@ title: "Általános LDAP-összekötő |} Microsoft Docs"
 description: "Ez a cikk ismerteti a Microsoft általános LDAP-összekötő konfigurálása."
 services: active-directory
 documentationcenter: 
-author: AndKjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 984beeb0-4d91-4908-ad81-c19797c4891b
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: fe8db8f2a2412a3dfdf31201678c51e4fa0cee30
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6e2b7d23162673f0c66b1fd6c654336da42b8f6e
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="generic-ldap-connector-technical-reference"></a>Általános LDAP-összekötő műszaki útmutatója
 Ez a cikk ismerteti az általános LDAP-összekötő. A cikk vonatkozik a következő termékek:
@@ -41,7 +41,7 @@ A következő szolgáltatásokat a magas szintű szempontjából, a jelenlegi ki
 
 | Szolgáltatás | Támogatás |
 | --- | --- |
-| Csatlakoztatott adatforrás |Az összekötő minden LDAP v3-as kiszolgáló (RFC 4510 szabványnak megfelelő) használata támogatott. A következő tesztelték: <li>Microsoft Active Directory Lightweight Directory-szolgáltatások (AD LDS)</li><li>Microsoft Active Directory globális katalógus (GC-AD)</li><li>A címtárkiszolgáló 389</li><li>Apache címtárkiszolgálóra</li><li>IBM Tivoli DS</li><li>Isode könyvtár</li><li>NetIQ eDirectory</li><li>Novell eDirectory</li><li>Nyissa meg DJ</li><li>Nyissa meg DS</li><li>Nyissa meg az LDAP (openldap.org)</li><li>Oracle (korábban Sun) Directory Server Enterprise Edition</li><li>RadiantOne virtuális könyvtár Server (VDS)</li><li>Egy Sun Directory Server</li>**Nem támogatott a figyelmet a jelentősebb könyvtárak:** <li>Microsoft Active Directory tartományi szolgáltatások (AD DS) [a beépített Active Directory-összekötőt használja helyette]</li><li>Oracle Internet könyvtár (OID)</li> |
+| Csatlakoztatott adatforrás |Az összekötő minden LDAP v3-as kiszolgáló (RFC 4510 szabványnak megfelelő) használata támogatott. A következő tesztelték: <li>Microsoft Active Directory Lightweight Directory-szolgáltatások (AD LDS)</li><li>Microsoft Active Directory globális katalógus (GC-AD)</li><li>389 Directory Server</li><li>Apache Directory Server</li><li>IBM Tivoli DS</li><li>Isode könyvtár</li><li>NetIQ eDirectory</li><li>Novell eDirectory</li><li>Nyissa meg DJ</li><li>Nyissa meg DS</li><li>Nyissa meg az LDAP (openldap.org)</li><li>Oracle (previously Sun) Directory Server Enterprise Edition</li><li>RadiantOne virtuális könyvtár Server (VDS)</li><li>Sun One Directory Server</li>**Nem támogatott a figyelmet a jelentősebb könyvtárak:** <li>Microsoft Active Directory tartományi szolgáltatások (AD DS) [a beépített Active Directory-összekötőt használja helyette]</li><li>Oracle Internet könyvtár (OID)</li> |
 | Forgatókönyvek |<li>Objektum életciklusának kezelésére</li><li>Csoportok kezelése</li><li>Jelszókezelés</li> |
 | Műveletek |A következő műveletek támogatottak minden LDAP-könyvtárak: <li>Teljes importálás</li><li>Exportálás</li>A következő műveletek csak a meghatározott könyvtárakban támogatottak:<li>Különbözeti importálás</li><li>Jelszó beállítása, a jelszó módosítása</li> |
 | Séma |<li>Az LDAP-séma (RFC3673 és RFC4512/4.2) séma észlelésekor</li><li>Támogatja a szerkezeti osztályok, aux osztályok és extensibleObject objektumosztály (RFC4512/4.3)</li> |
@@ -55,10 +55,10 @@ Különbözeti importálás és a jelszófelügyeletet támogatott könyvtárak:
 * Microsoft Active Directory globális katalógus (GC-AD)
   * Különbözeti importálás összes műveletet támogatja
   * Támogatja a jelszó beállítása
-* A címtárkiszolgáló 389
+* 389 Directory Server
   * Különbözeti importálás összes műveletet támogatja
   * Támogatja a állítsa be a jelszót és a jelszó módosítása
-* Apache címtárkiszolgálóra
+* Apache Directory Server
   * Nem támogatott a különbözeti importálás a könyvtár nem tartozik egy állandó Változásnapló
   * Támogatja a jelszó beállítása
 * IBM Tivoli DS
@@ -81,14 +81,14 @@ Különbözeti importálás és a jelszófelügyeletet támogatott könyvtárak:
   * Különbözeti importálás összes műveletet támogatja
   * Támogatja a jelszó beállítása
   * Nem támogatja a jelszó módosítása
-* Oracle (korábban Sun) Directory Server Enterprise Edition
+* Oracle (previously Sun) Directory Server Enterprise Edition
   * Különbözeti importálás összes műveletet támogatja
   * Támogatja a állítsa be a jelszót és a jelszó módosítása
 * RadiantOne virtuális könyvtár Server (VDS)
   * 7.1.1 verzióját kell használnia vagy újabb
   * Különbözeti importálás összes műveletet támogatja
   * Támogatja a állítsa be a jelszót és a jelszó módosítása
-* Egy Sun Directory Server
+* Sun One Directory Server
   * Különbözeti importálás összes műveletet támogatja
   * Támogatja a állítsa be a jelszót és a jelszó módosítása
 
@@ -123,12 +123,12 @@ Ha a könyvtár több objektum mi is elfér egy hívás a könyvtárba, majd jav
 `1.2.840.113556.1.4.319`pagedResultsControl
 
 **2. lehetőség:**  
-`2.16.840.1.113730.3.4.9`VLVControl  
+`2.16.840.1.113730.3.4.9` VLVControl  
 `1.2.840.113556.1.4.473`SortControl
 
 Ha az összekötő-konfiguráció engedélyezve van a mindkét lehetőség használata, pagedResultsControl szolgál.
 
-`1.2.840.113556.1.4.417`ShowDeletedControl
+`1.2.840.113556.1.4.417` ShowDeletedControl
 
 ShowDeletedControl csak a törölt objektumok láthatók a USNChanged különbözeti importálás módszer segítségével.
 
@@ -137,8 +137,8 @@ Az összekötő megkísérli észlelni a beállításokat a kiszolgálón talál
 ### <a name="delta-import"></a>Különbözeti importálás
 Különbözeti importálás csak akkor használható, ha egy támogatási könyvtárat már telepítve van. Az alábbi módszerek jelenleg használatban van:
 
-* LDAP Accesslog. Lásd: [http://www.openldap.org/doc/admin24/overlays.html#Access naplózás](http://www.openldap.org/doc/admin24/overlays.html#Access Logging)
-* LDAP változásnaplója. Lásd: [http://tools.ietf.org/html/draft-good-ldap-changelog-04](http://tools.ietf.org/html/draft-good-ldap-changelog-04)
+* LDAP Accesslog. See [http://www.openldap.org/doc/admin24/overlays.html#Access Logging](http://www.openldap.org/doc/admin24/overlays.html#Access Logging)
+* LDAP változásnaplója. See [http://tools.ietf.org/html/draft-good-ldap-changelog-04](http://tools.ietf.org/html/draft-good-ldap-changelog-04)
 * Timestamp típusú. Az összekötő Novell/NetIQ eDirectory utolsó időpontját használja megszerezni a létrehozott és a frissített objektumokat. Novell/NetIQ eDirectory nem biztosít egy azzal egyenértékű azt jelenti, hogy a törölt objektumok beolvasása. Ezt a lehetőséget is használható, ha nincs más különbözeti importálás módszer aktív, az LDAP-kiszolgálón. Ez a beállítás nincs hogy objektum törölt importálása.
 * USNChanged. Lásd: [https://msdn.microsoft.com/library/ms677627.aspx](https://msdn.microsoft.com/library/ms677627.aspx)
 
@@ -196,7 +196,7 @@ A következő egy alapértelmezett Változásnapló DNs listáját:
 | Címtár | Különbözeti Változásnapló |
 | --- | --- |
 | Microsoft AD LDS és AD globális Katalógus |Automatikusan észleli. USNChanged. |
-| Apache címtárkiszolgálóra |Nem érhető el. |
+| Apache Directory Server |Nem érhető el. |
 | Directory 389 |Változásnapló. Alapértelmezett érték használata: **cn = változásnaplója** |
 | IBM Tivoli DS |Változásnapló. Alapértelmezett érték használata: **cn = változásnaplója** |
 | Isode könyvtár |Változásnapló. Alapértelmezett érték használata: **cn = változásnaplója** |
@@ -205,7 +205,7 @@ A következő egy alapértelmezett Változásnapló DNs listáját:
 | Nyissa meg az LDAP |Hozzáférési napló. Alapértelmezett érték használata: **cn = accesslog** |
 | Oracle DSEE |Változásnapló. Alapértelmezett érték használata: **cn = változásnaplója** |
 | A virtuális Lemezszolgáltatás RadiantOne |Virtuális könyvtár. A VDS csatlakozik directory függ. |
-| Egy Sun Directory Server |Változásnapló. Alapértelmezett érték használata: **cn = változásnaplója** |
+| Sun One Directory Server |Változásnapló. Alapértelmezett érték használata: **cn = változásnaplója** |
 
 A password attribútum az összekötő segítségével állítsa be a jelszavát a jelszó módosítása a nevét, és jelszót kell beállítani, műveletek.
 Ez az érték az alapértelmezett értéke **userPassword** , de egy adott LDAP-rendszer szükség esetén módosítható.
@@ -246,8 +246,8 @@ A következő egy LDAP-kiszolgálókba és a horgony használja listáját:
 | Címtár | Horgonyattribútum |
 | --- | --- |
 | Microsoft AD LDS és AD globális Katalógus |objectGUID |
-| A címtárkiszolgáló 389 |megkülönböztető név |
-| Apache könyvtár |megkülönböztető név |
+| 389 Directory Server |megkülönböztető név |
+| Apache Directory |megkülönböztető név |
 | IBM Tivoli DS |megkülönböztető név |
 | Isode könyvtár |megkülönböztető név |
 | Novell/NetIQ eDirectory |GUID |
@@ -255,7 +255,7 @@ A következő egy LDAP-kiszolgálókba és a horgony használja listáját:
 | Nyissa meg az LDAP |megkülönböztető név |
 | Oracle ODSEE |megkülönböztető név |
 | A virtuális Lemezszolgáltatás RadiantOne |megkülönböztető név |
-| Egy Sun Directory Server |megkülönböztető név |
+| Sun One Directory Server |megkülönböztető név |
 
 ## <a name="other-notes"></a>Egyéb megjegyzések
 Ez a szakasz szempontok az összekötő jellemző vagy más okból fontos tudni, hogy információkat nyújt.

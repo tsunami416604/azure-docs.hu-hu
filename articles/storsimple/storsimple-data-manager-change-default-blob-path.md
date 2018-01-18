@@ -1,10 +1,10 @@
 ---
 title: "Az alapértelmezett blob útvonal módosítása |} Microsoft Docs"
-description: "Megtudhatja, hogyan hozzon létre egy Azure függvény nevezze át a blob elérési út (magán előnézetben)"
+description: "Megtudhatja, hogyan hozzon létre egy Azure függvény nevezze át a blob-fájl elérési útja"
 services: storsimple
 documentationcenter: NA
-author: vidarmsft
-manager: syadav
+author: alkohli
+manager: jeconnoc
 editor: 
 ms.assetid: 
 ms.service: storsimple
@@ -12,231 +12,216 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 03/16/2017
-ms.author: vidarmsft
-ms.openlocfilehash: 057d4d7370207859617eb63238bf425bfa6d3e16
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 01/16/2018
+ms.author: alkohli
+ms.openlocfilehash: f73d9dcedee5165af752b9e10fb70de860e8e98b
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/17/2018
 ---
-# <a name="change-a-blob-path-from-the-default-path-private-preview"></a>Egy blob elérési utat módosítsa az alapértelmezett elérési úttal (magán előnézetben)
+# <a name="change-a-blob-path-from-the-default-path"></a>Egy blob elérési utat módosítsa az alapértelmezett elérési útjáról
 
-A cikkből megtudhatja, hogyan állíthat be egy Azure függvény átnevezése egy alapértelmezett blob fájl elérési útját. 
+A StorSimple adatkezelő szolgáltatás átalakítja az adatokat, ha alapértelmezés szerint helyezi az átalakított blobot a megadott tárolót a cél-tárház létrehozása során. A blobok érkezésekor ezen a helyen, érdemes lehet a blobok áthelyezése egy másik helyre. A cikkből megtudhatja, hogyan állíthat be egy Azure működnek, nevezze át egy alapértelmezett blob fájl elérési útját, és ezért a blobok áthelyezése egy másik helyre.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Győződjön meg arról, hogy rendelkezik-e olyan feladatdefinícióban erőforráscsoporton belül egy hibrid adatforrás, melyhez a megfelelően konfigurált.
+Győződjön meg arról, hogy rendelkezik-e a megfelelően konfigurált feladatdefiníció a StorSimple Data Manager szolgáltatásban.
 
 ## <a name="create-an-azure-function"></a>Egy Azure-függvény létrehozása
 
-Egy Azure-függvény létrehozása, tegye a következőket:
+Egy Azure függvény létrehozásához hajtsa végre az alábbi lépéseket:
 
 1. Nyissa meg az [Azure Portal](http://portal.azure.com/).
 
-2. Kattintson a bal oldali ablaktábla tetején **új**. 
+2. Kattintson a **+ hozzon létre egy erőforrást**. Az a **keresési** mezőbe írja be **függvény App** nyomja le az ENTER **Enter**. Válassza ki, és kattintson a **függvény app** megjelenített alkalmazások listája.
 
-3. Az a **keresési** mezőbe írja be **függvény App**, és nyomja le az ENTER billentyűt.
+    ![A keresőmezőbe írja be a "Függvény alkalmazás"](./media/storsimple-data-manager-change-default-blob-path/search-function-app.png)
 
-    ![A keresőmezőbe írja be a "Függvény alkalmazás"](./media/storsimple-data-manager-change-default-blob-path/goto-function-app-resource.png)
+3. Kattintson a **Create** (Létrehozás) gombra.
 
-4. Az a **eredmények** listában, kattintson **függvény App**.
+    ![A függvény App ablak "Létrehozás" gombra](./media/storsimple-data-manager-change-default-blob-path/create-function-app.png)
 
-    ![Válassza ki a függvény alkalmazás-erőforrást az eredménylistában](./media/storsimple-data-manager-change-default-blob-path/select-function-app-resource.png)
+4. Az a **függvény App** konfigurációs panelen, hajtsa végre a következő lépéseket:
 
-    A **függvény App** ablak nyílik meg.
+    1. Adjon meg egy egyedi **alkalmazásnév**.
+    2. A legördülő listából válassza ki a **előfizetés**. Ez az előfizetés ugyanaz, mint a StorSimple adatokat kezelő szolgáltatással kapcsolatos kell lennie.
+    3. Válassza ki **hozzon létre új** erőforráscsoportot.
+    4. Az a **üzemeltetési terv** legördülő listában válassza ki **fogyasztás megtervezése**.
+    5. Adjon meg egy helyet, ahol a függvény futásakor. Azt szeretné, hogy ugyanabban a régióban, ahol a StorSimple adatkezelő szolgáltatás és a tárfiókot, a feladat definíciójához társított találhatók.
+    6. Válasszon meglévő Storage-fiókot, vagy hozzon létre egy új Storage-fiókot. A tárfiók belső használatra készült a funkciót a.
 
-5. Kattintson a **Create** (Létrehozás) gombra.
+        ![Adja meg az új függvény alkalmazás-konfigurációs adatokat](./media/storsimple-data-manager-change-default-blob-path/function-app-parameters.png)
 
-    ![A függvény App ablak "Létrehozás" gombra](./media/storsimple-data-manager-change-default-blob-path/create-new-function-app.png)
+    7. Kattintson a **Create** (Létrehozás) gombra. A függvény alkalmazás létrehozása.
+     
+        ![Függvény-alkalmazás létrehozása](./media/storsimple-data-manager-change-default-blob-path/function-app-created.png)
 
-6. Az a **függvény App** konfigurációs panelen tegye a következőket:
+5. Válassza ki **funkciók**, és kattintson a **+ új függvény**.
 
-    a. Az a **alkalmazásnév** mezőbe írja be az alkalmazás nevét.
+    ![Kattintson a kívánt új funkció](./media/storsimple-data-manager-change-default-blob-path/create-new-function.png)
+
+6. Válassza ki **C#** a nyelvhez. A tömb sablon csempék, válassza ki a **C#** a a **QueueTrigger-c Sharp** csempére.
+
+7. Az a **várólista eseményindító**:
+
+    1. Adjon meg egy **neve** a függvénynél.
+    2. Az a **üzenetsornév** mezőbe írja be a data transformation feladatdefiníció nevét.
+    3. A **fiók tárolókapcsolat**, kattintson a **új**. A storage-fiókok listában jelölje ki a feladat definíciójához tartozó fiókot. Jegyezze fel a kapcsolat neve (kiemelt). Később az Azure függvényben meg kell adni a nevet.
+
+        ![Egy új C#-függvény létrehozása](./media/storsimple-data-manager-change-default-blob-path/new-function-parameters.png)
+
+    4. Kattintson a **Create** (Létrehozás) gombra. A **függvény** jön létre.
+
+     
+10. A függvény-ablakban futtassa _.csx_ fájlt.
+
+    ![Egy új C#-függvény létrehozása](./media/storsimple-data-manager-change-default-blob-path/new-function-run-csx.png)
     
-    b. Az a **előfizetés** mezőbe írja be az előfizetés nevét.
+    A következő lépésekkel.
 
-    c. A **erőforráscsoport**, kattintson a **hozzon létre új**, és írja be az erőforráscsoport nevét.
+    1. Illessze be a következő kódot:
 
-    d. Az a **üzemeltetési terv** mezőbe írja be **fogyasztás megtervezése**.
+        ```
+        using System;
+        using System.Configuration;
+        using Microsoft.WindowsAzure.Storage.Blob;
+        using Microsoft.WindowsAzure.Storage.Queue;
+        using Microsoft.WindowsAzure.Storage;
+        using System.Collections.Generic;
+        using System.Linq;
 
-    e. Az a **hely** mezőbe írja be a helyet.
-
-    f. A **tárfiók**, válasszon egy meglévő tárfiókot, vagy hozzon létre egy új tárfiókot. A tárfiók belső használatra készült a funkciót a.
-
-    ![Adja meg az új függvény alkalmazás-konfigurációs adatokat](./media/storsimple-data-manager-change-default-blob-path/enter-new-funcion-app-data.png)
-
-7. Kattintson a **Create** (Létrehozás) gombra.  
-    A függvény alkalmazás létrehozása.
-
-8. Kattintson a bal oldali ablaktáblában **további szolgáltatások**, majd tegye a következőket:
-    
-    a. Az a **szűrő** mezőbe írja be **alkalmazásszolgáltatások**.
-    
-    b. Kattintson a **alkalmazásszolgáltatások**. 
-
-    ![A bal oldali ablaktáblán "Szolgáltatás" hivatkozásra](./media/storsimple-data-manager-change-default-blob-path/more-services.png)
-
-9. Az app Service szolgáltatások listájában kattintson a függvény alkalmazás nevét.  
-    Megnyílik a függvény app lap.
-
-10. Kattintson a bal oldali ablaktáblában **új függvény**, majd tegye a következőket: 
-
-    a. Az a **nyelvi** listáról válassza ki **C#**.
-    
-    b. A tömb sablon csempék, válassza ki a **QueueTrigger-c Sharp**.
-
-    c. Az a **a függvény neve** mezőbe írja be a függvény nevét.
-
-    d. Az a **üzenetsornév** mezőbe írja be az adat-átalakítási feladat definition nevét.
-
-    e. A **fiók tárolókapcsolat**, kattintson a **új**, majd válassza ki a fiókot, amely megfelel az adat-átalakítási feladat.  
-        Jegyezze fel a kapcsolat neve. Később az Azure függvényben meg kell adni a nevet.
-
-       ![Egy új C#-függvény létrehozása](./media/storsimple-data-manager-change-default-blob-path/create-new-csharp-function.png)
-
-    f. Kattintson a **Create** (Létrehozás) gombra.  
-    A **függvény** ablak nyílik meg.
-
-11. Az a **függvény** ablakban futtassa _.csx_ fájlt, és tegye a következőket:
-
-    a. Illessze be a következő kódot:
-
-    ```
-    using System;
-    using System.Configuration;
-    using Microsoft.WindowsAzure.Storage.Blob;
-    using Microsoft.WindowsAzure.Storage.Queue;
-    using Microsoft.WindowsAzure.Storage;
-    using System.Collections.Generic;
-    using System.Linq;
-
-    public static void Run(QueueItem myQueueItem, TraceWriter log)
-    {
-        CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["STORAGE_CONNECTIONNAME"]);
-
-        string storageAccUriEndswith = "windows.net/";
-        string uri = myQueueItem.TargetLocation.Replace("%20", " ");
-        log.Info($"Blob Uri: {uri}");
-
-        // Remove storage account uri string
-        uri = uri.Substring(uri.IndexOf(storageAccUriEndswith) + storageAccUriEndswith.Length);
-
-        string containerName = uri.Substring(0, uri.IndexOf("/")); 
-
-        // Remove container name string
-        uri = uri.Substring(containerName.Length + 1);
-
-        // Current blob path
-        string blobName = uri; 
-
-        string volumeName = uri.Substring(containerName.Length + 1);
-        volumeName = uri.Substring(0, uri.IndexOf("/"));
-
-        // Remove volume name string
-        uri = uri.Substring(volumeName.Length + 1);
-
-        string newContainerName = uri.Substring(0, uri.IndexOf("/")).ToLower();
-        string newBlobName = uri.Substring(newContainerName.Length + 1);
-
-        log.Info($"Container name: {containerName}");
-        log.Info($"Volume name: {volumeName}");
-        log.Info($"New container name: {newContainerName}");
-
-        log.Info($"Blob name: {blobName}");
-        log.Info($"New blob name: {newBlobName}");
-
-        // Create the blob client.
-        CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-
-        // Container reference
-        CloudBlobContainer container = blobClient.GetContainerReference(containerName);
-        CloudBlobContainer newContainer = blobClient.GetContainerReference(newContainerName);
-        newContainer.CreateIfNotExists();
-
-        if(!container.Exists())
+        public static void Run(QueueItem myQueueItem, TraceWriter log)
         {
-            log.Info($"Container - {containerName} not exists");
-            return;
+            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["STORAGE_CONNECTIONNAME"]);
+
+            string storageAccUriEndswith = "windows.net/";
+            string uri = myQueueItem.TargetLocation.Replace("%20", " ");
+            log.Info($"Blob Uri: {uri}");
+
+            // Remove storage account uri string
+            uri = uri.Substring(uri.IndexOf(storageAccUriEndswith) + storageAccUriEndswith.Length);
+
+            string containerName = uri.Substring(0, uri.IndexOf("/")); 
+
+            // Remove container name string
+            uri = uri.Substring(containerName.Length + 1);
+
+            // Current blob path
+            string blobName = uri; 
+
+            string volumeName = uri.Substring(containerName.Length + 1);
+            volumeName = uri.Substring(0, uri.IndexOf("/"));
+
+            // Remove volume name string
+            uri = uri.Substring(volumeName.Length + 1);
+
+            string newContainerName = uri.Substring(0, uri.IndexOf("/")).ToLower();
+            string newBlobName = uri.Substring(newContainerName.Length + 1);
+
+            log.Info($"Container name: {containerName}");
+            log.Info($"Volume name: {volumeName}");
+            log.Info($"New container name: {newContainerName}");
+
+            log.Info($"Blob name: {blobName}");
+            log.Info($"New blob name: {newBlobName}");
+
+            // Create the blob client.
+            CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+
+            // Container reference
+            CloudBlobContainer container = blobClient.GetContainerReference(containerName);
+            CloudBlobContainer newContainer = blobClient.GetContainerReference(newContainerName);
+            newContainer.CreateIfNotExists();
+
+            if(!container.Exists())
+            {
+                log.Info($"Container - {containerName} not exists");
+                return;
+            }
+
+            if(!newContainer.Exists())
+            {
+                log.Info($"Container - {newContainerName} not exists");
+                return;
+            }
+
+            CloudBlockBlob blob = container.GetBlockBlobReference(blobName);
+            if (!blob.Exists())
+            {
+                // Skip to copy the blob to new container, if source blob doesn't exist
+                log.Info($"The specified blob does not exist.");
+                log.Info($"Blob Uri: {blob.Uri}");
+                return;
+            }
+
+            CloudBlockBlob blobCopy = newContainer.GetBlockBlobReference(newBlobName);
+            if (!blobCopy.Exists())
+            {
+                blobCopy.StartCopy(blob);
+                // Delete old blob, after copy to new container
+                blob.DeleteIfExists();
+                log.Info($"Blob file path renamed completed successfully");
+            }
+            else
+            {
+                log.Info($"Blob file path renamed already done");
+                // Delete old blob, if already exists.
+                blob.DeleteIfExists();
+            }
         }
 
-        if(!newContainer.Exists())
+        public class QueueItem
         {
-            log.Info($"Container - {newContainerName} not exists");
-            return;
+            public string SourceLocation {get;set;}
+            public long SizeInBytes {get;set;}
+            public string Status {get;set;}
+            public string JobID {get;set;}
+            public string TargetLocation {get; set;}
         }
 
-        CloudBlockBlob blob = container.GetBlockBlobReference(blobName);
-        if (!blob.Exists())
-        {
-            // Skip to copy the blob to new container, if source blob doesn't exist
-            log.Info($"The specified blob does not exist.");
-            log.Info($"Blob Uri: {blob.Uri}");
-            return;
-        }
+        ```
 
-        CloudBlockBlob blobCopy = newContainer.GetBlockBlobReference(newBlobName);
-        if (!blobCopy.Exists())
-        {
-            blobCopy.StartCopy(blob);
-            // Delete old blob, after copy to new container
-            blob.DeleteIfExists();
-            log.Info($"Blob file path renamed completed successfully");
-        }
-        else
-        {
-            log.Info($"Blob file path renamed already done");
-            // Delete old blob, if already exists.
-            blob.DeleteIfExists();
-        }
-    }
+    2. Cserélje le **STORAGE_CONNECTIONNAME** a sor a tárolási fiók kapcsolattal 11 (lásd 7/c. lépés).
 
-    public class QueueItem
-    {
-        public string SourceLocation {get;set;}
-        public long SizeInBytes {get;set;}
-        public string Status {get;set;}
-        public string JobID {get;set;}
-        public string TargetLocation {get; set;}
-    }
+        ![Másolja a tárolási kapcsolat neve](./media/storsimple-data-manager-change-default-blob-path/new-function-storage-connection-name.png)
 
-    ```
+    3. **Mentés** a függvényt.
 
-    b. Cserélje le **STORAGE_CONNECTIONNAME** a sor a tárolási fiók kapcsolattal 11 (lásd a pont 8 c).
+        ![Függvény mentése](./media/storsimple-data-manager-change-default-blob-path/save-function.png)
 
-    c. Kattintson a bal felső, **mentése**.
+12. A függvény befejezéséhez adjon hozzá egy további fájlt a következő lépések végrehajtásával:
 
-    ![Függvény mentése](./media/storsimple-data-manager-change-default-blob-path/save-function.png)
-
-12. A függvény befejezéséhez adjon hozzá egy további fájlt a következő módon:
-
-    a. Kattintson a **-fájlokat tekinthetnek meg**.
+    1. Kattintson a **-fájlokat tekinthetnek meg**.
 
        ![A "-fájlokat tekinthetnek meg" hivatkozásra](./media/storsimple-data-manager-change-default-blob-path/view-files.png)
 
-    b. Kattintson az **Add** (Hozzáadás) parancsra.
+    2. Kattintson a **+ Hozzáadás**.
+        
+        ![A "-fájlokat tekinthetnek meg" hivatkozásra](./media/storsimple-data-manager-change-default-blob-path/new-function-add-file.png)
     
-    c. Típus **project.json**, és nyomja le az ENTER billentyűt.
-    
-    d. Az a **project.json** fájlt, az alábbi kódot:
+    3. Típus **project.json**, majd nyomja le az **Enter**. Az a **project.json** fájlt, az alábbi kódot:
 
-    ```
-    {
-    "frameworks": {
-        "net46":{
-        "dependencies": {
-            "windowsazure.storage": "8.1.1"
+        ```
+        {
+        "frameworks": {
+            "net46":{
+            "dependencies": {
+                "windowsazure.storage": "8.1.1"
+            }
+            }
         }
         }
-    }
-    }
 
-    ```
+        ```
 
-    e. Kattintson a **Save** (Mentés) gombra.
+    
+    4. Kattintson a **Save** (Mentés) gombra.
 
-Egy Azure függvény hozott létre. Ez a funkció akkor váltódik ki, minden alkalommal, amikor egy új blob létrejön az adat-átalakítási feladat által.
+        ![A "-fájlokat tekinthetnek meg" hivatkozásra](./media/storsimple-data-manager-change-default-blob-path/new-function-project-json.png)
 
-## <a name="next-steps"></a>Következő lépések
+Egy Azure függvény hozott létre. Ez a funkció akkor váltódik ki, minden alkalommal, amikor egy új blob az átalakítási feladat által generált.
+
+## <a name="next-steps"></a>További lépések
 
 [Használja a StorSimple adatokat kezelő felhasználói felületén, az adatok átalakítására](storsimple-data-manager-ui.md)

@@ -12,87 +12,111 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/13/2016
+ms.date: 01/14/2016
 ms.author: aelnably
-ms.openlocfilehash: 8f58464ac212b84623d2287205271301dbaa0ffb
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 30817a1a6a8079e7a896305ab0b59e48fad4d644
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>Azure App Service alkalmazás klónozása a PowerShell használatával
-A Microsoft Azure PowerShell verziója 1.1.0-ás kiadása egy új beállítás klónozni egy már meglévő webalkalmazás egy újonnan létrehozott alkalmazás egy másik régióban vagy ugyanabban a régióban képes tenné a felhasználónak új AzureRMWebApp bővült. Ez lehetővé teszi az ügyfelek központi telepítése a alkalmazások számos különböző régiókban teljes gyorsan és egyszerűen.
+A Microsoft Azure PowerShell verziója 1.1.0-ás kiadása egy új beállítás lett elérhető a `New-AzureRMWebApp` , amely lehetővé teszi a klón egy meglévő webes alkalmazást egy újonnan létrehozott alkalmazás egy másik régióban vagy ugyanabban a régióban. Ez a beállítás lehetővé teszi az ügyfelek központi telepítése a alkalmazások számos különböző régiókban teljes gyorsan és egyszerűen.
 
 Alkalmazás Klónozás jelenleg csak a premium szint app service-csomagokról támogatott. Az új szolgáltatás ugyanazokkal a korlátozásokkal használja, mint a Web Apps biztonsági másolat szolgáltatás című [készítsen biztonsági másolatot egy webalkalmazást az Azure App Service](web-sites-backup.md).
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="cloning-an-existing-app"></a>A Klónozás egy meglévő alkalmazáshoz
-Forgatókönyv: Egy létező webalkalmazása régióban déli középső Régiójában, a felhasználó szeretné klónozza a tartalom egy új webalkalmazást északi középső Régiójában régióban. Ehhez az Azure Resource Manager verziója, a PowerShell-parancsmag segítségével hozzon létre egy új webalkalmazást a - SourceWebApp kapcsolóval.
+Forgatókönyv: Egy létező webalkalmazása déli középső Régiójában terület, és szeretné klónozza a tartalom egy új webalkalmazást északi középső Régiójában régióban. Az új webalkalmazás létrehozása az Azure Resource Manager verziója, a PowerShell-parancsmag segítségével is elvégezhető a `-SourceWebApp` lehetőséget.
 
-Az erőforráscsoport neve, amely tartalmazza a forrás-webalkalmazás ismeretében is használjuk a következő PowerShell-parancs adatokat lekérdezni a forrás web app (ebben az esetben a forrás-webalkalmazás neve):
+Az erőforráscsoport neve, amely tartalmazza a forrás-webalkalmazás ismeretében segítségével a következő PowerShell-parancsot a forrás web app információért (ebben az esetben nevű `source-webapp`):
 
-    $srcapp = Get-AzureRmWebApp -ResourceGroupName SourceAzureResourceGroup -Name source-webapp
+```PowerShell
+$srcapp = Get-AzureRmWebApp -ResourceGroupName SourceAzureResourceGroup -Name source-webapp
+```
 
-Hozzon létre egy új App Service-csomag, az alábbi példában látható módon a New-AzureRmAppServicePlan parancs is használjuk
+Egy új App Service-csomag létrehozásához használhatja `New-AzureRmAppServicePlan` parancsot az alábbi példában látható módon
 
-    New-AzureRmAppServicePlan -Location "South Central US" -ResourceGroupName DestinationAzureResourceGroup -Name NewAppServicePlan -Tier Premium
+```PowerShell
+New-AzureRmAppServicePlan -Location "South Central US" -ResourceGroupName DestinationAzureResourceGroup -Name NewAppServicePlan -Tier Premium
+```
 
-A New-AzureRmWebApp paranccsal azt az új webalkalmazás létrehozása a régióban északi középső Régiójában, és azt összekötését egy App Service-csomag meglévő prémium tarifacsomagra, továbbá a Microsoft ugyanabban az erőforráscsoportban használják a forrás web app, vagy adja meg egy új erőforráscsoportot, a következő mutatja be, amelyek:
+Használja a `New-AzureRmWebApp` parancs, az új webalkalmazás létrehozása a régióban északi középső Régiójában, és azt összekötését egy App Service-csomag meglévő prémium tarifacsomagra. Ezenkívül ugyanabban az erőforráscsoportban használják a forrás web app, vagy adja meg egy új erőforráscsoportot, ahogy az az alábbi parancsot:
 
-    $destapp = New-AzureRmWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp
+```PowerShell
+$destapp = New-AzureRmWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp
+```
 
-Egy létező webalkalmazása, beleértve az összes társított telepítési klónozását tárolóhely, a felhasználónak kell használnia a IncludeSourceWebAppSlots paraméter, a következő PowerShell-parancs bemutatja, hogy a paramétert a New-AzureRmWebApp paranccsal:
+Egy létező webalkalmazása, beleértve az összes kapcsolódó üzembe helyezési klónozását, kell használnia a `IncludeSourceWebAppSlots` paraméter. A következő PowerShell-parancs bemutatja, hogy a paraméter a `New-AzureRmWebApp` parancs:
 
-    $destapp = New-AzureRmWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -IncludeSourceWebAppSlots
+```PowerShell
+$destapp = New-AzureRmWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -IncludeSourceWebAppSlots
+```
 
-Klónozásához egy már meglévő webalkalmazás belül ugyanabban a régióban, a felhasználó kell hoznia egy új erőforráscsoportot és egy új app service tervezze meg ugyanabban a régióban, és a következő PowerShell-parancs segítségével klónozza a webes alkalmazás
+Klónozza a régión belül egy létező webalkalmazása, hozzon létre egy új erőforráscsoportot kell, és egy új app service tervezze meg ugyanabban a régióban, és a következő PowerShell-parancs segítségével klónozza a webalkalmazás
 
-    $destapp = New-AzureRmWebApp -ResourceGroupName NewAzureResourceGroup -Name dest-webapp -Location "South Central US" -AppServicePlan NewAppServicePlan -SourceWebApp $srcap
+```PowerShell
+$destapp = New-AzureRmWebApp -ResourceGroupName NewAzureResourceGroup -Name dest-webapp -Location "South Central US" -AppServicePlan NewAppServicePlan -SourceWebApp $srcap
+```
 
 ## <a name="cloning-an-existing-app-to-an-app-service-environment"></a>Egy meglévő alkalmazást az App Service-környezetek való klónozása
-Forgatókönyv: Egy létező webalkalmazása régióban déli középső Régiójában, a felhasználó szeretné klónozza a tartalom egy új webalkalmazást a egy meglévő App Service környezetben (ASE).
+Forgatókönyv: Egy létező webalkalmazása déli középső Régiójában terület, és szeretné klónozza a tartalom egy új webalkalmazást a egy meglévő App Service környezetben (ASE).
 
-Az erőforráscsoport neve, amely tartalmazza a forrás-webalkalmazás ismeretében is használjuk a következő PowerShell-parancs adatokat lekérdezni a forrás web app (ebben az esetben a forrás-webalkalmazás neve):
+Az erőforráscsoport neve, amely tartalmazza a forrás-webalkalmazás ismeretében segítségével a következő PowerShell-parancsot a forrás web app információért (ebben az esetben nevű `source-webapp`):
 
-    $srcapp = Get-AzureRmWebApp -ResourceGroupName SourceAzureResourceGroup -Name source-webapp
+```PowerShell
+$srcapp = Get-AzureRmWebApp -ResourceGroupName SourceAzureResourceGroup -Name source-webapp
+```
 
-TUDATÁBAN a ASE nevét, és az erőforráscsoport neve, amely a ASE tartozik, a felhasználó használhatja a New-AzureRmWebApp parancsot az új webalkalmazás létrehozása a meglévő ASE a, a következő mutatja be, amelyek:
+TUDATÁBAN a ASE nevét, és az erőforráscsoport neve, amely a ASE tartozik, létrehozhat a webalkalmazása a meglévő ASE, ahogy az az alábbi parancsot:
 
-    $destapp = New-AzureRmWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -ASEName DestinationASE -ASEResourceGroupName DestinationASEResourceGroupName -SourceWebApp $srcapp
+```PowerShell
+$destapp = New-AzureRmWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -ASEName DestinationASE -ASEResourceGroupName DestinationASEResourceGroupName -SourceWebApp $srcapp
+```
 
-A hely paraméter örökölt ok miatt szükséges, de az app Service-környezetben létrehozása esetén, figyelmen kívül hagyja. 
+A `Location` paraméter megadása kötelező a hagyományos ok miatt, de az app Service-környezetben létrehozásakor figyelmen kívül. 
 
 ## <a name="cloning-an-existing-app-slot"></a>Egy meglévő tárolóhelye klónozása
-Forgatókönyv: A felhasználó szeretné klónozni egy meglévő Web App hellyel vagy egy új webalkalmazást vagy webes alkalmazás új tárhely. Az új webalkalmazásba lehet ugyanabban a régióban, mint az eredeti webalkalmazás tárhely vagy egy másik régióban.
+. Forgatókönyv: Egy meglévő Web App hellyel vagy egy új webalkalmazást vagy webes alkalmazás új tárhely klónozni szeretne. Az új webalkalmazásba lehet ugyanabban a régióban, mint az eredeti webalkalmazás tárhely vagy egy másik régióban.
 
-Az erőforráscsoport neve, amely tartalmazza a forrás-webalkalmazás ismeretében is használjuk a következő PowerShell-parancs lekérése a forrás web app tárolóhely (ebben az esetben a forrás-webappslot nevű) webalkalmazás forrás-webalkalmazás kötve:
+Az erőforráscsoport neve, amely tartalmazza a forrás-webalkalmazás ismeretében segítségével a következő PowerShell-parancsot a forrás webes alkalmazás a tárhely információért (ebben az esetben nevű `source-webappslot`) webalkalmazás kötve `source-webapp`:
 
-    $srcappslot = Get-AzureRmWebAppSlot -ResourceGroupName SourceAzureResourceGroup -Name source-webapp -Slot source-webappslot
+```PowerShell
+$srcappslot = Get-AzureRmWebAppSlot -ResourceGroupName SourceAzureResourceGroup -Name source-webapp -Slot source-webappslot
+```
 
-A következő mutatja be, a forrás webes alkalmazás egy új webalkalmazást a klón létrehozásához:
+Az alábbi parancs bemutatja, hogy a forrás webes alkalmazás egy új webalkalmazást a klón létrehozásához:
 
-    $destapp = New-AzureRmWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcappslot
+```PowerShell
+$destapp = New-AzureRmWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcappslot
+```
 
-## <a name="configuring-traffic-manager-while-cloning-a-app"></a>Egy alkalmazás klónozása során a Traffic Manager konfigurálása
-Több területi webalkalmazások létrehozása és konfigurálása az Azure Traffic Manager forgalom irányítására a webes alkalmazásokhoz való, egy webfarmos n fontos annak érdekében, hogy ügyfelek alkalmazások magas rendelkezésre állású, egy létező webalkalmazása klónozásakor lehetősége van a mindkét webalkalmazások csatlakozni vagy egy új traffic manager-profilt, vagy egy meglévő,-vegye figyelembe, hogy egyetlen Azure Resource Manager Traffic Manager verziója támogatott.
+## <a name="configuring-traffic-manager-while-cloning-an-app"></a>Egy alkalmazás klónozása során a Traffic Manager konfigurálása
+Több területi webalkalmazások létrehozása és konfigurálása az Azure Traffic Manager forgalom irányítására a webes alkalmazásokhoz való, a célja, hogy magas rendelkezésre állású alkalmazások vevői fontos lehetőséget. Egy már meglévő webalkalmazás klónozásakor, lehetősége van mindkét webalkalmazások csatlakozni egy új traffic manager-profil vagy a meglévők egyikét. Csak Azure Resource Manager a Traffic Manager verziója támogatott.
 
-### <a name="creating-a-new-traffic-manager-profile-while-cloning-a-app"></a>Egy alkalmazás klónozása során egy új Traffic Manager-profil létrehozása
-Forgatókönyv: A felhasználó szeretné klónozni egy webalkalmazás egy másik régióban, az Azure erőforrás-kezelő traffic manager-profilt, amely a webes alkalmazások egyaránt lehetnek konfigurálása közben. A következő bemutatja klónt készíteni egy új webalkalmazást a forrás webalkalmazás új Traffic Manager-profil konfigurálása során:
+### <a name="creating-a-new-traffic-manager-profile-while-cloning-an-app"></a>Egy alkalmazás klónozása során egy új Traffic Manager-profil létrehozása
+Forgatókönyv: Érdemes az Azure erőforrás-kezelő traffic manager-profilt, amely tartalmazza az mindkét webalkalmazások konfigurálása közben egy webalkalmazást egy másik régióban, a Klónozás. Az alábbi parancs bemutatja a klónt készíteni egy új webalkalmazást a forrás webalkalmazás új Traffic Manager-profil konfigurálása során:
 
-    $destapp = New-AzureRmWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "South Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -TrafficManagerProfileName newTrafficManagerProfile
+```PowerShell
+$destapp = New-AzureRmWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "South Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -TrafficManagerProfileName newTrafficManagerProfile
+```
 
 ### <a name="adding-new-cloned-web-app-to-an-existing-traffic-manager-profile"></a>Webalkalmazás hozzáadása az új klónozott egy meglévő Traffic Manager-profilt
-Forgatókönyv: A felhasználó már rendelkezik az Azure erőforrás-kezelő traffic manager-profil, akkor mindkét webalkalmazások hozzáadása végpontként szeretne. Ehhez először igazolnia kell a meglévő traffic manager Profilazonosító összeállítása, fel kell az előfizetés-azonosító, erőforráscsoport-név és a meglévő traffic manager-profil neve.
+Forgatókönyv: Már rendelkezik az Azure erőforrás-kezelő traffic manager-profilt, és mindkét webalkalmazások végpontként hozzáadásához. Ehhez először állítsa össze a meglévő traffic manager-profil azonosítóját. Az előfizetés-azonosító, az erőforráscsoport neve és a meglévő traffic manager-profil neve van szüksége.
 
-    $TMProfileID = "/subscriptions/<Your subscription ID goes here>/resourceGroups/<Your resource group name goes here>/providers/Microsoft.TrafficManagerProfiles/ExistingTrafficManagerProfileName"
+```PowerShell
+$TMProfileID = "/subscriptions/<Your subscription ID goes here>/resourceGroups/<Your resource group name goes here>/providers/Microsoft.TrafficManagerProfiles/ExistingTrafficManagerProfileName"
+```
 
-Miután a traffic Manager-azonosító, a következő bemutatja klónt készíteni a forrás-webalkalmazás, egy új webalkalmazást a meglévő Traffic Manager-profil való hozzáadás során:
+Miután a traffic Manager-azonosító, az alábbi parancs bemutatja klónt készíteni a forrás-webalkalmazás, egy új webalkalmazást a meglévő Traffic Manager-profil való hozzáadás során:
 
-    $destapp = New-AzureRmWebApp -ResourceGroupName <Resource group name> -Name dest-webapp -Location "South Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -TrafficManagerProfileId $TMProfileID
+```PowerShell
+$destapp = New-AzureRmWebApp -ResourceGroupName <Resource group name> -Name dest-webapp -Location "South Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -TrafficManagerProfileId $TMProfileID
+```
 
 ## <a name="current-restrictions"></a>Aktuális korlátozások
-Ez a funkció jelenleg előzetes verzióban érhetők, új képességeket adhat a időbeli dolgozunk, a következő lista rendszer app Klónozás aktuális verziójának ismert korlátozásai:
+Ez a funkció jelenleg előzetes verzióban érhetők, és új képességeket időbeli kerülnek. Az alábbiakban app Klónozás aktuális verziójának ismert korlátozásai:
 
 * Automatikus skálázási beállításokat a rendszer nem klónozható
 * Biztonsági mentés ütemezése beállítások vannak nem klónozható
@@ -101,7 +125,7 @@ Ez a funkció jelenleg előzetes verzióban érhetők, új képességeket adhat 
 * Egyszerű hitelesítési beállítások a rendszer nem klónozható
 * A kudu bővítmény nem klónozható vannak
 * Tipp szabályok nem klónozható vannak
-* Adatbázis-tartalom nem klónozható vannak
+* Adatbázis-tartalom nem klónozható.
 * Kimenő IP-címek változik, ha a Klónozás egy másik skálázási egység
 
 ### <a name="references"></a>Referencia

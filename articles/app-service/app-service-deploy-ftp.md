@@ -12,22 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2016
+ms.date: 01/06/2016
 ms.author: cephalin;dariac
-ms.openlocfilehash: e3ac2f2156719ad975049b0c2b4cbca81d88e779
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fcd079306a8968505349bb3f4a805f203a5c9999
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Telepítse az alkalmazást az Azure App Service segítségével FTP/S
 
 Ez a cikk bemutatja, hogyan FTP vagy ftps-t használja a webalkalmazást, mobil-háttéralkalmazás és API-alkalmazás telepítési [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714).
 
 Az FTP/S-végpont az alkalmazás már aktív. FTP/S telepítési ahhoz szükséges, hogy nem igényel konfigurálást.
-
-> [!IMPORTANT]
-> Folyamatosan jegyében lépések a Microsoft Azure Platform biztonság növelése érdekében. A folyamatban lévő elérhető részeként webalkalmazások frissítés tervezett Németország központi és Németország szerepel. Ennek során Web Apps letiltása egyszerű szöveges FTP protokoll használatát a központi telepítések elvégzéséhez fog kell. Az ajánlott megoldás a felhasználók a Váltás ftps-t a központi telepítések elvégzéséhez. A legkisebb mértékű akadályozása érdekében a szolgáltatás során ez a frissítés, amely a 9/5 tervezett várhatóan nem. Nagyra értékeljük ebből a törekvésből támogatja.
 
 <a name="step1"></a>
 ## <a name="step-1-set-deployment-credentials"></a>1. lépés: Az üzembe helyezési hitelesítő adatok beállítása
@@ -38,13 +35,13 @@ Az FTP-kiszolgáló, az alkalmazás eléréséhez először üzembe helyezési h
 
 ## <a name="step-2-get-ftp-connection-information"></a>2. lépés: FTP-kiszolgáló kapcsolati adatainak lekérése
 
-1. Az a [Azure-portálon](https://portal.azure.com), nyissa meg az alkalmazás [erőforráspanelen](../azure-resource-manager/resource-group-portal.md#manage-resources).
+1. Az a [Azure-portálon](https://portal.azure.com), nyissa meg az alkalmazás [erőforrás oldala](../azure-resource-manager/resource-group-portal.md#manage-resources).
 2. Válassza ki **áttekintése** a bal oldali menüben, majd jegyezze fel a értékeit **FTP vagy üzembe helyező felhasználó**, **FTP-állomás neve**, és **állomásnév FTPS**. 
 
     ![FTP-kapcsolat információi](./media/app-service-deploy-ftp/FTP-Connection-Info.PNG)
 
     > [!NOTE]
-    > A **FTP vagy üzembe helyező felhasználó** az Azure portál, az alkalmazás neve például ahhoz, hogy a megfelelő környezetet biztosít az FTP-kiszolgáló által megjelenített felhasználói értékét.
+    > Az FTP-kiszolgáló megfelelő segítséget nyújt a **FTP vagy üzembe helyező felhasználó** az Azure portál által megjelenített érték tartalmazza az alkalmazás nevére.
     > Ugyanazokat az információkat található kiválasztásakor **tulajdonságok** a bal oldali menüben. 
     >
     > Emellett a telepítési jelszó soha nem jelenik meg. Ha elfelejti a központi telepítés jelszavát, lépjen vissza a [1. lépés](#step1) és a központi telepítés jelszó.
@@ -53,22 +50,22 @@ Az FTP-kiszolgáló, az alkalmazás eléréséhez először üzembe helyezési h
 
 ## <a name="step-3-deploy-files-to-azure"></a>3. lépés: Telepítse a fájlokat az Azure
 
-1. Az FTP-ügyfél ([Visual Studio](https://www.visualstudio.com/vs/community/), [FileZilla](https://filezilla-project.org/download.php?type=client)stb), a kapcsolat az alkalmazás kapcsolódni összegyűjtött információkat felhasználva.
+1. Az FTP-ügyfél (például [Visual Studio](https://www.visualstudio.com/vs/community/) vagy [FileZilla](https://filezilla-project.org/download.php?type=client)), a kapcsolat az alkalmazás kapcsolódni összegyűjtött információkat felhasználva.
 3. Másolja a fájlokat és a megfelelő könyvtárstruktúrát a [ **/hely/wwwroot** directory](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) az Azure-ban (vagy a **/hely/wwwroot/App_Data/feladatok/** könyvtár a webjobs-feladatok).
 4. Tallózással keresse meg az alkalmazás URL-CÍMÉT, ellenőrizze az alkalmazás megfelelően fut-e. 
 
 > [!NOTE] 
 > Eltérően [Git-alapú telepítések](app-service-deploy-local-git.md), FTP-telepítés nem támogatja a következő központi telepítés automatizálása: 
 >
-> - a függőségi visszaállítási (például a NuGet, NPM, PIP és szerkesztő automatizálása)
+> - a függőségi visszaállítja (például a NuGet, NPM, PIP és szerkesztő automatizálása)
 > - a .NET bináris fájl fordítás
 > - a Web.config fájl. generációs (itt egy [Node.js példa](https://github.com/projectkudu/kudu/wiki/Using-a-custom-web.config-for-Node-apps))
 > 
-> Ön kell visszaállítani, felépítéséhez, és hozza létre ezeket manuálisan a helyi számítógépen a szükséges fájlokat és együtt az alkalmazás központi telepítésére.
+> Létre manuálisan a helyi számítógépen a szükséges fájlokat, és telepítheti azokat az alkalmazás együtt.
 >
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Összetettebb központi telepítési forgatókönyve esetén próbálja [üzembe helyezése az Azure git](app-service-deploy-local-git.md). Az Azure Git-alapú telepítést lehetővé teszi a verziókövetés, a csomag visszaállítás, az MSBuild és több.
 

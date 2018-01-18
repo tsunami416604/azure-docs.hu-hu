@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 01/08/2018
 ms.author: maheshu
-ms.openlocfilehash: 5fe36241efc11cbb85231137649f7b97e23cc0a5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0956476931396c6455bf3e4fc7582da3bf3deb33
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD tartományi szolgáltatások - hibaelhárítási útmutatója
 Ez a cikk hibaelhárítási tippek biztosít a problémák jelentkezhetnek, ha beállítása és felügyelete az Azure Active Directory (AD) tartományi szolgáltatásokban.
@@ -122,6 +122,7 @@ Ellenőrizze, hogy ha le van tiltva az alkalmazás azonosítóját 00000002-0000
 
 Ez a hiba elhárításához alkalmazás engedélyezése, és próbálja meg az Azure AD-bérlő tartományi szolgáltatások engedélyezése.
 
+
 ## <a name="users-are-unable-to-sign-in-to-the-azure-ad-domain-services-managed-domain"></a>A felhasználók nem tudnak bejelentkezni az Azure AD Domain Services által felügyelt tartományba
 Ha az Azure AD-bérlőről egy vagy több felhasználók nem jelentkezhetnek be az újonnan létrehozott felügyelt tartományra, hajtsa végre a következő hibaelhárítási lépéseket:
 
@@ -145,6 +146,10 @@ Ha az Azure AD-bérlőről egy vagy több felhasználók nem jelentkezhetnek be 
     2. a net start "Microsoft Azure AD Sync"
 * **Csak felhőalapú fiókok**: Ha az érintett felhasználó fiók egy kizárólag felhőalapú felhasználói fiókot, győződjön meg arról, hogy a felhasználó módosította a jelszavát, miután engedélyezte az Azure AD tartományi szolgáltatások. Ezzel a lépéssel létrejönnek az Azure AD tartományi szolgáltatásokhoz szükséges hitelesítő adatok kivonatai.
 
+## <a name="there-are-one-or-more-alerts-on-your-managed-domain"></a>Egy vagy több vannak a felügyelt tartományok
+
+Lásd: how to a felügyelt tartomány riasztás feloldása, látogasson el a [hibaelhárítása riasztások](active-directory-ds-troubleshoot-alerts.md) cikk.
+
 ## <a name="users-removed-from-your-azure-ad-tenant-are-not-removed-from-your-managed-domain"></a>Eltávolítja az Azure AD-bérlő felhasználók a felügyelt tartományok nem törlődnek
 Az Azure AD megvédi Önt a felhasználói objektumok véletlen törlésétől. Amikor töröl egy felhasználói fiókot az Azure AD-bérlőből, a megfelelő felhasználói objektum átkerül a Lomtárba. Amikor a törlési művelet szinkronizálja a felügyelt tartományra, a megfelelő felhasználói fiókkal kell megjelölni, letiltott okoz. Ez a szolgáltatás segítségével helyre, vagy később törlésének visszavonása a felhasználói fiók.
 
@@ -152,5 +157,6 @@ A felhasználói fiók a felügyelt tartományok letiltott állapotban marad, ak
 
 A teljes mértékben eltávolítja a felügyelt tartományok a felhasználói fiók, a felhasználó véglegesen törli az Azure AD-bérlőn. Használja a `Remove-MsolUser` PowerShell parancsmag a `-RemoveFromRecycleBin` lehetőség, mert leírt [MSDN-cikk](https://msdn.microsoft.com/library/azure/dn194132.aspx).
 
-## <a name="contact-us"></a>Kapcsolatfelvétel
+
+## <a name="contact-us"></a>Kapcsolat
 Lépjen kapcsolatba az Azure Active Directory tartományi szolgáltatások termékért felelős csoport a [visszajelzés fájlmegosztás vagy a támogatáshoz](active-directory-ds-contact-us.md).

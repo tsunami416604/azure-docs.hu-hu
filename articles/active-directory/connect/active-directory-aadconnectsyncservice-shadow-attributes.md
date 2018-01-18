@@ -3,7 +3,7 @@ title: "Az Azure AD Connect szinkronizálási szolgáltatás árnyékmásolat at
 description: "Ismerteti az árnyékmásolat attribútumok működése az Azure AD Connect szinkronizálási szolgáltatást."
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 00488391c496f06cfcad12e67f5a874313c57e08
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 19d5ae46955ecc094c340d141485d3eb54c8e9b2
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Az Azure AD Connect szinkronizálási szolgáltatás árnyékmásolat attribútumok
 A legtöbb attribútumok vannak megadva ugyanúgy Azure AD-ben, mivel ezek a helyszíni Active Directoryban. Azonban néhány attribútum néhány különleges kezelést és az Azure AD-ben attribútumérték eltérhet az Azure AD Connect szinkronizálása.
@@ -71,6 +71,6 @@ ProxyCalc eltarthat egy ideig, a felhasználó változás feldolgozni, és nem a
 ### <a name="quarantined-attribute-values"></a>Karanténba helyezett attribútumértékek
 Árnyékmásolat attribútumok is használják, amikor ismétlődő attribútum-érték. További információkért lásd: [ismétlődő attribútum rugalmassági](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md).
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Az Azure AD Connect szinkronizálása](active-directory-aadconnectsync-whatis.md)
 * [A helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md).

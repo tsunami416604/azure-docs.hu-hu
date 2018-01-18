@@ -9,16 +9,16 @@ editor:
 ms.assetid: 
 ms.service: service-fabric
 ms.devlang: cli
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 09/22/2017
+ms.date: 12/22/2017
 ms.author: ryanwi
-ms.openlocfilehash: 2af6dff4ffcdf295731f2d61b5f9e35af40615e5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d4ca3c35c34736c3b4824f956a6a72002c891877
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="sfctl-store"></a>sfctl tároló
 Alapszintű fájl szint a végre műveleteket a fürt lemezképtárolóhoz.
@@ -27,8 +27,8 @@ Alapszintű fájl szint a végre műveleteket a fürt lemezképtárolóhoz.
 
 |Parancs|Leírás|
 | --- | --- |
-|    törlése| Törli a meglévő lemezkép tartalom tárolásához.|
-|    gyökér-adatai| Lekérdezi a tartalommal kapcsolatos információkat az image store gyökérmappájában.|
+|    törlés| Törli a meglévő lemezkép tartalom tárolásához.|
+|    root-info| Lekérdezi a tartalommal kapcsolatos információkat az image store gyökérmappájában.|
 |    stat  | Lekérdezi a lemezképet tároló tartalommal kapcsolatos információkat.|
 
 
@@ -48,7 +48,7 @@ Törli a meglévő lemezkép store tartalmát a megadott lemezképben talált re
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresése               | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
+| --debug               | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 | – Súgó -h             | Ez egy súgóüzenet és kilépési megjelenítése.|
 | – a kimeneti -o           | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.  Alapértelmezett: JSON-ná.|
 | --lekérdezés               | JMESPath lekérdezési karakterlánc. További információk és példák: http://jmespath.org/.|
@@ -70,12 +70,12 @@ Az image store, a lemezképet tároló tartalmat a megadott contentpath tulajdon
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresése               | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
+| --debug               | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 | – Súgó -h             | Ez egy súgóüzenet és kilépési megjelenítése.|
 | – a kimeneti -o           | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.  Alapértelmezett: JSON-ná.|
 | --lekérdezés               | JMESPath lekérdezési karakterlánc. További információt és példákat http://jmespath.org/ talál.|
 | – részletes             | Naplózási növelése. Használatát – a teljes hibakeresési naplók hibakeresési.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [A telepítő](service-fabric-cli.md) a Service Fabric CLI-t.
 - A Service Fabric parancssori felület használatával használata a [minta parancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application).

@@ -3,7 +3,7 @@ title: "Az Azure AD Connect: Understanding deklaratív kiépítés |} Microsoft 
 description: "A deklaratív üzembe helyezési modell az Azure AD Connectben ismerteti."
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: cfbb870d-be7d-47b3-ba01-9e78121f0067
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 7e299fb33bdbd514a8fbc96c6953c9a8ca70f54a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 50fce526d667fa829551425edff4bd3863429ef2
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect szinkronizálása: Understanding deklaratív kiépítés
 Ez a témakör ismerteti az Azure AD Connect konfigurációs modell. A modell deklaratív kiépítés nevezik, és lehetővé teszi olyan konfigurációs módosítást alkalmazásaiba. A jelen témakörben ismertetett számos elemet speciális, és a legtöbb ügyfél forgatókönyvhöz nem szükséges.
@@ -88,7 +88,7 @@ A metaverzum-objektum marad, amíg nincs egy szinkronizálási szabály hatókö
 
 A törölt metaverzum-objektum egy kimenő szinkronizálási szabályt társított összes objektumot megjelölve **rendelkezés** törlési vannak megjelölve.
 
-## <a name="transformations"></a>Átalakítások
+## <a name="transformations"></a>Transformations
 Az átalakítás segítségével határozza meg, hogyan attribútumok kell flow-bejegyzéseket a cél. A forgalom a következők egyike lehet **típusok flow**: közvetlen, állandó vagy kifejezés. A közvetlen folyamat zajlik egy attribútum értékét,-átalakítás nélküli további van. Konstans érték megadása esetén a megadott érték. Egy kifejezés Express, hogyan kell lennie az átalakítás deklaratív létesítési kifejezés nyelvét használja. A kifejezés nyelven részletek megtalálhatók a [deklaratív létesítési kifejezés nyelvi ismertetése](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) témakör.
 
 ![Kiépítés, vagy csatlakozzon](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/transformations1.png)  
@@ -148,7 +148,7 @@ Ha több olyan objektum az az azonos metaverzum-objektum csatlakozik egy összek
 A jelen esetben módosítani szeretné a szinkronizálási szabályok hatókörének így az adatforrás-objektumok különböző szinkronizálási szabályok hatókörében. Amely lehetővé teszi, hogy különböző sorrend meghatározásához.  
 ![Több objektumot csatoltak az azonos mv-objektum](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/multiple2.png)  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információk az a kifejezés nyelv [ismertetése deklaratív kiépítés kifejezések](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md).
 * Lásd: hogyan deklaratív kiépítés használt out-of-box a [az alapértelmezett konfiguráció ismertetése](active-directory-aadconnectsync-understanding-default-configuration.md).
 * Lásd: how to gyakorlati módosítja a deklaratív kiépítés használatával [hogyan lehet módosítani az alapértelmezett konfiguráció](active-directory-aadconnectsync-change-the-configuration.md).

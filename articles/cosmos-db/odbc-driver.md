@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: rest-api
 ms.topic: article
-ms.date: 05/24/2017
+ms.date: 01/16/2018
 ms.author: mimig
-ms.openlocfilehash: 2df792c00b7a789dbefa64bfe0245f1ad73c3faa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3892f698ec2b0b45f71dc38491687897559821ba
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Csatlakozás Azure Cosmos DB BI elemzőeszközök segítségével az ODBC-illesztőprogram
 
@@ -38,9 +38,11 @@ Most már megadható, hogy az ODBC-illesztőprogram az első lépései.
 
 1. Töltse le az illesztőprogramokat az adott környezetben:
 
-    * [A Microsoft Azure Cosmos DB ODBC 64-bit.msi](https://aka.ms/documentdb-odbc-64x64) 64 bites Windows
-    * [A Microsoft Azure Cosmos DB ODBC 32 x 64-bit.msi](https://aka.ms/documentdb-odbc-32x64) a 32 bites, 64 bites Windows rendszeren
-    * [A Microsoft Azure Cosmos DB ODBC 32-bit.msi](https://aka.ms/documentdb-odbc-32x32) 32 bites Windows
+    | Telepítő | Támogatott operációs rendszerek| 
+    |---|---| 
+    |[A Microsoft Azure Cosmos DB ODBC 64-bit.msi](https://aka.ms/documentdb-odbc-64x64) 64 bites Windows| 64 bites verzióit, a Windows 8.1 vagy újabb, Windows 8, Windows 7, Windows Server 2012 R2, Windows Server 2012 és Windows Server 2008 R2.| 
+    |[A Microsoft Azure Cosmos DB ODBC 32 x 64-bit.msi](https://aka.ms/documentdb-odbc-32x64) a 32 bites, 64 bites Windows rendszeren| 64 bites Windows 8.1 vagy újabb, Windows 8, Windows 7, Windows XP, Windows Vista, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 és Windows Server 2003.| 
+    |[A Microsoft Azure Cosmos DB ODBC 32-bit.msi](https://aka.ms/documentdb-odbc-32x32) 32 bites Windows|32 bites Windows 8.1 vagy újabb, Windows 8, Windows 7, Windows XP és Windows Vista.|
 
     Futtassa az msi-fájl helyben, amely elindítja a **Microsoft Azure Cosmos DB ODBC illesztőprogram telepítővarázsló**. 
 2. A bemeneti az ODBC illesztőprogram telepítéséhez az alapértelmezett telepítési varázsló befejezéséhez.
@@ -58,16 +60,16 @@ Most már megadható, hogy az ODBC-illesztőprogram az első lépései.
     ![Az Azure Cosmos DB ODBC illesztőprogram DSN beállítása ablakban](./media/odbc-driver/odbc-driver-dsn-setup.png)
     - **Adatforrás neve**: az ODBC-adatforrásnévhez saját rövid nevét. Ez a név egyedi Azure Cosmos DB fiókjába, ezért nevezze el megfelelően, ha több fiókot.
     - **Leírás**: az adatforrás rövid leírása.
-    - **Állomás**: URI Azure Cosmos DB fiókjához. Beolvasható Ez az Azure Cosmos DB (kulcsok) panelén az Azure portálon, az alábbi képernyőfelvételen látható módon. 
-    - **Hívóbetű**: az elsődleges vagy másodlagos, olvasási és írási vagy olvasási kulcsot az Azure-portálon az alábbi képernyőfelvételen látható Azure Cosmos DB kulcsok panelén. Azt javasoljuk, hogy a csak olvasható-kulcsot használ, ha a DSN-NEVET használja a csak olvasható az adatfeldolgozás és -jelentéskészítés.
-    ![Az Azure Cosmos DB kulcsok panelen](./media/odbc-driver/odbc-driver-keys.png)
+    - **Állomás**: URI Azure Cosmos DB fiókjához. Beolvasható Ez az Azure-portálon az Azure Cosmos DB kulcsok oldalon az alábbi képernyőfelvételen látható módon. 
+    - **Hívóbetű**: az elsődleges vagy másodlagos, olvasási és írási vagy olvasási kulcsot az Azure Cosmos DB kulcsok lapon az Azure portálon, az alábbi képernyőfelvételen látható módon. Azt javasoljuk, hogy a csak olvasható-kulcsot használ, ha a DSN-NEVET használja a csak olvasható az adatfeldolgozás és -jelentéskészítés.
+    ![Az Azure Cosmos DB kulcsok lap](./media/odbc-driver/odbc-driver-keys.png)
     - **A hozzáférési kulcs titkosításához**: válassza ki a legjobb választás alapján a felhasználók ezt a gépet. 
 4. Kattintson a **teszt** gombra kattintva ellenőrizze, hogy Azure Cosmos DB-fiókjához csatlakozhat. 
 5. Kattintson a **speciális beállítások** és állítsa be a következő értékeket:
     - **Lekérdezési konzisztencia**: válassza ki a [konzisztenciaszint](consistency-levels.md) a műveletekhez. Az alapértelmezett érték a munkamenet.
     - **Az újrapróbálkozások számát**: Adja meg a próbálkozások egy műveletet, ha a kezdeti kérelem befejezése sikertelennek bizonyul szolgáltatás szabályozás miatt.
     - **Sémafájl**: több lehetőség itt rendelkeznek.
-        - Alapértelmezés szerint ez a bejegyzés (üres), így az illesztőprogramot keres az első lap adatok megállapításához a séma egyes gyűjtemények minden gyűjtemények. Ez más néven gyűjtemény a hozzárendelése. Nélkül definiált sémafájl az illesztőprogram minden egyes illesztőprogram-munkamenet az ellenőrzés elvégzéséhez rendelkezik, és egy magasabb indítási ideje a DSN-NEVET használó alkalmazások eredményezheti. Azt javasoljuk, hogy mindig társít egy sémafájl a DSN-hez.
+        - Alapértelmezés szerint ez a bejegyzés (üres), így az illesztőprogramot keres az első lap adatok megállapításához a séma egyes gyűjtemények minden gyűjtemények. Ez más néven gyűjtemény a hozzárendelése. Nélkül definiált sémafájl az illesztőprogram minden egyes illesztőprogram-munkamenet az ellenőrzés elvégzéséhez rendelkezik, és eredményezhet a DSN-NEVET használó alkalmazások a magasabb indítási idő. Azt javasoljuk, hogy mindig társít egy sémafájl a DSN-hez.
         - Ha már rendelkezik egy sémafájl (valószínűleg egy létrehozott a [séma szerkesztő](#schema-editor)), kattintson **Tallózás**, keresse meg a fájlt, kattintson a **mentése**, és kattintson a **OK**.
         - Ha szeretne létrehozni egy új séma, kattintson a **OK**, és kattintson a **séma szerkesztő** fő ablakában. Lépjen a [séma szerkesztő](#schema-editor) információkat. Az új séma-fájl létrehozása után ne feledje lépjen vissza a **speciális beállítások** az újonnan létrehozott sémafájl ablak.
 
@@ -146,6 +148,6 @@ A következő hibaüzenet jelenik meg, ha a **állomás** és **hozzáférési k
 
     [HY000]: [Microsoft][Azure Cosmos DB] (401) HTTP 401 Authentication Error: {"code":"Unauthorized","message":"The input authorization token can't serve the request. Please check that the expected payload is built as per the protocol, and check the key being used. Server used the following payload to sign: 'get\ndbs\n\nfri, 20 jan 2017 03:43:55 gmt\n\n'\r\nActivityId: 9acb3c0d-cb31-4b78-ac0a-413c8d33e373"}`
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Azure Cosmos DB kapcsolatos további információkért lásd: [Mi az Azure Cosmos DB?](introduction.md).
+Azure Cosmos DB kapcsolatos további információkért lásd: [Üdvözli az Azure Cosmos DB](introduction.md).

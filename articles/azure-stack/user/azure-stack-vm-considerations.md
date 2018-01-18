@@ -3,7 +3,7 @@ title: "Szempontok a virtuális gépek Azure-készletben és különbségeket |}
 description: "További tudnivalók a különbségek és szempontokat, az Azure-veremben lévő virtuális gépek használatakor."
 services: azure-stack
 documentationcenter: 
-author: mattbriggs
+author: brenduns
 manager: femila
 editor: 
 ms.assetid: 6613946D-114C-441A-9F74-38E35DF0A7D7
@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2017
-ms.author: mabrigg
-ms.openlocfilehash: 8367f7897581ff9599b763c7a39232bbe6860b8f
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.date: 11/17/2018
+ms.author: brenduns
+ms.openlocfilehash: 6eafa2a5058ef1309cbf50be069ea1bb12f7e5b9
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="considerations-for-virtual-machines-in-azure-stack"></a>Virtuális gépek Azure-készletben szempontjai
 
@@ -28,7 +28,7 @@ Virtuális gépek az igény szerinti, méretezhető számítási erőforrások A
 
 ## <a name="cheat-sheet-virtual-machine-differences"></a>Lap cheat: virtuális gép különbségek
 
-| Szolgáltatás | Azure (globális) | Azure Stack |
+| Szolgáltatás | Azure (global) | Azure Stack |
 | --- | --- | --- |
 | Virtuálisgép-rendszerképek | Az Azure piactéren lemezképeket hozhat létre virtuális gépet tartalmaz. Tekintse meg a [Azure piactér](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute?subcategories=virtual-machine-images&page=1) lap használatával jeleníthetők meg az Azure piactéren elérhető képeket listáját. | Alapértelmezés szerint nincs képeket elérhető a verem Azure piactéren. Az Azure-verem felhő rendszergazdájának kell közzétételére, vagy töltse le a lemezképet a verem Azure piactéren előtt a felhasználók használni tudják őket. |
 | Virtuálisgép-méretek | Azure virtuális gépek méretű széles választékát támogatja. Az elérhető méretek és a lehetőségek kapcsolatos információkért tekintse meg a [Windows virtuális gépek méretét](../../virtual-machines/virtual-machines-windows-sizes.md) és [Linux virtuálisgép-méretek](../../virtual-machines/linux/sizes.md) témaköröket. | Az Azure verem támogatja az Azure-ban rendelkezésre álló virtuálisgép-méretek egy részét. A támogatott méretek listájának megtekintéséhez, tekintse meg a [virtuálisgép-méretek](#virtual-machine-sizes) című szakaszát. |
@@ -59,7 +59,7 @@ Virtuálisgép-méretek és a kapcsolódó erőforrás mennyiségek Azure verem 
 
 ## <a name="virtual-machine-extensions"></a>Virtuálisgép-bővítmények
 
- Az Azure verem szoftverfejlesztői készlet a következő virtuális gép bővítmény verzióit támogatja:
+ Az Azure-verem virtuális gép bővítmény alábbi verzióit támogatja:
 
 ![Virtuálisgép-bővítmények](media/azure-stack-vm-considerations/vm-extensions.png)
 
@@ -75,7 +75,7 @@ Get-AzureRmVmImagePublisher -Location local | `
 
 ## <a name="api-versions"></a>API-verziók
 
-Virtuális gépek jellemzői az Azure verem szoftverfejlesztői készlet a következő API-verzióit támogatja:
+Virtuális gépek jellemzői Azure verem a következő API-verzióit támogatja:
 
 ![Virtuális gép típusú erőforrások](media/azure-stack-vm-considerations/vm-resoource-types.png)
 

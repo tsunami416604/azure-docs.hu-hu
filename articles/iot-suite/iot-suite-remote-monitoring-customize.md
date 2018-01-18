@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 11/10/2017
+ms.date: 01/17/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 886a4412ac348869563a03d697f4363cb3dea8f9
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: f5d38091b59110859d4376a5cd16a19f24dad65b
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="customize-the-remote-monitoring-preconfigured-solution"></a>A távoli felügyeleti előkonfigurált megoldás testreszabása
 
@@ -24,6 +24,10 @@ Ez a cikk ismerteti, hogyan hozzáférni a forráskódot, és a távoli figyelé
 
 * A GitHub-adattárak, amely a forráskódot, és a mikroszolgáltatások az előkonfigurált megoldás alkotó forrásokat tartalmazza.
 * Írja be például az új eszköz hozzáadása a testreszabási szabhatják.
+
+A következő videó bemutatja a távoli felügyeleti előkonfigurált megoldás testreszabására szolgáló beállítások áttekintése:
+
+>[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/How-to-customize-the-Remote-Monitoring-Preconfigured-Solution-for-Azure-IoT/Player]
 
 ## <a name="project-overview"></a>Projekt áttekintése
 
@@ -42,12 +46,12 @@ Ez a táblázat minden egyes nyelvekhez tartozó mikroszolgáltatási aktuális 
 
 <!-- please add links for each of the repos in the table, you can find them here https://github.com/Azure/azure-iot-pcs-team/wiki/Repositories-->
 
-| Mikroszolgáltatási      | Leírás | Java | .NET |
+| Microservice      | Leírás | Java | .NET |
 | ----------------- | ----------- | ---- | ---- |
-| Webes felhasználói felület            | Webalkalmazás távoli figyelési megoldást igényelnek. Felhasználói felület React.js keretrendszer használatával valósít meg. | [N/A(React.js)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui) | [N/A(React.js)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui) |
-| Az IoT Hub-kezelő   | Az IoT Hub kommunikációt kezeli.        | [Rendelkezésre álló](https://github.com/Azure/iothub-manager-java) | [Rendelkezésre álló](https://github.com/Azure/iothub-manager-dotnet)   |
-| Authentication    |  Kezeli az Azure Active Directory-integráció.  | Még nem érhető el | [Rendelkezésre álló](https://github.com/Azure/pcs-auth-dotnet)   |
-| Eszköz szimulálása | Kezeli a szimulált eszköz készletét. | Még nem érhető el | [Rendelkezésre álló](https://github.com/Azure/device-simulation-dotnet)   |
+| Web UI            | Webalkalmazás távoli figyelési megoldást igényelnek. Felhasználói felület React.js keretrendszer használatával valósít meg. | [N/A(React.js)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui) | [N/A(React.js)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui) |
+| IoT Hub Manager   | Az IoT Hub kommunikációt kezeli.        | [Rendelkezésre álló](https://github.com/Azure/iothub-manager-java) | [Rendelkezésre álló](https://github.com/Azure/iothub-manager-dotnet)   |
+| Hitelesítés    |  Kezeli az Azure Active Directory-integráció.  | Még nem érhető el | [Rendelkezésre álló](https://github.com/Azure/pcs-auth-dotnet)   |
+| Eszközszimuláció | Kezeli a szimulált eszköz készletét. | Még nem érhető el | [Rendelkezésre álló](https://github.com/Azure/device-simulation-dotnet)   |
 | Telemetria         | Elérhetővé teszi telemetriát a felhasználói felületen. | [Rendelkezésre álló](https://github.com/Azure/device-telemetry-java) | [Rendelkezésre álló](https://github.com/Azure/device-telemetry-dotnet)   |
 | Telemetria ügynök   | Elemzi a telemetriai adatok adatfolyam tárolja az üzeneteket az Azure IoT Hub és meghatározott szabályok szerint riasztásokat állít elő.  | [Rendelkezésre álló](https://github.com/Azure/telemetry-agent-java) | [Rendelkezésre álló](https://github.com/Azure/telemetry-agent-dotnet)   |
 | Felhasználói felület Config         | A felhasználói felület a konfigurációs adatok kezeli. | [Rendelkezésre álló](https://github.com/azure/pcs-ui-config-java) | [Rendelkezésre álló](https://github.com/azure/pcs-ui-config-dotnet)   |
@@ -245,11 +249,11 @@ The default storage service for logs is Cosmos DB. See the [Customize log storag
 Az infrastruktúra a távoli felügyeleti megoldás módosítása, szerkesztheti a kódot. A megfelelő GitHub-adattárak a következők:
 
 * [IOT hubbal Manager (.NET)](https://github.com/Azure/iothub-manager-dotnet)
-* [IOT hubbal Manager (Java)](https://github.com/Azure/iothub-manager-java)
+* [IoTHub Manager (Java)](https://github.com/Azure/iothub-manager-java)
 * [Tárolóadapter (.NET)](https://github.com/Azure/pcs-storage-adapter-dotnet)
 * [Tárolóadapter (Java)](https://github.com/Azure/pcs-storage-adapter-java)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta segítségével testre szabhatja az előkonfigurált megoldás rendelkezésre álló erőforrásokról.
 

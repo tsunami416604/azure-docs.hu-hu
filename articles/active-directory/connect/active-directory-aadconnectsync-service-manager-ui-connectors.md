@@ -3,7 +3,7 @@ title: "Az Azure AD szinkronizálási szolgáltatás kezelő felhasználói fel�
 description: "Ismerje meg a csatlakozók fülre a Synchronization Service Managert, az Azure AD Connect."
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 60f1d979-8e6d-4460-aaab-747fffedfc1e
@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 12c78b1baf1f2117b6c960784c133268fec4b2bb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3bbbe5d0d7a7ed7065133b4bc6e5fc2dba39bf7d
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Az az Azure AD Connect szinkronizálási Service Manager-összekötők használata
 
-![Szinkronizálás a Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/connectors.png)
+![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/connectors.png)
 
 Az összekötők lapon a szinkronizálási motor csatlakozik-e az összes rendszer kezelésére szolgál.
 
@@ -44,7 +44,7 @@ Az összekötők lapon a szinkronizálási motor csatlakozik-e az összes rendsz
 
 ### <a name="delete"></a>Törlés
 A törlési művelet használható két különböző fogalom.  
-![Szinkronizálás a Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/connectordelete.png)
+![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/connectordelete.png)
 
 A beállítás **törlése csak a kapcsolódási térbe** összes adat eltávolítható, de tartani a konfigurációt.
 
@@ -55,17 +55,17 @@ Mindkét lehetőség minden objektumokat szinkronizálni, és frissítése a met
 ### <a name="configure-run-profiles"></a>Futtatási profilok konfigurálása
 Ezzel a beállítással a futtatási profil összekötőhöz beállított láthatja.
 
-![Szinkronizálás a Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/configurerunprofiles.png)
+![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/configurerunprofiles.png)
 
 ### <a name="search-connector-space"></a>Összekötőtér keresése
 A keresési összekötő terület művelet célszerű található objektumok és adatok problémák elhárításához.
 
-![Szinkronizálás a Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cssearch.png)
+![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cssearch.png)
 
 Kiválasztásával indítsa el a **hatókör**. Kereshet az adatok alapján (RDN, DN, rögzítési, részfájának), vagy az objektum (egyéb beállítások) állapot.  
-![Szinkronizálás a Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cssearchscope.png)  
+![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cssearchscope.png)  
 Ha például egy részfájának keresést, egy szervezeti egység összes objektum beolvasása.  
-![Szinkronizálás a Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cssearchsubtree.png)  
+![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cssearchsubtree.png)  
 A rácsban jelöljön ki egy objektumot, válassza ki **tulajdonságok**, és [követve](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md) az adatforrás kapcsolódási térbe, a metaverzumba, és a cél összekötő területre.
 
 ### <a name="changing-the-ad-ds-account-password"></a>Az Active Directory tartományi szolgáltatások fiók jelszavának módosítása
@@ -78,7 +78,7 @@ A probléma megoldásához frissítse az Active Directory tartományi szolgálta
 
 
 1. Indítsa el a Synchronization Service Managert (KEZDŐ → szinkronizálási szolgáltatás).
-</br>![Szinkronizálás a Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/startmenu.png)
+</br>![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/startmenu.png)
 2. Lépjen a **összekötők** fülre.
 3. Válassza ki az AD összekötőt, amely a Tartományi fiók használatára van konfigurálva.
 4. A műveletek, válassza ki a **tulajdonságok**.
@@ -90,7 +90,7 @@ A probléma megoldásához frissítse az Active Directory tartományi szolgálta
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a [az Azure AD Connect szinkronizálási szolgáltatás](active-directory-aadconnectsync-whatis.md) konfigurációs.
 
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md).

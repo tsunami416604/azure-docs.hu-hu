@@ -9,16 +9,16 @@ editor:
 ms.assetid: 
 ms.service: service-fabric
 ms.devlang: cli
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 09/22/2017
+ms.date: 12/22/2017
 ms.author: ryanwi
-ms.openlocfilehash: 99756378f2106707b4f6d634a1183d5c32243ee2
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 9d709a0ec2b7de985ac08fe9ee2935848e7a371c
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="sfctl-partition"></a>sfctl partíció
 Lekérdezi és partíciók valamelyik szolgáltatás kezelése.
@@ -29,16 +29,16 @@ Lekérdezi és partíciók valamelyik szolgáltatás kezelése.
 | --- | --- |
 |    adatvesztés      | Ez az API a megadott partíció adatvesztés kapott.|
 |    adatok-adatveszteség-állapot  | Lekérdezi a StartDataLoss API használatának partíció adatok elvesztését műveletnek az előrehaladását.|
-|    Rendszerállapot         | A megadott Service Fabric-partíción állapotának beolvasása.|
+|    állapot         | A megadott Service Fabric-partíción állapotának beolvasása.|
 |    információ           | A Service Fabric-partíción információ lekérése.|
 |    lista           | Lekérdezi a Service Fabric-szolgáltatás partícióinak listáját.|
 |    betöltés           | Lekérdezi a megadott Service Fabric-partíción terhelését.|
-|    betöltési-alaphelyzetbe állítása     | Alaphelyzetbe állítja a jelenlegi terhelés a Service Fabric-partíción.|
+|    load-reset     | Alaphelyzetbe állítja a jelenlegi terhelés a Service Fabric-partíción.|
 |    kvórum-elvesztése    | Egy adott állapot-nyilvántartó szolgáltatása partíció kvórum elvesztése kapott.|
 |    kvórum-adatveszteség-állapot| Lekérdezi a StartQuorumLoss API használatának partíciók a kvórum elvesztése műveletnek az előrehaladását.|
 |    Helyreállítás        | Azt jelzi, hogy a Service Fabric-fürt, hogy kell-e megpróbálni helyreállítani egy adott partícióra, amely a kvórum elvesztése jelenleg Beragadt, hogy.|
-|    helyreállítás – minden    | A Service Fabric-fürt jelzi, hogy azt kell megpróbálja helyreállítani a bármely (beleértve a rendszerszolgáltatások) szolgáltatást, amely a kvórum elvesztése jelenleg marad.|
-|    a jelentés-állapota  | A Service Fabric-partíción health jelentést küld.|
+|    recover-all    | A Service Fabric-fürt jelzi, hogy azt kell megpróbálja helyreállítani a bármely (beleértve a rendszerszolgáltatások) szolgáltatást, amely a kvórum elvesztése jelenleg marad.|
+|    report-health  | A Service Fabric-partíción health jelentést küld.|
 |    Indítsa újra a        | Ez az API vagy egésze a replikák és a példány a megadott partíció újraindul.|
 |    Újraindítás-állapot | Lekérdezi a StartPartitionRestart használatának PartitionRestart műveletnek az előrehaladását.|
 |    SVC-név       | Egy partíció Service Fabric-szolgáltatás nevének beolvasása.|
@@ -55,16 +55,16 @@ A ReplicasHealthStateFilter használatával szűrhetők a partíción ReplicaHea
 |Argumentum|Leírás|
 | --- | --- |
 | --partícióazonosító [szükséges]| A partíció identitását.|
-| --események-rendszerállapot-állapot-szűrő  | A gyűjtemény által visszaadott HealthEvent objektumok állapota alapján szűrését teszi lehetővé. Ez a paraméter lehetséges értékei közé tartozik a következő állapotok közül az egyik egész értéket.                Csak a szűrőnek megfelelő események adja vissza. Összes esemény összesített állapotát értékeléséhez használt. Ha nincs megadva, a rendszer összes bejegyzés is megjelennek. Az állapot értékei jelző-alapú számbavétel, az érték lehet ezeket az értékeket bitenkénti "Vagy" operátor segítségével. Például ha a megadott érték azonban 6 majd az OK (2) és a figyelmeztető (4) HealthState értékkel rendelkező események is megjelennek. -Alapértelmezett - alapértelmezett értéket. Bármely HealthState megegyezik. A tulajdonság értéke nulla. -None - szűrőt, amely nem egyezik a HealthState értékét. Ahhoz, hogy nincs eredményeket egy adott gyűjtemény állapotok használt. Az érték 1. -Ok - szűrheti, hogy egyező bemeneti érték a HealthState az OK gombra. A 2 érték. -A figyelmeztetési - szűrő, hogy egyező bemeneti healthstate értékét figyelmeztetés. Az érték 4. -Hiba – hiba HealthState értékű bemeneti egyező szűrő. A értéke 8.                -Az összes - szűrő, amely megfelel a bemeneti bármely HealthState értékkel.                Az érték 65535.|
-|--Állapotstatisztika kizárása   | Azt jelzi, hogy a health statisztika vissza kell adni az a lekérdezés eredménye részeként. Alapértelmezés szerint FALSE. A statisztika megjelenítése a hány gyermeke lehet entitások állapota Ok, figyelmeztetés és hiba.|
-| --replikák-rendszerállapot-állapot-szűrő| Az Objektumgyűjtemény ReplicaHealthState a partíción szűrését teszi lehetővé. Az érték tagokat, vagy bitenkénti műveletek HealthStateFilter tagjai lehet lekérni. Csak a szűrőnek megfelelő replikák adja vissza. Összesített állapotát értékeléséhez használt összes replikát. Ha nincs megadva, a rendszer összes bejegyzés is megjelennek. Az állapot értékei jelző-alapú számbavétel, az érték lehet ezeket az értékeket bitenkénti "Vagy" operátor segítségével. Például ha a megadott érték azonban 6 majd az OK (2) és a figyelmeztető (4) HealthState értékkel rendelkező események is megjelennek. Ez a paraméter lehetséges értékei közé tartozik a következő állapotok közül az egyik egész értéket. -Alapértelmezett - alapértelmezett értéket. Bármely HealthState megegyezik. A tulajdonság értéke nulla. -None - szűrőt, amely nem egyezik a HealthState értékét. Ahhoz, hogy nincs eredményeket egy adott gyűjtemény állapotok használt. Az érték 1. -Ok - szűrheti, hogy egyező bemeneti érték a HealthState az OK gombra. A 2 érték. -A figyelmeztetési - szűrő, hogy egyező bemeneti healthstate értékét figyelmeztetés. Az érték 4. -Hiba – hiba HealthState értékű bemeneti egyező szűrő. A értéke 8. -Az összes - szűrő, amely megfelel a bemeneti bármely HealthState értékkel. Az érték 65535.|
+| --events-health-state-filter  | A gyűjtemény által visszaadott HealthEvent objektumok állapota alapján szűrését teszi lehetővé. Ez a paraméter lehetséges értékei közé tartozik a következő állapotok közül az egyik egész értéket.                Csak a szűrőnek megfelelő események adja vissza. Összes esemény összesített állapotát értékeléséhez használt. Ha nincs megadva, a rendszer összes bejegyzés is megjelennek. Az állapot értékei jelző-alapú számbavétel, az érték lehet ezeket az értékeket bitenkénti "Vagy" operátor segítségével. Például ha a megadott érték azonban 6 majd az OK (2) és a figyelmeztető (4) HealthState értékkel rendelkező események is megjelennek. -Alapértelmezett - alapértelmezett értéket. Bármely HealthState megegyezik. A tulajdonság értéke nulla. -None - szűrőt, amely nem egyezik a HealthState értékét. Ahhoz, hogy nincs eredményeket egy adott gyűjtemény állapotok használt. Az érték 1. -Ok - szűrheti, hogy egyező bemeneti érték a HealthState az OK gombra. A 2 érték. -A figyelmeztetési - szűrő, hogy egyező bemeneti healthstate értékét figyelmeztetés. Az érték 4. -Hiba – hiba HealthState értékű bemeneti egyező szűrő. A értéke 8.                -Az összes - szűrő, amely megfelel a bemeneti bármely HealthState értékkel.                Az érték 65535.|
+|--exclude-health-statistics   | Azt jelzi, hogy a health statisztika vissza kell adni az a lekérdezés eredménye részeként. Alapértelmezés szerint FALSE. A statisztika megjelenítése a hány gyermeke lehet entitások állapota Ok, figyelmeztetés és hiba.|
+| --replicas-health-state-filter| Az Objektumgyűjtemény ReplicaHealthState a partíción szűrését teszi lehetővé. Az érték tagokat, vagy bitenkénti műveletek HealthStateFilter tagjai lehet lekérni. Csak a szűrőnek megfelelő replikák adja vissza. Összesített állapotát értékeléséhez használt összes replikát. Ha nincs megadva, a rendszer összes bejegyzés is megjelennek. Az állapot értékei jelző-alapú számbavétel, az érték lehet ezeket az értékeket bitenkénti "Vagy" operátor segítségével. Például ha a megadott érték azonban 6 majd az OK (2) és a figyelmeztető (4) HealthState értékkel rendelkező események is megjelennek. Ez a paraméter lehetséges értékei közé tartozik a következő állapotok közül az egyik egész értéket. -Alapértelmezett - alapértelmezett értéket. Bármely HealthState megegyezik. A tulajdonság értéke nulla. -None - szűrőt, amely nem egyezik a HealthState értékét. Ahhoz, hogy nincs eredményeket egy adott gyűjtemény állapotok használt. Az érték 1. -Ok - szűrheti, hogy egyező bemeneti érték a HealthState az OK gombra. A 2 érték. -A figyelmeztetési - szűrő, hogy egyező bemeneti healthstate értékét figyelmeztetés. Az érték 4. -Hiba – hiba HealthState értékű bemeneti egyező szűrő. A értéke 8. -Az összes - szűrő, amely megfelel a bemeneti bármely HealthState értékkel. Az érték 65535.|
 | – időtúllépés -t               | Időtúllépését másodpercben.  Alapértelmezett: 60.|
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresése                    | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
+| --debug                    | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 | – Súgó -h                  | Ez egy súgóüzenet és kilépési megjelenítése.|
 | – a kimeneti -o                | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.                Alapértelmezett: JSON-ná.|
 | --lekérdezés                    | JMESPath lekérdezési karakterlánc. További információk és példák: http://jmespath.org/. |
@@ -86,7 +86,7 @@ A partíciók végpont a megadott partíció információt ad vissza. A válasz 
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresése               | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
+| --debug               | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 | – Súgó -h             | Ez egy súgóüzenet és kilépési megjelenítése.|
 | – a kimeneti -o           | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.  Alapértelmezett: JSON-ná.|
 | --lekérdezés               | JMESPath lekérdezési karakterlánc. További információk és példák: http://jmespath.org/.|
@@ -109,7 +109,7 @@ Lekérdezi a Service Fabric-szolgáltatás partícióinak listáját. A s a Part
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresése             | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
+| --debug             | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 | – Súgó -h           | Ez egy súgóüzenet és kilépési megjelenítése.|
 | – a kimeneti -o         | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.  Alapértelmezett: JSON-ná.|
 | --lekérdezés             | JMESPath lekérdezési karakterlánc. További információk és példák: http://jmespath.org/.|
@@ -131,7 +131,7 @@ A megadott partíció információt ad vissza. A válasz terhelés információk
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresése               | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
+| --debug               | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 | – Súgó -h             | Ez egy súgóüzenet és kilépési megjelenítése.|
 | – a kimeneti -o           | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.  Alapértelmezett: JSON-ná.|
 | --lekérdezés               | JMESPath lekérdezési karakterlánc. További információk és példák: http://jmespath.org/.|
@@ -153,7 +153,7 @@ Azt jelzi, hogy a Service Fabric-fürt, hogy kell-e megpróbálni helyreállíta
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresése               | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
+| --debug               | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 | – Súgó -h             | Ez egy súgóüzenet és kilépési megjelenítése.|
 | – a kimeneti -o           | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.  Alapértelmezett: JSON-ná.|
 | --lekérdezés               | JMESPath lekérdezési karakterlánc. További információk és példák: http://jmespath.org/.|
@@ -178,12 +178,12 @@ Ez az API akkor hasznos, a feladatátvétel tesztelése. Ha célként egy állap
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresése                         | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
+| --debug                         | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 | – Súgó -h                       | Ez egy súgóüzenet és kilépési megjelenítése.|
 | – a kimeneti -o                     | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.                     Alapértelmezett: JSON-ná.|
 | --lekérdezés                         | JMESPath lekérdezési karakterlánc. További információk és példák: http://jmespath.org/.|
 | – részletes                       | Naplózási növelése. Használatát – a teljes hibakeresési naplók hibakeresési.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [A telepítő](service-fabric-cli.md) a Service Fabric CLI-t.
 - A Service Fabric parancssori felület használatával használata a [minta parancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application).

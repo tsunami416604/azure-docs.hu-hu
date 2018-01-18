@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: maheshu
-ms.openlocfilehash: b35e87da943de8d47f36b6443fa62e251f742149
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a6f0089f13de10ba8bc1f9a656a2d21f9c559047
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Azure AD tartományi szolgáltatások hálózati szempontjai
 ## <a name="how-to-select-an-azure-virtual-network"></a>Egy Azure virtuális hálózat kiválasztása
@@ -65,27 +65,27 @@ A következő portokat Azure AD tartományi szolgáltatások szolgáltatáshoz s
 | Portszám | Kötelező? | Cél |
 | --- | --- | --- |
 | 443 | Kötelező |Az Azure AD-bérlő-szinkronizálás |
-| 5986 | Kötelező | A tartomány kezelése |
-| 3389 | Választható | A tartomány kezelése |
-| 636 | Választható | Biztonságos LDAP (LDAPS) hozzáféréssel a felügyelt tartományhoz |
+| 5986 | Kötelező | Management of your domain |
+| 3389 | Optional | Management of your domain |
+| 636 | Optional | Biztonságos LDAP (LDAPS) hozzáféréssel a felügyelt tartományhoz |
 
 **Port 443-as (szinkronizálási Azure AD-val)**
 * Az Azure AD-címtár szinkronizálja a felügyelt tartományok szolgál.
 * Akkor kötelező, hogy férjen hozzá az NSG-t a porton. Ehhez a porthoz való hozzáférés, nélkül a felügyelt tartomány nincs szinkronban vannak az Azure AD-címtár. Lehet, hogy felhasználók nem jelentkezhetnek be, mivel a jelszavuk módosításai nincsenek szinkronizálva. a felügyelt tartományra.
 * Ezt a portot a Azure IP-címtartományba tartozó IP-címek befelé korlátozhatja.
 
-**Port 5986-os (PowerShell-távelérés)** 
+**Port 5986-os (PowerShell-távelérés)**
 * PowerShell távoli eljáráshívás segítségével a felügyelt tartományok felügyeleti feladatok elvégzésére szolgál.
 * Kötelező a az NSG-t a porton keresztüli hozzáférést is. Ehhez a porthoz való hozzáférés, nélkül a felügyelt tartományok frissített, konfigurált, a biztonsági mentésben vagy figyelt nem lehet.
-* Ezt a portot, a következő forrás IP-címek befelé korlátozhatja: 52.180.183.8, 23.101.0.70, 52.225.184.198, 52.179.126.223, 13.74.249.156, 52.187.117.83, 52.161.13.95, 104.40.156.18, 104.40.87.209, 52.180.179.108, 52.175.18.134, 52.138.68.41, 104.41.159.212, 52.169.218.0, 52.187.120.237, 52.161.110.169, 52.174.189.149, 13.64.151.161 
+* Ezt a portot, a következő forrás IP-címek befelé korlátozhatja: 52.180.183.8, 23.101.0.70, 52.225.184.198, 52.179.126.223, 13.74.249.156, 52.187.117.83, 52.161.13.95, 104.40.156.18, 104.40.87.209, 52.180.179.108, 52.175.18.134, 52.138.68.41, 104.41.159.212, 52.169.218.0, 52.187.120.237, 52.161.110.169, 52.174.189.149, 13.64.151.161
 * A tartományvezérlők, a felügyelt tartományok általában figyelni a porton. A szolgáltatás megnyitja ezt a portot, a felügyelt tartományvezérlőkön, csak akkor, ha egy felügyeleti vagy karbantartási művelet kell végezhető el a felügyelt tartományra. Amint a művelet befejeződik, a szolgáltatás leáll ezt a portot, a felügyelt tartományvezérlőkön.
 
-**3389-es (távoli asztali verziók)** 
-* A távoli asztali kapcsolatokat a felügyelt tartományok tartományvezérlők szolgál. 
-* Ezen keresztül a NSG port megnyitása nem kötelező megadni. 
+**3389-es (távoli asztali verziók)**
+* A távoli asztali kapcsolatokat a felügyelt tartományok tartományvezérlők szolgál.
+* Ezen keresztül a NSG port megnyitása nem kötelező megadni.
 * Ez a port is nagy mértékben ki van kapcsolva a felügyelt tartomány marad. A módszer nem használata folyamatos, mivel a kezelési és figyelési feladatok végrehajtása használatával történik PowerShell távoli eljáráshívás. Csak az esemény ritkán fordul elő, amelyet a Microsoft számára a felügyelt tartományok speciális hibaelhárítás távolról történő csatlakozást ezt a portot használja. A port zárva van, amint a hibaelhárítási művelet be nem fejeződött.
 
-**Port a 636 (biztonságos LDAP)**
+**Port 636 (Secure LDAP)**
 * Biztonságos LDAP hozzáférés engedélyezése a felügyelt tartományra az interneten keresztül szolgál.
 * Ezen keresztül a NSG port megnyitása nem kötelező megadni. Nyissa meg a portot, csak ha hozzáfér biztonságos LDAP engedélyezve az interneten keresztül.
 * Ezt a portot a forrás IP-címek biztonságos LDAP keresztül csatlakozó várhatóan befelé korlátozhatja.
@@ -99,7 +99,7 @@ Az alábbi táblázat mutatja be egy minta NSG-t is konfigurálhatja a virtuáli
 
 Emellett az NSG-t is bemutatja, hogyan biztonságos LDAP hozzáférést zárolását az interneten keresztül. A szabály mellőzése, ha nem biztonságos LDAP access számára engedélyezett a felügyelt tartományok az interneten keresztül. Az NSG tartalmaz egy TCP-porton keresztül 636 csak egy megadott készletből IP-címek bejövő LDAPS hozzáférést engedélyező szabályokat. Az NSG-szabály LDAPS hozzáférést a megadott IP-címeket az interneten keresztül rendelkezik, magasabb prioritású, mint a DenyAll NSG-szabály.
 
-![Minta NSG LDAPS hozzáférés biztonságossá az interneten keresztül](./media/active-directory-domain-services-admin-guide/secure-ldap-sample-nsg.png)
+![Minta NSG LDAPS hozzáférés biztonságossá az interneten keresztül](.\media\active-directory-domain-services-alerts\default-nsg.png)
 
 **További információ** - [hálózati biztonsági csoport létrehozása](../virtual-network/virtual-networks-create-nsg-arm-pportal.md).
 
@@ -126,7 +126,7 @@ Az Azure klasszikus virtuális hálózatot, amelyben engedélyezte az Azure AD t
     ![Virtuális hálózati kapcsolat használata a társviszony-létesítés](./media/active-directory-domain-services-design-guide/vnet-peering.png)
 
     [További információ – a virtuális hálózati társviszony-létesítés](../virtual-network/virtual-network-peering-overview.md)
-    
+
 * **Pont-pont VPN-kapcsolattal VNet – VNet kapcsolatokhoz**: Csatlakozás a virtuális hálózat egy másik virtuális hálózathoz (VNet – VNet) hasonlít egy virtuális hálózathoz csatlakozik egy helyszíni hely. Mindkét kapcsolattípus egy VPN-átjárót használ a biztonságos alagút IPsec/IKE használatával való kialakításához.
 
     ![Virtuális hálózati kapcsolat segítségével a VPN-átjáró](./media/active-directory-domain-services-design-guide/vnet-connection-vpn-gateway.jpg)

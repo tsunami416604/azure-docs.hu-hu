@@ -4,7 +4,7 @@ description: "Ez a témakör azt javasolja, hogy az Azure AD Connect AD Lomtár 
 services: active-directory
 keywords: "Az AD Lomtár véletlen törlés, forráshorgony"
 documentationcenter: 
-author: cychua
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: afec4207-74f7-4cdd-b13a-574af5223a90
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 36a9b5a50a18b73626b0c6e03ed258e387d5c20b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 45bff0585eb6f1990a7300ae3d16632eab78a83c
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-sync-enable-ad-recycle-bin"></a>Az Azure AD Connect szinkronizálási szolgáltatás: AD Lomtár engedélyezése
 Javasoljuk, hogy az AD Lomtár funkció engedélyezése a helyszíni Active címtárak, amely szinkronizálva az Azure AD. 
@@ -40,7 +40,7 @@ Ez a szolgáltatás segít az Azure Active Directory-felhasználói objektumok v
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 **Áttekintő témakör**
 
 * [Azure AD Connect szinkronizálása: megértéséhez, valamint a szinkronizálás testreszabása](active-directory-aadconnectsync-whatis.md)

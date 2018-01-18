@@ -3,7 +3,7 @@ title: "Az Azure AD Connect: Automatikus frissítés |} Microsoft Docs"
 description: "Ez a témakör ismerteti a beépített automatikus frissítési szolgáltatás az Azure AD Connect szinkronizálási szolgáltatás."
 services: active-directory
 documentationcenter: 
-author: AndKjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 6b395e8f-fa3c-4e55-be54-392dd303c472
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 49fc908006f19135b4c4553eef97d2f396db33ae
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ddf23193e7b9c2fb7a69045be539841dbb6e6249
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: automatikus frissítés
 Ez a funkció a build 1.1.105.0 (dátuma: 2016. februári) ban jelent meg.
@@ -100,5 +100,5 @@ Ez egy lista a leggyakrabban használt üzenetek találja. Nem található össz
 | UpgradeNotSupportedStagingModeEnabled |A kiszolgáló van beállítva a [átmeneti módban](active-directory-aadconnectsync-operations.md#staging-mode). |
 | UpgradeNotSupportedUserWritebackEnabled |Engedélyezte a [felhasználó-visszaírás](active-directory-aadconnect-feature-preview.md#user-writeback) szolgáltatás. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md).

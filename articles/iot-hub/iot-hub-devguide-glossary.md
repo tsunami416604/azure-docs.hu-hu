@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 406fd095896e2c00920555d3dfce1b5c2ae7fca7
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: 23008d3619af4606703bca41f370e14cf020a16a
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Az IoT-központ szószedet
 Ez a cikk az általános kifejezés, amely az IoT-központ cikkeket mutatja be.
@@ -33,10 +33,10 @@ A [Azure CLI](../cli-install-nodejs.md) platformfüggetlen, nyílt forráskódú
 A [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) platformfüggetlen, nyílt forráskódú, rendszerhéj-alapú, a parancs eszköz létrehozására és kezelésére a Microsoft Azure erőforrásait. Ez a parancssori felület előzetes verzióját a Python segítségével van megvalósítva.
 
 
-## <a name="azure-iot-device-sdks"></a>Az Azure SDK-k IoT-eszközök
+## <a name="azure-iot-device-sdks"></a>Azure IoT device SDKs
 Nincsenek _eszköz SDK-k_ érhető el, amelyek lehetővé teszik, hogy hozzon létre több nyelven [eszköz alkalmazások](#device-app) , amely kommunikálni az IoT-központ. Az IoT-központ oktatóanyagok bemutatják a ezek eszközoldali SDK-k használata. A Forráskód és SDK-k eszközzel kapcsolatos további információk találhatók a Githubon [tárház](https://github.com/Azure/azure-iot-sdks).
 
-## <a name="azure-iot-service-sdks"></a>Az Azure IoT szolgáltatás SDK-k
+## <a name="azure-iot-service-sdks"></a>Azure IoT service SDKs
 Nincsenek _SDK szolgáltatás_ érhető el, amelyek lehetővé teszik, hogy hozzon létre több nyelven [háttér-alkalmazások](#back-end-app) , amely kommunikálni az IoT-központ. Az IoT-központ oktatóanyagok bemutatják a használja a szolgáltatás SDK-IT. A Forráskód és a szolgáltatás SDK-kkal kapcsolatos további információkat talál a Githubon [tárház](https://github.com/Azure/azure-iot-sdks).
 
 ## <a name="azure-portal"></a>Azure Portal
@@ -71,7 +71,7 @@ Segítségével kapcsolati karakterláncokat az alkalmazás kódjában foglaljá
 - *Eszköz kapcsolati karakterláncok* eszközök csatlakoztatása az IoT-központ az eszköz felé néző végpontok engedélyezése.
 - *Az IoT-központ kapcsolati karakterláncok* háttér-alkalmazások csatlakozni a az IoT-központ szolgáltatás felé néző végpontok engedélyezése.
 
-## <a name="custom-endpoints"></a>Egyéni végpontokat
+## <a name="custom-endpoints"></a>Egyéni végpontok
 Létrehozhat egyéni [végpontok](iot-hub-devguide-endpoints.md) az IoT-központ által küldött üzeneteket a egy [útválasztási szabály](#routing-rules). Egyéni végpontokat Csatlakozás közvetlenül egy eseményközpontot, egy Service Bus-üzenetsorba, vagy egy Service Bus-témakörbe.
 
 ## <a name="custom-gateway"></a>Egyéni átjáró
@@ -178,8 +178,8 @@ Használhatja a [IoT Hub erőforrás szolgáltató REST API](https://docs.micros
 ## <a name="iot-suite"></a>IoT Suite
 Az Azure IoT Suite csomagok együtt előkonfigurált megoldások a több Azure-szolgáltatásokhoz. Ezek előre konfigurált megoldások lehetővé teszik a használatának gyors megkezdése szabhatják IoT-végpontok közötti implementációja. További információkért lásd: [Mi az Azure IoT Suite?](../iot-suite/iot-suite-overview.md)
 
-## <a name="iothub-explorer"></a>IOT hubbal-explorer
-A [IOT hubbal-explorer](https://github.com/azure/iothub-explorer) platformfüggetlen, a parancssori eszköz. Az eszköz lehetővé teszi az eszközök kezelését a [identitásjegyzékhez](#identity-registry), küldése és üzenetek és fájlok fogadása az eszközök és az IoT hub operatív figyeléséhez.
+## <a name="the-iot-extension-for-azure-cli-20"></a>Az IoT-bővítmény az Azure CLI 2.0
+[Az IoT-bővítmény az Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension) platformfüggetlen, a parancssori eszköz. Az eszköz lehetővé teszi az eszközök kezelését a [identitásjegyzékhez](#identity-registry), küldése és üzenetek és fájlok fogadása az eszközök és az IoT hub operatív figyeléséhez.
 
 ## <a name="job"></a>Feladat
 A megoldás háttérrendszeréhez használható [feladatok](iot-hub-devguide-jobs.md) ütemezéséhez és az eszközök regisztrálva az IoT hub tevékenységek követését. Tevékenységei közé tartoznak a két eszköz frissítése [szükséges tulajdonságok](#desired-properties), frissítési eszköz iker [címkék](#tags), és hívja [módszerek közvetlen](#direct-method). [Az IoT-központ](#iot-hub) is használja a feladatok [történő importálására és exportálására](iot-hub-devguide-identity-registry.md#import-and-export-device-identities) a a [identitásjegyzékhez](#identity-registry).
@@ -223,7 +223,7 @@ Konfigurálja [útválasztási szabályok](iot-hub-devguide-messages-read-custom
 ## <a name="sasl-plain"></a>SASL EGYSZERŰ
 SASL egyszerű egy olyan protokoll, amely a [AMQP](#advanced-message-queue-protocol) protokollt használ a biztonsági jogkivonatokat átviteléhez.
 
-## <a name="shared-access-signature"></a>Közös hozzáférésű jogosultságkódot
+## <a name="shared-access-signature"></a>Közös hozzáférésű jogosultságkód
 Megosztott hozzáférési aláírásokkal (SAS) olyan hitelesítési mechanizmus biztonságos SHA-256 kivonatokkal vagy URI-k alapján. SAS hitelesítési két részből áll: egy _megosztott elérési házirendet_ és egy _közös hozzáférésű Jogosultságkód_ (gyakran nevezik jogkivonat). Egy eszköz SAS használatával hitelesítik magukat az IoT-központ. [Háttér-alkalmazások](#back-end-app) SAS segítségével a szolgáltatás felé néző végpontok az IoT-központ a hitelesítést. Általában a SAS-jogkivonat közé tartozik a [kapcsolati karakterlánc](#connection-string) , hogy egy alkalmazás használ egy IoT-központot egy kapcsolatot létesíteni.
 
 ## <a name="shared-access-policy"></a>Megosztott elérési házirendet

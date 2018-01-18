@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2017
 ms.author: v-craic
-ms.openlocfilehash: 3c969495454db2cd301fc985e512531ef0d4b103
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: bc3217e3b4ebd97d5cb80a90126f4a1ade5f6cc5
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>A tesztkörnyezet a Azure DevTest Labs szolgáltatásban egy licencelt lemezképet engedélyezése
 
-A Azure DevTest Labs szolgáltatásban a licencelt lemezkép egyike, amely tartalmazza a feltételek és kikötések – általában a egy harmadik fél –, amelyek kell fogadnia a lemezkép érhető el, amikor a felhasználók számára. Az alábbi szakaszok azt ismertetik, hogyan használható licencelt lemezképek, hogy a virtuális gépek létrehozásához használhatók legyenek.
+A Azure DevTest Labs szolgáltatásban a licencelt lemezkép egyike, amely tartalmazza a feltételek és kikötések – általában a harmadik fél –, amelyek kell fogadnia a lemezkép érhető el, amikor a felhasználók számára. Az alábbi szakaszok azt ismertetik, hogyan használható licencelt lemezképek, hogy a virtuális gépek létrehozásához használhatók legyenek.
 
 ## <a name="determining-whether-a-licensed-image-is-available-to-users"></a>Meghatározása, hogy a felhasználók számára rendelkezésre áll-e a licencelt lemezkép
 Lehetővé teszi a felhasználók egy licencelt lemezképből virtuális gépek létrehozásához először győződjön meg arról, hogy a feltételek és kikötések lett elfogadva a licencelt lemezkép. A következő lépések bemutatják, hogyan licencelt kép ajánlat állapotának megtekintése és, ha szükséges, fogadja el a használati feltételeket.
@@ -53,12 +53,14 @@ Legyen a licencelt lemezkép lab-felhasználó számára elérhető, a tesztkör
 
 Következő lépések végrehajtásával engedélyezheti a licencelt lemezképek a programozott telepítés:
 
-1. Az a [Azure-portálon](http://go.microsoft.com/fwlink/p/?LinkID=525040) jegyzéke **piactéren elérhető rendszerkép**, a licencelt lemezkép legyen rendelkezik hozzáféréssel a felhasználók azonosításához, de akiknek nem elfogadását. Például láthatja a adatok tudományos rendelkező virtuális gépek vagy állapotának megjelenítése **elfogadott feltételeket** vagy **felülvizsgálat szükséges feltételeket**.
+1. Az a [Azure-portálon](http://go.microsoft.com/fwlink/p/?LinkID=525040), keresse fel a listája **piactéren elérhető rendszerkép**.
+
+1. Kívánt felhasználók számára, hogy rendelkezik hozzáféréssel a licencelt lemezkép azonosításához, de akiknek nem elfogadását. Például láthatja a adatok tudományos rendelkező virtuális gépek vagy állapotának megjelenítése **elfogadott feltételeket** vagy **felülvizsgálat szükséges feltételeket**.
 
     ![A programozott telepítés ablak beállítása](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-licensed-images.png)
 
    > [!NOTE]
-   > Adatok tudományos virtuális gépek Azure virtuálisgép-lemezképeket, előre telepített, a konfigurálás és a vizsgálat adatelemzés, gépi tanulási és AI képzési általánosan használt számos népszerű eszközökkel. [Bevezetés az Azure Data tudományos virtuális gép Linux és Windows](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview) nagyfokú DSVMs kapcsolatos információkat biztosít.
+   > Adatok tudományos virtuális gépek az Azure virtuálisgép-lemezképeket, előre telepített, konfigurálásához és számos népszerű eszköz adatelemzés, gépi tanulási és AI képzési általánosan használt tesztelése. [Bevezetés az Azure Data tudományos virtuális gép Linux és Windows](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview) nagyfokú DSVMs kapcsolatos információkat biztosít.
    >
    >
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
-ms.custom: it-pro
-ms.openlocfilehash: 51eb7c594c02310c083b42b6c0d964b4af239d76
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.custom: it-pro;seohack1
+ms.openlocfilehash: ade7f1d3c868c2ce6ccedbbf11aaf7dc54706cff
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Jelszóházirendek és -korlátozások az Azure Active Directoryban
 
@@ -85,7 +85,7 @@ Egy egy-kapu házirendhez a hitelesítési adatok, például az e-mail címet eg
 
 | Tulajdonság | UserPrincipalName követelmények |
 | --- | --- |
-| Karakterből állhat |<ul> <li>A – Z</li> <li>a - z-ig</li><li>0 – 9</li> <li> . - \_ ! \# ^ \~</li></ul> |
+| Karakterből állhat |<ul> <li>A – Z</li> <li>a - z</li><li>0 – 9</li> <li> . - \_ ! \# ^ \~</li></ul> |
 | Karakterek nem használhatók. |<ul> <li>A "@", amely a felhasználónév, a tartomány nem az elválasztó karaktert.</li> <li>A pont karakter nem tartalmazhat "." közvetlenül megelőző a "@" szimbólummal</li></ul> |
 | Hossz megkötések |<ul> <li>A teljes hossza nem haladhatja meg a 113 karakter</li><li>Mielőtt legfeljebb 64 karakter lehet a "@" szimbólummal</li><li>Után legfeljebb 48 karakterből állhat a "@" szimbólummal</li></ul> |
 
@@ -95,7 +95,7 @@ A következő táblázat ismerteti a rendelkezésre álló jelszó házirend-be�
 
 | Tulajdonság | Követelmények |
 | --- | --- |
-| Karakterből állhat |<ul><li>A – Z</li><li>a - z-ig</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / ` ~ “ ( ) ;</li></ul> |
+| Karakterből állhat |<ul><li>A – Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / ` ~ “ ( ) ;</li></ul> |
 | Karakterek nem használhatók. |<ul><li>Unicode-karaktereket.</li><li>Szóközöket.</li><li> Csak az erős jelszavak: egy karaktersor nem tartalmazhat "." közvetlenül megelőző a "@" szimbólummal.</li></ul> |
 | Jelszó-korlátozások |<ul><li>Legalább 8 karakter, és legfeljebb 16 karakter hosszúságú lehet.</li><li>Csak az erős jelszavak: a következő három kívüli négy igényel:<ul><li>Kisbetűk.</li><li>Nagybetűs karaktereket.</li><li>Számok (0-9).</li><li>A szimbólumok (lásd az előző Jelszó korlátozások).</li></ul></li></ul> |
 | Jelszavak érvényességi időtartamát |<ul><li>Alapértelmezett érték: **90** nap.</li><li>Érték konfigurálható használatával a `Set-MsolPasswordPolicy` az Active Directory modul Windows Powershellhez készült Azure parancsmagjával.</li></ul> |

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/11/2017
+ms.date: 01/17/2018
 ms.author: dobett
-ms.openlocfilehash: c9854c68a95c2c1cc584503eb2f0b0dba6091016
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 4606cb676c3ab7c8c8511579f43d251ff7d2ae8a
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="deploy-an-edge-gateway-for-the-connected-factory-preconfigured-solution-on-windows-or-linux"></a>A Windows vagy Linux előre konfigurált csatlakoztatott gyári megoldás egy peremhálózati átjáró üzembe helyezéséhez
 
@@ -57,7 +57,7 @@ Docker a Windows a telepítés során válassza ki a Docker megosztása a szám�
 ![A Windows Docker telepítése](./media/iot-suite-connected-factory-gateway-deployment/image1.png)
 
 > [!NOTE]
-> Ezt a lépést hajtsa végre a docker telepítése után a **beállítások** párbeszédpanel. Kattintson a jobb gombbal a **Docker** ikonjára a Windows tálcán válassza **beállítások**.
+> Ezt a lépést hajtsa végre a docker telepítése után a **beállítások** párbeszédpanel. Kattintson a jobb gombbal a **Docker** ikonjára a Windows tálcán válassza **beállítások**. Fő Windows-frissítések van telepítve a rendszeren, például a Windows alá esik Creators frissítést, ha a meghajtók megosztás törlése, és megoszthatja őket újra a frissítés hozzáférési jogosultságokat.
 
 Ha Linux használ, további konfigurációra a fájlrendszer hozzáférés engedélyezése szükséges.
 
@@ -65,7 +65,7 @@ Hozzon létre egy mappát a meghajtó-és Docker Windows, Linux hozzon létre eg
 
 Ha hivatkozik a `<SharedFolder>` Docker parancs, ügyeljen arra, hogy a helyes szintaxis használata az operációs rendszerhez. Az alábbiakban két példa, egy másik pedig a Windows és Linux céljából:
 
-- Ha a következők a mappát használja `D:\shared` a Windows, mint a `<SharedFolder>`, a Docker parancs szintaxisa `//d/shared`.
+- Ha a következők a mappát használja `D:\shared` a Windows, mint a `<SharedFolder>`, a Docker parancs szintaxisa `d:/shared`.
 
 - Ha a következők a mappát használja `/shared` Linux, a `<SharedFolder>`, a Docker parancs szintaxisa `/shared`.
 
@@ -108,30 +108,16 @@ docker run --rm -it -v <SharedFolder>:/docker -v x509certstores:/root/.dotnet/co
 
 - A `<IoTHubOwnerConnectionString>` van a **iothubowner** megosztott hozzáférési házirend kapcsolati karakterláncot az Azure portálról. Ez a kapcsolati karakterlánc az előző lépésben másolt. Csak a kapcsolati karakterlánc szükséges OPC Publisher első alkalommal történő futtatásakor. Utólagosan kell kihagyása, mert azt a biztonsági kockázatnak teheti.
 
-- A `<SharedFolder>` használ, és a szintaxist a szakaszban ismertetett [telepítse és konfigurálja a Docker](#install-and-configure-docker). OPC közzétevő használja a `<SharedFolder>` a OPC Publisher konfigurációs fájl beolvasása, a naplófájlban, és ellenőrizze mindkét ezeknek a fájloknak a tároló kívül érhető el.
+- A `<SharedFolder>` használ, és a szintaxist a szakaszban ismertetett [telepítse és konfigurálja a Docker](#install-and-configure-docker). OPC közzétevő használja a `<SharedFolder>` , és a OPC Publisher konfigurációs fájl olvasási ír a naplófájlba, és a tároló kívül elérhetővé mindkét ezeket a fájlokat.
 
-- OPC Publisher beolvassa a konfigurációját az a **publishednodes.json** fájlt, amely a helyezze a `<SharedFolder>/docker` mappát. Ezt a konfigurációs fájlt a OPC Publisher elő kell fizetnie megadott OPC EE-kiszolgálón határozza meg, melyik OPC EE-csomópont adatait.
-
-- A OPC EE-kiszolgáló egy változását OPC közzétevője értesíti, amikor az új értéket az IoT-központ küld. A kötegelési beállításaitól függően lehetséges, hogy először a OPC közzétevő az adatok felhalmozhat, az adatokat az IoT hubhoz kötegben küldése előtt.
-
-- Teljes szintaxisát a **publishednodes.json** fájl a leírása a [OPC Publisher](https://github.com/Azure/iot-edge-opc-publisher) lap a Githubon.
-
-    Az alábbi kódrészletben láthatja egy egyszerű példa egy **publishednodes.json** fájlt. A példa bemutatja, hogyan tehet közzé a **CurrentTime** érték az állomásnév OPC EE-kiszolgálóról **win10pc**:
+- OPC Publisher beolvassa a konfigurációját az a **publishednodes.json** fájl, amely olvasni és írni a `<SharedFolder>/docker` mappát. Ezt a konfigurációs fájlt a OPC Publisher elő kell fizetnie megadott OPC EE-kiszolgálón határozza meg, melyik OPC EE-csomópont adatait. Teljes szintaxisát a **publishednodes.json** fájl a leírása a [OPC Publisher](https://github.com/Azure/iot-edge-opc-publisher) lap a Githubon. Amikor egy átjáró, egy üres put **publishednodes.json** a mappába:
 
     ```json
     [
-      {
-        "EndpointUrl": "opc.tcp://win10pc:48010",
-        "OpcNodes": [
-          {
-            "ExpandedNodeId": "nsu=http://opcfoundation.org/UA/;i=2258"
-          }
-        ]
-      }
     ]
     ```
 
-    Az a **publishednodes.json** fájl, a kiszolgáló a végponti URL-cím által megadott OPC EE. Ha az állomásnév címke használata állomásnevet ad meg (például **win10pc**) egy IP-cím helyett, az előző példában szemléltetett a hálózati címfeloldáshoz a tárolóban tudni oldania az állomásnév felirat IP-címnek kell lennie.
+- A OPC EE-kiszolgáló egy változását OPC közzétevője értesíti, amikor az új értéket az IoT-központ küld. A kötegelési beállításaitól függően lehetséges, hogy először a OPC közzétevő az adatok felhalmozhat, az adatokat az IoT hubhoz kötegben küldése előtt.
 
 - Docker nem támogatja a NetBIOS-névfeloldás, csak a DNS-névfeloldását. Ha egy DNS-kiszolgáló nincs a hálózaton, a megoldás az előző parancssori példában látható módon használhatja. Az előző parancssori példa a `--add-host` paraméter segítségével adjon hozzá egy bejegyzést a tárolók állomások fájlba. Ez a bejegyzés lehetővé teszi, hogy a keresés állomásnév: a megadott `<OpcServerHostname>`, a megadott IP-címre feloldó `<IpAddressOfOpcServerHostname>`.
 
@@ -169,11 +155,16 @@ Most csatlakozhat az átjáró a felhőből, és készen áll a OPC EE-kiszolgá
 
 A saját OPC EE-kiszolgálók hozzáadása a csatlakoztatott gyári előre konfigurált megoldást:
 
-1. Keresse meg a **csatlakoztassa a saját OPC EE kiszolgálót** lapjára a csatlakoztatott gyári megoldás. Kövesse a lépéseket, ahogy az előző szakaszban a csatlakoztatott gyári portál és a OPC EE-kiszolgáló közötti megbízhatósági kapcsolat létrehozására.
+1. Keresse meg a **csatlakoztassa a saját OPC EE kiszolgálót** lapjára a csatlakoztatott gyári megoldás.
 
-    ![Megoldásportál](./media/iot-suite-connected-factory-gateway-deployment/image4.png)
+    1. Indítsa el a OPC EE kiszolgáló, amelyhez csatlakozni kíván. Győződjön meg arról, hogy a OPC EE-kiszolgáló elérhető-e OPC közzétevő és a tárolóban futó OPC-proxyra (lásd az előző megjegyzéseket névfeloldás).
+    1. Adja meg a végpont a OPC EE-kiszolgáló URL-CÍMÉT (`opc.tcp://<host>:<port>`), majd **Connect**.
+    1. A csatlakozási telepítés részeként a csatlakoztatott gyári portal (OPC EE-ügyfél) és a csatlakozni próbál OPC EE-kiszolgáló közötti megbízhatósági kapcsolat jön létre. A csatlakoztatott gyári irányítópulton kap egy **nem lehetett leellenőrizni a tanúsítvány a kiszolgáló, amelyhez csatlakozni** figyelmeztetés. Amikor megjelenik egy tanúsítványfigyelmeztetés, kattintson **folytatása**.
+    1. Telepítő nehezebb van a tanúsítvány konfigurálását a OPC EE-kiszolgáló kapcsolódni próbál. A PC-alapú OPC EE-kiszolgálókról, ugyanúgy kaphat egy figyelmeztető párbeszédpanel az irányítópulton, amely megerősíti is. Beágyazott OPC EE server rendszerek esetén a dokumentációt a OPC EE kiszolgáló hogyan végezhető el ez a feladat kereséséhez. A feladat végrehajtásához szükség lehet a csatlakoztatott gyári portal OPC EE ügyfél tanúsítványát. A rendszergazda a letöltheti ezt a tanúsítványt a **csatlakoztassa a saját OPC EE-kiszolgálót** lap:
 
-1. Keresse meg a OPC EE csomópontok fájának OPC EE-kiszolgálóját, kattintson a jobb gombbal a csatlakoztatott gyári küldeni, és válassza ki a kívánt OPC csomópontok **közzététele**.
+        ![Megoldásportál](./media/iot-suite-connected-factory-gateway-deployment/image4.png)
+
+1. Keresse meg a OPC EE csomópontok fájának OPC EE-kiszolgálóját, kattintson a jobb gombbal a OPC csomópontok értékek küldeni a csatlakoztatott gyári, és válassza ki a kívánt **közzététele**.
 
 1. Telemetria most zajlik az átjáró eszközről. A telemetriai adatok megtekintéséhez a **gyári helyek** a csatlakoztatott gyári portál ábrázolása **új előállító**.
 

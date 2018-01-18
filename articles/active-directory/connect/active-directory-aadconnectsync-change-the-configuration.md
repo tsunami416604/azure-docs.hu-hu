@@ -3,7 +3,7 @@ title: "Azure AD Connect szinkronizálása: olyan konfigurációs módosítást 
 description: "Bemutatja, hogyan lehet módosítani az Azure AD Connect-szinkronizálás konfigurációs módjáról."
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 7b9df836-e8a5-4228-97da-2faec9238b31
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2018
 ms.author: billmath
-ms.openlocfilehash: 1fd07d506b2edc789d71001ac520b9ebddc3e1d9
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: ed71272d2d10cd8b71fd3b2722d3ba033f1b51f9
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-sync-how-to-make-a-change-to-the-default-configuration"></a>Azure AD Connect szinkronizálása: hogyan lehet módosítani az alapértelmezett konfiguráció
 Ez a témakör célja végigvezetik Önt az Azure AD Connect szinkronizálási szolgáltatás az alapértelmezett konfiguráció módosításához. Lépéseket biztosít olyan gyakori forgatókönyveket tartalmaz. Ennek az információnak a tudni a saját üzleti szabályok alapján saját konfigurációs néhány egyszerű módosítást kell lennie.
@@ -273,14 +273,14 @@ A bejövő szinkronizálási szabály lehetővé teszi a forrásattribútum a he
     | Leírás | *Adjon meg egy egyéni leírást* |  |
     | Csatlakoztatott rendszer | *Válassza ki a helyszíni AD-összekötő* |  |
     | Objektumtípus csatlakoztatva | **Felhasználó** |  |
-    | Metaverzum-objektum típusa | **Személy** |  |
+    | Metaverzum-objektum típusa | **Person** |  |
     | Kapcsolat típusa | **Csatlakozás** |  |
     | Sorrend | *Válassza ki az 1 – 99 közötti szám* | 1 – 99 egyéni szinkronizálási szabályok számára van fenntartva. Nem válasszon egy másik szinkronizálási szabály által használt érték. |
 
 5. Tartsa a **Scoping szűrő** üres összes objektumára. Szükség lehet az Azure AD Connect telepítési megfelelően tartalmazó szűrő végeznünk.
 6. Lépjen a **átalakítása lapon** és valósítja meg a következő átalakítási szabályt:
 
-    | Típusa | TARGET attribútuma | Forrás | Egyszer alkalmazása | Egyesítési típus |
+    | Típusa | Célattribútum | Forrás | Egyszer alkalmazása | Egyesítési típus |
     | --- | --- | --- | --- | --- |
     |Közvetlen | PreferredDataLocation | Válassza ki az adatforrás-attribútum | Nincs bejelölve | Frissítés |
 
@@ -302,7 +302,7 @@ A kimenő szinkronizálási szabály lehetővé teszi az attribútumérték fel�
     | Leírás | *Adjon meg egy leírást* ||
     | Csatlakoztatott rendszer | *Válassza ki az AAD-összekötő* ||
     | Objektumtípus csatlakoztatva | Felhasználó ||
-    | Metaverzum-objektum típusa | **Személy** ||
+    | Metaverzum-objektum típusa | **Person** ||
     | Kapcsolat típusa | **Csatlakozás** ||
     | Sorrend | *Válassza ki az 1 – 99 közötti szám* | 1 – 99 egyéni szinkronizálási szabályok számára van fenntartva. Nem válasszon egy másik szinkronizálási szabály által használt érték. |
 
@@ -317,7 +317,7 @@ A kimenő szinkronizálási szabály lehetővé teszi az attribútumérték fel�
 
 6. Lépjen a **átalakítása** lapra, és valósítja meg a következő átalakítási szabályt:
 
-    | Típusa | TARGET attribútuma | Forrás | Egyszer alkalmazása | Egyesítési típus |
+    | Típusa | Célattribútum | Forrás | Egyszer alkalmazása | Egyesítési típus |
     | --- | --- | --- | --- | --- |
     | Közvetlen | PreferredDataLocation | PreferredDataLocation | Nincs bejelölve | Frissítés |
 
@@ -468,7 +468,7 @@ A bejövő szinkronizálási szabály lehetővé teszi a forrásattribútum a he
     | Leírás | *Adjon meg egy leírást* |  |
     | Csatlakoztatott rendszer | *Válassza ki a helyszíni AD-összekötő* |  |
     | Objektumtípus csatlakoztatva | **Felhasználó** |  |
-    | Metaverzum-objektum típusa | **Személy** |  |
+    | Metaverzum-objektum típusa | **Person** |  |
     | Kapcsolat típusa | **Csatlakozás** |  |
     | Sorrend | *Válassza ki az 1 – 99 közötti szám* | 1 – 99 egyéni szinkronizálási szabályok számára van fenntartva. Nem válasszon egy másik szinkronizálási szabály által használt érték. |
 
@@ -482,13 +482,13 @@ A bejövő szinkronizálási szabály lehetővé teszi a forrásattribútum a he
 
 6. Lépjen a **átalakítása lapon** és valósítja meg a kívánt átalakítási szabállyal. Például kijelölt egy nem használt helyszíni AD-attribútum (például extensionAttribute1) UserType adatforrás-attribútum, mint egy közvetlen Attribútumfolyam valósíthat meg:
 
-    | Típusa | TARGET attribútuma | Forrás | Egyszer alkalmazása | Egyesítési típus |
+    | Típusa | Célattribútum | Forrás | Egyszer alkalmazása | Egyesítési típus |
     | --- | --- | --- | --- | --- |
     | Közvetlen | UserType | extensionAttribute1 | Nincs bejelölve | Frissítés |
 
     Egy másik példa – érdemes UserType attribútuma értéke származik a többi tulajdonság. Például minden felhasználó szinkronizálni vendégként, ha szeretné a helyszíni AD UserPrincipalName attribútum a tartományrészt végződik "@partners.fabrikam123.org". Egy kifejezés valósíthatja meg:
 
-    | Típusa | TARGET attribútuma | Forrás | Egyszer alkalmazása | Egyesítési típus |
+    | Típusa | Célattribútum | Forrás | Egyszer alkalmazása | Egyesítési típus |
     | --- | --- | --- | --- | --- |
     | Közvetlen | UserType | IIf(IsPresent([userPrincipalName]),IIf(CBool(Instr(LCase([userPrincipalName]),"@partners.fabrikam123.org")=0), "Tag", "Vendég"), hiba ("UserPrincipalName nincs jelen UserType meghatározásához")) | Nincs bejelölve | Frissítés |
 
@@ -510,7 +510,7 @@ A kimenő szinkronizálási szabály lehetővé teszi az attribútumérték fel�
     | Leírás | *Adjon meg egy leírást* ||
     | Csatlakoztatott rendszer | *Válassza ki az AAD-összekötő* ||
     | Objektumtípus csatlakoztatva | Felhasználó ||
-    | Metaverzum-objektum típusa | **Személy** ||
+    | Metaverzum-objektum típusa | **Person** ||
     | Kapcsolat típusa | **Csatlakozás** ||
     | Sorrend | *Válassza ki az 1 – 99 közötti szám* | 1 – 99 egyéni szinkronizálási szabályok számára van fenntartva. YDo nem válasszon egy másik szinkronizálási szabály által használt érték. |
 
@@ -525,7 +525,7 @@ A kimenő szinkronizálási szabály lehetővé teszi az attribútumérték fel�
 
 6. Lépjen a **átalakítása** lapra, és valósítja meg a következő átalakítási szabályt:
 
-    | Típusa | TARGET attribútuma | Forrás | Egyszer alkalmazása | Egyesítési típus |
+    | Típusa | Célattribútum | Forrás | Egyszer alkalmazása | Egyesítési típus |
     | --- | --- | --- | --- | --- |
     | Közvetlen | UserType | UserType | Nincs bejelölve | Frissítés |
 

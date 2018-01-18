@@ -8,17 +8,17 @@ manager: jhubbard
 editor: tysonn
 ms.assetid: 7ddb9f3e-4e6d-4103-96e6-f0351d69a17b
 ms.service: cosmos-db
-ms.workload: storage
+ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: mimig
-ms.openlocfilehash: a4480750377b3762346e746867b83c3c2a50e46f
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: a786f82d94a1a0039ed65a618670f872ffa3e3c2
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="how-to-use-azure-table-storage-with-python"></a>Python Azure Table storage használata
 
@@ -184,10 +184,10 @@ Ha már nincs szüksége egy táblát, vagy azokat az egységeket belül, a [del
 table_service.delete_table('tasktable')
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az Azure Storage SDK for Python API-referencia](https://azure-storage.readthedocs.io/en/latest/index.html)
-* [Az Azure Storage Python SDK](https://github.com/Azure/azure-storage-python)
+* [Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python)
 * [Python fejlesztői központ](https://azure.microsoft.com/develop/python/)
 * [A Microsoft Azure Tártallózó](../vs-azure-tools-storage-manage-with-storage-explorer.md): egy ingyenes, platformfüggetlen-alkalmazást a Windows, a macOS és a Linux vizuálisan adatok Azure Storage használata.
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 8cbe60ad3eb26aa1152f8eec3bdc36b8006cf242
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: bd93b3473143f425b47f141efb3af3007614794f
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health – gyakori kérdések
 Ez a cikk kapcsolatos gyakori kérdések (GYIK) Azure Active Directory (Azure AD) Connect Health rájuk adott válaszokat tartalmazza. Ezeket a gyakori kérdések a szolgáltatás, amely tartalmazza a számlázási modell, képességek, korlátozások és támogatás használatával kapcsolatos kérdésekre foglalkozik.
@@ -36,7 +36,7 @@ A következő táblázat felsorolja azokat a szerepköröket, és a támogatott 
 |--|--|
 |Active Directory összevonási szolgáltatások (AD FS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
 |Azure AD Connect | 1.0.9125 verzió vagy újabb|
-|Active Directory tartományi szolgáltatások (AD DS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
+|Active Directory Domain Services (AD DS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
 
 Vegye figyelembe, hogy a szolgáltatás által nyújtott szolgáltatásokat eltérőek lehetnek a szerepkör és az operációs rendszer alapján. Ez azt jelenti a szolgáltatások nem érhetők el az összes operációs rendszer verzió. Tekintse meg a részleteket a szolgáltatások leírása.
 
@@ -45,6 +45,7 @@ Vegye figyelembe, hogy a szolgáltatás által nyújtott szolgáltatásokat elt�
 * Az első Connect Health Agent legalább egy Azure AD Premium-licencre van szükség.
 * Minden további regisztrált ügynök 25 további Azure AD Premium licenc szükséges.
 * Ügynökök száma az összes figyelt szerepkör (AD FS, az Azure AD Connect, és/vagy az AD DS) közötti regisztrált ügynökök száma megegyezik.
+* Az AAD Connect Health licencelési nem igényel a licenc az adott felhasználókhoz rendel. Csak kell a szükséges számú érvényes licenccel rendelkezik.
 
 Licencelési információkat is megtalálható a [az Azure AD árazás lap](https://aka.ms/aadpricing).
 

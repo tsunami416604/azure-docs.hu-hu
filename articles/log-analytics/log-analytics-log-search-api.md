@@ -12,24 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2017
+ms.date: 01/16/2018
 ms.author: bwren
-ms.openlocfilehash: 5b51c6fcc69c8dff6579a1a1221e88822eccc1a3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0ca80408f8e8b2dae7ff35d50b3d2c41ae54d3d3
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="log-analytics-log-search-rest-api"></a>A Naplóelemzési jelentkezzen search REST API-n
+
+> [!IMPORTANT]
+> Ha a munkaterületet lett frissítve a [új Log Analytics lekérdezési nyelv](log-analytics-log-search-upgrade.md), majd tekintse át a [a naplófájl-keresési API új verziójának dokumentációjában](https://dev.loganalytics.io/).  Az örökölt API egy frissített munkaterület előfordulhat, hogy továbbra is használható, de hamarosan az lesz depracated.  Módosítsa a meglévő megoldásai az új API-val.
+
 Ez az útmutató egy alapszintű oktatóanyag, valamint az, a napló Analytics Search REST API használatát. A Naplóelemzési része az Operations Management Suite (OMS).
 
-> [!NOTE]
-> Ha a munkaterületet lett frissítve a [új Log Analytics lekérdezési nyelv](log-analytics-log-search-upgrade.md), majd tekintse át a [a naplófájl-keresési API új verziójának dokumentációjában](https://dev.loganalytics.io/).
-
-> [!NOTE]
-> Naplóelemzési korábban meghívták az Operational Insights, ezért az erőforrás-szolgáltató használt a név.
->
->
 
 ## <a name="overview-of-the-log-search-rest-api"></a>A naplófájl-keresési REST API – áttekintés
 A napló Analytics Search REST API RESTful, és az Azure Resource Manager API-n keresztül érhető el. Ez a cikk ismerteti az API használatával történő eléréséhez példák [ARMClient](https://github.com/projectkudu/ARMClient), egy nyílt forráskódú parancssori eszköz, amely leegyszerűsíti az Azure Resource Manager API meghívása. A ARMClient használata számos lehetőség a napló Analytics Search API eléréséhez. Lehetősége az Azure PowerShell modul használandó OperationalInsights, amely keresési eléréséhez parancsmagokat tartalmaz. Ezekkel az eszközökkel használhatja az Azure Resource Manager API-hívások indítása az OMS-munkaterület, és rajtuk keresési parancsok végrehajtása. Az API-t kiírja a keresési eredmények JSON formátumban, hogy lehetővé teszi a programozott módon használja a keresési eredmények között számos különböző módja.
@@ -138,12 +135,12 @@ A következő táblázat ismerteti a rendelkezésre álló tulajdonságok.
 | **Tulajdonság** | **Leírás** |
 | --- | --- |
 | Felső |A visszaadandó eredmény maximális száma. |
-| Jelöljön ki |Megfelelő mezőkben konzolban használt általában előtti és utáni paramétereket tartalmaz |
+| kiemelés |Megfelelő mezőkben konzolban használt általában előtti és utáni paramétereket tartalmaz |
 | előre |Előtagok az adott karakterlánc, a megfelelő mezőket. |
 | Post |A megadott karakterlánc hozzáfűzi a megfelelő mezőket. |
 | lekérdezés |A keresési lekérdezést, és adja vissza az eredményeket. |
 | start |A kívánt eredmény található időszak kezdete. |
-| Vége |A kívánt eredmény található időszak végén. |
+| vége |A kívánt eredmény található időszak végén. |
 
 **Válasz:**
 
@@ -225,9 +222,9 @@ A következő táblázat ismerteti a rendelkezésre álló tulajdonságok.
 | --- | --- |
 | Azonosító |Az egyedi azonosítója. |
 | ETag |**Szükséges javítás**. Minden egyes kiszolgáló frissítve. Értéket meg kell egyeznie az aktuális tárolt érték vagy "*" frissítéséhez. 409 régi vagy érvénytelen értéket adott vissza. |
-| Properties.Query |**Szükséges**. A keresési lekérdezés. |
+| properties.query |**Szükséges**. A keresési lekérdezés. |
 | properties.displayName |**Szükséges**. A lekérdezés felhasználói megjelenítendő nevét. |
-| Properties.Category |**Szükséges**. A lekérdezés felhasználói kategóriát. |
+| properties.category |**Szükséges**. A lekérdezés felhasználói kategóriát. |
 
 > [!NOTE]
 > A Naplóelemzési keresési API jelenleg adja vissza a felhasználó által létrehozott mentett keresések során kérdezi le azt a mentett kereséseket a munkaterületen. Az API nem ad vissza a mentett keresések megoldások által biztosított.
@@ -311,7 +308,7 @@ A következő táblázat ismerteti a rendelkezésre álló tulajdonságok.
 | Megjelenítése |Aktuális "üzenet megjelenítése" tulajdonság. Értéke TRUE, ha mező a keresési látható. |
 | ownerType |Csak a előkészítve IP-címekhez tartozó típusok csökken. |
 
-## <a name="optional-parameters"></a>Nem kötelező paraméterek
+## <a name="optional-parameters"></a>Választható paraméterek
 A következő rendelkezésre álló választható paramétereket ismerteti.
 
 ### <a name="highlighting"></a>Kiemelve
@@ -416,5 +413,5 @@ armclient delete /subscriptions/{Subscription ID}/resourceGroups/{Resource Group
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További tudnivalók [keresések jelentkezzen](log-analytics-log-searches.md) egyéni mezőkkel feltétel lekérdezések összeállításához.

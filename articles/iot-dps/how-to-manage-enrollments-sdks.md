@@ -12,11 +12,11 @@ documentationcenter:
 manager: arjmands
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: a3d763009c7a7f45ddce96732977a79567f7ef44
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 14e353af82342bc7a580e1a0a02b8b4e29514fb9
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>Eszköz regisztrációját az Azure eszköz kiépítése szolgáltatáshoz SDK-k kezelése
 A *eszközregisztráció* létrehoz egy rekordot egyetlen eszközt vagy eszközöket, amelyek bármikor előfordulhat, hogy regisztrálja az eszköz kiépítése szolgáltatáshoz csoportja. A beléptetési rekord tartalmazza a kezdeti kívánt beállításait, hogy a regisztráció, beleértve a kívánt IoT-központ részeként őket. Ez a cikk bemutatja, hogyan kezelheti az eszközök regisztrációját a létesítési szolgáltatás programozott módon, az Azure IoT kiépítése szolgáltatáshoz SDK-k.  Az SDK-k az adott adattár, Azure IoT SDK a githubon érhetők el.
@@ -25,6 +25,7 @@ A *eszközregisztráció* létrehoz egy rekordot egyetlen eszközt vagy eszköz�
 Ez a cikk ellenőrzi, hogy a magas szintű fogalmak eszközbeléptetésnél a létesítési szolgáltatás programozott módon, az Azure IoT kiépítése szolgáltatáshoz SDK-k kezelése.  Lehet, hogy pontos API-hívások különböző nyelvi különbségek miatt.  Tekintse át a minták a Githubon részletes nyújtunk:
 * [Java-kiépítés szolgáltatás ügyfél-minták](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-samples)
 * [NODE.js szolgáltatás ügyfél kiépítési minták](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/service/samples)
+* [.NET-kiépítés szolgáltatás ügyfél-minták](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples)
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Egy eszköz kiépítése szolgáltatáspéldány származó kapcsolati karakterlánc

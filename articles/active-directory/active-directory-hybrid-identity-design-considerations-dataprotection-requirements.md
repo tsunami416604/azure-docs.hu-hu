@@ -1,5 +1,5 @@
 ---
-title: "Az Azure Active Directory hibrid identitáskezelési elrendezésével kapcsolatos szempontok - adatvédelmi követelményeinek meghatározása |} Microsoft Docs"
+title: "Hibrid identitás Tervező - Azure adatvédelmi követelményeinek |} Microsoft Docs"
 description: "A hibrid identitáskezelési megoldás tervezésekor az üzleti és melyik lehetőségek érhetők el a legjobban az ezen követelmények teljesítése érdekében az adatok védelmi követelményeinek azonosítása."
 documentationcenter: 
 services: active-directory
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 77b773f4cd1c4d0ff0a4566fa76fd1d002d15993
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: 1a2feca8d24fabda4c191b5a181ab6606c912657
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="plan-for-enhancing-data-security-through-strong-identity-solution"></a>Adatok biztonsági erős identitáskezelési megoldással továbbfejlesztésének tervezése
 Az első lépés az adatok védelmére azonosíthatja, ki férhet hozzá az adatok és identitás van szükség a folyamat részeként megoldás, amely is integrálható, hitelesítési és engedélyezési képességek biztosítása a rendszer. Hitelesítési és engedélyezési rendszer gyakran összetéveszthető egymáshoz, és azok a szerepkörök böngésző. A valóságban ezek eltérnek a Igen, az alábbi ábrán látható módon:
@@ -79,7 +80,7 @@ Szabályzat, a törvényi és az előírásoknak való megfelelés követelmény
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
  [A Tartalomkezelés követelmények meghatározása](active-directory-hybrid-identity-design-considerations-contentmgt-requirements.md)
 
 ## <a name="see-also"></a>Lásd még:

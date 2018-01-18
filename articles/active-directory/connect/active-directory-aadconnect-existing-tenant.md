@@ -3,7 +3,7 @@ title: "Az Azure AD Connect: Ha már rendelkezik az Azure AD |} Microsoft Docs"
 description: "Ez a témakör ismerteti a csatlakozás, ha egy meglévő Azure AD-bérlő használ."
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: b3efcdd8c3f7173711c005e0fe4d7080bd902663
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: fa264487c68ea5403300d9b5b9978934a639a2a4
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Az Azure AD Connect: Ha rendelkezik egy létező bérlő
 Az Azure AD Connect használatával a témaköröket a legtöbb azt feltételezi, hogy a kiindulási pont egy új Azure AD-bérlő és, hogy nincsenek-e egy felhasználó sem, vagy nincs más objektumokat. Azonban ha az Azure AD-bérlő indította megadva, akkor a felhasználók és más objektumok, és most szeretné csatlakozás, akkor ebben a témakörben, hogy a felhasználó.
@@ -58,5 +58,5 @@ Egyes ügyfelek egy kizárólag felhőalapú megoldást az Azure ad-val kezdőd�
 
 Ha a csak ok miért hozzáadását tervezi a helyszíni AD támogatására szolgál LOB (az üzletági alkalmazások), akkor talán érdemes használni [az Azure AD tartományi szolgáltatások](../../active-directory-domain-services/index.md) helyette.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md).
