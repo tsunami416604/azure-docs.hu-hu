@@ -5,5 +5,5 @@ További bevezetés az Azure IoT Hub használatába, valamint egyéb IoT-forgat�
 - [Az IoT Hub valós idejű érzékelői adatainak megjelenítése a Power BI használatával](../articles/iot-hub/iot-hub-live-data-visualization-in-power-bi.md)
 - [Az IoT Hub valós idejű érzékelői adatainak megjelenítése az Azure App Service Web Apps funkciójával](../articles/iot-hub/iot-hub-live-data-visualization-in-web-apps.md)
 - [Időjárás-előrejelzés az IoT Hub érzékelői adataival az Azure Machine Learningben](../articles/iot-hub/iot-hub-weather-forecast-machine-learning.md)
-- [Eszközök kezelése az iothub-explorerrel](../articles/iot-hub/iot-hub-device-management-iothub-explorer.md)
+- [Eszközök kezelése az iothub-explorerrel](../articles/iot-hub/iot-hub-device-management-iot-extension-azure-cli-2-0.md)
 - [Távoli figyelés és értesítések a Logic Apps használatával](../articles/iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md)

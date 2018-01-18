@@ -52,7 +52,7 @@
       href: /rest/api/time-series-insights/time-series-insights-reference-queryapi
     - name: Lekérdezési szintaxis
       href: /rest/api/time-series-insights/time-series-insights-reference-query-syntax
-- name: Erőforrások
+- name: További források
   items:
     - name: Kapcsolódó szolgáltatások
       items:
@@ -76,3 +76,5 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-timeseries-insights'
     - name: Támogatási lehetőségek
       href: 'https://azure.microsoft.com/support/options/'
+    - name: Videók
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=time-series-insights'
