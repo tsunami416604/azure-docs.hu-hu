@@ -3,7 +3,7 @@ title: "Az Azure AD Connect: Támogatott topológiák |} Microsoft Docs"
 description: "Ez a témakör a támogatott és nem támogatott topológiák részletezi az Azure AD Connect"
 services: active-directory
 documentationcenter: 
-author: AndKjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 1034c000-59f2-4fc8-8137-2416fa5e4bfe
@@ -14,11 +14,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 152cb9daa8338da6cc85ffda6feb3bd7b4f1bc92
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 50cf58c7d2d9be4644ada4feae02d0d5219a3fd6
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect-topológiák
 Ez a cikk ismerteti a különböző helyszíni és az Azure AD Connect szinkronizálási szolgáltatás, a kulcs integrációs megoldást használó Azure Active Directory (Azure AD) topológiákat. Ez a cikk egyaránt támogatott, és nem támogatott konfigurációkat tartalmazza.
@@ -29,7 +29,7 @@ A jelmagyarázatban képeket a cikkben a következő:
 | --- | --- |
 | A helyszíni Active Directory-erdő |![A helyszíni Active Directory-erdő](./media/active-directory-aadconnect-topologies/LegendAD1.png) |
 | A helyszíni Active Directory szűrt importálás |![Szűrt importálás Active Directory](./media/active-directory-aadconnect-topologies/LegendAD2.png) |
-| Az Azure AD Connect sync-kiszolgáló |![Az Azure AD Connect sync-kiszolgáló](./media/active-directory-aadconnect-topologies/LegendSync1.png) |
+| Azure AD Connect sync server |![Azure AD Connect sync server](./media/active-directory-aadconnect-topologies/LegendSync1.png) |
 | Az Azure AD Connect szinkronizálási kiszolgálót "átmeneti módban" |![Az Azure AD Connect szinkronizálási kiszolgálót "átmeneti módban"](./media/active-directory-aadconnect-topologies/LegendSync2.png) |
 | A Forefront Identity Manager (FIM) 2010 vagy a Microsoft Identity Manager (MIM) 2016 GALSync |![A FIM 2010 vagy a MIM 2016 GALSync](./media/active-directory-aadconnect-topologies/LegendSync3.png) |
 | Az Azure AD Connect szinkronizálási kiszolgálót, részletes |![Az Azure AD Connect szinkronizálási kiszolgálót, részletes](./media/active-directory-aadconnect-topologies/LegendSync4.png) |
@@ -112,7 +112,7 @@ Néhány Office 365 számítási feladattal bizonyos korlátozások a támogatot
 | Számítási feladat | Korlátozások |
 --------- | ---------
 | Exchange Online | További információ a támogatott Exchange online hibrid topológiák: [hibrid telepítések esetén több Active Directory-erdő](https://technet.microsoft.com/library/jj873754.aspx). |
-| A Skype vállalati verzió | Több helyszíni erdővel használata esetén csak a fiók-erőforrás szolgának használata támogatott. További információkért lásd: [környezeti követelményei a Skype vállalati Server 2015](https://technet.microsoft.com/library/dn933910.aspx). |
+| Skype Vállalati verzió | Több helyszíni erdővel használata esetén csak a fiók-erőforrás szolgának használata támogatott. További információkért lásd: [környezeti követelményei a Skype vállalati Server 2015](https://technet.microsoft.com/library/dn933910.aspx). |
 
 
 ## <a name="staging-server"></a>Átmeneti kiszolgáló
@@ -178,7 +178,7 @@ Az Azure AD-bérlő munkakönyvtárral úgy lett kialakítva. Ezek a feladatok n
 
 FIM 2010 vagy a MIM 2016 helyszíni segítségével (keresztül GALSync) felhasználók szinkronizálása az Exchange két szervezet között. A felhasználók az egyik szervezet külső felhasználók/contacts a másik szervezet jelennek meg. Ezek különböző a helyszíni Active Directory példányok majd szinkronizálhatja a saját Azure AD-bérlő.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Forgatókönyvek esetén az Azure AD Connect telepítésével kapcsolatban lásd: [az Azure AD Connect egyéni telepítési](active-directory-aadconnect-get-started-custom.md).
 
 További információ a [az Azure AD Connect szinkronizálási szolgáltatás](active-directory-aadconnectsync-whatis.md) konfigurációs.

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/11/2018
+ms.date: 01/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7f88cd2a9e23ec1b142fc754ada49a8562e774bc
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: d641971811f20b2a6e9c14f134cf0d80f95944eb
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Csatolt és beágyazott sablonok Azure-erőforrások telepítése során
 
@@ -82,7 +82,8 @@ A sablon fő sablonban beágyazásához, használja a **sablon** tulajdonság, �
 ]
 ```
 
-A beágyazott sablonok paraméterek vagy beágyazott sablonban meghatározott nem használható. Paraméterek és változók a fő sablonból is használhatja. Az előző példában `[variables('storageName')]` beolvas egy értéket a fő sablonból, nem a beágyazott sablont. Ez a korlátozás nem vonatkozik a külső sablonok.
+> [!NOTE]
+> A beágyazott sablonok paraméterek vagy beágyazott sablonban meghatározott nem használható. Paraméterek és változók a fő sablonból is használhatja. Az előző példában `[variables('storageName')]` beolvas egy értéket a fő sablonból, nem a beágyazott sablont. Ez a korlátozás nem vonatkozik a külső sablonok.
 
 ### <a name="external-template-and-external-parameters"></a>Külső sablon és a külső paraméterek
 

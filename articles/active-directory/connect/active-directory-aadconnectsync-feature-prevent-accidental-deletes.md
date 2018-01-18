@@ -3,7 +3,7 @@ title: "Azure AD Connect szinkronizálása: véletlen törlések megakadályozá
 description: "Ez a témakör az Azure AD Connectben megakadályozása véletlen törlések (véletlen törlések megakadályozása) szolgáltatást ismerteti."
 services: active-directory
 documentationcenter: 
-author: AndKjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 6b852cb4-2850-40a1-8280-8724081601f7
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 72283424ab750d10f9a0739347650d0a9eee1520
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 57ce7b2fcece751b1386ef1d57762ad8d1c27c62
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Az Azure AD Connect szinkronizálása: véletlen törlések megakadályozása
 Ez a témakör az Azure AD Connectben megakadályozása véletlen törlések (véletlen törlések megakadályozása) szolgáltatást ismerteti.
@@ -63,7 +63,7 @@ A törlés van szükség, majd tegye a következőket:
 3. Az Azure Active Directory-összekötő kijelölését, és válassza ki a **futtatása** válassza **exportálása**.
 4. Kívánja újból engedélyezni a védelmet, futtassa a PowerShell-parancsmagot: `Enable-ADSyncExportDeletionThreshold -DeletionThreshold 500`. Cserélje le az első fellépése beolvasása közben az aktuális törlési küszöbét érték 500. Adja meg az Azure AD globális rendszergazdai fiókot és jelszót.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 **Áttekintő témakör**
 
 * [Azure AD Connect szinkronizálása: megértéséhez, valamint a szinkronizálás testreszabása](active-directory-aadconnectsync-whatis.md)

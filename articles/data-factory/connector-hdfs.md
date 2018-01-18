@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: jingwang
-ms.openlocfilehash: 501deec6d766cca500a2a6060e147bf69ba6507b
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 81ad6a82e41fdd0f26859aa47f91dfa21d464a01
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="copy-data-from-and-to-hdfs-using-azure-data-factory"></a>Másolja az adatokat, a kezdő és a HDFS Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -58,7 +58,7 @@ A következő tulajdonságok HDFS kapcsolódó szolgáltatás támogatottak:
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **Hdfs**. | Igen |
 | url |A HDFS URL-címe |Igen |
-| AuthenticationType | Két érték engedélyezett: **névtelen**, vagy **Windows**. <br><br> Használandó **Kerberos-hitelesítés** HDFS-összekötőhöz, tekintse meg [ebben a szakaszban](#use-kerberos-authentication-for-hdfs-connector) ennek megfelelően a helyszíni környezet beállítása. |Igen |
+| authenticationType | Két érték engedélyezett: **névtelen**, vagy **Windows**. <br><br> Használandó **Kerberos-hitelesítés** HDFS-összekötőhöz, tekintse meg [ebben a szakaszban](#use-kerberos-authentication-for-hdfs-connector) ennek megfelelően a helyszíni környezet beállítása. |Igen |
 | Felhasználónév |Felhasználónév a Windows-hitelesítést. A Kerberos-hitelesítés meg `<username>@<domain>.com`. |Igen (a Windows-hitelesítés) |
 | jelszó |A Windows-hitelesítés jelszót. Ez a mező megjelölése SecureString. |Igen (a Windows-hitelesítés) |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhatja Self-hosted integrációs futásidejű vagy Azure integrációs futásidejű (ha az adattároló nyilvánosan elérhető). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
@@ -118,7 +118,7 @@ Adatok másolása HDFS, az adatkészlet típus tulajdonságának beállítása *
 | type | A type tulajdonságot az adathalmaz értékre kell állítani: **fájlmegosztás** |Igen |
 | folderPath | A mappa elérési útját. Például: mappát vagy almappát / |Igen |
 | fileName | Adja meg a fájl nevét a **folderPath** Ha át kívánja másolni a megadott fájlt. Ha nem ad meg ehhez a tulajdonsághoz értéket, a DataSet adatkészlet mutat a mappában lévő összes fájl forrásaként. |Nem |
-| Formátumban | Ha azt szeretné, hogy **másolja a fájlokat-van** közötti fájlalapú tárolók (bináris másolhatja azokat), hagyja ki a Formátum szakasz mindkét bemeneti és kimeneti adatkészlet-definíciókban.<br/><br/>Ha szeretne elemezni egy adott formátumú fájlok, a következő formátumban típusú támogatottak: **szöveges**, **JsonFormat**, **AvroFormat**,  **OrcFormat**, **ParquetFormat**. Állítsa be a **típus** tulajdonság a formátuma a következő értékek egyikét. További információkért lásd: [szövegformátum](supported-file-formats-and-compression-codecs.md#text-format), [Json formátumban](supported-file-formats-and-compression-codecs.md#json-format), [az Avro formátum](supported-file-formats-and-compression-codecs.md#avro-format), [Orc formátum](supported-file-formats-and-compression-codecs.md#orc-format), és [Parquet formátum](supported-file-formats-and-compression-codecs.md#parquet-format) szakaszok. |Nem (csak a bináris másolásának esetéhez) |
+| Formátumban | Ha azt szeretné, hogy **másolja a fájlokat-van** közötti fájlalapú tárolók (bináris másolhatja azokat), hagyja ki a Formátum szakasz mindkét bemeneti és kimeneti adatkészlet-definíciókban.<br/><br/>Ha szeretne elemezni egy adott formátumú fájlok, a következő formátumban típusú támogatottak: **szöveges**, **JsonFormat**, **AvroFormat**, ** OrcFormat**, **ParquetFormat**. Állítsa be a **típus** tulajdonság a formátuma a következő értékek egyikét. További információkért lásd: [szövegformátum](supported-file-formats-and-compression-codecs.md#text-format), [Json formátumban](supported-file-formats-and-compression-codecs.md#json-format), [az Avro formátum](supported-file-formats-and-compression-codecs.md#avro-format), [Orc formátum](supported-file-formats-and-compression-codecs.md#orc-format), és [Parquet formátum](supported-file-formats-and-compression-codecs.md#parquet-format) szakaszok. |Nem (csak a bináris másolásának esetéhez) |
 | Tömörítés | Adja meg a típus és az adatok tömörítése szintjét. További információkért lásd: [támogatott formátumok és a tömörítési kodek](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Támogatott típusok a következők: **GZip**, **Deflate**, **BZip2**, és **ZipDeflate**.<br/>Támogatott szintek a következők: **Optimal** és **leggyorsabb**. |Nem |
 
 **Példa**
@@ -160,7 +160,7 @@ Adatok másolása HDFS, állítsa be a forrás típusa a másolási tevékenysé
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot a másolási tevékenység forrás értékre kell állítani: **HdfsSource** |Igen |
-| Rekurzív | Azt jelzi, hogy az adatok olvasható rekurzív módon az almappák vagy csak a megadott mappát.<br/>Két érték engedélyezett: **igaz** (alapértelmezett), **hamis** | Nem |
+| Rekurzív | Azt jelzi, hogy az adatok olvasható rekurzív módon az almappák vagy csak a megadott mappát. Megjegyzés: Ha a rekurzív értéke true, és a fogadó fájlalapú tároló, üres mappa/alterület-folder nem lesz másolva vagy hozható létre a fogadó.<br/>Két érték engedélyezett: **igaz** (alapértelmezett), **hamis** | Nem |
 | distcpSettings | A tulajdonságcsoport HDFS ból a DistCp használatakor. | Nem |
 | resourceManagerEndpoint | A Yarn erőforrás-kezelő végpont | Igen, ha ból a DistCp használatával |
 | tempScriptPath | Egy ideiglenes ból a DistCp parancsfájl tárolására használt mappa elérési útja A parancsfájl generálja a Data Factory és másolási feladat befejezése után törlődnek. | Igen, ha ból a DistCp használatával |
@@ -329,7 +329,7 @@ A helyszíni környezet beállítása úgy, hogy a Kerberos-hitelesítés haszn�
 
   **Indítsa újra a** a KDC-szolgáltatás konfigurálása után.
 
-2.  Készítse elő a rendszerbiztonsági tag nevű  **krbtgt/REALM.COM@AD.COM**  a KDC-kiszolgáló a következő paranccsal:
+2.  Készítse elő a rendszerbiztonsági tag nevű ** krbtgt/REALM.COM@AD.COM ** a KDC-kiszolgáló a következő paranccsal:
 
             Kadmin> addprinc krbtgt/REALM.COM@AD.COM
 
@@ -342,7 +342,7 @@ A helyszíni környezet beállítása úgy, hogy a Kerberos-hitelesítés haszn�
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
             C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
 
-2.  Windows-tartomány Kerberos-tartomány bizalmi kapcsolat létrehozásához. [jelszó] pedig a jelszót a rendszerbiztonsági tag  **krbtgt/REALM.COM@AD.COM** .
+2.  Windows-tartomány Kerberos-tartomány bizalmi kapcsolat létrehozásához. [jelszó] pedig a jelszót a rendszerbiztonsági tag ** krbtgt/REALM.COM@AD.COM **.
 
             C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
 

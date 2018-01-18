@@ -3,7 +3,7 @@ title: "Az Azure AD Connect: A telepítés típusának kiválasztása |} Microso
 description: "Ez a témakör végigvezeti az Azure AD Connect használatával a telepítés típusának kiválasztása"
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 99b97de182ddbfa8b490c15b2a6a38cc69421283
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9b7bcd5856ec94367edd586c28c781ac9569a792
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="select-which-installation-type-to-use-for-azure-ad-connect"></a>Jelölje ki a használatára az Azure AD Connect telepítési típusát
 Az Azure AD Connect két tartozik telepítése új telepítés: Express és testre szabható. A témakörben leírtak segítségével eldöntheti, hogy a telepítés során használandó módszer.
@@ -41,7 +41,7 @@ Elérhetővé:
 
 Ha továbbra is használhatja az expressz beállításokat:
 
-- Ha nem szeretné szinkronizálni az összes szervezeti egységek, is Express használja, és az utolsó oldalon törölje **a szinkronizálási folyamat indítása...** *. Ezután futtassa újból a telepítési varázsló, és módosítsa a szervezeti egységek az [konfigurációs beállítások](active-directory-aadconnectsync-installation-wizard.md#customize-synchronization-options) és ütemezett szinkronizálás engedélyezése.
+- Ha nem szeretné szinkronizálni az összes szervezeti egységek, is Express használja, és az utolsó oldalon törölje ** indítsa el a szinkronizálási folyamat... x. Ezután futtassa újból a telepítési varázsló, és módosítsa a szervezeti egységek az [konfigurációs beállítások](active-directory-aadconnectsync-installation-wizard.md#customize-synchronization-options) és ütemezett szinkronizálás engedélyezése.
 - Például a jelszóvisszaírást az Azure AD Premium szolgáltatásainak egyike a engedélyezni szeretné. Először halad át express lekérni a kezdeti telepítése befejeződött. Ezután futtassa újból a telepítési varázsló, és módosítsa a [konfigurációs beállítások](active-directory-aadconnectsync-installation-wizard.md#customize-synchronization-options).
 
 ## <a name="custom"></a>Egyéni
@@ -71,5 +71,5 @@ Ha a jelenleg használt Azure AD Sync, majd kövesse a [ugyanazokat a lépéseke
 ## <a name="migrate-from-fim2010-or-mim2016"></a>FIM2010 vagy MIM2016 áttelepítése
 Ha a jelenleg használt Forefront Identity Manager 2010 vagy a Microsoft Identity Manager 2016 az Azure AD-összekötő használatával, majd egyetlen választása marad: áttelepítés. Az ismertetett lépéseket követve [mozgó-áttelepítési](active-directory-aadconnect-upgrade-previous-version.md#swing-migration). A lépéseket cserélje le az Azure AD Sync bármely hashtagként FIM2010/MIM2016.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Attól függően, hogy a kijelölt használandó beállítás a tartalom a bal oldali tábla használatával a részletes lépéseket a cikk megtalálását.

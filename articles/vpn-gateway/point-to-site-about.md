@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 010/19/2017
+ms.date: 01/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 0e31d58de113f737a48b6d3091650226f04ec69a
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: 74cfa8f54c52463ac0b42c5cc6abab7b0366ac29
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="about-point-to-site-vpn"></a>Pont – hely típusú VPN kapcsolatos
 
@@ -36,7 +36,7 @@ Pont – hely típusú VPN az alábbi protokollok egyikét használhatja:
 Ha álló Windows és Mac rendszerű ügyfelek különböző környezettel rendelkezik, konfigurálja az SSTP és IKEv2 is.
 
 >[!NOTE]
->IKEv2 rendszer P2S jelenleg előzetes verzióban érhetők, és a Resource Manager üzembe helyezési modellben érhető el.
+>IKEv2 rendszer P2S a Resource Manager üzembe helyezési modellben érhető el. Nincs a klasszikus üzembe helyezési modellben érhető el.
 >
 
 ## <a name="authentication"></a>P2S VPN-ügyfelek hitelesítésének módját?
@@ -57,28 +57,36 @@ Active Directory-tartománynak hitelesítés lehetővé teszi a felhasználók a
 
 Egy RADIUS-kiszolgáló integrálhatja más külső identitáskezelő rendszerekkel. Ekkor megnyílik a bőven hitelesítési beállítások P2S VPN, beleértve a multi-factor Authentication beállításainak mentése.
 
->[!NOTE]
->RADIUS-hitelesítés P2S jelenleg előzetes verzió.
->
-
 ! [pont-pont]] (./media/point-to-site-about/p2s.png "Pont-pont")
 
 ### <a name="configuration-requirements-for-client-devices"></a>Ügyféleszközök konfigurációs követelményei
 
 Felhasználók használni a natív VPN-ügyfelek Windows és Mac rendszerű eszközökön P2S. Azure biztosít a VPN-ügyfél konfigurációs zip ezen natív ügyfelek által Azure való kapcsolódáshoz szükséges beállításokat tartalmazó fájl.
 
-  * Windows-eszközök esetén a VPN-ügyfél konfigurációja egy, a felhasználók telepítik az eszközeikre telepítőcsomag áll.
-  * Mac-eszközök esetén áll a mobileconfig fájlt, amely a felhasználók telepítik az eszközeikre.
+* Windows-eszközök esetén a VPN-ügyfél konfigurációja egy, a felhasználók telepítik az eszközeikre telepítőcsomag áll.
+* Mac-eszközök esetén áll a mobileconfig fájlt, amely a felhasználók telepítik az eszközeikre.
 
 A zip-fájl néhány fontos beállítás értékének is biztosít, amelyek ezen eszközök saját profil létrehozása az Azure oldalán. Az értékek közé tartoznak a VPN-átjáró címét, konfigurált típusról, útvonalak és a legfelső szintű tanúsítvány átjáró érvényesítéshez.
 
-### <a name="which-gateway-skus-support-p2s-vpn"></a>Mely Gateway SKU támogatási P2S VPN?
+### <a name="gwsku"></a>Mely Gateway SKU támogatási P2S VPN?
 
 [!INCLUDE [p2s-skus](../../includes/vpn-gateway-table-point-to-site-skus-include.md)]
 
 * Az Összesített átviteli sebesség tesztje több alagút egyetlen átjárón keresztül összesített mérésein alapul. Garantált átviteli sebességgel internetes forgalom feltételek és az alkalmazások működése miatt nincs.
 * Az árazás oldalon található díjszabási információkat 
 * SLA (szolgáltatásiszint-megállapodások) adatai a szolgáltatásiszint-szerződés lapon található.
+
+>[!NOTE]
+>Az alapszintű Termékváltozat nem támogatja az IKEv2 vagy RADIUS-hitelesítés.
+>
+
+## <a name="configure"></a>Hogyan konfigurálhatom P2S kapcsolatot?
+
+P2S-konfigurációs számos adott lépést igényel. A következő cikkek végigvezetik Önt P2S konfigurációs, valamint hivatkozásokat a VPN-ügyfél eszközök lépéseit tartalmazza:
+
+* [Kapcsolat P2S - RADIUS-hitelesítés konfigurálása](point-to-site-how-to-radius-ps.md)
+
+* [Kapcsolat P2S - Azure natív tanúsítványhitelesítés konfigurálása](vpn-gateway-howto-point-to-site-rm-ps.md)
 
 ## <a name="faqcert"></a>Gyakran ismételt kérdések a natív Azure Tanúsítványalapú hitelesítés
 
@@ -88,8 +96,8 @@ A zip-fájl néhány fontos beállítás értékének is biztosít, amelyek ezen
 
 [!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-p2s-radius-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[P2S-kapcsolatok - RADIUS-hitelesítés konfigurálása](point-to-site-how-to-radius-ps.md)
+* [Kapcsolat P2S - RADIUS-hitelesítés konfigurálása](point-to-site-how-to-radius-ps.md)
 
-[P2S-kapcsolatok - Azure natív tanúsítványhitelesítés konfigurálása](vpn-gateway-howto-point-to-site-rm-ps.md)
+* [Kapcsolat P2S - Azure natív tanúsítványhitelesítés konfigurálása](vpn-gateway-howto-point-to-site-rm-ps.md)

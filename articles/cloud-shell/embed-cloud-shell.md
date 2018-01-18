@@ -14,17 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2017
 ms.author: juluk
-ms.openlocfilehash: 78b539136971aa282e5447d7882ecb02f73f346b
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 3ceddb94336fc2703e6f916f05ab1ec3676cb50d
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="embed-azure-cloud-shell"></a>Azure-felhőbe rendszerhéj beágyazása
 
 Felhő rendszerhéj beágyazás lehetővé teszi a fejlesztők és a tartalom írók közvetlenül egy dedikált URL-címet, a felhő rendszerhéj megnyitása [shell.azure.com](https://shell.azure.com). Ekkor azonnal felhő rendszerhéj hitelesítési tooling eszköz, a teljes power, és naprakész az Azure CLI-t vagy az Azure PowerShell eszközöket a felhasználók számára.
 
+Normál méretű gomb
+
 [![](https://shell.azure.com/images/launchcloudshell.png "Indítsa el az Azure-felhőbe rendszerhéj")](https://shell.azure.com)
+
+Nagy méretű gomb
+
+[![](https://shell.azure.com/images/launchcloudshell@2x.png "Indítsa el az Azure-felhőbe rendszerhéj")](https://shell.azure.com)
 
 ## <a name="how-to"></a>Használati útmutató
 
@@ -44,10 +50,10 @@ A HTML-beágyazás egy előugró ablak felhő rendszerhéj nem éri el:
 Egy adott rendszerhéj élmény bővítheti az URL-cím megadásához.
 |Felhasználói élmény   |URL-cím   |
 |---|---|
-|Legutóbb használt rendszerhéj   |Shell.Azure.com           |
-|Bash                       |Shell.Azure.com/bash       |
-|PowerShell                 |Shell.Azure.com/PowerShell |
+|Legutóbb használt rendszerhéj   |shell.azure.com           |
+|Bash                       |shell.azure.com/bash       |
+|PowerShell                 |shell.azure.com/powershell |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [A felhő rendszerhéj gyors üzembe helyezés bash](quickstart.md)<br>
 [PowerShell használatával a felhő rendszerhéj gyors üzembe helyezés](quickstart-powershell.md)

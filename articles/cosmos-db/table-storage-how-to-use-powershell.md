@@ -1,24 +1,24 @@
 ---
 title: "Azure Table storage műveleteket a PowerShell-lel |} Microsoft Docs"
 description: "Azure Table storage műveleteket a PowerShell használatával"
-services: storage
+services: cosmos-db
 documentationcenter: storage
 author: robinsh
 manager: timlt
 editor: tysonn
 ms.assetid: 
-ms.service: storage
-ms.workload: storage
+ms.service: cosmos-db
+ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: how-to
+ms.topic: article
 ms.date: 11/02/2017
 ms.author: robinsh
-ms.openlocfilehash: 0174b6fe02008a1c22a165b077c694af7e8618ab
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 15a4ed2370598cb98565c48b4563bee3a4445827
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Az Azure PowerShell Azure Table storage műveleteket 
 
@@ -58,7 +58,7 @@ Login-AzureRmAccount
 
 ## <a name="retrieve-list-of-locations"></a>Helyek listájának beolvasása
 
-Ha nem tudja, melyik használni kívánt helyet, listázhatja a helyeket. Miután a lista megjelenik, megtalálja használni kívánt. Ezekben a példákban **eastus**. Ez az érték tárolása a változó **hely** későbbi használatra.
+Ha nem tudja, melyik helyet szeretné használni, kilistázhatja az elérhető helyeket. A megjelenő listában keresse meg a használni kívánt helyet. Ezekben a példákban **eastus**. Ez az érték tárolása a változó **hely** későbbi használatra.
 
 ```powershell
 Get-AzureRmLocation | select Location 
@@ -137,7 +137,7 @@ Ha ez az útmutató elején hozott létre egy új erőforrás csoport és a tár
 Remove-AzureRmResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Útmutató cikkben megtanulta, Azure Table storage közös műveleteire vonatkozó a PowerShell-lel, beleértve a hogyan: 
 
@@ -151,7 +151,7 @@ Remove-AzureRmResourceGroup -Name $resourceGroup
 
 További információkért tekintse meg a következő cikkek
 
-* [Storage PowerShell-parancsmagok](/powershell/module/azurerm.storage#storage)
+* [Tárolási PowerShell-parancsmagok](/powershell/module/azurerm.storage#storage)
 
 * [Az Azure Storage-táblázatok a PowerShell használata](https://blogs.technet.microsoft.com/paulomarques/2017/01/17/working-with-azure-storage-tables-from-powershell/)
 

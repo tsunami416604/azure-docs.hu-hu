@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 11/06/2017
+ms.date: 01/17/2018
 ms.author: juluk
-ms.openlocfilehash: 65a5c40ce0a4d0cfdc0a325476bea6e8ccebe8c6
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: 7e498582d78d2807070c943dfd838dd9efeb4ed2
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Azure-felhőbe rendszerhéj korlátozásai
 
@@ -56,7 +56,9 @@ Felhő rendszerhéj készült interaktív használati eseteket. Ennek eredménye
 ### <a name="user-permissions"></a>Felhasználói engedélyek
 
 Engedélyek vannak beállítva, normál felhasználóként sudo hozzáférés nélkül. Bármely telepítési kívül a `$Home` könyvtár nem őrzi meg.
-Bár az egyes parancsok belül a `clouddrive` könyvtárába, például `git clone`, nem rendelkezik megfelelő engedélyekkel a `$Home` directory engedélye.
+
+### <a name="clouddrive-smb-limited-permissions"></a>Clouddrive SMB korlátozott engedélyekkel
+Bizonyos parancsok belül a `clouddrive` könyvtárába, például `git clone`, nem rendelkezik megfelelő engedélyekkel bizonyos fájlok írható/olvasható. Ha elérte ezt a problémát, próbálja újra a a `$Home` könyvtárat, amelyhez nem tartozik az SMB-korlátozások.
 
 ### <a name="editing-bashrc"></a>.Bashrc szerkesztése
 
@@ -84,7 +86,7 @@ PowerShell-parancsmagok használatával felhasználók nem hozható létre az Az
 
 Ha a felhasználó hozna létre például egy Windows párbeszédpanelen parancsot futtatja `Connect-AzureAD` vagy `Login-AzureRMAccount`, egy üzenetet egy hiba például: `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Hibaelhárítási felhő rendszerhéj](troubleshooting.md) <br>
 [Rövid útmutató a Bash-hez](quickstart.md) <br>

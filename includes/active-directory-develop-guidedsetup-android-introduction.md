@@ -1,35 +1,35 @@
 
 # <a name="call-the-microsoft-graph-api-from-an-android-app"></a>A Microsoft Graph API hívása az Android-alkalmazás
 
-Ez az útmutató ismerteti, hogyan natív Android-alkalmazás szereznie egy hozzáférési jogkivonatot és hívható meg Microsoft Graph API vagy egyéb Azure Active Directory v2 végpont a hozzáférési jogkivonatok igénylő API-k.
+Ez az útmutató ismerteti, hogyan natív Android-alkalmazás szereznie egy hozzáférési jogkivonatot és a Microsoft Graph API vagy egyéb szükséges hozzáférési jogkivonatok az Azure Active Directory v2 végpont az API-k hívása.
 
-Ez az útmutató végén az alkalmazás fogja tudni hívható meg egy védett API használatával személyes fiókok (például outlook.com, live.com és mások) valamint a munkahelyi és iskolai fiókok bármely vállalat vagy szervezet, amely Azure Active Directory.  
+Amikor befejezte az útmutatóban, az alkalmazás képes fogadni a személyes fiókok (például outlook.com, live.com, és egyéb) és a munkahelyi és iskolai fiókok bármely vállalat vagy szervezet, amely az Azure Active Directory bejelentkezések lesz. Az alkalmazás ezután hívja az API-k, az Azure Active Directory v2 végpont által védett.  
 
-### <a name="how-this-sample-works"></a>Ez a minta működése
+## <a name="how-this-sample-works"></a>Ez a minta működése
 ![Ez a minta működése](media/active-directory-develop-guidedsetup-android-intro/android-intro.png)
 
-Ez az útmutató által létrehozott minta egy olyan forgatókönyvet, ahol egy Android-alkalmazás, amely az Azure Active Directory v2 végpont – ebben az esetben a Microsoft Graph API származó jogkivonatokat fogad el egy webes API lekérdezésére szolgál alapul. Ebben az esetben jogkivonat adni a hitelesítési fejlécéhez via HTTP-kérelmekre. Token beszerzése és -megújítás kezelése a Microsoft hitelesítési könyvtár (MSAL).
+A mintaalkalmazás, amely létrehozta a jelen útmutató egy olyan forgatókönyvet, ahol egy Android-alkalmazás, amely az Azure Active Directory v2 végpont (Microsoft Graph API, ebben az esetben) származó jogkivonatokat fogad el egy webes API lekérdezésére szolgál alapul. Ebben a forgatókönyvben az alkalmazás kiegészíti a megszerzett jogkivonattal hitelesítési fejlécéhez via HTTP-kérelmekre. A Microsoft hitelesítési könyvtár (MSAL) kezeli a token beszerzése és -megújítás meg.
 
-### <a name="pre-requisites"></a>Előfeltételek
-* Ez az interaktív telepítés Android Studio összpontosít, de bármely olyan Android-alkalmazás fejlesztői környezetben is elfogadható. 
+## <a name="prerequisites"></a>Előfeltételek
+* Az interaktív telepítés Android Studio összpontosít, de bármely olyan Android-alkalmazás fejlesztői környezetben is elfogadható. 
 * Android SDK 21 vagy újabb rendszer szükséges (SDK 25 ajánlott).
-* Google Chrome vagy egy webes böngésző egyéni lapok használatával szükség ebben a kiadásban Microsoft hitelesítési könyvtár (MSAL) Android rendszerhez.
+* Google Chrome vagy egy olyan webböngésző, használja az egyéni lapok ezen kiadásával a MSAL Android szükség.
 
-> Megjegyzés: Google Chrome nem szerepel a Visual Studio-emulátor Android rendszerhez. Azt javasoljuk, hogy ez a kód egy emulátorának API 25 vagy lemezkép API 21 vagy újabb Google Chrome telepített tesztelése.
+> [!NOTE]
+> Google Chrome nincs megadva, a Visual Studio emulátorral Android rendszerhez. Azt javasoljuk, hogy tesztelje az emulátor API 25 vagy lemezkép API 21 vagy újabb, amely rendelkezik a telepített Google Chrome ezt a kódot.
 
+## <a name="handling-token-acquisition-for-accessing-protected-web-apis"></a>Webes API-k eléréséhez token beszerzési kezelése védett.
 
-### <a name="how-to-handle-token-acquisition-to-access-a-protected-web-api"></a>Egy védett Web API eléréséhez token beszerzési kezelésének módját
+A felhasználó hitelesítése után a mintaalkalmazás kap egy hozzáférési jogkivonatot, amely segítségével a Microsoft Graph API vagy egy webes API-t, amelyet az Azure Active Directory v2 lekérdezése.
 
-Miután a felhasználó hitelesíti magát, a mintaalkalmazást kap egy jogkivonatot, amely segítségével lekérdezési Microsoft Graph API vagy egy Microsoft Azure Active Directory v2 által biztosított webes API.
+Például a Microsoft Graph API-k olyan hozzáférési jogkivonatot, hogy egy adott erőforráshoz való hozzáférést igényel. Például egy jogkivonatot a felhasználói profil olvasása, a felhasználó naptár elérésére, és e-mailek küldése. Az alkalmazás olyan hozzáférési jogkivonatot kérhetnek MSAL API hatókörök megadásával ezek az erőforrások eléréséhez használt. Ez a jogkivonat majd kerül minden hívás ellen védett erőforrás végrehajtott HTTP hitelesítési fejlécéhez. 
 
-Például a Microsoft Graph API-k igényelnek olyan hozzáférési jogkivonatot, hogy az adott erőforrások – például elérése egy profil, hozzáférés felhasználói naptár olvasni és e-mailt küldeni. Az alkalmazás egy MSAL API hatókörök megadásával ezek az erőforrások eléréséhez használt jogkivonatot kérhet. Ez a jogkivonat majd hozzáadódik a HTTP Authorization fejlécet minden hívás, szemben a védett erőforrásokhoz. 
+MSAL kezeli és a hozzáférési jogkivonatok frissítése, úgy, hogy az alkalmazás nem szükséges.
 
-MSAL kezeli, és a hozzáférési jogkivonatok frissítése, így nem kell az alkalmazást.
-
-### <a name="libraries"></a>Szalagtárak
+## <a name="libraries"></a>Szalagtárak
 
 Ez az útmutató a következő tárakat használ:
 
 |Részletes ismertetés|Leírás|
 |---|---|
-|[com.microsoft.Identity.Client](http://javadoc.io/doc/com.microsoft.identity.client/msal)|Microsoft hitelesítési könyvtár (MSAL)|
+|[com.microsoft.identity.client](http://javadoc.io/doc/com.microsoft.identity.client/msal)|Microsoft hitelesítési könyvtár (MSAL)|

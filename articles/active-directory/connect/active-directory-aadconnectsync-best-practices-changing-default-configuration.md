@@ -3,7 +3,7 @@ title: "Azure AD Connect szinkronizálása: az alapértelmezett konfiguráció m
 description: "Ajánlott eljárásokat biztosít az Azure AD Connect szinkronizálási szolgáltatás az alapértelmezett konfiguráció módosításának."
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 7638a031-1635-4942-94c3-fce8f09eed5e
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 86b9af69063ded2740ac353b863442725104c071
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 384794849eb0bf2cb2f4dd056b0c95ab84d77b6e
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-sync-best-practices-for-changing-the-default-configuration"></a>Azure AD Connect szinkronizálása: ajánlott eljárások az alapértelmezett konfiguráció módosítására vonatkozóan
 Ez a témakör célja az Azure AD Connect szinkronizálási szolgáltatás támogatott és nem támogatott módosításait ismertetik.
@@ -65,7 +65,7 @@ Válassza ki **Igen** egy példányát a szabály létrehozásához. A klónozot
 
 A klónozott szabály, a beállítások módosításait szükséges hatókör, illesztési és átalakításához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 **Áttekintő témakör**
 
 * [Azure AD Connect szinkronizálása: megértéséhez, valamint a szinkronizálás testreszabása](active-directory-aadconnectsync-whatis.md)

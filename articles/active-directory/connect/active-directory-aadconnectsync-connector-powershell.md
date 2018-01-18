@@ -3,7 +3,7 @@ title: "PowerShell-összekötő |} Microsoft Docs"
 description: "Ez a cikk ismerteti a Microsoft Windows PowerShell-összekötő konfigurálásához."
 services: active-directory
 documentationcenter: 
-author: AndKjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 6dba8e34-a874-4ff0-90bc-bd2b0a4199b5
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 27ca89a2032c82a8be909349b38a64fc6aa9579e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2caf8dd8a657f116df0342893763829676602cd6
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="windows-powershell-connector-technical-reference"></a>Technikai útmutató a Windows PowerShell-összekötő
 Ez a cikk ismerteti a Windows PowerShell-összekötő. A cikk vonatkozik a következő termékek:
@@ -67,7 +67,7 @@ A következő csatlakozási paramétereket állíthatja be:
 | Jelszó |<Blank> |A hitelesítő adatok tárolására használható, az összekötő futtatásakor jelszavát. |
 | Összekötő-fiók megszemélyesítése |False (Hamis) |Amikor igaz értékű, a szinkronizálási szolgáltatás fut a Windows PowerShell-parancsfájlok a megadott hitelesítő adatok környezetében. Ha lehetséges, javasoljuk, hogy a **$Credentials** paraméter átadása az egyes parancsfájl helyett a megszemélyesítési használatos. A beállítás használatához szükséges további engedélyeket további információkért lásd: [megszemélyesítéshez további konfigurációs](#additional-configuration-for-impersonation). |
 | Felhasználói profil betöltése során megszemélyesítésekor |False (Hamis) |Arra utasítja az összekötő hitelesítő adatok a felhasználói profil betöltését a megszemélyesítés során. Ha a megszemélyesített felhasználóval központi profil, az összekötő nem töltődik be a központi profilban. Ez a paraméter használata szükséges további engedélyeket további információkért lásd: [megszemélyesítéshez további konfigurációs](#additional-configuration-for-impersonation). |
-| Amikor megszemélyesítésekor bejelentkezési típusa |None |Bejelentkezési típusa a megszemélyesítés során. További információkért lásd: a [dwLogonType] [ dw] dokumentációját. |
+| Amikor megszemélyesítésekor bejelentkezési típusa |Nincs |Bejelentkezési típusa a megszemélyesítés során. További információkért lásd: a [dwLogonType] [ dw] dokumentációját. |
 | Csak az aláírt parancsfájlok |False (Hamis) |Amennyiben az értéke igaz, a Windows PowerShell-összekötő azt ellenőrzi, hogy minden parancsprogram rendelkezik-e érvényes digitális aláírással. Ha értéke HAMIS, gondoskodjon arról, hogy a szinkronizálási szolgáltatás kiszolgáló Windows PowerShell végrehajtási házirendjét RemoteSigned vagy nem korlátozott. |
 
 **Közös modul**  
@@ -88,10 +88,10 @@ Az érvényesítési parancsfájlja egy nem kötelező Windows PowerShell-paranc
 
 Az érvényesítési parancsfájlja kap az összekötő a következő paraméterekkel:
 
-| Név | Adattípus | Leírás |
+| Name (Név) | Adattípus | Leírás |
 | --- | --- | --- |
 | ConfigParameterPage |[ConfigParameterPage][cpp] |A konfiguráció lapon vagy az ellenőrzési kérés kiváltó párbeszédpanel. |
-| ConfigParameters |[A KeyedCollection gyűjteményben] [ keyk] [karakterlánc, [ConfigParameter][cp]] |Az összekötő-konfigurációs paraméterek tábla. |
+| ConfigParameters |[KeyedCollection][keyk] [string, [ConfigParameter][cp]] |Az összekötő-konfigurációs paraméterek tábla. |
 | Hitelesítő adat |[PSCredential][pscred] |A kapcsolat lapon a rendszergazda által megadott hitelesítő adatokat tartalmazza. |
 
 Az érvényesítési parancsfájlja egyetlen ParameterValidationResult objektumot kell visszaadnia, a folyamat.
@@ -101,9 +101,9 @@ A séma felderítési parancsfájl megadása kötelező. Ez a parancsfájl az ob
 
 A séma felderítési parancsfájl kap az összekötő a következő paraméterekkel:
 
-| Név | Adattípus | Leírás |
+| Name (Név) | Adattípus | Leírás |
 | --- | --- | --- |
-| ConfigParameters |[A KeyedCollection gyűjteményben] [ keyk] [karakterlánc, [ConfigParameter][cp]] |Az összekötő-konfigurációs paraméterek tábla. |
+| ConfigParameters |[KeyedCollection][keyk] [string, [ConfigParameter][cp]] |Az összekötő-konfigurációs paraméterek tábla. |
 | Hitelesítő adat |[PSCredential][pscred] |A kapcsolat lapon a rendszergazda által megadott hitelesítő adatokat tartalmazza. |
 
 A parancsfájl kell visszaadnia egyetlen [séma] [ schema] a csővezeték-objektum. A séma objektum áll [SchemaType] [ schemaT] objektumtípusok képviselő objektumok (például: felhasználókat és csoportokat). A SchemaType objektum gyűjteményét tartalmazza [SchemaAttribute] [ schemaA] objektumok, amelyek megfelelnek az attribútumok (például: az Utónév, a Vezetéknév és a levelezési címe) típusú.
@@ -129,7 +129,7 @@ A képességek fülre a felügyeleti ügynök Designer viselkedését és az ös
 | Megkülönböztető név használata alapjainak |Ha a megkülönböztető név stílus LDAP van beállítva, a kapcsolódási térbe horgonyzási attribútumát is megkülönböztető nevét. |
 | Több összekötő párhuzamos műveletek |Ha be van jelölve, a Windows PowerShell több összekötő is futtatható egyidejűleg. |
 | Partíciók |Ha be van jelölve, az összekötő támogatja több partíciót és partíció felderítése. |
-| hierarchia |Ha be van jelölve, az összekötő támogatja az egy LDAP-stílus hierarchikus struktúra. |
+| Hierarchia |Ha be van jelölve, az összekötő támogatja az egy LDAP-stílus hierarchikus struktúra. |
 | Importálás engedélyezése |Ha be van jelölve, az összekötő importálja adatok importálása parancsfájlok segítségével. |
 | Különbözeti importálás engedélyezése |Ha be van jelölve, az összekötő kérhetnek az eltérések az importálási parancsfájl. |
 | Exportálás engedélyezése |Ha be van jelölve, az összekötő exportálja az adatokat exportálás parancsfájlok segítségével. |
@@ -148,9 +148,9 @@ A partíció egy különálló névtér egy megosztott sémáján belül. Péld�
 
 A partíció felderítési parancsfájl kap az összekötő a következő paraméterekkel:
 
-| Név | Adattípus | Leírás |
+| Name (Név) | Adattípus | Leírás |
 | --- | --- | --- |
-| ConfigParameters |[A KeyedCollection gyűjteményben][keyk][karakterlánc, [ConfigParameter][cp]] |Az összekötő-konfigurációs paraméterek tábla. |
+| ConfigParameters |[KeyedCollection][keyk][string, [ConfigParameter][cp]] |Az összekötő-konfigurációs paraméterek tábla. |
 | Hitelesítő adat |[PSCredential][pscred] |A kapcsolat lapon a rendszergazda által megadott hitelesítő adatokat tartalmazza. |
 
 A parancsfájl kell visszaadnia egy akár egyetlen [partíció] [ part] objektum vagy a folyamat partícióobjektumok [T] listája.
@@ -160,9 +160,9 @@ A hierarchia felderítési parancsfájl csak akkor használja, ha a megkülönb�
 
 A hierarchia felderítési parancsfájl kap az összekötő a következő paraméterekkel:
 
-| Név | Adattípus | Leírás |
+| Name (Név) | Adattípus | Leírás |
 | --- | --- | --- |
-| ConfigParameters |[A KeyedCollection gyűjteményben][keyk][karakterlánc, [ConfigParameter][cp]] |Az összekötő-konfigurációs paraméterek tábla. |
+| ConfigParameters |[KeyedCollection][keyk][string, [ConfigParameter][cp]] |Az összekötő-konfigurációs paraméterek tábla. |
 | Hitelesítő adat |[PSCredential][pscred] |A kapcsolat lapon a rendszergazda által megadott hitelesítő adatokat tartalmazza. |
 | ParentNode |[HierarchyNode][hn] |A gyökércsomópont a hierarchia, amely alatt a parancsfájl közvetlen gyermekei kell visszaadnia. |
 
@@ -176,12 +176,12 @@ A begin importálási parancsfájl futtatása egy importálási futtatása lép�
 
 A begin importálási parancsfájljának kap az összekötő a következő paraméterekkel:
 
-| Név | Adattípus | Leírás |
+| Name (Név) | Adattípus | Leírás |
 | --- | --- | --- |
-| ConfigParameters |[A KeyedCollection gyűjteményben][keyk][karakterlánc, [ConfigParameter][cp]] |Az összekötő-konfigurációs paraméterek tábla. |
+| ConfigParameters |[KeyedCollection][keyk][string, [ConfigParameter][cp]] |Az összekötő-konfigurációs paraméterek tábla. |
 | Hitelesítő adat |[PSCredential][pscred] |A kapcsolat lapon a rendszergazda által megadott hitelesítő adatokat tartalmazza. |
 | OpenImportConnectionRunStep |[OpenImportConnectionRunStep][oicrs] |Értesíti a parancsfájl futtatása importálása (különbözeti vagy teljes), partíció, a hierarchia, a vízjel és a méretet a várt típusú. |
-| Típusok |[Séma][schema] |A kapcsolódási térbe importált séma. |
+| Típusok |[Schema][schema] |A kapcsolódási térbe importált séma. |
 
 A parancsfájl kell visszaadnia egyetlen [OpenImportConnectionResults] [ oicres] objektum a folyamat, például:`Write-Output (New-Object Microsoft.MetadirectoryServices.OpenImportConnectionResults)`
 
@@ -190,13 +190,13 @@ Az importálási parancsfájl mindaddig, amíg a parancsfájl azt jelenti, hogy 
 
 Az importálási parancsfájl kap az összekötő a következő paraméterekkel:
 
-| Név | Adattípus | Leírás |
+| Name (Név) | Adattípus | Leírás |
 | --- | --- | --- |
-| ConfigParameters |[A KeyedCollection gyűjteményben][keyk][karakterlánc, [ConfigParameter][cp]] |Az összekötő-konfigurációs paraméterek tábla. |
+| ConfigParameters |[KeyedCollection][keyk][string, [ConfigParameter][cp]] |Az összekötő-konfigurációs paraméterek tábla. |
 | Hitelesítő adat |[PSCredential][pscred] |A kapcsolat lapon a rendszergazda által megadott hitelesítő adatokat tartalmazza. |
 | GetImportEntriesRunStep |[ImportRunStep][irs] |A vízjel (CustomData) során használt lapozható importálja, és importálja a különbözeti tartalmazza. |
 | OpenImportConnectionRunStep |[OpenImportConnectionRunStep][oicrs] |Értesíti a parancsfájl futtatása importálása (különbözeti vagy teljes), partíció, a hierarchia, a vízjel és a méretet a várt típusú. |
-| Típusok |[Séma][schema] |A kapcsolódási térbe importált séma. |
+| Típusok |[Schema][schema] |A kapcsolódási térbe importált séma. |
 
 Az importálási parancsfájl kell írnia egy listát [[CSEntryChange][csec]] objektum az adatcsatornához. Ez a gyűjtemény CSEntryChange attribútumok, amelyek megfelelnek az egyes importált objektumhoz tevődik össze. A teljes importálás kísérletek során ez a gyűjtemény minden objektum összes attribútumának CSEntryChange objektum teljes készletét kell rendelkeznie. Során a különbözeti importálja a CSEntryChange objektum vagy tartalmaznia kell az attribútum szintű eltéréseit – az egyes objektumok importálásához, vagy a teljes változásai (a név felülírandó mód) objektumok megjelenítése.
 
@@ -205,9 +205,9 @@ Futtassa az importálás lezárásakor az End importálása parancsfájl futtat�
 
 Az end importálási parancsfájl kap az összekötő a következő paraméterekkel:
 
-| Név | Adattípus | Leírás |
+| Name (Név) | Adattípus | Leírás |
 | --- | --- | --- |
-| ConfigParameters |[A KeyedCollection gyűjteményben][keyk][karakterlánc, [ConfigParameter][cp]] |Az összekötő-konfigurációs paraméterek tábla. |
+| ConfigParameters |[KeyedCollection][keyk][string, [ConfigParameter][cp]] |Az összekötő-konfigurációs paraméterek tábla. |
 | Hitelesítő adat |[PSCredential][pscred] |A kapcsolat lapon a rendszergazda által megadott hitelesítő adatokat tartalmazza. |
 | OpenImportConnectionRunStep |[OpenImportConnectionRunStep][oicrs] |Értesíti a parancsfájl futtatása importálása (különbözeti vagy teljes), partíció, a hierarchia, a vízjel és a méretet a várt típusú. |
 | CloseImportConnectionRunStep |[CloseImportConnectionRunStep][cecrs] |A parancsfájl értesíti az importálás befejeződött okát. |
@@ -222,12 +222,12 @@ A begin exportálási parancsfájl futtatása egy Exportálás futtatási lépé
 
 A begin exportálási parancsfájl kap az összekötő a következő paraméterekkel:
 
-| Név | Adattípus | Leírás |
+| Name (Név) | Adattípus | Leírás |
 | --- | --- | --- |
-| ConfigParameters |[A KeyedCollection gyűjteményben][keyk][karakterlánc, [ConfigParameter][cp]] |Az összekötő-konfigurációs paraméterek tábla. |
+| ConfigParameters |[KeyedCollection][keyk][string, [ConfigParameter][cp]] |Az összekötő-konfigurációs paraméterek tábla. |
 | Hitelesítő adat |[PSCredential][pscred] |A kapcsolat lapon a rendszergazda által megadott hitelesítő adatokat tartalmazza. |
 | OpenExportConnectionRunStep |[OpenExportConnectionRunStep][oecrs] |A parancsfájl értesíti exportálás futtatási (különbözeti vagy teljes), partíció, a hierarchiában, és a méretet a várt típusú. |
-| Típusok |[Séma][schema] |A kapcsolódási térbe exportált séma. |
+| Típusok |[Schema][schema] |A kapcsolódási térbe exportált séma. |
 
 A parancsfájl az adatcsatornához kell ad eredményül kimenetet.
 
@@ -236,13 +236,13 @@ A szinkronizálási szolgáltatás meghívja az adatok exportálása parancsfáj
 
 Az exportálási parancsfájl kap az összekötő a következő paraméterekkel:
 
-| Név | Adattípus | Leírás |
+| Name (Név) | Adattípus | Leírás |
 | --- | --- | --- |
-| ConfigParameters |[A KeyedCollection gyűjteményben][keyk][karakterlánc, [ConfigParameter][cp]] |Az összekötő-konfigurációs paraméterek tábla. |
+| ConfigParameters |[KeyedCollection][keyk][string, [ConfigParameter][cp]] |Az összekötő-konfigurációs paraméterek tábla. |
 | Hitelesítő adat |[PSCredential][pscred] |A kapcsolat lapon a rendszergazda által megadott hitelesítő adatokat tartalmazza. |
 | CSEntries |IList[CSEntryChange][csec] |Függőben lévő exportálásokról ebben a fázisban feldolgozandó objektumokként a kapcsolódási térbe listája. |
 | OpenExportConnectionRunStep |[OpenExportConnectionRunStep][oecrs] |A parancsfájl értesíti exportálás futtatási (különbözeti vagy teljes), partíció, a hierarchiában, és a méretet a várt típusú. |
-| Típusok |[Séma][schema] |A kapcsolódási térbe exportált séma. |
+| Típusok |[Schema][schema] |A kapcsolódási térbe exportált séma. |
 
 Az exportálási parancsfájl kell visszaadnia egy [PutExportEntriesResults] [ peeres] a csővezeték-objektum. Ez az objektum nem kell minden exportált összekötőhöz eredmény információkat tartalmazza, kivéve, ha hiba vagy módosítva lett a horgonyattribútum történik. Például az adatcsatornához vissza PutExportEntriesResults objektumot:`Write-Output (New-Object Microsoft.MetadirectoryServices.PutExportEntriesResults)`
 
@@ -251,29 +251,29 @@ Exportálás futtatási, a befejezési exportálása parancsfájl futtatásához
 
 Az end exportálási parancsfájl kap az összekötő a következő paraméterekkel:
 
-| Név | Adattípus | Leírás |
+| Name (Név) | Adattípus | Leírás |
 | --- | --- | --- |
-| ConfigParameters |[A KeyedCollection gyűjteményben][keyk][karakterlánc, [ConfigParameter][cp]] |Az összekötő-konfigurációs paraméterek tábla. |
+| ConfigParameters |[KeyedCollection][keyk][string, [ConfigParameter][cp]] |Az összekötő-konfigurációs paraméterek tábla. |
 | Hitelesítő adat |[PSCredential][pscred] |A kapcsolat lapon a rendszergazda által megadott hitelesítő adatokat tartalmazza. |
 | OpenExportConnectionRunStep |[OpenExportConnectionRunStep][oecrs] |A parancsfájl értesíti exportálás futtatási (különbözeti vagy teljes), partíció, a hierarchiában, és a méretet a várt típusú. |
 | CloseExportConnectionRunStep |[CloseExportConnectionRunStep][cecrs] |A parancsfájl értesíti az exportálás befejeződött okát. |
 
 A parancsfájl az adatcsatornához kell ad eredményül kimenetet.
 
-#### <a name="password-synchronization"></a>Jelszó-szinkronizálás
+#### <a name="password-synchronization"></a>A jelszó-szinkronizálás
 A Windows PowerShell-összekötők kapcsolatos módosításokat/használható célként.
 
 A jelszó parancsfájl kap az összekötő a következő paraméterekkel:
 
-| Név | Adattípus | Leírás |
+| Name (Név) | Adattípus | Leírás |
 | --- | --- | --- |
-| ConfigParameters |[A KeyedCollection gyűjteményben][keyk][karakterlánc, [ConfigParameter][cp]] |Az összekötő-konfigurációs paraméterek tábla. |
+| ConfigParameters |[KeyedCollection][keyk][string, [ConfigParameter][cp]] |Az összekötő-konfigurációs paraméterek tábla. |
 | Hitelesítő adat |[PSCredential][pscred] |A kapcsolat lapon a rendszergazda által megadott hitelesítő adatokat tartalmazza. |
-| Partíció |[Partíció][part] |Alkalmazási címtárpartíció, amely a CSEntry. |
+| Partíció |[Partition][part] |Alkalmazási címtárpartíció, amely a CSEntry. |
 | CSEntry |[CSEntry][cse] |Összekötő terület bejegyzés az objektum, amely a jelszó módosítása vagy alaphelyzetbe állítása kapott. |
-| Művelettípus |Karakterlánc |Azt jelzi, hogy a művelet a alaphelyzetbe állítása (**SetPassword**), vagy pedig módosultak (**ChangePassword**). |
+| OperationType |Karakterlánc |Azt jelzi, hogy a művelet a alaphelyzetbe állítása (**SetPassword**), vagy pedig módosultak (**ChangePassword**). |
 | PasswordOptions |[PasswordOptions][pwdopt] |Jelző, adja meg a kívánt jelszavát alaphelyzetbe viselkedését. Ez a paraméter csak akkor érhető el, ha művelettípus **SetPassword**. |
-| Régi_jelszó |Karakterlánc |Az objektum régi jelszavát a jelszó-változtatásának feltöltve. Ez a paraméter csak akkor érhető el, ha művelettípus **ChangePassword**. |
+| OldPassword |Karakterlánc |Az objektum régi jelszavát a jelszó-változtatásának feltöltve. Ez a paraméter csak akkor érhető el, ha művelettípus **ChangePassword**. |
 | ÚjJelszó |Karakterlánc |Az objektum új jelszót, amelyet a parancsfájl-et kell beállítania feltöltve. |
 
 A jelszó parancsfájl várhatóan nem a Windows PowerShell-feldolgozási folyamat vissza eredményt. Ha hiba lép fel a jelszó parancsfájl, a parancsfájl kell előidéznie a szinkronizálási szolgáltatás tájékoztatni a probléma a következő kivételekkel egyikét:
@@ -291,8 +291,8 @@ Adja meg, amely a felhasználó nevében a következő engedélyeket a Synchroni
 
 Olvasási hozzáférés a következő beállításkulcsokat:
 
-* HKEY_USERS\\[SynchronizationServiceServiceAccountSID] \Software\Microsoft\PowerShell
-* HKEY_USERS\\[SynchronizationServiceServiceAccountSID] \Environment
+* HKEY_USERS\\[SynchronizationServiceServiceAccountSID]\Software\Microsoft\PowerShell
+* HKEY_USERS\\[SynchronizationServiceServiceAccountSID]\Environment
 
 Annak megállapításához, a biztonsági azonosítók (SID) a Synchronization Service szolgáltatás fiókjának, futtassa a következő PowerShell-parancsokat:
 
@@ -303,9 +303,9 @@ $account.Translate([System.Security.Principal.SecurityIdentifier]).Value
 
 Olvasási hozzáférés a következő fájl rendszer mappák:
 
-* %ProgramFiles%\Microsoft forefront Identity Manager\2010\Synchronization Service\Extensions
-* %ProgramFiles%\Microsoft forefront Identity Manager\2010\Synchronization Service\ExtensionsCache
-* %ProgramFiles%\Microsoft forefront Identity Manager\2010\Synchronization Service\MaData\\{következőnek}
+* %ProgramFiles%\Microsoft Forefront Identity Manager\2010\Synchronization Service\Extensions
+* %ProgramFiles%\Microsoft Forefront Identity Manager\2010\Synchronization Service\ExtensionsCache
+* %ProgramFiles%\Microsoft Forefront Identity Manager\2010\Synchronization Service\MaData\\{ConnectorName}
 
 {Következőnek} helyőrző helyettesítse be a Windows PowerShell-összekötő nevét.
 

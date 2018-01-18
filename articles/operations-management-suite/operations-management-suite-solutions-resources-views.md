@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/11/2017
+ms.date: 01/16/2018
 ms.author: bwren
-ms.openlocfilehash: 533b5564a805e0b41f2b1a4ad92e12b133220952
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c103ee748446c4819b7925af04d90c22225a21a3
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="views-in-operations-management-suite-oms-management-solutions-preview"></a>Nézetek az Operations Management Suite (OMS) megoldások (előzetes verzió)
 > [!NOTE]
@@ -75,11 +75,10 @@ Adja hozzá a következő nézet erőforrást a **erőforrások** a megoldásfá
 
 Adja hozzá a következő változók változók eleme, a fájl, és cserélje le a megoldás az értékeket.
 
-    "LogAnalyticsApiVersion": "2015-11-01-preview",
+    "LogAnalyticsApiVersion": "<api-version>",
     "ViewAuthor": "Your name."
     "ViewDescription": "Optional description of the view."
     "ViewName": "Provide a name for the view here."
-
 
 Vegye figyelembe, hogy a teljes nézet erőforrás átmásolhatja az exportált nézet fájlból, de a megoldásban működéshez az alábbi módosításokat kell.  
 
@@ -89,6 +88,18 @@ Vegye figyelembe, hogy a teljes nézet erőforrás átmásolhatja az exportált 
 * **DisplayName** tulajdonságot hozzá kell adni a nézetet.  A **azonosító**, **neve**, és **DisplayName** összes egyeznie kell.
 * A szükséges paraméterek portpároknak egyezniük meg kell változtatni a paraméterek nevei.
 * Változók a megoldás definiált legyen, és a megfelelő tulajdonságokat szerepel.
+
+### <a name="log-analytics-api-version"></a>Napló Analytics API-verzió
+A Resource Manager-sablon definiált összes Naplóelemzési erőforrás rendelkezik egy tulajdonság **apiVersion** , amely meghatározza, hogy az erőforrást kell használnia az API verzióját.  Ebben a verzióban különbözik a nézet, amelynek a lekérdezéseket, amelyekkel a [örökölt és a frissített lekérdezési nyelv](../log-analytics/log-analytics-log-search-upgrade.md).  
+
+ Az alábbi táblázat felsorolja a napló Analytics API-verziók a nézetek az örökölt és frissített munkaterületek: 
+
+| Munkaterület-verzió | API-verzió | Lekérdezés |
+|:---|:---|:---|
+| 1-es verzió (örökölt)   | 2015 11-01. dátumú előnézeti | A hagyományos formátumú.<br> Példa: Írja be az esemény EventLevelName = hiba =  |
+| v2 (frissítése) | 2015 11-01. dátumú előnézeti | A hagyományos formátumú.  Telepítse a frissített formátumra alakítja át.<br> Példa: Írja be az esemény EventLevelName = hiba =<br>Konvertálva: esemény &#124; Ha EventLevelName == "Error"  |
+| v2 (frissítése) | 2017-03-03 – előzetes | Frissítési formátumban. <br>Példa: Az esemény &#124; Ha EventLevelName == "Error"  |
+
 
 ## <a name="add-the-view-details"></a>A nézet részletek megadása
 A nézet erőforrás az exportált nézet fájl tartalmazza a két elem a **tulajdonságok** nevű elem **irányítópult** és **OverviewTile** a nézet részletes konfigurációját tartalmazza.  Ez a két elem és azok tartalmát másolja a **tulajdonságok** elem a megoldásfájlt a nézet erőforrás.
@@ -176,6 +187,6 @@ Például a következő példában egy egyszerű megoldást fájl nézetet.  Fol
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További részleteket létrehozásának [megoldások](operations-management-suite-solutions-creating.md).
 * Tartalmaznak [a felügyeleti megoldás az automatizálási runbookok](operations-management-suite-solutions-resources-automation.md).

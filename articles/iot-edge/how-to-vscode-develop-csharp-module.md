@@ -6,14 +6,14 @@ keywords:
 author: shizn
 manager: timlt
 ms.author: xshi
-ms.date: 12/06/2017
+ms.date: 01/11/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 269f77e5015175e45e0078926ef06699811889a4
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: cad28b4e6d4e46058641da19795cd71efdbd0c92
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="use-visual-studio-code-to-develop-c-module-with-azure-iot-edge"></a>Használja a Visual Studio Code fejlesztésére C# modul Azure IoT oldala
 Ez a cikk részletes utasításokat biztosít [Visual Studio Code](https://code.visualstudio.com/) való fejlesztésekor és telepítésekor az IoT-Edge modulok fő fejlesztési eszközként. 
@@ -32,7 +32,7 @@ Ellenőrizze, hogy a befejezett alábbi oktatóanyagok az Ez az útmutató megke
 - [C# (OmniSharp technológiával) Visual Studio Code-bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp). 
 - [Docker](https://docs.docker.com/engine/installation/)
 - [.NET 2.0 SDK alapvető](https://www.microsoft.com/net/core#windowscmd). 
-- [Python 2.7-es](https://www.python.org/downloads/)
+- [Python 2.7](https://www.python.org/downloads/)
 - [Az IoT-Edge vezérlő parancsfájl](https://pypi.python.org/pypi/azure-iot-edge-runtime-ctl)
 - AzureIoTEdgeModule sablon (`dotnet new -i Microsoft.Azure.IoT.Edge.Module`)
 - Egy aktív IoT hubot legalább egy IoT peremhálózati eszköz.
@@ -48,21 +48,37 @@ Az IoT hub eszközöket a Visual STUDIO Code elemet két módja van. Kiválaszth
 1. A parancs paletta (F1 vagy Ctrl + Shift + P), írja be, és válassza ki **Azure: bejelentkezés**. Kattintson a  **másolási* & megnyitott** az előugró. Illessze be az (Ctrl + V) a kódot a böngészőben, és kattintson a Folytatás gombra. Ezután jelentkezzen be az Azure-fiókjával. A Visual STUDIO Code állapotsorban adatokkal tekintheti meg.
 2. A parancs paletta (F1 vagy Ctrl + Shift + P), írja be, és válassza ki **IoT: válassza ki az IoT-központ**. Először válassza ki az előfizetést, amelyben létrehozta az IoT hub előző oktatóanyag. Ezután válasszon ki az IoT hub, amely tartalmazza az IoT-peremhálózati eszköz.
 
+    ![Eszközlista](./media/how-to-vscode-develop-csharp-module/device-list.png)
 
 #### <a name="set-iot-hub-connection-string"></a>Az IoT hub kapcsolati karakterlánc beállítása
-1. A parancs paletta (F1 vagy Ctrl + Shift + P), írja be, és válassza ki **IoT: állítsa be az IoT Hub kapcsolati karakterlánc**. Győződjön meg arról, illessze be a kapcsolati karakterláncot, a házirend **iothubowner** (megtalálja az IoT-központot, megosztott elérési házirendek az Azure portálon).
+A parancs paletta (F1 vagy Ctrl + Shift + P), írja be, és válassza ki **IoT: állítsa be az IoT Hub kapcsolati karakterlánc**. Győződjön meg arról, illessze be a kapcsolati karakterláncot, a házirend **iothubowner** (megtalálja az IoT-központot, megosztott elérési házirendek az Azure portálon).
  
-
 Az IoT Hub eszközöket Explorer bal oldali sávon az eszközök listája látható.
 
 ### <a name="start-your-iot-edge-runtime-and-deploy-a-module"></a>Indítsa el az IoT-Edge futásidejű és a modulok telepítése
 Telepítse, és indítsa el az Azure IoT peremhálózati futásidejű az eszközön. És egy szimulált érzékelő modul, amely a telemetriai adatokat küld az IoT-központ telepítése.
 1. A parancs paletta, válassza ki **peremhálózati: telepítő peremhálózati** , és válassza a IoT peremhálózati eszköz azonosítója. Vagy kattintson a jobb gombbal a peremhálózati eszköz azonosítója az eszközök listáját, és válasszon **telepítő peremhálózati**.
+
+    ![A telepítő peremhálózati futásidejű](./media/how-to-vscode-develop-csharp-module/setup-edge.png)
+
 2. Parancs paletta, válassza ki **peremhálózati: Start peremhálózati** a peremhálózati futásidejű elindításához. Integrált terminálban megfelelő kimenetek tekintheti meg.
+
+    ![Indítsa el a peremhálózati futásidejű](./media/how-to-vscode-develop-csharp-module/start-edge.png)
+
 3. Ellenőrizze a Docker explorer a peremhálózati futásidejű állapotát. Zöld állapot azt jelenti, hogy fut-e. Az IoT-Edge futásidejű sikeresen elindult.
-4. Most a peremhálózati futásidejű fut, ami azt jelenti, hogy a számítógép most a peremhálózati eszköz szimulálja. Következő lépés, amely tartja üzeneteket küld a peremhálózati eszköz egy sensorthing szimulálásához. A parancs paletta, írja be, és válassza ki **peremhálózati: peremhálózati készítése a konfigurációs fájl**. És adja meg a fájl létrehozásához. A generált deployment.json fájlban cserélje le a sor "<registry>/<image>:<tag>" rendelkező `microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview`.
+
+    ![Peremhálózati futásidejű fut.](./media/how-to-vscode-develop-csharp-module/edge-runtime.png)
+
+4. Most a peremhálózati futásidejű fut, ami azt jelenti, hogy a számítógép most a peremhálózati eszköz szimulálja. Következő lépés, amely tartja üzeneteket küld a peremhálózati eszköz egy sensorthing szimulálásához. A parancs paletta, írja be, és válassza ki **peremhálózati: peremhálózati készítése a konfigurációs fájl**. És adja meg a fájl létrehozásához. A generált deployment.json fájlban cserélje le a tartalmat `<registry>/<image>:<tag>` rendelkező `microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview` , és mentse a fájlt.
+
+    ![Érzékelő modul](./media/how-to-vscode-develop-csharp-module/sensor-module.png)
+
 5. Válassza ki **peremhálózati: peremhálózati eszköz a központi telepítés létrehozásához** , és válassza a peremhálózati eszköz azonosítója egy új központi telepítés létrehozásához. Kattintson a jobb gombbal a peremhálózati eszköz azonosítója az eszközlistában, és válassza ki **peremhálózati eszköz a központi telepítés létrehozásához**. 
-6. Az IoT peremhálózati elindultak, a Docker Explorer, a szimulált érzékelő kell megjelennie. Kattintson a jobb gombbal a tárolót a Docker explorer. Minden modul docker naplók figyelemmel követheti.
+
+6. Az IoT peremhálózati elindultak, a Docker Explorer, a szimulált érzékelő kell megjelennie. Kattintson a jobb gombbal a tárolót a Docker explorer. Minden modul docker naplók figyelemmel követheti. A Modullista is, megtekintheti az eszközök listáját.
+
+    ![Modullista](./media/how-to-vscode-develop-csharp-module/module-list.png)
+
 7. Kattintson a jobb gombbal a peremhálózati eszköz Azonosítóját, és figyelheti a Visual STUDIO Code D2C üzeneteket.
 8. Az IoT-Edge futásidejű és az érzékelő modul leállításához írja be és válassza ki **peremhálózati: leállítása peremhálózati** parancs paletta.
 
@@ -97,12 +113,18 @@ A következő lépéseket megjelenítése, hogyan hozzon létre egy IoT peremhá
  
 3. Válassza ki **fájl** > **nyissa meg a mappa**.
 4. Keresse meg a **FilterModule** mappa, és kattintson **Mappaválasztás** megnyitni a projektet a Visual STUDIO Code.
-5. A Visual STUDIO Code Explorerben (megoldáskezelőben) kattintson **Program.cs** való megnyitásához.
+5. A Visual STUDIO Code Explorerben (megoldáskezelőben) kattintson **Program.cs** való megnyitásához. Felső részén **program.cs**, névterek alatt tartalmazza.
+   ```csharp
+   using Microsoft.Azure.Devices.Shared;
+   using System.Collections.Generic;  
+   using Newtonsoft.Json;
+   ```
+
 6. Adja hozzá a `temperatureThreshold` változót a **Program** osztály. Ez a változó ahhoz, hogy az adatokat az IoT-központ küldendő beállítja az haladhatja meg a mért hőmérséklet értéket. 
 
-    ```csharp
-    static int temperatureThreshold { get; set; } = 25;
-    ```
+   ```csharp
+   static int temperatureThreshold { get; set; } = 25;
+   ```
 
 7. Adja hozzá a `MessageBody`, `Machine`, és `Ambient` az osztályokat a **Program** osztály. Ezeket az osztályokat határozza meg a várt séma a bejövő üzenet törzsét.
 
@@ -225,16 +247,22 @@ A következő lépéseket megjelenítése, hogyan hozzon létre egy IoT peremhá
     }
     ```
 
-11. A projekt létrehozásához kattintson a jobb gombbal a **FilterModule.csproj** a Explorer, majd kattintson a fájl **Build IoT peremhálózati modul**. Ez a folyamat lefordítja a modult, és exportálja a bináris és annak függőségeit a Docker-lemezkép létrehozásához használt mappába.
+11. A projekt létrehozásához kattintson a jobb gombbal a **FilterModule.csproj** a Explorer, majd kattintson a fájl **Build IoT peremhálózati modul**. Ez a folyamat lefordítja a modult, és exportálja a bináris és annak függőségeit a Docker-lemezkép létrehozásához használt mappába. 
 
+    ![A modul létrehozása](./media/how-to-vscode-develop-csharp-module/build-module.png)
 
 ### <a name="create-a-docker-image-and-publish-it-to-your-registry"></a>Hozzon létre egy Docker-lemezképet, és tegye közzé a beállításjegyzék
 
 1. A Visual STUDIO Code Explorerben bontsa ki a **Docker** mappa. Majd bontsa ki a mappát, a tároló platform vagy **linux-x64** vagy **windows-nano**.
 2. Kattintson a jobb gombbal a **Dockerfile** fájlt, és kattintson a **Build IoT peremhálózati modul Docker kép**. 
+
+    ![Docker-lemezkép](./media/how-to-vscode-develop-csharp-module/build-docker-image.png)
+
 3. Az a **Mappaválasztás** ablak, írja be vagy keresse meg a `./bin/Debug/netcoreapp2.0/publish`. Kattintson a **mappát adja meg a EXE_DIR**.
 4. Az előugró szövegmezőben a Visual STUDIO Code ablak tetején adja meg a lemezkép nevét. Például: `<your container registry address>/filtermodule:latest`. Ha a helyi beállításjegyzékben telepít, meg kell `localhost:5000/filtermodule:latest`.
-5. A Docker-tárház küldje le a lemezképet. Használja a **peremhálózati: leküldéses IoT peremhálózati modul Docker kép** parancsot, és az előugró mezőben a Visual STUDIO Code ablak tetején adja meg a kép URL-címe. Az azonos kép URL-cím használata fenti lépés szerepel.
+5. A Docker-tárház küldje le a lemezképet. Használja a **peremhálózati: leküldéses IoT peremhálózati modul Docker kép** parancsot, és az előugró mezőben a Visual STUDIO Code ablak tetején adja meg a kép URL-címe. Az azonos kép URL-cím használata fenti lépés szerepel. Tekintse meg a konzol naplót, és győződjön meg arról, hogy a kép sikeresen leküldve.
+
+    ![Docker kép leküldéses](./media/how-to-vscode-develop-csharp-module/push-image.png) ![megnyomott docker kép](./media/how-to-vscode-develop-csharp-module/pushed-image.png)
 
 ### <a name="deploy-your-iot-edge-modules"></a>Az IoT-Edge-modulok telepítése
 
@@ -264,21 +292,26 @@ A következő lépéseket megjelenítése, hogyan hozzon létre egy IoT peremhá
 
 2. Cserélje le a **útvonalak** szakasz az alábbi tartalom:
     ```json
-    {
-        "routes": {
-            "sensorToFilter": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filtermodule/inputs/input1\")",
-            "filterToIoTHub": "FROM /messages/modules/filtermodule/outputs/output1 INTO $upstream"
-        }
-    }
+    "sensorToFilter": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filtermodule/inputs/input1\")",
+    "filterToIoTHub": "FROM /messages/modules/filtermodule/outputs/output1 INTO $upstream"
     ```
    > [!NOTE]
    > A futásidejű deklaratív szabályok határozzák meg, ahol az üzenetek áramlását. Ebben az oktatóanyagban kell két útvonalak. Az első útvonal szállításokkal a FilterMessages leírójú konfigurált végpont olyan üzenetek a "input1" végpont keresztül modulja a hőmérséklet-érzékelő. A második útvonal szállításokkal a modul az IoT hubhoz üzeneteit. Ez az útvonal a felsőbb rétegbeli célja egy speciális, amely közli a peremhálózati Hub üzeneteket küldhet az IoT-központ.
 
 3. Mentse a fájlt.
 4. A parancs paletta, válassza ki **peremhálózati: peremhálózati eszköz a központi telepítés létrehozásához**. Válassza ki az IoT-Edge Eszközazonosítót a központi telepítés létrehozásához. Vagy kattintson a jobb gombbal az Eszközazonosítót az eszközlistában, és válasszon **peremhálózati eszköz a központi telepítés létrehozásához**.
+
+    ![Üzemelő példány létrehozása](./media/how-to-vscode-develop-csharp-module/create-deployment.png)
+
 5. Válassza ki a `deployment.json` friss. A kimeneti ablakban megjelenik az üzembe helyezéshez megfelelő kimenetek.
+
+    ![A telepítés sikerült](./media/how-to-vscode-develop-csharp-module/deployment-succeeded.png)
+
 6. Indítsa el a peremhálózati futásidejű parancs palettát. **Peremhálózati: Start peremhálózati**
 7. A futásidejű elindultak, a Docker Explorer szimulált érzékelő és modulja IoT peremhálózati tekintheti meg.
+
+    ![Az IoT-peremhálózati megoldás fut.](./media/how-to-vscode-develop-csharp-module/solution-running.png)
+
 8. Kattintson a jobb gombbal a peremhálózati eszköz Azonosítóját, és figyelheti a Visual STUDIO Code D2C üzeneteket.
 
 

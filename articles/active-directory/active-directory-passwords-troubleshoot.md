@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
-ms.custom: it-pro
-ms.openlocfilehash: c489cf13574c49161b2dde22500f4ab7478a928b
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.custom: it-pro;seohack1
+ms.openlocfilehash: c038a9ec682a5971a5f79b9fe36e667493702cbd
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Önkiszolgáló jelszóváltoztatás hibaelhárítása
 
@@ -170,7 +170,7 @@ A leggyakoribb pontot, hogy a tűzfal, és vagy proxyhoz és az üresjárati id�
 Az Azure AD Connect 1.1.443.0 verzió vagy újabb, meg kell kimenő HTTPS a hozzáférést a következő:
 
    - passwordreset.microsoftonline.com
-   - servicebus.Windows.NET
+   - servicebus.windows.net
 
 Több Granularitás frissített listáját lásd [Microsoft Azure Datacenter IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653) frissítése minden szerdán és a következő hatályba hétfő.
 

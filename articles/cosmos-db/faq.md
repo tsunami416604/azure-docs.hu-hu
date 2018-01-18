@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2018
+ms.date: 01/12/2018
 ms.author: mimig
-ms.openlocfilehash: 0bc0551259e47cdbd74d323d8d9877c74dd64c4b
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.openlocfilehash: 0f7998ca4000a4ccfd77b173cb3dd9756b4777ae
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-cosmos-db-faq"></a>Az Azure Cosmos DB – gyakori kérdések
 ## <a name="azure-cosmos-db-fundamentals"></a>Az Azure Cosmos DB – alapok
@@ -28,7 +28,7 @@ Azure Cosmos-adatbázis egy globálisan replikált, több modellre adatbázis bi
 
 Azure Cosmos-adatbázis az ideális megoldás a webes, mobil-, játék- és IoT-alkalmazásokhoz, amikor a kiszámítható átviteli sebességet, magas rendelkezésre állású, alacsony késést és a sémamentesadat-modell kapcsolatos követelményeket. Séma rugalmasságát és a gazdag indexelési biztosítja, és több dokumentumos tranzakciótámogatást JavaScript-integrációval ellátott tartalmazza. 
 
-A további adatbázisra vonatkozó kérdések, válaszok és központi telepítésével és a szolgáltatás használatával kapcsolatos útmutatásért lásd az [Azure Cosmos DB-dokumentáció oldalán] ((https://docs.microsoft.com/azure/cosmos-db/).
+További adatbázis kérdéseket, válaszokat, valamint útmutatást és központi telepítéséhez, és használhatja a szolgáltatást, tekintse meg a [Azure Cosmos DB dokumentációs oldal](https://docs.microsoft.com/azure/cosmos-db/).
 
 ### <a name="what-happened-to-the-documentdb-api"></a>Mi történt a DocumentDB API-t?
 
@@ -74,7 +74,16 @@ Ha most ismerkedik az Azure-ba, a regisztrálhat egy [ingyenes Azure-fiókot](ht
 Használhatja a [Azure Cosmos DB emulátor](local-emulator.md) fejlesztéséhez és teszteléséhez az alkalmazás helyileg szabad, Azure-előfizetés létrehozása nélkül. Ha elégedett az alkalmazás az Azure Cosmos DB emulátorban alakulását, átválthat a felhőben Azure Cosmos DB fiókkal.
 
 ### <a name="how-can-i-get-additional-help-with-azure-cosmos-db"></a>Hogyan kaphatok további segítséget a Azure Cosmos DB?
-Ha segítségre van szüksége, kapcsolatba velünk a [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-cosmosdb) vagy a [MSDN fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureDocumentDB), vagy az Azure Cosmos DB mérnöki csapathoz beszélgetne csevegni ütemezése üzenet küldésével [ askcosmosdb@microsoft.com ](mailto:askcosmosdb@microsoft.com). 
+
+Műszaki kérdés felvetéséhez, továbbá hogy egyik ezek két kérdést, és fórumok választ:
+* [MSDN-fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureDocumentDB)
+* [A verem túlcsordulás](http://stackoverflow.com/questions/tagged/azure-cosmosdb). Stack overflow webhelyre esetén ajánlott programozási kérdéseket. Győződjön meg arról, hogy a megadott kérdés [-témakör](https://stackoverflow.com/help/on-topic) és [annyi részletesen lehetséges, így a kérdést, törölje és megválaszolható](https://stackoverflow.com/help/how-to-ask). 
+
+Kérjen új funkciókat, hozzon létre egy új kérést a [Uservoice](https://feedback.azure.com/forums/263030-azure-cosmos-db).
+
+A fiókjához megoldani a problémát, hogy a fájl egy [támogatási kérelem](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) az Azure portálon.
+
+Egyéb kérdések küldheti el a csapatának [ askcosmosdb@microsoft.com ](mailto:askcosmosdb@microsoft.com); Ez azonban nem a technikai támogatási szolgálathoz alias. 
 
 <a id="try-cosmos-db"></a>
 ## <a name="try-azure-cosmos-db-subscriptions"></a>Próbálja meg Azure Cosmos DB előfizetések
@@ -206,10 +215,10 @@ Bizonyos különbségek vannak a viselkedést, amely az Azure Table storage érk
 A REST API tekintetében számos végpontok/lekérdezési lehetőségek Azure Cosmos DB tábla API által nem támogatott:
 | REST-metódussal | REST-végpont/lekérdezési lehetőség | DOC URL-címek | Magyarázat |
 | ------------| ------------- | ---------- | ----------- |
-| SZÜKSÉGE VAN, AMELYRE AZ | /? restype =service@comp= tulajdonságai| [Table szolgáltatás tulajdonságainak beállítása](https://docs.microsoft.com/rest/api/storageservices/set-table-service-properties) és [Table szolgáltatás tulajdonságainak beolvasása](https://docs.microsoft.com/rest/api/storageservices/get-table-service-properties) | Ezt a végpontot a naplózási beállítások, a CORS szabályok és a tárolási konfigurációja beállítására használatos. A CORS jelenleg nem támogatott, és elemzés és a naplózás az Azure Cosmos Adatbázisba az Azure Storage-táblákat mint másképpen kezeli |
+| SZÜKSÉGE VAN, AMELYRE AZ | /?restype=service@comp=properties| [Table szolgáltatás tulajdonságainak beállítása](https://docs.microsoft.com/rest/api/storageservices/set-table-service-properties) és [Table szolgáltatás tulajdonságainak beolvasása](https://docs.microsoft.com/rest/api/storageservices/get-table-service-properties) | Ezt a végpontot a naplózási beállítások, a CORS szabályok és a tárolási konfigurációja beállítására használatos. A CORS jelenleg nem támogatott, és elemzés és a naplózás az Azure Cosmos Adatbázisba az Azure Storage-táblákat mint másképpen kezeli |
 | BEÁLLÍTÁSOK | / <-erőforrás-táblanév > | [Előzetes repülési CORS tábla kérelem](https://docs.microsoft.com/rest/api/storageservices/preflight-table-request) | A CORS, amely Azure Cosmos DB jelenleg nem támogatja a része. |
 | GET | /? restype =service@comp= statisztikák | [Table szolgáltatás statisztikák beolvasása](https://docs.microsoft.com/rest/api/storageservices/get-table-service-stats) | Milyen gyorsan adat replikálódik elsődleges és másodlagos adatbázisok közötti információkat nyújt. Ez nem szükséges Cosmos DB, a replikáció írások részét képezi. |
-| SZÜKSÉGE VAN, AMELYRE AZ | /mytable? comp = acl | [ACL-tábla](https://docs.microsoft.com/rest/api/storageservices/get-table-acl) és [tábla hozzáférés-vezérlési lista beállítása](https://docs.microsoft.com/rest/api/storageservices/set-table-acl) | Ez lekérdezi és beállítja a tárolt hozzáférési házirendek kezelése megosztott hozzáférési aláírásokkal (SAS) használt. SAS támogatják, de ezeket beállítása és másképp kezeli. |
+| SZÜKSÉGE VAN, AMELYRE AZ | /mytable?comp=acl | [ACL-tábla](https://docs.microsoft.com/rest/api/storageservices/get-table-acl) és [tábla hozzáférés-vezérlési lista beállítása](https://docs.microsoft.com/rest/api/storageservices/set-table-acl) | Ez lekérdezi és beállítja a tárolt hozzáférési házirendek kezelése megosztott hozzáférési aláírásokkal (SAS) használt. SAS támogatják, de ezeket beállítása és másképp kezeli. |
 
 Azure Cosmos DB tábla API csak támogatja továbbá a JSON formátum nem ATOM.
 
@@ -219,10 +228,10 @@ A .NET SDK-ban, van néhány osztályok és az Azure Cosmos DB jelenleg nem tám
 
 | Osztály | A metódus nem támogatott |
 |-------|-------- |
-| CloudTableClient | \*ServiceProperties * |
-|                  | \*ServiceStats * |
-| CloudTable | SetPermissions * |
-|            | GetPermissions * |
+| CloudTableClient | \*ServiceProperties* |
+|                  | \*ServiceStats* |
+| CloudTable | SetPermissions* |
+|            | GetPermissions* |
 | TableServiceContext | * (Ez az osztály ténylegesen elavult) |
 | TableServiceEntity | " " |
 | TableServiceExtensions | " " |
@@ -235,7 +244,7 @@ Visszajelzése megoszthatja a következő módokon:
 
 * [Uservoice](https://feedback.azure.com/forums/599062-azure-cosmos-db-table-api)
 * [MSDN-fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureDocumentDB)
-* [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-cosmosdb)
+* [A verem túlcsordulás](http://stackoverflow.com/questions/tagged/azure-cosmosdb). Stack overflow webhelyre esetén ajánlott programozási kérdéseket. Győződjön meg arról, hogy a megadott kérdés [-témakör](https://stackoverflow.com/help/on-topic) és [annyi részletesen lehetséges, így a kérdést, törölje és megválaszolható](https://stackoverflow.com/help/how-to-ask).
 
 ### <a name="what-is-the-connection-string-that-i-need-to-use-to-connect-to-the-table-api"></a>Mi az a kapcsolati karakterláncot, amely a tábla API-val való csatlakozáskor használandó kell?
 A kapcsolati karakterlánc::
@@ -248,7 +257,7 @@ A kapcsolati karakterlánc lekérheti a csatlakozási karakterlánc oldal az Azu
 Konfigurációs beállításaival kapcsolatos további információkért lásd: [Azure Cosmos DB képességek](../cosmos-db/tutorial-develop-table-dotnet.md#azure-cosmos-db-capabilities). Egyes beállítások a CreateCloudTableClient metódus és egyéb kezeli, az ügyfélalkalmazás appSettings szakaszában app.config keresztül.
 
 ### <a name="are-there-any-changes-for-customers-who-are-using-the-existing-azure-table-storage-sdks"></a>Vannak-e a módosításokat a meglévő Azure Table storage SDK-k használó ügyfelek számára?
-nincs. Nincsenek a meglévő Azure Table storage SDK-k használó meglévő vagy új ügyfelek nem módosult. 
+Nincs. Nincsenek a meglévő Azure Table storage SDK-k használó meglévő vagy új ügyfelek nem módosult. 
 
 ### <a name="how-do-i-view-table-data-that-is-stored-in-azure-cosmos-db-for-use-with-the-table-api"></a>Hogyan tekinthetem meg a tábla API-val való használatra az Azure Cosmos DB tárolt tábla adatai? 
 Az Azure portál segítségével keresse meg az adatokat. A tábla API-kódban vagy szerepel a következő választ eszközök is használható. 
@@ -382,7 +391,7 @@ Igen, az Azure Cosmos DB portal méretezési ablaktábla segítségével mérete
 Igen, ha nem bírálja felül a TableThroughput app.config keresztül, és nem használható egy előre létrehozott tároló Azure Cosmos DB, a szolgáltatás létrehoz egy táblát 400 átviteli sebességgel.
  
 ### <a name="is-there-any-change-of-pricing-for-existing-customers-of-the-azure-table-storage-service"></a>Van-e bármilyen módosítás a meglévő ügyfeleknek az Azure Table storage szolgáltatás díjszabása?
-nincs. Nincs meglévő Azure Table storage-ügyfeleknek az ár nem változik. 
+Nincs. Nincs meglévő Azure Table storage-ügyfeleknek az ár nem változik. 
 
 ### <a name="how-is-the-price-calculated-for-the-table-api"></a>Hogyan kiszámítása a tábla API-hoz. az ár? 
 Az ár attól függ, hogy a lefoglalt TableThroughput. 

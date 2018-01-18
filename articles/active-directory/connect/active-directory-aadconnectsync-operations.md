@@ -3,7 +3,7 @@ title: "Azure AD Connect szinkronizálása: működtetési feladatok és szempon
 description: "Ez a témakör ismerteti az operatív feladatok az Azure AD Connect szinkronizálási szolgáltatás és előkészítése operációs ezt az összetevőt."
 services: active-directory
 documentationcenter: 
-author: AndKjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: b29c1790-37a3-470f-ab69-3cee824d220d
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 4252a5ff3dd985185745060073cbe5432dba726a
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 0dfdae45ef7508337a1233c651d355d83b9f0430
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-sync-operational-tasks-and-consideration"></a>Azure AD Connect szinkronizálása: működtetési feladatok és szempont
 Ez a témakör célja az Azure AD Connect szinkronizálási szolgáltatás működési feladatokat írják le.
@@ -48,7 +48,7 @@ Azok a régebbi szinkronizálási technológiák ismerete is az átmeneti körny
 ### <a name="verify-the-configuration-of-a-server"></a>A kiszolgáló konfigurációjának ellenőrzése
 Ha szeretné alkalmazni ezt a módszert, kövesse az alábbi lépéseket:
 
-1. [Előkészítése](#prepare)
+1. [Prepare](#prepare)
 2. [Konfigurálás](#configuration)
 3. [Importálja és szinkronizálja](#import-and-synchronize)
 4. [Ellenőrzése](#verify)
@@ -124,7 +124,7 @@ Ha nem használ az SQL Server Express, az Azure AD Connect előre, majd az SQL S
 
 SQL AOA támogatása az Azure AD Connect 1.1.524.0 verziójában lett hozzáadva. Az Azure AD Connect telepítése előtt engedélyeznie kell az SQL AOA. A telepítés során az Azure AD Connect észleli, hogy a megadott SQL-példány engedélyezve van az SQL AOA vagy nem. Ha SQL AOA engedélyezve van, az Azure AD Connect további adatok Ha SQL AOA replikáció szinkron vagy aszinkron replikáció használatára van konfigurálva. A rendelkezésre állási csoport figyelőjének beállításakor javasoljuk, hogy a RegisterAllProvidersIP tulajdonságot 0 értékre állítja. Ennek az az oka az Azure AD Connect jelenleg használ SQL Native Client kapcsolódni az SQL és az SQL natív ügyfél nem támogatja a MultiSubNetFailover tulajdonság használatával.
 
-## <a name="appendix-csanalyzer"></a>A függelék CSAnalyzer
+## <a name="appendix-csanalyzer"></a>Appendix CSAnalyzer
 Című témakör [ellenőrizze](#verify) a parancsfájl használatával.
 
 ```

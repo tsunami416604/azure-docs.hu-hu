@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: On Demand
-ms.date: 06/05/2017
+ms.date: 01/16/2018
 ms.author: carlrab
-ms.openlocfilehash: 26cb1a5dd9b290366307e4026686e65f7afc0523
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 8cf926bab45705802cfaca95973ec1071d8d175a
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Az Azure SQL Database kapcsolat architektúrája 
 
@@ -71,7 +71,7 @@ A következő táblázat az elsődleges és másodlagos IP-címek az Azure SQL D
 | USA középső régiója | 23.99.160.139 | 13.67.215.62 |
 | Kelet-Ázsia | 191.234.2.139 | 52.175.33.150 |
 | 1 USA keleti régiója | 191.238.6.43 | 40.121.158.30 |
-| USA 2. keleti régiója | 191.239.224.107 | 40.79.84.180 |
+| USA 2. keleti régiója | 191.239.224.107 | 40.79.84.180 * |
 | Közép-India | 104.211.96.159  | |
 | Dél-India | 104.211.224.146  | |
 | Nyugat-India | 104.211.160.80 | |
@@ -92,6 +92,8 @@ A következő táblázat az elsődleges és másodlagos IP-címek az Azure SQL D
 | 1 USA nyugati régiója | 23.99.34.75 | 104.42.238.205 |
 | USA nyugati régiója, 2. | 13.66.226.202  | |
 ||||
+
+\***Megjegyzés:** *USA keleti régiója 2* rendelkezik is egy harmadlagos IP-címe `2.167.104.0`.
 
 ## <a name="change-azure-sql-database-connection-policy"></a>Módosítsa a kapcsolatkezelési házirendet az Azure SQL Database
 
@@ -183,7 +185,7 @@ az resource update --ids $id --set properties.connectionType=Proxy
 
 </pre>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az Azure SQL Database kapcsolatkezelési házirendet az Azure SQL Database-kiszolgáló módosításának módjával kapcsolatos információkért lásd: [létrehozási vagy frissítési kiszolgáló kapcsolatkezelési házirendet a REST API használatával](https://msdn.microsoft.com/library/azure/mt604439.aspx).
 - Információ az Azure SQL Database kapcsolat viselkedésről ADO.NET 4.5 vagy újabb verzióját használó ügyfelek számára, lásd: [kívüli ADO.NET 4.5 1433-as portokon](sql-database-develop-direct-route-ports-adonet-v12.md).

@@ -9,16 +9,16 @@ editor:
 ms.assetid: 
 ms.service: service-fabric
 ms.devlang: cli
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 09/26/2017
+ms.date: 12/26/2017
 ms.author: ryanwi
-ms.openlocfilehash: f032af4714ad458fa6ad6fb0741f689d44f4098b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2a9a565cf2c20490475d1b73b0f99fbe63e57dd3
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
 Lekérdezi és parancsainak elküldését a repair-kezelő szolgáltatás.
@@ -26,8 +26,8 @@ Lekérdezi és parancsainak elküldését a repair-kezelő szolgáltatás.
 ## <a name="commands"></a>Parancsok
 |Parancs|Leírás|
 | --- | --- |
-|    hagyja jóvá kényszerítése| A megadott javítási feladat jóváhagyása kényszeríti.|
-|    törlése       | Törli a befejezett javítása feladatot.|
+|    approve-force| A megadott javítási feladat jóváhagyása kényszeríti.|
+|    törlés       | Törli a befejezett javítása feladatot.|
 |    lista         | Megfelelő a megadott szűrők javítási tevékenységek listájának lekérése.|
 
 ## <a name="sfctl-rpm-delete"></a>sfctl rpm törlése
@@ -44,7 +44,7 @@ Ez az API támogatja a Service Fabric-platformról; nem célja, hogy közvetlen�
 ### <a name="global-arguments"></a>Globális argumentumok
 |Argumentum|Leírás|
 | --- | --- |
-|    --hibakeresése             | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
+|    --debug             | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 |    – Súgó -h           | Ez egy súgóüzenet és kilépési megjelenítése.|
 |    – a kimeneti -o         | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.  Alapértelmezett: JSON-ná.
 |    --lekérdezés             | JMESPath lekérdezési karakterlánc. További információt és példákat http://jmespath.org/ talál.|
@@ -59,19 +59,19 @@ Ez az API támogatja a Service Fabric-platformról; nem célja, hogy közvetlen�
 ### <a name="arguments"></a>Argumentumok
 |Argumentum|Leírás|
 | --- | --- |
-|    --végrehajtó-szűrő| A javítási végrehajtó, amelynek az igényelt feladatok szerepelnie kell a lista neve.|
-|    --Állapot-szűrő   | Az eredménylista egy, a következő értékek megadásával, mely feladat állapota bitenkénti – vagy szerepelnie kell. -1 - létrehozott - 2 - igényelt - 4 - előkészítése - 8 - jóváhagyott - 16 - végrehajtó - 32 - visszaállítási - 64 - befejeződött.|
-|    – a feladat-azonosító-szűrő | A javítási feladat Azonosítójának előtagja megfeleltethetők.|
+|    --executor-filter| A javítási végrehajtó, amelynek az igényelt feladatok szerepelnie kell a lista neve.|
+|    --state-filter   | Az eredménylista egy, a következő értékek megadásával, mely feladat állapota bitenkénti – vagy szerepelnie kell. -1 - létrehozott - 2 - igényelt - 4 - előkészítése - 8 - jóváhagyott - 16 - végrehajtó - 32 - visszaállítási - 64 - befejeződött.|
+|    --task-id-filter | A javítási feladat Azonosítójának előtagja megfeleltethetők.|
 
 ### <a name="global-arguments"></a>Globális argumentumok
 |Argumentum|Leírás|
 | --- | --- |
-|    --hibakeresése          | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
+|    --debug          | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 |    – Súgó -h        | Ez egy súgóüzenet és kilépési megjelenítése.|
-|    – a kimeneti -o      | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.  Alapértelmezett| JSON-ná.|
+|    – a kimeneti -o      | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.  Alapértelmezett| json.|
 |    --lekérdezés          | JMESPath lekérdezési karakterlánc. További információt és példákat http://jmespath.org/ talál.|
 |    – részletes        | Naplózási növelése. Használatát – a teljes hibakeresési naplók hibakeresési.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Állítson be](service-fabric-cli.md) a Service Fabric CLI.
 - A Service Fabric parancssori felület használatával használata a [minta parancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application).

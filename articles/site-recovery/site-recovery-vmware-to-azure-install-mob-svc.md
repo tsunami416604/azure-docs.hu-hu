@@ -5,20 +5,15 @@ services: site-recovery
 documentationcenter: 
 author: AnoopVasudavan
 manager: gauravd
-editor: 
-ms.assetid: 
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: backup-recovery
-ms.date: 10/30/2017
+ms.date: 01/11/2018
 ms.author: anoopkv
-ms.openlocfilehash: aa7bb25387efbc603dac9aaa0a56b3e30d0bfb4d
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: 939115aedd624dde637f00c02865b1adab47c7c4
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="install-mobility-service-vmware-or-physical-to-azure"></a>Telepítse a mobilitási szolgáltatás (VMware vagy fizikai az Azure-bA)
 Az Azure Site Recovery mobilitási szolgáltatás egy számítógépen végbemenő adatírásokat, és ezután továbbítja őket a folyamatkiszolgálónak. Minden számítógépre (VMware virtuális gép vagy fizikai kiszolgálón), amely az Azure-bA replikálni kívánt telepíteni a mobilitási szolgáltatás. Az alábbi módszerek használatával védeni kívánt kiszolgálók mobilitási szolgáltatás telepítése:
@@ -50,14 +45,14 @@ Előfeltételként szükséges lépések végrehajtása előtt manuálisan telep
 
 | Telepítési fájl neve| Operációs rendszer |
 |---|--|
-|Microsoft-ASR\_EE\*Windows\*release.exe | Windows Server 2008 R2 SP1 (64 bites) </br> A Windows Server 2012 (64 bites) </br> Windows Server 2012 R2 (64 bites) </br> Windows Server 2016 (64 bites) |
-|Microsoft-ASR\_EE\*bites RHEL6-64*release.tar.gz| Red Hat Enterprise Linux (RHEL) 6.4 6.5, 6.6, 6.7, 6.8, 6.9 (csak 64 bites verzió esetén) </br> CentOS 6.4, 6.5, 6.6, 6.7, 6.8, 6.9 (csak 64 bites verzió esetén) |
-|Microsoft-ASR\_EE\*RHEL7-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 7.1, 7.2, 7.3 (csak 64 bites verzió esetén) </br> CentOS 7.0, 7.1, 7.2, 7.3 (csak 64 bites verzió esetén) |
-|Microsoft-ASR\_EE\*SLES11-SP3-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP3 (csak 64 bites verzió esetén)|
-|Microsoft-ASR\_EE\*SLES11-SP4-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP4 (csak 64 bites verzió esetén)|
-|Microsoft-ASR\_EE\*OL6-64\*release.tar.gz | Oracle Enterprise Linux 6.4 6.5 (csak 64 bites verzió esetén)|
-|Microsoft-ASR\_EE\*UBUNTU 14.04-64\*release.tar.gz | Ubuntu Linux 14.04 (csak 64 bites verzió esetén)|
-|Microsoft-ASR\_EE\*UBUNTU-16.04-64\*release.tar.gz | Ubuntu Linux 16.04 LTS server (csak 64 bites verzió esetén)|
+|Microsoft-ASR\_UA\*Windows\*release.exe | Windows Server 2008 R2 SP1 (64 bites) </br> A Windows Server 2012 (64 bites) </br> Windows Server 2012 R2 (64 bites) </br> Windows Server 2016 (64 bites) |
+|Microsoft-ASR\_UA\*RHEL6-64*release.tar.gz| Red Hat Enterprise Linux (RHEL) 6.4 6.5, 6.6, 6.7, 6.8, 6.9 (csak 64 bites verzió esetén) </br> CentOS 6.4, 6.5, 6.6, 6.7, 6.8, 6.9 (csak 64 bites verzió esetén) |
+|Microsoft-ASR\_UA\*RHEL7-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 7.1, 7.2, 7.3 (csak 64 bites verzió esetén) </br> CentOS 7.0, 7.1, 7.2, 7.3 (csak 64 bites verzió esetén) |
+|Microsoft-ASR\_UA\*SLES11-SP3-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP3 (csak 64 bites verzió esetén)|
+|Microsoft-ASR\_UA\*SLES11-SP4-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP4 (csak 64 bites verzió esetén)|
+|Microsoft-ASR\_UA\*OL6-64\*release.tar.gz | Oracle Enterprise Linux 6.4 6.5 (csak 64 bites verzió esetén)|
+|Microsoft-ASR\_UA\*UBUNTU-14.04-64\*release.tar.gz | Ubuntu Linux 14.04 (csak 64 bites verzió esetén)|
+|Microsoft-ASR\_UA\*UBUNTU-16.04-64\*release.tar.gz | Ubuntu Linux 16.04 LTS server (csak 64 bites verzió esetén)|
 |Microsoft-ASR_UA\*DEBIAN7-64\*release.tar.gz | Debian 7 (csak 64 bites verzió esetén)|
 |Microsoft-ASR_UA\*DEBIAN8-64\*release.tar.gz | Debian 8 (csak 64 bites verzió esetén)|
 
@@ -92,7 +87,7 @@ Az Azure-portálon a mobilitási szolgáltatás telepítése után válassza ki 
 ## <a name="update-mobility-service"></a>Frissítse a mobilitási szolgáltatás
 
 > [!WARNING]
-> Győződjön meg arról, hogy a konfigurációs kiszolgáló, a kibővített folyamat kiszolgálók és a kiszolgálók bármelyike a fő célkiszolgálón, amelyek a központi telepítés részét frissül a mobilitási szolgáltatást a védett kiszolgálókon a frissítés megkezdése előtt. További információ a [frissítése a konfigurációs kiszolgáló](site-recovery-vmware-to-azure-manage-configuration-server.md#upgrading-a-configuration-server) és [a kibővített folyamat kiszolgálók frissítése](site-recovery-vmware-to-azure-manage-scaleout-process-server.md#upgrading-a-scale-out-process-server)
+> Győződjön meg arról, hogy a konfigurációs kiszolgáló, a kibővített folyamat kiszolgálók és a kiszolgálók bármelyike a fő célkiszolgálón, amelyek a központi telepítés részét frissül a mobilitási szolgáltatást a védett kiszolgálókon a frissítés megkezdése előtt.
 
 1. Az Azure portálon keresse meg a <Your Vault> replikált elemek Nézet ->.
 2. Ha a **konfigurációs kiszolgáló** már frissült a legújabb verzióra, akkor megjelenik egy értesítés, hogy az olvasások *új helyet a helyreállítási replikációs ügynök frissítés érhető el. Történő telepítéséhez kattintson a*

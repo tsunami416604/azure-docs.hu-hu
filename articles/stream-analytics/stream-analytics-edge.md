@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 11/16/2017
+ms.date: 01/16/2017
 ms.author: jeanb
-ms.openlocfilehash: 916aefb7916ab374c882efb95417babfc5b06a50
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: f1ff8d6f64a04ab03c8170fd2b6a7c881227da2e
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="azure-stream-analytics-on-iot-edge-preview"></a>Az Azure Stream Analytics IoT oldal (előzetes verzió)
 
@@ -46,7 +46,7 @@ ASA peremhálózati feladatokat futtató moduljainak [Azure IoT peremhálózati 
 
 ASA IoT-központ használatával peremhálózati feladatok telepíteni őket. További információ a [IoT peremhálózati telepítés látható itt](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring).
 
-![Peremhálózati feladat](media/stream-analytics-edge/ASAedge_job.png)
+![Edge-feladat](media/stream-analytics-edge/ASAedge_job.png)
 
 
 ### <a name="installation-instructions"></a>Telepítési utasításokat
@@ -57,7 +57,12 @@ A következő táblázat ismerteti a magas szintű lépéseket. További részle
 | 2   | **A tároló létrehozása**   | Azure Portal       | A tároló használt menteni a feladat definíciójához ha azok elérhetők az IoT-eszközök által. <br>  A meglévő tárolót is felhasználhatja.     |
 | 3   | **Az IoT-Edge tesztkörnyezetben, a forráseszköz(ök) beállítása**   | Eszköz(ök)      | Az utasítások [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) vagy [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux).          |
 | 4   | **Az IoT-Edge eszköz(ök) ASA telepített**   | Azure Portal      |  A korábban létrehozott tároló ASA feladatdefiníció exportálja.       |
-Követésével [részletes oktatóanyag](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics) központi telepítése az első ASA munkahelye IoT oldal.
+Követésével [részletes oktatóanyag](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics) központi telepítése az első ASA munkahelye IoT oldal. A következő videó segítenek megérteni a a folyamat egy Stream Analytics-feladat az IoT-peremhálózati eszközön:  
+
+
+> [!VIDEO https://channel9.msdn.com/Events/Connect/2017/T157/player]
+
+
 
 #### <a name="create-an-asa-edge-job"></a>ASA peremhálózati feladat létrehozása
 1. Az Azure-portálon hozzon létre egy új "Stream Analytics-feladat". [Hozzon létre egy új ASA feladatot a közvetlen hivatkozás](https://ms.portal.azure.com/#create/Microsoft.StreamAnalyticsJob).
@@ -180,7 +185,7 @@ Az egyes bemeneti és kimeneti adatfolyamba hoz létre a ASA feladat, a telepít
 
 
 
-##### <a name="reference-data"></a>Referenciaadatok
+##### <a name="reference-data"></a>Referenciaadat
 Referenciaadatok (más néven keresési tábla) olyan véges adat, amely statikus vagy lelassulnak, ami jellegű módosítása. Keresés végrehajtásához, vagy az adatfolyam a kivizsgált használható. Annak hivatkozás adatok az Azure Stream Analytics-feladat, általában fogja használni a [hivatkozás adatok csatlakozás](https://msdn.microsoft.com/library/azure/dn949258.aspx) a lekérdezésben. További információkért lásd: a [ASA dokumentációjában az referenciaadatok](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-use-reference-data).
 
 Ahhoz, hogy a referenciaadatok Iot oldal ASA, kövesse az alábbi lépéseket kell: 
@@ -205,7 +210,7 @@ További információkért lásd: [Docker dokumentációja a Windows itt](https:
 Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [További információ az Azure Iot oldal](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works)
 * [Az IoT-Edge oktatóanyag ASA](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)

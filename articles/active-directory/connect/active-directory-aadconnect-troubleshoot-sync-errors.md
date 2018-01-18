@@ -3,8 +3,8 @@ title: "Az Azure AD Connect: A szinkronizálás során hibák elhárítása |} M
 description: "Az Azure AD Connect-szinkronizálás során észlelt hibák elhárítását ismerteti."
 services: active-directory
 documentationcenter: 
-author: karavar
-manager: samueld
+author: billmath
+manager: mtillman
 editor: curtand
 ms.assetid: 2209d5ce-0a64-447b-be3a-6f06d47995f8
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: billmath
-ms.openlocfilehash: 5a319de69c4e142414ab8f2be980a6576acbf8bb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aaa374d5a11ef5b5860f83a87386ff981319189f
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>A szinkronizálás során hibák elhárítása
 Hibák fordulhatnak elő, amikor azonosító adataihoz az Azure Active Directory (Azure AD) szinkronizálása a Windows Server Active Directory (AD DS). Ez a cikk áttekintést nyújt a szinkronizálási hibák, a következő eljárások érintett hibák, lehetséges módjai a javítsa ki a hibákat okozó némelyike különböző típusú. Ez a cikk tartalmazza a hiba gyakori hibatípusokat, és nem vonatkozhat a lehetséges hibákat.
@@ -51,7 +51,7 @@ Az Azure Active Directory-séma nem engedélyezi két vagy több objektum ugyana
 * ProxyAddresses
 * UserPrincipalName
 * onPremisesSecurityIdentifier
-* Objektumazonosító
+* ObjectId
 
 > [!NOTE]
 > [Az Azure AD attribútum ismétlődő attribútum rugalmassági](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md) szolgáltatás akkor is megkezdődött az Azure Active Directory alapértelmezett viselkedésként.  Ez csökkenti az Azure AD Connect (valamint más szinkronizálási ügyfelek) által látott szinkronizálási hibák száma az Azure AD rugalmasabb, hogy a duplikált ProxyAddresses és a UserPrincipalName attribútum a helyszíni AD-környezetek kezelését. Ez a funkció nem oldja meg az ismétlődési hibák. Így az adatok továbbra is meg kell javítani. De az új objektumokat, amelyek egyébként blokkolva vannak az Azure AD létre duplikált értékek miatt kiépítése lehetővé teszi. Ez a szinkronizálás vissza szinkronizálási hibák száma is csökkenti.
@@ -148,7 +148,7 @@ Ha az Azure AD Connect megkísérli egy új objektum hozzáadása vagy egy megl�
    * **smtp:bob@contoso.com**
 4. Egy új felhasználóhoz **Bob Taylor**, a helyszíni Active Directory kerül.
 5. Bob Taylor **UserPrincipalName** be van állítva az  **bobt@contoso.com** .
-6. **Bob Taylor** a következő értékeket a **ProxyAddresses** i attribútum. smtp:bobt@contoso.comII. smtp:bob.taylor@contoso.com
+6. **Bob Taylor** a következő értékeket a **ProxyAddresses** i attribútum. smtp:bobt@contoso.com ii. smtp:bob.taylor@contoso.com
 7. Bob Taylor objektum sikeresen szinkronizált Azure AD-val.
 8. Rendszergazda úgy döntött, hogy Bálint Taylor frissítése **ProxyAddresses** attribútum a következő értékkel: i. **smtp:bob@contoso.com**
 9. Az Azure AD megkísérli Bob Taylor objektum frissítése az Azure AD a fenti értékű, de ez a művelet sikertelen lesz hogy ProxyAddresses érték már hozzá van rendelve Bob Smith "AttributeValueMustBeUnique" hibát eredményezte.

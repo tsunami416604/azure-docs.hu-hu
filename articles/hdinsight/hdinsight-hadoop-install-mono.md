@@ -12,14 +12,14 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/23/2017
+ms.date: 01/17/2018
 ms.author: larryfr
 ms.custom: hdinsightactive
-ms.openlocfilehash: e9e55f05c97fe335a315683294805b1027b53784
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 555f82ec9351c8c3610ad99a95159cc47d2ee539
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="install-or-update-mono-on-hdinsight"></a>Telepítse vagy frissítse a HDInsight monó
 
@@ -35,13 +35,13 @@ Ez a parancsfájl fogadja el a következő paramétert:
 
 A parancsfájl telepíti a következő monó csomagokat:
 
-* __Monó befejezése__
+* __mono-complete__
 
-* __CA-tanúsítványok-monó__
+* __ca-certificates-mono__
 
 ## <a name="the-script"></a>A parancsfájl
 
-__Parancsfájl-hely__: [https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash](https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash)
+__Script location__: [https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash](https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash)
 
 __Követelmények__:
 
@@ -60,7 +60,7 @@ Monó verzió van telepítve, akkor adja meg a verziószámot a __paraméterek__
 > [!NOTE]
 > Ezt a parancsfájlt a HDInsight konfigurálásakor jelölje meg a parancsprogramot __megőrzött__. Ez a beállítás lehetővé teszi, hogy a HDInsight a parancsfájl alkalmazandó műveletek a méretezés során hozzáadott munkavégző csomópontokhoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Rendelkezik megtudta, hogyan frissítse vagy a HDInsight monó meghatározott verzióját telepítse. A .NET-alkalmazások használata a HDInsight monó további információkért lásd a következő dokumentumokat:
 

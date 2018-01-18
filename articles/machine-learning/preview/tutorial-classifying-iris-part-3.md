@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: tutorial
 ms.date: 11/29/2017
-ms.openlocfilehash: b8e245f13af1dd011a92bbf0584b1689a1a0399f
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 08ac10a160ef6305322714eb9d134be95c3b5e17
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="classify-iris-part-3-deploy-a-model"></a>Írisz osztályozása, 3. rész: Modell üzembe helyezése
 Az Azure Machine Learning-szolgáltatások (előzetes verzió) az adatszakértők számára létrehozott átfogó, integrált és fejlett adatelemzési megoldás. Az adatszakértők a használatával az adatok előkészítését, a kísérletek kidolgozását és a modellek felhőszinten való üzembe helyezését hajthatják végre.
@@ -134,37 +134,7 @@ A _helyi mód_ fejlesztési és tesztelési célokra használható. A modell üz
 
    Ekkor megnyílik a parancssor az aktuális projektmappában (**c:\temp\myIris>**).
 
-2. Győződjön meg arról, hogy a **Microsoft.ContainerRegistry** Azure-erőforrásszolgáltató regisztrálva van az előfizetésben. Ezt az erőforrás-szolgáltatót regisztrálnia kell, mielőtt létrehozna egy környezetet a 3. lépésben. A következő paranccsal ellenőrizheti, hogy regisztrálva van-e már:
-   ``` 
-   az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table 
-   ``` 
-
-   A következőhöz hasonló kimenetnek kell megjelennie: 
-   ```
-   Provider                                  Status 
-   --------                                  ------
-   Microsoft.Authorization                   Registered 
-   Microsoft.ContainerRegistry               Registered 
-   microsoft.insights                        Registered 
-   Microsoft.MachineLearningExperimentation  Registered 
-   ... 
-   ```
-   
-   Ha a **Microsoft.ContainerRegistry** nincs regisztrálva, a következő paranccsal regisztrálhatja:
-   ``` 
-   az provider register --namespace Microsoft.ContainerRegistry 
-   ```
-   A regisztráció eltarthat pár percig. Az állapotát az előző **az provider list** paranccsal vagy a következő paranccsal ellenőrizheti:
-   ``` 
-   az provider show -n Microsoft.ContainerRegistry 
-   ``` 
-
-   A kimenet harmadik sora a következő: **"registrationState": "Registering"**. Várjon néhány pillanatot, és ismételje meg a **show** parancsot, amíg a kimenet a következő nem lesz: **"registrationState": "Registered"**.
-
-   >[!NOTE] 
-   Ha telepíti az ACS-fürthöz, regisztrálnia kell a **Microsoft.ContainerService** erőforrás-szolgáltató, valamint a pontos ugyanezt a megközelítést használ.
-
-3. Hozza létre a környezetet. Ezt a lépést környezetenként egyszer kell futtatnia. Például egyszer kell futtatni fejlesztési, és egyszer éles környezetben. Ehhez az első környezethez használja a _helyi módot_. A következő parancsban a `-c` vagy a `--cluster` kapcsolóval egy _fürtmódú_ környezetet is létrehozhat később.
+2. Hozza létre a környezetet. Ezt a lépést környezetenként egyszer kell futtatnia. Például egyszer kell futtatni fejlesztési, és egyszer éles környezetben. Ehhez az első környezethez használja a _helyi módot_. A következő parancsban a `-c` vagy a `--cluster` kapcsolóval egy _fürtmódú_ környezetet is létrehozhat később.
 
    Vegye figyelembe, hogy a következő telepítési parancs használatához Közreműködői hozzáférés szükséges az előfizetéshez. Ha ezzel nem rendelkezik, akkor ahhoz az erőforráscsoporthoz szükséges Közreműködői hozzáférés, ahová a telepítést végzi. Utóbbi esetben meg kell adnia az erőforráscsoport nevét a telepítési parancs részeként a `-g` jelző használatával. 
 
@@ -176,17 +146,17 @@ A _helyi mód_ fejlesztési és tesztelési célokra használható. A modell üz
    
    A fürt nevével azonosítható a környezet. A hely legyen ugyanaz, mint az Azure Portalról létrehozott modellkezelési fiók helye.
 
-4. Hozzon létre egy Modellkezelési fiókot. (Ez egy egyszeri beállítás.)  
+3. Hozzon létre egy Modellkezelési fiókot. (Ez egy egyszeri beállítás.)  
    ```azurecli
    az ml account modelmanagement create --location <e.g. eastus2> -n <new model management account name> -g <existing resource group name> --sku-name S1
    ```
    
-5. Állítsa be a modellkezelési fiókot.  
+4. Állítsa be a modellkezelési fiókot.  
    ```azurecli
    az ml account modelmanagement set -n <youracctname> -g <yourresourcegroupname>
    ```
 
-6. Állítsa be a környezetet.
+5. Állítsa be a környezetet.
 
    A beállítás befejezése után az alábbi paranccsal állíthatja be a környezet üzembe helyezéséhez szükséges környezeti változókat. Használja ugyanazt a környezetnevet, amelyet korábban, a 4. lépésben használt. Használja ugyanazt az erőforráscsoport-nevet, amelyet a beállítási folyamat végeztével a parancsablakban kimenetként kapott.
 
@@ -194,7 +164,7 @@ A _helyi mód_ fejlesztési és tesztelési célokra használható. A modell üz
    az ml env set -n <deployment environment name> -g <existing resource group name>
    ```
 
-7. A következő paranccsal ellenőrizze, hogy megfelelően konfigurálta-e az üzembe helyezett környezetet a helyi webszolgáltatás üzembe helyezéséhez:
+6. A következő paranccsal ellenőrizze, hogy megfelelően konfigurálta-e az üzembe helyezett környezetet a helyi webszolgáltatás üzembe helyezéséhez:
 
    ```azurecli
    az ml env show

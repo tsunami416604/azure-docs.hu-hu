@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Connect szinkronizálása: userCertificate attribútum által okozott kezelése LargeObject hibákat |} Microsoft Docs"
+title: "Az Azure AD Connect - userCertificate attribútum által okozott LargeObject hibákat |} Microsoft Docs"
 description: "Ez a témakör a javítási lépéseket userCertificate attribútum által okozott LargeObject hibákat."
 services: active-directory
 documentationcenter: 
-author: cychua
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 146ad5b3-74d9-4a83-b9e8-0973a19828d9
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: fa824448288059aaad164035743982a2c9f20b9c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: 73c79e26b2962368f33bbb0d52d6c243b93a3026
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect szinkronizálása: userCertificate attribútum által okozott kezelése LargeObject hibák
 
@@ -89,9 +90,9 @@ Meglévő szinkronizálási szabály, hogy engedélyezve van, és az Azure AD us
     | Attribútum | Érték |
     | --- | --- |
     | Irány |**Kimenő** |
-    | MV-objektum típusa |**Személy** |
+    | MV-objektum típusa |**Person** |
     | Összekötő |*az Azure AD-összekötő neve* |
-    | Összekötő objektum típusa |**felhasználó** |
+    | Összekötő objektum típusa |**user** |
     | MV-attribútum |**userCertificate** |
 
 3. Ha sávon kívüli (out-of-box) szinkronizálási szabályokat és az Azure AD-összekötő segítségével userCertficiate attribútum esetén a felhasználói objektumok exportálása, kell visszakapnia a *"Ki az aad-ben – felhasználói ExchangeOnline"* szabály.
@@ -113,11 +114,11 @@ Az új szinkronizálási szabály kell rendelkeznie, ugyanez **tartalmazó szűr
 
     | Attribútum | Érték | Részletek |
     | --- | --- | --- |
-    | Név | *Adjon meg egy nevet* | Például *"Ki az aad-be – egyéni felülírása userCertificate"* |
+    | Name (Név) | *Adjon meg egy nevet* | Például *"Ki az aad-be – egyéni felülírása userCertificate"* |
     | Leírás | *Adjon meg egy leírást* | Például *"UserCertificate attribútum több mint 15 értékkel rendelkezik, ha exportálja NULL."* |
     | Csatlakoztatott rendszer | *Válassza ki az Azure AD Connectoron* |
-    | Objektumtípus csatlakoztatva | **felhasználó** | |
-    | Metaverzum-objektum típusa | **személy** | |
+    | Objektumtípus csatlakoztatva | **user** | |
+    | Metaverzum-objektum típusa | **person** | |
     | Kapcsolat típusa | **Csatlakozás** | |
     | Sorrend | *1 és 99 közötti számnak választott* | A szám választott nem kell a meglévő szinkronizálási szabályok által használt, és egy alacsonyabb értékű (és így magasabb prioritással) mint a meglévő szinkronizálási szabály. |
 
@@ -127,8 +128,8 @@ Az új szinkronizálási szabály kell rendelkeznie, ugyanez **tartalmazó szűr
 
     | Attribútum | Érték |
     | --- | --- |
-    | Típusa |**Kifejezés** |
-    | TARGET attribútuma |**userCertificate** |
+    | Típusa |**Expression** |
+    | Célattribútum |**userCertificate** |
     | Adatforrás-attribútum |*A következő kifejezés használata*:`IIF(IsNullOrEmpty([userCertificate]), NULL, IIF((Count([userCertificate])> 15),AuthoritativeNull,[userCertificate]))` |
     
 6. Kattintson a **Hozzáadás** a szinkronizálási szabály létrehozása gombra.
@@ -177,6 +178,6 @@ Most, hogy a probléma megoldódott, engedélyezze újra a beépített szinkroni
 > [!Note]
 > Az előző lépések az Azure AD Connect a beépített ütemezési és újabb verziók (1.1.xxx.x) csak vonatkoznak. Ha (általános) saját egyéni Feladatütemező segítségével rendszeres szinkronizálás indítható el, vagy régebbi verziójú (1.0.xxx.x) az Azure AD Connect Windows Feladatütemezőt használó használja, ennek megfelelően tiltsa le szeretné.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md).
 

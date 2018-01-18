@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 07/14/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 6567853e9ef3cad63595dc0afe7a793bdc5d972c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 43f06422e1120f1c3b2a9d9d5d4be515213c0937
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="secure-iis-web-server-with-ssl-certificates-on-a-windows-virtual-machine-in-azure"></a>Biztonságos Windows virtuális gépre az Azure-ban SSL-tanúsítványokat az IIS-webkiszolgáló
-Biztonságos webkiszolgálók, a Secure Sockets később (SSL) tanúsítvány használható webes forgalom titkosításához. E SSL-tanúsítványokat tárolhatja az Azure Key Vault, és biztonságos telepítéshez a Windows virtuális gépek (VM) tanúsítványok engedélyezése az Azure-ban. Ezen oktatóanyag segítségével megtanulhatja a következőket:
+Biztonságos webkiszolgálók, a Secure Sockets Layer (SSL) tanúsítvány használható webes forgalom titkosításához. E SSL-tanúsítványokat tárolhatja az Azure Key Vault, és biztonságos telepítéshez a Windows virtuális gépek (VM) tanúsítványok engedélyezése az Azure-ban. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
 > * Egy Azure-tároló létrehozása
@@ -221,7 +221,7 @@ A biztonságos IIS-webhelyet akkor jelenik meg, az alábbi példában látható 
 ![Futó biztonságos IIS webhely megtekintése](./media/tutorial-secure-web-server/secured-iis.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy IIS webkiszolgálón az Azure Key Vault tárolt SSL-tanúsítvánnyal védett. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

@@ -3,7 +3,7 @@ title: "Az Azure AD Connect: Frissítés egy korábbi verzióról |} Microsoft D
 description: "Az Azure Active Directory Connect, beleértve a helyben frissítés és egy mozgó áttelepítési legújabb kiadására történő frissítése a különböző módszereket ismerteti."
 services: active-directory
 documentationcenter: 
-author: AndKjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 31f084d8-2b89-478c-9079-76cf92e6618f
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: Identity
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: acce2e8f0c875d0211f132efab5f55d77a0def67
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4d431a9e0fab8d46b244fd40178ede594c095893
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Az Azure AD Connect: Frissítés egy korábbi verziójáról a legújabb verzióra
 Ez a témakör ismerteti a különböző módszereket, amelyek az Azure Active Directory (Azure AD) Connect telepítés frissítése a legújabb verzióra. Azt javasoljuk, hogy őrizze meg az Azure AD Connect kiadásainak aktuális. Is használhatja a lépéseket a [áttelepítési éppen](#swing-migration) szakaszában, amikor olyan jelentős konfigurációs módosítást hajt végre.
@@ -129,5 +129,5 @@ Előfordulhat, hogy esetekben nem célszerű ezeket a felülbírálásokat közv
 
 A teljes importálás és a teljes szinkronizálás felülbírálásokat egy tetszőleges összekötő hozzáadásához futtassa az alábbi parancsmagot:`Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid> -FullImportRequired $true -FullSyncRequired $true`
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ [a helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md).

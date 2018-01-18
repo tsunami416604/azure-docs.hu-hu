@@ -3,7 +3,7 @@ title: "Az Azure AD Connect Synchronization Service Managert műveletek |} Micro
 description: "Ismerje meg a műveletek fülre a Synchronization Service Managert, az Azure AD Connect."
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 97a26565-618f-4313-8711-5925eeb47cdc
@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 70086291e3a33f5a1f733e81d7a1d7bf76439cf0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 91210edc3306b834cbd68f0f028845a7f36dd0b5
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="using-the-sync-service-manager-operations-tab"></a>A Service Manager szinkronizálási műveletek lapján
 
-![Szinkronizálás a Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/operations.png)
+![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/operations.png)
 
 A műveletek lapon a legutóbbi művelet eredményei láthatók. Ezen a lapon az kulcs megértéséhez, valamint a problémák elhárításához.
 
@@ -44,7 +44,7 @@ Amikor kiválaszt egy sorra, alsó frissítései futtató részleteinek megjelen
 
 További információkért lásd: [olyan objektum, amely nem szinkronizál hibaelhárítása](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a [az Azure AD Connect szinkronizálási szolgáltatás](active-directory-aadconnectsync-whatis.md) konfigurációs.
 
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md).

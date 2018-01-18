@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/16/2017
+ms.date: 01/16/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b2388626dd68ea1911cdfb3d6a84e70f6bf3cc6
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: e2036da052e998797d860db2eadfd2ac5c968aae
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-oms-management-solution-preview"></a>Naplóelemzési hozzáadása a mentett keresések riasztások OMS-kezelési megoldással (előzetes verzió)
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 10/17/2017
 Ez a cikk feltételezi, hogy most már tudja, hogyan [felügyeleti megoldás létrehozása](operations-management-suite-solutions-creating.md) és felépítése egy [Resource Manager-sablon](../resource-group-authoring-templates.md) és megoldásfájlt.
 
 
-## <a name="log-analytics-workspace"></a>A Naplóelemzési munkaterület
+## <a name="log-analytics-workspace"></a>Log Analytics Workspace
 Összes erőforrása Naplóelemzési találhatók egy [munkaterület](../log-analytics/log-analytics-manage-access.md).  A [OMS munkaterületet, és az Automation-fiók](operations-management-suite-solutions.md#oms-workspace-and-automation-account), a munkaterület nem található meg a felügyeleti megoldás, de már léteznie kell a megoldás telepítve van.  Ha nem érhető el, akkor a megoldás telepítése sikertelen lesz.
 
 A munkaterület neve nem minden Naplóelemzési erőforrás nevében.  Ezt a megoldást a **munkaterület** paraméter savedsearch erőforrás az alábbi példában látható módon.
@@ -45,17 +45,14 @@ A munkaterület neve nem minden Naplóelemzési erőforrás nevében.  Ezt a meg
 ## <a name="log-analytics-api-version"></a>Napló Analytics API-verzió
 A Resource Manager-sablon definiált összes Naplóelemzési erőforrás rendelkezik egy tulajdonság **apiVersion** , amely meghatározza, hogy az erőforrást kell használnia az API verzióját.  Ebben a verzióban nem azonos az erőforrások, amelyek használják a [örökölt és a frissített lekérdezési nyelv](../log-analytics/log-analytics-log-search-upgrade.md).  
 
- Az alábbi táblázat felsorolja a hagyományos és a frissített munkaterületekkel és a mintalekérdezést adhat meg a különböző szintaxist az összes napló Analytics API-verziók. 
+ Az alábbi táblázat felsorolja a mentett keresések napló Analytics API-verziók a hagyományos és a frissített munkaterületek: 
 
-| Munkaterület-verzió | API-verzió | Mintalekérdezés |
+| Munkaterület-verzió | API-verzió | Lekérdezés |
 |:---|:---|:---|
-| 1-es verzió (örökölt)   | 2015 11-01. dátumú előnézeti | Típus = esemény EventLevelName hiba =             |
-| v2 (frissítése) | 2017-03-15 – előzetes | Esemény &#124; Ha EventLevelName == "Error"  |
+| 1-es verzió (örökölt)   | 2015 11-01. dátumú előnézeti | A hagyományos formátumú.<br> Példa: Írja be az esemény EventLevelName = hiba =  |
+| v2 (frissítése) | 2015 11-01. dátumú előnézeti | A hagyományos formátumú.  Telepítse a frissített formátumra alakítja át.<br> Példa: Írja be az esemény EventLevelName = hiba =<br>Konvertálva: esemény &#124; Ha EventLevelName == "Error"  |
+| v2 (frissítése) | 2017-03-03 – előzetes | Frissítési formátumban. <br>Példa: Az esemény &#124; Ha EventLevelName == "Error"  |
 
-Vegye figyelembe a következőket, amelynek munkaterületek különböző verziói által támogatott.
-
-- Az örökölt lekérdezési nyelv használó sablonokat is telepíthető egy régebbi vagy frissített munkaterületen.  Ha egy frissített munkaterület telepítve, majd lekérdezésekből lesz új nyelvének menet közben a felhasználó futtatásakor.
-- A frissített lekérdezési nyelv használó sablonokat csak egy frissített munkaterületen telepíthető.
 
 
 ## <a name="saved-searches"></a>Mentett keresések
@@ -190,9 +187,9 @@ A riasztási művelet erőforrás tulajdonságait az alábbi táblázatok ismert
 | Elem neve | Szükséges | Leírás |
 |:--|:--|:--|
 | Típus | Igen | A művelet típusát.  Ez az **riasztás** riasztási műveletekhez. |
-| Név | Igen | Megjelenítési nevet a riasztáshoz.  Ez az a riasztási szabály a konzolon megjelenített neve. |
+| Name (Név) | Igen | Megjelenítési nevet a riasztáshoz.  Ez az a riasztási szabály a konzolon megjelenített neve. |
 | Leírás | Nem | A riasztás nem kötelező leírása. |
-| Súlyosság | Igen | A riasztási rekord a következő értékek közül súlyossága:<br><br> **Kritikus**<br>**Figyelmeztetés**<br>**Tájékoztató** |
+| Súlyosság | Igen | A riasztási rekord a következő értékek közül súlyossága:<br><br> **Critical**<br>**Warning**<br>**Tájékoztató** |
 
 
 ##### <a name="threshold"></a>Küszöbérték
@@ -212,7 +209,7 @@ Ez a szakasz nem kötelező megadni.  Adja hozzá a metrika mérési riasztás.
 
 | Elem neve | Szükséges | Leírás |
 |:--|:--|:--|
-| TriggerCondition | Igen | Megadja, hogy a küszöbérték megszegése vagy a következő értékek közül egymást követő megszegése teljes száma:<br><br>**Teljes<br>egymást követő** |
+| TriggerCondition | Igen | Megadja, hogy a küszöbérték megszegése vagy a következő értékek közül egymást követő megszegése teljes száma:<br><br>**Total<br>Consecutive** |
 | Operátor | Igen | A következő értékek összehasonlítására operátor:<br><br>**gt = nagyobb, mint<br>lt = kisebb, mint** |
 | Érték | Igen | Ennyiszer a aktiválni a riasztást a feltételeknek kell megfelelnie. |
 
@@ -233,14 +230,14 @@ Ez a szakasz nem kötelező megadni.  Ebben a szakaszban tartalmazza, ha azt sze
 | Melléklet | Nem | Jelenleg nem támogatja a mellékleteket.  Ha ez az elem megtalálható, meg kell **nincs**. |
 
 
-##### <a name="remediation"></a>Szervizkiszolgáló
+##### <a name="remediation"></a>Szervizelés
 Ez a szakasz nem kötelező adja hozzá, ha azt szeretné, hogy egy runbook elindul a riasztásra adott válaszként. |
 
 | Elem neve | Szükséges | Leírás |
 |:--|:--|:--|
 | RunbookName | Igen | Indítsa el a runbook neve. |
 | WebhookUri | Igen | A runbook a webhook URI azonosítóját. |
-| A lejárati | Nem | Dátum és idő, amely a szervizelési lejár. |
+| Lejárat | Nem | Dátum és idő, amely a szervizelési lejár. |
 
 #### <a name="webhook-actions"></a>Webhookműveletek
 
@@ -276,7 +273,7 @@ A Webhook művelet erőforrás tulajdonságait az alábbi táblázatok ismerteti
 
 
 
-## <a name="sample"></a>Minta
+## <a name="sample"></a>Sample
 
 Az alábbiakban látható egy minta a megoldás, amely tartalmazza, amely a következőket tartalmazza:
 
@@ -520,7 +517,7 @@ A következő paraméterfájl minták értékeket biztosít ebben a megoldásban
     }
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Nézetek hozzáadása](operations-management-suite-solutions-resources-views.md) a kezelési megoldással.
 * [Adja hozzá az Automation-forgatókönyveket és egyéb erőforrások](operations-management-suite-solutions-resources-automation.md) a kezelési megoldással.
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/19/2017
 ms.author: dobett
-ms.openlocfilehash: a038a46c98af5b434456e1bb979fc6cd8e009d76
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: a27c3555f36560f8c945d997a15e98a42e1e5d4c
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub-hozzáférés szabályozása
 
@@ -57,7 +57,7 @@ Például a egy tipikus IoT-megoldás:
 > [!NOTE]
 > Lásd: [engedélyek](#iot-hub-permissions) részletes információkat.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
 Azure IoT Hub végpontok hozzáférést biztosít a megosztott elérési házirendeket és az identitás beállításjegyzék hitelesítő adatokat egy token ellenőrzésével.
 
@@ -134,8 +134,8 @@ Az alábbiakban a várt értékek:
 | --- | --- |
 | {aláírás} |Egy HMAC-SHA256 aláírás karakterlánc a következő formátumban: `{URL-encoded-resourceURI} + "\n" + expiry`. **Fontos**: A kulcs a Base64 kódolású anyag dekódolni, és a HMAC-SHA256 számítási végrehajtásához kulcsként. |
 | {resourceURI} |URI-előtag (által szegmens) a végpontok hozzáfér a tokenhez, kezdve IoT-központ (protokoll) állomásnevét. Például: `myHub.azure-devices.net/devices/device1` |
-| {a lejárati} |UTF8 karakterláncok esetében a epoch 00:00:00 UTC 1970. január 1. a másodpercek száma. |
-| {URL-kódolású-resourceURI} |Alacsonyabb eset az URL-kódolást a nagybetűs erőforrás URI |
+| {expiry} |UTF8 karakterláncok esetében a epoch 00:00:00 UTC 1970. január 1. a másodpercek száma. |
+| {URL-encoded-resourceURI} |Alacsonyabb eset az URL-kódolást a nagybetűs erőforrás URI |
 | {Házirendnév} |A megosztott elérési házirendet, amely a token hivatkozik neve. Hiányzik, ha a jogkivonat-eszközbeállításjegyzékben hitelesítő adatok hivatkozik. |
 
 **Megjegyzés: előtag alapján**: az URI-előtag számított szegmens és nem karakter. Például `/a/b` előtagja, az `/a/b/c` nem `/a/bc`.
@@ -268,7 +268,7 @@ Az eredmény, az összes funkciót device1 hozzáférést biztosít, amely a kö
 `SharedAccessSignature sr=myhub.azure-devices.net%2fdevices%2fdevice1&sig=13y8ejUk2z7PLmvtwR5RqlGBOVwiq7rQR3WZ5xZX3N4%3D&se=1456971697`
 
 > [!NOTE]
-> A .NET használatával SAS-jogkivonat készítése lehet [eszköz explorer] [ lnk-device-explorer] eszköz vagy a platformfüggetlen, csomópont-alapú [IOT hubbal-explorer] [ lnk-iothub-explorer] parancssori segédprogram.
+> Lehet létrehozni a SAS-jogkivonat használatával a .NET [eszköz explorer] [ lnk-device-explorer] eszköz vagy a platformfüggetlen, Python-alapú [az IoT-bővítményt az Azure CLI 2.0] [ lnk-IoT-extension-CLI-2.0] parancssori segédprogram.
 
 ### <a name="use-a-shared-access-policy"></a>Egy megosztott elérési házirendet használja
 
@@ -441,7 +441,7 @@ Az IoT Hub fejlesztői útmutató más hivatkozás témaköröket tartalmazza:
 * [Az IoT-központ lekérdezési nyelv] [ lnk-query] a lekérdezési nyelv segítségével adatok lekérését az IoT-központ az eszköz twins és feladatokat ismerteti.
 * [Az IoT Hub MQTT támogatási] [ lnk-devguide-mqtt] IoT-központ támogatásával kapcsolatos további információkat biztosít a MQTT protokoll.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy rendelkezik megtudta, hogyan való hozzáférést az IoT-központ, a következő IoT Hub fejlesztői útmutató témakörei iránt érdeklődik esetleg:
 
@@ -487,7 +487,7 @@ Ha azt szeretné, hogy próbálja ki azokat a jelen cikkben ismertetett fogalmak
 [lnk-service-sdk]: https://github.com/Azure/azure-iot-sdk-csharp/tree/master/service
 [lnk-client-sdk]: https://github.com/Azure/azure-iot-sdk-csharp/tree/master/device
 [lnk-device-explorer]: https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer
-[lnk-iothub-explorer]: https://github.com/azure/iothub-explorer
+[lnk-IoT-extension-CLI-2.0]: https://github.com/Azure/azure-iot-cli-extension
 
 [lnk-getstarted-tutorial]: iot-hub-csharp-csharp-getstarted.md
 [lnk-c2d-tutorial]: iot-hub-csharp-csharp-c2d.md

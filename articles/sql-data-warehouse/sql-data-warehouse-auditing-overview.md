@@ -13,30 +13,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.custom: security
-ms.date: 08/21/2017
+ms.date: 01/16/2018
 ms.author: rortloff;barbkess
-ms.openlocfilehash: f851c82ebeaa647f663d499a4d327c3479e36121
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 5400f29d8c7579809ef7b2a084115473df7baa85
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse naplózás
-> [!div class="op_single_selector"]
-> * [Naplózás](sql-data-warehouse-auditing-overview.md)
-> * [Fenyegetések észlelése](sql-data-warehouse-security-threat-detection.md)
-> 
-> 
 
-Az SQL Data Warehouse naplózás segítségével az adatbázist a naplózási események jelentkezzen be az Azure Storage-fiók bejegyzéshez. Naplózás segít törvényi megfelelőség fenntartásában, ismerje meg adatbázis-tevékenység, és azok az eltérések és rendellenességek, amelyek üzleti problémát jelenthetnek, vagy a biztonság megsértésére betekintést. Az SQL Data Warehouse naplózását is integrálható a Microsoft Power BI leásási jelentéskészítés és elemzés céljára.
+Az SQL Data Warehouse naplózás segítségével az adatbázist a naplózási események jelentkezzen be az Azure Storage-fiók bejegyzéshez. Naplózás segít törvényi megfelelőség fenntartásában, ismerje meg adatbázis-tevékenység, és azok az eltérések és rendellenességek, amelyek üzleti problémát jelenthetnek, vagy a biztonság megsértésére betekintést. Az SQL Data Warehouse naplózását is integrálható a Microsoft Power BI jelentéskészítés és elemzés céljára.
 
 A naplózási eszközök engedélyezése, és lehetővé teszi a megfelelést a megfelelőségi követelményeket, de nem garantálják megfelelőségi. További információ az Azure programokat, hogy támogatási szabványoknak való megfelelés, a következő témakörben: a <a href="http://azure.microsoft.com/support/trust-center/compliance/" target="_blank">Azure biztonsági és adatkezelési központ</a>.
 
-* [Adatbázis naplózási alapjai]
-* [Az adatbázis naplózásának beállítása]
-* [Elemezze a vizsgálati naplók és jelentések]
-
-## <a id="subheading-1"></a>Az Azure SQL Data Warehouse Database Auditing alapjai
+## <a id="subheading-1"></a>Naplózási alapjai
 Az SQL Data Warehouse-adatbázis naplózásának teszi lehetővé:
 
 * **Tartsa meg** kijelölt események egy naplóban. Adatbázis-műveleteket kell naplózni kategóriáinak adhat meg.
@@ -59,19 +50,19 @@ A tevékenységek és a naplózott események kapcsolatos további információk
 
 Naplók az Azure storage-fiókok vannak tárolva. Megadhatja, hogy az ellenőrzési napló megőrzési időtartam.
 
-A naplózási házirend meghatározása egy adott adatbázis vagy az alapértelmezett házirend-kiszolgáló. Kiszolgáló alapértelmezett naplózási házirend vonatkozik egy kiszolgálón lévő összes adatbázis, amely nem rendelkezik egy adott felülbíráló adatbázis naplózási házirend lett meghatározva.
+Meghatározhatja az adott adatbázishoz, vagy az alapértelmezett házirend-kiszolgáló a naplózási házirend. Kiszolgáló alapértelmezett naplózási házirend vonatkozik egy kiszolgálón lévő összes olyan adatbázis, amely nem rendelkezik egy adott felülbíráló adatbázis naplózási házirend lett meghatározva.
 
 Jelölőnégyzet naplózás használata naplózási beállítása előtt egy ["Régebbi típusú ügyfelekhez."](sql-data-warehouse-auditing-downlevel-clients.md)
 
 ## <a id="subheading-2"></a>Az adatbázis naplózásának beállítása
 1. Indítsa el a <a href="https://portal.azure.com" target="_blank">Azure-portálon</a>.
-2. Lépjen a **beállítások** a naplózni kívánt SQL Data warehouse panelre. Az a **beállítások** panelen válassza **naplózási & Threat detection**.
+2. Ugrás a **beállítások** a naplózni kívánt SQL-adatraktár. Válassza ki **naplózási & Threat detection**.
    
     ![][1]
 3. Következő lépésként engedélyezze a nyomkövetést oly módon, kattintson a **ON** gombra.
    
     ![][3]
-4. A naplózási konfiguráció paneljén válassza **tárolási részletek** naplózási naplók tárolási panel megnyitásához. Válassza ki az Azure storage-fiók naplók menteni és, a megőrzési időn. 
+4. Jelölje ki a naplózási konfiguráció panelen **tárolási részletek** a vizsgálati naplók tárolási panel megnyitásához. Válassza ki a naplókat, és a megőrzési idő az Azure storage-fiókjához. 
 >[!TIP]
 >Ugyanazt a tárfiókot az összes naplózott adatbázis segítségével a legtöbbet hozhatja ki az előre konfigurált jelentések sablonokat.
    
@@ -91,11 +82,12 @@ A sablon a képzeletbeli mintaadatok rendelkezik, és a napló közvetlenül imp
 ## <a id="subheading-4"></a>Tárolási kulcs újragenerálása
 Éles akkor valószínűleg a kulcsok rendszeresen frissíteni. Ha a kulcsok frissítése, kell menteni a házirendet. A folyamat a következőképpen történik:
 
-1. A naplózási konfiguráció panelen (a szakasz naplózásának beállítása fent leírt) kapcsoló a **Tárelérési kulcs** a *elsődleges* való *másodlagos* és **mentése**.
+1. A naplózás konfigurációs panelen, amelyet az előző beállítások szakasz naplózását, módosítsa a **Tárelérési kulcs** a *elsődleges* való *másodlagos* és  **MENTÉS**.
 
    ![][4]
-2. Nyissa meg a tárolási konfiguráció paneljét és **újragenerálja** a *elsődleges elérési kulcsot*.
-3. Lépjen vissza a naplózási konfiguráció blade, kapcsoló a **Tárelérési kulcs** a *másodlagos* való *elsődleges* nyomja le az ENTER **mentése**.
+2. Nyissa meg a tárolási konfiguráció panelre és **újragenerálja** a *elsődleges elérési kulcsot*.
+3. Lépjen vissza a naplózási konfiguráció panel 
+4. Váltás a **Tárelérési kulcs** a *másodlagos* való *elsődleges* nyomja le az ENTER **mentése**.
 4. Lépjen vissza a felhasználói felület tárolására és **újragenerálja** a *másodlagos elérési kulcsot* (mint a következő előkészítése kulcsok a frissítés.
 
 ## <a id="subheading-5"></a>Automatizálási (PowerShell/REST API)
@@ -103,18 +95,41 @@ A következő automation eszközök használatával az Azure SQL Data Warehouse 
 
 * **PowerShell-parancsmagok**:
 
-   * [Get-AzureRMSqlDatabaseAuditingPolicy][101]
-   * [Get-AzureRMSqlServerAuditingPolicy][102]
-   * [Remove-AzureRMSqlDatabaseAuditing][103]
-   * [Remove-AzureRMSqlServerAuditing][104]
-   * [Set-AzureRMSqlDatabaseAuditingPolicy][105]
-   * [Set-AzureRMSqlServerAuditingPolicy][106]
-   * [Használjon-AzureRMSqlServerAuditingPolicy][107]
+   * [Get-AzureRMSqlDatabaseAuditingPolicy](/powershell/module/azurerm.sql/get-azurermsqldatabaseauditingpolicy)
+   * [Get-AzureRMSqlServerAuditingPolicy](/powershell/module/azurerm.sql/Get-AzureRMSqlServerAuditingPolicy)
+   * [Remove-AzureRMSqlDatabaseAuditing](/powershell/module/azurerm.sql/Remove-AzureRMSqlDatabaseAuditing)
+   * [Remove-AzureRMSqlServerAuditing](/powershell/module/azurerm.sql/Remove-AzureRMSqlServerAuditing)
+   * [Set-AzureRMSqlDatabaseAuditingPolicy](/powershell/module/azurerm.sql/Set-AzureRMSqlDatabaseAuditingPolicy)
+   * [Set-AzureRMSqlServerAuditingPolicy](/powershell/module/azurerm.sql/Set-AzureRMSqlServerAuditingPolicy)
+   * [Use-AzureRMSqlServerAuditingPolicy](/powershell/module/azurerm.sql/Use-AzureRMSqlServerAuditingPolicy)
+
+
+## <a name="downlevel-clients-support-for-auditing-and-dynamic-data-masking"></a>A régebbi típusú ügyfeleknek naplózási és dinamikus adatmaszkolási támogatása
+SQL-ügyfelek számára, amely támogatja a TDS-átirányítás naplózási együttműködik.
+
+Bármely ügyfél, amely megvalósítja a TDS 7.4 kell is támogatja az átirányítást. A kivételek közé tartozik a JDBC 4.0-s verzióját, amelyben az átirányítás nem teljes mértékben támogatja, és a Node.JS mely funkcióhoz Tedious nem lett megvalósítva.
+
+Az "Alsószintű ügyfelek", amely támogatja a TDS 7.3-as verzió és az alábbi módosíthatja a kiszolgáló teljes Tartománynevét a kapcsolódási karakterláncban az alábbiak szerint:
+
+- A kapcsolódási karakterláncban eredeti kiszolgálójának teljes Tartományneve: <*kiszolgálónév*>. database.windows.net
+- A kapcsolati karakterláncban a módosított kiszolgálójának teljes Tartományneve: <*kiszolgálónév*> .database. **biztonságos**. windows.net
+
+"A régebbi típusú ügyfeleknek" részleges listáját tartalmazza:
+
+* A .NET 4.0-s vagy régebbi verzió,
+* ODBC 10.0-s vagy régebbi verzió.
+* JDBC (JDBC támogatja a TDS 7.4, a TDS-átirányítási funkció még nem teljes mértékben támogatott)
+* (A Node.JS) fárasztó
+
+**Megjegyzés:** lehet, hogy az előző kiszolgáló FQDN módosítását is hasznos egy SQL Server szint naplózási házirend alkalmazása nélkül konfiguráció szükséges lépést az egyes adatbázisok (ideiglenes megoldás).     
+
+
+
 
 <!--Anchors-->
-[Adatbázis naplózási alapjai]: #subheading-1
-[Az adatbázis naplózásának beállítása]: #subheading-2
-[Elemezze a vizsgálati naplók és jelentések]: #subheading-3
+[Database Auditing basics]: #subheading-1
+[Set up auditing for your database]: #subheading-2
+[Analyze audit logs and reports]: #subheading-3
 
 
 <!--Image references-->
@@ -125,11 +140,3 @@ A következő automation eszközök használatával az Azure SQL Data Warehouse 
 [5]: ./media/sql-data-warehouse-auditing-overview/sql-data-warehouse-auditing-dashboard.png
 
 
-<!--Link references-->
-[101]: /powershell/module/azurerm.sql/get-azurermsqldatabaseauditingpolicy
-[102]: /powershell/module/azurerm.sql/Get-AzureRMSqlServerAuditingPolicy
-[103]: /powershell/module/azurerm.sql/Remove-AzureRMSqlDatabaseAuditing
-[104]: /powershell/module/azurerm.sql/Remove-AzureRMSqlServerAuditing
-[105]: /powershell/module/azurerm.sql/Set-AzureRMSqlDatabaseAuditingPolicy
-[106]: /powershell/module/azurerm.sql/Set-AzureRMSqlServerAuditingPolicy
-[107]: /powershell/module/azurerm.sql/Use-AzureRMSqlServerAuditingPolicy

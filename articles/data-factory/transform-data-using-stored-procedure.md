@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 01/16/2018
 ms.author: shengc
-ms.openlocfilehash: f13f8aa0ca8686c0582bed77d047c9e6b39f7aa2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6b4523747b57ee7a3d48211c9bb7fba1123fe4ce
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Adatok átalakítása a SQL Server tárolt eljárási tevékenység az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -74,15 +74,15 @@ A következő táblázat ismerteti ezeket a JSON-tulajdonságokat:
 | ------------------------- | ---------------------------------------- | -------- |
 | név                      | A tevékenység neve.                     | Igen      |
 | leírás               | Mire használható a tevékenységet leíró szöveg | Nem       |
-| type                      | A tárolt eljárási tevékenység a tevékenység típusa nem SqlServerStoredProcedure | Igen      |
-| linkedServiceName         | Hivatkozás az Azure SQL Database vagy az Azure SQL Data Warehouse vagy a SQL Server Data Factory kapcsolt szolgáltatásként regisztrálva. A csatolt szolgáltatással kapcsolatos további tudnivalókért lásd: [összekapcsolt szolgáltatások számítási](compute-linked-services.md) cikk. | Igen      |
-| storedProcedureName       | Adja meg a tárolt eljárás neve az Azure SQL database vagy az Azure SQL Data Warehouse vagy SQL Server adatbázis, amely a társított szolgáltatás, amely a bemeneti tábla használja. | Igen      |
-| storedProcedureParameters | Adja meg a tárolt eljárás paraméter értékét. Használjon `"param1": { "value": "param1Value","type":"param1Type" }` felelt meg a paramétert értékek és az adatforrás támogatja a natív típusa. Ha az egyik paraméter null értéket átadni van szüksége, *"param1": {"érték": null}* (összes kisbetű). | Nem       |
+| type                      | A tárolt eljárási tevékenység, a tevékenység típusa nem **SqlServerStoredProcedure** | Igen      |
+| linkedServiceName         | Hivatkozás a **Azure SQL Database** vagy **Azure SQL Data Warehouse** vagy **SQL Server** adat-előállítóban csatolt szolgáltatásként regisztrálva. A csatolt szolgáltatással kapcsolatos további tudnivalókért lásd: [összekapcsolt szolgáltatások számítási](compute-linked-services.md) cikk. | Igen      |
+| storedProcedureName       | Adja meg a tárolt eljárás a meghívni kívánt nevét. | Igen      |
+| storedProcedureParameters | Adja meg a tárolt eljárás paraméter értékét. Használjon `"param1": { "value": "param1Value","type":"param1Type" }` felelt meg a paraméterértékek és azok típusát, az adatforrás által támogatott. Ha az egyik paraméter null értéket átadni van szüksége, `"param1": { "value": null }` (összes kisbetű). | Nem       |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse meg a következő cikkekben talál, amely ismerteti az adatok más módon: 
 
-* [U-SQL-tevékenység](transform-data-using-data-lake-analytics.md)
+* [U-SQL Activity](transform-data-using-data-lake-analytics.md)
 * [Hive-tevékenység](transform-data-using-hadoop-hive.md)
 * [A Pig-tevékenység](transform-data-using-hadoop-pig.md)
 * [MapReduce művelethez](transform-data-using-hadoop-map-reduce.md)

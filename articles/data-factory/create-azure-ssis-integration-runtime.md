@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: spelluru
-ms.openlocfilehash: 7796df75d811ad34967aee66478eae992fd449fe
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: a5ed3cbfac0b86cedde5718cef4231a7fcc36f2e
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Egy Azure-SSIS-integrációs futásidejű létrehozása az Azure Data Factory
 Ez a cikk lépéseit egy Azure-SSIS-integráció futtatókörnyezetet, az Azure Data Factory történő üzembe helyezéséhez. Ezután az SQL Server Data Tools (SSDT) vagy az SQL Server Management Studio (SSMS) használatával üzembe helyezhet SQL Server Integration Services- (SSIS-) csomagokat ebben az Azure-beli modulban.
@@ -44,7 +44,7 @@ Egy Azure-SSIS-IR csatlakoztatása egy virtuális hálózatot és egy virtuális
 > [!NOTE]
 > Az Azure Data Factory 2-es verziója és az Azure-SSIS integrációs modulja által támogatott régiókat a [régiónként elérhető termékek](https://azure.microsoft.com/regions/services/) listájában tekintheti meg. Bontsa ki az **Adatok + analitika** csomópontot a **Data Factory 2. verziója** és az **SSIS integrációs modul** megtekintéséhez.
 
-## <a name="use-azure-portal"></a>Az Azure-portál használata
+## <a name="azure-portal"></a>Azure Portal
 
 ### <a name="create-a-data-factory"></a>Data factory létrehozása
 
@@ -142,7 +142,7 @@ Egy Azure-SSIS-IR csatlakoztatása egy virtuális hálózatot és egy virtuális
     ![Adja meg az integrációs futásidejű típusa](./media/tutorial-create-azure-ssis-runtime-portal/integration-runtime-setup-options.png)
 4. Tekintse meg a [kiépíteni az Azure SSIS-integrációs futásidejű](#provision-an-azure-ssis-integration-runtime) szakasz a fennmaradó lépéseit egy Azure-SSIS infravörös beállítása
 
-## <a name="use-azure-powershell"></a>Azure PowerShell használatával
+## <a name="azure-powershell"></a>Azure PowerShell
 
 ### <a name="create-variables"></a>Változók létrehozása
 Ebben az oktatóanyagban változókat határozhat meg a szkriptben való használatra:
@@ -411,7 +411,69 @@ write-host("##### Completed #####")
 write-host("If any cmdlet is unsuccessful, please consider using -Debug option for diagnostics.")
 ```
 
+## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
+Az Azure Resource Manager-sablon segítségével hozzon létre egy Azure-SSIS-integráció futtatókörnyezetet. Íme egy minta forgatókönyv: 
 
+1. Hozzon létre egy JSON-fájl a következő Resource Manager-sablon. Cserélje le a saját értékeit értéket a csúcsos zárójelek közé (hely tartozó felhasználók számára). 
+
+    ```json
+    {
+        "contentVersion": "1.0.0.0",
+        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "parameters": {},
+        "variables": {},
+        "resources": [{
+            "name": "<Specify a name for your data factory>",
+            "apiVersion": "2017-09-01-preview",
+            "type": "Microsoft.DataFactory/factories",
+            "location": "East US",
+            "properties": {},
+            "resources": [{
+                "type": "integrationruntimes",
+                "name": "<Specify a name for the Azure SSIS IR>",
+                "dependsOn": [ "<The name of the data factory you specified at the beginning>" ],
+                "apiVersion": "2017-09-01-preview",
+                "properties": {
+                    "type": "Managed",
+                    "typeProperties": {
+                        "computeProperties": {
+                            "location": "East US",
+                            "nodeSize": "Standard_D1_v2",
+                            "numberOfNodes": 1,
+                            "maxParallelExecutionsPerNode": 1
+                        },
+                        "ssisProperties": {
+                            "catalogInfo": {
+                                "catalogServerEndpoint": "<Azure SQL server>.database.windows.net",
+                                "catalogAdminUserName": "<Azure SQL user",
+                                "catalogAdminPassword": {
+                                    "type": "SecureString",
+                                    "value": "<Azure SQL Password>"
+                                },
+                                "catalogPricingTier": "Basic"
+                            }
+                        }
+                    }
+                }
+            }]
+        }]
+    }
+    ```
+2. A Resource Manager sablon történő üzembe helyezéséhez futtassa a New-AzureRmResourceGroupDeployment parancsot, ahogy az a következő exmaple. Ebben a példában ADFTutorialResourceGroup pedig az erőforráscsoport neve. ADFTutorialARM.json a data factory és az Azure-SSIS infravörös JSON definícióját tartalmazó fájl 
+
+    ```powershell
+    New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json
+    ```
+
+    Ez a parancs létrehozza a data factory és hoz létre egy Azure-SSIS-IR, de nem indul el a infravörös 
+3. Az Azure-SSIS infravörös elindításához futtassa a Start-AzureRmDataFactoryV2IntegrationRuntime parancsot: 
+
+    ```powershell
+    Start-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName "<Resource Group Name> `
+                                             -DataFactoryName <Data Factory Name> `
+                                             -Name <Azure SSIS IR Name> `
+                                             -Force
+    ``` 
 
 ## <a name="deploy-ssis-packages"></a>SSIS-csomagok üzembe helyezése
 Most az SQL Server Data Tools (SSDT) vagy az SQL Server Management Studio (SSMS) segítségével helyezze üzembe az SSIS-csomagokat az Azure-ban. Csatlakozzon ahhoz az Azure SQL Serverhez, amelyen az SSIS-katalógus (SSISDB) található. Az Azure SQL Server nevének formátuma a következő: &lt;servername&gt;.database.windows.net (az Azure SQL Database esetében). Útmutatásért tekintse meg a [csomagok üzembe helyezésével kapcsolatos](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#deploy-packages-to-integration-services-server) cikket. 

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/10/2017
 ms.author: dobett
-ms.openlocfilehash: 9009afc83b40064c6dbf10100f514c681af9b96b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 54f446f8735bc46b87fe19aaf7845c5fbfce2744
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>Ütemezés és a feladatok (Java)
 
@@ -62,7 +62,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 [!INCLUDE [iot-hub-get-started-create-device-identity-portal](../../includes/iot-hub-get-started-create-device-identity-portal.md)]
 
-Ha inkább hozzon létre az eszközidentitást programozott módon, olvassa el a megfelelő részt a [csatlakoztassa az eszközt az IoT hub Java használatával](iot-hub-java-java-getstarted.md#create-a-device-identity) cikk. Használhatja a [IOT hubbal-explorer](https://github.com/Azure/iothub-explorer) hozzáad egy eszközt az IoT hub eszköz.
+Ha inkább hozzon létre az eszközidentitást programozott módon, olvassa el a megfelelő részt a [csatlakoztassa az eszközt az IoT hub Java használatával](iot-hub-java-java-getstarted.md#create-a-device-identity) cikk. Használhatja a [IoT-bővítményt az Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension) hozzáad egy eszközt az IoT hub eszköz.
 
 ## <a name="create-the-service-app"></a>A service-alkalmazás létrehozása
 
@@ -477,7 +477,7 @@ Most már készen áll a konzol alkalmazások futtatásához.
 
     ![Az eszközügyfél válaszol-e a módosításokat](media/iot-hub-java-java-schedule-jobs/device-app-2.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy új IoT Hubot konfigurált az Azure-portálon, majd létrehozott egy eszközidentitást az IoT Hub identitásjegyzékében. Létrehozott egy háttér-alkalmazás két feladatok futtatásához. Az első munkahelye kívánt tulajdonságértékei állíthatók, és a második feladat közvetlen metódus hívása.
 

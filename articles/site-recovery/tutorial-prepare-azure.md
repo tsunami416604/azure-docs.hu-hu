@@ -5,18 +5,18 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 12/31/2017
+ms.date: 01/16/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 71d740107eb2082e3f112941e1d4abd715d25807
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 63290127b298efced14ad34e9223840f3229f046
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>A helyszíni gépeket replikálása Azure-erőforrások előkészítése
 
-A [Azure Site Recovery](site-recovery-overview.md) szolgáltatás által az üzleti alkalmazások, és az elérhető futtató tervezett és nem tervezett leállások során hozzájárul az üzleti folytonossági és vészhelyreállítási (BCDR) helyreállítási stratégiát. A Site Recovery koordinálja a vész-helyreállítási a helyi gép és az Azure virtuális gépek (VM), beleértve a replikáció, feladatátvétel és helyreállítás, valamint a kezelésére.
+A [Azure Site Recovery](site-recovery-overview.md) szolgáltatás által az üzleti alkalmazások, és az tervezett és nem tervezett leállások alatt futó hozzájárul az üzleti folytonossági és vészhelyreállítási (BCDR) helyreállítási stratégiát. A Site Recovery koordinálja a vész-helyreállítási a helyi gép és az Azure virtuális gépek (VM), beleértve a replikáció, feladatátvétel és helyreállítás, valamint a kezelésére.
 
 Az oktatóanyag bemutatja, hogyan készíti elő az Azure összetevők, ha meg szeretné a helyszíni virtuális gépek (Hyper-V vagy VMware), vagy windowsos/Linuxos fizikai kiszolgálók replikálása Azure-bA. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -46,9 +46,9 @@ A "Virtuális gép közreműködő" beépített szerepkör tartalmazza azokat az
 Lemezképek replikált gép az Azure storage tartanak. Azure virtuális gépek jönnek létre a tárból, amikor a rendszer átadja a helyszíni Azure.
 
 1. Az a [Azure-portálon](https://portal.azure.com) menüben kattintson a **új** -> **tárolási** -> **tárfiók**.
-2. Adja meg a tárfiók nevét. Ezek az oktatóanyagok az nevét használjuk **contosovmsacct1910171607**. A névnek kell Azure belül egyedieknek kell, és csak kisbetűket és számokat 3 és 24 karakter közötti lehet.
+2. A **storage-fiók létrehozása**, adja meg a fiók nevét. Ezek az oktatóanyagok az nevét használjuk **contosovmsacct1910171607**. A névnek kell Azure belül egyedieknek kell, és csak kisbetűket és számokat 3 és 24 karakter közötti lehet.
 3. Használja a **erőforrás-kezelő** üzembe helyezési modellben.
-4. Válassza ki **általános célú** > **szabványos**.
+4. Válassza ki **általános célú** > **szabványos**. Ne válassza ki a blob Storage tárolóban.
 5. Válassza ki az alapértelmezett **RA-GRS** az adattároló redundanciája, amely.
 6. Válassza ki az előfizetést, amelyikben az új tárfiókot létre szeretné hozni.
 7. Adjon meg egy új erőforráscsoportot. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Ezek az oktatóanyagok nevét használjuk **ContosoRG**.
@@ -86,7 +86,7 @@ Azure virtuális gépek a feladatátvételt követően létrehozásakor a tárol
    - Válassza ki azt a helyet **Nyugat-Európában**. A hálózatnak és a Recovery Services-tárolónak ugyanabban a régióban kell elhelyezkednie.
 3. Kattintson a **Create** (Létrehozás) gombra.
 
-   ![hálózat létrehozása](media/tutorial-prepare-azure/create-network.png)
+   ![create-network](media/tutorial-prepare-azure/create-network.png)
 
    A virtuális hálózat létrehozásához néhány másodpercet vesz igénybe. Miután létrehozott látható az Azure portál Irányítópultjára.
 

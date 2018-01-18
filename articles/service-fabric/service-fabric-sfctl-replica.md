@@ -9,16 +9,16 @@ editor:
 ms.assetid: 
 ms.service: service-fabric
 ms.devlang: cli
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 09/22/2017
+ms.date: 12/22/2017
 ms.author: ryanwi
-ms.openlocfilehash: bd16dd889cbe0f05d7e60f444c6c5fa2e65f64a4
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: 422c19dfa9a204d98a898f76bc1af92a05c054d0
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="sfctl-replica"></a>sfctl replika
 A szolgáltatáspartíciók tartozó replikák kezelése.
@@ -32,8 +32,8 @@ A szolgáltatáspartíciók tartozó replikák kezelése.
 |    állapot    | A Service Fabric állapotalapú szolgáltatási replika- vagy állapotmentes szolgáltatások állapotának beolvasása.|
 |    információ      | A Service Fabric-partíción replika információ lekérése.|
 |    lista      | A Service Fabric szolgáltatás partíció replikák információ lekérése.|
-|    Távolítsa el    | Eltávolítja a csomóponton futó szolgáltatás replika.|
-|    a jelentés-állapota| A Service Fabric-replika health jelentést küld.|
+|    eltávolítás    | Eltávolítja a csomóponton futó szolgáltatás replika.|
+|    report-health| A Service Fabric-replika health jelentést küld.|
 |    Indítsa újra a   | A szolgáltatás a replika egy csomóponton futó megőrzött szolgáltatás újraindul.|
 
 
@@ -55,7 +55,7 @@ Lekérdezi a telepített Service Fabric-csomópont replika részleteit. Adatok t
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresése               | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
+| --debug               | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 | – Súgó -h             | Ez egy súgóüzenet és kilépési megjelenítése.|
 | – a kimeneti -o           | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.  Alapértelmezett: JSON-ná.|
 | --lekérdezés               | JMESPath lekérdezési karakterlánc. További információk és példák: http://jmespath.org/.|
@@ -72,14 +72,14 @@ A Service Fabric replika állapotának beolvasása. Az EventsHealthStateFilter h
 | --- | --- |
 | --partícióazonosító [szükséges]| A partíció identitását.|
 | --másodpéldány-azonosító [szükséges]| A replika azonosítója.|
-| --események-rendszerállapot-állapot-szűrő| A gyűjtemény által visszaadott HealthEvent objektumok állapota alapján szűrését teszi lehetővé. Ez a paraméter lehetséges értékei közé tartozik a következő állapotok közül az egyik egész értéket. Csak a szűrőnek megfelelő események adja vissza. Összes esemény összesített állapotát értékeléséhez használt. Ha nincs megadva, a rendszer összes bejegyzés is megjelennek. Az állapot értékei jelző-alapú számbavétel, az érték lehet ezek segítségével bitenkénti "Vagy" operátor érték kombinációja. Például ha a megadott érték azonban 6 majd az OK (2) és a figyelmeztető (4) HealthState értékkel rendelkező események is megjelennek. -Alapértelmezett - alapértelmezett értéket. Bármely HealthState megegyezik. A tulajdonság értéke nulla. -None - szűrőt, amely nem egyezik a HealthState értékét. Ahhoz, hogy nincs eredményeket egy adott gyűjtemény állapotok használt. Az érték 1. -Ok - szűrheti, hogy egyező bemeneti érték a HealthState az OK gombra. A 2 érték. -A figyelmeztetési - szűrő, hogy egyező bemeneti healthstate értékét figyelmeztetés. Az érték 4. -Hiba – hiba HealthState értékű bemeneti egyező szűrő. A értéke 8. -Az összes - szűrő, amely megfelel a bemeneti bármely HealthState értékkel. Az érték 65535.|
+| --events-health-state-filter| A gyűjtemény által visszaadott HealthEvent objektumok állapota alapján szűrését teszi lehetővé. Ez a paraméter lehetséges értékei közé tartozik a következő állapotok közül az egyik egész értéket. Csak a szűrőnek megfelelő események adja vissza. Összes esemény összesített állapotát értékeléséhez használt. Ha nincs megadva, a rendszer összes bejegyzés is megjelennek. Az állapot értékei jelző-alapú számbavétel, az érték lehet ezek segítségével bitenkénti "Vagy" operátor érték kombinációja. Például ha a megadott érték azonban 6 majd az OK (2) és a figyelmeztető (4) HealthState értékkel rendelkező események is megjelennek. -Alapértelmezett - alapértelmezett értéket. Bármely HealthState megegyezik. A tulajdonság értéke nulla. -None - szűrőt, amely nem egyezik a HealthState értékét. Ahhoz, hogy nincs eredményeket egy adott gyűjtemény állapotok használt. Az érték 1. -Ok - szűrheti, hogy egyező bemeneti érték a HealthState az OK gombra. A 2 érték. -A figyelmeztetési - szűrő, hogy egyező bemeneti healthstate értékét figyelmeztetés. Az érték 4. -Hiba – hiba HealthState értékű bemeneti egyező szűrő. A értéke 8. -Az összes - szűrő, amely megfelel a bemeneti bármely HealthState értékkel. Az érték 65535.|
 | – időtúllépés -t             | Időtúllépését másodpercben.  Alapértelmezett: 60.|
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresése                  | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
+| --debug                  | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 | – Súgó -h                | Ez egy súgóüzenet és kilépési megjelenítése.|
 | – a kimeneti -o              | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.  Alapértelmezett: JSON-ná.|
 | --lekérdezés                  | JMESPath lekérdezési karakterlánc. További információt és példákat http://jmespath.org/ talál.|
@@ -103,7 +103,7 @@ A respons például az azonosító, szerepkör, állapot, rendszerállapot, csom
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresése               | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
+| --debug               | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 | – Súgó -h             | Ez egy súgóüzenet és kilépési megjelenítése.|
 | – a kimeneti -o           | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.  Alapértelmezett: JSON-ná.|
 | --lekérdezés               | JMESPath lekérdezési karakterlánc. További információt és példákat http://jmespath.org/ talál.|
@@ -127,7 +127,7 @@ A respons például az azonosító, szerepkör, állapot, rendszerállapot, csom
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresése               | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
+| --debug               | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 | – Súgó -h             | Ez egy súgóüzenet és kilépési megjelenítése.|
 | – a kimeneti -o           | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.  Alapértelmezett: JSON-ná.|
 | --lekérdezés               | JMESPath lekérdezési karakterlánc. További információt és példákat http://jmespath.org/ talál.|
@@ -145,14 +145,14 @@ Ez az API a Service Fabric replika hiba replika távolítsa el a Service Fabric-
 | --csomópontnév [szükséges]| A csomópont neve.|
 | --partícióazonosító [szükséges]| A partíció identitását.|
 | --másodpéldány-azonosító [szükséges]| A replika azonosítója.|
-| – force-eltávolítása        | Távolítsa el a Service Fabric-alkalmazás vagy szolgáltatás kényszerített módon a biztonságos leállításának feladatütemezési áthaladás nélkül. Ez a paraméter használható kényszerített módon törli egy alkalmazás vagy szolgáltatás mely törlésre van, amely megakadályozza, hogy a kódjának hibái miatt csatornainicializálásnak szabályos replikák zárja be.|
+| --force-remove        | Távolítsa el a Service Fabric-alkalmazás vagy szolgáltatás kényszerített módon a biztonságos leállításának feladatütemezési áthaladás nélkül. Ez a paraméter használható kényszerített módon törli egy alkalmazás vagy szolgáltatás mely törlésre van, amely megakadályozza, hogy a kódjának hibái miatt csatornainicializálásnak szabályos replikák zárja be.|
 | – időtúllépés -t          | Időtúllépését másodpercben.  Alapértelmezett: 60.|
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresése               | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
+| --debug               | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 | – Súgó -h             | Ez egy súgóüzenet és kilépési megjelenítése.|
 | – a kimeneti -o           | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.  Alapértelmezett: JSON-ná.|
 | --lekérdezés               | JMESPath lekérdezési karakterlánc. További információt és példákat http://jmespath.org/ talál.|
@@ -176,12 +176,12 @@ A szolgáltatás a replika egy csomóponton futó megőrzött szolgáltatás új
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresése               | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
+| --debug               | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 | – Súgó -h             | Ez egy súgóüzenet és kilépési megjelenítése.|
 | – a kimeneti -o           | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.  Alapértelmezett: JSON-ná.|
 | --lekérdezés               | JMESPath lekérdezési karakterlánc. További információt és példákat http://jmespath.org/ talál.|
 | – részletes             | Naplózási növelése. Használatát – a teljes hibakeresési naplók hibakeresési.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [A telepítő](service-fabric-cli.md) a Service Fabric CLI-t.
 - A Service Fabric parancssori felület használatával használata a [minta parancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application).

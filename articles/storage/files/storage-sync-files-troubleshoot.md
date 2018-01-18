@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 23f111bef6a68115e4474f3c13e91d69d7e89e1c
-ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
+ms.openlocfilehash: 7562e43f58f303ea34a08b8b9e056a0c3d0c10d0
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>Hibaelhárítás az Azure fájlszinkronizálás (előzetes verzió)
 Sync szolgáltatás használatával Azure fájl (előzetes verzió) központosítása fájlmegosztások a szervezet Azure fájlokban, ugyanakkor változatlanul megőrizze a rugalmasság, a teljesítmény és a kompatibilitási egy helyszíni fájlkiszolgáló. Azure fájlszinkronizálás átalakítja a Windows Server az Azure fájlmegosztás gyors gyorsítótárába. Minden protokoll, amely a Windows Server helyileg, az adatok eléréséhez használhatja, többek között a ftps-t, SMB és NFS. Akkor is annyi gyorsítótárak világszerte szükség szerint.
@@ -135,6 +135,8 @@ Ha egyes fájloknál szinkronizálása:
 
     > [!NOTE]
     > Azure fájl szinkronizálása a VSS-pillanatképeket megnyitott kezelőkkel rendelkező fájlok rendszeres időközönként vesz igénybe.
+
+Jelenleg nem támogatjuk erőforrás áthelyezése egy másik előfizetés vagy, áthelyezése egy másik Azure ad bérlői.  Ha az előfizetés helyezi át a különböző bérlők, Azure fájlmegosztás tulajdonjog változásáról alapján szolgáltatás elérhetetlenné válik. A bérlő módosul, ha szüksége lesz a kiszolgáló végpontok és a felhőbeli végpont törlése (lásd: a szinkronizálási csoportok kezelése szakasz utasításokat újra használható Azure fájlmegosztás tisztítása) és a szinkronizálási csoport újbóli létrehozása.
 
 ## <a name="cloud-tiering"></a>Felhőbeli rétegzés 
 Nincsenek hibák, a felhőben két elérési utak rétegezéséhez:

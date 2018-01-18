@@ -3,7 +3,7 @@ title: "Azure AD Connect szinkronizálása: ütemező |} Microsoft Docs"
 description: "Ez a témakör ismerteti az Azure AD Connect szinkronizálási szolgáltatás beépített ütemezési szolgáltatása."
 services: active-directory
 documentationcenter: 
-author: AndKjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 6b1a598f-89c0-4244-9b20-f4aaad5233cf
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 418dcf67844bff7352b63db31ddfa3be3f7f29e9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: df7b16157ccb47a5463570c3ed58b9c44f0b67d0
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect szinkronizálása: a Feladatütemező
 Ez a témakör ismerteti az Azure AD Connect szinkronizálási szolgáltatás beépített ütemezési (más néven a szinkronizálási motor).
@@ -168,7 +168,7 @@ A fenti kép az első sor olyan állapotban, amelyen a szinkronizálási motor �
 ## <a name="scheduler-and-installation-wizard"></a>Ütemező és a telepítési varázsló
 Ha először a telepítési varázsló, a Feladatütemező ideiglenesen fel van függesztve. Ez a viselkedés oka, hogy a rendszer feltételezi, hogy a konfigurációs módosításokat, és ezeket a beállításokat nem lehet alkalmazni, ha a szinkronizálási motor aktívan fut. Ezért ne hagyja a telepítési varázsló megnyitása leállítja a szinkronizálási motor az egyetlen szinkronizálási műveletek végrehajtása óta.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a [az Azure AD Connect szinkronizálási szolgáltatás](active-directory-aadconnectsync-whatis.md) konfigurációs.
 
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md).

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 16685787b04d26f09e2b8778faac257571162aac
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: ab72152fc937e3c4552147fce29c95ea0efcadf4
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="frequently-asked-questions-for-iot-suite-connected-factory-preconfigured-solution"></a>Gyakori kérdések az IoT Suite csatlakoztatott beépített, előre konfigurált megoldás
 
@@ -104,20 +104,20 @@ A kapcsolati karakterláncot az Azure portál használatával is tájékozódhat
 
 A szimuláció önkiszolgáló regisztrál, a következő eszközöket:
 
-* proxy.Beijing.Corp.contoso
-* proxy.capetown.Corp.contoso
-* proxy.Mumbai.Corp.contoso
-* proxy.munich0.Corp.contoso
-* proxy.Rio.Corp.contoso
-* proxy.Seattle.Corp.contoso
-* Publisher.Beijing.Corp.contoso
-* Publisher.capetown.Corp.contoso
-* Publisher.Mumbai.Corp.contoso
-* Publisher.munich0.Corp.contoso
-* Publisher.Rio.Corp.contoso
-* Publisher.Seattle.Corp.contoso
+* proxy.beijing.corp.contoso
+* proxy.capetown.corp.contoso
+* proxy.mumbai.corp.contoso
+* proxy.munich0.corp.contoso
+* proxy.rio.corp.contoso
+* proxy.seattle.corp.contoso
+* publisher.beijing.corp.contoso
+* publisher.capetown.corp.contoso
+* publisher.mumbai.corp.contoso
+* publisher.munich0.corp.contoso
+* publisher.rio.corp.contoso
+* publisher.seattle.corp.contoso
 
-Használja a [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) vagy [IOT hubbal-explorer](https://github.com/azure/iothub-explorer) eszköz, ellenőrizheti, hogy mely eszközök vannak regisztrálva az IoT-központ, a megoldás használ. Ezek az eszközök használatához szüksége a kapcsolati karakterlánc az IoT-központ a környezetben.
+Használja a [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) vagy [az IoT-bővítmény az Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension) eszköz, ellenőrizheti, hogy mely eszközök vannak regisztrálva az IoT-központ, a megoldás használ. Eszköz-kezelővel, szüksége a kapcsolati karakterlánc az IoT-központ a környezetben. Az Azure CLI 2.0 az IoT-bővítmény használatához szüksége van az IoT Hub nevét.
 
 ### <a name="how-can-i-get-log-data-from-the-simulation-components"></a>Hogyan kaphatok naplóadatait a szimuláció összetevői?
 
@@ -135,20 +135,26 @@ Az a [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/
 
 Vizsgálja meg a kiadó eszközök egyike által küldött adatokat:
 
-* Publisher.Beijing.Corp.contoso
-* Publisher.capetown.Corp.contoso
-* Publisher.Mumbai.Corp.contoso
-* Publisher.munich0.Corp.contoso
-* Publisher.Rio.Corp.contoso
-* Publisher.Seattle.Corp.contoso
+* publisher.beijing.corp.contoso
+* publisher.capetown.corp.contoso
+* publisher.mumbai.corp.contoso
+* publisher.munich0.corp.contoso
+* publisher.rio.corp.contoso
+* publisher.seattle.corp.contoso
 
 Ha nem az IoT-központ küldött adatokat, majd nincs a szimuláció kapcsolatos problémát. Első lépésként elemzés elemezni kell a naplófájlok a szimuláció összetevőt. Lásd: [Hogyan juthatok naplóadatait a szimuláció összetevői?](#how-can-i-get-log-data-from-the-simulation-components) Ezt követően próbálja állítsa le és indítsa el a szimuláció, és még nincs adat küldése, ha frissíti a szimuláció teljesen. Lásd: [hogyan frissíthetők a szimuláció, a virtuális gép?](#how-do-i-update-the-simulation-in-the-vm)
 
 ### <a name="how-do-i-enable-an-interactive-map-in-my-connected-factory-solution"></a>Hogyan engedélyezhető az interaktív térkép a csatlakoztatott gyári-megoldásban?
 
-Ahhoz, hogy a csatlakoztatott gyári megoldásban interaktív térkép, rendelkeznie kell egy meglévő Bing térképek API vállalati terv. Ha a Bing térképek API vállalati terv a csatlakoztatott gyári megoldást www.azureiotsuite.com telepítésekor, az interaktív térkép automatikusan engedélyezve van az Ön.
+Ahhoz, hogy a csatlakoztatott gyári megoldásban interaktív térkép, rendelkeznie kell egy meglévő Bing térképek API vállalati terv.
 
-### <a name="how-do-i-create-a-bing-maps-api-for-enterprise-account"></a>Hogyan hozható létre a Bing térképek API vállalati fiók?
+A központi telepítésekor [www.azureiotsuite.com](http://www.azureiotsuite.com), a telepítési folyamat ellenőrzi, hogy az előfizetés egy engedélyezett Bing térképek API vállalati terv rendelkezik, és automatikusan telepíti az interaktív térkép csatlakoztatott gyári be. Ha nem ez a helyzet, továbbra is engedélyezheti egy interaktív leképezés a központi telepítésben az alábbiak szerint:
+
+Központi telepítésekor használ a `build.ps1` parancsfájl csatlakoztatott gyári GitHub-tárházban, és a Bing térképek API vállalati terv rendelkezik, a környezeti változót `$env:MapApiQueryKey` a build ablakban, a lekérdezési kulcsot a csomag számára. Az interaktív térkép majd automatikusan engedélyezve lesz.
+
+Ha nem rendelkezik a Bing térképek API vállalati terv, telepítheti a csatlakoztatott gyári megoldást [www.azureiotsuite.com](http://www.azureiotsuite.com) használatával vagy a `build.ps1` parancsfájl. Majd adja hozzá a Bing térképek API vállalati terv az előfizetés a [hogyan hozható létre a Bing térképek API vállalati fiók?](#how-do-i-create-a-bing-maps-api-for-enterprise-account). A fiókhoz tartozó lekérdezési kulcs kereshető [a Bing térképek API beszerzése a vállalati QueryKey](#how-to-obtain-your-bing-maps-api-for-enterprise-querykey) , és mentse ezt a kulcsot. Navigáljon az Azure portálra, és a csatlakoztatott gyári környezetben App Service erőforrás elérésére. Navigáljon a **Alkalmazásbeállítások**, hol található a szakasz **Alkalmazásbeállítások**. Állítsa be a **MapApiQueryKey** a lekérdezési kulcsot kapott. A beállítások mentéséhez, majd lépjen **áttekintése** , és indítsa újra az App Service.
+
+### <a name="how-do-i-create-a-bing-maps-api-for-enterprise-account"></a>Hogyan hozható létre a Bing térképek API vállalati fiók
 
 Kérhet egy ingyenes *belső tranzakciók szintjét 1 a Bing Maps vállalati* terv. Azonban csak hozzáadhat ezen sémák két Azure-előfizetéshez. Ha még nem rendelkezik vállalati fiók a Bing térképek API, hozzon létre egyet az Azure portálon kattintva **+ hozzon létre egy erőforrást**. Majd keresse meg a **Bing Maps API for Enterprise** és kövesse az utasításokat annak létrehozásához.
 
@@ -202,7 +208,7 @@ A telemetriai adatokat küldeni a nem OPC EE eszközök csatlakoztatott gyári:
 
 1. Indítsa újra a csatlakoztatott gyári App Service.
 
-### <a name="next-steps"></a>Következő lépések
+### <a name="next-steps"></a>További lépések
 
 Megismerheti az IoT Suite előre konfigurált megoldásának egyéb szolgáltatásait és funkcióit is:
 

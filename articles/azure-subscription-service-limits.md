@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2017
 ms.author: byvinyal
-ms.openlocfilehash: 1ae97b47d306640f09a535975b8e4461f51dea9e
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: f2c747f29d1e35b430b30d9aa4ca0bff2e78476f
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések
 Ez a dokumentum mutatja a leggyakrabban használt Microsoft Azure korlátok, kvóták néven is ismert. Ez a dokumentum jelenleg nem fedi le az összes Azure-szolgáltatásokhoz. Adott idő alatt a lista lesz kibontható vagy frissíteni, amelyek több, a platform.
@@ -56,11 +56,12 @@ Az alábbi korlátok új tábla összes különbséget korlátok megfelelően az
 * [Azure Redis Cache](#azure-redis-cache-limits)
 * [Biztonsági mentés](#backup-limits)
 * [Batch](#batch-limits)
-* [BizTalk szolgáltatások](#biztalk-services-limits)
+* [BizTalk Services](#biztalk-services-limits)
 * [TARTALOMKÉZBESÍTÉSI HÁLÓZAT (CDN)](#cdn-limits)
 * [Felhőszolgáltatások](#cloud-services-limits)
 * [Tárolópéldányok](#container-instances-limits)
 * [Container Registry](#container-registry-limits)
+* [A Tárolószolgáltatás (AKS)](#container-service-aks-limits)
 * [Data Factory](#data-factory-limits)
 * [Data Lake analitikai szolgáltatás](#data-lake-analytics-limits)
 * [Data Lake Store](#data-lake-store-limits)
@@ -73,21 +74,21 @@ Az alábbi korlátok új tábla összes különbséget korlátok megfelelően az
 * [Naplófájl Analytics / Operational Insights](#log-analytics-limits)
 * [Médiaszolgáltatások](#media-services-limits)
 * [Mobilmarketing](#mobile-engagement-limits)
-* [Mobilszolgáltatások](#mobile-services-limits)
+* [Mobile Services](#mobile-services-limits)
 * [Figyelés](#monitor-limits)
-* [Többtényezős hitelesítés](#multi-factor-authentication)
+* [Multi-Factor Authentication](#multi-factor-authentication)
 * [Hálózat](#networking-limits)
 * [Hálózati figyelőt](#network-watcher-limits)
 * [Értesítési központ szolgáltatás](#notification-hub-service-limits)
 * [Erőforráscsoport](#resource-group-limits)
 * [Scheduler](#scheduler-limits)
 * [Search](#search-limits)
-* [Szolgáltatásbusz](#service-bus-limits)
+* [Service Bus](#service-bus-limits)
 * [Site Recovery](#site-recovery-limits)
 * [SQL Database](#sql-database-limits)
 * [SQL Data Warehouse](#sql-data-warehouse-limits)
-* [Tárolás](#storage-limits)
-* [StorSimple rendszer](#storsimple-system-limits)
+* [Storage](#storage-limits)
+* [StorSimple System](#storsimple-system-limits)
 * [Stream Analytics](#stream-analytics-limits)
 * [Előfizetés](#subscription-limits)
 * [Traffic Manager](#traffic-manager-limits)
@@ -127,6 +128,9 @@ Az alábbi korlátokat alkalmazza, ha az Azure Resource Manager és az Azure er�
 Az alábbi táblázat részletezi a szolgáltatások és a Basic, Standard és Premium határértékeinek [szolgáltatásszintek](./container-registry/container-registry-skus.md).
 
 [!INCLUDE [container-registry-limits](../includes/container-registry-limits.md)]
+
+### <a name="container-service-aks-limits"></a>Korlátozza a tároló szolgáltatás (AKS)
+[!INCLUDE [container-service-limits](../includes/container-service-limits.md)]
 
 ### <a name="networking-limits"></a>Hálózatkezelési korlátok
 [!INCLUDE [expressroute-limits](../includes/expressroute-limits.md)]
@@ -301,7 +305,7 @@ További kapcsolatos részletesebb felügyeletét, például a dokumentum méret
 ### <a name="key-vault-limits"></a>Key Vault korlátok
 [!INCLUDE [key-vault-limits](../includes/key-vault-limits.md)]
 
-### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+### <a name="multi-factor-authentication"></a>Többtényezős hitelesítés
 [!INCLUDE [azure-mfa-service-limits](../includes/azure-mfa-service-limits.md)]
 
 ### <a name="automation-limits"></a>Automatizálási korlátok
@@ -313,7 +317,7 @@ SQL adatbázis-korlátok, lásd: [SQL adatbázis erőforrás korlátok](sql-data
 ### <a name="sql-data-warehouse-limits"></a>Az SQL Data Warehouse korlátok
 Az SQL Data Warehouse-korlátok, lásd: [SQL Data Warehouse erőforrás korlátok](sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 [Azure korlátozását és növekszik ismertetése](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 
 [Virtuális gépek és Felhőszolgáltatások mérete az Azure-bA](virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

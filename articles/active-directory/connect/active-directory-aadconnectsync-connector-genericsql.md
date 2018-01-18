@@ -3,7 +3,7 @@ title: "Általános SQL összekötő |} Microsoft Docs"
 description: "Ez a cikk ismerteti a Microsoft általános SQL-összekötő konfigurálásával."
 services: active-directory
 documentationcenter: 
-author: fimguy
+author: billmath
 manager: bhu
 editor: 
 ms.assetid: fd8ccef3-6605-47ba-9219-e0c74ffc0ec9
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2017
-ms.author: davidste
-ms.openlocfilehash: a365219e433f4876401a9c35b8a656060508efbd
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.author: billmath
+ms.openlocfilehash: 66e3559c244a76101be7b7d944a48cd6dd99bd4c
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="generic-sql-connector-technical-reference"></a>Általános SQL összekötő műszaki útmutatója
 Ez a cikk ismerteti az általános SQL-összekötőt. A cikk vonatkozik a következő termékek:
@@ -255,7 +255,7 @@ Tegye a következőket:
 * Általános SQL-összekötő csatolt kiszolgálók az importálási művelet is támogatja a Microsoft SQL Server kiszolgálón. Csatolt kiszolgáló táblából származó információkat kell olvasni, ha majd tábla kell megadni a formátumban:`[ServerName].[Database].[Schema].[TableName]`
 * Általános SQL-összekötő csak azokat az objektumokat, amelyek hasonló szerkezete (az alias nevét és az adatokat egyaránt típus) között információkat és a séma észlelési lépések futtatásával támogatja. Ha a kijelölt objektum séma- és futtatási lépés: a megadott adatok különböző, SQL-összekötő nem tudja támogatják ilyen típusú forgatókönyvek.
 
-**SQL-lekérdezés**  
+**SQL Query**  
 ![runstep4](./media/active-directory-aadconnectsync-connector-genericsql/runstep4.png)
 
 ![runstep5](./media/active-directory-aadconnectsync-connector-genericsql/runstep5.png)

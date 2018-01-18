@@ -3,7 +3,7 @@ title: "Azure AD Connect szinkronizálása: szűrésének beállítása |} Micro
 description: "Ismerteti az Azure AD Connect-szinkronizálás szűrőjének konfigurálása."
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 880facf6-1192-40e9-8181-544c0759d506
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: cbcf448ccff22219adb8c7d3652e7698ef4d231e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5af82e889a80994dd47d4fc3b89f8eece2201355
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Az Azure AD Connect szinkronizálása: a szűrés konfigurálása
 Szűrés segítségével szabályozhatja mely objektumok jelennek meg az Azure Active Directory (Azure AD) a helyi címtárban lévő. Az alapértelmezett konfiguráció összes objektumok minden tartományban a konfigurált erdők vesz igénybe. Ez általában az ajánlott konfiguráció. Felhasználók Office 365-munkaterhelések, például az Exchange Online és Skype vállalati verzióra, a kihasználhassa a teljes globális címlista, hogy e-mailek küldése és mindenki hívja. Az alapértelmezett konfigurációnál akkor ugyanazt a felhasználói élményt, hogy azok az Exchange vagy a Lync egy helyszíni példánnyal.
@@ -305,6 +305,6 @@ Több AD-erdővel szinkronizálásakor beállíthatja egy másik csoportot minde
 * A felhasználó rendelkezik egy olyan erdőben, amely rendelkezik a megfelelő e-mail kapcsolattartási egy másik erdőben. További konfigurálta az Azure AD Connect hivatkozásra a felhasználó e-mail az ügyfél számára. Mindkét objektum kell lennie belül biztonságicsoport-alapú szűrés hatókör. Ellenkező esetben a felhasználó nem fognak szinkronizálódni az Azure ad Szolgáltatásba.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - További információ [az Azure AD Connect szinkronizálási szolgáltatás](active-directory-aadconnectsync-whatis.md) konfigurációs.
 - További információ [a helyszíni identitások integrálása az Azure AD](active-directory-aadconnect.md).

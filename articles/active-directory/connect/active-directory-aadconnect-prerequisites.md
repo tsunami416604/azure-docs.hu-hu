@@ -3,7 +3,7 @@ title: "Az Azure AD Connect: Előfeltételek és hardver |} Microsoft Docs"
 description: "Ez a témakör ismerteti a szükséges előfeltételek és a hardverkövetelmények az Azure AD Connect"
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 91b88fda-bca6-49a8-898f-8d906a661f07
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 1dc33bbd686d97f21c7b9d61752d9f2c584a79fe
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9c35e796cb823b2b059b726f099d658ee5e8192b
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Előfeltételek az Azure AD Connect
 Ez a témakör ismerteti a szükséges előfeltételek és az Azure AD Connect hardverkövetelményeinek.
@@ -44,7 +44,7 @@ Az Azure AD Connect telepítése előtt van néhány dolog, amelyekre szüksége
 * Az **nem támogatott** használatához a helyi erdők/tartományok "pontozott" (nevében pont szerepel ".") NetBios-nevét.
 * Javasoljuk, hogy [az Active Directory Lomtár engedélyezése](active-directory-aadconnectsync-recycle-bin.md).
 
-### <a name="azure-ad-connect-server"></a>Az Azure AD Connect-kiszolgáló
+### <a name="azure-ad-connect-server"></a>Azure AD Connect server
 * Az Azure AD Connect nem telepíthető Small Business Server vagy Windows Server Essentials. A kiszolgáló Windows Server standard vagy jobb kell használnia.
 * Az Azure AD Connect-kiszolgáló telepítve teljes grafikus felhasználói Felülettel kell rendelkeznie. Az **nem támogatott** telepítése server core-on.
 * Az Azure AD Connect a Windows Server 2008 vagy újabb rendszerre telepíthető. Ez a kiszolgáló lehet egy tartományvezérlő vagy tagkiszolgáló gyorsbeállítások használata esetén. Ha egyéni beállításokat használja, a kiszolgáló is lehet önálló, és nem kell tartományhoz csatlakoztatni.
@@ -117,7 +117,7 @@ További információk, problémák adódnak a kapcsolódással, ha: [kapcsolód
 ### <a name="powershell-and-net-framework"></a>PowerShell és a .net keretrendszer
 Az Azure AD Connect Microsoft PowerShell és a .NET-keretrendszer 4.5.1 függ. Ebben a verzióban vagy a kiszolgálóra telepített egy újabb verziója szükséges. A Windows Server verziójától függően tegye a következőket:
 
-* Windows Server 2012 R2 rendszerben
+* Windows Server 2012R2
   * Alapértelmezés szerint telepítve van a Microsoft PowerShell. Nincs szükség semmilyen műveletre.
   * .NET-keretrendszer 4.5.1 és a későbbi kibocsátásokban megtörténik a Windows Update szolgáltatáson keresztül érhető el. Győződjön meg arról, hogy telepítette a legújabb frissítéseket a Windows Server, a Vezérlőpult.
 * Windows Server 2008R2 és a Windows Server 2012-ben
@@ -207,5 +207,5 @@ Az AD FS vagy webalkalmazás-kiszolgálók minimális követelményei a követke
 * MEMÓRIA: 2 GB-os vagy újabb
 * Azure virtuális gép: A2 konfigurációs vagy újabb
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md).

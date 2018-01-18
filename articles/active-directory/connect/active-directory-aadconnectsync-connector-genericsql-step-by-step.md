@@ -3,7 +3,7 @@ title: "Általános SQL összekötő lépés-lépésre |} Microsoft Docs"
 description: "Ez a cikk van érdekében egy egyszerű HR rendszer részletes az általános SQL-összekötővel."
 services: active-directory
 documentationcenter: 
-author: AndKjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 28c1cc60-24fd-4d0d-a36d-b4aba6de86e7
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 311ef784497310b5605e25daf13102e3ff4bb08c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 91eb50a06bbf2e6c5510c42bd1d3ae961fd0bddd
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="generic-sql-connector-step-by-step"></a>Általános SQL-összekötő – részletes útmutató
 Ez a témakör részletesen ismerteti az. Egy egyszerű példa HR adatbázist hoz létre, és használja azt az egyes felhasználók és a csoporttagságuk importálásához.
@@ -101,7 +101,7 @@ Töltse ki a mintaadatbázis néhány tesztadatot. Amikor elkészült, válassza
 
 Ez a felhasználó két telefonszámot és egy csoport néhány tagjához.  
 ![cs1](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/cs1.png)  
-![CS2](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/cs2.png)  
+![cs2](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/cs2.png)  
 
 ## <a name="appendix-a"></a>A függelék
 **SQL-parancsfájl a mintaadatbázis létrehozásához**

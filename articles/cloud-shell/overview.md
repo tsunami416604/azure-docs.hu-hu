@@ -12,17 +12,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 12/13/2017
+ms.date: 01/17/2018
 ms.author: juluk
-ms.openlocfilehash: 129b43db85a0962005352e0f1e6ad2ad3be2c7d5
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: b710c324f72fa56a2ebad0d1b35052639611d30d
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure-felhőbe rendszerhéj áttekintése
 Azure Cloud rendszerhéjjal egy interaktív, a böngésző által elérhető rendszerhéj Azure-erőforrások kezeléséhez.
-Azt a rugalmasságot biztosít a rendszerhéj élmény igényei leginkább megfelelő kiválasztása.
+Rugalmasan választhassa ki a leginkább megfelelő igényei rendszerhéj élményt biztosít.
 A Linuxot használók választhatják a Basht, a Windows-használók pedig a PowerShellt.
 
 Próbálja a shell.azure.com ez a gomb használatával.
@@ -52,8 +52,8 @@ A teljes tooling listájának megtekintése a [élmény Bash](features.md#tools)
 
 ### <a name="multiple-access-points"></a>Több kapcsolódási pont
 Felhő rendszerhéjjal rugalmas eszköz, amely a használható:
-* [Portal.Azure.com](https://portal.azure.com)
-* [Shell.Azure.com](https://shell.azure.com)
+* [portal.azure.com](https://portal.azure.com)
+* [shell.azure.com](https://shell.azure.com)
 * [Az Azure CLI 2.0 "Try It" dokumentációja](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest)
 * [Azure mobile Apps](https://azure.microsoft.com/features/azure-portal/mobile-app/)
 * [Visual STUDIO Code Azure-fiók bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
@@ -101,6 +101,6 @@ További információk a szolgáltatások [felhő rendszerhéj Bash](features.md
 ## <a name="pricing"></a>Díjszabás
 A felhő rendszerhéj futtató gépen szabad, az Azure Fileshoz csatlakoztatott megosztás előfeltételeként. Rendszeres tárolási költségek vonatkoznak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [A felhő rendszerhéj gyors üzembe helyezés bash](quickstart.md) <br>
 [PowerShell használatával a felhő rendszerhéj (előzetes verzió) gyors üzembe helyezés](quickstart-powershell.md)

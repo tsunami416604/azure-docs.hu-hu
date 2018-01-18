@@ -2,23 +2,18 @@
 title: "Az Azure Site Recovery hibaelhárítási VMware az Azure-bA |} Microsoft Docs"
 description: "Az Azure virtuális gépek replikálása esetén hibák elhárítása"
 services: site-recovery
-documentationcenter: 
 author: anoopkv
 manager: gauravd
-editor: 
-ms.assetid: 
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 12/12/2017
+ms.date: 01/11/2018
 ms.author: anoopkv
-ms.openlocfilehash: df8234ad79439245025cb7ecf87a2050960958b2
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: c5566ec44a8bfed0a3e7207c2cebf21517573541
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Mobilitási szolgáltatás leküldéses telepítési problémák elhárításához
 
@@ -30,7 +25,7 @@ Ez a hiba a szolgáltatás több okokból is okozhat. Válassza ki a megfelelő 
 * [Hiba 95103](#error-95103---protection-could-not-be-enabled-ep0854) 
 * [Hiba 95105](#error-95105---protection-could-not-be-enabled-ep0856) 
 * [Hiba 95107](#error-95107---protection-could-not-be-enabled-ep0858) 
-* [Hiba 95108](#error-95108---protection-could-not-be-enabled-ep0859) 
+* [Error 95108](#error-95108---protection-could-not-be-enabled-ep0859) 
 * [Hiba 95117](#error-95117---protection-could-not-be-enabled-ep0865) 
 * [Hiba 95213](#error-95213---protection-could-not-be-enabled-ep0874) 
 * [Hiba 95224](#error-95224---protection-could-not-be-enabled-ep0883) 
@@ -74,7 +69,7 @@ Ez a hiba a szolgáltatás több okokból is okozhat. Válassza ki a megfelelő 
 
 **Hibakód:** | **Lehetséges okok** | **Hiba vonatkozó javaslatok**
 --- | --- | ---
-95108 </br>**Üzenet:** kódú hiba miatt sikertelen a forrásgépen a mobilitási szolgáltatás leküldéses telepítéséhez **EP0859**. <br>| Vagy, hogy a megadott hitelesítő adatok a mobilitási szolgáltatás telepítése érvénytelen, vagy a felhasználói fiók nem rendelkezik megfelelő jogosultsággal <br>| Győződjön meg arról, hogy a megadott hitelesítő adatok a **legfelső szintű** fiók hitelesítő adataival. A [felhasználói hitelesítő adatok hozzáadása/szerkesztése](site-recovery-vmware-to-azure-manage-configuration-server.md#modify-user-accounts-and-passwords), nyissa meg a konfigurációs kiszolgáló, és kattintson a "Cspsconfigtool" parancsikonját az asztalon. Kattintson a "Manage fiók" hitelesítő adatok felvehet és szerkeszthet.|
+95108 </br>**Üzenet:** kódú hiba miatt sikertelen a forrásgépen a mobilitási szolgáltatás leküldéses telepítéséhez **EP0859**. <br>| Vagy, hogy a megadott hitelesítő adatok a mobilitási szolgáltatás telepítése érvénytelen, vagy a felhasználói fiók nem rendelkezik megfelelő jogosultsággal <br>| Győződjön meg arról, hogy a megadott hitelesítő adatok a **legfelső szintű** fiók hitelesítő adataival. Felhasználói hitelesítő adatok felvehet és szerkeszthet, nyissa meg a konfigurációs kiszolgálón, majd kattintson a "Cspsconfigtool" parancsikonját az asztalon. Kattintson a "Manage fiók" hitelesítő adatok felvehet és szerkeszthet.|
 
 ## <a name="error-95265---protection-could-not-be-enabled-ep0902"></a>Hiba 95265 - védelmet nem sikerült engedélyezni a (EP0902)
 
@@ -92,13 +87,14 @@ Ez a hiba a szolgáltatás több okokból is okozhat. Válassza ki a megfelelő 
 ## <a name="resource-to-troubleshoot-push-installation-problems"></a>Erőforrás leküldéses telepítési problémák megoldásához
 
 #### <a name="troubleshoot-file-and-print-sharing-issues"></a>Fájl- és nyomtatómegosztás elhárítása
-*  [Engedélyezi vagy letiltja a fájlmegosztás a csoportházirenddel](https://technet.microsoft.com/en-us/library/cc754359(v=ws.10).aspx)
-* [Hogyan fájl- és nyomtatómegosztás a Windows tűzfalon keresztül](https://technet.microsoft.com/en-us/library/ff633412(v=ws.10).aspx)
+*  [Engedélyezi vagy letiltja a fájlmegosztás a csoportházirenddel](https://technet.microsoft.com/library/cc754359(v=ws.10).aspx)
+* [Hogyan fájl- és nyomtatómegosztás a Windows tűzfalon keresztül](https://technet.microsoft.com/library/ff633412(v=ws.10).aspx)
 
 #### <a name="troubleshoot-wmi-issues"></a>WMI-problémák elhárítása
 * [Alapszintű WMI tesztelése](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/)
-* [WMI-hibaelhárítás](https://msdn.microsoft.com/en-us/library/aa394603(v=vs.85).aspx)
-* [WMI-parancsfájlok és a WMI-szolgáltatások kapcsolatos problémák](https://technet.microsoft.com/en-us/library/ff406382.aspx#H22)
+* [WMI-hibaelhárítás](https://msdn.microsoft.com/library/aa394603(v=vs.85).aspx)
+* [WMI-parancsfájlok és a WMI-szolgáltatások kapcsolatos problémák](https://technet.microsoft.com/library/ff406382.aspx#H22)
 
-## <a name="next-steps"></a>Következő lépések
-- [A VMware virtuális gépek replikálásának engedélyezése](vmware-walkthrough-enable-replication.md)
+## <a name="next-steps"></a>További lépések
+
+[Megtudhatja, hogyan](tutorial-vmware-to-azure.md) vész-helyreállítási beállítása a VMware virtuális gépek esetén.

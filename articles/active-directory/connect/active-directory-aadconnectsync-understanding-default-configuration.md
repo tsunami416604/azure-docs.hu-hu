@@ -3,7 +3,7 @@ title: "Azure AD Connect szinkronizálása: az alapértelmezett konfiguráció i
 description: "Ez a cikk ismerteti az Azure AD Connect szinkronizálási szolgáltatás az alapértelmezett konfigurációt."
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: ed876f22-6892-4b9d-acbe-6a2d112f1cd1
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 6ba1739825a6f0898e417ca37fa6bf370ef17d6c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 87f513ffd2e8854085d9dfcd399148082de37698
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Az Azure AD Connect szinkronizálása: az alapértelmezett konfiguráció ismertetése
 Ez a cikk ismerteti a out-of-box konfigurációs szabályok. Az dokumentumokat, és ezek a szabályok milyen hatással van a konfigurációs szabályok. Azt is bemutatja, hogyan kell az Azure AD Connect szinkronizálási szolgáltatás az alapértelmezett konfigurációját. Az célja, hogy az olvasó együttműködik a deklaratív kiépítés nevű konfigurációs modell egy valós példában alakulását. Ez a cikk feltételezi, hogy már telepített, és állítsa be a telepítési varázsló segítségével az Azure AD Connect sync.
@@ -178,7 +178,7 @@ Szinkronizálási szabályok kiértékelésekor meghatározott illesztési szab�
 
 Ha a fenti kép tekinti meg, akkor láthatja, hogy a szabály próbál csatlakozni, **objectSID** rendelkező **msExchMasterAccountSid** (Exchange) és **msRTCSIP-OriginatorSid** (Lync). Ez az felel meg az elvártnak a fiók-erőforrás erdő topológiájában. Ugyanaz a szabály az összes erdőben található meg. A feltételezi, hogy minden erdőben vagy egy fiókot, vagy az erőforrás erdő lehet. Ez a konfiguráció is működik, ha fiókokat, amelyek az adott erdő live, és nem kell csatlakoztatni.
 
-#### <a name="transformations"></a>Átalakítások
+#### <a name="transformations"></a>Transformations
 Transzformációs szakaszából határozza meg az összes attribútumfolyamok, amelyek érvényesek a célobjektum objektumok tartományhoz csatlakoztatott és a hatókör szűrő teljesül-e. Ha visszalép, hogy a **a az AD-felhasználó AccountEnabled** szinkronizálási szabály található a következő átalakítások:
 
 ![Átalakítások szinkronban szabály szerkesztő lap ](./media/active-directory-aadconnectsync-understanding-default-configuration/syncruletransformations.png)
@@ -217,7 +217,7 @@ A szinkronizálási szabályok precedenciáját állítja be a csoportok a telep
 ### <a name="putting-it-all-together"></a>A teljes kép
 Most már tudjuk elegendő szinkronizálási szabályokat kell a konfigurációt a különböző szinkronizálási szabályait működésének megismerése. Ha egy felhasználó és az attribútumok a metaverzumba hozzájáruló tekinti meg, a szabályok vonatkoznak a következő sorrendben:
 
-| Név | Megjegyzés |
+| Name (Név) | Megjegyzés |
 |:--- |:--- |
 | Az ad-felhasználó illesztési |Összekötő metaverzum-es összekötő terület objektumok szabály. |
 | Az ad-– UserAccount engedélyezve |Bejelentkezés az Azure AD szükséges attribútumok és az Office 365. Azt szeretnénk, ha ezek az attribútumok az engedélyezett fiókkal. |
@@ -226,7 +226,7 @@ Most már tudjuk elegendő szinkronizálási szabályokat kell a konfigurációt
 | Az AD-felhasználó Exchange-ből |Ha a rendszer észlelte az Exchange csak létezik. Összes infrastruktúra Exchange attribútum azt zajlik. |
 | Az ad-felhasználó Lync |Ha a rendszer észlelte a Lync csak létezik. Összes infrastruktúra Lync attribútum azt zajlik. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információk a konfigurációs modell [ismertetése deklaratív kiépítés](active-directory-aadconnectsync-understanding-declarative-provisioning.md).
 * További információk az a kifejezés nyelv [ismertetése deklaratív kiépítés kifejezések](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md).
 * Továbbra is, hogyan működik a out-of-box konfiguráció olvasása [felhasználók és névjegyek](active-directory-aadconnectsync-understanding-users-and-contacts.md)

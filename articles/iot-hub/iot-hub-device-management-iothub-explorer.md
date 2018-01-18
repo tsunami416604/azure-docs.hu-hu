@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2017
 ms.author: xshi
-ms.openlocfilehash: 5b7a5057bdfb5920fbb5759bed1f5561cfa1d7e0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 02d3241ae4ae515a8c2deaa14f50b5b7dbd4766f
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="use-iothub-explorer-for-azure-iot-hub-device-management"></a>Használja az IOT hubbal-explorer Azure IoT Hub – Eszközkezelés
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 [IOT hubbal-explorer](https://github.com/azure/iothub-explorer) parancssori eszköz, amely a gazdagépen futtat az IoT hub beállításjegyzék eszköz identitásainak kezelése a számítógépet. Az ismét felügyeleti beállításokkal rendelkezik, amelyek segítségével különböző feladatok végrehajtására.
 
 | Lehetőséget          | Tevékenység                                                                                                                            |
-|----------------------------|---------------------------------------------------------------------------------------------------------------------------------|
+|----------------------------|------------------------------------------------------------------------------------------------------------------------------|
 | Közvetlen metódusok             | Egy eszköz, például indítása és leállítása üzenetküldésre, vagy az eszköz újraindul működésre tétele.                                        |
 | A két szükségeskonfiguráció-tulajdonságok    | Egy eszköz üzembe egyes állapotok, például egy LED zöld vagy a telemetriai adatok küldési időköze és 30 perc.         |
 | A két jelentett tulajdonságai   | Egy eszköz jelentett állapotának beolvasására. Például az eszköz jelentés készít a LED most villogó-e.                                    |
@@ -54,9 +54,9 @@ IOT hubbal-kezelő futtatása a különböző felügyeleti beállításokkal.
 ## <a name="what-you-need"></a>Mi szükséges
 
 - Az oktatóanyag [beállítani az eszközét](iot-hub-raspberry-pi-kit-node-get-started.md) fejeződött be, amely hozzá van rendelve az alábbi követelményeknek:
-  - Aktív Azure-előfizetés.
-  - Az előfizetéshez tartozó Azure IoT hub.
-  - Egy ügyfélalkalmazást, amely üzeneteket küld az Azure IoT hub.
+- Aktív Azure-előfizetés.
+- Az előfizetéshez tartozó Azure IoT hub.
+- Egy ügyfélalkalmazást, amely üzeneteket küld az Azure IoT hub.
 - Győződjön meg arról, hogy az eszköz az ügyfélalkalmazás az oktatóanyag során fut-e.
 - IOT hubbal-Explorerben [telepítse az IOT hubbal-explorer](https://github.com/azure/iothub-explorer) a fejlesztési számítógépén.
 
@@ -114,7 +114,6 @@ A mező szerepkör hozzáadása = a hőmérséklet és a páratartalom az eszkö
 
 ```bash
 iothub-explorer update-twin <your device id> "{\"tags\":{\"role\":\"temperature&humidity\"}}"
-
 ```
 
 ## <a name="use-iothub-explorer-with-cloud-to-device-messages"></a>IOT hubbal-explorer használata a felhő-eszközre küldött üzenetek
@@ -141,7 +140,7 @@ Szerepkör címkével ellátott kivételével minden eszköz lekérdezése = "a 
 iothub-explorer query-twin "SELECT * FROM devices WHERE tags.role != 'temperature&humidity'"
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Hogy megismerte az IOT hubbal-explorer használata a különböző felügyeleti lehetőségek.
 

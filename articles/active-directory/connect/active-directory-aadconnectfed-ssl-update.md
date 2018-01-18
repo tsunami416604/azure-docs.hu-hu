@@ -1,5 +1,5 @@
 ---
-title: "Az Azure AD Connect: Frissítés az SSL-tanúsítványt az Active Directory összevonási szolgáltatások (AD FS) farm |} Microsoft Docs"
+title: "Az Azure AD Connect - frissítés az SSL-tanúsítványt az AD FS-farm |} Microsoft Docs"
 description: "Ez a dokumentum adatokat a lépéseket az Azure AD Connect használatával az SSL-tanúsítvány egy AD FS-farm frissítéséhez."
 services: active-directory
 keywords: "az Azure ad connect, az AD FS ssl-frissítés, az AD FS-tanúsítványt frissítés, módosítsa az AD FS-tanúsítványt, új AD FS-tanúsítványt, az AD FS tanúsítványt, a frissítés AD FS ssl-tanúsítványt, a frissítés ssl tanúsítvány adfs konfigurálása az AD FS ssl-tanúsítvány, az AD FS, ssl, tanúsítvány, az AD FS szolgáltatás közötti kommunikációs tanúsítványt, a frissítés összevonási, összevonás konfigurálása, aad-csatlakozás"
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: anandy
-ms.openlocfilehash: 2bd3d537761ec78ebcaab722e7928a88e90498d8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: b31a4d178d287eba275a0072936b4222a2c84346
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="update-the-ssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Az SSL-tanúsítványt az Active Directory összevonási szolgáltatások (AD FS) farm frissítése
 
@@ -102,7 +103,7 @@ A konfiguráció befejezése után az Azure AD Connect megjeleníti az üzenetet
 
     A kiszolgáló eltávolítása a listából az Azure AD Connectben nem távolítható el a az AD FS konfigurációt. Az Azure AD Connect hivatkozik az Active Directory összevonási szolgáltatások (Windows Server 2016 vagy újabb) a farm összes információt. Ha a kiszolgáló továbbra is megtalálhatók az AD FS konfigurációt, az jelenik vissza a listában.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure AD Connect és összevonás](active-directory-aadconnectfed-whatis.md)
 - [Active Directory összevonási szolgáltatások kezelése és testreszabása az Azure AD Connecttel](active-directory-aadconnect-federation-management.md)

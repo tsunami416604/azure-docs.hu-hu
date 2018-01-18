@@ -1,5 +1,5 @@
 ---
-title: "Az Azure Active Directory hibrid identitáskezelési elrendezésével kapcsolatos szempontok - határozza meg a címtár-szinkronizálás követelményeinek |} Microsoft Docs"
+title: "Hibrid identitás Tervező - directory sync követelmények Azure |} Microsoft Docs"
 description: "Milyen követelmények szükségesek szinkronizálásához között a felhasználók azonosítása az = a helyszíni és a vállalati felhő."
 documentationcenter: 
 services: active-directory
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 00e9ecf39c386b7c1295bfca9ebf45fa40ae7e82
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: 475b35c767fcc9c42b828dd2219a14890e05f779
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="determine-directory-synchronization-requirements"></a>Címtár-szinkronizálás követelmények meghatározása
 Szinkronizálás legyen biztosítható a felhasználók a felhőben, a helyszíni identitás alapján identitást. -E a hitelesítés és az összevont hitelesítés szinkronizált fiókkal fogja használják, a felhasználók továbbra is kell rendelkeznie az identitás a felhőben.  Ezzel az identitással kell tartani és rendszeresen frissülnek.  A frissítések számos formája, a jelszó-változtatásának cím módosításai.  
@@ -68,9 +69,9 @@ Meg kell határoznia a biztonsági követelmények és korlátozások címtár-s
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [A multi-factor authentication követelmények meghatározása](active-directory-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 [Kialakítási szempontok áttekintése](active-directory-hybrid-identity-design-considerations-overview.md)
 

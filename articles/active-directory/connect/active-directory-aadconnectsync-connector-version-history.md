@@ -3,7 +3,7 @@ title: "Összekötő Verziókiadások |} Microsoft Docs"
 description: "Ez a témakör az összekötők összes kiadásaiban a Forefront Identity Manager (FIM) és a Microsoft Identity Manager (MIM)"
 services: active-directory
 documentationcenter: 
-author: fimguy
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 6a0c66ab-55df-4669-a0c7-1fe1a091a7f9
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/06/2017
-ms.author: fimguy
-ms.openlocfilehash: 3fbdc60a21aa16926bc4db00f41ade8ecda415f1
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: billmath
+ms.openlocfilehash: 5b43284a86a7e5d4cdbf50a29d73f970c9ad9d58
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="connector-version-release-history"></a>Összekötő verziókiadásai
 Az összekötők a Forefront Identity Manager (FIM) és a Microsoft Identity Manager (MIM) gyakran frissül.
@@ -47,7 +47,7 @@ Kapcsolódó hivatkozások:
   * Az osztály ImportOperations importálási rögzített a meghatározását, hogy milyen műveleteket futtathatja a "Nézetek" módban, és amely a "Search" módban.
 * Általános LDAP:
   * OpenLDAP Directory DN entryUUI, hanem horgonyzási használja. Új lehetőség GLDAP összekötőt, amely lehetővé teszi a horgony módosítása
-* Általános SQL:
+* Generic SQL:
   * Rögzített exportálási mezőbe, amely a varbinary(max) típusú.
   * Amikor hozzá a bináris adatok adatforrásból származó CSEntry objektum, a DataTypeConversion függvény nulla bájt sikertelen volt. Rögzített DataTypeConversion függvény CSEntryOperationBase osztály.
 
@@ -56,7 +56,7 @@ Kapcsolódó hivatkozások:
 
 ### <a name="enhancements"></a>Fejlesztései:
 
-* Általános SQL:
+* Generic SQL:
   * Az ügyfélgépek konfigurálására a végrehajtási mód tárolt eljárást az elnevezett paramétereket, vagy neve nem szerepel-e az általános SQL felügyeleti ügynök a lap "Globális paraméterek" konfigurációs ablakban. A lap "Globális paraméterek" nincs "Use elnevezett paramétereket a tárolt eljárás végrehajtásához" hajtsa végre a tárolt eljárás mód felelős címkével jelölőnégyzetet neve paraméterek vagy nem.
     * Az elnevezett paraméterek tárolt eljárás végrehajtásához képességét jelenleg csak olyan adatbázisok IBM DB2 és MSSQL működik. Az Oracle és a MySQL-adatbázisok Ez a módszer nem működik: 
       * Az SQL-szintaxis MySQL az elnevezett paraméterek nem támogatja a tárolt eljárások.
@@ -69,7 +69,7 @@ Kapcsolódó hivatkozások:
 
 * Általános webszolgáltatások:
   * Megtörtént egy probléma javítása meggátolja, hogy a SOAP-projekt jöjjenek létre, amikor két vagy több végpontot történt.
-* Általános SQL:
+* Generic SQL:
   * Importálási műveletben a GSQL lett nem időpont váltásakor megfelelően, a kapcsolódási térbe mentésekor. A GSQL a kapcsolódási térbe alapértelmezett dátum és idő formátuma "éééé-HH-NN HH:mm:ssZ" értékről "éééé-hh-nn hh:mm:ssZ" értékűre változott.
 
 ## <a name="115510-aadconnect-115530"></a>1.1.551.0 (AADConnect 1.1.553.0)
@@ -96,7 +96,7 @@ Kapcsolódó hivatkozások:
 
 ### <a name="enhancements"></a>Fejlesztései:
 
-* Általános SQL:
+* Generic SQL:
   * **Forgatókönyv: újratervezett megvalósítva:** "*" funkció
   * **Megoldás leírása:** megközelítés megváltozott [többértékű hivatkozási attribútum kezelési](active-directory-aadconnectsync-connector-genericsql.md).
 
@@ -107,7 +107,7 @@ Kapcsolódó hivatkozások:
   * Kiszolgálókonfiguráció nem importálható, ha az megtalálható a WebService összekötő
   * Több webkiszolgáló szolgáltatással nem működik a WebService összekötő
 
-* Általános SQL:
+* Generic SQL:
   * Egyetlen értéket hivatkozott attribútum nem objektumtípusok találhatók
   * Különbözeti importálás objektumon változások követése stratégia törlések érték többértékű táblából eltávolításakor
   * Az AS a DB2 GSQL Connector OverflowException / 400
@@ -121,7 +121,7 @@ Kiadás dátuma: 2017. március
 
 ### <a name="enhancements"></a>Fejlesztések
 
-* Általános SQL:</br>
+* Generic SQL:</br>
   **A forgatókönyvben a jelenség:** az SQL-összekötővel, ha azt csak teszi lehetővé egy hivatkozás egy objektumtípus és tagokat kereszthivatkozás szükséges egy jól ismert korlátozás. </br>
   **Megoldás leírása:** a feldolgozási lépést hivatkozásainak voltak "*" lehetőséget választja, minden kombinációi objektumtípusok visszatér vissza a szinkronizálási motor.
 
@@ -155,7 +155,7 @@ Kiadás dátuma: 2017. március
 LDAP MA. Ezek kimutatták RootDSE partíció csak objektumokat.
 
 
-* Általános SQL:
+* Generic SQL:
  * Javítsa ki általános SQL vízjel különbözeti importálás többértékű attribútum nem importált hiba
  * Többértékű attribútum deleted\added értékek exportálásakor nincsenek deleted\added adatforrás.  
 
@@ -209,7 +209,7 @@ A kezdeti kiadása a [általános SQL-összekötő](active-directory-aadconnects
 * [KB3044896](https://support.microsoft.com/kb/3044896) -1.0.0549, 2015. március
 * [KB3031009](https://support.microsoft.com/kb/3031009) -1.0.0534, 2015. január
 * [KB3008177](https://support.microsoft.com/kb/3008177) -1.0.0419, 2014. szeptember
-* [KB2936070](https://support.microsoft.com/kb/2936070) -4.3.1082, 2014. március
+* [KB2936070](https://support.microsoft.com/kb/2936070) - 4.3.1082, 2014 March
 
 **WebServices**
 
@@ -244,7 +244,7 @@ A definíció frissítése:
 * Az összes tulajdonság lap elérése után kattintson az OK gombra a módosítások mentéséhez.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a [az Azure AD Connect szinkronizálási szolgáltatás](active-directory-aadconnectsync-whatis.md) konfigurációs.
 
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md).

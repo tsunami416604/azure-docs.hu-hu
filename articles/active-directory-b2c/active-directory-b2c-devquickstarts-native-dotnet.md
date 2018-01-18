@@ -1,5 +1,5 @@
 ---
-title: Az Azure Active Directory B2C |} Microsoft Docs
+title: "Hitelesítés, a regisztráció, szerkesztheti a profilját .NET Azure Active Directory B2C |} Microsoft Docs"
 description: "Hogyan hozhat létre, amely tartalmazza a bejelentkezéshez, regisztráció, a Windows asztali alkalmazások és profilok kezelése az Azure Active Directory B2C használatával."
 services: active-directory-b2c
 documentationcenter: .net
@@ -14,11 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
-ms.openlocfilehash: 7b6bd5c95c909cf4ed4c67cd33d09170f670c275
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.custom: seohack1
+ms.openlocfilehash: 9c0fb2c1d90f4c4ef50e658e9baca91795581eae
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-b2c-build-a-windows-desktop-app"></a>Az Azure AD B2C: A Windows asztali alkalmazás elkészítésére.
 Azure Active Directory (Azure AD) B2C használatával az asztali alkalmazást a néhány néhány lépés elvégzésével hatékony önkiszolgáló identitáskezelési funkciókat adhat hozzá. Ez a cikk bemutatja, hogyan hozzon létre egy .NET Windows megjelenítési alaprendszer (WPF) "Feladatlista" alkalmazást, amely tartalmazza a felhasználói regisztráció, bejelentkezés és profilok kezelése. Az alkalmazás támogatni fogja előfizetési, és jelentkezzen be egy felhasználónevet vagy e-mailek használatával. Azt is támogatni fogja előfizetési, és jelentkezzen be például a Facebookhoz és a Google közösségi fiókokkal.

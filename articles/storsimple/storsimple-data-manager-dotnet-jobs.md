@@ -1,10 +1,10 @@
 ---
 title: "A Microsoft Azure StorSimple adatkezelő feladatokhoz használhatja a .NET SDK |} Microsoft Docs"
-description: "Útmutató a .NET SDK használatával indítsa el a StorSimple adatkezelő feladatok (magán előnézetben)"
+description: "Megtudhatja, hogyan használhatja a .NET SDK StorSimple adatkezelő feladatok elindítása"
 services: storsimple
 documentationcenter: NA
-author: vidarmsft
-manager: syadav
+author: alkohli
+manager: jeconnoc
 editor: 
 ms.assetid: 
 ms.service: storsimple
@@ -12,43 +12,51 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 11/22/2016
-ms.author: vidarmsft
-ms.openlocfilehash: 44d243a034b20b99faf284c8615e470bc6f9d020
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 01/16/2018
+ms.author: alkohli
+ms.openlocfilehash: 7ecb3ed41a8a05f3ced2488226fa0380107b1b43
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/17/2018
 ---
-# <a name="use-the-net-sdk-to-initiate-data-transformation-private-preview"></a>A .net SDK használatával kezdeményezni a data transformation (magán előnézetben)
+# <a name="use-the-net-sdk-to-initiate-data-transformation"></a>Adatok átalakítása kezdeményezni a .net SDK használatával
 
 ## <a name="overview"></a>Áttekintés
 
-Ez a cikk azt ismerteti, hogyan használhatja a StorSimple adatkezelő szolgáltatáson belül az adatok átalakítása szolgáltatás StorSimple eszközön tárolt adatok átalakítását. Az átalakított adatok majd fel más Azure-szolgáltatásokkal a felhőben. A cikk a forgatókönyv segítségével hozzon létre egy minta .NET konzolalkalmazást kezdeményezéséhez egy adatok átalakítási feladat is rendelkezik, és nyomon követheti azt befejezésére.
+Ez a cikk azt ismerteti, hogyan használhatja a StorSimple adatkezelő szolgáltatáson belül az adatok átalakítása szolgáltatás StorSimple eszközön tárolt adatok átalakítását. Az átalakított adatok majd fel más Azure-szolgáltatásokkal a felhőben.
+
+Egy átalakítási feladatot két módon indíthatja el:
+
+ - A .NET SDK használata
+ - Azure Automation-forgatókönyv használata
+ 
+ Ez a cikk részletesen létrehozása egy minta .NET-Konzolalkalmazás kezdeményezéséhez egy átalakítási feladatot, és nyomon követheti azt befejezésére. Adatok átalakítása keresztül Automation indítása kapcsolatos további tudnivalókért keresse fel [használata Azure Automation-runbook eseményindító adatok átalakítási feladat](storsimple-data-manager-job-using-automation.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Mielőtt elkezdené, győződjön meg arról, hogy:
-*   A rendszer a Visual Studio 2012, 2013, 2015-öt vagy telepített 2017.
-*   Az Azure Powershell telepítése. [Töltse le az Azure Powershell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/).
-*   A Data Transformation feladat inicializálni a konfigurációs beállításokat (a beállítások átvételéhez utasítások ide tartoznak).
-*   A feladat definíciójához erőforráscsoporton belül egy hibrid adatforrás, melyhez a megfelelően konfigurált.
-*   Minden a szükséges dll-fájl. Töltse le a DLL-eket a [GitHub-tárházban](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls).
-*   `Get-ConfigurationParams.ps1`[parancsfájl](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1) a github-tárházban lévő.
+*   Rendszert futtató számítógép:
 
-## <a name="step-by-step"></a>Lépésről lépésre
+    - A Visual Studio 2012, 2013, 2015-öt vagy 2017.
+
+    - Az Azure Powershell. [Töltse le az Azure Powershell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/).
+*   Egy megfelelően konfigurált feladatdefiníció StorSimple adatkezelő erőforráscsoporton belül.
+*   Minden a szükséges dll-fájl. Töltse le a DLL-eket a [GitHub-tárházban](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls).
+*   [`Get-ConfigurationParams.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1)a GitHub-tárházban parancsfájlt.
+
+## <a name="step-by-step-procedure"></a>Lépésről lépésre
 
 A következő lépésekkel .NET használatával a data transformation feladat elindítása.
 
 1. Beolvasni a konfigurációs paraméterek, tegye a következőket:
-    1. Töltse le a `Get-ConfigurationParams.ps1` github-tárház parancsprogramból a `C:\DataTransformation` helyét.
-    1. Futtassa a `Get-ConfigurationParams.ps1` a github-tárházban parancsfájlt. Írja be a következő parancsot:
+    1. Töltse le a `Get-ConfigurationParams.ps1` GitHub-tárház parancsprogramból a `C:\DataTransformation` helyét.
+    1. Futtassa a `Get-ConfigurationParams.ps1` a GitHub-tárházban parancsfájlt. Írja be a következő parancsot:
 
         ```
         C:\DataTransformation\Get-ConfigurationParams.ps1 -SubscriptionName "AzureSubscriptionName" -ActiveDirectoryKey "AnyRandomPassword" -AppName "ApplicationName"
          ```
         A ActiveDirectoryKey és AppName átadhatók az értékeket.
-
 
 2. Ez a parancsfájl kimenete a következő értékeket:
     * Ügyfél-azonosító
@@ -56,21 +64,31 @@ A következő lépésekkel .NET használatával a data transformation feladat el
     * Active Directory-kulcs (ugyanaz, mint a fent megadott)
     * Előfizetés azonosítója
 
+        ![Konfigurációs paraméterek parancsfájl kimenetében](media/storsimple-data-manager-dotnet-jobs/get-config-parameters.png)
+
 3. Visual Studio 2012 használ, 2013 vagy 2015, hozzon létre egy C# .NET konzolalkalmazást.
 
     1. Indítsa el **Visual Studio 2012 2013 vagy2015/**.
-    1. Kattintson a **File** (Fájl) menüre, mutasson a **New** (Új) elemre, és kattintson a **Project** (Projekt) lehetőségre.
-    2. Bontsa ki a **Sablonok** lehetőséget, és válassza a **Visual C#** lehetőséget.
-    3. A projekttípusok jobb oldalon megjelenő listájában válassza a **Konzolalkalmazás** elemet.
-    4. Adja meg **DataTransformationApp** a a **neve**.
-    5. Válassza ki **C:\DataTransformation** a a **hely**.
+    1. Válassza ki **fájl > Új > projekt**.
+
+        ![1-projekt létrehozása](media/storsimple-data-manager-dotnet-jobs/create-new-project-7.png)        
+    2. Válassza ki **telepítve > sablonok > Visual C# > Konzolalkalmazás**.
+    3. Adja meg **DataTransformationApp** a a **neve**.
+    4. Válassza ki **C:\DataTransformation** a a **hely**.
     6. A projekt létrehozásához kattintson az **OK** gombra.
 
-4.  Ezután adja hozzá az összes DLL-fájl megtalálható a [DLL-ek](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls) mappában **hivatkozások** a létrehozott projektben. A dll-fájlok letöltéséhez, tegye a következőket:
+        ![2-projekt létrehozása](media/storsimple-data-manager-dotnet-jobs/create-new-project-1.png)
+
+4.  Ezután adja hozzá az összes DLL-fájl megtalálható a [DLL-ek mappa](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls) , **hivatkozások** a létrehozott projektben. A dll-fájlok letöltéséhez, tegye az alábbiakat:
 
     1. A Visual Studio Ugrás **Nézet > Megoldáskezelőben**.
-    1. Kattintson a Data Transformation alkalmazásprojektet balra mutató nyílra. Kattintson a **hivatkozások** , és kattintson a jobb gombbal a **hivatkozás hozzáadása**.
-    2. Keresse meg a helyet, a csomagok mappa, válassza ki az összes DLL-fájl, és kattintson a **Hozzáadás**, és kattintson a **OK**.
+    2. Kattintson a Data Transformation alkalmazásprojektet balra mutató nyílra. Kattintson a **hivatkozások** , és kattintson a jobb gombbal a **hivatkozás hozzáadása**.
+    
+        ![Adja hozzá a dll-EK 1](media/storsimple-data-manager-dotnet-jobs/create-new-project-4.png)
+
+    3. Keresse meg a helyet, a csomagok mappa, válassza ki az összes DLL-fájl, és kattintson a **Hozzáadás**, és kattintson a **OK**.
+
+        ![Adja hozzá a 2 dll](media/storsimple-data-manager-dotnet-jobs/create-new-project-6.png)
 
 5. Adja hozzá az alábbi **using** utasításokat a projekt forrásfájljához (Program.cs).
 
@@ -82,9 +100,8 @@ A következő lépésekkel .NET használatával a data transformation feladat el
     using Microsoft.Internal.Dms.DmsWebJob;
     using Microsoft.Internal.Dms.DmsWebJob.Contracts;
     ```
-
-
-6. A következő kódot az átalakítási feladat példánya inicializál. Adja hozzá ezt a a **fő metódus**. Konfigurációs paraméterek változtatása korábban beszerzett. Beépülő modul értékének **erőforráscsoport-név** és **hibrid adatok erőforrásnév**. A **erőforráscsoport-név** az, amelyet a hibrid adatforrás, melyhez a feladat definíciójához konfigurálása üzemelteti.
+    
+6. A következő kódot az átalakítási feladat példánya inicializál. Adja hozzá ezt a a **fő metódus**. Konfigurációs paraméterek változtatása korábban beszerzett. Beépülő modul értékének **erőforráscsoport-név** és **ResourceName**. A **ResourceGroupName** a kapcsolódó, a StorSimple adatkezelő feladatdefinícióban konfigurálása. A **ResourceName** a StorSimple adatkezelő szolgáltatás neve.
 
     ```
     // Setup the configuration parameters.
@@ -102,6 +119,9 @@ A következő lépésekkel .NET használatával a data transformation feladat el
     DataTransformationJob dataTransformationJob = new DataTransformationJob(configParams);
 
     ```
+   A beillesztett a kódot, ha a megoldás felépítéséhez. Íme egy Képernyőkép a kódrészletet az átalakítási feladat példánya inicializálása.
+
+   ![Adatok átalakítása feladat inicializálása kódrészletet](media/storsimple-data-manager-dotnet-jobs/start-dotnet-job-code-snippet-1.png)
 
 7. Adja meg a paramétereket, amellyel a feladat definíciójához futtatnia kell
 
@@ -176,8 +196,10 @@ A következő lépésekkel .NET használatával a data transformation feladat el
     Console.Read();
 
     ```
+ Íme egy Képernyőkép a a teljes kódminta, a .NET használatával feladat elindítása a használatával.
 
+ ![Teljes kódrészletét .NET feladatot indít](media/storsimple-data-manager-dotnet-jobs/start-dotnet-job-code-snippet.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Használja a StorSimple adatokat kezelő felhasználói felületén, az adatok átalakítására](storsimple-data-manager-ui.md).

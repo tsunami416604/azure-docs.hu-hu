@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/16/2017
+ms.date: 01/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 3ab1094c7cf99e105bc0a08d9f84332010f5afd5
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 37951a04bbfd266717490dd1752d0be04d2231a5
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 01/18/2018
 ---
-# <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication-preview"></a>Hozzon létre és VPN-ügyfél konfigurációs fájlok P2S RADIUS-hitelesítés (előzetes verzió) telepítése
+# <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>Hozzon létre és telepítse a VPN-ügyfél konfigurációs fájlok P2S RADIUS-hitelesítés
 
 VPN-ügyfél konfigurációs fájlokat a zip-fájl tartalmazza. Konfigurációs fájlokat adja meg a natív Windows vagy Mac IKEv2 VPN-ügyfelek pont-pont keresztül csatlakoznak a virtuális hálózat szükséges beállításokat. A RADIUS-kiszolgáló több hitelesítési beállítások biztosít, és mint ilyen, a VPN-ügyfél konfigurációja függően változik, az egyes lehetőségek.
 
@@ -103,13 +103,13 @@ A következő lépésekkel konfigurálhatja a natív Windows VPN-ügyfél eseté
   ![Rendszerbeállítások](./media/point-to-site-vpn-client-configuration-radius/adsystempref.png)
 8. A VPN-kapcsolat megnyitásához nyissa meg a **hálózati** párbeszédpanel a **rendszerbeállítások**.
 
-  ![Hálózati](./media/point-to-site-vpn-client-configuration-radius/adnetwork.png)
+  ![network](./media/point-to-site-vpn-client-configuration-radius/adnetwork.png)
 9. A VPN-kapcsolat jeleníti meg, mint a **IkeV2 VPN**. A név értéke módosítható azáltal, hogy frissíti a **mobileconfig** fájlt.
 
   ![kapcsolat](./media/point-to-site-vpn-client-configuration-radius/adconnection.png)
 10. Kattintson a **hitelesítési beállítások**. Válasszon **felhasználónév** a legördülő lista a hitelesítő adataival. Ha a megadott hitelesítő adatok korábbi, majd **felhasználónév** automatikusan a legördülő lista a kiválasztott és a felhasználónév és jelszó ki van töltve. Kattintson az **OK** gombra a beállítások mentéséhez. Ezzel megnyitná vissza a hálózati párbeszédpanel.
 
-  ![hitelesítés](./media/point-to-site-vpn-client-configuration-radius/adauthentication.png)
+  ![authenticate](./media/point-to-site-vpn-client-configuration-radius/adauthentication.png)
 11. Kattintson a **alkalmaz** menti a módosításokat. Kezdeményezzen kapcsolatot, kattintson a **Connect**.
 
 ## <a name="certeap"></a>Tanúsítványhitelesítés kapcsolatos
@@ -172,7 +172,7 @@ Kattintson a **Hozzáadás** importálásához.
 
   A **felület** értéke 'VPN' és **VPN-típus** értéke "IKEv2". Adja meg a profil nevét a **szolgáltatásnév** mezőben, majd kattintson az **létrehozása** a VPN-ügyfél-csatlakozási profil létrehozásához.
 
-  ![Hálózati](./media/point-to-site-vpn-client-configuration-radius/network.png)
+  ![network](./media/point-to-site-vpn-client-configuration-radius/network.png)
 3. Az a **általános** mappa, a a **VpnSettings.xml** fájlt, másolja a **VpnServer** címke értéke. Illessze be ezt az értéket a **kiszolgálócímet** és **távoli azonosítója** mezők a profil. Hagyja a **helyi azonosítója** mező üres.
 
   ![kiszolgáló adatai](./media/point-to-site-vpn-client-configuration-radius/servertag.png)
@@ -187,7 +187,7 @@ Kattintson a **Hozzáadás** importálásához.
   ![identity](./media/point-to-site-vpn-client-configuration-radius/identity.png)
 7. Az a **helyi azonosítója** mezőben adja meg azt a tanúsítványt (az 5. lépés). Ebben a példában a "ikev2Client.com" esetében. Kattintson a **alkalmaz** gombra a módosítások mentéséhez.
 
-  ![alkalmazása](./media/point-to-site-vpn-client-configuration-radius/applyconnect.png)
+  ![alkalmaz](./media/point-to-site-vpn-client-configuration-radius/applyconnect.png)
 8. Az a **hálózati** párbeszédpanel, kattintson a **alkalmaz** összes módosítások mentéséhez. Kattintson a **Connect** elindítani az Azure VNet P2S csatlakozni.
 
 ## <a name="otherauth"></a>Más hitelesítési típusok vagy protokollok használata
@@ -205,6 +205,6 @@ Egy másik hitelesítési típus (például OTP), és nem felhasználónév/jels
   * Útvonalak - útvonal, amelyet be kell állítania a profil úgy, hogy csak az Azure VNet forgalmát az P2S-alagúton keresztül zajlik.
   * A GenenericDevice mappa is tartalmaz egy .cer fájlba "VpnServerRoot" nevezik. Ez a fájl tartalmazza a legfelső szintű tanúsítvány P2S csatlakozási telepítés során az Azure VPN Gateway érvényesítéséhez szükséges. Telepítse a tanúsítványt, amelyek csatlakozni fognak az Azure VNet összes eszközön. 
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Térjen vissza a cikkhez [végezze el a P2S konfigurálását](point-to-site-how-to-radius-ps.md).

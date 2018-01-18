@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
-ms.openlocfilehash: 9ec501d0a4e1c6165b83b5b590b87b0baa284423
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.openlocfilehash: 3f735b8742f22110b4de264bfb5661651a899afb
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>Webalkalmazások konfigurálása az Azure App Service-ben
 
@@ -62,7 +62,7 @@ Technikai okokból Java az alkalmazás engedélyezése letiltja a .NET, PHP és 
 **Távoli hibakeresés**. Távoli hibakeresésének engedélyezése. Ha engedélyezve van, használhatja a távoli hibakereső a Visual Studio közvetlenül kapcsolódni a webes alkalmazást. Távoli hibakeresés továbbra is engedélyezett marad 48 órán keresztül. 
 
 ### <a name="app-settings"></a>Alkalmazásbeállítások
-Ebben a szakaszban található név/érték párok, akkor web app betölti a kezdőlapon. 
+Ez a szakasz olyan név/érték párok, amelyek a webalkalmazás a kezdőlapon tölti fel. 
 
 * .NET-alkalmazások esetén ezek a beállítások vannak be a nézetmodellbe, a .NET-konfiguráció `AppSettings` futásidőben, felülírva a meglévő beállításokat. 
 * A PHP, Python, Java és csomópont alkalmazások férhetnek hozzá ezeket a beállításokat a környezeti változók futásidőben. Minden egyes alkalmazás-beállítás két környezeti változók jönnek létre; egy alkalmazás beállítási bejegyzésre, és egy másik APPSETTING_ előtaggal rendelkező által a megadott néven. Is tartalmaznak ugyanarra az értékre.
@@ -74,8 +74,8 @@ Kapcsolati karakterláncok kapcsolt erőforrásokban.
 
 A PHP, Python, Java és csomópont alkalmazások ezek a beállítások használhatók környezeti változók futásidőben, a kapcsolat típusa előtagként. A környezeti változó előtagok a következők: 
 
-* SQL Server:`SQLCONNSTR_`
-* MySQL:`MYSQLCONNSTR_`
+* SQL Server: `SQLCONNSTR_`
+* MySQL: `MYSQLCONNSTR_`
 * SQL-adatbázis:`SQLAZURECONNSTR_`
 * Egyéni:`CUSTOMCONNSTR_`
 
@@ -165,13 +165,13 @@ További információkért lásd: [Útmutató: webes végpont állapotának figy
 [ASP.NET SignalR]: http://www.asp.net/signalr
 [Azure Portal]: https://portal.azure.com/
 [Egyéni tartománynév konfigurálása az Azure App Service-ben]: ./app-service-web-tutorial-custom-domain.md
-[előkészítési környezetek telepítése az Azure App Service Web Apps]: ./web-sites-staged-publishing.md
+[Az Azure App Service Web Apps előkészítési környezetek telepítése]: ./web-sites-staged-publishing.md
 [HTTPS engedélyezése az alkalmazásoknak az Azure App Service-ben]: ./app-service-web-tutorial-custom-ssl.md
 [Útmutató: webes végpont állapotának figyelése]: http://go.microsoft.com/fwLink/?LinkID=279906
 [Az Azure App Service Web Apps figyelési alapjai]: ./web-sites-monitor.md
-[folyamatkezelési mód]: http://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
+[feldolgozási sor üzemmódban]: http://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
 [A webalkalmazás skálázása az Azure App Service-ben]: ./web-sites-scale.md
-[Az Azure App Service kipróbálása]: https://azure.microsoft.com/try/app-service/
+[Az App Service kipróbálása]: https://azure.microsoft.com/try/app-service/
 
 <!-- IMG List -->
 

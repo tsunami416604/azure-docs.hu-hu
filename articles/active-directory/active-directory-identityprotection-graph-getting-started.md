@@ -1,5 +1,5 @@
 ---
-title: "Ismerkedés az Azure Active Directory azonosító adatok védelmét és a Microsoft Graph |} Microsoft Docs"
+title: "Az Azure Active Directory azonosító adatok védelmét a Microsoft Graph |} Microsoft Docs"
 description: "Tudnivalók a Microsoft Graph lekérdezni a kockázati eseményekről és a kapcsolódó adatokat az Azure Active Directory listáját."
 services: active-directory
 keywords: "az Azure active directory azonosító adatok védelmét, a kockázat esemény, a biztonsági rés, a biztonsági házirendet, a Microsoft Graph"
@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 12/08/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: fafad74f46baaf56a8220dab05028781b2f2258e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: df0d89fc93f1b9c19d669c29306398a8b25ee425
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Ismerkedés az Azure Active Directory azonosító adatok védelmét és a Microsoft Graph
 A Microsoft Graph a Microsoft unified API-végpont és az otthoni [Azure Active Directory Identity Protection](active-directory-identityprotection.md) API-k. Az első API **identityRiskEvents**, lehetővé teszi a Microsoft Graph listájának lekérdezési [kockázati események](active-directory-identityprotection-risk-events-types.md) és a kapcsolódó adatokat. Ez a cikk lekérdezi az API lekérdezése lépésekhez. Egy részletes bemutatása, teljes dokumentációját, és a Graph Explorer elérésére, tekintse meg a [Microsoft Graph hely](https://graph.microsoft.io/).
@@ -51,7 +52,7 @@ Mielőtt hozzáfogna, szüksége lesz:
 
     ![Az alkalmazás létrehozása](./media/active-directory-identityprotection-graph-getting-started/42.png)
 
-4. Másolja a tartomány nevét.
+4. Copy your domain name.
 
 
 ## <a name="create-a-new-app-registration"></a>Hozzon létre egy új alkalmazás regisztrálása
@@ -206,7 +207,7 @@ Csak adja hozzá az ügyfél-azonosító, a titkos kulcs és a bérlői tartomá
     } 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Gratulálunk, a Microsoft Graph első hívás most végzett!  
 Most identitás kockázati események és igényei azonban az adatok felhasználásával.
@@ -215,7 +216,7 @@ A Microsoft Graph és hogyan hozhat létre alkalmazásokat a Graph API-val kapcs
 
 Kapcsolódó tudnivalókért lásd:
 
--  [Az Azure Active Directory azonosító adatok védelmét](active-directory-identityprotection.md)
+-  [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
 
 -  [Azure Active Directory Identity Protection által észlelt kockázati események típusai](active-directory-identityprotection-risk-events-types.md)
 

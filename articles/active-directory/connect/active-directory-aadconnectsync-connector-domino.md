@@ -3,7 +3,7 @@ title: "Lotus Domino-összekötő |} Microsoft Docs"
 description: "Ez a cikk ismerteti a Microsoft Lotus Domino-összekötő konfigurálása."
 services: active-directory
 documentationcenter: 
-author: AndKjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: e07fd469-d862-470f-a3c6-3ed2a8d745bf
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/119/2017
 ms.author: barclayn
-ms.openlocfilehash: 80151134821c6106382c58bf0ec68ea0f6d4646a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6c412be1c54e0378166791c61469c951bca3a583
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="lotus-domino-connector-technical-reference"></a>Lotus Domino-összekötő műszaki útmutatója
 Ez a cikk ismerteti a Lotus Domino-összekötő. A cikk vonatkozik a következő termékek:
@@ -80,10 +80,10 @@ A műveletek vagy nyissa meg közvetlenül a Domino directory vagy a AdminP foly
 
 | Objektum | Létrehozás | Frissítés | Törlés |
 | --- | --- | --- | --- |
-| Személy |N/A |Közvetlen |Közvetlen |
+| Személy |– |Közvetlen |Közvetlen |
 | Csoport |Közvetlen |Közvetlen |Közvetlen |
 | MailInDB |Közvetlen |Közvetlen |Közvetlen |
-| Erőforrás |N/A |N/A |N/A |
+| Erőforrás |– |– |– |
 
 Amikor egy erőforrást hoz létre, a megjegyzéseket dokumentum jön létre. Hasonlóképpen erőforrás törlésekor törlődik a dokumentumba.
 
@@ -119,8 +119,8 @@ A kapcsolat lapon meg kell adnia a Lotus Domino-kiszolgáló nevét, adja meg a 
 
 A Domino kiszolgáló tulajdonság két formátum támogatja a kiszolgáló nevét:
 
-* Kiszolgálónév
-* ServerName/könyvtárnév
+* ServerName
+* ServerName/DirectoryName
 
 A **ServerName/könyvtárnév** formátuma ehhez az attribútumhoz előnyben részesített formátumban, mert ha az összekötő felveszi a kapcsolatot a Domino kiszolgáló gyorsabban szeretne választ kapni biztosít.
 
@@ -198,7 +198,7 @@ Ha nem rendelkezik **directory segítséget** telepítve, amely biztosítja, hog
 #### <a name="multivalued-transformation"></a>Többértékű átalakítása
 Lotus Domino sok attribútumokat többértékű adatelemeket. A megfelelő metaverse attribútumokat általában egyetlen értékelni. Az importálás és az exportálási művelet beállítás konfigurálásával engedélyezi az összekötő számára szükséges fordítása érintett attribútumát.
 
-**Exportálás**  
+**Export**  
 Az exportálási művelet beállítás két módot támogat:
 
 * Elem hozzáfűzése
@@ -265,7 +265,7 @@ A Lotus Domino-összekötő konfigurálásakor a párbeszédpanelen lap kihagyá
 Partíciók és hierarchiák konfigurálása, jelölje be az elsődleges címjegyzék NAB=names.nsf nevezik. Mellett az elsődleges címjegyzék választhat másodlagos címtárakat, ha vannak ilyenek.  
 ![Partíciók](./media/active-directory-aadconnectsync-connector-domino/partitions.png)
 
-### <a name="select-attributes"></a>Attribútumok kiválasztása
+### <a name="select-attributes"></a>Attribútumok kijelölése
 Az attribútumok konfigurálásakor ki kell választania az összes attribútum, amely fűzve előtagként  **\_MMS\_**. Ezek az attribútumok szükség, amikor új objektumok Lotus Domino
 
 ![Attribútumok](./media/active-directory-aadconnectsync-connector-domino/attributes.png)
@@ -413,10 +413,10 @@ Ez a rész felsorolja a attribútumok megadása kötelező, minden támogatott o
 | Objektumtípus | Kötelező attribútumok |
 | --- | --- |
 | Csoport |<li>ListName</li> |
-| Fő-adatbázisban |<li>FullName</li><li>MailFile</li><li>Levelezokiszolgalo</li><li>MailDomain</li> |
+| Fő-adatbázisban |<li>FullName</li><li>MailFile</li><li>MailServer</li><li>MailDomain</li> |
 | Személy |<li>Vezetéknév</li><li>MailFile</li><li>Rövid_név</li><li>\_MMS_Password</li><li>\_MMS_IDStoreType</li><li>\_MMS_Certifier</li><li>\_MMS_IDRegType</li><li>\_MMS_UseAdminP</li> |
 | Ügyfél (nincs certifier rendelkező személy) |<li>\_MMS_IDRegType</li> |
-| Erőforrás |<li>FullName</li><li>ResourceType</li><li>ConfDB</li><li>Erőforráskapacitás</li><li>Hely</li><li>Megjelenítendő név</li><li>MailFile</li><li>Levelezokiszolgalo</li><li>MailDomain</li> |
+| Erőforrás |<li>FullName</li><li>ResourceType</li><li>ConfDB</li><li>Erőforráskapacitás</li><li>Hely</li><li>Megjelenítendő név</li><li>MailFile</li><li>MailServer</li><li>MailDomain</li> |
 
 ## <a name="common-issues-and-questions"></a>Gyakori problémákat és kérdéseket
 ### <a name="schema-detection-does-not-work"></a>Séma észlelése nem működik.
