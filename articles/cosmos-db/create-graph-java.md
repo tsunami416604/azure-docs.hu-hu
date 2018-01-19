@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 12/15/2017
+ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: e90879c70e47d2bc5034b4fbf2b0ed7172fe131e
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: b28300c4ed0a0c6f35bf49808b8ed12d4e180610
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB: Gráfadatbázis létrehozása a Java és az Azure Portal használatával
 
@@ -129,13 +129,19 @@ Lépjen vissza az Azure Portalra a kapcsolati adatokért, majd másolja be azoka
 
     `hosts: [test-graph.graphs.azure.com]`
 
-3. Az Azure Portalon használja a másolás gombot az ELSŐDLEGES KULCS másolásához, és illessze be a `$masterKey$` helyére a következőben: `password: $masterKey$`.
+3. Az `endpoint` értékben módosítsa a `graphs` karakterláncot a következőre: `gremlin.cosmosdb`. (Ha a gráfadatbázis-fiókot 2017. december 20. előtt hozta létre, ne módosítsa a végpont értékét, és folytassa a következő lépéssel.)
+
+    A végpontértéknek most így kell kinéznie:
+
+    `"endpoint": "https://testgraphacct.gremlin.cosmosdb.azure.com:443/"`
+
+4. Az Azure Portalon használja a másolás gombot az ELSŐDLEGES KULCS másolásához, és illessze be a `$masterKey$` helyére a következőben: `password: $masterKey$`.
 
     A remote.yaml negyedik sorának ekkor a következőhöz hasonlóan kell kinéznie: 
 
     `password: 2Ggkr662ifxz2Mg==`
 
-4. Módosítsa a remote.yaml harmadik sorát a következőről:
+5. Módosítsa a remote.yaml harmadik sorát a következőről:
 
     `username: /dbs/$database$/colls/$collection$`
 
@@ -143,7 +149,7 @@ Lépjen vissza az Azure Portalra a kapcsolati adatokért, majd másolja be azoka
 
     `username: /dbs/sample-database/colls/sample-graph`
 
-5. Mentse a remote.yaml fájlt.
+6. Mentse a remote.yaml fájlt.
 
 ## <a name="run-the-console-app"></a>A konzolalkalmazás futtatása
 

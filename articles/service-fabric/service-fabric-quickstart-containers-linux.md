@@ -2,24 +2,24 @@
 title: "Azure Service Fabric-tárolóalkalmazás létrehozása Linuxon | Microsoft Docs"
 description: "Hozza létre első saját, Linux-alapú tárolóalkalmazását az Azure Service Fabricban.  Az alkalmazással elkészíthet egy Docker-rendszerképet, amelyet leküldéssel továbbíthat egy tárolóregisztrációs adatbázisba, majd összeállíthat és üzembe helyezhet egy Service Fabric-tárolóalkalmazást."
 services: service-fabric
-documentationcenter: .net
-author: rwike77
+documentationcenter: linux
+author: suhuruli
 manager: timlt
 editor: 
 ms.assetid: 
 ms.service: service-fabric
-ms.devlang: dotNet
+ms.devlang: python
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/05/2017
-ms.author: ryanwi
+ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: a3fa592e08ab05dfc56cf0c0c13eb6a64a7e2052
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 23cc9ce855eeba9e9a365e42beeee01b09f0fee3
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="deploy-an-azure-service-fabric-linux-container-application-on-azure"></a>Linux-alapú Azure Service Fabric-tároló üzembe helyezése az Azure-on
 Az Azure Service Fabric egy elosztott rendszerplatform, amely skálázható és megbízható mikroszolgáltatások és tárolók üzembe helyezésére és kezelésére szolgál. 
@@ -66,23 +66,34 @@ További információk saját fürtök létrehozásáról: [Service Fabric-fürt
 > A webes előtérrendszer a konfigurációja szerint a 80-as porton figyeli a bejövő forgalmat. Győződjön meg róla, hogy a port nyitva van a fürtön. Ha nyilvános fürtöt használ, a port nyitva van.
 >
 
-### <a name="deploy-the-application-manifests"></a>Az alkalmazásjegyzékek üzembe helyezése 
+### <a name="install-service-fabric-command-line-interface-and-connect-to-your-cluster"></a>A Service Fabric parancssori felületének telepítése és csatlakozás a fürthöz
 Telepítse a [Service Fabric parancssori felületet (sfctl)](service-fabric-cli.md) a parancssori felületi környezetben
 
 ```azurecli-interactive
 pip3 install --user sfctl 
 export PATH=$PATH:~/.local/bin
 ```
+
 Csatlakozzon az Azure Service Fabric-fürthöz az Azure CLI használatával. A végpont a fürt felügyeleti végpontja, például `http://linh1x87d1d.westus.cloudapp.azure.com:19080`.
 
 ```azurecli-interactive
 sfctl cluster select --endpoint http://linh1x87d1d.westus.cloudapp.azure.com:19080
 ```
 
+### <a name="deploy-the-service-fabric-application"></a>A Service Fabric-alkalmazás üzembe helyezése 
+A Service Fabric-tárolóalkalmazások az itt ismertetett Service Fabric-alkalmazáscsomag vagy a Docker Compose használatával helyezhetők üzembe. 
+
+#### <a name="deploy-using-service-fabric-application-package"></a>Üzembe helyezés a Service Fabric-alkalmazáscsomaggal
 Használja a megadott telepítési szkriptet a szavazóalkalmazás definíciójának a fürtbe való másolásához, regisztrálja az alkalmazás típusát, és hozza létre az alkalmazás egy példányát.
 
 ```azurecli-interactive
 ./install.sh
+```
+
+#### <a name="deploy-the-application-using-docker-compose"></a>Az alkalmazás üzembe helyezése a Docker Compose használatával
+A Docker Compose használatával helyezze üzembe és telepítse az alkalmazást a Service Fabric-fürtön az alábbi paranccsal.
+```azurecli-interactive
+sfctl compose create --deployment-name TestApp --file-path docker-compose.yml
 ```
 
 Nyisson meg egy böngészőt, majd navigáljon a Service Fabric Explorerre a http://\<my-azure-service-fabric-cluster-url>:19080/Explorer címen – például: `http://linh1x87d1d.westus.cloudapp.azure.com:19080/Explorer`. Bontsa ki az Alkalmazások csomópontot, és figyelje meg, hogy most már megjelenik benne egy bejegyzés a szavazóalkalmazás típusához, és az Ön által létrehozott példányhoz.
@@ -133,7 +144,7 @@ Használja a sablonban megadott eltávolítási szkriptet az alkalmazáspéldán
 ./uninstall.sh
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 > [!div class="checklist"]
 > * Linux-alapú tárolóalkalmazás üzembe helyezése az Azure-ban

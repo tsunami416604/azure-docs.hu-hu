@@ -13,18 +13,18 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 12/07/2017
+ms.date: 01/03/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: b1c5ef3868a14f42d75720984ea19bb495b887e4
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 33f6cd9e10782bb8ff1b0ddf6d047aebc83f8008
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Időzítő által aktivált függvény létrehozása az Azure-ban
 
-Tekintse át, hogyan használhatja az Azure Functions szolgáltatást olyan függvény létrehozására, amely az Ön által meghatározott ütemezés alapján fut.
+Tekintse át, hogyan használhatja az Azure Functions szolgáltatást olyan [kiszolgáló nélküli](https://azure.microsoft.com/overview/serverless-computing/) függvény létrehozására, amely az Ön által meghatározott ütemezés alapján fut.
 
 ![Függvényalkalmazás létrehozása az Azure Portalon](./media/functions-create-scheduled-function/function-app-in-portal-editor.png)
 
@@ -65,19 +65,19 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
     | **Name (Név)** | Alapértelmezett | Az időzítő által aktivált függvény nevét adja meg. |
     | **[Ütemezés](http://en.wikipedia.org/wiki/Cron#CRON_expression)** | 0 \*/1 \* \* \* \* | Hat mezőből álló [CRON-kifejezés](http://en.wikipedia.org/wiki/Cron#CRON_expression), amely úgy ütemezi a függvényt, hogy minden percben fusson. |
 
-2. Kattintson a **Létrehozás** gombra. Létrejön egy függvény a választott nyelven, amely minden percben futni fog.
+2. Kattintson a **Create** (Létrehozás) gombra. Létrejön egy függvény a választott nyelven, amely minden percben futni fog.
 
 3. Ellenőrizze a végrehajtást a naplókban gyűjtött nyomkövetési adatok áttekintésével.
 
     ![A függvények naplómegtekintője az Azure Portalon.](./media/functions-create-scheduled-function/functions-timer-trigger-view-logs2.png)
 
-Most módosíthatja a függvény ütemezését, hogy ritkábban, például óránként egyszer fusson. 
+Most módosíthatja a függvény ütemezését, hogy ne percenként, hanem óránként egyszer fusson. 
 
 ## <a name="update-the-timer-schedule"></a>Az időzítő ütemezésének módosítása
 
 1. Bontsa ki a függvényt, és kattintson az **Integráció** elemre. Itt határozhatja meg a függvény bemeneti és kimeneti kötéseit, és itt állíthatja be az ütemezést is. 
 
-2. Adja meg az új `0 0 */1 * * *` értéket az **Ütemezés** beállításnál, és kattintson a **Mentés** gombra.  
+2. Adja meg az új `0 0 */1 * * *` értéket az óránkénti **Ütemezés** beállításnál, és kattintson a **Mentés** elemre.  
 
 ![A függvények időzítési ütemezésének módosítása az Azure Portalon.](./media/functions-create-scheduled-function/functions-timer-trigger-change-schedule.png)
 
@@ -87,7 +87,7 @@ A függvény ezután óránként egyszer fog futni.
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Létrehozott egy ütemezés alapján futó függvényt.
 

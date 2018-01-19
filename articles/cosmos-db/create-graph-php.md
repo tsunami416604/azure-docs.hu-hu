@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: 
 ms.topic: quickstart
-ms.date: 12/15/2017
+ms.date: 01/05/2018
 ms.author: lbosq
-ms.openlocfilehash: 75be5be0bef4dd07c8560076f47055105a70ee05
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 3f80e682a89dcf6b5d3d5d6f2f15c4eeab2046e7
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-php-and-the-azure-portal"></a>Azure Cosmos DB: Gráfadatbázis létrehozása a PHP és az Azure Portal használatával
 
@@ -137,7 +137,9 @@ Lépjen vissza az Azure Portalra a kapcsolati adatokért, majd másolja be azoka
     ]);
     ```
 
-3. Módosítsa a kapcsolat objektumban lévő `username` paramétert az adatbázis és a gráf nevével. Ha a `sample-database` és `sample-graph` javasolt értékeket használta, a következőképpen kell kinéznie:
+3. Ha a gráfadatbázis-fiókot 2017. december 20-án vagy azután hozta létre, módosítsa a gazdagép nevében a `graphs.azure.com` karakterláncot a következőre: `gremlin.cosmosdb.azure.com`.
+
+4. Módosítsa a kapcsolat objektumban lévő `username` paramétert az adatbázis és a gráf nevével. Ha a `sample-database` és `sample-graph` javasolt értékeket használta, a következőképpen kell kinéznie:
 
     `'username' => '/dbs/sample-database/colls/sample-graph'`
 
@@ -155,7 +157,7 @@ Lépjen vissza az Azure Portalra a kapcsolati adatokért, majd másolja be azoka
     ]);
     ```
 
-4. Az Azure Portalon a másolás gombbal másolja az ELSŐDLEGES KULCSOT, és illessze a `your_primary_key` helyére a jelszóparaméterben.
+5. Az Azure Portalon a másolás gombbal másolja az ELSŐDLEGES KULCSOT, és illessze a `your_primary_key` helyére a jelszóparaméterben.
 
     A kapcsolat objektum inicializálásának a most így kell kinéznie:
 
@@ -171,7 +173,7 @@ Lépjen vissza az Azure Portalra a kapcsolati adatokért, majd másolja be azoka
     ]);
     ```
 
-5. Mentse a `connect.php` fájlt.
+6. Mentse a `connect.php` fájlt.
 
 ## <a name="run-the-console-app"></a>A konzolalkalmazás futtatása
 

@@ -13,14 +13,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 9/29/2017
+ms.date: 1/5/2018
 ms.author: markgal;trinadhk;anuragm
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 4a917fbbc1beff9a8b16ba044052cc9864cd9728
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: 59beaac1d8619c3f4afa1c75074546a849dfce6b
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Az Azure Backup szolgáltatásainak áttekintése
 Az Azure Backup olyan Azure-alapú szolgáltatás, amellyel biztonsági másolatot készíthet adatairól (vagy megvédheti adatait), és visszaállíthatja őket a Microsoft-felhőből. Az Azure Backup megbízható, biztonságos és költséghatékony felhőalapú megoldással váltja fel a meglévő helyszíni vagy külső helyszínen lévő biztonsági mentési megoldást. Az Azure Backup több összetevőjét letöltheti és telepítheti a megfelelő számítógépre, kiszolgálóra vagy a felhőbe. A telepítendő összetevő vagy ügynök attól függ, hogy mit szeretne megvédeni. Minden Azure Backup-összetevővel (függetlenül attól, hogy helyszíni vagy a felhőben tárolt adatokat kíván védeni) készíthetők biztonsági másolatok az Azure Recovery Services-tárolójába. Az [Azure Backup-összetevők táblázatában](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (a cikk későbbi részében) azzal kapcsolatban talál információkat, hogy mely összetevőt kell használnia adott adatok, alkalmazások és számítási feladatok védelmére.
@@ -224,12 +224,7 @@ A Recovery Services-tároló olyan online tárolóentitás az Azure-ban, amely a
 Az Azure Service Manageren alapuló mentési tárolók voltak a tároló első verziói. Az Azure Resource Manager modelljellemzőit biztosító Recovery Services-tárolók képezték a tároló második verzióját. A szolgáltatások közötti különbségekről teljes leírást a [Recovery Services-tároló áttekintő cikkében](backup-azure-recovery-services-vault-overview.md) talál. A portált már nem használhatja Backup-tárolók létrehozásához, a Backup-tárolók azonban továbbra is támogatottak. A Backup-tárolók kezeléséhez minden esetben az Azure Portalt kell használnia.
 
 > [!IMPORTANT]
-> A Backup-tárolóit Recovery Services-tárolókra frissítheti. A részletekről bővebben az [Váltás biztonsági mentési tárolóról Recovery Services-tárolóra](backup-azure-upgrade-backup-to-recovery-services.md) című cikkben olvashat. A Microsoft azt javasolja, hogy a biztonsági mentési tárolóról váltson Recovery Services-tárolóra.<br/> **2017. október 30-tól** a PowerShell a továbbiakban nem használható Backup-tárolók létrehozására. <br/>
-2017. november 30-tól:
-- Minden fennmaradó Backup-tároló automatikusan Recovery Services-tárolóra frissül.
-- A klasszikus portálon nem lehet majd hozzáférni a biztonsági másolati adatokhoz. Helyette az Azure Portal segítségével férhet hozzá a Recovery Services-tárolókban található biztonsági mentési adatokhoz.
-
-
+> A Backup-tárolóit Recovery Services-tárolókra frissítheti. A részletekről bővebben az [Váltás biztonsági mentési tárolóról Recovery Services-tárolóra](backup-azure-upgrade-backup-to-recovery-services.md) című cikkben olvashat. A Microsoft azt javasolja, hogy a biztonsági mentési tárolóról váltson Recovery Services-tárolóra.<br/> 2017. november 30-tól a PowerShell nem használható Backup-tárak létrehozására, és minden fennmaradó Backup-tár automatikusan Recovery Services-tárra frissül.
 
 ## <a name="how-does-azure-backup-differ-from-azure-site-recovery"></a>Miben különbözik az Azure Backup az Azure Site Recoverytől?
 Az Azure Backup és az Azure Site Recovery közös jellemzője, hogy mindkét szolgáltatás használható az adatok biztonsági mentésére és visszaállítására. Különböző szerepet töltenek be azonban a vállalkozásban az üzleti folytonosság és a vészhelyreállítás biztosítása során. Az Azure Backup segítségével részletesebben védheti meg és állíthatja vissza az adatokat. Ha például egy laptopon lévő bemutató megsérült, az Azure Backup segítségével állíthatja vissza a bemutatót. Ha egy virtuális gép konfigurációját és adatait szeretné replikálni egy másik adatközpontba, használja az Azure Site Recoveryt.
