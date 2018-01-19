@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 07/15/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 6ac6ed21f3cf363137381b82835a11d0920aee3b
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: c587a2ba10606a08aec7a75e4bdc6fe5cc297be9
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-the-azure-portal"></a>Linux virtuális gép létrehozása az Azure Portal használatával
 
@@ -32,11 +32,13 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 A gyors üzembe helyezés elvégzéséhez egy SSH-kulcspárra lesz szüksége. Ha már rendelkezik SSH-kulcspárral, kihagyhatja ezt a lépést.
 
-Futtassa ezt a parancsot egy Bash rendszerhéjból, és kövesse a képernyőn látható utasításokat. A parancs kimenete tartalmazza a nyilvános kulcsfájl fájlnevét. Másolja a nyilvános kulcsfájl tartalmát a vágólapra.
+Futtassa ezt a parancsot egy Bash rendszerhéjból, és kövesse a képernyőn látható utasításokat. A parancs kimenete tartalmazza a nyilvános kulcsfájl fájlnevét. Másolja a nyilvános kulcsfájl (`cat ~/.ssh/id_rsa.pub`) tartalmát a vágólapra. Ha a Linux Windows alrendszerét használja, akkor ügyeljen rá, hogy a kimenetből ne másolja ki a sortörés karaktereket. Jegyezze fel a titkos kulcs fájlnevét, mert később még szüksége lesz rá.
 
 ```bash
 ssh-keygen -t rsa -b 2048
 ```
+
+Erről a folyamatról [itt](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) talál részletesebb információkat
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba 
 
@@ -102,7 +104,7 @@ A hálózati biztonsági csoport (NSG) feladata a bejövő és kimenő forgalom 
 2. Válassza ki a **hálózati biztonsági csoportot**. A hálózati biztonsági csoport a **Típus** oszlop segítségével azonosítható. 
 3. A bal oldali menü Beállítások területén kattintson a **Bejövő biztonsági szabályok** elemre.
 4. Kattintson a **Hozzáadás** gombra.
-5. A **Név** mezőbe írja be a **http** karakterláncot. Ügyeljen rá, hogy a **Porttartomány** értéke 80, a **Művelet** értéke pedig **Engedélyezés** legyen. 
+5. A **Név** mezőbe írja be a **http** karakterláncot. Ügyeljen rá, hogy a **Forrásporttartomány** értéke `*`, a **Célporttartomány** értéke *80*, a **Művelet** értéke pedig *Engedélyezés* legyen. 
 6. Kattintson az **OK** gombra.
 
 
@@ -116,7 +118,7 @@ Most, hogy az NGINX telepítve van, és a 80-as port meg van nyitva a virtuális
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást. Ehhez válassza ki a virtuális gép erőforráscsoportját, és kattintson a **Törlés** elemre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban üzembe helyezett egy egyszerű virtuális gépet, egy hálózati biztonsági csoport szabályát, valamint telepített egy webkiszolgálót. Ha bővebb információra van szüksége az Azure-beli virtuális gépekkel kapcsolatban, lépjen tovább a Linux rendszerű virtuális gépekről szóló oktatóanyagra.
 

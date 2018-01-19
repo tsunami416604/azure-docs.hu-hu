@@ -17,11 +17,11 @@ ms.workload: Active
 ms.date: 11/17/2017
 ms.author: cakarst
 ms.reviewer: barbkess
-ms.openlocfilehash: fe3ea6c22fafad0d0dcf611ceb365a2ebca80011
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: 64315945d977ba912634eb626491a4513def1556
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="use-polybase-to-load-data-from-azure-blob-storage-to-azure-sql-data-warehouse"></a>Adatok betöltése az Azure blob storage az Azure SQL Data Warehouse PolyBase segítségével
 
@@ -44,40 +44,40 @@ Ha nem rendelkezik Azure-előfizetéssel, [ingyenes fiók létrehozását](https
 Ez az oktatóanyag megkezdése előtt töltse le és telepítse a legújabb verzióját [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS).
 
 
-## <a name="log-in-to-the-azure-portal"></a>Jelentkezzen be az Azure portálra.
+## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 
 Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 ## <a name="create-a-blank-sql-data-warehouse"></a>Üres SQL data warehouse létrehozása
 
-Egy Azure SQL data warehouse létrejön egy adott csoportján [számítási erőforrásokat](performance-tiers.md). Az adatbázist a rendszer létrehoz egy [Azure erőforráscsoport](../azure-resource-manager/resource-group-overview.md) és az egy [Azure SQL logikai kiszolgálóra](../sql-database/sql-database-features.md). 
+Az Azure SQL Data Warehouse [számítási erőforrások](performance-tiers.md) egy meghatározott készletével együtt jön létre. Az adatbázis egy [Azure-erőforráscsoporton](../azure-resource-manager/resource-group-overview.md) belül egy [Azure SQL logikai kiszolgálón](../sql-database/sql-database-features.md) jön létre. 
 
 Kövesse az alábbi lépéseket egy üres SQL data warehouse létrehozásához. 
 
-1. Kattintson a **új** gomb az Azure portál bal felső sarokban.
+1. Kattintson az Azure Portal bal felső sarkában az **Új** gombra.
 
-2. Válassza ki **adatbázisok** a a **új** lapon, és válassza ki **SQL Data Warehouse** alatt **kiemelt** a a **új**lap.
+2. Az **Új** oldalon válassza az **Adatbázisok** elemet, majd az **Új** oldal **Kiemelt** területén válassza az **SQL Data Warehouse** lehetőséget.
 
-    ![data warehouse létrehozása](media/load-data-from-azure-blob-storage-using-polybase/create-empty-data-warehouse.png)
+    ![adattárház létrehozása](media/load-data-from-azure-blob-storage-using-polybase/create-empty-data-warehouse.png)
 
-3. Töltse ki az SQL Data Warehouse az űrlapot, a következő információkat:   
+3. Adja meg az alábbi adatokat a SQL Data Warehouse-űrlapon:   
 
    | Beállítás | Ajánlott érték | Leírás | 
    | ------- | --------------- | ----------- | 
    | **Adatbázis neve** | mySampleDataWarehouse | Az érvényes adatbázisnevekkel kapcsolatban lásd az [adatbázis-azonosítókat](/sql/relational-databases/databases/database-identifiers) ismertető cikket. | 
    | **Előfizetés** | Az Ön előfizetése  | Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.windowsazure.com/Subscriptions) ismertető cikket. |
    | **Erőforráscsoport** | myResourceGroup | Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket. |
-   | **Forrás kiválasztása** | Az üres adatbázis | Meghatározza, hogy egy üres adatbázis létrehozásához. Vegye figyelembe, egy data warehouse adatbázis egy típust.|
+   | **Forrás kiválasztása** | Az üres adatbázis | Meghatározza, hogy egy üres adatbázis létrehozásához. Megjegyzés: Az adattárház az adatbázisok egy típusa.|
 
-    ![data warehouse létrehozása](media/load-data-from-azure-blob-storage-using-polybase/create-data-warehouse.png)
+    ![adattárház létrehozása](media/load-data-from-azure-blob-storage-using-polybase/create-data-warehouse.png)
 
-4. Kattintson a **Kiszolgáló** lehetőségre új kiszolgáló létrehozásához és konfigurálásához az új adatbázis számára. Töltse ki a **új kiszolgáló űrlap** a következő információkat: 
+4. Kattintson a **Kiszolgáló** lehetőségre új kiszolgáló létrehozásához és konfigurálásához az új adatbázis számára. Adja meg az alábbi adatokat az **Új kiszolgálóűrlapon**: 
 
     | Beállítás | Ajánlott érték | Leírás | 
     | ------- | --------------- | ----------- |
     | **Kiszolgálónév** | Bármely globálisan egyedi név | Az érvényes kiszolgálónevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket. | 
     | **Kiszolgálói rendszergazdai bejelentkezés** | Bármely érvényes név | Az érvényes bejelentkezési nevekkel kapcsolatban lásd az [adatbázis-azonosítókat](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) ismertető cikket.|
-    | **Jelszó** | Bármely érvényes jelszó | A jelszó legalább 8 karakterből kell állnia, és az alábbiak közül hármat tartalmaznia kell: nagybetűk, kisbetűk, számok és nem alfanumerikus karakterek száma. |
+    | **Jelszó** | Bármely érvényes jelszó | A jelszónak legalább nyolc karakter hosszúságúnak kell lennie, és tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: nagybetűs karakterek, kisbetűs karakterek, számjegyek és nem alfanumerikus karakterek. |
     | **Hely** | Bármely érvényes hely | A régiókkal kapcsolatos információkért lásd [az Azure régióit](https://azure.microsoft.com/regions/) ismertető cikket. |
 
     ![adatbázis-kiszolgáló létrehozása](media/load-data-from-azure-blob-storage-using-polybase/create-database-server.png)
@@ -86,16 +86,16 @@ Kövesse az alábbi lépéseket egy üres SQL data warehouse létrehozásához.
 
 6. Kattintson a **teljesítményszinttel** -e az adatraktár rugalmasság vagy számítási van optimalizálva, és adatraktár-egységek számának megadásához. 
 
-7. A jelen oktatóanyag esetében válassza ki a **rugalmasság optimalizálva** szolgáltatási rétegben. A csúszka alapértelmezés szerint van beállítva **DW400**.  Helyezze a felfelé és lefelé működésének ellenőrzése. 
+7. A jelen oktatóanyag esetében válassza ki a **rugalmasság optimalizálva** szolgáltatási rétegben. A csúszka alapértelmezés szerint a **DW400** értéken áll.  Csúsztassa fel és le, hogy kipróbálja a működését a gyakorlatban. 
 
-    ![konfigurálása](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
+    ![teljesítmény konfigurálása](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
 8. Kattintson az **Alkalmaz** gombra.
 9. Az SQL Data Warehouse lapon válassza a **rendezés** az üres adatbázis. A jelen oktatóanyag esetében használja az alapértelmezett értéket. Rendezések kapcsolatos további információkért lásd: [rendezések](/sql/t-sql/statements/collations.md)
 
 11. Most, hogy kitöltötte az SQL Database űrlapját, kattintson a **Létrehozás** gombra az adatbázis létrehozásához. Az üzembe helyezés eltarthat néhány percig. 
 
-    ![Kattintson a létrehozás](media/load-data-from-azure-blob-storage-using-polybase/click-create.png)
+    ![kattintson a létrehozás parancsra](media/load-data-from-azure-blob-storage-using-polybase/click-create.png)
 
 12. Az eszköztáron kattintson az **Értesítések** parancsra az üzembe helyezési folyamat megfigyeléséhez.
     
@@ -103,23 +103,23 @@ Kövesse az alábbi lépéseket egy üres SQL data warehouse létrehozásához.
 
 ## <a name="create-a-server-level-firewall-rule"></a>Kiszolgálószintű tűzfalszabály létrehozása
 
-Az SQL Data Warehouse szolgáltatás tűzfal a kiszolgáló szintjén-, hogy a külső alkalmazások és eszközök csatlakoznak a kiszolgáló vagy a kiszolgálón lévő összes adatbázis hoz létre. Ahhoz, hogy a kapcsolat, hozzáadhat tűzfalszabályokat, amelyek az adott IP-címek kapcsolódásának engedélyezése.  Hajtsa végre az alábbi lépéseket követve létrehozhat egy [kiszolgálószintű tűzfalszabály](../sql-database/sql-database-firewall-configure.md) az ügyfél IP-cím. 
+Az SQL Data Warehouse szolgáltatás egy tűzfalat hoz létre a kiszolgáló szintjén, amely megakadályozza, hogy a külső alkalmazások és eszközök csatlakozzanak a kiszolgálóhoz vagy a kiszolgálón lévő adatbázisokhoz. A csatlakozás engedélyezéséhez hozzáadhat tűzfalszabályokat, amelyek adott IP-címekkel engedélyezik a kapcsolódást.  A következő lépéseket követve hozzon létre egy [kiszolgálószintű tűzfalszabályt](../sql-database/sql-database-firewall-configure.md) az ügyfél IP-címéhez. 
 
 > [!NOTE]
-> Az SQL Data Warehouse 1433-as porton keresztül kommunikál. Ha próbál csatlakozni a vállalati hálózaton belül, a hálózati tűzfal előfordulhat, hogy nem engedélyezett a kimenő adatforgalmat a 1433-as porton keresztül. Ebben az esetben nem tud csatlakozni az Azure SQL Database-kiszolgálóhoz, ha az informatikai részleg nem nyitja meg az 1433-as portot.
+> Az SQL Data Warehouse az 1433-as portot használja a kommunikációhoz. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ebben az esetben nem tud csatlakozni az Azure SQL Database-kiszolgálóhoz, ha az informatikai részleg nem nyitja meg az 1433-as portot.
 >
 
-1. Az üzembe helyezés befejezése után kattintson az **SQL-adatbázisok** elemre a bal oldali menüben, majd kattintson a **mySampleDatabase** adatbázisra az **SQL-adatbázisok** lapon. Áttekintő lapjára jut az adatbázis nyit meg, hogy bemutatja a kiszolgáló teljesen minősített nevét (például **mynewserver-20171113.database.windows.net**) és további konfigurációs lehetőségeket. 
+1. Az üzembe helyezés befejezése után kattintson az **SQL-adatbázisok** elemre a bal oldali menüben, majd kattintson a **mySampleDatabase** adatbázisra az **SQL-adatbázisok** lapon. Megnyílik az adatbázis áttekintőoldala, amelyen látható a teljes kiszolgálónév (például: **mynewserver-20171113.database.windows.net**), valamint a további konfigurálható beállítások. 
 
 2. Másolja le ezt a teljes kiszolgálónevet, mert a későbbi rövid útmutatók során szüksége lesz rá a kiszolgálóhoz és az adatbázisokhoz való csatlakozáshoz. Kattintson a kiszolgáló nevére kiszolgáló beállításainak megnyitásához.
 
-    ![kiszolgáló nevének megállapítása](media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png) 
+    ![kiszolgálónév keresése](media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png) 
 
 3. Kattintson a kiszolgáló nevét a kiszolgáló beállításainak megnyitásához.
 
-    ![Kiszolgálóbeállítások](media/load-data-from-azure-blob-storage-using-polybase/server-settings.png) 
+    ![kiszolgáló beállításai](media/load-data-from-azure-blob-storage-using-polybase/server-settings.png) 
 
-5. Kattintson a **tűzfal beállításainak megjelenítése**. Megnyílik az SQL Database kiszolgálóhoz tartozó **Tűzfalbeállítások** oldal. 
+5. Kattintson a **Tűzfalbeállítások megjelenítése** elemre. Megnyílik az SQL Database kiszolgálóhoz tartozó **Tűzfalbeállítások** oldal. 
 
     ![kiszolgálói tűzfalszabály](media/load-data-from-azure-blob-storage-using-polybase/server-firewall-rule.png) 
 
@@ -129,24 +129,24 @@ Az SQL Data Warehouse szolgáltatás tűzfal a kiszolgáló szintjén-, hogy a k
 
 6. Kattintson az **OK** gombra, majd zárja be a **Tűzfalbeállítások** lapot.
 
-Most csatlakozhat az SQL server és az adatraktárak az IP-címet használja. A kapcsolat a kiválasztott SQL Server Management Studio vagy egy másik működik. Sikeres csatlakozás esetén használja a korábban létrehozott kiszolgáló-rendszergazdai fiókkal.  
+Mostantól csatlakozhat az SQL-kiszolgálóhoz és annak adattárházaihoz erről az IP-címről. A csatlakozás az SQL Server Management Studio vagy más, választott eszköz használatával lehetséges. A csatlakozáskor használja a korábban létrehozott ServerAdmin-fiókot.  
 
 > [!IMPORTANT]
-> Alapértelmezés szerint az összes Azure-szolgáltatás számára engedélyezett a hozzáférés az SQL Database tűzfalán keresztül. Kattintson a **OFF** ezen a lapon, és kattintson a **mentése** letiltása az összes Azure-szolgáltatásokhoz a tűzfalon.
+> Alapértelmezés szerint az összes Azure-szolgáltatás számára engedélyezett a hozzáférés az SQL Database tűzfalán keresztül. A tűzfal az összes Azure-szolgáltatásra vonatkozó letiltásához kattintson ezen az oldalon a **KI** gombra, majd a **Mentés** parancsra.
 
-## <a name="get-the-fully-qualified-server-name"></a>A kiszolgáló teljesen minősített nevét
+## <a name="get-the-fully-qualified-server-name"></a>A teljes kiszolgálónév lekérése
 
-A kiszolgáló teljesen minősített nevet az SQL server beolvasása az Azure portálon. Később szüksége lesz a teljes nevet a kiszolgálóhoz való csatlakozáskor.
+Kérje le az SQL-kiszolgáló teljes kiszolgálónevét az Azure Portalon. Később szüksége lesz a teljes nevet a kiszolgálóhoz való csatlakozáskor.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. Válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd kattintson az új adatbázisra az **SQL-adatbázisok** oldalon. 
-3. Az Azure Portalon az adatbázishoz tartozó lap **Alapvető erőforrások** ablaktábláján keresse meg, majd másolja ki a **Kiszolgáló nevét**. Ebben a példában a teljesen minősített név nem mynewserver-20171113.database.windows.net. 
+3. Az Azure Portalon az adatbázishoz tartozó lap **Alapvető erőforrások** ablaktábláján keresse meg, majd másolja ki a **Kiszolgáló nevét**. Ebben a példában a teljes név a következő: mynewserver-20171113.database.windows.net. 
 
     ![kapcsolatadatok](media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)  
 
-## <a name="connect-to-the-server-as-server-admin"></a>Csatlakozzon a kiszolgálóhoz, mint a kiszolgáló rendszergazdája
+## <a name="connect-to-the-server-as-server-admin"></a>Csatlakozás a kiszolgálóhoz kiszolgáló-rendszergazdaként
 
-Ennek a szakasznak [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS) kapcsolat létrehozása az Azure SQL-kiszolgálóhoz.
+Ebben a részben az [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms.md) használatával építjük fel a kapcsolatot az Azure SQL-kiszolgálóval.
 
 1. Nyissa meg az SQL Server Management Studiót.
 
@@ -154,9 +154,9 @@ Ennek a szakasznak [SQL Server Management Studio](/sql/ssms/download-sql-server-
 
     | Beállítás      | Ajánlott érték | Leírás | 
     | ------------ | --------------- | ----------- | 
-    | Kiszolgáló típusa | Adatbázismotor | Ez értékének megadása kötelező. |
+    | Kiszolgáló típusa | Adatbázismotor | Kötelezően megadandó érték |
     | Kiszolgálónév | A teljes kiszolgálónév | A névnek kell lennie, például ehhez hasonló: **mynewserver-20171113.database.windows.net**. |
-    | Authentication | SQL Server-hitelesítés | Az SQL-hitelesítés az egyetlen hitelesítési típus, amelyet ebben az oktatóanyagban konfiguráltunk. |
+    | Hitelesítés | SQL Server-hitelesítés | Az SQL-hitelesítés az egyetlen hitelesítési típus, amelyet ebben az oktatóanyagban konfiguráltunk. |
     | Bejelentkezés | A kiszolgálói rendszergazdai fiók | Ez az a fiók, amely a kiszolgáló létrehozásakor lett megadva. |
     | Jelszó | A kiszolgálói rendszergazdai fiók jelszava | Ezt a jelszót adta meg a kiszolgáló létrehozásakor. |
 
@@ -164,13 +164,13 @@ Ennek a szakasznak [SQL Server Management Studio](/sql/ssms/download-sql-server-
 
 4. Kattintson a **Connect** (Csatlakozás) gombra. Megnyílik az Object Explorer ablak az SSMS-ben. 
 
-5. Az Object Explorerben bontsa ki a **adatbázisok**. Majd **rendszeradatbázisokban** és **fő** a objektumok megtekintéséhez a főadatbázisban.  Bontsa ki a **mySampleDatabase** az új adatbázis a objektumok megtekintéséhez.
+5. Az Object Explorerben bontsa ki a **Databases** (Adatbázisok) elemet. Majd **rendszeradatbázisokban** és **fő** a objektumok megtekintéséhez a főadatbázisban.  Bontsa ki a **mySampleDatabase** az új adatbázis a objektumok megtekintéséhez.
 
-    ![Adatbázis-objektumok](media/load-data-from-azure-blob-storage-using-polybase/connected.png) 
+    ![adatbázis-objektumok](media/load-data-from-azure-blob-storage-using-polybase/connected.png) 
 
 ## <a name="create-a-user-for-loading-data"></a>Adatok betöltése a felhasználó létrehozása
 
-A kiszolgáló rendszergazdai fiókjának célja, hogy a felügyeleti műveleteket, és nem alkalmas a felhasználói adatok lekérdezések futtatását. Adatok betöltése általában nagy mennyiségű memóriát igényel. [Memória maximális értékeket](performance-tiers.md#memory-maximums) a következők szerint definiált [teljesítményszinttel](performance-tiers.md), és [erőforrásosztály](resource-classes-for-workload-management.md). 
+A kiszolgáló rendszergazdai fiókjának célja, hogy a felügyeleti műveleteket, és nem alkalmas a felhasználói adatok lekérdezések futtatását. Adatok betöltése az egy memóriaigényes művelet. [Memória maximális értékeket](performance-tiers.md#memory-maximums) a következők szerint definiált [teljesítményszinttel](performance-tiers.md), és [erőforrásosztály](resource-classes-for-workload-management.md). 
 
 Érdemes a bejelentkezési és az adatok betöltése a dedikált felhasználók létrehozásához. Majd adja hozzá a betöltés felhasználót egy [erőforrásosztály](resource-classes-for-workload-management.md) , amely lehetővé teszi, hogy a megfelelő maximális memóriafoglalást.
 
@@ -211,7 +211,7 @@ Adatok betöltése az első lépés az, hogy LoaderRC20, bejelentkezéshez.
 
     ![Csatlakoztassa az új bejelentkezés](media/load-data-from-azure-blob-storage-using-polybase/connect-as-loading-user.png)
 
-2. Adja meg a teljes kiszolgálónév, de ezúttal meg **LoaderRC20** a bejelentkezésként.  Adja meg a jelszót LoaderRC20.
+2. Írjon be a teljes kiszolgálónév és **LoaderRC20** a bejelentkezésként.  Adja meg a jelszót LoaderRC20.
 
 3. Kattintson a **Connect** (Csatlakozás) gombra.
 
@@ -452,6 +452,10 @@ Futtassa a következő SQL parancsfájlok betölteni kívánt adatok adatainak m
 
 Ennek a szakasznak a külső táblák a mintaadatok betöltése az Azure Storage-Blobból SQL Data warehouse most adott meg.  
 
+> [!NOTE]
+> Ez az oktatóanyag az adatok közvetlenül a végső táblázatba tölti be. Éles környezetben általában használhatjuk a CREATE TABLE AS SELECT betöltése az előkészítési táblában. Közben az átmeneti tárolási tábla az összes szükséges átalakítás végezheti el. Az előkészítési táblában lévő adatokat fűzi hozzá éles, használja az INSERT... SELECT utasítással. További információkért lásd: [adatok beszúrása egy éles tábla](guidance-for-loading-data.md#inserting-data-into-a-production-table).
+> 
+
 A parancsfájl használja a [létrehozása TABLE AS kiválasztása (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse.md) T-SQL-utasítást az adatok betöltése az Azure Storage-Blobból az új táblák az adatraktárban. CTAS új táblába a select utasítás eredményei alapján. Az új tábla oszlopai és adattípusai megegyeznek a kiválasztási utasítás eredményeivel. Ha a select utasítás kiválaszt egy külső táblát, az SQL Data Warehouse importálja az adatokat az adatraktárban egy relációs táblába. 
 
 1. Futtassa a következő adatok betöltése az új táblák az adatraktárban.
@@ -567,7 +571,7 @@ A parancsfájl használja a [létrehozása TABLE AS kiválasztása (CTAS)](/sql/
 
 Az SQL Data Warehouse nem tudja automatikus létrehozni és frissíteni a statisztikákat. A lekérdezési teljesítmény eléréséhez ezért fontos statisztikákat létrehozni minden tábla minden oszlopához az első betöltéskor. Fontos a statisztikák frissítése is az adatok lényeges módosításai után.
 
-1. Futtassa az alábbi parancsokat az oszlopokat, amelyek várhatóan az illesztésekben használt statisztika létrehozásához.
+Futtassa az alábbi parancsokat az oszlopokat, amelyek várhatóan az illesztésekben használt statisztika létrehozásához.
 
     ```sql
     CREATE STATISTICS [dbo.Date DateID stats] ON dbo.Date (DateID);
@@ -578,24 +582,24 @@ Az SQL Data Warehouse nem tudja automatikus létrehozni és frissíteni a statis
 
 A számítási erőforrások és az a data warehouse-bA betöltött adatok van folyamatban szó. Ezek külön-külön számlázzuk. 
 
-- Ha meg szeretné tartani az adatokat, akkor az egérmutatót számítási használaton kívül az adatraktár. A számítási felfüggesztése csak akkor kell fizetni tárolására, és is folytathatja a számítást, amikor készen áll az adatokat.
-- Ha el szeretné távolítani a jövőbeli díjak, az adatraktár törölheti. 
+- Ha szeretné az adatokat megtartani a tárolóban, a számítási erőforrásokat szüneteltetheti, amíg nem használja az adattárházat. A számítási felfüggesztése csak akkor kell fizetni tárolására, és is folytathatja a számítást, amikor készen áll az adatokat.
+- Ha szeretné megelőzni a jövőbeli kiadásokat, az adattárházat törölheti is. 
 
-A lépések sorolható fel erőforrások törlése.
+Kövesse az alábbi lépéseket a fölöslegessé vált erőforrások eltávolítására.
 
 1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com), kattintson az adatraktár a.
 
     ![Az erőforrások eltávolítása](media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. Számítási szüneteltethető, kattintson a **szüneteltetése** gombra. Ha az adatraktár fel van függesztve, jelennek meg a **Start** gombra.  Kattintva folytathatja a számítást, **Start**.
+2. A számítási erőforrások szüneteltetéshez kattintson a **Szüneteltetés** gombra. Ha az adatraktár fel van függesztve, jelennek meg a **Start** gombra.  A számítási erőforrások újraindításához kattintson az **Indítás** gombra.
 
 3. Az adatraktár, akkor nem kell fizetnie számítási és tárolási eltávolításához kattintson **törlése**.
 
-4. Kattintson a létrehozott SQL server **mynewserver-20171113.database.windows.net** az előző ábrán, majd **törlése**.  Ügyeljen arra, mint ennek a kiszolgáló törlésével a kiszolgálóhoz hozzárendelt összes adatbázisra.
+4. A korábban létrehozott SQL-kiszolgáló eltávolításához kattintson az előző képen látható **mynewserver-20171113.database.windows.net** elemre, majd a **Törlés** parancsra.  Ügyeljen arra, mint ennek a kiszolgáló törlésével a kiszolgálóhoz hozzárendelt összes adatbázisra.
 
-5. Távolítsa el az erőforráscsoportot, kattintson a **myResourceGroup**, és kattintson a **erőforrás csoport törlése**.
+5. Az erőforráscsoport törléséhez kattintson a **myResourceGroup** elemre, majd az **Erőforráscsoport törlése** parancsra.
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 Ebben az oktatóprogramban megismerte data warehouse létrehozása és a felhasználó létrehozása az adatok betöltése. Az Azure Storage-Blobba tárolt adatok struktúra külső táblák létrehozása, és a PolyBase CREATE TABLE AS SELECT utasítás használatával adatok betöltése az az adatraktár. 
 
 Ezeket a módosításokat is tette:

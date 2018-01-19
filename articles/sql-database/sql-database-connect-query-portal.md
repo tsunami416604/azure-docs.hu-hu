@@ -15,17 +15,17 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 08/02/2017
+ms.date: 01/10/2018
 ms.author: ayolubek
-ms.openlocfilehash: 7f85d569fee4e13c28a09347159f16fc4b4ae626
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 131a1f77fa9c8d8e7b9ac5b01dee655b1aa1c3df
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="azure-portal-use-the-sql-query-editor-to-connect-and-query-data"></a>Azure Portal: Csatlakozás és az adatok lekérdezése az SQL-lekérdezésszerkesztő használatával
 
-Az SQL-lekérdezésszerkesztő egy böngészőből elérhető lekérdezési eszköz, amellyel hatékonyan és egyszerűen hajthat végre SQL-lekérdezéseket az Azure SQL Database-en vagy az Azure SQL Data Warehouse szolgáltatáson az Azure Portal elhagyása nélkül. Ez a rövid útmutató ismerteti, hogyan használható a Lekérdezésszerkesztő az SQL-adatbázisokhoz való csatlakozáshoz, majd hogyan lehet Transact-SQL-utasításokkal adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. 
+Az SQL-lekérdezésszerkesztő egy böngészőből elérhető lekérdezési eszköz, amellyel hatékonyan és egyszerűen hajthat végre SQL-lekérdezéseket az Azure-beli SQL-adatbázison vagy az Azure-beli SQL-adattárházon az Azure Portal elhagyása nélkül. Ez a rövid útmutató ismerteti, hogyan használható a Lekérdezésszerkesztő az SQL-adatbázisokhoz való csatlakozáshoz, majd hogyan lehet Transact-SQL-utasításokkal adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -33,7 +33,7 @@ Ez a rövid útmutató az alábbi rövid útmutatókban létrehozott erőforrás
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-## <a name="log-in-to-the-azure-portal"></a>Jelentkezzen be az Azure portálra.
+## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 
 Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
@@ -44,17 +44,15 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 1. Kattintson az **SQL-adatbázisok** elemre a bal oldali menüben, majd kattintson a lekérdezni kívánt adatbázisra.
 
-2. Az adatbázishoz tartozó SQL-adatbázis lapon kattintson az eszköztár **Eszközök** elemére. Megnyílik az Eszközök lap.
+2. Az adatbázishoz tartozó SQL Database oldalon keresse meg az **Adatkezelő (előzetes verzió)** elemet a bal oldali menüben, és kattintson rá.
 
-    ![eszközök menü](./media/sql-database-connect-query-portal/tools-menu.png)
+    ![lekérdezésszerkesztő keresése](./media/sql-database-connect-query-portal/find-query-editor.PNG)
 
-3. Kattintson a **Lekérdezésszerkesztő (előzetes verzió)** lehetőségre, kattintson az **Előzetes verziójú szolgáltatás feltételei** jelölőnégyzetre, majd az **OK** gombra. Megnyílik a Lekérdezésszerkesztő lapja.
+3. Kattintson a **Bejelentkezés** elemre, majd amikor a rendszer kéri, válassza ki az **SQL Server-hitelesítés** lehetőséget, és adja meg a kiszolgáló rendszergazdai bejelentkezési nevét és jelszavát, amelyeket az adatbázis létrehozásakor adott meg.
 
-4. Kattintson a **Bejelentkezés** elemre, majd amikor a rendszer kéri, válassza ki az **SQL Server-hitelesítés** lehetőséget, és adja meg a kiszolgáló rendszergazdai bejelentkezési nevét és jelszavát, amelyeket az adatbázis létrehozásakor adott meg.
+    ![bejelentkezés](./media/sql-database-connect-query-portal/login-menu.png)
 
-    ![bejelentkezés](./media/sql-database-connect-query-portal/login-menu.png) 
-
-5. A **bejelentkezéshez kattintson az OK** gombra.
+4. A **bejelentkezéshez kattintson az OK** gombra.
 
 
 ## <a name="connect-using-azure-ad"></a>Csatlakozás az Azure AD használatával
@@ -62,7 +60,7 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 Az Active Directory-rendszergazda konfigurálása lehetővé teszi, hogy egyetlen identitással jelentkezzen be az Azure Portalra és az SQL-adatbázisba. Kövesse az alábbi lépéseket egy Active Directory-rendszergazda konfigurálásához a létrehozott SQL Server számára.
 
 > [!NOTE]
-> Az e-mail fiókok (például az outlook.com, hotmail.com, live.com, gmail.com, yahoo.com) Active Directory-rendszergazdaként való használata még nem támogatott. Mindenképpen olyan felhasználót használjon, amelyet az Azure Active Directoryban hoztak létre natív módon, vagy összevonták az Azure Active Directoryval.
+> Az e-mail-fiókok (például az outlook.com, hotmail.com, live.com, gmail.com, yahoo.com) Active Directory-rendszergazdaként való használata még nem támogatott. Mindenképpen olyan felhasználót használjon, amelyet az Azure Active Directoryban hoztak létre natív módon, vagy összevonták az Azure Active Directoryval.
 
 1. Válassza ki az **SQL Server kiszolgálók** elemet a bal oldali menüben, majd válassza ki az SQL Server kiszolgálóját a kiszolgálólistából.
 
@@ -70,11 +68,11 @@ Az Active Directory-rendszergazda konfigurálása lehetővé teszi, hogy egyetle
 
 3. Az Active Directory-rendszergazda panelen kattintson a **Rendszergazda beállítása** parancsra, majd válassza ki a felhasználót vagy csoportot, amely az Active Directory-rendszergazda lesz majd.
 
-    ![az Active Directory kiválasztása](./media/sql-database-connect-query-portal/select-active-directory.png) 
+    ![az Active Directory kiválasztása](./media/sql-database-connect-query-portal/select-active-directory.png)
 
 4. Az Active Directory-rendszergazda panel tetején kattintson a **Mentés** parancsra az Active Directory-rendszergazda beállításához.
 
-Lépjen a lekérdezni kívánt SQL-adatbázisra, kattintson az eszköztár **Eszközök parancsára**, majd válassza ki a **Lekérdezésszerkesztő (előzetes verzió)** lehetőséget. Megnyílik a Lekérdezésszerkesztő lapja, és automatikusan csatlakoztatja az adatbázishoz.
+Lépjen a lekérdezni kívánt SQL-adatbázisra, és kattintson az **Adatkezelő (előzetes verzió)** elemre a bal oldali menüben. Megnyílik az Adatkezelő oldal, és automatikusan csatlakozik az adatbázishoz.
 
 
 ## <a name="run-query-using-query-editor"></a>Lekérdezés futtatása a Lekérdezésszerkesztő használatával
@@ -118,7 +116,7 @@ A következő kód használatával beszúrhat egy új terméket a SalesLT.Produc
            ,GETDATE() );
    ```
 
-2. Az eszköztáron kattintson az **Futtatás** elemre az új sor Product táblába történő beszúrásához.
+2. Az eszköztáron kattintson a **Futtatás** elemre az új sor Product táblába történő beszúrásához.
 
 ## <a name="update-data-using-query-editor"></a>Adatok frissítése a Lekérdezésszerkesztő használatával
 
@@ -154,17 +152,17 @@ Néhány szempontot fontos szem előtt tartani a Lekérdezésszerkesztő előzet
 
 1. Győződjön meg arról, hogy az Azure SQL Server tűzfalbeállításaiban az „Azure-szolgáltatásokhoz való hozzáférés engedélyezése” beállítást „BE” értékre állította. Ez a beállítás hozzáférést biztosít az SQL-lekérdezésszerkesztőnek az SQL-adatbázisokhoz és -adattárházakhoz.
 
-2. Az Azure Active Directory rendszergazdai bejelentkezése nem működik olyan fiókokkal, amelyeken engedélyezve van a kéttényezős hitelesítés. 
+2. Az Azure Active Directory rendszergazdai bejelentkezése nem működik olyan fiókokkal, amelyeken engedélyezve van a kéttényezős hitelesítés.
 
-3. Az e-mail fiókok (például az outlook.com, hotmail.com, live.com, gmail.com, yahoo.com) Active Directory-rendszergazdaként való használata még nem támogatott. Győződjön meg arról, hogy olyan felhasználót használ, amelyet az Azure Active Directoryban hoztak létre natív módon, vagy összevonták az Azure Active Directoryval
+3. Az e-mail-fiókok (például az outlook.com, hotmail.com, live.com, gmail.com, yahoo.com) Active Directory-rendszergazdaként való használata még nem támogatott. Győződjön meg arról, hogy olyan felhasználót használ, amelyet az Azure Active Directoryban hoztak létre natív módon, vagy összevonták az Azure Active Directoryval
 
 4. A Lekérdezésszerkesztő egyelőre nem támogatja a térbeli adattípusok lekérdezését. A térbeli oszlopok lekérdezése „System.IO.FileNotFoundException” hibát eredményez.
 
-5. Az adatbázistáblákhoz és -nézetekhez tartozó IntelliSense nem támogatott. A szerkesztő azonban támogatja a korábban már beírt nevek automatikus kiegészítését. 
+5. Az adatbázistáblákhoz és -nézetekhez tartozó IntelliSense nem támogatott. A szerkesztő azonban támogatja a korábban már beírt nevek automatikus kiegészítését.
 
 6. Az F5 billentyű lenyomásával frissíti a Lekérdezésszerkesztő lapját, és elveszti a jelenleg szerkesztett lekérdezést. A lekérdezések végrehajtásához használja az eszköztár Futtatás gombját.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az Azure SQL-adatbázisokban támogatott Transact-SQL-lel kapcsolatos információkért lásd a [Transact-SQL-lel kapcsolatos különbségek az SQL-adatbázisokban](sql-database-transact-sql-information.md) című cikket.

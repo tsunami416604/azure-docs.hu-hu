@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 12/15/2017
+ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: b5160aec6504dfa924279286d9676a97716f5a6c
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 68cc1a3b69e3e2d59a791a9241a1a8b4b3062673
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-python-and-the-azure-portal"></a>Azure Cosmos DB: Gráfadatbázis létrehozása a Python és az Azure Portal használatával
 
@@ -135,28 +135,30 @@ Lépjen vissza az Azure Portalra a kapcsolati adatokért, majd másolja be azoka
         password="<YOUR_PASSWORD>")
     ```
 
-3. Módosítsa a `client` objektum második paraméterét a `<YOUR_DATABASE>` és `<YOUR_COLLECTION_OR_GRAPH>` karakterláncok lecseréléséhez. Ha a javasolt értékeket használta, a paraméternek ehhez a kódhoz hasonlóan kell kinéznie:
+3. Az ügyfél nevében módosítsa a `graphs.azure.com` értéket a következőre: `gremlin.cosmosdb.azure.com`. (Ha a gráfadatbázis-fiókot 2017. december 20. előtt hozta létre, ne módosítson semmit, és folytassa a következő lépéssel.)
+
+4. Módosítsa a `client` objektum második paraméterét a `<YOUR_DATABASE>` és `<YOUR_COLLECTION_OR_GRAPH>` karakterláncok lecseréléséhez. Ha a javasolt értékeket használta, a paraméternek ehhez a kódhoz hasonlóan kell kinéznie:
 
     `username="/dbs/sample-database/colls/sample-graph"`
 
     A teljes `client` objektumnak ehhez a kódhoz hasonlóan kell kinéznie:
 
     ```python
-    client = client.Client('wss://test.graphs.azure.com:443/','g', 
+    client = client.Client('wss://test.gremlin.cosmosdb.azure.com:443/','g', 
         username="/dbs/sample-database/colls/sample-graph", 
         password="<YOUR_PASSWORD>")
     ```
 
-4. Az Azure Portalon a másolás gombbal másolja az ELSŐDLEGES KULCSOT, és illessze a `<YOUR_PASSWORD>` helyére a `password=<YOUR_PASSWORD>` paraméterben.
+5. Az Azure Portalon a másolás gombbal másolja az ELSŐDLEGES KULCSOT, és illessze a `<YOUR_PASSWORD>` helyére a `password=<YOUR_PASSWORD>` paraméterben.
 
     A teljes `client` objektumdefiníciónak ehhez a kódhoz hasonlóan kell kinéznie:
     ```python
-    client = client.Client('wss://test.graphs.azure.com:443/','g', 
+    client = client.Client('wss://test.gremlin.cosmosdb.azure.com:443/','g', 
         username="/dbs/sample-database/colls/sample-graph", 
         password="asdb13Fadsf14FASc22Ggkr662ifxz2Mg==")
     ```
 
-5. Mentse a `connect.py` fájlt.
+6. Mentse a `connect.py` fájlt.
 
 ## <a name="run-the-console-app"></a>A konzolalkalmazás futtatása
 
