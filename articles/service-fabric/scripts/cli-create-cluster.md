@@ -12,14 +12,14 @@ ms.service: service-fabric
 ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
-ms.date: 09/18/2017
+ms.date: 01/18/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 1fb5828ed65ec4268af5285f23a8fb9f46a96b03
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: d49383b4f7b3b13beb9ea36ae725938e17ef1456
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="create-a-secure-service-fabric-linux-cluster-in-azure"></a>Biztonságos Linux a Service Fabric-fürt létrehozása az Azure-ban
 
@@ -48,6 +48,6 @@ A parancsfájl a következő parancsokat. Minden egyes parancsa a tábla-parancs
 |---|---|
 | [Az ú fürt létrehozása](https://docs.microsoft.com/cli/azure/sf/cluster?view=azure-cli-latest#az_sf_cluster_create) | Egy új Service Fabric-fürtöt hoz létre.  |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Azure Service Fabric további Service Fabric CLI-példák találhatók a [Service Fabric CLI minták](../samples-cli.md).

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/16/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 6ba6bed8321e1ffde8bc8959443682725da36827
-ms.sourcegitcommit: 5108f637c457a276fffcf2b8b332a67774b05981
+ms.openlocfilehash: cd14f0e5259e5c0b6cbf11790bbdf08164267ffa
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="planning-considerations-for-azure-stack-integrated-systems"></a>Tervezési megfontolások a Azure verem integrált rendszerek
 Ha érdekli, egy integrált Azure verem rendszerben, tisztában kell lennie egy központi telepítés, és hogy a rendszer hogyan illeszkedik az Adatközpont a fő szempontokat. Ez a cikk a magas szintű áttekintést nyújt az ezeket a szempontokat segítséget nyújtanak az Azure-verem többcsomópontos rendszer fontos infrastruktúra döntéseket. Ezeket a szempontokat megértését megkönnyíti módon működik-e az OEM hardver gyártójánál azok telepítése Azure verem az Adatközpont.  
@@ -31,12 +31,12 @@ Központi telepítése nincs Azure-verem olyan meg kell győződnie Azure verem 
 
 Az információk tartományok szükséges hálózati, biztonsági és a legtöbb fontos döntés, amelyre szüksége lehet a Tudásbázis számos különböző területein és döntéshozók azonosító adatok között. Emiatt előfordulhat, hogy van bekérésére személyeket a szervezetében, több csapat, és győződjön meg arról, hogy minden szükséges információ készen áll a telepítés megkezdése előtt. Forduljon a hardver forgalmazójával ezen információk összegyűjtése közben tanácsot hasznos lehet a döntések meghozatala során előfordulhat, hogy rendelkeznek segítséget.
 
-Vizsgálja, és a szükséges információk gyűjtésére, miközben szükség lehet néhány központi telepítés előtti konfigurációs módosításokat végezni a hálózati környezetben. Ez magában foglalhatja foglalása az IP-címteret a útválasztók, kapcsolók és a kapcsolatot az új Azure verem megoldás kapcsolók előkészítése tűzfalak konfigurálása az Azure verem megoldásban. Ügyeljen arra, hogy a tulajdonos terület szakértő legfeljebb vonalas segítséget nyújtanak az tervezés rendelkezik.
+Vizsgálja, és a szükséges információk gyűjtésére, miközben szükség lehet néhány központi telepítés előtti konfigurációs módosításokat végezni a hálózati környezetben. Ez magában foglalhatja foglalása az IP-címteret a Azure verem megoldás, és a útválasztók, kapcsolók és a kapcsolatot az új Azure verem megoldás kapcsolók előkészítése tűzfalak konfigurálása. Ügyeljen arra, hogy a tulajdonos terület szakértő egymás mellett, és a központi telepítési projekt során érintett segítséget nyújt a tervezés rendelkezik.
 
 ## <a name="management-considerations"></a>Eszközkezeléssel kapcsolatos szempontok
 Azure verem rendszer lezárt, ahol az infrastruktúra zárolva van az egy engedélyek és a hálózati szempontjából. Hálózati hozzáférés-vezérlési listák (ACL) minden nem hitelesített bejövő forgalom és az összes szükségtelen kommunikációs infrastruktúra összetevői közötti blokkolása érvényesek. Így a jogosulatlan felhasználók is hozzáférhetnek a rendszerhez.
 
-A napi felügyelete és műveletei nem az infrastruktúra nem korlátozott rendszergazdai hozzáférés van. Az Azure verem operátorok a rendszer a felügyeleti portálon keresztül vagy a keresztül Azure Resource Manager (keresztül a PowerShell vagy a REST API-t) kell kezelni. Nincs más felügyeleti eszközökhöz, például a Hyper-V kezelője vagy a Feladatátvevőfürt-kezelő által a rendszer nem lehet hozzáférni. A számítógép védelme érdekében harmadik féltől származó szoftverek (például ügynökök) nem telepíthető az Azure-verem infrastruktúra összetevői belül. Együttműködés külső felügyeleti és biztonsági szoftver a PowerShell vagy a REST API használatával következik be.
+A napi felügyelete és műveletei nem az infrastruktúra nem korlátozott rendszergazdai hozzáférés van. Az Azure verem operátorok a rendszer a felügyeleti portálon keresztül vagy a keresztül Azure Resource Manager (keresztül az Azure parancssori felület, PowerShell vagy a REST API-t) kell kezelni. Nincs más felügyeleti eszközökhöz, például a Hyper-V kezelője vagy a Feladatátvevőfürt-kezelő által a rendszer nem lehet hozzáférni. A számítógép védelme érdekében harmadik féltől származó szoftverek (például ügynökök) nem telepíthető az Azure-verem infrastruktúra összetevői belül. Együttműködés külső felügyeleti és biztonsági szoftver az Azure parancssori felület, a PowerShell vagy a REST API következik be.
 
 Amikor egy magasabb szintű hozzáférés szükséges problémák megoldásához, amelyek nem megoldott riasztás közvetítés lépéseit, együttműködve támogatása. Támogatásával a ideiglenes teljes rendszergazdai hozzáférést biztosít a rendszer speciális műveletek végrehajtásához módszer. 
 
@@ -93,9 +93,9 @@ Milyen PKI kapcsolatos további információk tanúsítványok Azure-vermet, és
 
 
 ## <a name="time-synchronization"></a>Időszinkronizálás
-Ki kell választania egy megadott idő a kiszolgáló Azure verem szinkronizálására használják.  Idő symbolization alapvető fontosságú Azure verem és a infrastruktúra-szerepkörök egymással belső szolgáltatások hitelesítéséhez szükséges Kerberos-jegyek létrehozásához használt.
+Ki kell választania egy megadott idő a kiszolgáló Azure verem szinkronizálására használják.  Időszinkronizálás fontosságú Azure verem és a infrastruktúra-szerepkörök egymással belső szolgáltatások hitelesítéséhez szükséges Kerberos-jegyek létrehozásához használt.
 
-Meg kell adnia egy IP-Címek használhatók a szinkronizálási kiszolgálót, bár a legtöbb az infrastruktúra-összetevők tudja oldani az egy URL-CÍMÉT, néhány csak egyet támogat IP-címeket. Ha vannak a leválasztott rendszerbe állítási beállításának használata, meg kell adnia a vállalati hálózaton, amelynek Ön a kiszolgálót, hogy elérhető a verem Azure infrastruktúra-hálózat.
+Meg kell adni a szinkronizálási kiszolgálót, egy IP-Címek, mint az infrastruktúra-összetevők legtöbb oldhatja URL-címet, bár egyes csak támogatja a IP-címek. Ha vannak a leválasztott rendszerbe állítási beállításának használata, meg kell adnia a vállalati hálózaton, amelynek Ön a kiszolgálót, hogy elérhető a verem Azure infrastruktúra-hálózat. Ehhez a hálózati integráció része a központi telepítési projekt tervezése során több figyelmet lehet szükség.
 
 
 ## <a name="network-connectivity"></a>Hálózati kapcsolat
@@ -120,31 +120,31 @@ A hálózati infrastruktúra Azure verem több logikai hálózatok, a kapcsolók
 ![Logikai hálózati diagram és kapcsoló kapcsolatok](media/azure-stack-deployment-planning/NetworkDiagram.png)
 
 #### <a name="bmc-network"></a>BMC hálózati
-Ez a hálózat a felügyeleti hálózathoz csatlakozó összes az alaplapi felügyeleti vezérlők (más néven szolgáltatás processzorok, például iDRAC, iLO, iBMC, stb.) van kijelölve. Ha van ilyen, az a (HLH) hardver életciklus gazdagép is található, a hálózaton, és rendelkezhetnek OEM adott szoftver hardver karbantartás és/vagy a figyelés. 
+Ez a hálózat a felügyeleti hálózathoz csatlakozó összes az alaplapi felügyeleti vezérlők (más néven szolgáltatás processzorok, például iDRAC, iLO, iBMC, stb.) van kijelölve. Ha van ilyen, a hardver életciklus állomás (HLH) is található, a hálózaton, és rendelkezhetnek OEM adott szoftver hardver karbantartás és/vagy a figyelés. 
 
 #### <a name="private-network"></a>Magánhálózat
-A /24 (254 gazdagép IP-címekhez) hálózat az Azure-verem régió (nem bővíti ki a szegély kapcsoló eszközökre az Azure-verem régió túl) a saját, és két alhálózat oszlik:
+A /24 (254 gazdagép IP-címek) hálózati az Azure-verem régió (nem bővíti ki a szegély kapcsoló eszközökre az Azure-verem régió túl) a saját, és két alhálózat oszlik:
 
-- **Tárolóhálózat**. Egy /25 (126 gazdagép IP-címekhez) hálózati használatával támogatja a közvetlen tárolóhelyek és a Server Message Block (SMB) tárolási forgalom és a virtuális gép élő áttelepítés. 
-- **Belső virtuális IP-hálózat**. A/25 hálózati csak belső dedikált virtuális IP-címek esetében az szoftveres terheléselosztóként üzemeljen.
+- **Tárolóhálózat**. Egy /25 (126 gazdagép IP-címek) hálózati használja a közvetlen tárolóhelyek (S2D) és a Server Message Block (SMB) tárolási forgalom és a virtuális gép élő áttelepítése támogatásához. 
+- **Belső virtuális IP-hálózat**. A/25 az a szoftver terhelés terheléselosztó Állapotfigyelője csak belső dedikált virtuális hálózati.
 
 #### <a name="azure-stack-infrastructure-network"></a>Verem Azure infrastruktúra-hálózathoz
-Ez/24 van számára kijelölt hálózat belső Azure verem összetevők, hogy kommunikál, és exchange-adatok egymás között. Ez az alhálózat elérhető IP-címet igényel, de tartják titokban megoldás hozzáférés-vezérlési listák (ACL) segítségével, akkor nem várt túl a szegély kapcsolók, kivéve egy /27 mérete egyenértékű nagyon kis széles irányíthatja át, ezek némelyike a által használt hálózati Ha a külső források és/vagy az internet eléréséhez szükséges szolgáltatásokat. 
+Ez/24 van számára kijelölt hálózat belső Azure verem összetevők, hogy kommunikál, és exchange-adatok egymás között. Ez az alhálózat elérhető IP-címet igényel, de tartják titokban megoldás hozzáférés-vezérlési listák (ACL) segítségével.  Azt nem várt méretű egyenértékű egy /27 nagyon kis széles kivételével a szegély kapcsolók túl irányíthatja át hálózattól, amely van használatos néhány szolgáltatás által külső erőforrások és/vagy az interneten való hozzáférés szükséges. 
 
 #### <a name="public-infrastructure-network"></a>Nyilvános infrastruktúra-hálózathoz
-Ez/27 hálózati a nagyon kis közé az Azure-verem infrastruktúra-alhálózat már említettük, nem igényel nyilvános IP-címek, de azt internetelérés NAT vagy transzparens Proxy keresztül. Ez a hálózat oszt ki a sürgős helyreállítási konzol rendszer (ERCS) a, a ERCS VM internet-hozzáférést igényel az Azure-bA regisztráció során, és a felügyeleti hálózathoz hibaelhárítási célból irányíthatóknak kell lenniük.
+Ez/27 hálózati a nagyon kis közé az Azure-verem infrastruktúra-alhálózat már említettük, nem igényel nyilvános IP-címek, de azt internetelérés NAT vagy transzparens Proxy keresztül. Ez a hálózat oszt ki a sürgős helyreállítási konzol rendszer (ERCS) számára. A ERCS VM internet-hozzáférést igényel az Azure-bA regisztráció során, és a felügyeleti hálózathoz hibaelhárítási célból irányíthatóknak kell lenniük.
 
 #### <a name="public-vip-network"></a>Nyilvános virtuális IP-hálózat
 A nyilvános virtuális IP-hálózati hozzá van rendelve a hálózati vezérlő Azure-készletben. Egy logikai hálózatot a kapcsoló nincs. A SLB címek készletét használja, és hozzárendeli/32 hálózatokra vonatkozó bérlői munkaterheléseket. A kapcsoló-útválasztási táblázat ezek 32 IP-cím van-e hirdetve BGP keresztül a rendelkezésre álló útvonalként. Ez a hálózat a külső érhető el vagy nyilvános IP-címet tartalmaz. Az Azure-verem infrastruktúra a nyilvános virtuális IP-hálózati legalább 8 címeket használ, amíg a többi bérlői virtuális gépek által használt. Az alhálózaton hálózati mérete között lehet (64 gazdagépek) /26 legalább /22 (1022 gazdagépek) legfeljebb, azt javasoljuk, hogy tervezi-e egy/24 hálózati.
 
 #### <a name="switch-infrastructure-network"></a>Infrastruktúra-hálózati kapcsoló
-Ez/26 hálózati az alhálózatot, amely tartalmazza a point-to-point irányítható IP/30-as (2 gazdagép IP-címekhez) alhálózat és a loopbacks, amelyek dedikált/32-alhálózatok sávon kapcsoló felügyeleti és BGP-útválasztó azonosítója. Lehet, hogy ezt az IP-címek irányítható kívülről, a Azure verem megoldás az adatközponthoz, azokat a magán- vagy nyilvános IP-cím lehet.
+Ez/26 hálózati az alhálózatot, amely tartalmazza a point-to-point irányítható IP/30-as (2 gazdagép IP-címekhez) alhálózat és a loopbacks, amelyek dedikált/32-alhálózatok sávon kapcsoló felügyeleti és BGP-útválasztó azonosítója. Ez az IP-címek irányítható kívülről, a Azure verem megoldást az adatközpontban kell lennie, és azokat a magán- vagy nyilvános IP-cím lehet. Például egy multi-központjaként szolgáltató esetben lehet, hogy a nyilvános IP-címek kötelező, míg egy szigorúan ellenőrzött vállalati üzembe helyezés belül belül privát IP-címek előnyben részesíthető.
 
 #### <a name="switch-management-network"></a>Kapcsoló felügyeleti hálózat
 A /29 (6 gazdagép IP-címek) hálózati van kijelölve, a csatlakozás a kapcsolók a felügyeleti portokat. Engedélyezi a központi telepítés, a felügyeletet és hibaelhárítást a sávon kívüli hozzáférést. A fent említett kapcsoló infrastruktúra-hálózathoz alapján számítja ki.
 
 ### <a name="transparent-proxy"></a>TRANSZPARENS PROXY
-Az Azure-verem megoldás nem támogatja a szokásos webes proxykat. Ha a datacenter minden forgalom a proxy használatát igényli, konfigurálnia kell kezelnie házirend szerint az állványra származó összes forgalmat feldolgozni transzparens proxyra elválasztó a zónák a hálózat közötti forgalmat. A transzparens proxy (más néven egy elfogja, beágyazott vagy kényszerített proxy) a hálózati rétegben normál kommunikáció elfogja anélkül, hogy semmilyen különleges ügyfél-konfigurációt. Az ügyfelek nem létezik-e a proxy tisztában lennie kell.
+Az Azure-verem megoldás nem támogatja a szokásos webes proxykat. Ha a datacenter minden forgalom a proxy használatát igényli, konfigurálnia kell kezelnie házirend szerint az állványra származó összes forgalmat feldolgozni transzparens proxyra elválasztó a zónák a hálózat közötti forgalmat. A transzparens proxy (más néven egy elfogja, beágyazott vagy kényszerített proxy) a hálózati rétegben normál kommunikáció elfogja anélkül, hogy semmilyen különleges ügyfél-konfigurációt. Az ügyfelek nem kell a proxy tisztában.
 
 ### <a name="publish-azure-stack-services"></a>Azure verem szolgáltatásokat
 
@@ -203,7 +203,7 @@ Az alábbi ábrán látható ExpressRoute egy több-bérlős forgatókönyv eset
 ## <a name="external-monitoring"></a>Külső figyelése
 Az összes riasztás egyetlen nézetben a Azure Alkalmazásveremben üzembe és az eszközök, illetve riasztások integrálja a meglévő informatikai szolgáltatás felügyeleti munkafolyamatainak jegykezelési, Azure verem integrálható figyelési megoldásoknak külső datacenter.
 
-Az Azure-verem megoldás részét képező, a hardver életciklus állomás kívüli Azure verem hardver OEM szállító által biztosított felügyeleti eszközöket futtató számítógépen. Ezek az eszközök vagy egyéb megoldások, amelyek közvetlenül integrálható az Adatközpont meglévő figyelési megoldások is használhatja.
+Az Azure-verem megoldás részét képező, a hardver életciklusának (HLH) állomás kívüli Azure verem hardver OEM szállító által biztosított felügyeleti eszközöket futtató számítógépen. Ezek az eszközök vagy egyéb megoldások, amelyek közvetlenül integrálható az Adatközpont meglévő figyelési megoldások is használhatja.
 
 A következő táblázat összefoglalja a jelenleg rendelkezésre álló beállítások listáját.
 

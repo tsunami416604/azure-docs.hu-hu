@@ -3,8 +3,8 @@ title: "A virtuális gépek és a Szerepkörpéldányok felbontás"
 description: "Megoldási forgatókönyvek nevet Azure IaaS, hibrid megoldások között különböző felhőalapú szolgáltatások, az Active Directory és a saját DNS-kiszolgáló használatával "
 services: virtual-network
 documentationcenter: na
-author: GarethBradshawMSFT
-manager: carmonm
+author: jimdial
+manager: jeconnoc
 editor: tysonn
 ms.assetid: 5d73edde-979a-470a-b28c-e103fcf07e3e
 ms.service: virtual-network
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/06/2016
-ms.author: telmos
-ms.openlocfilehash: 479cf8cf358d0b242d8ce030d8639b493e4767d8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jdial
+ms.openlocfilehash: 5a298f535308cff90ddd249594b7bb5e36909867
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="name-resolution-for-vms-and-role-instances"></a>A virtuális gépek és szerepkörpéldányok névfeloldása
 Attól függően, hogyan használja a Azure hibrid megoldások, IaaS és PaaS üzemeltetéséhez szükség lehet ahhoz, hogy a virtuális gépek és a szerepkörpéldányok, amelyekkel kommunikálhatnak egymással. Bár ez a kommunikáció IP-címek használatával teheti meg, akkor jóval egyszerűbb, használja a nevét, amely jól megjegyezhető, és ne módosítsa. 
@@ -32,9 +32,10 @@ A névfeloldás használata típusa attól függ, hogyan a virtuális gépek és
 
 **A következő táblázat bemutatja a forgatókönyvek és a megfelelő név feloldása megoldások:**
 
-| **A forgatókönyv** | **Megoldás** | **Utótag** |
+| **Scenario** | **Megoldás** | **Suffix** |
 | --- | --- | --- |
 | Névfeloldás szerepkörpéldányokat vagy a felhőalapú szolgáltatás- vagy virtuális hálózat található virtuális gépek között |[Azure által biztosított névfeloldás](#azure-provided-name-resolution) |állomásnév vagy teljes Tartományneve |
+| Nevek feloldása az Azure App Service (Web App, Function, Botot, stb.) a szerepkörpéldányok vagy a virtuális gépek virtuális hálózat segítségével található, az azonos virtuális hálózatban |Ügyfél által felügyelt DNS-kiszolgálók között a névfeloldás az Azure-ban (DNS-proxy) vnetek lekérdezések továbbítása.  Lásd: [névfeloldáshoz a saját DNS-kiszolgáló](#name-resolution-using-your-own-dns-server) |Kizárólag az FQDN esetében |
 | Névfeloldás szerepkörpéldányokat vagy különböző virtuális hálózatokon lévő virtuális gépek között |Ügyfél által felügyelt DNS-kiszolgálók között a névfeloldás az Azure-ban (DNS-proxy) vnetek lekérdezések továbbítása.  Lásd: [névfeloldáshoz a saját DNS-kiszolgáló](#name-resolution-using-your-own-dns-server) |Kizárólag az FQDN esetében |
 | A helyi számítógép és a szolgáltatás neve a szerepkörpéldányok vagy az Azure virtuális gépek feloldását. |Ügyfél által felügyelt DNS-kiszolgálók (például a helyi tartományvezérlő, helyi írásvédett tartományvezérlő vagy másodlagos DNS zónaletöltés használatával szinkronizálva).  Lásd: [névfeloldáshoz a saját DNS-kiszolgáló](#name-resolution-using-your-own-dns-server) |Kizárólag az FQDN esetében |
 | A helyszíni számítógépek Azure állomásnevének feloldása |Az ügyfél által felügyelt DNS-proxy kiszolgáló a megfelelő virtuális továbbítási kérelmek a proxykiszolgáló továbbítja lekérdezések Azure a feloldásához. Lásd: [névfeloldáshoz a saját DNS-kiszolgáló](#name-resolution-using-your-own-dns-server) |Kizárólag az FQDN esetében |
@@ -42,7 +43,7 @@ A névfeloldás használata típusa attól függ, hogyan a virtuális gépek és
 | Névfeloldás virtuális gépekre vagy szerepkörpéldányokra található különböző felhőszolgáltatások, nem a virtuális hálózat között |Nem alkalmazható. Virtuális gépek és a szerepkörpéldányok különböző felhőszolgáltatások közötti kapcsolat nem támogatja a virtuális hálózatokon kívül. |n/a |
 
 ## <a name="azure-provided-name-resolution"></a>Azure által biztosított névfeloldás
-Nyilvános DNS-nevek feloldása, valamint Azure belső névfeloldást biztosít a virtuális gépek és a szerepkörpéldányok, amelyek az azonos virtuális hálózatban vagy a felhőalapú szolgáltatás.  Virtuális gépek/példány egy felhőalapú szolgáltatás megosztani az azonos DNS-utótag (így egyedül állomásnév is elegendő), de a klasszikus virtuális hálózatok másik felhőt a szolgáltatások más DNS-utótag van, ezért a teljesen minősített Tartományneve nincs szükség másik felhőszolgáltatások közötti névfeloldás.  A virtuális hálózatokon, a Resource Manager üzembe helyezési modellel a DNS-utótag összhangban a virtuális hálózaton (így a teljes tartománynév nem kötelező), és a DNS-nevek rendelhetők hozzá hálózati adapter és a virtuális gépek. Bár az Azure által biztosított névfeloldás kell konfigurálni, nincs a megfelelő választás az összes központi telepítési forgatókönyve esetén a fenti táblázatban látható módon.
+Nyilvános DNS-nevek feloldása, valamint Azure belső névfeloldást biztosít a virtuális gépek és a szerepkörpéldányok, amelyek az azonos virtuális hálózatban vagy a felhőalapú szolgáltatás.  Virtuális gépek/példány egy felhőalapú szolgáltatás megosztani az azonos DNS-utótag (így egyedül állomásnév is elegendő), de a klasszikus virtuális hálózatok másik felhőt a szolgáltatások más DNS-utótag van, ezért a teljesen minősített Tartományneve nincs szükség másik felhőszolgáltatások közötti névfeloldás.  A virtuális hálózatokon, a Resource Manager üzembe helyezési modellel a DNS-utótag összhangban a virtuális hálózaton (így a teljes tartománynév nem kötelező), és a DNS-nevek rendelhetők hozzá hálózati adapter és a virtuális gépek. Bár az Azure által biztosított névfeloldás kell konfigurálni, akkor nem a megfelelő választás az összes központi telepítési forgatókönyve esetén az előző táblázatban látható módon.
 
 > [!NOTE]
 > Webes és feldolgozói szerepkörök esetén a belső IP-címek szerepkörpéldányt beállítani az Azure Service Management REST API használatával szerepkör nevét és példányszámát száma alapján is elérhető. További információkért lásd: [Service Management REST API-referencia](https://msdn.microsoft.com/library/azure/ee460799.aspx).
@@ -65,7 +66,7 @@ Nyilvános DNS-nevek feloldása, valamint Azure belső névfeloldást biztosít 
 * Nem lehet manuálisan regisztrálni a saját rögzíti.
 * WINS- és NetBIOS nem támogatottak. (A Windows Intézőben a virtuális gépek nem látható.)
 * Állomásnevek kell lennie a DNS-kompatibilis (kell használniuk, csak 0-9, a – z és a "-", és nem kezdődhet vagy végződhet egy "-". Című rész RFC 3696 2.)
-* DNS-lekérdezés forgalom az egyes virtuális gépek folyamatban van. Ez nem befolyásolja a legtöbb alkalmazást.  Ha kérelem szabályozása, győződjön meg arról, hogy engedélyezve van-e az ügyféloldali gyorsítótárazás.  További részletekért lásd: [lekérése a legtöbb az Azure által biztosított névfeloldás](#Getting-the-most-from-Azure-provided-name-resolution).
+* DNS-lekérdezés forgalom az egyes virtuális gépek folyamatban van. Ez nem befolyásolja a legtöbb alkalmazást.  Ha kérelem szabályozása, győződjön meg arról, hogy engedélyezve van-e az ügyféloldali gyorsítótárazás.  További információkért lásd: [lekérése a legtöbb az Azure által biztosított névfeloldás](#Getting-the-most-from-Azure-provided-name-resolution).
 * Csak az első 180 felhőszolgáltatások a virtuális gépek minden virtuális hálózathoz, a klasszikus üzembe helyezési modellben van regisztrálva. Ez nem vonatkozik a Resource Manager üzembe helyezési modellel virtuális hálózatokra.
 
 ### <a name="getting-the-most-from-azure-provided-name-resolution"></a>A legtöbb Azure által biztosított névfeloldás lekérése
@@ -75,7 +76,7 @@ Nem minden DNS-lekérdezést kell küldhető el a hálózaton keresztül.  Ügyf
 
 Az alapértelmezett Windows DNS-ügyfél a DNS-gyorsítótár beépített rendelkezik.  Egyes Linux disztribúciókkal kihagyása alapértelmezés szerint gyorsítótárazás, javasolt, hogy egy vehető fel minden egyes Linux virtuális gép (miután ellenőrizte, hogy a helyi gyorsítótárba még nem).
 
-Számos különböző DNS gyorsítótárazási csomagok érhető el, például dnsmasq, a leggyakrabban használt disztribúciókkal dnsmasq telepítendő lépései a következők:
+Számos különböző DNS-, gyorsítótárazás elérhető csomagok. Például dnsmasq. Az alábbi lépéseket a leggyakrabban használt disztribúciókkal dnsmasq telepítése listában:
 
 * **Ubuntu (használ resolvconf)**:
   * csak a telepítéséhez dnsmasq ("sudo apt-get-telepítés dnsmasq").
@@ -89,7 +90,7 @@ Számos különböző DNS gyorsítótárazási csomagok érhető el, például d
   * a dnsmasq telepítéséhez ("sudo yum telepítés dnsmasq")
   * Engedélyezze a dnsmasq szolgáltatást ("systemctl engedélyezése dnsmasq.service")
   * Indítsa el a dnsmasq szolgáltatást ("systemctl start dnsmasq.service")
-  * Adja hozzá a "név-tartománykiszolgálók 127.0.0.1; illesztenie" a "/etc/dhclient-eth0.conf"
+  * add “prepend domain-name-servers 127.0.0.1;” to “/etc/dhclient-eth0.conf”
   * Indítsa újra a hálózati szolgáltatást ("szolgáltatás hálózati restart"), a gyorsítótár állítja be a helyi DNS-feloldó
 
 > [!NOTE]
@@ -102,9 +103,9 @@ Számos különböző DNS gyorsítótárazási csomagok érhető el, például d
 DNS elsősorban UDP protokoll.  Mivel az UDP protokoll üzenetkézbesítést nem garantálja, újrapróbálkozási logika kezelése a DNS protokoll.  Minden DNS-ügyfél (operációs rendszer) is virágot különböző újrapróbálkozási logika attól függően, hogy a creators beállítások:
 
 * Windows operációs rendszerek újrapróbálkozás után 1 második és majd újra egy másik 2, 4, és egy másik 4 másodperc. 
-* Az alapértelmezett Linux telepítő újrapróbálkozások 5 másodpercen belül.  Javasoljuk, hogy ezen 5-ször, 1 második időközönként megpróbálja majd újból.  
+* Az alapértelmezett Linux telepítő újrapróbálkozások öt másodperc múlva.  Javasoljuk, hogy ezen 5-ször, 1 második időközönként megpróbálja majd újból.  
 
-Az aktuális beállításokat a Linux virtuális gép, "cat /etc/resolv.conf", és nézze meg a "beállítások" sor pl. ellenőrzése:
+A "cat /etc/resolv.conf" parancs segítségével ellenőrizze a Linux virtuális gép aktuális beállításokat, majd tekintse meg a "beállítások" sor, például:
 
     options timeout:1 attempts:5
 
@@ -121,13 +122,13 @@ A resolv.conf fájl van általában automatikusan létrehozott, és nem szerkesz
   * Futtassa a "szolgáltatás hálózati újraindítás" frissítése
 
 ## <a name="name-resolution-using-your-own-dns-server"></a>Névfeloldás a saját DNS-kiszolgáló használatával
-Számos helyzetben, ahol a névfeloldási szükségleteit lehet, hogy nyissa meg a szolgáltatások, Azure által biztosított, például ha túl használja az Active Directory-tartományok, vagy ha DNS-feloldás virtuális hálózatokról (vnetekről) között.  Ezek a forgatókönyvek fedik le, Azure lehetővé teszi a saját DNS-kiszolgálók használata.  
+Számos olyan helyzetekben, ahol a névfeloldási szükségleteit lehet, hogy nyissa meg a szolgáltatások, Azure által biztosított, például ha túl használja az Active Directory-tartományok, vagy ha DNS-feloldás virtuális hálózatok közötti.  Ezek a forgatókönyvek fedik le, Azure lehetővé teszi a saját DNS-kiszolgálók használata.  
 
 A virtuális hálózaton belül DNS-kiszolgálók DNS-lekérdezések továbbíthatja Azure rekurzív feloldókat megoldásához állomásnevek adott virtuális hálózaton belül.  A tartományvezérlőn (DC) Azure-beli például a tartomány DNS-lekérdezései válaszolnak, és a további lekérdezések továbbítása az Azure-bA.  Ez lehetővé teszi a virtuális gépek, a helyszíni erőforrások (keresztül a tartományvezérlő) és az Azure által biztosított állomásnevek (keresztül a továbbító).  A virtuális IP-cím 168.63.129.16 Azure rekurzív feloldókat hozzáférést biztosítja.
 
-DNS-továbbítást is lehetővé teszi virtuális közötti virtuális hálózat DNS-feloldás és a helyszíni gépeket Azure által biztosított állomásnevek megoldásához.  Ahhoz, hogy oldja meg a virtuális gép állomásnevét, a DNS-kiszolgáló virtuális gép ugyanazon a virtuális hálózaton kell lennie, és úgy, hogy az Azure előre állomásnév lekérdezések.  Mivel a DNS-utótag minden egyes virtuális különböző, feltételes továbbítás szabályok használatával a névfeloldás a megfelelő virtuális hálózat DNS-lekérdezéseket küldjön.  Az alábbi ábrán két virtuális hálózatokat és egy helyszíni hálózat többek virtuális hálózat DNS-feloldás ezzel a módszerrel történt.  Egy példa DNS-továbbító érhető el a [Azure gyors üzembe helyezés sablontárban](https://azure.microsoft.com/documentation/templates/301-dns-forwarder/) és [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/301-dns-forwarder).
+DNS-továbbítást is lehetővé teszi az Inter-virtuális hálózat DNS-feloldás, és lehetővé teszi, hogy a helyszíni gépeket Azure által biztosított állomásnevek megoldásához.  Ahhoz, hogy oldja meg a virtuális gép állomásnevét, a DNS-kiszolgáló virtuális gép ugyanazon a virtuális hálózaton kell lennie, és úgy, hogy az Azure előre állomásnév lekérdezések.  Mivel a DNS-utótag minden egyes virtuális különböző, feltételes továbbítás szabályok használatával a névfeloldás a megfelelő virtuális hálózat DNS-lekérdezéseket küldjön.  Az alábbi ábrán két virtuális hálózatok és az Inter-virtuális hálózat DNS-feloldás ezzel a módszerrel történt a helyi hálózaton.  Egy példa DNS-továbbító érhető el a [Azure gyors üzembe helyezés sablontárban](https://azure.microsoft.com/documentation/templates/301-dns-forwarder/) és [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/301-dns-forwarder).
 
-![Régión vnet DNS](./media/virtual-networks-name-resolution-for-vms-and-role-instances/inter-vnet-dns.png)
+![Inter-virtual network DNS](./media/virtual-networks-name-resolution-for-vms-and-role-instances/inter-vnet-dns.png)
 
 Ha Azure által biztosított névfeloldás, olyan belső DNS-utótagot használ (*. internal.cloudapp.net) DHCP használatával virtuális gépek számára.  Ez lehetővé teszi az állomásnév-feloldási, az állomásnév-rekordok vannak a internal.cloudapp.net zónában.  A saját nevet névfeloldási megoldás használata esetén az IDN-utótag nincs megadva a virtuális gépekhez, mert azt más DNS-architektúrák (például a tartományhoz csatlakoztatott forgatókönyvek) gátolja.  Ehelyett azt adja meg a nem működő helyőrző (reddog.microsoft.com).  
 
@@ -165,13 +166,13 @@ Ha a klasszikus üzembe helyezési modellt használ, a virtuális hálózat DNS-
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Erőforrás-kezelő telepítési modell:
 
 * [A virtuális hálózat létrehozása vagy módosítása](https://msdn.microsoft.com/library/azure/mt163661.aspx)
 * [Létrehozni vagy frissíteni a hálózati kártya](https://msdn.microsoft.com/library/azure/mt163668.aspx)
-* [Új-AzureRmVirtualNetwork](https://msdn.microsoft.com/library/mt603657.aspx)
-* [Új AzureRmNetworkInterface](https://msdn.microsoft.com/library/mt619370.aspx)
+* [New-AzureRmVirtualNetwork](https://msdn.microsoft.com/library/mt603657.aspx)
+* [New-AzureRmNetworkInterface](https://msdn.microsoft.com/library/mt619370.aspx)
 
 Klasszikus telepítési modell:
 

@@ -3,8 +3,8 @@ title: "Virtuális hálózat konfigurálása a Premium Azure Redis gyorsítótá
 description: "Megtudhatja, hogyan hozhatja létre és kezelheti a Premium szint Azure Redis Cache példány virtuális hálózati támogatása"
 services: redis-cache
 documentationcenter: 
-author: steved0x
-manager: douge
+author: wesmc7777
+manager: cfowler
 editor: 
 ms.assetid: 8b1e43a0-a70e-41e6-8994-0ac246d8bf7f
 ms.service: cache
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
-ms.author: sdanie
-ms.openlocfilehash: 59d46990e02c0719d2b4df01e216a97fd649c509
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: wesmc
+ms.openlocfilehash: 74ec104bebec2004a8b7116865c2394c02b12638
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-redis-cache"></a>Virtuális hálózati támogatásának konfigurálása prémium szintű Azure Redis Cache
 Azure Redis Cache rendelkezik másik gyorsítótármappa ajánlatokat, amelyek gyorsítótár mérete és a funkciót, beleértve a prémium réteg szolgáltatások, például a fürtszolgáltatás, az adatmegőrzésre és a virtuális hálózat támogatásának rugalmasságot biztosítanak. A virtuális hálózat egy magánhálózaton a felhőben. Azure Redis Cache példány konfigurálásakor a virtuális hálózaton nincs nyilvánosan megcímezhető, és csak érhetők el a virtuális gépek és az alkalmazások a Vneten belül. Ez a cikk ismerteti a premium Azure Redis Cache példányt virtuális hálózat támogatásának konfigurálása.
@@ -33,7 +33,7 @@ Más prémium gyorsítótár funkciókról további információért lásd: [az 
 ## <a name="why-vnet"></a>Miért virtuális hálózatot?
 [Az Azure Virtual Network (VNet)](https://azure.microsoft.com/services/virtual-network/) telepítés biztosítja, magasabb védelmet és elszigeteltséget az Azure Redis Cache, valamint a alhálózatok, hozzáférés-vezérlési házirendeket, és további egyéb szolgáltatások elérésének korlátozása.
 
-## <a name="virtual-network-support"></a>Virtuális hálózati támogatása
+## <a name="virtual-network-support"></a>Virtuális hálózatok támogatása
 Virtual Network (VNet) támogatása konfigurálva van a **új Redis Cache** panel gyorsítótár létrehozása során. 
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
@@ -108,7 +108,7 @@ Nincsenek hét kimenő port.
 - Azure-végpontok Azure Storage és az Azure DNS-karbantartási forgalom átirányítása három port.
 - A fennmaradó porttartományok és a belső Redis alhálózati kommunikációhoz. Nincs alhálózat NSG-szabályok a belső Redis alhálózati kommunikációhoz szükségesek.
 
-| Port(ok) | Irány | Átviteli protokoll | Cél | Helyi IP | Távoli IP |
+| Port(s) | Irány | Átviteli protokoll | Cél | Helyi IP | Távoli IP |
 | --- | --- | --- | --- | --- | --- |
 | 80, 443 |Kimenő |TCP |Redis függőségek az Azure Storage/nyilvános kulcsokra épülő infrastruktúra (Internet) | (Redis alhálózati) |* |
 | 53 |Kimenő |TCP/UDP |A DNS-(Internet/VNet) függőségek redis | (Redis alhálózati) |* |
@@ -123,7 +123,7 @@ Nincsenek hét kimenő port.
 
 Nincsenek nyolc bejövő port tartományon. Bejövő kérelmek ezen tartományok, vagy más, ugyanazon virtuális üzemeltetett szolgáltatások bejövő vagy belső a Redis alhálózati kommunikáció.
 
-| Port(ok) | Irány | Átviteli protokoll | Cél | Helyi IP | Távoli IP |
+| Port(s) | Irány | Átviteli protokoll | Cél | Helyi IP | Távoli IP |
 | --- | --- | --- | --- | --- | --- |
 | 6379, 6380 |Bejövő |TCP |Ügyfél-kommunikációt kíván Redis, Azure terheléselosztás | (Redis alhálózati) |Virtuális hálózat, az Azure terheléselosztó |
 | 8443 |Bejövő |TCP |Belső Redis-kommunikáció | (Redis alhálózati) |(Redis alhálózati) |
@@ -210,7 +210,7 @@ Háttér-információkat a felhasználó által definiált útvonalak érhető e
 
 ExpressRoute kapcsolatos további információkért lásd: [ExpressRoute műszaki áttekintés](../expressroute/expressroute-introduction.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Megtudhatja, hogyan további premium gyorsítótár-funkciók használatára.
 
 * [Az Azure Redis Cache prémium szintjének bemutatása](cache-premium-tier-intro.md)

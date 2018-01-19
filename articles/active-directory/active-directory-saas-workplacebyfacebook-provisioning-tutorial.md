@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/19/2017
+ms.date: 01/17/2018
 ms.author: jeedes
-ms.openlocfilehash: fc0d7223cdc15cd7f17a4983d2c2ac46c5d1669b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5f1ca40b5ca490644a3af2c9d727026c1a18a2eb
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="tutorial-configuring-workplace-by-facebook-for-user-provisioning"></a>Oktatóanyag: A felhasználók átadása által Facebook munkahelyi konfigurálása
 
@@ -73,9 +73,9 @@ Az Azure AD képes való automatikus szinkronizálása a munkahelyi Facebook ál
 
 4. Állítsa be a **kiépítési üzemmódját** való **automatikus**. 
 
-    ![Kiépítés](./media/active-directory-saas-workplacebyfacebook-provisioning-tutorial/provisioning.png)
+    ![kiépítés folyamatban](./media/active-directory-saas-workplacebyfacebook-provisioning-tutorial/provisioning.png)
 
-5. Az a **rendszergazdai hitelesítő adataival** területen adja meg a titkos kulcs Token és a bérlői URL-cím a munkahelyének Facebook-rendszergazda.
+5. Az a **rendszergazdai hitelesítő adataival** szakaszt, adja meg a titkos kulcs Token Facebook-rendszergazda által a munkahelyen és a bérlői URL-cím értékét állítsa `https://www.facebook.com/scim/v1/` .
 
 6. Az Azure portálon kattintson **kapcsolat tesztelése** biztosításához az Azure AD csatlakozhat a munkahelyi Facebook-alkalmazást. Ha nem sikerül, győződjön meg arról, a Facebook-fiókkal munkahelyi Team rendszergazdai jogosultságokkal rendelkezik.
 
@@ -100,4 +100,3 @@ Mostantól létrehozhat egy olyan fiókot. Várjon 20 percig győződjön meg ar
 * [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](active-directory-saas-tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
 * [Egyszeri bejelentkezés konfigurálása](active-directory-saas-workplacebyfacebook-tutorial.md)
-

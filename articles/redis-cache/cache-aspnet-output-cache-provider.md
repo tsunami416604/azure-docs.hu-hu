@@ -3,8 +3,8 @@ title: "Gyorsítótár az ASP.NET kimeneti gyorsítótár-szolgáltató"
 description: "Útmutató: Azure Redis Cache használatának ASP.NET lap kimeneti gyorsítótár"
 services: redis-cache
 documentationcenter: na
-author: steved0x
-manager: douge
+author: wesmc7777
+manager: cfowler
 editor: tysonn
 ms.assetid: 78469a66-0829-484f-8660-b2598ec60fbf
 ms.service: cache
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 02/14/2017
-ms.author: sdanie
-ms.openlocfilehash: 845f25637a0e48460fc76c1ee36060274b3cec38
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: wesmc
+ms.openlocfilehash: 81c95949971d54833ca7a15ec5148116c94767f7
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="aspnet-output-cache-provider-for-azure-redis-cache"></a>Az ASP.NET kimeneti gyorsítótár-szolgáltató az Azure Redis gyorsítótár
 A Redis kimeneti gyorsítótár-szolgáltató egy olyan folyamaton-tárolási mechanizmus a kimeneti gyorsítótár adatokhoz. Ezek az adatok kifejezetten a teljes HTTP-válaszok van (a kimeneti gyorsítótár oldalon). A szolgáltató csatlakozik az új kimeneti gyorsítótár szolgáltató bővítési pontot, az ASP.NET 4 lett bevezetve.
@@ -89,6 +89,6 @@ A korábbi példában a gyorsítótárazott oldaladatokat a gyorsítótárban ma
 
 A lépések elvégzése után az alkalmazás a Redis kimeneti gyorsítótár-szolgáltató használatára van konfigurálva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse meg a [ASP.NET munkamenetállapot-szolgáltatóját az Azure Redis Cache](cache-aspnet-session-state-provider.md).
 

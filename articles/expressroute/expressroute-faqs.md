@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/01/2017
+ms.date: 01/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4b8b547e3fc57d51f35aa7ca31b76f09593bb5f1
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 62e532f3750adf8f4defe3e8f8aabe5b9f0446a0
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – Gyakori kérdések
 
@@ -72,7 +72,7 @@ Támogatja az ExpressRoute [három útválasztási tartományok](expressroute-ci
 * Dynamics 365 pénzügyi és műveletek (korábbi nevén Dynamics AX Online)
 * Az Azure-szolgáltatáshoz, a következő legtöbb néhány kivétel:
   * Tartalomkézbesítési hálózat (CDN)
-  * A Visual Studio Team Services terhelés tesztelése
+  * Visual Studio Team Services Load Testing
   * Multi-Factor Authentication
   * Traffic Manager
 
@@ -89,7 +89,7 @@ Támogatja az ExpressRoute [három útválasztási tartományok](expressroute-ci
   * Dynamics 365 a pénzügyi és műveletek
   * Az Azure-szolgáltatáshoz, a következő legtöbb néhány kivétel:
     * Tartalomkézbesítési hálózat (CDN)
-    * A Visual Studio Team Services terhelés tesztelése
+    * Visual Studio Team Services Load Testing
     * Multi-Factor Authentication
     * Traffic Manager
 
@@ -121,11 +121,11 @@ Igen. Minden egyes ExpressRoute-kapcsolatcsoportot közötti kapcsolatok magas r
 
 ### <a name="will-i-lose-connectivity-if-one-of-my-expressroute-links-fail"></a>I megszakad a kapcsolat, ha az egyik a ExpressRoute-hivatkozások nem?
 
-Ha az alhálózatok közötti kapcsolatok egyike meghibásodik nem megszakad a kapcsolat. Redundáns kapcsolatot érhető el a terhelést a hálózat támogatásához. Továbbá több Kapcsolatcsoportok létrehozhat egy másik társviszony-létesítési helye meghibásodások rugalmas kiküszöbölése eléréséhez.
+Ha az alhálózatok közötti kapcsolatok egyike meghibásodik nem megszakad a kapcsolat. A redundáns kapcsolat támogatják a terhelést a hálózat és az ExpressRoute-kapcsolatcsoportot magas rendelkezésre állású érhető el. Emellett expressroute-kapcsolatcsoporthoz létrehozhat egy másik társviszony-létesítési helye áramkör szintű rugalmasság eléréséhez.
 
-## <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>Hogyan biztosítása érdekében a magas rendelkezésre állású ExpressRoute kapcsolódik a virtuális hálózaton?
+### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>Hogyan biztosítása érdekében a magas rendelkezésre állású ExpressRoute kapcsolódik a virtuális hálózaton?
 
-Magas rendelkezésre állású érhet el, hogy a virtuális hálózathoz való csatlakozás több ExpressRoute-Kapcsolatcsoportok társviszony-létesítési különböző helyeken. Például ha egy ExpressRoute-hely leáll, kapcsolat hajt végre feladatátvételt egy másik ExpressRoute-helyre. Alapértelmezés szerint a virtuális hálózat elhagyó forgalomra történik a egyenlő költség több útvonalas útválasztás (ECMP) alapján. Kapcsolat súly segítségével inkább egy kapcsolatot. Lásd: [ExpressRoute útválasztási optimalizálása](expressroute-optimize-routing.md) további részleteket a kapcsolat súlyt.
+A virtuális hálózat magas rendelkezésre állású ExpressRoute-Kapcsolatcsoportok társviszony-létesítési különböző helyeken (pl. szingapúri, Singapore2) csatlakozva érhet el. Ha egy ExpressRoute-kapcsolatcsoportot leáll, kapcsolat hajt végre feladatátvételt egy másik ExpressRoute-kapcsolatcsoport számára. Alapértelmezés szerint a virtuális hálózat elhagyó forgalomra történik a egyenlő költség több útvonalas útválasztás (ECMP) alapján. Kapcsolat súly segítségével egy kör inkább egy másikra. Lásd: [ExpressRoute útválasztási optimalizálása](expressroute-optimize-routing.md) további részleteket a kapcsolat súlyt.
 
 ### <a name="onep2plink"></a>Ha nem vagyok a felhőalapú exchange a közös helyen, és a szolgáltató biztosít a pontok közötti kapcsolat, kell érdekében saját helyszíni hálózat és a Microsoft között két fizikai kapcsolatot?
 
@@ -145,9 +145,12 @@ Igen. Az előfizetés csak egy ExpressRoute-kapcsolatcsoportot lehet. Az alapér
 
 Igen. ExpressRoute-Kapcsolatcsoportok sok szolgáltatókkal lehet. Minden egyes ExpressRoute-kapcsolatcsoportot rendelve egy szolgáltató. 
 
-### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-location"></a>Képes több ExpressRoute-Kapcsolatcsoportok is van ugyanazon a helyen?
+### <a name="i-see-two-expressroute-peering-locations-in-the-same-metro-eg-singapore-and-singapore2-which-peering-location-should-i-choose-to-create-my-expressroute-circuit"></a>Két ExpressRoute társviszony-létesítési helye a azonos metro, pl. szingapúri és Singapore2 látható. Mely társviszony-létesítési helye kell kiválasztani saját ExpressRoute-kapcsolatcsoportot létrehozni?
+A szolgáltató mindkét helyek ExpressRoute biztosít, ha a szolgáltatónál dolgozik, és válassza ki bármelyik hely ExpressRoute beállítása. 
 
-Igen. Több ExpressRoute-Kapcsolatcsoportok, ugyanazon a helyen szolgáltatókkal azonos vagy azoktól eltérő lehet. Azonban nem hivatkozhat több ExpressRoute-kapcsolatcsoportot az azonos virtuális hálózatban ugyanarra a helyre mutasson.
+### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-metro-can-i-link-them-to-the-same-virtual-network"></a>Az azonos metro is rendelkezem több ExpressRoute-Kapcsolatcsoportok? I hivatkozhat rájuk ugyanahhoz a virtuális hálózathoz?
+
+Igen. Több ExpressRoute-Kapcsolatcsoportok ugyanazon vagy másik szolgáltatókkal lehet. Ha a metro több ExpressRoute-társviszony létesítése – helyek és a kapcsolatok jönnek létre különböző társviszony-létesítési helyeken, az azonos virtuális hálózatban társíthatja azokat. A Kapcsolatcsoportok ugyanazon a társviszony-létesítési helyen létrehozott, nem hivatkozhat ugyanarra a virtuális hálózatra.
 
 ### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>Hogyan a virtuális hálózatok csatlakoztatása ExpressRoute-kapcsolatcsoportot
 

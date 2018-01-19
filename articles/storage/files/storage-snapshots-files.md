@@ -3,7 +3,7 @@ title: "Azure-fájlok (előzetes verzió) megosztás pillanatképek áttekintés
 description: "Megosztás pillanatképet egy olyan Azure fájlok megosztási konzolán kell elvégezni egy ideje, készítsen biztonsági másolatot a megosztást is csak olvasható verziója telepítve."
 services: storage
 documentationcenter: .net
-author: renash
+author: RenaShahMSFT
 manager: aungoo
 editor: tysonn
 ms.assetid: edabe3ee-688b-41e0-b34f-613ac9c3fdfd
@@ -12,13 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2017
+ms.date: 01/17/2018
 ms.author: renash
-ms.openlocfilehash: 2504e180799164845a89a7f89ca6a6c61352304f
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: c309804f33fc0e5b2091e18dfe5fe3c9849a2709
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="overview-of-share-snapshots-for-azure-files-preview"></a>A megosztás pillanatképek Azure-fájlok (előzetes verzió) – áttekintés
 Az Azure Files lehetővé teszi a megosztás pillanatképek készítése fájlmegosztások. Megosztás-pillanatképeket (előzetes verzió) a fájlmegosztási állapot ezen a ponton az idő rögzítése. Ez a cikk azt írják le, milyen lehetőségek megosztás pillanatképek adja meg, és hogyan fordíthatja előnyére azokat az egyéni használati eset a.
@@ -96,7 +96,7 @@ A megosztás pillanatkép-ütemező telepítése előtt alaposan gondolja át, a
 
 Megosztás pillanatképek csak a fájl szintű védelmet nyújt. Megosztás pillanatképek nem akadályozzák meg a fájl megosztásra vagy a tárolási fiók fat-ujját törlések. A tárfiók véletlen törlések védelme érdekében zárolhatja a tárfiók vagy az erőforráscsoportot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Megosztás pillanatképek használata](storage-how-to-use-files-snapshots.md)
 * [Megosztás pillanatkép – gyakori kérdések](storage-files-faq.md)
 

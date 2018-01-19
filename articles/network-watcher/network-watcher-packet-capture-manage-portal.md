@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 818f6513625a2677668dd6b6869ef969fe015bf7
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: c283fb4d1a390de88b425ce51a312b5404503f0d
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>Csomag rögzítésekre kezelése Azure hálózati figyelőt a portál használatával
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 12/21/2017
 > - [PowerShell](network-watcher-packet-capture-manage-powershell.md)
 > - [CLI 1.0](network-watcher-packet-capture-manage-cli-nodejs.md)
 > - [CLI 2.0](network-watcher-packet-capture-manage-cli.md)
-> - [Az Azure REST API-n](network-watcher-packet-capture-manage-rest.md)
+> - [Azure REST API](network-watcher-packet-capture-manage-rest.md)
 
 Hálózati figyelő csomagrögzítéssel rögzítési munkamenetek nyomon követéséhez forgalma és a virtuális gép létrehozását teszi lehetővé. Annak érdekében, hogy csak a kívánt forgalom rögzíti a rögzítési munkamenet szűrők célokat szolgálnak. Csomagrögzítéssel segít diagnosztizálni hálózati rendellenességeket proaktív és reaktív is. Egyéb felhasználásra tartalmazzák a hálózati statisztikákat, hálózati behatolások, ügyfél-kiszolgáló közötti kommunikációt, és még sok más hibakeresési információkat való összegyűjtéséhez. Őket távolról elindítása csomag rögzíti, ez a funkció megkönnyíti a csomagrögzítéssel fut, manuálisan, a kívánt számítógépet, amely értékes időt takaríthat meg okozta terheket.
 
@@ -83,7 +83,7 @@ A csomagrögzítéssel lehet definiálni tulajdonságok a következők:
 - **A Tárfiók** -határozza meg, ha a tárfiók csomagrögzítéssel menti.
 - **Fájl** -határozza meg, ha egy csomagrögzítéssel rendszer helyileg menti a virtuális gépen.
 - **Storage-fiókok** – a kiválasztott tárolási fiók segítségével menti a csomagrögzítéssel a. Alapértelmezett helye https://{storage name}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscription fiókazonosító} /resourcegroups/ {erőforráscsoport name}/providers/microsoft.compute/virtualmachines/{virtual gép neve} / {éé} / {MM} / {NN} / {HH} packetcapture__{MM}_{SS} {XXX} _ .cap. (Csak akkor engedélyezett, ha **tárolási** van kiválasztva)
-- **Helyi fájl elérési útját** -a helyi elérési út mentése a csomagrögzítéssel virtuális gépen. (Csak akkor engedélyezett, ha **fájl** van kiválasztva). Érvényes elérési utat meg kell adni.
+- **Helyi fájl elérési útját** -a helyi elérési út mentése a csomagrögzítéssel virtuális gépen. (Csak akkor engedélyezett, ha **fájl** van kiválasztva). Meg kell adni egy érvényes elérési utat. A Linux virtuális gép elérési kezdődhet */var/rögzíti*.
 - **Csomag maximális bájtokat** - szám bájtok számát az egyes csomagok, amelyek rögzítve lesznek, az összes bájt rofilok rögzítésének, ha üresen hagyja.
 - **Munkamenet maximális bájtokat** – teljes száma, amelyek rögzítve lesznek, az érték elérésekor a csomag rögzítési leáll bájt.
 - **Időkorlát (másodperc)** – beállítja a csomagrögzítéssel leállításához időkorlátot. Alapértelmezett érték 18000 másodperc.
@@ -119,7 +119,7 @@ A csomag rögzítési nézetben kattintson a **helyi menü** (...), vagy kattint
 
 A rendszer felkéri a jóváhagyásához a csomagrögzítéssel törléséhez kattintson **Igen**
 
-![Jóváhagyás][4]
+![confirmation][4]
 
 ## <a name="stop-a-packet-capture"></a>A csomagrögzítéssel leállítása
 

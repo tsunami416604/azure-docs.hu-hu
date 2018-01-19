@@ -3,8 +3,8 @@ title: "Telepítse át a Redis - Azure Managed Cache Service-alkalmazások |} Mi
 description: "Ismerje meg, hogyan telepítheti át az Azure Redis Cache Managed Cache Service és a szerepköralapú gyorsítótár alkalmazások"
 services: redis-cache
 documentationcenter: na
-author: steved0x
-manager: douge
+author: wesmc7777
+manager: cfowler
 editor: tysonn
 ms.assetid: 041f077b-8c8e-4d7c-a3fc-89d334ed70d6
 ms.service: cache
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 05/30/2017
-ms.author: sdanie
-ms.openlocfilehash: 0fbfb945c66926794721f2ce8cc183dac51ecb27
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: wesmc
+ms.openlocfilehash: 87a31ac992592cbbbc54a487867a65346ad06a0b
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-redis-cache"></a>Azure Redis Cache Managed Cache Service áttelepítése
 Az Azure Managed Cache Service Azure Redis Cache használó alkalmazások áttelepítése az alkalmazáshoz, attól függően, hogy a Managed Cache Service szolgáltatásokat használják a gyorsítótárazási alkalmazás legfeljebb minimális változtatásokra is elvégezhető. Míg az API-k nem pontosan ugyanaz hasonló, és nagy részét a meglévő kód Managed Cache Service alapján fér hozzá újrahasználhatók minimális módosításait. Ez a témakör bemutatja, hogyan végezheti el a szükséges konfigurációs és telepítse át a Managed Cache Service-alkalmazások Azure Redis Cache az alkalmazás módosításait, és bemutatja, hogyan néhány Azure Redis Cache funkciója használható Managed funkcióinak végrehajtásához Gyorsítótár gyorsítótára.
@@ -187,6 +187,6 @@ Azure Redis Cache .NET objektumok, valamint a primitív adattípusokat együttm�
 ## <a name="migrate-aspnet-session-state-and-output-caching-to-azure-redis-cache"></a>Az ASP.NET munkamenet-állapot és a kimeneti gyorsítótár Azure Redis Cache áttelepítése
 Azure Redis Cache van az ASP.NET munkamenet-állapot és a lap kimeneti gyorsítótár-szolgáltatók. Az ilyen szolgáltatók Managed Cache Service verzióit használó alkalmazások áttelepítéséhez először távolítsa el a meglévő szakaszokat a Web.config fájlban, és adja meg az Azure Redis Cache-verziók a szolgáltatók. Az Azure Redis Cache ASP.NET-szolgáltatókat használ, lásd: [ASP.NET munkamenetállapot-szolgáltatóját az Azure Redis Cache](cache-aspnet-session-state-provider.md) és [az ASP.NET kimeneti gyorsítótár-szolgáltató Azure Redis Cache](cache-aspnet-output-cache-provider.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Megismerkedhet a [Azure Redis Cache dokumentáció](https://azure.microsoft.com/documentation/services/cache/) az oktatóanyagok, példák, videók és több.
 

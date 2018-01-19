@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 995437f5a4a6fe1bc99bfe7fee555d0ac53101a8
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: e92a9d5900e3e0fe71084e5003010d419e44cb39
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Olyan virtuális merevlemezről speciális tárfiók a virtuális gép létrehozása
 
@@ -217,27 +217,9 @@ Hozza létre a virtuális hálózat és az alhálózati a [virtuális hálózati
     $vnet = New-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location `
         -AddressPrefix 10.0.0.0/16 -Subnet $singleSubnet
     ```    
-
-### <a name="create-a-public-ip-address-and-nic"></a>Nyilvános IP-cím és a hálózati adapter létrehozása
-A virtuális hálózaton a virtuális géppel való kommunikáció biztosításához egy [nyilvános IP-cím](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) és egy hálózati adapter szükséges.
-
-1. A nyilvános IP-cím létrehozása. Ebben a példában a nyilvános IP-cím neve értéke **myIP**.
-   
-    ```powershell
-    $ipName = "myIP"
-    $pip = New-AzureRmPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $location `
-        -AllocationMethod Dynamic
-    ```       
-2. Hozzon létre a hálózati adaptert. Ebben a példában a hálózati adapter neve legyen **myNicName**.
-   
-    ```powershell
-    $nicName = "myNicName"
-    $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName `
-    -Location $location -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
-    ```
-
 ### <a name="create-the-network-security-group-and-an-rdp-rule"></a>A hálózati biztonsági csoport és egy RDP-szabály létrehozása
 Nem fogja tudni jelentkezzen be a virtuális gép RDP Funkciót használnak, szüksége, hogy egy biztonsági szabály, amely lehetővé teszi a hozzáférést RDP a 3389-es porton. Mivel az új virtuális gép virtuális merevlemez létrehozásának egy meglévő speciális virtuális gép, miután a virtuális gép létrehozása után használható a forrás virtuális gépről, akinek engedélye RDP használatával jelentkezzen be egy meglévő fiókkal.
+Ez kell elvégezni az társítandó hálózati illesztő létrehozása előtt.  
 Ebben a példában a NSG nevének beállítása **myNsg** és az RDP-szabály neve a **myRdpRule**.
 
 ```powershell
@@ -253,6 +235,24 @@ $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $rgName -Location $loc
 ```
 
 Végpontok és NSG-szabályok kapcsolatos további információkért lásd: [az Azure PowerShell használatával egy virtuális gép portok megnyitása](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+
+### <a name="create-a-public-ip-address-and-nic"></a>Nyilvános IP-cím és a hálózati adapter létrehozása
+A virtuális hálózaton a virtuális géppel való kommunikáció biztosításához egy [nyilvános IP-cím](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) és egy hálózati adapter szükséges.
+
+1. A nyilvános IP-cím létrehozása. Ebben a példában a nyilvános IP-cím neve értéke **myIP**.
+   
+    ```powershell
+    $ipName = "myIP"
+    $pip = New-AzureRmPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $location `
+        -AllocationMethod Dynamic
+    ```       
+2. Hozzon létre a hálózati adaptert. Ebben a példában a hálózati adapter neve legyen **myNicName**. Ez a lépés is hozzárendeli a korábban létrehozott, a hálózati adapterhez. hálózati biztonsági csoport
+   
+    ```powershell
+    $nicName = "myNicName"
+    $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName `
+    -Location $location -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
+    ```
 
 ### <a name="set-the-vm-name-and-size"></a>Adja meg a virtuális gép neve és mérete
 

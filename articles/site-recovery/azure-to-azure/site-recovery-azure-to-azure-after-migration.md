@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/22/2017
 ms.author: ponatara
 ms.openlocfilehash: 7658bedc0bd5c4a289f3271504a006ba54c783b6
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="replicate-azure-vms-to-another-region-after-migration-to-azure-by-using-azure-site-recovery"></a>Azure virtuális gépek replikálása egy másik régióban Azure való áttelepítése után Azure Site Recovery segítségével
 
@@ -38,7 +38,7 @@ Előkészítése a replikációt, hogy egy másik Azure-régiót beállításán
 1. Az áttelepítés végrehajtásához.
 2. Szükség esetén telepítse az Azure-ügynököt.
 3. Távolítsa el a mobilitási szolgáltatást.  
-4. Indítsa újra a virtuális Gépet.
+4. Indítsa újra a virtuális gépet.
 
 A következő szakaszokban részletesebben ezeket a lépéseket ismerteti.
 
@@ -61,7 +61,7 @@ A következő táblázat további információt a Virtuálisgép-ügynök telep�
 | **Művelet** | **Windows** | **Linux** |
 | --- | --- | --- |
 | A Virtuálisgép-ügynök telepítése |Töltse le és telepítse az [ügynök MSI-t](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). A telepítés befejezéséhez rendszergazdai jogosultságokat igényel. |Telepítse a legújabb [Linux-ügynök](../../virtual-machines/linux/agent-user-guide.md). A telepítés befejezéséhez rendszergazdai jogosultságokat igényel. Azt javasoljuk, hogy az ügynök telepítése a telepítési tárházból. A Microsoft *nem javasoljuk* közvetlenül a Githubból a Linux Virtuálisgép-ügynök telepítése.  |
-| A Virtuálisgép-ügynök telepítésének ellenőrzése |1. Keresse meg az Azure virtuális Gépen a C:\WindowsAzure\Packages mappát. Meg kell jelennie a WaAppAgent.exe fájlt. <br>2. Kattintson jobb gombbal a fájlra, válassza a **Tulajdonságok** parancsot, majd nyissa meg a **Részletek** lapot. A **termékverzió** mező lehet 2.6.1198.718 vagy újabb verzióját. |N/A |
+| A Virtuálisgép-ügynök telepítésének ellenőrzése |1. Keresse meg az Azure virtuális Gépen a C:\WindowsAzure\Packages mappát. Meg kell jelennie a WaAppAgent.exe fájlt. <br>2. Kattintson jobb gombbal a fájlra, válassza a **Tulajdonságok** parancsot, majd nyissa meg a **Részletek** lapot. A **termékverzió** mező lehet 2.6.1198.718 vagy újabb verzióját. |– |
 
 
 ### <a name="step-3-remove-the-mobility-service-from-the-migrated-virtual-machine"></a>3. lépés: Távolítsa el a mobilitási szolgáltatást az áttelepített virtuális gép
@@ -100,6 +100,6 @@ Az alábbi módszerek valamelyikével távolítsa el a mobilitási szolgáltatá
 A mobilitási szolgáltatás eltávolítása után indítsa újra a virtuális gép egy másik Azure-régió, hogy a replikáció beállítása előtt.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - A munkaterhelések számára a védelmének megkezdéséhez [Azure virtuális gépek replikálásához](azure-to-azure-quickstart.md).
 - További információ [útmutató az Azure virtuális gépek replikálása a hálózat](site-recovery-azure-to-azure-networking-guidance.md).

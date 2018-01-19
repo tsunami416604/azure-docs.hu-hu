@@ -3,8 +3,8 @@ title: "Azure Redis Cache hibaelhárítása |} Microsoft Docs"
 description: "Útmutató az Azure Redis Cache gyakori problémák megoldásában."
 services: redis-cache
 documentationcenter: 
-author: steved0x
-manager: douge
+author: wesmc7777
+manager: cfowler
 editor: 
 ms.assetid: 928b9b9c-d64f-4252-884f-af7ba8309af6
 ms.service: cache
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.author: sdanie
-ms.openlocfilehash: 2e9d1b644f1e80c7d916a261a6c47fcc11a1ffe0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: wesmc
+ms.openlocfilehash: 3a79a0b20cd007816391745f6f717253df17f067
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="how-to-troubleshoot-azure-redis-cache"></a>Azure Redis Cache hibaelhárítása
 Ez a cikk a következő kategóriákba tartozó Azure Redis Cache problémák iránymutatásokat tartalmaz.
@@ -183,13 +183,13 @@ Ez a hibaüzenet, amely segíthet a probléma okát és lehetséges megoldás, m
 | Hiba történt a üzenet metrika | Részletek |
 | --- | --- |
 | INST |Az utolsó időszelet: 0 parancsok kiállították. |
-| kezelője |A szoftvercsatorna-kezelő hajt végre `socket.select` ami azt jelenti, hogy azt kéri, az operációs rendszer annak jelzésére, amelynek valami; ehhez szoftvercsatorna alapvetően: az olvasó értéke nem aktívan olvasása a hálózatról, mert az nem gondolja bármilyen formában |
+| mgr |A szoftvercsatorna-kezelő hajt végre `socket.select` ami azt jelenti, hogy azt kéri, az operációs rendszer annak jelzésére, amelynek valami; ehhez szoftvercsatorna alapvetően: az olvasó értéke nem aktívan olvasása a hálózatról, mert az nem gondolja bármilyen formában |
 | Várólista |73 összes folyamatban lévő műveletek |
 | qu |a folyamatban lévő műveletek 6 az el nem küldött várólistájuk, és még nem írt a kimenő hálózati |
 | QS |67-es helykiszolgálójához folyamatban lévő műveletek a kiszolgáló által elküldött, de a választ még nem érhető el. A válasz lehet `Not yet sent by the server` vagy`sent by the server but not yet processed by the client.` |
-| QC |a folyamatban lévő műveletek 0 választ láthatta, de rendelkezik nincs megjelölve, Várakozás a befejezési hurok miatt befejeződött |
+| qc |a folyamatban lévő műveletek 0 választ láthatta, de rendelkezik nincs megjelölve, Várakozás a befejezési hurok miatt befejeződött |
 | wR |Nincs egy aktív írási (ami azt jelenti, a 6 el nem küldött kérelmek nem lesznek mellőzve) bájt/activewriters |
-| A |Nincs aktív olvasó és elérhető legyen a hálózati bájtok/activereaders nulla bájt |
+| ebben: |Nincs aktív olvasó és elérhető legyen a hálózati bájtok/activereaders nulla bájt |
 
 ### <a name="steps-to-investigate"></a>Vizsgálja meg lépései
 1. Gondoskodjon arról, hogy az ajánlott eljárás segítségével végzi a következő mintát csatlakozás, ha a StackExchange.Redis-ügyfélprogrammal.

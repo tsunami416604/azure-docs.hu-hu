@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 ms.openlocfilehash: 4c06b1c8265a12af6764124e3c753e9456a2be20
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>SAP NetWeaver Azure virtuális gépek központi telepítését
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -351,7 +351,7 @@ Az alábbi információkra, az SAP méretezési:
 ### <a name="resource-groups"></a>Erőforráscsoportok
 Az Azure Resource Manager erőforráscsoportokat használhatja az alkalmazás-erőforrásokat az Azure-előfizetése kezeléséhez. További információkért lásd: [Azure Resource Manager áttekintése][resource-group-overview].
 
-## <a name="resources"></a>Erőforrások
+## <a name="resources"></a>További források
 
 ### <a name="42ee2bdb-1efc-4ec7-ab31-fe4c22769b94"></a>SAP-erőforrások
 A SAP szoftvertelepítést állít be, amikor a következő SAP-erőforrások szüksége:
@@ -417,7 +417,7 @@ A varázsló végigvezeti Önt a virtuális gép, minden szükséges erőforrás
      A támogatott virtuális gép típusainak listáját lásd: SAP Megjegyzés [1928533]. Győződjön meg arról, hogy ha a prémium szintű Azure Storage használni kívánt válassza ki a megfelelő Virtuálisgép-típussá. Nem minden virtuális gép esetében támogatja a prémium szintű Storage. További információkért lásd: [tárolási: Microsoft Azure Storage- és adatlemezek] [ planning-guide-storage-microsoft-azure-storage-and-data-disks] és [prémium szintű Azure Storage] [ planning-guide-azure-premium-storage] a [Azure virtuális gépek tervezési és megvalósítási az SAP NetWeaver][planning-guide].
 
 3. **Beállítások**:
-  * **Tárolás**
+  * **Storage**
     * **Lemez típusa**: válassza ki az operációsrendszer-lemezképet a lemez típusát. Ha azt szeretné, a prémium szintű Storage az adatlemezek, prémium szintű Storage, valamint az operációsrendszer-lemezképet használatát javasoljuk.
     * **Felügyelt lemezeket használó**: ha felügyelt lemezeket használni szeretne, válassza az Igen lehetőséget. Felügyelt lemezek kapcsolatos további információkért lásd: fejezet [kezelt lemezek] [ planning-guide-managed-disks] a tervezési útmutatóban.
     * **A tárfiók**: Válasszon egy meglévő tárfiókot, vagy hozzon létre egy újat. Nem minden tárolási használható SAP-alkalmazások futtatására. További információ a tárolási típusok: [Microsoft Azure Storage] [ dbms-guide-2.3] a [SAP NetWeaver Azure virtuális gépek DBMS telepítésének][dbms-guide].
@@ -549,7 +549,7 @@ A varázsló végigvezeti Önt a virtuális gép, minden szükséges erőforrás
      A támogatott virtuális gép típusainak listáját lásd: SAP Megjegyzés [1928533]. Győződjön meg arról, hogy ha a prémium szintű Azure Storage használni kívánt válassza ki a megfelelő Virtuálisgép-típussá. Nem minden virtuális gép esetében támogatja a prémium szintű Storage. További információkért lásd: [tárolási: Microsoft Azure Storage- és adatlemezek] [ planning-guide-storage-microsoft-azure-storage-and-data-disks] és [prémium szintű Azure Storage] [ planning-guide-azure-premium-storage] a [Azure virtuális gépek tervezési és megvalósítási az SAP NetWeaver][planning-guide].
 
 3. **Beállítások**:
-  * **Tárolás**
+  * **Storage**
     * **Lemez típusa**: válassza ki az operációsrendszer-lemezképet a lemez típusát. Ha azt szeretné, a prémium szintű Storage az adatlemezek, prémium szintű Storage, valamint az operációsrendszer-lemezképet használatát javasoljuk.
     * **Felügyelt lemezeket használó**: ha felügyelt lemezeket használni szeretne, válassza az Igen lehetőséget. Felügyelt lemezek kapcsolatos további információkért lásd: fejezet [kezelt lemezek] [ planning-guide-managed-disks] a tervezési útmutatóban.
   * **Hálózat**
@@ -890,7 +890,7 @@ PowerShell vagy Azure CLI telepítése és konfigurálása az Azure fokozott Fig
 Az Azure fokozott Figyelőbővítmény az SAP telepítése a PowerShell használatával:
 
 1. Győződjön meg arról, hogy telepítette-e az Azure PowerShell-parancsmag a legújabb verzióra. További információkért lásd: [telepítése Azure PowerShell-parancsmagok][deployment-guide-4.1].  
-2. Futtassa a következő PowerShell-parancsmagot.
+2. Futtassa az alábbi PowerShell-parancsmagot.
     A rendelkezésre álló környezeteket listája, futtassa a `commandlet Get-AzureRmEnvironment`. Globális Azure használni kívánt, ha a környezet olyan **AzureCloud**. Az Azure Kínában, válassza ki a **AzureChinaCloud**.
 
     ```powershell
@@ -1055,7 +1055,7 @@ Ha minden ellenőrzés nem sikerül, és telepítse újra a bővítmény kapcsol
 Ha néhány a figyelés nem kerülnek az adatok a vizsgálat leírtak szerint megfelelően [készültség-ellenőrzés Azure fokozott figyelés az SAP][deployment-guide-5.1]- ben futtassa a `Test-AzureRmVMAEMExtension` parancsmag futtatásával ellenőrizze, hogy az Azure felügyeleti infrastruktúra és a figyelés az SAP bővítmény helyesen vannak konfigurálva.
 
 1.  Győződjön meg arról, hogy telepítette-e a legújabb verzióját a következő Azure PowerShell-parancsmag, a [telepítése Azure PowerShell-parancsmagok][deployment-guide-4.1].
-2.  Futtassa a következő PowerShell-parancsmagot. Rendelkezésre álló környezeteket listájának megtekintéséhez futtassa a parancsmagot `Get-AzureRmEnvironment`. Globális Azure használatához válassza a **AzureCloud** környezetben. Az Azure Kínában, válassza ki a **AzureChinaCloud**.
+2.  Futtassa az alábbi PowerShell-parancsmagot. Rendelkezésre álló környezeteket listájának megtekintéséhez futtassa a parancsmagot `Get-AzureRmEnvironment`. Globális Azure használatához válassza a **AzureCloud** környezetben. Az Azure Kínában, válassza ki a **AzureChinaCloud**.
   ```powershell
   $env = Get-AzureRmEnvironment -Name <name of the environment>
   Login-AzureRmAccount -Environment $env

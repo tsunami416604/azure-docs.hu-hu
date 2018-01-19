@@ -4,7 +4,7 @@ description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Az
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: 399cecc3-aa62-4914-8b6c-5a35289820c1
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2017
+ms.date: 01/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 9deb4c9bd6719e7cf86883fba1306c435de0ebb9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2d5cb69d7832b974ec5e5b8b4e9f83b66fc9b98a
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-grovo"></a>Oktatóanyag: Azure Active Directoryval integrált Grovo
 
@@ -64,7 +64,7 @@ Az Azure AD integrálása a Grovo konfigurálásához kell hozzáadnia Grovo a g
 
 2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
 
-    ![A vállalati alkalmazások][2]
+    ![A vállalati alkalmazások panel][2]
     
 3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
 
@@ -76,13 +76,13 @@ Az Azure AD integrálása a Grovo konfigurálásához kell hozzáadnia Grovo a g
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban konfigurálása, és tesztelés az Azure AD egyszeri bejelentkezéshez "Britta Simon." nevű tesztfelhasználó alapján Grovo
+Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezéshez "Britta Simon" nevű tesztfelhasználó alapján Grovo.
 
 Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó Grovo a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a Grovo közötti kapcsolat kapcsolatot kell létrehozni.
 
 Grovo, rendelje hozzá a értékének a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
 
-Az Azure AD az egyszeri bejelentkezés az Grovo tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezést a Grovo tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
 
 1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
 2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
@@ -112,7 +112,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:`https://<subdomain>.grovo.com/sso/saml2/saml-assertion`
 
-4.  Ellenőrizze **megjelenítése speciális URL-beállításainak**, hajtsa végre a következő lépéseket:  
+4. Ellenőrizze **megjelenítése speciális URL-beállításainak**, hajtsa végre a következő lépést:
 
     ![Az egyszeri bejelentkezés információk Grovo tartomány és az URL-címek](./media/active-directory-saas-grovo-tutorial/tutorial_grovo_url1.png)
 
@@ -121,7 +121,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     b. Ha szeretne beállítani az alkalmazás **SP** kezdeményezett mód, hajtsa végre a következő lépéseket:
 
     ![Az egyszeri bejelentkezés információk Grovo tartomány és az URL-címek](./media/active-directory-saas-grovo-tutorial/tutorial_grovo_url2.png)
-
+    
     Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<subdomain>.grovo.com/sso/saml2/saml-assertion`
 
     > [!NOTE] 
@@ -129,31 +129,35 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
  
 5. Grovo alkalmazás vár a SAML helyességi feltételek egy meghatározott formátumban. A következő jogcímek alkalmazás konfigurálása. Ezek az attribútumok értékének kezelheti a "**felhasználói attribútumok**" szakasz alkalmazás integráció lapján. Az alábbi képernyőfelvételen látható egy példa a.
     
-    ![Egyszeri bejelentkezés attribútum konfigurálása](./media/active-directory-saas-grovo-tutorial/tutorial_grovo_attribute.png)
+    ![Egyszeri bejelentkezés attb konfigurálása](./media/active-directory-saas-grovo-tutorial/tutorial_grovo_attribute.png)
     
 6. A a **felhasználói attribútumok** a szakasz a **egyszeri bejelentkezés** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, az ábrán látható módon, és hajtsa végre a következő lépéseket:
     
     | Attribútum neve | Attribútum értéke |
     | ------------------- | -------------------- |    
-    | Utónév              | User.givenName |
-    | Vezetéknév               | User.surname |
+    | Utónév          | user.givenname |
+    | Vezetéknév           | user.surname |
+    | E-mail cím       | user.mail    |
+    | employeeID          | user.employeeid |
 
     a. Kattintson a **Hozzáadás attribútum** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
 
-    ![Egyszeri bejelentkezés attribútum konfigurálása](./media/active-directory-saas-grovo-tutorial/tutorial_attribute_04.png)
+    ![Egyszeri bejelentkezés konfigurálása hozzáadása](./media/active-directory-saas-grovo-tutorial/tutorial_attribute_04.png)
 
-    ![Egyszeri bejelentkezés attribútum konfigurálása](./media/active-directory-saas-grovo-tutorial/tutorial_attribute_05.png)
+    ![Egyszeri bejelentkezés Addattb konfigurálása](./media/active-directory-saas-grovo-tutorial/tutorial_attribute_05.png)
 
     b. Az a **neve** szövegmező, írja be az adott sorhoz feltüntetett attribútumot nevét.
 
     c. Az a **érték** kilistázásához írja be a sorhoz látható attribútum értéke.
+
+    d. Hagyja a **Namespace** üres.
     
-    d. Kattintson az **OK** gombra.
+    e. Kattintson az **OK** gombra.
 
 
 7. Az a **SAML-aláíró tanúsítványa** kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
-    ![A tanúsítvány letöltése szabadkézi](./media/active-directory-saas-grovo-tutorial/tutorial_grovo_certificate.png) 
+    ![A tanúsítvány letöltési hivatkozását](./media/active-directory-saas-grovo-tutorial/tutorial_grovo_certificate.png) 
 
 8. Kattintson a **mentése** gombra.
 
@@ -163,9 +167,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Grovo konfiguráció](./media/active-directory-saas-grovo-tutorial/tutorial_grovo_configure.png) 
 
-10. Egy másik webes böngészőablakban jelentkezzen be Grovo rendszergazdaként.
+10. Egy másik webes böngészőablakban, jelentkezzen be rendszergazdaként Grovo.
 
-11. Ugrás a **ADMIN** > **integrációja**.
+11. Ugrás a **Admin** > **integrációja**.
  
     ![Grovo konfiguráció](./media/active-directory-saas-grovo-tutorial/tutorial_grovo_admin.png) 
 
@@ -173,13 +177,13 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Grovo konfiguráció](./media/active-directory-saas-grovo-tutorial/tutorial_grovo_setup.png)
 
-13. A **SP kezdeményezett SAML 2.0** előugró ablakban, a következő lépésekkel:
+13. A **SP kezdeményezett SAML 2.0** előugró ablakban a következő lépésekkel:
 
     ![Grovo konfiguráció](./media/active-directory-saas-grovo-tutorial/tutorial_grovo_saml.png)
 
-    a. Az a **entitásazonosító** szövegmezőhöz illessze be az értékét **SAML Entitásazonosító** másolt Azure-portálon.
+    a. Az a **entitásazonosító** szövegmezőhöz illessze be az értékét **SAML Entitásazonosító**, amely az Azure-portálon másolta.
 
-    b. Az a **egyszeri bejelentkezés a szolgáltatási végpont** szövegmezőhöz illessze be az értékét **SAML-alapú egyszeri bejelentkezési URL-címe** másolt Azure-portálon.
+    b. Az a **egyszeri bejelentkezés a szolgáltatási végpont** szövegmezőhöz illessze be az értékét **SAML-alapú egyszeri bejelentkezési URL-címe**, amely az Azure-portálon másolta.
 
     c. Válassza ki **egyszeri bejelentkezés szolgáltatási végpont kötésének** , `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect`.
     

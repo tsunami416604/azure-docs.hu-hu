@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/12/2017
 ms.author: yushwang
-ms.openlocfilehash: edeaec04c040d0cbe419f357541915b56c2c33b9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 323c008f7da833d627b35621a24cc29db1283847
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>S2S VPN- és VNet – VNet kapcsolatokhoz IPsec/IKE-házirend konfigurálása
 
@@ -54,7 +54,7 @@ Ez a szakasz ismerteti a munkafolyamat létrehozásához, és a S2S VPN- vagy a 
 
 A jelen cikkben lévő utasítások segít beállítása és konfigurálása IPsec/IKE házirendek az ábrán látható módon:
 
-![IPSec-ike-házirend](./media/vpn-gateway-ipsecikepolicy-rm-powershell/ipsecikepolicy.png)
+![ipsec-ike-policy](./media/vpn-gateway-ipsecikepolicy-rm-powershell/ipsecikepolicy.png)
 
 ## <a name ="params"></a>2. rész - támogatott titkosítási algoritmusok és a kulcs szintjeiről
 
@@ -66,7 +66,7 @@ Az alábbi táblázat a támogatott titkosítási algoritmusok és a kulcs szint
 | IKEv2-integritás  | SHA384, MD5, SHA1, SHA256  |
 | DH-csoport         | DHGroup24, ECP384, ECP256, DHGroup14, DHGroup2048, DHGroup2, DHGroup1, None |
 | IPsec-titkosítás | GCMAES256, GCMAES192, GCMAES128, AES256, AES192, AES128, DES3, DES, Nincs    |
-| IPsec-integritás  | GCMASE256, GCMAES192, GCMAES128, SHA-256, SHA1, MD5 |
+| IPsec-integritás  | GCMASE256, GCMAES192, GCMAES128, SHA256, SHA1, MD5 |
 | PFS-csoport        | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, Nincs 
 | Gyorsmódú biztonsági társítás élettartama   | (**Nem kötelező**: alapértelmezett értékek vannak használt Ha nincs megadva)<br>Másodperc (egész szám; **min. 300**/alapértelmezett érték: 27000 másodperc)<br>KB (egész szám; **min. 1024**/alapértelmezett érték: 102400000 KB)   |
 | Forgalomválasztó | UsePolicyBasedTrafficSelectors ** ($True vagy $False; **Nem kötelező**, alapértelmezett $False Ha nincs megadva)    |
@@ -195,20 +195,13 @@ New-AzureRmLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1 -Location
 Az alábbi mintaparancsfájl házirendet hoz létre IPsec/IKE a következő algoritmusokat és a Paraméterek:
 
 * IKEv2: AES256, SHA384 DHGroup24
-* IPsec: AES256, SHA-256, nincs PFS, SA élettartama 7200 másodperc & 102400000KB
+* IPsec: AES256, SHA-256, nincs PFS, SA élettartama 14400 másodperc & 102400000KB
 
 ```powershell
-$ipsecpolicy6 = New-AzureRmIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup24 -IpsecEncryption AES256 -IpsecIntegrity SHA256 -PfsGroup None -SALifeTimeSeconds 7200 -SADataSizeKilobytes 102400000
+$ipsecpolicy6 = New-AzureRmIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup24 -IpsecEncryption AES256 -IpsecIntegrity SHA256 -PfsGroup None -SALifeTimeSeconds 14400 -SADataSizeKilobytes 102400000
 ```
 
-Ha GCMAES használja az IPsec, kell használnia az azonos GCMAES algoritmus és a kulcshossz IPsec titkosításhoz és integritását, például:
-
-* IKEv2: AES256, SHA384 DHGroup24
-* IPsec: **GCMAES256, GCMAES256**, PFS, hogy nincs 102400000 KB & SA élettartama 7200 másodperc
-
-```powershell
-$ipsecpolicy6 = New-AzureRmIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup24 -IpsecEncryption GCMAES256 -IpsecIntegrity GCMAES256 -PfsGroup None -SALifeTimeSeconds 7200 -SADataSizeKilobytes 102400000
-```
+IPsec GCMAES használja, ha kell használnia az azonos GCMAES algoritmus és a kulcshossz IPsec titkosításhoz és sértetlenségét. Például újabb verziók esetén a megfelelő paramétereket lesz "-IpsecEncryption GCMAES256 - IpsecIntegrity GCMAES256" GCMAES256 használatakor.
 
 #### <a name="2-create-the-s2s-vpn-connection-with-the-ipsecike-policy"></a>2. Az S2S VPN-kapcsolat létrehozása az IPsec/IKE irányelvnek
 
@@ -288,10 +281,10 @@ Hasonló a S2S VPN-kapcsolat IPsec/IKE-házirend létrehozása, akkor a háziren
 
 Az alábbi mintaparancsfájl egy másik IPsec/IKE-házirendet hoz létre a következő algoritmusokat és a Paraméterek:
 * IKEv2: Az AES128, SHA1, DHGroup14
-* IPsec: GCMAES128, GCMAES128, PFS14, SA élettartama 7200 másodperc & 4096KB
+* IPsec: GCMAES128, GCMAES128, PFS14, 102400000KB & SA élettartama 14400 másodperc
 
 ```powershell
-$ipsecpolicy2 = New-AzureRmIpsecPolicy -IkeEncryption AES128 -IkeIntegrity SHA1 -DhGroup DHGroup14 -IpsecEncryption GCMAES128 -IpsecIntegrity GCMAES128 -PfsGroup PFS14 -SALifeTimeSeconds 7200 -SADataSizeKilobytes 4096
+$ipsecpolicy2 = New-AzureRmIpsecPolicy -IkeEncryption AES128 -IkeIntegrity SHA1 -DhGroup DHGroup14 -IpsecEncryption GCMAES128 -IpsecIntegrity GCMAES128 -PfsGroup PFS14 -SALifeTimeSeconds 14400 -SADataSizeKilobytes 102400000
 ```
 
 #### <a name="2-create-vnet-to-vnet-connections-with-the-ipsecike-policy"></a>2. VNet – VNet kapcsolatokhoz a IPsec/IKE-házirend létrehozása
@@ -312,7 +305,7 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $Connection21 -ResourceGroupNam
 
 A lépések elvégzése után a kapcsolat néhány perc múlva, és a következő hálózati topológia fog, ahogy az a kezdő:
 
-![IPSec-ike-házirend](./media/vpn-gateway-ipsecikepolicy-rm-powershell/ipsecikepolicy.png)
+![ipsec-ike-policy](./media/vpn-gateway-ipsecikepolicy-rm-powershell/ipsecikepolicy.png)
 
 
 ## <a name ="managepolicy"></a>Rész 5 - kapcsolat frissítés IPsec/IKE-házirend
@@ -339,11 +332,11 @@ $connection6  = Get-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -
 $connection6.IpsecPolicies
 ```
 
-Az utolsó parancs megjeleníti az aktuális IPsec/IKE-házirendet, a kapcsolat konfigurálva, ha van ilyen. A következő minta kimenete a kapcsolathoz:
+Az utolsó parancs megjeleníti az aktuális IPsec/IKE-házirendet, a kapcsolat konfigurálva, ha van ilyen. A következő egy minta kimenet a kapcsolat látható:
 
 ```powershell
-SALifeTimeSeconds   : 3600
-SADataSizeKilobytes : 2048
+SALifeTimeSeconds   : 14400
+SADataSizeKilobytes : 102400000
 IpsecEncryption     : AES256
 IpsecIntegrity      : SHA256
 IkeEncryption       : AES256
@@ -363,7 +356,7 @@ $RG1          = "TestPolicyRG1"
 $Connection16 = "VNet1toSite6"
 $connection6  = Get-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
 
-$newpolicy6   = New-AzureRmIpsecPolicy -IkeEncryption AES128 -IkeIntegrity SHA1 -DhGroup DHGroup14 -IpsecEncryption GCMAES128 -IpsecIntegrity GCMAES128 -PfsGroup None -SALifeTimeSeconds 3600 -SADataSizeKilobytes 2048
+$newpolicy6   = New-AzureRmIpsecPolicy -IkeEncryption AES128 -IkeIntegrity SHA1 -DhGroup DHGroup14 -IpsecEncryption AES256 -IpsecIntegrity SHA256 -PfsGroup None -SALifeTimeSeconds 14400 -SADataSizeKilobytes 102400000
 
 Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection6 -IpsecPolicies $newpolicy6
 ```
@@ -384,13 +377,13 @@ $connection6.IpsecPolicies
 A kimenet utolsó sora, a következő példában látható módon kell megjelennie:
 
 ```powershell
-SALifeTimeSeconds   : 3600
-SADataSizeKilobytes : 2048
-IpsecEncryption     : GCMAES128
-IpsecIntegrity      : GCMAES128
+SALifeTimeSeconds   : 14400
+SADataSizeKilobytes : 102400000
+IpsecEncryption     : AES256
+IpsecIntegrity      : SHA256
 IkeEncryption       : AES128
 IkeIntegrity        : SHA1
-DhGroup             : DHGroup14--
+DhGroup             : DHGroup14
 PfsGroup            : None
 ```
 
@@ -411,7 +404,7 @@ Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $con
 
 Ellenőrizze, hogy ha a házirend el lett távolítva a kapcsolati használhatja ugyanazt a parancsfájlt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Lásd: [csatlakozás több helyszíni házirendalapú VPN-eszközök](vpn-gateway-connect-multiple-policybased-rm-ps.md) csoportházirend-alapú forgalom választók kapcsolatos további részletekért.
 

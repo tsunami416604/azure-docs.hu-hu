@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/14/2017
 ms.author: sethm
-ms.openlocfilehash: e64e7d9f203debe19dfa222f501c7902cfe2ae98
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: ba34938883ee342936b5c7a4568dae5e02684bb2
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="service-bus-faq"></a>Service Bus – GYIK
 A cikkből néhány gyakori kérdés a Microsoft Azure Service Bus kapcsolatban. Is letöltheti a [Azure támogatja – gyakori kérdések](http://go.microsoft.com/fwlink/?LinkID=185083) általános Azure tarifa- és támogatási információkat.
@@ -48,7 +48,6 @@ Lásd: [ajánlott eljárások a teljesítménnyel kapcsolatos fejlesztések a Se
 ### <a name="what-should-i-know-before-creating-entities"></a>Mit kell tudnia entitások létrehozása előtt?
 Egy üzenetsor és a témakör következő tulajdonságai nem módosíthatók. Megfontolnia ezen korlátozás az entitások, ha ezeket a tulajdonságokat nem lehet módosítani a csere új entitás létrehozása nélkül.
 
-* Méret
 * Particionálás
 * Munkamenetek
 * Kettős észlelés
@@ -112,7 +111,7 @@ $res = Find-AzureRmResource -ResourceNameContains mynamespace -ResourceType 'Mic
 Move-AzureRmResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff' -ResourceId $res.ResourceId
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A Service Bus kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 
 * [Introducing Azure Service Bus prémium (blogbejegyzés)](http://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)

@@ -16,10 +16,10 @@ ms.date: 11/29/2017
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9ddce64b53e8c5627050ca77f11de2ba144276a1
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>A S1, S2 és S3 teljesítményszintet kivonása
 
@@ -174,7 +174,7 @@ Látogasson el [MSDN](https://msdn.microsoft.com/library/azure/microsoft.azure.d
 
 Nagyvállalati ügyfelek az aktuális szerződés végéig védett ár is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tarifa- és Azure Cosmos DB adatok kezelésével kapcsolatos további tudnivalókért ismerheti meg ezeket az erőforrásokat:
 
 1.  [Particionálás adatokat az Adatbázisba az Cosmos](sql-api-partition-data.md). Az egypartíciós tároló particionált tárolók, valamint tippek az zökkenőmentesen méretezési jó particionálási stratégia megvalósítása közötti különbségek megértése.

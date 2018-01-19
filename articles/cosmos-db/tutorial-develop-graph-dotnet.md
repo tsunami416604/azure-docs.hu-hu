@@ -16,10 +16,10 @@ ms.date: 01/02/2018
 ms.author: lbosq
 ms.custom: mvc
 ms.openlocfilehash: ddbfe11e4415e1c240914142f4daf54b3032f5d8
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="azure-cosmos-db-develop-with-the-graph-api-in-net"></a>Az Azure Cosmos DB: A Graph API a .NET fejlesztés
 Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 

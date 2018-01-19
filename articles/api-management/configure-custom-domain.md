@@ -11,11 +11,11 @@ ms.workload: integration
 ms.topic: article
 ms.date: 12/14/2017
 ms.author: apimpm
-ms.openlocfilehash: cf8a3eb502a808945e97822e10e44d38137d1161
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: 0f1c9e8e8298647721f16962d3f6756c74f8c8ef
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="configure-a-custom-domain-name"></a>Egyéni tartománynév konfigurálása 
 
@@ -55,10 +55,10 @@ Ebben a cikkben leírt lépések végrehajtásához rendelkeznie kell:
 1. Az Alkalmaz gombra.
 
     >[!NOTE]
-    >A tanúsítvány társítását 15 percig is eltarthat.
+    >A tanúsítvány társítását is igénybe vehet, 15 perc vagy több, a központi telepítés méretétől függően. Fejlesztői SKU állásidő, a alapvető és magasabb SKU nincs leállás.
 
 [!INCLUDE [api-management-custom-domain](../../includes/api-management-custom-domain.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Frissítés és a szolgáltatás méretezésére](upgrade-and-scale.md)

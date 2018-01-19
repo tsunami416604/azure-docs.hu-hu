@@ -3,8 +3,8 @@ title: "Azure Redis Cache felügyelete |} Microsoft Docs"
 description: "Útmutató az Azure Redis Cache felügyeleti feladatokhoz, mint az újraindítás és ütemezés frissítések végrehajtásához"
 services: redis-cache
 documentationcenter: na
-author: steved0x
-manager: douge
+author: wesmc7777
+manager: cfowler
 editor: tysonn
 ms.assetid: 8c915ae6-5322-4046-9938-8f7832403000
 ms.service: cache
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 07/05/2017
-ms.author: sdanie
-ms.openlocfilehash: 3352fec59d7dfbfab9b0416992a60f11d0ec2402
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: wesmc
+ms.openlocfilehash: 37e7395a26ead737009ad9e285e9f88372b25d26
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="how-to-administer-azure-redis-cache"></a>Azure Redis Cache felügyelete
 Ez a témakör ismerteti, hogyan hajthat végre, mint a felügyeleti feladatokat [újraindítás](#reboot) és [frissítések ütemezése](#schedule-updates) az Azure Redis Cache-példányok.
@@ -112,13 +112,13 @@ Csak Redis server frissítések válnak, az ütemezett karbantartási időszak a
 Igen, az ütemezett frissítések a következő PowerShell-parancsmagok használatával kezelheti:
 
 * [Get-AzureRmRedisCachePatchSchedule](/powershell/module/azurerm.rediscache/get-azurermrediscachepatchschedule)
-* [Új AzureRmRedisCachePatchSchedule](/powershell/module/azurerm.rediscache/new-azurermrediscachepatchschedule)
-* [Új AzureRmRedisCacheScheduleEntry](/powershell/module/azurerm.rediscache/new-azurermrediscachescheduleentry)
+* [New-AzureRmRedisCachePatchSchedule](/powershell/module/azurerm.rediscache/new-azurermrediscachepatchschedule)
+* [New-AzureRmRedisCacheScheduleEntry](/powershell/module/azurerm.rediscache/new-azurermrediscachescheduleentry)
 * [Remove-AzureRmRedisCachePatchSchedule](/powershell/module/azurerm.rediscache/remove-azurermrediscachepatchschedule)
 
 ### <a name="what-pricing-tiers-can-use-the-schedule-updates-functionality"></a>Milyen árképzési tiers az ütemezés frissítések funkciót használhatja a?
 A **frissítések ütemezése** szolgáltatás csak akkor áll rendelkezésre a prémium tarifacsomag.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Fedezze fel több [Azure Redis Cache prémium csomagban](cache-premium-tier-intro.md) szolgáltatásokat.
 

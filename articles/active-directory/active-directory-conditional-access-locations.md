@@ -17,10 +17,10 @@ ms.date: 01/11/2018
 ms.author: markvi
 ms.reviewer: nigu
 ms.openlocfilehash: 47b4d70c991bd618ea4ea6e5d2fd1dea86911798
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="location-conditions-in-azure-active-directory-conditional-access"></a>Azure Active Directory feltételes hozzáférési feltételek helye 
 
@@ -93,8 +93,8 @@ Ha két lépést nem sikerül, akkor a felhasználó akkor tekinthető többé n
 Amikor konfigurálja a hely feltétel, lehetősége van megkülönböztetésére:
 
 - Bármely hely 
-- A megbízható helyek
-- A kijelölt helyek
+- Minden megbízható hely
+- Kijelölt helyek
 
 ![Helyek](./media/active-directory-conditional-access-locations/01.png)
 
@@ -102,7 +102,7 @@ Amikor konfigurálja a hely feltétel, lehetősége van megkülönböztetésére
 
 Alapértelmezés szerint kiválasztásával **bárhova** hatására az összes IP-címet, alkalmazandó egy házirendet, amely azt jelenti, hogy a cím az interneten. Ez a beállítás nem nincs korlátozva elnevezett helyként konfigurált IP-címeket. Ha bejelöli **bárhova**, továbbra is kizárhatja az adott helyeken egy házirend. Például alkalmazhat egy házirendet az összes hely excepts a megbízható helyek hatókörének beállításához az helyekre, kivéve a vállalati hálózathoz.
 
-### <a name="all-trusted-locations"></a>A megbízható helyek
+### <a name="all-trusted-locations"></a>Minden megbízható hely
 
 Ez a beállítás a következőkre vonatkozik:
 
@@ -110,7 +110,7 @@ Ez a beállítás a következőkre vonatkozik:
 - **Többtényezős hitelesítés megbízható IP-CÍMEK** (Ha be van állítva)
 
 
-### <a name="selected-locations"></a>A kijelölt helyek
+### <a name="selected-locations"></a>Kijelölt helyek
 
 Ezt a lehetőséget válassza ki egy vagy több elnevezett helye. Ezt a beállítást alkalmazza a házirend a felhasználó nem csatlakoztatja a a kiválasztott helyeken. Kattint Whe **kiválasztása** nevesített hálózatok listáját jeleníti meg elnevezett hálózati kijelölés vezérlő nyílik meg. A lista mutatja azokat is, ha a hálózati hely jelölte meg megbízhatóként. Az elnevezett hely nevű **MFA megbízható IP-címek** használható az IP-beállításait a multi-factor authentication szolgáltatás beállítás lapján konfigurálható.
 
@@ -127,7 +127,7 @@ Feltételes hozzáférési házirendek kiértékelése során:
 Alapértelmezés szerint az Azure AD kibocsát egy token óránként. Helyezze át a vállalati hálózatból, egy órán belül a házirend érvényesítve van a modern hitelesítést használó alkalmazások.
 
 
-### <a name="user-ip-address"></a>Felhasználói IP-cím
+### <a name="user-ip-address"></a>User IP address
 
 A házirendek értékelésének használt IP-címét a felhasználó a nyilvános IP-címe. Egy magánhálózaton eszközök esetében ez nem az ügyfél IP-címét a felhasználó eszközén az intraneten, hogy a cím, a nyilvános internethez való kapcsolódáshoz a hálózat által használt. 
 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: mbullwin
-ms.openlocfilehash: 3e13cc70dc09dd795bb0df57a4bbb29c8fcddb9e
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 1818e564acb0e9b5fa620d6f38db141811ca9777
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Adatgyűjtés, megőrzés és tárolás az Application Insights szolgáltatásban
 
@@ -99,10 +99,10 @@ Akkor exportálható, és a csoport tagjai és sikerült másolható át más he
 A Microsoft csak annak érdekében, hogy a szolgáltatás Ön számára az adatok használja.
 
 ## <a name="where-is-the-data-held"></a>Az adatok tárolási helye?
-* Az Amerikai Egyesült Államok vagy Európa. Kiválaszthatja a helyét, amikor létrehoz egy új Application Insights-erőforrást. 
+* Az Amerikai Egyesült Államok, Európa vagy Délkelet-Ázsia. Kiválaszthatja a helyét, amikor létrehoz egy új Application Insights-erőforrást. 
 
 
-#### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-or-europe"></a>Amely azt jelenti a az alkalmazás rendelkezik az Amerikai Egyesült Államok vagy Európa üzemeltetését?
+#### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>Nem, amely jelenti azt az alkalmazást az Amerikai Egyesült Államok, Európa vagy Délkelet-Ázsiában található?
 * Nem. Az alkalmazás bárhol futhatnak, a saját helyszíni állomások vagy a felhőben.
 
 ## <a name="how-secure-is-my-data"></a>Hogy mennyire vannak biztonságban vannak az adatok?
@@ -158,10 +158,10 @@ Az SDK-k platformok változhat, és több összetevőből is telepítheti. (Hiva
 #### <a name="classes-of-data-sent-in-different-scenarios"></a>A különböző alkalmazási helyzetek küldött adatok osztályok
 | A művelet | Adatosztályok gyűjtött (lásd a következő táblázatban) |
 | --- | --- |
-| [Application Insights SDK hozzáadása egy .NET webes projekt][greenbrown] |Kiszolgálói környezet<br/>Következtetni<br/>Teljesítményszámlálói<br/>Kérelmek<br/>**Kivételek**<br/>Munkamenet<br/>felhasználók |
-| [Állapotmonitor telepítése az IIS-kiszolgálón][redfield] |Függőségek<br/>Kiszolgálói környezet<br/>Következtetni<br/>Teljesítményszámlálói |
-| [Application Insights SDK hozzáadása a Java-webalkalmazás][java] |Kiszolgálói környezet<br/>Következtetni<br/>Kérés<br/>Munkamenet<br/>felhasználók |
-| [JavaScript SDK weblap hozzáadása][client] |ClientContext <br/>Következtetni<br/>Oldal<br/>ClientPerf<br/>AJAX |
+| [Application Insights SDK hozzáadása egy .NET webes projekt][greenbrown] |ServerContext<br/>Következtetni<br/>Teljesítményszámlálói<br/>Kérelmek<br/>**Kivételek**<br/>Munkamenet<br/>felhasználók |
+| [Állapotmonitor telepítése az IIS-kiszolgálón][redfield] |Függőségek<br/>ServerContext<br/>Következtetni<br/>Teljesítményszámlálói |
+| [Application Insights SDK hozzáadása a Java-webalkalmazás][java] |ServerContext<br/>Következtetni<br/>Kérés<br/>Munkamenet<br/>felhasználók |
+| [JavaScript SDK weblap hozzáadása][client] |ClientContext <br/>Következtetni<br/>Oldal<br/>ClientPerf<br/>Ajax |
 | [Alapértelmezett tulajdonságok meghatározása][apiproperties] |**Tulajdonságok** összes szabványos és az egyéni esemény |
 | [Hívás TrackMetric][api] |Numerikus értékek<br/>**Tulajdonságok** |
 | [Hívás követése *][api] |esemény neve<br/>**Tulajdonságok** |
@@ -177,17 +177,17 @@ A [más platformokhoz készült SDK-k][platforms], tekintse meg a dokumentumokat
 | DeviceContext |Azonosító, IP, területi beállítás esetén eszközmodell, hálózati, hálózati típusa, az OEM neve, képernyőfelbontás Szerepkörpéldányt, a szerepkör neve, az eszköz típusa |
 | ClientContext |Az operációs rendszer, területi beállítás, nyelv, hálózati, ablakban felbontás |
 | Munkamenet |munkamenet-azonosító |
-| Kiszolgálói környezet |Számítógép neve, területi beállítás, az operációs rendszer, a eszköz, a felhasználói munkamenet, a felhasználói környezet, a művelet |
+| ServerContext |Számítógép neve, területi beállítás, az operációs rendszer, a eszköz, a felhasználói munkamenet, a felhasználói környezet, a művelet |
 | Következtetni |földrajzi hely, IP-cím, timestamp, az operációs rendszer, böngésző |
 | Mérőszámok |Metrika neve és értéke |
 | Események |Az esemény neve és értéke |
 | PageViews |URL-cím és a lap neve vagy a képernyő neve |
 | Ügyfél-teljesítmény |URL-cím vagy a lap neve, a böngésző lapbetöltési ideje |
-| AJAX |HTTP-hívások weblapról kiszolgálóra |
+| Ajax |HTTP-hívások weblapról kiszolgálóra |
 | Kérelmek |URL-címe, időtartama, válaszkód |
 | Függőségek |Típus (SQL, HTTP,...), a kapcsolati karakterlánc vagy a URI, szinkronizálási vagy aszinkron, időtartama, sikeres, SQL-utasítás (az állapotfigyelő) |
 | **Kivételek** |Típus, **üzenet**, verem hívja, a forrás-fájl és a sor száma, Szálazonosító |
-| Összeomlások |Folyamatazonosító, szülő folyamatazonosító, összeomlási szálazonosító; alkalmazás-javítás, a-azonosító, a build;  Kivétel típusa, a cím, a reason; rejtjelezett szimbólumok és regiszterekben, bináris kezdő és záró címek, bináris nevek és elérési útja, a processzor típusa |
+| Összeomlások (crash) |Folyamatazonosító, szülő folyamatazonosító, összeomlási szálazonosító; alkalmazás-javítás, a-azonosító, a build;  Kivétel típusa, a cím, a reason; rejtjelezett szimbólumok és regiszterekben, bináris kezdő és záró címek, bináris nevek és elérési útja, a processzor típusa |
 | Nyomkövetés |**Üzenet** és súlyossági szint |
 | Teljesítményszámlálói |Processzor kihasználtsága, rendelkezésre álló memória, lekérdezési gyakorisága, kivétel sebessége, folyamat saját bájtok, IO sebessége, kérelem időtartama, kérelem-várólista hossza |
 | Rendelkezésre állás |Webalkalmazás-teszt válaszkód, időtartama minden teszt lépés, teszt neve, timestamp, sikeres, válaszideje, teszt helye |

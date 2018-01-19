@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/3/2017
+ms.date: 1/16/2017
 ms.author: jeedes
-ms.openlocfilehash: b4d96df72fd7f8f817140e7599e22a63ddd79910
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 8d77215fd2923e22a9cc87e469cb135d035d22d9
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws"></a>Oktatóanyag: Azure Active Directory-integráció Amazon Web Services (AWS)
 
@@ -116,8 +116,8 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     
     | Attribútum neve  | Attribútum értéke | Névtér |
     | --------------- | --------------- | --------------- |
-    | RoleSessionName | User.userPrincipalName | https://AWS.amazon.com/SAML/Attributes |
-    | Szerepkör            | User.assignedroles |  https://AWS.amazon.com/SAML/Attributes |
+    | RoleSessionName | user.userprincipalname | https://aws.amazon.com/SAML/Attributes |
+    | Szerepkör            | user.assignedroles |  https://aws.amazon.com/SAML/Attributes |
     
     >[!TIP]
     >Szeretne beállítani, hogy a felhasználók átadása a szerepkörök beolvasása a AWS konzol az Azure AD-ben. Tekintse meg az alábbi üzembe helyezési lépéseket.
@@ -131,6 +131,8 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     b. Az a **neve** szövegmező, írja be az adott sorhoz feltüntetett attribútumot nevét.
 
     c. Az a **érték** kilistázásához írja be a sorhoz látható attribútum értéke.
+
+    d. Az a **Namespace** szövegmező, írja be a névtér értéke az adott sorhoz feltüntetett.
     
     d. Kattintson az **OK** gombra.
 
@@ -230,19 +232,13 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Új házirend létrehozása](./media/active-directory-saas-amazon-web-service-tutorial/fetchingrole3.png)
  
-25. A szerepkörök beolvasása AWS fiókokat a saját házirend létrehozása. Az a **létrehozása a saját házirendjének** szakaszban kattintson a **válasszon** gombra.
-    
+25. Hozzon létre egy saját házirendet a szerepkörök beolvasása a AWS fiókokat az alábbi lépések elvégzésével:
+
     ![Új házirend létrehozása](./media/active-directory-saas-amazon-web-service-tutorial/policy1.png)
 
-26. Adja meg az új szabályzat a következő lépések elvégzésével:
+    a. Az a **"Házirend létrehozása"** szakaszban kattintson a **"JSON"** fülre.
 
-    ![Az új szabályzat definiálása](./media/active-directory-saas-amazon-web-service-tutorial/policy2.png)
-
-    a. Adja meg a **házirendnév** , **AzureAD_SSOUserRole_Policy**.
-
-    b. Megadhatja a **leírás** , a házirendhez **ezzel a házirend lehetővé teszi a szerepkörök beolvasása a AWS fiókok**.
-    
-    c. A házirend-dokumentum, adja hozzá az alábbi JSON.
+    b. A házirend-dokumentum, adja hozzá az alábbi JSON.
     
     ```
     
@@ -271,13 +267,21 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     }
     
     ```
+
+    c. Kattintson a **felülvizsgálati házirend gomb** érvényesíteni a házirendet.
+
+    ![Az új szabályzat definiálása](./media/active-directory-saas-amazon-web-service-tutorial/policy5.png)
+
+26. Adja meg a **új házirend** az alábbi lépések elvégzésével:
+
+    ![Az új szabályzat definiálása](./media/active-directory-saas-amazon-web-service-tutorial/policy2.png)
+
+    a. Adja meg a **házirendnév** , **AzureAD_SSOUserRole_Policy**.
+
+    b. Megadhatja a **leírás** , a házirendhez **ezzel a házirend lehetővé teszi a szerepkörök beolvasása a AWS fiókok**.
     
-    d. Győződjön meg arról, hogy ellenőrizze a **használható formázáskor házirend szerkesztésre**.
-    
-    e. Kattintson a **házirend ellenőrzése** panel alján.
-    
-    f. Ha a házirend az ellenőrzött megfelelően ezt követően kattinthat a **házirend létrehozása** gombra.
-    
+    c. Kattintson a **"Házirend létrehozása"** gombra.
+        
 27. Hozzon létre egy új felhasználói fiókot az AWS IAM-szolgáltatás a következő lépések elvégzésével:
 
     a. Kattintson a **felhasználók** navigációs az AWS IAM-konzolon.

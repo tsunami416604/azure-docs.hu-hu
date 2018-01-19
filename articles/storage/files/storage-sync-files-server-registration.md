@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 10c8b708cad245f4ac0304489beb36dcf63cd4b1
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: fcd79f25dee4ccaf674594222a6465fda137fd7a
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="manage-registered-servers-with-azure-file-sync-preview"></a>Regisztrált kiszolgáló kezelése a Azure fájlszinkronizálás (előzetes verzió)
 Az Azure File Sync (előzetes verzió) lehetővé teszi a szervezet Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. Ezt úgy éri el, hogy átalakítja a Windows-kiszolgálókat az Azure-fájlmegosztás gyors gyorsítótáraivá. A Windows Server rendszeren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl. SMB, NFS vagy FTPS), és annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -42,6 +42,26 @@ Egy tároló szinkronizálási szolgáltatás regisztrálni a kiszolgálót, el�
 
     > [!Note]  
     > Azt javasoljuk, hogy egy kiszolgáló register/unregister legújabb verzióját, a AzureRM PowerShell-modul segítségével. Ha a AzureRM csomag korábban már telepítve van ezen a kiszolgálón (a PowerShell verziója ezen a kiszolgálón pedig 5.* vagy újabb), használhatja a `Update-Module` parancsmag frissíti a csomagot. 
+* Ha hálózati proxykiszolgálót használják a környezetben, a kiszolgálón a sync-ügynök használatára a Proxybeállítások konfigurálása.
+    1. A proxy IP-cím és port számának megállapításához
+    2. Ezeket a fájlokat két szerkesztése:
+        * C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config
+        * C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config\machine.config
+    3. Adja hozzá a sort az 1 (alatt ez a szakasz) a fenti két fájlban a megfelelő IP-címre (a név felülírandó 127.0.0.1) 127.0.0.1:8888 és a megfelelő port számát (a név felülírandó 8888) módosításával /System.ServiceModel konfigurációt:
+    4. Állítsa be a WinHTTP-proxybeállítások parancssorból:
+        * A proxy megjelenítése: netsh winhttp proxy megjelenítése
+        * Állítsa be a proxy: netsh winhttp proxy 127.0.0.1:8888 beállítása
+        * Alaphelyzetbe állítja a proxy: netsh winhttp proxy alaphelyzetbe állítása
+        * Ha a telepítő az ügynök telepítése után, majd indítsa újra a sync-ügynök: net stop filesyncsvc
+    
+```XML
+    Figure 1:
+    <system.net>
+        <defaultProxy enabled="true" useDefaultCredentials="true">
+            <proxy autoDetect="false" bypassonlocal="false" proxyaddress="http://127.0.0.1:8888" usesystemdefault="false" />
+        </defaultProxy>
+    </system.net>
+```    
 
 ### <a name="register-a-server-with-storage-sync-service"></a>Regisztrálja a kiszolgálót tároló szinkronizálási szolgáltatás
 Mielőtt a kiszolgáló is használható egy *végpontját* egy Azure fájlszinkronizálás a *szinkronizálású csoport*, szerepelnie kell a egy *tároló szinkronizálási szolgáltatás*. A kiszolgáló csak regisztrálható egy tárolási szinkronizálási szolgáltatás egyszerre.

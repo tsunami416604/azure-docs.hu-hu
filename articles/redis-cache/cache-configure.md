@@ -3,8 +3,8 @@ title: "Azure Redis Cache konfigurálása |} Microsoft Docs"
 description: "Azure Redis Cache Redis alapértelmezett konfigurációjának megértéséhez, valamint megtudhatja, hogyan konfigurálhatja az Azure Redis Cache példányt"
 services: redis-cache
 documentationcenter: na
-author: steved0x
-manager: douge
+author: wesmc7777
+manager: cfowler
 editor: tysonn
 ms.assetid: d0bf2e1f-6a26-4e62-85ba-d82b35fc5aa6
 ms.service: cache
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 08/22/2017
-ms.author: sdanie
-ms.openlocfilehash: 0274e58eb2e83202d4dbc58da0c67d0fdde22ede
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: wesmc
+ms.openlocfilehash: a65832a30a570944ff30d02c2f173df345bde32c
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="how-to-configure-azure-redis-cache"></a>Azure Redis Cache konfigurálása
 Ez a témakör ismerteti, hogyan lehet felülvizsgálata és aktualizálása céljából az Azure Redis Cache példány konfigurációját, és hozzá van rendelve az alapértelmezett Redis kiszolgálókonfiguráció az Azure Redis Cache példány.
@@ -51,7 +51,7 @@ Megtekintheti és a következő beállításokat használja a **erőforrás men�
     * [Redis-adatmegőrzés](#redis-data-persistence)
     * [Frissítések ütemezése](#schedule-updates)
     * [Georeplikáció](#geo-replication)
-    * [Virtuális hálózat](#virtual-network)
+    * [Virtual Network](#virtual-network)
     * [Tűzfal](#firewall)
     * [Tulajdonságok](#properties)
     * [Zárolások feloldása](#locks)
@@ -103,7 +103,7 @@ A **beállítások** szakasz lehetővé teszi a eléréséhez, és a következő
 * [Redis-adatmegőrzés](#redis-data-persistence)
 * [Frissítések ütemezése](#schedule-updates)
 * [Georeplikáció](#geo-replication)
-* [Virtuális hálózat](#virtual-network)
+* [Virtual Network](#virtual-network)
 * [Tűzfal](#firewall)
 * [Tulajdonságok](#properties)
 * [Zárolások feloldása](#locks)
@@ -170,7 +170,7 @@ További információkért lásd: [Redis kulcstérértesítések használatával
 
 
 <a name="recommendations"></a>
-## <a name="redis-cache-advisor"></a>Redis gyorsítótár Advisor
+## <a name="redis-cache-advisor"></a>Redis Cache Advisor
 A **Redis gyorsítótár Advisor** csempe megjeleníti a gyorsítótár javaslatok. A normál működés során nincsenek ajánlatok jelennek meg. 
 
 ![Javaslatok](./media/cache-configure/redis-cache-no-recommendations.png)
@@ -290,7 +290,7 @@ Kattintson a **tulajdonságok** a gyorsítótárhoz, beleértve a gyorsítótár
 ### <a name="locks"></a>Zárolások
 A **zárolja** szakasz lehetővé teszi, hogy egy előfizetés, erőforráscsoportból vagy erőforrás véletlen törlése vagy a kritikus erőforrásokat módosítása a munkahely más felhasználóinak megelőzése érdekében zárolja. További információ: [Erőforrások zárolása az Azure Resource Manager eszközzel](../azure-resource-manager/resource-group-lock-resources.md).
 
-### <a name="automation-script"></a>Automatizálási parancsfájl
+### <a name="automation-script"></a>Automation-szkript
 
 Kattintson a **automatizálási parancsfájl** felépítéséhez és az üzembe helyezett erőforrások a későbbi telepítési sablon exportálása. A sablonok használatának kapcsolatos további információkért lásd: [telepítése Azure Resource Manager-sablonok erőforrások](../azure-resource-manager/resource-group-template-deploy.md).
 
@@ -343,10 +343,10 @@ A **figyelés** szakasz lehetővé teszi a diagnosztika és a Redis Cache-figyel
 * [A riasztási szabályok](#alert-rules)
 * [Diagnosztika](#diagnostics)
 
-### <a name="redis-metrics"></a>Redis metrikák
+### <a name="redis-metrics"></a>Redis-metrikák
 Kattintson a **metrikák Redis** való [metrikák megtekintése](cache-how-to-monitor.md#view-cache-metrics) a gyorsítótárhoz.
 
-### <a name="alert-rules"></a>A riasztási szabályok
+### <a name="alert-rules"></a>Riasztási szabályok
 
 Kattintson a **riasztási szabályok** Redis Cache mérőszámok alapján értesítések konfigurálása. További információkért lásd: [riasztások](cache-how-to-monitor.md#alerts).
 
@@ -362,7 +362,7 @@ Gyorsítótár-metrikát a Azure figyelő alapesetben [30 napig tárolja a](../m
 ## <a name="support--troubleshooting-settings"></a>Támogatási és hibaelhárítási beállítások
 A beállítások a **támogatási + hibaelhárítási** szakasz a gyorsítótár kapcsolatos problémák megoldása lehetőségeket biztosít.
 
-![Támogatási + hibaelhárítása](./media/cache-configure/redis-cache-support-troubleshooting.png)
+![Támogatás + hibaelhárítás](./media/cache-configure/redis-cache-support-troubleshooting.png)
 
 * [Erőforrás állapota](#resource-health)
 * [Új támogatási kérelem](#new-support-request)
@@ -402,7 +402,7 @@ Kattintson a **új támogatja a kérelem** a gyorsítótárhoz támogatási kér
 | `maxmemory-samples` |3 |A memóriahasználat LRU és minimális TTL algoritmusok közelítő algoritmusok pontos algoritmusok helyett. Alapértelmezés szerint Redis ellenőrzések három kulcsok és kivételezések azt, amelyik kevesebb nemrég lett megadva. |
 | `lua-time-limit` |5,000 |Maximális végrehajtási idő ezredmásodpercben Lua parancsfájlra. Ha eléri a maximális végrehajtási ideje, Redis naplózza, hogy egy parancsfájl még végrehajtása után a maximális engedélyezett idő, és hiba történt a lekérdezések megválaszolásához kezdődik. |
 | `lua-event-limit` |500 |Parancsfájl esemény sor maximális mérete. |
-| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 032mb 8mb 60 0 |Az ügyfél kimeneti puffer korlátok segítségével kényszerítheti az ügyfelek, amelyek nem adatainak olvasása elég gyors kiszolgálóról (gyakori oka az, hogy Pub/Sub ügyfél nem lehet felhasználni a lehető leghamarabb a közzétevő születik őket üzenetek) valamilyen okból megszakad. További információkért lásd: [http://redis.io/topics/clients](http://redis.io/topics/clients). |
+| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |Az ügyfél kimeneti puffer korlátok segítségével kényszerítheti az ügyfelek, amelyek nem adatainak olvasása elég gyors kiszolgálóról (gyakori oka az, hogy Pub/Sub ügyfél nem lehet felhasználni a lehető leghamarabb a közzétevő születik őket üzenetek) valamilyen okból megszakad. További információkért lásd: [http://redis.io/topics/clients](http://redis.io/topics/clients). |
 
 <a name="databases"></a>
 <sup>1</sup>vonatkozó korlát `databases` eltér az egyes Azure Redis Cache IP-címek és a gyorsítótár létrehozásakor állítható be. Ha nincs `databases` beállítás során megadott gyorsítótár létrehozását, az alapértelmezett érték 16.
@@ -460,10 +460,10 @@ Adatbázisokkal kapcsolatos további információkért lásd: [Mik azok a Redis-
 > * BGREWRITEAOF
 > * BGSAVE
 > * CONFIG
-> * HIBAKERESÉSI
+> * DEBUG
 > * ÁTTELEPÍTÉSE
 > * MENTÉSE
-> * LEÁLLÍTÁS
+> * SHUTDOWN
 > * SLAVEOF
 > * FÜRT - fürt írási parancsokat le vannak tiltva, de csak olvasható fürt parancsot.
 > 
@@ -512,6 +512,6 @@ Egy új előfizetést a gyorsítótár a gombra kattintva áthelyezheti **áthel
 
 Az erőforrások áthelyezése az egyik erőforráscsoportból a másikba, és a másik egy előfizetés információkért lásd: [erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../azure-resource-manager/resource-group-move-resources.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ a Redis-parancsok használatával: [hogyan futtathatom Redis parancsok?](cache-faq.md#how-can-i-run-redis-commands)
 

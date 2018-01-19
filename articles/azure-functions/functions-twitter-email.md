@@ -17,10 +17,10 @@ ms.date: 12/08/2017
 ms.author: glenga
 ms.custom: mvc
 ms.openlocfilehash: 9402dbbf66bbbf7ff23f3fc29cbb38f8aa8615e6
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Hozzon létre egy függvényt, amely az Azure Logic Apps
 
@@ -168,7 +168,7 @@ Először hozzon létre kapcsolatot a Twitter-fiók. A logikai alkalmazás leké
     | Beállítás      |  Ajánlott érték   | Leírás                                        |
     | ----------------- | ------------ | ------------- |
     | **Keresett szöveg** | #Azure | Használja a hashtaggel történő, amely elegendő népszerű létrehozni új Twitter-üzeneteket a választott időszakban. Ingyenes szint és a hashtaggel történő használata esetén túl népszerű gyorsan használhatja fel a tranzakció kvóta a kognitív Services API. |
-    | **Gyakoriság** | perc | A használt Twitter a lekérdezés gyakoriságát egység.  |
+    | **Gyakoriság** | Perc | A használt Twitter a lekérdezés gyakoriságát egység.  |
     | **Időköz** | 15 | Twitter-kérelmek gyakorisága egységekben között eltelt idő. |
 
 3.  Kattintson a **mentése** csatlakozni a Twitter-fiók. 
@@ -271,7 +271,7 @@ A logikai alkalmazás letiltásához kattintson **áttekintése** majd **letilt�
 
 ![Függvény naplók](media/functions-twitter-email/disable-logic-app.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

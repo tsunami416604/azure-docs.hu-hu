@@ -12,13 +12,13 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/16/2017
+ms.date: 01/16/2018
 ms.author: larryfr
-ms.openlocfilehash: 49a57431c778ee018ecd71e3921cd21c3be94885
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 2709bab433bdc108b313c58e0844236dd4af38bf
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="use-spark-structured-streaming-with-kafka-and-azure-cosmos-db"></a>Válassza a Spark strukturált Kafka és Azure Cosmos DB Stream továbbítása
 
@@ -145,11 +145,11 @@ Az alábbi lépések segítségével töltse fel a notebookok a projektből a Sp
 
 4. Ismételje meg a 1-3 betöltése a __Stream-data-from-Kafka-to-Cosmos-DB.ipynb__ notebookot.
 
-## <a name="load-tweets-into-kafka"></a>Twitter-üzeneteket betölthető Kafka
+## <a name="load-taxi-data-into-kafka"></a>A Kafka taxi adatok betöltése
 
 A fájlok feltöltése után válassza a __adatfolyam-taxi-adatok-a-kafka.ipynb__ nyissa meg a notebook bejegyzést. Az adatok betöltése az Kafka notebook használatához kövesse.
 
-## <a name="process-tweets-using-spark-structured-streaming"></a>Folyamat Twitter-üzeneteket Spark strukturált adatfolyam használata
+## <a name="process-taxi-data-using-spark-structured-streaming"></a>Folyamat taxi adatok használata Spark strukturált adatfolyam
 
 Jupyter Notebook kezdőlapján válassza ki a __Stream-data-from-Kafka-to-Cosmos-DB.ipynb__ bejegyzés. Kövesse a notebook adatfolyam adatok Kafka és Azure Cosmos DB Spark strukturált Streaming használatával.
 

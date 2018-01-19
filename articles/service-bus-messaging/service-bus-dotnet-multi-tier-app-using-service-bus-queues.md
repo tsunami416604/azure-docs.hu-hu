@@ -11,14 +11,14 @@ ms.service: service-bus-messaging
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 10/16/2017
 ms.author: sethm
-ms.openlocfilehash: 754548a0beb4251d0fa4eef1fba73aabf02151ec
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
-ms.translationtype: HT
+ms.openlocfilehash: 667efced715b904234bd2b941453ed27e9ef1c42
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>Többrétegű .NET-alkalmazás Azure Service Bus-üzenetsorok használatával
 
@@ -185,7 +185,7 @@ Ebben a szakaszban az alkalmazás által megjelenített különféle oldalakat h
 6. Megjelenik egy párbeszédpanel a nézet létrehozásához. A **Template** (Sablon) listában válassza a **Create** (Létrehozás) lehetőséget. A **Model class** (Modellosztály) listában válassza az **OnlineOrder** osztályt.
    
    ![][15]
-7. Kattintson az **Add** (Hozzáadás) parancsra.
+7. Kattintson a **Hozzáadás** parancsra.
 8. Módosítsa az alkalmazás megjelenő nevét. A **Megoldáskezelőben** kattintson duplán a **Views\Shared\\_Layout.cshtml** fájlra a Visual Studio-szerkesztőben való megnyitásához.
 9. Cserélje le a **My ASP.NET Application** (Saját ASP.NET-alkalmazás) minden előfordulását **Northwind Traders Products** (Northwind Traders-termékek) értékre.
 10. Távolítsa el a **Home** (Kezdőlap), **About** (Névjegy) és **Contact** (Kapcsolatfelvétel) hivatkozásokat. Törölje a kiemelt kódot:
@@ -358,7 +358,7 @@ Most létrehozza a feldolgozói szerepkört, amely feldolgozza az elküldött re
     
     ![][20]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A Service Busról a következő forrásanyagokban találhat további információkat:  
 
 * [A Service Bus alapjai](service-bus-fundamentals-hybrid-solutions.md)

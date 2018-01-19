@@ -42,7 +42,7 @@ Az SQL Server Adatbázismotor nem használhatja a Windows-hitelesítést egy tar
 1. A virtuális géphez csatlakozva a kezdőlapon írja be az **SQL Server Management Studio** kifejezést, és kattintson a kijelölt ikonra.
    
     A Management Studio első megnyitásakor annak létre kell hoznia a felhasználó Management Studio-környezetét. Ez eltarthat néhány pillanatig.
-2. A Management Studio ezután megjeleníti a **Kapcsolódás a kiszolgálóhoz** párbeszédpanelt. A **Kiszolgálónév** mezőbe írja be a virtuális gép nevét, így az Object Explorerrel kapcsolódhat az Adatbázismotorhoz (A virtuális gép neve helyett a **(helyi)** kifejezést vagy egy pontot is megadhat mint **kiszolgálónév**). Válassza a **Windows-hitelesítés** lehetőséget, és írja a ***saját_virtuális gép_neve*\saját_helyi_rendszergazda** szöveget a **Felhasználónév** mezőbe. Kattintson a **Connect** (Csatlakozás) gombra.
+2. A Management Studio ezután megjeleníti a **Kapcsolódás a kiszolgálóhoz** párbeszédpanelt. A **Kiszolgálónév** mezőbe írja be a virtuális gép nevét, így az Object Explorerrel kapcsolódhat az Adatbázismotorhoz (A virtuális gép neve helyett a **(helyi)** kifejezést vagy egy pontot is megadhat mint **kiszolgálónév**). Válassza ki **Windows-hitelesítés**, és hagyja ***virtuális_gép_neve * \your_local_administrator** a a **felhasználónév** mezőbe. Kattintson a **Connect** (Csatlakozás) gombra.
    
     ![Csatlakozás kiszolgálóhoz](./media/virtual-machines-sql-server-connection-steps/19Connect-to-Server.png)
 3. Az SQL Server Management Studio Object Explorer felületén kattintson jobb gombbal az SQL Server példányának nevére (a virtuális gép nevére), majd a **Tulajdonságok** lehetőségre.

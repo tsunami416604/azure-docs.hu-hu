@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
-ms.openlocfilehash: 6cc61144b9e2f776c9039022d32300fd06b67bbd
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: e3ffaca0eab20c973df4969b22dbf56300d0b1ed
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="check-connectivity-with-azure-network-watcher-using-powershell"></a>Ellenőrizze a kapcsolatot az Azure hálózati figyelőt PowerShell használatával
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 12/21/2017
 > - [Portal](network-watcher-connectivity-portal.md)
 > - [PowerShell](network-watcher-connectivity-powershell.md)
 > - [CLI 2.0](network-watcher-connectivity-cli.md)
-> - [Az Azure REST API-n](network-watcher-connectivity-rest.md)
+> - [Azure REST API](network-watcher-connectivity-rest.md)
 
 Megtudhatja, hogyan ellenőrizheti, ha egy közvetlen TCP-kapcsolatot a virtuális gép egy adott végpont is hozható létre kapcsolat használatára.
 
@@ -37,33 +37,8 @@ Ez a cikk feltételezi, hogy rendelkezik-e a következőket:
 
 * Ellenőrizze a kapcsolatot a virtuális gépeket.
 
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
-
 > [!IMPORTANT]
 > Kapcsolat ellenőrzése van szükség a virtuálisgép-bővítmény `AzureNetworkWatcherExtension`. A bővítmény telepítése a Windows virtuális gép a Microsoft [a Windows Azure hálózati figyelő ügynök virtuálisgép-bővítmény](../virtual-machines/windows/extensions-nwa.md) és a Linux virtuális gép helyezést [Azure hálózati figyelő ügynök virtuálisgép-bővítmény Linux](../virtual-machines/linux/extensions-nwa.md).
-
-## <a name="register-the-preview-capability"></a>Regisztrálja a előzetes funkció
-
-Kapcsolat jelenleg nyilvános előzetes verziójában, regisztrálni kell a szolgáltatás használatához. Ehhez futtassa a következő PowerShell-példa:
-
-```powershell
-Register-AzureRmProviderFeature -FeatureName AllowNetworkWatcherConnectivityCheck  -ProviderNamespace Microsoft.Network
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
-```
-
-Ellenőrizze a regisztráció sikeres volt-e, futtassa a következő Powershell-példa:
-
-```powershell
-Get-AzureRmProviderFeature -FeatureName AllowNetworkWatcherConnectivityCheck  -ProviderNamespace  Microsoft.Network
-```
-
-Ha a szolgáltatás megfelelően lett-e regisztrálva, a kimeneti meg kell felelnie a következő:
-
-```
-FeatureName         ProviderName      RegistrationState
------------         ------------      -----------------
-AllowNetworkWatcherConnectivityCheck  Microsoft.Network Registered
-```
 
 ## <a name="check-connectivity-to-a-virtual-machine"></a>Ellenőrizze a kapcsolatot a virtuális géphez
 
