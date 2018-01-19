@@ -21,7 +21,6 @@
 ### [PHP](service-bus-php-how-to-use-topics-subscriptions.md)
 ### [Python](service-bus-python-how-to-use-topics-subscriptions.md)
 ### [Ruby](service-bus-ruby-how-to-use-topics-subscriptions.md)
-## [Többrétegű Service Bus-alkalmazás felépítése](service-bus-dotnet-multi-tier-app-using-service-bus-queues.md)
 
 # Útmutató
 ## Tervezés és kialakítás
@@ -29,6 +28,7 @@
 ### [Szerepköralapú hozzáférés-vezérlés (előzetes verzió)](service-bus-role-based-access-control.md)
 ### [Prémium szintű üzenettovábbítás](service-bus-premium-messaging.md)
 ### [Azure-üzenetsorok és Azure Service Bus-üzenetsorok összehasonlítása](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
+### [Többrétegű Service Bus-alkalmazás felépítése](service-bus-dotnet-multi-tier-app-using-service-bus-queues.md)
 ### [Teljesítmény optimalizálása](service-bus-performance-improvements.md)
 ### [Geo-vészhelyreállítás és georeplikáció](service-bus-geo-dr.md)
 ### [Aszinkron üzenetkezelés és magas rendelkezésre állás](service-bus-async-messaging.md)
@@ -79,7 +79,7 @@
 #### 
 ### [Az Azure PowerShell használata entitások üzembe helyezésére](service-bus-manage-with-ps.md)
 
-# Hivatkozás
+# Referencia
 ## .NET
 ### [Microsoft.ServiceBus.Messaging (.NET-keretrendszer)](/dotnet/api/microsoft.servicebus.messaging)
 ### [Microsoft.Azure.ServiceBus (.NET Standard)](/dotnet/api/microsoft.azure.servicebus)
