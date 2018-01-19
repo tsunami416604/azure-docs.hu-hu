@@ -9,13 +9,13 @@ editor: spelluru
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: a684f8bcdefc8e3338fae59e56863dfc37c23f1f
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 3f73cd65b0ceb3148ce8ceb83d7b4e1be1280077
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="load-data-into-azure-data-lake-store-using-azure-data-factory"></a>Adatok betöltése az Azure Data Lake Store Azure Data Factory használatával
 
@@ -125,7 +125,11 @@ Ez a cikk bemutatja, hogyan használ az adatok a Data Factory másolása eszköz
 
     ![A figyelő tevékenység fut](./media/load-data-into-azure-data-lake-store/monitor-activity-runs.png)
 
-15. Győződjön meg arról, hogy az adatokat az Azure Data Lake Store másolódik. 
+15. Minden másolási tevékenység végrehajtásának részletes adatai, kattintva további figyelhetők a **részletek** hivatkozásra **műveletek** tevékenységben figyelési nézet. Azt jeleníti meg adatokat, beleértve a fogadó, az átviteli sebesség, a megfelelő időtartamú végighalad, és a használt konfiguráció forráskiszolgálóról másolt adatok mennyiségét.
+
+    ![A figyelő tevékenységfuttatási részletei](./media/load-data-into-azure-data-lake-store/monitor-activity-run-details.png)
+
+16. Győződjön meg arról, hogy az adatokat az Azure Data Lake Store másolódik. 
 
     ![Ellenőrizze a Data Lake Store kimeneti](./media/load-data-into-azure-data-lake-store/adls-copy-result.png)
 

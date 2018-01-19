@@ -3,8 +3,8 @@ title: "Prémium szintű Azure Redis Cache Redis Fürtszolgáltatás konfigurál
 description: "Megtudhatja, hogyan hozhatja létre és kezelheti a fürtszolgáltatás a prémium csomagban Azure Redis Cache példány Redis"
 services: redis-cache
 documentationcenter: 
-author: steved0x
-manager: douge
+author: wesmc7777
+manager: cfowler
 editor: 
 ms.assetid: 62208eec-52ae-4713-b077-62659fd844ab
 ms.service: cache
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
-ms.author: sdanie
-ms.openlocfilehash: 86a4a605dbb3b11924c14ff42238009742f72898
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: wesmc
+ms.openlocfilehash: 16281cca4e4bc95e145317365d42382ab11fde93
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-redis-cache"></a>Prémium szintű Azure Redis Cache Redis Fürtszolgáltatás konfigurálása
 Azure Redis Cache rendelkezik másik gyorsítótármappa ajánlatokat, amelyek gyorsítótár mérete és a funkciót, beleértve a prémium réteg szolgáltatások, például a fürtszolgáltatás, az adatmegőrzésre és a virtuális hálózat támogatásának rugalmasságot biztosítanak. Ez a cikk ismerteti, hogyan konfigurálhatja a fürtözést prémium szintű Azure Redis Cache példányt.
@@ -37,20 +37,20 @@ Méret, átviteli sebesség és a prémium szintű gyorsítótárak sávszéless
 
 Az Azure Redis-fürt érhető el egy elsődleges vagy replika modell, ahol minden shard rendelkezik egy elsődleges vagy replika pár replikációs ahol a replikáció Azure Redis Cache szolgáltatás kezeli. 
 
-## <a name="clustering"></a>Fürtszolgáltatás
+## <a name="clustering"></a>Fürtözés
 Fürtszolgáltatás engedélyezve van a **új Redis Cache** panel gyorsítótár létrehozása során. 
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
 Fürtszolgáltatás konfigurálva van a **Redis fürt** panelen.
 
-![Fürtszolgáltatás][redis-cache-clustering]
+![Fürtözés][redis-cache-clustering]
 
 A fürtben legfeljebb 10 szilánkok lehet. Kattintson a **engedélyezve** és húzza a csúszkát, vagy írjon be egy számot 1 és 10 közötti **Shard száma** kattintson **OK**.
 
 Minden shard egy elsődleges vagy replika gyorsítótár pár Azure kezeli, és a gyorsítótár teljes mérete szorzata. a szilánkok száma szerint a gyorsítótár méretét, a tarifacsomag kiválasztott. 
 
-![Fürtszolgáltatás][redis-cache-clustering-selected]
+![Fürtözés][redis-cache-clustering-selected]
 
 A gyorsítótár létrehozása után hozzá csatlakozni, és használja az ebben az esetben, például egy nem fürtözött gyorsítótárat, és Redis továbbítja az adatokat a gyorsítótár szilánkok egész. Ha diagnosztikai [engedélyezve](cache-how-to-monitor.md#enable-cache-diagnostics), metrikák külön-külön az egyes shard rögzíti és lehet [tekinthetők](cache-how-to-monitor.md) a Redis Cache paneljén. 
 
@@ -159,7 +159,7 @@ Fürtszolgáltatás csak érhető el prémium gyorsítótárak esetében.
 ### <a name="i-am-getting-move-exceptions-when-using-stackexchangeredis-and-clustering-what-should-i-do"></a>Azért kapom áthelyezés kivételek, StackExchange.Redis használata esetén, és a fürtszolgáltatás, mi a teendő?
 Ha a StackExchange.Redis használ, és fogadni `MOVE` kivételek fürtözés használata esetén győződjön meg arról, hogy használja [StackExchange.Redis 1.1.603](https://www.nuget.org/packages/StackExchange.Redis/) vagy újabb. A .NET-alkalmazások StackExchange.Redis az konfigurálása, lásd: [a gyorsítótár-ügyfelek konfigurálása](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Megtudhatja, hogyan további premium gyorsítótár-funkciók használatára.
 
 * [Az Azure Redis Cache prémium szintjének bemutatása](cache-premium-tier-intro.md)

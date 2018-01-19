@@ -3,8 +3,8 @@ title: "Gyorsítótár ASP.NET munkamenetállapot-szolgáltató |} Microsoft Doc
 description: "Útmutató: Azure Redis Cache használatának az ASP.NET munkamenet-állapot tárolása"
 services: redis-cache
 documentationcenter: na
-author: steved0x
-manager: douge
+author: wesmc7777
+manager: cfowler
 editor: tysonn
 ms.assetid: 192f384c-836a-479a-bb65-8c3e6d6522bb
 ms.service: cache
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 05/01/2017
-ms.author: sdanie
-ms.openlocfilehash: 0f3683939ac9646565a0669e19b4c82811d621fc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: wesmc
+ms.openlocfilehash: 485375f2f2ffb83b7d0fdeef8daab5880a8bbc27
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="aspnet-session-state-provider-for-azure-redis-cache"></a>Az Azure Redis Cache ASP.NET munkamenetállapot-szolgáltatója
 Azure Redis Cache biztosít a munkamenetállapot-szolgáltatóját, amelyek segítségével a munkamenet-állapot tárolása helyett a memória gyorsítótárban, vagy az SQL Server-adatbázisban. A gyorsítótárazási munkamenetállapot-szolgáltatóját használatához először konfigurálja a gyorsítótárhoz, és konfigurálja az ASP.NET-alkalmazás a Redis gyorsítótár munkamenet állapota NuGet csomag segítségével gyorsítótár.
@@ -117,6 +117,6 @@ A lépések elvégzése után az alkalmazás a Redis gyorsítótár munkamenetá
 
 További információ a munkamenet-állapot és egyéb bevált gyakorlatokat: [webes fejlesztési gyakorlati tanácsok (épület valós felhőalapú alkalmazásokat az Azure-ral)](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse meg a [az ASP.NET kimeneti gyorsítótár-szolgáltató Azure Redis Cache](cache-aspnet-output-cache-provider.md).
 

@@ -3,8 +3,8 @@ title: "Azure Redis Cache – gyakori kérdések |} Microsoft Docs"
 description: "A kérdésekre adott válaszokat gyakori kérdésekre, mintákat és ajánlott eljárások Azure Redis Cache megismerése"
 services: redis-cache
 documentationcenter: 
-author: steved0x
-manager: douge
+author: wesmc7777
+manager: cfowler
 editor: 
 ms.assetid: c2c52b7d-b2d1-433a-b635-c20180e5cab2
 ms.service: cache
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
-ms.author: sdanie
-ms.openlocfilehash: dcabdb789489af1996276d8838afde410473738d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: wesmc
+ms.openlocfilehash: af185725433b0eacc5d57b90fb2e75edd143a59a
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="azure-redis-cache-faq"></a>Azure Redis Cache – Gyakori kérdések
 Azure Redis Cache a gyakori kérdéseket, a mintákat és ajánlott eljárások a válaszok megismerése.
@@ -137,7 +137,7 @@ Ebből a táblázatból a következő következtetéseket is azt:
 | **Standard gyorsítótár mérete** | | |**Megabit / másodperc (Mb/s) vagy megabájt / másodperc (MB/s)** |**Kérelmek / másodperc (RPS)** |
 | C0 |250 MB |Közös |5 / 0.625 |600 |
 | C1 |1 GB |1 |100 / 12.5 |12,200 |
-| C2 |2.5 GB |2 |200 / 25 |24,000 |
+| C2 |2,5 GB |2 |200 / 25 |24,000 |
 | C3 |6 GB |4 |400 / 50 |49,000 |
 | C4 |13 GB |2 |500 / 62.5 |61,000 |
 | C5 |26 GB |4 |1,000 / 125 |115,000 |
@@ -165,10 +165,10 @@ Igen, Azure Redis Cache nem áll rendelkezésre Azure Government felhő, az Azur
 
 | Felhő   | A Redis DNS-utótagja            |
 |---------|---------------------------------|
-| Nyilvános  | *. redis.cache.windows.net       |
-| USA-beli államigazgatás  | *. redis.cache.usgovcloudapi.net |
-| Németország | *. redis.cache.cloudapi.de       |
-| Kína   | *. redis.cache.chinacloudapi.cn  |
+| Nyilvános  | *.redis.cache.windows.net       |
+| USA-beli államigazgatás  | *.redis.cache.usgovcloudapi.net |
+| Németország | *.redis.cache.cloudapi.de       |
+| Kína   | *.redis.cache.chinacloudapi.cn  |
 
 Az Azure Redis Cache használatának és egyéb szempontjai további információkért tekintse meg a következőket.
 

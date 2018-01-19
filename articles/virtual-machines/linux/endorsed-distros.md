@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: szark
-ms.openlocfilehash: 811769443e322af3a2981c58979040a1e33b06e9
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 2b73ccbafc5ef16dff0bc666f601773c378ea2b0
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="linux-on-distributions-endorsed-by-azure"></a>Az Azure által támogatott disztribúciók Linux
-Partnerek adja meg az Azure piactéren Linux-lemezképeket. Már dolgozunk a különböző Linux Közösségek még több változatban is elkészíti a támogatott terjesztési listához adni. Időközben azokat a terjesztéseket, amelyek nem érhetők el a piactérről, az mindig helyezheti a saját Linux által útmutatása szerint [létrehozása és feltöltése, a Linux operációs rendszert tartalmazó virtuális merevlemez](classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
+Partnerek adja meg az Azure piactéren Linux-lemezképeket. Már dolgozunk a különböző Linux Közösségek még több változatban is elkészíti a támogatott terjesztési listához adni. Időközben azokat a terjesztéseket, amelyek nem érhetők el a piactérről, az mindig helyezheti a saját Linux által útmutatása szerint [létrehozása és feltöltése a Linux operációs rendszert tartalmazó virtuális merevlemez](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/create-upload-generic).
 
 ## <a name="supported-distributions-and-versions"></a>Támogatott disztribúcióiról, valamint a verziók
 A következő táblázat a Linux terjesztéseket, a támogatott Azure-on. Tekintse meg [támogatja a Microsoft Azure Linux képek](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) részletesebb információ a Linux és az Azure-ban nyílt forráskódú technológiája támogatása.
@@ -49,34 +49,34 @@ Az Azure Linux ügynök előre telepítve van az Azure piactéren elérhető ren
 ## <a name="partners"></a>Partnerek
 
 ### <a name="coreos"></a>CoreOS
-[https://CoreOS.com/docs/running-CoreOS/cloud-Providers/Azure/](https://coreos.com/docs/running-coreos/cloud-providers/azure/)
+[https://coreos.com/docs/running-coreos/cloud-providers/azure/](https://coreos.com/docs/running-coreos/cloud-providers/azure/)
 
 A CoreOS webhelyéről:
 
 *CoreOS készült biztonsági, konzisztencia- és megbízhatóságát. Helyett yum vagy apt csomagok telepítése, CoreOS Linux tárolók kezelésére használ a szolgáltatások, magasabb absztrakciós szinten. Egyetlen szolgáltatás kódot és az összes függősége olyan, amelyek egy vagy több CoreOS gépeken futtathatók tárolóban vannak csomagolva.*
 
 ### <a name="credativ"></a>Credativ
-[http://www.credativ.Co.uk/credativ-blog/debian-Images-Microsoft-Azure](http://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure)
+[http://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure](http://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure)
 
 Credativ egy független tanácsadás és a szolgáltatások munkahelyi, amely a fejlesztés és szakmai megoldások megvalósításához szabad szoftvernek a használatával. Vezető nyílt forráskódú szakemberei, mert a Credativ számos számítástechnikai osztály számára támogatási használó a nemzetközi felismerés rendelkezik. A Microsoft együtt Credativ jelenleg előkészítését végzi, megfelelő Debian képek Debian 8 (Jessie) és a Debian 7 (Wheezy) előtt. Mindkét lemezképek futtatásához Azure kifejezetten, és könnyen kezelhető a platformon keresztül. A hosszú távú karbantartási és az Azure-ba, a nyílt forrás támogatási erőforrások segítségével a Debian lemezképek frissítése Credativ is támogatja.
 
 ### <a name="oracle"></a>Oracle
-[http://www.Oracle.com/technetwork/topics/cloud/FAQ-1963009.HTML](http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html)
+[http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html](http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html)
 
 Oracle stratégia, hogy a nyilvános és magánfelhőkhöz megoldások átfogó portfóliót kínálnak. A stratégia biztosít az ügyfelek hogyan Oracle-felhőkben Oracle szoftvereket és a többi felhőből telepíthet-e azokat a rugalmasságának és. Az Oracle és a Microsoft partneri kapcsolatának köszönhetően lehetőség van az Oracle-szoftverek üzembe helyezésére a Microsoft nyilvános és magánfelhőiben az Oracle támogatásával és minősítéseivel.  Oracle kötelezettségvállalás és Oracle nyilvános és magánfelhő-megoldások használatára irányuló befektetéséből nem változott.
 
 ### <a name="red-hat"></a>Red Hat
-[http://www.redhat.com/en/partners/strategic-Alliance/Microsoft](http://www.redhat.com/en/partners/strategic-alliance/microsoft)
+[http://www.redhat.com/en/partners/strategic-alliance/microsoft](http://www.redhat.com/en/partners/strategic-alliance/microsoft)
 
 A világ vezető szolgáltató nyílt forráskódú megoldások, Red Hat segít több mint 90 % Fortune 500 vállalatok üzleti kihívások megoldásában, informatikai igazítása és üzleti stratégiát, és készítse elő a jövőben technológia. Red Hat ennek érdekében biztonságos megoldások egy megnyitott üzleti modelljéhez és egy elérhető, előre jelezhető előfizetés modellt biztosít.
 
 ### <a name="suse"></a>SUSE
-[http://www.SUSE.com/SUSE-Linux-Enterprise-Server-on-Azure](http://www.suse.com/suse-linux-enterprise-server-on-azure)
+[http://www.suse.com/suse-linux-enterprise-server-on-azure](http://www.suse.com/suse-linux-enterprise-server-on-azure)
 
 SUSE Linux Enterprise Server az Azure-on bevált platformot biztosít az felső szintű megbízhatóság és a felhőalapú informatika. SUSE tartozó sokoldalú Linux platformon zökkenőmentesen integrálható a Azure-felhőbe szolgáltatásait, hogy egy könnyen kezelhető felhőalapú környezetben. Több mint 9,200 hiteles alkalmazások SUSE Linux Enterprise Server több mint 1,800 független szoftverszállítóktól származó SUSE biztosítja, hogy az adatközpontban lévő futó támogatott munkaterhelések magabiztosan telepíthető az Azure-on.
 
 ### <a name="canonical"></a>Canonical
-[http://www.ubuntu.com/cloud/Azure](http://www.ubuntu.com/cloud/azure)
+[http://www.ubuntu.com/cloud/azure](http://www.ubuntu.com/cloud/azure)
 
 Canonical termékgondozó csoportja és a közösségi Megnyitás irányítás meghajtó Ubuntu a sikeres ügyfél, kiszolgáló és a felhőalapú megoldások, mely tartalmazza a fogyasztók személyes felhőbeli szolgáltatások. Egy egységes, szabad platform Ubuntu, a felhőbe, telefonról kanonikus tartozó stratégiai családba tartozó összefüggő felületek biztosít a telefon, táblagép, televízió és asztali. A stratégiai teszi Ubuntu a fogyasztói Electronics döntéshozók és egyedi technologists között kedvenc nyilvánosfelhő-szolgáltatók különböző intézmények első választás.
 

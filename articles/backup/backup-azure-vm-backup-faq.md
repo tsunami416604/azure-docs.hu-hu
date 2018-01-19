@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/18/2017
 ms.author: trinadhk;pullabhk;
-ms.openlocfilehash: 5ba381e366bea78e2d0ace3651c52b7c03e18275
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: f69cbbab19acbc4e71445012d262896275a7d768
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="questions-about-the-azure-vm-backup-service"></a>Kérdések az Azure VM Backup szolgáltatással kapcsolatban
 A cikk gyakori kérdésekre adott válaszokat tartalmazó szakaszaiban gyorsan áttekinthető az Azure VM Backup összetevőinek működése. Egyes válaszokban részletes információkat tartalmazó cikkekre mutató hivatkozások találhatók. Emellett egy fórumbejegyzésben is feltehet kérdéseket az Azure Backup szolgáltatással kapcsolatban a [vitafórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -72,3 +72,13 @@ Igen, a biztonsági mentés előtt áttelepítése lemezei nem felügyelt kezelt
 ## <a name="manage-vm-backups"></a>Virtuális gép biztonsági mentéseinek kezelése
 ### <a name="what-happens-when-i-change-a-backup-policy-on-vms"></a>Mi történik, ha módosítom a biztonsági mentési szabályzatot a virtuális gépen vagy gépeken?
 Egy új házirend alkalmazása esetén a virtuális gép van, ütemezését és az új házirend megőrzési követi. Ha a megőrzési ki van bővítve, a meglévő helyreállítási pontok leegyszerűsítheti az új házirend szerint lesznek megjelölve. Ha a megőrzési csökken, ezeket a következő karbantartási feladat a törlésre megjelölt és törlődnek. 
+
+### <a name="how-can-i-move-a-vm-enrolled-in-azure-backup-between-resource-groups"></a>Hogyan helyezhető át a virtuális gépek közötti erőforráscsoportok az Azure backup-ban regisztrált?
+Kövesse a következő lépések végrehajtásával sikeresen biztonsági másolat virtuális gép áthelyezése a célként megadott erőforráscsoportja 
+1. Ideiglenesen állítsa le a biztonsági mentés és a biztonsági mentési adatok megőrzése mellett
+2. A virtuális gép áthelyezése a célként megadott erőforráscsoportja
+3. Azonos vagy új tárolóban védené újra
+
+Az áthelyezés előtt létrehozott rendelkezésre visszaállítási pontok felhasználók állíthatja vissza.
+
+

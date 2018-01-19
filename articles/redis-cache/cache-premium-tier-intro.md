@@ -3,8 +3,8 @@ title: "Az Azure Redis Cache prémium szintjének bemutatása |} Microsoft Docs"
 description: "Útmutató: létrehozása és kezelése a Redis-adatmegőrzés, Redis a fürtszolgáltatás, és a Premium szint Azure Redis Cache példány hálózatok támogatása"
 services: redis-cache
 documentationcenter: 
-author: steved0x
-manager: douge
+author: wesmc7777
+manager: cfowler
 editor: 
 ms.assetid: 30f46f9f-e6ec-4c38-a8cc-f9d4444856e5
 ms.service: cache
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
-ms.author: sdanie
-ms.openlocfilehash: c7a70e74f8b275ed9e10118b0ae9e81309f97ba3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: wesmc
+ms.openlocfilehash: 38a43756678a3628040b1b995966eff6dd9fb363
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="introduction-to-the-azure-redis-cache-premium-tier"></a>Az Azure Redis Cache Prémium szintjének bemutatása
 Azure Redis Cache egy elosztott, felügyelt gyorsítótár, amely segít az adatok felső szinten gyors elérhetőségének biztosításával jól méretezhető és rugalmas alkalmazásait. 
@@ -40,7 +40,7 @@ A prémium csomagban lehetővé teszi a gyorsítótárazott adatokat az Azure St
 ## <a name="redis-cluster"></a>Redis-fürt
 Ha szeretné 53 GB-nál nagyobb méretű gyorsítótárak hozhatók létre, vagy szeretné részekre bonthatók az adatok több Redis-csomópont között, fürtözés, a támogatási réteg elérhető Redis is használhatja. Minden csomópont elsődleges vagy replika gyorsítótár párból áll a magas rendelkezésre állású Azure kezeli. 
 
-**A redis-fürtszolgáltatás lehetővé teszi maximális méretezés és teljesítmény.** Átviteli sebesség lineárisan növeli, mivel a szilánkok (csomópontok) a fürt számának növeléséhez. EG. Ha a 10 szilánkok P4 fürt létrehozásakor, akkor a rendelkezésre álló átviteli 250 KB-os * 10 = 2,5 millió kérések száma másodpercenként. Tekintse meg a [Azure Redis Cache – gyakori kérdések](cache-faq.md#what-redis-cache-offering-and-size-should-i-use) méretét, az átviteli sebesség és a sávszélesség a prémium szintű gyorsítótárak kapcsolatos további részletekért.
+**A redis-fürtszolgáltatás lehetővé teszi maximális méretezés és teljesítmény.** Átviteli sebesség lineárisan növeli, mivel a szilánkok (csomópontok) a fürt számának növeléséhez. Eg. Ha a 10 szilánkok P4 fürt létrehozásakor, akkor a rendelkezésre álló átviteli 250 KB-os * 10 = 2,5 millió kérések száma másodpercenként. Tekintse meg a [Azure Redis Cache – gyakori kérdések](cache-faq.md#what-redis-cache-offering-and-size-should-i-use) méretét, az átviteli sebesség és a sávszélesség a prémium szintű gyorsítótárak kapcsolatos további részletekért.
 
 Első lépésként fürtözési, lásd: [konfigurálása prémium szintű Azure Redis Cache Fürtszolgáltatás](cache-how-to-premium-clustering.md).
 
@@ -93,7 +93,7 @@ További információkért lásd: [georeplikáció konfigurálása az Azure Redi
 ## <a name="to-scale-to-the-premium-tier"></a>Prémium tarifacsomagra méretezése
 Méretezési prémium tarifacsomagra, egyszerűen válasszon egyet a a prémium csomag szükséges az a **tarifacsomag módosítása** panelen. A gyorsítótár PowerShell és a parancssori felület használatával prémium tarifacsomagra is méretezheti. Részletes útmutatásért lásd: [Scale Azure Redis Cache hogyan](cache-how-to-scale.md) és [automatizálása a méretezési művelet](cache-how-to-scale.md#how-to-automate-a-scaling-operation).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Gyorsítótár létrehozásához, és vizsgálja meg az új premium szint szolgáltatásokat.
 
 * [Adatmegőrzés konfigurálása prémium szintű Azure Redis Cache-gyorsítótárhoz](cache-how-to-premium-persistence.md)

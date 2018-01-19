@@ -5,15 +5,15 @@ description: "Tárfiókkulcsok az Azure Storage-fiókot adjon meg egy Azure Key 
 ms.topic: article
 services: key-vault
 ms.service: key-vault
-author: BrucePerlerMS
-ms.author: bruceper
+author: lleonard-msft
+ms.author: alleonar
 manager: mbaldwin
 ms.date: 10/12/2017
-ms.openlocfilehash: a87877f4b213365442400d113a67964ef942341f
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 6ebac5fc90e259b19e0a4103a732754384232a44
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="azure-key-vault-storage-account-keys"></a>Az Azure Key Vault Tárfiókkulcsok
 
@@ -95,7 +95,7 @@ accountSasCredential.UpdateSASToken(sasToken);
 - Több Key Vault objektum által kezelt ASA kulcsok nem engedélyezett. 
 - Manuálisan újragenerálja a ASA kulcsok van szüksége, azt javasoljuk keresztül Key Vault generálni. 
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 
 ### <a name="setup-for-role-based-access-control-rbac-permissions"></a>A szerepköralapú hozzáférés-vezérlést (RBAC) engedélyek beállítása
 
@@ -205,10 +205,10 @@ Biztosan férnek hozzá a tárolási blob tartalom legyen írási hozzáférése
 
 ### <a name="relevant-powershell-cmdlets"></a>Megfelelő Powershell-parancsmagok
 
-- [Get-AzureKeyVaultManagedStorageAccount](https://docs.microsoft.com/powershell/module/azurerm.keyvault/get-azurekeyvaultmanagedstorageaccount?view=azurermps-4.3.1)
-- [Adja hozzá AzureKeyVaultManagedStorageAccount](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Add-AzureKeyVaultManagedStorageAccount?view=azurermps-4.3.1)
+- [Get-AzureKeyVaultManagedStorageAccount ](https://docs.microsoft.com/powershell/module/azurerm.keyvault/get-azurekeyvaultmanagedstorageaccount?view=azurermps-4.3.1)
+- [Add-AzureKeyVaultManagedStorageAccount](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Add-AzureKeyVaultManagedStorageAccount?view=azurermps-4.3.1)
 - [Get-AzureKeyVaultManagedStorageSasDefinition](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Get-AzureKeyVaultManagedStorageSasDefinition?view=azurermps-4.3.1)
-- [Frissítés-AzureKeyVaultManagedStorageAccountKey](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Update-AzureKeyVaultManagedStorageAccountKey?view=azurermps-4.3.1)
+- [Update-AzureKeyVaultManagedStorageAccountKey](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Update-AzureKeyVaultManagedStorageAccountKey?view=azurermps-4.3.1)
 - [Remove-AzureKeyVaultManagedStorageAccount](https://docs.microsoft.com/powershell/module/azurerm.keyvault/remove-azurekeyvaultmanagedstorageaccount?view=azurermps-4.3.1)
 - [Remove-AzureKeyVaultManagedStorageSasDefinition](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Remove-AzureKeyVaultManagedStorageSasDefinition?view=azurermps-4.3.1)
 - [Set-AzureKeyVaultManagedStorageSasDefinition](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Set-AzureKeyVaultManagedStorageSasDefinition?view=azurermps-4.3.1)
@@ -234,7 +234,7 @@ A OBO jogkivonat-k, a PowerShell vagy a CLI natív ügyfélalkalmazások haszná
 
 - SAS-tokenje használatával a Key Vault tárfiókok kulcsait, az Azure-tárfiók még több ellenőrzött hozzáférést biztosítanak. További információkért lásd: [használata közös hozzáférésű jogosultságkód](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1).
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 - [A kulcsok, titkos kódok és tanúsítványok ismertetése](https://docs.microsoft.com/rest/api/keyvault/)
 - [Kulcstároló csapat blogja](https://blogs.technet.microsoft.com/kv/)

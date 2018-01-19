@@ -9,13 +9,13 @@ editor: spelluru
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: cf960ac827db94b9a43361288b1d0863dac86555
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 36e24da50386d1abc441e2beb09f570a9612a346
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-using-azure-data-factory"></a>Adatok betöltése az Azure SQL Data Warehouse Azure Data Factory használatával
 
@@ -128,6 +128,10 @@ Ez a cikk bemutatja, hogyan használ az adatok a Data Factory másolása eszköz
 15. A Futtatás futószalag társított tevékenység fut megtekintéséhez kattintson **nézet tevékenység fut** hivatkozásra a **műveletek** oszlop. 10 másolási tevékenység az adatcsatorna, minden egyes másolja át az adatok egy tábla. Váltson vissza az a folyamat futó nézet, kattintson a **folyamatok** tetején. Kattintson a **frissítése** a listájának frissítése. 
 
     ![A figyelő tevékenység fut](./media/load-azure-sql-data-warehouse/monitor-activity-run.png)
+
+16. Minden másolási tevékenység végrehajtásának részletes adatai, kattintva további figyelhetők a **részletek** hivatkozásra **műveletek** tevékenységben figyelési nézet. Azt jeleníti meg adatokat, beleértve a fogadó, az átviteli sebesség, a megfelelő időtartamú végighalad, és a használt konfiguráció forráskiszolgálóról másolt adatok mennyiségét.
+
+    ![A figyelő tevékenységfuttatási részletei](./media/load-azure-sql-data-warehouse/monitor-activity-run-details.png)
 
 ## <a name="next-steps"></a>További lépések
 

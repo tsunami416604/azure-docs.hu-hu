@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/29/2017
 ms.author: jroth
-ms.openlocfilehash: 5babea628180501e959387f80dac55618051f552
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: db37fbbc0abdafcb56d56809eeb43096617b6da3
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="how-to-create-sql-server-virtual-machines-with-azure-powershell"></a>SQL Server virtuális gépek létrehozása az Azure PowerShell
 
@@ -27,17 +27,17 @@ Ez az útmutató ismerteti a beállításokat, az Azure PowerShell Windows SQL S
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-A gyors üzembe helyezés az Azure PowerShell 3,6 vagy újabb verziója szükséges. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket.
+Ehhez a rövid útmutatóhoz az Azure PowerShell-modul 3.6-os vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket.
 
 ## <a name="configure-your-subscription"></a>Az előfizetés konfigurálása
 
-1. Nyissa meg a Powershellt, és létrehozza a hozzáférést az Azure-fiókjával futtatásával a **Add-AzureRmAccount** parancsot.
+1. Nyissa meg a PowerShellt és állítsa be az Azure-fiókja elérését az **Add-AzureRmAccount** parancs futtatásával.
 
    ```PowerShell
    Add-AzureRmAccount
    ```
 
-1. Meg kell jelennie egy bejelentkezési képernyő hitelesítő adatait. Használja az ugyanazon e-mailek és az Azure-portálon való bejelentkezéshez használt jelszó.
+1. Ekkor meg kell jelennie egy bejelentkezési képernyőnek, amely a hitelesítő adatainak megadását kéri. Használja ugyanazt az e-mail-címet és jelszót, amelyet az Azure Portalra való bejelentkezéshez használ.
 
 ## <a name="define-image-variables"></a>Adja meg a lemezkép változókat
 A újbóli és parancsfájl és egyszerűsítése érdekében először számos változó definiálása. Igényei, de figyeljen a megadott értékek módosításakor név hosszának és speciális karakterek kapcsolatos korlátozás elnevezési paraméterértékének megváltoztatásához.
@@ -307,10 +307,10 @@ New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $Vir
 A virtuális gép jön létre.
 
 > [!NOTE]
-> A hibaüzenet szerint a botot diagnosztika figyelmen kívül hagyhatja. Standard szintű tárfiók rendszerindítási diagnosztika, mert a virtuális gép lemezét a megadott tárfiók egy prémium szintű storage-fiók jön létre.
+> A rendszerindítási diagnosztika kapcsolatos hibát figyelmen kívül hagyhatja. Standard szintű tárfiók rendszerindítási diagnosztika, mert a virtuális gép lemezét a megadott tárfiók egy prémium szintű storage-fiók jön létre.
 
-## <a name="install-the-sql-iaas-agent"></a>Az SQL Iaas-ügynök telepítése
-SQL Server virtuális gépek támogatják a automatizált felügyeleti funkcióinak használatát a [SQL Server infrastruktúra-szolgáltatási ügynök bővítmény](virtual-machines-windows-sql-server-agent-extension.md). Az ügynök telepítése az új virtuális Gépet, futtassa a következő parancsot, miután az létrejött.
+## <a name="install-the-sql-iaas-agent"></a>Az SQL IaaS-ügynök telepítése
+SQL Server virtuális gépek támogatják a automatizált felügyeleti funkcióinak használatát a [SQL Server infrastruktúra-szolgáltatási ügynök bővítmény](virtual-machines-windows-sql-server-agent-extension.md). Az ügynök az új virtuális gépen való telepítéséhez futtassa a következő parancsot a gép létrehozása után.
 
    ```PowerShell
    Set-AzureRmVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
@@ -318,13 +318,13 @@ SQL Server virtuális gépek támogatják a automatizált felügyeleti funkciói
 
 ## <a name="remove-a-test-vm"></a>A teszteléshez használt virtuális gép eltávolítása
 
-Ha nincs szükség a virtuális gép folyamatosan fut, elkerülheti a felesleges költségek leállításával, ha nincsenek használatban. A következő parancsot a virtuális gép leáll, de hagyja elérhető további használatra.
+Ha nem szükséges, hogy a virtuális gép folyamatosan fusson, a szükségtelen költségeket elkerülendő leállíthatja az épp használaton kívüli gépet. A következő parancs leállítja a virtuális gépet, de elérhető állapotban hagyja későbbi használat céljából.
 
 ```PowerShell
 Stop-AzureRmVM -Name $VMName -ResourceGroupName $ResourceGroupName
 ```
 
-A virtuális géphez tartozó összes erőforrást is véglegesen törölheti a **Remove-AzureRmResourceGroup** parancsot. Véglegesen törli a virtuális gép is, így gondossággal az alábbi parancsot használja.
+Emellett véglegesen is törölheti a virtuális géppel társított erőforrásokat a **Remove-AzureRmResourceGroup** paranccsal. Ez véglegesen törli magát a virtuális gépet is, ezért ezt a parancsot körültekintően alkalmazza.
 
 ## <a name="example-script"></a>A példaként megadott parancsfájlt
 A következő parancsfájl tartalmazza a teljes PowerShell parancsprogramot ehhez az oktatóanyaghoz. Azt feltételezi, hogy már beállítása az Azure-előfizetés használata a **Add-AzureRmAccount** és **Select-AzureRmSubscription** parancsok.
@@ -394,7 +394,7 @@ New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $Vir
 Set-AzureRmVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A virtuális gép létrehozása után is:
 
 - Csatlakoztassa a virtuális géphez a távoli asztal (RDP) használatával.

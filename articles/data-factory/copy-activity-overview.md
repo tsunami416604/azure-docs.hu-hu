@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 7786fc785afa745da28b1da644ec58568d0cf424
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: f26f36f241edba2e1fcd1156587b82b79d559e2d
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Az Azure Data Factory a másolási tevékenység
 
@@ -138,7 +138,7 @@ A másolási tevékenység a következő sablon tartalmazza a támogatott tulajd
 | typeProperties | Tulajdonságok másolása tevékenység konfigurálása csoportja. | Igen |
 | forrás | Adja meg a másolási adatforrás típusa és a vonatkozó tulajdonságok kapcsolatos adatok lekéréséhez.<br/><br/>További részletek az összekötő a cikkben szereplő "Másolása a tevékenység tulajdonságai" szakaszából [adatokról és formátumok támogatott](#supported-data-stores-and-formats). | Igen |
 | a fogadó | Adja meg a másolási a fogadó típusa és a vonatkozó tulajdonságok hogyan adatokat írni.<br/><br/>További részletek az összekötő a cikkben szereplő "Másolása a tevékenység tulajdonságai" szakaszából [adatokról és formátumok támogatott](#supported-data-stores-and-formats). | Igen |
-| A fordító | Adjon meg explicit oszlop-hozzárendelések gyűjtése forrásból. Érvényes, ha az alapértelmezett példány viselkedés nem teljesíthető az igényeknek.<br/><br/>További részletek a [séma- és adatok hozzárendelése](copy-activity-schema-and-type-mapping.md). | Nem |
+| translator | Adjon meg explicit oszlop-hozzárendelések gyűjtése forrásból. Érvényes, ha az alapértelmezett példány viselkedés nem teljesíthető az igényeknek.<br/><br/>További részletek a [séma- és adatok hozzárendelése](copy-activity-schema-and-type-mapping.md). | Nem |
 | cloudDataMovementUnits | Adja meg a powerfulness [Azure integrációs futásidejű](concepts-integration-runtime.md) építve az adatok másolását.<br/><br/>További részletek a [adatátviteli adategységek felhőalapú](copy-activity-performance.md). | Nem |
 | parallelCopies | Adja meg, amelyet a másolási tevékenység gyűjtése adatok a forrás adatok írásakor vagy olvasásakor használandó párhuzamosságát.<br/><br/>További részletek a [másolási párhuzamos](copy-activity-performance.md#parallel-copy). | Nem |
 | enableStaging<br/>stagingSettings | Válassza ki az átmeneti adatok helyett közvetlenül adatok gyűjtésének forrásból aa blob Storage előkészítése.<br/><br/>Ismerje meg a hasznos forgatókönyvek és a konfigurációs adatait a [másolási előkészített](copy-activity-performance.md#staged-copy). | Nem |
@@ -146,38 +146,80 @@ A másolási tevékenység a következő sablon tartalmazza a támogatott tulajd
 
 ## <a name="monitoring"></a>Figyelés
 
-A másolási tevékenység futtatás eredménye visszaadja a másolási tevékenység végrehajtási részletei és a teljesítményt -> Output szakasz. Az alábbiakban egy-egy kimerült lista. Megtudhatja, hogyan fogja figyelni-ről futtatva [gyors üzembe helyezés, figyelés szakaszban](quickstart-create-data-factory-dot-net.md#monitor-a-pipeline-run). Összehasonlíthatja a teljesítmény és a forgatókönyvhöz a másolási tevékenység konfigurációjának [teljesítményfigyelési](copy-activity-performance.md#performance-reference) a belső fejlesztésű tesztelése.
+A másolási tevékenység során Azure Data Factory "Szerző és figyelés" felhasználói felületén vagy programozott módon figyelheti. Ezután összehasonlíthatja a teljesítmény és a forgatókönyvhöz a másolási tevékenység konfigurációjának [teljesítményfigyelési](copy-activity-performance.md#performance-reference) a belső fejlesztésű tesztelése.
+
+### <a name="monitor-visually"></a>Vizuális megfigyelés
+
+Vizuálisan figyeléséhez a másolási tevékenység során futtatni, nyissa meg a data factory -> **Szerző & figyelő** -> **figyelés lapján**, láthatja, hogy az adatcsatorna listáját fut, a "Tevékenységfutnézet"hivatkozásra **Műveletek** oszlop. 
+
+![A figyelő folyamat fut](./media/load-data-into-azure-data-lake-store/monitor-pipeline-runs.png)
+
+Kattintson a folyamatot futtató tevékenységek listájának megjelenítéséhez. Az a **műveletek** oszlop, a másolási tevékenység bemeneti, kimeneti, a hibák (Ha a másolási tevékenység futtatása sikertelen lesz) és a részletek a kapcsolat van.
+
+![A figyelő tevékenység fut](./media/load-data-into-azure-data-lake-store/monitor-activity-runs.png)
+
+Kattintson a "**részletek**" hivatkozásra **műveletek** másolási tevékenység végrehajtási részletek és a teljesítményt. Az információk láthatók, többek között: fogadó, az átviteli sebesség, a lépések a megfelelő időtartam végighalad, és a konfigurációt használja a másolásának esetéhez forráskiszolgálóról másolt adatok mennyiségét.
+
+**Példa: Azure Data Lake Store másolása Amazon S3**
+![figyelése tevékenység fut részletei](./media/copy-activity-overview/monitor-activity-run-details-adls.png)
+
+**Példa: Azure SQL Data Warehouse használata az Azure SQL Database másolását előkészített másolási**
+![figyelése tevékenység fut részletei](./media/copy-activity-overview/monitor-activity-run-details-sql-dw.png)
+
+### <a name="monitor-programmatically"></a>Programozott módon figyelése
+
+Másolási tevékenység végrehajtási részletei és a teljesítményt is megjelennek a másolási tevékenység result futtassa -> Output szakasz. Az alábbiakban a lista tartalmazza; csak a Másolás forgatókönyvhöz alkalmazható megfelelően jelennek meg. Megtudhatja, hogyan fogja figyelni-ről futtatva [gyors üzembe helyezés, figyelés szakaszban](quickstart-create-data-factory-dot-net.md#monitor-a-pipeline-run).
 
 | Tulajdonság neve  | Leírás | Unit (Egység) |
 |:--- |:--- |:--- |
-| DataRead | Forrásoldali adatok mérete | Int64 típusú érték (bájt) |
-| DataWritten | Gyűjtése írt adatok mérete | Int64 típusú érték (bájt) |
+| DataRead | Forrásoldali adatok mérete | Int64 típusú érték a **bájt** |
+| DataWritten | Gyűjtése írt adatok mérete | Int64 típusú érték a **bájt** |
+| filesRead | Ha az adatok másolása a file storage másolásának fájlok száma. | Int64 típusú érték (egység) |
+| filesWritten | A file storage adatok másolásakor másolásának fájlok száma. | Int64 típusú érték (egység) |
 | rowsCopied | Másolással (bináris példány nem használható) sorok száma. | Int64 típusú érték (egység) |
 | rowsSkipped | Nem kompatibilis kihagyta a sorok száma. Bekapcsolása a szolgáltatás beállítása "enableSkipIncompatibleRow" true által. | Int64 típusú érték (egység) |
-| Átviteli sebesség | Átvitt adatok – amely arány | Lebegőpontos szám KB/s |
+| Átviteli sebesség | Átvitt adatok – amely arány | Lebegőpontos szám a **KB/s** |
 | copyDuration | A másolási időtartama | Int32 típusú érték, másodpercben. |
 | sqlDwPolyBase | Ha az adatok másolása az SQL Data Warehouse PolyBase használatos. | Logikai |
 | redshiftUnload | Ha az adatok másolása Redshift UNLOAD használatos. | Logikai |
 | hdfsDistcp | Ha az adatok másolása HDFS ból a DistCp használatos. | Logikai |
 | effectiveIntegrationRuntime | Integráció Runtime(s) használt a tevékenység fut, a kell ellenőrizniük megjelenítése `<IR name> (<region if it's Azure IR>)`. | Szöveg (karakterlánc) |
 | usedCloudDataMovementUnits | A hatékony felhő adatátviteli adategységek másolása során. | Int32 érték |
+| usedParallelCopies | A hatékony parallelCopies másolása során. | Int32 érték|
 | redirectRowPath | A blob-tároló "redirectIncompatibleRowSettings" alapján konfigurálja a rendszer kihagyta nem kompatibilis sorok a napló elérési útja. Lásd az alábbi példa. | Szöveg (karakterlánc) |
-| billedDuration | Az adatátvitelt jelölik a kiszámlázott időtartama. | Int32 típusú érték, másodpercben. |
+| executionDetails | További részleteket a másolási tevékenység során megy keresztül, szakaszt, és a megfelelő lépéseket, időtartama, használt konfigurációk, stb. Ez a szakasz elemzése, meg nem javasolt. | Tömb |
 
 ```json
 "output": {
-    "dataRead": 1024,
-    "dataWritten": 2048,
-    "rowsCopies": 100,
-    "rowsSkipped": 2,
-    "throughput": 1024.0,
-    "copyDuration": 3600,
-    "redirectRowPath": "https://<account>.blob.core.windows.net/<path>/<pipelineRunID>/",
-    "redshiftUnload": true,
-    "sqlDwPolyBase": true,
-    "effectiveIntegrationRuntime": "DefaultIntegrationRuntime (West US)",
-    "usedCloudDataMovementUnits": 8,
-    "billedDuration": 28800
+    "dataRead": 107280845500,
+    "dataWritten": 107280845500,
+    "filesRead": 10,
+    "filesWritten": 10,
+    "copyDuration": 224,
+    "throughput": 467707.344,
+    "errors": [],
+    "effectiveIntegrationRuntime": "DefaultIntegrationRuntime (East US 2)",
+    "usedCloudDataMovementUnits": 32,
+    "usedParallelCopies": 8,
+    "executionDetails": [
+        {
+            "source": {
+                "type": "AmazonS3"
+            },
+            "sink": {
+                "type": "AzureDataLakeStore"
+            },
+            "status": "Succeeded",
+            "start": "2018-01-17T15:13:00.3515165Z",
+            "duration": 221,
+            "usedCloudDataMovementUnits": 32,
+            "usedParallelCopies": 8,
+            "detailedDurations": {
+                "queuingDuration": 2,
+                "transferDuration": 219
+            }
+        }
+    ]
 }
 ```
 

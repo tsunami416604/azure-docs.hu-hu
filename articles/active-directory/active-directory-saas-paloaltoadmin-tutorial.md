@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jeedes
-ms.openlocfilehash: 5dca976449ee856cc61407d0eae831fc1e1e7a50
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 8e54630d97dee2388ffc9c8877faeac269df1609
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>Oktatóanyag: Azure Active Directoryval integrált Palo Alto hálózatok - rendszergazda felhasználói felület
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, t
 Palo Alto hálózatokkal - rendszergazda felhasználói felületén, az Azure AD-integráció konfigurálása a következőkre van szükség:
 
 - Az Azure AD szolgáltatásra
-- Egy Palo Alto hálózatok - felügyeleti felhasználói felület egyszeri bejelentkezés engedélyezve az előfizetéshez
+- Palo Alto hálózatok új generációs tűzfal vagy Panorámaképe (a tűzfalak központi felügyeleti rendszerhez)
 
 > [!NOTE]
 > Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
@@ -72,7 +72,7 @@ Palo Alto hálózatok - rendszergazda felhasználói felület az Azure AD-integr
 
 4. Írja be a keresőmezőbe, **Palo Alto hálózatok - rendszergazda felhasználói felület**, jelölje be **Palo Alto hálózatok - rendszergazda felhasználói felület** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Palo Alto hálózatok - felügyeleti felhasználói felület az eredménylistában](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_addfromgallery.png)
+    ![Palo Alto hálózatok - felügyeleti felhasználói felület az eredménylistában](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_step4-add-from-the-gallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
 
@@ -108,9 +108,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Palo Alto hálózatok - rendszergazda felhasználói felület tartomány és URL-címek egyszeri bejelentkezés információk](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<Customer Firewall URL>/php/login.php`
+    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<Customer Firewall FQDN>/php/login.php`
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`https://<Customer Firewall URL>/SAML20/SP`
+    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`https://<Customer Firewall FQDN>/SAML20/SP`
 
     > [!NOTE] 
     > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [Palo Alto hálózatok - rendszergazda felhasználói felület ügyfél-támogatási csoport](https://support.paloaltonetworks.com/support) beolvasni ezeket az értékeket. 
@@ -123,7 +123,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
         
     | Attribútum neve | Attribútum értéke |
     | --- | --- |    
-    | felhasználónév | User.userPrincipalName |
+    | felhasználónév | user.userprincipalname |
     | adminrole | customadmin |
 
     a. Kattintson a **Hozzáadás attribútum** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
@@ -151,7 +151,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_general_400.png)
 
-8. Nyissa meg a Palo Alto egy másik böngészőablakban rendszergazdaként.
+8. Nyissa meg a Palo Alto hálózatok tűzfal felügyeleti felhasználói felület egy másik böngészőablakban rendszergazdaként.
 
 9. Kattintson a **eszköz**.
 

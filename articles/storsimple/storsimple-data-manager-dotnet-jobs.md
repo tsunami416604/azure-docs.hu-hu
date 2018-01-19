@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 7ecb3ed41a8a05f3ced2488226fa0380107b1b43
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: d15a5cbda2f0c2a363b40e94c38fed6631aa81b5
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="use-the-net-sdk-to-initiate-data-transformation"></a>Adatok átalakítása kezdeményezni a .net SDK használatával
 
@@ -79,7 +79,7 @@ A következő lépésekkel .NET használatával a data transformation feladat el
 
         ![2-projekt létrehozása](media/storsimple-data-manager-dotnet-jobs/create-new-project-1.png)
 
-4.  Ezután adja hozzá az összes DLL-fájl megtalálható a [DLL-ek mappa](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls) , **hivatkozások** a létrehozott projektben. A dll-fájlok letöltéséhez, tegye az alábbiakat:
+4.  Ezután adja hozzá az összes DLL-fájl megtalálható a [DLL-ek mappa](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls) , **hivatkozások** a létrehozott projektben. A dll-fájlok hozzáadásához tegye az alábbiakat:
 
     1. A Visual Studio Ugrás **Nézet > Megoldáskezelőben**.
     2. Kattintson a Data Transformation alkalmazásprojektet balra mutató nyílra. Kattintson a **hivatkozások** , és kattintson a jobb gombbal a **hivatkozás hozzáadása**.
@@ -117,19 +117,14 @@ A következő lépésekkel .NET használatával a data transformation feladat el
 
     // Initialize the Data Transformation Job instance.
     DataTransformationJob dataTransformationJob = new DataTransformationJob(configParams);
-
     ```
-   A beillesztett a kódot, ha a megoldás felépítéséhez. Íme egy Képernyőkép a kódrészletet az átalakítási feladat példánya inicializálása.
-
-   ![Adatok átalakítása feladat inicializálása kódrészletet](media/storsimple-data-manager-dotnet-jobs/start-dotnet-job-code-snippet-1.png)
-
+   
 7. Adja meg a paramétereket, amellyel a feladat definíciójához futtatnia kell
 
     ```
     string jobDefinitionName = "job-definition-name";
 
     DataTransformationInput dataTransformationInput = dataTransformationJob.GetJobDefinitionParameters(jobDefinitionName);
-
     ```
 
     (VAGY)
@@ -159,7 +154,6 @@ A következő lépésekkel .NET használatával a data transformation feladat el
         // Name of the volume on StorSimple device on which the relevant data is present. 
         VolumeNames = volumeNames
     };
-    
     ```
 
 8. Az inicializálás után adja hozzá a következő kódot a feladat definíciójához a data transformation feladatot indít. Csatlakoztassa a megfelelő **feladatdefiníció nevét**.
@@ -169,12 +163,17 @@ A következő lépésekkel .NET használatával a data transformation feladat el
     int retryAfter;
     string jobId = dataTransformationJob.RunJobAsync(jobDefinitionName, 
     dataTransformationInput, out retryAfter);
+    Console.WriteLine("jobid: ", jobId);
+    Console.ReadLine();
 
     ```
+    A beillesztett a kódot, ha a megoldás felépítéséhez. Íme egy Képernyőkép a kódrészletet az átalakítási feladat példánya inicializálása.
 
-9. Ez a feladat a StorSimple-kötet a gyökérkönyvtárban található egyező fájlok feltöltése a megadott tárolóhoz. Ha egy fájl feltöltése, egy üzenet megszakad a várólista (a tárfiókon, a tároló) a neve megegyezik a feladat definíciójához. Ez az üzenet kezdeményezheti a fájl további feldolgozás egy eseményindító is használható.
+   ![Adatok átalakítása feladat inicializálása kódrészletet](media/storsimple-data-manager-dotnet-jobs/start-dotnet-job-code-snippet-1.png)
 
-10. Ha a feladat lett elindítva, adja hozzá a következő kódot a nyomon követheti a feladat befejezésére.
+9. Ez a feladat átalakítja az adatokat, amely megfelel a gyökérkönyvtár, és a fájl szűrők belül a StorSimple-kötet, és elhelyezi azokat a megadott tárolófájl-megosztás. Amikor egy fájl alakította, egy üzenet tárolási üzenetsorból (ugyanazt a tárfiókot, a tároló vagy fájlmegosztás) a neve megegyezik a feladat definíciójához kerül. Ez az üzenet kezdeményezheti a fájl további feldolgozás egy eseményindító is használható.
+
+10. Ha a feladat lett elindítva, az alábbi kód segítségével nyomon követheti a feladat befejezésére. Nincs kötelező ez a feladat futtatása kódját hozzáadni.
 
     ```
     Job jobDetails = null;

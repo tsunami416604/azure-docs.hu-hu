@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/20/2017
 ms.author: yushwang
-ms.openlocfilehash: 080f83a67674ab059404870f6ec0e7470cfcceff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fbe22b70b4fe3463ffc7b0e9a7ebd683f681117d
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>Mintakonfiguráció: Cisco ASA (IKEv2/nem BGP-) eszköz
 Ez a cikk ismerteti az Azure VPN gatewayek csatlakozó Cisco adaptív biztonsági készülék (ASA) eszközök minta konfigurációi. A példa IKEv2 nélkül, a Border Gateway Protocol (BGP) futtató Cisco ASA-eszközökre vonatkozik. 
@@ -60,7 +60,7 @@ Az Azure-konfigurációjának létrehozásához lépésenkénti útmutatót lás
 ### <a name="virtual-network-and-vpn-gateway-information"></a>Virtuális hálózat és a VPN-átjáró adatait
 Ez a rész felsorolja a minta paramétereit.
 
-| **A paraméter**                | **Érték**                    |
+| **Parameter**                | **Érték**                    |
 | ---                          | ---                          |
 | Virtuális hálózati címelőtagokat        | 10.11.0.0/16<br>10.12.0.0/16 |
 | Az Azure VPN gateway IP-címet         | Azure_Gateway_Public_IP      |
@@ -82,7 +82,7 @@ A következő táblázat az IPsec vagy internetes KULCSCSERE-algoritmusok és a 
 | IKEv2-titkosítás | AES256                               |
 | IKEv2-integritás  | SHA384                               |
 | DH-csoport         | DHGroup24                            |
-| * IPSec-titkosítás | AES256                               |
+| * IPsec Encryption | AES256                               |
 | * IPSec-integritásának  | SHA1                                 |
 | PFS-csoport        | PFS24                                |
 | Gyorsmódú biztonsági társítás élettartama   | a 7200 másodperc                         |
@@ -98,10 +98,7 @@ A következő táblázat az IPsec vagy internetes KULCSCSERE-algoritmusok és a 
 
 * DH-csoport és a PFS-csoport meghaladja a csoport 5 támogatása ASA verziója szükséges 9.x.
 
-* IPsec-titkosítást az AES-GCM-mel és az SHA-256, SHA-384 és SHA-512 IPsec integritását, ASA verziója szükséges 9.x. Ez a támogatás követelmény újabb ASA-eszközökre vonatkozik.
-
-    > [!NOTE]
-    > 5505, 5510, 5520, 5540, 5550 és 5580 ASA eszköz modellek nem támogatottak. Tekintse meg a VPN-eszköz specifikációja ellenőrzése a algoritmust, amelyet a VPN-eszköz modellek és belsővezérlőprogram-verziók támogatottak.
+* IPsec-titkosítást az AES-GCM-mel és az SHA-256, SHA-384 és SHA-512 IPsec integritását, ASA verziója szükséges 9.x. Ez a támogatás követelmény újabb ASA-eszközökre vonatkozik. A kiadvány időpontjában 5505, 5510, 5520, 5540, 5550 és 5580 ASA modellek nem támogatják ezeket az algoritmusokat. Tekintse meg a VPN-eszköz specifikációja ellenőrzése a algoritmust, amelyet a VPN-eszköz modellek és belsővezérlőprogram-verziók támogatottak.
 
 
 ### <a name="sample-device-configuration"></a>A minta eszközök konfigurálása
@@ -310,5 +307,5 @@ A következő ASA parancsokkal hibakeresési célra:
     show run tunnel-group
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Aktív-aktív létesítmények közötti és VNet – VNet kapcsolatokhoz konfigurálásához lásd: [aktív-aktív VPN-átjárók konfigurálása](vpn-gateway-activeactive-rm-powershell.md).

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2017
 ms.author: wgries
-ms.openlocfilehash: a594f31c002556f9a5fddaa17fb19273065eed47
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: c33639723657d3c2875ed9607a887775d558be16
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="how-to-deploy-azure-files"></a>Az Azure Files üzembe helyezése
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló a felhőben, amelyek elérhetők az iparági szabványos SMB protokollon keresztül. Ez a cikk bemutatja, hogyan gyakorlatilag központi telepítése az Azure-fájlokat a szervezeten belül.
@@ -35,7 +35,7 @@ Ez a cikk feltételezi, hogy már végrehajtotta a következőket:
 Kezdésként érdemes lehet áttelepíteni meglévő fájlmegosztások esetén ezek a helyszínen tárolt, például az új Azure fájlmegosztás. Ez a szakasz bemutatja, hogyan kívánja áthelyezni az adatokat egy Azure-fájl megosztása keresztül számos népszerű módszer a részletes a [tervezési útmutató](storage-files-planning.md#data-transfer-method)
 
 ### <a name="azure-file-sync-preview"></a>Az Azure File Sync (előzetes verzió)
-Azure fájl szinkronizálása (előzetes verzió) lehetővé teszi, hogy központosíthatja a fájlmegosztások a szervezet Azure-fájlokban szereplő próbálkozik a rugalmasság, a teljesítmény és a kompatibilitási fájlt a helyi kiszolgáló nélkül. Ezt úgy éri el, hogy átalakítja a Windows-kiszolgálókat az Azure-fájlmegosztás gyors gyorsítótáraivá. A Windows Server rendszeren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl. SMB, NFS vagy FTPS), és annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
+Azure fájl szinkronizálása (előzetes verzió) lehetővé teszi a fájlmegosztások a szervezet Azure-fájlokban szereplő központosítása próbálkozik a rugalmasság, a teljesítmény és a kompatibilitási fájlt a helyi kiszolgáló nélkül. Ezt úgy éri el, hogy átalakítja a Windows-kiszolgálókat az Azure-fájlmegosztás gyors gyorsítótáraivá. A Windows Server rendszeren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl. SMB, NFS vagy FTPS), és annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
 
 Azure fájlszinkronizálás is használható adatokat áttelepíteni egy Azure-fájlmegosztás, még akkor is, ha a szinkronizálási mechanizmus nem kívánt hosszú távú használatra. Adatok átviteléhez az Azure fájlmegosztás Azure fájlszinkronizálás használatáról további információk találhatók [Azure fájlszinkronizálás központi telepítésének tervezésében](storage-sync-files-planning.md) és [központi telepítése az Azure fájlszinkronizálás](storage-sync-files-deployment-guide.md).
 
@@ -145,15 +145,15 @@ $computer | ForEach-Object { Invoke-Command -ComputerName $_ -ScriptBlock { net 
 ### <a name="linux"></a>Linux
 Egy egyszerű bash parancsfájl SSH együtt ugyanazt az eredményt a következő példa érvényesítését. A `$computer` változó hasonlóképpen balról tölthető fel, a felhasználó:
 
-```PowerShell
+```
 computer = ("MyComputer1" "MyComputer2" "MyComputer3" "MyComputer4")
-for item in "${dur[@]}"
+for item in "${computer[@]}"
 do
     ssh $item "sudo bash -c 'echo \"//<storage-account-name>.file.core.windows.net/<share-name> /mymountpoint cifs vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino\" >> /etc/fstab'", "sudo mount -a"
 done
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Egy Azure fájlszinkronizálás központi telepítésének tervezése](storage-sync-files-planning.md)
 - [A Windows Azure fájlok hibaelhárítása](storage-troubleshoot-windows-file-connection-problems.md)
 - [Az Azure Files Linux hibaelhárítása](storage-troubleshoot-linux-file-connection-problems.md)

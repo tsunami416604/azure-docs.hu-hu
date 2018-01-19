@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 286f4df74bcacfa2e7d559f1135b9fba2a915bd1
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: ab55281b6adcc8867f207e6887c88a26c1a8616b
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions"></a>Az Azure Functions Azure Cosmos DB kötései
 
@@ -36,7 +36,7 @@ Az Azure Cosmos DB eseményindítót használ a [Azure Cosmos DB módosítás h�
 Tekintse meg a nyelvspecifikus példát:
 
 * [C#](#trigger---c-example)
-* [C# parancsfájl (.csx)](#trigger---c-script-example)
+* [C# script (.csx)](#trigger---c-script-example)
 * [JavaScript](#trigger---javascript-example)
 
 ### <a name="trigger---c-example"></a>Eseményindító - C# – példa
@@ -151,8 +151,8 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**típusa** || meg kell `cosmosDBTrigger`. |
-|**iránya** || meg kell `in`. Ez a paraméter rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon. |
-|**név** || A dokumentumok a változások listájának jelölő függvény kódban használt változó neve. | 
+|**direction** || meg kell `in`. Ez a paraméter rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon. |
+|**name** || A dokumentumok a változások listájának jelölő függvény kódban használt változó neve. | 
 |**connectionStringSetting**|**ConnectionStringSetting** | A figyelt Azure Cosmos DB fiók való kapcsolódáshoz használt kapcsolati karakterlánc tartalmazó alkalmazásbeállítás neve. |
 |**databaseName**|**DatabaseName**  | A figyelt gyűjtemény Azure Cosmos DB adatbázis neve. |
 |**collectionName** |**CollectionName** | A figyelt gyűjtemény nevét. |
@@ -186,7 +186,7 @@ Az Azure Cosmos DB bemeneti kötése kéri le egy vagy több Azure Cosmos DB dok
 Tekintse meg a nyelvspecifikus példa, amely egyetlen dokumentum beolvasása:
 
 * [C#](#input---c-example)
-* [C# parancsfájl (.csx)](#input---c-script-example)
+* [C# script (.csx)](#input---c-script-example)
 * [F#](#input---f-example)
 * [JavaScript](#input---javascript-example)
 
@@ -346,7 +346,7 @@ A JavaScript-kód itt látható:
 Tekintse meg a nyelvspecifikus példa, amely több dokumentum beolvasása:
 
 * [C#](#input---c-example-2)
-* [C# parancsfájl (.csx)](#input---c-script-example-2)
+* [C# script (.csx)](#input---c-script-example-2)
 * [JavaScript](#input---javascript-example-2)
 
 ### <a name="input---c-example-2"></a>Bemenet – C# 2. példa
@@ -384,7 +384,7 @@ Itt az kötés adatai a *function.json* fájlt:
     "direction": "in",
     "databaseName": "MyDb",
     "collectionName": "MyCollection",
-    "sqlQuery": "SELECT * from c where c.departmentId = {departmentId}"
+    "sqlQuery": "SELECT * from c where c.departmentId = {departmentId}",
     "connection": "CosmosDBConnection"
 }
 ```
@@ -423,7 +423,7 @@ Itt az kötés adatai a *function.json* fájlt:
     "direction": "in",
     "databaseName": "MyDb",
     "collectionName": "MyCollection",
-    "sqlQuery": "SELECT * from c where c.departmentId = {departmentId}"
+    "sqlQuery": "SELECT * from c where c.departmentId = {departmentId}",
     "connection": "CosmosDBConnection"
 }
 ```
@@ -456,13 +456,13 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**típusa**     || meg kell `documentdb`.        |
-|**iránya**     || meg kell `in`.         |
-|**név**     || A kötési paraméter, a függvény a dokumentum jelölő neve.  |
+|**direction**     || meg kell `in`.         |
+|**name**     || A kötési paraméter, a függvény a dokumentum jelölő neve.  |
 |**databaseName** |**DatabaseName** |A a dokumentum tartalmazó adatbázis.        |
 |**collectionName** |**CollectionName** | A gyűjtemény, amely tartalmazza a dokumentum nevét. |
-|**azonosítója**    | **Azonosítója** | A dokumentum beolvasása azonosítója. Ez a tulajdonság támogatja a kötések paraméterek. További tudnivalókért lásd: [egy kötési kifejezése egyéni bemeneti tulajdonságok kötése](functions-triggers-bindings.md#bind-to-custom-input-properties). Ne állítsa be mind a **azonosító** és **sqlQuery** tulajdonságait. Ha nem állít egy, a rendszer lekéri a teljes gyűjteményt. |
+|**id**    | **Azonosító** | A dokumentum beolvasása azonosítója. Ez a tulajdonság támogatja a kötések paraméterek. További tudnivalókért lásd: [egy kötési kifejezése egyéni bemeneti tulajdonságok kötése](functions-triggers-bindings.md#bind-to-custom-input-properties). Ne állítsa be mind a **azonosító** és **sqlQuery** tulajdonságait. Ha nem állít egy, a rendszer lekéri a teljes gyűjteményt. |
 |**sqlQuery**  |**SqlQuery**  | Egy Azure Cosmos adatbázis SQL-lekérdezésben használt több dokumentumot. A tulajdonság támogatja a futásidejű kötések, például: `SELECT * FROM c where c.departmentId = {departmentId}`. Ne állítsa be mind a **azonosító** és **sqlQuery** tulajdonságait. Ha nem állít egy, a rendszer lekéri a teljes gyűjteményt.|
-|**kapcsolat**     |**ConnectionStringSetting**|Az Alkalmazásbeállítás, amely tartalmazza az Azure Cosmos DB kapcsolati karakterlánc nevét.        |
+|**connection**     |**ConnectionStringSetting**|Az Alkalmazásbeállítás, amely tartalmazza az Azure Cosmos DB kapcsolati karakterlánc nevét.        |
 |**partitionKey**|**PartitionKey**|Meghatározza a partíció a keresési kulcs értékét. Előfordulhat, hogy tartalmazzák a kötési paraméterek esetében.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -485,7 +485,7 @@ A kötés segítségével Azure Cosmos DB kimeneti írni egy új dokumentumot Az
 Tekintse meg a nyelvspecifikus példát:
 
 * [C#](#output---c-example)
-* [C# parancsfájl (.csx)](#output---c-script-example)
+* [C# script (.csx)](#output---c-script-example)
 * [F#](#output---f-example)
 * [JavaScript](#output---javascript-example)
 
@@ -728,14 +728,14 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**típusa**     || meg kell `documentdb`.        |
-|**iránya**     || meg kell `out`.         |
-|**név**     || A kötési paraméter, a függvény a dokumentum jelölő neve.  |
+|**direction**     || meg kell `out`.         |
+|**name**     || A kötési paraméter, a függvény a dokumentum jelölő neve.  |
 |**databaseName** | **DatabaseName**|Az adatbázis, a gyűjteményt, ahol a dokumentum létre tartalmazó.     |
 |**collectionName** |**CollectionName**  | A gyűjtemény, ahol létrehozzák a dokumentum neve. |
 |**createIfNotExists**  |**CreateIfNotExists**    | Egy logikai értéket, amely azt jelzi, hogy a gyűjtemény létrehozása, ha még nem létezik. Az alapértelmezett érték *hamis* új gyűjtemények létrejövő fenntartott átviteli, amelyek hatással vannak költsége van. További tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/documentdb/) olvasható.  |
 |**partitionKey**|**PartitionKey** |Amikor `CreateIfNotExists` igaz értékű, meghatározza a partíció kulcs elérési útja a létrehozott gyűjteményhez.|
 |**collectionThroughput**|**CollectionThroughput**| Ha `CreateIfNotExists` igaz értékű, meghatározza a [átviteli](../cosmos-db/set-throughput.md) a létrehozott gyűjtemény.|
-|**kapcsolat**    |**ConnectionStringSetting** |Az Alkalmazásbeállítás, amely tartalmazza az Azure Cosmos DB kapcsolati karakterlánc nevét.        |
+|**connection**    |**ConnectionStringSetting** |Az Alkalmazásbeállítás, amely tartalmazza az Azure Cosmos DB kapcsolati karakterlánc nevét.        |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

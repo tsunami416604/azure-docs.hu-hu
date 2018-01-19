@@ -3,8 +3,8 @@ title: "A prémium szintű Azure Redis Cache adatmegőrzés konfigurálásáról
 description: "Megtudhatja, hogyan konfigurálhatja és kezelheti az adatmegőrzés a Premium szint Azure Redis Cache példányt"
 services: redis-cache
 documentationcenter: 
-author: steved0x
-manager: douge
+author: wesmc7777
+manager: cfowler
 editor: 
 ms.assetid: b01cf279-60a0-4711-8c5f-af22d9540d38
 ms.service: cache
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2017
-ms.author: sdanie
-ms.openlocfilehash: 638f0154d3a4fd091197a2da86374a053b31c4c0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: wesmc
+ms.openlocfilehash: 270158bbf85a58a48a367a091ad2b09a9d114b2b
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-redis-cache"></a>A prémium szintű Azure Redis Cache adatmegőrzés konfigurálásáról
 Azure Redis Cache-gyorsítótár mérete és a szolgáltatások, például a fürtszolgáltatás, az adatmegőrzésre és a virtuális hálózat támogatásának Premium szint szolgáltatásainak rugalmasság biztosító másik gyorsítótármappa ajánlatok rendelkezik. Ez a cikk ismerteti, hogyan adatmegőrzés konfigurálása prémium szintű Azure Redis Cache példányt.
@@ -179,7 +179,7 @@ Amikor a fürtszolgáltatás engedélyezve van, minden egyes shard a gyorsítót
 Egy átdolgozás után két készlet AOF fájlok tárolási szerepel. Újraírások a háttérben történik, és az első fájlkészlet hozzáfűzése, míg a második készlet hozzáfűzése set műveletek során a módosítsa úgy a gyorsítótár küldött. A biztonsági mentés során hiba esetén újraírások ideiglenesen tárolja, de egy átdolgozás befejeződése után azonnal törlődik.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Megtudhatja, hogyan további premium gyorsítótár-funkciók használatára.
 
 * [Az Azure Redis Cache prémium szintjének bemutatása](cache-premium-tier-intro.md)

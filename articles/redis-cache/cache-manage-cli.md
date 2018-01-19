@@ -3,8 +3,8 @@ title: "Azure parancssori felület használatával Azure Redis Cache kezelése |
 description: "Útmutató: az Azure parancssori felület telepítése bármilyen platformon, az Azure-fiókjába való kapcsolódáshoz használandó, és létrehozását és kezelését a Redis gyorsítótár az Azure parancssori felületen."
 services: redis-cache
 documentationcenter: 
-author: steved0x
-manager: douge
+author: wesmc7777
+manager: cfowler
 editor: 
 ms.assetid: 964ff245-859d-4bc1-bccf-62e4b3c1169f
 ms.service: cache
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: sdanie
-ms.openlocfilehash: d3a425251035e09bb3163fbb052669d0a874806f
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: wesmc
+ms.openlocfilehash: fdb0989af2215166b69f10474a0d22aab7b4d593
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="how-to-create-and-manage-azure-redis-cache-using-the-azure-command-line-interface-azure-cli"></a>Létrehozása és kezelése az Azure Redis Cache az Azure parancssori felület (CLI) használatával
 > [!div class="op_single_selector"]
@@ -48,20 +48,20 @@ Az alábbi tulajdonságokat használja a létrehozása és frissítése a Redis 
 | Tulajdonság | Kapcsoló | Leírás |
 | --- | --- | --- |
 | név |-n,--neve |A Redis gyorsítótárt neve. |
-| erőforráscsoport |-g,--erőforráscsoport |Az erőforráscsoport neve. |
+| erőforráscsoport |-g, --resource-group |Az erőforráscsoport neve. |
 | location |-l,--helye |Hely gyorsítótár létrehozásához. |
-| méret |-z, a--mérete |A Redis gyorsítótár méretét. Érvényes értékek: [C0, C1, C2, C3, C4, C5, C6, P1, P2, P3, P4] |
-| Termékváltozat |-x,--termékváltozat |Redis Termékváltozat. Egyike lehet: [alapszintű, Standard, Premium] |
-| enableNonSslPort |-e,--enable-nem-ssl-port |A Redis Cache EnableNonSslPort tulajdonsága. Adja hozzá ezt a jelzőt, ha azt szeretné, hogy a gyorsítótár a nem SSL Port engedélyezéséhez |
-| Konfigurációs redis |-c,--redis-konfiguráció |Konfigurációs redis. Konfigurációs kulcsok és értékek itt egy JSON formátumú karakterláncot adjon meg. Formátum: "{" ":""," ":" "}" |
-| Konfigurációs redis |-f,--redis-konfiguráció-fájl |Konfigurációs redis. Konfigurációs kulcsok és értékek itt tartalmazó fájl elérési útját adja meg. A következő fájl bejegyzés formátum: {"": "","": ""} |
+| méret |-z, --size |A Redis gyorsítótár méretét. Érvényes értékek: [C0, C1, C2, C3, C4, C5, C6, P1, P2, P3, P4] |
+| sku |-x,--termékváltozat |Redis Termékváltozat. Egyike lehet: [alapszintű, Standard, Premium] |
+| EnableNonSslPort |-e,--enable-nem-ssl-port |A Redis Cache EnableNonSslPort tulajdonsága. Adja hozzá ezt a jelzőt, ha azt szeretné, hogy a gyorsítótár a nem SSL Port engedélyezéséhez |
+| Konfigurációs redis |-c, --redis-configuration |Konfigurációs redis. Konfigurációs kulcsok és értékek itt egy JSON formátumú karakterláncot adjon meg. Formátum: "{" ":""," ":" "}" |
+| Konfigurációs redis |-f, --redis-configuration-file |Konfigurációs redis. Konfigurációs kulcsok és értékek itt tartalmazó fájl elérési útját adja meg. A következő fájl bejegyzés formátum: {"": "","": ""} |
 | A shard száma |-r,--shard-száma |Hozzon létre egy prémium szintű fürt gyorsítótár fürtözési a szilánkok száma. |
-| Virtual Network |-v, – virtuális hálózat |Esetén a VNETEN belül a gyorsítótárhoz, Azonosítóját adja meg a pontos ARM erőforrás a virtuális hálózati redis gyorsítótár telepítéséhez. Példa formátum: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
+| Virtual Network |-v, --virtual-network |Esetén a VNETEN belül a gyorsítótárhoz, Azonosítóját adja meg a pontos ARM erőforrás a virtuális hálózati redis gyorsítótár telepítéséhez. Példa formátum: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | kulcs típusa |-t,--kulcs-típus |Kulcs megújításához típusa. Érvényes értékek: [elsődleges, másodlagos] |
 | StaticIP |-p, – statikus ip-< ip-statikus > |Esetén a VNETEN belül a gyorsítótárhoz, adja meg egy egyedi IP-cím az alhálózat, a gyorsítótár. Ha nem ad meg, egy választja meg az alhálózatból. |
 | Alhálózat |t,--alhálózati<subnet> |Esetén a VNETEN belül a gyorsítótár, a neve, amelyben a gyorsítótár telepítendő alhálózat. |
 | VirtualNetwork |-v rendszerben--virtuális-< virtuális hálózatok > |Esetén a VNETEN belül a gyorsítótárhoz, Azonosítóját adja meg a pontos ARM erőforrás a virtuális hálózati redis gyorsítótár telepítéséhez. Példa formátum: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
-| Előfizetés |-s,--előfizetés |Az előfizetés-azonosító. |
+| Előfizetés |-s, --subscription |Az előfizetés-azonosító. |
 
 ## <a name="see-all-redis-cache-commands"></a>Tekintse meg az összes Redis Cache-parancsok
 Minden Redis Cache parancsot és paramétereket, használja a `azure rediscache -h` parancsot.

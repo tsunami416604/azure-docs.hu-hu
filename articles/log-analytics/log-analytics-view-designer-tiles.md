@@ -1,6 +1,6 @@
 ---
-title: "Hivatkozás csempéjén adatforrásnézet-tervezőből az OMS szolgáltatáshoz |} Microsoft Docs"
-description: "A Naplóelemzési adatforrásnézet-tervezőből lehetővé teszi egyéni nézeteket hozhat létre, amelyek tartalmazzák az OMS-tárházban található adatok különböző képi OMS-konzolon. Ez a cikk ismerteti a beállítások az egyes a csempék, hogy az egyéni nézetek használható hivatkozást."
+title: "Hivatkozás az Azure Naplóelemzés Nézettervező csempéjén |} Microsoft Docs"
+description: "A Naplóelemzési Nézettervező egyéni nézetek létrehozása az Azure portálon, amelyek tartalmazzák az adatok a Naplóelemzési munkaterület különböző képi teszi lehetővé. Ez a cikk ismerteti a beállítások az egyes a csempék, hogy az egyéni nézetek használható hivatkozást."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 01/17/2018
 ms.author: bwren
-ms.openlocfilehash: 2bce5c63b4c6edd3753f1b234cc4f493dcf53dea
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9512a3f45ba6b03af4b0c9bee444948381f4fdcb
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="log-analytics-view-designer-tile-reference"></a>Napló Analytics Nézettervező csempe leírása
-Az adatforrásnézet-tervezőből a Naplóelemzési lehetővé teszi egyéni nézeteket hozhat létre, amelyek tartalmazzák az OMS-tárházban található adatok különböző képi OMS-konzolon. Ez a cikk ismerteti a beállítások az egyes a csempék, hogy az egyéni nézetek használható hivatkozást.
+Az adatforrásnézet-tervezőből Naplóelemzési az egyéni nézetek létrehozása az Azure portálon, amelyek tartalmazzák az adatok a Naplóelemzési munkaterület különböző képi teszi lehetővé. Ez a cikk ismerteti a beállítások az egyes a csempék, hogy az egyéni nézetek használható hivatkozást.
 
 Az adatforrásnézet-tervezőből elérhető további cikkeit a következők:
 
@@ -33,7 +33,7 @@ Az adatforrásnézet-tervezőből elérhető további cikkeit a következők:
 
 Az alábbi táblázat a különböző típusú csempe érhető el az adatforrásnézet-tervezőből.  Az alábbi részek ismertetik a csempe típusonként részletek és azok tulajdonságait.
 
-| Mozaik elrendezés | Leírás |
+| Csempe | Leírás |
 |:--- |:--- |
 | [Szám](#number-tile) |Egyetlen szám megjelenítő lekérdezésből rekordok száma. |
 | [Két szám](#two-numbers-tile) |Két egyetlen szám megjelenítő számát is két különböző lekérdezéseket bejegyzéseit. |
@@ -49,7 +49,7 @@ A **szám** csempe egyetlen számot megjelenítő napló lekérdezés és a cím
 
 | Beállítás | Leírás |
 |:--- |:--- |
-| Név |A csempe tetején megjelenő szöveg. |
+| Name (Név) |A csempe tetején megjelenő szöveg. |
 | Leírás |A csempe neve alatt megjelenő szöveg. |
 | **Mozaik elrendezés** | |
 | Jelmagyarázat |Az érték alatt megjelenő szöveg. |
@@ -67,7 +67,7 @@ A **két szám** csempe megjeleníti az egyes rekordok két különböző napló
 
 | Beállítás | Leírás |
 |:--- |:--- |
-| Név |A csempe tetején megjelenő szöveg. |
+| Name (Név) |A csempe tetején megjelenő szöveg. |
 | Leírás |A csempe neve alatt megjelenő szöveg. |
 | **Első csempe** | |
 | Jelmagyarázat |Az érték alatt megjelenő szöveg. |
@@ -88,7 +88,7 @@ A **fánk** csempe egy egyetlen napló lekérdezésben érték oszlop összesít
 
 | Beállítás | Leírás |
 |:--- |:--- |
-| Név |A csempe tetején megjelenő szöveg. |
+| Name (Név) |A csempe tetején megjelenő szöveg. |
 | Leírás |A csempe neve alatt megjelenő szöveg. |
 | **Fánk** | |
 | Lekérdezés |Futtassa a fánk a lekérdezést.  Az első tulajdonság egy szöveges értéket, a második tulajdonság numerikus értéknek kell lennie.  Ez általában az a lekérdezés, amely használja a **mérték** , hogy összesítse a eredmények kulcsszó. |
@@ -112,7 +112,7 @@ A **vonaldiagram** csempe egy grafikonon napló lekérdezésből több adatsoroz
 
 | Beállítás | Leírás |
 |:--- |:--- |
-| Név |A csempe tetején megjelenő szöveg. |
+| Name (Név) |A csempe tetején megjelenő szöveg. |
 | Leírás |A csempe neve alatt megjelenő szöveg. |
 | **Vonaldiagram** | |
 | Lekérdezés |A lekérdezés a vonaldiagram fussanak.  Az első tulajdonság egy szöveges értéket, a második tulajdonság numerikus értéknek kell lennie.  Ez általában az a lekérdezés, amely használja a **mérték** , hogy összesítse a eredmények kulcsszó.  Ha a lekérdezés használ a **időköz** kulcsszót, majd az x tengely a diagram fogja használni az adott időszakban.  Ha a lekérdezés nem tartalmazza a **időköz** kulcsszót, majd óránként intervallumok x tengelyéhez szolgálnak. |
@@ -133,7 +133,7 @@ A **diagram & kihívás sor** csempe egy grafikonon napló lekérdezésből töb
 
 | Beállítás | Leírás |
 |:--- |:--- |
-| Név |A csempe tetején megjelenő szöveg. |
+| Name (Név) |A csempe tetején megjelenő szöveg. |
 | Leírás |A csempe neve alatt megjelenő szöveg. |
 | **Vonaldiagram** | |
 | Lekérdezés |A lekérdezés a vonaldiagram fussanak.  Az első tulajdonság egy szöveges értéket, a második tulajdonság numerikus értéknek kell lennie.  Ez általában az a lekérdezés, amely használja a **mérték** , hogy összesítse a eredmények kulcsszó.  Ha a lekérdezés használ a **időköz** kulcsszót, majd az x tengely a diagram fogja használni az adott időszakban.  Ha a lekérdezés nem tartalmazza a **időköz** kulcsszót, majd óránként intervallumok x tengelyéhez szolgálnak. |
@@ -158,7 +158,7 @@ A **két ütemtervek** csempe oszlopdiagramok idővel két naplófájl lekérdez
 
 | Beállítás | Leírás |
 |:--- |:--- |
-| Név |A csempe tetején megjelenő szöveg. |
+| Name (Név) |A csempe tetején megjelenő szöveg. |
 | Leírás |A csempe neve alatt megjelenő szöveg. |
 | Első diagram | |
 | Jelmagyarázat |Az első adatsorozathoz kihívás alatt megjelenő szöveg. |
@@ -176,6 +176,6 @@ A **két ütemtervek** csempe oszlopdiagramok idővel két naplófájl lekérdez
 | Üzenet |Ha az adatfolyam ellenőrzési lekérdezés visszaadja az adatot nem megjelenítendő üzenetet.  Ha megadja, hogy nincs üzenet *végrehajtása Assessment* jelenik meg. |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További tudnivalók [keresések jelentkezzen](log-analytics-log-searches.md) csempéiben lévő lekérdezések támogatásához.
 * Adja hozzá [képi megjelenítés részek](log-analytics-view-designer-parts.md) a egyéni nézetben.

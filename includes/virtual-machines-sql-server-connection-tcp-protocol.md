@@ -8,7 +8,7 @@
 
     ![A TCP engedélyezése](./media/virtual-machines-sql-server-connection-tcp-protocol/enable-tcp.png)
 
-1. A konzolablakban kattintson az **SQL Server Services** lehetőségre. Az SQL Server példányának leállításához és újraindításához a részleteket tartalmazó ablaktáblán kattintson a jobb gombbal az **SQL Server (*példánynév*)** (az alapértelmezett példány az **SQL Server (MSSQLSERVER)**) lehetőségre, majd az **Újraindítás** lehetőségre.
+1. A konzolablakban kattintson az **SQL Server Services** lehetőségre. A részleteket tartalmazó ablaktáblán kattintson a jobb gombbal **SQL Server (*példánynév*)** (az alapértelmezett példány **SQL Server (MSSQLSERVER)**), és kattintson a **újraindítása**, hogy állítsa le és indítsa újra az SQL Server-példányt.
 
     ![Az Adatbázismotor újraindítása](./media/virtual-machines-sql-server-connection-tcp-protocol/restart-sql-server.png)
 

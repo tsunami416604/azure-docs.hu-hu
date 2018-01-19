@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jeedes
-ms.openlocfilehash: b7c85dd01802bd67724e405f786481ba128e559a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c851c056095ef8e7fb40d7d2ead76457495b2118
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---globalprotect"></a>Oktatóanyag: Azure Active Directoryval integrált Palo Alto hálózatok - GlobalProtect
 
@@ -123,7 +123,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     
     | Attribútum neve | Attribútum értéke |
     | --- | --- |    
-    | felhasználónév | User.userPrincipalName |
+    | felhasználónév | user.userprincipalname |
 
     a. Kattintson a **Hozzáadás attribútum** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
 
@@ -146,7 +146,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/active-directory-saas-paloaltoglobalprotect-tutorial/tutorial_general_400.png)
 
-8. Nyissa meg a Palo Alto egy másik böngészőablakban rendszergazdaként.
+8. Nyissa meg a Palo Alto hálózatok tűzfal felügyeleti felhasználói felület egy másik böngészőablakban rendszergazdaként.
 
 9. Kattintson a **eszköz**.
 
@@ -160,7 +160,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Palo Alto egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-paloaltoglobalprotect-tutorial/tutorial_paloaltoadmin_admin3.png)
 
-    a. Az a **profilnév** szövegmező, adjon meg egy nevet például az Azure AD globális védelme.
+    a. Az a **profilnév** szövegmező, adjon meg egy nevet például Azure AD GlobalProtect.
     
     b. A **Identity Provider metaadatok**, kattintson a **Tallózás** jelölje ki a metadata.xml fájlt, amely az Azure-portálról letöltött
     
