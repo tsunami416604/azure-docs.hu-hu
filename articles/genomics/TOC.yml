@@ -17,10 +17,12 @@
           href: quickstart-input-bam.md
         - name: Több FASTQ- vagy BAM-fájl
           href: quickstart-input-multiple.md
-- name: Erőforrások
+- name: További források
   items:
     - name: Gyakori kérdések
       href: frequently-asked-questions-genomics.md
+    - name: Verziókiadások előzményei
+      href: version-release-history-genomics.md
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=cognitive-services'
     - name: Díjszabás
