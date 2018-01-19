@@ -52,7 +52,7 @@
 ## [REST](/rest/api/datalakeanalytics/)
 ## [Parancssori felület](https://docs.microsoft.com/cli/azure/dla)
 
-# Erőforrások
+# További források
 ## [Azure Data Lake blog](https://blogs.msdn.microsoft.com/azuredatalake/)
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=intelligence-analytics)
 ## [Visszajelzés küldése a UserVoice-ról](https://feedback.azure.com/forums/327234-data-lake)
@@ -61,3 +61,4 @@
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=data-lake-analytics)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-data-lake)
+## [Videók](https://azure.microsoft.com/resources/videos/index/?services=data-lake-analytics)

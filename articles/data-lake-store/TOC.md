@@ -12,7 +12,7 @@
 
 # Útmutató
 ## Adatok betöltése és áthelyezése
-### [Az Azure Data Factory használata](../data-factory/connector-azure-data-lake-store.md)
+### [Az Azure Data Factory használata](../data-factory/load-azure-data-lake-store.md)
 ### [Az AdlCopy használata](data-lake-store-copy-data-azure-storage-blob.md)
 ### [A DistCp használata](data-lake-store-copy-data-wasb-distcp.md)
 ### [A Sqoop használata](data-lake-store-data-transfer-sql-sqoop.md)
@@ -66,7 +66,7 @@
 ### [Hozzáférés virtuális gépekről az Azure VNET-ben](data-lake-store-connectivity-from-vnets.md)
 ### [Használat a Data Lake Analytics-szel](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 ### [Használat az Azure Event Hubs-eseményközpontokkal](data-lake-store-archive-eventhub-capture.md)
-### [Használat a Data Factory-val](../data-factory/connector-azure-data-lake-store.md)
+### [Használat a Data Factory-val](../data-factory/load-azure-data-lake-store.md)
 ### [Használat a Stream Analytics-szel](data-lake-store-stream-analytics.md)
 ### [Használat a Power BI-jal](data-lake-store-power-bi.md)
 ### [Használat a Data Cataloggal](data-lake-store-with-data-catalog.md)
