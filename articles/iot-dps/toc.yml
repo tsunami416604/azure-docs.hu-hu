@@ -77,11 +77,13 @@
       href: use-hsm-with-sdk.md
     - name: Eszközkiépítési szolgáltatás hozzáférés-vezérlése
       href: how-to-control-access.md
+    - name: A Device Provisioning Service kezelése az Azure CLI-vel
+      href: how-to-manage-dps-with-cli.md
 - name: Referencia
   items:
     - name: REST
       href: /rest/api/iot-dps
-- name: Erőforrások
+- name: További források
   items:
     - name: Azure IoT Hub
       href: 'https://azure.microsoft.com/services/iot-hub/'
