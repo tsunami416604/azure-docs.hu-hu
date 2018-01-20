@@ -142,7 +142,7 @@
           href: /rest/api/storagerp
         - name: Import/Export
           href: /rest/api/storageimportexport
-- name: Erőforrások
+- name: További források
   items:
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=storage'
