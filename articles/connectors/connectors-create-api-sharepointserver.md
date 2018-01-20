@@ -15,23 +15,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: 0f3274816e279a1aa57febaa2f8294914900799a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: da863e0249cb46e4e569812a851f3199d57b2107
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-sharepoint-connector"></a>A SharePoint-összekötő az első lépései
 A SharePoint-összekötő segítségével egy SharePoint-webhelyre listák használata.
 
-Hozzon létre egy logic app; első lépései Lásd: [logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md).
+Hozzon létre egy logic app; első lépései Lásd: [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="create-a-connection-to-sharepoint"></a>Kapcsolatot létesíthet SharePoint
 A SharePoint-összekötő használatához először létre kell hoznia egy **kapcsolat** adja meg a részleteket a tulajdonságok: 
 
 | Tulajdonság | Szükséges | Leírás |
 | --- | --- | --- |
-| Token |Igen |Adja meg a SharePoint rendszerbeli hitelesítő adatokat |
+| Jogkivonat |Igen |Adja meg a SharePoint rendszerbeli hitelesítő adatokat |
 
 Csatlakozni **SharePoint**, adja meg az identitás (felhasználónév és jelszó, intelligens kártyához tartozó hitelesítő adatok, stb.) a SharePoint. Amennyiben Ön már hitelesítve, folytassa a SharePoint-összekötő használatához a Logic Apps alkalmazást a. 
 

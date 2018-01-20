@@ -9,11 +9,11 @@ ms.workload: data-services
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: 4eb17466713aed93209e585c27fd6bb7220a97d9
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 7320b632c7bd623f5a0e67ecd105cf5b263969b3
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Az Azure-SSIS integrációs futásidejű tartozó nagyteljesítményű konfigurálása
 
@@ -26,7 +26,7 @@ Ez a cikk ismerteti az Azure-SSIS integrációs futásidejű (IR) tartozó nagyt
 
 A következő része egy konfigurációs parancsfájl jeleníti meg a tulajdonságokat, amelyeket konfigurálhat egy Azure-SSIS-integrációs futásidejű létrehozásakor. A teljes PowerShell-parancsfájlt és a leírás [Azure csomagok központi telepítése az SQL Server Integration Services](tutorial-deploy-ssis-packages-azure.md).
 
-```
+```powershell
 $SubscriptionName = "<Azure subscription name>"
 $ResourceGroupName = "<Azure resource group name>"
 # Data factory name. Must be globally unique
@@ -42,7 +42,7 @@ $AzureSSISLocation = "EastUS"
 $AzureSSISNodeSize = "Standard_A4_v2"
 # In public preview, only 1-10 nodes are supported.
 $AzureSSISNodeNumber = 2 
-# In public preview, only 1-8 parallel executions per node are supported.
+# For a Standard_D1_v2 node, 1-4 parallel executions per node are supported. For other nodes, it's 1-8.
 $AzureSSISMaxParallelExecutionsPerNode = 2 
 
 # SSISDB info
@@ -90,7 +90,8 @@ Ha sok csomagot kell futtatni, és Ön számára legfontosabb a teljes teljesít
 
 ## <a name="azuressismaxparallelexecutionspernode"></a>AzureSSISMaxParallelExecutionsPerNode
 
-Ha már használ egy hatékony munkavégző csomópont csomagok futtatásához, növekvő **AzureSSISMaxParallelExecutionsPerNode** növelheti a teljes teljesítményt integrációs futásidejű. A megfelelő értéket, a csomag és a következő beállításokat, az ezen csomópontokhoz tartozó költsége alapján megbecsülheti. További információkért lásd: [általános célú virtuálisgép-méretek](../virtual-machines/windows/sizes-general.md).
+Ha már használ egy hatékony munkavégző csomópont csomagok futtatásához, növekvő **AzureSSISMaxParallelExecutionsPerNode** növelheti a teljes teljesítményt integrációs futásidejű. Standard D1 v2 típusú csomópontok 1-4 párhuzamos végrehajtások csomópontonként támogatottak. Bármilyen típusú csomópontok 1-8 párhuzamos végrehajtások csomópontonként esetén támogatottak.
+A megfelelő értéket, a csomag és a következő beállításokat, az ezen csomópontokhoz tartozó költsége alapján megbecsülheti. További információkért lásd: [általános célú virtuálisgép-méretek](../virtual-machines/windows/sizes-general.md).
 
 | Méret             | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Ideiglenes tárterület maximális teljesítménye: IOPS / Olvasási MBps / Írási MBps | Adatlemezek max. száma / teljesítménye: IOPS | Hálózati adapterek max. száma / várt hálózati teljesítmény (Mbps) |
 |------------------|------|-------------|------------------------|------------------------------------------------------------|-----------------------------------|------------------------------------------------|
@@ -120,5 +121,5 @@ Az adatbázis árképzési szint alapján is módosíthatja [adatbázis tranzakc
 ## <a name="design-for-high-performance"></a>Nagy teljesítményű rendszer tervezése
 Egy SSIS-csomag futtatásához Azure tervezése eltér a helyszíni végrehajtási csomagok megtervezése. Ahelyett, hogy ugyanaz a csomag több független feladatokat kombinálásával, külön őket az az Azure-SSIS infravörös hatékonyabb végrehajtása több csomagot Hozzon létre egy csomag végrehajtását minden csomag esetében, így nem rendelkeznek várjon egymástól befejezéséhez. Ezt a módszert használja az Azure-SSIS-integrációs futásidejű méretezhetőségét előnyeivel, és növeli az általános teljesítményt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További tudnivalók az Azure-SSIS-integrációs futásidejű. Lásd: [Azure-SSIS integrációs futásidejű](concepts-integration-runtime.md#azure-ssis-integration-runtime).

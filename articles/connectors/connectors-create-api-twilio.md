@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 09/19/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: a790ac51b0fea7e3fa379d20e0e094e7ce0d7696
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 50361a3342a0d14ae02b2cb478bbb0f74b61bba0
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-twilio-connector"></a>A Twilio-összekötő az első lépései
 A globális SMS, MMS és IP-üzeneteket küldjön és fogadjon Twilio csatlakozni. A Twilio a következőket teheti:
@@ -27,14 +27,14 @@ A globális SMS, MMS és IP-üzeneteket küldjön és fogadjon Twilio csatlakozn
 * Az üzleti folyamat Twilio származó adatok alapján történő létrehozása. 
 * Egy üzenet, a lista üzenetek és a további műveleteket használni. Ezeket a műveleteket válaszol, és végezze el a kimeneti más műveletek érhető el. Például egy új Twilio-üzenetet kap, ha akkor igénybe ezt az üzenetet, és a Service Bus munkafolyamat használatával. 
 
-Hozzon létre egy logic app; első lépései Lásd: [logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md).
+Hozzon létre egy logic app; első lépései Lásd: [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="create-a-connection-to-twilio"></a>Kapcsolatot létesíthet Twilio
 Ezt az összekötőt a logic apps hozzáadásakor adja meg a következő Twilio-értékeket:
 
 | Tulajdonság | Szükséges | Leírás |
 | --- | --- | --- |
-| Futtatófiók-Azonosítóvá |Igen |Írja be a Twilio-fiók Azonosítóját |
+| Fiókazonosító |Igen |Írja be a Twilio-fiók Azonosítóját |
 | Hozzáférési jogkivonat |Igen |Adja meg a Twilio-hozzáférési jogkivonat |
 
 > [!INCLUDE [Steps to create a connection to Twilio](../../includes/connectors-create-api-twilio.md)]

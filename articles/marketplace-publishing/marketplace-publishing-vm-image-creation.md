@@ -14,11 +14,11 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
-ms.openlocfilehash: e37c55dbcc8de49aee32272b2f51b0792bef132c
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: c9b72c26649ddf5e15c6d8c36a732f2ca3e4aa30
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Útmutató a virtuálisgép-lemezkép létrehozása az Azure piactéren
 Ez a cikk **2. lépés**, végigvezeti azokon a virtuális merevlemezeket (VHD), ha telepíti az Azure piactéren előkészítése. A virtuális merevlemezek a Termékváltozat alapját. A folyamat eltér attól függően, hogy meg van adva egy Linux- vagy Windows-alapú Termékváltozat. Ez a cikk mindkét forgatókönyvet ismertet. Ez a folyamat végrehajtható párhuzamosan [fióklétrehozás és a regisztrációs][link-acct-creation].
@@ -58,7 +58,7 @@ Miután hozzáadta az ajánlatot, adja meg, és azonosítja a termékváltozatok
 3. Ha Windows-alapú termékváltozatokat használ, kövesse a javasolt hivatkozásokat a Windows Server jóváhagyott verzióinak beszerzéséhez.
 
 ## <a name="2-create-an-azure-compatible-vhd-linux-based"></a>2. Hozzon létre egy Azure-kompatibilis VHD-t (Linux-alapú)
-Ebben a szakaszban egy Linux-alapú Virtuálisgép-lemezkép létrehozása az Azure piactéren ajánlott eljárásai összpontosít. Részletes útmutató, tekintse meg az alábbi dokumentáció: [létrehozása és a Linux operációs rendszert tartalmazó virtuális merevlemez feltöltése](../virtual-machines/linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+Ebben a szakaszban egy Linux-alapú Virtuálisgép-lemezkép létrehozása az Azure piactéren ajánlott eljárásai összpontosít. Részletes útmutató, tekintse meg az alábbi dokumentáció: [létrehozása és a Linux operációs rendszert tartalmazó virtuális merevlemez feltöltése](../virtual-machines/linux/classic/create-upload-vhd-classic.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 
 ## <a name="3-create-an-azure-compatible-vhd-windows-based"></a>3. Hozzon létre egy Azure-kompatibilis VHD-t (Windows-alapú)
 Ez a szakasz a Windows Server meghatározásával az Azure piactéren SKU létrehozásához szükséges lépéseket összpontosít.
@@ -300,7 +300,7 @@ SAS URL-címet a virtuális merevlemez megosztása az Azure piactér többféle 
 Az alábbiakban a 3 javasolt eszközök:
 
 1.  Azure Storage Explorer
-2.  Microsoft Tártallózó
+2.  Microsoft Storage Explorer
 3.  Azure CLI
 
 **Az Azure Tártallózó (Windows-felhasználóknak javasolt)**
@@ -512,17 +512,17 @@ Miután létrehozta a ajánlatot és az SKU, írja be a Termékváltozat társí
 
 |Probléma|Hibaüzenet|Javítás|Dokumentáció-hivatkozás|
 |---|---|---|---|
-|Hiba történt a másolása lemezképek – "?" nem található az SAS URL-címe|Hiba: A képek másolása. Nem sikerült letölteni a blob segítségével SAS URI-t.|Frissítés az SAS URL-cím használata ajánlott eszközök|[https://Azure.microsoft.com/en-us/Documentation/articles/Storage-DotNet-Shared-Access-signature-Part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Hiba történt a Másolás lemezképek - "st" és "se" paraméterek nem az SAS URL-címe|Hiba: A képek másolása. Nem sikerült letölteni a blob segítségével SAS URI-t.|Az SAS URL-címet frissíteni a kezdő és befejező dátumok|[https://Azure.microsoft.com/en-us/Documentation/articles/Storage-DotNet-Shared-Access-signature-Part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Hiba történt a lemezképek - "sp = rl" nem SAS URL-címben másolása|Hiba: A képek másolása. Nem sikerült letölteni a blob SAS URI-jának használatával megadott|Az SAS URL-címet frissíteni beállítás "Read" & "lista engedélyekkel|[https://Azure.microsoft.com/en-us/Documentation/articles/Storage-DotNet-Shared-Access-signature-Part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Hiba történt a lemezképek - SAS URL-cím másolása szóközöket rendelkezik a virtuális merevlemez neve|Hiba: A képek másolása. Nem sikerült letölteni a blob segítségével SAS URI-t.|Frissítés az SAS URL-címet, szóközök nélkül|[https://Azure.microsoft.com/en-us/Documentation/articles/Storage-DotNet-Shared-Access-signature-Part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Hiba történt a lemezképek – SAS URL-engedélyezési hiba másolása|Hiba: A képek másolása. Töltse le a blob engedélyezési hiba miatt nem sikerült|Az SAS URL-cím újbóli létrehozása|[https://Azure.microsoft.com/en-us/Documentation/articles/Storage-DotNet-Shared-Access-signature-Part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Hiba történt a lemezképek – SAS URL-címe "st" és "se" paraméterek másolása nem rendelkezik a megadott dátum időpont|Hiba: A képek másolása. Nem sikerült letölteni a blob helytelen SAS URL-cím miatt |SAS URL-cím indítása és a záró dátum paraméter ("st", "m") kell lennie a dátum idejű specifikációját, például a 11-02-2017T00:00:00Z, és nem csak a dátum vagy idő rövidített verziók. Úgy is során az ebben a forgatókönyvben az Azure CLI 2.0 (az parancs) használja. Ne adja meg a dátum idejű megadását, majd újra létrehozza az SAS URL-címet.|[https://Azure.microsoft.com/Documentation/articles/Storage-DotNet-Shared-Access-signature-Part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Hiba történt a másolása lemezképek – "?" nem található az SAS URL-címe|Hiba: A képek másolása. Nem sikerült letölteni a blob segítségével SAS URI-t.|Frissítés az SAS URL-cím használata ajánlott eszközök|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Hiba történt a Másolás lemezképek - "st" és "se" paraméterek nem az SAS URL-címe|Hiba: A képek másolása. Nem sikerült letölteni a blob segítségével SAS URI-t.|Az SAS URL-címet frissíteni a kezdő és befejező dátumok|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Hiba történt a lemezképek - "sp = rl" nem SAS URL-címben másolása|Hiba: A képek másolása. Nem sikerült letölteni a blob SAS URI-jának használatával megadott|Az SAS URL-címet frissíteni beállítás "Read" & "lista engedélyekkel|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Hiba történt a lemezképek - SAS URL-cím másolása szóközöket rendelkezik a virtuális merevlemez neve|Hiba: A képek másolása. Nem sikerült letölteni a blob segítségével SAS URI-t.|Frissítés az SAS URL-címet, szóközök nélkül|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Hiba történt a lemezképek – SAS URL-engedélyezési hiba másolása|Hiba: A képek másolása. Töltse le a blob engedélyezési hiba miatt nem sikerült|Az SAS URL-cím újbóli létrehozása|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Hiba történt a lemezképek – SAS URL-címe "st" és "se" paraméterek másolása nem rendelkezik a megadott dátum időpont|Hiba: A képek másolása. Nem sikerült letölteni a blob helytelen SAS URL-cím miatt |SAS URL-cím indítása és a záró dátum paraméter ("st", "m") kell lennie a dátum idejű specifikációját, például a 11-02-2017T00:00:00Z, és nem csak a dátum vagy idő rövidített verziók. Úgy is során az ebben a forgatókönyvben az Azure CLI 2.0 (az parancs) használja. Ne adja meg a dátum idejű megadását, majd újra létrehozza az SAS URL-címet.|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 
 ## <a name="next-step"></a>Következő lépés
 Miután elkészült, az SKU-adatokkal, áthelyezheti előre a [Azure piactér marketing content útmutató][link-pushstaging]. Hogy a lépésben a közzétételi folyamat a marketing tartalmat, árképzési és más a szükséges információk biztosítása **3. lépés: a virtuális gép tesztelési kínálnak a tesztelési**, ahol tesztelni különböző használati eset forgatókönyvekben telepítése előtt a az Azure piactéren nyilvános látható és beszerzési biztosítson.  
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Első lépések: az ajánlat közzététele az Azure piactéren](marketplace-publishing-getting-started.md)
 
 [img-acom-1]:media/marketplace-publishing-vm-image-creation/vm-image-acom-datacenter.png

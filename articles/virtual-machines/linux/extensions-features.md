@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: danis
-ms.openlocfilehash: 59f718e0e547ed9374152985e706acad4421b35b
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 2797085d1e675f0e6608b6192736f939952ed98b
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Virtuálisgép-bővítmények és a Linux funkcióit
 
@@ -47,7 +47,7 @@ Minden egyes virtuálisgép-bővítmény előfordulhat, hogy rendelkeznek a saj�
 
 Az Azure Virtuálisgép-ügynök kezeli a Azure virtuális gép és az Azure fabric controller közötti kommunikációt. A Virtuálisgép-ügynök telepítése és kezelése az Azure virtuális gépeken, beleértve a Virtuálisgép-bővítmények futtató sok működési jellemzői felelős. Az Azure Virtuálisgép-ügynök telepítve van az Azure piactéren elérhető rendszerkép, és támogatott operációs rendszeren manuálisan telepíthető.
 
-Információ a támogatott operációs rendszerek és a telepítési utasításokat: [Azure virtuális gépi ügynöke](../windows/classic/agents-and-extensions.md).
+Információ a támogatott operációs rendszerek és a telepítési utasításokat: [Azure virtuális gépi ügynöke](../windows/classic/agents-and-extensions-classic.md).
 
 ## <a name="discover-vm-extensions"></a>Virtuálisgép-bővítmények felderítése
 
@@ -240,5 +240,5 @@ Az alábbi lépéseket követve az Azure portálon kiterjesztéssel megszünteth
 | Linux rendszeren egyéni parancsprogramok futtatására szolgáló bővítmény |Parancsfájlok futtatásához egy Azure virtuális gépen |[Linux rendszeren egyéni parancsprogramok futtatására szolgáló bővítmény](extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) |
 | Docker-bővítmény |Telepítse a Docker démon távoli Docker parancsok támogatására. |[Docker virtuálisgép-bővítmény](dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) |
 | Virtuálisgép-hozzáférési bővítmény |Újra hozzáférést nyerni egy Azure virtuális gépen |[Virtuálisgép-hozzáférési bővítmény](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) |
-| Azure Diagnostics-bővítményt |Az Azure Diagnostics kezelése |[Azure Diagnostics-bővítményt](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
+| Azure Diagnostics extension |Az Azure Diagnostics kezelése |[Azure Diagnostics-bővítményt](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
 | Az Azure virtuális gép hozzáférési bővítmény |Felhasználók és a hitelesítő adatok kezelése |[Linux virtuális gép hozzáférési bővítmény](https://azure.microsoft.com/en-us/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |

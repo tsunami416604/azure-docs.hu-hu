@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: danlep
-ms.openlocfilehash: e09b472a53c02b39bcf7ad06d228049b0a392452
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.openlocfilehash: 428dc1e8ba03ba17e348a33a33b5cf5e6118a43c
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="set-up-a-linux-rdma-cluster-to-run-mpi-applications"></a>Linuxos RDMA-fürt beállítása MPI-alkalmazások futtatására
 Ismerje meg, hogyan állíthat be az Azure-ban Linux RDMA fürt [nagy teljesítményű számítási Virtuálisgép-méretek](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) párhuzamos Message Passing Interface (MPI) alkalmazások futtatásához. Ez a cikk lépéseit Intel MPI futhat egy fürt Linux HPC lemezkép előkészítése. Előkészítő, miután a virtuális gépek használata a lemezkép és az RDMA-kompatibilis Azure Virtuálisgép-méretek, (jelenleg H16r, H16mr, A8 és A9) egy fürt központi telepítése. A fürt használatával, amely a távoli közvetlen memória-hozzáférés (RDMA) technológián alapulnak, alacsony késésű, nagy átviteli hálózati hatékonyan kommunikációhoz MPI-alkalmazások futtatására.
@@ -151,7 +151,7 @@ A lemezkép rögzítése, először futtassa a következő parancsot a Linux vir
 sudo waagent -deprovision
 ```
 
-Az ügyfélszámítógépről a következő parancsokat az Azure parancssori felület a lemezkép rögzítése. További információkért lásd: [rögzítése képként klasszikus Linuxos virtuális gép](capture-image.md).  
+Az ügyfélszámítógépről a következő parancsokat az Azure parancssori felület a lemezkép rögzítése. További információkért lásd: [rögzítése képként klasszikus Linuxos virtuális gép](capture-image-classic.md).  
 
 ```
 azure vm shutdown <vm-name>

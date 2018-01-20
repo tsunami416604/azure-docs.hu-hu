@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/18/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: 5335dae62e61659b68e8befb4ed0d404dffb800c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 51b8e3de639b5cce954547adb77ff13b79ad6747
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-office-365-outlook-connector"></a>Az Office 365 Outlook-összekötő az első lépései
 Az Office 365 Outlook-összekötő lehetővé teszi, hogy az Office 365 Outlook való együttműködéshez. Ez az összekötő segítségével létrehozása, szerkesztése, és frissítse a névjegyeket és a naptári elemek, és is, küldése és e-mail válaszolni.
@@ -37,7 +37,7 @@ Ez a témakör bemutatja, hogyan használható az Office 365 Outlook összeköt�
 > 
 > 
 
-A Logic Apps kapcsolatos további információkért lásd: [Mik azok a logic apps](../logic-apps/logic-apps-what-are-logic-apps.md) és [logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md).
+A Logic Apps kapcsolatos további információkért lásd: [Mik azok a logic apps](../logic-apps/logic-apps-overview.md) és [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="connect-to-office-365"></a>Csatlakozás az Office 365-höz
 A Logic Apps alkalmazást bármely szolgáltatás hozzáférni, először létre kell hoznia egy *kapcsolat* a szolgáltatáshoz. Egy kapcsolat egy logikai alkalmazást és egy másik szolgáltatás közötti kapcsolatot biztosít. Például Office 365 Outlook csatlakozhat, először az Office 365 *kapcsolat*. VPN-kapcsolat létrehozásához adja meg a hitelesítő adatok általában segítségével éri el a szolgáltatást, amelyhez csatlakozni szeretne. Ezért az Office 365 Outlook, adja meg a hitelesítő adatokat az Office 365-fiókra, a VPN-kapcsolat létrehozásához.
@@ -48,7 +48,7 @@ A Logic Apps alkalmazást bármely szolgáltatás hozzáférni, először létre
 > 
 
 ## <a name="use-a-trigger"></a>Eseményindítók
-Egy eseményindító nem egy eseményt, a logikai alkalmazás definiált munkafolyamat indításához használható. Eseményindítók "lekérdezésére" a szolgáltatás egy intervallum és a kívánt gyakoriságát. [További tudnivalók az eseményindítók](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).
+Egy eseményindító nem egy eseményt, a logikai alkalmazás definiált munkafolyamat indításához használható. Eseményindítók "lekérdezésére" a szolgáltatás egy intervallum és a kívánt gyakoriságát. [További tudnivalók az eseményindítók](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
 1. A logikai alkalmazásban írjon be egy "office 365" listájának az eseményindítók:  
    
@@ -69,7 +69,7 @@ Egy eseményindító nem egy eseményt, a logikai alkalmazás definiált munkafo
 4. **Mentés** a módosításokat (bal felső sarkában az eszköztár). A Logic Apps alkalmazást menti, és lehet, hogy automatikusan engedélyezve.
 
 ## <a name="use-an-action"></a>Egy művelettel
-Egy művelet során a logikai alkalmazás definiált munkafolyamat által végzett. [További információ a műveletek](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).
+Egy művelet során a logikai alkalmazás definiált munkafolyamat által végzett. [További információ a műveletek](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
 1. Kattintson a plusz ikonra. Több beállítások megtekintéséhez: **művelet hozzáadása**, **feltétel hozzáadása**, vagy az egyik a **további** beállítások.
    
@@ -94,6 +94,6 @@ Egy művelet során a logikai alkalmazás definiált munkafolyamat által végze
 
 Bármely eseményindítók és a swagger definiált műveletek megtekintése, és semmilyen határnak a Lásd még: a [connector részleteket](/connectors/office365connector/). 
 
-## <a name="next-steps"></a>Következő lépések
-[Logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md). Az egyéb rendelkezésre álló összekötők Logic Apps, megismerkedhet a [API-k lista](apis-list.md).
+## <a name="next-steps"></a>További lépések
+[Logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md). Az egyéb rendelkezésre álló összekötők Logic Apps, megismerkedhet a [API-k lista](apis-list.md).
 

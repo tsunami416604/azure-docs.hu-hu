@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: szark
-ms.openlocfilehash: 4496b34ff88ca1e08cc74788ae09d787d4399eaf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 42c2ecbff8ddb551f0eb9c5672ca7bf6feb65592
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Ubuntus virtuális gép előkészítése Azure-beli használatra
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="official-ubuntu-cloud-images"></a>Hivatalos Ubuntu felhő lemezképek
 Ubuntu most teszi közzé a következő hivatalos Azure VHD [http://cloud-images.ubuntu.com/](http://cloud-images.ubuntu.com/). Ha saját speciális Ubuntu rendszerkép létrehozása az Azure-van szüksége, ahelyett, hogy kövesse az alábbi manuális eljárást, mint ajánlott ezeket a VHD-k használata ismert kezdődnie, és igény szerint testre szabhatja. A kép Újdonságok mindig az alábbi helyeken találhatók:
 
-* Ubuntu 12.04/pontos: [ubuntu-12.04-server-cloudimg-amd64-disk1.vhd.zip](https://cloud-images.ubuntu.com/precise/current/precise-server-cloudimg-amd64-disk1.vhd.zip)
+* Ubuntu 12.04/Precise: [ubuntu-12.04-server-cloudimg-amd64-disk1.vhd.zip](https://cloud-images.ubuntu.com/precise/current/precise-server-cloudimg-amd64-disk1.vhd.zip)
 * Ubuntu 14.04/Trusty: [ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip](http://cloud-images.ubuntu.com/releases/trusty/release/ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip)
 * Ubuntu 16.04/Xenial: [ubuntu-16.04-server-cloudimg-amd64-disk1.vhd.zip](http://cloud-images.ubuntu.com/releases/xenial/release/ubuntu-16.04-server-cloudimg-amd64-disk1.vhd.zip)
 
@@ -102,8 +102,8 @@ Ez a cikk feltételezi, hogy már telepítette az Ubuntu Linux operációs rends
         # sudo reboot
 
     **Lásd még:**
-    - [https://wiki.ubuntu.com/kernel/LTSEnablementStack](https://wiki.ubuntu.com/Kernel/LTSEnablementStack)
-    - [https://wiki.ubuntu.com/kernel/RollingLTSEnablementStack](https://wiki.ubuntu.com/Kernel/RollingLTSEnablementStack)
+    - [https://wiki.ubuntu.com/Kernel/LTSEnablementStack](https://wiki.ubuntu.com/Kernel/LTSEnablementStack)
+    - [https://wiki.ubuntu.com/Kernel/RollingLTSEnablementStack](https://wiki.ubuntu.com/Kernel/RollingLTSEnablementStack)
 
 
 5. Módosítsa a kernel rendszerindító sort lárvajárat kiegészítő rendszermag paraméterek az Azure-bA felvenni. Ehhez a Megnyitás `/etc/default/grub` egy szövegszerkesztőt, keresse meg a változó neve `GRUB_CMDLINE_LINUX_DEFAULT` (vagy felveheti Ön is szükség esetén), és módosítsa az alábbi paramétereket tartalmazza:
@@ -130,12 +130,12 @@ Ez a cikk feltételezi, hogy már telepítette az Ubuntu Linux operációs rends
 
 9. Kattintson a **művelet le -> leállítási** a Hyper-V kezelőjében. A Linux virtuális merevlemez az Azure-bA feltölteni kívánt készen áll.
 
-## <a name="next-steps"></a>Következő lépések
-Most már készen áll az Ubuntu Linux virtuális merevlemez segítségével új virtuális gépek létrehozása az Azure-ban. Ha az első alkalommal, hogy van-e a .vhd fájl feltöltése az Azure, tekintse meg a 2. és 3 [létrehozása és feltöltése, a Linux operációs rendszert tartalmazó virtuális merevlemez](classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
+## <a name="next-steps"></a>További lépések
+Most már készen áll az Ubuntu Linux virtuális merevlemez segítségével új virtuális gépek létrehozása az Azure-ban. Ha az első alkalommal, hogy van-e a .vhd fájl feltöltése az Azure, tekintse meg a 2. és 3 [létrehozása és feltöltése, a Linux operációs rendszert tartalmazó virtuális merevlemez](classic/create-upload-vhd-classic.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
 
 ## <a name="references"></a>Referencia
 Ubuntu hardver engedélyezése (HWE) kernel:
 
-* [http://blog.utlemming.org/2015/01/ubuntu-1404-Azure-Images-Now-Tracking.HTML](http://blog.utlemming.org/2015/01/ubuntu-1404-azure-images-now-tracking.html)
-* [http://blog.utlemming.org/2015/02/1204-Azure-cloud-Images-Now-Using-hwe.HTML](http://blog.utlemming.org/2015/02/1204-azure-cloud-images-now-using-hwe.html)
+* [http://blog.utlemming.org/2015/01/ubuntu-1404-azure-images-now-tracking.html](http://blog.utlemming.org/2015/01/ubuntu-1404-azure-images-now-tracking.html)
+* [http://blog.utlemming.org/2015/02/1204-azure-cloud-images-now-using-hwe.html](http://blog.utlemming.org/2015/02/1204-azure-cloud-images-now-using-hwe.html)
 

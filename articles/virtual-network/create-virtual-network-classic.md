@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: 95c2f4fe40590a8d809f634fb5b2c92d07421bb0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 099e3c259f0b63e4376847727eb8e185aeb37380
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="create-a-virtual-network-classic-with-multiple-subnets"></a>Hozzon létre egy virtuális hálózat (klasszikus), több alhálózattal
 
@@ -46,7 +46,7 @@ Létrehozhat egy virtuális hálózat (klasszikus) használatával a [Azure-port
 
     |Beállítás|Érték|
     |---|---|
-    |Név|myVNet|
+    |Name (Név)|myVNet|
     |Címtér|10.0.0.0/16|
     |Alhálózat neve|Nyilvános|
     |Alhálózati címtartomány|10.0.0.0/24|
@@ -159,10 +159,10 @@ Létrehozhat egy virtuális hálózat (klasszikus) használatával a [Azure-port
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Minden virtuális hálózati és alhálózati beállításaival kapcsolatos további tudnivalókért lásd: [virtuális hálózatok kezeléséhez](virtual-network-manage-network.md) és [kezelheti a virtuális hálózati alhálózat](virtual-network-manage-subnet.md). Számos közül a virtuális hálózatok és alhálózatok éles környezetben különbözőek a követelmények teljesítéséhez.
 - Bejövő és kimenő forgalmat szűréséhez, létrehozása és alkalmazása [hálózati biztonsági csoportok](virtual-networks-nsg.md) alhálózatokra.
-- Hozzon létre egy [Windows](../virtual-machines/windows/classic/createportal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy egy [Linux](../virtual-machines/linux/classic/createportal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gépet, majd csatlakozzon egy létező virtuális hálózatot.
+- Hozzon létre egy [Windows](../virtual-machines/windows/classic/createportal-classic.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy egy [Linux](../virtual-machines/linux/classic/createportal-classic.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gépet, majd csatlakozzon egy létező virtuális hálózatot.
 - Csatlakozás Azure ugyanazon a helyen lévő két virtuális hálózatok, hozzon létre egy [virtuális hálózati társviszony-létesítés](create-peering-different-deployment-models.md) a virtuális hálózatok között. A virtuális hálózat (klasszikus) is egyenrangú a egy virtuális hálózat (Resource Manager), de nem hozható létre társviszony-létesítés (klasszikus) virtuális hálózatok között.
 - A virtuális hálózati csatlakozás egy helyszíni hálózat segítségével egy [VPN-átjáró](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [Azure ExpressRoute](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json) körön.

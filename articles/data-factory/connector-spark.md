@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: jingwang
-ms.openlocfilehash: ba25bb71857ee91cc078fd87de074f0ea954b558
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 0107c0e02e7158ad73671ae8e4599e1e998f20fc
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="copy-data-from-spark-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatához Spark 
 
@@ -35,7 +35,7 @@ Az Azure Data Factory kapcsolódásának engedélyezése beépített illesztőpr
 
 ## <a name="getting-started"></a>Első lépések
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
 
 A következő szakaszok részletesen bemutatják megadhatók a Data Factory tartozó entitások Spark-összekötőhöz használt tulajdonságokat.
 
@@ -48,9 +48,9 @@ A következő tulajdonságok kapcsolódó Spark szolgáltatást támogatja:
 | type | A type tulajdonságot kell beállítani: **Spark** | Igen |
 | gazdagép | A Spark-kiszolgáló IP-címét vagy állomásnevét kiszolgálónevét  | Igen |
 | port | A TCP-portot, amelyen a külső kiszolgáló ügyfélkapcsolatokat.  | Igen |
-| serverType típusa | A külső kiszolgáló típusa. <br/>Két érték engedélyezett: **SharkServer**, **SharkServer2**, **SparkThriftServer** | Nem |
+| serverType | A külső kiszolgáló típusa. <br/>Két érték engedélyezett: **SharkServer**, **SharkServer2**, **SparkThriftServer** | Nem |
 | thriftTransportProtocol | Az átviteli protokoll a Thrift-rétegben használatára. <br/>Két érték engedélyezett: **bináris**, **SASL**, ** HTTP ** | Nem |
-| AuthenticationType | A Spark on server eléréséhez használt hitelesítési módszert. <br/>Két érték engedélyezett: **névtelen**, **felhasználónév**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Igen |
+| authenticationType | A Spark on server eléréséhez használt hitelesítési módszert. <br/>Két érték engedélyezett: **névtelen**, **felhasználónév**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Igen |
 | felhasználónév | A Spark-kiszolgáló eléréséhez használt felhasználónév.  | Nem |
 | jelszó | A jelszót, amit a felhasználónév mezőben megadott felhasználónév megfelelő esetén dönthet úgy, hogy a SecureString tárolja biztonságos helyen az ADF, vagy az Azure Key Vault jelszó tárolására, és lehetővé teszik a másolási tevékenység lekéréses ott adatmásolás - végrehajtása során, a jelölőnégyzet bejelölésével vezetővonalak a további RN [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). | Nem |
 | httpPath | A részleges URL-címet a Spark-kiszolgáló megfelelő.  | Nem |

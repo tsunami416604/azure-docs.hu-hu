@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 09/26/2016
 ms.author: plarsen; ladocs
-ms.openlocfilehash: 4501b3d9a2fdc00582596cb907f7130591e4782e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7ad246ede7e891de42235443c1bc6a90b88ad5ac
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-db2-connector"></a>Ismerkedjen meg a DB2-összekötő
 Microsoft DB2-összekötő Logic Apps csatlakozik egy IBM DB2-adatbázisban tárolt erőforrások. Ez az összekötő tartalmazza a Microsoft TCP/IP-hálózaton keresztül DB2-kiszolgáló távoli számítógépekkel folytatott kommunikációhoz. Ez magában foglalja a felhőalapú adatbázisok, például az IBM Bluemix dashDB vagy a Windows Azure virtualizálási futó IBM DB2 és a helyszíni adatbázisokat az helyszíni átjáró használatával. Tekintse meg a [lista támogatott](connectors-create-api-db2.md#supported-db2-platforms-and-versions) IBM DB2-platformok és-verziói (Ez a témakör).
@@ -35,14 +35,14 @@ A DB2-összekötő a következő adatbázis műveleteket támogatja:
 
 Ez a témakör bemutatja, hogyan az összekötő használatára a logikai alkalmazás folyamat adatbázis műveletekhez.
 
-A Logic Apps kapcsolatos további információkért lásd: [logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md).
+A Logic Apps kapcsolatos további információkért lásd: [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="available-actions"></a>Rendelkezésre álló műveletek
 A DB2-összekötő a következő logic app műveleteket támogatja:
 
 * GetTables
 * GetRow
-* GetRows hívás
+* GetRows
 * InsertRow
 * UpdateRow
 * DeleteRow
@@ -87,7 +87,7 @@ Ez az összekötő-példányokhoz-adatbázisok védelmét a helyszíni és a fel
 | --- | --- |
 | kiszolgáló |Kötelező. Egy karakterláncértéket, amely egy TCP/IP-cím vagy az alias, IPv4 vagy IPv6 formátumú, majd (pontosvesszővel elválasztott) egy TCP/IP-portszám fogad el. |
 | adatbázis |Kötelező. Fogadja el a DRDA relációs adatbázis nevét (RDBNAM) jelölő karakterlánc-érték. Z/os DB2 fogad el egy 16 bájtos karakterlánc (adatbázis egy IBM DB2 z/OS helyének nevezzük). DB2 i5/os fogad el egy 18-többbájtos karakterlánc (adatbázis egy IBM DB2 a néven relációs i adatbázis). A LUW DB2 egy 8 bájtos karakterlánc fogad el. |
-| Hitelesítés |Választható. Fogadja el a cikk listaértéket, alapszintű vagy a Windows (kerberos). |
+| hitelesítés |Választható. Fogadja el a cikk listaértéket, alapszintű vagy a Windows (kerberos). |
 | felhasználónév |Kötelező. Egy karakterláncértéket fogad el. Z/os DB2 egy 8 bájtos karakterlánc fogad el. DB2 az i fogad el egy 10 – többbájtos karakterlánc. A Linux vagy UNIX DB2 egy 8 bájtos karakterlánc fogad el. DB2 Windows 30 bájtos karakterlánc fogad el. |
 | jelszó |Kötelező. Egy karakterláncértéket fogad el. |
 | Átjáró |Kötelező. Elem listaértéket, az a helyszíni átjáró meghatározott a Logic Apps a tárolócsoport képviselő fogad el. |
@@ -280,6 +280,6 @@ Ez az összekötő támogatja a következő IBM DB2-platformok és verziók, val
 
 Bármely eseményindítók és a swagger definiált műveletek megtekintése, és semmilyen határnak a Lásd még: a [connector részleteket](/connectors/db2/). 
 
-## <a name="next-steps"></a>Következő lépések
-[Logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md). Az egyéb rendelkezésre álló összekötők Logic Apps, megismerkedhet a [API-k lista](apis-list.md).
+## <a name="next-steps"></a>További lépések
+[Logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md). Az egyéb rendelkezésre álló összekötők Logic Apps, megismerkedhet a [API-k lista](apis-list.md).
 

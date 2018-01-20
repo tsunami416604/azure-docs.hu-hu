@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/29/2017
+ms.date: 1/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: d892c5979d0dec54767fe5a9ef84b05739683604
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 923778e54a1ae5967d681751841c3a2b3fb45130
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="service-fabric-application-lifecycle"></a>A Service Fabric-alkalmazás életciklusa
 És egyéb platformok, az alkalmazás Azure Service Fabric általában végig kell vinnie a következő fázisok: tervezési, fejlesztési, tesztelési, telepítési, frissítésére, karbantartási és eltávolítása. A Service Fabric első osztályú támogatást nyújt a teljes alkalmazás életciklusa a felhőalapú alkalmazások, a fejlesztését a telepítés, a napi felügyeleti és a karbantartás végleges leszerelése. A modell lehetővé teszi, hogy az alkalmazás-életciklus egymástól függetlenül részt számos különböző szerepkörrel. Ez a cikk áttekintést nyújt az API-k és azok használata során a Service Fabric-alkalmazás életciklusa fázisai a különböző szerepkörökhöz.
@@ -91,11 +91,11 @@ Tekintse meg a [frissítési oktatóanyag](service-fabric-application-upgrade-tu
 
 Lásd: [alkalmazás üzembe helyezése](service-fabric-deploy-remove-applications.md) példákat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információk fejlesztésével tesztelése és a Service Fabric-alkalmazások és szolgáltatások kezelése::
 
 * [Reliable Actors](service-fabric-reliable-actors-introduction.md)
 * [Reliable Services](service-fabric-reliable-services-introduction.md)
 * [Alkalmazás üzembe helyezése](service-fabric-deploy-remove-applications.md)
-* [Az alkalmazásfrissítés](service-fabric-application-upgrade.md)
+* [Alkalmazásfrissítés](service-fabric-application-upgrade.md)
 * [Tesztelhetőségi áttekintése](service-fabric-testability-overview.md)

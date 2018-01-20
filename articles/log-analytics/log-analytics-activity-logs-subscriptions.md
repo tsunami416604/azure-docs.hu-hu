@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/08/2018
 ms.author: richrund; bwren
-ms.openlocfilehash: d8c970b322be7f735e51c7b246b2421589c91813
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: ded0b4cdcbac747d52435023a24b5719f3c58758
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>Azure tevékenységi naplóit gyűjtése a Log Analyticshez való előfizetések
 
@@ -27,7 +27,7 @@ Ha a Naplóelemzési munkaterület azonos Azure-előfizetést, vagy egy másik e
 
 ## <a name="overview"></a>Áttekintés
 
-Az ebben a forgatókönyvben használt stratégia az, hogy elküldje az eseményeket az Azure tevékenységnapló egy [Eseményközpont](../event-hubs/event-hubs-what-is-event-hubs.md) ahol egy [logikai alkalmazás](../logic-apps/logic-apps-what-are-logic-apps.md) elküldi azokat a Naplóelemzési munkaterület. 
+Az ebben a forgatókönyvben használt stratégia az, hogy elküldje az eseményeket az Azure tevékenységnapló egy [Eseményközpont](../event-hubs/event-hubs-what-is-event-hubs.md) ahol egy [logikai alkalmazás](../logic-apps/logic-apps-overview.md) elküldi azokat a Naplóelemzési munkaterület. 
 
 ![a tevékenység napló a log analyticshez adatfolyama](media/log-analytics-activity-logs-subscriptions/data-flow-overview.png)
 
@@ -141,9 +141,9 @@ Az event Hub nevét és a kapcsolati karakterlánc lekéréséhez kövesse [elle
 
 A Logic Apps Designer felhasználható összekötőt és az eseményindítók, amellyel mely a logic app munkafolyamat indítása most látható.
 
-<!-- Learn [how to create a logic app](../logic-apps/logic-apps-create-a-logic-app.md). -->
+<!-- Learn [how to create a logic app](../logic-apps/quickstart-create-first-logic-app-workflow.md). -->
 
-### <a name="add-event-hub-trigger"></a>Az Event Hubs eseményindító hozzáadása
+### <a name="add-event-hub-trigger"></a>Add Event Hub trigger
 
 1. Írja be a keresőmezőbe a Logic App Designer *az event hubs* a szűrőhöz. Válassza ki az eseményindító **Event Hubs - amikor események állnak rendelkezésre az Eseményközpont**.
 
@@ -305,7 +305,7 @@ A [Azure naplógyűjtő Analytics adatok](https://docs.microsoft.com/connectors/
    |---------------|---------------------------|--------------|
    |JSON-kérelem törzsét.  | **Kimeneti** a a **Compose** művelet | A rekordok átveszi a Compose művelet törzsét. |
    | Egyéni napló neve | AzureActivity | Az egyéni napló tábla létrehozása az importált adatok tárolásához Naplóelemzési a neve. |
-   | idő generált mező | time | Ne válassza a JSON mezőt **idő** -csak írja be a word időt. Ha bejelöli a JSON mezőt a Tervező helyezi a **adatok küldése** a művelet egy *minden* hurkot állítana elő, ami nem szeretné. |
+   | Time-generated-field | time | Ne válassza a JSON mezőt **idő** -csak írja be a word időt. Ha bejelöli a JSON mezőt a Tervező helyezi a **adatok küldése** a művelet egy *minden* hurkot állítana elő, ami nem szeretné. |
 
 
 

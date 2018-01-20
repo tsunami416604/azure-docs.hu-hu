@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
-ms.openlocfilehash: a03c71d2691478b17864d6cc5ec4c0c55caef477
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: b47451bb8e53154760b893e452649f15ffdff7f9
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="how-to-attach-a-data-disk-to-a-linux-virtual-machine"></a>Hogyan lehet adatlemezt csatolni egy Linux virtuális gép
 > [!IMPORTANT] 
@@ -213,7 +213,7 @@ Két módon vágást engedélyezése támogatja a Linux virtuális gép van. A s
     sudo fstrim /datadrive
     ```
   
-    **RHEL vagy CentOS**
+    **RHEL/CentOS**
   
     ```bash
     sudo yum install util-linux
@@ -227,7 +227,7 @@ Két módon vágást engedélyezése támogatja a Linux virtuális gép van. A s
 További információk a Linux virtuális gép használata a következő cikkekben:
 
 * [Bejelentkezés a Linux rendszerű virtuális gép][Logon]
-* [Útmutató a lemezt leválasztani a Linux virtuális gépek](detach-disk.md)
+* [Útmutató a lemezt leválasztani a Linux virtuális gépek](detach-disk-classic.md)
 * [A klasszikus telepítési modellt az Azure parancssori felület használatával](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
 * [A Linux virtuális gép RAID konfigurálása az Azure-ban](../configure-raid.md)
 * [A Linux virtuális gép az Azure-ban LVM konfigurálása](../configure-lvm.md)

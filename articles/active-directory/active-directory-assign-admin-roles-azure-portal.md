@@ -1,6 +1,6 @@
 ---
 title: "Rendszergazdai szerepkörök hozzárendelése az Azure Active Directory |} Microsoft Docs"
-description: "Egy rendszergazdai szerepkörrel is hozzon létre vagy felhasználók szerkesztése, rendszergazdai szerepkörök hozzárendelése mások, felhasználók új jelszavainak létrehozására, felhasználói licencek kezelése vagy tartományok kezelése. A rendszergazda szerepkörrel felruházott felhasználó ugyanazokkal az engedélyekkel rendelkezik, amelyhez a szervezet előfizetett összes felhőszolgáltatás."
+description: "Egy rendszergazdai szerepkörrel is vegye fel a felhasználók, rendszergazdai szerepkörök hozzárendelése, felhasználók új jelszavainak létrehozására, felhasználói licencek kezelése vagy tartományok kezelése. A rendszergazda szerepkörrel felruházott felhasználó ugyanazokkal az engedélyekkel rendelkezik, amelyhez a szervezet előfizetett összes felhőszolgáltatás."
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/13/2017
+ms.date: 01/19/2018
 ms.author: curtand
 ms.reviewer: Vince.Smith
 ms.custom: it-pro;
-ms.openlocfilehash: 66df4d709b60f2eb80329b8527b2a6edeb123168
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 051212e3771b20cc901efcd54a81d4cfb4274002
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Rendszergazdai jogosultságok kiosztása az Azure Active Directoryban
 
@@ -65,7 +65,7 @@ A következő rendszergazdai szerepkörök állnak rendelkezésre:
 
 * **Támogatási réteg 2 partnereinek**: ne használja. Ez a szerepkör elavult, és eltávolítja az Azure AD a jövőben. Ez a szerepkör van néhány továbbértékesítése Microsoft-partnerek számára készült, és nem általános használatra szánt.
 
-* **Jelszókezelő / segélyszolgálat rendszergazda**: Ezzel a szerepkörrel rendelkező felhasználók jelszavak alaphelyzetbe állítása, szolgáltatáskérések kezelése és figyelése a szolgáltatás állapotát. Jelszókezelők jelszavát állíthatják alaphelyzetbe állíthatja a jelszavakat, csak a felhasználók és más jelszókezelők jelszavát állíthatják.
+* **Jelszókezelő / segélyszolgálat rendszergazda**: Ezzel a szerepkörrel rendelkező felhasználók jelszavak módosítása, szolgáltatáskérések kezelése és figyelése a szolgáltatás állapotát. Segélyszolgálat rendszergazdák jelszavak csak a felhasználók és más segélyszolgálat rendszergazdák módosíthatják. 
 
   > [!NOTE]
   > A Microsoft Graph API-val, a Azure AD Graph API és az Azure AD PowerShell a szerepkör azonosítja "Segélyszolgálat rendszergazda". A "Jelszó-rendszergazda" a [Azure-portálon](https://portal.azure.com/).
@@ -91,41 +91,41 @@ A következő rendszergazdai szerepkörök állnak rendelkezésre:
   >
   >
 
-* **Felhasználói fiók rendszergazdai**: Ezzel a szerepkörrel rendelkező felhasználók hozhat létre és kezelheti a felhasználók és csoportok összes tulajdonságát. Emellett ez a szerepkör lehetővé teszi a támogatási jegyek kezelése, és figyeli a szolgáltatás állapotát. Bizonyos korlátozások vonatkoznak. Például a szerepkör nem teszi lehetővé a globális rendszergazda törlése, és lehetővé teszi a nem rendszergazda jelszavak módosítása, amíg nem teszi lehetővé a globális rendszergazdák jelszavakat és egyéb jogosultsággal rendelkező rendszergazdák módosítása.
+* **Felhasználói fiók rendszergazdai**: Ezzel a szerepkörrel rendelkező felhasználók hozhat létre és kezelheti a felhasználók és csoportok összes tulajdonságát. Emellett ez a szerepkör lehetővé teszi a támogatási jegyek kezelése, és figyeli a szolgáltatás állapotát. Bizonyos korlátozások vonatkoznak. Például a szerepkör nem teszi lehetővé egy globális rendszergazda törlése. Felhasználói fiók rendszergazdák módosíthatják a jelszavak felhasználók, rendszergazdák segélyszolgálati és egyéb felhasználói fiók csak rendszergazdák.
 
 ## <a name="administrator-permissions"></a>Rendszergazdai engedélyek
 
-### <a name="billing-administrator"></a>Számlázási rendszergazda
+### <a name="billing-administrator"></a>Számlázási adminisztrátor
 
 | Teheti meg | Nem hajtható végre |
 | --- | --- |
-|<p>Vállalati és felhasználói adatok megtekintése</p><p>Office támogatási jegyek kezelése</p><p>Office-termékek számlázási és beszerzési műveletek végrehajtása</p> |<p>Felhasználói jelszavak átállítása</p><p>Hozzon létre és kezelheti a felhasználói nézetek</p><p>Létrehozása, szerkesztése, törlése a felhasználók és csoportok és felhasználói licencek kezelése</p><p>Tartományok kezelése</p><p>Vállalati adatok kezelése</p><p>Rendszergazdai szerepkörök delegálása</p><p>Címtár-szinkronizálás</p><p>Auditnaplók megtekintése</p>|
+|<p>Vállalati és felhasználói adatok megtekintése</p><p>Office támogatási jegyek kezelése</p><p>Office-termékek számlázási és beszerzési műveletek végrehajtása</p> |<p>Felhasználói jelszavak átállítása</p><p>Hozzon létre és kezelheti a felhasználói nézetek</p><p>Létrehozása, szerkesztése, törlése a felhasználók és csoportok és felhasználói licencek kezelése</p><p>Manage domains</p><p>Vállalati adatok kezelése</p><p>Rendszergazdai szerepkörök delegálása</p><p>Címtár-szinkronizálás</p><p>Auditnaplók megtekintése</p>|
 
 ### <a name="conditional-access-administrator"></a>Feltételes hozzáférés-rendszergazda
 
 | Teheti meg | Nem hajtható végre |
 | --- | --- |
-|<p>Vállalati és felhasználói adatok megtekintése</p><p>Feltételes hozzáférési beállításainak kezelése</p> |<p>Felhasználói jelszavak átállítása</p><p>Hozzon létre és kezelheti a felhasználói nézetek</p><p>Létrehozása, szerkesztése, törlése a felhasználók és csoportok és felhasználói licencek kezelése</p><p>Tartományok kezelése</p><p>Vállalati adatok kezelése</p><p>Rendszergazdai szerepkörök delegálása</p><p>Címtár-szinkronizálás</p><p>Auditnaplók megtekintése</p>|
+|<p>Vállalati és felhasználói adatok megtekintése</p><p>Feltételes hozzáférési beállításainak kezelése</p> |<p>Felhasználói jelszavak átállítása</p><p>Hozzon létre és kezelheti a felhasználói nézetek</p><p>Létrehozása, szerkesztése, törlése a felhasználók és csoportok és felhasználói licencek kezelése</p><p>Manage domains</p><p>Vállalati adatok kezelése</p><p>Rendszergazdai szerepkörök delegálása</p><p>Címtár-szinkronizálás</p><p>Auditnaplók megtekintése</p>|
 
 ### <a name="global-administrator"></a>Globális rendszergazda
 | Teheti meg | Nem hajtható végre |
 | --- | --- |
-|<p>Vállalati és felhasználói adatok megtekintése</p><p>Office támogatási jegyek kezelése</p><p>Office-termékek számlázási és beszerzési műveletek végrehajtása</p><p>Felhasználói jelszavak átállítása</p><p>Állítsa vissza a többi rendszergazda jelszavát</p> <p>Hozzon létre és kezelheti a felhasználói nézetek</p><p>Létrehozása, szerkesztése, törlése a felhasználók és csoportok és felhasználói licencek kezelése</p><p>Tartományok kezelése</p><p>Vállalati adatok kezelése</p><p>Rendszergazdai szerepkörök delegálása</p><p>Címtár-szinkronizálás</p><p>Engedélyezheti vagy tilthatja le a többtényezős hitelesítés</p><p>Auditnaplók megtekintése</p> |N/A |
+|<p>Vállalati és felhasználói adatok megtekintése</p><p>Office támogatási jegyek kezelése</p><p>Office-termékek számlázási és beszerzési műveletek végrehajtása</p><p>Felhasználói jelszavak átállítása</p><p>Állítsa vissza a többi rendszergazda jelszavát</p> <p>Hozzon létre és kezelheti a felhasználói nézetek</p><p>Létrehozása, szerkesztése, törlése a felhasználók és csoportok és felhasználói licencek kezelése</p><p>Manage domains</p><p>Vállalati adatok kezelése</p><p>Rendszergazdai szerepkörök delegálása</p><p>Címtár-szinkronizálás</p><p>Engedélyezheti vagy tilthatja le a többtényezős hitelesítés</p><p>Auditnaplók megtekintése</p> |– |
 
-### <a name="password-administrator"></a>Jelszókezelő
+### <a name="password-administrator--helpdesk-administrator"></a>Jelszókezelő / segélyszolgálat rendszergazda
 | Teheti meg | Nem hajtható végre |
 | --- | --- |
-| <p>Vállalati és felhasználói adatok megtekintése</p><p>Office támogatási jegyek kezelése</p><p>Felhasználói jelszavak átállítása</p> <p>Állítsa vissza a többi rendszergazda jelszavát</p>|<p>Office-termékek számlázási és beszerzési műveletek végrehajtása</p><p>Hozzon létre és kezelheti a felhasználói nézetek</p><p>Létrehozása, szerkesztése, törlése a felhasználók és csoportok és felhasználói licencek kezelése</p><p>Tartományok kezelése</p><p>Vállalati adatok kezelése</p><p>Rendszergazdai szerepkörök delegálása</p><p>Címtár-szinkronizálás</p><p>Jelentések megtekintése</p>|
+| <p>Vállalati és felhasználói adatok megtekintése</p><p>Office támogatási jegyek kezelése</p><p>Módosíthatja a felhasználók és más segélyszolgálat-rendszergazdák jelszavát</p>|<p>Office-termékek számlázási és beszerzési műveletek végrehajtása</p><p>Hozzon létre és kezelheti a felhasználói nézetek</p><p>Létrehozása, szerkesztése, törlése a felhasználók és csoportok és felhasználói licencek kezelése</p><p>Manage domains</p><p>Vállalati adatok kezelése</p><p>Rendszergazdai szerepkörök delegálása</p><p>Címtár-szinkronizálás</p><p>Jelentések megtekintése</p>|
 
-### <a name="service-administrator"></a>Szolgáltatás-rendszergazda
+### <a name="service-administrator"></a>Szolgáltatásadminisztrátor
 | Teheti meg | Nem hajtható végre |
 | --- | --- |
-| <p>Vállalati és felhasználói adatok megtekintése</p><p>Office támogatási jegyek kezelése</p> |<p>Felhasználói jelszavak átállítása</p><p>Office-termékek számlázási és beszerzési műveletek végrehajtása</p><p>Hozzon létre és kezelheti a felhasználói nézetek</p><p>Létrehozása, szerkesztése, törlése a felhasználók és csoportok és felhasználói licencek kezelése</p><p>Tartományok kezelése</p><p>Vállalati adatok kezelése</p><p>Rendszergazdai szerepkörök delegálása</p><p>Címtár-szinkronizálás</p><p>Auditnaplók megtekintése</p> |
+| <p>Vállalati és felhasználói adatok megtekintése</p><p>Office támogatási jegyek kezelése</p> |<p>Felhasználói jelszavak átállítása</p><p>Office-termékek számlázási és beszerzési műveletek végrehajtása</p><p>Hozzon létre és kezelheti a felhasználói nézetek</p><p>Létrehozása, szerkesztése, törlése a felhasználók és csoportok és felhasználói licencek kezelése</p><p>Manage domains</p><p>Vállalati adatok kezelése</p><p>Rendszergazdai szerepkörök delegálása</p><p>Címtár-szinkronizálás</p><p>Auditnaplók megtekintése</p> |
 
-### <a name="user-administrator"></a>Felhasználó rendszergazda
+### <a name="user-account-administrator"></a>Felhasználói fiók rendszergazdája
 | Teheti meg | Nem hajtható végre |
 | --- | --- |
-| <p>Vállalati és felhasználói adatok megtekintése</p><p>Office támogatási jegyek kezelése</p><p>Felhasználók új jelszavainak létrehozására, korlátozásokkal.</p><p>Állítsa vissza a többi rendszergazda jelszavát</p><p>Más felhasználók jelszavát alaphelyzetbe állítása</p><p>Hozzon létre és kezelheti a felhasználói nézetek</p><p>Létrehozása, szerkesztése, és a felhasználók és csoportok törlésére és korlátozásokkal a felhasználói licencek kezelése. Őt nem törölhet globális rendszergazdát, és hozhat létre más rendszergazdákat.</p> |<p>Office-termékek számlázási és beszerzési műveletek végrehajtása</p><p>Tartományok kezelése</p><p>Vállalati adatok kezelése</p><p>Rendszergazdai szerepkörök delegálása</p><p>Címtár-szinkronizálás</p><p>Engedélyezheti vagy tilthatja le a többtényezős hitelesítés</p><p>Auditnaplók megtekintése</p> |
+| <p>Vállalati és felhasználói adatok megtekintése</p><p>Office támogatási jegyek kezelése</p><p>Felhasználók, rendszergazdák segélyszolgálati és egyéb felhasználói fiók rendszergazdák csak jelszavak módosítása</p><p>Hozzon létre és kezelheti a felhasználói nézetek</p><p>Létrehozása, szerkesztése, és a felhasználók és csoportok törlésére és korlátozásokkal a felhasználói licencek kezelése. Őt nem törölhet globális rendszergazdát, és hozhat létre más rendszergazdákat.</p> |<p>Office-termékek számlázási és beszerzési műveletek végrehajtása</p><p>Manage domains</p><p>Vállalati adatok kezelése</p><p>Rendszergazdai szerepkörök delegálása</p><p>Címtár-szinkronizálás</p><p>Engedélyezheti vagy tilthatja le a többtényezős hitelesítés</p><p>Auditnaplók megtekintése</p> |
 
 ### <a name="security-reader"></a>Biztonsági olvasó
 | A | Teheti meg |
@@ -165,14 +165,14 @@ Rendszergazdai szerepkörök hozzárendelése az Azure Active Directoryban a fel
 
 A következő szerepkörök nem használható. Ezek már elavult, és az Azure AD a jövőben törlődni fog.
 
-* Ad hoc licenc rendszergazda
-* E-mailek ellenőrzése létrehozó felhasználó
+* Speciális licencek adminisztrátora
+* Ellenőrzött e-mail című felhasználó-létrehozó
 * Csatlakozás bármilyen eszközről
-* Eszköz-kezelők
+* Eszközkezelők
 * Eszközök felhasználói
-* Munkahelyi csatlakozás bármilyen eszközről
+* Munkahelyi eszköz-csatlakoztatás
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az Azure-előfizetések rendszergazdáinak módosításáról további információ: [Azure-rendszergazdai szerepkörök felvétele vagy módosítása](../billing-add-change-azure-subscription-administrator.md)
 * Az erőforrások hozzáférésének Microsoft Azure-ban történő kezeléséről további információért lásd: [Az erőforrások hozzáférésének megismerése az Azure-ban](active-directory-understanding-resource-access.md)

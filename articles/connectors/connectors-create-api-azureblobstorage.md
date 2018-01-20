@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 05/02/2017
 ms.author: mandia; ladocs
-ms.openlocfilehash: bc7908868828bd1628633cf9e57f8c44f8000827
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e12669abd41f09d161fab786af29955da54a1633
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="use-the-azure-blob-storage-connector-in-a-logic-app"></a>A logikai alkalmazás az Azure blob storage-összekötő használatára
 Az Azure Blob storage-összekötő használatával töltse fel, frissítése, beszerzése, illetve törölni a blobot, amely a tárfiókon belül egy logikai alkalmazást.  
@@ -31,9 +31,7 @@ Az Azure blob storage szolgáltatással meg:
 
 Ez a témakör bemutatja, hogyan a blob storage összekötő használatára a logikai alkalmazás.
 
-A Logic Apps kapcsolatos további információkért lásd: [Mik azok a logic apps](../logic-apps/logic-apps-what-are-logic-apps.md) és [logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md).
-
-A Logic Apps kapcsolatos további információkért lásd: [Mik azok a logic apps](../logic-apps/logic-apps-what-are-logic-apps.md) és [logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md).
+A Logic Apps kapcsolatos további információkért lásd: [Mik azok a logic apps](../logic-apps/logic-apps-overview.md) és [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="connect-to-azure-blob-storage"></a>Csatlakozás az Azure blob storage
 A Logic Apps alkalmazást bármely szolgáltatás hozzáférni, először létre kell hoznia egy *kapcsolat* a szolgáltatáshoz. Egy kapcsolat egy logikai alkalmazást és egy másik szolgáltatás közötti kapcsolatot biztosít. Például szeretne csatlakozni egy tárfiókot, először létre kell hoznia egy blob-tároló *kapcsolat*. VPN-kapcsolat létrehozásához adja meg a hitelesítő adatokkal kell általában hozzáférhetnek a szolgáltatáshoz való kapcsolódás esetén. Ezért az Azure storage adja meg a hitelesítő adatokat a tárfiókhoz a VPN-kapcsolat létrehozásához. 
@@ -42,7 +40,7 @@ A Logic Apps alkalmazást bármely szolgáltatás hozzáférni, először létre
 > [!INCLUDE [Create a connection to Azure blob storage](../../includes/connectors-create-api-azureblobstorage.md)]
 
 ## <a name="use-a-trigger"></a>Eseményindítók
-Ez az összekötő nem rendelkezik a eseményindítókat. Más eseményindítók segítségével indítsa el a logikai alkalmazás, például az ismétlődési eseményindítót, egy HTTP Webhook eseményindító, eseményindítók érhető el a többi összekötőt, és több. [Logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md) példaként szolgál.
+Ez az összekötő nem rendelkezik a eseményindítókat. Más eseményindítók segítségével indítsa el a logikai alkalmazás, például az ismétlődési eseményindítót, egy HTTP Webhook eseményindító, eseményindítók érhető el a többi összekötőt, és több. [Logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md) példaként szolgál.
 
 ## <a name="use-an-action"></a>Egy művelettel
 Egy művelet során a logikai alkalmazás definiált munkafolyamat által végzett.
@@ -73,6 +71,6 @@ Egy művelet során a logikai alkalmazás definiált munkafolyamat által végze
 
 Bármely eseményindítók és a swagger definiált műveletek megtekintése, és semmilyen határnak a Lásd még: a [connector részleteket](/connectors/azureblobconnector/). 
 
-## <a name="next-steps"></a>Következő lépések
-[Logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md). Az egyéb rendelkezésre álló összekötők Logic Apps, megismerkedhet a [API-k lista](apis-list.md).
+## <a name="next-steps"></a>További lépések
+[Logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md). Az egyéb rendelkezésre álló összekötők Logic Apps, megismerkedhet a [API-k lista](apis-list.md).
 

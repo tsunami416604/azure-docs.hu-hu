@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 82b2bcf5b05288888714339af15ff2796d9660bd
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 1eeef5b522996146eed6be393692b3c0a4a8747f
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Részletes SSH hibaelhárításának lépései az Azure Linux virtuális gép csatlakozni
 Nincsenek számos oka lehet, hogy az SSH-ügyfél nem feltétlenül tudni elérni az SSH szolgáltatás a virtuális Gépen. Ha már elvégezte a több keresztül [hibaelhárítási lépések általános SSH](troubleshoot-ssh-connection.md), további hibáinak kapcsolódási problémáját. Ez a cikk végigvezeti részletes hibaelhárítási lépések elvégzésével ellenőrizheti, ha az SSH-kapcsolat nem működik, és a megoldásának módjával.
@@ -120,7 +120,7 @@ A lehetséges problémák utolsó forrása az Azure virtuális gép saját magá
 
 ![Diagram, amely kiemeli a Linux-alapú Azure virtuális gépek](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot5.png)
 
-Ha még nem tette meg, kövesse az utasításokat [jelszó vagy SSH a Linux-alapú virtuális gépek alaphelyzetbe](classic/reset-access.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
+Ha még nem tette meg, kövesse az utasításokat [jelszó vagy SSH a Linux-alapú virtuális gépek alaphelyzetbe](classic/reset-access-classic.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
 
 Próbáljon újra kapcsolódni a számítógépről. Ha továbbra is sikertelen, az alábbiakban a lehetséges problémákat:
 

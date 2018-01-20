@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/31/2017
 ms.author: estfan; LADocs
-ms.openlocfilehash: 2ca27fb8269d1796fb1181fc4d0a8744a592d548
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a7f31c2c17d326d58ede0bb00cdc0f701069ea14
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="monitor-receive-and-send-events-with-the-event-hubs-connector"></a>Figyelése, fogadására és küldi az eseményeket az Event Hubs-összekötő használatával
 
@@ -30,7 +30,7 @@ Az eseményfigyelő beállítása, hogy a Logic Apps alkalmazást képesek észl
 
 * Rendelkeznie kell egy [Event Hubs-névteret és Eseményközpont](../event-hubs/event-hubs-create.md) az Azure-ban. Ismerje meg, [az Event Hubs névtér és az Eseményközpont létrehozása](../event-hubs/event-hubs-create.md). 
 
-* Használandó [a csatlakozókat](https://docs.microsoft.com/azure/connectors/apis-list) a Logic Apps alkalmazást fel kell először hozzon létre egy logikai alkalmazást. Ismerje meg, [logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md).
+* Használandó [a csatlakozókat](https://docs.microsoft.com/azure/connectors/apis-list) a Logic Apps alkalmazást fel kell először hozzon létre egy logikai alkalmazást. Ismerje meg, [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 <a name="permissions-connection-string"></a>
 ## <a name="check-event-hubs-namespace-permissions-and-find-the-connection-string"></a>Ellenőrizze az Event Hubs névtér engedélyeit, és keresse meg a kapcsolati karakterláncot
@@ -64,7 +64,7 @@ Ellenőrizze az engedélyeit, és a kapcsolati karakterláncot, kövesse az alá
 
 ## <a name="start-workflow-when-your-event-hub-receives-new-events"></a>Ha az Eseményközpont kap új események munkafolyamat indítása
 
-A [ *eseményindító* ](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts) olyan esemény, amely a Logic Apps alkalmazást a munkamenet indítása. Indítani egy munkafolyamatot, ha új események küldhetők az Eseményközpontba, kövesse az alábbi lépéseket az eseményindító által észlelt Ez az esemény felvételéhez.
+A [ *eseményindító* ](../logic-apps/logic-apps-overview.md#logic-app-concepts) olyan esemény, amely a Logic Apps alkalmazást a munkamenet indítása. Indítani egy munkafolyamatot, ha új események küldhetők az Eseményközpontba, kövesse az alábbi lépéseket az eseményindító által észlelt Ez az esemény felvételéhez.
 
 1.  Az a [Azure-portálon](https://portal.azure.com "Azure-portálon"), látogasson el a meglévő Logic Apps alkalmazást, vagy hozzon létre egy üres logikai alkalmazást.
 
@@ -94,7 +94,7 @@ A [ *eseményindító* ](../logic-apps/logic-apps-what-are-logic-apps.md#logic-a
 
 ## <a name="send-events-to-your-event-hub-from-your-logic-app"></a>Események küldése az Eseményközpont a logikai alkalmazás
 
-A [*művelet*](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts) a logikai alkalmazás munkafolyamata által végrehajtott feladat. Miután hozzáadott egy eseményindítót a logikai alkalmazáshoz, hozzáadhat egy műveletet is, amely további műveleteket végez el az eseményindító által előállított adatokkal. Esemény küldése az Eseményközpont a logic App, kövesse az alábbi lépéseket.
+A [*művelet*](../logic-apps/logic-apps-overview.md#logic-app-concepts) a logikai alkalmazás munkafolyamata által végrehajtott feladat. Miután hozzáadott egy eseményindítót a logikai alkalmazáshoz, hozzáadhat egy műveletet is, amely további műveleteket végez el az eseményindító által előállított adatokkal. Esemény küldése az Eseményközpont a logic App, kövesse az alábbi lépéseket.
 
 1.  Logic App tervezőben, a logic app eseményindító alatt válassza a **új lépés** > **művelet hozzáadása**.
 
@@ -131,6 +131,6 @@ Látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.co
 
 Ha szeretne segíteni a Logic Apps és összekötők fejlesztésében, szavazzon vagy küldje el javaslatait a [Logic Apps felhasználói visszajelzések oldalon](http://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 *  [Más összekötők keresése Azure Logic Apps alkalmazások](./apis-list.md)

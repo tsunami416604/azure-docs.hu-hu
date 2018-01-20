@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
-ms.openlocfilehash: 5f4f7052d48b4ca4ed91212d970551141e78e852
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6cde5b8ba8d770a07199816286b666e952394de1
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-delay-and-delay-until-actions"></a>Bevezetés az a késleltetés és a késleltetés-ig műveletek
 A késleltetés használatával és a "késleltetés-amíg" műveletek, befejezheti a munkafolyamatokban.
@@ -29,7 +29,7 @@ Megteheti például a következőt:
 * Várjon, amíg a hét napja állapotfrissítés keresztül e-mailek küldése.
 * A munkafolyamat elhalasztani, amíg egy HTTP-hívás befejezését, mielőtt folytatja a futtatását, és az eredmény beolvasása idő tartozik.
 
-Első lépések egy logikai alkalmazás késleltetés műveletével, lásd: [logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md).
+Első lépések egy logikai alkalmazás késleltetés műveletével, lásd: [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="use-the-delay-actions"></a>A késleltetés műveletek használata
 Egy művelet során, amely a logikai alkalmazás definiált munkafolyamat végzi. [További információ a műveletek](connectors-overview.md).
@@ -45,7 +45,7 @@ Egy művelet során, amely a logikai alkalmazás definiált munkafolyamat végzi
     ![Késleltetési konfiguráció](./media/connectors-native-delay/using-action-2.png)
 4. Kattintson a **mentése** közzététele, és aktiválja a logikai alkalmazást.
 
-## <a name="action-details"></a>A művelet részletei
+## <a name="action-details"></a>Művelet részletei
 Az ismétlődési eseményindító tulajdonságai a következők konfigurálható.
 
 ### <a name="delay-action"></a>Késleltetés művelet
@@ -54,7 +54,7 @@ A * azt jelenti, hogy mezőt kötelező kitölteni.
 
 | Megjelenített név | Tulajdonság neve | Leírás |
 | --- | --- | --- |
-| Száma * |Száma |A késleltetési idő egységek száma |
+| Száma * |darab |A késleltetési idő egységek száma |
 | Egység * |egység |Időegység: `Second`, `Minute`, `Hour`, vagy`Day` |
 
 <br>
@@ -71,6 +71,6 @@ A * azt jelenti, hogy mezőt kötelező kitölteni.
 
 <br>
 
-## <a name="next-steps"></a>Következő lépések
-Most, próbálja ki a platformot és [logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md). Az egyéb rendelkezésre álló összekötők logic Apps alkalmazások felmérésével felfedezheti a [API-k lista](apis-list.md).
+## <a name="next-steps"></a>További lépések
+Most, próbálja ki a platformot és [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md). Az egyéb rendelkezésre álló összekötők logic Apps alkalmazások felmérésével felfedezheti a [API-k lista](apis-list.md).
 

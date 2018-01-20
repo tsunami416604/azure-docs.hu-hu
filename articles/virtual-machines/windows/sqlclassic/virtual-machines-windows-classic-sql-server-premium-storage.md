@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: jroth
-ms.openlocfilehash: ad4b5aeed645512774f1a3ecf94de37beff26b22
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: f637e3c744d61f6fda755c162609d7cc9f4619c7
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Az Azure Premium Storage és az SQL Server együttes használata virtuális gépeken
 ## <a name="overview"></a>Áttekintés
@@ -119,7 +119,7 @@ Az egyes lemezek tegye a következőket:
 
 1. Virtuális gép és csatlakoztatott lemezek listájának beszerzése a **Get-AzureVM** parancs:
 
-    Get-AzureVM - ServiceName <servicename> -név <vmname> |} Get-AzureDataDisk
+    Get-AzureVM -ServiceName <servicename> -Name <vmname> | Get-AzureDataDisk
 2. Jegyezze fel a Diskname és a logikai Egységet.
 
     ![DisknameAndLUN][2]
@@ -132,7 +132,7 @@ Az egyes lemezek tegye a következőket:
     ![VirtualDiskPropertyDetails][4]
 6. Minden egyes tárolókészlethez memóriakép el a társított lemezekkel:
 
-    Get-StoragePool - FriendlyName AMS1pooldata |} Get-PhysicalDisk
+    Get-StoragePool -FriendlyName AMS1pooldata | Get-PhysicalDisk
 
     ![GetStoragePool][5]
 
@@ -270,7 +270,7 @@ Ebben a forgatókönyvben azt mutatja be, melyekben egy standard szintű tárfi�
 
 
 #### <a name="step-3-use-existing-image"></a>3. lépés: A meglévő kép használata
-Egy meglévő lemezképet is használhatja. Is [igénybe vehet egy meglévő számítógép lemezképét](../classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Vegye figyelembe a gépet, akkor kép nem kell Tartományi * géphez. Miután a lemezképet, a következőket mutatják be a prémium szintű Storage-fiókkal, és másolja a **Start-AzureStorageBlobCopy** PowerShell-parancsmag segítségével.
+Egy meglévő lemezképet is használhatja. Is [igénybe vehet egy meglévő számítógép lemezképét](../classic/capture-image-classic.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Vegye figyelembe a gépet, akkor kép nem kell Tartományi * géphez. Miután a lemezképet, a következőket mutatják be a prémium szintű Storage-fiókkal, és másolja a **Start-AzureStorageBlobCopy** PowerShell-parancsmag segítségével.
 
     #Get storage account keys:
     #Standard Storage account
@@ -549,13 +549,13 @@ Ez a forgatókönyv feltételezi, hogy rendelkezik saját telepítési dokument�
 Ez a témakör további része a többhelyes mindig a fürt átalakítani a prémium szintű Storage egy részletes példát biztosít. Is átalakítja a figyelő a külső terheléselosztással (ELB) egy belső terheléselosztón (ILB).
 
 ### <a name="environment"></a>Környezet
-* 2 KB-os Windows 12 / 2 KB-os SQL 12
+* Windows 2k12 / SQL 2k12
 * SP 1 DB fájlok
 * Tárolókészletek csomópontonként x 2
 
 ![Appendix1][11]
 
-### <a name="vm"></a>VIRTUÁLIS GÉP:
+### <a name="vm"></a>VM:
 Ebben a példában fogjuk áthelyezése egy üzembe helyezett ELB ILB bemutatása. Üzembe helyezett ELB volt elérhető ILB, mielőtt, így ez azt jelenti, hogy hogyan lehet váltani a az áttelepítés során.
 
 ![Appendix2][12]

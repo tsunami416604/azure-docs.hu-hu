@@ -15,23 +15,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/18/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: fc5fc128efe01bd0727e3ff30d8938918e89ac3a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 04ea4508495b227d6ace4a3105f283c474c51d14
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-slack-connector"></a>A Slack-összekötő az első lépései
 A Slack egy csoportos kommunikációs eszköz, amely a csoporton belüli összes kommunikációt egy helyre fogja össze. Ez a hely azonnal kereshető, és bárhonnan elérhető. 
 
-Első lépések egy logikai alkalmazás létrehozása most; Lásd: [logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md).
+Első lépések egy logikai alkalmazás létrehozása most; Lásd: [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="create-a-connection-to-slack"></a>Kapcsolatot létesíthet a Slackhez
 A Slack-összekötő használatához először létre kell hoznia egy **kapcsolat** adja meg a részleteket a tulajdonságok: 
 
 | Tulajdonság | Szükséges | Leírás |
 | --- | --- | --- |
-| Token |Igen |Adja meg a Slack hitelesítő adatok |
+| Jogkivonat |Igen |Slack hitelesítő adatok megadása |
 
 Kövesse az alábbi lépéseket követve jelentkezzen be a Slackhez, és konfigurációjához a Slackhez, **kapcsolat** a logikai alkalmazásban:
 

@@ -15,17 +15,17 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 2/14/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: e7f5cf483d22e4c60dedbe5176ceb0bc8b2b6e66
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 614e07ad9fcbe9ad3684ed977f7ffa36e727dddc
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="design-build-and-deploy-azure-logic-apps-in-visual-studio"></a>Tervezési, elkészítéséhez és központi telepítése az Azure Logic Apps a Visual Studióban
 
 Bár a [Azure-portálon](https://portal.azure.com/) létrehozása és kezelése az Azure Logic Apps remek mód kínál, tervezési, kiépítési és a logic Apps alkalmazások telepítése a Visual Studio is használhatja. A Visual Studio hasonlóan ahhoz, hogy a logic Apps alkalmazások létrehozása, telepítése és az automatizálás sablonok konfigurálása és telepítése bármilyen környezethez a Logic App Designer hatékony eszközöket biztosít. 
 
-Ismerkedés az Azure Logic Apps, ismerje meg [az első logikai alkalmazás létrehozása az Azure portálon](logic-apps-create-a-logic-app.md).
+Ismerkedés az Azure Logic Apps, ismerje meg [az első logikai alkalmazás létrehozása az Azure portálon](quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="installation-steps"></a>Telepítés lépései
 
@@ -109,7 +109,7 @@ Ha azt szeretné, hogy a logikai alkalmazás függő erőforrásokra kell hivatk
 Eseményindítók és műveletek az ilyen típusú logic app paramétereket használhatja:
 
 *   Alárendelt munkafolyamat
-*   Függvény alkalmazás
+*   Függvényalkalmazás
 *   APIM hívás
 *   API kapcsolat futásidejű URL-címe
 *   API-kapcsolati útvonal
@@ -228,9 +228,9 @@ Ha egy meglévő erőforráscsoport-projekt, adhat hozzá a logikai alkalmazás 
     
 4. Az a **erőforrás hozzáadása** párbeszédpanel, keresése és kijelölése **logikai alkalmazás**. A logikai alkalmazás neve, és válassza a **Hozzáadás**.
 
-    ![Erőforrás hozzáadása](./media/logic-apps-deploy-from-vs/addresource.png)
+    ![Erőforrás felvétele](./media/logic-apps-deploy-from-vs/addresource.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A Visual Studio Cloud Explorer logic Apps-alkalmazások kezelése](logic-apps-manage-from-vs.md)
 * [Gyakori példák és felhasználási helyzetek megtekintése](logic-apps-examples-and-scenarios.md)

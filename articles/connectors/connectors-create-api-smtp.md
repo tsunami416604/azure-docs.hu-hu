@@ -1,6 +1,6 @@
 ---
 title: "Az Azure Logic Apps összekötőt |} Microsoft Docs"
-description: "Az Azure App service logic Apps alkalmazások létrehozása Az SMTP protokoll e-mailek továbbítására szolgál."
+description: "Az Azure App service logic Apps alkalmazások létrehozása E-mail küldhető SMTP csatlakozni."
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: MandiOhlinger
@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 07/15/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: 1cf96bbf8bd215d7ddb3c99860a5cb4e668be3c2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6544a8e81a1c84fbd09e60b3f06c5fd308a18dcf
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-smtp-connector"></a>Az SMTP-összekötő az első lépései
-Az SMTP protokoll e-mailek továbbítására szolgál.
+E-mail küldhető SMTP csatlakozni.
 
-Használandó [a csatlakozókat](apis-list.md), először hozzon létre egy logikai alkalmazást. Elkezdheti által [logikai alkalmazás létrehozása most](../logic-apps/logic-apps-create-a-logic-app.md).
+Használandó [a csatlakozókat](apis-list.md), először hozzon létre egy logikai alkalmazást. Elkezdheti által [logikai alkalmazás létrehozása most](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="connect-to-smtp"></a>SMTP kapcsolódni
 A Logic Apps alkalmazást bármely szolgáltatás hozzáférni, először hozzon létre egy *kapcsolat* a szolgáltatáshoz. A [kapcsolat](connectors-overview.md) biztosít a logikai alkalmazás és egy másik szolgáltatás közötti kapcsolat. Például szeretne csatlakozni az SMTP, először egy SMTP *kapcsolat*. VPN-kapcsolat létrehozásához adja meg a hitelesítő adatok általában segítségével éri el a szolgáltatást, hogy csatlakozni. Igen a SMTP példában adja meg a hitelesítő adatokat a kapcsolat neve, az SMTP-kiszolgáló címére és a felhasználói bejelentkezésekre vonatkozó információit az SMTP-kapcsolat létrehozásához.  
@@ -35,7 +35,7 @@ A Logic Apps alkalmazást bármely szolgáltatás hozzáférni, először hozzon
 > 
 
 ## <a name="use-an-smtp-trigger"></a>Az SMTP-eseményindító használata
-Egy eseményindító nem egy eseményt, a logikai alkalmazás definiált munkafolyamat indításához használható. [További tudnivalók az eseményindítók](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).
+Egy eseményindító nem egy eseményt, a logikai alkalmazás definiált munkafolyamat indításához használható. [További tudnivalók az eseményindítók](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
 Ebben a példában, mert SMTP nem rendelkezik saját, eseményindító fogjuk használni a **Salesforce - amikor létrejön egy objektum** eseményindító. Ehhez az eseményindítóhoz akkor aktiválódik, amikor új objektumot hoz létre a Salesforce-ban. A példa kedvéért be azt, hogy minden alkalommal új vezető jön létre a Salesforce, egy *e-mailek küldése* , egy értesítés, amely a létrehozandó új vezető az SMTP-összekötőn keresztül valósul meg.
 
@@ -49,7 +49,7 @@ Ebben a példában, mert SMTP nem rendelkezik saját, eseményindító fogjuk ha
    ![](../../includes/media/connectors-create-api-salesforce/trigger-4.png)  
 
 ## <a name="use-an-smtp-action"></a>Az SMTP-művelethez használata
-Egy művelet során a logikai alkalmazás definiált munkafolyamat által végzett. [További információ a műveletek](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).
+Egy művelet során a logikai alkalmazás definiált munkafolyamat által végzett. [További információ a műveletek](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
 Most, hogy hozzá lett adva az eseményindítót, kövesse az alábbi lépéseket egy SMTP-művelethez egy új vezető a Salesforce-ban létrehozásakor előforduló hozzáadni.
 

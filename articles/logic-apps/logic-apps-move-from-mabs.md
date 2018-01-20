@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: ladocs; jonfan; mandia
-ms.openlocfilehash: df26e4669158e5aa9e3b9a7af888d0dbbba273dd
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 01c5376ac5ba9125eede9deb5ee0a7a006a91bb4
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="move-from-biztalk-services-to-logic-apps"></a>A Logic Apps BizTalk szolgáltatások áthelyezése
 
@@ -39,7 +39,7 @@ A következő táblázat a Logic Apps BizTalk szolgáltatások képességek lek�
 
 | BizTalk Services   | Logic Apps            | Cél                  |
 | ------------------ | --------------------- | ---------------------------- |
-| összekötő          | összekötő             | Adatok küldésére és fogadására   |
+| Összekötő          | Összekötő             | Adatok küldésére és fogadására   |
 | Híd             | Logikai alkalmazás             | Feldolgozási sor processzor           |
 | Szakasz ellenőrzése     | XML-érvényesítés művelet      | Az XML-dokumentum, a séma érvényesítése             |
 | Szakasz kiegészítése       | Adatok jogkivonatok      | Tulajdonságok előléptetni üzenetbe vagy a útválasztási döntések             |
@@ -64,9 +64,9 @@ Minden egyes híd HTTP-végponttal rendelkezik alapértelmezés szerint a futás
 BizTalk szolgáltatások hidat egy feldolgozási folyamat hasonló. Hidat is igénybe vehet egy összekötő érkező adatokat, és néhány az adatokat, és küldje el a rendszer egy másik. A Logic Apps nem azonos a azonos csővezeték-alapú kommunikáció minták BizTalk szolgáltatásként támogatásával, és is számos más integrációs kombinációját. A [XML-kérelem-válasz híd](https://msdn.microsoft.com/library/azure/hh689781.aspx) a BizTalk szolgáltatások nevezik, amelyek szakaszból álló VETER folyamat:
 
 * (V) érvényesítése
-* E kiegészítése
+* (E) Enrich
 * (T) átalakítás
-* E kiegészítése
+* (E) Enrich
 * (R) útvonal
 
 Az alábbi képen látható, a feldolgozási kérés és válasz elosztva, és lehetővé teszi, hogy a kérelem és a válasz elérési utak külön-külön (például az egyes különböző megtekintését):
@@ -126,6 +126,6 @@ A Logic Apps nyújt részletesebb nyomon követése és figyelési képességek 
 BizTalk szolgáltatások magas rendelkezésre ÁLLÁS eléréséhez több példányt használ egy adott régióban a feldolgozási terhelés. A logic apps-régió magas rendelkezésre ÁLLÁSÚ beépített, tesztelhet, és minden további költség nélkül. Ki a régiót vész-helyreállítási BizTalk szolgáltatások B2B feldolgozásához a biztonsági mentési és visszaállítási folyamat szükség. A Logic Apps, a kereszt-régió aktív/passzív [vész-Helyreállítási képességet](../logic-apps/logic-apps-enterprise-integration-b2b-business-continuity.md) biztosított; a szinkronizálás B2B adatok lehetővé teszi az üzletmenet folytonossága érdekében különböző régiókban integrációs fiókok között.
 
 ## <a name="next"></a>Következő lépés
-* [Mi az a Logic Apps?](logic-apps-what-are-logic-apps.md)
-* [Az első logikai alkalmazás létrehozása](logic-apps-create-a-logic-app.md), vagy a használat gyors megkezdése [előre elkészített sablonokkal](logic-apps-create-logic-apps-from-templates.md)  
+* [Mi az a Logic Apps?](logic-apps-overview.md)
+* [Az első logikai alkalmazás létrehozása](quickstart-create-first-logic-app-workflow.md), vagy a használat gyors megkezdése [előre elkészített sablonokkal](logic-apps-create-logic-apps-from-templates.md)  
 * A logikai alkalmazásban használható [összes rendelkezésre álló összekötő](../connectors/apis-list.md) megtekintése

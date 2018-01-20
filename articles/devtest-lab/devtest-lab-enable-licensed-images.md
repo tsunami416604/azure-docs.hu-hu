@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2017
 ms.author: v-craic
-ms.openlocfilehash: bc3217e3b4ebd97d5cb80a90126f4a1ade5f6cc5
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 022b6340a8d2748624ba292fb4a28a956d28c6f9
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>A tesztkörnyezet a Azure DevTest Labs szolgáltatásban egy licencelt lemezképet engedélyezése
 
@@ -29,7 +29,7 @@ Lehetővé teszi a felhasználók egy licencelt lemezképből virtuális gépek 
 
 1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Válassza a **További szolgáltatások**, majd a **DevTest Labs** elemet a listából.
+1. Válassza ki **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából.
 
 1. Válassza ki a kívánt labor labs listájának megtekintéséhez.  
 
@@ -76,7 +76,15 @@ Következő lépések végrehajtásával engedélyezheti a licencelt lemezképek
    >
 
 
-1. Kattintson a **Mentés** gombra. A piactéren elérhető rendszerkép listájának megtekintéséhez, amely most látható kép **elfogadott feltételeket** és a felhasználók virtuális gépek létrehozásához.
+1. Kattintson a **Mentés** gombra. 
+
+    A piactéren elérhető rendszerkép listájának megtekintéséhez, amely most látható kép **elfogadott feltételeket** és a felhasználók virtuális gépek létrehozásához.
+
+> [!NOTE]
+> Felhasználók hozhatnak létre egyéni lemezkép licencelt lemezképéről. Lásd: [létrehozhat egyéni rendszerképeket a VHD-fájl](devtest-lab-create-template.md) további információt.
+>
+>
+
 
 ## <a name="related-blog-posts"></a>Kapcsolódó blogbejegyzések
 
@@ -85,4 +93,6 @@ Következő lépések végrehajtásával engedélyezheti a licencelt lemezképek
 
 ## <a name="next-steps"></a>További lépések
 
+- [Egy egyéni lemezképet létrehozni egy virtuális](devtest-lab-create-custom-image-from-vm-using-portal.md)
+- [Létrehozhat egyéni rendszerképeket a VHD-fájl](devtest-lab-create-template.md)
 - [A virtuális gépek hozzáadása a tesztkörnyezet](devtest-lab-add-vm.md)

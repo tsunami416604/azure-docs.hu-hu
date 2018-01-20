@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: 0bab180fe726eeece9d03883889253825b5e9560
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 96ac8ce81087717f05ae6480a8f875079139b7b6
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="import-a-logic-app-as-an-api"></a>Az API-k logikai alkalmazás importálása
 
@@ -33,7 +33,7 @@ Ebből a cikkből megismerheti, hogyan:
 ## <a name="prerequisites"></a>Előfeltételek
 
 + Fejezze be a következő gyorsindítási: [Azure API Management példányt létrehozni](get-started-create-service-instance.md)
-+ Ellenőrizze, hogy van egy logikai alkalmazást az előfizetésben. További információ [az első logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md)
++ Ellenőrizze, hogy van egy logikai alkalmazást az előfizetésben. További információ [az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -65,7 +65,7 @@ Műveletek hívható közvetlenül a megtekintése, és az API-k működésének
 3. Válassza ki a valamilyen művelet.
 
     A lap megjeleníti a lekérdezés-paraméterek és a fejlécek mezőket. A fejléc egyik "Ocp-Apim-előfizetés-kulcsot", a termék, ez az API társított előfizetés kulcshoz. A APIM példányt hozott létre, ha rendszergazdaként jelentkezett már, így a kulcs automatikusan kitölti. 
-1. Nyomja le az **küldése**.
+1. Kattintson a **Küldés** gombra.
 
     Háttér válaszol, **200 OK** és néhány adat.
 
@@ -80,7 +80,7 @@ Műveletek is hívható **fejlesztői portálján** API-k teszteléséhez.
 3. Válassza ki a **API** létrehozott.
 4. Kattintson a vizsgálni kívánt műveletet.
 5. Nyomja le az **kipróbálás**.
-6. Nyomja le az **küldése**.
+6. Kattintson a **Küldés** gombra.
     
     A művelet meghívása után a fejlesztői portál megjeleníti a **Válasz állapota**, a **Válasz fejlécei** és a **Válasz tartalma** minden információját.
 
@@ -91,7 +91,7 @@ Műveletek is hívható **fejlesztői portálján** API-k teszteléséhez.
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Az átalakítási és egy közzétett API védelme](transform-api.md)

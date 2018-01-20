@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 06/01/2017
 ms.author: valthom; ladocs
-ms.openlocfilehash: 9fb0258df3f45d121cda49d3b5c274bd9548c832
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 24ea1ef4d3c6229707458ef2f2005f90d8273304
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="connect-to-an-ibm-mq-server-from-logic-apps-using-the-mq-connector"></a>A logic Apps alkalmazásokból az MQ-összekötővel IBM MQ kiszolgálóhoz kapcsolódni 
 
@@ -43,7 +43,7 @@ A MQ az összekötő tartalmazza a következő műveleteket. Nincsenek nincsenek
 * A helyszíni adatok Gateway - Azure-erőforrás létrehozása [az átjáró-kapcsolat beállítása](../logic-apps/logic-apps-gateway-connection.md).
 
 * Hivatalos támogatott IBM WebSphere MQ-verziók:
-   * 7.5 MQ
+   * MQ 7.5
    * MQ 8.0
 
 ## <a name="create-a-logic-app"></a>Logikai alkalmazás létrehozása
@@ -52,7 +52,7 @@ A MQ az összekötő tartalmazza a következő műveleteket. Nincsenek nincsenek
 2. Adja meg a **neve**, például MQTestApp, **előfizetés**, **erőforráscsoport**, és **hely** (használhatja azt a helyet ahol a helyszíni Data Gateway kapcsolat van konfigurálva). Válassza ki **rögzítés az irányítópulton**, és válassza ki **létrehozása**.  
 ![Logikai alkalmazás létrehozása](media/connectors-create-api-mq/Create_Logic_App.png)
 
-## <a name="add-a-trigger"></a>Egy eseményindító hozzáadása
+## <a name="add-a-trigger"></a>Adjon hozzá egy triggert
 
 > [!NOTE]
 > Az MQ-összekötő nem rendelkezik a eseményindítókat. Igen, a másik eseményindító segítségével indítsa el a logikai alkalmazás, például a **ismétlődési** eseményindító. 
@@ -71,7 +71,7 @@ A MQ az összekötő tartalmazza a következő műveleteket. Nincsenek nincsenek
     1. Válassza ki **keresztül, a helyszíni adatátjáró**, és írja be a MQ-kiszolgáló tulajdonságait.  
     A **Server**, adja meg a MQ-kiszolgáló nevét, vagy adja meg az IP-cím, egy kettőspontot és a port számát. 
     2. A **átjáró** legördülő lista ismerteti a meglévő átjáró kapcsolatokat, amelyek vannak konfigurálva. Válassza ki az átjárót.
-    3. Válassza ki **létrehozása** befejezésekor. A kapcsolat az alábbihoz hasonlít:   
+    3. Miután végzett, válassza a **Létrehozás** lehetőséget. A kapcsolat az alábbihoz hasonlít:   
     ![Kapcsolat tulajdonságai](media/connectors-create-api-mq/Connection_Properties.png)
 
 4. A művelet tulajdonságait, a következőket teheti:  
@@ -122,5 +122,5 @@ Ha nincsenek üzenetek a várólista a Tallózás gombra vagy a fogadás során,
 
 Bármely eseményindítók és a swagger definiált műveletek megtekintése, és semmilyen határnak a Lásd még: a [connector részleteket](/connectors/mq/).
 
-## <a name="next-steps"></a>Következő lépések
-[Logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md). Az egyéb rendelkezésre álló összekötők Logic Apps, megismerkedhet a [API-k lista](apis-list.md).
+## <a name="next-steps"></a>További lépések
+[Logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md). Az egyéb rendelkezésre álló összekötők Logic Apps, megismerkedhet a [API-k lista](apis-list.md).

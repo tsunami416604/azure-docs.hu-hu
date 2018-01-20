@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: jingwang
-ms.openlocfilehash: dac4e926868e76d73512bc8b16856bfff2a889aa
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: ea2258b953925116f759655583d9601c5a55db7c
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával HBase 
 
@@ -34,7 +34,7 @@ Az Azure Data Factory kapcsolódásának engedélyezése beépített illesztőpr
 
 ## <a name="getting-started"></a>Első lépések
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
 
 A következő szakaszok részletesen bemutatják megadhatók a Data Factory tartozó entitások HBase-összekötőhöz használt tulajdonságokat.
 
@@ -48,7 +48,7 @@ HBase kapcsolódó szolgáltatás támogatott a következő tulajdonságokkal:
 | gazdagép | A kiszolgáló IP-címét vagy állomásnevét kiszolgálónevét a HBase. (azaz 192.168.222.160)  | Igen |
 | port | A TCP-portot, amely a HBase-példány használja a kapcsolatok figyelésére. Az alapértelmezett érték: 9090.  | Nem |
 | httpPath | A részleges URL-címet a HBase-kiszolgáló megfelelő. (azaz /gateway/sandbox/hbase/version)  | Nem |
-| AuthenticationType | A HBase-kiszolgálóhoz való csatlakozáshoz használandó hitelesítési módszert. <br/>Két érték engedélyezett: **névtelen**, **alapvető** | Igen |
+| authenticationType | A HBase-kiszolgálóhoz való csatlakozáshoz használandó hitelesítési módszert. <br/>Két érték engedélyezett: **névtelen**, **alapvető** | Igen |
 | felhasználónév | A HBase-példányhoz való csatlakozáshoz használt felhasználónevet.  | Nem |
 | jelszó | A jelszó, a felhasználónév megfelelő. Ez a mező megjelölése a SecureString tárolja biztonságos helyen az ADF, vagy a jelszó tárolása az Azure Key Vault választhat, és lehetővé teszik a másolási tevékenység lekéréses ott adatmásolás végrehajtása során – további információhoz [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). | Nem |
 | enableSsl | Meghatározza, hogy a kapcsolat titkosítása SSL használatával. Az alapértelmezett értéke hamis.  | Nem |

@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2017
 ms.author: glenga
-ms.openlocfilehash: ed1d8298123597fe8330b54f89fd580095f21ec7
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: 4681138dfc7ed67c8c9da0c55abfc27351736be4
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="azure-functions-tools-for-visual-studio"></a>Az Azure Functions Tools for Visual Studio  
 
-Az Azure funkciók Tools for Visual Studio 2017 bővítménye, amely lehetővé teszi a fejlesztés, tesztelése és C# funkciók telepítse az Azure Visual Studio. Ha ez az első tapasztalattal az Azure Functions, többet is megtudhat a [megismerkedhet az Azure Functions](functions-overview.md).
+Az Azure funkciók Tools for Visual Studio 2017 bővítménye, amely lehetővé teszi a fejlesztés, tesztelése és C# funkciók telepítse az Azure Visual Studio. Ha a forgatókönyvben az első az Azure Functions, többet is megtudhat a [megismerkedhet az Azure Functions](functions-overview.md).
 
 Az Azure Functions eszközök a következő előnyöket nyújtja: 
 
@@ -34,7 +34,7 @@ Az Azure Functions eszközök a következő előnyöket nyújtja:
 Ez a témakör bemutatja, hogyan a Azure Functions Tools for Visual Studio 2017 segítségével a C# funkciók fejlesztése. Azt is megtudhatja, hogyan a projekt közzététele az Azure-ba, mint a .NET-szerelvény.
 
 > [!IMPORTANT]
-> A függvény ugyanazt az alkalmazást a portál fejlesztési helyi fejlesztési ne keverje. Ha közzéteszi a helyi projektből függvény alkalmazásokhoz, a telepítési folyamat felülírja a portálon kifejlesztő függvényeket.
+> A függvény ugyanazt az alkalmazást a portál fejlesztési helyi fejlesztési ne keverje. Ha közzéteszi a helyi projektből függvény alkalmazásokhoz, a telepítési folyamat felülírja a függvényeket, a portál kifejlesztő.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -61,9 +61,9 @@ Amikor létrehoz egy új projektet az Azure Functions sablonnal, kap egy üres C
     
 * **Local.Settings.JSON**: funkciók a helyi futtatás során használt beállításokat tárolja. Ezek a beállítások nem használhatók az Azure-ban, azokat a [Azure Functions Core eszközök](functions-run-local.md). Ez a fájl használatával adja meg a beállításokat, például más Azure-szolgáltatásokhoz való kapcsolódási karakterláncokat. Adja hozzá egy új kulccsal, hogy a **értékek** tömb minden egyes funkciók a projekt által igényelt kapcsolathoz. További információkért lásd: [helyi beállításfájl](functions-run-local.md#local-settings-file) az Azure Functions Core eszközök a témakörben.
 
-A Functions futtatókörnyezete belső egy Azure Storage-fiókot használja. Összes indítás típusú HTTP- és webhookokkal, be kell állítani a **Values.AzureWebJobsStorage** kulcs egy érvényes Azure Storage-fiók kapcsolati karakterláncot.
+A Functions futtatókörnyezete belső egy Azure Storage-fiókot használja. Összes indítás típusú HTTP- és webhookokkal, be kell állítani a **Values.AzureWebJobsStorage** kulcs egy érvényes Azure Storage-fiók kapcsolati karakterláncot. 
 
-[!INCLUDE [Note to not use local storage](../../includes/functions-local-settings-note.md)]
+[!INCLUDE [Note on local storage](../../includes/functions-local-settings-note.md)]
 
  A tárolási fiók kapcsolati karakterlánc beállítása:
 
@@ -83,7 +83,7 @@ Az előre lefordított függvények a függvény által használt kötéseket ha
 
     ![](./media/functions-develop-vs/functions-vstools-create-queuetrigger.png)
     
-    Nevű kapcsolati karakterlánc kulcs **QueueStorage** van megadva, amely a local.settings.json fájlban van megadva. 
+    A trigger példában egy kapcsolati karakterláncot nevű kulccsal **QueueStorage**. A kapcsolati karakterlánc beállítása a local.settings.json fájlban definiálni kell. 
  
 3. Vizsgálja meg az újonnan hozzáadott osztály. Megjelenik a statikus **futtatása** van módszerhez a **függvénynév** attribútum. Ez az attribútum azt jelzi, hogy a metódus a belépési pont, a függvény. 
 
@@ -113,7 +113,7 @@ Az előre lefordított függvények a függvény által használt kötéseket ha
 
 Az Azure Functions Core Tools lehetővé teszi Azure Functions-projektek helyi fejlesztői számítógépen való futtatását. Amikor a Visual Studióból először indít el egy függvényt, a rendszer arra kéri, hogy telepítse ezeket az eszközöket.  
 
-A függvény teszteléséhez nyomja le az F5 billentyűt. Ha a rendszer kéri, fogadja el a Visual Studio kérését az Azure Functions Core (CLI) eszközök telepítéséhez.  Lehet, hogy egy tűzfalkivételt is engedélyeznie kell, hogy az eszközök kezelhessék a HTTP-kéréseket.
+A függvény teszteléséhez nyomja le az F5 billentyűt. Ha a rendszer kéri, fogadja el a Visual Studio kérését az Azure Functions Core (CLI) eszközök telepítéséhez. Lehet, hogy egy tűzfalkivételt is engedélyeznie kell, hogy az eszközök kezelhessék a HTTP-kéréseket.
 
 A projekt fut tesztelheti a kódot, érdemes tesztelni telepített függvény. További információkért lásd: [a kódot az Azure Functions tesztelése kapcsolatos olyan stratégiák](functions-test-a-function.md). Hibakeresési módban fut, töréspontok az elvárt módon vannak elérte a Visual Studio. 
 
@@ -125,12 +125,23 @@ Az Azure Functions Core eszközök használatával kapcsolatos további tudnival
 
 [!INCLUDE [Publish the project to Azure](../../includes/functions-vstools-publish.md)]
 
->[!NOTE]  
->Minden hozzáadott a local.settings.json beállítást is meg kell adni a függvény alkalmazásba az Azure-ban. Ezek a beállítások nem kerülnek be automatikusan. Kötelező beállítások adhat hozzá az függvény alkalmazásban az alábbi módszerek valamelyikével:
->
->* [Az Azure portál használatával](functions-how-to-use-azure-function-app-settings.md#settings).
->* [Használja a `--publish-local-settings` publish beállítást, az Azure Functions Core eszközök](functions-run-local.md#publish).
->* [Az Azure parancssori felület használatával](/cli/azure/functionapp/config/appsettings#set). 
+## <a name="function-app-settings"></a>Függvényalkalmazás beállításai   
+
+Minden hozzáadott a local.settings.json beállítást is meg kell adni a függvény alkalmazásba az Azure-ban. Ezek a beállítások nem feltöltése automatikusan a projekt közzétételekor. 
+
+Töltse fel a szükséges beállításokat a függvény-alkalmazásokhoz az Azure-ban legegyszerűbb módja a használja a **Alkalmazásbeállítások kezelése...**  sikeresen közzéteszi a projekt megjelenő hivatkozás. 
+
+![](./media/functions-develop-vs/functions-vstools-app-settings.png)
+
+Ez megjeleníti a **Alkalmazásbeállítások** párbeszédpanelen, a függvény alkalmazásra, ahol új alkalmazás beállításokat adhat meg, vagy módosíthatja a meglévőket.
+
+![](./media/functions-develop-vs/functions-vstools-app-settings2.png)
+
+Alkalmazásbeállítások ezeket más módon is kezelheti:
+
+* [Az Azure portál használatával](functions-how-to-use-azure-function-app-settings.md#settings).
+* [Használja a `--publish-local-settings` publish beállítást, az Azure Functions Core eszközök](functions-run-local.md#publish).
+* [Az Azure parancssori felület használatával](/cli/azure/functionapp/config/appsettings#set). 
 
 ## <a name="next-steps"></a>További lépések
 

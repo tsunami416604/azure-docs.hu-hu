@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
-ms.openlocfilehash: f19cf8fddd9ffcf08b8ce18db070a7482ce012df
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: a3ab4713861d4d9681ad2ac5f084255fc29462ce
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="archive-azure-monitoring-data"></a>Figyelési adatok archiválása Azure
 
@@ -66,11 +66,11 @@ A tárfiókhoz be most áramló a figyelési adatok az előfizetésből.
 
 Most azt konfigurálja, erőforrás-szintű adatokat (erőforrás metrikáit és a diagnosztikai naplók) a tárolási fiók beállításával átirányítás **erőforrás diagnosztikai beállításainak**.
 
-1. Kattintson a **figyelő** gomb megtalálható a bal oldali navigációs listára, majd **diagnosztikai beállítások**. Itt láthatja az összes erőforrást az előfizetésében keresztül Azure figyelő figyelési adatokat előállító listáját. Ha nem rendelkezik olyan erőforrásokkal ebben a listában, akkor [logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md) erőforrás diagnosztikai beállításának konfigurálható, hogy a folytatás előtt.
+1. Kattintson a **figyelő** gomb megtalálható a bal oldali navigációs listára, majd **diagnosztikai beállítások**. Itt láthatja az összes erőforrást az előfizetésében keresztül Azure figyelő figyelési adatokat előállító listáját. Ha nem rendelkezik olyan erőforrásokkal ebben a listában, akkor [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md) erőforrás diagnosztikai beállításának konfigurálható, hogy a folytatás előtt.
 
 2. Kattintson a listában egy erőforráson, majd **a diagnosztika bekapcsolásához**.
    
-   ![Diagnosztika engedélyezése](media/monitor-tutorial-archive-monitoring-data/diagnostic-settings-turn-on.png)
+   ![Diagnosztika bekapcsolása](media/monitor-tutorial-archive-monitoring-data/diagnostic-settings-turn-on.png)
 
    Ha már létezik egy beállítást, inkább látható, a meglévő beállítások, és egy gombra kattintva **diagnosztikai beállítás hozzáadása**. A gombra kattintva.
 
@@ -140,7 +140,7 @@ Ha követte a fenti lépéseket, adatokat halad a tárfiók már megkezdődött.
 
 4. Kattintson a **Blobok**, majd a tárolóra, címkével **insights műveleti naplókat** és végül a tároló címkéjű **neve = alapértelmezett**. Ez az a tárolóhoz, amelybe a tevékenység naplója van benne. Figyelési adatok vannak osztva tárolók erőforrás-azonosítója (csak az előfizetési Azonosítóját a műveletnapló), majd dátum és idő. A blobok teljes formátuma:
 
-   insights-működési-naplók/name = alapértelmezett/resourceId = / SUBSCRIPTIONS / {előfizetés-azonosító} / y = {négyjegyű numerikus year} / m = {kétjegyű numerikus month} / d {kétjegyű számozott napja} = / h = {kétjegyű 24 órás hour}/m=00/PT1H.json
+   insights-operational-logs/name=default/resourceId=/SUBSCRIPTIONS/{subscription ID}/y={four-digit numeric year}/m={two-digit numeric month}/d={two-digit numeric day}/h={two-digit 24-hour clock hour}/m=00/PT1H.json
 
 5. Keresse meg az erőforrás-azonosító, dátum és idő a tárolók kattintson a PT1H.json fájlt. Kattintson a PT1H.json fájlra, és kattintson a **letöltése**. Minden egyes PT1H.json blob tartalmaz a blob URL-címben megadott órán belül előforduló eseményeket a JSON blob (például h = 12). A jelenlegi órán belül események lesz hozzáfűzve a PT1H.json fájl azok bekövetkezésekor. A perc értéket (m = 00) mindig 00, mivel alkalmazásnapló-események az egyes blobok óránként van felosztva.
 
@@ -164,7 +164,7 @@ Most már sikeresen állított be figyelési adatok tárfiókba archiválását.
 
 5. Ha létrehozott egy virtuális gép vagy a logikai alkalmazást az előző lépéseket, törölni is azokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtudta, hogyan figyelése az Azure környezetben (előfizetés, erőforrás és a vendég operációs rendszer) archiválását, a tárolási fiók adatait. 
 

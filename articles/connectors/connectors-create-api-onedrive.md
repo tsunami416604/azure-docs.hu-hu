@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/18/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: 63bd33bf4e09b98aa53dcfec9fcc4a0109204952
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e988ae22a3d6e47591c37ad0b4c9f781d523bcc8
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-onedrive-connector"></a>A OneDrive-összekötő az első lépései
 Csatlakozni a onedrive-nak a fájlok kezelését, beleértve a feltöltés, get, törölje a fájlokat, és több. 
@@ -32,7 +32,7 @@ A onedrive-ról hogy:
 
 Ez a témakör bemutatja, hogyan használható a onedrive vállalati verzió összekötő logikai alkalmazás, és eseményindítók és műveletek is tartalmazza.
 
-A Logic Apps kapcsolatos további információkért lásd: [Mik azok a logic apps](../logic-apps/logic-apps-what-are-logic-apps.md) és [logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md).
+A Logic Apps kapcsolatos további információkért lásd: [Mik azok a logic apps](../logic-apps/logic-apps-overview.md) és [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="connect-to-onedrive"></a>Kapcsolódás a onedrive vállalati verzió
 A Logic Apps alkalmazást bármely szolgáltatás hozzáférni, először létre kell hoznia egy *kapcsolat* a szolgáltatáshoz. Egy kapcsolat egy logikai alkalmazást és egy másik szolgáltatás közötti kapcsolatot biztosít. Például ha csatlakozni szeretne a OneDrive, először a onedrive vállalati verzió *kapcsolat*. VPN-kapcsolat létrehozásához adja meg a hitelesítő adatok általában segítségével éri el a szolgáltatást, amelyhez csatlakozni szeretne. Igen a onedrive-on, megadja a hitelesítő adatokat a OneDrive-fiókja, a VPN-kapcsolat létrehozásához.
@@ -43,7 +43,7 @@ A Logic Apps alkalmazást bármely szolgáltatás hozzáférni, először létre
 > 
 
 ## <a name="use-a-trigger"></a>Eseményindítók
-Egy eseményindító nem egy eseményt, a logikai alkalmazás definiált munkafolyamat indításához használható. Eseményindítók "lekérdezésére" a szolgáltatás egy intervallum és a kívánt gyakoriságát. [További tudnivalók az eseményindítók](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).
+Egy eseményindító nem egy eseményt, a logikai alkalmazás definiált munkafolyamat indításához használható. Eseményindítók "lekérdezésére" a szolgáltatás egy intervallum és a kívánt gyakoriságát. [További tudnivalók az eseményindítók](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
 1. Írja be a logikai alkalmazást listáját, illetve a "onedrive":  
    
@@ -63,7 +63,7 @@ Egy eseményindító nem egy eseményt, a logikai alkalmazás definiált munkafo
 4. **Mentés** a módosításokat (bal felső sarkában az eszköztár). A Logic Apps alkalmazást menti, és lehet, hogy automatikusan engedélyezve.
 
 ## <a name="use-an-action"></a>Egy művelettel
-Egy művelet során a logikai alkalmazás definiált munkafolyamat által végzett. [További információ a műveletek](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).
+Egy művelet során a logikai alkalmazás definiált munkafolyamat által végzett. [További információ a műveletek](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
 1. Kattintson a plusz ikonra. Több beállítások megtekintéséhez: **művelet hozzáadása**, **feltétel hozzáadása**, vagy az egyik a **további** beállítások.
    

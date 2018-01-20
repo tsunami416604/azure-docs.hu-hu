@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: jingwang
-ms.openlocfilehash: 10e7687448f4401864e06545447ed4c46e5552be
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 2d3327bd3f27e9743524590faaec98d36bf6c549
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="copy-data-from-google-bigquery-using-azure-data-factory-beta"></a>Adatok másolása az Azure Data Factory (béta) használatával Google BigQuery
 
@@ -37,7 +37,7 @@ Az Azure Data Factory kapcsolódásának engedélyezése beépített illesztőpr
 
 ## <a name="getting-started"></a>Első lépések
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
 
 A következő szakaszok részletesen bemutatják való Google BigQuery összekötő adat-előállító tartozó entitások meghatározásához használt tulajdonságokat.
 
@@ -51,10 +51,10 @@ Google BigQuery társított szolgáltatásnak az alábbi tulajdonságok esetén 
 | Projekt | Az alapértelmezett BigQuery projekt irányuló lekérdezésben projekt azonosítója.  | Igen |
 | additionalProjects | Nyilvános projektazonosítók vesszővel elválasztott listája BigQuery projekt eléréséhez.  | Nem |
 | requestGoogleDriveScope | E Google meghajtó hozzáférést kérni. Google meghajtó hozzáférés lehetővé teszi, hogy a támogatás a Google meghajtóról adatokkal BigQuery adatok egyesítése összevont táblák esetében. Az alapértelmezett értéke hamis.  | Nem |
-| AuthenticationType | A hitelesítéshez használt OAuth 2.0 hitelesítési módszert. ServiceAuthentication csak önálló üzemeltetett infravörös használható <br/>Két érték engedélyezett: **ServiceAuthentication**, **UserAuthentication** | Igen |
+| authenticationType | A hitelesítéshez használt OAuth 2.0 hitelesítési módszert. ServiceAuthentication csak önálló üzemeltetett infravörös használható <br/>Két érték engedélyezett: **ServiceAuthentication**, **UserAuthentication** | Igen |
 | refreshToken | A Google szerzett, amelyek engedélyezik a hozzáférést BigQuery UserAuthentication a frissítési jogkivonat. Ez a mező megjelölése a SecureString tárolja biztonságos helyen az ADF, vagy a jelszó tárolása az Azure Key Vault választhat, és lehetővé teszik a másolási tevékenység lekéréses ott adatmásolás végrehajtása során – további információhoz [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). | Nem |
 | e-mail | A szolgáltatásfiók e-mail azonosítója, amely ServiceAuthentication szolgál, és csak önálló üzemeltetett infravörös használhatja  | Nem |
-| keyfilepath értéke | A fájl teljes elérési útját a .p12 kulcs, amely segítségével hitelesíti a szolgáltatási fiók e-mail címét, és csak akkor használható a önállóan üzemel infravörös  | Nem |
+| keyFilePath | A fájl teljes elérési útját a .p12 kulcs, amely segítségével hitelesíti a szolgáltatási fiók e-mail címét, és csak akkor használható a önállóan üzemel infravörös  | Nem |
 | trustedCertPath | Megbízható Hitelesítésszolgáltatói tanúsítványok ellenőrzése a kiszolgáló SSL-en keresztül kapcsolódáskor tartalmazó .pem fájl teljes elérési útja. Ez a tulajdonság csak akkor állítható, önálló üzemeltetett infravörös SSL használatakor Az alapértelmezett érték a cacerts.pem fájlt az infravörös telepített:  | Nem |
 | useSystemTrustStore | Megadja, hogy a rendszer megbízható áruházból vagy a megadott PEM-fájl egy Hitelesítésszolgáltatói tanúsítványt használjon-e. Az alapértelmezett értéke hamis.  | Nem |
 

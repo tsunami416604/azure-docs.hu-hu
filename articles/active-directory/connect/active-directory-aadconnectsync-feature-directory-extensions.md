@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 31758568f7ce916a4c242aad743bb4b0cb9b2d6e
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 9abd035b13a0d51c534eb8cac50c045012399a69
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect szinkronizálása: címtárbővítmények
 Címtárbővítmények lehetővé teszi a séma kiterjesztése a saját attribútumokkal rendelkező Azure AD-ben a helyszíni Active Directoryból. Ez a funkció lehetővé teszi ÜZLETÁGI alkalmazások továbbra is kezelheti a helyszíni attribútumok fel. Ezek az attribútumok felhasználhatók, keresztül [Azure AD Graph címtárbővítmények](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions) vagy [Microsoft Graph](https://graph.microsoft.io/). Megjelenik az attribútumok elérhető használatával [Azure AD Graph explorer](https://graphexplorer.azurewebsites.net/) és [Microsoft Graph explorer](https://developer.microsoft.com/en-us/graph/graph-explorer) kulcsattribútumokkal.
@@ -44,10 +44,20 @@ Az Azure AD-objektum lehet akár 100 directory bővítmények attribútuma. A ma
 Az Azure AD Connect telepítése során az alkalmazás regisztrálva van, ahol elérhetők ezek az attribútumok. Ez az alkalmazás az Azure-portálon tekintheti meg.  
 ![Séma kiterjesztése alkalmazás](./media/active-directory-aadconnectsync-feature-directory-extensions/extension3new.png)
 
-Ezek az attribútumok elérhetők Graph keresztül:  
+Az attribútumok fűzve előtagként a bővítmény\_{AppClientId}\_. A AppClientId értéke az összes attribútum esetében az Azure AD-bérlőben.
+
+Ezek az attribútumok elérhetők keresztül a **Azure AD Graph**:
+
+Azt lekérdezheti az Azure AD Graph keresztül az Azure AD Graph explorer: [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/)
+
 ![Graph](./media/active-directory-aadconnectsync-feature-directory-extensions/extension4.png)
 
-Az attribútumok fűzve előtagként a bővítmény\_{AppClientId}\_. A AppClientId értéke az összes attribútum esetében az Azure AD-bérlőben.
+Vagy a **Microsoft Graph API**:
+
+Azt tudja lekérdezni a Microsoft Graph API segítségével a Microsoft Graph explorer: [https://developer.microsoft.com/en-us/graph/graph-explorer#](https://developer.microsoft.com/en-us/graph/graph-explorer#)
+
+>[!NOTE]
+> Az attribútum a visszaadandó kifejezetten kérni kell. Az ilyen attribútumok explicit módon kiválasztásával ehhez: https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com? $select = extension_9d98ed114c4840d298fad781915f27e4_employeeID, extension_9d98ed114c4840d298fad781915f27e4_division vonatkozó további információ a ellenőrizze [Microsoft Graph: lekérdezés-paraméterek használata](https://developer.microsoft.com/en-us/graph/docs/concepts/query_parameters#select-parameter)
 
 ## <a name="next-steps"></a>További lépések
 További információ a [az Azure AD Connect szinkronizálási szolgáltatás](active-directory-aadconnectsync-whatis.md) konfigurációs.

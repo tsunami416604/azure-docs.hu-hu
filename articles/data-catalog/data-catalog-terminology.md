@@ -13,16 +13,16 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/01/2017
+ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: 8cb24357bb24c48dceda714a040427fcc0c0ba4d
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: b88abd01c2dbc302bfc0e783d1715710c6f8397c
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="azure-data-catalog-terminology"></a>Az Azure Data Catalog-terminológia
-## <a name="catalog"></a>Alkalmazáskatalógus
+## <a name="catalog"></a>Katalógus
 Az Azure Data Catalog tárháza felhőalapú metaadatok, amely során az adatforrások és az eszközök regisztrálhatók. A katalógus egy központi tárolási helye az adatforrások kinyert metaadatokat, és a felhasználók által hozzáadott leíró metaadatok funkcionál.
 
 ## <a name="data-source"></a>Adatforrás
@@ -52,7 +52,7 @@ Egy adategységet leíró metaadatok közé tartozhatnak igénylésével adatok 
 Az Azure Data Catalog előnézete legfeljebb 20 azt jelzi, hogy az adatforrás kinyert a regisztráció során, és az adatok eszköz metaadatokkal-katalógusban tárolt pillanatképe nem. Az előzetes segíthet felhasználók, akik egy adategységet felderítése jobb megértése érdekében a funkciójára és céljára. Ez azt jelenti megtekintheti a mintaadatok lehet a több mint jelent meg, csak az oszlopneveket és adattípusokat.
 Az előzetes verziójú funkciók csak a táblák és nézetek támogatják, és kell kell explicit módon a felhasználó által megadott regisztrálás során.
 
-## <a name="data-profile"></a>Adatok profil
+## <a name="data-profile"></a>Adatprofil
 Az Azure Data Catalog adatok profil egy regisztrált eszköz kibontani az adatforrás a regisztráció során, és az adatok eszköz metaadatokkal katalógusban tárolt tábla- és oszlop metaadatainak pillanatképet. Az adatok profil segítségével felhasználók, akik egy adategységet felderítése jobb megértése érdekében a funkciójára és céljára. Az előzetes verziójú funkciók hasonló, adatok profilok kell kell explicit módon a felhasználó által választott regisztráció során.
 
 > [!NOTE]
@@ -65,7 +65,7 @@ Az Azure Data Catalog minden olyan felhasználó, egy regisztrált eszköz bizto
 
 A szempontok mindegyikének eredendően értékes, és az Azure Data Catalog minden felhasználó információval szolgálhat a megfelelő, kifejező őket, amíg minden felhasználó használhatja ezt az információt megtudhatja, hogy az adatok és a célja.
 
-## <a name="expert"></a>szakértői
+## <a name="expert"></a>Szakértő
 Szakértőnek olyan felhasználó, aki rendelkezik azonosított, egy adategységet egy tájékozott "szakértői" szempont. Minden olyan felhasználó, eszköz szakértő szerint is felvehet maguk vagy egy másik felhasználó. Szakértőnek alatt felsorolva nem továbbítja az Azure Data Catalog; további jogosultságokra lehetővé teszi a felhasználók így könnyebben megtalálhatja ezeket perspektívát, amely a legnagyobb valószínűség lehet hasznos, ha egy eszköz leíró metaadatok áttekintése.
 
 ## <a name="owner"></a>Tulajdonos
@@ -79,6 +79,6 @@ Tulajdonos az az Azure Data Catalog egy adategységet további jogosultságokkal
 ## <a name="registration"></a>Regisztráció
 Regisztráció az adatok eszköz metaadatok beolvasása az adatforrást, és másolja az Azure Data Catalog szolgáltatást. Regisztrált adategységeket majd feliratozva és felderített.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Mi az az Azure Data Catalog?](data-catalog-what-is-data-catalog.md) – Ez a cikk áttekintést nyújt az Azure Data Catalog szolgáltatás, milyen értékeket nyújt, és a forgatókönyveket támogatja.
 * [Ismerkedés az Azure Data Catalog](data-catalog-get-started.md) – Ez a cikk ismerteti egy végpont oktatóanyag, amely bemutatja, hogyan használható az Azure Data Catalog az adatforrás-felderítés.  

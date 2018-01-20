@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 11/01/2017
+ms.date: 01/18/2018
 ms.author: spelluru
-ms.openlocfilehash: ea17dc0914966b9c3ca611c3d359635216ecf1ca
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 1901ac534c46e4de0446543de4a40de040b8d51e
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="document-data-sources"></a>Adatforrások dokumentálása
 ## <a name="introduction"></a>Bevezetés
@@ -49,5 +49,5 @@ A szint a dokumentáció: a jellemzők és egy adattároló eszköz részletes l
 * Csak a táblázatok dokumentum: tartalom csak az adott objektum, de a felhasználók rendelkeznek-e a dokumentumok több helyen.
 * Dokumentálja a tárolók és a táblázatok: a minden részletre módszert használja, de okozhat a dokumentumok több karbantartási.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Adatforrások dokumentálása **Azure Data Catalog** mértékű részletesen szükség szerint a leírását az adategységekre vonatkozó hozhat létre.  Hivatkozások használatával is kapcsolhat egy meglévő tartalomtár, amely egyesíti a meglévő docs és adategységeket tárolt tartalmat. Ha a felhasználók adategységeket megfelelő, rendelkezhetnek dokumentáció teljes készletét.

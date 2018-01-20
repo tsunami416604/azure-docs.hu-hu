@@ -14,11 +14,11 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: c4fd425ab479121fff80bb2c2eef016662ec3bfe
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 05fa692f9331cf6b5178c3e9dca60ad2598dc609
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="add-push-notifications-to-your-apache-cordova-app"></a>Leküldéses értesítések hozzáadása az Apache Cordova-alkalmazás
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
@@ -79,6 +79,7 @@ Hajtsa végre a következő parancsot:
 
 2. A telepítési forrás melletti nyílra.
 3. A **SENDER_ID**, ha már telepítette a Google Developer Console projekt numerikus Projektazonosítónak, hozzáadhatja azt itt. Ellenkező esetben adja meg a helyőrző érték, például 777777.  Android céloz meg, ha ezt az értéket config.xml később frissítheti.
+     Vegye figyelembe, hogy el lett távolítva a SENDER_ID 2.0.0 verzió frissítésétől telepítse az idő és a google-services.json telepítve kell lennie a projekt gyökérmappájában.  További részletek [itt.](https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/INSTALLATION.md)
 4. Kattintson a **Hozzáadás** parancsra.
 
 A leküldéses beépülő modul telepítve van.
@@ -332,9 +333,9 @@ Győződjön meg arról, hogy értesítést kapott, a cikk felvételekor.
 
 Útmutató az SDK-k használatához.
 
-* [Apache Cordova-SDK][15]
+* [Apache Cordova SDK][15]
 * [ASP.NET Server SDK][1]
-* [NODE.js Server SDK][16]
+* [Node.js Server SDK][16]
 
 <!-- Images -->
 [img1]: ./media/app-service-mobile-cordova-get-started-push/add-push-plugin.png

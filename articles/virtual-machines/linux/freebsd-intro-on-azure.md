@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: huishao
-ms.openlocfilehash: 2369bc893d28cf6f6174376eb961049b651c66a9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e47a00a8375659f9112da57f9e7a4747f10f8f16
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Az Azure-on freebsd rendszerű bemutatása
 Ez a témakör az Azure-ban freebsd rendszerű virtuális gépet futtató áttekintését.
@@ -89,7 +89,7 @@ ssh azureuser@xx.xx.xx.xx -i /etc/ssh/ssh_host_rsa_key
 ## <a name="vm-extensions-for-freebsd"></a>Freebsd rendszerű Virtuálisgép-bővítmények
 Az alábbiakban freebsd rendszerű támogatott Virtuálisgép-bővítmények.
 
-### <a name="vmaccess"></a>Vmaccess bővítmény
+### <a name="vmaccess"></a>VMAccess
 A [VMAccess](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) bővítmény is:
 
 * Az eredeti sudo felhasználó jelszavának alaphelyzetbe állítása.
@@ -132,6 +132,5 @@ Opcionálisan beszerezhet egy legfelső szintű rendszerhéj használatával `su
 ## <a name="known-issues"></a>Ismert problémák
 A [Azure virtuális gép Vendégügynökének](https://github.com/Azure/WALinuxAgent/) 2.2.2 rendelkezik [ismert probléma] verziója (https://github.com/Azure/WALinuxAgent/pull/517), ami a kiépítés sikertelen freebsd rendszerű virtuális gép az Azure-on. A javítás által rögzített [Azure virtuális gép Vendégügynökének](https://github.com/Azure/WALinuxAgent/) 2.2.3 verziója és a későbbi kibocsátásokban megtörténik. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Ugrás a [Azure piactér](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd110/) freebsd rendszerű virtuális gép létrehozása.
-* Ha azt szeretné, hogy a saját freebsd rendszerű Azure, tekintse meg [létrehozása és feltöltése az Azure-bA freebsd rendszerű virtuális merevlemez](classic/freebsd-create-upload-vhd.md).

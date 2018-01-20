@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/26/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 2a8b883975ed0c0a2a6ee9a2a7ad0c0b1e938fd4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ec7fe2adfb89edd635adcf247eea0b98f7007b1b
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="create-custom-apis-that-you-can-call-from-logic-app-workflows"></a>A logic app munkafolyamatok hívása egyéni API-k létrehozása
 
@@ -31,7 +31,7 @@ Bár az Azure Logic Apps kínál [100 + beépített összekötők](../connectors
 
 Összekötők alapvetően webes API-k, moduláris felületek, a többi használó [Swagger-metaadatok formátumú](http://swagger.io/specification/) dokumentációját, és JSON, az adatcsere-formátumot. Mivel összekötők REST API-k, amelyek a HTTP-végpontokról keresztül kommunikál egymással, a ismeretcikkekkel, például a .NET, Java vagy Node.js, összekötők készítéséhez is használhatja. Az API-kat is tartozhat a [Azure App Service](../app-service/app-service-web-overview.md), a platform-,-a-szolgáltatásajánlat (PaaS), amely biztosítja a legjobb, a legegyszerűbb és a leginkább méretezhető módszerek valamelyikével API üzemeltetéséhez. 
 
-A egyéni API-k a logic apps működjön, az API-biztosíthat [ *műveletek* ](./logic-apps-what-are-logic-apps.md#logic-app-concepts) , amelyek folyamatban speciális feladatokat a logic app munkafolyamatokban. Az API-t is működhet, és egy [ *eseményindító* ](./logic-apps-what-are-logic-apps.md#logic-app-concepts) , elindul a logic app munkafolyamat, amikor új adatokat vagy egy esemény megfelel-e a megadott feltétel. Ez a témakör ismerteti a gyakori mintázatok, amelyeket követve műveletek és az API-ban, az API-t adja meg a kívánt viselkedése alapján eseményindítók készítéséhez.
+A egyéni API-k a logic apps működjön, az API-biztosíthat [ *műveletek* ](./logic-apps-overview.md#logic-app-concepts) , amelyek folyamatban speciális feladatokat a logic app munkafolyamatokban. Az API-t is működhet, és egy [ *eseményindító* ](./logic-apps-overview.md#logic-app-concepts) , elindul a logic app munkafolyamat, amikor új adatokat vagy egy esemény megfelel-e a megadott feltétel. Ez a témakör ismerteti a gyakori mintázatok, amelyeket követve műveletek és az API-ban, az API-t adja meg a kívánt viselkedése alapján eseményindítók készítéséhez.
 
 Az API-kat tárolhatja a [Azure App Service](../app-service/app-service-web-overview.md), a platform,--szolgáltatás (PaaS) nyújtó jól skálázható, egyszerű API-t futtató biztosít.
 
@@ -73,7 +73,7 @@ Sok szalagtárak, például [Swashbuckle](https://github.com/domaindrivendev/Swa
 
 ## <a name="action-patterns"></a>A művelet minták
 
-A logic apps feladatok elvégzéséhez, biztosítania kell az egyéni API [ *műveletek*](./logic-apps-what-are-logic-apps.md#logic-app-concepts). Az API-t az egyes műveletek művelet van leképezve. Egy alapszintű művelet eredménye egy tartományvezérlőre, amely elfogadja a HTTP-kérelmek és HTTP-válaszokat ad vissza. Így például a logikai alkalmazás HTTP kérelmet küld a webes alkalmazás vagy API-alkalmazás. Az alkalmazás ezután egy HTTP-válasz együtt, amely a logikai alkalmazás képes tartalmat adja vissza.
+A logic apps feladatok elvégzéséhez, biztosítania kell az egyéni API [ *műveletek*](./logic-apps-overview.md#logic-app-concepts). Az API-t az egyes műveletek művelet van leképezve. Egy alapszintű művelet eredménye egy tartományvezérlőre, amely elfogadja a HTTP-kérelmek és HTTP-válaszokat ad vissza. Így például a logikai alkalmazás HTTP kérelmet küld a webes alkalmazás vagy API-alkalmazás. Az alkalmazás ezután egy HTTP-válasz együtt, amely a logikai alkalmazás képes tartalmat adja vissza.
 
 Szabványos tevékenység írja be az API-t egy HTTP-kérési metódust, és ez a módszer a Swagger-fájl leírása. Majd hívása közvetlenül az API-t egy [HTTP-művelet](../connectors/connectors-native-http.md) vagy egy [HTTP + Swagger](../connectors/connectors-native-http-swagger.md) művelet. Alapértelmezés szerint válaszok belül vissza kell a [kérelem időkorlátja](./logic-apps-limits-and-config.md). 
 
@@ -153,7 +153,7 @@ Ebben a mintában két végpontot a tartományvezérlőn beállított: `subscrib
 
 ## <a name="trigger-patterns"></a>Eseményindító minták
 
-Az egyéni API működhet, és egy [ *eseményindító* ](./logic-apps-what-are-logic-apps.md#logic-app-concepts) , amely a logikai alkalmazás elindul, és amikor új adatok vagy egy esemény megfelel-e a megadott feltétel. Ehhez az eseményindítóhoz is vagy rendszeresen figyelni, vagy várjon, amíg és figyelni, az új adatokat és eseményeket a szolgáltatási végpont. Ha új adatokat vagy egy esemény megfelel a megadott feltételnek, az eseményindító következik be, és elindítja a logikai alkalmazást, amely adott eseményindító figyel. A logic apps ily módon indul el, az API-kövesse a [ *lekérdezési eseményindító* ](#polling-triggers) vagy a [ *webhook eseményindító* ](#webhook-triggers) mintát. Ezek a minták hasonlóak a mint a [lekérdezési műveletek](#async-pattern) és [webhookműveletek](#webhook-actions). Emellett további információ [az eseményindítók a használatmérés](logic-apps-pricing.md).
+Az egyéni API működhet, és egy [ *eseményindító* ](./logic-apps-overview.md#logic-app-concepts) , amely a logikai alkalmazás elindul, és amikor új adatok vagy egy esemény megfelel-e a megadott feltétel. Ehhez az eseményindítóhoz is vagy rendszeresen figyelni, vagy várjon, amíg és figyelni, az új adatokat és eseményeket a szolgáltatási végpont. Ha új adatokat vagy egy esemény megfelel a megadott feltételnek, az eseményindító következik be, és elindítja a logikai alkalmazást, amely adott eseményindító figyel. A logic apps ily módon indul el, az API-kövesse a [ *lekérdezési eseményindító* ](#polling-triggers) vagy a [ *webhook eseményindító* ](#webhook-triggers) mintát. Ezek a minták hasonlóak a mint a [lekérdezési műveletek](#async-pattern) és [webhookműveletek](#webhook-actions). Emellett további információ [az eseményindítók a használatmérés](logic-apps-pricing.md).
 
 <a name="polling-triggers"></a>
 
@@ -170,7 +170,7 @@ Az alábbiakban lépéseit a API szempontjából leírt lekérdezési eseményin
 
 | Új adatok vagy esemény található?  | API-válaszból | 
 | ------------------------- | ------------ |
-| Található | Térjen vissza a HTTP `200 OK` , ahol a válasz forgalma (a következő lépésben megadott) állapot. <br/>Ez a válasz hoz létre egy logic app-példány, és elindítja a munkafolyamatot. | 
+| Sikeres keresés | Térjen vissza a HTTP `200 OK` , ahol a válasz forgalma (a következő lépésben megadott) állapot. <br/>Ez a válasz hoz létre egy logic app-példány, és elindítja a munkafolyamatot. | 
 | Nem található | Térjen vissza a HTTP `202 ACCEPTED` állapot egy `location` fejléc és a `retry-after` fejléc. <br/>Az eseményindítók a `location` fejléc is tartalmaznia kell egy `triggerState` lekérdezési paraméter, amely általában a "időbélyege." Az API-Ez az azonosító segítségével nyomon követheti a legutóbbi biztonsági lett elindítva. a logikai alkalmazást. | 
 ||| 
 
@@ -223,7 +223,7 @@ Miután beállította a hitelesítés, az API-jainak üzembe helyezés beállít
 
 ## <a name="publish-custom-apis-to-azure"></a>Egyéni API-k közzététele az Azure-bA
 
-Az egyéni API-kat az legyen elérhető az Azure Logic Apps másoknak, hozzá kell adnia biztonsági és logikai alkalmazás-összekötők regisztrálja őket. További információkért lásd: [egyéni összekötők áttekintése](../logic-apps/custom-connector-overview.md). 
+Az egyéni API-kat az legyen elérhető az Azure Logic Apps másoknak, hozzá kell adnia biztonsági és logikai alkalmazás-összekötők regisztrálja őket. További információért lásd az [egyéni összekötők áttekintését](../logic-apps/custom-connector-overview.md). 
 
 Ha az egyéni API-kat szeretné elérhetővé tenni a Logic Apps, a Microsoft Flow és a Microsoft PowerApps minden felhasználó, kell adnia biztonsági, az API-kat regisztrálni a logikai alkalmazás-összekötők, és a csatlakozók a kijelöli a [programhivatalosMicrosoftAzure](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/). 
 
@@ -233,9 +233,9 @@ Ha az egyéni API-kat szeretné elérhetővé tenni a Logic Apps, a Microsoft Fl
 
 * A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 
-* A Logic Apps javítása érdekében, szavazhatnak, vagy küldje el a következő ötleteket a [Logic Apps felhasználói visszajelzési webhelyet](http://aka.ms/logicapps-wish). 
+* Ha szeretne segíteni a Logic Apps fejlesztésében, szavazzon vagy küldje el javaslatait a [Logic Apps felhasználói visszajelzések oldalon](http://aka.ms/logicapps-wish). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Hibák és kivételek kezelése](../logic-apps/logic-apps-exception-handling.md)
 * [Hívja, eseményindító, vagy a logic apps a HTTP-végpontokról egymásba](../logic-apps/logic-apps-http-endpoint.md)

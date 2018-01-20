@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 11/01/2017
+ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: 7e0d416c58dced89623a28038e804e8002f0341a
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 5a4b2b5734bf8bfbbc45a65b02362d1fa37b1a87
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="manage-data-assets-in-azure-data-catalog"></a>Az Azure Data Catalog adategységek felügyelete
 ## <a name="introduction"></a>Bevezetés
@@ -44,7 +44,7 @@ A Data Catalog egy adategységet tulajdonosa, ha csak olyan felhasználók, akik
 >
 >
 
-### <a name="take-ownership"></a>Saját tulajdonba
+### <a name="take-ownership"></a>Saját tulajdonba vétel
 Felhasználók tulajdonba az adategységek kiválasztásával a **tulajdonba** lehetőséget a Data Catalog-portál. Tulajdonos nélküli adatok eszköz saját tulajdonba nem különleges engedélyekre van szükség. Bármely felhasználó tulajdonba tulajdonos nélküli adatok eszköz.
 
 ### <a name="add-owners-and-co-owners"></a>Adja hozzá a tulajdonosok és a társtulajdonosok
@@ -71,5 +71,5 @@ Adategységet tulajdonosok szabályozhatja a saját adategységek láthatóság�
 ## <a name="catalog-administrators"></a>Katalógus-rendszergazdák
 Katalógus-rendszergazdák implicit módon társtulajdonosok az összes eszköz a katalógusban. Eszköz tulajdonosait nem távolítható el látható a rendszergazdák és rendszergazdák kezelhetik a tulajdonosi és a katalógusban az összes adategységek láthatóságát.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 A Data Catalog közösségi modell metaadatokat és eszköz felderítése lehetővé teszi, hogy minden katalógus felhasználói közreműködés és Fedezze fel. A Data Catalog Standard Edition tulajdonjoga és készült felügyeleti korlátozni a láthatóság és a meghatározott eszközök használatát.

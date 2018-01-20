@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 9a28d0573dd71238d0d91436cb49776b75b51a36
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 3d0e9a43d9a3c9c770c4ab6159279db1d93f5134
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="troubleshoot-deploying-linux-virtual-machine-issues-in-azure"></a>Problémamegoldás telepítését Linux virtuális gép az Azure-ban
 
@@ -92,7 +92,7 @@ A listát a Linux található [Azure-Endorsed Terjesztéseket](endorsed-distros.
 
 ## <a name="can-i-add-an-existing-classic-vm-to-an-availability-set"></a>Hozzáadható az létező klasszikus virtuális gép egy rendelkezésre állási csoportot?
 
-Igen. Meglévő klasszikus virtuális adhat hozzá egy új vagy meglévő rendelkezésre állási csoportban. További információ: [hozzáadása egy meglévő virtuális gép rendelkezésre állási csoportok](../windows/classic/configure-availability.md#addmachine).
+Igen. Meglévő klasszikus virtuális adhat hozzá egy új vagy meglévő rendelkezésre állási csoportban. További információ: [hozzáadása egy meglévő virtuális gép rendelkezésre állási csoportok](../windows/classic/configure-availability-classic.md#addmachine).
 
 
 ## <a name="next-steps"></a>További lépések

@@ -9,28 +9,30 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
 ms.date: 01/04/2018
-ms.openlocfilehash: 429f5c9f939a802184a6513a63fb9115abf4b235
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 3d7e96623ef4ad9abd55deca8b410e9ce0d73b6c
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="minimal-downtime-migration-to-azure-database-for-mysql"></a>MySQL az Azure Database-áttelepítés minimális állásidő érdekében
-Áttelepítheti a meglévő MySQL-adatbázis Azure-adatbázis a MySQL Attunity megfelel a Microsoft Migrations, egy közös szponzorált, közös ajánlat Attunity és a Azure adatbázis áttelepítési szolgáltatás nem megfelelően biztosított Microsoft Microsoft-ügyfél további költség nélkül. Microsoft Migrations Attunity megfelel is lehetővé teszi, hogy az adatbázis áttelepítése az állásidő minimális, és a forrás-adatbázis továbbra is fennáll, az áttelepítési folyamat során működőképes legyen.
+Áttelepítheti a meglévő MySQL-adatbázis Azure-adatbázishoz a MySQL Attunity megfelel a Microsoft Migrations. Attunity megfelel egy közös ajánlat Attunity és a Microsoft. Azure-adatbázis áttelepítése szolgáltatás megfelelően szerepel a Microsoft ügyfelei további költségek nélkül. 
 
-Attunity megfelel egy olyan adatok replikációs eszköz, amely lehetővé teszi a különböző forrásokból és célok, közötti adatszinkronizálás, propagálása a létrehozási parancsprogrammal és az adatbázis társított adatokat. Attunity replikálás nem propagál minden egyéb összetevők (például SP, eseményindítók, Funkciók, stb.) vagy convert, például ilyen összetevők, T-SQL tárolt PL/SQL-kódot.
+Attunity megfelel segít, hogy minimalizálják az állásidőt adatbázis áttelepítések során, és a folyamat során működési tartja a forráshely adatbázisára.
+
+Attunity megfelel egy replikációs eszköz, amely lehetővé teszi a különböző forrásokból és tárolók közötti adatszinkronizálás. Azt a létrehozási parancsprogrammal és az adatbázis kapcsolódó adatok propagálása zajlik. Attunity replikálás nem propagál minden egyéb összetevők (például SP, eseményindítók, Funkciók, és így tovább) vagy convert, például, a PL/SQL-kódot, amely az ilyen összetevők T-SQL.
 
 > [!NOTE]
-> Míg Attunity replikálás áttelepítési forgatókönyvek széles körét támogatja, Microsoft Migrations Attunity megfelel egy adott részének forrás célgazdagép, célfelhő párokból támogatása összpontosít.
+> Bár Attunity replikálás áttelepítési forgatókönyvek széles körét támogatja, egy adott részének forrás célgazdagép, célfelhő párokból támogatása összpontosít.
 
 A folyamat minimális állásidővel áttelepítés áttekintését tartalmazza:
 
-1. **A MySQL-forrás séma áttelepítése** MySQL-adatbázis használatával egy Azure-adatbázishoz a [MySQL munkaterület](https://www.mysql.com/products/workbench/).
+* **A MySQL-forrás séma áttelepítése** egy Azure-adatbázishoz a MySQL adatbázis-szolgáltatás használatával kezelt [MySQL munkaterület](https://www.mysql.com/products/workbench/).
 
-2. **Kezdeti betöltés és az adatok folyamatos szinkronizálásához a forrás-adatbázisból történő beállítása a céladatbázis** Attunity megfelel a Microsoft Migrations. Ezzel minimálisra csökkenti a forrásadatbázis be kell állítania csak olvashatóként Azure váltani az alkalmazásait, és a cél MySQL-adatbázis előkészítése az idejét.
+* **Kezdeti betöltés és az adatok folyamatos szinkronizálásához a forrás-adatbázisból történő beállítása a céladatbázis** Attunity megfelel a Microsoft Migrations. Ezzel minimálisra csökkenti a forrásadatbázis be kell állítania csak olvashatóként Azure váltani az alkalmazásait, és a cél MySQL-adatbázis előkészítése az idejét.
 
-Az Attunity megfelel a Microsoft Migrations ajánlat kapcsolatos további információkért tekintse meg a következőket:
- - A Microsoft Migrations Attunity replikálás [weblap](https://aka.ms/attunity-replicate).
- - [Töltse le](http://discover.attunity.com/download-replicate-microsoft-lp6657.html) Attunity megfelel a Microsoft áttelepítésre.
- - Az Attunity replikálás [közösségi](https://microsoft.attunity.com/), az első lépések útmutatója, oktatóanyagok és támogatás.
- - Az Attunity használatával történő MySQL az Azure-adatbázis MySQL áttelepítésének lépésenkénti útmutatásért tekintse meg a [adatbázis áttelepítési útmutató](https://datamigration.microsoft.com/scenario/mysql-to-azuremysql).
+A Attunity megfelel az ajánlat Microsoft Migrations kapcsolatos további információkért lásd a következőket:
+ - Lépjen a [Attunity megfelel a Microsoft Migrations](https://aka.ms/attunity-replicate) weblap.
+ - Töltse le [Attunity megfelel a Microsoft áttelepítések](http://discover.attunity.com/download-replicate-microsoft-lp6657.html).
+ - Lépjen a [Attunity replikálása közösségi](https://microsoft.attunity.com/) első lépések útmutatója, oktatóanyagok és támogatási szolgálathoz.
+ - A MySQL-adatbázis áttelepítése az Azure Database-MySQL az Attunity megfelel az lépésenkénti útmutatásért lásd: a [adatbázis áttelepítési útmutató](https://datamigration.microsoft.com/scenario/mysql-to-azuremysql).

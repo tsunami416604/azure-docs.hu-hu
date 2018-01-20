@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: f5ffbb6c2d699da143e12c51c38cba602f5a8526
-ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
+ms.openlocfilehash: 9d310df29156f16f6b5290ff0575ff43d083a26c
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="configure-service-map-in-operations-management-suite"></a>Az Operations Management Suite a Szolgáltatástérkép konfigurálása
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Használhatja a kiszolgálók megtekintéséhez, módon úgy gondolja, hogy azok--összekapcsolt rendszerekhez, hogy a kritikus szolgáltatásokhoz. Szolgáltatástérkép kiszolgálók, folyamatok és portok közötti kapcsolatok között nincs konfigurációjával kapcsolatban egy ügynök telepítése nem szükséges bármely TCP-csatlakoztatott architektúra jeleníti meg.
@@ -87,7 +87,7 @@ Beállítások a következő táblázat segítségével telepítése a parancsso
 | Jelzője | Leírás |
 |:--|:--|
 | /? | A parancssori kapcsolók listájának lekérése. |
-| / S | Felhasználói beavatkozás nélküli telepítés végrehajtásához. |
+| /S | Felhasználói beavatkozás nélküli telepítés végrehajtásához. |
 
 A Windows függőségi ügynök fájlok alapértelmezés szerint a C:\Program Files\Microsoft függőségi ügynök kerülnek.
 
@@ -116,11 +116,11 @@ A függőségi ügynök fájlok kerülnek, a következő könyvtárban:
 
 | Fájlok | Hely |
 |:--|:--|
-| Alapvető fájljait | /OPT/Microsoft/Dependency-Agent |
-| Naplófájlok | /var/OPT/Microsoft/Dependency-Agent/log |
-| Olyan konfigurációs fájlt | /ETC/OPT/Microsoft/Dependency-Agent/config |
-| Végrehajtható fájlok | /OPT/Microsoft/Dependency-Agent/bin/Microsoft-Dependency-Agent<br>/OPT/Microsoft/Dependency-Agent/bin/Microsoft-Dependency-Agent-Manager |
-| A tároló bináris fájljai | /var/OPT/Microsoft/Dependency-Agent/Storage |
+| Alapvető fájljait | /opt/microsoft/dependency-agent |
+| Naplófájlok | /var/opt/microsoft/dependency-agent/log |
+| Olyan konfigurációs fájlt | /etc/opt/microsoft/dependency-agent/config |
+| Végrehajtható fájlok | /opt/microsoft/dependency-agent/bin/microsoft-dependency-agent<br>/opt/microsoft/dependency-agent/bin/microsoft-dependency-agent-manager |
+| A tároló bináris fájljai | /var/opt/microsoft/dependency-agent/storage |
 
 ## <a name="installation-script-examples"></a>Telepítési parancsfájl példák
 Könnyen telepíthető egyszerre több kiszolgálón a függőségi ügynök, áttekinteni parancsfájl használata. Az alábbi parancsfájl-példák segítségével töltse le és a függőségi ügynök telepíthető Windows vagy Linux.
@@ -139,7 +139,7 @@ sudo sh InstallDependencyAgent-Linux64.bin -s
 ```
 
 ## <a name="azure-vm-extension"></a>Az Azure Virtuálisgép-bővítmény
-Az Azure virtuális gépek használata a függőségi ügynök könnyedén telepítheti egy [Azure Virtuálisgép-bővítmény](https://docs.microsoft.com/azure/virtual-machines/windows/classic/agents-and-extensions).  Az Azure Virtuálisgép-bővítmény használatával telepíthet a függőségi ügynök a virtuális gépek közvetlenül az Azure Resource Manager-sablon a virtuális gép vagy egy PowerShell-parancsfájlt keresztül.  Nincs elérhető (DependencyAgentWindows) Windows és Linux (DependencyAgentLinux) bővítménye.  Ha az Azure Virtuálisgép-bővítmény használatával telepít, az ügynökök automatikusan frissíthető a legújabb verzióra.
+Az Azure virtuális gépek használata a függőségi ügynök könnyedén telepítheti egy [Azure Virtuálisgép-bővítmény](https://docs.microsoft.com/azure/virtual-machines/windows/classic/agents-and-extensions-classic).  Az Azure Virtuálisgép-bővítmény használatával telepíthet a függőségi ügynök a virtuális gépek közvetlenül az Azure Resource Manager-sablon a virtuális gép vagy egy PowerShell-parancsfájlt keresztül.  Nincs elérhető (DependencyAgentWindows) Windows és Linux (DependencyAgentLinux) bővítménye.  Ha az Azure Virtuálisgép-bővítmény használatával telepít, az ügynökök automatikusan frissíthető a legújabb verzióra.
 
 Az Azure PowerShell Virtuálisgép-bővítmény telepítéséhez használhatja a következő példa:
 ```PowerShell
@@ -221,7 +221,7 @@ Node localhost
 }
 ```
 
-## <a name="uninstallation"></a>Az Eltávolítás
+## <a name="uninstallation"></a>Eltávolítás
 ### <a name="uninstall-the-dependency-agent-on-windows"></a>Távolítsa el a függőségi ügynököt Windows rendszeren
 A rendszergazda eltávolíthatja a függőségi ügynök a Windows Vezérlőpult segítségével.
 

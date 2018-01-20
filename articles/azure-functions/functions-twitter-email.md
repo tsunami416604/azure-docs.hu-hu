@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 12/08/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 9402dbbf66bbbf7ff23f3fc29cbb38f8aa8615e6
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 8137892c4360a6b55cfe48d62226c2421a791d5e
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Hozzon létre egy függvényt, amely az Azure Logic Apps
 
@@ -288,5 +288,5 @@ Előzetes hogyan hozzon létre egy kiszolgáló nélküli API-t a függvény a k
 > [!div class="nextstepaction"] 
 > [Kiszolgáló nélküli API létrehozása az Azure Functions használatával](functions-create-serverless-api.md)
 
-A Logic Apps kapcsolatos további információkért lásd: [Azure Logic Apps](../logic-apps/logic-apps-what-are-logic-apps.md).
+A Logic Apps kapcsolatos további információkért lásd: [Azure Logic Apps](../logic-apps/logic-apps-overview.md).
 

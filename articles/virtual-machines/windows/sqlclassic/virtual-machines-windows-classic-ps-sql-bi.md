@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/30/2017
 ms.author: asaxton
-ms.openlocfilehash: 65bada117e7d005362b0ac0ce7cc5336a92e0889
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a010e60df2d86d2b1cc923b427aa7d7452f58089
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="sql-server-business-intelligence-in-azure-virtual-machines"></a>Az SQL Server Business Intelligence használata Azure-beli virtuális gépeken
 > [!IMPORTANT] 
@@ -62,20 +62,20 @@ A Microsoft Azure virtuális gép számos olyan rendszerkép található, amely 
 
 Kiadásainak és az SQL Server által támogatott szolgáltatások további információkért tekintse át a következőket:
 
-* [SQL Server kiadásai](https://www.microsoft.com/server-cloud/products/sql-server-editions/#fbid=Zae0-E6r5oh)
+* [SQL Server Editions](https://www.microsoft.com/server-cloud/products/sql-server-editions/#fbid=Zae0-E6r5oh)
 * [Az SQL Server 2016 kiadásai által támogatott szolgáltatások](https://msdn.microsoft.com/library/cc645993.aspx)
 
 ### <a name="bi-features-installed-on-the-sql-server-virtual-machine-gallery-images"></a>Üzleti INTELLIGENCIA szolgáltatásokat az SQL Server virtuálisgép-katalógusban lemezképeket telepítve
 A következő táblázat összefoglalja a közös Microsoft Azure virtuális gépen lévő képek telepíthető az SQL Server Business Intelligence szolgáltatások:
 
 * SQL Server 2016 SP1 Enterprise
-* Az SQL Server 2016 SP1 Standard
+* SQL Server 2016 SP1 Standard
 * SQL Server 2014 SP2 Enterprise
-* Az SQL Server 2014 SP2 Standard
+* SQL Server 2014 SP2 Standard
 * SQL Server 2012 SP3 Enterprise
-* Az SQL Server 2012 SP3 Standard
+* SQL Server 2012 SP3 Standard
 
-| SQL Server BI szolgáltatás | A gyűjtemény kép telepítve | Megjegyzések |
+| SQL Server BI Feature | A gyűjtemény kép telepítve | Megjegyzések |
 | --- | --- | --- |
 | **Jelentéskészítési szolgáltatások natív mód** |Igen |Telepített, de a konfiguráció – beleértve a jelentés manager URL-címet igényel. Című témakör [Reporting Services konfigurálása](#configure-reporting-services). |
 | **Reporting Services – SharePoint módban** |Nem |A Microsoft Azure virtuális gép gyűjteménye a rendszerkép nem tartalmaz a SharePoint vagy a SharePoint telepítési fájlok. <sup>1</sup> |
@@ -98,10 +98,10 @@ A következő táblázat összefoglalja a közös Microsoft Azure virtuális gé
   * A gyorsítótárazási házirend az alapértelmezett meghajtó meghajtó **C**: nincs optimalizálva az adatai.
   * A **D**: elsősorban a lapozófájlt használt ideiglenes meghajtó. A **D**: meghajtó nem őrzi meg, és nem menti a blob Storage tárolóban. Felügyeleti feladatokhoz, mint a Módosítás gombra a virtuális gép méretének visszaállítása a **D**: meghajtó. Javasoljuk, hogy **nem** használja a **D**: adatbázis-fájlok, beleértve a tempdb meghajtó.
     
-    A lemezek létrehozása és további információkért lásd: [hogyan lehet adatlemezt csatolni egy virtuális gép](../classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+    A lemezek létrehozása és további információkért lásd: [hogyan lehet adatlemezt csatolni egy virtuális gép](../classic/attach-disk-classic.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 * Állítsa le, vagy távolítsa el a szolgáltatások nem tervezi használni. Például ha a virtuális gép csak a Reporting Serviceshez, állítsa le vagy távolítsa el az Analysis Services és az SQL Server Integration Services. Az alábbi képen a szolgáltatások alapértelmezés szerint az elindított példája.
   
-    ![SQL Server-szolgáltatások](./media/virtual-machines-windows-classic-ps-sql-bi/IC650107.gif)
+    ![SQL Server services](./media/virtual-machines-windows-classic-ps-sql-bi/IC650107.gif)
   
   > [!NOTE]
   > Az SQL Server adatbázismotor a támogatott BI esetekben szükséges. A virtuális gép topológia, egyetlen kiszolgáló az adatbázismotor szükséges az azonos virtuális gépen kell futnia.
@@ -152,7 +152,7 @@ Nincsenek két gyakori munkafolyamat egy Azure virtuális géphez való csatlako
   1. Típus a **felhőszolgáltatás neve** a számítógép neve.
   2. Írja be a kettőspont (:) és a nyilvános port számát, az TCP-távoli asztali végpont konfigurált.
      
-      Myservice.cloudapp.NET:63133
+      Myservice.cloudapp.net:63133
      
       További információkért lásd: [Mi az a cloud service?](https://azure.microsoft.com/manage/services/cloud-services/what-is-a-cloud-service/).
 
@@ -285,7 +285,7 @@ A jelen szakaszban szereplő lépéseket **összefoglalója** Analysis Services 
 7. Az a **Analysis Services konfigurációs** lapon jelölje be **táblázatos módban**. Adja hozzá az aktuális felhasználó rendszergazdai engedélyek listájához.
 8. Végezze el, és zárja be az SQL Server telepítővarázsló.
 
-## <a name="analysis-services-configuration"></a>Az Analysis Services beállítása
+## <a name="analysis-services-configuration"></a>Analysis Services Configuration
 ### <a name="remote-access-to-analysis-services-server"></a>Az Analysis Services-kiszolgálóhoz távoli hozzáférést
 Analysis Services-kiszolgáló csak a windows-hitelesítést támogatja. Távolról elérje ügyfélalkalmazásokat, például az SQL Server Management Studio vagy SQL Server Data Tools Analysis Services, a virtuális géphez kell csatlakoztatni kell a helyi tartományhoz, Azure virtuális hálózat használata. További információ: [Azure Virtual Network](../../../virtual-network/virtual-networks-overview.md).
 
@@ -334,12 +334,12 @@ A következő ábra szemlélteti a portokat nyissa meg a virtuális gép tűzfal
 
 ![üzleti intelligencia alkalmazások az Azure virtuális gépeken megnyitandó portokról](./media/virtual-machines-windows-classic-ps-sql-bi/IC654385.gif)
 
-## <a name="resources"></a>Erőforrások
+## <a name="resources"></a>További források
 * Microsoft server szoftver az Azure virtuális gép környezetben használt terméktámogatási irányelveiből. A következő témakör összefoglalja, például a BitLocker, a Feladatátvételi fürtszolgáltatás és a hálózati terheléselosztás szolgáltatás támogatását. [Microsoft server szoftver támogatása az Azure virtuális gépek](http://support.microsoft.com/kb/2721672).
 * [SQL Server Azure virtuális gépek – áttekintés](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
 * [Virtuális gépek](https://azure.microsoft.com/documentation/services/virtual-machines/)
 * [Az Azure SQL Server virtuális gépek kiépítése](../sql/virtual-machines-windows-portal-sql-server-provision.md)
-* [Hogyan lehet adatlemezt csatolni egy virtuális géphez](../classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [Hogyan lehet adatlemezt csatolni egy virtuális géphez](../classic/attach-disk-classic.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 * [Az Azure virtuális gép az SQL Server-adatbázis migrálása](../sql/virtual-machines-windows-migrate-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)
 * [A kiszolgálói módú Analysis Services példány meghatározása](https://msdn.microsoft.com/library/gg471594.aspx)
 * [Többdimenziós modellezési (Adventure Works oktatóanyag)](https://technet.microsoft.com/library/ms170208.aspx)

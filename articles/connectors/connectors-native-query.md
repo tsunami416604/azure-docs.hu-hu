@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/20/2016
 ms.author: jehollan
-ms.openlocfilehash: a11ba47d6ec69d31360e9142b7bce97803809c57
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 05dd4ae3c4ee439d66401a3f5595f9104051f8ee
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-query-action"></a>Ismerkedjen meg a lekérdezési művelet
 A lekérdezési művelet használatával is dolgozhat kötegek és tömbök munkafolyamatokat elvégzéséhez:
@@ -27,7 +27,7 @@ A lekérdezési művelet használatával is dolgozhat kötegek és tömbök munk
 * Hozzon létre egy feladatot az összes magasabb prioritású rekord adatbázisból.
 * Az e-mailekhez, az Azure-blobot összes PDF melléklet mentése.
 
-Első lépések egy logikai alkalmazás lekérdezés műveletével, lásd: [logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md).
+Első lépések egy logikai alkalmazás lekérdezés műveletével, lásd: [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="use-the-query-action"></a>A lekérdezés művelettel
 Egy művelet során, amely a logikai alkalmazás definiált munkafolyamat végzi. [További információ a műveletek](connectors-overview.md).  
@@ -56,29 +56,29 @@ Az alábbiak a művelet, amely támogatja ezt az összekötőt. Az összekötő 
 
 | Műveletek | Leírás |
 | --- | --- |
-| Szűrő tömb |Minden elem tömbben feltételt ad meg, és az eredményt ad vissza. |
+| Tömb szűrése |Minden elem tömbben feltételt ad meg, és az eredményt ad vissza. |
 
-## <a name="action-details"></a>A művelet részletei
+## <a name="action-details"></a>Művelet részletei
 A lekérdezési művelet egy lehetséges műveletet tartalmaz. A következő táblázatok ismertetik, hogy a művelet és a megfelelő kimeneti részletek művelettel társított szükséges és választható bemeneti mező.
 
-### <a name="filter-array"></a>Szűrő tömb
+### <a name="filter-array"></a>Tömb szűrése
 A művelet, amely a kimenő HTTP-kérelem a beviteli mezők a következők:
 A * azt jelenti, hogy mezőt kötelező kitölteni.
 
 | Megjelenített név | Tulajdonság neve | Leírás |
 | --- | --- | --- |
-| A * |A |A tömb szűrése |
+| A * |forrás: |A tömb szűrése |
 | Az állapot * |Ha |A feltétel kiértékelése minden elemhez |
 
 <br>
 
-### <a name="output-details"></a>Kimeneti részletei
+### <a name="output-details"></a>Kimenet részletei
 A HTTP-válasz kimeneti részleteit az alábbiakban.
 
 | Tulajdonság neve | Adattípus | Leírás |
 | --- | --- | --- |
-| Szűrt tömb |A tömb |Olyan tömb, amely minden szűrt eredmény objektumot tartalmaz |
+| Szűrt tömb |tömb |Olyan tömb, amely minden szűrt eredmény objektumot tartalmaz |
 
-## <a name="next-steps"></a>Következő lépések
-Most, próbálja ki a platformot és [logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md). Az egyéb rendelkezésre álló összekötők logic Apps alkalmazások felmérésével felfedezheti a [API-k lista](apis-list.md).
+## <a name="next-steps"></a>További lépések
+Most, próbálja ki a platformot és [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md). Az egyéb rendelkezésre álló összekötők logic Apps alkalmazások felmérésével felfedezheti a [API-k lista](apis-list.md).
 

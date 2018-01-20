@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: e3787b48037360bf6066ddce2bacba6842213b2d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 41bd0291f3ff8f5dd61a21d1ba4ecb3b60a3cbfb
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Az Azure Logic Apps a vállalati integrációs csomaggal EDIFACT üzenetek dekódolása
 
@@ -35,7 +35,7 @@ A szükséges elemeket itt található:
 
 ## <a name="decode-edifact-messages"></a>EDIFACT üzenetek dekódolása
 
-1. [Logikai alkalmazás létrehozása](logic-apps-create-a-logic-app.md).
+1. [Logikai alkalmazás létrehozása](quickstart-create-first-logic-app-workflow.md).
 
 2. A dekódolási EDIFACT üzenet összekötő nincs eseményindítók, hozzá kell adni egy eseményindító indítása el a logikai alkalmazás, például a kérelem eseményindítót. A Logic App-tervezőben, vegye fel egy eseményindítót, majd egy műveletet a logikai alkalmazáshoz.
 
@@ -99,6 +99,6 @@ Az dekódolása EDIFACT-összekötő az alábbi feladatokat hajtja végre:
 ## <a name="view-swagger-file"></a>A Swagger-fájl megtekintése
 A Swagger adatai a EDIFACT-összekötő megtekintése: [EDIFACT](/connectors/edifact/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [További tudnivalók a vállalati integrációs csomag](logic-apps-enterprise-integration-overview.md "további információ a vállalati integrációs csomag") 
 

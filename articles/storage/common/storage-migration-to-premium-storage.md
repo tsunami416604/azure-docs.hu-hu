@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
-ms.openlocfilehash: cb46c3f2809fa86fea7a8370d4c417f04040b74c
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 9c2ac737c9f4e13b4e5e4f5dba18c7a697f6e6c3
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Prémium szintű Azure Storage (nem felügyelt lemezek) áttelepítése
 
@@ -290,7 +290,7 @@ AzCopy használatával eszköz, lásd: [adatátvitel az AzCopy parancssori segé
 ##### <a name="other-options-for-uploading-a-vhd"></a>Más beállításokat a virtuális merevlemez feltöltése
 Feltöltheti a virtuális merevlemez a tárfiókhoz, az alábbi eszközök egyikével:
 
-* [Az Azure Storage másolási Blob API](https://msdn.microsoft.com/library/azure/dd894037.aspx)
+* [Azure Storage Copy Blob API](https://msdn.microsoft.com/library/azure/dd894037.aspx)
 * [Az Azure Storage Explorer feltöltése a BLOB](https://azurestorageexplorer.codeplex.com/)
 * [Storage Import/Export szolgáltatás REST API-referencia](https://msdn.microsoft.com/library/dn529096.aspx)
 
@@ -755,18 +755,18 @@ Az alkalmazás a jobb teljesítmény érdekében lemez hangolása, olvassa el [a
 ### <a name="application-migrations"></a>Alkalmazás-áttelepítések
 Adatbázisok és más összetett alkalmazások lehet szükség különleges lépések az alkalmazás-szolgáltató az áttelepítés által definiált konfigurációjának kialakításához. Tekintse meg a megfelelő alkalmazás dokumentációját. Például általában adatbázisok telepíthetők át a biztonsági mentés és visszaállítás.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A virtuális gépek meghatározott forgatókönyvek a következő cikkekben találhat:
 
 * [Az Azure virtuális gépek közötti Storage-fiókok áttelepítése](https://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)
 * [Hozzon létre, és a Windows Server VHD feltöltése az Azure-bA.](../../virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-* [Létrehozás és a Linux operációs rendszert tartalmazó virtuális merevlemez feltöltése](../../virtual-machines/linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+* [Létrehozás és a Linux operációs rendszert tartalmazó virtuális merevlemez feltöltése](../../virtual-machines/linux/classic/create-upload-vhd-classic.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 * [Virtuális gépek áttelepítési Amazon AWS a Microsoft Azure](http://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)
 
 A következő források további információt az Azure Storage és az Azure virtuális gépek lásd még:
 
 * [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
-* [Az Azure virtuális gépek](https://azure.microsoft.com/documentation/services/virtual-machines/)
+* [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
 * [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure-beli virtuális gépek számítási feladataihoz](../../virtual-machines/windows/premium-storage.md)
 
 [1]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png

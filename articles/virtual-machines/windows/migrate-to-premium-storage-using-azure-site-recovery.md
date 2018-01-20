@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
-ms.openlocfilehash: ca7489b18c53825bad7790ae4718f2c724716856
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 66e0e7a1fc620d0be9bd7057be4e04d628da174e
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Prémium szintű Storage telepítse át az Azure Site Recovery segítségével
 
@@ -59,7 +59,7 @@ A kép bemutatja, hogyan működnek együtt ezeket az összetevőket:
 
 Tekintse meg az egyéb forgatókönyvek további összetevők [kialakítandó architektúra](../../site-recovery/vmware-walkthrough-overview.md).
 
-## <a name="azure-essentials"></a>Az Azure alapjai
+## <a name="azure-essentials"></a>Azure essentials
 
 Az áttelepítési forgatókönyv szerint az Azure-követelmények a következők:
 
@@ -199,7 +199,7 @@ A Site Recovery hoz létre egy Virtuálisgép-példány, amelynek típusa megegy
 ## <a name="post-migration-steps"></a>Az áttelepítést követő lépések
 
 1. **A rendelkezésre állási csoportot, ha van ilyen a replikált virtuális gépek**. A Site Recovery nem támogatja a rendelkezésre állási csoport együtt áttelepítése virtuális gépek. Attól függően, hogy a replikált virtuális gép telepítése esetén tegye a következők egyikét:
-   * A klasszikus üzembe helyezési modell használatával létrehozza a virtuális gépek: a virtuális gép hozzáadása a rendelkezésre állási csoportot az Azure portálon. A részletes lépéseket lásd a [hozzáadása egy meglévő virtuális gép rendelkezésre állási csoportok](../linux/classic/configure-availability.md#addmachine).
+   * A klasszikus üzembe helyezési modell használatával létrehozza a virtuális gépek: a virtuális gép hozzáadása a rendelkezésre állási csoportot az Azure portálon. A részletes lépéseket lásd a [hozzáadása egy meglévő virtuális gép rendelkezésre állási csoportok](../linux/classic/configure-availability-classic.md).
    * A Resource Manager üzembe helyezési modellel keresztül létrehozza a virtuális gépek: a virtuális gép a konfiguráció mentéséhez, és törölje és hozza létre a virtuális gépek a rendelkezésre állási csoport. Ehhez használja a következő parancsfájl [beállítása Azure Resource Manager virtuális gép rendelkezésre állási csoport](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4). Ez a parancsfájl futtatása előtt ellenőrizze a korlátozások vonatkoznak, és tervezze meg a leállás.
 
 2. **Törölje a régi virtuális gépek és lemezek**. Győződjön meg arról, hogy a Premium lemezek forráslemezekhez konzisztens és, hogy az új virtuális gépek a forrás virtuális gépeknek ugyanazon művelet végrehajtására szolgál(nak). Törölje a virtuális gép, és a lemezek törlése a forrás storage-fiókok az Azure portálon. Ha probléma, amely a lemez nem törölt, annak ellenére, hogy törli a virtuális gép, lásd: [hibák elhárítása a virtuális merevlemezek törlésekor](../../storage/common/storage-resource-manager-cannot-delete-storage-account-container-vhd.md).
@@ -211,20 +211,20 @@ A Site Recovery hoz létre egy Virtuálisgép-példány, amelynek típusa megegy
 * [Figyelése és hibaelhárítása szempontjából a virtuális gépek és fizikai kiszolgálók védelme](../../site-recovery/site-recovery-monitoring-and-troubleshooting.md)
 * [A Microsoft Azure Site Recovery-fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Virtuális gépek meghatározott forgatókönyvek lásd a következőket:
 
 * [Az Azure virtuális gépek közötti Storage-fiókok áttelepítése](https://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)
 * [Hozzon létre, és töltse fel a Windows Server VHD az Azure-bA](classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-* [Létrehozás és a Linux operációs rendszert tartalmazó virtuális merevlemez feltöltése](../linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+* [Létrehozás és a Linux operációs rendszert tartalmazó virtuális merevlemez feltöltése](../linux/classic/create-upload-vhd-classic.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 * [Virtuális gépek áttelepítési Amazon AWS a Microsoft Azure](http://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)
 
 A következő források további információt az Azure Storage és az Azure virtuális gépek lásd még:
 
 * [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
-* [Az Azure virtuális gépek](https://azure.microsoft.com/documentation/services/virtual-machines/)
-* [Prémium szintű Storage: Nagy teljesítményű tárolást az Azure virtuális gépek terheléséhez](premium-storage.md)
+* [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
+* [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure-beli virtuális gépek számítási feladataihoz](premium-storage.md)
 
 [1]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-1.png
 [2]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-2.png

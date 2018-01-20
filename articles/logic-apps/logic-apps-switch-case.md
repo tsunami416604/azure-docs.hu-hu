@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: LADocs; deli
-ms.openlocfilehash: 338b6a5b549d7bf81186550295608438ac4aee32
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a459fb131cb9f917f2b0cf79679b04da48d76c42
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="perform-different-actions-in-logic-apps-with-a-switch-statement"></a>A logic apps kapcsoló utasítással különböző műveleteket
 
@@ -34,7 +34,7 @@ A switch utasítás használatával ezek a forgatókönyvek megvalósításához
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Aktív Azure-előfizetés. Ha nincs egy aktív Azure-előfizetéssel, [ingyenes fiók létrehozását](https://azure.microsoft.com/free/), vagy próbálja [logikai alkalmazások szabad](https://tryappservice.azure.com/).
-- [A logic apps alapszintű ismerete](logic-apps-what-are-logic-apps.md)
+- [A logic apps alapszintű ismerete](logic-apps-overview.md)
 
 ## <a name="add-a-switch-statement-to-your-workflow"></a>A switch utasítás hozzá a munkafolyamathoz
 
@@ -120,7 +120,7 @@ Látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.co
 
 Ha szeretné segíteni az Azure Logic Apps és összekötők fejlesztését, szavazzon az ötletekre az [Azure Logic Apps felhasználói visszajelzések oldalán](http://aka.ms/logicapps-wish), vagy küldje be saját javaslatait.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan [feltételek hozzáadása](logic-apps-use-logic-app-features.md)
 - További tudnivalók [hiba és kivételkezelést](logic-apps-exception-handling.md)

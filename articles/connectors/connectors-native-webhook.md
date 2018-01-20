@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/21/2016
 ms.author: jehollan; LADocs
-ms.openlocfilehash: fbfef291334109c6dcfcde80741874549fb7929f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ec407d72f90cf3616214d27c378dee0ff42f4c6f
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-webhook-connector"></a>A webhook összekötő az első lépései
 
@@ -77,7 +77,7 @@ Egy [ *művelet* ](connectors-overview.md) művelet végzi el a logikai alkalmaz
 
 Az alábbiakban további részleteket az eseményindítók és műveletek adott webhook támogatja.
 
-## <a name="webhook-triggers"></a>Webhook eseményindítók
+## <a name="webhook-triggers"></a>Webhook triggers
 
 | Műveletek | Leírás |
 | --- | --- |
@@ -90,18 +90,18 @@ Az alábbiakban további részleteket az eseményindítók és műveletek adott 
 Az előfizetés olyan szolgáltatás, amely meghívhatja az érvényesítést a logikai alkalmazás igény szerint az URL-cím visszahívási URL-CÍMÉT.
 Egy * azt jelenti, hogy a mezőt kötelező kitölteni.
 
-| Megjelenített név | Tulajdonság neve | Leírás |
+| Megjelenítendő név | Tulajdonság neve | Leírás |
 | --- | --- | --- |
-| Előfizetés metódus * |Módszer |Előfizetés a kérelemhez használandó HTTP-metódus |
-| Előfizetés URI * |URI |Előfizetés a kérelemhez használandó HTTP URI- |
-| Leiratkozhat metódus * |Módszer |HTTP-metódus lemondási kérelmet használandó |
-| Leiratkozhat URI * |URI |HTTP URI-t használ a lemondási kérelmet |
-| Fizessen elő a szervezet |Törzs |Az előfizetés HTTP-kérelem törzsében |
-| Fejlécek előfizetés |Fejlécek |HTTP-kérelmek fejléceinek előfizetés |
-| Hitelesítési előfizetés |Hitelesítés |HTTP-hitelesítés használata az előfizetés. [Tekintse meg a HTTP-összekötő](connectors-native-http.md#authentication) részletek |
-| Törzs leiratkozhat |Törzs |HTTP kérelem törzse lemondás |
-| Fejlécek leiratkozhat |Fejlécek |HTTP-kérelmek fejléceinek lemondás |
-| Hitelesítési leiratkozhat |Hitelesítés |HTTP-hitelesítés lemondás esetén használandó. [Tekintse meg a HTTP-összekötő](connectors-native-http.md#authentication) részletek |
+| Előfizetés metódus * |metódus |Előfizetés a kérelemhez használandó HTTP-metódus |
+| Előfizetés URI * |uri azonosító |Előfizetés a kérelemhez használandó HTTP URI- |
+| Leiratkozhat metódus * |metódus |HTTP-metódus lemondási kérelmet használandó |
+| Leiratkozhat URI * |uri azonosító |HTTP URI-t használ a lemondási kérelmet |
+| Fizessen elő a szervezet |törzs |Az előfizetés HTTP-kérelem törzsében |
+| Fejlécek előfizetés |fejlécek |HTTP-kérelmek fejléceinek előfizetés |
+| Hitelesítési előfizetés |hitelesítés |HTTP-hitelesítés használata az előfizetés. [Tekintse meg a HTTP-összekötő](connectors-native-http.md#authentication) részletek |
+| Törzs leiratkozhat |törzs |HTTP kérelem törzse lemondás |
+| Fejlécek leiratkozhat |fejlécek |HTTP-kérelmek fejléceinek lemondás |
+| Hitelesítési leiratkozhat |hitelesítés |HTTP-hitelesítés lemondás esetén használandó. [Tekintse meg a HTTP-összekötő](connectors-native-http.md#authentication) részletek |
 
 **Kimeneti részletei**
 
@@ -109,8 +109,8 @@ Webhook kérelem
 
 | Tulajdonság neve | Adattípus | Leírás |
 | --- | --- | --- |
-| Fejlécek |Objektum |Webhook kérelemfejléc |
-| Törzs |Objektum |Webhook kérelem objektum |
+| Fejlécek |objektum |Webhook kérelemfejléc |
+| Törzs |objektum |Webhook kérelem objektum |
 | Állapotkód |int |Webhook kérésállapotkódot |
 
 ## <a name="webhook-actions"></a>Webhookműveletek
@@ -119,25 +119,25 @@ Webhook kérelem
 | --- | --- |
 | HTTP Webhook |Az előfizetés olyan szolgáltatás, amely hívhatják meg folytatni a munkafolyamat-lépés igény szerint az URL-cím visszahívási URL-CÍMÉT. |
 
-### <a name="action-details"></a>A művelet részletei
+### <a name="action-details"></a>Művelet részletei
 
 #### <a name="http-webhook"></a>HTTP Webhook
 
 Az előfizetés olyan szolgáltatás, amely hívhatják meg folytatni a munkafolyamat-lépés igény szerint az URL-cím visszahívási URL-CÍMÉT.
 Egy * azt jelenti, hogy a mezőt kötelező kitölteni.
 
-| Megjelenített név | Tulajdonság neve | Leírás |
+| Megjelenítendő név | Tulajdonság neve | Leírás |
 | --- | --- | --- |
-| Előfizetés metódus * |Módszer |Előfizetés a kérelemhez használandó HTTP-metódus |
-| Előfizetés URI * |URI |Előfizetés a kérelemhez használandó HTTP URI- |
-| Leiratkozhat metódus * |Módszer |HTTP-metódus lemondási kérelmet használandó |
-| Leiratkozhat URI * |URI |HTTP URI-t használ a lemondási kérelmet |
-| Fizessen elő a szervezet |Törzs |Az előfizetés HTTP-kérelem törzsében |
-| Fejlécek előfizetés |Fejlécek |HTTP-kérelmek fejléceinek előfizetés |
-| Hitelesítési előfizetés |Hitelesítés |HTTP-hitelesítés használata az előfizetés. [Tekintse meg a HTTP-összekötő](connectors-native-http.md#authentication) részletek |
-| Törzs leiratkozhat |Törzs |HTTP kérelem törzse lemondás |
-| Fejlécek leiratkozhat |Fejlécek |HTTP-kérelmek fejléceinek lemondás |
-| Hitelesítési leiratkozhat |Hitelesítés |HTTP-hitelesítés lemondás esetén használandó. [Tekintse meg a HTTP-összekötő](connectors-native-http.md#authentication) részletek |
+| Előfizetés metódus * |metódus |Előfizetés a kérelemhez használandó HTTP-metódus |
+| Előfizetés URI * |uri azonosító |Előfizetés a kérelemhez használandó HTTP URI- |
+| Leiratkozhat metódus * |metódus |HTTP-metódus lemondási kérelmet használandó |
+| Leiratkozhat URI * |uri azonosító |HTTP URI-t használ a lemondási kérelmet |
+| Fizessen elő a szervezet |törzs |Az előfizetés HTTP-kérelem törzsében |
+| Fejlécek előfizetés |fejlécek |HTTP-kérelmek fejléceinek előfizetés |
+| Hitelesítési előfizetés |hitelesítés |HTTP-hitelesítés használata az előfizetés. [Tekintse meg a HTTP-összekötő](connectors-native-http.md#authentication) részletek |
+| Törzs leiratkozhat |törzs |HTTP kérelem törzse lemondás |
+| Fejlécek leiratkozhat |fejlécek |HTTP-kérelmek fejléceinek lemondás |
+| Hitelesítési leiratkozhat |hitelesítés |HTTP-hitelesítés lemondás esetén használandó. [Tekintse meg a HTTP-összekötő](connectors-native-http.md#authentication) részletek |
 
 **Kimeneti részletei**
 
@@ -145,11 +145,11 @@ Webhook kérelem
 
 | Tulajdonság neve | Adattípus | Leírás |
 | --- | --- | --- |
-| Fejlécek |Objektum |Webhook kérelemfejléc |
-| Törzs |Objektum |Webhook kérelem objektum |
+| Fejlécek |objektum |Webhook kérelemfejléc |
+| Törzs |objektum |Webhook kérelem objektum |
 | Állapotkód |int |Webhook kérésállapotkódot |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md)
+* [Logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * [Más összekötők keresése](apis-list.md)

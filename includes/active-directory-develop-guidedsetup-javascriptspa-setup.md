@@ -16,7 +16,7 @@ Ez az útmutató utasításait a Python és a Visual Studio 2017 alapulnak, de s
 
 ## <a name="create-your-project"></a>A projekt létrehozása 
 
-> ### <a name="option-1-visual-studio"></a>1. lehetőség: A Visual Studio 
+> ### <a name="option-1-visual-studio"></a>Option 1: Visual Studio 
 > Ha a Visual Studio használ, és a rendszer létrehoz egy új projektet, kövesse az alábbi lépéseket egy új Visual Studio megoldás létrehozásához:
 > 1.    A Visual Studio:`File` > `New` > `Project`
 > 2.    A `Visual C#\Web`, jelölje be`ASP.NET Web Application (.NET Framework)`

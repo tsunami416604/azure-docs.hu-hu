@@ -29,7 +29,7 @@ Mielőtt leválaszthatna egy lemezt egy virtuális gépről, meg kell keresnie a
 3. Jegyezze fel a leválasztani kívánt lemez LUN-ját (**logikaiegység-szám**).
 
 ## <a name="remove-operating-system-references-to-the-disk"></a>A lemezre mutató operációs rendszerbeli hivatkozások eltávolítása
-Mielőtt leválasztaná a lemezt a Linux-vendégről, meg kell győződnie arról, hogy a lemez egyik partíciója sincs használatban. Győződjön meg arról, hogy az operációs rendszer nem kísérli meg újból csatlakoztatni őket az újraindítás után. Ezek a lépések visszavonják a lemez [csatolásakor](../articles/virtual-machines/linux/classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) valószínűleg létrehozott konfigurációt.
+Mielőtt leválasztaná a lemezt a Linux-vendégről, meg kell győződnie arról, hogy a lemez egyik partíciója sincs használatban. Győződjön meg arról, hogy az operációs rendszer nem kísérli meg újból csatlakoztatni őket az újraindítás után. Ezek a lépések visszavonják a lemez [csatolásakor](../articles/virtual-machines/linux/classic/attach-disk-classic.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) valószínűleg létrehozott konfigurációt.
 
 1. Az `lsscsi` paranccsal derítse fel a lemez azonosítóját. Az `lsscsi` a `yum install lsscsi` (Red Hat-alapú disztribúciókon) vagy az `apt-get install lsscsi` (Debian-alapú disztribúciókon) használatával telepíthető. A LUN számmal megtalálhatja a keresett lemezazonosítót. Minden sorban a rekord utolsó száma a LUN szám. A következő `lsscsi`-példában a LUN 0 a következőnek felel meg: */dev/sdc*
 

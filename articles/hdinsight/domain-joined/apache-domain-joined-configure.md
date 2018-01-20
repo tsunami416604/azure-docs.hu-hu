@@ -4,7 +4,7 @@ description: "Megtudhatja, hogyan telepítheti és konfigurálhatja a tartomány
 services: hdinsight
 documentationcenter: 
 author: saurinsh
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 tags: 
 ms.assetid: 0cbb49cc-0de1-4a1a-b658-99897caf827c
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/10/2018
 ms.author: saurinsh
-ms.openlocfilehash: 4921e329c2ec8ce3d5bbf8a0851146e13d5f6cd3
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: e24ea43f6df3c22c338646af21f7517e16b718ea
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="configure-domain-joined-hdinsight-sandbox-environment"></a>Tartományhoz csatlakozó HDInsight védőfal mögötti környezet konfigurálása
 
@@ -28,7 +28,7 @@ Ismerje meg, hogyan állíthat be az Active Directory önálló Azure HDInsight-
 Nélkül tartományhoz HDInsight-fürtöt, az egyes fürtökön csak van a Hadoop HTTP-felhasználói fiókot, és egy SSH-felhasználói fiókot.  A több felhasználó-hitelesítési elérhető használatával:
 
 -   Az Active Directory önálló Azure infrastruktúra-szolgáltatáson futó.
--   Az Azure Active Directory.
+-   Azure Active Directory.
 -   Az ügyfél helyszíni környezetben futó Active Directory.
 
 Active Directory önálló Ez a cikk az Azure infrastruktúra-szolgáltatáson futó vonatkozik. Az ügyfél követve többfelhasználós támogatás kérése a HDInsight a legegyszerűbb architektúra. Ez a cikk két megközelítés ehhez a konfigurációhoz terjed ki:
@@ -49,7 +49,7 @@ Active Directory önálló Ez a cikk az Azure infrastruktúra-szolgáltatáson f
 ## <a name="option-1-one-step-approach"></a>1. lehetőség: egylépéses megközelítés
 Ebben a szakaszban egy Azure-erőforrás management-sablon Azure-portálról megnyitásához. A sablon segítségével létrehozhat egy önálló Active Directory és a HDInsight-fürtöt. Jelenleg Hadoop-fürt tartományhoz, a Spark-fürt és a fürt interaktív lekérdezést is létrehozhat.
 
-1. Az alábbi képre kattintva megnyithatja a sablont az Azure Portalon. A sablon található [Azure gyors üzembe helyezési sablonokat](https://azure.microsoft.com/resources/templates/).
+1. Az alábbi képre kattintva megnyithatja a sablont az Azure Portalon. A sablon az [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/) között található.
    
     Spark-fürt létrehozása:
 
@@ -197,7 +197,7 @@ Ebben a szakaszban az Azure-portál hozzáadása a HDInsight-fürtöt létrehozn
 
 6. Az a **speciális beállítások** szakasz:
 
-    - Tartományi beállítások:
+    - Domain settings:
 
         ![HDInsight tartományhoz speciális beállítások tartomány](./media/apache-domain-joined-configure/hdinsight-domain-joined-portal-advanced-domain-settings.png)
         

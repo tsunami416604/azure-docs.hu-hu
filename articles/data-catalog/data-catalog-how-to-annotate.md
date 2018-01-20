@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/15/2017
+ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: 011f4396b11cc43ba36dd678cd4ec0f5d5daa81a
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: f9dd68380773e3cdb93cf1033ccd1b55d9f69305
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="how-to-annotate-data-sources"></a>Adatforrások ellátása megjegyzésekkel
 ## <a name="introduction"></a>Bevezetés
@@ -42,7 +42,7 @@ A Data Catalog a következő jegyzetek-típusokat támogatja:
 
 | Megjegyzés | Megjegyzések |
 | --- | --- |
-| Rövid név |Rövid nevét meg kell adnia az adatok eszköz, szinten teszik az adategységeket több könnyen érthető. Rövid nevek lesz a leghasznosabb, ha az alapul szolgáló objektum neve mégis fontos kontextusinformációkat, rövidített vagy más módon nem értelmezhető, a felhasználók számára. |
+| Felhasználóbarát név |Rövid nevét meg kell adnia az adatok eszköz, szinten teszik az adategységeket több könnyen érthető. Rövid nevek lesz a leghasznosabb, ha az alapul szolgáló objektum neve mégis fontos kontextusinformációkat, rövidített vagy más módon nem értelmezhető, a felhasználók számára. |
 | Leírás |Leírások lehet biztosítani a adategységet és az attribútum / oszlop szintek. Leírások a felhasználó leíró szabad formátumú rövid szöveges jegyzetek perspektíva az adategységet vagy használatát. |
 | Címkék (felhasználói címkék) |Címkék lehet biztosítani a adategységet és az attribútum / oszlop szintek. Felhasználói címke található a felhasználó által definiált címkékhez, amelyek segítségével adategységeket vagy attribútumok kategorizálását. |
 | Címkék (szószedet címkék) |Címkék lehet biztosítani a adategységet és az attribútum / oszlop szintek. Szószedet címke található a központilag meghatározott Szójegyzék adategységeket vagy üzleti taxonómia használatával attribútumok kategorizálásának használható. További információk: [How to set up the Business Glossary for Governed Tagging](data-catalog-how-to-business-glossary.md) (Az irányított címkézéshez használt üzleti szószedet összeállítása) |
@@ -63,8 +63,8 @@ Ha több táblák és nézetek, csak az oszlopok, hogy az összes kijelölt adat
 ## <a name="annotations-and-discovery"></a>Jegyzetek és felderítés
 A Data Catalog search-index a regisztrálás során az adatforrásból metaadatokat ad hozzá, mint a felhasználó által megadott metaadatok is indexelt. Ez azt jelenti, hogy nem csak jegyzetek megkönnyítik a felhasználók számára, hogy ezek a felderítési adatokat, jegyzeteket is megkönnyítik a felhasználók számára a megjegyzésekkel ellátott adategységeket történő kereséssel célszerű azokat a fogalmakat.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Egy adatforrás regisztrálása a Data Catalog lehetővé teszi, hogy az adatok felderíthető szerkezeti és leíró metaadatok másolja az adatforrás a katalógus szolgáltatásba. Miután egy adatforrás regisztrálva van, a felhasználók megadhatják, hogy könnyebben megtalálhatóvá és értelmezhetővé a belül a Data Catalog-portál jegyzetek.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Ismerkedés az Azure Data Catalog](data-catalog-get-started.md) oktatóprogram lépésről lépésre való használatáról további információkat az adatforrások ellátása megjegyzésekkel.

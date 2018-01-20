@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: tutorial
 ms.date: 11/29/2017
-ms.openlocfilehash: 08ac10a160ef6305322714eb9d134be95c3b5e17
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 97cd46819a4547ec743270871bcb6b4eef3eb365
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="classify-iris-part-3-deploy-a-model"></a>Írisz osztályozása, 3. rész: Modell üzembe helyezése
 Az Azure Machine Learning-szolgáltatások (előzetes verzió) az adatszakértők számára létrehozott átfogó, integrált és fejlett adatelemzési megoldás. Az adatszakértők a használatával az adatok előkészítését, a kísérletek kidolgozását és a modellek felhőszinten való üzembe helyezését hajthatják végre.
@@ -158,7 +158,7 @@ A _helyi mód_ fejlesztési és tesztelési célokra használható. A modell üz
 
 5. Állítsa be a környezetet.
 
-   A beállítás befejezése után az alábbi paranccsal állíthatja be a környezet üzembe helyezéséhez szükséges környezeti változókat. Használja ugyanazt a környezetnevet, amelyet korábban, a 4. lépésben használt. Használja ugyanazt az erőforráscsoport-nevet, amelyet a beállítási folyamat végeztével a parancsablakban kimenetként kapott.
+   A beállítás befejezése után az alábbi paranccsal állíthatja be a környezet üzembe helyezéséhez szükséges környezeti változókat. 2. lépés a korábban használt azonos környezetben a nevet használja. Használja ugyanazt az erőforráscsoport-nevet, amelyet a beállítási folyamat végeztével a parancsablakban kimenetként kapott.
 
    ```azurecli
    az ml env set -n <deployment environment name> -g <existing resource group name>

@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 11/01/2017
+ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: 42d7fddd592b9cea8fbfa38bf39ca5def3542d66
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 48b13eef0960afb4aab68923fb97b5b9c14a3d9f
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="register-data-sources-in-azure-data-catalog"></a>Az Azure Data Catalog adatforrások regisztrálása
 ## <a name="introduction"></a>Bevezetés
@@ -82,8 +82,8 @@ Egy adatforrás regisztrálása segítségével felderíthetők a Data Catalog a
 
 Egy már regisztrált adatforrás újraregisztrálása egyesítési "upsert" műveletet hajt végre: meglévő objektumok frissülnek, és új objektumok létrehozásakor. Minden metaadatot, felhasználókon a Data Catalog-portál által biztosított megmaradnak.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Az alkalmazáskatalógus webszolgáltatás adatforrás szerkezeti és leíró metaadatok másolja át, mert az adatforrás regisztrálása a Data Catalog, könnyebben megtalálhatóvá és értelmezhetővé. Az adatforrás regisztráció után megjegyzésekkel, kezeléséhez, és felderíti a Data Catalog-portál használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Adatforrások nyilvántartására vonatkozó további információkért lásd: a [Ismerkedés az Azure Data Catalog](data-catalog-get-started.md) oktatóanyag.

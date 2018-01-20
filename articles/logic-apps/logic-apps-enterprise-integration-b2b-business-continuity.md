@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 4896d9da456bcc17b1a4d92259ef3d57f8575d8b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0ef3965adac03f21c386765a43290c93d58d1c18
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="logic-apps-b2b-cross-region-disaster-recovery"></a>Logic Apps B2B kereszt-régió katasztrófa utáni helyreállítás
 
@@ -92,7 +92,7 @@ Ahhoz, hogy a bejövő üzenetek vész-helyreállítási, válassza ki a duplik�
 
 ![Válassza ki a duplikált beállításokat](./media/logic-apps-enterprise-integration-b2b-business-continuity/dupcheck.png)  
 
-1. Hozzon létre egy [logikai alkalmazás](../logic-apps/logic-apps-create-a-logic-app.md) egy másodlagos régióban.    
+1. Hozzon létre egy [logikai alkalmazás](../logic-apps/quickstart-create-first-logic-app-workflow.md) egy másodlagos régióban.    
 
 2. A Keresés **X12**, és válassza ki **X12-ellenőrzési számot módosításakor**.   
 
@@ -115,7 +115,7 @@ Ahhoz, hogy a bejövő üzenetek vész-helyreállítási, válassza ki a duplik�
 
 6. A Keresés **X12**, és válassza ki **X12-hozzáadásakor vagy módosításakor a vezérlő számok**.   
 
-   ![Hozzáadásakor vagy módosításakor a vezérlő számok](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn5.png)
+   ![Ellenőrzőszámok hozzáadása vagy frissítése](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn5.png)
 
 7. Művelet egy másodlagos régióban integrációs fiókkal való kapcsolódáshoz válasszon **kapcsolat módosítása** > **új kapcsolat hozzáadása** a rendelkezésre álló integrációs fiókok listáját. Adja meg a kapcsolat neve, válasszon a *másodlagos régióba integrációs fiók* a listából, és válassza a **létrehozása**. 
 
@@ -147,7 +147,7 @@ Ahhoz, hogy a bejövő üzenetek vész-helyreállítási, jelölje ki a dupliká
 
 ![Válassza ki a duplikált beállításokat](./media/logic-apps-enterprise-integration-b2b-business-continuity/edifactdupcheck.png)  
 
-1. Hozzon létre egy [logikai alkalmazás](../logic-apps/logic-apps-create-a-logic-app.md) egy másodlagos régióban.    
+1. Hozzon létre egy [logikai alkalmazás](../logic-apps/quickstart-create-first-logic-app-workflow.md) egy másodlagos régióban.    
 
 2. A Keresés **EDIFACT**, és válassza ki **EDIFACT - ellenőrzési számot módosításakor**.
 
@@ -170,7 +170,7 @@ Ahhoz, hogy a bejövő üzenetek vész-helyreállítási, jelölje ki a dupliká
 
 7. A Keresés **EDIFACT**, és válassza ki **EDIFACT - hozzáadásakor vagy módosításakor a vezérlő számok**.   
 
-   ![Hozzáadásakor vagy módosításakor a vezérlő számok](./media/logic-apps-enterprise-integration-b2b-business-continuity/EdifactChooseAction.png)
+   ![Ellenőrzőszámok hozzáadása vagy frissítése](./media/logic-apps-enterprise-integration-b2b-business-continuity/EdifactChooseAction.png)
 
 8. Művelet egy másodlagos régióban integrációs fiókkal való kapcsolódáshoz válasszon **kapcsolat módosítása** > **új kapcsolat hozzáadása** a rendelkezésre álló integrációs fiókok listáját. Adja meg a kapcsolat neve, válasszon a *másodlagos régióba integrációs fiók* a listából, és válassza a **létrehozása**.
 
@@ -199,7 +199,7 @@ Az AS2-protokollt használó dokumentumok üzletmenet folytonossága az Üzeneta
 > [!TIP]
 > Használhatja a [AS2 gyors üzembe helyezési sablon](https://github.com/Azure/azure-quickstart-templates/pull/3302) logic Apps alkalmazások létrehozásához. Létrehozás elsődleges és másodlagos integrációs fiókok előfeltételei használhatja a sablont. A sablon segítségével, amelyen egy eseményindító és művelet logikai alkalmazás létrehozása. A logikai alkalmazás kapcsolatot hoz létre egy egy elsődleges integrációs fiókot és egy másodlagos integrációs fiók műveletet.
 
-1. Hozzon létre egy [logikai alkalmazás](../logic-apps/logic-apps-create-a-logic-app.md) másodlagos régióban.  
+1. Hozzon létre egy [logikai alkalmazás](../logic-apps/quickstart-create-first-logic-app-workflow.md) másodlagos régióban.  
 
 2. A Keresés **AS2**, és válassza ki **AS2 - Ha a MIC érték jön létre**.   
 
@@ -243,7 +243,7 @@ Az AS2-protokollt használó dokumentumok üzletmenet folytonossága az Üzeneta
 
 Az időtartam alapján, a növekményes futási állapotának replikálja az elsődleges régióban a másodlagos régióba. A katasztrófa események, ha az elsődleges régióban nem áll rendelkezésre, közvetlen forgalom az üzletmenet folytonossága érdekében a másodlagos régióba. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [B2B üzenetek megfigyelése](logic-apps-monitor-b2b-message.md)
 

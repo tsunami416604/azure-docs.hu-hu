@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/07/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: 7e48c60eb7305a1044db88489cad1f1b7fb3d522
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: 9ad07f1760b69385a2ab9070d212e03381aa22be
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-box-connector"></a>A mezőben összekötő az első lépései
 Csatlakoztatása a mezőbe, és fájlokat, törölje a fájlokat, és több létrehozása. A mezőbe a következőket teheti:
@@ -28,7 +28,7 @@ Csatlakoztatása a mezőbe, és fájlokat, törölje a fájlokat, és több lét
 * Eseményindítók használja, ha a fájl létrehozásakor vagy frissítésekor.
 * Másolja át a fájlt, törölje a fájlt, és egyéb műveleteket használni. Ezeket a műveleteket válaszol, és végezze el a kimeneti más műveletek érhető el. Például egy fájl mezőbe, megváltozásakor, igénybe, hogy a fájl, és e-mail, Office 365 használatával.
 
-Most hozzon létre egy logic app kezdheti, lásd: [logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md).
+Most hozzon létre egy logic app kezdheti, lásd: [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="connector-specific-details"></a>Összekötő-specifikus részletei
 

@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: logic-apps
 ms.date: 09/13/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 5b2b82d90dee41e80233e5f52c960be23d89ee3d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b88d0c1ccb7a729c95299bcdc3cba5fd73fcdeac
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Gyakori forgatókönyvek, példák, oktatóanyagok és az Azure Logic Apps forgatókönyvek
 
-[Az Azure Logic Apps](../logic-apps/logic-apps-what-are-logic-apps.md) segít összehangolására és integrálását a különböző szolgáltatásokat nyújtó [100 + kész használható összekötők](../connectors/apis-list.md), tartománymeghatározási a helyszíni SQL Server vagy az SAP kognitív Microsoft-szolgáltatásokba. A Logic Apps szolgáltatás az "kiszolgáló nélküli", így nem kell foglalkoznia a skála vagy példányok. Ehhez mindössze határozza meg a munkafolyamat egy eseményindító és a munkafolyamat hajt végre műveleteket. Az alapul szolgáló platform kezeli a méretezés, a rendelkezésre állás és teljesítmény. A Logic Apps különösen fontos a használati esetek és forgatókönyvek kell több művelet koordinálják meg több rendszerben.
+[Az Azure Logic Apps](../logic-apps/logic-apps-overview.md) segít összehangolására és integrálását a különböző szolgáltatásokat nyújtó [100 + kész használható összekötők](../connectors/apis-list.md), tartománymeghatározási a helyszíni SQL Server vagy az SAP kognitív Microsoft-szolgáltatásokba. A Logic Apps szolgáltatás az "kiszolgáló nélküli", így nem kell foglalkoznia a skála vagy példányok. Ehhez mindössze határozza meg a munkafolyamat egy eseményindító és a munkafolyamat hajt végre műveleteket. Az alapul szolgáló platform kezeli a méretezés, a rendelkezésre állás és teljesítmény. A Logic Apps különösen fontos a használati esetek és forgatókönyvek kell több művelet koordinálják meg több rendszerben.
 
-További tudnivalók a sok mintákat és képességeket nyújt segítséget, hogy [Azure Logic Apps](../logic-apps/logic-apps-what-are-logic-apps.md) támogatja, az alábbiakban gyakori példák és forgatókönyvek.
+További tudnivalók a sok mintákat és képességeket nyújt segítséget, hogy [Azure Logic Apps](../logic-apps/logic-apps-overview.md) támogatja, az alábbiakban gyakori példák és forgatókönyvek.
 
 ## <a name="popular-starting-points-for-logic-app-workflows"></a>Kezdőpont a logic app munkafolyamatok Népszerű elemek
 
-Minden logikai alkalmazás kezdődik-e egy [ *eseményindító*](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts), és csak egy eseményindító, amely elindítja a logic app munkafolyamatot, és átadja az adatokat, hogy az eseményindító részeként. Néhány összekötő is biztosít eseményindítókat, amely a következő típusok:
+Minden logikai alkalmazás kezdődik-e egy [ *eseményindító*](../logic-apps/logic-apps-overview.md#logic-app-concepts), és csak egy eseményindító, amely elindítja a logic app munkafolyamatot, és átadja az adatokat, hogy az eseményindító részeként. Néhány összekötő is biztosít eseményindítókat, amely a következő típusok:
 
 * *Lekérdezési eseményindítók*: rendszeresen ellenőrzi az új adatokat egy végpontot. Új adatok létezik-e, amikor az eseményindítót hoz létre, és új munkafolyamat-példány fut, a bemeneti adatok.
 
@@ -105,7 +105,7 @@ A Logic apps is kínál számos szolgáltatás, például az Azure Functions, az
 
 * [Tanulmány: Vállalati integrációs végpont nagybetűk kezelése az Azure-szolgáltatásokkal, például a Logic Apps](https://aka.ms/enterprise-integration-e2e-case-management-utilities-logic-apps)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Szerző munkafolyamat definíciója a munkafolyamatdefiníciós nyelve](../logic-apps/logic-apps-author-definitions.md)
 * [Hibákat és kivételeket a logic Apps alkalmazásokat kezeléséhez](../logic-apps/logic-apps-exception-handling.md)

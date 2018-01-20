@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: jingwang
-ms.openlocfilehash: 0a1d8ff4b9821b0d41b6225872472a9d5aedffc7
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 8842adcc00a1230f252411d64c22d497faeec5b2
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="copy-data-from-hive-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával struktúra 
 
@@ -34,7 +34,7 @@ Az Azure Data Factory kapcsolódásának engedélyezése beépített illesztőpr
 
 ## <a name="getting-started"></a>Első lépések
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
 
 A következő szakaszok részletesen bemutatják, amely segítségével határozza meg a Data Factory tartozó entitások és Hive-összekötő tulajdonságait.
 
@@ -47,9 +47,9 @@ A következő tulajdonságok Hive kapcsolódó szolgáltatás támogatottak:
 | type | A type tulajdonságot kell beállítani: **struktúra** | Igen |
 | gazdagép | Kiszolgáló IP-címét vagy állomásnevét kiszolgálónevét a Hive, elválasztva (;) több gazdagépek (csak ha serviceDiscoveryMode engedélyezése).  | Igen |
 | port | A TCP-portot, amelyen a Hive kiszolgáló ügyfélkapcsolatokat.  | Nem |
-| serverType típusa | A Hive kiszolgáló típusa. <br/>Két érték engedélyezett: **HiveServer1**, **hiveserver2-n**, **HiveThriftServer** | Nem |
+| serverType | A Hive kiszolgáló típusa. <br/>Két érték engedélyezett: **HiveServer1**, **hiveserver2-n**, **HiveThriftServer** | Nem |
 | thriftTransportProtocol | Az átviteli protokoll a Thrift-rétegben használatára. <br/>Két érték engedélyezett: **bináris**, **SASL**, ** HTTP ** | Nem |
-| AuthenticationType | A hitelesítési módszer a Hive-kiszolgálóhoz való hozzáféréshez. <br/>Két érték engedélyezett: **névtelen**, **felhasználónév**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Igen |
+| authenticationType | A hitelesítési módszer a Hive-kiszolgálóhoz való hozzáféréshez. <br/>Két érték engedélyezett: **névtelen**, **felhasználónév**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Igen |
 | serviceDiscoveryMode | jelzi, hogy a szolgáltatással ZooKeeper, hamis nem igaz.  | Nem |
 | zooKeeperNameSpace | ZooKeeper alapján mely Hive Server 2 csomópontokat ad hozzá a névteret.  | Nem |
 | useNativeQuery | Megadja, hogy az illesztőprogram natív HiveQL-lekérdezést használja-e, vagy egy egyenértékű űrlap HiveQL alakítja azokat.  | Nem |

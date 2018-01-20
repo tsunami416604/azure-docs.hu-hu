@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/06/2016
 ms.author: cjiang
-ms.openlocfilehash: 4f97f28118e0fc6e92373f04c45450537723fce5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 581fbaa477bd603fea5fdc0ef77c6ef7498b7897
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="troubleshoot-classic-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Egy új Linux virtuális gép létrehozása az Azure klasszikus üzembe helyezési problémáinak elhárítása
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-selectors](../../../../includes/virtual-machines-linux-troubleshoot-deployment-new-vm-selectors-include.md)]
@@ -50,7 +50,7 @@ Az Azure portálon kattintson **Tallózás** > **virtuális gépek** > *a Window
 
 **Megoldás:**
 
-Mindkét hibák elhárításához, az eredeti, érhető el a helyszínen, ugyanazokat a beállításokat, mint az operációs rendszer (általánosítva/speciális) a virtuális merevlemez feltöltéséhez. Feltölteni, általánosítva van, ne felejtse el futtassa - először kiosztásának megszüntetése. Lásd: [létrehozása és feltöltése, a Linux operációs rendszert tartalmazó virtuális merevlemez](create-upload-vhd.md) további információt.
+Mindkét hibák elhárításához, az eredeti, érhető el a helyszínen, ugyanazokat a beállításokat, mint az operációs rendszer (általánosítva/speciális) a virtuális merevlemez feltöltéséhez. Feltölteni, általánosítva van, ne felejtse el futtassa - először kiosztásának megszüntetése. Lásd: [létrehozása és feltöltése, a Linux operációs rendszert tartalmazó virtuális merevlemez](create-upload-vhd-classic.md) további információt.
 
 **Rögzítés a hibák:**
 
@@ -60,7 +60,7 @@ Mindkét hibák elhárításához, az eredeti, érhető el a helyszínen, ugyana
 
 **Megoldás:**
 
-Mindkét hibák elhárításához, az aktuális lemezkép törlése a portálról, és [vegye fel újra az aktuális merevlemezekről](capture-image.md) ugyanazokat a beállításokat, mint az operációs rendszer (általánosítva/speciális) számára.
+Mindkét hibák elhárításához, az aktuális lemezkép törlése a portálról, és [vegye fel újra az aktuális merevlemezekről](capture-image-classic.md) ugyanazokat a beállításokat, mint az operációs rendszer (általánosítva/speciális) számára.
 
 ## <a name="issue-custom-gallery-marketplace-image-allocation-failure"></a>Probléma: Egyéni / gyűjtemény / Piactéri lemezképhez; foglalási hiba
 Ez a hiba helyzetekben akkor keletkezik, ha az új virtuális gép kérelmet küld egy fürt, amely nem rendelkezik a kérelem olyan rendelkezésre álló szabad területet, vagy nem támogatja a kért Virtuálisgép-méretet. Már nem lehet azonos a felhőszolgáltatásban található virtuális gépek különböző sorozata. Ezért ha szeretne létrehozni egy új virtuális gép mérete eltér a felhőalapú szolgáltatás támogathatja a, a számítási kérelem sikertelen lesz.
@@ -88,6 +88,6 @@ Attól függően, hogy a felhőalapú szolgáltatás, az új virtuális gép lé
 * Az új virtuális gép létrehozása az új virtuális hálózat.
 * [A meglévő virtuális hálózat](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/) az új virtuális hálózathoz. További tudnivalók [regionális virtuális hálózatokba](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/). Alternatív megoldásként, [a kapcsolat-csoport-alapú virtuális hálózat regionális virtuális hálózat áttelepítése](https://azure.microsoft.com/blog/2014/11/26/migrating-existing-services-to-regional-scope/), majd hozza létre az új virtuális Gépet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha problémát tapasztal, amikor elindítja a Linux virtuális gép leállított vagy méretezze át egy meglévő Linux virtuális Gépre az Azure-ban, tekintse meg [újraindításával és átméretezésével egy meglévő Linux virtuális gépet az Azure klasszikus üzembe helyezési problémáinak elhárítása](restart-resize-error-troubleshooting.md).
 

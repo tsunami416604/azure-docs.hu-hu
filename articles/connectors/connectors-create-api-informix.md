@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 09/26/2016
 ms.author: plarsen; ladocs
-ms.openlocfilehash: b2e755b5b1b4939eac90ac55ba8398c5687124c8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b3b352b185b7dfeee12ac9bee1b72cb740add5b8
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-informix-connector"></a>Ismerkedjen meg az Informix-összekötő
 Microsoft-összekötő Informix a Logic Apps csatlakozik IBM Informix-adatbázisban tárolt erőforrások. Az Informix-összekötő tartalmazza a Microsoft az Informix-kiszolgáló távoli számítógépeken egy TCP/IP-hálózaton keresztül kommunikálnak. Ez magában foglalja a felhőalapú adatbázisok, például a Windows Azure virtualizálási futó IBM Informix és a helyszíni adatbázisokat az helyszíni átjáró használatával. Tekintse meg a [lista támogatott](connectors-create-api-informix.md#supported-informix-platforms-and-versions) IBM Informix-platformok és-verziói (Ez a témakör).
@@ -35,14 +35,14 @@ Az összekötő a következő adatbázis műveleteket támogatja:
 
 Ez a témakör bemutatja, hogyan az összekötő használatára a logikai alkalmazás folyamat adatbázis műveletekhez.
 
-A Logic Apps kapcsolatos további információkért lásd: [logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md).
+A Logic Apps kapcsolatos további információkért lásd: [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="available-actions"></a>Rendelkezésre álló műveletek
 Ez az összekötő a következő logic app műveleteket támogatja:
 
 * Getables
 * GetRow
-* GetRows hívás
+* GetRows
 * InsertRow
 * UpdateRow
 * DeleteRow
@@ -87,7 +87,7 @@ Ez az összekötő támogatja a kapcsolatok helyszíni adatbázis és a felhőbe
 | --- | --- |
 | kiszolgáló |Kötelező. Egy karakterláncértéket, amely a egy TCP/IP-cím vagy egy aliast IPv4 vagy IPv6 formátumú, majd (kettőspont tagolt) egy TCP/IP-portszám fogad el. |
 | adatbázis |Kötelező. Egy karakterláncértéket, amely egy DRDA relációs adatbázis nevét (RDBNAM) fogad el. Informix 128 bájtos karakterlánc fogad el (adatbázis az IBM Informix-adatbázis nevének (dbname) nevezik). |
-| Hitelesítés |Választható. Fogadja el a cikk listaértéket, alapszintű vagy a Windows (kerberos). |
+| hitelesítés |Választható. Fogadja el a cikk listaértéket, alapszintű vagy a Windows (kerberos). |
 | felhasználónév |Kötelező. Egy karakterláncértéket fogad el. |
 | jelszó |Kötelező. Egy karakterláncértéket fogad el. |
 | Átjáró |Kötelező. Elem listaértéket, az a helyszíni átjáró meghatározott a Logic Apps a tárolócsoport képviselő fogad el. |
@@ -275,6 +275,6 @@ Ez az összekötő támogatja az alábbi IBM Informix-verziók, elosztott relác
 
 Bármely eseményindítók és a swagger definiált műveletek megtekintése, és semmilyen határnak a Lásd még: a [connector részleteket](/connectors/informix/). 
 
-## <a name="next-steps"></a>Következő lépések
-[Logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md). Az egyéb rendelkezésre álló összekötők Logic Apps, megismerkedhet a [API-k lista](apis-list.md).
+## <a name="next-steps"></a>További lépések
+[Logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md). Az egyéb rendelkezésre álló összekötők Logic Apps, megismerkedhet a [API-k lista](apis-list.md).
 

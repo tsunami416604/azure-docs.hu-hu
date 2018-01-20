@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 07/20/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: 31253d8daee1581167a96a20ba8ad529a04b3e92
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1abc15daaa96e834aedd121a88b543067e53641b
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-sftp-connector"></a>Az SFTP-összekötő az első lépései
 Használja az SFTP összekötő küldeni és fogadni fájlok SFTP fiók eléréséhez. Például hozzon létre, update, get vagy fájltörléssel különböző műveleteket hajthat végre.  
 
-Használandó [a csatlakozókat](apis-list.md), először hozzon létre egy logikai alkalmazást. Elkezdheti által [logikai alkalmazás létrehozása most](../logic-apps/logic-apps-create-a-logic-app.md).
+Használandó [a csatlakozókat](apis-list.md), először hozzon létre egy logikai alkalmazást. Elkezdheti által [logikai alkalmazás létrehozása most](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="connect-to-sftp"></a>SFTP kapcsolódni
 A Logic Apps alkalmazást bármely szolgáltatás hozzáférni, először hozzon létre egy *kapcsolat* a szolgáltatáshoz. A [kapcsolat](connectors-overview.md) biztosít a logikai alkalmazás és egy másik szolgáltatás közötti kapcsolat.  
@@ -35,7 +35,7 @@ A Logic Apps alkalmazást bármely szolgáltatás hozzáférni, először hozzon
 > 
 
 ## <a name="use-an-sftp-trigger"></a>Használja az SFTP eseményindító
-Egy eseményindító nem egy eseményt, a logikai alkalmazás definiált munkafolyamat indításához használható. [További tudnivalók az eseményindítók](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).  
+Egy eseményindító nem egy eseményt, a logikai alkalmazás definiált munkafolyamat indításához használható. [További tudnivalók az eseményindítók](../logic-apps/logic-apps-overview.md#logic-app-concepts).  
 
 Ebben a példában a **SFTP - amikor egy fájl hozzáadása vagy módosítása** eseményindító kezdeményezhető a logic app munkafolyamat, amikor egy fájlt ad hozzá, vagy módosult, az SFTP-kiszolgáló. Is hozzáadhat olyan feltétel, amely ellenőrzi az új vagy módosított fájl tartalmát, és lehetővé teszi egy elsődleges bontsa ki a fájlt, ha a tartalma jelzi, hogy azt ki kell nyerni a tartalmak használata előtt. Végül fájl tartalmának kibontása művelet hozzáadása, és helyezze el a kibontott tartalma az SFTP kiszolgáló egyik mappájába. 
 
@@ -51,7 +51,7 @@ A vállalati például ehhez az eseményindítóhoz segítségével egy SFTP map
 > 
 
 ## <a name="use-an-sftp-action"></a>SFTP-művelet használata
-Egy művelet során a logikai alkalmazás definiált munkafolyamat által végzett. [További információ a műveletek](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).  
+Egy művelet során a logikai alkalmazás definiált munkafolyamat által végzett. [További információ a műveletek](../logic-apps/logic-apps-overview.md#logic-app-concepts).  
 
 > [!INCLUDE [Steps to create an SFTP action](../../includes/connectors-create-api-sftp-action.md)]
 > 

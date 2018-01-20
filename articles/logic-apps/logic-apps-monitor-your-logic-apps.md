@@ -15,15 +15,15 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 4795f5728d4ce6ff21b97bc3fefd6a53e0c6a11b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8ad8281744293a05b50f8664a7e5a3fea7aa7b33
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Állapotának figyelésére, diagnosztikai naplózás beállítása és az Azure Logic Apps riasztás bekapcsolása
 
-Miután [létrehozása és futtatása a logikai alkalmazás](../logic-apps/logic-apps-create-a-logic-app.md), ellenőrizheti a futtatása előzmények, eseményindító előzmények, állapotát és teljesítményét. A valós idejű esemény figyelése és részletesebb hibakeresés, állítson be [diagnosztikai naplózás](#azure-diagnostics) a logikai alkalmazásnak. Ily módon is [található, és tekintse meg az eseményeket](#find-events), például az eseményindító események, futtatási események és műveleti események. Emellett ezzel [diagnosztikai adatok más szolgáltatásokkal](#extend-diagnostic-data), például az Azure Storage és az Azure Event Hubs. 
+Miután [létrehozása és futtatása a logikai alkalmazás](../logic-apps/quickstart-create-first-logic-app-workflow.md), ellenőrizheti a futtatása előzmények, eseményindító előzmények, állapotát és teljesítményét. A valós idejű esemény figyelése és részletesebb hibakeresés, állítson be [diagnosztikai naplózás](#azure-diagnostics) a logikai alkalmazásnak. Ily módon is [található, és tekintse meg az eseményeket](#find-events), például az eseményindító események, futtatási események és műveleti események. Emellett ezzel [diagnosztikai adatok más szolgáltatásokkal](#extend-diagnostic-data), például az Azure Storage és az Azure Event Hubs. 
 
 Hibák vagy egyéb lehetséges problémákat kapcsolatos értesítéseket kapni, állítsa be a [riasztások](#add-azure-alerts). Például létrehozhat egy riasztást, amelyek észlelik a ""több mint öt nem egy óra alatt. Is beállíthat figyelését, figyelemmel kíséri, és a naplózást programozott módon segítségével [Azure Diagnostics esemény beállításai és a Tulajdonságok](#diagnostic-event-properties).
 
@@ -279,7 +279,7 @@ Például a `ActionCompleted` eseménynek a `clientTrackingId` és `trackedPrope
   }
   ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A logic app központi telepítési sablonok létrehozása és a kiadáskezelés](../logic-apps/logic-apps-create-deploy-template.md)
 * [A vállalati integrációs csomag B2B forgatókönyvek](../logic-apps/logic-apps-enterprise-integration-overview.md)

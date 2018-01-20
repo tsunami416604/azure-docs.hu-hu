@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2017
 ms.author: LADocs; deli
-ms.openlocfilehash: 7738b3346af49cb8aa811eb17003d1b72b1bbe46
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 32ab5be41a8dee3b1f2c0b1bde076c0d1a844bdd
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="connect-to-on-premises-file-systems-from-logic-apps-with-the-file-system-connector"></a>Csatlakozás helyszíni fájlrendszer a logic Apps alkalmazásokból, a fájlrendszer-összekötőn keresztül
 
@@ -30,7 +30,7 @@ Adatok kezelése és biztonságos hozzáférés a helyszíni erőforrásokhoz, a
 
 * Telepítse és állítsa be a legújabb helyszíni data gateway, 1.15.6150.1 verzió vagy újabb. Az útmutató: [kapcsolódás a helyi kiszolgálón tárolt olyan adatforrások](http://aka.ms/logicapps-gateway). Telepítenie kell az átjárót a helyszíni gépen ezeket a lépéseket a folytatás előtt.
 
-* Alapszintű ismerete [logic Apps alkalmazások létrehozása](../logic-apps/logic-apps-create-a-logic-app.md)
+* Alapszintű ismerete [logic Apps alkalmazások létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
 ## <a name="add-trigger-and-actions-for-connecting-to-your-file-system"></a>Adja hozzá eseményindító és műveleteket a fájlrendszer való kapcsolódáshoz
 
@@ -83,9 +83,9 @@ Próbálja meg az összekötő kínál, például más elavuló felfedezése:
 - Mappában lévő fájlok listázása
 - Fájl hozzáfűzése
 - Fájl törlése
-- Fájl tartalmának lekérdezése
+- Fájl tartalmának beolvasása
 - Fájl tartalmának beolvasása elérési út segítségével
-- Fájl metaadatot beszerezni
+- Fájl metaadatainak beolvasása
 - Fájlmetaadatok beolvasása elérési út segítségével
 - Gyökérmappában lévő fájlok listázása
 - Fájl frissítése
@@ -100,7 +100,7 @@ Tekintse meg a [részletek swagger](/connectors/fileconnector/).
 
 * Azure Logic Apps alkalmazások és összekötők tökéletesítése céljából szavazhatnak, vagy küldje el a következő ötleteket a [Azure Logic Apps User Voice hely](http://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Csatlakozás helyszíni adatokhoz](../logic-apps/logic-apps-gateway-connection.md) 
 * [Logikai alkalmazások figyelése](../logic-apps/logic-apps-monitor-your-logic-apps.md)

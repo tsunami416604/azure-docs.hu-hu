@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/07/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: 863a15d716161bfa9d3e041174504b73a2956e8d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e420c837f9635b2386ca3b52bef487864d1aa2c1
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-bing-search-connector"></a>A Bing keresési összekötő az első lépései
 Bing keresési híreket, keresési videókat és egyéb kereséséhez csatlakozni. Bing keresési segítségével: 
@@ -28,7 +28,7 @@ Bing keresési híreket, keresési videókat és egyéb kereséséhez csatlakozn
 * Az üzleti folyamata, a keresés származó adatok alapján történő létrehozása. 
 * Műveletek segítségével képek keresni, keresse a híreket és még sok más. Ezeket a műveleteket válaszol, és végezze el a kimeneti más műveletek érhető el. Például keresse meg a videót, és Twitter használatával, amely egy Twitter-hírcsatorna a videó utáni.
 
-Most hozzon létre egy logic app kezdheti, lásd: [logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md).
+Most hozzon létre egy logic app kezdheti, lásd: [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="connector-specific-details"></a>Összekötő-specifikus részletei
 
