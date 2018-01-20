@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/17/2018
 ms.author: mabrigg
-ms.openlocfilehash: 3b228452d416bbb2c54243b95292f7e1198af14f
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 0ba0bc4e8350a65a95dc41788c93d5c89fc48334
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="make-a-custom-virtual-machine-image-available-in-azure-stack"></a>Azure-készletben elérhetővé egy egyéni virtuálisgép-lemezkép
 
@@ -43,7 +43,7 @@ Futtassa a következő előfeltételek teljesülését, vagy a [szoftverfejleszt
    Az Azure verem támogatja a rögzített méretű VHD formátummal. A rögzített formátum a logikai lemez lineárisan fájlon belül szerkezet, úgy, hogy a lemez eltolás X blob eltolás X tárolja. A blob végén kis élőláb a VHD-fájl tulajdonságait ismerteti. Győződjön meg róla, ha a lemez fennáll, használja a [Get-VHD](https://docs.microsoft.com/powershell/module/hyper-v/get-vhd?view=win10-ps) PowerShell-parancsot.  
 
    > [!IMPORTANT]
-   >  Az Azure verem nem támogatja a dinamikus lemez VHD-k. Egy virtuális géphez csatolt dinamikus lemez átméretezése marad a virtuális gép hibás állapotban. A probléma orvoslása érdekében törölje a virtuális gép a virtuális lemez, a tárfiók VHD blob törlése nélkül. A, a konvertálás a VHD dinamikus lemezről egy rögzített méretű lemezt, majd hozza létre a virtuális gép.
+   >  Az Azure verem nem támogatja a dinamikus lemez VHD-k. Egy virtuális géphez csatolt dinamikus lemez átméretezése marad a virtuális gép hibás állapotban. A probléma orvoslása érdekében törölje a virtuális gép a virtuális lemez, a tárfiók VHD blob törlése nélkül. Ezután a virtuális merevlemez konvertálása dinamikus lemezzé rögzített lemezekké, és hozza létre a virtuális gép.
 
 A kép verem Azure piactérről való hozzáadásához kövesse az alábbi lépéseket:
 
