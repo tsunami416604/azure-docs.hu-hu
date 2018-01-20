@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/11/2017
 ms.custom: 
-ms.openlocfilehash: b6cf7bbb1ae41fcdf16601af87ec1b573866639a
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 275ab65569a1861f046c8ee77914e0859d41d5f7
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Hiba történt az ajánlott eljárások az Azure Active Directory Authentication Library (ADAL) ügyfelek kezelése
 
@@ -58,8 +58,8 @@ Alapvetően két olyan eset létezik AcquireTokenSilent hibák:
 
 A következő útmutatást példákat hibakezelési ADAL módszerekkel együtt: 
 
-- acquireTokenSilentAsync(...)
-- acquireTokenSilentSync(...) 
+- acquireTokenSilentAsync(…)
+- acquireTokenSilentSync(…) 
 - [elavult] acquireTokenSilent(...)
 - [elavult] acquireTokenByRefreshToken(...) 
 
@@ -102,7 +102,7 @@ catch (AdalException e) {
 
 A következő útmutatást példákat hibakezelési ADAL módszerekkel együtt: 
 
-- acquireTokenSilentSync(...)
+- acquireTokenSilentSync(…)
 - acquireTokenSilentAsync(...)
 - [elavult] acquireTokenSilent(...)
 
@@ -138,7 +138,7 @@ public void onError(Exception e) {
 
 A következő útmutatást példákat hibakezelési ADAL módszerekkel együtt: 
 
-- acquireTokenSilentWithResource(...)
+- acquireTokenSilentWithResource(…)
 
 A kód volna kell végrehajtani az alábbiak szerint:
 
@@ -211,7 +211,7 @@ A következő útmutatást példákat hiba történt az összes nem néma Acquir
 - AcquireTokenAsync (..., IClientAssertionCertification,...)
 - AcquireTokenAsync (..., SecurityMode,...)
 - AcquireTokenAsync (..., ClientAssertion,...)
-- AcquireTokenAsync(...,UserAssertion,...)   
+- AcquireTokenAsync(…,UserAssertion,…)   
 
 A kód volna kell végrehajtani az alábbiak szerint:
 
@@ -344,7 +344,7 @@ Ha most létrehozása, amely meghívja a .NET-webalkalmazás lekérdezi az enged
 
 A következő útmutatást példákat hibakezelési ADAL módszerekkel együtt: 
 
-- AcquireTokenByAuthorizationCodeAsync(...)
+- AcquireTokenByAuthorizationCodeAsync(…)
 
 A kód volna kell végrehajtani az alábbiak szerint:
 
@@ -441,7 +441,7 @@ A *a nevében-az* service-to-service alkalmazás-forgatókönyveket.
 
 A következő útmutatást példákat hibakezelési ADAL módszerekkel együtt: 
 
-- AcquireTokenAsync (..., UserAssertion,...)
+- AcquireTokenAsync(…, UserAssertion, …)
 
 A kód volna kell végrehajtani az alábbiak szerint:
 
@@ -576,6 +576,7 @@ window.Logging = {
 
 Használja a következő, visszajelzést, és segítsen pontosítsa és a tartalom Megjegyzések szakaszban.
 
+[![Jelentkezzen be a gomb][AAD-Sign-In]][AAD-Sign-In]
 <!--Reference style links -->
 [AAD-Auth-Libraries]: ./active-directory-authentication-libraries.md
 [AAD-Auth-Scenarios]: ./active-directory-authentication-scenarios.md
@@ -584,5 +585,5 @@ Használja a következő, visszajelzést, és segítsen pontosítsa és a tartal
 [AZURE-portal]: https://portal.azure.com
 
 <!--Image references-->
-[! [Gomb bejelentkezés] [Az AAD-bejelentkezés]] [Az AAD-bejelentkezés] [Az AAD-bejelentkezés]:./media/active-directory-devhowto-multi-tenant-overview/sign-in-with-microsoft-light.png
+[AAD-Sign-In]:./media/active-directory-devhowto-multi-tenant-overview/sign-in-with-microsoft-light.png
 

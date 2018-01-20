@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2017
 ms.author: jehollan
-ms.openlocfilehash: 0b6e118cb13ab8185d8eeb42bec6147155967967
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d3e07b8d7194d83e3ba3986177170edff21e1d7a
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="create-a-real-time-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Az Azure Logic Apps és az Azure Functions egy valós idejű felhasználói irányítópult létrehozása
 
@@ -37,7 +37,7 @@ A teljes megoldás lehet [a Visual Studio build](logic-apps-deploy-from-vs.md) �
 
 ## <a name="build-the-logic-app-to-trigger-on-customer-data"></a>Az ügyféladatok elindítani a logikai alkalmazás létrehozása
 
-Miután [logikai alkalmazás létrehozása](logic-apps-create-a-logic-app.md) a Visual Studio vagy az Azure-portálon:
+Miután [logikai alkalmazás létrehozása](quickstart-create-first-logic-app-workflow.md) a Visual Studio vagy az Azure-portálon:
 
 1. Adja hozzá az eseményindító **az új Twitter-üzeneteket** a Twitteren
 2. Az eseményindító Twitter-üzeneteket kulcsszó vagy hashtaggel történő figyelésére konfigurálni.
@@ -99,7 +99,7 @@ Ha olyan megoldást fejlesztett ki, rögzített, és egy Azure központi telepí
 
 Az Azure Functions is be lehessen építeni a központi telepítési sablont -, a teljes megoldás az összes függősége kezelhető egyetlen sablont.  Példa függvény a központi telepítési sablont itt található: a [Azure gyors üzembe helyezés sablon tárház](https://github.com/Azure/azure-quickstart-templates/tree/master/101-function-app-create-dynamic).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Tekintse meg az egyéb példák és forgatókönyvek az Azure Logic Apps](logic-apps-examples-and-scenarios.md)
 * [Tekintse meg a video-útmutatót a megoldás-végpontok létrehozásáról](http://aka.ms/logicappsdemo)

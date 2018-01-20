@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 9/3/2017
 ms.author: markgal;trinadhk;sogup;
-ms.openlocfilehash: 3c2ea9e5872454b0bac67c39362a1f94b6fa47b8
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: a0c1cebfa22939ead98ff8f4a204ef6fd1f4cf96
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>A környezet előkészítése a Resource Managerrel üzembe helyezett virtuális gépek biztonsági mentéséhez
 
@@ -181,7 +181,7 @@ Miután sikeresen engedélyezte a biztonsági mentés, a biztonsági mentési h�
 Ha problémába ütközik a virtuális gép rögzítése, tekintse meg a következő információkat a Virtuálisgép-ügynök telepítése és a hálózati kapcsolatot. Ha az Azure-ban létrehozott virtuális gépek védelmét valószínűleg nem kell a következő információkat. De ha áttelepítette a virtuális gépek Azure-ba, lehet, hogy a Virtuálisgép-ügynök megfelelően telepítve, és, hogy a virtuális gép kommunikálhatnak-e a virtuális hálózat.
 
 ## <a name="install-the-vm-agent-on-the-virtual-machine"></a>A Virtuálisgép-ügynök telepítése a virtuális gépen
-A biztonsági mentés bővítmény használatához az Azure [Virtuálisgép-ügynök](../virtual-machines/windows/classic/agents-and-extensions.md#azure-vm-agents-for-windows-and-linux) telepíteni kell az Azure virtuális géphez. Ha a virtuális gép létrehozása az Azure piactérről, a Virtuálisgép-ügynök már telepítve a virtuális gép. 
+A biztonsági mentés bővítmény használatához az Azure [Virtuálisgép-ügynök](../virtual-machines/windows/classic/agents-and-extensions-classic.md#azure-vm-agents-for-windows-and-linux) telepíteni kell az Azure virtuális géphez. Ha a virtuális gép létrehozása az Azure piactérről, a Virtuálisgép-ügynök már telepítve a virtuális gép. 
 
 Olyan esetekben, ahol a következő információ *nem* használatával egy virtuális gép létrehozása az Azure piactérről. Például végezte az áttelepítést egy virtuális Gépet egy olyan helyszíni adatközpontban. Ebben az esetben a Virtuálisgép-ügynök telepítve kell lennie ahhoz, hogy a virtuális gép védelmét.
 

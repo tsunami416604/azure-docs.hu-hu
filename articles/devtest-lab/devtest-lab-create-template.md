@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
 ms.author: v-craic
-ms.openlocfilehash: d1f1b9948fb591484c107818a01e141932effbba
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: d20e92d16309f998b4979549997874a80a3ea2dd
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="create-a-custom-image-from-a-vhd-file"></a>Létrehozhat egyéni rendszerképeket a VHD-fájl
 
@@ -57,7 +57,16 @@ A következő lépések végigvezetik a VHD-fájl az Azure portál használatáv
 
 1. Válassza ki a **VHD** a legördülő menüből. Ez az új egyéni lemezkép létrehozásához használandó virtuális merevlemez. Ha szükséges, válassza a **a PowerShell használatával virtuális merevlemez feltöltéséhez**.
 
-1. Ha egyéni lemezkép létrehozásához használt kép nem Microsoft által kiadott egy csomag neve, a terv ajánlat és a terv publisher is beírhatja.
+1. Ha egyéni lemezkép létrehozásához használt kép nem egy licencelt (a Microsoft által kiadott) a csomag neve, a terv ajánlat és a terv publisher is beírhatja.
+
+   - **Terv neve:** a Piactéri lemezkép (SKU) nevét adja meg az egyéni lemezkép létrehozása 
+   - **Tervezze meg az ajánlat:** adja meg a termék (ajánlat) a Piactéri lemezkép, amelyből a egyéni lemezkép létrehozása 
+   - **Tervezze meg a kiadó:** a gyártót a Piactéri lemezkép, amelyből a egyéni lemezkép létrehozása
+
+   > [!NOTE]
+   > Ha van-e a lemezkép segítségével létrehozhat egyéni rendszerképeket **nem** licencelt lemezképet, majd ezeket a mezőket üres, és amennyiben úgy dönt, tölti. Ha a kép **van** licencelt lemezképet, majd a mezők automatikus terv adatokkal feltöltve. Ha megpróbálja módosítani őket ebben az esetben, egy figyelmeztető üzenet jelenik meg.
+   >
+   >
 
 1. Válassza ki **OK** egyéni lemezkép létrehozásához.
 

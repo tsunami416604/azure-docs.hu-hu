@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 11/21/2017
 ms.author: sujayt
-ms.openlocfilehash: 5e4de47de554f36e7797b7994faee4e90c3a8186
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 76ec4f6d2f4471f2e8399c3e028321754ea7c160
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure-Azure virtuális gép replikálási problémák elhárítása
 
@@ -109,13 +109,13 @@ A virtuális Géphez csatlakozik, az új lemez inicializálni kell.
 
 **Hibakód:** | **Lehetséges okok** | **Javaslatok**
 --- | --- | ---
-150039<br></br>**Üzenet**: egy megfelelő lemezt a virtuális Gépet, amelynek az ugyanazon logikai egység értéke belül jelentett a nem megfeleltetni az Azure data lemez (DiskName) (DiskURI) rendelkező logikai egységen (LUN) (LUNValue). | – Új adatlemezt lett csatolva a virtuális gép, de az nem lett inicializálva.</br></br>– A virtuális Gépen belül a adatlemez megfelelően nem jelent a logikai érték, ahol a lemezt a virtuális Géphez lett csatolva.| Győződjön meg arról, hogy az adatlemezek inicializálása, majd próbálja megismételni a műveletet.</br></br>Windows: [Attach és az új lemez inicializálása](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-portal#option-1-attach-and-initialize-a-new-disk).</br></br>Linux: [lévő Linux új adatlemezt inicializálása](https://docs.microsoft.com/azure/virtual-machines/linux/classic/attach-disk#initialize-a-new-data-disk-in-linux).
+150039<br></br>**Üzenet**: egy megfelelő lemezt a virtuális Gépet, amelynek az ugyanazon logikai egység értéke belül jelentett a nem megfeleltetni az Azure data lemez (DiskName) (DiskURI) rendelkező logikai egységen (LUN) (LUNValue). | – Új adatlemezt lett csatolva a virtuális gép, de az nem lett inicializálva.</br></br>– A virtuális Gépen belül a adatlemez megfelelően nem jelent a logikai érték, ahol a lemezt a virtuális Géphez lett csatolva.| Győződjön meg arról, hogy az adatlemezek inicializálása, majd próbálja megismételni a műveletet.</br></br>Windows: [Attach és az új lemez inicializálása](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-portal#option-1-attach-and-initialize-a-new-disk).</br></br>Linux: [lévő Linux új adatlemezt inicializálása](https://docs.microsoft.com/azure/virtual-machines/linux/classic/attach-disk-classic#initialize-a-new-data-disk-in-linux).
 
 ### <a name="fix-the-problem"></a>A probléma elhárításához
 Győződjön meg arról, hogy az adatlemezek inicializálása megtörtént-e, és próbálkozzon újra a művelettel:
 
 - Windows: [Attach és az új lemez inicializálása](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-portal#option-1-attach-and-initialize-a-new-disk).
-- Linux: [lévő Linux új adatlemezt inicializálása](https://docs.microsoft.com/azure/virtual-machines/linux/classic/attach-disk#initialize-a-new-data-disk-in-linux).
+- Linux: [lévő Linux új adatlemezt inicializálása](https://docs.microsoft.com/azure/virtual-machines/linux/classic/attach-disk-classic#initialize-a-new-data-disk-in-linux).
 
 Ha a probléma továbbra is fennáll, forduljon a támogatási szolgálathoz.
 
@@ -132,5 +132,5 @@ Előfordulhat, hogy nem látja az Azure virtuális gép kiválasztható a [enged
 Használhat [távolítsa el az elavult automatikus konfigurációs parancsfájl](https://gallery.technet.microsoft.com/Azure-Recovery-ASR-script-3a93f412) , és távolítsa el az elavult Site Recovery konfigurálása az Azure virtuális gépen. A virtuális gép kell megjelennie [engedélyezze a replikálást: 2. lépés](./site-recovery-azure-to-azure.md#step-2-select-virtual-machines) elavult konfigurációjának eltávolítása után.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Azure-alapú virtuális gépek replikálása](site-recovery-replicate-azure-to-azure.md)

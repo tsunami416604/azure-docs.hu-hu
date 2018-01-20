@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/15/2016
 ms.author: jehollan
-ms.openlocfilehash: 9cbb258ae9e32549669623e6824dd9b18fa1f68f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6f7d8f99bfa09847c01831a06efa8b94c1c0a89a
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="using-connectors-in-a-logic-app"></a>A logikai alkalmazás összekötők használata
 Összekötők különböző szolgáltatások, a protokollok és a platformok események, az adatok és a műveletek gyors hozzáférést biztosítanak.  Az összekötők Logic Apps alkalmazásokat támogató teljes listáját is [itt található](apis-list.md).  Összekötők változtatás nélkül használhatók egy eseményindító vagy a logikai alkalmazás egy műveletet, és előfordulhat, hogy a konfigurált *kapcsolat* használni (például: eléréséhez, vagy az Ön nevében utáni Twitter-fiók engedélyezése).
@@ -37,7 +37,7 @@ Ha szeretné integrálni egy szolgáltatás vagy API-t, amely nem még egy össz
 Összekötők rendelkezik egy eseményindítót, ami azt jelenti, hogy-összekötőről származó esemény lesz logikai alkalmazás tűz- és az eseményindító részeként adjon át adatokat.  Egy eseményindító nem mindig az első lépés egy logikai alkalmazást.  Népszerű eseményindítók olyan műveleteket, például:
 
 * Ismétlődés - minden órában futtatva
-* HTTP-kérés fogadásakor
+* Amikor egy HTTP-kérelem érkezik.
 * Amikor egy elem hozzá van adva egy üzenetsorba
 * Amikor egy e-mailt érkezik.
 
@@ -55,8 +55,8 @@ A legtöbb összekötők kell beállítani egy *kapcsolat* az összekötő haszn
 
 Kapcsolatok tekinthetők meg és kattintson az Azure-ban kezelt **Tallózás** választja **API kapcsolatok**.  Az API-kapcsolatok erőforrásból megtekintése, szerkesztése, frissíteni vagy újra engedélyezni, a létrehozott kapcsolatokat.
 
-## <a name="next-steps"></a>Következő lépések
-* [Az első logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md)
+## <a name="next-steps"></a>További lépések
+* [Az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * [Ismerje meg a közös használ és példákat a logic Apps alkalmazások](../logic-apps/logic-apps-examples-and-scenarios.md)
 * [Ismerkedés a vállalati integrációs eseményindítók és műveletek](../logic-apps/logic-apps-enterprise-integration-overview.md)
 

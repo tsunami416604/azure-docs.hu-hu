@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: magoedte
-ms.openlocfilehash: 187673fad2b5984441b93aa5313df31f1e8a3d2d
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 1413b5d9625ebc2e3b2419f50e7e78be994d8d68
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="test-azure-automation-run-as-account-authentication"></a>Azure Automation futtató fiók hitelesítésének tesztelése
 Az Automation-fiók sikeres létrehozását követően végrehajthat egy egyszerű tesztet annak megállapítására, hogy az újonnan létrehozott vagy frissített Automation futtató fiók alkalmas-e a sikeres hitelesítésre az Azure Resource Managerben vagy a klasszikus Azure üzembe helyezési modellben.    
@@ -66,7 +66,7 @@ Az alábbi mintakód segítségével egy [PowerShell-runbook létrehozásával](
 
 Figyelje meg, hogy a forgatókönyvben való hitelesítést biztosító parancsmag, (**Add-AzureRmAccount**) a *ServicePrincipalCertificate* paraméterkészletet használja.  Ez a szolgáltatásnév segítségével, és nem hitelesítő adatokkal végzi el a hitelesítést.  
 
-Amikor [futtatja a runbookot](automation-starting-a-runbook.md#starting-a-runbook-with-the-azure-portal) a futtató fiók érvényesítéséhez, létrejön egy [runbook-feladat](automation-runbook-execution.md), megjelenik a W feladat, a feladat állapota pedig megjelenik a **Feladat összegzése** csempén. A feladat állapota kezdetben *Várólistán*, azt mutatva, hogy egy felhőben lévő forgatókönyv-feldolgozó elérhetővé válására vár. Ezután *Indítás* állapotúra változik, ha egy feldolgozó elvállalja a feladatot, majd *Fut* állapotúra, amikor a forgatókönyv elkezd futni.  Ha befejeződik a forgatókönyv-feladat, normál esetben a **Befejezve** állapotnak kell megjelennie.
+Ha Ön [a runbook futtatásához](automation-starting-a-runbook.md#starting-a-runbook-with-the-azure-portal) a Futtatás mint fiók érvényesítéséhez egy [runbook-feladat](automation-runbook-execution.md) jön létre, a feladat lap jelenik meg, és a feladat állapota megjelenik a **feladat összegzése** csempére. A feladat állapota kezdetben *Várólistán*, azt mutatva, hogy egy felhőben lévő forgatókönyv-feldolgozó elérhetővé válására vár. Ezután *Indítás* állapotúra változik, ha egy feldolgozó elvállalja a feladatot, majd *Fut* állapotúra, amikor a forgatókönyv elkezd futni.  Ha befejeződik a forgatókönyv-feladat, normál esetben a **Befejezve** állapotnak kell megjelennie.
 
 Ha szeretné megtekinteni a forgatókönyv részletes eredményeit, kattintson a **Kimenet** csempére.  A **Kimenet** oldalon azt kell látnia, hogy a runbook sikeresen elvégezte a hitelesítést, és visszaadta az előfizetésben elérhető összes erőforráscsoport listáját.  
 

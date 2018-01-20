@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 07/22/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: 61bfbedfd4f1e84b6976099323a32f3a720634c0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7719e0e90df3a384e870e2e839cb77a27d95ada8
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-ftp-connector"></a>Az FTP-összekötő az első lépései
 Az FTP-összekötő segítségével figyeléséhez, kezeléséhez és az FTP-kiszolgálón-fájlok létrehozása. 
 
-Használandó [a csatlakozókat](apis-list.md), először hozzon létre egy logikai alkalmazást. Elkezdheti által [logikai alkalmazás létrehozása most](../logic-apps/logic-apps-create-a-logic-app.md).
+Használandó [a csatlakozókat](apis-list.md), először hozzon létre egy logikai alkalmazást. Elkezdheti által [logikai alkalmazás létrehozása most](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="connect-to-ftp"></a>FTP-csatlakozás
 A Logic Apps alkalmazást bármely szolgáltatás hozzáférni, először hozzon létre egy *kapcsolat* a szolgáltatáshoz. A [kapcsolat](connectors-overview.md) biztosít a logikai alkalmazás és egy másik szolgáltatás közötti kapcsolat.  
@@ -35,7 +35,7 @@ A Logic Apps alkalmazást bármely szolgáltatás hozzáférni, először hozzon
 > 
 
 ## <a name="use-a-ftp-trigger"></a>FTP-eseményindítók
-Egy eseményindító nem egy eseményt, a logikai alkalmazás definiált munkafolyamat indításához használható. [További tudnivalók az eseményindítók](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).  
+Egy eseményindító nem egy eseményt, a logikai alkalmazás definiált munkafolyamat indításához használható. [További tudnivalók az eseményindítók](../logic-apps/logic-apps-overview.md#logic-app-concepts).  
 
 > [!IMPORTANT]
 > Az FTP-összekötőnek szüksége van egy FTP-kiszolgálót, amely elérhető az internetről és passzív módban való működésre van konfigurálva. Az FTP-összekötő is **implicit ftps-t (FTP szolgáltatás SSL-en keresztül) nem kompatibilis**. Az FTP-összekötő csak explicit ftps-t (FTP szolgáltatás SSL-en keresztül) támogatja.  
@@ -61,7 +61,7 @@ A Logic Apps alkalmazást ezen a ponton úgy van konfigurálva, az eseményindí
 > 
 
 ## <a name="use-a-ftp-action"></a>Egy FTP művelettel
-Egy művelet során a logikai alkalmazás definiált munkafolyamat által végzett. [További információ a műveletek](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).  
+Egy művelet során a logikai alkalmazás definiált munkafolyamat által végzett. [További információ a műveletek](../logic-apps/logic-apps-overview.md#logic-app-concepts).  
 
 Most, hogy hozzáadta egy eseményindítót, kövesse az alábbi lépéseket, amely megkapja a tartalmát az új vagy módosított fájl található az eseményindító által művelet hozzáadása.    
 
@@ -73,7 +73,7 @@ Most, hogy hozzáadta egy eseményindítót, kövesse az alábbi lépéseket, am
    ![FTP-művelet kép 2](./media/connectors-create-api-ftp/ftp-action-2.png)  
    A **fájl tartalmának lekérdezése** megnyílik szabályozzák. **Megjegyzés:**: kérni fogja a Logic Apps alkalmazást az FTP-kiszolgáló fiók eléréséhez, ha még nem meg korábban engedélyezésére.  
    ![FTP-művelet kép 3](./media/connectors-create-api-ftp/ftp-action-3.png)   
-5. Válassza ki a **fájl** vezérlő (az üres helyet alatt található **fájl***). Itt használhatja a különböző tulajdonságok valamelyikét a következő új vagy módosított fájl megtalálható-e az FTP-kiszolgáló.  
+5. Válassza ki a **fájl** vezérlő (az üres helyet alatt található ** fájl x). Itt használhatja a különböző tulajdonságok valamelyikét a következő új vagy módosított fájl megtalálható-e az FTP-kiszolgáló.  
 6. Válassza ki a **tartalom fájl** lehetőséget.  
    ![FTP-művelet kép 4](./media/connectors-create-api-ftp/ftp-action-4.png)   
 7. A vezérlő frissül, amely jelzi, hogy a **FTP - fájl tartalmának lekérdezése** művelet kap a *tartalom fájl* az új vagy módosított fájl az FTP-kiszolgálón.      
@@ -90,6 +90,6 @@ Mostantól hozzáadhatja azok egy másik művelet, mint a [SQL Server - sor besz
 
 Bármely eseményindítók és a swagger definiált műveletek megtekintése, és semmilyen határnak a Lásd még: a [connector részleteket](/connectors/ftpconnector/). 
 
-## <a name="next-steps"></a>Következő lépések
-[Logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md)
+## <a name="next-steps"></a>További lépések
+[Logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 

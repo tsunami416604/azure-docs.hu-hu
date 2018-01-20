@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: dekapur
-ms.openlocfilehash: d6cda201e4cf16549f296bf9873b1085effd3a45
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: ca11199e51774e766113309150d8a260427cb4b4
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Alkalmazások és szolgáltatások kezelése az Azure Resource Manager erőforrásként
 
@@ -66,7 +66,7 @@ Az alábbi kódrészletben láthatja a különféle típusú erőforrások, egy 
 1. A fürt Resource Manager-sablon előkészítése telepítéséhez. Lásd: [a Service Fabric-fürt létrehozása az Azure Resource Manager használatával](service-fabric-cluster-creation-via-arm.md) itt olvashat.
 2. Gondolja át az alkalmazások, a fürt telepítését tervezi egy részének. -E függőségek eltarthat azokat, a rendszer mindig fut, amely más alkalmazások? Tervezi a fürt irányítási és a telepítés alkalmazások telepítését? Ezek az alkalmazások rendezi legjobb felügyelt egy Resource Manager-sablon használatával kapcsolatban a fentiekben ismertetett módon. 
 3. Ki milyen alkalmazásokat, amelyeket szeretne ilyen módon telepítve rendelkezik szerepelnek, ha az alkalmazások kell csomagolni, zip és fájlmegosztás elhelyezése. A megosztás kell lennie az Azure Resource Manager üzembe helyezése során felhasználásához REST-végpont elérhető.
-4. A Resource Manager-sablon, a fürt deklaráció alatt minden alkalmazás tulajdonságait ismerteti. E tulajdonságok közé tartozik a replika- vagy példányszámot és bármilyen (más alkalmazások vagy szolgáltatások) erőforrások közötti függőségi láncok. Átfogó tulajdonságok listáját lásd: a [REST API Swagger Spec](https://github.com/Azure/azure-rest-api-specs/blob/current/specification/servicefabric/resource-manager/Microsoft.ServiceFabric/2017-07-01-preview/servicefabric.json). Vegye figyelembe, hogy ez nem helyettesíti az alkalmazás vagy szolgáltatás akkor jelentkezik, de ahelyett, hogy néhány foglalja össze a Resource Manager-sablon a fürt részeként. Íme egy minta-sablont, amely tartalmazza az állapot nélküli szolgáltatás telepítésére *Service1* és állapotalapú szolgáltatási *Service2* részeként *Alkalmaz1*:
+4. A Resource Manager-sablon, a fürt deklaráció alatt minden alkalmazás tulajdonságait ismerteti. E tulajdonságok közé tartozik a replika- vagy példányszámot és bármilyen (más alkalmazások vagy szolgáltatások) erőforrások közötti függőségi láncok. Átfogó tulajdonságok listáját lásd: a [REST API Swagger Spec](https://aka.ms/sfrpswaggerspec). Vegye figyelembe, hogy ez nem helyettesíti az alkalmazás vagy szolgáltatás akkor jelentkezik, de ahelyett, hogy néhány foglalja össze a Resource Manager-sablon a fürt részeként. Íme egy minta-sablont, amely tartalmazza az állapot nélküli szolgáltatás telepítésére *Service1* és állapotalapú szolgáltatási *Service2* részeként *Alkalmaz1*:
 
   ```json
   {
@@ -77,62 +77,62 @@ Az alábbi kódrészletben láthatja a különféle típusú erőforrások, egy 
         "type": "string",
         "defaultValue": "Cluster",
         "metadata": {
-          "description": "Name of your cluster - Between 3 and 23 characters. Letters and numbers only"
+          "description": "Name of your cluster - Between 3 and 23 characters. Letters and numbers only."
         }
       },
       "applicationTypeName": {
         "type": "string",
         "defaultValue": "ApplicationType",
         "metadata": {
-          "description": "The application type name"
+          "description": "The application type name."
         }
       },
       "applicationTypeVersion": {
         "type": "string",
         "defaultValue": "1",
         "metadata": {
-          "description": "The application type version"
+          "description": "The application type version."
         }
       },
       "appPackageUrl": {
         "type": "string",
         "metadata": {
-          "description": "The URL to the application package sfpkg file"
+          "description": "The URL to the application package sfpkg file."
         }
       },
       "applicationName": {
         "type": "string",
         "defaultValue": "Application1",
         "metadata": {
-          "description": "The application name"
+          "description": "The name of the application resource."
         }
       },
       "serviceName": {
         "type": "string",
         "defaultValue": "Service1",
         "metadata": {
-          "description": "The service name"
+          "description": "The name of the service resource in the format of {applicationName}~{serviceName}."
         }
       },
       "serviceTypeName": {
         "type": "string",
         "defaultValue": "Service1Type",
         "metadata": {
-          "description": "The service type name"
+          "description": "The name of the service type."
         }
       },
       "serviceName2": {
         "type": "string",
         "defaultValue": "Service2",
         "metadata": {
-          "description": "The service name"
+          "description": "The name of the service resource in the format of {applicationName}~{serviceName}."
         }
       },
       "serviceTypeName2": {
         "type": "string",
         "defaultValue": "Service2Type",
         "metadata": {
-          "description": "The service type name"
+          "description": "The name of the service type."
         }
       }
     },
@@ -263,7 +263,7 @@ Az alábbi kódrészletben láthatja a különféle típusú erőforrások, egy 
 Ha a fürt már működik-e, és néhány alkalmazást, hogy szeretné kezelni, erőforrás-kezelő erőforrások már telepítve lettek, az alkalmazások eltávolítása helyett, és újratelepíteni őket, használhatja a azonos API-k segítségével az alkalmazások PUT hívás beolvasása a nyugtázott erőforrás-kezelő erőforrásként. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Használja a [Service Fabric CLI](service-fabric-cli.md) vagy [PowerShell](service-fabric-deploy-remove-applications.md) a fürthöz más alkalmazások központi telepítése. 
 * [A Service Fabric-fürt frissítése](service-fabric-cluster-upgrade.md)

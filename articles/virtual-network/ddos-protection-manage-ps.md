@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2017
 ms.author: jdial
-ms.openlocfilehash: baac97db61b84000557e7150a64ffb64d81ce00c
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 33ff6cfcacd1632dc49b448e70361e1cb2ce1176
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="manage-azure-ddos-protection-standard-using-azure-powershell"></a>Azure DDoS védelem szabványos az Azure PowerShell kezelése
 
@@ -127,13 +127,13 @@ Használhatja az Azure-figyelő riasztás konfigurálásában, kiválaszthatja b
     Get-AzureRmAlertRule -Name myMetricRuleWithEmail -ResourceGroup myresourcegroup -DetailedOutput 
     ```
 
-Még többet is megtudhat arról [konfigurálása webhookokkal](../monitoring-and-diagnostics/insights-webhooks-alerts.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és [a logic apps](../logic-apps/logic-apps-what-are-logic-apps.md) riasztások létrehozásához.
+Még többet is megtudhat arról [konfigurálása webhookokkal](../monitoring-and-diagnostics/insights-webhooks-alerts.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és [a logic apps](../logic-apps/logic-apps-overview.md) riasztások létrehozásához.
 
 ## <a name="configure-logging-on-ddos-protection-metrics"></a>DDoS-védelem mérőszámokat naplózás konfigurálása
 
 Tekintse meg a [PowerShell quick start minták](../monitoring-and-diagnostics/insights-powershell-samples.md?toc=%2fazure%2fvirtual-network%2ftoc.json) eléréséhez, és konfigurálni az Azure diagnosztikai naplózás PowerShell nyújtanak segítséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [További tudnivalók az Azure diagnosztikai naplók](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [A Naplóelemzési az Azure storage naplóinak elemzése](../log-analytics/log-analytics-azure-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json)

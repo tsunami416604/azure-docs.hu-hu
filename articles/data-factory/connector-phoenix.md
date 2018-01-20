@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: jingwang
-ms.openlocfilehash: 746519d3a450aca6efdf20c0ae57602d480bf86e
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: b3e9597c52a402240d759abb0a96ffc007bcc9dd
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="copy-data-from-phoenix-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával Phoenix 
 
@@ -34,7 +34,7 @@ Az Azure Data Factory kapcsolódásának engedélyezése beépített illesztőpr
 
 ## <a name="getting-started"></a>Első lépések
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
 
 A következő szakaszok részletesen bemutatják való Phoenix összekötő adat-előállító tartozó entitások meghatározásához használt tulajdonságokat.
 
@@ -48,7 +48,7 @@ A következő tulajdonságok Phoenix kapcsolódó szolgáltatás támogatottak:
 | gazdagép | A kiszolgáló IP-címét vagy állomásnevét kiszolgálónevét a Phoenix. (Ez azt jelenti, hogy 192.168.222.160)  | Igen |
 | port | A TCP-portot, amelyen a Phoenix kiszolgáló ügyfélkapcsolatokat. Az alapértelmezett érték: 8765.  | Nem |
 | httpPath | A részleges URL-címet a Phoenix kiszolgáló megfelelő. (Ez azt jelenti, hogy /gateway/sandbox/phoenix/version). Az alapértelmezett érték `hbasephoenix` WindowsAzureHDInsightService használata.  | Nem |
-| AuthenticationType | A a Phoenix kiszolgálóhoz való csatlakozáshoz használt hitelesítési módszert. <br/>Két érték engedélyezett: **névtelen**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Igen |
+| authenticationType | A a Phoenix kiszolgálóhoz való csatlakozáshoz használt hitelesítési módszert. <br/>Két érték engedélyezett: **névtelen**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Igen |
 | felhasználónév | A Phoenix kiszolgálóhoz való csatlakozáshoz használt felhasználónevet.  | Nem |
 | jelszó | A jelszó, a felhasználónév megfelelő. Ez a mező megjelölése a SecureString tárolja biztonságos helyen az ADF, vagy a jelszó tárolása az Azure Key Vault választhat, és lehetővé teszik a másolási tevékenység lekéréses ott adatmásolás végrehajtása során – további információhoz [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). | Nem |
 | enableSsl | Meghatározza, hogy a kapcsolat titkosítása SSL használatával. Az alapértelmezett értéke hamis.  | Nem |

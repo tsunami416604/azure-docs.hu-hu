@@ -15,8 +15,8 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/29/2017
 ms.author: jroth
-ms.openlocfilehash: db37fbbc0abdafcb56d56809eeb43096617b6da3
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 00f229c1b7fd9f3abaea1a07cec9b44efac5a5fa
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/19/2018
@@ -246,7 +246,7 @@ $Credential = Get-Credential -Message "Type the name and password of the local a
 ```
 
 ### <a name="set-the-operating-system-properties-for-the-virtual-machine"></a>A virtuális gép operációs rendszer tulajdonságainak beállítása
-Most már készen áll a virtuális gép operációs rendszer tulajdonságainak a beállítása azt [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem) parancsmag Windows, mint az operációs rendszer típusát igényelnek a [virtuális gép ügynökének](../classic/agents-and-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) legyen telepítve, adja meg, hogy a parancsmag lehetővé teszi, hogy az automatikus frissítés, és állítsa be a virtuális gép nevét, a számítógép nevét és a hitelesítő adatok használata a változókat, amelyek korábban inicializálták.
+Most már készen áll a virtuális gép operációs rendszer tulajdonságainak a beállítása azt [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem) parancsmag Windows, mint az operációs rendszer típusát igényelnek a [virtuális gép ügynökének](../classic/agents-and-extensions-classic.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) legyen telepítve, adja meg, hogy a parancsmag lehetővé teszi, hogy az automatikus frissítés, és állítsa be a virtuális gép nevét, a számítógép nevét és a hitelesítő adatok használata a változókat, amelyek korábban inicializálták.
 
 Hajtsa végre a következő parancsmagot a virtuális gép operációs rendszer tulajdonságainak beállításához.
 

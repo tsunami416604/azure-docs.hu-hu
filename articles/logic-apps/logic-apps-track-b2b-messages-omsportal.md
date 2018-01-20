@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 3ef7a4054be80547b0d91ad1f13777d915005f8b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 128abd504785227c1f27debd329d46d358e6e516
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="track-b2b-communication-in-the-microsoft-operations-management-suite-oms"></a>A Microsoft Operations Management Suite (OMS) B2B kommunikációs nyomon követése
 
@@ -32,7 +32,7 @@ Miután beállította a B2B kommunikációját két üzleti folyamatok vagy a in
 
 ## <a name="requirements"></a>Követelmények
 
-* Egy logikai alkalmazást a diagnosztikai naplózás be van állítva. Ismerje meg, [logikai alkalmazás létrehozása](logic-apps-create-a-logic-app.md) és [adott logikai alkalmazás naplózásának beállítása](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
+* Egy logikai alkalmazást a diagnosztikai naplózás be van állítva. Ismerje meg, [logikai alkalmazás létrehozása](quickstart-create-first-logic-app-workflow.md) és [adott logikai alkalmazás naplózásának beállítása](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
 * Integráció fiók be van állítva a figyelés és naplózás. Ismerje meg, [integrációs fiók létrehozása](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) és [figyelés és naplózás fiók beállításával](../logic-apps/logic-apps-monitor-b2b-message.md).
 
@@ -157,7 +157,7 @@ Az alábbiakban a tulajdonságleírások minden egyes AS2-üzenet esetében.
 | Irány | Az AS2-üzenet irányát |
 | Korrelációs azonosító | A hibához az eseményindítók és műveletek a logikai alkalmazás azonosítója |
 | Üzenet azonosítója | Az AS2 üzenetfejlécek a AS2 üzenet azonosítója |
-| időbélyeg | Az AS2 művelet feldolgozásának az üzenet időpontja |
+| Időbélyeg | Az AS2 művelet feldolgozásának az üzenet időpontja |
 |          |             |
 
 <a name="as2-folder-file-names"></a>
@@ -168,7 +168,7 @@ Az alábbiakban a formátumok minden letöltött AS2 üzenet mappában és fájl
 
 | Fájl vagy mappa | Nevének formátuma |
 | :------------- | :---------- |
-| Üzenet mappa | [küldő] \_[fogadó]\_AS2\_[korrelációs azonosító]\_[üzenet-azonosítója]\_[időbélyeg] |
+| Üzenet mappa | [sender]\_[receiver]\_AS2\_[correlation-ID]\_[message-ID]\_[timestamp] |
 | Bemeneti, kimeneti és if beállítása nyugtázási fájlok | **Bemeneti forgalma**: [küldő]\_[fogadó]\_AS2\_[korrelációs azonosító]\_input_payload.txt </p>**Kimeneti hasznos**: [küldő]\_[fogadó]\_AS2\_[korrelációs azonosító]\_kimeneti\_payload.txt </p></p>**Bemenetek**: [küldő]\_[fogadó]\_AS2\_[korrelációs azonosító]\_inputs.txt </p></p>**Kimenetek**: [küldő]\_[fogadó]\_AS2\_[korrelációs azonosító]\_outputs.txt |
 |          |             |
 
@@ -190,7 +190,7 @@ Az alábbiakban a tulajdonság leírásainak minden X12 üzenet.
 | Üzenet típusa | EDI X 12 üzenettípus |
 | ICN | Az a X12 Interchange ellenőrző szám üzenet |
 | TSCN | A tranzakció beállítása vezérlő számot a X12 üzenet |
-| időbélyeg | Az idő során a X12 műveletet az üzenet feldolgozása |
+| Időbélyeg | Az idő során a X12 műveletet az üzenet feldolgozása |
 |          |             |
 
 <a name="x12-folder-file-names"></a>
@@ -201,8 +201,8 @@ Minden egyes X12 letölteni az alábbiakban a formátumok üzenetek mappa és a 
 
 | Fájl vagy mappa | Nevének formátuma |
 | :------------- | :---------- |
-| Üzenet mappa | [küldő] \_[fogadó]\_X12\_[adatcsere-ellenőrző-szám]\_[globális-ellenőrző-szám]\_[tranzakció-set-ellenőrző-szám]\_[időbélyeg] |
-| Bemeneti, kimeneti és if beállítása nyugtázási fájlok | **Bemeneti forgalma**: [küldő]\_[fogadó]\_X12\_[adatcsere-ellenőrző-szám]\_input_payload.txt </p>**Kimeneti hasznos**: [küldő]\_[fogadó]\_X12\_[adatcsere-ellenőrző-szám]\_kimeneti\_payload.txt </p></p>**Bemenetek**: [küldő]\_[fogadó]\_X12\_[adatcsere-ellenőrző-szám]\_inputs.txt </p></p>**Kimenetek**: [küldő]\_[fogadó]\_X12\_[adatcsere-ellenőrző-szám]\_outputs.txt |
+| Üzenet mappa | [sender]\_[receiver]\_X12\_[interchange-control-number]\_[global-control-number]\_[transaction-set-control-number]\_[timestamp] |
+| Bemeneti, kimeneti és if beállítása nyugtázási fájlok | **Input payload**: [sender]\_[receiver]\_X12\_[interchange-control-number]\_input_payload.txt </p>**Kimeneti hasznos**: [küldő]\_[fogadó]\_X12\_[adatcsere-ellenőrző-szám]\_kimeneti\_payload.txt </p></p>**Inputs**: [sender]\_[receiver]\_X12\_[interchange-control-number]\_inputs.txt </p></p>**Outputs**: [sender]\_[receiver]\_X12\_[interchange-control-number]\_outputs.txt |
 |          |             |
 
 <a name="EDIFACT-message-properties"></a>
@@ -223,7 +223,7 @@ Az alábbiakban a tulajdonságleírások minden egyes EDIFACT-üzenet esetében.
 | Üzenet típusa | A EDIFACT-üzenet típusa |
 | ICN | Az EDIFACT üzenet Interchange ellenőrző szám |
 | TSCN | A tranzakció beállítása ellenőrző szám az EDIFACT-üzenet |
-| időbélyeg | A EDIFACT művelet feldolgozásának az üzenet időpontja |
+| Időbélyeg | A EDIFACT művelet feldolgozásának az üzenet időpontja |
 |          |               |
 
 <a name="edifact-folder-file-names"></a>
@@ -234,11 +234,11 @@ Az alábbiakban a formátumok minden letöltött EDIFACT üzenet mappában és f
 
 | Fájl vagy mappa | Nevének formátuma |
 | :------------- | :---------- |
-| Üzenet mappa | [küldő] \_[fogadó]\_EDIFACT\_[adatcsere-ellenőrző-szám]\_[globális-ellenőrző-szám]\_[tranzakció-set-ellenőrző-szám]\_[időbélyeg] |
-| Bemeneti, kimeneti és if beállítása nyugtázási fájlok | **Bemeneti forgalma**: [küldő]\_[fogadó]\_EDIFACT\_[adatcsere-ellenőrző-szám]\_input_payload.txt </p>**Kimeneti hasznos**: [küldő]\_[fogadó]\_EDIFACT\_[adatcsere-ellenőrző-szám]\_kimeneti\_payload.txt </p></p>**Bemenetek**: [küldő]\_[fogadó]\_EDIFACT\_[adatcsere-ellenőrző-szám]\_inputs.txt </p></p>**Kimenetek**: [küldő]\_[fogadó]\_EDIFACT\_[adatcsere-ellenőrző-szám]\_outputs.txt |
+| Üzenet mappa | [sender]\_[receiver]\_EDIFACT\_[interchange-control-number]\_[global-control-number]\_[transaction-set-control-number]\_[timestamp] |
+| Bemeneti, kimeneti és if beállítása nyugtázási fájlok | **Input payload**: [sender]\_[receiver]\_EDIFACT\_[interchange-control-number]\_input_payload.txt </p>**Kimeneti hasznos**: [küldő]\_[fogadó]\_EDIFACT\_[adatcsere-ellenőrző-szám]\_kimeneti\_payload.txt </p></p>**Bemenetek**: [küldő]\_[fogadó]\_EDIFACT\_[adatcsere-ellenőrző-szám]\_inputs.txt </p></p>**Kimenetek**: [küldő]\_[fogadó]\_EDIFACT\_[adatcsere-ellenőrző-szám]\_outputs.txt |
 |          |             |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az Operations Management Suite B2B üzenetek lekérdezés](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)
 * [AS2-követési sémák](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)

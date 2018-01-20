@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; mandia
-ms.openlocfilehash: bc3430624844cdeb92958433fba295f67a8ae0ff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8795687c002282b68ebd1a4fa3fe18a9b102af4a
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="overview-of-enterprise-integration-with-flat-files"></a>Vállalati integrációs egybesimított fájlok áttekintése
 
-Érdemes lehet XML-tartalom kódolása egy üzleti partner üzleti vállalatközi (B2B) esetén a küldés előtt. A logikai alkalmazás egyszerű fájlkódolás összekötő ehhez használhatja. A logikai alkalmazást az Ön által létrehozott lekérheti az XML tartalom különböző forrásokból, beleértve egy HTTP-kérelem eseményindítóval, egy másik alkalmazás, vagy akár egy a többhöz [összekötők](../connectors/apis-list.md). A logic apps kapcsolatos további információkért tekintse meg a [logic apps dokumentációs](logic-apps-what-are-logic-apps.md "további információk a Logic apps").  
+Érdemes lehet XML-tartalom kódolása egy üzleti partner üzleti vállalatközi (B2B) esetén a küldés előtt. A logikai alkalmazás egyszerű fájlkódolás összekötő ehhez használhatja. A logikai alkalmazást az Ön által létrehozott lekérheti az XML tartalom különböző forrásokból, beleértve egy HTTP-kérelem eseményindítóval, egy másik alkalmazás, vagy akár egy a többhöz [összekötők](../connectors/apis-list.md). A logic apps kapcsolatos további információkért tekintse meg a [logic apps dokumentációs](logic-apps-overview.md "további információk a Logic apps").  
 
 ## <a name="create-the-flat-file-encoding-connector"></a>Egyszerű fájlkódolás összekötő létrehozása
 Kövesse az alábbi lépéseket a logikai alkalmazás-összekötő kódolás egybesimított fájl hozzáadásához.
@@ -82,6 +82,6 @@ Ezen a ponton befejezte a egybesimított fájl dekódolás összekötő beállí
 
 Az összekötő által a kérést továbbítja a HTTP-végpont az és a kérelem törzsében dekódolni kívánt XML-tartalom, így most tesztelheti.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [További tudnivalók a vállalati integrációs csomag](logic-apps-enterprise-integration-overview.md "további információ a vállalati integrációs csomag").  
 

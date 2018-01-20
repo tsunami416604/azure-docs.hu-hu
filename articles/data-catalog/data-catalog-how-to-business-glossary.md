@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/15/2017
+ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: bcd2ba4f92937cf1e134b2a59d97c7bea7802145
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: a80b7fd0c21851a6670431e9b8647ca5cf5f51ec
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="set-up-the-business-glossary-for-governed-tagging"></a>A címkézés szabályozott az üzleti szószedet beállítása
 ## <a name="introduction"></a>Bevezetés
@@ -78,8 +78,8 @@ A Data Catalog-portálon a címkék kétféle vizuálisan önálló, és jelen k
 ### <a name="search-filters-for-tags"></a>A címkék keresési szűrők
 Szószedet címkék és a felhasználói címkék nem kereshető is, és alkalmazhatja azokat a keresési szűrőként.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Az üzleti szószedet az Azure Data Catalog, és lehetővé teszi, hogy az irányadó címkézést használva, azonosítására, kezelése és egységes módon adategységeket. Az üzleti szószedet előléptetheti az üzleti szószedet szervezet tagjai tudomást. A szószedet is támogatja a rögzítés jelentéssel bíró metaadatok, amely egyszerűbbé teszi az eszköz felderítése és értelmezését.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Üzleti szószedet műveletek REST API dokumentációja](https://msdn.microsoft.com/library/mt708855.aspx)

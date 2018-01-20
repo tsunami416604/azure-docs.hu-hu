@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: be8163043535833ce45b3d50939a537406cf8152
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 065de976118e7be67ef8a515e39c04cfd74b5b43
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-twitter-connector"></a>A Twitter-összekötő az első lépései
 A Twitter-összekötő segítségével:
@@ -28,7 +28,7 @@ A Twitter-összekötő segítségével:
 * Hozzáférés ütemtervek, ismerősei és followers
 * Hajtsa végre az egyéb műveletek és az alábbiakban eseményindítók  
 
-Használandó [a csatlakozókat](apis-list.md), először hozzon létre egy logikai alkalmazást. Elkezdheti által [logikai alkalmazás létrehozása most](../logic-apps/logic-apps-create-a-logic-app.md).  
+Használandó [a csatlakozókat](apis-list.md), először hozzon létre egy logikai alkalmazást. Elkezdheti által [logikai alkalmazás létrehozása most](../logic-apps/quickstart-create-first-logic-app-workflow.md).  
 
 ## <a name="connect-to-twitter"></a>Kapcsolódás a Twitteren
 A Logic Apps alkalmazást bármely szolgáltatás hozzáférni, először hozzon létre egy *kapcsolat* a szolgáltatáshoz. A [kapcsolat](connectors-overview.md) biztosít a logikai alkalmazás és egy másik szolgáltatás közötti kapcsolat.  
@@ -39,7 +39,7 @@ A Logic Apps alkalmazást bármely szolgáltatás hozzáférni, először hozzon
 > 
 
 ## <a name="use-a-twitter-trigger"></a>Twitter-eseményindítók
-Egy eseményindító nem egy eseményt, a logikai alkalmazás definiált munkafolyamat indításához használható. [További tudnivalók az eseményindítók](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).
+Egy eseményindító nem egy eseményt, a logikai alkalmazás definiált munkafolyamat indításához használható. [További tudnivalók az eseményindítók](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
 Ebben a példában I bemutatja, hogyan használható a **amikor egy új tweetet visszaküldi** eseményindító #Seattle keresését, és ha #Seattle található, frissítse a Dropbox fájlt a tweetet szöveget. Vállalati például sikerült keresse meg a vállalat nevét és a tweetet szöveget az SQL-adatbázis frissítése.
 
@@ -80,7 +80,7 @@ Mivel jelenleg csak a felhasználók több mint 50 felhasználóival Twitter-üz
    ![Twitter feltétel kép 8](../../includes/media/connectors-create-api-twitter/condition-8.png)   
 
 ## <a name="use-a-twitter-action"></a>Egy Twitter művelettel
-Egy művelet során a logikai alkalmazás definiált munkafolyamat által végzett. [További információ a műveletek](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).  
+Egy művelet során a logikai alkalmazás definiált munkafolyamat által végzett. [További információ a műveletek](../logic-apps/logic-apps-overview.md#logic-app-concepts).  
 
 Most, hogy hozzáadta egy eseményindítót, kövesse az alábbi lépéseket, a Twitter-üzeneteket az eseményindító által megtalált tartalmát egy új tweetet fogja elküldeni művelet hozzáadása. Ez az útmutató alkalmazásában csak Twitter-üzeneteket a felhasználók a több mint 50 followers lesznek közzétéve.  
 
@@ -103,6 +103,6 @@ A következő lépésben adhat egy Twitter-műveletet, amely egy tweetet, néhá
 
 Bármely eseményindítók és a swagger definiált műveletek megtekintése, és semmilyen határnak a Lásd még: a [connector részleteket](/connectors/twitterconnector/). 
 
-## <a name="next-steps"></a>Következő lépések
-[Logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md)
+## <a name="next-steps"></a>További lépések
+[Logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 

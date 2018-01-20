@@ -3,18 +3,18 @@ title: "Azure által felügyelt alkalmazások a piactéren |} Microsoft Docs"
 description: "Ismerteti az Azure által felügyelt alkalmazások elérhető a piactéren keresztül."
 services: azure-resource-manager
 author: tfitzmac
-manager: rjmax
+manager: timlt
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 11/08/2017
+ms.date: 01/18/2018
 ms.author: tomfitz
-ms.openlocfilehash: e643c86bfd5a78f21f6d96051e4395168cb7d6e0
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: fccc2dbb7623f4ceb0d3decc7037f75a05858910
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>A piactéren Azure kezelt alkalmazások
 
@@ -36,26 +36,18 @@ Emellett nincsenek több üzleti előfeltételek. Ezek a következők:
 * Fogadja el az Azure piactér részvételét házirendek és a Publisher szerződés feltételeit.
 * A használati feltételeket, a Microsoft adatvédelmi nyilatkozatát és a Microsoft Azure hitelesített Program megállapodás ahhoz, hogy fogadja el a licencfeltételeket.
 
-## <a name="set-up-your-account-for-publishing-portal"></a>A közzétételi portáljára fiók beállítása
+## <a name="become-a-publisher"></a>A publisher válik
 
-A közzétételi portáljára közzétételét és kezelését a esetében használatos. Piactér-alkalmazás közzététele, rendelkeznie kell egy engedélyezett Microsoft Developer az Azure piactérről. Ha egy engedélyezett fiók nem regisztrált, lásd: [Microsoft Developer-fiók létrehozása](../marketplace-publishing/marketplace-publishing-accounts-creation-registration.md).
+Az Azure piactéren közzétevő válik, a következőket kell tennie:
 
-Ha van egy jóváhagyott **Microsoft Developer Center** fiók, de még nem használt a [Azure közzétételi Portáljára](https://cloudpartner.azure.com/), akkor regisztrálnia kell a közzétételi portáljára.
-
-1. Nyisson meg egy új Chrome Incognito vagy Internet Explorer InPrivate-böngészés munkamenet győződjön meg arról, hogy még nem jelentkezett személyes fiókra.
-2. Ugrás a [https://cloudpartner.azure.com/](https://cloudpartner.azure.com/).
-3. Ha egy új felhasználót, és jelentkezzen be a közzététel portál először, majd kell bejelentkeznie az e-mailek azonosítója megegyezik a fejlesztői központban regisztrált fiókjában. Most a fejlesztői központban regisztrált fiókjában és közzétételi portálbeli fiókja kapcsolódnak.
-
-A vállalat más tagjai a későbbiekben is hozzáadhat egy [társadminisztrátor](../marketplace-publishing/marketplace-publishing-accounts-creation-registration.md#4-steps-to-add-a-co-admin-in-the-publishing-portal) a közzétételi portálon. Ha hozzáadta a közzétételi portálon co-rendszergazdaként, bejelentkezhet a társadminisztrátori fiókot.
-
-> [!TIP]
-> A programban való részvétellel házirendek a ismerteti a [Azure-webhelyen](https://azure.microsoft.com/support/legal/marketplace/participation-policies/).
->
->
+1. Hozzon létre egy Microsoft ID – egy e-mail-címét használja a vállalati tartományhoz, de nem egy személy a Microsoft-fiók létrehozásához. Ez az e-mail cím a Microsoft Developer Center és a Cloud Partner portálra szolgál. További információkért lásd: [Azure piactér Publisher útmutató](https://aka.ms/sellerguide).
+1. Küldje el [Azure piactér jelölési űrlap](https://aka.ms/ampnomination) – **megoldás, amely közzé kívánja?**, jelölje be **kezelt alkalmazás**. Az űrlap elküldése, miután a piactér bevezetési csapat ellenőrzi, hogy az alkalmazás, és érvényesíti a kérelmet. A jóváhagyási folyamat eltarthat egy-három nap. Ha a jelölési jóváhagyják, kap egy promóciós kódot arra a regisztrációs díja a fejlesztői központban. Ha így tesz **nem** töltse ki a piactér jelölési űrlapot, a rendszer felkéri $99 regisztrációs díjat kell fizetnie.
+1. Regisztrálja a [fejlesztői központ](https://developer.microsoft.com) -a Microsoft ellenőrzi, hogy a szervezet egy érvényes jogalany az ország, amelyen regisztrálva van egy érvényes adó azonosítóval. A jóváhagyási folyamat 5 – 10 nap vehet igénybe. A regisztrációs díj elkerülése érdekében használja a promóciós e-mailben a jelölési eljárás a kapott kódot. További információkért lásd: [Azure piactér Publisher útmutató](https://aka.ms/sellerguide).
+1. Jelentkezzen be [Cloud Partner portálra](https://cloudpartner.azure.com) - közzétevő profilban a fejlesztői központban regisztrált fiókjában társítsa a piactér Publisher profilhoz. További információkért lásd: [Azure piactér Publisher útmutató](https://aka.ms/sellerguide).
 
 ## <a name="create-a-new-azure-application-offer"></a>Hozzon létre egy új Azure-alkalmazásokban ajánlatot
 
-Miután megfelel az előfeltételeknek, készen áll a felügyelt alkalmazási ajánlat létrehozásához.
+A partner portál fiók létrehozását követően készen áll a felügyelt alkalmazási ajánlat létrehozásához.
 
 ### <a name="set-up-an-offer"></a>Az ajánlat beállítása
 
@@ -65,11 +57,7 @@ A kezelt alkalmazás-ajánlat az ajánlat közzétevőtől származó termék os
 
 1. Jelölje ki a bal oldali navigációs ablaktáblán, **+ új ajánlat** > **Azure alkalmazások**.
 
-   ![Új ajánlat](./media/publish-marketplace-app/newOffer.png)
-
 1. Az a **szerkesztő** nézetben a szükséges űrlap megjelenik. A cikk későbbi részében leírt minden egyes űrlap.
-
-   ![Ajánlat beállításai](./media/publish-marketplace-app/newOffer_OfferSettings.png)
 
 ## <a name="offer-settings-form"></a>Az ajánlat beállítások képernyő
 
@@ -95,13 +83,9 @@ A Termékváltozat jelenik meg, az a szülő-ajánlat a piactéren. Úgy tűnik,
 
 1. Válassza ki **termékváltozatok** > **új SKU**.
 
-   ![Válassza ki az új Termékváltozat](./media/publish-marketplace-app/newOffer_skus.png)
-
 1. Adjon meg egy **SKU-ID**. A SKU-ID egy egyedi azonosítót a termékváltozat ajánlatot belül. Ezt az Azonosítót látható termék URL-címek, Resource Manager-sablonok, és számlázási jelenti. Csak összeállítható kisbetűs alfanumerikus karaktereket és kötőjelet (-). Az azonosító nem végződhet kötőjellel, és azok csak a legfeljebb 50 karakter hosszú lehet. Miután ajánlatot élő kerül, ez a mező zárolva van. Az ajánlat belül több SKU lehet. Az egyes lemezképek közzé szeretné tenni a Termékváltozat van szüksége.
 
 1. Töltse ki a **SKU részletek** szakaszt, a következő formában:
-
-   ![Adja meg az új Termékváltozat](./media/publish-marketplace-app/sku-settings.png)
 
    Töltse ki a következő mezőket:
 
@@ -110,14 +94,9 @@ A Termékváltozat jelenik meg, az a szülő-ajánlat a piactéren. Úgy tűnik,
    * **Leírás**: Adja meg a Termékváltozat kapcsolatos részletes leírását.
    * **SKU típusú**: az engedélyezett értékek a következők *kezelt alkalmazás* és *Solution Templates*. Ebben az esetben válassza a *kezelt alkalmazás*.
    * **Ország vagy régió rendelkezésre állási**: a országok, amennyiben rendelkezésre áll-e a kezelt alkalmazás kiválasztása.
-
-      ![Válassza ki a országok](./media/publish-marketplace-app/select-country.png)
-
    * **Árképzési**: Adjon meg egy ár az alkalmazás felügyelete szempontjából. Válassza ki a rendelkezésre álló országokban az ár beállítása előtt.
 
 1. Adja hozzá a következő új csomagba. Töltse ki a **csomag részletei** szakaszt, a következő formában:
-
-   ![Csomag](./media/publish-marketplace-app/new-package.png)
 
    Töltse ki a következő mezőket:
 

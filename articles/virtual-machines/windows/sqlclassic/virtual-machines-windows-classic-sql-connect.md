@@ -15,11 +15,11 @@ ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: jroth
 experimental_id: d51f3cc6-753b-4e
-ms.openlocfilehash: 4218b6d274abbeda542c1507aec998ba56f5c145
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 3f6dc1b2ab8198ec2c03615aedced98a314bf66d
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>Csatlakozás Azure-beli SQL Server-alapú virtuális géphez (hagyományos üzembe helyezési modell)
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ Az ügyfél csatlakozik egy virtuális gépen futó SQL Server módja attól fü
 > 
 
 ### <a name="connect-to-sql-server-in-the-same-cloud-service"></a>Kapcsolódás SQL Server ugyanazon a felhőszolgáltatásban található
-Több virtuális gép is létrehozható az ugyanazon a felhőalapú szolgáltatás. A virtuális gépek forgatókönyv ismertetése: [kapcsolódás a virtuális gépek virtuális hálózati vagy a felhőalapú szolgáltatással](../classic/connect-vms.md#connect-vms-in-a-standalone-cloud-service). Ebben a forgatókönyvben van, amikor az ügyfél egy virtuális gép ugyanazon a felhőszolgáltatásban található egy másik virtuális gépen futó SQL-kiszolgálóhoz való csatlakozáshoz.
+Több virtuális gép is létrehozható az ugyanazon a felhőalapú szolgáltatás. A virtuális gépek forgatókönyv ismertetése: [kapcsolódás a virtuális gépek virtuális hálózati vagy a felhőalapú szolgáltatással](../classic/connect-vms-classic.md#connect-vms-in-a-standalone-cloud-service). Ebben a forgatókönyvben van, amikor az ügyfél egy virtuális gép ugyanazon a felhőszolgáltatásban található egy másik virtuális gépen futó SQL-kiszolgálóhoz való csatlakozáshoz.
 
 Ebben a forgatókönyvben is elérheti a virtuális gép használatával **neve** (is megjelennek az helyeként **számítógépnév** vagy **állomásnév** a portálon). Azt a nevet, a virtuális gép létrehozásakor megadott. Például, ha az SQL virtuális gép elnevezett **mysqlvm**, egy ügyfél virtuális gép ugyanazon a felhőszolgáltatásban található használhatja a következő kapcsolati karakterlánc való csatlakozáshoz:
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 4babb3033e75edc5c85ce89dac569b9f2beae9f7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 22d0ee242d18d73d1d5825567fd61638fd22cc68
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="logic-apps-limits-and-configuration"></a>Logic Apps korlátozásai és konfigurációja
 
@@ -32,22 +32,22 @@ Ezek a korlátozások vonatkoznak az egyetlen HTTP-kérelem vagy az összekötő
 
 #### <a name="timeout"></a>Időtúllépés
 
-| Név | Korlát | Megjegyzések | 
+| Name (Név) | Korlát | Megjegyzések | 
 | ---- | ----- | ----- | 
-| Kérelem időtúllépése | 120 másodperc | Egy [aszinkron mintát](../logic-apps/logic-apps-create-api-app.md) vagy [amíg hurok](logic-apps-loops-and-scopes.md) pótolhatja igény szerint |
+| Kérés időtúllépése | 120 másodperc | Egy [aszinkron mintát](../logic-apps/logic-apps-create-api-app.md) vagy [amíg hurok](logic-apps-loops-and-scopes.md) pótolhatja igény szerint |
 |||| 
 
 #### <a name="message-size"></a>Üzenet mérete
 
-| Név | Korlát | Megjegyzések | 
+| Name (Név) | Korlát | Megjegyzések | 
 | ---- | ----- | ----- | 
 | Üzenet mérete | 100 MB | Egyes összekötők és API-k nem támogathatja 100 MB. | 
 | Kifejezés kiértékelése korlátot | 131 072 karakter | `@concat()`, `@base64()`, `string` nem lehetnek hosszabbak ezt a határt. | 
 |||| 
 
-#### <a name="retry-policy"></a>Ismételje meg a házirend
+#### <a name="retry-policy"></a>Újrapróbálkozási házirend
 
-| Név | Korlát | Megjegyzések | 
+| Name (Név) | Korlát | Megjegyzések | 
 | ---- | ----- | ----- | 
 | Újrapróbálkozási kísérletek | 90 | Az alapértelmezett érték 4. Akkor is konfigurálhatja a [ismételje meg a házirend paraméter](../logic-apps/logic-apps-workflow-actions-triggers.md). | 
 | Maximális késleltetése | 1 nap | Akkor is konfigurálhatja a [ismételje meg a házirend paraméter](../logic-apps/logic-apps-workflow-actions-triggers.md). | 
@@ -58,7 +58,7 @@ Ezek a korlátozások vonatkoznak az egyetlen HTTP-kérelem vagy az összekötő
 
 Ezek a korlátozások vonatkoznak egyetlen logikai alkalmazás futtatásához.
 
-| Név | Korlát | 
+| Name (Név) | Korlát | 
 | ---- | ----- | 
 | Futtassa a időtartama | 90 nap | 
 | Tároló megőrzési | a Futtatás 90 napon kezdési időpontja | 
@@ -72,7 +72,7 @@ Futtatási időtartama vagy a normál feldolgozása folyamatában tároló megő
 
 Ezek a korlátozások vonatkoznak egyetlen logikai alkalmazás futtatásához.
 
-| Név | Korlát | Megjegyzések | 
+| Name (Név) | Korlát | Megjegyzések | 
 | ---- | ----- | ----- | 
 | ForEach-elemek | 100,000 | Használhatja a [lekérdezési művelet](../connectors/connectors-native-query.md) szűrése nagyobb tömbök igény szerint. | 
 | Amíg az ismétlés | 5,000 | | 
@@ -84,7 +84,7 @@ Ezek a korlátozások vonatkoznak egyetlen logikai alkalmazás futtatásához.
 
 Ezek a korlátozások vonatkoznak a egy logikai alkalmazás példánya.
 
-| Név | Korlát | Megjegyzések | 
+| Name (Név) | Korlát | Megjegyzések | 
 | ---- | ----- | ----- | 
 | Műveletek végrehajtások / 5 perc | 100,000 | Szükség szerint több alkalmazást is munkaterhelés szét. | 
 | Műveletek párhuzamos kimenő hívások | ~2,500 | Csökkentse az egyidejű kérelmek száma, vagy igény szerint időtartamának csökkentése érdekében. | 
@@ -99,7 +99,7 @@ A meghaladja ezt a korlátot, a normál feldolgozása vagy futtatási terhelés 
 
 Ezek a korlátozások vonatkoznak a egyetlen logic app-definíciót.
 
-| Név | Korlát | Megjegyzések | 
+| Name (Név) | Korlát | Megjegyzések | 
 | ---- | ----- | ----- | 
 | Műveletek munkafolyamat száma | 500 | Ezt a határt kiterjesztéséhez beágyazott munkafolyamatok igény szerint is hozzáadhat. |
 | A beágyazás mélységére művelet engedélyezett | 8 | Ezt a határt kiterjesztéséhez beágyazott munkafolyamatok igény szerint is hozzáadhat. | 
@@ -121,20 +121,20 @@ Ezek a korlátozások vonatkoznak a egyetlen logic app-definíciót.
 
 Ezek a korlátozások webes API-k hozhat létre egyéni összekötőkre vonatkoznak.
 
-| Név | Korlát | 
+| Name (Név) | Korlát | 
 | ---- | ----- | 
-| Létrehozhat egyéni összekötőkre száma | 1000 / Azure-előfizetés | 
-| Minden egyes kapcsolathoz egyéni összekötő által létrehozott percenként kérelmek száma | az összekötő által létrehozott minden egyes kapcsolathoz 500 kérelmek |
+| Létrehozható egyéni összekötők száma | Azure-előfizetésenként 1000 | 
+| Percenkénti kérések száma az egyéni összekötő által létesített egyes kapcsolatokon | Az összekötő által létesített minden kapcsolatonként 500 kérés |
 ||| 
 
 ### <a name="integration-account-limits"></a>Integráció korlátairól
 
 Ezek a korlátozások vonatkoznak az összetevők, amelyek egy integrációs fiókot is hozzáadhat.
 
-| Név | Korlát | Megjegyzések | 
+| Name (Név) | Korlát | Megjegyzések | 
 | ---- | ----- | ----- | 
 | Séma | 8 MB | Használhat [blob URI](../logic-apps/logic-apps-enterprise-integration-schemas.md) 2 MB-nál nagyobb méretű fájlokat feltölteni. | 
-| Térkép (XSLT-fájl) | 2 MB KÖZÖTT | | 
+| Térkép (XSLT-fájl) | 2 MB | | 
 | Futásidejű végpont: 5 perc hívásszám olvasása | 60,000 | Is elosztják a munkaterhelést több fiók igény szerint. | 
 | Futásidejű végpont: 5 perc hívásszám meghívása | 45,000 | Is elosztják a munkaterhelést több fiók igény szerint. | 
 | Futásidejű végpont: 5 perc hívásszám nyomon követése | 45,000 | Is elosztják a munkaterhelést több fiók igény szerint. | 
@@ -145,15 +145,15 @@ Ezek a korlátozások vonatkoznak, amelyek egy integrációs fiókot is hozzáad
 
 #### <a name="free-pricing-tier"></a>Ingyenes tarifacsomag
 
-| Név | Korlát | Megjegyzések | 
+| Name (Név) | Korlát | Megjegyzések | 
 | ---- | ----- | ----- | 
-| Szerződés | 10 | | 
+| Szerződések | 10 | | 
 | Más összetevő típusa | 25 |Összetevő-típusok a partnerek, sémákat, tanúsítványok és a maps tartalmaznak. Egyes összetevők maximális száma legfeljebb tartalmazhat. | 
 |||| 
 
 #### <a name="standard-pricing-tier"></a>Standard szintű tarifacsomagban használható
 
-| Név | Korlát | Megjegyzések | 
+| Name (Név) | Korlát | Megjegyzések | 
 | ---- | ----- | ----- | 
 | Bármilyen típusú összetevő | 500 | Összetevő-típusok a megállapodások, a partnerek, a sémák, a tanúsítványok és a maps tartalmaznak. Egyes összetevők maximális száma legfeljebb tartalmazhat. | 
 |||| 
@@ -162,7 +162,7 @@ Ezek a korlátozások vonatkoznak, amelyek egy integrációs fiókot is hozzáad
 
 Ezek a korlátozások vonatkoznak a B2B protokollokat.
 
-| Név | Korlát | Megjegyzések | 
+| Name (Név) | Korlát | Megjegyzések | 
 | ---- | ----- | ----- | 
 | AS2 | 50 MB | Dekódolás és kódolása vonatkozik | 
 | X12 | 50 MB | Dekódolás és kódolása vonatkozik | 
@@ -171,9 +171,9 @@ Ezek a korlátozások vonatkoznak a B2B protokollokat.
 
 <a name="configuration"></a>
 
-## <a name="configuration-ip-addresses"></a>A konfiguráció: IP-címek
+## <a name="configuration-ip-addresses"></a>Configuration: IP Addresses
 
-### <a name="logic-apps-service"></a>Logic Apps szolgáltatás
+### <a name="logic-apps-service"></a>Logic Apps service
 
 A logikai alkalmazás közvetlenül teszi lehetővé, ez azt jelenti, hogy hívások keresztül [HTTP](../connectors/connectors-native-http.md) vagy [HTTP + Swagger](../connectors/connectors-native-http-swagger.md) vagy IP-címeket a listában szereplő származhatnak más HTTP-kérelmekre.
 
@@ -235,9 +235,9 @@ A hívások, amely [összekötők](../connectors/apis-list.md) ellenőrizze, hog
 |Az Egyesült Királyság nyugati régiója|51.141.47.105|
 | | | 
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 
-* [Az első logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md)  
+* [Az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)  
 * [Gyakori példák és forgatókönyvek](../logic-apps/logic-apps-examples-and-scenarios.md)
 * [Videó: Üzleti folyamatok automatizálása a Logic Apps](http://channel9.msdn.com/Events/Build/2016/T694) 
 * [Videó: Rendszerintegráció a Logic Apps](http://channel9.msdn.com/Events/Build/2016/P462)

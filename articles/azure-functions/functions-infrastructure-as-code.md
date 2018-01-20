@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: glenga
-ms.openlocfilehash: e6b3deb9353ba07d693d71822d37a1761dd70d67
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 6f31ba7b43c70f52bdd67d27512a322ec6258608
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Az Azure Functions függvény alkalmazás erőforrás-telepítés automatizálása
 
@@ -76,7 +76,7 @@ Ezek a tulajdonságok vannak megadva a `appSettings` gyűjtemény a `siteConfig`
 
 Az üzemeltetési terv meghatározásának függ, hogy használ-e a felhasználási vagy App Service-csomag. Lásd: [a fogyasztás terven függvény alkalmazás telepítése](#consumption) és [függvény alkalmazás az App Service-csomag telepítése](#app-service-plan).
 
-### <a name="function-app"></a>Függvény alkalmazás
+### <a name="function-app"></a>Függvényalkalmazás
 
 A függvény app erőforrás van definiálva típusú erőforrások használatával **Microsoft.Web/Site** és fajta **functionapp**:
 
@@ -197,7 +197,7 @@ Miután kijelölt egy beállítást, a függvény-alkalmazás létrehozása. Az 
 A függvény az alkalmazás rendelkezik sok gyermekszintű erőforrása, amely a központi telepítésre, beleértve az alkalmazásbeállítások és az adatforrás beállításokat is használhatja. Előfordulhat, hogy meg távolítsa el a **sourcecontrols** gyermek-erőforrás és a, valamint egy másik [rendszerbe állítási beállításának](functions-continuous-deployment.md) helyette.
 
 > [!IMPORTANT]
-> Az alkalmazás sikeres közzétételéhez Azure Resource Manager használatával, fontos megérteni, hogyan vannak telepítve az erőforrások az Azure-ban. A következő példában a legfelső szintű konfigurációk használatával alkalmazhatók **siteConfig**. Fontos állítsa be ezeket a konfigurációkat a legfelső szintű, mert ezek a funkciók futási és telepítési motor információáramlás. Legfelső szintű adatokat a gyermek előtt meg kell adni **sourcecontrols vagy webes** erőforrás vonatkozik. Bár ezek a beállítások konfigurálására a gyermekszintű lehetséges **config/appSettings** erőforrás, a függvény app telepítenie kell bizonyos esetekben *előtt* **config/appSettings**  vonatkozik. Például használata esetén a funkciók [Logic Apps](../logic-apps/index.md), a függvények egy másik erőforrás függősége.
+> Az alkalmazás sikeres közzétételéhez Azure Resource Manager használatával, fontos megérteni, hogyan vannak telepítve az erőforrások az Azure-ban. A következő példában a legfelső szintű konfigurációk használatával alkalmazhatók **siteConfig**. Fontos állítsa be ezeket a konfigurációkat a legfelső szintű, mert ezek a funkciók futási és telepítési motor információáramlás. Legfelső szintű adatokat a gyermek előtt meg kell adni **sourcecontrols vagy webes** erőforrás vonatkozik. Bár ezek a beállítások konfigurálására a gyermekszintű lehetséges **config/appSettings** erőforrás, a függvény app telepítenie kell bizonyos esetekben *előtt* **config/appSettings**  vonatkozik. Például használata esetén a funkciók [Logic Apps](../logic-apps/index.yml), a függvények egy másik erőforrás függősége.
 
 ```json
 {
@@ -279,7 +279,7 @@ Cserélje le ```<url-encoded-path-to-azuredeploy-json>``` rendelkező egy [URL-k
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/<url-encoded-path-to-azuredeploy-json>" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"></a>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Fejleszthet, és az Azure Functions konfigurálásával kapcsolatos további tudnivalókért.
 

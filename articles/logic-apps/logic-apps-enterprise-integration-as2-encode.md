@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 7889bf9e4e02143b6bb4c797531afa54f8647ce5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bccc8f81a3a664e090796ae8a3cbb38c890c0479
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="encode-as2-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Az Azure Logic Apps a vállalati integrációs csomaggal AS2 üzenetek kódolása
 
@@ -35,7 +35,7 @@ A szükséges elemeket itt található:
 
 ## <a name="encode-as2-messages"></a>AS2-üzenetek kódolása
 
-1. [Logikai alkalmazás létrehozása](logic-apps-create-a-logic-app.md).
+1. [Logikai alkalmazás létrehozása](quickstart-create-first-logic-app-workflow.md).
 
 2. Az AS2 kódolása üzenet összekötő eseményindítókat, nem rendelkezik, hozzá kell adni egy eseményindító indítása el a logikai alkalmazás, például egy kérelem eseményindító. A Logic App-tervezőben, vegye fel egy eseményindítót, majd egy műveletet a logikai alkalmazáshoz.
 
@@ -78,6 +78,6 @@ Próbálja meg egy teljesen működőképes logic app és a minta AS2 forgatók�
 ## <a name="view-the-swagger"></a>A swagger megtekintése
 Tekintse meg a [részletek swagger](/connectors/as2/). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [További tudnivalók a vállalati integrációs csomag](logic-apps-enterprise-integration-overview.md "további információ a vállalati integrációs csomag") 
 

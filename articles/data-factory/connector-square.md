@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: jingwang
-ms.openlocfilehash: 71c73f034a3c32c9bdf1532106a3aba9521afb17
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 1988d293c78e7fb51f08d040ab96a6d7a3abbb87
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="copy-data-from-square-using-azure-data-factory-beta"></a>Adatok másolása az Azure Data Factory (béta) használatával szögletes
 
@@ -37,7 +37,7 @@ Az Azure Data Factory kapcsolódásának engedélyezése beépített illesztőpr
 
 ## <a name="getting-started"></a>Első lépések
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
 
 A következő szakaszok részletesen bemutatják való négyzetes összekötő adat-előállító tartozó entitások meghatározásához használt tulajdonságokat.
 
@@ -48,10 +48,10 @@ Négyzetes társított szolgáltatás támogatott a következő tulajdonságokka
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **szögletes** | Igen |
-| gazdagép | A négyszögletű példány URL-CÍMÉT. (azaz mystore.mysquare.com)  | Igen |
+| gazdagép | A négyszögletű példány URL-CÍMÉT. (i.e. mystore.mysquare.com)  | Igen |
 | clientId | A négyszögletű az alkalmazáshoz tartozó ügyfél-azonosító.  | Igen |
 | clientSecret | A négyszögletű az alkalmazáshoz tartozó titkos ügyfélkulcsot. Ez a mező megjelölése a SecureString tárolja biztonságos helyen az ADF, vagy a jelszó tárolása az Azure Key Vault választhat, és lehetővé teszik a másolási tevékenység lekéréses ott adatmásolás végrehajtása során – további információhoz [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). | Igen |
-| redirectUri | Az átirányítási URL-cím hozzárendelése az négyzetes irányítópult. (azaz http://localhost:2500)  | Igen |
+| redirectUri | Az átirányítási URL-cím hozzárendelése az négyzetes irányítópult. (i.e. http://localhost:2500)  | Igen |
 | useEncryptedEndpoints | Meghatározza, hogy a data source végpontok titkosítása HTTPS használatával. Az alapértelmezett érték: igaz.  | Nem |
 | useHostVerification | Meghatározza, hogy az a számítógép neve a egyeznie kell a gazdagép nevével a kiszolgáló SSL-en keresztüli kapcsolódás esetén a kiszolgáló tanúsítványát. Az alapértelmezett érték: igaz.  | Nem |
 | usePeerVerification | Megadja, hogy a kiszolgáló identitásának ellenőrzése SSL-en keresztüli kapcsolódás esetén. Az alapértelmezett érték: igaz.  | Nem |

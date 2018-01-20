@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 09/28/2017
+ms.date: 01/19/2018
 ms.author: asaxton
-ms.openlocfilehash: e1ab6a2f52fa56f1e04c6c327796587daf43596e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7eb64cce37f2655b72ab9b5fadedf7581fe007fb
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="scale-your-power-bi-embedded-capacity"></a>A Power BI Embedded kapacitás méretezése
 
@@ -26,7 +26,8 @@ Ez a cikk végigvezeti a Power BI Embedded kapacitás méretezése a Microsoft A
 
 A parancs feltételezi, hogy a Power BI Embedded kapacitás hozott létre. Ha nem, olvassa el [Power BI Embedded létrehozása kapacitás az Azure portálon](create-capacity.md) a kezdéshez.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
+> [!NOTE]
+> A méretezési művelet körülbelül egy perce is tarthat. Ebben az időszakban a kapacitás nem lesz elérhető. Beágyazott tartalom betöltése sikertelen lehet.
 
 ## <a name="scale-a-capacity"></a>A kapacitás méretezése
 
@@ -58,7 +59,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
     ![Erősítse meg a jelenlegi rétegtől](media/scale-capacity/azure-portal-confirm-tier.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Felfüggesztése, vagy indítsa el a kapacitás, lásd: [szüneteltetése és indítsa el a Power BI Embedded kapacitás és az Azure-portálon](pause-start.md).
 

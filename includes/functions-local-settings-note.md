@@ -1,2 +1,2 @@
 >[!Note]
-> Az Azure Storage Emulator használatát nem támogatja az Azure Functions eszközök helyileg fejlesztése során.
+> A függvény alkalmazás használható az Azure Storage Emulator az a **AzureWebJobsStorage** és **AzureWebJobsDashboard** a projekt által igényelt beállításokat. Az emulátor használatához állítsa be ezeket a kulcsokat a `UseDevelopmentStorage=true`. 

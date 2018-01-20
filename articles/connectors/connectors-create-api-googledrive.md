@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/07/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: c066a10b33e172eb5f16eede43ec407794000c90
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 05d6efa3f48c9b0b8c21badd96a0e13a63542b30
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-google-drive-connector"></a>A Google meghajtó összekötő az első lépései
 Google-meghajtó létrehozása, fájlok, a get sorok és a további csatlakozni. Google-meghajtó a következőket teheti: 
@@ -28,7 +28,7 @@ Google-meghajtó létrehozása, fájlok, a get sorok és a további csatlakozni.
 * Az üzleti folyamata, a keresés származó adatok alapján történő létrehozása. 
 * Műveletek segítségével képek keresni, keresse a híreket és még sok más. Ezeket a műveleteket válaszol, és végezze el a kimeneti más műveletek érhető el. Például keresse meg a videót, és Twitter használatával, amely egy Twitter-hírcsatorna a videó utáni.
 
-Most hozzon létre egy logic app kezdheti, lásd: [logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md).
+Most hozzon létre egy logic app kezdheti, lásd: [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="create-the-connection-to-google-drive"></a>Google-meghajtóra kapcsolat létrehozása
 Ezt az összekötőt a logic apps hozzáadásakor engedélyeznie kell a logic apps a Google-meghajtóról való kapcsolódáshoz.

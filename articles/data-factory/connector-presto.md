@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: jingwang
-ms.openlocfilehash: 9d272072ce77aca159edb36a6b7a78c94aee476d
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 440a644e0b43fd42a446ec3e1a6a8d32a0b247cd
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="copy-data-from-presto-using-azure-data-factory-beta"></a>Adatok másolása az Azure Data Factory (béta) használatával Presto
 
@@ -37,7 +37,7 @@ Az Azure Data Factory kapcsolódásának engedélyezése beépített illesztőpr
 
 ## <a name="getting-started"></a>Első lépések
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
 
 A következő szakaszok részletesen bemutatják való Presto összekötő adat-előállító tartozó entitások meghatározásához használt tulajdonságokat.
 
@@ -49,10 +49,10 @@ A következő tulajdonságok Presto kapcsolódó szolgáltatás támogatottak:
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **Presto** | Igen |
 | gazdagép | A kiszolgáló IP-címét vagy állomásnevét kiszolgálónevét a Presto. (azaz 192.168.222.160)  | Igen |
-| OWA | A Presto server verziója. (azaz 0.148-t)  | Igen |
+| serverVersion | A Presto server verziója. (azaz 0.148-t)  | Igen |
 | katalógus | A kiszolgáló felé irányuló összes kérését a katalógus környezetben.  | Igen |
 | port | A TCP-portot, amelyen a Presto kiszolgáló ügyfélkapcsolatokat. Az alapértelmezett érték: 8080-as.  | Nem |
-| AuthenticationType | A Presto kiszolgálóhoz való csatlakozáshoz használt hitelesítési módszert. <br/>Két érték engedélyezett: **névtelen**, **LDAP** | Igen |
+| authenticationType | A Presto kiszolgálóhoz való csatlakozáshoz használt hitelesítési módszert. <br/>Két érték engedélyezett: **névtelen**, **LDAP** | Igen |
 | felhasználónév | A Presto kiszolgálóhoz való csatlakozáshoz használt felhasználónevet.  | Nem |
 | jelszó | A jelszó, a felhasználónév megfelelő. Ez a mező megjelölése a SecureString tárolja biztonságos helyen az ADF, vagy a jelszó tárolása az Azure Key Vault választhat, és lehetővé teszik a másolási tevékenység lekéréses ott adatmásolás végrehajtása során – további információhoz [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). | Nem |
 | enableSsl | Meghatározza, hogy a kapcsolat titkosítása SSL használatával. Az alapértelmezett értéke hamis.  | Nem |
@@ -60,7 +60,7 @@ A következő tulajdonságok Presto kapcsolódó szolgáltatás támogatottak:
 | useSystemTrustStore | Megadja, hogy a rendszer megbízható áruházból vagy a megadott PEM-fájl egy Hitelesítésszolgáltatói tanúsítványt használjon-e. Az alapértelmezett értéke hamis.  | Nem |
 | allowHostNameCNMismatch | Megadja, hogy egy hitelesítésszolgáltató által kiállított SSL tanúsítvány nevének egyeznie kell a gazdagép nevével a kiszolgáló SSL-en keresztül kapcsolódáskor-e. Az alapértelmezett értéke hamis.  | Nem |
 | allowSelfSignedServerCert | Megadja, hogy engedélyezi a kiszolgáló önaláírt tanúsítványokat. Az alapértelmezett értéke hamis.  | Nem |
-| Időzóna azonosítója | A helyi időzónát használja a kapcsolat. Ez a beállítás érvényes értékei a IANA időzóna adatbázis meg van adva. Az alapértelmezett érték: az időzónával.  | Nem |
+| timeZoneID | A helyi időzónát használja a kapcsolat. Ez a beállítás érvényes értékei a IANA időzóna adatbázis meg van adva. Az alapértelmezett érték: az időzónával.  | Nem |
 
 **Példa**
 

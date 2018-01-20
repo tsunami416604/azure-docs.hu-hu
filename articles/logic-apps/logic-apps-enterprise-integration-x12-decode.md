@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 9605fc3a1096d053bfeffb2544499935601b2c0f
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: bc2e5c2b351fb87cb763459a9e24368a422ada1b
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="decode-x12-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Dekódolás X12 üzenetek az Azure Logic Apps a vállalati integrációs csomaggal
 
@@ -35,7 +35,7 @@ A szükséges elemeket itt található:
 
 ## <a name="decode-x12-messages"></a>Dekódolás X12 üzenetek
 
-1. [Logikai alkalmazás létrehozása](logic-apps-create-a-logic-app.md).
+1. [Logikai alkalmazás létrehozása](quickstart-create-first-logic-app-workflow.md).
 
 2. A dekódolási X12 üzenet összekötő eseményindítókat, nem rendelkezik, hozzá kell adni egy eseményindító indítása el a logikai alkalmazás, például egy kérelem eseményindító. A Logic App-tervezőben, vegye fel egy eseményindítót, majd egy műveletet a logikai alkalmazáshoz.
 
@@ -107,6 +107,6 @@ A X12 dekódolási összekötő az alábbi feladatokat hajtja végre:
 ## <a name="view-the-swagger"></a>A swagger megtekintése
 Tekintse meg a [részletek swagger](/connectors/x12/). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [További tudnivalók a vállalati integrációs csomag](../logic-apps/logic-apps-enterprise-integration-overview.md "további információ a vállalati integrációs csomag") 
 

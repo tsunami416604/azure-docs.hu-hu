@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2016
 ms.author: szark
-ms.openlocfilehash: c829f5d9a90b4260c6f41b2d9e511a0c6cb48f18
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e90e928bed41abc00ad4c5b8dcdfad35cb3cbbdc
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>SLES- vagy openSUSE-alapú virtuális gép előkészítése Azure-beli használatra
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -81,7 +81,7 @@ A saját virtuális merevlemez létrehozása helyett, SUSE is közzéteszi (Brin
         # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
 11. A fájl szerkesztése ajánlott "/ etc/sysconfig/hálózati/dhcp", és módosítsa a `DHCLIENT_SET_HOSTNAME` a következő paramétert:
     
-     DHCLIENT_SET_HOSTNAME = "nem"
+     DHCLIENT_SET_HOSTNAME="no"
 12. A "/ etc/sudoers" megjegyzéssé, vagy ha vannak ilyenek, távolítsa el a következő sorokat:
     
      Alapértelmezés szerint targetpw # kérje meg a jelszót, azaz legfelső szintű összes ALL=(ALL) minden célként megadott felhasználó # figyelmeztetés! Csak ezzel együtt a 'Alapértelmezett targetpw'!
@@ -95,7 +95,7 @@ A saját virtuális merevlemez létrehozása helyett, SUSE is közzéteszi (Brin
     
     # <a name="sudo-waagent--force--deprovision"></a>sudo waagent-force - deprovision
     # <a name="export-histsize0"></a>exportálja a HISTSIZE = 0
-    # <a name="logout"></a>Kijelentkezés
+    # <a name="logout"></a>kijelentkezés
 16. Kattintson a **művelet le -> leállítási** a Hyper-V kezelőjében. A Linux virtuális merevlemez az Azure-bA feltölteni kívánt készen áll.
 
 - - -
@@ -131,14 +131,14 @@ A saját virtuális merevlemez létrehozása helyett, SUSE is közzéteszi (Brin
    # <a name="sudo-zypper-install-walinuxagent"></a>sudo zypper telepítés WALinuxAgent
 6. Módosítsa a kernel rendszerindító sor lárvajárat konfigurációs kiegészítő rendszermag paraméterek az Azure-bA felvenni. Ehhez nyissa meg a "/ boot/grub/menu.lst" egy szövegszerkesztőben, és győződjön meg arról, hogy az alapértelmezett kernel az alábbi paramétereket tartalmazza:
    
-     konzol ttyS0 earlyprintk = ttyS0 rootdelay = = 300
+     console=ttyS0 earlyprintk=ttyS0 rootdelay=300
    
    Ezzel biztosíthatja, hogy minden konzol küldi el az első soros port, amely segít az Azure által támogatott hibáinak feltárására. A következő paraméterek ezenkívül eltávolítása a kernel rendszerindító sor, ha vannak ilyenek:
    
-     libata.atapi_enabled=0 tartalék = 0x1f0, 0x8
+     libata.atapi_enabled=0 reserve=0x1f0,0x8
 7. A fájl szerkesztése ajánlott "/ etc/sysconfig/hálózati/dhcp", és módosítsa a `DHCLIENT_SET_HOSTNAME` a következő paramétert:
    
-     DHCLIENT_SET_HOSTNAME = "nem"
+     DHCLIENT_SET_HOSTNAME="no"
 8. **Fontos:** "/ etc/sudoers", a megjegyzéssé, vagy ha vannak ilyenek, távolítsa el a következő sorokat:
    
      Alapértelmezés szerint targetpw # kérje meg a jelszót, azaz legfelső szintű összes ALL=(ALL) minden célként megadott felhasználó # figyelmeztetés! Csak ezzel együtt a 'Alapértelmezett targetpw'!
@@ -152,12 +152,12 @@ A saját virtuális merevlemez létrehozása helyett, SUSE is közzéteszi (Brin
     
     # <a name="sudo-waagent--force--deprovision"></a>sudo waagent-force - deprovision
     # <a name="export-histsize0"></a>exportálja a HISTSIZE = 0
-    # <a name="logout"></a>Kijelentkezés
+    # <a name="logout"></a>kijelentkezés
 12. Győződjön meg arról, az Azure Linux ügynök a indításakor fut:
     
         # sudo systemctl enable waagent.service
 13. Kattintson a **művelet le -> leállítási** a Hyper-V kezelőjében. A Linux virtuális merevlemez az Azure-bA feltölteni kívánt készen áll.
 
-## <a name="next-steps"></a>Következő lépések
-Most már készen áll a SUSE Linux virtuális merevlemez segítségével új virtuális gépek létrehozása az Azure-ban. Ha az első alkalommal, hogy van-e a .vhd fájl feltöltése az Azure, tekintse meg a 2. és 3 [létrehozása és feltöltése, a Linux operációs rendszert tartalmazó virtuális merevlemez](classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
+## <a name="next-steps"></a>További lépések
+Most már készen áll a SUSE Linux virtuális merevlemez segítségével új virtuális gépek létrehozása az Azure-ban. Ha az első alkalommal, hogy van-e a .vhd fájl feltöltése az Azure, tekintse meg a 2. és 3 [létrehozása és feltöltése, a Linux operációs rendszert tartalmazó virtuális merevlemez](classic/create-upload-vhd-classic.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
 

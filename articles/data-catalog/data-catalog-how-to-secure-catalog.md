@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 11/01/2017
+ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: 0950d453e53a70f96f59de572ac10326ef030444
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 89346113c6231442beb1147c4c4fea524d03d909
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="how-to-secure-access-to-data-catalog-and-data-assets"></a>A data catalog és adategységeket hozzáférésének biztonságossá tétele
 > [!IMPORTANT]
@@ -34,7 +34,7 @@ Hozzáférést egy felhasználó vagy csoport a egy data Catalog és engedélyei
     ![a Data catalog - beállítások](media/data-catalog-how-to-secure-catalog/data-catalog-settings.png)
 2. A beállítások lapon bontsa ki a **katalógus felhasználói** szakasz.
     ![Katalógus - felhasználók hozzáadása](media/data-catalog-how-to-secure-catalog/data-catalog-add-button.png)
-3. Kattintson az **Add** (Hozzáadás) parancsra.
+3. Kattintson a **Hozzáadás** parancsra.
 4. Adja meg a teljesen minősített **felhasználónév** neve vagy a **biztonsági csoport** az az Azure Active Directory (AAD) társított a katalógusban. Használjon vesszőt (', '), egy elválasztó hozzáadásakor több mint egy felhasználó vagy csoport.
     ![Katalógus felhasználói - felhasználók és csoportok](media/data-catalog-how-to-secure-catalog/data-catalog-users-groups.png)
 5. Nyomja le az **ENTER** vagy **lapon** kívül a szövegmezőben. 
@@ -54,6 +54,6 @@ Hozzáférést egy felhasználó vagy csoport a egy data Catalog és engedélyei
 - A biztonsági csoportokhoz rendelt engedélyek additívak. Tegyük fel a felhasználó két szerepel. Egy csoport rendelkezik megjegyzésekkel engedélyek és egyéb csoport nem rendelkezik megjegyzésekkel engedélyeket. Ezt követően felhasználó engedélyekkel rendelkezik megjegyzésekkel. 
 - Az explicit módon a felhasználóhoz rendelt engedélyek bírálja felül a felhasználó tartalmazó csoportok jogosultságait. Az előző példában tegyük fel például, explicit módon hozzáadott szeretné a katalógus-felhasználók és a felhasználó nem hozzárendelése megjegyzésekkel engedélyeket. A felhasználó nem adhat megjegyzéseket az adategységekhez, annak ellenére, hogy a felhasználó nem tagja egy csoportot, amely rendelkezik engedélyekkel megjegyzésekkel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Ismerkedés az Azure Data Catalog szolgáltatással](data-catalog-get-started.md)
 

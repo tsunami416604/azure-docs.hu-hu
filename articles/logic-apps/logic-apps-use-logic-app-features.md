@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/28/2017
 ms.author: LADocs; stepsic
-ms.openlocfilehash: e632c48ed31e82536db55a9c54438bece0c38fd4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5a3957ffcc149bdaf5c196960c7c7f23913f8b5c
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="use-logic-apps-features"></a>Logic Apps funkcióinak használata
 
-Az egy [előző témakörben](../logic-apps/logic-apps-create-a-logic-app.md), az első logikai alkalmazás. A Logic Apps alkalmazást munkafolyamat szabályozásához elérési útja eltér a logikai alkalmazás futtatásához, és hogyan kell feldolgozni az adatokat a tömböket, gyűjtemények és kötegek is megadhat. Ezeket az elemeket a logic app munkafolyamat alábbiakból állhat:
+Az egy [előző témakörben](../logic-apps/quickstart-create-first-logic-app-workflow.md), az első logikai alkalmazás. A Logic Apps alkalmazást munkafolyamat szabályozásához elérési útja eltér a logikai alkalmazás futtatásához, és hogyan kell feldolgozni az adatokat a tömböket, gyűjtemények és kötegek is megadhat. Ezeket az elemeket a logic app munkafolyamat alábbiakból állhat:
 
 * Feltételek és [utasítások kapcsoló](../logic-apps/logic-apps-switch-case.md) lehetővé teszik a Logic Apps alkalmazást, hogy meghatározott feltételek alapján más műveletek futtatása.
 
@@ -95,7 +95,7 @@ Bár a Logic App Designer, a kódot, amely meghatározza a logikai alkalmazás k
 
     A teljes szerkesztő megnyílik, és a szerkesztett definíciója látható.
 
-    ![Kód nézetre](media/logic-apps-use-logic-app-features/codeview.png)
+    ![Kódnézet](media/logic-apps-use-logic-app-features/codeview.png)
 
     A szövegszerkesztőben másolja, és illessze be a tetszőleges számú műveletet belül az azonos logikai alkalmazás vagy a logic Apps alkalmazások között. 
     Is egyszerűen adja hozzá vagy távolítsa el a teljes szakaszok meghatározásából, és másokkal is megoszthat definíciókat.
@@ -143,7 +143,7 @@ Indítani egy munkafolyamatot, a szolgáltatások meghívhatja a logic app végp
 <!-- Shared links -->
 [Azure-portálon]: https://portal.azure.com
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Kapcsoló utasítások](../logic-apps/logic-apps-switch-case.md) 
 * [Hurkok, hatókörök és kibontás](../logic-apps/logic-apps-loops-and-scopes.md)

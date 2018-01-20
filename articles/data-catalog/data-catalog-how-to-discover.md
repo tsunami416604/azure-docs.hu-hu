@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 11/01/2017
+ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: 7c2a1d61bc13ba1cde404e2b732933d2d314e3e3
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: e2db429860e6e3a60211c993bebfecbca98d67fd
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="how-to-discover-data-sources-in-azure-data-catalog"></a>Az Azure Data Catalog adatforrások felfedezése
 ## <a name="introduction"></a>Bevezetés
@@ -61,8 +61,8 @@ Az alapértelmezett mozaik elrendezés nézet, minden egyes csempe jelenik meg a
 
  ![Találati kiemelve, és megkeresi a megadott Azure Data Catalog-portálon](./media/data-catalog-how-to-discover/search-matches.png)
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Mivel a Data Catalog egy adatforrás regisztrálása másolja szerkezeti és leíró metaadatok az adatforrásból a katalógus szolgáltatáshoz, az adatforrás könnyebben megtalálhatóvá és értelmezhetővé válik. Egy adatforrás regisztrálása után tudja azt deríteni szűrés használatával, és a keresni a Data Catalog-portált.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További adatforrások felfedezése kapcsolatos részletes információkért lásd: [Ismerkedés az Azure Data Catalog](data-catalog-get-started.md).

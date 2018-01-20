@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: mahender
-ms.openlocfilehash: 080712e0a6c05348e7163f3c8e2055e6ff2806b2
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: fe0958b8a548e72df17f257e5700c28d3ebae79c
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="azure-functions-http-and-webhook-bindings"></a>Az Azure Functions HTTP és a webhook kötések
 
@@ -42,7 +42,7 @@ Alapértelmezés szerint HTTP-eseményindítóval válaszol egy HTTP 200 OK áll
 Tekintse meg a nyelvspecifikus példát:
 
 * [C#](#trigger---c-example)
-* [C# parancsfájl (.csx)](#trigger---c-script-example)
+* [C# script (.csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
 * [JavaScript](#trigger---javascript-example)
 
@@ -236,7 +236,7 @@ module.exports = function(context, req) {
 Tekintse meg a nyelvspecifikus példát:
 
 * [C#](#webhook---c-example)
-* [C# parancsfájl (.csx)](#webhook---c-script-example)
+* [C# script (.csx)](#webhook---c-script-example)
 * [F#](#webhook---f-example)
 * [JavaScript](#webhook---javascript-example)
 
@@ -332,7 +332,7 @@ let Run(req: HttpRequestMessage, log: TraceWriter) =
     } |> Async.StartAsTask
 ```
 
-### <a name="webhook---javascript-example"></a>Webhook - JavaScript – példa
+### <a name="webhook---javascript-example"></a>Webhook - JavaScript example
 
 A következő példa bemutatja a kötés webhook eseményindító egy *function.json* fájlt és egy [JavaScript függvény](functions-reference-node.md) , amely a kötés használja. A függvény GitHub probléma megjegyzések naplózza.
 
@@ -387,8 +387,8 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 | **típusa** | n/a| Szükséges – kell állítani `httpTrigger`. |
-| **iránya** | n/a| Szükséges – kell állítani `in`. |
-| **név** | n/a| Kötelező – a kérelem vagy kérelemtörzset függvény a kódban használt változó neve. |
+| **direction** | n/a| Szükséges – kell állítani `in`. |
+| **name** | n/a| Kötelező – a kérelem vagy kérelemtörzset függvény a kódban használt változó neve. |
 | <a name="http-auth"></a>**authLevel** |  **AuthLevel** |Meghatározza, hogy mi kulcsok, ha van ilyen kell jelen lennie ahhoz, hogy a függvény meghívása a kérésre. A jogosultsági szintet a következő értékek egyike lehet: <ul><li><code>anonymous</code>&mdash;Nincs API-kulcsot meg kell adni.</li><li><code>function</code>&mdash;Funkcióspecifikus API-kulcs megadása kötelező. Ez az az alapértelmezett érték, ha nincs megadva.</li><li><code>admin</code>&mdash;A fő kulcsot meg kell adni.</li></ul> További információkért lásd: a szakasz [engedélyezési kulcsok](#authorization-keys). |
 | **módszerek** |**Módszerek** | A tömb, amelyre a függvény válaszol a HTTP-metódus. Ha nincs megadva, a függvény válaszol-e a HTTP-metódus. Lásd: [testre szabhatja a http-végpont](#trigger---customize-the-http-endpoint). |
 | **útvonal** | **Útvonal** | Meghatározza az útvonalsablonhoz szabályozása, amelyhez a kérés URL-címeket, a függvény válaszol. Az alapértelmezett érték, ha nincs megadva `<functionname>`. További információkért lásd: [testre szabhatja a http-végpont](#customize-the-http-endpoint). |
@@ -528,6 +528,10 @@ A webhook fogadó összetevőt, a HTTP-eseményindítóval részét Webhook enge
 - **Lekérdezési karakterlánc**: A szolgáltató továbbítja a kulcs nevét a `clientid` lekérdezési karakterlánc, például a `https://<yourapp>.azurewebsites.net/api/<funcname>?clientid=<keyname>`.
 - **Kérelemfejléc**: A szolgáltató továbbítja a kulcs nevét a `x-functions-clientid` fejléc.
 
+## <a name="trigger---limits"></a>Eseményindító - korlátok
+
+A HTTP-kérelem hosszabb 100 kilobájt (102,400) korlátozott, és az URL-cím hossza legfeljebb 4 KB-os (4096) bájt. Ezek a korlátozások vannak megadva a `httpRuntime` elem a futtatókörnyezet [Web.config fájl](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config).
+
 ## <a name="trigger---hostjson-properties"></a>Eseményindító - host.json tulajdonságai
 
 A [host.json](functions-host-json.md) fájl HTTP-eseményindító viselkedését vezérlő beállításokat tartalmaz.
@@ -557,8 +561,8 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 |Tulajdonság  |Leírás  |
 |---------|---------|
 | **típusa** |meg kell `http`. |
-| **iránya** | meg kell `out`. |
-|**név** | A változó nevét, a válasz függvény kódban használt. |
+| **direction** | meg kell `out`. |
+|**name** | A változó nevét, a válasz függvény kódban használt. |
 
 ## <a name="output---usage"></a>Kimeneti - használat
 

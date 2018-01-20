@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: mingzhan
-ms.openlocfilehash: 65098dbad2cfb2de1f2e5156fbcc3d6477311867
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 72c814aece7626b19cefccb18e1b90f8c44d7f57
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="using-remote-desktop-to-connect-to-a-microsoft-azure-linux-vm"></a>Kapcsolódás Microsoft Azure-beli linuxos VM-hez a Távoli asztal használatával
 > [!IMPORTANT] 
@@ -34,14 +34,14 @@ Ez az útmutató Erre azért van szükség a válasz! Azt, hogy telepítse és a
 A xrdp eszköze egy nyílt forráskódú RDP-kiszolgáló, amely lehetővé teszi a kapcsolódást a Linux-kiszolgálóra a távoli asztalról a Windows-gépről. RDP (virtuális hálózat számítástechnikai) VNC jobb teljesítményt rendelkezik. VNC Renderelés JPEG minőségű grafikus használatával, és a lassú lehet, mivel az RDP gyors és egyszerű crystal.
 
 > [!NOTE]
-> Már rendelkeznie kell egy Microsoft Azure virtuális gépet. Hozzon létre, és a Linux virtuális gépet, a [Azure Linux virtuális gép oktatóanyag](createportal.md).
+> Már rendelkeznie kell egy Microsoft Azure virtuális gépet. Hozzon létre, és a Linux virtuális gépet, a [Azure Linux virtuális gép oktatóanyag](createportal-classic.md).
 > 
 > 
 
 ## <a name="create-an-endpoint-for-remote-desktop"></a>Hozzon létre egy végpontot a távoli asztal
 Használjuk az alapértelmezett végpont 3389-es távoli asztal Ez a dokumentum. Állítsa be, 3389 végpont `Remote Desktop` a Linux virtuális gépekre például alatt:
 
-![Kép](./media/remote-desktop/endpoint-for-linux-server.png)
+![image](./media/remote-desktop/endpoint-for-linux-server.png)
 
 Ha nem tudja, hogyan állíthatja be a végpont a virtuális Gépet, tekintse meg [Ez az útmutató](setup-endpoints.md).
 
@@ -122,7 +122,7 @@ sudo service xrdp restart
 ## <a name="connect-your-linux-vm-from-a-windows-machine"></a>Csatlakozás a Linux virtuális Gépet egy Windows-gépről
 A Windows-gépen a távoli asztal ügyfél elindítása, és adjon meg a Linux virtuális gép DNS-nevét. Vagy a virtuális gép az Azure-portálon az irányítópult megnyitásához, és kattintson a `Connect` a Linux virtuális gép csatlakozni. Ebben az esetben a bejelentkezési ablak jelenik meg:
 
-![Kép](./media/remote-desktop/no2.png)
+![image](./media/remote-desktop/no2.png)
 
 Jelentkezzen be a felhasználónevet és jelszót a Linux virtuális gép.
 

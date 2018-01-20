@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: jodehavi;stgriffi
-ms.openlocfilehash: f98ba1e2da6924476392948a4d18c807d68e39e3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2de788fabcae501d1a388bcea6b7759c9ea269cc
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="set-up-azure-key-vault-with-end-to-end-key-rotation-and-auditing"></a>Az Azure Key Vault beállítása végpontok közötti kulcsforgatással és auditálással
 ## <a name="introduction"></a>Bevezetés
@@ -416,11 +416,11 @@ Ezen a ponton a függvény készen áll. Ügyeljen arra, hogy váltson vissza a 
 ### <a name="azure-logic-app"></a>Az Azure Logic Apps alkalmazást
 Ezután létre kell hoznia egy Azure logikai alkalmazás, amely szerzi be az eseményeket, hogy a funkció a Service Bus-üzenetsorba való küldését, elemzi a tartalom és elküld egy e-mailt az egyező feltétel alapján.
 
-[Logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md) címen **új > logikai alkalmazás**.
+[Logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md) címen **új > logikai alkalmazás**.
 
 A logikai alkalmazás létrehozása után keresse meg a fájlt, és válassza a **szerkesztése**. A logic app szerkesztő választható **Service Bus-üzenetsorba** a várólista csatlakozni a Service Bus hitelesítő adataival.
 
-![Az Azure Logic App Service Bus](./media/keyvault-keyrotation/Azure_LogicApp_ServiceBus.png)
+![Azure Logic App Service Bus](./media/keyvault-keyrotation/Azure_LogicApp_ServiceBus.png)
 
 Ezután válasszon **feltétel hozzáadása**. A feltételben a speciális szerkesztő váltson, és írja be a következő kódot, a tényleges APP_ID webalkalmazás APP_ID cseréje:
 

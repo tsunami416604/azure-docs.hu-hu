@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: jingwang
-ms.openlocfilehash: 24f3d506354c9c81d17f96a51599db2e1bccf178
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: b3f093f84758fe8622f09212b6a11a2c5f3795aa
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="copy-data-from-or-to-azure-file-storage-by-using-azure-data-factory"></a>Adatok másolása az vagy Azure File Storage Azure Data Factory használatával
 
@@ -34,7 +34,7 @@ Pontosabban, az Azure File Storage összekötő támogatja-e a fájlok másolás
 
 ## <a name="getting-started"></a>Első lépések
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
 
 A következő szakaszok részletesen bemutatják Azure File Storage Data Factory tartozó entitások meghatározásához használt tulajdonságokat.
 

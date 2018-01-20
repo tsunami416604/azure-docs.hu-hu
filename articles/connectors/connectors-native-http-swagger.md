@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan; LADocs
-ms.openlocfilehash: 3e9229d94e96aad7b769d0e55d208d856e3b80bc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0487dbedddee684c75420bd66effe2c963a18624
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-http--swagger-action"></a>Ismerkedjen meg a HTTP és a Swagger művelet
 
 A REST-végpont keresztül az első osztályú összekötő hozhat létre egy [Swagger-dokumentum](https://swagger.io) a HTTP és a Swagger használata esetén a logic app munkafolyamat művelet. A logic apps hívni minden REST-végpont első osztályú Logic App Designer nyújthassunk is kiterjeszthető.
 
-Az összekötők logic Apps alkalmazások létrehozásához, lásd: [új logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md).
+Az összekötők logic Apps alkalmazások létrehozásához, lásd: [új logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="use-http--swagger-as-a-trigger-or-an-action"></a>A HTTP + Swagger egy eseményindító vagy egy műveletet
 
@@ -88,7 +88,7 @@ Egy művelet során, amely a logikai alkalmazás definiált munkafolyamat végzi
 | --- | --- |
 | HTTP + Swagger |Egy HTTP-hívást, és vissza válasz tartalma |
 
-### <a name="action-details"></a>A művelet részletei
+### <a name="action-details"></a>Művelet részletei
 A HTTP és a Swagger összekötő egy lehetséges műveletet tartalmaz. Az alábbiakban az egyes műveletek, a szükséges és választható beviteli mezők és a megfelelő kimeneti részletek használatát társított információkat.
 
 #### <a name="http--swagger"></a>HTTP + Swagger
@@ -97,11 +97,11 @@ Egy csillag (*) azt jelenti, hogy a mezőt kötelező kitölteni.
 
 | Megjelenített név | Tulajdonság neve | Leírás |
 | --- | --- | --- |
-| Módszer * |Módszer |Használja a HTTP-műveletet. |
-| URI * |URI |A HTTP-kérelem URI-Azonosítóját. |
-| Fejlécek |Fejlécek |A HTTP-fejlécek tartalmazza JSON-objektum. |
-| Törzs |Törzs |A HTTP-kérés törzsében. |
-| Authentication |Hitelesítés |Hitelesítési kérelem használatára. További információkért lásd: a [HTTP összekötő](connectors-native-http.md#authentication). |
+| Módszer * |metódus |Használja a HTTP-műveletet. |
+| URI* |uri azonosító |A HTTP-kérelem URI-Azonosítóját. |
+| Fejlécek |fejlécek |A HTTP-fejlécek tartalmazza JSON-objektum. |
+| Törzs |törzs |A HTTP-kérés törzsében. |
+| Hitelesítés |hitelesítés |Hitelesítési kérelem használatára. További információkért lásd: a [HTTP összekötő](connectors-native-http.md#authentication). |
 
 **Kimeneti részletei**
 
@@ -109,25 +109,25 @@ HTTP-válasz
 
 | Tulajdonság neve | Adattípus | Leírás |
 | --- | --- | --- |
-| Fejlécek |Objektum |Válaszfejlécek |
-| Törzs |Objektum |Válasz objektum |
+| Fejlécek |objektum |Válaszfejlécek |
+| Törzs |objektum |Válasz objektum |
 | Állapotkód |int |HTTP-állapotkód: |
 
 ### <a name="http-responses"></a>HTTP-válaszok
 Amikor különböző műveletekkel, bizonyos válaszokat kaphat. Az alábbiakban látható egy táblázat a megfelelő válaszok és leírásokat.
 
-| Név | Leírás |
+| Name (Név) | Leírás |
 | --- | --- |
-| 200 |OKÉ |
+| 200 |OK |
 | 202 |Elfogadva |
-| 400 |Helytelen kérelem |
+| 400 |Hibás kérés |
 | 401 |Nem engedélyezett |
 | 403 |Tiltott |
 | 404 |Nem található |
 | 500 |Belső kiszolgálóhiba. Ismeretlen hiba történt. |
 
 - - -
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md)
+* [Logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * [Más összekötők keresése](apis-list.md)

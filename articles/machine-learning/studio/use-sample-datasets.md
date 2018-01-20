@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2017
+ms.date: 01/19/2018
 ms.author: garye
-ms.openlocfilehash: d93c7c0bdad930bba679d705b012f1567da1da8a
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: 3339d3b3bab2c0ce210950c178ef03fc6c0ecab9
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Az Azure Machine Learning Studió mintaadatkészleteinek használata
 [top]: #machine-learning-sample-datasets
@@ -36,7 +36,7 @@ Használhatja bármelyik ezek az adatkészletek saját kísérletben húzza a k�
 <table>
 
 <tr>
-  <th>Adathalmaz neve</th>
+  <th>Adatkészlet neve</th>
   <th>Adatkészlet leírása</th>
 </tr>
 
@@ -102,15 +102,6 @@ Donor adatok tartalmazzák a hónap utolsó adományozás óta), és gyakoriság
 <b>Kapcsolódó kutatási:</b> Yeh, úgy, (2008). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: Egyetemi a kaliforniai, a iskolai az adatokat és a számítástechnikai
 <p></p>
 Yeh, I-Cheng, Yang, képeznie-Jang, és tudomásul véve, Tao-Ming, "Tudásbázis felderítési az RFM-modellben Bernoulli feladatütemezési," 2008, az alkalmazásokkal szakértői rendszereket <a href="http://dx.doi.org/10.1016/j.eswa.2008.07.018">http://dx.doi.org/10.1016/j.eswa.2008.07.018</a>
-  </td>
-</tr>
-
-<tr>
-  <td>Az Amazon könyv értékelést</td>
-  <td>
-Az Amazon, a amazon.com webhelyről Pennsylvania és egyetemi kutatói által végrehajtott könyvek értékelést (<a href="http://www.cs.jhu.edu/~mdredze/datasets/sentiment/">véleményeket</a>). Tekintse meg a tanulmány "adatainak, Bollywood, elterjedése-Box és Blenders: tartomány kiigazítása véleményeket besorolási" John Blitzer, be van jelölve Dredze és Fernando Pereira; Számítási Linguistics (ACL), a társítást a 2007.
-<p></p>
-Az eredeti adathalmazból rangsort 1, 2, 3, 4 vagy 5 975K ellenőrzések rendelkezik. Az értékelést angol nyelven írt, és az adott időszakban 1997-2007 származnak. Ez az adatkészlet lett a 10e értékelést le-mintát.
   </td>
 </tr>
 
@@ -199,7 +190,7 @@ Repülőgép repülési érkezők és a 2011. októberi az Amerikai Egyesült Á
 <p></p>
 <b>Használat:</b> repülési késések előre jelezni. 
 <p></p>
-<b>Kapcsolódó kutatási:</b> a szállítására részleg USA <a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time</a>.
+<b>Related Research:</b> From US Dept. of Transportation <a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time</a>.
   </td>
 </tr>
 
@@ -313,7 +304,7 @@ Ez az adatkészlet kísérletek primerek acélból származó rekordokat tartalm
 <p></p>
 Készült besorolási hajtsa végre egy szabvány, SAE és más szervezetekkel. Egy adott "osztály" (Ez az osztály változó) keres, és szeretné tudni, hogy a szükséges értékeket. 
 <p></p>
-<b>Kapcsolódó kutatási:</b> Sterling, d & Buntine, w (NÉV). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: Egyetemi a kaliforniai, a iskolai az adatokat és a számítástechnikai
+<b>Kapcsolódó kutatási:</b> Sterling, d & Buntine, w (NA). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: Egyetemi a kaliforniai, a iskolai az adatokat és a számítástechnikai
 <p></p>
 Egy hasznos útmutató készült osztályokra itt található: <a href="http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf">http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf</a>
   </td>

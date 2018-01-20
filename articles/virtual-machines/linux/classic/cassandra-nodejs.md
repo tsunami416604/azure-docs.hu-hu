@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: cshoe
-ms.openlocfilehash: 9782df5a5c94169b42d476b0c478fedd3465e3d0
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 00e42a00dffd1be37073f10f6ff7bff619fdee85
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="run-a-cassandra-cluster-on-linux-in-azure-with-nodejs"></a>Az Azure-ban Node.js Linux Cassandra fürt futtatása
 
@@ -117,10 +117,10 @@ Az alábbi szoftververziók a telepítés során használt:
 
 <table>
 <tr><th>Szoftver</th><th>Forrás</th><th>Verzió</th></tr>
-<tr><td>JRE    </td><td>[8 JRE](http://www.oracle.com/technetwork/java/javase/downloads/server-jre8-downloads-2133154.html) </td><td>8U5</td></tr>
+<tr><td>JRE    </td><td>[JRE 8](http://www.oracle.com/technetwork/java/javase/downloads/server-jre8-downloads-2133154.html) </td><td>8U5</td></tr>
 <tr><td>JNA    </td><td>[JNA](https://github.com/twall/jna) </td><td> 3.2.7</td></tr>
 <tr><td>Cassandra</td><td>[Apache Cassandra 2.0.8](http://www.apache.org/dist/cassandra/2.0.8/apache-cassandra-2.0.8-bin.tar.gz)</td><td> 2.0.8</td></tr>
-<tr><td>Ubuntu    </td><td>[A Microsoft Azure](https://azure.microsoft.com/) </td><td>14.04 LTS</td></tr>
+<tr><td>Ubuntu    </td><td>[Microsoft Azure](https://azure.microsoft.com/) </td><td>14.04 LTS</td></tr>
 </table>
 
 Az Oracle-licenc manuálisan el kell fogadnia, JRE letöltésekor. Igen egyszerűbbé teheti a központi telepítést, töltse le a szükséges szoftverek az asztalon. Töltse fel azt a Ubuntu sablon rendszerképet, a fürt telepítése előanyagát létrehozásához.
@@ -142,7 +142,7 @@ Adja meg a következő információkat a "virtuálisgép-konfiguráció" képern
 <tr><th>MEZŐ NEVE              </td><td>       MEZŐÉRTÉK               </td><td>         MEGJEGYZÉSEK                </td><tr>
 <tr><td>VERZIÓ KIADÁSI DÁTUM    </td><td> Egy dátumot a legördülő menüből válassza le</td><td></td><tr>
 <tr><td>VIRTUÁLIS GÉP NEVE    </td><td> esetén-sablon                   </td><td> Ez az a virtuális gép állomásnevét </td><tr>
-<tr><td>RÉTEG                     </td><td> STANDARD                           </td><td> Hagyja meg az alapértelmezett              </td><tr>
+<tr><td>TIER                     </td><td> STANDARD                           </td><td> Hagyja meg az alapértelmezett              </td><tr>
 <tr><td>MÉRET                     </td><td> A1                              </td><td>Válassza ki a virtuális Gépet a IO igényeinek megfelelően; erre a célra hagyja meg az alapértelmezett </td><tr>
 <tr><td> ÚJ FELHASZNÁLÓ NEVE             </td><td> localadmin                       </td><td> "rendszergazda" az egyetlen foglalt felhasználónévvel Ubuntu 12. xx és után</td><tr>
 <tr><td> HITELESÍTÉS         </td><td> Jelölje be jelölőnégyzetet                 </td><td>Ellenőrizze, hogy szeretné-e az SSH-kulcs biztonságos </td><tr>
@@ -159,7 +159,7 @@ Adja meg a következő információkat a "virtuálisgép-konfiguráció" képern
 <tr><td> FELHŐALAPÚ SZOLGÁLTATÁS DNS-NÉV    </td><td>ubuntu-template.cloudapp.net    </td><td>Adjon meg egy gép független terheléselosztó neve</td></tr>
 <tr><td> RÉGIÓ/AFFINITÁSCSOPORT/VIRTUÁLIS HÁLÓZAT </td><td>    USA nyugati régiója    </td><td> Válasszon ki egy régiót, ahol a webalkalmazások érje el a Cassandra</td></tr>
 <tr><td>TÁRFIÓK </td><td>    Alapértelmezett használata    </td><td>Az alapértelmezett tárfiók vagy egy korábban létrehozott tárfiókot használja az adott</td></tr>
-<tr><td>A RENDELKEZÉSRE ÁLLÁSI CSOPORT </td><td>    None </td><td>    Hagyja üresen</td></tr>
+<tr><td>A RENDELKEZÉSRE ÁLLÁSI CSOPORT </td><td>    Nincs </td><td>    Hagyja üresen</td></tr>
 <tr><td>VÉGPONTOK    </td><td>Alapértelmezett használata </td><td>    Az alapértelmezett SSH-konfigurációt használja. </td></tr>
 </table>
 
@@ -169,7 +169,7 @@ Kattintson a jobbra mutató nyílra, a #3 képernyőn hagyja meg az alapértelme
 #### <a name="step-1-upload-tarballs"></a>1. lépés: Feltöltés tarballs
 A következő parancs formátumban ~/downloads directory scp vagy pscp használ, másolja a korábban letöltött szoftverfrissítések:
 
-##### <a name="pscp-server-jre-8u5-linux-x64targz-localadminhk-cas-templatecloudappnethomelocaladmindownloadsserver-jre-8u5-linux-x64targz"></a>pscp kiszolgáló-jre-8u5-linux-x64.tar.gzlocaladmin@hk-cas-template.cloudapp.net:/home/localadmin/downloads/server-jre-8u5-linux-x64.tar.gz
+##### <a name="pscp-server-jre-8u5-linux-x64targz-localadminhk-cas-templatecloudappnethomelocaladmindownloadsserver-jre-8u5-linux-x64targz"></a>pscp server-jre-8u5-linux-x64.tar.gz localadmin@hk-cas-template.cloudapp.net:/home/localadmin/downloads/server-jre-8u5-linux-x64.tar.gz
 Ismételje meg a fenti parancs JRE, valamint a Cassandra bits esetében.
 
 #### <a name="step-2-prepare-the-directory-structure-and-extract-the-archives"></a>2. lépés: Készítse elő a könyvtárstruktúra, és bontsa ki az archívumban
@@ -279,7 +279,7 @@ Az egyes virtuális gépek megfelelően [meg ezt a konfigurációt, a tényleges
 
 <table>
 <tr><th>Mező neve   </th><th> Érték  </th><th>    Megjegyzések </th></tr>
-<tr><td>fürtnév </td><td>    "CustomerService"    </td><td> A nevet válasszon, amely tükrözi a központi telepítés</td></tr>
+<tr><td>cluster_name </td><td>    “CustomerService”    </td><td> A nevet válasszon, amely tükrözi a központi telepítés</td></tr>
 <tr><td>listen_address    </td><td>[hagyja üresen a mezőt]    </td><td> Törölje a "localhost" </td></tr>
 <tr><td>rpc_addres   </td><td>[hagyja üresen a mezőt]    </td><td> Törölje a "localhost" </td></tr>
 <tr><td>magok    </td><td>"10.1.2.4, 10.1.2.6, 10.1.2.8"    </td><td>Minden a magok jelöli a rendszer IP-címek listáját.</td></tr>
@@ -292,7 +292,7 @@ Jelentkezzen be a virtuális gépet az állomásnév (hk-cas-template.cloudapp.n
 A következő feladatütemezési lépéssel a lemezkép rögzítése hajtható végre:
 
 ##### <a name="1-deprovision"></a>1. Deprovision
-A paranccsal "sudo waagent-deprovision + felhasználói" virtuálisgép-példányt adott adatok eltávolítása. Tekintse át a vonatkozó [egy Linux virtuális gép rögzítése](capture-image.md) sablonként használatára további részleteket a lemezkép rögzítését.
+A paranccsal "sudo waagent-deprovision + felhasználói" virtuálisgép-példányt adott adatok eltávolítása. Tekintse át a vonatkozó [egy Linux virtuális gép rögzítése](capture-image-classic.md) sablonként használatára további részleteket a lemezkép rögzítését.
 
 ##### <a name="2-shut-down-the-vm"></a>2: a virtuális gép leállítása
 Győződjön meg arról, hogy a virtuális gép ki van jelölve, és kattintson a LEÁLLÍTÁS hivatkozásra az alsó parancs segítségével.
@@ -307,9 +307,9 @@ Ez a folyamat néhány másodpercet vesz igénybe, és a lemezkép elérhetőnek
 
 <table>
 <tr><th>VM-attribútum neve</th><th>Érték</th><th>Megjegyzések</th></tr>
-<tr><td>Name (Név)</td><td>vnet-esetén-nyugati-us</td><td></td></tr>
+<tr><td>Name (Név)</td><td>vnet-cass-west-us</td><td></td></tr>
 <tr><td>Régió</td><td>USA nyugati régiója</td><td></td></tr>
-<tr><td>DNS-kiszolgálók</td><td>Nincs</td><td>Figyelmen kívül hagyja ezt a DNS-kiszolgáló nem használjuk</td></tr>
+<tr><td>DNS-kiszolgálók</td><td>None</td><td>Figyelmen kívül hagyja ezt a DNS-kiszolgáló nem használjuk</td></tr>
 <tr><td>Címtartomány</td><td>10.1.0.0/16</td><td></td></tr>    
 <tr><td>Kezdő IP-Címét</td><td>10.1.0.0</td><td></td></tr>    
 <tr><td>CIDR </td><td>/16 (65531)</td><td></td></tr>
@@ -329,16 +329,16 @@ Adatok és a webes alhálózatok hálózati biztonsági csoportokkal, ez a cikk 
 
 <table>
 <tr><th>Gépnév    </th><th>Alhálózat    </th><th>IP-cím    </th><th>Rendelkezésre állási csoport</th><th>DC/Rack</th><th>Kezdőérték?</th></tr>
-<tr><td>HK-c1-nyugati-us    </td><td>adat    </td><td>10.1.2.4    </td><td>HK-c-aset-1    </td><td>DC = WESTUS állvány = rack1 </td><td>Igen</td></tr>
-<tr><td>HK-c2-nyugati-us    </td><td>adat    </td><td>10.1.2.5    </td><td>HK-c-aset-1    </td><td>DC = WESTUS állvány = rack1    </td><td>Nem </td></tr>
-<tr><td>HK-c3-nyugati-us    </td><td>adat    </td><td>10.1.2.6    </td><td>HK-c-aset-1    </td><td>DC = WESTUS állvány = rack2    </td><td>Igen</td></tr>
-<tr><td>HK-c4-nyugati-us    </td><td>adat    </td><td>10.1.2.7    </td><td>HK-c-aset-1    </td><td>DC = WESTUS állvány = rack2    </td><td>Nem </td></tr>
-<tr><td>HK-c5-nyugati-us    </td><td>adat    </td><td>10.1.2.8    </td><td>HK-c-aset-2    </td><td>DC = WESTUS állvány = rack3    </td><td>Igen</td></tr>
-<tr><td>HK-c6-nyugati-us    </td><td>adat    </td><td>10.1.2.9    </td><td>HK-c-aset-2    </td><td>DC = WESTUS állvány = rack3    </td><td>Nem </td></tr>
-<tr><td>HK-c7-nyugati-us    </td><td>adat    </td><td>10.1.2.10    </td><td>HK-c-aset-2    </td><td>DC = WESTUS állvány = rack4    </td><td>Igen</td></tr>
-<tr><td>HK-c8-nyugati-us    </td><td>adat    </td><td>10.1.2.11    </td><td>HK-c-aset-2    </td><td>DC = WESTUS állvány = rack4    </td><td>Nem </td></tr>
-<tr><td>HK-F1-nyugati-us    </td><td>web    </td><td>10.1.1.4    </td><td>HK-w-aset-1    </td><td>                       </td><td>–</td></tr>
-<tr><td>HK-w2-nyugati-us    </td><td>web    </td><td>10.1.1.5    </td><td>HK-w-aset-1    </td><td>                       </td><td>–</td></tr>
+<tr><td>HK-c1-nyugati-us    </td><td>adat    </td><td>10.1.2.4    </td><td>hk-c-aset-1    </td><td>DC = WESTUS állvány = rack1 </td><td>Igen</td></tr>
+<tr><td>hk-c2-west-us    </td><td>adat    </td><td>10.1.2.5    </td><td>hk-c-aset-1    </td><td>DC = WESTUS állvány = rack1    </td><td>Nem </td></tr>
+<tr><td>hk-c3-west-us    </td><td>adat    </td><td>10.1.2.6    </td><td>hk-c-aset-1    </td><td>DC = WESTUS állvány = rack2    </td><td>Igen</td></tr>
+<tr><td>hk-c4-west-us    </td><td>adat    </td><td>10.1.2.7    </td><td>hk-c-aset-1    </td><td>DC = WESTUS állvány = rack2    </td><td>Nem </td></tr>
+<tr><td>hk-c5-west-us    </td><td>adat    </td><td>10.1.2.8    </td><td>hk-c-aset-2    </td><td>DC = WESTUS állvány = rack3    </td><td>Igen</td></tr>
+<tr><td>hk-c6-west-us    </td><td>adat    </td><td>10.1.2.9    </td><td>hk-c-aset-2    </td><td>DC = WESTUS állvány = rack3    </td><td>Nem </td></tr>
+<tr><td>hk-c7-west-us    </td><td>adat    </td><td>10.1.2.10    </td><td>hk-c-aset-2    </td><td>DC = WESTUS állvány = rack4    </td><td>Igen</td></tr>
+<tr><td>hk-c8-west-us    </td><td>adat    </td><td>10.1.2.11    </td><td>hk-c-aset-2    </td><td>DC = WESTUS állvány = rack4    </td><td>Nem </td></tr>
+<tr><td>hk-w1-west-us    </td><td>web    </td><td>10.1.1.4    </td><td>hk-w-aset-1    </td><td>                       </td><td>–</td></tr>
+<tr><td>hk-w2-west-us    </td><td>web    </td><td>10.1.1.5    </td><td>hk-w-aset-1    </td><td>                       </td><td>–</td></tr>
 </table>
 
 A fenti listában található virtuális gépek létrehozásához a következő folyamat van szükség:
@@ -425,15 +425,15 @@ Jelentkezzen be (például hk-c1-nyugati-us) a csomópontok egyikét, majd futta
 A képernyőt a hasonló alatt a 8 csomópontos fürtök kell megjelennie:
 
 <table>
-<tr><th>status</th><th>Cím    </th><th>Betöltés    </th><th>Tokenek    </th><th>Tulajdonos </th><th>Állomás azonosítója    </th><th>Állvány</th></tr>
-<tr><th>VISSZAVONÁSA    </td><td>10.1.2.4     </td><td>87.81 KB    </td><td>256    </td><td>38.0%    </td><td>GUID (eltávolítani)</td><td>rack1</td></tr>
-<tr><th>VISSZAVONÁSA    </td><td>10.1.2.5     </td><td>41.08 KB    </td><td>256    </td><td>68.9%    </td><td>GUID (eltávolítani)</td><td>rack1</td></tr>
-<tr><th>VISSZAVONÁSA    </td><td>10.1.2.6     </td><td>55.29 KB    </td><td>256    </td><td>68.8%    </td><td>GUID (eltávolítani)</td><td>rack2</td></tr>
-<tr><th>VISSZAVONÁSA    </td><td>10.1.2.7     </td><td>55.29 KB    </td><td>256    </td><td>68.8%    </td><td>GUID (eltávolítani)</td><td>rack2</td></tr>
-<tr><th>VISSZAVONÁSA    </td><td>10.1.2.8     </td><td>55.29 KB    </td><td>256    </td><td>68.8%    </td><td>GUID (eltávolítani)</td><td>rack3</td></tr>
-<tr><th>VISSZAVONÁSA    </td><td>10.1.2.9     </td><td>55.29 KB    </td><td>256    </td><td>68.8%    </td><td>GUID (eltávolítani)</td><td>rack3</td></tr>
-<tr><th>VISSZAVONÁSA    </td><td>10.1.2.10     </td><td>55.29 KB    </td><td>256    </td><td>68.8%    </td><td>GUID (eltávolítani)</td><td>rack4</td></tr>
-<tr><th>VISSZAVONÁSA    </td><td>10.1.2.11     </td><td>55.29 KB    </td><td>256    </td><td>68.8%    </td><td>GUID (eltávolítani)</td><td>rack4</td></tr>
+<tr><th>status</th><th>Cím    </th><th>Betöltés    </th><th>Tokenek    </th><th>Tulajdonos </th><th>Host ID    </th><th>Kiszolgálószekrény</th></tr>
+<tr><th>VISSZAVONÁSA    </td><td>10.1.2.4     </td><td>87.81 KB    </td><td>256    </td><td>38.0%    </td><td>Guid (removed)</td><td>rack1</td></tr>
+<tr><th>VISSZAVONÁSA    </td><td>10.1.2.5     </td><td>41.08 KB    </td><td>256    </td><td>68.9%    </td><td>Guid (removed)</td><td>rack1</td></tr>
+<tr><th>VISSZAVONÁSA    </td><td>10.1.2.6     </td><td>55.29 KB    </td><td>256    </td><td>68.8%    </td><td>Guid (removed)</td><td>rack2</td></tr>
+<tr><th>VISSZAVONÁSA    </td><td>10.1.2.7     </td><td>55.29 KB    </td><td>256    </td><td>68.8%    </td><td>Guid (removed)</td><td>rack2</td></tr>
+<tr><th>VISSZAVONÁSA    </td><td>10.1.2.8     </td><td>55.29 KB    </td><td>256    </td><td>68.8%    </td><td>Guid (removed)</td><td>rack3</td></tr>
+<tr><th>VISSZAVONÁSA    </td><td>10.1.2.9     </td><td>55.29 KB    </td><td>256    </td><td>68.8%    </td><td>Guid (removed)</td><td>rack3</td></tr>
+<tr><th>VISSZAVONÁSA    </td><td>10.1.2.10     </td><td>55.29 KB    </td><td>256    </td><td>68.8%    </td><td>Guid (removed)</td><td>rack4</td></tr>
+<tr><th>VISSZAVONÁSA    </td><td>10.1.2.11     </td><td>55.29 KB    </td><td>256    </td><td>68.8%    </td><td>Guid (removed)</td><td>rack4</td></tr>
 </table>
 
 ## <a name="test-the-single-region-cluster"></a>Az egyetlen régión fürt tesztelése
@@ -466,7 +466,7 @@ Jelentkezzen be az Azure portálra, és hozzon létre egy virtuális hálózatot
 
 <table>
 <tr><th>Attribútum neve    </th><th>Érték    </th><th>Megjegyzések</th></tr>
-<tr><td>Name (Név)    </td><td>vnet-esetén-keleti-us</td><td></td></tr>
+<tr><td>Name (Név)    </td><td>vnet-cass-east-us</td><td></td></tr>
 <tr><td>Régió    </td><td>USA keleti régiója</td><td></td></tr>
 <tr><td>DNS-kiszolgálók        </td><td></td><td>Figyelmen kívül hagyja ezt a DNS-kiszolgáló nem használjuk</td></tr>
 <tr><td>A pont-pont VPN konfigurálása</td><td></td><td>        Figyelmen kívül hagyja ezt</td></tr>
@@ -492,16 +492,16 @@ Hozzon létre két helyi hálózatok száma a következő adatokat:
 
 | Hálózatnév | VPN-átjáró címét | Címtartomány | Megjegyzések |
 | --- | --- | --- | --- |
-| HK-lnet-Map-to-East-us |23.1.1.1 |10.2.0.0/16 |A helyi hálózat létrehozásakor adjon címet az átjáró egy helyőrző. Az átjáró létrehozása után a tényleges átjárócím ki van töltve. Győződjön meg arról, hogy a címtartomány pontosan egyezik a megfelelő távoli virtuális hálózat; Ebben az esetben a virtuális hálózat létrehozása az USA keleti régiójában. |
-| HK-lnet-Map-to-West-us |23.2.2.2 |10.1.0.0/16 |A helyi hálózat létrehozásakor adjon címet az átjáró egy helyőrző. Az átjáró létrehozása után a tényleges átjárócím ki van töltve. Győződjön meg arról, hogy a címtartomány pontosan egyezik a megfelelő távoli virtuális hálózat; Ebben az esetben a virtuális hálózat az USA nyugati régiója régióban létrehozott. |
+| hk-lnet-map-to-east-us |23.1.1.1 |10.2.0.0/16 |A helyi hálózat létrehozásakor adjon címet az átjáró egy helyőrző. Az átjáró létrehozása után a tényleges átjárócím ki van töltve. Győződjön meg arról, hogy a címtartomány pontosan egyezik a megfelelő távoli virtuális hálózat; Ebben az esetben a virtuális hálózat létrehozása az USA keleti régiójában. |
+| hk-lnet-map-to-west-us |23.2.2.2 |10.1.0.0/16 |A helyi hálózat létrehozásakor adjon címet az átjáró egy helyőrző. Az átjáró létrehozása után a tényleges átjárócím ki van töltve. Győződjön meg arról, hogy a címtartomány pontosan egyezik a megfelelő távoli virtuális hálózat; Ebben az esetben a virtuális hálózat az USA nyugati régiója régióban létrehozott. |
 
 ### <a name="step-3-map-local-network-to-the-respective-vnets"></a>3. lépés: Térkép "Helyi" hálózat a megfelelő Vnetek
 Azure-portálról válassza ki az egyes virtuális hálózat, kattintson a "Beállítása", ellenőrizze a "Csatlakozás a helyi hálózatra" és a következő adatok egy helyi hálózatok kiválasztása:
 
 | Virtual Network | Helyi hálózati |
 | --- | --- |
-| HK-vnet-nyugati-us |HK-lnet-Map-to-East-us |
-| HK-vnet-keleti-us |HK-lnet-Map-to-West-us |
+| hk-vnet-west-us |hk-lnet-map-to-east-us |
+| hk-vnet-east-us |hk-lnet-map-to-west-us |
 
 ### <a name="step-4-create-gateways-on-vnet1-and-vnet2"></a>4. lépés: A VNET1 és VNET2 átjárók létrehozása
 Az irányítópulton, mind a virtuális hálózatok kattintson az ÁTJÁRÓ létrehozása elindítani a VPN-átjáró létesítésének folyamatát kell használnia. Néhány perc elteltével az irányítópult az összes virtuális hálózat megjelenjen-e a tényleges átjárócímet.
@@ -511,8 +511,8 @@ Mindkét a helyi hálózat a helyőrző átjáró IP-címet lecseréli az imént
 
 <table>
 <tr><th>Helyi hálózati    </th><th>Virtuális hálózati átjáró</th></tr>
-<tr><td>HK-lnet-Map-to-East-us </td><td>A hk-vnet-nyugati-us átjáró</td></tr>
-<tr><td>HK-lnet-Map-to-West-us </td><td>A hk-vnet-keleti-us átjáró</td></tr>
+<tr><td>hk-lnet-map-to-east-us </td><td>A hk-vnet-nyugati-us átjáró</td></tr>
+<tr><td>hk-lnet-map-to-west-us </td><td>A hk-vnet-keleti-us átjáró</td></tr>
 </table>
 
 ### <a name="step-6-update-the-shared-key"></a>6. lépés: A megosztott kulcs frissítése
@@ -526,15 +526,15 @@ Ubuntu lemezkép létrehozásához a következő ugyanazokat a lépéseket vagy 
 
 | Gépnév | Alhálózat | IP-cím | Rendelkezésre állási csoport | DC/Rack | Kezdőérték? |
 | --- | --- | --- | --- | --- | --- |
-| HK-c1-keleti-us |adat |10.2.2.4 |HK-c-aset-1 |DC = EASTUS állvány = rack1 |Igen |
-| HK-c2-keleti-us |adat |10.2.2.5 |HK-c-aset-1 |DC = EASTUS állvány = rack1 |Nem |
-| HK-c3-keleti-us |adat |10.2.2.6 |HK-c-aset-1 |DC = EASTUS állvány = rack2 |Igen |
-| HK-c5-keleti-us |adat |10.2.2.8 |HK-c-aset-2 |DC = EASTUS állvány = rack3 |Igen |
-| HK-c6-keleti-us |adat |10.2.2.9 |HK-c-aset-2 |DC = EASTUS állvány = rack3 |Nem |
-| HK-c7-keleti-us |adat |10.2.2.10 |HK-c-aset-2 |DC = EASTUS állvány = rack4 |Igen |
-| HK-c8-keleti-us |adat |10.2.2.11 |HK-c-aset-2 |DC = EASTUS állvány = rack4 |Nem |
-| HK-F1-keleti-us |web |10.2.1.4 |HK-w-aset-1 |– |– |
-| HK-w2-keleti-us |web |10.2.1.5 |HK-w-aset-1 |– |– |
+| hk-c1-east-us |adat |10.2.2.4 |hk-c-aset-1 |DC = EASTUS állvány = rack1 |Igen |
+| hk-c2-east-us |adat |10.2.2.5 |hk-c-aset-1 |DC = EASTUS állvány = rack1 |Nem |
+| hk-c3-east-us |adat |10.2.2.6 |hk-c-aset-1 |DC = EASTUS állvány = rack2 |Igen |
+| hk-c5-east-us |adat |10.2.2.8 |hk-c-aset-2 |DC = EASTUS állvány = rack3 |Igen |
+| hk-c6-east-us |adat |10.2.2.9 |hk-c-aset-2 |DC = EASTUS állvány = rack3 |Nem |
+| hk-c7-east-us |adat |10.2.2.10 |hk-c-aset-2 |DC = EASTUS állvány = rack4 |Igen |
+| hk-c8-east-us |adat |10.2.2.11 |hk-c-aset-2 |DC = EASTUS állvány = rack4 |Nem |
+| HK-F1-keleti-us |web |10.2.1.4 |hk-w-aset-1 |– |– |
+| HK-w2-keleti-us |web |10.2.1.5 |hk-w-aset-1 |– |– |
 
 Ugyanezeket az utasításokat, mint #1 régió, de 10.2.xxx.xxx címterület használata.
 
@@ -551,8 +551,8 @@ Jelentkezzen be minden virtuális gép, majd indítsa el a Cassandra a háttérb
 Mostanra Cassandra már alkalmazva van minden Azure régióban 8 csomópontokkal 16 csomóponttal. Ezek a csomópontok ugyanabban a fürtben, a közös fürt neve és a kezdőérték csomópont-konfiguráció szerepelnek. A fürt ellenőrzéséhez tegye a következőket:
 
 ### <a name="step-1-get-the-internal-load-balancer-ip-for-both-the-regions-using-powershell"></a>1. lépés: A belső terheléselosztó IP lekérése is a PowerShell használatával régiók
-* "Hk-c-svc-nyugati-us" Get-AzureInternalLoadbalancer - szolgáltatásnév
-* "Hk-c-svc-keleti-us" Get-AzureInternalLoadbalancer - szolgáltatásnév  
+* Get-AzureInternalLoadbalancer -ServiceName "hk-c-svc-west-us"
+* Get-AzureInternalLoadbalancer -ServiceName "hk-c-svc-east-us"  
   
     Vegye figyelembe az IP-címek (a példa nyugati - 10.1.2.101, kelet - 10.2.2.101) jelenik meg.
 
@@ -680,7 +680,7 @@ A Linux virtuális gépek korábban jön létre a "web" réteg egyikének haszn�
 Microsoft Azure a rugalmas platform, amely lehetővé teszi a Microsoft, valamint nyílt forráskódú szoftverek futtatását, amint azt a ebben a gyakorlatban. Magas rendelkezésre állású Cassandra fürtök telepíthetők egyetlen adatközpontba keresztül a fürt csomópontjai terjednek több tartalék tartományokban. Cassandra fürtök különféle régiókban földrajzilag távoli Azure katasztrófa igazoló rendszerekhez is telepíthető. Azure és Cassandra együtt lehetővé teszi, hogy jól skálázható, magas rendelkezésre állású létrehozása és a vészhelyreállítás helyreállítható felhőszolgáltatások szükséges mai internet által méret szolgáltatások.  
 
 ## <a name="references"></a>Referencia
-* [http://cassandra.Apache.org](http://cassandra.apache.org)
+* [http://cassandra.apache.org](http://cassandra.apache.org)
 * [http://www.datastax.com](http://www.datastax.com)
 * [http://www.nodejs.org](http://www.nodejs.org)
 

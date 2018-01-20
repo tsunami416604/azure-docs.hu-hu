@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: f26f36f241edba2e1fcd1156587b82b79d559e2d
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 2095d75ed042ae8be02ae0a1570f8e77d06a3563
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Az Azure Data Factory a másolási tevékenység
 
@@ -158,7 +158,7 @@ Kattintson a folyamatot futtató tevékenységek listájának megjelenítéséhe
 
 ![A figyelő tevékenység fut](./media/load-data-into-azure-data-lake-store/monitor-activity-runs.png)
 
-Kattintson a "**részletek**" hivatkozásra **műveletek** másolási tevékenység végrehajtási részletek és a teljesítményt. Az információk láthatók, többek között: fogadó, az átviteli sebesség, a lépések a megfelelő időtartam végighalad, és a konfigurációt használja a másolásának esetéhez forráskiszolgálóról másolt adatok mennyiségét.
+Kattintson a "**részletek**" hivatkozásra **műveletek** másolási tevékenység végrehajtási részletek és a teljesítményt. Azt jeleníti meg az adatok többek között a következőket kötet/sorok/fájlokat másolni a forrás gyűjtése, a átviteli lépéseket megfelelő időtartamú végighalad, és a konfigurációt használja a másolásának esetéhez adatokat.
 
 **Példa: Azure Data Lake Store másolása Amazon S3**
 ![figyelése tevékenység fut részletei](./media/copy-activity-overview/monitor-activity-run-details-adls.png)

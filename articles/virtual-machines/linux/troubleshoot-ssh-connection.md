@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: iainfou
-ms.openlocfilehash: 3a282c8b2c2ba2749de6a2d3688bd57d75703b22
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b7fe6dadb444ebbe6af6239562f507e451f9f605
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Az Azure Linux virtuális gép, amely nem sikerül, hibák, vagy elutasítják SSH-kapcsolatok hibáinak elhárítása
 Oka lehet különböző, hogy Secure Shell (SSH) hibák, az SSH-kapcsolódási hibák, vagy az SSH a rendszer elutasította a rendszer, amikor egy Linux virtuális gép (VM) csatlakozni próbál. Ez a cikk segít keresse meg és javítsa ki a problémákat. Az Azure-portálon az Azure parancssori felület vagy a Linux virtuális gép hozzáférési bővítményével hibakeresésre és problémák megoldásához használható.
@@ -40,7 +40,7 @@ Hibaelhárítási lépések, után próbáljon újra csatlakozni a virtuális G�
 4. Ellenőrizze a [VM erőforrás állapota](../../resource-health/resource-health-overview.md). 
    * Győződjön meg arról, hogy a virtuális gép jelenti, hogy kifogástalan-e.
    * Ha engedélyezve van a rendszerindítási diagnosztika, győződjön meg arról, a virtuális gép nem jelent a naplókban hibák.
-5. Indítsa újra a virtuális Gépet.
+5. Indítsa újra a virtuális gépet.
 6. Telepítse újra a virtuális Gépet.
 
 Részletesebb hibaelhárítási lépéseket és magyarázatokat olvasási továbbra is.
@@ -229,12 +229,12 @@ az vm redeploy --resource-group myResourceGroup --name myVM
 Próbálja meg ezeket a lépéseket a klasszikus üzembe helyezési modell használatával létrehozott virtuális gépek a leggyakrabban használt SSH-kapcsolódási hibák megoldására. Minden lépés után próbáljon újra csatlakozni a virtuális Gépet.
 
 * A távelérés alaphelyzetbe állítása a [Azure-portálon](https://portal.azure.com). Az Azure portálon, válassza ki a virtuális Gépet, majd kattintson a **távoli alaphelyzetbe állítása...**  gombra.
-* Indítsa újra a virtuális Gépet. Az a [Azure-portálon](https://portal.azure.com), jelölje ki a virtuális Gépet, és kattintson a **indítsa újra a** gombra.
+* Indítsa újra a virtuális gépet. Az a [Azure-portálon](https://portal.azure.com), jelölje ki a virtuális Gépet, és kattintson a **indítsa újra a** gombra.
     
 * Telepítse újra a virtuális Gépet egy új Azure csomópontra. Telepítse újra a virtuális gépek kapcsolatos információkért lásd: [újratelepíteni a virtuális gépet az új Azure csomópont](../windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
   
     Ez a művelet befejezése után rövid élettartamú lemezen tárolt adatok ekkor elvesznek, és dinamikus IP-címek, amelyek a virtuális géphez kapcsolódó frissülni fog.
-* Kövesse az utasításokat a [alaphelyzetbe állításával a jelszó vagy SSH a Linux-alapú virtuális gépek](classic/reset-access.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) számára:
+* Kövesse az utasításokat a [alaphelyzetbe állításával a jelszó vagy SSH a Linux-alapú virtuális gépek](classic/reset-access-classic.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) számára:
   
   * A jelszó vagy SSH-kulcs visszaállítása.
   * Hozzon létre egy *sudo* felhasználói fiókot.
@@ -245,5 +245,5 @@ Próbálja meg ezeket a lépéseket a klasszikus üzembe helyezési modell haszn
 ## <a name="additional-resources"></a>További források
 * Ha SSH továbbra sem tudja a virtuális géphez után lépések végrehajtása után, lásd: [részletes hibaelhárítási lépéseket](detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) való tekintse át a probléma megoldásához szükséges további lépéseket.
 * Alkalmazás-hozzáférés hibaelhárítással kapcsolatos további információkért lásd: [egy Azure virtuális gépen futó alkalmazáshoz való hozzáférés hibáinak elhárítása](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* A klasszikus üzembe helyezési modell használatával létrehozott virtuális gépek hibaelhárítással kapcsolatos további információkért lásd: [alaphelyzetbe állításával a jelszó vagy SSH a Linux-alapú virtuális gépek](classic/reset-access.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
+* A klasszikus üzembe helyezési modell használatával létrehozott virtuális gépek hibaelhárítással kapcsolatos további információkért lásd: [alaphelyzetbe állításával a jelszó vagy SSH a Linux-alapú virtuális gépek](classic/reset-access-classic.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
 

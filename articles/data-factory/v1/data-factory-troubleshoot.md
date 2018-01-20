@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 10/01/2017
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 8273647aa1cf8f7d35a9c645d44c64455e554cdb
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: b57b30688d6ca3b9c1a0fc8e87db80fc051c4f90
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Data Factory-hibák elhárítása
 > [!NOTE]
-> Ez a cikk vonatkozik 1 a Azure Data Factory, amelyek általánosan elérhető (GA). 
+> Ez a cikk az Azure Data Factory általánosan elérhető 1. verziójára vonatkozik. 
 
 Ez a cikk biztosítja a hibaelhárítási tippekért problémák Azure Data Factory használatával. Ez a cikk nem szerepel a lehetséges problémák, a szolgáltatás használata esetén, de bizonyos problémák és általános hibaelhárítási tippek magában foglalja.   
 
@@ -117,7 +117,7 @@ Lásd: [folyamat hibakeresése egyéni tevékenységeket](data-factory-use-custo
 
 ## <a name="use-azure-portal-to-troubleshoot"></a>Az Azure portál használatával hibáinak elhárítása
 ### <a name="using-portal-blades"></a>Portál paneleken használatával
-Lásd: [figyelő folyamat](data-factory-build-your-first-pipeline-using-editor.md#monitor-pipeline) lépéseket.
+Lásd: [figyelő folyamat](data-factory-build-your-first-pipeline-using-editor.md#monitor-a-pipeline) lépéseket.
 
 ### <a name="using-monitor-and-manage-app"></a>A Megfigyelés és kezelés alkalmazás használata
 Lásd: [figyelése és kezelése a data factory folyamatok figyelése és kezelése App](data-factory-monitor-manage-app.md) részleteket.

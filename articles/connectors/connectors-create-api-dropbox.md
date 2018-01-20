@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 07/15/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: 0d09580c60fd620811b539147439d0922839fe7e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3fecdc33a08c82d9ad13226e75d0d704a5557f98
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-dropbox-connector"></a>A Dropbox-összekötő az első lépései
 A fájlok kezelését Dropbox csatlakozni. Hajtsa végre különböző műveleteket végez, például a feltöltés, frissítése, lekérése és Dropbox fájl törlése.
 
-Használandó [a csatlakozókat](apis-list.md), először hozzon létre egy logikai alkalmazást. Elkezdheti által [logikai alkalmazás létrehozása most](../logic-apps/logic-apps-create-a-logic-app.md).
+Használandó [a csatlakozókat](apis-list.md), először hozzon létre egy logikai alkalmazást. Elkezdheti által [logikai alkalmazás létrehozása most](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="connect-to-dropbox"></a>Csatlakozás a dropbox alkalmazásba
 A Logic Apps alkalmazást bármely szolgáltatás hozzáférni, először hozzon létre egy *kapcsolat* a szolgáltatáshoz. Egy kapcsolat egy logikai alkalmazást és egy másik szolgáltatás közötti kapcsolatot biztosít. Például használata esetén csatlakozhassanak a dropbox alkalmazásba, először a Dropbox *kapcsolat*. VPN-kapcsolat létrehozásához kellene általában csatlakozni szeretne a szolgáltatás eléréséhez használt hitelesítő adatait. Igen a Dropbox példában kellene a hitelesítő adatokat a Dropbox-fiók a Dropbox kapcsolat létrehozásához. [További információ a kapcsolatok száma]()
@@ -35,7 +35,7 @@ A Logic Apps alkalmazást bármely szolgáltatás hozzáférni, először hozzon
 > 
 
 ## <a name="use-a-dropbox-trigger"></a>A Dropbox eseményindító használata
-Egy eseményindító nem egy eseményt, a logikai alkalmazás definiált munkafolyamat indításához használható. [További tudnivalók az eseményindítók](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).
+Egy eseményindító nem egy eseményt, a logikai alkalmazás definiált munkafolyamat indításához használható. [További tudnivalók az eseményindítók](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
 A jelen példában használjuk a **fájl létrehozásának** eseményindító. Ehhez az eseményindítóhoz akkor fordul elő, amikor ezt nevezik a **elérési út használatával fájl tartalmának lekérdezése** Dropbox művelet. 
 
@@ -45,7 +45,7 @@ A jelen példában használjuk a **fájl létrehozásának** eseményindító. E
    ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-trigger-2.PNG)  
 
 ## <a name="use-a-dropbox-action"></a>A Dropbox művelettel
-Egy művelet során a logikai alkalmazás definiált munkafolyamat által végzett. [További információ a műveletek](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).
+Egy művelet során a logikai alkalmazás definiált munkafolyamat által végzett. [További információ a műveletek](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
 Most, hogy hozzá lett adva az eseményindítót, kövesse az alábbi lépéseket, amelyek megkapják az új fájl tartalma művelet hozzáadása.
 

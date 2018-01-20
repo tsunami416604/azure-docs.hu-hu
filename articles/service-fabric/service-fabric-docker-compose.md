@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/25/2017
 ms.author: subramar
-ms.openlocfilehash: 92d1951de8c8c80f7b47033dc751cd65a63c43f6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b6275cee87455bf8a226a51a6b2093b67c3159d0
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Docker Compose telepítési támogatása az Azure Service Fabric (előzetes verzió)
 
@@ -91,13 +91,13 @@ sfctl compose remove  --deployment-name TestContainerApp [ --timeout ]
 
 Indítsa el egy új központi telepítési frissítését, használja a következő parancsot:
 
-```powershell
+```azurecli
 sfctl compose upgrade --deployment-name TestContainerApp --file-path docker-compose-v2.yml [ [ --user --encrypted-pass ] | [ --user --has-pass ] ] [--upgrade-mode Monitored] [--failure-action Rollback] [ --timeout ]
 ```
 
 Frissítés elfogadása után a frissítési folyamat állapota sikerült nyomon követni a következő parancsot:
 
-```powershell
+```azurecli
 sfctl compose upgrade-status --deployment-name TestContainerApp
 ```
 
@@ -139,7 +139,7 @@ Például A felhasználói lehet egy példányként létrehozott típussal 1.0 A
 
 Bár ez a modell rugalmasságot nyújt, azt is tervezi, hogy hol típusok tartoznak, amely implicit a jegyzékfájl egyszerűbb, a példány-alapú telepítési modell támogatja. Ebben a modellben minden alkalmazás saját független jegyzékfájl lekérdezi. Ebből a törekvésből támogatásának hozzáadásával a docker-compose.yml, ez az egy példány-alapú üzembe helyezési formátum jelenleg előzetes.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Olvassa a a [Service Fabric alkalmazásmodellt.](service-fabric-application-model.md)
 * [A Service Fabric parancssori felület használatának első lépései](service-fabric-cli.md)

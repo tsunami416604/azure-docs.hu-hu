@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/30/2017
+ms.date: 01/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: 535ea21a2c08be5f676ee24269b323a415b92607
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0f655becfac05acfacfeef12edd68b37835420bf
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="service-fabric-networking-patterns"></a>A Service Fabric hálózati minták
 Az Azure Service Fabric-fürt integrálhatja más Azure hálózati szolgáltatásokkal. Ebben a cikkben azt mutatja be az alábbi szolgáltatásokat használó fürtök létrehozásához:
@@ -36,7 +36,7 @@ Ha port 19080 nem érhető el a Service Fabric erőforrás-szolgáltató, egy ü
 
 ## <a name="templates"></a>Sablonok
 
-Az összes Service Fabric-sablonok vannak [egyik letöltendő fájl](https://msdnshared.blob.core.windows.net/media/2016/10/SF_Networking_Templates.zip). Meg kell telepíteni, a sablonok – a következő PowerShell-parancsok használatával. Ha telepíti a meglévő Azure virtuális hálózat vagy a statikus nyilvános IP-sablont, először olvassa el a [telepítő kezdeti](#initialsetup) című szakaszát.
+Az összes Service Fabric-sablonok vannak [GitHub](https://github.com/Azure/service-fabric-scripts-and-templates/tree/master/templates/networking). Meg kell telepíteni, a sablonok – a következő PowerShell-parancsok használatával. Ha telepíti a meglévő Azure virtuális hálózat vagy a statikus nyilvános IP-sablont, először olvassa el a [telepítő kezdeti](#initialsetup) című szakaszát.
 
 <a id="initialsetup"></a>
 ## <a name="initial-setup"></a>Kezdeti telepítés
@@ -73,7 +73,7 @@ DnsSettings              : {
 
 ### <a name="service-fabric-template"></a>A Service Fabric-sablon
 
-A cikkben szereplő példák használjuk a Service Fabric template.json. A szabványos portál varázsló segítségével a sablon letöltéséről a portálon, a fürt létrehozása előtt. Is használhatja a sablont a [sablon gyűjtemény](https://azure.microsoft.com/en-us/documentation/templates/?term=service+fabric), például a [öt csomópontból Service Fabric-fürt](https://azure.microsoft.com/en-us/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/).
+A cikkben szereplő példák használjuk a Service Fabric template.json. A szabványos portál varázsló segítségével a sablon letöltéséről a portálon, a fürt létrehozása előtt. Akkor is használhatja a [mintasablon használatával](https://github.com/Azure-Samples/service-fabric-cluster-templates), például a [biztonságos öt csomópontból Service Fabric-fürt](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure).
 
 <a id="existingvnet"></a>
 ## <a name="existing-virtual-network-or-subnet"></a>Meglévő virtuális hálózathoz vagy alhálózathoz
@@ -596,5 +596,5 @@ A két csomóponttípus fürtben egy csomópont típus a külső terheléseloszt
 
 A központi telepítést követően az erőforráscsoportban két terheléselosztók tekintheti meg. Ha tallózással azokat a terheléselosztókat, megtekintheti a nyilvános IP cím és felügyeleti végpontok (19000 és 19080 portok) a nyilvános IP-címet hozzárendelni. A statikus belső IP-cím és az alkalmazás végponton (80-as port) a belső terheléselosztó rendelt is látható. Mindkét terheléselosztók használja a virtuális gép méretezési készlet háttér-készlethez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Fürt létrehozása](service-fabric-cluster-creation-via-arm.md)

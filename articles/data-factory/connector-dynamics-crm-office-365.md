@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: jingwang
-ms.openlocfilehash: 91de03f3472244341f4cf086bc8a2f56f7d2e487
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: d577db2b2f14da61baccfb6230b0c6e03a62b9b1
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="copy-data-fromto-dynamics-365dynamics-crm-using-azure-data-factory"></a>Másolja az adatokat, vagy Dynamics 365 / Dynamics CRM, Azure Data Factory használatával
 
@@ -35,7 +35,7 @@ A Dynamics összekötő támogatja az alábbi Dynamics verziója és a hitelesí
 | Dynamics verziók | Hitelesítési típusok | A kapcsolódószolgáltatás-minták |
 |:--- |:--- |:--- |
 | Dynamics 365 online <br> A Dynamics CRM online | Office365 | [Dynamics Online + Office365 hitelesítés](#dynamics-365-and-dynamics-crm-online) |
-| Dynamics 365 helyszíni ELÉRÉS <br> Dynamics CRM 2016 helyszíni ELÉRÉS <br> Dynamics CRM 2015 a helyszíni az ELÉRÉS | ELÉRÉS | [Dynamics a helyszíni az internetes Elérésű + ELÉRÉS hitelesítés](#dynamics-365-and-dynamics-crm-on-premises-with-ifd) |
+| Dynamics 365 helyszíni ELÉRÉS <br> Dynamics CRM 2016 helyszíni ELÉRÉS <br> Dynamics CRM 2015 a helyszíni az ELÉRÉS | IFD | [Dynamics a helyszíni az internetes Elérésű + ELÉRÉS hitelesítés](#dynamics-365-and-dynamics-crm-on-premises-with-ifd) |
 
 A Dynamics 365 konkrétan az alábbi alkalmazástípusokat támogatja:
 
@@ -50,7 +50,7 @@ A Dynamics 365 konkrétan az alábbi alkalmazástípusokat támogatja:
 
 ## <a name="getting-started"></a>Első lépések
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
 
 A következő szakaszok részletesen bemutatják Dynamics adat-előállító tartozó entitások meghatározásához használt tulajdonságokat.
 
@@ -65,7 +65,7 @@ Dynamics társított szolgáltatás támogatott a következő tulajdonságokkal:
 | type | A type tulajdonságot kell beállítani: **Dynamics**. | Igen |
 | deploymentType | A központi telepítési típus a Dynamics példány. Kell **"Online"** Dynamics online. | Igen |
 | Szervezetnév | A Dynamics példány szervezet nevét. | Nem szabad megadni, ha a felhasználóhoz társított egynél több Dynamics példány. |
-| AuthenticationType | A hitelesítési típus Dynamics kiszolgálóhoz való csatlakozáshoz. Adja meg **"Office365"** Dynamics Online. | Igen |
+| authenticationType | A hitelesítési típus Dynamics kiszolgálóhoz való csatlakozáshoz. Adja meg **"Office365"** Dynamics Online. | Igen |
 | felhasználónév | Adja meg a felhasználónevet a Dynamics való kapcsolódáshoz. | Igen |
 | jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. A jelszó be az Azure Key Vault, és a jelszót, mint a "AzureKeyVaultSecret" konfigurálása rendelkezik. A további [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). | Igen |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. | Nincs forrás, Igen a fogadó Ha forrás társított szolgáltatás nem rendelkezik IR |
@@ -114,7 +114,7 @@ Dynamics társított szolgáltatás támogatott a következő tulajdonságokkal:
 | **Állomásnév** | A helyszíni Dynamics kiszolgáló állomásnevét. | Igen |
 | **port** | A helyszíni Dynamics kiszolgáló portját. | Nem, az alapértelmezett: 443 |
 | Szervezetnév | A Dynamics példány szervezet nevét. | Igen |
-| AuthenticationType | A hitelesítési típus Dynamics kiszolgálóhoz való csatlakozáshoz. Adja meg **"Elérés"** Dynamics helyszíni az Internetre. | Igen |
+| authenticationType | A hitelesítési típus Dynamics kiszolgálóhoz való csatlakozáshoz. Adja meg **"Elérés"** Dynamics helyszíni az Internetre. | Igen |
 | felhasználónév | Adja meg a felhasználónevet a Dynamics való kapcsolódáshoz. | Igen |
 | jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Ne feledje, a jelszó be az Azure Key Vault, és a jelszót, mint a "AzureKeyVaultSecret" konfigurálja. A további [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). | Igen |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. | Nem a forrást, a fogadó Igen |
@@ -278,7 +278,7 @@ Adatok másolása Dynamics, állítsa be a fogadó típusa a másolási tevéken
 |:--- |:--- |:--- |
 | type | A másolási tevékenység fogadó type tulajdonsága értékre kell állítani: **DynamicsSink**  | Igen |
 | WriteBehavior | A művelet írási viselkedését.<br/>Az érték engedélyezett: **"Upsert"**. | Igen |
-| WriteBatchSize | A sorok számát az egyes kötegekben Dynamics írt adatok. | Nem (alapértelmezett érték 10) |
+| writeBatchSize | A sorok számát az egyes kötegekben Dynamics írt adatok. | Nem (alapértelmezett érték 10) |
 | ignoreNullValues | Azt jelzi, hogy a bemeneti adatokból (kivéve a kulcsmezők) null értékek kihagyása írási művelet során.<br/>Két érték engedélyezett: **igaz**, és **hamis**.<br>-igaz: hagyja az adatokat a cél objektum változatlan upsert/frissítési művelet során, és illessze be meghatározott alapértelmezett értéket insert művelet során.<br/>-hamis: frissítse az adatokat a célobjektum NULL upsert/frissítési művelet során, és illessze be NULL értéket, insert művelet során.  | Nem (alapértelmezett értéke "false") |
 
 >[!NOTE]

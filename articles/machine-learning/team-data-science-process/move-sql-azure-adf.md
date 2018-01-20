@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: bradsev
-ms.openlocfilehash: bbf969927e96053df055ac6e347bb8fb746054c8
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: fed2e9af3e9765ce5a2486fe9468d3ca690a0d5d
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Adatok áthelyezése egy helyi SQL server SQL Azure és az Azure Data Factory
 Ez a témakör bemutatja, hogyan tárolt adatok mozgatása egy helyi SQL Server-adatbázis SQL Azure adatbázishoz keresztül Azure Blob Storage használata az Azure Data Factory (ADF).
@@ -67,7 +67,7 @@ Használjuk a [NYC Taxi dataset](http://chriswhong.com/open-data/foil_nyc_taxi/)
 Az itt megadott saját adatok eljárás igazítja, vagy hajtsa végre a következőt: Taxi adatkészlet szerint. Töltse fel a következőt: Taxi dataset a helyszíni SQL Server-adatbázisba, kövesse az ismertetett eljárás [tömeges adatok importálása az SQL Server-adatbázisba](sql-walkthrough.md#dbload). Ezek az utasítások az Azure virtuális gép az SQL Server, de a helyszíni SQL Server feltöltését eljárás megegyezik.
 
 ## <a name="create-adf"></a>Egy Azure Data Factory létrehozása
-Egy új Azure Data Factory és az erőforráscsoport létrehozására vonatkozó utasításokat a [Azure-portálon](https://portal.azure.com/) biztosított [hozzon létre egy Azure Data Factory](../../data-factory/v1/data-factory-build-your-first-pipeline-using-editor.md#create-data-factory). Az új ADF-példány neve *adfdsp* és az erőforráscsoport létrehozásánál *adfdsprg*.
+Egy új Azure Data Factory és az erőforráscsoport létrehozására vonatkozó utasításokat a [Azure-portálon](https://portal.azure.com/) biztosított [hozzon létre egy Azure Data Factory](../../data-factory/v1/data-factory-build-your-first-pipeline-using-editor.md#create-a-data-factory). Az új ADF-példány neve *adfdsp* és az erőforráscsoport létrehozásánál *adfdsprg*.
 
 ## <a name="install-and-configure-up-the-data-management-gateway"></a>Telepítse és konfigurálja az adatkezelési átjáró mentése
 Ahhoz, hogy az egy az Azure data factory szeretne dolgozni egy helyi SQL Server adatcsatornák, szüksége csatolt szolgáltatásként hozzáadása az adat-előállítóban. A társított szolgáltatás létrehozása egy helyi SQL Server, a következőket kell tennie:
@@ -82,9 +82,9 @@ Telepítési utasításokat és az adatkezelési átjáró részleteinek: [helye
 ## <a name="adflinkedservices"></a>Az adatok erőforrásokhoz való társított szolgáltatások létrehozásához
 A társított szolgáltatás határozza meg az Azure Data Factory egy adatforrás, melyhez való kapcsolódáshoz szükséges adatokat. Három erőforrások van ebben a forgatókönyvben, amelynek társított szolgáltatások szükségesek:
 
-1. A helyszíni SQL Server
+1. On-premises SQL Server
 2. Azure Blob Storage
-3. Az Azure SQL-adatbázis
+3. Azure SQL Database
 
 Lépésről lépésre társított szolgáltatások létrehozásához megadott [társított szolgáltatások létrehozásához](../../data-factory/v1/data-factory-move-data-between-onprem-and-cloud.md#create-linked-services).
 
@@ -105,7 +105,7 @@ A JSON-alapú definíciók táblázatokban az alábbi neveket használja:
 Három definíciói az ADF adatcsatorna van szükség:
 
 1. [A helyszíni SQL-tábla](#adf-table-onprem-sql)
-2. [A BLOB tábla](#adf-table-blob-store)
+2. [Blob Table ](#adf-table-blob-store)
 3. [Az SQL Azure-tábla](#adf-table-azure-sql)
 
 > [!NOTE]

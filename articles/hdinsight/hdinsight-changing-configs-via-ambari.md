@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: ashish
-ms.openlocfilehash: 5b3700580f593e7590360792f2b76dee79608896
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: 74c1b3298cd7b6ffd5b4a60e2fa78ed733232f92
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="use-ambari-to-optimize-hdinsight-cluster-configurations"></a>A HDInsight fürt konfigurációjának optimalizálása az Ambari használatával
 
@@ -62,7 +62,7 @@ A NameNode Java halommemória mérete módosítása:
 
 5. A módosítások mentéséhez kattintson a zöld **mentése** tetején a következő konfigurációs képernyőjén gombra.
 
-    ![Módosítások mentése](./media/hdinsight-changing-configs-via-ambari/save-changes.png)
+    ![Változtatások mentése](./media/hdinsight-changing-configs-via-ambari/save-changes.png)
 
 ## <a name="hive-optimization"></a>Hive optimalizálása
 
@@ -183,7 +183,7 @@ A rendelkezésre álló tömörítési típusok a következők:
 
 | Formátum | Eszköz | Algoritmus | Fájlnévkiterjesztés | Feloszthatók? |
 | -- | -- | -- | -- | -- |
-| A gzip | A gzip | DEFLATE | .GZ | Nem |
+| Gzip | Gzip | DEFLATE | .gz | Nem |
 | Bzip2 | Bzip2 | Bzip2 |.bz2 | Igen |
 | LZO | Lzop | LZO | .lzo | Igen, ha indexelt |
 | klassz kis | – | klassz kis | klassz kis | Nem |
@@ -234,7 +234,7 @@ Spekulatív végrehajtási elindítja egy bizonyos számú észlelése és a tel
 
 Hosszan futó MapReduce-feladatok bemeneti nagy mennyiségű spekulatív végrehajtási nem szabad engedélyezni.
 
-1. Ahhoz, hogy a spekulatív végrehajtási, keresse meg a Hive **Configs** lapot, és utána állítsa be a `hive.mapred.reduce.tasks.speculative.execution` paraméter igaz értékű. Az alapértelmezett értéke hamis.
+* Ahhoz, hogy a spekulatív végrehajtási, keresse meg a Hive **Configs** lapot, és utána állítsa be a `hive.mapred.reduce.tasks.speculative.execution` paraméter igaz értékű. Az alapértelmezett értéke hamis.
 
     ![Hive mapred csökkentése spekulatív feladatok végrehajtása](./media/hdinsight-changing-configs-via-ambari/hive-mapred-reduce-tasks-speculative-execution.png)
 
@@ -286,7 +286,7 @@ A Hive-végrehajtó motor optimalizálási további javaslatokat:
 
 | Beállítás | Ajánlott | A HDInsight alapértelmezett |
 | -- | -- | -- |
-| `hive.mapjoin.hybridgrace.hashtable` | Igaz értéket = biztonságosabb, lassabb; FALSE = gyorsabban | false |
+| `hive.mapjoin.hybridgrace.hashtable` | Igaz értéket = biztonságosabb, lassabb; FALSE = gyorsabban | hamis |
 | `tez.am.resource.memory.mb` | 4 GB-os felső határa a legtöbb | Automatikusan beállított |
 | `tez.session.am.dag.submit.timeout.secs` | 300+ | 300 |
 | `tez.am.container.idle.release-timeout-min.millis` | 20000+ | 10000 |
@@ -453,10 +453,10 @@ Kapott méretének meghatározása szerint a `hbase.regionserver.global.memstore
 
 A tulajdonság határozza meg kérést kapott helyi foglalási puffer használati `hbase.hregion.memstore.mslab.enabled`. Ha engedélyezve van (igaz), így a halommemória töredezettségének nagy írási művelet során. Az alapértelmezett érték: igaz.
  
-![hbase.hregion.memstore.mslab.Enabled](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-memstore-mslab-enabled.png)
+![hbase.hregion.memstore.mslab.enabled](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-memstore-mslab-enabled.png)
 
 
-## <a name="see-also"></a>Lásd még
+## <a name="next-steps"></a>További lépések
 
 * [Az Ambari webes felhasználói felület a HDInsight-fürtök kezelése](hdinsight-hadoop-manage-ambari.md)
 * [Ambari REST API-n](hdinsight-hadoop-manage-ambari-rest-api.md)

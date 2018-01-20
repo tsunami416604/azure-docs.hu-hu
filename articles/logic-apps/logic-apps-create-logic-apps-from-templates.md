@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/15/2017
 ms.author: LADocs; klam
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8adda0d9cd6af98c04f2432eeabbc003ad403719
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 49b4bbfda4518b03ef6080bec1e2a493933af4f5
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Munkafolyamatokat logic app előre elkészített sablonok alapján
 
@@ -36,7 +36,7 @@ Az alábbiakban néhány sablon kategóriák:
 | Protokoll mintát sablonok | Például a kérés-válasz protokoll minták megvalósításához HTTP és a Integrációk keresztüli FTP és az SFTP. Megadott használja ezeket a sablonokat, vagy összetett protokoll mintára használni ezeket. | 
 ||| 
 
-Ha nem rendelkezik Azure-előfizetéssel, [regisztrálhat egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/) az eljárás megkezdése előtt. Logikai alkalmazás létrehozásával kapcsolatos további információkért lásd: [logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md).
+Ha nem rendelkezik Azure-előfizetéssel, [regisztrálhat egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/) az eljárás megkezdése előtt. Logikai alkalmazás létrehozásával kapcsolatos további információkért lásd: [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="create-logic-apps-from-templates"></a>A logic apps létrehozása sablonból
 
@@ -155,7 +155,7 @@ A tervező eszköztárán válassza a **Mentés** parancsot.
 * A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a [Logic Apps felhasználói visszajelzéseinek oldalára](http://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg a logic apps segítségével példák, a konfigurációkat, az ügyfél-szövegek és a forgatókönyvek létrehozása.
 

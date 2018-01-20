@@ -5,23 +5,23 @@ services: storage,event-grid
 keywords: 
 author: cbrooksmsft
 ms.author: cbrooks
-ms.date: 08/18/2017
+ms.date: 01/19/2018
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 67f262913333fb69f5b862fa3d862c0d773e4172
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 50a6126f065b1b4d851f53b5cb3096c130314450
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="route-blob-storage-events-to-a-custom-web-endpoint-preview"></a>Azure Blob Storage-események átirányítása egyéni webes végpontra (előzetes verzió)
 
 Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a cikkben előfizetünk a Blob Storage-eseményekre az Azure CLI-vel, majd elindítjuk az eseményt az eredmény megtekintéséhez. 
 
-Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek reagálnak az eseményre, például egy webhooknak vagy egy Azure-függvénynek. A cikkben bemutatott példa egyszerűsítése érdekében az eseményeket egy olyan URL-címnek küldjük el, amely pusztán üzenetek gyűjtésével foglalkozik. Az URL-címet a [RequestBin](https://requestb.in/) nevű nyílt forráskódú, külső fél által biztosított eszközzel fogjuk létrehozni.
+Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek reagálnak az eseményre, például egy webhooknak vagy egy Azure-függvénynek. A cikkben bemutatott példa egyszerűsítése érdekében az eseményeket egy olyan URL-címnek küldjük el, amely pusztán üzenetek gyűjtésével foglalkozik. Az URL-cím nevű nyílt forráskódú, külső eszköz használatával létrehozhat [RequestBin](https://requestb.in/).
 
 > [!NOTE]
-> A **RequestBin** egy nyílt forráskódú eszköz, amely nagy teljesítményt megkövetelő használati területekhez nem alkalmas. Az eszköz használata ebben az esetben kizárólag bemutató célt szolgál. Ha egyszerre több eseményt továbbít, lehetséges, hogy az eszközben nem fog megjelenni az összes esemény.
+> **RequestBin** nyílt forráskódú eszköz, amely nem célja a magas teljesítmény-használatról. Az eszköz használata ebben az esetben kizárólag bemutató célt szolgál. Ha egyszerre több eseményt továbbít, lehetséges, hogy az eszközben nem fog megjelenni az összes esemény.
 
 A cikkben leírt lépések elvégzése után látni fogja, hogy az eseményadatokat egy végpontnak küldte el a rendszer.
 
@@ -31,7 +31,7 @@ A cikkben leírt lépések elvégzése után látni fogja, hogy az eseményadato
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha a CLI helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI legújabb verzióját (2.0.14 vagy újabb) kell futtatnia. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli).
+Telepítése és a parancssori felület helyileg használata mellett dönt, ez a cikk számára szükséges, hogy futnak-e a legújabb Azure CLI (2.0.24 vagy újabb). A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli).
 
 Ha nem a Cloud Shellt használja, először be kell jelentkeznie a(z) `az login` használatával.
 
@@ -70,20 +70,19 @@ az storage account create \
 
 ## <a name="create-a-message-endpoint"></a>Üzenetvégpont létrehozása
 
-Mielőtt eseményekre iratkozna fel a Blob Storage-fiókból, hozzuk létre az eseményüzenetek végpontját. Az eseményre reagáló kód írása helyett egy olyan végpontot hozunk létre, amely gyűjti az üzeneteket, hogy meg tudja őket tekinteni. A RequestBin egy nyílt forráskódú, külső gyártótól származó eszköz, amely lehetővé teszi egy végpont létrehozását és a neki küldött kérések megtekintését. Nyissa meg a [RequestBin](https://requestb.in/) eszközt, és kattintson a **Create a RequestBin** (Kéréstár létrehozása) elemre.  Másolja ki a tár URL-címét, mert szüksége lesz rá, amikor feliratkozik a témakörre.
+Mielőtt eseményekre iratkozna fel a Blob Storage-fiókból, hozzuk létre az eseményüzenetek végpontját. Az eseményre reagáló kód írása helyett egy olyan végpontot hozunk létre, amely gyűjti az üzeneteket, hogy meg tudja őket tekinteni. RequestBin egy nyílt forráskódú, külső eszköz, amely lehetővé teszi, hogy hozzon létre egy végpontot, és a hozzá küldött kérelmekben megtekintése. Nyissa meg a [RequestBin](https://requestb.in/) eszközt, és kattintson a **Create a RequestBin** (Kéréstár létrehozása) elemre.  Másolja ki a tár URL-címét, mert szüksége lesz rá, amikor feliratkozik a témakörre.
 
 ## <a name="subscribe-to-your-blob-storage-account"></a>Feliratkozás a Blob Storage-fiókra
 
 A témakörre való feliratkozással lehet tudatni az Event Griddel, hogy mely eseményeket kívánja nyomon követni. Az alábbi példa feliratkozik a létrehozott Blob Storage-fiókra, és az eseményértesítés végpontjaként adja át a RequestBinből átemelt URL-címet. Az `<event_subscription_name>` elemet az esemény-feliratkozás egyedi nevére cserélje le, az `<URL_from_RequestBin>` elemet pedig az előző szakaszból származó értékre. Ha megadja a végpontot a feliratkozáskor, az Event Grid az adott végpontra irányítja az eseményeket. A `<resource_group_name>` és `<storage_account_name>` elemnél a korábban létrehozott értékeket adja meg. 
 
 ```azurecli-interactive
-az eventgrid resource event-subscription create \
---endpoint <URL_from_RequestBin> \
---name <event_subscription_name> \
---provider-namespace Microsoft.Storage \
---resource-type storageAccounts \
---resource-group <resource_group_name> \
---resource-name <storage_account_name>
+storageid=$(az storage account show --name <storage_account_name> --resource-group <resource_group_name> --query id --output tsv)
+
+az eventgrid event-subscription create \
+  --resource-id $storageid \
+  --name <event_subscription_name> \
+  --endpoint <URL_from_RequestBin>
 ```
 
 ## <a name="trigger-an-event-from-blob-storage"></a>Esemény kiváltása a Blob Storage-ból
@@ -122,7 +121,9 @@ az storage blob upload --file testfile.txt --container-name testcontainer --name
     "storageDiagnostics": {
       "batchId": "dffea416-b46e-4613-ac19-0371c0c5e352"
     }
-  }
+  },
+  "dataVersion": "",
+  "metadataVersion": "1"
 }]
 
 ```
@@ -136,7 +137,7 @@ A `<resource_group_name>` elemet cserélje le a fent létrehozott erőforráscso
 az group delete --name <resource_group_name>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerkedett vele, hogyan hozhat létre témaköröket és eseményfeliratkozásokat, bővebben is tájékozódhat arról, hogy miben nyújthatnak segítséget a Blob Storage-események és az Event Grid:
 

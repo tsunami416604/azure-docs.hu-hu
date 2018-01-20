@@ -1,6 +1,6 @@
 ---
-title: "Önálló Azure Automation-fiók létrehozása | Microsoft Docs"
-description: "Az oktatóprogram végigvezeti az egyszerű biztonsági hitelesítés létrehozásán, tesztelésén és használatán az Azure Automationben."
+title: "Hozzon létre egy Azure Automation-fiók önálló |} Microsoft Docs"
+description: "Ez a cikk végigvezeti a létrehozása, tesztelése és egy példa biztonsági egyszerű hitelesítés használata az Azure Automationben."
 services: automation
 documentationcenter: 
 author: georgewallace
@@ -14,79 +14,95 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/18/2017
 ms.author: magoedte
-ms.openlocfilehash: 0397b45753ea64d1a33916d5e0dff12d6e1d80aa
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 7303c17cfa35043229bb1bdd61ef33647ef60ffa
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Önálló Azure Automation-fiók létrehozása
-Ez a témakör bemutatja, hogyan hozhat létre Automation-fiókot az Azure Portalról, ha szeretné kipróbálni és megismerni az Azure Automationt anélkül, hogy más felügyeleti megoldásokat vagy OMS Log Analytics-integrációt venne igénybe a runbook-feladatok hatékonyabb figyeléséhez.  A felügyeleti megoldások, illetve a Log Analytics-integráció a későbbiekben bármikor igénybe vehetőek.  Az Automation-fiókkal hitelesítheti az Azure Resource Managerben vagy a klasszikus Azure üzemelő példányokon lévő erőforrásokat kezelő runbookokat.
+Ez a cikk bemutatja, hogyan egy Azure Automation-fiók létrehozása az Azure portálon. A portál Automation-fiók segítségével értékelje ki és további automatizálásával kapcsolatos további felügyeleti megoldások vagy integráció az Azure Naplóelemzés Operations Management Suite (OMS) használata nélkül. Ezen megoldások hozzáadása, vagy speciális figyelésére egyetlen runbook-feladatok a jövőben Naplóelemzési integrálható. 
 
-Amikor létrehoz egy Automation-fiókot az Azure Portalon, a következők is létrejönnek:
+Az Automation-fiók a runbookok hitelesítik az Azure Resource Manager vagy a klasszikus üzembe helyezési modellel erőforrások kezelése.
 
-* Egy futtató fiókot, amely létrehoz egy új egyszerű szolgáltatást az Azure Active Directoryban, létrehoz egy tanúsítványt, valamint kiosztja a Közreműködő szerepköralapú hozzáférés-vezérlést (RBAC), amelynek használatával a Resource Manager-erőforrások kezelhetők runbookokkal.   
-* Egy klasszikus futtató fiókot egy felügyeleti tanúsítvány feltöltésével, amely segítségével a klasszikus erőforrások kezelhetők runbookokkal.  
+Automation-fiók létrehozása az Azure portálon, ha ezek a fiókok automatikusan jönnek létre:
 
-Ez leegyszerűsíti a folyamatot, és segít a tervezés gyors megkezdésében, és forgatókönyvek üzembe helyezésében az automatizálási szükségletek támogatására.  
+* **A Futtatás mint fiók**. Ezt a fiókot a következő feladatokat hajtja végre:
+  - Az Azure Active Directory (Azure AD) hoz létre egy egyszerű szolgáltatást.
+  - Létrehoz egy tanúsítványt.
+  - A Contributor Role-Based hozzáférés-vezérlés (RBAC), amely runbookok használatával kezeli az Azure Resource Manager erőforrások rendeli.
+* **Klasszikus Futtatás mint fiók**. Ez a fiók feltölt egy felügyeleti tanúsítványt. A tanúsítvány hagyományos erőforrások runbookok használatával kezeli.
 
-## <a name="permissions-required-to-create-automation-account"></a>Az Automation-fiók létrehozásához szükséges engedélyek
-Automation-fiók létrehozásához vagy frissítéséhez az alábbi, a jelen témakör végrehajtásához szükséges jogosultságokkal és engedélyekkel kell rendelkeznie.   
- 
-* Automation-fiók létrehozásához az AD-felhasználói fiókot a [Szerepköralapú hozzáférés-vezérlés az Azure Automationben](automation-role-based-access-control.md) című cikkben ismertetett módon egy olyan szerepkörhöz kell hozzáadni, amely a Microsoft Automation-erőforrások tulajdonosi szerepkörével egyenértékű engedélyekkel rendelkezik.  
-* Ha az Alkalmazásregisztrációk beállítás értéke **Igen**, az Azure AD-bérlő nem rendszergazda jogosultságú felhasználói is elvégezhetik az [AD-alkalmazások regisztrálását](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions).  Ha az Alkalmazásregisztrációk beállítás értéke **Nem**, ezt a műveletet csak az Azure AD globális rendszergazdái hajthatják végre. 
+Ezek a fiókok hozott létre, a létrehozása és telepítése a forgatókönyvek az automation igényeinek megfelelő gyorsan megkezdheti.  
 
-Ha nem tagja az előfizetéshez tartozó Active Directory-példánynak, mielőtt hozzáadják Önt az előfizetés globális rendszergazdai vagy társadminisztrátori szerepköréhez, vendégként lesz hozzáadva az Active Directoryhoz. Ebben az esetben „Nincs engedélye létrehozni…” figyelmeztető üzenetet kap az **Automation-fiók hozzáadása** panelen. A globális rendszergazdai vagy társadminisztrátori szerepkörhöz hozzáadott felhasználók először eltávolíthatók az előfizetéshez tartozó Active Directory-példányból, majd újra hozzáadhatók, így teljes jogú felhasználók lehetnek az Active Directoryban. Ez a helyzet úgy ellenőrizhető, ha az Azure Portal **Azure Active Directory** panelén a **Felhasználók és csoportok** és a **Minden felhasználó** elemre kattint, majd a konkrét felhasználó kiválasztása után a **Profil** elemet választja. A felhasználók profilja alatti **Felhasználó típusa** attribútum értéke ne legyen **Guest** (vendég).
+## <a name="permissions-required-to-create-an-automation-account"></a>Automation-fiók létrehozásához szükséges engedélyek
+Az Automation-fiók létrehozása vagy frissítése, és a jelen cikkben ismertetett feladatok végrehajtásához, a következő jogosultságokkal és engedélyekkel kell rendelkeznie: 
 
-## <a name="create-a-new-automation-account-from-the-azure-portal"></a>Egy új Automation-fiók létrehozása az Azure Portalról
-Az ebben a szakaszban szereplő lépések végrehajtásával létrehozhat egy Azure Automation-fiókot az Azure Portalon.    
+* Az Automation-fiók létrehozása az Azure AD-felhasználói fiókot hozzá kell adni a tulajdonosi szerepkört, a megfelelő engedélyekkel rendelkező szerepkörhöz **Microsoft. Automatizálási** erőforrásokat. További információkért lásd: [szerepköralapú hozzáférés-vezérlés az Azure Automationben](automation-role-based-access-control.md).  
+* Az Azure portálon a **Azure Active Directory** > **kezelése** > **App regisztrációk**, ha **App regisztrációk**  értéke **Igen**, az Azure AD-bérlő nem rendszergazdai felhasználók számára is [regisztrálni az Active Directory alkalmazások](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions). Ha **App regisztrációk** értéke **nem**, ezt a műveletet végző felhasználót az Azure AD globális rendszergazdának kell lennie. 
 
-1. Jelentkezzen be az Azure Portal webhelyre egy olyan fiókkal, amely tagja az Előfizetés-adminisztrátorok szerepkörhöz tartozó csoportnak, és emellett az előfizetés társadminisztrátorának is számít.
-2. Kattintson az **Új** lehetőségre.<br><br> ![Válassza az Új lehetőséget az Azure Portalon](media/automation-offering-get-started/automation-portal-martketplacestart.png)<br>  
-3. Keressen rá az **Automatizálás** kifejezésre, majd a találatok listájában válassza az **Automatizálás és vezérlés*** lehetőséget.<br><br> ![Keresse meg és válassza ki az Automationt a Marketplace-en](media/automation-create-standalone-account/automation-marketplace-select-create-automationacct.png)<br> 
-3. Az Automation-fiókok panelen kattintson a **Hozzáadás** elemre.<br><br>![Automation-fiók hozzáadása](media/automation-create-standalone-account/automation-create-automationacct-properties.png)
+Ha még nem tagja az Active Directory előfizetésre, ahhoz az előfizetéshez globális rendszergazda/coadministrator szerepkör hozzáadásakor, amelyek hozzáadott Active Directory vendégként. Ebben a forgatókönyvben a következő üzenet jelenik meg a **Automation-fiók hozzáadása** lap: "Nincs létrehozásához szükséges engedélyek." 
 
+Ha egy felhasználó hozzáadódik a globális rendszergazda/coadministrator szerepkör először, akkor is távolítsa el azokat az Active Directory előfizetésre, és majd újra vegye fel a teljes Active Directory a felhasználói szerepkörhöz.
 
-   > [!NOTE]
-   > Ha az **Automation-fiók hozzáadása** panelen a következő figyelmeztetés jelenik meg, annak az az oka, hogy a fiók nem tagja az Előfizetés-adminisztrátorok szerepkörhöz tartozó csoportnak, illetve nem az előfizetés társadminisztrátora.<br><br>![Az Automation-fiókhoz kapcsolódó figyelmeztetés hozzáadása](media/automation-create-standalone-account/create-account-without-perms.png)
-   > 
-   > 
-4. Az **Automation-fiók hozzáadása** panel **Név** mezőjébe adjon meg egy nevet az új Automation-fióknak.
-5. Ha több előfizetéssel rendelkezik, adja meg, hogy melyiket kívánja használni az új fiókhoz. Ezenkívül az **Erőforráscsoport** beállításnál adjon meg egy új vagy meglévő erőforráscsoportot, a **Hely** mezőben pedig válassza ki az Azure-adatközpont helyét.
-6. Ellenőrizze, hogy az **Igen** érték van kiválasztva az **Azure-beli futtató fiók létrehozása** beállításnál, és kattintson a **Létrehozás** gombra.  
-   
-   > [!NOTE]
-   > Ha a **Nem** beállítás kiválasztásával úgy dönt, hogy nem hozza létre a futtató fiókot, egy figyelmeztető üzenet jelenik meg az **Automation-fiók hozzáadása** panelen.  Ha a fiókot az Azure Portalon hozza létre, az nem kap hitelesítési identitást a klasszikus vagy Resource Manager-előfizetés címtárszolgáltatásában, így az előfizetéshez tartozó erőforrásokhoz sem fér hozzá.  Ez megakadályozza, hogy az erre a fiókra hivatkozó runbookok hitelesítést végezhessenek, illetve feladatokat futtathassanak az ezekben az üzemi modellekben található erőforrások alapján.
-   > 
-   > ![Az Automation-fiókhoz kapcsolódó figyelmeztetés hozzáadása](media/automation-create-standalone-account/create-account-decline-create-runas-msg.png)<br>
-   > Ha nem hozott létre szolgáltatásnevet, a rendszer nem osztja ki a Közreműködő szerepkört.
-   > 
+Felhasználói szerepkörök ellenőrzése:
+1. Az Azure-portálon lépjen a **Azure Active Directory** ablaktáblán.
+2. Válassza ki **felhasználók és csoportok**.
+3. Válassza ki **minden felhasználó**. 
+4. Egy adott felhasználó kiválasztása után válassza ki a **profil**. Értékét a **felhasználótípust** attribútum a profil alapján nem lehet **vendég**.
 
-7. Amíg az Azure létrehozza az Automation-fiókot, a menü **Értesítések** részén nyomon követheti a folyamat állapotát.
+## <a name="create-a-new-automation-account-in-the-azure-portal"></a>Új Automation-fiók létrehozása az Azure portálon
+Egy Azure Automation-fiók létrehozása az Azure portálon, kövesse az alábbi lépéseket:    
+
+1. Jelentkezzen be egy olyan fiókkal, amely az előfizetés-Rendszergazdák szerepkör tagja, és az előfizetés egy coadministrator az Azure portálon.
+2. Válassza ki **új**.<br><br> ![Válassza az új Azure-portálon](media/automation-offering-get-started/automation-portal-martketplacestart.png)<br>  
+3. Keresse meg **Automation**. A keresési eredmények között, válassza ki a **Automation & vezérlő**.<br><br> ![Jelölje ki az Automation & vezérlés az Azure piactéren](media/automation-create-standalone-account/automation-marketplace-select-create-automationacct.png)<br> 
+4. A **Automation-fiók**, jelölje be **Hozzáadás**.
+  ![Automation-fiók hozzáadása](media/automation-create-standalone-account/automation-create-automationacct-properties.png)
+  
+  > [!NOTE]
+  > Ha a következő üzenet jelenik meg a **Automation-fiók hozzáadása** ablaktáblán, a fiók nincs az előfizetés-Rendszergazdák szerepkör tagja, és az előfizetés egy coadministrator.
+  >
+  > ![Adja hozzá az Automation-fiók figyelmeztetés](media/automation-create-standalone-account/create-account-without-perms.png)
+  >
+5. Az a **Automation-fiók hozzáadása** ablaktáblán, a a **neve** mezőbe írja be az új Automation-fiók nevét.
+6. Ha egynél több előfizetésnek a a **előfizetés** adja meg az új fiókot használni kívánt előfizetést. 
+7. A **erőforráscsoport**adja meg vagy válasszon egy új vagy meglévő erőforráscsoportot. 
+8. A **hely**, adja meg az Azure-adatközpontban helyét.
+9. Az a **létrehozása Azure-beli futtató fiók** lehetőségre, győződjön meg arról, hogy **Igen** kiválasztva, majd jelölje ki **létrehozása**.
+    
+  > [!NOTE]
+  > Ha nem kíván létrehozni a futtató fiók kiválasztásával **nem** a **létrehozása Azure-beli futtató fiók**, egy üzenet jelenik meg a **Automation-fiók hozzáadása** ablaktáblán. Bár a fiókot az Azure portálon jön létre, a fiók nem rendelkezik a megfelelő hitelesítési identitását, a klasszikus üzembe helyezési modell előfizetés vagy az Azure Resource Manager előfizetés címtárszolgáltatásban. Ezért az Automation-fiók nem rendelkezik az erőforrásokhoz való hozzáférés az előfizetésben. Ez megakadályozza, hogy ez a fiók nem tudnak hitelesítést, és azokat üzembe helyezési modellel erőforrásokon feladatokat hivatkozó runbookokat.
+  >
+  > ![Adja hozzá az Automation-fiók figyelmeztetés](media/automation-create-standalone-account/create-account-decline-create-runas-msg.png)
+  >
+  > A szolgáltatásnév nem jön létre, amikor a közreműködői szerepkör nincs hozzárendelve.
+  >
+10. Az automatizálási fiók létrehozása, a menü előrehaladását úgy követheti nyomon válassza **értesítések**.
 
 ### <a name="resources-included"></a>Érintett erőforrások
-Ha befejeződött az Automation-fiók létrehozása, számos erőforrás automatikusan létrejön.  Az alábbi táblázat a futtató fiókhoz kapcsolódó erőforrásokat foglalja össze.<br>
+Ha befejeződött az Automation-fiók létrehozása, számos erőforrás automatikusan létrejön. Az alábbi táblázat a futtató fiókhoz kapcsolódó erőforrásokat foglalja össze.
 
 | Erőforrás | Leírás |
 | --- | --- |
-| AzureAutomationTutorial forgatókönyv |Grafikus mintarunbook, amely bemutatja, hogyan kell a futtató fiókkal hitelesítést végezni, és megjeleníti az összes Resource Manager-alapú erőforrást. |
-| AzureAutomationTutorialScript forgatókönyv |PowerShell-mintaforgatókönyv, amely bemutatja, hogyan kell a futtató fiók használatával hitelesíteni, és megjeleníti az összes Resource Manager-erőforrást. |
-| AzureAutomationTutorialPython2 forgatókönyv |Python-mintaforgatókönyv, amely bemutatja, hogyan kell a futtató fiók használatával hitelesítést végezni, és megjeleníti a megadott előfizetésben szereplő erőforráscsoportokat. |
-| AzureRunAsCertificate |Tanúsítványobjektum, amely automatikusan létrejön, amikor Automation-fiókot hoz létre, vagy lefuttatja egy meglévő fiókon az alább található PowerShell-parancsprogramot.  Lehetővé teszi az Azure-hitelesítést, így a forgatókönyvekből is kezelheti az Azure Resource Manager-erőforrásokat.  Ennek a tanúsítványnak egy éves időtartama van. |
-| AzureRunAsConnection |Kapcsolatobjektum, amely automatikusan létrejön, amikor Automation-fiókot hoz létre, vagy lefuttatja egy meglévő fiókon az alább található PowerShell-parancsprogramot. |
+| AzureAutomationTutorial forgatókönyv |Grafikus példaforgatókönyv, amely bemutatja, hogyan kell elvégezni a hitelesítést a Futtatás mint fiók. A runbook összes Resource Managerhez tartozó erőforrások lekérése. |
+| AzureAutomationTutorialScript forgatókönyv |PowerShell példaforgatókönyv, amely bemutatja, hogyan kell elvégezni a hitelesítést a Futtatás mint fiók. A runbook összes Resource Managerhez tartozó erőforrások lekérése. |
+| AzureAutomationTutorialPython2 forgatókönyv |Python példaforgatókönyv, amely bemutatja, hogyan kell elvégezni a hitelesítést a Futtatás mint fiók. A runbook összes erőforráscsoport a előfizetésben sorolja fel. |
+| AzureRunAsCertificate |A tanúsítvány eszköz, amely automatikusan jön létre, az Automation-fiók létrehozásakor, vagy egy meglévő fiók PowerShell parancsfájl használatával. A tanúsítvány hitelesíti az Azure-ral, így az Azure Resource Manager-erőforrások kezelhetők a runbookokból. Ennek a tanúsítványnak egy éves időtartama van. |
+| AzureRunAsConnection |A kapcsolódási eszköz, amely automatikusan jön létre, az Automation-fiók létrehozásakor, vagy egy meglévő fiók PowerShell parancsfájl használatával. |
 
-Az alábbi táblázat a klasszikus futtató fiókhoz kapcsolódó erőforrásokat foglalja össze.<br>
+Az alábbi táblázat a klasszikus futtató fiókhoz kapcsolódó erőforrásokat foglalja össze.
 
 | Erőforrás | Leírás |
 | --- | --- |
-| AzureClassicAutomationTutorial forgatókönyv |Grafikus mintarunbook, amely a klasszikus futtató fiókkal (tanúsítvánnyal) lekéri az előfizetéshez tartozó klasszikus virtuális gépeket, majd megjeleníti a virtuális gépek nevét és állapotát. |
-| AzureClassicAutomationTutorial parancsprogram-forgatókönyv |PowerShell-mintarunbook, amely a klasszikus futtató fiókkal (tanúsítvánnyal) lekéri az előfizetéshez tartozó klasszikus virtuális gépeket, majd megjeleníti a virtuális gépek nevét és állapotát. |
-| AzureClassicRunAsCertificate |Automatikusan létrejövő tanúsítványobjektum, amely Azure-hitelesítésre használható, így a klasszikus Azure-erőforrások is kezelhetők a forgatókönyvekből.  Ennek a tanúsítványnak egy éves időtartama van. |
-| AzureClassicRunAsConnection |Automatikusan létrejövő kapcsolatobjektum, amely Azure-hitelesítésre használható, így a klasszikus Azure-erőforrások is kezelhetők a forgatókönyvekből. |
+| AzureClassicAutomationTutorial forgatókönyv |Grafikus példaforgatókönyv. A runbook egy előfizetésben klasszikus virtuális gépeinek lekérdezi a klasszikus futtató fiók (tanúsítvány) használatával. Mutatja majd, a virtuális gép nevét és állapotát. |
+| AzureClassicAutomationTutorial parancsprogram-forgatókönyv |PowerShell példaforgatókönyv. A runbook egy előfizetésben klasszikus virtuális gépeinek lekérdezi a klasszikus futtató fiók (tanúsítvány) használatával. Mutatja majd, a virtuális gép nevét és állapotát. |
+| AzureClassicRunAsCertificate |A tanúsítvány eszköz, amely automatikusan jön létre. Az a tanúsítvány hitelesíti az Azure-ral, így runbookok a klasszikus Azure-erőforrások kezelhetők. Ennek a tanúsítványnak egy éves időtartama van. |
+| AzureClassicRunAsConnection |A kapcsolódási eszköz, amely automatikusan jön létre. Az eszköz, a runbookokból kezelheti a klasszikus Azure-erőforrások Azure hitelesíti. |
 
 
 ## <a name="next-steps"></a>További lépések
-* További információk a grafikus létrehozásról: [Grafikus létrehozás az Azure Automationben](automation-graphical-authoring-intro.md).
+* Grafikus szerzői kapcsolatos további információkért lásd: [grafikus készítése az Azure Automationben](automation-graphical-authoring-intro.md).
 * A PowerShell-forgatókönyvek használatának megismeréséhez tekintse meg a következőt: [Az első PowerShell-runbookom](automation-first-runbook-textual-powershell.md).
 * A PowerShell-alapú munkafolyamat-runbookok első lépéseit [Az első PowerShell-alapú munkafolyamat-runbookom](automation-first-runbook-textual.md) című témakör ismerteti.
 * A Python2-forgatókönyvekkel való ismerkedéshez tekintse meg a következőt: [Az első Python2-forgatókönyvem](automation-first-runbook-textual-python2.md).

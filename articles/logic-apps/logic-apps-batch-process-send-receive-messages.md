@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/7/2017
 ms.author: LADocs; estfan; jonfan
-ms.openlocfilehash: e0b7292f25a145c699dbafaf4e31e3f9d072b957
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: de519084a4f172ad984c78727123835eeb9deaef
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="send-receive-and-batch-process-messages-in-logic-apps"></a>Küldése, fogadására és a batch-folyamat üzenetek a logic Apps alkalmazások
 
@@ -39,7 +39,7 @@ Kövesse az alábbi példát, ezek az elemek szükségesek:
 
 * Azure-előfizetés. Ha nem rendelkezik előfizetéssel, [kezdhet egy ingyenes Azure-fiókkal](https://azure.microsoft.com/free/). Egyéb esetben [regisztrálhat használatalapú fizetéses előfizetésre](https://azure.microsoft.com/pricing/purchase-options/).
 
-* Alapszintű ismerete [logic Apps alkalmazások létrehozása](../logic-apps/logic-apps-create-a-logic-app.md) 
+* Alapszintű ismerete [logic Apps alkalmazások létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md) 
 
 * Az összes e-mail fiókot [Azure Logic Apps által támogatott e-mail szolgáltató](../connectors/apis-list.md)
 
@@ -83,13 +83,13 @@ Küldő logic Apps alkalmazásokat kell tudja, hova küldje a elemek, amíg a fo
       Például, ha munkahelyi vagy iskolai fiókkal rendelkezik, jelölje be az Office 365 Outlook-összekötő. 
       Ha Gmail fiókkal rendelkezik, válassza ki a Gmail összekötőt.
 
-   3. Válassza ki a művelet az összekötőhöz:  **{*e-mailt provider*}-küldjön egy e-mailek **
+   3. Válassza ki a művelet az összekötőhöz: **{*e-mailt provider*}-egy e-mailek küldése**
 
       Példa:
 
       ![Válassza ki az e-mailt Provider "E-mail küldési" műveletet](./media/logic-apps-batch-process-send-receive-messages/add-send-email-action.png)
 
-5. Ha a kapcsolat korábban az e-mailek szolgáltató nem hozott létre, e-mailek hitelesítő adatok megadása a hitelesítéshez, ha a rendszer kéri. További információ [az e-mailek hitelesítő adatok hitelesítése](../logic-apps/logic-apps-create-a-logic-app.md).
+5. Ha a kapcsolat korábban az e-mailek szolgáltató nem hozott létre, e-mailek hitelesítő adatok megadása a hitelesítéshez, ha a rendszer kéri. További információ [az e-mailek hitelesítő adatok hitelesítése](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 6. A művelet az előzőekben adott hozzá tulajdonságainak beállítása.
 
@@ -170,7 +170,7 @@ Küldő logic Apps alkalmazásokat kell tudja, hova küldje a elemek, amíg a fo
      1. Ha a **dinamikus tartalom** megjelenik a listán, válassza a **kifejezés**. 
      2. Adja meg a kifejezés **utcnow()**, és válassza a **OK**. 
 
-        ![A "Üzenet tartalom" válassza a "Kifejezése". Adja meg a "utcnow()".](./media/logic-apps-batch-process-send-receive-messages/send-batch-receiver-details.png)
+        ![A "Üzenet tartalom" válassza a "Kifejezése". Enter "utcnow()".](./media/logic-apps-batch-process-send-receive-messages/send-batch-receiver-details.png)
 
 4. Most már készen a köteg partíció. Válassza ki a "BatchReceiver" művelet **speciális beállítások megjelenítése**.
 
@@ -200,7 +200,7 @@ A BatchSender Logic Apps alkalmazást percenként fut, egy és öt közötti vé
 > [!IMPORTANT]
 > Ha elkészült teszteléshez, győződjön meg arról, hogy tiltsa le az üzenetek küldése és kerülje a túl van terhelve beérkezett BatchSender logikai alkalmazás.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A JSON logikai alkalmazás definícióiról létrehozása](../logic-apps/logic-apps-author-definitions.md)
 * [Egy kiszolgáló nélküli alkalmazást a Visual Studio és az Azure Logic Apps és függvények létrehozása](../logic-apps/logic-apps-serverless-get-started-vs.md)

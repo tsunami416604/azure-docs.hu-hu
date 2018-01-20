@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: jingwang
-ms.openlocfilehash: 9236198338fc66697942463e350a0f9732ea217b
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: aa81f9d163da8d9236470c0b797f5430163ed39d
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory-beta"></a>Adatok másolása az Azure Data Factory (béta) használatával Xero
 
@@ -37,7 +37,7 @@ Az Azure Data Factory kapcsolódásának engedélyezése beépített illesztőpr
 
 ## <a name="getting-started"></a>Első lépések
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
 
 A következő szakaszok részletesen bemutatják való Xero összekötő adat-előállító tartozó entitások meghatározásához használt tulajdonságokat.
 

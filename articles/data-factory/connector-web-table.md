@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: jingwang
-ms.openlocfilehash: 8e2b886f7e12791a6aab9feec67adfa30ac3bad1
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: c5d2fdb3ed3c00114437b0be9759bf8bea2521b7
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával webes táblából
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -41,7 +41,7 @@ A webes tábla összekötő használatára, akkor be kell állítania egy Self-h
 
 ## <a name="getting-started"></a>Első lépések
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
 
 A következő szakaszok részletesen bemutatják való webes tábla összekötő adat-előállító tartozó entitások meghatározásához használt tulajdonságokat.
 
@@ -53,7 +53,7 @@ Webes table csatolt szolgáltatás a következő tulajdonságok esetén támogat
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **webes** |Igen |
 | url | A webes forrás URL-címe |Igen |
-| AuthenticationType | Az érték engedélyezett: **névtelen**. |Igen |
+| authenticationType | Az érték engedélyezett: **névtelen**. |Igen |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Egy Self-hosted integrációs futásidejű szükség, ahogyan az [Előfeltételek](#prerequisites). |Igen |
 
 **Példa**

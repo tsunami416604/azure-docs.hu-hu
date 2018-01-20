@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2017
 ms.author: joflore
-ms.openlocfilehash: 23bea4b6e3351bdce77e6d265ba258ce60a22a36
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: acfdb94323853161e835b88ef441eaed681bde25
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="install-a-new-active-directory-forest-on-an-azure-virtual-network"></a>Egy új Active Directory-erdő telepítése Azure virtuális hálózaton
 Ez a cikk bemutatja, hogyan hozható létre egy új Windows Server Active Directory-környezetben a virtuális gépen (VM) egy [Azure-beli virtuális hálózat](../virtual-network/virtual-networks-overview.md). Ebben az esetben az Azure virtuális hálózat nem egy helyi hálózathoz csatlakozik.
@@ -67,7 +67,7 @@ A virtuális gépek létrehozását a felhasználói felület helyett a Windows 
    |  **Virtuálisgép-konfiguráció** |<p>Virtuális gép neve: (Például AzureDC1) egycímkés nevet írja be.</p><p>Új felhasználónevet: Írja be annak a felhasználónak a nevére. Ez a felhasználó a virtuális Gépen a helyi Rendszergazdák csoport tagja lesz. Szüksége lesz erre a névre kattintva először jelentkezzen be a virtuális Gépet. A beépített Rendszergazda fiók nem fog működni.</p><p>Új jelszó megerősítése: Adjon meg egy jelszót</p> |
    |  **Virtuálisgép-konfiguráció** |<p>Felhőalapú szolgáltatás: Válassza ki <b>hozzon létre egy új felhőalapú szolgáltatás</b> az első virtuális gép, és válassza ki az adott felhőalapú szolgáltatás néven további virtuális gépek létrehozásakor a tartományvezérlő szerepkör fogja futtatni.</p><p>Felhőalapú szolgáltatás DNS-neve: Globálisan egyedi nevet adjon meg.</p><p>Régió/Affinitáscsoport/virtuális hálózat: Adja meg a virtuális hálózat nevét (például WestUSVNet).</p><p>Tárfiók: Válassza ki <b>automatikusan létrehozott tárfiók használata</b> az első virtuális gép, és válassza ki azt, hogy ugyanazon tárfiók neve további virtuális gépek létrehozásakor a tartományvezérlő szerepkör fogja futtatni.</p><p>Rendelkezésre állási csoportot: Válassza ki <b>egy rendelkezésre állási csoport létrehozása</b>.</p><p>Rendelkezésre állási csoport neve: a rendelkezésre állási csoporthoz az első virtuális gép létrehozásakor, és válassza ki, hogy ugyanaz az további virtuális gépek létrehozásakor nevet írja be nevét.</p> |
    |  **Virtuálisgép-konfiguráció** |<p>Válassza ki <b>a Virtuálisgép-ügynök telepítése</b> és bármely más bővítmények van szüksége.</p> |
-2. Lemez csatolása a DC-kiszolgálói szerepkör által futtatott virtuális gépek. A bővített lemezterület AD adatbázis, naplófájlok és SYSVOL tároló van szükség. Adja meg a méretet, a lemez (például 10 GB-os), és hagyja a **állomás gyorsítótár preferencia** beállítása **nincs**. Az útmutató: [hogyan lehet adatlemezt csatolni egy Windows rendszerű virtuális gép](../virtual-machines/windows/classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+2. Lemez csatolása a DC-kiszolgálói szerepkör által futtatott virtuális gépek. A bővített lemezterület AD adatbázis, naplófájlok és SYSVOL tároló van szükség. Adja meg a méretet, a lemez (például 10 GB-os), és hagyja a **állomás gyorsítótár preferencia** beállítása **nincs**. Az útmutató: [hogyan lehet adatlemezt csatolni egy Windows rendszerű virtuális gép](../virtual-machines/windows/classic/attach-disk-classic.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 3. Miután először bejelentkezik a virtuális géphez, nyissa meg **Kiszolgálókezelő** > **fájl- és tárolási szolgáltatások** kötet létrehozása a lemezen NTFS fájlrendszerrel.
 4. Egy statikus IP-címet lefoglalni a tartományvezérlő szerepkör által futtatott virtuális gépek. Egy statikus IP-címet lefoglalni, töltse le a Microsoft Webplatform-telepítő és [Azure PowerShell telepítése](/powershell/azure/overview) és futtassa a Set-AzureStaticVNetIP parancsmagot. Példa:
 
@@ -112,7 +112,7 @@ A Windows PowerShell használatával kapcsolatos további információkért lás
 * [A replika Active Directory-tartományvezérlő telepítése egy Azure virtuális hálózatban](active-directory-install-replica-active-directory-domain-controller.md)
 * [A Microsoft Azure informatikai szakemberek IaaS: (01) virtuális gép – alapok](http://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/01)
 * [A Microsoft Azure informatikai szakemberek IaaS: (05) létrehozása virtuális hálózatok és a létesítmények közötti kapcsolat](http://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/05)
-* [Virtual Network áttekintése](../virtual-network/virtual-networks-overview.md)
+* [A Virtual Network áttekintése](../virtual-network/virtual-networks-overview.md)
 * [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview)
 * [Azure PowerShell](/powershell/azure/overview)
 * [Azure parancsmag-referencia](/powershell/azure/get-started-azureps)

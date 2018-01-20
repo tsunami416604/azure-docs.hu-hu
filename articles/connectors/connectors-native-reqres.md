@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
-ms.openlocfilehash: e45b07d709927af64cfba28dfb0d8ee9cb8893b3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 58210db585befd7ce915d4579d4d0303eb15bff3
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-request-and-response-components"></a>Első lépések a kérelem-válasz összetevői
 A logikai alkalmazás kérelem-válasz összetevővel reagálhat valós idejű eseményekre.
@@ -30,7 +30,7 @@ Megteheti például a következőt:
 * Indítás, a logikai alkalmazást egy külső webhook eseményből.
 * Hívja meg a logikai alkalmazás belül egy másik logikai alkalmazás a kérelem-válasz művelettel.
 
-Első lépések egy logikai alkalmazás a kérelem-válasz műveletek használatával, lásd: [logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md).
+Első lépések egy logikai alkalmazás a kérelem-válasz műveletek használatával, lásd: [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="use-the-http-request-trigger"></a>Használja a HTTP-kérelem eseményindító
 Egy eseményindító egy eseményt, amely segítségével indítsa el a munkafolyamatot, amely a logikai alkalmazás van definiálva. [További tudnivalók az eseményindítók](connectors-overview.md).
@@ -96,18 +96,18 @@ Az alábbiakban a kérelem részletes kimenet.
 
 | Tulajdonság neve | Adattípus | Leírás |
 | --- | --- | --- |
-| Fejlécek |Objektum |Kérelem fejlécei |
-| Törzs |Objektum |Kérelem objektum |
+| Fejlécek |objektum |Kérelemfejlécek |
+| Törzs |objektum |Kérelem objektum |
 
 #### <a name="response-action"></a>Válasz művelet
 Az alábbiakban a beviteli mezők a HTTP-válasz művelethez. A * azt jelenti, hogy mezőt kötelező kitölteni.
 
 | Megjelenített név | Tulajdonság neve | Leírás |
 | --- | --- | --- |
-| Állapot kód * |statusCode |A HTTP-állapotkód: |
-| Fejlécek |Fejlécek |Bármely válaszfejlécek felvenni, egy JSON-objektum |
-| Törzs |Törzs |A választörzs |
+| Állapot kód * |állapotkód |A HTTP-állapotkód: |
+| Fejlécek |fejlécek |Bármely válaszfejlécek felvenni, egy JSON-objektum |
+| Törzs |törzs |A választörzs |
 
-## <a name="next-steps"></a>Következő lépések
-Most, próbálja ki a platformot és [logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md). Az egyéb rendelkezésre álló összekötők logic Apps alkalmazások felmérésével felfedezheti a [API-k lista](apis-list.md).
+## <a name="next-steps"></a>További lépések
+Most, próbálja ki a platformot és [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md). Az egyéb rendelkezésre álló összekötők logic Apps alkalmazások felmérésével felfedezheti a [API-k lista](apis-list.md).
 

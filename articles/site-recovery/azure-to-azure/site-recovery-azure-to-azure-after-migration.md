@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: ponatara
-ms.openlocfilehash: 7658bedc0bd5c4a289f3271504a006ba54c783b6
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: d1f414fc2305be4dec04fb7b0f43fe6ab5cdddc8
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="replicate-azure-vms-to-another-region-after-migration-to-azure-by-using-azure-site-recovery"></a>Azure virtuális gépek replikálása egy másik régióban Azure való áttelepítése után Azure Site Recovery segítségével
 
@@ -51,7 +51,7 @@ Az áttelepítés után nem kell véglegesítése, vagy törölje a feladatátv�
 2. A **az áttelepítés végrehajtásához** művelet az áttelepítési folyamat befejeződik, eltávolítja a gép replikálását, és leállítja a gépet a Site Recovery számlázási.
 
 ### <a name="step-2-install-the-azure-vm-agent-on-the-virtual-machine"></a>2. lépés: Az Azure Virtuálisgép-ügynök telepítése a virtuális gépen
-Az Azure [Virtuálisgép-ügynök](../../virtual-machines/windows/classic/agents-and-extensions.md#azure-vm-agents-for-windows-and-linux) telepíteni kell a virtuális gép működéséhez, illetve a virtuális gép védelmét a Site Recovery-bővítmény.
+Az Azure [Virtuálisgép-ügynök](../../virtual-machines/windows/classic/agents-and-extensions-classic.md#azure-vm-agents-for-windows-and-linux) telepíteni kell a virtuális gép működéséhez, illetve a virtuális gép védelmét a Site Recovery-bővítmény.
 
 >[!IMPORTANT]
 >A Windows virtuális gépek 9.7.0.0, verziójától a mobilitási szolgáltatások telepítőjének is telepíti a legújabb elérhető Azure Virtuálisgép-ügynök. Az áttelepítési a virtuális gép megfelel-e a bármely Virtuálisgép-bővítmény, beleértve a Site Recovery bővítmény használatára vonatkozó előfeltételek telepítése. Az Azure virtuális gép ügynöknek szüksége van, manuálisan kell telepíteni, csak ha a mobilitási szolgáltatást a áttelepített számítógépen telepített 9.6 vagy korábbi verzió.

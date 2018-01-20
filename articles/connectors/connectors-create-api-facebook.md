@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/07/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: e10a30ccef3e81cb3d7749696453d82b8958d076
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 27a9297c5d4cfb52f254ceb12e37423403e7f41b
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-facebook-connector"></a>A Facebook-összekötő az első lépései
 Csatlakozni a Facebookhoz és idővonalon, hírcsatorna oldal, és több. A Facebook a következőket teheti:
@@ -28,7 +28,7 @@ Csatlakozni a Facebookhoz és idővonalon, hírcsatorna oldal, és több. A Face
 * Egy eseményindító használni, új post fogadásakor.
 * Küldje el a ütemterv használatát műveleteket hírcsatorna oldal, és több kapják meg. Ezeket a műveleteket válaszol, és végezze el a kimeneti más műveletek érhető el. Például, ha van egy új post az ütemterven, igénybe a feladás egy vagy több, és hogy a Twitter hírcsatorna. 
 
-Most hozzon létre egy logic app kezdheti, lásd: [logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md).
+Most hozzon létre egy logic app kezdheti, lásd: [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="create-a-connection-to-facebook"></a>Kapcsolatot létesíthet a Facebook-on
 Ezt az összekötőt a logic apps hozzáadásakor engedélyeznie kell a logic apps csatlakozni a Facebookhoz.

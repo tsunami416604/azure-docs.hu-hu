@@ -12,13 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 01/18/2018
 ms.author: tamram
-ms.openlocfilehash: 2c1534dcbb0e26ecdff7c057efb5094c60b5c5b7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3a21d87cee714dbc3aab6d4106544e45d91a3193
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="how-to-use-blob-storage-from-ruby"></a>How to use Blob storage from Ruby (A Blob Storage használata Rubyval)
 [!INCLUDE [storage-selector-blob-include](../../../includes/storage-selector-blob-include.md)]
@@ -35,28 +35,31 @@ Ez az útmutató bemutatja, hogyan hajthat végre a Blob storage használatával
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-ruby-application"></a>Ruby-alkalmazás létrehozása
-Ruby-alkalmazás létrehozása. Útmutatásért lásd: [Ruby sínek webalkalmazás egy Azure virtuális gépen](../../virtual-machines/linux/classic/virtual-machines-linux-classic-ruby-rails-web-app.md)
+Ruby-alkalmazás létrehozása. Útmutatásért lásd: [Ruby sínek webalkalmazás egy Azure virtuális gépen](https://docs.microsoft.com/azure/app-service/containers/quickstart-ruby)
+
 
 ## <a name="configure-your-application-to-access-storage"></a>Állítsa be az alkalmazását tároló elérésére
 Azure Storage használatához szüksége töltse le és használja a Ruby azure csomagot, amely tartalmaz egy kényelmi szalagtár szerepel, amely a többi tárolási szolgáltatásokkal kommunikálni.
 
 ### <a name="use-rubygems-to-obtain-the-package"></a>RubyGems használja a csomag beszerzése
 1. Használjon például egy parancssori felületet **PowerShell** (Windows), **Terminálszolgáltatások** (Mac), vagy **Bash** (Unix).
-2. Írja be a "gem telepítése azure" gem és függőségeinek telepítéséhez a parancsablakban.
+2. Írja be a "gem telepítése azure-storage-blob" gem és függőségeinek telepítéséhez a parancsablakban.
 
 ### <a name="import-the-package"></a>A csomag importálása
 Kedvenc szövegszerkesztőjével használ, a Ruby, hol szeretne használni a tárolási fájl elejéhez adja hozzá a következő:
 
 ```ruby
-require "azure"
+require "azure/storage/blob"
 ```
 
 ## <a name="set-up-an-azure-storage-connection"></a>Egy Azure Storage-kapcsolat beállítása
-Az azure-moduljának a környezeti változókat olvassák **AZURE\_tárolási\_fiók** és **AZURE\_tárolási\_ACCESS_KEY** az Azure storage-fiókhoz való kapcsolódáshoz szükséges információkat. Ha ezek a környezeti változók nem, meg kell adnia a fiók használata előtt **Azure::Blob::BlobService** az alábbi kódra:
+Az azure-moduljának a környezeti változókat olvassák **AZURE\_tárolási\_fiók** és **AZURE\_tárolási\_ACCESS_KEY** az Azure storage-fiókhoz való kapcsolódáshoz szükséges információkat. Ha ezek a környezeti változók nem, meg kell adnia a fiók az adatokat a **Azure::Blob::BlobService:: létrehozása** az alábbi kódra:
 
 ```ruby
-Azure.config.storage_account_name = "<your azure storage account>"
-Azure.config.storage_access_key = "<your azure storage access key>"
+blob_client = Azure::Storage::Blob::BlobService.create(
+    storage_account_name: account_name,
+    storage_access_key: account_key
+    )
 ```
 
 Ezek az értékek beolvasása klasszikus vagy erőforrás-kezelő storage-fiókot az Azure-portálon:
@@ -70,12 +73,12 @@ Ezek az értékek beolvasása klasszikus vagy erőforrás-kezelő storage-fióko
 ## <a name="create-a-container"></a>Tároló létrehozása
 [!INCLUDE [storage-container-naming-rules-include](../../../includes/storage-container-naming-rules-include.md)]
 
-A **Azure::Blob::BlobService** objektum lehetővé teszi, hogy a tárolók és blobok. Egy tároló létrehozásához használja a **létrehozása\_container()** metódust.
+A **Azure::Storage::Blob::BlobService** objektum lehetővé teszi, hogy a tárolók és blobok. Egy tároló létrehozásához használja a **létrehozása\_container()** metódust.
 
 Az alábbi példakód létrehoz egy tárolót vagy kiírja a hiba, ha van ilyen.
 
 ```ruby
-azure_blob_service = Azure::Blob::BlobService.new
+azure_blob_service = Azure::Storage::Blob::BlobService.create_from_env
 begin
     container = azure_blob_service.create_container("test-container")
 rescue
@@ -119,17 +122,19 @@ puts blob.name
 
 ## <a name="list-the-blobs-in-a-container"></a>A tárolóban lévő blobok listázása
 A tárolók kilistázhatja **list_containers()** metódust.
-A tárolóban lévő blobok listázása, használja a **lista\_blobs()** metódust.
+A tárolóban lévő blobok listázása, használja a **lista\_blobs()** metódust. Ahhoz, hogy minden, a tárolóban lévő blobok listázásához hajtsa végre a szolgáltatás által visszaadott folytatási és továbbra is fut a list_blobs a tokenhez. Tekintse meg a [lista Blobok REST API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) részleteiről.
 
-Ennek kimenete a fiókhoz tartozó összes tároló összes blobjának URL-címei.
+Az alábbi kód kiírja az összes blobjának egy tárolóban.
 
 ```ruby
-containers = azure_blob_service.list_containers()
-containers.each do |container|
-    blobs = azure_blob_service.list_blobs(container.name)
+nextMarker = nil
+loop do
+    blobs = azure_blob_service.list_blobs(container_name, { marker: nextMarker })
     blobs.each do |blob|
-    puts blob.name
+        puts "\tBlob name #{blob.name}"
     end
+    nextMarker = blobs.continuation_token
+    break unless nextMarker && !nextMarker.empty?
 end
 ```
 
@@ -150,10 +155,10 @@ Végezetül blob törléséhez használja a **törlése\_blob()** metódust. Az 
 azure_blob_service.delete_blob(container.name, "image-blob")
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tájékozódhat az összetettebb tárolási feladatok elvégzéséről, az alábbi hivatkozásokat követve:
 
 * [Az Azure Storage csapat blogja](http://blogs.msdn.com/b/windowsazurestorage/)
-* [Rubyhoz készült Azure SDK](https://github.com/WindowsAzure/azure-sdk-for-ruby) GitHub tárházából
+* [Az Azure Storage szolgáltatás SDK a Rubyhoz](https://github.com/azure/azure-storage-ruby) GitHub tárházából
 * [Adatátvitel az AzCopy parancssori segédprogrammal](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 

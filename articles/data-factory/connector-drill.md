@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: jingwang
-ms.openlocfilehash: 2925476687ed59fd5e82d63df54ca4be5c54e3de
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: dc79feac8c41c15d03fdf5005361fed34ee8c7e8
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="copy-data-from-drill-using-azure-data-factory-beta"></a>Adatok másolása az Azure Data Factory (béta) használatával részletezés
 
@@ -37,7 +37,7 @@ Az Azure Data Factory kapcsolódásának engedélyezése beépített illesztőpr
 
 ## <a name="getting-started"></a>Első lépések
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
 
 A következő szakaszok részletesen bemutatják való részletezési összekötő adat-előállító tartozó entitások meghatározásához használt tulajdonságokat.
 

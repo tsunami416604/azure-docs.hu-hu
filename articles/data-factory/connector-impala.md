@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: jingwang
-ms.openlocfilehash: 6719db60c7a5f67e45f53c548c573e05599734fb
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: e87117731a8af59fedc1bba903ef81b67d91c9f3
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="copy-data-from-impala-using-azure-data-factory-beta"></a>Adatok másolása az Azure Data Factory (béta) használatával Impala
 
@@ -37,7 +37,7 @@ Az Azure Data Factory kapcsolódásának engedélyezése beépített illesztőpr
 
 ## <a name="getting-started"></a>Első lépések
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
 
 A következő szakaszok részletesen bemutatják való Impala összekötő adat-előállító tartozó entitások meghatározásához használt tulajdonságokat.
 
@@ -50,7 +50,7 @@ A következő tulajdonságok esetén Impala társított szolgáltatás támogato
 | type | A type tulajdonságot kell beállítani: **Impala** | Igen |
 | gazdagép | A kiszolgáló IP-címét vagy állomásnevét kiszolgálónevét a Impala. (Ez 192.168.222.160)  | Igen |
 | port | A TCP-portot, amelyen a Impala kiszolgáló ügyfélkapcsolatokat. Az alapértelmezett érték: 21050.  | Nem |
-| AuthenticationType | A használandó hitelesítési típus. <br/>Két érték engedélyezett: **névtelen**, **SASLUsername**, **UsernameAndPassword** | Igen |
+| authenticationType | A használandó hitelesítési típus. <br/>Két érték engedélyezett: **névtelen**, **SASLUsername**, **UsernameAndPassword** | Igen |
 | felhasználónév | A felhasználónév, a Impala kiszolgálóhoz való hozzáféréshez. Az alapértelmezett értéke névtelen SASLUsername használatakor.  | Nem |
 | jelszó | A jelszó, a felhasználónév megfelelő UsernameAndPassword használata esetén. Ez a mező megjelölése a SecureString tárolja biztonságos helyen az ADF, vagy a jelszó tárolása az Azure Key Vault választhat, és lehetővé teszik a másolási tevékenység lekéréses ott adatmásolás végrehajtása során – további információhoz [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). | Nem |
 | enableSsl | Meghatározza, hogy a kapcsolat titkosítása SSL használatával. Az alapértelmezett értéke hamis.  | Nem |

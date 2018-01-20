@@ -33,7 +33,7 @@ Most kell regisztrálnia az alkalmazást a *Microsoft alkalmazásregisztrációs
 > - Váltson vissza az a *alkalmazásregisztrációs portálra* , és `http://localhost:8080/` , egy `Redirect URL`, vagy használjon `http://localhost:[port]/` egyéni TCP-port használata (ahol *[port]* az egyéni TCP-port szám), és kattintson a "Mentés"
 
 
-#### <a name="configure-your-javascript-spa"></a>A JavaScript SPA konfigurálása
+#### <a name="configure-your-javascript-spa"></a>Configure your JavaScript SPA
 
 1.  Hozzon létre egy fájlt `msalconfig.js` tartalmazó az alkalmazás regisztrációs adatait. Ha a Visual Studio használ, válassza ki a project (projekt gyökérmappájában), kattintson a jobb gombbal és válassza ki: `Add`  >  `New Item`  >  `JavaScript File`. Nevezze el`msalconfig.js`
 2.  Adja hozzá a következő kódot a `msalconfig.js` fájlt:

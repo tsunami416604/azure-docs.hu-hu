@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: jingwang
-ms.openlocfilehash: 790d7f08dd97e5ba5f376ffaf5d1b95f4ffbad03
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 34942a079d4ae132535806a11db4476bf28aa55c
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="copy-data-from-mariadb-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával MariaDB 
 
@@ -36,7 +36,7 @@ Ez az összekötő jelenleg MariaDB verzió 10.2-nél kisebb.
 
 ## <a name="getting-started"></a>Első lépések
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
 
 A következő szakaszok részletesen bemutatják való MariaDB összekötő adat-előállító tartozó entitások meghatározásához használt tulajdonságokat.
 

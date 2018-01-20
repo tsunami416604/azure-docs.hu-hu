@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: markgal;trinadhk;
-ms.openlocfilehash: a3b8bb53c467ad6f595a52e2a2e8f805a8f062f6
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: d420e0a39edf2af4bb050dd735dd7b4d1e604d6f
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>Az Azure-portál használatával állítsa vissza a virtuális gépek
 Pillanatképek készítése a adatait meghatározott időközönként védeni az adatokat. Ezeket a pillanatképeket nevezzük helyreállítási pontokat, és vannak tárolva, a Recovery Services-tárolók. Szükség esetén javítsa vagy építse újra a virtuális gép (VM), visszaállíthatja a virtuális gép bármelyik mentett helyreállítási pontok. A helyreállítási pont visszaállításakor teheti:
@@ -70,7 +70,7 @@ A virtuális gép vagy az összes lemez visszaállítása a virtuális gép bizt
 
     A **visszaállítása** panel nyílik meg.
 
-    ![visszaállítás panel](./media/backup-azure-arm-restore-vms/restore-blade.png)
+    ![Panel visszaállítása](./media/backup-azure-arm-restore-vms/restore-blade.png)
 7. Az a **visszaállítása** panelen válassza **visszaállítási pont**. A **visszaállítási pont kiválasztása** panel nyílik meg.
 
     ![Válasszon visszaállítási pontot](./media/backup-azure-arm-restore-vms/recovery-point-selector.png)
@@ -196,7 +196,7 @@ A sablon lett létrehozva, a lemezek helyreállítás részeként beolvasása:
    ![Küldje el a sablon telepítése](./media/backup-azure-arm-restore-vms/submitting-template.png)
 
 ## <a name="post-restore-steps"></a>Visszaállítás utáni lépéseket
-* Egy felhőalapú init-Linux terjesztési, például Ubuntu, biztonsági okokból használatakor blokkolva van-e a jelszó visszaállítás utáni. A visszaállított virtuális Gépet a VMAccess bővítmény használatát [a jelszó alaphelyzetbe állítása](../virtual-machines/linux/classic/reset-access.md). Azt javasoljuk, SSH-kulcsok a ezek terjesztéseket alaphelyzetbe állítása a jelszó post visszaállítási elkerülése érdekében.
+* Egy felhőalapú init-Linux terjesztési, például Ubuntu, biztonsági okokból használatakor blokkolva van-e a jelszó visszaállítás utáni. A visszaállított virtuális Gépet a VMAccess bővítmény használatát [a jelszó alaphelyzetbe állítása](../virtual-machines/linux/classic/reset-access-classic.md). Azt javasoljuk, SSH-kulcsok a ezek terjesztéseket alaphelyzetbe állítása a jelszó post visszaállítási elkerülése érdekében.
 * A biztonsági mentési konfiguráció során Extensions telepítve, de nem engedélyezett. Ha azt látja, hogy a problémát, telepítse újra a bővítmények. 
 * Ha a biztonsági másolat a virtuális gép statikus IP-post visszaállítási rendelkezik, a visszaállított virtuális Géphez van egy dinamikus IP-címe a visszaállított virtuális gépek létrehozásakor ütközés elkerülése érdekében. Tudjon meg többet adhat [egy statikus IP-cím hozzáadása a visszaállított virtuális Géphez](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm).
 * A visszaállított virtuális gép nem rendelkezik egy rendelkezésre állási értéket. Visszaállítás lemezek beállítás használatát javasoljuk [adja hozzá a rendelkezésre állási csoportok](../virtual-machines/windows/tutorial-availability-sets.md) lemezek létrehozásakor egy virtuális Gépet a PowerShell vagy a sablonok segítségével visszaállítani. 

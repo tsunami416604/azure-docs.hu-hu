@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 11/01/2017
+ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: 8176a952107a630d42d557e568a230f1cdc840aa
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: b5bed534d9fa1a64b0e90c268407281724185ce8
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="how-to-connect-to-data-sources"></a>Kapcsolódás az adatforrásokhoz
 ## <a name="introduction"></a>Bevezetés
@@ -45,9 +45,9 @@ Használata esetén a "Megnyitás..." az Azure Data Catalog-portált, a megfelel
 | --- | --- | --- |
 | Excel |.odc |Az Excel 2010-es vagy újabb |
 | Excel (első 1000) |.odc |Az Excel 2010-es vagy újabb |
-| A Power Query |.xlsx |Excel 2016 vagy az Excel 2010 vagy az Excel 2013 a Power Query az Excel-bővítmény telepítése |
-| A Power BI Desktop |a .pbix |A Power BI Desktop július 2016 vagy újabb |
-| SQL Server Data Tools |vsweb: / / |A Visual Studio 2013 Update 4 vagy újabb rendszert telepített SQL Server tooling |
+| Power Query |.xlsx |Excel 2016 vagy az Excel 2010 vagy az Excel 2013 a Power Query az Excel-bővítmény telepítése |
+| A Power BI Desktop |.pbix |A Power BI Desktop július 2016 vagy újabb |
+| SQL Server Data Tools |vsweb:// |A Visual Studio 2013 Update 4 vagy újabb rendszert telepített SQL Server tooling |
 | Jelentéskezelő |http:// |Lásd: [SQL Server Reporting Services böngészőre vonatkozó követelményei](https://technet.microsoft.com/en-us/library/ms156511.aspx) |
 
 ## <a name="your-data-your-tools"></a>Az adatok, az eszközök
@@ -64,8 +64,8 @@ Megkönnyítik a felhasználók számára az adatforrás felderítéséhez, de n
 
  ![A kérés hozzáférési utasításokat kapcsolatadatok](./media/data-catalog-how-to-connect/data-catalog-how-to-connect4.png)
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Adatforrás regisztrálása **Azure Data Catalog** lehetővé teszi, hogy az adatok felderíthető szerkezeti és leíró metaadatok másolja az adatforrás a Catalog szolgáltatásba. Miután regisztrált egy adatforrást, és felderített, a felhasználók kapcsolódhatnak az adatforrást a **Azure Data Catalog** portal "Megnyitás..." " menü vagy a kiválasztott data tools használatával.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Ismerkedés az Azure Data Catalog](data-catalog-get-started.md) oktatóprogram lépésről lépésre vonatkozó további információért adatforrásokhoz való csatlakozás.

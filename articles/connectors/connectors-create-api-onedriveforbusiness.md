@@ -15,23 +15,23 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 08/18/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: 783d6a640d9626508bcabc5f991dc5b6fc22eaf4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8bd447b59e8fd3573dad26ae6600e4b5c9cb7a7e
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-onedrive-for-business-connector"></a>A onedrive vállalati verzió üzleti összekötő az első lépései
 Csatlakoztassa a fájlok kezelését onedrive vállalati verzióhoz. Különböző műveletek végezhetők feltöltési, például frissítse, beolvasása, és törli a fájlokat.
 
-Most hozzon létre egy logic app kezdheti, lásd: [logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md).
+Most hozzon létre egy logic app kezdheti, lásd: [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="create-a-connection-to-onedrive-for-business"></a>Kapcsolatot létesíthet a onedrive vállalati verzió
 A Logic apps onedrive vállalati verzió létrehozásához, létre kell hoznia egy **kapcsolat** adja meg a részleteket a következő tulajdonságokkal:
 
 | Tulajdonság | Szükséges | Leírás |
 | --- | --- | --- |
-| Token |Igen |Adja meg a OneDrive for Businesshez tartozó hitelesítő adatait |
+| Jogkivonat |Igen |Adja meg a OneDrive Vállalati verzióhoz tartozó hitelesítő adatait |
 
 Miután létrehozta a kapcsolatot, használhatja a műveletek végrehajtása és a jelen cikkben ismertetett eseményindítók figyelni.
 
