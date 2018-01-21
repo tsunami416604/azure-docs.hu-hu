@@ -14,7 +14,7 @@ Az Fs-sorozat az F-sorozat összes előnyét biztosítja a prémium szintű tár
 
 ## <a name="fsv2-series-sup1sup"></a>Fsv2-sorozat <sup>1</sup>
 
-ACU: 195-210
+ACU: 195 - 210
 
 | Méret             | vCPU meg | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | A maximális hálózati adapterek / várható a hálózati sávszélesség (MB/s) |
 |------------------|--------|-------------|----------------|----------------|-----------------------------------------------------------------------|------------------------------------------------|
@@ -24,9 +24,11 @@ ACU: 195-210
 | Standard_F16s_v2 | 16     | 32          | 128            | 32             | 32000 (256)                                                           | Magas                                           |
 | Standard_F32s_v2 | 32     | 64          | 256            | 32             | 64000 (512)                                                           | Rendkívül nagy                                 |
 | Standard_F64s_v2 | 64     | 128         | 512            | 32             | 128000 (1024)                                                         | Rendkívül nagy                                 |
-| Standard_F72s_v2 | 72     | 144         | 576            | 32             | 144000 (1520)                                                         | Rendkívül nagy                                 |
+| Standard_F72s_v2<sup>2</sup> | 72     | 144         | 576            | 32             | 144000 (1520)                                                         | Rendkívül nagy                                 |
 
 <sup>1</sup>Fsv2 sorozatú virtuális gép funkció Intel® Hyper-Threading technológia
+
+<sup>2</sup> 64-nél több vCPU szükséges a támogatott vendég operációs rendszer: Windows Server 2016-os, Ubuntu 16.04 LTS, SLES 12 SP2, és Red Hat Enterprise Linux, CentOS 7.3 vagy Oracle Linux 7.3 a LIS 4.2.1.
 
 ## <a name="fs-series-sup1sup"></a>FS-sorozat <sup>1</sup>
 
@@ -57,7 +59,7 @@ ACU: 210–250
 | Standard_F2  | 2         | 4           | 32             | 6000 / 93 / 46                                           | 8 / 8x500                         | 2 / 1500                     |
 | Standard_F4  | 4         | 8           | 64             | 12000 / 187 / 93                                         | 16 / 16x500                         | 4 / 3000                     |
 | Standard_F8  | 8         | 16          | 128            | 24000 / 375 / 187                                        | 32 / 32x500                       | 8 / 6000                     |
-| Standard_F16 | 16        | 32          | 256            | 48000 / 750 / 375                                        | 64 / 64 x 500                       | 8 / 12000           |
+| Standard_F16 | 16        | 32          | 256            | 48000 / 750 / 375                                        | 64 / 64x500                       | 8 / 12000           |
 
 
 <br>

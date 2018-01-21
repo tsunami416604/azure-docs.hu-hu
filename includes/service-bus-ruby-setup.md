@@ -1,5 +1,5 @@
 ## <a name="create-a-ruby-application"></a>Ruby-alkalmazás létrehozása
-Útmutatásért lásd: [Ruby-alkalmazás létrehozása az Azure-on](../articles/virtual-machines/linux/classic/virtual-machines-linux-classic-ruby-rails-web-app.md).
+Útmutatásért lásd: [Ruby-alkalmazás létrehozása az Azure-on](../articles/virtual-machines/linux/classic/ruby-rails-web-app.md).
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Állítsa be az alkalmazását, használja a Service Bus számára
 Service Bus használatára, töltse le, és használja az Azure Ruby csomagot, amely tartalmaz egy kényelmi szalagtár szerepel, amely a többi tárolási szolgáltatásokkal kommunikálni.
