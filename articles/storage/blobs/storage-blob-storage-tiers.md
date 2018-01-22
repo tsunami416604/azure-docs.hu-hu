@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/11/2017
 ms.author: kuhussai
-ms.openlocfilehash: b8f0f899dff0f9e238017cb77126b3ca1275f3cd
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: be84f68a044a73673e991f04c7fe36a7787b9c3c
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-storage-tiers"></a>Azure Blob Storage: A gyakori és ritka elérésű, valamint az archív tárolási szintek
 
@@ -187,9 +187,9 @@ Az Azure Portal, a PowerShell, valamint a parancssori felület eszközei, illetv
 
 Az adattárolási és egyéb korlátok a fiókok szintjén vannak meghatározva, nem a tárolók szintjén. Eldöntheti tehát, hogy az összes korlátot egy szinten vagy az összes szinten szeretné alkalmazni. További információkért lásd: [Azure Storage Scalability and Performance Targets](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) (Az Azure Storage méretezhetőségi és teljesítménycéljai).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-### <a name="evaluate-hot-cool-and-archvie-in-gpv2-blob-storage-accounts"></a>A gyakori és ritka elérésű, valamint az archív tárolási szint értékelése a GPv2 és Blob Storage-fiókok esetében
+### <a name="evaluate-hot-cool-and-archive-in-gpv2-blob-storage-accounts"></a>A gyakori és ritka elérésű, valamint az archív tárolási szint értékelése a GPv2 Blob Storage-fiókok esetében
 
 [A gyakori és ritka elérésű, valamint az archív tárolási szint rendelkezésre állásának ellenőrzése régiónként](https://azure.microsoft.com/regions/#services)
 

@@ -1,5 +1,5 @@
 ---
-title: "Áttekintés – Azure AD B2C | Microsoft Docs"
+title: "Felhőbeli identitáskezelő webes és mobilalkalmazások – Azure AD B2C | Microsoft Docs"
 description: "A felhasználók felé néző alkalmazások fejlesztése az Azure Active Directory B2C-vel"
 services: active-directory-b2c
 documentationcenter: 
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/06/2016
 ms.author: saeedakhter-msft
-ms.openlocfilehash: bd29d78fa38dc4b5713d018eceed56e6b93739b4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: 7881793ebce10b4f9fbc9c534d9d6fc0ebb38f0b
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="azure-ad-b2c-focus-on-your-app-let-us-worry-about-sign-up-and-sign-in"></a>Azure AD B2C: Összpontosítson az alkalmazására, a regisztráció és a bejelentkezés a mi feladatunk
 
@@ -63,7 +64,7 @@ Ismerje meg, hogyan használhatja az Azure Active Directory B2C egyes szolgálta
 * Az Azure Active Directory B2C által üzemeltetett, [felhasználók felé irányuló regisztrációs, bejelentkezési és más lapok megjelenésének és használatának testreszabása](active-directory-b2c-reference-ui-customization.md)
 * [Felhasználók programokon keresztüli létrehozása, beolvasása, frissítése és törlése az Azure Active Directory Graph API segítségével](active-directory-b2c-devquickstarts-graph-dotnet.md) az Azure Active Directory B2C-bérlőben
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbi hivatkozások segítségével mélyebben is megismerheti a szolgáltatást:
 

@@ -44,6 +44,8 @@
         - name: VSCode-eszközök
           href: ../hdinsight-for-vscode.md
           maintainContext: true
+        - name: Feladatok beküldése az R Tools for Visual Studio használatával
+          href: r-server-submit-jobs-r-tools-vs.md
     - name: Fürtök kiterjesztése
       items:
         - name: Fürtök testreszabása a Bootstrap használatával
@@ -269,7 +271,7 @@
         - name: Fürtteljesítmény monitorozása
           href: ../hdinsight-key-scenarios-to-monitor.md
           maintainContext: true
-- name: Hivatkozás
+- name: Referencia
   items:
     - name: Kódminták
       href: 'https://azure.microsoft.com/en-us/resources/samples/?service=hdinsight'

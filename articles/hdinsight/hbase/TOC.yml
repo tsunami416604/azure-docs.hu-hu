@@ -43,6 +43,11 @@
           href: apache-hbase-phoenix-squirrel-linux.md
         - name: A Phoenix-lekérdezéskiszolgáló REST SDK használata
           href: apache-hbase-using-phoenix-query-server-rest-sdk.md
+    - name: Big Data típusú adatok elemzése
+      items:
+        - name: A Spark használata HBase-adatok írására és olvasására
+          href: ../hdinsight-using-spark-query-hbase.md
+          maintainContext: true
     - name: Fürtök kiterjesztése
       items:
         - name: Fürtök testreszabása a Bootstrap használatával
@@ -233,7 +238,7 @@
         - name: Fürtteljesítmény monitorozása
           href: ../hdinsight-key-scenarios-to-monitor.md
           maintainContext: true
-- name: Hivatkozás
+- name: Referencia
   items:
     - name: Kódminták
       href: 'https://azure.microsoft.com/en-us/resources/samples/?service=hdinsight'

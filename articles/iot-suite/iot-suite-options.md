@@ -11,11 +11,11 @@ ms.topic: get-started-article
 ms.date: 11/10/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1a23835f341bf02f8e662782984d95bfe194030b
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 1a979bde37d247da5c630547924cadbd79c4a6a4
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="compare-azure-iot-options"></a>Az Azure IoT lehetőségeinek összehasonlítása
 
@@ -27,13 +27,13 @@ Az [Azure és az eszközök internetes hálózata](iot-suite-what-is-azure-iot.m
 
 Ennek az architektúrának a megvalósítására az Azure IoT számos lehetőséget kínál a különböző felhasználói igényekhez:
 
-* Az [Azure IoT Suite](index.md) [előre konfigurált megoldások](iot-suite-what-are-preconfigured-solutions.md) vállalati szintű gyűjteménye, amely az egyéni IoT-megoldások fejlesztésének felgyorsítását lehetővé tévő szolgáltatásként nyújtott platformon alapul.
+* Az [Azure IoT Suite](index.md) [előre konfigurált megoldások](iot-suite-what-are-preconfigured-solutions.md) vállalati szintű gyűjteménye, amely az egyéni IoT-megoldások fejlesztésének felgyorsítását lehetővé tévő szolgáltatásként nyújtott platformon (PaaS) alapul.
 
-* A [Microsoft IoT-központ](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions) egy olyan SaaS megoldás, amely egy modellalapú megközelítéssel teszi lehetővé vállalati szintű IoT-megoldások létrehozását úgy, hogy nincs szükség felhőmegoldás-fejlesztési szaktudásra.
+* A [Microsoft IoT-központ](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions) egy olyan szolgáltatott szoftver (SaaS) típusú megoldás, amely egy modellalapú megközelítéssel teszi lehetővé vállalati szintű IoT-megoldások létrehozását úgy, hogy nincs szükség felhőmegoldás-fejlesztési szaktudásra.
 
 ## <a name="azure-iot-hub"></a>Azure IoT Hub
 
-Az Azure IoT Hub az alapvető Azure-szolgáltatásként nyújtott platform, amelyet a Microsoft IoT-központ és az Azure IoT Suite is használ. Az Azure IoT Hub megbízható és biztonságos kétirányú kommunikációt tesz lehetővé több millió IoT-eszköz és egy felhőalapú megoldás között. Az IoT Hub segít a következő IoT implementációs kihívások leküzdésében:
+Az Azure IoT Hub az alapvető Azure PaaS, amelyet a Microsoft IoT-központ és az Azure IoT Suite is használ. Az Azure IoT Hub megbízható és biztonságos kétirányú kommunikációt tesz lehetővé több millió IoT-eszköz és egy felhőalapú megoldás között. Az IoT Hub segít a következő IoT implementációs kihívások leküzdésében:
 
 * Nagy mennyiségű eszköz csatlakoztatása és felügyelete.
 * Nagy mennyiségű telemetriaadat feldolgozása.
@@ -59,7 +59,7 @@ A döntést, hogy végül melyik terméket használja az IoT-megoldás létrehoz
 * A létrehozni kívánt megoldás típusa
 * A szervezetében elérhető szaktudás a megoldás összeállításához és hosszú távú karbantartásához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A kiválasztott termék és megközelítés alapján a javasolt következő lépések:
 

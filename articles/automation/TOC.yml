@@ -99,7 +99,7 @@
       items:
         - name: A célállapot-konfiguráló (DSC) áttekintése
           href: automation-dsc-overview.md
-        - name: Bevezetés
+        - name: Első lépések
           href: automation-dsc-getting-started.md
         - name: Kiszolgálók célállapotba történő konfigurálása és eltéréskezelés az Azure Automation használatával
           href: tutorial-configure-servers-desired-state.md
@@ -131,10 +131,10 @@
       items:
         - name: Runbook-katalógus
           href: automation-runbook-gallery.md
+        - name: Runbook indítása Azure-riasztásokból
+          href: automation-create-alert-triggered-runbook.md
         - name: Amazon-webszolgáltatásbeli virtuális gép létrehozása
           href: automation-scenario-aws-deployment.md
-        - name: Azure VM-riasztás szervizelése
-          href: automation-azure-vm-alert-integration.md
         - name: Virtuális gép indítása és leállítása JSON-címkékkel
           href: automation-scenario-start-stop-vm-wjson-tags.md
         - name: Erőforráscsoport eltávolítása
@@ -193,7 +193,7 @@
       href: /rest/api/automation
     - name: REST (klasszikus)
       href: 'https://msdn.microsoft.com/library/azure/mt163781'
-- name: Erőforrások
+- name: További források
   items:
     - name: Automation bevezető videója
       href: 'https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/'

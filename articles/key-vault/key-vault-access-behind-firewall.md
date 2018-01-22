@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: ambapat
-ms.openlocfilehash: d00c6e0acf437d2bfc3c27e948f4646a6685b08f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ad31e869d998d29d403ff97c17150c5078ce856d
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>Az Azure Key Vault elérése tűzfal mögött
 ### <a name="q-my-key-vault-client-application-needs-to-be-behind-a-firewall-what-ports-hosts-or-ip-addresses-should-i-open-to-enable-access-to-a-key-vault"></a>K: A kulcstároló ügyfélalkalmazásomnak tűzfal mögött kell lennie. Milyen portokat, állomásokat vagy IP-címeket kell megnyitnom a kulcstárolóhoz való hozzáférés engedélyezéséhez?
@@ -33,13 +33,13 @@ A konfigurációtól és a környezettől függően lehetnek bizonyos eltérése
 ## <a name="ports"></a>Portok
 Mindhárom funkció (a hitelesítés, a felügyelet és az adatsíkhoz való hozzáférés) Key Vault felé irányuló összes forgalma a 443-as HTTPS-porton keresztül zajlik. A CRL használata esetén azonban alkalmanként HTTP-forgalom is előfordul (a 80-as porton keresztül). Az OCSP protokollhoz hozzáférő ügyfeleknek nem szabad elérniük a CRL-t, azonban alkalmanként elérhetik [http://cdp1.public-trust.com/CRL/Omniroot2025.crl](http://cdp1.public-trust.com/CRL/Omniroot2025.crl) címet.  
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 A Key Vault-ügyfélalkalmazásoknak a hitelesítés érdekében hozzá kell férniük az Azure Active Directory-végpontokhoz. A használt végpont függ az Azure AD bérlői konfigurációjától, valamint a név típusától (felhasználói név, szolgáltatásnév), illetve a fiók típusától (pl. Microsoft-fiók vagy munkahelyi/iskolai fiók).  
 
 | Résztvevő típusa | Végpont:port |
 | --- | --- |
-| A Microsoft-fiókot használó felhasználó<br> (például: user@hotmail.com) |**Globálisan:**<br> login.microsoftonline.com:443<br><br> **Azure China:**<br> login.chinacloudapi.cn:443<br><br>**Amerikai Egyesült Államok kormánya által használt Azure:**<br> login-us.microsoftonline.com:443<br><br>**Azure Germany:**<br> login.microsoftonline.de:443<br><br> és <br>login.live.com:443 |
-| Az Azure AD-vel munkahelyi vagy iskolai fiókot használó felhasználó vagy szolgáltatás (például user@contoso.com) |**Globálisan:**<br> login.microsoftonline.com:443<br><br> **Azure China:**<br> login.chinacloudapi.cn:443<br><br>**Amerikai Egyesült Államok kormánya által használt Azure:**<br> login-us.microsoftonline.com:443<br><br>**Azure Germany:**<br> login.microsoftonline.de:443 |
+| A Microsoft-fiókot használó felhasználó<br> (például: user@hotmail.com) |**Globálisan:**<br> login.microsoftonline.com:443<br><br> **Azure China:**<br> login.chinacloudapi.cn:443<br><br>**Amerikai Egyesült Államok kormánya által használt Azure:**<br> login.microsoftonline.us:443<br><br>**Azure Germany:**<br> login.microsoftonline.de:443<br><br> és <br>login.live.com:443 |
+| Az Azure AD-vel munkahelyi vagy iskolai fiókot használó felhasználó vagy szolgáltatás (például user@contoso.com) |**Globálisan:**<br> login.microsoftonline.com:443<br><br> **Azure China:**<br> login.chinacloudapi.cn:443<br><br>**Amerikai Egyesült Államok kormánya által használt Azure:**<br> login.microsoftonline.us:443<br><br>**Azure Germany:**<br> login.microsoftonline.de:443 |
 | Munkahelyi vagy iskolai fiókot és az Active Directory Federation Servicest (AD FS) vagy más összevont végpontot (például: user@contoso.com) használó felhasználó vagy szolgáltatás. |A munkahelyi vagy iskolai fiókhoz tartozó valamennyi végpont plusz az AD FS vagy más összevont végpontok |
 
 Más összetett forgatókönyvek is előfordulhatnak. További információkért tekintse meg az [Azure Active Directory hitelesítési folyamatát](/documentation/articles/active-directory-authentication-scenarios/), az [alkalmazások Azure Active Directoryval való integrálását](/documentation/articles/active-directory-integrating-applications/) és [az Active Directory hitelesítési protokolljait ismertető cikket](https://msdn.microsoft.com/library/azure/dn151124.aspx).  
@@ -62,6 +62,6 @@ Az összes Key Vault-objektummal (kulcsok és titkos kulcsok) végzett felügyel
 ## <a name="ip-address-ranges"></a>IP-címtartományok
 A Key Vault szolgáltatás egyéb Azure-erőforrásokat is használ, amilyen például a PaaS-infrastruktúra. Éppen ezért nem lehetséges megadni IP-címek meghatározott tartományát, amellyel a Key Vault szolgáltatás végpontjai egy adott időpontban rendelkeznek. Ha a tűzfal csak az IP-címtartományokat támogatja, akkor tekintse meg a [Microsoft Azure adatközpont IP-címtartományait bemutató cikket](https://www.microsoft.com/download/details.aspx?id=41653). A hitelesítéshez és az identitásszolgáltatáshoz (Azure Active Directory) az alkalmazásnak képesnek kell lennie kapcsolódni a [hitelesítési és identitáscímeket ismertető cikkben](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) leírt végpontokhoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Amennyiben a Key Vault szolgáltatással kapcsolatban kérdése merülne fel, tekintse meg az [Azure Key Vault fórumait](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault).
 

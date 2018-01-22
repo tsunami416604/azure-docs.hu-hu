@@ -45,6 +45,10 @@
           maintainContext: true
     - name: Fejlesztés
       items:
+        - name: A Kafka Producer and Consumer API használata
+          href: apache-kafka-producer-consumer-api.md
+        - name: A Kafka Streams API használata
+          href: apache-kafka-streams-api.md
         - name: Üres élcsomópontok használata
           href: ../hdinsight-apps-use-edge-node.md
           maintainContext: true

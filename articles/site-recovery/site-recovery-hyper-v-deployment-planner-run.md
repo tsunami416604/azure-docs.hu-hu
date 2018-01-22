@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/02/2017
 ms.author: nisoneji
-ms.openlocfilehash: 5c7ff99c2f67f82f9a7d605d9960960f84e96900
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 34f0b641abcf4231655d74da46f1bdcadc5642f6
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="run-azure-site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Az Azure Site Recovery Deployment Planner futtatása a Hyper-V – Azure-hoz
 
@@ -97,7 +97,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 |-Virtualization|Itt adhatja meg a virtualizálás típusát (VMware vagy Hyper-V).|
 |-Directory|(Nem kötelező) Az univerzális elnevezési konvenciónak (UNC) megfelelő elérési út vagy azon helyi könyvtár elérési útja, ahol a profilkészítés során létrehozott adatokat tárolni kívánja. Ha nem adja meg, a rendszer az aktuális elérés úton található „ProfiledData” könyvtárat használja alapértelmezett könyvtárként.|
 |-Password|(Nem kötelező) A Hyper-V-gazdagéphez való csatlakozáshoz használt jelszó. Ha nem adja meg most, akkor a rendszer később, a parancs végrehajtásakor rákérdez.|
-|-StorageAccountName|(Nem kötelező) A helyszínről az Azure-ba történő adatreplikáció során elérhető átviteli sebesség azonosításához szükséges tárfiók neve. Az eszköz erre a tárfiókra tölti fel a tesztadatokat az átviteli sebesség kiszámításához.|
+|-StorageAccountName|(Nem kötelező) A helyszínről az Azure-ba történő adatreplikáció során elérhető átviteli sebesség azonosításához szükséges tárfiók neve. Az eszköz erre a tárfiókra tölti fel a tesztadatokat az átviteli sebesség kiszámításához. A tárfióknak általános célú v1-nek vagy tároló v2-nek (általános célú v2) kell lennie|
 |-StorageAccountKey|(Nem kötelező) A tárfiók eléréséhez használt tárfiókkulcs. Nyissa meg az Azure Portalt, és kattintson a Tárfiókok > <Storage account name> > Beállítások > Hozzáférési kulcsok > 1. kulcs (vagy klasszikus tárfiók esetén az Elsődleges elérési kulcs) elemre.|
 |-Környezet|(Nem kötelező) Ez az Ön Azure Storage-fiókjának célkörnyezete. Ez a következő három érték egyike lehet: AzureCloud, AzureUSGovernment, AzureChinaCloud. Az alapértelmezett érték az AzureCloud. Akkor használja ezt a paramétert, ha Azure-célrégióként Azure US Government- vagy Azure China-beli felhők vannak megadva.|
 
@@ -274,7 +274,7 @@ ASRDeploymentPlanner.exe -Operation GetThroughput /?
 | -Művelet | Átviteli sebesség lekérdezése |
 |-Virtualization|Itt adhatja meg a virtualizálás típusát (VMware vagy Hyper-V).|
 |-Directory|(Nem kötelező) A profilkészítés során létrehozott adatokat tároló mappa univerzális elnevezési konvenciónak (UNC) megfelelő vagy helyi elérési útja. Ezekre az adatokra szükség van a jelentés létrehozásához. Ha nincs megadva név, a rendszer az aktuális elérés úton található „ProfiledData” könyvtárat használja alapértelmezett könyvtárként.|
-| -StorageAccountName | A helyszínről az Azure-ba történő adatreplikáció során felhasznált sávszélesség meghatározásához szükséges tárfiók neve. Az eszköz erre a tárfiókra tölti fel a tesztadatokat a felhasznált sávszélesség megállapításához. |
+| -StorageAccountName | A helyszínről az Azure-ba történő adatreplikáció során felhasznált sávszélesség meghatározásához szükséges tárfiók neve. Az eszköz erre a tárfiókra tölti fel a tesztadatokat a felhasznált sávszélesség megállapításához. A tárfióknak általános célú v1-nek vagy tároló v2-nek (általános célú v2) kell lennie |
 | -StorageAccountKey | A tárfiók eléréséhez használt tárfiókkulcs. Nyissa meg az Azure Portalt, és kattintson a Tárfiókok > <*Tárfiók neve*> > Beállítások > Hozzáférési kulcsok > 1. kulcs elemre.|
 | -VMListFile | Azon virtuális gépek listáját tartalmazó fájl, amelyekről profilt szeretne készíteni a felhasznált sávszélesség kiszámításához. A fájl elérési útja lehet abszolút vagy relatív. A Hyper-V esetében ez a fájl a GetVMList művelet kimeneti fájlja. Ha az előkészületeket manuálisan végzi, a fájl minden sorában egy kiszolgáló nevének vagy IP-címének kell szerepelnie, amelyet egy virtuális gép neve követ \ perjellel elválasztva. A fájlban megadott virtuálisgép-névnek meg kell egyeznie a Hyper-V-gazdagépen szereplő névvel.<ul>Például: A „VMList.txt” fájl az alábbi virtuális gépeket tartalmazza:<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
 |-Környezet|(Nem kötelező) Ez az Ön Azure Storage-fiókjának célkörnyezete. Ez a következő három érték egyike lehet: AzureCloud, AzureUSGovernment, AzureChinaCloud. Az alapértelmezett érték az AzureCloud. Akkor használja ezt a paramétert, ha cél Azure-régióként az Amerikai Egyesült Államok kormánya által használt vagy Azure China-beli felhők vannak megadva.|
