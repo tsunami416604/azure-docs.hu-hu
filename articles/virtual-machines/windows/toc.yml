@@ -286,6 +286,8 @@
           href: convert-disk-storage.md
         - name: Migrálás prémium szintű tárolóba az Azure Site Recoveryvel
           href: migrate-to-premium-storage-using-azure-site-recovery.md
+        - name: Nem csatlakozó lemezek megkeresése
+          href: find-unattached-disks.md
         - name: Fájltároló használata
           href: mount-azure-file-storage.md
         - name: Lemezek üzembe helyezése sablonnal
@@ -418,7 +420,7 @@
           href: performance-diagnostics-vm-extension.md
         - name: Beágyazott virtualizálás használata
           href: troubleshoot-vm-by-use-nested-virtualization.md
-- name: Hivatkozás
+- name: Referencia
   items:
     - name: Azure CLI
       href: /cli/azure/vm

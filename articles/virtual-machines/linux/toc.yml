@@ -369,6 +369,8 @@
           href: copy-files-to-linux-vm-using-scp.md
         - name: Migrálás prémium szintű tárolóba az Azure Site Recoveryvel
           href: migrate-to-premium-storage-using-azure-site-recovery.md
+        - name: Nem csatlakozó lemezek megkeresése
+          href: find-unattached-disks.md
         - name: Fájltároló használata
           href: mount-azure-file-storage-on-linux-using-smb.md
         - name: Lemezek üzembe helyezése sablonnal

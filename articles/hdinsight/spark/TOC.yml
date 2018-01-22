@@ -115,6 +115,9 @@
           href: apache-spark-microsoft-cognitive-toolkit.md
     - name: Big Data típusú adatok elemzése
       items:
+        - name: A Spark használata HBase-adatok írására és olvasására
+          href: ../hdinsight-using-spark-query-hbase.md
+          maintainContext: true
         - name: Application Insights-telemetrianaplók elemzése
           href: apache-spark-analyze-application-insight-logs.md
     - name: Fürtök kiterjesztése
@@ -178,6 +181,8 @@
           maintainContext: true
     - name: Kezelés
       items:
+        - name: Spark-feladatok optimalizálása
+          href: apache-spark-perf.md
         - name: A fürtök kapacitástervezése
           href: ../hdinsight-capacity-planning.md
           maintainContext: true

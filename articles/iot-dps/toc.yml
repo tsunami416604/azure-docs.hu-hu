@@ -52,9 +52,15 @@
     - name: 2 – Eszköz beállítása
       href: tutorial-set-up-device.md
     - name: 3 – Eszköz kiépítése egy IoT hubon
-      href: tutorial-provision-device-to-hub.md
+      items:
+        - name: 'C#'
+          href: tutorial-provision-device-to-hub.md
+        - name: 'C#'
+          href: tutorial-net-provision-device-to-hub.md
     - name: 4 – Eszközök kiépítése több hubon
       href: tutorial-provision-multiple-hubs.md
+    - name: 5 – Csoportos beléptetések létrehozása
+      href: tutorial-group-enrollments.md
 - name: Alapelvek
   items:
     - name: Eszközzel kapcsolatos alapelvek
@@ -73,6 +79,8 @@
           href: how-to-manage-enrollments-sdks.md
     - name: Eszköz hozzáférésének visszavonása
       href: how-to-revoke-device-access-portal.md
+    - name: Eszközök leépítése
+      href: how-to-unprovision-devices.md
     - name: A HSM használata az SDK-val
       href: use-hsm-with-sdk.md
     - name: Eszközkiépítési szolgáltatás hozzáférés-vezérlése
