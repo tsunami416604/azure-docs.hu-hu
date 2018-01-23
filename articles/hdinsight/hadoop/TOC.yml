@@ -4,6 +4,9 @@
   items:
     - name: Áttekintés
       href: apache-hadoop-introduction.md
+    - name: Hadoop-architektúra a HDInsightban
+      href: ../hdinsight-hadoop-architecture.md
+      maintainContext: true
     - name: Hadoop-összetevők a HDInsighton
       href: ../hdinsight-component-versioning.md
       maintainContext: true
@@ -153,6 +156,12 @@
           maintainContext: true
         - name: Speciális elemzések a HDInsighthoz
           href: apache-hadoop-deep-dive-advanced-analytics.md
+        - name: Machine Learning a HDInsightban
+          href: ../hdinsight-machine-learning-overview.md
+          maintainContext: true
+        - name: Ipari léptékű streamelés a HDInsightban
+          href: ../hdinsight-streaming-at-scale-overview.md
+          maintainContext: true
     - name: Fürtök kiterjesztése
       items:
         - name: Fürtök testreszabása a Bootstrap használatával

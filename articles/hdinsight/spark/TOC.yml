@@ -113,6 +113,8 @@
           href: apache-spark-deep-learning-caffe.md
         - name: Használat a Microsoft Cognitive Toolkittel
           href: apache-spark-microsoft-cognitive-toolkit.md
+        - name: Spark Machine Learning-folyamat létrehozása
+          href: apache-spark-creating-ml-pipelines.md
     - name: Big Data típusú adatok elemzése
       items:
         - name: A Spark használata HBase-adatok írására és olvasására

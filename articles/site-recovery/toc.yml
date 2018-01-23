@@ -265,7 +265,7 @@
           href: site-recovery-manage-registration-and-protection.md
         - name: Tároló törlése
           href: delete-vault.md
-    - name: Hibaelhárítás
+    - name: Monitorozás és hibaelhárítás
       items:
         - name: Az Azure-ból Azure-ba végzett replikálás problémái
           href: site-recovery-azure-to-azure-troubleshoot-errors.md
@@ -275,8 +275,8 @@
           href: site-recovery-vmware-to-azure-push-install-error-codes.md
         - name: Az Azure-ba történő feladatátadás problémái
           href: site-recovery-failover-to-azure-troubleshoot.md
-        - name: Naplók gyűjtése és helyszíni problémák hibaelhárítása
-          href: site-recovery-monitoring-and-troubleshooting.md
+        - name: Az Azure Site Recovery monitorozása
+          href: site-recovery-monitor-and-troubleshoot.md
 - name: Referencia
   items:
     - name: Azure PowerShell

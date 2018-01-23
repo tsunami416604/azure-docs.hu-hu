@@ -170,6 +170,8 @@
               href: app-insights-live-stream.md
             - name: Alkalmazástérkép
               href: app-insights-app-map.md
+            - name: Tranzakció diagnosztikája
+              href: app-insights-transaction-diagnostics.md
             - name: HockeyApp-adatok
               href: app-insights-hockeyapp-bridge-app.md
         - name: Visual Studio
