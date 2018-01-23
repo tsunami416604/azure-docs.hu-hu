@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2017
 ms.author: nberdy
-ms.openlocfilehash: db03cfdd486a3172b258379928fac12cc0af730a
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 94cbef9d01299547a48923876cf134d5f3dafa6b
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="iot-hub-operations-monitoring"></a>Az IoT-központ műveletek figyelése
 
 Figyelési IoT-központ műveletek lehetővé teszi az IoT hub valós idejű műveletek állapotának figyelése. Az IoT-központ között számos modulkategória közül műveletek nyomon követi az események. Dönthet úgy is, az események küldése az egy vagy több kategóriához végpont az IoT hub feldolgozás esetén. Az adatok a hibák figyelése, vagy adatokat minták alapján összetettebb feldolgozás beállítása.
 
 >[!NOTE]
->Az IoT-központ műveletek figyelési elavult, és eltávolítja az IoT-központ a jövőben. Az operatív és az IoT-központ állapotának figyeléséhez, lásd: [Azure IoT Hub állapotának figyelésére, és a problémák diagnosztizálásához gyorsan][lnk-monitor]. Az elavultként ütemterv kapcsolatos további információkért lásd: [figyelése az Azure IoT-megoldások Azure monitorral és az Azure Resource Health][lnk-blog-announcement].
+>Az IoT-központ műveletek figyelési elavult, és eltávolítja az IoT-központ 2018. október 10. a. Az operatív és az IoT-központ állapotának figyeléséhez, lásd: [Azure IoT Hub állapotának figyelésére, és a problémák diagnosztizálásához gyorsan][lnk-monitor]. Az elavultként ütemterv kapcsolatos további információkért lásd: [figyelése az Azure IoT-megoldások Azure monitorral és az Azure Resource Health][lnk-blog-announcement].
 
 Az IoT-központ figyeli az események hat kategóriák:
 
@@ -191,7 +191,7 @@ Az üzenet útválasztási kategória nyomon követi az üzenet útvonal érték
 }
 ```
 
-## <a name="view-events"></a>események megtekintése
+## <a name="view-events"></a>Események megtekintése
 
 Használhatja a *IOT hubbal-explorer* eszköz gyors teszteléséhez, hogy az IoT hub előállító figyelési esemény. Az eszköz telepítéséhez tekintse át a megjelenő utasításokat a [IOT hubbal-explorer] [ lnk-iothub-explorer] GitHub-tárházban.
 
@@ -287,11 +287,11 @@ class Program
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az IoT-központ képességeit további megismeréséhez lásd:
 
 * [IoT Hub fejlesztői útmutató][lnk-devguide]
-* [Az Azure IoT peremhálózati peremeszközök AI központi telepítése][lnk-iotedge]
+* [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással][lnk-iotedge]
 
 <!-- Links and images -->
 [1]: media/iot-hub-operations-monitoring/enable-OM-1.png

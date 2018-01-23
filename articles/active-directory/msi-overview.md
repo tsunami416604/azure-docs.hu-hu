@@ -3,7 +3,7 @@ title: "Szolgáltatásidentitás (MSI) az Azure Active Directory felügyelete"
 description: "Az Azure-erőforrások Szolgáltatásidentitás felügyelt áttekintése."
 services: active-directory
 documentationcenter: 
-author: skwan
+author: daveba
 manager: mtillman
 editor: 
 ms.assetid: 0232041d-b8f5-4bd2-8d11-27999ad69370
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: 
 ms.workload: identity
 ms.date: 12/19/2017
-ms.author: bryanla
-ms.openlocfilehash: a2a42f13c81a6f6bb34a8e6aafabf380f3d220e1
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.author: skwan
+ms.openlocfilehash: 914d09a73026356c836a6eb468818cc43664ec2e
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 01/23/2018
 ---
 #  <a name="managed-service-identity-msi-for-azure-resources"></a>Szolgáltatás-identitás (MSI) felügyelt Azure-erőforrások
 
@@ -62,7 +62,8 @@ Tekintse meg a felügyelt Szolgáltatásidentitás oktatóanyag megtudhatja vég
 |                    | [Hozzáférés az Azure tárolási Linux virtuális gép SAS keresztül felügyelt identitás](msi-tutorial-linux-vm-access-storage-sas.md) |
 |                    | [A Linux virtuális gép felügyelt Szolgáltatásidentitás és az Azure Key Vault nem Azure AD erőforrás eléréséhez](msi-tutorial-linux-vm-access-nonaad.md) |
 | Azure App Service  | [Az Azure App Service vagy az Azure Functions felügyelt identitás használatára](/azure/app-service/app-service-managed-service-identity) |
-| Az Azure-függvény     | [Az Azure App Service vagy az Azure Functions felügyelt identitás használatára](/azure/app-service/app-service-managed-service-identity) |
+| Azure Function     | [Az Azure App Service vagy az Azure Functions felügyelt identitás használatára](/azure/app-service/app-service-managed-service-identity) |
+| Azure Service Bus  | [Felhasználói Szolgáltatásidentitást az Azure Service Bus által felügyelt](../service-bus-messaging/service-bus-managed-service-identity.md) |
 
 ## <a name="which-azure-services-support-managed-service-identity"></a>Mely Azure-szolgáltatások által felügyelt szolgáltatás identitás támogatásának?
 
@@ -74,7 +75,7 @@ Az Azure-szolgáltatásokat támogatja a felügyelt szolgáltatás identitást.
 
 | Szolgáltatás | status | Dátum | Konfigurálás | A jogkivonat beolvasása |
 | ------- | ------ | ---- | --------- | ----------- |
-| Azure-alapú virtuális gépek | Előzetes verzió | 2017. szeptember | [Azure Portal](msi-qs-configure-portal-windows-vm.md)<br>[PowerShell](msi-qs-configure-powershell-windows-vm.md)<br>[Azure CLI](msi-qs-configure-cli-windows-vm.md)<br>[Az Azure Resource Manager-sablonok](msi-qs-configure-template-windows-vm.md) | [REST](msi-how-to-use-vm-msi-token.md#get-a-token-using-http)<br>[.NET](msi-how-to-use-vm-msi-token.md#get-a-token-using-c)<br>[Bash/Curl](msi-how-to-use-vm-msi-token.md#get-a-token-using-curl)<br>[Nyissa meg](msi-how-to-use-vm-msi-token.md#get-a-token-using-go)<br>[PowerShell](msi-how-to-use-vm-msi-token.md#get-a-token-using-azure-powershell) |
+| Azure-alapú virtuális gépek | Előzetes verzió | 2017. szeptember | [Azure Portal](msi-qs-configure-portal-windows-vm.md)<br>[PowerShell](msi-qs-configure-powershell-windows-vm.md)<br>[Azure CLI](msi-qs-configure-cli-windows-vm.md)<br>[Az Azure Resource Manager-sablonok](msi-qs-configure-template-windows-vm.md) | [REST](msi-how-to-use-vm-msi-token.md#get-a-token-using-http)<br>[.NET](msi-how-to-use-vm-msi-token.md#get-a-token-using-c)<br>[Bash/Curl](msi-how-to-use-vm-msi-token.md#get-a-token-using-curl)<br>[Go](msi-how-to-use-vm-msi-token.md#get-a-token-using-go)<br>[PowerShell](msi-how-to-use-vm-msi-token.md#get-a-token-using-azure-powershell) |
 | Azure App Service | Előzetes verzió | 2017. szeptember | [Azure Portal](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Azure Resource Manager-sablon](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
 | Azure Functions | Előzetes verzió | 2017. szeptember | [Azure Portal](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Azure Resource Manager-sablon](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
 | Azure Data Factory V2 | Előzetes verzió | 2017. november | [Azure Portal](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity)<br>[PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-powershell)<br>[REST](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-rest-api)<br>[SDK](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-sdk) |
@@ -85,12 +86,12 @@ A következő szolgáltatásokat támogatja az Azure AD-alapú hitelesítés, é
 
 | Szolgáltatás | Erőforrás-azonosító | status | Dátum | Hozzáférés hozzárendelése |
 | ------- | ----------- | ------ | ---- | ------------- |
-| Azure Resource Manager | https://Management.Azure.com/ | Elérhető | 2017. szeptember | [Azure Portal](msi-howto-assign-access-portal.md) <br>[PowerShell](msi-howto-assign-access-powershell.md) <br>[Azure CLI](msi-howto-assign-access-CLI.md) |
-| Azure Key Vault | https://vault.Azure.NET/ | Elérhető | 2017. szeptember | |
-| Azure Data Lake | https://datalake.Azure.NET/ | Elérhető | 2017. szeptember | |
-| Azure SQL | https://Database.Windows.NET/ | Elérhető | 2017. október | |
-| Azure Event Hubs | https://eventhubs.Azure.NET/ | Elérhető | 2017. december | |
-| Azure Service Bus | https://servicebus.Azure.NET/ | Elérhető | 2017. december | |
+| Azure Resource Manager | https://management.azure.com/ | Elérhető | 2017. szeptember | [Azure Portal](msi-howto-assign-access-portal.md) <br>[PowerShell](msi-howto-assign-access-powershell.md) <br>[Azure CLI](msi-howto-assign-access-CLI.md) |
+| Azure Key Vault | https://vault.azure.net/ | Elérhető | 2017. szeptember | |
+| Azure Data Lake | https://datalake.azure.net/ | Elérhető | 2017. szeptember | |
+| Azure SQL | https://database.windows.net/ | Elérhető | 2017. október | |
+| Azure Event Hubs | https://eventhubs.azure.net/ | Elérhető | 2017. december | |
+| Azure Service Bus | https://servicebus.azure.net/ | Elérhető | 2017. december | |
 
 ## <a name="how-much-does-managed-service-identity-cost"></a>Milyen mértékű nem felügyelt Szolgáltatásidentitás költség?
 

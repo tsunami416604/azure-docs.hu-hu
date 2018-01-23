@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/18/2017
 ms.author: trinadhk;pullabhk;
-ms.openlocfilehash: f69cbbab19acbc4e71445012d262896275a7d768
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 9a08495c1b395871c04c0c2b06a6efbdb4bfeaa2
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="questions-about-the-azure-vm-backup-service"></a>Kérdések az Azure VM Backup szolgáltatással kapcsolatban
 A cikk gyakori kérdésekre adott válaszokat tartalmazó szakaszaiban gyorsan áttekinthető az Azure VM Backup összetevőinek működése. Egyes válaszokban részletes információkat tartalmazó cikkekre mutató hivatkozások találhatók. Emellett egy fórumbejegyzésben is feltehet kérdéseket az Azure Backup szolgáltatással kapcsolatban a [vitafórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -68,6 +68,13 @@ A lemezek visszaállítását a következőkhöz használhatja:
   
 ### <a name="can-i-use-backups-of-unmanaged-disk-vm-to-restore-after-i-upgrade-my-disks-to-managed-disks"></a>Nem felügyelt lemezes virtuális gép biztonsági mentése segítségével visszaállítást, miután a lemezek felügyelt lemezek verziójára?
 Igen, a biztonsági mentés előtt áttelepítése lemezei nem felügyelt kezelt is használhatja. Alapértelmezés szerint visszaállítási VM feladatot hoz létre a virtuális gép nem felügyelt lemezzel. Visszaállítási lemezek funkció használatával állítsa vissza a lemezek, melyekkel egy virtuális gép létrehozása kezelt lemezeken. 
+
+### <a name="what-is-the-procedure-to-restore-a-vm-to-a-restore-point-taken-before-the-conversion-from-unmanaged-to-managed-disks-was-done-for-a-vm"></a>Mi az az eljárás végrehajtása előtt a átalakítása nem felügyelt kódból felügyelt kezelt lemezek végezhető el a virtuális gépek válasszon visszaállítási pontot állítsa helyre a virtuális Gépet?
+Ebben a forgatókönyvben alapértelmezés szerint visszaállítási VM feladatot hoz létre egy virtuális gép nem felügyelt lemezek. Felügyelt lemezzel rendelkező virtuális gép létrehozása:
+1. [Nem felügyelt lemezek visszaállítása](tutorial-restore-disk.md#restore-a-vm-disk)
+2. [Alakítsa át a visszaállított lemezeket felügyelt](tutorial-restore-disk.md#convert-the-restored-disk-to-a-managed-disk)
+3. [Felügyelt lemezzel rendelkező virtuális gép létrehozása](tutorial-restore-disk.md#create-a-vm-from-the-restored-disk) <br>
+Powershell-parancsmagokkal, tekintse meg a [Itt](backup-azure-vms-automation.md#restore-an-azure-vm).
 
 ## <a name="manage-vm-backups"></a>Virtuális gép biztonsági mentéseinek kezelése
 ### <a name="what-happens-when-i-change-a-backup-policy-on-vms"></a>Mi történik, ha módosítom a biztonsági mentési szabályzatot a virtuális gépen vagy gépeken?

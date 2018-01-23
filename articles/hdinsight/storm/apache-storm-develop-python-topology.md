@@ -14,13 +14,13 @@ ms.devlang: python
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/02/2017
+ms.date: 01/22/2018
 ms.author: larryfr
-ms.openlocfilehash: be2db4e413426be3a5e2dece43d74270e3636909
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 1da38ebbe3354bbb36f68d1243b30bf2f4c5633f
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Python használata a HDInsight alatt futó Apache Storm-topológiák fejlesztése
 
@@ -149,7 +149,7 @@ A topológia leállítása, használja a __Ctrl + C__.
 > * A **Kill** gomb a Storm felhasználói felületén.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse át a Python és a HDInsight együttes használata egyéb módjai a következő dokumentumokat:
 

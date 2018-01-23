@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: genli
-ms.openlocfilehash: 55cfba5e9730b123bba20dfdc5d10c1157352a35
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f5fe877a46586af63c0991e3c3fbb8d42f69736c
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Hibáinak elhárítása: Egy Azure-webhelyek VPN-kapcsolatot nem lehet kapcsolódni, és nem működik
 
@@ -26,7 +26,7 @@ Miután konfigurált egy a helyszíni hálózat és az Azure virtuális hálóza
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="troubleshooting-steps"></a>Hibaelhárítási lépések
+## <a name="troubleshooting-steps"></a>Hibaelhárítási útmutató
 
 A probléma megoldása érdekében először próbálja meg [alaphelyzetbe állítani az Azure VPN gateway](vpn-gateway-resetgw-classic.md) , és állítsa alaphelyzetbe az alagutat a helyszíni VPN-eszközön. Ha a probléma továbbra is fennáll, kövesse az alábbi lépéseket a probléma okának megállapításához.
 
@@ -92,7 +92,7 @@ Ellenőrizze a felhasználó által definiált útválasztási (UDR) vagy a hál
 
 ### <a name="step-7-verify-the-azure-gateway-health-probe"></a>7. lépés Az Azure átjáró állapotmintáihoz ellenőrzése
 
-1. Lépjen a [állapotmintáihoz](https://&lt;YourVirtualNetworkGatewayIP&gt;:8081/healthprobe).
+1. Ugrás a állapotmintáihoz.
 
 2. Kattintson a tanúsítványfigyelmeztetésre.
 3. Ha választ kap, a VPN-átjáró megfelelő minősül. Ha nem érkezik válasz, az átjáró nem lesz kifogástalan, vagy az átjáró-alhálózat egy NSG okozza a problémát. A következő mintát választ áll:
@@ -103,7 +103,7 @@ Ellenőrizze a felhasználó által definiált útválasztási (UDR) vagy a hál
 
 A PFS szolgáltatás kapcsolatbontás problémákat okozhat. Ha a VPN-eszköz PFS engedélyezve van, tiltsa le a szolgáltatást. Frissítse a VPN gateway IPSec-házirend.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 -   [A virtuális hálózati helyek kapcsolat beállítása](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 -   [Pont-pont a VPN-kapcsolatok IPsec/IKE-szabályzat beállítása](vpn-gateway-ipsecikepolicy-rm-powershell.md)

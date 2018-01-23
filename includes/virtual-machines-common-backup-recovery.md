@@ -3,7 +3,7 @@
 
 Termelési számítási feladatokhoz futtató Azure virtuális gépek biztonsági mentéséről, használja az Azure Backup szolgáltatásnál. Azure biztonsági mentés a Windows és a Linux virtuális gépek alkalmazáskonzisztens biztonsági mentést támogatja. Az Azure Backup georedundáns helyreállítás tárolók tárolt helyreállítási pontokat hoz létre. Helyreállításakor a helyreállítási pont, az egész virtuális gép vagy csak adott fájlokat is helyreállíthatja. 
 
-Egyszerű, gyakorlati megismerkedhet az Azure Backup Azure virtuális gépekhez, tekintse meg a "biztonságimásolat-Windows virtuális gépek oktatóanyag" [Linux](../articles/virtual-machines/linux/tutorial-backup-vms.md) vagy [Windows](../articles/virtual-machines/windows/tutorial-backup-vms.md)
+Az egyszerű, gyakorlati megismerkedhet az Azure Backup Azure virtuális gépekhez, tekintse meg az "Azure virtuális gépek biztonsági mentése" a [Linux](../articles/virtual-machines/linux/tutorial-backup-vms.md) vagy [Windows](../articles/virtual-machines/windows/tutorial-backup-vms.md).
 
 Azure biztonsági mentési működéséről további információkért lásd: [tervezze meg a virtuális gép biztonsági mentési infrastruktúra az Azure-ban](../articles/backup/backup-azure-vms-introduction.md)
 
@@ -27,5 +27,5 @@ Pillanatképeinek további információkért lásd:
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Módszer kipróbálásához Azure Backup a "biztonságimásolat-Windows virtuális gépek oktatóanyag" követve a [Linux](../articles/virtual-machines/linux/tutorial-backup-vms.md) vagy [Windows](../articles/virtual-machines/windows/tutorial-backup-vms.md).

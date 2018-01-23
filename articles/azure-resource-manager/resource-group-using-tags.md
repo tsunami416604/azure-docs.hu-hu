@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: AzurePortal
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 01/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: d18f5f9e75cd815b7f9622498f16624cf375d6bd
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 31477cbf478d2d836c2d7c3472e3a53f13831480
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Azure-erőforrások rendszerezése címkékkel
 
@@ -147,9 +147,9 @@ Amikor a fürt megosztott kötetei szolgáltatás használata számlázási cím
 
 ![Tekintse meg a számlázási címkék](./media/resource-group-using-tags/billing_csv.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Testreszabott házirendekkel alkalmazhat korlátozások és egyezmények az előfizetéshez. Megadhat egy házirendet, minden erőforrás rendelkezik-e egy adott címke értéke lehet szükség. További információkért lásd: [Mi az Azure házirend?](../azure-policy/azure-policy-introduction.md).
+* Testreszabott házirendekkel alkalmazhat korlátozások és egyezmények az előfizetéshez. Megadhat egy házirendet, minden erőforrás rendelkezik-e egy adott címke értéke lehet szükség. További információ: [Mi az az Azure Policy?](../azure-policy/azure-policy-introduction.md)
 * Megismerkedhet az Azure PowerShell használatával, ha az erőforrások telepítése esetén, lásd: [az Azure PowerShell használata Azure Resource Managerrel](powershell-azure-resource-manager.md).
 * Témakörben megismerkedhet az Azure parancssori felület használatával, ha az erőforrások telepítése esetén, [az Azure parancssori felület Mac, Linux és a Windows Azure Resource Manager használatával](xplat-cli-azure-resource-manager.md).
 * Megismerkedhet a portál használatával, lásd: [az Azure portál használata az Azure erőforrások kezeléséhez](resource-group-portal.md).  

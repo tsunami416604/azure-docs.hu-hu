@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2017
+ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: 1ec815a12cea98228dd4b7ac7361fe5e3554b5d3
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 6dfee26d7585c8ec295a1f0ea1bd0bc14a34cc5a
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="log-analytics-new-log-search-faq-and-known-issues"></a>Új Naplóelemzési naplófájl, keresés – gyakori kérdések és ismert problémák
 
@@ -88,9 +88,9 @@ A böngésző Naplóelemzési lekérdezések futtatása a frissítés után a k�
 
 | URI | IP | Portok |
 |:---|:---|:---|
-| Portal.loganalytics.IO | Dinamikus | 80,443 |
-| API.loganalytics.IO    | Dinamikus | 80,443 |
-| docs.loganalytics.IO   | Dinamikus | 80,443 |
+| portal.loganalytics.io | Dinamikus | 80,443 |
+| api.loganalytics.io    | Dinamikus | 80,443 |
+| docs.loganalytics.io   | Dinamikus | 80,443 |
 
 
 
@@ -160,13 +160,12 @@ Az örökölt napló keresési néhány hónapon belül megszűnnek. Munkaterül
 Általánosan rendelkezésre álló verzió előtt a munkaterület sikerült visszaállítani a frissítés után.  Most, hogy az új nyelv elérte az általánosan rendelkezésre álló, ez a funkció el lett távolítva, először az örökölt platform kivonni.
 
 
-
 ## <a name="views"></a>Nézetek
 
 ### <a name="question-how-do-i-create-a-new-view-with-view-designer"></a>Kérdés: Hogyan hozható létre egy új nézetet az adatforrásnézet-tervezőből?
-Frissítés előtt új nézet segítségével létrehozhat adatforrásnézet-tervezőből a a fő Irányítópulton egy csempére.  Ha a munkaterületet frissítve van, a rendszer eltávolítja a csempe.  Létrehozhat egy új nézetet az adatforrásnézet-tervezőből az OMS-portálon a zöld + a bal oldali menü gombjára kattintva.
+Frissítés előtt új nézet segítségével létrehozhat adatforrásnézet-tervezőből a egy csempe a fő irányítópult az OMS-portálon.  Ha a munkaterületet frissítve van, a rendszer eltávolítja a csempe.  Létrehozhat egy új nézetet az adatforrásnézet-tervezőből az OMS-portálon a zöld + a bal oldali menü gombjára kattintva.  Új nézet létrehozása az Azure portálon Az adatforrásnézet-tervezőből csempére kattintva továbbra is.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ [Naplóelemzési munkaterület frissítése az új lekérdezési nyelv](log-analytics-log-search-upgrade.md).

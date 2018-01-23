@@ -1,6 +1,6 @@
 ---
-title: "Önálló üzemeltetett integrációs futásidejű létrehozása az Azure Data Factory |} Microsoft Docs"
-description: "Ismerje meg, hogyan használhatja az SQL Server tárolt eljárási tevékenység meghívni a Data Factory-folyamat az az Azure SQL Database vagy az Azure SQL Data Warehouse tárolt eljárást."
+title: "Azure-SSIS integrációs futásidejű létrehozása az Azure Data Factory |} Microsoft Docs"
+description: "Megtudhatja, hogyan hozzon létre egy Azure-SSIS-integráció futtatókörnyezetet, így Azure felhőben SSIS-csomag is futtathatja."
 services: data-factory
 documentationcenter: 
 author: spelluru
@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 01/22/2018
 ms.author: spelluru
-ms.openlocfilehash: 8f7697e79f8e7f5fc4722ac34e4199e0de278ad6
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 35883890b330588415290295815ad55cf5021afb
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Egy Azure-SSIS-integrációs futásidejű létrehozása az Azure Data Factory
 Ez a cikk lépéseit egy Azure-SSIS-integráció futtatókörnyezetet, az Azure Data Factory történő üzembe helyezéséhez. Ezután az SQL Server Data Tools (SSDT) vagy az SQL Server Management Studio (SSMS) használatával üzembe helyezhet SQL Server Integration Services- (SSIS-) csomagokat ebben az Azure-beli modulban.
@@ -48,7 +48,7 @@ Ha az SQL-adatbázis üzemeltetéséhez SSISDB példánya, az Azure funkciócsom
 - **Azure SQL Database-kiszolgáló** vagy **felügyelt SQL Server-példány (privát előzetes verzió) (bővített privát előzetes verzió)**. Ha még nem rendelkezik adatbázis-kiszolgálóval, először hozzon létre egyet az Azure Portalon. Ez a kiszolgáló üzemelteti az SSIS-katalógusadatbázist (SSISDB-t). Javasoljuk, hogy az adatbáziskiszolgálót az integrációs modullal megegyező Azure-régióban hozza létre. Ez a konfiguráció lehetővé teszi, hogy az integrációs modul Azure-régiók határainak átlépése nélkül írjon végrehajtási naplókat a katalógusadatbázisba. Jegyezze fel az Azure SQL-kiszolgáló tarifacsomagját. Az Azure SQL Database támogatott tarifacsomagok listáját lásd: [SQL-adatbázis erőforrás korlátok](../sql-database/sql-database-resource-limits.md).
 
     Győződjön meg arról, hogy az Azure SQL Database-kiszolgálóhoz vagy az SQL Server-felügyelt példány (kiterjesztett magán előnézetben) nem rendelkezik egy SSIS-katalógus (SSIDB adatbázis). Az Azure-SSIS-IR kiépítése nem támogatja a meglévő SSIS-katalógus használatával.
-- **Klasszikus virtuális hálózat (VNet) (nem kötelező)**. Legalább egy Azure virtuális hálózat (VNet) szükséges, ha a következő feltételek bármelyike igaz:
+- **Klasszikus Azure Resource Manager virtuális Network(VNet) (nem kötelező), vagy**. Legalább egy Azure virtuális hálózat (VNet) szükséges, ha a következő feltételek bármelyike igaz:
     - Az SSIS-katalógusadatbázis egy olyan felügyelt SQL Server-példányon (privát előzetes verzió) fut, amely egy virtuális hálózat része.
     - Az Azure SSIS integrációs modulon futó SSIS-csomagokkal helyszíni adattárakhoz szeretne csatlakozni.
 - **Azure PowerShell**. Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-azurerm-ps) ismertető cikkben szereplő utasításokat. Egy PowerShell-lel futtatott szkripttel üzembe helyez egy Azure SSIS integrációs modult, amely a felhőben futtat SSIS-csomagokat. 
@@ -65,11 +65,11 @@ Ebben a szakaszban használhatja az Azure-portálon, kifejezetten a Data Factory
 2. Kattintson az **Új** elemre, majd az **Adatok + analitika**, végül a **Data Factory** elemre. 
    
    ![New (Új)->DataFactory](./media/tutorial-create-azure-ssis-runtime-portal/new-data-factory-menu.png)
-3. Az a **új adat-előállító** lapján adja meg **MyAzureSsisDataFactory** a a **neve**. 
+3. Az **Új data factory** lapon, a **Név** mezőben adja meg a következőt: **MyAzureSsisDataFactory**. 
       
-     ![Új előállító lap](./media/tutorial-create-azure-ssis-runtime-portal/new-azure-data-factory.png)
+     ![Új adat-előállító lap](./media/tutorial-create-azure-ssis-runtime-portal/new-azure-data-factory.png)
  
-   Az Azure data factory nevének **globálisan egyedinek** kell lennie. Ha a következő hibaüzenet jelenik meg, változtassa meg az adat-előállítóban (például yournameMyAzureSsisDataFactory) nevét, és próbálja meg újra létrehozni. Lásd: [Data Factory - elnevezési szabályait](naming-rules.md) cikk az adat-előállító összetevők elnevezési szabályait.
+   Az Azure data factory nevének **globálisan egyedinek** kell lennie. Ha a következő hibaüzenetet kapja, változtassa meg az adat-előállító nevét (például sajátneveMyAzureSsisDataFactoryra), majd próbálkozzon újra a létrehozással. A Data Factory-összetevők részleteit a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
   
        `Data factory name “MyAzureSsisDataFactory” is not available`
 3. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni. 
@@ -80,80 +80,80 @@ Ebben a szakaszban használhatja az Azure-portálon, kifejezetten a Data Factory
          
       Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
 4. Válassza a **V2 (előzetes verzió)** értéket a **verzió** esetén.
-5. Válassza ki a Data Factory **helyét**. A listában csak azok a helyek által támogatott adat-előállítók létrehozásához jelennek meg.
+5. Válassza ki a Data Factory **helyét**. A listában csak az adat-előállítók létrehozását támogató helyek jelennek meg.
 6. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
 7. Kattintson a **Create** (Létrehozás) gombra.
 8. Az irányítópulton megjelenő csempén a következő állapotleírás látható: **Adat-előállító üzembe helyezése**. 
 
     ![adat-előállító üzembe helyezése csempe](media/tutorial-create-azure-ssis-runtime-portal/deploying-data-factory.png)
-9. A létrehozásának befejezése után megjelenik a **adat-előállító** lapon, az ábrán látható módon.
+9. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.
    
    ![Data factory kezdőlap](./media/tutorial-create-azure-ssis-runtime-portal/data-factory-home-page.png)
-10. Kattintson a **Szerző & figyelő** elindítani a Data Factory felhasználói felületének (UI) egy külön lapján. 
+10. A Data Factory felhasználói felületének (UI) külön lapon történő elindításához kattintson a **Létrehozás és monitorozás** csempére. 
 
-### <a name="provision-an-azure-ssis-integration-runtime"></a>Egy Azure SSIS-integrációs futásidejű kiépítése
+### <a name="provision-an-azure-ssis-integration-runtime"></a>Azure SSIS integrációs modul üzembe helyezése
 
-1. A get elindított oldalon kattintson **SSIS-integrációs futásidejű konfigurálása** csempére. 
+1. Az első lépések oldalán kattintson az **SSIS integrációs modul konfigurálása** csempére. 
 
-   ![SSIS-integrációs futásidejű csempe konfigurálása](./media/tutorial-create-azure-ssis-runtime-portal/configure-ssis-integration-runtime-tile.png)
-2. Az a **általános beállítások** oldalán **integrációs futásidejű telepítő**, hajtsa végre a következő lépéseket: 
+   ![SSIS integrációs modul konfigurálása csempe](./media/tutorial-create-azure-ssis-runtime-portal/configure-ssis-integration-runtime-tile.png)
+2. Az **Integrációs modul beállításai** lap **Általános beállítások** oldalán végezze el az alábbi lépéseket: 
 
    ![Általános beállítások](./media/tutorial-create-azure-ssis-runtime-portal/general-settings.png)
 
-    1. Adjon meg egy **neve** az integráció futási időben.
-    2. Válassza ki a **hely** az integráció futási időben. Csak a támogatott helyek jelennek meg.
-    3. Válassza ki a **mérete, a csomópont** is van a SSIS-futtatókörnyezet kell konfigurálni.
-    4. Adja meg a **csomópontok száma** a fürtben.
+    1. Adja meg az integrációs modul **nevét**.
+    2. Válassza ki az integrációs modul **helyét**. Csak a támogatott helyek jelennek meg.
+    3. Válassza ki az SSIS modulhoz konfigurálandó **csomópont méretét**.
+    4. Adja meg a fürtben található **csomópontok számát**.
     5. Kattintson a **Tovább** gombra. 
-1. Az a **SQL-beállítások**, hajtsa végre a következő lépéseket: 
+1. Az **SQL-beállítások** menüben tegye az alábbiakat: 
 
-    ![SQL settings](./media/tutorial-create-azure-ssis-runtime-portal/sql-settings.png)
+    ![SQL-beállítások](./media/tutorial-create-azure-ssis-runtime-portal/sql-settings.png)
 
-    1. Adja meg az Azure **előfizetés** , amely rendelkezik az Azure SQL-kiszolgáló. 
-    2. Válassza ki az Azure SQL server a **katalógus adatbázis-kiszolgáló végpont**.
-    3. Adja meg a **rendszergazda** felhasználónevet.
-    4. Adja meg a **jelszó** a rendszergazda számára.  
-    5. Válassza ki a **szolgáltatásréteg** az SSISDB adatbázis. Az alapértelmezett érték: Basic.
+    1. Adja meg az Azure SQL Servert tartalmazó Azure-**előfizetést**. 
+    2. A **katalógus-adatbázis kiszolgáló-végpontjaként** válassza ki Azure SQL Server-kiszolgálóját.
+    3. Adja meg a **rendszergazda** felhasználónevét.
+    4. Adja meg a rendszergazdához tartozó **jelszót**.  
+    5. Válassza ki az SSISDB-adatbázishoz tartozó **szolgáltatásszintet**. Az alapértelmezett érték az Alapszintű.
     6. Kattintson a **Tovább** gombra. 
-1.  Az a **speciális beállítások** lapon, válassza ki az értéket a **maximális párhuzamos végrehajtások / csomópont**.   
+1.  A **Speciális beállítások** oldalon válassza ki, hogy mennyi legyen a **maximális párhuzamos végrehajtások száma csomópontonként**.   
 
     ![Speciális beállítások](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings.png)    
-5. Ez a lépés **választható**. Ha telepítette a klasszikus virtuális hálózatot (VNet), amelyet a integrációs futásidejű való csatlakozáshoz válassza ki a **válasszon egy Vnetet az Azure-SSIS-integráció futási időben való csatlakozáshoz és a virtuális hálózat engedélybeállítások konfigurálása Azure-szolgáltatások engedélyezése** lehetőséget, majd hajtsa végre a következő lépéseket: 
+5. Ez a lépés **nem kötelező**. Ha rendelkezik egy olyan klasszikus virtuális hálózattal (VNet), amelyhez szeretné csatlakoztatni az integrációs modult, válassza ki a **VNet kiválasztása az Azure SSIS integrációs modullal történő összekapcsoláshoz, és a VNet engedélyezéseinek/beállításainak Azure-szolgáltatások által történő konfigurálásának engedélyezése** lehetőséget, majd hajtsa végre a következő lépéseket: 
 
-    ![Speciális beállítások virtuális hálózaton](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-vnet.png)    
+    ![Virtuális hálózatra vonatkozó speciális beállítások](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-vnet.png)    
 
-    1. Adja meg a **előfizetés** , amely rendelkezik a klasszikus virtuális hálózatot. 
-    2. Válassza ki a **VNet**. <br/>
-    4. Válassza ki a **alhálózati**.<br/> 
-1. Kattintson a **Befejezés** elindításához Azure-SSIS integrációs futásidejű létrehozását. 
+    1. Adja meg a klasszikus virtuális hálózatot tartalmazó **előfizetést**. 
+    2. Válassza ki a **VNet** hálózatot. <br/>
+    4. Válassza ki az **alhálózatot**.<br/> 
+1. Az Azure-SSIS integrációs modul létrehozásának elindításához kattintson a **Befejezés** gombra. 
 
     > [!IMPORTANT]
-    > - Ez a folyamat körülbelül 20 percet vesz igénybe.
-    > - A Data Factory szolgáltatásnak a katalógus SSIS-adatbázis (SSISDB) előkészítése az Azure SQL Database csatlakozik. A szkript konfigurálja a virtuális hálózat engedélyeit és beállításait is, ha ez lett megadva, és csatlakoztatja az Azure SSIS integrációs modul új példányát a virtuális hálózathoz.
-7. Az a **kapcsolatok** ablakban váltson **integrációs futtatókörnyezetek** szükség esetén. Kattintson a **frissítése** a állapotának frissítéséhez. 
+    > - A folyamat elvégzése hozzávetőleg 20 percet vesz igénybe.
+    > - A Data Factory szolgáltatás csatlakozik az Azure SQL Database-hez, és előkészíti az SSIS-katalógusadatbázist (SSISDB). A szkript konfigurálja a virtuális hálózat engedélyeit és beállításait is, ha ez lett megadva, és csatlakoztatja az Azure SSIS integrációs modul új példányát a virtuális hálózathoz.
+7. A **Kapcsolatok** ablakban váltson az **Integrációs modulok** lapra, ha szükséges. Az állapot frissítéséhez kattintson a **Frissítés** elemre. 
 
-    ![Létrehozási állapota](./media/tutorial-create-azure-ssis-runtime-portal/azure-ssis-ir-creation-status.png)
-8. A hivatkozások **műveletek** figyelése, leállítása vagy elindítása, szerkesztése vagy törlése a integrációs futásidejű alapját képező oszlop. Az utolsó hivatkozás segítségével megtekintheti az integrációs futásidejű JSON-kódot. A szerkesztési és törlési gombok engedélyezve vannak, csak akkor, ha az infravörös le van állítva. 
+    ![Létrehozás állapota](./media/tutorial-create-azure-ssis-runtime-portal/azure-ssis-ir-creation-status.png)
+8. Az integrációs modul monitorozásához, leállításához/elindításához, szerkesztéséhez vagy törléséhez használja a **Műveletek** oszlop alatt található hivatkozásokat. Az integrációs modulhoz tartozó JSON-kód megtekintéséhez használja a legutolsó hivatkozást. A szerkesztés és törlés gombok csak akkor használhatók, ha az integrációs modul le van állítva. 
 
-    ![Az Azure SSIS IR - műveletek](./media/tutorial-create-azure-ssis-runtime-portal/azure-ssis-ir-actions.png)        
-9. Kattintson a **figyelő** hivatkozásra **műveletek**.  
+    ![Azure SSIS integrációs modul – műveletek](./media/tutorial-create-azure-ssis-runtime-portal/azure-ssis-ir-actions.png)        
+9. Kattintson a **monitorozás** hivatkozására a **Műveletek** alatt.  
 
-    ![Az Azure SSIS IR - részletek](./media/tutorial-create-azure-ssis-runtime-portal/azure-ssis-ir-details.png)
-10. Ha hiba történt egy **hiba** társított Azure SSIS infravörös, megjelenik a hibák számát ezen az oldalon, és a hiba részleteinek megtekintése hivatkozásra. Például ha az SSIS-katalógus már létezik a kiszolgálón, hibaüzenet jelenik meg, amely jelzi az SSISDB adatbázis létezését.  
-11. Kattintson a **integrációs futtatókörnyezetek** lépjen vissza az előző lapot, melyen megtekintheti az adat-előállítóban társított összes integrációs futtatókörnyezetek legfelül.  
+    ![Azure SSIS integrációs modul – részletek](./media/tutorial-create-azure-ssis-runtime-portal/azure-ssis-ir-details.png)
+10. Ha bármilyen, az Azure SSIS integrációs modullal kapcsolatos **hibát** észlel, ezen az oldalon látni fogja a hibák számát és a hiba részleteinek megtekintését lehetővé tevő hivatkozást. Ha például az SSIS katalógus már létezik az adatbázis-kiszolgálón, látni fog egy hibaüzenetet, amely erre figyelmezteti.  
+11. Kattintson a fent található **Integrációs modulok** elemre az előző oldalra való visszatéréshez, és az adat-előállítóhoz társított összes integrációs modul megtekintéséhez.  
 
-### <a name="azure-ssis-integration-runtimes-in-the-portal"></a>Az Azure SSIS-integráció futtatókörnyezetek a portálon
+### <a name="azure-ssis-integration-runtimes-in-the-portal"></a>Azure SSIS integrációs modulok a portálon
 
-1. Az Azure Data Factory felhasználói felületén váltani a **szerkesztése** lapra, majd **kapcsolatok**, és majd átváltása **integrációs futtatókörnyezetek** lap választásával tudja megtekinteni a meglévő integrációs futtatókörnyezetek a adat-előállítóban. 
-    ![Meglévő IRs megtekintése](./media/tutorial-create-azure-ssis-runtime-portal/view-azure-ssis-integration-runtimes.png)
-1. Kattintson a **új** egy új Azure-SSIS infravörös létrehozása 
+1. Az Azure Data Factory felhasználói felületén váltson a **szerkesztési** lapra, kattintson a **Kapcsolatok** lehetőségre, majd váltson az **integrációs modulok** lapjára az adat-előállítójában megtalálható integrációs modulok megtekintéséhez. 
+    ![Létező integrációs modulok megtekintése](./media/tutorial-create-azure-ssis-runtime-portal/view-azure-ssis-integration-runtimes.png)
+1. Egy új Azure-SSIS integrációs modul létrehozásához kattintson az **Új** elemre. 
 
-    ![Integrációs futásidejű keresztül menü](./media/tutorial-create-azure-ssis-runtime-portal/edit-connections-new-integration-runtime-button.png)
-2. Egy Azure-SSIS-integrációs futásidejű létrehozásához kattintson a **új** az ábrán látható módon. 
-3. Az integrációs futásidejű beállítása ablakban válassza ki a **növekedési és shift meglévő SSIS-csomagok végrehajtása az Azure-ban**, és kattintson a **következő**.
+    ![Integrációs modul elérése a menüből](./media/tutorial-create-azure-ssis-runtime-portal/edit-connections-new-integration-runtime-button.png)
+2. Egy Azure-SSIS integrációs modul létrehozásához kattintson az **Új** gombra a képen látható módon. 
+3. Az Integrációs modul telepítése ablakban válassza a **Létező SSIS-csomagok áthelyezése az Azure-ban történő végrehajtáshoz** lehetőséget, majd kattintson a **Tovább** gombra.
 
-    ![Adja meg az integrációs futásidejű típusa](./media/tutorial-create-azure-ssis-runtime-portal/integration-runtime-setup-options.png)
-4. Tekintse meg a [kiépíteni az Azure SSIS-integrációs futásidejű](#provision-an-azure-ssis-integration-runtime) szakasz a fennmaradó lépéseit egy Azure-SSIS infravörös beállítása
+    ![Integrációs modulok típusának megadása](./media/tutorial-create-azure-ssis-runtime-portal/integration-runtime-setup-options.png)
+4. Az Azure-SSIS integrációs modul beállításához szükséges lépésekkel kapcsolatos információkért tekintse meg az [Azure SSIS integrációs modul üzembe helyezésével](#provision-an-azure-ssis-integration-runtime) foglalkozó részt.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 Ebben a szakaszban az Azure PowerShell használatával hozzon létre egy Azure-SSIS infravörös
@@ -174,7 +174,7 @@ $AzureSSISName = "[your Azure-SSIS integration runtime name]"
 $AzureSSISDescription = "This is my Azure-SSIS integration runtime"
 $AzureSSISLocation = "EastUS" 
 # In public preview, only Standard_A4_v2|Standard_A8_v2|Standard_D1_v2|Standard_D2_v2|Standard_D3_v2|Standard_D4_v2 are supported.
-$AzureSSISNodeSize = "Standard_A4_v2" 
+$AzureSSISNodeSize = "Standard_D3_v2"
 # In public preview, only 1-10 nodes are supported.
 $AzureSSISNodeNumber = 2 
 # For a Standard_D1_v2 node, 1-4 parallel executions per node are supported. For other nodes, it's 1-8.
@@ -191,10 +191,7 @@ $SSISDBPricingTier = "[your Azure SQL Database pricing tier. Examples: Basic, S0
 
 # Remove these the following two OPTIONAL variables if you are using Azure SQL Database. 
 # These two parameters apply if you are using VNet and Azure SQL Managed Instance (private preview). 
-# Get the following information from the properties page for your Classic Virtual Network in the Azure portal
-# It should be in the format: $VnetId = "/subscriptions/<Azure Subscription ID>/resourceGroups/<Azure Resource Group>/providers/Microsoft.ClassicNetwork/virtualNetworks/<Class Virtual Network Name>"
-
-# OPTIONAL: In public preview, only classic virtual network (VNet) is supported.
+# OPTIONAL: specify your VNet ID and the subnet name. 
 $VnetId = "[your VNet resource ID or leave it empty]" 
 $SubnetName = "[your subnet name or leave it empty]" 
 
@@ -242,8 +239,11 @@ if(![string]::IsNullOrEmpty($VnetId) -and ![string]::IsNullOrEmpty($SubnetName))
     {
     Start-Sleep -s 10
     }
-    # Assign VM contributor role to Microsoft.Batch
-    New-AzureRmRoleAssignment -ObjectId $BatchObjectId -RoleDefinitionName "Classic Virtual Machine Contributor" -Scope $VnetId
+    if($VnetId -match "/providers/Microsoft.ClassicNetwork/")
+    {
+        # Assign VM contributor role to Microsoft.Batch
+        New-AzureRmRoleAssignment -ObjectId $BatchObjectId -RoleDefinitionName "Classic Virtual Machine Contributor" -Scope $VnetId
+    }
 }
 ```
 
@@ -341,7 +341,7 @@ $AzureSSISName = "[your Azure-SSIS integration runtime name]"
 $AzureSSISDescription = "This is my Azure-SSIS integration runtime"
 $AzureSSISLocation = "EastUS" 
 # In public preview, only Standard_A4_v2|Standard_A8_v2|Standard_D1_v2|Standard_D2_v2|Standard_D3_v2|Standard_D4_v2 are supported.
-$AzureSSISNodeSize = "Standard_A4_v2" 
+$AzureSSISNodeSize = "Standard_D3_v2"
 # In public preview, only 1-10 nodes are supported.
 $AzureSSISNodeNumber = 2 
 # For a Standard_D1_v2 node, 1-4 parallel executions per node are supported. For other nodes, it's 1-8.
@@ -358,7 +358,7 @@ $SSISDBPricingTier = "[your Azure SQL Database pricing tier. Examples: Basic, S0
 
 ## Remove these two OPTIONAL variables if you are using Azure SQL Database. 
 ## These two parameters apply if you are using VNet and Azure SQL Managed Instance (private preview). 
-# In public preview, only classic virtual network (VNet) is supported.
+# Specify information about your classic or Azure Resource Manager virtual network (VNet).
 $VnetId = "[your VNet resource ID or leave it empty]" 
 $SubnetName = "[your subnet name or leave it empty]" 
 
@@ -391,8 +391,11 @@ if(![string]::IsNullOrEmpty($VnetId) -and ![string]::IsNullOrEmpty($SubnetName))
     {
         Start-Sleep -s 10
     }
-    # Assign VM contributor role to Microsoft.Batch
-    New-AzureRmRoleAssignment -ObjectId $BatchObjectId -RoleDefinitionName "Classic Virtual Machine Contributor" -Scope $VnetId
+    if($VnetId -match "/providers/Microsoft.ClassicNetwork/")
+    {
+        # Assign VM contributor role to Microsoft.Batch
+        New-AzureRmRoleAssignment -ObjectId $BatchObjectId -RoleDefinitionName "Classic Virtual Machine Contributor" -Scope $VnetId
+    }
 }
 
 Set-AzureRmDataFactoryV2 -ResourceGroupName $ResourceGroupName `

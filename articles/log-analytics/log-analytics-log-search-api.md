@@ -1,6 +1,6 @@
 ---
-title: "Naplóelemzési jelentkezzen search REST API |} Microsoft Docs"
-description: "Ez az útmutató egy alapszintű oktatóanyag: hogyan használhatja a Naplóelemzési search REST API-t az Operations Management Suite (OMS) és példák a parancsok használata biztosít."
+title: "Az Azure Naplóelemzés jelentkezzen search REST API |} Microsoft Docs"
+description: "Ez az útmutató egy alapszintű oktatóanyag, amely leírja, hogyan használható az Azure Naplóelemzés search REST API példák a parancsok használata."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -12,24 +12,24 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2018
+ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: 0ca80408f8e8b2dae7ff35d50b3d2c41ae54d3d3
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 46c88f7cc250d4c35043039a6f0440aaac85b1c2
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="log-analytics-log-search-rest-api"></a>A Naplóelemzési jelentkezzen search REST API-n
 
 > [!IMPORTANT]
 > Ha a munkaterületet lett frissítve a [új Log Analytics lekérdezési nyelv](log-analytics-log-search-upgrade.md), majd tekintse át a [a naplófájl-keresési API új verziójának dokumentációjában](https://dev.loganalytics.io/).  Az örökölt API egy frissített munkaterület előfordulhat, hogy továbbra is használható, de hamarosan az lesz depracated.  Módosítsa a meglévő megoldásai az új API-val.
 
-Ez az útmutató egy alapszintű oktatóanyag, valamint az, a napló Analytics Search REST API használatát. A Naplóelemzési része az Operations Management Suite (OMS).
+Ez az útmutató egy alapszintű oktatóanyag, valamint az, a napló Analytics Search REST API használatát. 
 
 
 ## <a name="overview-of-the-log-search-rest-api"></a>A naplófájl-keresési REST API – áttekintés
-A napló Analytics Search REST API RESTful, és az Azure Resource Manager API-n keresztül érhető el. Ez a cikk ismerteti az API használatával történő eléréséhez példák [ARMClient](https://github.com/projectkudu/ARMClient), egy nyílt forráskódú parancssori eszköz, amely leegyszerűsíti az Azure Resource Manager API meghívása. A ARMClient használata számos lehetőség a napló Analytics Search API eléréséhez. Lehetősége az Azure PowerShell modul használandó OperationalInsights, amely keresési eléréséhez parancsmagokat tartalmaz. Ezekkel az eszközökkel használhatja az Azure Resource Manager API-hívások indítása az OMS-munkaterület, és rajtuk keresési parancsok végrehajtása. Az API-t kiírja a keresési eredmények JSON formátumban, hogy lehetővé teszi a programozott módon használja a keresési eredmények között számos különböző módja.
+A napló Analytics Search REST API RESTful, és az Azure Resource Manager API-n keresztül érhető el. Ez a cikk ismerteti az API használatával történő eléréséhez példák [ARMClient](https://github.com/projectkudu/ARMClient), egy nyílt forráskódú parancssori eszköz, amely leegyszerűsíti az Azure Resource Manager API meghívása. A ARMClient használata számos lehetőség a napló Analytics Search API eléréséhez. Lehetősége az Azure PowerShell modul használandó OperationalInsights, amely keresési eléréséhez parancsmagokat tartalmaz. Ezek az eszközök úgy használhatja a Naplóelemzési munkaterület meghíváshoz és rajtuk keresési parancsok végrehajtása az Azure Resource Manager API. Az API-t kiírja a keresési eredmények JSON formátumban, hogy lehetővé teszi a programozott módon használja a keresési eredmények között számos különböző módja.
 
 Az Azure Resource Managerrel használható keresztül egy [.NET-keretrendszerhez készült](https://msdn.microsoft.com/library/azure/dn910477.aspx) és a [REST API](https://msdn.microsoft.com/library/azure/mt163658.aspx). További információkért tekintse át a csatolt weblapokat.
 

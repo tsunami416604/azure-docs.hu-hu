@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: mabrigg
-ms.openlocfilehash: 2a18d278702c47597fd6896fb507849ef5e8e786
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 09c22b22b49664a55b8a9e77936df3b1362d5b88
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="start-and-stop-azure-stack"></a>Elindítása és leállítása Azure verem
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek*
+*A következőkre vonatkozik: Azure verem integrált rendszerek (verzió: 1712 és újabb verziók)*
 
 ## <a name="stop-azure-stack"></a>Állítsa le az Azure verem 
 

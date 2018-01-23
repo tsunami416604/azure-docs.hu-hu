@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: helaw
-ms.openlocfilehash: c99e5ebc2612e10f42bddbbd2f1c17d7404305d3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c30b0a78cf3421554cf8f7c887c7973c7b9f4b9c
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="check-your-templates-for-azure-stack-with-template-validator"></a>A sablonok Azure verem sablon érvényesítő és ellenőrzése
 
@@ -30,7 +30,7 @@ A JSON-fájl lévő és sablonok ellenőrzéséhez használja a következő Powe
 
  - AzureRM.CloudCapabilities.psm1 létrehoz egy felhőalapú képességek JSON képviselő a szolgáltatások és a felhőben működő Azure verem például verziók.
  - AzureRM.TemplateValidator.psm1 sablonok központi telepítés tesztelése az Azure-verem felhőalapú képességek JSON-fájlt használ.
- - AzureStackCloudCapabilities_with_AddOns_20170627.json egy olyan alapértelmezett felhőalapú képességek fájl.  Hozza létre a sajátját, vagy használja ezt a fájlt a kezdéshez. 
+ - AzureStackCloudCapabilities_with_AddOns_20170627.json is a default cloud capabilities file.  Hozza létre a sajátját, vagy használja ezt a fájlt a kezdéshez. 
 
 Ebben a témakörben érvényesítési futtatni a sablonokat, és opcionálisan a felhő capabilities-fájl létrehozása.
 
@@ -93,11 +93,11 @@ A letöltött fájlok közé tartoznak az alapértelmezett *AzureStackCloudCapab
 3.  A Get-CloudCapabilities parancsmag szolgáltatásverziók lekérdezéséhez, és hozzon létre egy felhőalapú képességek JSON-fájlt használja:
 
     ```PowerShell
-    Get-AzureRMCloudCapabilities -Location 'local' -Verbose
+    Get-AzureRMCloudCapability -Location 'local' -Verbose
     ```             
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
  - [Sablonok telepítése Azure verem](azure-stack-arm-templates.md)
  - [Az Azure-verem sablonok fejlesztése](azure-stack-develop-templates.md)
 

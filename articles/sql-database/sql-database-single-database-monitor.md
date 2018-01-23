@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 09/20/2017
 ms.author: carlrab
-ms.openlocfilehash: 8513ace2589056387d8a1959c5727ee6bd5674cd
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 2286843317230b8167b315b1e8e413e7571da4fe
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="monitoring-database-performance-in-azure-sql-database"></a>Adatbázis teljesítményének figyelése Azure SQL Database adatbázisokban
 Egy Azure SQL-adatbázis teljesítményének figyelése az erőforrás-használatnak a kiválasztott adatbázis teljesítményszintjéhez viszonyított figyelésével kezdődik. A figyelés segítségével megállapítható, ha az adatbázis többletkapacitással rendelkezik, vagy éppen elérte a maximumot az erőforrások kihasználtságában, és emiatt problémák jelentkezhetnek, így az is eldönthető, hogy módosítani kell-e az adatbázis teljesítményszintjét és [szolgáltatásszintjét](sql-database-service-tiers.md). Az adatbázist figyelheti grafikus eszközök használatával az [Azure Portalon](https://portal.azure.com) vagy SQL [dinamikus felügyeleti nézetek](https://msdn.microsoft.com/library/ms188754.aspx) használatával.
@@ -83,7 +83,7 @@ Mivel ez a nézet biztosít egy részletesebb erőforrás használata, **sys.dm_
 Más lekérdezések lévő példák [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx).
 
 #### <a name="sysresourcestats"></a>sys.resource_stats
-A [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) tekintse meg a **fő** adatbázis tartalmaz további információt az SQL-adatbázis, az adott szolgáltatás és teljesítményszintet szinten teljesítményének figyeléséhez nyújt segítséget. Az adatok gyűjtése 5 percenként és körülbelül 35 napon változatlan marad. Ebben a nézetben a hosszabb távú előzményadatok elemzése hogyan az SQL-adatbázis erőforrást használ, érdemes használni.
+A [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) tekintse meg a **fő** adatbázis tartalmaz további információt az SQL-adatbázis, az adott szolgáltatás és teljesítményszintet szinten teljesítményének figyeléséhez nyújt segítséget. Az adatok gyűjtése 5 percenként és körülbelül két héttel a változatlan marad. Ebben a nézetben a hosszabb távú előzményadatok elemzése hogyan az SQL-adatbázis erőforrást használ, érdemes használni.
 
 A következő ábra a CPU erőforrás Premium adatbázis a használható P2 teljesítményszintjét óránként egy hét múlva jelzi. Ehhez a diagramhoz egy hétfőn kezdődő, 5 munkanapok jeleníti meg, és megjeleníti a hétvégi, ha sok kevésbé történik, az alkalmazás.
 

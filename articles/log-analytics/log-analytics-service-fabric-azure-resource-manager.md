@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 01/19/2018
 ms.author: nini
-ms.openlocfilehash: 8c564c0dcbb2f9be286917b2f4d8a40da5406fae
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: cc29a8ac6369560d37466d69fad272cef2337732
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="assess-service-fabric-applications-and-micro-services-with-the-azure-portal"></a>Mérje fel a Service Fabric-alkalmazások és micro-szolgáltatások és az Azure portál
 
@@ -37,7 +37,7 @@ A Service Fabric-megoldás Azure diagnosztikai adatokat a Service Fabric virtuá
 A kezdéshez a megoldással akkor csatlakoztatni kell a Service Fabric-fürt a Naplóelemzési munkaterület. Az alábbiakban a három forgatókönyv kell figyelembe venni:
 
 1. Ha nem telepítette a Service Fabric-fürt, lépésekkel ***központi telepítése a Service Fabric-fürt csatlakozik a Naplóelemzési munkaterület*** egy új fürt központi telepítése, és jelentést Naplóelemzési konfigurálnia.
-2. Ha a teljesítményszámlálók gyűjtése a gazdagépek más OMS megoldások, például biztonsági a Service Fabric-fürt használatára van szüksége, kövesse a ***központi telepítése a Service Fabric-fürt csatlakozik egy Virtuálisgép-bővítmény Naplóelemzési munkaterület telepítve.***
+2. Ha a teljesítményszámlálók gyűjtése a gazdagépek más felügyeleti megoldások, például biztonsági a Service Fabric-fürt használatára van szüksége, kövesse a ***központi telepítése a Service Fabric-fürt csatlakozik egy Virtuálisgép-bővítmény Naplóelemzési munkaterület telepítve.***
 3. Ha már telepítette a Service Fabric-fürt és a kívánt Log Analyticshez való csatlakozáshoz, kövesse a lépéseket ***Naplóelemzési egy meglévő tárfiók hozzáadása.***
 
 ## <a name="deploy-a-service-fabric-cluster-connected-to-a-log-analytics-workspace"></a>Telepítse a Service Fabric-fürt a Naplóelemzési munkaterület csatlakozik.
@@ -138,7 +138,7 @@ Ez a sablon telepítése után lesz tekintse meg a tárfiók a Naplóelemzési m
 
 Miután a telepítés befejeződött, és engedélyezve van a Service Fabric-megoldás a munkaterületen, válassza ki a **Service Fabric** csempére elindítani a Service Fabric dashboard Log Analytics-portálról. Az irányítópulton az alábbi táblázatban felsorolt oszlopok találhatóak. Minden oszlop a felső 10 események száma a megadott időtartományban az adott oszlop feltételeknek megfelelő sorolja fel. Futtathat teljes listáját jeleníti meg, kattintson a napló keresés **láthatja az összes** jobb alsó oszlopok, vagy kattintson az oszlopfejlécre.
 
-| **A Service Fabric-esemény** | **Leírás** |
+| **A Service Fabric-esemény** | **description** |
 | --- | --- |
 | Jelentős problémák |Megjeleníti a problémák, például RunAsyncFailures RunAsynCancellations és csomópont időszakosan megszakadó. |
 | A működési események |Például az alkalmazásfrissítés és központi telepítések figyelmet a jelentősebb működési eseményeit. |

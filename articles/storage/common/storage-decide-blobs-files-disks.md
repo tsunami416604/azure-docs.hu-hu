@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: tamram
-ms.openlocfilehash: 648d8f04952a4dbe474b44f385075c0ac1c9fd57
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: e68f02484c0b8de8319a2d9a6d7e3a01ee06c69a
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Azure BLOB, az Azure fájlok vagy az Azure-lemezek használatára való
 
@@ -78,4 +78,4 @@ Az adatok tárolásának és elért hogyan kapcsolatos döntések meghozásakor 
   
 A felhő nem alkalmazhatók egyes SMB-szolgáltatások. További információkért lásd: [az Azure File service által nem támogatott funkciók](/rest/api/storageservices/features-not-supported-by-the-azure-file-service).
   
-Lemezek kapcsolatos további információkért lásd: [lemezek és lemezképek kezelése](../../virtual-machines/windows/about-disks-and-vhds.md) és [hogyan lehet adatlemezt csatolni egy Windows rendszerű virtuális gép](../../virtual-machines/windows/classic/attach-disk-classic.md).
+Lemezek kapcsolatos további információkért lásd: [lemezek és lemezképek kezelése](../../virtual-machines/windows/about-disks-and-vhds.md) és [hogyan lehet adatlemezt csatolni egy Windows rendszerű virtuális gép](../../virtual-machines/windows/attach-managed-disk-portal.md).

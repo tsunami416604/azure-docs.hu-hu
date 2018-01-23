@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: denlee
-ms.openlocfilehash: 612a586a2f260221cd407ab8611596306d9e7361
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: f88f3fb05495b0f3330d5a4cde7718fe89b2f694
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 01/22/2018
 ---
-# <a name="implement-a-lambda-architecture-on-the-azure-platform"></a>A lambda architektúra végrehajtása az Azure platformon 
+# <a name="azure-cosmos-db-implement-a-lambda-architecture-on-the-azure-platform"></a>Az Azure Cosmos DB: Egy lambda architektúra valósítja meg az Azure platformon 
 
 Lambda architektúrák nagy adatkészletek hatékony feldolgozásának engedélyezése. Lambda architektúrák részt big Data típusú adatok lekérdezése a késés csökkentése érdekében érdemes kötegfeldolgozási adatfolyam-feldolgozási és szolgáló réteg használja. 
 

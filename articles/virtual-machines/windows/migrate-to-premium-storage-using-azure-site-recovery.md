@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
-ms.openlocfilehash: 66e0e7a1fc620d0be9bd7057be4e04d628da174e
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 325ddb640e0cc10ae242e0a4ce2cc0d042dad320
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Prémium szintű Storage telepítse át az Azure Site Recovery segítségével
 
@@ -216,8 +216,7 @@ A Site Recovery hoz létre egy Virtuálisgép-példány, amelynek típusa megegy
 Virtuális gépek meghatározott forgatókönyvek lásd a következőket:
 
 * [Az Azure virtuális gépek közötti Storage-fiókok áttelepítése](https://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)
-* [Hozzon létre, és töltse fel a Windows Server VHD az Azure-bA](classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-* [Létrehozás és a Linux operációs rendszert tartalmazó virtuális merevlemez feltöltése](../linux/classic/create-upload-vhd-classic.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+* [Hozzon létre, és töltse fel a Windows Server VHD az Azure-bA](upload-generalized-managed.md)
 * [Virtuális gépek áttelepítési Amazon AWS a Microsoft Azure](http://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)
 
 A következő források további információt az Azure Storage és az Azure virtuális gépek lásd még:

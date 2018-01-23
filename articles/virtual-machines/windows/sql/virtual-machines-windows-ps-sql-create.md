@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/29/2017
 ms.author: jroth
-ms.openlocfilehash: 00f229c1b7fd9f3abaea1a07cec9b44efac5a5fa
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: e6d1f36d998ac8726e3a74b31772a5dd5a24bd58
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="how-to-create-sql-server-virtual-machines-with-azure-powershell"></a>SQL Server virtuális gépek létrehozása az Azure PowerShell
 
@@ -246,7 +246,7 @@ $Credential = Get-Credential -Message "Type the name and password of the local a
 ```
 
 ### <a name="set-the-operating-system-properties-for-the-virtual-machine"></a>A virtuális gép operációs rendszer tulajdonságainak beállítása
-Most már készen áll a virtuális gép operációs rendszer tulajdonságainak a beállítása azt [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem) parancsmag Windows, mint az operációs rendszer típusát igényelnek a [virtuális gép ügynökének](../classic/agents-and-extensions-classic.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) legyen telepítve, adja meg, hogy a parancsmag lehetővé teszi, hogy az automatikus frissítés, és állítsa be a virtuális gép nevét, a számítógép nevét és a hitelesítő adatok használata a változókat, amelyek korábban inicializálták.
+Most már készen áll a virtuális gép operációs rendszer tulajdonságainak a beállítása azt [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem) parancsmag Windows, mint az operációs rendszer típusát igényelnek a [virtuális gép ügynökének](../agent-user-guide.md) legyen telepítve, adja meg, hogy a parancsmag lehetővé teszi, hogy az automatikus frissítés, és állítsa be a virtuális gép nevét, a számítógép nevét és a hitelesítő adatok használata a változókat, amelyek korábban inicializálták.
 
 Hajtsa végre a következő parancsmagot a virtuális gép operációs rendszer tulajdonságainak beállításához.
 

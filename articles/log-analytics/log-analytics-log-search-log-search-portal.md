@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/23/2017
+ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: 08d8ebfd18491eb78190651b76f444ffe0eca899
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 3a2e8803d51d81ab0eda3dc814d01822e17bc14e
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="create-log-searches-in-azure-log-analytics-using-the-log-search-portal"></a>Napló keresések létrehozása az Azure Naplóelemzés a naplófájl-keresési portál használatával
 
@@ -37,11 +37,11 @@ Ez az oktatóanyag feltételezi, hogy már rendelkezik a Naplóelemzési munkate
 - Csatlakozás legalább egy [Windows-ügynök](log-analytics-windows-agent.md) vagy egy [Linux-ügynök](log-analytics-linux-agents.md) a munkaterületre.  
 
 ## <a name="open-the-log-search-portal"></a>Nyissa meg a keresési napló portált
-Indítsa el a napló keresési portál megnyitásával.  Az Azure-portálon vagy az OMS-portálon hozzá tud férni.
+Indítsa el a napló keresési portál megnyitásával. 
 
-1. Nyissa meg az Azure-portálon.
+1. Nyissa meg az Azure Portalt.
 2. A Naplóelemzési váltson, és jelölje ki a munkaterületen.
-3. Válasszon ki **naplófájl-keresési** az Azure-portálon belül, vagy indítsa el az OMS-portálon kiválasztásával **OMS-portálon** , majd kattintson a napló Keresés gombra.
+3. Válassza ki **keresési jelentkezzen**.
 
 ![Napló Keresés gomb](media/log-analytics-log-search-log-search-portal/log-search-button.png)
 
@@ -160,7 +160,7 @@ Perf  | where (ObjectName == "Processor")  | where (CounterName == "% Processor 
 
 ![Vonaldiagram](media/log-analytics-log-search-log-search-portal/log-search-portal-14.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a Log Analytics lekérdezési nyelv [az Analytics portál első lépések](https://go.microsoft.com/fwlink/?linkid=856079).
 - Végezze el a oktatóanyag segítségével a [Advanced Analytics portál](https://go.microsoft.com/fwlink/?linkid=856587) amely lehetővé teszi az ugyanazon lekérdezések futtatását, illetve a napló keresési portál ugyanazon adatokat érik el.

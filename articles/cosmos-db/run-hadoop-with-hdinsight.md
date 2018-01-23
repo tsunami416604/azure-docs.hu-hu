@@ -12,17 +12,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 06/08/2017
+ms.date: 01/19/2018
 ms.author: denlee
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e69edcae53b9e6614cb02932abd1e2022c558a14
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 181954e4657166db8aa94021ad093437d8c7abfd
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="Azure Cosmos DB-HDInsight"></a>Egy Azure Cosmos DB és HDInsight Apache Hive, Pig vagy Hadoop feladat futtatása
 Az oktatóanyag bemutatja, hogyan futtathat [Apache Hive][apache-hive], [Apache Pig][apache-pig], és [Apache Hadoop] [ apache-hadoop] MapReduce-feladatok on Azure HDInsight Cosmos DB Hadoop-összekötővel együtt. Cosmos DB Hadoop összekötő lehetővé teszi, hogy a forrás és a Hive, Pig és MapReduce-feladatok fogadó Cosmos DB. Ez az oktatóanyag fog használni Cosmos DB adatforrás mind az átadó a Hadoop-feladatokat.
+
+> [!IMPORTANT] 
+> A Spark on Azure Cosmos DB-összekötőhöz a lehetőség ajánlott Azure HDInsight Azure Cosmos DB való csatlakozáshoz. További információkért lásd: [egyre gyorsabban jelennek meg valós idejű big data elemzések a Spark az Azure Cosmos DB összekötőre](spark-connector.md).
 
 Ez az oktatóanyag befejezése után képes lesz a következő kérdések megválaszolásához:
 
@@ -49,7 +52,7 @@ Nincs ideje elvégezni az oktatóanyagot, és csak szeretné, hogy a teljes mint
     <tr><th>Hadoop Connector ezen verziója</th>
         <td>1.2.0</td></tr>
     <tr><th>Parancsfájl URI azonosítója</th>
-        <td>https://portalcontent.BLOB.Core.Windows.NET/scriptaction/documentdb-hadoop-Installer-v04.ps1</td></tr>
+        <td>https://portalcontent.blob.core.windows.net/scriptaction/documentdb-hadoop-installer-v04.ps1</td></tr>
     <tr><th>Módosítás dátuma</th>
         <td>04/26/2016</td></tr>
     <tr><th>Támogatott HDInsight-verziókról</th>
@@ -118,11 +121,11 @@ A mező 3 és 63 karakter közötti karakterláncnak kell lennie.</td></tr>
 
      <table border='1'>
          <tr><th>Tulajdonság</th><th>Érték</th></tr>
-         <tr><td>Név</td>
+         <tr><td>Name (Név)</td>
              <td>Adja meg a parancsfájlművelet nevét.</td></tr>
          <tr><td>A parancsfájl URI azonosítója</td>
              <td>Adja meg az URI-t a parancsfájlt, amelyet a fürt testreszabásához.</br></br>
-Adja meg: </br> <strong>https://portalcontent.BLOB.Core.Windows.NET/scriptaction/documentdb-hadoop-Installer-v04.ps1</strong>.</td></tr>
+Adja meg: </br> <strong>https://portalcontent.blob.core.windows.net/scriptaction/documentdb-hadoop-installer-v04.ps1</strong>.</td></tr>
          <tr><td>Fej</td>
              <td>Kattintson a jelölőnégyzetbe, az átjárócsomópont a PowerShell parancsfájl futtatásához.</br></br>
              <strong>Ezt a jelölőnégyzetet</strong>.</td></tr>
@@ -390,7 +393,7 @@ Adja meg: </br> <strong>https://portalcontent.BLOB.Core.Windows.NET/scriptaction
 
       ![MapReduce lekérdezés eredményei][image-mapreduce-query-results]
 
-## <a name="NextSteps"></a>Következő lépések
+## <a name="NextSteps"></a>További lépések
 Gratulálunk! Csak az első Hive, Pig és MapReduce feladatok Azure Cosmos DB és HDInsight futtatta.
 
 Tudunk nyissa meg a Hadoop összekötő forrása. Ha szeretné használni, akkor a járulhat [GitHub][github].

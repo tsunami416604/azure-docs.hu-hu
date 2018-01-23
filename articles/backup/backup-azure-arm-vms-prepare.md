@@ -13,13 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 9/3/2017
+ms.date: 1/21/2017
 ms.author: markgal;trinadhk;sogup;
-ms.openlocfilehash: a0c1cebfa22939ead98ff8f4a204ef6fd1f4cf96
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 7d7b81a585ba8b10c60062c5d5274c45335cab68
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>A környezet előkészítése a Resource Managerrel üzembe helyezett virtuális gépek biztonsági mentéséhez
 
@@ -54,7 +54,7 @@ A környezet előkészítése előtt ügyeljen arra, hogy ezek a korlátozások 
 * Virtuális gépek biztonsági mentését adatokkal 1,023 GB-nál nagyobb mérete nem támogatott.
 
   > [!NOTE]
-  > Van egy, az 1 TB méretű (vagy újabb) nem felügyelt lemezzel rendelkező virtuális gépek biztonsági mentések támogatása private Preview verziójára. További információkért tekintse meg [nagy virtuális gép biztonsági mentési támogatása a Private Preview verziójára](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a).
+  > Van egy, a biztonsági mentések támogatása a virtuális gépek > 1 TB-os lemezzel private Preview verziójára. További információkért tekintse meg [nagy virtuális gép biztonsági mentési támogatása a Private Preview verziójára](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a).
   >
 
 * A fenntartott IP-cím és a nem definiált végpontot a virtuális gépek biztonsági mentését nem támogatott.
@@ -181,7 +181,7 @@ Miután sikeresen engedélyezte a biztonsági mentés, a biztonsági mentési h�
 Ha problémába ütközik a virtuális gép rögzítése, tekintse meg a következő információkat a Virtuálisgép-ügynök telepítése és a hálózati kapcsolatot. Ha az Azure-ban létrehozott virtuális gépek védelmét valószínűleg nem kell a következő információkat. De ha áttelepítette a virtuális gépek Azure-ba, lehet, hogy a Virtuálisgép-ügynök megfelelően telepítve, és, hogy a virtuális gép kommunikálhatnak-e a virtuális hálózat.
 
 ## <a name="install-the-vm-agent-on-the-virtual-machine"></a>A Virtuálisgép-ügynök telepítése a virtuális gépen
-A biztonsági mentés bővítmény használatához az Azure [Virtuálisgép-ügynök](../virtual-machines/windows/classic/agents-and-extensions-classic.md#azure-vm-agents-for-windows-and-linux) telepíteni kell az Azure virtuális géphez. Ha a virtuális gép létrehozása az Azure piactérről, a Virtuálisgép-ügynök már telepítve a virtuális gép. 
+A biztonsági mentés bővítmény használatához az Azure [Virtuálisgép-ügynök](../virtual-machines/windows/agent-user-guide.md) telepíteni kell az Azure virtuális géphez. Ha a virtuális gép létrehozása az Azure piactérről, a Virtuálisgép-ügynök már telepítve a virtuális gép. 
 
 Olyan esetekben, ahol a következő információ *nem* használatával egy virtuális gép létrehozása az Azure piactérről. Például végezte az áttelepítést egy virtuális Gépet egy olyan helyszíni adatközpontban. Ebben az esetben a Virtuálisgép-ügynök telepítve kell lennie ahhoz, hogy a virtuális gép védelmét.
 
@@ -219,7 +219,7 @@ Segítségével engedélyezheti az adott régió tárolási kapcsolatok [címké
 ![NSG a régió tárolási címkékkel](./media/backup-azure-arm-vms-prepare/storage-tags-with-nsg.png)
 
 > [!WARNING]
-> Tárolási címkék csak a meghatározott régióiba elérhetők, és még csak előzetes verziójúak. Régiók listáját lásd: [címkék szolgáltatás tárolási](../virtual-network/security-overview.md#service-tags).
+> Tárolási szolgáltatás címkék csak a meghatározott régióiba elérhetők, és még csak előzetes verziójúak. Régiók listáját lásd: [címkék szolgáltatás tárolási](../virtual-network/security-overview.md#service-tags).
 
 ### <a name="use-an-http-proxy-for-vm-backups"></a>A virtuális gép biztonsági mentésekhez HTTP proxyk használatára
 Ha biztonsági mentést készít a virtuális gép, a biztonsági mentési bővítményt a virtuális Gépen a pillanatkép felügyeleti parancsokat küld Azure Storage egy HTTPS API használatával. A tartalék mellék forgalmat a HTTP-proxyn keresztül történő irányításához, mivel a nyilvános internet-hozzáférés beállítása csak összetevő már.

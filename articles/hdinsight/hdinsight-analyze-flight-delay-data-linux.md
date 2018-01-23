@@ -13,14 +13,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2017
+ms.date: 01/19/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 96a40753d87d49e9493e808da0294d682b2a19e5
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: b2eca1ab7eff006311269c78b1e507cb1417fcc6
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-on-linux-based-hdinsight"></a>A Linux-alapú HDInsight Hive használatával repülési késleltetés adatok elemzése
 
@@ -43,11 +43,11 @@ ms.lasthandoff: 11/03/2017
 
 2. A lapon válassza ki a következő értékeket:
 
-   | Név | Érték |
+   | Name (Név) | Érték |
    | --- | --- |
    | Szűrő év |2013 |
    | Időszak szűrése |Január |
-   | Mezők |Év FlightDate, UniqueCarrier, vivőjel, FlightNum, OriginAirportID, eredet, OriginCityName, OriginState, DestAirportID, cél, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay. |
+   | Mezők |Year, FlightDate, UniqueCarrier, Carrier, FlightNum, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay. |
    Törölje az összes többi mező. 
 
 3. Válassza ki **letöltése**.
@@ -200,9 +200,7 @@ Ha még nem rendelkezik SQL-adatbázis, olvassa el a [Azure SQL-adatbázis létr
 > Számos módon csatlakozzon az SQL Database, és hozzon létre egy táblát. Az alábbi lépéseket használata [FreeTDS](http://www.freetds.org/) a a HDInsight-fürthöz.
 
 
-1. Az SSH használata a Linux-alapú HDInsight-fürthöz való csatlakozáshoz, és futtassa a következő lépéseket az SSH-munkamenetből.
-
-2. A következő paranccsal telepítse FreeTDS:
+1. FreeTDS telepítéséhez használja a fürthöz az SSH-kapcsolat a következő parancsot:
 
     ```
     sudo apt-get --assume-yes install freetds-dev freetds-bin
@@ -211,8 +209,10 @@ Ha még nem rendelkezik SQL-adatbázis, olvassa el a [Azure SQL-adatbázis létr
 3. A telepítés befejezése után a következő paranccsal az SQL Database-kiszolgálóhoz való kapcsolódáshoz. Cserélje le **kiszolgálónév** az SQL-adatbázis-kiszolgáló nevével. Cserélje le **adminLogin** és **adminPassword** SQL-adatbázis a bejelentkezéskor. Cserélje le **databaseName** az adatbázis nevével.
 
     ```
-    TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -P <adminPassword> -p 1433 -D <databaseName>
+    TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -p 1433 -D <databaseName>
     ```
+
+    Amikor a rendszer kéri, adja meg a jelszót az SQL-adatbázis rendszergazdai bejelentkezés.
 
     A kimenet az alábbihoz hasonló jelenhet meg:
 
@@ -286,7 +286,7 @@ Ha még nem rendelkezik SQL-adatbázis, olvassa el a [Azure SQL-adatbázis létr
 
     Meg kell jelennie a tábla adatainak listáját. Típus `exit` való kilépéshez a tsql segédprogramot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További részleteket a hdinsight adatokkal dolgozni, lásd: a következő cikkeket:
 

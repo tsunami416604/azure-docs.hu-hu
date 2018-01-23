@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/05/2017
 ms.author: tomfitz
-ms.openlocfilehash: 5a28914d967e77d6c8881cd6e56b798269d3df3e
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 7d500d20dcce3e472e3e1e15b9ce307874caf22a
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -106,7 +106,7 @@ A szolgáltatások, amelyek lehetővé teszik egy új erőforráscsoportot és a
 * Automatizálás
 * Azure Cosmos DB
 * Batch
-* A Bing Maps
+* Bing Térképek
 * Tartalomkézbesítési hálózat (CDN)
 * A felhőalapú szolgáltatások – lásd [klasszikus telepítési korlátozásai](#classic-deployment-limitations)
 * Cognitive Services
@@ -118,7 +118,7 @@ A szolgáltatások, amelyek lehetővé teszik egy új erőforráscsoportot és a
 * DNS
 * Event Hubs
 * A HDInsight-fürtök - Lásd [HDInsight korlátozásai](#hdinsight-limitations)
-* IoT-központok
+* IoT Hubok
 * Key Vault
 * Terheléselosztók
 * Logic Apps
@@ -135,7 +135,7 @@ A szolgáltatások, amelyek lehetővé teszik egy új erőforráscsoportot és a
 * Kiszolgálófelügyelet
 * Service Bus
 * Service Fabric
-* Storage
+* Tárolás
 * Tekintse meg a tároló (klasszikus) - [klasszikus telepítési korlátozásai](#classic-deployment-limitations)
 * A Stream Analytics - feladatok nem helyezhető át, ha a Stream Analytics állapotban.
 * SQL-adatbáziskiszolgáló - adatbázis és a kiszolgáló ugyanabban az erőforráscsoportban kell lennie. Ha egy SQL server helyezi át, az adatbázisokat is kerülnek.
@@ -150,7 +150,7 @@ A szolgáltatások, amelyek lehetővé teszik egy új erőforráscsoportot és a
 
 A szolgáltatások, amelyek jelenleg nem engedélyezi az erőforrás áthelyezése a következők:
 
-* Az AD tartományi szolgáltatások
+* AD Domain Services
 * AD hibrid Állapotfigyelő szolgáltatás
 * Application Gateway
 * BizTalk Services
@@ -162,7 +162,7 @@ A szolgáltatások, amelyek jelenleg nem engedélyezi az erőforrás áthelyezé
 * Tekintse meg a felügyelt lemezek - [virtuális gépek korlátozásai](#virtual-machines-limitations)
 * Recovery Services-tároló - is do helyezi át a számítási, hálózati és tárolási erőforrásokat, a Recovery Services-tároló társított lásd [helyreállítási szolgáltatások korlátozásai](#recovery-services-limitations).
 * Biztonság
-* StorSimple Device Manager
+* StorSimple-eszközkezelő
 * Tekintse meg a virtuális hálózatok (klasszikus) - [klasszikus telepítési korlátozásai](#classic-deployment-limitations)
 
 ## <a name="virtual-machines-limitations"></a>Virtuális gépek korlátozásai
@@ -315,6 +315,12 @@ Helyezze át a tárolási, hálózati, nincs engedélyezve, vagy számítási er
 
 Tegyük fel például, hogy állította be a tárfiók (Storage1) helyszíni gépek replikációja, és szeretné, hogy a védett gép elérni a feladatátvételt követően az Azure-ba (Network1) virtuális hálózathoz csatlakozó virtuális gépként (VM1). Nem helyezhető át - Storage1 VM1 és Network1 - e az Azure erőforrások bármelyike erőforráscsoportok egyazon előfizetésen belül vagy az előfizetések.
 
+A regisztrált virtuális gép áthelyezése **Azure biztonsági mentés** erőforráscsoportba:
+ 1. Ideiglenesen állítsa le a biztonsági mentés és a biztonsági mentési adatok megőrzése mellett
+ 2. A virtuális gép áthelyezése a célként megadott erőforráscsoportja
+ 3. Védelmének újbóli beállításához, a felhasználók állíthatja vissza az áthelyezés előtt létrehozott rendelkezésre visszaállítási pontok azonos/új tárolóban.
+Ha a felhasználó a biztonsági másolat virtuális Gépet egy előfizetések között, 1 és 2. lépést változatlanok maradnak. 3. lépésben a felhasználónak kell egy új tárolóban található / a célként megadott előfizetés-ben jött létre a virtuális gép védelme. Helyreállítási szolgáltatások tárolóban nem tartalmazza támogatás előfizetés biztonsági mentések közötti.
+
 ## <a name="hdinsight-limitations"></a>A HDInsight-korlátozások
 
 A HDInsight-fürtök áthelyezése egy új előfizetéshez vagy erőforráscsoporthoz. Azonban nem helyezhető át a hálózati erőforrások (például a virtuális hálózat, a hálózati adapter vagy a terheléselosztó) a HDInsight-fürthöz kapcsolódó előfizetések között. Ezenkívül nem helyezhető át egy új erőforráscsoportot egy hálózati Adaptert, amely a fürt virtuális gép csatlakozik.
@@ -380,7 +386,7 @@ POST https://management.azure.com/subscriptions/{source-subscription-id}/resourc
 
 A kérelem törzsében meg a célként megadott erőforráscsoportja és az erőforrások áthelyezése. Az áthelyezési REST művelet kapcsolatos további információkért lásd: [erőforrások áthelyezése](/rest/api/resources/Resources/MoveResources).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az előfizetés kezelésére szolgáló PowerShell-parancsmagokkal kapcsolatban lásd: [Azure PowerShell használata a Resource Manager](powershell-azure-resource-manager.md).
 * Az előfizetés kezelésének Azure parancssori felület parancsait kapcsolatos további tudnivalókért lásd: [az Azure parancssori felület használatával a Resource Manager](xplat-cli-azure-resource-manager.md).

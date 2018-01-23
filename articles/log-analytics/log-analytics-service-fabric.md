@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/06/2017
+ms.date: 01/19/2018
 ms.author: nini
-ms.openlocfilehash: ca86787e344aa5e9e68934dee6e9e83aeb4cc340
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 15c2d882a121df48c94d457719287cd510d0c093
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="assess-azure-service-fabric-applications-and-micro-services-with-powershell"></a>Azure Service Fabric-alkalmazások és a PowerShell-lel micro-szolgáltatások
 > [!div class="op_single_selector"]
@@ -49,7 +49,7 @@ Kövesse az alábbi három egyszerű lépéseket telepítse és konfigurálja a 
 3. Engedélyezze a Service Fabric-megoldás a munkaterületen.
 
 ## <a name="configure-log-analytics-to-collect-and-view-service-fabric-logs"></a>Log Analyticshez való összegyűjtése és megtekintése a Service Fabric-naplók konfigurálása
-Ebben a szakaszban megismerheti, hogyan konfigurálhatja a Service Fabric naplók beolvasása Naplóelemzési. A naplók engedélyezi, hogy a megtekintése, elemzése és elhárítása a fürt vagy a futó alkalmazások és szolgáltatások fürt, az OMS-portálon.
+Ebben a szakaszban megismerheti, hogyan konfigurálhatja a Service Fabric naplók beolvasása Naplóelemzési. A naplók engedélyezi, hogy a megtekintése, elemzése és elhárítása a fürt vagy a futó alkalmazások és szolgáltatások fürt, az Azure portál használatával.
 
 > [!NOTE]
 > A storage-táblákat a naplók feltöltése az Azure Diagnostics mező konfigurálására. A táblák mi Naplóelemzési keresi meg kell egyeznie. További információkért lásd: [az Azure diagnosztikai naplók gyűjtéséről](../service-fabric/service-fabric-diagnostics-how-to-setup-wad.md). Ebben a cikkben a konfigurációs beállítások példák azt szemléltetik, csak a tárolási táblák milyen a neve. Miután diagnosztika be van állítva a fürthöz, és tölti fel naplók tárfiókba, a következő lépés, ezek a naplók összegyűjtésére Naplóelemzési konfigurálása.
@@ -61,7 +61,7 @@ Győződjön meg arról, hogy frissíti a **EtwEventSourceProviderConfiguration*
 A következő eszközök hajthatók végre műveleteket ebben a szakaszban:
 
 * Azure PowerShell
-* [Operations Management Suite](http://www.microsoft.com/oms)
+* [Log Analytics](log-analytics-overview.md)
 
 ### <a name="configure-a-log-analytics-workspace-to-show-the-cluster-logs"></a>A Naplóelemzési munkaterület megjelenítése a fürt naplók konfigurálása
 
@@ -360,7 +360,7 @@ Miután engedélyezte a megoldás, a Service Fabric csempe hozzáadódik a Napl�
 ### <a name="view-service-fabric-events"></a>A Service Fabric-események megtekintése
 Kattintson a **Service Fabric** csempére kattintva nyissa meg a Service Fabric dashboard. Az irányítópult az oszlopokat az alábbi táblázat tartalmazza. Minden oszlop a felső 10 események száma a megadott időtartományban az adott oszlop feltételeknek megfelelő sorolja fel. Futtathat teljes listáját jeleníti meg, kattintson a napló keresés **láthatja az összes** jobb alsó oszlopok, vagy kattintson az oszlopfejlécre.
 
-| **A Service Fabric-esemény** | **Leírás** |
+| **A Service Fabric-esemény** | **description** |
 | --- | --- |
 | Jelentős problémák | Például RunAsyncFailures, RunAsynCancellations és csomópont időszakosan megszakadó problémákat jeleníti meg. |
 | A működési események | Megjeleníti a figyelmet a jelentősebb működési eseményeit, beleértve az alkalmazásfrissítés és központi telepítések. |
@@ -421,10 +421,10 @@ $WADtables = @("WADServiceFabricReliableActorEventTable",
                )
 
 <#
-    Check if OMS Log Analytics is configured to index service fabric events from the specified table
+    Check if Log Analytics is configured to index service fabric events from the specified table
 #>
 
-function Check-OMSLogAnalyticsConfiguration {
+function Check-LogAnalyticsConfiguration {
     param(
     [psobject]$workspace,
     [psobject]$storageAccount,
@@ -439,21 +439,21 @@ function Check-OMSLogAnalyticsConfiguration {
 
         if ("WADServiceFabric*EventTable" -in $currentStorageAccountInsight.Tables)
         {
-            Write-Verbose ("OMS Log Analytics workspace " + $workspace.Name + " is configured to index service fabric actor, service and operational events from " + $storageAccount.Name)
+            Write-Verbose ("Log Analytics workspace " + $workspace.Name + " is configured to index service fabric actor, service and operational events from " + $storageAccount.Name)
         } else
         {
-            Write-Warning ("OMS Log Analytics workspace " + $workspace.Name + " is not configured to index service fabric actor, service and operational events from " + $storageAccount.Name)
+            Write-Warning ("Log Analytics workspace " + $workspace.Name + " is not configured to index service fabric actor, service and operational events from " + $storageAccount.Name)
         }
         if ("WADETWEventTable" -in $currentStorageAccountInsight.Tables)
         {
-            Write-Verbose ("OMS Log Analytics workspace " + $workspace.Name + " is configured to index service fabric application events from " + $storageAccount.Name)
+            Write-Verbose ("Log Analytics workspace " + $workspace.Name + " is configured to index service fabric application events from " + $storageAccount.Name)
         } else
         {
-            Write-Warning ("OMS Log Analytics workspace " + $workspace.Name + " is not configured to index service fabric application events from " + $storageAccount.Name)
+            Write-Warning ("Log Analytics workspace " + $workspace.Name + " is not configured to index service fabric application events from " + $storageAccount.Name)
         }
     } else
     {
-        Write-Warning ("OMS Log Analytics workspace " + $workspace.Name + "is not configured to read service fabric events from " + $storageAccount.Name)
+        Write-Warning ("Log Analytics workspace " + $workspace.Name + "is not configured to read service fabric events from " + $storageAccount.Name)
     }    
 }
 
@@ -614,9 +614,9 @@ catch [System.Management.Automation.PSInvalidOperationException]
 
 $allResources = Get-AzureRmResource
 
-$OMSworkspace = $allResources.Where({($_.ResourceType -eq "Microsoft.OperationalInsights/workspaces") -and ($_.ResourceName -eq $workspaceName)})
+$logAnalyticsWorkspace = $allResources.Where({($_.ResourceType -eq "Microsoft.OperationalInsights/workspaces") -and ($_.ResourceName -eq $workspaceName)})
 
-if ($OMSworkspace.Name -ne $workspaceName)
+if ($logAnalyticsWorkspace.Name -ne $workspaceName)
 {
     Write-Error ("Unable to find Log Analytics Workspace " + $workspaceName)
 }
@@ -644,7 +644,7 @@ $storageAccountsToCheck = ($allResources.Where({($_.ResourceType -eq "Microsoft.
 foreach($storageAccount in $storageAccountsToCheck)
 {
     Check-TablesForData $storageAccount
-    Check-OMSLogAnalyticsConfiguration $OMSworkspace $storageAccount
+    Check-LogAnalyticsConfiguration $logAnalyticsWorkspace $storageAccount
 }
  ```
 

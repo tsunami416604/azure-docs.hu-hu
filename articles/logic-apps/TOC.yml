@@ -33,9 +33,9 @@
           href: logic-apps-create-logic-apps-from-templates.md
         - name: Egyéni sablonok létrehozása
           href: logic-apps-create-deploy-azure-resource-manager-templates.md
-        - name: Logikai alkalmazás összeállítása – VS
+        - name: Logikai alkalmazás összeállítása – Visual Studio
           href: logic-apps-deploy-from-vs.md
-        - name: Kiszolgáló nélküli alkalmazás összeállítása – VS
+        - name: Kiszolgáló nélküli alkalmazás összeállítása – Visual Studio
           href: logic-apps-serverless-get-started-vs.md
         - name: Migráció a BizTalk Servicesből
           href: logic-apps-move-from-mabs.md
@@ -91,80 +91,6 @@
               href: logic-apps-custom-api-host-deploy-call.md
         - name: Hibák elhárítása
           href: logic-apps-diagnosing-failures.md
-    - name: Kezelés
-      items:
-        - name: Logikai alkalmazások kezelése – VS
-          href: logic-apps-manage-from-vs.md
-        - name: Integrációs fiókok kezelése
-          href: logic-apps-enterprise-integration-accounts.md
-    - name: Összekötők – Részletes témák
-      items:
-        - name: AS2
-          href: logic-apps-enterprise-integration-as2.md
-        - name: Azure Blob Storage
-          href: ../connectors/connectors-create-api-azureblobstorage.md
-        - name: Azure Functions
-          href: logic-apps-azure-functions.md
-        - name: Azure Logic Apps
-          href: logic-apps-http-endpoint.md
-        - name: Azure SQL Database
-          href: ../connectors/connectors-create-api-sqlazure.md
-        - name: Egyéni API-k/webappok
-          href: logic-apps-create-api-app.md
-        - name: DB2
-          href: ../connectors/connectors-create-api-db2.md
-        - name: Dynamics 365 CRM Online
-          href: ../connectors/connectors-create-api-crmonline.md
-        - name: EDIFACT
-          href: logic-apps-enterprise-integration-edifact.md
-        - name: Event Hubs
-          href: ../connectors/connectors-create-api-azure-event-hubs.md
-        - name: Fájlrendszer
-          href: logic-apps-using-file-connector.md
-        - name: Egybesimított fájl
-          href: logic-apps-enterprise-integration-flatfile.md
-        - name: FTP
-          href: ../connectors/connectors-create-api-ftp.md
-        - name: HTTP
-          href: ../connectors/connectors-native-http.md
-        - name: HTTP + Swagger
-          href: ../connectors/connectors-native-http-swagger.md
-        - name: HTTP Webhook
-          href: ../connectors/connectors-native-webhook.md
-        - name: Informix
-          href: ../connectors/connectors-create-api-informix.md
-        - name: Integrációs fiók
-          href: logic-apps-enterprise-integration-metadata.md
-        - name: MQ
-          href: ../connectors/connectors-create-api-mq.md
-        - name: Office 365 Outlook
-          href: ../connectors/connectors-create-api-office365-outlook.md
-        - name: Oracle Database
-          href: ../connectors/connectors-create-api-oracledatabase.md
-        - name: Kérés/válasz
-          href: ../connectors/connectors-native-reqres.md
-        - name: Salesforce
-          href: ../connectors/connectors-create-api-salesforce.md
-        - name: SAP
-          href: logic-apps-using-sap-connector.md
-        - name: Ütemezés
-          href: ../connectors/connectors-native-recurrence.md
-        - name: Service Bus
-          href: ../connectors/connectors-create-api-servicebus.md
-        - name: SharePoint Online
-          href: ../connectors/connectors-create-api-sharepointonline.md
-        - name: SharePoint Server
-          href: ../connectors/connectors-create-api-sharepointserver.md
-        - name: SQL Server
-          href: ../connectors/connectors-create-api-sqlazure.md
-        - name: XML-átalakítás
-          href: logic-apps-enterprise-integration-transform.md
-        - name: Twitter
-          href: ../connectors/connectors-create-api-twitter.md
-        - name: X12
-          href: logic-apps-enterprise-integration-x12.md
-        - name: XML-érvényesítés
-          href: logic-apps-enterprise-integration-xml-validation.md
     - name: Fejlesztés B2B-forgatókönyvekhez
       items:
         - name: Integrációs fiók létrehozása
@@ -226,6 +152,80 @@
           href: logic-apps-gateway-install.md
         - name: Csatlakozás helyszíni adatokhoz
           href: logic-apps-gateway-connection.md
+    - name: Összekötők – Részletes témák
+      items:
+        - name: AS2
+          href: logic-apps-enterprise-integration-as2.md
+        - name: Azure Blob Storage
+          href: ../connectors/connectors-create-api-azureblobstorage.md
+        - name: Azure Functions
+          href: logic-apps-azure-functions.md
+        - name: Azure Logic Apps
+          href: logic-apps-http-endpoint.md
+        - name: Azure SQL Database
+          href: ../connectors/connectors-create-api-sqlazure.md
+        - name: Egyéni API-k és webalkalmazások
+          href: logic-apps-create-api-app.md
+        - name: DB2
+          href: ../connectors/connectors-create-api-db2.md
+        - name: Dynamics 365 CRM Online
+          href: ../connectors/connectors-create-api-crmonline.md
+        - name: EDIFACT
+          href: logic-apps-enterprise-integration-edifact.md
+        - name: Event Hubs
+          href: ../connectors/connectors-create-api-azure-event-hubs.md
+        - name: Fájlrendszer
+          href: logic-apps-using-file-connector.md
+        - name: Egybesimított fájl
+          href: logic-apps-enterprise-integration-flatfile.md
+        - name: FTP
+          href: ../connectors/connectors-create-api-ftp.md
+        - name: HTTP
+          href: ../connectors/connectors-native-http.md
+        - name: HTTP + Swagger
+          href: ../connectors/connectors-native-http-swagger.md
+        - name: HTTP Webhook
+          href: ../connectors/connectors-native-webhook.md
+        - name: Informix
+          href: ../connectors/connectors-create-api-informix.md
+        - name: Integrációs fiók
+          href: logic-apps-enterprise-integration-metadata.md
+        - name: MQ
+          href: ../connectors/connectors-create-api-mq.md
+        - name: Office 365 Outlook
+          href: ../connectors/connectors-create-api-office365-outlook.md
+        - name: Oracle Database
+          href: ../connectors/connectors-create-api-oracledatabase.md
+        - name: Kérés/válasz
+          href: ../connectors/connectors-native-reqres.md
+        - name: Salesforce
+          href: ../connectors/connectors-create-api-salesforce.md
+        - name: SAP
+          href: logic-apps-using-sap-connector.md
+        - name: Ütemezés
+          href: ../connectors/connectors-native-recurrence.md
+        - name: Azure Service Bus
+          href: ../connectors/connectors-create-api-servicebus.md
+        - name: SharePoint Online
+          href: ../connectors/connectors-create-api-sharepointonline.md
+        - name: SharePoint Server
+          href: ../connectors/connectors-create-api-sharepointserver.md
+        - name: SQL Server
+          href: ../connectors/connectors-create-api-sqlazure.md
+        - name: XML-átalakítás
+          href: logic-apps-enterprise-integration-transform.md
+        - name: Twitter
+          href: ../connectors/connectors-create-api-twitter.md
+        - name: X12
+          href: logic-apps-enterprise-integration-x12.md
+        - name: XML-érvényesítés
+          href: logic-apps-enterprise-integration-xml-validation.md
+    - name: Kezelés
+      items:
+        - name: Logikai alkalmazások kezelése – VS
+          href: logic-apps-manage-from-vs.md
+        - name: Integrációs fiókok kezelése
+          href: logic-apps-enterprise-integration-accounts.md
     - name: Üzembe helyezés
       items:
         - name: Automatizált üzembehelyezési sablonok létrehozása
@@ -256,7 +256,7 @@
           href: logic-apps-enterprise-integration-b2b.md
 - name: Referencia
   items:
-    - name: Összekötők – részletes információk
+    - name: Összekötők – Részletes információk
       href: 'https://docs.microsoft.com/connectors/'
     - name: Határértékek és konfiguráció
       href: logic-apps-limits-and-config.md
@@ -269,7 +269,7 @@
     - name: Munkafolyamat-definíciós nyelvséma
       href: logic-apps-workflow-definition-language.md
       items:
-        - name: GA – sémaelőzmények
+        - name: GA – Sémaelőzmények
           href: logic-apps-schema-2016-04-01.md
     - name: Munkafolyamat-műveletek és eseményindítók
       href: logic-apps-workflow-actions-triggers.md

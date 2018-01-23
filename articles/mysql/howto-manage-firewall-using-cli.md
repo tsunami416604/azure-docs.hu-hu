@@ -1,6 +1,6 @@
 ---
 title: "Hozzon létre és kezelheti az Azure-adatbázis MySQL tűzfalszabályok Azure parancssori felület használatával |} Microsoft Docs"
-description: "Ez a cikk ismerteti, hogyan létrehozásához és kezeléséhez Azure Database az Azure CLI parancssorból MySQL tűzfalszabályokat."
+description: "Ez a cikk ismerteti, hogyan létrehozása és kezelése az Azure Database az Azure CLI-vel parancssori MySQL tűzfalszabályok."
 services: mysql
 author: v-chenyh
 ms.author: v-chenyh
@@ -10,11 +10,11 @@ ms.service: mysql-database
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 01/18/2018
-ms.openlocfilehash: ece359ed7c4d6d627b4bacf5efed88d34d754e02
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 1738fdd85391135357d34fefa878538866f21b91
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>Létrehozása és kezelése az Azure-adatbázis a MySQL tűzfalszabályok az Azure parancssori felület használatával
 Kiszolgálószintű tűzfal-szabályokat a rendszergazdák hozzáférésének kezelése az Azure-adatbázis MySQL-kiszolgáló egy adott IP-cím vagy egy adott IP-címeket. Tetszés szerinti Azure parancssori felület parancsait használva hozhat létre, frissítése, törlése, a listában, és kezelheti a kiszolgálót a tűzfalszabályok megjelenítése. Az áttekintést az Azure-adatbázis MySQL tűzfalak, lásd: [a MySQL-kiszolgáló tűzfalszabályainak Azure-adatbázis](./concepts-firewall-rules.md)
@@ -79,11 +79,23 @@ Az az Azure-beli MySQL-kiszolgáló nevét és az erőforráscsoport neve, hozzo
 ```azurecli-interactive
 az mysql server firewall-rule create --resource-group myResourceGroup --server-name mysqlserver4demo --name FirewallRule1 --start-ip-address 13.83.152.0 --end-ip-address 13.83.152.15
 ```
+
 Engedélyezi a hozzáférést egy IP-cím, adja meg az azonos IP-címre a kezdő IP- és a záró IP-, ebben a példában látható módon.
 ```azurecli-interactive
 az mysql server firewall-rule create --resource-group myResourceGroup --server-name mysqlserver4demo --name FirewallRule1 --start-ip-address 1.1.1.1 --end-ip-address 1.1.1.1
 ```
-Sikeres, akkor a parancs kimenete létrehozott, JSON formátumban (alapértelmezés) tűzfalszabály részleteit sorolja fel. Ha hiba történik, a kimeneti helyette látható hibaüzenet-szöveg.
+
+Lehetővé teszik az alkalmazások Azure IP-címekről a MySQL-kiszolgáló Azure-adatbázishoz való kapcsolódáshoz, adja meg az IP-cím 0.0.0.0, mint a kezdő IP- és a záró IP-, ebben a példában látható módon.
+```azurecli-interactive
+az mysql server firewall-rule create --resource-group myResourceGroup  
+--server mysql --name "AllowAllWindowsAzureIps" --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
+```
+
+> [!IMPORTANT]
+> Ez a beállítás konfigurálja a tűzfalat arra, hogy engedélyezzen minden, az Azure felől érkező kapcsolatot, beleértve a más ügyfelek előfizetéseiből érkező kapcsolatokat is. Ezen beállítás kiválasztásakor győződjön meg arról, hogy a bejelentkezési és felhasználói engedélyei a hozzáféréseket az arra jogosult felhasználókra korlátozzák.
+> 
+
+Sikeres, akkor minden egyes létrehozása parancs kimeneti sorolja fel a létrehozott, JSON formátumban (alapértelmezés) tűzfalszabály részleteit. Ha hiba történik, a kimeneti helyette látható hibaüzenet-szöveg.
 
 ## <a name="update-a-firewall-rule-on-azure-database-for-mysql-server"></a>Egy tűzfalszabály MySQL-kiszolgáló az Azure Database-frissítés 
 Az az Azure-beli MySQL-kiszolgáló nevét és az erőforráscsoport neve, frissítse a meglévő tűzfalszabály a kiszolgálón. Használja a [az mysql kiszolgáló tűzfal frissítés](/cli/azure/mysql/server/firewall-rule#az_mysql_server_firewall_rule_update) parancsot. Adja meg a nevét a meglévő tűzfalszabályt, bemeneti, valamint a kezdő frissítése IP-cím és a záró IP-attribútumok.

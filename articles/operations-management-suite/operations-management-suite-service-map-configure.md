@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: 9d310df29156f16f6b5290ff0575ff43d083a26c
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: e23173fb6708104c39071145595e4eec3454ee76
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="configure-service-map-in-operations-management-suite"></a>Az Operations Management Suite a Szolgáltatástérkép konfigurálása
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Használhatja a kiszolgálók megtekintéséhez, módon úgy gondolja, hogy azok--összekapcsolt rendszerekhez, hogy a kritikus szolgáltatásokhoz. Szolgáltatástérkép kiszolgálók, folyamatok és portok közötti kapcsolatok között nincs konfigurációjával kapcsolatban egy ügynök telepítése nem szükséges bármely TCP-csatlakoztatott architektúra jeleníti meg.
@@ -139,7 +139,7 @@ sudo sh InstallDependencyAgent-Linux64.bin -s
 ```
 
 ## <a name="azure-vm-extension"></a>Az Azure Virtuálisgép-bővítmény
-Az Azure virtuális gépek használata a függőségi ügynök könnyedén telepítheti egy [Azure Virtuálisgép-bővítmény](https://docs.microsoft.com/azure/virtual-machines/windows/classic/agents-and-extensions-classic).  Az Azure Virtuálisgép-bővítmény használatával telepíthet a függőségi ügynök a virtuális gépek közvetlenül az Azure Resource Manager-sablon a virtuális gép vagy egy PowerShell-parancsfájlt keresztül.  Nincs elérhető (DependencyAgentWindows) Windows és Linux (DependencyAgentLinux) bővítménye.  Ha az Azure Virtuálisgép-bővítmény használatával telepít, az ügynökök automatikusan frissíthető a legújabb verzióra.
+Az Azure virtuális gépek használata a függőségi ügynök könnyedén telepítheti egy [Azure Virtuálisgép-bővítmény](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-features).  Az Azure Virtuálisgép-bővítmény használatával telepíthet a függőségi ügynök a virtuális gépek közvetlenül az Azure Resource Manager-sablon a virtuális gép vagy egy PowerShell-parancsfájlt keresztül.  Nincs elérhető (DependencyAgentWindows) Windows és Linux (DependencyAgentLinux) bővítménye.  Ha az Azure Virtuálisgép-bővítmény használatával telepít, az ügynökök automatikusan frissíthető a legújabb verzióra.
 
 Az Azure PowerShell Virtuálisgép-bővítmény telepítéséhez használhatja a következő példa:
 ```PowerShell

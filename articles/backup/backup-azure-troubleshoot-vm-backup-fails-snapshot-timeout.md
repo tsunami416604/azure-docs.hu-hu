@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: genli;markgal;sogup;
-ms.openlocfilehash: 5eb326dfd89d9cc64eb0e05286e64c87e090e0a1
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 0be2391268e11593802cb0f455e8c4553f0d4731
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-agent-andor-extension"></a>Azure biztonsági mentési hiba elhárítása: ügynök és/vagy kiterjesztés problémái
 
@@ -78,7 +78,7 @@ Miután regisztrálja, és egy virtuális Gépet az Azure Backup szolgáltatás 
 ## <a name="the-specified-disk-configuration-is-not-supported"></a>A megadott lemezkonfiguráció nem támogatott.
 
 > [!NOTE]
-> Rendelkezünk egy privát előzetes verzióval olyan virtuális gépek biztonsági mentésének támogatásához, amelyeknél a nem felügyelt lemezek mérete meghaladja az 1 TB-ot. A részletekért tekintse meg [nagy virtuális gép biztonsági mentési támogatása a Private Preview verziójára](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a)
+> Biztonsági mentések rendelkező virtuális gépek támogatásához a private Preview verziójára kell > 1 TB-os lemezeken. A részletekért tekintse meg [nagy virtuális gép biztonsági mentési támogatása a Private Preview verziójára](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a)
 >
 >
 
@@ -97,11 +97,14 @@ A megfelelő működéshez, a tartalék mellék használatához az Azure nyilvá
 
 ####  <a name="solution"></a>Megoldás
 A probléma megoldása érdekében próbálkozzon az alábbi módszerek valamelyikét.
-##### <a name="allow-access-to-the-azure-datacenter-ip-ranges"></a>Az Azure datacenter IP-címtartományok hozzáférés engedélyezése
+##### <a name="allow-access-to-the-azure-storage-corresponding-to-the-region"></a>Engedélyezi a hozzáférést az Azure Storage régió megfelelő
 
-1. Szerezze be a [Azure datacenter IP-címek listája](https://www.microsoft.com/download/details.aspx?id=41653) eléréséhez.
-2. Az IP-címek feloldása futtatásával a **New-NetRoute** parancsmagot egy emelt szintű PowerShell-ablakban az Azure virtuális gépen. A parancsmag futtatása rendszergazdaként.
-3. Az IP-címek való hozzáférés engedélyezéséhez szabályok hozzáadása a hálózati biztonsági csoporthoz, ha rendelkezik ilyennel.
+Segítségével engedélyezheti az adott régió tárolási kapcsolatok [címkék szolgáltatás](../virtual-network/security-overview.md#service-tags). Győződjön meg arról, hogy a szabály, amely lehetővé teszi a hozzáférést a tárolási fiók rendelkezik-e a magasabb prioritású, mint a szabály, amely blokkolja az internet-hozzáféréssel. 
+
+![NSG a régió tárolási címkékkel](./media/backup-azure-arm-vms-prepare/storage-tags-with-nsg.png)
+
+> [!WARNING]
+> Tárolási szolgáltatás címkék csak a meghatározott régióiba elérhetők, és még csak előzetes verziójúak. Régiók listáját lásd: [címkék szolgáltatás tárolási](../virtual-network/security-overview.md#service-tags).
 
 ##### <a name="create-a-path-for-http-traffic-to-flow"></a>A HTTP-forgalom áramlását az elérési utat hoz létre
 
@@ -166,8 +169,6 @@ A következő okok miatt jöhet létre pillanatkép-feladat sikertelensége:
 | --- | --- |
 | A virtuális Gépnek legyen beállítva SQL Server biztonsági másolat. | Alapértelmezés szerint a virtuális gép biztonsági mentése fut a VSS teljes biztonsági mentés a Windows virtuális gépeken. A virtuális gépeken futó SQL Server-alapú kiszolgálók és az SQL Servert mentés konfigurálva van, pillanatkép végrehajtási késések fordulhat elő.<br><br>Ha a biztonsági mentés hibát tapasztal egy pillanatkép probléma miatt, állítsa be a következő beállításkulcsot:<br><br>**[HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT] "USEVSSCOPYBACKUP"="TRUE"** |
 | A virtuális gép állapotát jelentett nem megfelelő, mert a virtuális gép RDP a leállítása. | Ha leállítja a virtuális gép távoli asztal protokoll (RDP), ellenőrizze, helyes-e a virtuális gép állapotának meghatározásához a portálon. Ha nem megfelelő, használatával állítsa le a virtuális Gépet a portálon a **leállítási** a virtuális gép irányítópulton lehetőséget. |
-| Azonos felhőalapú szolgáltatásából sok virtuális gép biztonsági mentése egy időben vannak konfigurálva. | Akkor célszerű felülbírálásokkal a mentési ütemezések virtuális gépek azonos felhőalapú szolgáltatásából. |
-| A virtuális gép fut, magas CPU és memória-használatot. | Ha a virtuális gép magas CPU-használat (több mint 90 %-) vagy a magas memóriahasználatban fut, a pillanatkép-feladat várólistára, és késleltetett, és végül időtúllépéssel leáll. Ilyen esetben próbálkozzon egy igény szerinti biztonsági mentést. |
 | A virtuális gép nem tud a gazdagép/háló címet a DHCP-Kiszolgálótól. | A Vendég típusú infrastruktúra-szolgáltatási virtuális gép biztonsági mentésre működéséhez engedélyezni kell a DHCP.  Ha a virtuális gép nem olvasható be a gazdagép/háló címet a DHCP-válasz 245, ez nem töltse le, vagy kiterjesztések futtatása. Ha statikus magánhálózati IP-címe van szüksége, úgy kell beállítania, a platform keresztül. A DHCP-beállítást a virtuális Gépen belül balra engedélyezni kell. További információkért lásd: [egy statikus belső privát IP-cím beállítása](../virtual-network/virtual-networks-reserved-private-ip.md). |
 
 ### <a name="the-backup-extension-fails-to-update-or-load"></a>A tartalék mellék nem tudja frissíteni vagy nem tölthető be
@@ -192,24 +193,6 @@ Távolítsa el a bővítményt, tegye a következőket:
 6. Kattintson a **eltávolítása**.
 
 Ez az eljárás azt eredményezi, a bővítmény a következő biztonsági mentés során újra kell telepíteni.
-
-### <a name="azure-classic-vms-may-require-additional-step-to-complete-registration"></a>Az Azure klasszikus virtuális gépeinek szükség lehet további lépés a Regisztrálás
-Az ügynök az Azure klasszikus virtuális gépeken kell regisztrálni a biztonsági mentési szolgáltatás kapcsolatot, és a biztonsági mentés indítása
-
-#### <a name="solution"></a>Megoldás
-
-Miután telepítette a virtuális gép vendégügynökének, indítsa el az Azure PowerShell <br>
-1. Bejelentkezés az Azure-fiók használatával <br>
-       `Login-AzureAsAccount`<br>
-2. Ellenőrizze, ha a virtuális gép ProvisionGuestAgent tulajdonság TRUE értéke esetén a következő parancsok <br>
-        `$vm = Get-AzureVM –ServiceName <cloud service name> –Name <VM name>`<br>
-        `$vm.VM.ProvisionGuestAgent`<br>
-3. Ha a tulajdonsága hamis értékre van beállítva, kövesse az alábbi parancsok futtatásával igaz értékre kell beállítani<br>
-        `$vm = Get-AzureVM –ServiceName <cloud service name> –Name <VM name>`<br>
-        `$vm.VM.ProvisionGuestAgent = $true`<br>
-4. Futtassa a következő parancsot a virtuális gép frissítése <br>
-        `Update-AzureVM –Name <VM name> –VM $vm.VM –ServiceName <cloud service name>` <br>
-5. Próbálja meg a biztonsági mentés elindítása. <br>
 
 ### <a name="backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock"></a>A biztonsági mentési szolgáltatás nincs engedélye törli a régi visszaállítási pontok erőforráscsoport zárolása miatt
 A probléma csak a felügyelt virtuális gépekhez, ahol felhasználó zárolja az erőforráscsoport és biztonsági mentési szolgáltatás nem tudja törölni a régebbi helyreállítási pontok. Emiatt új biztonsági másolatok meghiúsul, a háttérrendszerből meghatározott maximális 18 visszaállítási pontok maximális.

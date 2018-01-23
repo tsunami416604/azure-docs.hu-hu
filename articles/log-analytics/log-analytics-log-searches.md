@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/11/2017
+ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: d679ca7a01a96bd398b26e6a545e33674ae33390
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: aa4608d37b06db88819e6175dcf8f94a7e13f04a
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="find-data-using-log-searches-in-log-analytics"></a>Napló keresések használatát Naplóelemzési adatok megkeresése
 
@@ -30,7 +30,7 @@ A Naplóelemzési középpontjában van a napló keresési szolgáltatás, amely
 
 A lapon létrehozhat egy lekérdezést, és majd kereséskor szűrheti az eredményeket értékkorlátozás vezérlők használatával. Az eredmények átalakító, a szűrő és a jelentés speciális lekérdezéseket is létrehozhat.
 
-Általános naplófájl-keresési lekérdezések a legtöbb megoldás oldalon jelennek meg. A OMS konzol különböző pontjain kattintson a csempéket, vagy a részletesebb egyéb elemek elem részleteinek megtekintéséhez a keresési napló használatával.
+Általános naplófájl-keresési lekérdezések a legtöbb megoldás oldalon jelennek meg. Teljes az OMS-portálon kattintson a csempéket, vagy a részletesebb egyéb elemek elem részleteinek megtekintéséhez a keresési napló használatával.
 
 Ebben az oktatóanyagban végigvesszük példák a alapjait fedik le a naplófájl-keresési használatakor.
 
@@ -39,7 +39,7 @@ Azt a lesz egyszerű, gyakorlati példák kezdődnie, és majd kialakítható ra
 Miután megismerte a keresési technikák ismeri, tekintse át a [Naplóelemzési keresési hivatkozás jelentkezzen](log-analytics-search-reference.md).
 
 ## <a name="use-basic-filters"></a>Basic-szűrők használata
-Először hozzá kell tudnia kell, hogy a Keresés az első része lekérdezéséhez minden "|}" függőleges vonal karaktert, mindig van olyan *szűrő*. Az eltolásokat tekintheti, mint a TSQL--WHERE záradék meghatározza, hogy *mi* való lekérésére kívül az OMS-adattár adatok részhalmazát. A Keresés az adattárban tárgya nagy mértékben a kívánt adatokat kinyerési, ezért ezt a természetes, hogy a lekérdezés a WHERE záradékban kellene kezdődnie jellemzőinek megadása.
+Először hozzá kell tudnia kell, hogy a Keresés az első része lekérdezéséhez minden "|}" függőleges vonal karaktert, mindig van olyan *szűrő*. Az eltolásokat tekintheti, mint a TSQL--WHERE záradék meghatározza, hogy *mi* való lekérésére kívül a og Naplóelemzési munkaterület adatok részhalmazát. A Keresés az adattárban tárgya nagy mértékben a kívánt adatokat kinyerési, ezért ezt a természetes, hogy a lekérdezés a WHERE záradékban kellene kezdődnie jellemzőinek megadása.
 
 Használhatja a legalapvetőbb szűrők a következők *kulcsszavak*, például az "error" vagy "timeout" vagy a számítógép nevét. Ezek a lekérdezéstípusok egyszerű általában különböző alakzatok belül az azonos eredményhalmaz adja vissza. Ennek az az oka Naplóelemzési rendelkezik különböző *típusok* az adatok a rendszerben.
 
@@ -355,7 +355,7 @@ Type=ConfigurationChange | Measure Max(TimeGenerated) by Computer
 ## <a name="use-the-avg-function-with-the-measure-command"></a>Az avg függvénnyel használata a mérték parancs
 A mérték használt Avg() statisztikai függvény lehetővé teszi az egyes mező, és az ugyanazon vagy másik mező szerint eredmények átlagos értékének kiszámítása. Ez akkor hasznos, a különböző esetekben, például a teljesítmény.
 
-Először foglalkozunk teljesítményadatokat. Vegye figyelembe, hogy jelenleg OMS összegyűjti a Windows és Linux rendszerű gépek teljesítményszámlálók.
+Először foglalkozunk teljesítményadatokat. Vegye figyelembe, hogy a Naplóelemzési jelenleg összegyűjti a Windows és Linux rendszerű gépek teljesítményszámlálók.
 
 Keresendő *összes* teljesítményadatokat, a lehető legegyszerűbb lekérdezés van:
 
@@ -592,7 +592,7 @@ Egy másik példa:
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Napló keresések kapcsolatos további információkért lásd:
 
 * Használjon [Naplóelemzési egyéni mezők](log-analytics-custom-fields.md) napló keresések kiterjeszteni.

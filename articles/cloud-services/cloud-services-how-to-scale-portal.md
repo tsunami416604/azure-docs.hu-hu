@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: adegeo
-ms.openlocfilehash: 264f68b879653f4168637e19cc886524c4af8557
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 0eea38cdb9827ab6e322025ff344ebbab0e83da3
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Az automatikus skálázás egy felhőalapú szolgáltatás, a portál konfigurálása
 
 Egy felhőalapú szolgáltatás feldolgozói szerepkör terjedő skálán bejövő vagy kimenő műveletet kiváltó feltételek állíthat be. A feltételek a szerepkör a Processzor, lemez vagy a szerepkör a hálózati terhelést alapulhatnak. Beállíthat egy feltételt, egy üzenet-várólista vagy valamilyen más Azure-erőforrás az Ön előfizetéséhez rendelve metrikája alapján is.
 
 > [!NOTE]
-> Ez a cikk a felhőalapú szolgáltatás webes és feldolgozói szerepkörök összpontosít. A virtuális gép (klasszikus) közvetlenül létrehozásakor tárolja egy felhőalapú szolgáltatás. A normál virtuális gépek méretezheti társítja azt egy [rendelkezésre állási csoport](../virtual-machines/windows/classic/configure-availability-classic.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) és manuálisan kapcsolja be és ki.
+> Ez a cikk a felhőalapú szolgáltatás webes és feldolgozói szerepkörök összpontosít. A virtuális gép (klasszikus) közvetlenül létrehozásakor tárolja egy felhőalapú szolgáltatás. A normál virtuális gépek méretezheti társítja azt egy [rendelkezésre állási csoport](../virtual-machines/windows/classic/configure-availability-classic.md) és manuálisan kapcsolja be és ki.
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 Az alkalmazás skálázás konfigurálása előtt gondolja át a következő információkat:
