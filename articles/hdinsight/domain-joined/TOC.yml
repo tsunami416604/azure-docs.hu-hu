@@ -10,6 +10,9 @@
       href: apache-domain-joined-configure.md
     - name: Tartományhoz csatlakoztatott fürtök konfigurálása az Azure AD DS-sel
       href: apache-domain-joined-configure-using-azure-adds.md
+    - name: Azure AD-felhasználók szinkronizálása HDInsight-fürttel
+      href: ../hdinsight-sync-aad-users-to-cluster.md
+      maintainContext: true
     - name: Hive-házirendek konfigurálása
       href: apache-domain-joined-run-hive.md
       maintainContext: true

@@ -311,6 +311,7 @@
 ### Teljesítményfigyelés
 #### [Teljesítményfigyelés WAD használatával](service-fabric-diagnostics-perf-wad.md)
 
+
 # Referencia
 ## [Azure PowerShell](/powershell/module/azurerm.servicefabric/)
 ## [PowerShell](/powershell/module/servicefabric/?view=azureservicefabricps)
@@ -328,6 +329,7 @@
 ### [sfctl-szolgáltatás](service-fabric-sfctl-service.md)
 ### [sfctl-tároló](service-fabric-sfctl-store.md)
 ## [Java API](/java/api/overview/azure/servicefabric)
+### [Java REST-ügyfél API](service-fabric-java-rest-api-usage.md)
 ## [.NET](/dotnet/api/overview/azure/service-fabric?view=azure-dotnet)
 ## [REST](/rest/api/servicefabric)
 ## [Szolgáltatásmodell XML-sémája](service-fabric-service-model-schema.md)
