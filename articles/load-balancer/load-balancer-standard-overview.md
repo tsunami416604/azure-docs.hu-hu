@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2017
 ms.author: kumud
-ms.openlocfilehash: c6b89cb473f6b7a14bd9de88dfb72a2a42d915f5
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 9651e582d6a33bed310e5e7f5354fb47dc47fe79
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="azure-load-balancer-standard-overview-preview"></a>Az Azure Load Balancer szabványos áttekintése (előzetes verzió)
 
@@ -217,7 +217,7 @@ Kimenő kapcsolatok használatakor a zónaredundáns egy előtér-, a kapcsolato
 
 Az új algoritmust a Load Balancer szabványos preallocates SNAT minden virtuális gép hálózati adapter által használt portok. Egy hálózati Adaptert a készletben való felvételekor a SNAT portok vannak előzetesen lefoglalt készlet mérete alapján. Az alábbi táblázat a port preallocations háttér-készlet méretű hat rétege számára:
 
-| Készlet mérete (Virtuálisgép-példány) | Előzetesen lefoglalt SNAT port |
+| Készlet mérete (Virtuálisgép-példány) | Előzetesen lefoglalt SNAT portok száma |
 | --- | --- |
 | 1 - 50 | 1024 |
 | 51 - 100 | 512 |
@@ -339,7 +339,7 @@ Azure [szolgáltatásra vonatkozó korlátozások hálózati](https://docs.micro
 
 Az alábbi táblázat összehasonlítja a korlátozások és a Load Balancer Basic és Standard termékváltozat képességek:
 
-| Load Balancer | Basic | Standard |
+| Load Balancer | Alapszintű | Standard |
 | --- | --- | --- |
 | Háttér-készlet mérete | legfeljebb 100 | legfeljebb 1000 |
 | Háttér-készlet határ | Rendelkezésre állási csoport | virtuális hálózat, a régiót |
@@ -355,7 +355,7 @@ Az alábbi táblázat összehasonlítja a korlátozások és a Load Balancer Bas
 
 Az alábbi táblázat összehasonlítja a korlátozások és a nyilvános IP Basic és Standard termékváltozat képességek:
 
-| Nyilvános IP-cím | Basic | Standard |
+| Nyilvános IP-cím | Alapszintű | Standard |
 | --- | --- | --- |
 | Rendelkezésre állási zónák forgatókönyvek | Csak Zonal | Zónaredundáns (alapértelmezett), zonal (nem kötelező) | 
 | Gyors IP-címes | Nem támogatott | Elérhető |
@@ -452,7 +452,7 @@ A következő korlátozások vonatkoznak az előzetes időpontjában alkalmazni,
 - A rendelkezésre állási zónák környezetében zonal nyilvános IP-címnek nem lehet áthelyezni egy zónából egy másikra.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ [Load Balancer alapvető](load-balancer-overview.md).
 - További információ [rendelkezésre állási zónák](../availability-zones/az-overview.md).

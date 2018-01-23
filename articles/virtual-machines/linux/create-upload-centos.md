@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: szark
-ms.openlocfilehash: e003d31b42c7a9518668fb8ddfb6accb9c158c90
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: f649067590dc990c962aa0c9df8c76080fc2a0b8
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>CentOS-alapú virtuális gép előkészítése Azure-beli használatra
 * [Az Azure-bA a CentOS 6.x virtuális gép előkészítése](#centos-6x)
@@ -331,5 +331,5 @@ A CentOS 7 virtuális gép előkészítése az Azure-hasonlít a CentOS 6, azonb
 14. Kattintson a **művelet le -> leállítási** a Hyper-V kezelőjében. A Linux virtuális merevlemez az Azure-bA feltölteni kívánt készen áll.
 
 ## <a name="next-steps"></a>További lépések
-Most már készen áll a CentOS Linux virtuális merevlemez segítségével új virtuális gépek létrehozása az Azure-ban. Ha az első alkalommal, hogy van-e a .vhd fájl feltöltése az Azure, lásd: [létrehozása és feltöltése, a Linux operációs rendszert tartalmazó virtuális merevlemez](upload-vhd.md).
+Most már készen áll a CentOS Linux virtuális merevlemez segítségével új virtuális gépek létrehozása az Azure-ban. Ha az első alkalommal, hogy van-e a .vhd fájl feltöltése az Azure, lásd: [Linux virtuális gép létrehozása az egyéni lemezről](upload-vhd.md#option-1-upload-a-vhd).
 

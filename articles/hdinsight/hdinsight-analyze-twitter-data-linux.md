@@ -13,14 +13,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2017
+ms.date: 01/22/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 5be05fabf03e7e3ccaa3bf66ffefdd6406a06b3e
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: b6e540576bc4a5876bc8546262a181bd82ad9727
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="analyze-twitter-data-using-hive-and-hadoop-on-hdinsight"></a>A HDInsight Hive és a Hadoop használatával Twitter-adatok elemzése
 
@@ -45,7 +45,7 @@ Twitter lehetővé teszi a [minden tweetet adatainak](https://dev.twitter.com/do
 
    | Mező | Érték |
    |:--- |:--- |
-   | Név |MyHDInsightApp |
+   | Name (Név) |MyHDInsightApp |
    | Leírás |MyHDInsightApp |
    | Honlap |http://www.myhdinsightapp.com |
 
@@ -326,7 +326,7 @@ Ezek a parancsok a fürt összes csomópontja által elérhető helyen tárolja 
     > [!NOTE]
     > Ha módosította a szűrőt a `gettweets.py` parancsfájlt, hogy lecseréli **Azure** egy szűrőt használja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Rendelkezik megtudta, hogyan egy strukturálatlan JSON adatkészlet átalakítása strukturált Hive táblákat. A HDInsight Hive kapcsolatos további tudnivalókért tekintse meg a következő dokumentumokat:
 

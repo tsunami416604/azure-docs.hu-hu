@@ -1,11 +1,14 @@
 
 
 
-**Utolsó dokumentálja a frissítés**:. január 12-3:00 ESTE.
+**Utolsó dokumentálja a frissítés**: január 22, 3:00 ESTE.
 
 A legutóbbi közzétételének egy [CPU biztonsági rések új osztály](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002) néven ismert spekulatív végrehajtási ügyféloldali csatorna támadások, így további egyértelműség kérő ügyfelek kérdéseket.  
 
 Az infrastruktúra, amely Azure elkülöníti egymástól ügyfél munkaterheléseinek védett.  Ez azt jelenti, hogy más Azure-on futó ügyfelek nem támadható meg az alkalmazás biztonsági rések használatával.
+
+> [!NOTE] 
+> 2018. január 3. a korábban közzétett Azure megoldást érinti által a legutóbbi [útmutatójának frissítése](https://newsroom.intel.com/news/root-cause-of-reboot-issue-identified-updated-guidance-for-customers-and-partners/) az Intel. A felhasználói virtuális gépeket az új információk Intel által a nincs további karbantartási tevékenység fognak futni.
 
 ## <a name="keeping-your-operating-systems-up-to-date"></a>Az operációs rendszer frissítése
 

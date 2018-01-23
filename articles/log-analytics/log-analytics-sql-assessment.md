@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/27/2017
+ms.date: 01/19/2018
 ms.author: magoedte;banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 04a5959d69cd42e77317161d743be7d778e3186d
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 09fed11830bbbce23f7098050568d68a3b3bebec
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>A Naplóelemzési az SQL Server állapotának ellenőrzése megoldás SQL környezetében optimalizálása
 
@@ -165,14 +165,14 @@ Az összesített megfelelőségi értékelése az infrastruktúrát, és a-felt�
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Az egy fókuszban terület javaslatok megtekintése és a szükséges javítási műveletek
 1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) címen. 
 2. Az Azure Portalon kattintson a bal alsó sarokban található **További szolgáltatások** elemre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
-3. A Naplóelemzési előfizetések ablaktáblán jelölje ki a munkaterület, és kattintson a **OMS-portálon** csempére.  
+3. A Naplóelemzési előfizetések ablaktáblán jelölje ki a munkaterület, és kattintson a **áttekintése** csempére.  
 4. Az a **áttekintése** lapján kattintson a **SQL állapotának ellenőrzése** csempére. 
 5. Az a **állapotának ellenőrzése** lapon. Ellenőrizze az összefoglaló információkat a fókusz terület paneleken egyikében, majd kattintson egy adott fókusz területre javaslatok megtekintéséhez.
 6. A fókusz terület lapok egyikén tekintheti meg a környezetnek a rangsorolt ajánlásokat. Kattintson az ajánlás **érintett objektumok** miért a javaslatokkal kapcsolatos részletek megtekintéséhez.<br><br> ![kép ajánlások SQL állapotának ellenőrzése](./media/log-analytics-sql-assessment/sql-healthcheck-dashboard-02.png)<br>
 7. Az ajánlott javítási műveletek hajthatók végre **javasolt műveletek**. A cikk intéztek, újabb értékelések fog jegyezze fel, az elvégzett műveletek, és a megfelelőségi pontszám növeli. Javított elemek jelennek meg **átadott objektumok**.
 
 ## <a name="ignore-recommendations"></a>Figyelmen kívül hagyja a javaslatok
-Ha figyelmen kívül hagyása kívánt ajánlásokat, létrehozhat egy szövegfájlt, amely OMS fogja használni az értékelési eredmények jelennek meg javaslatok megelőzése érdekében.
+Ha figyelmen kívül hagyása kívánt ajánlásokat, létrehozhat egy szövegfájlt, amely Naplóelemzési fogja használni az értékelési eredmények jelennek meg javaslatok megelőzése érdekében.
 
 [!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
@@ -265,5 +265,5 @@ Ha figyelmen kívül hagyása kívánt ajánlásokat, létrehozhat egy szövegf�
 
 * Igen, tekintse meg [figyelmen kívül hagyja a javaslatok](#ignore-recommendations) fenti szakaszban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Naplók keresése](log-analytics-log-searches.md) megtudhatja, hogyan elemezhet részletes SQL állapotának ellenőrzése adatok és javaslatokat.

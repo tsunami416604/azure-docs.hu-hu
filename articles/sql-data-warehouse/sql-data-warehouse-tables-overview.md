@@ -14,11 +14,11 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 01/18/2018
 ms.author: barbkess
-ms.openlocfilehash: 04fa529a0d84f0413c825fef04eadea2496c02cd
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 5c163880a7508d69bce0019cc5379bca8c704d59
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="introduction-to-designing-tables-in-azure-sql-data-warehouse"></a>Bevezetés az Azure SQL Data warehouse táblák tervezése
 
@@ -28,16 +28,16 @@ Ismerje meg az Azure SQL Data Warehouse táblák tervezéséhez főbb fogalmait.
 
 A [csillagséma](https://en.wikipedia.org/wiki/Star_schema) tény- és dimenziótáblák táblákba alapul. Néhány tábla használ az integrációs vagy az átmeneti adatok előtt áthelyezi azt a tényt vagy dimenzió táblához. Tervezésének abban a táblázatban, döntse el, hogy a tábla adatai a tényt, dimenzió vagy integrációs tábla tartozik. Ez a döntés arról értesíti a megfelelő struktúrát és a terjesztési. 
 
-- **A ténytáblák** tranzakciós rendszerben gyakran jönnek létre, és majd betölti az adatraktár mennyiségi adatokat tartalmaznak. Például egy kereskedelmi üzleti értékesítési tranzakciók minden nap létrehoz és majd betölti az adatokat egy adatraktár-ténytábla elemzés céljából.
+- **A ténytáblák** tranzakciós rendszerben gyakran jönnek létre, és majd betölti az adatraktár mennyiségi adatokat tartalmaznak. Például egy kereskedelmi üzleti értékesítési tranzakciók minden nap létrehoz és majd betölti az adatokat a egy adatraktár-ténytábla elemzés céljából.
 
 - **Táblák dimenzió** változhatnak, de általában ritkán változó attribútum adatokat tartalmaznak. Például az ügyfél nevét és címét dimenzió táblában tárolt és frissítése, csak ha a felhasználói profil változik. A nagy ténytábla méretének minimalizálása érdekében a felhasználói nevét és címét nem kell lenniük egy ténytábla minden sorában. Ehelyett a ténytábla és a dimenziótáblában oszthatnak meg egy felhasználói azonosítót. A lekérdezés hozzárendelni egy felhasználói profil és a tranzakciókért a két tábla kapcsolhatja össze. 
 
-- **Integráció táblák** adjon meg egy olyan helyre integrálása vagy átmeneti adatokat. Ezek a táblázatok reguláris táblák, külső táblákra vagy az ideiglenes táblák létrehozása is lehet. Például az átmeneti tárolási tábla adatainak betöltése, az átmeneti található adatok átalakításokat hajthattak végre, és helyezze az adatokat egy éles táblába.
+- **Integráció táblák** adjon meg egy olyan helyre integrálása vagy átmeneti adatokat. Az integráció a táblázatban egy rendszeres, külső táblát, vagy egy ideiglenes táblában hozhat létre. Például az átmeneti tárolási tábla adatainak betöltése, az átmeneti található adatok átalakításokat hajthattak végre, és helyezze az adatokat egy éles táblába.
 
 ## <a name="schema-and-table-names"></a>Séma és a táblázat neve
-Az SQL Data Warehouse az adatraktár adatbázis típusú. Az adatraktárban lévő táblák összes belül az azonos adatbázist tartalmazza.  Táblák közötti több adatraktárak nem lehet csatlakozni. Ez a viselkedés eltér az SQL Server adatbázisok közötti illesztések támogató. 
+Az SQL Data Warehouse az adatraktár adatbázis típusú. Az adatraktárban lévő táblák összes belül az azonos adatbázist tartalmazza.  Táblák közötti több adatraktárak nem lehet csatlakozni. Ez a viselkedés eltér SQL Server, amely támogatja az adatbázisok közötti illesztéseket. 
 
-SQL Server-adatbázisban előfordulhat, hogy a tény-dimenzió, vagy integrálható a séma neve. Ha egy SQL Server-adatbázist az SQL Data Warehouse viszi, akkor működik a legjobban áttelepítéséhez az SQL Data Warehouse tárolja összes tényt, dimenziót és integrációs tábla egyik sémának. Például az összes tábla tárolhatja a [WideWorldImportersDW](/sql/sample/world-wide-importers/database-catalog-wwi-olap) minta adatraktár wwi nevű egy sémáján belül. Az alábbi kód létrehoz egy [felhasználói séma](/sql/t-sql/statements/create-schema-transact-sql) wwi nevezik.
+SQL Server-adatbázisban előfordulhat, hogy a tény-dimenzió, vagy integrálható a séma neve. Ha az áttelepítés egy SQL Server-adatbázist az SQL Data Warehouse, legmegfelelőbb összes tényt, dimenziót és integrációs tábla áttelepítéséhez az SQL Data Warehouse egy séma. Például az összes tábla tárolhatja a [WideWorldImportersDW](/sql/sample/world-wide-importers/database-catalog-wwi-olap) minta adatraktár wwi nevű egy sémáján belül. Az alábbi kód létrehoz egy [felhasználói séma](/sql/t-sql/statements/create-schema-transact-sql) wwi nevezik.
 
 ```sql
 CREATE SCHEMA wwi;
@@ -67,16 +67,16 @@ CREATE TABLE MyTable (col1 int, col2 int );
 A munkamenet időtartama alatt csak létezik egy ideiglenes tábla. Egy ideiglenes tábla használható egyéb felhasználásra megakadályozása ideiglenes eredmények megtekintése és karbantartása szükség csökkentése érdekében.  Az ideiglenes táblák is a helyi tároló használatára, mivel egyes műveletek esetében gyorsabb teljesítményt is biztosítanak.  További információkért lásd: [az ideiglenes táblák](sql-data-warehouse-tables-temporary.md).
 
 ### <a name="external-table"></a>Külső tábla
-A külső tábla mutat, az Azure blob-tároló vagy az Azure Data Lake Store lévő adatokat. A CREATE TABLE AS SELECT utasítás együtt használják, ha egy külső táblából importálja az adatokat az SQL Data Warehouse. Külső táblák ezért hasznosak adatok betöltésekor. Betöltés oktatóanyagok esetén lásd: [adatok betöltése az Azure blob storage használata a PolyBase](load-data-from-azure-blob-storage-using-polybase.md).
+A külső tábla mutat, Azure Storage-blobba vagy az Azure Data Lake Store lévő adatokat. A CREATE TABLE AS SELECT utasítás együtt használják, ha egy külső táblából importálja az adatokat az SQL Data Warehouse. Külső táblák ezért hasznosak adatok betöltésekor. Betöltés oktatóanyagok esetén lásd: [adatok betöltése az Azure blob storage használata a PolyBase](load-data-from-azure-blob-storage-using-polybase.md).
 
 ## <a name="data-types"></a>Adattípusok
-Az SQL Data Warehouse támogatja a leggyakrabban használt adattípusokat. A támogatott adattípusok listájáért lásd: [adattípusok](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes) a CREATE TABLE utasításban. Adattípusok méretének minimalizálása segít a lekérdezési teljesítmény javítása érdekében. Az adattípusok útmutatóért lásd: [adattípusok](sql-data-warehouse-tables-data-types.md).
+Az SQL Data Warehouse támogatja a leggyakrabban használt adattípusokat. A támogatott adattípusok listájáért lásd: [létrehozása táblahivatkozás adattípusok](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes) a CREATE TABLE utasításban. Adattípusok méretének minimalizálása segít a lekérdezési teljesítmény javítása érdekében. Az adattípusok használatával útmutatóért lásd: [adattípusok](sql-data-warehouse-tables-data-types.md).
 
 ## <a name="distributed-tables"></a>Elosztott táblák
-Az SQL Data Warehouse egy alapvető szolgáltatása módja a táblák 60 elosztott helyszínen, azokat a terjesztéseket, meghívta az elosztott rendszer képes tárolni.  A tábla terjesztése ciklikus multiplexelés, a kivonatoló vagy a replikációs módszerrel.
+Az SQL Data Warehouse alapvető jellemzője, tárolására és működhet a táblák között 60 [terjesztéseket](massively-parallel-processing-mpp-architecture.md#distributions).  A táblák terjesztése ciklikus multiplexelés, a kivonatoló vagy a replikációs módszerrel.
 
 ### <a name="hash-distributed-tables"></a>Kivonatoló elosztott táblák
-A kivonatoló terjesztési osztja el a terjesztési oszlopban szereplő érték alapján sorokat. A kivonat-elosztott táblának van lekérdezés táblákra nagy táblák magas teljesítmény elérése érdekében a legtöbb lehetséges. Nincsenek számos tényező befolyásolja a terjesztési oszlop kiválasztása. 
+A kivonatoló terjesztési osztja el a terjesztési oszlopban szereplő érték alapján sorokat. Célja, hogy a kivonat-elosztott tábla lekérdezés táblákra nagy táblák magas teljesítmény eléréséhez. Nincsenek számos tényező befolyásolja a terjesztési oszlop kiválasztása. 
 
 További információkért lásd: [tervezési útmutató elosztott táblák](sql-data-warehouse-tables-distribute.md).
 
@@ -86,13 +86,13 @@ A replikált tábla minden számítási csomópont a rendelkezésre álló tábl
 További információkért lásd: [kialakítási útmutató a replikált táblák](design-guidance-for-replicated-tables.md).
 
 ### <a name="round-robin-tables"></a>Ciklikus multiplexelés táblák
-Ciklikus multiplexelés tábla elosztása táblázat sorait egyenletesen valamennyi felosztást. A sorok véletlenszerűen terjesztése. Adatok betöltése a ciklikus multiplexelési táblába nagyon gyorsan.  Lekérdezések azonban további adatátvitelt jelölik a többi terjesztési módszernél lehet szükség. 
+Ciklikus multiplexelés tábla elosztása táblázat sorait egyenletesen valamennyi felosztást. A sorok véletlenszerűen terjesztése. Adatok betöltése a ciklikus multiplexelési táblába gyors.  Lekérdezések azonban további adatátvitelt jelölik a többi terjesztési módszernél lehet szükség. 
 
 További információkért lásd: [tervezési útmutató elosztott táblák](sql-data-warehouse-tables-distribute.md).
 
 
 ### <a name="common-distribution-methods-for-tables"></a>Táblák közös telepítési módszerei
-A tábla kategória gyakran határozza meg, melyik lehetőséget válassza a táblázatban terjesztéséhez. Táblák általában terjesztése azon táblázat szerint. 
+A tábla kategória gyakran határozza meg, melyik lehetőséget válassza a táblázatban terjesztéséhez. 
 
 | Tábla kategória | Ajánlott terjesztési beállítás |
 |:---------------|:--------------------|
@@ -101,7 +101,7 @@ A tábla kategória gyakran határozza meg, melyik lehetőséget válassza a tá
 | Fájlok másolása folyamatban        | Ciklikus multiplexelés használja az átmeneti tárolási tábla. A terhelés CTAS a gyors. Ha az adatokat az átmeneti tárolási tábla, használja az INSERT... Válassza ki az adatok áthelyezése egy éles táblákat. |
 
 ## <a name="table-partitions"></a>Táblapartíciók
-Particionált tábla tárolja, és a táblázat sorait az adattartomány alapján műveleteket hajt végre. Például egy táblázat sikerült particionálható naponta, hónap vagy év. Lekérdezés teljesítmény partíció eltávolítási, amely korlátozza a lekérdezés megvizsgálja a partíción belüli adatok eltávolításával javítható. Az adatok partíció váltás is kezelheti. Az adatokat az SQL Data Warehouse már terjesztve, mert túl sok partíciót lelassíthatja a lekérdezés teljesítményét. További információkért lásd: [útmutatást particionálás](sql-data-warehouse-tables-partition.md).
+Particionált tábla tárolja, és a táblázat sorait az adattartomány alapján műveleteket hajt végre. Például egy táblázat sikerült particionálható naponta, hónap vagy év. A partíció eltávolítási, amely korlátozza a partíción belüli adatok lekérdezés megvizsgálja a lekérdezési teljesítmény javíthatja. Az adatok partíció váltás is kezelheti. Az adatokat az SQL Data Warehouse már terjesztve, mert túl sok partíciót lelassíthatja a lekérdezés teljesítményét. További információkért lásd: [útmutatást particionálás](sql-data-warehouse-tables-partition.md).
 
 ## <a name="columnstore-indexes"></a>Oszlopcentrikus indexek
 Alapértelmezés szerint az SQL Data Warehouse tárolja egy tábla egy fürtözött oszlopcentrikus indexet. Az űrlap adattárolási éri el a magas adattömörítés és a lekérdezési teljesítmény nagy táblákon.  A fürtözött oszlopcentrikus index általában a legjobb választás, de bizonyos esetekben egy fürtözött index vagy egy halommemóriában a megfelelő tárolási struktúra.
@@ -125,7 +125,7 @@ Létre lehet hozni egy új üres táblázatként. Hozhat létre, és egy tábla 
 
 Data warehouse tábláiba egy másik adatforrásból származó adatokat tölt fel van töltve. Egy sikeres terheléselosztási végrehajtásához a forrásadatok az oszlopok számát és az adatok típusú a tábla definícióját, az adatraktár kell igazodni. Akkor igazíthatók az adatok a táblák tervezése a nagyon nehéz része lehet. 
 
-Ha az adatok több adattárolókhoz származik, hozni az adatokat az adatraktárba, és az integráció tábla tárolja. Ha adatokat a integrtion tábla, használhatja az SQL Data Warehouse power átalakítási műveletek végrehajtásához.
+Ha az adatok több adattárolókhoz származik, hozni az adatokat az adatraktárba, és az integráció tábla tárolja. Ha adatokat az integráció táblázatban, használhatja az SQL Data Warehouse power átalakítási műveletek végrehajtásához. Ha az adatok készen áll a testreszabásra, éles táblákba beilleszthető.
 
 ## <a name="unsupported-table-features"></a>A tábla nem támogatott funkciók
 Az SQL Data Warehouse számos támogatja, de nem összes, a table szolgáltatás más adatbázisok által kínált.  Az alábbi listában láthatók az egyes által nem támogatott az SQL Data Warehouse table szolgáltatásait.
@@ -265,7 +265,7 @@ FROM size
 
 ### <a name="table-space-summary"></a>Összefoglaló táblázat terület
 
-Ez a lekérdezés táblázat adja vissza a sorok és a helyet.  Lehetővé teszi, hogy mely táblákat a legnagyobb táblák és e időszeletelés, replikálva, vagy kivonat - terjesztése.  A kivonat-elosztott táblákhoz a lekérdezés a terjesztési oszlop jeleníti meg.  A legtöbb esetben a legnagyobb kell szerepelnie. a fürtözött oszlopcentrikus indexszel rendelkező kivonatoló elosztott.
+Ez a lekérdezés táblázat adja vissza a sorok és a helyet.  Lehetővé teszi, hogy mely táblákat a legnagyobb táblák és e időszeletelés, replikálva, vagy kivonat - terjesztése.  A kivonat-elosztott táblákhoz a lekérdezés a terjesztési oszlop jeleníti meg.  
 
 ```sql
 SELECT 

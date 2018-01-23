@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: szark
-ms.openlocfilehash: de1465afe3ac301adcd1f1867e6290bd50dfab50
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 9769b3968f841334aebdc4a371ecd59e64d5ebc2
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Red Hat-alapú virtuális gép előkészítése Azure-beli használatra
 Ebből a cikkből megtudhatja hogyan készülhet fel a Red Hat Enterprise Linux (RHEL) virtuális gépek használata az Azure-ban. Ebben a cikkben ismertetett RHEL-verziók a következők: 6.7 + és 7.1 +. A hipervizorok előkészítése az ebben a cikkben ismertetett a Hyper-V, a kernel-alapú virtuális gép (KVM), és a VMware. Red Hat Felhőelérést programban való részvételre vonatkozó jogosultság követelményeivel kapcsolatos további információkért lásd: [Red Hat Felhőelérést webhely](http://www.redhat.com/en/technologies/cloud-computing/cloud-access) és [az Azure-on futó RHEL](https://access.redhat.com/ecosystem/ccsp/microsoft-azure).
@@ -922,6 +922,6 @@ Szerkesztés `/etc/dracut.conf`, és adja hozzá a következőket:
 További részletekért olvassa el [initramfs újraépítése](https://access.redhat.com/solutions/1958).
 
 ## <a name="next-steps"></a>További lépések
-Most már készen áll a Red Hat Enterprise Linux virtuális merevlemez segítségével új virtuális gépek létrehozása az Azure-ban. Ha az első alkalommal, hogy van-e a .vhd fájl feltöltése az Azure, tekintse meg a 2. és 3 [létrehozása és feltöltése, a Linux operációs rendszert tartalmazó virtuális merevlemez](classic/create-upload-vhd-classic.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
+Most már készen áll a Red Hat Enterprise Linux virtuális merevlemez segítségével új virtuális gépek létrehozása az Azure-ban. Ha az első alkalommal, hogy van-e a .vhd fájl feltöltése az Azure, lásd: [Linux virtuális gép létrehozása az egyéni lemezről](upload-vhd.md#option-1-upload-a-vhd).
 
 A Red Hat Enterprise Linux futtatásához hitelesített hipervizorok kapcsolatos további tudnivalókért lásd: [a Red Hat webhely](https://access.redhat.com/certified-hypervisors).

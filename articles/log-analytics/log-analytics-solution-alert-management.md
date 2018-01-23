@@ -1,6 +1,6 @@
 ---
-title: "Operations Management Suite (OMS) megoldás riasztási |} Microsoft Docs"
-description: "A riasztások kezelésében a Naplóelemzési megoldással elemzése összes a riasztásokat a környezetben.  Mellett konszolidáció OMS belül létrehozott riasztások, akkor importálja riasztások csatlakoztatott System Center Operations Manager felügyeleti csoportokból származó Naplóelemzési."
+title: "Azure Naplóelemzés megoldást kezelési riasztási |} Microsoft Docs"
+description: "A riasztások kezelésében a Naplóelemzési megoldással elemzése összes a riasztásokat a környezetben.  Mellett konszolidálása riasztások Naplóelemzési vezérlőben akkor importálja riasztások csatlakoztatott System Center Operations Manager felügyeleti csoportokból származó Naplóelemzési."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/13/2017
+ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: 4ec80fccdf4521792ff6be115ec66227f0fe1ed2
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: c34916913915331020d9fc9789221f790b75a070
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/22/2018
 ---
-# <a name="alert-management-solution-in-operations-management-suite-oms"></a>Riasztási felügyeleti megoldás az Operations Management Suite (OMS)
+# <a name="alert-management-solution-in-azure-log-analytics"></a>Az Azure Naplóelemzés riasztási felügyeleti megoldás
 
 ![Felügyeleti figyelmeztető ikon](media/log-analytics-solution-alert-management/icon.png)
 
@@ -34,12 +34,12 @@ A megoldás együttműködve biztosítja a Naplóelemzési tárházban típusú 
 - A System Center Operations Manager-riasztások [az Operations Manager felügyeleti csoportjának összekapcsolása a Naplóelemzési munkaterület](log-analytics-om-agents.md).  Minden létrehozott System Center Operations Manager riasztást a rendszer importálta a Naplóelemzési.  
 
 ## <a name="configuration"></a>Konfiguráció
-A Riasztáskezelési megoldás hozzáadása az OMS-munkaterület ismertetett eljárással [megoldások hozzáadása](log-analytics-add-solutions.md).  Nincs szükség további konfigurációra.
+A Riasztáskezelési megoldás hozzáadni a Naplóelemzési munkaterület ismertetett eljárással [megoldások hozzáadása](log-analytics-add-solutions.md).  Nincs szükség további konfigurációra.
 
 ## <a name="management-packs"></a>Felügyeleti csomagok
-Ha a System Center Operations Manager felügyeleti csoport az OMS-munkaterület csatlakozik, majd a következő felügyeleti csomagjai vannak telepítve a System Center Operations Manager ebben a megoldásban hozzáadásakor.  Nincs, konfigurációs vagy a szükséges felügyeleti csomagok karbantartási.  
+Ha a System Center Operations Manager felügyeleti csoport csatlakoztatva van a Naplóelemzési munkaterület, majd a következő felügyeleti csomagjai vannak telepítve a System Center Operations Manager ebben a megoldásban hozzáadásakor.  Nincs, konfigurációs vagy a szükséges felügyeleti csomagok karbantartási.  
 
-* A Microsoft System Center Advisor Riasztáskezelési (Microsoft.IntelligencePacks.AlertManagement)
+* Microsoft System Center Advisor Alert Management (Microsoft.IntelligencePacks.AlertManagement)
 
 A megoldási felügyeleti csomagok frissítéseivel kapcsolatban lásd: [Az Operations Manager csatlakoztatása a Log Analyticshez](log-analytics-om-agents.md).
 
@@ -59,7 +59,7 @@ Az alábbi táblázat áttekintést nyújt az ebben a megoldásban támogatott �
 - Riasztási adatokat küld az Operations Manager felügyeleti csoportból Naplóelemzési három percenként.  
 
 ## <a name="using-the-solution"></a>A megoldás használata
-Amikor a riasztási felügyeleti megoldás ad hozzá az OMS-munkaterület a **Riasztáskezelési** csempe az irányítópulton való rögzítéséhez OMS kerül.  Ez a csempe egy száma és a grafikus ábrázolása az utolsó 24 órán belül létrehozott aktív riasztások számát jeleníti meg.  Az időtartomány nem módosítható.
+Ha a riasztás felügyeleti megoldás hozzáadni a Naplóelemzési munkaterület a **Riasztáskezelési** csempe az irányítópulton való rögzítéséhez kerül.  Ez a csempe egy száma és a grafikus ábrázolása az utolsó 24 órán belül létrehozott aktív riasztások számát jeleníti meg.  Az időtartomány nem módosítható.
 
 ![Kezelési riasztási csempe](media/log-analytics-solution-alert-management/tile.png)
 
@@ -84,7 +84,7 @@ A megoldás riasztások importálása a System Center Operations Manager, és mi
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Típus |*Riasztás* |
+| Típus |*Alert* |
 | SourceSystem |*OpsManager* |
 | AlertContext |Az adatelem XML-formátumú generálása a riasztást kiváltó részleteit. |
 | AlertDescription |A riasztás részletes leírása. |
@@ -110,11 +110,11 @@ A következő táblázat a megoldás által gyűjtött riasztási rekordok minta
 
 | Lekérdezés | Leírás |
 |:--- |:--- |
-| Típusú riasztás SourceSystem = OpsManager AlertSeverity = TimeRaised hiba = > most már 24 ÓRÁNKÉNT |Az elmúlt 24 órában kiadott kritikus riasztások |
+| Type=Alert SourceSystem=OpsManager AlertSeverity=error TimeRaised>NOW-24HOUR |Az elmúlt 24 órában kiadott kritikus riasztások |
 | Típusú riasztás AlertSeverity = figyelmeztetés TimeRaised = > most már 24 ÓRÁNKÉNT |Az elmúlt 24 órában kiadott figyelmeztető riasztások |
 | Típusú riasztás SourceSystem = OpsManager AlertState =! lezárt TimeRaised = > most már 24 ÓRÁS &#124; mérték count() által SourceDisplayName darabszámként |Az elmúlt 24 órában kiadott aktív riasztásokkal rendelkező források |
-| Típusú riasztás SourceSystem = OpsManager AlertSeverity = TimeRaised hiba = > most már 24 ÓRÁS AlertState! = lezárva |Az elmúlt 24 órában, amelyek még mindig aktív kritikus riasztások |
-| Típusú riasztás SourceSystem = OpsManager TimeRaised = > most már 24 ÓRÁS AlertState = bezárása |Az elmúlt 24 órában, amely a már lezárt riasztások |
+| Type=Alert SourceSystem=OpsManager AlertSeverity=error TimeRaised>NOW-24HOUR AlertState!=Closed |Az elmúlt 24 órában, amelyek még mindig aktív kritikus riasztások |
+| Type=Alert SourceSystem=OpsManager TimeRaised>NOW-24HOUR AlertState=Closed |Az elmúlt 24 órában, amely a már lezárt riasztások |
 | Típusú riasztás SourceSystem = OpsManager TimeRaised = > most - 1 nap &#124; mérték count() által AlertSeverity darabszámként |Során súlyosságuk szerint csoportosítva az elmúlt 1 napban kiadott riasztások |
 | Típusú riasztás SourceSystem = OpsManager TimeRaised = > most - 1 nap &#124; RepeatCount desc rendezése |Riasztások ismétléseik száma szerint rendezve az elmúlt 1 napban |
 
@@ -133,5 +133,5 @@ A következő táblázat a megoldás által gyűjtött riasztási rekordok minta
 | Riasztás &#124; Ha SourceSystem "OpsManager" és a TimeRaised == > ago(1d) &#124; Rendezze a RepeatCount desc |Riasztások ismétléseik száma szerint rendezve az elmúlt 1 napban |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A Log Analytics-riasztások létrehozásával kapcsolatos információkért lásd: [Riasztások a Log Analyticsben](log-analytics-alerts.md).

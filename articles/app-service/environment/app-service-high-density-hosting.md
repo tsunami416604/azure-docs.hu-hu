@@ -12,13 +12,13 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 06/12/2017
+ms.date: 22/01/2018
 ms.author: byvinyal
-ms.openlocfilehash: 2f10788ed01f5ad5e93ae491a03ca820554df2f9
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 2ffffd3cc9f5c59f74f71d6d7d31c5ea615d11f4
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="high-density-hosting-on-azure-app-service"></a>Nagy sűrűségű üzemeltetésének Azure App Service
 App Service használata esetén a rendszer leválasztja az alkalmazást a két fogalom által lefoglalt kapacitás:
@@ -38,12 +38,12 @@ Azonban amikor több alkalmazás az App Service-csomag megosztásához az alkalm
 Alkalmazásonkénti skálázás arányosan egymástól függetlenül az App Service-csomag, amelyen az alkalmazás. Így az App Service-csomag is méretezhető 10 példányok, de az alkalmazás csak öt állítható be.
 
    >[!NOTE]
-   >Alkalmazásonkénti skálázás csak érhető **prémium** SKU App Service-csomagok
+   >/-Alkalmazás-méretezés, akkor csak a **szabványos**, **prémium**, **prémium V2** és **elszigetelt** SKU App Service-csomagok
    >
 
 ### <a name="per-app-scaling-using-powershell"></a>Alkalmazásonkénti skálázás a PowerShell használatával
 
-Egy konfigurált tervet is létrehozhat egy */ alkalmazás skálázás* történő a terv a ```-perSiteScaling $true``` attribútumot a ```New-AzureRmAppServicePlan``` parancsmag
+Hozzon létre egy csomagot, mint a konfigurált egy */ alkalmazás skálázás* történő a terv a ```-perSiteScaling $true``` attribútumot a ```New-AzureRmAppServicePlan``` parancsmag
 
 ```
 New-AzureRmAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan `
@@ -71,7 +71,7 @@ $newASP
 Set-AzureRmAppServicePlan $newASP
 ```
 
-Az alkalmazás szintjén igazolnia kell a példányok is használhatja az alkalmazást az app service-csomag konfigurálása.
+Az alkalmazás szintjén adja meg az alkalmazás használhatja az app service-csomag példányok.
 
 Az alábbi példában az alkalmazás korlátozódik két példányt, függetlenül attól, hány példányban kimenő alkalmazkodnak az alapul szolgáló app service-csomag.
 

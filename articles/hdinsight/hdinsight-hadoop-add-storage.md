@@ -12,14 +12,14 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/24/2017
+ms.date: 01/22/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 68229487f45c3246500875303105b0ebcc8079cb
-ms.sourcegitcommit: 4d90200f49cc60d63015bada2f3fc4445b34d4cb
+ms.openlocfilehash: 72045d363516a2f16d45e3f8ee157ddd9d9242bd
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>HDInsight további storage-fiókok hozzáadása
 
@@ -55,7 +55,7 @@ A feldolgozás során a parancsfájl a következő műveleteket hajtja végre:
 
 ## <a name="the-script"></a>A parancsfájl
 
-__Parancsfájl-hely__: [https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh)
+__Script location__: [https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh)
 
 __Követelmények__:
 
@@ -116,7 +116,7 @@ A parancsfájlművelet újra fut does __nem__ frissíti a kulcsot, a parancsfáj
 
 Ez a probléma megoldása érdekében el kell távolítania a meglévő bejegyzést a tárfiók. Az alábbi lépések segítségével távolítsa el a meglévő bejegyzést:
 
-1. Egy webböngészőben nyissa meg az Ambari webes felhasználói felülete a HDInsight-fürthöz. Az URI https://CLUSTERNAME.azurehdinsight.net. Cserélje le a __CLUSTERNAME__ elemet a fürt nevére.
+1. Egy webböngészőben nyissa meg az Ambari webes felhasználói felülete a HDInsight-fürthöz. The URI is https://CLUSTERNAME.azurehdinsight.net. Cserélje le a __CLUSTERNAME__ elemet a fürt nevére.
 
     Amikor a rendszer kéri, adja meg a bejelentkezési felhasználói HTTP és a jelszót a fürt számára.
 
@@ -147,6 +147,6 @@ Ha a tárfiók egy másik régióban, mint a HDInsight-fürthöz, további kilé
 > [!WARNING]
 > A storage-fiók egy másik régióban, mint a HDInsight-fürt használata nem támogatott.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtanulhatta, további tárfiókok hozzáadásáról meglévő HDInsight-fürtre. A Parancsfájlműveletek további információkért lásd: [testreszabása Linux-alapú HDInsight-fürtök parancsfájlművelet használatával](hdinsight-hadoop-customize-cluster-linux.md)

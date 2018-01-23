@@ -3,8 +3,8 @@ title: "Támogatott vendég operációs rendszerek Azure verem |} Microsoft Docs
 description: "A vendég operációs rendszerek használható Azure veremben."
 services: azure-stack
 documentationcenter: 
-author: JeffGoldner
-manager: bradleyb
+author: Brenduns
+manager: femila
 editor: 
 ms.assetid: 
 ms.service: azure-stack
@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
-ms.author: JeffGoldner
-ms.openlocfilehash: 0a31da6cbc2c245b959825a4e715d0dc7511ba99
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.date: 01/18/2018
+ms.author: Brenduns
+ms.reviewer: JeffGoldner
+ms.openlocfilehash: c9f5bee38772623fb79fa081be8eaece981cc8ab
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Azure-veremben támogatott vendég operációs rendszerek
 
@@ -37,14 +38,18 @@ A telepítés során Azure verem biztosítja, hogy a vendégügynök megfelelő 
 | Windows Server 2016 | 64 bites | Microsoft | Windows | Datacenter, Datacenter Core tárolók adatközpont |
 | Windows 7 | 64 bites, Pro és Enterprise | Microsoft | Windows | Nem |
 | Windows 8.1 | 64 bites, Pro és Enterprise | Microsoft | Windows | Nem |
-| Windows 10 | 64 bites, Pro és Enterprise | Microsoft | Windows | Nem |
+| Windows 10 *(lásd az 1. megjegyzés)* | 64 bites, Pro és Enterprise | Microsoft | Windows | Nem |
+
+***1. Megjegyzés:****telepítheti a Windows 10-es ügyfél operációs rendszereket Azure veremben, rendelkeznie kell [Windows felhasználói licencelési](https://www.microsoft.com/Licensing/product-licensing/windows10.aspx) vagy a vételi keresztül egy minősített több-Bérlős szolgáltató ([QMTH](https://www.microsoft.com/CloudandHosting/licensing_sca.aspx)).* 
+
 
 ## <a name="linux"></a>Linux
 
-Az itt felsorolt Linux terjesztésekről tartalmazza a szükséges Windows Azure Linux ügynök (WALA). 
+Az itt felsorolt Linux terjesztésekről tartalmazza a szükséges Windows Azure Linux ügynök (WALA).
 
-> [!NOTE]
-> Mint 2.2.3 régebbi WALA verzióival készült képek *nem* támogatott és nem valószínű, hogy telepíteni.
+> [!NOTE]   
+> Mint 2.2.3 régebbi WALA verzióival készült képek *nem* támogatott és nem valószínű, hogy telepíteni. Néhány WALA ügynökverziók ismert, hogy Azure virtuális gépeken verem, többek között a 2.2.12 és 2.2.13 verziói nem függvény.
+
 
 | Disztribúció | Leírás | Közzétevő | Piactér |
 | --- | --- | --- | --- | --- | --- |
@@ -62,7 +67,3 @@ Az itt felsorolt Linux terjesztésekről tartalmazza a szükséges Windows Azure
 | Ubuntu 16.04-es lts verzió | 64 bites | Canonical | Igen |
 
 Más Linux terjesztésekről lehet, hogy a jövőben támogatja.
-
-
-
-

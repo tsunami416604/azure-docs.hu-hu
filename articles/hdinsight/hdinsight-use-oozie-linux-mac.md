@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2017
+ms.date: 01/22/2018
 ms.author: larryfr
-ms.openlocfilehash: 7f341b550316b44f7b6677bf59f323b568007700
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 53c249c24af774499becdf18350ff75dbc2ab861
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>A Hadoop Oozie segítségével határozza meg, és a munkafolyamat futtatása a Linux-alapú Azure HDInsight
 
@@ -518,7 +518,7 @@ Az Oozie REST API-val kapcsolatos további információkért lásd: [Oozie websz
 Az Oozie webes felhasználói felület révén Oozie feladatok állapotának webes képet a fürtön. A webes felhasználói felület használatával megtekintheti a következő információkat:
 
    * Feladat állapota
-   * Feladatdefiníció
+   * Feladat definíciója
    * Konfiguráció
    * A műveletek a feladat grafikonja
    * A feladat naplók
@@ -541,7 +541,7 @@ Szeretne használni az Oozie webes felhasználói felület, kövesse az alábbi 
 
 5. További információ a feladatok megtekintéséhez jelölje ki a feladatot.
 
-    ![Feladatinformáció](./media/hdinsight-use-oozie-linux-mac/jobinfo.png)
+    ![Munkakör adatai](./media/hdinsight-use-oozie-linux-mac/jobinfo.png)
 
 6. Az a **Feladatinformáció** lapon megtekintheti az alapszintű adatok és az egyes műveletek a feladatban található. Segítségével a lap tetején megtekintése a **feladatdefiníció**, **feladat konfigurációs**, hozzáférés a **Job Log**, vagy megtekintheti a feldolgozás alatt Irányítottaciklikusdiagramhoz(DAG)**DAG feladat**.
 
@@ -707,7 +707,7 @@ Bizonyos hibák léphetnek fel, és azok megoldását a következők:
 > [!NOTE]
 > Mielőtt HDInsight felismeri, hogy a felhasználó hozzáadta-e a csoport több percig is eltarthat.
 
-### <a name="launcher-error-sqoop"></a>Hiba (Sqoop) indítója
+### <a name="launcher-error-sqoop"></a>Launcher ERROR (Sqoop)
 
 **A jelenség**: A feladat állapota **KILLED**. A feladat megjelenítése a részletek a `RunSqoopExport` állapotának **hiba**. Ha a művelet, a következő hibaüzenetet jeleníti meg:
 
@@ -731,7 +731,7 @@ Például a feladat ebben a dokumentumban, akkor használja az alábbi lépések
     <archive>sqljdbc41.jar</archive>
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan adhat meg egy Oozie munkafolyamat és az Oozie-feladat futtatása. Hogyan működnek a hdinsight eszközzel kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: b263c69554c22978c854d2678ad7eeca91bc71f7
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: cccab530e86373fee8a78b42c8cba532b05c1bab
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="get-started-with-storage-explorer-preview"></a>Ismerkedés a Tártallózó alkalmazással (előzetes verzió)
 ## <a name="overview"></a>Áttekintés
@@ -99,7 +99,7 @@ A Tártallózó (előzetes verzió) segítségével külső tárfiókokat csatol
 ### <a name="get-the-storage-account-credentials"></a>Tárfiók hitelesítő adatainak lekérése
 A külső tárfiókok megosztásához először az adott fiók tulajdonosának le kell kérnie a fiók hitelesítő adatait (a fióknevet és a kulcsot), majd meg kell osztania azokat a (külső) fiókot csatlakoztatni kívánó személlyel. A tárfiók hitelesítő adatainak lekérése az Azure Portalon keresztül lehetséges az alábbi lépések végrehajtásával:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. Válassza a **Tallózás** lehetőséget.
 
@@ -241,9 +241,9 @@ Ahogy elkezdi beírni a szöveget a keresőmezőbe, a bal oldali ablaktábla csa
 
 ![Tárfiók keresése][11]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Azure Blob Storage-erőforrások kezelése a Tártallózó (előzetes verzió) használatával](vs-azure-tools-storage-explorer-blobs.md)
-* [Az Azure Tártallózó (előzetes verzió) Azure Cosmos DB kezelése](./cosmos-db/tutorial-documentdb-and-mongodb-in-storage-explorer.md)
+* [Az Azure Tártallózó (előzetes verzió) Azure Cosmos DB kezelése](./cosmos-db/storage-explorer.md)
 
 [0]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/settings-icon.png
 [1]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/add-account-link.png

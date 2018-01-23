@@ -14,11 +14,11 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: tamram
-ms.openlocfilehash: 3a21d87cee714dbc3aab6d4106544e45d91a3193
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: c4c6d47511acdae7afaf4a535c24c6fcc7e389b1
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="how-to-use-blob-storage-from-ruby"></a>How to use Blob storage from Ruby (A Blob Storage használata Rubyval)
 [!INCLUDE [storage-selector-blob-include](../../../includes/storage-selector-blob-include.md)]
@@ -35,7 +35,7 @@ Ez az útmutató bemutatja, hogyan hajthat végre a Blob storage használatával
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-ruby-application"></a>Ruby-alkalmazás létrehozása
-Ruby-alkalmazás létrehozása. Útmutatásért lásd: [Ruby sínek webalkalmazás egy Azure virtuális gépen](https://docs.microsoft.com/azure/app-service/containers/quickstart-ruby)
+Ruby-alkalmazás létrehozása. Útmutatásért lásd: [Ruby-alkalmazás létrehozása az App Service Linux](https://docs.microsoft.com/azure/app-service/containers/quickstart-ruby).
 
 
 ## <a name="configure-your-application-to-access-storage"></a>Állítsa be az alkalmazását tároló elérésére

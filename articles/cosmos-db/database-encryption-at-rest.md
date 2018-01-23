@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: voellm
-ms.openlocfilehash: d8967d4504a8ccabb444c7f3d5635e2d00f287c5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 193dbede0655376714c6f8f12c826ba3f9bc8933
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="azure-cosmos-db-database-encryption-at-rest"></a>Az Azure Cosmos DB adatbázis titkosítását
 
@@ -26,7 +26,7 @@ Aktívan nem adattitkosítás egy kifejezést gyakran hivatkozik a titkosítás 
 
 Mivel a PaaS szolgáltatás Cosmos DB nagyon könnyen használható. Mert Cosmos DB tárolt összes felhasználói adatokat aktívan és átviteli titkosított, nincs teendője. Másképp fogalmazva úgy, hogy "a" alapértelmezés szerint van titkosítását. Nincsenek nem kapcsolható ki- vagy szabályozza. Ez a szolgáltatás nyújtunk közben továbbra is, hogy megfeleljen a [rendelkezésre állásának és teljesítményének SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db).
 
-## <a name="implement-encryption-at-rest"></a>A titkosítás aktívan
+## <a name="implementation-of-encryption-at-rest-for-azure-cosmos-db"></a>Az Azure Cosmos DB titkosítását végrehajtása
 
 Titkosítását számos biztonsági technológia, beleértve a biztonságos kulcs tárolása rendszerek, a titkosított hálózatokat és a kriptográfiai API-k segítségével történik. Adatok feldolgozása és visszafejtésére rendszerek kell kommunikálni a rendszerek, a kulcsok kezelése. Az ábra bemutatja, hogyan titkosított adatok tárolása és a kulcsok kezelése elválasztva egymástól. 
 
@@ -64,7 +64,7 @@ V: nincs hatása vagy módosításokat most, hogy aktívan engedélyezve van az 
 ### <a name="q-does-the-local-emulator-support-encryption-at-rest"></a>Kérdés: a helyi emulátor támogatja titkosítását?
 V: az emulátor az önálló fejlesztési és tesztelési célú eszközzel, és nem használja a kulcskezelő szolgáltatások, a felügyelt Cosmos DB szolgáltatás által használt. Azt javasoljuk, ahol bizalmas emulátor Tesztadatok tároló meghajtókon a BitLocker engedélyezése érdekében. A [emulátor támogatja az alapértelmezett adatkönyvtár módosítása](local-emulator.md) továbbá használatával egy ismert helyre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Cosmos DB biztonság és a legújabb fejlesztései rendelkezésre megtudhatja, [Azure Cosmos DB adatbázis biztonsági](database-security.md).
 További információ a Microsoft minősítései közül: a [Azure biztonsági és adatkezelési központ](https://azure.microsoft.com/en-us/support/trust-center/).

@@ -14,25 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: 6268cff5f6c87d269f431dcdf5e6a1ee2e2bcf1f
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: fb47ceb63d45a3e896d55d8c304562cc667d0414
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="microsoft-azure-storage-explorer-preview-release-notes"></a>Kibocsátási megjegyzések a Microsoft Azure Tártallózó (előzetes verzió)
 
-A cikkben a kibocsátási megjegyzések a 0.9.3-as. Azure Tártallózó (előzetes verzió) kiadása, valamint a kibocsátási megjegyzések a korábbi verziók.
+A cikkben a kibocsátási megjegyzések a 0.9.4. Azure Tártallózó (előzetes verzió) kiadása, valamint a kibocsátási megjegyzések a korábbi verziók.
 
 [A Microsoft Azure Tártallózó (előzetes verzió)](./vs-azure-tools-storage-manage-with-storage-explorer.md) egy különálló alkalmazás, amelynek segítségével egyszerűen dolgozhat Azure Storage-adatokkal Windows, a macOS és a Linux rendszeren.
 
-## <a name="version-093"></a>0.9.3-as verzió
-12/08/2017
+## <a name="version-094--093"></a>Verzió 0.9.4 / 0.9.3-as
+01/21/2018
 
-### <a name="download-azure-storage-explorer-093-preview"></a>Töltse le az Azure Tártallózó (előzetes verzió) 0.9.3-as
-- [A Windows Azure Tártallózó (előzetes verzió) 0.9.3-as](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [A Mac Azure Tártallózó (előzetes verzió) 0.9.3-as](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Linux rendszerhez készült Azure Tártallózó (előzetes verzió) 0.9.3-as](https://go.microsoft.com/fwlink/?LinkId=722418)
+### <a name="download-azure-storage-explorer-094-preview"></a>Töltse le az Azure Tártallózó (előzetes verzió) 0.9.4
+- [A Windows Azure Tártallózó (előzetes verzió) 0.9.4](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [A Mac Azure Tártallózó (előzetes verzió) 0.9.4](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Linux rendszerhez készült Azure Tártallózó (előzetes verzió) 0.9.4](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="new"></a>Új
 * A meglévő tárolási ablak fog lehet ismét használni:
@@ -44,6 +44,7 @@ A cikkben a kibocsátási megjegyzések a 0.9.3-as. Azure Tártallózó (előzet
     * Mac alkalmazás menü alatti egy "Új ablak" lehetőség van.
 
 ### <a name="fixes"></a>Javítások
+* A biztonsági problémákból rögzített. Frissítse a legkorábbi kényelmi 0.9.4.
 * Régi tevékenységek volt nem megfelelően törlés alatt áll. Ez a szabályzat hosszú ideig futó feladatok teljesítményére. Ezek most tisztítása megfelelően.
 * Műveletek, például fájlok és könyvtárak nagy számú alkalmanként okozna Tártallózó rögzíteni. Az Azure fájlmegosztások kérelmek jelenleg trottled erőforrás-használat korlátozása.
 
@@ -85,7 +86,7 @@ A cikkben a kibocsátási megjegyzések a 0.9.3-as. Azure Tártallózó (előzet
 
 
 
-### <a name="hotfixes"></a>Gyorsjavítások
+### <a name="hotfixes"></a>Hotfixes
 * Váratlan adatok módosítása volt lehetséges, attól függően, hogy a helyi időzónát táblaentitásokat Edm.DateTime értékeinek szerkesztése során. A szerkesztő mostantól használ a egyszerű szövegmező Edm.DateTime értékek pontos, egységes ad.
 * Egy csoport nevét és a kulcs csatolt blobok feltöltése/letöltése nem indul el. A probléma javítását.
 * Korábban Tártallózó csak felajánlja újból hitelesítésre a régi fiókot, ha egy vagy több a fiók-előfizetések választotta. Most Tártallózó kérni fogja, még akkor is, ha a fiók teljesen ki van szűrve.
@@ -94,7 +95,7 @@ A cikkben a kibocsátási megjegyzések a 0.9.3-as. Azure Tártallózó (előzet
 
 ### <a name="new"></a>Új
 * Azure Cosmos DB Preview támogatása:
-    * [Online dokumentáció](./cosmos-db/tutorial-documentdb-and-mongodb-in-storage-explorer.md)
+    * [Online dokumentáció](./cosmos-db/storage-explorer.md)
     * Adatbázisok és a gyűjtemények létrehozása
     * Adatok kezelése
     * Lekérdezési, hozzon létre vagy dokumentumok törlése
@@ -174,7 +175,7 @@ A cikkben a kibocsátási megjegyzések a 0.9.3-as. Azure Tártallózó (előzet
 10/20/2017
 ### <a name="new"></a>Új
 * Azure Cosmos DB Preview támogatása:
-    * [Online dokumentáció](./cosmos-db/tutorial-documentdb-and-mongodb-in-storage-explorer.md)
+    * [Online dokumentáció](./cosmos-db/storage-explorer.md)
     * Adatbázisok és a gyűjtemények létrehozása
     * Adatok kezelése
     * Lekérdezési, hozzon létre vagy dokumentumok törlése

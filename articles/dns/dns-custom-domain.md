@@ -3,20 +3,20 @@ title: "Azure DNS integrálása az Azure-erőforrások |} Microsoft Docs"
 description: "Ismerje meg, hogyan használható az Azure DNS mentén DNS biztosít az Azure-erőforrások."
 services: dns
 documentationcenter: na
-author: georgewallace
-manager: timlt
+author: KumudD
+manager: jeconnoc
 ms.service: dns
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/31/2017
-ms.author: gwallace
-ms.openlocfilehash: 41c1649bfff035bc641d7c1f5d7803cd105e8297
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 1/19/2018
+ms.author: kumud
+ms.openlocfilehash: cbc769cd7356b3057fd2aae295071b04d2e40d91
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Adja meg az egyéni tartomány beállításait az Azure-szolgáltatások az Azure DNS használatával
 
@@ -26,7 +26,7 @@ Az Azure DNS biztosít a DNS az Azure-erőforrások valamelyike egyéni tartomá
 
 Ahhoz, hogy Azure DNS-ben az egyéni tartomány, meg kell először tartomány delegálása az Azure DNS-ben. Látogasson el [az Azure DNS-tartomány delegálása az](./dns-delegate-domain-azure-dns.md) konfigurálása delegáláshoz a Névkiszolgálók útmutatást. Ha a tartomány delegált az Azure DNS-zónát, le is tudja konfigurálja a szükséges DNS-rekordokat.
 
-Konfigurálhat egy személyes vagy tartozó egyéni tartomány [Azure függvény alkalmazások](#azure-function-app), [Azure IoT](#azure-iot), [nyilvános IP-címek](#public-ip-address), [App Service (webalkalmazások)](#app-service-web-apps), [Blob-tároló](#blob-storage), és [Azure CDN](#azure-cdn).
+Konfigurálhat egy személyes vagy tartozó egyéni tartomány [Azure függvény alkalmazások](#azure-function-app), [nyilvános IP-címek](#public-ip-address), [App Service (webalkalmazások)](#app-service-web-apps), [Blob-tároló](#blob-storage), és [Azure CDN](#azure-cdn).
 
 ## <a name="azure-function-app"></a>Az Azure-függvény alkalmazás
 
@@ -44,38 +44,17 @@ Nyissa meg a DNS-zónát, és kattintson a **+ rekordhalmaz**. Töltse ki a köv
 
 |Tulajdonság  |Érték  |Leírás  |
 |---------|---------|---------|
-|Név     | myfunctionapp        | Ez az érték és a tartománynév-címke az egyéni tartománynév teljes Tartománynevét.        |
+|Name (Név)     | myfunctionapp        | Ez az érték és a tartománynév-címke az egyéni tartománynév teljes Tartománynevét.        |
 |Típus     | CNAME        | Használjon egy olyan CNAME rekordot alias használ.        |
-|ÉLETTARTAM     | 1        | 1 használt 1 óra        |
+|TTL     | 1        | 1 használt 1 óra        |
 |Élettartam egység     | Óra        | Az idő mérése használatosak üzemideje (óra)         |
-|Alias     | adatumfunction.azurewebsites.NET        | A DNS-név hoz létre az aliast, ebben a példában a, a függvény alkalmazás alapértelmezés szerint adatumfunction.azurewebsites.net DNS-név.        |
+|Alias     | adatumfunction.azurewebsites.net        | A DNS-név hoz létre az aliast, ebben a példában a, a függvény alkalmazás alapértelmezés szerint adatumfunction.azurewebsites.net DNS-név.        |
 
 Lépjen vissza a függvény app, kattintson a **Platform funkciói**, majd a **hálózati** kattintson **egyéni tartományok**, majd a **Hostnames**kattintson **+ Hozzáadás állomásnév**.
 
 Az a **állomásnév hozzáadása** panelen adja meg a CNAME rekordot a **állomásnév** szövegmezőt, és kattintson **ellenőrzése**. Ha a rekord tudta található, a **állomásnév hozzáadása** gomb akkor jelenik meg. Kattintson a **állomásnév hozzáadása** hozzáadása az aliast.
 
 ![függvény alkalmazások hozzáadása a gazdagép neve panel](./media/dns-custom-domain/functionaddhostname.png)
-
-## <a name="azure-iot"></a>Azure IoT
-
-Az Azure IoT nincs minden testreszabott beállítás van szükség a szolgáltatást. Az IoT-központ csak egy olyan CNAME rekordot a erőforrások jelölt egyéni tartományok használata szükséges.
-
-Navigáljon a **az eszközök internetes hálózatát** > **IoT-központ** válassza ki az IoT hub. Az a **áttekintése** panelen, vegye figyelembe az IoT hub teljes Tartománynevét.
-
-![IoT Hub panel](./media/dns-custom-domain/iot.png)
-
-Ezután keresse meg a DNS-zónát, és kattintson a **+ rekordhalmaz**. Töltse ki a következő információkat a a **adja hozzá a rekordhalmaz** panel megnyitásához, és kattintson **OK** létrehozásához.
-
-
-|Tulajdonság  |Érték  |Leírás  |
-|---------|---------|---------|
-|Név     | myiothub        | A tartománynév-címke együtt az értéke az IoT hub teljes Tartománynevét.        |
-|Típus     | CNAME        | Használjon egy olyan CNAME rekordot alias használ.
-|ÉLETTARTAM     | 1        | 1 használt 1 óra        |
-|Élettartam egység     | Óra        | Az idő mérése használatosak üzemideje (óra)         |
-|Alias     | adatumIOT.azure-devices.net        | A DNS-név hoz létre az aliast, ebben a példában az IoT-központ által biztosított adatumIOT.azure-devices.net állomás neve.
-
-A bejegyzés létrehozása után a CNAME rekord használatával a névfeloldás tesztelése`nslookup`
 
 ## <a name="public-ip-address"></a>Nyilvános IP-cím
 
@@ -90,9 +69,9 @@ Nyissa meg a DNS-zónát, és kattintson a **+ rekordhalmaz**. Töltse ki a köv
 
 |Tulajdonság  |Érték  |Leírás  |
 |---------|---------|---------|
-|Név     | mywebserver        | Ez az érték és a tartománynév-címke az egyéni tartománynév teljes Tartománynevét.        |
+|Name (Név)     | mywebserver        | Ez az érték és a tartománynév-címke az egyéni tartománynév teljes Tartománynevét.        |
 |Típus     | A        | Az A rekord használatára, mert az erőforrás IP-címet.        |
-|ÉLETTARTAM     | 1        | 1 használt 1 óra        |
+|TTL     | 1        | 1 használt 1 óra        |
 |Élettartam egység     | Óra        | Az idő mérése használatosak üzemideje (óra)         |
 |IP-cím     | <your ip address>       | A nyilvános IP-cím.|
 
@@ -102,7 +81,7 @@ Az A rekord létrehozása után futtassa `nslookup` a rekord oldja fel a rendsze
 
 ![nyilvános IP-cím DNS-címkeresés](./media/dns-custom-domain/publicipnslookup.png)
 
-## <a name="app-service-web-apps"></a>Az App Service (webalkalmazások)
+## <a name="app-service-web-apps"></a>App Service (Web Apps)
 
 A következő lépések egy app service webalkalmazás az egyéni tartománynév beállítása.
 
@@ -117,11 +96,11 @@ Nyissa meg a DNS-zónát, és kattintson a **+ rekordhalmaz**. Töltse ki a köv
 
 |Tulajdonság  |Érték  |Leírás  |
 |---------|---------|---------|
-|Név     | mywebserver        | Ez az érték és a tartománynév-címke az egyéni tartománynév teljes Tartománynevét.        |
+|Name (Név)     | mywebserver        | Ez az érték és a tartománynév-címke az egyéni tartománynév teljes Tartománynevét.        |
 |Típus     | CNAME        | Használjon egy olyan CNAME rekordot alias használ. Ha az erőforrás IP-címet használ, egy A rekordot használni.        |
-|ÉLETTARTAM     | 1        | 1 használt 1 óra        |
+|TTL     | 1        | 1 használt 1 óra        |
 |Élettartam egység     | Óra        | Az idő mérése használatosak üzemideje (óra)         |
-|Alias     | WebServer.azurewebsites.NET        | A DNS-név hoz létre az aliast, ebben a példában a webes alkalmazás alapértelmezés szerint webserver.azurewebsites.net DNS nevével.        |
+|Alias     | webserver.azurewebsites.net        | A DNS-név hoz létre az aliast, ebben a példában a webes alkalmazás alapértelmezés szerint webserver.azurewebsites.net DNS nevével.        |
 
 
 ![Hozzon létre egy CNAME rekordot](./media/dns-custom-domain/createcnamerecord.png)
@@ -151,11 +130,11 @@ Nyissa meg a DNS-zónát, és kattintson a **+ rekordhalmaz**. Töltse ki a köv
 
 |Tulajdonság  |Érték  |Leírás  |
 |---------|---------|---------|
-|Név     | asverify.mystorageaccount        | Ez az érték és a tartománynév-címke az egyéni tartománynév teljes Tartománynevét.        |
+|Name (Név)     | asverify.mystorageaccount        | Ez az érték és a tartománynév-címke az egyéni tartománynév teljes Tartománynevét.        |
 |Típus     | CNAME        | Használjon egy olyan CNAME rekordot alias használ.        |
-|ÉLETTARTAM     | 1        | 1 használt 1 óra        |
+|TTL     | 1        | 1 használt 1 óra        |
 |Élettartam egység     | Óra        | Az idő mérése használatosak üzemideje (óra)         |
-|Alias     | asverify.adatumfunctiona9ed.BLOB.Core.Windows.NET        | A DNS-név hoz létre az aliast, ebben a példában a tárolási fiók alapértelmezés szerint asverify.adatumfunctiona9ed.blob.core.windows.net DNS nevével.        |
+|Alias     | asverify.adatumfunctiona9ed.blob.core.windows.net        | A DNS-név hoz létre az aliast, ebben a példában a tárolási fiók alapértelmezés szerint asverify.adatumfunctiona9ed.blob.core.windows.net DNS nevével.        |
 
 Lépjen vissza a tárfiók kattintva **tárolási** > **Tárfiókok**, válassza ki a tárfiók, és kattintson a **egyéni tartomány**. Írja be az aliast, a szövegmezőben, ellenőrizze az asverify előtag nélkül ** CNAME rekord közvetett ellenőrzésének használata, és kattintson a **mentése**. Ez a lépés végrehajtása után térjen vissza a DNS-zónát, és hozzon létre egy CNAME rekordot a asverify előtag nélkül.  Később áll biztonságosan törölje a CNAME rekordot a cdnverify előtaggal.
 
@@ -179,16 +158,16 @@ Nyissa meg a DNS-zónát, és kattintson a **+ rekordhalmaz**. Töltse ki a köv
 
 |Tulajdonság  |Érték  |Leírás  |
 |---------|---------|---------|
-|Név     | cdnverify.mycdnendpoint        | Ez az érték és a tartománynév-címke az egyéni tartománynév teljes Tartománynevét.        |
+|Name (Név)     | cdnverify.mycdnendpoint        | Ez az érték és a tartománynév-címke az egyéni tartománynév teljes Tartománynevét.        |
 |Típus     | CNAME        | Használjon egy olyan CNAME rekordot alias használ.        |
-|ÉLETTARTAM     | 1        | 1 használt 1 óra        |
+|TTL     | 1        | 1 használt 1 óra        |
 |Élettartam egység     | Óra        | Az idő mérése használatosak üzemideje (óra)         |
-|Alias     | cdnverify.adatumcdnendpoint.azureedge.NET        | A DNS-név hoz létre az aliast, ebben a példában a tárolási fiók alapértelmezés szerint cdnverify.adatumcdnendpoint.azureedge.net DNS nevével.        |
+|Alias     | cdnverify.adatumcdnendpoint.azureedge.net        | A DNS-név hoz létre az aliast, ebben a példában a tárolási fiók alapértelmezés szerint cdnverify.adatumcdnendpoint.azureedge.net DNS nevével.        |
 
 Lépjen vissza a CDN-végpontot kattintva **hálózati** > **CDN-profilra**, és válassza ki a CDN-profilt. Kattintson a **+ egyéni tartomány** , és adja meg a CNAME rekord alias a cdnverify előtag nélkül, és kattintson **Hozzáadás**.
 
 Ez a lépés végrehajtása után térjen vissza a DNS-zónát, és hozzon létre egy CNAME rekordot a cdnverify előtag nélkül.  Később áll biztonságosan törölje a CNAME rekordot a cdnverify előtaggal. További információ a CDN és a köztes regisztrációs lépésében nélkül az egyéni tartománynév beállítása a Microsoft [térkép Azure CDN-tartalom egyéni tartományhoz](../cdn/cdn-map-content-to-custom-domain.md?toc=%dns%2ftoc.json).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan [névkeresési DNS az Azure-ban tárolt szolgáltatások konfigurálása](dns-reverse-dns-for-azure-services.md).

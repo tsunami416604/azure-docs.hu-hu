@@ -8,12 +8,12 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 10/20/2017
-ms.openlocfilehash: aea561b526d6f3f818fd75771dd8c65c9f25051a
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.date: 1/20/2018
+ms.openlocfilehash: 3cc879fb568965af98997889437c6348e0d341e1
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="azure-database-for-mysql-server-firewall-rules"></a>Kiszolgáló tűzfalszabályainak MySQL Azure-adatbázis
 Tűzfalak tagadni a hozzáférést minden az adatbázis-kiszolgáló csak akkor adja meg, mely számítógépek rendelkeznek engedéllyel. A tűzfal engedélyezi a hozzáférést a kiszolgálóhoz, az egyes kérelmek az eredeti IP-címe alapján.
@@ -36,6 +36,15 @@ Ha az IP-cím, a kérelem megadott kiszolgálószintű tűzfalszabályok tartom�
 
 Ha a kérés IP-címét az adatbázis-szintjére, vagy a kiszolgálószintű tűzfalszabály megadott tartományok kívül, akkor a kapcsolódási kérelem sikertelen lesz.
 
+## <a name="connecting-from-azure"></a>Csatlakozás az Azure-ból
+Lehetővé teszik az alkalmazások az Azure-ból a MySQL-kiszolgáló Azure-adatbázishoz való kapcsolódáshoz, Azure-kapcsolatok engedélyezni kell. Például egy Azure Web Apps alkalmazást vagy olyan alkalmazás, amely egy Azure virtuális gép üzemeltetésére, vagy csatlakoztassa egy Azure Data Factory az adatkezelési átjáró. Az erőforrások nem kell ugyanazon virtuális hálózatot (VNET) vagy a tűzfalszabály tartozó erőforráscsoport ahhoz, hogy ezeket a kapcsolatokat. Amikor egy Azure-alkalmazás megkísérel csatlakozni az adatbázis-kiszolgálóhoz, a tűzfal ellenőrzi, hogy az Azure-kapcsolatok engedélyezve vannak-e. Többféle módszer ahhoz, hogy ilyen típusú kapcsolatokat. A 0.0.0.0 kezdő- és zárócímet tartalmazó tűzfalbeállítás jelzi, hogy ezek a kapcsolatok engedélyezettek. Beállíthatja azt is megteheti, a **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** lehetőséggel **ON** a portálon a **kapcsolatbiztonsági** ablaktáblán, és nyomja le **mentése**. A kapcsolódási kísérlet nem engedélyezett, ha a kérelem nem éri el a MySQL-kiszolgálóhoz tartozó Azure-adatbázis.
+
+> [!IMPORTANT]
+> Ez a beállítás konfigurálja a tűzfalat arra, hogy engedélyezzen minden, az Azure felől érkező kapcsolatot, beleértve a más ügyfelek előfizetéseiből érkező kapcsolatokat is. Ezen beállítás kiválasztásakor győződjön meg arról, hogy a bejelentkezési és felhasználói engedélyei a hozzáféréseket az arra jogosult felhasználókra korlátozzák.
+> 
+
+![Azure-szolgáltatásokhoz való hozzáférés engedélyezése a portál konfigurálása](./media/concepts-firewall-rules/allow-azure-services.png)
+
 ## <a name="programmatically-managing-firewall-rules"></a>Tűzfalszabályok szoftveres kezelése
 Az Azure portálon kívül tűzfalszabályok kezelhető programozott módon az Azure parancssori felület használatával. Lásd még: [hozzon létre és kezelheti az Azure-adatbázis MySQL tűzfalszabályok Azure parancssori felület használatával](./howto-manage-firewall-using-cli.md)
 
@@ -52,7 +61,7 @@ Ha a Microsoft Azure-adatbázis eléréséhez a MySQL-kiszolgáló szolgáltatá
 
 * Állítson be statikus IP-címeket az ügyfélszámítógépei számára, majd adja meg az IP-címeket tűzfalszabályokként.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Hozzon létre és kezelheti az Azure-adatbázis MySQL tűzfalszabályokat az Azure portál használatával](./howto-manage-firewall-using-portal.md)
 [hozzon létre és kezelheti az Azure-adatbázis MySQL tűzfalszabályok Azure parancssori felület használatával](./howto-manage-firewall-using-cli.md)

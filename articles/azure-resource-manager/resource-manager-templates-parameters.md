@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/11/2017
+ms.date: 01/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7d0f53751bf529d52c156a8b9319b10560eb8997
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 5a519908f43193e41da9237a236d720fe2db58eb
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="parameters-section-of-azure-resource-manager-templates"></a>Paraméterek szakaszban az Azure Resource Manager-sablonok
 A sablon a Paraméterek szakaszban adja meg az erőforrások telepítése során is bemeneti értékeket. A paraméterértékek lehetővé teszik a központi telepítés testreszabása egy adott környezetben (például a fejlesztői, tesztelési és éles) is lefednek értékek megadásával. A sablon a paraméterek megadása nem szükséges, de a paraméterek nélkül a sablon mindig központilag ugyanazon a nevét, helyét és tulajdonságok ugyanazokat az erőforrásokat.
@@ -86,12 +86,12 @@ Az előző példában bemutatta, csak az egyes tulajdonságok a paraméter szaka
 |:--- |:--- |:--- |
 | parameterName |Igen |A paraméter neve. Egy érvényes JavaScript-azonosítónak kell lennie. |
 | type |Igen |A paraméter értékének típusa. Az engedélyezett típusokkal és az értékek **karakterlánc**, **secureString**, **int**, **bool**, **objektum**, **secureObject**, és **tömb**. |
-| DefaultValue érték |Nem |A paraméternek, ha nincs érték megadva, a paraméter alapértelmezett értéke. |
-| Storageaccount_accounttype |Nem |Győződjön meg arról, hogy a megfelelő érték van megadva a paraméter megengedett értékei tömbje. |
+| defaultValue |Nem |A paraméternek, ha nincs érték megadva, a paraméter alapértelmezett értéke. |
+| allowedValues |Nem |Győződjön meg arról, hogy a megfelelő érték van megadva a paraméter megengedett értékei tömbje. |
 | A MinValue |Nem |A minimális int típusú paraméterekhez, ez az érték értéke között lehet. |
-| MaxValue |Nem |A maximális int típusú paraméterekhez, ez az érték értéke között lehet. |
+| maxValue |Nem |A maximális int típusú paraméterekhez, ez az érték értéke között lehet. |
 | a minLength |Nem |A minimális string, secureString és array típusú paraméterekhez, ez az érték hossza határokat is beleértve. |
-| MaxLength |Nem |A string, secureString és array típusú paraméterekhez, ez az érték hossza legfeljebb határokat is beleértve. |
+| maxLength |Nem |A string, secureString és array típusú paraméterekhez, ez az érték hossza legfeljebb határokat is beleértve. |
 | leírás |Nem |A paraméter, akkor jelenik meg, a felhasználók számára a portálon keresztül leírása. |
 
 ## <a name="template-functions-with-parameters"></a>Sablon függvényeket paraméterekkel
@@ -131,6 +131,7 @@ A paraméter a sablonban megadott, és adjon meg egyetlen érték helyett egy JS
     "type": "object",
     "defaultValue": {
       "name": "VNet1",
+      "location": "eastus",
       "addressPrefixes": [
         {
           "name": "firstPrefix",
@@ -160,7 +161,7 @@ Ezt követően hivatkozik a altulajdonságokat paraméter a pont operátor haszn
     "apiVersion": "2015-06-15",
     "type": "Microsoft.Network/virtualNetworks",
     "name": "[parameters('VNetSettings').name]",
-    "location":"[resourceGroup().location]",
+    "location": "[parameters('VNetSettings').location]",
     "properties": {
       "addressSpace":{
         "addressPrefixes": [
@@ -237,7 +238,7 @@ Az alábbi információ segítségével esetleg megállapítható, paraméterek 
    }
    ```
 
-* Amikor csak lehetséges, nem egy paraméter segítségével adjon meg helyet. Ehelyett használja a **hely** az erőforráscsoport tulajdonság. Használatával a **resourceGroup () .location** megadó kifejezést vár, a erőforrások a sablonban szereplő erőforrások vannak telepítve az erőforráscsoport és ugyanazon a helyen:
+* Egy paraméter segítségével adjon meg helyet, és a lehető legnagyobb mértékben paraméterérték megosztása erőforrásokat, amelyek valószínűleg ugyanazon a helyen. Ez a megközelítés minimálisra csökkenti a szám, ahányszor a felhasználó felkérést kap arra, hogy helyére vonatkozó információkat. Ha egy erőforrás típusa csak korlátozott számú helyeken támogatott, érdemes adjon meg egy érvényes helyet közvetlenül a sablonban, vagy adja hozzá egy másik hely paramétert. Amikor egy szervezet korlátozza a felhasználók számára engedélyezett régiók a **resourceGroup () .location** kifejezés megakadályozhatja, hogy a felhasználók nem tudnak a sablon telepítéséhez. Például egy felhasználó egy régióban hoz létre egy erőforráscsoportot. A második felhasználó erőforráscsoport kell telepíteni, de nem rendelkezik hozzáféréssel a régióban. 
    
    ```json
    "resources": [
@@ -245,13 +246,12 @@ Az alábbi információ segítségével esetleg megállapítható, paraméterek 
          "name": "[variables('storageAccountName')]",
          "type": "Microsoft.Storage/storageAccounts",
          "apiVersion": "2016-01-01",
-         "location": "[resourceGroup().location]",
+         "location": "[parameters('location')]",
          ...
      }
    ]
    ```
-   
-   Ha egy erőforrás típusa támogatott helyek csak korlátozott számú, érdemes adjon meg egy érvényes helyet közvetlenül a sablonban. Használata esetén egy **hely** paraméter, a lehető legnagyobb mértékben paraméterérték megosztása erőforrásokat, amelyek valószínűleg ugyanazon a helyen. Ez a megközelítés minimálisra csökkenti a szám, ahányszor a felhasználó felkérést kap arra, hogy helyére vonatkozó információkat.
+    
 * Kerülje a paraméter vagy változó erőforrástípus API-verzió számára. Erőforrás-tulajdonságok és értékek alapján verziószáma változhat. A kód szerkesztése az IntelliSense nem határozható meg, hogy a megfelelő sémát az API-verzió beállítása egy paraméter vagy változó. Ehelyett a sablonban merevlemez-kódot az API-verzió.
 * Ne adjon meg a paraméter neve, amely megfelel a telepítési parancsot kell megadni a paraméter a sablonban. Erőforrás-kezelő a utótag hozzáadásával oldja fel a névütközés **FromTemplate** a sablon paraméterhez. Például, ha nevű paraméter **ResourceGroupName** a sablonban ütközik a **ResourceGroupName** paramétere a [új-AzureRmResourceGroupDeployment ](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) parancsmag. A telepítés során kéri adjon meg egy értéket a **ResourceGroupNameFromTemplate**.
 
@@ -264,7 +264,7 @@ A példa sablonok bemutatják, bizonyos esetekben a paraméterek használatával
 |[az alapértelmezett értékek functions paraméterek](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | Bemutatja, hogyan használja a sablon funkciók paramétereinek alapértelmezett értékei meghatározásakor. A sablon nem kell telepítenie minden olyan erőforrásnál. A paraméterértékek hoz létre, és ezeket az értékeket adja vissza. |
 |[a paraméter objektum](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | Azt mutatja be egy objektumot az egyik paraméter használatával. A sablon nem kell telepítenie minden olyan erőforrásnál. A paraméterértékek hoz létre, és ezeket az értékeket adja vissza. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A különböző megoldástípusokhoz használható teljes sablonok megtekintéséhez lásd: [Azure gyorsindítási sablonok](https://azure.microsoft.com/documentation/templates/).
 * A telepítés során az értékek a bemeneti tudnivalókat [Azure Resource Manager-sablon az alkalmazás központi telepítését](resource-group-template-deploy.md). 

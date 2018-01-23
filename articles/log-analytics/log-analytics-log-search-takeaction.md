@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.openlocfilehash: ff938697add98f3d21b4971175432335ee2e39ba
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b3c3b036a8294e17aec103ba470402c1f8f707d8
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="take-action-with-an-automation-runbook-from-a-log-analytics-log-search-result"></a>A Naplóelemzési napló keresési eredmény egy Automation-Runbook a művelet végrehajtása
 
@@ -30,7 +30,7 @@ Az Azure Naplóelemzés napló keresési eredményt, most kiválaszthatja **hajt
 
 ## <a name="to-initiate-runbook-from-log-search"></a>Naplófájl-keresési runbook indítására
 
-Hajtsa végre a műveletet egy olyan eseményre, és a napló a keresési eredmények runbook kezdeményezni, akkor először hozzon létre egy naplófájl-keresési, és az eredmények hívhat meg a runbook igény.  Ez a napló keresési funkció az Azure-ban érhető el vagy [OMS-portálon](../log-analytics/log-analytics-log-searches.md).  Ebben a példában a naplófájl-keresési funkció alapszintű bemutató az Azure-portálról végezzük.
+Hajtsa végre a műveletet egy olyan eseményre, és a napló a keresési eredmények runbook kezdeményezni, akkor először hozzon létre egy naplófájl-keresési, és az eredmények hívhat meg a runbook igény.  Ez a napló keresési funkciója érhető el a [Azure-portálon](../log-analytics/log-analytics-log-search-new.md).  Ebben a példában a naplófájl-keresési funkció alapszintű bemutató az Azure-portálról végezzük.
 
 1. Az Azure portálon, a központ menüben kattintson a **további szolgáltatások** válassza **Naplóelemzési**.  
 2. A Naplóelemzési panelen válassza ki a Naplóelemzési munkaterület, majd a munkaterületen panelen **naplófájl-keresési**.  
@@ -46,7 +46,7 @@ Hajtsa végre a műveletet egy olyan eseményre, és a napló a keresési eredm�
 
 Választja, ha egy runbookot, amely úgy lett konfigurálva, hogy [Log Analytics-riasztás alapján nevű](../automation/automation-invoke-runbook-from-omsla-alert.md), van egy bemeneti paraméter, **WebhookData** , amely **objektum** típusa.  Ha a bemeneti paraméter megadása kötelező, akkor adhatók át a runbook a keresési eredmények között, akkor átalakíthatja a JSON-formátumú karakterláncot egy objektumtípust, hogy lehetővé teszi a szűrést végezni, amelyre hivatkozhat a runbook-tevékenységek elemeket.  Ehhez kiválasztásával **keresési eredmények (objektum)** a legördülő listából.<br><br> ![Válassza ki a Webhook-objektumot a runbook paraméter](media/log-analytics-log-search-takeaction/select-runbook-and-properties.png)   
     
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tekintse át a [Naplóelemzési jelentkezzen keresési hivatkozás](log-analytics-search-reference.md) megtekintéséhez az összes keresési mezők és facets Naplóelemzési érhető el.
-* Útmutató Automation-runbook meghívása automatikusan, tekintse át [egy Azure Automation-runbook hívja az OMS-Log Analytics-riasztás alapján](../automation/automation-invoke-runbook-from-omsla-alert.md).  
+* Útmutató Automation-runbook meghívása automatikusan, tekintse át [egy Azure Automation-runbook meghívása Log Analytics-riasztás alapján](../automation/automation-invoke-runbook-from-omsla-alert.md).  
