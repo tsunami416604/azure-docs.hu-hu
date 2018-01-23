@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: scottnap
-ms.openlocfilehash: 8c023eda179ace41a082bf4a4fadc281c14db7ba
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 381947a5c936b2bbcae1cf61cdd36eb1653be30b
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="introducing-idns-for-azure-stack"></a>Azure verem IDN bemutatása
 
@@ -30,7 +30,7 @@ Lehetővé teszi a belső virtuális hálózati nevek regisztrálni. Ennek végr
 Amelyet mindig az, hogy létezik az Azure-ban, de akkor érhető el a Windows Server 2016 és Azure verem túl.
 
 ## <a name="what-does-idns-do"></a>Mire IDN?
-IDN Azure-készletben akkor az alábbi képességeket egyéni DNS-kiszolgálóbejegyzéseik megadása nélkül beolvasása.
+IDN Azure-készletben akkor az alábbi képességeket egyéni DNS-kiszolgálóbejegyzéseik megadása nélkül beolvasása:
 
 * Megosztott DNS névfeloldási szolgáltatást bérlői munkaterheléseket.
 * A névfeloldás és a DNS-regisztráció a bérlői virtuális hálózaton belül mérvadó DNS-szolgáltatás.
@@ -47,7 +47,7 @@ Az Azure lehetősége van egy DNS-névcímke, amely társítva van egy nyilváno
 
 A fenti kép Azure létrehoz egy "A" rekord a DNS-ben a DNS-névcímke, a zóna alatt megadott **westus.cloudapp.azure.com**. Az előtag és a együtt utótag állítható össze a teljes tartomány neve (FQDN), amelyeket bárhol lehet feloldani a nyilvános interneten.
 
-Az Azure verem csak támogatja belső névregisztráció, IDN, így nem tegye a következőket.
+Az Azure verem csak támogatja belső névregisztráció, IDN, így nem tegye a következőket:
 
 * Hozzon létre egy meglévő üzemeltetett DNS-zóna (például local.azurestack.external) a DNS-rekord.
 * Hozzon létre egy DNS-zóna (például Contoso.com).
