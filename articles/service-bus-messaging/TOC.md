@@ -28,13 +28,13 @@
 ### [Szerepköralapú hozzáférés-vezérlés (előzetes verzió)](service-bus-role-based-access-control.md)
 ### [Prémium szintű üzenettovábbítás](service-bus-premium-messaging.md)
 ### [Azure-üzenetsorok és Azure Service Bus-üzenetsorok összehasonlítása](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
-### [Többrétegű Service Bus-alkalmazás felépítése](service-bus-dotnet-multi-tier-app-using-service-bus-queues.md)
 ### [Teljesítmény optimalizálása](service-bus-performance-improvements.md)
 ### [Geo-vészhelyreállítás és georeplikáció](service-bus-geo-dr.md)
 ### [Aszinkron üzenetkezelés és magas rendelkezésre állás](service-bus-async-messaging.md)
 ### [Leállások és katasztrófák kezelése](service-bus-outages-disasters.md)
 
 ## Fejlesztés
+### [Többrétegű Service Bus-alkalmazás felépítése](service-bus-dotnet-multi-tier-app-using-service-bus-queues.md)
 ### Üzenetkezelés
 #### [Queues, topics, and subscriptions](service-bus-queues-topics-subscriptions.md) (Üzenetsorok, témakörök és előfizetések)
 #### [Üzenetek, hasznos adatforgalom és szerializáció](service-bus-messages-payloads.md)
