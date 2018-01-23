@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: victorh
-ms.openlocfilehash: aa6973939c6cfe0688f5781fdcea5d39670249df
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 248e9cb521975e9c982684668a68214ce5a1c827
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="connect-azure-stack-to-azure-using-expressroute"></a>Csatlakozás Azure verem Azure ExpressRoute segítségével
 
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
 Azure-veremben lévő virtuális hálózatok az Azure virtuális hálózatokhoz való kapcsolódásának támogatott két módszer áll rendelkezésre:
-   * **Pont-pont**
+   * **Site-to-Site**
 
      VPN-kapcsolaton keresztül IPsec (IKE v1 és IKE v2). Ehhez a kapcsolattípushoz VPN-eszköz vagy RRAS szükséges. További információkért lásd: [Azure verem csatlakozzon az Azure VPN-kapcsolattal](azure-stack-connect-vpn.md).
    * **ExpressRoute**
@@ -88,7 +88,7 @@ A következő eljárásokkal hozhat létre a szükséges hálózati erőforráso
 
    |Mező  |Érték  |
    |---------|---------|
-   |Név     |Tenant1VNet1         |
+   |Name (Név)     |Tenant1VNet1         |
    |Címtér     |10.1.0.0/16|
    |Alhálózat neve     |Tenant1-Sub1|
    |Alhálózati címtartomány     |10.1.1.0/24|
@@ -205,19 +205,22 @@ Az útválasztó egy Windows Server virtuális gép (**AzS-BGPNAT01**) az Azure 
    Példa diagramok a *külső BGPNAT cím* 10.10.0.62 van, és a *belső IP-cím* 192.168.102.1 van.
 
    ```
+   $ExtBgpNat = '<External BGPNAT address>'
+   $IntBgpNat = '<Internal IP address>'
+
    # Designate the external NAT address for the ports that use the IKE authentication.
    Invoke-Command `
     -ComputerName azs-bgpnat01 `
      {Add-NetNatExternalAddress `
       -NatName BGPNAT `
-      -IPAddress <External BGPNAT address> `
+      -IPAddress $Using:ExtBgpNat `
       -PortStart 499 `
       -PortEnd 501}
    Invoke-Command `
     -ComputerName azs-bgpnat01 `
      {Add-NetNatExternalAddress `
       -NatName BGPNAT `
-      -IPAddress <External BGPNAT address> `
+      -IPAddress $Using:ExtBgpNat `
       -PortStart 4499 `
       -PortEnd 4501}
    # create a static NAT mapping to map the external address to the Gateway
@@ -227,8 +230,8 @@ Az útválasztó egy Windows Server virtuális gép (**AzS-BGPNAT01**) az Azure 
      {Add-NetNatStaticMapping `
       -NatName BGPNAT `
       -Protocol UDP `
-      -ExternalIPAddress <External BGPNAT address> `
-      -InternalIPAddress <Internal IP address> `
+      -ExternalIPAddress $Using:ExtBgpNat `
+      -InternalIPAddress $Using:IntBgpNat `
       -ExternalPort 500 `
       -InternalPort 500}
    # Finally, configure NAT traversal which uses port 4500 to
@@ -238,8 +241,8 @@ Az útválasztó egy Windows Server virtuális gép (**AzS-BGPNAT01**) az Azure 
      {Add-NetNatStaticMapping `
       -NatName BGPNAT `
       -Protocol UDP `
-      -ExternalIPAddress <External BGPNAT address> `
-      -InternalIPAddress <Internal IP address> `
+      -ExternalIPAddress $Using:ExtBgpNat `
+      -InternalIPAddress $Using:IntBgpNat `
       -ExternalPort 4500 `
       -InternalPort 4500}
    ```
@@ -564,5 +567,5 @@ Ha meg szeretné ismerni a forgalom, hogy a kapcsolaton keresztül, az Azure-ver
 
    ![A kimenő adatforgalmat adatok](media/azure-stack-connect-expressroute/DataInDataOut.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Alkalmazások telepítése Azure és az Azure verem](azure-stack-solution-pipeline.md)
