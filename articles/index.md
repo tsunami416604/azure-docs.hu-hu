@@ -4,11 +4,11 @@ hide_bc: True
 title: "Microsoft Azure-dokumentáció"
 description: "Ismerje meg, hogyan készíthet és felügyelhet hatékony alkalmazásokat a Microsoft Azure Cloud Services használatával. Töltse le a dokumentációt, mintakódokat, oktatóanyagokat és sok egyebet."
 featureFlags: clicktale
-ms.openlocfilehash: 301a88918d96d94a8e3878cd5d8d33cbabcffdc1
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 2cc74958c62ed99c75e848094e9da40fb21dddd3
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/23/2018
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -195,8 +195,8 @@ ms.lasthandoff: 01/18/2018
                                                 <h4>AI és Cognitive Services</h4>
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/machine-learning/preview">Machine Learning services</a></li>
-                                                    <li><a class="barLink" href="/azure/cognitive-services/computer-vision/">Számítógépes látástechnológiai API</a></li>
-                                                    <li><a class="barLink" href="/azure/cognitive-services/face/">Arcfelismerési API</a></li>
+                                                    <li><a class="barLink" href="/azure/cognitive-services/computer-vision/">Computer Vision API</a></li>
+                                                    <li><a class="barLink" href="/azure/cognitive-services/face/">Face API</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -771,13 +771,13 @@ ms.lasthandoff: 01/18/2018
                                         <li>
                                             <a href="/azure/cognitive-services/emotion/home">
                                                 <img src="media/index/API_Emotion.svg" alt="" />
-                                                <p>Érzelemfelismerési API</p>
+                                                <p>Emotion API</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/cognitive-services/face/">
                                                 <img src="media/index/API_Face.svg" alt="" />
-                                                <p>Arcfelismerési API</p>
+                                                <p>Face API</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1047,7 +1047,7 @@ ms.lasthandoff: 01/18/2018
                                                 <img src="media/index/LogicApp.svg" alt="" />
                                                 <p>Logic Apps</p>
                                             </a>
-                                        </li>                                        
+                                        </li>
                                     </ul>
                                 </div>
                                 <div class="group">
@@ -1303,7 +1303,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Virtual Machine Scale Sets</h3>
-                                                    <p>Több 10 vagy akár több 1000 Linux- és Windows-alapú virtuális gép felügyelete és méretezése</p>
+                                                    <p>Több ezer Linux- és Windows-alapú virtuális gép felügyelete és méretezése</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1341,7 +1341,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>App Service</h3>
-                                                    <p>Webappok üzembe helyezése Linuxon tárolókkal</p>
+                                                    <p>Hatékony felhőalapú web- és mobilalkalmazások gyors létrehozása</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1379,7 +1379,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Container Service (AKS)</h3>
-                                                    <p>Tárolóalapú alkalmazások futtatása ipari méretekben a Kubernetes használatával</p>
+                                                    <p>A Kubernetes üzembe helyezésének, kezelésének és üzemeltetésének leegyszerűsítése</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1455,7 +1455,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Cloud Services</h3>
-                                                    <p>Magas rendelkezésre állású, korlátlanul méretezhető felhőalkalmazások és API-k</p>
+                                                    <p>Magas rendelkezésre állású, a végtelenségig méretezhető felhőalkalmazások és API-k létrehozása</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1536,8 +1536,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Application Gateway</h3>
-                                                    <p>
-7. szintű terheléselosztó beépített HTTP-terheléselosztással és kézbesítés-ellenőrzéssel </p>
+                                                    <p>Biztonságos, méretezhető és magas rendelkezésre állású webes kezelőfelületek létrehozása az Azure-ban</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1594,7 +1593,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Content Delivery Network</h3>
-                                                    <p>A végfelhasználókhoz globális adatközpontok robusztus hálózatán jut el a tartalom</p>
+                                                    <p>Biztonságos, megbízható, globálisan elérhető tartalomkézbesítés biztosítása</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1670,7 +1669,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Network Watcher</h3>
-                                                    <p>Feltételek figyelése és diagnosztizálása a hálózati forgatókönyvek szintjén</p>
+                                                    <p>Hálózati teljesítményfigyelő és diagnosztikai megoldás</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1713,7 +1712,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Blob Storage</h3>
-                                                    <p>Nagymértékben méretezhető objektumtár strukturálatlan adatok számára</p>
+                                                    <p>REST-alapú objektumtár strukturálatlan adatok számára</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1732,7 +1731,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Lemezes tárolás</h3>
-                                                    <p>Lemezes tárolás virtuális gépekhez</p>
+                                                    <p>Állandó, biztonságos, virtuális gépeket támogató lemezbeállítások</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1751,7 +1750,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Queue Storage</h3>
-                                                    <p>Tartós üzenetsorok nagy volumenű felhőszolgáltatásokhoz</p>
+                                                    <p>Alkalmazások forgalomhoz igazodó, hatékony méretezése</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1770,7 +1769,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>File Storage</h3>
-                                                    <p>Egyszerű, elosztott, platformközi fájlrendszer</p>
+                                                    <p>Szabványos SMB 3.0 protokollt használó fájlmegosztások</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1808,7 +1807,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>StorSimple</h3>
-                                                    <p>Fokozott adatbiztonságot nyújtó hibrid felhőalapú tárolási megoldás nagyvállalatok számára</p>
+                                                    <p>Alacsonyabb költségek egy vállalati hibrid felhőalapú tárolási megoldással</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1846,7 +1845,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Site Recovery</h3>
-                                                    <p>Az Azure-beli virtuális gépek, illetve a helyszíni virtuális gépek és fizikai kiszolgálók vészhelyreállításának irányítása</p>
+                                                    <p>A magánfelhők védelmének és helyreállításának megszervezése</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1927,7 +1926,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>API Apps</h3>
-                                                    <p>Felhőalapú API-k egyszerű készítése és használata</p>
+                                                    <p>Felhőalapú API-k egyszerű összeállítása és használata</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1946,7 +1945,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Content Delivery Network</h3>
-                                                    <p>A végfelhasználókhoz globális adatközpontok robusztus hálózatán jut el a tartalom </p>
+                                                    <p>Biztonságos, megbízható, globálisan elérhető tartalomkézbesítés biztosítása</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1984,7 +1983,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Search</h3>
-                                                    <p>Teljeskörűen felügyelt keresőszolgáltatás</p>
+                                                    <p>Teljes körűen felügyelt keresőszolgáltatás</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2022,7 +2021,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Notification Hubs</h3>
-                                                    <p>Több millió üzenet gyors elküldésére képes, méretezhető leküldéses értesítési összetevő</p>
+                                                    <p>Leküldéses értesítések küldése bármely platformra, bármilyen háttérrendszerről</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2046,7 +2045,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Container Service (AKS)</h3>
-                                                    <p>Tárolóalapú alkalmazások futtatása ipari méretekben a Kubernetes használatával</p>
+                                                    <p>A Kubernetes üzembe helyezésének, kezelésének és üzemeltetésének leegyszerűsítése</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2165,7 +2164,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>SQL Database</h3>
-                                                    <p>Felügyelt relációs adatbázisszolgáltatás</p>
+                                                    <p>Szolgáltatásként nyújtott felügyelt relációs SQL Database</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2222,7 +2221,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>SQL Data Warehouse</h3>
-                                                    <p>Szolgáltatásként elérhető rugalmas adattárház nagyvállalati szintű funkciókkal</p>
+                                                    <p>Szolgáltatásként nyújtott rugalmas adattárház nagyvállalati szintű funkciókkal</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2279,7 +2278,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Table Storage</h3>
-                                                    <p>Globálisan elosztott, többmodelles adatbázis bármilyen mérethez</p>
+                                                    <p>Félig strukturált adatkészleteket használó NoSQL kulcs-érték tároló</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2298,7 +2297,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Redis Cache</h3>
-                                                    <p>A nagy sávszélességű, kis késleltetésű adatelérés gyors és méretezhető alkalmazások fejlesztését teszi lehetővé</p>
+                                                    <p>Alkalmazások felruházása magas átviteli sebességű és rövid késleltetésű adathozzáféréssel</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2322,7 +2321,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>HDInsight</h3>
-                                                    <p>Felhőalapú Hadoop-, Spark-, R Server-, Hbase- és Storm-fürtök kiépítése</p>
+                                                    <p>Felhőalapú Hadoop-, Spark-, R Server-, HBase- és Storm-fürtök kiépítése</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2398,7 +2397,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Analysis Services</h3>
-                                                    <p>Vállalati szintű adatmodellezés a felhőben</p>
+                                                    <p>Vállalati szintű, szolgáltatásként nyújtott elemzési motor</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2455,7 +2454,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>SQL Data Warehouse</h3>
-                                                    <p>Szolgáltatásként elérhető rugalmas adattárház nagyvállalati szintű funkciókkal</p>
+                                                    <p>Szolgáltatásként nyújtott rugalmas adattárház nagyvállalati szintű funkciókkal</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2474,7 +2473,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Machine Learning Studio</h3>
-                                                    <p>Nagy teljesítményű felhőalapú prediktív elemzőeszköz a megelőző karbantartáshoz</p>
+                                                    <p>Prediktív elemzési megoldások egyszerű összeállítása, üzembe helyezése és kezelése</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2493,7 +2492,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Data Catalog</h3>
-                                                    <p>Önkiszolgáló adatforrás-felderítés a teljes vállalatban</p>
+                                                    <p>Jobban kihasználhatja a vállalati adategységekben rejlő értékeket</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2558,7 +2557,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Machine Learning services</h3>
-                                                    <p>Nagy teljesítményű felhőalapú prediktív elemzőeszköz a megelőző karbantartáshoz</p>
+                                                    <p>Mesterséges intelligencia mindenki számára egy kísérletezést és modellkezelést lehetővé tevő, teljes körű, méretezhető és megbízható platformmal</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2596,7 +2595,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Batch AI</h3>
-                                                    <p>Párhuzamosan, skálázva taníthatja be a mélytanulási és AI-modelljeit, illetve kísérletezhet velük</p>
+                                                    <p>Párhuzamosan, a megfelelő léptéken taníthatja be a mélytanulási és AI-modelljeit, illetve kísérletezhet velük</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2834,7 +2833,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>IoT Edge</h3>
-                                                    <p>Felhőintelligencia kiterjesztése Edge-eszközökre</p>
+                                                    <p>Intelligencia kiterjesztése a felhőről a peremeszközökre</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2872,13 +2871,13 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Location Based Services</h3>
-                                                    <p>Térképek, útvonalkeresés, keresés és egyéb hatékony térinformatikai szolgáltatások</p>
+                                                    <p>Az egyszerű és biztonságos helymeghatározási API-k térinformatikai kontextust biztosítanak az adatokhoz</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </a>
-                            </li>                            
+                            </li>
                             <li>
                                 <a href="/azure/event-hubs/">
                                     <div class="cardSize">
@@ -2929,7 +2928,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Machine Learning services</h3>
-                                                    <p>Nagy teljesítményű felhőalapú prediktív elemzőeszköz a megelőző karbantartáshoz</p>
+                                                    <p>Mesterséges intelligencia mindenki számára egy kísérletezést és modellkezelést lehetővé tevő, teljes körű, méretezhető és megbízható platformmal</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2948,7 +2947,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Notification Hubs</h3>
-                                                    <p>Több millió üzenet gyors elküldésére képes, méretezhető leküldéses értesítési összetevő</p>
+                                                    <p>Leküldéses értesítések küldése bármely platformra, bármilyen háttérrendszerről</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3030,7 +3029,7 @@ ms.lasthandoff: 01/18/2018
                                         </div>
                                     </div>
                                 </a>
-                            </li>                            
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -3105,7 +3104,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>StorSimple</h3>
-                                                    <p>Fokozott adatbiztonságot nyújtó hibrid felhőalapú tárolási megoldás nagyvállalatok számára</p>
+                                                    <p>Alacsonyabb költségek egy vállalati hibrid felhőalapú tárolási megoldással</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3143,7 +3142,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Data Catalog</h3>
-                                                    <p>Önkiszolgáló adatforrás-felderítés a teljes vállalatban</p>
+                                                    <p>Jobban kihasználhatja a vállalati adategységekben rejlő értékeket</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3224,7 +3223,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Security Center</h3>
-                                                    <p>Fenyegetések megelőzése, észlelése és elhárítása jobb láthatósággal</p>
+                                                    <p>A biztonsági felügyelet egységesítése és fejlett fenyegetésvédelem biztosítása a hibrid felhőalapú számítási feladatokhoz</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3262,7 +3261,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Key Vault</h3>
-                                                    <p>Útmutató a kriptográfiai kulcsok és egyéb titkok kezeléséhez</p>
+                                                    <p>A kulcsok, valamint egyéb titkok biztonságos tárolása és elérésük szabályozása</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3338,7 +3337,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Többtényezős hitelesítés</h3>
-                                                    <p>Az extra hitelesítési szint nagyobb biztonságot kínál adatai és alkalmazásai számára</p>
+                                                    <p>Az adatok és az alkalmazások biztonságának növelése a felhasználók terhelése nélkül</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3500,7 +3499,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Policy</h3>
-                                                    <p>Szabályzatdefiníciók létrehozása, hozzárendelése és kezelése </p>
+                                                    <p>Vállalati irányítás és szabványok nagyobb léptékű megvalósítása az Azure-erőforrásokhoz</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3519,7 +3518,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Cost Management</h3>
-                                                    <p>A felhő használatának és költségeinek nyomon követése</p>
+                                                    <p>A felhővel kapcsolatos költségek optimalizálása és az általa nyújtott lehetőségek maximális kihasználása</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3576,7 +3575,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Log Analytics</h3>
-                                                    <p>Ismerje meg, hogyan alakíthatók át a számítógépadatok operatív adatelemzési információkká</p>
+                                                    <p>Helyszíni és felhőbeli számítógépadatok gyűjtése, keresése és megjelenítése</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3690,7 +3689,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Advisor</h3>
-                                                    <p>Az Azure-erőforrások hatékonyságának, teljesítményének, magas rendelkezésre állásának és biztonságának javítása</p>
+                                                    <p>Az Azure ajánlott eljárásaival foglalkozó, személyre szabott javaslati motor</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3709,7 +3708,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Service Health</h3>
-                                                    <p>Személyre szabott útmutatást és támogatást nyújt, ha problémák merülnek fel az Azure használata közben.</p>
+                                                    <p>Személyre szabott útmutatást és támogatást kaphat, ha problémák merülnek fel az Azure-szolgáltatások használata közben</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3728,7 +3727,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Felügyelt alkalmazások</h3>
-                                                    <p>Telepített megoldások felügyelete az ügyfelei számára</p>
+                                                    <p>A felhőajánlatok kezelésének leegyszerűsítése</p>
                                                 </div>
                                             </div>
                                         </div>
