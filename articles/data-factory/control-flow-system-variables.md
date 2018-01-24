@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2017
+ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 274c003e0697ba08d010c3bf13724461a4b624ee
-ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.openlocfilehash: bdf1754226852145e9bf5597256339549f253071
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Azure Data Factory által támogatott rendszerváltozók
 Ez a cikk ismerteti az Azure Data Factory által támogatott rendszerváltozók. Ezek a változók használhatja kifejezések adat-előállító entitások meghatározásakor. 
@@ -30,20 +30,20 @@ Ez a cikk ismerteti az Azure Data Factory által támogatott rendszerváltozók.
 
 | Változó neve | Leírás |
 | --- | --- |
-| @pipeline(). DataFactory |A Futtatás futószalag adat-előállító nevét belül fut. | 
-| @pipeline(). Adatcsatorna |A folyamat neve |
-| @pipeline(). Futtatásazonosító | Futtassa a megadott folyamat azonosítója | 
-| @pipeline(). TriggerType | Az eseményindító az adatcsatorna (Manuális, a Feladatütemező) definiálásra típusa | 
-| @pipeline(). Eseményindító azonosítója| Az eseményindító, amely hívja meg a folyamat azonosítója |
-| @pipeline(). Eseményindító_neve| Az eseményindító, amely hívja meg a folyamat neve |
-| @pipeline(). TriggerTime| Időpontot, amikor az eseményindító a feldolgozási sor definiálásra. Az indítási idő az a tényleges égetett idő, nem a megadott időpont. Például `13:20:08.0149599Z` helyett adja vissza`13:20:00.00Z` |
+| @pipeline().DataFactory |A Futtatás futószalag adat-előállító nevét belül fut. | 
+| @pipeline().Pipeline |A folyamat neve |
+| @pipeline().RunId | Futtassa a megadott folyamat azonosítója | 
+| @pipeline().TriggerType | Az eseményindító az adatcsatorna (Manuális, a Feladatütemező) definiálásra típusa | 
+| @pipeline().TriggerId| Az eseményindító, amely hívja meg a folyamat azonosítója |
+| @pipeline().TriggerName| Az eseményindító, amely hívja meg a folyamat neve |
+| @pipeline().TriggerTime| Időpontot, amikor az eseményindító a feldolgozási sor definiálásra. Az indítási idő az a tényleges égetett idő, nem a megadott időpont. Például `13:20:08.0149599Z` helyett adja vissza`13:20:00.00Z` |
 
 ## <a name="trigger-scope"></a>Eseményindító hatóköre:
 
 | Változó neve | Leírás |
 | --- | --- |
-| indítás, () .scheduledTime |Idő, amikor az eseményindító meghívni a folyamat futtatása lett ütemezve. Például egy eseményindító, amely akkor következik be, minden 5 perc, a változó alakítanák vissza `2017-06-01T22:20:00Z`, `2017-06-01T22:25:00Z`, `2017-06-01T22:29:00Z` kulcsattribútumokkal.|
-| indítás, () .startTime |Időpontot, amikor az eseményindító **ténylegesen** meghívni a Futtatás futószalag következik be. Például egy eseményindító, amely akkor következik be, minden 5 perc, ez a változó lehet, hogy térjen vissza ehhez hasonló `2017-06-01T22:20:00.4061448Z`, `2017-06-01T22:25:00.7958577Z`, `2017-06-01T22:29:00.9935483Z` kulcsattribútumokkal.|
+| trigger().scheduledTime |Idő, amikor az eseményindító meghívni a folyamat futtatása lett ütemezve. Például egy eseményindító, amely akkor következik be, minden 5 perc, a változó alakítanák vissza `2017-06-01T22:20:00Z`, `2017-06-01T22:25:00Z`, `2017-06-01T22:29:00Z` kulcsattribútumokkal.|
+| trigger().startTime |Időpontot, amikor az eseményindító **ténylegesen** meghívni a Futtatás futószalag következik be. Például egy eseményindító, amely akkor következik be, minden 5 perc, ez a változó lehet, hogy térjen vissza ehhez hasonló `2017-06-01T22:20:00.4061448Z`, `2017-06-01T22:25:00.7958577Z`, `2017-06-01T22:29:00.9935483Z` kulcsattribútumokkal.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ezek a változók használata a kifejezések kapcsolatos információkért lásd: [kifejezés nyelvi & a funkciók](control-flow-expression-language-functions.md). 

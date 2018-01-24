@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2017
+ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 4241aedebd388f24834e573fac7a8a61371e728a
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: e72cdee5b164fcd4944f4f1f95ff22bb5ceba6a4
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="azure-data-factory---samples"></a>Az Azure Data Factory - minták
 > [!NOTE]
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/03/2017
 ## <a name="samples-on-github"></a>Minták a Githubon
 A [GitHub Azure-DataFactory-tárház](https://github.com/azure/azure-datafactory) tartalmaz, amelyek segítenek több mintát gyorsan Azure Data Factory szolgáltatással felkészülési (vagy) módosíthatja a parancsfájlok és saját alkalmazás használatát. A Samples\JSON mappa tartalmazza JSON kódtöredékek szabhatják.
 
-| Minta | Leírás |
+| Sample | Leírás |
 |:--- |:--- |
 | [ADF forgatókönyv](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFWalkthrough) |Ez a minta egy végpontok közötti forgatókönyv Azure Data Factory használatával kapcsolja be adatokat a naplófájlokból insights naplófájlok feldolgozásának biztosít. <br/><br/>Ebben a bemutatóban a Data Factory-folyamathoz minta naplókat, folyamatok gyűjti az adatokat a naplók referenciaadatok a következőképpen színesíti, és átalakítja az adatokat nemrég elindult marketingkampányt hatékonyságát. |
 | [JSON-minták](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSON) |Ez a minta szabhatják JSON példákat. |

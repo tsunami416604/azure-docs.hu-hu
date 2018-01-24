@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/30/2017
 ms.author: saveenr
-ms.openlocfilehash: bba8fff7997340e563c604f571604ee8d06eb719
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: 3686cfffd2c29461213b2866665e59336f037fa0
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL programozástámogatási útmutató
 
@@ -903,7 +903,7 @@ Felhasználó által definiált összesítések bármely összesítési funkció
 
 A felhasználó által definiált összesítő alaposztály definíciója a következőképpen történik:
 
-```c#
+```csharp
     [SqlUserDefinedAggregate]
     public abstract class IAggregate<T1, T2, TResult> : IAggregate
     {
@@ -1061,7 +1061,7 @@ UDO neve általában explicit módon a U-SQL-parancsfájlt az alábbi U-SQL-utas
 * EXTRACT
 * KIMENETI
 * FOLYAMAT
-* CSOPORTOSÍTÁS
+* COMBINE
 * CSÖKKENTÉSE
 
 > [!NOTE]  
@@ -1480,7 +1480,7 @@ OUTPUT @rs0 TO @output_file USING new USQL_Programmability.HTMLOutputter(isHeade
 
 Az objektum példányának létrehozásakor alap parancsfájlban elkerüléséhez vannak, létrehozható egy függvény burkoló a korábbi példában látható módon:
 
-```c#
+```csharp
         // Define the factory classes
         public static class Factory
         {
@@ -1796,7 +1796,7 @@ CROSS APPLY new MyNameSpace.MyApplier (parameter: “value”) AS alias([columns
 
 Vagy a gyári burkoló metódus hívásához:
 
-```c#
+```csharp
     CROSS APPLY MyNameSpace.MyApplier (parameter: “value”) AS alias([columns types]…);
 ```
 
@@ -1871,7 +1871,7 @@ Példa: [`SqlUserDefinedCombiner(Mode=CombinerMode.Left)`]
 
 A fő programozhatóság objektumok a következők:
 
-```c#
+```csharp
     public override IEnumerable<IRow> Combine(IRowset left, IRowset right,
         IUpdatableRow output
 ```

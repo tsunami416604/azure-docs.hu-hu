@@ -1,5 +1,5 @@
 ---
-title: "Azokkal a Mobile Engagement-REST API-k - manuális beállítása"
+title: "Mobile Engagement REST API-k a hitelesítést: manuális beállítása"
 description: "Ismerteti, hogyan lehet manuálisan a Mobile Engagement REST API-k hitelesítés beállítása"
 services: mobile-engagement
 documentationcenter: mobile
@@ -14,89 +14,92 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 3b678acbae225c28223a2ee76e5be2462a529362
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: 0b4a999c6778040e71f862d3a010b6635e84b26e
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/23/2018
 ---
-# <a name="authenticate-with-mobile-engagement-rest-apis---manual-setup"></a>Azokkal a Mobile Engagement-REST API-k - manuális beállítása
-Ebben a dokumentációban egy függelék dokumentációt, amelyik [hitelesítés a Mobile Engagement REST API-k](mobile-engagement-api-authentication.md). Győződjön meg arról, hogy elolvasta, a környezet használatának.
-Egy másik módja a hitelesítés a Mobile Engagement REST API-kat az Azure portál használata az egyszeri telepítőprogramja ismerteti.
+# <a name="authenticate-with-mobile-engagement-rest-apis-manual-setup"></a>Mobile Engagement REST API-k a hitelesítést: manuális beállítása
+Ez a dokumentáció az ad [hitelesítés a Mobile Engagement REST API-k](mobile-engagement-api-authentication.md). Ellenőrizze, hogy elolvasta a cikkben először segítségével értheti meg a környezetben. Azt is bemutatja egy másik módja a egyszeri hitelesítés beállítása a Mobile Engagement REST API-k számára az Azure portál használatával.
 
 > [!NOTE]
-> Az alábbi utasításokat a alapuló [útmutató az Active Directory](../azure-resource-manager/resource-group-create-service-principal-portal.md) és testre szabható a Mobile Engagement API-k hitelesítéshez szükséges. Ezért tekintse meg, ha szeretné tudni, hogy az alábbi lépéseket részletesen.
+> Az alábbi utasításokat a alapuló [Ez az útmutató az Active Directory](../azure-resource-manager/resource-group-create-service-principal-portal.md). Azok a hitelesítésének követelményei a Mobile Engagement API-k testreszabott. Tekintse meg őket, ha szeretné tudni, hogy az alábbi lépéseket részletesen.
 
 1. Az Azure-fiók használatával jelentkezzen be a [Azure-portálon](https://portal.azure.com/).
 2. Válassza ki **Active Directory** a bal oldali ablaktáblán.
 
-     ![az Active Directory kiválasztása][1]
+   ![Select Active Directory][1]
 
-3. A könyvtárban az alkalmazások megtekintéséhez kattintson a **App regisztrációk**.
+3. Válassza ki, ha az alkalmazások a címtárban, **App regisztrációk**.
 
-     ![alkalmazások megtekintése][3]
+   ![alkalmazások megtekintése][3]
 
-4. Kattintson a **új alkalmazás regisztrációja**.
+4. Válassza ki **új alkalmazás regisztrációja**.
 
-     ![Alkalmazás hozzáadása][4]
+   ![Alkalmazás hozzáadása][4]
 
-5. Adja meg az alkalmazás nevét, és hagyja meg az alkalmazás típusú **Web app/API** , majd kattintson a Tovább gombra. Megadhatja, hogy bármilyen típusú URL-címéből **SIGN-ON URL**: nem használhatók ebben a forgatókönyvben, és az URL-címek magukat a rendszer nem érvényesíti.
-6. Ha végzett, az Azure AD-alkalmazáshoz megadott névvel rendelkezik. Ez a **AD\_APP\_neve**, adjon jegyezze fel az azt.
+5. Töltse ki az alkalmazás nevében. Hagyja meg az alkalmazás típusú **Web app/API**, majd válassza ki a **következő** gombra. Megadhatja, hogy bármilyen típusú URL-címéből **SIGN-ON URL**. Nem használhatók ebben a forgatókönyvben, és az URL-címek magukat a rendszer nem érvényesíti.
 
-     ![alkalmazás neve][8]
+   Befejezése után egy Azure Active Directory (Azure AD) alkalmazást, a megadott név. Ez a **AD\_APP\_neve**, ezért mindenképpen jegyezze fel, akkor a.
 
-7. Kattintson az alkalmazás nevére.
-8. Található **Alkalmazásazonosító**, jegyezze fel a azt, hogy az használ az ügyfél-azonosító lehet **ügyfél\_azonosító** az API-hívásokat.
+   ![Alkalmazásnév][8]
 
-     ![alkalmazás konfigurálása][10]
+7. Válassza ki az alkalmazás nevét.
+
+8. Található **Alkalmazásazonosító** és jegyezze fel a azt. A használandó ügyfél-azonosító **ügyfél\_azonosító** az API-hívásokat.
+
+   ![Az alkalmazás-azonosító található][10]
 
 9. Keresés a **kulcsok** szakaszban kattintson a jobb.
 
-     ![alkalmazás konfigurálása][11]
+   ![Kulcsok szakasz][11]
 
-10. Hozzon létre egy új kulcsot, azonnal másolja, és mentse való használatra. Ez soha nem jelenik meg újra.
+10. Hozzon létre egy új kulcsot, és azonnal másolja a azt. Ez nem látható újra.
 
-     ![alkalmazás konfigurálása][12]
+    ![Kulcs adatait a kulcsok panelen][12]
 
     > [!IMPORTANT]
-    > Ezt a kulcsot a, ügyeljen rá, hogy újítsa meg, ha a idő ellenkező esetben az API-hitelesítés nem fog többé működni megadott időtartamot végén lejár. Töröl, és hozza létre újból ezt a kulcsot, ha úgy gondolja, hogy veszélyben van.
+    > Ez a kulcs lejár a megadott időtartam végén. Győződjön meg arról, hogy újítsa meg, ha az idő, ellenkező esetben a API authentication nem többé működni. Ha úgy gondolja, hogy ez a kulcs biztonsága sérült, törlése, és hozza létre újból.
     >
-    >
-11. Kattintson a **végpontok** gomb felső részén a lapjáról, és másolja a **OAUTH 2.0 TOKEN-VÉGPONT**.
+    
+11. Válassza ki a **végpontok** gombra az oldal tetején. Másolja a **OAUTH 2.0 TOKEN-VÉGPONT**.
 
-    ![][14]
+    ![Másolja a végpont][14]
 
-16. A végpont a következő képernyőn a GUID az URL-cím lesz a **TENANT_ID** , jegyezze fel a azt:`https://login.microsoftonline.com/<GUID>/oauth2/token`
-17. Most azt folytatódik az engedélyek beállításához meg ezt az alkalmazást. Ehhez meg kell nyitnia a [Azure-portálon](https://portal.azure.com). 
-18. Kattintson a **erőforráscsoportok** keresse meg a **a Mobile Engagement** erőforráscsoportot.
+16. A végpont a következő formátumban: az URL-címben GUID van a **TENANT_ID**:`https://login.microsoftonline.com/<GUID>/oauth2/token`
 
-    ![][15]
+17. Ezt követően az engedélyek konfigurálnia ezt az alkalmazást. A folyamat indításához lépjen a [Azure-portálon](https://portal.azure.com).
 
-19. Kattintson a **a Mobile Engagement** erőforrás csoportban, és keresse meg a **beállítások** szakasz itt.
+18. Válassza ki **erőforráscsoportok**, majd keresse meg a **MobileEngagement** erőforráscsoportot.
 
-    ![][16]
+    ![MobileEngagement keresése][15]
 
-20. Kattintson a **felhasználók** beállítások szakaszban, majd kattintson a **Hozzáadás** hozzáadni egy felhasználót.
+19. Válassza ki a **MobileEngagement** erőforrás csoportot, és adja **összes beállítás**.
 
-    ![][17]
+    ![Keresse meg a MobileEngagement beállításai][16]
+
+20. Válassza ki **felhasználók** a a **beállítások** szakasz. Adja hozzá a felhasználót, majd válassza ki a **Hozzáadás**.
+
+    ![Felhasználó hozzáadása][17]
 
 21. Kattintson a **Szerepkörválasztás**.
 
-    ![][18]
+    ![Szerepkör kiválasztása][18]
 
-22. Kattintson a **tulajdonos**.
+22. Válassza ki **tulajdonos**.
 
-    ![][19]
+    ![Jelölje ki a szerepkör tulajdonosa][19]
 
-23. Keresse meg az alkalmazás neve **AD\_APP\_neve** be a keresőmezőbe. Nem látják ezt itt alapértelmezés szerint. Miután megtalálta, válassza ki azt, majd kattintson a **válasszon** szakasz alján.
+23. Keresse meg az alkalmazás neve **AD\_APP\_neve**, a keresési mezőbe. Ez a név nincs itt alapértelmezés szerint. Miután megtalálta, válassza ki azt. Kattintson a **válasszon** szakasz alján.
 
-    ![][20]
+    ![Válassza ki a nevét][20]
 
-24. Az a **hozzáférés hozzáadása** területen megjelenik **1 felhasználó, a 0 csoportok**. Kattintson a **OK** az ebben a szakaszban a módosítás megerősítéséhez.
+24. Az a **hozzáférés hozzáadása** területen jelenik meg **1 felhasználó, a 0 csoportok**. A módosítás megerősítéséhez jelölje ki a **OK**.
 
-    ![][21]
+    ![Erősítse meg a hozzáadott felhasználó][21]
 
-Ezennel befejezte a szükséges az Azure Active Directory beállítása, és mindegyikhez hívja az API-kat.
+Ezennel befejezte a kívánt Azure AD konfigurálása és a lehetőségek egyaránt be vannak beállítva az API-k meghívásához.
 
 <!-- Images -->
 [1]: ./media/mobile-engagement-api-authentication-manual/active-directory.png

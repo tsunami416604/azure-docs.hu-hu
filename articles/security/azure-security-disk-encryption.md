@@ -3,9 +3,9 @@ title: "Windows és Linux IaaS virtuális gépeket az Azure Disk Encryption |} M
 description: "Ez a cikk áttekintést nyújt a Microsoft Azure lemez titkosítása a Windows és Linux IaaS virtuális gépeket."
 services: security
 documentationcenter: na
-author: YuriDio
-manager: swadhwa
-editor: TomSh
+author: DevTiw
+manager: avibm
+editor: barclayn
 ms.assetid: d3fac8bb-4829-405e-8701-fa7229fb1725
 ms.service: security
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
-ms.author: kakhan
-ms.openlocfilehash: 0ed575283807137f60eca005262cff27388c140f
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.author: devtiw;ejarvi;mayank88mahajan;vermashi;sudhakarareddyevuri;aravindthoram
+ms.openlocfilehash: d6a19334b369c54ff6bad3404b4cf2ffe3b47c70
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-disk-encryption-for-windows-and-linux-iaas-vms"></a>Windows és Linux IaaS virtuális gépeket az Azure Disk Encryption
 A Microsoft Azure elkötelezett a kifejezetten a adatvédelem, az adatok közös joghatóság alá és a lehetővé teszi, hogy az Azure tárolt adatok végig a vezérlő speciális technológiák titkosításához, szabályozása és titkosítási kulcsok kezeléséhez az adatok vezérlő & naplózási hozzáférést. Ez rugalmasságot biztosít, Azure-ügyfél és válassza ki a saját üzleti igényeinek leginkább megfelelő megoldást. A dokumentum azt kódelemeit egy új technológia megoldás "Azure Disk Encryption for Windows és Linux infrastruktúra-szolgáltatási virtuális gép által" és az adatokat, hogy megfeleljen a szervezeti biztonsági és megfelelőségi kötelezettségvállalások megvédeni segítségével. A dokumentum biztosít részletes útmutatás a lemezt Azure titkosítási szolgáltatásai, beleértve a támogatott forgatókönyveket, és a felhasználói élmény.
@@ -145,7 +145,7 @@ Mielőtt engedélyezte a támogatott forgatókönyveket, a "Overview" szakaszban
 
 | A Linux-Disztribúció | Verzió | Támogatott titkosítási a kötet típusa|
 | --- | --- |--- |
-| Ubuntu | 16.04-NAPI-ES LTS VERZIÓ | Operációs rendszer és az adatok lemezre |
+| Ubuntu | 16.04-DAILY-LTS | Operációs rendszer és az adatok lemezre |
 | Ubuntu | 14.04.5-DAILY-LTS | Operációs rendszer és az adatok lemezre |
 | Ubuntu | 12.10 | Adatlemez |
 | Ubuntu | 12.04 | Adatlemez |
@@ -380,10 +380,10 @@ Ha szeretné megtudni, egyes közös kifejezések ezt a technológiát használj
 | Azure AD | Azure ad [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/). Az Azure AD-fiókot hitelesítéséhez, tárolásának és titkos kulcsok beolvasása a kulcstároló előfeltétele. |
 | Azure Key Vault | Key Vault egy kriptográfiai, kulcs szolgáltatást a Federal Information Processing szabványok FIPS érvényesített hardveres biztonsági modulok, amely segítségével megakadályozhatja a kriptográfiai kulcsokat és a bizalmas titkos alapul. További információkért lásd: [Key Vault](https://azure.microsoft.com/services/key-vault/) dokumentációját. |
 | ARM | Azure Resource Manager |
-| A BitLocker |[A BitLocker](https://technet.microsoft.com/library/hh831713.aspx) egy iparági felismerhető Windows kötet titkosítási technológia, amely lehetővé teszi az adatok titkosítása a Windows IaaS virtuális gépeken, hogy. |
+| BitLocker |[A BitLocker](https://technet.microsoft.com/library/hh831713.aspx) egy iparági felismerhető Windows kötet titkosítási technológia, amely lehetővé teszi az adatok titkosítása a Windows IaaS virtuális gépeken, hogy. |
 | BEK | A BitLocker titkosítási kulcsokat használ az operációs rendszer rendszerindító kötet és az adatkötetek titkosítására. A BitLocker-kulcsok elő a kulcstároló, a titkos kulcsok. |
 | parancssori felület | Lásd: [Azure parancssori felület](../cli-install-nodejs.md). |
-| DM-crypt program segítségével |[DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) a Linux-alapú, átlátszó lemeztitkosítás alrendszer, amely lehetővé teszi az adatok titkosítása a Linux IaaS virtuális gépeken, hogy. |
+| DM-Crypt |[DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) a Linux-alapú, átlátszó lemeztitkosítás alrendszer, amely lehetővé teszi az adatok titkosítása a Linux IaaS virtuális gépeken, hogy. |
 | KEK | Kulcstitkosítás kulcsa az aszimmetrikus kulcs (RSA 2048), melyekkel történő védelmére vagy a titkos kulcs burkolja. Megadhat egy hardveres biztonsági modulok (HSM)-kulcs vagy kulcs szoftveres védelemmel ellátott védett. További részletekért lásd: [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) dokumentációját. |
 | PS parancsmagok | Lásd: [Azure PowerShell-parancsmagok](/powershell/azure/overview). |
 
@@ -393,7 +393,7 @@ Az Azure Disk Encryption segíti biztonságos működés érdekében a lemez-tit
 #### <a name="create-a-key-vault"></a>Kulcstartó létrehozása
 Hozzon létre egy kulcstartót, használja az alábbi lehetőségek közül:
 
-* ["101-kulcs-tároló-" Resource Manager-sablon létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)
+* ["101-Key-Vault-Create" Resource Manager template](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)
 * [Az Azure PowerShell kulcstároló-parancsmagok](/powershell/module/azurerm.keyvault/#key_vault)
 * Azure Resource Manager
 * Hogyan [a kulcstartót biztonságos](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault)
@@ -889,7 +889,7 @@ Figyelheti, hogy az operációs rendszer titkosítási folyamat három módon:
 
 * Jelentkezzen be a virtuális gép SSH-n keresztül, és a bővítmény naplóban az beszerzése:
 
-    /var/log/Azure/Microsoft.Azure.Security.AzureDiskEncryptionForLinux
+    /var/log/azure/Microsoft.Azure.Security.AzureDiskEncryptionForLinux
 
  Azt javasoljuk, hogy nem bejelentkezik a virtuális gép operációs rendszer titkosítás közben. A naplók másolása, csak akkor, ha a két módszer sikertelen.
 

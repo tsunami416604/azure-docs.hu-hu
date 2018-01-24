@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2017
+ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 569e5a3bf8227caf003a9ea9ff897b29d7b0cf19
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 20df17ba01cfc18ce751491d154d7401001e706e
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Helyezze át az adatokat a MongoDB Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -45,7 +45,7 @@ Az Azure Data Factory szolgáltatás kell kapcsolódnia kell a helyszíni MongoD
     > [!NOTE]
     > Az átjáró használatához a MongoDB kapcsolódni, akkor is, ha az Azure IaaS virtuális gépeken fut. kell. Ha próbál csatlakozni a felhőben üzemeltetett MongoDB példánya, az infrastruktúra-szolgáltatási virtuális gép is az átjárópéldány is telepítheti.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 A másolási tevékenység, mely az adatok egy helyszíni MongoDB adattároló különböző eszközök/API-k használatával létrehozhat egy folyamatot.
 
 Hozzon létre egy folyamatot a legegyszerűbb módja használatára a **másolása varázsló**. Lásd: [oktatóanyag: hozzon létre egy folyamatot, másolása varázslóval](data-factory-copy-data-wizard-tutorial.md) létrehozásával egy folyamatot, az adatok másolása varázsló segítségével gyorsan útmutatást.
@@ -70,7 +70,7 @@ A következő táblázat tartalmazza a JSON-elemek szerepelnek jellemző leírá
 | type |A type tulajdonságot kell beállítani: **OnPremisesMongoDb** |Igen |
 | kiszolgáló |Kiszolgáló IP-címét vagy állomásnevét kiszolgálónevét a mongodb-Protokolltámogatással. |Igen |
 | port |A MongoDB-kiszolgálóhoz a kapcsolatok figyelésére használt TCP portot. |Nem kötelező, alapértelmezett érték: 27017 |
-| AuthenticationType |Alapszintű, vagy névtelen. |Igen |
+| authenticationType |Alapszintű, vagy névtelen. |Igen |
 | felhasználónév |Felhasználói fiók MongoDB eléréséhez. |Igen (Ha alapszintű hitelesítést használ). |
 | jelszó |A felhasználó jelszavát. |Igen (Ha alapszintű hitelesítést használ). |
 | authSource |A MongoDB-adatbázist, amely a hitelesítő adatok kereséséhez használni kívánt nevét. |Választható (Ha alapszintű hitelesítést használ). alapértelmezett: a rendszergazdai fiókot és a databaseName tulajdonsággal megadott adatbázis használ. |
@@ -297,12 +297,12 @@ Ha az adatok áthelyezése a MongoDB .NET típusú a következő megfeleltetése
 | MongoDB-típus | .NET-keretrendszer típusa |
 | --- | --- |
 | Bináris |Byte] |
-| Logikai érték |Logikai érték |
-| Dátum |Dátum és idő |
+| Logikai |Logikai |
+| Dátum |DateTime |
 | NumberDouble |Dupla |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
-| Objektumazonosító |Karakterlánc |
+| ObjectID |Karakterlánc |
 | Karakterlánc |Karakterlánc |
 | UUID |GUID |
 | Objektum |Renormalized történő egybesimítására "_" beágyazott elválasztójelként oszlopok |
@@ -325,16 +325,16 @@ Használhatja a [másolása varázsló](data-factory-data-movement-activities.md
 ### <a name="example"></a>Példa
 "ExampleTable" alatt például MongoDB tábla egy objektumokból álló tömb egy oszlopot az egyes cellák – számlákat és a skaláris típusok – minősítések tömbje egy oszlop.
 
-| _id | Ügyfél neve | Számlák | Szolgáltatási szint | Minősítések |
+| _id | Ügyfél neve | Számlák | Szolgáltatásszint | Minősítések |
 | --- | --- | --- | --- | --- |
-| 1111 |ABC |[{invoice_id: "123", cikk: "toaster", az ár: "456" kedvezményes: "0,2"}, {invoice_id: "124" elem: "helyezzük", az ár: "1235" kedvezményes: "0,2"}] |Ezüst |[5,6] |
+| 1111 |ABC |[{invoice_id: "123", cikk: "toaster", az ár: "456" kedvezményes: "0,2"}, {invoice_id: "124" elem: "helyezzük", az ár: "1235" kedvezményes: "0,2"}] |Silver |[5,6] |
 | 2222 |XYZ |[{invoice_id: "135", cikk: "kombinált hűtőszekrények", az ár: "12543" kedvezménnyel: "0,0"}] |Arany |[1,2] |
 
 Az illesztőprogram az egyetlen tábla képviselő virtuális táblákat hoz létre. Az első virtuális táblát kell az alaptábla nevű "ExampleTable" alább látható. Az alaptábla az eredeti tábla összes adatot tartalmaz, de az adatokat a tömbök kimaradt, és a virtuális táblázatokban ki van bontva.
 
-| _id | Ügyfél neve | Szolgáltatási szint |
+| _id | Ügyfél neve | Szolgáltatásszint |
 | --- | --- | --- |
-| 1111 |ABC |Ezüst |
+| 1111 |ABC |Silver |
 | 2222 |XYZ |Arany |
 
 Az alábbi táblázatok bemutatják a virtuális táblákat, amelyek megfelelnek a példában az eredeti tömbök. Ezek a táblázatok tartalmazzák a következő:
@@ -348,7 +348,7 @@ Az alábbi táblázatok bemutatják a virtuális táblákat, amelyek megfelelnek
 | _id | ExampleTable_Invoices_dim1_idx | invoice_id | Elem | price | Kedvezmény |
 | --- | --- | --- | --- | --- | --- |
 | 1111 |0 |123 |a toaster |456 |0.2 |
-| 1111 |1 |124 |Helyezzük |1235 |0.2 |
+| 1111 |1 |124 |oven |1235 |0.2 |
 | 2222 |0 |135 |kombinált hűtőszekrények |12543 |0.0 |
 
 "ExampleTable_Ratings". tábla:
@@ -369,5 +369,5 @@ Ha az adatok másolását a relációs adatokat tárol, ismételhetőség tartsa
 ## <a name="performance-and-tuning"></a>Teljesítmény- és hangolása
 Lásd: [másolási tevékenység teljesítmény- és hangolása útmutató](data-factory-copy-activity-performance.md) tájékozódhat az kulcsfontosságú szerepet játszik adatátvitelt jelölik a (másolási tevékenység során) az Azure Data Factory és különböző módokon optimalizálhatja azt, hogy hatás teljesítményét.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Lásd: [helyezze át az adatokat a helyszíni és a felhő között](data-factory-move-data-between-onprem-and-cloud.md) cikk részletes utasításokat az adatok folyamat létrehozása, amely mozgatja az adatokat kereshet ki egy a helyszíni adatok Azure adattárolóihoz.

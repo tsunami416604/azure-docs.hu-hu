@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/31/2017
+ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 99182b2ed91f6d60f499be0078077bf52fe8b366
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 20f3d4bb876a46b67385dd4435296e149641149e
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Az Azure Data Factory metaadatok tevékenység beolvasása
 A metaadatok beolvasása tevékenység segítségével az Azure Data Factory bármely metaadatát lekérheti. Ez a tevékenység csak 2-es verzióját az adat-előállítók esetén támogatott. A következő esetekben használhatók:
@@ -96,10 +96,10 @@ Jelenleg GetMetadata tevékenység metaadat-információkat a következő típus
 
 Tulajdonság | Leírás | Megengedett értékek | Szükséges
 -------- | ----------- | -------------- | --------
-Mezőlista | Felsorolja a szükséges metaadatok.  | <ul><li>Méret</li><li>struktúra</li><li>Módosítás dátuma</li></ul> |    Nem<br/>Ha üres, a tevékenység minden 3 támogatott metaadat-információkat ad vissza. 
+fieldList | Felsorolja a szükséges metaadatok.  | <ul><li>méret</li><li>struktúra</li><li>Módosítás dátuma</li></ul> |    Nem<br/>Ha üres, a tevékenység minden 3 támogatott metaadat-információkat ad vissza. 
 Adatkészlet | A referencia-adatkészletnek amelynek metaadatok tevékenysége a GetMetadata tevékenység által kérhető. <br/><br/>A dataset jelenleg támogatott típus Azure Blob. Két sub tulajdonságai a következők: <ul><li><b>Hivatkozásnév</b>: egy meglévő Azure Blob-adathalmazra mutató hivatkozás</li><li><b>típus</b>: mivel az adatkészlet hivatkoznak, célszerű, "DatasetReference" típusú</li></ul> |    <ul><li>Karakterlánc</li><li>DatasetReference</li></ul> | Igen
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse meg a többi adat-előállító által támogatott vezérlésfolyam-tevékenységek: 
 
 - [Folyamat végrehajtása tevékenység](control-flow-execute-pipeline-activity.md)

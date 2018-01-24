@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2017
+ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3a94b02ad2296ba1be6a4194dc49c76bc7332e08
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 8ab68fddfd93a92f0f4f5a2904b8e35c409299d1
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-from-a-odata-source-using-azure-data-factory"></a>Helyezi át az adatokat a egy OData-forrásra Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -42,7 +42,7 @@ Alább hitelesítési típusok támogatottak:
 * Hozzáférés **felhő** OData-adatcsatorna, használhatja, hogy a névtelen, alapszintű (felhasználónév és jelszó), vagy az Azure Active Directory-alapú OAuth-hitelesítést.
 * Hozzáférés **helyszíni** OData-adatcsatorna, használja a névtelen, alapszintű (felhasználónév és jelszó), vagy a Windows-hitelesítést.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 A másolási tevékenység, amely helyezi át az adatokat OData forrásból származó különböző eszközök/API-k használatával létrehozhat egy folyamatot.
 
 Hozzon létre egy folyamatot a legegyszerűbb módja használatára a **másolása varázsló**. Lásd: [oktatóanyag: hozzon létre egy folyamatot, másolása varázslóval](data-factory-copy-data-wizard-tutorial.md) létrehozásával egy folyamatot, az adatok másolása varázsló segítségével gyorsan útmutatást.
@@ -65,8 +65,8 @@ A következő táblázat a JSON-elemek szerepelnek kapcsolódó OData-szolgálta
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | type |A type tulajdonságot kell beállítani: **OData** |Igen |
-| URL-címe |Az OData szolgáltatási URL-címét. |Igen |
-| AuthenticationType |Az OData-forrásra való kapcsolódáshoz használt hitelesítés típusa. <br/><br/> A felhőbeli OData a lehetséges értékek: névtelen, alapszintű és OAuth (Megjegyzés: jelenleg csak Azure Data Factory támogatási Azure Active Directory-alapú OAuth). <br/><br/> A helyszíni OData lehetséges értékei a névtelen, alapszintű és a Windows. |Igen |
+| url |Az OData szolgáltatási URL-címét. |Igen |
+| authenticationType |Az OData-forrásra való kapcsolódáshoz használt hitelesítés típusa. <br/><br/> A felhőbeli OData a lehetséges értékek: névtelen, alapszintű és OAuth (Megjegyzés: jelenleg csak Azure Data Factory támogatási Azure Active Directory-alapú OAuth). <br/><br/> A helyszíni OData lehetséges értékei a névtelen, alapszintű és a Windows. |Igen |
 | felhasználónév |Ha egyszerű hitelesítést használ, adja meg a felhasználónevet. |Igen (Ha csak az egyszerű hitelesítés használata esetén) |
 | jelszó |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. |Igen (Ha csak az egyszerű hitelesítés használata esetén) |
 | authorizedCredential |Ha OAuth használ, kattintson a **engedélyezés** gombra a Data Factory másolása varázsló vagy a szerkesztőben, majd adja meg a hitelesítő adatok, akkor ez a tulajdonság értékének lesz automatikusan generált. |Igen (csak ha OAuth-hitelesítés használata esetén) |
@@ -149,7 +149,7 @@ A **typeProperties** szakasz eltérő adatkészlet egyes típusai és informáci
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| Elérési út |Az OData-erőforrás elérési útja |Nem |
+| elérési út |Az OData-erőforrás elérési útja |Nem |
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 Szakaszok & rendelkezésre álló tevékenységek meghatározó tulajdonságok teljes listáját lásd: a [létrehozása folyamatok](data-factory-create-pipelines.md) cikk. Például a nevét, leírását, valamint bemeneti és kimeneti táblák és házirend tulajdonságai minden típusú tevékenységek érhetők el.
@@ -160,7 +160,7 @@ Ha a forrás típusa van **RelationalSource** (amely magában foglalja az OData)
 
 | Tulajdonság | Leírás | Példa | Szükséges |
 | --- | --- | --- | --- |
-| lekérdezés |Az egyéni lekérdezés segítségével adatokat olvasni. |"? $select neve, leírása és $top = = 5" |Nem |
+| lekérdezés |Az egyéni lekérdezés segítségével adatokat olvasni. |"?$select=Name, Description&$top=5" |Nem |
 
 ## <a name="type-mapping-for-odata"></a>Az OData-leképezésének
 Ahogyan az a [adatok mozgása tevékenységek](data-factory-data-movement-activities.md) cikk, a másolási tevékenység az eseményforrás-típusnak a következő kétlépéses módszert típusok gyűjtése automatikus típuskonverziók hajt végre.
@@ -170,22 +170,22 @@ Ahogyan az a [adatok mozgása tevékenységek](data-factory-data-movement-activi
 
 Amikor adatokat OData, a következő megfeleltetéseket szolgálnak az OData-típusok .NET-típusa.
 
-| Az OData-adattípus | .NET-típusa |
+| Az OData-adattípus | .NET Type |
 | --- | --- |
 | Edm.Binary |Byte] |
-| Edm.Boolean |logikai érték |
+| Edm.Boolean |Logikai |
 | Edm.Byte |Byte] |
-| Edm.DateTime |Dátum és idő |
+| Edm.DateTime |DateTime |
 | Edm.Decimal |Decimális |
 | Edm.Double |Dupla |
-| Edm.Single |Egyetlen |
+| Edm.Single |Egyedülálló |
 | Edm.Guid |GUID |
 | Edm.Int16 |Int16 |
 | Edm.Int32 |Int32 |
 | Edm.Int64 |Int64 |
 | Edm.SByte |Int16 |
 | Edm.String |Karakterlánc |
-| Edm.Time |A TimeSpan |
+| Edm.Time |TimeSpan |
 | Edm.DateTimeOffset |DateTimeOffset |
 
 > [!Note]

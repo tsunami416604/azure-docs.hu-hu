@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/23/2016
 ms.author: borooji;mbullwin
-ms.openlocfilehash: 0ed2dbd83b36deacb0f6269dba6f18dc92980fff
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: 3f621010c1c36445ad35d81d96a2e5aefc46b10c
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Szűrés és az Application Insights SDK a telemetriai adatok előfeldolgozása
 
@@ -35,7 +35,7 @@ Előkészületek:
 
 <a name="filtering"></a>
 
-## <a name="filtering-itelemetryprocessor"></a>Szűrés: ITelemetryProcessor
+## <a name="filtering-itelemetryprocessor"></a>Filtering: ITelemetryProcessor
 Ez a módszer lehetővé teszi több közvetlen ellenőrzése alatt tartja a mi van, illetve tiltani szeretné a telemetriai adatok adatfolyamból. A mintavételi, párhuzamosan használható vagy külön-külön.
 
 Telemetriai adatok szűrése, telemetriai processzort írása, és regisztrálja az SDK-val. A processzor végighalad az összes telemetriai adat, és dobja el, az adatfolyamból, vagy vegye fel a Tulajdonságok választhatja. Ez magában foglalja a szabványos modulból, mint a HTTP-kérelem adatgyűjtő és a függőségi adatgyűjtő telemetriai, valamint saját kezűleg írt telemetriai adatokat. Például szűrhetők telemetriai adatainak robots vagy sikeres függőségi hívások esetében érkező kérelmeket.
@@ -122,7 +122,7 @@ Az osztály nyilvános elnevezett tulajdonságok megadásával átadhatók karak
 
 **Másik lehetőségként** tudja inicializálni a kódban a szűrőt. A megfelelő inicializálása az osztály - például a Global.asax.cs AppStart - a processzor beilleszteni a lánc:
 
-```C#
+```csharp
 
     var builder = TelemetryConfiguration.Active.TelemetryProcessorChainBuilder;
     builder.Use((next) => new SuccessfulDependencyFilter(next));
@@ -166,7 +166,7 @@ Botok és a webalkalmazás-tesztek szűrik. Bár a Metrikaböngésző felajánlj
 #### <a name="failed-authentication"></a>Sikertelen hitelesítési
 Szűrheti kérések "401-es" választ.
 
-```C#
+```csharp
 
 public void Process(ITelemetry item)
 {
@@ -224,7 +224,7 @@ Ha megad egy telemetriai inicializáló, azt nevezzük, amikor a Track*() módsz
 
 *C#*
 
-```C#
+```csharp
 
     using System;
     using Microsoft.ApplicationInsights.Channel;
@@ -263,7 +263,7 @@ Ha megad egy telemetriai inicializáló, azt nevezzük, amikor a Track*() módsz
 
 **Az inicializáló betöltése**
 
-Az ApplicationInsights.config:
+In ApplicationInsights.config:
 
     <ApplicationInsights>
       <TelemetryInitializers>
@@ -275,7 +275,7 @@ Az ApplicationInsights.config:
 
 *Másik lehetőségként* az inicializáló a kód, például a Global.aspx.cs osztályból példányosítható:
 
-```C#
+```csharp
     protected void Application_Start()
     {
         // ...
@@ -355,8 +355,8 @@ Mi az a telemetriai adatok processzorok és telemetriai inicializálók között
 * [ASP.NET-hivatkozás](https://msdn.microsoft.com/library/dn817570.aspx)
 
 ## <a name="sdk-code"></a>SDK-kód
-* [Az ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore)
-* [ASP.NET-SDK](https://github.com/Microsoft/ApplicationInsights-dotnet)
+* [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore)
+* [ASP.NET SDK](https://github.com/Microsoft/ApplicationInsights-dotnet)
 * [JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)
 
 ## <a name="next"></a>Következő lépések

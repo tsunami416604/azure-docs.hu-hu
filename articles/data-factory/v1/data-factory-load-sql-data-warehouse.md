@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2017
+ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8398a261ca33060b7709d818cb64bb1e8e2058b1
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 3350645d4f173a6d0d007ff9095bb3115600a13b
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>1 TB-os betöltése az Azure SQL Data Warehouse Data Factory a 15 perc
 > [!NOTE]
@@ -214,6 +214,6 @@ Az alábbiakban néhány gyakorlati tanácsok az Azure SQL Data Warehouse-adatb�
 
 Lásd: [ajánlott eljárások az Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-best-practices.md) részleteiről.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Data Factory másolása varázsló](data-factory-copy-wizard.md) – Ez a cikk ismerteti a varázsló.
 * [Másolja a tevékenység teljesítmény- és hangolási útmutató](data-factory-copy-activity-performance.md) -Ez a cikk hivatkozás TELJESÍTMÉNYMÉRÉSEK és hangolási útmutató tartalmazza.

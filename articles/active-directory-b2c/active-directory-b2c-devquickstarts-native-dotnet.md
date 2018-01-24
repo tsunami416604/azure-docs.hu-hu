@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: seohack1
-ms.openlocfilehash: 9c0fb2c1d90f4c4ef50e658e9baca91795581eae
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 5d4664e87ca0a45d59d976f6415fce858bc51dcd
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-ad-b2c-build-a-windows-desktop-app"></a>Az Azure AD B2C: A Windows asztali alkalmazás elkészítésére.
 Azure Active Directory (Azure AD) B2C használatával az asztali alkalmazást a néhány néhány lépés elvégzésével hatékony önkiszolgáló identitáskezelési funkciókat adhat hozzá. Ez a cikk bemutatja, hogyan hozzon létre egy .NET Windows megjelenítési alaprendszer (WPF) "Feladatlista" alkalmazást, amely tartalmazza a felhasználói regisztráció, bejelentkezés és profilok kezelése. Az alkalmazás támogatni fogja előfizetési, és jelentkezzen be egy felhasználónevet vagy e-mailek használatával. Azt is támogatni fogja előfizetési, és jelentkezzen be például a Facebookhoz és a Google közösségi fiókokkal.
@@ -72,7 +72,7 @@ PM> Install-Package Microsoft.Identity.Client -IncludePrerelease
 ### <a name="enter-your-b2c-details"></a>Adja meg a B2C-re vonatkozó információkat
 Nyissa meg a fájlt `Globals.cs` , és cserélje le a tulajdonság értékek mindegyike saját. Ez az osztály a teljes használható `TaskClient` való hivatkozás általánosan használt értékeit.
 
-```C#
+```csharp
 public static class Globals
 {
     ...
@@ -93,7 +93,7 @@ public static class Globals
 ### <a name="create-the-publicclientapplication"></a>A PublicClientApplication létrehozása
 Az elsődleges osztály az MSAL `PublicClientApplication`. Ez az osztály az alkalmazás az Azure AD B2C rendszerben jelenti. Ha az alkalmazás initalizes példányt létrehozni `PublicClientApplication` a `MainWindow.xaml.cs`. Ez az ablak teljes is használható.
 
-```C#
+```csharp
 protected async override void OnInitialized(EventArgs e)
 {
     base.OnInitialized(e);
@@ -111,7 +111,7 @@ protected async override void OnInitialized(EventArgs e)
 ### <a name="initiate-a-sign-up-flow"></a>A regisztrációs folyamat kezdeményezéséhez
 A felhasználó jelentkezik be alkalmazásának kiválasztásával, ha el szeretné indítani a regisztrációs folyamat, amely a regisztrációs szabályzatban létrehozott használja. MSAL használatával egyszerűen meghívja a `pca.AcquireTokenAsync(...)`. A paraméterek átadása akkor `AcquireTokenAsync(...)` határozza meg, melyik jogkivonatot kap, a hitelesítési kérelmet, és több használandó házirendet.
 
-```C#
+```csharp
 private async void SignUp(object sender, RoutedEventArgs e)
 {
     AuthenticationResult result = null;
@@ -162,7 +162,7 @@ private async void SignUp(object sender, RoutedEventArgs e)
 ### <a name="initiate-a-sign-in-flow"></a>A bejelentkezési folyamat kezdeményezéséhez
 A bejelentkezési folyamat is kezdeményezhető azonos módon, hogy a regisztrációs folyamat elindítása. Amikor egy felhasználó bejelentkezik, a hívást azonos MSAL, hogy a bejelentkezési házirend használatával most:
 
-```C#
+```csharp
 private async void SignIn(object sender = null, RoutedEventArgs args = null)
 {
     AuthenticationResult result = null;
@@ -177,7 +177,7 @@ private async void SignIn(object sender = null, RoutedEventArgs args = null)
 ### <a name="initiate-an-edit-profile-flow"></a>Egy profil szerkesztése folyamat kezdeményezéséhez
 Ebben az esetben azonos módon egy profil szerkesztése házirend hajthat végre:
 
-```C#
+```csharp
 private async void EditProfile(object sender, RoutedEventArgs e)
 {
     AuthenticationResult result = null;
@@ -193,7 +193,7 @@ A fenti esetek mindegyikét olyan, MSAL vagy ad vissza egy jogkivonatot a `Authe
 ### <a name="check-for-tokens-on-app-start"></a>Ellenőrizze a jogkivonatok az alkalmazás indítása
 MSAL segítségével is nyomon követheti, a felhasználói bejelentkezési állapotot.  Az alkalmazáshoz, az azt szeretnénk, a felhasználó a bejelentkezés után is zárja be az alkalmazást, és nyissa meg újra.  Vissza belül a `OnInitialized` bírálja felül, MSAL által használható `AcquireTokenSilent` az ellenőrzési módszert gyorsítótárazott jogkivonatokat:
 
-```C#
+```csharp
 AuthenticationResult result = null;
 try
 {
@@ -232,7 +232,7 @@ catch (MsalException ex)
 ## <a name="call-the-task-api"></a>A feladat API hívása
 MSAL most segítségével hajtható végre a házirendek és a jogkivonatok megkapásához.  A feladat API hívása ezeket a jogkivonatokat egy használni kívánt, újra használhatja MSAL tartozó `AcquireTokenSilent` az ellenőrzési módszert gyorsítótárazott jogkivonatokat:
 
-```C#
+```csharp
 private async void GetTodoList()
 {
     AuthenticationResult result = null;
@@ -277,7 +277,7 @@ private async void GetTodoList()
 
 Amikor hívása `AcquireTokenSilentAsync(...)` sikeres és egy jogkivonat található a gyorsítótárban, adhat hozzá a jogkivonatot a `Authorization` a HTTP-kérelem fejlécében. A feladat webes API-t fogja használni ezt a fejlécet hitelesíteni a kérelmet a felhasználók feladatlistáit olvasható:
 
-```C#
+```csharp
     ...
     // Once the token has been returned by MSAL, add it to the http authorization header, before making the call to access the To Do list service.
     httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.Token);
@@ -290,7 +290,7 @@ Amikor hívása `AcquireTokenSilentAsync(...)` sikeres és egy jogkivonat talál
 ## <a name="sign-the-user-out"></a>A felhasználó kijelentkezik
 Végezetül segítségével MSAL és az alkalmazás a felhasználói munkamenet befejezése, ha a felhasználó **Kijelentkezés**.  MSAL használatakor mindez törlésének hatására az összes, a jogkivonatok token a gyorsítótárból:
 
-```C#
+```csharp
 private void SignOut(object sender, RoutedEventArgs e)
 {
     // Clear any remnants of the user's session.

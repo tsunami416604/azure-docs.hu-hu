@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2017
+ms.date: 01/10/2018
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: f490aeef07b142b6a28319581b01c6cfc00054ba
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: be0bdf771327e57a75a4f95b513f9e80aeaef5a4
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server tárolt eljárási tevékenység
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -35,7 +35,7 @@ ms.lasthandoff: 11/03/2017
 > * [.NET egyéni tevékenység](data-factory-use-custom-activities.md)
 
 > [!NOTE]
-> Ez a cikk vonatkozik 1 a Azure Data Factory, amelyek általánosan elérhető (GA). Lásd a 2-es verziójának a Data Factory szolgáltatásnak, amely jelenleg előzetes verzióban érhető, használatakor [tárolt eljárási tevékenység adat-előállítóban 2-es verzióját használó adatok](../transform-data-using-stored-procedure.md).
+> Ez a cikk az Azure Data Factory általánosan elérhető 1. verziójára vonatkozik. Lásd a 2-es verziójának a Data Factory szolgáltatásnak, amely jelenleg előzetes verzióban érhető, használatakor [tárolt eljárási tevékenység adat-előállítóban 2-es verzióját használó adatok](../transform-data-using-stored-procedure.md).
 
 ## <a name="overview"></a>Áttekintés
 Adatok átalakítása tevékenységek használata egy adat-előállítóban [csővezeték](data-factory-create-pipelines.md) átalakító és előrejelzéseket és elemzések nyers adatok feldolgozása. A tárolt eljárási tevékenység, amely támogatja a Data Factory átalakítása tevékenységek egyike. Ez a cikk épít, a [adatok átalakítása tevékenységek](data-factory-data-transformation-activities.md) cikk, amelynek során az adatok átalakítása és a Data Factory támogatott átalakítása tevékenységek általános áttekintést.
@@ -93,10 +93,10 @@ A következő forgatókönyv egy folyamaton belül a tárolt eljárási tevéken
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Kattintson a **új** a bal oldali menüben kattintson **Eszközintelligencia + analitika**, és kattintson a **adat-előállító**.
 
-    ![Új adat-előállító](media/data-factory-stored-proc-activity/new-data-factory.png)    
+    ![Új data factory](media/data-factory-stored-proc-activity/new-data-factory.png)    
 3. Az a **új adat-előállító** panelen adjon meg **SProcDF** nevét. Az Azure Data Factory neve **globálisan egyedi**. A névvel, a gyári sikeres létrehozásának engedélyezése a data factory neve előtag van szüksége.
 
-   ![Új adat-előállító](media/data-factory-stored-proc-activity/new-data-factory-blade.png)         
+   ![Új data factory](media/data-factory-stored-proc-activity/new-data-factory-blade.png)         
 4. Válassza ki a **Azure-előfizetés**.
 5. A **erőforráscsoport**, hajtsa végre a következő lépésekből áll:
    1. Kattintson a **hozzon létre új** , és adja meg az erőforráscsoport nevét.
@@ -114,7 +114,7 @@ Miután létrehozta a data factory, létrehozhat egy Azure SQL társított szolg
 1. Kattintson a **Szerző és központi telepítése** a a **Data Factory** paneljén **SProcDF** a Data Factory Editor elindításához.
 2. Kattintson a **az új adattároló** a parancs megnyitásához, és válassza a **Azure SQL Database**. A JSON-parancsfájl létrehozásához Azure SQL társított szolgáltatásnak a szerkesztővel kell megjelennie.
 
-   ![Új adattár](media/data-factory-stored-proc-activity/new-data-store.png)
+   ![Új adattároló](media/data-factory-stored-proc-activity/new-data-store.png)
 3. A JSON-parancsfájl a következő módosításokat:
 
    1. Cserélje le `<servername>` nevű, az Azure SQL Database-kiszolgálóhoz.
@@ -122,7 +122,7 @@ Miután létrehozta a data factory, létrehozhat egy Azure SQL társított szolg
    3. Cserélje le `<username@servername>` a felhasználói fiókkal, amely hozzáféréssel rendelkezik az adatbázishoz.
    4. Cserélje le `<password>` a felhasználói fiók jelszavával.
 
-      ![Új adattár](media/data-factory-stored-proc-activity/azure-sql-linked-service.png)
+      ![Új adattároló](media/data-factory-stored-proc-activity/azure-sql-linked-service.png)
 4. A társított szolgáltatás telepítéséhez kattintson **telepítés** a parancssávon. Győződjön meg arról, hogy megjelenik-e a bal oldali fanézetben AzureSqlLinkedService.
 
     ![fanézet, a társított szolgáltatás](media/data-factory-stored-proc-activity/tree-view.png)

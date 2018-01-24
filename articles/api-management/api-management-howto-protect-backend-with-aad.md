@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: 32adec024b2ee2649f2631cfa72ee575094aa0c0
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 603a22059dcf07c68f4c6576ea1df97d810eacf3
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="how-to-protect-a-web-api-backend-with-azure-active-directory-and-api-management"></a>Hogyan védi meg a webes API háttéralkalmazás az Azure Active Directory és az API Management
 A következő videó bemutatja, hogyan egy webes API háttéralkalmazás létrehozásához, és a védelmét, és Azure Active Directory és az API Management OAuth 2.0 protokoll használatával.  Ez a cikk áttekintése és további információt a videó lépéseit tartalmazza. A 24 perces videó bemutatja, hogyan számára:
@@ -81,13 +81,13 @@ Ebben a példában a webes API és a vezérlő alapvető Számológép szolgált
 
 Adja hozzá a következő `using` nyilatkozat tetején a `CalcInput.cs` fájlt.
 
-```c#
+```csharp
 using Newtonsoft.Json;
 ```
 
 Cserélje le a következő kódot a létrehozott osztály.
 
-```c#
+```csharp
 public class CalcInput
 {
     [JsonProperty(PropertyName = "a")]
@@ -104,7 +104,7 @@ Kattintson a jobb gombbal **tartományvezérlők** a **Megoldáskezelőben** vá
 
 Adja hozzá a következő `using` nyilatkozat tetején a `CalcController.cs` fájlt.
 
-```c#
+```csharp
 using System.IO;
 using System.Web;
 using APIMAADDemo.Models;
@@ -112,7 +112,7 @@ using APIMAADDemo.Models;
 
 Cserélje le a következő kódot a létrehozott vezérlőosztály. Ez a kód valósítja meg a `Add`, `Subtract`, `Multiply`, és `Divide` alapvető Számológép API műveletek.
 
-```c#
+```csharp
 [Authorize]
 public class CalcController : ApiController
 {
@@ -436,7 +436,7 @@ A beolvasandó a **ügyfél-azonosító**, keresse meg a **konfigurálása** lap
 
 A beolvasandó a **Ügyfélkulcs** kattintson a **időtartam válassza** a legördülő a **kulcsok** szakaszt, és adjon meg egy időközt. Ebben a példában 1 év szolgál.
 
-![Ügyfélazonosító][api-management-aad-client-id]
+![Ügyfél-azonosító][api-management-aad-client-id]
 
 Kattintson a **mentése** a konfiguráció mentéséhez, és a kulcs megjelenítéséhez. 
 
@@ -510,7 +510,7 @@ Az utolsó eljárás videóban 20:48 kezdődik, és bemutatja, hogyan használha
 
 Egy másik bemutató konfigurálása, és ez a házirend használatával, lásd: [felhő fedik le a epizód 177: több API-felügyeleti funkciókat](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) és előretekerés 13:50. Gyors továbbítsa 15:00, a házirendek a Helyicsoportházirend-szerkesztő konfigurált megjelenítéséhez, majd a művelet hívása a developer portálról, és a szükséges engedélyezési jogkivonat anélkül bemutatója 18:50.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Tekintse meg több [videók](https://azure.microsoft.com/documentation/videos/index/?services=api-management) API-kezeléssel kapcsolatos.
 * Egyéb módjai a háttérszolgáltatás biztonságos, lásd: [kölcsönös tanúsítványhitelesítés](api-management-howto-mutual-certificates.md).
 

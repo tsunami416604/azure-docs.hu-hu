@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: eb07deab834f63b48b7441f32521c48b27e549ca
-ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.openlocfilehash: 0f42d971fcf21d0f719468a8c10ff637f2e523f9
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="encrypt-credentials-for-on-premises-data-stores-in-azure-data-factory"></a>A helyszíni adattárolókhoz az Azure Data Factory a hitelesítő adatok titkosításához
 Titkosításához, és a helyszíni adattárolókhoz (bizalmas információkat tartalmazó összekapcsolt szolgáltatások) a virtuális gép önálló üzemeltetett integrációs futásidejű tartozó hitelesítő adatok tárolására. 
@@ -51,7 +51,7 @@ Cserélje le `<servername>`, `<databasename>`, `<username>`, és `<password>` a 
 }
 ```
 
-## <a name="encrypt-credentials"></a>Hitelesítő adatok titkosításához
+## <a name="encrypt-credentials"></a>Hitelesítő adatok titkosítása
 A JSON-adattartalmat egy helyszíni önálló üzemeltetett integrációs Runtime a bizalmas adatok titkosítására, futtassa **New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential**, és a JSON-adattartalmat továbbítására. Ez a parancsmag biztosítja a azonosító adatok titkosítása a DPAPI-t használ, és a csomóponton önálló üzemeltetett integrációs futásidejű helyileg tárolja. A kimeneti forgalma átirányíthatók egy másik JSON-fájl (ebben az esetben "encryptedLinkedService.json"), amely tartalmazza a titkosított hitelesítő adatokat.
 
 ```powershell
@@ -65,6 +65,6 @@ Mostantól az előző parancs, a titkosított hitelesítő adatokat tartalmazó 
 Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "EncryptedSqlServerLinkedService" -DefinitionFile ".\encryptedSqlServerLinkedService.json" 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Biztonsági szempontok az adatmozgás kapcsolatos információkért lásd: [adatok mozgása biztonsági szempontok](data-movement-security-considerations.md).
 

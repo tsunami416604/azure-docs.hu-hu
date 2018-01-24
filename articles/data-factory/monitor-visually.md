@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2017
+ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: 76070b5a9944b4cbb47ad337ba9a4e6171bf12a3
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 97a8fa1779cd11830781528527ddfe998e0548b6
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="visually-monitor-azure-data-factories"></a>Vizuálisan figyelése az Azure adat-előállítók
 Az Azure Data Factory egy felhőalapú adatintegrációs szolgáltatás. Lehetővé teszi olyan, a felhőben futó, adatvezérelt munkafolyamatok létrehozását, amelyek alkalmasak az adatok átvitelének és átalakításának irányítására és automatizálására. Az Azure Data Factory segítségével létrehozhatók és ütemezhetők a különböző adattárolókból adatokat beolvasó adatvezérelt munkafolyamatok, feldolgozhatók és átalakíthatók az adatok különböző számítási szolgáltatások használatával (pl. Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics és Azure Machine Learning), és a kimeneti adatok közzétehetők olyan adattárakban, mint például az Azure SQL Data Warehouse, ahonnan az üzleti intelligenciára épülő (BI-) alkalmazások felhasználhatják őket.
@@ -51,15 +51,15 @@ A data factory v2 folyamatok futtatása minden folyamatkezelési területeknek l
 | Hiba | Feldolgozási sor hiba (ha/any) futtatása |
 | Futtatási azonosító | Futtassa a folyamat azonosítója |
 
-![A figyelő folyamat fut](media/monitor-visually/pipeline-runs.png)
+![Folyamatfuttatások monitorozása](media/monitor-visually/pipeline-runs.png)
 
 #### <a name="monitoring-activity-runs"></a>Figyelési tevékenység fut
 A listanézet területeknek minden folyamatkezelési futtatásához megfelelő tevékenységet futtatja. Kattintson a **tevékenység fut** ikon alapján a **"Műveletek"** oszlopban megtekintheti a tevékenység futtatása minden folyamatkezelési futtatásához. Felvett oszlopok:
 
 | **Oszlop neve** | **Leírás** |
 | --- | --- |
-| Tevékenységnév | A tevékenység belül a folyamat nevét. |
-| Tevékenységtípus | A tevékenység típusa például a másolás, HDInsightSpark, HDInsightHive stb. |
+| Műveletnév | A tevékenység belül a folyamat nevét. |
+| Művelettípus | A tevékenység típusa például a másolás, HDInsightSpark, HDInsightHive stb. |
 | Futtassa a Start | Futtatása tevékenység kezdési időpontja (hh/nn/éééé, óó: pp: mm AM/PM) |
 | Időtartam | Futtassa a időtartama (ÓÓ: pp:) |
 | status | Nem sikerült, sikeres volt, a folyamatban lévő |
@@ -67,7 +67,7 @@ A listanézet területeknek minden folyamatkezelési futtatásához megfelelő t
 | Kimenet | A tevékenység kimeneteiből leíró JSON-tömb |
 | Hiba | Hiba (ha/any) futtatása tevékenységhez |
 
-![A figyelő tevékenység fut](media/monitor-visually/activity-runs.png)
+![Tevékenységfuttatások monitorozása](media/monitor-visually/activity-runs.png)
 
 > [!IMPORTANT]
 > Ha még **"Frissítés"** felül a feldolgozási sorban lévő és a tevékenység futtatása listájának frissítése ikonra. Automatikus frissítés jelenleg nem támogatott.
@@ -112,6 +112,6 @@ Kattintson az "Visszajelzés" ikonra, küldjön visszajelzést a különféle sz
 
 ![Visszajelzés](media/monitor-visually/feedback.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Lásd: [figyelő programozott folyamatok kezelését és](https://docs.microsoft.com/azure/data-factory/monitor-programmatically) cikkben tájékozódhat az figyelése és folyamatok kezelése

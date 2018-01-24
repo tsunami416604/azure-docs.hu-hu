@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2017
+ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: dbe2f7cb1d843c5e4ec7bc00a7e7dc5a49b31896
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 7a9023253b87d97d874dbcf1ade97bf32e1f0639
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Az Azure Data Factory ismételhető másolása
 
@@ -148,7 +148,7 @@ Az Azure Data Factory tölti fel. Ez az oszlop szerint annak érdekében, hogy a
 
 Hasonló mechanizmus 1, másolási tevékenység során automatikusan törli a szükségtelenné érkező SQL táblázat megadott szeletre vonatkozó adatokat. Majd adatok beszúrása a forráskiszolgálóról a céltábla. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse át a következő összekötő, amely annak teljes JSON-példák: 
 
 - [Azure SQL Database](data-factory-azure-sql-connector.md)

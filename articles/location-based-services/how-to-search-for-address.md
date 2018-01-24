@@ -8,19 +8,19 @@ ms.author: philmea
 ms.date: 11/29/2017
 ms.topic: article
 ms.service: location-based-services
-ms.openlocfilehash: 31011dfddaa99881b58ee447502d55acad5ec940
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: cacaaab869d3a7752b5a750f01bbfbdaf79814f7
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="how-to-find-an-address-using-the-azure-location-based-services-preview-search-service"></a>Hol találhatók az Azure-alapú helyszolgáltatás (előzetes verzió) keresési szolgáltatás segítségével
 A keresési szolgáltatás egy egy RESTful API-k, címek, a helyek, a pontokat iránt érdeklődik, üzleti listák és egyéb földrajzi információk keresése fejlesztők számára készült. A keresési szolgáltatás a szélesség/hosszúsági egy adott cím, alhálózatok közötti utca, földrajzi funkció vagy információs jel (POI) rendeli. A keresési szolgáltatás API-k által visszaadott szélességi és hosszúsági értékeket más Azure-alapú helyszolgáltatás például az útvonal és a forgalom áramlását API-k paramétereiben használható.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Telepítse a [Postman app](https://www.getpostman.com/apps).
+* Telepítse a [Postman app](https://www.getpostman.com/apps).
 
-Egy Azure-alapú helyszolgáltatás fiókja és -előfizetése kulcsot. Fiók létrehozása és egy előfizetés kulcs beolvasása kapcsolatos tudnivalókat lásd: [kezelése az Azure-alapú helyszolgáltatás fiókja és -kulcsok](how-to-manage-account-keys.md). 
+* Rendelkezik egy Azure-alapú helyszolgáltatás fiókot és kulcsot. Fiók létrehozása és egy kulcs lekérése kapcsolatos tudnivalókat lásd: [kezelése az Azure-alapú helyszolgáltatás fiókja és -kulcsok](how-to-manage-account-keys.md). 
 
 ## <a name="using-fuzzy-search"></a>Intelligens egyeztetésű keresési
 
@@ -41,7 +41,7 @@ A legtöbb keresési lekérdezések alapértelmezés szerint a "maxFuzzyLevel = 
     | Paraméter | Ajánlott érték |
     |---------------|------------------------------------------------|
     | HTTP-metódus | GET |
-    | Lekérdezés URL-címe | https://Atlas.microsoft.com/search/fuzzy/JSON? |
+    | Lekérdezés URL-címe | https://atlas.microsoft.com/search/fuzzy/json? |
     | Engedélyezés | Nincs hitelesítés |
 
     A **json** URL-címet attribútum meghatározza, hogy a válasz formátumát. Ez a cikk teljes json és olvashatóság érdekében használja. Megtalálhatja a rendelkezésre álló válasz formátumok a **keresési intelligens beolvasása** a [hely alapú szolgáltatások funkcionális API-referencia] definíciója (https://docs.microsoft.com/rest/api/location-based-services/search/getsearchfuzzy).
@@ -53,7 +53,7 @@ A legtöbb keresési lekérdezések alapértelmezés szerint a "maxFuzzyLevel = 
     | Kulcs | Érték |
     |------------------|-------------------------|
     | API-verzió | 1.0 |
-    | Előfizetés-kulcs | *Előfizetés kulcs* |
+    | Előfizetés-kulcs | \<az Azure-alapú helyszolgáltatás kulcs\> |
     | lekérdezés | pizzaszósz |
 
 4. Kattintson a **küldése** és tekintse át az adott válasz törzse. 
@@ -93,7 +93,7 @@ Egy teljes vagy részleges utca, házszám átadása a keresési cím API-t, és
     | Paraméter | Ajánlott érték |
     |---------------|------------------------------------------------|
     | HTTP-metódus | GET |
-    | Lekérdezés URL-címe | https://Atlas.microsoft.com/search/Address/JSON? |
+    | Lekérdezés URL-címe | https://atlas.microsoft.com/search/address/json? |
     | Engedélyezés | Nincs hitelesítés |
 
 2. Kattintson a **paraméterei**, és írja be a következő kulcs-érték párok lekérdezés vagy az elérési út paraméter, a kérelem URL-címében használni:
@@ -103,7 +103,7 @@ Egy teljes vagy részleges utca, házszám átadása a keresési cím API-t, és
     | Kulcs | Érték |
     |------------------|-------------------------|
     | API-verzió | 1.0 |
-    | Előfizetés-kulcs | *Előfizetés kulcs* |
+    | Előfizetés-kulcs | \<az Azure-alapú helyszolgáltatás kulcs\> |
     | lekérdezés | 400 széles St, Seattle, WA 98109 |
     
 3. Kattintson a **küldése** és tekintse át az adott válasz törzse. 
@@ -133,7 +133,7 @@ Egy teljes vagy részleges utca, házszám átadása a keresési cím API-t, és
     | Paraméter | Ajánlott érték |
     |---------------|------------------------------------------------|
     | HTTP-metódus | GET |
-    | Lekérdezés URL-címe | https://Atlas.microsoft.com/search/Address/Reverse/JSON? |
+    | Lekérdezés URL-címe | https://atlas.microsoft.com/search/address/reverse/json? |
     | Engedélyezés | Nincs hitelesítés |
     
 2. Kattintson a **paraméterei**, és írja be a következő kulcs-érték párok lekérdezés vagy az elérési út paraméter, a kérelem URL-címében használni:
@@ -143,7 +143,7 @@ Egy teljes vagy részleges utca, házszám átadása a keresési cím API-t, és
     | Kulcs | Érték |
     |------------------|-------------------------|
     | API-verzió | 1.0 |
-    | Előfizetés-kulcs | *Előfizetés kulcs* |
+    | Előfizetés-kulcs | \<az Azure-alapú helyszolgáltatás kulcs\> |
     | lekérdezés | 47.59093,-122.33263 |
     
 3. Kattintson a **küldése** és tekintse át az adott válasz törzse. 
@@ -201,7 +201,7 @@ Egy teljes vagy részleges utca, házszám átadása a keresési cím API-t, és
     | Paraméter | Ajánlott érték |
     |---------------|------------------------------------------------|
     | HTTP-metódus | GET |
-    | Lekérdezés URL-címe | https://Atlas.microsoft.com/search/Address/Reverse/crossstreet/JSON? |
+    | Lekérdezés URL-címe | https://atlas.microsoft.com/search/address/reverse/crossstreet/json? |
     | Engedélyezés | Nincs hitelesítés |
     
 3. Kattintson a **paraméterei**, és írja be a következő kulcs-érték párok lekérdezés vagy az elérési út paraméter, a kérelem URL-címében használni:
@@ -209,7 +209,7 @@ Egy teljes vagy részleges utca, házszám átadása a keresési cím API-t, és
     | Kulcs | Érték |
     |------------------|-------------------------|
     | API-verzió | 1.0 |
-    | Előfizetés-kulcs | *Előfizetés kulcs* |
+    | Előfizetés-kulcs | \<az Azure-alapú helyszolgáltatás kulcs\> |
     | lekérdezés | 47.59093,-122.33263 |
     
 4. Kattintson a **küldése** és tekintse át az adott válasz törzse. 

@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: robb
-ms.openlocfilehash: b03265b52886b30e4b9de0b0293e5dadd6d2413a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ae99085a37162a883d18976181be198a2f21a60c
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Hibaelhárítás az Azure Diagnostics
 Ez a cikk ismerteti az Azure Diagnostics használatára vonatkozó hibaelhárítási információ. Az Azure diagnostics kapcsolatos további információkért lásd: [Azure Diagnostics áttekintése](azure-diagnostics.md).
@@ -36,25 +36,25 @@ Az alábbiakban néhány fontos naplókat és az összetevőinek elérési útvo
 ### <a name="azure-cloud-services"></a>Azure Cloud Services
 | Összetevő | Útvonal |
 | --- | --- |
-| **Az Azure Diagnostics konfigurációs fájl** | %SYSTEMDRIVE%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<verzió > \Config.txt |
-| **Naplófájlok** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<verzió > \ |
-| **Diagnosztikai adatok helyi tárolóból.** | C:\Resources\Directory\<CloudServiceDeploymentID >.\< RoleName >. DiagnosticStore\WAD0107\Tables |
-| **Figyelési ügynök konfigurációs fájl** | C:\Resources\Directory\<CloudServiceDeploymentID >.\< RoleName >. DiagnosticStore\WAD0107\Configuration\MaConfig.xml |
-| **Az Azure Diagnostics-kiterjesztési csomag** | %SYSTEMDRIVE%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<verzió > |
-| **Naplófájl elérési útvonala segédprogram** | %SYSTEMDRIVE%\Packages\GuestAgent\ |
-| **MonAgentHost naplófájl** | C:\Resources\Directory\<CloudServiceDeploymentID >.\< RoleName >. DiagnosticStore\WAD0107\Configuration\MonAgentHost. < seq_num > .log |
+| **Az Azure Diagnostics konfigurációs fájl** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\Config.txt |
+| **Naplófájlok** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\ |
+| **Diagnosztikai adatok helyi tárolóból.** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Tables |
+| **Figyelési ügynök konfigurációs fájl** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Configuration\MaConfig.xml |
+| **Az Azure Diagnostics-kiterjesztési csomag** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version> |
+| **Naplófájl elérési útvonala segédprogram** | %SystemDrive%\Packages\GuestAgent\ |
+| **MonAgentHost naplófájl** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Configuration\MonAgentHost.<seq_num>.log |
 
 ### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
 | Összetevő | Útvonal |
 | --- | --- |
-| **Az Azure Diagnostics konfigurációs fájl** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<verzió > \RuntimeSettings |
-| **Naplófájlok** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<verzió > \Logs\ |
-| **Diagnosztikai adatok helyi tárolóból.** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion > \WAD0107\Tables |
-| **Figyelési ügynök konfigurációs fájl** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion > \WAD0107\Configuration\MaConfig.xml |
-| **Állapotfájl** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<verzió > \Status |
-| **Az Azure Diagnostics-kiterjesztési csomag** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion >|
+| **Az Azure Diagnostics konfigurációs fájl** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<version>\RuntimeSettings |
+| **Naplófájlok** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<version>\Logs\ |
+| **Diagnosztikai adatok helyi tárolóból.** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Tables |
+| **Figyelési ügynök konfigurációs fájl** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MaConfig.xml |
+| **Állapotfájl** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<version>\Status |
+| **Az Azure Diagnostics-kiterjesztési csomag** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>|
 | **Naplófájl elérési útvonala segédprogram** | C:\WindowsAzure\Packages |
-| **MonAgentHost naplófájl** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion > \WAD0107\Configuration\MonAgentHost. < seq_num > .log |
+| **MonAgentHost naplófájl** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MonAgentHost.<seq_num>.log |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>Metrika adatok nem jelennek meg az Azure-portálon
 Az Azure Diagnostics adja meg az Azure-portálon megjelenő metrika adatait. Ha jogosultak a portálon, akkor ellenőrizze a WADMetrics\* az Azure diagnosztikai tárfiók, hogy a megfelelő metrika rekordok hiba-tábla. 
@@ -69,13 +69,13 @@ Ha az adott metrika nincsenek adatok, **diagnosztikai konfigurációja** > **Per
 - \ASP.NET alkalmazások (__teljes__) \Requests/Sec
 - \ASP.NET alkalmazások (__teljes__) \Errors száma/s
 - A várólistára \ASP.NET\Requests
-- Elutasított \ASP.NET\Requests
+- \ASP.NET\Requests Rejected
 - \Processor(w3wp)\% processzoridő
-- \Process (w3wp) \Private bájt
+- \Process(w3wp)\Private Bytes
 - \Process(WaIISHost)\% processzoridő
-- \Process (WaIISHost) \Private bájt
-- \Process(WaWorkerHost)\% processzoridő
-- \Process (WaWorkerHost) \Private bájt
+- \Process(WaIISHost)\Private Bytes
+- \Process(WaWorkerHost)\% Processor Time
+- \Process(WaWorkerHost)\Private Bytes
 - \Memory\Page hiba/mp
 - \.NET CLR-memória (_globális_)\% töltött idő
 - \LogicalDisk (C:) \Disk írt bájt/mp
@@ -154,7 +154,7 @@ Gondolat lépjen kapcsolatba az ügyfélszolgálattal, elsőként azokat fel, ak
 ## <a name="diagnostics-data-tables-not-found"></a>Diagnosztikai adatok táblák nem található
 A táblák ETW-események vonatkozik, amelyek az Azure storage megnevezett az alábbi kód használatával:
 
-```C#
+```csharp
         if (String.IsNullOrEmpty(eventDestination)) {
             if (e == "DefaultEvents")
                 tableName = "WADDefault" + MD5(provider);

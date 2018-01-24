@@ -16,13 +16,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: ashishth
-ms.openlocfilehash: 2175a009f084b07c10ca3a32d43c2df216cd3c2f
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 083150fe5f8787ba791d3d692db73c5156f11e55
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/24/2018
 ---
-# <a name="use-the-hbase-net-sdk"></a>A HBase .NET SDK-val
+# <a name="use-the-hbase-net-sdk"></a>A HBase .NET SDK használata
 
 [A HBase](apache-hbase-overview.md) az adatok két elsődleges lehetőségeket: [Hive a lekérdezéseket, és a HBase a RESTful API](apache-hbase-tutorial-get-started-linux.md). Dolgozhat közvetlenül a REST API használatával a `curl` parancs vagy egy hasonló segédprogramot.
 
@@ -38,7 +38,7 @@ A HBase .NET SDK NuGet csomag, amely a Visual Studio telepíthető biztosított 
 
 Az SDK használatához hozható létre egy új `HBaseClient` objektum benyújtása `ClusterCredentials` álló a `Uri` a fürtöt, és a Hadoop-felhasználónevet és a jelszavát.
 
-```c#
+```csharp
 var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdinsight.net"), "USERNAME", "PASSWORD");
 client = new HBaseClient(credentials);
 ```
@@ -53,7 +53,7 @@ Az adatokat fizikailag tárolja *HFiles*. Egyetlen HFile egy tábla, egy régió
 
 Új tábla létrehozása, adjon meg egy `TableSchema` és oszlopokat. Az alábbi kód ellenőrzi, hogy a tábla már létezik "RestSDKTable" – Ha nem, a tábla jöjjön létre.
 
-```c#
+```csharp
 if (!client.ListTablesAsync().Result.name.Contains("RestSDKTable"))
 {
     // Create the table
@@ -71,7 +71,7 @@ Az új tábla két oszlopcsaláddal, a t1 és t2 rendelkezik. Mivel oszlopcsalá
 
 Tábla törlése:
 
-```c#
+```csharp
 await client.DeleteTableAsync("RestSDKTable");
 ```
 
@@ -79,7 +79,7 @@ await client.DeleteTableAsync("RestSDKTable");
 
 Adatok beszúrása, meg kell adnia egy egyedi sorkulcsa a sorazonosítóként. Minden adat egy `byte[]` tömb. Az alábbi kód határozza meg, és hozzáadja a `title`, `director`, és `release_date` ezeket az oszlopokat, a t1 oszlop termékcsalád oszlopok a leggyakrabban használt. A `description` és `tagline` oszlopa lett felvéve a t2 oszlop termékcsalád az. Az adatok a oszlopcsaláddal igény szerint is partícióazonosító.
 
-```c#
+```csharp
 var key = "fifth_element";
 var row = new CellSet.Row { key = Encoding.UTF8.GetBytes(key) };
 var value = new Cell
@@ -127,7 +127,7 @@ A HBase BigTable, valósítja meg, így az adatok formátum a következőképpen
 
 Adatokat olvasni egy HBase tábla, adja át a tábla nevét és a sor kulcsot a `GetCellsAsync` metódus vissza a `CellSet`.
 
-```c#
+```csharp
 var key = "fifth_element";
 
 var cells = await client.GetCellsAsync("RestSDKTable", key);
@@ -141,7 +141,7 @@ Console.WriteLine(Encoding.UTF8.GetString(cells.rows[0].values
 
 Ebben az esetben a kódot adja vissza csak az első egyező sor, mivel csak akkor kell egy egyedi kulcsot egy sort. A visszaadott érték megváltozik a `string` a formázza a `byte[]` tömb. Az érték is átalakítása más típusú, például egy egész számot a movie kiadás dátuma:
 
-```c#
+```csharp
 var releaseDateField = cells.rows[0].values
     .Find(c => Encoding.UTF8.GetString(c.column) == "t1:release_date");
 int releaseDate = 0;
@@ -158,7 +158,7 @@ Console.WriteLine(releaseDate);
 
 A HBase használ `scan` egy vagy több sort beolvasni. Ebben a példában több sort 10 kötegekben kéri, és olvassa ki az adatokat, amelyek legfontosabb értékei 25 és 35. Beolvasása összes sorát, után törölje a képolvasó erőforrások karbantartása.
 
-```c#
+```csharp
 var tableName = "mytablename";
 
 // Assume the table has integer keys and we want data between keys 25 and 35

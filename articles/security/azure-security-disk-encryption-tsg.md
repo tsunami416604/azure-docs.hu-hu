@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: devtiw
-ms.openlocfilehash: 618e5e6d159a8f0d4610d6d652c21e121a93a5e0
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: c252bc6aee79ad009684f9d3e62c42529c024109
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Az Azure Disk Encryption hibaelhárítási útmutató
 
@@ -30,7 +30,7 @@ Linux operációs rendszer lemeztitkosítás az operációs rendszer meghajtó k
 
 Ez a hiba akkor fordulhat elő, amikor az operációs rendszer lemeztitkosítás kísérletet egy virtuális gép célkörnyezet módosított vagy a támogatott készlet gyűjtemény kép változása a. Eltérések a támogatott lemezképből is zavarják a bővítmény leválasztása az operációs rendszer meghajtó közé a következők:
 - Testreszabott lemezképeket már nem felel meg egy támogatott fájlrendszeren vagy particionálási sémát.
-- Például SAP, MongoDB vagy Apache Cassandra nagy alkalmazások telepítve és futnak a titkosítási előtt az operációs rendszer. A bővítmény nem megfelelően le, ezeket az alkalmazásokat. Az alkalmazások karbantartása nyitott fájlok leíró az operációs rendszer, ha a meghajtó nem, hibát okozó nem lehet.
+- Nagy alkalmazások, például SAP, a MongoDB, az Apache Cassandra és a Docker nem támogatottak, ha azok telepítve és futnak a titkosítási előtt az operációs rendszer.  Az Azure Disk Encryption nem tudja biztonságosan állítsa le ezeket a folyamatokat a operációsrendszer-meghajtó előkészítése a lemez titkosítása által megkövetelt módon.  Ha vannak még mindig aktív megnyitott fájlleíró rendelkezik az operációs rendszer meghajtójához való csatlakoztatásra folyamatok, az operációs rendszer meghajtó nem csatlakoztatott, ami azt eredményezi, az operációs rendszer meghajtójának titkosításához hibát nem lehet. 
 - Egyéni parancsfájlok futtatásához Bezárás idő közelében, a titkosítás engedélyezése, vagy ha más módosul a virtuális Gépen a titkosítási folyamat során. Ez akkor fordulhat elő, ha az Azure Resource Manager-sablonok meghatározása végrehajtása egyidejűleg több kiterjesztést, vagy ha egy egyéni parancsprogramok futtatására szolgáló bővítmény vagy másik művelet fut egyidejűleg a lemez titkosítása. Szerializálása és lépéseket azoknak a előfordulhat, hogy a probléma megoldásához.
 - Ahhoz, hogy a titkosítás, így a leválasztási lépés sikertelen biztonsági fokozott Linux (SELinux) nem lett letiltva. SELinux titkosítási befejezése után is újra kell engedélyezve.
 - Az operációsrendszer-lemezképet egy logikai kötet Manager (LVM) sémát használja. Bár a korlátozott LVM adatok támogatása nem érhető el, egy LVM operációsrendszer-lemez nincs.
@@ -116,7 +116,11 @@ DISKPART> list vol
   Volume 1                      NTFS   Partition    550 MB  Healthy    System
   Volume 2     D   Temporary S  NTFS   Partition     13 GB  Healthy    Pagefile
 ```
-## <a name="next-steps"></a>Következő lépések
+## <a name="troubleshooting-encryption-status"></a>Hibaelhárítási titkosítási állapotát
+
+Ha a várt titkosítási állapot nem egyezik meg a portálon értéket, tekintse át a következő támogatási cikk: [titkosítási állapotát nem megfelelően jelenik meg az Azure felügyeleti portálon](https://support.microsoft.com/en-us/help/4058377/encryption-status-is-displayed-incorrectly-on-the-azure-management-por)
+
+## <a name="next-steps"></a>További lépések
 
 Ebből a dokumentumból megismerte további információk az Azure Disk Encryption és a problémák hibaelhárítása olyan gyakori problémákat. Ez a szolgáltatás és platformképességei kapcsolatos további információkért tekintse meg a következő cikkeket:
 

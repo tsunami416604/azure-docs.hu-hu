@@ -14,8 +14,8 @@ ms.tgt_pltfrm:
 ms.workload: identity
 ms.date: 12/19/2017
 ms.author: skwan
-ms.openlocfilehash: 914d09a73026356c836a6eb468818cc43664ec2e
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 07610b178bde6de9eb8d890edc060458fc3b07ac
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/23/2018
@@ -63,7 +63,7 @@ Tekintse meg a felügyelt Szolgáltatásidentitás oktatóanyag megtudhatja vég
 |                    | [A Linux virtuális gép felügyelt Szolgáltatásidentitás és az Azure Key Vault nem Azure AD erőforrás eléréséhez](msi-tutorial-linux-vm-access-nonaad.md) |
 | Azure App Service  | [Az Azure App Service vagy az Azure Functions felügyelt identitás használatára](/azure/app-service/app-service-managed-service-identity) |
 | Azure Function     | [Az Azure App Service vagy az Azure Functions felügyelt identitás használatára](/azure/app-service/app-service-managed-service-identity) |
-| Azure Service Bus  | [Felhasználói Szolgáltatásidentitást az Azure Service Bus által felügyelt](../service-bus-messaging/service-bus-managed-service-identity.md) |
+| Azure Service Bus  | [Az Azure Service Bus felügyelt identitás használatára](../service-bus-messaging/service-bus-managed-service-identity.md) |
 
 ## <a name="which-azure-services-support-managed-service-identity"></a>Mely Azure-szolgáltatások által felügyelt szolgáltatás identitás támogatásának?
 

@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2017
+ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1f774bb881c66ceeb9f3223b735b3f34462b6a8d
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 2bec612b1d67eceb0e62b28524b98e852d31ad0f
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Másolja a tevékenység teljesítmény- és hangolási útmutató
 > [!NOTE]
@@ -205,8 +205,8 @@ Konfigurálja a **enableStaging** a másolási tevékenység beállítást adja 
 | Tulajdonság | Leírás | Alapértelmezett érték | Szükséges |
 | --- | --- | --- | --- |
 | **enableStaging** |Adja meg, hogy átmeneti tárolási ideiglenes adatot másolni. |False (Hamis) |Nem |
-| **linkedServiceName** |Adja meg egy [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) vagy [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) társított szolgáltatás, amely az ideiglenes átmeneti tárolóként történő használó tárolási példányát. <br/><br/> Adatok betöltése az SQL Data Warehouse polybase a tároló és a közös hozzáférésű jogosultságkód nem használható. Más esetekben használható. |N/A |Igen, mikor **enableStaging** igaz értékre van beállítva |
-| **elérési út** |Adja meg a Blob. tárolási elérési útja, amelyet szeretne az előkészített adatok. Ha nem ad meg egy elérési utat, a szolgáltatás tárolót hoz létre ideiglenes adatok tárolására. <br/><br/> Adjon meg egy elérési utat, csak akkor, ha a közös hozzáférésű jogosultságkód tárhelyet használ, vagy ideiglenes az adatokat egy adott helyen van szüksége. |N/A |Nem |
+| **linkedServiceName** |Adja meg egy [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) vagy [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) társított szolgáltatás, amely az ideiglenes átmeneti tárolóként történő használó tárolási példányát. <br/><br/> Adatok betöltése az SQL Data Warehouse polybase a tároló és a közös hozzáférésű jogosultságkód nem használható. Más esetekben használható. |– |Igen, mikor **enableStaging** igaz értékre van beállítva |
+| **path** |Adja meg a Blob. tárolási elérési útja, amelyet szeretne az előkészített adatok. Ha nem ad meg egy elérési utat, a szolgáltatás tárolót hoz létre ideiglenes adatok tárolására. <br/><br/> Adjon meg egy elérési utat, csak akkor, ha a közös hozzáférésű jogosultságkód tárhelyet használ, vagy ideiglenes az adatokat egy adott helyen van szüksége. |– |Nem |
 | **enableCompression** |Meghatározza, hogy adatokat tömörített-e, mielőtt azt a cél felé. Ez a beállítás az átvitt adatok mennyiségét csökkenti. |False (Hamis) |Nem |
 
 Íme egy minta definíciója másolási tevékenység az az előző táblázatban leírt tulajdonságokkal:
@@ -260,8 +260,8 @@ Javasoljuk, hogy szánjon a Data Factory szolgáltatásnak a másolási tevéken
      * [Előkészített másolása](#staged-copy)
      * [Adatok adatkezelési átjáró méretezhetőség](data-factory-data-management-gateway-high-availability-scalability.md)
    * [Adatkezelési átjáró](#considerations-for-data-management-gateway)
-   * [Forrás](#considerations-for-the-source)
-   * [A fogadó](#considerations-for-the-sink)
+   * [Source](#considerations-for-the-source)
+   * [Sink](#considerations-for-the-sink)
    * [Szerializálás és a deszerializálás](#considerations-for-serialization-and-deserialization)
    * [Tömörítés](#considerations-for-compression)
    * [Oszlop leképezése](#considerations-for-column-mapping)
@@ -410,7 +410,7 @@ Ebben az esetben bzip2 adattömörítés előfordulhat, hogy lehet lassítja a t
 
 ![3. forgatókönyv](./media/data-factory-copy-activity-performance/scenario-3.png)
 
-## <a name="reference"></a>Referencia
+## <a name="reference"></a>Leírások
 Az alábbiakban a teljesítmény figyelése és hivatkozások beállítása a támogatott adatokat tároló egy részénél:
 
 * Az Azure Storage (beleértve a Blob storage és a Table storage): [Azure Storage méretezhetőségi célok](../../storage/common/storage-scalability-targets.md) és [Azure Storage teljesítményére és méretezhetőségére ellenőrzőlista](../../storage/common/storage-performance-checklist.md)

@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 01/10/2018
 ms.author: jingwang
-ms.openlocfilehash: 5ef8b81b2aa4df802f67b1a9e90b6bd60dcd1168
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 14f654979f004186e81b2f18578ced3c9aab3815
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Adatok másolása az és ODBC adattárolókhoz Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -56,7 +56,7 @@ ODBC kapcsolódó szolgáltatás támogatott a következő tulajdonságokkal:
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **Odbc** | Igen |
 | connectionString | A kapcsolati karakterlánc credential rész. A kapcsolati karakterlánc megadhatja például a mintával `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`, vagy használja a rendszer DSN (adatforrás neve), a integrációs futásidejű gépen beállította `"DSN=<name of the DSN on IR machine>;"` (kell továbbra is megadhatja a hitelesítő adatok részében hivatkozott szolgáltatásban található ennek megfelelően).| Igen |
-| AuthenticationType | Az ODBC-adattár eléréséhez használt hitelesítés típusa.<br/>Két érték engedélyezett: **alapvető** és **névtelen**. | Igen |
+| authenticationType | Az ODBC-adattár eléréséhez használt hitelesítés típusa.<br/>Két érték engedélyezett: **alapvető** és **névtelen**. | Igen |
 | Felhasználónév | Ha egyszerű hitelesítést használ, adja meg a felhasználónevet. | Nem |
 | jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Ez a mező megjelölése a SecureString. | Nem |
 | hitelesítő adatok | A hozzáférési hitelesítő adatok része illesztőprogram-specifikus tulajdonság-érték formátumban megadott kapcsolódási karakterlánc. Példa: `"RefreshToken=<secret refresh token>;"`. Ez a mező megjelölése a SecureString. | Nem |
@@ -197,7 +197,7 @@ Adatok másolása az ODBC-kompatibilis adattár, állítsa be a fogadó típusa 
 |:--- |:--- |:--- |
 | type | A másolási tevékenység fogadó type tulajdonsága értékre kell állítani: **OdbcSink** | Igen |
 | writeBatchTimeout |Várakozási idő a kötegelt beszúrási művelet befejezését, mielőtt azt az időkorlátot.<br/>Két érték engedélyezett: timespan. Példa: "00: 30:00" (30 perc). |Nem |
-| WriteBatchSize |Szúr be az SQL-tábla adatokat, amikor a puffer mérete eléri writeBatchSize.<br/>Két érték engedélyezett: egész szám (sorok száma). |Nem (alapértelmezett érték a 0 – automatikus észlelt) |
+| writeBatchSize |Szúr be az SQL-tábla adatokat, amikor a puffer mérete eléri writeBatchSize.<br/>Két érték engedélyezett: egész szám (sorok száma). |Nem (alapértelmezett érték a 0 – automatikus észlelt) |
 | preCopyScript |Adja meg a másolási tevékenység végrehajtása előtt minden egyes futtatásához adattárba adatok írása az SQL-lekérdezést. Ez a tulajdonság segítségével törölje az előre betöltött adatokat. |Nem |
 
 > [!NOTE]

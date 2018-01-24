@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: f124748434be1b8f0c4704fe6ffba70414c47916
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 963e5cfd929f57b34dcb045df82b64f870e897e2
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="import-data-into-analytics"></a>Adatok importálása elemzés
 
@@ -196,7 +196,7 @@ Ezt a kódot használja a [Newtonsoft.Json](https://www.nuget.org/packages/Newto
 
 ### <a name="classes"></a>Osztályok
 
-```C#
+```csharp
 namespace IngestionClient 
 { 
     using System; 
@@ -355,7 +355,7 @@ namespace IngestionClient
 
 Ez a kód használható minden egyes blob. 
 
-```C#
+```csharp
    AnalyticsDataSourceClient client = new AnalyticsDataSourceClient(); 
 
    var ingestionRequest = new AnalyticsDataSourceIngestionRequest("iKey", "sourceId", "blobUrlWithSas"); 
@@ -363,7 +363,7 @@ Ez a kód használható minden egyes blob.
    bool success = await client.RequestBlobIngestion(ingestionRequest);
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A Log Analytics lekérdezési nyelv bemutatása](app-insights-analytics-tour.md)
 * Ha Logstash használata esetén a [Logstash beépülő modul szeretnék adatokat küldeni a Application insights szolgáltatással](https://github.com/Microsoft/logstash-output-application-insights)

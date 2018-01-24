@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro;seohack1
-ms.openlocfilehash: a5b4056f3198e998fa7fb127fd2c4bcda90e4bbb
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 526286c7f6b62d165af43487ca63fe9055623d0c
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Az önkiszolgáló jelszóváltoztatás az Azure AD funkciók testre szabása
 
@@ -74,31 +74,7 @@ A képek, úgy dönt, a következő körülmények között láthatók:
     * Úgy, hogy a *whr* paraméter a jelszót alaphelyzetbe állítani a lap, például a "https://login.microsoftonline.com/?whr=contoso.com"
     * Úgy, hogy a *felhasználónév* paramétert a jelszó alaphelyzetbe állítása lap, például "https://login.microsoftonline.com/?username=admin@contoso.com"
 
-### <a name="graphics-details"></a>Grafikus részletek
-
-A következő beállítások segítségével módosíthatja a bejelentkezési oldal visual jellemzőit. Ugrás a **Azure Active Directory** > **vállalati arculat** > **Szerkesztés vállalati arculat megjelenítése**:
-
-* A bejelentkezési oldal lemezképet egy .png vagy .jpg formátumú fájlnak kell lennie 1420 x 1200 képpont, és nem lehet nagyobb 500 KB-nál. A legjobb eredmények elérése érdekében javasoljuk, hogy folyamatosan körülbelül 200 KB.
-* A bejelentkezési oldal háttérszíne használatakor a nagy késleltetésű kapcsolat, és hexadecimális formátumú RGB kell lennie.
-* A szalagcím lemezképet egy .png vagy .jpg fájlt, 60 x 280 képpont legyen, és lehet nagyobb, mint 10 KB.
-* A négyszögletű embléma (normál és a sötét téma) .png vagy .jpg formátumú fájlnak, 240 x 240 (méretezhető) képpont, és nem lehet 10 KB-nál nagyobb kell lennie.
-
-### <a name="sign-in-text-options"></a>Bejelentkezési beállítások
-
-A következő beállítások segítségével szöveg hozzáadása a bejelentkezési oldal, amely a szervezet számára fontos. Ugrás a **Azure Active Directory** > **vállalati arculat** > **Szerkesztés vállalati arculat megjelenítése**:
-
-* **Felhasználói név mutató**: Példa szövegét a felváltja  *someone@example.com*  lépésnél a felhasználók jobban megfelelő. Azt javasoljuk, hogy hagyja az alapértelmezett mutatót, amikor belső és külső felhasználók támogatására.
-* **Bejelentkezési oldal szövege**: legfeljebb 256 karakter hosszúságú lehet. Ez a szöveg tetszőleges helyre a felhasználói bejelentkezés online és az Azure AD munkahelyi csatlakoztatás élményt nyújt a Windows 10 jelenik meg. Használja a következő szöveget a feltételek használatát, a utasításokat és a felhasználók számára. 
-
-   >[!IMPORTANT]
-   >Bárki, aki láthatja a bejelentkezési oldal, így bizalmas információk itt nem ad meg.
-   >
-
-### <a name="the-keep-me-signed-in-disabled-setting"></a>A "Me bejelentkezve megtartása letiltva" beállítás
-
-Az a **bejelentkezve szeretnék maradni tiltva** lehetőségnél felhasználók maradjanak az aláírt zárja be és nyissa meg a böngészőablakban. Ez a beállítás nincs hatással a munkamenetek élettartamát. Ugrás a **Azure Active Directory** > **vállalati arculat** > **Szerkesztés vállalati arculat megjelenítése**.
-
-Office 2010 és SharePoint Online néhány funkciójának jelölje be a jelölőnégyzetet, hogy a felhasználók egy függőségi rendelkezik. Ha elrejti ezt a beállítást, a felhasználók további és váratlan bejelentkezési kérések kérheti le.
+Vállalati arculat megjelenítése a cikkben konfigurálásával kapcsolatos részletes keresését [vállalati arculat megjelenítése a bejelentkezési oldalra, hogy az Azure AD](customize-branding.md).
 
 ### <a name="directory-name"></a>Címtár neve
 

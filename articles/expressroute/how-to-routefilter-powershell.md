@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: ganesr
-ms.openlocfilehash: c940d2eab4d8e977b67b3553ab2e3d9110710956
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 9d953ea68e1e14ae12aa401af935d207f0747e8c
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="configure-route-filters-for-microsoft-peering-powershell"></a>Be annak a Microsoft társviszony-létesítéshez: PowerShell
 > [!div class="op_single_selector"]
@@ -30,7 +30,9 @@ ms.lasthandoff: 12/21/2017
 
 Útvonal-szűrőket, amelyek egy felhasználhatják a Microsoft társviszony-létesítés keresztül támogatott szolgáltatások egy részhalmaza. A cikkben ismertetett segítségével konfigurálhatja, és az ExpressRoute-Kapcsolatcsoportok útvonal szűrők kezeléséhez.
 
-Dynamics 365 szolgáltatások, és a vállalati Exchange Online, SharePoint Online és Skype például Office 365-szolgáltatásokhoz és az Azure-szolgáltatásokkal például a tárolási és SQL-adatbázis a Microsoft társviszony-létesítés keresztül érhetők el. Ha Microsoft társviszony-létesítést az ExpressRoute-kapcsolatcsoportot van konfigurálva, hogy ezekre a szolgáltatásokra vonatkozó összes előtagot van-e hirdetve a BGP-munkamenetek létesített keresztül. BGP közösségi érték a szolgáltatás az előtag keresztül felajánlott azonosításához minden előtag van csatolva. A BGP logikai értékeket és a szolgáltatások leképezik a listája, [BGP Közösségek](expressroute-routing.md#bgp).
+Dynamics 365 szolgáltatások és az Office 365-szolgáltatásokhoz például az Exchange Online, SharePoint Online és Skype és az Azure nyilvános-szolgáltatásokat, például a tárolási és SQL-adatbázis a Microsoft társviszony-létesítés keresztül érhetők el. Az Azure nyilvános szolgáltatások kijelölhetők / régió alapján, és nyilvános szolgáltatás esetében nem lehet meghatározni. 
+
+Ha ExpressRoute-kapcsolatcsoportot a Microsoft társviszony-létesítés van konfigurálva, és egy útvonal szűrő csatlakoztatva van, ezeket a szolgáltatásokat a kijelölt összes előtagok van-e hirdetve a BGP-munkamenetek létesített keresztül. BGP közösségi érték a szolgáltatás az előtag keresztül felajánlott azonosításához minden előtag van csatolva. A BGP logikai értékeket és a szolgáltatások leképezik a listája, [BGP Közösségek](expressroute-routing.md#bgp).
 
 Minden szolgáltatásokhoz való kapcsolódás van szüksége, ha nagyszámú előtagok van-e hirdetve BGP keresztül. Ez jelentősen növeli a hálózaton belül útválasztók által fenntartott útvonaltáblák méretét. Ha azt tervezi, csak a Microsoft társviszony-létesítés kínált szolgáltatások egy részhalmaza felhasználását, csökkentheti az útvonaltáblák kétféleképpen méretét. A következőket teheti:
 
@@ -152,6 +154,7 @@ Set-AzureRmRouteFilter -RouteFilter $routefilter
 A következő parancsot a útvonal szűrő csatlakoztatni az ExpressRoute-kapcsolatcsoport, feltéve, hogy csak a Microsoft társviszony-létesítés rendelkezik:
 
 ```powershell
+$ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 $ckt.Peerings[0].RouteFilter = $routefilter 
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```

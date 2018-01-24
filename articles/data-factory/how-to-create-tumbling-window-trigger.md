@@ -1,5 +1,5 @@
 ---
-title: "Átfedésmentes ablak eseményindítók létrehozása az Azure Data Factory |} Microsoft Docs"
+title: "Az Azure Data Factory átfedésmentes ablak eseményindítók létrehozása |} Microsoft Docs"
 description: "Megtudhatja, hogyan lehet indítót létrehozni az Azure Data Factoryben, amely egy folyamat fut egy átfedésmentes ablak."
 services: data-factory
 documentationcenter: 
@@ -13,21 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: shlo
-ms.openlocfilehash: a3b056ae4bb4eda26fec58ca3b6bed7f0744e36e
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: 1f026683ebc9b3d2bc935cd78aa9d16684e7db40
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/24/2018
 ---
-# <a name="how-to-create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Egy folyamat futó átfedésmentes ablak eseményindító létrehozása
+# <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Hozzon létre egy eseményindítót, amely egy folyamat fut egy átfedésmentes ablak
 Ez a cikk lépéseit létrehozása, indítsa el, és figyelheti a átfedésmentes ablak eseményindítót. Eseményindítók és a támogatott típusok kapcsolatos általános információkért lásd: [csővezeték-végrehajtási és eseményindítók](concepts-pipeline-execution-triggers.md).
 
 > [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. Ha a Data Factory szolgáltatás általánosan elérhető 1. verzióját használja, lásd a [Data Factory 1. verzió használatának első lépéseit](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+> Ez a cikk az Azure Data Factory 2-es verziójú, amely jelenleg előzetes verzióban érhetők vonatkozik. Ha szeretne megtudni az Azure Data Factory 1-es verziójú, amely általánosan elérhető (GA), lásd: [Ismerkedés az Azure Data Factory 1-es verziójú](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
-Átfedésmentes ablak eseményindítók olyan eseményindító, amely a megadott kezdési időponttal, állapot, megtartja a rendszeres időközönként következik be. Átfedésmentes windows rendszer rögzített méretű, nem átfedő és összefüggő időközök sorozata. Átfedésmentes ablak eseményindító 1:1 kapcsolatban áll egy folyamatot, és csak egy szinguláris folyamat hivatkozhat.
+Az átfedésmentes ablakos eseményindítók olyan eseményindítók, amelyek rendszeres időközönként aktiválódnak a megadott kezdési időponttól kezdve, az állapot megőrzése mellett. Átfedésmentes windows rendszer rögzített méretű, nem átfedő és összefüggő időközök sorozata. Átfedésmentes ablak eseményindító egy folyamatot egy az egyhez típusú kapcsolattal rendelkezik, és csak egy szinguláris folyamat hivatkozhat.
 
 ## <a name="tumbling-window-trigger-type-properties"></a>Átfedésmentes ablak indítási típus tulajdonságokat.
+Egy átfedésmentes ablak a következő indítási típus tulajdonságokkal rendelkeznek:
+
 ```  
 {
     "name": "MyTriggerName",
@@ -68,24 +70,25 @@ Ez a cikk lépéseit létrehozása, indítsa el, és figyelheti a átfedésmente
 }
 ```  
 
-A következő táblázat a fő elemet átfedésmentes ablak eseményindító ütemezését és az ismétlődési kapcsolódnak magas szintű áttekintést nyújt.
+A következő táblázat a fő JSON-elemek szerepelnek, amelyek kapcsolódnak ismétlődési és ütemezési átfedésmentes ablak eseményindító magas szintű áttekintést nyújt:
 
-| **JSON-név** | **Leírás** | **Megengedett értékek** | **Szükséges** |
-|:--- |:--- |:--- |:--- |
-| **típusa** | Az eseményindító-típusa. A rögzített "TumblingWindowTrigger." | Karakterlánc | Igen |
-| **runtimeState** | <readOnly>A lehetséges értékek: Indítása, leállítása, le van tiltva | Karakterlánc | Igen, csak olvasható |
-| **gyakoriság** |A *gyakoriság* karakterlánc, amely a gyakoriság egység az eseményindító ismét előfordul. Támogatott értékei a "legújabb" és "óra." A kezdési időpont részekből dátum, amelyek részletesebben, mint a gyakorisága, ha azok fog figyelembe kell venni az ablak határok kiszámításához. Az ex: Ha a gyakoriság nem óránkénti, és a kezdési időpont 2016-04-01T10:10:10Z, az első ablakban van (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z.)  | Karakterlánc. Támogatott típusok "minute", "hour" | Igen |
-| **időköz** |A *időköz* pozitív egész szám, és azt jelzi, az időközt a *gyakoriság* , amely meghatározza, hogy milyen gyakran fusson az eseményindító. Például ha *időköz* 3 és *gyakoriság* "hour", akkor az eseményindító 3 óránként ismétlődik. | Egész szám | Igen |
-| **Kezdő időpont**|*startTime* egy dátum-idő. *startTime* első és az elmúlt lehet. Az első eseményindító időköz (startTime, startTime + időköz) legyen. | DateTime | Igen |
-| **Befejezés időpontja**|*endTime* egy dátum-idő. *endTime* utolsó és az elmúlt lehet. | DateTime | Igen |
-| **késleltetés** | Adja meg a késleltetés az adatok feldolgozása a időszak kezdete előtt. A folyamat futtatása után a várt végrehajtási ideje + késleltetés el van indítva. Késleltetés a hogyan határozza meg az eseményindító meddig lejárt időt ahhoz, hogy kiváltsa új futtassa. Nem módosítható, az ablak indítási időpontja. | TimeSpan érték (Példa: 00:10:00, magában foglalja a késleltetést a 10 perc) |  Nem. Alapértelmezett érték "00: 00:00" |
-| **maximális feldolgozási** | Egyidejű eseményindító fut, amely készen áll a Windows kiváltó száma. Példa: Ha keressük visszatöltési óránkénti a tegnap, amely lehet 24 windows. Ha a feldolgozási = eseményindító események elindulása esetén csak az első 10 windows 10 (00:00-01:00 - 09:00 – 10:00). Az első 10 indított folyamat fut befejezését követően elindulása eseményindító futtatása esetén a következő 10 (10:00 – 11:00 – 19:00 – 20:00). Párhuzamossági példát folytatva = 10, készen áll, nem lesznek 10 folyamat fut a windows 10 esetén. Ha csak 1 ablak készen áll, a csak lesz 1 folyamat futtatása. | Egész szám | Igen. A lehetséges értékek: 1-50 |
-| **a retryPolicy: száma** | A folyamat futtatása előtt az újrapróbálkozások száma "Sikertelen" van megjelölve.  | Egész szám |  Nem. Alapértelmezett érték a 0-újrapróbálkozások |
-| **a retryPolicy: intervalInSeconds** | Az újrapróbálkozási kísérletek közötti késleltetés, másodpercben | Egész szám |  Nem. Alapértelmezett érték 30 másodperc |
+| JSON-elem | Leírás | Típus | Megengedett értékek | Szükséges |
+|:--- |:--- |:--- |:--- |:--- |
+| **típusa** | Az eseményindító típusa. A típus a rögzített érték "TumblingWindowTrigger." | Karakterlánc | "TumblingWindowTrigger" | Igen |
+| **runtimeState** | A jelenlegi állapotában az eseményindító futási időt.<br/>**Megjegyzés:**: Ez az elem \<readOnly >. | Karakterlánc | "Lépések", "leállt," "Letiltva" | Igen |
+| **frequency** | A gyakoriság egységet (perc vagy óra), az eseményindító ismét előfordul jelölő karakterlánccá. Ha a **startTime** dátum értékei részletesebben, mint a **gyakoriság** érték, a **startTime** dátumok minősülnek, ha az ablak határok arra az esetre vonatkoznak. Például ha a **gyakoriság** értéke óránkénti és a **startTime** értéke 2016-04-01T10:10:10Z, az első ablakban van (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z). | Karakterlánc | "minute", "hour"  | Igen |
+| **interval** | Egy pozitív egész szám, amely azt jelzi, az időközt a **gyakoriság** érték, amely megadja, hogy milyen gyakran az eseményindító fut-e. Például ha a **időköz** 3 és a **gyakoriság** "óra," az eseményindító 3 óránként ismétlődik. | Egész szám | Egy pozitív egész szám. | Igen |
+| **startTime**| A első előfordulása, amely az elmúlt lehet. Az első eseményindító időköz (**startTime**, **startTime** + **időköz**). | DateTime | Egy DateTime értéket. | Igen |
+| **Befejezés időpontja**| A utolsó előfordulása, amely ezelőtti lehet. | DateTime | Egy DateTime értéket. | Igen |
+| **delay** | Adatok feldolgozása a időszak kezdete késleltetés mennyisége. A folyamat futtatása után a várt végrehajtási ideje és mennyisége elindult **késleltetés**. A **késleltetés** határozza meg, hogy az eseményindító meddig ahhoz, hogy kiváltsa egy új futtató esedékes időn túli. A **késedelem** nem módosítható a az ablak **startTime**. Például egy **késleltetés** 00:10:00 érték azt jelenti, 10 percig várnia. | Időtartomány  | A time értéknek, ahol az alapértelmezett érték 00:00:00. | Nem |
+| **maxConcurrency** | Egyidejű eseményindító fut, amely készen áll a Windows kiváltó száma. Például biztonsági kitöltés óránként fut 24 windows tegnap eredményez. Ha **maxConcurrency** = eseményindító események elindulása esetén csak az első 10 windows 10 (00:00-01:00 - 09:00 – 10:00). Az első 10 indított folyamat fut befejezését követően elindulása eseményindító futtatása esetén a következő 10 Windows (10:00 – 11:00 – 19:00 – 20:00). Ebben a példában a folytatása **maxConcurrency** = 10, készen áll, nincsenek 10 teljes folyamat fut a windows 10 esetén. Ha csak 1 ablak készen áll, nincs csak 1 folyamatot futtató. | Egész szám | Egy egész számot 1 és 50 között. | Igen |
+| **a retryPolicy: száma** | A folyamat futtatása előtt az újrapróbálkozások száma van megjelölve, "Sikertelen".  | Egész szám | Egy egész számot, ahol az alapértelmezett érték a 0 (nincs újrapróbálás). | Nem |
+| **a retryPolicy: intervalInSeconds** | A késleltetés másodpercben megadott újrapróbálkozási kísérletek között. | Egész szám | Hány másodpercig, ahol az alapértelmezett érték 30. | Nem |
 
-### <a name="using-system-variables-windowstart-and-windowend"></a>Rendszer változókkal: WindowStart és WindowEnd
+### <a name="windowstart-and-windowend-system-variables"></a>WindowStart és WindowEnd rendszerváltozók
 
-Ha szeretné használni WindowStart és az átfedésmentes ablak eseményindító WindowEnd a **csővezeték** definition (azaz a rész a lekérdezések), át kell adnia a változók paraméterként a folyamat a a **eseményindító**definícióját, például így:
+Használhatja a **WindowStart** és **WindowEnd** rendszerváltozók az átfedésmentes ablak eseményindító a **csővezeték** definition (Ez azt jelenti, hogy a lekérdezés rész). A rendszer változók paraméterekként átadása a kimenetátirányítási mechanizmusával a **eseményindító** definíciója. A következő példa bemutatja, hogyan változókhoz továbbítsa paraméterként:
+
 ```  
 {
     "name": "MyTriggerName",
@@ -113,22 +116,24 @@ Ha szeretné használni WindowStart és az átfedésmentes ablak eseményindít�
 }
 ```  
 
-Ezt követően a csővezeték-definícióban használja az WindowStart és WindowEnd, használja a paraméterek ennek megfelelően "MyWindowStart" és "MyWindowEnd"
+Használatához a **WindowStart** és **WindowEnd** rendszer változó értékeit az adatcsatorna-definícióban, használja a "MyWindowStart" és "MyWindowEnd" paramétereket, ennek megfelelően.
 
-### <a name="notes-on-backfill"></a>Tudnivalók a visszatöltési
-Ha több windows feliratkozott végrehajtási (esp. visszatöltési forgatókönyvben), Windows végrehajtás sorrendje determinisztikus, és a legújabb legrégebbitől időközönként. Nincs mód mostantól a működés megváltoztatásához.
+### <a name="execution-order-of-windows-in-a-backfill-scenario"></a>Windows visszatöltési esetén végrehajtási sorrendje
+Ha több windows feliratkozott végrehajtási (különösen a visszatöltési esetén), a végrehajtás sorrendje a windows nincs determinisztikus, a legújabb legrégebbi időszakok közül. Jelenleg ez a viselkedés nem módosítható.
 
-### <a name="updating-an-existing-triggerresource"></a>Egy meglévő TriggerResource frissítése
-* Gyakoriság (vagy az ablak mérete) az eseményindító módosul, ha windows állapotát feldolgozása már lesz *nem* alaphelyzetbe kell állítani. Az eseményindító indítási legutóbb hajtotta végre az új ablak mérete használata a Windows továbbra is.
-* A trigger változik (hozzáadott vagy frissített) windows már állapotát befejezési időpontja feldolgozása lesz *nem* alaphelyzetbe kell állítani. Az eseményindító egyszerűen vesszük új befejezésének. Ha a befejező időpont előtt a windows már végre, az eseményindító leáll. Ellenkező esetben azt leáll, ha az új befejezési időpont a rendszer észlelt.
+### <a name="existing-triggerresource-elements"></a>Meglévő TriggerResource elemek
+A következők vonatkoznak meglévő **TriggerResource** elemei:
 
-## <a name="sample-using-azure-powershell"></a>A minta Azure PowerShell használatával
+* Ha az érték a **gyakoriság** elemet (vagy ablakméret) eseményindító módosításait, a windows már feldolgozott állapota *nem* alaphelyzetbe állítása. Az eseményindító továbbra is fennáll, az érvényesítést a Windows új ablak mérete használatával végrehajtott utolsó ablakból.
+* Ha értéke a **endTime** eseményindító változtatás (hozzáadott vagy frissített), a windows állapotát már feldolgozott elem *nem* alaphelyzetbe állítása. Az eseményindító eleget tegyen az új **endTime** érték. Ha az új **endTime** értéke előtt a windows, amely már végre az eseményindító leáll. Ellenkező esetben az eseményindító leáll, ha az új **endTime** értéket a rendszer észlelt.
+
+## <a name="sample-for-azure-powershell"></a>Az Azure PowerShell minta
 Ez a szakasz bemutatja, hogyan használhatja az Azure Powershellt létrehozását, indítsa el, és egy eseményindító megfigyelését.
 
-1. Hozzon létre egy JSON fájlt MyTrigger.json a C:\ADFv2QuickStartPSH\ mappában, a következő tartalommal:
+1. Hozzon létre egy JSON fájlt **MyTrigger.json** a C:\ADFv2QuickStartPSH\ mappában, a következő tartalommal:
 
    > [!IMPORTANT]
-   > Állítsa be **startTime** a jelenlegi UTC-időre és **endTime** egy óra korábbi a jelenlegi UTC-idő a JSON-fájl mentése előtt.
+   > A JSON-fájl mentése előtt állítsa be az értékét a **startTime** elem a jelenlegi UTC-időre. Állítsa a **endTime** korábbi a jelenlegi UTC-idő egy órával elemet.
 
     ```json   
     {
@@ -160,32 +165,38 @@ Ez a szakasz bemutatja, hogyan használhatja az Azure Powershellt létrehozásá
       }
     }
     ```  
-2. Egy eseményindító létrehozása a **Set-AzureRmDataFactoryV2Trigger** parancsmag.
+
+2. Egy eseményindító létrehozása a **Set-AzureRmDataFactoryV2Trigger** parancsmagot:
 
     ```powershell
     Set-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
+    ```
     
-3. Confirm that the status of the trigger is **Stopped** by using the **Get-AzureRmDataFactoryV2Trigger** cmdlet.
+3. Győződjön meg arról, hogy az állapot az eseményindító **leállítva** használatával a **Get-AzureRmDataFactoryV2Trigger** parancsmagot:
 
     ```powershell
     Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
+
 4. Az eseményindító használatával indítsa el a **Start-AzureRmDataFactoryV2Trigger** parancsmagot:
 
     ```powershell
     Start-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
-5. Győződjön meg arról, hogy az állapot az eseményindító **elindítva** használatával a **Get-AzureRmDataFactoryV2Trigger** parancsmag.
+
+5. Győződjön meg arról, hogy az állapot az eseményindító **elindítva** használatával a **Get-AzureRmDataFactoryV2Trigger** parancsmagot:
 
     ```powershell
     Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
-6.  Első eseményindító fut, a PowerShell használatával a **Get-AzureRmDataFactoryV2TriggerRun** parancsmag. Ahhoz, hogy az információkat az eseményindító fut, a következő parancsot rendszeresen: frissítés **TriggerRunStartedAfter** és **TriggerRunStartedBefore** az eseményindító-definícióban szereplő értékekre értékek .
+
+6. Az Azure PowerShell használatával futtat az eseményindító Get a **Get-AzureRmDataFactoryV2TriggerRun** parancsmag. Lekérése az eseményindító fut, rendszeres időközönként hajtsa végre a következő parancsot. Frissítés a **TriggerRunStartedAfter** és **TriggerRunStartedBefore** az eseményindító-definícióban szereplő értékekre értékeket:
 
     ```powershell
     Get-AzureRmDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"
     ```
-Eseményindító fut/folyamat fut az Azure portálon figyeléséről lásd: [figyelő folyamat fut](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline)
+    
+Az Azure portálon futó eseményindító futtatása és a folyamat figyelése című [figyelő folyamat fut](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
 
 ## <a name="next-steps"></a>További lépések
 Eseményindítók kapcsolatos részletes információkért lásd: [csővezeték-végrehajtási és eseményindítók](concepts-pipeline-execution-triggers.md#triggers).

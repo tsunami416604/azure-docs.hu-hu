@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 2415850491018f4e27c5ec930b688026cc12b41a
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: d8848f93518392333df16c9c7bf07bd0b2529034
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="push-data-to-an-azure-search-index-by-using-azure-data-factory"></a>Elküldik az adatokat az Azure Search-index Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -36,7 +36,7 @@ Ahhoz, hogy a Data Factory service csatlakozás helyszíni adattárolóihoz, tel
 
 Az adatkezelési átjáró csatlakozik a helyszíni adatforrások felhőszolgáltatások biztonságának és kezelésének módja. Lásd: [helyezze át az adatokat a helyszíni és a felhő között](data-factory-move-data-between-onprem-and-cloud.md) szóló cikkben olvashat az adatkezelési átjáró.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 A másolási tevékenység során, az leküldi adatok egy forrás adattárból Azure Search-index különböző eszközök/API-k használatával létrehozhat egy folyamatot.
 
 Hozzon létre egy folyamatot a legegyszerűbb módja használatára a **másolása varázsló**. Lásd: [oktatóanyag: hozzon létre egy folyamatot, másolása varázslóval](data-factory-copy-data-wizard-tutorial.md) létrehozásával egy folyamatot, az adatok másolása varázsló segítségével gyorsan útmutatást.
@@ -60,7 +60,7 @@ A következő táblázat ismerteti, amelyek a kapcsolódó Azure Search szolgál
 | Tulajdonság | Leírás | Szükséges |
 | -------- | ----------- | -------- |
 | type | A type tulajdonságot kell beállítani: **AzureSearch**. | Igen |
-| URL-címe | Az Azure Search szolgáltatás URL-címe. | Igen |
+| url | Az Azure Search szolgáltatás URL-címe. | Igen |
 | kulcs | Az Azure Search szolgáltatás adminisztrációs kulcsot. | Igen |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
@@ -93,7 +93,7 @@ A AzureSearchSink az alábbi két upsert viselkedésmódok biztosít a (AzureSea
 
 Az alapértelmezett viselkedés **egyesítése**.
 
-### <a name="writebatchsize-property"></a>WriteBatchSize tulajdonság
+### <a name="writebatchsize-property"></a>WriteBatchSize Property
 Az Azure Search szolgáltatás egy kötegelt dokumentumok írása támogatja. A kötegelt 1-1 000 műveletek is tartalmazhat. Egy műveletet a feltöltési/egyesítési művelet egy dokumentum kezeli.
 
 ### <a name="data-type-support"></a>Adattípus-támogatás
@@ -105,7 +105,7 @@ Az alábbi táblázat felsorolja, hogy az Azure Search adattípus támogatott-e,
 | Int32 | I |
 | Int64 | I |
 | Dupla | I |
-| Logikai érték | I |
+| Logikai | I |
 | DataTimeOffset | I |
 | Karakterlánc-tömbben | N |
 | GeographyPoint | N |
@@ -292,7 +292,7 @@ A másolási tevékenység definíciójának fogadó adatkészletből oszlopok f
 ## <a name="performance-and-tuning"></a>Teljesítmény és finomhangolás  
 Tekintse meg a [másolási tevékenység teljesítmény- és hangolási útmutató](data-factory-copy-activity-performance.md) adatátvitelt jelölik a (másolási tevékenység) és a különböző módokon azt optimalizálása hatása teljesítmény kulcsfontosságú szerepet játszik tájékozódhat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Lásd az alábbi cikkeket:
 
 * [Másolási tevékenység oktatóanyag](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) való a másolási tevékenység során a folyamat létrehozásának lépéseit.

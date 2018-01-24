@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: laviswa
-ms.openlocfilehash: 8a8a83ca1d286b7d254c2b2271f44277e6189bf0
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.openlocfilehash: 69466b15d2a37bee0353a283c9bab59563f3670e
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="sql-queries-for-azure-cosmos-db"></a>Azure Cosmos adatbázis SQL-lekérdezések
 
@@ -356,16 +356,16 @@ A következő táblázat az SQL API bármely JSON kétféle közötti egyenlős�
             <strong>NULL értékű</strong>
          </td>
          <td valign="top">
-            <strong>Logikai érték</strong>
+            <strong>Boolean</strong>
          </td>
          <td valign="top">
             <strong>Szám</strong>
          </td>
          <td valign="top">
-            <strong>Karakterlánc</strong>
+            <strong>String</strong>
          </td>
          <td valign="top">
-            <strong>Objektum</strong>
+            <strong>Object</strong>
          </td>
          <td valign="top">
             <strong>A tömb</strong>
@@ -397,7 +397,7 @@ Meghatározatlan </td>
          <td valign="top">
 Meghatározatlan </td>
          <td valign="top">
-            <strong>OKÉ</strong>
+            <strong>OK</strong>
          </td>
          <td valign="top">
 Meghatározatlan </td>
@@ -412,14 +412,14 @@ Meghatározatlan </td>
       </tr>
       <tr>
          <td valign="top">
-            <strong>Logikai érték<strong>
+            <strong>Boolean<strong>
          </td>
          <td valign="top">
 Meghatározatlan </td>
          <td valign="top">
 Meghatározatlan </td>
          <td valign="top">
-            <strong>OKÉ</strong>
+            <strong>OK</strong>
          </td>
          <td valign="top">
 Meghatározatlan </td>
@@ -441,7 +441,7 @@ Meghatározatlan </td>
          <td valign="top">
 Meghatározatlan </td>
          <td valign="top">
-            <strong>OKÉ</strong>
+            <strong>OK</strong>
          </td>
          <td valign="top">
 Meghatározatlan </td>
@@ -452,7 +452,7 @@ Meghatározatlan </td>
       </tr>
       <tr>
          <td valign="top">
-            <strong>Karakterlánc<strong>
+            <strong>String<strong>
          </td>
          <td valign="top">
 Meghatározatlan </td>
@@ -463,7 +463,7 @@ Meghatározatlan </td>
          <td valign="top">
 Meghatározatlan </td>
          <td valign="top">
-            <strong>OKÉ</strong>
+            <strong>OK</strong>
          </td>
          <td valign="top">
 Meghatározatlan </td>
@@ -472,7 +472,7 @@ Meghatározatlan </td>
       </tr>
       <tr>
          <td valign="top">
-            <strong>Objektum<strong>
+            <strong>Object<strong>
          </td>
          <td valign="top">
 Meghatározatlan </td>
@@ -485,7 +485,7 @@ Meghatározatlan </td>
          <td valign="top">
 Meghatározatlan </td>
          <td valign="top">
-            <strong>OKÉ</strong>
+            <strong>OK</strong>
          </td>
          <td valign="top">
 Meghatározatlan </td>
@@ -507,7 +507,7 @@ Meghatározatlan </td>
          <td valign="top">
 Meghatározatlan </td>
          <td valign="top">
-            <strong>OKÉ</strong>
+            <strong>OK</strong>
          </td>
       </tr>
    </tbody>
@@ -1413,21 +1413,21 @@ A matematikai funkciók végezhet a számítást, a bemeneti értékek, amelyek 
 | [NAPLÓ (num_expr [, Alap])](#bk_log) | A megadott numerikus kifejezés, vagy használja a megadott alapban logaritmusát a természetes alapú logaritmusát adja vissza |
 | [LOG10 (num_expr)](#bk_log10) | A 10-es logaritmikus a megadott numerikus kifejezés értékét adja vissza. |
 | [KEREK (num_expr)](#bk_round) | Egy numerikus érték, a legközelebbi egész értéket kerekítve adja vissza. |
-| [CSONK (num_expr)](#bk_trunc) | Egy numerikus érték, csak az a legközelebbi egész értéket ad vissza. |
+| [TRUNC (num_expr)](#bk_trunc) | Egy numerikus érték, csak az a legközelebbi egész értéket ad vissza. |
 | [SQRT (num_expr)](#bk_sqrt) | A megadott numerikus kifejezés négyzetgyökét adja vissza. |
 | [NÉGYZETES (num_expr)](#bk_square) | Kiszámítja a megadott numerikus kifejezés. |
 | [ENERGIAGAZDÁLKODÁSI (num_expr, num_expr)](#bk_power) | A megadott numerikus kifejezés power visszatér a megadott érték. |
 | [BEJELENTKEZÉSI (num_expr)](#bk_sign) | A megadott numerikus kifejezés bejelentkezési értékét (-1, 0, 1) adja vissza. |
-| [ARCCOS (num_expr)](#bk_acos) | A szöget adja vissza, az radiánban megadott szög, amelynek koszinusza a megadott numerikus kifejezés; más néven koszinuszát. |
+| [ACOS (num_expr)](#bk_acos) | A szöget adja vissza, az radiánban megadott szög, amelynek koszinusza a megadott numerikus kifejezés; más néven koszinuszát. |
 | [ARCSIN (num_expr)](#bk_asin) | A szög radiánban megadott szög, amelynek szinusza a megadott numerikus kifejezést ad vissza. Ez rövidítése szinuszát. |
 | [ATAN (num_expr)](#bk_atan) | A szög radiánban megadott szög, amelynek tangense a megadott numerikus kifejezést ad vissza. Ezt arkusz is nevezik. |
 | [ATN2 (num_expr)](#bk_atn2) | A szöget adja vissza, az x tengely pozitív és a pont (y, x), a forrásból a ray közötti radiánban ahol x és y az érték a két megadott lebegőpontos kifejezés. |
 | [COS (num_expr)](#bk_cos) | Koszinuszát trigonometric a megadott szög radiánban, a megadott kifejezésben. |
-| [TŰZ (num_expr)](#bk_cot) | A megadott szög trigonometric kotangensét adja meg a megadott numerikus kifejezés radiánban. |
+| [COT (num_expr)](#bk_cot) | A megadott szög trigonometric kotangensét adja meg a megadott numerikus kifejezés radiánban. |
 | [Fokban megadva (num_expr)](#bk_degrees) | A megfelelő szöget adja vissza, az a radiánban megadott szög fokban megadva. |
-| [PI)](#bk_pi) | A konstans PI értékét adja vissza. |
+| [PI ()](#bk_pi) | A konstans PI értékét adja vissza. |
 | [RADIÁNBAN (num_expr)](#bk_radians) | Vissza a radiánban megadott szög, ha egy numerikus kifejezés fokban, is meg kell adni. |
-| [EG (num_expr)](#bk_sin) | Szinuszát trigonometric a megadott szög radiánban, a megadott kifejezésben. |
+| [SIN (num_expr)](#bk_sin) | Szinuszát trigonometric a megadott szög radiánban, a megadott kifejezésben. |
 | [TAN (num_expr)](#bk_tan) | A bemeneti kifejezést tangensét adja vissza a megadott kifejezésben. |
 
 Például most lekérdezéseket is futtathat a következőhöz hasonló:
@@ -1467,7 +1467,7 @@ A típus ellenőrzési funkciók lehetővé teszik az SQL-lekérdezések lévő 
   <td>Azt jelzi, hogy ha az érték típusa több logikai érték beolvasása.</td>
 </tr>
 <tr>
-  <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_object">IS_OBJECT (kifejezés)</a></td>
+  <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_object">IS_OBJECT (expr)</a></td>
   <td>Azt jelzi, hogy ha az érték típusa egy JSON-objektum logikai érték beolvasása.</td>
 </tr>
 <tr>
@@ -1500,10 +1500,10 @@ A következő skaláris függvények végrehajtania egy műveletet a bemeneti ka
 
 | Használat | Leírás |
 | --- | --- |
-| [A hossz (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_length) |A megadott karakterlánc-kifejezés karakterek számát adja vissza |
+| [LENGTH (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_length) |A megadott karakterlánc-kifejezés karakterek számát adja vissza |
 | [CONCAT (str_expr, str_expr [, str_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_concat) |Karakterlánc, amely legalább két karakterlánc-értékek hozzáfűzésével eredményét adja vissza. |
 | [SUBSTRING (str_expr, num_expr, num_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_substring) |Egy karakterlánc-kifejezés részét adja vissza. |
-| [(Str_expr, str_expr) startswith ELEMNEK](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_startswith) |Adja vissza egy logikai, amely jelzi, hogy az első karakterlánc-kifejezés a második végződik |
+| [(Str_expr, str_expr) startswith ELEMNEK](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_startswith) |Visszaadja egy logikai, amely jelzi, hogy az első karakterlánc-kifejezés kezdődik-e a második |
 | [Megadott módon VÉGZŐDŐ (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_endswith) |Adja vissza egy logikai, amely jelzi, hogy az első karakterlánc-kifejezés a második végződik |
 | [CONTAINS (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_contains) |Visszaadja egy logikai, amely jelzi, hogy az első karakterlánc-kifejezés tartalmazza a második. |
 | [INDEX_OF (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_index_of) |A második első előfordulásának kezdőpozícióját adja vissza karakterlánc-kifejezés az első megadott karakterlánc-kifejezés vagy -1, ha a karakterlánc nem található. |
@@ -1757,7 +1757,7 @@ A .NET-objektumokat és a JSON-dokumentumok közötti leképezéseket természet
 
 
 
-### <a name="linq-to-sql-translation"></a>"LINQ to SQL fordítási"
+### <a name="linq-to-sql-translation"></a>LINQ to SQL translation
 A Cosmos DB lekérdezésszolgáltató hajt végre, egy Cosmos-adatbázis SQL-lekérdezést az elérhető legjobb leképezéseket a LINQ lekérdezés. A következő leírásában feltételezzük, hogy az olvasó rendelkezik a LINQ alapszintű ismeretét.
 
 Először a típus rendszer esetében támogatott összes JSON egyszerű típusokhoz – numerikus típusok, logikai érték, karakterlánc vagy null. Ezek a JSON típusok támogatottak. A következő skaláris kifejezések használhatók.
@@ -1990,7 +1990,7 @@ A cosmos DB keresztül tesz elérhetővé erőforrásokat egy REST API-t, amely 
 
 A következő példák bemutatják, hogyan hozzon létre egy lekérdezést, és küldje el egy Cosmos-adatbázis adatbázis-fiók.
 
-### <a id="RestAPI"></a>REST API-N
+### <a id="RestAPI"></a>REST API
 Cosmos DB egy megnyitott RESTful programozási modellt biztosít a HTTP Protokollon keresztül. Adatbázis-fiókok egy Azure-előfizetés használatával telepíthető. A Cosmos DB erőforrás-modellje egy adatbázis-fiók, amelyek egy-címezhető logikai és állandó URI-k használata alatt lévő erőforrások készlete áll. Erőforráscsoport ebben a dokumentumban adatcsatornára nevezzük. Az adatbázisfiók áll az adatbázisok, mindegyike több gyűjteményt, mely szolgálna mindegyikének tartalmazza a dokumentumok, a felhasználó által megadott függvények és a más típusú erőforrások.
 
 Az alapvető interakció modell ezekkel az erőforrásokkal keresztül történik a HTTP-műveletek GET, PUT, POST és DELETE a szabványos tolmácsolási szolgáltatással. A POST műveletet egy új erőforrást, egy tárolt eljárás végrehajtása vagy egy Cosmos-adatbázis-lekérdezés kiadására szolgál. Lekérdezéseket a rendszer mindig csak olvasható műveletekhez, nincs mellékhatásokkal.
@@ -2216,7 +2216,7 @@ Lapozófájl létrehozásával közvetlenül is szabályozhatja `IDocumentQuerya
 
 Tekintse meg [Azure Cosmos DB .NET minták](https://github.com/Azure/azure-documentdb-net) további mintákat tartalmazó lekérdezések. 
 
-### <a id="JavaScriptServerSideApi"></a>JavaScript kiszolgálóoldali API
+### <a id="JavaScriptServerSideApi"></a>JavaScript server-side API
 A cosmos DB programozási modellt biztosít a feldolgozás alatt álló alapú JavaScript-alkalmazáslogika közvetlenül a gyűjtemények, tárolt eljárások és eseményindítók. A JavaScript-logika regisztrálva, a gyűjtemény szintjén majd adhat ki az adott gyűjteményben lévő dokumentumokon működésének Helyadatbázis-műveletekhez. Ezek a műveletek a környezeti ACID-tranzakciókat van burkolva.
 
 A következő példa bemutatja, hogyan lehet a JavaScript-kiszolgáló API a queryDocuments segítségével ellenőrizze a lekérdezések belső tárolt eljárások és eseményindítók.
@@ -2258,13 +2258,13 @@ A következő példa bemutatja, hogyan lehet a JavaScript-kiszolgáló API a que
 4. [Az Azure Cosmos DB Konzisztenciaszintek][consistency-levels]
 5. ANSI SQL 2011 [http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681](http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)
 6. JSON [http://json.org/](http://json.org/)
-7. JavaScript-specifikáció [http://www.ecma-international.org/publications/standards/Ecma-262.htm](http://www.ecma-international.org/publications/standards/Ecma-262.htm) 
+7. Javascript Specification [http://www.ecma-international.org/publications/standards/Ecma-262.htm](http://www.ecma-international.org/publications/standards/Ecma-262.htm) 
 8. LINQ [http://msdn.microsoft.com/library/bb308959.aspx](http://msdn.microsoft.com/library/bb308959.aspx) 
 9. Lekérdezés kiértékelése technikák nagy adatbázisokhoz [http://dl.acm.org/citation.cfm?id=152611](http://dl.acm.org/citation.cfm?id=152611)
 10. A lekérdezés feldolgozás alatt álló párhuzamos relációs adatbázis-rendszerek, IEEE számítógép társadalom nyomja le az 1994.
 11. Lu, Ooi, Tan, feldolgozás alatt álló párhuzamos relációs adatbázis-rendszerek, IEEE számítógép társadalom nyomja le az 1994 lekérdezés.
 12. Christopher Olston, Benjamin Reed, Utkarsh Srivastava, Ravi Kumar, Andrew Tomkins: a Pig Latin: egy nem, külső nyelvi SIGMOD 2008 az adatok feldolgozásához.
-13. G. Graefe. Optimalizálás kaszkádokban keretében. IEEE adatok Eng. BULL., 18(3): 1995.
+13. G. Graefe. Optimalizálás kaszkádokban keretében. IEEE adatok Eng. Bull., 18(3): 1995.
 
 [1]: ./media/sql-api-sql-query/sql-query1.png
 [introduction]: introduction.md

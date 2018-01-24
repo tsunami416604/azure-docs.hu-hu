@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 39e283e4b0bb5e50d1268e1b2cac53bf9ee71028
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: e326a512bdb9c30068845b51e86795a410e6c9b3
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Adatok áthelyezése a helyszíni adatforrások és az adatkezelési átjáró a felhő között
 > [!NOTE]
@@ -281,7 +281,7 @@ Ebben a lépésben olyan bemeneti és kimeneti adatkészleteket hoz létre, amel
    * **folderPath** értéke **adftutorial/outfromonpremdf** outfromonpremdf esetén a adftutorial tároló mappa. Hozzon létre a **adftutorial** tárolót, ha még nem létezik.
    * Az **availability** (rendelkezésre állás) paraméter **hourly** (óránként) értékre van állítva (a **frequency** (gyakoriság) paraméter **hour** (óra), az **interval** (időköz) paraméter pedig **1** értékre).  A Data Factory szolgáltatásnak hoz létre egy kimeneti az adatszelet az óránként a **üres** az Azure SQL adatbázis táblája.
 
-   Ha nem ad meg egy **Fájlnév** a egy **eredménytábla**, a létrehozott fájlokat a **folderPath** elnevezése a következő formátumban: adatok.<Guid>.txt (például: : Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.).
+   Ha nem ad meg egy **Fájlnév** a egy **eredménytábla**, a létrehozott fájlokat a **folderPath** elnevezése a következő formátumban: adatok.<Guid>. txt (például:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.).
 
    Beállítása **folderPath** és **Fájlnév** dinamikusan alapján a **SliceStart** idő, a "partitionedBy" tulajdonsággal. A következő példában a folderPath tulajdonság a SliceStart (a feldolgozás alatt álló szelet kezdő időpontja) változó Év, Hónap és Nap értékeit, a fileName tulajdonság pedig a SliceStart változó Óra értékét használja. Ha például a szelet előállítása a 2014-10-20T08:00:00 időpontban kezdődik, a folderName tulajdonság beállítása wikidatagateway/wikisampledataout/2014/10/20, a fileName beállítása pedig 08.csv lesz.
 
@@ -412,6 +412,6 @@ Ebben a lépésben az Azure Portal használatával figyeli egy Azure data factor
 
    ![Azure Storage Explorer](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Lásd: [az adatkezelési átjáró](data-factory-data-management-gateway.md) szóló cikkben az adatkezelési átjáró olvashat.
 * Lásd: [adatok másolása az Azure Blob az Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) további másolási tevékenység használatáról a forrás-tárolóban adatok áthelyezése a fogadó tárolóban.

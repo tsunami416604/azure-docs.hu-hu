@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 09/30/2017
 ms.author: yoelh
-ms.openlocfilehash: b7ce383b5297b0973f2999e7310fad94a0abe7dd
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: fd9c95ae78590aa772fde10c8c80914c905767a8
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>Az Azure AD B2C felhasználói út a REST API jogcímek cseréjét integrálása, felhasználói bevitel ellenőrzése
 A identitás élmény keretrendszerrel, amelynek alapjául szolgáló Azure Active Directory B2C (az Azure AD B2C), integrálható egy RESTful API-nak felhasználói út. Ez a forgatókönyv megtudhatja, hogyan kommunikál az Azure AD B2C .NET-keretrendszer RESTful szolgáltatás (webes API-k).
@@ -88,7 +88,7 @@ Hozzon létre egy modell a bemeneti jogcímek a következő módon:
 
 3. Az osztály neve `InputClaimsModel`, majd vegye fel a következő tulajdonságokat és a `InputClaimsModel` osztály:
 
-    ```C#
+    ```csharp
     namespace Contoso.AADB2C.API.Models
     {
         public class InputClaimsModel
@@ -102,7 +102,7 @@ Hozzon létre egy modell a bemeneti jogcímek a következő módon:
 
 4. Hozzon létre egy új modell `OutputClaimsModel`, majd vegye fel a következő tulajdonságokat és a `OutputClaimsModel` osztály:
 
-    ```C#
+    ```csharp
     namespace Contoso.AADB2C.API.Models
     {
         public class OutputClaimsModel
@@ -114,7 +114,7 @@ Hozzon létre egy modell a bemeneti jogcímek a következő módon:
 
 5. Hozzon létre egy további modell `B2CResponseContent`, melynek segítségével throw bemenet-ellenőrzési hibaüzenetek. Vegye fel a következő tulajdonságokat a `B2CResponseContent` osztály, adja meg a hiányzó hivatkozások, és mentse a fájlt:
 
-    ```C#
+    ```csharp
     namespace Contoso.AADB2C.API.Models
     {
         public class B2CResponseContent
@@ -152,7 +152,7 @@ A webes API-t egy _vezérlő_ olyan objektum, amely HTTP-kérelmeket kezeli. A v
 
 4. Ha a *IdentityController.cs* fájl még nincs nyitva, kattintson rá duplán, és akkor cserélje le a fájlban lévő kódot az alábbira:
 
-    ```C#
+    ```csharp
     using Contoso.AADB2C.API.Models;
     using Newtonsoft.Json;
     using System;
@@ -248,7 +248,7 @@ A jogcím-szolgáltató különböző okokból rendelkezhet több műszaki profi
 
 A következő XML-részletet két műszaki profil a jogcímeket szolgáltató csomópontokat tartalmazza:
 
-* **TechnicalProfile Id = "REST-API-SignUp"**: határozza meg a RESTful szolgáltatás. 
+* **TechnicalProfile Id="REST-API-SignUp"**: Defines your RESTful service. 
    * `Proprietary`leírt protokollt a RESTful-alapú szolgáltató. 
    * `InputClaims`határozza meg a jogcímeket, amely a REST-szolgáltatást az Azure AD B2C kapnak. 
 
@@ -382,6 +382,6 @@ Miután hozzáadta az új jogcím, a függő entitás kód néz ki:
 * Miután elvégezte a [Ismerkedés az egyéni házirendek](active-directory-b2c-get-started-custom.md) forgatókönyv, azt javasoljuk, hogy a saját egyéni házirend-fájlok használatával történő létrehozása adott esetben. Referenciaként a adtunk [házirendfájljait minta](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw).
 * Letöltheti a teljes kód látható a [minta Visual Studio megoldás referenciaként](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/).
     
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A RESTful API-t (felhasználónév és jelszó) egyszerű hitelesítést biztonságos](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
 * [A RESTful API-t ügyféltanúsítványok biztonságos](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)

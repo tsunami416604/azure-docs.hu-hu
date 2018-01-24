@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: mabrigg
-ms.openlocfilehash: 09c22b22b49664a55b8a9e77936df3b1362d5b88
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 9bbfffe15dc23d5d7d7b17aa4c79edc8a2aaab8c
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="start-and-stop-azure-stack"></a>Elindítása és leállítása Azure verem
 
@@ -41,6 +41,15 @@ Azure verem leállítani a következő lépéseket:
 > [!Note]  
 > Ellenőrizheti a fizikai csomópont power állapotának a az eredeti hardvergyártó (OEM) számára az Azure-verem hardver megadott utasítások alapján. 
 
+## <a name="start-azure-stack"></a>Indítsa el az Azure verem 
+
+Azure verem kezdje az alábbi lépéseket. Kövesse az alábbi lépéseket, függetlenül attól, milyen Azure verem leállt.
+
+1. Bekapcsolás a fizikai csomópontok a verem Azure környezetben. Utasításokat a fizikai csomópontok bekapcsolás ellenőrizze a az eredeti hardvergyártó (OEM) számára megadott a hardver az Azure-verem cikk utasításait követve.
+
+2. Várjon, amíg elindítja a verem Azure infrastruktúra-szolgáltatásokat. Verem Azure infrastruktúra-szolgáltatásokat is a folyamat befejezése két órát igénybe vehet. Azure verem és a kezdő állapotát ellenőrizheti a [ **Get-ActionStatus** parancsmag](#get-the-startup-status-for-azure-stack).
+
+
 ## <a name="get-the-startup-status-for-azure-stack"></a>Azure verem indítási állapotának beolvasása
 
 Az indítási érhető el az Azure verem közben a következő lépéseket:
@@ -52,14 +61,6 @@ Az indítási érhető el az Azure verem közben a következő lépéseket:
     ```powershell
       Get-ActionStatus Start-AzureStack
     ```
-
-## <a name="start-azure-stack"></a>Indítsa el az Azure verem 
-
-Azure verem kezdje az alábbi lépéseket. Kövesse az alábbi lépéseket, függetlenül attól, milyen Azure verem leállt.
-
-1. Bekapcsolás a fizikai csomópontok a verem Azure környezetben. Utasításokat a fizikai csomópontok bekapcsolás ellenőrizze a az eredeti hardvergyártó (OEM) számára megadott a hardver az Azure-verem cikk utasításait követve.
-
-2. Várjon, amíg elindítja a verem Azure infrastruktúra-szolgáltatásokat. Verem Azure infrastruktúra-szolgáltatásokat is a folyamat befejezése két órát igénybe vehet. Azure verem és a kezdő állapotát ellenőrizheti a [ **Get-ActionStatus** parancsmag](#get-the-startup-status-for-azure-stack).
 
 ## <a name="troubleshoot-startup-and-shutdown-of-azure-stack"></a>Indítási és leállítási Azure verem hibaelhárítása
 

@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: eee276f2bcf6a8b7b2c79139bfeb01e1ebf761c9
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 78f21576bb7d839e5b5c4d8c2b721e381d663406
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Kifejezések és az Azure Data Factory funkciók
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -148,7 +148,7 @@ A következő példában a feldolgozási folyamat veszi **inputPath** és **outp
 ## <a name="functions"></a>Functions  
  Kifejezések függvények hívása. Az alábbi szakaszok ismertetik a funkciók kifejezésben használható.  
 
-## <a name="string-functions"></a>Karakterlánc  
+## <a name="string-functions"></a>Karakterlánc-függvények  
  A következő funkciók csak karakterláncok vonatkoznak. Számos, a gyűjtemény a karakterláncokra is használható.  
   
 |Függvény neve|Leírás|  
@@ -171,17 +171,17 @@ A következő példában a feldolgozási folyamat veszi **inputPath** és **outp
   
 |Függvény neve|Leírás|  
 |-------------------|-----------------|  
-|tartalmazza|Igaz értéket ad eredményül, ha a szótár tartalmaz-e, kulcslista értéket tartalmaz, vagy karakterlánc karakterláncrészletet tartalmazza. Például az alábbi kifejezés eredménye`true:``contains('abacaba','aca')`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: gyűjteményen belül<br /><br /> **Leírás**: kötelező. A gyűjteményt, amelyben keresni.<br /><br /> **Számú paraméter**: 2. régiója<br /><br /> **Név**: objektum keresése<br /><br /> **Leírás**: kötelező. Az objektum belül található a **gyűjteményben**.|  
+|tartalmazza a következőt:|Igaz értéket ad eredményül, ha a szótár tartalmaz-e, kulcslista értéket tartalmaz, vagy karakterlánc karakterláncrészletet tartalmazza. Például az alábbi kifejezés eredménye`true:``contains('abacaba','aca')`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: gyűjteményen belül<br /><br /> **Leírás**: kötelező. A gyűjteményt, amelyben keresni.<br /><br /> **Számú paraméter**: 2. régiója<br /><br /> **Név**: objektum keresése<br /><br /> **Leírás**: kötelező. Az objektum belül található a **gyűjteményben**.|  
 |Hossza|A tömb vagy karakterlánc elemek számát adja vissza. Például az alábbi kifejezés eredménye `3`:`length('abc')`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: gyűjtemény<br /><br /> **Leírás**: kötelező. A gyűjtemény hossza eléréséhez.|  
 |üres|Igaz értéket ad eredményül, ha az objektum, a tömb vagy karakterlánc üres. Például az alábbi kifejezés eredménye `true`:<br /><br /> `empty('')`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: gyűjtemény<br /><br /> **Leírás**: kötelező. Annak ellenőrzése, hogy az üres gyűjtemény.|  
 |metszetének|Egy egyetlen tömb vagy objektum a szokványos elemeket a tömb, vagy átadott objektumok közötti adja vissza. Például, a függvény `[1, 2]`:<br /><br /> `intersection([1, 2, 3], [101, 2, 1, 10],[6, 8, 1, 2])`<br /><br /> A paraméterek, a függvény egy objektum vagy egy lemezkészlet tömbök (nem ezek keveréke) lehet. Ha két objektum ugyanazzal a névvel, a végső objektum megjelenik az utolsó objektum ezzel a névvel.<br /><br /> **Számú paraméter**: 1...*n*<br /><br /> **Név**: gyűjtemény*n*<br /><br /> **Leírás**: kötelező. A gyűjtemények kiértékelése. Az objektum összes gyűjtemény megjelenjen az eredményben továbbított kell lennie.|  
-|a UNION|Egyetlen tömb vagy objektum, amely a tömb vagy objektum átadott az elemek ad vissza. Például adja vissza ezt a függvényt`[1, 2, 3, 10, 101]:`<br /><br /> :  `union([1, 2, 3], [101, 2, 1, 10])`<br /><br /> A paraméterek, a függvény egy objektum vagy egy lemezkészlet tömbök (nem ezek keveréke) lehet. Ha ezzel a névvel, a végső kimenetet a két objektum, a végső objektum az utolsó objektum ezen a néven jelenik meg.<br /><br /> **Számú paraméter**: 1...*n*<br /><br /> **Név**: gyűjtemény*n*<br /><br /> **Leírás**: kötelező. A gyűjtemények kiértékelése. Olyan objektum, amely akkor jelenik meg, a gyűjtemények bármelyikében az eredmény jelenik meg.|  
+|a UNION|Egyetlen tömb vagy objektum, amely a tömb vagy objektum átadott az elemek ad vissza. Például adja vissza ezt a függvényt`[1, 2, 3, 10, 101]:`<br /><br /> :`union([1, 2, 3], [101, 2, 1, 10])`<br /><br /> A paraméterek, a függvény egy objektum vagy egy lemezkészlet tömbök (nem ezek keveréke) lehet. Ha ezzel a névvel, a végső kimenetet a két objektum, a végső objektum az utolsó objektum ezen a néven jelenik meg.<br /><br /> **Számú paraméter**: 1...*n*<br /><br /> **Név**: gyűjtemény*n*<br /><br /> **Leírás**: kötelező. A gyűjtemények kiértékelése. Olyan objektum, amely akkor jelenik meg, a gyűjtemények bármelyikében az eredmény jelenik meg.|  
 |első|Az első elem a tömb vagy az átadott karakterlánc visszaadása. Például, a függvény `0`:<br /><br /> `first([0,2,3])`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: gyűjtemény<br /><br /> **Leírás**: kötelező. A gyűjteményt, amelyben az első objektumot igénybe vehet.|  
 |utolsó|Az utolsó elem a tömb vagy az átadott karakterlánc visszaadása. Például, a függvény `3`:<br /><br /> `last('0123')`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: gyűjtemény<br /><br /> **Leírás**: kötelező. A gyűjtemény utolsó dimenzióobjektumot érvénybe.|  
 |hajtsa végre a megfelelő|Visszaadja az első **száma** az átadott tömb vagy karakterlánc elemeit, például a függvény `[1, 2]`:`take([1, 2, 3, 4], 2)`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: gyűjtemény<br /><br /> **Leírás**: kötelező. A gyűjtemény első érvénybe **száma** a következő helyről objektumokat.<br /><br /> **Számú paraméter**: 2. régiója<br /><br /> **Név**: száma<br /><br /> **Leírás**: kötelező. A történő objektumok száma a **gyűjtemény**. Pozitív egész számnak kell lennie.|  
 |Kihagyása|A elemeket adja vissza, a tömb indextől kezdődő **száma**, például a függvény `[3, 4]`:<br /><br /> `skip([1, 2 ,3 ,4], 2)`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: gyűjtemény<br /><br /> **Leírás**: kötelező. Kihagyja az első gyűjtemény **száma** a következő helyről objektumokat.<br /><br /> **Számú paraméter**: 2. régiója<br /><br /> **Név**: száma<br /><br /> **Leírás**: kötelező. Előre hozása távolítsa el az objektumok száma **gyűjtemény**. Pozitív egész számnak kell lennie.|  
   
-## <a name="logical-functions"></a>Logikai funkciók  
+## <a name="logical-functions"></a>Logikai függvények  
  Ezek a funkciók hasznos feltételek belül, bármilyen típusú logika kiértékeléséhez használható.  
   
 |Függvény neve|Leírás|  
@@ -196,16 +196,16 @@ A következő példában a feldolgozási folyamat veszi **inputPath** és **outp
 |nem|Igaz értéket ad eredményül, ha a paraméter `false`. A logikai mindkét argumentumot kell. A következő értéket ad vissza `true`:`not(contains('200 Success','Fail'))`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: logikai<br /><br /> **Leírás**: IGAZ értéket ad vissza, ha a paraméter `false`. A logikai mindkét argumentumot kell. A következő értéket ad vissza `true`:`not(contains('200 Success','Fail'))`|  
 |Ha|Ha a megadott kifejezést kapott alapján egy megadott értéket adja vissza `true` vagy `false`.  Például a következő értéket ad vissza `"yes"`:`if(equals(1, 1), 'yes', 'no')`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: kifejezés<br /><br /> **Leírás**: kötelező. Logikai érték, amely meghatározza, melyik értéket adja vissza a kifejezést.<br /><br /> **Számú paraméter**: 2. régiója<br /><br /> **Név**: igaz<br /><br /> **Leírás**: kötelező. A visszatérési érték, ha a kifejezés `true`.<br /><br /> **Számú paraméter**: 3<br /><br /> **Név**: hamis<br /><br /> **Leírás**: kötelező. A visszatérési érték, ha a kifejezés `false`.|  
   
-## <a name="conversion-functions"></a>Átalakítás funkciók  
+## <a name="conversion-functions"></a>Konverziós függvények  
  Ezek a függvények minden nyelven natív típusai közötti átváltásra használhatók:  
   
 -   karakterlánc  
   
 -   egész szám  
   
--   Lebegőpontos  
+-   lebegőpontos  
   
--   Logikai érték  
+-   logikai  
   
 -   Tömbök  
   
@@ -215,8 +215,8 @@ A következő példában a feldolgozási folyamat veszi **inputPath** és **outp
 |-------------------|-----------------|  
 |int|A paraméter átalakítása egy egész számot. Például a következő kifejezést ad vissza, nem pedig egy karakterlánc, 100:`int('100')`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: érték<br /><br /> **Leírás**: kötelező. Az érték, amely alakítja át egy egész számot.|  
 |karakterlánc|A paraméter alakítható át karakterlánccá. Például az alábbi kifejezés eredménye `'10'`: `string(10)` is átválthat egy objektum egy karakterlánc, például ha a **PEL** paraméter egy tulajdonság az objektum `bar : baz`, akkor a következő lenne térjen vissza `{"bar" : "baz"}``string(pipeline().parameters.foo)`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: érték<br /><br /> **Leírás**: kötelező. Az érték, amely karakterlánccá alakítja át.|  
-|JSON-ban|A paraméternek JSON típusú értékké konvertálni. String() ellentéte. Például az alábbi kifejezés eredménye `[1,2,3]` tömb, nem pedig egy karakterlánc:<br /><br /> `parse('[1,2,3]')`<br /><br /> Hasonlóképpen átválthat a karakterlánc objektum. Például `json('{"bar" : "baz"}')` adja vissza:<br /><br /> `{ "bar" : "baz" }`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: karakterlánc<br /><br /> **Leírás**: kötelező. A karakterlánc, amely natív típusa értékre alakítja át.<br /><br /> A json-függvény xml bemenet is támogatja. Ha például a paraméter értékét:<br /><br /> `<?xml version="1.0"?> <root>   <person id='1'>     <name>Alan</name>     <occupation>Engineer</occupation>   </person> </root>`<br /><br /> a következő JSON formátumúvá alakul:<br /><br /> `{ "?xml": { "@version": "1.0" },   "root": {     "person": [     {       "@id": "1",       "name": "Alan",       "occupation": "Engineer"     }   ]   } }`|  
-|Lebegőpontos|A paraméter argumentum konvertálható lebegőpontos szám. Például az alábbi kifejezés eredménye `10.333`:`float('10.333')`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: érték<br /><br /> **Leírás**: kötelező. Az érték, amely a lebegőpontos számként alakítja át.|  
+|JSON|A paraméternek JSON típusú értékké konvertálni. String() ellentéte. Például az alábbi kifejezés eredménye `[1,2,3]` tömb, nem pedig egy karakterlánc:<br /><br /> `parse('[1,2,3]')`<br /><br /> Hasonlóképpen átválthat a karakterlánc objektum. Például `json('{"bar" : "baz"}')` adja vissza:<br /><br /> `{ "bar" : "baz" }`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: karakterlánc<br /><br /> **Leírás**: kötelező. A karakterlánc, amely natív típusa értékre alakítja át.<br /><br /> A json-függvény xml bemenet is támogatja. Ha például a paraméter értékét:<br /><br /> `<?xml version="1.0"?> <root>   <person id='1'>     <name>Alan</name>     <occupation>Engineer</occupation>   </person> </root>`<br /><br /> a következő JSON formátumúvá alakul:<br /><br /> `{ "?xml": { "@version": "1.0" },   "root": {     "person": [     {       "@id": "1",       "name": "Alan",       "occupation": "Engineer"     }   ]   } }`|  
+|lebegőpontos|A paraméter argumentum konvertálható lebegőpontos szám. Például az alábbi kifejezés eredménye `10.333`:`float('10.333')`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: érték<br /><br /> **Leírás**: kötelező. Az érték, amely a lebegőpontos számként alakítja át.|  
 |logikai érték|A paraméter átalakítása olyan logikai érték. Például az alábbi kifejezés eredménye `false`:`bool(0)`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: érték<br /><br /> **Leírás**: kötelező. Az érték, amely egy logikai érték alakítja át.|  
 |Egyesítés|Az argumentumként átadott az első nem null objektumot ad vissza. Megjegyzés: üres karakterlánc értéke nem null. Például ha az 1. és 2 paraméterek nincsenek megadva, ez visszaad `fallback`:`coalesce(pipeline().parameters.parameter1', pipeline().parameters.parameter2 ,'fallback')`<br /><br /> **Számú paraméter**: 1...*n*<br /><br /> **Név**: objektum*n*<br /><br /> **Leírás**: kötelező. Az objektumok kereséséhez `null`.|  
 |a Base64|A bemeneti karakterlánc a base64 alakot adja vissza. Például az alábbi kifejezés eredménye `c29tZSBzdHJpbmc=`:`base64('some string')`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: karakterlánc-1<br /><br /> **Leírás**: kötelező. A karakterlánc helyére base64 kódolása.|  
@@ -264,5 +264,5 @@ A következő példában a feldolgozási folyamat veszi **inputPath** és **outp
 |napokHozzaadasa|Az átadott karakterlánc időbélyeg ad hozzá egy nap egész szám. Hány napig lehet pozitív vagy negatív. Az eredmény: ISO 8601 formátumban ("no") alapértelmezés szerint karakterlánc, kivéve, ha a formátummegadóval való ábrázoláshoz valósul meg. Például `2015-02-23T13:27:36Z`:<br /><br /> `addseconds('2015-03-15T13:27:36Z', -20)`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: időbélyeg<br /><br /> **Leírás**: kötelező. Az idő tartalmazó karakterlánc.<br /><br /> **Számú paraméter**: 2. régiója<br /><br /> **Név**: napok<br /><br /> **Leírás**: kötelező. A hozzáadni kívánt napok száma. Negatív kivonandó időnél nap lehet.<br /><br /> **Számú paraméter**: 3<br /><br /> **Név**: formátum<br /><br /> **Leírás**: nem kötelező. Vagy egy [egyetlen formátum megadása](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx) vagy egy [egyéni formátum mintát](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) azt jelzi, hogy az időbélyegző értékének formázásának módja. Ha formátum nem áll rendelkezésre, az ISO 8601 formátumban ("no") használatos.|  
 |FormatDateTime|Dátum formátumú karakterláncot ad vissza. Az eredmény: ISO 8601 formátumban ("no") alapértelmezés szerint karakterlánc, kivéve, ha a formátummegadóval való ábrázoláshoz valósul meg. Például `2015-02-23T13:27:36Z`:<br /><br /> `formatDateTime('2015-03-15T13:27:36Z', 'o')`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: dátuma<br /><br /> **Leírás**: kötelező. A dátum tartalmazó karakterlánc.<br /><br /> **Számú paraméter**: 2. régiója<br /><br /> **Név**: formátum<br /><br /> **Leírás**: nem kötelező. Vagy egy [egyetlen formátum megadása](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx) vagy egy [egyéni formátum mintát](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) azt jelzi, hogy az időbélyegző értékének formázásának módja. Ha formátum nem áll rendelkezésre, az ISO 8601 formátumban ("no") használatos.|  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A rendszer változók kifejezésekben használható listájáért lásd: [rendszerváltozók](control-flow-system-variables.md).

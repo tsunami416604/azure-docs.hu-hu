@@ -1,6 +1,6 @@
 ---
 title: "SQL-kiszolgáló áttelepítése az Azure SQL Database az Azure-adatbázis áttelepítési szolgáltatás segítségével |} Microsoft Docs"
-description: "Ismerje meg, történő áttelepítéséhez a helyszíni SQL Server az Azure SQL Azure Database áttelepítési szolgáltatás."
+description: "Megismerheti, hogyan kell áttelepíteni a helyszíni SQL Server az Azure SQL az Azure-adatbázis áttelepítési szolgáltatás használatával."
 services: dms
 author: HJToland3
 ms.author: jtoland
@@ -10,12 +10,12 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 11/17/2017
-ms.openlocfilehash: 3e7e80d58a3eb27920736a1594633021b90014e9
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.date: 01/24/2018
+ms.openlocfilehash: 06d7023f225698400509449e59bdcb827becc644
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="migrate-sql-server-to-azure-sql-database"></a>Az Azure SQL-adatbázis SQL-kiszolgáló áttelepítése
 Az Azure-adatbázis áttelepítési szolgáltatás segítségével a helyszíni SQL Server-példány az Azure SQL Database-adatbázisok át. Ebben az oktatóanyagban az áttelepítést a **Adventureworks2012** adatbázis visszaállítása egy helyszíni példányát az SQL Server 2016 (vagy újabb) egy Azure SQL Database az Azure-adatbázis áttelepítése szolgáltatás használatával.
@@ -34,13 +34,15 @@ Az oktatóanyag elvégzéséhez kell:
 
 - Töltse le és telepítse [SQL Server 2016 vagy újabb](https://www.microsoft.com/sql-server/sql-server-downloads) (minden kiadás).
 - Engedélyezze a TCP/IP protokollt, amely le van tiltva alapértelmezés szerint az SQL Server Express telepítése során az a cikk utasításait követve [engedélyezheti vagy tilthatja le a hálózati protokoll](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure).
-- Konfigurálja a [Windows tűzfalat a hozzáféréshez](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 - Az Azure SQL Database-példányt, amely a következő cikkben található részletes úgy teheti meg egy példányának létrehozása [Azure SQL-adatbázis létrehozása az Azure portálon](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal).
 - Töltse le és telepítse a [adatok áttelepítési Segéd](https://www.microsoft.com/download/details.aspx?id=53595) v3.3 vagy újabb.
 - Az Azure Resource Manager telepítési modell, amely webhelyek kapcsolatot biztosít annak a helyszíni adatforrás-kiszolgálók használatával vagy használatával hozhat létre egy VNETET az Azure-adatbázis áttelepítése szolgáltatás [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
+- Győződjön meg arról, hogy az Azure virtuális hálózatot (VNET) hálózati biztonsági csoport szabályok tegye letiltása a következő kommunikációs portok 443-as, 53-as és 9354-es, 445-ös, 12000. További részletek az Azure VNET NSG forgalomszűrést végez, olvassa el a [hálózati forgalmat hálózati biztonsági csoportokkal](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-nsg).
+- Konfigurálja a [Windows tűzfalat a hozzáféréshez](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
+- Nyissa meg a Windows tűzfalat ahhoz, hogy az Azure adatbázis áttelepítése az SQL Server forrás eléréséhez.
+- Hozzon létre egy kiszolgálószintű [tűzfalszabály](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-firewall-configure) az Azure SQL Database-kiszolgáló eléréséhez az Azure-adatbázis áttelepítése szolgáltatás a céladatbázisokhoz. Adja meg a virtuális hálózat az Azure-adatbázis áttelepítése szolgáltatáshoz használt alhálózati tartományán.
 - Győződjön meg arról, hogy rendelkezik-e az adatforrás SQL Server-példányhoz való csatlakozásnál használt hitelesítő adatok [CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) engedélyek.
 - Győződjön meg arról, hogy rendelkezik-e a cél Azure SQL Database-példányt való kapcsolódáshoz használt hitelesítő adatok FELADATVEZÉRLŐ ADATBÁZISHOZ engedéllyel a cél Azure SQL-adatbázisok.
-- Nyissa meg a Windows tűzfalat ahhoz, hogy az Azure adatbázis áttelepítése az SQL Server forrás eléréséhez.
 
 ## <a name="assess-your-on-premises-database"></a>A helyi adatbázis felmérése
 Mielőtt telepítene át adatokat a helyszíni SQL Server-példány az Azure SQL Database, ki kell értékelnie az SQL Server-adatbázis az olyan problémák elhárítását, amelyek megakadályozhatják az áttelepítés. Az adatok áttelepítési Segéd v3.3 vagy újabb verzióját, a cikkben ismertetett lépéseket követve [hajt végre egy SQL-kiszolgáló áttelepítési assessment](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem) végrehajtásához a helyi adatbázis-értékelés. A szükséges lépések összefoglalása a következőképpen:
@@ -166,7 +168,7 @@ A szolgáltatás létrehozása után keresse meg azt az Azure portálon, és ezu
 2. Válassza ki **mentése** menteni a projektet.
 3. Az a **áttelepítési összegzés** képernyőn tekintse át, ellenőrizze az áttelepítési projekttel kapcsolatos részleteket.
 
-    ![DMS összegzése](media\tutorial-sql-server-to-azure-sql\dms-summary.png)
+    ![DMS Summary](media\tutorial-sql-server-to-azure-sql\dms-summary.png)
 
 4. Kattintson a **Mentés** gombra.
 
@@ -207,4 +209,4 @@ A szolgáltatás létrehozása után keresse meg azt az Azure portálon, és ezu
 1. Válassza ki az áttelepítési tevékenység a tevékenység állapota.
 2. Ellenőrizze a cél Azure SQL-adatbázis, az áttelepítés befejezése után.
 
-    ![Befejezve](media\tutorial-sql-server-to-azure-sql\dms-completed-activity.png)
+    ![Befejeződött](media\tutorial-sql-server-to-azure-sql\dms-completed-activity.png)

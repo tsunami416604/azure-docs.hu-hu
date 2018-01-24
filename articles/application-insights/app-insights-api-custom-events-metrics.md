@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/17/2017
 ms.author: mbullwin
-ms.openlocfilehash: a94a7da29d9f3c6f745df7e91ec9e19b66435eae
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 7d797716fb98ac85f11f956e732e08820b56affc
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API egyéni események és metrikák
 
@@ -43,9 +43,9 @@ Ha egy hivatkozás még nem rendelkezik az Application Insights SDK:
 
 * Az Application Insights SDK hozzáadása a projekthez:
 
-  * [ASP.NET-projekt](app-insights-asp-net.md)
-  * [Java-projekt](app-insights-java-get-started.md)
-  * [NODE.js-projekt](app-insights-nodejs.md)
+  * [ASP.NET project](app-insights-asp-net.md)
+  * [Java project](app-insights-java-get-started.md)
+  * [Node.js project](app-insights-nodejs.md)
   * [Az összes weboldal JavaScript](app-insights-javascript.md) 
 * Az eszköz vagy a web server kódjában a következők:
 
@@ -53,7 +53,7 @@ Ha egy hivatkozás még nem rendelkezik az Application Insights SDK:
 
     *Visual Basic:*`Imports Microsoft.ApplicationInsights`
 
-    *Java:*`import com.microsoft.applicationinsights.TelemetryClient;`
+    *Java:* `import com.microsoft.applicationinsights.TelemetryClient;`
     
     *NODE.js:*`var applicationInsights = require("applicationinsights");`
 
@@ -142,7 +142,7 @@ Metrikák küldhet az Application Insights részére, használhatja a `TrackMetr
 
 * Egyetlen értéket. Minden alkalommal, amikor az alkalmazás hajt végre egy mérték, az Application Insights küld a megfelelő értékkel. Tegyük fel például, hogy rendelkezik-e a tárolóban lévő elemek száma leíró metrikát. Egy adott időszakon belül mindhárom elem helyezze a tárolóba, és két elem távolítsa el. Ennek megfelelően meghívta `TrackMetric` kétszer: először átadja a érték `3` , majd értéke `-2`. Az Application Insights mindkét értéket tárolja az Ön nevében. 
 
-* Összesítést. Az metrikák használatakor minden egyetlen mérési ritkán érdekében áll. Ehelyett fontos Mi történt egy adott időszakon belül összegzését. Ilyen összegzését nevezik _összesítési_. A fenti példában az adott időszakra vonatkozó összesített metrika összegük van `1` , a szám a metrika értékének `2`. Az összesítési módszer használata esetén csak indításakor `TrackMetric` egyszer egy adott időszakra vonatkozóan, valamint az összesített értékek küldéséhez. Ez az az ajánlott módszer, mivel jelentősen csökkentheti a költségek és a teljesítmény terhet elküldésével kevesebb adatpontok Application insights részére, továbbra is az összes vonatkozó információk összegyűjtése közben.
+* Aggregation. Az metrikák használatakor minden egyetlen mérési ritkán érdekében áll. Ehelyett fontos Mi történt egy adott időszakon belül összegzését. Ilyen összegzését nevezik _összesítési_. A fenti példában az adott időszakra vonatkozó összesített metrika összegük van `1` , a szám a metrika értékének `2`. Az összesítési módszer használata esetén csak indításakor `TrackMetric` egyszer egy adott időszakra vonatkozóan, valamint az összesített értékek küldéséhez. Ez az az ajánlott módszer, mivel jelentősen csökkentheti a költségek és a teljesítmény terhet elküldésével kevesebb adatpontok Application insights részére, továbbra is az összes vonatkozó információk összegyűjtése közben.
 
 ### <a name="examples"></a>Példák:
 
@@ -158,7 +158,7 @@ Küldése a egyetlen metrika értékét:
 
 *C#, Java*
 
-```C#
+```csharp
     var sample = new MetricTelemetry();
     sample.Name = "metric name";
     sample.Value = 42.3;
@@ -178,7 +178,7 @@ Itt látható egy példa összesítése kódot:
 
 *C#*
 
-```C#
+```csharp
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -422,7 +422,7 @@ Ha manuálisan, nyomkövetési telemetria telemetriai korrelációs érdekében 
 
 *C#*
 
-```C#
+```csharp
 // Establish an operation context and associated telemetry item:
 using (var operation = telemetryClient.StartOperation<RequestTelemetry>("operationName"))
 {
@@ -576,7 +576,7 @@ Ha [mintavételi](app-insights-sampling.md) működik, az elemek száma tulajdon
 ## <a name="trackdependency"></a>TrackDependency
 A TrackDependency hívás segítségével nyomon követheti a válaszidejét és sikerességi arányát kód külső kódnak küldött hívások. A portál függőségi diagramjain jelennek meg.
 
-```C#
+```csharp
 var success = false;
 var startTime = DateTime.UtcNow;
 var timer = System.Diagnostics.Stopwatch.StartNew();
@@ -660,7 +660,7 @@ function Authenticated(signInId) {
 
 Az ASP.NET-webalkalmazás MVC alkalmazás, például:
 
-*RAZOR*
+*Razor*
 
         @if (Request.IsAuthenticated)
         {
@@ -913,7 +913,7 @@ A *dinamikusan leállítására és elindítására* a gyűjtemény és a teleme
 
 *C#*
 
-```C#
+```csharp
 
     using  Microsoft.ApplicationInsights.Extensibility;
 
@@ -987,7 +987,7 @@ Helyett a instrumentation kulcs lekérése a konfigurációs fájlban, beállít
 
 A weboldalakon érdemes lehet, hogy állítson be úgy a webalkalmazás-kiszolgáló állapota, nem pedig kódolási szó a parancsprogramba a. Például a egy weblap ASP.NET alkalmazás hozott létre:
 
-*JavaScript Razor*
+*JavaScript in Razor*
 
     <script type="text/javascript">
     // Standard Application Insights webpage script:
@@ -1034,7 +1034,7 @@ Annak meghatározásához, hogy mennyi ideig megtartja adatokat, lásd: [az adat
 * [iOS SDK](https://github.com/Microsoft/ApplicationInsights-iOS)
 
 ## <a name="sdk-code"></a>SDK-kód
-* [Az ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore)
+* [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore)
 * [ASP.NET 5](https://github.com/Microsoft/ApplicationInsights-dotnet)
 * [Windows Server csomagok](https://github.com/Microsoft/applicationInsights-dotnet-server)
 * [Java SDK](https://github.com/Microsoft/ApplicationInsights-Java)
@@ -1045,7 +1045,7 @@ Annak meghatározásához, hogy mennyi ideig megtartja adatokat, lásd: [az adat
 ## <a name="questions"></a>Kérdések
 * *Milyen kivételek előfordulhat, hogy throw Track_() hívások?*
 
-    nincs. Ezeket csomagolásához a try-catch záradékban nem kell. Ha az SDK problémákat tapasztal, üzenetek naplózza a hibakeresési konzol kimeneti és – ha az üzenetek beolvasása használatával – diagnosztikai keresésben.
+    Nincs. Ezeket csomagolásához a try-catch záradékban nem kell. Ha az SDK problémákat tapasztal, üzenetek naplózza a hibakeresési konzol kimeneti és – ha az üzenetek beolvasása használatával – diagnosztikai keresésben.
 * *Van egy REST API-t adatok beszerzése a portálról?*
 
     Igen, a [adatelérési API](https://dev.applicationinsights.io/). Adatok kinyerése segítségével [Analytics exportálása a Power bi-bA](app-insights-export-power-bi.md) és [a folyamatos exportálás](app-insights-export-telemetry.md).

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
 ms.author: lmolkova
-ms.openlocfilehash: 1b6bef88d729a2febfca2bd236a5382d2c11bd69
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 57f5670eec36ff2c4332da592dd2a3eef73fdefc
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="application-insights-for-net-console-applications"></a>.NET-keretrendszerhez készült Application Insights konzolon alkalmazások
 [Az Application Insights](app-insights-overview.md) lehetővé teszi, hogy a webalkalmazás rendelkezésre állását, teljesítményét és használatát a figyelésére.
@@ -31,7 +31,7 @@ Az előfizetés kell [Microsoft Azure](http://azure.com). Jelentkezzen be Micros
 * Telepítse a legújabb [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) csomag.
 * Állítsa be a instrumentation kulcs a kódban, mielőtt bármely telemetriai nyomon követése (vagy set APPINSIGHTS_INSTRUMENTATIONKEY környezeti változó). Ezt követően meg kell manuálisan nyomon követhető a telemetriai adatok és megtekintéséhez az Azure-portálon
 
-```C#
+```csharp
 TelemetryConfiguration.Active.InstrumentationKey = " *your key* ";
 var telemetryClient = new TelemetryClient();
 telemetryClient.TrackTrace("Hello World!");
@@ -45,13 +45,13 @@ Előfordulhat, hogy inicializálni és konfigurálhatja az Application Insights 
 
 Alapértelmezés szerint Application Insights SDK keresi `ApplicationInsights.config` fájlt a munkakönyvtárhoz. Ha `TelemetryConfiguration` létrehozása folyamatban van
 
-```C#
+```csharp
 TelemetryConfiguration config = TelemetryConfiguration.Active; // Read ApplicationInsights.config file if present
 ```
 
 Is meg lehet, hogy a konfigurációs fájl elérési útját.
 
-```C#
+```csharp
 TelemetryConfiguration configuration = TelemetryConfiguration.CreateFromConfiguration("ApplicationInsights.config");
 ```
 
@@ -90,7 +90,7 @@ A konfigurációs fájl teljes példa kaphat legújabb verziójának telepítés
 
 * Alkalmazás indítás folyamán létrehozása és konfigurálása `DependencyTrackingTelemetryModule` példány - az Egypéldányos kell lennie és az alkalmazás élettartamának meg kell őrizni.
 
-```C#
+```csharp
 var module = new DependencyTrackingTelemetryModule();
 
 // prevent Correlation Id to be sent to certain endpoints. You may add other domains as needed.
@@ -109,7 +109,7 @@ module.Initialize(configuration);
 
 * Adja hozzá a közös telemetriai inicializálók
 
-```C#
+```csharp
 // stamps telemetry with correlation identifiers
 TelemetryConfiguration.Active.TelemetryInitializers.Add(new OperationCorrelationTelemetryInitializer());
 
@@ -121,7 +121,7 @@ TelemetryConfiguration.Active.TelemetryInitializers.Add(new HttpDependenciesPars
 
 #### <a name="full-example"></a>Teljes példa
 
-```C#
+```csharp
 static void Main(string[] args)
 {
     TelemetryConfiguration configuration = TelemetryConfiguration.Active;

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: 89bb5d255db9ab266d04169a3101e2b694236029
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fb9a7e900c489b3d22594dfcb6e1faa736c3c490
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="samples-on-the-data-science-virtual-machines-dsvm"></a>Az adatok tudományos virtuális gépeken (DSVM) minták
 
@@ -34,7 +34,7 @@ A DSVMs belefoglalt teljesen működőképes kibővített minták Jupyter Notebo
 | **Python** nyelv  | A minták **Python** foglalja össze a helyzetekben, például az Azure felhőalapú adattároló összekapcsolása és az azokkal **Azure Machine Learning**.  <br/> [Képernyőfelvétel](#python-language) | <br/>`~notebooks` <br/><br/>|
 | **Ágnes** nyelv  | A minta **Ágnes** , amely részletesen Plotting a Ágnes, mély Ágnes tanulás, C és Python előhívásának Ágnes stb. <br/> [Képernyőfelvétel](#julia-language) |<br/> **Windows**:<br/> `~notebooks/Julia_notebooks`<br/><br/>`~notebooks`<br/><br/> **Linux**:<br/> `~notebooks/julia`<br/><br/> |
 | **CNTK** <br/> (A Microsoft kognitív eszközkészlet)  | A Microsoft kognitív eszközkészlet csapata által közzétett minták tanulási mély.  <br/> [Képernyőfelvétel](#cntk) | <br/>**Windows**:<br/> `~notebooks/CNTK/Tutorials`<br/><br/>`~/samples/CNTK-Samples-2-0/Examples`<br/><br/> **Linux**:<br/> `~notebooks/CNTK`<br/> <br/>|
-| **MXnet** notebookok  | Részletes tanulási okhoz minták **MXnet** alapú Neurális hálózatokat. Nincsenek speciális forgatókönyvek kezdő kezdve notebookok különböző.  <br/> [Képernyőfelvétel](#mxnet) | <br/>`~notebooks/mxnet`<br/> <br/>|
+| **MXNet** notebookok  | Részletes tanulási okhoz minták **MXNet** alapú Neurális hálózatokat. Nincsenek speciális forgatókönyvek kezdő kezdve notebookok különböző.  <br/> [Képernyőfelvétel](#mxnet) | <br/>`~notebooks/mxnet`<br/> <br/>|
 | **Az Azure gépi tanulás** AzureML  | Interakció **Azure Machine Learning** Studio és a webszolgáltatás végpontok helyileg betanított modellek pontozási munkafolyamatokat felhőalapú történő létrehozását. <br/> [Képernyőfelvétel](#azureml) | <br/>`~notebooks/azureml`<br/> <br/>|
 | **caffe2** | Részletes tanulási okhoz minták **caffe2** alapú Neurális hálózatokat. Például a lemezkép előzetes feldolgozás adatkészlet létrehozását, regresszióját, és segítségével előre modellek betanítása, beleértve a példákat úgy tervezték, hogy a felhasználók ismerkedjen caffe2 és hatékonyan, használatával több jegyzetfüzetet van. <br/> [Képernyőfelvétel](#caffe2) | <br/>`~notebooks/caffe2`<br/><br/> |
 | **H2O**   | Python-alapú minták okhoz **H2O** számos valós forgatókönyvvel problémák. <br/> [Képernyőfelvétel](#h2o) | <br/>`~notebooks/h2o`<br/><br/> |
@@ -83,11 +83,11 @@ Jelentkezzen be ugyanazt a jelszót, mint a bejelentkezési adatait a DSVM szám
 <br/>![CNTK minták](./media/cntk-samples2.png)<br/>
 <br/>![CNTK minták](./media/cntk-samples.png)<br/>
 
-## <a name="mxnet"></a>MXnet
+## <a name="mxnet"></a>MXNet
 <br/>![MXnet minták](./media/mxnet-samples.png)<br/>
 
 ## <a name="azureml"></a>AzureML 
-<br/>![AzurekML minták](./media/azureml-samples.png)<br/>
+<br/>![AzurekML Samples](./media/azureml-samples.png)<br/>
 
 ## <a name="caffe2"></a>Caffe2 
 <br/>![caffe2 minták](./media/caffe2-samples.png)<br/>

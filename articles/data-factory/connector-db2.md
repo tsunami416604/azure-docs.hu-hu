@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 
 ms.author: jingwang
-ms.openlocfilehash: 23bc0ba87abbac0f83e3e5ac9d1049bbf42707c9
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: a96de1814afc7947205a0dc7ed005f7cadff20bc
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Adatok másolása az DB2 Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -68,7 +68,7 @@ A következő tulajdonságok DB2 kapcsolódó szolgáltatás támogatottak:
 | kiszolgáló |A DB2-kiszolgáló neve. |Igen |
 | adatbázis |Neve a DB2-adatbázishoz. |Igen |
 | Séma |Az adatbázisban séma neve. A séma neve a kis-és nagybetűket. |Nem |
-| AuthenticationType |A DB2-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Az érték engedélyezett: **alapvető**. |Igen |
+| authenticationType |A DB2-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Az érték engedélyezett: **alapvető**. |Igen |
 | felhasználónév |Adja meg a felhasználónevet a DB2-adatbázishoz való kapcsolódáshoz. |Igen |
 | jelszó |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Ez a mező megjelölése SecureString. |Igen |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhatja Self-hosted integrációs futásidejű vagy Azure integrációs futásidejű (ha az adattároló nyilvánosan elérhető). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
@@ -181,7 +181,7 @@ Az adatok másolása DB2, amikor az Azure Data Factory ideiglenes adattípusok a
 | Bináris |Byte] |
 | Blob |Byte] |
 | Karakter |Karakterlánc |
-| CLOB |Karakterlánc |
+| Clob |Karakterlánc |
 | Dátum |Dátum és idő |
 | DB2DynArray |Karakterlánc |
 | DbClob |Karakterlánc |
@@ -197,12 +197,12 @@ Az adatok másolása DB2, amikor az Azure Data Factory ideiglenes adattípusok a
 | Numerikus |Decimális |
 | Real |Egyedülálló |
 | SmallInt |Int16 |
-| Time |A TimeSpan |
+| Time |TimeSpan |
 | Időbélyeg |DateTime |
 | VarBinary |Byte] |
 | VarChar |Karakterlánc |
 | VarGraphic |Karakterlánc |
-| XML |Byte] |
+| Xml |Byte] |
 
 
 ## <a name="next-steps"></a>További lépések

@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 47889c42160c8d4a8dce042497388827369b0a08
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: b388aa0257877446cfec5be1252c0a740f9d478c
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="azure-data-factory---customer-case-studies"></a>Az Azure Data Factory - ügyfél esettanulmányok
 Adat-előállító egy felhőalapú információk felügyeleti szolgáltatás, amely automatizálja a mozgás és az adatok átalakítása. Az ügyfelek között számos iparágakban segítségével Data Factory és az egyéb Azure-szolgáltatások az analytics folyamatok felépítéséhez és az üzleti problémák megoldásához.  A felhasználók közvetlenül a megtudhatja, miért és hogyan használják adat-előállító.

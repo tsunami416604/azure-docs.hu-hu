@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
 ms.date: 01/04/2018
-ms.openlocfilehash: 3d7e96623ef4ad9abd55deca8b410e9ce0d73b6c
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: d23628fd8446f6e7e0e5ed14b98da13c09b2d592
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="minimal-downtime-migration-to-azure-database-for-mysql"></a>MySQL az Azure Database-áttelepítés minimális állásidő érdekében
 Áttelepítheti a meglévő MySQL-adatbázis Azure-adatbázishoz a MySQL Attunity megfelel a Microsoft Migrations. Attunity megfelel egy közös ajánlat Attunity és a Microsoft. Azure-adatbázis áttelepítése szolgáltatás megfelelően szerepel a Microsoft ügyfelei további költségek nélkül. 
@@ -34,5 +34,5 @@ A folyamat minimális állásidővel áttelepítés áttekintését tartalmazza:
 A Attunity megfelel az ajánlat Microsoft Migrations kapcsolatos további információkért lásd a következőket:
  - Lépjen a [Attunity megfelel a Microsoft Migrations](https://aka.ms/attunity-replicate) weblap.
  - Töltse le [Attunity megfelel a Microsoft áttelepítések](http://discover.attunity.com/download-replicate-microsoft-lp6657.html).
- - Lépjen a [Attunity replikálása közösségi](https://microsoft.attunity.com/) első lépések útmutatója, oktatóanyagok és támogatási szolgálathoz.
+ - Lépjen a [Attunity replikálása közösségi](https://aka.ms/attunity-community) első lépések útmutatója, oktatóanyagok és támogatási szolgálathoz.
  - A MySQL-adatbázis áttelepítése az Azure Database-MySQL az Attunity megfelel az lépésenkénti útmutatásért lásd: a [adatbázis áttelepítési útmutató](https://datamigration.microsoft.com/scenario/mysql-to-azuremysql).

@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 01/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 459c792028d3eede059814324597811b24e65ac2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c1fde0abd2f5fa8e36c71707d14cd5afeb3a0d2d
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="schema-mapping-in-copy-activity"></a>A másolási tevékenység séma-hozzárendelése
 Ez a cikk ismerteti, hogyan működik az Azure Data Factory másolási tevékenység során a séma-hozzárendelése és a forrásadatok adatok gyűjtésének adattípus-leképezés amikor hajtsa végre az adatok másolását.
@@ -151,16 +151,16 @@ A natív típus minden összekötő témakör "Adattípus leképezés" szakaszá
 Adat-előállítót a következő ideiglenes adattípusokat támogatja: alatt az értékeket is megadhat, írja be az adatokat nyújtásakor [adatkészlet-szerkezetekben](concepts-datasets-linked-services.md#dataset-structure) konfiguráció:
 
 * Byte]
-* Logikai érték
+* Logikai
 * Dátum és idő
-* datetimeoffset
+* Datetimeoffset
 * Decimális
 * Dupla
 * GUID
 * Int16
 * Int32
 * Int64
-* Egyetlen
+* Egyedülálló
 * Karakterlánc
 * Időtartomány
 
@@ -186,7 +186,7 @@ Az alábbi forgatókönyvek esetén "structure" adatkészletben levő javasolt:
 * Adatok másolása tárolja a rugalmas séma, például Azure-tábla/Cosmos DB (bemeneti adatkészletet), a várt adatokat (oszlop) keresztül történő másolásakor lehetővé másolás helyett biztosításához tevékenység amelyből megállapítható a séma felső sor(ok) alapján minden tevékenység futtatása során.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A másolási tevékenység cikkekben talál:
 
 - [Tevékenység – áttekintés](copy-activity-overview.md)

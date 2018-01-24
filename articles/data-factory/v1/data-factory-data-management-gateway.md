@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2017
+ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: af05f407661c2606719e733e373d0dad7bff3230
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: 0735dd186e53a72c29040fcde51ceb70024784e4
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="data-management-gateway"></a>Adatkezelési átjáró
 > [!NOTE]
@@ -139,10 +139,10 @@ Vállalati tűzfal szinten a következő tartományokkal és a kimenő portok ke
 
 | Tartománynevek | Portok | Leírás |
 | --- | --- | --- |
-| *. servicebus.windows.net |443, 80 |Az adatátviteli szolgáltatás háttér-kommunikációhoz használt |
-| *. core.windows.net |443 |Használt előkészített másolása Azure Blob használatával (Ha be van állítva)|
-| *. frontend.clouddatahub.net |443 |Az adatátviteli szolgáltatás háttér-kommunikációhoz használt |
-| *. servicebus.windows.net |9350-9354, 5671 |Nem kötelező service bus-továbbító a varázsló által használt TCP-n keresztül |
+| *.servicebus.windows.net |443, 80 |Az adatátviteli szolgáltatás háttér-kommunikációhoz használt |
+| *.core.windows.net |443 |Használt előkészített másolása Azure Blob használatával (Ha be van állítva)|
+| *.frontend.clouddatahub.net |443 |Az adatátviteli szolgáltatás háttér-kommunikációhoz használt |
+| *.servicebus.windows.net |9350-9354, 5671 |Nem kötelező service bus-továbbító a varázsló által használt TCP-n keresztül |
 
 
 A Windows tűzfal szinten a kimenő portok általában engedélyezve vannak. Ha nem, konfigurálhatja a tartományok és portok ennek megfelelően az átjárót működtető gépen.
@@ -363,7 +363,7 @@ Name (Név) | A logikai átjáró és az átjáróhoz társított csomópont nev
 status | A logikai átjáró és az átjáró csomópontok állapota. Példa: Online/Offline/korlátozott/stb. A fenti állapotok megjelenése kapcsolatos információkért lásd: [az átjáró állapotának](#gateway-status) szakasz. 
 Verzió | A logikai átjáró és az egyes átjárócsomópont verzióját jeleníti meg. A logikai átjáró verziója határozza meg a csoportban lévő csomópontok többsége verzióján alapul. Ha nincs a logikai átjáró beállítás, csak a csomópontok a azonos verziószámú a logikai átjáró függvényében eltérő verziójú csomópontok megfelelően. Mások korlátozott módban van, és manuálisan kell frissíteni, (csak abban az esetben az automatikus frissítés sikertelen lesz). 
 Rendelkezésre álló memória | Rendelkezésre álló memória egy átjáró-csomóponton. Ez az érték közel valós idejű pillanatképet. 
-CPU-felhasználás | Egy átjáró csomópont CPU-felhasználását. Ez az érték közel valós idejű pillanatképet. 
+Processzorkihasználtság | Egy átjáró csomópont CPU-felhasználását. Ez az érték közel valós idejű pillanatképet. 
 Hálózatkezelés (In/Out) | Hálózathasználat egy átjáró csomópont. Ez az érték közel valós idejű pillanatképet. 
 Egyidejűleg futó feladatainak (futtató / Limit) | Feladatok vagy minden egyes csomóponton futó feladatok száma. Ez az érték közel valós idejű pillanatképet. Korlát azt jelzi, hogy az egyes csomópontok maximális egyidejűleg futó feladatainak. Ez az érték van megadva a mérete alapján. Egyidejű feladatok végrehajtásának speciális forgatókönyvekhez, ahol Processzor/memória/hálózati alatt szükség, de tevékenységek vannak időtúllépés miatt növelheti a korlát növelhető. Ez a funkció érhető el egy egy csomópontos átjáró (még akkor is, ha a méretezhetőség és a rendelkezésre állási funkció nincs engedélyezve).  
 Szerepkör | A kézbesítő és feldolgozói szerepkörök az többcsomópontos átjáró – két típusa van. Az összes csomópontja a dolgozók, ami azt jelenti, hogy az összes felhasználásuk feladatok végrehajtásához. A kézbesítő csak egy csomópont, feladatok és feladatok a felhőalapú szolgáltatások lekéréses és mennyi őket (beleértve magát) különböző munkavégző csomópontokhoz használt van.
@@ -386,7 +386,7 @@ A következő táblázat a lehetséges állapotok egy **logikai átjáró**. Az 
 
 status | Megjegyzések
 :----- | :-------
-Regisztrálnia kell az Adatátjárót | Nincs csomópont még regisztrálva van a logikai átjáró
+Needs Registration | Nincs csomópont még regisztrálva van a logikai átjáró
 Online | Átjáró csomópontja online állapotban.
 Offline | Nincs csomópontja online állapotát.
 Korlátozott | Ez az átjáró nem minden csomópontja kifogástalan állapotban vannak. Ez az állapot nem figyelmezteti rá, hogy néhány csomópont esetleg nem működik! <br/><br/>Hitelesítő adatok szinkronizálási problémája kézbesítő/munkavégző csomóponton okozhatja. 

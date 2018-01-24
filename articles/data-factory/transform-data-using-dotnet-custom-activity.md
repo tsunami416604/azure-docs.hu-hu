@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 01/16/2018
 ms.author: shengc
-ms.openlocfilehash: 6300e59d001864c7adc6ba369586dbe848a85edd
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 2674b431ba610bccb92f6b209970af1fab110f48
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -115,7 +115,7 @@ A következő táblázat ismerteti a neveket és leírásokat erre a tevékenys�
 | resourceLinkedService | Az Azure Storage társított szolgáltatás a tárfiókhoz, az egyéni alkalmazás tárolására | Nem       |
 | folderPath            | Az egyéni alkalmazás és annak függőségeit a mappa elérési útja | Nem       |
 | referenceObjects      | Meglévő társított szolgáltatások és adatkészletek tömbjét. A hivatkozott társított szolgáltatások és adatkészletek átadott az egyéni alkalmazás JSON formátumban, egyéni kód is hivatkozni lehessen a Data Factory erőforrásai | Nem       |
-| Az ExtendedProperties    | Egyéni kód is hivatkozhat olyan további, az egyéni alkalmazás JSON formátumban kell átadni, felhasználó által definiált tulajdonságok | Nem       |
+| extendedProperties    | Egyéni kód is hivatkozhat olyan további, az egyéni alkalmazás JSON formátumban kell átadni, felhasználó által definiált tulajdonságok | Nem       |
 
 ## <a name="executing-commands"></a>Parancsok végrehajtása
 
@@ -188,7 +188,7 @@ Ez a példa bemutatja, hogyan segítségével a referenceObjects és extendedPro
 
 Ha a tevékenység végrehajtása, referenceObjects és extendedProperties következő fájlok tárolják, amely a SampleApp.exe végrehajtási mappában vannak telepítve: 
 
-- Activity.JSON
+- activity.json
 
   Az extendedProperties és az egyéni tevékenység tulajdonságok tárolja. 
 
@@ -196,13 +196,13 @@ Ha a tevékenység végrehajtása, referenceObjects és extendedProperties köve
 
   Tárolja a referenceObjects tulajdonságban definiált összekapcsolt szolgáltatások tömbjét. 
 
-- datasets.JSON
+- datasets.json
 
   Tárolja a referenceObjects tulajdonságban definiált adatkészletek tömbjét. 
 
 A következő példakód azt mutatják be, hogyan a SampleApp.exe érje el a szükséges adatokat JSON-fájlokból: 
 
-```C#
+```csharp
 using Newtonsoft.Json;
 using System;
 using System.IO;

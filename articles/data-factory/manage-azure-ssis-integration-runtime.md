@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 01/22/2018
 ms.author: spelluru
-ms.openlocfilehash: c1743a0d06f911122ed0aba586aec837f81c578c
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: b4b777a858febb4b601c038508e4fc313c189ac2
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="manage-an-azure-ssis-integration-runtime"></a>Egy Azure-SSIS-integrációs futásidejű kezelése
 A [hozzon létre egy Azure-SSIS-integrációs futásidejű](create-azure-ssis-integration-runtime.md) cikkből megtudhatja, hogyan hozhat létre egy Azure-SSIS-integrációs futásidejű (IR) Azure Data Factory használatával. Ez a cikk egy meglévő Azure-SSIS-integrációs futásidejű újrakonfigurálása információkat biztosít.  
@@ -25,9 +25,28 @@ A [hozzon létre egy Azure-SSIS-integrációs futásidejű](create-azure-ssis-in
 > [!NOTE]
 > Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. Ha a Data Factory szolgáltatás általánosan elérhető 1. verzióját használja, lásd: [A Data Factory 1. verziójának dokumentációja](v1/data-factory-introduction.md).
 
+
+## <a name="data-factory-ui"></a>A Data Factory felhasználói felülete 
+Data Factory felhasználói felület segítségével leállítása, szerkesztése vagy újrakonfigurálási vagy egy Azure-SSIS infravörös törlése 
+
+1. Az a **Data Factory felhasználói felület**, váltson a **szerkesztése** fülre. Indítsa el a Data Factory felhasználói felület, kattintson a **Szerző & figyelő** a data factory kezdőlapján.
+2. Kattintson a bal oldali ablaktáblában **kapcsolatok**.
+3. A jobb oldali ablaktáblában váltani a **integrációs futtatókörnyezetek**. 
+4. Gombok használhatja a műveletek oszlopbeli **leállítása**, **szerkesztése**, vagy **törlése** integrációs futásidejű. A **kód** gombra a **műveletek** oszlop lehetővé teszi a JSON-definícióból integrációs futásidejű társított megtekintését.  
+    
+    ![Az Azure SSIS-IR műveletek](./media/manage-azure-ssis-integration-runtime/actions-for-azure-ssis-ir.png)
+
+### <a name="to-reconfigure-an-azure-ssis-ir"></a>Egy Azure-SSIS-IR újrakonfigurálása
+1. Állítsa le a integrációs futásidejű kattintva **leállítása** a a **műveletek** oszlop. A lista nézet frissítéséhez kattintson **frissítése** az eszköztáron. Az IR leállítása után látja, hogy az első művelet lehetővé teszi, hogy az infravörös indítása 
+
+    ![Az Azure SSIS IR - leállítása után műveletek](./media/manage-azure-ssis-integration-runtime/actions-after-ssis-ir-stopped.png)
+2. Szerkesztés/reconfigure IR kattintva **szerkesztése** gombra a **műveletek** oszlop. Az a **integrációs futásidejű telepítő** ablakban, a beállítások módosítása (például mérete a csomópont, a csomópontok és a csomópontonkénti maximális párhuzamos végrehajtások száma). 
+3. Az IR újraindításához kattintson **Start** gombra a **műveletek** oszlop.     
+
+## <a name="azure-powershell"></a>Azure PowerShell
 Miután kiépítése, és indítsa el az Azure-SSIS integrációs futásidejű példánya, konfigurálhatja újra sorozatát futtatja `Stop`  -  `Set`  -  `Start` PowerShell-parancsmagok egymás után. Például a következő PowerShell-parancsfájl módosítja, az Azure-SSIS-integrációs futásidejű öt példánya számára lefoglalt csomópontok száma.
 
-## <a name="reconfigure-an-azure-ssis-ir"></a>Egy Azure-SSIS-IR újrakonfigurálása
+### <a name="reconfigure-an-azure-ssis-ir"></a>Egy Azure-SSIS-IR újrakonfigurálása
 
 1. Először állítsa le az Azure-SSIS-integrációs futásidejű használatával a [Stop-AzureRmDataFactoryV2IntegrationRuntime](/powershell/module/azurerm.datafactoryv2/stop-azurermdatafactoryv2integrationruntime?view=azurermps-4.4.1) parancsmag. Ez a parancs kiadott összes csomópontját, és leállítja a számlázási.
 
@@ -45,7 +64,7 @@ Miután kiépítése, és indítsa el az Azure-SSIS integrációs futásidejű p
     Start-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName
     ```
 
-## <a name="delete-an-azure-ssis-ir"></a>Egy Azure-SSIS-IR törlése
+### <a name="delete-an-azure-ssis-ir"></a>Egy Azure-SSIS-IR törlése
 1. A data factory az összes meglévő Azure SSIS IRs először felsorolása
 
     ```powershell

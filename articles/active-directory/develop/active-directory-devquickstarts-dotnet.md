@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: e1ca92b1d1ae015add539ef03a358f7a53bc3a6d
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 9b1118b0159437e179b09b179571ed1460c3daf6
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-ad-net-desktop-wpf-getting-started"></a>Az Azure AD .NET asztali (WPF) első lépések
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -74,7 +74,7 @@ Az alapelv ADAL mögött, hogy a hozzáférési tokent kell, ha egyszerűen megh
 
 * Az a `DirectorySearcher` projektben nyissa meg `MainWindow.xaml.cs` , és keresse meg a `MainWindow()` metódust.  Az első lépés az, hogy az alkalmazás inicializálása `AuthenticationContext` -ADAL tartozó elsődleges osztály.  Ez az adott át adal-t a koordináták kommunikálni az Azure AD, és mondja el, akkor jogkivonatok gyorsítótárazásának kell.
 
-```C#
+```csharp
 public MainWindow()
 {
     InitializeComponent();
@@ -87,7 +87,7 @@ public MainWindow()
 
 * Keresse meg a `Search(...)` metódus, amely akkor kell meghívni, amikor a felhasználó az alkalmazás felhasználói felületén a "Search" gombra kattint.  Ez a módszer az Azure AD Graph API lekérdezéshez GET kérés teszi a felhasználók számára, amelyek egyszerű felhasználónév a megadott keresési kifejezés kezdődik.  Ahhoz, hogy a Graph API lekérdezni, meg kell adnia egy access_token a, de a `Authorization` fejlécet a kérelem - ezt az adal-t honnan.
 
-```C#
+```csharp
 private async void Search(object sender, RoutedEventArgs e)
 {
     // Validate the Input String
@@ -121,7 +121,7 @@ private async void Search(object sender, RoutedEventArgs e)
 * Figyelje meg, hogy a `AuthenticationResult` objektum tartalmaz egy `UserInfo` objektum, amely segítségével az alkalmazás esetleg adatokat gyűjteni.  Az a DirectorySearcher `UserInfo` segítségével testre szabhatja az alkalmazás Kezelőfelületén a felhasználói azonosítóval.
 * Amikor a felhasználó a "Sign Out" gombra kattint, annak érdekében, hogy a következő hívást szeretnénk `AcquireTokenAsync(...)` ekkor megkérdezi a felhasználót, hogy jelentkezzen be.  Ez az adal-t, az egyszerű módon, ha a token gyorsítótár kiürítése:
 
-```C#
+```csharp
 private void SignOut(object sender = null, RoutedEventArgs args = null)
 {
     // Clear the token cache
@@ -133,7 +133,7 @@ private void SignOut(object sender = null, RoutedEventArgs args = null)
 
 * Azonban ha a felhasználó nem a "Sign Out" gombra kattintva érdemes a felhasználói munkamenetet a következő alkalommal futtatja a DirectorySearcher a karbantartása.  Az alkalmazás indításakor ellenőrizze az adal-t a jogkivonatok gyorsítótárát, vagy egy meglévő jogkivonatot, és ennek megfelelően frissíti a felhasználói felületen.  Az a `CheckForCachedToken()` módszer, egy másik hívás `AcquireTokenAsync(...)`, ezúttal benyújtása a `PromptBehavior.Never` paraméter.  `PromptBehavior.Never`adal-t jelzi, hogy a felhasználói bejelentkezés nem kéri, és ADAL helyette kell kivételt jelez, ha nem adja vissza egy token.
 
-```C#
+```csharp
 public async void CheckForCachedToken() 
 {
     // As the application starts, try to get an access token without prompting the user.  If one exists, show the user as signed in.

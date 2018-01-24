@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/8/2017
 ms.author: mcoskun
-ms.openlocfilehash: c14794b71ce7340d9e90a56d781c712e247ded06
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0687baf12a48788d86467b1f1a822b5d9050e5d5
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Az Azure Service Fabric megbízható gyűjtemény objektum szerializálása
 Megbízható gyűjtemények replikálja, és a gép hibák és áramkimaradások tartós szempontjából elemek megmaradnak.
@@ -35,14 +35,14 @@ Beépített objektumszerializáló még hatékonyabbak, mivel még ismernie a t�
 Megbízható állapotkezelője rendelkezik beépített szerializáló következő esetében: 
 - GUID
 - logikai érték
-- Bájt
+- bájt
 - sbyte
 - Byte]
 - Karakter
-- Karakterlánc
+- karakterlánc
 - Decimális
-- Dupla
-- Lebegőpontos
+- duplaszó
+- lebegőpontos
 - int
 - uint
 - hosszú
@@ -56,7 +56,7 @@ Egyéni objektumszerializáló gyakran használják, a teljesítmény növelése
 
 [IReliableStateManager.TryAddStateSerializer<T> ](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer--1?Microsoft_ServiceFabric_Data_IReliableStateManager_TryAddStateSerializer__1_Microsoft_ServiceFabric_Data_IStateSerializer___0__) egyéni szerializáló a(z) az adott típus T. regisztrálhatók Ez a regisztráció megtörténik az biztosítja, hogy helyreállítási megkezdése előtt az összes megbízható gyűjtemények a megfelelő szerializáló beolvasni a megőrzött adatok elérésére StatefulServiceBase kialakításában.
 
-```C#
+```csharp
 public StatefulBackendService(StatefulServiceContext context)
   : base(context)
   {
@@ -79,7 +79,7 @@ Egyéni szerializáló kell megvalósítania a [IStateSerializer<T> ](https://do
 
 Az alábbiakban látható egy példa egyéni típus neve, amelyben négy tulajdonságok OrderKey
 
-```C#
+```csharp
 public class OrderKey : IComparable<OrderKey>, IEquatable<OrderKey>
 {
     public byte Warehouse { get; set; }
@@ -98,7 +98,7 @@ public class OrderKey : IComparable<OrderKey>, IEquatable<OrderKey>
 Az alábbiakban látható egy példa végrehajtásának IStateSerializer<OrderKey>.
 Vegye figyelembe, hogy olvasási és írási addsortproperty() baseValue, a továbbítást kompatibilitás a megfelelő túlterhelést hívni.
 
-```C#
+```csharp
 public class OrderKeySerializer : IStateSerializer<OrderKey>
 {
   OrderKey IStateSerializer<OrderKey>.Read(BinaryReader reader)
@@ -147,7 +147,7 @@ Egyéni szerializáló felhasználók be kell tartaniuk a szerializáló, ellen�
 Gyakori módja az összes verzió támogatására elején mérete információk hozzáadása, és a csak a választható tulajdonságok hozzáadását.
 Így minden verzió tud olvasni, sokkal is és az adatfolyam fennmaradó része ugorhat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
   * [Szerializálási és frissítése](service-fabric-application-upgrade-data-serialization.md)
   * [Fejlesztői leírás megbízható gyűjtemények](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
   * [Az alkalmazás használata a Visual Studio frissítése](service-fabric-application-upgrade-tutorial.md) végigvezeti Önt az alkalmazásfrissítés Visual Studio használatával.

@@ -14,25 +14,25 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 10/05/2016
 ms.author: wesmc;ricksal
-ms.openlocfilehash: 66bcd738b86f846eae3499b289a6629323009a44
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: 574e699a1cfca2caef0cf20872570bbb8650117b
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="authenticate-with-mobile-engagement-rest-apis"></a>Azokkal a Mobilmarketing REST API-k
 
 ## <a name="overview"></a>Áttekintés
 
-Ez a dokumentum ismerteti, hogyan kérhet egy érvényes Azure AD Oauth jogkivonat a Mobile Engagement REST API-k szolgáltatással való hitelesítésre.
+Ez a dokumentum ismerteti, hogyan kérhet egy érvényes Azure Active Directory (Azure AD) OAuth jogkivonat a Mobile Engagement REST API-k szolgáltatással való hitelesítésre.
 
-Feltételezzük, hogy egy érvényes Azure-előfizetéssel rendelkezik, és a Mobile Engagement-alkalmazáshoz egyikének használatával hozott létre a [fejlesztői oktatóanyagok](mobile-engagement-windows-store-dotnet-get-started.md).
+Ez az eljárás feltételezi, hogy egy érvényes Azure-előfizetéssel rendelkezik, és a Mobile Engagement-alkalmazáshoz létrehozott egyikének használatával a [fejlesztői oktatóanyagok](mobile-engagement-windows-store-dotnet-get-started.md).
 
 ## <a name="authentication"></a>Hitelesítés
 
-A Microsoft Azure Active Directory jogkivonat-hitelesítéshez használt OAuth-alapú. 
+A Microsoft Azure Active Directory-alapú OAuth jogkivonat-hitelesítéshez használt. 
 
-Az API-k hitelesítési kérelemre érdekében egy engedélyezési fejléc fel kell venni minden kérelemnél, amely a következő formátumban:
+Egy API-kérelem hitelesítéséhez, egy engedélyezési fejléc számára minden kérelemnél hozzá kell adni. Az engedélyezési fejléc a következő formátumban kell megadni:
 
     Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGmJlNmV2ZWJPamg2TTNXR1E...
 
@@ -41,14 +41,17 @@ Az API-k hitelesítési kérelemre érdekében egy engedélyezési fejléc fel k
 > 
 > 
 
-Több módon is szolgáltatáshitelesítést egy token. Az API-kat az egy felhőszolgáltatás nevezik, mivel használandó API-kulcs. API-kulcs Azure terminológia a szolgáltatás egyszerű jelszó nevezik. Az alábbi eljárást a manuális beállítása csak egyik módját ismerteti.
+Több módon is szolgáltatáshitelesítést egy token. Az API-k nevezzük az egy felhőszolgáltatás, mert használandó API-kulcs. API-kulcs Azure terminológia a szolgáltatás egyszerű jelszó nevezik. Az alábbi eljárás manuális beállítása csak egyik módját ismerteti.
 
-### <a name="one-time-setup-using-script"></a>Egyszeri telepítő (parancsfájl használatával)
+### <a name="one-time-setup-using-a-script"></a>Egyszeri telepítő (parancsfájl használatával)
 
-Kövesse a használatával egy PowerShell-parancsfájlt, ami a telepítés minimális időt vesz igénybe, de a legtöbb megengedett alapértelmezett beállításokat használja a telepítés végrehajtásához az alábbi utasítások készlete. Szükség esetén is követheti utasításait a [manuális telepítési módra](mobile-engagement-api-authentication-manual.md) mindezt a közvetlenül az Azure portálon, és tegye egyeztetését.
+A telepítés végrehajtásához egy PowerShell-parancsfájl használatával, a hálózatról a lépéseket az alábbi utasításokat. Egy PowerShell-parancsfájl telepítő idő a lehető legkevesebb igényel, de a legtöbb megengedett alapértelmezett beállításokat használja. 
 
-1. Az Azure PowerShell legújabb verziójának [Itt](http://aka.ms/webpi-azps). További információ a letöltési utasítás erre úgy tekinthet [hivatkozás](/powershell/azure/overview).
-2. Azure PowerShell telepítése után a következő parancsok segítségével győződjön meg arról, hogy a **Azure modul** telepítve:
+Szükség esetén is követheti utasításait a [manuális telepítési módra](mobile-engagement-api-authentication-manual.md) ehhez az Azure portálról közvetlenül. Azure-portálról állít be, amikor egy részletes konfigurációs teheti meg.
+
+1. A legújabb verzióra által az Azure PowerShell [letöltheti](http://aka.ms/webpi-azps). A letöltési utasításokat kapcsolatos további információkért lásd: [Ez az Áttekintés](/powershell/azure/overview).
+
+2. PowerShell telepítése után a következő parancsok segítségével győződjön meg arról, hogy a **Azure modul** telepítve:
 
     a. Ellenőrizze, hogy az Azure PowerShell modul érhető el a rendelkezésre álló modulok listáját.
 
@@ -56,43 +59,53 @@ Kövesse a használatával egy PowerShell-parancsfájlt, ami a telepítés minim
 
     ![Elérhető az Azure-modulok][1]
 
-    b. Ha az Azure PowerShell modul nem találja a fenti listában, majd meg kell futtatnia:
+    b. Ha a fenti listán szereplő nem találja az Azure PowerShell-modult, majd meg kell futtatnia:
 
         Import-Module Azure
-3. Jelentkezzen be az Azure erőforrás-kezelő a Powershellből a következő parancs futtatásával, és a felhasználónév és jelszó megadása az Azure-fiókjával: 
+3. Jelentkezzen be az Azure Resource Manager powershellből a következő parancs futtatásával. Adja meg a felhasználónevet és jelszót az Azure-fiókjával: 
 
         Login-AzureRmAccount
-4. Ha több előfizetéssel rendelkezik, akkor kell futtatnia:
+4. Ha több előfizetéssel rendelkezik, a következő lépéseket:
 
-    a. Az előfizetések listáját, és másolja át a használni kívánt előfizetést előfizetés-azonosítójával. Ellenőrizze, hogy ez az előfizetés azonos olyanra, amelyben a Mobile Engagement-alkalmazáshoz, amely az API-k használatával kommunikálni fog. 
+    a. Az előfizetések listájának lekérése. Másolja a **SubscriptionId** a használni kívánt előfizetést. Ellenőrizze, hogy ehhez az előfizetéshez a Mobile Engagement-alkalmazást. Az alkalmazás használatához az API-k együttműködhet fog. 
 
         Get-AzureRmSubscription
 
-    b. A következő parancsot az előfizetés-azonosító megadása az előfizetéshez használandó konfigurálása.
+    b. A következő parancsot. Adja meg a **SubscriptionId** konfigurálása az előfizetést, akkor fog használni:
 
         Select-AzureRmSubscription –SubscriptionId <subscriptionId>
-5. Másolatot a a [New-AzureRmServicePrincipalOwner.ps1](https://raw.githubusercontent.com/matt-gibbs/azbits/master/src/New-AzureRmServicePrincipalOwner.ps1) parancsfájl-a helyi gépére, és mentse egy PowerShell-parancsmag (pl. `APIAuth.ps1`), majd hajtsa végre az `.\APIAuth.ps1`.
-6. A parancsfájl ekkor megkérdezi, hogy adja meg a bemeneti **egyszerű név**. Adjon meg egy megfelelő nevet, hogy szeretné-e hozhat létre az Active Directory-alkalmazás (pl. APIAuth). 
-7. A parancsfájl befejezése után megjelenik-e a következő négy érték, amely az ad-val programozott módon hitelesíteni kell ezért győződjön meg arról, hogy másolja őket. 
+5. Másolatot a a [New-AzureRmServicePrincipalOwner.ps1](https://raw.githubusercontent.com/matt-gibbs/azbits/master/src/New-AzureRmServicePrincipalOwner.ps1) parancsfájl a helyi számítógépre. Mentse a PowerShell-parancsmag (például `APIAuth.ps1`), és futtassa azt.
 
-    **A TenantId**, **SubscriptionId**, **ApplicationId**, és **titkos**.
+         `.\APIAuth.ps1`.
 
-    Fogja használni, a TenantId `{TENANT_ID}`, mint ApplicationId `{CLIENT_ID}` és titkos, `{CLIENT_SECRET}`.
+6. A parancsprogram kéri, hogy adja meg a bemeneti **egyszerű név**. Adjon meg egy megfelelő nevet, amely az Active Directory-alkalmazás (például APIAuth) használni kívánt. 
+
+7. Miután a parancsfájl befejezése után történik, a következő négy értékek jeleníti meg. Ügyeljen arra, hogy másolja őket, mert már szükség szoftveres hitelesítésére és az Active Directory: 
+
+   - **TenantId**
+   - **SubscriptionId**
+   - **ApplicationId**
+   - **Titkos kód**
+
+   Használhatja, mint a TenantId `{TENANT_ID}`, mint ApplicationId `{CLIENT_ID}` és titkos, `{CLIENT_SECRET}`.
 
    > [!NOTE]
-   > Az alapértelmezett biztonsági házirend letiltása a PowerShell-parancsfájlok futtatásakor. Ha igen, a végrehajtási házirend parancsfájl végrehajtása a következő parancs használatával ideiglenesen konfigurálása:
+   > Az alapértelmezett biztonsági házirend blokkolhatják a PowerShell-parancsfájlok futtatásakor. Ha igen, a következő parancs használatával ideiglenesen a parancsfájl végrehajtása a végrehajtási házirend konfigurálása:
    > 
    > Set-ExecutionPolicy RemoteSigned
-8. Ez hogyan PS parancsmagok készlete jelenne meg.
-    ![][3]
-9. Az Azure portálon, nyissa meg az Active Directory, kattintson a **App regisztrációk** , és keresse meg az alkalmazást, győződjön meg arról, hogy létezik-e![][4]
+8. Ez a PowerShell-parancsmagok készlete megjelenését.
+    ![PowerShell-parancsmagok][3]
+9. Az Active Directoryban, válassza ki az Azure-portálon lépjen **App regisztrációk**, és majd keresse meg az alkalmazást, győződjön meg arról, hogy létezik-e.
+    ![Keresse meg az alkalmazást][4]
 
 ### <a name="steps-to-get-a-valid-token"></a>Érvényes token első lépéseit
 
-1. Az API a következő paraméterekkel, és győződjön meg arról, hogy a BÉRLŐ\_azonosító, az ügyfél\_azonosító és az ügyfél\_titkos kulcs:
+1. Hívja az API-t a következő paraméterekkel. Győződjön meg arról, hogy **BÉRLŐI\_azonosító**, **ügyfél\_azonosító**, és **ügyfél\_titkos**:
    
    * **Kérelem URL-CÍMÉT** ,`https://login.microsoftonline.com/{TENANT_ID}/oauth2/token`
+
    * **HTTP Content-Type fejléc** ,`application/x-www-form-urlencoded`
+   
    * **HTTP-kérelem törzse** ,`grant_type=client\_credentials&client_id={CLIENT_ID}&client_secret={CLIENT_SECRET}&resource=https%3A%2F%2Fmanagement.core.windows.net%2F`
      
     Az alábbiakban látható egy példa egy kérelem:
@@ -103,7 +116,7 @@ Kövesse a használatával egy PowerShell-parancsfájlt, ami a telepítés minim
     grant_type=client_credentials&client_id={CLIENT_ID}&client_secret={CLIENT_SECRET}&reso
     urce=https%3A%2F%2Fmanagement.core.windows.net%2F
     ```
-    Íme egy példa egy válasz:
+    Az alábbiakban látható egy példa egy válasz:
     ```
     HTTP/1.1 200 OK
     Content-Type: application/json; charset=utf-8
@@ -112,28 +125,29 @@ Kövesse a használatával egy PowerShell-parancsfájlt, ami a telepítés minim
     {"token_type":"Bearer","expires_in":"3599","expires_on":"1445395811","not_before":"144
     5391911","resource":"https://management.core.windows.net/","access_token":{ACCESS_TOKEN}}
     ```
-     Ebben a példában szereplő URL-kódolást a FELADÁS egy vagy több paramétert `resource` érték `https://management.core.windows.net/`. Ügyeljen arra, hogy is URL kódolása `{CLIENT_SECRET}` , különleges karaktereket tartalmazhat.
+     Ez a példa tartalmazza a FELADÁS egy vagy több paramétert, amelyben az URL-kódolást `resource` érték `https://management.core.windows.net/`. Ügyeljen arra, hogy az URL-cím kódolása is `{CLIENT_SECRET}`, mert különleges karaktereket tartalmaz.
 
      > [!NOTE]
-     > Tesztelési, használhatja egy HTTP-ügyfél eszköz, például az [Fiddler](http://www.telerik.com/fiddler) vagy [Chrome Postman bővítmény](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) 
+     > Tesztelési, eszközzel egy HTTP ügyfél például [Fiddler](http://www.telerik.com/fiddler) vagy [Chrome Postman bővítmény](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop). 
      > 
      > 
 2. Most már minden API-hívás a olyan kérés hitelesítési fejlécéhez:
    
         Authorization: Bearer {ACCESS_TOKEN}
    
-    Ha egy adott vissza 401-es állapotkód, meg a választörzset, akkor előfordulhat, hogy meghatározzák a jogkivonat érvényessége lejárt. Ebben az esetben be egy új token.
+    A kérés a 401-es állapotkód adja vissza, ha meg a választörzset. Akkor lehet, hogy jelzi, hogy a jogkivonat érvényessége lejárt. Ebben az esetben be egy új token.
 
-## <a name="using-the-apis"></a>Az API-k használatával
+## <a name="use-the-apis"></a>Az API-k
 Most, hogy egy érvényes tokent, készen áll az API-hívások.
 
-1. Az egyes API-kérések szüksége lesz az előző szakaszban beszerzett érvényes, nem lejárt token átadni.
-2. Szüksége lesz a beépülő modul a kérelem URI, amely azonosítja az alkalmazást az egyes paraméterek. A kérelem URI a következőképpen néznek
+1. Az egyes API-kérések kell átadni egy érvényes, nem lejárt jogkivonatot. A fennmaradó lexikális elem szerepel az előző szakaszban beszerzett.
+
+2. Beépülő modul a kérelem URI-azonosítója, amely azonosítja az alkalmazás egyes paramétereket. A kérelem URI néz ki a következő kódot:
    
         https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/
         providers/Microsoft.MobileEngagement/appcollections/{app-collection}/apps/{app-resource-name}/
    
-    A paraméterek lekérése, kattintson az alkalmazás neve, és kattintson az irányítópulton, és a rendszer az összes 3 paraméterhez a következő lap jelenik meg.
+    Ahhoz, hogy a paraméterek, válassza ki az alkalmazás nevét. Válassza ki **irányítópult**. Egy lapon minden három paramétert is – lásd a következőket:
    
    * **1** `{subscription-id}`
    * **2** `{app-collection}`
@@ -141,10 +155,9 @@ Most, hogy egy érvényes tokent, készen áll az API-hívások.
    * **4** az erőforráscsoport neve lesz **MobileEngagement** kivéve, ha létrehozott egy új. 
 
 > [!NOTE]
-> <br/>
+> Figyelmen kívül hagyja az API legfelső szintű cím, mert volt az előző API-k esetében.
 > 
-> 1. Ez volt az előző API-k esetében, hagyja figyelmen kívül az API legfelső szintű cím.<br/>
-> 2. Ha az alkalmazás Azure-portál használatával hozott létre majd szeretné használni az alkalmazás erőforrás nevét, amely eltér attól az alkalmazás nevét, magát. Ha az alkalmazás az Azure-portálon létrehozott majd használja az alkalmazás nevére, saját magát (nincs alkalmazás-Erőfforás neve és az új portálon létrehozott alkalmazások alkalmazásnév közötti különbséget tenni).  
+> Ha az alkalmazás az Azure portál használatával hozott létre, majd szeretné az alkalmazás erőforrás-név, amely eltér az alkalmazás maga használja. Ha létrehozta az alkalmazást az Azure portálon, majd használja az alkalmazás nevére. (Nincs különbséget tenni az alkalmazás-Erőfforás neve és az alkalmazás nevére az új portálon létrehozott alkalmazások között.)
 > 
 > 
 

@@ -1,5 +1,5 @@
 ---
-title: "Az Azure továbbítási csomópont API-k áttekintése | Microsoft Docs"
+title: "Az Azure továbbítási csomópont API-k áttekintése |} Microsoft Docs"
 description: "Továbbítják a csomópont API – áttekintés"
 services: service-bus-relay
 documentationcenter: na
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/05/2017
+ms.date: 01/23/2018
 ms.author: sethm
-ms.openlocfilehash: f9b679f167952076db6df17711dc124931a0880c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 696e3f77a283cc31d3c8f6007a839480ae8eb984
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="relay-hybrid-connections-node-api-overview"></a>Továbbítják a hibrid kapcsolatok csomópont API – áttekintés
 
@@ -134,7 +134,7 @@ A konstruktor argumentumai:
 
 `RelayedServer`példányok kibocsátás három események, amelyek lehetővé teszik, hogy a bejövő kérelmeket kezelnek, kapcsolatot és a hibát észleli. Elő kell fizetnie a `connect` esemény üzenetek kezeléséhez. 
 
-##### <a name="headers"></a>Fejlécek
+##### <a name="headers"></a>fejlécek
 
 ```JavaScript 
 function(headers)
@@ -207,7 +207,7 @@ WebSocket.relayedConnect(
 );
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Azure-továbbítási kapcsolatos további információkért látogasson el ezeket a hivatkozásokat:
 * [Mi az az Azure Relay?](relay-what-is-it.md)
 * [Rendelkezésre álló továbbítási API-k](relay-api-overview.md)

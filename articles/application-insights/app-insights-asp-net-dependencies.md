@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: fe02adafbf96df22462683c69813b05c182d3106
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 060f1c9d2c74ed45e8077ec99503a1d7b885d325
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Az Application Insights beállítása: függőségi nyomon követése
 A *függőségi* az alkalmazás által külső összetevője. Általában le egy HTTP, vagy egy adatbázist vagy egy fájlrendszer nevű szolgáltatás. [Az Application Insights](app-insights-overview.md) méri, hogy az alkalmazás meddig függőségek, és milyen gyakran függőségi hívás sikertelen lesz. Vizsgálja meg az adott hívások, és összekapcsolhatja őket a kéréseket, és kivételeket.
@@ -43,9 +43,9 @@ Részleges függőségi szolgáltatás által gyűjtött információk automatik
 
 | Platform | Telepítés |
 | --- | --- |
-| IIS-kiszolgálón |Vagy [Állapotmonitor telepítése a kiszolgálón](app-insights-monitor-performance-live-website-now.md) vagy [frissíteni az alkalmazást a .NET-keretrendszer 4.6-os vagy újabb](http://go.microsoft.com/fwlink/?LinkId=528259) és telepítse a [Application Insights SDK](app-insights-asp-net.md) az alkalmazásban. |
+| IIS Server |Vagy [Állapotmonitor telepítése a kiszolgálón](app-insights-monitor-performance-live-website-now.md) vagy [frissíteni az alkalmazást a .NET-keretrendszer 4.6-os vagy újabb](http://go.microsoft.com/fwlink/?LinkId=528259) és telepítse a [Application Insights SDK](app-insights-asp-net.md) az alkalmazásban. |
 | Azure Web App |A webes alkalmazás Vezérlőpult [nyissa meg az Application Insights panelt a webes alkalmazás Vezérlőpult](app-insights-azure-web-apps.md) , és válassza a telepítés, ha a rendszer kéri. |
-| Azure-Felhőszolgáltatás |[Használjon indítási tevékenységhez](app-insights-cloudservices.md) vagy [telepítse a .NET-keretrendszer 4.6 +](../cloud-services/cloud-services-dotnet-install-dotnet.md) |
+| Azure Cloud Service |[Használjon indítási tevékenységhez](app-insights-cloudservices.md) vagy [telepítse a .NET-keretrendszer 4.6 +](../cloud-services/cloud-services-dotnet-install-dotnet.md) |
 
 ## <a name="where-to-find-dependency-data"></a>Hol található a függőségi adatokat
 * [Alkalmazás-hozzárendelés](#application-map) visualizes az alkalmazás és a szomszédos összetevők közötti függőségek.
@@ -122,7 +122,7 @@ Más esetben nem függőségi hívás különösen hosszú van. De idősor néze
 
 Nem tudja, ahol a idő kerül? A [Application Insights Profilkészítő](app-insights-profiler.md) nyomkövetések HTTP meghívja az élő helyre, és megjeleníti a funkciókról a kódban a leghosszabb időt vett.
 
-## <a name="failed-requests"></a>Sikertelen kérelmek
+## <a name="failed-requests"></a>Sikertelen kérések
 Lehet, hogy a sikertelen kérelmek is társítva függőségek hívásainak sikertelen. Ebben az esetben azt átkattintással is nyomon követheti a problémát.
 
 ![Kattintson a sikertelen kérelmek diagram](./media/app-insights-asp-net-dependencies/06-fail.png)
@@ -178,7 +178,7 @@ A szabványos függőségi követése modul automatikusan észleli a külső fü
 
 Ha saját maga nem írhatók szerelvény használjon a kódot, például sikerült minden hívást, hogy megtudja, milyen úgy a válaszidők hozzájárulás időt. Ahhoz, hogy az Application Insights függőségi diagramjain jelennek meg adatok, elküldi a használatával `TrackDependency`.
 
-```C#
+```csharp
 
             var startTime = DateTime.UtcNow;
             var timer = System.Diagnostics.Stopwatch.StartNew();
@@ -208,7 +208,7 @@ Ha azt szeretné, hogy kikapcsolja a szabványos függőségi követési modul, 
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Kivételek](app-insights-asp-net-exceptions.md)
 * [Felhasználók és Lapadatok](app-insights-javascript.md)
 * [Rendelkezésre állás](app-insights-monitor-web-app-availability.md)

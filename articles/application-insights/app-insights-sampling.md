@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: mbullwin
-ms.openlocfilehash: 3ae7df7939431e3bd13c070d65876145706e06b5
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 1f6c58b219a5fb040048d0075644102f5f0c5323
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights-mintavétel
 
@@ -126,7 +126,7 @@ Távolítsa el a `AdaptiveSamplingTelemetryProcessor` csomópontot a .config fá
 
 *C#*
 
-```C#
+```csharp
 
     using Microsoft.ApplicationInsights;
     using Microsoft.ApplicationInsights.Extensibility;
@@ -243,7 +243,7 @@ Helyett, ha a mintavételi paramétert a .config kiterjesztésű fájl, programo
 
 *C#*
 
-```C#
+```csharp
 
     using Microsoft.ApplicationInsights.Extensibility;
     using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
@@ -357,6 +357,6 @@ Az ügyféloldali (JavaScript) SDK vesz részt a rögzített mintavételi a kisz
 
 * Egy új TelemetryConfiguration (nem az alapértelmezett Active) rendelkező TelemetryClient külön példányt inicializálni. Használja a ritka események küldésére.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Szűrés](app-insights-api-filtering-sampling.md) biztosíthat további szigorú ellenőrzése az SDK küld.
 

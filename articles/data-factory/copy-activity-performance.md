@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 841e053418dedb6b41262d1277ab4bdc9d4800c6
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 53f2b59e57d49a409552aebbdb1b0e81ccd5200c
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Másolja a tevékenység teljesítmény- és hangolási útmutató
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -191,8 +191,8 @@ Konfigurálja a **enableStaging** a másolási tevékenység beállítást adja 
 | Tulajdonság | Leírás | Alapértelmezett érték | Szükséges |
 | --- | --- | --- | --- |
 | **enableStaging** |Adja meg, hogy átmeneti tárolási ideiglenes adatot másolni. |False (Hamis) |Nem |
-| **linkedServiceName** |Adja meg egy [AzureStorage](connector-azure-blob-storage.md#linked-service-properties) társított szolgáltatás, amely az ideiglenes átmeneti tárolóként történő használó tárolási példányát. <br/><br/> Adatok betöltése az SQL Data Warehouse polybase a tároló és a közös hozzáférésű jogosultságkód nem használható. Más esetekben használható. |N/A |Igen, mikor **enableStaging** igaz értékre van beállítva |
-| **elérési út** |Adja meg a Blob. tárolási elérési útja, amelyet szeretne az előkészített adatok. Ha nem ad meg egy elérési utat, a szolgáltatás tárolót hoz létre ideiglenes adatok tárolására. <br/><br/> Adjon meg egy elérési utat, csak akkor, ha a közös hozzáférésű jogosultságkód tárhelyet használ, vagy ideiglenes az adatokat egy adott helyen van szüksége. |N/A |Nem |
+| **linkedServiceName** |Adja meg egy [AzureStorage](connector-azure-blob-storage.md#linked-service-properties) társított szolgáltatás, amely az ideiglenes átmeneti tárolóként történő használó tárolási példányát. <br/><br/> Adatok betöltése az SQL Data Warehouse polybase a tároló és a közös hozzáférésű jogosultságkód nem használható. Más esetekben használható. |– |Igen, mikor **enableStaging** igaz értékre van beállítva |
+| **path** |Adja meg a Blob. tárolási elérési útja, amelyet szeretne az előkészített adatok. Ha nem ad meg egy elérési utat, a szolgáltatás tárolót hoz létre ideiglenes adatok tárolására. <br/><br/> Adjon meg egy elérési utat, csak akkor, ha a közös hozzáférésű jogosultságkód tárhelyet használ, vagy ideiglenes az adatokat egy adott helyen van szüksége. |– |Nem |
 | **enableCompression** |Meghatározza, hogy adatokat tömörített-e, mielőtt azt a cél felé. Ez a beállítás az átvitt adatok mennyiségét csökkenti. |False (Hamis) |Nem |
 
 Íme egy minta definíciója másolási tevékenység az az előző táblázatban leírt tulajdonságokkal:
@@ -246,8 +246,8 @@ Javasoljuk, hogy szánjon a Data Factory szolgáltatásnak a másolási tevéken
      * [Előkészített másolása](#staged-copy)
      * [Önálló üzemeltetett integrációs futásidejű méretezhetőség](concepts-integration-runtime.md#self-hosted-integration-runtime)
    * [Önálló üzemeltetett integrációs futásidejű](#considerations-for-self-hosted-integration-runtime)
-   * [Forrás](#considerations-for-the-source)
-   * [A fogadó](#considerations-for-the-sink)
+   * [Source](#considerations-for-the-source)
+   * [Sink](#considerations-for-the-sink)
    * [Szerializálás és a deszerializálás](#considerations-for-serialization-and-deserialization)
    * [Tömörítés](#considerations-for-compression)
    * [Oszlop leképezése](#considerations-for-column-mapping)
@@ -384,7 +384,7 @@ Egy vagy több, az alábbi tényezők okozhat a teljesítménybeli szűk kereszt
 
 Ebben az esetben bzip2 adattömörítés előfordulhat, hogy lehet lassítja a teljes folyamat. A gzip tömörítési kodek átváltás, előfordulhat, hogy a szűk keresztmetszetet megkönnyítése érdekében.
 
-## <a name="reference"></a>Referencia
+## <a name="reference"></a>Leírások
 
 A teljesítmény figyelése és a támogatott adatokat tároló részénél hivatkozásainak beállítása a következő:
 
@@ -395,7 +395,7 @@ A teljesítmény figyelése és a támogatott adatokat tároló részénél hiva
 * A helyszíni SQL Server: [figyelő és a teljesítmény hangolni?](https://msdn.microsoft.com/library/ms189081.aspx)
 * A helyi fájlkiszolgáló: [teljesítményhangolás fájlkiszolgálók](https://msdn.microsoft.com/library/dn567661.aspx)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A másolási tevékenység cikkekben talál:
 
 - [Tevékenység – áttekintés](copy-activity-overview.md)

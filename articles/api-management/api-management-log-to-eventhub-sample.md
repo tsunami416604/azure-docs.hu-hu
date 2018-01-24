@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.openlocfilehash: 05318f85997111fd3301d819084115fef6d00f6a
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: d4ea43cb7ca5e9fa50202561c71d6bfb298e2452
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-runscope"></a>Az API-kat az Azure API Management, az Event Hubs és Runscope figyelése
 A [API-kezelés szolgáltatás](api-management-key-concepts.md) javítása érdekében a HTTP API küldött HTTP-kérelmek feldolgozási sok képességeket biztosít. Azonban a kérések és válaszok megléte átmeneti. A kérelem, és azt a háttér-API számára az API Management szolgáltatáson keresztül zajlik. Az API-feldolgozza a kérést, és választ áthaladó vissza az API-fogyasztó számára. Az API Management szolgáltatás tartja néhány fontos statisztikai adat kapcsolatos való megjelenítéshez. az API-k Publisher portál irányítópultján, de túl eltűnnek róla, hogy a részletek.
@@ -166,7 +166,7 @@ Ebben a példában használjuk a `EventProcessorHost` az egyszerűség kedvéér
 ### <a name="ieventprocessor"></a>IEventProcessor
 A központi koncepció használatakor `EventProcessorHost` megvalósítása létrehozása a `IEventProcessor` felület, amely tartalmazza a metódus `ProcessEventAsync`. Ez a módszer lényege itt jelenik meg:
 
-```c#
+```csharp
 async Task IEventProcessor.ProcessEventsAsync(PartitionContext context, IEnumerable<EventData> messages)
 {
 
@@ -193,7 +193,7 @@ A metódusnak átadott EventData objektumok listáját, és azt, hogy a lista is
 ### <a name="httpmessage"></a>HttpMessage
 A `HttpMessage` példány három adatra adatokat tartalmazza:
 
-```c#
+```csharp
 public class HttpMessage
 {
    public Guid MessageId { get; set; }
@@ -216,7 +216,7 @@ Ez a minta az I lezárását lenne érdekes, amelyekkel a HTTP-kérelem kereszt�
 
 A `IHttpMessageProcessor` megvalósítási néz ki,
 
-```c#
+```csharp
 public class RunscopeHttpMessageProcessor : IHttpMessageProcessor
 {
    private HttpClient _HttpClient;
@@ -270,10 +270,10 @@ A következő animált kép egy kérelem egy API-t a fejlesztői portálján, az
 
 ![A kérelem Runscope lesznek továbbítva bemutatója](./media/api-management-log-to-eventhub-sample/apim-eventhub-runscope.gif)
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Az Azure API Management szolgáltatás Itt adható meg az ideális utazás irányuló és onnan az API-kat a HTTP-forgalom rögzítésére. Az Azure Event Hubs egy kiválóan méretezhető, alacsony költségű megoldás, hogy forgalom rögzítése és másodlagos feldolgozási rendszerek naplózási, figyelési és egyéb kifinomult elemzéséhez elágazó. Kapcsolódás a külső forgalom Runscope egyszerűen néhány dozen kódsorokat a like rendszerek figyelése.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További tudnivalók az Azure Event Hubs
   * [Ismerkedés az Azure Event Hubs](../event-hubs/event-hubs-c-getstarted-send.md)
   * [Üzenetek fogadása az EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)

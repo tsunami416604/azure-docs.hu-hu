@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 892055728ccc35690b19edf708997e9f104f75b8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c34d6bddb733c5979bc2006738e950cf7a185c4e
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>Oktatóanyag: Azure Active Directoryval integrált Adobe kreatív felhő
 
@@ -133,9 +133,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     | Attribútum neve | Attribútum értéke |
     | ---------------| ----------------|
-    | Utónév |User.givenName |
-    | Vezetéknév |User.surname |
-    | E-mail-cím |User.mail |
+    | Utónév |user.givenname |
+    | Vezetéknév |user.surname |
+    | E-mail cím |user.mail |
 
     a. Kattintson a **Hozzáadás attribútum** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
     
@@ -155,13 +155,13 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     
 9. A a **Adobe egy Felhőkonfigurációk kreatív** kattintson **Adobe kreatív felhő konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML Entitásazonosító és SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz**.
 
-    ![Az Adobe kreatív Felhőkonfiguráció](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_adobecreativecloud_configure.png)
+    ![Adobe Creative Cloud Configuration](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_adobecreativecloud_configure.png)
     
-10. Egy másik webes böngészőablakban bejelentkezés az Adobe kreatív felhő bérlő rendszergazdaként.
+10. Egy másik webes böngészőablakban bejelentkezés az [Adobe felügyeleti konzol](https://adminconsole.adobe.com) rendszergazdaként.
 
-11. Nyissa meg a **identitás** a bal oldali navigációs ablaktáblán kattintson a tartomány. Végezze el az alábbi lépéseket a **egyszeri bejelentkezési a konfiguráció szükséges** szakasz.
+11. Lépjen **beállítások** a felső navigációs sáv megnyitásához, majd válassza a **identitás**. A tartományok listáját nyitja meg. Kattintson a **konfigurálása** hivatkozás a tartomány alapján. Végezze el az alábbi lépéseket a **egyszeri bejelentkezési a konfiguráció szükséges** szakasz. További információkért lásd: [tartomány beállítása](https://helpx.adobe.com/enterprise/using/set-up-domain.html)
 
-    ![Beállítások](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_001.png "beállítások")
+    ![Beállítások](https://helpx.adobe.com/content/dam/help/en/enterprise/using/configure-microsoft-azure-with-adobe-sso/_jcr_content/main-pars/procedure_719391630/proc_par/step_3/step_par/image/edit-sso-configuration.png "beállítások")
     
     a. Kattintson a **Tallózás** az Azure AD-be a letöltött tanúsítvány feltöltése **IDP tanúsítvány**.
     
@@ -176,8 +176,6 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     f. Kattintson a **mentése** gombra.
 
 12. Az irányítópult mostantól megjelennek az XML-fájl **"Metaadatok letöltése"** fájlt. Adobe EntityDescriptor és URL-címe AssertionConsumerService tartalmaz. Nyissa meg a fájlt, és konfigurálja őket az Azure AD-alkalmazás.
-
-    ![Alkalmazás ügyféloldali egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_002.png)
 
     ![Alkalmazás ügyféloldali egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_003.png)
 
@@ -226,11 +224,9 @@ Ahhoz, hogy az Azure AD-felhasználók Adobe kreatív felhő bejelentkezni, akko
 
 ### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>A felhasználói fiókok létrehozásához hajtsa végre az alábbi lépéseket:
 
-1. Jelentkezzen be rendszergazdaként az Adobe kreatív felhő vállalati hely.
+1. Jelentkezzen be [Adobe felügyeleti konzol](https://adminconsole.adobe.com) hely rendszergazdaként.
 
-2. Összevont ID Adobe konzolon belül a felhasználó hozzáadása, és rendelje hozzá egy csoport jogosultság
-
-    ![Az alkalmazások listáját az Adobe kreatív felhő hivatkozásra](./media/active-directory-saas-adobe-creative-cloud-tutorial/users.png)  
+2. Összevont ID Adobe konzolon belül a felhasználó hozzáadása, majd rendelje hozzá őket egy termék profilt. Felhasználók hozzáadásával kapcsolatos részletes információkért lásd: [Adobe felügyeleti konzol több felhasználó hozzáadása](https://helpx.adobe.com/enterprise/using/users.html#Addusers) 
 
 3. Ezen a ponton, írja be az e-mail cím/egyszerű felhasználónév az Adobe signin űrlapra, a tab billentyű megnyomásával és kell összevont vissza az Azure AD:
     * Webalkalmazás-hozzáférés: www.adobe.com > bejelentkezési
@@ -278,6 +274,8 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [(Adobe.com webhelyre) tartomány beállítása](https://helpx.adobe.com/enterprise/using/set-up-domain.html)
+* [Azure konfigurálása Adobe egyszeri Bejelentkezést (Adobe.com webhelyre) való használatra](https://helpx.adobe.com/enterprise/kb/configure-microsoft-azure-with-adobe-sso.html)
 
 <!--Image references-->
 

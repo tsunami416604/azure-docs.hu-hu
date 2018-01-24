@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2017
+ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 09e812974cdcea831f5e905bc4abd6319185a972
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 3485120347923dd291663962d528a1e5996b477f
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-from-an-sftp-server-using-azure-data-factory"></a>Adatok áthelyezése az Azure Data Factory használatával SFTP-kiszolgálóról
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -40,7 +40,7 @@ Az SFTP-összekötő segítségével adatokat másolni **mind a felhőalapú SFT
 
 Amikor adatokat másol egy helyszíni SFTP kiszolgáló, a helyszíni környezetben vagy az Azure virtuális gép adatkezelési átjárót kell telepítenie. Lásd: [az adatkezelési átjáró](data-factory-data-management-gateway.md) talál részletes információt az átjárót. Lásd: [adatokat a helyszíni helyek és a felhő közötti áthelyezése](data-factory-move-data-between-onprem-and-cloud.md) cikk részletes ismertetése az átjáró beállítása és használja azt.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 A másolási tevékenység, amely helyezi át az adatokat SFTP forrásból származó különböző eszközök/API-k használatával hozhatja létre egy folyamatot.
 
 - Hozzon létre egy folyamatot a legegyszerűbb módja használatára a **másolása varázsló**. Lásd: [oktatóanyag: hozzon létre egy folyamatot, másolása varázslóval](data-factory-copy-data-wizard-tutorial.md) létrehozásával egy folyamatot, az adatok másolása varázsló segítségével gyorsan útmutatást.
@@ -53,9 +53,9 @@ A következő táblázat vonatkozó FTP-társított szolgáltatás JSON-elemeket
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- | --- |
 | type | A type tulajdonságot meg kell `Sftp`. |Igen |
-| állomás | Az SFTP-kiszolgáló neve vagy IP-címét. |Igen |
+| gazdagép | Az SFTP-kiszolgáló neve vagy IP-címét. |Igen |
 | port |Port, amelyen az SFTP kiszolgáló figyel. Az alapértelmezett érték: 21. |Nem |
-| AuthenticationType |Adja meg a hitelesítés típusát. Megengedett értékek: **alapvető**, **SshPublicKey**. <br><br> Tekintse meg [használja az egyszerű hitelesítés](#using-basic-authentication) és [használatával SSH nyilvános kulcsos hitelesítés](#using-ssh-public-key-authentication) további tulajdonságokat és JSON-minták szakasz. |Igen |
+| authenticationType |Adja meg a hitelesítés típusát. Megengedett értékek: **alapvető**, **SshPublicKey**. <br><br> Tekintse meg [használja az egyszerű hitelesítés](#using-basic-authentication) és [használatával SSH nyilvános kulcsos hitelesítés](#using-ssh-public-key-authentication) további tulajdonságokat és JSON-minták szakasz. |Igen |
 | skipHostKeyValidation | Adja meg, hogy a gazdagép kulcs ellenőrzésének kihagyására. | Nem. Az alapértelmezett érték: hamis |
 | hostKeyFingerprint | Adja meg a gazdagép kulcs az ujjlenyomat. | Igen, ha a `skipHostKeyValidation` hamis értékre van állítva.  |
 | gatewayName |Az adatkezelési átjáró egy helyszíni SFTP-kiszolgálóhoz való csatlakozáshoz neve. | Igen, ha az adatok másolása egy helyszíni SFTP-kiszolgálón. |
@@ -307,7 +307,7 @@ Ehhez az adatkészlethez az SFTP mappára hivatkozik `mysharedfolder` és fájl 
 }
 ```
 
-**Az Azure Blob kimeneti adatkészlet**
+**Azure blobkimeneti adatkészlet**
 
 Adatot ír egy új blob minden órában (gyakoriság: óra, időköz: 1). A mappa elérési útját a BLOB a szelet által feldolgozott kezdési ideje alapján dinamikusan történik. A mappa elérési útját használja, év, hónap, nap és a kezdési idő órában részeit.
 
@@ -412,7 +412,7 @@ A feldolgozási sor tartalmazza a másolási tevékenység, amely a bemeneti és
 ## <a name="performance-and-tuning"></a>Teljesítmény- és hangolása
 Lásd: [másolási tevékenység teljesítmény- és hangolása útmutató](data-factory-copy-activity-performance.md) tájékozódhat az kulcsfontosságú szerepet játszik adatátvitelt jelölik a (másolási tevékenység során) az Azure Data Factory és különböző módokon optimalizálhatja azt, hogy hatás teljesítményét.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Lásd az alábbi cikkeket:
 
 * [Másolási tevékenység oktatóanyag](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) való a másolási tevékenység során a folyamat létrehozásának lépéseit.

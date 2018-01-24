@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/05/2017
+ms.date: 01/23/2018
 ms.author: sethm
-ms.openlocfilehash: 9d015678dbd99b8d978c2c8200b36bf51cac8893
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 43c40baa74b3f7c1f5c9d6626b25bcd45c2f9a10
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Az Azure hibrid kapcsolatok protokoll
 Az Azure továbbítási az Azure Service Bus platform a fő funkció oszlopok egyike. Az új *hibrid kapcsolatok* továbbító egy biztonságos, nyílt-protokoll alakulása a HTTP és a websocket elemek alapján. Azt írja felül a volt, ugyanilyen nevű *BizTalk szolgáltatások* funkciója, amely a saját fejlesztésű protokollja alaprendszert lett létrehozva. Hibrid kapcsolatok integrálása Azure App Service szolgáltatások továbbra is működjön-van.
@@ -42,7 +42,7 @@ A figyelő rendelkezik a szolgáltatás; négy interakciók összes átviteli r�
 Jelzi a szolgáltatás, amely egy figyelő készen állnak készen áll kapcsolatok fogadására létrehoz egy kimenő WebSocket-kapcsolat. A kapcsolati kézfogás hordoz magában, ha a továbbítási névteret, és egy biztonsági jogkivonatot, amely a "figyelés" jogot a ruház neve konfigurálva hibrid kapcsolat neve.
 A WebSocket a szolgáltatás által elfogadható, ha a regisztrálása sikeresen befejeződött, és a meglévő webes WebSocket megőrzi életben csatornaként"vezérlő" minden későbbi kapcsolatok engedélyezéséhez. A szolgáltatás lehetővé teszi, hogy legfeljebb 25 párhuzamos figyelők a hibrid kapcsolat. Ha két vagy több aktív figyelők, a bejövő kapcsolatok elosztását mindegyik véletlenszerű sorrendben; igazságos elosztási nem garantált.
 
-#### <a name="accept"></a>Fogadja el
+#### <a name="accept"></a>Elfogadás
 A küldő a szolgáltatás az új kapcsolat megnyitása után a szolgáltatás úgy dönt, és értesíti a hibrid kapcsolat aktív figyelőinek egyikét. A rendszer értesítést küld a figyelő keresztül nyissa meg a vezérlőcsatorna, amelyek a figyelő csatlakoztatni kell a kapcsolat elfogadása a WebSocket-végpont URL-CÍMÉT tartalmazó JSON üzenetben.
 
 Az URL-címet is, és közvetlenül a figyelő extra munka nélkül kell használniuk.
@@ -182,7 +182,7 @@ A szoftvercsatorna, hogy az ügyfél időt vesz igénybe az URI-cím az "elfogad
 
 | Param | Szükséges | Leírás |
 | --- | --- | --- |
-| statusCode |Igen |Numerikus HTTP-állapotkódot. |
+| állapotkód |Igen |Numerikus HTTP-állapotkódot. |
 | StatusDescription |Igen |Az elutasítás emberi olvasható oka. |
 
 Az eredményül kapott URI majd WebSocket-kapcsolat létrehozásához használt.
@@ -262,7 +262,7 @@ Ha a WebSocket-kapcsolat szándékosan állítja le a szolgáltatás után azt k
 | 1008 |A biztonsági jogkivonat érvényessége lejárt, ezért az engedélyezési házirendben sérül. |
 | 1011 |Valami hiba történt a szolgáltatásban. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Relay – gyakori kérdések](relay-faq.md)
 * [Névtér létrehozása](relay-create-namespace-portal.md)
 * [Ismerkedés a .NET-tel](relay-hybrid-connections-dotnet-get-started.md)

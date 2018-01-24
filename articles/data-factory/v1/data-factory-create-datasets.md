@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 3e4b73f432f2695fa8b66b4d2bca23d32bfa9f3a
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 1733e953d9dd65a3d2b801e6c5ba5cfbb5f82920
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="datasets-in-azure-data-factory"></a>Az Azure Data Factory adathalmazok
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -242,7 +242,7 @@ A következő táblázat ismerteti a rendelkezésre állással kapcsolatos szaka
 | interval |Megadja a gyakoriság egy szorzóval.<br/><br/>"X időköz" határozza meg, milyen gyakran a szelet jön létre. Például, ha a adatkészlet kell szeletelhetők óránként, beállíthatja <b>gyakoriság</b> való <b>óra</b>, és <b>időköz</b> való <b>1</b>.<br/><br/>Vegye figyelembe, hogy ha a megadott **gyakorisága** , **perc**, nem lehet kisebb, mint 15 kell beállítani az időközt. |Igen |NA |
 | stílus |Meghatározza, hogy a szelet akkor a rendszer a kezdő vagy intervallum végén.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul>Ha **gyakorisága** értéke **hónap**, és **stílus** értékre van állítva **EndOfInterval**, a szelet hónap utolsó napján jön létre. Ha **stílus** értéke **StartOfInterval**, a szelet hónap első napján jön létre.<br/><br/>Ha **gyakoriság** értéke **nap**, és **stílus** értéke **EndOfInterval**, a szelet jön létre az elmúlt órában a nap.<br/><br/>Ha **gyakorisága** értéke **óra**, és **stílus** értéke **EndOfInterval**, a szelet keletkezik az óra. Például a du. 1-2 PM időszak adatszelethez, a szelet hozzák 2 du. |Nem |EndOfInterval |
 | anchorDateTime |Az ütemező által használt adatkészlet szelet határok számítási időben abszolút helyzet határozza meg. <br/><br/>Vegye figyelembe, hogy ha a propoerty dátum részeit, amelyek részletesebben, mint a megadott gyakorisággal, a részletesebb részek figyelmen kívül lesznek hagyva. Például ha a **időköz** van **óránkénti** (gyakoriság: óra és időköz: 1), és a **anchorDateTime** tartalmaz **percet és másodpercet**, majd a percet és másodpercet részeit **anchorDateTime** figyelmen kívül lesznek hagyva. |Nem |01/01/0001 |
-| Az offset |TimeSpan érték, amely a kezdő és a záró összes adatkészlet szeletek vette. <br/><br/>Ne feledje, ha mindkét **anchorDateTime** és **eltolás** van adva, a kombinált shift eredménye. |Nem |NA |
+| offset |TimeSpan érték, amely a kezdő és a záró összes adatkészlet szeletek vette. <br/><br/>Ne feledje, ha mindkét **anchorDateTime** és **eltolás** van adva, a kombinált shift eredménye. |Nem |NA |
 
 ### <a name="offset-example"></a>az eltolási – példa
 Alapértelmezés szerint naponta (`"frequency": "Day", "interval": 1`) szeletek start: 00 (éjfél) egyezményes világidő (UTC). Ha azt szeretné, hogy a kezdési idő reggel 6 óra UTC idő helyette, állítsa be az eltolás látható módon a következő kódrészletet: 
@@ -283,10 +283,10 @@ A következő adatkészlet havi, és a 3., havonta, de a hozzák (`3.08:00:00`):
 A **házirend** az adatkészlet-definícióban szakaszban határozza meg, a feltételek vagy a feltétellel, hogy a dataset szeletek teljesítenie kell.
 
 ### <a name="validation-policies"></a>Házirendek érvényesítése
-| Házirend neve | Leírás | Vonatkozik. | Szükséges | Alapértelmezett |
+| Szabályzat neve | Leírás | Vonatkozik. | Szükséges | Alapértelmezett |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB |Azt ellenőrzi, hogy az adatok **Azure Blob Storage tárolóban** megfelel a minimális méretét (megabájtban). |Azure Blob Storage |Nem |NA |
-| minimumRows |Azt ellenőrzi, hogy az adatokat egy **Azure SQL adatbázis** vagy egy **Azure-tábla** a sorok legkisebb számát tartalmazza. |<ul><li>Az Azure SQL-adatbázis</li><li>Azure-tábla</li></ul> |Nem |NA |
+| minimumRows |Azt ellenőrzi, hogy az adatokat egy **Azure SQL adatbázis** vagy egy **Azure-tábla** a sorok legkisebb számát tartalmazza. |<ul><li>Azure SQL Database</li><li>Azure-tábla</li></ul> |Nem |NA |
 
 #### <a name="examples"></a>Példák
 **minimumSizeMB:**
@@ -319,10 +319,10 @@ Külső adatkészletek azok, amelyekre egy futó folyamatot az adat-előállít�
 
 Kivéve, ha a Data Factory hozzák alatt álló adatkészlet, azt kell megjelölni **külső**. Alkalmazza a beállítást általában a bemenetek első tevékenység egy sorban, kivéve, ha a tevékenység vagy csővezeték-láncolás használatban van.
 
-| Név | Leírás | Szükséges | Alapértelmezett érték |
+| Name (Név) | Leírás | Szükséges | Alapértelmezett érték |
 | --- | --- | --- | --- |
 | dataDelay |A külső adatokat az adott szelet rendelkezésre állásának az ellenőrzését késleltetési idő. Például egy óránkénti ellenőrzést késleltetheti a beállítás használatával.<br/><br/>A beállítás csak a jelenlegi időpont vonatkozik.  Például ha 1:00 PM azonnal, és az értéke 10 perc, az érvényesítési kezdődik, 1:10 óra.<br/><br/>Vegye figyelembe, hogy ez a beállítás nincs hatással szeletek a múltban. A szeletek **szelet befejezésének** + **dataDelay** < **most** dolgoznak fel késedelem nélkül.<br/><br/>Időpontokban nagyobb, mint 23:59 óra kell használatával adhatók meg a `day.hours:minutes:seconds` formátumban. Például adja meg a 24 órát, ne használja 24:00:00. Ehelyett használjon 1.00:00:00. Ha 24:00:00 használja, akkor a rendszer 24 napos (24.00:00:00). 1 nap és 4 óra adja meg 1:04:00:00. |Nem |0 |
-| RetryInterval |A várakozási idő hiba és a következő kísérlet között. A beállítás jelenlegi idő vonatkozik. Ha az előző sikertelen, a következő kísérlet után van-e a **retryInterval** időszak. <br/><br/>Ha 1:00 PM most, az első lépések az első próbálkozás. Ha az első ellenőrzési ellenőrzés időtartam 1 perc és a művelet sikertelen volt, a következő újrapróbálkozási jelenleg 1:00 + 1 perc (időtartam) + 1 perces (újrapróbálkozási időköz) = 1:02 PM. <br/><br/>A múltban szeletek nincs késleltetés. Az újrapróbálkozási azonnal történik. |Nem |00:01:00 (1 perc) |
+| retryInterval |A várakozási idő hiba és a következő kísérlet között. A beállítás jelenlegi idő vonatkozik. Ha az előző sikertelen, a következő kísérlet után van-e a **retryInterval** időszak. <br/><br/>Ha 1:00 PM most, az első lépések az első próbálkozás. Ha az első ellenőrzési ellenőrzés időtartam 1 perc és a művelet sikertelen volt, a következő újrapróbálkozási jelenleg 1:00 + 1 perc (időtartam) + 1 perces (újrapróbálkozási időköz) = 1:02 PM. <br/><br/>A múltban szeletek nincs késleltetés. Az újrapróbálkozási azonnal történik. |Nem |00:01:00 (1 perc) |
 | retryTimeout |Az egyes újrapróbálkozások időkorlátját.<br/><br/>Ha ez a tulajdonság 10 percre van beállítva, az érvényesítési 10 percen belül kell végrehajtani. Ha az érvényesítés végrehajtásához 10 percnél hosszabb ideig tart, az ismételt próbálkozás túllépi az időkorlátot.<br/><br/>Ha az érvényesítés időkorlát összes kísérleteit, a szelet van megjelölve, **időtúllépésbe került**. |Nem |00:10:00 (10 perc) |
 | maximumRetry |A száma a rendelkezésre állási, a külső adatok kereséséhez. A megengedett maximális érték: 10. |Nem |3 |
 
@@ -448,6 +448,6 @@ Létrehozhat, amelyek egy folyamat használatával hatóköre adatkészletek a *
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Folyamatok kapcsolatos további információkért lásd: [hozzon létre adatcsatornák](data-factory-create-pipelines.md). 
 - Hogyan adatcsatornák ütemezett és végrehajtott kapcsolatos további információkért lásd: [ütemezés és a végrehajtása az Azure Data Factory](data-factory-scheduling-and-execution.md). 

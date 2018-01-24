@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 01/10/2018
 ms.author: jingwang
-ms.openlocfilehash: 4ab0ddcc3a42ab4ebb7c9555f57bc2533989b071
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 7f494cff1e8dc57a41467cd722fdf224e10c9dec
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Adatok másolása az SAP Business Warehouse Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -170,7 +170,7 @@ Ha az adatok másolása az SAP BW Programhoz, a következő megfeleltetéseket s
 | ACCP | Int |
 | KARAKTER | Karakterlánc |
 | CLNT | Karakterlánc |
-| PÉNZNEM | Decimális |
+| CURR | Decimális |
 | CUKY | Karakterlánc |
 | DEC | Decimális |
 | FLTP | Dupla |
@@ -182,9 +182,9 @@ Ha az adatok másolása az SAP BW Programhoz, a következő megfeleltetéseket s
 | LRAW | Byte] |
 | PREC | Int16 |
 | QUAN | Decimális |
-| NYERS | Byte] |
+| RAW | Byte] |
 | RAWSTRING | Byte] |
-| KARAKTERLÁNC | Karakterlánc |
+| STRING | Karakterlánc |
 | EGYSÉG | Karakterlánc |
 | DATS | Karakterlánc |
 | NUMC | Karakterlánc |
