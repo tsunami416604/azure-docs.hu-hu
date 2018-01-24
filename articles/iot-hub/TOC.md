@@ -75,10 +75,12 @@
 #### [.NET](iot-hub-csharp-csharp-process-d2c.md)
 #### [Java](iot-hub-java-java-process-d2c.md)
 #### [Node.js](iot-hub-node-node-process-d2c.md)
+#### [Python](iot-hub-python-python-process-d2c.md)
 ### Üzenetküldés a felhőből az eszközökre
 #### [.NET](iot-hub-csharp-csharp-c2d.md)
 #### [Java](iot-hub-java-java-c2d.md)
 #### [Node.js](iot-hub-node-node-c2d.md)
+#### [Python](iot-hub-python-python-c2d.md)
 ### Fájlok feltöltése eszközökről
 #### [.NET](iot-hub-csharp-csharp-file-upload.md)
 #### [Java](iot-hub-java-java-file-upload.md)
@@ -88,11 +90,13 @@
 #### [.NET-háttérrendszer/Node.js-eszköz](iot-hub-csharp-node-twin-getstarted.md)
 #### [.NET-háttérrendszer/.NET-eszköz](iot-hub-csharp-csharp-twin-getstarted.md)
 #### [Java-háttérrendszer/Java-eszköz](iot-hub-java-java-twin-getstarted.md)
+#### [Python-háttérrendszer/Python-eszköz](iot-hub-python-twin-getstarted.md)
 ### Közvetlen metódusok használata
 #### [Node.js-háttérrendszer/Node.js-eszköz](iot-hub-node-node-direct-methods.md)
 #### [.NET-háttérrendszer/Node.js-eszköz](iot-hub-csharp-node-direct-methods.md)
 #### [.NET-háttérrendszer/.NET-eszköz](iot-hub-csharp-csharp-direct-methods.md)
 #### [Java-háttérrendszer/Java-eszköz](iot-hub-java-java-direct-methods.md)
+#### [Python-háttérrendszer/Python-eszköz](iot-hub-python-python-direct-methods.md)
 ### Ismerkedés az eszközfelügyelettel
 #### [Node.js-háttérrendszer/Node.js-eszköz](iot-hub-node-node-device-management-get-started.md)
 #### [.NET-háttérrendszer/Node.js-eszköz](iot-hub-csharp-node-device-management-get-started.md)

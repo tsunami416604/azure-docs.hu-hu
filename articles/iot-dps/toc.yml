@@ -87,6 +87,8 @@
       href: how-to-control-access.md
     - name: A Device Provisioning Service kezelése az Azure CLI-vel
       href: how-to-manage-dps-with-cli.md
+    - name: Fejlesztés SDK-eszközök használatával
+      href: how-to-use-sdk-tools.md
 - name: Referencia
   items:
     - name: REST

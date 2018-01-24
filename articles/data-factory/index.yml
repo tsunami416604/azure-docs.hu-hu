@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Az Azure Data Factory V2 előzetes verziójának dokumentációja
+title: "Az Azure Data Factory V2 előzetes verziójának dokumentációja"
 metadata:
-  title: Az Azure Data Factory dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
-  description: 'Ismerje meg, hogyan telepíthet a helyszíni és felhőalapú erőforrásokba és azokból kivezető automatizált adatfeldolgozási folyamatokat a Data Factory használatával az adatok áthelyezéséhez és elemzésre való előkészítéséhez.'
+  title: "Az Azure Data Factory dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
+  description: "Ismerje meg, hogyan telepíthet a helyszíni és felhőalapú erőforrásokba és azokból kivezető automatizált adatfeldolgozási folyamatokat a Data Factory használatával az adatok áthelyezéséhez és elemzésre való előkészítéséhez."
   services: data-factory
   author: spelluru
   manager: jhubbard
@@ -13,73 +13,91 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/08/2017
   ms.author: spelluru
+  ms.openlocfilehash: 76d18c2966b52c508ec959074c976e84ab5e9bdf
+  ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 01/24/2018
 abstract:
-  description: 'Ismerkedjen meg a Data Factory felhőalapú integrációs szolgáltatás használatával, amelynek segítségével adattárolási, -továbbítási és -feldolgozási folyamatokat állíthat össze automatizált adatfeldolgozási folyamatokká. Az oktatóanyagok és az egyéb dokumentáció bemutatják az adatfeldolgozási folyamatok telepítésének és felügyeletének, valamint az adatok az elemzéshez való továbbításának és átalakításának módjait. <p>Jelenleg a Data Factory V2 verziója még előzetes verziójú kiadásban érhető el. Az általánosan elérhető verzió a V1. Ha a Data Factory V1 verzióját használja, lásd: <a href=/azure/data-factory/v1/data-factory-introduction>a V1 dokumentációja</a>.</p>'
+  description: "Ismerkedjen meg a Data Factory felhőalapú integrációs szolgáltatás használatával, amelynek segítségével adattárolási, -továbbítási és -feldolgozási folyamatokat állíthat össze automatizált adatfeldolgozási folyamatokká. Az oktatóanyagok és az egyéb dokumentáció bemutatják az adatfeldolgozási folyamatok telepítésének és felügyeletének, valamint az adatok az elemzéshez való továbbításának és átalakításának módjait. <p>Jelenleg a Data Factory V2 verziója még előzetes verziójú kiadásban érhető el. Az általánosan elérhető verzió a V1. Ha a Data Factory V1 verzióját használja, lásd: <a href=/azure/data-factory/v1/data-factory-introduction>a V1 dokumentációja</a>.</p>"
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: media/index/video.png
+      width: 250
+    title: "Folyamatok vizuális összeállítása az Azure Data Factory V2-höz (19:31)"
+    href: https://azure.microsoft.com/en-us/resources/videos/azure-friday-visually-build-pipelines-for-azure-data-factory-v2
+    width: 250
 sections:
-  - title: 5 perces gyors útmutatók
+- title: "5 perces gyors útmutatók"
+  items:
+  - type: paragraph
+    text: "Ismerje meg, hogyan hozható létre adat-előállító a következők használatával:"
+  - type: list
+    style: icon48
     items:
-      - type: paragraph
-        text: 'Ismerje meg, hogyan hozható létre adat-előállító a következők használatával:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/data-factory/media/index/logo_powershell.svg
-            text: Azure PowerShell
-            href: /azure/data-factory/quickstart-create-data-factory-powershell
-          - image:
-              src: /azure/data-factory/media/index/logo_net.svg
-            text: .NET
-            href: /azure/data-factory/quickstart-create-data-factory-dot-net
-          - image:
-              src: /azure/data-factory/media/index/logo_python.svg
-            text: Python
-            href: /azure/data-factory/quickstart-create-data-factory-python
-          - image:
-              src: /azure/data-factory/media/index/logo_rest.svg
-            text: REST
-            href: /azure/data-factory/quickstart-create-data-factory-rest-api
-          - image:
-              src: /azure/data-factory/media/index/portal.svg
-            text: Azure Portal
-            href: /azure/data-factory/quickstart-create-data-factory-portal
-          - image:
-              src: /azure/data-factory/media/index/logo_azure_resource_manager.svg
-            text: Resource Manager-sablon
-            href: /azure/data-factory/quickstart-create-data-factory-resource-manager-template
-  - title: Részletes útmutatók
+    - image:
+        src: /azure/data-factory/media/index/portal.svg
+      text: "A Data Factory felhasználói felülete"
+      href: /azure/data-factory/quickstart-create-data-factory-portal
+    - image:
+        src: /azure/data-factory/media/index/copy-data-tool.png
+      text: "Adatok másolása eszköz"
+      href: /azure/data-factory/quickstart-create-data-factory-copy-data-tool
+    - image:
+        src: /azure/data-factory/media/index/logo_powershell.svg
+      text: Azure PowerShell
+      href: /azure/data-factory/quickstart-create-data-factory-powershell
+    - image:
+        src: /azure/data-factory/media/index/logo_net.svg
+      text: .NET
+      href: /azure/data-factory/quickstart-create-data-factory-dot-net
+    - image:
+        src: /azure/data-factory/media/index/logo_python.svg
+      text: Python
+      href: /azure/data-factory/quickstart-create-data-factory-python
+    - image:
+        src: /azure/data-factory/media/index/logo_rest.svg
+      text: REST
+      href: /azure/data-factory/quickstart-create-data-factory-rest-api
+    - image:
+        src: /azure/data-factory/media/index/logo_azure_resource_manager.svg
+      text: Resource Manager-sablon
+      href: /azure/data-factory/quickstart-create-data-factory-resource-manager-template
+- title: "Részletes útmutatók"
+  items:
+  - type: paragraph
+    text: "Ismerje meg, hogyan hozható létre és figyelhető adat-előállító:"
+  - type: list
+    style: ordered
     items:
-      - type: paragraph
-        text: 'Ismerje meg, hogyan hozható létre és figyelhető adat-előállító:'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">SSIS csomagok üzembe helyezése az Azure-ban</a>
-          - html: <a href="/azure/data-factory/tutorial-copy-data-dot-net">Adatok másolása a felhőben</a>
-          - html: <a href="../data-factory/tutorial-hybrid-copy-powershell">Helyszíni adatok másolása a felhőbe</a>
-          - html: <a href="../data-factory/tutorial-bulk-copy">Adatok tömeges másolása</a>
-          - html: <a href="../data-factory/tutorial-incremental-copy-powershell">Adatok fokozatos másolása</a>
-          - html: <a href="../data-factory/tutorial-transform-data-spark-powershell">Adatok átalakítása a felhőben a Spark használatával</a>
-          - html: <a href="../data-factory/tutorial-transform-data-hive-virtual-network">Adatok átalakítása virtuális hálózatban</a>
-          - html: <a href="../data-factory/tutorial-control-flow">Átvitelvezérlés</a>
-  - title: Példák
+    - html: "SSIS-csomagok üzembe helyezése az Azure-ban – <a href=\"/azure/data-factory/tutorial-create-azure-ssis-runtime-portal\">A Data Factory felhasználói felülete</a> | <a href=\"/azure/data-factory/tutorial-deploy-ssis-packages-azure\">Azure PowerShell</a>"
+    - html: "Adatok másolása a felhőben – <a href=\"/azure/data-factory/tutorial-copy-data-tool\">Adatok másolása eszköz</a> | <a href=\"/azure/data-factory/tutorial-copy-data-portal\">A Data Factory felhasználói felülete</a> | <a href=\"/azure/data-factory/tutorial-copy-data-dot-net\">Azure PowerShell</a>"
+    - html: "Helyszíni adatok másolása a felhőbe – <a href=\"/azure/data-factory/tutorial-hybrid-copy-data-tool\">Adatok másolása eszköz | <a href=\"/azure/data-factory/tutorial-hybrid-copy-portal\">A Data Factory felhasználói felülete</a> | <a href=\"/azure/data-factory/tutorial-hybrid-copy-powershell\">Azure PowerShell</a>"
+    - html: "Adatok tömeges másolása – <a href=\"/azure/data-factory/tutorial-bulk-copy-portal\">A Data Factory felhasználói felülete</a> | <a href=\"/azure/data-factory/tutorial-bulk-copy\">Azure PowerShell</a>"
+    - html: "Adatok fokozatos másolása – <a href=\"/azure/data-factory/tutorial-incremental-copy-portal\">A Data Factory felhasználói felülete</a> | <a href=\"/azure/data-factory/tutorial-incremental-copy-powershell\">Azure PowerShell</a>"
+    - html: "Adatok átalakítása a felhőben a Spark használatával – <a href=\"/azure/data-factory/tutorial-transform-data-spark-portal\">A Data Factory felhasználói felülete</a> | <a href=\"/azure/data-factory/tutorial-transform-data-spark-powershell\">Azure PowerShell</a>"
+    - html: "Adatok átalakítása a virtuális hálózatban – <a href=\"/azure/data-factory/tutorial-transform-data-hive-virtual-network-portal\">A Data Factory felhasználói felülete</a> | <a href=\"/azure/data-factory/tutorial-transform-data-hive-virtual-network\">Azure PowerShell</a>"
+    - html: "Átvitelvezérlés – <a href=\"/azure/data-factory/tutorial-control-flow-portal\">A Data Factory felhasználói felülete</a> | <a href=\"/azure/data-factory/tutorial-control-flow\">Azure PowerShell</a>"
+- title: "Példák"
+  items:
+  - type: paragraph
+    text: "A következő minták segítségével dolgozhat a Data Factory-val"
+  - type: list
+    style: unordered
+    className: spaced noBullet
     items:
-      - type: paragraph
-        text: A következő minták segítségével dolgozhat a Data Factory-val
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/data-factory/samples-powershell">PowerShell</a>
-  - title: Referencia
+    - html: <a href="/azure/data-factory/samples-powershell">PowerShell</a>
+- title: Referencia
+  items:
+  - type: list
+    style: cards
+    className: cardsD
     items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Parancssor
-            html: <p><a href="/powershell/module/azurerm.datafactoryv2/">Azure PowerShell</a></p>
-          - title: Nyelvek
-            html: <p><a href="/dotnet/api/microsoft.azure.management.datafactory">.NET</a></p><p><a href="/python/api/overview/azure/datafactory?view=azure-python">Python</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/datafactory">REST API</a></p>
+    - title: Parancssor
+      html: <p><a href="/powershell/module/azurerm.datafactoryv2/">Azure PowerShell</a></p>
+    - title: Nyelvek
+      html: <p><a href="/dotnet/api/microsoft.azure.management.datafactory">.NET</a></p><p><a href="/python/api/overview/azure/datafactory?view=azure-python">Python</a></p>
+    - title: REST
+      html: <p><a href="/rest/api/datafactory">REST API</a></p>

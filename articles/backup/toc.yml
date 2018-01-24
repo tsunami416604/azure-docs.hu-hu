@@ -97,6 +97,8 @@
               href: backup-azure-arm-vms.md
             - name: Titkosított virtuális gépek biztonsági mentése
               href: backup-azure-vms-encryption.md
+            - name: Virtuális gép biztonsági mentésének engedélyezése a virtuális gépek létrehozása során
+              href: backup-during-vm-creation.md
         - name: Virtuális gépek kezelése és monitorozása
           items:
             - name: Azure-beli virtuális gépek biztonsági másolatainak kezelése az Azure Portalon
