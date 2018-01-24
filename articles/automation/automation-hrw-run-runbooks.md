@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: magoedte
-ms.openlocfilehash: d9eb4407e537d6a6d45c2fb685c3dcd37bd511a7
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: d73bb33b4b330df803e140145ed63319af4a6733
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>A hibrid forgatókönyv-feldolgozók a futó runbookot 
 Nincs különbség a futó Azure Automation és a hibrid forgatókönyv-feldolgozót a futó runbookok struktúrában. Az összes használt Runbookok valószínűleg jelentős különbség azonban mivel a hibrid forgatókönyv-feldolgozók általában célzó runbookok kezelheti az erőforrásokat a helyi számítógép vagy a helyi környezetben, ahol központilag telepítették, a runbookok közben erőforrásokon Azure Automation szolgáltatásbeli általában az Azure felhőalapú erőforrások kezelésére.
@@ -59,7 +59,7 @@ Ahelyett, hogy a runbookok adja meg a saját helyi erőforrások hitelesítésé
 
 A felhasználónév a hitelesítő adatokat kell lennie a következő formátumok egyikében:
 
-* tartomány\felhasználónév
+* domain\username
 * username@domain
 * felhasználónév (fiókok esetében a helyi számítógép helyi)
 
@@ -144,7 +144,7 @@ A következő PowerShell-forgatókönyv *Export-RunAsCertificateToHybridWorker*,
     Set-AzureRmContext -SubscriptionId $RunAsConnection.SubscriptionID | Write-Verbose
 
     # List automation accounts to confirm Azure Resource Manager calls are working
-    Get-AzureRmAutomationAccount | Select AutomationAccountName
+    Get-AzureRmAutomationAccount | Select-Object AutomationAccountName
 
 Mentse a *Export-RunAsCertificateToHybridWorker* a számítógépet a runbook egy `.ps1` bővítmény.  Importálja a fájlt az Automation-fiók és szerkeszteni a runbookot, a változó értékének módosítása `$Password` a saját jelszavát.  Közzététele, és futtassa a célcsoport-kezelési a hibrid feldolgozócsoport futtatásához, és a Futtatás mint fiókkal runbookok hitelesítéséhez a runbook.  A feladatstream jelentés irányuló kísérlet: importálja a tanúsítványt a helyi számítógép tárolójában, és attól függően, hogy hány Automation-fiókok vannak definiálva az előfizetés és a sikeres hitelesítés esetén több sort tartalmazó követi.  
 
@@ -155,6 +155,6 @@ Naplók minden hibridfeldolgozó C:\ProgramData\Microsoft\System Center\Orchestr
 
 Ha a runbookok nem sikeres befejezését és az összefoglaló feladat állapota **felfüggesztett**, tekintse át a hibaelhárítási cikk [hibrid forgatókönyv-feldolgozó: A runbook-feladat leállítása felfüggesztett állapotú ](automation-troubleshooting-hybrid-runbook-worker.md#a-runbook-job-terminates-with-a-status-of-suspended).   
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A runbook-indítási használható különböző módszerekkel kapcsolatos további információkért lásd: [Runbook elindítása az Azure Automationben](automation-starting-a-runbook.md).  
 * A különböző eljárásokkal a PowerShell és a PowerShell-munkafolyamati forgatókönyvek az Azure Automationben a szöveges szerkesztővel használata a ismertetése: [az Azure Automationben Runbook szerkesztése](automation-edit-textual-runbook.md)

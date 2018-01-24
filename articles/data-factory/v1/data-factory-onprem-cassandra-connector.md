@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2017
+ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6e5c859d13ea8a10e1fa38340df52f189ec6cd4e
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: c8f61cb165b0bfffe2f42b060cdbd666fff3a8b3
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Adatok áthelyezése az Azure Data Factory használatával a helyszíni Cassandra adatbázisból
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -46,7 +46,7 @@ Az átjáró telepítésekor automatikusan telepíti a Microsoft Cassandra ODBC-
 > [!NOTE]
 > Lásd: [átjáró elhárítása](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) kapcsolati/átjáró hibaelhárítási tippek a kapcsolódó problémákat.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 A másolási tevékenység, mely az adatok egy helyszíni Cassandra adattároló különböző eszközök/API-k használatával létrehozhat egy folyamatot. 
 
 - Hozzon létre egy folyamatot a legegyszerűbb módja használatára a **másolása varázsló**. Lásd: [oktatóanyag: hozzon létre egy folyamatot, másolása varázslóval](data-factory-copy-data-wizard-tutorial.md) létrehozásával egy folyamatot, az adatok másolása varázsló segítségével gyorsan útmutatást. 
@@ -68,9 +68,9 @@ A következő táblázat a JSON-elemek szerepelnek Cassandra kapcsolódó szolg�
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | type |A type tulajdonságot kell beállítani: **OnPremisesCassandra** |Igen |
-| állomás |Egy vagy több IP-címek vagy Cassandra kiszolgálók állomás nevét.<br/><br/>IP-címek vagy állomásnevek kiszolgálókhoz való kapcsolódáshoz összes egyidejűleg vesszővel tagolt listáját adja meg. |Igen |
+| gazdagép |One or more IP addresses or host names of Cassandra servers.<br/><br/>IP-címek vagy állomásnevek kiszolgálókhoz való kapcsolódáshoz összes egyidejűleg vesszővel tagolt listáját adja meg. |Igen |
 | port |A TCP-portot, amelyen a Cassandra kiszolgáló ügyfélkapcsolatokat. |Nem, alapértelmezett érték: 9042 |
-| AuthenticationType |Basic vagy Anonymous |Igen |
+| authenticationType |Basic vagy Anonymous |Igen |
 | felhasználónév |Adja meg a felhasználói fiók felhasználónevét. |Igen, ha authenticationType beállítása alapszintű. |
 | jelszó |Adja meg a felhasználói fiók jelszavát. |Igen, ha authenticationType beállítása alapszintű. |
 | gatewayName |A helyszíni Cassandra adatbázishoz való csatlakozáshoz használt átjáró neve. |Igen |
@@ -83,7 +83,7 @@ A **typeProperties** szakasz eltérő adatkészlet egyes típusai és informáci
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| kulcstérértesítések használatával |Kulcstérértesítések használatával vagy séma Cassandra adatbázis nevét. |Igen (Ha **lekérdezés** a **CassandraSource** nincs definiálva). |
+| keyspace |Kulcstérértesítések használatával vagy séma Cassandra adatbázis nevét. |Igen (Ha **lekérdezés** a **CassandraSource** nincs definiálva). |
 | tableName |A tábla Cassandra adatbázis neve. |Igen (Ha **lekérdezés** a **CassandraSource** nincs definiálva). |
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
@@ -262,15 +262,15 @@ Lásd: [RelationalSource típustulajdonságokat](#copy-activity-properties) a Re
 | --- | --- |
 | ASCII |Karakterlánc |
 | BIGINT |Int64 |
-| A BLOB |Byte] |
-| LOGIKAI ÉRTÉK |Logikai érték |
+| BLOB |Byte] |
+| LOGIKAI ÉRTÉK |Logikai |
 | DECIMÁLIS |Decimális |
 | DUPLA |Dupla |
-| LEBEGŐPONTOS |Egyetlen |
+| LEBEGŐPONTOS |Egyedülálló |
 | INET |Karakterlánc |
 | INT |Int32 |
 | SZÖVEG |Karakterlánc |
-| IDŐBÉLYEG |Dátum és idő |
+| IDŐBÉLYEG |DateTime |
 | TIMEUUID |GUID |
 | UUID |GUID |
 | VARCHAR |Karakterlánc |
@@ -325,14 +325,14 @@ Az alábbi táblázatok bemutatják az adatokat a listában, térkép és String
 | 3 |2 |102 |
 | 3 |3 |103 |
 
-#### <a name="table-exampletablevtmap"></a>"ExampleTable_vt_Map". tábla:
+#### <a name="table-exampletablevtmap"></a>Table “ExampleTable_vt_Map”:
 | pk_int | Map_key | Map_value |
 | --- | --- | --- |
 | 1 |S1 |A |
-| 1 |S2 |B |
-| 3 |S1 |T |
+| 1 |S2 |b |
+| 3 |S1 |t |
 
-#### <a name="table-exampletablevtstringset"></a>"ExampleTable_vt_StringSet". tábla:
+#### <a name="table-exampletablevtstringset"></a>Table “ExampleTable_vt_StringSet”:
 | pk_int | StringSet_value |
 | --- | --- |
 | 1 |A |

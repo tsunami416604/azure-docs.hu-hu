@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2017
+ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 413d7ddf1e5b87f64c0d8e14c0ef4bdefd2890a7
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 90402e047caff2446591dca9cc9392c9d0344b5f
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Feldolgozási sor tevékenység végrehajtása az Azure Data Factory
 A feldolgozási sor végrehajtása tevékenység lehetővé teszi, hogy a Data Factory-folyamathoz meghívni egy másik folyamat.
@@ -66,11 +66,11 @@ Tulajdonság | Leírás | Megengedett értékek | Szükséges
 -------- | ----------- | -------------- | --------
 név | A végrehajtási folyamat tevékenység nevét. | Karakterlánc | Igen
 type | Értékre kell állítani: **ExecutePipeline**. | Karakterlánc | Igen
-Adatcsatorna | Hivatkozás a függő folyamat, amely ebben az adatcsatornában hívja meg a következő feldolgozási sorban. A folyamat referenciaobjektum két tulajdonságokkal rendelkezik: **hivatkozásnév** és **típus**. A hivatkozásnév tulajdonság határozza meg a referencia-feldolgozási folyamat nevét. A type tulajdonságot meg kell PipelineReference. | PipelineReference | Igen
+adatcsatorna | Hivatkozás a függő folyamat, amely ebben az adatcsatornában hívja meg a következő feldolgozási sorban. A folyamat referenciaobjektum két tulajdonságokkal rendelkezik: **hivatkozásnév** és **típus**. A hivatkozásnév tulajdonság határozza meg a referencia-feldolgozási folyamat nevét. A type tulajdonságot meg kell PipelineReference. | PipelineReference | Igen
 paraméterek | A meghívott csővezeték átadandó paraméterek | Egy JSON-objektum, amely leképezhető argumentumérték paraméterének neve | Nem
-waitOnCompletion | Meghatározza, hogy tevékenység végrehajtási megvárja-e a függő feldolgozási sor végrehajtása befejeződik. | Alapértelmezett értéke false. | Logikai érték | Nem
+waitOnCompletion | Meghatározza, hogy tevékenység végrehajtási megvárja-e a függő feldolgozási sor végrehajtása befejeződik. | Alapértelmezett értéke false. | Logikai | Nem
 
-## <a name="sample"></a>Minta
+## <a name="sample"></a>Sample
 Ebben a forgatókönyvben két folyamatok rendelkezik:
 
 - **Fő folyamat** -Ez az adatcsatorna egy folyamat végrehajtása tevékenység, amely behívja a meghívott csővezeték rendelkezik. A fő folyamat két paramétereket fogadja: `masterSourceBlobContainer`, `masterSinkBlobContainer`.
@@ -257,7 +257,7 @@ A fő folyamat továbbítja ezeket az értékeket a meghívott folyamat, a köve
 }
 
 ```
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse meg a többi adat-előállító által támogatott vezérlésfolyam-tevékenységek: 
 
 - [Minden egyes tevékenységhez](control-flow-for-each-activity.md)

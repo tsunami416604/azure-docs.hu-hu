@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 09/20/2017
 ms.author: yoelh
-ms.openlocfilehash: 342e82071778156477d216c9b624a938c48cb37f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3a2310ae6266709df6677c55f11b15239c0425a2
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Az Azure Active Directory B2C: A felhasználói felület konfigurálása dinamikus tartalom egyéni házirendek használatával
 Azure Active Directory B2C segítségével (az Azure AD B2C) egyéni házirendek, elküldheti a paraméter egy lekérdezési karakterlánc. Úgy, hogy a paraméter a HTML-végpontot, dinamikusan módosíthatja az oldal tartalmát. Például a háttérkép, a Azure AD B2C regisztráció vagy bejelentkezés lapon adja meg a webkiszolgáló vagy a mobilalkalmazás paramétereinek alapján módosíthatja. 
@@ -41,16 +41,16 @@ A `ContentDefinitions` szakasz sorozata `ContentDefinition` XML-elemeket. Az ID 
 
 | Tartalmi azonosító | Alapértelmezett HTML5 sablon| Leírás | 
 |-----------------------|--------|-------------|
-| *API.Error* | [Exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Hibalap**. Ezen a lapon megjelenik, ha kivétel, vagy hiba történt. |
-| *API.idpselections* | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Identitás-szolgáltató kiválasztása lapon**. Ezen a lapon, amelyet a felhasználók a bejelentkezés során identitás-szolgáltatóktól sorolja fel. A beállítások általában vállalati identitás-szolgáltatóktól, például a Facebookhoz és Google + vagy helyi fiókok közösségi Identitásszolgáltatók működnek. |
-| *API.idpselections.Signup* | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Identity provider adatgyűjtésre vonatkozó felhasználói előfizetési**. Ez a lap felsorolja Identitásszolgáltatók, amelyet a felhasználók a regisztráció során. A lehetőségek állnak a vállalati identitás-szolgáltatóktól, például a Facebookhoz és a Google + közösségi Identitásszolgáltatók, vagy helyi fiók. |
-| *API.localaccountpasswordreset* | [selfasserted.HTML](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Elfelejtett jelszó lap**. Ezen a lapon található felhasználók kell végeznie a jelszó alaphelyzetbe állítása kezdeményezése űrlapot.  |
-| *API.localaccountsignin* | [selfasserted.HTML](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Helyi fiók bejelentkezési oldalának**. Ez a lap tartalmaz egy e-mail címet vagy egy felhasználónevet alapuló helyi fiókkal bejelentkezni az űrlap. Az űrlap egy bemeneti szövegmező és a jelszó mező tartalmazhat. |
-| *API.localaccountsignup* | [selfasserted.HTML](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Helyi fiók bejelentkezési oldal**. Ezen a lapon található iratkozik fel egy helyi fiók, amely egy e-mail címet vagy egy felhasználónevet alapul szolgáló űrlap. Az űrlap különböző bemeneti vezérlőket, például a tartalmazhat: egy szöveges beviteli mezőbe, a jelszó mező, a megfelelő választógombra kattintva, egyetlen legördülő listák, és jelölje ki a jelölőnégyzeteket. |
-| *API.phonefactor* | [többtényezős-1.0.0.cshtml](https://login.microsoftonline.com/static/tenant/default/multifactor-1.0.0.cshtml) | **Többtényezős hitelesítés lap**. Ezen a lapon, a felhasználók a telefonszámok (segítségével ellenőrizheti szöveges vagy hangos) regisztráció vagy bejelentkezés során. |
-| *API.selfasserted* | [selfasserted.HTML](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Közösségi fiók bejelentkezési oldalának**. Ezen a lapon található felhasználók kell végeznie, amikor azok az egy meglévő fiókkal a közösségi identitásszolgáltató regisztráljon űrlapot. Ezen a lapon hasonlít az előző közösségi fiók regisztrációs oldalon, a jelszó számbeviteli mezők kivételével. |
-| *API.selfasserted.profileupdate* | [updateprofile.HTML](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **Profil update lapon**. Ezen a lapon található felhasználók számára elérhető frissíteni a profilját űrlap. Ezen a lapon hasonlít a közösségi fiók regisztrációs oldalon, a jelszó számbeviteli mezők kivételével. |
-| *API.signuporsignin* | [Unified.HTML](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) | **Egyesített előfizetési vagy a bejelentkezési oldal**. Ezen a lapon a felhasználói regisztrációt és a bejelentkezési folyamat kezeli. A felhasználók a vállalati identitás-szolgáltatóktól, közösségi Identitásszolgáltatók, például a Facebook-on vagy a Google + és helyi fiókok.  |
+| *api.error* | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Hibalap**. Ezen a lapon megjelenik, ha kivétel, vagy hiba történt. |
+| *api.idpselections* | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Identitás-szolgáltató kiválasztása lapon**. Ezen a lapon, amelyet a felhasználók a bejelentkezés során identitás-szolgáltatóktól sorolja fel. A beállítások általában vállalati identitás-szolgáltatóktól, például a Facebookhoz és Google + vagy helyi fiókok közösségi Identitásszolgáltatók működnek. |
+| *api.idpselections.signup* | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Identity provider adatgyűjtésre vonatkozó felhasználói előfizetési**. Ez a lap felsorolja Identitásszolgáltatók, amelyet a felhasználók a regisztráció során. A lehetőségek állnak a vállalati identitás-szolgáltatóktól, például a Facebookhoz és a Google + közösségi Identitásszolgáltatók, vagy helyi fiók. |
+| *api.localaccountpasswordreset* | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Elfelejtett jelszó lap**. Ezen a lapon található felhasználók kell végeznie a jelszó alaphelyzetbe állítása kezdeményezése űrlapot.  |
+| *api.localaccountsignin* | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Helyi fiók bejelentkezési oldalának**. Ez a lap tartalmaz egy e-mail címet vagy egy felhasználónevet alapuló helyi fiókkal bejelentkezni az űrlap. Az űrlap egy bemeneti szövegmező és a jelszó mező tartalmazhat. |
+| *api.localaccountsignup* | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Helyi fiók bejelentkezési oldal**. Ezen a lapon található iratkozik fel egy helyi fiók, amely egy e-mail címet vagy egy felhasználónevet alapul szolgáló űrlap. Az űrlap különböző bemeneti vezérlőket, például a tartalmazhat: egy szöveges beviteli mezőbe, a jelszó mező, a megfelelő választógombra kattintva, egyetlen legördülő listák, és jelölje ki a jelölőnégyzeteket. |
+| *api.phonefactor* | [multifactor-1.0.0.cshtml](https://login.microsoftonline.com/static/tenant/default/multifactor-1.0.0.cshtml) | **Többtényezős hitelesítés lap**. Ezen a lapon, a felhasználók a telefonszámok (segítségével ellenőrizheti szöveges vagy hangos) regisztráció vagy bejelentkezés során. |
+| *api.selfasserted* | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Közösségi fiók bejelentkezési oldalának**. Ezen a lapon található felhasználók kell végeznie, amikor azok az egy meglévő fiókkal a közösségi identitásszolgáltató regisztráljon űrlapot. Ezen a lapon hasonlít az előző közösségi fiók regisztrációs oldalon, a jelszó számbeviteli mezők kivételével. |
+| *api.selfasserted.profileupdate* | [updateprofile.html](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **Profil update lapon**. Ezen a lapon található felhasználók számára elérhető frissíteni a profilját űrlap. Ezen a lapon hasonlít a közösségi fiók regisztrációs oldalon, a jelszó számbeviteli mezők kivételével. |
+| *api.signuporsignin* | [unified.html](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) | **Egyesített előfizetési vagy a bejelentkezési oldal**. Ezen a lapon a felhasználói regisztrációt és a bejelentkezési folyamat kezeli. A felhasználók a vállalati identitás-szolgáltatóktól, közösségi Identitásszolgáltatók, például a Facebook-on vagy a Google + és helyi fiókok.  |
 
 ## <a name="serving-dynamic-content"></a>Dinamikus tartalom
 Az a [konfigurálása a felhasználói felület testreszabása egyéni házirendet a](active-directory-b2c-ui-customization-custom.md) cikk HTML5 fájlok feltöltése az Azure Blob storage. HTML5 fájlokhoz statikus és leképezési azonos HTML tartalom egyes kérésekre vonatkozóan. 
@@ -105,7 +105,7 @@ Az egyéni HTML5-sablon az Azure AD B2C beépített HTML5 sablon alapján. Letö
 
 7. Ez a forgatókönyv azt elrendezés-lap hivatkozásának eltávolítására. Adja hozzá a következő kódrészletet a _unified.cshtml_:
 
-    ```C#
+    ```csharp
     @{
         Layout = null;
     }
@@ -264,7 +264,7 @@ Módosítsa a HomeController `unified` módszert fogadja el a campaignId paramé
 
 1. Nyissa meg a *Controllers\HomeController.cs* fájlt, és módosítsa a `unified` metódus adja hozzá a következő kódrészletet:
 
-    ```C#
+    ```csharp
     public IActionResult unified(string campaignId)
     {
         // If campaign ID is Hawaii, show Hawaii background

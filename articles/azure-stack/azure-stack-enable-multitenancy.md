@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: helaw
-ms.openlocfilehash: 3a90057b43e3f2074e72f3d0f896b35b4884368b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a2cba85a553f20040d2fb118b35859b05870e361
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="enable-multi-tenancy-in-azure-stack"></a>Több vállalat kiszolgálása Azure verem engedélyezése
 
@@ -81,7 +81,7 @@ $guestDirectoryTenantName = "fabrikam.onmicrosoft.com"
 
 Register-AzSWithMyDirectoryTenant `
  -TenantResourceManagerEndpoint $tenantARMEndpoint `
- -DirectoryTenantName $guestDirectoryTenantName ` 
+ -DirectoryTenantName $guestDirectoryTenantName `
  -Verbose 
 ````
 ## <a name="direct-users-to-sign-in"></a>Közvetlen felhasználók jelentkezhetnek be
@@ -89,7 +89,7 @@ Most, hogy és Mária végzett előkészítésére Mária könyvtár lépéseit,
 
 Mária átirányítja a bármely [idegen rendszerbiztonsági tagok](../active-directory/active-directory-understanding-resource-access.md) a Fabrikam könyvtárban (Ez azt jelenti, hogy a Fabrikam könyvtárban nélkül fabrikam.onmicrosoft.com utótagja felhasználók) https://portal.local.azurestack.external/fabrikam.onmicrosoft.com bejelentkezésnek.  Ha nem használják az URL-cím, azok küldi a program az alapértelmezett címtár (Fabrikam), és arról, hogy a rendszergazda nem hozzájárult hibaüzenetet kap.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Delegált szolgáltatók kezelése](azure-stack-delegated-provider.md)
 - [Az Azure verem kulcsfogalmak](azure-stack-key-features.md)

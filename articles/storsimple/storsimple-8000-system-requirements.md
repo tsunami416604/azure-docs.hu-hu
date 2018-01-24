@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: 4458187999d0795be8637f6f5615e4900ddd94cc
-ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
+ms.openlocfilehash: 1a9cdf31c5924d22d968cd99383417ba371cd1c3
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>A StorSimple 8000 series szoftver, a magas rendelkezésre állás és a hálózati követelmények
 
@@ -62,12 +62,12 @@ A StorSimple eszköz egy zárolt eszközt. Azonban portokat kell a tűzfalat, ho
 
 | Port száma<sup>1,2</sup> | Bejövő vagy kimenő | Port hatókör | Szükséges | Megjegyzések |
 | --- | --- | --- | --- | --- |
-| TCP 80-AS (HTTP)<sup>3</sup> |Kimenő |WAN |Nem |<ul><li>Kimenő port szolgál az Internet-hozzáférés frissítéseket le.</li><li>A kimenő webalkalmazás-proxy a felhasználó által konfigurálható.</li><li>Rendszer frissítések engedélyezéséhez a portnak is nyitva kell lennie a vezérlő rögzített IP-címei.</li></ul> |
-| A TCP 443-AS (HTTPS)<sup>3</sup> |Kimenő |WAN |Igen |<ul><li>Kimenő port használja a felhőben tárolt adatainak eléréséhez.</li><li>A kimenő webalkalmazás-proxy a felhasználó által konfigurálható.</li><li>Rendszer frissítések engedélyezéséhez a portnak is nyitva kell lennie a vezérlő rögzített IP-címei.</li><li>Ezt a portot is szemétgyűjtési használja is a tartományvezérlőn.</li></ul> |
+| TCP 80 (HTTP)<sup>3</sup> |Kimenő |WAN |Nem |<ul><li>Kimenő port szolgál az Internet-hozzáférés frissítéseket le.</li><li>A kimenő webalkalmazás-proxy a felhasználó által konfigurálható.</li><li>Rendszer frissítések engedélyezéséhez a portnak is nyitva kell lennie a vezérlő rögzített IP-címei.</li></ul> |
+| TCP 443 (HTTPS)<sup>3</sup> |Kimenő |WAN |Igen |<ul><li>Kimenő port használja a felhőben tárolt adatainak eléréséhez.</li><li>A kimenő webalkalmazás-proxy a felhasználó által konfigurálható.</li><li>Rendszer frissítések engedélyezéséhez a portnak is nyitva kell lennie a vezérlő rögzített IP-címei.</li><li>Ezt a portot is szemétgyűjtési használja is a tartományvezérlőn.</li></ul> |
 | UDP 53 (DNS) |Kimenő |WAN |Bizonyos esetekben; Tekintse meg a megjegyzéseket. |Ez a port nem kötelező, csak akkor, ha egy internetes DNS-kiszolgálót használ. |
 | UDP 123 (NTP) |Kimenő |WAN |Bizonyos esetekben; Tekintse meg a megjegyzéseket. |Ez a port nem kötelező, csak akkor, ha az Internet alapú NTP-kiszolgáló használ. |
-| 9354 TCP |Kimenő |WAN |Igen |A kimenő port használják a StorSimple eszközt a StorSimple Device Manager szolgáltatással való kommunikációra. |
-| 3260-as (iSCSI) |A |LAN |Nem |Ezt a portot használja a keresztüli iSCSI adatok eléréséhez. |
+| TCP 9354 |Kimenő |WAN |Igen |A kimenő port használják a StorSimple eszközt a StorSimple Device Manager szolgáltatással való kommunikációra. |
+| 3260 (iSCSI) |A |LAN |Nem |Ezt a portot használja a keresztüli iSCSI adatok eléréséhez. |
 | 5985 |A |LAN |Nem |A bejövő portot való kommunikációhoz és a StorSimple-eszköz StorSimple Snapshot Manager által használt.<br>Ezt a portot is használja, amikor távolról csatlakozik a Windows PowerShell a StorSimple HTTP Protokollon keresztül. |
 | 5986 |A |LAN |Nem |Ezt a portot használja, amikor távolról csatlakozik a Windows PowerShell a StorSimple HTTPS-KAPCSOLATON keresztül. |
 
@@ -95,7 +95,7 @@ Azt javasoljuk, hogy állítsa a tűzfalszabályok a kimenő forgalom liberally 
 
 | Az URL-minta | Összetevő/funkció | Eszköz IP-címek |
 | --- | --- | --- |
-| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*`<br>`https://login.windows.net` |StorSimple-eszközkezelő szolgáltatás<br>Access Control Service<br>Azure Service Bus<br>Hitelesítési szolgáltatás |A felhőalapú hálózati illesztők |
+| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*`<br>`https://login.windows.net` |StorSimple-eszközkezelő szolgáltatás<br>Access Control Service<br>Azure Service Bus<br>Authentication Service |A felhőalapú hálózati illesztők |
 | `https://*.backup.windowsazure.com` |Eszközregisztráció |DATA 0 csak |
 | `http://crl.microsoft.com/pki/*`<br>`http://www.microsoft.com/pki/*` |Tanúsítvány-visszavonás |A felhőalapú hálózati illesztők |
 | `https://*.core.windows.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Az Azure storage-fiókok és figyelése |A felhőalapú hálózati illesztők |
@@ -107,7 +107,7 @@ Azt javasoljuk, hogy állítsa a tűzfalszabályok a kimenő forgalom liberally 
 
 | Az URL-minta | Összetevő/funkció | Eszköz IP-címek |
 | --- | --- | --- |
-| `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*`<br>`https://login-us.microsoftonline.com`<br>`https://login.microsoftonline.us` |StorSimple-eszközkezelő szolgáltatás<br>Access Control Service<br>Azure Service Bus<br>Hitelesítési szolgáltatás |A felhőalapú hálózati illesztők |
+| `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*`<br>`https://login.microsoftonline.us` |StorSimple-eszközkezelő szolgáltatás<br>Access Control Service<br>Azure Service Bus<br>Authentication Service |A felhőalapú hálózati illesztők |
 | `https://*.backup.windowsazure.us` |Eszközregisztráció |DATA 0 csak |
 | `http://crl.microsoft.com/pki/*`<br>`http://www.microsoft.com/pki/*` |Tanúsítvány-visszavonás |A felhőalapú hálózati illesztők |
 | `https://*.core.usgovcloudapi.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Az Azure storage-fiókok és figyelése |A felhőalapú hálózati illesztők |
@@ -144,7 +144,7 @@ Az Update 2 és újabb verziókban használt útválasztási metrika algoritmust
   
     Vegye figyelembe a StorSimple eszköz, a két a felhőalapú hálózati felületek, a Data 0 és az 5. Adatok 1 – 4 adatok felhő-tiltva van, de konfigurált átjáró. A sorrendet, amelyben forgalmat továbbítja az eszköz a következő lesz:
   
-    *Data 0 (1) > adatok [6] 5 > adatok 1 (20) > adatok 2 (30) > adatok 3 (40) > adatok 4 (50)*
+    *Data 0 (1) > Data 5 (6) > Data 1 (20) > Data 2 (30) > Data 3 (40) > Data 4 (50)*
   
     *A számok zárójelben azt jelzi, hogy a megfelelő útválasztási metrika.*
   

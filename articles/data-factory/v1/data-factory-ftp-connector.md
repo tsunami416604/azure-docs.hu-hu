@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2017
+ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0452610e56294a19bab302d6df73dff2a70a2eeb
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: daf865ef33e2b099e01f4647b17f36ca8df92c94
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Adatok áthelyezése az FTP-kiszolgáló Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -67,15 +67,15 @@ A következő táblázat ismerteti a JSON-elemek szerepelnek az FTP-kapcsolódó
 | Tulajdonság | Leírás | Szükséges | Alapértelmezett |
 | --- | --- | --- | --- |
 | type |Válassza az FTP-kiszolgáló. |Igen |&nbsp; |
-| állomás |Adja meg a nevét vagy az FTP-kiszolgáló IP-címét. |Igen |&nbsp; |
-| AuthenticationType |Adja meg a hitelesítés típusát. |Igen |Alapszintű, a névtelen |
+| gazdagép |Adja meg a nevét vagy az FTP-kiszolgáló IP-címét. |Igen |&nbsp; |
+| authenticationType |Adja meg a hitelesítés típusát. |Igen |Alapszintű, a névtelen |
 | felhasználónév |Adja meg a felhasználót, aki hozzáfér az FTP-kiszolgálóhoz. |Nem |&nbsp; |
 | jelszó |Adja meg a felhasználó (felhasználónév) jelszavát. |Nem |&nbsp; |
 | encryptedCredential |Adja meg a titkosított hitelesítő adatokat, az FTP-kiszolgáló eléréséhez. |Nem |&nbsp; |
 | gatewayName |Adja meg az átjáró nevét az adatkezelési átjáró helyszíni FTP-kiszolgálóhoz való kapcsolódáshoz. |Nem |&nbsp; |
 | port |Adja meg a portot, amelyet az FTP-kiszolgáló figyel. |Nem |21 |
-| enableSsl |Adja meg, hogy a TLS/SSL csatornán FTP használata. |Nem |Igaz |
-| enableServerCertificateValidation |Adja meg, hogy engedélyezze a kiszolgálói SSL-tanúsítvány hitelesítése a TLS/SSL csatornán keresztül FTP használata esetén. |Nem |Igaz |
+| enableSsl |Adja meg, hogy a TLS/SSL csatornán FTP használata. |Nem |igaz |
+| enableServerCertificateValidation |Adja meg, hogy engedélyezze a kiszolgálói SSL-tanúsítvány hitelesítése a TLS/SSL csatornán keresztül FTP használata esetén. |Nem |igaz |
 
 ### <a name="use-anonymous-authentication"></a>Névtelen hitelesítés
 
@@ -387,7 +387,7 @@ A feldolgozási sor tartalmazza a másolási tevékenység, amely a bemeneti és
 > [!NOTE]
 > Képezze le a fogadó adatkészletből oszlopok forrás adatkészletből oszlopokat, lásd: [Azure Data Factory dataset oszlopai leképezési](data-factory-map-columns.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Lásd az alábbi cikkeket:
 
 * Című témakörben olvashat kulcsfontosságú szerepet játszik az adatátvitelt jelölik a (másolási tevékenység) a Data Factory és különböző módokon optimalizálása azt hatás teljesítmény, a [másolása tevékenység teljesítmény- és hangolási útmutató](data-factory-copy-activity-performance.md).

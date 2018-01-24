@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2017
+ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 860d32f26616c1e1a92254ef288df2e3367fdf1c
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 2f4ae056dfa1bf6b2faabcb100ac82b38da9e361
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Adatok áthelyezése az Azure Data Factory használatával teradata rendszerhez
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -44,7 +44,7 @@ Adat-előállítót a helyszíni Teradata adatforrások az adatkezelési átjár
 ## <a name="supported-versions-and-installation"></a>Támogatott verziók és telepítés
 Az adatkezelési átjáró a Teradata-adatbázishoz való kapcsolódáshoz, telepítenie kell a [.NET-adatszolgáltató a teradata rendszerhez](http://go.microsoft.com/fwlink/?LinkId=278886) 14 verzió vagy újabb az adatkezelési átjáró ugyanazon a rendszeren. Teradata 12-es és újabb verzió esetén támogatott.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 A másolási tevékenység, mely az adatok egy helyszíni Cassandra adattároló különböző eszközök/API-k használatával létrehozhat egy folyamatot. 
 
 - Hozzon létre egy folyamatot a legegyszerűbb módja használatára a **másolása varázsló**. Lásd: [oktatóanyag: hozzon létre egy folyamatot, másolása varázslóval](data-factory-copy-data-wizard-tutorial.md) létrehozásával egy folyamatot, az adatok másolása varázsló segítségével gyorsan útmutatást. 
@@ -67,7 +67,7 @@ A következő táblázat a JSON-elemek szerepelnek a teradata rendszerhez kapcso
 | --- | --- | --- |
 | type |A type tulajdonságot kell beállítani: **OnPremisesTeradata** |Igen |
 | kiszolgáló |A Teradata-kiszolgáló neve. |Igen |
-| AuthenticationType |A Teradata-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. Lehetséges értékek a következők: névtelen, alapszintű és a Windows. |Igen |
+| authenticationType |A Teradata-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. Lehetséges értékek a következők: névtelen, alapszintű és a Windows. |Igen |
 | felhasználónév |Adja meg a felhasználónevet Basic vagy Windows-hitelesítés használata. |Nem |
 | jelszó |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. |Nem |
 | gatewayName |Az átjáró, amely használatával a Data Factory szolgáltatásnak csatlakoznia a helyszíni Teradata-adatbázishoz való kapcsolódáshoz neve. |Igen |
@@ -287,7 +287,7 @@ Adatok áthelyezése a teradata rendszerhez, amikor a következő leképezéseit
 | Teradata-adatbázishoz típusa | .NET-keretrendszer típusa |
 | --- | --- |
 | Karakter |Karakterlánc |
-| CLOB |Karakterlánc |
+| Clob |Karakterlánc |
 | Kép |Karakterlánc |
 | VarChar |Karakterlánc |
 | VarGraphic |Karakterlánc |
@@ -301,30 +301,30 @@ Adatok áthelyezése a teradata rendszerhez, amikor a következő leképezéseit
 | Egész szám |Int32 |
 | Szám |Dupla |
 | SmallInt |Int16 |
-| Dátum |Dátum és idő |
-| Time |A TimeSpan |
+| Dátum |DateTime |
+| Time |TimeSpan |
 | Időzóna idő |Karakterlánc |
-| időbélyeg |Dátum és idő |
+| Időbélyeg |DateTime |
 | Az időzóna időbélyeg |DateTimeOffset |
-| Időköz nap |A TimeSpan |
-| Időköz nap, óra |A TimeSpan |
-| Naponta időköz percben |A TimeSpan |
-| Második intervallum naponta |A TimeSpan |
-| Időköz óra |A TimeSpan |
-| Időköz óra, perc alatt |A TimeSpan |
-| Második intervallum óra |A TimeSpan |
-| Időköz percben |A TimeSpan |
-| Másik időköz percben |A TimeSpan |
-| Időköz második |A TimeSpan |
+| Időköz nap |TimeSpan |
+| Időköz nap, óra |TimeSpan |
+| Naponta időköz percben |TimeSpan |
+| Második intervallum naponta |TimeSpan |
+| Időköz óra |TimeSpan |
+| Időköz óra, perc alatt |TimeSpan |
+| Második intervallum óra |TimeSpan |
+| Időköz percben |TimeSpan |
+| Másik időköz percben |TimeSpan |
+| Időköz második |TimeSpan |
 | Időköz év |Karakterlánc |
 | Időköz hónap év |Karakterlánc |
 | Időköz hónap |Karakterlánc |
-| Period(date) |Karakterlánc |
+| Period(Date) |Karakterlánc |
 | Period(Time) |Karakterlánc |
 | Időtartam (idő időzóna) |Karakterlánc |
 | Period(Timestamp) |Karakterlánc |
 | Időtartam (időbélyegzője az időzóna) |Karakterlánc |
-| XML |Karakterlánc |
+| Xml |Karakterlánc |
 
 ## <a name="map-source-to-sink-columns"></a>Térkép forrás oszlopok gyűjtése
 A forrás oszlop szerepel a fogadó dataset adatkészlet leképezési oszlopok, lásd: [Azure Data Factory dataset oszlopai leképezési](data-factory-map-columns.md).

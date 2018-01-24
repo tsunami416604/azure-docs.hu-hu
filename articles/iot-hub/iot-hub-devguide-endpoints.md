@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/19/2017
 ms.author: dobett
-ms.openlocfilehash: 47f8949139c48ffa79f5530552b0a2e27b0f9ee0
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: dc983549aea53ed29859205102d6308a3367bec7
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="reference---iot-hub-endpoints"></a>Referencia - IoT-központok végpontjai
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/11/2017
 
 A neve, amelyen a végpontokat a portálon az IoT-központ megtalálhatja a **áttekintése** panelen. Alapértelmezés szerint a DNS-neve az IoT-központ néz: `{your iot hub name}.azure-devices.net`.
 
-Azure DNS használatával hozzon létre egy egyéni DNS-nevet az IoT hub. További információkért lásd: [használata Azure DNS számára adja meg az egyéni tartomány beállításait az Azure-szolgáltatások](../dns/dns-custom-domain.md#azure-iot).
+Azure DNS használatával hozzon létre egy egyéni DNS-nevet az IoT hub. További információkért lásd: [használata Azure DNS számára adja meg az egyéni tartomány beállításait az Azure-szolgáltatások](../dns/dns-custom-domain.md).
 
 ## <a name="list-of-built-in-iot-hub-endpoints"></a>Beépített IoT-központok végpontjai listája
 
@@ -62,7 +62,7 @@ A [Azure IoT SDK-k] [ lnk-sdks] a cikk ismerteti a különböző módszereket ez
 
 Minden IoT-központok végpontjai használja a [TLS] [ lnk-tls] protokoll, és nincs végpont legalább egyszer fel van fedve titkosítatlanul/titkosítatlan csatornán.
 
-## <a name="custom-endpoints"></a>Egyéni végpontokat
+## <a name="custom-endpoints"></a>Egyéni végpontok
 
 Az előfizetésében szereplő meglévő Azure-szolgáltatások társíthatja az IoT hub üzenet irányításához végpontok nevében járhasson el. Ezeket a végpontokat Szolgáltatásvégpontok összekötőként és üzenet útvonalak mosdók használják. Eszközök közvetlenül a további végpontok nem írható. Üzenet útvonalakkal kapcsolatban további tudnivalókért tekintse meg a fejlesztői útmutató bejegyzés [IoT hubbal üzenetek küldése és fogadása][lnk-devguide-messaging].
 
@@ -101,7 +101,7 @@ Az IoT-megoldás egy *mező átjáró* között az eszközök és az IoT-közpon
 
 Használhat [Azure IoT peremhálózati] [ lnk-iot-edge] mező átjáró végrehajtásához. IoT biztonsági funkciók, például multiplex folytatott kommunikáció több eszközön, ugyanazt az IoT-központ kapcsolatot biztosít.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az IoT Hub fejlesztői útmutató egyéb témaköröket tartalmazza:
 

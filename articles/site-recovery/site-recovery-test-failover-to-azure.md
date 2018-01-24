@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 10/16/2017
 ms.author: pratshar
-ms.openlocfilehash: 1e85db7ce866943696979f61c0aa5104217acc62
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: a4555b1cc758e2d4bdd11a16776dc3bb209adee8
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="test--failover-to-azure-in-site-recovery"></a>Feladatátvételi teszt Azure-ba, a Site Recovery szolgáltatásban
 
@@ -50,7 +50,7 @@ Ez az eljárás ismerteti a helyreállítási terv feladatátvételi teszt futta
     - Ha IP-cím nem érhető el az alhálózatot, majd a virtuális gépek számára egy másik elérhető IP-cím az alhálózat. [További információk](#creating-a-network-for-test-failover).
 4. Ha visszavétele keresztül az Azure-ba, és az adattitkosítás engedélyezve van, a **titkosítási kulcs**, válassza ki a titkosítási szolgáltató telepítése során engedélyezésekor korábban kiadott tanúsítványt. Ezt a lépést kihagyhatja titkosítás nincs engedélyezve.
 5. A feladatátvételi folyamat előrehaladásának nyomon a **feladatok** fülre. Meg kell tudni az Azure portálon replika tesztgép.
-6. Az Azure virtuális gép RDP-kapcsolatot kezdeményezzen, kell [egy nyilvános IP-cím hozzáadása](site-recovery-monitoring-and-troubleshooting.md#adding-a-public-ip-on-a-resource-manager-virtual-machine) , a feladatait átadó virtuális gép virtuális hálózati adapterén. 
+6. Az Azure virtuális gép RDP-kapcsolatot kezdeményezzen, kell [egy nyilvános IP-cím hozzáadása](site-recovery-monitoring-and-troubleshooting.md) , a feladatait átadó virtuális gép virtuális hálózati adapterén. 
 7. Ha minden a várt módon működik, kattintson **karbantartása a feladatátvételi teszt**. Ez a művelet törli a teszt feladatátvétele során létrehozott virtuális gépeket.
 8. A **megjegyzések**, és a feladatátvételi teszttel kapcsolatos megfigyelések feljegyzéséhez mentéséhez. 
 
@@ -113,9 +113,9 @@ Azure virtuális gépek a feladatátvételt követően RDP segítségével való
 **Feladatátvétel** | **Hely** | **Műveletek**
 --- | --- | ---
 **Windows operációs rendszert futtató Azure virtuális gép** | A helyi számítógépen, a feladatátvétel előtt | Az interneten keresztül fér hozzá az Azure virtuális Géphez, engedélyezze az RDP-, és győződjön meg arról, hogy a TCP és UDP-szabályok hozzáadása történik meg a **nyilvános**, és hogy az összes profil számára engedélyezve van az RDP **Windows tűzfal**  >  **Engedélyezett alkalmazások**.<br/><br/> Webhelyek kapcsolaton keresztül fér hozzá az Azure virtuális Géphez, engedélyezze az RDP a gépen, és győződjön meg arról, hogy engedélyezi-e az RDP a a **Windows tűzfal** -> **engedélyezett alkalmazások és szolgáltatások**, a **Tartomány és a saját** hálózatok.<br/><br/>  Győződjön meg arról, hogy az operációs rendszer TÁROLÓHÁLÓZATI szabályzatát értéke **OnlineAll**. [További információk](https://support.microsoft.com/kb/3031135).<br/><br/> Győződjön meg arról, hogy nincsenek függőben lévő Windows frissítések a virtuális Gépre, amikor feladatátvételt indít el. A Windows update előfordulhat, hogy indítható el, amikor a rendszer átadja, és nem lehet majd jelentkezzen be a virtuális gép, csak a frissítés befejeződése után. 
-**Windows operációs rendszert futtató Azure virtuális gép** | Azure virtuális gép a feladatátvételt követően |  [A nyilvános IP-cím hozzáadása](site-recovery-monitoring-and-troubleshooting.md#adding-a-public-ip-on-a-resource-manager-virtual-machine) a virtuális gép számára.<br/><br/> A hálózati biztonsági csoportszabályok a feladatait átadó virtuális gép (és az Azure-alhálózaton, amelyhez csatlakozik) kell a bejövő kapcsolatokat az RDP-portjára.<br/><br/> Ellenőrizze **rendszerindítási diagnosztika** egy Képernyőkép a virtuális gép ellenőrzése.<br/><br/> Ha nem sikerül, ellenőrizze, hogy a virtuális gép fut, és tekintse át a [hibaelhárítási tippek](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
+**Windows operációs rendszert futtató Azure virtuális gép** | Azure virtuális gép a feladatátvételt követően |  [A nyilvános IP-cím hozzáadása](site-recovery-monitoring-and-troubleshooting.md) a virtuális gép számára.<br/><br/> A hálózati biztonsági csoportszabályok a feladatait átadó virtuális gép (és az Azure-alhálózaton, amelyhez csatlakozik) kell a bejövő kapcsolatokat az RDP-portjára.<br/><br/> Ellenőrizze **rendszerindítási diagnosztika** egy Képernyőkép a virtuális gép ellenőrzése.<br/><br/> Ha nem sikerül, ellenőrizze, hogy a virtuális gép fut, és tekintse át a [hibaelhárítási tippek](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 **Az Azure virtuális gépet** | A helyi számítógépen, a feladatátvétel előtt | Győződjön meg arról, hogy a virtuális Gépet a Secure Shell szolgáltatás rendszerindításkor automatikusan elinduljon van beállítva.<br/><br/> Ellenőrizze, hogy a tűzfalszabályok engedélyezik-e az SSH-kapcsolatot.
-**Az Azure virtuális gépet** | Azure virtuális gép a feladatátvételt követően | A hálózati biztonsági csoportszabályok a feladatait átadó virtuális gép (és az Azure-alhálózaton, amelyhez csatlakozik) engedélyeznie kell az SSH-portot a bejövő kapcsolatok.<br/><br/> [A nyilvános IP-cím hozzáadása](site-recovery-monitoring-and-troubleshooting.md#adding-a-public-ip-on-a-resource-manager-virtual-machine) a virtuális gép számára.<br/><br/> Ellenőrizze **rendszerindítási diagnosztika** egy Képernyőkép a virtuális gép számára.<br/><br/>
+**Az Azure virtuális gépet** | Azure virtuális gép a feladatátvételt követően | A hálózati biztonsági csoportszabályok a feladatait átadó virtuális gép (és az Azure-alhálózaton, amelyhez csatlakozik) engedélyeznie kell az SSH-portot a bejövő kapcsolatok.<br/><br/> [A nyilvános IP-cím hozzáadása](site-recovery-monitoring-and-troubleshooting.md) a virtuális gép számára.<br/><br/> Ellenőrizze **rendszerindítási diagnosztika** egy Képernyőkép a virtuális gép számára.<br/><br/>
 
 
 

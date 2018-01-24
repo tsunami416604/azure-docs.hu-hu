@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/04/2017
 ms.author: ashishth
-ms.openlocfilehash: f3b29db2dd74e6b3c0c066045d05cb853d1541f8
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: f57260b2ee280aa0f49f42cd145477205926cb0c
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/24/2018
 ---
-# <a name="phoenix-query-server-rest-sdk"></a>Phoenix lekérdezés Server REST-SDK
+# <a name="phoenix-query-server-rest-sdk"></a>Phoenix Query Server REST SDK
 
 [Apache Phoenix](http://phoenix.apache.org/) egy nyílt forráskódú, nagymértékben párhuzamos relációs Adatbázisréteg a [HBase](apache-hbase-overview.md). Phoenix használatát teszi SQL-szerű lekérdezéseket a hbase eszközzel SSH eszközökkel, mint [SQLLine](apache-hbase-phoenix-squirrel-linux.md). Phoenix is biztosít a Phoenix lekérdezés Server (PQS), a vékony ügyfelek, az ügyfél-kommunikációhoz két átviteli mechanizmusok támogató nevű HTTP-kiszolgáló: JSON és a protokoll pufferek. Protokoll pufferek az alapértelmezett mechanizmus, és JSON-nál több hatékony kommunikációt biztosít.
 
@@ -39,7 +39,7 @@ A Microsoft .NET-illesztőprogram Apache Phoenix lekérdezés kiszolgáló bizto
 
 A könyvtár használatának megkezdéséhez hozható létre egy új `PhoenixClient` objektum benyújtása `ClusterCredentials` tartalmazó a `Uri` az a fürt és a fürt Hadoop-felhasználónevet és jelszót.
 
-```c#
+```csharp
 var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdinsight.net/"), "USERNAME", "PASSWORD");
 client = new PhoenixClient(credentials);
 ```
@@ -50,7 +50,7 @@ Cserélje le a HDInsight HBase fürt nevét, és a FELHASZNÁLÓNÉVVEL és JELS
 
 Egy vagy több kérelmet küldeni PQS, akkor is kell egy egyedi csatlakozás-azonosító a kérelem (kérelmek) társítása a kapcsolathoz.
 
-```c#
+```csharp
 string connId = Guid.NewGuid().ToString();
 ```
 
@@ -60,7 +60,7 @@ A példák először hívást indít a `OpenConnectionRequestAsync` metódust, a
 
 Hívása `ConnectionSyncRequestAsync`, adjon át egy `ConnectionProperties` objektum.
 
-```c#
+```csharp
 ConnectionProperties connProperties = new ConnectionProperties
 {
     HasAutoCommit = true,
@@ -79,8 +79,8 @@ Az alábbiakban néhány fontos tulajdonságok:
 
 | Tulajdonság | Leírás |
 | -- | -- |
-| Végrehajtású | Egy logikai azt jelöli, hogy `autoCommit` engedélyezve van a Phoenix tranzakciók. |
-| csak olvasható | Olyan logikai érték azt jelöli, hogy a kapcsolat csak olvasható. |
+| AutoCommit | Egy logikai azt jelöli, hogy `autoCommit` engedélyezve van a Phoenix tranzakciók. |
+| ReadOnly | Olyan logikai érték azt jelöli, hogy a kapcsolat csak olvasható. |
 | TransactionIsolation | Azt jelöli, a szintet egész / Típusmegadás a JDBC - tranzakció elkülönítési lásd az alábbi táblázatot.|
 | Katalógus | A katalógus kapcsolat tulajdonságainak beolvasása során használandó neve. |
 | Séma | A kapcsolat tulajdonságainak beolvasása során használandó séma neve. |
@@ -102,7 +102,7 @@ Más RDBMS, például a HBase táblákban tárolja az adatokat. Phoenix szabván
 
 Ebben a példában és minden további példákat, használja a példányként létrehozott `PhoenixClient` az objektum [új PhoenixClient objektumpéldányt](#instantiate-new-phoenixclient-object).
 
-```c#
+```csharp
 string connId = Guid.NewGuid().ToString();
 RequestOptions options = RequestOptions.GetGatewayDefaultOptions();
 
@@ -172,13 +172,13 @@ Az előző példában táblázatot hoz létre új nevű `Customers` használatá
 
 Ez a példa bemutatja egy egyéni adatok beszúrása hivatkozik egy `List<string>` American állapotát és területén rövidítések gyűjteménye:
 
-```c#
+```csharp
 var states = new List<string> { "AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FM", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MH", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PW", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VI", "VA", "WA", "WV", "WI", "WY" };
 ```
 
 A tábla `StateProvince` oszlop értéket fogja használni a későbbi kiválasztási műveletet.
 
-```c#
+```csharp
 string connId = Guid.NewGuid().ToString();
 RequestOptions options = RequestOptions.GetGatewayDefaultOptions();
 options.TimeoutMillis = 300000;
@@ -289,7 +289,7 @@ A struktúra egy insert utasítás végrehajtása az új tábla létrehozása ha
 
 A következő kódot majdnem megegyezik a kódot az adatok beszúrása külön-külön. Ez a példa a `UpdateBatch` hívásában objektum `ExecuteBatchRequestAsync`, ahelyett, hogy a többször hívja `ExecuteRequestAsync` rendelkező előkészített utasítás.
 
-```c#
+```csharp
 string connId = Guid.NewGuid().ToString();
 RequestOptions options = RequestOptions.GetGatewayDefaultOptions();
 options.TimeoutMillis = 300000;
@@ -407,7 +407,7 @@ Ez a példa bemutatja, hogyan újból több lekérdezés végrehajtása egy kapc
 2. A sorok teljes számának select utasítás segítségével az egyetlen skaláris eredmény.
 3. Hajtsa végre a select utasítást, amely visszaadja az állapot vagy területén ügyfelek teljes száma.
 
-```c#
+```csharp
 string connId = Guid.NewGuid().ToString();
 RequestOptions options = RequestOptions.GetGatewayDefaultOptions();
 

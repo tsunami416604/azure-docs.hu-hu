@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: apimpm
-ms.openlocfilehash: 105c1978c049a9981c865eaf752a465c774ab7fd
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 3fcd2fc4162cfbf549be979e15745934c2e4c6ff
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Vész-helyreállítási szolgáltatás biztonsági mentéssel implementálja, és az Azure API Management visszaállítása
 
@@ -80,7 +80,7 @@ Minden olyan feladat, amelyeknek a erőforrásokat az Azure Resource Manager has
 
 Előtt hívja az API-kat, hogy a biztonsági mentés és állítsa vissza azt, fontos szolgáltatáshitelesítést egy token. Az alábbi példában a [Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) NuGet-csomagot a jogkivonatot lekérdezni.
 
-```c#
+```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System;
 
@@ -121,7 +121,7 @@ Cserélje le `{tentand id}`, `{application id}`, és `{redirect uri}` a követke
 
 Előtt hívja meg a "biztonsági mentése és visszaállítása" műveleteket az alábbi szakaszok ismertetik, állítsa be a REST-hívást a hitelesítési kérelem fejlécéhez.
 
-```c#
+```csharp
 request.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
 ```
 

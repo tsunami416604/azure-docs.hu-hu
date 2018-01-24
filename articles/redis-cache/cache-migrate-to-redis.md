@@ -14,11 +14,11 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 05/30/2017
 ms.author: wesmc
-ms.openlocfilehash: 87a31ac992592cbbbc54a487867a65346ad06a0b
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 0d52454ae1c2159814d4601d07259aba319e8598
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-redis-cache"></a>Azure Redis Cache Managed Cache Service áttelepítése
 Az Azure Managed Cache Service Azure Redis Cache használó alkalmazások áttelepítése az alkalmazáshoz, attól függően, hogy a Managed Cache Service szolgáltatásokat használják a gyorsítótárazási alkalmazás legfeljebb minimális változtatásokra is elvégezhető. Míg az API-k nem pontosan ugyanaz hasonló, és nagy részét a meglévő kód Managed Cache Service alapján fér hozzá újrahasználhatók minimális módosításait. Ez a témakör bemutatja, hogyan végezheti el a szükséges konfigurációs és telepítse át a Managed Cache Service-alkalmazások Azure Redis Cache az alkalmazás módosításait, és bemutatja, hogyan néhány Azure Redis Cache funkciója használható Managed funkcióinak végrehajtásához Gyorsítótár gyorsítótára.
@@ -125,7 +125,7 @@ A Managed Cache Service, a gyorsítótár kapcsolatok kezelt a `DataCacheFactory
 
 Adja hozzá a következő utasítással aljától a tetejéig minden olyan fájlt, amelyből a kívánt gyorsítótár-hozzáféréshez.
 
-```c#
+```csharp
 using StackExchange.Redis
 ```
 
@@ -138,7 +138,7 @@ Ha ehhez a névtérhez nem oldja meg, ne feledje, hogy hozzáadta a StackExchang
 
 Csatlakozás az Azure Redis Cache példányt, hívja meg a statikus `ConnectionMultiplexer.Connect` metódus és a végpont és a kulcsot adjon át. Az alkalmazásban egy `ConnectionMultiplexer` példány megosztására egy lehetséges módszer, ha létrehoz egy statikus tulajdonságot, amely egy csatlakoztatott példányt ad vissza, a következő példához hasonlóan. Ez egy szálbiztos módszer csak egyetlen csatlakoztatott `ConnectionMultiplexer`-példány inicializálásához. Ebben a példában `abortConnect` értéke HAMIS, ami azt jelenti, hogy a hívás sikeres lesz, még akkor is, ha nem jön létre a kapcsolat a gyorsítótárba. A `ConnectionMultiplexer` egyik fontos szolgáltatása, hogy automatikusan visszaállítja a kapcsolatot a gyorsítótárral, amint a hálózati problémák vagy egyéb hibák elhárulnak.
 
-```c#
+```csharp
 private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
 {
     return ConnectionMultiplexer.Connect("contoso5.redis.cache.windows.net,abortConnect=false,ssl=true,password=...");
@@ -157,7 +157,7 @@ A gyorsítótár végpontjához, a kulcsok és a portok lehet lekérni a **Redis
 
 A kapcsolat létrejötte után térjen vissza a Redis gyorsítótár adatbázis mutató hivatkozás meghívásával a `ConnectionMultiplexer.GetDatabase` metódust. A `GetDatabase` metódussal visszaadott objektum egy egyszerűsített továbbított objektum, amelyet nem kell tárolni.
 
-```c#
+```csharp
 IDatabase cache = Connection.GetDatabase();
 
 // Perform cache operations using the cache object...
@@ -178,7 +178,7 @@ Meghívásakor `StringGet`, ha az objektum létezik, akkor adja vissza, és ha n
 
 Egy elem lejáratának megadásához a gyorsítótárban használja a `TimeSpan` `StringSet` paraméterét.
 
-```c#
+```csharp
 cache.StringSet("key1", "value1", TimeSpan.FromMinutes(90));
 ```
 

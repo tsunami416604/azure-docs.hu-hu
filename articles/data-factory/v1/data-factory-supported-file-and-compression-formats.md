@@ -11,20 +11,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2017
+ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1b933adc884c8c353d50f94b40de2b977f852671
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: f3faaf964c33ca336d91c1cf207e077046f617e9
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="file-and-compression-formats-supported-by-azure-data-factory"></a>Azure Data Factory által támogatott formátumú és tömörítés
 *Ez a témakör a következő összekötőkre vonatkozik: [Amazon S3](data-factory-amazon-simple-storage-service-connector.md), [Azure Blob](data-factory-azure-blob-connector.md), [Azure Data Lake Store](data-factory-azure-datalake-connector.md), [fájlrendszer](data-factory-onprem-file-system-connector.md), [FTP](data-factory-ftp-connector.md), [HDFS](data-factory-hdfs-connector.md), [HTTP](data-factory-http-connector.md), és [SFTP](data-factory-sftp-connector.md).*
 
 > [!NOTE]
-> Ez a cikk vonatkozik 1 a Azure Data Factory, amelyek általánosan elérhető (GA). Lásd a 2-es verziójának a Data Factory szolgáltatásnak, amely jelenleg előzetes verzióban érhető, használatakor [támogatott formátumok és a tömörítési kodek 2-es verzióját a Data factoryban](../supported-file-formats-and-compression-codecs.md).
+> Ez a cikk az Azure Data Factory általánosan elérhető 1. verziójára vonatkozik. Lásd a 2-es verziójának a Data Factory szolgáltatásnak, amely jelenleg előzetes verzióban érhető, használatakor [támogatott formátumok és a tömörítési kodek 2-es verzióját a Data factoryban](../supported-file-formats-and-compression-codecs.md).
 
 Az Azure Data Factory formátuma a következő fájltípusokat támogatja:
 
@@ -87,7 +87,7 @@ A **importálási/exportálási egy JSON-fájl,-be/Azure Cosmos DB van**, a tov�
 
 Ha szeretne elemezni a JSON-fájlokat, vagy az adatok írása JSON formátumban, állítsa be a `type` tulajdonságot a `format` szakaszban **JsonFormat**. Emellett megadhatja a következő **választható** tulajdonságokat a `format` szakaszban. A konfigurálással kapcsolatban lásd [A JsonFormat használatát bemutató példa](#jsonformat-example) című szakaszt.
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | filePattern |Az egyes JSON-fájlokban tárolt adatok mintáját jelzi. Az engedélyezett értékek a következők: **setOfObjects** és **arrayOfObjects**. Az **alapértelmezett** érték a **setOfObjects**. A mintákkal kapcsolatban lásd a [JSON-fájlminták](#json-file-patterns) című szakaszt. |Nem |
 | jsonNodeReference | Ha egy azonos mintával rendelkező tömbmezőben található objektumokat szeretne iterálni, vagy azokból adatokat kinyerni, adja meg a tömb JSON-útvonalát. Ez a tulajdonság csak akkor támogatott, ha JSON-fájlokból másol adatokat. | Nem |
@@ -228,7 +228,7 @@ Ebben a példában egy JSON-gyökérobjektum képződik le egyetlen rekordba tá
 A **JsonFormat** típusú bemeneti adatkészlet a következőképpen van meghatározva (részleges meghatározás, csak a fontos részekkel). Pontosabban:
 
 - A `structure` szakasz határozza meg a testre szabott oszlopneveket és a megfelelő adattípusokat, miközben átalakítja őket táblázatos adatokká. Ez a szakasz **nem kötelező**, kivéve, ha oszlopleképezést kell végeznie. Lásd: [dataset Forrásoszlopok leképezése cél adatkészlet oszlopok](data-factory-map-columns.md) című szakaszban talál további információt.
-- A `jsonPathDefinition` határozza meg az egyes oszlopok JSON-útvonalát, amely jelzi, hogy honnan történjen az adatok kinyerése. Ha adatokat szeretne másolni egy tömbből, az **array[x].property** használatával kinyerheti az adott tulajdonság értékét az x. objektumból, vagy az **array[*].property** használatával rákereshet az értékre az ilyen tulajdonságot tartalmazó összes objektumban.
+- A `jsonPathDefinition` határozza meg az egyes oszlopok JSON-útvonalát, amely jelzi, hogy honnan történjen az adatok kinyerése. Adatok másolása egy olyan tömbből, használhatja **tömb [x] .property** az x-edik objektumot, vagy az adott tulajdonság értékének kinyerése segítségével **tömb [*] .property** az összes objektumtól, például tartalmazó értéket keresi tulajdonság.
 
 ```json
 "properties": {
@@ -505,7 +505,7 @@ Ha a `compression` egy bemeneti adatkészlet JSON tulajdonság, a folyamat elolv
 * A GZIP-tömörített adatokat olvasni az Azure blob, azt kibontani, BZIP2 használatával tömörítése és eredmény adatokat írni az Azure blob. Megadhatja, hogy a bemeneti Azure-Blob adatkészlet `compression` `type` GZIP és a kimeneti adatkészlet `compression` `type` BZIP2 ebben az esetben értékre.   
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse meg a fájlalapú adatok tárolóinak Azure Data Factory támogatja a következő cikkeket:
 
 - [Azure Blob Storage](data-factory-azure-blob-connector.md)

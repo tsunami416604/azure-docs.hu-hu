@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2017
+ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: e72dd426f7af3d1539aad6a3499d2ce5f792c152
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 04504d1e32243f752e488a24e04ec5ba73fbadc1
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="use-case---product-recommendations"></a>Használati eset – Termékajánlások
 Az Azure Data Factory a Cortana Intelligence Suite a megoldás gyorsítók végrehajtásához használt sok szolgáltatások egyike.  Lásd: [Cortana Intelligence Suite](http://www.microsoft.com/cortanaanalytics) lap ennek a programcsomagnak vonatkozó további információért. Ebben a dokumentumban azt ismertetik, amelyek az Azure felhasználók már lehet megoldani, és Azure Data Factory és az egyéb Cortana Intelligence Komponensszolgáltatások készletével megvalósított gyakori használati eset.
@@ -40,7 +40,7 @@ A javaslatok harmadik, azonnal termék, a felhasználó egy zökkenőmentes kere
 
 Végül illetve a kiskereskedelemben általános felfelé-értékesít nyomon követése révén a megközelítést hatékonyságát mérésére és kereszt-értékesít kattintson-átalakítás értékesítési sikeres, és módosítsa az újabb ajánlások kell.
 
-## <a name="solution-overview"></a>Megoldási áttekintés
+## <a name="solution-overview"></a>Megoldás áttekintése
 A példa használati eset orvosolhatók és Azure Data Factory és az egyéb Cortana Intelligence Komponensszolgáltatások, beleértve a valódi Azure-felhasználók által megvalósított [HDInsight](https://azure.microsoft.com/services/hdinsight/) és [Power BI](https://powerbi.microsoft.com/).
 
 Az online közvetítő használja, mint az adatok tárolási lehetőségek a munkafolyamaton keresztül egy Azure Blob-tároló, egy a helyszíni SQL server, Azure SQL Database és a relációs adatközpont.  A blob a tárolóban ügyféladatok, a felhasználói viselkedési adatokat és a termék adatok. A termék adatok termék márkáját információkat tartalmaz, és a termék a helyszínen tárolt SQL data warehouse a katalógusban. 

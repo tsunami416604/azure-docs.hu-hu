@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: b-hoedid
-ms.openlocfilehash: 7a041e2121a2762af4307d7044437032cce79f05
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: e5fa40dc128412e3b5b39c9fbdb751c797ca0cc7
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="notifying-patients-of-hl7-fhir-health-care-record-changes-using-logic-apps-and-azure-cosmos-db"></a>A Logic Apps és az Azure Cosmos DB használatával HL7 FHIR egészségügyi rekord módosítása betegek értesítése
 
@@ -54,7 +54,7 @@ Ez a megoldás három Logic Apps a fenti követelményeknek, és a megoldás mun
 
 ### <a name="azure-services-used-in-the-solution"></a>A megoldásban használt Azure-szolgáltatások
 
-#### <a name="azure-cosmos-db-sql-api"></a>Az Azure Cosmos DB SQL API
+#### <a name="azure-cosmos-db-sql-api"></a>Azure Cosmos DB SQL API
 Azure Cosmos-adatbázis a FHIR erőforrások tárháza, az alábbi ábrán látható módon.
 
 ![A HL7 FHIR egészségügyi oktatóanyagban használt Azure Cosmos DB fiók](./media/change-feed-hl7-fhir-logic-apps/account.png)
@@ -105,7 +105,7 @@ Használjuk a [ `CreateDocumentChangeFeedQuery` ](https://msdn.microsoft.com/lib
 
 **Az API-alkalmazás forrása**
 
-```C#
+```csharp
 
     using System.Collections.Generic;
     using System.Linq;
@@ -222,13 +222,13 @@ A következő kép bemutatja az összes Azure-szolgáltatás fut az Azure portá
 ![Az Azure-portálon megjelenítő HL7 FHIR oktatóanyagban használt minden szolgáltatás](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-portal.png)
 
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 - Megtanulta, hogy Azure Cosmos DB natív támogatja a következő kapcsolattípust értesítéseket az új vagy módosított dokumentumokat és milyen egyszerűen használatára van-e. 
 - A Logic Apps használatával programozás nélkül munkafolyamatokat hozhat létre.
 - Azure Service Bus-üzenetsorok használatával a terjesztési HL7 FHIR dokumentumok kezeléséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Azure Cosmos DB kapcsolatos további információkért tekintse meg a [Azure Cosmos DB kezdőlap](https://azure.microsoft.com/services/cosmos-db/). A Logic Apps kapcsolatos további információk megadására, lásd: [Logic Apps](https://azure.microsoft.com/services/logic-apps/).
 
 

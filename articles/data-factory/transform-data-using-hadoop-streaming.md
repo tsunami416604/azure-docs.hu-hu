@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 01/16/2018
 ms.author: shengc
-ms.openlocfilehash: 0452dcaa039c23b9e41f78a43df88f61d13033be
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 449b322089ed3881df6d87276c3461d18d697edf
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Azure Data Factory használatával Hadoop Streamelési tevékenységben adatok átalakítása
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -82,14 +82,14 @@ Ha most ismerkedik az Azure Data Factory, olvassa végig [Bevezetés az Azure Da
 | Nyomáscsökkentő           | A végrehajtható nyomáscsökkentő neve | Igen      |
 | egyesítő          | A végrehajtható egyesítő neve | Nem       |
 | fileLinkedService | Az Azure tárolás társított szolgáltatásának mutató hivatkozás Teljesítményleképező egyesítő és nyomáscsökkentő programok futtatását tárolására használható. A társított szolgáltatás nem adja meg, ha az Azure Storage társított szolgáltatás a HDInsight társított szolgáltatásban meghatározott szolgál. | Nem       |
-| fájl elérési útja          | Elérési út tömbjét adja meg a leképező egyesítő, és az Azure Storage-ban tárolt nyomáscsökkentő programok fileLinkedService hivatkozik. Az elérési út megkülönbözteti a kis- és nagybetűket. | Igen      |
+| filePath          | Elérési út tömbjét adja meg a leképező egyesítő, és az Azure Storage-ban tárolt nyomáscsökkentő programok fileLinkedService hivatkozik. Az elérési út megkülönbözteti a kis- és nagybetűket. | Igen      |
 | Bemeneti             | Meghatározza a bemeneti fájl WASB elérési útja a leképező. | Igen      |
-| Kimeneti            | Meghatározza a WASB a kimeneti fájl elérési útja a nyomáscsökkentő. | Igen      |
+| output            | Meghatározza a WASB a kimeneti fájl elérési útja a nyomáscsökkentő. | Igen      |
 | getDebugInfo      | Itt adhatja meg, ha a naplófájlok kerülnek az Azure Storage HDInsight-fürt által használt (vagy) leírt módon scriptLinkedService. Megengedett értékek: None, mindig, vagy sikertelen. Alapértelmezett érték: nincs. | Nem       |
 | Argumentumok         | Hadoop-feladat argumentumok tömbjét adja meg. Az argumentumok parancssori argumentumként átadott minden egyes tevékenységhez. | Nem       |
 | határozza meg           | Adja meg a paraméterek kulcs/érték párok való hivatkozás a Hive-parancsfájl belül. | Nem       | 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse meg a következő cikkekben talál, amely ismerteti az adatok más módon: 
 
 * [U-SQL-tevékenység](transform-data-using-data-lake-analytics.md)

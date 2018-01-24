@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2017
+ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 37eb7b728bebcec5c389a8bdf68be6baf97f3c38
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 19398a33e17bde7f496070d1f1c84e61dbe65855
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-to-and-from-sql-server-on-premises-or-on-iaas-azure-vm-using-azure-data-factory"></a>Azure Data Factory használatával történő és a helyszíni SQL Server vagy a IaaS (Azure virtuális gép) adatok áthelyezése
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -50,7 +50,7 @@ Lásd: [adatokat a helyszíni helyek és a felhő közötti áthelyezése](data-
 
 Amíg átjárót telepítheti az ugyanabban a helyi számítógépen vagy a felhő Virtuálisgép-példány és az SQL Server, a jobb teljesítmény, ajánlott külön gépeken telepíteni. Az átjáró és az SQL Server különböző gépeken csökkenti a Erőforrásverseny.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 A másolási tevékenység, amely a különböző eszközök/API-k használatával helyezi át az adatokat belőle egy helyi SQL Server-adatbázis egy folyamat hozhatja létre.
 
 Hozzon létre egy folyamatot a legegyszerűbb módja használatára a **másolása varázsló**. Lásd: [oktatóanyag: hozzon létre egy folyamatot, másolása varázslóval](data-factory-copy-data-wizard-tutorial.md) létrehozásával egy folyamatot, az adatok másolása varázsló segítségével gyorsan útmutatást.
@@ -168,10 +168,10 @@ Ha nem ad meg sqlReaderQuery vagy sqlReaderStoredProcedureName, struktúra szaka
 | Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
 | writeBatchTimeout |Várakozási idő a kötegelt beszúrási művelet befejezését, mielőtt azt az időkorlátot. |A TimeSpan<br/><br/> Példa: "00: 30:00" (30 perc). |Nem |
-| WriteBatchSize |Szúr be az SQL-tábla adatokat, amikor a puffer mérete eléri writeBatchSize. |Egész szám (sorok száma) |Nem (alapértelmezett: 10000) |
+| writeBatchSize |Szúr be az SQL-tábla adatokat, amikor a puffer mérete eléri writeBatchSize. |Egész szám (sorok száma) |Nem (alapértelmezett: 10000) |
 | sqlWriterCleanupScript |Adja meg a lekérdezést úgy, hogy egy adott szelet adatait végrehajtásához másolási tevékenységhez. További információkért lásd: [ismételhető másolási](#repeatable-copy) szakasz. |A lekérdezési utasítást. |Nem |
 | sliceIdentifierColumnName |Adja meg a másolási tevékenység során automatikusan létrejön szelet azonosító, amely segítségével távolítja el az adatokat egy adott szelet, amikor futtassa újra a töltse ki az oszlopnevet. További információkért lásd: [ismételhető másolási](#repeatable-copy) szakasz. |Egy oszlop binary(32) adattípusú oszlop neve. |Nem |
-| sqlWriterStoredProcedureName |A tárolt eljárás neve a cél táblázatba upserts (frissítés/Beszúrás) adatok. |A tárolt eljárás neve. |Nem |
+| sqlWriterStoredProcedureName |A tárolt eljárás, amely meghatározza, hogyan alkalmazhat forrásadatok a céloldali tábla, pl. do upserts vagy a saját üzleti logikát használó átalakító neve. <br/><br/>Megjegyzés: Ez a tárolt eljárás fog **kötegenként meghívott**. Ha művelet, amelynek csak egyszer futnak, és érinti a elvégezni a segítségével például törlés/truncate forrásadatok használja szeretné `sqlWriterCleanupScript` tulajdonság. |A tárolt eljárás neve. |Nem |
 | storedProcedureParameters |A tárolt eljárás paramétereit. |A név/érték párok. Nevét és a kis-és a paraméterek meg kell egyeznie a nevek és a kis-és nagybetűhasználat a tárolt eljárás paramétereit. |Nem |
 | sqlWriterTableType |Adja meg a tárolt eljárásban használandó tábla neve. Másolási tevékenység elérhetővé teszi az adatok áthelyezése egy ideiglenes táblát, amely a táblatípus. Tárolt eljárás kódot is majd egyesítheti az adatokat, a meglévő adatok másolásának. |Egy tábla környezettípus nevét. |Nem |
 
@@ -248,7 +248,7 @@ A minta azt feltételezi, hogy létrehozott egy tábla "MyTable" SQL Server és 
   }
 }
 ```
-**Az Azure Blob kimeneti adatkészlet**
+**Azure blobkimeneti adatkészlet**
 
 Adatot ír egy új blob minden órában (gyakoriság: óra, időköz: 1). A mappa elérési útját a BLOB a szelet által feldolgozott kezdési ideje alapján dinamikusan történik. A mappa elérési útját használja, év, hónap, nap és a kezdési idő órában részeit.
 
@@ -554,7 +554,7 @@ A feldolgozási sor tartalmazza a másolási tevékenység, amely a bemeneti és
 3. Az azonos ablakban kattintson duplán **TCP/IP** indítása **TCP/IP-tulajdonságok** ablak.
 4. Váltás a **IP-címek** fülre. Görgessen le lásd: **IPAll** szakasz. Jegyezze fel a ** TCP-Port ** (alapértelmezett érték a **1433**).
 5. Hozzon létre egy **szabály a Windows tűzfal** ezen a porton keresztül bejövő adatforgalmat engedélyezi a számítógépen.  
-6. **Ellenőrizze a kapcsolat**: teljesen minősített nevet az SQL Serverhez való kapcsolódáshoz használja az SQL Server Management Studio egy másik gépről. Például: "<machine>.<domain>.corp.<company>.com,1433."
+6. **Ellenőrizze a kapcsolat**: teljesen minősített nevet az SQL Serverhez való kapcsolódáshoz használja az SQL Server Management Studio egy másik gépről. Például: "<machine>.<domain>. Corp.<company>.com, 1433. "
 
    > [!IMPORTANT]
 
@@ -656,36 +656,36 @@ Leképezése nem ugyanaz, mint az SQL Server adattípus-hozzárendelése az ADO.
 | --- | --- |
 | bigint |Int64 |
 | Bináris |Byte] |
-| bit |Logikai érték |
+| bit |Logikai |
 | Karakter |Karakterlánc, Char] |
-| Dátum |Dátum és idő |
-| Dátum és idő |Dátum és idő |
-| datetime2 |Dátum és idő |
-| datetimeoffset |DateTimeOffset |
+| dátum |DateTime |
+| Dátum és idő |DateTime |
+| datetime2 |DateTime |
+| Datetimeoffset |DateTimeOffset |
 | Decimális |Decimális |
 | A FILESTREAM attribútum (varbinary(max)) |Byte] |
 | Lebegőpontos |Dupla |
-| Kép |Byte] |
+| image |Byte] |
 | int |Int32 |
 | pénz |Decimális |
 | nchar |Karakterlánc, Char] |
 | ntext |Karakterlánc, Char] |
 | Numerikus |Decimális |
 | nvarchar |Karakterlánc, Char] |
-| valós |Egyetlen |
+| valós |Egyedülálló |
 | ROWVERSION |Byte] |
-| smalldatetime |Dátum és idő |
+| smalldatetime |DateTime |
 | smallint |Int16 |
 | kis pénz típusú értéknél |Decimális |
 | sql_variant |Objektum * |
 | Szöveg |Karakterlánc, Char] |
-| time |A TimeSpan |
+| time |TimeSpan |
 | időbélyeg |Byte] |
 | tinyint |Bájt |
 | egyedi azonosító |GUID |
 | varbinary |Byte] |
 | varchar |Karakterlánc, Char] |
-| xml |XML |
+| xml |Xml |
 
 ## <a name="mapping-source-to-sink-columns"></a>Leképezési forráshoz oszlopok gyűjtése
 Képezze le a fogadó adatkészletből oszlopok forrás adatkészletből oszlopokat, lásd: [Azure Data Factory dataset oszlopai leképezési](data-factory-map-columns.md).

@@ -3,6 +3,7 @@
 > * [C#/node.js](../articles/iot-hub/iot-hub-csharp-node-direct-methods.md)
 > * [C#](../articles/iot-hub/iot-hub-csharp-csharp-direct-methods.md)
 > * [Java](../articles/iot-hub/iot-hub-java-java-direct-methods.md)
+> * [Python](../articles/iot-hub/iot-hub-python-python-direct-methods.md)
 
 Az Azure IoT Hub egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a megbízható és biztonságos kétirányú kommunikációs eszközök millióira és a megoldás közötti háttér. Előző oktatóanyagok ([Ismerkedés az IoT-központ] és [IoT Hub-felhő eszközre üzenetek]) alapvető eszköz-felhő és a felhő eszközre üzenetkezelési funkcióit az IoT-központ bemutatására. Az IoT-központ is lehetővé teszi az eszközök a felhőből nem tartós módszerek meghívására. Közvetlen módszerek határoz meg egy kérelem-válasz interakció egy HTTPS-hívás hasonló eszközökkel abban, hogy sikeres legyen, vagy közvetlenül (után a felhasználó által megadott időtúllépés), hogy a felhasználóknak a hívás állapotáról sikertelen. [Az eszközön közvetlen metódus] [ lnk-devguide-methods] részletesebben közvetlen módszereket írja le, és közvetlen módszerek helyett a felhő-eszközre küldött üzenetek vagy a kívánt tulajdonságok használatával kapcsolatos útmutatást nyújt.
 

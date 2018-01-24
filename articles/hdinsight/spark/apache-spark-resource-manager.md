@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 01/23/2018
 ms.author: jgao
-ms.openlocfilehash: b2208f0553ce62be054409a415723445733708d4
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 639f8540be289c03abc8d352f4bd9150c945625e
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Az Azure HDInsight az Apache Spark-fürt erőforrásainak kezelése 
 
@@ -31,35 +31,46 @@ ms.lasthandoff: 12/05/2017
 * A HDInsight az Apache Spark-fürt. Útmutatásért lásd: [létrehozása az Apache Spark on Azure hdinsight clusters](apache-spark-jupyter-spark-sql.md).
 
 ## <a name="open-the-ambari-web-ui"></a>Nyissa meg az Ambari webes felhasználói felület
-1. Az [Azure portál](https://portal.azure.com/) kezdőpultján kattintson a Spark-fürthöz tartozó csempére (ha rögzítette azt a kezdőpulton). A fürtöt a következő helyről is megkeresheti: **Browse All (Összes tallózása)** > **HDInsight Clusters** (HDInsight-fürtök).
-2. A Spark-fürt, kattintson a **irányítópult**. Amikor a rendszer kéri, adja meg a rendszergazdai hitelesítő adatokat a Spark-fürtön.
 
-    ![Indítsa el az Ambari](./media/apache-spark-resource-manager/hdinsight-launch-cluster-dashboard.png "erőforrás-kezelő indítása")
-3. Ez kell az Ambari webes felhasználói felületén, nyissa meg a képernyőfelvételen látható módon.
-
-    ![Ambari webes felhasználói felület](./media/apache-spark-resource-manager/ambari-web-ui.png "Ambari webes felhasználói felület")   
+Apache Ambari segítségével figyelheti a fürt és a konfigurációs módosításokat. További információkért lásd: [kezelése Hadoop-fürtök a HDInsight az Azure portál használatával](../hdinsight-administer-use-portal-linux.md#open-the-ambari-web-ui)
 
 ## <a name="open-the-spark-history-server"></a>Nyissa meg a Spark-előzmények kiszolgáló
-1. Az [Azure portál](https://portal.azure.com/) kezdőpultján kattintson a Spark-fürthöz tartozó csempére (ha rögzítette azt a kezdőpulton).
-2. A fürt paneljén alatt **Gyorshivatkozások**, kattintson a **fürt irányítópult**. Az a **fürt irányítópult** panelen kattintson a **Spark előzmények Server**.
+
+Spark előzmények kiszolgáló egy Spark-alkalmazások befejeződött, és a futó webes felhasználói Felületét. Egy bővítmény Sparkl tartozó webes felhasználói felület is.
+
+**A Spark előzmények Server webes felhasználói felületének megnyitásához**
+
+1. Az a [Azure-portálon](https://portal.azure.com/), nyissa meg a Spark-fürtön. További információkért lásd: [listája és megjelenítése fürtök](../hdinsight-administer-use-portal-linux.md#list-and-show-clusters).
+2. A **Gyorshivatkozások**, kattintson a **fürt irányítópult**, és kattintson a **Spark előzmények kiszolgáló**
 
     ![Spark előzmények Server](./media/apache-spark-resource-manager/launch-history-server.png "Spark előzmények kiszolgáló")
 
-    Amikor a rendszer kéri, adja meg a rendszergazdai hitelesítő adatokat a Spark-fürtön.
+    Amikor a rendszer kéri, adja meg a rendszergazdai hitelesítő adatokat a Spark-fürtön. Keresse meg a következő URL-cím is megnyithatja a Spark-előzmények kiszolgáló:
+
+    ```
+    https://<ClusterName>.azurehdinsight.net/sparkhistory
+    ```
+
+    Cserélje le <ClusterName> a Spark-fürt névvel.
+
+A Spark előzmények Server webes felhasználói felület néz ki:
+
+![A HDInsight Spark-előzmények kiszolgáló](./media/apache-spark-resource-manager/hdinsight-spark-history-server.png)
 
 ## <a name="open-the-yarn-ui"></a>Nyissa meg a Yarn felhasználói felületen
 A Spark-fürtön a jelenleg futó alkalmazások figyeléséhez használhatja a YARN felhasználói felületen.
 
-1. A fürt paneljén kattintson **fürt irányítópult**, és kattintson a **YARN**.
+1. Az a [Azure-portálon](https://portal.azure.com/), nyissa meg a Spark-fürtön. További információkért lásd: [listája és megjelenítése fürtök](../hdinsight-administer-use-portal-linux.md#list-and-show-clusters).
+2. A **Gyorshivatkozások**, kattintson a **fürt irányítópult**, és kattintson a **YARN**.
 
     ![Indítsa el a YARN felhasználói felületen](./media/apache-spark-resource-manager/launch-yarn-ui.png)
 
    > [!TIP]
-   > Másik lehetőségként is indítja el a YARN felhasználói felületen a az Ambari felhasználói Felületéről. Indítsa el az Ambari felhasználói felületén, a fürt paneljén kattintson a **fürt irányítópult**, és kattintson a **HDInsight fürt irányítópult**. Az Ambari felhasználói felületén kattintson **YARN**, kattintson a **Gyorshivatkozások**, kattintson az aktív erőforrás-kezelő, majd **erőforrás-kezelő felhasználói felületén**.
+   > Másik lehetőségként is indítja el a YARN felhasználói felületen a az Ambari felhasználói Felületéről. Az Ambari felhasználói felületének indítása, kattintson a **fürt irányítópult**, és kattintson a **HDInsight fürt irányítópult**. Az Ambari felhasználói felületén kattintson **YARN**, kattintson a **Gyorshivatkozások**, kattintson az aktív erőforrás-kezelő, majd **erőforrás-kezelő felhasználói felületén**.
    >
    >
 
-## <a name="the-optimum-cluster-configuration-to-run-spark-applications"></a>A Spark-alkalmazások futtatására optimális fürtkonfiguráció
+## <a name="optimize-clusters-for-spark-applications"></a>Spark-alkalmazások esetében optimalizálása
 A három legfontosabb paraméterek alkalmazás követelményeitől függően a Spark-konfigurációhoz használható `spark.executor.instances`, `spark.executor.cores`, és `spark.executor.memory`. Egy művelettípus végrehajtója az a folyamat egy Spark-alkalmazáshoz elindítva. A munkavégző csomópont fut, és az alkalmazás feladatokat hajthat végre felelős. Az alapértelmezett számú végrehajtója és a végrehajtó használatos egyes fürtök a feldolgozó csomópontok és a munkavégző csomópont méretének száma alapján van kiszámítva. Ezeket az információkat tárolja `spark-defaults.conf` központi fürtcsomópontokon.
 
 A három konfigurációs paraméterek beállítható, hogy a fürt szintjén (az a fürtön futó összes alkalmazást), vagy minden egyes alkalmazáshoz adható meg.
@@ -68,7 +79,7 @@ A három konfigurációs paraméterek beállítható, hogy a fürt szintjén (az
 1. Az Ambari felhasználói felületén kattintson a **Spark**, kattintson a **Contigs**, majd bontsa ki a **egyéni spark-alapértelmezett**.
 
     ![A megadott paraméterek Ambari használatával](./media/apache-spark-resource-manager/set-parameters-using-ambari.png)
-2. Az alapértelmezett értékek megfelelőek 4 Spark-alkalmazások egyidejű futtatását a fürt hozzá. Ezeket az értékeket módosíthatja a felhasználói felületről, alább látható módon.
+2. Az alapértelmezett értékek megfelelőek kell rendelkeznie a négy Spark-alkalmazások, a fürt egyidejű futtatását. Ezeket az értékeket módosíthatja a felhasználói felületről, az alábbi képernyőfelvételen látható módon:
 
     ![A megadott paraméterek Ambari használatával](./media/apache-spark-resource-manager/set-executor-parameters.png)
 3. Kattintson a **mentése** menteni a konfigurációs módosításait. A lap tetején kéri az érintett szolgáltatások újraindítására. Kattintson a **indítsa újra a**.
@@ -76,9 +87,9 @@ A három konfigurációs paraméterek beállítható, hogy a fürt szintjén (az
     ![Szolgáltatások újraindítása](./media/apache-spark-resource-manager/restart-services.png)
 
 ### <a name="change-the-parameters-for-an-application-running-in-jupyter-notebook"></a>Jupyter notebook alkalmazás paramétereinek módosítása
-Az alkalmazások a Jupyter notebook, használhatja a `%%configure` magic a konfigurációs módosításokat. Ideális esetben meg kell nyitnia a változások az alkalmazást, mielőtt újra lefuttatja az első kódcella elején. Ez biztosítja, hogy a konfiguráció alkalmazása a Livy munkamenethez, ha végrehajtásakor létrejön. Ha módosítani szeretné a konfigurációt az alkalmazásban egy későbbi időpontban szeretné, használnia kell a `-f` paraméter. Azonban, ennek során az alkalmazás az összes folyamatban lévő el fog veszni.
+Az alkalmazások a Jupyter notebook, használhatja a `%%configure` magic a konfigurációs módosításokat. Ideális esetben meg kell nyitnia a változások az alkalmazást, mielőtt újra lefuttatja az első kódcella elején. Ez biztosítja, hogy a konfiguráció alkalmazása a Livy munkamenethez, ha végrehajtásakor létrejön. Ha módosítani szeretné a konfigurációt az alkalmazásban egy későbbi időpontban szeretné, használnia kell a `-f` paraméter. Azonban így az alkalmazás az összes folyamatban lévő elvész.
 
-Az alábbi kódrészletben láthatja, Jupyter alkalmazás konfigurációjának módosítása.
+Az alábbi kódrészletben láthatja a Jupyter alkalmazás konfigurációjának módosítása.
 
     %%configure
     {"executorMemory": "3072M", "executorCores": 4, "numExecutors":10}
@@ -91,14 +102,14 @@ A következő parancs a példa bemutatja, hogyan módosíthatja a konfiguráció
     spark-submit --class <the application class to execute> --executor-memory 3072M --executor-cores 4 –-num-executors 10 <location of application jar file> <application parameters>
 
 ### <a name="change-the-parameters-for-an-application-submitted-using-curl"></a>A cURL használatával kérelem paramétereinek módosítása
-A következő parancs a példa bemutatja, hogyan módosíthatja a konfigurációs paraméterek használata cURL használatával küldött kötegelt alkalmazáshoz.
+A következő parancsot a konfigurációs paraméterek használata cURL használatával küldött kötegelt alkalmazások módosítása példája.
 
     curl -k -v -H 'Content-Type: application/json' -X POST -d '{"file":"<location of application jar file>", "className":"<the application class to execute>", "args":[<application parameters>], "numExecutors":10, "executorMemory":"2G", "executorCores":5' localhost:8998/batches
 
-### <a name="how-do-i-change-these-parameters-on-a-spark-thrift-server"></a>Hogyan változtathatom meg ezeket a paramétereket a Spark Thrift-kiszolgáló?
+### <a name="change-these-parameters-on-a-spark-thrift-server"></a>Ezek a paraméterek, a Spark Thrift-kiszolgáló módosítása
 A Spark Thrift-kiszolgáló JDBC-/ ODBC hozzáférést biztosít a Spark-fürt és Spark SQL-lekérdezések használatával. Eszközök, például a Power BI-ban Tableau stb. ODBC protokoll segítségével kommunikálnak a Spark Thrift-kiszolgáló Spark SQL-lekérdezések végrehajtása a Spark-alkalmazásként. Spark-fürt létrehozásakor a Spark Thrift-kiszolgáló két példánya indulnak el, egy központi a csomópontokra. Minden egyes Spark Thrift-kiszolgáló a Spark-alkalmazásként a YARN felhasználói felületen látható.
 
-A Spark Thrift-kiszolgáló használ a Spark dinamikus végrehajtó foglalási, így a `spark.executor.instances` nem használatos. Ehelyett használja a Spark Thrift-kiszolgáló `spark.dynamicAllocation.minExecutors` és `spark.dynamicAllocation.maxExecutors` a végrehajtó számának megadásához. A konfigurációs paraméterek `spark.executor.cores` és `spark.executor.memory` végrehajtó méretének szolgál. Ezek a paraméterek módosíthatja, ahogy az az alábbi lépéseket.
+A Spark Thrift-kiszolgáló használ a Spark dinamikus végrehajtó foglalási, így a `spark.executor.instances` nem használatos. Ehelyett használja a Spark Thrift-kiszolgáló `spark.dynamicAllocation.minExecutors` és `spark.dynamicAllocation.maxExecutors` a végrehajtó számának megadásához. A konfigurációs paraméterek `spark.executor.cores` és `spark.executor.memory` végrehajtó méretének szolgál. Ezek a paraméterek módosíthatja, ahogy az az alábbi lépéseket:
 
 * Bontsa ki a **spark-thrift-sparkconf speciális** a paraméterek frissítéséhez kategória `spark.dynamicAllocation.minExecutors`, `spark.dynamicAllocation.maxExecutors`, és `spark.executor.memory`.
 
@@ -107,15 +118,15 @@ A Spark Thrift-kiszolgáló használ a Spark dinamikus végrehajtó foglalási, 
 
     ![A Spark thrift-kiszolgáló konfigurálása](./media/apache-spark-resource-manager/spark-thrift-server-2.png)
 
-### <a name="how-do-i-change-the-driver-memory-of-the-spark-thrift-server"></a>Hogyan változtathatom meg a illesztőprogram memóriát a Spark Thrift-kiszolgáló?
-A Spark Thrift-kiszolgáló illesztőprogram memória van konfigurálva 25 %-át az átjárócsomópont RAM memória méretét, feltéve, az átjárócsomópont összesített RAM mérete 14GB-nál nagyobb. Az Ambari felhasználói felület segítségével módosíthatja az illesztőprogram memóriakövetelménye alább látható módon.
+### <a name="change-the-driver-memory-of-the-spark-thrift-server"></a>Módosítsa a Spark Thrift-kiszolgáló illesztőprogram memória
+A Spark Thrift-kiszolgáló illesztőprogram memória van konfigurálva 25 %-át az átjárócsomópont RAM memória méretét, feltéve, az átjárócsomópont összesített RAM mérete 14 GB-nál nagyobb. Az Ambari felhasználói felület segítségével módosíthatja az illesztőprogram memória-konfiguráció, az alábbi képernyőfelvételen látható módon:
 
 * Az Ambari felhasználói felületén kattintson a **Spark**, kattintson a **Configs**, bontsa ki a **spark-env speciális**, és adja meg a következő **spark_thrift_cmd_opts**.
 
     ![A Spark thrift-kiszolgáló RAM konfigurálása](./media/apache-spark-resource-manager/spark-thrift-server-ram.png)
 
-## <a name="i-do-not-use-bi-with-spark-cluster-how-do-i-take-the-resources-back"></a>BI nem Spark-fürt használata. Hogyan tudom vissza igénybe az erőforrásokat?
-Spark dinamikus foglalási használjuk, mert az csak thrift-kiszolgáló által felhasznált erőforrások a két alkalmazás főkiszolgálók erőforrásokat. Ezeket az erőforrásokat visszaigénylésének le kell állítania a Thrift-kiszolgáló szolgáltatás fut a fürtön.
+## <a name="reclaim-spark-cluster-resources"></a>A Spark-fürt erőforrásait VISSZAIGÉNYLÉSE
+Spark dinamikus kiosztását, mert az csak thrift-kiszolgáló által felhasznált erőforrások a két alkalmazás főkiszolgálók tartozó erőforrás. Ezeket az erőforrásokat visszanyeréséhez le kell állítania a Thrift-kiszolgáló szolgáltatás fut a fürtön.
 
 1. Az Ambari felhasználói felületén, a bal oldali ablaktáblán kattintson **Spark**.
 2. A következő oldalon kattintson **Spark Thrift kiszolgálók**.
@@ -129,17 +140,17 @@ Spark dinamikus foglalási használjuk, mert az csak thrift-kiszolgáló által 
     ![Indítsa újra a thrift-kiszolgáló](./media/apache-spark-resource-manager/restart-thrift-server-3.png)
 5. Ismételje meg ezeket a lépéseket a más headnode, valamint a.
 
-## <a name="my-jupyter-notebooks-are-not-running-as-expected-how-can-i-restart-the-service"></a>A Jupyter notebookok nem elvárt módon futnak. Hogyan újraindíthatja a szolgáltatást?
-Indítsa el az Ambari webes felhasználói felületén, ahogy fent látható. Kattintson a bal oldali navigációs ablak **Jupyter**, kattintson a **szolgáltatás műveletek**, és kattintson a **indítsa újra az összes**. A Jupyter szolgáltatás elindítja az összes headnodes.
+## <a name="restart-the-jupyter-service"></a>A Jupyter szolgáltatás újraindítása
+Indítsa el az Ambari webes felhasználói felületén, ahogy az a cikk elejére. Kattintson a bal oldali navigációs ablak **Jupyter**, kattintson a **szolgáltatás műveletek**, és kattintson a **indítsa újra az összes**. Ez elindítja a Jupyter szolgáltatást a headnodes a.
 
-    ![Restart Jupyter](./media/apache-spark-resource-manager/restart-jupyter.png "Restart Jupyter")
+![Indítsa újra a Jupyter](./media/apache-spark-resource-manager/restart-jupyter.png "Jupyter újraindítása")
 
-## <a name="how-do-i-know-if-i-am-running-out-of-resources"></a>Hogyan állapítható meg, hogy ha erőforrások fut-e?
-A Yarn felhasználói felületének indítása, a fentiek szerint. Fürt metrikáinak tábla a képernyő fölött, ellenőrizze az értékeket **használt memória** és **memória teljes** oszlopok. Ha a 2 érték rendkívül szoros, a nem feltétlenül elegendő erőforrás a következő alkalmazás indításához. Ugyanez érvényes a **VCores használt** és **VCores összesen** oszlopok. Is, a fő nézetben, ha egy alkalmazás tartózkodott a **elfogadott** állapotát, és nem változik a **futtató** sem **sikertelen** állapotba kerül, ennek oka is lehet utal, hogy nem sikerül elindítani erőforrásokkal.
+## <a name="monitor-resources"></a>Erőforrások megfigyelése
+A Yarn felhasználói felületének indítása, ahogy az a cikk elejére. Fürt metrikáinak tábla a képernyő fölött, ellenőrizze az értékeket **használt memória** és **memória teljes** oszlopok. Ha a két érték nem zárja be, a nem feltétlenül elegendő erőforrás a következő alkalmazás indításához. Ugyanez érvényes a **VCores használt** és **VCores összesen** oszlopok. Is, a fő nézetben, ha egy alkalmazás tartózkodott a **elfogadott** állapotát, és nem változik a **futtató** sem **sikertelen** állapotba kerül, ennek oka is lehet utal, hogy nem sikerül elindítani erőforrásokkal.
 
-    ![Resource Limit](./media/apache-spark-resource-manager/resource-limit.png "Resource Limit")
+![Erőforrás-korlát](./media/apache-spark-resource-manager/resource-limit.png "erőforrás korlátját")
 
-## <a name="how-do-i-kill-a-running-application-to-free-up-resource"></a>Hogyan kill a szabadítson fel erőforrás egy futó alkalmazást?
+## <a name="kill-running-applications"></a>Futó alkalmazások leállítása
 1. A Yarn felhasználói felületen, a bal oldali panelen kattintson a **futtató**. Határozza meg az alkalmazás szakítva, és kattintson a futó alkalmazások listájában, a **azonosító**.
 
     ![Az App1 Kill](./media/apache-spark-resource-manager/kill-app1.png "App1 leállítása")
@@ -148,7 +159,7 @@ A Yarn felhasználói felületének indítása, a fentiek szerint. Fürt metrik�
 
     ![Kill App2](./media/apache-spark-resource-manager/kill-app2.png "App2 leállítása")
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Apache Spark-fürtön futó feladatok nyomon követése és hibakeresése a HDInsightban](apache-spark-job-debugging.md)
 
 ### <a name="for-data-analysts"></a>Az adatok elemző

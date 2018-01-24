@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 3169584bc884107ccd34b01264683d8c73c0fecb
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 05ae7cdc78e909c9aaa2b690d03eff8da09b6242
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Hozzon létre prediktív folyamatok Azure Machine Learning és az Azure Data Factory használatával
 
@@ -352,7 +352,7 @@ Big Data típusú adatok folyamatok a tevékenységeket, például a Pig és Hiv
 
 Az olvasó modul használata az Azure Machine Learning a kísérlet, a Azure Blob bemenetként is megadhat. A fájlok az Azure blob Storage tárolóban lehetnek a kimeneti fájlok (Példa: 000000_0), amely a HDInsight-on futó Pig és a Hive parancsfájlok hozzák létre. Az olvasó modul lehetővé teszi, hogy olvassa el a (nincs kiterjesztésű) fájlokat úgy konfigurálja a **elérési útját, tároló könyvtár/blob**. A **tároló elérési útja** mutat, a tároló és **könyvtár/blob** mutat, a következő ábrán látható módon a fájlokat tartalmazó mappát. A csillag Ez azt jelenti, hogy \*) **azt jelenti, hogy a tároló/mappában lévő összes fájl (Ez azt jelenti, hogy adatokat/aggregateddata/év 2014/hónap-6 = /\*)** olvassa el a kísérlet során.
 
-![Az Azure Blob tulajdonságai](./media/data-factory-create-predictive-pipelines/azure-blob-properties.png)
+![Azure Blob properties](./media/data-factory-create-predictive-pipelines/azure-blob-properties.png)
 
 ### <a name="example"></a>Példa
 #### <a name="pipeline-with-azuremlbatchexecution-activity-with-web-service-parameters"></a>A webszolgáltatás-paramétereket AzureMLBatchExecution tevékenység-feldolgozási folyamat

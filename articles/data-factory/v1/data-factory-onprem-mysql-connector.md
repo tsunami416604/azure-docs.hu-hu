@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 74ee639af5e941c098cbdd1fafd96a0e1ce1b036
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: f04a3b8c7bb744e3a9d539f6d3a392bc59702758
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Helyezze át az adatokat a MySQL Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -48,7 +48,7 @@ Az adatkezelési átjáró a MySQL-adatbázishoz való kapcsolódáshoz, telepí
 > [!TIP]
 > Kattintson a "Hitelesítés sikertelen, mert a távoli fél bezárta az átviteli adatfolyamot." hibaüzenet, ha fontolja meg a MySQL-összekötő/Net frissítése újabb verzióra.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 A másolási tevékenység, mely az adatok egy helyszíni Cassandra adattároló különböző eszközök/API-k használatával létrehozhat egy folyamatot. 
 
 - Hozzon létre egy folyamatot a legegyszerűbb módja használatára a **másolása varázsló**. Lásd: [oktatóanyag: hozzon létre egy folyamatot, másolása varázslóval](data-factory-copy-data-wizard-tutorial.md) létrehozásával egy folyamatot, az adatok másolása varázsló segítségével gyorsan útmutatást. 
@@ -73,7 +73,7 @@ A következő táblázat a JSON-elemek szerepelnek MySQL kapcsolódó szolgálta
 | kiszolgáló |A MySQL-kiszolgáló neve. |Igen |
 | adatbázis |A MySQL-adatbázis neve. |Igen |
 | Séma |Az adatbázisban séma neve. |Nem |
-| AuthenticationType |A MySQL-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. Lehetséges értékek a következők: `Basic`. |Igen |
+| authenticationType |A MySQL-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. Lehetséges értékek a következők: `Basic`. |Igen |
 | felhasználónév |Adja meg a felhasználónevet a MySQL-adatbázishoz való kapcsolódáshoz. |Igen |
 | jelszó |Adja meg a megadott felhasználói fiók jelszavát. |Igen |
 | gatewayName |Az átjáró, amely a Data Factory szolgáltatásnak csatlakoznia való kapcsolódáshoz a helyszíni MySQL-adatbázis neve. |Igen |
@@ -305,16 +305,16 @@ Ha az adatok áthelyezése a MySQL, .NET típusú a következő megfeleltetések
 | aláíratlan bigint |Decimális |
 | bigint |Int64 |
 | bit |Decimális |
-| A BLOB |Byte] |
-| logikai érték |Logikai érték |
+| blob |Byte] |
+| logikai érték |Logikai |
 | Karakter |Karakterlánc |
-| Dátum |Dátum és idő |
-| Dátum és idő |Dátum és idő |
+| dátum |Dátum és idő |
+| dátum/idő |Dátum és idő |
 | Decimális |Decimális |
 | a kétszeres pontosság |Dupla |
-| Dupla |Dupla |
+| duplaszó |Dupla |
 | Enum |Karakterlánc |
-| Lebegőpontos |Egyetlen |
+| lebegőpontos |Egyedülálló |
 | aláíratlan int |Int64 |
 | int |Int32 |
 | aláíratlan egész szám |Int64 |
@@ -333,14 +333,14 @@ Ha az adatok áthelyezése a MySQL, .NET típusú a következő megfeleltetések
 | aláíratlan smallint |Int32 |
 | smallint |Int16 |
 | Szöveg |Karakterlánc |
-| time |A TimeSpan |
+| time |TimeSpan |
 | időbélyeg |Dátum és idő |
 | tinyblob |Byte] |
 | aláíratlan tinyint |Int16 |
 | tinyint |Int16 |
 | tinytext |Karakterlánc |
 | varchar |Karakterlánc |
-| Év |int |
+| év |Int |
 
 ## <a name="map-source-to-sink-columns"></a>Térkép forrás oszlopok gyűjtése
 A forrás oszlop szerepel a fogadó dataset adatkészlet leképezési oszlopok, lásd: [Azure Data Factory dataset oszlopai leképezési](data-factory-map-columns.md).

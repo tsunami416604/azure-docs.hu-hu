@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: fcba76555902fb393830f352e6274b3ecd2fba38
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 3a3c9c1d483ece71ecc38c7eaa364c35464d80f6
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="use-case---customer-profiling"></a>Használati eset – Ügyfélprofil-készítés
 Az Azure Data Factory a Cortana Intelligence Suite a megoldás gyorsítók végrehajtásához használt sok szolgáltatások egyike.  További információt a Cortana Intelligence [Cortana Intelligence Suite](http://www.microsoft.com/cortanaanalytics). Ez a dokumentum azt ismerteti egy egyszerű használati eset Ismerkedés a megértése, hogyan Azure Data Factory is közös analytics felmerülő problémák megoldásához nyújt segítséget.
@@ -53,7 +53,7 @@ Eléréséhez, és próbálja ki az egyszerű használati eset szüksége van eg
 
     ![A Data Factory panel](./media/data-factory-samples/DataFactoryBladeAfter.png)
 
-## <a name="solution-overview"></a>Megoldási áttekintés
+## <a name="solution-overview"></a>Megoldás áttekintése
 Ez egyszerű használati eset példa bemutatja, hogyan használhatja az Azure Data Factory betöltési, előkészítése, átalakítására, elemzése és adatok közzététele is használható.
 
 ![Teljes körű munkafolyamat](./media/data-factory-customer-profiling-usecase/EndToEndWorkflow.png)

@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2017
+ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 46a72a15ba35119ecb5640cb0b22cd2a0fc56a27
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: 4cec177456b007fd7c6721380c00a622b43af677
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Adatok áthelyezése az Azure Data Factory használatával PostgreSQL
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -46,7 +46,7 @@ Data Factory szolgáltatásnak a helyszíni PostgreSQL adatforrások az adatkeze
 ## <a name="supported-versions-and-installation"></a>Támogatott verziók és telepítés
 Az adatkezelési átjáró a PostgreSQL-adatbázishoz való kapcsolódáshoz, telepítse a [PostgreSQL-Ngpsql adatszolgáltatója](http://go.microsoft.com/fwlink/?linkid=282716) 2.0.12 és az adatkezelési átjáró ugyanazon a rendszeren 3.1.9 közötti verziójával. 7.4 verzió PostgreSQL és újabb verzió esetén támogatott.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 A másolási tevékenység, mely az adatok egy helyszíni PostgreSQL adattároló különböző eszközök/API-k használatával létrehozhat egy folyamatot. 
 
 - Hozzon létre egy folyamatot a legegyszerűbb módja használatára a **másolása varázsló**. Lásd: [oktatóanyag: hozzon létre egy folyamatot, másolása varázslóval](data-factory-copy-data-wizard-tutorial.md) létrehozásával egy folyamatot, az adatok másolása varázsló segítségével gyorsan útmutatást. 
@@ -79,7 +79,7 @@ A következő táblázat a JSON-elemek szerepelnek PostgreSQL kapcsolódó szolg
 | kiszolgáló |A PostgreSQL-kiszolgáló neve. |Igen |
 | adatbázis |A PostgreSQL-adatbázis neve. |Igen |
 | Séma |Az adatbázisban séma neve. A séma neve a kis-és nagybetűket. |Nem |
-| AuthenticationType |A PostgreSQL-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. Lehetséges értékek a következők: névtelen, alapszintű és a Windows. |Igen |
+| authenticationType |A PostgreSQL-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. Lehetséges értékek a következők: névtelen, alapszintű és a Windows. |Igen |
 | felhasználónév |Adja meg a felhasználónevet Basic vagy Windows-hitelesítés használata. |Nem |
 | jelszó |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. |Nem |
 | gatewayName |Az átjáró, amely használatával a Data Factory szolgáltatásnak csatlakoznia a helyszíni PostgreSQL-adatbázishoz való kapcsolódáshoz neve. |Igen |
@@ -312,7 +312,7 @@ Amikor adatokat PostgreSQL helyezi át, a következő megfeleltetéseket segíts
 | bigserial |serial8 |Int64 |
 | bit [(n)] | |Byte [], karakterlánc | &nbsp;
 | bit különböző [(n)] |varbit |Byte [], karakterlánc |
-| Logikai érték |logikai érték |Logikai érték |
+| logikai |logikai érték |Logikai |
 | Mezőbe | |Byte [], karakterlánc |&nbsp;
 | bytea | |Byte [], karakterlánc |&nbsp;
 | [(n)] karakter |a char [(n)] |Karakterlánc |
@@ -320,7 +320,7 @@ Amikor adatokat PostgreSQL helyezi át, a következő megfeleltetéseket segíts
 | CID | |Karakterlánc |&nbsp;
 | CIDR | |Karakterlánc |&nbsp;
 | kör | |Byte [], karakterlánc |&nbsp;
-| Dátum | |Dátum és idő |&nbsp;
+| dátum | |Dátum és idő |&nbsp;
 | DateRange | |Karakterlánc |&nbsp;
 | a kétszeres pontosság |FLOAT8 |Dupla |
 | INet | |Byte [], karakterlánc |&nbsp;
@@ -329,7 +329,7 @@ Amikor adatokat PostgreSQL helyezi át, a következő megfeleltetéseket segíts
 | int8range | |Karakterlánc |&nbsp;
 | egész szám |int, int4 |Int32 |
 | időköz [mezők] [(p)] | |Időtartomány |&nbsp;
-| JSON-ban | |Karakterlánc |&nbsp;
+| JSON | |Karakterlánc |&nbsp;
 | jsonb | |Byte] |&nbsp;
 | sor | |Byte [], karakterlánc |&nbsp;
 | lseg | |Byte [], karakterlánc |&nbsp;
@@ -337,15 +337,15 @@ Amikor adatokat PostgreSQL helyezi át, a következő megfeleltetéseket segíts
 | pénz | |Decimális |&nbsp;
 | numerikus [(p, s)] |Decimal [(p, s)] |Decimális |
 | numrange | |Karakterlánc |&nbsp;
-| OID | |Int32 |&nbsp;
-| Elérési út | |Byte [], karakterlánc |&nbsp;
+| oid | |Int32 |&nbsp;
+| elérési út | |Byte [], karakterlánc |&nbsp;
 | pg_lsn | |Int64 |&nbsp;
 | pont | |Byte [], karakterlánc |&nbsp;
 | Sokszög | |Byte [], karakterlánc |&nbsp;
-| valós |float4 |Egyetlen |
+| valós |float4 |Egyedülálló |
 | smallint |int2 |Int16 |
 | smallserial |serial2 |Int16 |
-| Soros |serial4 |Int32 |
+| gyártási |serial4 |Int32 |
 | Szöveg | |Karakterlánc |&nbsp;
 
 ## <a name="map-source-to-sink-columns"></a>Térkép forrás oszlopok gyűjtése

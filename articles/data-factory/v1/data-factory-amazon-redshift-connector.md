@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2017
+ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d423304c84bd03477f5e9ee2edb4763e2ae8d5b5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 47a9feaa692eaf048371b4e534e6b2e8c4086997
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Helyezze át az adatokat az Amazon Redshift Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -40,7 +40,7 @@ Adat-előállító jelenleg támogatja az Amazon Redshift csak áthelyezése ada
 * Ha a helyszíni adattárolóihoz adatokat helyez át, telepítse [az adatkezelési átjáró](data-factory-data-management-gateway.md) a helyi gépen. Az Amazon Redshift fürt átjáró hozzáférés engedélyezése a helyi gép IP-cím használatával. Útmutatásért lásd: [engedélyezi a hozzáférést a fürthöz](http://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html).
 * Adatok áthelyezése az Azure data tárolóhoz, tekintse meg a [számítási IP-cím és a Microsoft Azure Adatközpontjaiban által használt SQL-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653).
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 A másolási tevékenység áthelyezni az adatokat Amazon Redshift forrásból származó különböző eszközöket és API-k segítségével létrehozhat egy folyamatot.
 
 Hozzon létre egy folyamatot legegyszerűbb módja az Azure Data Factory másolása varázsló használatával. A folyamat létrehozása a varázsló segítségével gyorsan útmutatást lásd: a [oktatóanyag: hozzon létre egy folyamatot a másolása varázslóval](data-factory-copy-data-wizard-tutorial.md).
@@ -64,10 +64,10 @@ A következő táblázat ismerteti a JSON-elemek szerepelnek, amelyek az Amazon 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | **típusa** |Ez a tulajdonság értékre kell állítani **AmazonRedshift**. |Igen |
-| **kiszolgáló** |A kiszolgáló IP-címét vagy állomásnevét kiszolgálónevét az Amazon Redshift. |Igen |
+| **server** |A kiszolgáló IP-címét vagy állomásnevét kiszolgálónevét az Amazon Redshift. |Igen |
 | **port** |A TCP-portot, amelyen az Amazon Redshift kiszolgáló ügyfélkapcsolatokat száma. |Nem (alapértelmezett érték 5439) |
-| **adatbázis** |Az Amazon Redshift adatbázis nevét. |Igen |
-| **felhasználónév** |A felhasználó, aki hozzáféréssel rendelkezik az adatbázishoz neve. |Igen |
+| **database** |Az Amazon Redshift adatbázis nevét. |Igen |
+| **username** |A felhasználó, aki hozzáféréssel rendelkezik az adatbázishoz neve. |Igen |
 | **jelszó** |A felhasználói fiók jelszavát. |Igen |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
@@ -207,7 +207,7 @@ A **külső** tulajdonság értéke "true" tájékoztatja a Data Factory szolgá
 }
 ```
 
-**Az Azure Blob kimeneti adatkészlet**
+**Azure blobkimeneti adatkészlet**
 
 Adatot ír egy új blob óránként úgy, hogy a **gyakoriság** "Hour" tulajdonságot, és a **időköz** 1 tulajdonság. A **folderPath** tulajdonság a BLOB dinamikusan történik. A tulajdonság értékének a kezdési időt a szelet által feldolgozott alapul. A mappa elérési útját használja, év, hónap, nap, és a kezdési idő órában részeit.
 
@@ -335,13 +335,13 @@ A következő megfeleltetéseket szolgálnak, amikor a másolási tevékenység 
 | EGÉSZ SZÁM |Int32 |
 | BIGINT |Int64 |
 | DECIMÁLIS |Decimális |
-| VALÓS |Egyetlen |
+| VALÓS |Egyedülálló |
 | A KÉTSZERES PONTOSSÁG |Dupla |
 | LOGIKAI ÉRTÉK |Karakterlánc |
 | KARAKTER |Karakterlánc |
 | VARCHAR |Karakterlánc |
-| DÁTUM |Dátum és idő |
-| IDŐBÉLYEG |Dátum és idő |
+| DATE |DateTime |
+| IDŐBÉLYEG |DateTime |
 | SZÖVEG |Karakterlánc |
 
 ## <a name="map-source-to-sink-columns"></a>Térkép forrás oszlopok gyűjtése
@@ -353,5 +353,5 @@ Ha az adatokat másolni relációs adattároló, ismételhetőség tartsa szem e
 ## <a name="performance-and-tuning"></a>Teljesítmény és finomhangolás
 További tudnivalók a másolási tevékenység és a teljesítmény optimalizálása teljesítményt befolyásoló legfontosabb tényezők a [másolási tevékenység teljesítmény- és hangolása útmutató](data-factory-copy-activity-performance.md). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Folyamat létrehozása a másolási tevékenység részletes ismertetését lásd: a [másolási tevékenység az oktatóanyag](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).

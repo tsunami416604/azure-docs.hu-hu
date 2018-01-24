@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 0c0a229e973999cb60ca5da2df652a6182c192a8
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: e94d920c7d55ad643ed81deda43e8ce96c304346
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Hogyan kell delegálni a felhasználói regisztráció és a termék-előfizetéshez
 Delegálás lehetővé teszi a meglévő webhely használatát fejlesztői bejelentkezési-a/regisztrációs és termékek a fejlesztői portálra beépített funkcióval szemben-előfizetés kezeléséhez. Ez lehetővé teszi, hogy a webhely tulajdonosai a felhasználó adatait, és hajtsa végre az alábbi lépéseket az érvényesítés egy egyedi módon.
@@ -44,7 +44,7 @@ Most kell létrehoznia a **delegálás végpont**. Van több műveletet végreha
 
 1. A kérés fogadásához a következő formában:
    
-   > *{lap URL-címe forrás} http://www.yourwebsite.com/apimdelegation?Operation=SignIn&returnUrl= & védőérték = {karakterlánc} & sig = {karakterlánc}*
+   > *http://www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl={URL of source page}&salt={string}&sig={string}*
    > 
    > 
    
@@ -70,14 +70,14 @@ Most kell létrehoznia a **delegálás végpont**. Van több műveletet végreha
    * [egyszeri bejelentkezéses (SSO) jogkivonatot kérni] az API Management REST API-n keresztül
    * egy returnUrl lekérdezési paraméter hozzáfűzése fent API-hívás kapott egyszeri bejelentkezési URL-címe:
      
-     > pl. https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url 
+     > e.g. https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url 
      > 
      > 
    * a fenti létrehozott URL-címet átirányítja a felhasználót
 
 Kívül a **SignIn** művelet is végrehajthat felhasználóifiók-kezelés az előző lépések és a következő műveletek egyikével.
 
-* **A ChangePassword**
+* **ChangePassword**
 * **ChangeProfile**
 * **CloseAccount**
 
@@ -101,7 +101,7 @@ Gondoskodnia kell a delegálás végpont a következő műveleteket hajtja végr
 
 1. A kérés fogadásához a következő formában:
    
-   > *{művelet} http://www.yourwebsite.com/apimdelegation?Operation= & productId = {termék előfizetni} & userId = {a felhasználó kérést} & védőérték = {karakterlánc} & sig = {karakterlánc}*
+   > *http://www.yourwebsite.com/apimdelegation?operation={operation}&productId={product to subscribe to}&userId={user making request}&salt={string}&sig={string}*
    > 
    > 
    
@@ -131,7 +131,7 @@ Ezek mintakódok bemutatják, hogyan érvénybe a *delegálás érvényesítési
 
 **C#-kódban returnUrl kivonatának létrehozásához**
 
-```c#
+```csharp
 using System.Security.Cryptography;
 
 string key = "delegation validation key";
@@ -163,7 +163,7 @@ var digest = hmac.update(salt + '\n' + returnUrl).digest();
 var signature = digest.toString('base64');
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Delegálás további információkért tekintse meg a következő videó.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Delegating-User-Authentication-and-Product-Subscription-to-a-3rd-Party-Site/player]

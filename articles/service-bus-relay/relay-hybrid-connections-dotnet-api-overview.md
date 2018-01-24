@@ -12,27 +12,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/05/2017
+ms.date: 01/23/2018
 ms.author: sethm
-ms.openlocfilehash: 58451bae409c74c319f41c38a1cec5f051619e0c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aa1863a44f00ae17f63b02c7c247b2c9fd9925f6
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Azure Relay a hibrid kapcsolatok .NET Standard API – áttekintés
 
 Ez a cikk foglal össze néhányat az Azure Relay a hibrid kapcsolatok .NET szabványos kulcs [ügyfél API-k](/dotnet/api/microsoft.azure.relay).
   
-## <a name="relay-connection-string-builder"></a>Továbbítási kapcsolati karakterlánc-szerkesztő
+## <a name="relay-connection-string-builder-class"></a>Továbbítási kapcsolat-karakterlánc szerkesztő osztály
 
 A [RelayConnectionStringBuilder] [ RelayConnectionStringBuilder] osztály formázza a hibrid kapcsolatok adott kapcsolati karakterláncokat. Ellenőrizze a kapcsolati karakterlánc formátuma, vagy teljesen új kapcsolati karakterlánc létrehozásához használhatja. A következő kód egy vonatkozó példáért lásd:
 
 ```csharp
-var endpoint = "{Relay namespace}";
-var entityPath = "{Name of the Hybrid Connection}";
-var sharedAccessKeyName = "{SAS key name}";
-var sharedAccessKey = "{SAS key value}";
+var endpoint = "[Relay namespace]";
+var entityPath = "[Name of the Hybrid Connection]";
+var sharedAccessKeyName = "[SAS key name]";
+var sharedAccessKey = "[SAS key value]";
 
 var connectionStringBuilder = new RelayConnectionStringBuilder()
 {
@@ -46,7 +46,7 @@ var connectionStringBuilder = new RelayConnectionStringBuilder()
 Egy kapcsolati karakterláncot is közvetlenül továbbítani a `RelayConnectionStringBuilder` metódust. Ez a művelet lehetővé teszi annak ellenőrzéséhez, hogy a kapcsolati karakterlánc formátuma érvénytelen. Ha bármelyik paraméter érvénytelen, a konstruktor hoz létre egy `ArgumentException`.
 
 ```csharp
-var myConnectionString = "{RelayConnectionString}";
+var myConnectionString = "[RelayConnectionString]";
 // Declare the connectionStringBuilder so that it can be used outside of the loop if needed
 RelayConnectionStringBuilder connectionStringBuilder;
 try
@@ -61,12 +61,14 @@ catch (ArgumentException ae)
 ```
 
 ## <a name="hybrid-connection-stream"></a>A hibrid kapcsolat adatfolyam
+
 A [HybridConnectionStream] [ HCStream] osztály egy olyan objektum, hogy dolgozik-e adatokat küldeni és fogadni az Azure-továbbítási végpontok használt elsődleges egy [HybridConnectionClient][HCClient], vagy egy [HybridConnectionListener][HCListener].
 
 ### <a name="getting-a-hybrid-connection-stream"></a>A hibrid kapcsolat adatfolyam beolvasása
 
 #### <a name="listener"></a>Figyelő
-Használatával egy [HybridConnectionListener][HCListener], beszerezhet egy `HybridConnectionStream` objektumot az alábbiak szerint:
+
+Használatával egy [HybridConnectionListener] [ HCListener] objektum, beszerezhet egy `HybridConnectionStream` objektumot az alábbiak szerint:
 
 ```csharp
 // Use the RelayConnectionStringBuilder to get a valid connection string
@@ -78,7 +80,8 @@ var hybridConnectionStream = await listener.AcceptConnectionAsync();
 ```
 
 #### <a name="client"></a>Ügyfél
-Használatával egy [HybridConnectionClient][HCClient], beszerezhet egy `HybridConnectionStream` objektumot az alábbiak szerint:
+
+Használatával egy [HybridConnectionClient] [ HCClient] objektum, beszerezhet egy `HybridConnectionStream` objektumot az alábbiak szerint:
 
 ```csharp
 // Use the RelayConnectionStringBuilder to get a valid connection string
@@ -88,6 +91,7 @@ var hybridConnectionStream = await client.CreateConnectionAsync();
 ```
 
 ### <a name="receiving-data"></a>Adatok fogadása
+
 A [HybridConnectionStream] [ HCStream] osztály lehetővé teszi, hogy a kétirányú kommunikációt. A legtöbb esetben folyamatosan kapni az adatfolyamból. Ha a szöveg olvas be az adatfolyamból, előfordulhat, hogy is használni kívánt egy [StreamReader](https://msdn.microsoft.com/library/system.io.streamreader(v=vs.110).aspx) objektum, amely lehetővé teszi az adatok egyszerűbb elemzése. Például olvasható adatok szövegként, nem `byte[]`.
 
 A következő kódot csak egy megszakítását kérték olvassa be az adatfolyamból sorokat:
@@ -114,6 +118,7 @@ while (!cancellationToken.IsCancellationRequested)
 ```
 
 ### <a name="sending-data"></a>Adatok küldése
+
 Ha már létrehozott kapcsolat, egy üzenetet küldhet a továbbítási végpont. Mert a kapcsolat objektum örökli [adatfolyam](https://msdn.microsoft.com/library/system.io.stream(v=vs.110).aspx), mint az adatok küldése egy `byte[]`. A következő példa bemutatja, hogyan ehhez:
 
 ```csharp
@@ -129,7 +134,8 @@ var textWriter = new StreamWriter(hybridConnectionStream);
 await textWriter.WriteLineAsync("hello");
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
+
 Azure-továbbítási kapcsolatos további információkért látogasson el ezeket a hivatkozásokat:
 
 * [Microsoft.Azure.Relay hivatkozás](/dotnet/api/microsoft.azure.relay)

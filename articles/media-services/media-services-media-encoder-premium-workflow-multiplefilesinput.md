@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: xpouyat;anilmur;juliako
-ms.openlocfilehash: 7dc149f55c2caf4c3ab3a4782fd71affde0694ca
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: a55d6dc212da05d7c14679579258e28921fecdc8
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>A prémium szintű kódolás több bemeneti fájlok és összetevő tulajdonságai használja
 ## <a name="overview"></a>Áttekintés
@@ -47,7 +47,7 @@ A konfigurációs karakterláncot a kódolási feladat használja az XML-dokumen
 
 A következő egy C#-kódban, amely fájlból olvassa be az XML-konfiguráció, a jobb oldali videó fájlnév frissíti, és átadja a feladatot a feladatok:
 
-```c#
+```csharp
 string premiumConfiguration = ReadAllText(@"D:\home\site\wwwroot\Presets\SetRuntime.xml").Replace("VideoFileName", myVideoFileName);
 
 // Declare a new job.
@@ -415,7 +415,7 @@ Majd illessze be a következő XML-adataiban. Meg kell adnia a videó fájl nev�
 
 Ha a .NET SDK használatával hozzon létre, és futtatni a feladatot, az XML-adatok ki lesznek átadva, a konfigurációs karakterláncból.
 
-```c#
+```csharp
 public ITask AddNew(string taskName, IMediaProcessor mediaProcessor, string configuration, TaskOptions options);
 ```
 
@@ -464,7 +464,7 @@ Kódolására, tegye a következőket:
 
 * A kódolt objektumhoz több nyelv zeneszámok fogja tartalmazni, és ezek nyomon követi az Azure Media Player választható kell lennie.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Prémium szintű kódolás az Azure Media Services bemutatása](http://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
 * [Azure Media Services használata a prémium szintű kódolás](http://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
 * [Az Azure Media Services kódolási igény tartalom](media-services-encode-asset.md#media-encoder-premium-workflow)

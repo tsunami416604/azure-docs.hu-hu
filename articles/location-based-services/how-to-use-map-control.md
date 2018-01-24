@@ -9,17 +9,17 @@ ms.date: 11/22/2017
 ms.topic: article
 ms.service: location-based-services
 manager: timlt
-ms.openlocfilehash: 06743640aae5e06d0160105458d9a3cfa35d5040
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 494a8308a5ed4ae37ed9561d051155e7433e6193
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="how-to-use-the-azure-location-based-services-map-control"></a>Az Azure hely alapú Services – térkép vezérlő használata
 A térkép vezérlőelem ügyféloldali Javascript-függvénytárat lehetővé teszi a webkiszolgáló vagy a mobilalkalmazás leképezések és beágyazott Azure hely alapú funkció megjelenítéséhez. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Egy Azure-alapú helyszolgáltatás fiókja és -előfizetése kulcsot. Fiók létrehozása és egy előfizetés kulcs beolvasása kapcsolatos tudnivalókat lásd: [kezelése az Azure-alapú helyszolgáltatás fiókja és -kulcsok](how-to-manage-account-keys.md). 
+Egy Azure-alapú helyszolgáltatás fiókot és kulcsot. Fiók létrehozása és egy kulcs lekérése kapcsolatos tudnivalókat lásd: [kezelése az Azure-alapú helyszolgáltatás fiókja és -kulcsok](how-to-manage-account-keys.md). 
 
 ## <a name="create-a-new-map-in-a-web-page-using-the-map-control-api"></a>Hozzon létre új leképezés egy weblapon a térkép vezérlőelem API használatával
 A térkép vezérlőelem ügyféloldali Javascript-könyvtár használatával térképre ágyazható be egy weblapon.
@@ -42,19 +42,19 @@ A térkép vezérlőelem ügyféloldali Javascript-könyvtár használatával t�
             }
     ``` 
     
-4. Ahhoz, hogy a térkép vezérlőelem inicializálására, adjon meg egy új szakaszt a html törzs, és hozzon létre egy parancsfájlt. A saját Azure-alapú helyszolgáltatás fiókjából előfizetés-kulcsot használ. 
+4. Ahhoz, hogy a térkép vezérlőelem inicializálására, adjon meg egy új szakaszt a html törzs, és hozzon létre egy parancsfájlt. A saját Azure-alapú helyszolgáltatás fiókkulcs használja a parancsfájlban. 
 
     ```html
     <div id="map">
         <script>
-            var subscriptionKey = "<_subscriptionKey_>";
+            var LBSAccountKey = "<_your account key_>";
             var map = new atlas.Map("map", {
-                "subscription-key": subscriptionKey,
+                "subscription-key": LBSAccountKey,
                 center: [47.59093,-122.33263],
                 zoom: 12
             });
-        <script>
-    <div>
+        </script>
+    </div>
     ```
     
 5. A böngészőben nyissa meg a fájlt, és a megjelenített megjelenítése.

@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2017
+ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ee0564ad3eae3cc902ce596aceb5c218efabd43e
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 108b6e3ae704a99e5c050fea07c72300ab948905
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Helyezze át az adatokat az SAP HANA Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -39,7 +39,7 @@ Ahhoz, hogy a kapcsolat az SAP HANA-példányra, a következő összetevők tele
 - **Az adatkezelési átjáró**: Data Factory támogatja a helyszíni adatokhoz való kapcsolódásról (beleértve az SAP HANA) az adatkezelési átjáró összetevő használatával nevezik. Az adatkezelési átjáró és az átjáró beállításának lépéseit, lásd: [áthelyezése a helyszíni adatok között adattároló adattár felhőbe](data-factory-move-data-between-onprem-and-cloud.md) cikk. Átjáróra szükség, akkor is, ha az SAP HANA Azure IaaS virtuális gépként (VM) van tárolva. Az átjárót telepítheti a adattárként azonos virtuális Gépen vagy a másik virtuális gép mindaddig, amíg az átjáró képes kapcsolódni az adatbázishoz.
 - **SAP HANA ODBC-illesztőprogram** az átjárót működtető gépen. Az SAP HANA ODBC-illesztő a programot letöltheti a [SAP szoftverletöltő központból](https://support.sap.com/swdc). Keresés a kulcsszóval **SAP HANA ügyfél Windows**. 
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 A másolási tevékenység, mely az adatok egy helyszíni SAP HANA-adattároló különböző eszközök/API-k használatával létrehozhat egy folyamatot. 
 
 - Hozzon létre egy folyamatot a legegyszerűbb módja használatára a **másolása varázsló**. Lásd: [oktatóanyag: hozzon létre egy folyamatot, másolása varázslóval](data-factory-copy-data-wizard-tutorial.md) létrehozásával egy folyamatot, az adatok másolása varázsló segítségével gyorsan útmutatást. 
@@ -60,12 +60,12 @@ A következő táblázat a JSON-elemek szerepelnek SAP HANA kapcsolódó szolgá
 
 Tulajdonság | Leírás | Megengedett értékek | Szükséges
 -------- | ----------- | -------------- | --------
-kiszolgáló | A kiszolgálóra az SAP HANA-példány neve. Ha a kiszolgáló egy testreszabott portot használ, adja meg a `server:port`. | Karakterlánc | Igen
-AuthenticationType | Hitelesítés típusa. | Karakterlánc. "Basic" vagy "Windows" | Igen 
-felhasználónév | Az SAP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó neve | Karakterlánc | Igen
-jelszó | A felhasználó jelszavát. | Karakterlánc | Igen
-gatewayName | Az átjáró, amely a Data Factory szolgáltatásnak csatlakoznia való kapcsolódáshoz a helyszíni SAP HANA-példány neve. | Karakterlánc | Igen
-encryptedCredential | A titkosított hitelesítő adatokban karakterlánc. | Karakterlánc | Nem
+kiszolgáló | A kiszolgálóra az SAP HANA-példány neve. Ha a kiszolgáló egy testreszabott portot használ, adja meg a `server:port`. | karakterlánc | Igen
+authenticationType | Hitelesítés típusa. | Karakterlánc. "Basic" vagy "Windows" | Igen 
+felhasználónév | Az SAP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó neve | karakterlánc | Igen
+jelszó | A felhasználó jelszavát. | karakterlánc | Igen
+gatewayName | Az átjáró, amely a Data Factory szolgáltatásnak csatlakoznia való kapcsolódáshoz a helyszíni SAP HANA-példány neve. | karakterlánc | Igen
+encryptedCredential | A titkosított hitelesítő adatokban karakterlánc. | karakterlánc | Nem
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 Szakaszok & meghatározása adatkészletek esetében elérhető tulajdonságok teljes listáját lásd: a [adatkészletek létrehozása](data-factory-create-datasets.md) cikk. Például struktúra, a rendelkezésre állás és a házirend a DataSet adatkészlet JSON hasonlítanak minden adatkészlet esetében (Azure SQL, az Azure blob, Azure-tábla, stb.).
@@ -288,19 +288,19 @@ TINYINT | Bájt
 SMALLINT | Int16
 INT | Int32
 BIGINT | Int64
-VALÓS | Egyetlen
-DUPLA | Egyetlen
+VALÓS | Egyedülálló
+DUPLA | Egyedülálló
 DECIMÁLIS | Decimális
 LOGIKAI ÉRTÉK | Bájt
 VARCHAR | Karakterlánc
 NVARCHAR | Karakterlánc
 CLOB | Byte]
 ALPHANUM | Karakterlánc
-A BLOB | Byte]
-DÁTUM | Dátum és idő
-IDŐ | A TimeSpan
-IDŐBÉLYEG | Dátum és idő
-SECONDDATE | Dátum és idő
+BLOB | Byte]
+DATE | DateTime
+IDŐ | TimeSpan
+IDŐBÉLYEG | DateTime
+SECONDDATE | DateTime
 
 ## <a name="known-limitations"></a>Ismert korlátozásai
 Ha az adatok másolása SAP HANA, van néhány ismert korlátozásai:

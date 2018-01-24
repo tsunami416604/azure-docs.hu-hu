@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: c6c0aeba2eaa7709bbe55ecadd82a4f22d57c25e
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: 4c4cf11b26402747ef58e4fa3fbbe2154876dfae
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-ad-net-web-api-getting-started"></a>Az Azure AD .NET webes API első lépések
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -73,7 +73,7 @@ Biztonságossá az alkalmazásról, először létrehoz egy alkalmazást az Ön 
 
 3. Módosítsa az osztálydeklaráció való `public partial class Startup`. Azt korábban már megvalósított Ez az osztály tartozik, egy másik fájlban. Az a `Configuration(…)` metódus hívása legyen `ConfgureAuth(…)` hitelesítés a webalkalmazás beállítása.
 
-    ```C#
+    ```csharp
     public partial class Startup
     {
         public void Configuration(IAppBuilder app)
@@ -85,7 +85,7 @@ Biztonságossá az alkalmazásról, először létrehoz egy alkalmazást az Ön 
 
 4. Nyissa meg a fájlt `App_Start\Startup.Auth.cs` és megvalósítását a `ConfigureAuth(…)` metódust. A megadott paraméterek `WindowsAzureActiveDirectoryBearerAuthenticationOptions` koordináták az alkalmazás az Azure AD kommunikálni fog szolgálni.
 
-    ```C#
+    ```csharp
     public void ConfigureAuth(IAppBuilder app)
     {
         app.UseWindowsAzureActiveDirectoryBearerAuthentication(
@@ -99,7 +99,7 @@ Biztonságossá az alkalmazásról, először létrehoz egy alkalmazást az Ön 
 
 5. Mostantól a `[Authorize]` segít megvédeni a tartományvezérlőket és a JSON webes jogkivonat (JWT) tulajdonosi hitelesítéssel műveletek attribútumait. Adja a `Controllers\TodoListController.cs` osztály engedélyezés címke használatával. Ezzel kikényszeríti a felhasználót, hogy jelentkezzen be a lap elérése előtt.
 
-    ```C#
+    ```csharp
     [Authorize]
     public class TodoListController : ApiController
     {
@@ -109,7 +109,7 @@ Biztonságossá az alkalmazásról, először létrehoz egy alkalmazást az Ön 
 
 6. Általános követelmény a webes API-khoz a jogkivonatban jelen lévő „hatókörök” érvényesítése. Ez biztosítja, hogy a felhasználó hozzájárult a való tegye lista szolgáltatás eléréséhez szükséges engedélyekkel.
 
-    ```C#
+    ```csharp
     public IEnumerable<TodoItem> Get()
     {
         // user_impersonation is the default permission exposed by applications in Azure AD

@@ -4,7 +4,7 @@ description: "Az Azure Search biztonsági SOC 2 megfelelőségi, titkosítás, h
 services: search
 documentationcenter: 
 author: HeidiSteen
-manager: jhubbard
+manager: cgronlun
 editor: 
 ms.assetid: 
 ms.service: search
@@ -12,23 +12,19 @@ ms.devlang:
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 12/14/2017
+ms.date: 01/19/2018
 ms.author: heidist
-ms.openlocfilehash: 23616c70a5fd336b743f5acfad2601a6c3e23fc4
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: c3aa4883e33b1f3494f8502fe7f8b12f7d64a72f
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/23/2018
 ---
-# <a name="data-security-and-controlled-access-to-azure-search-operations"></a>Adatbiztonság és szabályozott hozzáférést biztosít az Azure Search műveletek
+# <a name="security-and-controlled-access-in-azure-search"></a>Biztonság és ellenőrzött hozzáférés az Azure Search
 
 Az Azure Search van [SOC 2 szabványnak megfelelő](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=93292f19-f43e-4c4e-8615-c38ab953cf95&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_SOC%20%2F%20SSAE%2016%20Reports), egy átfogó biztonsági architektúra feszítőfa fizikai biztonsági, titkosított adatátvitel, titkosított tárolási és platform kiterjedő szoftver védelmet. Azure Search működés közben csak hitelesített kéréseket fogad el. Másik lehetőségként adhat hozzá felhasználói hozzáférés-vezérlést a tartalomhoz. Ez a cikk a minden egyes rétegben biztonsági koppint, de elsősorban arra irányul, hogy milyen adatok és a műveletek biztosított az Azure Search.
 
 ![Biztonsági rétegek blokk ábrája](media/search-security-overview/azsearch-security-diagram.png)
-
-Azure Search örökli a védelmet, és a védelmet az Azure platform, az a szolgáltatás által használt elsődleges mechanizmus napjainkban kulcs alapú hitelesítés, ahol kulcs típusa meghatározza, hogy a hozzáférési szintet. Egy kulcs, vagy egy adminisztrációs kulcsot, vagy csak olvasási hozzáférés egy lekérdezési kulcsot.
-
-A szolgáltatáshoz való hozzáférést a kulcsot (teljes vagy csak olvasható), valamint olyan környezetben, amely meghatározza egy hatókör műveletek közölt engedélyek keresztmetszetű alapul. Minden kérelemnél kötelező kulcs egy műveletet és egy objektum tevődik össze. Összeláncolt, ha a két jogosultsági szintek és a környezet elegendőek a szolgáltatási műveletek teljes-számos biztonsági biztosít. 
 
 ## <a name="physical-security"></a>Fizikai biztonság
 
@@ -38,11 +34,17 @@ A Microsoft azon adatközpontjainak iparágvezető fizikai biztonságot, és egy
 
 ## <a name="encrypted-transmission-and-storage"></a>Titkosított átvitel, illetve tárolás
 
-Az Azure Search 443-as HTTPS-porton figyel. A platformon Azure-szolgáltatásokhoz való kapcsolatok vannak titkosítva. 
+Titkosítási bővíti a teljes indexelése folyamat során: a kapcsolatok, átviteli keresztül, és le az Azure Search tárolt indexelt adatokat.
 
-Indexek és egyéb szerkezetek használható háttértárolóként, az Azure Search használja. Ezek a platformok titkosítási képességeit. Teljes [AICPA SOC 2 megfelelőségi](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) érhető el minden keresési (új és meglévő), az Azure Search ajánlat összes adatközpontokban. Tekintse át a teljes jelentés, keresse fel [Azure - és Azure Government SOC 2 II jelentés](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=93292f19-f43e-4c4e-8615-c38ab953cf95&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_SOC%20%2F%20SSAE%2016%20Reports).
+| Biztonsági réteg | Leírás |
+|----------------|-------------|
+| Az átvitel során titkosítás | Az Azure Search 443-as HTTPS-porton figyel. A platformon Azure-szolgáltatásokhoz való kapcsolatok vannak titkosítva. |
+| Titkosítás inaktív állapotban | Titkosítási teljesen internalized indexelési folyamat, nincs mérhető hatással indexelési idő befejezési vagy index mérete. Az automatikusan megtörténik az indexelő minden, a növekményes frissítések olyan indexet, amely nem teljesen titkosítottak (január 2018 előtt létrehozott) is.<br><br>Belsőleg, titkosítás alapul [Azure Storage szolgáltatás titkosítási](https://docs.microsoft.com/azure/storage/common/storage-service-encryption), 256 bites [AES titkosítási](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard).|
+| [SOC 2 megfelelőségi](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) | Összes keresőszolgáltatást teljesen AICPA SOC 2 szabványnak megfelelő, az Azure Search biztosít minden adatközpontokban. Tekintse át a teljes jelentés, keresse fel [Azure - és Azure Government SOC 2 II jelentés](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=93292f19-f43e-4c4e-8615-c38ab953cf95&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_SOC%20%2F%20SSAE%2016%20Reports). |
 
-Titkosítás átlátszó, a titkosítási kulcsok belsőleg kezeli, és egységesen érvényesek. Nem kapcsolja ki az adott keresési szolgáltatások vagy az indexek, és nem közvetlenül a kulcsok kezelése, és nem adja meg a saját. 
+Titkosítási tanúsítványok és titkosítási kulcsok Microsoft belsőleg kezeli, és egységesen alkalmazza az Azure Search belső. Nem titkosítás engedélyezése vagy letiltása, kezelése vagy helyettesítse a saját kulcsok és a portálon vagy programozottan titkosítási beállítások megtekintéséhez. 
+
+Titkosítását a 2018 január 24 jelentették, és minden szolgáltatásrétegeiben használt funkciókkal, beleértve a megosztott (ingyenes) szolgáltatásokat, minden régióban vonatkozik. Teljes titkosítás indexek ezen időpont előtt létre kell dobni, és az újonnan létrehozott sorrendben történik a titkosítás. Ellenkező esetben csak az új után január 24 adattitkosítás.
 
 ## <a name="azure-wide-logical-security"></a>Logikai Azure kiterjedő olyan biztonságot
 
@@ -53,15 +55,15 @@ Több biztonsági mechanizmus áll, az Azure-verem keresztül elérhető, és í
 
 Az összes Azure-szolgáltatások beállítása hozzáférési szintek következetesen összes szolgáltatásban a szerepköralapú hozzáférés-vezérlést (RBAC) támogatja. Például bizalmas adatokat, például az adminisztrációs kulcsot megtekintése nem használható a tulajdonos és közreműködő szerepkörökhöz, mivel a szolgáltatás állapotának megtekintése a szerepkör tagjai számára érhető el. Az RBAC biztosít a tulajdonos, közreműködő és olvasó szerepkört. Alapértelmezés szerint az összes szolgáltatás-rendszergazdák tagjai a tulajdonosi szerepkört.
 
-## <a name="service-authentication"></a>Hitelesítési szolgáltatás
+## <a name="service-access-and-authentication"></a>Hozzáférés és a hitelesítés
 
-Az Azure Search megadja a saját hitelesítési módszert. Hitelesítési minden kérelemnél következik be, és határozza meg, hogy a műveletek köre hívóbetű alapul. Egy érvényes elérési kulcsot tekinthető igazolása a kérelem olyan megbízható entitás származik. 
+Azure Search örökli a biztonsági óvintézkedéseket, az Azure platform, amíg a saját kulcs alapú hitelesítés is tartalmazza. (A rendszergazda vagy a lekérdezés) kulcs típusa meghatározza, hogy a hozzáférési szintet. Érvényes kulcs benyújtása akkor tekinthető igazolása a kérelem olyan megbízható entitás származik. 
 
-Szolgáltatás hitelesítési létezik két szintű: teljes jogosultsággal, csak lekérdezés. Kulcs típusa meghatározza, hogy milyen hozzáférési szintje van érvényben.
+Hitelesítés kéréseknek, ahol minden kérelmet kötelező kulcs, egy műveletet, és áll egy objektum szükséges. Összeláncolt, ha a két jogosultsági szintek (teljes vagy csak olvasható) és a környezet elegendőek a szolgáltatási műveletek teljes-számos biztonsági biztosít. 
 
 |Kulcs|Leírás|Korlátok|  
 |---------|-----------------|------------|  
-|Rendszergazda|Engedélyezi az összes művelethez, beleértve a szolgáltatás kezelése teljes körű jogosultságot hozzon létre vagy töröljön **indexek**, **indexelők**, és **adatforrások**.<br /><br /> Két felügyeleti **api-kulcsokat**nevezik, *elsődleges* és *másodlagos* kulcsok a portálon jönnek létre, ha a szolgáltatás jön létre, és az igény szerinti külön-külön újragenerálása . A két kulcs lehetővé teszi egy kulcs váltása a második kulcs használatakor a szolgáltatás folyamatos elérésére.<br /><br /> Adminisztrációs kulcsok csak HTTP-kérelmek fejléceinek vannak megadva. Nem helyezhető el egy rendszergazda **api-kulcs** egy URL-címben.|Legfeljebb 2-szolgáltatás|  
+|Adminisztratív körzet|Teljes körű jogosultságot biztosít az összes művelethez, beleértve a szolgáltatás kezelése létrehozása, és törölje az indexek, az indexelők és az adatforrások.<br /><br /> Két felügyeleti **api-kulcsokat**nevezik, *elsődleges* és *másodlagos* kulcsok a portálon jönnek létre, ha a szolgáltatás jön létre, és az igény szerinti külön-külön újragenerálása . A két kulcs lehetővé teszi egy kulcs váltása a második kulcs használatakor a szolgáltatás folyamatos elérésére.<br /><br /> Adminisztrációs kulcsok csak HTTP-kérelmek fejléceinek vannak megadva. Az egy URL-cím nem helyezhető el egy adminisztrációs api-kulcsot.|Legfeljebb 2-szolgáltatás|  
 |Lekérdezés|Csak olvasható hozzáférést biztosítanak az indexekhez és dokumentumokhoz, és általában a keresési kérelmeket kibocsátó ügyfélalkalmazások számára.<br /><br /> Lekérdezési kulcsok igény szerint jönnek létre. Létrehozhat őket manuálisan a portálon vagy programozottan keresztül a [felügyeleti REST API](https://docs.microsoft.com/rest/api/searchmanagement/).<br /><br /> Lekérdezési kulcsok a keresés, a javaslat, vagy a keresési művelet HTTP-kérelem fejléc adható meg. Másik lehetőségként átadhatók egy lekérdezési kulcsot paraméterként egy URL-címen. Attól függően, hogy az ügyfélalkalmazás formulates a kérelmet akkor valószínűleg egyszerűbb felelt meg a kulcsot a lekérdezési paramétert:<br /><br /> `GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2016-09-01&api-key=A8DA81E03F809FE166ADDB183E9ED84D`|50-szolgáltatás|  
 
  Nincs vizuálisan, egy adminisztrációs kulcsot vagy a lekérdezési kulcs közötti különbség. Mindkét kulcsai 32 véletlenszerűen álló karakterláncok generált alfanumerikus karakter. Ha elveszti nyomon milyen kulcs van megadva az alkalmazásban, akkor [ellenőrizze a portálon értékek](https://portal.azure.com) , vagy használja a [REST API](https://docs.microsoft.com/rest/api/searchmanagement/) adhatja vissza az értéket és a kulcs típusa.  
@@ -103,7 +105,7 @@ További információ az Azure Search kérelmet szerkezetének kialakítása: [A
 
 Felhasználói hozzáférés index tartalmát a lekérdezéseket, egy adott biztonsági azonosítóhoz tartozó dokumentumok vissza olyan biztonsági szűröket keresztül valósul meg. Előre definiált szerepkörök és a szerepkör-hozzárendelések helyett azonosító-alapú hozzáférés-vezérlés szűrőként megvalósítása, hogy levágja találatok dokumentumokat és identitások alapján. A következő táblázat ismerteti a két megközelítés használatos levágási keresési eredmények jogosulatlan tartalom.
 
-| Módszer | Leírás |
+| Approach | Leírás |
 |----------|-------------|
 |[Biztonsági elrejtés identitás szűrők alapján](search-security-trimming-for-azure-search.md)  | A felhasználói identitás hozzáférés-vezérlés implementálása a következő alapvető munkafolyamattal dokumentumokat. Indexek felvenni a biztonsági azonosítók foglalkozik, és ezután bemutatja, hogy a mező lehet levágni a tiltott tartalom eredmények szűrése. |
 |[Azure Active Directory identitások alapuló biztonsági tisztítás](search-security-trimming-for-azure-search-with-aad.md)  | Ez a cikk kibővíti az előző cikkben, lépéseket biztosít az identitások az Azure Active Directory (AAD), egy a [szolgáltatások szabad](https://azure.microsoft.com/free/) az Azure felhőalapú platform. |
@@ -124,7 +126,7 @@ A következő táblázat összefoglalja az Azure Search engedélyezett művelete
 | Lekérdezési kulcsok kezelése |  Adminisztrációs kulcsot, RBAC tulajdonosa vagy Közreműködője az erőforráson. Az RBAC-olvasó lekérdezési kulcsok megtekintéséhez. |
 
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 + [Első lépések a .NET (mutatja be, egy adminisztrációs kulcsot használ az index létrehozása)](search-create-index-dotnet.md)
 + [Első lépések REST (mutatja be, egy adminisztrációs kulcsot használ az index létrehozása)](search-create-index-rest-api.md)

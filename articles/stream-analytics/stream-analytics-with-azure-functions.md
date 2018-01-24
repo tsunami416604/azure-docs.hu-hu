@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 12/19/2017
 ms.author: sngun
-ms.openlocfilehash: ab095827dc9dbfee19284abfbac353b16d3239a7
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: 6a23b234f12f553c7e146f92ca14bff3255d0837
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="run-azure-functions-with-azure-stream-analytics-jobs"></a>Az Azure Functions az Azure Stream Analytics-feladatok futtatása 
  
@@ -62,7 +62,7 @@ Kövesse a [valós idejű csalások felderítéséhez](stream-analytics-real-tim
 
 2. Keresse meg a **run.csx** függvény. Frissítse az alábbi kódra. (Győződjön meg arról, hogy "\<ide kerül a redis gyorsítótár kapcsolati karakterlánc\>" az Azure Redis Cache elsődleges kapcsolati karakterlánccal, amely az előző szakaszban lekért.)  
 
-   ```c#
+   ```csharp
    using System;
    using System.Net;
    using System.Threading.Tasks;
@@ -113,7 +113,7 @@ Kövesse a [valós idejű csalások felderítéséhez](stream-analytics-real-tim
 
    A Stream Analytics a függvényt a "HTTP kérelem entitás túl nagy" kivétel megkapja, csökkenti a funkciók küld a kötegek mérete. A függvény a következő kód segítségével ellenőrizze, hogy a Stream Analytics nem küld túlméretes kötegek. Győződjön meg arról, hogy a Köteg maximális száma és mérete a függvényben értékei a Stream Analytics-portálon megadott értékek konzisztens.
 
-   ```c#
+   ```csharp
    if (dataArray.ToString().Length > 262144)
       {        
         return new HttpResponseMessage(HttpStatusCode.RequestEntityTooLarge);
@@ -154,8 +154,8 @@ Kövesse a [valós idejű csalások felderítéséhez](stream-analytics-real-tim
 
    |**Tulajdonság neve**|**Leírás**|
    |---|---|
-   |A kimeneti alias| Egy rövid nevet használt hivatkozás a kimeneti a feladat-lekérdezést. |
-   |A beállítás importálása| A jelenlegi előfizetés függvényt, vagy adja meg a beállításokat manuálisan, ha a függvény egy másik előfizetésben található. |
+   |Kimeneti alias| Egy rövid nevet használt hivatkozás a kimeneti a feladat-lekérdezést. |
+   |Importálási beállítás| A jelenlegi előfizetés függvényt, vagy adja meg a beállításokat manuálisan, ha a függvény egy másik előfizetésben található. |
    |Függvényalkalmazás| A funkciók alkalmazás nevét. |
    |Függvény| A funkciók alkalmazásban (a run.csx függvény neve) függvény neve.|
    |Maximális kötegméret|Minden kimeneti köteg, a függvény küldött maximális méretének beállítása. Alapértelmezés szerint a értéke legfeljebb 256 KB.|

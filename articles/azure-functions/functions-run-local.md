@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: 081da55bb956db2879d7f2c5c91d25f5c36d5507
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 3fd392a3f5b48d6b8d19af530c949d91cd461099
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Kód és az Azure Functions helyi tesztelése
 
@@ -74,7 +74,7 @@ sudo npm install -g azure-functions-core-tools@core --unsafe-perm true
 ## <a name="run-azure-functions-core-tools"></a>Az Azure Functions Core eszközeinek futtatása
  
 Az Azure Functions Core eszközök a következő parancs aliasok bővült:
-* **FUNC**
+* **func**
 * **azfun**
 * **azurefunctions**
 
@@ -130,7 +130,7 @@ A fájl local.settings.json Alkalmazásbeállítások, a kapcsolati karakterlán
 | ------------ | -------------------------------------- |
 | **IsEncrypted** | Ha beállítása **igaz**, minden értéket a helyi számítógép kulccsal titkosított. A használt `func settings` parancsok. Alapértelmezett érték **hamis**. |
 | **Értékek** | A helyi futtatás során használt Alkalmazásbeállítások gyűjteménye. **AzureWebJobsStorage** és **AzureWebJobsDashboard** példák; teljes listáját lásd: [alkalmazás-beállítások referenciája](functions-app-settings.md).  |
-| **Állomás** | Ebben a szakaszban beállítások testreszabása a funkciók gazdafolyamat, a helyi futtatás során. | 
+| **Gazdagép** | Ebben a szakaszban beállítások testreszabása a funkciók gazdafolyamat, a helyi futtatás során. | 
 | **LocalHttpPort** | Beállítja azt a portot használja a helyi funkciók állomás fut (`func host start` és `func run`). A `--port` parancssori kapcsoló elsőbbséget élvez ezt az értéket. |
 | **CORS** | Meghatározza az engedélyezett eredeteket [eltérő eredetű erőforrások megosztása (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). Források, szóközök nélkül vesszővel tagolt lista formájában vannak megadva. A helyettesítő karakteres érték (\*) támogatott, amely lehetővé teszi a kérelmek bármely a forrásból. |
 | **ConnectionStrings** | Az adatbázis-kapcsolati karakterláncok a függvényeket tartalmaz. Ez az objektum kapcsolati karakterláncokat hozzáadódnak a szolgáltató típusát a környezet **System.Data.SqlClient**.  | 
@@ -216,7 +216,7 @@ A funkciók gazdagép indításakor azt az URL-cím a HTTP-eseményindítókkal 
 Found the following functions:
 Host.Functions.MyHttpTrigger
 
-ob host started
+Job host started
 Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 ```
 

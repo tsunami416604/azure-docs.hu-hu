@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 5d56e74c6344580760f55506d7d90dac3e90721d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 65f25e2496065ca1aaba443a9d6b3e29239e0218
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="secure-an-mvc-web-api"></a>Egy MVC webes API biztonságossá tétele
 Az Azure Active Directoryban a v2.0-végpontra, megvédheti a Web API használatával [OAuth 2.0](active-directory-v2-protocols.md) hozzáférési jogkivonatok, mindkét személyes Microsoft-fiókkal rendelkező felhasználók és a munkahelyi vagy iskolai fiókok biztonságos hozzáférés a webes API.
@@ -69,7 +69,7 @@ PM> Install-Package Microsoft.IdentityModel.Protocol.Extensions -ProjectName Tod
 * Egy OWIN indítási osztály hozzáadása a TodoListService projekt neve `Startup.cs`.  Kattintson a jobb gombbal a projektre--> **Hozzáadás** --> **új elem** --> "OWIN" keresése.  Az OWIN közbenső szoftver meghívja a `Configuration(…)` metódust az alkalmazás indulásakor.
 * Módosítsa az osztálydeklaráció való `public partial class Startup` -azt korábban már megvalósított Ez az osztály tartozik, egy másik fájlban.  Az a `Configuration(…)` metódus hívása ConfgureAuth(...) hitelesítés a webalkalmazás beállítása legyen.
 
-```C#
+```csharp
 public partial class Startup
 {
     public void Configuration(IAppBuilder app)
@@ -81,7 +81,7 @@ public partial class Startup
 
 * Nyissa meg a fájlt `App_Start\Startup.Auth.cs` és megvalósítását a `ConfigureAuth(…)` metódus, amely elfogadja a v2.0-végpontra származó jogkivonatokat a Web API beállításához.
 
-```C#
+```csharp
 public void ConfigureAuth(IAppBuilder app)
 {
         var tvps = new TokenValidationParameters
@@ -118,7 +118,7 @@ public void ConfigureAuth(IAppBuilder app)
 
 * Mostantól a `[Authorize]` attribútumok a tartományvezérlők és az OAuth 2.0 tulajdonosi hitelesítéssel műveletek védelme érdekében.  Adja a `Controllers\TodoListController.cs` osztály engedélyezés címke használatával.  Ezzel kikényszeríti a felhasználót, hogy jelentkezzen be a lap elérése előtt.
 
-```C#
+```csharp
 [Authorize]
 public class TodoListController : ApiController
 {
@@ -126,7 +126,7 @@ public class TodoListController : ApiController
 
 * Amikor egy jogosult hívó sikeresen hív meg, egy a `TodoListController` API-k, a művelet módosítania kell információkhoz juthat a hívóról.  A jogcímek belül a tulajdonosi jogkivonattal keresztül hozzáférést biztosít az OWIN a `ClaimsPrincipal` objektum.  
 
-```C#
+```csharp
 public IEnumerable<TodoItem> Get()
 {
     // You can use the ClaimsPrincipal to access information about the
@@ -156,7 +156,7 @@ Az elkészült mintát (a konfigurációs értékek nélkül) referenciaként [i
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet.git```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Kiegészítő témakörök most már továbbléphet.  Előfordulhat, hogy ki szeretné próbálni:
 
 [Webes API-k egy webalkalmazásból hívja >>](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md)

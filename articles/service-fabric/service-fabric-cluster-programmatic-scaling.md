@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/17/2017
 ms.author: mikerou
-ms.openlocfilehash: 3d123a3d06420194d2918b71c98152cd2ea03457
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 1744e3c49ac06abe9e1067d507fd56d694201ffc
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>A Service Fabric-fürt méretezése programozott módon 
 
@@ -57,7 +57,7 @@ A szolgáltatás egyszerű hozhatók létre az alábbi lépéseket:
 
 A Folyékonyan beszél számítási könyvtár jelentkezhetnek be ezeket a hitelesítő adatokat az alábbiak szerint (vegye figyelembe, hogy core Folyékonyan beszél Azure típusok hasonlóan `IAzure` szerepelnek a [Microsoft.Azure.Management.Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) csomag):
 
-```C#
+```csharp
 var credentials = new AzureCredentials(new ServicePrincipalLoginInformation {
                 ClientId = AzureClientId,
                 ClientSecret = 
@@ -79,7 +79,7 @@ Miután bejelentkezett, méretezési készlet példányszáma lekérdezhetők, k
 ## <a name="scaling-out"></a>Méretezés
 SDK használata a Folyékonyan beszél Azure számítási, példányok adhatók hozzá a virtuálisgép-méretezési pár hívások - beállítása
 
-```C#
+```csharp
 var scaleSet = AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId);
 var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
@@ -95,7 +95,7 @@ A méretezés hasonlít kiterjesztése. A tényleges virtuálisgép-méretezési
 
 A csomópont előkészítése az leállítási magában foglalja a tekinti a csomópontot eltávolítani (a legutóbb hozzáadott csomópont) keresése és inaktiválása. Nem kezdőérték csomópontok újabb csomópontok található összehasonlításával `NodeInstanceId`. 
 
-```C#
+```csharp
 using (var client = new FabricClient())
 {
     var mostRecentLiveNode = (await client.QueryManager.GetNodeListAsync())
@@ -109,7 +109,7 @@ Kezdőérték csomópont különböző, és nem feltétlenül kövesse az egyezm
 
 Az eltávolítandó csomópont található, ha inaktiválhatók, és eltávolítja a azonos `FabricClient` példány és a `IAzure` példányának regisztrációját a korábbi.
 
-```C#
+```csharp
 var scaleSet = AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId);
 
 // Remove the node from the Service Fabric cluster
@@ -134,7 +134,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 
 Mint meg, a PowerShell-parancsmagok a módosítását a virtuálisgép-méretezési készlet kapacitása is használható itt egy parancsfájl-kezelési megoldás hatékonyabb, ha. A virtuálisgép-példányt eltávolítást követően a Service Fabric-csomópont állapota lehet eltávolítani.
 
-```C#
+```csharp
 await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
 ```
 
@@ -144,7 +144,7 @@ Ahogyan az a megelőző kódrészletek, létrehozása a saját skálázás szolg
 
 Hogyan meg kell megközelíti a Service Fabric skálázás attól függ, hogy a forgatókönyvéhez. Ha skálázás ritka, csomópontok hozzáadásához és eltávolításához manuálisan nem elegendő. Az összetettebb forgatókönyveket automatikus méretezése szabályok és SDK-k teszi ki a szolgáltatás szoftveres kínál az hatékony alternatívák.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Első lépésként a saját automatikus skálázás logikát megvalósító, ismerkedjen meg a következő fogalmakat és hasznos API-kat:
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: 87eed377528db60724ba2f37bc22d916dfd7c0eb
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 980b297db87c2829f3c393ae867780f263f8d87c
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Az Application Insights SDK konfigurálása az ApplicationInsights.config vagy .xml használatával
 Az Application Insights .NET SDK NuGet-csomagok számos áll. A [core csomag](http://www.nuget.org/packages/Microsoft.ApplicationInsights) telemetriai adatok küldése az Application Insights az API-t biztosít. [További csomagok](http://www.nuget.org/packages?q=Microsoft.ApplicationInsights) adja meg a telemetriai adatok *modulok* és *inicializálók* automatikusan nyomon követése a telemetriai adatok az alkalmazás és a környezetben. A konfigurációs fájl módosításával engedélyezze vagy tiltsa le a telemetria-modulokat és az inicializálók, és némelyikük paramétereinek megadása.
@@ -178,7 +178,7 @@ Ezek a paraméterek befolyásolják, hogyan a Java SDK kell tárolni, valamint a
 A telemetriai adatok elemek száma, amelyek az SDK-val memórián belüli tároló tárolhatja. A számnak az elérésekor, a telemetria puffer ki van ürítve, – ez azt jelenti, hogy a telemetriai adatok elemek az Application Insights-kiszolgálónak küldött.
 
 * Minimum: 1
-* Maximális: 1000
+* Max: 1000
 * Alapértelmezett: 500
 
 ```
@@ -196,7 +196,7 @@ A telemetriai adatok elemek száma, amelyek az SDK-val memórián belüli tárol
 Meghatározza, hogy milyen gyakran az adatok tárolása a memóriában tárolt kell kiürítése (Application insights szolgáltatásnak elküldött).
 
 * Minimum: 1
-* Maximális: 300
+* Max: 300
 * Alapértelmezett: 5
 
 ```
@@ -214,7 +214,7 @@ Meghatározza, hogy milyen gyakran az adatok tárolása a memóriában tárolt k
 Meghatározza a maximális mérete (MB), amely számára engedélyezett az állandó tároló a helyi lemezen való. Ez a tároló nem sikerült továbbítani az Application Insights végpont tárolásakor telemetriai elemekre szolgál. A tároló mérete teljesülésekor új telemetriai elemek elvesznek.
 
 * Minimum: 1
-* Maximum: 100
+* Max: 100
 * Alapértelmezett: 10
 
 ```
@@ -237,7 +237,7 @@ Ha be szeretné állítani a kulcs dinamikusan – például ha az eredmények e
 
 A kulcs beállítása TelemetryClient összes példánya esetén, beleértve a szabványos telemetriai modulok, kulcsát állítsa a TelemetryConfiguration.Active a. Egy inicializálási metódust, például egy ASP.NET-szolgáltatásban Global.aspx.cs osztályból tegye a következőket:
 
-```C#
+```csharp
 
     protected void Application_Start()
     {
@@ -250,7 +250,7 @@ A kulcs beállítása TelemetryClient összes példánya esetén, beleértve a s
 
 Ha csak egy meghatározott események küldése egy másik erőforráscsoportban, a kulcs az egy adott TelemetryClient állíthatja be:
 
-```C#
+```csharp
 
     var tc = new TelemetryClient();
     tc.Context.InstrumentationKey = "----- my key ----";

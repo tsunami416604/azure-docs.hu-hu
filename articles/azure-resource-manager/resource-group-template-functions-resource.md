@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/09/2017
+ms.date: 01/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: fdee4280b6642fa7c3e26e792b8b940772572ae7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f92afd27540e935ed901151d980377b9b34ea8f5
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Az Azure Resource Manager sablonokhoz erőforrás-funkciók
 
@@ -26,8 +26,8 @@ Erőforrás-kezelő a következő funkciókat biztosít erőforrás értékek be
 
 * [listKeys és a {Value} lista](#listkeys)
 * [szolgáltatók](#providers)
-* [hivatkozás](#reference)
-* [Erőforráscsoport](#resourcegroup)
+* [reference](#reference)
+* [resourceGroup](#resourcegroup)
 * [resourceId](#resourceid)
 * [előfizetést](#subscription)
 
@@ -47,8 +47,8 @@ Minden erőforrástípus, amely támogatja a list művelet értékeket adja viss
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| resourceName vagy resourceIdentifier |Igen |Karakterlánc |Az erőforrás egyedi azonosítója. |
-| apiVersion |Igen |Karakterlánc |API-verzió erőforrás futásidejű állapot. Általában a következő formátumban **éééé-hh-nn**. |
+| resourceName vagy resourceIdentifier |Igen |karakterlánc |Az erőforrás egyedi azonosítója. |
+| apiVersion |Igen |karakterlánc |API-verzió erőforrás futásidejű állapot. Általában a következő formátumban **éééé-hh-nn**. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -153,8 +153,8 @@ Egy erőforrás-szolgáltató és a támogatott erőforrástípusai információ
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| providerNamespace |Igen |Karakterlánc |A szolgáltató Namespace |
-| a resourceType |Nem |Karakterlánc |A típusú erőforrás a megadott névtérben. |
+| providerNamespace |Igen |karakterlánc |A szolgáltató Namespace |
+| resourceType |Nem |karakterlánc |A típusú erőforrás a megadott névtérben. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -241,9 +241,9 @@ Az erőforrás futásidejű állapot képviselő objektum beállítása/beolvas�
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| resourceName vagy resourceIdentifier |Igen |Karakterlánc |Név vagy egy erőforrás egyedi azonosítója. |
-| apiVersion |Nem |Karakterlánc |A megadott erőforrás API-verzió. Ez a paraméter tartalmazza, amikor az erőforrás nincs kiépítve belül ugyanazt a sablont. Általában a következő formátumban **éééé-hh-nn**. |
-| "Teljes" |Nem |Karakterlánc |Érték, amely megadja, hogy térjen vissza a teljes erőforrás-objektum. Ha nincs megadva `'Full'`, csak az erőforrás tulajdonságai objektumot ad vissza. A teljes objektum tartalmaz értékeket, például az erőforrás-azonosító és helyét. |
+| resourceName vagy resourceIdentifier |Igen |karakterlánc |Név vagy egy erőforrás egyedi azonosítója. |
+| apiVersion |Nem |karakterlánc |A megadott erőforrás API-verzió. Ez a paraméter tartalmazza, amikor az erőforrás nincs kiépítve belül ugyanazt a sablont. Általában a következő formátumban **éééé-hh-nn**. |
+| "Teljes" |Nem |karakterlánc |Érték, amely megadja, hogy térjen vissza a teljes erőforrás-objektum. Ha nincs megadva `'Full'`, csak az erőforrás tulajdonságai objektumot ad vissza. A teljes objektum tartalmaz értékeket, például az erőforrás-azonosító és helyét. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -251,7 +251,7 @@ Minden erőforrástípus adja vissza a hivatkozás függvény különböző tula
 
 ### <a name="remarks"></a>Megjegyzések
 
-A hivatkozás függvény az értékét a futásidejű állapot osztályból származik, és ezért nem használható a változók szakaszban. A sablon kimenetének részében használható. 
+A hivatkozás függvény az értékét a futásidejű állapot osztályból származik, és ezért nem használható a változók szakaszban. A sablon kimenetének részében használható vagy [csatolt sablon](resource-group-linked-templates.md#link-or-nest-a-template). A kimenetek szakaszában nem használható egy [beágyazott sablon](resource-group-linked-templates.md#link-or-nest-a-template). Egy beágyazott sablon üzembe helyezett erőforrás értékek visszaállításához a beágyazott sablon átalakítása csatolt sablont. 
 
 A hivatkozás függvény használatával, akkor implicit módon deklarálja, hogy egy erőforrás függ-e egy másik erőforrás, ha a hivatkozott erőforrás ugyanazt a sablont belül lett beállítva. Nem kell a dependsOn tulajdonság is használhatja. A függvény a rendszer nem értékeli ki, a hivatkozott erőforrás telepítés befejeződéséig.
 
@@ -441,7 +441,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 <a id="resourcegroup" />
 
-## <a name="resourcegroup"></a>Erőforráscsoport
+## <a name="resourcegroup"></a>resourceGroup
 `resourceGroup()`
 
 A jelenlegi erőforráscsoportban képviselő objektumot adja vissza. 
@@ -534,10 +534,10 @@ Az erőforrás egyedi azonosítójának beolvasása. Ezt a funkciót használja,
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |Nem |karakterlánc (a GUID formátumban) |Alapértelmezett érték az aktuális előfizetésben. Adja meg ezt az értéket, ha szüksége van egy másik előfizetésben található erőforrás lekérése. |
-| erőforráscsoport-név |Nem |Karakterlánc |Alapértelmezett érték: a jelenlegi erőforráscsoportban. Adja meg ezt az értéket, ha erőforrást egy másik erőforráscsoportban van szüksége. |
-| a resourceType |Igen |Karakterlánc |Beleértve az erőforrás-szolgáltató névtere erőforrás típusát. |
-| resourceName1 |Igen |Karakterlánc |Erőforrás neve. |
-| resourceName2 |Nem |Karakterlánc |Következő neve erőforrásszegmensre. Ha az erőforrás van beágyazva. |
+| resourceGroupName |Nem |karakterlánc |Alapértelmezett érték: a jelenlegi erőforráscsoportban. Adja meg ezt az értéket, ha erőforrást egy másik erőforráscsoportban van szüksége. |
+| resourceType |Igen |karakterlánc |Beleértve az erőforrás-szolgáltató névtere erőforrás típusát. |
+| resourceName1 |Igen |karakterlánc |Erőforrás neve. |
+| resourceName2 |Nem |karakterlánc |Következő neve erőforrásszegmensre. Ha az erőforrás van beágyazva. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -652,12 +652,12 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az alapértelmezett értékeit az előző példából kimenete:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| sameRGOutput | Karakterlánc | /Subscriptions/{Current-Sub-ID}/resourceGroups/examplegroup/Providers/Microsoft.Storage/storageAccounts/examplestorage |
-| differentRGOutput | Karakterlánc | /Subscriptions/{Current-Sub-ID}/resourceGroups/otherResourceGroup/Providers/Microsoft.Storage/storageAccounts/examplestorage |
-| differentSubOutput | Karakterlánc | /Subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/Providers/Microsoft.Storage/storageAccounts/examplestorage |
-| nestedResourceOutput | Karakterlánc | /Subscriptions/{Current-Sub-ID}/resourceGroups/examplegroup/Providers/Microsoft.SQL/Servers/serverName/Databases/databaseName |
+| sameRGOutput | Karakterlánc | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentRGOutput | Karakterlánc | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentSubOutput | Karakterlánc | /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| nestedResourceOutput | Karakterlánc | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
 
 A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
 
@@ -721,7 +721,7 @@ A példa sablon PowerShell használatával történő üzembe helyezéséhez has
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/subscription.json 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A szakaszok az Azure Resource Manager-sablon ismertetését lásd: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md).
 * Több sablon egyesíteni, lásd: [kapcsolt sablonok használata az Azure Resource Manager](resource-group-linked-templates.md).
 * Megadott számú alkalommal felépítésének egy adott típusú erőforrás létrehozása esetén lásd: [erőforrások több példánya létrehozása az Azure Resource Manager](resource-group-create-multiple.md).

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/18/2017
 ms.author: magoedte
-ms.openlocfilehash: 7303c17cfa35043229bb1bdd61ef33647ef60ffa
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 4a6946f34babfd63a2b9a12818761c6d6c74bc15
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Önálló Azure Automation-fiók létrehozása
 Ez a cikk bemutatja, hogyan egy Azure Automation-fiók létrehozása az Azure portálon. A portál Automation-fiók segítségével értékelje ki és további automatizálásával kapcsolatos további felügyeleti megoldások vagy integráció az Azure Naplóelemzés Operations Management Suite (OMS) használata nélkül. Ezen megoldások hozzáadása, vagy speciális figyelésére egyetlen runbook-feladatok a jövőben Naplóelemzési integrálható. 
@@ -55,9 +55,9 @@ Felhasználói szerepkörök ellenőrzése:
 Egy Azure Automation-fiók létrehozása az Azure portálon, kövesse az alábbi lépéseket:    
 
 1. Jelentkezzen be egy olyan fiókkal, amely az előfizetés-Rendszergazdák szerepkör tagja, és az előfizetés egy coadministrator az Azure portálon.
-2. Válassza ki **új**.<br><br> ![Válassza az új Azure-portálon](media/automation-offering-get-started/automation-portal-martketplacestart.png)<br>  
-3. Keresse meg **Automation**. A keresési eredmények között, válassza ki a **Automation & vezérlő**.<br><br> ![Jelölje ki az Automation & vezérlés az Azure piactéren](media/automation-create-standalone-account/automation-marketplace-select-create-automationacct.png)<br> 
-4. A **Automation-fiók**, jelölje be **Hozzáadás**.
+2. Válassza ki **+ hozzon létre egy erőforrást**.
+3. Keresse meg **Automation**. A keresési eredmények között, válassza ki a **Automation**.<br><br> ![Jelölje ki az Automation & vezérlés az Azure piactéren](media/automation-create-standalone-account/automation-marketplace-select-create-automationacct.png)<br> 
+4. A következő képernyőn válassza ki a **létrehozása**.
   ![Automation-fiók hozzáadása](media/automation-create-standalone-account/automation-create-automationacct-properties.png)
   
   > [!NOTE]

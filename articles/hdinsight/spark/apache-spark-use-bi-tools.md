@@ -17,11 +17,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: jgao
-ms.openlocfilehash: 18f495864befafd26e7adafb5c01612222d2cfdf
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 074415ba50ecdb1799093a3ead3bdd22fd02cc15
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="apache-spark-bi-using-data-visualization-tools-with-azure-hdinsight"></a>Apache Spark BI adatok képi megjelenítés eszközökkel Azure hdinsightban
 
@@ -29,7 +29,7 @@ Ismerje meg, hogyan használható [Microsoft Power BI](http://powerbi.microsoft.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Teljes [interaktív lekérdezések futtatására a hdinsight Spark-fürtjei](./apache-spark-load-data-run-query.md)**.
+* **Fejezze be a cikk [interaktív lekérdezések futtatására a hdinsight Spark-fürtjei](./apache-spark-load-data-run-query.md)**.
 * **A Power BI**: [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/) és [Power BI próba-előfizetés](https://app.powerbi.com/signupredirect?pbi_source=web) (nem kötelező).
 * **Tableau**: [Tableau asztali](http://www.tableau.com/products/desktop) és [Microsoft Spark ODBC-illesztőprogram](http://go.microsoft.com/fwlink/?LinkId=616229).
 
@@ -63,7 +63,7 @@ A létrehozott Jupyter notebook a [az oktatóanyag előző](apache-spark-load-da
 
     ![A Spark hvac tábla azon sorait megjelenítése](./media/apache-spark-use-bi-tools/select-limit.png)
 
-3. Az a **fájl** a notebook menüjében kattintson **zárja be és Halt**. Állítsa le a notebook az erőforrások kijelölése. 
+3. A notebook **File** (Fájl) menüjében kattintson a **Close and Halt** (Bezárás és leállítás) elemre. Állítsa le a notebook az erőforrások kijelölése. 
 
 
 
@@ -109,7 +109,7 @@ Az első végzett munka során Spark lépésekre csatlakozzon a fürthöz, a Pow
 
     ![Fürt felhasználónevet és jelszót Spark](./media/apache-spark-use-bi-tools/apache-spark-bi-select-table.png "Spark fürt felhasználónév és jelszó")
 
-    A Power BI Desktop rendelkezik a Spark fürt és az adatok betöltése a való kapcsolódáshoz szükséges adatokat a `hvac` tábla. A táblázat és az oszlopait jelennek meg a **mezők** ablaktáblán.  Tekintse meg a következő képernyőképet.
+    A Power BI Desktop rendelkezik a Spark fürt és az adatok betöltése a való kapcsolódáshoz szükséges adatokat a `hvac` tábla. A táblázat és az oszlopait jelennek meg a **mezők** ablaktáblán.  Tekintse meg az alábbi képernyőfelvételen:
 
 6. Cél hőmérséklet és a tényleges hőmérséklet rendszerbeli minden közötti eltérés megjelenítése: 
 
@@ -212,11 +212,11 @@ A visual rögzítve az irányítópulton – az egyéb látványelemek felvétel
 6. Kattintson a **Munka1** lap bal alsó. Ellenőrizze, hogy a átlagos cél és a tényleges összes épület-hőmérsékletek jelennek meg. minden egyes dátum képi megjelenítés. Húzza **dátum** és **azonosító létrehozása** való **oszlopok** és **tényleges Temp**/**céloz Temp** való **sorok**. A **jelek**, jelölje be **terület** Spark adatábrázolási interaktív terület használandó.
 
      ![Adja hozzá a mezőket a Spark adatábrázolási](./media/apache-spark-use-bi-tools/spark-data-visualization-add-fields.png "Spark adatábrázolási mezők hozzáadása")
-7. Alapértelmezés szerint a hőmérséklet mezők láthatók szerint összesítést. Ha az átlaghőmérséklet inkább megjeleníteni kívánt, megteheti, a legördülő listában az alábbi képernyőfelvételen látható módon.
+7. Alapértelmezés szerint a hőmérséklet mezők láthatók szerint összesítést. Ha az átlaghőmérséklet inkább megjeleníteni kívánt, megteheti, a legördülő listában az alábbi képernyőfelvételen látható módon:
 
     ![Átlagos Spark adatok vizuális megjelenítéshez tartozó hőmérséklet érvénybe](./media/apache-spark-use-bi-tools/spark-data-visualization-average-temperature.png "átlagos Spark adatok vizuális megjelenítéshez tartozó hőmérséklet igénybe")
 
-8. Akkor is super-adhat egy hőmérséklet-leképezést keresztül, a másik cél- és a tényleges hőmérsékletek közötti különbség jobb arculatának eléréséhez. Mozgassa az egeret a alacsonyabb terület térkép sarkába, keretein belül a leíró alakzat kiemelt piros kör látható. A térkép húzza a többi leképezési felső, és az egérrel kiadási, amikor megjelenik a kijelölt piros téglalap alakú.
+8. Akkor is super-adhat egy hőmérséklet-leképezést keresztül, a másik cél- és a tényleges hőmérsékletek közötti különbség jobb arculatának eléréséhez. Mozgassa az egeret a alacsonyabb terület térkép sarkába, amíg megjelenik a kijelölt piros kör leíró alakzat. A térkép húzza a többi leképezési felső, és az egérrel kiadási, amikor megjelenik a kijelölt piros téglalap alakú.
 
     ![A Spark adatábrázolási maps egyesítése](./media/apache-spark-use-bi-tools/spark-data-visualization-merge-maps.png "egyesítési leképezi a Spark adatábrázolási")
 
@@ -225,7 +225,7 @@ A visual rögzítve az irányítópulton – az egyéb látványelemek felvétel
     ![A Spark adatábrázolási tableau kimeneti](./media/apache-spark-use-bi-tools/spark-data-visualization-tableau-output.png "Spark adatábrázolási Tableau kimenete")
 9. Kattintson a **mentése** a munkalap mentéséhez. Irányítópultok létrehozása, és egy vagy több felvétele.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Amennyiben megtudta, hogyan hozzon létre egy fürtöt, hozzon létre a Spark adatkeretek lekérdezni adatokat, és majd érheti el, hogy az adatok Üzletiintelligencia-eszközök. Most már megtekintheti kezelheti a fürt erőforrásait, és egy HDInsight Spark-fürtben futó összes feladatot hibakeresési utasításokat.
 

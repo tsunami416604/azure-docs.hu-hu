@@ -4,7 +4,7 @@ description: "Állítsa be a weblapok felvétele a Traffic Manager valós felhas
 services: traffic-manager
 documentationcenter: traffic-manager
 author: KumudD
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: 
 ms.assetid: 
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 09/19/2017
 ms.author: kumud
 ms.custom: 
-ms.openlocfilehash: ce5d333ad5d339b64d1fc1d081651052f71a8b67
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7f4088cf4470b1f9fa22c4ec83a9f92657032734
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>Valós felhasználói mérések küldése az Azure Traffic Manager weblapjainak használata
 
@@ -61,7 +61,7 @@ Ha beszerezte a RUM kulcsot, a következő lépéssel hoz a másolt JavaScript b
 1.  Egy szövegszerkesztőben nyissa meg a HTML-weblap
 2.  Illessze be a másolt volt az előző lépésben a HTML törzs szakaszába JavaScript-kódot (a másolt kódot sor 8 & 9, lásd a 3. ábra:).
  
-    ![Weblap valós felhasználói mérések Javascript-kód beágyazása](./media/traffic-manager-create-rum-web-pages/rum-javascript-code.png)  
+    ![Weblap valós felhasználói mérések Javascript-kód beágyazása](./media/traffic-manager-create-rum-web-pages/real-user-measurement-embed-script.png)  
 
     **3. ábra: A beágyazott valós felhasználói mérések JavaScript egyszerű HTML**
 
@@ -69,7 +69,7 @@ Ha beszerezte a RUM kulcsot, a következő lépéssel hoz a másolt JavaScript b
 4. Ez a lap megjelenítése egy webböngészőben, amikor legközelebb letölti a hivatkozott JavaScript, és a parancsfájl hajtja végre a mérési és jelentéskészítési műveletek.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - További információ [valós felhasználói mérések](traffic-manager-rum-overview.md)
 - Ismerje meg, [Traffic Manager működése](traffic-manager-overview.md)
 - További információ a [forgalom-útválasztási módszert](traffic-manager-routing-methods.md) Traffic Manager által támogatott

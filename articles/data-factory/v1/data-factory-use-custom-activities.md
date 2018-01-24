@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2017
+ms.date: 01/10/2018
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: c741f995c32bf6fa9ba4e0646573be8cdb67a7c3
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: cfdee4450b0ef88d593d401009a7d7f29c24780b
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -45,7 +45,7 @@ A következő forgatókönyv részletesen bemutatja egy egyéni .NET tevékenys�
 
 ## <a name="walkthrough-create-a-custom-activity"></a>Forgatókönyv: egyéni tevékenység létrehozása
 ### <a name="prerequisites"></a>Előfeltételek
-* A Visual Studio 2012/2013 vagy 2015
+* Visual Studio 2012/2013/2015
 * Az [Azure .NET SDK](https://azure.microsoft.com/downloads/) letöltése és telepítése.
 
 ### <a name="azure-batch-prerequisites"></a>Azure Batch-Előfeltételek
@@ -97,7 +97,7 @@ A metódus négy paramétereket fogadja:
 - **linkedServices**. Ez a tulajdonság egy-egy adattároló kapcsolódó szolgáltatások bemeneti/kimeneti adatkészletek a tevékenység által hivatkozott enumerálható lista.   
 - **adatkészletek**. Ez a tulajdonság egy bemeneti/kimeneti adatkészletek tevékenység enumerálható listája. A helyek és a bemeneti és kimeneti adatkészletek által megadott sémák használhatja ezt a paramétert.
 - **tevékenység**. Ez a tulajdonság adja meg az aktuális tevékenység. Az egyéni tevékenység társított kiterjesztett tulajdonságok eléréséhez használható. Lásd: [további tulajdonságok hozzáférés](#access-extended-properties) részleteiről.
-- **naplózó**. Ez az objektum lehetővé teszi a felhasználó napló a következő feldolgozási sor az adott felület hibakeresési megjegyzések írását.
+- **logger**. Ez az objektum lehetővé teszi a felhasználó napló a következő feldolgozási sor az adott felület hibakeresési megjegyzések írását.
 
 A metódus visszaadja a szótár részére láncolni egyéni tevékenységek együtt a jövőben használható. Ez a funkció még nem használható, így egy üres szótár visszaadásának metódus.  
 
@@ -554,7 +554,7 @@ Ebben a lépésben hoz létre a bemeneti és kimeneti adatok adatkészletek.
 
     Egy kimeneti blob/fájl az egyes bemeneti szeletek jön létre. Ez hogyan kimeneti fájl neve az egyes szeletek. A kimeneti fájlok akkor jönnek létre, egy kimeneti mappában: **adftutorial\customactivityoutput**.
 
-   | Szelet | Kezdés | Kimeneti fájl |
+   | Szelet | Kezdés időpontja | Kimeneti fájl |
    |:--- |:--- |:--- |
    | 1 |2016-11-16T00:00:00 |2016-11-16-00.txt |
    | 2 |2016-11-16T01:00:00 |2016-11-16-01.txt |
@@ -728,7 +728,7 @@ Néhány alapvető technikák áll:
 ## <a name="update-custom-activity"></a>Egyéni tevékenység frissítése
 Ha frissíti a kódot az egyéni tevékenység, összeállítani, és a blob Storage új bináris fájlokat tartalmazó zip-fájl feltöltése.
 
-## <a name="appdomain-isolation"></a>Az alkalmazástartomány elkülönítési
+## <a name="appdomain-isolation"></a>Appdomain isolation
 Lásd: [Cross AppDomain minta](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) , amely bemutatja, hogyan hozzon létre egy egyéni tevékenységet, amely nem korlátozza a Data Factory indítója által használt szerelvény verzióra történő váltás (Példa: windowsazure.Storage kifejezésre v4.3.0, Newtonsoft.Json v6.0.x, stb.).
 
 ## <a name="access-extended-properties"></a>További tulajdonságok hozzáférés

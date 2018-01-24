@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: 46662c15374f781a6527bb1435d883ae060c63f4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c6dba433536e07970ad5ce338e33b5d19f4532b2
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>Mély tanulás és mesterségesintelligencia-keretrendszerek
 A [adatok tudományos virtuális gép](http://aka.ms/dsvm) (DSVM) és a [mély tanulási VM](http://aka.ms/dsvm/deeplearning) mély tanulási keretrendszerek mesterséges intelligencia (AI) alkalmazások a prediktív elemzés érdekében számos támogat, és kognitív képességei többek között a lemezkép és a nyelvi ismertetése. 
@@ -55,8 +55,8 @@ Az alábbiak a tanulási keretrendszerek a DSVM elérhető összes mély.
 | Mi ez?   | A részletes oktatási keretrendszer      |
 | Támogatott DSVM kiadás      | Windows, Linux     |
 | Hogyan van azt konfigurált / a DSVM telepítve?  | Keras telepítve van a Python 2.7-es (_legfelső szintű_), valamint a Python 3.5 (_py35_) környezetben.   |
-| Minták mutató hivatkozások      | https://github.com/fchollet/keras/Tree/Master/Examples      |
-| A DSVM a kapcsolódó eszközök      | Microsoft kognitív eszközkészlet, TensorLlow, Theano      |
+| Minták mutató hivatkozások      | https://github.com/fchollet/keras/tree/master/examples      |
+| A DSVM a kapcsolódó eszközök      | Microsoft kognitív eszközkészlet, TensorFlow, Theano      |
 | Hogyan használja az / futtatni?    | Töltse le a minták a Githubon helyről, másolja azt a könyvtárat ~/notebooks, és nyissa meg a Jupyter   |
 
 
@@ -117,7 +117,7 @@ A terminálon aktiválja a Python kívánt verziót (_legfelső szintű_ vagy _p
 | Támogatott DSVM kiadás      | Linux     |
 | Hogyan van azt konfigurált / a DSVM telepítve?  | A részletes vízjel telepítve van-e `/dsvm/tools/deep_water`.   |
 | Minták mutató hivatkozások      | Minták a mély vízjel kiszolgálón keresztül érhetők el.      |
-| A DSVM a kapcsolódó eszközök      | H2o, készült vízjel      |
+| A DSVM a kapcsolódó eszközök      | H2O, készült vízjel      |
 
 ### <a name="how-to-use--run-it"></a>Hogyan használja az / futtatni?  
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/30/2016
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7436db2943a6b3de6ec53cdaa6692aa05d2f2f69
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 88679e7dd71011f767cbe4de295c284516375d20
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="add-sign-in-to-a-windows-desktop-app"></a>Bejelentkezés a Windows asztali alkalmazások hozzáadása
 Az a v2.0-végponttól adhat gyorsan hozzá támogatja a személyes Microsoft-fiókot is az asztali alkalmazások hitelesítés és a munkahelyi vagy iskolai fiókok.  Emellett lehetővé teszi az alkalmazásnak, hogy biztonságosan tudjon kommunikálni a háttér webes API-t, valamint [a Microsoft Graph](https://graph.microsoft.io) és néhány a [Office 365 egyesített API-k](https://www.msdn.com/office/office365/howto/authenticate-Office-365-APIs-using-v2).
@@ -69,7 +69,7 @@ Az alapelv MSAL mögött, hogy a hozzáférési tokent kell, ha egyszerűen megh
 
 * Az a `TodoListClient` projektben nyissa meg `MainWindow.xaml.cs` , és keresse meg a `OnInitialized(...)` metódust.  Az első lépés az, hogy az alkalmazás inicializálása `PublicClientApplication` -natív alkalmazások képviselő MSAL tartozó elsődleges osztály.  Ez azért, ahol át MSAL kommunikálni az Azure AD, és mondja el, akkor jogkivonatok gyorsítótárazásának kell koordinátáit.
 
-```C#
+```csharp
 protected override async void OnInitialized(EventArgs e)
 {
         base.OnInitialized(e);
@@ -82,7 +82,7 @@ protected override async void OnInitialized(EventArgs e)
 
 * Az alkalmazás indításakor azt szeretnénk, ha a felhasználó már bejelentkezett az alkalmazásba ellenőrizheti, hogy végzi el.  Azonban a bejelentkezési felhasználói felület meghívása még nem szeretnénk - lesz biztosítjuk, kattintson a "Bejelentkezés" ehhez a felhasználó.  A is a `OnInitialized(...)` módszert:
 
-```C#
+```csharp
 // As the app starts, we want to check to see if the user is already signed in.
 // You can do so by trying to get a token from MSAL, using the method
 // AcquireTokenSilent.  This forces MSAL to throw an exception if it cannot
@@ -119,7 +119,7 @@ catch (MsalException ex)
 
 * Ha a felhasználó nem jelentkezett be, és a "Bejelentkezés" gombra kattintva, szeretnénk meghívni egy bejelentkezési felhasználói felület és a felhasználó adja meg a hitelesítő adatokat.  A bejelentkezési gomb kezelő megvalósításához:
 
-```C#
+```csharp
 private async void SignIn(object sender = null, RoutedEventArgs args = null)
 {
         // TODO: Sign the user out if they clicked the "Clear Cache" button
@@ -167,7 +167,7 @@ catch (MsalException ex)
 
 * Ha a felhasználó sikeresen jelentkezik be, MSAL fogadja és gyorsítótárazza a jogkivonatot, és folytathatja a hívás a `GetTodoList()` metódus az vetett bizalmat.  Összes felhasználói feladatok beolvasása marad, hogy alkalmazza a `GetTodoList()` metódust.
 
-```C#
+```csharp
 private async void GetTodoList()
 {
 
@@ -219,7 +219,7 @@ httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("
 
 - When the user is done managing their To-Do List, they may finally sign out of the app by clicking the "Clear Cache" button.
 
-```C#
+```csharp
 private async void SignIn(object sender = null, RoutedEventArgs args = null)
 {
         // If the user clicked the 'clear cache' button,
@@ -248,7 +248,7 @@ Az elkészült mintát (a konfigurációs értékek nélkül) referenciaként [i
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet.git```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ön most már továbbléphet az összetettebb témákra.  Előfordulhat, hogy ki szeretné próbálni:
 
 * [A v2.0-végponttal a TodoListService webes API biztonságossá tétele](active-directory-v2-devquickstarts-dotnet-api.md)

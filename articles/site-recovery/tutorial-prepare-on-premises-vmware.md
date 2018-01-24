@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/01/2017
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 33ec5775a371a04074f07d589d35d1c05bd64d30
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: af09c5602c53be4377ba19e68ff3486bcfefe0ea
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Helyszíni VMware-kiszolgálók előkészítése az Azure-bA katasztrófa utáni helyreállítás
 
@@ -71,7 +71,7 @@ Győződjön meg arról, hogy a VMware Server az alábbi követelményeknek.
 
 **Összetevő** | **Követelmény**
 --- | ---
-**vCenter-kiszolgáló** | vCenter 6.5, 6.0 vagy 5.5
+**vCenter server** | vCenter 6.5, 6.0 vagy 5.5
 **vSphere-gazdagép** | vSphere 6.5, 6.0, 5.5
 
 ## <a name="check-vmware-vm-requirements"></a>VMware virtuális gép követelményeinek ellenőrzéséhez
@@ -88,7 +88,7 @@ Győződjön meg arról, hogy a virtuális gép megfelel-e az Azure-követelmén
 **Megosztott virtuális merevlemez** | Nem támogatott
 **FC-lemez** | Nem támogatott
 **Merevlemez formátuma** | VHD- vagy VHDX.<br/><br/> Bár VHDX jelenleg nem támogatott az Azure-ban, a Site Recovery automatikusan átalakítja VHDX virtuális merevlemezre történő feladatátadást követően Azure-bA. Ha visszaadják feladataikat a helyszíni virtuális gépek továbbra is használhatja a VHDX formátumú.
-**A BitLocker** | Nem támogatott. Tiltsa le a virtuális gépek replikációjának engedélyezése előtt.
+**Bitlocker** | Nem támogatott. Tiltsa le a virtuális gépek replikációjának engedélyezése előtt.
 **Virtuális gép neve** | 1 és 63 karakter közötti.<br/><br/> Kizárólag betűket, számokat és kötőjeleket tartalmazhat. A virtuális gép nevét kell kezdődnie, és betűvel vagy számmal végződhet.
 **Virtuálisgép-típussá** | Az 1 - Linux vagy a Windows<br/><br/>Csak Windows - a 2. generációs
 
@@ -110,9 +110,9 @@ Linux virtuális gépek a feladatátvételt követően SSH használatával csatl
 1. A feladatátvétel előtt a helyi számítógépen ellenőrizze, hogy a Secure Shell szolgáltatás rendszerindításkor automatikus indításra van-e beállítva. Ellenőrizze, hogy a tűzfalszabályok engedélyezik-e az SSH-kapcsolat.
 
 2. A Azure virtuális Gépen a feladatátvételt követően az SSH-port a feladatait átadó virtuális gép hálózati biztonsági csoportszabályok, valamint az Azure-alhálózaton, amelyhez csatlakozik a bejövő kapcsolatok tiltása.
-   [A nyilvános IP-cím hozzáadása](site-recovery-monitoring-and-troubleshooting.md#adding-a-public-ip-on-a-resource-manager-virtual-machine) a virtuális gép számára. Ellenőrizheti a **rendszerindítási diagnosztika** egy Képernyőkép a virtuális Gépet a megtekintéséhez.
+   [A nyilvános IP-cím hozzáadása](site-recovery-monitoring-and-troubleshooting.md) a virtuális gép számára. Ellenőrizheti a **rendszerindítási diagnosztika** egy Képernyőkép a virtuális Gépet a megtekintéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [VMware virtuális gépek Azure-bA vész-helyreállítási beállítása](tutorial-vmware-to-azure.md)

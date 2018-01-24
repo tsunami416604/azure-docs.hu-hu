@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 44691f7c06aede764c3bf0dcc99848a4f22ce08d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a23b3b1084cf6776cee8583891ae3d879183d072
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="add-sign-in-to-an-net-mvc-web-app"></a>Bejelentkezés hozzáadása egy .NET MVC webalkalmazás
 A v2.0-végponttal támogatja a személyes Microsoft-fiókot is a webes alkalmazásokhoz való hitelesítés és a munkahelyi vagy iskolai fiókok gyorsan is hozzáadhat.  Az ASP.NET web apps Ez elvégezhető a .NET-keretrendszer 4.5 része a Microsoft OWIN köztes használatával.
@@ -64,7 +64,7 @@ Itt konfigurálását végezzük el az OWIN közbenső szoftvert az OpenID Conne
 3. Adja hozzá a "OWIN indítási osztály" a projekt neve `Startup.cs` jobb kattintson a projektre--> **Hozzáadás** --> **új elem** --> "OWIN" keresése.  Az OWIN közbenső szoftver meghívja a `Configuration(...)` metódust az alkalmazás indulásakor.
 4. Módosítsa az osztálydeklaráció való `public partial class Startup` -azt korábban már megvalósított Ez az osztály tartozik, egy másik fájlban.  Az a `Configuration(...)` metódus hívása ConfigureAuth(...) hitelesítés a webalkalmazás beállítása legyen  
 
-        ```C#
+        ```csharp
         [assembly: OwinStartup(typeof(Startup))]
         
         namespace TodoList_WebApp
@@ -81,7 +81,7 @@ Itt konfigurálását végezzük el az OWIN közbenső szoftvert az OpenID Conne
 
 5. Nyissa meg a fájlt `App_Start\Startup.Auth.cs` és megvalósítását a `ConfigureAuth(...)` metódust.  Megadja a paraméterek `OpenIdConnectAuthenticationOptions` koordináták az alkalmazás az Azure AD kommunikálni fog szolgálni.  Biztosítani kell a Cookie-hitelesítés beállítása – az OpenID Connect köztes alatt a magában foglalja az cookie-kat használ.
 
-        ```C#
+        ```csharp
         public void ConfigureAuth(IAppBuilder app)
                      {
                              app.SetDefaultSignInAsAuthenticationType(CookieAuthenticationDefaults.AuthenticationType);
@@ -118,7 +118,7 @@ Az alkalmazás megfelelően van konfigurálva az OpenID Connect hitelesítési p
 
 - Használhatja a tartományvezérlőket, hogy a felhasználó bejelentkezik egy bizonyos lap elérése előtt kötelező címkék engedélyezik.  Nyissa meg `Controllers\HomeController.cs`, és adja hozzá a `[Authorize]` címke a jogi tudnivalók megjelenítése Névjegy vezérlőhöz.
         
-        ```C#
+        ```csharp
         [Authorize]
         public ActionResult About()
         {
@@ -127,7 +127,7 @@ Az alkalmazás megfelelően van konfigurálva az OpenID Connect hitelesítési p
 
 - OWIN segítségével közvetlenül kiadni a kód a érkező hitelesítési kéréseket.  Nyissa meg `Controllers\AccountController.cs`.  A SignIn() és SignOut() műveletek adja a challenge OpenID Connect és kijelentkezési kérések ki.
 
-        ```C#
+        ```csharp
         public void SignIn()
         {
             // Send an OpenID Connect sign-in request.
@@ -178,7 +178,7 @@ Az OpenID Connect felhasználók hitelesítésekor a v2.0-végpontra egy id_toke
 
 - Nyissa meg az `Controllers\HomeController.cs` fájlt.  A felhasználói jogcímek, a vezérlők keresztül érheti el a `ClaimsPrincipal.Current` rendszerbiztonsági objektumot.
 
-        ```C#
+        ```csharp
         [Authorize]
         public ActionResult About()
         {
@@ -205,7 +205,7 @@ Az elkészült mintát (a konfigurációs értékek nélkül) referenciaként [i
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet.git```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ön most már továbbléphet az összetettebb témákra.  Előfordulhat, hogy ki szeretné próbálni:
 
 [A Web API-t biztonságossá a a v2.0-végpontra >>](active-directory-devquickstarts-webapi-dotnet.md)

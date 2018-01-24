@@ -3,6 +3,7 @@
 > * [C#/node.js](../articles/iot-hub/iot-hub-csharp-node-twin-getstarted.md)
 > * [C#](../articles/iot-hub/iot-hub-csharp-csharp-twin-getstarted.md)
 > * [Java](../articles/iot-hub/iot-hub-java-java-twin-getstarted.md)
+> * [Python](../articles/iot-hub/iot-hub-python-twin-getstarted.md)
 
 Az ikereszközök JSON-dokumentumok, amelyek az eszközök állapotinformációit (metaadatokat, konfigurációkat és állapotokat) tárolják. Az IoT-központ továbbra is fennáll, egy eszköz iker az egyes eszközök ahhoz csatlakozó ügyfélnél.
 
@@ -14,7 +15,7 @@ Az eszköz twins használja:
 * Az eszköz metaadatait, konfigurációs vagy az állapot lekérdezése.
 
 > [!NOTE]
-> Eszköz twins úgy tervezték, a szinkronizálás és eszköz-konfigurációk és a kikötések lekérdezése. Az eszköz twins használatával további informations található [eszköz twins megértéséhez][lnk-twins].
+> Eszköz twins úgy tervezték, a szinkronizálás és eszköz-konfigurációk és a kikötések lekérdezése. További információ a használati eszköz twins található [eszköz twins megértéséhez][lnk-twins].
 
 Eszköz twins az IoT-központ tárolódnak, és tartalmazza:
 

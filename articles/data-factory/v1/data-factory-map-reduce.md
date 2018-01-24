@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2017
+ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: e5fd49c6b269b5f247440c2bc91680fc77fc296c
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 5961395f5ca4e9a6efb019a77dbdf5db5ff1ee38
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>Az adat-előállító MapReduce programok meghívása
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -119,7 +119,7 @@ Letöltheti a minta használata a HDInsight MapReduce tevékenységet: [Data Fac
 ## <a name="running-the-word-count-program"></a>A Word-Count futtatása
 Ebben a példában az adatcsatorna a térkép vagy csökkentse a szószámot programot futtatja az Azure HDInsight-fürt.   
 
-### <a name="linked-services"></a>Kapcsolódó szolgáltatások
+### <a name="linked-services"></a>Összekapcsolt szolgáltatások
 Először hozzon létre az Azure Storage Azure data factoryval való az Azure HDInsight-fürt által használt csatolásához összekapcsolt szolgáltatás. Ha Ön másolja és illessze be az alábbi kód, ne felejtse el lecserélni **fióknév** és **fiókkulcs** nevű és kulcsát az Azure Storage. 
 
 #### <a name="azure-storage-linked-service"></a>Azure Storage társított szolgáltatás
@@ -187,7 +187,7 @@ Ebben a példában az adatcsatorna csak egy tevékenység, amelynek típusa van:
 |:--- |:--- |
 | type |A típus értékre kell állítani **HDInsightMapReduce**. |
 | Osztálynév |Az osztály neve: **wordcount** |
-| jarfilepath tulajdonságot |Az osztály tartalmazó jar-fájlt elérési útja. Ha Ön másolja és illessze be az alábbi kód, ne feledje módosítani a fürt nevét. |
+| jarFilePath |Az osztály tartalmazó jar-fájlt elérési útja. Ha Ön másolja és illessze be az alábbi kód, ne feledje módosítani a fürt nevét. |
 | jarLinkedService |Az Azure tárolás társított szolgáltatása, amely tartalmazza a jar-fájlra. A társított szolgáltatás a tárolót a HDInsight-fürthöz társított hivatkozik. |
 | Argumentumok |A wordcount program két argumentumot, bemeneti és egy kimeneti vesz igénybe. A bemeneti fájl a davinci.txt fájlt. |
 | frequency/interval |Ezek a tulajdonságok értékeit felel meg a kimeneti adatkészletet. |

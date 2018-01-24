@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2017
+ms.date: 01/16/2018
 ms.author: shengc
-ms.openlocfilehash: 5e54464ceabfe1fea2af80d63e538bea6a0a50a5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7800329e7f56d604c7911d3997fa76a0fac91664
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Adatok átalakítása Azure Data Lake Analytics U-SQL-parancsfájlok futtatásával 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -41,9 +41,9 @@ A következő táblázat ismerteti a JSON-definícióból használt általános 
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
 | **típusa**                 | A type tulajdonságot kell megadni: **AzureDataLakeAnalytics**. | Igen                                      |
 | **Fióknév**          | Az Azure Data Lake Analytics-fiók neve.  | Igen                                      |
-| **datalakeanalyticsuri paraméter** | Az Azure Data Lake Analytics URI.           | Nem                                       |
-| **előfizetés-azonosító**       | Az Azure előfizetés-azonosító                    | Nem (Ha nincs megadva, a data factory-előfizetése szerepel). |
-| **erőforráscsoport-név**    | Azure erőforráscsoport-név                | Nem (Ha nincs megadva, az adat-előállító erőforráscsoport szerepel). |
+| **dataLakeAnalyticsUri** | Az Azure Data Lake Analytics URI.           | Nem                                       |
+| **subscriptionId**       | Azure subscription ID                    | Nem (Ha nincs megadva, a data factory-előfizetése szerepel). |
+| **resourceGroupName**    | Azure erőforráscsoport-név                | Nem (Ha nincs megadva, az adat-előállító erőforráscsoport szerepel). |
 
 ### <a name="service-principal-authentication"></a>Egyszerű szolgáltatásnév hitelesítése
 Az Azure Data Lake Analytics kapcsolódó szolgáltatás egy szolgáltatás egyszerű hitelesítés az Azure Data Lake Analytics szolgáltatáshoz való kapcsolódáshoz szükséges. Szolgáltatás egyszerű hitelesítést használ, egy alkalmazás entitás regisztrálni kell az Azure Active Directory (Azure AD), és a Data Lake Analytics és a Data Lake Store használ hozzáférést engedélyez. Részletes útmutató: [szolgáltatások közötti hitelesítési](../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Jegyezze fel a következő érték, melynek segítségével határozza meg a társított szolgáltatás:
@@ -126,7 +126,7 @@ A következő táblázat ismerteti a neveket és leírásokat erre a tevékenys�
 | scriptPath          | A U-SQL parancsfájlt tartalmazó mappa elérési útja. A fájl neve nem kis-és nagybetűket. | Igen      |
 | scriptLinkedService | Kapcsolódó szolgáltatás, amely a tárolóban, amely tartalmazza az adat-előállító parancsfájl | Igen      |
 | degreeOfParallelism | A feladat futtatásához egyidejűleg használt csomópontok maximális száma. | Nem       |
-| Prioritás            | Azt határozza meg, melyet futtatni kíván szereplő várólistáján szereplő feladatok közül melyeket. Az alacsonyabb a szám, annál magasabb a prioritás. | Nem       |
+| prioritás            | Azt határozza meg, melyet futtatni kíván szereplő várólistáján szereplő feladatok közül melyeket. Az alacsonyabb a szám, annál magasabb a prioritás. | Nem       |
 | paraméterek          | A U-SQL parancsfájl paraméterek          | Nem       |
 | runtimeVersion      | A U-SQL motort használja futásidejű verzióját | Nem       |
 | compilationMode     | <p>Fordítási mód az U-SQL. A következő értékek egyike lehet: **Szemantikus:** csak a szemantikai ellenőrzések és a szükséges megerősítések, képes **teljes:** hajtsa végre a teljes fordítási, beleértve a szintaxis-ellenőrzés, optimalizálás, kódgenerálás, stb., **SingleBox:** hajtsa végre a teljes fordítási SingleBox való a TargetType beállítással. Ez a tulajdonság értékét nem adja meg, ha a kiszolgáló meghatározza a optimális fordítás módja. | Nem |
@@ -187,7 +187,7 @@ Akkor használja helyette a dinamikus paraméterek lehet. Példa:
 
 Ebben az esetben a bemeneti fájlok továbbra is átveszik a /datalake/input mappából, és kimeneti fájlok jönnek létre, a /datalake/output mappában. Fájlnevek nem dinamikus szelet kezdési ideje alapján.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse meg a következő cikkekben talál, amely ismerteti az adatok más módon: 
 
 * [Hive-tevékenység](transform-data-using-hadoop-hive.md)

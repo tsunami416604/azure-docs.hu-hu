@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/23/2017
+ms.date: 01/15/2018
 ms.author: shlo
-ms.openlocfilehash: 197ecff6728a7a2ce78cc6ca2861a10222a6b56b
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.openlocfilehash: cf98bb7fab4942955287e8e211e98b9da59472f6
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="azure-data-factory-faq"></a>Az Azure Data Factory – gyakori kérdések
 Ez a cikk az Azure Data Factory szolgáltatásnak 2 verziójára vonatkozik. Adat-előállító gyakran feltett kérdésekre adott válaszok biztosít.  
@@ -31,7 +31,7 @@ Adat-előállító egy teljes körűen felügyelt, felhőalapú, adat-integráci
 
 Azure Data Factory használatával áthelyezni az adatokat a helyszíni és a felhő között az adatvezérelt munkafolyamatokat hozhat létre adattárolókhoz. Tud feldolgozni, és átalakítási adatok segítségével számítási szolgáltatások, például az Azure HDInsight, az Azure Data Lake Analytics és az SQL Server Integration Services (SSIS) integrációs futásidejű. 
 
-A Data Factory az adatok feldolgozása hajthat végre, vagy egy Azure-alapú felhőalapú szolgáltatás, vagy saját önálló üzemeltetett számítási környezetben, például SSIS, SQL Server vagy Oracle. Miután létrehozott egy folyamatot, amely hajt végre a műveletet, amelyekre szüksége van, úgy, hogy rendszeres időközönként (például óránkénti, napi vagy heti) futtatása, vagy a csővezeték az esemény előfordulása eseményindítót ütemezhető. További információkért lásd: [Bevezetés az Azure Data Factory](introduction.md).
+A Data Factory az adatok feldolgozása hajthat végre, vagy egy Azure-alapú felhőalapú szolgáltatás, vagy saját önálló üzemeltetett számítási környezetben, például SSIS, SQL Server vagy Oracle. Miután létrehozott egy folyamatot, amely hajt végre a műveletet, amelyekre szüksége van, úgy, hogy rendszeres időközönként (például óránkénti, napi vagy heti) futtatása, vagy a csővezeték az esemény előfordulása eseményindítót ütemezhető. További információkért lásd: [Az Azure Data Factory bemutatása](introduction.md).
 
 ## <a name="whats-different-in-version-2"></a>Melyek a 2. verzió újdonságai?
 Az Azure Data Factory 2. verziója az eredeti Azure Data Factory adatáthelyezési és -átalakítási szolgáltatására épül, de a felhőt előnyben részesítő adatintegrációs forgatókönyvek szélesebb készletét használja. Az Azure Data Factory 2-es verzióját a következő szolgáltatásokat biztosítja:
@@ -75,7 +75,7 @@ Ha szeretné a SSIS-munkaterhelések, hozzon létre egy adat-előállító 2-es 
 Ha a tapasztalt felhasználók és programozási felület keres, 2-es biztosít, amelyekkel szerzői, kezelése vagy a kedvenc IDE figyelje az adatcsatornák SDK-k széles skáláját.
 
 - **.NET SDK**: A .NET SDK frissült a 2. verzióban. 
-- **PowerShell**: A PowerShell-parancsmagok frissültek a 2. verzióban. A 2. verzió parancsmagjainak nevében szerepel a *DataFactoryV2* tag. Például *Get-AzureRmDataFactoryV2*. 
+- **PowerShell**: A PowerShell-parancsmagok frissültek a 2. verzióban. A 2. verzió parancsmagjainak nevében szerepel a *DataFactoryV2* tag. For example, *Get-AzureRmDataFactoryV2*. 
 - **Python SDK**: Ez az SDK a 2. verzióban lett bevezetve.
 - **REST API**: A REST API frissült a 2. verzióban.  
 
@@ -93,7 +93,7 @@ Integrációs futásidejű a számítási infrastruktúrától, így különböz
 
 Helyezze át, és az adatok átalakítása szükséges integrációs futásidejű egy vagy több példányát telepítheti. Integrációs futásidejű futtathatja az Azure nyilvános hálózaton vagy a privát hálózaton (a helyszínen, Azure virtuális hálózat vagy Amazon Web Services virtuális magánfelhő [VPC]). 
 
-További információkért lásd: [integrációs futásidejű az Azure Data Factory](concepts-integration-runtime.md).
+További információkért lásd: [Integrációs modul az Azure Data Factoryban](concepts-integration-runtime.md).
 
 ## <a name="what-is-the-limit-on-the-number-of-integration-runtimes"></a>Mi az az integráció futtatókörnyezetek egyike számára vonatkozó korlátozást?
 Nincs adat-előállítóban lehet integrációs futásidejű példányainak száma nem rögzített korlátját. Van, azonban a virtuális gép mag, az integrációs futásidejű SSIS-csomag végrehajtását előfizetésenként is használhat a számára vonatkozó korlátozást. További információkért lásd: [korlátozza a Data Factory](../azure-subscription-service-limits.md#data-factory-limits).
@@ -176,7 +176,7 @@ Igen. Tevékenységek a 2-es verzióját is láncolt anélkül, hogy az adatkés
 Igen, az összes 1-es verziójú tevékenység támogatottak a 2-es verzióját.
 
 ### <a name="how-can-i-schedule-a-version-2-pipeline"></a>2. verziójú adatcsatorna ütemezése? 
-Az ütemező eseményindító használhatja egy 2. verziójú folyamat ütemezéséhez. Az eseményindító üzenőfal-órája naptár ütemezés használ, és használhatja folyamatok ütemezése, rendszeres időközönként vagy ismétlődő minták naptár-alapú (például hetente a következő 18: 00 hétfőjén és csütörtöki napokon 9 du.) használatával. További információkért lásd: [csővezeték-végrehajtási és eseményindítók](concepts-pipeline-execution-triggers.md).
+Az ütemező eseményindító használhatja egy 2. verziójú folyamat ütemezéséhez. Az eseményindító üzenőfal-órája naptár ütemezés használ, és használhatja folyamatok ütemezése, rendszeres időközönként vagy ismétlődő minták naptár-alapú (például hetente a következő 18: 00 hétfőjén és csütörtöki napokon 9 du.) használatával. További információ: [Folyamat-végrehajtás és eseményindítók](concepts-pipeline-execution-triggers.md).
 
 ### <a name="can-i-pass-parameters-to-a-pipeline-run-in-version-2"></a>Is paraméter is át egy adatcsatornának, futtassa a 2-es verzióját?
 Igen, a 2-es verzió kiváló, legfelső szintű elvét támogatottak. Az adatcsatorna szintjén paraméterek megadása, és adja át argumentumok futtatása a feldolgozási sor az igény szerinti vagy eseményindító használatával futtassa.  
@@ -196,7 +196,7 @@ Használhatja a `@coalesce` szabályosan kezelni a null érték kifejezésében 
 ### <a name="can-i-use-retry-and-timeout-at-the-activity-level-in-version-2"></a>Használhatok újrapróbálkozási és időtúllépés 2-es verzióját tevékenység szinten?
 Igen. Annak a szabályozására tevékenységek a 2-es verziójú, mint 1-es verziójával, és is konfigurálhatja újra időtúllépés tevékenység szinten. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A 2-es verzióját tartalmazó data factory létrehozása lépésenkénti útmutatójáért tekintse meg az alábbi oktatóanyagok:
 
 - [Gyors üzembe helyezés: Tartalmazó data factory létrehozása](quickstart-create-data-factory-dot-net.md)

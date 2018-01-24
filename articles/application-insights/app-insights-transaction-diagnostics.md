@@ -12,15 +12,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: sdash
-ms.openlocfilehash: da945257a7a2548fe68498e5c908bd5487dad782
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: b090699cf90c74af8480b811901b6e3078b007b3
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/23/2018
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>Egyesített kereszt-összetevő tranzakció diagnosztika
 
-*Ez a felület jelenleg előzetes verzióban érhetők, és lecseréli a meglévő kiszolgálóoldali diagnosztika paneleket.*
+*Ez a felület jelenleg előzetes verzióban érhetők, és lecseréli a meglévő diagnosztikai paneleken a kiszolgálóoldali kéréseket, függőségeit és a kivételeket.*
 
 Az előzetes egy új, egyesített diagnosztika kezelőfelülettel automatikusan hibához kiszolgálóoldali telemetriai az összes figyelt Application Insights összetevő egyetlen nézetben. Nem számít, ha több erőforrást külön instrumentation kulcsokkal; Az Application Insights az alapul szolgáló kapcsolatot észlel, és lehetővé teszi a könnyen diagnosztizálhatja az alkalmazás-összetevő, a függőségekkel vagy az egy tranzakció lassulást vagy sikertelenségét okozó kivétel.
 
@@ -49,7 +49,7 @@ Ez a nézet három részből kulcs: kereszt-összetevő tranzakció diagram, egy
 
 ![Legfontosabb elemei](media/app-insights-e2eTxn-diagnostics/3partsCrossComponent.png)
 
-### <a name="cross-component-transaction-chart"></a>Kereszt-összetevő tranzakció diagram
+### <a name="1-cross-component-transaction-chart"></a>[1] kereszt-összetevő tranzakció diagram
 
 Ez a diagram vízszintes sávokkal ütemterv biztosít kérések és a függőségek időtartama összetevői között. Az idősor szintén inaktívra összegyűjtött kivételek.
 
@@ -57,18 +57,18 @@ Ez a diagram vízszintes sávokkal ütemterv biztosít kérések és a függős�
 * Bármely külső függőségek hívásainak rendelkező függőségi típusát jelző ikonok egyszerű nem összecsukható sor.
 * Egyéb összetevők hívásainak összecsukható sorok. Minden egyes sorára felel meg az összetevő a meghívott adott művelethez.
 * Alapértelmezés szerint a kérelmet, a függőségekkel vagy a kivétellel, hogy kezdetben kiválasztott jelenik meg a diagramot.
-* Válassza ki a részletek megtekintéséhez kattintson a jobb összes sort. A Profilkészítő ikon a kérelem-sor vagy a hibakeresési pillanatkép ikon egy kivétel sorában kattint a megfelelő részletei ablaktábla megnyitása.
+* Válassza ki a részletek megtekintéséhez kattintson a jobb összes sort. Kattintson a "Megnyitás szolgáltatásprofil-elemzői adat" vagy "Megnyitás hibakeresési snapshot" kód szintű diagnosztikai megfelelő részletek ablaktáblán.
 
 > [!NOTE]
-Egyéb összetevők hívásainak két sort rendelkezik: egy sor jelenti a kimenő hívás (függőség) a hívó összetevő, és a többi sor felel meg a bejövő kérelem, a hívott összetevő. Az utóbbi segítségével különböztetheti localhost nevezik. A jobb felső sarokban visszajelzés csatorna segítségével tudassa velünk, milyen úgy érzi, hogy a frissített bemutató kapcsolatban.
+Egyéb összetevők hívásainak két sort rendelkezik: egy sor jelenti a kimenő hívás (függőség) a hívó összetevő, és a többi sor felel meg a bejövő kérelem, a hívott összetevő. A kezdő Ikonos, mind a duration sávok különböző stílusbeállításokat segítségével különböztetheti meg őket.
 
-### <a name="time-sequenced-telemetry-of-the-selected-component-operation"></a>A kiválasztott összetevő művelet idő előkészített telemetria
+### <a name="2-time-sequenced-telemetry-of-the-selected-component-operation"></a>[2] a kiválasztott összetevő művelet idő-előkészített telemetria
 
 A kereszt-összetevő tranzakció diagram kijelölt minden sor egy adott összetevő a meghívott művelet kapcsolódik. A kiválasztott összetevő művelet címe alján megjelenik. Nyissa meg az ebben a szakaszban tekintheti meg, hogy adott művelethez kapcsolódó összes telemetriai adat strukturálatlan idő sorozata. Minden telemetriai elem ebben a listában a hozzá tartozó részletek megjelenítéséhez kattintson a jobb választhat.
 
 ![Idő sorozatát összes telemetriai adat](media/app-insights-e2eTxn-diagnostics/allTelemetryDrawerOpened.png)
 
-### <a name="details-pane"></a>Jobb oldali ablaktáblában
+### <a name="3-details-pane"></a>[3] részletei ablaktábla
 
 Ezen az ablaktáblán látható a bal oldali vagy a két szakasz a kiválasztott elemek részletei. "Minden látszik" felsorolja az összes összegyűjtött szabványos attribútumait. Egyéni attribútumokat külön-külön az alábbiak a szabványos készletét.
 
@@ -88,7 +88,7 @@ Lehetséges okok:
 
 * A többi összetevő az Application insights szolgáltatással vannak tagolva?
 * Akkor használja a legújabb stabil Application Insights SDK?
-* Ha ezeket az összetevőket külön Application Insights-erőforrások, rendelkezik megfelelő hozzáféréssel őket?
+* Ha ezeket az összetevőket külön Application Insights-erőforrások, rendelkezik megfelelő hozzáféréssel a telemetriai adatokat?
 
 Ha Ön rendelkezik hozzáféréssel, és az összetevők és a legújabb Application Insights SDK-k vannak tagolva, ossza meg velünk a jobb felső visszajelzés csatornán keresztül.
 
@@ -100,7 +100,7 @@ Igen. Az új felület a szolgáltatás minden kapcsolódó kiszolgálóoldali te
 
 *A függőségek ismétlődő sorok láthatók. Ez várható?*
 
-Ilyenkor azt láthatók a kimenő függőségi hívás a bejövő kérelem elkülönül. Általában a két hívások hely csak a duration érték miatt a hálózati különböző üzenetváltási azonos. Megkülönböztetését érdekében az összetevőt, a "localhost" kiszolgáló ikonnal kérelem fogadása hívjuk. A sor azonnal követi a függőségi sor. Az adatok a bemutató egyértelmű? Küldje el visszajelzését!
+Ilyenkor azt láthatók a kimenő függőségi hívás a bejövő kérelem elkülönül. Általában a két hívások hely csak a duration érték miatt a hálózati különböző üzenetváltási azonos. A kezdő Ikonos, mind a duration sávok különböző stílusbeállításokat segítségével különböztetheti meg őket. Az adatok a bemutató egyértelmű? Küldje el visszajelzését!
 
 *Mi a helyzet óra között különböző összetevő példányok megdönti?*
 

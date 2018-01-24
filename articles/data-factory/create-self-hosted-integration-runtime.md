@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 2c7df5c0a976aae8e3e0b99b083bbde942493bfa
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: 92f773d3bbabe763d342366f0d56a77621829487
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Hozzon létre, és Self-hosted integrációs futásidejű konfigurálása
 Az integrációs futásidejű (IR) a számítási infrastruktúrától által használt Azure Data Factory adatok integrációs funkciók különböző hálózati környezetek között. Infravörös kapcsolatos részletekért lásd: [integrációs futásidejű áttekintése](concepts-integration-runtime.md).
@@ -139,9 +139,9 @@ A **vállalati tűzfal** szint kell konfigurálnia a következő tartományokkal
 
 Tartománynevek | Portok | Leírás
 ------------ | ----- | ------------
-*. servicebus.windows.net | 443, 80 | Az adatátviteli szolgáltatás háttér-kommunikációhoz használt
-*. core.windows.net | 443 | Használt előkészített másolása Azure Blob használatával (Ha be van állítva)
-*. frontend.clouddatahub.net | 443 | Az adatátviteli szolgáltatás háttér-kommunikációhoz használt
+*.servicebus.windows.net | 443, 80 | Az adatátviteli szolgáltatás háttér-kommunikációhoz használt
+*.core.windows.net | 443 | Használt előkészített másolása Azure Blob használatával (Ha be van állítva)
+*.frontend.clouddatahub.net | 443 | Az adatátviteli szolgáltatás háttér-kommunikációhoz használt
 
 A **Windows tűzfal** szintet (számítógép), a kimenő portok általában engedélyezve vannak. Ha nem, a tartományok és ennek megfelelően a önállóan üzemel portok konfigurálhatók integrációs futásidejű gép.
 

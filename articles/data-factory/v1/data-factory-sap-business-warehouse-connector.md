@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2017
+ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6bbae79e59a200897f465e1381fea57a7ecde3f1
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: b81dc9f13533eaeec56625ede0e4c534b83e7cf7
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Helyezze át az adatokat az SAP Business Warehouse Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -43,7 +43,7 @@ Ahhoz, hogy a kapcsolat az SAP BW-példányra, a következő összetevők telep�
 > [!TIP]
 > Helyezze a NetWeaver RFC SDK kinyert a system32 mappába a dll-fájl.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 A másolási tevékenység, mely az adatok egy helyszíni Cassandra adattároló különböző eszközök/API-k használatával létrehozhat egy folyamatot. 
 
 - Hozzon létre egy folyamatot a legegyszerűbb módja használatára a **másolása varázsló**. Lásd: [oktatóanyag: hozzon létre egy folyamatot, másolása varázslóval](data-factory-copy-data-wizard-tutorial.md) létrehozásával egy folyamatot, az adatok másolása varázsló segítségével gyorsan útmutatást. 
@@ -64,13 +64,13 @@ A következő táblázat a JSON-elemek szerepelnek SAP Business Warehouse (BW) k
 
 Tulajdonság | Leírás | Megengedett értékek | Szükséges
 -------- | ----------- | -------------- | --------
-kiszolgáló | A kiszolgálóra az SAP BW-példány neve. | Karakterlánc | Igen
+kiszolgáló | A kiszolgálóra az SAP BW-példány neve. | karakterlánc | Igen
 systemNumber | Az SAP BW rendszer rendszer száma. | Kétjegyű tizedes tört karakterláncból. | Igen
 clientId | Az ügyfél számára a SAP W rendszer ügyfél-azonosítója. | Három számjegyből tizedes tört karakterláncból. | Igen
-felhasználónév | Az SAP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó neve | Karakterlánc | Igen
-jelszó | A felhasználó jelszavát. | Karakterlánc | Igen
-gatewayName | Az átjáró, amely a Data Factory szolgáltatásnak csatlakoznia a helyszíni SAP BW-példányra neve. | Karakterlánc | Igen
-encryptedCredential | A titkosított hitelesítő adatokban karakterlánc. | Karakterlánc | Nem
+felhasználónév | Az SAP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó neve | karakterlánc | Igen
+jelszó | A felhasználó jelszavát. | karakterlánc | Igen
+gatewayName | Az átjáró, amely a Data Factory szolgáltatásnak csatlakoznia a helyszíni SAP BW-példányra neve. | karakterlánc | Igen
+encryptedCredential | A titkosított hitelesítő adatokban karakterlánc. | karakterlánc | Nem
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 Szakaszok & meghatározása adatkészletek esetében elérhető tulajdonságok teljes listáját lásd: a [adatkészletek létrehozása](data-factory-create-datasets.md) cikk. Például struktúra, a rendelkezésre állás és a házirend a DataSet adatkészlet JSON hasonlítanak minden adatkészlet esetében (Azure SQL, az Azure blob, Azure-tábla, stb.).
@@ -291,24 +291,24 @@ Ha adatok áthelyezése az SAP BW Programhoz, a következő megfeleltetéseket h
 
 A ABAP szótár típusú adatok | .NET-adattípus
 -------------------------------- | --------------
-ACCP |  int
+ACCP |  Int
 KARAKTER | Karakterlánc
 CLNT | Karakterlánc
-PÉNZNEM | Decimális
+CURR | Decimális
 CUKY | Karakterlánc
 DEC | Decimális
 FLTP | Dupla
 INT1 | Bájt
 INT2 | Int16
-INT4 | int
+INT4 | Int
 LANG | Karakterlánc
 LCHR | Karakterlánc
 LRAW | Byte]
 PREC | Int16
 QUAN | Decimális
-NYERS | Byte]
+RAW | Byte]
 RAWSTRING | Byte]
-KARAKTERLÁNC | Karakterlánc
+STRING | Karakterlánc
 EGYSÉG | Karakterlánc
 DATS | Karakterlánc
 NUMC | Karakterlánc

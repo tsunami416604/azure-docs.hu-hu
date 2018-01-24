@@ -3,7 +3,7 @@ title: "MySQL-adatbázisok használata Azure veremben PaaS |} Microsoft Docs"
 description: "Megtudhatja, hogyan telepítheti a MySQL erőforrás-szolgáltató, és adja meg a MySQL-adatbázisok Azure veremben szolgáltatásként"
 services: azure-stack
 documentationCenter: 
-author: JeffGoldner
+author: mattbriggs
 manager: bradleyb
 editor: 
 ms.service: azure-stack
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
-ms.author: JeffGo
-ms.openlocfilehash: d0394fd1edf21cdbb863a88a1d3ecef118a7d886
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.author: mabrigg
+ms.openlocfilehash: 97344009ffb42d99824d053652594546f9f53374
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>A Microsoft Azure verem használható MySQL-adatbázisok
 
@@ -69,7 +69,7 @@ A system fiók következő jogosultságokkal kell rendelkeznie:
     >[!NOTE] 
     > Az erőforrás-szolgáltató build Azure verem buildek felel meg. Le kell töltenie a megfelelő bináris futtató Azure verem verziójának.
 
-    | Az Azure verem Build | MySQL RP-telepítő |
+    | Azure Stack Build | MySQL RP-telepítő |
     | --- | --- |
     | 1.0.180102.3 vagy 1.0.180106.1 (több csomópontos) | [MySQL RP 1.1.14.0 verziója](https://aka.ms/azurestackmysqlrp1712) |
     | 1.0.171122.1 | [MySQL RP 1.1.12.0 verziója](https://aka.ms/azurestackmysqlrp1711) |
@@ -90,7 +90,7 @@ A system fiók következő jogosultságokkal kell rendelkeznie:
 
 6. [Telepítse az Azure PowerShell verziója 1.2.11](azure-stack-powershell-install.md).
 
-7. Futtassa a DeploySqlProvider.ps1 parancsfájlt.
+7. Futtassa az `DeployMySqlProvider.ps1` szkriptet.
 
 A parancsfájl ezeket a lépéseket hajtja végre:
 
@@ -155,22 +155,22 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
  ```
 
 
-### <a name="deploysqlproviderps1-parameters"></a>DeploySqlProvider.ps1 paraméterek
+### <a name="deploymysqlproviderps1-parameters"></a>DeployMySqlProvider.ps1 paraméterek
 Ezeket a paramétereket is megadhat a parancssorban. Ha nem, vagy bármely paraméter-ellenőrzés sikertelen, a rendszer kéri a adja meg a szükséges néhányat a meglévők közül.
 
 | Paraméter neve | Leírás | Megjegyzés vagy az alapértelmezett érték |
 | --- | --- | --- |
-| **CloudAdminCredential** | A felhő rendszergazdájával, a Privleged végpont eléréséhez szükséges hitelesítő adatait. | _szükséges_ |
-| **AzCredential** | Adja meg a Azure verem szolgáltatás-rendszergazdai fiók hitelesítő adatait. Használja ugyanazokat a hitelesítő adatokat telepítése Azure verem használható). | _szükséges_ |
-| **VMLocalCredential** | Adja meg a MySQL erőforrás-szolgáltató VM a helyi rendszergazdai fiók hitelesítő adatait. | _szükséges_ |
-| **PrivilegedEndpoint** | Adja meg az IP-cím vagy a DNS-neve, a kiemelt végpont. |  _szükséges_ |
+| **CloudAdminCredential** | A felhő rendszergazdájával, a kiemelt végpont eléréséhez szükséges hitelesítő adatait. | _required_ |
+| **AzCredential** | Adja meg a Azure verem szolgáltatás-rendszergazdai fiók hitelesítő adatait. Használja ugyanazokat a hitelesítő adatokat telepítése Azure verem használható). | _required_ |
+| **VMLocalCredential** | Adja meg a MySQL erőforrás-szolgáltató VM a helyi rendszergazdai fiók hitelesítő adatait. | _required_ |
+| **PrivilegedEndpoint** | Adja meg az IP-cím vagy a DNS-neve, a kiemelt végpont. |  _required_ |
 | **DependencyFilesLocalPath** | Egy helyi megosztással tartalmazó elérési [mysql-összekötő-net-6.10.5.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.10.5.msi). Ha megad egy, a tanúsítványfájlt a könyvtárban kell elhelyezni. | _nem kötelező_ (_kötelező_ több csomópont) |
-| **DefaultSSLCertificatePassword** | A .pfx tanúsítvány jelszava | _szükséges_ |
+| **DefaultSSLCertificatePassword** | A .pfx tanúsítvány jelszava | _required_ |
 | **MaxRetryCount** | Adja meg, majd ismételje meg minden egyes művelet, ha azt szeretné, hogy hány alkalommal hibát.| 2 |
 | **RetryDuration** | Adja meg az időtúllépés másodpercben az újrapróbálkozások között. | 120 |
 | **Eltávolítás** | Távolítsa el az erőforrás-szolgáltató és minden kapcsolódó erőforrások (lásd az alábbi megjegyzéseket:) | Nem |
 | **DebugMode** | Megakadályozza az automatikus tisztítás hiba esetén | Nem |
-| **AcceptLicense** | Fogadja el a GPL licenc (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) adatait kérő felület kihagyja | |
+| **AcceptLicense** | Skips the prompt to accept the GPL License  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) | |
 
 
 Attól függően, hogy a rendszer teljesítményét és a letöltési sebessége, telepítési akár 20 percig vagy hosszú szerint több óráig is eltarthat. Ha nem érhető el a MySQLAdapter panelt, frissítse a felügyeleti portálon.
@@ -200,7 +200,7 @@ Attól függően, hogy a rendszer teljesítményét és a letöltési sebessége
 
     A **MySQL üzemeltető kiszolgálók** panel, ahol csatlakozhat a MySQL Server erőforrás-szolgáltató MySQL kiszolgáló tényleges példányai az erőforrás-szolgáltató háttér szolgál.
 
-    ![Üzemeltetési kiszolgáló](./media/azure-stack-mysql-rp-deploy/mysql-add-hosting-server-2.png)
+    ![Hosting Servers](./media/azure-stack-mysql-rp-deploy/mysql-add-hosting-server-2.png)
 
 3. Az űrlap kitöltése a MySQL Server-példány a kapcsolat adatai. Adja meg a teljesen minősített tartománynevét (FQDN) vagy egy érvényes IPv4-címet, és nem a rövid virtuális gép nevét. A telepítés nem egy alapértelmezett MySQL példányt biztosít. A megadott méret segít az erőforrás-szolgáltató az adatbázis-kapacitás kezelése. A fizikai kapacitás az adatbázis-kiszolgáló közel kell lennie.
 
@@ -315,22 +315,22 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
   -AcceptLicense
  ```
 
-### <a name="updatemysqlproviderps1-parameters"></a>UpdateMySQLProvider.ps1 paraméterek
+### <a name="updatemysqlproviderps1-parameters"></a>UpdateMySQLProvider.ps1 parameters
 Ezeket a paramétereket is megadhat a parancssorban. Ha nem, vagy bármely paraméter-ellenőrzés sikertelen, a rendszer kéri a adja meg a szükséges néhányat a meglévők közül.
 
 | Paraméter neve | Leírás | Megjegyzés vagy az alapértelmezett érték |
 | --- | --- | --- |
-| **CloudAdminCredential** | A felhő rendszergazdájával, a kiemelt végpont eléréséhez szükséges hitelesítő adatait. | _szükséges_ |
-| **AzCredential** | Adja meg a Azure verem szolgáltatás-rendszergazdai fiók hitelesítő adatait. Használja ugyanazokat a hitelesítő adatokat telepítése Azure verem használható). | _szükséges_ |
-| **VMLocalCredential** | Adja meg az SQL erőforrás-szolgáltató VM a helyi rendszergazdai fiók hitelesítő adatait. | _szükséges_ |
-| **PrivilegedEndpoint** | Adja meg az IP-cím vagy a Privleged végpont DNS-nevét. |  _szükséges_ |
+| **CloudAdminCredential** | A felhő rendszergazdájával, a kiemelt végpont eléréséhez szükséges hitelesítő adatait. | _required_ |
+| **AzCredential** | Adja meg a Azure verem szolgáltatás-rendszergazdai fiók hitelesítő adatait. Használja ugyanazokat a hitelesítő adatokat telepítése Azure verem használható). | _required_ |
+| **VMLocalCredential** | Adja meg az SQL erőforrás-szolgáltató VM a helyi rendszergazdai fiók hitelesítő adatait. | _required_ |
+| **PrivilegedEndpoint** | Adja meg az IP-cím vagy a DNS-neve, a kiemelt végpont. |  _required_ |
 | **DependencyFilesLocalPath** | A PFX-fájl a könyvtárban kell elhelyezni. | _nem kötelező_ (_kötelező_ több csomópont) |
-| **DefaultSSLCertificatePassword** | A .pfx tanúsítvány jelszava | _szükséges_ |
+| **DefaultSSLCertificatePassword** | A .pfx tanúsítvány jelszava | _required_ |
 | **MaxRetryCount** | Adja meg, majd ismételje meg minden egyes művelet, ha azt szeretné, hogy hány alkalommal hibát.| 2 |
 | **RetryDuration** | Adja meg az időtúllépés másodpercben az újrapróbálkozások között. | 120 |
 | **Eltávolítás** | Távolítsa el az erőforrás-szolgáltató és minden kapcsolódó erőforrások (lásd az alábbi megjegyzéseket:) | Nem |
 | **DebugMode** | Megakadályozza az automatikus tisztítás hiba esetén | Nem |
-| **AcceptLicense** | Fogadja el a GPL licenc (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) adatait kérő felület kihagyja | |
+| **AcceptLicense** | Skips the prompt to accept the GPL License  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) | |
 
 ## <a name="remove-the-mysql-resource-provider-adapter"></a>A MySQL-erőforrás-szolgáltató Adapter eltávolítása
 

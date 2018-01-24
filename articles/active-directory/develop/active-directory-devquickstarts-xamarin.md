@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: e3d0a07323189599cb86dd2bf1347c2107efa842
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: 94a7d35115420d455fe94e1173abf76622172f6f
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-ad-xamarin-getting-started"></a>Ismerkedés az Azure AD Xamarin
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -98,7 +98,7 @@ Szinte teljes egészében az alkalmazás hitelesítési logikát létrejönnie `
 
 1. Nyissa meg a DirectorySearcher.cs, és adja hozzá az új paramétere a `SearchByAlias(...)` metódust. `IPlatformParameters`az a környezetfüggő paraméter, amely magában foglalja a platform-specifikus objektumok, amelyek a hitelesítés végrehajtásához szükséges adal-t.
 
-    ```C#
+    ```csharp
     public static async Task<List<User>> SearchByAlias(string alias, IPlatformParameters parent)
     {
     ```
@@ -107,7 +107,7 @@ Szinte teljes egészében az alkalmazás hitelesítési logikát létrejönnie `
 Ez a művelet továbbítja az adal-t az Azure AD-val kommunikációhoz szükséges koordinátái.
 3. Hívás `AcquireTokenAsync(...)`, amely elfogadja a `IPlatformParameters` objektumra, és hívja meg a hitelesítési folyamat szükséges a jogkivonat az alkalmazáshoz való visszatérésre.
 
-    ```C#
+    ```csharp
     ...
         AuthenticationResult authResult = null;
         try
@@ -126,7 +126,7 @@ Ez a művelet továbbítja az adal-t az Azure AD-val kommunikációhoz szükség
     `AcquireTokenAsync(...)`először próbálja elküldeni a kért erőforrás (az ebben az esetben Graph API) jogkivonatot arra kéri a felhasználóktól a hitelesítő adataikat (keresztül gyorsítótárazását, vagy frissíteni a régi jogkivonatok) nélkül. Szükség esetén ez mutatja felhasználók az Azure AD bejelentkezési oldal a kért token beszerzése előtt.
 4. A hozzáférési jogkivonat csatolása a Graph API-kérelem a a **engedélyezési** fejléc:
 
-    ```C#
+    ```csharp
     ...
         request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authResult.AccessToken);
     ...
@@ -137,12 +137,12 @@ Ez minden, az a `DirectorySearcher` PCL és az alkalmazás csomagazonosítóját
 ### <a name="android"></a>Android
 1. A MainActivity.cs, adjon hozzá egy `SearchByAlias(...)` kezelő kattintson a gombra:
 
-    ```C#
+    ```csharp
     List<User> results = await DirectorySearcher.SearchByAlias(searchTermText.Text, new PlatformParameters(this));
     ```
 2. Bírálja felül a `OnActivityResult` továbbítani a hitelesítés életciklusa metódus átirányítja a felhasználókat vissza a megfelelő módszert. Adal-t egy segédmetódust nyújt az Android:
 
-    ```C#
+    ```csharp
     ...
     protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
     {
@@ -155,7 +155,7 @@ Ez minden, az a `DirectorySearcher` PCL és az alkalmazás csomagazonosítóját
 ### <a name="windows-desktop"></a>Windows asztali
 A MainWindow.xaml.cs, hívás `SearchByAlias(...)` úgy, hogy egy `WindowInteropHelper` az asztalon `PlatformParameters` objektum:
 
-```C#
+```csharp
 List<User> results = await DirectorySearcher.SearchByAlias(
   SearchTermText.Text,
   new PlatformParameters(PromptBehavior.Auto, this.Handle));
@@ -164,7 +164,7 @@ List<User> results = await DirectorySearcher.SearchByAlias(
 #### <a name="ios"></a>iOS
 A DirSearchClient_iOSViewController.cs, az iOS `PlatformParameters` objektum veszi a nézetvezérlő hivatkozik:
 
-```C#
+```csharp
 List<User> results = await DirectorySearcher.SearchByAlias(
   SearchTermText.Text,
   new PlatformParameters(PromptBehavior.Auto, this.Handle));
@@ -173,7 +173,7 @@ List<User> results = await DirectorySearcher.SearchByAlias(
 ### <a name="windows-universal"></a>Windows Universal
 Az univerzális Windows-, nyissa meg a MainPage.xaml.cs, és megvalósításához a `Search` metódust. Ez a módszer egy segédmetódust megosztott projektben frissíteni a felhasználói felület szükség esetén használja.
 
-```C#
+```csharp
 ...
 List<User> results = await DirectorySearcherLib.DirectorySearcher.SearchByAlias(SearchTermText.Text, new PlatformParameters(PromptBehavior.Auto, false));
 ...

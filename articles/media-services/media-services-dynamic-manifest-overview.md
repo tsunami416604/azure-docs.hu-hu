@@ -12,18 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 01/22/2018
 ms.author: cenkd;juliako
-ms.openlocfilehash: 5512be8ce5b9cf28bceb3468ec6032c0778156f4
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: d3c7cfad5ce9b25c88aa11b53194b6e06b1cc034
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="filters-and-dynamic-manifests"></a>Szűrők és dinamikus jegyzékfájlokban
 2.17 kiadástól kezdve a Media Services lehetővé teszi az eszközök szűrőit. Ezek a szűrők, amelyek lehetővé teszik az ügyfelek akkor megteheti, többek között a kiszolgáló oldalán szabályok: lejátszás videó (és nem a teljes videó lejátszása) részt vagy a hang- és interpretációk, amelyet a felhasználói eszköz kezelni tud (és nem minden a interpretációk társított adategységet) csak egy részét. Ez a szűrés a eszközök archivált keresztül **dinamikus Manifest**khoz, az ügyfél kérésre videó adatfolyam jönnek létre a megadott szűrő alapján.
 
-A témakörök ismerteti a gyakori forgatókönyvek, amelyben szűrők segítségével nagyon hasznos a felhasználók és a hivatkozások témakörökre mutatnak, amelyek bemutatják, hogyan lehet programozott módon-szűrők létrehozásához lenne (jelenleg hozhatja létre szűrők REST API-kat csak).
+A témakörök ismerteti a gyakori forgatókönyvek, amelyben szűrők segítségével nagyon hasznos a felhasználók és a hivatkozások témakörökre mutatnak, amelyek bemutatják, hogyan lehet programozott módon-szűrők létrehozásához lenne.
 
 ## <a name="overview"></a>Áttekintés
 Ha az ügyfelek (streaming élő eseményeket vagy video-on-demand) történő célja, hogy a videók kiváló minőségben biztosításához a különböző hálózati körülmények különböző eszközökre. Eléréséhez a cél tegye a következőket:

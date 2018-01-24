@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: genli
-ms.openlocfilehash: f5fe877a46586af63c0991e3c3fbb8d42f69736c
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 96a1705d651b9a2d17a466b9c43721bec7b4972c
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Hibáinak elhárítása: Egy Azure-webhelyek VPN-kapcsolatot nem lehet kapcsolódni, és nem működik
 
@@ -87,7 +87,7 @@ Ellenőrizze a felhasználó által definiált útválasztási (UDR) vagy a hál
 
 ### <a name="step-6-verify-that-the-subnets-match-exactly-azure-policy-based-gateways"></a>6. lépés Győződjön meg arról, hogy az alhálózatok pontosan megegyezik-e (az Azure csoportházirend-alapú átjárók)
 
--   Ellenőrizze, hogy megfelel-e az alhálózatok pontosan Azure-beli virtuális hálózat és a helyszíni definíciókat az Azure virtuális hálózat között.
+-   Ellenőrizze, hogy megfelel-e a virtuális hálózati cím tárolóhelyeit pontosan Azure-beli virtuális hálózat és a helyszíni definíciók között.
 -   Ellenőrizze, hogy az alhálózatok közötti pontosan egyezik-e a **helyi hálózati átjáró** és a helyszíni a helyszíni hálózat definíciói.
 
 ### <a name="step-7-verify-the-azure-gateway-health-probe"></a>7. lépés Az Azure átjáró állapotmintáihoz ellenőrzése

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2017
+ms.date: 01/23/2018
 ms.author: magoedte
-ms.openlocfilehash: e917b64c32c2f99c9a8b0397e70a32b2dbb2e3cf
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: a17418142fb5f52a93d7a56cb2e6e6e97a250002
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Kezelését és karbantartását a Log Analyticshez ügynök Windows és Linux rendszerekhez
 
@@ -111,7 +111,7 @@ $healthServiceSettings.SetProxyInfo($ProxyDomainName, $ProxyUserName, $cred.GetN
 ```  
 
 ### <a name="linux-agent"></a>Linux-ügynök
-Hajtsa végre az alábbi lépéseket, ha a Linux rendszerű számítógépek kell kommunikációja áthaladjon a proxykiszolgáló vagy az OMS átjáró szolgáltatáshoz.  A proxykonfiguráció értékének szintaxisa a következő: `[protocol://][user:password@]proxyhost[:port]`.
+Hajtsa végre az alábbi lépéseket, ha a Linux rendszerű számítógépek kell kommunikációja áthaladjon a proxykiszolgáló vagy az OMS átjáró szolgáltatáshoz.  A proxykonfiguráció értékének szintaxisa a következő: `[protocol://][user:password@]proxyhost[:port]`.  A *proxyhost* tulajdonság a proxykiszolgáló IP-címet vagy egy teljesen minősített tartománynevét fogad el.
 
 1. Szerkessze az `/etc/opt/microsoft/omsagent/proxy.conf` fájlt a következő parancsok futtatásával, és módosítsa az értékeket a saját konkrét beállításaira.
 
@@ -178,6 +178,6 @@ Hajtsa végre a következő lépésekkel állíthatja be az OMS-ügynököt, hog
 2. Győződjön meg arról, hogy a kezdődő `httpsport=` határozza meg az 1270-es port. Például:`httpsport=1270`
 3. Indítsa újra az OMI-kiszolgálón:`sudo /opt/omi/bin/service_control restart`
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Felülvizsgálati [a Linux-ügynök hibaelhárítási](log-analytics-agent-linux-support.md) Ha hibát tapasztal telepítése vagy az ügynök kezelése során.  

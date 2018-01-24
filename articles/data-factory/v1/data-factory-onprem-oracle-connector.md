@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2017
+ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8ff071ed1ce5a3e9927e4c24d23efae3ae0cd6c6
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: 82fe637b46decfc9c8d09b5c7e03f328a8636263
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="copy-data-tofrom-on-premises-oracle-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával a helyszíni Oracle és a
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -71,7 +71,7 @@ Az Oracle-összekötő illesztőprogramok két verziója támogatja:
 
 Ahhoz, hogy a másolási folyamat másolása varázslót használja, ha az illesztőprogram-típus lesz automatikusan határozza meg. Microsoft illesztőprogram által használható alapértelmezett, kivéve, ha az átjáró verziója alacsonyabb, mint 2.7, vagy ha úgy dönt, Oracle, a fogadó.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 A másolási tevékenység, amely helyezi át az adatokat a helyszíni Oracle-adatbázishoz és a különböző eszközök/API-k használatával létrehozhat egy folyamatot.
 
 Hozzon létre egy folyamatot a legegyszerűbb módja használatára a **másolása varázsló**. Lásd: [oktatóanyag: hozzon létre egy folyamatot, másolása varázslóval](data-factory-copy-data-wizard-tutorial.md) létrehozásával egy folyamatot, az adatok másolása varázsló segítségével gyorsan útmutatást.
@@ -162,7 +162,7 @@ A másolási tevékenység, ha az adatforrás típusú **OracleSource** a követ
 | Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
 | writeBatchTimeout |Várakozási idő a kötegelt beszúrási művelet befejezését, mielőtt azt az időkorlátot. |A TimeSpan<br/><br/> . Példa: 00:30:00 (30 perc). |Nem |
-| WriteBatchSize |Szúr be az SQL-tábla adatokat, amikor a puffer mérete eléri writeBatchSize. |Egész szám (sorok száma) |Nem (alapértelmezett: 100) |
+| writeBatchSize |Szúr be az SQL-tábla adatokat, amikor a puffer mérete eléri writeBatchSize. |Egész szám (sorok száma) |Nem (alapértelmezett: 100) |
 | sqlWriterCleanupScript |Adja meg egy lekérdezést a másolási tevékenység végrehajtása úgy, hogy egy adott szelet adatait. |A lekérdezési utasítást. |Nem |
 | sliceIdentifierColumnName |Adja meg a másolási tevékenység során automatikusan létrejön szelet azonosító, amely segítségével távolítja el az adatokat egy adott szelet, amikor futtassa újra a töltse ki az oszlopnevet. |Egy oszlop binary(32) adattípusú oszlop neve. |Nem |
 
@@ -572,26 +572,26 @@ Ha az adatok áthelyezése az Oracle, a következő megfeleltetéseket használt
 
 | Oracle-adattípusra | .NET-keretrendszer adattípus |
 | --- | --- |
-| BFÁJL |Byte] |
-| A BLOB |Byte]<br/>(csak Oracle 10g és magasabb when támogatott használatával a Microsoft-illesztő) |
+| BFILE |Byte] |
+| BLOB |Byte]<br/>(csak Oracle 10g és magasabb when támogatott használatával a Microsoft-illesztő) |
 | KARAKTER |Karakterlánc |
 | CLOB |Karakterlánc |
-| DÁTUM |Dátum és idő |
+| DATE |DateTime |
 | LEBEGŐPONTOS |Decimális, karakterlánc (Ha pontosság > 28) |
 | EGÉSZ SZÁM |Decimális, karakterlánc (Ha pontosság > 28) |
 | IDŐKÖZ HÓNAP ÉV |Int32 |
-| MÁSODIK INTERVALLUM NAPONTA |A TimeSpan |
+| MÁSODIK INTERVALLUM NAPONTA |TimeSpan |
 | HOSSZÚ |Karakterlánc |
 | HOSSZÚ NYERS |Byte] |
 | NCHAR |Karakterlánc |
 | NCLOB |Karakterlánc |
 | SZÁM |Decimális, karakterlánc (Ha pontosság > 28) |
 | NVARCHAR2 |Karakterlánc |
-| NYERS |Byte] |
+| RAW |Byte] |
 | ROWID |Karakterlánc |
-| IDŐBÉLYEG |Dátum és idő |
-| A HELYI IDŐZÓNÁRA IDŐBÉLYEG |Dátum és idő |
-| AZ IDŐZÓNA IDŐBÉLYEG |Dátum és idő |
+| IDŐBÉLYEG |DateTime |
+| A HELYI IDŐZÓNÁRA IDŐBÉLYEG |DateTime |
+| AZ IDŐZÓNA IDŐBÉLYEG |DateTime |
 | ELŐJEL NÉLKÜLI EGÉSZKÉNT. |Szám |
 | VARCHAR2 |Karakterlánc |
 | XML |Karakterlánc |

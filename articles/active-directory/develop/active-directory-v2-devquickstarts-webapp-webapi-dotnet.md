@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 185780da206e4d0ed0d8e5f8b24a546e3d9b3800
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f59c9e2c523db319565c1cca13eb85f809b2bdd6
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="calling-a-web-api-from-a-net-web-app"></a>A webes API hívása a .NET-webalkalmazás
 A v2.0-végponttal gyorsan hitelesítés hozzáadása a webalkalmazások és webes API-khoz személyes Microsoft-fiókot is támogatása és a munkahelyi vagy iskolai fiókok.  Itt azt fogja létrehozni egy MVC webalkalmazás, mely aláírja a felhasználók az OpenID Connect, használja a Microsoft OWIN köztes segítséget.  A webes alkalmazás OAuth 2.0 hozzáférési jogkivonatok lekérése egy webes api lehetővé teszi, hogy OAuth 2.0-s által védett létrehozása, olvasása, és törli a egy adott felhasználó "Feladatlista".
@@ -68,7 +68,7 @@ Mostantól konfigurálhatja az OWIN közbenső szoftvert használja a [OpenID Co
 * Nyissa meg a fájlt `App_Start\Startup.Auth.cs` , és adja hozzá `using` nyilatkozatait, a könyvtárak a fent.
 * Ugyanebben a fájlban, valósítja meg a `ConfigureAuth(...)` metódust.  Megadja a paraméterek `OpenIDConnectAuthenticationOptions` koordináták az alkalmazás az Azure AD kommunikálni fog szolgálni.
 
-```C#
+```csharp
 public void ConfigureAuth(IAppBuilder app)
 {
     app.SetDefaultSignInAsAuthenticationType(CookieAuthenticationDefaults.AuthenticationType);
@@ -116,7 +116,7 @@ Az a `AuthorizationCodeReceived` használandó szeretnénk értesítési, [OAuth
 * Adja hozzá egy másik `using` nyilatkozatot, így a `App_Start\Startup.Auth.cs` MSAL fájlt.
 * Ezután adja hozzá egy új módszer, a `OnAuthorizationCodeReceived` eseménykezelő.  A kezelő MSAL fogja használni a Tennivalók listája API olyan hozzáférési jogkivonatot szerezni, és a jogkivonat-ban tárolja MSAL tartozó jogkivonat gyorsítótára későbbi használatra:
 
-```C#
+```csharp
 private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotification notification)
 {
         string userObjectId = notification.AuthenticationTicket.Identity.FindFirst("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value;
@@ -144,7 +144,7 @@ Most már időpontok a ténylegesen a 3. lépésében beszerzett access_token.  
     `using Microsoft.Identity.Client;`
 * Az a `Index` művelet, használjon MSAL `AcquireTokenSilentAsync` metódus használatával kérje le egy access_token adatokat olvasni a feladatlista szolgáltatás használható:
 
-```C#
+```csharp
 // ...
 string userObjectID = ClaimsPrincipal.Current.FindFirst("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value;
 string tenantID = ClaimsPrincipal.Current.FindFirst("http://schemas.microsoft.com/identity/claims/tenantid").Value;
@@ -160,7 +160,7 @@ result = await app.AcquireTokenSilentAsync(new string[] { Startup.clientId });
 * A minta hozzáadja az így létrejövő jogkivonatot a HTTP GET kérelemre, a `Authorization` fejlécből a feladatlista szolgáltatás használatával hitelesíteni a kérelmet.
 * Ha a feladatlista-szolgáltatás egy `401 Unauthorized` választ, a MSAL access_tokens váltak érvénytelen valamilyen okból.  Ebben az esetben engedje el bármilyen access_tokens a MSAL gyorsítótárból és megjelenítése a felhasználó egy üzenetet, szükséges lehet, hogy jelentkezzen be újra, amely a token beszerzési folyamata újraindul.
 
-```C#
+```csharp
 // ...
 // If the call failed with access denied, then drop the current access token from the cache,
 // and show the user an error indicating they might need to sign-in again.
@@ -175,7 +175,7 @@ if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
 
 * Hasonlóképpen ha MSAL nem lehet visszaadni egy access_token bármilyen okból, meg kell kérni a felhasználót, hogy jelentkezzen be újra.  Ez egyszerűen bármelyik elfogja az `MSALException`:
 
-```C#
+```csharp
 // ...
 catch (MsalException ee)
 {
@@ -191,7 +191,7 @@ Végül felépítéséhez és az alkalmazás futtatása!  Jelentkezzen be Micros
 
 Az elkészült mintát (a konfigurációs értékek nélkül) referenciaként [itt megadott](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-WebAPI-OpenIdConnect-DotNet/archive/complete.zip).  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További forrásokért tekintse meg:
 
 * [A v2.0 – útmutató fejlesztőknek >>](active-directory-appmodel-v2-overview.md)

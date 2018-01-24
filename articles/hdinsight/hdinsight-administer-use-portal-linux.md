@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/22/2017
 ms.author: jgao
-ms.openlocfilehash: a65daae8931c5ef892bf01eb049897488d6b15c7
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 347af14d342751fd9d03cd5d0e9cedf05f91a2e1
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Hdinsight Hadoop-fürtök kezelése az Azure-portál használatával
 
@@ -81,10 +81,10 @@ Ha a NoRegisteredProviderFound hiba vagy a MissingSubscriptionRegistration hiba,
 4. Kattintson a listában, a – áttekintés oldalra fürt:
 
     ![Az Azure portál HDInsight fürt essentials](./media/hdinsight-administer-use-portal-linux/hdinsight-essentials.png) **áttekintése menüben:**
-    * **Irányítópult**: megnyitja a fürt irányítópultot, amely Ambari Web Linux-alapú fürtökhöz.
+    * **Irányítópult**: megnyílik a fürt Ambari webes felhasználói Felületét.
     * **Biztonságos rendszerhéj**: jeleníti meg az utasításokat a fürtjét Secure Shell (SSH) kapcsolaton keresztül csatlakozni.
     * **Fürt méretezése**: lehetővé teszi a fürt feldolgozó csomópontok számának megváltoztatására.
-    * **Helyezze át**: helyezze át a fürt ásványolajtermék erőforráscsoportba vagy előfizetésbe.
+    * **Helyezze át**: helyezi át a fürt egy másik erőforráscsoportban vagy egy másik előfizetést.
     * **Törlés**: törli a fürtöt.
 
     **Bal oldali menüben:**
@@ -98,7 +98,7 @@ Ha a NoRegisteredProviderFound hiba vagy a MissingSubscriptionRegistration hiba,
     * **A HDInsight eszközök**: segítő információk a HDInsight kapcsolódó eszközök.
     * **Előfizetés alapvető használati**: az előfizetéshez tartozó felhasznált és rendelkezésre álló magot megjelenítéséhez.
     * **Fürt méretezése**: növelése és a fürt feldolgozó csomópontok száma csökken. Lásd:[fürtök méretezése](hdinsight-administer-use-management-portal.md#scale-clusters).
-    * **SSH + a fürt bejelentkezési**: jeleníti meg az utasításokat a fürtjét Secure Shell (SSH) kapcsolaton keresztül csatlakozni. További információkért lásd: [az SSH a Hdinsighttal](hdinsight-hadoop-linux-use-ssh-unix.md), és a fürt bejelentkezési hitelesítő adatok alaphelyzetbe állítása.
+    * **SSH + a fürt bejelentkezési**: jeleníti meg az utasításokat a fürtjét Secure Shell (SSH) kapcsolaton keresztül csatlakozni. További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
     * **HDInsight-partnert**: a jelenlegi HDInsight-Partner hozzáadása/eltávolítása.
     * **Külső Metaadattárakat**: a Hive és az Oozie metastores megtekintése. A metaadattárakat csak konfigurálható úgy, hogy a fürt létrehozása során. Lásd: [használni a Hive/Oozie metaadattárhoz](hdinsight-hadoop-provision-linux-clusters.md#use-hiveoozie-metastore).
     * **Parancsfájl-műveletek**: futtassa a Bash parancsfájlok a fürtön. Lásd: [testreszabása Linux-alapú HDInsight-fürtök használata parancsfájlművelet](hdinsight-hadoop-customize-cluster-linux.md).
@@ -226,6 +226,21 @@ HDInsight-fürtök áthelyezése egy másik Azure-erőforráscsoport vagy egy m�
 
 Lásd: [újabb verzióra való frissítés HDInsight fürt](./hdinsight-upgrade-cluster.md).
 
+## <a name="open-the-ambari-web-ui"></a>Nyissa meg az Ambari webes felhasználói felület
+
+Ambari biztosít egy egyszerűen elsajátítható, könnyen kezelhető Hadoop felügyeleti webes felhasználói felület a RESTful API-k által támogatott. Ambari lehetővé teszi, hogy a rendszergazdák kezelhetik és megfigyelhetik a Hadoop-fürtök.
+
+1. Nyissa meg a HDInsight-fürtök az Azure portálról.  Lásd: [listája és megjelenítése fürtök](#list-and-show-clusters).
+2. Kattintson a **irányítópult fürt**.
+
+    ![HDInsight Hadoop-fürt menü](./media/hdinsight-administer-use-portal-linux/hdinsight-azure-portal-cluster-menu.png)
+
+1. Adja meg a fürt felhasználónevet és jelszót.  A fürt alapértelmezett felhasználónév az _admin_. Az Ambari webes felhasználói felület néz ki:
+
+    ![HDInsight Hadoop Ambari webes felhasználói felületén](./media/hdinsight-administer-use-portal-linux/hdinsight-hadoop-ambari-web-ui.png)
+
+További információkért lásd: [kezelése HDInsight-fürtök az Ambari webes felhasználói felület használatával](hdinsight-hadoop-manage-ambari.md).
+
 ## <a name="change-passwords"></a>Jelszavak módosítása
 HDInsight-fürtök lehet két felhasználói fiókot. A HDInsight-fürtöt felhasználói fiók (más néven HTTP-felhasználói fiók) és az SSH-felhasználói fiókot a létrehozási folyamat során jönnek létre. Az Ambari webes felhasználói felület segítségével módosíthatja a fürt felhasználói fiók felhasználónevét és a jelszó és a Parancsfájlműveletek az SSH-felhasználói fiók módosítása
 
@@ -266,8 +281,8 @@ Ambari majd módosítja a jelszót, a fürt összes csomópontján.
 
    | Mező | Érték |
    | --- | --- |
-   | Név |Ssh jelszó módosítása |
-   | Bash parancsfájlok URI |Az URI-t a changepassword.sh fájl |
+   | Name (Név) |Ssh jelszó módosítása |
+   | Bash parancsfájl URI azonosítója |Az URI-t a changepassword.sh fájl |
    | Csomópontok (Head munkavégző, Nimbus, felügyelő, Zookeeper, stb.) |Az összes csomópont felsorolt ✓ |
    | Paraméterek |Adja meg az SSH-felhasználónév és az új jelszót. A felhasználói nevet és jelszót egy térköze kell lennie. |
    | Parancsfájlműveletet... |Ezt a mezőt hagyja bejelölve. |
@@ -349,7 +364,7 @@ A **használati** szakasz a HDInsight-fürt panelről az elérhető és a HDInsi
 * [A Hive használata a HDInsightban](hadoop/apache-hadoop-use-hive-ambari-view.md)
 * [SSH használata a HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta rendelkezik néhány alapvető felügyeleti funkciókat. További tudnivalókért tekintse meg a következő cikkeket:
 

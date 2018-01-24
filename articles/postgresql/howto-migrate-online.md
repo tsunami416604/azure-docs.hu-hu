@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 01/04/2018
-ms.openlocfilehash: 429828515411986dc7b3586360cb9923a5bb20de
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: efbd4f227880875c11e2c43c84716dfc49c5717d
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="minimal-downtime-migration-to-azure-database-for-postgresql"></a>Az Azure Database-áttelepítés minimális állásidővel PostgreSQL
 Áttelepítheti a meglévő PostgreSQL-adatbázisban az Azure Database-PostgreSQL az Attunity megfelel a Microsoft Migrations. Attunity megfelel egy közös ajánlat Attunity és a Microsoft. Azure-adatbázis áttelepítése szolgáltatás megfelelően szerepel a Microsoft ügyfelei további költségek nélkül. 
@@ -34,5 +34,5 @@ A folyamat minimális állásidővel áttelepítés áttekintését tartalmazza:
 A Attunity megfelel az ajánlat Microsoft Migrations kapcsolatos további információkért lásd a következőket:
  - Lépjen a [Attunity megfelel a Microsoft Migrations](https://aka.ms/attunity-replicate) weblap.
  - Töltse le [Attunity megfelel a Microsoft áttelepítések](http://discover.attunity.com/download-replicate-microsoft-lp6657.html).
- - Lépjen a [Attunity replikálása közösségi](https://microsoft.attunity.com/) első lépések útmutatója, oktatóanyagok és támogatási szolgálathoz.
+ - Lépjen a [Attunity replikálása közösségi](https://aka.ms/attunity-community/) első lépések útmutatója, oktatóanyagok és támogatási szolgálathoz.
  - Az Attunity megfelel használatával történő PostgreSQL az Azure-adatbázis PostgreSQL áttelepítésének lépésenkénti útmutatásért tekintse meg a [adatbázis áttelepítési útmutató](https://datamigration.microsoft.com/scenario/postgresql-to-azurepostgresql).

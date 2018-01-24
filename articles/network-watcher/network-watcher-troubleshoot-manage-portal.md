@@ -1,6 +1,6 @@
 ---
-title: "Az Azure virtuális hálózati átjáró és a kapcsolatok - PowerShell hibaelhárítása |} Microsoft Docs"
-description: "Ez a lap ismerteti, hogyan Azure hálózati figyelőt PowerShell-parancsmaggal hibaelhárításához"
+title: "Végezzen hibaelhárítást az Azure virtuális hálózati átjáró és a kapcsolatok - portál |} Microsoft Docs"
+description: "Ez a lap ismerteti, hogyan Azure hálózati figyelőt portál hibaelhárítása"
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: c3fa22bd599026b0838b134e26062d9837df703e
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: fb8f60eea0eaa24649f584ae4183aa8e552a433e
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/24/2018
 ---
-# <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-powershell"></a>Virtuális hálózati átjáró és az Azure hálózati figyelő PowerShell kapcsolatok hibáinak elhárítása
+# <a name="troubleshoot-virtual-network-gateway-and-connections-using-network-watcher-from-azure-portal"></a>Virtuális hálózati átjáró és az Azure portálról hálózati figyelőt alkalmazó kapcsolatok hibáinak elhárítása
 
 > [!div class="op_single_selector"]
 > - [Portal](network-watcher-troubleshoot-manage-portal.md)

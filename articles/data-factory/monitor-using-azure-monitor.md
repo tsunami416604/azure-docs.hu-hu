@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: f30042ad8d687db59e1aaa092c46cee371e8c7fb
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: cae3c797171c3904f100ae3cdec47a31b06d3b31
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="monitor-data-factories-using-azure-monitor"></a>Azure-figyelővel képernyő adat-előállítók  
 Sok áthelyezése alkotórészek összetettek a felhőalapú alkalmazásokhoz. Győződjön meg arról, hogy az alkalmazás marad be adatokat, és megfelelő állapotban fut figyelés nyújt. Emellett segít, hogy ki a lehetséges problémák stave és a múltbeli kiépítettektől eltérő hibakeresést. Figyelési adatok segítségével emellett az alkalmazással kapcsolatos átfogó megismerésében. Ennek az információnak a segítséget nyújtanak az alkalmazások teljesítményének vagy karbantartási követelmények, vagy a, amelyek egyébként kézi beavatkozás műveletek automatizálására.
@@ -105,9 +105,9 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | Tulajdonság | Típus | Leírás |
 | --- | --- | --- |
-| StorageAccountId |Karakterlánc | Az erőforrás-azonosítója, amelyet szeretne elküldeni a diagnosztikai naplókat a tárfiók |
+| storageAccountId |Karakterlánc | Az erőforrás-azonosítója, amelyet szeretne elküldeni a diagnosztikai naplókat a tárfiók |
 | serviceBusRuleId |Karakterlánc | A service bus szabály azonosítója a service bus-névtér, amelyben a folyamatos átviteli diagnosztikai naplók létrehozott Event Hubs rendelkezik szeretné. A szabály azonosítója formátumban van: "{service bus erőforrás-azonosító} /authorizationrules/ {kulcsnév}".|
-| WorkspaceId | Összetett típus | A tömb metrika idő szemek és az adatmegőrzési házirendek. Ezt a tulajdonságot jelenleg üres. |
+| workspaceId | Összetett típus | A tömb metrika idő szemek és az adatmegőrzési házirendek. Ezt a tulajdonságot jelenleg üres. |
 |metrics| A meghívott csővezeték átadandó futtassa paraméterértékeket a feldolgozási folyamat| A JSON-objektum argumentum értékek leképezése a paraméterek nevei | 
 | naplók| Összetett típus| A diagnosztikai naplófájl kategória neve erőforrástípus. Szerezze be az erőforrás diagnosztikai naplófájl kategóriák listáját, először hajtson végre egy GET diagnosztikai beállítások műveletet. |
 | category| Karakterlánc| Napló kategóriák és az adatmegőrzési tömbje |
@@ -325,7 +325,7 @@ További információ az itt] (https://msdn.microsoft.com/en-us/library/azure/dn
 | Szint |Karakterlánc | A diagnosztikai naplók szintje. 4. szint a helyzet tevékenységfuttatási naplókat. | `4`  |
 | correlationId |Karakterlánc | Nyomon követésére egy adott kérelem-végpont egyedi azonosítója | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
 | time | Karakterlánc | A timespan, UTC formátumban esemény időpontja | `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
-|futtatásazonosító| Karakterlánc| Futtassa a folyamat azonosítója | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
+|runId| Karakterlánc| Futtassa a folyamat azonosítója | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
 |resourceId| Karakterlánc | A data factory erőforráshoz kapcsolódó erőforrás-azonosítója | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |category| Karakterlánc | Diagnosztikai naplók kategóriáját. Állítsa be ezt a tulajdonságot "PipelineRuns" | `PipelineRuns` |
 |szint| Karakterlánc | A diagnosztikai naplók szintje. Állítsa be ezt a tulajdonságot "Tájékoztató" | `Informational` |
@@ -370,12 +370,12 @@ További információ az itt] (https://msdn.microsoft.com/en-us/library/azure/dn
 | Szint |Karakterlánc | A diagnosztikai naplók szintje. 4. Futtassa a naplók tevékenység szint beállítása | `4`  |
 | correlationId |Karakterlánc | Nyomon követésére egy adott kérelem-végpont egyedi azonosítója | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
 | time | Karakterlánc | A timespan, UTC formátumban esemény időpontja | `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
-|eseményindító azonosítója| Karakterlánc| Az eseményindító futtatásához Azonosítóját | `08587023010602533858661257311` |
+|triggerId| Karakterlánc| Az eseményindító futtatásához Azonosítóját | `08587023010602533858661257311` |
 |resourceId| Karakterlánc | A data factory erőforráshoz kapcsolódó erőforrás-azonosítója | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |category| Karakterlánc | Diagnosztikai naplók kategóriáját. Állítsa be ezt a tulajdonságot "PipelineRuns" | `PipelineRuns` |
 |szint| Karakterlánc | A diagnosztikai naplók szintje. Állítsa be ezt a tulajdonságot "Tájékoztató" | `Informational` |
 |operationName| Karakterlánc |A végső állapot eseményindító nevét e azt sikeresen következik be. "MyTrigger - sikeres volt." Ha sikeres volt-e a szívverés| `MyTrigger - Succeeded` |
-|Eseményindító_neve| Karakterlánc | Az eseményindító neve | `MyTrigger` |
+|triggerName| Karakterlánc | Az eseményindító neve | `MyTrigger` |
 |triggerType| Karakterlánc | Az eseményindító (kézi indítási vagy ütemezés eseményindító) típusú | `ScheduleTrigger` |
 |triggerEvent| Karakterlánc | Az eseményindító esemény | `ScheduleTime - 2017-07-06T01:50:25Z` |
 |start| Karakterlánc | TimeSpan érték, UTC formátumban eseményindító tűz elindítása | `2017-06-26T20:55:29.5007959Z`|
@@ -387,7 +387,7 @@ Azure figyelő címinfrastruktúra megjelenítési lehetőségeinek a teljesítm
 
 ADFV2 bocsát ki a következő metrikák
 
-| **Metrika**           | **Metrika megjelenített neve**         | **Egység** | **Aggregáció típusa** | **Leírás**                                       |
+| **Metrika**           | **Metrika megjelenített neve**         | **Unit** | **Aggregáció típusa** | **Leírás**                                       |
 |----------------------|---------------------------------|----------|----------------------|-------------------------------------------------------|
 | PipelineSucceededRun | Sikerült a folyamat fut metrikák | Darabszám    | Összes                | Teljes folyamatok futtatása sikeres egy perc időszakban |
 | PipelineFailedRuns   | Nem sikerült a folyamat fut metrikák    | Darabszám    | Összes                | Teljes folyamatok futtatása sikertelen egy perc időszakban    |
@@ -398,5 +398,5 @@ ADFV2 bocsát ki a következő metrikák
 
 A metrikák hozzáférni, kövesse a cikkben - https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Lásd: [figyelő programozott folyamatok kezelését és](monitor-programmatically.md) cikkben tájékozódhat az figyelése és kezelése a folyamatok futtatásával. 

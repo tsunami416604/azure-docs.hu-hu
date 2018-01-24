@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: f3cdcaf49999d2d5d1ee639cb41916a2584b84f2
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.openlocfilehash: 8d6f2347e06e58ec2b506aa9eaf716b3f71f3a77
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>A .NET-alkalmazásokban kivételek pillanatképek hibakeresése
 
@@ -29,7 +29,7 @@ Pillanatkép gyűjtemény érhető el:
 * Windows rendszeren futó alkalmazások .NET core 2.0 és 2.0-s ASP.NET Core.
 
 A következő környezetekben támogatottak:
-* Az Azure App Service.
+* Azure App Service.
 * Az Azure felhőalapú szolgáltatás operációsrendszer-család fut, 4 vagy újabb verzió.
 * Azure Service Fabric-szolgáltatások a Windows Server 2012 R2 vagy újabb rendszerű.
 * Azure virtuális gépeken futó Windows Server 2012 R2 vagy újabb.
@@ -82,7 +82,7 @@ A következő környezetekben támogatottak:
 
 3. Módosítsa az alkalmazás `Startup` osztály hozzáadása és konfigurálása a pillanatkép-gyűjtő telemetriai processzor.
 
-   ```C#
+   ```csharp
    using Microsoft.ApplicationInsights.SnapshotCollector;
    using Microsoft.Extensions.Options;
    ...
@@ -140,7 +140,7 @@ A következő környezetekben támogatottak:
 2. Adja hozzá a [Microsoft.ApplicationInsights.SnapshotCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-csomag az alkalmazásban.
 
 3. A pillanatképek összegyűjtése csak a kivételek az Application Insights jelentett. Szükség lehet a jelentés azokat a kód módosítása. A kivételkezelő kód függ az alkalmazás szerkezete, de például nem éri el:
-    ```C#
+    ```csharp
    TelemetryClient _telemetryClient = new TelemetryClient();
 
    void ExampleRequest()
@@ -258,7 +258,7 @@ MinidumpUploader.exe Information: 0 : Deleted D:\local\Temp\Dumps\c12a605e73c443
 Az előző példában a instrumentation kulcsa `c12a605e73c44346a984e00000000000`. Ezt az értéket meg kell felelnie a instrumentation billentyűt az alkalmazás.
 A kis memóriakép társítva a azonosítójú pillanatkép `139e411a23934dc0b9ea08a626db16c5`. Ezt az Azonosítót később segítségével keresse meg a társított kivételtelemetria Application Insights Analytics.
 
-A feltöltése 15 percenként egyszer kapcsolatos új PDB-fájlok keres. Íme egy példa:
+A feltöltése 15 percenként egyszer kapcsolatos új PDB-fájlok keres. Például:
 
 ```
 MinidumpUploader.exe Information: 0 : PDB rescan requested.
@@ -291,7 +291,7 @@ Kövesse az alábbi lépéseket a felhőalapú szolgáltatás szerepkör konfigu
 ```
 
 2. A szerepkör módosítása `OnStart` adható hozzá egy környezeti változó mutat, a `SnapshotStore` helyi erőforrás.
-```C#
+```csharp
    public override bool OnStart()
    {
        Environment.SetEnvironmentVariable("SNAPSHOTSTORE", RoleEnvironment.GetLocalResource("SnapshotStore").RootPath);

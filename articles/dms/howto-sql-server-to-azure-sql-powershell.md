@@ -10,12 +10,12 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 12/13/2017
-ms.openlocfilehash: 9eebe8352d6a447df520c194b9906df8c2c9a83f
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.date: 01/24/2018
+ms.openlocfilehash: 8569bf65d04f677a45935284dc61d68879014c10
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-db-using-azure-powershell"></a>Telepítse át a helyszíni SQL Server Azure SQL Database az Azure PowerShell
 Ebben a cikkben az áttelepítést a **Adventureworks2012** adatbázis visszaállítása egy helyszíni példányát az SQL Server 2016 vagy újabb Azure SQL adatbázis a Microsoft Azure PowerShell használatával. Telepíthet át adatbázisok a helyszíni SQL Server-példány az Azure SQL Database segítségével a `AzureRM.DataMigration` a Microsoft Azure PowerShell modul.
@@ -63,22 +63,25 @@ New-AzureRmResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 - *Termékváltozat*. Ez a paraméter DMS termékváltozat felel meg. Jelenleg támogatott termékváltozat nevek *Basic_1vCore*, *Basic_2vCores*, *GeneralPurpose_4vCores*
 - *Virtuális alhálózati azonosító*. Parancsmag [New-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig?view=azurermps-4.4.1) egy alhálózat létrehozásához. 
 
-Az alábbi példa létrehoz egy szolgáltatást nevű *MyDMS* erőforráscsoportban *MyDMSResourceGroup*, található *USA keleti régiója* régióba virtuális alhálózat neve *MySubnet*.
+Az alábbi példa létrehoz egy szolgáltatást nevű *MyDMS* erőforráscsoportban *MyDMSResourceGroup*, található *USA keleti régiója* régió nevű virtuális hálózat használatával *MyVNET* és nevű alhálózat *MySubnet*.
 
 ```powershell
+ $vNet = Get-AzureRmVirtualNetwork -ResourceGroupName MyDMSResourceGroup -Name MyVNET
+
+$vSubNet = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vNet -Name MySubnet
+
 $service = New-AzureRmDms -ResourceGroupName myResourceGroup `
   -ServiceName MyDMS `
   -Location EastUS `
   -Sku Basic_2vCores `  
-  -VirtualSubnetId
-$vnet.Id`
+  -VirtualSubnetId $vSubNet.Id`
 ```
 
 ## <a name="create-a-migration-project"></a>Áttelepítési-projekt létrehozása
 Miután létrehozta az Azure adatbázis áttelepítési szolgáltatáspéldány, hozzon létre egy áttelepítési projektet. Az Azure-adatbázis áttelepítése szolgáltatás projekt mind a forrás és cél példányok, valamint a projekt részeként áttelepíteni kívánt adatbázisok listája kapcsolódási információt igényel.
 
 ### <a name="create-a-database-connection-info-object-for-the-source-and-target-connections"></a>Egy adatbázis kapcsolati objektum a forrás- és kapcsolatok létrehozása
-Egy adatbázis kapcsolati objektum segítségével létrehozható a `New-AzureRmDmsConnInfo` parancsmag.  Ennek a parancsmagnak az alábbi paraméterekkel:
+Egy adatbázis kapcsolati objektum segítségével létrehozható a `New-AzureRmDmsConnInfo` parancsmag. Ennek a parancsmagnak az alábbi paraméterekkel:
 - *ServerType*. Adatbázis-kapcsolatot kért, például az SQL, Oracle vagy MySQL típusa. Az SQL Server és SQL Azure SQL használata.
 - *DataSource*. A név vagy IP-egy SQL-példány vagy az SQL Azure-kiszolgáló.
 - *Hitelesítés típusa*. A kapcsolat, amely lehet SqlAuthentication vagy WindowsAuthentication hitelesítési típus.
@@ -166,9 +169,9 @@ $selectedDbs = New-AzureRmDmsSqlServerSqlDbSelectedDB -Name AdventureWorks2016 `
 ### <a name="create-and-start-a-migration-task"></a>Hozzon létre, és indítsa el az áttelepítési feladatok
 
 Használja a `New-AzureRmDataMigrationTask` parancsmag segítségével hozzon létre egy áttelepítési feladat elindításához. Ennek a parancsmagnak az alábbi paraméterekkel:
-- *TaskType*.  Áttelepítési feladat létrehozása az SQL Server SQL Azure áttelepítési típus típusú *MigrateSqlServerSqlDb* várt. 
+- *TaskType*. Áttelepítési feladat létrehozása az SQL Server SQL Azure áttelepítési típus típusú *MigrateSqlServerSqlDb* várt. 
 - *Erőforráscsoport neve*. A feladat létrehozásához Azure erőforráscsoport nevét.
-- *Szolgáltatásnév*.  Az Azure adatbázis áttelepítési szolgáltatáspéldány, amelyben a feladat létrehozásához.
+- *Szolgáltatásnév*. Az Azure adatbázis áttelepítési szolgáltatáspéldány, amelyben a feladat létrehozásához.
 - *Projektnév*. A feladat létrehozásához Azure-adatbázis áttelepítése projekt neve. 
 - *Feladatnév*. A létrehozandó feladat nevét. 
 - *Adatforrás-kapcsolat*. Adatforrás-kapcsolatot képviselő AzureRmDmsConnInfo objektum.
@@ -202,5 +205,5 @@ if (($mytask.ProjectTask.Properties.State -eq "Running") -or ($mytask.ProjectTas
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Tekintse át az áttelepítési útmutató a Microsoft [adatbázis áttelepítési útmutató](https://datamigration.microsoft.com/).

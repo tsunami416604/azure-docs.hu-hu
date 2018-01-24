@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 2282a59c9dd5d5d76a5b3e19f602e9d3dcc0b4ef
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: 8bc8c3a897363da2a8ebe7ac6bd8798c8e22ba04
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-ad-windows-universal-platform-uwpxaml-getting-started"></a>Az Azure AD Windows Universal Platform (UWP/XAML) első lépések
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -89,7 +89,7 @@ Az alapelv ADAL mögött, hogy az alkalmazás olyan hozzáférési jogkivonatot 
 
 1. Az alkalmazás inicializálása `AuthenticationContext`, vagyis az elsődleges osztály az adal-t. Ez a művelet továbbítja az adal-t a koordináták kommunikálni az Azure AD, és mondja el, akkor jogkivonatok gyorsítótárazásának kell.
 
-    ```C#
+    ```csharp
     public MainPage()
     {
         ...
@@ -100,7 +100,7 @@ Az alapelv ADAL mögött, hogy az alkalmazás olyan hozzáférési jogkivonatot 
 
 2. Keresse meg a `Search(...)` metódust, ha a felhasználók kattintanak, amelyet a **keresési** az alkalmazás Kezelőfelületén gombjára. Ez a módszer az Azure AD Graph API lekérdezéshez get kérés teszi a felhasználók számára, amelyek egyszerű felhasználónév a megadott keresési kifejezés kezdődik. A Graph API lekérdezéséhez közé tartoznak az olyan hozzáférési jogkivonatot a kérelemben szereplő **engedélyezési** fejléc. Ez az adal-t honnan.
 
-    ```C#
+    ```csharp
     private async void Search(object sender, RoutedEventArgs e)
     {
         ...
@@ -123,20 +123,20 @@ Az alapelv ADAL mögött, hogy az alkalmazás olyan hozzáférési jogkivonatot 
     Ha kér az alkalmazás jogkivonat meghívásával `AcquireTokenAsync(...)`, adal-t próbálja elküldeni a jogkivonatot a felhasználói hitelesítő adatok kérése nélkül. ADAL határozza meg, hogy a felhasználó bejelentkezhet a szolgáltatáshitelesítést egy token kell-e, ha azt egy bejelentkezési párbeszédpanel jelenik meg, a felhasználó hitelesítő adatait gyűjti és egy jogkivonatot ad vissza, sikeres hitelesítést követően. Ha adal-t nem lehet visszaadni a jogkivonat bármilyen okból a *AuthenticationResult* állapot: Hiba történt.
 3. Most meg kell használni a kapott hozzáférési jogkivonat. A is a `Search(...)` módszer, csatolni a tokent a Graph API get kérést a **engedélyezési** fejléc:
 
-    ```C#
+    ```csharp
     // Add the access token to the Authorization header of the call to the Graph API, and call the Graph API.
     httpClient.DefaultRequestHeaders.Authorization = new HttpCredentialsHeaderValue("Bearer", result.AccessToken);
 
     ```
 4. Használhatja a `AuthenticationResult` objektum információt szeretne megjeleníteni a felhasználó az alkalmazásban, például a felhasználói azonosító:
 
-    ```C#
+    ```csharp
     // Update the page UI to represent the signed-in user
     ActiveUser.Text = result.UserInfo.DisplayableId;
     ```
 5. ADAL segítségével is bejelentkezhetnek a felhasználók az alkalmazásból. Amikor a felhasználó kattint a **Kijelentkezés** gombra, győződjön meg arról, hogy a következő hívást `AcquireTokenAsync(...)` jeleníti meg, bejelentkezhet. Az ADAL Ez a művelet nem egyszerű módon, ha a token gyorsítótár kiürítése:
 
-    ```C#
+    ```csharp
     private void SignOut()
     {
         // Clear session state from the token cache.

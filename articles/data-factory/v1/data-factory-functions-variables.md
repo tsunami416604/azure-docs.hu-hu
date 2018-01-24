@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2017
+ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: c0145a5b5c54f5b9e3b5731d52df99c0a80fc271
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: f42ba7ed9c07a9d0bc73929db2a095248ad7d56f
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Az Azure Data Factory - funkciók és a rendszer változói
 > [!NOTE]
@@ -30,10 +30,10 @@ Ez a cikk tájékoztatást ad azokról a funkciók és az Azure Data Factory ál
 ## <a name="data-factory-system-variables"></a>Data Factory rendszerváltozók
 | Változó neve | Leírás | Objektum hatóköre | JSON-hatókör és a használati esetek |
 | --- | --- | --- | --- |
-| WindowStart |Időtartam a jelenlegi művelet ablakban futtassa elindítása |Tevékenység |<ol><li>Adja meg a kijelölés lekérdezések. Olvassa el az összekötő cikk a [adatok mozgása tevékenységek](data-factory-data-movement-activities.md) cikk.</li> |
-| WindowEnd |Időtartam a jelenlegi művelet ablakban futtassa vége |Tevékenység |ugyanaz, mint WindowStart. |
-| SliceStart |Az adatszelet előállítását időintervallumát elindítása |Tevékenység<br/>Adatkészlet |<ol><li>Adja meg a dinamikus mappák elérési útjaiban és fájlneveket dolgozva [Azure Blob](data-factory-azure-blob-connector.md) és [fájlrendszer adatkészletek](data-factory-onprem-file-system-connector.md).</li><li>Adja meg a bemeneti függőségek a data factory funkciók a tevékenység bemenetei gyűjteményben.</li></ol> |
-| SliceEnd |Aktuális adatszelet időintervallumát végét. |Tevékenység<br/>Adatkészlet |ugyanaz, mint SliceStart. |
+| WindowStart |Időtartam a jelenlegi művelet ablakban futtassa elindítása |tevékenység |<ol><li>Adja meg a kijelölés lekérdezések. Olvassa el az összekötő cikk a [adatok mozgása tevékenységek](data-factory-data-movement-activities.md) cikk.</li> |
+| WindowEnd |Időtartam a jelenlegi művelet ablakban futtassa vége |tevékenység |ugyanaz, mint WindowStart. |
+| SliceStart |Az adatszelet előállítását időintervallumát elindítása |tevékenység<br/>Adatkészlet |<ol><li>Adja meg a dinamikus mappák elérési útjaiban és fájlneveket dolgozva [Azure Blob](data-factory-azure-blob-connector.md) és [fájlrendszer adatkészletek](data-factory-onprem-file-system-connector.md).</li><li>Adja meg a bemeneti függőségek a data factory funkciók a tevékenység bemenetei gyűjteményben.</li></ol> |
+| SliceEnd |Aktuális adatszelet időintervallumát végét. |tevékenység<br/>Adatkészlet |ugyanaz, mint SliceStart. |
 
 > [!NOTE]
 > Jelenleg az adat-előállító szükséges, hogy a megadott tevékenységben pontosan ütemezése megegyezik-e a megadott kimeneti adatkészlet rendelkezésre állását ütemezése. Ezért WindowStart, a WindowEnd, és a SliceStart és a SliceEnd mindig van leképezve ugyanazon időtartamának és egy kimeneti szelet.
@@ -95,8 +95,8 @@ Az alábbi táblázatok tartalmazzák az Azure Data Factory a függvények:
 | Dátum |EndOfDay(X) |X: dátum és idő |Lekérdezi a X (nap összetevőjének) napját végét jelölő dátum-idő.<br/><br/>Példa: `EndOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 11:59:59 PM`. |
 | Dátum |EndOfMonth(X) |X: dátum és idő |A hónap összetevőjét X paraméter által jelölt hónap végének lekérdezi. <br/><br/>Példa: `EndOfMonth of 9/15/2013 05:10:23 PM is 9/30/2013 11:59:59 PM` (dátuma és időpontja. szeptember a hónap végét jelölő) |
 | Dátum |StartOfDay(X) |X: dátum és idő |Lekérdezi a nap összetevőjének megállapítása X paraméter által jelölt nap kezdete.<br/><br/>Példa: `StartOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 12:00:00 AM`. |
-| Dátum és idő |FROM(X) |X: karakterlánc |Egy dátum-idő X karakterláncot elemezni. |
-| Dátum és idő |Ticks(X) |X: dátum és idő |Lekérdezi a ticks X paraméter tulajdonsága. Egy osztásjelek 100 nanoszekundumban egyenlő. Ez a tulajdonság értékének ticks, 1 januárt, 12:00:00 éjfél óta eltelt 0001 számát jelöli. |
+| DateTime |FROM(X) |X: String |Egy dátum-idő X karakterláncot elemezni. |
+| DateTime |Ticks(X) |X: dátum és idő |Lekérdezi a ticks X paraméter tulajdonsága. Egy osztásjelek 100 nanoszekundumban egyenlő. Ez a tulajdonság értékének ticks, 1 januárt, 12:00:00 éjfél óta eltelt 0001 számát jelöli. |
 | Szöveg |Format(X) |X: karakterlánc-változóvá |A szöveg (használata `\\'` karaktert kombinációja `'` karakter).|
 
 > [!IMPORTANT]

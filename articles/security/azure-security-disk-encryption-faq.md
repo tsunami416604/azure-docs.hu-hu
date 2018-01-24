@@ -3,9 +3,9 @@ title: "Az Azure Disk Encryption – gyakori kérdések |} Microsoft Docs"
 description: "Ez a cikk ismerteti a Microsoft Azure lemez titkosítása a Windows és Linux IaaS virtuális gépeket gyakran feltett kérdésekre adott válaszok."
 services: security
 documentationcenter: na
-author: deventiwari
+author: DevTiw
 manager: avibm
-editor: yuridio
+editor: barclayn
 ms.assetid: 7188da52-5540-421d-bf45-d124dee74979
 ms.service: security
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2017
-ms.author: devtiw
-ms.openlocfilehash: db82c2b8f0f9acec41b0b0f87b8839d3d7f49c68
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: devtiw;ejarvi;mayank88mahajan;vermashi;sudhakarareddyevuri;aravindthoram
+ms.openlocfilehash: 9c94c62b86ef69704ad011ee3661a1688c39a388
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-disk-encryption-faq"></a>Az Azure Disk Encryption – gyakori kérdések
 
@@ -47,7 +47,7 @@ Ez a cikk kapcsolatos gyakori kérdések (GYIK) lemez titkosítás a Windows Azu
 
 | A Linux-disztribúció | Verzió | Támogatott titkosítási a kötet típusa|
 | --- | --- |--- |
-| Ubuntu | 16.04-NAPI-ES LTS VERZIÓ | Operációs rendszer és az adatok lemezre |
+| Ubuntu | 16.04-DAILY-LTS | Operációs rendszer és az adatok lemezre |
 | Ubuntu | 14.04.5-DAILY-LTS | Operációs rendszer és az adatok lemezre |
 | RHEL | 7.3 | Operációs rendszer és az adatok lemezre |
 | RHEL | 7.2 | Operációs rendszer és az adatok lemezre |
@@ -131,7 +131,7 @@ Ha a munkafolyamat nem lehetséges, a függő [Storage szolgáltatás titkosít�
 
 **V:** kérdései vannak, vagy visszajelzést adhat a [Azure Disk Encryption fórum](https://social.msdn.microsoft.com/Forums/home?forum=AzureDiskEncryption).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebből a dokumentumból megtanulta, további információk a leggyakoribb Azure Disk Encryption kapcsolatos kérdésekre. Ez a szolgáltatás és platformképességei kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 - [Az Azure Security Centerben lemeztitkosítás alkalmazása](https://docs.microsoft.com/azure/security-center/security-center-apply-disk-encryption)

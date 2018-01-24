@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 9a63a15782b85a48552fd913d5d3f8aaaae7db44
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: d4f78c63117e5c54eb855178c75d6c294957f2a1
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="build-a-web-service-front-end-for-your-application-using-aspnet-core"></a>A szolgáltatás előtér-webkiszolgáló az ASP.NET Core segítségével alkalmazás létrehozása
 Alapértelmezés szerint Azure Service Fabric-szolgáltatások nem biztosítanak egy nyilvános webes felületet. Teszi közzé a HTTP-ügyfelek számára az alkalmazás működését, akkor belépési pontként személyekről, és onnan az egyes szolgáltatások majd kommunikálni webes projekt létrehozása.
@@ -29,7 +29,7 @@ Az oktatóanyag azt átvételéhez ahol azt korábban befejezte a a [az első al
 
 A Visual Studio 2017 együtt az oktatóanyag követéséhez van szüksége. Bármely edition fog tenni. 
 
- - [Telepítse a Visual Studio 2017](https://www.visualstudio.com/)
+ - [Install Visual Studio 2017](https://www.visualstudio.com/)
 
 Az ASP.NET Core Service Fabric-alkalmazások fejlesztésével, rendelkeznie kell az alábbi munkaterhelések telepítve:
  - **Azure fejlesztési** (alatt *webes & felhő*)
@@ -91,7 +91,7 @@ Először hozzon létre a kapcsolat működjön, és a szerződés az állapotal
 
 4. A osztály könyvtárban hozzon létre egy felület egy módszert, `GetCountAsync`, és megnöveli a felületének a `Microsoft.ServiceFabric.Services.Remoting.IService`. A távoli eljáráshívás felületen Ez az interfész azt jelzi, hogy ez a szolgáltatás távoli eljáráshívási felületet kell származnia.
    
-    ```c#
+    ```csharp
     using Microsoft.ServiceFabric.Services.Remoting;
     using System.Threading.Tasks;
         
@@ -114,7 +114,7 @@ Most, hogy definiáltuk a felületet, igazolnia kell megvalósítani, az állapo
     ![Az állapot-nyilvántartó szolgáltatásban a hordozhatóosztálytár-projektjének mutató hivatkozás hozzáadása][vs-add-class-library-reference]
 2. Keresse meg a osztályból származó `StatefulService`, például a `MyStatefulService`, és végrehajtásához kiterjesztése a `ICounter` felületet.
    
-    ```c#
+    ```csharp
     using MyStatefulService.Interface;
    
     ...
@@ -126,7 +126,7 @@ Most, hogy definiáltuk a felületet, igazolnia kell megvalósítani, az állapo
     ```
 3. Most valósítja meg az egyetlen definiált a `ICounter` felületet, `GetCountAsync`.
    
-    ```c#
+    ```csharp
     public async Task<long> GetCountAsync()
     {
         var myDictionary = 
@@ -150,7 +150,7 @@ Ebben az esetben azt lecserélheti a meglévő `CreateServiceReplicaListeners` m
 
 A `CreateServiceRemotingListener` bővítmény metódust a `IService` felület lehetővé teszi, hogy könnyen létrehozhat egy `ServiceRemotingListener` alapértelmezett beállításokkal. A bővítmény módszer használatához, ellenőrizze, hogy a `Microsoft.ServiceFabric.Services.Remoting.Runtime` importált névtér. 
 
-```c#
+```csharp
 using Microsoft.ServiceFabric.Services.Remoting.Runtime;
 
 ...
@@ -176,7 +176,7 @@ Az állapotalapú szolgáltatás más szolgáltatások forgalom fogadására RPC
 
 4. Az a **tartományvezérlők** mappa, nyissa meg a `ValuesController` osztály. Vegye figyelembe, hogy a `Get` metódus jelenleg csak a "érték1" és "érték2" – amely megfelel a Mi a böngészőben korábban látott kódolt karakterlánc tömbje ad vissza. Ez a megvalósítás cserélje le a következő kódot:
    
-    ```c#
+    ```csharp
     using MyStatefulService.Interface;
     using Microsoft.ServiceFabric.Services.Client;
     using Microsoft.ServiceFabric.Services.Remoting.Client;
@@ -223,7 +223,7 @@ Ezzel szemben ha Ön egy webszolgáltatás futtatását helyileg, gondoskodnia k
 
 Különböző környezet különböző értékeket állíthat be, lásd: [alkalmazás paramétereinek több környezet kezelése](service-fabric-manage-multiple-environment-app-configuration.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy a webalkalmazás első set végül az ASP.NET Core az alkalmazáshoz, további információ [ASP.NET Core a Service Fabric Reliable Services](service-fabric-reliable-services-communication-aspnetcore.md) az ASP.NET Core működése a Service Fabric alapos ismeretét.
 
 Ezt követően [tudhat meg többet a szolgáltatások folytatott kommunikáció](service-fabric-connect-and-communicate-with-services.md) általában lekérni a teljes kép hogyan szolgáltatás a kommunikációt a Service Fabric működik.

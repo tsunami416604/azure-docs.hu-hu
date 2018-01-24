@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2017
+ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: fda3c7a9a369eec1b9033ee7077a5f3770647c9f
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 195a1a4810de478b77538716fa8d1362428864d8
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Az adatkezelési átjáró - magas rendelkezésre állás és méretezhetőség (előzetes verzió)
 > [!NOTE]
@@ -186,11 +186,11 @@ Engedélyezheti a **speciális beállítások** a a **átjáró** lapot, melyen 
 
 Figyelési tulajdonság | Leírás
 :------------------ | :---------- 
-Név | A logikai átjáró és az átjáróhoz társított csomópont neve.  
+Name (Név) | A logikai átjáró és az átjáróhoz társított csomópont neve.  
 status | A logikai átjáró és az átjáró csomópontok állapota. Példa: Online/Offline/korlátozott/stb. A fenti állapotok megjelenése kapcsolatos információkért lásd: [az átjáró állapotának](#gateway-status) szakasz. 
 Verzió | A logikai átjáró és az egyes átjárócsomópont verzióját jeleníti meg. A logikai átjáró verziója határozza meg a csoportban lévő csomópontok többsége verzióján alapul. Ha nincs a logikai átjáró beállítás, csak a csomópontok a azonos verziószámú a logikai átjáró függvényében eltérő verziójú csomópontok megfelelően. Mások korlátozott módban van, és manuálisan kell frissíteni, (csak abban az esetben az automatikus frissítés sikertelen lesz). 
 Rendelkezésre álló memória | Rendelkezésre álló memória egy átjáró-csomóponton. Ez az érték közel valós idejű pillanatképet. 
-CPU-felhasználás | Egy átjáró csomópont CPU-felhasználását. Ez az érték közel valós idejű pillanatképet. 
+Processzorkihasználtság | Egy átjáró csomópont CPU-felhasználását. Ez az érték közel valós idejű pillanatképet. 
 Hálózatkezelés (In/Out) | Hálózathasználat egy átjáró csomópont. Ez az érték közel valós idejű pillanatképet. 
 Egyidejűleg futó feladatainak (futtató / Limit) | Feladatok vagy minden egyes csomóponton futó feladatok száma. Ez az érték közel valós idejű pillanatképet. Korlát azt jelzi, hogy az egyes csomópontok maximális egyidejűleg futó feladatainak. Ez az érték van megadva a mérete alapján. Egyidejű feladatok végrehajtásának speciális forgatókönyvekhez, növelheti a korlát növelhető ahol Processzor / memória / hálózati alatt szükség, de a tevékenységek vannak időtúllépés miatt. Ez a funkció érhető el egy egy csomópontos átjáró (még akkor is, ha a méretezhetőség és a rendelkezésre állási funkció nincs engedélyezve). További információkért lásd: [szempontok méretezése](#scale-considerations) szakasz. 
 Szerepkör | A szerepkörök – kézbesítő és munkavégző két típusa van. Az összes csomópontja a dolgozók, ami azt jelenti, hogy az összes felhasználásuk feladatok végrehajtásához. A kézbesítő csak egy csomópont, feladatok és feladatok a felhőalapú szolgáltatások lekéréses és mennyi őket (beleértve magát) különböző munkavégző csomópontokhoz használt van. 
@@ -204,8 +204,8 @@ A következő táblázat a lehetséges állapotok egy **átjárócsomópont**:
 status  | Megjegyzések/forgatókönyvek
 :------- | :------------------
 Online | Csomópont csatlakozik a Data Factory szolgáltatásnak.
-Kapcsolat nélküli módban | Csomópontja offline állapotban.
-Frissítése | A csomópont automatikus frissítése folyamatban van.
+Offline | Csomópontja offline állapotban.
+Frissítés | A csomópont automatikus frissítése folyamatban van.
 Korlátozott | Kapcsolat nem látható probléma miatt. HTTP-port 8050 problémát, a service bus kapcsolati probléma vagy a hitelesítő adatok szinkronizálási problémája miatt lehet. 
 Inaktív | Csomópont van konfigurálva a konfigurációból egyéb többsége csomópontok különböző.<br/><br/> A csomópont inaktív lehet, ha más csomópontok nem tud kapcsolódni. 
 
@@ -214,9 +214,9 @@ A következő táblázat a lehetséges állapotok egy **logikai átjáró**. Az 
 
 status | Megjegyzések
 :----- | :-------
-Regisztrálnia kell az Adatátjárót | Nincs csomópont még regisztrálva van a logikai átjáró
+Needs Registration | Nincs csomópont még regisztrálva van a logikai átjáró
 Online | Átjáró csomópontja online állapotban.
-Kapcsolat nélküli módban | Nincs csomópontja online állapotát.
+Offline | Nincs csomópontja online állapotát.
 Korlátozott | Ez az átjáró nem minden csomópontja kifogástalan állapotban vannak. Ez az állapot nem figyelmezteti rá, hogy néhány csomópont esetleg nem működik! <br/><br/>Hitelesítő adatok szinkronizálási problémája kézbesítő/munkavégző csomóponton okozhatja. 
 
 ### <a name="pipeline-activities-monitoring"></a>Feldolgozási sor / tevékenységek figyelése
@@ -256,7 +256,7 @@ A Preview visszavonása törlése azonban fürtcsomópontok csomópontjaihoz. Ne
 Ha töröl, kattintson a **az előzetes funkciók** az azonos Azure portálon, és tiltsa le az előzetes verziójú funkciók. Az átjárót egy csomópont GA (általánosan rendelkezésre álló) átjáró visszaállítása.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Olvassa el a következő cikkeket:
 - [Az adatkezelési átjáró](data-factory-data-management-gateway.md) -átjáró részletes áttekintése.
 - [Adatok áthelyezése között a helyszíni és felhőalapú adattároló](data-factory-move-data-between-onprem-and-cloud.md) -egy bemutató részletes utasításokat egy átjáró egyetlen csomóponttal rendelkező tartalmazza. 

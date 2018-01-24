@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 727041edf457ef55a39eb91ba2369c163f5b4712
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 17ffd0de41964736d2f59b0cf891d0c6b2e7d16b
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Azure Data Factory másolási tevékenység segítségével DB2 tárolt adatok mozgatása
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -61,7 +61,7 @@ A Data Factory DB2-összekötő a következő IBM DB2-platformok és 11, 9, 10 e
 > - A DB2 i (AS400): lehetővé teszik a kiemelt felhasználó, a másolási tevékenység futtatása előtt a normál felhasználó gyűjtemény létrehozása. A gyűjtemény létrehozásához használja a parancsot:`create collection <username>`
 > - A z/OS- vagy LUW DB2: magas jogosultsági fiókkal--egy kiemelt felhasználói vagy a felügyeleti csomag hitelesítésszolgáltatók és a kötési, BINDADD, végrehajtási JOGOT nyilvános engedélyek - példányt is futtatni a egyszer. A szükséges csomag automatikusan jön létre a másolás során. Ezután válthat a normál felhasználók a következő másolási kísérletekhez.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 A másolási tevékenység tárolt adatok mozgatása egy helyszíni DB2 adattároló különböző eszközöket és API-k segítségével létrehozhat egy folyamatot: 
 
 - Hozzon létre egy folyamatot legegyszerűbb módja az Azure Data Factory másolása varázsló használatával. A folyamat létrehozása a varázsló segítségével gyorsan útmutatást lásd: a [oktatóanyag: hozzon létre egy folyamatot a másolása varázslóval](data-factory-copy-data-wizard-tutorial.md). 
@@ -83,11 +83,11 @@ Az alábbi táblázat a DB2 rendszerhez kapcsolódó szolgáltatásra vonatkozó
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | **típusa** |Ez a tulajdonság értékre kell állítani **OnPremisesDb2**. |Igen |
-| **kiszolgáló** |A DB2-kiszolgáló nevét. |Igen |
-| **adatbázis** |Neve a DB2-adatbázishoz. |Igen |
-| **séma** |A DB2-adatbázishoz a séma neve. Ez a tulajdonság a kis-és nagybetűket. |Nem |
+| **server** |A DB2-kiszolgáló nevét. |Igen |
+| **database** |Neve a DB2-adatbázishoz. |Igen |
+| **schema** |A DB2-adatbázishoz a séma neve. Ez a tulajdonság a kis-és nagybetűket. |Nem |
 | **authenticationType** |A DB2-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek: névtelen, alapszintű és a Windows. |Igen |
-| **felhasználónév** |A Basic vagy Windows-hitelesítés használata esetén a felhasználói fiók nevét. |Nem |
+| **username** |A Basic vagy Windows-hitelesítés használata esetén a felhasználói fiók nevét. |Nem |
 | **jelszó** |A felhasználói fiók jelszavát. |Nem |
 | **gatewayName** |Az átjáró, amely használatával a Data Factory szolgáltatásnak csatlakoznia a helyszíni DB2-adatbázishoz való kapcsolódáshoz neve. |Igen |
 
@@ -191,7 +191,7 @@ A **külső** tulajdonság értéke "true"értékre. Ez a beállítás arról é
 }
 ```
 
-**Az Azure Blob kimeneti adatkészlet**
+**Azure blobkimeneti adatkészlet**
 
 Adatot ír egy új blob óránként úgy, hogy a **gyakoriság** "Hour" tulajdonságot, és a **időköz** 1 tulajdonság. A **folderPath** tulajdonság a blob dinamikusan ki lesz értékelve az alapján a szelet feldolgozása folyamatban van, a kezdési idejét. A mappa elérési útját használja, év, hónap, nap, és a kezdési idő órában részeit.
 
@@ -312,16 +312,16 @@ A következő megfeleltetéseket szolgálnak, amikor a másolási tevékenység 
 | SmallInt |Int16 |
 | Egész szám |Int32 |
 | BigInt |Int64 |
-| Real |Egyetlen |
+| Real |Egyedülálló |
 | Dupla |Dupla |
 | Lebegőpontos |Dupla |
 | Decimális |Decimális |
 | DecimalFloat |Decimális |
 | Numerikus |Decimális |
-| Dátum |Dátum és idő |
-| Time |A TimeSpan |
-| időbélyeg |Dátum és idő |
-| XML |Byte] |
+| Dátum |DateTime |
+| Time |TimeSpan |
+| Időbélyeg |DateTime |
+| Xml |Byte] |
 | Karakter |Karakterlánc |
 | VarChar |Karakterlánc |
 | LongVarChar |Karakterlánc |
@@ -332,22 +332,22 @@ A következő megfeleltetéseket szolgálnak, amikor a másolási tevékenység 
 | Kép |Karakterlánc |
 | VarGraphic |Karakterlánc |
 | LongVarGraphic |Karakterlánc |
-| CLOB |Karakterlánc |
+| Clob |Karakterlánc |
 | Blob |Byte] |
 | DbClob |Karakterlánc |
 | SmallInt |Int16 |
 | Egész szám |Int32 |
 | BigInt |Int64 |
-| Real |Egyetlen |
+| Real |Egyedülálló |
 | Dupla |Dupla |
 | Lebegőpontos |Dupla |
 | Decimális |Decimális |
 | DecimalFloat |Decimális |
 | Numerikus |Decimális |
-| Dátum |Dátum és idő |
-| Time |A TimeSpan |
-| időbélyeg |Dátum és idő |
-| XML |Byte] |
+| Dátum |DateTime |
+| Time |TimeSpan |
+| Időbélyeg |DateTime |
+| Xml |Byte] |
 | Karakter |Karakterlánc |
 
 ## <a name="map-source-to-sink-columns"></a>Térkép forrás oszlopok gyűjtése
