@@ -13,13 +13,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
-ms.openlocfilehash: 13d01e63cfecdc826eba19b8eb0dc539019409dc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ee0e4671c31e97816576735b7bd2ee2f1629323e
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
-# <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Azure Storage mérőszámainak és a naplózást, a AzCopy és a Message Analyzer végpontok – hibaelhárítás
+# <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Végpontok közötti hibaelhárítás, Azure Storage mérőszámainak és a naplózást, az AzCopy és a Message Analyzer segítségével
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
 
 Diagnosztizálás és hibaelhárítási a kulcs szakértelem kialakításához, és a Microsoft Azure Storage ügyfél alkalmazásokat támogató. Az Azure-alkalmazások elosztott jellege miatt Diagnosztizálás és a hibák és a teljesítménnyel kapcsolatos problémák elhárítása lehet bonyolultabb, mint a hagyományos környezetekben.
@@ -37,9 +37,7 @@ Microsoft Azure Storage használó ügyfélalkalmazások elhárításához eszk�
   * **Tárolási naplózási** kéréseknek jelentkezik, az Azure Storage szolgáltatás kiszolgálóoldali naplóba. A napló részletes adatok az egyes kérelmek, beleértve a végre műveletet, a művelet, és a késési adatok állapotának nyomon követi. Lásd: [Storage Analytics naplóformátumban](/rest/api/storageservices/Storage-Analytics-Log-Format) írja be a naplók tárolási analitika kérelem-válasz adatokról további információt.
 
 > [!NOTE]
-> A Zónaredundáns tárolás (ZRS) replikációs típusú tárfiókok nem rendelkezik a metrikák vagy a naplózási képesség érhető el ezen idő. 
-> 
-> 
+> Zónaredundáns tárolás (ZRS) replikációs típussal rendelkező tárfiókok támogatják, metrikákat és naplózási. A ZRS klasszikus fiókok nem támogatják az metrikákat és naplózási. A ZRS további információkért lásd: [zónaredundáns tárolás](storage-redundancy.md#zone-redundant-storage). 
 
 * **Azure-portálon**. A tárfiók a metrikákat és naplózási konfigurálható a [Azure-portálon](https://portal.azure.com). Akkor is diagramok és hogyan működik az alkalmazás időbeli megjelenítő diagramok megtekintése, és beállíthatja a értesítéseket arról, ha az alkalmazás az adott mérőszám várt módon hajt végre.
   
@@ -100,7 +98,7 @@ Konfigurálja és naplózás és a metrikák a tárolási fiók használatával 
 > 
 > 
 
-**PowerShell használatával**
+**Via PowerShell**
 
 Ismerkedés az Azure PowerShell használatával, lásd: [telepítése és konfigurálása az Azure PowerShell](/powershell/azure/overview).
 
@@ -350,22 +348,22 @@ Most, hogy ismeri a Message Analyzer segítségével elemezheti a naplózási ad
 | Vizsgálja meg... | Használja a szűrőkifejezés... | Napló kifejezés vonatkozik (ügyfél, a kiszolgáló, a hálózat, az összes) |
 | --- | --- | --- |
 | Az üzenet kézbesítési a várólista nem várt késedelmeket |AzureStorageClientDotNetV4.Description tartalmaz "Újrapróbálkozás sikertelen műveletet." |Ügyfél |
-| PercentThrottlingError HTTP növekedése |HTTP-ALAPÚ. Response.StatusCode == 500 &#124; &#124; HTTP-ALAPÚ. Response.StatusCode 503-as == |Network (Hálózat) |
-| PercentTimeoutError növekedése |HTTP-ALAPÚ. Response.StatusCode == 500 |Network (Hálózat) |
+| PercentThrottlingError HTTP növekedése |HTTP.Response.StatusCode   == 500 &#124;&#124; HTTP.Response.StatusCode == 503 |Network (Hálózat) |
+| PercentTimeoutError növekedése |HTTP.Response.StatusCode   == 500 |Network (Hálózat) |
 | Az (all) PercentTimeoutError növelése |* StatusCode == 500 |Összes |
-| PercentNetworkError növekedése |AzureStorageClientDotNetV4.EventLogEntry.Level < 2. régiója |Ügyfél |
-| A HTTP 403-as (tiltott) üzenetek |HTTP-ALAPÚ. Response.StatusCode == 403 |Network (Hálózat) |
-| HTTP 404-es (nem található) üzenetek |HTTP-ALAPÚ. Response.StatusCode == 404 |Network (Hálózat) |
-| 404-es (összes) |* StatusCode == 404 |Összes |
-| Közös hozzáférésű Jogosultságkód (SAS) hitelesítési hiba |AzureStorageLog.RequestStatus == "SASAuthorizationError" |Network (Hálózat) |
-| A HTTP 409 (Ütközés) üzenetek |HTTP-ALAPÚ. Response.StatusCode == 409 |Network (Hálózat) |
+| PercentNetworkError növekedése |AzureStorageClientDotNetV4.EventLogEntry.Level   < 2 |Ügyfél |
+| A HTTP 403-as (tiltott) üzenetek |HTTP.Response.StatusCode   == 403 |Network (Hálózat) |
+| HTTP 404-es (nem található) üzenetek |HTTP.Response.StatusCode   == 404 |Network (Hálózat) |
+| 404 (all) |* StatusCode == 404 |Összes |
+| Közös hozzáférésű Jogosultságkód (SAS) hitelesítési hiba |AzureStorageLog.RequestStatus ==  "SASAuthorizationError" |Network (Hálózat) |
+| A HTTP 409 (Ütközés) üzenetek |HTTP.Response.StatusCode   == 409 |Network (Hálózat) |
 | 409 (összes) |* StatusCode == 409 |Összes |
 | Alacsony PercentSuccess vagy analytics naplóbejegyzés rendelkezik ClientOtherErrors működésére a tranzakció állapota |AzureStorageLog.RequestStatus == "ClientOtherError" |Kiszolgáló |
 | Nagle figyelmeztetés |((AzureStorageLog.EndToEndLatencyMS-AzureStorageLog.ServerLatencyMS) > (AzureStorageLog.ServerLatencyMS * 1.5-ös)) és (AzureStorageLog.RequestPacketSize < 1460) és (AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS > = 200) |Kiszolgáló |
-| A kiszolgáló és a hálózat naplókban időtartományt |#Timestamp > = 2014-10-20T16:36:38 és #Timestamp < = 2014-10-20T16:36:39 |Kiszolgáló hálózati |
+| A kiszolgáló és a hálózat naplókban időtartományt |#Timestamp > = 2014-10-20T16:36:38 és #Timestamp < = 2014-10-20T16:36:39 |Server, Network |
 | A kiszolgáló naplóiban időtartományt |AzureStorageLog.Timestamp > = 2014-10-20T16:36:38 és AzureStorageLog.Timestamp < = 2014-10-20T16:36:39 |Kiszolgáló |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az Azure Storage hibaelhárítási végpont forgatókönyvekkel kapcsolatos további információkért lásd: ezeket az erőforrásokat:
 
 * [Figyelése, diagnosztizálása és elhárítása a Microsoft Azure tárolás](storage-monitoring-diagnosing-troubleshooting.md)

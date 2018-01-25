@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2017
 ms.author: robinsh
-ms.openlocfilehash: d3f70880e58a21a1ae61577b04e3155c5fec6552
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: f94febfa1610795cd46b4315bbbbe56aa2bca861
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Using Azure PowerShell with Azure Storage (Az Azure PowerShell és az Azure Storage együttes használata)
 
@@ -133,7 +133,7 @@ A storage-fiók beállításainak módosításához használja [Set-AzureRmStora
 
 * A **címkék** a tárfiók rendelt. Címkék gyakran használják a számlázási okokból kategorizálhatja az erőforrásokat.
 
-* A **SKU** a replikációs beállítás a tárfiók, például az LRS helyileg redundáns tárolás. Például előfordulhat, hogy módosítja a Standard\_LRS, Standard\_GRS vagy Standard\_RAGRS. Vegye figyelembe, hogy nem módosítható a ZRS Standard vagy prémium szintű LRS más termékváltozatok való, továbbá egyéb termékváltozatok módosítani ezeket a. 
+* A **SKU** a replikációs beállítás a tárfiók, például az LRS helyileg redundáns tárolás. Például előfordulhat, hogy módosítja a Standard\_LRS, Standard\_GRS vagy Standard\_RAGRS. Vegye figyelembe, hogy nem módosíthatja a Standard\_zrs-t vagy a prémium szintű\_LRS az egyéb termékváltozatok vagy más termékváltozatok módosítsa ezeket.
 
 * A **hozzáférési szint** Blob storage-fiókok. A hozzáférési réteg értéke **működés közbeni** vagy **lassú**, és lehetővé teszi, hogy a storage-fiók használatának igazodik a hozzáférési szint kiválasztásával a költségek minimalizálása érdekében. További információkért lásd: [közbeni, hűtsük le, és archiválja a tárolási rétegek](../blobs/storage-blob-storage-tiers.md).
 
@@ -185,8 +185,8 @@ Remove-AzureRmStorageAccount -ResourceGroup $resourceGroup -AccountName $storage
 Alapértelmezés szerint az összes tárfiók található elérhető-e olyan hálózathoz, amely hozzáfér az internethez. Azonban a hálózati szabályokat, hogy csak a tárfiók eléréséhez a meghatározott virtuális hálózatok alkalmazások is beállíthatja. További információkért lásd: [konfigurálása Azure Storage tűzfalak és a virtuális hálózatok](storage-network-security.md). 
 
 A cikk bemutatja, hogyan kezelheti ezeket a beállításokat a következő PowerShell-parancsmagok használatával:
-* [Adja hozzá AzureRmStorageAccountNetworkRule](/powershell/module/AzureRM.Storage/Add-AzureRmStorageAccountNetworkRule)
-* [Frissítés-AzureRmStorageAccountNetworkRuleSet](/powershell/module/azurerm.storage/update-azurermstorageaccountnetworkruleset)
+* [Add-AzureRmStorageAccountNetworkRule](/powershell/module/AzureRM.Storage/Add-AzureRmStorageAccountNetworkRule)
+* [Update-AzureRmStorageAccountNetworkRuleSet](/powershell/module/azurerm.storage/update-azurermstorageaccountnetworkruleset)
 * [Remove-AzureRmStorageAccountNetworkRule](/powershell/module/azurerm.storage/remove-azurermstorage-account-networkrule)
 
 ## <a name="use-storage-analytics"></a>Tárolási analitika használata  
@@ -223,24 +223,24 @@ Az Azure Cosmos DB tábla API prémium szolgáltatások biztosít a table storag
 * További információkért lásd: [Azure Cosmos DB tábla API](../../cosmos-db/table-introduction.md). 
 * Azure Cosmos DB tábla API-műveleteket a PowerShell használatával, lásd: [végre Azure Cosmos DB tábla API-műveleteket a PowerShell-lel](../../cosmos-db/table-powershell.md).
 
-## <a name="azures-independently-deployed-clouds"></a>Azure-egymástól függetlenül telepített felhők
+## <a name="independent-cloud-deployments-of-azure"></a>Azure független felhő példányai
 
 A legtöbben Azure nyilvános Felhőjében használja a globális Azure telepítésekhez. Van még néhány független üzemelő Microsoft Azure a közös joghatóság alá okait, és így tovább. A független központi telepítéseket nevezzük "environments." A rendelkezésre álló környezetekben az alábbiak:
 
 * [Az Azure Government felhő](https://azure.microsoft.com/features/gov/)
 * [Azure Kínában a 21Vianet által működtetett Kína-felhő](http://www.windowsazure.cn/)
-* [Az Azure német felhő](../../germany/germany-welcome.md)
+* [Azure German Cloud](../../germany/germany-welcome.md)
 
 Hogyan érhetők el a felhők és a tárolás, a PowerShell használatával kapcsolatos információkért lásd: [tárolás kezelése a PowerShell használata Azure független felhők](storage-powershell-independent-clouds.md).
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha létrehozott egy új erőforráscsoportot és az ebben a gyakorlatban egy tárfiókot, yous is távolítsa el az összes az eszközök eltávolítása az erőforráscsoport hozta létre. Ez törli a csoportban található összes erőforrást is. Ebben az esetben eltávolítja a létrehozott tárfiókban és az erőforráscsoport magát.
+Ha létrehozott egy új erőforráscsoportot és az ebben a gyakorlatban egy tárfiókot, yous is távolítsa el az összes az eszközök eltávolítása az erőforráscsoport hozta létre. Így törli a csoportban lévő összes erőforrást is. Ebben az esetben eltávolítja a létrehozott tárfiókban és az erőforráscsoport magát.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name $resourceGroup
 ```
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A cikkben található útmutató storage-fiókok kezelése a vezérlősík parancsmagokat gyakori műveletek ismerteti. Megismerte, hogyan végezheti el az alábbi műveleteket: 
 

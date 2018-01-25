@@ -12,17 +12,17 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 11/03/2017
+ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: ce9a6493e80d65641ef5d797d89663bfaa5cd624
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: f1c0734b07287d95a2f5031e010f0e407d3a816f
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="storsimple-8000-series-update-4-release-notes"></a>A StorSimple 8000 Series Update 4 kibocsátási megjegyzései
 > [!NOTE]
-> A klasszikus portál StorSimple elavult. A StorSimple eszköz kezelői automatikusan áthelyezi a érvénytelenítése ütemezés szerint az új Azure-portálon. Kapni fog egy e-mailek és a portál értesítései az áthelyezés. Ez a dokumentum hamarosan is kell vonni. Az áthelyezés kapcsolatos kérdéseivel lásd: [– gyakori kérdések: áthelyezése az Azure-portálon](storsimple-8000-move-azure-portal-faq.md).
+> A StorSimple klasszikus portálja elavult. A StorSimple-eszközkezelők automatikusan átkerülnek az új Azure Portalra az elavulási ütemezésnek megfelelően. Erről az áthelyezésről kapni fog egy e-mailt és egy Portal-értesítést. Ez a dokumentum hamarosan el lesz távolítva. Ha kérdései vannak az áthelyezéssel kapcsolatban, tekintse meg a [Gyakori kérdések: Váltás az Azure Portalra](storsimple-8000-move-azure-portal-faq.md) szakaszt.
 
 
 ## <a name="overview"></a>Áttekintés
@@ -59,7 +59,7 @@ A következő fontos fejlesztést tartalmaz, és hibajavítások Update 4 végze
 
 * **Módosításainak frissítésére** -ebben a kiadásban hibák frissítése kapcsolatos hibák kijavítása.
 
-* **Riasztás a lemezhibák** -egy új riasztás, amely figyelmezteti a felhasználót a közelgő lemezhiba jelenik meg ebben a kiadásban. Ha ezt a riasztást, lépjen kapcsolatba a Microsoft Support küldje el a cserelemezt. További információkért látogasson el [hardver riasztások a StorSimple eszköz](storsimple-manage-alerts.md#hardware-alerts).
+* **Riasztás a lemezhibák** -egy új riasztás, amely figyelmezteti a felhasználót a közelgő lemezhiba jelenik meg ebben a kiadásban. Ha ezt a riasztást, lépjen kapcsolatba a Microsoft Support küldje el a cserelemezt. További információkért látogasson el [hardver riasztások a StorSimple eszköz](storsimple-8000-manage-alerts.md#hardware-alerts).
 
 * **Tartományvezérlő helyettesítő módosítások** -parancsmag, amely lehetővé teszi a felhasználó a vezérlő cseréjét állapotának lekérdezése egészül ki ebben a kiadásban. További információkért látogasson el a [lekérdezés tartományvezérlő helyettesítő állapotát parancsmag](https://technet.microsoft.com/library/dn688168.aspx).
 

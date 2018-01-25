@@ -248,7 +248,7 @@
           items:
             - name: Csatlakozás a MongoDB-fiókhoz
               href: connect-mongodb-account.md
-            - name: A MongoChef használata
+            - name: A Studio 3T használata
               href: mongodb-mongochef.md
             - name: A Robomongo használata
               href: mongodb-robomongo.md
