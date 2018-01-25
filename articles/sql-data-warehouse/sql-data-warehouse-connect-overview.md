@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: connect
 ms.date: 12/14/2017
 ms.author: anvang;barbkess;kevin
-ms.openlocfilehash: bd2e89f39d54a2186fa9ca343d04135b2da5d352
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: 804d91d309fcce42f0ac50ac98dbad9c5648b4eb
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="connect-to-azure-sql-data-warehouse"></a>Csatlakozás az Azure SQL Data Warehouse-hoz
 Ennek a cikknek a segítségével első alkalommal csatlakozhat az SQL Data Warehouse-hoz.
@@ -43,12 +43,12 @@ Az Azure SQL Data Warehouse a következő illesztőprogramokat támogatja: [ADO.
 > 
 
 ### <a name="adonet-connection-string-example"></a>Minta ADO.NET kapcsolati karakterlánc
-```C#
+```csharp
 Server=tcp:{your_server}.database.windows.net,1433;Database={your_database};User ID={your_user_name};Password={your_password_here};Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
 ```
 
 ### <a name="odbc-connection-string-example"></a>Minta ODBC kapcsolati karakterlánc
-```C#
+```csharp
 Driver={SQL Server Native Client 11.0};Server=tcp:{your_server}.database.windows.net,1433;Database={your_database};Uid={your_user_name};Pwd={your_password_here};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;
 ```
 
@@ -72,7 +72,7 @@ Az SQL Data Warehouse szabványosít néhány beállítást a csatlakozás és a
 | [DATEFORMAT][DATEFORMAT] |hné |
 | [DATEFIRST][DATEFIRST] |7 |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A Visual Studióval végzett csatlakozásról és lekérdezésről lásd: [Lekérdezés a Visual Studióval][Query with Visual Studio]. A hitelesítési lehetőségekkel kapcsolatos további információkért lásd: [Authentication to Azure SQL Data Warehouse][Authentication to Azure SQL Data Warehouse] (Hitelesítés az Azure SQL Warehouse-szal).
 
 <!--Articles-->

@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: get-started-article
 ms.date: 12/19/2017
 ms.author: iainfou
-ms.openlocfilehash: 1a4c69427e0fa38e9206e2720c4746c97d922df1
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: c5ca90ae303d62c4ad453971f84da78866b0c599
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="create-a-virtual-machine-scale-set-with-azure-powershell"></a>Virtuálisgép-méretezési csoport létrehozása az Azure PowerShellel
 A virtuálisgép-méretezési csoportok segítségével azonos, automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti. A méretezési csoportban lévő virtuális gépek számát skálázhatja manuálisan, vagy megadhat automatikus skálázási szabályokat is az erőforrás-használat (például processzorhasználat, memóriaigény vagy hálózati forgalom) alapján. Ebben az első lépéseket bemutató cikkben egy virtuálisgép-méretezési csoportot hozunk létre az Azure PowerShellel. Méretezési csoportokat az [Azure CLI 2.0](virtual-machine-scale-sets-create-cli.md) használatával, illetve az [Azure Portalon](virtual-machine-scale-sets-create-portal.md) is létrehozhat.
@@ -120,7 +120,7 @@ $ipConfig = New-AzureRmVmssIpConfig `
 
 
 ## <a name="create-a-scale-set"></a>Méretezési csoport létrehozása
-Most hozzon létre egy virtuálisgép-méretezési csoportot a [New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvm) paranccsal. A következő példa létrehoz egy *myScaleSet* nevű méretezési csoportot, amely a *Windows Server 2016 Datacenter* platformrendszerképet használja. A *vmssConfig* objektum 2 virtuálisgép-példányt hoz létre az USA keleti régiójában az *adminUsername* és *securePassword* változókban meghatározott hitelesítő adatokkal. Adja meg a saját hitelesítő adatait, és hozzon létre egy méretezési csoportot az alábbiak szerint:
+Most hozzon létre egy virtuálisgép-méretezési csoportot a [New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvmss) paranccsal. A következő példa létrehoz egy *myScaleSet* nevű méretezési csoportot, amely a *Windows Server 2016 Datacenter* platformrendszerképet használja. A *vmssConfig* objektum 2 virtuálisgép-példányt hoz létre az USA keleti régiójában az *adminUsername* és *securePassword* változókban meghatározott hitelesítő adatokkal. Adja meg a saját hitelesítő adatait, és hozzon létre egy méretezési csoportot az alábbiak szerint:
 
 ```azurepowershell-interactive
 # Provide your own secure password for use with the VM instances

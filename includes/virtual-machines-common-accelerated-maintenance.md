@@ -45,7 +45,7 @@ A webes és mobil, adatszolgáltatások, IoT, beleértve az Azure platform szolg
 
 ## <a name="intel-released-additional-guidance-on-january-22-2018-related-to-the-security-vulnerabilities--will-this-guidance-cause-any-additional-maintenance-activities-by-azure"></a>Intel. január 22, 2018 biztonsági rések kapcsolatos további útmutatást ki.  Ez az útmutató, akkor további karbantartási tevékenységeket az Azure-ban?  
 
-2018. január 3. a korábban közzétett Azure megoldást nem érinti a [útmutatójának frissítése](https://newsroom.intel.com/news/root-cause-of-reboot-issue-identified-updated-guidance-for-customers-and-partners/) az Intel. A felhasználói virtuális gépeket az új információk Intel által a nincs további karbantartási tevékenység fognak futni.
+2018. január 3. a korábban közzétett Azure megoldást nem érinti a [útmutatójának frissítése](https://newsroom.intel.com/news/root-cause-of-reboot-issue-identified-updated-guidance-for-customers-and-partners/) az Intel. A felhasználói virtuális gépeket az új információk a nincs további karbantartási tevékenység fognak futni.
  
 
 ## <a name="next-steps"></a>További lépések

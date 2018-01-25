@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 12/06/2017
+ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: a8990d68b327e5688c7078a6b1a9d41ad0600a67
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: c14927f82ca01320206ccec83216777b7d1b8708
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple-biztonság és adatvédelem
 
@@ -155,7 +155,7 @@ A szolgáltatásadat-titkosítási kulcs jön létre, csak az első eszköz regi
 > [!IMPORTANT]
 > Nagyon fontos másolatot készít a szolgáltatásadat-titkosítási kulcs, és mentse egy biztonságos helyre. A szolgáltatásadat-titkosítási kulcs biztonsági másolatának oly módon, hogy elérhetők, meghatalmazott, és az eszköz-rendszergazdai könnyen továbbítani kell tárolni.
 > 
-> A szolgáltatásadat-titkosítási kulcs nem vesztek el, ha a Microsoft támogatási szolgálatnak segítenek lekéréséhez, feltéve, hogy legalább egy eszköz online állapotban van. Azt javasoljuk, hogy módosítsa a szolgáltatásadat-titkosítási kulcs, miután lekéri azt. Utasításokért ugorjon [módosítása a szolgáltatásadat-titkosítási kulcs](storsimple-service-dashboard.md#change-the-service-data-encryption-key).
+> A szolgáltatásadat-titkosítási kulcs nem vesztek el, ha a Microsoft támogatási szolgálatnak segítenek lekéréséhez, feltéve, hogy legalább egy eszköz online állapotban van. Azt javasoljuk, hogy módosítsa a szolgáltatásadat-titkosítási kulcs, miután lekéri azt.
 
 A szolgáltatásadat-titkosítási kulcs és a megfelelő adatok titkosítási tanúsítványt, kövesse a lépéseket a [megváltoztatása a StorSimple Device Manager szolgáltatás a szolgáltatásadat-titkosítási kulcs](storsimple-8000-manage-service.md#change-the-service-data-encryption-key). A titkosítási kulcsok módosításához szükséges, hogy minden eszköz frissíteni kell-e az új kulccsal. Ezért azt javasoljuk, hogy a kulcs akkor módosul, ha minden eszköz online állapotban. Kapcsolat nélküli eszközök esetén a kulcsok egy másik időpontban lehet megváltoztatni. Az elavult kulccsal rendelkező eszközöket is kíván biztonsági másolatot készíteni, de nem fogják tudni állítsa vissza az adatokat, amíg a kulcsa nem frissül.
 
@@ -268,7 +268,7 @@ Az alábbi táblázat néhány kapcsolatos kérdések és válaszok biztonsági 
 
 **V:** az összes adat titkosítva van a szolgáltatásban, és a titkos kulcs megőrzi az eszközzel, mert a kormányzati entitás kérje meg az ügyfél az adatok számára.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A StorSimple eszköz üzembe helyezése](storsimple-8000-deployment-walkthrough-u2.md).
 

@@ -1,21 +1,21 @@
 ---
-title: "Az Azure-tárolót regisztrációs Azure tároló példányok telepítése"
-description: "Az Azure-tárolót regisztrációs Azure tároló példányok telepítése"
+title: "Azure-tárolót beállításjegyzékből Azure tároló példányok telepítése"
+description: "Útmutató: Azure tároló példányát az Azure-tároló beállításjegyzék tároló lemezképek használatával tároló üzembe helyezése."
 services: container-instances
 author: seanmck
 manager: timlt
 ms.service: container-instances
 ms.topic: article
-ms.date: 01/02/2018
+ms.date: 01/24/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 4205b47dc67920021812c1e573a98de64ad198ec
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: c69b95f66bf2eaf4975961da5b25f5ac6172798c
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/25/2018
 ---
-# <a name="deploy-to-azure-container-instances-from-the-azure-container-registry"></a>Az Azure-tárolót regisztrációs Azure tároló példányok telepítése
+# <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Azure-tárolót beállításjegyzékből Azure tároló példányok telepítése
 
 Az Azure-tároló beállításjegyzék egy Azure-alapú, személyes beállításjegyzék Docker-tároló lemezképek. Ez a cikk bemutatja, hogyan telepítheti a beállításjegyzékben Azure tároló Azure tároló példányokhoz tároló lemezképeket.
 
@@ -51,17 +51,23 @@ Ha az Azure-tároló beállításjegyzék lemezképeit tároló, Azure-tároló 
 
 1. Az Azure portálon keresse meg a tároló beállításjegyzék.
 
-2. Válassza ki **Tárházak**, majd válassza ki a tárházban, amelyet szeretne telepíteni, kattintson a jobb gombbal a tároló lemezkép központi telepítése, és válassza ki a címke **példány futtatása**.
+1. Válassza ki **Tárházak**, majd válassza ki a tárházban, amelyet szeretne telepíteni, kattintson a jobb gombbal a tároló lemezkép központi telepítése, és válassza ki a címke **példány futtatása**.
 
     !["Futtatás példány" Azure tároló beállításjegyzék az Azure-portálon][acr-runinstance-contextmenu]
 
-3. Adja meg a tároló nevét és az erőforráscsoport nevét. Ha kívánja, módosíthatja az alapértelmezett értékeket.
+1. Adja meg a tároló nevét és az erőforráscsoport nevét. Ha kívánja, módosíthatja az alapértelmezett értékeket.
 
     ![Azure-tároló példányok menü létrehozása][acr-create-deeplink]
 
-4. Miután a telepítés befejeződött, lépjen a tárolócsoport a értesítések panelről az IP-címét és egyéb tulajdonságok kereséséhez.
+1. Miután a telepítés befejeződött, lépjen a tárolócsoport a értesítések panelről az IP-címét és egyéb tulajdonságok kereséséhez.
 
     ![Az Azure-tároló példányok a tárolócsoport Részletek nézet][aci-detailsview]
+
+## <a name="service-principal-authentication"></a>Egyszerű szolgáltatásnév hitelesítése
+
+Ha a felhasználót a rendszergazda az Azure-tárolót beállításjegyzék le van tiltva, használhatja az Azure Active Directory-alapú [egyszerű](../container-registry/container-registry-auth-service-principal.md) hitelesítéséhez a beállításjegyzéket, a tároló példányának létrehozásakor. Távfelügyeleti forgatókönyvek, például egy parancsfájl vagy az alkalmazás által létrehozott tároló példányok felügyelet nélkül is ajánlott az egyszerű szolgáltatás használata a hitelesítéshez.
+
+További információkért lásd: [hitelesítés az Azure-tároló beállításjegyzék Azure tároló példányokból](../container-registry/container-registry-auth-aci.md).
 
 ## <a name="next-steps"></a>További lépések
 

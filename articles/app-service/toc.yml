@@ -31,6 +31,8 @@
   items:
     - name: 1 – Adatbázist használó alkalmazás
       items:
+        - name: .NET Core és SQL-adatbázis
+          href: app-service-web-tutorial-dotnetcore-sqldb.md
         - name: .NET és SQL DB
           href: app-service-web-tutorial-dotnet-sqldatabase.md
         - name: PHP és MySQL
@@ -175,7 +177,7 @@
       href: /powershell
     - name: REST API
       href: /rest/api/appservice/
-- name: Erőforrások
+- name: További források
   items:
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'

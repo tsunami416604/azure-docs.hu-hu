@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Inactive
-ms.date: 09/15/2017
+ms.date: 01/23/2018
 ms.author: genemi
-ms.openlocfilehash: 9f58ea34dad5d4436c13b64653040bd2a57c299e
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 8c27f22657f7f8d04aab96fbc2ee25aa19cebd9f
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="use-powershell-to-create-a-virtual-service-endpoint-and-rule-for-azure-sql-database"></a>Hozzon létre egy virtuális végpontját, és a szabály az Azure SQL Database PowerShell használatával
 
@@ -48,7 +48,8 @@ Az alábbi listán azt mutatja be, a másik *fő* parancsmagokat, futtatnia kell
 
 4. [Set-AzureRmVirtualNetwork](https://docs.microsoft.com/powershell/module/azurerm.network/Set-AzureRmVirtualNetwork): továbbra is fennáll a frissítéseket a virtuális hálózat.
 
-5. **Új AzureRmSqlServerVirtualNetworkRule**: Miután az alhálózat egy végpontot, hozzáadja az alhálózat virtuális hálózati szabály, a hozzáférés-vezérlési lista, az Azure SQL Database-kiszolgálóhoz.
+5. [Új AzureRmSqlServerVirtualNetworkRule](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqlservervirtualnetworkrule): Miután az alhálózat egy végpontot, hozzáadja az alhálózat virtuális hálózati szabály, a hozzáférés-vezérlési lista, az Azure SQL Database-kiszolgálóhoz.
+    - A paraméter kínál **- IgnoreMissingVnetServiceEndpoint**kezdődően az Azure erőforrás-kezelő PowerShell modul 5.1.1-es verziója.
 
 #### <a name="prerequisites-for-running-powershell"></a>A PowerShell futtatásához Előfeltételek
 
@@ -123,8 +124,8 @@ Write-Host 'Completed script 1, the "Variables".';
 
 Ez a parancsfájl előkészíti a következő parancsfájlt, ahol a végpont művelete. Ez a parancsfájl létrehozza, a következő elemeket, de csak felsorolt, ha még nem léteznek. Parancsfájl 2 kihagyhatja, ha biztos benne, hogy ezek az elemek már létezik:
 
-- Azure-erőforráscsoportot
-- Az Azure SQL Database-kiszolgálóhoz
+- Azure-erőforráscsoport
+- Azure SQL Database server
 
 #### <a name="powershell-script-2-source-code"></a>PowerShell parancsfájl 2 forráskód
 
@@ -310,8 +311,8 @@ Write-Host 'Completed script 3, the "Virtual-Netowrk-Rule".';
 
 A végső parancsfájl törli az erőforrásokat, amelyek a korábbi parancsfájlok a bemutató készült. Azonban a parancsprogram kéri a jóváhagyás előtt törli a következő:
 
-- Az Azure SQL Database-kiszolgálóhoz
-- Azure-erőforráscsoportot
+- Azure SQL Database server
+- Azure Resource Group
 
 Parancsfájl 4 1 parancsfájl befejezése után bármikor futtathatja.
 

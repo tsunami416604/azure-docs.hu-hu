@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/27/2017
+ms.date: 01/23/2018
 ms.author: bwren
-ms.openlocfilehash: 163ac33af43a8cb7a23742f6336efca5fe7c4b4e
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: e687a1ee8ac4f565062e57b07cdfa9ac5e6bbf4f
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="import-azure-log-analytics-data-into-power-bi"></a>Azure Log Analytics-adatok importálása a Power BI-bA
 
@@ -86,12 +86,12 @@ A Power BI konfigurálása során egy [örökölt Naplóelemzési munkaterület]
 ![Naplóelemzési Power bi-bA](media/log-analytics-powerbi/overview-legacy.png)
 
 ### <a name="power-bi-schedules"></a>A Power BI ütemezése
-A *Power BI ütemezés* adatok exportálja az OMS-tárház Power bi-ban, és egy ütemezést, amely meghatározza, milyen gyakran fut a Keresés a dataset naprakészen tartása a megfelelő DataSet napló keresést tartalmazza.
+A *Power BI ütemezés* Naplóelemzési adatok exportálja a Power bi-ban, és egy ütemezést, amely meghatározza, milyen gyakran fut a dataset naprakészen tartása a keresés megfelelő DataSet napló keresést tartalmazza.
 
 A dataset mezőinek fog egyezni a rekordokat a naplóban keresés által visszaadott tulajdonságait.  Ha a keresés különböző típusú rekordot visszaadja a dataset fogja tartalmazni az egyes belefoglalt bejegyzéstípust tulajdonságokat.  
 
-### <a name="connecting-oms-workspace-to-power-bi"></a>A Power bi-hoz kapcsolódó OMS-munkaterület
-Exportálás előtt fel Naplóelemzési a Power bi-ba, csatlakoznia kell az OMS-munkaterület az alábbi eljárást követve a Power BI-fiókjába.  
+### <a name="connecting-log-analytics-workspace-to-power-bi"></a>Naplóelemzési munkaterület Power bi-hoz csatlakozik
+Exportálás előtt fel Naplóelemzési a Power bi-ba, csatlakoznia kell a munkaterület az alábbi eljárást követve a Power BI-fiókjába.  
 
 1. Az OMS-konzolon kattintson a **beállítások** csempére.
 2. Válassza ki **fiókok**.
@@ -108,7 +108,7 @@ Minden az adatkészlethez az alábbi eljárást követve a Power BI ütemezés l
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Név |Neve az ütemezés azonosításához, ha a Power BI ütemezések listájának megtekintése. |
+| Name (Név) |Neve az ütemezés azonosításához, ha a Power BI ütemezések listájának megtekintése. |
 | Mentett keresés |A napló keresés futtatásához.  Válassza ki az aktuális lekérdezés, vagy válassza ki a korábban mentett keresési a legördülő listából. |
 | Ütemezés |Milyen gyakran szeretné a mentett keresés futtatásához, és exportálhatja a Power BI-adatkészlet.  Az érték 15 perc és 24 óra között kell lennie. |
 | A DataSet neve |A Power bi-ban a DataSet adatkészlet neve.  Rendszer hozható létre, ha még nem létezik és frissítése, ha már létezik. |
@@ -169,6 +169,6 @@ Azt a képernyő tetején a Mentés gombra kattintva mentse a jelentést, és el
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További tudnivalók [keresések jelentkezzen](log-analytics-log-searches.md) Power bi szolgáltatásba exportálhatók lekérdezések összeállításához.
 * További információ [Power BI](http://powerbi.microsoft.com) Naplóelemzési export alapuló képi megjelenítések létrehozásához.

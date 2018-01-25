@@ -43,19 +43,21 @@
       href: container-registry-get-started-docker-cli.md
     - name: Az adattárak megtekintése
       href: container-registry-repositories.md
-    - name: Egyszerű szolgáltatás létrehozása
-      href: ../azure-resource-manager/resource-group-create-service-principal-portal.md?toc=%2fazure%2fcontainer-registry%2ftoc.jso
     - name: Klasszikus beállításjegyzék frissítése
       href: container-registry-upgrade.md
     - name: ACR-webhookok használata
-      href: ./container-registry-webhook.md
+      href: container-registry-webhook.md
     - name: Hitelesítés
       items:
         - name: A hitelesítés áttekintése
           href: container-registry-authentication.md
+        - name: Egyszerű szolgáltatásnév hitelesítése
+          href: container-registry-auth-service-principal.md
+        - name: Azure Container Instances
+          href: container-registry-auth-aci.md
         - name: Azure Container Service
-          href: ./container-registry-auth-aks.md
-- name: Hivatkozás
+          href: container-registry-auth-aks.md
+- name: Referencia
   items:
     - name: Azure CLI
       href: /cli/azure/acr

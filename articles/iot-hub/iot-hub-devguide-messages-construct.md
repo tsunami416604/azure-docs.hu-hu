@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: dobett
-ms.openlocfilehash: b88567616e0a8c46494ae0af367f4deb4506be43
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: c57ceb83951341d4a7bf368e209ba0f88825672c
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="create-and-read-iot-hub-messages"></a>Hozzon létre, és az IoT-központ üzenet olvasása
 
@@ -28,7 +28,7 @@ Zökkenőmentes együttműködés támogatására biztosíthat a protokollokon, 
 * Egy *alkalmazástulajdonságok*. Az alkalmazás meghatározó karakterlánc-tulajdonságok és a hozzáférés, anélkül, hogy az üzenet törzsének deszerializálása dictionary. Az IoT-központ soha nem módosítja ezeket a tulajdonságokat.
 * Nem átlátszó bináris törzsében.
 
-Nevét és értékeit csak ASCII alfanumerikus karaktereket tartalmazhat, valamint ``{'!', '#', '$', '%, '&', "'", '*', '+', '-', '.', '^', '_', '`', '|', '~'}`` amikor Ön:  
+Nevét és értékeit csak ASCII alfanumerikus karaktereket tartalmazhat, valamint ```{'!', '#', '$', '%, '&', "'", '*', '+', '-', '.', '^', '_', '`', '|', '~'}``` amikor Ön:  
 
 * A HTTPS protokoll használatával eszközről a felhőbe üzeneteket küldeni.
 * Felhő-eszközre küldött üzenetek küldése.
@@ -39,13 +39,13 @@ A következő táblázat az IoT Hub-kezelő üzeneteinek tulajdonságainak list�
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| messageId |Az üzenet kérelem-válasz minták használt felhasználói állítható be azonosítója. Formátum: A kis-és nagybetűket (legfeljebb 128 karakter hosszú) ASCII 7 bites alfanumerikus karakterekből álló karakterlánc + `{'-', ':',’.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`. |
+| MessageId |Az üzenet kérelem-válasz minták használt felhasználói állítható be azonosítója. Formátum: A kis-és nagybetűket (legfeljebb 128 karakter hosszú) ASCII 7 bites alfanumerikus karakterekből álló karakterlánc + `{'-', ':',’.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`. |
 | Sorozat száma |Minden felhő eszközre üzenetet az IoT-központ által hozzárendelt szám (eszköz-várólista minden egyedi). |
 | Művelet |A megadott célhelyre [felhő eszközre] [ lnk-c2d] üzeneteket. |
 | ExpiryTimeUtc |Dátum és az üzenet lejárati idejét. |
 | EnqueuedTime |Dátum és idő a [felhő eszközre] [ lnk-c2d] üzenet érkezett az IoT-központot. |
 | CorrelationId |A kérelem a kérelem-válasz minták MessageId általában tartalmazó válaszüzenetet a karakterlánc típusú tulajdonság. |
-| Felhasználói azonosítóját |Adja meg az üzenetek eredeti használt azonosító. Az IoT-központ által előállított üzeneteket, ha van-e beállítva `{iot hub name}`. |
+| Felhasználói azonosító |Adja meg az üzenetek eredeti használt azonosító. Az IoT-központ által előállított üzeneteket, ha van-e beállítva `{iot hub name}`. |
 | Nyugtázási |A visszajelzési üzenet generátor. Ezt a tulajdonságot használják a felhő-eszközre küldött üzenetek igényelni az IoT-központ létrehozhat visszajelzés üzeneteket a felhasználás az üzenet miatt az eszköz. A lehetséges értékek: **nincs** (alapértelmezett): Nincs visszajelzés üzenet jön létre, **pozitív**: visszajelzés üzenetet kap, ha az üzenet befejeződött, **negatív**: visszajelzés üzenetet kap, ha nélkül végzi az eszközt, az üzenet lejárt (vagy elérte a maximális száma) vagy **teljes**: pozitív és negatív. További információkért lásd: [visszajelzés üzenet][lnk-feedback]. |
 | ConnectionDeviceId |Az eszköz a felhőbe küldött üzeneteket az IoT-központ által beállított azonosító. Tartalmazza a **deviceId** az eszközt, az üzenetet küldő. |
 | ConnectionDeviceGenerationId |Az eszköz a felhőbe küldött üzeneteket az IoT-központ által beállított azonosító. Tartalmazza a **generationId** (megfelelően [identitás eszköztulajdonságok][lnk-device-properties]) az eszköz az üzenetet küldő. |
@@ -61,7 +61,7 @@ Az IoT-központ méri üzenet mérete protokoll-független módon annak eldönt�
 
 Nevét és értékeit korlátozódnak ASCII-karaktereket, így a karakterlánc hosszát eredménye a mérete bájtban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a méretkorlátozásokról üzenetet az IoT hubon: [IoT-központ kvóták és sávszélesség-szabályozási][lnk-quotas].
 

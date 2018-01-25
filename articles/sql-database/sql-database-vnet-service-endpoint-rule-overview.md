@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: On Demand
-ms.date: 11/13/2017
+ms.date: 01/23/2018
 ms.author: genemi
-ms.openlocfilehash: ce223fbd6a69bc789f902f9478b5255edfd44844
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 6294216568e1d4c50ef6e6b6d2348a2a221406b0
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Virtuális hálózati szolgáltatás végpontok és szabályok az Azure SQL Database használata
 
@@ -179,11 +179,20 @@ Jelenleg két módja van az SQL-adatbázis naplózásának engedélyezéséhez. 
 Az Azure Storage ugyanaz a funkció, amely lehetővé teszi, hogy korlátozza a tárfiókkal van megvalósítva.
 Ha a szolgáltatás használatához egy tárfiókot, az Azure SQL-kiszolgáló által használt választja, a problémák futtathatja. Ezután egy lista és vitafórum által befolyásolt Azure SQLDB funkcióját.
 
-#### <a name="azure-sqldw-polybase"></a>Az Azure SQLDW PolyBase
+#### <a name="azure-sqldw-polybase"></a>Azure SQLDW PolyBase
 A PolyBase gyakran használják az adatok betöltése az Azure SQLDW a Storage-fiókok. A Storage-fiók, amely adatokat tölt be korlátozza a hozzáférést csak VNet-alhálózatokat, ha megszakad a fiók és a PolyBase közötti kapcsolatot.
 
-#### <a name="azure-sqldb-blob-auditing"></a>Az Azure SQLDB Blob naplózás
+#### <a name="azure-sqldb-blob-auditing"></a>Azure SQLDB Blob Auditing
 A saját tárfiók blobnaplózási funkció leküldi naplókat. Ha ezt a tárfiókot használ a BBI szolgáltatás végpontok Azure SQLDB a tárolási fiók kapcsolat megszakad.
+
+
+## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>A virtuális hálózat Tűzfalszabályok hozzáadása a kiszolgálóhoz nélkül szolgáltatják a VNET-végpontok
+
+Mennyivel Ez a szolgáltatás tovább lett fejlesztve, mielőtt elvégezhetné szükséges teszi a virtuális hálózat szolgáltatás végpontok a tűzfalon élő VNet szabály sikertelen végrehajtása előtt. A végpontok kapcsolódó egy Azure SQL Database adott VNet-alhálózat. De most frissítésétől január 2018, akkor megkerülheti ennek a követelménynek úgy, hogy a **IgnoreMissingServiceEndpoint** jelzőt.
+
+Csupán beállítása a tűzfalszabályok nem biztonságossá tétele a kiszolgálón. Is engedélyezze a VNet Szolgáltatásvégpontok szolgáltatást a biztonság érvénybe léptetéséhez. Végpontok bekapcsolásakor a VNet-alhálózat állásidő észlel, amíg be nem fejezi be-vagy kikapcsolása történő áttérés a. Ez különösen igaz nagy Vnetek környezetében. Használhatja a **IgnoreMissingServiceEndpoint** jelző csökkentheti vagy elkerülheti a leállás átmenet közben.
+
+Beállíthatja a **IgnoreMissingServiceEndpoint** jelző PowerShell használatával. További információkért lásd: [egy virtuális hálózati szolgáltatási végpont és a szabály létrehozása az Azure SQL Database PowerShell][sql-db-vnet-service-endpoint-rule-powershell-md-52d].
 
 
 ## <a name="errors-40914-and-40615"></a>Hibák 40914 és 40615
@@ -198,7 +207,7 @@ Kapcsolódási hiba 40914 vonatkozik *virtuális hálózati szabályok*, a tűzf
 
 *Névfeloldási hiba:* a tűzfal ablaktáblán az Azure portál, használja a virtuális hálózati szabályok megszabott [adja hozzá a virtuális hálózati szabály](#anchor-how-to-by-using-firewall-portal-59j) az alhálózat.
 
-#### <a name="error-40615"></a>Hiba 40615
+#### <a name="error-40615"></a>Error 40615
 
 *Szöveges üzenet:* nem nyitható meg a kiszolgáló a bejelentkezés által kért "{0}". Ügyfél IP-cím "{1}" nem engedélyezett a kiszolgálóhoz való hozzáféréshez.
 

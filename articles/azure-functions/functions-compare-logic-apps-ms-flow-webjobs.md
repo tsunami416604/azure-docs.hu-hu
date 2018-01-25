@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 11/03/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: e61e664ef5cd9e296016c8fc572d67ec1d62c1f7
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 7ffe44828735a5687008ebc5a7d8d9f017f49daa
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="choose-between-flow-logic-apps-functions-and-webjobs"></a>Választás a következők közül: Flow, Logic Apps, Functions és WebJobs
 Ez a cikk az integrációs problémák megoldására és üzleti folyamatok automatizálására alkalmas alábbi Microsoft Cloud-szolgáltatásokat hasonlítja össze:
@@ -115,7 +115,7 @@ Meghívhat egy logikai alkalmazást egy folyamatban. Függvényt is meghívhat e
 Ismerkedjen meg az egyes szolgáltatásokkal az első folyamat, logikai alkalmazás, függvényalkalmazás vagy WebJob létrehozása révén. Kattintson a következő hivatkozások bármelyikére:
 
 * [A Microsoft Flow használatának első lépései](https://flow.microsoft.com/en-us/documentation/getting-started/)
-* [Logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md)
+* [Logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * [Az első Azure-függvény létrehozása](functions-create-first-azure-function.md)
 * [WebJobs üzembe helyezése Visual Studióval](../app-service/websites-dotnet-deploy-webjobs.md)
 

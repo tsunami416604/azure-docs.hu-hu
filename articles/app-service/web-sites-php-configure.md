@@ -14,11 +14,11 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-ms.openlocfilehash: 624dd416f37aacdb3d2f6e59afdc2efe646e610b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0467707a46709674d3f5de3346ad242af5c9dcb8
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="configure-php-in-azure-app-service-web-apps"></a>Az Azure App Service Web Apps PHP-konfigurálás
 ## <a name="introduction"></a>Bevezetés
@@ -27,7 +27,7 @@ Ez az útmutató bemutatja, hogyan konfigurálhatja a beépített PHP futtatók�
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="how-to-change-the-built-in-php-version"></a>Útmutató: a beépített PHP verzióját módosítása
-Alapértelmezés szerint a PHP 5.5 telepítve és használhatja az App Service webalkalmazás létrehozásakor. A legjobb módja a rendelkezésre álló kiadási változat, az alapértelmezett konfigurációval, és az engedélyezett bővítmények, központi telepítése egy parancsfájlt, amely meghívja a [phpinfo()] függvény.
+Alapértelmezés szerint a PHP 5.6 telepítve és használhatja az App Service webalkalmazás létrehozásakor. A legjobb módja a rendelkezésre álló kiadási változat, az alapértelmezett konfigurációval, és az engedélyezett bővítmények, központi telepítése egy parancsfájlt, amely meghívja a [phpinfo()] függvény.
 
 PHP 5.6 és a PHP 7.0-s verziója is, elérhető, de alapértelmezés szerint nem engedélyezett. A PHP verzióját frissítéséhez hajtsa végre az ezen módszerek egyikét:
 
@@ -42,7 +42,7 @@ PHP 5.6 és a PHP 7.0-s verziója is, elérhető, de alapértelmezés szerint ne
    
     ![Konfigurációs beállítások mentéséhez][save-button]
 
-### <a name="azure-powershell-windows"></a>Az Azure PowerShell (Windows)
+### <a name="azure-powershell-windows"></a>Azure PowerShell (Windows)
 1. Nyissa meg az Azure PowerShell, és jelentkezzen be a fiók:
    
         PS C:\> Login-AzureRmAccount
@@ -178,7 +178,7 @@ Alapértelmezés szerint az App Service nem minden composer.json, ha nincs fiók
    
     ![Git-telepítés az szerkesztő Automation szolgáltatásban, az Azure-ban](./media/web-sites-php-configure/composer-extension-success.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információkért lásd: a [PHP fejlesztői központ](/develop/php/).
 
 > [!NOTE]

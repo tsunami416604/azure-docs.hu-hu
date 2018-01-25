@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/22/2017
 ms.author: sngun; v-reagie
-ms.openlocfilehash: 29362ea94fb86f86f7ff85be81cbf33fef6accce
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: 95abba4fd293e2d04a58f0d07f955aca808434b7
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="troubleshooting-common-issues-in-azure-automation"></a>Az Azure Automationben kapcsolatos gyakori hibák elhárítása 
 Ez a cikk ismerteti a hibaelhárítást előforduló hibákat tapasztalhat az Azure Automationben és azok megoldását lehetséges megoldások javasolja.
@@ -152,7 +152,7 @@ Ez a cikk ismerteti a hibaelhárítást előforduló hibákat tapasztalhat az Az
   * Ahhoz, hogy a csomópont-konfiguráció hozzárendelése egy PowerShell-parancsmaggal csomópontra, használjon **Set-AzureRmAutomationDscNode** parancsmag
 
 ### <a name="scenario-no-node-configurations-mof-files-were-produced-when-a-configuration-is-compiled"></a>Forgatókönyv: Nincsenek csomópont-konfigurációt (MOF-fájlok) keletkezett, amikor egy konfigurációs fordítása
-**Hiba:** a DSC-fordítási feladat felfüggeszti a következő hibaüzenettel: "fordítási sikeresen befejeződött, de nem a csomópont konfigurációs .mofs létrehozott".
+**Hiba:** a DSC-fordítási feladat felfüggeszti a következő hibaüzenettel: "fordítási sikeresen befejeződött, de nincs csomópont configuration.mofs visszamenő".
 
 **A hiba oka:** Ha a kifejezés a következő a **csomópont** a DSC-konfiguráció kulcsszót értékelődik ki `$null`, majd készül egyetlen csomópont-konfigurációt.
 
@@ -190,6 +190,16 @@ Ez a hibaüzenet azt jelenti, hogy a megoldás célozzák mentett keresés szám
 **Hibaelhárítási tippeket:**
 
 Törölheti a lekérdezés a megoldás, és a reonboard a megoldást, amely a lekérdezést újból létrehozza. A lekérdezés található belül a munkaterületen a **mentett keresések**. A lekérdezés neve **MicrosoftDefaultComputerGroup**, és a lekérdezés a kategória a lekérdezéshez tartozó megoldás nevét. Ha több megoldások engedélyezve vannak, a **MicrosoftDefaultComputerGroup** jeleníti meg többször a **mentett keresések**.
+
+### <a name="policyviolation"></a>PolicyViolation
+
+**A hiba oka:**
+
+Ez a hibaüzenet azt jelenti, hogy a központi telepítés szabályzatsértéséről miatt nem sikerült.
+
+**Hibaelhárítási tippeket:**
+
+Ellenőrizze az értesítések az Azure portál jobb felső sarkában található, vagy keresse meg, amely tartalmazza az automation-fiók, és válassza ki az erőforráscsoport **központi telepítések** alatt **beállítások** megtekintéséhez a sikertelen központi telepítés. A további tudnivalók Azure házirend látogasson el: [Azure házirend áttekintése](../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fautomation%2ftoc.json)
 
 ## <a name="next-steps"></a>További lépések
 

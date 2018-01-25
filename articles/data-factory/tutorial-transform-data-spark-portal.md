@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/10/2018
 ms.author: shengc
-ms.openlocfilehash: 8bd9382ed5a855368533c6bf2305682861c109c0
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: c2ec6706c92f229bb05ad9a19246c6ffe5f615c9
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="transform-data-in-the-cloud-by-using-spark-activity-in-azure-data-factory"></a>Adatátalakítás a felhőben egy Spark-tevékenység az Azure Data Factoryban való használatával
 Ebben az oktatóanyagban az Azure Portal segítségével hozhat létre egy Data Factory-folyamatot, amely egy Spark-tevékenységgel és egy igény szerinti HDInsight társított szolgáltatással alakítja át az adatokat. Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
@@ -26,7 +26,7 @@ Ebben az oktatóanyagban az Azure Portal segítségével hozhat létre egy Data 
 > * Adat-előállító létrehozása 
 > * Folyamat létrehozása egy Spark-tevékenységgel
 > * Folyamat futtatásának aktiválása
-> * A folyamat futásának monitorozása
+> * A folyamat futásának monitorozása.
 
 > [!NOTE]
 > Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. Ha a Data Factory szolgáltatás általánosan elérhető 1. verzióját használja, lásd [a Data Factory 1. verziójának dokumentációját](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
@@ -180,6 +180,8 @@ Ebben a szakaszban két társított szolgáltatást hoz létre:
     
     ![Érvényesítés gomb](./media/tutorial-transform-data-spark-portal/validate-button.png)
 7. Kattintson a **Publish** (Közzététel) gombra. A Data Factory felhasználói felülete entitásokat (társított szolgáltatásokat és folyamatot) tesz közzé az Azure Data Factory szolgáltatásban. 
+    
+    ![Közzététel gomb](./media/tutorial-transform-data-spark-portal/publish-button.png)
 
 ## <a name="trigger-a-pipeline-run"></a>Folyamat futtatásának aktiválása
 Kattintson a **Trigger** (Aktiválás) gombra az eszköztáron, majd a **Trigger Now** (Aktiválás most) elemre. 

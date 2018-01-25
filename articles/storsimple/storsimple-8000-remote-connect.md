@@ -4,7 +4,7 @@ description: "Távoli kezelésére szolgál az eszköz konfigurálása és a Sto
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 
 ms.service: storsimple
@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/07/2017
+ms.date: 01/02/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ff76884f020a0fb8a1b48bd371c419bd65e85fd3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9414d9c93fe463910ffa6fce72aada6a0d720464
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>Távoli csatlakozás a StorSimple 8000 series eszköz
 
@@ -84,7 +84,10 @@ Hajtsa végre a következő lépéseket távoli felügyeletének engedélyezése
 A következő lépésekkel távoli felügyeletének engedélyezése az ügyfélen.
 
 #### <a name="to-prepare-the-client-for-remote-connection"></a>Az ügyfélszoftver előkészítése a távoli kapcsolat
-1. Indítsa el a Windows PowerShell-munkamenetet rendszergazdaként.
+1. Indítsa el a Windows PowerShell-munkamenetet rendszergazdaként. Ha használja a Windows 10-ügyfeleknek, alapértelmezés szerint, a Windows Rendszerfelügyeleti webszolgáltatás értéke Kézi. Szükség lehet a szolgáltatás elindításához írja be:
+
+    `Start-Service WinRM`
+    
 2. Írja be a következő parancs futtatásával adja hozzá a StorSimple eszköz IP-címét az ügyfél megbízható állomások listájához:
    
      `Set-Item wsman:\localhost\Client\TrustedHosts <device_ip> -Concatenate -Force`
@@ -212,7 +215,10 @@ A Windows PowerShell és az SSL segítségével adjon meg egy SSAdmin munkamenet
 Az alábbi eljárás végrehajtásához a számítógépen, amelyből el kívánja a távoli Windows PowerShell-kapcsolatot.
 
 #### <a name="to-enter-an-ssadmin-session-on-the-device-by-using-windows-powershell-and-ssl"></a>Adjon meg egy SSAdmin munkamenet az eszközön a Windows PowerShell és az SSL használatával történő
-1. Indítsa el a Windows PowerShell-munkamenetet rendszergazdaként.
+1. Indítsa el a Windows PowerShell-munkamenetet rendszergazdaként. Ha használja a Windows 10-ügyfeleknek, alapértelmezés szerint, a Windows Rendszerfelügyeleti webszolgáltatás értéke Kézi. Szükség lehet a szolgáltatás elindításához írja be:
+
+    `Start-Service WinRM`
+
 2. Az ügyfél megbízható állomások írja be az eszköz IP-cím hozzáadása:
    
      `Set-Item wsman:\localhost\Client\TrustedHosts <device_ip> -Concatenate -Force`
@@ -237,7 +243,7 @@ Az alábbi eljárás végrehajtásához a számítógépen, amelyből el kíván
    
     ![PowerShell távvezérlése HTTPS és az SSL használata](./media/storsimple-remote-connect/HCS_PSRemotingUsingHTTPSAndSSL.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ [a StorSimple eszköz felügyelete a Windows PowerShell használatával](storsimple-8000-windows-powershell-administration.md).
 * További információ [felügyelete a StorSimple eszközt a StorSimple Device Manager szolgáltatással](storsimple-8000-manager-service-administration.md).

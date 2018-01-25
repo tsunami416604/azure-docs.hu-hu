@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: jingwang
-ms.openlocfilehash: 7b734a76545dbcbddac3c7ad7beae60d662a9129
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 64cd758e2f40ff2b18abbff1194a7e57389d8a54
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Oktatóanyag: Adatok másolása helyszíni SQL Server-adatbázisból Azure Blob Storage-tárolóba
 Ebben az oktatóanyagban az Azure Data Factory felhasználói felületének (UI) használatával egy Data Factory-folyamatot hoz létre az adatok egy helyszíni SQL Server-adatbázisból egy Azure Blob-tárolóba történő másolására. Létrehozhat és alkalmazhat egy saját üzemeltetésű integrációs modult, amely adatokat helyez át a helyszíni és a felhőalapú adattárolók között. 
@@ -191,7 +191,7 @@ Ebben a lépésben létrehoz egy adat-előállítót, és elindítja az Azure Da
 11. Az **Integrációs modul (Saját üzemeltetésű) – Expressz telepítés** ablakban kattintson a **Bezárás** elemre. 
 
    ![Integrációs modul telepítése – sikeres](./media/tutorial-hybrid-copy-portal/integration-runtime-setup-successful.png)
-12. A webböngészőben kattintson a **Befejezés** gombra az **Integrációs modul telepítése** ablakban. Ekkor újra az **Új társított szolgáltatás** ablak jelenik meg.
+12. A webböngészőben kattintson a **Befejezés** gombra az **Integrációs modul telepítése** ablakban. 
 
    ![Integrációs modul telepítése – befejezés](./media/tutorial-hybrid-copy-portal/click-finish-integration-runtime-setup.png)
 13. Az **Új társított szolgáltatás** ablakban végezze el az alábbi lépéseket:

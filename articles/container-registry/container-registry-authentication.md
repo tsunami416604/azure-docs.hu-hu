@@ -6,14 +6,14 @@ author: stevelas
 manager: timlt
 ms.service: container-registry
 ms.topic: article
-ms.date: 11/05/2017
+ms.date: 01/23/2018
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 278c343124e776ccaee71f472f0889e784e0e935
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: fc29d9a57f1dd452d2b4b77a53f52a5b66a25416
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>A hitelesítést egy titkos Docker-tároló beállításjegyzék
 
@@ -33,7 +33,7 @@ az acr login --name <acrName>
 
 Ha jelentkezzen be az `az acr login`, a CLI-t használja a jogkivonatot jön létre, amikor hajtja végre `az login` akadálytalanul hitelesíteni a beállításjegyzék-munkamenet. Ha így már bejelentkezett, a hitelesítő adatok gyorsítótárazott, és az azt követő `docker` parancsok nem igényelnek, a felhasználónév vagy jelszó. Ha a jogkivonat lejár, frissítheti azt használatával a `az acr login` újra a parancsot újból hitelesítésre. Használatával `az acr login` Azure identitások nyújt [szerepkörön alapuló hozzáférés](../active-directory/role-based-access-control-configure.md).
 
-## <a name="service-principal"></a>Egyszerű szolgáltatásnév
+## <a name="service-principal"></a>Szolgáltatásnév
 
 Hozzárendelhet egy [szolgáltatás egyszerű](../active-directory/develop/active-directory-application-objects.md) a beállításjegyzéket, és az alkalmazás vagy szolgáltatás használható a távfelügyeleti hitelesítéshez. Engedélyezi szolgáltatás rendszerbiztonsági tagok [szerepköralapú hozzáférés-](../active-directory/role-based-access-control-configure.md) a beállításjegyzéket, és több szolgáltatásnevekről rendelhet a beállításjegyzékben. Több szolgáltatásnevekről lehetővé teszik a különböző alkalmazások különböző hozzáférés meghatározása.
 
@@ -61,7 +61,9 @@ docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my
 
 Miután bejelentkezett, Docker gyorsítótárazza a hitelesítő adatokat, így nem kell jegyezze meg az alkalmazás azonosítót.
 
-Attól függően, hogy a Docker telepített verzióját, megjelenhet egy biztonsági figyelmeztetés használatát javasolja a `--password-stdin` paraméter. A használatával nem ez a cikk hatókörén kívül, de javasolt követően a legmegfelelőbb eljárást alkalmazza. További információkért lásd: a [docker bejelentkezési](https://docs.docker.com/engine/reference/commandline/login/) hivatkozás parancsot.
+Attól függően, hogy a Docker telepített verzióját, megjelenhet egy biztonsági figyelmeztetés használatát javasolja a `--password-stdin` paraméter. Bár a paraméter használatát a cikk nem tárgyalja, javasoljuk, kövesse ezt az ajánlott eljárást. További információkért lásd: a [docker bejelentkezési](https://docs.docker.com/engine/reference/commandline/login/) hivatkozás parancsot.
+
+Az egyszerű szolgáltatás használatával az ACR távfelügyeleti hitelesítés további információkért lásd: [szolgáltatásnevekről Azure tároló beállításjegyzék hitelesítés](container-registry-auth-service-principal.md).
 
 ## <a name="admin-account"></a>Rendszergazdai fiók
 
@@ -89,7 +91,7 @@ Engedélyezheti a felhasználót a rendszergazda az Azure portálon lépjen a be
 
 ![Engedélyezze a felhasználót a rendszergazda felhasználói felület az Azure-portálon][auth-portal-01]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Leküldéses az első lemezkép az Azure parancssori felület használatával](container-registry-get-started-azure-cli.md)
 

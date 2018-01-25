@@ -3,8 +3,8 @@ title: "Az Azure Redis Cache használata Javával | Microsoft Docs"
 description: "Bevezetés az Azure Redis Cache és a Java együttes használatába"
 services: redis-cache
 documentationcenter: 
-author: steved0x
-manager: douge
+author: wesmc7777
+manager: cfowler
 editor: 
 ms.assetid: 29275a5e-2e39-4ef2-804f-7ecc5161eab9
 ms.service: cache
@@ -13,12 +13,12 @@ ms.topic: hero-article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 08/31/2017
-ms.author: sdanie
-ms.openlocfilehash: b433eecb0424db85b616c40c5f0cdfc88692cef1
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.author: wesmc
+ms.openlocfilehash: a93dbf78c9cb94f6c20c8569a69e068ceb3b98bc
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="how-to-use-azure-redis-cache-with-java"></a>Az Azure Redis Cache használata Javával
 > [!div class="op_single_selector"]
@@ -78,7 +78,7 @@ A [jedis](https://github.com/xetorthio/jedis) legújabb buildjei támogatást ny
     }
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Engedélyezze a gyorsítótár-diagnosztikát,](https://msdn.microsoft.com/library/azure/dn763945.aspx#EnableDiagnostics) hogy [megfigyelhesse](https://msdn.microsoft.com/library/azure/dn763945.aspx) a gyorsítótár állapotát.
 * Olvassa el a hivatalos [Redis dokumentációt](http://redis.io/documentation).
 * Ismerkedjen meg a [Spring Initializr-alkalmazások konfigurálásának végrehajtásával Redis Cache használatával](cache-java-spring-boot-initializer-with-redis-cache.md).

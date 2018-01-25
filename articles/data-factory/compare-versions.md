@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/20/2017
+ms.date: 01/24/2018
 ms.author: makromer
-ms.openlocfilehash: 8ae6c1eabf87b51dd04b6b6c9686bb89efff3bc0
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 83065e6cacd784a3914cfac3ff2552a712688366
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="compare-azure-data-factory-v1-and-v2"></a>Az Azure Data Factory V1 és V2 verziójának összehasonlítása
 Ez a cikk az Azure Data Factory V2 és V1 verzióját hasonlítja össze. Ha szeretné megismerni a V1 verziót, tekintse meg [Az Azure Data Factory bemutatását](v1/data-factory-introduction.md). Ha szeretné megismerni a V2 verziót, tekintse meg [A Data Factory bemutatását (V2 – előzetes verzió)](introduction.md).
@@ -128,11 +128,20 @@ További információ: [Az egyéni tevékenységek közötti különbségek a V1
 A V2-ben frissített SDK-k visszamenőlegesen nem kompatibilisek a V1 verzió ügyfeleivel. 
 
 ## <a name="authoring-experience"></a>Létrehozási feladatok
-A Data Factory V1 az Azure Portal Data Factory Editor eszközének használatával teszi lehetővé folyamatok létrehozását. A Data Factory V2 jelenleg az adat-előállítók létrehozásának csak a programozott módszerekkel (például .NET SDK, REST API, PowerShell és Python) történő létrehozását támogatja. A felhasználói felület még nem támogatott.  A Data Factory V1 szintén támogatja az SDK, REST és PowerShell létrehozási támogatást.
+
+| &nbsp; | 2. verzió | 1. verzió |
+| ------ | -- | -- | 
+| Azure Portal | [Igen](quickstart-create-data-factory-portal.md) | [Igen](data-factory-build-your-first-pipeline-using-editor.md) |
+| Azure PowerShell | [Igen](quickstart-create-data-factory-powershell.md) | [Igen](data-factory-build-your-first-pipeline-using-powershell.md) |
+| .NET SDK | [Igen](quickstart-create-data-factory-dot-net.md) | [Igen](data-factory-build-your-first-pipeline-using-vs.md) |
+| REST API | [Igen](quickstart-create-data-factory-rest-api.md) | [Igen](data-factory-build-your-first-pipeline-using-rest-api.md) |
+| Python SDK | [Igen](quickstart-create-data-factory-python.md) | Nem |
+| Resource Manager-sablon | [Igen](quickstart-create-data-factory-resource-manager-template.md) | [Igen](data-factory-build-your-first-pipeline-using-arm.md) | 
+
 
 ## <a name="monitoring-experience"></a>Monitorozási feladatok
 A V2-ben a data factorykat az [Azure Monitor](monitor-using-azure-monitor.md) segítségével is monitorozhatja. Az új PowerShell-parancsmagok támogatják az [integrációs modulok](monitor-integration-runtime.md) monitorozását. A V1 és a V2 is támogatja a vizuális monitorozást egy monitorozási alkalmazáson keresztül, amely az Azure Portalról indítható el.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A következő gyors útmutatók részletes utasításait végrehajtva megismerkedhet az adat-előállítók létrehozásának módjával: [PowerShell](quickstart-create-data-factory-powershell.md), [.NET](quickstart-create-data-factory-dot-net.md), [Python](quickstart-create-data-factory-python.md), [REST API](quickstart-create-data-factory-rest-api.md). 

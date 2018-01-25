@@ -14,14 +14,21 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: iainfou
-ms.openlocfilehash: 6db900981daa2139a0d2e951f41fc48d5c291074
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: aaab69f452db9d4f11af2b5cfd2cd9ff6ac79954
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Windows-ügyfél használata az Azure-ban fejlesztési/Tesztelési forgatókönyvek
-Használhatja a Windows 7, Windows 8 vagy Windows 10 fejlesztési és tesztelési célú forgatókönyvek az Azure-ban biztosított megfelelő (korábbi nevén MSDN) Visual Studio-előfizetéssel rendelkezik. Ez a cikk ismerteti az Azure-ban és az Azure-katalógus képek használatát futó Windows-ügyfél jogosultsági követelményei.
+Használhatja a Windows 7, Windows 8 vagy Windows 10 Enterprise (x64) fejlesztési és tesztelési célú forgatókönyvek az Azure-ban biztosított megfelelő (korábbi nevén MSDN) Visual Studio-előfizetéssel rendelkezik. Ez a cikk ismerteti a Windows 7, Windows 8.1, Windows 10 Enterprise rendszerű Azure-ban és a következő Azure-katalógus képek használatát jogosultsági követelményei.
+
+![Azure-portálról lemezkép adatait](./media/client-images/windows-client-msdn-images.png) 
+
+> [!NOTE]
+> A Windows 10 Pro és Windows 10 Pro N kép Azure-katalógus, tekintse meg [központi telepítése a Windows 10 a több-Bérlős üzemeltető jogosultságokkal Azure](windows-desktop-multitenant-hosting-deployment.md)
+>![Pro lemezkép adatait az Azure-portálon](./media/client-images/windows-client-pro-images.png) 
+>
 
 ## <a name="subscription-eligibility"></a>Előfizetés jogosultság
 Aktív (személyek szerezték be egy Visual Studio előfizetői licenccel) Visual Studio-előfizetők fejlesztési és tesztelési célra használhatja Windows ügyfél. Windows-ügyfél hardver- és a saját Azure-előfizetés típusú futó Azure virtuális gépek is használhatók. Windows-ügyfél lehet, hogy nem kell telepített használt Azure normális üzemi használatra, vagy azok, akik nem aktív Visual Studio-előfizetők által használt.
@@ -33,7 +40,7 @@ Az alábbi táblázat részletezi az ajánlat azonosítóját, amely jogosult k�
 
 | Csomag neve | Csomag száma | Rendelkezésre álló ügyfélkezelési lemezképek |
 |:--- |:---:|:---:|
-| [Fejlesztés/tesztelés – használatalapú fizetés](https://azure.microsoft.com/offers/ms-azr-0023p/) |0023P |Windows 10 |
+| [Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p/) |0023P |Windows 10 |
 | [A Visual Studio Enterprise (MPN) előfizetők](https://azure.microsoft.com/offers/ms-azr-0029p/) |0029P |Windows 10 |
 | [A Visual Studio Professional előfizetők](https://azure.microsoft.com/offers/ms-azr-0059p/) |0059P |Windows 10 |
 | [A Visual Studio Test Professional előfizetők](https://azure.microsoft.com/offers/ms-azr-0060p/) |0060P |Windows 10 |
@@ -55,6 +62,6 @@ Az ajánlat Azonosítót a is megtekintheti a ["Előfizetések" lapon](http://ac
 
 ![Az Azure-fiók portálon ajánlat részletei](./media/client-images/offer-id-azure-account-portal.png) 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most már telepítheti a virtuális gépek [PowerShell](quick-create-powershell.md), [Resource Manager-sablonok](ps-template.md), vagy [Visual Studio](../../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
 

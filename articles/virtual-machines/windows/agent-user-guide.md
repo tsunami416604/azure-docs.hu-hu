@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: danis
-ms.openlocfilehash: f3e4ab075f7cd75bac2d66f0391227c0de6e11a0
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 3be001c2ad63c5872af4740f136438034e1e406b
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Az Azure virtuális gép ügynökének áttekintése
 
-A Microsoft Azure virtuális gép ügynökének (de ügynök) rendkívül biztonságos, egyszerű folyamat, amely az Azure Fabric Controller interakcióba VM kezeli. A Virtuálisgép-ügynök engedélyezése és a végrehajtása az Azure virtuálisgép-bővítmények az elsődleges szerepkör tartozik. Virtuálisgép-bővítmények, amely lehetővé teszi a virtuális gépek, például a telepítése és beállítása a szoftver központi telepítési konfigurációs utáni. Virtuálisgép-bővítmények is engedélyezheti a helyreállítási szolgáltatás például a virtuális gép rendszergazdai jelszó alaphelyzetbe állításával. Az Azure Virtuálisgép-ügynök nélküli virtuálisgép-bővítmények nem futtatható.
+A Microsoft Azure virtuális gép ügynökének (Virtuálisgép-ügynök) rendkívül biztonságos, egyszerű folyamat, amely az Azure Fabric Controller interakcióba VM kezeli. A Virtuálisgép-ügynök engedélyezése és a végrehajtása az Azure virtuálisgép-bővítmények az elsődleges szerepkör tartozik. Virtuálisgép-bővítmények, amely lehetővé teszi a virtuális gépek, például a telepítése és beállítása a szoftver központi telepítési konfigurációs utáni. Virtuálisgép-bővítmények is engedélyezheti a helyreállítási szolgáltatás például a virtuális gép rendszergazdai jelszó alaphelyzetbe állításával. Az Azure Virtuálisgép-ügynök nélküli virtuálisgép-bővítmények nem futtatható.
 
 Ez a dokumentum telepítési, észlelését és az Azure virtuális gép ügynök eltávolításának részletes.
 

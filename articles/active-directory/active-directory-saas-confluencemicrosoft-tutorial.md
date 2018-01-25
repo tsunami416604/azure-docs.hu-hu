@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2018
+ms.date: 01/24/2018
 ms.author: jeedes
-ms.openlocfilehash: 0409d4576b0671f60c5e3bd7e82a2a1102d3d28c
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 22189c3d2d2164ba0fa3c2d790c36361fb0f5854
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confluence-saml-sso-by-microsoft"></a>Oktatóanyag: Azure Active Directoryval integrált való összefolyás felett SAML SSO Microsoft
 
@@ -31,6 +31,10 @@ Microsoft való összefolyás felett SAML SSO integrálása az Azure AD lehetőv
 - Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
 
 Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+
+## <a name="description"></a>Leírás:
+
+A Microsoft Azure Active Directory-fiókot használ Atlassian való összefolyás felett server egyszeri bejelentkezés engedélyezése. Ezzel a módszerrel a szervezeti felhasználók bejelentkezési való összefolyás felett alkalmazás használható az Azure AD hitelesítő adatait. A beépülő modul SAML 2.0 használ az összevonáshoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -94,8 +98,6 @@ Az Azure AD-be való összefolyás felett SAML SSO Microsoft integrálása konfi
 Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezéshez való összefolyás felett SAML-alapú egyszeri "Britta Simon" nevű tesztfelhasználó alapján a Microsoft által.
 
 Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználóhoz való összefolyás felett SAML SSO Microsoft által a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a Microsoft által való összefolyás felett SAML SSO közötti kapcsolat kapcsolatot kell létrehozni.
-
-A Microsoft által való összefolyás felett a SAML SSO, rendelje az értékét a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
 
 Az Azure AD egyszeri bejelentkezéshez való összefolyás felett SAML-alapú egyszeri Microsoft tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
 
@@ -163,7 +165,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-Confluencemicrosoft-tutorial/addon1.png)
 
-8. Töltse le a beépülő modul a [Microsoft Download Center](). A beépülő modul használatával a Microsoft által biztosított manuális feltöltéséhez **töltse fel a bővítmény** menü
+8. Töltse le a beépülő modul a [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=56503). A beépülő modul használatával a Microsoft által biztosított manuális feltöltéséhez **töltse fel a bővítmény** menü
     
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-Confluencemicrosoft-tutorial/addon12.png)
 

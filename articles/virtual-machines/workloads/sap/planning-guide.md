@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7eb4f6c8c7ddfe0cb0d8a37e27d4e697e760107a
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: bf9f676b48f25ae2d8949dbdba8b4792b05c67f0
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure virtuális gépek tervezési és megvalósítási az SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -317,7 +317,7 @@ A Microsoft Azure lehetővé teszi a vállalatok szerezni a számítási és tá
 Ez a dokumentum ismerteti a Microsoft Azure virtuális gép alapjait és biztosít egy SAP NetWeaver telepítések az Azure-ban tervezési és megvalósítási szempontok segédlet és ilyen kell tényleges megkezdése előtt olvassa el a dokumentumot SAP NetWeaver Azure példányai.
 A dokumentum kiegészíti az SAP-dokumentáció és az SAP, az elsődleges erőforrások telepítése és a SAP szoftver központi telepítését megfelelnek a megadott platformok.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 A felhőalapú informatika egy kifejezést gyakran használják, amely legfeljebb nemzetközi és nagy vállalatok kis vállalatok egyre több fontosságát az informatikai ágazatban van eszközöket.
 
 Microsoft Azure a Microsoft, széles skálája új lehetőségeket kínál, amelyek Felhőplatform szolgáltatások. Most már az ügyfelek képesek gyors kiépítése és deaktiválás rendelkezés alkalmazások felhőalapú szolgáltatásként úgy, hogy azok nem technikai vagy költségvetési korlátozások korlátozódik. Helyett befektetés időt és a hardver infrastruktúra, a vállalatok összpontosíthatnak, az alkalmazás, az üzleti folyamatokat és az előnye az ügyfelek és felhasználók.
@@ -372,7 +372,7 @@ Az alábbi kiegészítő útmutatók érhetők el a témakör az SAP-telepítés
 
 Az alábbi SAP megjegyzések Azure SAP témakör kapcsolódnak:
 
-| Megjegyzés száma | Cím |
+| Megjegyzés száma | Beosztás |
 | --- | --- |
 | [1928533] |Az Azure-on SAP-alkalmazásokból: támogatott termékek és méretezése |
 | [2015553] |A Microsoft Azure SAP: Előfeltételek támogatja |
@@ -1965,9 +1965,7 @@ Az alábbi ábra mutatja a azonos fekvő felügyelt lemezekkel.
 ![SAP NetWeaver alkalmazás magas rendelkezésre ÁLLÁSÚ architektúra Azure IaaS SQL-kiszolgálót][planning-guide-figure-3201]
 
 ##### <a name="linuxlogolinux-ha-on-linux"></a>![Linux][Logo_Linux] Magas rendelkezésre ÁLLÁSÚ Linux rendszeren
-Az SAP magas rendelkezésre ÁLLÁSÚ Azure Linux architektúra tulajdonképpen ugyanaz, mint a Windows fent leírt módon. 2016. január jelenleg nincs SAP (A) SCS magas rendelkezésre ÁLLÁSÚ megoldás még az Azure-on Linux rendszeren támogatott
-
-Ennek következtében a 2016. január az SAP-Linux-Azure rendszer nem elérése a ugyanabban a rendelkezésre állási, mint az SAP-Windows-Azure rendszer magas rendelkezésre ÁLLÁSÚ hiányzik a (A) SCS-példány és az Egypéldányos SAP ASE adatbázis.
+Az SAP magas rendelkezésre ÁLLÁSÚ Azure Linux architektúra tulajdonképpen ugyanaz, mint a Windows fent leírt módon. Tekintse meg a SAP Megjegyzés [1928533] támogatott magas rendelkezésre állású megoldások listáját.
 
 ### <a name="4e165b58-74ca-474f-a7f4-5e695a93204f"></a>Automatikus indítás SAP-példányok használata
 SAP SAP példányok elindítani a virtuális Gépen belül az operációs rendszer elindítása után azonnal funkciót kínál. A pontos lépések az SAP Tudásbázis volt dokumentált [1909114]. Azonban SAP nem javasolja a beállítás használata többé nincs vezérlő sorrendjében példány újraindul, mert egynél több virtuális gép feltételezve van hatással, vagy több példány futtatott virtuális gépenként. Feltéve, hogy egy SAP application server-példány a virtuális gépek és a kis-és egy virtuális végül első újraindítása a jellemző Azure forgatókönyv, az automatikus indítási nincs igazán fontos, és ez a paraméter hozzáadásával engedélyezhető:
@@ -2034,7 +2032,7 @@ Mid 2014 óta különböző összetevőket Hyper-V, a System Center és az Azure
 
 Egy blog, és részletesen leírja a megoldás központi telepítéséről itt dokumentált: <http://blogs.msdn.com/b/saponsqlserver/archive/2014/11/19/protecting-sap-solutions-with-azure-site-recovery.aspx>.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 A legfontosabb, a magas rendelkezésre állás SAP rendszerekhez az Azure-ban a következők:
 
 * Ezen a ponton az időben a SAP hibaérzékeny pontok kialakulását nem védhető ugyanúgy lehet végezni helyszíni telepítések esetén. A hiba oka, hogy a megosztott lemez fürtök nem még hozható létre az Azure-ban a 3. fél szoftverek használata nélkül.

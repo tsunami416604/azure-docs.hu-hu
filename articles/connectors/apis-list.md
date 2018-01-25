@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/21/2017
 ms.author: mandia; ladocs
-ms.openlocfilehash: 36d3474c2b8dde0355a265c149fe6ba1920a9f22
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: 948b91a9fabc3ab3c4d6708968a88cb9d203b171
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="connectors-list"></a>Összekötők listája
 Az egyes összekötők Swagger-leírásai és az esetleges összekötőkorlátok által meghatározott eseményindítók és műveletek keresését az [összekötő részletei](/connectors/) rész ismerteti.
@@ -142,8 +142,8 @@ Ha szeretné segíteni az Azure Logic Apps és összekötők fejlesztését, sza
 
 Nem talál valamilyen összekötővel kapcsolatos témakört, illetve fontosnak tartott részletet? Ha nem, akkor meglévő témaköreinket kiegészítve segíthet nekünk, illetve sajátot is készíthet. Dokumentációnk nyílt forrás, amelyet a GitHubon találhat. Első lépések a [GitHub-adattárban](https://github.com/Microsoft/azure-docs). 
 
-## <a name="next-steps"></a>Következő lépések
-* [Az első logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md)
+## <a name="next-steps"></a>További lépések
+* [Az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * [Egyéni API-k létrehozása logikai alkalmazásokhoz](../logic-apps/logic-apps-create-api-app.md)
 * [Logikai alkalmazások figyelése](../logic-apps/logic-apps-monitor-your-logic-apps.md)
 

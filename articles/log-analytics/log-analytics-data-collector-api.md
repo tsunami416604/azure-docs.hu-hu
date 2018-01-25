@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 01/23/2018
 ms.author: bwren
-ms.openlocfilehash: 5b4b31b58c7a4bcb93277333502bc082da2062ed
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 88d9c4b23eb676743c004c0d1b3ab45f6cd66055
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>Adatokat küldeni a Log Analyticshez a HTTP adatait gyűjtője API-t (nyilvános előzetes verzió)
 Ez a cikk bemutatja, hogyan használja a HTTP adatok adatgyűjtő API REST API-ügyfél Naplóelemzési adatküldéshez.  Bemutatja, hogyan lehet a parancsfájl vagy az alkalmazás által összegyűjtött adatok formázása, adja hozzá a kérelem és a kérésre Naplóelemzési engedélyezve van.  A példák PowerShell, a C# és Python.
@@ -39,12 +39,12 @@ A Naplóelemzési tárházban található összes adat egy rekord, egy adott rek
 ## <a name="create-a-request"></a>Kérelem létrehozása
 A HTTP-adatokat gyűjtő API használatához hozzon létre egy POST kérést, amely tartalmazza az adatokat küldeni a JavaScript Object Notation (JSON).  A következő három táblázatokban az attribútumok, amelyek szükségesek az egyes kérelmek. Azt írja le a cikk későbbi részében részletesebben összes attribútumot.
 
-### <a name="request-uri"></a>Kérelem URI-azonosítója
+### <a name="request-uri"></a>Kérés URI-ja
 | Attribútum | Tulajdonság |
 |:--- |:--- |
 | Módszer |POST |
 | URI |https://\<CustomerId\>.ods.opinsights.azure.com/api/logs?api-version=2016-04-01 |
-| Tartalom típusa |application/json |
+| Tartalomtípus |application/json |
 
 ### <a name="request-uri-parameters"></a>A kérelem URI-paraméterei
 | Paraméter | Leírás |
@@ -53,13 +53,13 @@ A HTTP-adatokat gyűjtő API használatához hozzon létre egy POST kérést, am
 | Erőforrás |Az API-erőforrás neve: / api/logs. |
 | API-verzió |A kérelem használandó API verziója. Ez jelenleg 2016-04-01. |
 
-### <a name="request-headers"></a>Kérelem fejlécei
+### <a name="request-headers"></a>Kérelemfejlécek
 | Fejléc | Leírás |
 |:--- |:--- |
 | Engedélyezés |Az engedélyezési aláírás. A cikk későbbi részében olvashat létrehozása egy HMAC-SHA256-fejlécben. |
 | Napló-típusa |Adja meg az adatok küldése folyamatban rekord típusát. A napló típusa jelenleg csak alfanumerikus karaktereket tartalmazhat. Nem támogatja írhatók vagy speciális karaktereket. |
-| x-ms-dátuma |A kérelem feldolgozása, RFC 1123 formátumban dátuma. |
-| idő generált mező |Az adatok, amely tartalmazza az elem a Timestamp típusú mező neve. Ha a megadott mező, akkor annak tartalmát használt **TimeGenerated**. Ha ez a mező nincs megadva, az alapértelmezett **TimeGenerated** a alkalom, hogy az üzenet van okozhatnak. A mező tartalmának érdemes követnie az ISO 8601 formátum éééé-hh-SSz. |
+| x-ms-date |A kérelem feldolgozása, RFC 1123 formátumban dátuma. |
+| time-generated-field |Az adatok, amely tartalmazza az elem a Timestamp típusú mező neve. Ha a megadott mező, akkor annak tartalmát használt **TimeGenerated**. Ha ez a mező nincs megadva, az alapértelmezett **TimeGenerated** a alkalom, hogy az üzenet van okozhatnak. A mező tartalmának érdemes követnie az ISO 8601 formátum éééé-hh-SSz. |
 
 ## <a name="authorization"></a>Engedélyezés
 A napló Analytics HTTP adatokat gyűjtő API kérésének tartalmaznia kell egy engedélyezési fejléc. A kérés hitelesítéséhez, be kell jelentkeznie a kérelmet az elsődleges vagy másodlagos kulcsát a munkaterületen, a kérést. Így továbbítsa az adott aláírás a kérelem részeként.   
@@ -96,7 +96,7 @@ Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 
 A mintákat a következő szakaszokban lévő mintakód hozhat létre egy engedélyezési fejléc rendelkezik.
 
-## <a name="request-body"></a>Kérés törzsében
+## <a name="request-body"></a>Kérelem törzse
 Az üzenet törzsét JSON kell lennie. A tulajdonság név-érték párok egy vagy több rekordot a következő formátumban kell tartalmaznia:
 
 ```
@@ -134,11 +134,11 @@ A tulajdonság adattípusát kikereséséhez Naplóelemzési hozzáadja egy utó
 
 | Tulajdonságadat-típus | Utótag |
 |:--- |:--- |
-| Karakterlánc |z |
-| Logikai érték |_B |
-| Dupla |_D |
-| Dátum és idő |_Szo |
-| GUID |_G |
+| Karakterlánc |_s |
+| Logikai |_b |
+| Dupla |_d |
+| Dátum és idő |_t |
+| GUID |_g |
 
 Az adattípus, amely Naplóelemzési alkalmaz minden egyes tulajdonság attól függ, az új bejegyzés bejegyzéstípus létezik-e.
 
@@ -173,22 +173,22 @@ Nincsenek bizonyos korlátozások a a Log Analytics-adatok gyűjtése API közz�
 
 Ez a táblázat felsorolja a szolgáltatás esetleg vissza állapotkódokat teljes készletének:
 
-| Kód | status | Hibakód: | Leírás |
+| Kód | status | Hibakód | Leírás |
 |:--- |:--- |:--- |:--- |
-| 200 |OKÉ | |A kérés sikeresen elfogadva. |
-| 400 |Helytelen kérelem |InactiveCustomer |A munkaterület be lett zárva. |
-| 400 |Helytelen kérelem |InvalidApiVersion |A megadott API-verzió nem ismerte fel a szolgáltatás. |
-| 400 |Helytelen kérelem |InvalidCustomerId |A megadott munkaterület-azonosító érvénytelen. |
-| 400 |Helytelen kérelem |InvalidDataFormat |Érvénytelen JSON el lett küldve. Az adott válasz törzsének tartalmazhatnak a hiba megoldásával kapcsolatos további információk. |
-| 400 |Helytelen kérelem |InvalidLogType |A napló típusa megadott tartalmazott különleges karaktereket vagy írhatók. |
-| 400 |Helytelen kérelem |MissingApiVersion |Az API-verzió nincs megadva. |
-| 400 |Helytelen kérelem |MissingContentType |A tartalom típusa nincs megadva. |
-| 400 |Helytelen kérelem |MissingLogType |A szükséges érték napló típusa nincs megadva. |
-| 400 |Helytelen kérelem |UnsupportedContentType |Nincs beállítva a tartalomtípus **az application/json**. |
+| 200 |OK | |A kérés sikeresen elfogadva. |
+| 400 |Hibás kérés |InactiveCustomer |A munkaterület be lett zárva. |
+| 400 |Hibás kérés |InvalidApiVersion |A megadott API-verzió nem ismerte fel a szolgáltatás. |
+| 400 |Hibás kérés |InvalidCustomerId |A megadott munkaterület-azonosító érvénytelen. |
+| 400 |Hibás kérés |InvalidDataFormat |Érvénytelen JSON el lett küldve. Az adott válasz törzsének tartalmazhatnak a hiba megoldásával kapcsolatos további információk. |
+| 400 |Hibás kérés |InvalidLogType |A napló típusa megadott tartalmazott különleges karaktereket vagy írhatók. |
+| 400 |Hibás kérés |MissingApiVersion |Az API-verzió nincs megadva. |
+| 400 |Hibás kérés |MissingContentType |A tartalom típusa nincs megadva. |
+| 400 |Hibás kérés |MissingLogType |A szükséges érték napló típusa nincs megadva. |
+| 400 |Hibás kérés |UnsupportedContentType |Nincs beállítva a tartalomtípus **az application/json**. |
 | 403 |Tiltott |InvalidAuthorization |A szolgáltatás nem tudta hitelesíteni a kérelmet. Győződjön meg arról, hogy a munkaterület azonosítója és a kapcsolat kulcs érvényesek. |
 | 404 |Nem található | | A megadott URL-cím érvénytelen, vagy a kérelem túl nagy. |
 | 429 |Túl sok kérelem | | A szolgáltatás problémát nagyszámú fiókja adatait. Próbálkozzon újra később a kérelmet. |
-| 500 |Belső kiszolgálóhiba. |UnspecifiedError |A szolgáltatás belső hibát észlelt. Próbálja megismételni a kérelmet. |
+| 500 |Belső kiszolgálóhiba |UnspecifiedError |A szolgáltatás belső hibát észlelt. Próbálja megismételni a kérelmet. |
 | 503 |A szolgáltatás nem érhető el |ServiceUnavailable |A szolgáltatás jelenleg nem érhető el a kérelmek fogadására. Próbálja megismételni a kérést. |
 
 ## <a name="query-data"></a>Adatok lekérdezése
@@ -260,7 +260,7 @@ Function Build-Signature ($customerId, $sharedKey, $date, $contentLength, $metho
 
 
 # Create the function to create and post the request
-Function Post-OMSData($customerId, $sharedKey, $body, $logType)
+Function Post-LogAnalyticsData($customerId, $sharedKey, $body, $logType)
 {
     $method = "POST"
     $contentType = "application/json"
@@ -291,7 +291,7 @@ Function Post-OMSData($customerId, $sharedKey, $body, $logType)
 }
 
 # Submit the data to the API endpoint
-Post-OMSData -customerId $customerId -sharedKey $sharedKey -body ([System.Text.Encoding]::UTF8.GetBytes($json)) -logType $logType  
+Post-LogAnalyticsData -customerId $customerId -sharedKey $sharedKey -body ([System.Text.Encoding]::UTF8.GetBytes($json)) -logType $logType  
 ```
 
 ### <a name="c-sample"></a>C#-minta
@@ -463,5 +463,5 @@ def post_data(customer_id, shared_key, body, log_type):
 post_data(customer_id, shared_key, body, log_type)
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Használja a [napló Search API](log-analytics-log-search-api.md) adatok lekérése a Log Analytics-tárházat.

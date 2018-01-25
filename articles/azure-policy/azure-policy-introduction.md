@@ -5,16 +5,16 @@ services: azure-policy
 keywords: 
 author: bandersmsft
 ms.author: banders; nini
-ms.date: 11/06/2017
+ms.date: 01/17/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 8ffa4c22c39bcd241b36b55bbcba24ac3f75fff2
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 37fdb8156e4507046a574ba681e2ea3f6909c4a6
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="what-is-azure-policy"></a>Mi az Azure Policy?
 
@@ -38,7 +38,7 @@ Ezeket az engedélyeket a **Közreműködő** szerepkör nem tartalmazza.
 
 Mindegyik szabályzatdefiníció feltételekkel rendelkezik, amelyek teljesülése esetén életbe lép. Továbbá rendelkezik egy kiegészítő művelettel, amely akkor lesz végrehajtva, ha a feltételek teljesülnek.
 
-Az Azure Policy tartalmaz néhány beépített szabályzatot, amelyek alapértelmezés szerint a rendelkezésére állnak. Példa:
+Az Azure Policy tartalmaz néhány beépített szabályzatot, amelyek alapértelmezés szerint a rendelkezésére állnak. Például:
 
 - **Az SQL Server 12.0-s verzió megkövetelése:** Az ehhez a szabályzathoz tartozó feltételek/szabályok biztosítják, hogy mindegyik SQL-kiszolgáló a 12.0-s verziót használja. A szabályzathoz tartozó művelet letiltja a feltételeknek meg nem felelő kiszolgálókat.
 - **Engedélyezett tárfiók-termékváltozatok:** Ennek a szabályzatdefiníciónak a feltételei/szabályai megállapítják, hogy egy adott létesítendő tárfiók a termékváltozat-méretek meghatározott halmazába esik-e. A szabályzathoz tartozó művelet letiltja a megadott termékváltozat-mérethalmaznak meg nem felelő kiszolgálókat.
@@ -118,7 +118,7 @@ A szabályzatdefiníciók és -hozzárendelések létrehozásakor és kezelések
 
    Vegye figyelembe, hogy miután létrehozott egy kezdeményezési hozzárendelést egy kezdeményezési definícióhoz, a kezdeményezési definícióhoz hozzáadott minden új szabályzatdefiníció automatikusan bekerül az adott kezdeményezési definícióhoz tartozó kezdeményezési hozzárendelésekbe is. Azonban ha egy új paramétert ad meg az új szabályzatdefinícióban, akkor frissítenie kell a kezdeményezési definíciókat és hozzárendeléseket is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy áttekintette az Azure Policy tudnivalóit és néhány fontosabb új fogalmat, folytatásként a következő témaköröket javasoljuk:
 

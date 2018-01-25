@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/14/2017
 ms.author: saurinsh
-ms.openlocfilehash: eca019fa5e7866ed6281e8cfee105ba1d99249bc
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: c5e6381e7abb18c01031e4168c64cfe9aafec7ae
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="plan-azure-domain-joined-hadoop-clusters-in-hdinsight"></a>Azure-tartományhoz csatlakoztatott Hadoop-fürtök tervezése a HDInsightban
 
@@ -47,16 +47,13 @@ Az alábbi képernyőfelvételen látható egy szervezeti Egységet létrehozni 
 
 ![Tartományhoz csatlakoztatott HDInsight-fürtök szervezeti egység](./media/apache-domain-joined-architecture/hdinsight-domain-joined-ou.png).
 
-### <a name="three-ways-of-bringing-your-own-active-directory-domain-controllers"></a>Három módon, hogy a saját Active Directory-tartományvezérlők
+### <a name="two-ways-of-bringing-your-own-active-directory-domain-controllers"></a>Két módon, hogy a saját Active Directory-tartományvezérlők
 
-Három módon helyezheti az Active Directory-tartományvezérlők tartományhoz a HDInsight-fürtök létrehozása. 
+Két módon helyezheti az Active Directory-tartományvezérlők tartományhoz a HDInsight-fürtök létrehozása. 
 
 - **Az Azure Active Directory tartományi szolgáltatások**: Ez a szolgáltatás egy felügyelt Active Directory-tartományhoz, amely teljes mértékben kompatibilis a Windows Server Active Directory biztosítja. A Microsoft gondoskodik kezelését, javítását és az AD-tartomány ellenőrzése. A fürtök telepítése anélkül, hogy a tartományvezérlők karbantartásához. Felhasználók, csoportok, és jelszavak szinkronizálódnak az Azure Active Directoryból, így a felhasználók jelentkezzen be a fürtre, a vállalati hitelesítő adatok használatával. További információkért lásd: [Azure Active Directory tartományi szolgáltatások konfigurálása tartományhoz csatlakoztatott HDInsight-fürtök](./apache-domain-joined-configure-using-azure-adds.md).
 
 - **Az Azure IaaS virtuális gépeken futó Active Directory**: ezt a beállítást, az telepíti és kezeli a saját Windows Server Active Directory-tartomány Azure IaaS virtuális gépeken. További információkért lásd: [konfigurálása tartományhoz csatlakoztatott védőfal mögötti környezet](./apache-domain-joined-configure.md).
-
-- **A helyszíni Active Directory**: ezt a beállítást, a HDInsight integrálása a helyszíni Active Directory-tartományvezérlőhöz.
-
 
 ## <a name="next-steps"></a>További lépések
 * A tartományhoz csatlakoztatott HDInsight-fürtök konfigurálásához lásd: [Tartományhoz csatlakoztatott HDInsight-fürtök konfigurálása](apache-domain-joined-configure.md).
