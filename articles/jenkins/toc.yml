@@ -40,16 +40,21 @@
       maintainContext: true
     - name: A Jenkins használata a VSTS-sel
       href: 'https://www.visualstudio.com/docs/build/apps/jenkins/build-deploy-jenkins'
+    - name: Service Fabric-alkalmazások üzembe helyezése
+      href: /azure/service-fabric/service-fabric-cicd-your-linux-applications-with-jenkins
+      maintainContext: true
 - name: Példák
   items:
     - name: Mintafeladatok és -szkriptek
       href: 'https://github.com/Azure/azure-devops-utils/tree/master/jenkins'
-- name: Erőforrások
+- name: További források
   items:
     - name: Beépülő modulok
       items:
         - name: Azure App Service beépülő modul
           href: 'https://plugins.jenkins.io/azure-app-service'
+        - name: Az Azure AD beépülő modulja
+          href: 'https://plugins.jenkins.io/azure-ad'
         - name: Az Azure-tárolóügynök beépülő modulja
           href: 'https://plugins.jenkins.io/azure-container-agents'
         - name: Azure Container Service beépülő modul
@@ -58,10 +63,14 @@
           href: 'https://plugins.jenkins.io/azure-credentials'
         - name: Az Azure-függvények beépülő modulja
           href: 'https://plugins.jenkins.io/azure-function'
+        - name: Az Azure Service Fabric beépülő modulja
+          href: 'https://plugins.jenkins.io/service-fabric'
         - name: Az Azure Storage beépülő modulja
           href: 'https://plugins.jenkins.io/windows-azure-storage'
         - name: Az Azure virtuálisgép-ügynökök beépülő modulja
           href: 'https://plugins.jenkins.io/azure-vm-agents'
+        - name: Azure-beli virtuális gépek méretezési csoportjainak beépülő modulja
+          href: 'https://plugins.jenkins.io/azure-vmss'
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Jenkins kezdőlap

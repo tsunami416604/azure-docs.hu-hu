@@ -33,6 +33,9 @@
 #### [Nyilvános IP-cím létrehozása rendelkezésre állási zónában a PowerShell-lel](../virtual-network/create-public-ip-availability-zone-powershell.md)
 #### [Nyilvános IP-cím létrehozása rendelkezésre állási zónában a parancssori felület használatával](../virtual-network/create-public-ip-availability-zone-cli.md)
 
+### Tárolás
+#### [Zónaredundáns tárolás](../storage/common/storage-redundancy.md#zone-redundant-storage)
+
 # Vészhelyreállítás
 ## [Az Azure Site Recovery használata](https://docs.microsoft.com/azure/site-recovery/)
 

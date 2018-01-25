@@ -2,7 +2,6 @@
 
 ## Áttekintés
 ### [Mi a megoldás?](storsimple-ova-overview.md)
-### [Régiónkénti elérhetőség](storsimple-regions.md)
 
 ## Bevezetés
 ### Felkészülés
@@ -13,6 +12,7 @@
 ### Üzembe helyezés
 #### [Az üzembe helyezés előkészítése](storsimple-virtual-array-deploy1-portal-prep.md)
 ##### [A StorSimple Manager szolgáltatás üzembe helyezése](storsimple-virtual-array-manage-service.md)
+##### [Új hitelesítés](storsimple-virtual-array-aad-registration-key.md)
 #### [Üzembe helyezés Hyper-V rendszerben](storsimple-virtual-array-deploy2-provision-hyperv.md)
 #### [Üzembe helyezés VMware rendszerben](storsimple-virtual-array-deploy2-provision-vmware.md)
 #### [Beállítás fájlkiszolgálóként](storsimple-virtual-array-deploy3-fs-setup.md)
@@ -79,6 +79,7 @@
 
 ### Üzembe helyezés
 #### [StorSimple-eszközkezelő szolgáltatás](storsimple-8000-manage-service.md)
+#### [Új hitelesítés szolgáltatáshoz](storsimple-8000-aad-registration-key.md)
 #### [Fizikai eszköz az Azure-ban](storsimple-8000-deployment-walkthrough-u2.md)
 #### [Fizikai eszköz a Government Portalon](storsimple-8000-deployment-walkthrough-gov-u2.md)
 #### [Felhőalapú berendezés az Azure-ban](storsimple-8000-cloud-appliance-u2.md)
