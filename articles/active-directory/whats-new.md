@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2017
+ms.date: 01/23/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: c7aab313e6c848c97447cde22752cfed945442df
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: f32fc2d2df73f4a01c300d565595e2c00b2baf4b
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Újdonságok az Azure Active Directoryban?
 
@@ -40,6 +40,126 @@ Az Azure AD fogadja folyamatos fejlesztéseket. Maradjon naprakész a legújabb 
 -   Módosítások tervek
 
 Ezen a lapon a havi frissül, ezért le újra rendszeresen.
+
+
+## <a name="january-2018"></a>2018. január
+ 
+
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery"></a>Összevont alkalmas új alkalmazások az Azure AD-alkalmazásgyűjtemény 
+
+**Típus:** új szolgáltatás  
+**Szolgáltatás kategória:** vállalati alkalmazások  
+**A termék képesség:** 3. fél integrációja
+ 
+
+A január 2018 a összevonási támogatást a következő új alkalmazások az alkalmazásgyűjtemény lettek hozzáadva:
+
+[IBM OpenPages](https://go.microsoft.com/fwlink/?linkid=864698), [OneTrust adatvédelmi felügyeleti szoftver](https://go.microsoft.com/fwlink/?linkid=861660), [Dealpath](https://go.microsoft.com/fwlink/?linkid=863526), [IriusRisk összevont Directory](https://go.microsoft.com/fwlink/?linkid=864699) és [hűség NetBenefits](https://go.microsoft.com/fwlink/?linkid=864701).
+
+Az összes rendelkezésre álló oktatóanyag teljes áttekintése, lásd: [SaaS alkalmazások integrálása az Azure Active Directoryval](https://aka.ms/appstutorial).
+ 
+
+---
+ 
+
+
+### <a name="sign-in-with-additional-risk-detected"></a>További észlelt kockázattal rendelkező bejelentkezés
+
+**Típus:** új szolgáltatás  
+**Szolgáltatás kategória:** Identity Protection  
+**A termék képesség:** identitás biztonsági és védelmi
+ 
+
+A a észlelt kockázati események történő betekintést az Azure AD-előfizetés van kötve. Az Azure AD Premium P2 kiadásával kap minden alapul szolgáló észlelések részletesebb információt.
+
+Az Azure AD Premium P1 kiadásával észlelések, amelyekre nem vonatkozik a licenc jelennek meg a kockázat esemény bejelentkezési további kockázattal észlelte.
+
+További információkért tekintse át [Az Azure Active Directory kockázati eseményeivel](active-directory-reporting-risk-events.md) foglalkozó cikket.
+ 
+
+---
+
+### <a name="hide-office-365-applications-from-end-users-access-panels"></a>Office 365-alkalmazások a végfelhasználó hozzáférési panel elrejtése
+
+**Típus:** új szolgáltatás  
+**Szolgáltatás kategória:** saját alkalmazások  
+**A termék képesség:** egyszeri bejelentkezés
+ 
+
+Most jobban kezelhető hogyan Office 365-alkalmazások jelenik meg a felhasználói hozzáférés panelek egy új felhasználói beállítás segítségével. Ez a beállítás akkor hasznos, ha Ön szeretné csak az Office portálon az Office-alkalmazások megjelenítése az alkalmazások a felhasználó hozzáférési paneleken csökkentésével a. A beállítás a található a **felhasználói beállítások** és lett címkézve **csak értesülhet az Office 365 portál Office 365-alkalmazások**.
+ 
+
+További információkért lásd: [elrejtése az alkalmazás a felhasználói élmény az Azure Active Directoryban](active-directory-coreapps-hide-third-party-app.md).
+
+---
+ 
+
+
+### <a name="seamless-sign-into-apps-enabled-for-password-sso-directly-from-apps-url"></a>Zökkenőmentes bejelentkezési engedélyezve a jelszó SSO közvetlenül az alkalmazás URL-címről alkalmazásokba 
+
+**Típus:** új szolgáltatás  
+**Szolgáltatás kategória:** saját alkalmazások  
+**A termék képesség:** egyszeri bejelentkezés
+ 
+
+A személyes alkalmazások bővítmény kényelmes eszköz használatával, amely lehetővé teszi a személyes alkalmazások egyszeri bejelentkezést a funkció a böngészőben gyors most érhető el. Után a felhasználó telepítése jelenik meg a böngészőben egy waffle ikon, amely azokat gyors hozzáférést biztosít alkalmazások. Felhasználók mostantól kihasználhatja:
+
+- Képes közvetlenül jelentkezzen be a jelszó-SSO-alapú alkalmazások az alkalmazás bejelentkezési oldalról
+- Indítsa el a kívánt alkalmazást, gyors keresési funkciója
+- A bővítmény legutóbb használt alkalmazások parancsikonjai
+- A bővítmény él, Chrome és Firefox érhető el.
+ 
+További információkért lásd: [saját alkalmazások biztonságos bejelentkezési bővítmény](active-directory-saas-access-panel-introduction.md#my-apps-secure-sign-in-extension).
+
+---
+
+### <a name="azure-ad-administration-experience-in-azure-classic-portal-has-been-retired"></a>Az Azure AD felügyeleti élmény a klasszikus Azure portálon visszavontuk.
+
+**Típus:** elavult   
+**Szolgáltatás kategória:** az Azure AD  
+**A termék képesség:** könyvtár
+ 
+
+Től január 8, 2018, az Azure AD felügyeleti élmény a klasszikus Azure portálon visszavontuk. A klasszikus Azure portálon magát a kivonása együtt történt. Következő lépésként kell használnia a [az Azure AD felügyeleti központban](https://aad.portal.azure.com) valamennyi a portál-alapú felügyeleti az Azure AD.
+ 
+---
+
+### <a name="azure-ad-administration-experience-in-azure-classic-portal-has-been-retired"></a>Az Azure AD felügyeleti élmény a klasszikus Azure portálon visszavontuk.
+
+**Típus:** elavult  
+**Szolgáltatás kategória:** az Azure AD  
+**A termék képesség:** könyvtár
+ 
+
+2018. január 8.,-től a PhoneFactor webportál eltávolították. A portál számára a multi-factor Authentication kiszolgáló lett megadva, de olyan feladatokat be az Azure portálon: portal.azure.com is át lett helyezve. 
+
+A többtényezős hitelesítés konfigurálása a következő helyen található: **Azure Active Directory \> MFA kiszolgáló**
+ 
+---
+ 
+### <a name="deprecate-azure-ad-reports"></a>Az Azure AD-jelentések érvényteleníthető
+
+
+**Típus:** elavult  
+**Szolgáltatás kategória:** jelentéskészítés  
+**A termék képesség:** Identitáskezelés életciklusa  
+
+
+Az általános rendelkezésre az új Azure Active Directory felügyeleti konzol és az új API-k most már hozzáférhető tevékenység és a biztonsági jelentések, a jelentés API-k alatt "/ jelentések" végpont rendelkezik visszavontuk 2017. December 31. a végén.
+
+
+**Mi az az elérhető?**
+
+Az új felügyeleti konzol áttérés részeként hajtottunk 2 új API-k érhető el az Azure AD tevékenységi naplóit. Az új API-készlet adja meg a gazdagabb szűrési és rendezési funkció gazdagabb vizsgálati és bejelentkezési tevékenységek nyújtása mellett. Korábban a biztonsági jelentések keresztül elérhető adatok most Identity Protection kockázati események API Microsoft Graph keresztül érhető el.
+
+További információkért lásd:
+
+- [Bevezetés az Azure Active Directory reporting API használatába](active-directory-reporting-api-getting-started-azure-portal.md)
+
+- [Ismerkedés az Azure Active Directory azonosító adatok védelmét és a Microsoft Graph](active-directory-identityprotection-graph-getting-started.md)
+
+
+---
 
 
 ## <a name="december-2017"></a>2017. december
@@ -130,25 +250,11 @@ További információkért lásd: [Mi az Azure AD Privileged Identity Management
 **Szolgáltatás kategória:** vállalati alkalmazások  
 **A termék képesség:** külső integráció
  
-A December 2017 a következő új alkalmazások összevonási támogatással rendelkező hozzáadott a gyűjtemény.
+A December 2017 a összevonási támogatást a következő új alkalmazások az alkalmazásgyűjtemény lettek hozzáadva:
 
-|Name (Név)|Integráció típusa|Leírás|
-|:-- |----------------|:----------|
-|EFI digitális kirakat|SAML 2.0|[Webes 2 nyomtatás](https://go.microsoft.com/fwlink/?linkid=861685) alkalmazás.|
-|Vodeclic|SAML 2.0|Az Azure AD segítségével felügyelheti a felhasználók hozzáférését és az egyszeri bejelentkezés engedélyezése a [Vodeclic](https://go.microsoft.com/fwlink/?linkid=863522). Meglévő Vodeclic fiókra van szükség.|
-|Accredible|SAML 2.0|Használjon [Accredible](https://go.microsoft.com/fwlink/?linkid=863523) létrehozása, kezelése és a tanúsítványok, jelvények és blockchain hitelesítő adatokat.|
-|FactSet|SAML 2.0|Egyszeri bejelentkezés a [FactSet FDSWeb alkalmazás](https://go.microsoft.com/fwlink/?linkid=863525).|
-|MobileIron Azure AD-integrációs|SAML 2.0|Modern vállalatok használható [MobileIron](https://go.microsoft.com/fwlink/?linkid=858027) eszköz a információk kezelésére, az átvitel során mobile és a felhő míg azok az adatvédelmi és megbízhatósági megőrzése.|
-|KÉP MŰKÖDIK|SAML 2.0|Az Azure AD segítségével felügyelheti a felhasználók hozzáférését, felhasználói fiókok kiépítése és egyszeri bejelentkezés engedélyezése a [kép WORKS](https://go.microsoft.com/fwlink/?linkid=863517). Egy meglévő LEMEZKÉPET WORKS előfizetést igényel.|
-|Bitbucket felbontása GmbH a SAML SSO|SAML 2.0|[Egyszeri bejelentkezés Bitbucket](https://go.microsoft.com/fwlink/?linkid=863519) delegáltak hitelesítés az Azure ad Szolgáltatásba. Már bejelentkezett az Azure AD-felhasználók férhetnek hozzá közvetlenül bitbucket szolgáltatásokhoz. Felhasználók létrehozása, és az SAML-attribútumok adatokkal parancsprogramok frissítése.|
-|A felbontása GmbH bambusz SAML SSO|SAML 2.0|[Egyszeri bejelentkezés bambusz](https://go.microsoft.com/fwlink/?linkid=863520) delegáltak hitelesítés az Azure ad Szolgáltatásba. Már bejelentkezett az Azure AD-felhasználók bambusz közvetlenül.|
-|Communifire|SAML 2.0|[Communifire](https://go.microsoft.com/fwlink/?linkid=861676) olyan modern, teljes funkcionalitású közösségi intranetes szoftver, amely támogatja az alkalmazottak és üzleti.|
-|MOBI|SAML 2.0|Használjon [MOBI](https://go.microsoft.com/fwlink/?linkid=863521) központosítása, érthető, és szabályozhatja a teljes eszköz ökoszisztéma.|
-|Reflektive|SAML 2.0|[Reflektive](https://go.microsoft.com/fwlink/?linkid=863518) egy modern platform teljesítménykezelés, a valós idejű visszajelzését és a cél beállítás. |
-|CybSafe|OpenID Connect & OAuth|A számítógépes-tájékoztatási GCHQ hitelesített platform speciális technológia és az adatok analytics használja az emberi aspektus számítógépes biztonsági és a data protection kockázat csökkentése érdekében.|
-|WebHR|OpenID Connect & OAuth|A közösségi emberi erőforrások szoftver több mint 20 000 vállalatok 197 országokban megbízható.|
- |Zenegy Azure AD-integrációs|OpenID Connect & OAuth|Ezzel az alkalmazással bejelentkezni Zenegy használhatja a vállalat az Azure AD hitelesítő adatait.|
-|Az Adobe élmény Manager|SAML 2.0|A tartalom átfogó felügyeleti platform megoldás segítségével build webhelyek, mobilalkalmazások és űrlapok a marketing tartalom és az eszközök kezelését.|
+[Accredible](https://go.microsoft.com/fwlink/?linkid=863523), Adobe élmény kezelő [EFI digitális kirakat](https://go.microsoft.com/fwlink/?linkid=861685), [Communifire](https://go.microsoft.com/fwlink/?linkid=861676) CybSafe, [FactSet](https://go.microsoft.com/fwlink/?linkid=863525), [kép WORKS](https://go.microsoft.com/fwlink/?linkid=863517), [MOBI](https://go.microsoft.com/fwlink/?linkid=863521), [MobileIron az Azure AD-integrációs](https://go.microsoft.com/fwlink/?linkid=858027), [Reflektive](https://go.microsoft.com/fwlink/?linkid=863518), [felbontása GmbHbambuszaSAMLSSO](https://go.microsoft.com/fwlink/?linkid=863520), [Bitbucket felbontása GmbH a SAML SSO](https://go.microsoft.com/fwlink/?linkid=863519), [Vodeclic](https://go.microsoft.com/fwlink/?linkid=863522), WebHR, Zenegy Azure AD-integrációra.
+
+Az összes rendelkezésre álló oktatóanyag teljes áttekintése, lásd: [SaaS alkalmazások integrálása az Azure Active Directoryval](https://aka.ms/appstutorial).
 
  
 ---

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 10/30/2017
 ms.author: rajanaki
-ms.openlocfilehash: 98f3b1fe5a0f1d7518e8f0ef6f2a478f59559139
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: a72c9104dc2df0c8a874f757c100a19dc26c1564
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-on-premises-to-azure"></a>Az Azure Site Recovery mátrix a helyszíni replikálása Azure-bA
 
@@ -50,7 +50,7 @@ Ez a cikk az Azure Site Recovery replikálásához és helyreállítása Azure �
   >[!Note]
   > Windows Server 2016 és 2012 R2-állomások a System Center Virtual Machine Manager 2016 felhő jelenleg nem támogatott.
   > Egy meglévő SCVMM 2012 R2-ről 2016 frissítését tartalmazó konfigurációt jelenleg nem támogatott.
-### <a name="host-servers"></a>Kiszolgálók
+### <a name="host-servers"></a>Host servers
 
 **Üzembe helyezés** | **Támogatás**
 --- | ---
@@ -82,7 +82,7 @@ A következő táblázat összefoglalja a replikált operációs rendszer támog
 
 ### <a name="supported-ubuntu-kernel-versions-for-vmwarephysical-servers"></a>Ubuntu kernel támogatott verziók, VMware vagy fizikai kiszolgálók
 
-**Kiadás** | **Mobilitási szolgáltatás verziója** | **Kernel-verzió** |
+**Release** | **Mobilitási szolgáltatás verziója** | **Kernel-verzió** |
 --- | --- | --- |
 14.04 LTS | 9.10 | a 3.13.0-121-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-81-generic 4.4.0-21-Generic |
 14.04 LTS | 9.11 | a 3.13.0-128-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-91-generic 4.4.0-21-Generic |
@@ -128,9 +128,9 @@ IPv6 | Nem | Nem
 A hálózati adapterek összevonása | Nem | Nem
 IPv4 | Igen | Igen
 IPv6 | Nem | Nem
-Statikus IP-címet (Windows) | Igen | Igen
+Static IP (Windows) | Igen | Igen
 Statikus IP-címet (Linux) | Igen <br/><br/>Virtuális gépek feladat-visszavétel DHCP használatára vannak konfigurálva.  | Nem
-Több hálózati Adapterrel | Igen | Igen
+Multi-NIC | Igen | Igen
 
 ### <a name="failed-over-azure-vm-network-configuration"></a>Átvevő Azure Virtuálisgép-hálózati konfiguráció
 
@@ -138,9 +138,9 @@ Több hálózati Adapterrel | Igen | Igen
 --- | --- | ---
 Express Route | Igen | Igen
 ILB | Igen | Igen
-ÜZEMBE HELYEZETT ELB | Igen | Igen
+ELB | Igen | Igen
 Traffic Manager | Igen | Igen
-Több hálózati Adapterrel | Igen | Igen
+Multi-NIC | Igen | Igen
 Fenntartott IP | Igen | Igen
 IPv4 | Igen | Igen
 Tartsa meg a forrás IP-címe | Igen | Igen
@@ -163,10 +163,10 @@ SAN (ISCSI) | Igen | Igen
 
 **Konfigurálás** | **VMware vagy fizikai kiszolgáló** | **A Hyper-V (a/nélkül a Virtual Machine Manager)**
 --- | --- | ---
-VMDK-FÁJL | Igen | –
+VMDK | Igen | –
 VHD/VHDX | – | Igen
 Generációból 2 virtuális gép | – | Igen
-EFI/UEFI| Nem | Igen
+EFI/UEFI| Áttelepítés Azure, a Windows Server 2012 vagy újabb verzió esetén. </br></br> ** Megjegyzés: a tábla végén tekintse meg.  | Igen
 Megosztott fürtlemez | Nem | Nem
 Titkosított lemez | Nem | Nem
 NFS | Nem | –
@@ -181,6 +181,12 @@ Gyakran használt adatok hozzáadása lemez | Nem | Nem
 Lemez kizárása | Igen | Igen
 (MPIO) többutas | – | Igen
 
+> [!NOTE]
+> ** UEFI rendszerindítási VMware virtuális gépek vagy a Windows Server 2012 rendszert futtató fizikai kiszolgálók, vagy később telepíthetők át az Azure-bA. Következő korlátozások vonatkoznak.
+> - Áttelepítés az Azure-bA csak. A feladat-visszavétel a helyszíni VMware-hely nem támogatott.
+> - Az operációsrendszer-lemezképet, a kiszolgáló legfeljebb 4 partíciók támogatottak.
+> - Azure Site Recovery mobilitási szolgáltatás 9.13 vagy újabb verziója szükséges.
+
 **Azure Storage** | **VMware vagy fizikai kiszolgáló** | **A Hyper-V (a/nélkül a Virtual Machine Manager)**
 --- | --- | ---
 LRS | Igen | Igen
@@ -189,7 +195,7 @@ RA-GRS | Igen | Igen
 Ritkán használt adatok | Nem | Nem
 Gyakran használt adatok| Nem | Nem
 Blokkblobok | Nem | Nem
-Rest(SSE) titkosítását| Igen | Igen
+Encryption at rest(SSE)| Igen | Igen
 Prémium szintű Storage | Igen | Igen
 Import/export szolgáltatás | Nem | Nem
 Virtuális hálózati szolgáltatás végpontok (Azure Storage tűzfalak és virtuális hálózatok) célként megadott konfigurált fiók vagy gyorsítótárazza a replikációs adatok tárolására használt tárfiók | Nem | Nem
@@ -219,8 +225,8 @@ A Site Recovery szolgáltatást az Azure által támogatott bármely operációs
 **Hálózati adapterek** | Több adapter támogatottak. |
 **Megosztott virtuális merevlemez** | Nem támogatott | Előfeltételek ellenőrzése sikertelen lesz, ha nem támogatott
 **FC-lemez** | Nem támogatott | Előfeltételek ellenőrzése sikertelen lesz, ha nem támogatott
-**Merevlemez formátuma** | VIRTUÁLIS MEREVLEMEZ <br/><br/> VHDX | Bár VHDX jelenleg nem támogatott az Azure-ban, a Site Recovery automatikusan átalakítja VHDX virtuális merevlemezre történő feladatátadást követően Azure-bA. Ha nem sikerül vissza a helyszíni virtuális gépek továbbra is a VHDX formátum.
-**A BitLocker** | Nem támogatott | A BitLocker a virtuális gépek védelme előtt le kell tiltani.
+**Merevlemez formátuma** | VHD <br/><br/> VHDX | Bár VHDX jelenleg nem támogatott az Azure-ban, a Site Recovery automatikusan átalakítja VHDX virtuális merevlemezre történő feladatátadást követően Azure-bA. Ha nem sikerül vissza a helyszíni virtuális gépek továbbra is a VHDX formátum.
+**Bitlocker** | Nem támogatott | A BitLocker a virtuális gépek védelme előtt le kell tiltani.
 **Virtuális gép neve** | 1 és 63 karakter közötti. Kizárólag betűket, számokat és kötőjeleket tartalmazhat. A virtuális gép nevét kell kezdődnie, és betűvel vagy számmal végződhet. | Frissítse az értéket a virtuális gép tulajdonságai, a Site Recovery szolgáltatásban.
 **Virtuálisgép-típussá** | 1. generációs<br/><br/> Windows – a 2. generációs | 2. generációs virtuális gépek egy basic (amely egy vagy két adatkötetek VHDX formátumú tartalmazza) lemez típusa és kisebb, mint 300 GB lemezterület támogatottak.<br></br>Linux generációs 2 virtuális gépek nem támogatottak. [További információ](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/)|
 

@@ -251,8 +251,6 @@
           href: 'site-recovery-workload.md#workload-summary'
     - name: Kezelés
       items:
-        - name: Frissítés Recovery Services-tárolóra
-          href: upgrade-site-recovery-vaults.md
         - name: Folyamatkiszolgálók kezelése az Azure-ban
           href: site-recovery-vmware-setup-azure-ps-resource-manager.md
         - name: A konfigurációs kiszolgáló kezelése

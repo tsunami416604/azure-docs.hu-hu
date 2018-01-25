@@ -32,7 +32,7 @@ A felügyelt lemezek Azure Backup szolgáltatás használatával hozzon létre e
 ## <a name="pricing-and-billing"></a>Árak és számlázás
 
 Felügyelt lemezek használatakor az alábbi számlázási szempontok érvényesek:
-* Tárolótípus
+* Tárolási típus
 
 * Lemezméret
 
@@ -53,14 +53,14 @@ Vegyük a következő részletes bemutatása.
 
 | **Prémium szintű kezelt <br>lemez típusa** | **P4** | **P6** |**P10** | **P15** | **P20** | **P30** | **P40** | **P50** | 
 |------------------|---------|---------|---------|---------|---------|----------------|----------------|----------------|  
-| Lemezméret        | 32 GB   | 64 GB   | 128 GB  | 256 GB  | 512 GB  | 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) | 
+| Lemezméret        | 32 GiB   | 64 GiB   | 128 GiB  | 256 GiB  | 512 GiB  | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 
 
 
 Íme egy standard szintű felügyelt lemezes a lemezméret:
 
 | **Standard felügyelt <br>lemez típusa** | **S4** | **S6** | **S10** | **S20** | **S30** | **S40** | **S50** |
 |------------------|---------|---------|--------|--------|----------------|----------------|----------------| 
-| Lemezméret        | 32 GB   | 64 GB   | 128 GB | 512 GB | 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) | 
+| Lemezméret        | 32 GiB   | 64 GiB   | 128 GiB | 512 GiB | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 
 
 
 **A tranzakciók számának**: hajt végre egy standard szintű felügyelt lemezes tranzakciók száma a kell fizetni. Nincs a prémium szintű felügyelt lemezes tranzakciók költség nélkül.
@@ -72,7 +72,7 @@ Felügyelt lemezek árakkal kapcsolatos részletes információkért lásd: [lem
 
 ## <a name="managed-disk-snapshots"></a>Felügyelt lemezes pillanatképek
 
-Felügyelt pillanatkép egy csak olvasható, teljes másolata egy felügyelt lemezes, amely alapértelmezés szerint egy standard szintű felügyelt lemezes tárolja. A pillanatképekkel akkor készíthet biztonsági másolatot a felügyelt lemezek bármikor időben. Ezeket a pillanatképeket független a forrás lemez létezik, és új kezelt lemezek létrehozásához használható. Azok a felhasznált mérete alapján számlázzuk. Például ha 64 GB-os kiosztott kapacitását és tényleges használt adatok mérete 10 GB-os felügyelt lemezes pillanatképet hoz létre, pillanatkép alapján számlázzuk csak a 10 GB-os használt adatok méretét.  
+Felügyelt pillanatkép egy csak olvasható, teljes másolata egy felügyelt lemezes, amely alapértelmezés szerint egy standard szintű felügyelt lemezes tárolja. A pillanatképekkel akkor készíthet biztonsági másolatot a felügyelt lemezek bármikor időben. Ezeket a pillanatképeket független a forrás lemez létezik, és új kezelt lemezek létrehozásához használható. Azok a felhasznált mérete alapján számlázzuk. Például 64 GiB kiosztott kapacitását és tényleges használt adatok mérete 10 GiB felügyelt lemezes pillanatképet hoz létre, ha pillanatkép alapján számlázzuk csak a 10 GiB használt adatok méretét.  
 
 [Növekményes pillanatképek](../articles/virtual-machines/windows/incremental-snapshots.md) lemezek felügyelete jelenleg nem támogatottak, de a jövőben támogatott.
 
@@ -102,12 +102,12 @@ Mi történik, ha a virtuális gépek öt lemezzel rendelkezik, és azok csíkoz
 
 Nincsenek titkosítási és beszéljék meg, állapotalapú felügyelt lemezek kétféle. Az elsőt a Storage szolgáltatás titkosítási (SSE), amely végzi el a társzolgáltatás. A második érték engedélyezheti a virtuális gépek az operációs rendszer és az adatok lemezeken Azure Disk Encryption.
 
-### <a name="storage-service-encryption-sse"></a>Storage szolgáltatás titkosítási (SSE)
+### <a name="storage-service-encryption-sse"></a>Storage Service Encryption (SSE)
 
 [Az Azure Storage szolgáltatás titkosítási](../articles/storage/common/storage-service-encryption.md) nyugalmi titkosítási biztosít, és megakadályozhatja az adatokat, hogy megfeleljen a szervezeti biztonsági és megfelelőségi jár kötelezettségekkel. SSE alapértelmezés szerint az összes felügyelt lemezek, a pillanatképek és a képeket minden régióban, amennyiben rendelkezésre áll-e felügyelt lemezek engedélyezve van. 2017. június 10., kezdve az összes új felügyelt lemezek/pillanatképek/képek és új adatokat írni a meglévő felügyelt lemezek automatikusan titkosítva nyugalmi Microsoft által felügyelt kulcsokkal.  Látogasson el a [kezelt lemezek gyakori kérdéseket tartalmazó oldal](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) további részleteket.
 
 
-### <a name="azure-disk-encryption-ade"></a>Az Azure Disk Encryption (ADE)
+### <a name="azure-disk-encryption-ade"></a>Azure Disk Encryption (ADE)
 
 Az Azure Disk Encryption lehetővé teszi, hogy az operációsrendszer- és adatlemezek egy infrastruktúra-szolgáltatási virtuális gép által használt titkosítását. Ez magában foglalja a felügyelt lemezek. A Windows a meghajtók titkosítása szabványos BitLocker titkosítás technológia használatával. Linux a lemez titkosítása a DM-Crypt technológia használatával. Ez integrálva van az Azure Key Vault lehetővé teszi a lemez titkosítási kulcsok kezeléséhez, és szabályozhatja. További információkért lásd: [lemez titkosítás a Windows Azure és a Linux IaaS virtuális gépeket](../articles/security/azure-security-disk-encryption.md).
 

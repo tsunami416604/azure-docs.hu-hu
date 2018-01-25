@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2016
 ms.author: dariagrigoriu
-ms.openlocfilehash: 7667f94ac4e7edd4e94d6605adefea469102a0c4
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 948c54a2e9be2260d0a7d2cce31b67ffbbd23d03
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Helyi üzembe helyezés Git használatával az Azure App Service szolgáltatásban
 
@@ -54,18 +54,13 @@ App Service számos programozási nyelven készült alkalmazások támogatja.
 
 1. Ha a tárház már nem tartalmazza a tartalmat, statikus .html fájl hozzáadásához az alábbiak szerint; vagy hagyja ki ezt a lépést:
    * Egy szövegszerkesztő használatával hozzon létre egy új fájlt **index.html** a Git-tárház gyökérkönyvtárában
-   * Adja hozzá a következő szöveget a index.html tartalma fájlt, és mentse: *Hello Git!*
+   * Adja hozzá a következő szöveget a index.html tartalmát fájlt, és mentse: *Hello Git!*
 1. A parancssorból ellenőrizze, hogy a Git-tárház gyökerében. A következő parancs használatával adja hozzá a fájlok a tárházhoz:
 
-    ```bash
-    git add -A
-    ```
-    
+        git add -A 
 1. Ezt követően véglegesítse a módosításokat a tárházba a következő paranccsal:
 
-    ```bash
-    git commit -m "Hello Azure App Service"
-    ```
+        git commit -m "Hello Azure App Service"
 
 ## <a name="Step3"></a>3. lépés: Az App Service alkalmazás tárház engedélyezése
 
@@ -92,7 +87,7 @@ Az alábbi lépések segítségével közzététele az alkalmazás az App Servic
 1. A parancssor használatával ellenőrizze, hogy a helyi Git-tárház gyökérkönyvtárában található.
 1. Használjon `git remote` hozzáadása a távoli leírásában felsorolt **Git URL-cím** az 1. lépés. A parancs a következőhöz hasonlít:
 
-    ```
+    ```bash
     git remote add azure https://<username>@localgitdeployment.scm.azurewebsites.net:443/localgitdeployment.git
     ```
 

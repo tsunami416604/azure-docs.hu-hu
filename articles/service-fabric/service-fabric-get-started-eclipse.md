@@ -3,7 +3,7 @@ title: "Azure Service Fabric beépülő modul az Eclipse-hez | Microsoft Docs"
 description: "Bevezetés az Eclipse Service Fabric beépülő moduljának használatába."
 services: service-fabric
 documentationcenter: java
-author: sayantancs
+author: rapatchi
 manager: timlt
 editor: 
 ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
@@ -13,12 +13,12 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/21/2016
-ms.author: saysa
-ms.openlocfilehash: 90faa353a1f6b83ec0cd8b9ee2cd247905ef4524
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.author: rapatchi
+ms.openlocfilehash: 291bbd35d6e3c89eb9568130ad144831452142ad
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Az Eclipse Service Fabric beépülő moduljának Java alkalmazásfejlesztése
 Az Eclipse a Java-fejlesztők által leggyakrabban használt integrált fejlesztőkörnyezetek (IDE-k) közé tartozik. Ebben a cikkben azt ismertetjük, hogyan állíthatja be az Eclipse fejlesztői környezetet az Azure Service Fabrickel való használathoz. Megtudhatja, hogyan telepítheti a Service Fabric beépülő modult, hogyan hozhat létre Service Fabric-alkalmazást, és hogyan helyezhet üzembe Service Fabric-alkalmazásokat helyi vagy távoli Service Fabric-fürtön az Eclipse Neonon. 
@@ -36,7 +36,7 @@ Telepíthet egy Service Fabric beépülő modult az Eclipse-en. A beépülő mod
 
 2.  A Service Fabric beépülő modul telepítéséhez az Eclipse Neonban lépjen a **Help** > **Install New Software** (Súgó, Új szoftver telepítése) területre.
   1.    A **Work with** mezőbe írja be a **http://dl.microsoft.com/eclipse** címet.
-  2.    Kattintson az **Add** (Hozzáadás) parancsra.
+  2.    Kattintson a **Hozzáadás** parancsra.
 
          ![Az Eclipse Neon Service Fabric beépülő modulja][sf-eclipse-plugin-install]
   3.    Válassza ki a Service Fabric beépülő modult, majd kattintson a **Next** (Tovább) gombra.

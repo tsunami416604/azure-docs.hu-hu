@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: anandy; billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 954d161b3fbc66f594429f33d1bb5c88c2bc83b4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7a2b2bd139443159607a0cef800737de6761e1c2
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="deploying-active-directory-federation-services-in-azure"></a>Az Active Directory összevonási szolgáltatások üzembe helyezése az Azure-ban
 Az AD FS egyszerű, mégis biztonságos identitás-összevonást, valamint webes egyszeri bejelentkezési (SSO) funkciókat biztosít. Az Azure AD vagy O365 segítségével megvalósított összevonás lehetővé teszi a felhasználóknak a helyszíni bejelentkezési adatok segítségével történő hitelesítést, valamint a felhőben futó erőforrások elérését. Ezért fontos, hogy magas rendelkezésre állást biztosító AD FS-infrastruktúrát alkalmazzon, amely garantálja a helyszíni és a felhőben lévő erőforrások elérhetőségét. Az AD FS Azure-ban történő üzembe helyezésével minimális erőfeszítéssel kialakíthatja a magas rendelkezésre állást.
@@ -285,7 +285,10 @@ A 443-as TCP-portra vonatkozó terheléselosztási szabályok konfigurálásáho
 
 ![EXT-hozzáférési szabályok (bejövő)](./media/active-directory-aadconnect-azure-adfs/nsg_dmz.png)
 
-[comment]: <> (![EXT-hozzáférési szabályok (bejövő)](./media/active-directory-aadconnect-azure-adfs/nsgdmzinbound.png)) [comment]: <> (![EXT-hozzáférési szabályok (kimenő)](./media/active-directory-aadconnect-azure-adfs/nsgdmzoutbound.png))
+<!--
+[comment]: <> (![EXT access rules (inbound)](./media/active-directory-aadconnect-azure-adfs/nsgdmzinbound.png))
+[comment]: <> (![EXT access rules (outbound)](./media/active-directory-aadconnect-azure-adfs/nsgdmzoutbound.png))
+-->
 
 > [!NOTE]
 > Ha az ügyfelek esetében felhasználói tanúsítvány hitelesítésére (clientTLS típusú hitelesítés X509 felhasználói tanúsítványok használatával) van szükség, az AD FS-nél engedélyezni kell a 49443-as TCP-porton a bejövő hozzáférést.
@@ -350,7 +353,7 @@ A sablon telepítése közben használhat egy meglévő virtuális hálózatot, 
 * [Azure virtuális hálózatok](https://aka.ms/Azure/VNet)
 * [Az AD FS és a webalkalmazás-proxy hivatkozások](http://aka.ms/ADFSLinks) 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md)
 * [Az AD FS konfigurálása és felügyelete az Azure AD Connect segítségével](active-directory-aadconnectfed-whatis.md)
 * [Az AD FS nagy rendelkezésre állású, több földrajzi régióra kiterjedő üzembe helyezése az Azure Traffic Managerrel](../active-directory-adfs-in-azure-with-azure-traffic-manager.md)

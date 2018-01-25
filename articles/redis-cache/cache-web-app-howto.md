@@ -3,8 +3,8 @@ title: "Webalkalmazás létrehozása a Redis Cache használatával | Microsoft D
 description: "Megtudhatja, hogyan hozhat létre webalkalmazást a Redis Cache használatával"
 services: redis-cache
 documentationcenter: 
-author: steved0x
-manager: douge
+author: wesmc7777
+manager: cfowler
 editor: 
 ms.assetid: 454e23d7-a99b-4e6e-8dd7-156451d2da7c
 ms.service: cache
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: hero-article
 ms.date: 05/09/2017
-ms.author: sdanie
-ms.openlocfilehash: 21dc87b3e8c26bfbda36202b31b3b4d44be32179
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.author: wesmc
+ms.openlocfilehash: c0cf5baa71ce599cd5c20d34c42bd2c578114efe
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="how-to-create-a-web-app-with-redis-cache"></a>Webalkalmazás létrehozása a Redis Cache használatával
 > [!div class="op_single_selector"]
@@ -102,7 +102,7 @@ A csomaggal kapcsolatos további információt az [EntityFramework](https://www.
     ![Modellosztály hozzáadása][cache-model-add-class-dialog]
 3. A `Team.cs` fájl elején cserélje le a `using` utasításokat az alábbi `using` utasításokra.
 
-    ```c#
+    ```csharp
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;
@@ -112,7 +112,7 @@ A csomaggal kapcsolatos további információt az [EntityFramework](https://www.
 
 1. Cserélje le a `Team` osztály definícióját az alábbi kódrészlettel, amely a `Team` osztály frissített definícióját, valamint néhány további Entity Framework-súgóosztályt tartalmaz. További információk a jelen oktatóanyagban használt, Code First nevű Entity Framework-megközelítésról: [Code First alkalmazása egy új adatbázisra](https://msdn.microsoft.com/data/jj193542).
 
-    ```c#
+    ```csharp
     public class Team
     {
         public int ID { get; set; }
@@ -226,7 +226,7 @@ A csomaggal kapcsolatos további információt az [EntityFramework](https://www.
     ![Global.asax.cs][cache-global-asax]
 6. Adja hozzá a következő két `using` utasítást a fájl elejéhez, a többi `using` utasítás alá.
 
-    ```c#
+    ```csharp
     using System.Data.Entity;
     using ContosoTeamStats.Models;
     ```
@@ -234,7 +234,7 @@ A csomaggal kapcsolatos további információt az [EntityFramework](https://www.
 
 1. Illessze az alábbi kódsort az `Application_Start` módszer végére.
 
-    ```c#
+    ```csharp
     Database.SetInitializer<TeamContext>(new TeamInitializer());
     ```
 
@@ -244,7 +244,7 @@ A csomaggal kapcsolatos további információt az [EntityFramework](https://www.
     ![RouteConfig.cs][cache-RouteConfig-cs]
 2. Cserélje le a `controller = "Home"` elemet a `RegisterRoutes` módszer alábbi kódjában a `controller = "Teams"` szövegre, a következő példán látható módon.
 
-    ```c#
+    ```csharp
     routes.MapRoute(
         name: "Default",
         url: "{controller}/{action}/{id}",
@@ -296,14 +296,14 @@ Az oktatóanyag jelen szakaszában el fogja végezni a mintaalkalmazás konfigur
     ![Csoportvezérlő][cache-teamscontroller]
 4. Adja hozzá az alábbi két `using` utasítást a **TeamsController.cs** fájlhoz.
 
-    ```c#   
+    ```csharp   
     using System.Configuration;
     using StackExchange.Redis;
     ```
 
 5. Adja hozzá az alábbi két tulajdonságot a `TeamsController` osztályhoz.
 
-    ```c#   
+    ```csharp   
     // Redis Connection string info
     private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
     {
@@ -351,14 +351,14 @@ Jelen példában a csapatstatisztikák az adatbázisból vagy a gyorsítótárb�
 
 1. Adja hozzá az alábbi `using` utasításokat a `TeamsController.cs` fájl elejéhez, a többi `using` utasítással együtt.
 
-    ```c#   
+    ```csharp   
     using System.Diagnostics;
     using Newtonsoft.Json;
     ```
 
 2. Az aktuális `public ActionResult Index()` metódusmegvalósítást cserélje le az alábbi megvalósításra.
 
-    ```c#
+    ```csharp
     // GET: Teams
     public ActionResult Index(string actionType, string resultType)
     {
@@ -417,7 +417,7 @@ Jelen példában a csapatstatisztikák az adatbázisból vagy a gyorsítótárb�
    
     Egy játékszezon szimulálásával a `PlayGames` módszer frissíti a csapatstatisztikákat, az eredményeket elmenti az adatbázisba, majd törli a gyorsítótárból a már elavult adatokat.
 
-    ```c#
+    ```csharp
     void PlayGames()
     {
         ViewBag.msg += "Updating team statistics. ";
@@ -436,7 +436,7 @@ Jelen példában a csapatstatisztikák az adatbázisból vagy a gyorsítótárb�
 
     A `RebuildDB` módszer újrainicializálja az adatbázist az alapértelmezett csapatokkal, statisztikákat állít elő számukra, és törli a gyorsítótárból a már elavult adatokat.
 
-    ```c#
+    ```csharp
     void RebuildDB()
     {
         ViewBag.msg += "Rebuilding DB. ";
@@ -451,7 +451,7 @@ Jelen példában a csapatstatisztikák az adatbázisból vagy a gyorsítótárb�
 
     A `ClearCachedTeams` módszer eltávolítja a gyorsítótárazott csapatstatisztikákat a gyorsítótárból.
 
-    ```c#
+    ```csharp
     void ClearCachedTeams()
     {
         IDatabase cache = Connection.GetDatabase();
@@ -466,7 +466,7 @@ Jelen példában a csapatstatisztikák az adatbázisból vagy a gyorsítótárb�
    
     A `GetFromDB` módszer beolvassa a csapatstatisztikákat a gyorsítótárból.
    
-    ```c#
+    ```csharp
     List<Team> GetFromDB()
     {
         ViewBag.msg += "Results read from DB. ";
@@ -480,7 +480,7 @@ Jelen példában a csapatstatisztikák az adatbázisból vagy a gyorsítótárb�
 
     A `GetFromList` módszer szerializált `List<Team>` formájában olvassa be a csapatstatisztikákat a gyorsítótárból. Gyorsítótár-tévesztés esetén a rendszer az adatbázisból olvassa be a statisztikákat, és azokat a gyorsítótárba menti a következő alkalomra. Jelen mintában a JSON.NET szerializálást alkalmazzuk a .NET-objektumok gyorsítótárba és gyorsítótárból történő szerializálására. További információk: [.NET-objektumokkal való munka az Azure Redis Cache-ben](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache).
 
-    ```c#
+    ```csharp
     List<Team> GetFromList()
     {
         List<Team> teams = null;
@@ -508,7 +508,7 @@ Jelen példában a csapatstatisztikák az adatbázisból vagy a gyorsítótárb�
 
     A `GetFromSortedSet` módszer beolvassa a csapatstatisztikákat egy gyorsítótárazott rendezett készletből. Gyorsítótár-tévesztés esetén a rendszer az adatbázisból olvassa be a statisztikákat, és azokat a gyorsítótárba menti, rendezett készletként.
 
-    ```c#
+    ```csharp
     List<Team> GetFromSortedSet()
     {
         List<Team> teams = null;
@@ -545,7 +545,7 @@ Jelen példában a csapatstatisztikák az adatbázisból vagy a gyorsítótárb�
 
     A `GetFromSortedSetTop5` módszer beolvassa az 5 legjobb csapatot a gyorsítótárazott rendezett készletből. Első lépésben a `teamsSortedSet` kulcsot keresi meg a gyorsítótárban. Ha a kulcs nem található, a rendszer a `GetFromSortedSet` módszert hívja meg a csapatstatisztikák beolvasásához és azoknak a gyorsítótárban történő tárolásához. Ezt a gyorsítótárazott rendezett készlet lekérdezése követi, amely az 5 legjobb csapatot adja vissza.
 
-    ```c#
+    ```csharp
     List<Team> GetFromSortedSetTop5()
     {
         List<Team> teams = null;
@@ -578,7 +578,7 @@ A szerkezeti kódot a rendszer ezen minta részeként állítja elő a csapatok 
 
 1. Keresse meg a `Create(Team team)` módszert a `TeamsController` osztályban. Adjon hozzá hívást a `ClearCachedTeams` módszerhez, ahogy az az alábbi példában is látható.
 
-    ```c#
+    ```csharp
     // POST: Teams/Create
     // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
     // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -603,7 +603,7 @@ A szerkezeti kódot a rendszer ezen minta részeként állítja elő a csapatok 
 
 1. Keresse meg a `Edit(Team team)` módszert a `TeamsController` osztályban. Adjon hozzá hívást a `ClearCachedTeams` módszerhez, ahogy az az alábbi példában is látható.
 
-    ```c#
+    ```csharp
     // POST: Teams/Edit/5
     // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
     // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -627,7 +627,7 @@ A szerkezeti kódot a rendszer ezen minta részeként állítja elő a csapatok 
 
 1. Keresse meg a `DeleteConfirmed(int id)` módszert a `TeamsController` osztályban. Adjon hozzá hívást a `ClearCachedTeams` módszerhez, ahogy az az alábbi példában is látható.
 
-    ```c#
+    ```csharp
     // POST: Teams/Delete/5
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
@@ -820,7 +820,7 @@ A használni kívánt gyorsítótár kiválasztása vagy létrehozása után ker
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Az [ASP.NET MVC 5 – Első lépések](http://www.asp.net/mvc/overview/getting-started/introduction/getting-started) elvégzéséről további információkat az [ASP.NET](http://asp.net/) webhelyén talál.
 * További példák egy ASP.NET-webalkalmazás létrehozására az App Service szolgáltatásban: [Create and deploy an ASP.NET web app in Azure App Service](https://github.com/Microsoft/HealthClinic.biz/wiki/Create-and-deploy-an-ASP.NET-web-app-in-Azure-App-Service) (ASP.NET-webalkalmazás létrehozása és üzembe helyezése az Azure App Service szolgáltatásban) a [HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect [bemutatóból](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/).
   * A HealthClinic.biz bemutató további gyors útmutatóit lásd: [Azure Developer Tools Quickstarts](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts) (Azure fejlesztői eszközök – gyors útmutatók).

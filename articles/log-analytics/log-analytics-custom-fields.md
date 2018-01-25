@@ -1,6 +1,6 @@
 ---
-title: "Az egyéni mezők Naplóelemzési |} Microsoft Docs"
-description: "Naplóelemzési egyéni mezők jellemzője hozhat létre a saját kereshető mezőt hozzá az összegyűjtött rekord tulajdonságainak OMS adatokból.  Ez a cikk ismerteti a folyamat létrehoz egy egyéni mezőt és részletes útmutató egy minta eseményhez."
+title: "Az egyéni mezők Azure Naplóelemzés |} Microsoft Docs"
+description: "Naplóelemzési egyéni mezők jellemzője hozhat létre a saját kereshető mezők összegyűjtött rekord tulajdonságainak hozzáadni a Naplóelemzési rekordból.  Ez a cikk ismerteti a folyamat létrehoz egy egyéni mezőt és részletes útmutató egy minta eseményhez."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/18/2016
+ms.date: 01/23/2018
 ms.author: bwren
-ms.openlocfilehash: 9e02094f155eaade9bc5fb49c4fbb798e546e989
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f0f3311f35f954f81560cad21e7f0e3bc850a094
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="custom-fields-in-log-analytics"></a>A Naplóelemzési egyéni mezők
-A **egyéni mezők** Naplóelemzési szolgáltatása lehetővé teszi a meglévő rekordokat az OMS-tárházban bővítése saját kereshető mezők hozzáadásával.  Egyéni mezők automatikusan tölti be más tulajdonságok ugyanabban a rekordban a kivonatolt adatokon.
+A **egyéni mezők** Naplóelemzési funkciója lehetővé teszi, hogy a saját kereshető mezők hozzáadásával meglévő rekordjainak Naplóelemzési bővítése.  Egyéni mezők automatikusan tölti be más tulajdonságok ugyanabban a rekordban a kivonatolt adatokon.
 
 ![Egyéni mezők – áttekintés](media/log-analytics-custom-fields/overview.png)
 
@@ -40,8 +40,7 @@ Amikor létrehoz egy egyéni mező, Log Analyticshez kell érteniük a mely adat
 A következő szakaszokban az eljárás egyéni mező létrehozásához.  Ez a cikk alján egy minta kivonása bemutatóért van.
 
 > [!NOTE]
-> Az egyéni mező fel van töltve, rögzíti a megadott feltételnek megfelelő hozzáadása az OMS-tárolót, így csak jelenik meg az egyéni mező létrehozása után gyűjtött rögzíti.  A egyéni mező nem adható hozzá bejegyzésekre, amelyek már szerepel az adattárban létrehozásakor.
-> 
+> Az egyéni mező fel van töltve, rögzíti a megadott feltételnek megfelelő hozzáadása szolgáltatáshoz, így csak jelenik meg az egyéni mező létrehozása után gyűjtött rögzíti.  A egyéni mező nem adható hozzá bejegyzésekre, amelyek már szerepel az adattárban létrehozásakor.
 > 
 
 ### <a name="step-1--identify-records-that-will-have-the-custom-field"></a>1. lépés – azt jelzi, hogy az egyéni mező lesz azonosítása
@@ -72,7 +71,7 @@ Miután elvégezte a kezdeti kinyerési, Naplóelemzési megjeleníti az eredmé
 7. Használja az egyéni mező, mint bármely más rekord tulajdonság.  Összesítő és csoportosítási adatok segítségével, és még segítségével új.
 
 ## <a name="viewing-custom-fields"></a>Egyéni mezők megtekintése
-Minden egyéni mezők listáját megtekintheti a a felügyeleti csoport a **beállítások** csempe az OMS-irányítópultot.  Válassza ki **adatok** , majd **egyéni mezők** a munkaterületen lévő összes egyéni mezők listája.  
+Összes egyéni mezők listáját megtekintheti a a felügyeleti csoportnak a **speciális beállítások** menü a Naplóelemzési munkaterület az Azure portálon.  Válassza ki **adatok** , majd **egyéni mezők** a munkaterületen lévő összes egyéni mezők listája.  
 
 ![Egyéni mezők](media/log-analytics-custom-fields/list.png)
 
@@ -88,7 +87,7 @@ Azt adja meg a következő lekérdezés futtatásával térjen vissza az összes
 
 Azt bármely rekord event ID 7036, majd válassza ki.
 
-![Forrás-rekord](media/log-analytics-custom-fields/source-record.png)
+![Source record](media/log-analytics-custom-fields/source-record.png)
 
 Azt szeretnénk, ha a szolgáltatás neve, amely megjelenik a **RenderedDescription** tulajdonság, és válassza a gomb melletti ezt a tulajdonságot.
 
@@ -138,7 +137,7 @@ Most már használhatja azt az egyéni mező, mint bármely más rekord tulajdon
 
 ![Lekérdezés csoportosítás](media/log-analytics-custom-fields/query-group.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További tudnivalók [keresések jelentkezzen](log-analytics-log-searches.md) egyéni mezőkkel feltétel lekérdezések összeállításához.
 * A figyelő [egyéni naplófájlok](log-analytics-data-sources-custom-logs.md) , amely elemezni a egyéni mezőkkel.
 

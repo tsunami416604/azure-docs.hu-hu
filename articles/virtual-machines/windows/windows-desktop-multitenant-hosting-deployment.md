@@ -12,19 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 8/20/2017
+ms.date: 1/24/2018
 ms.author: xujing
-ms.openlocfilehash: e1fd3cf826915b128039e3d9fe20c309f20ad2c6
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 6ad3b294e1d53d03f6ceb61048c8f657d8b471c0
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Windows 10 Azure több-Bérlős üzemeltető jogosultságokkal a központi telepítése 
 Az ügyfelek a Windows 10 nagyvállalati E3/E5 egyes felhasználókra vagy a Windows virtuális asztal eléréséhez (bővítmény felhasználói előfizetési licencet vagy előfizetési licenceket) felhasználónként több-Bérlős üzemeltető Rights for Windows 10 lehetővé teszi a Windows 10 licencek kerüljön a felhőben és futtassa a Windows 10-alapú virtuális gépek Azure-on fizető egy másik licenc nélkül. További információkért lásd: [több-Bérlős üzemeltető Windows 10 rendszerhez készült](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).
 
 > [!NOTE]
-> Ez a cikk bemutatja, hogy a Windows 10 asztali verzió képek licencelési juttatása valósítja meg. Olvassa el a a következőket [Azure hibrid előnyöket használata a Windows Server-lemezképekben](hybrid-use-benefit-licensing.md).
+> Ez a cikk bemutatja, hogy a Windows 10 Pro asztali képek licencelési juttatása megvalósítása az Azure piactéren.
+> - A Windows 7, 8.1, az MSDN előfizetések Azure piactéren 10 Enterprise (x64) kép tekintse meg [Windows ügyfél az Azure-ban fejlesztési/Tesztelési forgatókönyvek](client-images.md)
+> - A Windows Server licencelési előnyeit, tekintse meg [Azure hibrid előnyöket használata a Windows Server-lemezképekben](hybrid-use-benefit-licensing.md).
 >
 
 ## <a name="deploying-windows-10-image-from-azure-marketplace"></a>Az Azure piactérről Windows 10-lemezkép központi telepítése 
@@ -32,8 +34,10 @@ Powershell, a parancssori felület és az Azure Resource Manager sablon központ
 
 | Operációs rendszer  |      Közzétevő neve      |  Ajánlat | SKU |
 |:----------|:-------------:|:------|:------|
-| Windows 10 Pro    | MicrosoftWindowsDesktop | Windows 10-es  | A Pro-RS2   |
-| A Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows 10-es  | RS2-ProN  |
+| Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | A Pro-RS2   |
+| A Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows-10  | RS2-ProN  |
+| Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS3-Pro   |
+| A Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows-10  | RS3-ProN  |
 
 ## <a name="uploading-windows-10-vhd-to-azure"></a>Windows 10 feltöltése az Azure virtuális merevlemez
 Ha Windows 10 általánosított virtuális Merevlemezt, vegye figyelembe a Windows 10 nem rendelkezik beépített rendszergazdai fiók alapértelmezés szerint engedélyezett. Ahhoz, hogy a beépített rendszergazdai fiók, tartalmazza a következő parancsot az egyéni parancsprogramok futtatására szolgáló bővítmény részeként.
@@ -51,7 +55,7 @@ if($adminAccount.Disabled)
     $adminAccount.Put()
 }
 ```
-További információ: 
+További információk: 
 * [Az Azure virtuális merevlemez feltöltéséről](upload-generalized-managed.md)
 * [Az Azure-bA feltölteni egy Windows virtuális merevlemez előkészítése](prepare-for-upload-vhd-image.md)
 
@@ -107,7 +111,7 @@ LicenseType              :
 >
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - További információ [konfigurálása VDA Windows 10 rendszerhez](https://docs.microsoft.com/windows/deployment/vda-subscription-activation)
 - További információ [több-Bérlős üzemeltető Windows 10 rendszerhez](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)
 

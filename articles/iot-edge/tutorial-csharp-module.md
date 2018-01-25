@@ -9,11 +9,11 @@ ms.author: v-jamebr
 ms.date: 11/15/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: bd186341329721ee097a5b3ad3e7ad11b8e189f9
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 4fd84904fb264fc61d0059d389347e05839162d2
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="develop-and-deploy-a-c-iot-edge-module-to-your-simulated-device---preview"></a>Fejlesztés és a szimulált eszköz egy C# IoT peremhálózati modul telepítése – előzetes
 
@@ -31,7 +31,7 @@ Az IoT-Edge modul, amely ebben az oktatóanyagban létrehozhat szűrők az eszk�
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Az Azure IoT peremhálózati eszköz, a gyors üzembe helyezés vagy első oktatóanyaga, amely létrehozta.
-* Az IoT-peremhálózati eszköz elsődleges kulcs kapcsolati karakterláncát.  
+* Az IoT Edge-eszköz elsődleges kulcsának kapcsolati karakterlánca.  
 * [A Visual Studio Code](https://code.visualstudio.com/). 
 * [Azure IoT Edge-bővítményt a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge). 
 * [C# (OmniSharp technológiával) Visual Studio Code-bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp). 
@@ -70,6 +70,14 @@ A következő lépéseket megjelenítése, hogyan hozzon létre egy IoT peremhá
 5. A Visual STUDIO Code Explorerben (megoldáskezelőben) kattintson **Program.cs** való megnyitásához.
 
    ![Nyissa meg a Program.cs][1]
+
+6. Felső részén a **FilterModule** névtér esetén három hozzáadása `using` nyilatkozatait, később a használt:
+
+    ```csharp
+    using System.Collections.Generic;     // for KeyValuePair<>
+    using Microsoft.Azure.Devices.Shared; // for TwinCollection
+    using Newtonsoft.Json;                // for JsonConvert
+    ```
 
 6. Adja hozzá a `temperatureThreshold` változót a **Program** osztály. Ez a változó ahhoz, hogy az adatokat az IoT-központ küldendő beállítja az haladhatja meg a mért hőmérséklet értéket. 
 
@@ -244,10 +252,10 @@ A peremhálózati futásidejű a peremhálózati eszköz futtató számítógép
     sudo iotedgectl login --address <your container registry address> --username <username> --password <password> 
     ```
 
-## <a name="run-the-solution"></a>Futtassa a megoldás
+## <a name="run-the-solution"></a>A megoldás futtatása
 
 1. Az a [Azure-portálon](https://portal.azure.com), keresse meg az IoT hub.
-2. Ugrás a **IoT peremhálózati (előzetes verzió)** és az IoT-peremhálózati eszköz kiválasztásához.
+2. Lépjen az **IoT Edge (előzetes verzió)** részhez, és válassza ki az IoT Edge-eszközt.
 3. Válassza ki **modulok beállítása**. 
 2. Ellenőrizze, hogy a **tempSensor** modul automatikusan feltöltődik értékkel. Ha nem, tegye a következőket veheti fel:
     1. Válassza ki **IoT peremhálózati modul hozzá lesz adva**.

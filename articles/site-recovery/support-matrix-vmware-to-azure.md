@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: raynew
-ms.openlocfilehash: 857bbd42fda4abddd9a7551f4de016cecae03868
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: ead133318d8660e8b8f4b3e9c5dddb6d75878b19
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>VMware és fizikai kiszolgálók replikálást az Azure-támogatási mátrix
 
@@ -43,22 +43,28 @@ A következő táblázat összefoglalja a gépek replikáció támogatása. Bár
 --- | ---
 Számítógép-konfiguráció | Meg kell felelnie a gépek replikálása Azure-bA [Azure-követelményeknek](#failed-over-azure-vm-requirements).
 Gép operációs rendszerének (Windows) | 64 bites Windows Server 2016 (Server Core, az asztali élmény Server)\*, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2: legalább SP1
-Gép operációs rendszerének (Linux) | Red Hat Enterprise Linux: 5.2 való 5.11, 6.1 való 6.9, 7.0 való 7.3 <br/><br/>CentOS: 5.2 való 5.11, 6.1 való 6.9, 7.0 való 7.3 <br/><br/>Ubuntu 14.04 LTS server[ (támogatott kernel verziók)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Ubuntu 16.04 LTS server[ (támogatott kernel verziók)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Debian 7 <br/><br/>Debian 8<br/><br/>Oracle Enterprise Linux 6.4, vagy a Red Hat kompatibilis kernel, vagy a szoros vállalati Kernel kiadás 3 (UEK3) 6.5 <br/><br/>SUSE Linux Enterprise Server 11 SP3 <br/><br/>SUSE Linux Enterprise Server 11 SP4 <br/>(A gépek replikálásához SLES 11 SP3 az SLES 11 SP4 frissítés nem támogatott. Ha a replikált gép SLES 11SP3 az SLES 11 SP4 frissítették, szüksége lesz tiltsa le a replikációt, és a post újra a frissítést a gép védelméhez.)
-Linux kernel verziója | Red Hat Enterprise Linux Server 7 + és CentOS 7 + kiszolgálókon kernel verzió 3.10.0-514 támogatott az Azure Site Recovery mobilitási szolgáltatás 9.8 verziójával kezdve.<br/><br/> Az ügyfelek a 3.10.0-514 kernel a mobilitási szolgáltatás 9.8 verziónál korábbi verziójával is tiltsa le a replikációt. frissítse a mobilitási szolgáltatás verziója 9.8 verzióra, majd engedélyezze újra a replikációt.
+Gép operációs rendszerének (Linux) | Red Hat Enterprise Linux: 5.2 való 5.11, 6.1 való 6.9, 7.0-7.4 <br/><br/>CentOS: 5.2 való 5.11, 6.1 való 6.9, 7.0-7.4 <br/><br/>Ubuntu 14.04 LTS server[ (támogatott kernel verziók)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Ubuntu 16.04 LTS server[ (támogatott kernel verziók)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Debian 7 <br/><br/>Debian 8<br/><br/>Oracle Enterprise Linux 6.4, vagy a Red Hat kompatibilis kernel, vagy a szoros vállalati Kernel kiadás 3 (UEK3) 6.5 <br/><br/>SUSE Linux Enterprise Server 11 SP3 <br/><br/>SUSE Linux Enterprise Server 11 SP4 <br/>(A gépek replikálásához SLES 11 SP3 az SLES 11 SP4 frissítés nem támogatott. Ha a replikált gép SLES 11SP3 az SLES 11 SP4 frissítették, szüksége lesz tiltsa le a replikációt, és a post újra a frissítést a gép védelméhez.)
 
+>[!NOTE]
+>
+> - A Linux terjesztéseket csak a készlet kernelek alverzió kiadás/frissítése a terjesztési részét képező támogatottak.
+>
+> - A Linux-disztribúció egy Azure Site Recovery a fő verziói közötti frissítés VMware rendszerű virtuális gép védett, vagy fizikai kiszolgáló nem támogatott. Az operációs rendszer frissítésekor (például CentOS 6.* CentOS 7.*) Főverziók közötti, tiltsa le a replikációt a gép, frissítse az operációs rendszert a számítógépen, és majd engedélyezze újra a replikációt.
+>
 
 ### <a name="ubuntu-kernel-versions"></a>Ubuntu kernel-verziók
 
 
 **Támogatott kiadás** | **Mobilitási szolgáltatás verziója** | **Kernel-verzió** |
 --- | --- | --- |
-14.04 LTS | 9.9 | a 3.13.0-117-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-75-generic 4.4.0-21-Generic |
 14.04 LTS | 9.10 | a 3.13.0-121-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-81-generic 4.4.0-21-Generic |
 14.04 LTS | 9.11 | a 3.13.0-128-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-91-generic 4.4.0-21-Generic |
 14.04 LTS | 9.12 | a 3.13.0-132-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-96-generic 4.4.0-21-Generic |
+14.04 LTS | 9.13 | a 3.13.0-137-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-104-generic 4.4.0-21-Generic |
 16.04 LTS | 9.10 | a 4.4.0-81-generic, 4.4.0-21-Generic<br/>a 4.8.0-56-generic, 4.8.0-34-Generic<br/>a 4.10.0-24-generic 4.10.0-14-Generic |
 16.04 LTS | 9.11 | a 4.4.0-91-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-32-generic 4.10.0-14-Generic |
 16.04 LTS | 9.12 | a 4.4.0-96-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-35-generic 4.10.0-14-Generic |
+16.04 LTS | 9.13 | a 4.4.0-104-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic 4.10.0-14-Generic |
 
 ## <a name="linux-file-systemsguest-storage-configurations"></a>Linux fájl rendszerek/Vendég tárolási konfigurációk
 
@@ -70,7 +76,7 @@ A többutas szoftver | Eszköz leképezője
 Paravirtualized tárolóeszközök | Paravirtualized illesztőprogramok által exportált eszközökön nem támogatottak.
 Több sor blokk IO eszközök | Nem támogatott.
 A HP CCISS tárolóvezérlő fizikai kiszolgálók | Nem támogatott.
-Könyvtárak | Ezeket a könyvtárakat (Ha külön partíciók /-fájlrendszerek beállított) kell lennie az azonos operációsrendszer-lemezképet a forráskiszolgálón lévő: / (gyökér), / Boot, / usr, /usr/local, /var, etc
+Könyvtárak | Ezeket a könyvtárakat (Ha külön partíciók /-fájlrendszerek beállított) kell lennie az azonos operációsrendszer-lemezképet a forráskiszolgálón lévő: / (gyökér), / Boot, / usr, /usr/local, /var, etc </br></br>  Ha / (gyökérkötet) egy LVM kötet, akkor/Boot kell azon a lemezen, külön partíción találhatók, és nem lehet egy LVM kötet.<br/><br/>
 XFSv5 | XFSv5 szolgáltatások XFS fájlrendszeren, például a metaadatok ellenőrzőösszeg 9.10 a verziójáról a mobilitási szolgáltatás és újabb verziók esetében támogatottak. A xfs_info segédprogram használatával ellenőrizze a XFS superblock a partíció. Ha ftype értéke 1, XFSv5 szolgáltatások használatát is.
 
 
@@ -115,7 +121,7 @@ Virtuális hálózati szolgáltatási végpont<br/><br/> (Az azure storage tűzf
 Host SAN (ISCSI) | Igen
 Állomás többutas (MPIO) | Igen – tesztelték: Microsoft DSM, EMC PowerPath 5.7 SP4 EMC PowerPath DSM CLARiiON
 Vendég-kiszolgáló vmdk-fájl | Igen 
-Vendég-kiszolgáló EFI/UEFI| Nem
+Vendég-kiszolgáló EFI/UEFI| Részleges (áttelepítés Azure, a Windows Server 2012 vagy újabb verzió esetén.) </br></br> ** Megjegyzés: a tábla végén tekintse meg.
 Vendég-kiszolgáló megosztott fürtlemez | Nem 
 Vendég/server titkosított lemez | Nem 
 NFS Vendég-kiszolgáló | Nem 
@@ -124,7 +130,14 @@ Guest/server RDM | Igen<br/><br/> A fizikai kiszolgálók N/A
 Vendég-kiszolgáló > 1 TB méretű lemez | Igen<br/><br/>Legfeljebb 4095 GB 
 Vendég/server 4 KB-os logikai és a 4 KB-os fizikai szektort méretű lemez | Igen
 Vendég/server 4 KB-os logikai lemez és 512 bájtos fizikai szektorméretet | Igen 
-Csíkozott > 1 TB-os kötet Vendég-kiszolgáló<br/><br/> LVM logikai kötetkezelés Vendég/kiszolgáló - tárolóhelyek |} Vendég-kiszolgáló gyakran használt adatok hozzáadása lemez |} Vendég/kiszolgáló - a(z) |} Vendég-kiszolgáló több utas (MPIO) Igen |} N/A 
+Csíkozott > 1 TB-os kötet Vendég-kiszolgáló<br/><br/> LVM logikai kötetkezelés Vendég/kiszolgáló - tárolóhelyek |} Vendég-kiszolgáló gyakran használt adatok hozzáadása lemez |} Vendég/kiszolgáló - a(z) |} Vendég-kiszolgáló több utas (MPIO) Igen |} N/A
+
+> [!NOTE]
+> ** UEFI rendszerindítási VMware virtuális gépek vagy a Windows Server 2012 rendszert futtató fizikai kiszolgálók, vagy később telepíthetők át az Azure-bA. Következő korlátozások vonatkoznak.
+> - Csak az Azure-bA áttelepítése támogatott. A feladat-visszavétel a helyszíni VMware-hely nem támogatott.
+> - A kiszolgáló nem rendelkezhet több mint 4 partíciók meg az operációsrendszer-lemezképet.
+> - Azure Site Recovery mobilitási szolgáltatás 9.13 vagy újabb verziója szükséges.
+
 
 ## <a name="azure-storage"></a>Azure Storage tárterület
 

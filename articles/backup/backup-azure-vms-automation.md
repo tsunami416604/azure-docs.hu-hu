@@ -15,11 +15,11 @@ ms.workload: storage-backup-recovery
 ms.date: 12/20/2017
 ms.author: markgal;trinadhk;pullabhk
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 474c5a6d0e7d3647ca14cb61e7b2718c99fdfa72
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: e2eda7cee90d307d646ff68e104750c3057dcb06
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="use-azurermrecoveryservicesbackup-cmdlets-to-back-up-virtual-machines"></a>Készítsen biztonsági másolatot a virtuális gépek AzureRM.RecoveryServices.Backup-parancsmagok használatával
 
@@ -284,7 +284,7 @@ A visszaállítását egy virtuális Gépet az Azure portál használatával és
 >
 >
 
-A virtuális gép létrehozása a lemezről, című szakaszban [a virtuális gép létrehozása tárolt lemezekből](backup-azure-vms-automation.md#create-a-vm-from-stored-disks). Az alapvető lépéseken, egy Azure virtuális gép visszaállítására a következők:
+A virtuális gép létrehozása a lemezről, című szakaszban [a virtuális gép létrehozása a visszaállított lemezekből](backup-azure-vms-automation.md#create-a-vm-from-restored-disks). Az alapvető lépéseken, egy Azure virtuális gép visszaállítására a következők:
 
 * Válassza ki a virtuális gép
 * A helyreállítási pont kiválasztása

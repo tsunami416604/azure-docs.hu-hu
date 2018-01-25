@@ -14,20 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/10/2017
 ms.author: bhanupr
-ms.openlocfilehash: 4278c631ca7f2ce0417eab22ce2e5b12581dac30
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 77478616eae27828a57a36dc0aaf3884e80ce403
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="configure-domain-joined-hdinsight-clusters-using-azure-active-directory-domain-services"></a>Tartományhoz csatlakozó HDInsight-fürtök Azure Active Directory tartományi szolgáltatások konfigurálása
 
 Tartományhoz csatlakoztatott fürtök biztonsági képességeket biztosítanak a többfelhasználós vállalati a HDInsight. A HDInsight-fürtök tartományhoz az active directory-tartományok, csatlakozik, hogy a tartományi felhasználók a tartományi hitelesítő adataik használatával hitelesítik magukat a fürtök és a big Data típusú adatok feladatok futtatása. 
 
-Három módon, hogy egy tartományhoz csatlakozó HDInsight-fürt csatlakozni tud-e a tartományvezérlő beállítása:
+Két módon lehet, hogy egy tartományhoz csatlakozó HDInsight-fürt csatlakozni tud-e a tartományvezérlő beállítása:
 
 - Azure Active Directory Domain Services (Azure AD DS)
-- Helyszíni Active Directory
 - Active Directory-tartományvezérlő Azure IaaS virtuális gépeken
 
 Ebből a cikkből megismerheti, hogyan konfigurálhatja egy Azure Active Directory tartományi szolgáltatások tartományhoz HDInsight-fürtöt.

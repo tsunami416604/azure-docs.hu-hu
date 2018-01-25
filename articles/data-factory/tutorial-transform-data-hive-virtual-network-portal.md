@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/04/2018
 ms.author: shengc
-ms.openlocfilehash: 0414ee0f93b71446992bb5687795b75cd2e32386
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 4b8f7a66f220b57ac914a9f5475c680679b8bf03
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Azure virtuális hálózaton lévő adatok átalakítása Hive-tevékenység segítségével az Azure Data Factoryben
 Ebben az oktatóanyagban az Azure Portal segítségével hoz létre egy Data Factory-folyamatot, amely egy Azure virtuális hálózaton (VNet) lévő HDInsight-fürtön futó Hive-tevékenységgel alakítja át az adatokat. Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
@@ -98,12 +98,12 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 9. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.
    
    ![Data factory kezdőlap](./media/tutorial-transform-data-using-hive-in-vnet-portal/data-factory-home-page.png)
-10. A Data Factory felhasználói felületének (UI) külön lapon történő elindításához kattintson az **Author & Monitor** (Létrehozás és monitorozás) csempére.
+10. A Data Factory felhasználói felületének (UI) külön lapon történő elindításához kattintson a **Létrehozás és monitorozás** csempére.
 11. Az **első lépéseket bemutató** lapon váltson a **Szerkesztés** lapra a bal oldali panelen, ahogy az az alábbi képen látható: 
 
    ![Szerkesztés lap](./media/tutorial-transform-data-using-hive-in-vnet-portal/get-started-page.png)
 
-## <a name="create-a-self-hosted-integration-runtime"></a>Helyi Integration Runtime létrehozása
+## <a name="create-a-self-hosted-integration-runtime"></a>Saját üzemeltetésű Integration Runtime létrehozása
 Mivel a Hadoop-fürt egy virtuális hálózatban található, telepítenie kell egy helyi Integration Runtime-ot (IR) ugyanabban a virtuális hálózatban. Ebben a szakaszban egy új virtuális hálózatot fog létrehozni, amelyet aztán csatlakoztat ugyanahhoz a virtuális hálózathoz, és telepít rajta egy helyi IR-t. A helyi IR a Data Factory szolgáltatás számára lehetővé teszi a feldolgozási kérelmek kiosztását az HDInsighthoz hasonló számítási szolgáltatásokhoz a virtuális hálózaton belül. Az adatok mozgatására is lehetőséget biztosít a virtuális hálózatban található adattárak és az Azure között. Akkor kell helyi IR-t használni, ha az adattár vagy a számítási feladat szintén helyszíni környezetben található. 
 
 1. Az Azure Data Factory felhasználói felületén kattintson az ablak alján látható **Connections** (Kapcsolatok) elemre, majd váltson át az **Integration Runtimes** lapra, és kattintson az eszköztáron a **+ New** (Új) elemre. 
@@ -124,9 +124,9 @@ Mivel a Hadoop-fürt egy virtuális hálózatban található, telepítenie kell 
 
 ### <a name="install-ir-on-a-virtual-machine"></a>Integration Runtime telepítése virtuális gépre
 
-1. Az Azure-beli virtuális gépen töltse le a [helyi Integration Runtime-ot](https://www.microsoft.com/download/details.aspx?id=39717). Az előző lépésben megszerzett **hitelesítési kulccsal** regisztrálja manuálisan a helyi Integration Runtime-ot. 
+1. Az Azure-beli virtuális gépen töltse le a [saját üzemeltetésű integrációs modult](https://www.microsoft.com/download/details.aspx?id=39717). Az előző lépésben megszerzett **hitelesítési kulccsal** regisztrálja manuálisan a helyi Integration Runtime-ot. 
 
-    ![Integration Runtime regisztrálása](media/tutorial-transform-data-using-hive-in-vnet-portal/register-integration-runtime.png)
+    ![Integrációs modul regisztrálása](media/tutorial-transform-data-using-hive-in-vnet-portal/register-integration-runtime.png)
 
 2. A helyi Integration Runtime sikeres regisztrációja esetén a következő üzenet jelenik meg. 
    
@@ -177,7 +177,7 @@ Ebben a részben két társított szolgáltatást hoz létre és helyez üzembe:
 2. A **Compute** (Számítás) lapon válassza az **Azure HDInsight** lehetőséget, majd kattintson a **Continue** (Folytatás) gombra.
 
     ![Az Azure HDInsight kiválasztása](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-hdinsight.png)
-3. Az **Új társított szolgáltatás** ablakban végezze el az alábbi lépéseket:
+3. A **New Linked Service** (Új társított szolgáltatás) ablakban végezze el az alábbi lépéseket:
 
     1. A **Name** (Név) mezőben adja meg a következőt: **AzureHDInsightLinkedService**.
     2. Válassza a **Bring your own HDInsight** (Saját HDInsight használata) lehetőséget. 
@@ -243,7 +243,7 @@ Vegye figyelembe a következő szempontokat:
 
 ## <a name="monitor-the-pipeline-run"></a>A folyamat futásának monitorozása
 
-1. Váltson a bal oldali **Monitor** (Monitorozás) lapra. Ekkor a folyamat futása megjelenik a **Pipeline Runs** (Folyamatfuttatások) listában. 
+1. Váltson a bal oldali **Monitorozás** lapra. Ekkor a folyamat futása megjelenik a **Pipeline Runs** (Folyamatfuttatások) listában. 
 
     ![Folyamatfuttatások monitorozása](./media/tutorial-transform-data-using-hive-in-vnet-portal/monitor-pipeline-runs.png)
 2. A lista frissítéséhez kattintson a **Refresh** (Frissítés) elemre.
@@ -272,7 +272,7 @@ Az oktatóanyagban az alábbi lépéseket hajtotta végre:
 Folytassa a következő oktatóanyaggal, amelyben az adatok Azure Spark-fürtök használatával való átalakítását ismerheti meg:
 
 > [!div class="nextstepaction"]
->[Elágaztatási és láncolási Data Factory-folyamvezérlés](tutorial-control-flow.md)
+>[Elágaztatási és láncolási Data Factory-folyamvezérlés](tutorial-control-flow-portal.md)
 
 
 

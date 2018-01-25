@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/14/2017
+ms.date: 01/24/2018
 ms.author: tonguyen
-ms.openlocfilehash: 4bbb13f31c42a57815dca176408d5c2e82feb5e0
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 885dcbc0e0d3d9490d745a07ade5d9dece7ff3d6
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Azure számlázás és költség felügyeleti váratlan díjak elkerülése végett
 
@@ -143,7 +143,7 @@ A számlázási API használatával programozott módon a használati adatok beo
 ### <a name="ea-csp-and-sponsorship-customers"></a>EA, CSP és szponzorálás használó ügyfelek számára
 Konzultáljon a ügyfélfelelőshöz vagy a Azure partner a kezdéshez.
 
-| Ajánlat | Erőforrások |
+| Ajánlat | További források |
 |-------------------------------|-----------------------------------------------------------------------------------|
 | Nagyvállalati Szerződés (EA) | [EA portal](https://ea.azure.com/), [docs súgó](https://ea.azure.com/helpdocs), és [Power BI-jelentés](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-enterprise/) |
 | Cloud Solution Provider (Felhőszolgáltató) | Kérdezze meg a szolgáltató |
@@ -157,6 +157,7 @@ Vállalati költség nézetek jelenleg nyilvános előzetes verziójához. Vegye
 - Előfizetés költségek a felhasználás alapján, és nem derül ki előre összegek, többletfelhasználás, belefoglalt mennyiségek, módosításának és adók. A tényleges díjak arra az esetre vonatkoznak, a beléptetési szinten. 
 - Összegek az Azure portálon jelenik meg a vállalati portál értékek képest tarthat.  
 - Ha nem Ön költségek, lehet, a következő okok egyikéből adódóan:
+    - Nincs elég az RBAC-engedély az előfizetés szintjén. Vállalati költség nézetek megtekintéséhez a számlázási olvasó, olvasó, közreműködő vagy tulajdonosa az előfizetési szinten kell lennie.
     - A fiók tulajdonosa és a beléptetési rendszergazda letiltotta a "AO költségek megtekintése" beállítást.  A beléptetési rendszergazdától költségek eléréséhez. 
     - Szervezeti egység rendszergazdája, és a beléptetési rendszergazda letiltotta a "DA költségek megtekintése" beállítást.  A beléptetési rendszergazdától hozzáférést. 
     - Egy csatorna partner keretében vásárolt Azure, és a partner nem adott ki díjszabási információkat.  

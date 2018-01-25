@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: 39cfd269ec7dd9e676a9d4296df1329dc3fbe0cc
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: de48d61af0e8056a749715343ef821cfc35cb93d
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Elágaztatási és láncolási tevékenységek a Data Factory-folyamatokban
 Ebben az oktatóanyagban egy olyan adat-előállító folyamatot hoz létre, amely bemutat néhány folyamvezérlési funkciót. A folyamat egy egyszerű másolást hajt végre egy Azure Blob Storage-beli tárolóból egy másik tárolóba, amely ugyanazon tárfiókban található. Ha a másolási tevékenység sikeres, a folyamat egy e-mailt küld a sikeres műveletről, amelyben szerepelnek a sikeres másolási művelet részletei (például az írt adatok mennyisége). Ha a másolási tevékenység sikertelen, a folyamat egy e-mailt küld a sikertelen műveletről, amelyben szerepelnek a sikertelen másolás részletei (például a hibaüzenet). Az oktatóanyag során megismerheti, hogyan adhatók át a paraméterek.
@@ -61,7 +61,7 @@ Ez az oktatóanyag az Azure Portalt használja. Az Azure Data Factoryvel való i
     3. Töltse fel az **input.txt** fájlt a tárolóba.
 
 ## <a name="create-email-workflow-endpoints"></a>E-mail munkafolyamat végpontjainak létrehozása
-Ahhoz, hogy aktiválja az e-mailek folyamatból történő küldését, a [Logic Apps](../logic-apps/logic-apps-what-are-logic-apps.md) használatával határozhat meg munkafolyamatot. A Logic App-munkafolyamatok létrehozásának részleteit a [logikai alkalmazások létrehozását ismertető](../logic-apps/logic-apps-create-a-logic-app.md) cikkben tekintheti meg. 
+Ahhoz, hogy aktiválja az e-mailek folyamatból történő küldését, a [Logic Apps](../logic-apps/logic-apps-overview.md) használatával határozhat meg munkafolyamatot. A Logic App-munkafolyamatok létrehozásának részleteit a [logikai alkalmazások létrehozását ismertető](../logic-apps/quickstart-create-first-logic-app-workflow.md) cikkben tekintheti meg. 
 
 ### <a name="success-email-workflow"></a>Sikeres műveletről tájékoztató e-mail munkafolyamata 
 Hozzon létre egy `CopySuccessEmail` nevű Logic App-munkafolyamatot. A munkafolyamat eseményindítója legyen `When an HTTP request is received`, és adjon hozzá egy `Office 365 Outlook – Send an email` műveletet.
@@ -136,7 +136,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
       
      ![Új adat-előállító lap](./media/tutorial-control-flow-portal/new-azure-data-factory.png)
  
-   Az Azure data factory nevének **globálisan egyedinek** kell lennie. Ha a következő hibaüzenetet kapja, módosítsa a data factory nevét (például sajátneveADFTutorialDataFactory-ra), majd próbálkozzon újra a létrehozással. A Data Factory-összetevők részleteit a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
+   Az Azure data factory nevének **globálisan egyedinek** kell lennie. Ha a következő hibaüzenetet kapja, módosítsa a data factory nevét (például sajátnévADFTutorialDataFactory-ra), majd próbálkozzon újra a létrehozással. A Data Factory-összetevők részleteit a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
   
        `Data factory name “ADFTutorialDataFactory” is not available`
 3. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni. 

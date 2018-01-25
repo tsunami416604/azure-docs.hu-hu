@@ -4,7 +4,7 @@ description: "Hogyan listázhat egy alkalmazás, amely támogatja az egyszeri be
 services: active-directory
 documentationcenter: dev-center-name
 author: bryanla
-manager: mtillman
+manager: mbaldwin
 editor: 
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
@@ -12,86 +12,66 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/27/2017
+ms.date: 01/09/2018
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 0c324829469b9babe6608480204bd46691f84228
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: feb09aa8f8e22ad6fbda6a490d251c500bedf3ee
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="listing-your-application-in-the-azure-active-directory-application-gallery"></a>Az alkalmazást az Azure Active Directory alkalmazáskatalógusában listázása
-Egy alkalmazás, amely támogatja az egyszeri bejelentkezés az Azure Active Directoryban a listát a [az Azure AD-gyűjtemény](https://azure.microsoft.com/marketplace/active-directory/all/), az alkalmazás első kell megvalósítania, a következő integrációs módok egyikét:
 
-* **OpenID Connect** -közvetlen integráció használja OpenID Connect hitelesítési és az Azure AD hozzájárulás API konfigurálása az Azure AD-val. Ha integrációs csak indításakor, és az alkalmazás nem támogatja az SAML-alapú, majd azt az ajánlott mód.
-* **SAML** – az alkalmazás már rendelkezik az ügyfélgépek konfigurálására harmadik fél Identitásszolgáltatók az SAML protokoll használatával.
 
-Listaelem követelmények az egyes módokban alatt van.
+##  <a name="what-is-azure-ad-app-gallery"></a>Mi az Azure AD-alkalmazásgyűjtemény?
 
-## <a name="openid-connect-integration"></a>OpenID Connect integráció
-Az alkalmazás integrálása az Azure Active Directory, a következő a [fejlesztői útmutatás](active-directory-authentication-scenarios.md). Ezután végezze el az alábbi kérdésekre, és elküldje waadpartners@microsoft.com.
+Az Azure AD egy olyan felhőalapú identitás-szolgáltatás. [Az Azure AD-alkalmazásgyűjtemény](https://azure.microsoft.com/marketplace/active-directory/all/) egy közös tároló, ahol egyszeri bejelentkezést és a felhasználók átadása közzétett összes alkalmazás-összekötő. A kölcsönös identitás-szolgáltatóként az Azure AD használó ügyfelek különböző SaaS alkalmazás összekötők, amelyek itt közzétett keresi. Rendszergazda összekötő hozzáadja az alkalmazás-galériából és konfigurálja, és az egyszeri bejelentkezés és üzembe helyezési használni. Az Azure AD összes fő összevonási protokollokkal SAML 2.0, a OpenID Connect, a OAuth és a WS-Fed az egyszeri bejelentkezést támogatja. 
 
-* Azokat a hitelesítő adatokat egy tesztelési bérlőn vagy a fiókot az alkalmazással, az integráció tesztelése az Azure AD-csoport által használható.  
-* Hogyan az Azure AD-csoport is bejelentkezhet, és csatlakozzon az Azure AD példányát az alkalmazást a vonatkozó utasítások a [az Azure AD hozzájárulási keretrendszer](active-directory-integrating-applications.md#overview-of-the-consent-framework). 
-* Adja meg az Azure AD csapatával az egyszeri bejelentkezés az alkalmazáshoz szükséges további utasításokat. 
-* Adja meg az alábbi adatokat:
+## <a name="what-are-the-benefits-of-listing-the-application-in-the-gallery"></a>Milyen előnyökkel listázása az alkalmazás a katalógusban?
 
-> Vállalat neve:
-> 
-> Vállalati webhely:
-> 
-> Alkalmazás neve:
-> 
-> Az alkalmazás leírása (200 karakter lehet):
-> 
-> Alkalmazás webhely (tájékoztató):
-> 
-> Alkalmazás technikai támogatási webhely vagy kapcsolattartási adatokat:
-> 
-> Az alkalmazás, ahogy az alkalmazás részletes adatainak https://portal.azure.com, az alkalmazás azonosítója:
-> 
-> Alkalmazás Sign-Up URL-Címének Regisztráljon a felhasználók hová és/vagy vásároljon az alkalmazást:
-> 
-> (A kategóriák lásd az Azure Active Directory Marketplace) alatt helyezkednek el az alkalmazás három kategóriák kiválasztása:
-> 
-> Csatolja az alkalmazás kis ikon (PNG-fájlt, 45px 45px, teli háttérszíne szerint):
-> 
-> Csatolja az alkalmazás nagy méretben (PNG-fájlt, 215px 215px, teli háttérszíne szerint):
-> 
-> Csatolja az alkalmazás embléma (PNG-fájlt, 122px, háttérszínt által 150px):
-> 
-> 
+*  Adja meg a legjobban lehetséges egyszeri bejelentkezéses felhasználói élmény biztosítása az ügyfeleknek.
 
-## <a name="saml-integration"></a>SAML-integráció
-Bármely alkalmazás, amely támogatja az SAML 2.0 integrálható közvetlenül az Azure AD-bérlő segítségével [ezeket az utasításokat egy egyéni alkalmazás hozzáadása](../application-config-sso-how-to-configure-federated-sso-non-gallery.md). Miután ellenőrizte, hogy működik-e az alkalmazások integrálása az Azure ad-vel, az alábbi információk küldése < mailto:waadpartners@microsoft.com >.
+*  Az alkalmazás egyszerű és minimális konfigurációját.
 
-* Azokat a hitelesítő adatokat egy tesztelési bérlőn vagy a fiókot az alkalmazással, az integráció tesztelése az Azure AD-csoport által használható.  
-* Adja meg a SAML bejelentkezési URL-címet, a kiállítói URL-címe (entitás azonosítója) és a válasz URL-CÍMEN (helyességi feltétel fogyasztói szolgáltatás) értékek az alkalmazás leírtak [Itt](../application-config-sso-how-to-configure-federated-sso-non-gallery.md). Ha általában megadja ezeket az értékeket a SAML-metaadatfájl részeként, majd küldje, amely is.
-* Az Azure AD konfigurálása az alkalmazás SAML 2.0 használatával az identitás-szolgáltatóként rövid leírását adhatja meg. Ha az alkalmazás támogatja az konfigurálása az Azure AD felügyeleti önkiszolgáló portál keresztül identitás-szolgáltatóként, majd ellenőrizze, hogy a fent megadott hitelesítő adatok közé tartozik a beállítására.
-* Adja meg az alábbi adatokat:
+*  Ügyfelek keresése az alkalmazás és megtalálható a gyűjteményben. 
 
-> Vállalat neve:
-> 
-> Vállalati webhely:
-> 
-> Alkalmazás neve:
-> 
-> Az alkalmazás leírása (200 karakter lehet):
-> 
-> Alkalmazás webhely (tájékoztató):
-> 
-> Alkalmazás technikai támogatási webhely vagy kapcsolattartási adatokat:
-> 
-> Alkalmazás Sign-Up URL-Címének Regisztráljon a felhasználók hová és/vagy vásároljon az alkalmazást:
-> 
-> Válassza ki a alkalmazás alatt helyezkednek el legfeljebb három kategóriába (kategóriák lásd a [Azure Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/))):
-> 
-> Csatolja az alkalmazás kis ikon (PNG-fájlt, 45px 45px, teli háttérszíne szerint):
-> 
-> Csatolja az alkalmazás nagy méretben (PNG-fájlt, 215px 215px, teli háttérszíne szerint):
-> 
-> Csatolja az alkalmazás embléma (PNG-fájlt, 122px, háttérszínt által 150px):
-> 
-> 
+*  Minden ügyfél használhat ez az integráció Azure AD-SKU ingyenes, a Basic vagy a prémium szintű.
+
+*  Lépés lépés konfigurációs-oktatóanyagban a kölcsönös ügyfelek esetén.
+
+*  A felhasználó-kiépítés engedélyezése ugyanahhoz az alkalmazáshoz tartozó SCIM használata.
+
+
+##  <a name="what-are-the-pre-requisites"></a>Mik azok a szükséges előfeltételek?
+
+Egy alkalmazás az Azure AD-katalógus listázásához, az alkalmazás első kell megvalósítania az Azure AD által támogatott összevonási protokollok egyikét. Olvassa el a feltételeket és kikötéseket, az Azure AD application gallery itt. Ha használ: 
+
+*   **OpenID Connect** – a több-bérlős alkalmazás létrehozása az Azure ad-ben, és végrehajtása [az Azure AD hozzájárulási keretrendszer](active-directory-integrating-applications.md#overview-of-the-consent-framework) az alkalmazáshoz. Így minden ügyfél biztosítani tudja az alkalmazás hozzájárul a bejelentkezési kérelem elküldése közös végpontot. Azt is szabályozhatja a felhasználói hozzáférést a felhasználónak a bérlő azonosítója és a felhasználó egyszerű megkapta a jogkivonatot a alapján. Az alkalmazás integrálja az Azure AD-val, kövesse a [fejlesztői útmutatás](active-directory-authentication-scenarios.md).
+
+*   **SAML 2.0-s vagy a WS-Fed** – az alkalmazás egy olyan képességet, ehhez az SAML/WS-Fed SSO integráció SP vagy a kiállító terjesztési hely módban kell rendelkeznie. Bármely alkalmazás, amely támogatja az SAML 2.0 integrálható közvetlenül az Azure AD-bérlő használata a [egyéni alkalmazás hozzáadása utasításokat](../active-directory-saas-custom-apps.md).
+
+*   **Egyszeri jelszó** – hozzon létre egy webalkalmazást, amely rendelkezik egy lap HTML-bejelentkezés konfigurálása [jelszó-alapú egyszeri bejelentkezést](../active-directory-appssoaccess-whatis.md). Egyszeri jelszó alapú is hívják jelszó vaulting, lehetővé teszi a felhasználói hozzáférés és a webes alkalmazásokhoz, amelyek nem támogatják az identitás-összevonási jelszavak kezeléséhez. Akkor célszerű is forgatókönyvek, ahol több felhasználó meg szeretné osztani ugyanazt a fiókot, például a szervezet közösségi app fiókokhoz. 
+
+## <a name="process-for-submitting-the-request-in-the-portal"></a>A portál a kérelem elküldésekor folyamata
+
+Miután ellenőrizte, hogy működik-e az alkalmazások integrálása az Azure ad-vel, szeretné-e a hozzáférési kérelem elküldeni a [alkalmazás hálózati Portal](https://microsoft.sharepoint.com/teams/apponboarding/Apps). Ha rendelkezik Office 365-fiókkal, használhatja, amelyek a bejelentkezés a portálra ellenkező esetben használja a Microsoft ID (Live ID, az Outlook, Hotmail stb.) használatát a bejelentkezéshez. A hozzáférés kéréséhez lásd a következő lap. Adja meg a beviteli mezőben szereplő üzleti indoklásának, majd kattintson a **hozzáférés kérése**. A csapat fogja az adatokat, és hozzáférést, a ennek megfelelően. Ezt követően jelentkezzen be a portálra, és küldje el a részletes kérést az alkalmazáshoz.
+
+Ha szembesülhetnek a hozzáférés a probléma, forduljon a [Azure AD SSO integrációs csoport](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
+
+![Hozzáférési kérelem SharePoint-portál](./media/active-directory-app-gallery-listing/accessrequest.png)
+
+## <a name="timelines"></a>Ütemtervek
+    
+*   Listaelem SAML 2.0 és a WS-Fed alkalmazást a galéria - **7 – 10 nap**
+
+   ![Ütemterv a gyűjtemény SAML-alapú alkalmazást listázása](./media/active-directory-app-gallery-listing/timeline.png)
+
+*   Folyamat listázása az OpenID Connect alkalmazás azokat a galéria - **2-5 munkanapon**
+
+   ![Ütemterv a gyűjtemény SAML-alapú alkalmazást listázása](./media/active-directory-app-gallery-listing/timeline2.png)
+
+## <a name="escalations"></a>Azok következményeinek
+
+Az összes olyan dobja el az e-mailek [Azure AD SSO integrációs csoport](<mailto:SaaSApplicationIntegrations@service.microsoft.com>) és azt visszaszerezheti korábban MIKO.
 

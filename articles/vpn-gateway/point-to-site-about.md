@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 74cfa8f54c52463ac0b42c5cc6abab7b0366ac29
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 708027b6cea8ac6a2fe7f713f5c6639fc6f8258a
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="about-point-to-site-vpn"></a>Pont – hely típusú VPN kapcsolatos
 
@@ -36,7 +36,7 @@ Pont – hely típusú VPN az alábbi protokollok egyikét használhatja:
 Ha álló Windows és Mac rendszerű ügyfelek különböző környezettel rendelkezik, konfigurálja az SSTP és IKEv2 is.
 
 >[!NOTE]
->IKEv2 rendszer P2S a Resource Manager üzembe helyezési modellben érhető el. Nincs a klasszikus üzembe helyezési modellben érhető el.
+>IKEv2 rendszer P2S csak a Resource Manager üzembe helyezési modellben érhető el. Nincs a klasszikus üzembe helyezési modellben érhető el.
 >
 
 ## <a name="authentication"></a>P2S VPN-ügyfelek hitelesítésének módját?
@@ -67,6 +67,10 @@ Felhasználók használni a natív VPN-ügyfelek Windows és Mac rendszerű eszk
 * Mac-eszközök esetén áll a mobileconfig fájlt, amely a felhasználók telepítik az eszközeikre.
 
 A zip-fájl néhány fontos beállítás értékének is biztosít, amelyek ezen eszközök saját profil létrehozása az Azure oldalán. Az értékek közé tartoznak a VPN-átjáró címét, konfigurált típusról, útvonalak és a legfelső szintű tanúsítvány átjáró érvényesítéshez.
+
+>[!NOTE]
+>A Windows-ügyfelek esetében meg rendszergazdai jogosultságokkal kell rendelkeznie az ügyfél-eszközön ahhoz, hogy az Azure-bA az ügyféleszköz VPN-kapcsolatot kezdeményez.
+>
 
 ### <a name="gwsku"></a>Mely Gateway SKU támogatási P2S VPN?
 

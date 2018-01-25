@@ -51,9 +51,23 @@ Nem. Az SSTP esetében csak a Windows natív VPN-ügyfele, az IKEv2 esetében pe
 
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Támogatja az Azure az IKEv2 VPN használatát Windows rendszeren?
 
-A felhasználók kapcsolódhatnak az Azure-hoz a Windows beépített VPN-ügyfelével, amely támogatja az IKEv2-t. A következő esetekben azonban nem működik az IKEv2-kapcsolat Windows-eszközökről:
+IKEv2 Windows 10 és a Server 2016 esetén támogatott. Azonban ahhoz, hogy az IKEv2, kell telepítse a frissítéseket, és állítsa be helyileg egy beállításkulcs-érték. Windows 10 előtti operációsrendszer-verziók használata nem támogatott, és csak használható SSTP.
 
-  Ha a felhasználó eszköze nagy mennyiségű megbízható főtanúsítványt tartalmaz, az üzenetek hasznos adatainak mérete túl nagy lesz az IKE-csere során, és ez az IP-réteg töredezettségét okozhatja. A töredékeket az Azure elutasítja, és a kapcsolatot nem sikerült létrehozni. Nehéz meghatározni, milyen mennyiségű tanúsítvány esetén jelenik meg ez a hiba, ezért a Windows-eszközökről indított IKEv2-kapcsolatok működése nem garantált. Ha SSTP-t és az IKEv2-t is konfigurál vegyes (Windows és Mac eszközökből álló) környezetben, a Windows VPN-profil először mindig az IKEv2-alagutat próbálja meg használni. Ha a fent leírt hiba miatt ez nem sikerül, a rendszer áttér az SSTP-alagútra.
+Windows 10 vagy a kiszolgáló 2016 előkészítése IKEv2:
+
+1. A frissítés telepítése.
+
+  | Operációs rendszer verziója | Dátum | Szám/kapcsolat |
+  |---|---|---|---|
+  | Windows Server 2016<br>Windows 10 1607-es verzió | 2018. január 17. | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
+  | Windows 10-es verzió 1703 | 2018. január 17. | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
+  |  |  |  |  |
+
+2. A beállításkulcs-érték beállítása. Hozzon létre, vagy állítsa be a "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload" REG_DWORD kulcs 1 beállításkulcsot.
+
+### <a name="what-happens-when-i-configure-both-sstp-and-ikev2-for-p2s-vpn-connections"></a>Mi történik, ha az SSTP és IKEv2 is P2S VPN-kapcsolatok konfigurálni?
+
+Konfigurálásakor SSTP és IKEv2 is (amely Windows és Mac-eszközök) vegyes környezetben, a Windows VPN-ügyfél minden esetben próbálja IKEv2 alagút először, de visszaáll az SSTP-e az IKEv2 nem sikeres. MacOSX csak IKEv2 keresztül fog csatlakozni.
 
 ### <a name="other-than-windows-and-mac-which-other-platforms-does-azure-support-for-p2s-vpn"></a>A Windows- és Mac-eszközökön kívül mely platformokhoz támogatja még az Azure a P2S VPN-t?
 

@@ -1,6 +1,6 @@
 ---
 title: "Az Azure Security Center biztonsági beállításokkal szervizelése |} Microsoft Docs"
-description: "Ez a dokumentum azt ismerteti, hogyan valósítja meg az Azure Security Center ajánlás **biztonsági beállításokkal szervizelése**."
+description: "Ez a dokumentum azt ismerteti, hogyan valósítja meg az Azure Security Center javaslat, a \"Szervizelése biztonsági beállításokkal.\""
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -14,93 +14,99 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2018
 ms.author: terrylan
-ms.openlocfilehash: 412234b1486fa15cbc399bcf43be8ce90aac252a
-ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
+ms.openlocfilehash: 477973298d8cc9d99da78e36274933e0bb737c4f
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="remediate-security-configurations-in-azure-security-center"></a>Az Azure Security Center biztonsági beállításokkal javítása
-Az Azure Security Center naponta elemzi az operációs rendszer (operációs rendszer) a virtuális gépek (VM) és a konfiguráció esetén, hogy a virtuális gépek és a számítógépek támadásokkal szemben. A Security Center azt javasolja, hogy a biztonsági rések oldható fel, amikor az operációs rendszer konfigurációja nem egyezik meg a javasolt biztonsági konfigurációs szabályok és konfigurációmódosításokat javasol, a biztonsági rések javasolja.
+Az Azure Security Center naponta elemzi az operációs rendszer (operációs rendszer) a virtuális gépek (VM) és a konfiguráció esetén, hogy a virtuális gépek és a számítógépek támadásokkal szemben. A Security Center azt javasolja, hogy a biztonsági rések feloldása, amikor az operációs rendszer konfigurációja nem egyezik meg a javasolt biztonsági konfigurációs szabályokat, és azt javasolja, hogy konfigurációmódosításokat javasol, a biztonsági rések.
 
-Által figyelt konfigurációkkal kapcsolatban lásd: a [ajánlott konfiguráció szabályok listája](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335). Lásd: [operációsrendszer-biztonsági beállítások testreszabása](security-center-customize-os-security-config.md) megtudhatja, hogyan szabhatja testre a Security Center biztonsági konfiguráció értékeléseket.
+Figyelt konfigurációkkal kapcsolatos további információkért tekintse meg a [ajánlott konfiguráció szabályok listája](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335). Biztonsági konfiguráció értékelések testreszabása, lásd: [testreszabása operációsrendszer-biztonsági beállítások az Azure Security Centerben (előzetes verzió)](security-center-customize-os-security-config.md).
 
 ## <a name="implement-the-recommendation"></a>A javaslat megvalósítása
-Konfigurációk eltérés jelölőnégyzetként jelenik meg a javaslat a Security Center biztonsági kijavítani. Ez a javaslat jelenik meg a **javaslatok** és a **számítási**.
+"Biztonsági beállításokkal szervizelése" jelölőnégyzetként jelenik meg a Security Center ajánlást. A javaslat jelenik meg **javaslatok** > **számítási**.
 
-Ebben a példában követően áttekintjük a **biztonsági beállításokkal szervizelése** ajánlás szerint **számítási**.
-1. Válassza ki **számítási** a Security Center fő menüjében.
+Ez a példa tartalmazza a "Biztonsági beállításokkal szervizelése" javaslat alapján **számítási**.
+1. Biztonsági központ, a bal oldali panelen válassza ki **számítási**.  
+  A **számítási** ablak nyílik meg.
 
-   ![Biztonsági beállításokkal javítása][1]
+   ![Biztonsági konfigurációk javítása][1]
 
-2. A **számítási**, jelölje be **biztonsági beállításokkal szervizelése**. **Biztonsági beállításokkal** nyílik meg.
+2. Válassza ki **biztonsági beállításokkal szervizelése**.  
+  A **biztonsági beállításokkal** ablak nyílik meg.
 
-   ![Biztonsági beállításokkal][2]
+   ![A "Biztonsági beállításokkal" ablak][2]
 
-  Az irányítópult tetején biztosítja:
+  Az irányítópult megjelenítése felső részén:
 
-  - A szabályok, amelyek az operációs rendszer konfigurálása nem sikerült a virtuális gép, mind a számítógép súlyosság szerint összesített száma
-  - A szabályok típus, amely az operációs rendszer konfigurálása nem sikerült a virtuális gép, mind a számítógép teljes száma.
-  - A Windows operációs rendszer azon konfigurációit és a Linux operációs rendszer azon konfigurációinak sikertelen a szabályok száma.
+  - **Nem sikerült a szabályok súlyosság szerint**: szabályokat, hogy az operációs rendszer konfigurációja sikertelen volt a virtuális gépek és a számítógépek, súlyosság szerint bontottuk ki teljes száma.
+  - **Nem sikerült a szabályok típus szerinti**: szabályokat, hogy az operációs rendszer konfigurációja sikertelen volt a virtuális gépek és a számítógépek, típus szerint bontottuk ki teljes száma.
+  - **Nem sikerült a Windows-szabályok**: sikertelen a Windows operációs rendszer beállításai alapján a szabályok száma.
+  - **Nem sikerült a Linux szabályok**: a Linux operációs rendszer-konfigurációja által sikertelen a szabályok száma.
 
-  Az irányítópult alsó összes sikertelen szabályokat sorolja fel a virtuális gépek és a számítógépek és a hiányzó frissítés súlyosságát. A lista a következőket tartalmazza:
+  Az irányítópult alsó részén a virtuális gépek és a számítógépek és a hiányzó frissítés súlyosságát összes sikertelen szabályokat sorolja fel. A lista a következő elemeket tartalmazza:
 
-  - **CCEID**: CCE a szabály egyedi azonosítója. A Security Center Common Configuration Enumeration (CCE) használja a konfigurációs szabályok egyedi azonosítót hozzárendelni.
-  - **NÉV**: sikertelen szabály neve
-  - **SZABÁLY típusa**: beállításkulcs, a biztonsági házirend, illetve a naplózási házirend
-  - **NO. A virtuális gépek és a számítógépek**: virtuális gépek és a nem kizárni számítógépek teljes száma a következőkre vonatkozik
-  - **A szabály SÚLYOSSÁGI**: kritikus, fontos vagy figyelmeztető CCE fontossági értékét
-  - **STATE** (Állapot): a javaslat aktuális állapota:
+  - **CCEID**: A CCE a szabály egyedi azonosítója. A Security Center egyedi azonosítók hozzárendelése a konfigurációs szabályok Common Configuration Enumeration (CCE) használja.
+  - **Név**: sikertelen a szabály nevét.
+  - **Szabály típusa**: A *beállításkulcs*, *biztonsági házirend*, vagy *naplórend* szabály típusa.
+  - **nem. a virtuális gépek és a számítógépek**: A virtuális gépek és a sikertelen szabályt alkalmazó számítógépek teljes száma.
+  - **Súlyossági szabály**: A CCE érték *kritikus*, *fontos*, vagy *figyelmeztetés*.
+  - **Állapot**: a javaslat aktuális állapota:
 
     - **Open** (Nyitott): a javaslattal egyelőre még nem foglalkoztak.
-    - **A folyamatban lévő**: A javaslat jelenleg vonatkozik ezeket az erőforrásokat, és nincs szükség felhasználói műveletek is
-    - **Resolved** (Megoldott): a javaslat alkalmazása megtörtént. (Ha a probléma megoldódott, a bejegyzés szürkén jelenik meg)
+    - **A folyamatban lévő**: A javaslat jelenleg vonatkozik az erőforrásokat, és nincs szükség felhasználói műveletek is.
+    - **Megoldott**: A javaslat alkalmazták. Ha a probléma megoldódott, a bejegyzés szürkén jelenik meg.
 
-3. A listában, a részletek megtekintéséhez válasszon egy sikertelen szabályt.
+3. Sikertelen szabály részleteinek megtekintéséhez válassza ki a listából.
 
-   ![Konfigurációs szabályok, amelyek nem tudták][3]
+   ![Sikertelen konfigurációs szabály részletes nézete][3]
 
-  A következő információ a panel:
+   A részletes nézetben megtekinthető a következő információkat:
 
-  - NÉV – Szabály neve
-  - CCIED--CCE egyedi azonosítója a szabályhoz
-  - Operációs rendszer verziója – a virtuális gép vagy a számítógép operációs rendszer verziója
-  - SZABÁLY SÚLYOSSÁGI--Kritikus, fontos vagy figyelmeztetési CCE súlyossági értéke
-  - TELJES leírás--Szabály leírása
-  - A biztonsági RÉS--Magyarázat biztonsági rés vagy kockázat, ha a szabály nem alkalmazható
-  - CÉLGYŰJTEMÉNY--Szabály alkalmazása Üzletmenetre gyakorolt hatás
-  - ELLENINTÉZKEDÉS – javítási lépéseket
-  - VÁRT érték--Értéket várt, amikor a Security Center elemzi a virtuális gép operációs rendszer konfigurációja a szabállyal szemben
-  - TÉNYLEGES érték--Értéket adott vissza a szabállyal szemben a virtuális gép operációs rendszere konfiguráció elemzése után
-  - --A szabály szabály művelet során a virtuális gép operációs rendszer konfigurációja a szabállyal szemben elemzése a Security Center által használt
+   - **Név**: a szabály nevét.
+   - **CCIED**: A CCE a szabály egyedi azonosítója.
+   - **Operációs rendszer verziója**: a virtuális gép vagy a számítógép az operációs rendszer verzióját.
+   - **Súlyossági szabály**: A CCE érték *kritikus*, *fontos*, vagy *figyelmeztetés*.
+   - **Teljes körű ismertetését**: a szabály leírása.
+   - **A biztonsági rés**: biztonsági rés vagy kockázat, ha nincs telepítve a szabály leírását.
+   - **Célgyűjtemény**: az üzletmenetre gyakorolt hatás, a szabály alkalmazásakor.
+   - **Ellenintézkedés részeként gondosan**: A javítási lépéseket.
+   - **Várt érték**: az érték, ha a Security Center elemzi a virtuális gép operációs rendszer konfigurációja a szabállyal szemben vár.
+   - **Tényleges érték**: az a virtuális gép operációs rendszer konfigurációja a szabállyal szemben elemzése után visszaadott érték.
+   - **Szabály művelet**: A Security Center által a virtuális gép operációs rendszere konfiguráció, a szabállyal szemben az elemzés során használt szabály műveletet.
 
-4. Válassza ki a **keresési** ikonra a felső szalagon. Keresési listát munkaterületek rendelkező virtuális gépek és azokét, amelyekre a kijelölt biztonsági konfigurációk eltérés nyílik meg. Ha a kiválasztott szabály vonatkozik-e több virtuális gépek különböző munkaterületekkel csatlakozó munkaterület kiválasztása panel csak látható.
+4. A részletes nézet ablak tetején válassza **keresési**.  
+  Keresési munkaterületek rendelkező virtuális gépek és a kijelölt biztonsági konfigurációk eltérés rendelkező számítógépek listáját nyitja meg. A munkaterület kiválasztása csak akkor jelenik meg ha a kiválasztott szabály vonatkozik-e több virtuális gépek különböző munkaterületekkel csatlakoznak.
 
-  ![Felsorolt munkaterületek][4]
+   ![Felsorolt munkaterületek][4]
 
-5. Jelöljön ki egy munkaterületet. Naplóelemzési keresési lekérdezés megnyitja a munkaterületet, és a biztonsági konfigurációkat eltérés szűrt.
+5. Jelöljön ki egy munkaterületet.  
+  Naplóelemzési keresési lekérdezés megnyitja a munkaterületet, és a biztonsági konfigurációkat eltérés szűrt.
 
-  ![Az operációs rendszer biztonsági rése munkaterület][5]
+   ![Az operációs rendszer biztonsági rése munkaterület][5]
 
-6. További információ a listából válasszon ki egy számítógépet. Egy másik keresési eredmény információ csak az adott számítógépen szűrt nyílik meg.
+6. Válasszon ki egy számítógépet a listában.  
+  Új keresési eredmény információ csak az adott számítógépen szűrt nyílik meg.
 
-  ![Az adott számítógépen szűrve][6]
+   ![A kijelölt számítógéppel kapcsolatos részletes információk][6]
 
 ## <a name="next-steps"></a>További lépések
-Ez a cikk bemutatta megvalósításához a Security Center javaslat "Szervizelése biztonsági beállításokkal." Lásd: [operációsrendszer-biztonsági beállítások testreszabása](security-center-customize-os-security-config.md) megtudhatja, hogyan szabhatja testre a Security Center biztonsági konfiguráció értékeléseket.
+Ez a cikk bemutatta megvalósításához a Security Center javaslat "Szervizelése biztonsági beállításokkal." Biztonsági konfiguráció értékelések testreszabása, lásd: [testreszabása operációsrendszer-biztonsági beállítások az Azure Security Centerben (előzetes verzió)](security-center-customize-os-security-config.md).
 
-Tekintse át a konfigurációs szabályok készletét [Itt](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335). A Security Center CCE (közös konfigurációs enumerálási) használatával rendelje hozzá a konfigurációs szabályok egyedi azonosítót. Látogasson el a [CCE](https://nvd.nist.gov/cce/index.cfm) webhelyen olvashat.
+Figyelt konfigurációkkal ellenőrzéséhez tekintse meg [ajánlott konfiguráció szabályok listája](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335). A Security Center egyedi azonosítók hozzárendelése a konfigurációs szabályok Common Configuration Enumeration (CCE) használja. További információkért látogasson el a [CCE](https://nvd.nist.gov/cce/index.cfm) hely.
 
 Security Centerrel kapcsolatos további tudnivalókért lásd a következőket:
 
-* [Az Azure Security Center által támogatott platformok](security-center-os-coverage.md) -támogatott Windows és Linux virtuális gépek listáját tartalmazza.
-* [Biztonsági szabályzatok beállítása az Azure Security Center](security-center-policies.md) -Útmutató: az Azure-előfizetések és -erőforráscsoportok biztonsági szabályzatainak konfigurálásához.
-* [Biztonsági javaslatok kezelése az Azure Security Center](security-center-recommendations.md) -megtudhatja, miként könnyítik meg a javaslatok az Azure-erőforrások védelme.
-* [Biztonsági állapotfigyelés az Azure Security Center](security-center-monitoring.md) -Útmutató: az Azure-erőforrások állapotának figyelésére.
-* [Kezelése és válaszadás a biztonsági riasztásokra az Azure Security Center](security-center-managing-and-responding-alerts.md) -útmutató kezelése és válaszadás a biztonsági riasztásokra.
-* [Partnermegoldások figyelése az Azure Security Center](security-center-partner-solutions.md) -megtudhatja, hogyan figyelheti a partnermegoldások biztonsági állapotát.
-* [Azure Security Center: GYIK](security-center-faq.md) -gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
-* [Az Azure biztonsági blog](http://blogs.msdn.com/b/azuresecurity/) – blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
+* Támogatott Windows és Linux virtuális gépek listáját lásd: [az Azure Security Center által támogatott platformok](security-center-os-coverage.md). 
+* Az Azure-előfizetések és az erőforráscsoportok biztonsági szabályzatok konfigurálásával kapcsolatban lásd: [biztonsági szabályzatok beállítása az Azure Security Center](security-center-policies.md). 
+* Hogyan javaslatok segítenek az Azure-erőforrások védelme, lásd: [biztonsági javaslatok kezelése az Azure Security Center](security-center-recommendations.md). 
+* Az Azure-erőforrások állapotának figyeléséről további tudnivalókért lásd: [biztonsági állapotfigyelés az Azure Security Center](security-center-monitoring.md). 
+* Kezelése és válaszadás a biztonsági riasztásokra kapcsolatban [kezelése és az Azure Security Centerben a biztonsági riasztásokra való reagálásról](security-center-managing-and-responding-alerts.md).
+* Figyelheti a partnermegoldások biztonsági állapotát, lásd: [partnermegoldások figyelése az Azure Security Center](security-center-partner-solutions.md).
+* A szolgáltatás használatával kapcsolatban gyakran feltett kérdésekre adott válaszokat, lásd: [Azure Security Center: GYIK](security-center-faq.md).
+* Az Azure biztonsági és megfelelőségi blogbejegyzéseket, lásd: [Azure biztonsági blog](http://blogs.msdn.com/b/azuresecurity/).
 
 <!--Image references-->
 [1]: ./media/security-center-remediate-os-vulnerabilities/compute-blade.png

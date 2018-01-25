@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/01/2017
+ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: 9bfa673cd9fc896aaeeeb355950177d47e6428fa
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: edf6e1d8b86d9773b54353bb70f000bcdf40e5ec
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="what-is-azure-data-catalog"></a>Mi az az Azure Data Catalog?
 Az Azure Data Catalog egy teljes körűen felügyelt felhőszolgáltatás, amely segít a felhasználóknak megtalálni a keresett adatforrásokat és értelmezni őket. Eközben a Data Catalog a vállalatoknak is segít még több értéket kinyerni a meglévő befektetésekből. 
@@ -71,7 +71,7 @@ A Data Catalog képességeinek bővebb megismeréséhez lásd a következő tém
 * [Az üzleti szószedet összeállítása](data-catalog-how-to-business-glossary.md)
 * [Gyakori kérdések](data-catalog-frequently-asked-questions.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A Data Catalog használatával itt ismerkedhet meg:
 * [Microsoft Azure Data Catalog](https://www.azuredatacatalog.com)
 * [Ismerkedés az Azure Data Catalog szolgáltatással](data-catalog-get-started.md)

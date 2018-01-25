@@ -8,7 +8,10 @@ A legutóbbi közzétételének egy [CPU biztonsági rések új osztály](https:
 Az infrastruktúra, amely Azure elkülöníti egymástól ügyfél munkaterheléseinek védett.  Ez azt jelenti, hogy más Azure-on futó ügyfelek nem támadható meg az alkalmazás biztonsági rések használatával.
 
 > [!NOTE] 
-> 2018. január 3. a korábban közzétett Azure megoldást érinti által a legutóbbi [útmutatójának frissítése](https://newsroom.intel.com/news/root-cause-of-reboot-issue-identified-updated-guidance-for-customers-and-partners/) az Intel. A felhasználói virtuális gépeket az új információk Intel által a nincs további karbantartási tevékenység fognak futni.
+> 2018. január 3. a korábban közzétett Azure megoldást érinti által a legutóbbi [útmutatójának frissítése](https://newsroom.intel.com/news/root-cause-of-reboot-issue-identified-updated-guidance-for-customers-and-partners/) az Intel. A felhasználói virtuális gépeket az új információk a nincs további karbantartási tevékenység fognak futni.
+>
+> Az alábbi gyakorlati tanácsok frissíti, az azt mikrokód frissítések kap hardverszállítók folytatjuk. Tekintse meg a biztonsági frissített útmutatást.
+>
 
 ## <a name="keeping-your-operating-systems-up-to-date"></a>Az operációs rendszer frissítése
 
@@ -46,9 +49,6 @@ Ha Windows használ, és nem megbízható kód üzemeltet, is ki kell jelölni e
 ### <a name="linux"></a>Linux
 Ha Linux használunk, és nem megbízható kód üzemeltető, frissítse is Linux egy újabb verzióra, amely rendszermag lap-tábla elkülönítési (KPTI), amely elválasztja a felhasználói felület tartozó a rendszermag által használt lap táblák. Ezek azok mérséklési Linux operációs rendszert futtató frissíteni, és ha elérhető terjesztési szolgáltatótól származó. Az operációs rendszer szolgáltató segítségével megállapíthatja, hogy e védelmet engedélyezett vagy letiltott alapértelmezés szerint.
 
-
-
-Az alábbi gyakorlati tanácsok frissíti, az azt mikrokód frissítések kap hardverszállítók folytatjuk. Tekintse meg a biztonsági frissített útmutatást.
 
 
 ## <a name="next-steps"></a>További lépések

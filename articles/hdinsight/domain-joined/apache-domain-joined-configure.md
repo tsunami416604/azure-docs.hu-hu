@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/10/2018
+ms.date: 01/24/2018
 ms.author: saurinsh
-ms.openlocfilehash: e24ea43f6df3c22c338646af21f7517e16b718ea
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 6284b246c071fb99a8b47845aca34b6262e5b856
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="configure-domain-joined-hdinsight-sandbox-environment"></a>Tartományhoz csatlakozó HDInsight védőfal mögötti környezet konfigurálása
 
@@ -29,7 +29,6 @@ Nélkül tartományhoz HDInsight-fürtöt, az egyes fürtökön csak van a Hadoo
 
 -   Az Active Directory önálló Azure infrastruktúra-szolgáltatáson futó.
 -   Azure Active Directory.
--   Az ügyfél helyszíni környezetben futó Active Directory.
 
 Active Directory önálló Ez a cikk az Azure infrastruktúra-szolgáltatáson futó vonatkozik. Az ügyfél követve többfelhasználós támogatás kérése a HDInsight a legegyszerűbb architektúra. Ez a cikk két megközelítés ehhez a konfigurációhoz terjed ki:
 
@@ -71,9 +70,10 @@ Ebben a szakaszban egy Azure-erőforrás management-sablon Azure-portálról meg
     - **Rendszergazda felhasználóneve**: Adja meg a tartomány rendszergazdai jogosultságú felhasználónevet.
     - **Rendszergazdai jelszó**: Adja meg a tartományi rendszergazda jelszavával.
     - **Tartománynév**: az alapértelmezett név az *contoso.com*.  Ha módosítja a tartomány nevét, frissíteni kell a **biztonságos LDAP tanúsítvány** mező és a **szervezeti egységet DN** mező.
+    - **DNS-előtagja**: Adja meg a DNS-előtagot a terheléselosztó által használt nyilvános IP-cím.
     - **A fürt neve**: Adja meg a HDInsight fürt nevét.
     - **Fürt típusa**: ne módosítsa ezt az értéket. Ha a fürt típusa módosítani kívánja, használja az adott sablon az előző lépésben.
-
+    - **Biztonságos Ldap Tanúsítványjelszavas**: az alapértelmezett értéket használja, kivéve, ha módosítja a biztonságos LDAP tanúsítvány mezőt.
     Néhány értéket változtatható a sablonban, például a munkavégző csomópont példányszám két.  A kódolt értékek módosításához kattintson **Szerkesztés sablon**.
 
     ![A HDInsight fürt tartományhoz Szerkesztés sablon](./media/apache-domain-joined-configure/hdinsight-domain-joined-edit-template.png)

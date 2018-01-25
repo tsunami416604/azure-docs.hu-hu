@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/05/2017
+ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 5c78f61074258c734cefade28d6aca1055519758
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 5285cddcb64e44cb61c99cc18f8a66d60cd1c0fc
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integrációs modul az Azure Data Factoryban
 Az integrációs modul (Integration Runtime, IR), az Azure Data Factory által használt számítási infrastruktúra a következő adatintegrációs képességeket biztosítja különböző hálózati környezetekben:
@@ -91,7 +91,7 @@ A magas rendelkezésre állás és a méretezhetőség érdekében horizontális
 A meglévő SSIS számítási feladat átemeléséhez létrehozhat egy Azure-SSIS integrációs modult az SSIS-csomagok natív létrehozásához.
 
 ### <a name="network-environment"></a>Hálózati környezet
-Az Azure-SSIS integrációs modul kiépíthető nyilvános hálózaton vagy magánhálózaton is.  A helyszíni adathozzáférés támogatása az Azure-SSIS integrációs modulnak a helyszíni hálózathoz csatlakoztatott virtuális hálózattal való összekapcsolása révén történik. Jelenleg csak a klasszikus VNET támogatott. 
+Az Azure-SSIS integrációs modul kiépíthető nyilvános hálózaton vagy magánhálózaton is.  A helyszíni adathozzáférés támogatása az Azure-SSIS integrációs modulnak a helyszíni hálózathoz csatlakoztatott virtuális hálózattal való összekapcsolása révén történik.  
 
 ### <a name="compute-resource-and-scaling"></a>Számítási erőforrások és méretezés
 Az Azure-SSIS integrációs modul egy, az SSIS-csomagok futtatására dedikált Azure-beli virtuális gépekből álló teljesen felügyelt fürt. Használhatja a saját Azure SQL Database- vagy Managed Instance-kiszolgálóját (privát előzetes verzió) az SSIS-projektek/csomagok (SSISDB) csatolandó katalógusának üzemeltetésére. A számítási teljesítmény vertikális felskálázásához adjon meg egy csomópontméretet, és skálázza fel horizontálisan a fürt csomópontszámának megadásával. Az Azure-SSIS integrációs modul futtatási költségének kezeléséhez igény szerint leállíthatja és elindíthatja azt.
@@ -183,7 +183,7 @@ Az Azure-SSIS integrációs modul számára a megfelelő helyet kiválasztása a
 - Ha rendelkezik meglévő Azure SQL Database/Managed Instance (privát előzetes verzió) kiszolgálóval az SSISDB üzemeltetésére, de nem a helyszíni hálózatához csatlakoztatott virtuális hálózat helyével megegyező helyen, először hozza létre az Azure-SSIS integrációs modult a meglévő Azure SQL Database/Managed Instance (privát előzetes verzió) kiszolgálóval, majd csatlakozzon egy másik virtuális hálózathoz azon a helyen, végül a különböző helyek között konfiguráljon egy virtuális hálózatok közötti kapcsolatot.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Lásd az alábbi cikkeket:
 
 - [Saját üzemeltetésű integrációs modul létrehozása](create-self-hosted-integration-runtime.md)

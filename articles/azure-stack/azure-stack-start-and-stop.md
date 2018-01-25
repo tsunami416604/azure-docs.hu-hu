@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: mabrigg
-ms.openlocfilehash: 9bbfffe15dc23d5d7d7b17aa4c79edc8a2aaab8c
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 98bf75f5883b734c785ed1a3ed924afca1737c56
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="start-and-stop-azure-stack"></a>Elindítása és leállítása Azure verem
 
@@ -64,7 +64,7 @@ Az indítási érhető el az Azure verem közben a következő lépéseket:
 
 ## <a name="troubleshoot-startup-and-shutdown-of-azure-stack"></a>Indítási és leállítási Azure verem hibaelhárítása
 
-Hajtsa végre az alábbi lépéseket, ha az infrastrukturális és bérlői szolgáltatások sikeresen ne indítsa a saját Azure verem környezete power után. 
+Hajtsa végre az alábbi lépéseket, ha az infrastrukturális és bérlői szolgáltatások nem sikeresen indul el, energiagazdálkodási után 2 óra Azure verem környezetben. 
 
 1. Munkamenetet nyit meg egy Rendszerjogosultságú végpont a virtuális gép hálózati hozzáférés az Azure verem ERCS virtuális gépekhez.
 
