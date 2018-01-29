@@ -15,17 +15,17 @@ ms.date: 06/17/2017
 ms.author: barlan
 ms.reviewer: librown
 ms.custom: end-user
-ms.openlocfilehash: 073b8adfcbe5fdcc2a6d1dba820a1101fac83218
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2c109a53866f9fff8c61a157cf1194fe4dd6e1ac
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="microsoft-authenticator-app-faq"></a>A Microsoft hitelesítő alkalmazást – gyakori kérdések
 
 Ebben a cikkben megválaszolunk, amelyet a Microsoft Authenticator alkalmazással kapcsolatos gyakori kérdésekre. Ha nem lát választ a kérdésére, folytassa a [Microsoft Authenticator alkalmazás fórum](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp). Azt is rendelkezik egy adott szolgáltatás egy másik gyakori kérdések az alkalmazás [jelentkezzen be a telefon – gyakori kérdések](microsoft-authenticator-app-phone-signin-faq.md).
 
-A Microsoft Authenticator alkalmazása helyett az Azure Authenticator alkalmazást, és Azure multi-factor Authentication használata ajánlott alkalmazás esetén. A Microsoft Authenticator alkalmazás érhető el [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072), és [iOS](http://go.microsoft.com/fwlink/?Linkid=825073).
+A Microsoft Authenticator alkalmazása helyett az Azure Authenticator alkalmazást, és Azure multi-factor Authentication használata ajánlott alkalmazás esetén. A Microsoft Authenticator alkalmazás érhető el [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594), és [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071).
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -100,7 +100,7 @@ Nincs hitelesítési kéréseket jóváhagyni, mivel minden igazolnia kell, hogy
 
 A lakat ikon azt jelzi, hogy az eszköz az Azure ad-ben regisztrált és a fiókot regisztrálni. IOS-eszközök regisztrációja a Microsoft Intune-regisztráció során történik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 ### <a name="contact-us"></a>Kapcsolat
 Kérdését itt nem választ, ha azt szeretné, hogy a véleményét. Lépjen a [Microsoft Authenticator alkalmazás fórum](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp) tegye fel a kérdését, és segítséget kérhet a közösségi, vagy szóljon hozzá ezen a lapon.

@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/17/2018
+ms.date: 01/24/2018
 ms.author: cherylmc
-ms.openlocfilehash: 37951a04bbfd266717490dd1752d0be04d2231a5
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 838065287279f1c17e7f294bc919c4a0421e2a58
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>Hozzon létre és telepítse a VPN-ügyfél konfigurációs fájlok P2S RADIUS-hitelesítés
 
@@ -56,7 +56,7 @@ New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -A
 Hivatkozás a parancs futtatásával adja vissza. Másolja és illessze be a hivatkozást egy webes böngésző "VpnClientConfiguration.zip" letöltéséhez. Bontsa ki a fájlt a következő mappák megtekintése: 
  
 * **WindowsAmd64** és **WindowsX86** -ezeket a mappákat a Windows 64 bites és 32 bites csomagok, illetve tartalmaz. 
-* **GenericDevice** – Ez a mappa létrehozása a saját VPN-ügyfél konfigurációja használt általános információkat tartalmaz. Ez a mappa nem szükséges felhasználónév/jelszó hitelesítési konfigurációt.
+* **Általános** – Ez a mappa létrehozása a saját VPN-ügyfél konfigurációja használt általános információkat tartalmaz. Ez a mappa nem szükséges felhasználónév/jelszó hitelesítési konfigurációt.
 * **Mac** -Ha IKEv2 lett konfigurálva, a virtuális hálózati átjáró létrehozása után úgy, hogy a "Mac" tartalmazó nevű mappát a **mobileconfig** fájlt. Ezt a fájlt a Mac ügyfelek konfigurálására szolgál.
 
 Ha már létrehozott ügyfél konfigurációs fájlok, a "Get-AzureRmVpnClientConfiguration" parancsmaggal visszakereshetők. Azonban ha módosítja a P2S VPN-konfigurációt, például a VPN-protokoll típusát vagy a hitelesítés típusa, a konfiguráció nem frissül automatikusan. A "New-AzureRmVpnClientConfiguration" parancsmaggal hozzon létre egy új konfigurációs letöltés kell futtatni.
@@ -125,7 +125,7 @@ VPN-ügyfél konfigurációs fájlokat a RADIUS-alapú hitelesítéséhez EAP-TL
 Tanúsítványalapú hitelesítés használható VPN ügyfél konfigurációs fájlokat generál. A VPN-ügyfél konfigurációs fájlokat a következő parancsot hozhat létre:
  
 ```powershell
-New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapTls" -RadiusRootCert <full path name of .cer file containing the RADIUS root> -ClientRootCert <full path name of .cer file containing the client root>
+New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapTls" -RadiusRootCert <full path name of .cer file containing the RADIUS root> -ClientRootCert <full path name of .cer file containing the client root> | fl
 ```
 
 Hivatkozás a parancs futtatásával adja vissza. Másolja és illessze be a hivatkozást egy webes böngésző "VpnClientConfiguration.zip" letöltéséhez. Bontsa ki a fájlt a következő mappák megtekintése:
@@ -138,7 +138,7 @@ Ha már létrehozott ügyfél konfigurációs fájlok, a "Get-AzureRmVpnClientCo
 Korábban létrehozott ügyfél-konfigurációs fájlok lekéréséhez használja a következő parancsot:
 
 ```powershell
-Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
+Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" | fl
 ```
  
 ## <a name="setupusername"></a> 2. A Windows és Mac VPN-ügyfelek konfigurálása

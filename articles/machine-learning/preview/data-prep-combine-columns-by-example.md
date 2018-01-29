@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: dc3870e81edd47a9932db86d347290451c4f1eb8
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 528d7ff5f74948fd1ae7b829d4b2fc38fa2f1109
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="combine-columns-by-example-transformation"></a>Példa átalakítással oszlopok egyesítése
 Ez a transzformáció lehetővé teszi a felhasználó számára egy olyan új oszlop hozzáadása kombinálásával több oszlop értékeit. Felhasználó adjon meg egy elválasztó és példákkal kombinált értékek ehhez a transzformációhoz végrehajtásához. Amikor a felhasználó kombinációja példákat tartalmaz, az átalakítás kezeli azonos **-példa** motor, amely használatban van a **Célosztályából oszlop példa alapján** átalakító.
@@ -38,6 +38,10 @@ Kiválasztása **példák** alatt **egyesítése oszlopok** lehetővé teszi a f
 
 Felhasználó válthat a **alapvető mód** és a **Speciális üzemmód** átalakítási-szerkesztőben hivatkozásokra kattintva.
 
+### <a name="transform-editor-send-feedback"></a>Átalakítás szerkesztő: visszajelzés küldése
+
+Kattintson a a **visszajelzés küldése** hivatkozás megnyílik a **visszajelzés** nyújtott előre feltöltve a példák felhasználói Megjegyzések mezőbe párbeszédpanel megnyitása. Felhasználói tekintse át a Megjegyzések mezőbe tartalmát és további részleteket, és segítsen megérteni a problémát. Ha a felhasználó nem szeretné adatok megosztása a Microsofttal, felhasználói való kattintás előtt törölje a előfeltöltött példaadatokat a **visszajelzés küldése** gombra. 
+
 ### <a name="editing-existing-transformation"></a>Meglévő átalakítása szerkesztése
 
 A felhasználó már meglévő **oszlop egyesítése minta alapján** kiválasztásával átalakítási **szerkesztése** átalakítása lépés lehetőséget. Kattintson a **szerkesztése** a átalakítási megnyitása a **alapvető mód**. Felhasználó adhat meg a **Speciális üzemmód** a fejlécben szereplő hivatkozásra kattintva. A példák, amelyeket az átalakítás létrehozása során is megjelennek.
@@ -46,7 +50,7 @@ A felhasználó már meglévő **oszlop egyesítése minta alapján** kiválaszt
 
 Vesszőt és egy szóközt egyesítése ebben a példában elválasztójelként szolgál a *utca*, *Város*, *állapot*, és *ZIP-* oszlopok.
 
-|Utca.|Város|Állapot|A ZIP-|Oszlop|
+|Utca|Város|Állapot|ZIP|Oszlop|
 |:----|:----|:----|:----|:----|
 |16011 N.E. 36th módja|REDMOND|WA|98052|16011 N.E. 36th módja, REDMOND, WA, 98052|
 |16021 N.E. 36th módja|REDMOND|WA|98052|16021 N.E. 36th módja, REDMOND, WA, 98052|
@@ -62,14 +66,14 @@ Vesszőt és egy szóközt egyesítése ebben a példában elválasztójelként 
 
 Az érték a **félkövér** példaként lett megadva.
 
-|Dátum|Hónap|év|Óra|perc|második|Összetett oszlop|
+|Dátum|Hónap|év|Óra|Perc|Második|Összetett oszlop|
 |:----|:----|:----|:----|:----|:----|:----|
-|13|okt.|2016|15|01|23|**13-Oct-2016 15:01:23 CET**|
+|13|okt.|2016|15|01|23|**13-Oct-2016 15:01:23 PDT**|
 |16|okt.|2016|16|22|33|16-Oct-2016 15:01:33 CET|
-|17|okt.|2016|12|43|12|17-Oct-2016 15:01:12 CET|
-|12|nov.|2016|14|22|44|12-november-2016 15:01:44 CET|
-|23|nov.|2016|01|52|45|23-november-2016 15:01:45 CET|
+|17|okt.|2016|12|43|12|17-Oct-2016 15:01:12 PDT|
+|12|nov.|2016|14|22|44|12-Nov-2016 15:01:44 PDT|
+|23|nov.|2016|01|52|45|23-Nov-2016 15:01:45 PDT|
 |16|jan.|2017|22|34|56|16-Jan-2016 15:01:56 CET|
-|23|már.|2017|01|55|25|23-gyel-2016 15:01:25 CET|
+|23|már.|2017|01|55|25|23-Mar-2016 15:01:25 PDT|
 |16|ápr.|2017|11|34|36|16-6%/4!a-2016 15:01:36 CET|
 

@@ -1,5 +1,5 @@
 ---
-title: "Oktatóanyag: A helyszíni Active Directory és az Azure Active Directory-kiépítés automatikus felhasználói Workday konfigurálása |} Microsoft Docs"
+title: "Oktatóanyag: Konfigurálja automatikus felhasználói történő üzembe helyezéséhez az Azure Active Directoryval Workday |} Microsoft Docs"
 description: "Útmutató a Workday használandó adatforrás azonosító adatok az Active Directory és az Azure Active Directory."
 services: active-directory
 author: asmalser-msft
@@ -11,15 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/26/2017
+ms.date: 01/26/2018
 ms.author: asmalser
-ms.openlocfilehash: f267a59fadb7f402ac81f43b5465b6ac1f28943e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3a84a7ae7572145df8154ec5cbccf9f97e81866b
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="tutorial-configure-workday-for-automatic-user-provisioning-with-on-premises-active-directory-and-azure-active-directory"></a>Oktatóanyag: A helyszíni Active Directory és az Azure Active Directory-kiépítés automatikus felhasználói Workday konfigurálása
+# <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Oktatóanyag: Konfigurálja automatikus felhasználói kialakítási munkanap
+
 Ez az oktatóanyag célja a lépéseket kell elvégeznie rendszerbe való importálás érdekében személyek a WORKDAY-ből Active Directoryból és az Azure Active Directory, az egyes attribútumok Workday választható visszaírási mutatjuk be. 
 
 
@@ -325,28 +326,28 @@ Ebben a szakaszban konfigurál, hogy felhasználói adatáramlás a WORKDAY-ből
 | WORKDAY ATTRIBÚTUM | AZ ACTIVE DIRECTORY-ATTRIBÚTUM |  EGYEZŐ AZONOSÍTÓ? | LÉTREHOZÁSA / FRISSÍTÉSE |
 | ---------- | ---------- | ---------- | ---------- |
 |  **WorkerID**  |  EmployeeID | **Igen** | Írt csak létrehozásakor | 
-|  **Település**   |   l csomag   |     | Hozzon létre + frissítése |
+|  **Település**   |   l   |     | Hozzon létre + frissítése |
 |  **Vállalati**         | Vállalati   |     |  Hozzon létre + frissítése |
 |  **CountryReferenceTwoLetter**      |   CO |     |   Hozzon létre + frissítése |
-| **CountryReferenceTwoLetter**    |  C  |     |         Hozzon létre + frissítése |
+| **CountryReferenceTwoLetter**    |  c  |     |         Hozzon létre + frissítése |
 | **SupervisoryOrganization**  | Szervezeti egység  |     |  Hozzon létre + frissítése |
 |  **PreferredNameData**  |  displayName |     |   Hozzon létre + frissítése |
-| **EmployeeID**    |  CN    |   |   Írt csak létrehozásakor |
-| **Faxkiszolgáló**      | facsimileTelephoneNumber     |     |    Hozzon létre + frissítése |
+| **EmployeeID**    |  cn    |   |   Írt csak létrehozásakor |
+| **Fax**      | facsimileTelephoneNumber     |     |    Hozzon létre + frissítése |
 | **Utónév**   | givenName       |     |    Hozzon létre + frissítése |
-| **Kapcsoló (\[aktív\],, "0", "True", "1")** |  AccountDisabled      |     | Hozzon létre + frissítése |
+| **Kapcsoló (\[aktív\],, "0", "True", "1")** |  accountDisabled      |     | Hozzon létre + frissítése |
 | **Mobileszköz**  |    Mobileszköz       |     |       Hozzon létre + frissítése |
 | **E-mail cím**    | mail    |     |     Hozzon létre + frissítése |
 | **ManagerReference**   | Manager  |     |  Hozzon létre + frissítése |
 | **WorkSpaceReference** | physicalDeliveryOfficeName    |     |  Hozzon létre + frissítése |
 | **Irányítószám**  |   Irányítószám  |     | Hozzon létre + frissítése |
 | **LocalReference** |  preferredLanguage  |     |  Hozzon létre + frissítése |
-| ** Cseréje (Left (cseréje (\[EmployeeID\],, "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\ \\ &lt; \\ \\ &gt; \]) "," ",), 1, 20)," ([\\\\.) \* \$] (file:///\\.) *$)", , "", , )**      |    sAMAccountName            |     |         Írt csak létrehozásakor |
-| **Vezetéknév**   |   sorozatszám   |     |  Hozzon létre + frissítése |
+| **Replace(Mid(Replace(\[EmployeeID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         Írt csak létrehozásakor |
+| **LastName**   |   sorozatszám   |     |  Hozzon létre + frissítése |
 | **CountryRegionReference** |  St     |     | Hozzon létre + frissítése |
-| **AddressLineData**    |  StreetAddress  |     |   Hozzon létre + frissítése |
+| **AddressLineData**    |  streetAddress  |     |   Hozzon létre + frissítése |
 | **PrimaryWorkTelephone**  |  TelephoneNumber   |     | Hozzon létre + frissítése |
-| **BusinessTitle**   |  Cím     |     |  Hozzon létre + frissítése |
+| **BusinessTitle**   |  cím     |     |  Hozzon létre + frissítése |
 | **Join("@",Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Join(".", [FirstName], [LastName]), , "([Øø])", , "oe", , ), , "[Ææ]", , "ae", , ), , "([äãàâãåáąÄÃÀÂÃÅÁĄA])", , "a", , ), , "([B])", , "b", , ), , "([CçčćÇČĆ])", , "c", , ), , "([ďĎD])", , "d", , ), , "([ëèéêęěËÈÉÊĘĚE])", , "e", , ), , "([F])", , "f", , ), , "([G])", , "g", , ), , "([H])", , "h", , ), , "([ïîìíÏÎÌÍI])", , "i", , ), , "([J])", , "j", , ), , "([K])", , "k", , ), , "([ľłŁĽL])", , "l", , ), , "([M])" ,, "m",), "([ñńňÑŃŇN])", "n",), "([öòőõôóÖÒŐÕÔÓO])", "o",), "([P])", "p",), "([Q])", "q",), "([řŘR])", "r",), "([ßšśŠŚS])", "s",), "([TŤť])", "t",), "([üùûúůűÜÙÛÚŮŰU])", "u",), "([V])", "v",), "([w" karakter]), "w",), "([ýÿýŸÝY])", "y",), "([źžżŹŽŻZ])", "z",), "",,, "",), "contoso.com")**   | userPrincipalName     |     | Hozzon létre + frissítése                                                   
 | **Kapcsoló (\[település\], "OU általános jogú felhasználók, OU = felhasználók, OU = alapértelmezett, OU = helyek, DC = contoso, DC = = com", "Dallas", "OU általános jogú felhasználók, OU = felhasználók, OU = Dallas, OU = helyek, DC = contoso, DC = = com", "Austin", "OU általános jogú felhasználók, OU = felhasználók, OU = Austin, OU = helyek, DC = contoso, DC = = com", "Seattle", "OU általános jogú felhasználók, OU = felhasználók, OU = budapesti, OU = helyek, DC = contoso, DC = = com", "Londoni", "OU = általános jogú felhasználók Szervezeti egység felhasználók, OU = London, OU = helyek, DC = contoso, DC = = com ")**  | parentDistinguishedName     |     |  Hozzon létre + frissítése |
   
@@ -366,14 +367,14 @@ Ahhoz, hogy a helyszíni Active Directory kiépíteni, az ügynök az Active Dir
 
 **A parancs #2**
 
-> Adja hozzá ADSyncAgentActiveDirectoryConfiguration
+> Add-ADSyncAgentActiveDirectoryConfiguration
 
 * Bemenet: "Könyvtárnév", adja meg az Active Directory-erdőben neve részben megadott \#2
 * Bemenet: Rendszergazda felhasználónevét és jelszavát, az Active Directory-erdő
 
 **A parancs #3**
 
-> Adja hozzá ADSyncAgentAzureActiveDirectoryConfiguration
+> Add-ADSyncAgentAzureActiveDirectoryConfiguration
 
 * Bemenet: Globális rendszergazda felhasználónevét és jelszavát az Azure AD-bérlő
 
@@ -391,7 +392,7 @@ Ahhoz, hogy a helyszíni Active Directory kiépíteni, az ügynök az Active Dir
 >
 > Engedélyezve: igaz
 >
-> Könyvtárnév: mydomain.contoso.com
+> DirectoryName : mydomain.contoso.com
 >
 > Credentialed: hamis
 >
@@ -399,7 +400,7 @@ Ahhoz, hogy a helyszíni Active Directory kiépíteni, az ügynök az Active Dir
 
 **A parancs #5**
 
-> Start-AdSyncAgentSynchronization-automatikus
+> Start-AdSyncAgentSynchronization -Automatic
 
 **A parancs #6**
 
@@ -648,6 +649,6 @@ Ebben a szakaszban konfigurál, hogy felhasználói adatáramlás a WORKDAY-ből
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Ismerje meg, tekintse át a naplók és jelentések készítése a kiépítés tevékenység](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting)

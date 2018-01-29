@@ -1,91 +1,181 @@
 ---
-title: "SSL kiszervezési - konfigurálása Azure Application Gateway - Azure portálon |} Microsoft Docs"
-description: "Ez a cikk ismerteti az utasításokat követve hozzon létre egy alkalmazás SSL-kiszervezés az Azure portál használatával"
-documentationcenter: na
+title: "Hozzon létre egy alkalmazás SSL-lezárást - Azure-portál |} Microsoft Docs"
+description: "Megtudhatja, hogyan Alkalmazásátjáró létrehozása és hozzáadása egy tanúsítványt az SSL-lezárást az Azure portál használatával."
 services: application-gateway
 author: davidmu1
 manager: timlt
 editor: tysonn
-ms.assetid: 8373379a-a26a-45d2-aa62-dd282298eff3
+tags: azure-resource-manager
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 01/26/2018
 ms.author: davidmu
-ms.openlocfilehash: 2f7f5d4132e28c8c192d90d5f4bfb2a9034f8b8c
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: daab3ada5ef0cc20883130e4c12b1dc3570e63b1
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-azure-portal"></a>SSL kiszervezési Alkalmazásátjáró konfigurálása az Azure-portál használatával
+# <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Hozzon létre egy alkalmazást az Azure portál használatával SSL-lezárást
 
-> [!div class="op_single_selector"]
-> * [Azure Portal](application-gateway-ssl-portal.md)
-> * [Azure Resource Manager PowerShell](application-gateway-ssl-arm.md)
-> * [Az Azure klasszikus PowerShell](application-gateway-ssl.md)
-> * [Azure CLI 2.0](application-gateway-ssl-cli.md)
+Az Azure-portálon hozhat létre egy [Alkalmazásátjáró](application-gateway-introduction.md) egy SSL-lezárást használ a virtuális gépek háttérkiszolgálók tanúsítványával.
 
-Az Azure Application Gateway konfigurálható úgy, hogy leállítsa a Secure Sockets Layer (SSL) munkamenetét az átjárónál, így elkerülhetők a költséges SSL visszafejtési feladatok a webfarmon. Az SSL-alapú kiszervezés emellett leegyszerűsíti az előtér-kiszolgáló számára webalkalmazás telepítését és kezelését.
+Ebből a cikkből megismerheti, hogyan:
 
-## <a name="scenario"></a>Forgatókönyv
+> [!div class="checklist"]
+> * Önaláírt tanúsítvány létrehozása
+> * Hozzon létre egy alkalmazást a tanúsítvány
+> * A háttérkiszolgálók használt virtuális gépek létrehozása
 
-A következő forgatókönyv végigvezeti Önt egy meglévő Alkalmazásátjáró SSL kiszervezési konfigurálása. A forgatókönyv azt feltételezi, hogy lépéseit már követte [Alkalmazásátjáró létrehozása](application-gateway-create-gateway-portal.md).
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Az Alkalmazásátjáró SSL kiszervezési konfigurálásához egy tanúsítványra szükség. Ez a tanúsítvány be töltve az alkalmazás-átjárón, és adatok titkosítása és visszafejtése a keresztül SSL használatával. Személyes információcsere (.pfx) formátumban lennie kell a tanúsítványt. Ezt a formátumot exportálja a titkos kulcsot, a titkosítási és visszafejtési forgalom az alkalmazás-átjáró által igényelt teszi lehetővé.
+Jelentkezzen be az Azure portálon, a [http://portal.azure.com](http://portal.azure.com)
 
-## <a name="add-an-https-listener"></a>Adja hozzá a HTTPS-figyelő
+## <a name="create-a-self-signed-certificate"></a>Önaláírt tanúsítvány létrehozása
 
-A HTTPS-figyelő konfigurációja alapján keres, és segít irányíthatja a forgalmat a háttér-tárolókészletekben. Egy HTTPS-figyelő hozzáadásához kövesse az alábbi lépéseket:
+Ebben a szakaszban használhatja [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) az Azure-portálon történő létrehozásakor a figyelő az alkalmazás átjáró feltöltött önaláírt tanúsítvány létrehozása.
 
-   1. Keresse meg az Azure-portálon, és válassza ki a meglévő Alkalmazásátjáró.
+A helyi számítógépen nyisson meg egy Windows PowerShell ablakot rendszergazdaként. A következő parancsot a tanúsítvány létrehozásához:
 
-   2. Válassza ki **figyelői**, majd válassza ki a **Hozzáadás** gombra kattintva adja hozzá egy figyelő.
+```powershell
+New-SelfSignedCertificate \
+  -certstorelocation cert:\localmachine\my \
+  -dnsname www.contoso.com
+```
 
-   ![Alkalmazás átjáró áttekintése ablaktáblájának][1]
+Ez a válasz hasonlót kell megjelennie:
 
+```
+PSParentPath: Microsoft.PowerShell.Security\Certificate::LocalMachine\my
 
-   3. Töltse ki a figyelő a következő szükséges adatokat, és a PFX-tanúsítvány feltöltése:
-      - **Név**: a figyelő rövid nevét.
+Thumbprint                                Subject
+----------                                -------
+E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630  CN=www.contoso.com
 
-      - **Előtérbeli IP-konfiguráció**: a figyelő használt előtér-IP-konfigurációja.
+Use [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) with the Thumbprint that was returned to export a pfx file from the certificate:
+```
 
-      - **Elülső rétegbeli portot (név/Port)**: egy rövid nevet az Alkalmazásátjáró és a tényleges használt port megszüntetni használt port.
+```powershell
+$pwd = ConvertTo-SecureString -String "Azure123456!" -Force -AsPlainText
+Export-PfxCertificate \
+  -cert cert:\localMachine\my\E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630 \
+  -FilePath c:\appgwcert.pfx \
+  -Password $pwd
+```
 
-      - **Protokoll**: határozza meg, ha HTTPS vagy HTTP Protokollt használja az előtér váltani.
+## <a name="create-an-application-gateway"></a>Application Gateway létrehozása
 
-      - **Tanúsítvány (és jelszó)**: Ha SSL kiszervezési szolgál, a .pfx-tanúsítványra szükség a ezt a beállítást. Felhasználóbarát név és jelszó is szükség.
+Egy virtuális hálózatot az Ön által létrehozott erőforrások közötti kommunikációra van szükség. Két alhálózat ebben a példában jönnek létre: egyet az Alkalmazásátjáró, míg a másik a háttérkiszolgálókhoz. Az Alkalmazásátjáró létrehozott egyszerre egy virtuális hálózatot is létrehozhat.
 
-   4. Kattintson az **OK** gombra.
+1. Kattintson a **új** az Azure portál bal felső sarkában található.
+2. Válassza ki **hálózati** majd **Application Gateway** kiemelt listájában.
+3. Adja meg *myAppGateway* az Alkalmazásátjáró nevét és *myResourceGroupAG* az új erőforráscsoport.
+4. Fogadja el a további beállításoknál az alapértelmezett értékeket, és kattintson a **OK**.
+5. Kattintson a **virtuális hálózatot választ**, kattintson a **hozzon létre új**, és ezekkel az értékekkel adja meg a virtuális hálózat:
 
-![Egy figyelő ablak hozzáadása][2]
+    - *myVNet* – a virtuális hálózat nevét.
+    - *10.0.0.0/16* – a virtuális hálózat címtere.
+    - *myAGSubnet* – az alhálózati név.
+    - *10.0.0.0/24* – az alhálózati címtartományt.
 
-## <a name="create-a-rule-and-associate-it-to-the-listener"></a>Hozzon létre egy szabályt, és rendelje hozzá azt a figyelőt
+    ![Virtuális hálózat létrehozása](./media/application-gateway-ssl-portal/application-gateway-vnet.png)
 
-A figyelő létrehozása megtörtént. Ezután hozzon létre egy szabályt, amely a figyelő a forgalom kezelésére. Szabályok határozzák meg, hogyan továbbítódik a háttér-címkészletek több konfigurációs beállítás alapján. Ezek a beállítások tartalmazzák a protokollt, a port és a rendszerállapot mintavételek menüpontban, és hogy-e a munkamenet cookie-alapú kapcsolat használata. Hozzon létre, és rendelje hozzá a szabály a figyelőt, kövesse az alábbi lépéseket:
+6. Kattintson a **OK** a virtuális hálózati és alhálózati létrehozásához.
+7. Kattintson a **egy nyilvános IP-cím kiválasztása**, kattintson a **hozzon létre új**, és írja be a nyilvános IP-cím neve. Ebben a példában a nyilvános IP-cím neve *myAGPublicIPAddress*. Fogadja el a további beállításoknál az alapértelmezett értékeket, és kattintson a **OK**.
+8. Kattintson a **HTTPS** a figyelő a protokollhoz, és győződjön meg arról, hogy a port típusúként van definiálva **443-as**.
+9. A mappa ikonra, és keresse meg a *appgwcert.pfx* töltse fel az előzőleg létrehozott tanúsítványt.
+10. Adja meg *mycert1* a tanúsítvány nevét és *Azure123456!* a jelszó, és kattintson a **OK**.
 
+    ![Új Alkalmazásátjáró létrehozása](./media/application-gateway-ssl-portal/application-gateway-create.png)
 
-   1. Válassza ki a **szabályok** az Alkalmazásátjáró, és válassza a **Hozzáadás**.
+11. Tekintse át a beállításokat az Összegzés lapon, és kattintson **OK** a hálózati erőforrások és az Alkalmazásátjáró létrehozása. Az alkalmazás-átjáró hozható létre, várjon, amíg a telepítés sikeresen befejeződik, mielőtt továbblép a következő szakaszban több percig is eltarthat.
 
-   ![Alkalmazás átjáró szabályok ablak][3]
+### <a name="add-a-subnet"></a>Adjon hozzá egy alhálózatot
 
+1. Kattintson a **összes erőforrás** a bal oldali menüből, majd **myVNet** erőforrások listából.
+2. Kattintson a **alhálózatok**, és kattintson a **alhálózati**.
 
-   2. A **hozzáadása alapszintű szabály**, adjon egy rövid nevet a szabály a **neve** mezőben, majd válassza ki a **figyelő** az előző lépésben létrehozott. Válassza ki a megfelelő **háttérkészlet** és **HTTP beállítása**, majd válassza ki **OK**.
+    ![Hozzon létre az alhálózatot](./media/application-gateway-ssl-portal/application-gateway-subnet.png)
 
-   ![HTTPS-beállítások ablak][4]
+3. Adja meg *myBackendSubnet* neveként az alhálózati majd **OK**.
 
-Az Alkalmazásátjáró most menti a beállításokat. A mentési feldolgozni az ezeket a beállításokat eltarthat egy kis ideig, után lesznek a portálon keresztül vagy a Powershellen keresztül. Után azok mentésekor, az Alkalmazásátjáró kezeli a titkosítási és visszafejtési forgalom. Az Alkalmazásátjáró és a háttér-webkiszolgálók közötti összes forgalom kezelése HTTP Protokollon keresztül. Minden kommunikáció az ügyfél által kezdeményezett HTTPS, ha visszatér az ügyfélhez titkosított.
+## <a name="create-backend-servers"></a>Háttér-kiszolgálókat hoz létre
+
+Ebben a példában két virtuális gép az Alkalmazásátjáró háttér-kiszolgálóként használandó hoz létre. Is telepíteni az IIS ellenőrizze, hogy az Alkalmazásátjáró sikeresen létrejött-e a virtuális gépeken.
+
+### <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
+
+1. Kattintson az **Új** lehetőségre.
+2. Kattintson a **számítási** majd **Windows Server 2016 Datacenter** kiemelt listájában.
+3. Adja meg a virtuális gép ezeket az értékeket:
+
+    - *myVM* – a virtuális gép nevét.
+    - *azureuser* – a rendszergazdai felhasználónevet.
+    - *Azure123456!* a jelszó.
+    - Válassza ki **meglévő**, majd válassza ki *myResourceGroupAG*.
+
+4. Kattintson az **OK** gombra.
+5. Válassza ki **DS1_V2** a virtuális gépet, majd kattintson a méretét **válasszon**.
+6. Győződjön meg arról, hogy **myVNet** van kiválasztva a virtuális hálózat és az alhálózat van **myBackendSubnet**. 
+7. Kattintson a **letiltott** letiltani a rendszerindítási diagnosztika.
+8. Kattintson a **OK**, tekintse át a beállításokat az Összegzés lapon, és kattintson a **létrehozása**.
+
+### <a name="install-iis"></a>Az IIS telepítése
+
+1. Az interaktív rendszerhéjat, és győződjön meg arról, hogy van-e állítva **PowerShell**.
+
+    ![Egyéni kiterjesztés telepítése](./media/application-gateway-ssl-portal/application-gateway-extension.png)
+
+2. A következő parancsot az IIS telepítése a virtuális gépen: 
+
+    ```azurepowershell-interactive
+    Set-AzureRmVMExtension `
+      -ResourceGroupName myResourceGroupAG `
+      -ExtensionName IIS `
+      -VMName myVM `
+      -Publisher Microsoft.Compute `
+      -ExtensionType CustomScriptExtension `
+      -TypeHandlerVersion 1.4 `
+      -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}' `
+      -Location EastUS
+    ```
+
+3. Hozzon létre egy második virtuális gépet, és a lépéseket, amelyek az imént befejeződött az IIS telepítése. Adja meg *myVM2* a neve pedig a Set-AzureRmVMExtension VMName.
+
+### <a name="add-backend-servers"></a>Adja hozzá a háttérkiszolgálókon
+
+3. Kattintson a **összes erőforrás**, és kattintson a **myAppGateway**.
+4. Kattintson a **háttérkészletek**. Alapértelmezett címkészlet automatikusan jött létre az Alkalmazásátjáró. Kattintson a **appGateayBackendPool**.
+5. Kattintson a **Hozzáadás cél** minden létrehozott virtuális gép hozzáadása a háttérkészlet.
+
+    ![Adja hozzá a háttérkiszolgálókon](./media/application-gateway-ssl-portal/application-gateway-backend.png)
+
+6. Kattintson a **Save** (Mentés) gombra.
+
+## <a name="test-the-application-gateway"></a>Az Alkalmazásátjáró tesztelése
+
+1. Kattintson a **összes erőforrás**, és kattintson a **myAGPublicIPAddress**.
+
+    ![Rekord alkalmazás átjáró nyilvános IP-címe](./media/application-gateway-ssl-portal/application-gateway-ag-address.png)
+
+2. Másolja a nyilvános IP-címet, és illessze be a böngésző címsorába. Fogadja el a biztonsági figyelmeztetést, ha önaláírt tanúsítványt használt jelölje ki a részleteket, majd nyissa meg a képernyőn látható weblapon:
+
+    ![Biztonságos figyelmeztetés](./media/application-gateway-ssl-portal/application-gateway-secure.png)
+
+    A biztonságos IIS-webhelyet akkor jelenik meg, az alábbi példában látható módon:
+
+    ![Az alkalmazás átjáró alap URL-cím tesztelése](./media/application-gateway-ssl-portal/application-gateway-iistest.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Egy egyéni állapotmintáihoz konfigurálása Azure Application Gateway kapcsolatban [hozzon létre egy egyéni állapotmintáihoz](application-gateway-create-gateway-portal.md).
+Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
-[1]: ./media/application-gateway-ssl-portal/figure1.png
-[2]: ./media/application-gateway-ssl-portal/figure2.png
-[3]: ./media/application-gateway-ssl-portal/figure3.png
-[4]: ./media/application-gateway-ssl-portal/figure4.png
+> [!div class="checklist"]
+> * Önaláírt tanúsítvány létrehozása
+> * Hozzon létre egy alkalmazást a tanúsítvány
+> * A háttérkiszolgálók használt virtuális gépek létrehozása
 
+További információt a alkalmazásátjárót és a kapcsolódó erőforrások, továbbra is a útmutatókat.

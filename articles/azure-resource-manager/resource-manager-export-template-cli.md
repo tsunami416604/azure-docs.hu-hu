@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/01/2017
 ms.author: tomfitz
-ms.openlocfilehash: 617664129a5353e25da1e90c742c4b009db172ef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e93fe5af62893d361b6cc4adac42a7d172235978
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="export-azure-resource-manager-templates-with-azure-cli"></a>Az Azure CLI Azure Resource Manager-sablonok exportálása
 
@@ -44,7 +44,7 @@ az group deployment create \
 
 ## <a name="save-template-from-deployment-history"></a>Menti a sablont a központi telepítés előzményei
 
-Beolvasható egy sablont az üzembe helyezési előzményeket használva a [az telepítési exportálása](/cli/azure/group/deployment#export) parancsot. Az alábbi példa menti a sablont, amely korábban központilag:
+Beolvasható egy sablont az üzembe helyezési előzményeket használva a [az telepítési exportálása](/cli/azure/group/deployment#az_group_deployment_export) parancsot. Az alábbi példa menti a sablont, amely korábban központilag:
 
 ```azurecli
 az group deployment export --name NewStorage --resource-group ExampleGroup
@@ -55,7 +55,7 @@ A sablon adja vissza. Másolja át a JSON, és menteni a fájlt. Figyelje meg, h
 
 ## <a name="export-resource-group-as-template"></a>Erőforráscsoportok exportálása sablonként
 
-Helyett egy sablon fogadása az üzembe helyezési előzményeket, a sablont, amely az erőforráscsoport aktuális állapotát jeleníti meg használatával kérheti le a [az exportálása](/cli/azure/group#export) parancsot. Ez a parancs használni, amikor sok módosításokat végzett az erőforráscsoporton, és nincs meglévő sablon jelenti. a módosításokat.
+Helyett egy sablon fogadása az üzembe helyezési előzményeket, a sablont, amely az erőforráscsoport aktuális állapotát jeleníti meg használatával kérheti le a [az exportálása](/cli/azure/group#az_group_export) parancsot. Ez a parancs használni, amikor sok módosításokat végzett az erőforráscsoporton, és nincs meglévő sablon jelenti. a módosításokat.
 
 ```azurecli
 az group export --name ExampleGroup
@@ -203,7 +203,7 @@ A sablon most a következőképpen néz ki:
 
 A módosított sablon újbóli.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Sablon exportálása a portál használatával kapcsolatos információkért lásd: [Azure Resource Manager-sablonok exportálása létező erőforrásokból](resource-manager-export-template.md).
 * Sablon paraméterek megadásához tekintse meg a [sablonok készítése](resource-group-authoring-templates.md#parameters).
 * Tippek az általános telepítési hibák feloldására, lásd: [hibaelhárítás általános az Azure-telepítés az Azure Resource Manager](resource-manager-common-deployment-errors.md).

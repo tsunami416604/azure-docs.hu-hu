@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/22/2017
 ms.author: bryanla
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 4b6f4e2b0e42724276448fd4726c8326de8ea6ee
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 98683af2ca35b687f918647602a561d37dd42b11
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="configure-a-user-assigned-managed-service-identity-msi-for-a-vm-using-azure-cli"></a>A felhasználó által hozzárendelt felügyelt szolgáltatás Identity (MSI) konfigurálja a virtuális gépek Azure parancssori felület használatával
 
@@ -35,7 +35,7 @@ Ebből a cikkből megtudhatja engedélyezése, és távolítsa el a felhasznál�
 Ebben az oktatóanyagban a CLI-parancsfájlt példák futtatásához két lehetőség közül választhat:
 
 - Használjon [Azure Cloud rendszerhéj](~/articles/cloud-shell/overview.md) vagy Azure-portálról, vagy a "próbálja" gombra, keresztül minden kódblokk jobb felső sarkában található.
-- [Telepítse a legújabb verziót a CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.23 vagy újabb verzió) Ha a helyi CLI-konzollal szeretné. Majd jelentkezzen be az Azure használatával [az bejelentkezési](/cli/azure/#login). Használjon olyan fiókot, amelybe szeretne telepíteni, a felhasználó által hozzárendelt MSI és a virtuális gép Azure-előfizetéssel társított:
+- [Telepítse a legújabb verziót a CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.23 vagy újabb verzió) Ha a helyi CLI-konzollal szeretné. Majd jelentkezzen be az Azure használatával [az bejelentkezési](/cli/azure/#az_login). Használjon olyan fiókot, amelybe szeretne telepíteni, a felhasználó által hozzárendelt MSI és a virtuális gép Azure-előfizetéssel társított:
 
    ```azurecli
    az login
@@ -45,7 +45,7 @@ Ebben az oktatóanyagban a CLI-parancsfájlt példák futtatásához két lehet�
 
 Ez a szakasz végigvezeti a virtuális gép létrehozása és a felhasználó által hozzárendelt MSI hozzárendelése a virtuális géphez. Ha már rendelkezik egy használni kívánt virtuális Gépet, hagyja ki ezt a szakaszt, és folytassa a Tovább gombra.
 
-1. Ezt a lépést kihagyhatja, ha már rendelkezik egy használni kívánt erőforráscsoportot. Hozzon létre egy [erőforráscsoport](~/articles/azure-resource-manager/resource-group-overview.md#terminology) elszigetelési és telepítéséhez, az MSI-fájl használatával [az csoport létrehozása](/cli/azure/group/#create). Ügyeljen arra, hogy cserélje le a `<RESOURCE GROUP>` és `<LOCATION>` paraméterértékeket a saját értékekkel. :
+1. Ezt a lépést kihagyhatja, ha már rendelkezik egy használni kívánt erőforráscsoportot. Hozzon létre egy [erőforráscsoport](~/articles/azure-resource-manager/resource-group-overview.md#terminology) elszigetelési és telepítéséhez, az MSI-fájl használatával [az csoport létrehozása](/cli/azure/group/#az_group_create). Ügyeljen arra, hogy cserélje le a `<RESOURCE GROUP>` és `<LOCATION>` paraméterértékeket a saját értékekkel. :
 
    ```azurecli-interactive 
    az group create --name <RESOURCE GROUP> --location <LOCATION>
@@ -73,7 +73,7 @@ A választ a felhasználó által hozzárendelt MSI-fájl létrehozása a követ
    }
    ```
 
-3. Hozzon létre egy virtuális gép az [az virtuális gép létrehozása](/cli/azure/vm/#create). Az alábbi példa létrehoz egy virtuális Gépet az új felhasználó által hozzárendelt MSI, által megadott társított a `--assign-identity` paraméter. Ügyeljen arra, hogy cserélje le a `<RESOURCE GROUP>`, `<VM NAME>`, `<USER NAME>`, `<PASSWORD>`, és `<`MSI-azonosító >` parameter values with your own values. For `<MSI ID>`, use the user-assigned MSI's resource `id "tulajdonság az előző lépésben létrehozott: 
+3. Hozzon létre egy virtuális gép az [az virtuális gép létrehozása](/cli/azure/vm/#az_vm_create). Az alábbi példa létrehoz egy virtuális Gépet az új felhasználó által hozzárendelt MSI, által megadott társított a `--assign-identity` paraméter. Ügyeljen arra, hogy cserélje le a `<RESOURCE GROUP>`, `<VM NAME>`, `<USER NAME>`, `<PASSWORD>`, és `<`MSI-azonosító >` parameter values with your own values. For `<MSI ID>`, use the user-assigned MSI's resource `id "tulajdonság az előző lépésben létrehozott: 
 
    ```azurecli-interactive 
    az vm create --resource-group <RESOURCE GROUP> --name <VM NAME> --image UbuntuLTS --admin-username <USER NAME> --admin-password <PASSWORD> --assign-identity <MSI ID>

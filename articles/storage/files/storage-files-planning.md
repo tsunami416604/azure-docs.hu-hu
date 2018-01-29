@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: c28f341fb64271e2173cd377fa06c567e0e054a6
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 590bc459a71b8691741f7f33d2d70b0ba4474591
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló a felhőben, amelyek elérhetők az iparági szabványos SMB protokollon keresztül. Azure fájlok teljes körűen felügyelt, mert sokkal egyszerűbb, mint a központi telepítésére és felügyeletére a fájlkiszolgáló vagy NAS-eszköz telepítés éles helyzetekben. Ez a cikk foglalkozik a témakörök figyelembe kell venni egy Azure fájlmegosztás üzemi használatra a szervezeten belüli központi telepítésekor.
@@ -50,7 +50,7 @@ Az Azure fájlok ajánlatok két, beépített és kényelmes adat-hozzáférési
 
 A következő táblázat bemutatja, hogyan az alkalmazások és használhatják a Azure fájlmegosztás:
 
-| | Közvetlen felhőelérést | Az Azure File szinkronizálása |
+| | Közvetlen felhőelérést | Azure File Sync |
 |------------------------|------------|-----------------|
 | Milyen protokollok szeretné használni? | Az Azure Files SMB 2.1, SMB 3.0-s és fájl REST API támogatja. | Hozzáférés az Azure fájlmegosztás bármely támogatott protokollal, a Windows Server (SMB, NFS, ftps-t, stb.) |  
 | Hol futnak az alkalmazások és szolgáltatások? | **Az Azure-ban**: Azure fájlok adatait közvetlen hozzáférést biztosít. | **A lassú hálózati helyszíni**: Windows, Linux és macOS ügyfelek helyi helyszíni Windows fájlmegosztást csatlakoztathatnak, az Azure fájlmegosztás gyors gyorsítótár. |
@@ -64,7 +64,7 @@ Az Azure Files program számos beépített biztosítva az adatok biztonsága:
     * Ügyfelek, amelyek nem támogatják az SMB 3.0-s verziójával is intra-datacenter protokollt használó kommunikációra SMB 2.1 vagy SMB 3.0 titkosítás nélkül. Ne feledje, hogy az ügyfelek nem többek datacenter kommunikálhassanak SMB 2.1 vagy SMB 3.0 titkosítás nélkül.
     * Az ügyfelek a is fájl REST HTTP vagy HTTPS protokollt használó kommunikációra.
 * Titkosítási nyugalmi ([Azure Storage szolgáltatás titkosítási](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)): Storage Service Encryption (SSE) engedélyezését az Azure Storage alapul szolgáló platform végezzük. Ez azt jelenti, hogy a titkosítás alapértelmezés szerint az összes tárfiók engedélyezve lesz. A titkosítási nyugalmi alapértelmezett régióban létrehozásakor egy új tárfiókot, nincs teendője engedélyezéséhez. Kulcsok teljes körűen felügyelt adatok nyugalmi van titkosítva. Titkosítási nyugalmi nem tárolási költségek növelheti vagy csökkentheti a teljesítményt. 
-* A titkosított adatok az átvitel közbeni választható rendszerkövetelményt: kiválasztásakor Azure fájlok nem engedélyezi a hozzáférést az adatokat nem titkosított csatornákon keresztül. Pontosabban csak HTTPS és SMB 3.0 titkosítást kapcsolatokkal engedélyezett lesz. 
+* A titkosított adatok az átvitel közbeni választható rendszerkövetelményt: kiválasztásakor Azure fájlok elutasítja a hozzáférést az adatokat nem titkosított csatornákon keresztül. Pontosabban csak HTTPS és SMB 3.0 titkosítást kapcsolatokkal engedélyezettek. 
 
     > [!Important]  
     > Az adatok biztonságos átvitelét igénylő, akkor a régebbi SMB-ügyfelek nem képes kommunikálni az SMB 3.0-s titkosítás sikertelen lesz. Lásd: [csatolható fel a Windows](storage-how-to-use-files-windows.md), [Linux csatlakoztatási](storage-how-to-use-files-linux.md), [macOS csatlakoztassa](storage-how-to-use-files-mac.md) további információt.
@@ -74,10 +74,13 @@ A maximális biztonság érdekében javasolt mindig mindkét titkosítási nyuga
 Azure fájlszinkronizálás az Azure-fájlmegosztás eléréséhez használnak, ha mindig használjuk HTTPS és SMB 3.0 titkosítással szinkronizálni az adatokat, hogy a Windows-kiszolgálók, függetlenül attól, hogy megköveteljék a adatokat nyugalmi titkosítását.
 
 ## <a name="data-redundancy"></a>Adatredundancia
-Az Azure Files két redundancia lehetőségeket támogat: helyileg redundáns tárolás (LRS) és a georedundáns tárolás (GRS). A következő szakaszok ismertetik a helyileg redundáns tárolás és a georedundáns tárolás közötti különbséget:
+Az Azure Files három redundancia lehetőségeket támogat: helyileg redundáns tárolás (LRS), a zóna redundáns tárolás (ZRS) és a georedundáns tárolás (GRS). A következő szakaszok ismertetik a különböző redundancia lehetőségek közötti eltéréseket:
 
 ### <a name="locally-redundant-storage"></a>Helyileg redundáns tárolás
 [!INCLUDE [storage-common-redundancy-LRS](../../../includes/storage-common-redundancy-LRS.md)]
+
+### <a name="zone-redundant-storage"></a>Redundáns tárolási zóna
+[!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-ZRS.md)]
 
 ### <a name="geo-redundant-storage"></a>Georedundáns tárolás
 [!INCLUDE [storage-common-redundancy-GRS](../../../includes/storage-common-redundancy-GRS.md)]
@@ -95,7 +98,7 @@ Egy meglévő fájl adatait megosztani, például egy helyszíni fájlmegosztás
 * **[A Robocopy](https://technet.microsoft.com/library/cc733145.aspx)**: Robocopy az alkalmazáshoz tartozó Windows és Windows Server jól ismert másolási eszközzel. A Robocopy adatok átviteléhez az Azure-fájlok helyileg a fájlmegosztás csatlakoztatása és a csatlakoztatott hely majd segítségével a Robocopy parancsot a célként használható.
 * **[AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#upload-files-to-an-azure-file-share)**: AzCopy egy parancssori segédprogram, és az Azure-fájlok, valamint az Azure Blob Storage tárolóban, az adatok másolása az optimális teljesítménnyel egyszerű parancsok használatával. AzCopy Windows és Linux rendszerekhez érhető el.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Egy fájl Azure szinkronizálási központi telepítésének tervezése](storage-sync-files-planning.md)
 * [Az Azure Files telepítése](storage-files-deployment-guide.md)
 * [Az Azure File-szinkronizálás telepítése](storage-sync-files-deployment-guide.md)

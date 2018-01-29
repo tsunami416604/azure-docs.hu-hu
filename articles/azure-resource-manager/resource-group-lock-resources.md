@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2018
 ms.author: tomfitz
-ms.openlocfilehash: e25de0366126ceee988eb253b66d18c9b8b62e1f
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: ab42789b091898c69091ba6b3fa2a8bf91e711f6
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Váratlan módosítható erőforrások zárolása 
 
@@ -157,7 +157,7 @@ Remove-AzureRmResourceLock -LockId $lockId
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Meg zárolási az erőforrások az Azure parancssori felület használatával központilag telepítenek a [az zárolási létrehozása](/cli/azure/lock#create) parancsot.
+Meg zárolási az erőforrások az Azure parancssori felület használatával központilag telepítenek a [az zárolási létrehozása](/cli/azure/lock#az_lock_create) parancsot.
 
 Egy erőforrás zárolását, adja meg az erőforrást, az erőforrás típusa és az erőforráscsoport neve nevét.
 
@@ -171,7 +171,7 @@ Erőforráscsoport zárolásához adja meg az erőforráscsoport nevét.
 az lock create --name LockGroup --lock-type CanNotDelete --resource-group exampleresourcegroup
 ```
 
-A zárolási információ használatához [az zárolási lista](/cli/azure/lock#list). Az előfizetés összes zárolás beszerzéséhez használja:
+A zárolási információ használatához [az zárolási lista](/cli/azure/lock#az_lock_list). Az előfizetés összes zárolás beszerzéséhez használja:
 
 ```azurecli
 az lock list

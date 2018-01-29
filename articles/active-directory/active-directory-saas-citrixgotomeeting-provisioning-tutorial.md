@@ -1,5 +1,5 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált GoToMeeting |} Microsoft Docs"
+title: "Oktatóanyag: GoToMeeting konfigurálása az Azure Active Directoryval automatikus felhasználólétesítés |} Microsoft Docs"
 description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és GoToMeeting között."
 services: active-directory
 documentationCenter: na
@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2017
+ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: ac664e2b4035f3572584e6f00e86453b10ce44e5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 82c7e8ff7d8a6692005bdc7a40d5e12be09bca5d
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="tutorial-configuring-gotomeeting-for-automatic-user-provisioning"></a>Oktatóanyag: GoToMeeting konfigurálása az automatikus felhasználó létesítése
+# <a name="tutorial-configure-gotomeeting-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés GoToMeeting konfigurálása
 
 Ez az oktatóanyag célja a lépéseket kell elvégeznie a GoToMeeting és az Azure AD automatikus kiépítése és leépíti a felhasználói fiókok Azure ad-GoToMeeting mutatjuk be.
 
@@ -62,7 +62,7 @@ Ez a szakasz végigvezeti az Azure AD kapcsolódás GoToMeeting a felhasználói
 
 4. Állítsa be a **kiépítés** módot **automatikus**. 
 
-    ![Kiépítés](./media/active-directory-saas-citrixgotomeeting-provisioning-tutorial/provisioning.png)
+    ![kiépítés folyamatban](./media/active-directory-saas-citrixgotomeeting-provisioning-tutorial/provisioning.png)
 
 5. A rendszergazdai hitelesítő adataival szakaszban a következő lépésekkel:
    

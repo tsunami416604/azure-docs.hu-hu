@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2017
+ms.date: 1/24/2018
 ms.author: johnkem
-ms.openlocfilehash: 1a58db2d424e4280fd56be972d48df89648e8c13
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 3e2b5305b969c96e6b14122af03da9249373094a
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Támogatott szolgáltatások, sémákkal és az Azure diagnosztikai naplók kategóriák
 
@@ -34,7 +34,7 @@ A sémában az erőforrás diagnosztikai naplókat a resource és a naplófájlo
 | Application Gateway átjárók |[Az Alkalmazásátjáró diagnosztikai naplózás](../application-gateway/application-gateway-diagnostics.md) |
 | Azure Automation |[Az Azure Automation szolgáltatáshoz](../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Azure Batch diagnosztikai naplózás](../batch/batch-diagnostics.md) |
-| Ügyfél Insights | A séma nem érhető el. |
+| Customer Insights | A séma nem érhető el. |
 | Content Delivery Network | A séma nem érhető el. |
 | CosmosDB | [Az Azure Cosmos DB naplózás](../cosmos-db/logging.md) |
 | Data Lake Analytics |[Az Azure Data Lake Analytics diagnosztikai naplóinak elérése](../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
@@ -57,15 +57,14 @@ A sémában az erőforrás diagnosztikai naplókat a resource és a naplófájlo
 ## <a name="supported-log-categories-per-resource-type"></a>Támogatott erőforrástípus napló kategóriát
 |Erőforrás típusa|Kategória|Kategória megjelenített neve|
 |---|---|---|
-|Microsoft.aadiam/tenants|Bejelentkezés|Bejelentkezés|
 |Microsoft.AnalysisServices/servers|Motor|Motor|
 |Microsoft.AnalysisServices/servers|Szolgáltatás|Szolgáltatás|
 |Microsoft.ApiManagement/service|GatewayLogs|Naplók ApiManagement átjáró|
 |Microsoft.Automation/automationAccounts|JobLogs|Feladatnaplóit|
-|Microsoft.Automation/automationAccounts|JobStreams|Feladat adatfolyamok|
+|Microsoft.Automation/automationAccounts|JobStreams|Job Streams|
 |Microsoft.Automation/automationAccounts|DscNodeStatus|A DSC-csomópont állapota|
 |Microsoft.Batch/batchAccounts|ServiceLog|Service naplóit|
-|Microsoft.Cdn/profiles/endpoints|CoreAnalytics|Lekérdezi a végpont a metrikákat, például a sávszélesség, a kimenő forgalom, a stb.|
+|Microsoft.Cdn/profiles/endpoints|CoreAnalytics|A végpont metrikáinak (például sávszélesség, kimenő forgalom, stb.) beolvasása|
 |Microsoft.CustomerInsights/hubs|AuditEvents|AuditEvents|
 |Microsoft.DataFactory/factories|ActivityRuns|Feldolgozási sor tevékenységnapló fut.|
 |Microsoft.DataFactory/factories|PipelineRuns|Feldolgozási sor napló fut|
@@ -94,7 +93,7 @@ A sémában az erőforrás diagnosztikai naplókat a resource és a naplófájlo
 |Microsoft.EventHub/namespaces|AutoScaleLogs|Automatikus méretezési naplók|
 |Microsoft.KeyVault/vaults|AuditEvent|Naplók|
 |Microsoft.Logic/workflows|WorkflowRuntime|Munkafolyamat futásidejű diagnosztikai eseményei|
-|Microsoft.Logic/integrationAccounts|IntegrationAccountTrackingEvents|Integráció fiók nyomon követheti az eseményeket|
+|Microsoft.Logic/integrationAccounts|IntegrationAccountTrackingEvents|Integrációs fiók követési eseményei|
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupEvent|Hálózati biztonsági csoport eseménye|
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupRuleCounter|Hálózati biztonsági csoport Szabályszámlálója|
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupFlowEvent|Hálózati biztonsági csoport szabály folyamata esemény|
@@ -111,11 +110,13 @@ A sémában az erőforrás diagnosztikai naplókat a resource és a naplófájlo
 |Microsoft.Network/trafficManagerProfiles|ProbeHealthStatusEvents|A TRAFFIC Manager mintavételi eredmények Állapotesemény|
 |Microsoft.Network/expressRouteCircuits|GWMCountersTable|Tábla GWM számlálók|
 |Microsoft.RecoveryServices/Vaults|AzureBackupReport|Jelentési adatok Azure biztonsági mentés|
-|Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryJobs|Az Azure Site Recovery-feladatok|
+|Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryJobs|Azure Site Recovery Jobs|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryEvents|Az Azure Site Recovery-események|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryReplicatedItems|Azure Site Recovery replikált elemek|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryReplicationStats|Az Azure Site Recovery replikáció statisztikái|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryRecoveryPoints|Azure Site Recovery helyreállítási pontok|
+|Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryReplicationDataUploadRate|Az Azure Site Recovery replikációs adatok feltöltése arány|
+|Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryProtectedDiskDataChurn|Azure Site Recovery védett lemez adatforgalommal|
 |Microsoft.Search/searchServices|OperationLogs|Műveletnaplók|
 |Microsoft.ServiceBus/namespaces|OperationalLogs|Műveleti naplókat|
 |Microsoft.Sql/servers/databases|QueryStoreRuntimeStatistics|A Lekérdezéstár futásidejű statisztikája|
@@ -124,11 +125,12 @@ A sémában az erőforrás diagnosztikai naplókat a resource és a naplófájlo
 |Microsoft.Sql/servers/databases|DatabaseWaitStatistics|Adatbázis várakozási statisztikák|
 |Microsoft.Sql/servers/databases|Időtúllépések|Időtúllépések|
 |Microsoft.Sql/servers/databases|Blokkok|Blokkok|
-|Microsoft.Sql/servers/databases|SQLInsights|SQL-elemzések|
+|Microsoft.Sql/servers/databases|SQLInsights|SQL Insights|
+|Microsoft.Sql/servers/databases|Naplózás|Naplók|
 |Microsoft.StreamAnalytics/streamingjobs|Végrehajtás|Végrehajtás|
 |Microsoft.StreamAnalytics/streamingjobs|Szerzői műveletek|Szerzői műveletek|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [További információ a diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md)
 * [Adatfolyam-erőforrás diagnosztikai naplók **Event Hubs**](monitoring-stream-diagnostic-logs-to-event-hubs.md)

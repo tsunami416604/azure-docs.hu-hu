@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/11/2017
+ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: dd022b189783f2d8c6209a6cd656704ff144bfd6
-ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
+ms.openlocfilehash: 3d1b5f30898bc0aab5c617ab547aa7db5e7e4375
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="work-with-azure-functions-proxies"></a>Az Azure Functions proxyk használata
 
@@ -62,6 +62,11 @@ Jelenleg nincs portál élmény a válaszok módosítását. Ezt a képességet 
 
 A proxy konfigurációját nem kell lehet statikus. Feltétel úgy, hogy az eredeti ügyfélkérés, a háttér-válasz vagy alkalmazásbeállítások változókat használja.
 
+### <a name="reference-localhost"></a>Hivatkozás helyi funkciók
+Használhat `localhost` egy függvényre belüli függvény ugyanazon alkalmazás közvetlenül, körbejárási proxy kérelmet nélkül.
+
+`"backendurl": "localhost/api/httptriggerC#1"`az útvonal egy helyi indított HTTP függvény használatával hivatkozik`/api/httptriggerC#1`
+
 ### <a name="request-parameters"></a>Hivatkozás a kérelemben szereplő paraméterek
 
 A kérelemben szereplő paraméterek háttér-URL-cím tulajdonsága bemeneti adatokat vagy a kérelem és válasz módosítása részeként használható. Egyes paraméterek köthető az alap proxykonfigurációt megadott útvonal sablonból, és mások számára a bejövő kérelem tulajdonságok származhatnak.
@@ -94,6 +99,18 @@ Például a háttér-URL-t *https://%ORDER_PROCESSING_HOST%/api/orders* kellene 
 
 > [!TIP] 
 > Háttér-gazdagépek Alkalmazásbeállítások használni, ha több központi telepítését vagy tesztelési környezetben. Így biztosíthatja, hogy mindig beszélünk a megfelelő háttér-környezet számára.
+
+## <a name="debugProxies"></a>Proxyk hibaelhárítása
+
+A jelző hozzáadásával `"debug":true` bármely proxy a a `proxy.json` teszi lehetővé a hibakeresési naplózást. Naplója `D:\home\LogFiles\Application\Proxies\DetailedTrace` és a speciális eszközök (a kudu) keresztül érhető el. A HTTP-válaszok is tartalmazni fog egy `Proxy-Trace-Location` fejléc egy URL-cím, a fájl elérésére.
+
+A proxy ügyféloldali megoldhassuk hozzáadásával egy `Proxy-Trace-Enabled` fejléc beállítása `true`. Ezzel is nyomkövetés bejelentkezni a fájlrendszer, és térjen vissza a követési URL-cím, egy fejléc a következő a válasz.
+
+### <a name="block-proxy-traces"></a>Proxy-nyomkövetések letiltása
+
+Biztonsági okokból nem érdemes lehet létrehozni a nyomkövetési a szolgáltatás hívása bárki. Nem fogja tudni elérni a bejelentkezési hitelesítő adatok nélkül nyomkövetési tartalma, de a nyomkövetés-erőforrásokat használ fel és függvény proxyk használatát mutatja.
+
+Letilthatja nyomkövetések teljesen `"debug":false` számára bármely adott proxyt a `proxy.json`.
 
 ## <a name="advanced-configuration"></a>Speciális konfiguráció
 
@@ -130,6 +147,24 @@ Minden egyes proxy van egy rövid nevet, például a *proxy1* az előző példá
 
 > [!NOTE] 
 > A *útvonal* tulajdonság az Azure Functions proxyk nem veszi figyelembe a *routePrefix* a függvény Alkalmazáskonfiguráció állomás tulajdonsága. Ha olyan előtagot, mint például `/api`, azt kell szerepelnie a *útvonal* tulajdonság.
+
+### <a name="disableProxies"></a>Egyes proxyk letiltása
+
+Letilthatja egyes proxyk hozzáadásával `"disabled": true` a proxy a `proxies.json` fájlt. Ennek hatására a kéréseit a matchCondidtion értekezlet 404 vissza.
+```json
+{
+    "$schema": "http://json.schemastore.org/proxies",
+    "proxies": {
+        "Root": {
+            "disabled":true,
+            "matchCondition": {
+                "route": "/example"
+            },
+            "backendUri": "www.example.com"
+        }
+    }
+}
+```
 
 ### <a name="requestOverrides"></a>Adja meg a requestOverrides objektum
 

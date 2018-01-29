@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/16/2018
+ms.date: 01/25/2018
 ms.author: terrylan
-ms.openlocfilehash: d42dd4ba150a28109d6bb3f7c2281d07b21a366e
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: f12441a960db9f1c45bca2a5b95f3669923c7e3d
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Az Azure Security Centerben (előzetes verzió) operációsrendszer-biztonsági beállítások testreszabása
 
@@ -26,7 +26,7 @@ Ez a forgatókönyv bemutatja, hogyan szabhatja testre az operációs rendszer b
 
 ## <a name="what-are-os-security-configurations"></a>Mik azok az operációs rendszer biztonsági beállításokkal?
 
-Az Azure Security Center figyelők biztonsági konfigurációk az operációs rendszer, beleértve a korlátozására szabályok több mint 150 ajánlott szabályok alkalmazásával tűzfalak, naplózását, jelszóházirendek és egyéb kapcsolódó. Ha a számítógép védtelen konfigurációval rendelkezik, a Security Center biztonsági ajánlás olyan környezetekben állít elő.
+Az Azure Security Center biztonsági beállításokkal figyeli egy alkalmazásával [több mint 150 ajánlott szabályok](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) a az operációs rendszer korlátozására, beleértve az szabályok kapcsolatos tűzfalak, naplózását, jelszóházirendek és több. Ha a számítógép védtelen konfigurációval rendelkezik, a Security Center biztonsági ajánlás olyan környezetekben állít elő.
 
 A szabályok testreszabásával szervezetek szabályozhatja, hogy mely beállítási lehetőségek állnak a környezetnek jobban megfelelő. Testre szabott assessment házirend, és alkalmazza azt az előfizetést minden esetben gépen.
 
@@ -60,8 +60,8 @@ Az alapértelmezett operációs rendszer biztonsági beállításai a Security C
 3.  Válassza ki az előfizetést, hajtsa végre a testreszabás, a kívánt.
 
 4. A **csoportházirend-összetevők**, jelölje be **biztonsági beállításokkal szerkesztése**.  
-    A **biztonsági beállításokkal szerkesztése** ablak nyílik meg. 
-    
+    A **biztonsági beállításokkal szerkesztése** ablak nyílik meg.
+
     ![A "Biztonsági konfigurációk módosítása" ablak](media/security-center-customize-os-security-config/blade.png)
 
 5. A jobb oldali ablaktáblában utasításai a letöltés, szerkesztése és a módosított fájlt feltölteni.
@@ -70,7 +70,7 @@ Az alapértelmezett operációs rendszer biztonsági beállításai a Security C
    > Alapértelmezés szerint a letöltött konfigurációs fájl nem *json* formátumban. Ez a fájl módosításával kapcsolatos utasításokért ugorjon [a konfigurációs fájljának testreszabása](#customize-the-configuration-file).
    >
 
-   Miután már sikeresen mentette a fájlt, a konfiguráció alkalmazása az összes virtuális gépek és az előfizetéshez tartozó összes munkaterületek csatlakozó számítógépek. A folyamat általában néhány percet vesz igénybe, de infrastruktúra méretétől függően több időt vesz igénybe. 
+   Miután már sikeresen mentette a fájlt, a konfiguráció alkalmazása az összes virtuális gépek és az előfizetéshez tartozó összes munkaterületek csatlakozó számítógépek. A folyamat általában néhány percet vesz igénybe, de infrastruktúra méretétől függően több időt vesz igénybe.
 
 6. A módosítás véglegesítése, válassza ki a **mentése**. Ellenkező esetben a házirendet a rendszer nem tárolja.
 

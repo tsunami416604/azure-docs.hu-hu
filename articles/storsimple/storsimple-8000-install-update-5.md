@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/13/2017
 ms.author: alkohli
-ms.openlocfilehash: eefeedfb87bd30630439d13a434b246508defa96
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.openlocfilehash: d6e17c7609fd41b8f4457edda373f6882a1a9d2b
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="install-update-5-on-your-storsimple-device"></a>5. frissítésétől a StorSimple eszköz telepítése
 
@@ -77,28 +77,28 @@ Töltse le, és a gyorsjavítások telepítése az előírt sorrendben és a jav
 
 | Sorrend | KB | Leírás | Frissítés típusa | Telepítés időpontja |A mappa telepítéséhez|
 | --- | --- | --- | --- | --- | --- |
-| 1. |KB4037264 |Szoftverfrissítés<br> Töltse le mindkét _HcsSfotwareUpdate.exe_ és _CisMSDAgent.exe_ |Rendszeres <br></br>A nem zavaró |~ 25 perc |FirstOrderUpdate|
+| 1. |KB4037264 |Szoftverfrissítés<br> Töltse le mindkét _HcsSoftwareUpdate.exe_ és _CisMSDAgent.exe_ |Rendszeres <br></br>Non-disruptive |~ 25 perc |FirstOrderUpdate|
 
 Frissített 4 frissítést futtató eszközről, ha csak az operációs rendszer összegző frissítések telepítésével második rendelés frissítésként kell.
 
 | Sorrend | KB | Leírás | Frissítés típusa | Telepítés időpontja |A mappa telepítéséhez|
 | --- | --- | --- | --- | --- | --- |
-| 2A. |KB4025336 |Az operációs rendszer összegző frissítések csomag <br> Töltse le a Windows Server 2012 R2 verzióra |Rendszeres <br></br>A nem zavaró |- |SecondOrderUpdate|
+| 2A. |KB4025336 |Az operációs rendszer összegző frissítések csomag <br> Töltse le a Windows Server 2012 R2 verzióra |Rendszeres <br></br>Non-disruptive |- |SecondOrderUpdate|
 
 Ha 3 frissítést futtató eszközről telepítése vagy korábbi, telepítse az összegző frissítések mellett a következő.
 
 | Sorrend | KB | Leírás | Frissítés típusa | Telepítés időpontja |A mappa telepítéséhez|
 | --- | --- | --- | --- | --- | --- |
-| 2B. |KB4011841 <br> KB4011842 |LSI illesztőprogram és a belső vezérlőprogram-frissítésekre <br> A legpontosabb Beállításhoz vezérlőprogram-frissítés (3.38 verzió) |Rendszeres <br></br>A nem zavaró |~ 3 óra <br> (2/a. tartalmazza. + 2B. + 2 C.)|SecondOrderUpdate|
-| 2C. |KB3139398 <br> KB3142030 <br> KB3108381 <br> KB3153704 <br> KB3174644 <br> KB3139914   |Az operációs rendszer biztonsági frissítések csomag <br> Töltse le a Windows Server 2012 R2 verzióra |Rendszeres <br></br>A nem zavaró |- |SecondOrderUpdate|
-| 2D. |KB3146621 <br> KB3103616 <br> KB3121261 <br> KB3123538 |Az operációs rendszer frissítéseinek csomag <br> Töltse le a Windows Server 2012 R2 verzióra |Rendszeres <br></br>A nem zavaró |- |SecondOrderUpdate|
+| 2B. |KB4011841 <br> KB4011842 |LSI illesztőprogram és a belső vezérlőprogram-frissítésekre <br> A legpontosabb Beállításhoz vezérlőprogram-frissítés (3.38 verzió) |Rendszeres <br></br>Non-disruptive |~ 3 óra <br> (2/a. tartalmazza. + 2B. + 2C.)|SecondOrderUpdate|
+| 2C. |KB3139398 <br> KB3142030 <br> KB3108381 <br> KB3153704 <br> KB3174644 <br> KB3139914   |Az operációs rendszer biztonsági frissítések csomag <br> Töltse le a Windows Server 2012 R2 verzióra |Rendszeres <br></br>Non-disruptive |- |SecondOrderUpdate|
+| 2D. |KB3146621 <br> KB3103616 <br> KB3121261 <br> KB3123538 |Az operációs rendszer frissítéseinek csomag <br> Töltse le a Windows Server 2012 R2 verzióra |Rendszeres <br></br>Non-disruptive |- |SecondOrderUpdate|
 
 
 Előfordulhat, hogy is telepítendő fölött a fenti táblázatokban látható frissítések lemez belső vezérlőprogram-frissítésekre. Ellenőrizheti, hogy szükséges-e a lemez belső vezérlőprogram-frissítésekre futtatásával a `Get-HcsFirmwareVersion` parancsmag. Ha ezek a belső vezérlőprogram verzióinak futtatja: `XMGJ`, `XGEG`, `KZ50`, `F6C2`, `VR08`, `N003`, `0107`, akkor nem szükséges a frissítések telepítéséhez.
 
 | Sorrend | KB | Leírás | Frissítés típusa | Telepítés időpontja | A mappa telepítéséhez|
 | --- | --- | --- | --- | --- | --- |
-| 3. |KB4037263 |Lemez belső vezérlőprogram |Karbantartás <br></br>Zavaró |~ 30 perc | ThirdOrderUpdate |
+| 3. |KB4037263 |Lemez belső vezérlőprogram |Karbantartás <br></br>Zavaró |~ 30 mins | ThirdOrderUpdate |
 
 <br></br>
 
@@ -112,6 +112,6 @@ A következő lépésekkel töltse le és telepítse a gyorsjavítást.
 
 [!INCLUDE [storsimple-8000-install-troubleshooting](../../includes/storsimple-8000-install-troubleshooting.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a [frissítés 5 kiadás](storsimple-update5-release-notes.md).
 

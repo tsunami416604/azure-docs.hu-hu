@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/09/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: e38d2b751090cfdc078de4e8c683c6bb9b48fac3
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: f166b420dcd424b38f89275e1befd42a505b5785
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="variable-assets-in-azure-automation"></a>Az Azure Automationben változó eszközök
 
@@ -51,20 +51,20 @@ A rendelkezésre álló Automation változó típusainak listáját a következ�
 * Logikai
 * NULL értékű
 
-## <a name="scripting-the-creation-and-management-of-variables"></a>A létrehozását és kezelését a változók parancsfájlok
+## <a name="azurerm-powershell-cmdlets"></a>AzureRM PowerShell-parancsmagok
+A következő táblázatban található parancsmagokkal AzureRM, létrehozását és kezelését az automatizálási hitelesítő eszközök a Windows PowerShell használatával történik.  Részét képezi a [AzureRM.Automation modul](/powershell/azure/overview) elérhető Automation-forgatókönyveket és a DSC-konfigurációk.
 
-A következő táblázat parancsmagjai a Windows PowerShell használatával automatizálási változók létrehozására és kezelésére szolgálnak. Részét képezi a [Azure PowerShell modul](../powershell-install-configure.md) elérhető Automation-forgatókönyveket és a DSC-konfiguráció.
-
-|Parancsmagok|Leírás|
+| Parancsmagok | Leírás |
 |:---|:---|
 |[Get-AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt603849.aspx)|Egy létező változó értékét kérdezi le.|
-|[Új AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt603613.aspx)|Új változót hoz létre, és beállítja az értékét.|
+|[New-AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt603613.aspx)|Új változót hoz létre, és beállítja az értékét.|
 |[Remove-AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt619354.aspx)|Eltávolít egy létező változó.|
 |[Set-AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt603601.aspx)|Beállítja egy létező változó értékét.|
 
-A munkafolyamat-tevékenységek az alábbi táblázat automatizálási a runbookban található változók elérésére használhatók. Ezek csak akkor használ, a runbookot vagy a DSC-konfiguráció, és nem az Azure PowerShell modul részét képezi.
+## <a name="activities"></a>Tevékenységek
+Az alábbi táblázatban a tevékenységek a runbookok és a DSC-konfigurációk hitelesítő adatok eléréséhez használt.
 
-|Munkafolyamat-tevékenységek|Leírás|
+| Tevékenységek | Leírás |
 |:---|:---|
 |Get-AutomationVariable|Egy létező változó értékét kérdezi le.|
 |Set-AutomationVariable|Beállítja egy létező változó értékét.|
@@ -205,4 +205,3 @@ Az alábbi ábrán egy változó frissíteni egy grafikus forgatókönyv egyszer
 
 * Tevékenységek összekapcsolása a grafikus szerzői kapcsolatos további információkért lásd: [grafikus szerzői hivatkozások](automation-graphical-authoring-intro.md#links-and-workflow)
 * A grafikus forgatókönyvekkel való ismerkedéshez tekintse meg a következőt: [Az első grafikus forgatókönyvem](automation-first-runbook-graphical.md). 
-

@@ -1,5 +1,5 @@
 ---
-title: "Oktatóanyag: A Google Apps konfigurálása automatikus a felhasználók átadása az Azure-ban |} Microsoft Docs"
+title: "Oktatóanyag: Google alkalmazások konfigurálása az Azure Active Directoryval történő üzembe helyezéséhez automatikus felhasználói |} Microsoft Docs"
 description: "Megtudhatja, hogyan automatikusan ellátásához, majd leépíti a felhasználói fiókok Azure ad-Google Apps."
 services: active-directory
 documentationCenter: na
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2017
+ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: a77b5b1fff670ed7698d0ef48fa63f8a8f9be819
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0a0dd38fda35b1eee1fdce196a3ed15f6e73dde6
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="tutorial-configure-google-apps-for-automatic-user-provisioning"></a>Oktatóanyag: A Google Apps konfigurálása automatikus a felhasználók átadása
 
@@ -99,7 +99,7 @@ Ez a szakasz végigvezeti az Azure AD kapcsolódni a felhasználói fiók API Go
    
     a. Az a [Google Apps felügyeleti konzol](http://admin.google.com/), jelölje be **tartományok**.
      
-     ![Válasszon tartományt][20]
+     ![Select Domains][20]
 
     b. Válassza ki **hozzáadása egy tartományhoz vagy egy tartományi alias**.
      
@@ -107,7 +107,7 @@ Ez a szakasz végigvezeti az Azure AD kapcsolódni a felhasználói fiók API Go
 
     c. Válassza ki **egy másik tartomány hozzáadása**, majd írja be a nevében a tartományt, amelyikhez hozzá szeretné adni.
      
-     ![Adja meg a tartomány neve][22]
+     ![Type in your domain name][22]
 
     d. Válassza ki **folytatja, és ellenőrizze a tartomány tulajdonosa**. Kövesse a lépéseket, hogy Ön a tulajdonosa a tartománynév ellenőrzése. Ellenőrizze a tartományt a Google Apps átfogó útmutatást lásd: [ellenőrizze a hely tulajdonjoga, a Google Apps](https://support.google.com/webmasters/answer/35179).
 
@@ -118,11 +118,11 @@ Ez a szakasz végigvezeti az Azure AD kapcsolódni a felhasználói fiók API Go
        
 6. Az a [Google Apps felügyeleti konzol](http://admin.google.com/), jelölje be **rendszergazdai szerepkörök**.
    
-     ![Válassza ki a Google Apps][26]
+     ![Select Google Apps][26]
 
 7. Határozza meg, melyik kezelheti a felhasználók átadása használandó rendszergazdai fiókot. Az a **rendszergazdai szerepkörrel** -fiók, szerkesztheti a **jogosultságokkal** adott szerepkörhöz. Ügyeljen arra, hogy az összes **rendszergazda API jogosultságokkal** , hogy ez a fiók kiépítése is használható.
    
-     ![Válassza ki a Google Apps][27]
+     ![Select Google Apps][27]
    
     > [!NOTE]
     > Ha konfigurál egy éles környezetben, az ajánlott eljárás, ha egy rendszergazdai fiók a Google Apps kifejezetten a ezt a lépést. Ezek a fiókok rendszergazda szerepkörrel hozzájuk társított, amely rendelkezik a szükséges API-jogosultságokkal kell rendelkeznie.

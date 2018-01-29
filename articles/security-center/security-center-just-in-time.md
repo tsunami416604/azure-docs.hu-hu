@@ -1,6 +1,6 @@
 ---
 title: "Csak idő virtuális gép férnek hozzá az Azure Security Centerben |} Microsoft Docs"
-description: "Ez a dokumentum bemutatja, hogyan hogyan igény szerint le a virtuális gép elérhető az Azure Security Center segítségével, az az Azure virtuális gépeken való hozzáférést."
+description: "Ez a dokumentum azt mutatja be, hogyan igény szerint VM hozzáférés az Azure Security Center segítséget nyújt az Azure virtuális gépeken való hozzáférés szabályozása."
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/04/2017
+ms.date: 01/26/2018
 ms.author: terrylan
-ms.openlocfilehash: c715afe55a3aedd5c4f826bc34c3c56e167d2f82
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a15857f0df5c967031aed00d89e71b3199eed0c4
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time-preview"></a>JIT (előzetes verzió) a virtuálisgép-hozzáférés kezelése
 
@@ -50,11 +50,13 @@ Amikor egy felhasználó egy virtuális Géphez való hozzáférést igényel, a
 
 ## <a name="using-just-in-time-access"></a>Csak az idő access használatával
 
-A **közvetlenül a virtuális gép elérhető** a csempén **Security Center** konfigurált az imént időben való hozzáférésre és a virtuális gépek száma a múlt héten hozzáférési kérelmek jóváhagyott jeleníti meg.
+1. Nyissa meg a **Security Center** irányítópultját.
+
+2. A bal oldali panelen válassza ki a **közvetlenül a virtuális gép elérhető**.
 
 ![Virtuális gép hozzáférés JIT csempéje][2]
 
-Válassza ki a **közvetlenül a virtuális gép elérhető** csempe és **közvetlenül a virtuális gép elérhető** nyílik meg.
+A **közvetlenül a virtuális gép elérhető** ablak nyílik meg.
 
 ![Virtuális gép hozzáférés JIT csempéje][10]
 
@@ -170,7 +172,7 @@ A parancsmagok dokumentációira további kövesse.
 Egy adott virtuális Gépet, a csak a védett eléréséhez idő megoldásban ez a parancs futtatásához a PowerShell-munkamenetben szüksége: meghívása ASCJITAccess.
 A parancsmagok dokumentációira további kövesse.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta, hogyan igény szerint a Security Center segítséget nyújt a virtuális gép hozzáférés az Azure virtuális gépeken való hozzáférést.
 
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:

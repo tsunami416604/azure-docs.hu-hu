@@ -1,211 +1,186 @@
 ---
-title: "Hozzon létre egy alkalmazás - Azure CLI 2.0 |} Microsoft Docs"
-description: "Ismerje meg az Alkalmazásátjáró létrehozása az Azure CLI 2.0 erőforrás-kezelő használatával."
+title: "Hozzon létre egy alkalmazás - Azure CLI |} Microsoft Docs"
+description: "Megtudhatja, hogyan hozhat létre olyan átjárót az Azure parancssori felület használatával."
 services: application-gateway
-documentationcenter: na
 author: davidmu1
 manager: timlt
 editor: 
 tags: azure-resource-manager
-ms.assetid: c2f6516e-3805-49ac-826e-776b909a9104
 ms.service: application-gateway
 ms.devlang: azurecli
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/31/2017
+ms.date: 01/25/2018
 ms.author: davidmu
-ms.openlocfilehash: beb2dab177d021fee1dbbe630f8b6854a7d94f68
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: bf7e22e86e593045d25a9f31166aebe992caeb45
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="create-an-application-gateway-by-using-the-azure-cli-20"></a>Alkalmazásátjáró létrehozása az Azure CLI 2.0 használatával
+# <a name="create-an-application-gateway-using-the-azure-cli"></a>Az Azure parancssori felület használatával Alkalmazásátjáró létrehozása
 
-> [!div class="op_single_selector"]
-> * [Azure Portal](application-gateway-create-gateway-portal.md)
-> * [Azure Resource Manager PowerShell](application-gateway-create-gateway-arm.md)
-> * [Az Azure klasszikus PowerShell](application-gateway-create-gateway.md)
-> * [Azure Resource Manager-sablon](application-gateway-create-gateway-arm-template.md)
-> * [Azure CLI 1.0](application-gateway-create-gateway-cli.md)
-> * [Azure CLI 2.0](application-gateway-create-gateway-cli.md)
+Az Azure parancssori felület használatával létrehozása vagy kezelése alkalmazásátjárót, a parancssorban vagy parancsfájlokban. A gyors üzembe helyezés bemutatja, hogyan hozzon létre a hálózati erőforrásokhoz, a háttérkiszolgálók, illetve az Alkalmazásátjáró.
 
-Az Azure Application Gateway egy dedikált virtuális készülék alkalmazás kézbesítési vezérlő (LÉPETT) biztosító szolgáltatásként, az alkalmazás különböző réteg 7 terheléselosztás képességeket kínál.
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="cli-versions"></a>CLI-verziók
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Alkalmazásátjáró hozhat létre a következő parancssori felület (CLI) verziók egyikével:
+Rendszererőforrásokra telepíti, és a parancssori felület helyileg, a gyors üzembe helyezés van szükség, hogy futtassa az Azure parancssori felület 2.0.4 verzió vagy újabb. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
 
-* [Az Azure CLI 1.0](application-gateway-create-gateway-cli-nodejs.md): az Azure parancssori felület a klasszikus és az Azure Resource Manager üzembe helyezési modellek
-* [Az Azure CLI 2.0](application-gateway-create-gateway-cli.md): a Resource Manager üzembe helyezési modellben a következő generációs CLI
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-## <a name="prerequisite-install-the-azure-cli-20"></a>Előfeltétel: Az Azure parancssori felület 2.0 telepítése
+Hozzon létre egy erőforrás csoport használatával [az csoport létrehozása](/cli/azure/group#az_group_create). Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
 
-Ebben a cikkben szereplő lépések végrehajtásához kell [macOS, a Linux és a Windows Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-az-cli2).
+Az alábbi példa létrehoz egy erőforráscsoportot *myResourceGroupAG* a a *eastus* helyét.
 
-> [!NOTE]
-> Alkalmazásátjáró létrehozása Azure-fiókra van szüksége. Ha még nincs fiókja, regisztráljon egy [ingyenes próbaverzió](../active-directory/sign-up-organization.md).
-
-## <a name="scenario"></a>Forgatókönyv
-
-Ebben a forgatókönyvben megismerheti, hogyan hozhat létre olyan átjárót az Azure-portál használatával.
-
-Ez a forgatókönyv tartalma:
-
-* Hozzon létre egy közepes méretű Alkalmazásátjáró két példányt.
-* Nevű AdatumAppGatewayVNET egy fenntartott CIDR-blokkja 10.0.0.0/16, a virtuális hálózat létrehozása.
-* Létrehoz egy Appgatewaysubnet nevű alhálózatot, amelynek a CIDR-blokkja 10.0.0.0/28 lesz.
-
-> [!NOTE]
-> Az Alkalmazásátjáró, beleértve az egyéni állapotteljesítmény, a háttér-készlet címeket és a további szabályok további konfigurálása történik, az Alkalmazásátjáró létrehozása után, és nem a kezdeti üzembe helyezése során.
-
-## <a name="before-you-begin"></a>Előkészületek
-
-Alkalmazásátjáró saját alhálózatba van szükség. Virtuális hálózat létrehozásakor győződjön meg arról, hogy hagyja-e elegendő címtartomány több alhálózatra. Alkalmazásátjáró alhálózathoz telepítése után csak további alkalmazás átjárók alhálózaton is hozzáadhat.
-
-## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
-
-Nyissa meg a **Microsoft Azure parancssori** , jelentkezzen be:
-
-```azurecli-interactive
-az login -u "username"
+```azurecli-interactive 
+az group create --name myResourceGroupAG --location eastus
 ```
 
-> [!NOTE]
-> Is `az login` az eszköz bejelentkezéshez írja be a kódot, aka.ms/devicelogin igénylő kapcsoló nélkül.
+## <a name="create-network-resources"></a>Hálózati erőforrások létrehozása 
 
-Miután megadta az előző parancs, kapni fog egy kódot. Navigáljon a böngészőben a bejelentkezési folyamat folytatásához https://aka.ms/devicelogin.
-
-![cmd megjelenítő eszköz-bejelentkezés][1]
-
-A böngészőben írja be a kapott kódot. Ez átirányítja Önt egy bejelentkezési oldalára.
-
-![Írja be a kódját a böngésző][2]
-
-Írja be a kódot a bejelentkezéshez, és zárja be a böngészőt, a folytatáshoz.
-
-![sikeres volt][3]
-
-## <a name="create-the-resource-group"></a>Az erőforráscsoport létrehozása
-
-Az Alkalmazásátjáró létrehozása előtt hozzon létre egy erőforráscsoportot, azt tartalmazza. Használja az alábbi parancsot:
+Hozza létre a virtuális hálózati és alhálózati használata [az hálózati vnet létrehozása](/cli/azure/vnet#az_vnet_create). A nyilvános IP cím segítségével létrehozott [létrehozása az hálózati nyilvános ip-](/cli/azure/public-ip#az_public_ip_create).
 
 ```azurecli-interactive
-az group create --name myresourcegroup --location "eastus"
+az network vnet create \
+  --name myVNet \
+  --resource-group myResourceGroupAG \
+  --location eastus \
+  --address-prefix 10.0.0.0/16 \
+  --subnet-name myAGSubnet \
+  --subnet-prefix 10.0.1.0/24
+az network vnet subnet create \
+  --name myBackendSubnet \
+  --resource-group myResourceGroupAG \
+  --vnet-name myVNet   \
+  --address-prefix 10.0.2.0/24
+az network public-ip create \
+  --resource-group myResourceGroupAG \
+  --name myAGPublicIPAddress
+```
+
+## <a name="create-backend-servers"></a>Háttér-kiszolgálókat hoz létre
+
+Ebben a példában két virtuális gép az Alkalmazásátjáró háttér-kiszolgálóként használandó hoz létre. Ellenőrizze, hogy az Alkalmazásátjáró sikeresen létrejött-e a virtuális gépeken telepítése NGINX is.
+
+### <a name="create-two-virtual-machines"></a>Két virtuális gép létrehozása
+
+A felhő inicializálás konfigurációs fájl segítségével NGINX telepítheti és futtathatja a "Hello, World" Node.js alkalmazást egy Linux virtuális gépen. Az aktuális rendszerhéjban hozzon létre egy fájlt felhő-init.txt, másolja és illessze be a következő konfigurációs a rendszerhéj. Győződjön meg arról, hogy a teljes másolása felhő inicializálás fájl helyes, különösen az első sor:
+
+```yaml
+#cloud-config
+package_upgrade: true
+packages:
+  - nginx
+  - nodejs
+  - npm
+write_files:
+  - owner: www-data:www-data
+  - path: /etc/nginx/sites-available/default
+    content: |
+      server {
+        listen 80;
+        location / {
+          proxy_pass http://localhost:3000;
+          proxy_http_version 1.1;
+          proxy_set_header Upgrade $http_upgrade;
+          proxy_set_header Connection keep-alive;
+          proxy_set_header Host $host;
+          proxy_cache_bypass $http_upgrade;
+        }
+      }
+  - owner: azureuser:azureuser
+  - path: /home/azureuser/myapp/index.js
+    content: |
+      var express = require('express')
+      var app = express()
+      var os = require('os');
+      app.get('/', function (req, res) {
+        res.send('Hello World from host ' + os.hostname() + '!')
+      })
+      app.listen(3000, function () {
+        console.log('Hello world app listening on port 3000!')
+      })
+runcmd:
+  - service nginx restart
+  - cd "/home/azureuser/myapp"
+  - npm init
+  - npm install express -y
+  - nodejs index.js
+```
+
+A hálózati adapterek létrehozása [az hálózat összevont hálózati létrehozása](/cli/azure/network/nic#az_network_nic_create). A virtuális gépek létrehozása [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create).
+
+```azurecli-interactive
+for i in `seq 1 2`; do
+  az network nic create \
+    --resource-group myResourceGroupAG \
+    --name myNic$i \
+    --vnet-name myVNet \
+    --subnet myBackendSubnet
+  az vm create \
+    --resource-group myResourceGroupAG \
+    --name myVM$i \
+    --nics myNic$i \
+    --image UbuntuLTS \
+    --admin-username azureuser \
+    --generate-ssh-keys \
+    --custom-data cloud-init.txt
+done
 ```
 
 ## <a name="create-the-application-gateway"></a>Application Gateway létrehozása
 
-A háttér IP-címek használatára a háttér-kiszolgáló IP-címekhez. Ezek az értékek privát IP-címek a virtuális hálózat, a nyilvános IP-címek vagy a háttér-kiszolgálók teljesen minősített tartománynév lehet. A következő példa olyan átjárót HTTP beállításait, a portok és a szabályok további konfigurációkat hoz létre:
+Hozzon létre egy alkalmazást átjáró, amely [az hálózati Alkalmazásátjáró létrehozása](/cli/azure/application-gateway#az_application_gateway_create). Alkalmazásátjáró az Azure parancssori felület használatával hoz létre, amikor konfigurációs adatokat, például, sku, és a HTTP-beállításait adja meg. A privát IP-címek a hálózati adapterek az Alkalmazásátjáró háttérkészlethez kiszolgálóként adja hozzá.
 
 ```azurecli-interactive
+address1=$(az network nic show --name myNic1 --resource-group myResourceGroupAG | grep "\"privateIpAddress\":" | grep -oE '[^ ]+$' | tr -d '",')
+address2=$(az network nic show --name myNic2 --resource-group myResourceGroupAG | grep "\"privateIpAddress\":" | grep -oE '[^ ]+$' | tr -d '",')
 az network application-gateway create \
---name "AdatumAppGateway" \
---location "eastus" \
---resource-group "myresourcegroup" \
---vnet-name "AdatumAppGatewayVNET" \
---vnet-address-prefix "10.0.0.0/16" \
---subnet "Appgatewaysubnet" \
---subnet-address-prefix "10.0.0.0/28" \
---servers 10.0.0.4 10.0.0.5 \
---capacity 2 \
---sku Standard_Small \
---http-settings-cookie-based-affinity Enabled \
---http-settings-protocol Http \
---frontend-port 80 \
---routing-rule-type Basic \
---http-settings-port 80 \
---public-ip-address "pip2" \
---public-ip-address-allocation "dynamic" \
-
+  --name myAppGateway \
+  --location eastus \
+  --resource-group myResourceGroupAG \
+  --capacity 2 \
+  --sku Standard_Medium \
+  --http-settings-cookie-based-affinity Enabled \
+  --public-ip-address myAGPublicIPAddress \
+  --vnet-name myVNet \
+  --subnet myAGSubnet \
+  --servers "$address1" "$address2"
 ```
 
-Az előző példában látható több tulajdonságok esetében nem szükséges Alkalmazásátjáró létrehozása közben. A következő kódrészlet példa olyan átjárót hoz létre a szükséges adatokat:
+Az alkalmazás-átjáró hozható létre több percig is eltarthat. Az Alkalmazásátjáró létrehozása után ezeket a szolgáltatásokat, láthatja:
 
-```azurecli-interactive
-az network application-gateway create \
---name "AdatumAppGateway" \
---location "eastus" \
---resource-group "myresourcegroup" \
---vnet-name "AdatumAppGatewayVNET" \
---vnet-address-prefix "10.0.0.0/16" \
---subnet "Appgatewaysubnet" \
---subnet-address-prefix "10.0.0.0/28" \
---servers "10.0.0.5"  \
---public-ip-address pip
-```
- 
-> [!NOTE]
-> A létrehozás során használt paraméterek listáját a következő parancsot: `az network application-gateway create --help`.
+- *appGatewayBackendPool* -Alkalmazásátjáró rendelkeznie kell legalább egy háttér címkészletet.
+- *appGatewayBackendHttpSettings* – Megadja, hogy 80-as porton, és olyan HTTP protokollt használja a kommunikációhoz.
+- *appGatewayHttpListener* -a társított alapértelmezett figyelő *appGatewayBackendPool*.
+- *appGatewayFrontendIP* -hozzárendel *myAGPublicIPAddress* való *appGatewayHttpListener*.
+- *Szabály1* - útválasztási szabály társított alapértelmezett *appGatewayHttpListener*.
 
-Ez a példa egy alapszintű application gateway alapértelmezett beállításait a figyelő, a háttér-készlet, a háttér-HTTP-beállítások és a szabályok hoz létre. Ezeket a beállításokat a központi telepítés megfelelően a kiépítés befejezését követően módosíthatja.
+## <a name="test-the-application-gateway"></a>Az Alkalmazásátjáró tesztelése
 
-Ha a webes alkalmazás definiálva lett az előző lépésben a háttér-készlet, most terheléselosztás kezdődik.
+A nyilvános IP-cím, az alkalmazás-átjáró használatához [az hálózati nyilvános ip-megjelenítése](/cli/azure/network/public-ip#az_network_public_ip_show). Másolja a nyilvános IP-címet, és illessze be a böngésző címsorába.
 
-## <a name="get-the-application-gateway-dns-name"></a>Az alkalmazás átjáró DNS-név beolvasása
-Az átjáró létrehozása után konfigurálhat az előtér-kommunikációhoz. Egy nyilvános IP-cím használata esetén az Alkalmazásátjáró megköveteli egy dinamikusan hozzárendelt DNS-nevet, amely nincs rövid. Felhasználók is elérte az Alkalmazásátjáró érdekében használja egy olyan CNAME rekordot a nyilvános végpontot az Alkalmazásátjáró mutassanak. További információkért lásd: [használata Azure DNS számára adja meg az egyéni tartomány beállításait az Azure-szolgáltatások](../dns/dns-custom-domain.md).
+```azurepowershell-interactive
+az network public-ip show \
+  --resource-group myResourceGroupAG \
+  --name myAGPublicIPAddress \
+  --query [ipAddress] \
+  --output tsv
+``` 
 
-Alias konfigurálásához beolvasása az Alkalmazásátjáró és a hozzá tartozó IP-/ DNS-nevet az Alkalmazásátjáró csatolva PublicIPAddress elem használatával. Az Alkalmazásátjáró DNS-név használatával hozzon létre egy CNAME rekordot, amely mutat, a két webes alkalmazásokhoz, hogy a DNS-név. Ne használja A rekordok mert előfordulhat, hogy módosítsa a VIP indítsa újra az Alkalmazásátjáró.
+![Alkalmazásátjáró tesztelése](./media/application-gateway-create-gateway-cli/application-gateway-nginxtest.png)
 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-```azurecli-interactive
-az network public-ip show --name "pip" --resource-group "AdatumAppGatewayRG"
-```
+Ha már nincs szüksége, használhatja a [az csoport törlése](/cli/azure/group#az_group_delete) távolítsa el az erőforráscsoportot, Alkalmazásátjáró parancsot, és az összes kapcsolódó erőforrásokat.
 
-```
-{
-  "dnsSettings": {
-    "domainNameLabel": null,
-    "fqdn": "8c786058-96d4-4f3e-bb41-660860ceae4c.cloudapp.net",
-    "reverseFqdn": null
-  },
-  "etag": "W/\"3b0ac031-01f0-4860-b572-e3c25e0c57ad\"",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/AdatumAppGatewayRG/providers/Microsoft.Network/publicIPAddresses/pip2",
-  "idleTimeoutInMinutes": 4,
-  "ipAddress": "40.121.167.250",
-  "ipConfiguration": {
-    "etag": null,
-    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/AdatumAppGatewayRG/providers/Microsoft.Network/applicationGateways/AdatumAppGateway2/frontendIPConfigurations/appGatewayFrontendIP",
-    "name": null,
-    "privateIpAddress": null,
-    "privateIpAllocationMethod": null,
-    "provisioningState": null,
-    "publicIpAddress": null,
-    "resourceGroup": "AdatumAppGatewayRG",
-    "subnet": null
-  },
-  "location": "eastus",
-  "name": "pip2",
-  "provisioningState": "Succeeded",
-  "publicIpAddressVersion": "IPv4",
-  "publicIpAllocationMethod": "Dynamic",
-  "resourceGroup": "AdatumAppGatewayRG",
-  "resourceGuid": "3c30d310-c543-4e9d-9c72-bbacd7fe9b05",
-  "tags": {
-    "cli[2] owner[administrator]": ""
-  },
-  "type": "Microsoft.Network/publicIPAddresses"
-}
-```
-
-## <a name="delete-all-resources"></a>Az összes erőforrás törlése
-
-Ez a cikk létrehozott összes erőforrást törli, a következő parancsot:
-
-```azurecli-interactive
-az group delete --name AdatumAppGatewayRG
+```azurecli-interactive 
+az group delete --name myResourceGroupAG
 ```
  
 ## <a name="next-steps"></a>További lépések
 
-Megtudhatja, hogyan hozzon létre egyéni állapotteljesítmény, keresse fel [a portál használatával hozzon létre egy egyéni mintavétel az Alkalmazásátjáró](application-gateway-create-probe-portal.md).
+A gyors üzembe helyezés, a létrehozott egy erőforráscsoport, a hálózati erőforrások és a háttérkiszolgálókhoz. Alkalmazásátjáró létrehozásához használt erőforrások majd. További információt a alkalmazásátjárót és a kapcsolódó erőforrások, továbbra is a útmutatókat.
 
-Konfigurálja az SSL-feladatkiszervezést, és tegye meg a költséges SSL visszafejtési ki a webkiszolgálók, lásd: [SSL kiszervezési Alkalmazásátjáró konfigurálása Azure Resource Manager használatával](application-gateway-ssl-arm.md).
-
-<!--Image references-->
-
-[scenario]: ./media/application-gateway-create-gateway-cli/scenario.png
-[1]: ./media/application-gateway-create-gateway-cli/figure1.png
-[2]: ./media/application-gateway-create-gateway-cli/figure2.png
-[3]: ./media/application-gateway-create-gateway-cli/figure3.png

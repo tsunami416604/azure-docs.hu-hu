@@ -15,11 +15,11 @@ ms.date: 10/17/2017
 ms.author: barlan
 ms.reviewer: librown
 ms.custom: H1Hack27Feb2017, end-user
-ms.openlocfilehash: 0d293833b97b2a65d5377eef668696cb73ee3bd5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1532054a9463d710685d3f865d2e26ee7ff5014f
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="get-started-with-the-microsoft-authenticator-app"></a>Ismerkedés a Microsoft Authenticator alkalmazással
 A Microsoft Authenticator alkalmazást egy további szintű be a munkahelyi vagy iskolai fiókjával biztonságot nyújt (például bsimon@contoso.com) vagy a Microsoft-fiókját (például bsimon@outlook.com).
@@ -42,7 +42,7 @@ Személyes fiók akkor be kell állítania kétlépéses ellenőrzést, a szolg�
 A Microsoft Authenticator a Microsoft-fiókok is használható. Előfordulhat, hogy meghívják a szolgáltatás nem a kétlépéses ellenőrzést, de meg kell biztonsági vagy bejelentkezési beállítások kereséséhez.
 
 ## <a name="install-the-app"></a>Az alkalmazás telepítéséhez
-A Microsoft Authenticator alkalmazás érhető el [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072), és [iOS](http://go.microsoft.com/fwlink/?Linkid=825073).
+A Microsoft Authenticator alkalmazás érhető el [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594), és [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071).
 
 ## <a name="add-accounts-to-the-app"></a>Fiókok hozzáadása az alkalmazáshoz
 Minden fiók hozzáadása a Microsoft Authenticator alkalmazáshoz használni kívánt használja az alábbi eljárások egyikét:
@@ -100,7 +100,7 @@ Touch ID beállítása a Microsoft Authenticator, végrehajtásához szükséges
 
 A pont előre, amikor a bejelentkezés ellenőrzése van szükség, válassza ki a kapott leküldéses értesítést, és a PIN-kód megadása helyett az ujjlenyomat beolvasása.
 
-![Leküldéses értesítések](./media/authenticator-app-how-to/touchid2.png)
+![Leküldéses értesítés](./media/authenticator-app-how-to/touchid2.png)
 
 ## <a name="use-the-app-when-you-sign-in"></a>Az alkalmazás használatát, amikor bejelentkezik
 

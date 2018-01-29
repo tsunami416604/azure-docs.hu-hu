@@ -1,5 +1,5 @@
 ---
-title: "Oktatóanyag: LucidChart konfigurálása az automatikus felhasználó-átadási az Azure Active Directoryval |} Microsoft Docs"
+title: "Oktatóanyag: LucidChart konfigurálása az Azure Active Directoryval automatikus felhasználólétesítés |} Microsoft Docs"
 description: "Megtudhatja, hogyan konfigurálja az Azure Active Directory automatikusan ellátásához, majd leépíti LucidChart felhasználói fiókokat."
 services: active-directory
 documentationcenter: 
@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/14/2017
+ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: be93059111202deca2e0582112ab8f09508d6c43
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: bbf62986a9e6e68149a1908d079d82e2faf4bd54
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="tutorial-configuring-lucidchart-for-automatic-user-provisioning"></a>Oktatóanyag: LucidChart konfigurálása az automatikus felhasználó létesítése
+# <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés LucidChart konfigurálása
 
 
 Ez az oktatóanyag célja a lépéseket kell elvégeznie a LucidChart és az Azure AD automatikus kiépítése és leépíti a felhasználói fiókok Azure ad-LucidChart mutatjuk be. 
@@ -97,6 +97,6 @@ Olvassa el az Azure AD-naplók kiépítés módjáról további információkér
 * [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](active-directory-enterprise-apps-manage-provisioning.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Ismerje meg, tekintse át a naplók és jelentések készítése a kiépítés tevékenység](active-directory-saas-provisioning-reporting.md)

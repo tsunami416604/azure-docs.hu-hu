@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: bryanla
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 7a71010567a76569da969db3d53f71535f96f2d0
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.openlocfilehash: 447844d1779c537eb9e336a32575cb68ac9ad9eb
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="faq-and-known-issues-with-managed-service-identity-msi-for-azure-active-directory"></a>Gyakori kérdések és ismert problémákat a felügyelt szolgáltatás Identity (MSI) az Azure Active Directory
 
@@ -57,6 +57,20 @@ Set-AzureRmVMExtension -Name <extension name>  -Type <extension Type>  -Location
 Az elemek magyarázata: 
 - Bővítmény neve és a Windows típusa: ManagedIdentityExtensionForWindows
 - Bővítmény neve és a Linux típusa van: ManagedIdentityExtensionForLinux
+
+### <a name="are-there-rbac-roles-for-user-assigned-identities"></a>Vannak-e az RBAC-szerepkörök felhasználói hozzárendelt identitások?
+igen:
+1. MSI-közreműködői: 
+- A következőket teheti: CRUD a felhasználói identitások. 
+- Nem: A felhasználó identitása az erőforráshoz rendelt rendelhető hozzá. (azaz hozzárendelése az identitás a virtuális gépek)
+2. MSI operátor: 
+- Is: Hozzárendelése egy erőforrást egy hozzárendelt felhasználói azonosító. (azaz hozzárendelése az identitás a virtuális gépek)
+- Nem lehet: CRUD a felhasználói identitások.
+
+Megjegyzés: A beépített közreműködő szerepkört végezhetők el a fent leírt műveleteket: 
+- A felhasználói identitások CRUD
+- Rendelje hozzá a felhasználó identitása az erőforráshoz rendelt. (azaz hozzárendelése az identitás a virtuális gépek)
+
 
 ## <a name="known-issues"></a>Ismert problémák
 

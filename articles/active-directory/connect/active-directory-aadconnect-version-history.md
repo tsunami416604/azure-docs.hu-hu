@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/14/2017
 ms.author: billmath
-ms.openlocfilehash: ff43edc9799670fd90beaef1dbe4db48b2e762e5
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 815d2f289e18a97eff0a05ad1d7dfe4cad1fdfc5
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect: Verziókiadások
 Az Azure Active Directory (Azure AD) csapat rendszeresen frissíti az Azure AD Connect új szolgáltatásait és funkcióit. Nem minden kiegészítéseket célrendszerekhez vonatkoznak.
@@ -82,7 +82,7 @@ A PowerShell-parancsfájl segítségével alkalmazza ezeket a beállításokat e
 Set-ADSyncRestrictedPermissions -ObjectDN <$ObjectDN> -Credential <$Credential>
 ```
 
-Ha 
+Ahol (a(z) 
 
 **$ObjectDN** = engedélyeiket kell megfeszíteni kell az Active Directory-fiókot.
 
@@ -401,7 +401,7 @@ CBool(
     |CertFormat|CertNotAfter|CertPublicKeyOid|
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
     |CertVersion|CertSignatureAlgorithmOid|Válassza ezt:|
-    |CertKeyAlgorithmParams|CertHashString|Ha|
+    |CertKeyAlgorithmParams|CertHashString|Ahol (a(z)|
     |||A következővel:|
 
 * Lehetővé teszi az ügyfeleknek sAMAccountName domainNetBios és a csoport objektumainak domainFQDN, valamint a felhasználói objektumok distinguishedName flow egyéni szinkronizálási szabályok létrehozását a következő sémamódosítások jelentek meg:
@@ -473,7 +473,7 @@ Az Azure AD Connect szinkronizálása
   * Frissített alapértelmezett szinkronizálási szabályt beállítani, hogy nem exportál attribútumok **userCertificate** és **userSMIMECertificate** Ha az attribútumok több mint 15 értékűek.
   * AD-attribútumok **employeeID** és **msExchBypassModerationLink** most már szerepel a szinkronizálási szabály alapértelmezés szerint.
   * AD attribútum **fénykép** szinkronizálási szabály alapértelmezés szerint el lett távolítva.
-  * Hozzáadott **preferredDataLocation** metaverzumséma és AAD-összekötő séma. Az ügyfelek, akik vagy attribútumok frissíti az Azure ad-ben egyéni szinkronizálási szabályok erre is létrehozható. További információk a attribútum található, tekintse át a cikk részt [az Azure AD Connect szinkronizálása: hogyan lehet módosítani az alapértelmezett konfiguráció - PreferredDataLocation szinkronizálásának engedélyezése](active-directory-aadconnectsync-change-the-configuration.md#enable-synchronization-of-preferreddatalocation).
+  * Hozzáadott **preferredDataLocation** metaverzumséma és AAD-összekötő séma. Az ügyfelek, akik vagy attribútumok frissíti az Azure ad-ben egyéni szinkronizálási szabályok erre is létrehozható. 
   * Hozzáadott **userType** metaverzumséma és AAD-összekötő séma. Az ügyfelek, akik vagy attribútumok frissíti az Azure ad-ben egyéni szinkronizálási szabályok erre is létrehozható.
 
 * Az Azure AD Connect mostantól automatikusan lehetővé teszi, hogy a ConsistencyGuid attribútum használata a Forráshorgony attribútumaként a helyszíni Active Directory-objektumok. További, az Azure AD Connect tölti fel az objectGuid attribútum értékét a ConsistencyGuid attribútumot, ha üres. Ez a funkció esetében csak az új telepítési alkalmazható. További információkért erről a szolgáltatásról, tekintse át a cikk részt [az Azure AD Connect: tervezési alapelvek - msDS-ConsistencyGuid használata sourceAnchor](active-directory-aadconnect-design-concepts.md#using-msds-consistencyguid-as-sourceanchor).

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: ebe489b6e0993dad42950acdafac48e662da7f77
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 033d696f0d219fef66b4acd523f28a35afcf9929
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-same-subscription"></a>Hozzon létre egy virtuális hálózati társviszony - különböző üzembe helyezési modellel, ugyanahhoz az előfizetéshez 
 
@@ -30,8 +30,8 @@ Virtuális hálózati társviszony-létesítés létrehozásának lépései elt�
 |Azure üzembehelyezési modell  | Azure-előfizetés  |
 |--------- |---------|
 |[Mindkét erőforrás-kezelő](virtual-network-create-peering.md) |Azonos|
-|[Mindkét erőforrás-kezelő](create-peering-different-subscriptions.md) |Különböző|
-|[Egy erőforrás-kezelő egy klasszikus](create-peering-different-deployment-models-subscriptions.md) |Különböző|
+|[Mindkét erőforrás-kezelő](create-peering-different-subscriptions.md) |Eltérő|
+|[Egy erőforrás-kezelő egy klasszikus](create-peering-different-deployment-models-subscriptions.md) |Eltérő|
 
 Virtuális hálózati társviszony-létesítés nem hozható létre, a klasszikus üzembe helyezési modellben telepített virtuális hálózatok között. Ha mindkét létrehozott virtuális hálózatok csatlakozhat a klasszikus üzembe helyezési modellben van szüksége, használhatja az Azure [VPN-átjáró](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális hálózathoz csatlakozni. 
 
@@ -51,7 +51,7 @@ Használhatja a [Azure-portálon](#portal), az Azure [parancssori felület](#cli
     - **Előfizetés**: Jelölje ki az előfizetését
     - **Erőforráscsoport**: válasszon **hozzon létre új** , és írja be *myResourceGroup*
     - **Hely**: *USA keleti régiója*
-4. Kattintson a **+ új**. Az a **keresése a piactéren** mezőbe írja be *virtuális hálózati*. Kattintson a **virtuális hálózati** amikor megjelenik a keresési eredmények között. 
+4. Kattintson az **+ Új** elemre. Az a **keresése a piactéren** mezőbe írja be *virtuális hálózati*. Kattintson a **virtuális hálózati** amikor megjelenik a keresési eredmények között. 
 5. Az a **virtuális hálózati** panelen válassza **klasszikus** a a **telepítési modell kiválasztása** gombra, majd **létrehozása**.
 6. Az a **virtuális hálózat létrehozása** panelen adja meg, vagy válassza ki a következő beállítások értékeit, majd kattintson **létrehozása**:
     - **Név**: *myVnet2*
@@ -209,7 +209,7 @@ A fiókokat hozhat létre a virtuális hálózati társviszony-létesítés a sz
 |Virtuális hálózat|Üzemi modell|Szerepkör|Engedélyek|
 |---|---|---|---|
 |myVnet1|Resource Manager|[Hálózati közreműködő](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
-| |Klasszikus|[Klasszikus hálózati közreműködő](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|N/A|
+| |Klasszikus|[Klasszikus hálózati közreműködő](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|–|
 |myVnet2|Resource Manager|[Hálózati közreműködő](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/peer|
 ||Klasszikus|[Klasszikus hálózati közreműködő](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|Microsoft.ClassicNetwork/virtualNetworks/peer|
 
@@ -224,7 +224,7 @@ Ez az oktatóanyag befejezése után, előfordulhat, hogy törölni kívánja az
 2. Az a **myResourceGroup** panelen kattintson a **törlése** ikonra.
 3. A törlés megerősítéséhez a a **típus az ERŐFORRÁSCSOPORT neve** adja meg a **myResourceGroup**, és kattintson a **törlése**.
 
-### <a name="delete-cli"></a>Az Azure parancssori felület
+### <a name="delete-cli"></a>Azure CLI
 
 1. Az Azure CLI 2.0 segítségével törölje a virtuális hálózatot (erőforrás-kezelő) a következő paranccsal:
 
@@ -268,9 +268,7 @@ Ez az oktatóanyag befejezése után, előfordulhat, hogy törölni kívánja az
 
 ## <a name="register"></a>A globális virtuális hálózati társviszony-létesítési Preview regisztrálása
 
-Különböző régiókban lévő virtuális hálózatok egyenrangú lehetősége jelenleg előzetes verzió. A funkció régiók (kezdetben MIKROSZEKUNDUM nyugati központi Kanada központi és Velünk nyugati 2) korlátozott számú érhető el. Különböző régiókban virtuális hálózatok közötti létrehozott virtuális hálózati társviszony nem rendelkezhet azonos szintű rendelkezésre állást és megbízhatóságot, társviszony-létesítés ugyanabban a régióban virtuális hálózatok között. A szolgáltatás rendelkezésre állásával és állapotával kapcsolatos legfrissebb értesítésekért tekintse meg az [Azure virtuális hálózati frissítésekkel kapcsolatos](https://azure.microsoft.com/updates/?product=virtual-network) oldalát.
-
-Virtuális hálózatok egyenrangú régiók között, először regisztrálnia kell az előzetes (belül minden partnert kívánt virtuális hálózat szerepel az előfizetés) az alábbi lépések végrehajtásával Azure PowerShell vagy az Azure parancssori felület használatával:
+Az azonos régiókban lévő virtuális hálózatok közötti társviszony kialakítása általánosan elérhető. Virtuális hálózatok különböző régiókban jelenleg előzetes verzióban érhetők társviszony. Lásd: [virtuális hálózati frissítések](https://azure.microsoft.com/en-us/updates/?product=virtual-network) az elérhető régiók. Virtuális hálózatok egyenrangú régiók között, először regisztrálnia kell az előzetes (belül minden partnert kívánt virtuális hálózat szerepel az előfizetés) az alábbi lépések végrehajtásával Azure PowerShell vagy az Azure parancssori felület használatával:
 
 ### <a name="powershell"></a>PowerShell
 
@@ -316,7 +314,7 @@ Virtuális hálózatok egyenrangú régiók között, először regisztrálnia k
 
     Ne hajtsa végre a portál, az Azure parancssori felület, a PowerShell vagy a Resource Manager template szakaszokban, amíg ez a cikk lépéseit a **RegistrationState** kimeneti kapja az előző parancs bevitele után **regisztrált**  mindkét előfizetésekhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Alaposan olvassa el a fontos [virtuális hálózati társviszony-létesítési korlátozások és viselkedéshez](virtual-network-manage-peering.md#requirements-and-constraints) társviszony-létesítés üzemi virtuális hálózat létrehozása előtt használja.
 - További tudnivalók az összes [virtuális hálózati társviszony-létesítési beállítások](virtual-network-manage-peering.md#create-a-peering).

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: manayar
-ms.openlocfilehash: 5a47acab598e113ef7ed968dd3a6429ac3bc1ec3
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 96dc9bc81b8889e2e962c9c2dbf119ee985ec2f1
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="protect-a-multi-tier-sap-netweaver-application-deployment-using-azure-site-recovery"></a>A többrétegű SAP NetWeaver alkalmazástelepítést Azure Site Recovery segítségével védelme
 
@@ -81,7 +81,7 @@ Ha statikus IP-címet használ, az IP-cím azt szeretné, hogy a virtuális gép
 A helyreállítási terv lehetővé teszi, hogy a különböző rétegek egy többrétegű alkalmazást, ezért az alkalmazás konzisztencia fenntartása a feladatátvételi sorrendje. Ismertetett lépéseket követve [Itt](site-recovery-create-recovery-plans.md) többrétegű webalkalmazás esetén a helyreállítási terv létrehozása során.
 
 ### <a name="adding-scripts-to-the-recovery-plan"></a>A helyreállítási terv parancsprogramokat hozzáadása
-Szükség lehet az Azure virtuális gépek feladás egy vagy több feladatátvételi és tesztelési célú feladatátvétel megfelelő működéséhez az alkalmazások bizonyos műveleteket. Automatizálható a feladás egy vagy több feladatátvételi művelet, például a DNS-bejegyzés frissítéséhez, és adja hozzá a megfelelő parancsfájlokat a helyreállítási tervben a kötések és kapcsolatok, módosítása [Ez a cikk](site-recovery-create-recovery-plans.md#add-scripts).
+Szükség lehet az Azure virtuális gépek feladás egy vagy több feladatátvételi és tesztelési célú feladatátvétel megfelelő működéséhez az alkalmazások bizonyos műveleteket. Automatizálható a feladás egy vagy több feladatátvételi művelet, például a DNS-bejegyzés frissítéséhez, és adja hozzá a megfelelő parancsfájlokat a helyreállítási tervben a kötések és kapcsolatok, módosítása [Ez a cikk](site-recovery-how-to-add-vmmscript.md).
 
 ### <a name="dns-update"></a>DNS-frissítési
 Ha a DNS-ben van konfigurálva a DNS dinamikus frissítést, majd a virtuális gépek általában után elindítja az új IP-cím frissítse a DNS-ben. Ha hozzá szeretne adni egy explicit DNS frissíteni a virtuális gépet az új IP-címet, majd adja hozzá ezt a lépést [parancsprogramot a DNS-ben IP frissítéséhez](https://aka.ms/asr-dns-update) a post műveletek a helyreállítási terv csoportok.  
@@ -114,7 +114,7 @@ Hajtsa végre a [Ez az útmutató](site-recovery-failover.md) Ha feladatátvéte
 3.  Kattintson a "Failover".
 4.  Válassza ki a helyreállítási pontot a feladatátvételi folyamat elindításához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A vész-helyreállítási megoldást SAP NetWeaver üzembe helyezése az Azure Site Recovery létrehozásával kapcsolatos további [e tanulmány](http://aka.ms/asr-sap). A tanulmány is ismerteti, amelyek különböző SAP-architektúra javaslatok, támogatott alkalmazások és a Virtuálisgép-típusokon az SAP, az Azure-on, és ismerteti lehetséges tesztelési terveket, a vész-helyreállítási megoldás.
 
 További információ [replikál a többi munkaterhelését](site-recovery-workload.md) Site Recovery segítségével.

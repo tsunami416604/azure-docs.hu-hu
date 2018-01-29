@@ -5,8 +5,7 @@ keywords: "adatok titkosítását, a titkosítási kulcs, a felhő titkosítás"
 services: sql-database
 documentationcenter: 
 author: stevestein
-manager: jhubbard
-editor: cgronlun
+manager: craigg
 ms.assetid: 6ca16644-5969-497b-a413-d28c3b835c9b
 ms.service: sql-database
 ms.custom: security
@@ -16,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: sstein
-ms.openlocfilehash: 4fb189abfaddcf27c8af223773ab0e5fc9dfca14
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 0f26ce26b8b33274291c115ae136d124d79ed349
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-azure-key-vault"></a>Mindig titkosítja: Az SQL-adatbázis bizalmas adatok védelmét, és a titkosítási kulcsok tárolása az Azure Key Vault
 
@@ -48,30 +47,18 @@ Ebben az oktatóanyagban lesz szüksége:
 * [Az Azure PowerShell](/powershell/azure/overview), 1.0-ás vagy újabb verziója. Típus **(Get-Module azure - ListAvailable). Verzió** futnak PowerShell verziójának megtekintéséhez.
 
 ## <a name="enable-your-client-application-to-access-the-sql-database-service"></a>Az ügyfélalkalmazás számára az SQL Database szolgáltatás engedélyezése
-Engedélyeznie kell az ügyfélalkalmazás az SQL Database szolgáltatás elérését a szükséges hitelesítés és az beszerzése a *ClientId* és *titkos* hitelesítéséhez szükséges a a következő kódot az alkalmazás.
+Az ügyfélalkalmazást Azure Active Directory (AAD) alkalmazás beállításával, és másolja az SQL Database szolgáltatás eléréséhez engedélyeznie kell a *Alkalmazásazonosító* és *kulcs* , amelyre szüksége lesz az alkalmazás hitelesítéséhez.
 
-1. Nyissa meg a [a klasszikus Azure portálon](http://manage.windowsazure.com).
-2. Válassza ki **Active Directory** , és kattintson az alkalmazás által használt Active Directory-példányban.
-3. Kattintson a **alkalmazások**, és kattintson a **hozzáadása**.
-4. Adjon meg egy nevet az alkalmazáshoz (például: *myClientApp*) elemre, jelölje be **WEBALKALMAZÁS**, és kattintson a nyílra, a folytatáshoz.
-5. Az a **SIGN-ON URL** és **APP ID URI** adhatja meg egy érvényes URL-címet (például *http://myClientApp*) és a folytatáshoz.
-6. Kattintson a **KONFIGURÁLÁSA**.
-7. Másolás a **ügyfél-azonosító**. (Később szüksége lesz ezt az értéket a kódban.)
-8. A a **kulcsok** szakaszban jelölje be **1 év** a a **válassza ki a duration** legördülő listából. (Fogja másolni a kulcsot, miután menti a 13.)
-9. Görgessen le, majd kattintson a **alkalmazás hozzáadása**.
-10. Hagyja **megjelenítése** beállítása **Microsoft Apps** válassza **Microsoft Azure szolgáltatásfelügyeleti API**. Kattintson a pipa ikonra, a folytatáshoz.
-11. Válassza ki **Azure szolgáltatásfelügyelet eléréséhez...**  a a **delegált engedélyek** legördülő listából.
-12. Kattintson a **SAVE** (Mentés) gombra.
-13. A mentés befejezése után másolja a kulcs értékét a **kulcsok** szakasz. (Később szüksége lesz ezt az értéket a kódban.)
+A beolvasandó a *Alkalmazásazonosító* és *kulcs*, kövesse a [hozzon létre egy Azure Active Directory erőforrásokat elérő alkalmazás és szolgáltatás egyszerű](../azure-resource-manager/resource-group-create-service-principal-portal.md).
 
 ## <a name="create-a-key-vault-to-store-your-keys"></a>Hozzon létre egy kulcstartót a kulcsok tárolására
-Most, hogy az ügyfél alkalmazás van konfigurálva, és az ügyfél-Azonosítóval rendelkezik, akkor hozzon létre egy kulcstartót és a hozzáférési házirend konfigurálása a szolgáltatást, és az alkalmazás számára a tároló kulcsait (mindig titkosított kulcsok). A *létrehozása*, *beolvasása*, *lista*, *bejelentkezési*, *ellenőrizze*, *wrapKey*, és *unwrapKey* engedélyekre szükség, egy új oszlop főkulcsának létrehozásához és az SQL Server Management Studio titkosítási beállításának.
+Most, hogy az ügyfél alkalmazás van konfigurálva, és az alkalmazás azonosítója, akkor hozzon létre egy kulcstartót és a hozzáférési házirend konfigurálása a szolgáltatást, és az alkalmazás számára a tároló kulcsait (mindig titkosított kulcsok). A *létrehozása*, *beolvasása*, *lista*, *bejelentkezési*, *ellenőrizze*, *wrapKey*, és *unwrapKey* engedélyekre szükség, egy új oszlop főkulcsának létrehozásához és az SQL Server Management Studio titkosítási beállításának.
 
 A következő parancsfájl futtatásával gyorsan létrehozhat egy kulcstartót. Ezek a parancsmagok és további információ a létrehozásáról és konfigurálásáról a kulcstároló részletes ismertetése [Ismerkedés az Azure Key Vault](../key-vault/key-vault-get-started.md).
 
     $subscriptionName = '<your Azure subscription name>'
     $userPrincipalName = '<username@domain.com>'
-    $clientId = '<client ID that you copied in step 7 above>'
+    $applicationId = '<application ID from your AAD application>'
     $resourceGroupName = '<resource group name>'
     $location = '<datacenter location>'
     $vaultName = 'AeKeyVault'
@@ -85,7 +72,7 @@ A következő parancsfájl futtatásával gyorsan létrehozhat egy kulcstartót.
     New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $resourceGroupName -Location $location
 
     Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGroupName -PermissionsToKeys create,get,wrapKey,unwrapKey,sign,verify,list -UserPrincipalName $userPrincipalName
-    Set-AzureRmKeyVaultAccessPolicy  -VaultName $vaultName  -ResourceGroupName $resourceGroupName -ServicePrincipalName $clientId -PermissionsToKeys get,wrapKey,unwrapKey,sign,verify,list
+    Set-AzureRmKeyVaultAccessPolicy  -VaultName $vaultName  -ResourceGroupName $resourceGroupName -ServicePrincipalName $applicationId -PermissionsToKeys get,wrapKey,unwrapKey,sign,verify,list
 
 
 
@@ -169,10 +156,10 @@ Ez az oktatóanyag bemutatja, hogyan tárolja a kulcsokat az Azure Key Vault.
 ### <a name="validation"></a>Ellenőrzés
 Most titkosítani az oszlopokat, vagy mentse később futtatni egy PowerShell-parancsfájlt. A jelen oktatóanyag esetében válassza ki a **Befejezés most már továbbléphet** kattintson **következő**.
 
-### <a name="summary"></a>Összefoglalás
+### <a name="summary"></a>Összegzés
 Ellenőrizze, hogy a beállítások helyességét, és kattintson a **Befejezés** mindig titkosítja az a telepítés befejezéséhez.
 
-![Összefoglalás](./media/sql-database-always-encrypted-azure-key-vault/summary.png)
+![Összegzés](./media/sql-database-always-encrypted-azure-key-vault/summary.png)
 
 ### <a name="verify-the-wizards-actions"></a>Ellenőrizze a varázsló műveletek
 A varázsló befejezése után az adatbázis be van állítva mindig titkosítja. A varázsló a következő műveletek végre:
@@ -233,7 +220,7 @@ A következő kód bemutatja, hogyan regisztrálja az Azure Key Vault-szolgálta
 
     static void InitializeAzureKeyVaultProvider()
     {
-       _clientCredential = new ClientCredential(clientId, clientSecret);
+       _clientCredential = new ClientCredential(applicationId, clientKey);
 
        SqlColumnEncryptionAzureKeyVaultProvider azureKeyVaultProvider =
           new SqlColumnEncryptionAzureKeyVaultProvider(GetToken);
@@ -275,8 +262,8 @@ Futtassa az alkalmazást, hogy mindig titkosítja a művelet.
     {
         // Update this line with your Clinic database connection string from the Azure portal.
         static string connectionString = @"<connection string from the portal>";
-        static string clientId = @"<client id from step 7 above>";
-        static string clientSecret = "<key from step 13 above>";
+        static string applicationId = @"<application ID from your AAD application>";
+        static string clientKey = "<key from your AAD application>";
 
 
         static void Main(string[] args)
@@ -399,7 +386,7 @@ Futtassa az alkalmazást, hogy mindig titkosítja a művelet.
         static void InitializeAzureKeyVaultProvider()
         {
 
-            _clientCredential = new ClientCredential(clientId, clientSecret);
+            _clientCredential = new ClientCredential(applicationId, clientKey);
 
             SqlColumnEncryptionAzureKeyVaultProvider azureKeyVaultProvider =
               new SqlColumnEncryptionAzureKeyVaultProvider(GetToken);
@@ -628,7 +615,7 @@ Az egyszerű szöveges adatok eléréséhez használja az SSMS, adja hozzá a *O
     ![Új Konzolalkalmazás](./media/sql-database-always-encrypted-azure-key-vault/ssms-plaintext.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Miután létrehozott egy adatbázist, amely mindig titkosítja használ, érdemes lehet tegye a következőket:
 
 * [Forgassa el, és a kulcsok tisztítása](https://msdn.microsoft.com/library/mt607048.aspx).
@@ -637,7 +624,7 @@ Miután létrehozott egy adatbázist, amely mindig titkosítja használ, érdeme
 ## <a name="related-information"></a>Kapcsolódó információk
 * [Mindig titkosítja (ügyféloldali fejlesztés)](https://msdn.microsoft.com/library/mt147923.aspx)
 * [Transzparens adattitkosítás](https://msdn.microsoft.com/library/bb934049.aspx)
-* [SQL Server-titkosítás](https://msdn.microsoft.com/library/bb510663.aspx)
+* [SQL Server encryption](https://msdn.microsoft.com/library/bb510663.aspx)
 * [Mindig titkosított varázsló](https://msdn.microsoft.com/library/mt459280.aspx)
 * [Mindig titkosított blog](http://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
 

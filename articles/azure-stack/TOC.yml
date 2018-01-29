@@ -31,6 +31,42 @@
       href: azure-stack-tutorial-app-service.md
 - name: Alapelvek
   items:
+    - name: Adatközpont integrációja
+      items:
+        - name: Általános Azure verem integrációs kapcsolatos szempontok
+          href: azure-stack-datacenter-integration.md
+        - name: Az Azure verem telepítési kapcsolat modellje
+          href: azure-stack-connection-models.md
+        - name: Csatlakoztatott központi telepítésével kapcsolatos megfontolások
+          href: azure-stack-connected-deployment.md
+        - name: Leválasztott központi telepítésével kapcsolatos megfontolások
+          href: azure-stack-disconnected-deployment.md
+        - name: Datacenter hálózati integráció
+          items:
+            - name: Hálózati integráció
+              href: azure-stack-network.md
+            - name: Szegély kapcsolat
+              href: azure-stack-border-connectivity.md
+            - name: DNS-integráció
+              href: azure-stack-integrate-dns.md
+            - name: Tűzfal-integráció
+              href: azure-stack-firewall.md
+              items:
+                - name: Végpontok közzététele
+                  href: azure-stack-integrate-endpoints.md
+        - name: Azure verem telepítési PKI-követelmények
+          href: azure-stack-pki-certs.md
+          items:
+            - name: PKI-tanúsítványok lekérése Azure Alkalmazásveremben üzembe
+              href: azure-stack-get-pki-certs.md
+        - name: Identitásintegráció
+          href: azure-stack-integrate-identity.md
+        - name: Az Azure verem regisztrálása
+          href: azure-stack-registration.md
+        - name: Külső figyelése
+          href: azure-stack-integrate-monitor.md
+        - name: Biztonsági integráció
+          href: azure-stack-integrate-security.md
     - name: Karbantartási szabályzat
       href: azure-stack-servicing-policy.md
     - name: A legfontosabb jellemzők és fogalmak
@@ -59,35 +95,6 @@
           href: azure-stack-add-default-image.md
         - name: Tesztelési virtuális gép létrehozása
           href: azure-stack-provision-vm.md
-    - name: Integrált Azure verem rendszerek központi telepítése
-      items:
-        - name: Központi telepítés tervezési szempontok
-          href: azure-stack-deployment-planning.md
-        - name: Telepítési tervezési döntések
-          href: azure-stack-deployment-decisions.md
-        - name: Központi telepítése az Azure-bA csatlakoztatva
-          href: azure-stack-connected-deployment.md
-        - name: Központi telepítése az Azure-ból leválasztása
-          href: azure-stack-disconnected-deployment.md
-        - name: Azure verem telepítési PKI-követelmények
-          href: azure-stack-pki-certs.md
-          items:
-            - name: PKI-tanúsítványok lekérése Azure Alkalmazásveremben üzembe
-              href: azure-stack-get-pki-certs.md
-        - name: Az Azure verem regisztrálása
-          href: azure-stack-registration.md
-    - name: Adatközpont integrációja
-      items:
-        - name: DNS
-          href: azure-stack-integrate-dns.md
-        - name: Identitás
-          href: azure-stack-integrate-identity.md
-        - name: Végpontok közzététele
-          href: azure-stack-integrate-endpoints.md
-        - name: Külső figyelése
-          href: azure-stack-integrate-monitor.md
-        - name: Biztonság
-          href: azure-stack-integrate-security.md
     - name: Kezelés
       items:
         - name: Régiók kezelése
@@ -269,7 +276,7 @@
           href: azure-stack-diagnostics.md
         - name: Az Azure verem érvényesítése
           href: azure-stack-diagnostic-test.md
-        - name: Az Azure Stack fejlesztői készlet ismételt üzembe helyezése
+        - name: Az Azure Stack Development Kit ismételt üzembe helyezése
           href: azure-stack-redeploy.md
 - name: Leírások
   items:

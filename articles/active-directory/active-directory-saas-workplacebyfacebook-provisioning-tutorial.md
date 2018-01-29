@@ -1,5 +1,5 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált munkahelyi által Facebook-on |} Microsoft Docs"
+title: "Oktatóanyag: Által Facebook munkahelyi konfigurálása az automatikus felhasználó-átadási az Azure Active Directoryval |} Microsoft Docs"
 description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a munkahely által Facebook között."
 services: active-directory
 documentationCenter: na
@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2018
+ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 5f1ca40b5ca490644a3af2c9d727026c1a18a2eb
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 15cbaafcd86c576f4789a61ed80c526b6fe705ab
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="tutorial-configuring-workplace-by-facebook-for-user-provisioning"></a>Oktatóanyag: A felhasználók átadása által Facebook munkahelyi konfigurálása
+# <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés által Facebook munkahelyi konfigurálása
 
 Ez az oktatóanyag célja a lépéseket kell elvégeznie a Facebook-on és az Azure AD automatikus kiépítése és leépíti a felhasználói fiókok Azure ad által Facebook munkahelyi munkaterületen mutatjuk be.
 

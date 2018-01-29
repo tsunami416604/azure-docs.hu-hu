@@ -16,11 +16,11 @@ ms.workload: identity
 ms.date: 01/11/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 47b4d70c991bd618ea4ea6e5d2fd1dea86911798
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 028a3f4411e6984b70e0f98c5cf3284e5be1c3b2
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="location-conditions-in-azure-active-directory-conditional-access"></a>Azure Active Directory feltételes hozzáférési feltételek helye 
 
@@ -100,7 +100,7 @@ Amikor konfigurálja a hely feltétel, lehetősége van megkülönböztetésére
 
 ### <a name="any-location"></a>Bármely hely
 
-Alapértelmezés szerint kiválasztásával **bárhova** hatására az összes IP-címet, alkalmazandó egy házirendet, amely azt jelenti, hogy a cím az interneten. Ez a beállítás nem nincs korlátozva elnevezett helyként konfigurált IP-címeket. Ha bejelöli **bárhova**, továbbra is kizárhatja az adott helyeken egy házirend. Például alkalmazhat egy házirendet az összes hely excepts a megbízható helyek hatókörének beállításához az helyekre, kivéve a vállalati hálózathoz.
+Alapértelmezés szerint kiválasztásával **bárhova** hatására az összes IP-címet, alkalmazandó egy házirendet, amely azt jelenti, hogy a cím az interneten. Ez a beállítás nem nincs korlátozva elnevezett helyként konfigurált IP-címeket. Ha bejelöli **bárhova**, továbbra is kizárhatja az adott helyeken egy házirend. Például egy házirendet alkalmazhat hatókörének beállításához az helyekre, kivéve a vállalati hálózat megbízható helyek kivételével az összes hely.
 
 ### <a name="all-trusted-locations"></a>Minden megbízható hely
 

@@ -14,16 +14,16 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 11/28/2017
 ms.author: ruturajd@microsoft.com
-ms.openlocfilehash: af5de1c262bc55b1aa7513ca91b68eb50b44dbb7
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 986c3b62426949f1e4c2009aabbfec2f1130f821
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Azure Automation-runbook hozzáadása a helyreállítási terv
 Ez a cikk azt ismerteti hogyan integrálható az Azure Site Recovery Azure Automation segítséget a helyreállítási terv. A helyreállítási terv lehet levezényelni a Site Recovery védett virtuális gépek helyreállítása. A helyreállítási terv a replikációs másodlagos felhőhöz, és a replikálást az Azure-működik. A helyreállítási terv is segít a helyreállítási **következetesen pontos**, **ismételhető**, és **automatizált**. A rendszer átadja a virtuális gépek Azure-ba, ha az integráció az Azure Automation szolgáltatásban, a helyreállítási terv terjeszti ki. A runbookok, amelyek hatékony automatizálási feladatok végrehajtásához használható.
 
-Ha most ismerkedik az Azure Automation, akkor [regisztráljon](https://azure.microsoft.com/services/automation/) és [mintaparancsfájlok letöltése](https://azure.microsoft.com/documentation/scripts/). További információt, és megtudhatja, miként kell levezényelni a helyreállítási Azure használatával [helyreállítási tervek](https://azure.microsoft.com/blog/?p=166264), lásd: [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/).
+Ha most ismerkedik az Azure Automation, akkor [regisztráljon](https://azure.microsoft.com/services/automation/) és [mintaparancsfájlok letöltése](https://azure.microsoft.com/documentation/scripts/). További információt, és megtudhatja, miként kell levezényelni a helyreállítási Azure használatával [helyreállítási tervek](./site-recovery-create-recovery-plans.md), lásd: [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/).
 
 Ez a cikk azt ismerteti hogyan integrálható az Azure Automation-forgatókönyv be a helyreállítási terv. Példák segítségével, amely korábban a kézi beavatkozás szükséges alapvető feladatok automatizálásához. Azt is ismertetik a többlépéses helyreállítási átalakítása egy kattintással indítható helyreállítási művelet.
 
@@ -99,7 +99,7 @@ Ez a cikk azt ismerteti hogyan integrálható az Azure Automation-forgatókönyv
     | SubscriptionId |Az Azure-előfizetése Azonosítóját, amelyben a virtuális gép létrehozása történt. |
     | RoleName |A helyreállítás alatt álló Azure virtuális gép neve. |
     | CloudServiceName |A Azure felhőalapú szolgáltatás neve, amely alatt a virtuális gép létrehozásának. |
-    | erőforráscsoport-név|A Azure erőforráscsoport-név alapján, amely a virtuális gép létrejött. |
+    | ResourceGroupName|A Azure erőforráscsoport-név alapján, amely a virtuális gép létrejött. |
     | RecoveryPointId|Ha a virtuális Gépet helyre lett állítva a időbélyegzőjét. |
 
 * Győződjön meg arról, hogy az Automation-fiók rendelkezik-e a következő modult:
@@ -256,8 +256,10 @@ Egy másik példa tekintse meg a következő videó. Azt mutatja be helyreállí
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/One-click-failover-of-a-2-tier-WordPress-application-using-Azure-Site-Recovery/player]
 
 
-
 ## <a name="additional-resources"></a>További források
-* [Azure Automation szolgáltatást futtató fiók](../automation/automation-sec-configure-azure-runas-account.md)
+* [Azure Automation szolgáltatást futtató fiók](../automation/automation-create-runas-account.md)
 * [Azure Automation áttekintése](http://msdn.microsoft.com/library/azure/dn643629.aspx "Azure Automation – áttekintés")
 * [Azure Automation-mintaparancsfájlok](http://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=User&f\[0\].Value=SC%20Automation%20Product%20Team&f\[0\].Text=SC%20Automation%20Product%20Team "Azure Automation-mintaparancsfájlok")
+
+## <a name="next-steps"></a>További lépések
+[További](site-recovery-failover.md) feladatátvételek futtatásával kapcsolatos.

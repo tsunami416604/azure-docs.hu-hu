@@ -1,10 +1,10 @@
 ---
-title: "Bevezetés a kapcsolat be Azure hálózati figyelőt |} Microsoft Docs"
-description: "Ezen a lapon a hálózati figyelőt kapcsolat funkció áttekintése"
+title: "Bevezetés az Azure-hálózat megfigyelő kapcsolati hibáinak elhárítása |} Microsoft Docs"
+description: "Ezen a lapon a hálózati figyelőt kapcsolat hibaelhárítási funkció áttekintése"
 services: network-watcher
 documentationcenter: na
 author: jimdial
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.service: network-watcher
 ms.devlang: na
@@ -13,22 +13,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
-ms.openlocfilehash: 16ceef9c923b6a933a5caf752991b466346e0ebc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f8825af71620722065c03a28c93e113876c5aa71
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="introduction-to-connectivity-check-in-azure-network-watcher"></a>Bevezetés az Azure hálózati figyelőt a kapcsolat ellenőrzése
+# <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Bevezetés a kapcsolati hibáinak elhárítása az Azure hálózati figyelőt
 
-A hálózati figyelőt kapcsolat szolgáltatása lehetővé teszi egy közvetlen TCP-kapcsolatot a virtuális gépről a virtuális gép (VM), teljesen minősített tartománynevét (FQDN), URI, ellenőrizze vagy IPv4-címet. Hálózati forgatókönyvek a következők összetett, végrehajtásuk hálózati biztonsági csoportok, tűzfalak, felhasználó által definiált útvonalak és az Azure által biztosított erőforrásokhoz. Összetett konfigurációk ellenőrizze a hibaelhárítási problémák kihívást. Hálózati figyelőt csökkenthető ennyi idő alatt található, és problémák észlelése. A visszaadott eredmények hogy platformot vagy felhasználó konfigurációs probléma okozza-e a egy hálózati probléma betekintést biztosít. Kapcsolat ellenőrizhetők a [PowerShell](network-watcher-connectivity-powershell.md), [Azure CLI](network-watcher-connectivity-cli.md), és [REST API](network-watcher-connectivity-rest.md).
+A kapcsolat hibaelhárítása a hálózati figyelőt szolgáltatása lehetővé teszi egy közvetlen TCP-kapcsolatot a virtuális gépről a virtuális gép (VM), teljesen minősített tartománynevét (FQDN), URI, ellenőrizze vagy IPv4-címet. Hálózati forgatókönyvek a következők összetett, végrehajtásuk hálózati biztonsági csoportok, tűzfalak, felhasználó által definiált útvonalak és az Azure által biztosított erőforrásokhoz. Összetett konfigurációk ellenőrizze a hibaelhárítási problémák kihívást. Hálózati figyelőt csökkenthető ennyi idő alatt található, és problémák észlelése. A visszaadott eredmények hogy platformot vagy felhasználó konfigurációs probléma okozza-e a egy hálózati probléma betekintést biztosít. Kapcsolat ellenőrizhetők a [PowerShell](network-watcher-connectivity-powershell.md), [Azure CLI](network-watcher-connectivity-cli.md), és [REST API](network-watcher-connectivity-rest.md).
 
 > [!IMPORTANT]
-> Kapcsolat ellenőrzése van szükség a virtuálisgép-bővítmény `AzureNetworkWatcherExtension`. A bővítmény telepítése a Windows virtuális gép a Microsoft [a Windows Azure hálózati figyelő ügynök virtuálisgép-bővítmény](../virtual-machines/windows/extensions-nwa.md) és a Linux virtuális gép helyezést [Azure hálózati figyelő ügynök virtuálisgép-bővítmény Linux](../virtual-machines/linux/extensions-nwa.md).
+> Csatlakozási hibáinak elhárítása van szükség a virtuálisgép-bővítmény `AzureNetworkWatcherExtension`. A bővítmény telepítése a Windows virtuális gép a Microsoft [a Windows Azure hálózati figyelő ügynök virtuálisgép-bővítmény](../virtual-machines/windows/extensions-nwa.md) és a Linux virtuális gép helyezést [Azure hálózati figyelő ügynök virtuálisgép-bővítmény Linux](../virtual-machines/linux/extensions-nwa.md).
 
 ## <a name="response"></a>Válasz
 
-Az alábbi táblázat a tulajdonságait, vissza, ha a kapcsolat-ellenőrzés futása befejeződött.
+Az alábbi táblázatban láthatók a Tulajdonságok visszaadott Ha csatlakozási hibáinak elhárítása futása befejeződött.
 
 |Tulajdonság  |Leírás  |
 |---------|---------|
@@ -40,17 +40,17 @@ Az alábbi táblázat a tulajdonságait, vissza, ha a kapcsolat-ellenőrzés fut
 |ProbesFailed     | Az ellenőrzés sikertelen mintavételek menüpontban száma. Maximális érték 100.        |
 |Az ugrásszám     | Ugrás a Ugrás elérési úttal forrás célhelyre.        |
 |[] Az útválasztók. Típusa     | Az erőforrás típusát. A lehetséges értékek: **forrás**, **VirtualAppliance**, **VnetLocal**, és **Internet**.        |
-|[] Az útválasztók. Azonosítója | Az Ugrás egyedi azonosítója.|
+|Hops[].Id | Az Ugrás egyedi azonosítója.|
 |[] Az útválasztók. Cím | Az Ugrás IP-címe.|
-|[] Az útválasztók. ResourceId | Az Ugrás, ha az Ugrás az Azure erőforrás ResourceID. Ha egy internetes erőforrást, van-e a ResourceID **Internet**. |
-|[] Az útválasztók. NextHopIds | A következő ugrás végrehajtott egyedi azonosítója.|
+|Hops[].ResourceId | Az Ugrás, ha az Ugrás az Azure erőforrás ResourceID. Ha egy internetes erőforrást, van-e a ResourceID **Internet**. |
+|Hops[].NextHopIds | A következő ugrás végrehajtott egyedi azonosítója.|
 |[] Az útválasztók. Problémák | Az adott Ugrás a ellenőrzése során felmerült problémákat gyűjteménye. Ha nincs probléma, az érték üres.|
-|[] Az útválasztók. [] Ad ki. Forrás | : Az aktuális Ugrás, ahol probléma lépett fel. Lehetséges értékek:<br/> **Bejövő** -probléma van a hivatkozásra kattintva a jelenlegi Ugrás az előző Ugrás a<br/>**Kimenő** -probléma van a következő Ugrás az aktuális Ugrás az alábbi hivatkozásra<br/>**Helyi** -probléma van az aktuális Ugrás.|
-|[] Az útválasztók. [] Ad ki. Súlyosság: | Az észlelt probléma súlyossága. A lehetséges értékek: **hiba** és **figyelmeztetés**. |
-|[] Az útválasztók. [] Ad ki. Típusa |A probléma található típusa. Lehetséges értékek: <br/>**PROCESSZOR**<br/>**Memória**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
-|[] Az útválasztók. [] Ad ki. A környezetben |A probléma található kapcsolatos részleteket.|
-|[] Az útválasztók. [] Ad ki. [] .key környezetben |A kulcs-érték pár kulcsa vissza.|
-|[] Az útválasztók. [] Ad ki. [] .value környezetben |A kulcs-érték pár értékét adja vissza.|
+|Hops[].Issues[].Origin | : Az aktuális Ugrás, ahol probléma lépett fel. Lehetséges értékek:<br/> **Bejövő** -probléma van a hivatkozásra kattintva a jelenlegi Ugrás az előző Ugrás a<br/>**Kimenő** -probléma van a következő Ugrás az aktuális Ugrás az alábbi hivatkozásra<br/>**Helyi** -probléma van az aktuális Ugrás.|
+|Hops[].Issues[].Severity | Az észlelt probléma súlyossága. A lehetséges értékek: **hiba** és **figyelmeztetés**. |
+|Hops[].Issues[].Type |A probléma található típusa. Lehetséges értékek: <br/>**CPU**<br/>**Memória**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
+|Hops[].Issues[].Context |A probléma található kapcsolatos részleteket.|
+|Hops[].Issues[].Context[].key |A kulcs-érték pár kulcsa vissza.|
+|Hops[].Issues[].Context[].value |A kulcs-érték pár értékét adja vissza.|
 
 Egy példa található egy Ugrás a problémát a következő:
 
@@ -71,7 +71,7 @@ Egy példa található egy Ugrás a problémát a következő:
 ```
 ## <a name="fault-types"></a>Hiba típusa
 
-A kapcsolat ellenőrzése a kapcsolatra vonatkozó hiba típusok adja vissza. A következő táblázat felsorolja a típusú aktuális hibát adott vissza.
+Kapcsolat hibaelhárítása beolvasása tartalék típusok a kapcsolatról. A következő táblázat felsorolja a típusú aktuális hibát adott vissza.
 
 |Típus  |Leírás  |
 |---------|---------|
@@ -82,10 +82,6 @@ A kapcsolat ellenőrzése a kapcsolatra vonatkozó hiba típusok adja vissza. A 
 |NetworkSecurityRule    | Forgalmát blokkolja egy NSG-szabály (szabály visszaadott)        |
 |UserDefinedRoute|Egy felhasználó által definiált vagy rendszerútvonal miatt megszakad a forgalmat. |
 
-### <a name="next-steps"></a>Következő lépések
+### <a name="next-steps"></a>További lépések
 
-Megtudhatja, hogyan ellátogatva erőforrás ellenőrzésére: [ellenőrizze a kapcsolatot az Azure hálózati figyelőt](network-watcher-connectivity-powershell.md).
-
-<!--Image references-->
-[1]: ./media/network-watcher-next-hop-overview/figure1.png
-
+Kapcsolatot hibaelhárítása a [Azure-portálon](network-watcher-connectivity-portal.md), [PowerShell](network-watcher-connectivity-powershell.md), a [Azure CLI](network-watcher-connectivity-cli.md), vagy [REST API](network-watcher-connectivity-rest.md).

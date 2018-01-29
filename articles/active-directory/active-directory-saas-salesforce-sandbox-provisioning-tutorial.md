@@ -1,5 +1,5 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált Salesforce védőfal |} Microsoft Docs"
+title: "Oktatóanyag: Salesforce védőfal konfigurálása az Azure Active Directoryval automatikus felhasználólétesítés |} Microsoft Docs"
 description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a Salesforce védőfal között."
 services: active-directory
 documentationCenter: na
@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: d0efcae50b18dc2626af5510bd47ff36a27ba718
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9ff50ddc2460a94c17b2401f0c8e4ad12c6d23a7
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="tutorial-configuring-salesforce-sandbox-for-automatic-user-provisioning"></a>Oktatóanyag: Salesforce védőfal konfigurálása az automatikus felhasználó létesítése
+# <a name="tutorial-configure-salesforce-sandbox-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés Salesforce védőfal konfigurálása
 
 Ez az oktatóanyag célja a lépéseket kell elvégeznie a Salesforce védőfal és az Azure AD automatikus kiépítése és leépíti a felhasználói fiókok Azure ad-Salesforce védőfal mutatjuk be.
 
@@ -65,7 +65,7 @@ Ez a szakasz célja felvázoló engedélyezése a felhasználók átadása, az A
 
 4. Állítsa be a **kiépítési üzemmódját** való **automatikus**.
 
-    ![Kiépítés](./media/active-directory-saas-salesforce-sandbox-provisioning-tutorial/provisioning.png)
+    ![kiépítés folyamatban](./media/active-directory-saas-salesforce-sandbox-provisioning-tutorial/provisioning.png)
 
 5. Az a **rendszergazdai hitelesítő adataival** területen adja meg a következő konfigurációs beállításokat:
    

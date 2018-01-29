@@ -9,18 +9,18 @@ ms.author: kgremban
 ms.date: 12/04/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 25f4cea1908a0f9bdf387ddfed5f29e6d19bdd20
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 1a35a6adae1eec88b314252ea0e3f2eb86f10c1d
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="create-an-iot-edge-device-that-acts-as-a-transparent-gateway---preview"></a>Hozzon létre egy IoT peremhálózati eszköz, amely átlátszó átjáróként – előzetes
 
 Ez a cikk átlátszó átjáróként IoT peremhálózati eszköz használatára vonatkozó részletes útmutatást. Ez a cikk a többi kifejezés *IoT peremhálózati átjáró* átlátszó átjáróként használt IoT peremhálózati eszköz hivatkozik. Részletes információkat lásd: [hogyan egy IoT-peremhálózati eszköz egy átjáró használható][lnk-edge-as-gateway], ami fogalmi áttekintése. 
 
 >[!NOTE]
->Jelenleg:
+>Currently:
 > * Az átjáró le van választva az IoT-központ, ha az eszközöket az átjáró nem hitelesíthető.
 > * Az IoT-peremeszközök IoT peremhálózati átjáró nem tud kapcsolódni.
 
@@ -61,7 +61,7 @@ Használhatja a Powershell sample és Bash parancsfájlok ismertetett [Hitelesí
 >Célja, hogy ez a minta csak tesztelési célokra. Éles környezetben, tekintse meg [IoT üzembe] [ lnk-iothub-secure-deployment] az Azure IoT készletén az IoT-megoldásból biztonságos, és ennek megfelelően a tanúsítvány kiépítéséhez.
 
 
-1. Az [a Microsoft Azure IoT SDK-k és C-könyvtárakban] klónozza a Githubról:
+1. A Microsoft Azure IoT SDK-k és a szalagtárak klónozza a Githubról C-hez:
 
    ```
    git clone -b modules-preview https://github.com/Azure/azure-iot-sdk-c.git 
@@ -177,7 +177,7 @@ Hozzáfűzésével ebben az esetben a `GatewayHostName` tulajdonság az eszköz 
 
 Ezeket a lépéseket két lehetővé teszik az eszköz csatlakozni az átjáróeszközhöz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Követelmények és eszközök IoT peremhálózati modulok adattárházzal][lnk-module-dev].
 
 [lnk-devicesdk]: ../iot-hub/iot-hub-devguide-sdks.md

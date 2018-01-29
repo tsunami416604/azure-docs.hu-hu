@@ -1,5 +1,5 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált vállalati Dropbox |} Microsoft Docs"
+title: "Oktatóanyag: Dropbox konfigurálása az Azure Active Directoryval automatikus felhasználólétesítés |} Microsoft Docs"
 description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a vállalati Dropbox között."
 services: active-directory
 documentationCenter: na
@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/19/2017
+ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: c41760d60d53dee7be36b2af287cd6755605b708
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ff85b5c20d74bde476416bdd70d5a345f4a6fefb
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="tutorial-configuring-dropbox-for-business-for-automatic-user-provisioning"></a>Oktatóanyag: Üzleti Dropbox konfigurálása automatikus felhasználói történő üzembe helyezéséhez
+# <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>Oktatóanyag: A vállalati Dropbox konfigurálása automatikus a felhasználók átadása
 
 Ez az oktatóanyag célja a lépéseket kell elvégeznie a Dropbox és az Azure AD automatikus kiépítése és leépíti a felhasználói fiókok Azure ad-Dropbox vállalati mutatjuk be.
 
@@ -62,7 +62,7 @@ Ez a szakasz végigvezeti az Azure AD az üzleti a felhasználói fiók kiépít
 
 4. Állítsa be a **kiépítési üzemmódját** való **automatikus**. 
 
-    ![Kiépítés](./media/active-directory-saas-dropboxforbusiness-provisioning-tutorial/provisioning.png)
+    ![kiépítés folyamatban](./media/active-directory-saas-dropboxforbusiness-provisioning-tutorial/provisioning.png)
 
 5. Az a **rendszergazdai hitelesítő adataival** kattintson **engedélyezés**. A Dropbox bejelentkezési párbeszédpanel üzleti egy új böngészőablakban nyílik meg.
 

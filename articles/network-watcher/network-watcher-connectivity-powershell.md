@@ -1,10 +1,10 @@
 ---
-title: "Ellenőrizze a kapcsolatot az Azure hálózati figyelőt - PowerShell |} Microsoft Docs"
-description: "Ez a lap ismerteti, hogyan kapcsolat tesztelése a PowerShell használatával hálózati figyelőt"
+title: "Azure hálózati figyelőt - PowerShell-kapcsolatok hibáinak elhárítása |} Microsoft Docs"
+description: "Ismerje meg, hogyan használható a kapcsolati hibáinak elhárítása az Azure hálózati figyelőt PowerShell-lel képességét."
 services: network-watcher
 documentationcenter: na
 author: jimdial
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.service: network-watcher
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
-ms.openlocfilehash: e3ffaca0eab20c973df4969b22dbf56300d0b1ed
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: cdbce4bde08cbff28b9b7c173a203bf699f9b876
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="check-connectivity-with-azure-network-watcher-using-powershell"></a>Ellenőrizze a kapcsolatot az Azure hálózati figyelőt PowerShell használatával
+# <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>Kapcsolatok hibaelhárítása az Azure hálózati figyelőt PowerShell használatával
 
 > [!div class="op_single_selector"]
 > - [Portal](network-watcher-connectivity-portal.md)
@@ -27,22 +27,19 @@ ms.lasthandoff: 01/19/2018
 > - [CLI 2.0](network-watcher-connectivity-cli.md)
 > - [Azure REST API](network-watcher-connectivity-rest.md)
 
-Megtudhatja, hogyan ellenőrizheti, ha egy közvetlen TCP-kapcsolatot a virtuális gép egy adott végpont is hozható létre kapcsolat használatára.
+Megtudhatja, hogyan használja a kapcsolat ellenőrzése, hogy egy közvetlen TCP-kapcsolatot a virtuális gép egy adott végpont is hozható létre hibaelhárítása.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a cikk feltételezi, hogy rendelkezik-e a következőket:
-
-* Ellenőrizze a kapcsolatot szeretne hálózati figyelőt régióban példánya.
-
-* Ellenőrizze a kapcsolatot a virtuális gépeket.
+* Végezzen hibaelhárítást a kapcsolaton kívánt hálózati figyelőt régióban példánya.
+* Virtuális gépek kapcsolatok hibaelhárításához.
 
 > [!IMPORTANT]
-> Kapcsolat ellenőrzése van szükség a virtuálisgép-bővítmény `AzureNetworkWatcherExtension`. A bővítmény telepítése a Windows virtuális gép a Microsoft [a Windows Azure hálózati figyelő ügynök virtuálisgép-bővítmény](../virtual-machines/windows/extensions-nwa.md) és a Linux virtuális gép helyezést [Azure hálózati figyelő ügynök virtuálisgép-bővítmény Linux](../virtual-machines/linux/extensions-nwa.md).
+> Csatlakozási hibáinak elhárítása van szükség a virtuálisgép-bővítmény `AzureNetworkWatcherExtension`. A bővítmény telepítése a Windows virtuális gép a Microsoft [a Windows Azure hálózati figyelő ügynök virtuálisgép-bővítmény](../virtual-machines/windows/extensions-nwa.md) és a Linux virtuális gép helyezést [Azure hálózati figyelő ügynök virtuálisgép-bővítmény Linux](../virtual-machines/linux/extensions-nwa.md).
 
 ## <a name="check-connectivity-to-a-virtual-machine"></a>Ellenőrizze a kapcsolatot a virtuális géphez
 
-Ebben a példában a cél virtuális gép kapcsolatát ellenőrzi a 80-as porton keresztül. Ebben a példában megköveteli, hogy rendelkezik-e engedélyezve van a régióban, amely tartalmazza a forrás virtuális gép hálózati figyelőt.  
+Ebben a példában a cél virtuális gép kapcsolat ellenőrzi a 80-as porton keresztül. Ebben a példában megköveteli, hogy rendelkezik-e engedélyezve van a régióban, amely tartalmazza a forrás virtuális gép hálózati figyelőt.  
 
 ### <a name="example"></a>Példa
 
@@ -137,7 +134,7 @@ Hops             : [
 
 ## <a name="validate-routing-issues"></a>Útválasztási problémák ellenőrzése
 
-A példában egy virtuális gép és a távoli végpont közötti kapcsolatot ellenőrzi. Ebben a példában megköveteli, hogy rendelkezik-e engedélyezve van a régióban, amely tartalmazza a forrás virtuális gép hálózati figyelőt.  
+Ebben a példában egy virtuális gép és a távoli végpont közötti kapcsolatot ellenőrzi. Ebben a példában megköveteli, hogy rendelkezik-e engedélyezve van a régióban, amely tartalmazza a forrás virtuális gép hálózati figyelőt.  
 
 ### <a name="example"></a>Példa
 
@@ -201,7 +198,7 @@ Hops             : [
 
 ## <a name="check-website-latency"></a>Ellenőrizze a webhely késés
 
-A következő példa a webhely csatlakozási ellenőrzi. Ebben a példában megköveteli, hogy rendelkezik-e engedélyezve van a régióban, amely tartalmazza a forrás virtuális gép hálózati figyelőt.  
+A következő példa a webhely kapcsolatát ellenőrzi. Ebben a példában megköveteli, hogy rendelkezik-e engedélyezve van a régióban, amely tartalmazza a forrás virtuális gép hálózati figyelőt.  
 
 ### <a name="example"></a>Példa
 
@@ -254,7 +251,7 @@ Hops             : [
 
 ## <a name="check-connectivity-to-a-storage-endpoint"></a>Ellenőrizze a kapcsolatot a storage-végponthoz
 
-A következő példa a kapcsolat a virtuális gépen blog tárfiókba ellenőrzi. Ebben a példában megköveteli, hogy rendelkezik-e engedélyezve van a régióban, amely tartalmazza a forrás virtuális gép hálózati figyelőt.  
+A következő példa egy blog tárfiókot és a virtuális gépek közötti kapcsolatot ellenőrzi. Ebben a példában megköveteli, hogy rendelkezik-e engedélyezve van a régióban, amely tartalmazza a forrás virtuális gép hálózati figyelőt.  
 
 ### <a name="example"></a>Példa
 
@@ -276,7 +273,7 @@ Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId
 
 A következő json-ja a példa egy válasz az előző parancsmag futtatását. A cél nem érhető el, mert a `ConnectionStatus` tulajdonság jeleníti meg, mint a **elérhető**.  A tárolási blob és a késleltetés eléréséhez szükséges ugrások száma kapcsolatos részleteket rendelkezésre állnak.
 
-```
+```json
 ConnectionStatus : Reachable
 AvgLatencyInMs   : 1
 MinLatencyInMs   : 0
@@ -307,22 +304,6 @@ Hops             : [
 
 ## <a name="next-steps"></a>További lépések
 
-Keresése, ha bizonyos adatforgalom engedélyezett a virtuális gép kívül vagy belül ellátogatva [ellenőrizze IP folyamat ellenőrzése](network-watcher-check-ip-flow-verify-portal.md)
+Határozza meg, hogy bizonyos forgalom engedélyezett kívül a virtuális gép vagy ellátogatva [ellenőrizze IP folyamata ellenőrizze](network-watcher-check-ip-flow-verify-portal.md).
 
 Ha a forgalmat blokkol, és nem kell, lásd: [hálózati biztonsági csoportok kezelése](../virtual-network/virtual-network-manage-nsg-arm-portal.md) nyomon követheti a hálózati biztonsági csoport és a biztonsági meghatározott szabályokat.
-
-<!-- Image references -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-

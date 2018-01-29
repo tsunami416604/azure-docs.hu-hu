@@ -7,19 +7,19 @@ author: sasubram
 manager: mtillman
 editor: 
 tags: 
-ms.assetid: 
 ms.service: active-directory
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 04/11/2017
-ms.author: sasubram
-ms.openlocfilehash: 6a75fdd6c6f8fc03945be4b7d843777286cc70a7
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: twooley
+ms.reviewer: sasubram
+ms.openlocfilehash: 672eda222a0fa7d0e05dd2fc75ac743ec330463d
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Az Azure Active Directory B2B együttműködés kód és a PowerShell-példák
 
@@ -28,7 +28,7 @@ Akkor is tömeges-külső felhasználók szervezethez fiókjába érkezett megh�
 
 1. Készítse elő a. Fürt megosztott kötetei szolgáltatás fájlt hozzon létre egy új CSV-fájlt, és adjon neki nevet invitations.csv. Ebben a példában a fájlt, C:\Data mentett, és a következő információkat tartalmazza:
   
-  Név                  |  InvitedUserEmailAddress
+  Name (Név)                  |  InvitedUserEmailAddress
   --------------------- | --------------------------
   Gmail B2B meghívott     | b2binvitee@gmail.com
   Outlook B2B meghívott   | b2binvitee@outlook.com
@@ -48,7 +48,7 @@ Akkor is tömeges-külső felhasználók szervezethez fiókjába érkezett megh�
   ```
   $invitations = import-csv C:\data\invitations.csv
   $messageInfo = New-Object Microsoft.Open.MSGraph.Model.InvitedUserMessageInfo
-  $messageInfo.customizedMessageBody = “Hey there! Check this out. I created an invitation through PowerShell”
+  $messageInfo.customizedMessageBody = "Hey there! Check this out. I created an invitation through PowerShell"
   foreach ($email in $invitations) {New-AzureADMSInvitation -InvitedUserEmailAddress $email.InvitedUserEmailAddress -InvitedUserDisplayName $email.Name -InviteRedirectUrl https://wingtiptoysonline-dev-ed.my.salesforce.com -InvitedUserMessageInfo $messageInfo -SendInvitationMessage $true}
   ```
 
@@ -231,7 +231,7 @@ namespace SampleInviteApp
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg az Azure AD B2B együttműködés további cikkeit:
 

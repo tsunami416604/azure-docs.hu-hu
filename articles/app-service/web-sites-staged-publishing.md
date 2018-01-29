@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: b69f6b2190362b970420ba81450978ac9faecd86
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 55c023e8f6b41c17e85ba441f862a7682b2f2599
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Átmeneti környezet az Azure App Service beállítása
 <a name="Overview"></a>
@@ -52,7 +52,7 @@ Futnia kell az alkalmazást a **szabványos** vagy **prémium** ahhoz, hogy enge
    > 
 3. Az a **tárhely hozzáadása** panelen nevezze el a tárhely, és válassza ki, hogy egy másik meglévő üzembe helyezési pont az alkalmazáskonfiguráció klónozását. Kattintson a pipa jelre a folytatáshoz.
    
-    ![Konfigurációs forrás][ConfigurationSource1]
+    ![Beállítások forrása][ConfigurationSource1]
    
     Először ad hozzá egy tárolóhely, csak két lehetősége van: az alapértelmezett tárolóhelyről, éles környezetben, vagy egyáltalán nem klónozott konfigurációs.
     A létrehozást követően több üzembe helyezési ponti, lesz klónozza a nem az éles tárhely beállításait:
@@ -75,7 +75,7 @@ Klónozza a másik üzembe helyezési pont konfigurációja, a klónozott konfig
 * Általános beállítások - keretrendszer verziója, 32 vagy 64 bites, például webes szoftvercsatornák
 * Alkalmazásbeállítások (beállítható úgy, hogy a tárhely anyagot)
 * Kapcsolati karakterláncok (beállítható úgy, hogy a tárhely anyagot)
-* Kezelőleképezések
+* Leírók leképezése
 * Megfigyelési és diagnosztikai beállítások
 * Webjobs-feladatok tartalom
 
@@ -244,7 +244,7 @@ Az Azure parancssori felület platformfüggetlen parancsokat biztosít működik
 * Az Azure App Service az Azure parancssori felületen használható parancsok listáját, hívja meg a `azure site -h`.
 
 > [!NOTE] 
-> A [Azure CLI 2.0](https://github.com/Azure/azure-cli) parancsok a üzembe helyezési, lásd: [az App Service web üzembe helyezési pont](/cli/azure/appservice/web/deployment/slot).
+> A [Azure CLI 2.0](https://github.com/Azure/azure-cli) parancsok a üzembe helyezési, lásd: [az webalkalmazás üzembe helyezési pont](/cli/azure/webapp/deployment/slot).
 
 - - -
 ### <a name="azure-site-list"></a>az Azure webhely-lista
@@ -280,7 +280,7 @@ Az üzembe helyezési pont, amely már nem szükséges törölheti a **azure web
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Az Azure App Service Web App – webes hozzáférés letiltása nem éles üzembe helyezési](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)
 [Bevezetés az App Service Linux](../app-service/containers/app-service-linux-intro.md)
 [Microsoft Azure ingyenes próbaverzió](https://azure.microsoft.com/pricing/free-trial/)

@@ -1,6 +1,6 @@
 ---
-title: "A probléma a alkalmazás-hozzáférés telepítése panel bővítmény |} Microsoft Docs"
-description: "Megoldásával kapcsolatban gyakran hibákat észlelt, amikor a hozzáférési panel bővítmény telepítése"
+title: "Az alkalmazás hozzáférési panel bővítmény - Azure telepítése |} Microsoft Docs"
+description: "A hozzáférési panel bővítmény telepítésekor előforduló gyakori hibák elhárítása"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -14,113 +14,108 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: asteen
 ms.reviewer: japere
-ms.openlocfilehash: 26dc5d5ffce84206450123132c0633c2aa323e9f
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: c49cfad5f362f4402be476066f0e8c0158f20d73
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="problem-installing-the-application-access-panel-browser-extension"></a>A probléma a alkalmazás-hozzáférés telepítése panel bővítmény
+# <a name="install-the-access-panel-browser-extension"></a>A hozzáférési panel bővítmény telepítése
 
-A hozzáférési Panel egy webes portál, amely lehetővé teszi a felhasználó, aki rendelkezik munkahelyi vagy iskolai fiókkal az Azure Active Directory (Azure AD) egy megtekintheti és elindíthatja felhőalapú alkalmazásokhoz az Azure AD-rendszergazda engedélyezte őket a hozzáférést. Azure AD-verziók rendelkező felhasználó az önkiszolgáló csoportkezelési és a hozzáférési Panel az alkalmazás-felügyeleti képességeit használhatja. A hozzáférési Panel elkülönül az Azure-portálon, és nem igényli a felhasználók Azure-előfizetésre.
+A hozzáférési panel egy webes portál. Ha rendelkezik munkahelyi vagy iskolai fiókkal az Azure Active Directory (Azure AD), a hozzáférési panel segítségével megtekintheti, és indítsa el a felhőalapú alkalmazásokat, amelyek egy Azure AD-rendszergazda hozzáférést adott. 
 
-Jelszó-alapú egyszeri bejelentkezést (SSO) használ a hozzáférési panelen, a hozzáférési Panel bővítményt telepíteni kell a felhasználó böngészőben. A bővítmény le automatikusan, ha a felhasználó megadja egy alkalmazás, amely jelszóalapú SSO van konfigurálva.
+Azure AD-verziók használata, önkiszolgáló csoportkezelési és felügyeleti képességeit a hozzáférési panel keresztül is használhatja. 
 
-## <a name="meeting-browser-requirements-for-the-access-panel"></a>A hozzáférési Panel értekezlet böngészőre vonatkozó követelményei
+A hozzáférési panel egy külön Azure-portálról. Azt nem kell Azure-előfizetésre.
 
-A hozzáférési Panel igényel, amely támogatja a JavaScript egy böngészőt, és CSS engedélyezve van. Jelszó-alapú egyszeri bejelentkezést (SSO) használ a hozzáférési panelen, a hozzáférési Panel bővítményt telepíteni kell a felhasználó böngészőben. A bővítmény le automatikusan, ha a felhasználó megadja egy alkalmazás, amely jelszóalapú SSO van konfigurálva.
+## <a name="web-browser-requirements"></a>Webböngészőkre vonatkozó követelmények
 
-Jelszó-alapú egyszeri bejelentkezéshez a végfelhasználó böngészőkkel lehet:
+Legalább a hozzáférési panel igényel, amely támogatja a JavaScript egy böngészőt, és CSS engedélyezve van. Aláírt alkalmazások keresztül jelszó-alapú egyszeri Bejelentkezést a hozzáférési panelen, a böngésző telepítve hozzáférési panel kiterjesztéssel kell rendelkeznie. A bővítmény le automatikusan, amikor kiválaszt egy alkalmazást, amely jelszóalapú SSO van konfigurálva.
 
--   Peremhálózati Windows 10 évforduló Edition vagy újabb 
+Jelszó-alapú egyszeri Bejelentkezést az alábbi böngészők bármelyike használhatja:
 
--   Chrome – A Windows 7 vagy újabb, és MacOS X rendszeren vagy újabb
+- **Peremhálózati**: a Windows 10 évforduló Edition vagy újabb. 
+- **Chrome**: Windows 7 vagy újabb, és MacOS X rendszeren vagy újabb.
+- **Firefox 26.0 vagy újabb**: Windows XP SP2 vagy újabb, és a Mac OS X 10.6 vagy újabb.
+- **Internet Explorer 8, 9, 10, 11**: Windows 7 vagy újabb (korlátozottan támogatja).
 
--   Firefox 26.0 vagy újabb – a Windows XP SP2 vagy újabb, és a Mac OS X 10,6 vagy újabb verzió
+## <a name="install-the-access-panel-browser-extension"></a>A hozzáférési panel bővítmény telepítése
 
--   Internet Explorer 8, 9, 10, 11 – a Windows 7 vagy újabb (korlátozott támogatás)
-## <a name="how-to-install-the-access-panel-browser-extension"></a>A hozzáférési Panel bővítmény telepítése
+A hozzáférési panel bővítmény telepítéséhez tegye a következőket:
 
-A hozzáférési Panel bővítmény telepítéséhez kövesse az alábbi lépéseket:
+1.  A támogatott böngészőkkel egyikét, nyissa meg a [hozzáférési panel](https://myapps.microsoft.com), majd jelentkezzen be az Azure AD-fiókot egy felhasználói.
 
-1.  Nyissa meg a [hozzáférési Panel](https://myapps.microsoft.com) valamelyik támogatott böngészők és való bejelentkezést egy **felhasználói** az Azure AD-ben.
+2.  Válassza ki a jelszó-alapú egyszeri bejelentkezés alkalmazásokhoz.
 
-2.  Kattintson egy **jelszó-SSO alkalmazás** a hozzáférési panelen.
+3.  Amikor a rendszer kéri, válassza ki a **telepítés**.  
+    A letöltés hivatkozásra a kiválasztott böngésző irányítja. 
+    
+4.  Válassza a **Hozzáadás** lehetőséget.
 
-3.  Válassza ki a szoftver telepítéséhez megkérdezi **telepítés**.
+5.  Ha a rendszer felszólítja, vagy **engedélyezése** vagy **engedélyezése** a bővítményt.
 
-4.  A böngésző alapján kell irányítani a letöltési hivatkozás. **Adja hozzá** az bővítményt, hogy a böngészőben.
+6.  Miután a telepítés befejeződött, indítsa újra a böngészőt.
 
-5.  Ha a böngésző, válassza ki vagy **engedélyezése** vagy **engedélyezése** a bővítményt.
+7.  Jelentkezzen be a hozzáférési panelre, és hogy elindíthatja az Egyszeri jelszó alapú alkalmazások megjelenítéséhez.
 
-6.  Korábban telepítve, **indítsa újra a** a böngésző-munkamenetet.
+Emellett letöltheti a bővítmény Chrome és peremhálózati közvetlenül a következő helyekről:
 
-7.  Jelentkezzen be a hozzáférési panelre, és tekintse meg, ha **indítása** a jelszó-egyszeri bejelentkezés alkalmazásokhoz
+- [Chrome-bővítmény](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
+- [Peremhálózati bővítmény](https://www.microsoft.com/store/apps/9pc9sckkzk84) 
 
-Az alábbi közvetlen hivatkozások közül a Chrome és a peremhálózati is letöltheti a bővítmény:
+## <a name="use-the-my-apps-secure-sign-in-extension"></a>Használja a alkalmazásaimat biztonságos bejelentkezési bővítmény
+* Használata saját alkalmazások URL-címe eltérő `https://myapps.microsoft.com`, az alapértelmezett URL-cím konfigurálása a következő tevékenységek végrehajtásával:
+   1. Miközben az *nem* jelentkezve a bővítményt, kattintson a jobb gombbal bővítmény.
+   2. Válassza a menü **saját alkalmazások URL-cím**.
+   3. Válassza ki az alapértelmezett URL-cím.
+   4. Válassza ki a bővítmény ikonra.
+   5. Jelentkezzen be a bővítményt, jelölje be **jelentkezzen be a kezdéshez**.
 
--   [Chrome hozzáférési Panel bővítmény](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
+* Jelentkezzen be az alkalmazások számára közvetlenül a böngészőből, tegye a következőket:
+   1. A bővítmény telepítése után jelentkezzen be az kiválasztásával **jelentkezzen be a kezdéshez**.
+   2. Jelentkezzen be az alkalmazás és a bejelentkezési URL-CÍMÉT.  
+       A bejelentkezési URL-címet az általában az URL-CÍMÉT, amely megjeleníti a bejelentkezési képernyőt.
+      A bővítmény kell módosította az állapotát, és jelzi, hogy rendelkezésre áll-e jelszót.
+   3. Jelentkezzen be, válassza a kiterjesztés ikonra.
 
--   [Peremhálózati hozzáférési Panel bővítmény](https://www.microsoft.com/store/apps/9pc9sckkzk84) 
-
-## <a name="how-do-i-use-the-my-apps-secure-sign-in-extension"></a>A személyes alkalmazások biztonságos bejelentkezési bővítmény használata?
-A bővítmény saját alkalmazások alapértelmezett URL-Címének módosítása
-
-Egy másik saját alkalmazások URL-címet mint https://myapps.microsoft.com használata majd konfigurálnia kell az alapértelmezett URL-cím, ha az alábbi lépéseket:
-1. Amíg nem írta be a bővítmény **kattintson a jobb gombbal** a bővítmény ikonra.
-2. Kattintson a **válassza ki a saját alkalmazások URL-cím** a menüből.
-3. **Válassza ki** az alapértelmezett URL-cím.
-4. Kattintson a bővítmény ikonra.
-5. Jelentkezzen be a bővítmény kiválasztásával **jelentkezzen be a kezdéshez**.
-
-Jelentkezzen be közvetlenül a böngészőből az alkalmazásba
-1. A bővítmény bejelentkezés kiválasztásával a bővítmény telepítését követően **jelentkezzen be a kezdéshez**.
-2. Keresse meg a **sign-on URL-cím** az alkalmazást szeretne bejelentkezni, és ezt az általában az URL-CÍMÉT, amely a bejelentkezési űrlap jeleníti meg.
-3. A bővítmény kell módosította az állapotát, és lehetővé teszik, hogy tudja, hogy a jelszó érhető el, kattintson a a **bővítmény ikon** való bejelentkezéshez.
-
-Indítsa el az alkalmazást, a bővítmény
-1. A bővítmény bejelentkezés kiválasztásával a bővítmény telepítését követően **jelentkezzen be a kezdéshez**.
-2. Kattintson a bővítmény ikonra kattintva nyissa meg a **menü**.
-3. **Keresési** a saját alkalmazások portálon elérhető alkalmazás.
-4. Kattintson a az alkalmazásból a **keresési eredmények** elindításához.
-5. Elindítja az utolsó három alkalmazásokat is megjelenik a **legutóbbi** helyi listája
+* Az alkalmazás indításához a bővítményből származó, tegye a következőket:
+   1. A bővítmény telepítése után jelentkezzen be az kiválasztásával **jelentkezzen be a kezdéshez**.
+   2. Válassza ki a bővítmény ikonra a menü megnyitásához.
+   3. Keresse meg a személyes alkalmazások portálon elérhető alkalmazás.
+   4. A keresési eredmények listájában válassza ki az alkalmazást.  
+       Már használta az utolsó három alkalmazások megjelennek a **legutóbbi** helyi listát.
 
 > [!NOTE]
-> A beállítások csak az él, Chrome, Firefox érhetők el.
+> Az előző beállítások csak él, Chrome és Firefox érhetők el.
 
-## <a name="setting-up-a-group-policy-for-internet-explorer"></a>A csoportházirend beállítása az Internet Explorerben
+## <a name="set-up-a-group-policy-for-internet-explorer"></a>A csoportházirend beállítása az Internet Explorerben
 
-A csoportházirend lehetővé tevő távoli telepítését a felhasználók gépeken az Internet Explorer a hozzáférési Panel bővítmény beállítása.
+Olyan csoportházirenddel, amely lehetővé teszi a távoli telepítést a hozzáférési panel bővítményét az Internet Explorer a felhasználók gépeken állíthat be.
 
-Az Előfeltételek a következők:
+A csoportházirend beállítása előtt győződjön meg arról, hogy:
 
 -   Ezzel beállította [Active Directory tartományi szolgáltatások](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx), és a felhasználók gépek csatlakozott a tartományhoz.
 
--   A csoportházirend-objektum (GPO) szerkesztése "Beállítások módosítása" engedéllyel kell rendelkeznie. Alapértelmezés szerint a következő biztonsági csoportok tagjai ezzel az engedéllyel rendelkeznek: a tartományi rendszergazdák, a vállalati rendszergazdák és a Csoportházirend-létrehozó tulajdonosok. [További információk](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx).
+-   A csoportházirend-objektum (GPO) szerkesztéséhez rendelkeznie kell *beállításainak szerkesztése* engedélyek. Alapértelmezés szerint ezt az engedélyt a következő biztonsági csoportok tagjai: a tartományi rendszergazdák, a vállalati rendszergazdák és a Csoportházirend-létrehozó tulajdonosok.
 
-Az útmutató bevezeti Önt [a hozzáférési Panel bővítmény telepítése csoportházirend használatával az Internet Explorer](active-directory-saas-ie-group-policy.md) részletes útmutatást a csoportházirend konfigurálásához, és telepítheti azt felhasználók számára.
+A csoportházirend konfigurálásához, és telepíti azokat a felhasználók számára vonatkozó részletes utasításokért lásd: [központi telepítése a hozzáférési panel bővítmény csoportházirend használatával az Internet Explorer](active-directory-saas-ie-group-policy.md).
 
-## <a name="troubleshoot-the-access-panel-extension-in-internet-explorer"></a>A hozzáférési Panel bővítményét az Internet Explorer hibaelhárítása
+## <a name="troubleshoot-the-access-panel-extension-in-internet-explorer"></a>A hozzáférési panel bővítményét az Internet Explorer hibaelhárítása
 
-Kövesse a [hibaelhárítása a hozzáférési Panel bővítményét az Internet Explorer](active-directory-saas-ie-troubleshooting.md) útmutatót a hozzáféréshez olyan diagnosztikai eszköz és részletes útmutatást tartalmaz az a bővítmény konfigurálása az Internet Explorer.
+A diagnosztikai eszköz és az Internet Explorer a bővítmény konfigurálásával kapcsolatos információkat a hozzáférést, lásd: [hibaelhárítása a hozzáférési panel bővítményét az Internet Explorer](active-directory-saas-ie-troubleshooting.md).
 
 > [!NOTE]
-> Internet Explorer korlátozottan támogatja a, és többé nem kap új szoftverfrissítéseket. Peremhálózati a javasolt böngésző.
+> Az Internet Explorer korlátozottan támogatja a, és többé nem kap új szoftverfrissítéseket. Peremhálózati a javasolt böngésző.
 
-## <a name="if-these-troubleshooting-steps-do-not-resolve-the-issue"></a>Ha ezek a hibaelhárítási lépéseket nem oldja meg a problémát
+## <a name="if-the-preceding-steps-do-not-resolve-the-issue"></a>Ha az előző lépések nem megoldani a problémát
 
-támogatási jegy megnyitása a következő információkat, ha rendelkezésre áll:
+Támogatási jegy megnyitása a következő információkat, amennyiben az rendelkezésre áll:
 
 -   Megfelelési hiba azonosítója
-
 -   Egyszerű felhasználónév (felhasználó e-mail címe)
-
--   A TenantID
-
+-   TenantID
 -   Böngésző típusa
-
--   Időzóna és idő/időkeretre során hiba történik.
-
+-   Időzóna és az idő vagy időkereteket, ha a hiba történt
 -   Fiddler nyomkövetések
 
 ## <a name="next-steps"></a>További lépések

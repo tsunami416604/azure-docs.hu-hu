@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 6febd3f12248a96f54415a91fcf0513ef7412e78
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 7ee5a720b12152c27a96ee18f1b11e5fc03a531a
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="derive-column-by-example-transformation"></a>Példa átalakítással oszlop származtatni
 
@@ -68,6 +68,10 @@ A speciális módot adhat hozzá minden sor egy példa sorként ehhez kattintson
 
 Felhasználó válthat a **alapvető mód** és a **Speciális üzemmód** átalakítási-szerkesztőben hivatkozásokra kattintva.
 
+### <a name="transform-editor-send-feedback"></a>Átalakítás szerkesztő: visszajelzés küldése
+
+Kattintson a a **visszajelzés küldése** hivatkozás megnyílik a **visszajelzés** nyújtott előre feltöltve a példák felhasználói Megjegyzések mezőbe párbeszédpanel megnyitása. Felhasználói tekintse át a Megjegyzések mezőbe tartalmát és további részleteket, és segítsen megérteni a problémát. Ha a felhasználó nem szeretné adatok megosztása a Microsofttal, felhasználói való kattintás előtt törölje a előfeltöltött példaadatokat a **visszajelzés küldése** gombra. 
+
 ### <a name="editing-existing-transformation"></a>Meglévő átalakítása szerkesztése
 
 A felhasználó már meglévő **Célosztályából oszlop szerint példa** kiválasztásával átalakítási **szerkesztése** átalakítása lépés lehetőséget. Kattintson a **szerkesztése** a átalakítási megnyitása a **Speciális üzemmód**, és minden a példa, amelyeket az átalakítás létrehozása során.
@@ -85,16 +89,16 @@ Példák, amelyek lemezre van szükség ebben az esetben száma: 2. régiója
 
 |Input (Bemenet)|Kimenet|
 |:-----|:-----|
-|C:\Python35\Tools\pynche\TypeinViewer.PY|**TypeinViewer.py**|
+|C:\Python35\Tools\pynche\TypeinViewer.py|**TypeinViewer.py**|
 |C:\Python35\Tools\pynche\webcolors.txt|webcolors.txt|
 |C:\Python35\Tools\pynche\websafe.txt|websafe.txt|
-|C:\Python35\Tools\pynche\X\rgb.txt|RGB.txt|
+|C:\Python35\Tools\pynche\X\rgb.txt|rgb.txt|
 |C:\Python35\Tools\pynche\X\xlicense.txt|xlicense.txt|
-|C:\Python35\Tools\Scripts\2to3.PY|2to3.PY|
-|C:\Python35\Tools\Scripts\analyze_dxp.PY|**analyze_dxp.PY**|
-|C:\Python35\Tools\Scripts\byext.PY|byext.PY|
-|C:\Python35\Tools\Scripts\byteyears.PY|byteyears.PY|
-|C:\Python35\Tools\Scripts\checkappend.PY|checkappend.PY|
+|C:\Python35\Tools\Scripts\2to3.py|2to3.PY|
+|C:\Python35\Tools\Scripts\analyze_dxp.py|**analyze_dxp.py**|
+|C:\Python35\Tools\Scripts\byext.py|byext.PY|
+|C:\Python35\Tools\Scripts\byteyears.py|byteyears.PY|
+|C:\Python35\Tools\Scripts\checkappend.py|checkappend.PY|
 
 ### <a name="s2-case-manipulation-during-string-extraction"></a>S2. Nagybetűk adatkezelési karakterlánc kibontási során
 
@@ -139,21 +143,21 @@ Példák, amelyek lemezre van szükség ebben az esetben száma: 1
 
 |Utónév|Középső kezdeti|Vezetéknév|Kimenet|
 |:-----|:-----|:-----|:-----|
-|Laquanda||Lohmann|Laquanda·· Lohmann|
-|Claudio|A|Csillapításához|**Claudio· A· Csillapításához**|
-|Sarah-Jane|S|Smith|Sarah-Jane· S· Smith|
+|Laquanda||Lohmann|Laquanda··Lohmann|
+|Claudio|A|Csillapításához|**Claudio·A·Chew**|
+|Sarah-Jane|S|Smith|Sarah-Jane·S·Smith|
 |Brandi||Blumenthal|Brandi·· Blumenthal|
-|Jesusita|R|Út|Jesusita· R· Út|
-|Hermina||Hults|Hermina·· Hults|
-|Anna-Marie|W|János|Anna-Marie· W· János|
+|Jesusita|R|Út|Jesusita·R·Journey|
+|Hermina||Hults|Hermina··Hults|
+|Anne-Marie|W|János|Anne-Marie·W·Jones|
 |Rico||Ropp|Rico·· Ropp|
-|Lauren-május||Fullmer|Lauren-May·· Fullmer|
-|Marc|T|Maine|Marc· T· Maine|
-|Angie||Adelman|Angie·· Adelman|
-|John-Paul||Smith|John-Paul·· Smith|
-|Szám|W|Staller|Song· W· Staller|
-|Jill||Jefferies|Jill·· Jefferies|
-|Ruby-türelmi idő|M|Simmons|Ruby-Grace· M · Simmons|
+|Lauren-May||Fullmer|Lauren-May··Fullmer|
+|Marc|T|Maine|Marc·T·Maine|
+|Angie||Adelman|Angie··Adelman|
+|John-Paul||Smith|John-Paul··Smith|
+|Szám|W|Staller|Song·W·Staller|
+|Jill||Jefferies|Jill··Jefferies|
+|Ruby-Grace|M|Simmons|Ruby-Grace·M·Simmons|
 
 ### <a name="s5-generating-initials"></a>S5. Előállítása monogramja
 
@@ -164,18 +168,18 @@ Példák, amelyek lemezre van szükség ebben az esetben száma: 2. régiója
 |Laquanda Lohmann|**L.L.**|
 |Claudio csillapításához|C.C.|
 |Sarah-Jane Smith|S.S.|
-|Brandi Blumenthal|B.B.1|
+|Brandi Blumenthal|B.B.|
 |Jesusita út|J.J.|
-|Hermina Hults|H. H.|
+|Hermina Hults|H.H.|
 |Anna-Marie János|A.J.|
 |Rico Ropp|R.R.|
-|Lauren-előfordulhat, hogy Fullmer|L. F.|
-|Marc Maine|M. M.|
+|Lauren-előfordulhat, hogy Fullmer|L.F.|
+|Marc Maine|M.M.|
 |Angie Adelman|A.A.|
 |John-Paul Smith|**J.S.**|
 |Dal Staller|S.S.|
 |Jill Jefferies|J.J.|
-|Ruby-türelmi Simmons|R.S.|
+|Ruby-Grace Simmons|R.S.|
 
 
 ### <a name="s6-mapping-constant-values"></a>S6. Állandó értékek leképezése
@@ -286,28 +290,28 @@ Példák, amelyek lemezre van szükség ebben az esetben száma: 1
 
 Ezek a részek különböző által-példa átalakítások használata adatok ugyanazokat a könyvtárban találhatók. A félkövér betűvel írott karakterláncok képviselnek a példák, amelyek a saját megfelelő átalakításában lett megadva.
 
-|DateTime|milyen napra esik|Dátum|Hónap|év|Óra|perc|második|
+|DateTime|milyen napra esik|Dátum|Hónap|év|Óra|Perc|Második|
 |-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|
 |05:54:18 31-Jan-2031|**Fri**|**31**|**Jan**|**2031**|**5**|**54**|**18**|
 |13:32:01 17-Jan-1990|Sze|17|jan.|1990|13|32|01|
-|05:36:07 14-Feb-2034|K|14|feb.|2034|5|36|07|
-|13:16:16 14-gyel-2002|Cs|14|már.|2002|13|16|16|
-|05:44:43 21-Jan-1985.|H|21|jan.|1985|5|44|**43**|
+|14-Feb-2034 05:36:07|K|14|feb.|2034|5|36|07|
+|14-Mar-2002 13:16:16|Cs|14|már.|2002|13|16|16|
+|21-Jan-1985 05:44:43|H|21|jan.|1985|5|44|**43**|
 |01:11:56 16-gyel-1985.|P|16|aug.|1985|1|11|56|
-|18:36:29 20-Dec-2033|K|20|dec.|2033|18|36|29|
-|10:21:59 16-július-1984|H|16|júl.|1984|10|21|59|
-|A 2038 január 13 10:59:36|Sze|13|jan.|2038|10|59|36|
+|20-Dec-2033 18:36:29|K|20|dec.|2033|18|36|29|
+|16-Jul-1984 10:21:59|H|16|júl.|1984|10|21|59|
+|13-Jan-2038 10:59:36|Sze|13|jan.|2038|10|59|36|
 |15:13:54 14-gyel-1982|Szo|14|aug.|1982|15|13|54|
-|08:18:08 22-november-2030|P|22|nov.|2030|8|18|08|
-|08:42:58 21-Oct-1997|K|21|okt.|1997|8|42|58|
-|14:19:15 28-november-2006|K|28|nov.|2006|14|19|15|
-|04:59:45 29-6%/4!a-2031|K|29|ápr.|2031|4|59|45|
+|22-Nov-2030 08:18:08|P|22|nov.|2030|8|18|08|
+|21-Oct-1997 08:42:58|K|21|okt.|1997|8|42|58|
+|28-Nov-2006 14:19:15|K|28|nov.|2006|14|19|15|
+|29-Apr-2031 04:59:45|K|29|ápr.|2031|4|59|45|
 |29-Jan-2032 02:38:36|Cs|29|jan.|2032|2|38|36|
 |15:31:52 11-előfordulhat, hogy-2028|Cs|11|Május|2028|15|31|52|
-|12:45:39 15-július-1977.|P|15|júl.|1977|12|45|39|
-|05:55:41 27-Jan-2029|Szo|27|jan.|2029|5|55|41|
-|10:17:49 03-gyel-2024|V|3|már.|2024|10|17|49|
-|00:23:13 14-6%/4!a-2010|Sze|14|ápr.|2010|0|23|13|
+|15-Jul-1977 12:45:39|P|15|júl.|1977|12|45|39|
+|27-Jan-2029 05:55:41|Szo|27|jan.|2029|5|55|41|
+|03-Mar-2024 10:17:49|V|3|már.|2024|10|17|49|
+|14-Apr-2010 00:23:13|Sze|14|ápr.|2010|0|23|13|
 
 ### <a name="d2-formatting-dates"></a>D2. A dátumok formázásához
 
@@ -315,54 +319,54 @@ Ezek dátum formattings volt kész adatokat ugyanazokat a különböző által-p
 
 |DateTime|Format1|Format2|Format3|Format4|Format5|
 |-----:|-----:|-----:|-----:|-----:|-----:|
-|05:54:18 31-Jan-2031|**1/31/2031**|**2031. január 31., péntek**|**01312031 5:54**|**31/1/2031 REGGEL 5:54**|**1. KÉRDÉS 2031**|
-|13:32:01 17-Jan-1990|1/17/1990|1990. január 17., szerda|01171990 13:32|17/1/1990 1:32 PM|1. KÉRDÉS 1990.|
-|05:36:07 14-Feb-2034|2/14/2034|2034. február 14., kedd|02142034 5:36|14/2/2034 REGGEL 5:36|1. KÉRDÉS 2034
-|13:16:16 14-gyel-2002|3/14/2002|2002. március 14., csütörtök|03142002 13:16|14/3/2002 1:16 PM|1. KÉRDÉS 2002
-|05:44:43 21-Jan-1985.|1/21/1985|1985. január 21., hétfő|01211985 5:44|21/1/1985 REGGEL 5:44|1. KÉRDÉS 1985.
-|01:11:56 16-gyel-1985.|8/16/1985|1985. augusztus 16., péntek|08161985 1:11|16/8/1985 13:11:00|3. NEGYEDÉVÉBEN 1985.
-|18:36:29 20-Dec-2033|12/20/2033|2033. December 20., kedd|12202033 18:36|20/12/2033 6:36 DU|4. KÉRDÉS 2033
-|10:21:59 16-július-1984|7/16/1984|Hétfőtől, 16, 1984. július|07161984 10:21|16/7/1984 10:21 DE|3. NEGYEDÉVÉBEN 1984.
-|A 2038 január 13 10:59:36|1/13/2038|2038. január 13., szerda|01132038 10:59|13/1/2038 10:59 ÓRA|1. KÉRDÉS 2038
-|15:13:54 14-gyel-1982|8/14/1982|1982. augusztus 14., szombat|08141982 15:13|14/8/1982 DU. 3:13|3. NEGYEDÉVÉBEN 1982.
-|08:18:08 22-november-2030|11/22/2030|2030. November 22., péntek|11222030 8:18|22/11/2030 8:18 ÓRA|4. KÉRDÉS 2030
-|08:42:58 21-Oct-1997|10/21/1997|1997. október 21., kedd|10211997 8:42|21/10/1997 REGGEL 8:42|4. KÉRDÉS 1997.
-|14:19:15 28-november-2006|11/28/2006|2006. November 28., kedd|11282006 14:19|2006/28/11 2:19 PM|4. KÉRDÉS 2006
-|04:59:45 29-6%/4!a-2031|4/29/2031|2031. április 29., kedd|04292031 4:59|29/4/2031 4:59 ÓRA|2. KÉRDÉS 2031
-|29-Jan-2032 02:38:36|1/29/2032|2032. január 29., csütörtök|01292032 2:38|29/1/2032 REGGEL 2:38|1. KÉRDÉS 2032
-|15:31:52 11-előfordulhat, hogy-2028|5/11/2028|2028. május 11., csütörtök|05112028 15:31|11/5/2028 DU. 3:31|2. KÉRDÉS 2028
-|12:45:39 15-július-1977.|7/15/1977|1977. július 15., péntek|07151977 12:45|15/7/1977 12:45:00|3. NEGYEDÉVÉBEN 1977.
-|05:55:41 27-Jan-2029|1/27/2029|2029. január 27., szombat|01272029 5:55|27/1/2029 REGGEL 5:55|1. KÉRDÉS 2029
-|10:17:49 03-gyel-2024|3/3/2024|2024. március 3., vasárnap|03032024 10:17|3/3/2024 10:17-KOR|2024 1.
-|00:23:13 14-6%/4!a-2010|4/14/2010|2010. április 14., szerda|04142010 0:23|14/4/2010 12:23 ÓRA|2. KÉRDÉS 2010
+|05:54:18 31-Jan-2031|**1/31/2031**|**2031. január 31., péntek**|**01312031 5:54**|**31/1/2031 REGGEL 5:54**|**Q1 2031**|
+|13:32:01 17-Jan-1990|1/17/1990|1990. január 17., szerda|01171990 13:32|17/1/1990 1:32 PM|Q1 1990|
+|14-Feb-2034 05:36:07|2/14/2034|2034. február 14., kedd|02142034 5:36|14/2/2034 REGGEL 5:36|Q1 2034
+|14-Mar-2002 13:16:16|3/14/2002|2002. március 14., csütörtök|03142002 13:16|14/3/2002 1:16 PM|Q1 2002
+|21-Jan-1985 05:44:43|1/21/1985|1985. január 21., hétfő|01211985 5:44|21/1/1985 REGGEL 5:44|Q1 1985
+|01:11:56 16-gyel-1985.|8/16/1985|1985. augusztus 16., péntek|08161985 1:11|16/8/1985 13:11:00|Q3 1985
+|20-Dec-2033 18:36:29|12/20/2033|2033. December 20., kedd|12202033 18:36|20/12/2033 6:36 DU|Q4 2033
+|16-Jul-1984 10:21:59|7/16/1984|Hétfőtől, 16, 1984. július|07161984 10:21|16/7/1984 10:21 DE|Q3 1984
+|13-Jan-2038 10:59:36|1/13/2038|2038. január 13., szerda|01132038 10:59|13/1/2038 10:59 ÓRA|Q1 2038
+|15:13:54 14-gyel-1982|8/14/1982|1982. augusztus 14., szombat|08141982 15:13|14/8/1982 DU. 3:13|Q3 1982
+|22-Nov-2030 08:18:08|11/22/2030|2030. November 22., péntek|11222030 8:18|22/11/2030 8:18 ÓRA|Q4 2030
+|21-Oct-1997 08:42:58|10/21/1997|1997. október 21., kedd|10211997 8:42|21/10/1997 REGGEL 8:42|Q4 1997
+|28-Nov-2006 14:19:15|11/28/2006|2006. November 28., kedd|11282006 14:19|2006/28/11 2:19 PM|Q4 2006
+|29-Apr-2031 04:59:45|4/29/2031|2031. április 29., kedd|04292031 4:59|29/4/2031 4:59 ÓRA|Q2 2031
+|29-Jan-2032 02:38:36|1/29/2032|2032. január 29., csütörtök|01292032 2:38|29/1/2032 REGGEL 2:38|Q1 2032
+|15:31:52 11-előfordulhat, hogy-2028|5/11/2028|2028. május 11., csütörtök|05112028 15:31|11/5/2028 DU. 3:31|Q2 2028
+|15-Jul-1977 12:45:39|7/15/1977|1977. július 15., péntek|07151977 12:45|15/7/1977 12:45:00|Q3 1977
+|27-Jan-2029 05:55:41|1/27/2029|2029. január 27., szombat|01272029 5:55|27/1/2029 REGGEL 5:55|Q1 2029
+|03-Mar-2024 10:17:49|3/3/2024|2024. március 3., vasárnap|03032024 10:17|3/3/2024 10:17-KOR|Q1 2024
+|14-Apr-2010 00:23:13|4/14/2010|2010. április 14., szerda|04142010 0:23|14/4/2010 12:23 ÓRA|Q2 2010
 
 
 ### <a name="d3-mapping-time-to-time-periods"></a>D3. Az időszakok idő leképezése
 
 Ezen időszak rendelése időpontok volt kész adatokat ugyanazokat a különböző által-példa átalakítások használata. A félkövér betűvel írott karakterláncok képviselnek a példák, amelyek a saját megfelelő átalakításában lett megadva.
 
-|DateTime|Period(seconds)|Period(Minutes)|Időtartam (két óra)|Időtartam (30 perc)|
+|DateTime|Period(Seconds)|Period(Minutes)|Időtartam (két óra)|Period(30 Minutes)|
 |-----:|-----:|-----:|-----:|-----:|
-|05:54:18 31-Jan-2031|**0-20**|**45-60**|**DE 5 AM.**|**5:30-6:00**|
-|13:32:01 17-Jan-1990|**0-20**|30-45|DU. 1-3 PM|13:30-14:00|
-|05:36:07 14-Feb-2034|0-20|30-45|DE 5 AM.|5:30-6:00|
-|13:16:16 14-gyel-2002|0-20|15-30|DU. 1-3 PM|13:00-13:30|
-|05:44:43 21-Jan-1985.|40-60|30-45|DE 5 AM.|5:30-6:00|
-|01:11:56 16-gyel-1985.|40-60|0-15|13: 00 - 3 DE|1:00-1:30|
-|18:36:29 20-Dec-2033|20-40|30-45|DÉLUTÁN 5 ÓRA - 7 PM|18:30-19:00|
-|10:21:59 16-július-1984|40-60|15-30|REGGEL 9 – DE|10:00-10:30|
-|A 2038 január 13 10:59:36|20-40|45-60|REGGEL 9 – DE|10:30-11:00|
-|15:13:54 14-gyel-1982|40-60|0-15|DU. 3-5 ÓRA|15:00-15:30|
-|08:18:08 22-november-2030|0-20|15-30|DE. – 9 ÓRA|8:00-8:30|
-|08:42:58 21-Oct-1997|40-60|30-45|DE. – 9 ÓRA|8:30-9:00|
-|14:19:15 28-november-2006|0-20|15-30|DU. 1-3 PM|14:00-14:30|
-|04:59:45 29-6%/4!a-2031|40-60|45-60|DE 3-5 ÓRA|4:30-5:00|
-|29-Jan-2032 02:38:36|20-40|30-45|13: 00 - 3 DE|2:30-3:00|
-|15:31:52 11-előfordulhat, hogy-2028|40-60|30-45|DU. 3-5 ÓRA|15:30-16:00|
-|12:45:39 15-július-1977.|20-40|45-60|DE - 1 ÓRA|12:30-13:00|
-|05:55:41 27-Jan-2029|40-60|45-60|DE 5 AM.|5:30-6:00|
-|10:17:49 03-gyel-2024|40-60|15-30|REGGEL 9 – DE|10:00-10:30|
-|00:23:13 14-6%/4!a-2010|0-20|15-30|DU 11 – 13: 00|0:00-0:30|
+|05:54:18 31-Jan-2031|**0-20**|**45-60**|**5AM-7AM**|**5:30-6:00**|
+|13:32:01 17-Jan-1990|**0-20**|30-45|1PM-3PM|13:30-14:00|
+|14-Feb-2034 05:36:07|0-20|30-45|5AM-7AM|5:30-6:00|
+|14-Mar-2002 13:16:16|0-20|15-30|1PM-3PM|13:00-13:30|
+|21-Jan-1985 05:44:43|40-60|30-45|5AM-7AM|5:30-6:00|
+|01:11:56 16-gyel-1985.|40-60|0-15|1AM-3AM|1:00-1:30|
+|20-Dec-2033 18:36:29|20-40|30-45|5PM-7PM|18:30-19:00|
+|16-Jul-1984 10:21:59|40-60|15-30|9AM-11AM|10:00-10:30|
+|13-Jan-2038 10:59:36|20-40|45-60|9AM-11AM|10:30-11:00|
+|15:13:54 14-gyel-1982|40-60|0-15|3PM-5PM|15:00-15:30|
+|22-Nov-2030 08:18:08|0-20|15-30|7AM-9AM|8:00-8:30|
+|21-Oct-1997 08:42:58|40-60|30-45|7AM-9AM|8:30-9:00|
+|28-Nov-2006 14:19:15|0-20|15-30|1PM-3PM|14:00-14:30|
+|29-Apr-2031 04:59:45|40-60|45-60|3AM-5AM|4:30-5:00|
+|29-Jan-2032 02:38:36|20-40|30-45|1AM-3AM|2:30-3:00|
+|15:31:52 11-előfordulhat, hogy-2028|40-60|30-45|3PM-5PM|15:30-16:00|
+|15-Jul-1977 12:45:39|20-40|45-60|11AM-1PM|12:30-13:00|
+|27-Jan-2029 05:55:41|40-60|45-60|5AM-7AM|5:30-6:00|
+|03-Mar-2024 10:17:49|40-60|15-30|9AM-11AM|10:00-10:30|
+|14-Apr-2010 00:23:13|0-20|15-30|11PM-1AM|0:00-0:30|
 
 ## <a name="examples-of-composite-transformations-by-example"></a>Példa alapján összetett átalakítások példák
 

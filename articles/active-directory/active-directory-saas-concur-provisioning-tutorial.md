@@ -1,5 +1,5 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált Concur |} Microsoft Docs"
+title: "Oktatóanyag: Concur konfigurálása az Azure Active Directoryval automatikus felhasználólétesítés |} Microsoft Docs"
 description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Concur között."
 services: active-directory
 documentationCenter: na
@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/16/2017
+ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: f39013785f000c7055aaa28f4c6f41998644cb6a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 743d974c3711d5359cf7664c6a8709f7eaaeee20
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="tutorial-configuring-concur-for-user-provisioning"></a>Oktatóanyag: A felhasználók átadása konfigurálása egyetért
+# <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés Concur konfigurálása
 
 Ez az oktatóanyag célja a lépéseket kell elvégeznie a Concur és az Azure AD automatikus kiépítése és leépíti a felhasználói fiókok Azure ad-Concur mutatjuk be.
 
@@ -98,7 +98,7 @@ A következő okok miatt ez a művelet nem a normál T & E felügyeleti használ
 
 9. Állítsa be a **kiépítési üzemmódját** való **automatikus**. 
  
-    ![Kiépítés](./media/active-directory-saas-concur-provisioning-tutorial/provisioning.png)
+    ![kiépítés folyamatban](./media/active-directory-saas-concur-provisioning-tutorial/provisioning.png)
 
 10. Az a **rendszergazdai hitelesítő adataival** területen adja meg a **felhasználónév** és a **jelszó** Concur rendszergazdától.
 

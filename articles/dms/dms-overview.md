@@ -10,11 +10,11 @@ ms.service: database-migration
 ms.workload: data-services
 ms.topic: article
 ms.date: 12/13/2017
-ms.openlocfilehash: 80ec9e177e5c1408eb28338c0c0acae9c672eeb1
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 2aae105b7454209131db79c60d74740ce97c21ce
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="what-is-the-azure-database-migration-service-preview"></a>Mi az az Azure adatbázis áttelepítési szolgáltatás előzetes?
 Az Azure-adatbázis áttelepítési szolgáltatás egy olyan teljes körűen felügyelt szolgáltatás lehetővé minimális állásidővel adatok Azure platformon több adatbázis forrásból zökkenőmentes áttelepítés. A szolgáltatás a fejlesztéshez arra irányul, hogy a jelenleg a Public Preview:
@@ -34,6 +34,11 @@ Az Azure-adatbázis áttelepítési szolgáltatás Public Preview kiadásában �
 - Dél-Brazília
 - Nyugat-Európa
 - Észak-Európa
+- Délkelet-Ázsia
+- Nyugat-India
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Az Azure-adatbázis áttelepítési szolgáltatás példányának létrehozása az Azure-portál használatával](quickstart-create-data-migration-service-portal.md).
+- [SQL-kiszolgáló áttelepítése az Azure SQL Database](tutorial-sql-server-to-azure-sql.md).
+- [Az Azure-adatbázis áttelepítési szolgáltatás használatára vonatkozó előfeltételek áttekintése](pre-reqs.md).
+- [Gyakori kérdések az Azure-adatbázis áttelepítése szolgáltatással](faq.md).

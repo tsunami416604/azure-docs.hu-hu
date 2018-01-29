@@ -1,5 +1,5 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált DocuSign |} Microsoft Docs"
+title: "Oktatóanyag: DocuSign konfigurálása az Azure Active Directoryval automatikus felhasználólétesítés |} Microsoft Docs"
 description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és DocuSign között."
 services: active-directory
 documentationCenter: na
@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: e8ba836a021a06c017defee2c5b7379d200ac642
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1de1b8e68648e4bac05eca4b306e741bcdb6868b
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="tutorial-configuring-docusign-for-user-provisioning"></a>Oktatóanyag: A felhasználók átadása DocuSign konfigurálása
+# <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés DocuSign konfigurálása
 
 Ez az oktatóanyag célja a lépéseket kell elvégeznie a DocuSign és az Azure AD automatikus kiépítése és leépíti a felhasználói fiókok Azure ad-DocuSign mutatjuk be.
 
@@ -67,7 +67,7 @@ Ez a szakasz célja engedélyezése a felhasználók átadása, az Active Direct
 
 4. Állítsa be a **kiépítési üzemmódját** való **automatikus**. 
 
-    ![Kiépítés](./media/active-directory-saas-docusign-provisioning-tutorial/provisioning.png)
+    ![kiépítés folyamatban](./media/active-directory-saas-docusign-provisioning-tutorial/provisioning.png)
 
 5. Az a **rendszergazdai hitelesítő adataival** területen adja meg a következő konfigurációs beállításokat:
    

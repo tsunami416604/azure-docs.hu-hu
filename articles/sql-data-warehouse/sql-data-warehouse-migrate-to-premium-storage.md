@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: migrate
 ms.date: 11/29/2016
 ms.author: elbutter;barbkess
-ms.openlocfilehash: 860e50b532b4b0a21d3be54f087730070b0e56bb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1e3cdb4aa3af3067b27b6a85212e2a3d27542cc3
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="migrate-your-data-warehouse-to-premium-storage"></a>Prémium szintű Storage az adatraktár áttelepítése
 Új Azure SQL Data Warehouse [prémium szintű storage, a nagyobb teljesítmény kiszámíthatóságot][premium storage for greater performance predictability]. Standard szintű tárolót a jelenleg létező adatraktárak prémium szintű Storage most telepíthető át. Kihasználhatja az automatikus áttelepítése, vagy ha jobban szeret szabályozhatja, mikor kell áttelepíteni (amely does tartalmaz, amely bizonyos időre leállítást), teheti az áttelepítés saját maga.
@@ -110,7 +110,7 @@ Ebben a példában képzelhető el, hogy a meglévő adatraktár szabványos tá
 4. Törölje a "MyDW_BeforeMigration." **Ha ezt a lépést nem sikerül, akkor mindkét adatraktárak fogjuk számlázni.**
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Prémium szintű Storage módosítását akkor is növekvő számának a blob-adatbázisfájlok a mögöttes architektúráját, valamint az adatraktár. Ez a változás teljesítménybeli előnyökben maximalizálása érdekében a fürtözött oszlopcentrikus indexek újraépítése az alábbi parancsfájl használatával. A parancsfájl használatára, a további tárolókban kényszeríti a meglévő adatok egy részét. Ha nem tesz semmit, az adatok fog természetes terjesztenie adott idő alatt, több adatot tölt be a táblába.
 
 **Előfeltételek:**
@@ -170,7 +170,7 @@ Ha problémába ütközik az adatraktárban [hozzon létre egy támogatási jegy
 [create a support ticket]: sql-data-warehouse-get-started-create-support-ticket.md
 [Azure paired region]: best-practices-availability-paired-regions.md
 [main documentation site]: services/sql-data-warehouse.md
-[Pause]: sql-data-warehouse-manage-compute-portal.md#pause-compute
+[Pause]: sql-data-warehouse-manage-compute-portal.md
 [Restore]: sql-data-warehouse-restore-database-portal.md
 [steps to rename during migration]: #optional-steps-to-rename-during-migration
 [scale compute power]: sql-data-warehouse-manage-compute-portal.md#scale-compute-power

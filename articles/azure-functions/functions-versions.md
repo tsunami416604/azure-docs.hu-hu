@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 588437af80ecf60b7c4b24dbf6bccc67fc33da7a
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 3f816f661767d2e372b02b207d6fa7efd494e6ec
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Az Azure Functions futásidejű verziók bemutatásához
 
@@ -27,7 +27,7 @@ Egy függvény alkalmazást az Azure Functions futtatókörnyezettel egy adott v
 > [!IMPORTANT] 
 > Futásidejű 1.x az üzemi használatra jóváhagyott csak verziója.
 
-| Futásidejű | status |
+| Futtatókörnyezet | status |
 |---------|---------|
 |1.x|Általában elérhető (GA)|
 |2.x|Előzetes verzió|
@@ -105,7 +105,7 @@ Ha egy eltérő az aktuális főverzió verzió vagy 2.0-s verziója van szüks�
 
 ## <a name="target-a-version-using-azure-cli"></a>Célként egy olyan verzióra, Azure parancssori felület használatával
 
- Azt is beállíthatja a `FUNCTIONS_EXTENSION_VERSION` az Azure parancssori felületen. Az Azure parancssori felület használatával frissítse az alkalmazás-beállítás, a függvény alkalmazás a [az functionapp appsettings konfiguráció](/cli/azure/functionapp/config/appsettings#set) parancsot.
+ Azt is beállíthatja a `FUNCTIONS_EXTENSION_VERSION` az Azure parancssori felületen. Az Azure parancssori felület használatával frissítse az alkalmazás-beállítás, a függvény alkalmazás a [az functionapp appsettings konfiguráció](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set) parancsot.
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <function_app> \
@@ -116,7 +116,7 @@ Cserélje le ezt a kódot `<function_app>` nevű, a függvény alkalmazást. Cse
 
 Ez a parancs futtatása a [Azure Cloud rendszerhéj](../cloud-shell/overview.md) kiválasztásával **kipróbálás** az előző példakódban. Használhatja a [helyileg Azure CLI](/cli/azure/install-azure-cli) végrehajtása után ez a parancs végrehajtásához [az bejelentkezési](/cli/azure#az_login) való bejelentkezéshez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [A helyi fejlesztési környezetben 2.0 futásidejű cél](functions-run-local.md)

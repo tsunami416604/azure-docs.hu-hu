@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2018
+ms.date: 01/24/2018
 ms.author: billmath
-ms.openlocfilehash: cd42278048b8162a06af21de04397a959be33586
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: eaa9995430833c0c087ed0d4044f6c41d254e3ff
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Az Azure Active Directory átmenő hitelesítést: Műszaki részletes bemutatója
 Ez a cikk áttekintése az Azure Active directory (Azure AD) áteresztő hitelesítés működéséről. Mélyhivatkozással műszaki és biztonsági adatokat, lásd: a [biztonsági mélyreható](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md) cikk.
@@ -31,7 +31,7 @@ Ha a felhasználó megpróbál bejelentkezni az Azure AD által védett alkalmaz
 2. Ha a felhasználó nem jelentkezett, a felhasználó a rendszer átirányítja az Azure AD **felhasználói bejelentkezés** lap.
 3. A felhasználó felhasználónevét és jelszavát az Azure AD bejelentkezési oldalára lép, és ezután kiválasztja a **bejelentkezés** gombra.
 4. Az Azure Active Directory, a kéréssel bejelentkezni, a felhasználónevét és jelszavát (nyilvános kulccsal titkosított) helyezi a sorhoz.
-5. Egy helyszíni hitelesítési ügynök a felhasználónévvel és jelszóval titkosított lekéri az üzenetsorból. Megjegyzendő, hogy az ügynök nem gyakran kérdezze le a kéréseket a sorból, lekéri a kérelmek egy előre meghatározott persistant-kapcsolaton keresztül.
+5. Egy helyszíni hitelesítési ügynök a felhasználónévvel és jelszóval titkosított lekéri az üzenetsorból. Megjegyzendő, hogy az ügynök nem gyakran kérdezze le a kéréseket a sorból, lekéri a kérelmek egy előre meghatározott állandó kapcsolaton keresztül.
 6. Az ügynök visszafejti a jelszót a titkos kulcs használatával.
 7. Az ügynök ellenőrzi a felhasználónév és jelszó Active Directory általi szabványos Windows API-k használatával, amely egy hasonló mechanizmus milyen Active Directory összevonási szolgáltatások (AD FS) használja. A felhasználónév vagy a helyszíni alapértelmezett felhasználóneve, általában lehet `userPrincipalName`, vagy az Azure AD Connect konfigurált egy másik attribútum (úgynevezett `Alternate ID`).
 8. A helyszíni Active Directory tartományvezérlőn (DC) értékeli ki a kérelem és a megfelelő választ ad vissza (sikeres, sikertelen, a jelszó lejárt, vagy felhasználói zárolása) ügynökkel.

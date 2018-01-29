@@ -4,7 +4,7 @@ description: "Útmutató Apache Maven segítségével összeállíthat egy Apach
 services: hdinsight
 documentationcenter: 
 author: Blackmist
-manager: jhubbard
+manager: cgronlun
 editor: 
 ms.assetid: 1d1ed180-e0f4-4d1c-b5ea-72e0eda643bc
 ms.service: hdinsight
@@ -13,13 +13,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 01/25/2018
 ms.author: larryfr
-ms.openlocfilehash: 07f6d49b6d5c0a5b77ef5a7a7395a37e79419955
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 7f5e4cd36b32ae86bc6f498c81d5a558ca6974d2
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Az Apache HBase Java-alkalmazások létrehozása
 
@@ -642,7 +642,7 @@ Az alábbi lépéseket az Azure PowerShell használatával a JAR feltölteni az 
     Add-HDInsightFile -localPath target\hbaseapp-1.0-SNAPSHOT.jar -destinationPath example/jars/hbaseapp-1.0-SNAPSHOT.jar -clusterName hdinsightclustername
     ```
 
-    Cserélje le a `hdinsightclustername` elemet a fürt nevére. A parancs feltölti a `hbaseapp-1.0-SNAPSHOT.jar` számára a `example/jars` a fürt elsődleges tárolási helyét.
+    Cserélje le a `hdinsightclustername` elemet a fürt nevére. Amikor a rendszer kéri, adja meg a fürt bejelentkezési (rendszergazda) nevét és jelszavát. A parancs feltölti a `hbaseapp-1.0-SNAPSHOT.jar` számára a `example/jars` a fürt elsődleges tárolási helyét.
 
 5. Egy tábla használatával létrehozásához a `hbaseapp`, használja a következő parancsot:
 
@@ -650,7 +650,7 @@ Az alábbi lépéseket az Azure PowerShell használatával a JAR feltölteni az 
     Start-HBaseExample -className com.microsoft.examples.CreateTable -clusterName hdinsightclustername
     ```
 
-    Cserélje le a `hdinsightclustername` elemet a fürt nevére.
+    Cserélje le a `hdinsightclustername` elemet a fürt nevére. Amikor a rendszer kéri, adja meg a fürt bejelentkezési (rendszergazda) nevét és jelszavát.
 
     Ezzel a paranccsal létrejön nevű tábla **személyek** a HBase a HDInsight-fürtre. Ez a parancs nem szerepelnek a konzolablakban kimenetet.
 
@@ -660,7 +660,7 @@ Az alábbi lépéseket az Azure PowerShell használatával a JAR feltölteni az 
     Start-HBaseExample -className com.microsoft.examples.SearchByEmail -clusterName hdinsightclustername -emailRegex contoso.com
     ```
 
-    Cserélje le a `hdinsightclustername` elemet a fürt nevére.
+    Cserélje le a `hdinsightclustername` elemet a fürt nevére. Amikor a rendszer kéri, adja meg a fürt bejelentkezési (rendszergazda) nevét és jelszavát.
 
     Ez a parancs a `SearchByEmail` osztály egyetlen sort sem kereséséhez ahol a `contactinformation` oszlop termékcsalád és a `email` oszlopa tartalmazza a karakterláncot `contoso.com`. A következő eredményeket kell megjelennie:
 
@@ -689,6 +689,6 @@ __Az Azure PowerShell__:
 
 `Start-HBaseExample -className com.microsoft.examples.DeleteTable -clusterName hdinsightclustername`
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Ismerje meg az SQuirreL SQL használata HBase](apache-hbase-phoenix-squirrel-linux.md)

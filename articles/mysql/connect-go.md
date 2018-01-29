@@ -10,15 +10,15 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
-ms.date: 09/22/2017
-ms.openlocfilehash: 1f18a35a3c22ecdc379bdffa1ecacb931c62a59d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 01/24/2018
+ms.openlocfilehash: 4aca7c4c0c096082d03c0514ce714cfd3624249b
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="azure-database-for-mysql-use-go-language-to-connect-and-query-data"></a>MySQL-hez készült Azure-adatbázis: Csatlakozás és adatok lekérdezése a Go használatával
-Ez a rövid útmutató azt ismerteti, hogyan lehet csatlakozni az Azure Database for MySQL-hez Windows, Ubuntu Linux és Apple macOS platformról [Go](https://golang.org/) nyelven írt kóddal. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. Ez a témakör azt feltételezi, hogy Ön a Go használata terén rendelkezik fejlesztési tapasztalatokkal, de az Azure Database for MySQL használatában még járatlan.
+Ez a rövid útmutató azt ismerteti, hogyan lehet csatlakozni az Azure Database for MySQL-hez Windows, Ubuntu Linux és Apple macOS platformról [Go](https://golang.org/) nyelven írt kóddal. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. Ez a cikk azt feltételezi, hogy Ön a Go használata terén rendelkezik fejlesztési tapasztalatokkal, de az Azure Database for MySQL használatában még járatlan.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ebben a rövid útmutatóban a következő útmutatók valamelyikében létrehozott erőforrásokat használunk kiindulási pontként:
@@ -26,7 +26,7 @@ Ebben a rövid útmutatóban a következő útmutatók valamelyikében létrehoz
 - [Azure-adatbázis létrehozása MySQL-kiszolgálóhoz az Azure CLI használatával](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
 ## <a name="install-go-and-mysql-connector"></a>A Go és a MySQL-összekötő telepítése
-Telepítse a [Gót](https://golang.org/doc/install) és a [go-sql-driver for MySQL](https://github.com/go-sql-driver/mysql#installation) illesztőt a saját számítógépére. Kövesse a platformjának megfelelő lépéseket:
+Telepítse a [Gót](https://golang.org/doc/install) és a [go-sql-driver for MySQL](https://github.com/go-sql-driver/mysql#installation) illesztő legalább 1.3-as verzióját a saját számítógépére. Kövesse a platformjának megfelelő lépéseket:
 
 ### <a name="windows"></a>Windows
 1. [Töltse le](https://golang.org/dl/) és telepítse a Microsoft Windowshoz készült Go-t a [telepítési utasítások](https://golang.org/doc/install) szerint.
@@ -34,7 +34,7 @@ Telepítse a [Gót](https://golang.org/doc/install) és a [go-sql-driver for MyS
 3. Hozzon létre egy mappát a projekt számára, például `mkdir  %USERPROFILE%\go\src\mysqlgo`.
 4. Nyissa meg a projektmappát (például `cd %USERPROFILE%\go\src\mysqlgo`).
 5. Úgy állítsa be a GOPATH környezeti változóját, hogy a forráskód könyvtárára mutasson. `set GOPATH=%USERPROFILE%\go`.
-6. Telepítse a [go-sql-driver for mysql](https://github.com/go-sql-driver/mysql#installation) illesztőt a `go get github.com/go-sql-driver/mysql` parancs futtatásával.
+6. Telepítse a [go-sql-driver for mysql](https://github.com/go-sql-driver/mysql#installation) illesztőt a `go get github.com/go-sql-driver/mysql` parancs futtatásával. Legalább 1.3-as verzió szükséges.
 
    Összefoglalva, telepítse a Go-t, majd futtassa ezeket a parancsokat a parancssorban:
    ```cmd
@@ -50,7 +50,7 @@ Telepítse a [Gót](https://golang.org/doc/install) és a [go-sql-driver for MyS
 3. Hozzon létre egy mappát a projekt számára a kezdőkönyvtárban (például `mkdir -p ~/go/src/mysqlgo/`).
 4. Nyissa meg a projektmappát (például `cd ~/go/src/mysqlgo/`).
 5. Úgy állítsa be a GOPATH környezeti változót, hogy egy érvényes forráskönyvtárra mutasson, például az aktuális kezdőkönyvtár Go mappájára. A Bash felületen futtassa az `export GOPATH=~/go` parancsot, amellyel a go könyvtárat GOPATH útvonalként adhatja meg az aktuális felületi munkamenethez.
-6. Telepítse a [go-sql-driver for mysql](https://github.com/go-sql-driver/mysql#installation) illesztőt a `go get github.com/go-sql-driver/mysql` parancs futtatásával.
+6. Telepítse a [go-sql-driver for mysql](https://github.com/go-sql-driver/mysql#installation) illesztőt a `go get github.com/go-sql-driver/mysql` parancs futtatásával. Legalább 1.3-as verzió szükséges.
 
    Összefoglalva, futtassa ezeket a bash-parancsokat:
    ```bash
@@ -67,7 +67,7 @@ Telepítse a [Gót](https://golang.org/doc/install) és a [go-sql-driver for MyS
 3. Hozzon létre egy mappát a projekt számára a kezdőkönyvtárban (például `mkdir -p ~/go/src/mysqlgo/`).
 4. Nyissa meg a projektmappát (például `cd ~/go/src/mysqlgo/`).
 5. Úgy állítsa be a GOPATH környezeti változót, hogy egy érvényes forráskönyvtárra mutasson, például az aktuális kezdőkönyvtár Go mappájára. A Bash felületen futtassa az `export GOPATH=~/go` parancsot, amellyel a go könyvtárat GOPATH útvonalként adhatja meg az aktuális felületi munkamenethez.
-6. Telepítse a [go-sql-driver for mysql](https://github.com/go-sql-driver/mysql#installation) illesztőt a `go get github.com/go-sql-driver/mysql` parancs futtatásával.
+6. Telepítse a [go-sql-driver for mysql](https://github.com/go-sql-driver/mysql#installation) illesztőt a `go get github.com/go-sql-driver/mysql` parancs futtatásával. Legalább 1.3-as verzió szükséges.
 
    Összefoglalva, telepítse a Go-t, majd futtassa ezeket a bash-parancsokat:
    ```bash
@@ -351,6 +351,6 @@ func main() {
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 > [Adatbázis migrálása exportálással és importálással](./concepts-migrate-import-export.md)

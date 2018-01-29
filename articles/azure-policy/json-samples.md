@@ -16,11 +16,11 @@ ms.workload:
 ms.date: 01/17/2018
 ms.author: banders
 ms.custom: mvc
-ms.openlocfilehash: 783a6bd8c665f1e08d94d2712a581955be8501e9
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 19641f3b1f2781cf23955743bf65172ff84fb544
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="templates-for-azure-policy"></a>Sablonok az Azure-házirend
 
@@ -55,7 +55,7 @@ A következő táblázat az Azure-házirend json sablonok hivatkozásait tartalm
 | [Engedélyezett a Load Balancer termékváltozatok](scripts/allowed-lb-skus.md) | Szükséges, hogy a terheléselosztó egy jóváhagyott SKU használja. Megadja az engedélyezett termékváltozatok tömbjét. |
 | [Egyetlen hálózathoz sem társviszony-létesítést úgy ER hálózati](scripts/no-peering-er-net.md) | Ez a beállítás letiltja a társítás hálózathoz megadott erőforráscsoport-társviszony létesítése – hálózati. Amellyel meggátolhatja, központi felügyelt hálózati infrastruktúra-kapcsolatot. Megadhatja a társítás megelőzése érdekében az erőforráscsoport nevét. |
 | [Nincs felhasználó által megadott útvonal tábla](scripts/no-user-def-route-table.md)  |Megakadályozza, hogy a virtuális hálózatok üzembe helyezéséhez egy felhasználó által definiált útválasztási táblázathoz. |
-| [Engedélyezett a virtuális hálózati átjáró-termékváltozat](scripts/no-user-def-route-table.md) | Megköveteli, hogy a virtuális hálózati átjárók egy jóváhagyott SKU és átjáró típusú használja. Megadhatja a jóváhagyott termékváltozatok tömbje és jóváhagyott átjáró típusok egy tömbjét. |
+| [Engedélyezett a virtuális hálózati átjáró-termékváltozat](scripts/allowed-vn-gate-sku.md) | Megköveteli, hogy a virtuális hálózati átjárók egy jóváhagyott SKU és átjáró típusú használja. Megadhatja a jóváhagyott termékváltozatok tömbje és jóváhagyott átjáró típusok egy tömbjét. |
 | [Virtuális gép hálózati adapterek használatát a jóváhagyott IP-alhálózatot](scripts/use-approved-subnet-vm-nics.md) | Szükséges, hogy a hálózati adapterek egy jóváhagyott alhálózat használja. Megadja a jóváhagyott alhálózati Azonosítóját. |
 | [Jóváhagyott vNet használja a virtuális gép hálózati illesztő](scripts/use-approved-vnet-vm-nics.md) | Megköveteli, hogy a hálózati adapterek jóváhagyott virtuális hálózat használata. Megadja a jóváhagyott virtuális hálózat Azonosítójává. |
 |**Címkék**||

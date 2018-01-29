@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2017
+ms.date: 01/26/2018
 ms.author: sethm
-ms.openlocfilehash: f5d2aa551bbe77a66459907cf5cd1313bb907981
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e6524fe056ee2a1d81c9cccf257008b2369352b1
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="message-counters"></a>Üzenetszámlálók
 
@@ -31,7 +31,7 @@ A PowerShell használatával ezt úgy szerezheti be a számláló az alábbiak s
 
 ## <a name="message-count-details"></a>Szám – részletek
 
-Az aktív üzenetek száma tudatában akkor hasznos, annak meghatározásához, hogy a várólista elkészít egy várakozó fájlok számát, mint mi jelenleg telepített feldolgozni több erőforrást igényel. A következő teljesítményszámláló adatait érhetők el a [MessageCountDetails](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails) osztály:
+Az aktív üzenetek száma tudatában akkor hasznos, meghatározásakor, hogy a várólista elkészít egy várakozó fájlok számát, mint mi jelenleg telepített feldolgozni több erőforrást igényel. A következő teljesítményszámláló adatait érhetők el a [MessageCountDetails](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails) osztály:
 
 -   [ActiveMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.activemessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_ActiveMessageCount): a várólista vagy az előfizetés az aktív állapotának és kézbesítési készen áll a üzenetek.
 -   [DeadLetterMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.deadlettermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_DeadLetterMessageCount): a kézbesítetlen levelek várólistában lévő üzenetek.
@@ -41,7 +41,7 @@ Az aktív üzenetek száma tudatában akkor hasznos, annak meghatározásához, 
 
 Ha egy alkalmazás kíván méretezni a várólista hossza erőforrásokhoz, akkor kell ehhez a nagyon mért nő. A üzenetszámlálók megszerzését belül az üzenet broker drága művelet, és futtatnia kell a gyakran közvetlenül és kedvezőtlen hatással van az entitás teljesítményét.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tudhat meg többet a Service Bus üzenetkezelés, a következő témakörökben:
 
