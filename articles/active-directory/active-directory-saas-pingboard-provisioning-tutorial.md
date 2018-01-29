@@ -1,5 +1,5 @@
 ---
-title: "Oktatóanyag: Pingboard konfigurálása az automatikus felhasználó-átadási az Azure Active Directoryval |} Microsoft Docs"
+title: "Oktatóanyag: Pingboard konfigurálása az Azure Active Directoryval automatikus felhasználólétesítés |} Microsoft Docs"
 description: "Megtudhatja, hogyan konfigurálja az Azure Active Directory automatikusan ellátásához, majd leépíti Pingboard felhasználói fiókokat."
 services: active-directory
 documentationcenter: 
@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 10/19/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: 0492a59852a6a2dd424c98e44969eab1ac4697e8
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
-ms.translationtype: HT
+ms.openlocfilehash: f74e890cf716cfd4bc7b41fcc4aa244969cafde5
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="tutorial-configuring-pingboard-for-automatic-user-provisioning"></a>Oktatóanyag: Pingboard konfigurálása az automatikus felhasználó létesítése
+# <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés Pingboard konfigurálása
 
 Ez az oktatóanyag célja mutatjuk be, a lépéseket kell elvégeznie ahhoz, hogy az automatikus üzembe helyezést és megszüntetést Pingboard az Azure Active Directory felhasználói fiókokat.
 
