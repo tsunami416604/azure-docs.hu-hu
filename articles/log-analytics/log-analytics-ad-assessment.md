@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/27/2017
 ms.author: magoedte;banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6919b40ac6edff289f3eb171e88ca6d76288f2a3
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: a5e803cadfd08c42e12e6e34feee1c2d0d091d70
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-log-analytics"></a>Az Active Directory-környezet, az Active Directory állapotát ellenőrző megoldással a Naplóelemzési optimalizálása
 
@@ -108,10 +108,8 @@ Azt követően, megtekintheti a javaslatok összegzése a állapotának ellenőr
 Az összesített megfelelőségi értékelése az infrastruktúrát, és a-feltárás javaslatok megtekintése.
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Az egy fókuszban terület javaslatok megtekintése és a szükséges javítási műveletek
-1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) címen. 
-2. Az Azure Portalon kattintson a bal alsó sarokban található **További szolgáltatások** elemre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
-3. A Naplóelemzési előfizetések ablaktáblán jelölje ki a munkaterület, és kattintson a **OMS-portálon** csempére.  
-4. Az a **áttekintése** lapján kattintson a **AD állapotának ellenőrzése** csempére. 
+3. Kattintson a **áttekintése** a Naplóelemzési munkaterület az Azure portálon csempéjén.
+4. A a **áttekintése** lapján kattintson a **Active Directory állapotát ellenőrző** csempére. 
 5. Az a **állapotának ellenőrzése** lapon. Ellenőrizze az összefoglaló információkat a fókusz terület paneleken egyikében, majd kattintson egy adott fókusz területre javaslatok megtekintéséhez.
 6. A fókusz terület lapok egyikén tekintheti meg a környezetnek a rangsorolt ajánlásokat. Kattintson az ajánlás **érintett objektumok** miért a javaslatokkal kapcsolatos részletek megtekintéséhez.<br><br> ![kép ajánlások állapotának ellenőrzése](./media/log-analytics-ad-assessment/ad-healthcheck-dashboard-02.png)
 7. Az ajánlott javítási műveletek hajthatók végre **javasolt műveletek**. A cikk intéztek, ha újabb értékelések azt jelzi, hogy a javasolt műveletek vették, és a megfelelőségi pontszám növeli. Javított elemek jelennek meg **átadott objektumok**.
@@ -195,5 +193,5 @@ A megadott javaslatok megjelölve után a következő ütemezett állapotának e
 
 * Igen, tekintse meg [figyelmen kívül hagyja a javaslatok](#ignore-recommendations) fenti szakaszban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Használjon [Log Analytics-e jelentkezni a keresések](log-analytics-log-searches.md) megtudhatja, hogyan elemezhet részletes adatok AD állapotának ellenőrzése és javaslatokat.

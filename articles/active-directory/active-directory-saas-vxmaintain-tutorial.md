@@ -1,5 +1,5 @@
 ---
-title: "Oktatóanyag: Azure Active Directory integrálása vxMaintain |} Microsoft Docs"
+title: "Oktatóanyag: Azure Active Directoryval integrált vxMaintain |} Microsoft Docs"
 description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és vxMaintain között."
 services: active-directory
 documentationCenter: na
@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/08/2017
+ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: a987247d2c8a76161f9c8a5a027e34b3a8e25b30
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 66165b2586304f3726f5d712fb334fe67e2cd02b
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="tutorial-integrate-azure-active-directory-with-vxmaintain"></a>Oktatóanyag: Azure Active Directory integrálása vxMaintain
+# <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>Oktatóanyag: Azure Active Directoryval integrált vxMaintain
 
 Ebben az oktatóanyagban elsajátíthatja vxMaintain integrálása az Azure Active Directory (Azure AD).
 
@@ -195,7 +195,7 @@ Válassza a **vxMaintain** csempe a hozzáférési panelen kell jelentkezhet be 
 
 A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](active-directory-saas-access-panel-introduction.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [SaaS-alkalmazások integrálása az Azure Active Directoryval kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)

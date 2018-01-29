@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: saeedakhter-msft
-ms.openlocfilehash: be3fe7199308606aaab002290319df9c82149433
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a9136ebd15a995361a325804ca81ece0db30b3e6
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-active-directory-b2c-customize-the-azure-ad-b2c-user-interface-ui"></a>Az Azure Active Directory B2C: Testreszabása az Azure AD B2C felhasználói felület (UI)
 
@@ -38,7 +38,7 @@ Ez a cikk ismerteti a következő témaköröket:
 
 ## <a name="the-page-ui-customization-feature"></a>A lap felhasználói felületi testreszabási szolgáltatás
 
-Testre szabhatja a megjelenését a felhasználói regisztráció, bejelentkezés, a jelszó alaphelyzetbe állítása és profil szerkesztése lapok (konfigurálásával [házirendek](active-directory-b2c-reference-policies.md)). Az ügyfelek beolvasása zökkenőmentes élményt, amikor máshová az alkalmazás és az Azure AD B2C által kiszolgált lapok között.
+Testre szabhatja a megjelenésének és arculatának felhasználói regisztráció, bejelentkezés (lásd fent branding kapcsolódó kivételeket Megjegyzés), a jelszó alaphelyzetbe állítása és a profil szerkesztése lapok (konfigurálásával [házirendek](active-directory-b2c-reference-policies.md)). Az ügyfelek beolvasása zökkenőmentes élményt, amikor máshová az alkalmazás és az Azure AD B2C által kiszolgált lapok között.
 
 Más szolgáltatás, amelyben felhasználói felület lehetőségei, az Azure AD B2C használ-e egy egyszerű és modern felhasználói felület testreszabásával megközelítése szemben.
 
@@ -344,7 +344,7 @@ Ha azt tervezi, a lap felhasználói felületének testreszabása szolgáltatás
 * Nem az Azure AD B2C alapértelmezett tartalmát, és próbálja meg módosítani. Érdemes a HTML5 tartalom teljesen új összeállításához és alapértelmezett tartalom használni.
 * Biztonsági okok miatt jelenleg nem engedélyezi, hogy bármely JavaScript szerepeljenek a tartalmat. A legtöbb mire van szüksége a kezdő verzióról elérhetőnek kell lennie. Ha nem, [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c) kérjen új funkciókat.
 * A támogatott böngészőkben:
-  * Az Internet Explorer 11, 10, a peremhálózati
+  * Internet Explorer 11, 10, Edge
   * Az Internet Explorer 9 böngészőben 8 korlátozott támogatása
   * Google Chrome 42.0 vagy újabb verzió
   * Mozilla Firefox 38.0 vagy újabb verzió

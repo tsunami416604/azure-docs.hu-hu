@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
 ms.author: ancav
-ms.openlocfilehash: cff2be1818417a19f36da08d8c2eaa227bb945ec
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 79602cf053d834bf3d6dc6b4d5568637b179d5c7
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="understand-autoscale-settings"></a>Automatikus skálázás beállításai
 Automatikus skálázás beállításai lehetővé teszik, hogy ellenőrizze, hogy a megfelelő mennyiségű erőforrást fut az alkalmazás változó terhelés kezelésére. Automatikus skálázási beállításokat aktiválására, amely jelzi a load vagy a teljesítmény, vagy egy ütemezett dátummal és időponttal eseményindítót mérőszámok alapján konfigurálhatja. Ez a cikk részletes tekintse meg az automatikus skálázási beállítás leírása vesz igénybe. A cikk kezdődik megismerni a séma- és a beállítás tulajdonságait, majd végigvezeti a másik profil típusokat, amelyek konfigurálhatók, és végül ismerteti, hogyan automatikus skálázás kiértékeli melyik profil egy adott időpontban végrehajtásához.
@@ -100,21 +100,21 @@ Az automatikus skálázási beállítás séma mutatja be, a következő automat
 | Beállítás | ID (Azonosító) | Az automatikus skálázási beállítás erőforrás-azonosító. Automatikus skálázási beállításokat és az Azure Resource Manager szerinti erőforrás. |
 | Beállítás | név | Az automatikus skálázási beállítás neve. |
 | Beállítás | location | Az automatikus skálázási beállítás helye. Ezen a helyen méretezve, hogy az erőforrás helye eltérő lehet. |
-| properties | célerőforrás URI azonosítóját tartalmazó | Az erőforrás-azonosító az erőforrás méretezése folyamatban. Csak akkor is erőforrásonként egy automatikus skálázási beállítás. |
+| properties | targetResourceUri | Az erőforrás-azonosító az erőforrás méretezése folyamatban. Csak akkor is erőforrásonként egy automatikus skálázási beállítás. |
 | properties | Profilok | Az automatikus skálázási beállítás egy vagy több profilok tevődik össze. Minden egyes futásakor az automatikus skálázás motor egy profil végrehajtja. |
 | Profil | név | A profil nevét, kiválaszthatja a neve, amely segít a profil azonosításához. |
 | Profil | Capacity.maximum | Az engedélyezett maximális kapacitását. Biztosítja, hogy automatikus skálázási profil végrehajtásakor nem méretezhető a fenti Ez a szám erőforrás. |
 | Profil | Capacity.minimum | Az engedélyezett minimális kapacitást. Biztosítja, hogy automatikus skálázási profil végrehajtásakor nem méretezhető a erőforrás e szám alá. |
 | Profil | Capacity.default | Ha az erőforrás metrika (esetünkben a "vmss1" cpu) olvasása, és a jelenlegi kapacitásnál nem éri el az alapértelmezett kapacitásértéket, majd az erőforrás rendelkezésre állásának biztosításához, automatikus skálázás méretezik ki az alapértelmezett. Ha a jelenlegi kapacitásnál már nagyobb, mint az alapértelmezett kapacitásértéket, automatikus skálázás fog nem skálázási be. |
 | Profil | szabályok | Automatikus skálázás automatikusan méretezi a maximális és minimális kapacitás, a szabályok alkalmazásával a profil között. A profil több szabály is lehet. Az alapvető forgatókönyv, két szabályt, egyet, hogy a kibővített és egyéb, hogy a skála. |
-| A szabály | metricTrigger | A metrika a szabály állapota határozza meg. |
+| szabály | metricTrigger | A metrika a szabály állapota határozza meg. |
 | metricTrigger | metricName | A mérték neve. |
 | metricTrigger |  metricResourceUri | Az erőforrás-azonosító bocsát ki a metrika erőforrás. A legtöbb esetben ez megegyezik az erőforrás méretezése folyamatban. Bizonyos esetekben eltérő lehet, például egy virtuálisgép-méretezési csoport egy tárolási várólistában lévő üzenetek száma alapján is méretezhető. |
 | metricTrigger | Időkeretben vannak | A metrika mintavételi időtartamot. Például időkeretben vannak = "PT1M" azt jelenti, hogy legyen a metrikák összesítése minden 1 perces "statisztika." a megadott összesítő metódus |
 | metricTrigger | statisztika | Az összesítési módszer a időkeretben vannak időszakon belül. Például statisztika = "Átlagos" és a időkeretben vannak "PT1M" azt jelenti, hogy a metrikák kell = 1 percenként összesítve átlaga. Ez a tulajdonság szabja meg, hogyan az a mérték mintát venni. |
 | metricTrigger | Az időtartomány értékének | A metrikák vissza keres időtartam. Például az időtartomány értékének = "PT10M" azt jelenti, hogy minden alkalommal, amikor az automatikus skálázás fut, az lekérdezi metrikák az elmúlt 10 perc. Az időszak lehetővé teszi, hogy a mérni kívánt normalizálható, és elkerülhetők a átmeneti igényeiben jelentkező reagálnak. |
 | metricTrigger | timeAggregation | Az összesítési módszer használatával a mintában szereplő metrikák összesítése. Például TimeAggregation = "Átlagos" kell összesíteni a mintában szereplő metrikák átlaga. A fenti esetben a tíz 1 perces mintát venni, és átlagos őket. |
-| A szabály | scaleAction | A szabály metricTrigger kezdeményezése esetén végrehajtandó műveletet. |
+| szabály | scaleAction | A szabály metricTrigger kezdeményezése esetén végrehajtandó műveletet. |
 | scaleAction | irány | "" Horizontális növeléséhez "Csökkentése" méretezési az|
 | scaleAction | érték | Mennyi növeléséhez vagy csökkentéséhez az erőforrás kapacitása |
 | scaleAction | cooldown | A skálázási művelet előtt skálázás megismételni után várakozási idő mennyiségét. Például ha cooldown = "PT10M", majd miután megtörtént a skálázási művelet, automatikus skálázás nem kísérli meg újra a méretezési egy másik 10 perc. A cooldown, a mérni kívánt után hozzáadását és eltávolítását példányok stabilizálását engedélyezéséhez. |
@@ -125,7 +125,7 @@ Az automatikus skálázási profilok három típusa van:
 
 1. **Rendszeres profil:** leggyakrabban használt profil. Ha nincs szüksége a menübeállításoktól függően a hét napját, vagy egy adott napon erőforrás méretezése, majd csak szeretné az automatikus skálázási beállításban rendszeres profil beállítása. Ez a profil majd metrika szabályok határozzák meg, mikor érdemes kibővített és mikor kell a méretezési konfigurálható. Csak akkor kell definiált egy rendszeres profil.
 
-    Az ebben a cikkben használt példa-profilt egy rendszeres profil példája. Nem célszerű is beállítható méretezési profil az erőforrás statikus példányszám tegye.
+    Az ebben a cikkben használt példa-profilt egy rendszeres profil példája. Vegye figyelembe azt is beállíthatja egy profil az erőforrás statikus példányszám számára, hogy.
 
 2. **Dátum profilt:** definiált rendszeres profillal tegyük fel, a 2017 December 26 (csendes-óceáni TÉLI) közeledik fontos eseményt rendelkezik, és azt szeretné, hogy az erőforrás térhet el azon a napon, de továbbra is méretezni a metrikák a minimuma vagy maximuma kapacitások . Ebben az esetben meg kell rögzített dátum profil hozzáadása a beállítás profilok listájára. A profil használatára van konfigurálva, csak az esemény napon futtatásához. Minden nap a rendszeres profil végrehajtása.
 

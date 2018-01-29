@@ -39,9 +39,9 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 | Biztonsági csoportok belül a hálózati biztonsági csoport összes biztonsági szabály adható meg |50 |100 |
 | Felhasználó által megadott útvonaltáblák |100 |200 |
 | Felhasználó által megadott útvonalak száma útvonaltáblánként |100 |400 |
-| Nyilvános IP-címek – dinamikus |60 (alapszintű) |kapcsolatfelvétel az ügyfélszolgálattal |
-| Nyilvános IP-címek – statikus |20 (alapszintű) |kapcsolatfelvétel az ügyfélszolgálattal |
-| Nyilvános IP-címek – statikus |20 (normál) |kapcsolatfelvétel az ügyfélszolgálattal |
+| Nyilvános IP-címek – dinamikus |(Basic) 60 |kapcsolatfelvétel az ügyfélszolgálattal |
+| Nyilvános IP-címek – statikus |(Basic) 20 |kapcsolatfelvétel az ügyfélszolgálattal |
+| Nyilvános IP-címek – statikus |(Standard) 20 |kapcsolatfelvétel az ügyfélszolgálattal |
 | Pont–hely kapcsolati főtanúsítványok száma VPN Gateway-példányonként |20 |20 |
 
 #### <a name="load-balancer"></a>Korlátozza a terheléselosztó
@@ -55,7 +55,7 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 | Előtérbeli IP-konfigurációk, Basic | 10 | kapcsolatfelvétel az ügyfélszolgálattal |
 | Előtérbeli IP-konfigurációk, a Standard | 10 | 600 |
 | A háttérkészlet, Basic | 100, egy rendelkezésre állási csoport | - |
-| Háttérkészlet, a Standard | 1000, egyetlen virtuális hálózat | kapcsolatfelvétel az ügyfélszolgálattal |
+| Háttérkészlet, a Standard | 1000, egyetlen virtuális hálózat | - |
 | Magas rendelkezésre ÁLLÁSÚ portok, a Standard | belső előtér / 1 | - |
 
 Ha meg szeretné növelni a korlátozások alapértelmezett értékeit, [lépjen kapcsolatba az ügyfélszolgálattal](../articles/azure-supportability/resource-manager-core-quotas-request.md ).

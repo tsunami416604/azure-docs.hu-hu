@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 01/26/2018
 ms.author: sethm
-ms.openlocfilehash: 504010a39a4012b9a9edb60bb9a5b33ac20499c1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6e1f6177ccacf24955763982189bcdb1ef69c788
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="message-expiration-time-to-live"></a>Üzenet lejárati (Live idő)
 
@@ -25,11 +25,11 @@ A tartalom egy üzenetet, vagy parancsot vagy lekérdezést, amely egy üzenetet
 
 Fejlesztési és tesztkörnyezetek is, amelyekben üzenetsorok és témakörök gyakran használnak az alkalmazások és az alkalmazás részei részleges futtatása keretében is kívánatos történő automatikus szemétgyűjtő, hogy a következő vizsgálat futtatása is kimaradt teszt üzenetek Indítsa el a tiszta.
 
-Minden egyes üzenet lejárati beállításával szabályozhatja a [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) rendszer tulajdonság, amely egy relatív időtartamát határozza meg. A lejárati abszolút azonnali lesz, ha az üzenet a várólistában levő entitásban. Ekkor a [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc) tulajdonság időt vesz igénybe, az az érték [ **EnqueuedTimeUtc**](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc) + [**TimeToLive**](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive).
+Minden egyes üzenet lejárati beállításával szabályozhatja a [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) rendszer tulajdonság, amely egy relatív időtartamát határozza meg. A lejárati abszolút azonnali lesz, ha az üzenet a várólistában levő entitásban. Ekkor a [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc) tulajdonság időt vesz igénybe, az az érték [(**EnqueuedTimeUtc**](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc) + [**TimeToLive**)](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive).
 
 Elmúlt a **ExpiresAtUtc** azonnali, üzenetek válnak a lekérdezés nem jogosult. A lejárati nem befolyásolja az üzeneteket, amelyek azonban jelenleg zárolva vannak kézbesítésre; az üzenetek továbbra is megfelelően kezeli. A zárolás lejár, vagy az üzenetet a rendszer félbehagyná, ha a lejárati azonnal érvénybe lép.
 
-Míg az üzenetet a zárolási, az alkalmazás egy üzenetet, amely névlegesen lejárt birtokában lehet. Hogy az alkalmazás hajlandó feldolgozási használatától, vagy úgy dönt, hogy az üzenet abandon esetén a végrehajtója.
+Bár az üzenetet a zárolási, az alkalmazás egy üzenetet, amely lejárt birtokában lehet. Hogy az alkalmazás hajlandó feldolgozási használatától, vagy úgy dönt, hogy az üzenet abandon esetén a végrehajtója.
 
 ## <a name="entity-level-expiration"></a>Entitásszintű lejárata
 
@@ -47,14 +47,14 @@ Vegye figyelembe például egy webhely, amely megbízhatóan végrehajtani a fel
 
 Service Bus-üzenetsorok, témakörök és előfizetések ideiglenes entitások, amely automatikusan törlődnek, amikor azok nem használtak egy adott időn hozhatók létre.
  
-Az automatikus tisztítás akkor hasznos, a fejlesztési és tesztelési forgatókönyvek, amelyben entitások dinamikusan jönnek létre, és nem használja, a teszt vagy a hibakeresési futtatja, hogy megszakították miatt után törlődnek. Ez akkor hasznos, ha egy alkalmazás hoz létre a dinamikus entitások, például egy válasz várólista, a válaszok vissza egy webkiszolgáló-folyamat vagy egy másik viszonylag rövid élettartamú objektum nehéz entitásokból megbízhatóan karbantartása során az objektum megjelenik a példány.
+Az automatikus tisztítás akkor hasznos, a fejlesztési és tesztelési forgatókönyvek, amelyben entitások dinamikusan jönnek létre, és nem használja, a vizsgálat vagy a hibakeresési futtatja néhány megszakadásának miatt után törlődnek. Ez akkor hasznos, ha egy alkalmazás hoz létre a dinamikus entitások, például egy válasz várólista, a válaszok vissza egy webkiszolgáló-folyamat vagy egy másik viszonylag rövid élettartamú objektum nehéz entitásokból megbízhatóan karbantartása során az objektum megjelenik a példány.
 
 A szolgáltatás engedélyezve van, használja a [autoDeleteOnIdle](/azure/templates/microsoft.servicebus/namespaces/queues) tulajdonság, amely az időtartam, amelyre egy entitás kell van beállítva üresjárati (nem használt), mielőtt a rendszer automatikusan törli. A minimális időtartam érték 5 perc.
  
-A tulajdonság állítható be, a .NET-keretrendszer ügyfél keresztül vagy egy Azure Resource Manager művelet [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API-k. A portálon keresztül nem állítható be.
+A **autoDeleteOnIdle** tulajdonságot kell beállítani, a .NET-keretrendszer ügyfél keresztül vagy egy Azure Resource Manager művelet [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API-k. A portálon keresztül nem állítható be.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tudhat meg többet a Service Bus üzenetkezelés, a következő témakörökben:
 

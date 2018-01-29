@@ -1,10 +1,10 @@
 ---
-title: "Ellenőrizze a kapcsolatot az Azure hálózati figyelőt - Azure CLI 2.0 |} Microsoft Docs"
-description: "Ez a lap ismerteti, hogyan hálózati figyelőt az Azure CLI 2.0 verziót használja a kapcsolat ellenőrzése"
+title: "Azure hálózati figyelőt - Azure CLI 2.0-kapcsolatok hibáinak elhárítása |} Microsoft Docs"
+description: "Ismerje meg, hogyan használható a kapcsolati hibáinak elhárítása az Azure CLI 2.0 használatával Azure hálózati figyelőt képességét."
 services: network-watcher
 documentationcenter: na
 author: jimdial
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.service: network-watcher
 ms.devlang: na
@@ -13,31 +13,30 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
-ms.openlocfilehash: 507ec614e54b035d5470ec34bcfd8e71cf98083c
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: dfe77b0a9620ccb8ac91fa8843d01d1cb7bdc44f
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="check-connectivity-with-azure-network-watcher-using-azure-cli-20"></a>Ellenőrizze a kapcsolatot az Azure hálózati figyelőt Azure CLI 2.0 használatával
+# <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-cli-20"></a>Kapcsolatok hibaelhárítása az Azure hálózati figyelőt az Azure CLI 2.0 használatával
 
 > [!div class="op_single_selector"]
 > - [PowerShell](network-watcher-connectivity-powershell.md)
 > - [CLI 2.0](network-watcher-connectivity-cli.md)
 > - [Azure REST API](network-watcher-connectivity-rest.md)
 
-Megtudhatja, hogyan ellenőrizheti, ha egy közvetlen TCP-kapcsolatot a virtuális gép egy adott végpont is hozható létre kapcsolat használatára.
+Megtudhatja, hogyan használja a kapcsolat ellenőrzése, hogy egy közvetlen TCP-kapcsolatot a virtuális gép egy adott végpont is hozható létre hibaelhárítása.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
 Ez a cikk feltételezi, hogy rendelkezik-e a következőket:
 
-* Ellenőrizze a kapcsolatot szeretne hálózati figyelőt régióban példánya.
-
-* Ellenőrizze a kapcsolatot a virtuális gépeket.
+* Végezzen hibaelhárítást a kapcsolaton kívánt hálózati figyelőt régióban példánya.
+* Virtuális gépek kapcsolatok hibaelhárításához.
 
 > [!IMPORTANT]
-> Kapcsolat ellenőrzése van szükség a virtuálisgép-bővítmény `AzureNetworkWatcherExtension`. A bővítmény telepítése a Windows virtuális gép a Microsoft [a Windows Azure hálózati figyelő ügynök virtuálisgép-bővítmény](../virtual-machines/windows/extensions-nwa.md) és a Linux virtuális gép helyezést [Azure hálózati figyelő ügynök virtuálisgép-bővítmény Linux](../virtual-machines/linux/extensions-nwa.md).
+> Csatlakozási hibáinak elhárítása van szükség a virtuálisgép-bővítmény `AzureNetworkWatcherExtension`. A bővítmény telepítése a Windows virtuális gép a Microsoft [a Windows Azure hálózati figyelő ügynök virtuálisgép-bővítmény](../virtual-machines/windows/extensions-nwa.md) és a Linux virtuális gép helyezést [Azure hálózati figyelő ügynök virtuálisgép-bővítmény Linux](../virtual-machines/linux/extensions-nwa.md).
 
 ## <a name="check-connectivity-to-a-virtual-machine"></a>Ellenőrizze a kapcsolatot a virtuális géphez
 
@@ -122,7 +121,7 @@ Nic0/ipConfigurations/ipconfig1",
 
 ## <a name="validate-routing-issues"></a>Útválasztási problémák ellenőrzése
 
-A példában egy virtuális gép és a távoli végpont közötti kapcsolatot ellenőrzi.
+Ebben a példában egy virtuális gép és a távoli végpont közötti kapcsolatot ellenőrzi.
 
 ### <a name="example"></a>Példa
 

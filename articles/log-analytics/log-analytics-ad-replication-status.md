@@ -1,6 +1,6 @@
 ---
 title: "Az Active Directory replikációs állapotát az Azure Naplóelemzés figyelése |} Microsoft Docs"
-description: "Az Active Directory replikációs állapotát megoldáscsomag rendszeresen figyeli az Active Directory-környezet minden replikációs hibák, és jelentést készít az OMS irányítópulton."
+description: "Az Active Directory replikációs állapotát megoldáscsomag rendszeresen figyeli az Active Directory-környezet minden replikációs hibák."
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/11/2017
+ms.date: 01/24/2018
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e56687519459f93998bcdd92336050093539270a
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 7ca3b87ea14589aa2c45c8fe49b01d3b10a75aa1
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>A Naplóelemzési Active Directory replikációs állapot figyelése
 
@@ -27,13 +27,13 @@ ms.lasthandoff: 12/13/2017
 
 Az Active Directory az informatikai környezetben vállalati nyilvános kulcsokra épülő. Magas rendelkezésre állás és a magas teljesítmény biztosítása érdekében minden egyes tartományvezérlő rendelkezik saját az Active Directory-adatbázis másolatát. Ahhoz, hogy a módosítások átvitele a vállalaton belül a tartományvezérlő replikálja egymás mellett. A replikálási folyamat-hibák hatására problémák számos a vállalaton belül.
 
-Az AD-replikáció állapotát megoldáscsomag rendszeresen figyeli az Active Directory-környezet minden replikációs hibák, és jelentést készít az OMS irányítópulton.
+Az AD-replikáció állapotát megoldáscsomag rendszeresen figyeli az Active Directory-környezet a replikációs hibákat.
 
 ## <a name="installing-and-configuring-the-solution"></a>Telepítése és a megoldás konfigurálása
 Az alábbi információk segítségével telepítse és konfigurálja a megoldást.
 
-* Telepítenie kell ügynökök olyan tartományvezérlőn, amely a tartomány tagjaként kell kiértékelni. Vagy telepíthet ügynököket a kiszolgálókon és az ügynökök AD replikációs adatokat küldeni a OMS konfigurálnia kell. Windows rendszerű számítógépek csatlakoztatása OMS ismertetése: [Log Analyticshez való csatlakozás Windows számítógépek](log-analytics-windows-agent.md). Ha a tartományvezérlő már tartozik egy meglévő System Center Operations Manager-környezet, amelyet szeretne csatlakoztatni az OMS Szolgáltatáshoz, lásd: [csatlakozás az Operations Manager szolgáltatáshoz](log-analytics-om-agents.md).
-* Az Active Directory replikációs állapotát megoldás hozzáadása az OMS-munkaterület ismertetett eljárással [hozzáadni a Naplóelemzési megoldások a megoldások gyűjteményből](log-analytics-add-solutions.md).  Nincs szükség további konfigurációra.
+* Telepítenie kell ügynökök olyan tartományvezérlőn, amely a tartomány tagjaként kell kiértékelni. Vagy telepíthet ügynököket a kiszolgálókon és az ügynökök AD replikációs adatokat küldeni a Naplóelemzési konfigurálnia kell. Windows rendszerű számítógépek csatlakoztatása a Log Analyticshez ismertetése: [Log Analyticshez való csatlakozás Windows számítógépek](log-analytics-windows-agent.md). Ha a tartományvezérlő már tartozik egy meglévő System Center Operations Manager-környezet, amelyet szeretne csatlakozni a szolgáltatáshoz, lásd: [csatlakozás az Operations Manager szolgáltatáshoz](log-analytics-om-agents.md).
+* Az Active Directory replikációs állapotát megoldás hozzáadni a Naplóelemzési munkaterület ismertetett eljárással [hozzáadni a Naplóelemzési megoldások a megoldások gyűjteményből](log-analytics-add-solutions.md).  Nincs szükség további konfigurációra.
 
 ## <a name="ad-replication-status-data-collection-details"></a>AD replikációs állapot adatok gyűjtemény részletei
 A következő táblázat adatgyűjtési módszerek és egyéb adatok gyűjtése hogyan AD replikációs állapot részleteit.
@@ -42,12 +42,12 @@ A következő táblázat adatgyűjtési módszerek és egyéb adatok gyűjtése 
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |&#8226; |&#8226; |  |  |&#8226; |öt naponta |
 
-## <a name="optionally-enable-a-non-domain-controller-to-send-ad-data-to-oms"></a>Szükség esetén engedélyezze az egy nem tartományvezérlő AD adatküldés az OMS-be
-Ha nem szeretne összekapcsolni bármely tartományvezérlő közvetlenül az OMS-be, használhatja más OMS-csatlakoztatott számítógép abban a tartományban, a replikációs állapot AD megoldáscsomag adatokat gyűjthessen és az adatok küldése.
+## <a name="optionally-enable-a-non-domain-controller-to-send-ad-data-to-log-analytics"></a>Másik lehetőségként a nem-tartományvezérlő AD adatokat küldeni a Naplóelemzési engedélyezése
+Ha nem szeretné, a tartományvezérlőket bármelyikét közvetlen elérésére Naplóelemzési, használhatja lévő többi számítógép abban a tartományban, Log Analyticshez kapcsolódik az AD-replikáció állapotát megoldáscsomag adatokat gyűjthessen és küldheti az adatokat.
 
-### <a name="to-enable-a-non-domain-controller-to-send-ad-data-to-oms"></a>Egy nem tartományvezérlő AD adatokat küldeni a OMS engedélyezése
+### <a name="to-enable-a-non-domain-controller-to-send-ad-data-to-log-analytics"></a>Egy nem tartományvezérlő AD adatokat küldeni a Naplóelemzési engedélyezése
 1. Győződjön meg arról, hogy a számítógép a figyelheti a replikációs állapot AD megoldást használni kívánt tartomány tagja.
-2. [A Windows-számítógép csatlakoztatni az OMS Szolgáltatáshoz](log-analytics-windows-agent.md) vagy [csatlakoztassa az OMS-be a meglévő Operations Manager környezet használatával](log-analytics-om-agents.md), ha az nincs csatlakoztatva.
+2. [A Windows számítógép csatlakoztatása a Log Analyticshez](log-analytics-windows-agent.md) vagy [csatlakoztassa a meglévő Operations Manager-környezetet a Naplóelemzési használatával](log-analytics-om-agents.md), ha az nincs csatlakoztatva.
 3. Az adott számítógépen állítsa be a következő beállításkulcsot:
 
    * Kulcs: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management csoportok\<ManagementGroupName > \Solutions\ADReplication**
@@ -60,7 +60,7 @@ Ha nem szeretne összekapcsolni bármely tartományvezérlő közvetlenül az OM
    >
 
 ## <a name="understanding-replication-errors"></a>Replikációs hibák ismertetése
-Miután az OMS Szolgáltatáshoz küldött AD állapot adatokat, az OMS-irányítópult jelenleg hány replikálási hibákat jelző egy csempe hasonló az alábbi képen látható.  
+Miután szolgáltatáshoz küldött AD állapot adatokat, egy hasonló, a következő kép jelenleg hány replikálási hibákat jelző Naplóelemzési a csempe láthatja.  
 ![AD-replikáció állapota csempe](./media/log-analytics-ad-replication-status/oms-ad-replication-tile.png)
 
 **Kritikus fontosságú replikációs hibák** , amelyek vagy annál újabb 75 %-a hibák a [szemétgyűjtési](https://technet.microsoft.com/library/cc784932%28v=ws.10%29.aspx) az Active Directory-erdőben.
@@ -124,14 +124,14 @@ V: az adatokat öt naponta frissül.
 **K: van mód konfigurálása, hogy milyen gyakran frissül, ezeket az adatokat?**
 Jelenleg nem A:.
 
-**K: kell ahhoz, hogy a replikációs állapot hozzáadása összes a tartományvezérlő az OMS-munkaterület?**
-V: nem, csak egy tartományvezérlő hozzá kell adni. Ha az OMS-munkaterület több tartományvezérlőn is van, ezek az adatok küld az OMS Szolgáltatáshoz.
+**K: kell ahhoz, hogy a replikációs állapot a Naplóelemzési munkaterület hozzáadása összes a tartományvezérlő?**
+V: nem, csak egy tartományvezérlő hozzá kell adni. Ha több tartományvezérlő van a Naplóelemzési munkaterület, ezek az adatok Naplóelemzési érkezik.
 
-**K: nem szeretnék adja hozzá az OMS-munkaterület minden olyan tartományvezérlőn. Továbbra is használható az AD-replikáció állapotát megoldás?**
-V: Igen. Engedélyezheti a beállításkulcs értékét állíthatja be. Lásd: [ahhoz, hogy egy nem tartományvezérlő AD adatokat küldeni a OMS](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms).
+**K: nem szeretnék minden olyan tartományvezérlőn hozzáadni a Naplóelemzési munkaterület. Továbbra is használható az AD-replikáció állapotát megoldás?**
+V: Igen. Engedélyezheti a beállításkulcs értékét állíthatja be. Lásd: [ahhoz, hogy egy nem tartományvezérlő AD adatokat küldeni a Naplóelemzési](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms).
 
 **K: Mi az a folyamat, amelyet az adatgyűjtést a neve?**
-V: AdvisorAssessment.exe
+A: AdvisorAssessment.exe
 
 **K: mennyi ideig tart a gyűjtött adatok?**
 V: gyűjtemény ideje az Active Directory-környezet méretétől függ, de általában a kisebb, mint 15 percet vesz igénybe.
@@ -146,11 +146,11 @@ Jelenleg nem A:.
 A: az Active Directory normál felhasználói engedélyek megfelelőek.
 
 ## <a name="troubleshoot-data-collection-problems"></a>Adatok gyűjtése kapcsolatos problémák elhárítása
-Ahhoz, hogy az adatok gyűjtéséhez az AD-replikáció állapotát megoldáscsomag kell csatlakoztatni az OMS-munkaterület legalább egy tartományvezérlő van szükség. Csatlakozzon egy olyan tartományvezérlőre, amíg megjelenik egy üzenet azt jelzi, hogy **továbbra is gyűjtenek adatokat**.
+Ahhoz, hogy az adatok gyűjtéséhez az AD-replikáció állapotát megoldáscsomag kell csatlakoztatni a Naplóelemzési munkaterület legalább egy tartományvezérlő van szükség. Csatlakozzon egy olyan tartományvezérlőre, amíg megjelenik egy üzenet azt jelzi, hogy **továbbra is gyűjtenek adatokat**.
 
 Csatlakozás egy tartományvezérlő segítségre van szüksége, ha címen tekintheti [Log Analyticshez való csatlakozás Windows számítógépek](log-analytics-windows-agent.md). Azt is megteheti, ha a tartományvezérlő már csatlakoztatva van egy meglévő System Center Operations Manager-környezetbe, megtekintheti címen [csatlakozás a System Center Operations Manager szolgáltatáshoz](log-analytics-om-agents.md).
 
-Ha nem szeretne összekapcsolni, a tartományvezérlőket bármelyikét közvetlenül OMS vagy SCOM, [ahhoz, hogy egy nem tartományvezérlő AD adatokat küldeni a OMS](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms).
+Ha nem szeretne összekapcsolni, a tartományvezérlőket bármelyikét közvetlenül Naplóelemzési vagy System Center Operations Manager, lásd: [ahhoz, hogy egy nem tartományvezérlő AD adatokat küldeni a Naplóelemzési](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Használjon [Log Analytics-e jelentkezni a keresések](log-analytics-log-searches.md) Active Directory replikációs állapot részletes adatainak megtekintéséhez.

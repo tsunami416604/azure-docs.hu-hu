@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/25/2017
 ms.author: bryanla
-ms.openlocfilehash: 7d817a90277a1320ccc028822032916c98cae4b4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 15a7d43da7b5a700ae84a42d59a7f01f1711c5cd
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="assign-a-managed-service-identity-msi-access-to-a-resource-using-azure-cli"></a>A kezelt Service Identity (MSI) hozzáférés hozzárendelése egy erőforrás Azure parancssori felület használatával
 
@@ -41,13 +41,13 @@ A parancssori felület parancsfájl példák futtatásához három lehetőség k
 
 Egy Azure-erőforrás a MSI bekapcsolását követően [például egy Azure virtuális gép](msi-qs-configure-cli-windows-vm.md): 
 
-1. Az Azure parancssori felület a helyi konzol használata, először jelentkezzen be az Azure használatával [az bejelentkezési](/cli/azure/#login). Használjon olyan fiókot, amelybe szeretne telepíteni a virtuális Gépet az Azure-előfizetéshez társított:
+1. Az Azure parancssori felület a helyi konzol használata, először jelentkezzen be az Azure használatával [az bejelentkezési](/cli/azure/#az_login). Használjon olyan fiókot, amelybe szeretne telepíteni a virtuális Gépet az Azure-előfizetéshez társított:
 
    ```azurecli-interactive
    az login
    ```
 
-2. Ebben a példában azt hozzáadásakor jogosultságot ad az Azure virtuális gép hozzáférés tárfiókba. Először használjuk [az erőforráslistát](/cli/azure/resource/#list) a szolgáltatás egyszerű beolvasni a virtuális gép "myVM", amely jött létre, amikor a jelenleg engedélyezve van a virtuális Gépen az MSI-fájl neve:
+2. Ebben a példában azt hozzáadásakor jogosultságot ad az Azure virtuális gép hozzáférés tárfiókba. Először használjuk [az erőforráslistát](/cli/azure/resource/#az_resource_list) a szolgáltatás egyszerű beolvasni a virtuális gép "myVM", amely jött létre, amikor a jelenleg engedélyezve van a virtuális Gépen az MSI-fájl neve:
 
    ```azurecli-interactive
    spID=$(az resource list -n myVM --query [*].identity.principalId --out tsv)

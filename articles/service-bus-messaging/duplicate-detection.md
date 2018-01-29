@@ -11,19 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2017
+ms.date: 01/25/2018
 ms.author: sethm
-ms.openlocfilehash: 91a6e62a03ffe39e456129ea78821250b65091e4
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: efc5608d4812edbb3f477dffbc2b495b331bd787
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="duplicate-detection"></a>Kettős észlelés
 
-Ha egy alkalmazás tapasztal súlyos hiba után azonnal az üzenetet, és az újraindított alkalmazáspéldány ezért tévesen úgy véli, hogy az előzetes üzenet kézbesítése nem voltak végrehajthatók, egy későbbi küldési hatására a azonos hibaüzenet jelenik meg a rendszer kétszer.
+Ha egy alkalmazás tapasztal súlyos hiba után azonnal az üzenetet, és az újraindított alkalmazáspéldány tévesen magukat, hogy az előzetes üzenet kézbesítése nem voltak végrehajthatók, egy későbbi küldje hatására jelennek meg a rendszer kétszer ugyanazt az üzenetet.
 
-Akkor is megtörténik egy rövid ideig korábbi ügyfél vagy a hálózati szintű hiba, valamint a várólistán kell véglegesíteni a nyugtázást nem így az ügyfél sikeresen az elküldött üzenet. Ebben a forgatókönyvben az ügyfél a küldési művelet eredményét bizonytalan hagyja.
+Akkor is megtörténik egy rövid ideig korábbi ügyfél vagy a hálózati szintű hibát, és a várólistán, a nyugtázási és nem sikerült véglegesíteni az elküldött üzenet küld vissza az ügyfélnek. Ebben a forgatókönyvben az ügyfél a küldési művelet eredményét bizonytalan hagyja.
 
 Kettős észlelés kívül ezekben a helyzetekben bizonytalan engedélyezésével, a küldő újra elküldeni ugyanazt az üzenetet, valamint a az üzenetsor vagy témakör egyetlen duplikált elveti.
 
@@ -35,7 +35,7 @@ Az üzleti folyamatokat, amelyben több üzenetet küldött néhány alkalmazás
 
 A *MessageId* mindig lehet néhány GUID, de az üzleti folyamat azonosítója rögzítő eredményez előre jelezhető ismételhetőség, amely a kettős észlelés funkcióját kihasználva hatékonyan van szükség.
 
-## <a name="enable-duplicate-detection"></a>Kettős észlelés engedélyezése
+## <a name="enable-duplicate-detection"></a>Ismétlődések észlelésének engedélyezése
 
 A portálon, a szolgáltatás bekapcsol entitás létrehozása során a **ismétlődő észleléséhez** jelölőnégyzetet, amely alapértelmezés szerint ki van kapcsolva. Új témakörök létrehozásához az érték azonos.
 
@@ -53,7 +53,7 @@ Vegye figyelembe, hogy engedélyezi a kettős észlelés és a az ablak méreté
 
 Az ablak kis azt jelenti, hogy kevesebb üzenet-azonosítók kell maradnak, és megfelel, és átviteli tartása érintett kisebb. Magas teljesítmény entitások, kettős észlelés igénylő az ablak lehető legkisebb legyen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tudhat meg többet a Service Bus üzenetkezelés, a következő témakörökben:
 

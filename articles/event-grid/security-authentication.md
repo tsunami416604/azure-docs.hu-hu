@@ -8,11 +8,11 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: babanisa
-ms.openlocfilehash: e2f48b6e72072ce6bf019b3adc138ae83c162f25
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 510e578f3ebeb6ad7a4d81249cdfd7ce1d3684ad
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="event-grid-security-and-authentication"></a>Esemény rács biztonsági és hitelesítési 
 
@@ -22,9 +22,9 @@ Az Azure Event rács három típusú hitelesítés van:
 * Esemény közzététele
 * WebHook esemény kézbesítés
 
-## <a name="webhook-event-delivery"></a>WebHook esemény kézbesítés
+## <a name="webhook-event-delivery"></a>WebHook Event delivery
 
-Webhook olyan események fogadásához az Azure Event rács valós időben számos módja közül. Minden alkalommal, amikor készen áll a kézbesítendő új esemény van, az esemény rács Webhook magok egy HTTP-kérelem a beállított HTTP-végpont az eseményhez törzsében.
+Webhook olyan események fogadásához az Azure Event rács valós időben számos módja közül. Minden alkalommal, amikor készen áll a kézbesítendő új esemény van, az esemény rács Webhook HTTP-kérelmet küld a beállított HTTP-végpont az eseményhez törzsében.
 
 Esemény rácshoz is regisztrálhatja a saját WebHook végpont, akkor küld Önnek egy POST kérést egy egyszerű érvényesítési kódot ahhoz, hogy a végpont igazolva. Az alkalmazás kell válaszolnia által echo vissza az érvényesítési kódot. Esemény rács nem kézbesíteni WebHook végpontok, amelyek nem adta át az ellenőrzés.
 
@@ -234,6 +234,6 @@ A szerepkör hozzárendelése felhasználóhoz, használja:
 az role assignment create --assignee <user name> --role "<name of role>"
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Esemény rácshoz ismertetőért lásd: [esemény rács](overview.md)

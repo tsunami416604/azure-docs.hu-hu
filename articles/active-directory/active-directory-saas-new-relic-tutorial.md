@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/31/2017
 ms.author: jeedes
-ms.openlocfilehash: a97038b942998b611bdde50ccf67c5b2e3fa4cd5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5c5d6eb8333083cf87e35a667159ecc71b944e9a
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-new-relic"></a>Oktatóanyag: A New Relic Azure Active Directory-integráció
 
@@ -108,12 +108,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Új New Relic-tartomány és URL-címeket az egyszeri bejelentkezés információk](./media/active-directory-saas-new-relic-tutorial/tutorial_new-relic_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<subdomain>.newrelic.com`
+    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-cím: `https://rpm.newrelic.com/accounts/{acc_id}/sso/saml/login` -ügyeljen arra, hogy helyettesítse a saját új New Relic-fiókot azonosítóját.
 
     b. Az a **azonosító** szövegmező, írja be az értéket:`rpm.newrelic.com`
-
-    > [!NOTE] 
-    > Bejelentkezési URL-cím értéke nincs valós. Frissítse ezt az értéket a tényleges bejelentkezési URL-címet. Ügyfél [új New Relic-ügyfél-támogatási csoport](https://support.newrelic.com/) lekérni ezt az értéket. 
 
 4. A a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/08/2017
 ms.author: samacha
-ms.openlocfilehash: a27bae1828bd469d4439e0ce43098edd73f54243
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6ac5d3ab2a4df63c429f8478e392d84ac0ea6fd7
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Példa a gyakori Stream Analytics használati minták lekérdezése
 ## <a name="introduction"></a>Bevezetés
@@ -63,7 +63,7 @@ Ellenőrizze például, hogy az eredményt adja vissza, amely az A kezdődhet é
 
 | Ellenőrizze | LicensePlate | Time |
 | --- | --- | --- |
-| Honda |ABC – 123 |2015-01-01T00:00:01.0000000Z |
+| Honda |ABC-123 |2015-01-01T00:00:01.0000000Z |
 | Toyota |AAA-999 |2015-01-01T00:00:02.0000000Z |
 | Nissan |ABC-369 |2015-01-01T00:00:03.0000000Z |
 
@@ -146,7 +146,7 @@ Például egy küszöbérték-alapú riasztás adatok elemzése, és archiválja
 
 **Output2**:
 
-| Ellenőrizze | Time | Mennyiség |
+| Ellenőrizze | Time | Darabszám |
 | --- | --- | --- |
 | Toyota |2015-01-01T00:00:10.0000000Z |3 |
 
@@ -207,7 +207,7 @@ Például hogy hány egyedi lesz továbbítja a 2-második ablakban a téren ki�
 
 **A kimenetre:**
 
-| Darabszám | Time |
+| CountMake | Time |
 | --- | --- |
 | 2 |2015-01-01T00:00:02.000Z |
 | 1 |2015-01-01T00:00:04.000Z |
@@ -363,7 +363,7 @@ Például 2 egymást követő autók azonos ellenőrizze a megadott téren köz�
 
 | Ellenőrizze | LicensePlate | Time |
 | --- | --- | --- |
-| Honda |ABC – 123 |2015-01-01T00:00:01.0000000Z |
+| Honda |ABC-123 |2015-01-01T00:00:01.0000000Z |
 | Honda |AAA-999 |2015-01-01T00:00:02.0000000Z |
 | Toyota |DEF-987 |2015-01-01T00:00:03.0000000Z |
 | Honda |GHI-345 |2015-01-01T00:00:04.0000000Z |
@@ -372,7 +372,7 @@ Például 2 egymást követő autók azonos ellenőrizze a megadott téren köz�
 
 | Ellenőrizze | Time | CurrentCarLicensePlate | FirstCarLicensePlate | FirstCarTime |
 | --- | --- | --- | --- | --- |
-| Honda |2015-01-01T00:00:02.0000000Z |AAA-999 |ABC – 123 |2015-01-01T00:00:01.0000000Z |
+| Honda |2015-01-01T00:00:02.0000000Z |AAA-999 |ABC-123 |2015-01-01T00:00:01.0000000Z |
 
 **Megoldás**:
 
@@ -397,7 +397,7 @@ Például 2 egymást követő autók azonos ellenőrizze a megadott téren köz�
 | Felhasználó | Szolgáltatás | Esemény | Time |
 | --- | --- | --- | --- |
 | user@location.com |RightMenu |Indítás |2015-01-01T00:00:01.0000000Z |
-| user@location.com |RightMenu |Vége |2015-01-01T00:00:08.0000000Z |
+| user@location.com |RightMenu |Befejezés |2015-01-01T00:00:08.0000000Z |
 
 **Kimeneti**:  
 
@@ -469,7 +469,7 @@ Például generál egy eseményt 5 másodpercentként, az utoljára látott adat
 
 **Bemeneti**:
 
-| T | érték |
+| t | érték |
 | --- | --- |
 | "2014-01-01T06:01:00" |1 |
 | "2014-01-01T06:01:05" |2 |
@@ -508,7 +508,7 @@ Például generál egy eseményt 5 másodpercentként, az utoljára látott adat
 ## <a name="get-help"></a>Segítségkérés
 Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)

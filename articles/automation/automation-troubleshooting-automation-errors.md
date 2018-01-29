@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/22/2017
 ms.author: sngun; v-reagie
-ms.openlocfilehash: 95abba4fd293e2d04a58f0d07f955aca808434b7
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 76a3096595d07916159b3a50da0793c653a490a0
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="troubleshooting-common-issues-in-azure-automation"></a>Az Azure Automationben kapcsolatos gyakori hibák elhárítása 
 Ez a cikk ismerteti a hibaelhárítást előforduló hibákat tapasztalhat az Azure Automationben és azok megoldását lehetséges megoldások javasolja.
@@ -195,11 +195,19 @@ Törölheti a lekérdezés a megoldás, és a reonboard a megoldást, amely a le
 
 **A hiba oka:**
 
-Ez a hibaüzenet azt jelenti, hogy a központi telepítés szabályzatsértéséről miatt nem sikerült.
+Ez a hibaüzenet azt jelenti, hogy a központi telepítés egy vagy több házirend megsértése miatt nem sikerült.
 
 **Hibaelhárítási tippeket:**
 
-Ellenőrizze az értesítések az Azure portál jobb felső sarkában található, vagy keresse meg, amely tartalmazza az automation-fiók, és válassza ki az erőforráscsoport **központi telepítések** alatt **beállítások** megtekintéséhez a sikertelen központi telepítés. A további tudnivalók Azure házirend látogasson el: [Azure házirend áttekintése](../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fautomation%2ftoc.json)
+Ahhoz, hogy sikeresen üzembe helyezéséhez, kell figyelembe venni, a megadott házirend módosítása. Nincsenek házirendek, amelyek számos különböző típusú, mint az adott szükséges módosításokat a házirendet, amely sérül függ. Például, ha egy házirend lett adva egy erőforráscsoport, amely engedéllyel bizonyos típusú erőforrások erőforrás csoporton belüli tartalmának módosítása, hogy, például végrehajtja az alábbi:
+
+*   Távolítsa el teljesen a házirendet.
+* Próbálja érheti el a egy másik erőforráscsoportban található.
+* Vizsgálja felül a házirendet, például:
+   * A házirendet, újra célzó egy adott erőforrás (például egy adott Automation-fiók).
+   * A készlet módosítása erőforrások házirend lett beállítva, hogy megtagadja.
+
+Ellenőrizze az értesítések az Azure portál jobb felső sarkában található, vagy keresse meg, amely tartalmazza az automation-fiók, és válassza ki az erőforráscsoport **központi telepítések** alatt **beállítások** megtekintéséhez a sikertelen központi telepítés. További információt az Azure házirend látogasson el: [áttekintése Azure házirend](../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fautomation%2ftoc.json).
 
 ## <a name="next-steps"></a>További lépések
 

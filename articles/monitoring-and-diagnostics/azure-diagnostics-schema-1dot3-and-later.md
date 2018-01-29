@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: robb
-ms.openlocfilehash: 2ee66e0f41868d7d5411605596a22c00b5712896
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 02656c5bb4d2acd944f565d1397984ce94ced0bd
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Az Azure Diagnostics 1.3 és későbbi konfigurációs séma
 > [!NOTE]
@@ -411,7 +411,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Attribútumok|Leírás|  
 |----------------|-----------------|  
-| **overallQuotaInMB** | Előfordulhat, hogy használni a különböző típusú Azure Diagnostics által gyűjtött diagnosztikai adatok helyi lemezterület maximális mennyisége. Az alapértelmezett érték 5120 MB.<br />
+| **overallQuotaInMB** | Előfordulhat, hogy használni a különböző típusú Azure Diagnostics által gyűjtött diagnosztikai adatok helyi lemezterület maximális mennyisége. Az alapértelmezett érték 4096 MB.<br />
 |**useProxyServer** | Azure Diagnostics használatára a proxykiszolgáló beállításait ahogyan az Internet Explorer beállításainak konfigurálása.|  
 
 <br /> <br />
@@ -429,7 +429,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 
-## <a name="crashdumps-element"></a>CrashDumps elem  
+## <a name="crashdumps-element"></a>CrashDumps Element  
  *Fa: A gyökérkönyvtár - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - CrashDumps*
  
  Összeomlási memóriaképek gyűjtésének engedélyezése.  
@@ -497,7 +497,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 
-## <a name="etweventsourceproviderconfiguration-element"></a>EtwEventSourceProviderConfiguration elem  
+## <a name="etweventsourceproviderconfiguration-element"></a>EtwEventSourceProviderConfiguration Element  
  *: Tartománygyökér - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - EtwProviders - EtwEventSourceProviderConfiguration*
 
  Konfigurálja az előállított eseményeinek gyűjtése [EventSource osztály](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx).  
@@ -509,7 +509,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 
-## <a name="etwmanifestproviderconfiguration-element"></a>EtwManifestProviderConfiguration elem  
+## <a name="etwmanifestproviderconfiguration-element"></a>EtwManifestProviderConfiguration Element  
  *Fa: Gyökér - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - EtwProviders - EtwManifestProviderConfiguration*
 
 |Gyermekelemek|Leírás|  
@@ -557,7 +557,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Gyermekelem|Leírás|  
 |-------------------|-----------------|  
-|**Adatforrás**|A Windows eseménynaplóiban gyűjtéséhez. Kötelező attribútum:<br /><br /> **név** – a windows-eseményeket tudjon gyűjteni leíró XPath-lekérdezést. Példa:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Minden eseményt gyűjt, adja meg a "*"|  
+|**DataSource**|A Windows eseménynaplóiban gyűjtéséhez. Kötelező attribútum:<br /><br /> **név** – a windows-eseményeket tudjon gyűjteni leíró XPath-lekérdezést. Példa:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Minden eseményt gyűjt, adja meg a "*"|  
 
 
 
@@ -572,9 +572,9 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |Attribútum|Típus|Leírás|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**unsignedInt**|Választható. Meghatározza a maximális időt a rendszer fájltárolók érhetők el a megadott adatokat.<br /><br /> Az alapértelmezett érték 0.|  
-|**scheduledTransferLogLevelFilterr**|**karakterlánc**|Választható. Meghatározza a naplóbejegyzéseket, amelyeket a minimális súlyossági szintet. Az alapértelmezett érték **meghatározatlan**, amely továbbítja az összes naplófájlt. Más lehetséges értékek (legalább információkat a legtöbb sorrendben): **részletes**, **információk**, **figyelmeztetés**, **hiba**, és **kritikus**.|  
+|**scheduledTransferLogLevelFilterr**|**string**|Választható. Meghatározza a naplóbejegyzéseket, amelyeket a minimális súlyossági szintet. Az alapértelmezett érték **meghatározatlan**, amely továbbítja az összes naplófájlt. Más lehetséges értékek (legalább információkat a legtöbb sorrendben): **részletes**, **információk**, **figyelmeztetés**, **hiba**, és **kritikus**.|  
 |**scheduledTransferPeriod**|**időtartam**|Választható. Az időköz ütemezett átvitelek adatok felfelé kerekítve a legközelebbi perc között.<br /><br /> Az alapértelmezett érték PT0S.|  
-|**fogadók esetében** 1.5-ös hozzáadva|**karakterlánc**|Választható. A fogadó hely is a diagnosztikai adatok küldése mutat. Például az Application Insights.|  
+|**fogadók esetében** 1.5-ös hozzáadva|**string**|Választható. A fogadó hely is a diagnosztikai adatok küldése mutat. Például az Application Insights.|  
 
 ## <a name="dockersources"></a>DockerSources
  *Fa: A gyökérkönyvtár - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - DockerSources*
@@ -592,7 +592,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Elem neve|Leírás|  
 |------------------|-----------------|  
-|**A fogadó**|Ezen az oldalon máshol lásd a leírást.|  
+|**Sink**|Ezen az oldalon máshol lásd a leírást.|  
 
 ## <a name="sink-element"></a>Elem gyűjtése
  *Fa: A gyökérkönyvtár - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - fogadó*
@@ -603,12 +603,12 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Attribútum|Típus|Leírás|  
 |---------------|----------|-----------------|  
-|**név**|Karakterlánc|A sinkname azonosító karakterláncot.|  
+|**name**|karakterlánc|A sinkname azonosító karakterláncot.|  
 
 |Elem|Típus|Leírás|  
 |-------------|----------|-----------------|  
-|**Application Insights**|Karakterlánc|Csak akkor, amikor adatokat küld az Application Insights használt. Aktív Application Insights-fiók, amely rendelkezik hozzáféréssel a Instrumentation kulcsot tartalmaz.|  
-|**Csatornák**|Karakterlánc|Minden további szűréséhez, hogy adatfolyamként küldje el, amikor egy|  
+|**Application Insights**|karakterlánc|Csak akkor, amikor adatokat küld az Application Insights használt. Aktív Application Insights-fiók, amely rendelkezik hozzáféréssel a Instrumentation kulcsot tartalmaz.|  
+|**Csatornák**|karakterlánc|Minden további szűréséhez, hogy adatfolyamként küldje el, amikor egy|  
 
 ## <a name="channels-element"></a>Csatornák elem  
  *Fa: Gyökér - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - fogadó - csatornák*
@@ -619,7 +619,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Elem|Típus|Leírás|  
 |-------------|----------|-----------------|  
-|**Csatorna**|Karakterlánc|Ezen az oldalon máshol lásd a leírást.|  
+|**Channel**|karakterlánc|Ezen az oldalon máshol lásd a leírást.|  
 
 ## <a name="channel-element"></a>Csatorna elem
  *Fa: Gyökér - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - fogadó - csatornák - csatorna*
@@ -630,8 +630,8 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Attribútumok|Típus|Leírás|  
 |----------------|----------|-----------------|  
-|**logLevel**|**karakterlánc**|Meghatározza a naplóbejegyzéseket, amelyeket a minimális súlyossági szintet. Az alapértelmezett érték **meghatározatlan**, amely továbbítja az összes naplófájlt. Más lehetséges értékek (legalább információkat a legtöbb sorrendben): **részletes**, **információk**, **figyelmeztetés**, **hiba**, és **kritikus**.|  
-|**név**|**karakterlánc**|A csatornát, tekintse meg egy egyedi neve|  
+|**logLevel**|**string**|Meghatározza a naplóbejegyzéseket, amelyeket a minimális súlyossági szintet. Az alapértelmezett érték **meghatározatlan**, amely továbbítja az összes naplófájlt. Más lehetséges értékek (legalább információkat a legtöbb sorrendben): **részletes**, **információk**, **figyelmeztetés**, **hiba**, és **kritikus**.|  
+|**name**|**string**|A csatornát, tekintse meg egy egyedi neve|  
 
 
 ## <a name="privateconfig-element"></a>PrivateConfig elem 

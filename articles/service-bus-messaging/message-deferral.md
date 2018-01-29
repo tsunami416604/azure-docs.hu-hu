@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 01/26/2018
 ms.author: sethm
-ms.openlocfilehash: f84b870de4b79399d5edc90284c9c56222156b5d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bece2be88a020610dfd3d22f15f7d276d99bb153
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="message-deferral"></a>Üzenet halasztás
 
@@ -35,13 +35,13 @@ Az API [BrokeredMessage.Defer](/dotnet/api/microsoft.servicebus.messaging.broker
 
 A fő várakozási sorba együtt az összes többi aktív üzenet (ellentétben a kézbesítetlen levelek egy alárendelt várólista élnek) késleltetett üzenetek megmaradnak, de azok már nem fogadhatók a rendszeres Receive/ReceiveAsync függvények használatával. Késleltetett üzenetek keresztül észlelhetők [üzenet böngészés](message-browsing.md) Ha egy alkalmazás elveszti nyomon őket.
 
-Késleltetett üzenet beolvasása, a "tulajdonos" felelős, a jelszóelőzmények a [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) , ez eltér az. A fogadó, hogy ismeri a **SequenceNumber** késleltetett üzenet később fogadhat kifejezetten Receive(sequenceNumber), az üzenet.
+Késleltetett üzenet beolvasása, a tulajdonos felelős, a jelszóelőzmények a [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) , ez eltér az. A fogadó, hogy ismeri a késleltetett üzenet sorszáma is később a üzenet explicit módon `Receive(sequenceNumber)`.
 
-Ha egy üzenet feldolgozása sikertelen, mert egy adott erőforráshoz, az üzenet kezelése átmenetileg nem érhető el, de kell üzenet feldolgozása nem summarily felfüggeszteni, egy elegáns, amelyre az üzenetet a oldalon néhány percig módja jegyezze meg a **SequenceNumber** a egy [ütemezett üzenet](message-sequencing.md) közzé lehet tenni, néhány perc múlva, és újra letölteni a késleltetett üzenetet, az ütemezett üzenet érkezésekor. Vegye figyelembe, hogy egy üzenetkezelő minden műveletnél adatbázis függ, és, hogy az adatbázis átmenetileg nem érhető el, ha azt kell halasztás használja, de ahelyett, hogy az üzenetek fogadására felfüggesztése elemet, amíg az adatbázis újból elérhető lesz.
+Ha egy üzenet feldolgozása sikertelen, mert egy adott erőforráshoz, az üzenet kezelése átmenetileg nem érhető el, de kell üzenet feldolgozása nem summarily felfüggeszteni, egy üzenet put oldalán néhány percig módja ne feledje a  **SequenceNumber** a egy [ütemezett üzenet](message-sequencing.md) közzé lehet tenni, néhány perc múlva, és újra letölteni a késleltetett üzenetet, az ütemezett üzenet érkezésekor. Vegye figyelembe, hogy egy üzenetkezelő minden műveletnél adatbázis függ, és, hogy az adatbázis átmenetileg nem érhető el, ha azt kell halasztás használja, de ahelyett, hogy az üzenetek fogadására felfüggesztése elemet, amíg az adatbázis újból elérhető lesz.
 
 Üzenetek késleltető nem befolyásolja az üzenet lejárati, azaz késleltetett üzenetek továbbra is az eredetileg megadott időpontban lejár és áthelyezik a kézbesítetlen levelek várólistájára kerülő Ha így vannak konfigurálva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tudhat meg többet a Service Bus üzenetkezelés, a következő témakörökben:
 

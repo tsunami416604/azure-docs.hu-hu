@@ -1,194 +1,189 @@
 ---
-title: "Konfigurálja az SSL kiszervezési - Azure Application Gateway - Azure CLI 2.0 |} Microsoft Docs"
-description: "Ez a cikk ismerteti az utasításokat követve hozzon létre egy alkalmazás SSL-kiszervezés Azure CLI 2.0 használatával"
-documentationcenter: na
+title: "Hozzon létre egy alkalmazás SSL-lezárást - Azure parancssori Felülettel |} Microsoft Docs"
+description: "Megtudhatja, hogyan Alkalmazásátjáró létrehozása és hozzáadása egy tanúsítványt az SSL-lezárást az Azure parancssori felület használatával."
 services: application-gateway
 author: davidmu1
 manager: timlt
 editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/26/2017
+ms.date: 01/18/2018
 ms.author: davidmu
-ms.openlocfilehash: 4bdca33dae2ce52fdeccdae9a67abb6667593f9d
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: f0a18f940cf3b4bbedd4b8e5c89cbbeb1bafef77
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="configure-an-application-gateway-for-ssl-offload-by-using-azure-cli-20"></a>Az SSL-kiszervezés Alkalmazásátjáró konfigurálása Azure CLI 2.0 használatával
+# <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>Hozzon létre egy alkalmazást az Azure parancssori felület használatával SSL-lezárást
 
-> [!div class="op_single_selector"]
-> * [Azure Portal](application-gateway-ssl-portal.md)
-> * [Azure Resource Manager PowerShell](application-gateway-ssl-arm.md)
-> * [Az Azure klasszikus PowerShell](application-gateway-ssl.md)
-> * [Azure CLI 2.0](application-gateway-ssl-cli.md)
+Az Azure parancssori felület használatával hozzon létre egy [Alkalmazásátjáró](application-gateway-introduction.md) az egy tanúsítvánnyal rendelkező [SSL-lezárást](application-gateway-backend-ssl.md) használ, amely egy [virtuálisgép-méretezési csoport](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) háttérkiszolgálókhoz. Ebben a példában a méretezési tartalmazza az Alkalmazásátjáró alapértelmezett háttérkészlet által hozzáadott két virtuálisgép-példánya.
 
-Az Azure Application Gateway konfigurálható úgy, hogy leállítsa a Secure Sockets Layer (SSL) munkamenetét az átjárónál, így elkerülhetők a költséges SSL visszafejtési feladatok a webfarmon. SSL kiszervezési is egyszerűbbé teszi a tanúsítványok kezelését az előtér-kiszolgálón.
+Ebből a cikkből megismerheti, hogyan:
 
-## <a name="prerequisite-install-the-azure-cli-20"></a>Előfeltétel: Az Azure parancssori felület 2.0 telepítése
+> [!div class="checklist"]
+> * Önaláírt tanúsítvány létrehozása
+> * A hálózat beállítása
+> * Hozzon létre egy alkalmazást a tanúsítvány
+> * Hozzon létre egy virtuálisgép-méretezési állítható be alapértelmezett háttérkészlet
 
-Ebben a cikkben szereplő lépések végrehajtásához kell [telepítse az Azure parancssori felület Mac, Linux és Windows (Azure CLI)](https://docs.microsoft.com/cli/azure/install-az-cli2).
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="required-components"></a>Szükséges összetevők
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-* **Háttér-kiszolgálófiók készlet**: a háttér-kiszolgálók IP-címek listáját. A felsorolt IP-címek a virtuális hálózati alhálózat kell tartoznia, vagy egy nyilvános IP-cím vagy a virtuális IP-cím (VIP) kell lennie.
-* **Háttér-kiszolgálófiók Készletbeállítások**: minden készlethez beállítások, például a portot, a protokoll és a cookie-alapú kapcsolat van. Ezek a beállítások egy adott készlethez kapcsolódnak, és a készlet minden kiszolgálójára érvényesek.
-* **Előtér-port**: Ez a port nem nyilvános port meg van nyitva, az alkalmazás-átjárón. Amikor a forgalom eléri ezt a portot, a port átirányítja az egyik háttérkiszolgálóra.
-* **Figyelő**: A figyelő rendelkezik egy előtér-portot, a protokollt (Http vagy Https; ezek a beállítások-és nagybetűk), és az SSL-tanúsítvány neve (ha az SSL beállításának-kiszervezés).
-* **A szabály**: A szabály van kötve, a figyelő és a háttér-kiszolgálófiók készletben, és határozza meg, melyik háttér-kiszolgálófiók készlet át tudja irányítani a forgalmat, a találatok, amikor egy adott figyelő. Jelenleg csak a *basic* szabály támogatott. A *basic* szabály a ciklikus időszeleteléses terheléselosztás.
+Ha a CLI helyi telepítését és használatát választja, akkor ehhez a gyorsútmutatóhoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli).
 
-**További konfigurációs megjegyzések**
+## <a name="create-a-self-signed-certificate"></a>Önaláírt tanúsítvány létrehozása
 
-Az SSL-tanúsítványok konfigurálásához *Https*-re kell módosítani a **HttpListener** protokollját (megkülönböztetve a kis- és nagybetűket). Adja hozzá a **SslCertificate** elem **HttpListener** az SSL-tanúsítvány konfigurálva a változó értékével. Az előtér-port frissíteni kell, hogy **443-as**.
-
-**Ahhoz, hogy a cookie-alapú kapcsolat**: annak érdekében, hogy egy ügyfél kérelmet mindig van irányítva az azonos virtuális gép a webfarm Alkalmazásátjáró konfigurálhatja. Ennek megvalósítása érdekében beszúrása egy munkamenetcookie-t, amely lehetővé teszi, hogy az átjáró megfelelően irányítja a forgalmat. A cookie-alapú affinitás engedélyezéséhez a **CookieBasedAffinity** paraméter beállítása legyen *Enabled* a **BackendHttpSettings** elemen belül.
-
-## <a name="configure-ssl-offload-on-an-existing-application-gateway"></a>A meglévő Alkalmazásátjáró SSL kiszervezési konfigurálása
-
-Adjon meg egy meglévő Alkalmazásátjáró SSL kiszervezési konfigurálása a következő parancsokat:
+Az éles környezetben való használathoz importálnia kell a megbízható szolgáltató által aláírt érvényes tanúsítványt. Ebben az oktatóanyagban létrehozhat egy önaláírt tanúsítványt és a pfx-fájlt az openssl-paranccsal.
 
 ```azurecli-interactive
-#!/bin/bash
-
-# Create a new front end port to be used for SSL
-az network application-gateway frontend-port create \
-  --name sslport \
-  --port 443 \
-  --gateway-name "AdatumAppGateway" \
-  --resource-group "AdatumAppGatewayRG"
-
-# Upload the .pfx certificate for SSL offload
-az network application-gateway ssl-cert create \
-  --name "newcert" \
-  --cert-file /home/azureuser/self-signed/AdatumAppGatewayCert.pfx \
-  --cert-password P@ssw0rd \
-  --gateway-name "AdatumAppGateway" \
-  --resource-group "AdatumAppGatewayRG"
-
-# Create a new listener referencing the port and certificate created earlier
-az network application-gateway http-listener create \
-  --frontend-ip "appGatewayFrontendIP" \
-  --frontend-port sslport  \
-  --name sslListener \
-  --ssl-cert newcert \
-  --gateway-name "AdatumAppGateway" \
-  --resource-group "AdatumAppGatewayRG"
-
-# Create a new back-end pool to be used
-az network application-gateway address-pool create \
-  --gateway-name "AdatumAppGateway" \
-  --resource-group "AdatumAppGatewayRG" \
-  --name "appGatewayBackendPool2" \
-  --servers 10.0.0.7 10.0.0.8
-
-# Create a new back-end HTTP settings using the new probe
-az network application-gateway http-settings create \
-  --name "settings2" \
-  --port 80 \
-  --cookie-based-affinity Enabled \
-  --protocol "Http" \
-  --gateway-name "AdatumAppGateway" \
-  --resource-group "AdatumAppGatewayRG"
-
-# Create a new rule linking the listener to the back-end pool
-az network application-gateway rule create \
-  --name "rule2" \
-  --rule-type Basic \
-  --http-settings settings2 \
-  --http-listener ssllistener \
-  --address-pool temp1 \
-  --gateway-name "AdatumAppGateway" \
-  --resource-group "AdatumAppGatewayRG"
-
+openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out appgwcert.crt
 ```
 
-## <a name="create-an-application-gateway-with-ssl-offload"></a>Hozzon létre egy alkalmazás SSL kiürítése
-
-Az alábbi minta Alkalmazásátjáró SSL kiszervezési hoz létre. A tanúsítvány és a tanúsítvány jelszava frissíteni kell, hogy érvényes titkos kulccsal.
+Adja meg az értékeket, amelyeket a tanúsítvány jelentéssel bírnak. Elfogadhatja az alapértelmezett értékeket.
 
 ```azurecli-interactive
-#!/bin/bash
+openssl pkcs12 -export -out appgwcert.pfx -inkey privateKey.key -in appgwcert.crt
+```
 
-# Creates an application gateway with SSL offload
+Adja meg a jelszót a tanúsítványhoz. Ebben a példában *Azure123456!* használatban van.
+
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+
+Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy erőforrás csoport használatával [az csoport létrehozása](/cli/azure/group#create).
+
+Az alábbi példa létrehoz egy erőforráscsoportot *myResourceGroupAG* a a *eastus* helyét.
+
+```azurecli-interactive 
+az group create --name myResourceGroupAG --location eastus
+```
+
+## <a name="create-network-resources"></a>Hálózati erőforrások létrehozása
+
+Nevű a virtuális hálózat létrehozása *myVNet* és nevű alhálózat *myAGSubnet* használatával [az hálózati vnet létrehozása](/cli/azure/network/vnet#az_net). Majd adja hozzá a nevű alhálózat *myBackendSubnet* , amely van szükség a háttérkiszolgálók használatával [az alhálózaton virtuális hálózat létrehozása](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create). A nyilvános IP-cím nevű létrehozása *myAGPublicIPAddress* használatával [létrehozása az hálózati nyilvános ip-](/cli/azure/public-ip#az_network_public_ip_create).
+
+```azurecli-interactive
+az network vnet create \
+  --name myVNet \
+  --resource-group myResourceGroupAG \
+  --location eastus \
+  --address-prefix 10.0.0.0/16 \
+  --subnet-name myAGSubnet \
+  --subnet-prefix 10.0.1.0/24
+az network vnet subnet create \
+  --name myBackendSubnet \
+  --resource-group myResourceGroupAG \
+  --vnet-name myVNet \
+  --address-prefix 10.0.2.0/24
+az network public-ip create \
+  --resource-group myResourceGroupAG \
+  --name myAGPublicIPAddress
+```
+
+## <a name="create-the-application-gateway"></a>Application Gateway létrehozása
+
+Használhat [az hálózati Alkalmazásátjáró létrehozása](/cli/azure/application-gateway#create) az Alkalmazásátjáró létrehozása. Alkalmazásátjáró az Azure parancssori felület használatával hoz létre, amikor konfigurációs adatokat, például, sku, és a HTTP-beállításait adja meg. 
+
+Az Alkalmazásátjáró hozzá van rendelve *myAGSubnet* és *myAGPublicIPAddress* , amelyet korábban hozott létre. Ebben a példában társít a létrehozott tanúsítvány és a jelszót az Alkalmazásátjáró létrehozásakor. 
+
+```azurecli-interactive
 az network application-gateway create \
-  --name "AdatumAppGateway3" \
-  --location "eastus" \
-  --resource-group "AdatumAppGatewayRG2" \
-  --vnet-name "AdatumAppGatewayVNET2" \
-  --cert-file /home/azureuser/self-signed/AdatumAppGatewayCert.pfx \
-  --cert-password P@ssw0rd \
-  --vnet-address-prefix "10.0.0.0/16" \
-  --subnet "Appgatewaysubnet" \
-  --subnet-address-prefix "10.0.0.0/28" \
-  --frontend-port 443 \
-  --servers "10.0.0.5 10.0.0.4" \
+  --name myAppGateway \
+  --location eastus \
+  --resource-group myResourceGroupAG \
+  --vnet-name myVNet \
+  --subnet myAGsubnet \
   --capacity 2 \
-  --sku "Standard_Small" \
-  --http-settings-cookie-based-affinity "Enabled" \
-  --http-settings-protocol "Http" \
-  --frontend-port "80" \
-  --routing-rule-type "Basic" \
-  --http-settings-port "80" \
-  --public-ip-address "pip" \
-  --public-ip-address-allocation "dynamic"
+  --sku Standard_Medium \
+  --http-settings-cookie-based-affinity Disabled \
+  --frontend-port 443 \
+  --http-settings-port 80 \
+  --http-settings-protocol Http \
+  --public-ip-address myAGPublicIPAddress \
+  --cert-file appgwcert.pfx \
+  --cert-password "Azure123456!"
+
 ```
 
-## <a name="get-an-application-gateway-dns-name"></a>Egy alkalmazás átjáró DNS-név beolvasása
+ Az alkalmazás-átjáró hozható létre több percig is eltarthat. Az Alkalmazásátjáró létrehozása után megtekintheti az új szolgáltatásokat is:
 
-Az átjáró létrehozása után a következő lépésre konfigurálhatja az előtér-kommunikációra.  Alkalmazásátjáró szükséges egy dinamikusan hozzárendelt DNS-név, ha egy nyilvános IP-cím használatával, amely nincs rövid. Annak érdekében, hogy a végfelhasználók is elérte az Alkalmazásátjáró, egy CNAME rekordot a segítségével a nyilvános végpontot az Alkalmazásátjáró mutasson. További információkért lásd: [az egyéni tartománynév konfigurálása az Azure-ban](../cloud-services/cloud-services-custom-domain-name-portal.md). 
+- *appGatewayBackendPool* -Alkalmazásátjáró rendelkeznie kell legalább egy háttér címkészletet.
+- *appGatewayBackendHttpSettings* – Megadja, hogy 80-as porton, és olyan HTTP protokollt használja a kommunikációhoz.
+- *appGatewayHttpListener* -a társított alapértelmezett figyelő *appGatewayBackendPool*.
+- *appGatewayFrontendIP* -hozzárendel *myAGPublicIPAddress* való *appGatewayHttpListener*.
+- *Szabály1* - útválasztási szabály társított alapértelmezett *appGatewayHttpListener*.
 
-Alias konfigurálásához beolvasni az Alkalmazásátjáró és a hozzá társított IP-/ DNS-név segítségével részleteit a **PublicIPAddress** elem csatolva az Alkalmazásátjáró. Az Alkalmazásátjáró DNS-név használatával hozzon létre egy CNAME rekordot, amely mutat, a két webes alkalmazásokhoz, hogy a DNS-név. A-rekordok használatát, mert a VIP módosíthatja a indítsa újra az alkalmazás-átjáró nem ajánlott.
+## <a name="create-a-virtual-machine-scale-set"></a>Hozzon létre egy virtuálisgép-méretezési csoport
 
+Ebben a példában hozzon létre egy virtuálisgép-méretezési csoport, amely biztosítja az Alkalmazásátjáró alapértelmezett háttérkészlet kiszolgálók. A méretezési csoportban lévő virtuális gépek társított *myBackendSubnet* és *appGatewayBackendPool*. A skála létrehozásához állítsa be, használhatja [az vmss létrehozása](/cli/azure/vmss#az_vmss_create).
 
 ```azurecli-interactive
-az network public-ip show --name "pip" --resource-group "AdatumAppGatewayRG"
+az vmss create \
+  --name myvmss \
+  --resource-group myResourceGroupAG \
+  --image UbuntuLTS \
+  --admin-username azureuser \
+  --admin-password Azure123456! \
+  --instance-count 2 \
+  --vnet-name myVNet \
+  --subnet myBackendSubnet \
+  --vm-sku Standard_DS2 \
+  --upgrade-policy-mode Automatic \
+  --app-gateway myAppGateway \
+  --backend-pool-name appGatewayBackendPool
 ```
 
-```
+### <a name="install-nginx"></a>Az NGINX telepítése
+
+A szerkesztő létre szeretne hozni a fájlt a felhő rendszerhéj használata. Adja meg `sensible-editor cloudConfig.json` a fájl létrehozásához elérhető szerkesztők listájának megjelenítéséhez. Az aktuális rendszerhéjban customConfig.json nevű fájl létrehozása, és illessze be a következő konfigurációt:
+
+```json
 {
-  "dnsSettings": {
-    "domainNameLabel": null,
-    "fqdn": "8c786058-96d4-4f3e-bb41-660860ceae4c.cloudapp.net",
-    "reverseFqdn": null
-  },
-  "etag": "W/\"3b0ac031-01f0-4860-b572-e3c25e0c57ad\"",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/AdatumAppGatewayRG/providers/Microsoft.Network/publicIPAddresses/pip2",
-  "idleTimeoutInMinutes": 4,
-  "ipAddress": "40.121.167.250",
-  "ipConfiguration": {
-    "etag": null,
-    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/AdatumAppGatewayRG/providers/Microsoft.Network/applicationGateways/AdatumAppGateway2/frontendIPConfigurations/appGatewayFrontendIP",
-    "name": null,
-    "privateIpAddress": null,
-    "privateIpAllocationMethod": null,
-    "provisioningState": null,
-    "publicIpAddress": null,
-    "resourceGroup": "AdatumAppGatewayRG",
-    "subnet": null
-  },
-  "location": "eastus",
-  "name": "pip2",
-  "provisioningState": "Succeeded",
-  "publicIpAddressVersion": "IPv4",
-  "publicIpAllocationMethod": "Dynamic",
-  "resourceGroup": "AdatumAppGatewayRG",
-  "resourceGuid": "3c30d310-c543-4e9d-9c72-bbacd7fe9b05",
-  "tags": {
-    "cli[2] owner[administrator]": ""
-  },
-  "type": "Microsoft.Network/publicIPAddresses"
+  "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"],
+  "commandToExecute": "./install_nginx.sh"
 }
 ```
 
+Futtassa a parancsot a rendszerhéj ablakban:
+
+```azurecli-interactive
+az vmss extension set \
+  --publisher Microsoft.Azure.Extensions \
+  --version 2.0 \
+  --name CustomScript \
+  --resource-group myResourceGroupAG \
+  --vmss-name myvmss \
+  --settings @cloudConfig.json
+```
+
+## <a name="test-the-application-gateway"></a>Az Alkalmazásátjáró tesztelése
+
+Ahhoz, hogy az alkalmazás átjáró nyilvános IP-címét, használhatja a [az hálózati nyilvános ip-megjelenítése](/cli/azure/network/public-ip#az_network_public_ip_show). Másolja a nyilvános IP-címet, és illessze be a böngésző címsorába.
+
+```azurepowershell-interactive
+az network public-ip show \
+  --resource-group myResourceGroupAG \
+  --name myAGPublicIPAddress \
+  --query [ipAddress] \
+  --output tsv
+```
+
+![Biztonságos figyelmeztetés](./media/application-gateway-ssl-cli/application-gateway-secure.png)
+
+Válassza ki a biztonsági figyelmeztetést, ha egy önaláírt tanúsítványt használt elfogadásához **részletek** , majd **nyissa meg a képernyőn látható weblapon**. A biztonságos NGINX-webhelyet akkor jelenik meg, az alábbi példában látható módon:
+
+![Az alkalmazás átjáró alap URL-cím tesztelése](./media/application-gateway-ssl-cli/application-gateway-nginx.png)
+
 ## <a name="next-steps"></a>További lépések
 
-Ha szeretne konfigurálni a belső terheléselosztót használ, tekintse meg az Alkalmazásátjáró [hozzon létre egy alkalmazást a belső terheléselosztók](application-gateway-ilb.md).
+Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
-Terheléselosztási beállítások általában kapcsolatos további információkért lásd:
+> [!div class="checklist"]
+> * Önaláírt tanúsítvány létrehozása
+> * A hálózat beállítása
+> * Hozzon létre egy alkalmazást a tanúsítvány
+> * Hozzon létre egy virtuálisgép-méretezési állítható be alapértelmezett háttérkészlet
 
-* [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
-* [Azure Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
+További információt a alkalmazásátjárót és a kapcsolódó erőforrások, továbbra is a útmutatókat.

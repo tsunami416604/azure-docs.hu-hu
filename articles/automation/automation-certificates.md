@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: b6a5ff4fa3fd0084fd910968651c6ae0fefaf2cf
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 55ad7d4b2643b448801f41aea95f3505d9fcd78f
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="certificate-assets-in-azure-automation"></a>Azure Automation szolgáltatásbeli tanúsítvány eszközök
 
@@ -28,18 +28,26 @@ Tanúsítványok tárolhatja biztonságosan Azure Automation, azok a runbookok v
 > Az Azure Automationben biztonságos eszközök közé tartozik a hitelesítő adatokat, a tanúsítványokat, a kapcsolatok és a titkosított változók. Ezek az eszközök titkosítva, és tárolja az Azure Automation létrehozott egyedi kulcs segítségével minden egyes automation-fiókhoz. Ezt a kulcsot egy mestertanúsítvány titkosítja és az Azure Automationben tárolja. Előtt tárolása biztonságos eszköz, az automatizálási fiók kulcs visszafejtése a mestertanúsítvány, és majd az eszköz titkosításához használt.
 > 
 
-## <a name="windows-powershell-cmdlets"></a>Windows PowerShell-parancsmagjai
-
-A következő táblázatban található parancsmagokkal létrehozása és kezelése az automation tanúsítvány eszközök a Windows PowerShell segítségével. Részét képezi a [Azure PowerShell modul](../powershell-install-configure.md) elérhető Automation-forgatókönyveket és a DSC-konfigurációk.
+## <a name="azurerm-powershell-cmdlets"></a>AzureRM PowerShell-parancsmagok
+A következő táblázatban található parancsmagokkal AzureRM, létrehozását és kezelését az automatizálási hitelesítő eszközök a Windows PowerShell használatával történik.  Részét képezi a [AzureRM.Automation modul](/powershell/azure/overview) elérhető Automation-forgatókönyveket és a DSC-konfigurációk.
 
 |Parancsmagok|Leírás|
 |:---|:---|
 |[Get-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationcertificate?view=azurermps-4.3.1)|Lekéri az információkat a runbookot vagy a DSC-konfiguráció használandó tanúsítványt. Maga a tanúsítvány csak Get-AutomationCertificate tevékenység kérhetnek le.|
-|[Új AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/new-azurermautomationcertificate?view=azurermps-4.3.1)|Létrehoz egy új tanúsítványt az Azure Automation.|
+|[New-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/new-azurermautomationcertificate?view=azurermps-4.3.1)|Létrehoz egy új tanúsítványt az Azure Automation.|
 [Remove-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/remove-azurermautomationcertificate?view=azurermps-4.3.1)|Azure Automation szolgáltatásbeli tanúsítvány eltávolítása.|Létrehoz egy új tanúsítványt az Azure Automation.
 |[Set-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/set-azurermautomationcertificate?view=azurermps-4.3.1)|Beleértve a tanúsítványfájl feltöltését és a jelszót a .pfx fájlhoz beállítás meglévő tanúsítvány tulajdonságainak beállítása.|
-|[Adja hozzá AzureCertificate](https://msdn.microsoft.com/library/azure/dn495214.aspx)|A megadott felhőszolgáltatás egy szolgáltatástanúsítványt feltöltését.|
+|[Add-AzureCertificate](https://msdn.microsoft.com/library/azure/dn495214.aspx)|A megadott felhőszolgáltatás egy szolgáltatástanúsítványt feltöltését.|
 
+## <a name="activities"></a>Tevékenységek
+Az alábbi táblázatban a tevékenységek a runbookok és a DSC-konfigurációk tanúsítványok eléréséhez használt.
+
+| Tevékenységek | Leírás |
+|:---|:---|
+|Get-AutomationCertificate|Lekérdezi a runbookot vagy a DSC-konfiguráció használandó tanúsítványt. Értéket ad vissza egy [System.Security.Cryptography.X509Certificates.X509Certificate2](https://msdn.microsoft.com/en-us/library/system.security.cryptography.x509certificates.x509certificate2.aspx) objektum.|
+
+> [!NOTE] 
+> Kerülendő a változók használata a – Name paraméterében **Get-AutomationCertificate** a runbookot vagy a DSC-konfiguráció számára, mivel ez megnehezítheti a runbookok vagy DSC-konfiguráció és automatizálás közti függőségek változók tervezési időben.
 
 ## <a name="python2-functions"></a>Python2 funkciók
 
@@ -112,6 +120,6 @@ A következő példa bemutatja, hogyan Python2 runbookok tanúsítványok elér�
     # returns the binary cert content  
     print cert 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A tevékenységek a runbookban az célja, hogy végre logikai üzenetáramlásának szabályozására hivatkozások használata kapcsolatos további információkért lásd: [hivatkozások grafikus szerzői](automation-graphical-authoring-intro.md#links-and-workflow). 

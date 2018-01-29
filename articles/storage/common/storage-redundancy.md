@@ -9,11 +9,11 @@ ms.workload: storage
 ms.topic: article
 ms.date: 01/21/2018
 ms.author: tamram
-ms.openlocfilehash: a8a8d8e95af3e6d98aa4dd98b11c066dca81421b
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 1514750b13f5108c480d5dd234132d35dc82fdd2
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="azure-storage-replication"></a>Azure Storage replication (Azure Storage replikáció)
 
@@ -72,7 +72,7 @@ A ZRS klasszikus fiókokat nem lehet konvertálni, vagy a LRS, grs-re vagy RA-GR
 A ZRS régióban általánosan elérhetővé válik, nem tudnak a ZRS klasszikus-fiók létrehozása a portál az adott régióban, de létrehozhat egy más módon.  
 Egy automatizált áttelepítési folyamatot a ZRS klasszikus ZRS biztosítja a jövőben.
 
-A ZRS fiókok támogatják, a ZRS fiók az adott régióban manuálisan áttelepítése, vagy a LRS, GRS és RAGRS fiókkal. Az AzCopy, Azure Tártallózó, Azure PowerShell, az Azure parancssori felület és az Azure Storage ügyfélkódtáraival egyik manuális áttelepítés végezheti el.
+Manuálisan áttelepítheti a ZRS fiók adatait, vagy a LRS, ZRS klasszikus, Georedundáns vagy RAGRS fiókkal. Az AzCopy, Azure Tártallózó, Azure PowerShell, az Azure parancssori felület és az Azure Storage ügyfélkódtáraival egyik manuális áttelepítés végezheti el.
 
 > [!NOTE]
 > A ZRS klasszikus fiókok érvénytelenítése és 2021 március 31 szükséges áttelepítésének tervbe van véve. Microsoft elküld további részleteket a ZRS klasszikus ügyfelek elévülése előtt.

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: 2c3ffb8432fae41b376cc71bb600a0b1c490f345
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 15a5ede13aebb039c1d17f118ee1acdcf9031d50
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="virtual-network-integration-for-azure-services"></a>Virtuális hálózati integráció az Azure-szolgáltatások
 
@@ -48,7 +48,7 @@ A virtuális hálózaton belül szolgáltatások telepítése a következő lehe
 Minden szolgáltatás közvetlenül helyezett virtuális hálózati rendelkezik konkrét követelmények útválasztást és a típusú forgalom,-alhálózatok engedélyezni kell. További információkért lásd: 
  
 - Virtuális gépek: [Linux](../virtual-machines/linux/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [Windows](../virtual-machines/windows/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- [A Service fabric](../service-fabric/service-fabric-patterns-networking.md?toc=%2fazure%2fvirtual-network%2ftoc.json#existingvnet)
+- [Service fabric](../service-fabric/service-fabric-patterns-networking.md?toc=%2fazure%2fvirtual-network%2ftoc.json#existingvnet)
 - [Virtuálisgép-méretezési csoportok](../virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [HDInsight](../hdinsight/hdinsight-extend-hadoop-virtual-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [App Service Environment](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -58,7 +58,7 @@ Minden szolgáltatás közvetlenül helyezett virtuális hálózati rendelkezik 
 - [Az Alkalmazásátjáró (belső)](../application-gateway/application-gateway-ilb-arm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Az Azure tároló szolgáltatás vezérlőprogramja](../container-service/container-service-intro.md?toc=%2fazure%2fvirtual-network%2ftoc.json): az Azure Tárolószolgáltatás egy alapértelmezett virtuális hálózatot hoz létre. Létrehozhat egy egyéni virtuális hálózat használata a [Azure tároló szolgáltatás vezérlőprogramja](https://github.com/Azure/acs-engine/tree/master/examples/vnet).
 - [Az Azure Active Directory tartományi szolgáltatások](../active-directory-domain-services/active-directory-ds-getting-started-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json): virtuális hálózat (klasszikus) csak
-- [Az Azure Batch](../batch/batch-api-basics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-network-vnet-and-firewall-configuration): virtuális hálózat (klasszikus) csak
+- [Azure Batch](../batch/batch-api-basics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-network-vnet-and-firewall-configuration)
 - [A felhőalapú szolgáltatások](https://msdn.microsoft.com/library/azure/jj156091): virtuális hálózat (klasszikus) csak
 
 Telepíthet egy [belső Azure terheléselosztó](../load-balancer/load-balancer-internal-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) betöltése elosztása a fenti listán szereplő erőforrások közül. Bizonyos esetekben a a szolgáltatás automatikusan létrehozza, és telepíti a terheléselosztót, erőforrás létrehozásakor.

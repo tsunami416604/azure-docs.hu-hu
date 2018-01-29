@@ -1,5 +1,5 @@
 ---
-title: "Oktatóanyag: GitHub konfigurálása az automatikus felhasználó-átadási az Azure Active Directoryval |} Microsoft Docs"
+title: "Oktatóanyag: GitHub konfigurálása az Azure Active Directoryval automatikus felhasználólétesítés |} Microsoft Docs"
 description: "Megtudhatja, hogyan konfigurálja az Azure Active Directory automatikus kiépítése és leépíti a GitHub felhasználói fiókokat."
 services: active-directory
 documentationcenter: 
@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/14/2017
+ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: 7e202899b697872227da4d7bea54406f99089000
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e06d04234f33633275d85732a321a264c777fc59
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="tutorial-configuring-github-for-automatic-user-provisioning"></a>Oktatóanyag: GitHub konfigurálása az automatikus felhasználó létesítése
+# <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés GitHub konfigurálása
 
 
 Ez az oktatóanyag célja a lépéseket kell elvégeznie a Githubon és az Azure AD automatikus kiépítése és leépíti a felhasználói fiókok Azure ad-GitHub mutatjuk be. 
@@ -104,6 +104,6 @@ Olvassa el az Azure AD-naplók kiépítés módjáról további információkér
 * [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](active-directory-enterprise-apps-manage-provisioning.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Ismerje meg, tekintse át a naplók és jelentések készítése a kiépítés tevékenység](active-directory-saas-provisioning-reporting.md)

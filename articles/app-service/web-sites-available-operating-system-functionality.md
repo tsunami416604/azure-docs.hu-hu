@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/01/2016
 ms.author: cephalin
-ms.openlocfilehash: a5f022eca8f901388c9cf003f3320db1b9c49e6a
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.openlocfilehash: 6b5939341ad05fb8f80415c5335c24d216fc2555
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Operációs rendszer működőképességét Azure App Service
 Ez a cikk összes futó alkalmazások számára elérhető közös eredeti operációs rendszer funkcióit mutatja be [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714). Ez a funkció tartalmazza a fájl, hálózati, és a beállításjegyzék elérése és diagnosztikai naplók és események. 
@@ -49,7 +49,7 @@ Különböző meghajtó belül App Service, beleértve a helyi és hálózati me
 <a id="LocalDrives"></a>
 
 ### <a name="local-drives"></a>Helyi meghajtók
-A a fő App Service az Azure PaaS (platformok) infrastruktúrán futó szolgáltatásban. Ennek eredményeképpen a helyi meghajtókra, "csatlakoztatott" virtuális gép olyan a azonos meghajtón bármely Azure-beli feldolgozói szerepkör számára elérhető. Ez magában foglalja az operációsrendszer-meghajtó (a D:\ meghajtóra), az alkalmazás Azure cspkg csomagfájlok kizárólag az App Service által használt (és az ügyfél számára nem érhető el) tartalmazó meghajtót és a "user" meghajtó (a C:\ meghajtóra), amelynek mérete változó attól függően, hogy a virtuális gép méretét .
+A a fő App Service az Azure PaaS (platformok) infrastruktúrán futó szolgáltatásban. Ennek eredményeképpen a helyi meghajtókra, "csatlakoztatott" virtuális gép olyan a azonos meghajtón bármely Azure-beli feldolgozói szerepkör számára elérhető. Ez magában foglalja az operációsrendszer-meghajtó (a D:\ meghajtóra), az alkalmazás Azure cspkg csomagfájlok kizárólag az App Service által használt (és az ügyfél számára nem érhető el) tartalmazó meghajtót és a "user" meghajtó (a C:\ meghajtóra), amelynek mérete változó attól függően, hogy a virtuális gép méretét . Fontos, a lemezhasználat figyelése, ahogy az alkalmazás növekszik. A lemezkvóta elérésekor az alkalmazás a negatív hatások rendelkezhet.
 
 <a id="NetworkDrives"></a>
 

@@ -8,11 +8,11 @@ ms.service: container-service
 ms.topic: article
 ms.date: 1/12/2018
 ms.author: nepeters
-ms.openlocfilehash: d6f6688011ddebe2b486bb6ae00f1f3e095a931d
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 86a160d8f2dbfb0e385d9dbed7cf6d789f5a8df6
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-container-service"></a>A hitelesítést az Azure Tárolószolgáltatás Azure tároló beállításjegyzék
 
@@ -74,7 +74,7 @@ A szolgáltatás egyszerű hitelesítő adatait most tárolható egy Kubernetes 
 A következő parancs létrehozza a Kubernetes titkos. Cserélje le a kiszolgáló nevét a ACR bejelentkezési kiszolgálóval, a felhasználó nevét a résztvevő-azonosító és a jelszó és a szolgáltatás egyszerű jelszóval.
 
 ```bash
-kubectl create secret docker-registry acr-auth --docker-server <acr-login-server> --docker-username <service-principal-ID> --docker-password <service-principal-password> 
+kubectl create secret docker-registry acr-auth --docker-server <acr-login-server> --docker-username <service-principal-ID> --docker-password <service-principal-password> --docker-email <email-address>
 ```
 
 A Kubernetes titkos kulcsot használó pod telepítés is használható a `ImagePullSecrets` paraméter. 

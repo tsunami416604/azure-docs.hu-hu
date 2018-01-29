@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: banders
-ms.openlocfilehash: 031a538c7e3a7dd381fa9bd996d8a027f761a50a
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: c7516c6d4fa8cfe8e146c325af7ca7ca70475a94
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>Hyper-V virtuális gép Kapacitástervezés a kapacitást és teljesítményt megoldás (előzetes verzió)
 
@@ -47,7 +47,7 @@ Az alábbi táblázat áttekintést nyújt az ebben a megoldásban támogatott �
 |---|---|---|
 | [Windows-ügynökök](log-analytics-windows-agent.md) | Igen | A megoldás kapacitást és teljesítményt adatok információt gyűjt a Windows-ügynökök. |
 | [Linux-ügynökök](log-analytics-linux-agents.md) | Nem    | A megoldás nem kapacitást és teljesítményt adatok információkat gyűjtsön a közvetlen Linux-ügynököt.|
-| [SCOM felügyeleti csoport](log-analytics-om-agents.md) | Igen |A megoldás kapacitás és teljesítményadatokat gyűjt az ügynökök a csatlakoztatott SCOM felügyeleti csoport. Nincs szükség az SCOM-ügynököt a közvetlen kapcsolat az OMS Szolgáltatáshoz. Az adatok a felügyeleti csoportból az OMS-tárházba lesznek továbbítva.|
+| [SCOM felügyeleti csoport](log-analytics-om-agents.md) | Igen |A megoldás kapacitás és teljesítményadatokat gyűjt az ügynökök a csatlakoztatott SCOM felügyeleti csoport. Naplóelemzési az SCOM-ügynököt a közvetlen kapcsolatra szükség.|
 | [Azure Storage-fiók](log-analytics-azure-storage.md) | Nem | Az Azure storage nem tartalmazza a kapacitást és teljesítményt adatait.|
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -59,11 +59,11 @@ Az alábbi táblázat áttekintést nyújt az ebben a megoldásban támogatott �
 
 Hajtsa végre a következő lépés a kapacitást és teljesítményt megoldás hozzáadása a munkaterületen.
 
-- A kapacitást és teljesítményt megoldás hozzáadása az OMS-munkaterület ismertetett eljárással [hozzáadni a Naplóelemzési megoldások a megoldások gyűjteményből](log-analytics-add-solutions.md).
+- A kapacitást és teljesítményt megoldás hozzáadni a Naplóelemzési munkaterület ismertetett eljárással [hozzáadni a Naplóelemzési megoldások a megoldások gyűjteményből](log-analytics-add-solutions.md).
 
 ## <a name="management-packs"></a>Felügyeleti csomagok
 
-Ha az SCOM felügyeleti csoport az OMS-munkaterület csatlakozik, majd a következő felügyeleti csomagokat telepíti scom ebben a megoldásban hozzáadásakor. Ezek a felügyeleti csomagok nem igényelnek további konfigurációs vagy karbantartási feladatokat.
+Ha az SCOM felügyeleti csoport csatlakoztatva van a Naplóelemzési munkaterület, majd a következő felügyeleti csomagokat telepíti scom ebben a megoldásban hozzáadásakor. Ezek a felügyeleti csomagok nem igényelnek további konfigurációs vagy karbantartási feladatokat.
 
 - Microsoft.IntelligencePacks.CapacityPerformance
 
@@ -89,7 +89,7 @@ A kapacitást és teljesítményt megoldás a munkaterülethez való hozzáadás
 
 Kattintson a kapacitást és teljesítményt csempére a kapacitást és teljesítményt irányítópult megnyitásához. Az irányítópulton az alábbi táblázatban felsorolt oszlopok találhatóak. Mindegyik oszlopban legfeljebb tíz olyan elem jelenik meg, amely megfelel a megadott hatóköri és időtartományi kritériumoknak. Az oszlop alján található **Az összes megtekintése** elemre vagy az oszlop fejlécére kattintva az összes rekordot megjelenítő keresést végezhet a naplóban.
 
-- **Gazdagépek**
+- **Hosts**
     - **A gazdagép CPU-felhasználás** egy tendenciagrafikont hoz létre a CPU-felhasználást a számítógépek és a gazdagépet, a kijelölt időszakot listáját jeleníti meg. Mutasson a vonaldiagram időben adott részleteinek megtekintése. Kattintson a diagram megtekintheti annak további részleteit a napló keresési. Kattintson a napló keresési megnyithatja és megtekintheti a CPU teljesítményszámláló adatait üzemeltetett virtuális gépek egyetlen állomás nevét.
     - **Gazdagép memóriahasználata** egy tendenciagrafikont hoz létre a számítógépek memóriahasználata és a gazdagépet, a kijelölt időszakot listáját jeleníti meg. Mutasson a vonaldiagram időben adott részleteinek megtekintése. Kattintson a diagram megtekintheti annak további részleteit a napló keresési. Kattintson a napló keresési megnyithatja és megtekintheti a memória teljesítményszámláló adatait üzemeltetett virtuális gépek egyetlen állomás nevét.
 - **Virtuális gépek**
@@ -144,5 +144,5 @@ A következő táblázat a kapacitást és teljesítményt adatokat gyűjt, és 
 | Minden CSV-k között teljes késést bontása | A Teljesítményfigyelő &#124; Ha ObjectName == "Kapacitást és teljesítményt" és (CounterName == "CSV olvasási késése" vagy a CounterName == "CSV írás késés") &#124; AggregatedValue összefoglalója bin (TimeGenerated, 1 óra), amelyet avg(CounterValue) = CounterName, az InstanceName |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Használjon [Log Analytics-e jelentkezni a keresések](log-analytics-log-searches.md) kapacitást és teljesítményt részletes adatainak megtekintéséhez.

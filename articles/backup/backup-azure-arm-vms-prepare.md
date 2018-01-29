@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/21/2017
 ms.author: markgal;trinadhk;sogup;
-ms.openlocfilehash: 7d7b81a585ba8b10c60062c5d5274c45335cab68
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 568509eba47facfc5966d06dff5a1b32dce1008f
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>A környezet előkészítése a Resource Managerrel üzembe helyezett virtuális gépek biztonsági mentéséhez
 
@@ -63,7 +63,7 @@ A környezet előkészítése előtt ügyeljen arra, hogy ezek a korlátozások 
 * Csatlakoztatott hálózati meghajtók egy virtuális Géphez csatlakozik, nem tartalmazza a biztonsági mentési adatokat.
 * Egy meglévő virtuális gép cseréje a visszaállítás során nem támogatott. Ha úgy próbálja visszaállítani a virtuális gép, ha a virtuális gép létezik, a visszaállítási művelet sikertelen.
 * Kereszt-régió biztonsági mentése és visszaállítása nem támogatottak.
-* Biztonsági mentés és visszaállítás tárolási ACLed virtuális gépek mostantól nem támogatott. A virtuális gépek biztonsági mentése nem támogatott, ha engedélyezte a tárolót a virtuális hálózat szolgáltatás, amely lehetővé teszi, hogy a storage-fiókok csak bizonyos Vnetek/alhálózatok és/vagy az IP-címek érni.
+* Biztonsági mentése és visszaállítása a virtuális gépek használata a nem felügyelt lemezek tárfiókokban hálózati szabálya jelenleg nem támogatott. Biztonsági mentés beállításakor győződjön meg arról, hogy a "Tűzfalak és virtuális hálózatokat" beállításokat a tárfiókhoz hozzáférést "Minden hálózati."
 * Minden nyilvános régióiba Azure virtuális gépek biztonsági. (Lásd a [ellenőrzőlista](https://azure.microsoft.com/regions/#services) a támogatott régiók.) A régiót, amelyben keres jelenleg nem támogatott, ha már nem jelenik a legördülő listából válassza ki a tároló létrehozása során.
 * A tartományvezérlők visszaállítását (DC) virtuális Gépet, amely része egy multi-tartományvezérlő-konfiguráció támogatott csak a PowerShell segítségével. További tudnivalókért lásd: [multi-DC tartományvezérlő visszaállítása](backup-azure-arm-restore-vms.md#restore-domain-controller-vms).
 * Az alábbi speciális beállításokkal rendelkező virtuális gépek visszaállításakor csak a PowerShell használatával támogatott. A visszaállítási munkafolyamat a felhasználói felület segítségével létrehozott virtuális gépek nem fognak rendelkezni a hálózati konfigurációt, a visszaállítási művelet befejezése után. További tudnivalókért lásd: [visszaállítását virtuális gépek speciális hálózati konfigurációkkal](backup-azure-arm-restore-vms.md#restore-vms-with-special-network-configurations).

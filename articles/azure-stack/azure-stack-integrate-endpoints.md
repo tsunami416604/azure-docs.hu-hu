@@ -2,17 +2,18 @@
 title: "Azure datacenter integráció a verem - végpontok közzététele"
 description: "Útmutató: Azure verem végpontok közzététele az adatközpontban található"
 services: azure-stack
-author: troettinger
+author: jeffgilb
 ms.service: azure-stack
 ms.topic: article
-ms.date: 01/16/2018
-ms.author: victorh
+ms.date: 01/26/2018
+ms.author: jeffgilb
+ms.reviewer: wamota
 keywords: 
-ms.openlocfilehash: 1cc74cb2214918d6bfd0c0827cf5d9832b84f317
-ms.sourcegitcommit: 5108f637c457a276fffcf2b8b332a67774b05981
+ms.openlocfilehash: ae59ae74dd6dfe29a077ed5943eb1a16e561078a
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure datacenter integráció a verem - végpontok közzététele
 
@@ -64,49 +65,6 @@ Az Azure verem csak a transzparens proxy kiszolgálókat támogatja. Egy közpon
 |Regisztráció|https://management.azure.com|HTTPS|443|
 |Használat|https://&#42;.microsoftazurestack.com<br>https://*.trafficmanager.com|HTTPS|443|
 
-## <a name="firewall-publishing"></a>Tűzfal közzététele
-
-Az előző szakaszban felsorolt portokon vonatkozik a bejövő kommunikáció Azure verem szolgáltatások egy meglévő tűzfalon keresztüli közzétételekor.
-
-Azt javasoljuk, hogy használja-e tűzfal eszköz segítségével biztonságos Azure verem. Azonban nincs szigorú követelmény. Bár tűzfalak segítségére lehetnek többek között elosztott-szolgáltatásmegtagadásos (DDOS-) támadások és a tartalomvizsgálat a, a teljesítmény szűk keresztmetszetek az Azure storage szolgáltatások, például a blobot, táblát és üzenetsort is válnának is.
-
-(Az Azure AD vagy AD FS) identitás minta alapján, lehetséges, hogy vagy az AD FS végpont közzétételéhez nincs szükség. Ha a kapcsolat nélküli telepítési módban használja, az AD FS végpont közzé kell tennie. (További információkért tekintse meg a Datacenter integrációs identitás témakört.)
-
-Az Azure Resource Manager (rendszergazda), a felügyeleti portál és a Key Vault (rendszergazda) végpontok nincs feltétlenül szükség külső közzététel. Ez a forgatókönyv függ. Például egy szolgáltató, érdemes lehet támadási felületét, és csak az Azure-verem felügyeletéhez, a hálózaton belül, és nem az internetről.
-
-A vállalaton belüli a külső hálózati lehet a meglévő vállalati hálózathoz. Ilyen esetben közzé kell tennie ezekre a végpontokra Azure verem működéséhez a vállalati hálózatról.
-
-## <a name="edge-firewall-scenario"></a>Peremhálózati tűzfal forgatókönyv
-
-Peremhálózati telepítések, Azure verem közvetlenül mögé telepítették a peremhálózati útválasztó (az Internetszolgáltató által biztosított) vagy egy tűzfal előtte nélkül.
-
-![Az Azure-verem peremhálózati üzembe helyezésének architekturális diagramja](media/azure-stack-integrate-endpoints/Integrate-Endpoints-02.png)
-
-Általában nyilvános elérhető IP-címet adott meg a nyilvános virtuális IP-címkészletet a központi telepítéskor edge-telepítés. Ebben a forgatókönyvben lehetővé teszi, hogy a felhasználót, hogy a teljes önálló ellenőrzött felhő élményt, például egy nyilvános felhő mint Azure tapasztalhat.
-
-### <a name="using-nat"></a>NAT használata
-
-A terhelés miatt nem ajánlott, de használhat hálózati címfordítás (NAT) közzétételi végpontok. Végpont a közzététel teljesen felhasználók által szabályozott ehhez a NAT-szabály, amely tartalmazza a felhasználó használhatja minden port VIP felhasználónként.
-
-Meg kell vizsgálni, hogy Azure nem támogatja a végpont NAT használata hibrid felhő használata estén az Azure VPN-alagúton beállítását.
-
-## <a name="enterpriseintranetperimeter-network-firewall-scenario"></a>Vállalati/intranetes/peremhálózati tűzfal forgatókönyv
-
-Egy szervezet/intranetes/határain telepítési Azure verem második tűzfal, amely általában a szegélyhálózaton (más néven DMZ) része túl van telepítve.
-
-![Az Azure verem tűzfal forgatókönyv](media/azure-stack-integrate-endpoints/Integrate-Endpoints-03.png)
-
-Nyilvános elérhető IP-címet lett megadva a következő Azure verem nyilvános virtuális IP-címkészletet, ezeknél a címeknél logikailag tartozik a peremhálózaton, és szükséges az elsődleges tűzfalon közzétételi szabályokat.
-
-### <a name="using-nat"></a>NAT használata
-
-Ha nem nyilvános elérhető IP-címet használ az Azure-vermet nyilvános virtuális IP-címkészletet, NAT a másodlagos tűzfalon közzétételére szolgál Azure verem végpontok. Ebben a forgatókönyvben a közzétételi szabályok konfigurálása a elsődleges tűzfalon kívül a peremhálózaton, és a másodlagos tűzfalon kell. Ha szeretné használni a NAT, vegye figyelembe a következő szempontokat:
-
-- NAT többletterheléssel tűzfalszabályok kezeléséhez, mert a felhasználók a saját végpontok és a saját közzétételi szabályokat a szoftveralapú hálózatkezelési (SDN) verem ellenőrzése. Felhasználók kapcsolatba kell lépnie az Azure-verem üzemeltető a virtuális IP-címek közzé, illetve port listáját.
-- NAT használata korlátozza a felhasználói élmény, amíg biztosít teljes hozzáférés a operátornak keresztül közzétételi kérelmeket.
-- Hibrid felhős rendszerekben az Azure-ral vegye figyelembe, hogy az Azure nem támogatja a hálózati címfordítást. használja a végpont VPN-alagúton beállítása
-
 
 ## <a name="next-steps"></a>További lépések
-
 [Az Azure verem datacenter integrációs - biztonsági](azure-stack-integrate-security.md)

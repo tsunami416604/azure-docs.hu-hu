@@ -15,11 +15,11 @@ ms.date: 06/15/2017
 ms.author: barlan
 ms.reviewer: richagi
 ms.custom: end-user
-ms.openlocfilehash: fd8c92e575071b5b3647d51ba79603a2174dcd3f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ed4adfa0698eabe8994da95554377b4dad76b291
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="what-does-azure-multi-factor-authentication-mean-for-me"></a>Mit Azure multi-factor Authentication jelent a számomra?
 Igen, rendelkezik igazoló egy e-mailt feladótól informatikai vagy a agy arról, hogy hányszor adtak hozzá további biztonsági ellenőrzés a fiókjához.  Ezért ez mit jelent?
@@ -46,4 +46,4 @@ Válassza ki az alábbi témakörökben találja a kezdéshez.
 | [Bejelentkezési felület](multi-factor-authentication-end-user-signin.md) |Jeleníti meg, hogy mire számíthat ebben a különböző módszerekkel például telefonszám vagy alkalmazás. |
 | [A szolgáltatás beállításainak módosítása](multi-factor-authentication-end-user-manage-settings.md) |Bemutatja, hogyan módosíthatja a beállításokat, például telefonszám vagy előnyben részesített regisztrációs módszer. |
 | [Az alkalmazásjelszók segítségével](multi-factor-authentication-end-user-app-passwords.md) |Tudni, létrehozása és használata. |
-| [A mobilalkalmazás használata](microsoft-authenticator-app-how-to.md) |A Microsoft Authenticator alkalmazás érhető el [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072), és [iOS](http://go.microsoft.com/fwlink/?Linkid=825073). |
+| [A mobilalkalmazás használata](microsoft-authenticator-app-how-to.md) |A Microsoft Authenticator alkalmazás érhető el [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594), és [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071). |

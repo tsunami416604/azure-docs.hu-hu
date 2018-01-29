@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 22d0ee242d18d73d1d5825567fd61638fd22cc68
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 5e3147cbc9fce6737cfb9b2e93e8bf1662163f3c
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="logic-apps-limits-and-configuration"></a>Logic Apps korlátozásai és konfigurációja
 
@@ -85,12 +85,12 @@ Ezek a korlátozások vonatkoznak egyetlen logikai alkalmazás futtatásához.
 Ezek a korlátozások vonatkoznak a egy logikai alkalmazás példánya.
 
 | Name (Név) | Korlát | Megjegyzések | 
-| ---- | ----- | ----- | 
-| Műveletek végrehajtások / 5 perc | 100,000 | Szükség szerint több alkalmazást is munkaterhelés szét. | 
+| ----- | ----- | ----- | 
+| Műveletek végrehajtások / 5 perc | 100,000 |<p>A korlát növelhető 300,000 legfeljebb egy logikai alkalmazást futtató `High Througput` módot, és ez teheti úgy, hogy a `operationOptions` tulajdonság alapján`runtimeConfiguration` a munkafolyamat-erőforrás a `OptimizedForHighThroughput`. <p>Vegye figyelembe, hogy a magas teljesítmény üzemmód jelenleg előzetes verzióban érhető. Emellett a munkaterhelés terjeszthető több alkalmazás között szükség szerint. | 
 | Műveletek párhuzamos kimenő hívások | ~2,500 | Csökkentse az egyidejű kérelmek száma, vagy igény szerint időtartamának csökkentése érdekében. | 
-| Futásidejű végpont: párhuzamos bejövő hívások | ~1,000 | Csökkentse az egyidejű kérelmek száma, vagy igény szerint időtartamának csökkentése érdekében. | 
-| Futásidejű végpont: 5 perc hívásszám olvasása | 60,000 | Szükség szerint több alkalmazást is munkaterhelés szét. | 
-| Futásidejű végpont: 5 perc hívásszám meghívása | 45,000 | Szükség szerint több alkalmazást is munkaterhelés szét. | 
+| Futásidejű végpont: párhuzamos bejövő hívások |~1,000 | Csökkentse az egyidejű kérelmek száma, vagy igény szerint időtartamának csökkentése érdekében. | 
+| Futásidejű végpont: 5 perc hívásszám olvasása  | 60,000 | Szükség szerint több alkalmazást is munkaterhelés szét. | 
+| Futásidejű végpont: 5 perc hívásszám meghívása| 45,000 |Szükség szerint több alkalmazást is munkaterhelés szét. | 
 |||| 
 
 A meghaladja ezt a korlátot, a normál feldolgozása vagy futtatási terhelés tesztelése, amelyek túllépik a működés felső korlátjának, [, lépjen velünk kapcsolatba](mailto://logicappsemail@microsoft.com) , hogy a követelményeinek, és segítünk.
@@ -147,7 +147,7 @@ Ezek a korlátozások vonatkoznak, amelyek egy integrációs fiókot is hozzáad
 
 | Name (Név) | Korlát | Megjegyzések | 
 | ---- | ----- | ----- | 
-| Szerződések | 10 | | 
+| Egyezmények | 10 | | 
 | Más összetevő típusa | 25 |Összetevő-típusok a partnerek, sémákat, tanúsítványok és a maps tartalmaznak. Egyes összetevők maximális száma legfeljebb tartalmazhat. | 
 |||| 
 

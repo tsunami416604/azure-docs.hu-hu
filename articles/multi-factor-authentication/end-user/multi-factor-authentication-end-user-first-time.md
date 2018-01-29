@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: barlan
 ms.custom: end-user
-ms.openlocfilehash: d516ef578608a6cead3823585007cbd0636de24a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 04b8d2b8d7d84bd4c6b46507be5d597c03d9dbb0
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>A kétlépéses ellenőrzéshez a fiók beállítása
 Kétlépéses ellenőrzés egy további biztonsági lépés, amely segít megvédeni a fiókját úgy, hogy elkészíti a nehezebben más feltörhessék. Ha a cikk elolvasása valószínűleg kapott e-mailt a munkahelyi vagy iskolai rendszergazda többtényezős hitelesítéssel kapcsolatos. Vagy próbált bejelentkezni, és lehet, hogy a további biztonsági ellenőrzés beállítása kérő üzenetet kapott. Ebben az esetben, ha **nem tud bejelentkezni, az automatikus igénylés folyamat befejezése után**.
@@ -43,7 +43,7 @@ A regisztrációs folyamat az első kérdést, hogyan szeretné kapcsolatba lép
 
 | Kapcsolatfelvétel módja | Leírás |
 | --- | --- |
-| [Mobilalkalmazás](#use-a-mobile-app-as-the-contact-method) |- **Az ellenőrzési értesítések.** Ez a beállítás leküldéses értesítést küld a hitelesítőalkalmazása a okostelefonján vagy táblagépén lévő. Az értesítés és, ha az megbízható, választhatja ki, **hitelesítés** az alkalmazásban. A munkahelyi vagy iskolai szükség lehet PIN-kód megadása előtt a hitelesítést.<br>- **Ellenőrzőkód használata.** Ebben a módban a állítanak elő egy megerősítési kódot, amely 30 másodpercenként frissíti. Adja meg a legfrissebb a bejelentkezési felületen.<br>A Microsoft Authenticator alkalmazás érhető el [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072), és [iOS](http://go.microsoft.com/fwlink/?Linkid=825073). |
+| [Mobilalkalmazás](#use-a-mobile-app-as-the-contact-method) |- **Az ellenőrzési értesítések.** Ez a beállítás leküldéses értesítést küld a hitelesítőalkalmazása a okostelefonján vagy táblagépén lévő. Az értesítés és, ha az megbízható, választhatja ki, **hitelesítés** az alkalmazásban. A munkahelyi vagy iskolai szükség lehet PIN-kód megadása előtt a hitelesítést.<br>- **Ellenőrzőkód használata.** Ebben a módban a állítanak elő egy megerősítési kódot, amely 30 másodpercenként frissíti. Adja meg a legfrissebb a bejelentkezési felületen.<br>A Microsoft Authenticator alkalmazás érhető el [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594), és [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071). |
 | [Mobiltelefon hívása vagy szöveg](#use-your-mobile-phone-as-the-contact-method) |- **Telefonhívás** helyezi el a telefonszámot megadnia egy automatizált hang hívása. A hívás, és nyomja meg a # gombot a telefon billentyűzetén.<br>- **Szöveges üzenet** karakterlánccal végződik-e egy megerősítési kódot tartalmazó szöveges üzenetet. A szöveg megjelenő következő válaszoljon az üzenetre, vagy adja meg a bejelentkezési felületén megadott ellenőrzőkódot. |
 | [Irodai telefon hívása](#use-your-office-phone-as-the-contact-method) |A telefonszámot megadnia egy automatizált hang hívása helyezi. A hívás és nyomnia a # gombot a telefon billentyűzetén hitelesítéséhez. |
 
@@ -67,7 +67,7 @@ Ezzel a módszerrel kell a telefonját vagy táblagépét egy hitelesítő alkal
    ![Be a PIN-kód megadása](./media/multi-factor-authentication-end-user-first-time/scan3.png)
 
 8. PIN-kód bevitelének befejezése után válassza ki a **Bezárás**. Ezen a ponton az ellenőrzés sikeres legyen.
-9. Azt javasoljuk, hogy a mobiltelefon számát adja meg, abban az esetben, ha elveszítené hozzáférését a mobilalkalmazáshoz. Válassza ki a legördülő listából válassza ki az országot, és írja be mobiltelefonszámát ország neve melletti jelölőnégyzetbe. Válassza ki **következő**.
+9. Azt javasoljuk, hogy a mobiltelefon számát adja meg, abban az esetben, ha elveszítené hozzáférését a mobilalkalmazáshoz. Válassza ki a legördülő listából válassza ki az országot, és írja be mobiltelefonszámát ország neve melletti jelölőnégyzetbe. Kattintson a **Tovább** gombra.
 10. Ezen a ponton kéri alkalmazásjelszókat a böngészőn kívüli alkalmazások, például az Outlook 2010 vagy korábbi, vagy a natív e-mail alkalmazás Apple-eszközök beállítása. Ennek oka az, bizonyos alkalmazások nem támogatják a kétlépéses ellenőrzést. Ha nem használja ezeket az alkalmazásokat, kattintson a **végzett** , és hagyja ki a további lépéseket.
 11. Ha használja ezeket az alkalmazásokat, a Másolás az alkalmazásjelszót megadott, majd illessze be a rendszeres jelszó helyett az alkalmazásra. Több alkalmazás használhatja ugyanazt a jelszót. További információk [Súgó az alkalmazásjelszavak].
 12. Kattintson a **Done** (Kész) gombra.
@@ -102,7 +102,7 @@ Ha azt szeretné, hogy hozzáadjon egy fiókot a mobilalkalmazásban manuálisan
 5. Ha használja ezeket az alkalmazásokat, a Másolás az alkalmazásjelszót megadott, majd illessze be a rendszeres jelszó helyett az alkalmazásra. Több alkalmazás használhatja ugyanazt a jelszót. További információk: [Mik az Alkalmazásjelszók](multi-factor-authentication-end-user-app-passwords.md).
 6. Kattintson a **Done** (Kész) gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Az előnyben részesített beállításainak módosítására és [a kétlépéses ellenőrzést beállításainak kezelése](multi-factor-authentication-end-user-manage-settings.md)
 * Állítson be [alkalmazásjelszók](multi-factor-authentication-end-user-app-passwords.md) natív eszköz alkalmazások, amelyek nem támogatják a kétlépéses ellenőrzést.
 * Tekintse meg a [Microsoft Authenticator alkalmazás](microsoft-authenticator-app-how-to.md) gyors, biztonságos hitelesítés akkor is, ha a cella szolgáltatás nem rendelkezik.

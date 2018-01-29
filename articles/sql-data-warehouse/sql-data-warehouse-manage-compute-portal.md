@@ -15,22 +15,14 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 10/31/2016
 ms.author: elbutter;barbkess
-ms.openlocfilehash: 63888d5dd103b585cf18e4787d3e779810163e3d
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: f56e62576cae0c594f26bcddf44528032bd5ea69
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="manage-compute-power-in-azure-sql-data-warehouse-azure-portal"></a>Kezelheti a számítási teljesítményt az Azure SQL Data Warehouse (Azure-portál)
-> [!div class="op_single_selector"]
-> * [Áttekintés](sql-data-warehouse-manage-compute-overview.md)
-> * [Portal](sql-data-warehouse-manage-compute-portal.md)
-> * [PowerShell](sql-data-warehouse-manage-compute-powershell.md)
-> * [REST](sql-data-warehouse-manage-compute-rest-api.md)
-> * [TSQL](sql-data-warehouse-manage-compute-tsql.md)
->
->
-
+Skála számítási erőforrásokat az Azure SQL Data Warehouse az Azure portál használatával.
 
 ## <a name="scale-compute-power"></a>Skála számítási teljesítmény
 [!INCLUDE [SQL Data Warehouse scale DWUs description](../../includes/sql-data-warehouse-scale-dwus-description.md)]
@@ -47,43 +39,6 @@ Számítási erőforrásokat módosítása:
 
     ![Kattintson a Save (Mentés) gombra.][3]
 
-<a name="pause-compute-bk"></a>
-
-## <a name="pause-compute"></a>Felfüggesztés számítási
-[!INCLUDE [SQL Data Warehouse pause description](../../includes/sql-data-warehouse-pause-description.md)]
-
-Egy adatbázis felfüggesztése:
-
-1. Nyissa meg a [Azure-portálon] [ Azure portal] , és nyissa meg az adatbázis. Figyelje meg, hogy az állapot **Online**.
-
-    ![Online állapota][6]
-2. Számítási és memória-erőforrások felfüggesztéséhez kattintson **szüneteltetése**, majd egy megerősítő üzenet megjelenik -e. Kattintson a **Igen** megerősítéséhez vagy **nem** megszakítja a műveletet.
-
-    ![Erősítse meg a felfüggesztés][7]
-3. Az SQL Data Warehouse megkezdi az adatbázisban, amíg az állapot értéke **felfüggesztése**.
-4. Ha az állapot értéke **felfüggesztve**, a szüneteltetési művelete történik, és van már nem kívánt szó, a dwu-k.
-
-    ![Felfüggesztés állapota][4]
-
-<a name="resume-compute-bk"></a>
-
-## <a name="resume-compute"></a>Folytatás számítási
-[!INCLUDE [SQL Data Warehouse resume description](../../includes/sql-data-warehouse-resume-description.md)]
-
-Egy adatbázis folytatása:
-
-1. Nyissa meg a [Azure-portálon] [ Azure portal] , és nyissa meg az adatbázis. Figyelje meg, hogy az állapot **felfüggesztve**.
-
-    ![Felfüggesztés adatbázis][4]
-2. Kattintson a adatbázis folytatása **Start**, majd egy megerősítő üzenet megjelenik -e. Kattintson a **Igen** megerősítéséhez vagy **nem** megszakítja a műveletet.
-
-    ![Erősítse meg a folytatási][5]
-3. Az SQL Data Warehouse megkezdi az adatbázisban, amíg az állapot értéke "Folytatása".
-4. Ha az állapot értéke **online**, az adatbázis készen áll.
-
-    ![Online állapota][6]
-
-<a name="next-steps-bk"></a>
 
 ## <a name="next-steps"></a>További lépések
 További információkért lásd: [kezelése-áttekintés][Management overview].
@@ -92,10 +47,7 @@ További információkért lásd: [kezelése-áttekintés][Management overview].
 [1]: ./media/sql-data-warehouse-manage-compute-portal/click-scale.png
 [2]: ./media/sql-data-warehouse-manage-compute-portal/move-slider.png
 [3]: ./media/sql-data-warehouse-manage-compute-portal/click-save.png
-[4]: ./media/sql-data-warehouse-manage-compute-portal/resume-database.png
-[5]: ./media/sql-data-warehouse-manage-compute-portal/resume-confirm.png
-[6]: ./media/sql-data-warehouse-manage-compute-portal/pause-database.png
-[7]: ./media/sql-data-warehouse-manage-compute-portal/pause-confirm.png
+
 
 <!--Article references-->
 [Management overview]: ./sql-data-warehouse-overview-manage.md

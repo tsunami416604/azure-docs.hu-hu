@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/07/2017
+ms.date: 01/25/2018
 ms.author: iainfou
-ms.openlocfilehash: 880f5e5967298401fc2522124af3746d9906ffa8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2f9efdbaf0ae79781d6f9c7dfa4c8317185be79e
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="how-to-reset-local-windows-password-for-azure-vm"></a>Helyi Windows-jelszó visszaállítása az Azure virtuális gépekhez
-A helyi Windows-jelszó a virtuális gépek az Azure használatával visszaállíthatja a [Azure-portálon vagy az Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) megadott Azure Vendég-ügynök telepítve van. Ez a módszer elsődleges módja a jelszó alaphelyzetbe állítása egy Azure virtuális gép. Ha problémák lépnek fel az Azure Vendég ügynöke a vendégügynök nem válaszol, vagy sikertelen egyéni lemezkép feltöltése után telepíteni, manuálisan állítsa vissza a Windows-jelszóval. Ez a cikk részletesen a forrás operációs rendszer virtuális lemez csatolása a másik virtuális gép által a helyi fiók jelszavának visszaállítása. 
+# <a name="reset-local-windows-password-for-azure-vm-offline"></a>Jelszó alaphelyzetbe állítása helyi Windows Azure virtuális gép kapcsolat nélküli módban
+A helyi Windows-jelszó a virtuális gépek az Azure használatával visszaállíthatja a [Azure-portálon vagy az Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) megadott Azure Vendég-ügynök telepítve van. Ez a módszer elsődleges módja a jelszó alaphelyzetbe állítása egy Azure virtuális gép. Ha problémák lépnek fel az Azure Vendég ügynöke a vendégügynök nem válaszol, vagy sikertelen egyéni lemezkép feltöltése után telepíteni, manuálisan állítsa vissza a Windows-jelszóval. Ez a cikk részletesen a forrás operációs rendszer virtuális lemez csatolása a másik virtuális gép által a helyi fiók jelszavának visszaállítása. Ebben a cikkben leírt lépéseket a Windows tartományvezérlők nem vonatkoznak. 
 
 > [!WARNING]
 > Csak utolsó lehetőségként használja a ezt a folyamatot. Mindig próbálja alaphelyzetbe a jelszót a [Azure-portálon vagy az Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) első.
@@ -39,6 +39,12 @@ A core lépések végrehajtásához a helyi jelszót alaphelyzetbe állítani a 
 * Amikor az új virtuális gép elindul, a konfigurációs fájlt hoz létre frissítése a szükséges felhasználói jelszavát.
 
 ## <a name="detailed-steps"></a>Részletes lépések
+
+> [!NOTE]
+> A lépések Windows rendszerű tartományvezérlők nem vonatkoznak. Csak önálló kiszolgáló vagy a kiszolgálót, amely tagja egy tartománynak működik.
+> 
+> 
+
 Mindig próbálja alaphelyzetbe a jelszót a [Azure-portálon vagy az Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) előtt az alábbi lépéseket. Győződjön meg arról, hogy a virtuális gép biztonsági másolata megkezdése előtt. 
 
 1. Törölje a fertőzött virtuális Gépet az Azure portálon. Csak a virtuális gép törlésekor törlődnek a metaadatokat, a hivatkozás a virtuális gép Azure-ban. A virtuális lemezek megőrzi a virtuális gép törlésekor:
@@ -104,7 +110,6 @@ Mindig próbálja alaphelyzetbe a jelszót a [Azure-portálon vagy az Azure Powe
     net user <username> <newpassword> /add
     net localgroup administrators <username> /add
     net localgroup "remote desktop users" <username> /add
-
     ```
 
     ![FixAzureVM.cmd létrehozása](./media/reset-local-password-without-agent/create_fixazure_cmd.png)
@@ -136,13 +141,13 @@ Mindig próbálja alaphelyzetbe a jelszót a [Azure-portálon vagy az Azure Powe
 10. Miután az új virtuális gép fut, csatlakoztassa a virtuális Gépet az új jelszóval, amelyet a távoli asztali kapcsolattal a `FixAzureVM.cmd` parancsfájl.
 11. Az új virtuális géphez a távoli munkamenetet távolítsa el a környezet karbantartása a következő fájlokat:
     
-    * A %windir%\System32
-      * Távolítsa el a FixAzureVM.cmd
-    * A %windir%\System32\GroupPolicy\Machine\
+    * From %windir%\System32
+      * remove FixAzureVM.cmd
+    * From %windir%\System32\GroupPolicy\Machine\
       * Távolítsa el a scripts.ini
-    * A %windir%\System32\GroupPolicy
+    * From %windir%\System32\GroupPolicy
       * Távolítsa el a gpt.ini (Ha a gpt.ini létezett, és átnevezte gpt.ini.bak, nevezze át a .bak-fájl biztonsági gpt.ini)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha továbbra is tud kapcsolódni a távoli asztal, tekintse meg a [RDP hibaelhárítási útmutató](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). A [részletes hibaelhárítási útmutatója RDP](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) ellenőrzi, hogy bizonyos lépésekre helyett módszerek hibaelhárítás. Emellett [az Azure támogatási kérést nyithat](https://azure.microsoft.com/support/options/) gyakorlati segítségért.
 

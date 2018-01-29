@@ -1,5 +1,5 @@
 ---
-title: "Oktatóanyag: Cerner központi konfigurálása az automatikus felhasználó-átadási az Azure Active Directoryval |} Microsoft Docs"
+title: "Oktatóanyag: Cerner központi konfigurálása az Azure Active Directoryval automatikus felhasználólétesítés |} Microsoft Docs"
 description: "Útmutató: Azure Active Directory konfigurálása automatikusan rendelkezni felhasználóknak, hogy a Résztvevőlista Cerner közép-India"
 services: active-directory
 documentationcenter: 
@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/26/2017
+ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: f7e6d4275940174074c1758a5b73030e0b3f107c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: fe24db4e573ef9c9daf34bb8069c7a1e57616ffb
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="tutorial-configuring-cerner-central-for-automatic-user-provisioning"></a>Oktatóanyag: Cerner központi konfigurálása az automatikus felhasználó létesítése
+# <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés Cerner központi konfigurálása
 
 Ez az oktatóanyag célja mutatjuk be, a lépéseket kell elvégeznie a Cerner központi és az Azure AD automatikus kiépítése és leépíti a felhasználói fiókok Azure ad-egy felhasználó Résztvevőlista Cerner közép-India. 
 
@@ -73,17 +73,17 @@ Ahhoz, hogy a felhasználói fiókok Cerner központi telepítéséhez, szüksé
 
 2.  A következő rendszerfiók léteznie kell az Azure AD. Az alábbi utasításokat követve a védőfal és éles környezetekhez rendszerfiók kérelem.
 
-   * Útmutató: https://wiki.ucern.com/display/CernerCentral/Requesting+A+System+Account
+   * Instructions:  https://wiki.ucern.com/display/CernerCentral/Requesting+A+System+Account
 
-   * Védőfal: https://sandboxcernercentral.com/system-accounts/
+   * Sandbox: https://sandboxcernercentral.com/system-accounts/
 
    * Éles: https://cernercentral.com/system-accounts/
 
 3.  Ezt követően készítse el az OAuth tulajdonosi jogkivonat minden rendszer fiók. Ehhez kövesse az alábbi utasításokat.
 
-   * Útmutató: https://wiki.ucern.com/display/public/reference/Accessing+Cerner%27s+Web+Services+Using+A+System+Account+Bearer+Token
+   * Instructions:  https://wiki.ucern.com/display/public/reference/Accessing+Cerner%27s+Web+Services+Using+A+System+Account+Bearer+Token
 
-   * Védőfal: https://sandboxcernercentral.com/system-accounts/
+   * Sandbox: https://sandboxcernercentral.com/system-accounts/
 
    * Éles: https://cernercentral.com/system-accounts/
 
@@ -103,9 +103,9 @@ Ahhoz, hogy a felhasználói fiókok Cerner központi telepítéséhez, szüksé
 
    * Az a **bérlői URL-cím** mezőbe írja be az alábbi formátumban "Felhasználói Résztvevőlista-tartományi-azonosító" cseréje a tartomány azonosítója #4. lépésben beszerzett URL.
 
-> Védőfal: https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
+> Sandbox: https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
-> Éles: https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
+> Production: https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
    * Az a **titkos Token** mezőben adja meg a #3. lépésében létrehozott OAuth tulajdonosi jogkivonatot, és kattintson a **kapcsolat tesztelése**.
 
@@ -132,5 +132,5 @@ Olvassa el az Azure AD-naplók kiépítés módjáról további információkér
 * [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](active-directory-enterprise-apps-manage-provisioning.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Ismerje meg, tekintse át a naplók és jelentések készítése a kiépítés tevékenység](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting).

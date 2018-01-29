@@ -1,5 +1,5 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált Netsuite |} Microsoft Docs"
+title: "Oktatóanyag: Netsuite konfigurálása az Azure Active Directoryval automatikus felhasználólétesítés |} Microsoft Docs"
 description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Netsuite között."
 services: active-directory
 documentationCenter: na
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/19/2017
+ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 20a670a3843586ab57ce776f400bd382947d7861
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3de048a88b2a14936f7a49afefc8c96e56909c37
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Oktatóanyag: Netsuite konfigurálása az automatikus felhasználó létesítése
 
@@ -64,7 +64,7 @@ Ez a szakasz célja engedélyezése a felhasználók átadása, az Active Direct
 
 4. Állítsa be a **kiépítési üzemmódját** való **automatikus**. 
 
-    ![Kiépítés](./media/active-directory-saas-netsuite-provisioning-tutorial/provisioning.png)
+    ![kiépítés folyamatban](./media/active-directory-saas-netsuite-provisioning-tutorial/provisioning.png)
 
 5. Az a **rendszergazdai hitelesítő adataival** területen adja meg a következő konfigurációs beállításokat:
    

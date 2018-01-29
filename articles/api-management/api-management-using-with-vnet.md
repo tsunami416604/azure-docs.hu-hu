@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: 167a4eda4cec509a262b7e032f7629c7435beafd
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 32ddb1489c89303ca3d094c1346d5071c7380c56
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Virtuális hálózatok az Azure API Management használata
 Az Azure virtuális hálózatokról (Vnetekről) helyezze el az Azure-erőforrások bármelyike nem internetes routeable hálózati hozzáférést szabályozó teszik lehetővé. Ezek a hálózatok csatlakozhatnak különböző VPN technológiáin a helyszíni hálózatokhoz. További információk az Azure virtuális hálózatok indítsa el az adatok Itt további: [Azure virtuális hálózat áttekintése](../virtual-network/virtual-networks-overview.md).
@@ -79,7 +79,7 @@ Ebben a cikkben leírt lépések végrehajtásához rendelkeznie kell:
 >
 
 > [!IMPORTANT]
-> Ha az API Management eltávolítása egy VNETET, vagy módosítsa a telepítik egy, a korábban használt virtuális hálózat maradjanak zárolt legfeljebb 4 órán keresztül. Ebben az időszakban, nem lesz lehetséges a virtuális hálózat törlése vagy a központi telepítése egy új erőforrást.
+> Ha az API Management eltávolítása egy VNETET, vagy módosítsa a telepítik egy, a korábban használt virtuális hálózat maradjanak zárolt akár két óráig. Ebben az időszakban, nem lesz lehetséges a virtuális hálózat törlése vagy a központi telepítése egy új erőforrást.
 
 ## <a name="enable-vnet-powershell"></a>Engedélyezése kapcsolatcsoporttal PowerShell-parancsmagok használatával
 Engedélyezheti a VNET-kapcsolatot a PowerShell-parancsmagok használatával
@@ -99,7 +99,7 @@ Az alábbiakban az API-kezelés szolgáltatás telepítése virtuális hálózat
 * **Egyéni DNS-kiszolgáló beállításainak**: az API Management szolgáltatás több Azure-szolgáltatások függ. Amikor az API Management egyéni DNS-kiszolgáló a VNETEN belül üzemel kell feloldani a gazdagép neve az Azure szolgáltatások. Kövesse az [ez](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server) egyéni DNS-beállításainak útmutatást. Tekintse meg a portokat az alábbi táblázat és az egyéb hálózati követelmények hivatkozás.
 
 > [!IMPORTANT]
-> Javasoljuk, hogy egy egyéni DNS-kiszolgálói használatakor a vnet beállítása, amely **előtt** bele az API Management szolgáltatás telepítéséhez. Ellenkező esetben frissítenie kell az API Management szolgáltatás minden alkalommal, amikor a DNS-kiszolgálók (s) módosításához futtassa a [alkalmazni a hálózati konfigurációs műveletet](https://docs.microsoft.com/rest/api/apimanagement/ApiManagementService/ApplyNetworkConfigurationUpdates)
+> Ha egy egyéni DNS-kiszolgálói, használja a vnet tervez, érdemes beállítania, **előtt** bele az API Management szolgáltatás telepítéséhez. Ellenkező esetben frissítenie kell az API Management szolgáltatás minden alkalommal, amikor a DNS-kiszolgálói módosításához futtassa a [alkalmazni a hálózati konfigurációs műveletet](https://docs.microsoft.com/rest/api/apimanagement/ApiManagementService/ApplyNetworkConfigurationUpdates)
 
 * **Az API Management szükséges portok**: az API Management telepítése alhálózat a bejövő és kimenő forgalom vezérelhető [hálózati biztonsági csoport][Network Security Group]. Ha ezeket a portokat bármelyike nem érhető el, az API Management nem fog megfelelően működni, és lehetnek nem elérhetők. Rendelkezik egy vagy több ezeket a portokat blokkolva helytelen konfigurálása más gyakori problémák használata esetén az API Management olyan virtuális hálózaton.
 
@@ -124,7 +124,7 @@ Ha egy API-kezelés szolgáltatás példányát a VNETEN belül üzemel a portok
 
 * **DNS hozzáférési**: 53-as port kimenő hozzáférést kell DNS-kiszolgálókkal való kommunikációhoz. Ha egy egyéni DNS-kiszolgáló létezik a VPN-átjáró másik végén, a DNS-kiszolgáló elérhető-e az API Management üzemeltető alhálózatból kell lennie.
 
-* **Metrikák és az állapotfigyelés**: Azure figyelési végpontok, amelyek oldja meg a következő tartományokkal a kimenő hálózati kapcsolat: global.metrics.nsatc.net, shoebox2.metrics.nsatc.net, prod3.metrics.nsatc.net.
+* **Metrikák és az állapotfigyelés**: Azure figyelési végpontok, amelyek oldja meg a következő tartományokkal a kimenő hálózati kapcsolat: global.metrics.nsatc.net, shoebox2.metrics.nsatc.net, prod3.metrics.nsatc.net, prod.warmpath.msftcloudes.com.
 
 * **Útvonal gyorstelepítése**: egy közös felhasználói konfigurálás az, hogy a saját alapértelmezett útvonalat (0.0.0.0/0), amely arra kényszeríti a kimenő Internet forgalmat inkább a helyszínen. A forgalom áramlását tüntetnek megsérti kapcsolat az Azure API Management szolgáltatással, mert a kimenő adatforgalmat a letiltott helyi, vagy NAT-címek, amelyek már nem használhatók a különböző Azure-végpontok egy felismerhetetlen készletéhez lenne. A megoldás, hogy egy (vagy több) felhasználó által definiált útvonalak megadása ([udr-EK][UDRs]), amely tartalmazza az Azure API Management az alhálózaton. Egy UDR helyett az alapértelmezett útvonal szembeni szerződéses kötelezettségeket vonatkozó alhálózati útvonalakat határozza meg.
   Ha lehetséges javasoljuk, hogy az alábbi konfigurációt használja:
@@ -150,6 +150,13 @@ Ha egy API-kezelés szolgáltatás példányát a VNETEN belül üzemel a portok
 
 * **Erőforrás-navigációs hivatkozásokkal**: az erőforrás-kezelő stílus vnet alhálózati telepítésekor API Management az alhálózat fenntart egy erőforrás-navigációs hivatkozás létrehozásával. Ha az alhálózat már tartalmaz egy erőforrás más szolgáltatótól származó, központi telepítési program **sikertelen**. Hasonlóképpen amikor egy API-kezelés szolgáltatás áthelyezése egy másik alhálózat vagy törölni, megszüntetjük adott erőforrás-navigációs hivatkozás. 
 
+## <a name="subnet-size"></a> Alhálózati Méretkövetelményt
+Azure fenntartja az egyes IP-címek minden alhálózaton belül, és ezeknél a címeknél nem használható. Az első és utolsó IP-címek alhálózatok protokoll megfelelési, valamint három további címek az Azure-szolgáltatásokhoz használt számára vannak fenntartva. További információkért lásd: [vannak-e bármilyen korlátozás belül ezek alhálózatok IP-címeket használnak?](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
+
+Az Azure virtuális hálózat infrastruktúra által használt IP-címek mellett az Api Management feltünteti az az alhálózat által használt két IP-címek egységenként Premium Termékváltozat vagy egy 1 IP-címek a fejlesztői termékváltozat. Minden példány fenntartja a külső terheléselosztóhoz 1 IP-címet. Ha olyan belső virtuális hálózat üzembe helyezve, egy további IP-címet igényel a a belső terheléselosztó.
+
+Az alhálózat, ahol az API Management is telepíthető a minimális méret fent a számítást megadott van /29, amely 3 IP-címeket.
+
 ## <a name="routing"></a> Útválasztás
 + Hozzáférést biztosít minden Szolgáltatásvégpontok fog foglalható le egy elosztott terhelésű nyilvános IP-cím (VIP).
 + Egy alhálózat IP-címtartomány (DIP) IP-címeit a vneten belül erőforrások eléréséhez használható, és egy nyilvános IP-cím (VIP) a virtuális hálózaton kívüli erőforrások eléréséhez használható.
@@ -166,13 +173,14 @@ Ha egy API-kezelés szolgáltatás példányát a VNETEN belül üzemel a portok
 * [A virtuális hálózati kapcsolódás kiszolgáló VPN-átjáró használatával](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti)
 * [Egy virtuális hálózathoz csatlakozó különböző üzembe helyezési modellel](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
 * [A követni kívánt API-Inspector használatával meghívja az Azure API Management](api-management-howto-api-inspector.md)
+* [Virtuális hálózat – gyakori kérdések](../virtual-network/virtual-networks-faq.md)
 
 [api-management-using-vnet-menu]: ./media/api-management-using-with-vnet/api-management-menu-vnet.png
 [api-management-setup-vpn-select]: ./media/api-management-using-with-vnet/api-management-using-vnet-type.png
 [api-management-setup-vpn-select]: ./media/api-management-using-with-vnet/api-management-using-vnet-select.png
 [api-management-setup-vpn-add-api]: ./media/api-management-using-with-vnet/api-management-using-vnet-add-api.png
-[api-management-vnet-private]: ./media/api-management-using-with-vnet/api-management-vnet-private.png
-[api-management-vnet-public]: ./media/api-management-using-with-vnet/api-management-vnet-public.png
+[api-management-vnet-private]: ./media/api-management-using-with-vnet/api-management-vnet-internal.png
+[api-management-vnet-public]: ./media/api-management-using-with-vnet/api-management-vnet-external.png
 
 [Enable VPN connections]: #enable-vpn
 [Connect to a web service behind VPN]: #connect-vpn

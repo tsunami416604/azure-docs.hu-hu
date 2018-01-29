@@ -11,17 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2017
+ms.date: 01/25/2018
 ms.author: sethm
-ms.openlocfilehash: edb6e207852fa59d5828906c891693f367739c9c
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 4789da3c84d52b2615bf4250a36093a74154e1d4
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="message-transfers-locks-and-settlement"></a>Üzenet-átvitel, zárolások és elszámolási
 
-A legtöbb központi üzenet például a Service Bus közvetítő képességét, hogy fogadja az üzeneteket az üzenetsor vagy témakör és tartsa éri el újabb. *Küldési* a kifejezés, és az átvitel az üzenet broker az üzenet gyakran használják. *Fogadási* a lekérése során ügyfél üzenet átvitelét általánosan használt fogalom.
+Egy üzenet broker, például a Service Bus központi képességét, hogy fogadja az üzeneteket az üzenetsor vagy témakör és tartsa éri el újabb. *Küldési* a kifejezés, és az átvitel az üzenet broker az üzenet gyakran használják. *Fogadási* a lekérése során ügyfél üzenet átvitelét általánosan használt fogalom.
 
 Amikor egy ügyfél üzenetet küld, akkor általában szeretné megnézni, hogy az üzenet már megfelelően át és fogadja el az átvitelszervező, vagy valamilyen hiba lépett fel. A pozitív vagy negatív tudomásul vétele rendezi az ügyfél és a broker ismertetése az üzenet az átvitel állapotával kapcsolatos információkat, és így nevezzük *elszámolási*.
 
@@ -121,7 +121,7 @@ Ha **Complete** sikertelen lesz, amely általában nagyon végén üzenetek keze
 
 A tipikus mechanizmus alapján azonosítja a duplikált üzenetek kézbesítések van, úgy, az üzenet-azonosítóját és a feladó egyedi értékre, valószínűleg összhangban a származó folyamatának azonosítót kell megadni. A Feladatütemező valószínűleg értékre kell állítania az üzenetazonosító kíván hozzárendelni a megadott munkavégző alkalmazott a feladat azonosítóját, és a dolgozó volna Ha figyelmen kívül a második előfordulása esetén a feladat-hozzárendelés, hogy a feladat már megtörtént.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tudhat meg többet a Service Bus üzenetkezelés, a következő témakörökben:
 

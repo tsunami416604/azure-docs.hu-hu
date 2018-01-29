@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2017
+ms.date: 01/24/2018
 ms.author: banders
-ms.openlocfilehash: e4f112a221221c7f68cc31c80fb43417bb617632
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: bfe1ad012d126b3522b79a6ccecfe03b2b86f7b5
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Összegyűjti és elemzi az Azure tevékenység Log Analytics-naplók
 
@@ -90,10 +90,10 @@ Tevékenység naplóadatokat csak akkor jelenik meg *után* a tevékenységi nap
 
 | Blade | Leírás |
 | --- | --- |
-| Az Azure tevékenység naplóbejegyzések | Azure tevékenység naplóbejegyzés felső sáv diagramot ábrázol, amely a kijelölt időtartományban rekord összegek és a felső 10 tevékenység hívók listáját jeleníti meg. Kattintson a napló keresése futtatásához a sávdiagram <code>Type=AzureActivity</code>. Egy hívó elemet ad vissza, a cikk összes tevékenység naplóbejegyzések napló keresés futtatásához kattintson. |
-| Tevékenységi naplóit állapot szerint | A perecdiagram a kijelölt időtartományban Azure napló állapota látható. Is listáját jeleníti meg az első tíz állapot rekordok listáját. Kattintson a napló keresése futtatásához a diagram <code>Type=AzureActivity &#124; measure count() by ActivityStatus</code>. Kattintson egy állapot elemet ad vissza az összes tevékenység naplóbejegyzések állapot rekord napló keresés futtatásához. |
-| Erőforrás tevékenységi naplóit | Tevékenységi naplóit erőforrások teljes számát jeleníti meg, és az első tíz erőforrások rekord száma az egyes erőforrások sorolja fel. Kattintson a napló keresése futtatásához teljes területre <code>Type=AzureActivity &#124; measure count() by Resource</code>, amely jelzi, hogy az összes Azure-erőforrások elérhetővé a megoldás. Kattintson egy erőforrást egy adott erőforráshoz tartozó összes tevékenység rekordot ad vissza napló keresés futtatásához. |
-| Erőforrás-szolgáltató tevékenységi naplóit | Tevékenység létrehozott erőforrás-szolgáltató teljes számát naplózza, és felsorolja a tíz jeleníti meg. Kattintson a napló keresése futtatásához teljes területre <code>Type=AzureActivity &#124; measure count() by ResourceProvider</code>, amely jelzi, hogy az összes Azure-erőforrás-szolgáltatók. Kattintson a napló-keresés vissza az összes tevékenységet rögzíti a szolgáltató futtatásához egy erőforrás-szolgáltató. |
+| Az Azure tevékenység naplóbejegyzések | Azure tevékenység naplóbejegyzés felső sáv diagramot ábrázol, amely a kijelölt időtartományban rekord összegek és a felső 10 tevékenység hívók listáját jeleníti meg. Kattintson a napló keresése futtatásához a sávdiagram <code>AzureActivity</code>. Egy hívó elemet ad vissza, a cikk összes tevékenység naplóbejegyzések napló keresés futtatásához kattintson. |
+| Tevékenységi naplóit állapot szerint | A perecdiagram a kijelölt időtartományban Azure napló állapota látható. Is listáját jeleníti meg az első tíz állapot rekordok listáját. Kattintson a napló keresése futtatásához a diagram <code>AzureActivity &#124; summarize AggregatedValue = count() by ActivityStatus</code>. Kattintson egy állapot elemet ad vissza az összes tevékenység naplóbejegyzések állapot rekord napló keresés futtatásához. |
+| Erőforrás tevékenységi naplóit | Tevékenységi naplóit erőforrások teljes számát jeleníti meg, és az első tíz erőforrások rekord száma az egyes erőforrások sorolja fel. Kattintson a napló keresése futtatásához teljes területre <code>AzureActivity &#124; summarize AggregatedValue = count() by Resource</code>, amely jelzi, hogy az összes Azure-erőforrások elérhetővé a megoldás. Kattintson egy erőforrást egy adott erőforráshoz tartozó összes tevékenység rekordot ad vissza napló keresés futtatásához. |
+| Erőforrás-szolgáltató tevékenységi naplóit | Tevékenység létrehozott erőforrás-szolgáltató teljes számát naplózza, és felsorolja a tíz jeleníti meg. Kattintson a napló keresése futtatásához teljes területre <code>AzureActivity &#124; summarize AggregatedValue = count() by ResourceProvider</code>, amely jelzi, hogy az összes Azure-erőforrás-szolgáltatók. Kattintson a napló-keresés vissza az összes tevékenységet rögzíti a szolgáltató futtatásához egy erőforrás-szolgáltató. |
 
 ![Az Azure tevékenységi naplóit irányítópult](./media/log-analytics-activity/activity-log-dash.png)
 

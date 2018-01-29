@@ -1,162 +1,193 @@
 ---
-title: "Webalkalmazási tűzfal konfigurálása: Azure Application Gateway |} Microsoft Docs"
-description: "Ez a cikk útmutatást webalkalmazási tűzfal egy új vagy meglévő Alkalmazásátjáró használatának módjáról."
-documentationcenter: na
+title: "Hozzon létre egy alkalmazás webalkalmazási tűzfal - Azure parancssori Felülettel |} Microsoft Docs"
+description: "Megtudhatja, hogyan hozzon létre egy alkalmazás webalkalmazási tűzfal az Azure parancssori felület használatával."
 services: application-gateway
 author: davidmu1
 manager: timlt
 editor: tysonn
-ms.assetid: 670b9732-874b-43e6-843b-d2585c160982
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/20/2017
+ms.date: 01/25/2018
 ms.author: davidmu
-ms.openlocfilehash: e60bfc89378569b154f4f973d1dceb683fa58482
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 961642796525223eba4b19d77568d4149ee9d3c6
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="configure-a-web-application-firewall-on-a-new-or-existing-application-gateway-with-azure-cli"></a>Webalkalmazási tűzfal konfigurálása egy új vagy meglévő Alkalmazásátjáró Azure parancssori felülettel
+# <a name="create-an-application-gateway-with-a-web-application-firewall-using-the-azure-cli"></a>Hozzon létre egy alkalmazást az Azure parancssori felület használatával webalkalmazási tűzfal
 
-> [!div class="op_single_selector"]
-> * [Azure Portal](application-gateway-web-application-firewall-portal.md)
-> * [PowerShell](application-gateway-web-application-firewall-powershell.md)
-> * [Azure CLI](application-gateway-web-application-firewall-cli.md)
+Az Azure parancssori felület használatával hozzon létre egy [Alkalmazásátjáró](application-gateway-introduction.md) rendelkező egy [webalkalmazási tűzfal](application-gateway-web-application-firewall-overview.md) (waf-ot), amely használ egy [virtuálisgép-méretezési csoport](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). A WAF használatát [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) szabályokat, hogy az alkalmazás védelme. Ezek a szabályok közé tartoznak például az SQL-injektálás támadások, a többhelyes parancsfájlok futtatására és a munkamenet kihasználásának elleni védelem. 
 
-Megtudhatja, hogyan hozzon létre egy webes alkalmazás tűzfalat (waf-ot)-Alkalmazásátjáró engedélyezve van. Ismerje meg, egy WAF hozzáadása egy meglévő Alkalmazásátjáró is.
+Ebből a cikkből megismerheti, hogyan:
 
-Az Azure alkalmazás átjáró WAF webalkalmazások védje a közös web-alapú támadások, például az SQL-injektálás, a többhelyes parancsfájlok futtatására és a munkamenet kihasználásának.
+> [!div class="checklist"]
+> * A hálózat beállítása
+> * Hozzon létre egy alkalmazás WAF engedélyezve
+> * Hozzon létre egy virtuálisgép-méretezési csoport
+> * Hozzon létre egy tárfiókot, és diagnosztika konfigurálása
 
- Alkalmazásátjáró réteg-7 terheléselosztó. Feladatátvétel esetén a teljesítmény-útválasztási HTTP-kérelmek különböző kiszolgálók között, hogy be van kapcsolva a felhőbeli vagy helyszíni biztosít. Alkalmazásátjáró számos alkalmazás kézbesítési vezérlő (LÉPETT) szolgáltatásokat biztosítja:
+![Webes alkalmazás tűzfal – példa](./media/application-gateway-web-application-firewall-cli/scenario-waf.png)
 
- * HTTP terheléselosztás 
- * A munkamenet cookie-alapú kapcsolat 
- * Secure Sockets Layer (SSL) kiürítése 
- * Egyéni állapot-mintavételi csomagjai 
- * Többhelyes funkciók támogatása
- 
- Támogatott szolgáltatások teljes listáját, lásd: [Alkalmazásátjáró áttekintése](application-gateway-introduction.md).
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-Ez a cikk bemutatja, hogyan [webalkalmazási tűzfal hozzáadása egy meglévő Alkalmazásátjáró](#add-web-application-firewall-to-an-existing-application-gateway). Azt is bemutatja, hogyan [webalkalmazási tűzfal használó Alkalmazásátjáró létrehozása](#create-an-application-gateway-with-web-application-firewall).
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-![a forgatókönyv kép][scenario]
+Telepítése és a parancssori felület helyileg használata mellett dönt, ha ez az oktatóanyag van szükség, hogy futnak-e az Azure parancssori felület 2.0.4 verzió vagy újabb. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
 
-## <a name="prerequisite-install-the-azure-cli-20"></a>Előfeltétel: Az Azure parancssori felület 2.0 telepítése
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Ebben a cikkben szereplő lépések végrehajtásához kell [telepítse az Azure parancssori felület (CLI) Mac, Linux és Windows](https://docs.microsoft.com/cli/azure/install-az-cli2).
+Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy Azure erőforráscsoport nevű *myResourceGroupAG* rendelkező [az csoport létrehozása](/cli/azure/group#az_group_create).
 
-## <a name="waf-configuration-differences"></a>WAF konfigurációs különbségek
-
-Ha, hogy elolvasta a [hozzon létre egy alkalmazást az Azure parancssori felület](application-gateway-create-gateway-cli.md), hogy tudomásul veszi, hogy a Termékváltozat-beállítások konfigurálása az Alkalmazásátjáró létrehozása. A WAF Alkalmazásátjáró a Termékváltozat konfigurálásakor adja meg a további beállításokat tartalmazza. Nincsenek további módosítások, amely akkor adja meg az Alkalmazásátjáró magát a.
-
-| **Beállítás** | **Részletek**
-|---|---|
-|**Termékváltozat** |Egy normál Alkalmazásátjáró egy WAF nélkül támogatja **szabványos\_kis**, **szabványos\_Közepes**, és **szabványos\_nagy**méretét. A egy WAF bevezetése esetén két további SKU, **WAF\_Közepes** és **WAF\_nagy**. Egy WAF kis alkalmazásátjárót nem támogatott.|
-|**Mód** | Ez a beállítás akkor a WAF módját. két érték engedélyezett **észlelési** és **megelőzési**. Ha a WAF be van állítva **észlelési** mód, minden fenyegetések vannak tárolva egy naplófájlt. A **megelőzési** mód, eseményeket naplózza, de a támadó megkapja a 403-as nem engedélyezett az Alkalmazásátjáró válaszát.|
-
-## <a name="add-a-web-application-firewall-to-an-existing-application-gateway"></a>Webalkalmazási tűzfal hozzáadása egy meglévő Alkalmazásátjáró
-
-A következő parancsot egy meglévő szabványos Alkalmazásátjáró WAF-kompatibilis Alkalmazásátjáró módosítja:
-
-```azurecli-interactive
-#!/bin/bash
-
-az network application-gateway waf-config set \
-  --enabled true \
-  --firewall-mode Prevention \
-  --gateway-name "AdatumAppGateway" \
-  --resource-group "AdatumAppGatewayRG"
+```azurecli-interactive 
+az group create --name myResourceGroupAG --location eastus
 ```
 
-Ez a parancs egy WAF az Alkalmazásátjáró frissítése. Az alkalmazás átjáró naplók megtekintése ismertetése: [Alkalmazásátjáró diagnosztika](application-gateway-diagnostics.md). Egy WAF biztonsági jellegéből tekintse át a naplókat rendszeresen a webalkalmazások biztonsági állapotát.
+## <a name="create-network-resources"></a>Hálózati erőforrások létrehozása
 
-## <a name="create-an-application-gateway-with-a-web-application-firewall"></a>Webalkalmazási tűzfal Alkalmazásátjáró létrehozása
-
-A következő parancsot egy WAF Alkalmazásátjáró hoz létre:
+A virtuális hálózat és az alhálózatokat használják az Alkalmazásátjáró és a kapcsolódó erőforrások hálózati kapcsolatot biztosít. Nevű a virtuális hálózat létrehozása *myVNet* és nevű alhálózat *myAGSubnet* rendelkező [az hálózati vnet létrehozása](/cli/azure/network/vnet#az_network_vnet_create) és [az alhálózaton virtuális hálózat létrehozása](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create). Hozzon létre egy nyilvános IP-cím nevű *myAGPublicIPAddress* rendelkező [létrehozása az hálózati nyilvános ip-](/cli/azure/network/public-ip#az_network_public_ip_create).
 
 ```azurecli-interactive
-#!/bin/bash
+az network vnet create 
+  --name myVNet \
+  --resource-group myResourceGroupAG \
+  --location eastus \
+  --address-prefix 10.0.0.0/16 \
+  --subnet-name myBackendSubnet \
+  --subnet-prefix 10.0.1.0/24
+az network vnet subnet create 
+  --name myAGSubnet \
+  --resource-group myResourceGroupAG \
+  --vnet-name myVNet \
+  --address-prefix 10.0.2.0/24 
+az network public-ip create 
+  --resource-group myResourceGroupAG \
+  --name myAGPublicIPAddress
+```
 
+## <a name="create-an-application-gateway-with-a-waf"></a>Hozzon létre egy alkalmazást egy WAF
+
+Használhat [az hálózati Alkalmazásátjáró létrehozása](/cli/azure/application-gateway#az_application_gateway_create) nevű Alkalmazásátjáró létrehozása *myAppGateway*. Alkalmazásátjáró az Azure parancssori felület használatával hoz létre, amikor konfigurációs adatokat, például, sku, és a HTTP-beállításait adja meg. Az Alkalmazásátjáró hozzá van rendelve *myAGSubnet* és *myPublicIPSddress* , amelyet korábban hozott létre.
+
+```azurecli-interactive
 az network application-gateway create \
-  --name "AdatumAppGateway2" \
-  --location "eastus" \
-  --resource-group "AdatumAppGatewayRG" \
-  --vnet-name "AdatumAppGatewayVNET2" \
-  --vnet-address-prefix "10.0.0.0/16" \
-  --subnet "Appgatewaysubnet2" \
-  --subnet-address-prefix "10.0.0.0/28" \
- --servers "10.0.0.5 10.0.0.4" \
-  --capacity 2 
-  --sku "WAF_Medium" \
-  --http-settings-cookie-based-affinity "Enabled" \
-  --http-settings-protocol "Http" \
-  --frontend-port "80" \
-  --routing-rule-type "Basic" \
-  --http-settings-port "80" \
-  --public-ip-address "pip2" \
-  --public-ip-address-allocation "dynamic" \
-  --tags "cli[2] owner[administrator]"
+  --name myAppGateway \
+  --location eastus \
+  --resource-group myResourceGroupAG \
+  --vnet-name myVNet \
+  --subnet myAGSubnet \
+  --capacity 2 \
+  --sku WAF_Medium \
+  --http-settings-cookie-based-affinity Disabled \
+  --frontend-port 80 \
+  --http-settings-port 80 \
+  --http-settings-protocol Http \
+  --public-ip-address myAGPublicIPAddress
+az network application-gateway waf-config set --enabled true \
+  --gateway-name myAppGateway \
+  --resource-group myResourceGroupAG \
+  --firewall-mode Detection
 ```
 
-> [!NOTE]
-> Az alapvető beállításokkal WAF létre alkalmazásátjárót védelmet CRS 3.0-val van állítva.
+Az alkalmazás-átjáró hozható létre több percig is eltarthat. Az Alkalmazásátjáró létrehozása után megtekintheti az új szolgáltatásokat is:
 
-## <a name="get-an-application-gateway-dns-name"></a>Egy alkalmazás átjáró DNS-név beolvasása
+- *appGatewayBackendPool* -Alkalmazásátjáró rendelkeznie kell legalább egy háttér címkészletet.
+- *appGatewayBackendHttpSettings* – Megadja, hogy 80-as porton, és olyan HTTP protokollt használja a kommunikációhoz.
+- *appGatewayHttpListener* -a társított alapértelmezett figyelő *appGatewayBackendPool*.
+- *appGatewayFrontendIP* -hozzárendel *myAGPublicIPAddress* való *appGatewayHttpListener*.
+- *Szabály1* - útválasztási szabály társított alapértelmezett *appGatewayHttpListener*.
 
-Az átjáró létrehozása után a következő lépésre konfigurálhatja az előtér-kommunikációra. Egy nyilvános IP-cím használata esetén az Alkalmazásátjáró egy dinamikusan hozzárendelt DNS-nevet, amely nincs rövid van szükség. Győződjön meg arról, hogy a felhasználók is elérte az Alkalmazásátjáró, hogy használatával egy olyan CNAME rekordot a nyilvános végpontot az Alkalmazásátjáró. További információkért lásd: [egy egyéni tartománynév beállítása az Azure-felhőszolgáltatás](../cloud-services/cloud-services-custom-domain-name-portal.md). 
+## <a name="create-a-virtual-machine-scale-set"></a>Hozzon létre egy virtuálisgép-méretezési csoport
 
-Egy olyan CNAME rekordot konfigurálásához beolvasása részleteit az Alkalmazásátjáró és a hozzá tartozó IP-/ DNS-nevet az Alkalmazásátjáró csatolva PublicIPAddress elem használatával. Az Alkalmazásátjáró DNS-név használatával hozzon létre egy CNAME rekordot, amely mutat, a két webes alkalmazásokhoz, hogy a DNS-név. Nem javasoljuk A rekordok használatával, mert a VIP előfordulhat, hogy módosítsa az Alkalmazásátjáró újraindításakor.
+Ebben a példában hozzon létre egy virtuálisgép-méretezési csoport, amely a háttérkészletének az Alkalmazásátjáró két kiszolgáló biztosítja. A méretezési csoportban lévő virtuális gépek társított a *myBackendSubnet* alhálózat. A skála létrehozásához állítsa be, használhatja [az vmss létrehozása](/cli/azure/vmss#az_vmss_create).
 
 ```azurecli-interactive
-#!/bin/bash
-
-az network public-ip show \
-  --name pip2 \
-  --resource-group "AdatumAppGatewayRG"
+az vmss create \
+  --name myvmss \
+  --resource-group myResourceGroupAG \
+  --image UbuntuLTS \
+  --admin-username azureuser \
+  --admin-password Azure123456! \
+  --instance-count 2 \
+  --vnet-name myVNet \
+  --subnet myBackendSubnet \
+  --vm-sku Standard_DS2 \
+  --upgrade-policy-mode Automatic \
+  --app-gateway myAppGateway \
+  --backend-pool-name appGatewayBackendPool
 ```
 
-```
+### <a name="install-nginx"></a>Az NGINX telepítése
+
+A szerkesztő létre szeretne hozni a fájlt a felhő rendszerhéj használata. Adja meg `sensible-editor cloudConfig.json` a fájl létrehozásához elérhető szerkesztők listájának megjelenítéséhez. Az aktuális rendszerhéjban customConfig.json nevű fájl létrehozása, és illessze be a következő konfigurációt:
+
+```json
 {
-  "dnsSettings": {
-    "domainNameLabel": null,
-    "fqdn": "8c786058-96d4-4f3e-bb41-660860ceae4c.cloudapp.net",
-    "reverseFqdn": null
-  },
-  "etag": "W/\"3b0ac031-01f0-4860-b572-e3c25e0c57ad\"",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/AdatumAppGatewayRG/providers/Microsoft.Network/publicIPAddresses/pip2",
-  "idleTimeoutInMinutes": 4,
-  "ipAddress": "40.121.167.250",
-  "ipConfiguration": {
-    "etag": null,
-    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/AdatumAppGatewayRG/providers/Microsoft.Network/applicationGateways/AdatumAppGateway2/frontendIPConfigurations/appGatewayFrontendIP",
-    "name": null,
-    "privateIpAddress": null,
-    "privateIpAllocationMethod": null,
-    "provisioningState": null,
-    "publicIpAddress": null,
-    "resourceGroup": "AdatumAppGatewayRG",
-    "subnet": null
-  },
-  "location": "eastus",
-  "name": "pip2",
-  "provisioningState": "Succeeded",
-  "publicIpAddressVersion": "IPv4",
-  "publicIpAllocationMethod": "Dynamic",
-  "resourceGroup": "AdatumAppGatewayRG",
-  "resourceGuid": "3c30d310-c543-4e9d-9c72-bbacd7fe9b05",
-  "tags": {
-    "cli[2] owner[administrator]": ""
-  },
-  "type": "Microsoft.Network/publicIPAddresses"
+  "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"],
+  "commandToExecute": "./install_nginx.sh"
 }
 ```
 
+```azurecli-interactive
+az vmss extension set \
+  --publisher Microsoft.Azure.Extensions \
+  --version 2.0 \
+  --name CustomScript \
+  --resource-group myResourceGroupAG \
+  --vmss-name myvmss \
+  --settings @cloudConfig.json
+```
+
+## <a name="create-a-storage-account-and-configure-diagnostics"></a>Hozzon létre egy tárfiókot, és diagnosztika konfigurálása
+
+Ebben az oktatóanyagban az Alkalmazásátjáró tárfiók adatok használ felderítésére és megelőzésére célokra. Log Analytics vagy az Eseményközpont kiválasztásával adatok rögzítéséhez is használhatja. 
+
+### <a name="create-a-storage-account"></a>Create a storage account
+
+Hozzon létre egy tárfiókot, nevű *myagstore1* rendelkező [az storage-fiók létrehozása](/cli/azure/storage/account?view=azure-cli-latest#az_storage_account_create).
+
+```azurecli-interactive
+az storage account create \
+  --name myagstore1 \
+  --resource-group myResourceGroupAG \
+  --location eastus \
+  --sku Standard_LRS \
+  --encryption blob
+```
+
+### <a name="configure-diagnostics"></a>Diagnosztika konfigurálása
+
+Erőforrásrekord-adatokat a diagnosztika konfigurálja azokat a ApplicationGatewayAccessLog ApplicationGatewayPerformanceLog és ApplicationGatewayFirewallLog naplók. Helyettesítő `<subscriptionId>` az előfizetés-azonosítóval, majd konfigurálja a diagnosztika [az figyelő diagnosztikai-beállítások létrehozása](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az_monitor_diagnostic_settings_create).
+
+```azurecli-interactive
+az monitor diagnostic-settings create --resource-id '/subscriptions/<subscriptionId>/resourceGroups/myResourceGroupAG/providers/Microsoft.Network/applicationGateways/myAppGateway' \
+  --logs '[ { "category": "ApplicationGatewayAccessLog", "enabled": true, "retentionPolicy": { "days": 30, "enabled": true } }, { "category": "ApplicationGatewayPerformanceLog", "enabled": true, "retentionPolicy": { "days": 30, "enabled": true } }, { "category": "ApplicationGatewayFirewallLog", "enabled": true, "retentionPolicy": { "days": 30, "enabled": true } } ]' \
+  --storage-account '/subscriptions/<subscriptionId>/resourceGroups/myResourceGroupAG/providers/Microsoft.Storage/storageAccounts/myagstore1'
+```
+
+## <a name="test-the-application-gateway"></a>Az Alkalmazásátjáró tesztelése
+
+A nyilvános IP-cím, az alkalmazás-átjáró használatához [az hálózati nyilvános ip-megjelenítése](/cli/azure/network/public-ip#az_network_public_ip_show). Másolja a nyilvános IP-címet, és illessze be a böngésző címsorába.
+
+```azurepowershell-interactive
+az network public-ip show \
+  --resource-group myResourceGroupAG \
+  --name myAGPublicIPAddress \
+  --query [ipAddress] \
+  --output tsv
+```
+
+![Az alkalmazás átjáró alap URL-cím tesztelése](./media/application-gateway-web-application-firewall-cli/application-gateway-nginxtest.png)
+
 ## <a name="next-steps"></a>További lépések
 
-WAF szabályok testreszabásával kapcsolatban [testre szabhatja a webes alkalmazás tűzfalszabályok keresztül az Azure CLI 2.0](application-gateway-customize-waf-rules-cli.md).
+Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
-[scenario]: ./media/application-gateway-web-application-firewall-cli/scenario.png
+> [!div class="checklist"]
+> * A hálózat beállítása
+> * Hozzon létre egy alkalmazás WAF engedélyezve
+> * Hozzon létre egy virtuálisgép-méretezési csoport
+> * Hozzon létre egy tárfiókot, és diagnosztika konfigurálása
+
+További információt a alkalmazásátjárót és a kapcsolódó erőforrások, továbbra is a útmutatókat.

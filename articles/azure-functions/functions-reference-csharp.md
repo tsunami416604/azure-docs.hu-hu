@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: 5a4fc57606b0cf09f8d20710e3c83637283014ba
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: b6b18f79b0ef50c30335218ef45ba6ed932cb586
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Az Azure parancsfájl (.csx) fejlesztői leírás funkciók C#
 
@@ -248,7 +248,7 @@ public static void Run(string myBlob, TraceWriter log)
 > [!NOTE]
 > Egy újabb naplózási keretrendszert, melyekkel ahelyett, hogy információt `TraceWriter`, lásd: [írási naplói a C# funkciók](functions-monitoring.md#write-logs-in-c-functions) a a **figyelése az Azure Functions** cikk.
 
-## <a name="async"></a>Aszinkron
+## <a name="async"></a>Async
 
 Ahhoz, hogy egy függvény aszinkron, használja a `async` kulcsszót, és térjen vissza a `Task` objektum.
 
@@ -258,7 +258,7 @@ public async static Task ProcessQueueMessageAsync(
         Stream blobInput,
         Stream blobOutput)
 {
-    await blobInput.CopyToAsync(blobOutput, 4096, token);
+    await blobInput.CopyToAsync(blobOutput, 4096);
 }
 ```
 

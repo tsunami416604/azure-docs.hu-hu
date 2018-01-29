@@ -1,273 +1,275 @@
 ---
-title: "Konfigurálja az SSL kiszervezési - Azure Application Gateway - PowerShell |} Microsoft Docs"
-description: "Ez a cikk ismerteti az utasításokat követve hozzon létre egy alkalmazás SSL-kiszervezés Azure Resource Manager használatával"
-documentationcenter: na
+title: "Hozzon létre egy alkalmazás SSL-lezárást - Azure PowerShell |} Microsoft Docs"
+description: "Megtudhatja, hogyan Alkalmazásátjáró létrehozása és hozzáadása egy tanúsítványt az SSL-lezárást Azure PowerShell használatával."
 services: application-gateway
 author: davidmu1
 manager: timlt
 editor: tysonn
-ms.assetid: 3c3681e0-f928-4682-9d97-567f8e278e13
+tags: azure-resource-manager
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/19/2017
+ms.date: 01/25/2018
 ms.author: davidmu
-ms.openlocfilehash: ee48ca45ae0d337b5b919dbbb28341caf8af0d45
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 4972597e8e2db36be47c86b9aa1e592d94d4c2fe
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="configure-an-application-gateway-for-ssl-offload-by-using-azure-resource-manager"></a>Application Gateway konfigurálása SSL-alapú kiszervezéshez az Azure Resource Manager használatával
+# <a name="create-an-application-gateway-with-ssl-termination-using-azure-powershell"></a>Hozzon létre egy alkalmazást az Azure PowerShell SSL-lezárást
 
-> [!div class="op_single_selector"]
-> * [Azure Portal](application-gateway-ssl-portal.md)
-> * [Azure Resource Manager PowerShell](application-gateway-ssl-arm.md)
-> * [Az Azure klasszikus PowerShell](application-gateway-ssl.md)
-> * [Azure CLI 2.0](application-gateway-ssl-cli.md)
+Azure PowerShell segítségével hozzon létre egy [Alkalmazásátjáró](application-gateway-introduction.md) az egy tanúsítvánnyal rendelkező [SSL-lezárást](application-gateway-backend-ssl.md) használ, amely egy [virtuálisgép-méretezési csoport](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) háttérkiszolgálókhoz. Ebben a példában a méretezési tartalmazza az Alkalmazásátjáró alapértelmezett háttérkészlet által hozzáadott két virtuálisgép-példánya. 
 
-Az Azure Application Gateway konfigurálható úgy, hogy leállítsa a Secure Sockets Layer (SSL) munkamenetét az átjárónál, így elkerülhetők a költséges SSL visszafejtési feladatok a webfarmon. Az SSL-alapú kiszervezés emellett leegyszerűsíti az előtér-kiszolgáló számára webalkalmazás telepítését és kezelését.
+Ebből a cikkből megismerheti, hogyan:
 
-## <a name="before-you-begin"></a>Előkészületek
+> [!div class="checklist"]
+> * Önaláírt tanúsítvány létrehozása
+> * A hálózat beállítása
+> * Hozzon létre egy alkalmazást a tanúsítvány
+> * Hozzon létre egy virtuálisgép-méretezési állítható be alapértelmezett háttérkészlet
 
-1. Telepítse az Azure PowerShell-parancsmagok legújabb verzióját a Webplatform-telepítővel. A [Letöltések lap](https://azure.microsoft.com/downloads/) **Windows PowerShell** szakaszából letöltheti és telepítheti a legújabb verziót.
-2. Hozzon létre egy virtuális hálózatot és az Alkalmazásátjáró alhálózatot. Győződjön meg arról, hogy egy virtuális gép vagy felhőalapú telepítés sem használja az alhálózatot. Az Application Gateway-nek egyedül kell lennie a virtuális hálózat alhálózatán.
-3. A kiszolgálókat, amelyeket az alkalmazás átjáró használatához konfigurálnia kell lennie, különben a végpontokat hozott létre a virtuális hálózat vagy a nyilvános IP-cím vagy a hozzárendelt virtuális IP-cím (VIP).
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="what-is-required-to-create-an-application-gateway"></a>Mire van szükség egy Application Gateway létrehozásához?
+Az oktatóanyaghoz az Azure PowerShell-modul 3.6-os vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
-* **Háttér-kiszolgálófiók készlet**: a háttér-kiszolgálók IP-címek listáját. Az IP-címek felsorolt kell tartoznia, a virtuális hálózati alhálózat, vagy egy nyilvános IP-cím/VIP kell lennie.
-* **Háttér-kiszolgálófiók Készletbeállítások**: minden készlethez beállítások, például a portot, a protokoll és a cookie-alapú kapcsolat van. Ezek a beállítások egy adott készlethez kapcsolódnak, és a készlet minden kiszolgálójára érvényesek.
-* **Előtér-port**: Ez a port nem nyilvános port meg van nyitva, az alkalmazás-átjárón. Amikor a forgalom eléri ezt a portot, a port átirányítja az egyik háttérkiszolgálóra.
-* **Figyelő**: A figyelő rendelkezik egy előtér-portot, a protokollt (Http vagy Https; ezek a beállítások-és nagybetűk), és az SSL-tanúsítvány neve (ha az SSL beállításának-kiszervezés).
-* **A szabály**: A szabály van kötve, a figyelő és a háttér-kiszolgálófiók készletben, és határozza meg, melyik háttér-kiszolgálófiók készlet át tudja irányítani a forgalmat, a találatok, amikor egy adott figyelő. Jelenleg csak a *basic* szabály támogatott. A *basic* szabály a ciklikus időszeleteléses terheléselosztás.
+## <a name="create-a-self-signed-certificate"></a>Önaláírt tanúsítvány létrehozása
 
-**További konfigurációs megjegyzések**
+Az éles környezetben való használathoz importálnia kell a megbízható szolgáltató által aláírt érvényes tanúsítványt. Ebben az oktatóanyagban létrehoz egy önaláírt tanúsítványt használó [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate). Használhat [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) által eredményül adott pfx-fájlba exportálhatja a tanúsítványt az ujjlenyomattal.
 
-Az SSL-tanúsítványok konfigurálásához **Https**-re kell módosítani a **HttpListener** protokollját (megkülönböztetve a kis- és nagybetűket). Adja hozzá a **SslCertificate** elem **HttpListener** az SSL-tanúsítvány konfigurálva a változó értékével. Az előtér-port frissíteni kell, hogy **443-as**.
+```powershell
+New-SelfSignedCertificate `
+  -certstorelocation cert:\localmachine\my `
+  -dnsname www.contoso.com
+```
 
-**Ahhoz, hogy a cookie-alapú kapcsolat**: annak érdekében, hogy egy ügyfél kérelmet mindig van irányítva az azonos virtuális gép a webfarm Alkalmazásátjáró konfigurálhatja. Ennek megvalósítása érdekében beszúrása egy munkamenetcookie-t, amely lehetővé teszi, hogy az átjáró megfelelően irányítja a forgalmat. A cookie-alapú affinitás engedélyezéséhez a **CookieBasedAffinity** paraméter beállítása legyen **Enabled** a **BackendHttpSettings** elemen belül.
+Ez az eredmény hasonlót kell megjelennie:
+
+```
+PSParentPath: Microsoft.PowerShell.Security\Certificate::LocalMachine\my
+
+Thumbprint                                Subject
+----------                                -------
+E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630  CN=www.contoso.com
+```
+
+A pfx-fájl létrehozásához használja az ujjlenyomat:
+
+```powershell
+$pwd = ConvertTo-SecureString -String "Azure123456!" -Force -AsPlainText
+Export-PfxCertificate `
+  -cert cert:\localMachine\my\E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630 `
+  -FilePath c:\appgwcert.pfx `
+  -Password $pwd
+```
+
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+
+Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy Azure erőforráscsoport nevű *myResourceGroupAG* rendelkező [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). 
+
+```powershell
+New-AzureRmResourceGroup -Name myResourceGroupAG -Location eastus
+```
+
+## <a name="create-network-resources"></a>Hálózati erőforrások létrehozása
+
+Konfigurálja az alhálózatok nevű *myBackendSubnet* és *myAGSubnet* használatával [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig). Hozzon létre a virtuális hálózat nevű *myVNet* használatával [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) az alhálózati konfigurációjú. És végezetül hozza létre a nyilvános IP-cím nevű *myAGPublicIPAddress* használatával [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress). Ezeket az erőforrásokat segítségével adja meg a hálózati kapcsolat az Alkalmazásátjáró és a kapcsolódó erőforrások.
+
+```powershell
+$backendSubnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
+  -Name myBackendSubnet `
+  -AddressPrefix 10.0.1.0/24
+$agSubnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
+  -Name myAGSubnet `
+  -AddressPrefix 10.0.2.0/24
+$vnet = New-AzureRmVirtualNetwork `
+  -ResourceGroupName myResourceGroupAG `
+  -Location eastus `
+  -Name myVNet `
+  -AddressPrefix 10.0.0.0/16 `
+  -Subnet $backendSubnetConfig, $agSubnetConfig
+$pip = New-AzureRmPublicIpAddress `
+  -ResourceGroupName myResourceGroupAG `
+  -Location eastus `
+  -Name myAGPublicIPAddress `
+  -AllocationMethod Dynamic
+```
 
 ## <a name="create-an-application-gateway"></a>Application Gateway létrehozása
 
-Az Azure klasszikus üzembe helyezési modellel, és az Azure Resource Manager használatával közötti különbség Alkalmazásátjáró és be kell állítani a cikkek létrehozása sorrendje.
+### <a name="create-the-ip-configurations-and-frontend-port"></a>Az IP-konfigurációk és elülső rétegbeli portot létrehozása
 
-A Resource Manager összes összetevőjének olyan átjárót konfigurált külön-külön, és majd helyezze egy alkalmazás átjáró erőforrás létrehozásához.
-
-Egy Application Gateway létrehozásához a következő lépéseket kell végrehajtania:
-
-1. [Hozzon létre egy erőforráscsoportot az erőforrás-kezelő](#create-a-resource-group-for-resource-manager)
-2. [Virtuális hálózati alhálózat és nyilvános IP-Címek használhatók az Alkalmazásátjáró létrehozása](#create-virtual-network-subnet-and-public-IP-for-the-application-gateway)
-3. [Az alkalmazás átjáró konfigurációs objektum létrehozásához](#create-an-application-gateway-configuration-object)
-4. [Alkalmazás átjáró erőforrás létrehozása](#create-an-application-gateway-resource)
-
-## <a name="create-a-resource-group-for-resource-manager"></a>Erőforráscsoport létrehozása a Resource Managerhez
-
-Az Azure Resource Manager parancsmagjainak használatához váltson át PowerShell módba. További információ: [A Windows PowerShell használata a Resource Managerrel](../powershell-azure-resource-manager.md).
-
-   1. Írja be a következő parancsot:
-
-   ```powershell
-   Login-AzureRmAccount
-   ```
-
-   2. A fiókhoz tartozó előfizetések ellenőrzéséhez írja be a következő parancsokat:
-
-   ```powershell
-   Get-AzureRmSubscription
-   ```
-
-   A rendszer kérni fogja a hitelesítő adatokkal történő hitelesítést.
-
-   3. Válassza ki, amelyek használatához Azure-előfizetését, írja be a következő parancsot:
-
-   ```powershell
-   Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
-   ```
-
-   4. Hozzon létre egy erőforráscsoportot, írja be a következő parancsot. (Hagyja ki ezt a lépést, ha egy meglévő erőforráscsoportot használ.)
-
-   ```powershell
-   New-AzureRmResourceGroup -Name appgw-rg -Location "West US"
-   ```
-
-Az Azure Resource Manager megköveteli, hogy minden erőforráscsoport megadjon egy helyet. Ez a beállítás szolgál az erőforráscsoport erőforrásainak alapértelmezett helyeként. Győződjön meg arról, hogy minden parancs Alkalmazásátjáró létrehozása ugyanabban az erőforráscsoportban.
-
-Az előző példában létrehozott nevű erőforráscsoport **appgw-RG** és a hely **USA nyugati régiója**.
-
-## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Virtuális hálózat és alhálózat létrehozása az Application Gateway számára
-
-Az alábbi példa bemutatja, hogyan hozhat létre egy virtuális hálózatot a Resource Manager használatával:
-
-   1. Írja be a következő parancsot:
-
-   ```powershell
-   $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
-   ```
-
-   Ez a minta hozzárendeli a címtartomány **10.0.0.0/24** virtuális hálózat létrehozásához használandó alhálózati változóhoz.
-
-   2. Írja be a következő parancsot:
-
-   ```powershell
-   $vnet = New-AzureRmVirtualNetwork -Name appgwvnet -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
-   ```
-
-   Ez a minta létrehoz egy virtuális hálózatot nevű **appgwvnet** erőforráscsoportban **appgw-rg** a a **USA nyugati régiója** a előtag használatával régió **10.0.0.0/16** alhálózattal **10.0.0.0/24**.
-
-   3. Írja be a következő parancsot:
-
-   ```powershell
-   $subnet = $vnet.Subnets[0]
-   ```
-
-   Ez a minta változóhoz rendeli hozzá az alhálózati objektum **$subnet** a következő lépéseket.
-
-## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Nyilvános IP-cím létrehozása az előtérbeli konfigurációhoz
-
-Hozzon létre egy nyilvános IP-címet az előtér-konfigurációhoz, írja be a következő parancsot:
+Társítsa *myAGSubnet* átjáró használatával korábban létrehozott [New-AzureRmApplicationGatewayIPConfiguration](/powershell/module/azurerm.network/new-azurermapplicationgatewayipconfiguration). Rendelje hozzá *myAGPublicIPAddress* átjáró használatával [New-AzureRmApplicationGatewayFrontendIPConfig](/powershell/module/azurerm.network/new-azurermapplicationgatewayfrontendipconfig).
 
 ```powershell
-$publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-rg -name publicIP01 -location "West US" -AllocationMethod Dynamic
+$vnet = Get-AzureRmVirtualNetwork `
+  -ResourceGroupName myResourceGroupAG `
+  -Name myVNet
+$subnet=$vnet.Subnets[0]
+$gipconfig = New-AzureRmApplicationGatewayIPConfiguration `
+  -Name myAGIPConfig `
+  -Subnet $subnet
+$fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig `
+  -Name myAGFrontendIPConfig `
+  -PublicIPAddress $pip
+$frontendport = New-AzureRmApplicationGatewayFrontendPort `
+  -Name myFrontendPort `
+  -Port 443
 ```
 
-Ez a minta létrehoz egy nyilvános IP-erőforrás **publicIP01** erőforráscsoportban **appgw-rg** a a **USA nyugati régiója** régióban.
+### <a name="create-the-backend-pool-and-settings"></a>A háttérkészlet és a beállítások létrehozása
 
-## <a name="create-an-application-gateway-configuration-object"></a>Hozzon létre egy Application Gateway konfigurációs objektumot
-
-   1. Egy alkalmazás átjáró konfigurációs objektum létrehozásához adja meg a következő parancsot:
-
-   ```powershell
-   $gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
-   ```
-
-   Ez a minta létrehoz egy alkalmazás átjáró IP-konfiguráció nevű **gatewayIP01**. Alkalmazásátjáró indításakor szerzi be a beállított alhálózatból származó IP-címnek, és továbbítja a háttér IP-címkészlet IP-címek a hálózati forgalom. Ne feledje, hogy minden példány egy IP-címet vesz fel.
-
-   2. Írja be a következő parancsot:
-
-   ```powershell
-   $pool = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 134.170.185.46, 134.170.188.221,134.170.185.50
-   ```
-
-   Ez a minta beállítja a háttér IP-címkészlet nevű **pool01** IP-címekkel rendelkező **134.170.185.46**, **134.170.188.221**, és **134.170.185.50** . Ezek az értékek azok az IP-címek, amelyek fogadják majd az előtérbeli IP-végpontból érkező hálózati forgalmat. Cserélje le az előző példában szereplő IP-címeket a webalkalmazás végpontjainak IP-címeire.
-
-   3. Írja be a következő parancsot:
-
-   ```powershell
-   $poolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name poolsetting01 -Port 80 -Protocol Http -CookieBasedAffinity Enabled
-   ```
-
-   Ez a minta konfigurálja az átjáró Alkalmazásbeállítás **poolsetting01** terheléselosztásához hálózati forgalmat a háttér-készletben.
-
-   4. Írja be a következő parancsot:
-
-   ```powershell
-   $fp = New-AzureRmApplicationGatewayFrontendPort -Name frontendport01  -Port 443
-   ```
-
-   Ez a minta konfigurálja az előtér-IP-port nevű **frontendport01** a nyilvános IP-végponton.
-
-   5. Írja be a következő parancsot:
-
-   ```powershell
-   $cert = New-AzureRmApplicationGatewaySslCertificate -Name cert01 -CertificateFile <full path for certificate file> -Password "<password>"
-   ```
-
-   Ez a példa az SSL-kapcsolathoz használt tanúsítványt konfigurálja. A tanúsítvány PFX formátumban kell kell, és a jelszó 4 – 12 karakter közé kell esnie.
-
-   6. Írja be a következő parancsot:
-
-   ```powershell
-   $fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name fipconfig01 -PublicIPAddress $publicip
-   ```
-
-   Ez a minta hoz létre az előtér-IP-konfiguráció **fipconfig01** és a nyilvános IP-címet társít az előtér-IP-konfigurációt.
-
-   7. Írja be a következő parancsot:
-
-   ```powershell
-   $listener = New-AzureRmApplicationGatewayHttpListener -Name listener01  -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SslCertificate $cert
-   ```
-
-   Ez a minta létrehoz nevű figyelő **listener01** , és hozzárendeli az előtér-IP-konfiguráció és a tanúsítvány az előtér-port.
-
-   8. Írja be a következő parancsot:
-
-   ```powershell
-   $rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
-   ```
-
-   Ez a minta hoz létre a terheléselosztó útválasztási szabály nevű **rule01** , konfigurálja a terheléselosztó viselkedését.
-
-   9. Írja be a következő parancsot:
-
-   ```powershell
-   $sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
-   ```
-
-   Ez az Application Gateway példányméretét konfigurálja.
-
-   > [!NOTE]
-   > Az alapértelmezett érték **InstanceCount** van **2**, maximális értéke 10. Az alapértelmezett érték **GatewaySize** van **Közepes**. A Standard_Small, Standard_Medium és a Standard_Large lehetőségek közül választhat.
-
-   10. Írja be a következő parancsot:
-
-   ```powershell
-   $policy = New-AzureRmApplicationGatewaySslPolicy -PolicyType Predefined -PolicyName AppGwSslPolicy20170401S
-   ```
-
-   Ez a lépés határozza meg az SSL-házirend az Alkalmazásátjáró használatára. További információkért lásd: [SSL konfigurálása házirend verziója és az Application Gateway titkosító csomagok](application-gateway-configure-ssl-policy-powershell.md).
-
-## <a name="create-an-application-gateway-by-using-new-azureapplicationgateway"></a>Application Gateway létrehozása a New-AzureApplicationGateway használatával
-
-Írja be a következő parancsot:
+Hozzon létre nevű háttérkészlet *appGatewayBackendPool* átjáró használatára vonatkozó [New-AzureRmApplicationGatewayBackendAddressPool](/powershell/module/azurerm.network/new-azurermapplicationgatewaybackendaddresspool). Adja meg a beállításokat a háttér címkészletet használatára vonatkozó [New-AzureRmApplicationGatewayBackendHttpSettings](/powershell/module/azurerm.network/new-azurermapplicationgatewaybackendhttpsettings).
 
 ```powershell
-$appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SslCertificates $cert -SslPolicy $policy
+$defaultPool = New-AzureRmApplicationGatewayBackendAddressPool `
+  -Name appGatewayBackendPool 
+$poolSettings = New-AzureRmApplicationGatewayBackendHttpSettings `
+  -Name myPoolSettings `
+  -Port 80 `
+  -Protocol Http `
+  -CookieBasedAffinity Enabled `
+  -RequestTimeout 120
 ```
 
-Ez a minta Alkalmazásátjáró az előző lépéseiből összes konfigurációs elemet hoz létre. A példában az Alkalmazásátjáró nevezik **appgwtest**.
+### <a name="create-the-default-listener-and-rule"></a>Az alapértelmezett figyelő és szabály létrehozása
 
-## <a name="get-the-application-gateway-dns-name"></a>Az alkalmazás átjáró DNS-név beolvasása
+Egy figyelő szükséges ahhoz, hogy a forgalom megfelelő irányításához a háttérkészletbe az Alkalmazásátjáró. Ebben a példában hozzon létre egy alapszintű figyelő, amely figyeli a HTTPS-forgalmat a gyökér URL-címen. 
 
-Az átjáró létrehozása után a következő lépésre konfigurálhatja az előtér-kommunikációra. Alkalmazásátjáró szükséges egy dinamikusan hozzárendelt DNS-név, ha egy nyilvános IP-cím használatával, amely nincs rövid. Annak érdekében, hogy a végfelhasználók is elérte az Alkalmazásátjáró, egy CNAME rekordot a segítségével a nyilvános végpontot az Alkalmazásátjáró mutasson. További információkért lásd: [egyéni tartománynév konfigurálása az Azure-ban](../cloud-services/cloud-services-custom-domain-name-portal.md). 
-
-Ahhoz, hogy az alkalmazás átjáró DNS-név, részleteinek lehívására szolgáló az Alkalmazásátjáró és a hozzá tartozó IP-/ DNS-nevet használva a **PublicIPAddress** elem csatolva az Alkalmazásátjáró. Az Alkalmazásátjáró DNS-név használatával hozzon létre egy CNAME rekordot, amely mutat, a két webes alkalmazásokhoz, hogy a DNS-név. Azt nem A-rekordok használatát javasoljuk, mivel a VIP módosíthatja a indítsa újra az Alkalmazásátjáró.
-
+Hozzon létre egy tanúsítvány objektum használatával [New-AzureRmApplicationGatewaySslCertificate](/powershell/module/azurerm.network/new-azurermapplicationgatewaysslcertificate) majd létre szeretne hozni egy nevű figyelő *mydefaultListener* használatával [ Új AzureRmApplicationGatewayHttpListener](/powershell/module/azurerm.network/new-azurermapplicationgatewayhttplistener) a előtérbeli konfigurációja, a elülső rétegbeli portot és a korábban létrehozott tanúsítványt. A szabály a figyelőt, hogy tudja, melyik háttérkészlet, a bejövő forgalmat használandó szükség. Hozzon létre egy egyszerű szabályt nevű *Szabály1* használatával [New-AzureRmApplicationGatewayRequestRoutingRule](/powershell/module/azurerm.network/new-azurermapplicationgatewayrequestroutingrule).
 
 ```powershell
-Get-AzureRmPublicIpAddress -ResourceGroupName appgw-RG -Name publicIP01
+$pwd = ConvertTo-SecureString `
+  -String "Azure123456!" `
+  -Force `
+  -AsPlainText
+$cert = New-AzureRmApplicationGatewaySslCertificate `
+  -Name "appgwcert" `
+  -CertificateFile "c:\appgwcert.pfx" `
+  -Password $pwd
+$defaultlistener = New-AzureRmApplicationGatewayHttpListener `
+  -Name mydefaultListener `
+  -Protocol Https `
+  -FrontendIPConfiguration $fipconfig `
+  -FrontendPort $frontendport `
+  -SslCertificate $cert
+$frontendRule = New-AzureRmApplicationGatewayRequestRoutingRule `
+  -Name rule1 `
+  -RuleType Basic `
+  -HttpListener $defaultlistener `
+  -BackendAddressPool $defaultPool `
+  -BackendHttpSettings $poolSettings
 ```
 
+### <a name="create-the-application-gateway-with-the-certificate"></a>A tanúsítvány az Alkalmazásátjáró létrehozása
+
+Most, hogy létrehozta a szükséges támogató erőforrásokat, adja meg az Alkalmazásátjáró nevű paramétereinek *myAppGateway* használatával [New-AzureRmApplicationGatewaySku](/powershell/module/azurerm.network/new-azurermapplicationgatewaysku), majd létre szeretne hozni, használatával[ Új AzureRmApplicationGateway](/powershell/module/azurerm.network/new-azurermapplicationgateway) a tanúsítványhoz.
+
+### <a name="create-the-application-gateway"></a>Application Gateway létrehozása
+
+```azurepowershell-interactive
+$sku = New-AzureRmApplicationGatewaySku `
+  -Name Standard_Medium `
+  -Tier Standard `
+  -Capacity 2
+$appgw = New-AzureRmApplicationGateway `
+  -Name myAppGateway `
+  -ResourceGroupName myResourceGroupAG `
+  -Location eastus `
+  -BackendAddressPools $defaultPool `
+  -BackendHttpSettingsCollection $poolSettings `
+  -FrontendIpConfigurations $fipconfig `
+  -GatewayIpConfigurations $gipconfig `
+  -FrontendPorts $frontendport `
+  -HttpListeners $defaultlistener `
+  -RequestRoutingRules $frontendRule `
+  -Sku $sku `
+  -SslCertificates $cert
 ```
-Name                     : publicIP01
-ResourceGroupName        : appgw-RG
-Location                 : westus
-Id                       : /subscriptions/<subscription_id>/resourceGroups/appgw-RG/providers/Microsoft.Network/publicIPAddresses/publicIP01
-Etag                     : W/"00000d5b-54ed-4907-bae8-99bd5766d0e5"
-ResourceGuid             : 00000000-0000-0000-0000-000000000000
-ProvisioningState        : Succeeded
-Tags                     : 
-PublicIpAllocationMethod : Dynamic
-IpAddress                : xx.xx.xxx.xx
-PublicIpAddressVersion   : IPv4
-IdleTimeoutInMinutes     : 4
-IpConfiguration          : {
-                                "Id": "/subscriptions/<subscription_id>/resourceGroups/appgw-RG/providers/Microsoft.Network/applicationGateways/appgwtest/frontendIP
-                            Configurations/frontend1"
-                            }
-DnsSettings              : {
-                                "Fqdn": "00000000-0000-xxxx-xxxx-xxxxxxxxxxxx.cloudapp.net"
-                            }
+
+## <a name="create-a-virtual-machine-scale-set"></a>Hozzon létre egy virtuálisgép-méretezési csoport
+
+Ebben a példában hozzon létre egy virtuálisgép-méretezési kiszolgálók biztosít az Alkalmazásátjáró a háttérkészlet beállítása. A méretezési készletben a háttérkészletbe, amikor konfigurálja az IP-beállításokat rendel.
+
+```azurepowershell-interactive
+$vnet = Get-AzureRmVirtualNetwork `
+  -ResourceGroupName myResourceGroupAG `
+  -Name myVNet
+$appgw = Get-AzureRmApplicationGateway `
+  -ResourceGroupName myResourceGroupAG `
+  -Name myAppGateway
+$backendPool = Get-AzureRmApplicationGatewayBackendAddressPool `
+  -Name appGatewayBackendPool `
+  -ApplicationGateway $appgw
+$ipConfig = New-AzureRmVmssIpConfig `
+  -Name myVmssIPConfig `
+  -SubnetId $vnet.Subnets[1].Id `
+  -ApplicationGatewayBackendAddressPoolsId $backendPool.Id
+$vmssConfig = New-AzureRmVmssConfig `
+  -Location eastus `
+  -SkuCapacity 2 `
+  -SkuName Standard_DS2 `
+  -UpgradePolicyMode Automatic
+Set-AzureRmVmssStorageProfile $vmssConfig `
+  -ImageReferencePublisher MicrosoftWindowsServer `
+  -ImageReferenceOffer WindowsServer `
+  -ImageReferenceSku 2016-Datacenter `
+  -ImageReferenceVersion latest
+Set-AzureRmVmssOsProfile $vmssConfig `
+  -AdminUsername azureuser `
+  -AdminPassword "Azure123456!" `
+  -ComputerNamePrefix myvmss
+Add-AzureRmVmssNetworkInterfaceConfiguration `
+  -VirtualMachineScaleSet $vmssConfig `
+  -Name myVmssNetConfig `
+  -Primary $true `
+  -IPConfiguration $ipConfig
+New-AzureRmVmss `
+  -ResourceGroupName myResourceGroupAG `
+  -Name myvmss `
+  -VirtualMachineScaleSet $vmssConfig
 ```
+
+### <a name="install-iis"></a>Az IIS telepítése
+
+```azurepowershell-interactive
+$publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/davidmu1/samplescripts/master/appgatewayurl.ps1"); 
+  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
+$vmss = Get-AzureRmVmss -ResourceGroupName myResourceGroupAG -VMScaleSetName myvmss
+Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmss `
+  -Name "customScript" `
+  -Publisher "Microsoft.Compute" `
+  -Type "CustomScriptExtension" `
+  -TypeHandlerVersion 1.8 `
+  -Setting $publicSettings
+Update-AzureRmVmss `
+  -ResourceGroupName myResourceGroupAG `
+  -Name myvmss `
+  -VirtualMachineScaleSet $vmss
+```
+
+## <a name="test-the-application-gateway"></a>Az Alkalmazásátjáró tesztelése
+
+Használhat [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) lekérni az alkalmazás átjáró nyilvános IP-címét. Másolja a nyilvános IP-címet, és illessze be a böngésző címsorába.
+
+```azurepowershell-interactive
+Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
+```
+
+![Biztonságos figyelmeztetés](./media/application-gateway-ssl-arm/application-gateway-secure.png)
+
+Válassza ki a biztonsági figyelmeztetést, ha egy önaláírt tanúsítványt használt elfogadásához **részletek** , majd **nyissa meg a képernyőn látható weblapon**. A biztonságos IIS-webhelyet akkor jelenik meg, az alábbi példában látható módon:
+
+![Az alkalmazás átjáró alap URL-cím tesztelése](./media/application-gateway-ssl-arm/application-gateway-iistest.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Ha szeretne konfigurálni a belső terheléselosztót használ, tekintse meg az Alkalmazásátjáró [hozzon létre egy alkalmazást a belső terheléselosztók](application-gateway-ilb.md).
+Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
-További információ a terheléselosztás beállítások általában, lásd:
+> [!div class="checklist"]
+> * Önaláírt tanúsítvány létrehozása
+> * A hálózat beállítása
+> * Hozzon létre egy alkalmazást a tanúsítvány
+> * Hozzon létre egy virtuálisgép-méretezési állítható be alapértelmezett háttérkészlet
 
-* [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
-* [Azure Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
+További információt a alkalmazásátjárót és a kapcsolódó erőforrások, továbbra is a útmutatókat.

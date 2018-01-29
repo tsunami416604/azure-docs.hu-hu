@@ -1,6 +1,6 @@
-<!--author=alkohli last changed: 01/13/17-->
+<!--author=alkohli last changed: 01/23/18-->
 
-A kötettároló kötetek vannak társítva, ha ezek a kötetek offline állapotba először. Kövesse a [kötet offline állapotba](../articles/storsimple/storsimple-manage-volumes.md#take-a-volume-offline). Miután a kötetek offline módban, törölhetik azokat. A kötettároló nincs társított kötetek, ha a kötet tároló törlése. A kötettároló törli az alábbi eljárás végrehajtásához.
+A kötettároló kötetek vannak társítva, ha ezek a kötetek offline állapotba először. Kövesse a [kötet offline állapotba](../articles/storsimple/storsimple-8000-manage-volumes-u2.md#take-a-volume-offline). Miután a kötetek offline módban, törölhetik azokat. A kötettároló nincs társított kötetek, ha a kötet tároló törlése. A kötettároló törli az alábbi eljárás végrehajtásához.
 
 #### <a name="to-delete-a-volume-container"></a>A kötettároló törlése
 1. A StorSimple-eszközkezelő szolgáltatásban kattintson az **Eszközök** elemre. Válassza ki, és kattintson az eszközre, és folytassa a **beállítások > kezelés > kötettárolók**.

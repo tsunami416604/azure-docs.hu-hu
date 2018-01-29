@@ -11,17 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2017
+ms.date: 01/26/2018
 ms.author: sethm
-ms.openlocfilehash: 09aee1ba9ec3ce72732cb1f60c9a840ffc4beb2f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1984b113f695107f8d4d80e5bbf25c7dc39d13f6
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>Felfüggesztése és újraaktiválása üzenetküldési entitások (letiltva)
 
-Üzenetsorok, témakörök és előfizetések ideiglenesen is felfüggesztve. Felfüggesztés letiltott állapotba, tároló karbantartása az összes üzenet helyezi az entitás. Azonban üzeneteket nem lehet hozzáadott vagy eltávolított, és a megfelelő protokollt műveletek yield hibák.
+Üzenetsorok, témakörök és előfizetések ideiglenesen is felfüggesztve. Felfüggesztés az entitás, amelyben az összes üzenet tároló karbantartása letiltott állapotba helyezi. Azonban üzeneteket nem lehet hozzáadott vagy eltávolított, és a megfelelő protokollt műveletek yield hibák.
 
 Egy entitás felfüggesztése sürgős felügyeleti okok miatt általában történik. A forgatókönyv egy kellene telepíteni a hibás fogadó, amely a várólista ki üzenetek feldolgozási, sikertelen, és még helytelenül befejezi az üzenetek és eltávolítja azokat. Ha ezt a viselkedést észlelnek, a várólista letiltható az amíg javított kód van telepítve, és a hibás kódot okozta adatvesztés megakadályozása további kap.
 
@@ -31,7 +31,7 @@ A portálon a **tulajdonságok** a megfelelő entitás szakasz lehetővé teszi,
 
 ![][1]
 
-A portál csak lehetővé teszi a várólisták teljesen letiltja. Is letilthatja a küldési és fogadási műveletek külön használatával a Service Bus [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API a .NET-keretrendszer SDK, vagy egy Azure Resource Manager-sablon Azure CLI vagy az Azure PowerShell használatával.
+A portál csak lehetővé teszi a várólisták teljesen letiltja. Is letilthatja a küldési és fogadási műveletek külön használatával a Service Bus [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API-k, a .NET-keretrendszer SDK, vagy egy Azure Resource Manager-sablon Azure CLI vagy az Azure PowerShell használatával.
 
 ## <a name="suspension-states"></a>Felfüggesztés állapotok
 
@@ -54,7 +54,7 @@ $q.Status = "Disabled"
 Set-AzureRmServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueue -QueueObj $q
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tudhat meg többet a Service Bus üzenetkezelés, a következő témakörökben:
 

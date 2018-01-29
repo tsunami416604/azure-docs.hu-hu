@@ -8,16 +8,16 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 10/10/2017
-ms.openlocfilehash: f3b32c1f6b33bc60b50f1496414a300db468dc92
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.date: 01/25/2018
+ms.openlocfilehash: 59eeed42356a276c259bd8da55890b7ada67d729
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Hogyan állítsa be a kiszolgáló adatait az Azure Database MySQL az Azure portál használatával
 
-Azure MySQL-adatbázis támogatja az egyes kiszolgáló-paraméterek konfigurációja. Ez a témakör ismerteti, hogyan ezek a paraméterek konfigurálása az Azure-portál használatával. Nem minden kiszolgáló paraméterek módosítható. 
+Azure MySQL-adatbázis támogatja az egyes kiszolgáló-paraméterek konfigurációja. Ez a cikk ismerteti, hogyan ezek a paraméterek konfigurálása az Azure-portál használatával. Nem minden kiszolgáló paraméterek módosítható. 
 
 ## <a name="navigate-to-server-parameters-on-azure-portal"></a>Keresse meg a kiszolgáló paraméterek Azure-portál
 1. Jelentkezzen be az Azure-portálon, majd keresse meg a MySQL-kiszolgálóhoz tartozó Azure-adatbázis.
@@ -25,7 +25,7 @@ Azure MySQL-adatbázis támogatja az egyes kiszolgáló-paraméterek konfigurác
 3. Keresse meg a beállításokat, akkor módosítania kell. Tekintse át a **leírás** megtudhatja, hogy a cél és a megengedett értékek oszlopa. 
 4. Kattintson a **mentése** menti a módosításokat.
 
-![Az Azure portál kiszolgálójának (paraméterek) panelen](./media/howto-server-parameters/auzre-portal-server-parameters.png)
+![Az Azure portál kiszolgálójának Paraméterek lap](./media/howto-server-parameters/auzre-portal-server-parameters.png)
 
 ## <a name="list-of-configurable-server-parameters"></a>A kiszolgáló konfigurálható paraméterek listája
 
@@ -43,12 +43,15 @@ InnoDB pufferkészlet és a kapcsolatok maximális számának elérésekor nincs
 | Standard 400 | 10240 | 800 | 
 | Standard 800 | 20480 | 1600 |
 
-A további kiszolgáló paraméterei nonconfigurable a rendszerben <br>
- Alapszintű rétegben Innodb_file_per_table: kikapcsolása<br>
- innodb_flush_log_at_trx_commit = 1<br>
- sync_binlog = 1<br>
- innodb_log_file_size = 512MB<br>
- 
+A további kiszolgáló paraméterei nem konfigurálható a rendszerben:
+
+|**Parameter**|**Rögzített érték**|
+| :------------------------ | :-------- |
+|Alapszintű rétegben innodb_file_per_table|KI|
+|innodb_flush_log_at_trx_commit|1|
+|sync_binlog|1|
+|innodb_log_file_size|512 MB|
+
 Egyéb kiszolgáló adatait, amely nem az itt felsorolt MySQL out-of-box alapértékekre verzióihoz értékre van beállítva [5.7](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html) és [5.6](https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html).
 
 ## <a name="next-steps"></a>További lépések

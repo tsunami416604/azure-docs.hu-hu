@@ -14,17 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: jennile
-ms.openlocfilehash: f027e7fbc5866a85e7f55460192a1c99a71e368e
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 9526817ce7969edcd5e9c56ec153bb4e3ebaa501
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Az Azure App Service diagnosztika áttekintése 
 
 Miután webalkalmazást futtatja, elő kell készíteni a 500 hibák felszólító a felhasználóknak, hogy a hely nem működik az esetleg felmerülő problémákkal szeretné. App Service diagnosztika segítséget nyújthatnak a webalkalmazás nem szükséges konfiguráció az intelligens és interaktív élményt. A webalkalmazással problémákat tapasztal, amikor az App Service diagnosztika mutat, a nem megfelelő, hogy végigvezesse a megfelelő információk könnyen és gyorsan elhárításához és hárítsa el a problémát. 
  
 Bár ez a felület akkor hasznos, ha tapasztal problémákat a webalkalmazással az elmúlt 24 órában, az diagnosztikai grafikon elemzése mindig elérhető lesz. További hibaelhárítási eszközök és hasznos dokumentáció és fórumok mutató hivatkozásokat tartalmaz a jobb oldali oszlopban található.
+
+## <a name="open-app-service-diagnostics"></a>Nyissa meg az App Service-diagnosztika
+
+App Service diagnostics elérésére az App Service webalkalmazás navigáljon a [Azure-portálon](https://portal.azure.com). 
+
+A bal oldali navigációs, kattintson a **Diagnosztizálás és problémák megoldására**.
 
 ![Kezdőlap](./media/app-service-diagnostics/Homepage1.png)
 
@@ -50,8 +56,3 @@ E futtatása után további információt szeretne a [állapotfigyelő checkup](
 
 ![Diagnosztikai jelentés](./media/app-service-diagnostics/DiagnosticReport5.png)
 
-## <a name="open-app-service-diagnostics"></a>Nyissa meg az App Service-diagnosztika
-
-App Service diagnostics elérésére az App Service webalkalmazás navigáljon a [Azure-portálon](https://portal.azure.com). 
-
-A bal oldali navigációs, kattintson a **Diagnosztizálás és problémák megoldására**.

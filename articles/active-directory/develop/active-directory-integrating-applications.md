@@ -15,11 +15,11 @@ ms.date: 10/04/2017
 ms.author: bryanla
 ms.custom: aaddev
 ms.reviewer: luleon
-ms.openlocfilehash: e398536ff6f660c75e4e063040eab33a831d65c6
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: f08e7327e266c342fe7f869f0b7a6a251792a071
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="integrating-applications-with-azure-active-directory"></a>Alkalmazások integrálása az Azure Active Directoryban
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -309,7 +309,7 @@ A szervezet által regisztrált alkalmazások megjelenítése alatt a "Saját al
 ### <a name="removing-a-multi-tenant-application-authorized-by-another-organization"></a>Egy másik szervezet által felhatalmazott több-bérlős alkalmazás eltávolítása
 Az alkalmazásokat, amelyek alapján az "Összes alkalmazások" szűrő megjelenítése egy részét (kivéve a "Saját alkalmazások" regisztrációk) a bérlő "App regisztrációk" főoldalon, amelyek több-bérlős alkalmazásokhoz. Technikai szempontból a több-bérlős alkalmazásokhoz egy másik bérlőhöz, és volt a hozzájárulási folyamat során a bérlő regisztrálni. Pontosabban, azok vannak objektum által jelképezett csak a szolgáltatás egyszerű az Ön bérlőjében, nem megfelelő alkalmazás-objektum. Az alkalmazás és szolgáltatás egyszerű objektumok közötti különbségekkel kapcsolatos további információkért lásd: [alkalmazás és szolgáltatás egyszerű objektumok az Azure AD](active-directory-application-objects.md).
 
-El szeretné távolítani egy több-bérlős alkalmazás hozzáférés a címtárhoz (után hozzájárulási megadó), a vállalati rendszergazda el kell távolítania a szolgáltatásnevet. A rendszergazda globális rendszergazdai hozzáféréssel kell rendelkeznie, és az Azure portálon keresztül lehet eltávolítani a [Azure AD PowerShell-parancsmagok](http://go.microsoft.com/fwlink/?LinkId=294151) elérését.
+El szeretné távolítani egy több-bérlős alkalmazás hozzáférés a címtárhoz (után hozzájárulási megadó), a vállalati rendszergazda el kell távolítania a szolgáltatásnevet. A rendszergazda kell globális rendszergazdai hozzáféréssel rendelkezik, és távolítsa el az Azure portálon keresztül vagy használja a [Azure AD PowerShell-parancsmagok](http://go.microsoft.com/fwlink/?LinkId=294151) elérését.
 
 ## <a name="next-steps"></a>További lépések
 - Az Azure AD hitelesítési működéséről további információkért lásd: [hitelesítési forgatókönyvek az Azure AD](active-directory-authentication-scenarios.md).

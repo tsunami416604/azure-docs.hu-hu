@@ -1,0 +1,218 @@
+- name: Azure Search-dokumentáció
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Az Azure Search névjegye
+      href: search-what-is-azure-search.md
+- name: Gyors útmutatók
+  items:
+    - name: Szolgáltatás létrehozása
+      href: search-create-service-portal.md
+    - name: Portál
+      items:
+        - name: Index létrehozása
+          href: search-create-index-portal.md
+        - name: Adatok importálása
+          href: search-import-data-portal.md
+        - name: Keresési ablak
+          href: search-explorer.md
+    - name: .NET
+      items:
+        - name: Index létrehozása
+          href: search-create-index-dotnet.md
+        - name: Adatok importálása
+          href: search-import-data-dotnet.md
+        - name: Keresés
+          href: search-query-dotnet.md
+    - name: REST
+      items:
+        - name: Index létrehozása
+          href: search-create-index-rest-api.md
+        - name: Adatok importálása
+          href: search-import-data-rest-api.md
+        - name: Keresés
+          href: search-query-rest-api.md
+        - name: Tesztelés REST-ügyfelekkel
+          href: search-fiddler.md
+- name: Oktatóanyagok
+  items:
+    - name: 1 – Az Azure SQL Database indexelése
+      href: search-indexer-tutorial.md
+    - name: 2 – Azure-blobok indexelése
+      href: search-semi-structured-data.md
+    - name: 3 – Szinonimák felvétele a .NET-ben
+      href: search-synonyms-tutorial-sdk.md
+    - name: 4 – Útmutató a portál használatához
+      href: search-get-started-portal.md
+- name: Példák
+  items:
+    - name: Azure-kódminták
+      href: 'https://azure.microsoft.com/resources/samples/?service=search'
+    - name: GitHub-minták
+      href: 'https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search'
+- name: Alapelvek
+  items:
+    - name: Teljes szöveges keresés
+      href: search-lucene-query-architecture.md
+    - name: Indexelés
+      href: search-what-is-data-import.md
+    - name: Index definíciója
+      href: search-what-is-an-index.md
+    - name: Nyelvi elemzés
+      href: search-analyzers.md
+- name: Útmutatók
+  items:
+    - name: Tervezés és kialakítás
+      items:
+        - name: SKU kiválasztása
+          href: search-sku-tier.md
+        - name: Szolgáltatási korlátozások
+          href: search-limits-quotas-capacity.md
+        - name: A szolgáltatás méretezhetősége
+          href: search-capacity-planning.md
+        - name: Kialakítási minták a több-bérlős módhoz
+          href: search-modeling-multitenant-saas-applications.md
+        - name: Teljesítmény és optimalizálás
+          href: search-performance-optimization.md
+    - name: Biztonság
+      items:
+        - name: Adatok és működési biztonság
+          href: search-security-overview.md
+        - name: Védelem identitásszűrőkkel
+          href: search-security-trimming-for-azure-search.md
+        - name: Védelem az Active Directoryval
+          href: search-security-trimming-for-azure-search-with-aad.md
+    - name: Fejlesztés
+      items:
+        - name: API-verziók
+          href: search-api-versions.md
+        - name: Fejlesztés .NET-ben
+          href: search-howto-dotnet-sdk.md
+        - name: Fejlesztés Node.js-ben
+          href: search-get-started-nodejs.md
+        - name: Fejlesztés Javában
+          href: search-get-started-java.md
+        - name: Az SDK frissítése
+          items:
+            - name: .NET SDK 3.0
+              href: search-dotnet-sdk-migration.md
+            - name: .NET SDK 1.1
+              href: search-dotnet-sdk-migration-version-1.md
+            - name: .NET Management SDK
+              href: search-dotnet-mgmt-sdk-migration.md
+        - name: A REST API frissítése
+          href: search-api-migration.md
+        - name: Összetett adattípusok modellezése
+          href: search-howto-complex-data-types.md
+        - name: Egyidejű frissítések kezelése
+          href: search-howto-concurrency.md
+        - name: Lapozás eredményei
+          href: search-pagination-page-layout.md
+    - name: Szövegelemzés
+      items:
+        - name: Nyelvi elemzők
+          href: 'https://docs.microsoft.com/rest/api/searchservice/language-support'
+        - name: Egyéni elemzők
+          href: 'https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search'
+    - name: Adatok indexelése
+      items:
+        - name: Az indexelők áttekintése
+          href: search-indexer-overview.md
+        - name: Azure Blob Storage-indexelő
+          href: search-howto-indexing-azure-blob-storage.md
+        - name: Azure Table Storage-indexelő
+          href: search-howto-indexing-azure-tables.md
+        - name: Azure SQL indexer
+          href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
+        - name: Azure Cosmos DB-indexelő
+          href: search-howto-index-cosmosdb.md
+        - name: CSV-blobok indexelése
+          href: search-howto-index-csv-blobs.md
+        - name: JSON-blobok indexelése
+          href: search-howto-index-json-blobs.md
+        - name: Az indexelő Azure-beli virtuális gépen futó SQL Serverhez való csatlakozásának konfigurálása
+          href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
+        - name: Mezőleképezések az indexelőkben
+          href: search-indexer-field-mappings.md
+    - name: Keresés
+      items:
+        - name: Alapszintű lekérdezési konstrukció
+          href: search-query-overview.md
+        - name: Egyszerű lekérdezési szintaxis
+          href: 'https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search'
+        - name: Lucene lekérdezési szintaxis
+          href: 'https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search'
+        - name: Példák Lucene szintaxisú lekérdezésekre
+          href: search-query-lucene-examples.md
+        - name: Jellemzőalapú navigáció
+          href: search-faceted-navigation.md
+        - name: Pontozási profilok
+          href: 'https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index'
+        - name: Javaslatok
+          href: 'https://docs.microsoft.com/rest/api/searchservice/suggesters'
+        - name: Szinonimák (előzetes verzió)
+          href: search-synonyms.md
+    - name: Szűrők
+      items:
+        - name: A szűrők áttekintése
+          href: search-filters.md
+        - name: Aspektus szűrői
+          href: search-filters-facets.md
+        - name: OData-kifejezések szintaxisa
+          href: 'https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search'
+    - name: Felügyelet és elemzés
+      items:
+        - name: Felügyelet (portál)
+          href: search-manage.md
+        - name: PowerShell (Azure Search)
+          href: search-manage-powershell.md
+        - name: Használat és statisztikák monitorozása
+          href: search-monitor-usage.md
+        - name: Forgalmi elemzések keresése
+          href: search-traffic-analytics.md
+- name: Referencia
+  items:
+    - name: .NET
+      href: /dotnet/api/?term=microsoft.azure.search
+    - name: .NET (Felügyelet)
+      href: /dotnet/api/?term=microsoft.azure.management.search
+    - name: Python (Felügyelet)
+      href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.search.html'
+    - name: REST
+      href: /rest/api/searchservice
+    - name: REST (Management)
+      href: /rest/api/searchmanagement
+    - name: Szolgáltatási REST (előzetes verzió)
+      href: search-api-2016-09-01-preview.md
+- name: További források
+  items:
+    - name: GYIK – Gyakori kérdések
+      href: search-faq-frequently-asked-questions.md
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/search/'
+    - name: Szolgáltatási hírek
+      href: 'https://azure.microsoft.com/updates/?product=search'
+    - name: Oktatóanyagok és -programok
+      items:
+        - name: Videók és oktatóanyagok
+          href: search-video-demo-tutorial-list.md
+        - name: Virtuális akadémia
+          href: 'https://mva.microsoft.com/training-courses/using-windows-azure-search-10540?l=ADkxnd97_9304984382'
+    - name: Bemutató webhelyek
+      items:
+        - name: Search Analyzer Demo
+          href: 'http://alice.unearth.ai/'
+        - name: Élő bemutató alkalmazások
+          href: 'https://searchsamples.azurewebsites.net/'
+        - name: Feladatlistázó alkalmazás
+          href: 'http://aka.ms/azjobsdemo'
+    - name: Partner és közösség
+      items:
+        - name: Azure Search MSDN-fórum
+          href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=AzureSearch'
+        - name: Stack Overflow
+          href: 'http://stackoverflow.com/questions/tagged/azure-search'
+        - name: 'blog: Relációs adatok modellezése'
+          href: 'http://blogs.technet.com/b/onsearch/archive/2015/09/08/modeling-the-adventureworks-inventory-database-for-azure-search.aspx'
+        - name: 'blog: Többszintű aspektuskezelés'
+          href: 'http://blogs.technet.com/b/onsearch/archive/2015/09/09/multi-level-taxonomy-facets-in-azure-search.aspx'

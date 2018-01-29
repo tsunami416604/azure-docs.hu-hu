@@ -1,5 +1,5 @@
 ---
-title: "Oktatóanyag: ServiceNow konfigurálása az automatikus felhasználó-átadási az Azure Active Directoryval |} Microsoft Docs"
+title: "Oktatóanyag: ServiceNow konfigurálása az Azure Active Directoryval automatikus felhasználólétesítés |} Microsoft Docs"
 description: "Megtudhatja, hogyan automatikusan ellátásához, majd leépíti a felhasználói fiókok Azure ad-ServiceNow."
 services: active-directory
 documentationCenter: na
@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 06772c9e21936d224f721413ccdc1c859b07b940
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: de6bddeedbff5fded716db31b1a528466df1d396
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="tutorial-configuring-servicenow-for-automatic-user-provisioning-with-azure-active-directory"></a>Oktatóanyag: ServiceNow konfigurálása az automatikus felhasználó kiépítése az Azure Active Directoryval
+# <a name="tutorial-configure-servicenow-for-automatic-user-provisioning-with-azure-active-directory"></a>Oktatóanyag: ServiceNow konfigurálása az automatikus felhasználó-átadási az Azure Active Directoryval
 
 Ez az oktatóanyag célja a lépéseket kell elvégeznie a ServiceNow és az Azure AD automatikus kiépítése és leépíti a felhasználói fiókok Azure ad-ServiceNow mutatjuk be.
 
@@ -60,7 +60,7 @@ Ez a szakasz végigvezeti az Azure AD kapcsolódás ServiceNow a felhasználói 
 
 4. Állítsa be a **kiépítés** módot **automatikus**. 
 
-    ![Kiépítés](./media/active-directory-saas-servicenow-provisioning-tutorial/provisioning.png)
+    ![kiépítés folyamatban](./media/active-directory-saas-servicenow-provisioning-tutorial/provisioning.png)
 
 5. A rendszergazdai hitelesítő adataival szakaszban a következő lépésekkel:
    

@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/02/2017
+ms.date: 01/26/2018
 ms.author: sethm
-ms.openlocfilehash: b3fe467b7d6ae9b207956ece4980bf558a69761f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 305c017bd49f233c10479e2c33ec8db72cae3aa7
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="topic-filters-and-actions"></a>A témakör szűrők és műveletek
 
@@ -39,7 +39,7 @@ Az összes szűrő üzenettulajdonságok kiértékeléséhez. Szűrők az üzene
 
 ## <a name="actions"></a>Műveletek
 
-SQL szűrési feltételeket, és csak azokat definiálhat egy műveletet, amely az üzenet fűzhet hozzá, eltávolítása vagy cseréje a tulajdonságok és értékeik. A művelet [SQL-szerű kifejezést használ](service-bus-messaging-sql-filter.md) , amely lazán leans meg a frissítés az SQL-utasítás szintaxisa. A művelet végrehajtását az üzenet után egyeztetett, mielőtt az üzenetet a témakörbe van kiválasztva. Az üzenet tulajdonságainak a módosítása csak az előfizetés átmásolja az üzenetet a.
+SQL szűrési feltételeket, és csak azokat definiálhat egy műveletet, amely az üzenet fűzhet hozzá, eltávolítása vagy cseréje a tulajdonságok és értékeik. A művelet [SQL-szerű kifejezést használ](service-bus-messaging-sql-filter.md) , amely lazán leans meg a frissítés az SQL-utasítás szintaxisa. Miután egyeztetett azt, és az üzenet van kiválasztva a témakörbe előtt, az üzenet elvégezni a műveletet. Az üzenet tulajdonságainak a módosítása csak az előfizetés átmásolja az üzenetet a.
 
 ## <a name="usage-patterns"></a>Használati minták
 
@@ -51,7 +51,7 @@ A particionáló használ szűrők üzenetek szét több meglévő üzenettémak
 
 Üzenetek szét üzenettémakör-előfizetéseket, kiszámítható módon szűrők útválasztást használ, de nem feltétlenül kizárólagos. Együtt a [automatikus továbbítási](service-bus-auto-forwarding.md) funkció, szűrők segítségével összetett műveletterv témakör grafikonokon üzenet terjesztési belül egy Azure-régió, a Service Bus-névtér belül. Az Azure Functions vagy Azure Logic Apps hidat Azure Service Bus-névtér között működött az üzletági alkalmazások közvetlen integrálása összetett globális topológiák hozhat létre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tudhat meg többet a Service Bus üzenetkezelés, a következő témakörökben:
 

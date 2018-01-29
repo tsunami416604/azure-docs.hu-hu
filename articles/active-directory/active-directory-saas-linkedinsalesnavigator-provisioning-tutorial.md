@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/15/2017
+ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: 8fafda2687e81a226bdc91a642cebc9ec97d8cbe
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 164f6bf83d7f0673e9ac7eb1107f90d311bca1c0
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="tutorial-configuring-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Oktatóanyag: LinkedIn értékesítési Navigator automatikus felhasználói kialakítási konfigurálása
+# <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés LinkedIn értékesítési Navigator konfigurálása
 
 
 Ez az oktatóanyag célja a lépéseket kell elvégeznie a LinkedIn értékesítési Navigator és az Azure AD automatikus kiépítése és leépíti a felhasználói fiókok Azure ad-LinkedIn értékesítési Navigator mutatjuk be. 
@@ -120,7 +120,7 @@ Az első lépés a LinkedIn-jogkivonatot lekérdezni. Ha a vállalati rendszerga
 Elindítja a kezdeti szinkronizálás bármely felhasználói és/vagy csoportok rendelt LinkedIn értékesítési Navigator a felhasználók és csoportok szakaszban. Figyelje meg, hogy a kezdeti szinkronizálás hosszabb ideig tart hajtsa végre ezt követő szinkronizálások, amely körülbelül 20 percenként történik, amíg a szolgáltatás fut-nál. Használhatja a **szinkronizálás részleteivel** szakasz figyelemmel az előrehaladást, és hivatkozásokat követve történő rendszerbe állításához Tevékenységjelentések, amely az értékesítési Navigator LinkedIn-alkalmazás a létesítési szolgáltatás által végzett összes műveletet írják le.
 
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](active-directory-enterprise-apps-manage-provisioning.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)

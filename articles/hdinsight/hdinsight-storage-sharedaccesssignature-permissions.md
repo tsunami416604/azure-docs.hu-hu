@@ -4,7 +4,7 @@ description: "Ismerje meg megosztott hozzáférési aláírásokkal használata 
 services: hdinsight
 documentationcenter: 
 author: Blackmist
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: 7bcad2dd-edea-467c-9130-44cffc005ff3
 ms.service: hdinsight
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/02/2017
+ms.date: 01/25/2018
 ms.author: larryfr
-ms.openlocfilehash: 92ad526d034591b8f463ef6b01e115101b74e1ae
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 83a93f433769e880a729cd918198909696071594
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Azure Storage megosztott hozzáférési aláírásokkal segítségével adatokat a hdinsight eszközben való hozzáférés korlátozása
 
@@ -204,7 +204,7 @@ Ha egy meglévő Linux-alapú fürtöt, a SAS-t is hozzáadhat a **core-hely** k
 
 4. Bontsa ki a **egyéni core-hely** szakaszban, majd görgessen a célból, és válassza ki a **tulajdonság hozzáadása...**  hivatkozásra. A következő értékeket használja a **kulcs** és **érték** mezők:
 
-   * **Kulcs**: fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net
+   * **Key**: fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net
    * **Érték**: az SAS futtatta korábban C# vagy Python-alkalmazás által visszaadott
 
      Cserélje le **CONTAINERNAME** tároló nevű használt a C# vagy SAS alkalmazást. Cserélje le **STORAGEACCOUNTNAME** használt fiók nevével.
@@ -216,7 +216,7 @@ Ha egy meglévő Linux-alapú fürtöt, a SAS-t is hozzáadhat a **core-hely** k
    > [!IMPORTANT]
    > A módosítás érvénybe léptetéséhez újra kell indítania számos szolgáltatást.
 
-6. Válassza ki az Ambari webes felhasználói felület **HDFS** a bal oldali listában, és válassza **indítsa újra az összes** a a **szolgáltatás műveletek** legördülő listában kattintson a jobb. Amikor a rendszer kéri, válassza ki a **kapcsolja be a karbantartási mód** és majd válassza ki __Conform indítsa újra az összes ".
+6. Válassza ki az Ambari webes felhasználói felület, **HDFS** a bal oldali listában, és válassza **indítsa újra az összes érintett** a a **szolgáltatás műveletek** legördülő listában kattintson a jobb. Amikor a rendszer kéri, válassza ki a __összhangban indítsa újra az összes__.
 
     Ismételje meg ezt a folyamatot MapReduce2 és YARN.
 
@@ -300,7 +300,7 @@ Miután csatlakozott a fürthöz, a következő lépések segítségével győz�
 * Legalább egy nem alfanumerikus karaktert kell tartalmaznia
 * Tartalmaznia kell legalább egy nagy- vagy kisbetűt
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte a korlátozott hozzáférésű tároló felvétele a HDInsight-fürt rendelkezik, ismerje meg, a fürtön lévő adatokkal dolgozni egyéb módjai:
 

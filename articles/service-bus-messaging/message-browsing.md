@@ -11,21 +11,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2017
+ms.date: 01/25/2018
 ms.author: sethm
-ms.openlocfilehash: b0bc1ef7570ccac07975e2560a1d0501d3cde2b3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 124c4592a41bf9f3e2a148ba5c3b928bb051d160
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="message-browsing"></a>Üzenet tallózása
 
-Böngészés ("megtekintésekor") üzenet lehetővé teszi, hogy egy ügyfél operációs rendszer összes üzenet szereplő üzenetsor vagy előfizetés, általában a diagnosztikai és hibakeresési célra.
+Böngészés ("megtekintésekor") üzenet lehetővé teszi, hogy a Service Bus-ügyfélalkalmazást minden üzenet szereplő üzenetsor vagy előfizetés, általában a diagnosztikai és hibakeresési célra számbavétele.
 
-A betekintés műveletek üzeneteket visszaküldeni, minden létező a várólista vagy az előfizetési üzenet napló, nem csak azokat a érhető el az azonnali beszerzési *Receive()* vagy a *OnMessage()* hurok. A *állapot* tulajdonság minden üzenet közli aktív-e az üzenet (csak akkor kapja elérhető), a késleltetett (lásd a halasztás [Feladatdiagnosztika hivatkozás]) vagy ütemezett (lásd az ütemezett üzenetek [Feladatdiagnosztika hivatkozás]).
+A betekintés műveletek üzeneteket visszaküldeni, minden létező a várólista vagy az előfizetési üzenet napló, nem csak azokat a érhető el az azonnali beszerzési `Receive()` vagy a `OnMessage()` hurok. A `State` tulajdonság minden üzenet közli aktív-e az üzenet (csak akkor kapja elérhető), [késleltetett](message-deferral.md), vagy [ütemezett](message-sequencing.md).
 
-Egy aszinkron által felhasznált és a lejárt üzenetek megtisztítva "szemétgyűjtés" futtatása és nem feltétlenül pontosan amikor üzenetek jár le, és ezért betekintés előfordulhat, hogy valóban üzeneteket visszaküldeni, amely már lejárt, és eltávolított vagy a kézbesítetlen-lettered amikor fogadáskor. a várólista vagy előfizetés művelet mellett indítása.
+Egy aszinkron által felhasznált és a lejárt üzenetek megtisztítva "szemétgyűjtés" futtatni, és nem feltétlenül pontosan amikor üzenetek lejár, és ezért `Peek` már lejárt, és eltávolítja üzenetek vagy kézbesítetlen lettered ha valóban vissza a fogadási művelet mellett meghívták a várólista vagy előfizetés.
 
 Ez különösen fontos szem előtt tartani, amikor megpróbált helyreállítani késleltetett üzenetet az üzenetsorból. Egy üzenet, amelynek a [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc#Microsoft_Azure_ServiceBus_Message_ExpiresAtUtc) azonnali megfelelt most már a rendszeres beolvasásához bármilyen más módon támogatható, akkor is, ha a betekintés vissza. Ezek az üzenetek visszaadó is szándékos, mivel a betekintés egy diagnosztikai eszköz, amely tükrözi a napló jelenlegi állapotában.
 
@@ -41,7 +41,7 @@ Ismételten meghívásakor a betekintés metódus enumerálása összes üzenet,
 
 Is magtípusú leképezést túlterhelés a metódus egy [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) , amellyel indítása, és akkor hívja meg a paraméter nélküli módszer túlterhelés további enumerálása. **PeekBatch** év működik, de egyszerre kéri le az üzenetek készleteit.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tudhat meg többet a Service Bus üzenetkezelés, a következő témakörökben:
 

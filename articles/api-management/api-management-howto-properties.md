@@ -6,46 +6,76 @@ documentationcenter:
 author: vladvino
 manager: erikre
 editor: 
-ms.assetid: 6f39b00f-cf6e-4cef-9bf2-1f89202c0bc0
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2016
+ms.date: 01/25/2018
 ms.author: apimpm
-ms.openlocfilehash: 517f434c8f7fabc1402fb938d5ff5c733b86f2fd
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: e0559380f6d686a4e559779c4271ea85106558d6
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="how-to-use-properties-in-azure-api-management-policies"></a>Tulajdonságok használata az Azure API-felügyeleti házirendek
-API-felügyeleti házirendek, amelyek lehetővé teszik a közzétevőt úgy, hogy az API-t konfigurálással működésének módosításához a rendszer hatékony képesség. A házirendek utasítások gyűjteményei, amelyeket az API-k kérelmei és válaszai szerint egymást követően hajtanak végre. Házirend-utasításoknál szövegkonstans értékek, a házirend-kifejezések és a tulajdonságok használatával lehet létrehozni. 
+API-felügyeleti házirendek, amelyek lehetővé teszik az Azure-portálon keresztül konfigurációs API működésének módosításához a rendszer hatékony képesség. A házirendek utasítások gyűjteményei, amelyeket az API-k kérelmei és válaszai szerint egymást követően hajtanak végre. Házirend-utasításoknál szövegkonstans értékek, a házirend-kifejezések és a tulajdonságok használatával lehet létrehozni. 
 
-Minden API Management service-példány kulcs/érték párok, a service-példány általános tulajdonságok gyűjteményével rendelkezik. Ezek a Tulajdonságok állandó karakterlánc-értékek összes API konfigurálása és házirendek kezelésére használható. Minden egyes tulajdonsága a következő attribútumokkal rendelkezik.
+Minden API Management service-példány kulcs/érték párok, a service-példány általános tulajdonságok gyűjteményével rendelkezik. Ezek a Tulajdonságok állandó karakterlánc-értékek összes API konfigurálása és házirendek kezelésére használható. Minden egyes tulajdonsága veheti fel a következő attribútumokat:
 
 | Attribútum | Típus | Leírás |
 | --- | --- | --- |
-| Név |Karakterlánc |A tulajdonság nevét. Ez előfordulhat, hogy csak betűket, számokat, időszak, kötőjelet tartalmazhat, és aláhúzás karaktereket tartalmazhat. |
-| Érték |Karakterlánc |A tulajdonság értéke. Nem lehet üres vagy csak szóközök állhatnak. |
-| Titkos |Logikai érték |Határozza meg, hogy az érték egy titkos kulcsot, és titkosítani kell, vagy nem. |
+| Megjelenített név |karakterlánc |Alfanumerikus karakterlánc, amellyel hivatkozni lehet a tulajdonságra a szabályzatokban. |
+| Érték |karakterlánc |A tulajdonság értéke. Nem lehet üres vagy csak szóközök állhatnak. |
+|Titkos|logikai|Határozza meg, hogy az érték egy titkos kulcsot, és titkosítani kell, vagy nem.|
 | Címkék |A karakterlánc tömbje |Nem kötelező, hogy címkéket, amikor megadja a tulajdonságlista szűréséhez használható. |
 
-Tulajdonságok konfigurálása a közzétevő portálon a a **tulajdonságok** fülre. A következő példában három tulajdonságainak vannak konfigurálva.
+![Megnevezett értékek](./media/api-management-howto-properties/named-values.png)
 
-![Tulajdonságok][api-management-properties]
+A tulajdonság értékek tartalmazhatnak szövegkonstansok és [házirend-kifejezések](https://msdn.microsoft.com/library/azure/dn910913.aspx). Például értékének `ExpressionProperty` egy házirend-kifejezés, amely az aktuális dátum és idő tartalmazó karakterláncot ad vissza. A tulajdonság `ContosoHeaderValue` titkos kulcs, van megjelölve, ezért az értéke nem jelenik meg.
 
-A tulajdonság értékek tartalmazhatnak szövegkonstansok és [házirend-kifejezések](https://msdn.microsoft.com/library/azure/dn910913.aspx). A következő táblázat az előző három minta tulajdonságok és attribútumaik. Értékének `ExpressionProperty` egy házirend-kifejezés, amely az aktuális dátum és idő tartalmazó karakterláncot ad vissza. A tulajdonság `ContosoHeaderValue` titkos kulcs, van megjelölve, ezért az értéke nem jelenik meg.
-
-| Név | Érték | Titkos | Címkék |
+| Name (Név) | Érték | Titkos | Címkék |
 | --- | --- | --- | --- |
-| ContosoHeader |trackingId |False (Hamis) |Contoso |
+| ContosoHeader |TrackingId |False (Hamis) |Contoso |
 | ContosoHeaderValue |•••••••••••••••••••••• |True (Igaz) |Contoso |
 | ExpressionProperty |@(DateTime.Now.ToString()) |False (Hamis) | |
 
+## <a name="to-add-and-edit-a-property"></a>Adhat hozzá és szerkeszthet egy tulajdonság
+
+![Tulajdonság hozzáadása](./media/api-management-howto-properties/add-property.png)
+
+1. Válassza ki **API-k** a alatt **API MANAGEMENT**.
+2. Válassza ki **értékek nevű**.
+3. Nyomja le az **+ Hozzáadás**.
+
+  Név-érték szükséges értékeket. Ha ez a tulajdonság értéke egy titkos kulcsot, ellenőrizze az alábbi titkos jelölőnégyzetet. Adjon meg egy vagy több választható címke való rendszerezését a tulajdonságokat, és kattintson a mentés.
+4. Kattintson a **Create** (Létrehozás) gombra.
+
+A tulajdonság létrehozása után a tulajdonság kattintva szerkesztheti. Ha módosítja a tulajdonság nevét, a házirendek, amelyek az adott tulajdonsághoz hivatkoznak automatikusan frissülnek az új nevét.
+
+A REST API használatával tulajdonság szerkesztési információkért lásd: [REST API használatával tulajdonság módosítása](https://msdn.microsoft.com/library/azure/mt651775.aspx#Patch).
+
+## <a name="to-delete-a-property"></a>Egy tulajdonság
+
+Törölni egy tulajdonságot, kattintson a **törlése** mellett a tulajdonság törlése.
+
+> [!IMPORTANT]
+> Ha a tulajdonság a házirendek által hivatkozott, nem fog tudni sikeresen törölni mindaddig, amíg az azt használó összes házirendektől távolítsa el a tulajdonságot.
+> 
+> 
+
+A REST API használatával tulajdonság törléséről további információkért lásd: [törölni egy tulajdonságot a REST API használatával](https://msdn.microsoft.com/library/azure/mt651775.aspx#Delete).
+
+## <a name="to-search-and-filter-properties"></a>A Keresés és szűrés tulajdonságai
+
+A **értékek nevű** lapján található, a Keresés és szűrés lehetőségek közül választhat a tulajdonságainak kezeléséhez. Tulajdonság neve a tulajdonságlista szűréséhez adja meg a kívánt keresőkifejezést a a **tulajdonság keresése** szövegmező. Megjeleníti az összes tulajdonság, vagy törölje a **tulajdonság keresése** szövegmező, és nyomja le az adja meg.
+
+Címke értékek szerint a tulajdonságlista szűréséhez adja meg egy vagy több címkéket, az a **címkék szűrés** szövegmező. Megjeleníti az összes tulajdonság, vagy törölje a **címkék szűrés** szövegmező, és nyomja le az adja meg.
+
 ## <a name="to-use-a-property"></a>A tulajdonság
-Egy házirend tulajdonságot használja, helyezze a belül kell használni, például a kettős két tulajdonságnév `{{ContosoHeader}}`, a következő példában látható módon.
+
+Egy házirend tulajdonságot használja, helyezze a belül kell használni, például a kettős két tulajdonságnév `{{ContosoHeader}}`, a következő példában látható módon:
 
 ```xml
 <set-header name="{{ContosoHeader}}" exists-action="override">
@@ -75,79 +105,14 @@ Ha megnézi a [API Inspector nyomkövetési](api-management-howto-api-inspector.
 
 ![API-Inspector nyomkövetési][api-management-api-inspector-trace]
 
-Vegye figyelembe, hogy közben a tulajdonságértékek házirend-kifejezést tartalmazhat, tulajdonságértékek nem tartalmazhat más tulajdonságok. Ha a szöveg tulajdonság a hivatkozást használja a tulajdonság értéke, például a `Property value text {{MyProperty}}`, hivatkozó tulajdonság nem lehet írni, és tartalmazzák a tulajdonság értékének a lesz.
+Tulajdonságértékek házirend-kifejezést tartalmazhat, amíg a tulajdonságértékek nem tartalmazhat más tulajdonságok. Ha a szöveg tulajdonság a hivatkozást használja a tulajdonság értéke, például a `Property value text {{MyProperty}}`, hivatkozó tulajdonság nem lehet írni, és tartalmazzák a tulajdonság értékének a lesz.
 
-## <a name="to-create-a-property"></a>A tulajdonság létrehozása
-Hozzon létre egy tulajdonságot, kattintson a **tulajdonság hozzáadása** a a **tulajdonságok** fülre.
-
-![Tulajdonság hozzáadása][api-management-properties-add-property-menu]
-
-**Név** és **érték** szükséges érték. Ha ez a tulajdonság értéke egy titkos kulcsot, ellenőrizze a **Ez a titkos kulcs** jelölőnégyzetet. Adja meg egy vagy több választható címkéket a Tulajdonságok rendszerezéséhez számára, és kattintson a **mentése**.
-
-![Tulajdonság hozzáadása][api-management-properties-add-property]
-
-Új tulajdonság mentésekor a rendszer a **tulajdonság keresése** szövegmező a telepítéskor az új tulajdonság nevét, és az új tulajdonság jelenik meg. Megjeleníti az összes tulajdonság, vagy törölje a **tulajdonság keresése** szövegmező, és nyomja le az adja meg.
-
-![Tulajdonságok][api-management-properties-property-saved]
-
-A REST API használatával tulajdonság létrehozásáról további információért lásd: [hozzon létre egy tulajdonságot a REST API használatával](https://msdn.microsoft.com/library/azure/mt651775.aspx#Put).
-
-## <a name="to-edit-a-property"></a>Tulajdonság módosítása
-A tulajdonság szerkesztéséhez kattintson **szerkesztése** szerkesztése tulajdonság mellett.
-
-![Tulajdonság szerkesztése][api-management-properties-edit]
-
-Végezze el a szükséges módosításokat, és kattintson a **mentése**. Ha módosítja a tulajdonság nevét, a házirendek, amelyek az adott tulajdonsághoz hivatkoznak automatikusan frissülnek az új nevét.
-
-![Tulajdonság szerkesztése][api-management-properties-edit-property]
-
-A REST API használatával tulajdonság szerkesztési információkért lásd: [REST API használatával tulajdonság módosítása](https://msdn.microsoft.com/library/azure/mt651775.aspx#Patch).
-
-## <a name="to-delete-a-property"></a>Egy tulajdonság
-Törölni egy tulajdonságot, kattintson a **törlése** mellett a tulajdonság törlése.
-
-![Tulajdonság törlése][api-management-properties-delete]
-
-Kattintson a **Igen, törölje azt** megerősítéséhez.
-
-![Törlés megerősítése][api-management-delete-confirm]
-
-> [!IMPORTANT]
-> Ha a tulajdonság a házirendek által hivatkozott, nem fog tudni sikeresen törölni mindaddig, amíg az azt használó összes házirendektől távolítsa el a tulajdonságot.
-> 
-> 
-
-A REST API használatával tulajdonság törléséről további információkért lásd: [törölni egy tulajdonságot a REST API használatával](https://msdn.microsoft.com/library/azure/mt651775.aspx#Delete).
-
-## <a name="to-search-and-filter-properties"></a>A Keresés és szűrés tulajdonságai
-A **tulajdonságok** lapján található, a Keresés és szűrés lehetőségek közül választhat a tulajdonságainak kezeléséhez. Tulajdonság neve a tulajdonságlista szűréséhez adja meg a kívánt keresőkifejezést a a **tulajdonság keresése** szövegmező. Megjeleníti az összes tulajdonság, vagy törölje a **tulajdonság keresése** szövegmező, és nyomja le az adja meg.
-
-![Keresés][api-management-properties-search]
-
-Címke értékek szerint a tulajdonságlista szűréséhez adja meg egy vagy több címkéket, az a **címkék szűrés** szövegmező. Megjeleníti az összes tulajdonság, vagy törölje a **címkék szűrés** szövegmező, és nyomja le az adja meg.
-
-![Szűrés][api-management-properties-filter]
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ a házirendek használata
   * [Az API Management házirendek](api-management-howto-policies.md)
   * [Házirend-referencia](https://msdn.microsoft.com/library/azure/dn894081.aspx)
   * [Házirend-kifejezések](https://msdn.microsoft.com/library/azure/dn910913.aspx)
 
-## <a name="watch-a-video-overview"></a>Áttekintő videó megtekintése
-> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Use-Properties-in-Policies/player]
-> 
-> 
-
-[api-management-properties]: ./media/api-management-howto-properties/api-management-properties.png
-[api-management-properties-add-property]: ./media/api-management-howto-properties/api-management-properties-add-property.png
-[api-management-properties-edit-property]: ./media/api-management-howto-properties/api-management-properties-edit-property.png
-[api-management-properties-add-property-menu]: ./media/api-management-howto-properties/api-management-properties-add-property-menu.png
-[api-management-properties-property-saved]: ./media/api-management-howto-properties/api-management-properties-property-saved.png
-[api-management-properties-delete]: ./media/api-management-howto-properties/api-management-properties-delete.png
-[api-management-properties-edit]: ./media/api-management-howto-properties/api-management-properties-edit.png
-[api-management-delete-confirm]: ./media/api-management-howto-properties/api-management-delete-confirm.png
-[api-management-properties-search]: ./media/api-management-howto-properties/api-management-properties-search.png
 [api-management-send-results]: ./media/api-management-howto-properties/api-management-send-results.png
 [api-management-properties-filter]: ./media/api-management-howto-properties/api-management-properties-filter.png
 [api-management-api-inspector-trace]: ./media/api-management-howto-properties/api-management-api-inspector-trace.png
