@@ -12,13 +12,13 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2018
+ms.date: 01/23/2018
 ms.author: yurid
-ms.openlocfilehash: b304ce8c60aefc417993574a0baa43cfc2298d66
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 959c0e8693f4bba49488bbe85e334599823ad0ed
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="understanding-security-alerts-in-azure-security-center"></a>Az Azure Security Center biztonsági riasztásainak megismerése
 Ez a cikk segít megismerni az Azure Security Centerben elérhető biztonsági riasztások különböző típusait, valamint a kapcsolódó elemzéseket. A riasztások és incidensek kezelésével kapcsolatos további információkért olvassa el a [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) című cikket.
@@ -33,7 +33,7 @@ Az Azure Security Center különféle [észlelési funkciók](security-center-de
 
 * Virtuális gép működésének elemzése (VMBA)
 * Hálózatelemzés
-* Erőforrás-elemzés
+* SQL Database- és SQL Data Warehouse-elemzés
 * Környezeti információk
 
 ## <a name="virtual-machine-behavioral-analysis"></a>Virtuális gép működésének elemzése
@@ -47,7 +47,7 @@ Az Azure Security Center a működéselemzéssel azonosítja a feltört erőforr
 A Security Center fejlett elemzési módszerekkel azonosítja a feltört erőforrásokat a virtuális gépek eseménynaplóinak elemzése alapján. Ilyenek például a folyamat-létrehozási események és a bejelentkezési események. Ezenkívül megvizsgálja az összefüggéseket más jelekkel, hogy alátámassza a nagy lépétkű kampányok bizonyítékait.
 
 * **A rendszer gyanús folyamat-végrehajtást észlelt**: A támadók gyakran próbálkoznak ártalmatlan folyamatnak álcázott kártékony kódok futtatásával. Ezek a riasztások jelzik, ha egy folyamat végrehajtására illik az alábbi jellemzők valamelyike:
-    * A rendszer olyan folyamatot hajtott végre, amelyet közismerten ártó célokból szoktak használni. Bár az egyes parancsok ártalmatlannak tűnhetnek, a riasztás értékelése a parancsok összességére vonatkozik. 
+    * A rendszer olyan folyamatot hajtott végre, amelyet közismerten ártó célokból szoktak használni. Bár az egyes parancsok ártalmatlannak tűnhetnek, a riasztás értékelése a parancsok összességére vonatkozik.
     * Egy folyamat végrehajtása ismeretlen helyről indult ki.
     * Egy folyamat végrehajtása olyan helyről indult ki, amelyen ismert gyanús fájlokkal osztozik.
     * Egy folyamat végrehajtása gyanús útvonalról történt.
@@ -68,7 +68,7 @@ A Security Center fejlett elemzési módszerekkel azonosítja a feltört erőfor
     * Egy kísérlet történt a parancssorból egy mappa összes végrehajtható (*.exe) fájljának elindítására.
     * Egy folyamatot a PsExec segédprogram hajtott végre, amely folyamatok távoli futtatásához használható.
     * Az Apache Tomcat® fölérendelt végrehajtható fájlját (Tomcat#.exe) gyanús alárendelt folyamatok indítására használták, amelyek rosszindulatú parancsokat üzemeltethetnek vagy futtathatnak.
-    * A Microsoft Windows „Programkompatibilitási segédet” (pcalua.exe) egy végrehajtható kód elindítására használták, amely akár rosszindulatú is lehet. 
+    * A Microsoft Windows „Programkompatibilitási segédet” (pcalua.exe) egy végrehajtható kód elindítására használták, amely akár rosszindulatú is lehet.
     * A rendszer gyanús sorozatos folyamatleállítást észlelt.
     * Az SVCHOST rendszerfolyamat végrehajtásának a szokottól eltérő volt a kontextusa.
     * Az SVCHOST rendszerfolyamat egy ritka szolgáltatáscsoportban lett végrehajtva.
@@ -95,7 +95,7 @@ A Security Center fejlett elemzési módszerekkel azonosítja a feltört erőfor
 * **Az összes fájl árnyékmásolata törölve lett**: Ez a riasztás azt jelzi, hogy az árnyékmásolatok törölve lettek.
 * **Egy előzményfájl törölve lett**: Ez a riasztás azt jelzi, hogy a parancselőzményeket tartalmazó naplófájlt törölték, így egy esetleges támadó elfedheti a nyomait.
 * **Gyanús fájltörlési parancsok**: Ez a riasztás olyan systeminfo parancskombinációt jelez, amelyet gyakran behatolás utáni öntörlési tevékenységhez használnak.  Bár a *systeminfo.exe* megbízható Windows-eszköznek minősül, az egymás után kétszeri futtatása, majd ezt követően egy törlési parancs használata, ahogy ebben az esetben is történt, igen ritka.
-* **Gyanús fióklétrehozás**: Ez a riasztás azt jelzi, hogy egy meglévő beépített rendszergazdai jogosultságú fiókhoz nagyon hasonló fiókot hoztak létre. Ezzel a technikával a támadók feltűnésmentesen hozhatnak létre rosszindulatú fiókokat. 
+* **Gyanús fióklétrehozás**: Ez a riasztás azt jelzi, hogy egy meglévő beépített rendszergazdai jogosultságú fiókhoz nagyon hasonló fiókot hoztak létre. Ezzel a technikával a támadók feltűnésmentesen hozhatnak létre rosszindulatú fiókokat.
 * **Gyanús bejelentkezési tevékenység**: Ez a riasztás szokatlan bejelentkezési tevékenységet jelez, amely az SMB-re (Server Message Block) irányuló találgatásos támadásra utal. Ha az érintett erőforrás IIS-kiszolgálóként működik, akkor ezt a riasztást az adott IIS-hitelesítési konfiguráció is okozhatja, amely megbízható.
 * **Gyanús kötet-árnyékmásolati tevékenység**: Ez a riasztás árnyékmásolati törlési tevékenységet jelez az erőforráson. A kötet árnyékmásolata (Volume Shadow Copy, VSC) az adatok pillanatképeit tároló fontos összetevő. Ez a tevékenység általában egy zsarolóprogrammal hozható összefüggésbe, de megbízható tevékenységhez is kapcsolódhat.
 * **Windows beállításjegyzék adatmegőrzési metódusa**: Ez a riasztás egy végrehajtható kód megőrzésére tett kísérletet jelez a Windows beállításjegyzékben. A rosszindulatú folyamatok gyakran alkalmaznak ehhez hasonló technikákat, hogy a rendszer újraindítása után is megmaradjanak.
@@ -109,19 +109,19 @@ A Security Center fejlett elemzési módszerekkel azonosítja a feltört erőfor
 * **Rejtjelezett parancssor**: Ez a riasztás azt jelzi, hogy a rendszer gyanús, rejtjelezésre utaló jeleket észlelt a parancssorban.
 * **Több tartományi fiók lett lekérdezve**: A támadók gyakran kérdeznek le AD-tartományi fiókokat a felhasználók, tartományi rendszergazdai fiókok, tartományvezérlők és a tartományok közötti megbízhatósági kapcsolatok felderítése során. Ez a riasztás azt jelzi, hogy szokatlan mennyiségű, különböző tartományokban található fiókot kérdeztek le rövid időn belül.
 * **Lehetséges helyi felderítési tevékenység**: Ez a riasztás a felderítési tevékenységgel összefüggésbe hozható systeminfo parancsok egy kombinációjának végrehajtását jelzi.  Bár a *systeminfo.exe* megbízható Windows-eszköznek minősül, egymás után kétszer igen ritkán futtatják.
-* **Kulcslétrehozó végrehajtható fájl lehetséges futtatása**: Ez a riasztás olyan folyamat végrehajtását jelzi, amelynek neve egy kulcslétrehozó eszközre utal. Ezek az eszközök általában a szoftverlicencelési mechanizmusok kiiktatására szolgálnak, letöltésükkor azonban gyakran más rosszindulatú szoftverek is letöltődhetnek. 
+* **Kulcslétrehozó végrehajtható fájl lehetséges futtatása**: Ez a riasztás olyan folyamat végrehajtását jelzi, amelynek neve egy kulcslétrehozó eszközre utal. Ezek az eszközök általában a szoftverlicencelési mechanizmusok kiiktatására szolgálnak, letöltésükkor azonban gyakran más rosszindulatú szoftverek is letöltődhetnek.
 * **Gyanús végrehajtás a rundll32.exe használatával**: Ez a riasztás azt jelzi, hogy a rundll32.exe-t szokatlan névvel ellátott folyamat végrehajtására használták, amely megegyezik a támadók által a feltört gazdagépeken az implantátum első fázisának telepítése során alkalmazott elnevezési sémával.
 * **A HTA és a PowerShell gyanús kombinációja**: Ez a riasztás azt jelzi, hogy egy Microsoft HTML-alkalmazásgazda (HTA) PowerShell-parancsokat indít el. Ezzel a technikával a támadók kártevő PowerShell-szkripteket indíthatnak.
 * **Megváltozott egy beállításkulcs, amely kihasználható az UAC megkerülésére**: Ez a riasztás egy beállításkulcs megváltozását jelzi, amelyet a támadók gyakran arra használnak, hogy jogosultság nélküli hozzáférésük helyett (általános jogokkal rendelkező felhasználó) jogosultságokkal rendelkező (például rendszergazdai) hozzáféréshez jussanak egy feltört gazdagépen.
-* **Gyanús tartománynév használata a parancssorban**: Ez a riasztás egy gyanús tartománynév használatát jelzi, amely bizonyíték lehet arra, hogy egy támadó kártékony eszközöket üzemeltet parancs- és vezérlési, valamint az adatok kiszűréséhez használt végpontokként. 
+* **Gyanús tartománynév használata a parancssorban**: Ez a riasztás egy gyanús tartománynév használatát jelzi, amely bizonyíték lehet arra, hogy egy támadó kártékony eszközöket üzemeltet parancs- és vezérlési, valamint az adatok kiszűréséhez használt végpontokként.
 * **Egy fiók több gazdagépen is létre lett hozva az elmúlt 24 órában**: Ez a riasztás azt jelzi, hogy ugyanazt a felhasználói fiókot több gazdagépen is megkísérelték létrehozni, amely bizonyíték lehet egy támadó oldalirányú mozgására a hálózaton, egy vagy több hálózati entitás feltörését követően.
-* **Gyanús CACLS-használat a rendszer biztonsági szintjének csökkentése érdekében**: Ez a riasztás a hozzáférésvezérlés-módosítási lista (CACLS) módosítását jelzi. A támadók gyakran használják ezt a technikát arra, hogy teljes körű hozzáférést biztosítsanak a rendszer olyan bináris fájljai számára, mint az ftp.exe, a net.exe, a wscript.exe stb. 
-* **Gyanús Kerberos-aranyjegyes támadási paraméterek**: Ez a riasztás egy Kerberos-aranyjegyes támadásnak megfelelő paraméterekkel rendelkező parancssor végrehajtását jelzi. A feltört krbtgt kulcsokkal a támadók bármely felhasználó nevében eljárhatnak. 
+* **Gyanús CACLS-használat a rendszer biztonsági szintjének csökkentése érdekében**: Ez a riasztás a hozzáférésvezérlés-módosítási lista (CACLS) módosítását jelzi. A támadók gyakran használják ezt a technikát arra, hogy teljes körű hozzáférést biztosítsanak a rendszer olyan bináris fájljai számára, mint az ftp.exe, a net.exe, a wscript.exe stb.
+* **Gyanús Kerberos-aranyjegyes támadási paraméterek**: Ez a riasztás egy Kerberos-aranyjegyes támadásnak megfelelő paraméterekkel rendelkező parancssor végrehajtását jelzi. A feltört krbtgt kulcsokkal a támadók bármely felhasználó nevében eljárhatnak.
 * **A WDigest UseLogonCredential beállításkulcs engedélyezése**: Ez a riasztás a beállításkulcs olyan módosítását jelzi, amelynek köszönhetően a bejelentkezési hitelesítő adatokat a rendszer az LSA-memóriában tárolja, ahonnan később begyűjthetők.
 * **A Telegram eszköz esetlegesen gyanús használata**: Ez a riasztás a Telegram nevű, ingyenes, felhőalapú azonnali üzenetküldő szolgáltatás telepítését jelzi, amelyet a támadók gyakran arra használnak, hogy rosszindulatú bináris fájlokat vigyenek át számítógépekre, mobiltelefonokra vagy táblagépekre.
-* **Új ASEP létrehozása**: Ez a riasztás egy új ASEP (automatikus indításkiterjesztési pont) létrehozását jelzi, amely révén a parancssorban azonosított névvel ellátott folyamat automatikusan elindul, ezt pedig a támadók saját folyamataik megőrzésére használhatják. 
+* **Új ASEP létrehozása**: Ez a riasztás egy új ASEP (automatikus indításkiterjesztési pont) létrehozását jelzi, amely révén a parancssorban azonosított névvel ellátott folyamat automatikusan elindul, ezt pedig a támadók saját folyamataik megőrzésére használhatják.
 * **Gyanús Set-ExecutionPolicy- és WinRM-módosítások**: Ez a riasztás olyan konfigurációmódosításokat jelez, amelyek a rosszindulatú ChinaChopper webshell használatával hozhatók összefüggésbe.
-* **Kritikus szolgáltatások letiltása**: Ez a riasztás azt jelzi, hogy a „net.exe stop” parancsot a SharedAccesshez vagy a Windows Biztonsági központhoz hasonló kritikus szolgáltatások leállítására használták. 
+* **Kritikus szolgáltatások letiltása**: Ez a riasztás azt jelzi, hogy a „net.exe stop” parancsot a SharedAccesshez vagy a Windows Biztonsági központhoz hasonló kritikus szolgáltatások leállítására használták.
 * **Az FTP -s kapcsolójának gyanús használata**: Ez a riasztás az FTP-k „-s” kapcsolójának használatát jelzi, amelyet kártevő programok használnak távoli FTP-kiszolgálókon való kapcsolódásra és további rosszindulatú bináris fájlok letöltésére.
 * **Dokumentumok kivonásának előkészítése IIS-backdooron keresztül**: Ez a riasztás dokumentumok kivonásra való összegyűjtését és előkészítését jelzi.
 * **A VBScript.Encode parancs gyanús végrehajtása**: Ez a riasztás a *VBScript.Encode* parancs végrehajtását jelzi, amely olvashatatlan szöveggé kódolja a szkripteket, így megnehezíti a felhasználóknak a kódok vizsgálatát.
@@ -150,7 +150,7 @@ A Security Center fejlett elemzési módszerekkel azonosítja a feltört erőfor
 * **Fióklétrehozás**: Ez a riasztás új fiók létrehozását jelzi a gépen.
 * **Bash-beállítás módosítása**: Ez a riasztás a Bash-profilhoz való hozzáférést jelez, amely bizonyíték lehet arra, hogy egy támadó rosszindulatú programok ütemezett végrehajtásával próbálkozik.
 * **Gyanús sikertelen sudo kísérletsorozat**: Ez a riasztás sikertelen sudo parancsok sorozatát jelzi, amely gyakran megfigyelhető a jogosulatlan felhasználók jogosultságainak eszkalációjára irányuló találgatásos támadások esetén.
-* **Gyanús sikeres sudo kísérletsorozat**: Ez a riasztás sikertelen sudo kísérletek sorozatát követő sikeres sudo kísérletet jelez, amely gyakran megfigyelhető a jogosulatlan felhasználók jogosultságainak eszkalációjára irányuló találgatásos támadások esetén. 
+* **Gyanús sikeres sudo kísérletsorozat**: Ez a riasztás sikertelen sudo kísérletek sorozatát követő sikeres sudo kísérletet jelez, amely gyakran megfigyelhető a jogosulatlan felhasználók jogosultságainak eszkalációjára irányuló találgatásos támadások esetén.
 * **Új felhasználó hozzáadása a sudoers csoporthoz**: Ez a riasztás azt jelzi, hogy felhasználót adtak hozzá a sudoers csoporthoz, amelynek tagjai kiemelt jogosultságokkal futtathatnak parancsokat.
 * **Hálózati bejelentkezés egyszerű szöveges hitelesítő adatokkal**: Ez a riasztás egy hálózati bejelentkezés észlelését jelzi, amelyben a jelszót egyszerű szöveges formában küldték el a hálózaton. Ez gyakran előfordul egy ASP-szkriptről ADVAPI használatával való bejelentkezéskor, illetve ha egy felhasználó az IIS alapszintű hitelesítési módjának használatával jelentkezik be az IIS-re. Az ajánlott módszer nem az alapszintű hitelesítés, hacsak nem az SSL-hez hasonló (például csak HTTPS-kapcsolatokat használó) titkosítási rétegbe van csomagolva.
 
@@ -164,9 +164,9 @@ Amikor a szoftver összeomlik, egy összeomlási memóriakép rögzíti a memór
 * **Kódinjektálás észlelhető**: A kódinjektálás olyan művelet, amely végrehajtható modulokat szúr be a futó folyamatokba vagy szálakba. A kártevők ezt a módszert használják az adatok elérésére, elrejtésére vagy az eltávolítás megakadályozására (vagyis az adatok megőrzésére). Ez a riasztás jelzi, hogy injektált modul szerepel az összeomlási memóriaképben. A megbízható szoftverfejlesztők esetenként nem ártó szándékkal hajtanak végre kódinjektálást, hanem például egy meglévő alkalmazás vagy az operációs rendszer egyik összetevőjének módosítása vagy bővítése érdekében. A kártékony és a nem kártékony injektált modulok megkülönböztetéséhez a Security Center ellenőrzi, hogy az injektált modulra illik-e a gyanús működés profilja. Az ellenőrzés eredménye a riasztás „SIGNATURE” mezőjében látható, és ettől függ a riasztás súlyossági szintje, a riasztás leírása és a hibaelhárítási művelet.
 * **Gyanús kódszegmens**: A gyanús kódszegmensre figyelmeztető riasztás azt jelzi, hogy egy kódszegmens nem szabványos módszerrel lett lefoglalva, például reflektív injektálással vagy a process hollowingnak (hamis folyamat) nevezett technikával. A riasztás a jelentett kódszegmens további jellemzőit is feldolgozza, hogy kontextusba helyezze a képességeit és viselkedési mintáit.
 * **Héjkód észlelhető**: A héjkód az a kártékony kód, amely azután fut le, hogy a kártevő a szoftver biztonsági rését kihasználva bejut a rendszerbe. Ez a riasztás azt jelzi, hogy az összeomlási memóriakép elemzése olyan végrehajtható kódot talált, amely a kártékony kódokra jellemző működés jeleit mutatja. Bár előfordulhat, hogy nem rosszindulatú szoftverhez tartozik az adott működés, ez nem jellemző a szokásos szoftverfejlesztési gyakorlatban.
-* **Moduleltérítés észlelhető**: A Windows dinamikus csatolású kódtárai (DLL) teszik lehetővé, hogy a szoftverek használják a Windows közös rendszerfunkcióit. DLL-eltérítés akkor történik, ha a kártevő megváltoztatja a DLL-betöltési sorrendet, hogy kártékony kódot töltsön be a memóriába, ahol tetszőleges kódot lehet végrehajtani. Ez a riasztás azt jelzi, hogy az összeomlási memóriakép elemzése egy hasonló nevű modul betöltését észlelte két különböző elérési útról. Az egyik elérési út a Windows rendszer bináris rendszerfájljainak helyére mutat. A megbízható szoftverfejlesztők esetenként nem ártó szándékkal változtatják meg a DLL-ek betöltési sorrendjét, hanem például a Windows operációs rendszer eszközeinek biztosításához vagy bővítéséhez, illetve a Windows-alkalmazások bővítéséhez. A DLL-betöltési sorrend ártó szándékú és esetleg jóindulatú megváltoztatásának megkülönböztetéséhez a Security Center ellenőrzi, hogy a betöltött modulra illik-e a gyanús működés profilja. 
+* **Moduleltérítés észlelhető**: A Windows dinamikus csatolású kódtárai (DLL) teszik lehetővé, hogy a szoftverek használják a Windows közös rendszerfunkcióit. DLL-eltérítés akkor történik, ha a kártevő megváltoztatja a DLL-betöltési sorrendet, hogy kártékony kódot töltsön be a memóriába, ahol tetszőleges kódot lehet végrehajtani. Ez a riasztás azt jelzi, hogy az összeomlási memóriakép elemzése egy hasonló nevű modul betöltését észlelte két különböző elérési útról. Az egyik elérési út a Windows rendszer bináris rendszerfájljainak helyére mutat. A megbízható szoftverfejlesztők esetenként nem ártó szándékkal változtatják meg a DLL-ek betöltési sorrendjét, hanem például a Windows operációs rendszer eszközeinek biztosításához vagy bővítéséhez, illetve a Windows-alkalmazások bővítéséhez. A DLL-betöltési sorrend ártó szándékú és esetleg jóindulatú megváltoztatásának megkülönböztetéséhez a Security Center ellenőrzi, hogy a betöltött modulra illik-e a gyanús működés profilja.
 * **Álcázásos Windows-modul észlelhető**: A kártevők felhasználhatják a Windows rendszerfájljainak (például: SVCHOST.EXE) vagy moduljainak (például: NTDLL.DLL) nevét arra, hogy elvegyüljenek, és elfedjék a szoftver kártékony jellegét a rendszergazdák elől. Ez a riasztás azt jelzi, hogy az összeomlási memóriaképfájl olyan modulokat tartalmaz, amelyek a Windows rendszermoduljainak nevét használják, de nem felelnek meg a jellemzően a Windows-modulokra vonatkozó feltételeknek. Az álcázásos modul lemezen lévő példányának elemzésével további adatokat kaphat a modul megbízható vagy kártékony jellegéről.
-* **Módosított bináris rendszerfájl észlelhető**: A kártevők módosíthatják a rendszermag bináris fájljait, hogy magukat leplezve hozzáférhessenek az adatokhoz, vagy elrejtőzzenek a fertőzött rendszerben. Ez a riasztás azt jelzi, hogy az összeomlási memóriakép elemzése a Windows operációs rendszer módosított bináris rendszerfájljait észlelte a memóriában vagy a lemezen. A megbízható szoftverfejlesztők esetenként nem ártó szándékkal módosítják a memóriában lévő rendszermodulokat, hanem például elkerülő megoldásokhoz vagy az alkalmazások kompatibilitásához. A kártékony és a valószínűleg jóindulatú modulok megkülönböztetéséhez a Security Center ellenőrzi, hogy a betöltött modulra illik-e a gyanús működés profilja. 
+* **Módosított bináris rendszerfájl észlelhető**: A kártevők módosíthatják a rendszermag bináris fájljait, hogy magukat leplezve hozzáférhessenek az adatokhoz, vagy elrejtőzzenek a fertőzött rendszerben. Ez a riasztás azt jelzi, hogy az összeomlási memóriakép elemzése a Windows operációs rendszer módosított bináris rendszerfájljait észlelte a memóriában vagy a lemezen. A megbízható szoftverfejlesztők esetenként nem ártó szándékkal módosítják a memóriában lévő rendszermodulokat, hanem például elkerülő megoldásokhoz vagy az alkalmazások kompatibilitásához. A kártékony és a valószínűleg jóindulatú modulok megkülönböztetéséhez a Security Center ellenőrzi, hogy a betöltött modulra illik-e a gyanús működés profilja.
 
 ## <a name="network-analysis"></a>Hálózatelemzés
 A Security Center hálózati fenyegetettség-észlelése úgy működik, hogy automatikusan összegyűjti a biztonsági információkat az Azure IPFIX (IP-folyamatadatok exportálása) forgalmából. A fenyegetések azonosításához elemzi ezeket az információkat, és gyakran megvizsgálja a különböző forrásokból származó adatok közötti összefüggéseket.
@@ -183,17 +183,20 @@ A Security Center hálózati fenyegetettség-észlelése úgy működik, hogy au
 * **A rendszer egy kártevő géppel folytatott hálózati kommunikációt észlelt**: A hálózati forgalomelemzés eredményei azt mutatják, hogy a gép valószínűleg egy parancs- és vezérlőközponttal kommunikált.
 * **A rendszer esetleges feltört gépet észlelt**: A hálózati forgalomelemzés kimenő tevékenységet észlelt, amely arra utalhat, hogy a hálózat egy botnet része. Az elemzés azokon az IP-címeken alapul, amelyekhez az erőforrás a DNS-rekordokkal együtt hozzáfért.
 
- 
-## <a name="resource-analysis"></a>Erőforrás-elemzés
 
-A Security Center erőforrás-elemzése a PaaS (szolgáltatásként üzemeltetett platform) szolgáltatásokra összpontosít, mint például az [Azure SQL Database fenyegetésészlelés](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection) funkcióval való integrációja. Ezeknek a területeknek az elemzési eredményei alapján a Security Center elindít egy erőforráshoz kapcsolódó riasztást.
+## <a name="sql-database-and-sql-data-warehouse-analysis"></a>SQL Database- és SQL Data Warehouse-elemzés
 
-* **Lehetséges SQL-injektálás**: Az SQL-injektálás olyan támadás, amely kártékony kódot szúr be a karakterláncokba, amelyeket a rendszer később átad az SQL Server példányának elemzés és végrehajtás céljából. Az SQL-utasításokat létrehozó összes eljárást meg kell vizsgálni az injektálási biztonsági rések felderítéséhez, mivel az SQL Server végrehajtja az összes olyan lekérdezést, amely szintaktikailag érvényes. Az SQL fenyegetésészlelési funkciója gépi tanulás, viselkedéselemzés és rendellenességészlelés alapján határozza meg azokat a gyanús eseményeket, amelyek az Azure SQL-adatbázisokban megtörténhetnek. Például: 
-    * Egy korábbi alkalmazott megpróbált hozzáférni az adatbázishoz
-    * SQL-injektálási támadások
-    * Egy felhasználó szokatlan otthoni hozzáférése a vállalati adatbázishoz
-* **Biztonsági rés az SQL-injektálás számára**: Ez a riasztás akkor aktiválódik, ha a rendszer alkalmazáshibát észlelt egy adatbázisban. Ez a riasztás az SQL-injektálási támadásokkal kihasználható biztonsági rést jelezhet.
-* **Ismeretlen helyről történő szokatlan hozzáférés**: Ez a riasztás akkor aktiválódik, ha a rendszer egy ismeretlen IP-címről történt hozzáférési eseményt észlel a kiszolgálón, amely az utolsó időszakban nem jelent meg.
+A Security Center erőforrás-elemzése a PaaS (szolgáltatásként üzemeltetett platform) szolgáltatásokra összpontosít, mint például az [Azure SQL Database fenyegetésészlelés](../sql-database/sql-database-threat-detection.md) és az Azure SQL Data Warehouse integrációja. Az SQL fenyegetésészlelés észleli a rendellenes tevékenységeket, amelyek az adatbázisok hozzáférésére vagy kihasználására irányuló szokatlan és potenciálisan rosszindulatú kísérletekre utalnak, és aktiválja a következő riasztásokat:
+
+* **Biztonsági rés az SQL-injektálás számára**: Ez a riasztás akkor aktiválódik, ha egy alkalmazás egy hibás SQL-utasítást hoz létre az adatbázisban. Ez az SQL-injektálási támadásokkal kihasználható biztonsági rést jelezhet. A hibás utasításokat két dolog okozhatja:
+    * Egy hiba a hibás SQL-utasítást létrehozó alkalmazáskódban
+    * Az alkalmazáskódok és tárolt eljárások nem ellenőrzik a felhasználói adatbevitelt a hibás SQL-utasítás létrehozásakor, amelyeket így SQL-injektálással ki lehet használni.
+* **Potenciális SQL-injektálás**: Ez a riasztás akkor aktiválódik, ha egy alkalmazás SQL-injektálással szembeni ismert sebezhetőségét aktívan kihasználják. Ez azt jelenti, hogy a támadó megpróbál kártevő SQL-utasításokat injektálni a sebezhető alkalmazáskód vagy tárolt eljárások kihasználásával.
+* **Hozzáférés szokatlan helyről**: Ez a riasztás akkor aktiválódik, ha változás történik az SQL-kiszolgáló hozzáférési mintájában, amikor valaki egy szokatlan földrajzi helyről jelentkezett be az SQL-kiszolgálóra. Bizonyos esetekben a riasztás jogszerű műveleteket észlel (egy új alkalmazást vagy fejlesztői karbantartást). Más esetekben a riasztás kártékony műveleteket észlel (egy korábbi alkalmazott vagy egy külső támadó részéről).
+* **Hozzáférés szokatlan Azure-adatközpontból**: Ez a riasztás akkor aktiválódik, ha változás történik az SQL-kiszolgáló hozzáférési mintájában, amikor valaki egy szokatlan Azure-adatközpontból jelentkezett be az SQL-kiszolgálóra, ami a kiszolgálón is látható volt a közelmúltban. Bizonyos esetekben a riasztás jogszerű műveleteket észlel (egy új Azure-, Power BI- vagy Azure SQL Query Editor-alkalmazást). Más esetekben a riasztás kártékony műveleteket észlel egy Azure-erőforrás vagy -szolgáltatás felől (egy korábbi alkalmazott vagy egy külső támadó részéről).
+* **Hozzáférés szokatlan résztvevő részéről**: Ez a riasztás akkor aktiválódik, ha változás történik az SQL-kiszolgáló hozzáférési mintájában, amikor valaki egy szokatlan résztvevő (SQL-felhasználó) használatával jelentkezett be az SQL-kiszolgálóra. Bizonyos esetekben a riasztás jogszerű műveleteket észlel (egy új alkalmazást vagy fejlesztői karbantartást). Más esetekben a riasztás kártékony műveleteket észlel (egy korábbi alkalmazott vagy egy külső támadó részéről).
+* **Hozzáférés potenciálisan kártékony alkalmazással**: Ez a riasztás akkor aktiválódik, ha valaki egy potenciálisan káros alkalmazást használ az adatbázis eléréséhez. Bizonyos esetekben a riasztás behatolási teszteket észlel működés közben. Más esetekben a riasztás egy gyakori támadóeszközökkel végrehajtott támadást észlel.
+* **Találgatásos támadás SQL hitelesítő adatokkal**: Ez a riasztás akkor aktiválódik, ha rendellenesen magas a különböző hitelesítő adatok használatával történő sikertelen bejelentkezések száma. Bizonyos esetekben a riasztás behatolási teszteket észlel működés közben. Más esetekben a riasztás egy találgatásos támadást észlel.
 
 ## <a name="contextual-information"></a>Környezeti információk
 Vizsgálatok során az elemzőknek további háttér-információra van szükségük ahhoz, hogy megállapíthassák a fenyegetés jellegét és elháríthassák veszélyt.  Ha például hálózati anomáliát észlelnek, de nincsenek tisztában azzal, hogy mi történik a hálózaton vagy a célzott erőforráson, rendkívül nehéz meghatározni a következő lépést. Ennek megkönnyítése érdekében a biztonsági incidensek olyan összetevőket, kapcsolódó eseményeket vagy egyéb információt tartalmazhatnak, amely a vizsgálatot végző személy segítségére lehet. A további elérhető információk eltérhetnek az észlelt fenyegetés típusától, valamint a környezet konfigurációjától függően, és nem minden biztonsági incidens esetében állnak rendelkezésre.
@@ -202,9 +205,9 @@ Ha van további elérhető információ, akkor a biztonsági incidensben, a rias
 
 - Naplótörlési események
 - PNP-eszköz csatlakoztatása ismeretlen eszközről
-- Beavatkozást nem igénylő riasztások 
+- Beavatkozást nem igénylő riasztások
 
-![Szokatlan hozzáférés miatti riasztás](./media/security-center-alerts-type/security-center-alerts-type-fig20.png) 
+![Szokatlan hozzáférés miatti riasztás](./media/security-center-alerts-type/security-center-alerts-type-fig20.png)
 
 
 ## <a name="next-steps"></a>További lépések

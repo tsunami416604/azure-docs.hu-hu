@@ -1,8 +1,8 @@
 ---
-title: "Egy OpenAPI definíció függvény létrehozása |} Microsoft Docs"
-description: "Hozzon létre egy OpenAPI-definíciót, amely lehetővé teszi, hogy egyéb alkalmazások és szolgáltatások, a függvény hívása az Azure-ban."
+title: "OpenAPI definíció létrehozása egy függvényhez | Microsoft Docs"
+description: "Hozzon létre egy OpenAPI definíciót, amely lehetővé teszi más alkalmazások és szolgáltatások számára, hogy meghívják a függvényt az Azure-ban."
 services: functions
-keywords: "OpenAPI, Swagger, felhőalapú alkalmazások, a felhőalapú szolgáltatások,"
+keywords: "OpenAPI, Swagger, felhőalkalmazás, felhőszolgáltatások,"
 documentationcenter: 
 author: mgblythe
 manager: cfowler
@@ -16,28 +16,28 @@ ms.topic: tutorial
 ms.date: 12/15/2017
 ms.author: mblythe; glenga
 ms.custom: mvc
-ms.openlocfilehash: 2bf1a3e80e96d76b15340f87166b2b4762271cf3
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
-ms.translationtype: MT
+ms.openlocfilehash: 29e78bbb8e3d4d4feb3f7d32cf0a5ef1b02a6268
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/24/2018
 ---
-# <a name="create-an-openapi-definition-for-a-function"></a>Egy függvény OpenAPI definíció létrehozása
-REST API-k gyakran ismerteti egy OpenAPI definíció használatával (korábbi néven egy [Swagger](http://swagger.io/) fájl). Ez a definíció milyen műveleteket elérhetők az API-k, és hogy a kérés- és az API-adatszerkezet információkat tartalmaz.
+# <a name="create-an-openapi-definition-for-a-function"></a>OpenAPI definíció létrehozása egy függvényhez
+A REST API-k leírása gyakran egy OpenAPI-definíció (korábbi nevén [Swagger](http://swagger.io/)-fájl) használatával történik. Ez a definíció tartalmazza az API-ban elérhető műveletekkel kapcsolatos információkat, illetve az API kérés- és válaszadatainak felépítését.
 
-Ebben az oktatóanyagban létrehoz egy függvényt, amely meghatározza, hogy a szél turbina egy helyreállítási költséghatékony. A függvény alkalmazás egy OpenAPI definíció majd, hogy a függvény hívása az egyéb alkalmazások és szolgáltatások létrehozása.
+Ebben az oktatóanyagban létrehoz egy függvényt, amely megállapítja, hogy egy szélturbina sürgősségi javítása költséghatékony-e. Ezután létrehoz egy OpenAPI-definíciót a függvényalkalmazáshoz, hogy a függvényt más alkalmazások és szolgáltatások is meghívhassák.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Az Azure-függvény létrehozása
-> * Az OpenAPI eszközökkel OpenAPI-definíció létrehozása
-> * A további metaadatainak módosítása
-> * A definíció a függvény tesztelése
+> * Függvény létrehozása az Azure-ban
+> * OpenAPI-definíció létrehozása az OpenAPI eszközeivel
+> * A definíció módosítása további metaadatok megadása céljából
+> * A definíció tesztelése a függvény meghívásával
 
 ## <a name="create-a-function-app"></a>Függvényalkalmazás létrehozása
 
-Rendelkeznie kell egy függvényalkalmazással a függvények végrehajtásának biztosításához. Logikai egységet az egyszerűbb felügyelet érdekében a központi telepítés, méretezés és erőforrás-megosztás funkciók csoportosítása függvény alkalmazás segítségével. 
+Rendelkeznie kell egy függvényalkalmazással a függvények végrehajtásának biztosításához. A függvényalkalmazás lehetővé teszi, hogy logikai egységbe csoportosítsa a függvényeket az erőforrások egyszerűbb felügyelete, telepítése, méretezése és megosztása érdekében. 
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
@@ -46,23 +46,23 @@ Rendelkeznie kell egy függvényalkalmazással a függvények végrehajtásának
 
 ## <a name="create-the-function"></a>A függvény létrehozása
 
-Ez az oktatóanyag használja egy indított HTTP-függvény, amely két paramétert fogad: becsült ideje a turbina létrehozásához javítása (órákban); és (a kilowattban) turbinás kapacitását. A függvény majd kiszámítja mennyi javítási ára, és mekkora a bevétel a turbinás lehetett létrehozni egy 24 órás időszakban.
+Az oktatóanyag egy HTTP-vel aktivált függvényt használ, amelynek két bemeneti paramétere van: egy turbina javításához szükséges becsült idő (órákban) és a turbina kapacitása (kilowattban). A függvény kiszámolja, hogy mennyibe kerül a javítás, és hogy a turbina 24 óra alatt mennyi bevételt tudna termelni.
 
-1. Bontsa ki a függvény alkalmazást, és válassza ki a  **+**  gombra **funkciók**. Ha ez az első függvény a függvényalkalmazásban, jelölje ki az **Egyéni függvény** lehetőséget. Ez megjeleníti a függvénysablonok teljes készletét. 
+1. Bontsa ki a függvényalkalmazást, és kattintson a **Függvények** elem melletti **+** gombra. Ha ez az első függvény a függvényalkalmazásban, jelölje ki az **Egyéni függvény** lehetőséget. Ez megjeleníti a függvénysablonok teljes készletét. 
 
     ![Függvények gyors létrehozásának oldala az Azure Portalon](media/functions-openapi-definition/add-first-function.png)
 
-2. Írja be a keresőmezőbe, `http` majd **C#** a HTTP-eseményindító sablon. 
+2. A keresés mezőbe írja be a `http` kifejezést, majd válassza ki a **C#** nyelvet a HTTP-eseményindító sablonjához. 
  
-    ![A HTTP-eseményindítóval kiválasztása](./media/functions-openapi-definition/select-http-trigger-portal.png)
+    ![HTTP-eseményindító kiválasztása](./media/functions-openapi-definition/select-http-trigger-portal.png)
 
-3. Típus `TurbineRepair` a függvény **neve**, válassza a `Function` a  **[hitelesítési szint](functions-bindings-http-webhook.md#http-auth)**, majd válassza ki **létrehozása**.  
+3. A függvénynek adja a `TurbineRepair` **nevet**, válassza ki a `Function` **[Hitelesítési szintet](functions-bindings-http-webhook.md#http-auth)**, majd kattintson a **Létrehozás** lehetőségre.  
 
-    ![Az indított HTTP-függvény létrehozása](./media/functions-openapi-definition/select-http-trigger-portal-2.png)
+    ![A HTTP által aktivált függvény létrehozása](./media/functions-openapi-definition/select-http-trigger-portal-2.png)
 
-1. Cserélje le a run.csx fájl tartalmát a következő kódra, majd kattintson az **mentése**:
+1. Cserélje le a run.csx fájl tartalmát a következő kódra, majd kattintson a **Mentés** parancsra:
 
-    ```c#
+    ```csharp
     using System.Net;
 
     const double revenuePerkW = 0.12; 
@@ -96,9 +96,9 @@ Ez az oktatóanyag használja egy indított HTTP-függvény, amely két paramét
         }); 
     }
     ```
-    Ez a függvény kód üzenetet adja vissza `Yes` vagy `No` költséghatékony,-e egy helyreállítási, valamint a turbinás jelölő bevétel lehetőséget, és a költségeket a turbinás javításához jelzi. 
+    Ez a függvény a `Yes` vagy `No` üzenetet adja vissza, ezzel jelezve, hogy a turbina sürgősségi javítása költséghatékony-e. Emellett megjeleníti a turbina által képviselt bevételi lehetőséget és a javítási költséget. 
 
-1. A függvény teszteléséhez kattintson **tesztelése** bontsa ki a teszt lap jobb szélén. A következő értéket adja meg a **Request body**, és kattintson a **futtatása**.
+1. A függvény teszteléséhez kattintson a jobb szélen a **Tesztelés** gombra, amely kibontja a tesztelési lapot. A **Kérelem törzse** mezőben adja meg a következő értéket, majd kattintson a **Futtatás** parancsra.
 
     ```json
     {
@@ -107,43 +107,43 @@ Ez az oktatóanyag használja egy indított HTTP-függvény, amely két paramét
     }
     ```
 
-    ![A függvény tesztelése az Azure-portálon](media/functions-openapi-definition/test-function.png)
+    ![A függvény tesztelése az Azure Portalon](media/functions-openapi-definition/test-function.png)
 
-    A következő értéket adja vissza a válasz törzsében.
+    A válasz törzse a következő értéket adja vissza.
 
     ```json
     {"message":"Yes","revenueOpportunity":"$7200","costToFix":"$1600"}
     ```
 
-Most már rendelkezik egy függvényt, amely meghatározza, hogy a költséghatékonyság vészhelyzeti javítások. A következő Ön hozza létre, és a függvény alkalmazás OpenAPI módosítása.
+Most már van egy olyan függvénye, amely megállapítja a sürgősségi javítások költséghatékonyságát. Ezután hozza létre és módosítsa a függvényalkalmazás OpenAPI-definícióját.
 
-## <a name="generate-the-openapi-definition"></a>A OpenAPI definíció létrehozása
+## <a name="generate-the-openapi-definition"></a>Az OpenAPI-definíció létrehozása
 
-Most már készen áll a OpenAPI definíciót létrehozni. Ez a definíció használhatja más Microsoft-technológiák, például az API-alkalmazásokat, [PowerApps](functions-powerapps-scenario.md) és [Microsoft Flow](../azure-functions/app-service-export-api-to-powerapps-and-flow.md), valamint harmadik féltől származó fejlesztői eszközök, például az [Postman](https://www.getpostman.com/docs/importing_swagger) és [számos további csomag](http://swagger.io/tools/).
+Most már készen áll arra, hogy létrehozza az OpenAPI-definíciót. Ezt a Microsoft egyéb technológiái is használhatják, például az API Apps, a [PowerApps](functions-powerapps-scenario.md) és a [Microsoft Flow](../azure-functions/app-service-export-api-to-powerapps-and-flow.md), valamint külső gyártóktól származó fejlesztői eszközök is, mint a [Postman](https://www.getpostman.com/docs/importing_swagger) és [még sok más csomag](http://swagger.io/tools/).
 
-1. Válassza ki a csak a *műveletek* , hogy az API támogatja (Ez az eset BLOGBEJEGYZÉS). Így a létrehozott API-definíció tisztító.
+1. Csak azokat a *műveleteket* válassza ki, amelyeket az API támogat (jelen esetben a POST). Ezáltal átláthatóbb lesz a létrehozott API-definíció.
 
-    1. Az a **integráció** lap az új HTTP-eseményindítóval függvény, a módosítás **engedélyezett HTTP-metódus** való **kijelölt módszerek**
+    1. Az új HTTP-eseményindító függvény **Integrálás** lapján módosítsa az **Engedélyezett HTTP-metódusok** beállítást a **Kiválasztott metódusok** értékre.
 
-    1. A **kijelölt HTTP-metódus**, kapcsolja kivételével minden beállítást **POST**, majd kattintson a **mentése**.
+    1. A **Kiválasztott HTTP-metódusok** között a **POST** kivételével törölje az összes beállítás jelölését, majd kattintson a **Mentés** lehetőségre.
 
         ![Kiválasztott HTTP-metódusok](media/functions-openapi-definition/selected-http-methods.png)
         
-1. Kattintson a függvény alkalmazás neve (például **függvény-bemutató-energia**) > **Platform funkciói** > **API-definíció**.
+1. Kattintson a függvényalkalmazás nevére (pl. **function-demo-energy**), majd a **Platformfunkciók** > **API-definíció** lehetőségre.
 
     ![API-definíció](media/functions-openapi-definition/api-definition.png)
 
-1. Az a **API-definíció** lapra, majd **függvény**.
+1. Az **API-definíció** lapon kattintson a**Függvény** elemre.
 
     ![API-definíció forrása](media/functions-openapi-definition/api-definition-source.png)
 
-    Ez a lépés lehetővé teszi, hogy az függvény alkalmazások, beleértve a függvény app tartományból egy beágyazott másolatot készít egy OpenAPI fájl futtatásához a végpont OpenAPI beállítások együttese a [OpenAPI szerkesztő](http://editor.swagger.io), és az API definition sablon generátor.
+    Ez a lépés számos OpenAPI-beállítást engedélyez a függvényalkalmazás számára, köztük egy végpontot, amely a függvényalkalmazás tartományából futtat egy OpenAPI-fájlt, valamint az [OpenAPI-szerkesztő](http://editor.swagger.io) egy beágyazott példányát és egy API-definíciósablon generátort.
 
-1. Kattintson a **készítése API definition sablon** > **mentése**.
+1. Kattintson az **API-definíciósablon létrehozása** > **Mentés** lehetőségre.
 
-    ![API-definíció-sablon létrehozása](media/functions-openapi-definition/generate-template.png)
+    ![API-definíciósablon létrehozása](media/functions-openapi-definition/generate-template.png)
 
-    Azure vizsgálatokat végez a HTTP-eseményindítóval funkciók függvény alkalmazás, és használja a biztonsági adatok functions.json egy OpenAPI definíciója létrehozásához. A-definíciót, amely akkor jön létre, a következő:
+    Az Azure kikeresi a függvényalkalmazásból a HTTP-eseményindító függvényeket. és a functions.json-ben található adatok alapján létrehoz egy OpenAPI-definíciót. A létrehozott definíció a következő:
 
     ```yaml
     swagger: '2.0'
@@ -178,10 +178,10 @@ Most már készen áll a OpenAPI definíciót létrehozni. Ez a definíció hasz
         in: query
     ```
 
-    Ez a definíció leírása a _sablon_ , amelyhez szükséges további metaadatokra ahhoz, hogy egy teljes OpenAPI definíciója lehet. A definícióját a következő lépésben fogja módosítani.
+    Ez a definíció egy _sablonként_ van leírva, mivel további metaadatokat igényel ahhoz, hogy teljes OpenAPI-definíció lehessen. A definíciót a következő lépésben módosíthatja.
 
-## <a name="modify-the-openapi-definition"></a>A OpenAPI módosítása
-Most, hogy a sablonleírásnak, módosítása, hogy adja meg az API műveletek és adatstruktúrák kapcsolatos metaadatokat. A **API-definíció**, törölje a létrehozott definíciót `post` a definíció alsó, illessze be az alábbi tartalom, majd kattintson **mentése**.
+## <a name="modify-the-openapi-definition"></a>Az OpenAPI-definíció módosítása
+Most, hogy van egy definíciósablonja, módosítania kell azt az API műveleteire és adatstruktúráira vonatkozó metaadatok megadásával. Törölje az **API-definícióban** a létrehozott definíciót a `post` résztől a definíció végéig, illessze be az alábbi tartalmat, majd kattintson a **Mentés** lehetőségre.
 
 ```yaml
     post:
@@ -243,50 +243,50 @@ securityDefinitions:
     in: query
 ```
 
-Ebben az esetben meg lehetett most illessze be a metaadatok, de fontos ismerni a módosítások azt az alapértelmezett sablont:
+Ebben az esetben elég lenne egyszerűen beilleszteni a frissített metaadatokat, de fontos tisztában lenni azzal, hogy milyen típusú módosításokat végeztünk el az alapértelmezett sablonon:
 
-+ A megadott, hogy az API-t hoz létre, és adatforrástól JSON formátumban.
++ Megadtuk, hogy az API JSON-formátumú adatokat hoz létre és használ fel.
 
-+ A nevek és adattípusok meg a szükséges paramétereket.
++ Megadtuk a szükséges paramétereket a nevükkel és adattípusukkal együtt.
 
-+ A nevek és adattípusok sikeres választ, a visszaadott értékeket megadni.
++ Megadtuk a sikeres válasz által visszaadott értékeket a nevükkel és adattípusukkal együtt.
 
-+ A megadott felhasználóbarát összegzéseket és az API-t, és a műveletek és a paraméterek leírását. Ez fontos a személyek, akik használni fogják ezt a funkciót.
++ Világos összegzéseket és leírásokat adtunk meg az API-hoz a műveleteire és paramétereire vonatkozóan. Ez a függvényt használók számára lesz fontos.
 
-+ X-ms-összegzés és az x-ms-látható, a Microsoft Flow és a Logic Apps a felhasználói felületen használt fel. További információkért lásd: [OpenAPI bővítmények a Microsoft Flow egyéni API-k](https://preview.flow.microsoft.com/documentation/customapi-how-to-swagger/).
++ Hozzáadtuk az x-ms-summary és x-ms-visibility elemeket, amelyeket a Microsoft Flow és a Logic Apps felhasználói felületei használnak. További információ: [Egyéni API-k OpenAPI-bővítményei a Microsoft Flowban](https://preview.flow.microsoft.com/documentation/customapi-how-to-swagger/).
 
 > [!NOTE]
-> Azt a biztonsági definíciójának bal oldali API-kulcs az alapértelmezett hitelesítési módszerrel. Ez a szakasz a definíció különböző típusú hitelesítés használatakor megváltozna.
+> A biztonsági definíciónál meghagytuk az alapértelmezett hitelesítési metódust, az API-kulcs használatát. Másfajta hitelesítés használata esetén módosítani kell a definíció ezen szakaszát.
 
-API-műveleteket meghatározása kapcsolatos további információkért tekintse meg a [nyitott API-specifikációnak](https://swagger.io/specification/#operationObject).
+További információk az API-műveletek definiálásáról: [ OpenAPI-specifikációk](https://swagger.io/specification/#operationObject).
 
-## <a name="test-the-openapi-definition"></a>A OpenAPI definition tesztelése
-Az API-definíció használata előtt célszerű tesztelheti az Azure Functions felhasználói felületén.
+## <a name="test-the-openapi-definition"></a>Az OpenAPI-definíció tesztelése
+Az API-definíciót a használat előtt érdemes tesztelni az Azure Functions felületén.
 
-1. Az a **kezelése** lapon, a függvény a **Állomáskulcsai**, másolása a **alapértelmezett** kulcs.
+1. A függvény **Kezelés** lapján másolja ki az **Gazdakulcsok** területen található **alapértelmezett** kulcsot.
 
-    ![Az API-kulcs másolása](media/functions-openapi-definition/copy-api-key.png)
+    ![API-kulcs másolása](media/functions-openapi-definition/copy-api-key.png)
 
     > [!NOTE]
-    >Tesztelési használhatja ezt a kulcsot, és akkor is használhatja az alkalmazás vagy szolgáltatás hívja az API-t.
+    >Ezt a kulcsot használhatja a teszteléshez, valamint akkor is, ha az API-t egy alkalmazásból vagy szolgáltatásból szeretné meghívni.
 
-1. Lépjen vissza az API-definíció: **függvény-bemutató-energia** > **Platform funkciói** > **API-definíció**.
+1. Lépjen vissza az API-definícióhoz: **function-demo-energy** > **Platformfunkciók** > **API-definíció**.
 
-1. Kattintson a jobb oldali ablaktáblában **hitelesítés**, adja meg az API-kulcsot, amely, másolja, majd kattintson az **hitelesítés**.
+1. A jobb oldali panelen kattintson a **Hitelesítés** lehetőségre, illessze be a kimásolt API-kulcsot, majd kattintson a **Hitelesítés** gombra.
 
-    ![A hitelesítést az API-kulcs](media/functions-openapi-definition/authenticate-api-key.png)
+    ![Hitelesítés API-kulccsal](media/functions-openapi-definition/authenticate-api-key.png)
 
-1. Görgessen le, majd kattintson a **próbálja elvégezni a műveletet**.
+1. Görgessen lefelé, és kattintson a **Művelet kipróbálása** lehetőségre.
 
-    ![Próbálja elvégezni a műveletet](media/functions-openapi-definition/try-operation.png)
+    ![Művelet kipróbálása](media/functions-openapi-definition/try-operation.png)
 
-1. Adja meg az értékeket **óra** és **kapacitás**.
+1. Adja meg az **óraszám** és a **kapacitás** paraméterek értékeit.
 
-    ![Adja meg a paraméterek](media/functions-openapi-definition/parameters.png)
+    ![Paraméterek megadása](media/functions-openapi-definition/parameters.png)
 
-    Figyelje meg, hogyan használja a felhasználói felület a az API-definíció leírása.
+    Figyelje meg, hogy a felhasználói felület az API-definíció leírásait használja.
 
-1. Kattintson a **kérés küldése**, majd kattintson a **közérthető** lapon, a kimenet megtekintéséhez.
+1. Kattintson a **Kérés küldése** gombra, majd a **Rendezett** lapra a kimenet megtekintéséhez.
 
     ![Kérés küldése](media/functions-openapi-definition/send-request.png)
 
@@ -295,11 +295,11 @@ Az API-definíció használata előtt célszerű tesztelheti az Azure Functions 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Az Azure-függvény létrehozása
-> * Az OpenAPI eszközökkel OpenAPI-definíció létrehozása
-> * A további metaadatainak módosítása
-> * A definíció a függvény tesztelése
+> * Függvény létrehozása az Azure-ban
+> * OpenAPI-definíció létrehozása az OpenAPI eszközeivel
+> * A definíció módosítása további metaadatok megadása céljából
+> * A definíció tesztelése a függvény meghívásával
 
-Előzetes tudnivalók megtekintéséhez használja a létrehozott OpenAPI definition PowerApps-alkalmazás létrehozása a következő témakörre.
+Lépjen tovább a következő témakörre, amelyből megtudhatja, hogyan hozhat létre egy PowerApps-alkalmazást, amely az imént létrehozott OpenAPI-definíciót használja.
 > [!div class="nextstepaction"]
-> [Egy függvény hívása a powerapps segítségével](functions-powerapps-scenario.md)
+> [Függvény hívása a PowerAppsből](functions-powerapps-scenario.md)

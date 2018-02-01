@@ -14,11 +14,11 @@ ms.tgt_pltfrm:
 ms.workload: identity
 ms.date: 12/19/2017
 ms.author: skwan
-ms.openlocfilehash: 07610b178bde6de9eb8d890edc060458fc3b07ac
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: b28f5c7c90783c5abd933b50ddb9631739b8f421
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 01/29/2018
 ---
 #  <a name="managed-service-identity-msi-for-azure-resources"></a>Szolgáltatás-identitás (MSI) felügyelt Azure-erőforrások
 
@@ -64,6 +64,7 @@ Tekintse meg a felügyelt Szolgáltatásidentitás oktatóanyag megtudhatja vég
 | Azure App Service  | [Az Azure App Service vagy az Azure Functions felügyelt identitás használatára](/azure/app-service/app-service-managed-service-identity) |
 | Azure Function     | [Az Azure App Service vagy az Azure Functions felügyelt identitás használatára](/azure/app-service/app-service-managed-service-identity) |
 | Azure Service Bus  | [Az Azure Service Bus felügyelt identitás használatára](../service-bus-messaging/service-bus-managed-service-identity.md) |
+| Azure Event Hubs   | [Az Azure Event Hubs felügyelt identitás használatára](../event-hubs/event-hubs-managed-service-identity.md) |
 
 ## <a name="which-azure-services-support-managed-service-identity"></a>Mely Azure-szolgáltatások által felügyelt szolgáltatás identitás támogatásának?
 

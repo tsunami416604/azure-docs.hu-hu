@@ -7,7 +7,7 @@
 ## [Biztonsági csoport nézet](network-watcher-security-group-view-overview.md)
 ## [Következő ugrás](network-watcher-next-hop-overview.md)
 ## [VPN-kapcsolatok hibaelhárítása](network-watcher-troubleshoot-overview.md)
-## [Kapcsolat ellenőrzése](network-watcher-connectivity-overview.md)
+## [Kapcsolatok hibaelhárítása](network-watcher-connectivity-overview.md)
 ## [Szolgáltatási korlátozások](../azure-subscription-service-limits.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#network-watcher-limits)
 
 # Első lépések
@@ -46,7 +46,7 @@
 ### [Azure CLI 1.0](network-watcher-security-group-view-cli-nodejs.md)
 ### [Azure CLI](network-watcher-security-group-view-cli.md)
 ### [REST](network-watcher-security-group-view-rest.md)
-## Kapcsolat tesztelése
+## Kapcsolatok hibaelhárítása
 ### [Azure Portal](network-watcher-connectivity-portal.md)
 ### [Azure PowerShell](network-watcher-connectivity-powershell.md)
 ### [Azure CLI](network-watcher-connectivity-cli.md)

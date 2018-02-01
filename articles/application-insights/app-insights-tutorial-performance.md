@@ -1,6 +1,6 @@
 ---
-title: "Azure Application Insights segítségével teljesítmény eseményadatokat |} Microsoft Docs"
-description: "Az oktatóanyagban található, és diagnosztizálhatja az alkalmazás használatával Azure Application Insights teljesítményével kapcsolatos problémákat."
+title: "Teljesítménybeli problémák diagnosztizálása az Azure Application Insights használatával | Microsoft Docs"
+description: "Oktatóanyag az alkalmazásában előforduló teljesítménybeli problémák észleléséhez és diagnosztizálásához az Azure Application Insights használatával."
 services: application-insights
 keywords: 
 author: mrbullwinkle
@@ -10,21 +10,21 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 0edec15c7f14ee5338555b03700b7be32c3a1023
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
-ms.translationtype: MT
+ms.openlocfilehash: 437c45891d1d20f5fadca8a58954185a3aef56ac
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
-# <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Keresse meg és teljesítmény eseményadatokat az Azure Application insights szolgáltatással
+# <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Teljesítménybeli problémák észlelése és diagnosztizálása az Application Insights segítségével
 
-Azure Application Insights telemetria gyűjti össze az alkalmazás a művelet és teljesítményének elemzése érdekében.  Ez az információ is használhatja, azonosíthatja a problémákat, amely felmerülhet vagy az alkalmazáshoz, a hatás felhasználók nevezne továbbfejlesztési lehetőségeinek azonosítása érdekében.  Ez az oktatóanyag végigvezeti a kiszolgáló összetevőket egyaránt az alkalmazás és az ügyfél szempontjából teljesítményének elemzése során.  Az alábbiak végrehajtásának módját ismerheti meg:
+Az Azure Application Insights telemetriát gyűjt az alkalmazásából a teljesítmény és a működés elemzésének segítése érdekében.  Ezt az információt arra használhatja, hogy azonosítsa a potenciális problémákat, vagy hogy megtalálja azokat a fejlesztési lehetőségeket az alkalmazásban, amelyek a legnagyobb hatással lennének a felhasználókra.  Ez az oktatóanyag az alkalmazás kiszolgáló-összetevőinek, valamint az ügyfél teljesítményének elemzési módszereit ismerteti.  Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
 > * Kiszolgálóoldali műveletek teljesítményének azonosítása
-> * Kiszolgáló-műveletek teljesítménycsökkenést okának meghatározásához elemzése
-> * A leghosszabb ügyféloldali műveletek azonosítása
-> * Részleteket a lapmegtekintések lekérdezési nyelv használatával
+> * Kiszolgálói műveletek elemzése a lassú teljesítmény okának megállapítása érdekében
+> * A leglassabb ügyféloldali művelet azonosítása
+> * Az oldalmegtekintések részleteinek elemzése a lekérdezési nyelv segítségével
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -34,94 +34,102 @@ Az oktatóanyag elvégzéséhez:
 - Telepítse a [Visual Studio 2017](https://www.visualstudio.com/downloads/) szoftvert a következő számítási feladatokkal:
     - ASP.NET és webfejlesztés
     - Azure-fejlesztés
-- Az Azure-bA egy .NET-alkalmazás központi telepítése és [engedélyezze az Application Insights SDK](app-insights-asp-net.md).
-- [Engedélyezze az Application Insights Profilkészítő](app-insights-profiler.md#installation) az alkalmazáshoz.
+- Telepítsen egy .NET-alkalmazást az Azure-hoz, és [engedélyezze az Application Insights SDK](app-insights-asp-net.md)-t.
+- [Engedélyezze az Application Insights profilkészítőt](app-insights-profiler.md#installation) az alkalmazásához.
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
-Jelentkezzen be az Azure portálon, a [https://portal.azure.com](https://portal.azure.com).
+Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) címen.
 
-## <a name="identify-slow-server-operations"></a>Azonosítsa a lassú kiszolgálói műveletek
-Az Application Insights az alkalmazásban a különböző műveletek teljesítményadatok gyűjti.  Ezek a műveletek a leghosszabb időtartam azonosításával potenciális problémák diagnosztizálásához, vagy a legjobb cél a folyamatos fejlesztését, az alkalmazás teljesítményének növelése.
+## <a name="identify-slow-server-operations"></a>Lassú kiszolgálói műveletek azonosítása
+Az Application Insights teljesítményadatokat gyűjt az alkalmazás különböző műveleteiről.  A leghosszabb időtartamú műveletek azonosításával diagnosztizálhatja a potenciális problémákat vagy hatékonyabbá teheti a folyamatban lévő fejlesztéseit, ezáltal pedig javíthat az alkalmazás általános teljesítményén.
 
-1. Válassza ki **Application Insights** és majd jelölje ki az előfizetését.  
-1. Megnyitásához a **teljesítmény** panelen válassza ki **teljesítmény** alatt a **vizsgálat** menüből, vagy kattintson a **kiszolgáló válaszideje** diagramhoz .
+1. Válassza ki az **Application Insights** elemet, majd az előfizetését.  
+1. A **Teljesítmény** panel megnyitásához válassza a **Teljesítmény** elemet a **Vizsgálat** menüben, vagy kattintson a **Kiszolgáló válaszideje** gráfra.
 
     ![Teljesítmény](media/app-insights-tutorial-performance/performance.png)
 
-2. A **teljesítmény** panelen látható az alkalmazás egyes műveletek számának és átlagos időtartama.  Ezek az információk segítségével azonosíthatja, hogy a legtöbb felhasználóit érintő műveletek. Ebben a példában a **beolvasása ügyfelek/részletek** és **GET otthoni/Index** valószínűleg-zel vizsgálja meg a viszonylag nagy időtartamát és a hívások száma miatt.  Más műveletek magasabb időtartama rendelkezhet, de ritkán nevezik, így azok fokozása hatásának minimális volna.  
+2. A **Teljesítmény** panel megjeleníti az alkalmazás egyes műveleteinek számát és átlagos időtartamát.  Ezt az információt arra használhatja, hogy azonosítsa azokat a műveleteket, amelyek a legnagyobb hatással vannak a felhasználókra. Ebben a példában a **GET Customers/Details** és a **GET Home/Index** elemeket érdemes megvizsgálni a viszonylagosan hosszú időtartamuk és a hívások magas száma miatt.  Más műveleteknek hosszabb időtartamuk lehet, viszont ritkán kaptak hívást, ezért a javításuk minimális hatást eredményezne.  
 
-    ![Teljesítmény panel](media/app-insights-tutorial-performance/performance-blade.png)
+    ![Teljesítménypanel](media/app-insights-tutorial-performance/performance-blade.png)
 
-3. A diagram jelenleg megjeleníti az adott idő alatt az összes művelet átlagos időtartama.  Adja hozzá őket a diagramhoz rögzítési által éppen érdekelt műveletek.  Ez azt jelenti, hogy vannak-e bizonyos csúcsait érdemes vizsgál.  Különítse el a további a gráf időkerete csökkentésével.
+3. Ez a gráf jelenleg az összes művelet eddigi átlagidejét mutatja.  Adja hozzá azokat a műveleteket, amelyekre kíváncsi. Ehhez rögzítse őket a gráfhoz.  Itt látszik, hogy van néhány csúcsérték, amelyeket érdemes megvizsgálni.  Tovább szűkítheti az eredmények körét, ha csökkenti a gráf időkeretét.
 
-    ![PIN-kód műveletek](media/app-insights-tutorial-performance/pin-operations.png)
+    ![Műveletek rögzítése](media/app-insights-tutorial-performance/pin-operations.png)
 
-4.  Kattintson a teljesítmény Vezérlőpult megtekintéséhez kattintson a jobb művelet. Ez a különböző kérelmek időtartamok eloszlását mutatja.  Felhasználók általában figyelje meg, csökkentheti a teljesítményt, körülbelül fél másodpercig, csökkentése érdekében az ablak kérelmekre 500 ezredmásodperc felett.  
+4.  Egy műveletre kattintva megtekintheti annak teljesítménypaneljét a jobb oldalon. Itt láthatja a különböző kérésekhez tartozó időtartamok eloszlását.  A felhasználók általában fél másodperces teljesítménybeli lassulást észlelnek, ezért szűkítse az időkeretet az 500 ezredmásodpercnél több időt igénylő kérésekre.  
 
-    ![Időtartam terjesztési](media/app-insights-tutorial-performance/duration-distribution.png)
+    ![Időtartamok eloszlása](media/app-insights-tutorial-performance/duration-distribution.png)
 
-5.  Ebben a példában láthatja, hogy kérelmek jelentős számú keresztül egy második végzése feldolgozni. Ez a művelet részleteit láthatja kattintva **művelet részletei**.
+5.  Ebben a példában azt láthatja, hogy jelentős mennyiségű kérés feldolgozásához egy másodpercnél több idő szükséges. Megtekintheti ennek a műveletnek a részleteit, ha a **Művelet részletei** elemre kattint.
 
     ![Művelet részletei](media/app-insights-tutorial-performance/operation-details.png)
 
-6.  A korábban összegyűjtött információk csak eddig megerősíti, hogy lassú teljesítményre, akkor viszont igen kevés az alapvető OK gombra.  A **Profilkészítő** jelenít meg a tényleges kód, amely futtatta a művelet és az egyes lépéseihez szükséges idő ennek segítségével. Néhány művelet, mert a Profilkészítő rendszeres időközönként fut nincs nyomkövetés.  Adott idő alatt további műveleteket nyomkövetési adatokat kell rendelkeznie.  A művelet a Profilkészítő elindításához kattintson **szolgáltatásprofil-elemzői adat**.
-5.  A nyomkövetés minden művelethez egyes eseményeket jeleníti meg, így felderítheti az alapvető ok a ideje alatt a teljes műveletet.  Kattintson a felső példák, amelyek a leghosszabb időtartam.
-6.  Kattintson a **kiemelt elérési megjelenítése** jelölje ki a megadott elérési útja az eseményeket, amelyek a legtöbb hozzájárulnak a művelet időtartama.  Ebben a példában láthatja, hogy van-e a leglassabb hívás a *FabrikamFiberAzureStorage.GetStorageTableData* metódust. A legtöbb időt vesz igénybe, része a *CloudTable.CreateIfNotExist* metódust. Ez kódsort végrehajtja a rendszer minden alkalommal, amikor a függvény meghívása megtörténik, ha szükségtelen hálózati hívás- és CPU-erőforrást fog használni. Hárítsa el a kódot a legjobb módszer helyezése a sor néhány indítási metódus, amely csak az ilyen egyszer futnak. 
+    > [!NOTE]
+    Engedélyezze az „Egyesített részletek: Végpontok közötti tranzakció diagnosztikája” [előnézeti felület](app-insights-previews.md) elemet, hogy az összes kapcsolódó kiszolgálóoldali telemetriát, például a kéréseket, a függőségeket, a kivételeket, a nyomokat, az eseményeket stb. egyetlen teljes képernyős nézetben tekinthesse meg. 
+
+    Ha az előnézet engedélyezve van, egy egységes felületen tekintheti meg a függőségi hívásokkal eltöltött idő mennyiségét, valamint az egyesített élményben előforduló hibákat és kivételeket. A több összetevőt érintő tranzakciók esetében a Gantt-diagram és a részletek panel segítenek, hogy gyorsan megtalálja a problémát okozó összetevőt, függőséget vagy kivételt. Az alsó szakaszt kibontva megtekintheti a kiválasztott összetevő-művelethez összegyűjtött nyomok vagy események időrendjét. [További információk az új felületről](app-insights-transaction-diagnostics.md)  
+
+    ![Tranzakció diagnosztikája](media/app-insights-tutorial-performance/e2e-transaction-preview.png)
+
+
+6.  Az eddig összegyűjtött információi megerősítik, hogy a teljesítmény lassú, de az alapvető okot nem fedik fel.  A **Profilkészítő** ebben segít azzal, hogy megmutatja a műveletnél futó kódot és a szükséges időtartamot mindegyik lépéshez. Előfordulhat, hogy bizonyos műveletek nem hagynak nyomot, mivel a profilkészítő időszakosan fut.  Idővel több műveletnek lehet nyoma.  Kattintson a **Profilkészítői adatok** elemre a profilkészítő a műveleten való futtatásának elindításához.
+5.  A nyom megjeleníti az egyes műveletekhez tartozó eseményeket, így diagnosztizálhatja a művelet időtartamáért felelős kiváltó okot.  Kattintson az egyik leghosszabb időtartamot megjelenítő példára.
+6.  Kattintson a **Működő elérési út megjelenítése** elemre azon események elérési útjának kiemeléséhez, amelyek a leginkább növelték a művelet teljes időtartamát.  Ebben a példában azt láthatja, hogy a leglassabb hívás a *FabrikamFiberAzureStorage.GetStorageTableData* metódusból származik. A legtöbb időt igénybe vevő metódus a *CloudTable.CreateIfNotExist*. Ha ez a kódsor lefut minden alkalommal, amikor a függvény meghívása megtörténik, az felesleges hálózati hívásokat és processzorhasználatot eredményez. A kód kijavításának legjobb módja az, hogy ha ezt a sort egy olyan indítási metódusba helyezi, amely csak egyszer fut le. 
 
     ![Profilkészítő részletei](media/app-insights-tutorial-performance/profiler-details.png)
 
-7.  A **teljesítmény tipp** a képernyő tetején támogatja az értékelés várakozási okozza-e a túlzott időtartama.  Kattintson a **Várakozás** hivatkozás dokumentációja a különböző típusú események értelmezése.
+7.  A **Teljesítménnyel kapcsolatos tipp** a képernyő tetején megerősíti azt a következtetést, hogy a hosszú időtartamot a várakozás okozza.  Kattintson a **várakozás** hivatkozásra a különböző események értelmezéséről szóló dokumentáció megnyitásáért.
 
-    ![Teljesítmény tipp](media/app-insights-tutorial-performance/performance-tip.png)
+    ![Teljesítménnyel kapcsolatos tipp](media/app-insights-tutorial-performance/performance-tip.png)
 
-8.  További elemzés céljából, rákattinthat **töltse le az .etl nyomkövetési** letölti a nyomkövetés a Visual Studio.
+8.  További elemzésért kattintson az **.etl nyom letöltése** elemre, amellyel a nyomot letöltheti a Visual Studióba.
 
-## <a name="use-analytics-data-for-server"></a>Analitikai adatok használ a kiszolgálóhoz
-Application Insights Analytics egy részletes lekérdező nyelv, amely lehetővé teszi, hogy az Application Insights által gyűjtött összes adat elemzése biztosít.  Ezzel a kérelem és teljesítményadatokat mélyreható elemzéseket végrehajtásához.
+## <a name="use-analytics-data-for-server"></a>Elemzési adatok használata a kiszolgálóra vonatkozóan
+Az Application Insights Analytics egy részletes lekérdezési nyelvet biztosít, amellyel minden, az Application Insights által gyűjtött adatot elemezhet.  Ezzel a funkcióval részletes elemzéseket végezhet a kérések és a teljesítmény adatairól.
 
-1. Térjen vissza a művelet részletei panel, és az elemzés gombra.
+1. Térjen vissza a művelet részleteinek paneljéhez, majd kattintson az Elemzés gombra.
 
     ![Elemzés gomb](media/app-insights-tutorial-performance/server-analytics-button.png)
 
-2. Application Insights Analytics egy lekérdezést az egyes nézetek a panel nyílik meg.  Ezeket a lekérdezéseket is futtathatja, ahogy vannak, vagy módosíthatja a követelményeket.  Az első lekérdezés ehhez a művelethez adott idő alatt az időtartam látható.
+2. Az Application Insights Analytics megnyitásakor megjelenik egy lekérdezés a panelen látható nézetek mindegyikéhez.  Ezeket a lekérdezéseket futtathatja alapértelmezetten, vagy módosíthat rajtuk az igényei szerint.  Az első lekérdezés megjeleníti ennek a műveletnek a teljes időtartamát.
 
     ![Elemzés](media/app-insights-tutorial-performance/server-analytics.png)
 
 
-## <a name="identify-slow-client-operations"></a>Lassú Ügyfélműveletek azonosítása
-Mellett optimalizálása érdekében a kiszolgáló folyamatok azonosítása, az Application Insights elemezheti az ügyfélböngészők szempontjából.  Ez segít az ügyfél összetevők esetleges továbbfejlesztési lehetőségeinek azonosítása, és akkor is azonosítani a problémákat a különböző böngészők vagy más helyre.
+## <a name="identify-slow-client-operations"></a>Lassú ügyfélműveletek azonosítása
+Amellett, hogy azonosítja a kiszolgálói folyamatokat az optimalizálás érdekében, az Application Insights az ügyfélböngészők szempontjából is képes elemzést végezni.  Így megtalálhatja a javítási lehetőségeket az ügyfél összetevői számára, és különböző böngészők vagy helyek problémáit is megtalálhatja.
 
-1. Válassza ki **böngésző** alatt **vizsgálat** összefoglaló böngésző megnyitásához.  Ez az alkalmazás szempontjából a böngésző különböző telemetries visual összegzését tartalmazza.
+1. Válassza a **Böngésző** elemet a **Vizsgálat** menüpont alatt, hogy megnyissa a böngésző összegzését.  Ez egy vizuális összefoglalást nyújt az alkalmazása különböző telemetriáiról a böngésző szempontjából.
 
-    ![A böngésző összefoglaló](media/app-insights-tutorial-performance/browser-summary.png)
+    ![Böngésző összefoglalása](media/app-insights-tutorial-performance/browser-summary.png)
 
-2.  Görgessen le a **Mik a leglassabb lapok?**.  A lapok listája látható az alkalmazáshoz, amely a leghosszabb idő betöltése ügyfelek készített.  Ezeket az információkat, amelyek a legjelentősebb mértékben a felhasználó a weblapokat meglátogató rangsorolására használhatja.
-3.  A lap megnyitásához kattintson a **nézet lapon** panel.  A példában a **/FabrikamProd** lap egy túlzott átlagos időtartam látható.  A **nézet lapon** panel ezen a lapon, beleértve a különböző időtartam címtartományok részletes információkat ismerteti.
+2.  Görgessen le a **Melyek a leglassabb oldalaim?** területhez.  Itt egy listát találhat az alkalmazása azon oldalairól, amelyek betöltése a legtöbb időt vette igénybe az ügyfelek esetében.  Ezen információk használatával azokra az oldalakra összpontosíthat, amelyek a legnagyobb hatással vannak a felhasználóra.
+3.  Kattintson az egyik oldalra az **Oldalmegtekintés** panel megnyitásához.  Ebben a példában a **/FabrikamProd** oldal túl hosszú átlagidőt mutat.  Az **Oldalmegtekintés** panel részleteket nyújt erről az oldalról, többek között a különböző időtartományok lebontását is tartalmazza.
 
-    ![Lapmegtekintés](media/app-insights-tutorial-performance/page-view.png)
+    ![Oldalmegtekintés](media/app-insights-tutorial-performance/page-view.png)
 
-4.  Kattintson a legmagasabb időtartama, hogy mi ezek a kérelmek részleteit.  Kattintson az egyes megtekintésére vonatkozó kérés el a lapot, beleértve a böngésző és a helyére kérő ügyfél részleteit.  Ez az információ meghatározásához, hogy vannak-e teljesítmény problémák bizonyos különböző típusú ügyféltől nyújt segítséget.
+4.  Kattintson a leghosszabb időtartamra a kérések részleteinek megvizsgálásához.  Ezután kattintson az adott kérésre, hogy megtekintse az oldalt kérő ügyféllel kapcsolatos részleteket, például a böngésző típusát és a helyét.  Ez az információ segítheti abban, hogy megállapítsa, vannak-e az adott ügyféltípusokra jellemző teljesítményproblémák.
 
-    ![Kérelem adatai](media/app-insights-tutorial-performance/request-details.png)
+    ![Lekérdezés részletei](media/app-insights-tutorial-performance/request-details.png)
 
-## <a name="use-analytics-data-for-client"></a>Az ügyfél analitikai adatok használata
-Az a kiszolgáló teljesítményének összegyűjtött adatok, például az Application Insights elérhetővé összes ügyféladatot mélyreható elemzéseket Analytics segítségével.
+## <a name="use-analytics-data-for-client"></a>Elemzési adatok használata az ügyfélre vonatkozóan
+A kiszolgálói teljesítményről gyűjtött adatokhoz hasonlóan az Application Insights az összes ügyféladatról is képes mélyreható elemzést biztosítani az Analytics segítségével.
 
-1. Térjen vissza a böngészőhöz összefoglaló, majd kattintson az Analytics ikonra.
+1. Térjen vissza a böngésző összegzési területéhez, majd kattintson az Analytics ikonra.
 
     ![Elemzés ikon](media/app-insights-tutorial-performance/client-analytics-icon.png)
 
-2. Application Insights Analytics egy lekérdezést az egyes nézetek a panel nyílik meg. Az első lekérdezés megjeleníti az időtartamot, a másik oldalon nézetek adott idő alatt.
+2. Az Application Insights Analytics megnyitásakor megjelenik egy lekérdezés a panelen látható nézetek mindegyikéhez. Az első lekérdezés a különböző oldalmegtekintések időtartamát jeleníti meg az idő függvényében.
 
     ![Elemzés](media/app-insights-tutorial-performance/client-analytics.png)
 
-3.  Intelligens diagnosztika lehetővé teszi az Application Insights Analytics, amely azonosítja az adatok egyedi kombinációját.  Az intelligens diagnosztika pont vonaldiagram gombra a azonos lekérdezés futtatása nélkül a azt jelzi, hogy az anomáliadetektálási okozott.  Rekordok részleteit a lekérdezés a Megjegyzés szakaszban jelennek meg, hogy azonosíthassa azokat, amelyek miatt a túlzott időtartama Lapmegtekintések tulajdonságait.
+3.  Az Intelligens diagnosztika az Application Insights Analytics egyik funkciója, amely egyedi mintákat azonosít az adatokban.  Ha rákattint az Intelligens Diagnosztika pontjára a vonaldiagramon, ugyanaz a lekérdezés fut le az anomáliát okozó rekordok nélkül.  Ezeknek a rekordoknak a részletei a lekérdezés megjegyzéseket tartalmazó részében láthatók, így azonosíthatja azoknak az oldalmegtekintéseknek a tulajdonságait, amelyek a hosszú időtartamért felelősek.
 
     ![Intelligens diagnosztika](media/app-insights-tutorial-performance/client-smart-diagnostics.png)
 
 
-## <a name="next-steps"></a>Következő lépések
-Most, hogy megismerte a futásidejű kivételek azonosítása, hogy értékről a következő oktatóanyag áttekintésével megismerheti, hogyan hibák válaszul riasztások létrehozásához.
+## <a name="next-steps"></a>További lépések
+Most már megtanulta, hogyan azonosíthatja a futásidejű kivételeket. Térjen át a következő oktatóanyagra, hogy megtanulja, hogyan hozhat létre riasztásokat a hibákhoz.
 
 > [!div class="nextstepaction"]
-> [Alkalmazás állapotának riasztás](app-insights-tutorial-alert.md)
+> [Alkalmazásállapot-riasztás](app-insights-tutorial-alert.md)

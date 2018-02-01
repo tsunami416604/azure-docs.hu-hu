@@ -1,6 +1,5 @@
 # Áttekintés
 ## [Tudnivalók a Database Migration Service szolgáltatásról](dms-overview.md)
-## [Előfeltételek áttekintése](pre-reqs.md)
 
 # Gyors útmutatók
 ## [Szolgáltatás létrehozása – Portál](quickstart-create-data-migration-service-portal.md)
@@ -17,4 +16,6 @@
 ## [Adatbázis-migrálási útmutató](https://aka.ms/datamigration)
 ## [Data Migration Assistant](https://aka.ms/dma)
 ## [Díjszabás](https://aka.ms/dms-pricing)
+## [Előfeltételek áttekintése](pre-reqs.md)
 ## [GYIK](faq.md)
+

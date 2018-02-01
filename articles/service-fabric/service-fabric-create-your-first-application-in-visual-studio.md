@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/04/2017
+ms.date: 01/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: 70d365910569a2acb1c230c803fdfca5cb6b35af
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: bdabdbbb3037f3325c107a4e6148873a923b4ded
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="create-your-first-c-service-fabric-stateful-reliable-services-application"></a>Az első Service Fabric Stateful Reliable Services-alkalmazás létrehozása C#-környezettel
 
@@ -82,7 +82,7 @@ Az alkalmazás elindításakor a Visual Studio automatikusan megjeleníti a **Di
    
 ![Diagnosztikai eseménynapló][5]
 
-Az általunk használt állapotalapúszolgáltatás-sablon esetében egyszerűen a **MyStatefulService.cs** `RunAsync` metódusához tartozó számláló növekvő értékei jelennek meg.
+A használt állapotalapúszolgáltatás-sablon esetében a **MyStatefulService.cs** `RunAsync` metódusához tartozó számláló növekvő értékei jelennek meg.
 
 Bontsa ki az egyik eseményt, hogy további részleteket tekinthessen meg, beleértve azt a csomópontot is, amelyben a kód fut. Ebben az esetben ez a \_Node\_0, de az Ön számítógépén ez eltérő lehet.
    
@@ -129,7 +129,7 @@ A fürt eltávolításához kattintson a jobb gombbal a **Local Cluster Manager*
 
 Ha ezt a lehetőséget választja, a Visual Studio az alkalmazás legközelebbi futtatásakor ismét üzembe helyezi a fürtöt. Akkor válassza ezt a beállítást, ha egy ideig nem kívánja használni a helyi fürtöt, vagy ha erőforrásokat kíván felszabadítani.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információk a [Reliable Services](service-fabric-reliable-services-introduction.md)-szolgáltatásokról.
 <!-- Image References -->
 

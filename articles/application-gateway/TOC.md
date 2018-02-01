@@ -13,12 +13,14 @@
 ## [WebSocket](application-gateway-websocket.md)
 ## [Szolgáltatási korlátozások](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits)
 # Bevezetés
-## Application Gateway létrehozása
-### [Azure Portal](application-gateway-create-gateway-portal.md)
-### [Azure PowerShell](application-gateway-create-gateway-arm.md)
-### [Resource Manager-sablon](application-gateway-create-gateway-arm-template.md)
-### [Azure CLI](application-gateway-create-gateway-cli.md)
+## [Azure Portal](application-gateway-create-gateway-portal.md)
+## [Azure PowerShell](application-gateway-create-gateway-arm.md)
+## [Azure CLI](application-gateway-create-gateway-cli.md)
 # Útmutató
+## Alkalmazásátjáró létrehozása VMSS-sel
+### [Azure PowerShell](tutorial-create-vmss-powershell.md)
+### [Azure CLI](tutorial-create-vmss-cli.md)
+## [Sablon használata](application-gateway-create-gateway-arm-template.md)
 ## Webalkalmazási tűzfal konfigurálása
 ### [Azure Portal](application-gateway-web-application-firewall-portal.md)
 ### [Azure PowerShell](application-gateway-web-application-firewall-powershell.md)
@@ -60,14 +62,14 @@
 ## [Ruby](http://www.rubydoc.info/gems/azure_mgmt_network/0.8.0/Azure/ARM/Network/ApplicationGateways)
 ## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.ApplicationGatewaysOperations)
 ## [REST](https://docs.microsoft.com/rest/api/applicationgateway)
-# Kapcsolódó
+# Kapcsolódó témakörök
 ## [ExpressRoute](/azure/expressroute/)
 ## [Virtuális hálózat](/azure/virtual-network/)
 ## [VPN Gateway](/azure/vpn-gateway/)
 ## [Virtuális gépek](/azure/virtual-machines/)
 ## [Terheléselosztó](/azure/load-balancer/)
 ## [Traffic Manager](/azure/traffic-manager/)
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=networking)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/application-gateway/)

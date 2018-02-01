@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/31/2017
 ms.author: magoedte;sngun
-ms.openlocfilehash: 0349b8aae880c39677e05d8ba8ddd6eadd13eea1
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 8db2cc1c8759fd08129f7794a8675d006998cc55
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="my-first-powershell-runbook"></a>Az első PowerShell-forgatókönyvem
 
@@ -28,66 +28,69 @@ ms.lasthandoff: 01/10/2018
 > * [PowerShell](automation-first-runbook-textual-powershell.md)
 > * [PowerShell-munkafolyamat](automation-first-runbook-textual.md)
 > * [Python](automation-first-runbook-textual-python2.md)
-> 
 
-Ez az oktatóanyag bemutatja, hogyan hozhat létre az Azure Automationben egy [PowerShell-forgatókönyvet](automation-runbook-types.md#powershell-runbooks). Egy egyszerű runbookkal kezdünk, amelyet tesztelünk és közzé is teszünk, és bemutatjuk a runbook állapotának nyomon követését is. Ezután módosítjuk a runbookot, hogy ténylegesen kezeljen Azure-erőforrásokat, ebben az esetben elindítson egy Azure-beli virtuális gépet. Végül még robusztusabbá tesszük a runbookot, és runbook-paramétereket adunk hozzá.
+Ez az oktatóanyag bemutatja, hogyan hozhat létre az Azure Automationben egy [PowerShell-forgatókönyvet](automation-runbook-types.md#powershell-runbooks). Egy egyszerű runbookot, tesztelése és közzététele során megtanulhatja a runbook-feladatok állapotának nyomon követése a kiindulási pont. Ezután módosítja a runbookot, hogy ténylegesen kezeljen Azure-erőforrásokat, ebben az esetben elindítson egy Azure-beli virtuális gépet. Végül akkor a runbook robusztusabb runbook paraméterek hozzáadásával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Egy Azure-előfizetés. Ha még nem rendelkezik fiókkal, [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), illetve [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Automation-fiók](automation-offering-get-started.md) a forgatókönyv tárolásához és az Azure erőforrásokban való hitelesítéshez.  Ennek a fióknak jogosultsággal kell rendelkeznie a virtuális gép elindításához és leállításához.
-* Egy Azure virtuális gép. Ezt a gépet leállítjuk és elindítjuk, tehát ne olyan virtuális gépet használjon, amely élesben működik.
+* [Automation-fiók](automation-offering-get-started.md) a forgatókönyv tárolásához és az Azure erőforrásokban való hitelesítéshez. Ennek a fióknak jogosultsággal kell rendelkeznie a virtuális gép elindításához és leállításához.
+* Egy Azure virtuális gép. Ezt a gépet leállítja és elindítja, tehát ne olyan virtuális gépet használjon, amely élesben működik.
 
 ## <a name="step-1---create-new-runbook"></a>1. lépés – Új forgatókönyv létrehozása
-Először egy egyszerű forgatókönyvet hozunk létre, amely a *Hello World* szöveget adja vissza.
+Ön először hozzon létre egy egyszerű runbookot, amely a szöveg *Hello World*.
 
-1. Az Azure Portalon nyissa meg az Automation-fiókját.  
+1. Az Azure Portalon nyissa meg az Automation-fiókját.
+
    Az Automation-fiók oldala gyors áttekintést nyújt a fiókban levő erőforrásokról. Valószínűleg már rendelkezik adategységekkel. Ezek nagy része az új Automation-fiókhoz automatikusan hozzáadott modul. Rendelkeznie kell az [előfeltételek](#prerequisites) között említett hitelesítő adategységgel is.
-2. Kattintson a **Runbookok** csempére a forgatókönyvek listájának megnyitásához.<br><br> ![RunbooksControl](media/automation-first-runbook-textual-powershell/runbooks-control-tiles.png)  
-3. Hozzon létre egy új runbookot a **Forgatókönyv hozzáadása**, majd az **Új forgatókönyv létrehozása** elemre kattintva.
-4. Adja a forgatókönyvnek a *MyFirstRunbook-PowerShell* nevet.
-5. Ebben az esetben egy [PowerShell-forgatókönyvet](automation-runbook-types.md#powershell-runbooks) hozunk létre, ezért a **Forgatókönyv típusának** válassza a **PowerShell** lehetőséget.<br><br> ![Runbook típusa](media/automation-first-runbook-textual-powershell/automation-runbook-type.png)  
-6. A forgatókönyv létrehozásához és a szöveges szerkesztő megnyitásához kattintson a **Létrehozás** gombra.
+
+1. Kattintson a **Runbookok** alatt **folyamat** runbookok listájának megnyitásához.
+2. Hozzon létre egy új runbookot kattintva a **+ Hozzáadás runbook** gombra, majd **hozzon létre egy új runbookot**.
+3. Adja a forgatókönyvnek a *MyFirstRunbook-PowerShell* nevet.
+4. Ebben az esetben fog létrehozni egy [PowerShell runbook](automation-runbook-types.md#powershell-runbooks) ezért válassza **Powershell** a **runbooktípusba**.
+5. A forgatókönyv létrehozásához és a szöveges szerkesztő megnyitásához kattintson a **Létrehozás** gombra.
 
 ## <a name="step-2---add-code-to-the-runbook"></a>2. lépés – Kód hozzáadása a forgatókönyvhöz
-Beírhat közvetlenül a forgatókönyvbe kódot, vagy választhat parancsmagokat, forgatókönyveket és adategységeket a Könyvtár vezérlőből, majd hozzáadhatja őket a forgatókönyvhöz a kapcsolódó paraméterekkel együtt. Ebben a bemutatóban közvetlenül a runbookba írunk.
+Beírhat közvetlenül a forgatókönyvbe kódot, vagy választhat parancsmagokat, forgatókönyveket és adategységeket a Könyvtár vezérlőből, majd hozzáadhatja őket a forgatókönyvhöz a kapcsolódó paraméterekkel együtt. Jelen kalauz használatához írja a közvetlenül a runbookot.
 
-1. A runbook jelenleg üres, írja be a *Write-Output "Hello World."* karaktersort a szkript törzsébe.<br><br> ![Hello World](media/automation-first-runbook-textual-powershell/automation-helloworld.png)  
-2. A **Mentés** gombra kattintva mentse el a forgatókönyvet.<br><br> ![Mentés gomb](media/automation-first-runbook-textual-powershell/automation-runbook-edit-controls-save.png)  
+1. A runbook állapota jelenleg üres típus *Write-Output "Hello World".* karaktersort a szkript törzsébe.<br><br> ![Hello World](media/automation-first-runbook-textual-powershell/automation-helloworld.png)  
+2. A **Mentés** gombra kattintva mentse el a forgatókönyvet.
 
 ## <a name="step-3---test-the-runbook"></a>3. lépés – A forgatókönyv tesztelése
-Mielőtt közzétesszük a forgatókönyvet, hogy éles üzemben is elérhető legyen, tesztelnünk kell, hogy biztosan jól működik-e. Egy forgatókönyv tesztelésekor a **Piszkozat** verziót futtatja, és interaktív módon megtekinti a kimenetét.
+Mielőtt közzéteszi a runbookot, hogy éles üzemben is elérhető legyen, tesztelnie kell, hogy biztosan jól működik-e. Egy forgatókönyv tesztelésekor a **Piszkozat** verziót futtatja, és interaktív módon megtekinti a kimenetét.
 
-1. Kattintson a **Teszt panelre** a Teszt panel megnyitásához.<br><br> ![Teszt panel](media/automation-first-runbook-textual-powershell/automation-runbook-edit-controls-test.png)  
+1. Kattintson a **Teszt panelre** a Teszt panel megnyitásához.
 2. Kattintson az **Indítás** gombra a teszt elindításához. Elvileg ez az egyetlen engedélyezett lehetőség.
-3. Létrejön egy [forgatókönyv-feladat](automation-runbook-execution.md), és megjelenik annak állapota.  
-   A feladat állapota kezdetben *Várólistán*. Ez azt jelöli, hogy egy felhőben lévő runbook-feldolgozó elérhetővé válására vár. Ezután *Indítás* állapotúra változik, ha egy feldolgozó elvállalja a feladatot, majd *Fut* állapotúra, amikor a forgatókönyv elkezd futni.  
-4. Amikor a forgatókönyv feladat befejeződik, megjelenik a kimenete. A mi esetünkben ez a következő: *Hello World*.<br><br> ![Teszt panel kimenete](media/automation-first-runbook-textual-powershell/automation-testpane-output.png)  
-5. A vászonra való visszatéréshez zárja be a Teszt panelt.
+3. Létrejön egy [forgatókönyv-feladat](automation-runbook-execution.md), és megjelenik annak állapota.
+
+   A feladat állapota kezdetben *Várólistán*. Ez azt jelöli, hogy egy felhőben lévő runbook-feldolgozó elérhetővé válására vár. Kerül át *indítása* dolgozó jogcímeket a feladatot, amikor, majd *futtató* amikor a runbook ténylegesen elindul.  
+
+1. Amikor a forgatókönyv feladat befejeződik, megjelenik a kimenete. Abban az esetben kell megjelennie *Hello World*.<br><br> ![Teszt panel kimenete](media/automation-first-runbook-textual-powershell/automation-testpane-output.png)  
+2. A vászonra való visszatéréshez zárja be a Teszt panelt.
 
 ## <a name="step-4---publish-and-start-the-runbook"></a>4. lépés: Közzététel és a forgatókönyv indítása
-A létrehozott runbook még mindig Piszkozat módban van. Az üzemi környezetben való futtatás előtt közzé kell tennünk.  Amikor elérhetővé tesz egy forgatókönyvet, felülírja a Közzétett verziót a Piszkozattal.  Az esetünkben még nincs Közzétett verzió, mivel még csak most hoztuk létre a forgatókönyvet.
+A létrehozott runbook még mindig Piszkozat módban van. Éles környezetben futtatása előtt tegye közzé kell.  Amikor elérhetővé tesz egy forgatókönyvet, felülírja a Közzétett verziót a Piszkozattal. Az Ön esetében még nem rendelkezik egy közzétett változata, mert a runbook újonnan létrehozott.
 
-1. A forgatókönyv közzétételéhez kattintson a **Közzététel** lehetőségre, és ha a rendszer kéri, kattintson az **Igen** gombra.<br><br> ![Közzététel gomb](media/automation-first-runbook-textual-powershell/automation-runbook-edit-controls-publish.png)  
-2. Ha most balra görgetve megtekinti a forgatókönyvet a **Forgatókönyvek** panelen, a **Közzétett** **Szerzői állapot** jelenik meg.
+1. A forgatókönyv közzétételéhez kattintson a **Közzététel** lehetőségre, és ha a rendszer kéri, kattintson az **Igen** gombra.
+2. Ha a runbook megtekintése balra a **Runbookok** ablaktáblán, akkor megjelenik egy **szerzői állapot** a **közzétett**.
 3. Görgessen vissza jobbra a **MyFirstRunbook-PowerShell** panel megtekintéséhez.  
    A felül látható lehetőségekkel elindíthatjuk és megtekinthetjük a runbookot, ütemezhetjük egy későbbi időpontban való indításra, vagy létrehozhatunk egy [webhookot](automation-webhooks.md), amely segítségével elindítható a runbook egy HTTP-hívással.
-4. Most csak el szeretnénk indítani a runbookot, tehát kattintson az **Indítás**, majd, amikor a Runbook indítása panel megnyílik, kattintson az **OK** gombra.<br><br> ![Indítás gomb](media/automation-first-runbook-textual-powershell/automation-runbook-controls-start.png)<br>    
-5. Megnyílik egy feladatpanel a létrehozott runbook-feladathoz. Ezt a panelt bezárhatjuk, de ebben az esetben nyitva hagyjuk, hogy lássuk a feladat előrehaladását.
-6. A feladat állapota a **Feladat összegzése** területen látszik, és megfelel a korábban, a forgatókönyv tesztelésekor látott állapotoknak.<br><br> ![Feladat összegzése](media/automation-first-runbook-textual-powershell/job-pane-status-blade-jobsummary.png)<br>  
-7. Ha a forgatókönyv a *Befejezve* állapotot mutatja, kattintson a **Kimenet** lehetőségre. A Kimenet panel megnyílik, és megjelenik a *Hello World* feliratunk.<br><br> ![Feladat kimenete](media/automation-first-runbook-textual-powershell/job-pane-status-blade-outputtile.png)<br> 
-8. Zárja be a Kimenet panelt.
-9. A forgatókönyv-feladathoz tartozó Streamek panel megnyitásához kattintson **Az összes napló** lehetőségre. A kimeneti streamben csak a *Hello World* eredményt látjuk, de ez megjeleníthet egyéb streameket is egy forgatókönyv feladatból, mint a Részletes vagy a Hiba, ha a forgatókönyv ezekbe ír.<br><br> ![Minden napló](media/automation-first-runbook-textual-powershell/job-pane-status-blade-alllogstile.png)<br>   
-10. A MyFirstRunbook-PowerShell panelre való visszatéréshez zárja be a Streamek és a Feladat panelt.
-11. A forgatókönyv Feladatok paneljének megnyitásához kattintson a **Feladatok** lehetőségre. Ez felsorolja az összes, a forgatókönyv által létrehozott feladatot. Egy feladat csak egyszer szerepel a listán, mert csak egyszer futtattuk a feladatot.<br><br> ![Feladatlista](media/automation-first-runbook-textual-powershell/runbook-control-job-tile.png)  
-12. Erre a feladatra kattintva megnyithatja ugyanazt a Feladat panelt, amelyet már láttunk a runbook elindításakor. Ez lehetővé teszi, hogy az időben visszamenve megtekintse egy adott forgatókönyvhöz létrehozott összes feladat részleteit.
+4. A runbook indításához, kattintson a kívánt **Start** , majd **Ok** a runbook meghívása lap megnyitásakor.
+5. A runbook-feladat létrehozott egy feladat lap van megnyitva. Zárja be az ezen az ablaktáblán, de ebben az esetben hagyja nyitva, figyelheti a feladat előrehaladását.
+6. A feladat állapota látható **feladat összegzése** és az állapot, amikor Ön tesztelése a runbook látott egyezik.<br><br> ![Feladat összegzése](media/automation-first-runbook-textual-powershell/job-pane-status-blade-jobsummary.png)<br>  
+7. Egyszer a runbook állapota látható *befejezve*a **áttekintése** kattintson **kimeneti**. A kimeneti ablaktábla már meg van nyitva, és megtekintheti a *Hello World*.<br><br> ![Feladat kimenete](media/automation-first-runbook-textual-powershell/job-pane-status-blade-outputtile.png)<br> 
+8. Zárja be a kimeneti lapot.
+9. A forgatókönyv-feladathoz tartozó Streamek panel megnyitásához kattintson **Az összes napló** lehetőségre. A kimeneti streamben csak a *Hello World* eredményt látja, de itt megjelenhetnek egyéb streamek is egy runbook-feladatból, mint például a Részletes vagy a Hiba, ha a forgatókönyv ezekbe ír.<br><br> ![Minden napló](media/automation-first-runbook-textual-powershell/job-pane-status-blade-alllogstile.png)<br>   
+10. Zárja be az adatfolyamok lapján, a feladatok lapon a MyFirstRunbook-PowerShell lapra való visszatéréshez.
+11. A **részletek**, kattintson a **feladatok** ennek a runbooknak a feladatok ablak megnyitásához. Ez felsorolja az összes, a forgatókönyv által létrehozott feladatot. Egy feladat csak egyszer szerepel a listán, mert csak egyszer futtatta a feladatot.<br><br> ![Feladatlista](media/automation-first-runbook-textual-powershell/runbook-control-job-tile.png)  
+12. Erre a feladatra kattintva megnyithatja ugyanazt a Feladat panelt, amelyet már látott a runbook elindításakor. Ez lehetővé teszi, hogy az időben visszamenve megtekintse egy adott forgatókönyvhöz létrehozott összes feladat részleteit.
 
 ## <a name="step-5---add-authentication-to-manage-azure-resources"></a>5. lépés – Hitelesítés hozzáadása az Azure-erőforrások kezeléséhez
-Most már teszteltük és közzétettük a forgatókönyvet, de még nem csinál semmi hasznosat. Azt szeretnénk, hogy Azure-erőforrásokat kezeljen. Erre nem lesz képes egészen addig, amíg nem végez hitelesítést az [előfeltételek](#prerequisites) között említett hitelesítő adatokkal. Ezt az **Add-AzureRMAccount** parancsmaggal hajtjuk végre.
+Most már befejeződött a runbook tesztelése és közzététele, de még nem csinál semmi hasznosat. Azt szeretnénk, hogy Azure-erőforrásokat kezeljen. Már nem tudja használni, ha nincs, hitelesítéshez, amelyekre a hitelesítő adatok használatával, ha ehhez a [Előfeltételek](#prerequisites). Megteheti, hogy a a **Add-AzureRmAccount** parancsmag.
 
-1. Kattintson a MyFirstRunbook-PowerShell panel **Szerkesztés** gombjára szöveges szerkesztő megnyitásához.<br><br> ![Runbook szerkesztése](media/automation-first-runbook-textual-powershell/automation-runbook-controls-edit.png)<br>   
-2. A **Write-Output** sorra már nincs szükségünk, így ezt kitörölheti.
+1. A szöveges-szerkesztő megnyitásához **szerkesztése** MyFirstRunbook-PowerShell lapon.
+2. Nincs szükség a **Write-Output** többé. sor, úgy lépjen tovább, és törölje azt.
 3. Írja be, vagy másolja és illessze be a következő kódot, amely kezeli a hitelesítést az Automation futtató fiókjával:
    
    ```
@@ -96,11 +99,11 @@ Most már teszteltük és közzétettük a forgatókönyvet, de még nem csinál
    -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
    ```
    <br>
-4. Kattintson a **Teszt panel** elemre, hogy tesztelhessük forgatókönyvet.
+4. Kattintson a **teszt ablaktábla** , hogy a runbook tesztelheti.
 5. Kattintson az **Indítás** gombra a teszt elindításához. Ha kész, a kimenetnek a fiókja alapvető adatait kell megjelenítenie, a következőhöz hasonló módon. Ez ellenőrzi, hogy érvényes-e a hitelesítő adat.<br><br> ![Hitelesítés](media/automation-first-runbook-textual-powershell/runbook-auth-output.png)
 
 ## <a name="step-6---add-code-to-start-a-virtual-machine"></a>6. lépés: Kód hozzáadása a virtuális gép indításához
-Most, hogy a forgatókönyv hitelesítést végez az Azure-előfizetésünkön, kezelhetjük az erőforrásokat. Hozzáadunk egy parancsot a virtuális gép elindítására. Kiválaszthatja az Azure-előfizetésében lévő bármelyik virtuális gépet, és most szoftveresen rögzítjük ezt a nevet a runbookban.
+Most, hogy a runbook hitelesíti az Azure-előfizetéshez, kezelheti az erőforrásokat. A virtuális gép elindításához-utasítást adni. Kiválaszthatja a virtuális gépek az Azure-előfizetéssel, valamint a most meg megoldás, amely nevet a runbook.
 
 1. Az *Add-AzureRmAccount* után írja be a következőt: *Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'NameofResourceGroup'*. Ezzel megadja az elindítani kívánt virtuális gép nevét, valamint az erőforráscsoportjának nevét.  
    
@@ -111,14 +114,14 @@ Most, hogy a forgatókönyv hitelesítést végez az Azure-előfizetésünkön, 
    Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'ResourceGroupName'
    ```
    <br>
-2. Mentse a forgatókönyvet, majd kattintson a **Teszt panel** elemre, hogy tesztelhessük.
+2. Mentse el a runbookot, és kattintson a **teszt ablaktábla** , hogy a teszteléshez le.
 3. Kattintson az **Indítás** gombra a teszt elindításához. Ha kész, ellenőrizze, hogy a virtuális gép elindult-e.
 
 ## <a name="step-7---add-an-input-parameter-to-the-runbook"></a>7. lépés – Bemeneti paraméter hozzáadása a forgatókönyvhöz
-A runbookunk jelenleg elindítja a runbookban szoftveresen rögzített virtuális gépet, de hasznosabb lenne, ha meg tudnánk adni a virtuális gépet a runbook elindulásakor. Most hozzáadunk bemeneti paramétereket a forgatókönyvhöz, amelyek biztosítják ezt a működést.
+A runbook jelenleg elindul a virtuális gépet, hogy Ön szoftveresen kötött a runbookokban, de lenne hasznos, ha a virtuális gépet adjon meg a runbook indításakor. Bemeneti paramétereket ad hozzá a runbook funkció.
 
-1. Adja hozzá a *VMName* és a *ResourceGroupName* paramétereket a forgatókönyvhöz, és használja ezeket a változókat a **Start-AzureRmVM** parancsmaggal, amint az az alábbi példában látható.  
-   
+1. Paraméterek hozzáadása *VMName* és *ResourceGroupName* a runbookhoz, és ezek a változók a **Start-AzureRmVM** parancsmag az alábbi példában látható módon.
+
    ```
    Param(
     [string]$VMName,
@@ -130,12 +133,12 @@ A runbookunk jelenleg elindítja a runbookban szoftveresen rögzített virtuáli
    Start-AzureRmVM -Name $VMName -ResourceGroupName $ResourceGroupName
    ```
    <br>
-2. Mentse a forgatókönyvet, és nyissa meg a Teszt panelt. Most már megadhat értékeket a teszt során használt két bemeneti változóhoz.
-3. Zárja be a Teszt panelt.
-4. A forgatókönyv új verziójának közzétételéhez kattintson a **Közzététel** lehetőségre.
-5. Állítsa le az előző lépésben elindított virtuális gépet.
-6. Kattintson az **Indítás** gombra a forgatókönyv elindításához. Írja be a **VMName** és a **ResourceGroupName** értéket az elindítani kívánt virtuális géphez.<br><br> ![Paraméter átadása](media/automation-first-runbook-textual-powershell/automation-pass-params.png)<br>  
-7. Ha a forgatókönyv kész, ellenőrizze, hogy a virtuális gép elindult-e.
+1. Mentse a forgatókönyvet, és nyissa meg a Teszt panelt. Most már megadhat értékeket a teszt során használt két bemeneti változóhoz.
+2. Zárja be a Teszt panelt.
+3. A forgatókönyv új verziójának közzétételéhez kattintson a **Közzététel** lehetőségre.
+4. Állítsa le az előző lépésben elindított virtuális gépet.
+5. Kattintson a **OK** a runbook elindításához. Írja be a **VMName** és a **ResourceGroupName** értéket az elindítani kívánt virtuális géphez.<br><br> ![Paraméter átadása](media/automation-first-runbook-textual-powershell/automation-pass-params.png)<br>  
+6. Ha a forgatókönyv kész, ellenőrizze, hogy a virtuális gép elindult-e.
 
 ## <a name="differences-from-powershell-workflow"></a>Eltérések a PowerShell-munkafolyamattól
 A PowerShell-runbookok életciklusa, képességei és felügyelete megegyezik a PowerShell-alapú munkafolyamat-runbookokéval, de van néhány eltérés és korlátozás:

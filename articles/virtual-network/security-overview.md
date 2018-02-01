@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: jdial
-ms.openlocfilehash: 142b9e052e09f88826ae8ea3866316444a5d7acc
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 89a4a165690c7a308d5bc7222b8a5a9716d22785
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="network-security"></a>Hálózati biztonság
 
@@ -119,7 +119,7 @@ Az alapértelmezett szabályok nem távolíthatók el, azonban magasabb priorit�
 * **VirtualNetwork** (*Resource Manager) (**VIRTUAL_NETWORK** klasszikus üzemi modell esetén): Ez a címke tartalmazza a virtuális hálózat címterét (a virtuális hálózathoz meghatározott minden CIDR-tartományt), valamint az összes csatlakoztatott helyszíni címteret és a [virtuális hálózati átjárókhoz](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) csatlakoztatott virtuális hálózatokat vagy [társviszonyban álló](virtual-network-peering-overview.md) virtuális hálózatokat.
 * **AzureLoadBalancer** (Resource Manager) (**AZURE_LOADBALANCER** klasszikus telepítéshez): Ez a címke az Azure infrastruktúra terheléselosztóját jelöli. A címkét a rendszer lefordítja arra az [Azure-adatközponti IP-címre](https://www.microsoft.com/download/details.aspx?id=41653), ahonnan az Azure állapot-mintavételei származnak. Ha nem az Azure Load Balancert használja, ezt a szabályt felül lehet bírálni.
 * **Internet** (Resource Manager) (**INTERNET** klasszikus telepítéshez): Ez a címke azt az IP-címteret jelöli, amely a virtuális hálózaton kívül esik, és a nyilvános interneten érhető el. A címtartományba beletartozik az [Azure tulajdonában lévő nyilvános IP-címtér](https://www.microsoft.com/download/details.aspx?id=41653) is.
-* **AzureTrafficManager** (csak Resource Manager esetében): Ez a címke az Azure Traffic Manager szolgáltatás IP-címterét jelöli.
+* **AzureTrafficManager** (csak Resource Manager esetében): Ez a címke az Azure Traffic Manager mintavételezési IP-címeinek IP-címterét jelöli. További információk a Traffic Manager mintavételezési IP-címeiről: [Azure Traffic Manager – Gyakori kérdések](https://docs.microsoft.com/en-us/azure/traffic-manager/traffic-manager-faqs).
 * **Storage** (csak Resource Manager esetében): Ez a címke az Azure Storage szolgáltatás IP-címterét jelöli. Ha a *Storage* értéket adja meg, a Storage szolgáltatás felé irányuló forgalom engedélyezhető vagy letiltható. Ha csak egy adott [régióban](https://azure.microsoft.com/regions) szeretné engedélyezni a hozzáférést a Storage szolgáltatáshoz, megadhat egy régiót. Ha például csak az USA keleti régiójában szeretné engedélyezni a hozzáférést az Azure Storage szolgáltatáshoz, megadhatja a *Storage.EastUS* szolgáltatáscímkét. A címke a szolgáltatást jelöli, annak adott példányait azonban nem. Például a címke az Azure Storage szolgáltatást jelöli, de nem egy adott Azure Storage-fiókot.
 * **Sql** (csak Resource Manager esetében): Ez a címke az Azure SQL Database és az Azure SQL Data Warehouse szolgáltatás címelőtagjait jelöli. Ha az *SQL* értéket adja meg, az SQL szolgáltatás felé irányuló forgalom engedélyezhető vagy letiltható. Ha csak egy adott [régióban](https://azure.microsoft.com/regions) szeretné engedélyezni a hozzáférést az SQL szolgáltatáshoz, megadhat egy régiót. Ha például csak az USA keleti régiójában szeretné engedélyezni a hozzáférést az Azure SQL Database-hez, megadhatja az *Sql.EastUS* szolgáltatáscímkét. A címke a szolgáltatást jelöli, annak adott példányait azonban nem. Például a címke az Azure SQL Database szolgáltatást jelöli, de nem egy adott SQL-adatbázist vagy -kiszolgálót.
 

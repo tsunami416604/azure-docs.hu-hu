@@ -16,11 +16,11 @@ ms.topic: overview
 ms.date: 02/16/2017
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 89cb7dc488da42724f212d13f8550064ff8b9188
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: dea6b137fb12467a881afaa9a3e6985b584f5559
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>A Linuxon futó Azure App Service bemutatása
 
@@ -73,7 +73,7 @@ A virtuálishálózat-integrációhoz, Azure Active Directory/külső fél köz�
 A Linuxon futó App Service szolgáltatást csak az [Alapszintű és Standard](https://azure.microsoft.com/pricing/details/app-service/plans/) App Service-csomagok támogatják, és nem rendelkezik [Ingyenes vagy Közös](https://azure.microsoft.com/pricing/details/app-service/plans/) szinttel. Az alábbi korlátozások szintén fontosak a Linuxon futó App Service esetében:
 
 * Nem hozhat létre Web App for Containers szolgáltatást olyan App Service-csomagban, amely már üzemeltet nem Linuxos webalkalmazásokat.
-* Nem Linuxos webalkalmazásokat tartalmazó erőforráscsoportokhoz készült Web App for Containers létrehozása esetén a létező App Service-csomag régiójától eltérő App Service-csomagot kell létrehoznia.
+* Nem Linuxos webalkalmazásokat tartalmazó erőforráscsoportokhoz készült Web App for Containers létrehozása esetén a létező App Service-csomag erőforráscsoportjától eltérő App Service-csomagot kell létrehoznia.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -86,7 +86,7 @@ Az `stdout` és az `stderr` naplózásához a tárolóból engedélyeznie kell a
 
 Az SCM-webhelyet a **Fejlesztési eszközök** menüben található **Haladó eszközök** oldalon érheti el.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerkedjen meg a Linuxon futó App Service szolgáltatással az alábbi hivatkozásokat követve. Kérdéseit és észrevételeit megoszthatja [fórumunkon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview).
 

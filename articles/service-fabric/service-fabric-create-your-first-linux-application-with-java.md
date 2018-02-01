@@ -12,13 +12,13 @@ ms.devlang: java
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/20/2017
+ms.date: 01/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: c7625a5670aca5d105601432fedfd0d7a78bb53c
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: afa7f569853df15a5d52e38f476665e34781acfd
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Az első Java Service Fabric Reliable Actors-alkalmazás létrehozása Linuxon
 > [!div class="op_single_selector"]
@@ -143,11 +143,16 @@ Az aktor implementálását és az aktor regisztrációs kódját tartalmazza. A
 `HelloWorldActor/src/reliableactor/HelloWorldActorImpl`:
 
 ```java
-@ActorServiceAttribute(name = "HelloWorldActor.HelloWorldActorService")
+@ActorServiceAttribute(name = "HelloWorldActorService")
 @StatePersistenceAttribute(statePersistence = StatePersistence.Persisted)
-public class HelloWorldActorImpl extends ReliableActor implements HelloWorldActor {
-    Logger logger = Logger.getLogger(this.getClass().getName());
+public class HelloWorldActorImpl extends FabricActor implements HelloWorldActor {
+    private Logger logger = Logger.getLogger(this.getClass().getName());
 
+    public HelloWorldActorImpl(FabricActorService actorService, ActorId actorId){
+        super(actorService, actorId);
+    }
+
+    @Override
     protected CompletableFuture<?> onActivateAsync() {
         logger.log(Level.INFO, "onActivateAsync");
 
@@ -176,15 +181,16 @@ Az aktorszolgáltatást regisztrálni kell egy bizonyos szolgáltatástípuskén
 ```java
 public class HelloWorldActorHost {
 
-    public static void main(String[] args) throws Exception {
-
+private static final Logger logger = Logger.getLogger(HelloWorldActorHost.class.getName());
+    
+public static void main(String[] args) throws Exception {
+        
         try {
-            ActorRuntime.registerActorAsync(HelloWorldActorImpl.class, (context, actorType) -> new ActorServiceImpl(context, actorType, ()-> new HelloWorldActorImpl()), Duration.ofSeconds(10));
 
+            ActorRuntime.registerActorAsync(HelloWorldActorImpl.class, (context, actorType) -> new FabricActorService(context, actorType, (a,b)-> new HelloWorldActorImpl(a,b)), Duration.ofSeconds(10));
             Thread.sleep(Long.MAX_VALUE);
-
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, "Exception occured", e);
             throw e;
         }
     }
@@ -203,14 +209,14 @@ A Service Fabric Java-függőségeit a Mavenből kéri le a rendszer. A Service 
 Az alkalmazás felépítéséhez és becsomagolásához futtassa a következő parancsot:
 
   ```bash
-  cd myapp
+  cd HelloWorldActorApplication
   gradle
   ```
 
 ## <a name="deploy-the-application"></a>Az alkalmazás központi telepítése
 Az alkalmazást a létrehozása után telepítheti a helyi fürtben.
 
-1. Csatlakozzon a helyi Service Fabric-fürthöz.
+1. Csatlakozzon a helyi Service Fabric-fürthöz (a fürtnek [telepítve kell lennie és futnia kell](service-fabric-get-started-linux.md#set-up-a-local-cluster)).
 
     ```bash
     sfctl cluster select --endpoint http://localhost:19080
@@ -235,7 +241,7 @@ Egy aktor semmit sem tesz önmagában. Egy másik szolgáltatást vagy alkalmaz�
 1. Futtassa a szkriptet a figyelési segédprogram használatával az aktorszolgáltatás kimenetének megtekintéséhez.  A teszt-szkript a(z) `setCountAsync()` metódust hívja meg az aktorhoz a számláló léptetéséhez és a(z) `getCountAsync()` metódust a számláló új értékének beolvasásához, majd megjeleníti ezt az értéket a konzolon.
 
     ```bash
-    cd myactorsvcTestClient
+    cd HelloWorldActorTestClient
     watch -n 1 ./testclient.sh
     ```
 
@@ -345,7 +351,7 @@ A natív Service Fabric-futtatókörnyezettel kommunikáló Service Fabric rends
 ## <a name="migrating-old-service-fabric-java-applications-to-be-used-with-maven"></a>A Mavennel használni kívánt régi Service Fabric Java-alkalmazások migrálása
 Nemrégiben áthelyeztük a Service Fabric Java-kódtárakat a Service Fabric Java SDK-ból a Mavenen futó adattárba. A Yeomannel vagy az Eclipse-szel létrehozott új alkalmazások a legfrissebb projekteket hozzák létre (amelyek képesek együttműködni a Mavennel), a meglévő állapotmentes vagy aktor Service Fabric Java-alkalmazások pedig, amelyek korábban a Service Fabric Java SDK-t használták, frissíthetők a Mavenben található Service Fabric Java-függőségek használatára. Kövesse az [itt](service-fabric-migrate-old-javaapp-to-use-maven.md) felsorolt lépéseket, ha biztosítani kívánja, hogy a régebbi alkalmazásaik együttműködjenek a Mavennel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az első Service Fabric Java-alkalmazás létrehozása Linuxra Eclipse használatával](service-fabric-get-started-eclipse.md)
 * [További tudnivalók a Reliable Actorsről](service-fabric-reliable-actors-introduction.md)

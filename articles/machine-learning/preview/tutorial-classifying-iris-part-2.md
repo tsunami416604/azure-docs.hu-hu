@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: tutorial
 ms.date: 11/06/2017
-ms.openlocfilehash: 7e489526fd1b6a7d38172d147df1f30d74119e95
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
-ms.translationtype: MT
+ms.openlocfilehash: 3337ba9fa6845deb98813259821f77ff713f9eb1
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="classify-iris-part-2-build-a-model"></a>Írisz osztályozása, 2. rész: Modell létrehozása
 Az Azure Machine Learning-szolgáltatások (előzetes verzió) az adatszakértők számára az adatok előkészítéséhez, a kísérletek kidolgozásához és a modellek felhőszinten való üzembe helyezéséhez létrehozott átfogó, integrált és fejlett adatelemzési megoldást kínálnak.
@@ -326,7 +326,7 @@ Ha egy távoli Linux gépen szeretné végrehajtani Docker-tárolóban a szkript
 3. Adja ki ugyanazt a parancsot, mint korábban a parancssori felület ablakában, de most a cél legyen a _myvm_:
    ```azurecli
    REM executes iris_sklearn.py in a remote Docker container
-   az ml experiment submit -c myvm .\iris_sklearn.py
+   az ml experiment submit -c myvm iris_sklearn.py
    ```
    A parancsot a rendszer úgy hajtja végre, mintha `docker-python`-környezetben lenne, csak a végrehajtás egy távoli, Linux rendszerű virtuális gépen történik. A parancssori felület ablak ugyanazt a kimeneti információt jeleníti meg.
 
@@ -346,7 +346,7 @@ Ha egy távoli Linux gépen szeretné végrehajtani Docker-tárolóban a szkript
 Ezt a szkriptet futtathatja egy HDInsight Spark-fürtön is. Ismerje meg, [hogyan hozhat létre HDInsight Spark-fürtöt az Azure ML Workbenchben való használathoz](how-to-create-dsvm-hdi.md#create-an-apache-spark-for-azure-hdinsight-cluster-in-azure-portal).
 
 >[!NOTE] 
->A HDInsight-fürt elsődleges tárolóként kell használnia az Azure Blob. Az Azure Data Lake-tároló használata jelenleg nem támogatott.
+>A HDInsight-fürtnek az Azure-blobot kell elsődleges tárolóként használnia. Az Azure Data Lake-tároló használata jelenleg nem támogatott.
 
 1. Ha rendelkezik hozzáféréssel a Spark for Azure HDInsight-fürthöz, hozzon létre egy HDInsight-futtatási konfigurációs parancsot az itt látható módon. Paraméterként adja meg a HDInsight-fürt nevét, valamint a saját HDInsight-felhasználónevét és -jelszavát. Használja az alábbi parancsot:
 

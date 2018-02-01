@@ -1,6 +1,6 @@
 ---
-title: "Internetkapcsolattal rendelkező terheléselosztó létrehozása – Azure-sablon | Microsoft Docs"
-description: "Ismerje meg, hogyan hozható létre internetkapcsolattal rendelkező terheléselosztó a Resource Managerben sablon használatával"
+title: "Nyilvános terheléselosztó létrehozása – Azure-sablon | Microsoft Docs"
+description: "Megismerheti, hogyan hozható létre nyilvános terheléselosztó a Resource Managerben sablon használatával"
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 10d96920d3aa3cae19750d7c2437b88bac1c8cda
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 21ff5a48d29117ba1d6195f308f00180b1f1edbf
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/23/2018
 ---
-# <a name="creating-an-internet-facing-load-balancer-using-a-template"></a>Internetkapcsolattal rendelkező terheléselosztó létrehozása sablon használatával
+# <a name="creating-a-public-load-balancer-using-a-template"></a>Nyilvános terheléselosztó létrehozása sablon használatával
 
 > [!div class="op_single_selector"]
 > * [Portál](../load-balancer/load-balancer-get-started-internet-portal.md)
@@ -73,7 +73,7 @@ Az alábbi lépéseket követve hozhatja létre a sablont az Azure parancssori f
     azure group create --name TestRG --location westus --template-file 'https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json' --parameters-file 'c:\lb\azuredeploy.parameters.json'
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Bevezetés a belső terheléselosztók konfigurálásába](load-balancer-get-started-ilb-arm-ps.md)
 

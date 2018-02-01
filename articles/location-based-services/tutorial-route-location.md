@@ -1,6 +1,6 @@
 ---
-title: "Azure-alapú helyszolgáltatás keresési útvonalat |} Microsoft Docs"
-description: "Útvonal-használatával, Azure-alapú helyszolgáltatás pontra"
+title: "Útvonal keresése az Azure Location Based Services használatával | Microsoft Docs"
+description: "Útvonal egy hasznos helyhez az Azure Location Based Services használatával"
 services: location-based-services
 keywords: 
 author: dsk-2015
@@ -12,33 +12,33 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: f2be9ca98330866ac8b6fb12efd56efdc711eedf
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
-ms.translationtype: MT
+ms.openlocfilehash: 7303347444952d9c09dc6c04eea5b962e18729b4
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/24/2018
 ---
-# <a name="route-to-a-point-of-interest-using-azure-location-based-services"></a>Útvonal-használatával, Azure-alapú helyszolgáltatás pontra
+# <a name="route-to-a-point-of-interest-using-azure-location-based-services"></a>Útvonal egy hasznos helyhez az Azure Location Based Services használatával
 
-Ez az oktatóanyag bemutatja, hogyan használja az Azure-alapú helyszolgáltatás fiókját és az útválasztási szolgáltatás SDK érdeklő pontjának az útvonal kereséséhez. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan használhatja az Azure Location Based Services-fiókot és a Route Service SDK-t a hasznos helyekre vezető útvonalak megkereséséhez. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Cím koordináták beolvasása
-> * Lekérdezési érdeklő ponthoz utasításokat az útvonal-szolgáltatás
+> * Címkoordináták lekérése
+> * Hasznos helyre vezető útvonal lekérdezése a Route Service-ből
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt továbblépne, győződjön meg arról, hogy [létre Azure-alapú helyszolgáltatás fiókját](./tutorial-search-location.md#createaccount), és [fiókja előfizetés kulcs lekérése](./tutorial-search-location.md#getkey). A térkép vezérlőelem és a keresési szolgáltatás API-k használata az oktatóanyag leírtaknak megfelelően is jelenhet meg [keresési közelben pont használatával, Azure-alapú helyszolgáltatás](./tutorial-search-location.md).
+A folytatás előtt [hozza létre a saját Azure Location Based Services-fiókját](./tutorial-search-location.md#createaccount), és [kérje le a fiókja előfizetési kulcsát](./tutorial-search-location.md#getkey). Azt is megfigyelheti, hogyan használhatók a Térkép vezérlőelem és a Search szolgáltatás API-jai a [Közeli hasznos helyek keresése az Azure Location Based Services használatával](./tutorial-search-location.md) című oktatóanyag szerint.
 
 
 <a id="getcoordinates"></a>
 
-## <a name="get-address-coordinates"></a>Cím koordináták beolvasása
+## <a name="get-address-coordinates"></a>Címkoordináták lekérése
 
-Az alábbi lépések segítségével hozzon létre egy statikus HTML-lapot a hely alapú szolgáltatások térkép vezérlő API a beágyazott. 
+A következő lépésekkel hozzon létre egy statikus HTML-oldalt, amelybe be van ágyazva a Location Based Services Térkép vezérlőelem API-ja. 
 
-1. A helyi gépén, hozzon létre egy új fájlt, és adjon neki nevet **MapRoute.html**. 
-2. Az alábbi HTML-összetevők hozzáadása a fájlhoz:
+1. A helyi gépén hozzon létre egy új fájlt **MapRoute.html** néven. 
+2. Adja a következő HTML-összetevőket a fájlhoz:
 
     ```HTML
     <!DOCTYPE html>
@@ -75,20 +75,20 @@ Az alábbi lépések segítségével hozzon létre egy statikus HTML-lapot a hel
 
     </html>
     ```
-    Vegye figyelembe, hogy hogyan a HTML-fejléc beágyazza a CSS- és JavaScript fájlok az Azure-alapú helyszolgáltatás szalagtár erőforrás helyeit. Figyelje meg is a *parancsfájl* szegmens a HTML-fájl, a beágyazott JavaScript-kód az Azure hely alapú szolgáltatás API-k elérésére tartalmazó törzsében.
+    Látható, hogy a HTML-fejléc beágyazza a CSS- és a JavaScript-fájlok erőforráshelyeit az Azure Location Based Services-kódtárba. Figyelje meg a HTML törzsében lévő *szkript* szakaszt is, amely tartalmazza az Azure Location Based Service API-jának elérésére szolgáló beágyazott JavaScript-kódot.
 
-3. Adja hozzá a következő JavaScript-kódot a *parancsfájl* blokk a HTML-fájl. Cserélje le a helyőrző *< insert-kulcs >* a hely alapú Services-fiók elsődleges kulccsal.
+3. Adja hozzá a következő JavaScript-kódot a HTML-fájl *szkript* blokkjához. Használja a Location Based Services-fiók elsődleges kulcsát a szkriptben.
 
     ```JavaScript
     // Instantiate map to the div with id "map"
-    var subscriptionKey = "<insert-key>";
+    var LBSAccountKey = "<_your account key_>";
     var map = new atlas.Map("map", {
-        "subscription-key": subscriptionKey
+        "subscription-key": LBSAccountKey
     });
     ```
-    A **atlas. Térkép** vezérlő biztosít a vizuális és interaktív webes térképre, és az Azure térkép vezérlőelem API összetevője.
+    Az Azure Térkép vezérlőelem API **atlas.Map** összetevőjével egy vizuális és interaktív webes térkép vezérelhető.
 
-4. Adja hozzá a következő JavaScript-kódot a *parancsfájl* blokkot. Ez biztosítja, hogy a réteget *linestring* az útvonalat a térkép vezérlőelem számára:
+4. Adja hozzá a következő JavaScript-kódot a *szkript* blokkhoz. Ez *linestrings* karakterláncok rétegét adja hozzá a Térkép vezérlőelemhez az útvonal megjelenítése érdekében:
 
     ```JavaScript
     // Initialize the linestring layer for routes on the map
@@ -103,7 +103,7 @@ Az alábbi lépések segítségével hozzon létre egy statikus HTML-lapot a hel
     });
     ```
 
-5. Adja hozzá a következő JavaScript-kód létrehozása a kezdő- és végpontok az útvonal:
+5. Adja hozzá a következő JavaScript-kódot, amellyel létrehozza az útvonal indulási és célpontját:
 
     ```JavaScript
     // Create the GeoJSON objects which represent the start and end point of the route
@@ -119,9 +119,9 @@ Az alábbi lépések segítségével hozzon létre egy statikus HTML-lapot a hel
         icon: "pin-blue"
     });
     ```
-    Ez a kód létrehoz két [GeoJSON objektumok](https://en.wikipedia.org/wiki/GeoJSON) kezdő- és végpontok útvonal képviseli. A végpont az egyik a szélesség/hosszúság kombináció a *üzemanyag állomások* keres az előző oktatóanyag [keresési közelben pont használatával, Azure-alapú helyszolgáltatás](./tutorial-search-location.md).
+    Ez a kód két [GeoJSON-objektumot](https://en.wikipedia.org/wiki/GeoJSON) hoz létre, amelyek az útvonal indulási és célpontját jelzik. A végpont az előző [Közeli hasznos helyek keresése az Azure Location Based Services használatával](./tutorial-search-location.md) című oktatóanyagban megkeresett egyik *benzinkút* szélesség/hosszúság kombinációja.
 
-6. Adja hozzá a PIN-kódok a kezdő- és végpontok hozzáadása a leképezés a következő JavaScript-kódot:
+6. Adja hozzá a következő JavaScript-kódot, amellyel hozzáadja az indulási és célpontot jelölő gombostűket a térképhez:
 
     ```JavaScript
     // Fit the map window to the bounding box defined by the start and destination points
@@ -141,17 +141,17 @@ Az alábbi lépések segítségével hozzon létre egy statikus HTML-lapot a hel
         textOffset: [0, -20]
     });
     ``` 
-    Az API-t **map.setCameraBounds** beállítja a térkép ablakban a kezdő- és végpontjainak koordinátáival megfelelően. Az API-t **map.addPins** a térkép vezérlőelem visual összetevőként a pontok hozzáadása.
+    A **map.setCameraBounds** API az indulási és célpontok koordinátái alapján állítja be a térkép ablakát. A **map.addPins** API vizuális összetevőként adja hozzá a pontokat a Térkép vezérlőelemhez.
 
-7. Mentse a **MapRoute.html** fájlt a számítógépre. 
+7. Mentse a **MapRoute.html** fájlt a gépén. 
 
 <a id="getroute"></a>
 
-## <a name="query-route-service-for-directions-to-point-of-interest"></a>Lekérdezési érdeklő ponthoz utasításokat az útvonal-szolgáltatás
+## <a name="query-route-service-for-directions-to-point-of-interest"></a>Hasznos helyre vezető útvonal lekérdezése a Route Service-ből
 
-Ez a szakasz bemutatja, hogyan használható az Azure-alapú helyszolgáltatás útvonal Service API a útvonalát egy adott kezdési pont található. Az útvonal-szolgáltatás API-k segítségével tervezhető a leggyorsabb, a lehető legrövidebb, vagy között két helyen, figyelembe véve a valós idejű forgalom feltételek ökocímkével útvonalat biztosít. Azt is lehetővé teszi a felhasználóknak tervezze meg a jövőben útvonalak Azure kiterjedt történelmi forgalom adatbázis használatával, és előrejelzésére útvonal trendelemzés céljából, bármely napját és időpontját. 
+Ez a szakasz bemutatja, hogyan kereshet egy indulási és célpont közötti útvonalat az Azure Location Based Services Route Service API-jával. A Route Service API-kat biztosít a két hely közötti leggyorsabb, legrövidebb vagy leggazdaságosabb útvonal megtervezéséhez, a valós idejű forgalmi viszonyokat figyelembe véve. A felhasználók előre is megtervezhetik az útvonalakat az Azure széles körű forgalmi adatbázisával, amely előre jelzi az útvonalak menetidejét bármely napon és időpontban. 
 
-1. Nyissa meg a **MapRoute.html** fájl az előző szakaszban létrehozott, és adja hozzá a következő JavaScript-kódot a *parancsfájl* letiltása, hogy bemutassa a útvonal-szolgáltatás.
+1. Nyissa meg az előző szakaszban létrehozott **MapRoute.html** fájlt, és adja hozzá a következő JavaScript-kódot a *szkript* blokkhoz a Route Service ábrázolása érdekében.
 
     ```JavaScript
     // Perform a request to the route service and draw the resulting route on the map
@@ -172,32 +172,32 @@ Ez a szakasz bemutatja, hogyan használható az Azure-alapú helyszolgáltatás 
         }
     };
     ```
-    A kódrészletet létrehoz egy [XMLHttpRequest](https://xhr.spec.whatwg.org/), és hozzáadja a bejövő válasz elemzése eseménykezelő. Sikeres választ akkor az első visszaadott útvonal sor szegmensek koordináták tömbje hoz létre. E koordináták útvonal csoportja majd hozzáadása a térkép *linestring* réteg.
+    Ez a kódrészlet létrehoz egy [XMLHttpRequest](https://xhr.spec.whatwg.org/) kérést, és hozzáad egy eseménykezelőt a bejövő válasz elemzéséhez. A sikeres válasz érdekében létrehozza az első visszaadott útvonal vonalszakaszainak koordinátagyűjteményét. Ezután hozzáadja az útvonal koordinátagyűjteményét a térkép *linestrings* rétegéhez.
 
-2. Adja hozzá a következő kódot a *parancsfájl* blokkot, a XMLHttpRequest küldeni az Azure-alapú helyszolgáltatás útvonal-szolgáltatás:
+2. Adja hozzá a *szkript* blokkhoz a következő kódot, amely elküldi az XMLHttpRequest kérést az Azure Location Based Services Search Service szolgáltatásának:
 
     ```JavaScript
     var url = "https://atlas.microsoft.com/route/directions/json?";
     url += "&api-version=1.0";
-    url += "&subscription-key=" + subscriptionKey;
+    url += "&subscription-key=" + LBSAccountKey;
     url += "&query=" + startPoint.coordinates[1] + "," + startPoint.coordinates[0] + ":" +
         destinationPoint.coordinates[1] + "," + destinationPoint.coordinates[0];
 
     xhttp.open("GET", url, true);
     xhttp.send();
     ```
-    A fenti kérelmet a szükséges paramétereket, amelyek a fiókkulcs előfizetés, és a koordináták a kezdő és végpontja, a megadott sorrendben jeleníti meg. 
+    A fenti kérés a kötelező paramétereket mutatja be, amelyek a fiókkulcs, illetve az indulási és célpontok, ebben a sorrendben. 
 
-3. Mentse a **MapRoute.html** fájlt helyben, majd nyissa meg az Ön által választott webböngészőben, és tekintse meg az eredménye. A sikeres csatlakozáshoz a hely alapú szolgáltatások API-khoz meg kell jelennie az alábbihoz hasonló térképet. 
+3. Mentse helyben a **MapRoute.html** fájlt, majd nyissa meg egy tetszőleges webböngészőben, és vizsgálja meg az eredményt. A Location Based Services API-jaival való sikeres kapcsolat esetén a következőhöz hasonló térkép jelenik meg. 
 
-    ![Az Azure térkép vezérlőelem és útvonal-szolgáltatás](./media/tutorial-route-location/lbs-map-route.png)
+    ![Azure Térkép vezérlőelem és Route Service](./media/tutorial-route-location/lbs-map-route.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Cím koordináták beolvasása
-> * Lekérdezési érdeklő ponthoz utasításokat az útvonal-szolgáltatás
+> * Címkoordináták lekérése
+> * Hasznos helyre vezető útvonal lekérdezése a Route Service-ből
 
-Az oktatóanyag folytassa [útvonalak található különböző üzemmódjainak, az Azure-alapú helyszolgáltatás használatával utazás](./tutorial-prioritized-routes.md) használata az Azure-alapú helyszolgáltatás rangsorolására útvonalak pontjának iránt, az átviteli mód alapján. 
+Folytassa az [Útvonalak keresése különböző utazási módokhoz az Azure Location Based Services használatával](./tutorial-prioritized-routes.md) című oktatóanyaggal, amelyből megtudhatja, hogyan rendezheti a hasznos helyekhez vezető útvonalakat az utazás módja alapján az Azure Location Based Services használatával. 

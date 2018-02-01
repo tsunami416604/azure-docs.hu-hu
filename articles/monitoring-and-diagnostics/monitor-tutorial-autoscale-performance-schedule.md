@@ -1,6 +1,6 @@
 ---
-title: "A teljesítményadatok vagy ütemezés alapján automatikus skálázás Azure-erőforrások |} Microsoft Docs"
-description: "Az automatikus skálázási beállítás az app service-csomag metrikaadatokat és ütemezés létrehozása"
+title: "Azure-erőforrások automatikus méretezése teljesítményadatok vagy ütemezés alapján | Microsoft Docs"
+description: "Automatikus méretezési beállítás létrehozása egy App Service-csomaghoz metrikai adatok és egy ütemezés használatával"
 author: anirudhcavale
 manager: orenr
 services: monitoring-and-diagnostics
@@ -10,180 +10,180 @@ ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: ancav
 ms.custom: mvc
-ms.openlocfilehash: 3a85e288fa6f7d6c7138b7fea8319bd8dee01c2c
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
-ms.translationtype: MT
+ms.openlocfilehash: e56b637858af27f9a09f70867e455d06dd122d92
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/24/2018
 ---
-# <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>Egy Azure-erőforrások teljesítményadatokat vagy egy ütemezés alapján automatikus skálázási beállítás létrehozása
+# <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>Automatikus méretezési beállítás Azure-erőforrásokhoz teljesítményadatok vagy ütemezés alapján
 
-Automatikus skálázás beállításai lehetővé teszik, hogy az előre definiált feltételekre alapozva szolgáltatás példányának telepítése és törlése. Ezek a beállítások a portálon keresztül is létrehozható. Ez a módszer létrehozásához és konfigurálásához az automatikus skálázási beállítás böngészőalapú felhasználói felületet biztosít. 
+Az automatikus méretezés lehetővé teszi szolgáltatáspéldányok előre beállított feltételek szerinti hozzáadását vagy eltávolítását. Ezek a beállítások a portálon keresztül hozhatók létre. Ez a metódus egy böngészőalapú felhasználói felületet biztosít az automatikus méretezési beállítások létrehozásához és konfigurálásához. 
 
-Ebben az oktatóanyagban a tartalma 
+Az oktatóanyag során az alábbi lépéseket fogja végrehajtani: 
 > [!div class="checklist"]
-> * A Web App és az App Service-csomag létrehozása
-> * Méretezés és a bővített kapacitású szabályainak kap a webes alkalmazás kérelmek száma alapján automatikus skálázás konfigurálása
-> * A kibővített művelet indíthat, és tekintse meg a példányok száma növelése
-> * Aktiválhatja a skálázási művelet, és tekintse meg a példányok száma csökkentése
+> * Webalkalmazás és App Service-csomag létrehozása
+> * Automatikus méretezési szabályok egy webalkalmazás fogadott kéréseinek száma alapján történő konfigurálása horizontális le- és felskálázáshoz
+> * Horizontális felskálázási művelet kiváltása és a példányszám növekedésének megfigyelése
+> * Horizontális leskálázási művelet kiváltása és a példányszám csökkenésének megfigyelése
 > * Az erőforrások törlése
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
-## <a name="log-in-to-the-azure-portal"></a>Jelentkezzen be az Azure portálra.
+## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 
 Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
-## <a name="create-a-web-app-and-app-service-plan"></a>A Web App és az App Service-csomag létrehozása
-Kattintson a **új** lehetőséget a bal oldali navigációs panelről
+## <a name="create-a-web-app-and-app-service-plan"></a>Webalkalmazás és App Service-csomag létrehozása
+Kattintson az **Új** lehetőségre a bal oldali navigációs ablaktáblán.
 
-Keresse meg és jelölje ki a *webalkalmazás* elemet, majd kattintson **létrehozása**
+Keresse meg és válassza ki a *Webalkalmazás* elemet, és kattintson a **Létrehozás** elemre.
 
-Válassza ki az alkalmazás neve például *MyTestScaleWebApp*. Hozzon létre egy új erőforráscsoportot * contoso.com "és az erőforráscsoport a elhelyezése.
+Adja meg az alkalmazás nevét, például: *MyTestScaleWebApp*. Hozzon létre egy új erőforráscsoportot, például „myResourceGroup” néven, és helyezze el egy szabadon választott erőforráscsoportban.
 
-Néhány percen belül az erőforrások kell építhető ki. Ebben az oktatóanyagban további része a Web App, és megfelelő App Service-csomag használata.
+A rendszer néhány percen belül üzembe helyezi az erőforrásokat. Az oktatóanyag fennmaradó részében használja a webalkalmazást és a vonatkozó App Service-csomagot.
 
-    ![Create a new app service in the portal](./media/monitor-tutorial-autoscale-performance-schedule/Web-App-Create.png)
+   ![Új alkalmazás létrehozása a portálon](./media/monitor-tutorial-autoscale-performance-schedule/Web-App-Create.png)
 
-## <a name="navigate-to-autoscale-settings"></a>Navigáljon az automatikus skálázási beállításokat
-1. A bal oldali navigációs ablakból válassza ki a **figyelő** lehetőséget. Ha az oldal betöltése válassza ki a **automatikus skálázás** fülre.
-2. Az itt felsorolt automatikus skálázás támogató az előfizetéshez tartozó erőforrások listáját. Az App Service-csomag az oktatóanyag korábbi részében létrehozott azonosításához, és kattintson rá.
+## <a name="navigate-to-autoscale-settings"></a>Az automatikus méretezési beállítások megnyitása
+1. Kattintson a bal oldali navigációs ablaktáblán a **Figyelés** eleme. Ha az oldal betöltött, kattintson az **Automatikus méretezés** lapra.
+2. Itt találja az előfizetéséhez tartozó azon erőforrások listáját, amelyek támogatják az automatikus méretezést. Keresse meg az oktatóanyag korábbi részében létrehozott App Service-csomagot, és kattintson rá.
 
-    ![Navigáljon az automatikus skálázási beállításokat](./media/monitor-tutorial-autoscale-performance-schedule/monitor-blade-autoscale.png)
+    ![Az automatikus méretezési beállítások megnyitása](./media/monitor-tutorial-autoscale-performance-schedule/monitor-blade-autoscale.png)
 
-3. Az automatikus skálázási beállítás, kattintson a **automatikus skálázás engedélyezéséhez** gomb
+3. Az automatikus méretezéshez kattintson az **Automatikus méretezés engedélyezése** gombra.
 
-A következő néhány lépést súgó kitöltötte a következő képen a következőképpen néznek automatikus skálázás képernyő:
+A következő néhány lépés segít kitölteni az automatikus méretezési képernyőt, hogy az a következőképp nézzen ki:
 
-   ![Automatikus skálázási beállítás mentése](./media/monitor-tutorial-autoscale-performance-schedule/Autoscale-Setting-Save.png)
+   ![Automatikus méretezési beállítás mentése](./media/monitor-tutorial-autoscale-performance-schedule/Autoscale-Setting-Save.png)
 
  ## <a name="configure-default-profile"></a>Alapértelmezett profil konfigurálása
-1. Adjon meg egy **neve** az automatikus skálázási beállítás
-2. Az alapértelmezett profil a ellenőrizze, hogy a **méretezési módban** "Egy adott példányszám méret" értékre van állítva
-3. A példányok száma beállítása **1**. Ezzel a beállítással biztosíthatja, hogy ha nincs más profil aktív, vagy az érvényben, az alapértelmezett profil visszatér a példányok száma 1.
+1. Adjon egy **nevet** az automatikus méretezési beállításnak.
+2. Az alapértelmezett profilban a **Skálázási mód** legyen „Skálázás adott példányszámra”.
+3. Állítsa a példányszámot **1**-re. Ez a beállítás biztosítja, hogy ha nincs másik aktív vagy működő profil, akkor az alapértelmezett profil példányszáma visszaáll 1-re.
 
-  ![Navigáljon az automatikus skálázási beállításokat](./media/monitor-tutorial-autoscale-performance-schedule/autoscale-setting-profile.png)
+  ![Az automatikus méretezési beállítások megnyitása](./media/monitor-tutorial-autoscale-performance-schedule/autoscale-setting-profile.png)
 
 
-## <a name="create-recurrance-profile"></a>Recurrance profil létrehozása
+## <a name="create-recurrance-profile"></a>Ismétlődési profil létrehozása
 
-1. Kattintson a **méretezési feltétel hozzáadása** alatt az alapértelmezett profil
+1. Kattintson az alapértelmezett profil alatt a **Skálázási feltétel hozzáadása** hivatkozásra.
 
-2. Szerkessze a **neve** kell lennie, hétfőtől péntekig profilhoz a profil
+2. Szerkessze a profil **nevét**, amely legyen: „Hétfőtől péntekig profil”.
 
-3. Győződjön meg arról a **méretezési módban** "Metrika alapuló méretezési" értékre van állítva
+3. A **Skálázási mód** legyen „Skálázás metrika alapján”.
 
-4. A **korlátok példány** állítsa be a **minimális** "1", mint a **maximális** '2' és a **alapértelmezett** '1'. Ez a beállítás biztosítja, hogy ez a profil does nem automatikus skálázás 1-nél kevesebb példányt, vagy 2-nél több példány service-csomag. A profil nem rendelkezik elegendő adatot a döntést, ha azt használja a példányok alapértelmezett száma (ebben az esetben: 1).
+4. A **Példányszámkorlátoknál** állítsa a **Minimum** értéket „1”-re, a **Maximum** értéket „2”-re, az **Alapértelmezett** értéket pedig szintén „1”-re. Ez a beállítás biztosítja, hogy a profil nem fogja a szolgáltatási csomagot automatikusan 1 példány alá és 2 példány fölé skálázni. Ha a profilnál nincs elég adat megadva a döntéshozáshoz, akkor a rendszer az alapértelmezett példányszámot használja (ami jelen esetben 1).
 
-5. A **ütemezés**, válassza a "adott napokra Repeat"
+5. Az **Ütemezésnél** válassza az „Adott napokon ismétlődik” lehetőséget.
 
-6. Állítsa be a profilhoz, amellyel hétfőtől péntekig, ismételje meg a 09:00 csendes-óceáni TÉLI csendes 18:00-óceáni TÉLI számára. Ez a beállítás biztosítja, hogy ezt a profilt csak aktív és alkalmazandó Reggel 9 a 18: 00, hétfőtől péntekig. Minden egyéb esetben a "Default" profil pedig az automatikus skálázási beállítás által használt profil.
+6. Állítsa be a profilt, hogy hétfőtől péntekig, minden nap 09:00 és 18:00 között ismétlődjön. Ez a beállítás biztosítja, hogy a profil csak hétfőtől péntekig reggel 9 és délután 6 között legyen aktív és alkalmazható. Minden ezen kívüli időpontban az automatikus beállítás az „Alapértelmezett” profilt használja.
 
-## <a name="create-a-scale-out-rule"></a>Kibővített szabály létrehozása
+## <a name="create-a-scale-out-rule"></a>Felskálázási szabály létrehozása
 
-1. Az a hétfőtől péntekig profilhoz
+1. A „Hétfőtől péntekig profil” alatt
 
-2. Kattintson a **szabály hozzáadása** hivatkozás
+2. Kattintson a **Szabály hozzáadása** hivatkozásra.
 
-3. Állítsa be a **metrika forrás** kell egyéb erőforrásokat. Állítsa be a **erőforrástípus** "Alkalmazásszolgáltatások", és a **erőforrás** , ebben az oktatóanyagban korábban létrehozott webalkalmazás.
+3. Állítsa be a **Metrikaforrásnál** az „Egyéb erőforrás” lehetőséget. Állítsa be az **Erőforrás típusánál** az „App Services” lehetőséget, az **Erőforrásnál** pedig az oktatóanyag során korábban létrehozott webalkalmazást.
 
-4. Állítsa be a **összesítési idő** , "Összes", a **metrika neve** "Kérelmek", és a **idő felbontása statisztika** "összegként
+4. Az **Idő összesítése** értéke legyen „Összes”, a **Metrika nevénél** „Kérések”, az **Időfelbontási szint statisztikája** pedig „Összesen”.
 
-5. Állítsa be a **operátor** "Nagyobb, mint", mint a **küszöbérték** "10" és a **időtartam** "5" perc.
+5. Az **Operátor** legyen „Nagyobb, mint”, a **Küszöbérték** legyen „10”, az **Időtartam** pedig legyen „5 perc”.
 
-6. Válassza ki a **művelet** "Növekedése számolva", mint a **száma példány** "1", és a **lassú le** "5" perc
+6. A kiválasztott művelet legyen **„Mennyiség növelése a következővel”**, a **Példányszám** legyen „1”, a **Várakozási idő** pedig „5” perc.
 
-7. Kattintson a **Hozzáadás** gomb
+7. Kattintson a **Hozzáadás** gombra.
 
-Ez a szabály biztosítja, hogy ha a webalkalmazás több mint 10 kéréseket fogad 5 percen belül, vagy kevesebb, mint egy további példányt hozzáadódik az App Service-csomag terhelés kezelésére.
+Ez a szabály biztosítja, hogy ha a webalkalmazás 5 perc vagy annál rövidebb idő alatt több mint 10 kérést kap, akkor a rendszer hozzáad egy további példányt az App Service-csomaghoz a terhelés kezelése végett.
 
-   ![Kibővített szabály létrehozása](./media/monitor-tutorial-autoscale-performance-schedule/Scale-Out-Rule.png)
+   ![Felskálázási szabály létrehozása](./media/monitor-tutorial-autoscale-performance-schedule/Scale-Out-Rule.png)
 
-## <a name="create-a-scale-in-rule"></a>A skálázási szabály létrehozása
-Azt javasoljuk, hogy mindig a méretezési a szabályt egy kibővített szabály kísérő. Ha mindkettő biztosítja, hogy az erőforrások nem több mint törlődnek. Azt jelenti, hogy kiépítéshez képest, hogy fut, mint a jelenlegi terhelés kezeléséhez szükséges további példányokat. 
+## <a name="create-a-scale-in-rule"></a>Leskálázási szabály létrehozása
+Javasoljuk, hogy a felskálázási szabályok mellett mindig legyen beállítva egy leskálázási szabály is. Ezzel biztosítható, hogy ne legyen túl sok erőforrás üzembe helyezve. Ez azt jelenti, hogy ne fusson több példány, mint amennyi az aktuális terhelés kezeléséhez szükséges. 
 
-1. Az a hétfőtől péntekig profilhoz
+1. A „Hétfőtől péntekig profil” alatt
 
-2. Kattintson a **szabály hozzáadása** hivatkozás
+2. Kattintson a **Szabály hozzáadása** hivatkozásra.
 
-3. Állítsa be a **metrika forrás** kell egyéb erőforrásokat. Állítsa be a **erőforrástípus** "Alkalmazásszolgáltatások", és a **erőforrás** , ebben az oktatóanyagban korábban létrehozott webalkalmazás.
+3. Állítsa be a **Metrikaforrásnál** az „Egyéb erőforrás” lehetőséget. Állítsa be az **Erőforrás típusánál** az „App Services” lehetőséget, az **Erőforrásnál** pedig az oktatóanyag során korábban létrehozott webalkalmazást.
 
-4. Állítsa be a **összesítési idő** , "Összes", a **metrika neve** "Kérelmek", és a **idő felbontása statisztika** , az "Average"
+4. Az **Idő összesítése** értéke legyen „Összes”, a **Metrika nevénél** „Kérések”, az **Időfelbontási szint statisztikája** pedig „Átlag”.
 
-5. Állítsa be a **operátor** "Kisebb, mint", mint a **küszöbérték** "5", és a **időtartam** "5" perc.
+5. Az **Operátor** legyen „Kisebb, mint”, a **Küszöbérték** legyen „5”, az **Időtartam** pedig legyen „5 perc”.
 
-6. Válassza ki a **művelet** "Csökkentése számolva", mint a **száma példány** "1", és a **lassú le** "5" perc
+6. A kiválasztott művelet legyen **„Mennyiség csökkentése a következővel”**, a **Példányszám** legyen „1”, a **Várakozási idő** pedig „5” perc.
 
-7. Kattintson a **Hozzáadás** gomb
+7. Kattintson a **Hozzáadás** gombra.
 
-    ![A skálázási szabály létrehozása](./media/monitor-tutorial-autoscale-performance-schedule/Scale-In-Rule.png)
+    ![Leskálázási szabály létrehozása](./media/monitor-tutorial-autoscale-performance-schedule/Scale-In-Rule.png)
 
-8. **Mentés** automatikus skálázási beállítás
+8. **Mentse** az automatikus méretezési beállítást.
 
-    ![Automatikus skálázási beállítás mentése](./media/monitor-tutorial-autoscale-performance-schedule/Autoscale-Setting-Save.png)
+    ![Automatikus méretezési beállítás mentése](./media/monitor-tutorial-autoscale-performance-schedule/Autoscale-Setting-Save.png)
 
-## <a name="trigger-scale-out-action"></a>Eseményindító kibővített művelet
-Az automatikus skálázási beállítás most hozott létre a kibővített feltétel indításához a Web App kell rendelkeznie a 10-nél több kérelmek 5 percen belül.
+## <a name="trigger-scale-out-action"></a>Felskálázási művelet kiváltása
+Az imént létrehozott automatikus méretezési beállítás felskálázási feltételének aktiválásához az szükséges, hogy a webalkalmazás 5 percen belül több mint 10 kérést kapjon.
 
-1. Nyisson meg egy böngészőablakot, és keresse meg azt a webalkalmazást, ebben az oktatóanyagban korábban létrehozott. Találhatja meg az URL-címet a webalkalmazás az Azure portálon lépjen a webes alkalmazás-erőforrást, és kattintson a a **Tallózás** gomb a "Overview" lapon.
+1. Nyisson meg egy böngészőablakot a böngészőben, majd lépjen az oktatóanyag során korábban létrehozott webalkalmazáshoz. A webalkalmazás URL-címét az Azure Portalon a webalkalmazás erőforrásához lépve, majd az „Áttekintés” lapon a **Böngészés** gombra kattintva találja meg.
 
-2. Gyors egymásutánban az oldal újratöltéséhez 10 szintnél mélyebben
+2. Egymás után gyorsan frissítse az oldalt 10-nél többször.
 
-3. A bal oldali navigációs ablakból válassza ki a **figyelő** lehetőséget. Ha az oldal betöltése válassza ki a **automatikus skálázás** fülre.
+3. Kattintson a bal oldali navigációs ablaktáblán a **Figyelés** eleme. Ha az oldal betöltött, kattintson az **Automatikus méretezés** lapra.
 
-4. A listában jelölje ki az App Service-csomag az oktatóanyag során használt
+4. Válassza ki a listából az oktatóanyag során használt App Service-csomagot.
 
-5. Az automatikus skálázási beállítás, kattintson a **futtatási előzményei** lap
+5. Az automatikus méretezési beállításnál kattintson a **Futtatási előzmények** lapra.
 
-6. Megjelenik egy adott idő alatt a példányok száma, az App Service-csomag tükröző diagram
+6. Egy ábrát láthat, amely megjeleníti az App Service-csomag példányszámait az idő elteltével.
 
-7. Néhány perc múlva a példányok száma kell értéke 1, 2.
+7. Néhány percen belül a példányszámnak 1-ről 2-re kell nőnie.
 
-8. A a diagram tekintse meg a tevékenység naplóbejegyzéseket minden méretezési művelet által az automatikus skálázási beállítás.
+8. Az ábra alatt láthatók az automatikus méretezési beállítás által végrehajtott skálázási műveletek tevékenységnapló-bejegyzései.
 
-## <a name="trigger-scale-in-action"></a>Eseményindító skálázási művelet
-A skála a feltétel az automatikus skálázási beállítás eseményindítók, ha nincs 5-nél kevesebb azt a webalkalmazást egy meghatározott időtartamra vonatkozóan 10 perc. 
+## <a name="trigger-scale-in-action"></a>Leskálázási művelet kiváltása
+Az automatikus méretezési beállítás leskálázási feltétele akkor aktiválódik, ha a webalkalmazás 10 perc alatt kevesebb mint 5 kérést kap. 
 
-1. A webalkalmazáshoz küldési kérelmek nem biztosítására
+1. Győződjön meg arról, hogy a webalkalmazás nem kap kéréseket.
 
-2. Az Azure-portál betöltése
+2. Töltse be az Azure Portalt.
 
-3. A bal oldali navigációs ablakból válassza ki a **figyelő** lehetőséget. Ha az oldal betöltése válassza ki a **automatikus skálázás** fülre.
+3. Kattintson a bal oldali navigációs ablaktáblán a **Figyelés** eleme. Ha az oldal betöltött, kattintson az **Automatikus méretezés** lapra.
 
-4. A listában jelölje ki az App Service-csomag az oktatóanyag során használt
+4. Válassza ki a listából az oktatóanyag során használt App Service-csomagot.
 
-5. Az automatikus skálázási beállítás, kattintson a **futtatási előzményei** lap
+5. Az automatikus méretezési beállításnál kattintson a **Futtatási előzmények** lapra.
 
-6. Adott idő alatt a példányok száma, az App Service-csomag tükröző diagramot láthatja.
+6. Egy ábrát láthat, amely megjeleníti az App Service-csomag példányszámait az idő elteltével.
 
-7. Néhány perc múlva a példányok száma kell elvetni 2, 1. A folyamat legalább 100 percet vesz igénybe.  
+7. Néhány percen belül a példányszámnak 2-ről 1-re kell csökkennie. Ez a folyamat legalább 100 percig tart.  
 
-8. A a diagram vannak a megfelelő set tevékenység minden egyes skálázási művelet által az automatikus skálázási beállításhoz tartozó naplóbejegyzések
+8. Az ábra alatt láthatók az automatikus méretezési beállítás által végrehajtott skálázási műveletek tevékenységnapló-bejegyzései.
 
-    ![A skála műveletek megtekintése](./media/monitor-tutorial-autoscale-performance-schedule/Scale-In-Chart.png)
+    ![Leskálázási műveletek megtekintése](./media/monitor-tutorial-autoscale-performance-schedule/Scale-In-Chart.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-1. Az Azure-portálon a bal oldali menüben kattintson a **összes erőforrás** , és válassza ki az ebben az oktatóanyagban a létrehozott webalkalmazás.
+1. Az Azure Portal bal oldali menüjében kattintson az **Összes erőforrás** lehetőségre, majd válassza ki az oktatóanyag során létrehozott webalkalmazást.
 
-2. Az erőforrás lapján kattintson a **törlése**, írja be a törlésének megerősítése **Igen** a szövegmezőbe, majd **törlése**.
+2. Az erőforrás oldalán kattintson a **Törlés** elemre, a törlés megerősítéséhez írja be a **yes** (igen) szöveget a szövegmezőbe, majd kattintson a **Törlés** gombra.
 
-3. Ezután válassza ki az App Service-csomag erőforrást, majd **törlése**
+3. Ezután válassza ki az App Service-csomag erőforrását, és kattintson a **Törlés** gombra.
 
-4. Írja be a törlésének megerősítése **Igen** a szövegmezőbe, majd **törlése**.
+4. A törlés megerősítéséhez írja be a **yes** (igen) szöveget a szövegmezőbe, majd kattintson a **Törlés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban meg  
+Ebben az oktatóanyagban az alábbiakat végezte el:  
 > [!div class="checklist"]
-> * A Web App és az App Service-csomag létrehozása
-> * A skálázási szabályok konfigurált automatikus skálázási, és a kérelmek száma alapján kibővítési kapott webalkalmazás
-> * A kibővített művelet indított és figyelt növelése példányainak száma
-> * A skálázási művelet indított és figyelt csökkentése példányainak száma
-> * Az erőforrások karbantartása
+> * Webalkalmazás és App Service-csomag létrehozása
+> * Automatikus méretezési szabályok egy webalkalmazás fogadott kéréseinek száma alapján történő konfigurálása horizontális le- és felskálázáshoz
+> * Horizontális felskálázási művelet kiváltása és a példányszám növekedésének megfigyelése
+> * Horizontális leskálázási művelet kiváltása és a példányszám csökkenésének megfigyelése
+> * Az erőforrások törlése
 
 
-Automatikus skálázás beállításaival kapcsolatos további tudnivalókért továbbra is a a [automatikus skálázás áttekintése](monitoring-overview-autoscale.md).
+Az automatikus méretezési beállításokkal kapcsolatos további információért folytassa az [automatikus méretezés áttekintésével](monitoring-overview-autoscale.md).
 
 > [!div class="nextstepaction"]
-> [A figyelési adatok archiválása](monitor-tutorial-archive-monitoring-data.md)
+> [Monitorozási adatok archiválása](monitor-tutorial-archive-monitoring-data.md)

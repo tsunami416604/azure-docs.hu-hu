@@ -6,6 +6,10 @@
 # Gyors útmutatók
 
 ## [Létrehozás és csatlakozás – portál](create-data-warehouse-portal.md)
+## Számítás szüneteltetése és folytatása
+### [Portal](pause-and-resume-compute-portal.md)
+### [PowerShell](pause-and-resume-compute-powershell.md)
+
 
 # Oktatóanyagok
 ## [1 – Adatok betöltése a blobból](load-data-from-azure-blob-storage-using-polybase.md)

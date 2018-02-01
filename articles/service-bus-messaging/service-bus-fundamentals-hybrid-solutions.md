@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/12/2017
 ms.author: sethm
-ms.openlocfilehash: b71814756a52f56ac6d0bb72a2f4bb1b1c2ea0b2
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: f095407a58e00ed9143e8f19d91a212d2167564b
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="azure-service-bus"></a>Azure Service Bus
 
@@ -106,11 +106,11 @@ Az üzenetsoroktól és témaköröktől eltérően az alkalmazások nem hoznak 
 
 A továbbító a megfelelő megoldás, ha közvetlen kommunikációra van szükség az alkalmazások között. Vegyük például egy légitársaság foglalási rendszerét, amely egy olyan helyszíni adatközpontban fut, amelynek elérhetőnek kell lennie bejelentkezési pultokról, mobileszközökről és egyéb számítógépekről. Az ezeken a rendszereken futó alkalmazások Service Bus Relayeket használhatnak a felhőben a kommunikációhoz, függetlenül attól, hogy hol futnak.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Az alkalmazások összekapcsolása mindig is részét képezte a teljes megoldások összeállításának, és az olyan forgatókönyvek száma, amelyekben az alkalmazásoknak és szolgáltatásoknak kommunikálniuk kell egymással, óhatatlanul nőni fog, ahogy egyre több alkalmazás és eszköz csatlakozik az internetre. A Service Bus célja az, hogy ezt az alapvető fontosságú funkciót könnyebben implementálhatóvá és szélesebb körben elérhetővé tegye azáltal, hogy felhőalapú technológiákat biztosít a kommunikációhoz az üzenetsorok, témakörök és Relayek révén.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte az Azure Service Bus alapjait, az alábbi hivatkozásokat követve olvashat további információkat.
 

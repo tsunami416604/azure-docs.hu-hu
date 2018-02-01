@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/04/2017
 ms.author: renash
-ms.openlocfilehash: e25a6555e06a437259cddcc46c27add5f8b2ad8b
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: bae09ffafc14463fa00d0c29dfa6c2628e644773
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="frequently-asked-questions-about-azure-files"></a>Azure-fájlok kapcsolatos gyakori kérdések
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló a felhőben, amelyek elérhetők a szabványos [Server Message Block (SMB) protokoll](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (más néven Common Internet File System vagy CIFS). Akkor is csatlakoztathatja az Azure fájlmegosztások egyidejűleg felhőalapú vagy helyszíni üzemelő példányok esetében a Windows, Linux és macOS. Azure fájlmegosztásokat Windows kiszolgáló gépen a gyors hozzáférés megközelíti az adatok helyének Azure fájlszinkronizálás (előzetes verzió) segítségével képes gyorsítótárazni.
@@ -73,7 +73,7 @@ Ebben a cikkben megválaszolunk Azure fájlok szolgáltatásokat és funkciókat
 
 * <a id="redundancy-options"></a>
 **Milyen tárolási redundancia lehetőségeket támogat az Azure fájlok?**  
-    Azure-fájlok jelenleg csak a helyileg redundáns tárolás (LRS) és a georedundáns tárolás (GRS). Zónaredundáns tárolás (ZRS) és az írásvédett georedundáns (RA-GRS) tárolás támogatása a jövőben, de ütemtervek megosztásához jelenleg nem tudunk.
+    Azure-fájlok jelenleg helyileg redundáns tárolás (LRS), a zóna redundáns tárolás (ZRS) és a georedundáns tárolás (GRS). Írásvédett georedundáns (RA-GRS) tárolás támogatása a jövőben, de ütemtervek megosztásához jelenleg nem tudunk.
 
 * <a id="tier-options"></a>
 **Milyen tárolási rétegek Azure fájlok támogatottak?**  
@@ -86,7 +86,7 @@ Ebben a cikkben megválaszolunk Azure fájlok szolgáltatásokat és funkciókat
 **Valóban szeretném tekinteni az Azure Fileshoz hozzá egy adott funkcióhoz. Felveheti azt?**  
     Az Azure-fájlok csapat iránt érdeklődik rendelkezik minden visszajelzés hallgatás szolgáltatásainkkal. Adjon szavazhatnak szolgáltatás kérelmek [Azure fájlok UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files)! Jelenleg folyamatban Reméljük, delighting, számos új szolgáltatást.
 
-## <a name="azure-file-sync"></a>Az Azure File szinkronizálása
+## <a name="azure-file-sync"></a>Azure File Sync
 
 * <a id="afs-region-availability"></a>
 **Milyen régiókban támogatott Azure fájlszinkronizálás (előzetes verzió)?**  
@@ -103,7 +103,7 @@ Ebben a cikkben megválaszolunk Azure fájlok szolgáltatásokat és funkciókat
 * <a id="afs-conflict-resolution"></a>**Ha ugyanazon fájl két kiszolgáló körülbelül egy időben történtek, mi történik?**  
     Az Azure fájlszinkronizálás használ egy egyszerű ütközésfeloldás stratégia: jelenleg mindkét módosításokat, a két kiszolgáló egyidejűleg módosított fájlok nyomon. A legutóbb írt módosítás megtartja az eredeti fájlnevet. A régebbi fájl rendelkezik a "forrás" gép és az ütközést a névhez. Ez azt jelenti, hogy ez a besorolás: 
    
-    \<FileNameWithoutExtension\>-\<MachineName\>\[-#\].\< ext\>  
+    \<FileNameWithoutExtension\>-\<MachineName\>\[-#\].\<ext\>  
 
     Például az első CompanyReport.docx irányadók válna CompanyReport-CentralServer.docx Ha CentralServer, ahol a régebbi írása történt. A második ütközés CompanyReport-CentralServer-1.docx neve.
 
@@ -171,7 +171,7 @@ Ebben a cikkben megválaszolunk Azure fájlok szolgáltatásokat és funkciókat
 * <a id="afs-files-excluded"></a>
 **Azure fájlszinkronizálás automatikusan kizárja a mely fájlok vagy mappák?**  
     Alapértelmezés szerint Azure fájlszinkronizálás nem tartalmazza a következő fájlokat:
-    * Desktop.ini
+    * desktop.ini
     * thumbs.db
     * ehthumbs.db
     * ~$\*.\*
@@ -182,7 +182,7 @@ Ebben a cikkben megválaszolunk Azure fájlok szolgáltatásokat és funkciókat
     A következő mappák is ki vannak zárva, alapértelmezés szerint:
 
     * \System volume Information
-    * \$INDÍTSA ÚJRA. BIN
+    * \$RECYCLE.BIN
     * \SyncShareState
 
 * <a id="afs-os-support"></a>

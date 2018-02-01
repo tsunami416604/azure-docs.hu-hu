@@ -15,23 +15,23 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 12/13/2017
 ms.author: barbkess
-ms.openlocfilehash: 10d06fd29640a350c5522c00c4c9ebd9c6b24c89
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: 80974f7660696887783e97b674e2d9921fe2feac
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="best-practices-for-loading-data-into-azure-sql-data-warehouse"></a>Az adatok Azure SQL Data Warehouse-ba való betöltésének ajánlott eljárásai
 Javaslatok és teljesítményoptimalizálás az adatok betöltéséhez az Azure SQL Data Warehouse-ba 
 
-- További információ a PolyBase-ről és egy kinyerési, betöltési és átalakítási (ELT) folyamat megtervezéséről: [ELT tervezése SQL Data Warehouse-hoz](design-elt-data-loading.md).
+- További információ a PolyBase-ről és egy kinyerési, betöltési és átalakítási (ETL) folyamat megtervezéséről: [ETL tervezése SQL Data Warehouse-hoz](design-elt-data-loading.md).
 - Betöltési oktatóanyag: [Adatok betöltése az Azure Blob Storage-ból az Azure SQL Data Warehouse-ba a PolyBase használatával](load-data-from-azure-blob-storage-using-polybase.md).
 
 
 ## <a name="preparing-data-in-azure-storage"></a>Adatok előkészítése az Azure Storage-ban
 A késés minimalizálása érdekében helyezze egymás mellé a tárolási réteget és az adattárházat.
 
-Amikor ORC fájlformátumba exportál adatokat, előfordulhat, hogy a rendszer a sok szöveget tartalmazó oszlopok számát legfeljebb 50 oszlopra korlátozza a Java Nincs elég memória típusú hibái miatt. Ezt a korlátozást úgy küszöbölheti ki, ha az oszlopok csak egy részhalmazát exportálja.
+Az adatok ORC fájlformátumba való exportálásakor Java memóriahiány-hibák jelentkezhetnek, ha a szövegoszlopok túl nagyok. Ezt a korlátozást úgy küszöbölheti ki, ha az oszlopok csak egy részhalmazát exportálja.
 
 A PolyBase nem képes 1 000 000 bájtnál több adatot tartalmazó sorok betöltésére. Az Azure Blob Storage-ba vagy az Azure Data Lake Store-ba helyezett szöveges fájlok nem tartalmazhatnak 1 000 000 bájtnál több adatot. Ez a bájtkorlátozás a táblasémától függetlenül érvényes.
 
@@ -45,14 +45,22 @@ A leggyorsabb betöltési sebesség érdekében egyszerre egy betöltési felada
 
 A betöltések megfelelő számítási erőforrásokkal való futtatásához hozzon létre betöltések futtatására kijelölt betöltést végző felhasználókat. Az egyes betöltést végző felhasználókat rendelje hozzá egy adott erőforrásosztályhoz. Betöltés futtatásához jelentkezzen be az egyik betöltést végző felhasználóként, majd futtassa a betöltést. A betöltés a felhasználó erőforrásosztályával fut.  Ez a módszer egyszerűbb, mint a felhasználó erőforrásosztályának módosításával próbálkozni, hogy az megfeleljen az aktuális erőforrásosztály-igénynek.
 
-Ez kód létrehoz egy betöltést végző felhasználót a staticrc20 erőforrásosztályhoz. Ez vezérlői jogosultságot biztosít a felhasználó számára egy adatbázishoz, majd felveszi a felhasználót a staticrc20 adatbázis-szerepkör tagjaként. Ha a staticRC20 erőforrásosztályokhoz tartozó erőforrással szeretne betöltést futtatni, egyszerűen jelentkezzen be LoaderRC20 felhasználóként, és futtassa a betöltést. 
+### <a name="example-of-creating-a-loading-user"></a>Példa egy betöltést végző felhasználó létrehozására
+Ez a példa létrehoz egy betöltést végző felhasználót a staticrc20 erőforrásosztályhoz. Ennek első lépése a **főkiszolgálóhoz való csatlakozás** és egy bejelentkezés létrehozása.
 
-    ```sql
-    CREATE LOGIN LoaderRC20 WITH PASSWORD = 'a123STRONGpassword!';
-    CREATE USER LoaderRC20 FOR LOGIN LoaderRC20;
-    GRANT CONTROL ON DATABASE::[mySampleDataWarehouse] to LoaderRC20;
-    EXEC sp_addrolemember 'staticrc20', 'LoaderRC20';
-    ```
+```sql
+   -- Connect to master
+   CREATE LOGIN LoaderRC20 WITH PASSWORD = 'a123STRONGpassword!';
+```
+Kapcsolódjon az adattárházhoz, majd hozzon létre egy felhasználót. A következő kód azt feltételezi, hogy a mySampleDataWarehouse nevű adatbázishoz kapcsolódik. A kód azt mutatja, hogyan lehet létrehozni egy LoaderRC20 nevű felhasználót, illetve hogyan lehet vezérlői jogosultságot adni számára egy adatbázishoz. Ezután a kód felveszi a felhasználót a staticrc20 adatbázis-szerepkör tagjaként.  
+
+```sql
+   -- Connect to the database
+   CREATE USER LoaderRC20 FOR LOGIN LoaderRC20;
+   GRANT CONTROL ON DATABASE::[mySampleDataWarehouse] to LoaderRC20;
+   EXEC sp_addrolemember 'staticrc20', 'LoaderRC20';
+```
+Ha a staticRC20 erőforrásosztályokhoz tartozó erőforrással szeretne betöltést futtatni, egyszerűen jelentkezzen be LoaderRC20 felhasználóként, és futtassa a betöltést.
 
 A betöltéseket inkább statikus, mint dinamikus erőforrásosztályokkal futtassa. A statikus erőforrásosztályok használata garantálja az azonos erőforrásokat a [szolgáltatási szinttől](performance-tiers.md#service-levels) függetlenül. Ha dinamikus erőforrásosztályt használ, az erőforrások a szolgáltatásszinttől függően változhatnak. Dinamikus osztályok esetében egy alacsonyabb szolgáltatási szint azt jelenti, hogy feltehetően nagyobb erőforrásosztályt kell használnia a betöltést végző felhasználóhoz.
 
@@ -123,8 +131,8 @@ A külső táblák új adatforrásba való migrálása után hajtsa végre a kö
 3. Jelentkezzen be az Azure-ba, és hozza létre újra az elsődleges hozzáférési kulcsot, hogy készen álljon a következő rotálásra.
 
 
-## <a name="next-steps"></a>Következő lépések
-A betöltési folyamat monitorozása: [A számítási feladat monitorozása DMV-kkel](sql-data-warehouse-manage-monitor.md).
+## <a name="next-steps"></a>További lépések
+Az adatbetöltések monitorozása: [A számítási feladat monitorozása DMV-kkel](sql-data-warehouse-manage-monitor.md).
 
 
 

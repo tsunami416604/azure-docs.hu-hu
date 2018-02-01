@@ -2,7 +2,7 @@
 title: "Bevezetés az Azure Cosmos DB Table API használatába | Microsoft Docs"
 description: "Ez a cikk azt ismerteti, hogy miként használható az Azure Cosmos DB közel valós idejű adateléréssel nagy mennyiségű kulcs-érték típusú adatok tárolására és lekérdezésére a népszerű OSS MongoDB API-k használatával."
 services: cosmos-db
-author: mimig
+author: mimig1
 manager: jhubbard
 editor: monicar
 documentationcenter: 
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/20/2017
-ms.author: mimig1
-ms.openlocfilehash: 9321cf648e149408e68456d30e331e05720b60ab
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.author: mimig
+ms.openlocfilehash: 7e116400f55375afe1e57abc6dadae0536cdfceb
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Alapvető ismeretek az Azure Cosmos DB tábla API szolgáltatásáról
 
@@ -30,7 +30,7 @@ Az [Azure Cosmos DB](introduction.md) Table API-t biztosít olyan, az Azure Tabl
 * Garantáltan magas szintű rendelkezésre állás.
 * [Automatikus másodlagos indexelés](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf).
 
-Ezek az Azure Table Storage számára írt alkalmazások kódmódosítás nélkül migrálhatók az Azure Cosmos DB-be a Table API-val, és ki tudják használni a prémium képességek előnyeit. .NET esetében a Table API-nak egyetlen ügyfél SDK-ja áll rendelkezésre.
+Ezek az Azure Table Storage számára írt alkalmazások kódmódosítás nélkül migrálhatók az Azure Cosmos DB-be a Table API-val, és ki tudják használni a prémium képességek előnyeit. A Table API a .NET, a Java, a Python és a Node.js környezetekhez is rendelkezik ügyfél-SDK-val.
 
 Javasoljuk a következő videó megtekintését, amelyben Aravind Ramachandran az Azure Cosmos DB-hez készült Table API használatának első lépéseit ismerteti:
 
@@ -60,7 +60,7 @@ Hozzon létre egy Azure Cosmos DB-fiókot az [Azure Portalon](https://portal.azu
 > Ha az előzetes verzióban hozta létre a Table API-fiókot, hozzon létre egy [új Table API-fiókot](create-table-dotnet.md#create-a-database-account), amely használható az általánosan elérhető Table API SDK-kkal.
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Íme, pár hivatkozás az első lépések megtételéhez:
 * [.NET-alkalmazás létrehozása a Table API-val](create-table-dotnet.md)

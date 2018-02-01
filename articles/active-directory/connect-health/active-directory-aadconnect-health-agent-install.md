@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: ad61870b49f7a8753e4dbd2e34847daf14b793a0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 85a12cbfdad4a1b8fbc7c3e3ea15b91c5267d7c8
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Az Azure AD Connect Health-ügynök telepítése
 Ez a dokumentum végigvezeti az Azure AD Connect Health-ügynökök telepítésének és konfigurálásának folyamatán. Az ügynököt [innen](active-directory-aadconnect-health.md#download-and-install-azure-ad-connect-health-agent) töltheti le.
@@ -103,32 +103,38 @@ Annak érdekében, hogy a használatelemzés szolgáltatás adatokat gyűjthesse
 2. Lépjen a **Biztonsági beállítások\Helyi házirendek\Felhasználói jogosultságok kiosztása** mappára, majd kattintson duplán a **Biztonsági naplózás létrehozása** elemre.
 3. A **Helyi biztonsági beállítások** lapon ellenőrizze, hogy az AD FS 2.0 szolgáltatásfiók szerepel-e a listában. Ha nincs a listában, a **Felhasználó vagy csoport hozzáadása** gombra kattintva adja hozzá, majd kattintson az **OK** gombra.
 4. A naplózás engedélyezéséhez nyisson meg egy parancssort emelt szintű jogosultságokkal, és futtassa a következő parancsot: <code>auditpol.exe /set /subcategory:"Application Generated" /failure:enable /success:enable</code>
-5. Zárja be a **Helyi biztonsági házirendet**, majd nyissa meg a **AD FS kezelő** beépülő modulját. Az AD FS kezelő beépülő moduljának megnyitásához kattintson a **Start** gombra, mutasson a **Programok**, majd a **Felügyeleti eszközök** pontra, végül kattintson az **AD FS 2.0 kezelő** parancsra.
-6. A **Műveletek** panelen kattintson az **Összevonási szolgáltatás tulajdonságainak szerkesztése** elemre.
-7. Az **Összevonási szolgáltatás tulajdonságai** párbeszédpanelen kattintson az **Események** lapra.
-8. Jelölje be a **Sikernaplók** és a **Hibanaplók** jelölőnégyzeteket.
-9. Kattintson az **OK** gombra.
+5. Zárja be a **Helyi biztonsági házirend** lapot.
+<br>   -- **Az alábbi lépések csak elsődleges AD FS-kiszolgálók esetén szükségesek.** -- </br>
+6. Nyissa meg az **AD FS kezelő** beépülő modulját. Az AD FS kezelő beépülő moduljának megnyitásához kattintson a **Start** gombra, mutasson a **Programok**, majd a **Felügyeleti eszközök** pontra, végül kattintson az **AD FS 2.0 kezelő** parancsra.
+7. A **Műveletek** panelen kattintson az **Összevonási szolgáltatás tulajdonságainak szerkesztése** elemre.
+8. Az **Összevonási szolgáltatás tulajdonságai** párbeszédpanelen kattintson az **Események** lapra.
+9. Jelölje be a **Sikernaplók** és a **Hibanaplók** jelölőnégyzeteket.
+10. Kattintson az **OK** gombra.
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2012-r2"></a>Az AD FS naplózásának engedélyezése Windows Server 2012 R2 rendszeren
 1. A **Helyi biztonsági házirend** megnyitásához kattintson a **Kiszolgálókezelő** elemre a Kezdőképernyőn, vagy a Kiszolgálókezelő elemre az asztali tálcán, majd kattintson az **Eszközök/Helyi biztonsági házirend** elemre.
 2. Lépjen a **Biztonsági beállítások\Helyi házirendek\Felhasználói jogosultságok kiosztása** mappára, majd kattintson duplán a **Biztonsági naplózás létrehozása** elemre.
 3. A **Helyi biztonsági beállítások** lapon ellenőrizze, hogy az AD FS szolgáltatásfiók szerepel-e a listában. Ha nincs a listában, a **Felhasználó vagy csoport hozzáadása** gombra kattintva adja hozzá, majd kattintson az **OK** gombra.
 4. A naplózás engedélyezéséhez nyisson meg egy parancssort emelt szintű jogosultságokkal, és futtassa a következő parancsot: ```auditpol.exe /set /subcategory:"Application Generated" /failure:enable /success:enable```.
-5. Zárja be a **Helyi biztonsági házirendet**, majd nyissa meg az **AD FS kezelő** beépülő modulját (a Kiszolgálókezelőben kattintson az Eszközök, majd az AD FS kezelő elemre).
-6. A Műveletek panelen kattintson az **Összevonási szolgáltatás tulajdonságainak szerkesztése** elemre.
-7. Az Összevonási szolgáltatás tulajdonságai párbeszédpanelen kattintson az **Események** lapra.
-8. Jelölje be a **Sikernaplók és a Hibanaplók** jelölőnégyzeteket, majd kattintson az **OK** gombra.
+5. Zárja be a **Helyi biztonsági házirend** lapot.
+<br>   -- **Az alábbi lépések csak elsődleges AD FS-kiszolgálók esetén szükségesek.** -- </br>
+6. Nyissa meg az **AD FS kezelő** beépülő modulját (a Kiszolgálókezelőben kattintson az Eszközök, majd az AD FS kezelő elemre).
+7. A **Műveletek** panelen kattintson az **Összevonási szolgáltatás tulajdonságainak szerkesztése** elemre.
+8. Az **Összevonási szolgáltatás tulajdonságai** párbeszédpanelen kattintson az **Események** lapra.
+9. Jelölje be a **Sikernaplók és a Hibanaplók** jelölőnégyzeteket, majd kattintson az **OK** gombra.
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2016"></a>Az AD FS naplózásának engedélyezése Windows Server 2016 rendszeren
 1. A **Helyi biztonsági házirend** megnyitásához kattintson a **Kiszolgálókezelő** elemre a Kezdőképernyőn, vagy a Kiszolgálókezelő elemre az asztali tálcán, majd kattintson az **Eszközök/Helyi biztonsági házirend** elemre.
 2. Lépjen a **Biztonsági beállítások\Helyi házirendek\Felhasználói jogosultságok kiosztása** mappára, majd kattintson duplán a **Biztonsági naplózás létrehozása** elemre.
 3. A **Helyi biztonsági beállítások** lapon ellenőrizze, hogy az AD FS szolgáltatásfiók szerepel-e a listában. Ha nincs a listában, a **Felhasználó vagy csoport hozzáadása** elemre kattintva adja hozzá az AD FS-szolgáltatásfiókot, majd kattintson az **OK** gombra.
 4. A naplózás engedélyezéséhez nyisson meg egy parancssort emelt szintű jogosultságokkal, és futtassa a következő parancsot: <code>auditpol.exe /set /subcategory:"Application Generated" /failure:enable /success:enable.</code>
-5. Zárja be a **Helyi biztonsági házirendet**, majd nyissa meg az **AD FS kezelő** beépülő modulját (a Kiszolgálókezelőben kattintson az Eszközök, majd az AD FS kezelő elemre).
-6. A Műveletek panelen kattintson az **Összevonási szolgáltatás tulajdonságainak szerkesztése** elemre.
-7. Az Összevonási szolgáltatás tulajdonságai párbeszédpanelen kattintson az **Események** lapra.
-8. Jelölje be a **Sikernaplók és a Hibanaplók** jelölőnégyzeteket, majd kattintson az **OK** gombra. Ez alapértelmezés szerint ennek engedélyezett.
-9. Nyisson meg egy PowerShell-ablakot, és futtassa a következő parancsot: ```Set-AdfsProperties -AuditLevel Verbose```.
+5. Zárja be a **Helyi biztonsági házirend** lapot.
+<br>   -- **Az alábbi lépések csak elsődleges AD FS-kiszolgálók esetén szükségesek.** -- </br>
+6. Nyissa meg az **AD FS kezelő** beépülő modulját (a Kiszolgálókezelőben kattintson az Eszközök, majd az AD FS kezelő elemre).
+7. A **Műveletek** panelen kattintson az **Összevonási szolgáltatás tulajdonságainak szerkesztése** elemre.
+8. Az **Összevonási szolgáltatás tulajdonságai** párbeszédpanelen kattintson az **Események** lapra.
+9. Jelölje be a **Sikernaplók és a Hibanaplók** jelölőnégyzeteket, majd kattintson az **OK** gombra. Ez alapértelmezés szerint ennek engedélyezett.
+10. Nyisson meg egy PowerShell-ablakot, és futtassa a következő parancsot: ```Set-AdfsProperties -AuditLevel Verbose```.
 
 Vegye figyelembe, hogy alapértelmezés szerint az „alapszintű” naplózási szint van engedélyezve. További információ a [Windows Server 2016 AD FS naplózási fejlesztéseiről](https://technet.microsoft.com/en-us/windows-server-docs/identity/ad-fs/operations/auditing-enhancements-to-ad-fs-in-windows-server-2016)
 
@@ -211,7 +217,7 @@ Ha a konfigurációt elvégezte, ezeknek a szolgáltatásoknak már futniuk kell
 ![Az Azure AD Connect Health ellenőrzése](./media/active-directory-aadconnect-health/aadconnect-health-adds-agent-install5.png)
 
 
-### <a name="agent-registration-using-powershell"></a>Ügynök regisztrációja a PowerShell használatával
+## <a name="agent-registration-using-powershell"></a>Ügynök regisztrációja a PowerShell használatával
 A megfelelő ügynökhöz tartozó setup.exe telepítése után a szerepkörtől függően a következő PowerShell-parancsokkal végezheti el az ügynök regisztrációját. Nyisson meg egy PowerShell-ablakot, és hajtsa végre a megfelelő parancsot:
 
 ```

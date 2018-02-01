@@ -1,6 +1,6 @@
 ---
-title: "Nem találja az Azure Active Directoryban a személyes alkalmazások portállal |} Microsoft Docs"
-description: "Gyakori feladatok végrehajtása, ha a hozzáférési panel dolgozunk annak."
+title: "Segítség eléréséhez, és a személyes alkalmazások portál használata az Azure Active Directoryban |} Microsoft Docs"
+description: "Segítség próbál bejelentkezni, és végrehajtson hétköznapi feladatokat a hozzáférési panelen."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -15,123 +15,109 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: japere
-ms.openlocfilehash: 9bec51e1d49308baecc76143ec80902d2da418e8
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 285ee0c4e7f963c372c4f95face73864ba2a4f68
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="do-you-need-help-with-the-my-apps-portal"></a>Van szüksége a saját alkalmazások portál számára?
+# <a name="troubleshoot-issues-with-accessing-and-using-the-my-apps-portal"></a>Való hozzáférés és a személyes alkalmazások portálon elhárítása
 
-Valószínűleg elérte a ezen a lapon, mert sajnos futtatása során a problémát a személyes alkalmazások portál használata. Amíg vannak esetek, amelyek igénylik, hogy forduljon az ügyfélszolgálathoz vagy a rendszergazdát a probléma megoldódott, az alábbiakban néhány hibaelhárítási témakörök, amelyek segítségével, először is.
+Ha történő bejelentkezés vagy a saját alkalmazások portálon problémákat tapasztal, próbálja meg ezek a hibaelhárítási tippek, mielőtt a segélyszolgálathoz vagy a rendszergazda segítségét.
 
 ## <a name="i-am-having-trouble-signing-into-the-my-apps-portal"></a>Problémáim vannak az alkalmazások saját portál bejelentkezni
 
-Általános problémák kereséséhez:
+Próbálja meg ezek általános tippeket:
 
-- Ellenőrizze, hogy ha jelentkezik be a helyes URL-címet: [https://myapps.microsoft.com](https://myapps.microsoft.com)
-
+- Első, a jelölőnégyzet megtekintéséhez, hogy a helyes URL-címet használ [https://myapps.microsoft.com](https://myapps.microsoft.com).
 - Próbálkozzon a böngésző megbízható helyek ad hozzá az URL-címet.
-
-- Győződjön meg arról, hogy a jelszó nem lejárt vagy elfelejtett. Ellenőrizze [Itt](active-directory-passwords-update-your-own-password.md) a további részletekért frissítse a jelszavát.
-
-- Ellenőrizze, hogy van-e a hitelesítés kapcsolattartási adatai és nem blokkolja-e a hozzáférés. Ellenőrizze [Itt](https://docs.microsoft.com/azure/multi-factor-authentication/end-user/multi-factor-authentication-end-user) a hitelesítési adatok beállításával kapcsolatos további részletekért.
-
+- Győződjön meg arról, hogy a jelszó helyes-e, és nem járt le. További információkért lásd: [a munkahelyi vagy iskolai jelszó](active-directory-passwords-update-your-own-password.md).
+- Ellenőrizze, hogy ellenőrizze, hogy a hitelesítési kapcsolattartási adatokat és nem blokkolja-e a hozzáférést. További információkért lásd: [mit Azure multi-factor Authentication jelent a számomra?](https://docs.microsoft.com/azure/multi-factor-authentication/end-user/multi-factor-authentication-end-user).
 - Törölje a böngésző cookie-kat, és próbálja meg újból bejelentkezni.
 
-Ha továbbra is problémák adódtak a bejelentkezés közben, a rendszergazdától további segítségért.
+Ha továbbra is problémák adódtak a bejelentkezés közben, forduljon a rendszergazdához.
 
 
-## <a name="how-do-i-update-my-password"></a>Hogyan frissíthetők a jelszó?
+## <a name="i-seem-to-be-having-password-issues"></a>I úgy tűnik, hogy a jelszó problémákat bejelentsen
 
-Ha elfelejtette a jelszavát, soha nem kapott az informatikai munkatársak közül, zárolja a fiókot, vagy szeretné módosítani, lásd: [segítségre van szüksége, az Azure AD-jelszó elfelejtettem](active-directory-passwords-update-your-own-password.md) további részleteket.
+Ha elfelejtette a jelszavát, soha nem kapott az informatikai munkatársak közül, az fiókjából, vagy szeretné módosítani a jelszót, lásd: [segítségre van szüksége, az Azure AD-jelszó elfelejtettem](active-directory-passwords-update-your-own-password.md).
 
-## <a name="how-do-i-register-for-password-reset"></a>Hogyan regisztrálhatnak a jelszóváltoztatásra?
+## <a name="i-need-to-register-for-password-reset"></a>Kell regisztrálni a jelszó alaphelyzetbe állítása
 
-Végfelhasználói új jelszót, vagy anélkül, hogy az önkiszolgáló jelszó-változtatási (SSPR) használó személy kommunikáljanak a fiók zárolását kívánja feloldani. Mielőtt használhatná ezt a funkciót, hitelesítési módszereket kell regisztrálnia, vagy jóvá kell hagynia a rendszergazda által betöltött előre definiált hitelesítési módszereket. További részletekért lásd: [az önkiszolgáló jelszó-változtatási regisztrációs](active-directory-passwords-reset-register.md).
+A jelszó, vagy anélkül, hogy valaki önkiszolgáló jelszó-változtatási (SSPR) használatával kommunikáljanak a fiók zárolását kívánja feloldani. Ez a funkció használata előtt kell regisztrálni a hitelesítési módszereket, vagy erősítse meg az előre definiált hitelesítési módszereket, amelyek a rendszergazda megköveteli. További információkért lásd: [az önkiszolgáló jelszó-változtatási regisztrációs](active-directory-passwords-reset-register.md).
 
 
 ## <a name="i-am-having-trouble-installing-the-my-apps-secure-sign-in-extension"></a>Problémáim vannak az alkalmazások a biztonságos bejelentkezés bővítmény telepítése
 
-Ellenőrizze, hogy ha teljesíti-böngészőre vonatkozó követelményei:
+A saját alkalmazások portálhoz szükséges, amely támogatja a JavaScript egy böngészőt, és CSS engedélyezte. Ha jelszóalapú egyszeri bejelentkezés alkalmazásokat használ, a hozzá tartozó bővítmény is telepíteni kell. A bővítmény le automatikusan, jelszó-alapú egyszeri bejelentkezés alkalmazásokhoz beállított az alkalmazás indításakor.
 
-- A portálhoz szükséges, amely támogatja a JavaScript egy böngészőt, és CSS engedélyezte. Ha jelszóalapú egyszeri bejelentkezés alkalmazásokat használ, a hozzá tartozó bővítmény is telepíteni kell. A bővítmény automatikusan letöltődik jelszó-alapú egyszeri bejelentkezés alkalmazásokhoz konfigurált alkalmazás elindítása.
+Ellenőrizze, hogy, hogy a következő webböngészőkre vonatkozó követelmények teljesítésének:
+- **Peremhálózati**: a Windows 10 évforduló Edition vagy újabb.
+- **Chrome**: Windows 7-es vagy újabb, és a Mac OS X vagy újabb.
+- **Firefox 26.0 vagy újabb**: Windows XP SP2 vagy újabb, és a Mac OS X 10.6 vagy újabb.
+- **Internet Explorer 8, 9, 10, 11**: Windows 7 vagy újabb (korlátozottan támogatja).
 
-- A bővítmény a böngészőre vonatkozó követelményei a következők:
-    - Peremhálózati Windows 10 évforduló Edition vagy újabb
-    - A Windows 7 vagy újabb, és MacOS X rendszeren vagy újabb Chrome
-    - Firefox 26.0 vagy újabb, Windows XP SP2 vagy újabb verzióját, és a Mac OS X 10.6 vagy újabb
-    - Internet Explorer 8, 9, 10, 11, Windows 7 vagy újabb (korlátozott támogatás)
-
-Az alábbi közvetlen hivatkozásokat a Chrome és peremhálózati is letölthető a bővítmény:
+Emellett letöltheti a bővítmény Chrome és peremhálózati közvetlenül a következő helyekről:
 
 - [Chrome-bővítmény](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
-
 - [Peremhálózati bővítmény](https://www.microsoft.com/store/apps/9pc9sckkzk84)
 
-Miután a telepítés kövesse az alábbi lépéseket, ha a probléma áll kapcsolatban:
+Ha telepítette a bővítményt, és továbbra is érintő problémákat tapasztal, próbálja meg a következőket:
 
-- Ellenőrizze, hogy a böngésző bővítmény beállításait az, hogy a bővítmény engedélyezve van-e.
-
+- Ellenőrizze a bővítmény böngészőbeállítások győződjön meg arról, hogy a bővítmény engedélyezve van-e.
 - Indítsa újra a böngészőt, és jelentkezzen be a saját alkalmazások portálra.
-
 - Törölje a böngésző cookie-kat, és jelentkezzen be a saját alkalmazások portálra.
-- Kövesse a [hibaelhárítása a hozzáférési Panel bővítményét az Internet Explorer](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-troubleshooting) útmutató a hozzáférés olyan diagnosztikai eszköz és részletes útmutatás a bővítmény konfigurálásáról az Internet Explorer.
+- A diagnosztikai eszköz és részletes ismertetése a bővítmény beállítása az Internet Explorer elérésére, lásd: [hibaelhárítása a hozzáférési Panel bővítményét az Internet Explorer](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-troubleshooting).
 
-## <a name="how-do-i-use-the-my-apps-secure-sign-in-extension"></a>A személyes alkalmazások biztonságos bejelentkezési bővítmény használata?
-A bővítmény saját alkalmazások alapértelmezett URL-Címének módosítása
+## <a name="use-the-my-apps-secure-sign-in-extension"></a>Használja a alkalmazásaimat biztonságos bejelentkezési bővítmény
+* Használata saját alkalmazások URL-címe eltérő `https://myapps.microsoft.com`, az alapértelmezett URL-cím konfigurálása a következő tevékenységek végrehajtásával:
+   1. Miközben az *nem* jelentkezve a bővítményt, kattintson a jobb gombbal bővítmény.
+   2. Válassza a menü **saját alkalmazások URL-cím**.
+   3. Válassza ki az alapértelmezett URL-cím.
+   4. Válassza ki a bővítmény ikonra.
+   5. Jelentkezzen be a bővítményt, jelölje be **jelentkezzen be a kezdéshez**.
 
-Egy másik saját alkalmazások URL-címet mint https://myapps.microsoft.com használata majd konfigurálnia kell az alapértelmezett URL-cím, ha az alábbi lépéseket:
-1. Amíg nem írta be a bővítmény **kattintson a jobb gombbal** a bővítmény ikonra.
-2. Kattintson a **válassza ki a saját alkalmazások URL-cím** a menüből.
-3. **Válassza ki** az alapértelmezett URL-cím.
-4. Kattintson a bővítmény ikonra.
-5. Jelentkezzen be a bővítmény kiválasztásával **jelentkezzen be a kezdéshez**.
+* Jelentkezzen be az alkalmazások számára közvetlenül a böngészőből, tegye a következőket:
+   1. A bővítmény telepítése után jelentkezzen be az kiválasztásával **jelentkezzen be a kezdéshez**.
+   2. Jelentkezzen be az alkalmazás és a bejelentkezési URL-CÍMÉT.  
+       A bejelentkezési URL-címet az általában az URL-CÍMÉT, amely megjeleníti a bejelentkezési képernyőt.
+      A bővítmény kell módosította az állapotát, és jelzi, hogy rendelkezésre áll-e jelszót.
+   3. Jelentkezzen be, válassza a kiterjesztés ikonra.
 
-Jelentkezzen be közvetlenül a böngészőből az alkalmazásba
-1. A bővítmény bejelentkezés kiválasztásával a bővítmény telepítését követően **jelentkezzen be a kezdéshez**.
-2. Keresse meg a **sign-on URL-cím** az alkalmazást szeretne bejelentkezni, és ezt az általában az URL-CÍMÉT, amely a bejelentkezési űrlap jeleníti meg.
-3. A bővítmény kell módosította az állapotát, és lehetővé teszik, hogy tudja, hogy a jelszó érhető el, kattintson a a **bővítmény ikon** való bejelentkezéshez
-
-Indítsa el az alkalmazást, a bővítmény
-1. A bővítmény bejelentkezés kiválasztásával a bővítmény telepítését követően **jelentkezzen be a kezdéshez**.
-2. Kattintson a bővítmény ikonra a menü megnyitásához.
-3. **Keresési** a saját alkalmazások portálon elérhető alkalmazás.
-4. Kattintson a az alkalmazásból a **keresési eredmények** elindításához.
-5. Elindítja az utolsó három alkalmazásokat is megjelenik a **legutóbbi** helyi listája
+* Az alkalmazás indításához a bővítményből származó, tegye a következőket:
+   1. A bővítmény telepítése után jelentkezzen be az kiválasztásával **jelentkezzen be a kezdéshez**.
+   2. Válassza ki a bővítmény ikonra a menü megnyitásához.
+   3. Keresse meg a személyes alkalmazások portálon elérhető alkalmazás.
+   4. A keresési eredmények listájában válassza ki az alkalmazást.  
+       Már használta az utolsó három alkalmazások megjelennek a **legutóbbi** helyi listát.
 
 > [!NOTE]
-> A beállítások csak az él, Chrome, Firefox érhetők el.
+> Ezek a beállítások csak él, Chrome és Firefox érhetők el.
 
 ## <a name="how-do-i-add-a-new-app"></a>Hogyan vehetek fel egy új alkalmazást?
 
-1.  Az a **alkalmazások** kattintson **alkalmazás hozzáadása**.
+1.  Az a **alkalmazások** lapon jelölje be **alkalmazás hozzáadása**.
+2.  Keresse meg az alkalmazást, amelyet szeretne hozzáadni, majd válassza ki **Hozzáadás**.
 
-2.  A kívánt alkalmazást, adja hozzá, és kattintson a Keresés **Hozzáadás**.
-
-**Megjegyzés:**
-
-- Ha a rendszergazda engedélyezte ezt a fiókot csak rendelkezik hozzáféréssel a beállításhoz.
-
-- Ha az alkalmazás engedélyre van szüksége, szükség lehet megvárja a rendszergazdai jóváhagyást.
-
+   > [!NOTE]
+   > * Ez a beállítás csak akkor, ha a rendszergazda engedélyezte a fiók érheti el.
+   > * Ha az alkalmazás engedélyre van szüksége, szükség lehet megvárja a rendszergazdai jóváhagyást.
+   > 
 
 ## <a name="how-do-i-manage-my-group-memberships"></a>Hogyan kezelhetem a csoporttagságok?
 
-1. Kattintson a **csoportok** csempére. 
-2. Hozzon létre egy csoportot, a csoportok saját, kattintson a **csoport létrehozása**, majd kövesse az utasításokat.
-3. Csatlakozás a csoporthoz, a csoportok vagyok, kattintson a **csatlakozás a csoporthoz**, majd kövesse az utasításokat.
+Válassza ki a **csoportok** csempére, majd tegye a következők egyikét: 
+* A csoport, létrehozása **saját csoportok**, jelölje be **csoport létrehozása**, és kövesse az utasításokat.
+* Egy csoporthoz való csatlakoztatáshoz, a **az vagyok csoportok**, jelölje be **csatlakozás a csoporthoz**, majd kövesse az utasításokat.
 
-**Megjegyzés:**
-
-- Ha a rendszergazda engedélyezte ezt a fiókot csak rendelkezik hozzáféréssel a beállításhoz.
-
-- Csoportokat, amelyeket Ön tagja lehetővé teszik a részletek megtekintéséhez és a csoport elhagyására.
-
-- Csoportokat, amelyeket Ön a tulajdonosa adja hozzá vagy tagok eltávolítása és a csoport elhagyására teszi lehetővé, a részletek megtekintéséhez.
+   > [!NOTE]
+   > * Ez a beállítás csak akkor, ha a rendszergazda engedélyezte a fiók érheti el.
+   > * Ha egy csoport tagja, a részletek megtekintéséhez, és a csoport elhagyására.
+   > * Ha egy csoport tulajdonosa, a részletek megtekintéséhez, vegye fel vagy tagok eltávolítása, és a csoport elhagyására.
+   >
 
 
 ## <a name="next-steps"></a>További lépések
 
-Kapcsolódó információk, tekintse meg [az alkalmazás hozzáférési panel webhelyen vagy a mobilalkalmazás problémák](active-directory-application-access-panel-content-map.md)
+További hibaelhárítási információkért lásd: [problémák az alkalmazás hozzáférési panel webhelyen vagy a mobilalkalmazás](active-directory-application-access-panel-content-map.md).
 

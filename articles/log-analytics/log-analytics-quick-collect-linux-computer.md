@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 12/14/2017
+ms.date: 01/23/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: fae88e44ee763a0c59b4ad2c731d77db379aa1ee
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 839fc3a326dca8b60c6750231b06d2369c3de2fc
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="collect-data-from-linux-computers-hosted-in-your-environment"></a>Adatok gyűjtése saját környezetben futtatott linuxos számítógépekről
 Az [Azure Log Analytics](log-analytics-overview.md) közvetlenül tud adatokat gyűjteni az Ön környezetében található fizikai vagy virtuális Linux-gépekről és egyéb erőforrásokról egy adattárba, részletes elemzés és összehasonlítás céljából.  Ez a rövid útmutató bemutatja, hogyan konfigurálhatja a Linux rendszerű számítógépekről történő adatgyűjtést néhány egyszerű lépésben.  Azure-beli linuxos virtuális gépek esetén lásd [az Azure-beli virtuális gépekről történő adatgyűjtést](log-analytics-quick-collect-azurevm.md) ismertető cikket.  
@@ -75,7 +75,7 @@ Az alábbi lépésekkel konfigurálhatóak az ügynök beállításai a Log Anal
 
 ## <a name="configure-agent-to-communicate-with-a-proxy-server"></a>Az ügynök konfigurálása proxykiszolgálókkal folytatott kommunikációhoz
 
-A következő lépéseket akkor hajtsa végre, ha a linuxos számítógépeinek egy proxykiszolgálón keresztül kell kommunikálniuk a Log Analyticsszel.  A proxykonfiguráció értékének szintaxisa a következő: `[protocol://][user:password@]proxyhost[:port]`.
+A következő lépéseket akkor hajtsa végre, ha a linuxos számítógépeinek egy proxykiszolgálón keresztül kell kommunikálniuk a Log Analyticsszel.  A proxykonfiguráció értékének szintaxisa a következő: `[protocol://][user:password@]proxyhost[:port]`.  A *proxyhost* tulajdonság a proxykiszolgáló teljes tartománynevét vagy IP-címét fogadja el.    
 
 1. Szerkessze az `/etc/opt/microsoft/omsagent/proxy.conf` fájlt a következő parancsok futtatásával, és módosítsa az értékeket a saját konkrét beállításaira.
 

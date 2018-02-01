@@ -1,6 +1,6 @@
 ---
-title: "A Linux Service Fabric-fürt létrehozása az Azure-ban |} Microsoft Docs"
-description: "Ismerje meg, hogy egy meglévő Azure virtuális hálózatra, Azure parancssori felület használatával történő Linux Service Fabric-fürt központi telepítése."
+title: "Linux-alapú Service Fabric-fürt létrehozása az Azure-ban | Microsoft Docs"
+description: "Megismerheti, hogyan helyezhet üzembe egy Linux-alapú Service Fabric-fürtöt egy meglévő Azure-beli virtuális hálózatban az Azure CLI használatával."
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -12,176 +12,186 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/26/2017
+ms.date: 01/22/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: de67512a9b03095b793fc82f3b0c348577511d5f
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
-ms.translationtype: MT
+ms.openlocfilehash: 3b09e676a26336d1ef1e744f9e45066c4815fe21
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/23/2018
 ---
-# <a name="deploy-a-service-fabric-linux-cluster-into-an-azure-virtual-network"></a>Az Azure virtuális hálózat Service Fabric Linux fürt központi telepítése
-Ez az oktatóanyag egy sorozat része. Megtudhatja, hogyan telepítheti Linux Service Fabric-fürt be egy meglévő Azure virtuális hálózatot (VNET), és részterv net az Azure parancssori felület használatával. Amikor végzett, hogy a fürt fut a felhőben, amely központilag telepíthető alkalmazások. A Windows PowerShell fürt létrehozásához lásd: [biztonságos Windows-fürt létrehozása az Azure](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
+# <a name="deploy-a-service-fabric-linux-cluster-into-an-azure-virtual-network"></a>Linux-alapú Service Fabric-fürt üzembe helyezése egy Azure-beli virtuális hálózatban
+Ez az oktatóanyag egy sorozat első része. Megismerheti, hogyan helyezhet üzembe egy Linux rendszert futtató Service Fabric-fürtöt egy [Azure-beli virtuális hálózaton (VNET)](../virtual-network/virtual-networks-overview.md) és [hálózati biztonsági csoportban (NSG)](../virtual-network/virtual-networks-nsg.md) az Azure CLI és egy sablon használatával. Amikor végzett, a felhőben futó fürttel fog rendelkezni, amelyre alkalmazásokat telepíthet. Ha a PowerShell használatával szeretne Windows-fürtöt létrehozni, lásd: [Biztonságos Windows-fürt létrehozása az Azure-ban](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * VNET létrehozása az Azure-ban az Azure parancssori felület
-> * A biztonságos Service Fabric-fürt létrehozása az Azure-ban az Azure parancssori felület
-> * A fürt egy X.509 tanúsítvánnyal biztonságos
-> * Csatlakozzon a fürthöz Service Fabric parancssori felület használatával
-> * A fürt eltávolítása
+> * Virtuális hálózat létrehozása az Azure CLI használatával
+> * Biztonságos Service Fabric-fürt létrehozása az Azure-ban az Azure CLI használatával
+> * A fürt védelme X.509-tanúsítvánnyal
+> * Csatlakozás a fürthöz Service Fabric parancssori felületével
+> * Fürt eltávolítása
 
-Az oktatóanyag adatsorozat elsajátíthatja, hogyan:
+Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
-> * Biztonságos fürt létrehozása az Azure-on
-> * [Bejövő vagy kimenő fürt méretezése](service-fabric-tutorial-scale-cluster.md)
-> * [A futtatókörnyezet egy fürt frissítése](service-fabric-tutorial-upgrade-cluster.md)
-> * [A Service Fabric az API Management központi telepítését](service-fabric-tutorial-deploy-api-management.md)
+> * Biztonságos fürt létrehozása az Azure-ban
+> * [Fürt horizontális fel- és leskálázása](service-fabric-tutorial-scale-cluster.md)
+> * [Fürt futtatókörnyezetének frissítése](service-fabric-tutorial-upgrade-cluster.md)
+> * [Az API Management üzembe helyezése a Service Fabrickel](service-fabric-tutorial-deploy-api-management.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez az oktatóanyag elkezdéséhez:
-- Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-- Telepítse a [háló CLI szolgáltatás](service-fabric-cli.md)
-- Telepítse a [Azure CLI 2.0](/cli/azure/install-azure-cli)
+Az oktatóanyag elkezdése előtt:
+- Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Telepítse a [Service Fabric parancssori felületet](service-fabric-cli.md)
+- Telepítse az [Azure CLI 2.0-t](/cli/azure/install-azure-cli)
 
-Az alábbi eljárások öt csomópontból Service Fabric-fürtök létrehozása. Használja az Azure Service Fabric-fürt futtatásával felmerülő költség kiszámításához a [Azure Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/).
+Az alábbi eljárások egy ötcsomópontos Service Fabric-fürtöt hoznak létre. A Service Fabric-fürtök Azure-ban történő futtatásával járó költségek kiszámításához használja az [Azure-díjkalkulátort](https://azure.microsoft.com/pricing/calculator/).
 
-## <a name="introduction"></a>Bevezetés
-Ez az oktatóanyag az Azure-ban virtuális hálózatba egycsomópontos típusú öt csomópontból álló fürtben telepíti.
+## <a name="key-concepts"></a>Fő fogalmak
+A [Service Fabric-fürt](service-fabric-deploy-anywhere.md) virtuális és fizikai gépek hálózaton keresztül csatlakozó készlete, amelyen mikroszolgáltatásokat helyezhet üzembe és felügyelhet. A fürtök több ezer gépre skálázhatók. A fürtök részét képező gépeket vagy virtuális gépeket csomópontoknak nevezzük. Minden csomóponthoz hozzá van rendelve egy csomópontnév (egy karakterlánc). A csomópontok jellemzőkkel, például elhelyezési tulajdonságokkal rendelkeznek.
 
-A [Service Fabric-fürt](service-fabric-deploy-anywhere.md) virtuális és fizikai gépek hálózaton keresztül csatlakozó készlete, amelyen mikroszolgáltatásokat helyezhet üzembe és felügyelhet. Fürtök méretezhető, több ezer gép. Egy számítógép vagy virtuális Gépet, amely egy fürt része egy csomópont neve. Minden csomópont hozzá van rendelve egy csomópont neve (karakterlánc). Csomópontok például elhelyezési tulajdonságok jellemzőkkel bírnak.
+A csomópont típusa meghatározza a fürt egyes virtuálisgép-készleteinek méretét, számát és tulajdonságait. Minden megadott csomóponttípus [virtuálisgép-méretezési csoportként](/azure/virtual-machine-scale-sets/) lesz beállítva, amely egy, a virtuális gépek gyűjteményének csoportként való üzembe helyezésére és felügyeletére használható Azure számítási erőforrás. Ezután mindegyik csomóponttípus egymástól függetlenül skálázható vertikálisan le vagy fel, eltérő nyitott portokkal rendelkezhet, és eltérő kapacitásmetrikái lehetnek. A csomóponttípusok a fürtcsomópontcsoportok szerepkörének (például „előtér” vagy „háttér”) meghatározására szolgálnak.  A fürt több csomóponttípussal is rendelkezhet, de éles fürtök esetében az elsődleges csomóponttípusnak legalább öt (vagy tesztfürtök esetében legalább három) virtuális géppel kell rendelkeznie.  [A Service Fabric-rendszerszolgáltatások](service-fabric-technical-overview.md#system-services) elhelyezése az elsődleges csomóponttípusra történik.
 
-Csomóponttípus a fürt méretét, számot, és azon virtuális gépek tulajdonságait határozza meg. Minden definiált csomóponttípus lett beállítva a [virtuálisgép-méretezési csoport](/azure/virtual-machine-scale-sets/), az Azure számítási erőforrás telepíthetnek és kezelhetnek olyan virtuális gépek gyűjteményét használja. Az egyes csomóponttípusok akár majd is méretezhető vagy rendelkezik egymástól függetlenül, a portok megnyitása más-más részhalmazához le, és különböző teljesítmény-mérőszámait lehet. Csomóponttípusok állítja be a fürtcsomópontokon, például az "előtér" vagy "Háttér" szerepkörök meghatározásához használják.  A fürt több csomóponttípus is rendelkezik, de az elsődleges csomóponttípusok kell rendelkeznie legalább öt virtuális gépek éles fürtök (vagy a tesztfürtökön legalább három virtuális géppel).  [A Service Fabric rendszerszolgáltatások](service-fabric-technical-overview.md#system-services) kerülnek, az elsődleges csomópont típusú csomópontok.
+A fürtöt egy fürttanúsítvány védi. A fürttanúsítvány egy X.509-tanúsítvány, amely a csomópontok közötti kommunikáció biztonságossá tételére, valamint a fürtkezelési végpontoknak egy kezelési ügyfél felé történő hitelesítésére szolgál.  A fürttanúsítvány egy SSL-tanúsítványt is biztosít a HTTPS-felügyeleti API, valamint a HTTPS protokollt használó Service Fabric Explorer számára. Az önaláírt tanúsítványok a tesztfürtök esetén hasznosak.  Éles fürtök esetén hitelesítésszolgáltatótól (CA) származó tanúsítványt használjon fürttanúsítványként.
 
-## <a name="cluster-capacity-planning"></a>A fürtök kapacitástervezése
-Ez az oktatóanyag egy egycsomópontos típus öt csomópontból álló fürtben telepíti.  Minden éles fürt telepítésében kapacitásának megtervezése fontos lépés. Az alábbiakban szempontokat kell figyelembe venni, hogy a folyamat részeként.
+A fürttanúsítványnak a következő feltételeknek kell megfelelnie:
 
-- A csomópont száma meg kell adnia a fürt igények 
-- Az egyes (például méret, elsődleges, az internetre és virtuális gépek száma) típusú csomópont tulajdonságait
-- A fürt megbízhatóság és a tartós jellemzői
+- Tartalmaznia kell egy titkos kulcsot.
+- A létrehozásának kulcscserét kell szolgálnia, amely exportálható egy személyes információcsere (.pfx) fájlba.
+- Rendelkeznie kell tulajdonosnévvel, amely megegyezik a Service Fabric-fürt eléréséhez használt tartománnyal. Erre a megfeleltetésre azért van szükség, hogy a rendszer biztosíthassa az SSL-kapcsolatot a fürt HTTPS-felügyeleti végpontjai és a Service Fabric Explorer számára. Nem szerezhető be SSL-tanúsítvány hitelesítésszolgáltatótól (CA) a .cloudapp.azure.com tartomány számára. Egyéni tartománynevet kell beszereznie a fürt számára. Amikor tanúsítványt igényel egy hitelesítésszolgáltatótól, a tanúsítvány tulajdonosnevének meg kell felelnie a fürthöz használt egyéni tartománynévnek.
 
-További információkért lásd: [fürt kapacitástervezésének szempontjai](service-fabric-cluster-capacity.md).
+Az Azure Key Vault használatával kezelheti a Service Fabric-fürtök tanúsítványait az Azure-ban.  Amikor egy fürtöt üzembe helyez az Azure-ban, Azure Service Fabric-fürtök létrehozásáért felelős erőforrás-szolgáltatója lekéri a tanúsítványokat a Key Vaultból, és telepíti őket a fürt virtuális gépein.
 
-## <a name="sign-in-to-azure-and-select-your-subscription"></a>Bejelentkezés az Azure-ba, és jelölje ki az előfizetését
-Ez az útmutató az Azure parancssori felület használja. Amikor egy új munkamenetet indít el, jelentkezzen be az Azure-fiókjával, és jelölje ki az előfizetését, Azure parancsok végrehajtása előtt.
- 
-Futtassa az alábbi parancsfájlt az Azure-fiókjával bejelentkezhet jelölje ki az előfizetését:
+A jelen oktatóanyag olyan fürtöt helyez üzembe, amelyben öt csomópont van egyetlen csomóponttípusban. A [kapacitástervezés](service-fabric-cluster-capacity.md) azonban az éles fürttelepítések lényeges lépése. Az alábbiakban néhány dolog láthat, amelyet érdemes a folyamat részeként figyelembe vennie.
 
-```azurecli
-az login
-az account set --subscription <guid>
-```
+- A fürt számára szükséges csomópontok és csomóponttípusok száma. 
+- Az egyes csomóponttípusok tulajdonságai (például a virtuális gépek mérete, elsődlegessége, internetkapcsolata és száma).
+- A fürt megbízhatóságra és tartósságra vonatkozó jellemzői.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
-Hozzon létre egy új erőforráscsoportot, a telepítéshez, és adjon neki egy nevet és egy helyet.
+## <a name="download-and-explore-the-template"></a>A sablon letöltése és megismerése
+Töltse az alábbi Resource Manager-sablonfájlokat:
+- [vnet-linuxcluster.json][template]
+- [vnet-linuxcluster.parameters.json][parameters]
+
+A [vnet-linuxcluster.json][template] több erőforrást is üzembe helyez, többek között az alábbiakat.
+
+### <a name="service-fabric-cluster"></a>Service Fabric-fürt
+A rendszer üzembe helyez egy Linux-fürtöt, amely a következő jellemzőkkel rendelkezik:
+- egyetlen csomóponttípus; 
+- öt csomópont az elsődleges csomóponttípusban (a sablon paramétereiben konfigurálható);
+- Ubuntu 16.04 LTS operációs rendszer (a sablon paramétereiben konfigurálható);
+- tanúsítványon alapuló védelem (a sablon paramétereiben konfigurálható);
+- engedélyezve van a [DNS szolgáltatás](service-fabric-dnsservice.md);
+- bronz szintű [tartóssági szint](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) (a sablon paramétereiben konfigurálható);
+- ezüst szintű [megbízhatósági szint](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) (a sablon paramétereiben konfigurálható);
+- ügyfélkapcsolati végpont: 19000 (a sablon paramétereiben konfigurálható);
+- HTTP-átjáró végpontja: 19080 (a sablon paramétereiben konfigurálható).
+
+### <a name="azure-load-balancer"></a>Azure Load Balancer
+A rendszer egy terheléselosztót helyez üzembe, a mintavételeket és szabályokat pedig az alábbi portokra állítja be:
+- ügyfélkapcsolati végpont: 19000;
+- HTTP-átjáró végpontja: 19080; 
+- alkalmazásport: 80;
+- alkalmazásport: 443;
+
+### <a name="virtual-network-subnet-and-network-security-group"></a>Virtuális hálózat, alhálózat és hálózati biztonsági csoport
+A virtuális hálózat, az alhálózat és a hálózati biztonsági csoport neve a sablon paramétereiben van meghatározva.  A virtuális hálózat és az alhálózat címtere szintén a sablon paramétereiben határozható meg:
+- virtuális hálózat címtere: 10.0.0.0/16
+- Service Fabric-alhálózat címtere: 10.0.2.0/24
+
+Az alábbi bejövő forgalmi szabályok vannak engedélyezve a hálózati biztonsági csoportban. A portok értékét a sablon változóinak módosításával módosíthatja.
+- ClientConnectionEndpoint (TCP): 19000
+- HttpGatewayEndpoint (HTTP/TCP): 19080
+- SMB : 445
+- Csomópontok közötti kommunikáció – 1025, 1026, 1027,
+- rövid élettartamú porttartomány – 49152–65534 (legalább 256 port szükséges),
+- alkalmazások által használható portok: 80 és 443,
+- alkalmazásportok tartománya – 49152–65534 (a szolgáltatások közötti kommunikációra szolgál, és nincs megnyitva a terheléselosztóban),
+- összes többi port letiltása.
+
+Ha további alkalmazásportokra van szükség, akkor módosítania kell a Microsoft.Network/loadBalancers és a Microsoft.Network/networkSecurityGroups erőforrást a forgalom beengedésére.
+
+## <a name="set-template-parameters"></a>Sablon paramétereinek megadása
+A [vnet-cluster.parameters.json][parameters] paraméterfájl számos, a fürt és a társított erőforrások üzembe helyezéséhez használt értéket meghatároz. Néhány paraméter, amelyeket lehet, hogy módosítani kell az üzembe helyezéshez:
+
+|Paraméter|Példaérték|Megjegyzések|
+|---|---||
+|adminUserName|vmadmin| Rendszergazdai felhasználónév a fürt virtuális gépeihez. |
+|adminPassword|Password#1234| Rendszergazdai jelszó a fürt virtuális gépeihez.|
+|clusterName|mysfcluster123| A fürt neve. |
+|location|southcentralus| A fürt helye. |
+|certificateThumbprint|| <p>Önaláírt tanúsítvány létrehozása vagy tanúsítványfájl megadása esetén az értéknek üresnek kell lennie.</p><p>Ha meglévő, egy kulcstárolóba korábban feltöltött tanúsítványt szeretne használni, adja meg a tanúsítvány ujjlenyomatának értékét. Például: „6190390162C988701DB5676EB81083EA608DCCF3” </p>| 
+|certificateUrlValue|| <p>Önaláírt tanúsítvány létrehozása vagy tanúsítványfájl megadása esetén az értéknek üresnek kell lennie.</p><p>Ha meglévő, egy kulcstárolóba korábban feltöltött tanúsítványt szeretne használni, adja meg a tanúsítvány URL-címét. For example, "https://mykeyvault.vault.azure.net:443/secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346".</p>|
+|sourceVaultValue||<p>Önaláírt tanúsítvány létrehozása vagy tanúsítványfájl megadása esetén az értéknek üresnek kell lennie.</p><p>Ha meglévő, egy kulcstárolóba korábban feltöltött tanúsítványt szeretne használni, adja meg a forrástároló értékét. For example, "/subscriptions/333cc2c84-12fa-5778-bd71-c71c07bf873f/resourceGroups/MyTestRG/providers/Microsoft.KeyVault/vaults/MYKEYVAULT".</p>|
+
+
+<a id="createvaultandcert" name="createvaultandcert_anchor"></a>
+
+## <a name="deploy-the-virtual-network-and-cluster"></a>A virtuális hálózat és a fürt üzembe helyezése
+Ezután állítsa be a hálózati topológiát, és helyezze üzembe a Service Fabric-fürtöt. A [vnet-linuxcluster.json][template] Resource Manager-sablon egy virtuális hálózatot (VNET-et), továbbá egy alhálózatot és egy hálózati biztonsági csoportot (NSG-t) hoz létre a Service Fabric számára. A sablon emellett egy fürtöt is üzembe helyez engedélyezett tanúsítványalapú biztonsággal.  Éles fürtök esetén hitelesítésszolgáltatótól (CA) származó tanúsítványt használjon fürttanúsítványként. A tesztfürtök számára önaláírt tanúsítvánnyal is biztosítható védelem.
+
+Az alábbi szkript az [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest#az_sf_cluster_create) parancs és egy sablon használatával helyez üzembe egy meglévő tanúsítvánnyal védett új fürtöt. A parancs emellett egy új kulcstárolót is létrehoz az Azure-ban, és feltölti a tanúsítványt.
 
 ```azurecli
 ResourceGroupName="sflinuxclustergroup"
-Location="southcentralus"
-az group create --name $ResourceGroupName --location $Location
-```
-
-## <a name="deploy-the-network-topology"></a>A hálózati topológia központi telepítéséhez
-Következő lépésként állítsa be a hálózati topológia, amely az API Management és a Service Fabric-fürt telepítése. A [network.json] [ network-arm] Resource Manager-sablon létrehozására van beállítva a virtuális hálózathoz (VNET), és egy alhálózat és a hálózati biztonsági csoport (NSG) a Service Fabric és alhálózati és NSG-t az API Management . Ismerje meg a Vneteket, alhálózatok, és tájékozódhat az NSG-k [Itt](../virtual-network/virtual-networks-overview.md).
-
-A [network.parameters.json] [ network-parameters-arm] paraméterfájl NSG-ket, hogy a Service Fabric és az API Management és az alhálózatok nevét tartalmazza.  Az API Management telepítve van a [oktatóanyag következő](service-fabric-tutorial-deploy-api-management.md). Ez az útmutató a paraméterértékek nem kell módosítani. A Service Fabric Resource Manager-sablonok használja ezeket az értékeket.  Ha itt módosítja az az értékeket, módosítania kell azokat a jelen oktatóanyagban használt többi Resource Manager sablon és a [központi telepítése az API Management oktatóanyag](service-fabric-tutorial-deploy-api-management.md). 
-
-Töltse le a következő Resource Manager sablon és a Paraméterek:
-- [Network.JSON][network-arm]
-- [Network.Parameters.JSON][network-parameters-arm]
-
-A következő parancsfájl használatával telepíti a Resource Manager-sablonnal és paraméterfájlokkal a hálózati telepítéshez fájlokat:
-
-```azurecli
-az group deployment create \
-    --name VnetDeployment \
-    --resource-group $ResourceGroupName \
-    --template-file network.json \
-    --parameters @network.parameters.json
-```
-<a id="createvaultandcert" name="createvaultandcert_anchor"></a>
-## <a name="deploy-the-service-fabric-cluster"></a>A Service Fabric-fürt központi telepítése
-Ha a hálózati erőforrások végzett központi telepítése, a következő lépés a Service Fabric-fürt központi telepítése a virtuális hálózat, az alhálózat és a Service Fabric-fürt számára kijelölt NSG. A Resource Manager-sablon egy meglévő VNET és alhálózat (korábban ebben a cikkben telepített) egy fürt telepítése szükséges.  További információkért lásd: [fürt létrehozása az Azure Resource Manager használatával](service-fabric-cluster-creation-via-arm.md). Az oktatóanyag adatsorozathoz a sablon nevét a virtuális Hálózatot, alhálózatot és az előző lépésben beállított NSG használandó előre konfigurálva.  
-
-Töltse le a következő Resource Manager sablon és a Paraméterek:
-- [linuxcluster.JSON][cluster-arm]
-- [linuxcluster.Parameters.JSON][cluster-parameters-arm]
-
-A sablon használatához a biztonságos fürtök létrehozásához.  A fürt tanúsítvány csomópontok kommunikáció biztosításához és a fürt felügyeleti végpontok egy felügyeleti ügyfél hitelesítésére használt X.509 tanúsítvány.  A fürt tanúsítvány is lehetővé teszi az SSL protokoll a HTTPS-szolgáltatásfelügyeleti API és a Service Fabric Explorer HTTPS-KAPCSOLATON keresztül. Az Azure Key Vault segítségével kezelheti az Azure Service Fabric-fürtök tanúsítványait.  A fürt telepítésekor az Azure-ban, a Service Fabric-fürtök létrehozásáért felelős az Azure erőforrás-szolgáltató kéri le a tanúsítványokat a Key Vault, és telepíti azokat a virtuális gépek fürtön. 
-
-Egy hitelesítésszolgáltatótól (CA) származó tanúsítványt használjon a fürt-tanúsítványt, vagy a tesztelési célokra, hozzon létre egy önaláírt tanúsítványt. A fürt tanúsítványt kell:
-
-- tartalmazza a titkos kulcsot.
-- a kulcscseréhez használt, amely exportálható egy személyes információcsere (.pfx) fájl hozható létre.
-- a tulajdonos nevét, amely megfelel a tartományt, amelyikhez a Service Fabric-fürt eléréséhez használt rendelkezik. A megfelelő szükség SSL a fürt HTTPS felügyeleti végpontokat és a Service Fabric Explorerben talál. Az SSL-tanúsítványt egy hitelesítésszolgáltatótól (CA) származó nem szerezze be a. cloudapp.azure.com tartomány. Be kell szereznie egy egyéni tartománynevet a fürt számára. A hitelesítésszolgáltató tanúsítvány kérése, amikor a tanúsítvány tulajdonosának nevét meg kell egyeznie az egyéni tartománynevet, amelyekkel a fürt számára.
-
-Töltse ki a üres paraméterek a *linuxcluster.parameters.json* fájl az adott környezethez:
-
-|Paraméter|Érték|
-|---|---|
-|adminPassword|Jelszó #1234|
-|adminUserName|vmadmin|
-|Fürtnév|mysfcluster|
-
-Hagyja a **certificateThumbprint**, **certificateUrlValue**, és **sourceVaultValue** paraméter üres, létrehozhat egy önaláírt tanúsítványt.  Ha egy meglévő kulcstároló korábban feltöltött tanúsítványt használni kívánt, töltse ki azokat a paraméterértékek.
-
-Az alábbi parancsfájl használ a [az ú fürt létrehozása](/cli/azure/sf/cluster?view=azure-cli-latest#az_sf_cluster_create) parancs és a sablon telepítése egy új fürtöt az Azure-ban. A parancsmag is létrehoz egy új kulcstartó az Azure-ban, a key vault ad hozzá egy új önaláírt tanúsítványt, és letölti a fájlt helyileg. A többi paraméter használatával adhat meg egy meglévő tanúsítvány és/vagy a kulcstartót a [az ú fürt létrehozása](/cli/azure/sf/cluster?view=azure-cli-latest#az_sf_cluster_create) parancsot.
-
-```azurecli
+Location="southcentralus"  
 Password="q6D7nN%6ck@6"
-Subject="mysfcluster.southcentralus.cloudapp.azure.com"
 VaultName="linuxclusterkeyvault"
+VaultGroupName="linuxclusterkeyvaultgroup"
+CertPath="C:\MyCertificates\MyCertificate.pem"
+
+# sign in to your Azure account and select your subscription
+az login
+az account set --subscription <guid>
+
+# Create a new resource group for your deployment and give it a name and a location.
 az group create --name $ResourceGroupName --location $Location
 
+# Create the Service Fabric cluster.
 az sf cluster create --resource-group $ResourceGroupName --location $Location \
-   --certificate-output-folder . --certificate-password $Password --certificate-subject-name $Subject \
+   --certificate-password $Password --certificate-file $CertPath \
    --vault-name $VaultName --vault-resource-group $ResourceGroupName  \
-   --template-file linuxcluster.json --parameter-file linuxcluster.parameters.json
-
+   --template-file vnet-linuxcluster.json --parameter-file vnet-linuxcluster.parameters.json
 ```
 
 ## <a name="connect-to-the-secure-cluster"></a>Csatlakozás a biztonságos fürthöz
-Csatlakozzon a fürthöz, a Service Fabric parancssori felület használatával `sfctl cluster select` parancsot a kulcs használatával.  Vegye figyelembe, csak a **--nem ellenőrizze** beállítás megadása egy önaláírt tanúsítványt.
+Csatlakozzon a fürthöz a Service Fabric parancssori felület `sfctl cluster select` parancsával a kulccsal.  A **--no-verify** paramétert csak önaláírt tanúsítvány esetén használja.
 
 ```azurecli
 sfctl cluster select --endpoint https://aztestcluster.southcentralus.cloudapp.azure.com:19080 \
 --pem ./aztestcluster201709151446.pem --no-verify
 ```
 
-Ellenőrizze, hogy kapcsolódik-e, és a fürt állapota kifogástalan használatával a `sfctl cluster health` parancsot.
+Az `sfctl cluster health` parancs futtatásával ellenőrizze, hogy csatlakozik-e, és hogy a fürt állapota kifogástalan-e.
 
 ```azurecli
 sfctl cluster health
 ```
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Az oktatóanyag adatsorozat további cikkeit az újonnan létrehozott fürt használja. Ha még nem azonnal áthelyezése a következő cikk be, előfordulhat, hogy törölni kívánja a fürt ezzel járó költségek elkerülése érdekében. A fürt és az összes általa használt erőforrás törlésének legegyszerűbb módja az erőforráscsoport törlése.
+A jelen oktatóanyag-sorozatban található további cikkek a létrehozott fürtöt fogják felhasználni. Ha nem azonnal tér rá a következő cikkre, érdemes törölnie a fürtöt a felmerülő költségek elkerülése érdekében. A fürt és az összes általa használt erőforrás törlésének legegyszerűbb módja az erőforráscsoport törlése.
 
-Jelentkezzen be az Azure-ba, és válassza ki az előfizetés-azonosító, amelynél el szeretné távolítani a fürt.  Miután bejelentkezett az előfizetés-azonosító található a [Azure-portálon](http://portal.azure.com). Törölje az erőforráscsoportot és használó fürt erőforrásait a [az csoport törlése](/cli/azure/group?view=azure-cli-latest#az_group_delete) parancsot.
+Jelentkezzen be az Azure-ba, és válassza ki azon előfizetés azonosítóját, amelyikkel el szeretné távolítani a fürtöt.  Az [Azure Portalra](http://portal.azure.com) bejelentkezve keresheti meg az előfizetés azonosítóját. A fürt és az összes általa használt erőforrás az [az group delete](/cli/azure/group?view=azure-cli-latest#az_group_delete) paranccsal törölhető.
 
 ```azurecli
 az group delete --name $ResourceGroupName
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * VNET létrehozása az Azure-ban az Azure parancssori felület
-> * A biztonságos Service Fabric-fürt létrehozása az Azure-ban az Azure parancssori felület
-> * A fürt egy X.509 tanúsítvánnyal biztonságos
-> * Csatlakozzon a fürthöz Service Fabric parancssori felület használatával
-> * A fürt eltávolítása
+> * Virtuális hálózat létrehozása az Azure CLI használatával
+> * Biztonságos Service Fabric-fürt létrehozása az Azure-ban az Azure CLI használatával
+> * A fürt védelme X.509-tanúsítvánnyal
+> * Csatlakozás a fürthöz Service Fabric parancssori felületével
+> * Fürt eltávolítása
 
-A következő előzetes az alábbi oktatóanyag áttekintésével megismerheti, hogyan méretezni a fürtön.
+Folytassa a következő oktatóanyaggal, amelyben megismerheti a fürtök skálázásának módját.
 > [!div class="nextstepaction"]
-> [A fürt méretezése](service-fabric-tutorial-scale-cluster.md)
+> [Fürt skálázása](service-fabric-tutorial-scale-cluster.md)
 
 
-[network-arm]:https://github.com/Azure-Samples/service-fabric-api-management/blob/master/network.json
-[network-parameters-arm]:https://github.com/Azure-Samples/service-fabric-api-management/blob/master/network.parameters.json
-
-[cluster-arm]:https://github.com/Azure-Samples/service-fabric-api-management/blob/master/linuxcluster.json
-[cluster-parameters-arm]:https://github.com/Azure-Samples/service-fabric-api-management/blob/master/linuxcluster.parameters.json
+[template]:https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/cluster-tutorial/vnet-linuxcluster.json
+[parameters]:https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/cluster-tutorial/vnet-linuxcluster.parameters.json

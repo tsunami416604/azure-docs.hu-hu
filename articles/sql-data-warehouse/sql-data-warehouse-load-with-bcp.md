@@ -13,36 +13,29 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: loading
-ms.date: 10/31/2016
+ms.date: 01/22/2018
 ms.author: cakarst;barbkess
-ms.openlocfilehash: 7596eac10fdf53380d85128265430ce07b551fe3
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 55211e29149cd334421bd8723d47278a19afbfbb
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/23/2018
 ---
-# <a name="load-data-with-bcp"></a>Adatok betöltése a bcp használatával
-> [!div class="op_single_selector"]
-> * [Redgate](sql-data-warehouse-load-with-redgate.md)  
-> * [Data Factory](sql-data-warehouse-get-started-load-with-azure-data-factory.md)  
-> * [PolyBase](sql-data-warehouse-get-started-load-with-polybase.md)  
-> * [BCP](sql-data-warehouse-load-with-bcp.md)
-> 
-> 
+# <a name="load-data-with-bcp"></a>Adatok betöltése bcp-vel
 
-A **[bcp][bcp]** egy tömeges betöltésre szolgáló parancssori eszköz, amellyel adatokat másolhat az SQL Server, az adatfájlok és az SQL Data Warehouse között. A bcp segítségével nagy mennyiségű sort importálhat az SQL Data Warehouse tábláiba, vagy adatokat exportálhat az SQL Server tábláiból adatfájlokba. Ha nem a queryout kapcsolóval használja, a bcp-hez nem szükséges a Transact-SQL ismerete.
+A **[bcp](/sql/tools/bcp-utility.md)** egy tömeges betöltésre szolgáló parancssori eszköz, amellyel adatokat másolhat az SQL Server, az adatfájlok és az SQL Data Warehouse között. A bcp segítségével nagy mennyiségű sort importálhat az SQL Data Warehouse tábláiba, vagy adatokat exportálhat az SQL Server tábláiból adatfájlokba. Ha nem a queryout kapcsolóval használja, a bcp-hez nem szükséges a Transact-SQL ismerete.
 
-A bcp egyszerű módot biztosít a kisebb adatkészletek áthelyezésére az SQL Data Warehouse-adatbázisokba, illetve onnan máshová. A betöltésre/kinyerésre ajánlott adatok pontos mennyisége az Azure-adatközponthoz csatlakozó hálózati kapcsolattól függ.  Általában a dimenziótáblák könnyen betölthetők és kinyerhetők, ennek ellenére a bcp nem ajánlott nagy adatmennyiségek betöltéséhez vagy kinyeréséhez.  Nagy adatkötetek betöltéséhez és kinyeréséhez a PolyBase az ajánlott eszköz, mert hatékonyabban használja az SQL Data Warehouse nagymértékben párhuzamos feldolgozási architektúráját.
+A bcp egyszerű módot biztosít a kisebb adatkészletek áthelyezésére az SQL Data Warehouse-adatbázisokba, illetve onnan máshová. A betöltésre/kinyerésre ajánlott adatok pontos mennyisége az Azure hálózati kapcsolatától függ.  A kis dimenziótáblák könnyen betölthetők és kinyerhetők a bcp használatával. Nagy adatkötetek betöltéséhez és kinyeréséhez azonban a PolyBase, és nem a bcp az ajánlott eszköz. A PolyBase az SQL Data Warehouse nagymértékben párhuzamos feldolgozási architektúrájához van kialakítva.
 
 A bcp-vel a következőket teheti:
 
-* Egy egyszerű parancssori segédprogrammal adatokat tölthet be az SQL Data Warehouse-ba.
-* Egy egyszerű parancssori segédprogrammal adatokat nyerhet ki az SQL Data Warehouse-ból.
+* Egy parancssori segédprogrammal adatokat tölthet be az SQL Data Warehouse-ba.
+* Egy parancssori segédprogrammal adatokat nyerhet ki az SQL Data Warehouse-ból.
 
-Ez az oktatóanyag a következőket mutatja be:
+Ez az oktatóanyag:
 
-* Adatok importálása egy táblába a bcp in paranccsal
-* Adatok exportálása egy táblából a bcp out paranccsal
+* Adatokat importál egy táblába a bcp in paranccsal
+* Adatokat exportál egy táblából a bcp out paranccsal
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Loading-data-into-Azure-SQL-Data-Warehouse-with-BCP/player]
 > 
@@ -52,13 +45,12 @@ Ez az oktatóanyag a következőket mutatja be:
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Egy SQL Data Warehouse-adatbázis
-* Telepített bcp parancssori segédprogram
-* Telepített SQLCMD parancssori segédprogram
+* bcp és sqlcmd parancssor eszközök. Ezeket letöltheti a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=36433). 
 
-> [!NOTE]
-> A bcp és az sqlcmd parancssori segédprogramot a [Microsoft letöltőközpontból][Microsoft Download Center] töltheti le.
-> 
-> 
+### <a name="data-in-ascii-or-utf-16-format"></a>Adatok ASCII vagy UTF-16 formátumban
+Ha a saját adataival próbálja használni ezt az oktatóanyagot, az adatoknak ASCII vagy UTF-16 kódolást kell használniuk, mert a bcp nem támogatja az UTF-8 formátumot. 
+
+A PolyBase támogatja az UTF-8 formátumot, de az UTF-16 formátumot még nem. Ha az adatexportáláshoz a bcp-t, majd az adatok betöltéséhez a PolyBase-t szeretné használni, az adatokat az SQL Serverből való exportálás után UTF-8 formátumra kell alakítania. 
 
 ## <a name="import-data-into-sql-data-warehouse"></a>Adatok importálása az SQL Data Warehouse-ba
 Ebben az oktatóanyagban létrehoz egy táblát az Azure SQL Data Warehouse-ban, és adatokat importál a táblába.
@@ -82,10 +74,8 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 "
 ```
 
-> [!NOTE]
-> További információk a táblázatok létrehozásáról az SQL Data Warehouse-ban, illetve a WITH záradékkal használható lehetőségekről: [Táblák áttekintése][Table Overview] vagy [CREATE TABLE szintaxis][CREATE TABLE syntax].
-> 
-> 
+További információk a táblázatok létrehozásáról: [Táblák áttekintése](sql-data-warehouse-tables-overview.md) vagy [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse.md) szintaxis.
+ 
 
 ### <a name="step-2-create-a-source-data-file"></a>2. lépés: Forrásadatfájlok létrehozása
 Nyissa meg a Jegyzettömböt, és másolja az alábbi adatsorokat egy új szöveges fájlba, majd mentse ezt a fájlt a helyi ideiglenes könyvtárba (C:\Temp\DimDate2.txt).
@@ -106,7 +96,7 @@ Nyissa meg a Jegyzettömböt, és másolja az alábbi adatsorokat egy új szöve
 ```
 
 > [!NOTE]
-> Fontos észben tartani, hogy a bcp.exe nem támogatja az UTF-8 kódolást. A bcp.exe használatakor használjon ASCII fájlokat vagy UTF-16 kódolást.
+> Fontos észben tartani, hogy a bcp.exe nem támogatja az UTF-8 kódolást. A bcp.exe használatakor használjon ASCII-fájlokat vagy UTF-16 kódolást.
 > 
 > 
 
@@ -123,7 +113,7 @@ Az adatok betöltésének ellenőrzéséhez futtassa az alábbi lekérdezést az
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "SELECT * FROM DimDate2 ORDER BY 1;"
 ```
 
-Az alábbi eredményeket fogja kapni:
+A lekérdezés az alábbi eredményeket adja vissza:
 
 | DateId | CalendarQuarter | FiscalQuarter |
 | --- | --- | --- |
@@ -141,9 +131,8 @@ Az alábbi eredményeket fogja kapni:
 | 20151201 |4 |2 |
 
 ### <a name="step-4-create-statistics-on-your-newly-loaded-data"></a>4. lépés: Statisztikák létrehozása az újonnan betöltött adatokról
-Az Azure SQL Data Warehouse még nem támogatja a statisztikák automatikus létrehozását és frissítését. A legjobb lekérdezési teljesítmény eléréséhez fontos létrehozni statisztikákat a táblák összes oszlopához az első betöltés után, illetve az adatok minden lényeges módosítását követően. A statisztika részletes ismertetését a Fejlesztés témakörcsoport [Statisztika][Statistics] témakörében találja. Alább egy gyors példát láthat a példában betöltött táblák statisztikáinak létrehozására
+Az adatok betöltése után a végső lépés a statisztikák létrehozása vagy frissítése. Ez segít a lekérdezési teljesítmény javításában. További információ: [Statisztika](sql-data-warehouse-tables-statistics.md). A következő sqlcmd-példa statisztikát hoz létre az újonnan betöltött adatokat tartalmazó tábláról.
 
-Hajtsa végre az alábbi CREATE STATISTICS utasításokat egy sqlcmd parancssorból:
 
 ```sql
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "
@@ -154,7 +143,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 ## <a name="export-data-from-sql-data-warehouse"></a>Adatok exportálása az SQL Data Warehouse-ból
-Ebben az oktatóanyagban létrehoz egy adatfájlt egy SQL Data Warehouse-táblából. A fenti létrehozott adatokat exportáljuk egy új, DimDate2_export.txt adatfájlba.
+Ez az oktatóanyag létrehoz egy adatfájlt egy SQL Data Warehouse-táblából. Exportálja az előző szakaszban importált adatokat. Az eredmények a DimDate2_export.txt fájlba kerülnek.
 
 ### <a name="step-1-export-the-data"></a>1. lépés: Az adatok exportálása
 A bcp segédprogram és az alábbi parancs segítségével csatlakozhat és exportálhatja az adatokat. Az értékeket szükség szerint cserélje le:
@@ -162,7 +151,7 @@ A bcp segédprogram és az alábbi parancs segítségével csatlakozhat és expo
 ```sql
 bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name> -U <Username> -P <password> -q -c -t ','
 ```
-Az adatok helyes exportálását az új fájl megnyitásával ellenőrizheti. A fájl adatainak az alábbi szöveggel kell egyezniük:
+Az adatok helyes exportálását az új fájl megnyitásával ellenőrizheti. A fájl adatainak egyezniük kell az alábbi szöveggel:
 
 ```
 20150301,1,3
@@ -184,22 +173,14 @@ Az adatok helyes exportálását az új fájl megnyitásával ellenőrizheti. A 
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
-A betöltés áttekintése: [Adatok betöltése az SQL Data Warehouse-ba][Load data into SQL Data Warehouse].
-További fejlesztési tippek: [SQL Data Warehouse fejlesztői áttekintés][SQL Data Warehouse development overview].
+## <a name="next-steps"></a>További lépések
+A betöltési folyamat megtervezéséhez lásd: [A betöltés áttekintése](sql-data-warehouse-design-elt-data-loading].  
 
-<!--Image references-->
 
-<!--Article references-->
-
-[Load data into SQL Data Warehouse]: ./sql-data-warehouse-overview-load.md
-[SQL Data Warehouse development overview]: ./sql-data-warehouse-overview-develop.md
-[Table Overview]: ./sql-data-warehouse-tables-overview.md
-[Statistics]: ./sql-data-warehouse-tables-statistics.md
 
 <!--MSDN references-->
-[bcp]: https://msdn.microsoft.com/library/ms162802.aspx
-[CREATE TABLE syntax]: https://msdn.microsoft.com/library/mt203953.aspx
+
+
 
 <!--Other Web references-->
 [Microsoft Download Center]: https://www.microsoft.com/download/details.aspx?id=36433

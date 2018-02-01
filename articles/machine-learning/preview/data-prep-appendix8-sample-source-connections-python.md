@@ -12,11 +12,11 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/11/2017
-ms.openlocfilehash: 3ffe0e385f9dd71d8341305f42ceb10e0ea49af4
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 125911a47192a6bb37582a3ecf7cf14c8e2cc96f
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="sample-of-custom-source-connections-python"></a>Egyéni adatforrás-kapcsolatok (Python) minta 
 Ahhoz, hogy olvassa el a jelen függelék, olvassa el a [Python bővítési áttekintése](data-prep-python-extensibility-overview.md).
@@ -59,34 +59,5 @@ lds = dw.load_dataset('data-society/the-simpsons-by-the-data')
 df = lds.dataframes['simpsons_episodes']
 
 ```
-
-## <a name="load-azure-cosmos-db-data-into-data-preparation"></a>Azure Cosmos DB adatok betöltése az adatok előkészítése
-
-Hozzon létre egy új, parancsprogram-alapú adatfolyam, és a következő parancsfájl segítségével az adatok betöltése az Azure Cosmos DB. (A könyvtárak kell előbb telepíteni kell. További információkért lásd az előző referenciadokumentum azt hivatkozó.)
-
-```python
-import pydocumentdb
-import pydocumentdb.document_client as document_client
-
-import pandas as pd
-
-config = { 
-    'ENDPOINT': '<Endpoint>',
-    'MASTERKEY': '<Key>',
-    'DOCUMENTDB_DATABASE': '<DBName>',
-    'DOCUMENTDB_COLLECTION': '<collectionname>'
-};
-
-# Initialize the Python DocumentDB client.
-client = document_client.DocumentClient(config['ENDPOINT'], {'masterKey': config['MASTERKEY']})
-
-# Read databases and take first since id should not be duplicated.
-db = next((data for data in client.ReadDatabases() if data['id'] == config['DOCUMENTDB_DATABASE']))
-
-# Read collections and take first since id should not be duplicated.
-coll = next((coll for coll in client.ReadCollections(db['_self']) if coll['id'] == config['DOCUMENTDB_COLLECTION']))
-
-docs = client.ReadDocuments(coll['_self'])
-
-df = pd.DataFrame(list(docs))
-```
+## <a name="azure-cosmos-db-as-a-data-source-connection"></a>Az Azure Cosmos DB adatforrás-kapcsolat
+Például egy Azure Cosmos DB adatok kapcsolatként, olvassa el a [betöltése Azure Cosmos DB adatforrás adatok kapcsolatként](data-prep-load-azure-cosmos-db.md)

@@ -1,6 +1,6 @@
 ---
-title: "Adatok másolása az Azure Blob Storage használatával a Data Factory |} Microsoft Docs"
-description: "Tudnivalók a támogatott forráshierarchiából adatokat tároló Azure Blob Storage (vagy) a Blob Storage-adatok másolása Data Factory használatával támogatott fogadó adattárolókhoz."
+title: "Másolja a adatok vagy az Azure Blob storage használatával a Data Factory |} Microsoft Docs"
+description: "Ismerje meg az adatok másolása az Azure Blob storage támogatott forrás adattárolókhoz, vagy a Blob-tároló támogatott fogadó adattárolókhoz, adat-előállító használatával."
 author: linda33wj
 manager: jhubbard
 editor: spelluru
@@ -9,51 +9,51 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: jingwang
-ms.openlocfilehash: 512ac1d9423ed76486a131ccd8c871fe56fcf7d1
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 199f3f98f71dcc9eb5f7f3338547870f215d3d64
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Másolja a adatok vagy az Azure Blob Storage Azure Data Factory használatával
+# <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Másolja a adatok vagy az Azure Blob storage Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1. verzió – Általánosan elérhető](v1/data-factory-azure-blob-connector.md)
+> * [1 - általánosan elérhető verzió](v1/data-factory-azure-blob-connector.md)
 > * [2. verzió – Előzetes verzió](connector-azure-blob-storage.md)
 
-Ez a cikk ismerteti, hogyan használható a másolási tevékenység az Azure Data Factory és az Azure Blob Storage-adatok másolása. Buildekről nyújtanak a [másolása tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
+Ez a cikk ismerteti, hogyan Azure Data Factory másolási tevékenység segítségével másolja az adatokat, és az Azure Blob Storage tárolóban. Buildekről nyújtanak a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 
 > [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [Azure Blog tárolási connnector a V1](v1/data-factory-azure-blob-connector.md).
+> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. Ha a Data Factory, amely általában a rendelkezésre álló, 1 verzióját használja [Blob storage-összekötőt a 1-es verziójú](v1/data-factory-azure-blob-connector.md).
 
 
 ## <a name="supported-capabilities"></a>Támogatott képességei
 
-Adatok másolása az egyetlen támogatott forrás adattár az Azure Blob Storage vagy adatok másolása az Azure Blob Storage bármely támogatott fogadó adattárolóhoz. Adattároló forrásként támogatott listája / vagy mosdók által a másolási tevékenység során, tekintse meg a [adattárolókhoz támogatott](copy-activity-overview.md) tábla.
+Bármely támogatott forrás adattár adatok átmásolhatja Blob Storage. Is másolhat adatokat a Blob storage bármely támogatott fogadó adattárolóhoz. A másolási tevékenység által támogatott adatforrások vagy mosdók adattárolókhoz listájáért lásd: a [adattárolókhoz támogatott](copy-activity-overview.md) tábla.
 
-Pontosabban az Azure Blob-összekötő támogatja:
+Pontosabban a Blob storage összekötő támogatja:
 
-- Másolás és a általános célú Azure Storage-fiókok és a gyakran használt adatok/ritkán a Blob storage BLOB. 
-- Blobok használatával is másolása **fiókkulcs** és **szolgáltatás SAS** (közös hozzáférésű Jogosultságkód) hitelesítés.
-- Blobok másolása **a blokkot, hozzáfűzése, vagy a lapblobokat**, és az adatok másolásának **számára csak a blokkblobokat**. Prémium szintű Storage nem támogatott, a fogadó, mert a lapblobokat ezt támogatja.
-- Másolás, blobok-, vagy a blobok elemzése/létrehozásakor a [támogatott formátumok és a tömörítési kodek](supported-file-formats-and-compression-codecs.md).
+- Blobok másolása, és az általános célú Azure storage-fiókok és közbeni/ritkán blob Storage tárolóban. 
+- BLOB másolása fiókkulcs és a szolgáltatás használatával megosztott hozzáférési aláírást hitelesítések.
+- Blokkot, a másolási blobok hozzáfűzni, vagy a lapblobokat és adat másolása az csak a blokkblobokat. Prémium szintű Storage, a fogadó nem támogatott, mert a lapblobokat ezt támogatja.
+- A BLOB másolása, vagy elemzés vagy generálása blobok [támogatott formátumok és a tömörítési kodek](supported-file-formats-and-compression-codecs.md).
 
 ## <a name="get-started"></a>Bevezetés
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-A következő szakaszok részletesen bemutatják adat-előállító entitások adott Azure Blob Storage meghatározásához használt tulajdonságokat.
+A következő szakaszok részletesen bemutatják a Blob storage Data Factory tartozó entitások meghatározásához használt tulajdonságokat.
 
 ## <a name="linked-service-properties"></a>A kapcsolódószolgáltatás-tulajdonságok
 
-### <a name="using-account-key"></a>Fiók kulcsával.
+### <a name="use-an-account-key"></a>Fiók-kulcsot használ
 
-Az Azure tárolás társított szolgáltatásának a fiókkulcs, amely az adat-előállítóban globális hozzáférést biztosít az Azure Storage használatával hozhat létre. A következő tulajdonságok támogatottak:
+A fiók kulcs használatával létrehozhat egy tárolás társított szolgáltatása. Storage globális hozzáférést biztosít az adat-előállítóban. A következő tulajdonságok támogatottak.
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot kell beállítani: **AzureStorage** |Igen |
-| connectionString | Adja meg a connectionString tulajdonság az Azure storage való kapcsolódáshoz szükséges adatokat. Ez a mező megjelölése a SecureString. |Igen |
-| connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhat Azure integrációs futásidejű vagy Self-hosted integrációs futásidejű (amennyiben az adattároló magánhálózaton található). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
+| type | A type tulajdonságot meg kell **AzureStorage**. |Igen |
+| connectionString | Adja meg a connectionString tulajdonság tárolási való kapcsolódáshoz szükséges adatokat. Ez a mező megjelölése SecureString. |Igen |
+| connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhat Azure integrációs futásidejű vagy Self-hosted integrációs futásidejű (ha az adattároló egy magánhálózathoz). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
 
 **Példa**
 
@@ -76,26 +76,27 @@ Az Azure tárolás társított szolgáltatásának a fiókkulcs, amely az adat-e
 }
 ```
 
-### <a name="using-service-sas-authentication"></a>Szolgáltatás SAS-hitelesítéssel
+### <a name="use-service-shared-access-signature-authentication"></a>Szolgáltatás megosztott hozzáférési aláírást hitelesítés használata
 
-Az Azure tárolás társított szolgáltatásának is létrehozhat egy közös hozzáférésű Jogosultságkód (SAS), amely minden/specifikus erőforrások (blobtárolóban /) a tárolóban lévő korlátozott/időhöz kötött hozzáférést biztosít a data factory használatával.
+A tárolás társított szolgáltatásának a közös hozzáférésű jogosultságkód használatával hozhat létre. Az adat-előállítóban minden/specifikus erőforrások (blobtárolóban /) a tárolóban lévő korlátozott/időhöz kötött hozzáférést biztosít.
 
-Egy közös hozzáférésű Jogosultságkód (SAS) delegált hozzáférést biztosít azokhoz a tárfiókban lévő erőforrások. Az SAS segítségével biztosíthat a ügyfél csak korlátozott a tárfiókban lévő objektumokra vonatkozó engedélyeken megadott időn belül, anélkül, hogy a fiók hozzáférési kulcsait megosztásához. A SAS URI, amely a lekérdezési paraméterek magában foglalja a hitelesített hozzáférést a tároló egyik erőforrásához szükséges összes adatot. Az SA-kat a tárolási erőforrások eléréséhez az ügyfélnek csak kell átadni a SAS a megfelelő konstruktort vagy metódust. Részletes információ a SAS: [megosztott hozzáférési aláírásokkal: az SAS-modell ismertetése](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+A közös hozzáférésű jogosultságkód a tárfiókban lévő erőforrások delegált hozzáférést biztosít. A közös hozzáférésű jogosultságkód segítségével engedélyezheti a ügyfél korlátozott engedélyekkel a tárfiókban lévő objektumok egy meghatározott ideig. A tárelérési kulcsok megosztásához nem rendelkezik. A közös hozzáférésű jogosultságkódot URI, amely a lekérdezési paraméterek magában foglalja a hitelesített hozzáférést a tároló egyik erőforrásához szükséges összes adatot. A közös hozzáférésű jogosultságkódot tárolási erőforrások eléréséhez az ügyfél csak a megfelelő konstruktort vagy metódust átadása az a közös hozzáférésű jogosultságkódot van szüksége. Megosztott hozzáférési aláírásokkal kapcsolatos további információkért lásd: [Shared access signatures: megérteni a megosztott hozzáférési aláírást modell](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
 > [!IMPORTANT]
-> Az Azure Data Factory most csak támogatja **szolgáltatás SAS** , de nem fiók SAS. Lásd: [típusok a megosztott hozzáférési aláírásokkal](../storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures) kétféle típusú és létrehozására vonatkozó további információért. Az SAS URL-cím által létrehozott Azure-portálon vagy a Tártallózó egy fiók SAS, ami nem támogatott.
+> Adat-előállító mostantól támogatja a csak megosztott hozzáférési aláírásokkal, de nem a fiók megosztott hozzáférési aláírásokkal. További információ a kétféle típusú, és hogyan készítse őket: [közös hozzáférésű jogosultságkód típusú](../storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures). A közös hozzáférésű az Azure portálon vagy az Azure Tártallózó előállított aláírás URL-cím egy fiók közös hozzáférésű jogosultságkódot, amely nem támogatott.
 
 > [!TIP]
-> Alább a tárfiók (a név felülírandó a hely-tartozó felhasználók számára, és engedélyezze a szükséges engedéllyel) szolgáltatás SAS-kód létrehozása a PowerShell-parancsokat hajthat végre:`$context = New-AzureStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
+> A szolgáltatás közös hozzáférésű jogosultságkód a tárfiók létrehozásához a következő PowerShell-parancsokat hajthat végre. Cserélje le a helyőrzőket, és adja meg a szükséges engedéllyel.
+> `$context = New-AzureStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
 > `New-AzureStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
 
-Szolgáltatás SAS-hitelesítés használatához a következő tulajdonságok támogatottak:
+Szolgáltatás megosztott hozzáférési aláírást hitelesítés használatához a következő tulajdonságok támogatottak.
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot kell beállítani: **AzureStorage** |Igen |
-| sasUri | Adja meg a megosztott hozzáférési aláírást URI az Azure Storage-erőforrások, például a blob, -tároló vagy tábla. Ez a mező megjelölése a SecureString. |Igen |
-| connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhat Azure integrációs futásidejű vagy Self-hosted integrációs futásidejű (amennyiben az adattároló magánhálózaton található). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
+| type | A type tulajdonságot meg kell **AzureStorage**. |Igen |
+| sasUri | Adja meg a közös hozzáférésű jogosultságkódot URI a tárolási erőforrások, például blob, -tároló vagy tábla. Ez a mező megjelölése SecureString. |Igen |
+| connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhatja az Azure integrációs futásidejű vagy a Self-hosted integrációs futásidejű (ha az adattároló egy magánhálózaton található). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
 
 **Példa**
 
@@ -118,25 +119,25 @@ Szolgáltatás SAS-hitelesítés használatához a következő tulajdonságok t�
 }
 ```
 
-Amikor hoz létre egy **SAS URI**, figyelembe véve a következő szempontokat:
+Amikor létrehoz egy közös hozzáférésű jogosultságkódot URI, vegye figyelembe a következő szempontokat:
 
-- Állítsa be a megfelelő olvasási/írási **engedélyek** alapján a társított szolgáltatás (olvasási, írási, olvasás/írás) az adat-előállítóban felhasznált objektumokon.
-- Állítsa be **lejárati idejének** megfelelően. Győződjön meg arról, hogy az Azure Storage-objektumokhoz való hozzáférést nem jár le az adatcsatorna aktív időszakára.
-- URI létre kell hozni a megfelelő tárolót vagy blobot vagy a tábla szintjén a igények alapján. A SAS Uri-t az Azure blob lehetővé teszi, hogy a Data Factory szolgáltatásnak, hogy a blob eléréséhez. A SAS Uri-t az Azure blob-tároló lehetővé teszi, hogy az adott tárolóban lévő blobok iterációt a Data Factory szolgáltatásnak. Ha szeretne hozzáférést biztosítson nagyobb vagy kisebb értékre objektumok később, vagy frissítse a SAS URI-t, ne felejtse el a társított szolgáltatás frissítése új URI-azonosítójú.
+- A társított szolgáltatás (olvasási, írási, olvasás/írás) az adat-előállítóban felhasznált alapján objektumok megfelelő olvasási/írási engedélyeket.
+- Állítsa be **lejárati idejének** megfelelően. Győződjön meg arról, hogy a nem az adatcsatorna aktív időszakára jár le a tárolási objektum elérésére.
+- Az URI a igények alapján megfelelő tárolót vagy blobot, vagy tábla szinten kell létrehozni. A közös hozzáférésű jogosultságkód URI blob lehetővé teszi, hogy a Data Factory, hogy a blob eléréséhez. A közös hozzáférésű jogosultságkód URI egy Blob tároló lehetővé teszi, hogy a Data Factoryben az adott tárolóban lévő blobok iterációt. Hozzáférést biztosít több vagy kevesebb objektumok később, vagy a közös hozzáférésű jogosultságkódot URI, ne felejtse el frissíteni a társított szolgáltatás új URI-azonosítójú.
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Szakaszok és meghatározása adatkészletek esetében elérhető tulajdonságok teljes listájáért tekintse meg az adatkészletek cikket. Ez a témakör az Azure Blob-adathalmazra által támogatott tulajdonságokról.
+Szakaszok és meghatározása adatkészletek esetében elérhető tulajdonságok teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a rész felsorolja a Blob-tároló adatkészlet által támogatott tulajdonságokról.
 
-Adatok másolása az Azure Blob, állítsa be a type tulajdonságot az adathalmaz **AzureBlob**. A következő tulajdonságok támogatottak:
+Adatok másolása a Blob storage érkező vagy oda irányuló, az adatkészlet típus tulajdonságának beállítása **AzureBlob**. A következő tulajdonságok támogatottak.
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot az adathalmaz értékre kell állítani: **AzureBlob** |Igen |
-| folderPath | A tároló és a blob-tároló mappa elérési útja. Példa: myblobcontainer/myblobfolder / |Igen |
-| fileName | A blob nevének megadása a **folderPath** Ha át kívánja másolni az egy adott blob. Ha nem ad meg ehhez a tulajdonsághoz értéket, a DataSet adatkészlet mutat a mappában található összes BLOB.<br/><br/>Ha nincs megadva fájlnév egy kimeneti adatkészlet és **preserveHierarchy** nincs megadva tevékenység fogadó, a másolási tevékenység során automatikusan létrehozza a blob neve a következő formátumban: `Data.[activity run id GUID].[GUID if FlattenHierarchy].[format if configured].[compression if configured]`. Például: `Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz`. |Nem |
-| Formátumban | Ha azt szeretné, hogy **másolja a fájlokat-van** közötti fájlalapú tárolók (bináris másolhatja azokat), hagyja ki a Formátum szakasz mindkét bemeneti és kimeneti adatkészlet-definíciókban.<br/><br/>Szeretne elemezni, vagy egy adott formátumú fájlok létrehozása, ha a következő fájl formátuma típusok támogatottak: **szöveges**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Állítsa be a **típus** tulajdonság a formátuma a következő értékek egyikét. További információkért lásd: [szövegformátum](supported-file-formats-and-compression-codecs.md#text-format), [Json formátumban](supported-file-formats-and-compression-codecs.md#json-format), [az Avro formátum](supported-file-formats-and-compression-codecs.md#avro-format), [Orc formátum](supported-file-formats-and-compression-codecs.md#orc-format), és [Parquet formátum](supported-file-formats-and-compression-codecs.md#parquet-format) szakaszok. |Nem (csak a bináris másolásának esetéhez) |
-| Tömörítés | Adja meg a típus és az adatok tömörítése szintjét. További információkért lásd: [támogatott formátumok és a tömörítési kodek](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Támogatott típusok a következők: **GZip**, **Deflate**, **BZip2**, és **ZipDeflate**.<br/>Támogatott szintek a következők: **Optimal** és **leggyorsabb**. |Nem |
+| type | A type tulajdonságot az adathalmaz értékre kell állítani **AzureBlob**. |Igen |
+| folderPath | A tároló és a blob-tároló mappa elérési útja. Példa: myblobcontainer/myblobfolder /. |Igen |
+| fileName | A blob nevének megadása **folderPath** Ha át kívánja másolni, illetve onnan egy adott blob. Ha nem adja meg egy értéket ehhez a tulajdonsághoz a DataSet adatkészlet mutat, a mappában található összes BLOB.<br/><br/>Ha nincs megadva fájlnév egy kimeneti adatkészlet és **preserveHierarchy** nincs meghatározva a tevékenység a fogadó, a másolási tevékenység során automatikusan létrehozza a blob neve a következő formátumban: `Data.[activity run id GUID].[GUID if FlattenHierarchy].[format if configured].[compression if configured]`. Például: `Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz`. |Nem |
+| Formátumban | Ha át kívánja másolni a fájlokat, a fájlalapú tárolók (bináris másolás) között van, hagyja ki a Formátum szakasz mind a bemeneti és kimeneti adatkészlet-definíciók.<br/><br/>Szeretne elemezni, vagy egy adott formátumú fájlok létrehozása, ha a következő fájl formátuma típusok támogatottak: **szöveges**, **JsonFormat**, **AvroFormat**, **OrcFormat**, és **ParquetFormat**. Állítsa be a **típus** tulajdonság alapján **formátum** számára a következő értékek egyike. További információkért lásd: a [szövegformátum](supported-file-formats-and-compression-codecs.md#text-format), [JSON formátumban](supported-file-formats-and-compression-codecs.md#json-format), [az Avro formátum](supported-file-formats-and-compression-codecs.md#avro-format), [Orc formátum](supported-file-formats-and-compression-codecs.md#orc-format), és [Parquet formátum](supported-file-formats-and-compression-codecs.md#parquet-format) szakaszok. |Nem (csak a bináris másolásának esetéhez) |
+| Tömörítés | Adja meg a típus és az adatok tömörítése szintjét. További információkért lásd: [támogatott formátumok és a tömörítési kodek](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Támogatott típusok a következők **GZip**, **Deflate**, **BZip2**, és **ZipDeflate**.<br/>Támogatott szintek a következők **Optimal** és **leggyorsabb**. |Nem |
 
 **Példa**
 
@@ -168,16 +169,16 @@ Adatok másolása az Azure Blob, állítsa be a type tulajdonságot az adathalma
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-Szakaszok és a rendelkezésre álló tevékenységek meghatározó tulajdonságok teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a témakör az Azure Blob-forrás és a fogadó által támogatott tulajdonságokról.
+Szakaszok és a rendelkezésre álló tevékenységek meghatározó tulajdonságok teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a rész felsorolja a Blob storage-forrás és a fogadó által támogatott tulajdonságokról.
 
-### <a name="azure-blob-as-source"></a>Az Azure Blob forrásaként
+### <a name="blob-storage-as-a-source-type"></a>A BLOB storage egy forrás típusa
 
-Adatok másolása az Azure Blob, állítsa be a forrás típusa a másolási tevékenység **BlobSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakasz:
+Adatok másolása Blob-tároló, állítsa be a forrás típusa a másolási tevékenység **BlobSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakasz.
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot a másolási tevékenység forrás értékre kell állítani: **BlobSource** |Igen |
-| Rekurzív | Azt jelzi, hogy az adatok olvasható rekurzív módon az almappák vagy csak a megadott mappát. Megjegyzés: Ha a rekurzív értéke true, és a fogadó fájlalapú tároló, üres mappa/alterület-folder nem lesz másolva vagy hozható létre a fogadó.<br/>Két érték engedélyezett: **igaz** (alapértelmezett), **hamis** | Nem |
+| type | A type tulajdonságot a másolási tevékenység forrás értékre kell állítani **BlobSource**. |Igen |
+| Rekurzív | Azt jelzi, hogy az adatok olvasható rekurzív módon az almappákat, illetve csak a megadott mappát. Ne feledje, hogy ha rekurzív értéke true, és a fogadó fájlalapú tároló, egy üres mappát vagy almappát nem másolta, vagy létrehozott, a fogadó.<br/>Két érték engedélyezett **igaz** (alapértelmezett) és **hamis**. | Nem |
 
 **Példa**
 
@@ -211,14 +212,14 @@ Adatok másolása az Azure Blob, állítsa be a forrás típusa a másolási tev
 ]
 ```
 
-### <a name="azure-blob-as-sink"></a>Az Azure Blob, a fogadó
+### <a name="blob-storage-as-a-sink-type"></a>BLOB Storage tárolót a fogadó típusa
 
-Adatok másolása az Azure Blob, állítsa be a fogadó típusa a másolási tevékenység **BlobSink**. A következő tulajdonságok támogatottak a **fogadó** szakasz:
+Adatok másolása Blob-tároló, állítsa be a fogadó típusa a másolási tevékenység **BlobSink**. A következő tulajdonságok támogatottak a **fogadó** szakasz.
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység fogadó type tulajdonsága értékre kell állítani: **BlobSink** |Igen |
-| copyBehavior | Meghatározza a másolási viselkedését, ha az adatforrás fájlok fájlalapú adattárolóból.<br/><br/>Engedélyezett értékek a következők:<br/><b>-PreserveHierarchy (alapértelmezett)</b>: őrzi meg a fájl hierarchia a célmappában. A következő forrásfájl forrásmappához relatív elérési a relatív elérési út a cél-fájlját és a célmappa megegyezik.<br/><b>-FlattenHierarchy</b>: a forrásmappából a fájlok a célmappában első szintjét is. A fájlok céljaként automatikusan létrehozott nevet adni. <br/><b>-Mergefiles típusú</b>: egy fájl összes fájlt a forrásmappából egyesíti. Ha a fájl/Blob neve meg van adva, az egyesített neve legyen a megadott név; Ellenkező esetben lenne automatikusan létrehozott fájl nevét. | Nem |
+| type | A másolási tevékenység fogadó type tulajdonsága értékre kell állítani **BlobSink**. |Igen |
+| copyBehavior | Meghatározza a másolási viselkedését, ha az adatforrás fájlok fájlalapú adattárolóból.<br/><br/>Engedélyezett értékek a következők:<br/><b>-PreserveHierarchy (alapértelmezett)</b>: őrzi meg a fájl hierarchia a célmappában. A következő forrásfájl forrásmappához relatív elérési a relatív elérési út a cél-fájlját és a célmappa megegyezik.<br/><b>-FlattenHierarchy</b>: a forrásmappából a fájlok a célmappában első szintjén is. A fájlok céljaként automatikusan generált nevek rendelkezik. <br/><b>-Mergefiles típusú</b>: egy fájl összes fájlt a forrásmappából egyesíti. Ha a fájl vagy a blob neve meg van adva, az egyesített fájlnév a megadott név. Ellenkező esetben egy automatikusan létrehozott nevét. | Nem |
 
 **Példa**
 
@@ -252,18 +253,18 @@ Adatok másolása az Azure Blob, állítsa be a fogadó típusa a másolási tev
 ]
 ```
 
-### <a name="recursive-and-copybehavior-examples"></a>rekurzív és copyBehavior példák
+### <a name="some-recursive-and-copybehavior-examples"></a>Rekurzív és copyBehavior példák
 
 Ez a szakasz ismerteti az eredményül kapott viselkedéstől rekurzív és copyBehavior kombinációk a másolási művelet.
 
 | Rekurzív | copyBehavior | Forrás mappaszerkezet | Eredményül kapott cél |
 |:--- |:--- |:--- |:--- |
-| igaz |preserveHierarchy | Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | a célmappa mappa1 forrásaként azonos struktúrájú jön létre:<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. |
+| igaz |preserveHierarchy | Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | a célmappa mappa1 forrásaként azonos struktúrájú jön létre:<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 |
 | igaz |flattenHierarchy | Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | a cél az alábbi szerkezettel mappa1 jön létre: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet a file1 kiszolgálón<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet File5 |
-| igaz |mergeFiles | Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | a cél az alábbi szerkezettel mappa1 jön létre: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 + fájl3 + File4 + 5 fájl tartalmát egy fájl automatikusan létrehozott fájlnévvel egyesülnek |
-| hamis |preserveHierarchy | Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | a célmappa mappa1 jön létre a következő struktúra<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/><br/>Fájl3, File4 és File5 Subfolder1 nem átveszik. |
-| hamis |flattenHierarchy | Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | a célmappa mappa1 jön létre a következő struktúra<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet a file1 kiszolgálón<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet File2<br/><br/>Fájl3, File4 és File5 Subfolder1 nem átveszik. |
-| hamis |mergeFiles | Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | a célmappa mappa1 jön létre a következő struktúra<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Egy fájl automatikusan létrehozott fájlnévvel egyesített file1 + File2 tartalma. automatikusan létrehozott nevet a file1 kiszolgálón<br/><br/>Fájl3, File4 és File5 Subfolder1 nem átveszik. |
+| igaz |mergeFiles | Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | a cél az alábbi szerkezettel mappa1 jön létre: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 + fájl3 + File4 + File5 tartalmát egy fájlba fájl automatikusan létrehozott névvel egyesítve lesznek. |
+| hamis |preserveHierarchy | Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | a tároló mappa mappa1 jön létre az alábbi szerkezettel: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/><br/>Fájl3, File4 és File5 Subfolder1 nem felvételre. |
+| hamis |flattenHierarchy | Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | a tároló mappa mappa1 jön létre az alábbi szerkezettel: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet a file1 kiszolgálón<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet File2<br/><br/>Fájl3, File4 és File5 Subfolder1 nem felvételre. |
+| hamis |mergeFiles | Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | a célmappa mappa1 jön létre a következő struktúra<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Egy fájl egy automatikusan létrehozott fájlnévvel egyesített file1 + File2 tartalma. automatikusan létrehozott nevet a file1 kiszolgálón<br/><br/>Fájl3, File4 és File5 Subfolder1 nem felvételre. |
 
 ## <a name="next-steps"></a>További lépések
-Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md##supported-data-stores-and-formats).
+Források és mosdók adat-előállítóban másolási tevékenység által támogatott adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md##supported-data-stores-and-formats).

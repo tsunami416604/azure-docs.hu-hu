@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/07/2017
+ms.date: 12/04/2017
 ms.author: larryfr
-ms.openlocfilehash: 09a661b2a100245dd424e24d8a8ddef56c573b02
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 945b16553d56d5138b17e7768e43a298b310551d
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="introducing-apache-kafka-on-hdinsight"></a>A HDInsight alatt futó Apache Kafka bemutatása
 
@@ -29,23 +29,45 @@ Az [Apache Kafka](https://kafka.apache.org) egy nyílt forráskódú elosztott s
 
 A HDInsight alatt futó Kafka a következő szolgáltatásokat biztosítja:
 
-* Szolgáltatói szerződés (SLA): [A HDInsight szolgáltatói szerződésével kapcsolatos információk](https://azure.microsoft.com/support/legal/sla/hdinsight/v1_0/).
+* __99%-os szolgáltatói szerződés (SLA) a Kafka üzemidejével kapcsolatban__: További információkért lásd [a HDInsight szolgáltatói szerződésével kapcsolatos információkat ismertető](https://azure.microsoft.com/support/legal/sla/hdinsight/v1_0/) dokumentumot.
 
-* Közzétételi-feliratkozási üzenetkezelési minta: A előállítói API-t biztosít a rekordok Kafka-témakörökbe való közzétételéhez. A fogyasztói API-ra a témakörökre való feliratkozáskor van szükség.
+* __Hibatűrés és állványfigyelés__: A Kafkát egy egydimenziós állványnézettel tervezték, amely jól működik bizonyos környezetekben. Viszont az olyan környezetek esetében, mint amilyen az Azure, az állvány két dimenzióra oszlik: a frissítési tartományokra (UD-k) és a tartalék tartományokra (FD-k). A Microsoft biztosítja azokat az eszközöket, amelyek kiegyenlítik a Kafka-partíciókat és -replikákat a frissítési és tartalék tartományok között. 
 
-* Streamfeldolgozás: A Kafkát gyakran használják valós idejű streamfeldolgozásra az Apache Stormmal vagy Sparkkal. A Kafka 0.10.0.0 (HDInsight 3.5-ös és 3.6-os verzió) egy olyan streamelési API-t vezetett be, amely lehetővé teszi a streammegoldások Storm vagy Spark nélküli fejlesztését.
+    További információ: [Magas rendelkezésre állás a HDInsight-alapú Kafkában](apache-kafka-high-availability.md).
 
-* Horizontális skálázhatóság: a Kafka szétosztja a streameket a HDInsight-fürtben található csomópontok között. A fogyasztói folyamatok társíthatók az egyes partíciókkal, így biztosítható a terheléselosztás a rekordok használatakor.
-
-* Érkezési sorrendben történő kézbesítés: a stream minden egyes partíción belül érkezési sorrendben tárolja a rekordokat. Partíciónként egy fogyasztói folyamat társításával garantálhatja, hogy a rekordok feldolgozása érkezési sorrendben történjen.
-
-* Hibatűrés: A partíciók replikálhatók a csomópontok között a hibatűrés biztosításához.
-
-* Integráció az Azure Managed Disks szolgáltatással: Az Azure Managed Disks jobb méretezést és teljesítményt biztosít a HDInsight-fürt által használt virtuális gépek lemezei számára.
-
-    A felügyelt lemezek alapértelmezés szerint engedélyezettek a HDInsighton futó Kafkához. A csomópontonként használt lemezek száma a HDInsight létrehozása során konfigurálható. További tudnivalók a felügyelt lemezekről: [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md).
+* **Integráció az Azure Managed Disks szolgáltatással**: A felügyelt lemezek jobb méretezést és teljesítményt biztosítanak a HDInsight-alapú Kafka által használt lemezek számára a fürtben, akár csomópontonként 16 TB-ig.
 
     További tudnivalók a felügyelt lemezek HDInsight-alapú Kafkával való konfigurálásáról: [A HDInsight-alapú Kafka méretezhetőségének javítása](apache-kafka-scalability.md).
+
+    További tudnivalók a felügyelt lemezekről: [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md).
+
+* **Riasztások kezelése, monitorozás és prediktív karbantartás**: A HDInsight-alapú Kafka az Azure Log Analytics használatával monitorozható. A Log Analytics megjeleníti a virtuális gépek szintadatait, például a lemezek és hálózati adapterek metrikáit és a Kafka JMX-metrikáit.
+
+    További információ: [A HDInsight-alapú Kafka naplóinak elemzése](apache-kafka-log-analytics-operations-management.md).
+
+* **Kafka-adatok replikálása**: A Kafka biztosítja a MirrorMaker eszközt, amely replikálja az adatokat a Kafka-fürtök között.
+
+    A MirrorMaker használatával kapcsolatban lásd: [Kafka-témakörök replikálása a HDInsight-alapú Kafka esetében](apache-kafka-mirroring.md).
+
+* **Fürtméretezés**: A HDInsight lehetővé teszi a feldolgozó csomópontok számának módosítását (amelyeken a Kafka-közvetítő fut) a fürt létrehozását követően. A fürtök vertikálisan felskálázhatók a számítási feladatok növekedése esetén, vagy leskálázhatók a költségek csökkentése érdekében. A méretezés elvégezhető az Azure Portal, az Azure PowerShell vagy egyéb Azure-kezelőfelületek segítségével. A Kafka esetében érdemes kiegyenlíteni a partíciók replikáit a méretezési műveleteket követően. A partíciók kiegyenlítése lehetővé teszi, hogy a Kafka kihasználja a feldolgozó csomópontok új mennyiségét.
+
+    További információ: [Magas rendelkezésre állás a HDInsight-alapú Kafkában](apache-kafka-high-availability.md).
+
+* **Közzétételi-feliratkozási üzenetkezelési minta**: A Kafka egy előállítói API-t biztosít a rekordok Kafka-témakörökbe való közzétételéhez. A fogyasztói API-ra a témakörökre való feliratkozáskor van szükség.
+
+    További információ: [A HDInsight-alapú Kafka használatának első lépései](apache-kafka-get-started.md).
+
+* **Streamfeldolgozás**: A Kafkát gyakran használják valós idejű streamfeldolgozásra az Apache Stormmal vagy Sparkkal. A Kafka 0.10.0.0 (HDInsight 3.5-ös és 3.6-os verzió) egy olyan streamelési API-t vezetett be, amely lehetővé teszi a streammegoldások Storm vagy Spark nélküli fejlesztését.
+
+    További információ: [A HDInsight-alapú Kafka használatának első lépései](apache-kafka-get-started.md).
+
+* **Horizontális skálázhatóság**: a Kafka szétosztja a streameket a HDInsight-fürtben található csomópontok között. A fogyasztói folyamatok társíthatók az egyes partíciókkal, így biztosítható a terheléselosztás a rekordok használatakor.
+
+    További információ: [A HDInsight-alapú Kafka használatának első lépései](apache-kafka-get-started.md).
+
+* **Érkezési sorrendben történő kézbesítés**: a stream minden egyes partíción belül érkezési sorrendben tárolja a rekordokat. Partíciónként egy fogyasztói folyamat társításával garantálhatja, hogy a rekordok feldolgozása érkezési sorrendben történjen.
+
+    További információ: [A HDInsight-alapú Kafka használatának első lépései](apache-kafka-get-started.md).
 
 ## <a name="use-cases"></a>Használati esetek
 
@@ -66,9 +88,9 @@ Ez az ábra egy tipikus Kafka-konfigurációt mutat be, amely felhasználói cso
 Mindegyik Kafka-közvetítő az Azure Managed Disks szolgáltatást használja. A lemezek számát a felhasználó adja meg, és közvetítőnként akár 16 TB tárhely is biztosítható.
 
 > [!IMPORTANT]
-> A Kafka nem észleli az Azure-adatközpontban lévő alapul szolgáló hardvereket (rackszekrényeket). A partíciók az alapul szolgáló hardverek közötti megfelelő kiegyensúlyozásához lásd: [az adatok magas szintű rendelkezésre állásának konfigurálásával (Kafka)](apache-kafka-high-availability.md) kapcsolatos cikket.
+> A Kafka nem észleli az Azure-adatközpontban lévő alapul szolgáló hardvereket (rackszekrényeket). A partíciók az alapul szolgáló hardverek közötti megfelelő kiegyensúlyozásához lásd [az adatok magas szintű rendelkezésre állásának konfigurálásával (Kafka)](apache-kafka-high-availability.md) kapcsolatos dokumentumot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A HDInsighton futó Apache Kafka használatának megismeréséhez tekintse meg a következő hivatkozásokat:
 

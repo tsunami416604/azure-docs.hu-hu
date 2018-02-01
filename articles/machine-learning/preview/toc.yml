@@ -140,6 +140,8 @@
           href: data-prep-python-extensibility-overview.md
         - name: Támogatott adatforrások
           href: data-prep-appendix2-supported-data-sources.md
+        - name: Az Azure Cosmos DB betöltése adatforrásként
+          href: data-prep-load-azure-cosmos-db.md
         - name: Támogatott vizsgálók
           href: data-prep-appendix4-supported-inspectors.md
         - name: Támogatott adatcélok

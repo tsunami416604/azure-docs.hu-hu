@@ -14,11 +14,11 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.date: 07/14/2016
 ms.author: evboyle
-ms.openlocfilehash: f6ca06a0349def97b38a1bf6d0d8f36236077e92
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 8b253ef1eccfbc6ca703657b124d17d1482c2eed
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="get-started-with-azure-search-in-java"></a>Bevezetés az Azure Search használatába Java nyelven
 > [!div class="op_single_selector"]
@@ -63,7 +63,7 @@ Az alábbi lista a példához kapcsolódó fájlokat ismerteti.
 ## <a name="find-the-service-name-and-api-key-of-your-azure-search-service"></a>Az Azure Search szolgáltatás szolgáltatásnevének és API-kulcsának megkeresése
 Az Azure Search szolgáltatásba történő minden REST API-hívás esetében meg kell adnia a szolgáltatás URL-címét és API-kulcsát. 
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. Az ugrás sávon kattintson a **Keresési szolgáltatás** elemre, hogy megjelenjen az előfizetéséhez kapcsolódó összes Azure Search szolgáltatás.
 3. Válassza ki a használni kívánt szolgáltatást.
 4. A szolgáltatás irányítópultján megjelennek az alapvető információkat tartalmazó csempék, valamint az adminisztrációs kulcsok eléréséhez szükséges kulcs ikon.
@@ -72,7 +72,7 @@ Az Azure Search szolgáltatásba történő minden REST API-hívás esetében me
 5. Másolja át a szolgáltatás URL-címét és egy adminisztrációs kulcsot. Később lesz rájuk szüksége, amikor hozzáadja őket a **config.properties** fájlhoz.
 
 ## <a name="download-the-sample-files"></a>A mintafájlok letöltése
-1. Lépjen a GitHubon található [AzureSearchJavaDemo](https://github.com/AzureSearch/AzureSearchJavaIndexerDemo) elemre.
+1. Lépjen a GitHubon található [search-node-indexer-demo](https://github.com/Azure-Samples/search-java-indexer-demo) elemre.
 2. Kattintson a **Download ZIP** (ZIP-fájl letöltése) elemre, mentse a .zip-fájlt a lemezre, és bontsa ki a benne található összes fájlt. A Java-munkaterületére csomagolja ki a fájlokat, hogy később könnyebben megtalálja a projektet.
 3. A mintafájlok csak olvashatók. Kattintson a jobb gombbal a mappa tulajdonságaira, és törölje a csak olvasható attribútumot.
 
@@ -85,7 +85,7 @@ Minden további fájlmódosítás és utasításfuttatás az ebben a mappában l
 2. A **Select root directory** (Gyökérkönyvtár kiválasztása) ablakban keresse meg a mintafájlokat tartalmazó mappát. Válassza ki a .project mappát tartalmazó mappát. A projektnek kiválasztott elemként meg kell jelennie a **Projects** (Projektek) listán.
    
     ![][12]
-3. Kattintson a **Finish** (Befejezés) gombra.
+3. Kattintson a **Befejezés** gombra.
 4. A **Project Explorer** (Projektböngésző) segítségével megtekintheti és szerkesztheti a fájlokat. Ha az még nincs megnyitva, kattintson a **Window** (Ablak)  > **Show View** (Nézet megjelenítése)  > **Project Explorer** (Projektböngésző) lehetőségre, vagy nyissa meg a megfelelő parancsikonnal.
 
 ## <a name="configure-the-service-url-and-api-key"></a>A szolgáltatás URL-címének és API-kulcsának konfigurálása
@@ -106,7 +106,7 @@ Minden további fájlmódosítás és utasításfuttatás az ebben a mappában l
    
     ![][7]
 6. A következő oldalon adja meg a Tomcat telepítési könyvtárát. Windows rendszerű számítógépeken ez valószínűleg a következő lesz: C:\Program Files\Apache Software Foundation\Tomcat *verzió*.
-7. Kattintson a **Finish** (Befejezés) gombra.
+7. Kattintson a **Befejezés** gombra.
 8. Válassza ki a **Window** (Ablak)  > **Preferences** (Beállítások)  > **Java** > **Installed JREs** (Telepített JRE-k)  > **Add** (Hozzáadás) lehetőséget.
 9. Az **Add JRE** (JRE hozzáadása) panelen válassza ki a **Standard VM** elemet.
 10. Kattintson a **Tovább** gombra.
@@ -159,7 +159,7 @@ Megpróbálhatja beírni az alábbi kifejezések bármelyikét is:
 * Pembroke
 * goose+cape
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez az Azure Search első oktatóanyaga, amely Java és USGS-adatkészlet alapján készült. Idővel majd tovább bővítjük oktatóanyagunkat, és olyan kiegészítő keresési funkciókat fogunk bemutatni, amelyeket esetleg szívesen használna egyéni megoldásaiban.
 
 Ha már rendelkezik bizonyos tapasztalattal az Azure Search használatában, ezt a mintát akár ugródeszkaként is használhatja a további kísérletezéshez, például bővítheti a [keresőoldalt](search-pagination-page-layout.md) vagy [jellemzőalapú navigációt](search-faceted-navigation.md) valósíthat meg. A keresési eredmények oldalát is tovább fejlesztheti számok és kötegelt dokumentumok hozzáadásával úgy, hogy a felhasználók lapozhassanak az eredmények között.

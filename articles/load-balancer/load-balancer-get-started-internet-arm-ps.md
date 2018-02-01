@@ -1,6 +1,6 @@
 ---
-title: "Azure-alapú internetes elérésű terheléselosztó létrehozása – PowerShell | Microsoft Docs"
-description: "Ismerje meg, hogyan hozható létre internetkapcsolattal rendelkező terheléselosztó a Resource Managerben a PowerShell használatával"
+title: "Nyilvános terheléselosztó létrehozása – PowerShell | Microsoft Docs"
+description: "Megismerheti, hogyan hozható létre nyilvános terheléselosztó a Resource Managerben PowerShell használatával"
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: d11ad8ff7f3d3357d1af276a9643b7a74e6c3f6d
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 15e1c868a72a61d9721b96032d304fdec6d6e213
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/23/2018
 ---
-# <a name="get-started"></a>Internetkapcsolattal rendelkező terheléselosztó létrehozása az Azure Resource Managerben a PowerShell használatával
+# <a name="get-started"></a>Nyilvános terheléselosztó létrehozása a Resource Managerben PowerShell használatával
 
 > [!div class="op_single_selector"]
 > * [Portál](../load-balancer/load-balancer-get-started-internet-portal.md)
@@ -36,7 +36,7 @@ ms.lasthandoff: 12/18/2017
 
 ## <a name="deploying-the-solution-by-using-azure-powershell"></a>A megoldás telepítése az Azure PowerShell használatával
 
-A következő eljárások bemutatják, hogyan hozható létre internetkapcsolattal rendelkező terheléselosztó az Azure Resource Managerben a PowerShell használatával. Az Azure Resource Manager lehetővé teszi, hogy az egyes erőforrások létrehozása és konfigurálása egyenként történjen, majd az összerakásukkal jöjjön létre egy terheléselosztó.
+Az alábbi eljárások bemutatják, hogyan hozható létre nyilvános terheléselosztó az Azure Resource Managerben a PowerShell használatával. Az Azure Resource Manager lehetővé teszi, hogy az egyes erőforrások létrehozása és konfigurálása egyenként történjen, majd az összerakásukkal jöjjön létre egy terheléselosztó.
 
 A terheléselosztó üzembe helyezéséhez a következő objektumokat kell létrehozni és konfigurálni:
 
@@ -306,7 +306,7 @@ Remove-AzureRmLoadBalancer -Name NRP-LB -ResourceGroupName NRP-RG
 > [!NOTE]
 > A választható **-Force** kapcsolóval elkerülheti a törlésre vonatkozó kérdést.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Bevezetés a belső terheléselosztók konfigurálásába](load-balancer-get-started-ilb-arm-ps.md)
 
