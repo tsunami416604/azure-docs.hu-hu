@@ -251,6 +251,8 @@
           href: ../workloads/sap/get-started.md
         - name: MATLAB fürt
           href: matlab-mdcs-cluster.md
+        - name: Visual Studio
+          href: using-visual-studio-vm.md
         - name: Nagy teljesítményű számítástechnika (HPC)
           href: hpcpack-cluster-options.md
           items:

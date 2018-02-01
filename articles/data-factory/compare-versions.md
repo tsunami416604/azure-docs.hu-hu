@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/24/2018
 ms.author: makromer
-ms.openlocfilehash: 83065e6cacd784a3914cfac3ff2552a712688366
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 673bc4e0d1609e445e3d18e7cf516ad532be4bc2
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="compare-azure-data-factory-v1-and-v2"></a>Az Azure Data Factory V1 és V2 verziójának összehasonlítása
 Ez a cikk az Azure Data Factory V2 és V1 verzióját hasonlítja össze. Ha szeretné megismerni a V1 verziót, tekintse meg [Az Azure Data Factory bemutatását](v1/data-factory-introduction.md). Ha szeretné megismerni a V2 verziót, tekintse meg [A Data Factory bemutatását (V2 – előzetes verzió)](introduction.md).
@@ -86,7 +86,7 @@ Akkor használja az Azure SSIS modult, ha át szeretné helyezni az SSIS számí
 
 Az Azure-SSIS integrációs modul egy, az SSIS-csomagok felhőben történő futtatására kijelölt Azure-beli virtuális gépekből (csomópontokból) álló, teljesen felügyelt fürt. Miután üzembe helyezte az Azure-SSIS integrációs modult, ugyanazokat az eszközöket használhatja, amelyeket az SSIS-csomagok helyszíni SSIS-környezetben való üzembe helyezéséhez használt. 
 
-Például az SQL Server Data Tools vagy az SQL Server Management Studio használatával üzembe helyezhet SSIS-csomagokat ebben az Azure-beli modulban. Lépésenkénti útmutatásért lásd a következő oktatóanyagot: [SQL Server Integration Services-csomagok üzembe helyezése az Azure-ban](tutorial-deploy-ssis-packages-azure.md). 
+Például az SQL Server Data Tools vagy az SQL Server Management Studio használatával üzembe helyezhet SSIS-csomagokat ebben az Azure-beli modulban. Lépésenkénti útmutatásért lásd a következő oktatóanyagot: [SQL Server Integration Services-csomagok üzembe helyezése az Azure-ban](tutorial-create-azure-ssis-runtime-portal.md). 
 
 ## <a name="flexible-scheduling"></a>Rugalmas ütemezés
 A Data Factory V2-ben nem kell megadnia az adatkészletek rendelkezésre állásának ütemezését. Megadhat egy eseményindító erőforrást, amely folyamatokat ütemezhet egy óraütemező paradigmából. Paramétereket is átadhat a folyamatoknak egy eseményindítóból egy rugalmas ütemezési és végrehajtási modell érdekében. 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: shengc
-ms.openlocfilehash: 30456a30c12d39ceb14dec6cd60015916cb7ae27
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 04323e5f6b729cdadf5ede748a1178dfa9460cd2
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Azure virtuális hálózaton lévő adatok átalakítása Hive-tevékenység segítségével az Azure Data Factoryben
 Ebben az oktatóanyagban az Azure PowerShell-lel hoz létre egy Data Factory-folyamatot, amely egy Azure virtuális hálózaton (VNET) lévő HDInsight-fürtön futó Hive-tevékenységgel alakítja át az adatokat. Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
@@ -38,7 +38,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 ## <a name="prerequisites"></a>Előfeltételek
 - **Azure Storage-fiók** Létrehoz egy Hive-szkriptet, és feltölti az Azure Storage-ba. A Hive-szkript kimenetét ebben a Storage-fiókban tárolja a rendszer. A példában a HDInsight-fürt ezt az Azure Storage-fiókot használja elsődleges tárolóként. 
-- **Egy Azure virtuális hálózat.** Ha nem rendelkezik Azure virtuális hálózattal, hozzon létre egyet [ezeket az utasításokat](../virtual-network/virtual-network-get-started-vnet-subnet.md) követve. Ebben a példában a HDInsight egy Azure virtuális hálózaton található. Itt látható az Azure virtuális hálózat egy példa konfigurációja. 
+- **Egy Azure virtuális hálózat.** Ha nem rendelkezik Azure virtuális hálózattal, hozzon létre egyet [ezeket az utasításokat](../virtual-network/quick-create-portal.md) követve. Ebben a példában a HDInsight egy Azure virtuális hálózaton található. Itt látható az Azure virtuális hálózat egy példa konfigurációja. 
 
     ![Virtuális hálózat létrehozása](media/tutorial-transform-data-using-hive-in-vnet/create-virtual-network.png)
 - **HDInsight-fürt.** Hozzon létre egy HDInsight-fürtöt, és csatolja az előző lépésben létrehozott virtuális hálózathoz az [Azure HDInsight Azure virtuális hálózat segítségével történő bővítésével](../hdinsight/hdinsight-extend-hadoop-virtual-network.md) kapcsolatos cikk utasításait követve. Itt látható a virtuális hálózaton található HDInsight egy példa konfigurációja. 
@@ -150,7 +150,7 @@ Ebben a szakaszban egy saját üzemeltetésű integrációs modult hozhat létre
    }
    ```
     Jegyezze fel az **AuthKey1** értékét idézőjelek nélkül. 
-3. Hozzon létre egy Azure-beli virtuális gépet, és csatlakoztassa ahhoz a virtuális hálózathoz, amelyen a HDInsight-fürt található. Részletekért tekintse meg a [virtuális gépek létrehozását](../virtual-network/virtual-network-get-started-vnet-subnet.md#create-vms) ismertető cikket. Csatlakoztassa ezeket egy Azure virtuális hálózathoz. 
+3. Hozzon létre egy Azure-beli virtuális gépet, és csatlakoztassa ahhoz a virtuális hálózathoz, amelyen a HDInsight-fürt található. Részletekért tekintse meg a [virtuális gépek létrehozását](../virtual-network/quick-create-portal.md#create-virtual-machines) ismertető cikket. Csatlakoztassa ezeket egy Azure virtuális hálózathoz. 
 4. Az Azure-beli virtuális gépen töltse le a [saját üzemeltetésű integrációs modult](https://www.microsoft.com/download/details.aspx?id=39717). Az előző lépésben megszerzett hitelesítési kulccsal regisztrálja manuálisan a saját üzemeltetésű integrációs modult. 
 
    ![Integrációs modul regisztrálása](media/tutorial-transform-data-using-hive-in-vnet/register-integration-runtime.png)

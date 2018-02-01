@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 4/25/2017
 ms.author: negat
-ms.openlocfilehash: 355865b963c313097f7f5900007f341dba92bf67
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 88d4012145172bcd393070904980898d9923ea1c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-virtual-machine-scale-sets-and-attached-data-disks"></a>Azure-beli virtuálisgép-méretezési csoportok és csatlakoztatott adatlemezek
 Az Azure-beli [virtuálisgép-méretezési csoportok](/azure/virtual-machine-scale-sets/) mostantól támogatják a csatlakoztatott adatlemezekkel rendelkező virtuális gépeket. Adatlemezeket az Azure Managed Disks használatával létrehozott méretezési csoportok tárolóprofiljában lehet definiálni. Korábban a méretezési csoportokban található virtuális gépekhez csak az operációs rendszer meghajtóját és az ideiglenes meghajtókat lehetett közvetlenül csatlakoztatni.
@@ -28,14 +28,14 @@ Az Azure-beli [virtuálisgép-méretezési csoportok](/azure/virtual-machine-sca
 >  Amikor olyan méretezési csoportot hoz létre, amely rendelkezik definiált csatlakoztatott adatlemezekkel, ugyanúgy csatlakoztatnia kell a lemezeket, és formáznia kell azokat a virtuális gépen belül a használatukhoz (akárcsak egy különálló Azure-beli virtuális gép esetén). Ez a folyamat kényelmesen elvégezhető egy olyan szkriptbővítmény használatával, amely egy normál szkript hívásával particionálja és formázza a virtuális gép összes adatlemezét.
 
 ## <a name="create-a-scale-set-with-attached-data-disks"></a>Csatlakoztatott adatlemezekkel rendelkező méretezési csoport létrehozása
-A csatlakoztatott adatlemezekkel rendelkező méretezési csoport létrehozásának egyik egyszerű módja az [az vmss create](/cli/azure/vmss#create) parancs használata. A következő példa egy Azure-erőforráscsoportot és egy 10 Ubuntu-alapú virtuális gépből álló virtuálisgép-méretezési csoportot hoz létre, amelyek közül mindkettő 2 darab (egy 50 és egy 100 GB-os) csatlakoztatott adatlemezzel rendelkezik.
+A csatlakoztatott adatlemezekkel rendelkező méretezési csoport létrehozásának egyik egyszerű módja az [az vmss create](/cli/azure/vmss#az_vmss_create) parancs használata. A következő példa egy Azure-erőforráscsoportot és egy 10 Ubuntu-alapú virtuális gépből álló virtuálisgép-méretezési csoportot hoz létre, amelyek közül mindkettő 2 darab (egy 50 és egy 100 GB-os) csatlakoztatott adatlemezzel rendelkezik.
 
 ```bash
 az group create -l southcentralus -n dsktest
 az vmss create -g dsktest -n dskvmss --image ubuntults --instance-count 10 --data-disk-sizes-gb 50 100
 ```
 
-Az [az vmss create](/cli/azure/vmss#create) parancs alapértelmezett értékeket használ egyes konfigurációs értékekhez, ha nincsenek meghatározva. Az elérhető és felülbírálható beállítások megtekintéséhez használja a következő parancsot:
+Az [az vmss create](/cli/azure/vmss#az_vmss_create) parancs alapértelmezett értékeket használ egyes konfigurációs értékekhez, ha nincsenek meghatározva. Az elérhető és felülbírálható beállítások megtekintéséhez használja a következő parancsot:
 
 ```bash
 az vmss create --help

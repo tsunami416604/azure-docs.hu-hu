@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 08/04/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 69f8f415ce851a5d8034d8196ab541e8491dc417
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: b81dc61e61f97e34ace21c1239681c1254efb7be
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="deploy-a-dcos-cluster"></a>DC/OS fürt üzembe helyezése
 
@@ -25,7 +25,7 @@ Az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba 
 
-Jelentkezzen be az Azure-előfizetésbe az [az login](/cli/azure/#login) paranccsal, és kövesse a képernyőn látható utasításokat.
+Jelentkezzen be az Azure-előfizetésbe az [az login](/cli/azure/#az_login) paranccsal, és kövesse a képernyőn látható utasításokat.
 
 ```azurecli
 az login
@@ -33,7 +33,7 @@ az login
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
 
 A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
 
@@ -43,7 +43,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-dcos-cluster"></a>DC/OS-fürt létrehozása
 
-Hozzon létre egy DC/OS fürtöt az [az acs create](/cli/azure/acs#create) paranccsal.
+Hozzon létre egy DC/OS fürtöt az [az acs create](/cli/azure/acs#az_acs_create) paranccsal.
 
 Az alábbi példa egy *myDCOSCluster* nevű DC/OS fürtöt és SSH-kulcsokat hoz létre, ha azok még nem léteznek. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.  
 
@@ -51,7 +51,7 @@ Az alábbi példa egy *myDCOSCluster* nevű DC/OS fürtöt és SSH-kulcsokat hoz
 az acs create --orchestrator-type dcos --resource-group myResourceGroup --name myDCOSCluster --generate-ssh-keys
 ```
 
-Egyes esetekben – például korlátozott próbaverziónál – az Azure-előfizetés korlátozott hozzáféréssel rendelkezik az Azure-erőforrásokhoz. Ha az üzembe helyezés az elérhető magok korlátozott száma miatt hiúsul meg, csökkentse az alapértelmezett ügynökök számát az `--agent-count 1` az [az acs create](/cli/azure/acs#create) parancshoz történő hozzáadásával. 
+Egyes esetekben – például korlátozott próbaverziónál – az Azure-előfizetés korlátozott hozzáféréssel rendelkezik az Azure-erőforrásokhoz. Ha az üzembe helyezés az elérhető magok korlátozott száma miatt hiúsul meg, csökkentse az alapértelmezett ügynökök számát az `--agent-count 1` az [az acs create](/cli/azure/acs#az_acs_create) parancshoz történő hozzáadásával. 
 
 Néhány perc múlva befejeződik a parancs végrehajtása, és visszaadja az üzembe helyezéssel kapcsolatos adatokat.
 
@@ -156,13 +156,13 @@ Ha erre a címre ugrik, a rendszer visszaadja az alapértelmezett NGINX helyet.
 
 ## <a name="delete-dcos-cluster"></a>DC/OS fürt törlése
 
-Ha már nincs rá szükség, az [az group delete](/cli/azure/group#delete) paranccsal eltávolítható az erőforráscsoport, a DC/OS fürt és az összes kapcsolódó erőforrás.
+Ha már nincs rá szükség, az [az group delete](/cli/azure/group#az_group_delete) paranccsal eltávolítható az erőforráscsoport, a DC/OS fürt és az összes kapcsolódó erőforrás.
 
 ```azurecli
 az group delete --name myResourceGroup --no-wait
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban DC/OS fürtöt helyezett üzembe, és egyszerű Docker-tárolót futtatott a fürtön. Az Azure Container Service-ről további információt az ACS oktatóanyagokban talál.
 

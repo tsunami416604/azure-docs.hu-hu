@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 06/15/2017
 ms.author: tamram
-ms.openlocfilehash: bd96cf7eb1c0c7f51b110da848a8df7914ad85c7
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: d47d85af7412def342437aedf35c3d129662451d
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="perform-blob-storage-operations-with-azure-cli"></a>Blob Storage-műveletek elvégzése az Azure CLI-n
 
@@ -44,7 +44,7 @@ Az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség
 
 A tárolók hasonlók a számítógép könyvtáraihoz, és a segítségükkel blobok csoportjait rendszerezheti egy tárolóban úgy, ahogy a fájlokat rendszerezi egy könyvtárban. Egy tárfiók tetszőleges számú tárolót tartalmazhat. Egy tárolóban 500 TB-nyi blobadatot tárolhat, amely a tárfiókban tárolható maximális adatmennyiségnek felel meg.
 
-Hozzon létre blobok tárolására alkalmas tárolót az [az storage container create](/cli/azure/storage/container#create) parancs segítségével.
+Hozzon létre blobok tárolására alkalmas tárolót az [az storage container create](/cli/azure/storage/container#az_storage_container_create) parancs segítségével.
 
 ```azurecli-interactive
 az storage container create --name mystoragecontainer
@@ -64,7 +64,7 @@ Az újonnan létrehozott tároló alapértelmezés szerint magánjellegű. Ez az
 
 Ha a nyilvános hozzáférésnél `blob` vagy `container` értéket ad meg, azzal az olvasási hozzáférést mindenki számára engedélyezi az interneten. Ha például blobként tárolt képeket szeretne megjeleníteni a weboldalán, engedélyeznie kell a nyilvános olvasási hozzáférést. Ha olvasási/írási hozzáférést szeretne engedélyezni, akkor [közös hozzáférésű jogosultságkódot (SAS)](#create-a-shared-access-signature-sas) kell használnia.
 
-Engedélyezze a nyilvános olvasási hozzáférést a tárolóhoz az [az storage container set-permission](/cli/azure/storage/container#create) paranccsal.
+Engedélyezze a nyilvános olvasási hozzáférést a tárolóhoz az [az storage container set-permission](/cli/azure/storage/container#az_storage_container_create) paranccsal.
 
 ```azurecli-interactive
 az storage container set-permission \
@@ -76,7 +76,7 @@ az storage container set-permission \
 
 A Blob Storage támogatja a blokkblobokat, a hozzáfűző blobokat és a lapblobokat. A blokkblobok az Azure Storage-ban tárolt leggyakoribb blobtípusok. A hozzáfűző blobokat akkor használjuk, ha meglévő blobokhoz adatokat szeretnénk hozzáadni a meglévő tartalom módosítása nélkül (például naplózáshoz). A lapblobok az IaaS virtuális gépek VHD fájljait támogatják.
 
-Ebben a példában egy blobot töltünk fel a legutóbbi lépésben, az [az storage blob upload](/cli/azure/storage/blob#upload) paranccsal létrehozott tárolóba.
+Ebben a példában egy blobot töltünk fel a legutóbbi lépésben, az [az storage blob upload](/cli/azure/storage/blob#az_storage_blob_upload) paranccsal létrehozott tárolóba.
 
 ```azurecli-interactive
 az storage blob upload \
@@ -89,7 +89,7 @@ Ez az eljárás létrehozza a blobot, ha az még nem létezett, és felülírja,
 
 ## <a name="list-the-blobs-in-a-container"></a>A tárolóban lévő blobok listázása
 
-Listázza ki a tárolóban található blobokat az [az storage blob list](/cli/azure/storage/blob#list) paranccsal.
+Listázza ki a tárolóban található blobokat az [az storage blob list](/cli/azure/storage/blob#az_storage_blob_list) paranccsal.
 
 ```azurecli-interactive
 az storage blob list \
@@ -111,7 +111,7 @@ dir1/file1.txt  BlockBlob        6700  application/octet-stream  2017-04-21T18:3
 
 ## <a name="download-a-blob"></a>Blob letöltése
 
-Töltse le az előző lépésben feltöltött blobot az [az storage blob download](/cli/azure/storage/blob#download) paranccsal.
+Töltse le az előző lépésben feltöltött blobot az [az storage blob download](/cli/azure/storage/blob#az_storage_blob_download) paranccsal.
 
 ```azurecli-interactive
 az storage blob download \
@@ -155,7 +155,7 @@ az storage blob copy start \
 
 ## <a name="delete-a-blob"></a>Blob törlése
 
-Törölje a blobot a tárolóból az [az storage blob delete](/cli/azure/storage/blob#delete) paranccsal.
+Törölje a blobot a tárolóból az [az storage blob delete](/cli/azure/storage/blob#az_storage_blob_delete) paranccsal.
 
 ```azurecli-interactive
 az storage blob delete \
@@ -177,9 +177,9 @@ az storage blob update
 
 ## <a name="display-and-modify-blob-properties-and-metadata"></a>A blob tulajdonságainak és metaadatainak megjelenítése és módosítása
 
-A blobok számos, szolgáltatás által definiált tulajdonsággal rendelkeznek, amelyeket az [az storage blob show](/cli/azure/storage/blob#show) paranccsal jeleníthet meg, így például a név, típus, hossz és egyebek. A blobokat saját tulajdonságok és azok értékei segítségével is konfigurálhatja az [az storage blob metadata update](/cli/azure/storage/blob/metadata#update) paranccsal.
+A blobok számos, szolgáltatás által definiált tulajdonsággal rendelkeznek, amelyeket az [az storage blob show](/cli/azure/storage/blob#az_storage_blob_show) paranccsal jeleníthet meg, így például a név, típus, hossz és egyebek. A blobokat saját tulajdonságok és azok értékei segítségével is konfigurálhatja az [az storage blob metadata update](/cli/azure/storage/blob/metadata#az_storage_blob_metadata_update) paranccsal.
 
-Ebben a példában először megjelenítjük az adott blob szolgáltatás által definiált tulajdonságait, majd saját metaadat-tulajdonságaink közül kettővel frissítjük a blobot. Végül az [az storage blob metadata show](/cli/azure/storage/blob/metadata#show) paranccsal megjelenítjük a blob metaadat-tulajdonságait és azok értékeit.
+Ebben a példában először megjelenítjük az adott blob szolgáltatás által definiált tulajdonságait, majd saját metaadat-tulajdonságaink közül kettővel frissítjük a blobot. Végül az [az storage blob metadata show](/cli/azure/storage/blob/metadata#az_storage_blob_metadata_show) paranccsal megjelenítjük a blob metaadat-tulajdonságait és azok értékeit.
 
 ```azurecli-interactive
 # Show properties of a blob
@@ -218,7 +218,7 @@ az storage container set-permission \
 
 ### <a name="verify-private-access"></a>Magánjellegű hozzáférés ellenőrzése
 
-Annak ellenőrzéséhez, hogy az adott tárolóban lévő blobhoz nincs nyilvános olvasási hozzáférés rendelve, az [az storage blob url](/cli/azure/storage/blob#url) paranccsal kérje le a tároló egyik blobjának URL-címét.
+Annak ellenőrzéséhez, hogy az adott tárolóban lévő blobhoz nincs nyilvános olvasási hozzáférés rendelve, az [az storage blob url](/cli/azure/storage/blob#az_storage_blob_url) paranccsal kérje le a tároló egyik blobjának URL-címét.
 
 ```azurecli-interactive
 az storage blob url \
@@ -231,7 +231,7 @@ Egy inkognitóablakban nyissa meg a blob URL-címét. Ha az adott blob magánjel
 
 ### <a name="create-a-sas-uri"></a>SAS URI létrehozása
 
-Most egy olyan SAS URI-t hozunk létre, amellyel hozzáférést adhat a blobhoz. Az alábbi példában az [az storage blob url](/cli/azure/storage/blob#url) paranccsal az egyik változónál a blob URL-címét, egy másik változónál pedig az [az storage blob generate-sas](/cli/azure/storage/blob#generate-sas) paranccsal létrehozott SAS-tokent adjuk meg. Végül a két, `?` lekérdezésikarakterlánc-elválasztóval elkülönített változó összefűzésével előállítjuk a blob teljes SAS URI-ját.
+Most egy olyan SAS URI-t hozunk létre, amellyel hozzáférést adhat a blobhoz. Az alábbi példában az [az storage blob url](/cli/azure/storage/blob#az_storage_blob_url) paranccsal az egyik változónál a blob URL-címét, egy másik változónál pedig az [az storage blob generate-sas](/cli/azure/storage/blob#az_storage_blob_generate_sas) paranccsal létrehozott SAS-tokent adjuk meg. Végül a két, `?` lekérdezésikarakterlánc-elválasztóval elkülönített változó összefűzésével előállítjuk a blob teljes SAS URI-ját.
 
 ```azurecli-interactive
 # Get UTC datetimes for SAS start and expiry (Example: 1994-11-05T13:15:30Z)
@@ -266,7 +266,7 @@ Várjon az URL-cím lejártáig (ebben a példában ez 2 perc), majd egy másik 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége az erőforráscsoportjában lévő egyik erőforrásra sem (beleértve a létrehozott tárfiókot és a jelen oktatóanyagban esetlegesen feltöltött blobokat is), törölje az erőforráscsoportot az [az group delete](/cli/azure/group#delete) paranccsal.
+Ha már nincs szüksége az erőforráscsoportjában lévő egyik erőforrásra sem (beleértve a létrehozott tárfiókot és a jelen oktatóanyagban esetlegesen feltöltött blobokat is), törölje az erőforráscsoportot az [az group delete](/cli/azure/group#az_group_delete) paranccsal.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup

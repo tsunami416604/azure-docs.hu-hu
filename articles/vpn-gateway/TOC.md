@@ -76,7 +76,7 @@
 ### [Áttekintés és Azure-konfiguráció](vpn-gateway-3rdparty-device-config-overview.md)
 ### [Minta: Cisco ASA-eszköz (IKEv2/nincs BGP)](vpn-gateway-3rdparty-device-config-cisco-asa.md)
 ## [Áttelepítés klasszikusról Resource Manager-alapú környezetbe](vpn-gateway-classic-resource-manager-migration.md)
-## Hibaelhárítás
+## [Hibaelhárítás](vpn-gateway-troubleshoot.md)
 ### [VPN teljesítményének érvényesítése VNeten](vpn-gateway-validate-throughput-to-vnet.md)
 ### [Közösség által javasolt VPN- vagy tűzfaleszköz-beállítások](vpn-gateway-third-party-settings.md)
 ### [Pont–hely kapcsolati probléma](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
@@ -91,7 +91,7 @@
 ## [REST (klasszikus)](https://msdn.microsoft.com/library/jj154113)
 ## [Azure CLI](/cli/azure/network/vnet-gateway)
 
-# Kapcsolódó
+# Kapcsolódó témakörök
 ## [Virtuális hálózat](/azure/virtual-network/)
 ## [Application Gateway](/azure/application-gateway/)
 ## [Azure DNS](/azure/dns/)
@@ -99,7 +99,7 @@
 ## [Load Balancer](/azure/load-balancer/)
 ## [ExpressRoute](/azure/expressroute/)
 
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=networking)
 ## [Blog](https://azure.microsoft.com/blog/topics/networking)
 ## [Fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork)
