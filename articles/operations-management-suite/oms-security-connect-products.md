@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2017
 ms.author: yurid
-ms.openlocfilehash: 710a1fe0ce2b7a1841187cf75f4ffb090cc161e5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f95ee94d1b86b6409fc5ecce14ed3e068a635b3d
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="connecting-your-security-products-to-the-operations-management-suite-oms-security-and-audit-solution"></a>Biztonsági termékek csatlakoztatása az Operations Management Suite (OMS) biztonsági és auditálási megoldáshoz 
 A jelen dokumentum ahhoz nyújt segítséget, ha biztonsági termékeket szeretne csatlakoztatni az OMS biztonsági és auditálási megoldáshoz. Az alábbi források támogatottak:
@@ -95,7 +95,7 @@ Az ügynökgépen a helyi 25226-os UDP-portra kell küldeni az eseményeket a sy
 
 ## <a name="reviewing-collected-security-events"></a>Az összegyűjtött biztonsági események áttekintése
 
-[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+[!INCLUDE [log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 A konfigurálás befejezését követően az OMS biztonsági megoldás elkezdi feldolgozni a biztonsági eseményeket. Az események megjelenítéséhez nyissa meg a Naplók keresése eszközt, írja be a *Type=CommonSecurityLog* parancsot a keresőmezőbe, majd nyomja le az ENTER billentyűt. Az alábbi példában a parancs eredménye látható. Vegye figyelembe, hogy ebben az esetben az OMS biztonsági megoldás már feldolgozta a több forgalmazótól származó biztonsági naplókat:
    
@@ -106,7 +106,7 @@ A keresést egyetlen forgalmazóra szűkítheti. Az online Cisco-naplók megjele
 ### <a name="accessing-computers-missing-baseline-assessment"></a>Az alapkonfiguráció értékeléséből kimaradt számítógépek elérése
 Az OMS a tartományi tag alapkonfigurációjának profilját a Windows Server 2008 R2 verziótól a Windows Server 2012 R2 verzióig támogatja. A Windows Server 2016 alapkonfigurációja még nem végleges, és közzététele után azonnal megtörténik a hozzáadása. Minden más operációs rendszer, amelyet az OMS biztonság és audit alapkonfiguráció értékelése megvizsgált, **Az alapkonfiguráció értékeléséből kimaradt számítógépek** szakaszban fog megjelenni.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztathatja a CEF-megoldást az OMS-hez. Az OMS által nyújtott védelemmel kapcsolatos további információkat a következő cikkek tartalmaznak:
 
 * [Az Operations Management Suite (OMS) áttekintése](operations-management-suite-overview.md)

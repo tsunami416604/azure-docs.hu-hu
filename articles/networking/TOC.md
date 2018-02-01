@@ -24,7 +24,7 @@
 ### [Helyszíni kapcsolódás – dedikált](../expressroute/expressroute-introduction.md?toc=%2fazure%2fnetworking%2ftoc.json)
 
 # Bevezetés
-## [Az első virtuális hálózat létrehozása](../virtual-network/virtual-network-get-started-vnet-subnet.md?toc=%2fazure%2fnetworking%2ftoc.json)
+## [Az első virtuális hálózat létrehozása](../virtual-network/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 
 # Útmutató
 ## Internetkapcsolat
@@ -52,7 +52,7 @@
 ### [Azure CLI](cli-samples.md)
 ### [Azure PowerShell](powershell-samples.md)
 
-## oktatóanyagokat
+## Oktatóanyagok
 ### [Virtuális gépek terheléselosztása](../virtual-machines/linux/tutorial-load-balance-nodejs.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Számítógép csatlakoztatása egy virtuális hálózathoz](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 
@@ -63,7 +63,7 @@
 ## [Node.js](https://azure.microsoft.com/develop/nodejs/#azure-sdk)
 ## [REST](https://msdn.microsoft.com/library/mt163658.aspx)
 
-# Erőforrások
+# További források
 ## [Szerzői sablonok](/azure/azure-resource-manager/resource-group-authoring-templates?toc=%2fazure%2fnetworking%2ftoc.json)
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=networking)
 ## [Közösségi sablonok](https://azure.microsoft.com/resources/templates/)

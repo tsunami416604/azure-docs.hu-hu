@@ -159,8 +159,6 @@
               href: service-fabric-reverseproxy-configure-secure-communication.md
             - name: Fordítottproxy-diagnosztika
               href: service-fabric-reverse-proxy-diagnostics.md
-            - name: ASP.NET-mag
-              href: service-fabric-reliable-services-communication-aspnetcore.md
         - name: Alkalmazás-életciklus
           href: service-fabric-application-lifecycle.md
           items:
@@ -388,8 +386,8 @@
           href: service-fabric-migrate-old-javaapp-to-use-maven.md
         - name: Fordított proxy konfigurálása biztonságos kommunikációhoz
           href: service-fabric-reverseproxy-configure-secure-communication.md
-        - name: ASP.NET Core-szolgáltatás összeállítása
-          href: service-fabric-add-a-web-frontend.md
+        - name: ASP.NET-mag
+          href: service-fabric-reliable-services-communication-aspnetcore.md
         - name: Biztonság konfigurálása
           items:
             - name: Titkos alkalmazáskulcsok kezelése

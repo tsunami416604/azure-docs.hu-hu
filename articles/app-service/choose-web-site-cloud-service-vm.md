@@ -15,11 +15,11 @@ ms.topic: overview
 ms.date: 07/07/2016
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 0dba36e5490af56debd3b64b20d39809cd5d5f81
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.openlocfilehash: 627782d3d6dd9f2eeff1b79e9cf721f9a4eb4ac2
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Azure App Service, Virtual Machines, Service Fabric és Cloud Services – Összehasonlítás
 ## <a name="overview"></a>Áttekintés
@@ -49,7 +49,7 @@ A következő táblázatban az App Service, a Cloud Services, a Virtual Machines
 | Egy többrétegű architektúra webes vagy webszolgáltatási szintjének üzemeltetése |X |X |X |X | |
 | Egy többrétegű architektúra középső szintjének üzemeltetése |X |X |X |X |Az App Service Web Apps segítségével könnyedén üzemeltethető egy REST API középső szintje, a [WebJobs](http://go.microsoft.com/fwlink/?linkid=390226) szolgáltatás pedig háttérben futó feldolgozási feladatok üzemeltetésére képes. A WebJobs dedikált webhelyen is futtatható a szint független skálázhatóságának érdekében. |
 | Integrált támogatás a MySQL szolgáltatásként való használatához |X |X | | | |
-| Az ASP.NET, a klasszikus ASP, a Node.js, a PHP és a Python támogatása |X |X |X |X |A Service Fabric támogatja a webes kezelőfelületek [ASP.NET 5](../service-fabric/service-fabric-add-a-web-frontend.md) használatával történő létrehozását, de bármilyen típusú alkalmazást (Node.js, Java stb.) telepíthet [vendégalkalmazásként](../service-fabric/service-fabric-deploy-existing-app.md). |
+| Az ASP.NET, a klasszikus ASP, a Node.js, a PHP és a Python támogatása |X |X |X |X |A Service Fabric támogatja a webes kezelőfelületek [ASP.NET 5](../service-fabric/service-fabric-reliable-services-communication-aspnetcore.md) használatával történő létrehozását, de bármilyen típusú alkalmazást (Node.js, Java stb.) telepíthet [vendégalkalmazásként](../service-fabric/service-fabric-deploy-existing-app.md). |
 | Horizontális felskálázás több példányra ismételt üzembe helyezés nélkül |X |X |X |X |A virtuális gépek képesek horizontálisan felskálázni több példányra, de a rajtuk futó szolgáltatásokat úgy kell megírni, hogy kezeljék a felskálázást. A terheléselosztót úgy kell konfigurálnia, hogy irányítsa a kérelmeket a gépek között, és egy olyan affinitáscsoportot hozzon létre, amely a karbantartás vagy a hardveres hibák esetén megakadályozza az összes példány egyidejű újraindulását. |
 | SSL-támogatás |X |X |X |X |App Service webalkalmazások esetén az egyéni tartományneveknél az SSL csak Alapszintű és Standard módban támogatott. További információkért az SSL webalkalmazásokkal történő használatáról lásd az [Azure webhelyek SSL-tanúsítványának konfigurálását](app-service-web-tutorial-custom-ssl.md) ismertető cikket. |
 | Visual Studio integráció |X |X |X |X | |

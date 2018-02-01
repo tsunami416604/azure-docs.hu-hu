@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/19/2017
 ms.author: tamram
-ms.openlocfilehash: 7313df35baadf7aa6d476f44b113dc60e6845f4b
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 1bb55c75c9929d995fc3ac0795fd1777d7fe4c5f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="transfer-objects-tofrom-azure-blob-storage-using-the-azure-cli"></a>Objektumok továbbítása Azure Blob-tárolókra és -tárolókról az Azure CLI-vel
 
@@ -37,7 +37,7 @@ Ha a CLI helyi telepítését és használatát választja, akkor ehhez a gyors�
 
 A blobok minden esetben egy tárolóba lesznek feltöltve. A blobok csoportjait hasonló módon rendszerezheti, mint a fájlokat a számítógép mappáiban.
 
-Hozzon létre blobok tárolására alkalmas tárolót az [az storage container create](/cli/azure/storage/container#create) parancs segítségével.
+Hozzon létre blobok tárolására alkalmas tárolót az [az storage container create](/cli/azure/storage/container#az_storage_container_create) parancs segítségével.
 
 ```azurecli-interactive
 az storage container create --name mystoragecontainer
@@ -50,7 +50,7 @@ A Blob Storage támogatja a blokkblobokat, a hozzáfűző blobokat és a lapblob
 Először hozza létre a blobba feltölteni kívánt fájlt.
 Az Azure Cloud Shell használata esetén a fájl létrehozásához alkalmazza a következőt: `vi helloworld`, amikor a fájl megnyílik, nyomja le az **Insert** billentyűt, írja be a „Hello world” szöveget, majd nyomja le az **Esc** billentyűt, írja be a `:x` parancsot, és nyomja le az **Enter** billentyűt.
 
-Ebben a példában egy blobot töltünk fel a legutóbbi lépésben, az [az storage blob upload](/cli/azure/storage/blob#upload) paranccsal létrehozott tárolóba.
+Ebben a példában egy blobot töltünk fel a legutóbbi lépésben, az [az storage blob upload](/cli/azure/storage/blob#az_storage_blob_upload) paranccsal létrehozott tárolóba.
 
 ```azurecli-interactive
 az storage blob upload \
@@ -70,11 +70,11 @@ az storage blob upload \
 
 Ez az eljárás létrehozza a blobot, ha az még nem létezett, és felülírja, ha már igen. Mielőtt továbblépne, töltsön fel annyi fájlt, amennyit csak szeretne.
 
-Ha egyszerre több fájlt szeretne feltölteni, használhatja az [az storage blob upload-batch](/cli/azure/storage/blob#upload-batch) parancsot.
+Ha egyszerre több fájlt szeretne feltölteni, használhatja az [az storage blob upload-batch](/cli/azure/storage/blob#az_storage_blob_upload_batch) parancsot.
 
 ## <a name="list-the-blobs-in-a-container"></a>A tárolóban lévő blobok listázása
 
-Listázza ki a tárolóban található blobokat az [az storage blob list](/cli/azure/storage/blob#list) paranccsal.
+Listázza ki a tárolóban található blobokat az [az storage blob list](/cli/azure/storage/blob#az_storage_blob_list) paranccsal.
 
 ```azurecli-interactive
 az storage blob list \
@@ -84,7 +84,7 @@ az storage blob list \
 
 ## <a name="download-a-blob"></a>Blob letöltése
 
-Az [az storage blob download](/cli/azure/storage/blob#download) paranccsal letöltheti a korábban feltöltött blobot.
+Az [az storage blob download](/cli/azure/storage/blob#az_storage_blob_download) paranccsal letöltheti a korábban feltöltött blobot.
 
 ```azurecli-interactive
 az storage blob download \
@@ -109,7 +109,7 @@ azcopy \
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége az erőforráscsoportjában lévő egyik erőforrásra sem (beleértve a jelen rövid útmutatóban létrehozott tárfiókot is), törölje az erőforráscsoportot az [az group delete](/cli/azure/group#delete) paranccsal.
+Ha már nincs szüksége az erőforráscsoportjában lévő egyik erőforrásra sem (beleértve a jelen rövid útmutatóban létrehozott tárfiókot is), törölje az erőforráscsoportot az [az group delete](/cli/azure/group#az_group_delete) paranccsal.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
