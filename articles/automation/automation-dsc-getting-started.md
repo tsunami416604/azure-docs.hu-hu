@@ -14,16 +14,16 @@ ms.tgt_pltfrm: powershell
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: magoedte;gwallace
-ms.openlocfilehash: 45afb09f09e754e37ae8dba02e1e16b3fde1e408
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: ff23b4f5022597763728ccf301966c34c5423b34
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="getting-started-with-azure-automation-dsc"></a>Ismerkedés az Azure Automation DSC
 Ez a cikk ismerteti a leggyakoribb feladatokat az Azure Automation szükséges konfiguráló (DSC), például a létrehozása, importálása, és konfigurációk, kezeléséhez, a bevezetési gépek fordítása és jelentések megtekintése. Milyen Azure Automation DSC áttekintést van, a következő témakörben: [Azure Automation DSC – áttekintés](automation-dsc-overview.md). A DSC-dokumentáció, lásd: [Windows PowerShell kívánt állapot beállítása – áttekintés](https://msdn.microsoft.com/PowerShell/dsc/overview).
 
-A cikkben egy Azure Automation DSC használata lépésenkénti útmutatót. Ha azt szeretné, hogy egy minta-környezet, amely már be van állítva a cikkben ismertetett lépések nélkül, a következő használható [Resource Manager-sablon](https://github.com/azureautomation/automation-packs/tree/master/102-sample-automation-setup). Ez a sablon állít be egy befejezett Azure Automation DSC-környezetben, például egy Azure Automation DSC által felügyelt Azure virtuális Gépen.
+A cikkben egy Azure Automation DSC használata lépésenkénti útmutatót. Ha azt szeretné, hogy egy minta-környezet, amely már be van állítva a cikkben ismertetett lépések nélkül, a következő Resource Manager-sablon használható: egy befejezett Azure Automation DSC-környezetben, beleértve az Azure virtuális gép, amely beállítja ezt a sablont Azure Automation DSC kezeli.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ebben a cikkben szereplő példák elvégzéséhez a következőkre szükség:
@@ -134,11 +134,11 @@ Azure Automation DSC segítségével kezelheti az Azure virtuális gépeken (kla
 ### <a name="to-onboard-an-azure-resource-manager-vm-for-management-by-azure-automation-dsc"></a>A bevezetni az Azure Resource Manager virtuális gép Azure Automation DSC általi kezelésre
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Kattintson a bal oldali **összes erőforrás** és majd az Automation-fiók nevét.
-3. Az a **Automation-fiók** kattintson **DSC-csomópontok** alatt **konfigurációkezelés**...
+3. Az a **Automation-fiók** kattintson **DSC-csomópontok** alatt **konfigurációkezelés**.
 4. Az a **DSC-csomópontok** kattintson **adja hozzá az Azure virtuális gép**.
    
     ![A kiemelés az Azure VM hozzáadása gombra a DSC-csomópontok oldalát bemutató képernyőkép](./media/automation-dsc-getting-started/OnboardVM.png)
-5. Az a **virtuális gépek** oldalon válassza ki a virtuális Gépet.  **Azure virtuális gépek hozzáadása** kattintson **válassza ki a bevezetni kívánt virtuális gépeket**.
+5. A virtuális gépek oldalon válassza a virtuális Gépet. **Azure virtuális gépek hozzáadása** kattintson **válassza ki a bevezetni kívánt virtuális gépeket**.
 6. Kattintson a **Connect** (Csatlakozás) gombra.
    
    > [!IMPORTANT]

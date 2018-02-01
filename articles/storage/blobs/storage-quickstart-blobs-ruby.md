@@ -8,13 +8,13 @@ ms.service: storage
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: quickstart
-ms.date: 12/7/2017
-ms.author: v-ruogun
-ms.openlocfilehash: 3b0bc01047b9aa7459cf6cc33f004cf7506e5826
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.date: 01/18/2018
+ms.author: seguler
+ms.openlocfilehash: 649099f045639c8c506fb4a4be65736626044fe6
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/20/2018
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-ruby"></a>Objektumok továbbítása Azure Blob-tárolókra és -tárolókról a Ruby használatával
 A rövid útmutató azt ismerteti, hogyan használható a Ruby blokkblobok feltöltésére, letöltésére és listázására egy, az Azure Blob Storage-ban található tárolóban. 
@@ -26,7 +26,7 @@ A gyorsútmutató elvégzéséhez:
 * Telepítse a [Rubyhoz készült Azure Storage-kódtárat](https://docs.microsoft.com/azure/storage/blobs/storage-ruby-how-to-use-blob-storage#configure-your-application-to-access-storage) a rubygem csomag használatával. 
 
 ```
-gem install azure-storage
+gem install azure-storage-blob
 ```
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
@@ -45,10 +45,13 @@ git clone https://github.com/Azure-Samples/storage-blobs-ruby-quickstart.git
 Ez a parancs a helyi git mappába klónozza az adattárat. A Ruby mintaalkalmazás megnyitásához keresse meg a storage-blobs-ruby-quickstart mappát, és nyissa meg az example.rb fájlt.  
 
 ## <a name="configure-your-storage-connection-string"></a>A tárolási kapcsolati karakterlánc konfigurálása
-Az alkalmazásban meg kell adnia a tárfiók nevét és a fiókkulcsot, hogy létrehozhasson egy `Client` példányt az alkalmazásból. Nyissa meg az `example.rb` fájlt az IDE Megoldáskezelőjéből. Az **accountname** és az **accountkey** értékeket cserélje le a fiók nevére, illetve kulcsára. 
+Az alkalmazásban meg kell adnia a tárfiók nevét és a fiókkulcsot, hogy létrehozhasson egy `BlobService` példányt az alkalmazásból. Nyissa meg az `example.rb` fájlt az IDE Megoldáskezelőjéből. Az **accountname** és az **accountkey** értékeket cserélje le a fiók nevére, illetve kulcsára. 
 
 ```ruby 
-client = Azure::Storage.client(storage_account_name: account_name, storage_access_key: account_key)
+blob_client = Azure::Storage::Blob::BlobService.create(
+            storage_account_name: account_name,
+            storage_access_key: account_key
+          )
 ```
 
 ## <a name="run-the-sample"></a>Minta futtatása
@@ -57,6 +60,8 @@ Ez a minta egy tesztfájlt hoz létre a „Dokumentumok” mappában. A mintapro
 Futtassa a mintát. Az alábbi kimenet példa az alkalmazás futtatásakor kapott kimenetre:
   
 ```
+Creating a container: quickstartblobs7b278be3-a0dd-438b-b9cc-473401f0c0e8
+
 Temp file = C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-98d0-8b2c05c01078.txt
 
 Uploading to Blob storage as blobQuickStart_9f4ed0f9-22d3-43e1-98d0-8b2c05c01078.txt
@@ -79,8 +84,7 @@ A következőkben áttekintjük a mintakódot, és értelmezzük, hogyan működ
 ### <a name="get-references-to-the-storage-objects"></a>Referenciák beszerzése a tárolóobjektumokhoz
 Az első teendő a referenciák létrehozása a Blob-tárolóhoz való hozzáféréshez és kezeléséhez használt objektumokhoz. Ezek az objektumok egymásra épülnek, és mindegyiket a listában utánuk következő használja.
 
-* Hozzon létre egy példányt az Azure Storage **kliens** objektumából a kapcsolati hitelesítő adatok beállításához. 
-* Hozza létre a **BlobService** objektumot, amely a tárfiók Blob szolgáltatására mutat. 
+* Hozzon létre egy példányt az Azure Storage **BlobService** objektumából a kapcsolati hitelesítő adatok beállításához. 
 * Hozza létre a **Container** objektumot. Ez azt a tárolót képviseli, amelyhez Ön hozzáfér. A tárolók a blobok csoportosítására használhatók, hasonlóan ahhoz, ahogyan a számítógépen a mappákkal rendszerezi a fájlokat.
 
 A felhőbeli blobtároló létrehozása után létrehozhatja a **Block** blobobjektumot, amely pontosan arra a blobra mutat, amelyre kíváncsi, és elvégezheti a feltöltési, letöltési, másolási vagy egyéb műveleteket.
@@ -91,18 +95,18 @@ A felhőbeli blobtároló létrehozása után létrehozhatja a **Block** blobobj
 Ebben a szakaszban létre fogja hozni az Azure Storage-kliens és a blobszolgáltatás objektumának egy példányát, valamint egy új tárolót, majd beállítja annak engedélyeit úgy, hogy a blobok nyilvánosak legyenek. A tároló neve **quickstartblobs**. 
 
 ```ruby 
-# Setup a specific instance of an Azure::Storage::Client
-client = Azure::Storage.client(storage_account_name: account_name, storage_access_key: account_key)
-
-# Create the BlobService that represents the Blob service for the storage account
-blob_service = client.blob_client
+# Create a BlobService object
+blob_client = Azure::Storage::Blob::BlobService.create(
+    storage_account_name: account_name,
+    storage_access_key: account_key
+    )
 
 # Create a container called 'quickstartblobs'.
-container_name ='quickstartblobs'
-container = blob_service.create_container(container_name)   
+container_name ='quickstartblobs' + SecureRandom.uuid
+container = blob_client.create_container(container_name)   
 
 # Set the permission so the blobs are public.
-blob_service.set_container_acl(container_name, "container")
+blob_client.set_container_acl(container_name, "container")
 ```
 
 ### <a name="upload-blobs-to-the-container"></a>Blobok feltöltése a tárolóba
@@ -128,7 +132,7 @@ puts "Temp file = " + full_path_to_file
 puts "\nUploading to Blob storage as blob" + local_file_name
 
 # Upload the created file, using local_file_name for the blob name
-blob_service.create_block_blob(container.name, local_file_name, full_path_to_file)
+blob_client.create_block_blob(container.name, local_file_name, full_path_to_file)
 ```
 
 Egy blokkblob tartalmának részleges frissítéséhez használja a **create\_block\_list()** metódust. A blokkblobok legfeljebb 4,7 TB méretűek lehetnek, és az Excel-munkafüzetektől kezdve a nagyméretű videofájlokig bármit tartalmazhatnak. A lapblobok elsősorban az IaaS virtuális gépek biztonsági mentéséhez szükséges VHD-fájlokhoz használatosak. A hozzáfűző blobok a naplózáshoz használhatók, például amikor egy fájlba szeretne írni, majd folyamatosan újabb információkat szeretne hozzáadni. A hozzáfűző blobokat egyetlen írót tartalmazó modellek esetében érdemes használni. A blobtárolókban tárolt objektumok a legtöbb esetben blokkblobok.
@@ -139,11 +143,15 @@ A tárolóban található fájlok listáját a **list\_blobs()** metódus haszn�
 
 ```ruby
 # List the blobs in the container
-puts "\n List blobs in the container"
-blobs = blob_service.list_blobs(container_name)
-blobs.each do |blob|
-    puts "\t Blob name #{blob.name}"   
-end  
+nextMarker = nil
+loop do
+    blobs = blob_client.list_blobs(container_name, { marker: nextMarker })
+    blobs.each do |blob|
+        puts "\tBlob name #{blob.name}"
+    end
+    nextMarker = blobs.continuation_token
+    break unless nextMarker && !nextMarker.empty?
+end
 ```
 
 ### <a name="download-the-blobs"></a>A blobok letöltése
@@ -156,7 +164,7 @@ Blobokat a **get\_blob()** metódussal tölthet le a helyi lemezre. A következ�
 full_path_to_file2 = File.join(local_path, local_file_name.gsub('.txt', '_DOWNLOADED.txt'))
 
 puts "\n Downloading blob to " + full_path_to_file2
-blob, content = blob_service.get_blob(container_name,local_file_name)
+blob, content = blob_client.get_blob(container_name,local_file_name)
 File.open(full_path_to_file2,"wb") {|f| f.write(content)}
 ```
 
@@ -165,7 +173,7 @@ Ha már nincs szüksége az ebben a rövid útmutatóban feltöltött blobokra, 
 
 ```ruby
 # Clean up resources. This includes the container and the temp files
-blob_service.delete_container(container_name)
+blob_client.delete_container(container_name)
 File.delete(full_path_to_file)
 File.delete(full_path_to_file2)    
 ```

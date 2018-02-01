@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: tutorial
 ms.date: 09/28/2017
-ms.openlocfilehash: f417154c2c2a27b356cefb94739838bd2136e756
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
-ms.translationtype: MT
+ms.openlocfilehash: 4e558518a5a1fb7b4cd0a58fe2453fd4c083b46a
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="classify-iris-part-1-prepare-the-data"></a>Írisz osztályozása, 1. rész: Az adatok előkészítése
 Az Azure Machine Learning-szolgáltatások (előzetes verzió) az adatszakértők számára az adatok előkészítéséhez, a kísérletek kidolgozásához és a modellek felhőszinten való üzembe helyezéséhez létrehozott átfogó, integrált és fejlett adatelemzési megoldást kínálnak.
@@ -64,26 +64,30 @@ Az Azure Machine Learning Workbench alkalmazás telepítéséhez követheti a [t
 
    ![Adatnézet](media/tutorial-classifying-iris/data_view.png)
 
-3. Nem módosítsa az alapértelmezett értékeket, majd válassza a **Tovább** gombot.  
+3. Válassza a **Szövegfájlok (*.csv, .json, .txt., …)** lehetőséget, és kattintson a **Tovább** gombra.
+   ![Adatforrás](media/tutorial-classifying-iris/data-source.png)
+   
+
+4. Keresse meg az **iris.csv** fájlt, majd kattintson a **Tovább** gombra.  
  
    ![Válassza ki az iris elemet](media/tutorial-classifying-iris/select_iris_csv.png)
 
    >[!IMPORTANT]
    >Győződjön meg arról, hogy az **iris.csv** fájlt választja ki a gyakorlathoz az aktuális projektmappából. Máskülönben a későbbi lépések sikertelenek lehetnek.
    
-4. Válassza ki a fájlt, majd kattintson a **Befejezés** gombra.
+5. Ne módosítsa az alapértelmezett értékeket, és kattintson a **Befejezés** gombra.
 
-4. Létrejön egy új fájl **iris-1.dsource** néven. A fájl neve egyedi, és tartalmazza a kötőjelet és az 1 számot, mert a projektben már van egy nem számozott, **iris.dsource** nevű fájl.  
+6. Létrejön egy új fájl **iris-1.dsource** néven. A fájl neve egyedi, és tartalmazza a „-1” karakterláncot, mert a projektben már van egy nem számozott, **iris.dsource** nevű fájl.  
 
    Megnyílik a fájl, és megjelennek az adatok. A rendszer az **1.** és **5. oszlop** között automatikusan hozzáadja az oszlopfejlécet az adatkészlethez. Görgessen le a táblázat aljára. Itt az adatkészlet utolsó sora üres. Ez azért van, mert a CSV-fájl tartalmaz egy extra sortörést.
 
    ![Iris adatnézet](media/tutorial-classifying-iris/iris_data_view.png)
 
-5. Válassza a **Mérőszámok** gombot. Tekintse át a hisztogramokat. A rendszer minden oszlophoz részletes statisztikákat számított ki. Az **Adatok** gomb kiválasztásával ismét megjelenítheti az adatokat. 
+7. Válassza a **Mérőszámok** gombot. Tekintse át a hisztogramokat. A rendszer minden oszlophoz részletes statisztikákat számított ki. Az **Adatok** gomb kiválasztásával ismét megjelenítheti az adatokat. 
 
    ![Iris adatnézet](media/tutorial-classifying-iris/iris_metrics_view.png)
 
-6. Válassza az **Előkészítés** gombot. Megnyílik az **Előkészítés** párbeszédpanel. 
+8. Válassza az **Előkészítés** gombot. Megnyílik az **Előkészítés** párbeszédpanel. 
 
    A mintaprojekt tartalmaz egy **iris.dprep** nevű fájlt. Ez alapértelmezés szerint kéri, hogy hozzon létre egy új adatfolyamot a meglévő **iris.dprep** adat-előkészítési csomagban. 
 
@@ -93,27 +97,27 @@ Az Azure Machine Learning Workbench alkalmazás telepítéséhez követheti a [t
 
    Létrejön egy új adat-előkészítési csomag **iris-1.dprep** néven, és megnyílik az adatelőkészítés-szerkesztőben.
 
-7. Most végezzünk el néhány alapszintű adatelőkészítési műveletet. Nevezze át az oszlopokat. Ehhez jelölje ki egyenként az oszlopfejléceket, és tegye szerkeszthetővé a fejlécszöveget. 
+9. Most végezzünk el néhány alapszintű adatelőkészítési műveletet. Nevezze át az oszlopokat. Ehhez jelölje ki egyenként az oszlopfejléceket, és tegye szerkeszthetővé a fejlécszöveget. 
 
    Adja meg a **Csészelevél hossza**, **Csészelevél szélessége**, **Szirom hosszúsága**, **Szirom szélessége** és **Fajok** nevet a megfelelő oszlopoknak.
 
    ![Oszlopok átnevezése](media/tutorial-classifying-iris/rename_column.png)
 
-8. A külön értékek kiszámításához jelölje ki a **Fajok** oszlopot, majd kattintson rá a jobb gombbal a kiválasztáshoz. Válassza az **Értékek száma** elemet a legördülő menüből. 
+10. A külön értékek kiszámításához jelölje ki a **Fajok** oszlopot, majd kattintson rá a jobb gombbal a kiválasztáshoz. Válassza az **Értékek száma** elemet a legördülő menüből. 
 
    ![Az Értékek számának kiválasztása](media/tutorial-classifying-iris/value_count.png)
 
    Ez a művelet megnyitja a **Vizsgálók** panelt, és megjelenít egy négysávos hisztogramot. A céloszlop három különféle értékkel rendelkezik: **Iris_virginica**, **Iris_versicolor**, illetve **Iris-setosa**, és van még egy **(null)** érték.
 
-9. A nullértékek kiszűréséhez válassza ki a nullértéket jelölő sávot a diagramon. Egy **(null)** értékű sor van. A sor eltávolításához válassza a mínuszjelet (**-**).
+11. A nullértékek kiszűréséhez válassza ki a nullértéket jelölő sávot a diagramon. Egy **(null)** értékű sor van. A sor eltávolításához válassza a mínuszjelet (**-**).
 
    ![Értékek száma hisztogram](media/tutorial-classifying-iris/filter_out.png)
 
-10. Figyelje meg a **LÉPÉSEK** panelen részletezett egyes lépéseket. Amikor átnevezi az oszlopokat és kiszűri a nullértékű sorokat, a rendszer minden műveletet adat-előkészítési lépésként rögzít. Az egyes lépések szerkesztésével módosíthatja a beállításokat, illetve átrendezheti vagy eltávolíthatja a lépéseket.
+12. Figyelje meg a **LÉPÉSEK** panelen részletezett egyes lépéseket. Amikor átnevezi az oszlopokat és kiszűri a nullértékű sorokat, a rendszer minden műveletet adat-előkészítési lépésként rögzít. Az egyes lépések szerkesztésével módosíthatja a beállításokat, illetve átrendezheti vagy eltávolíthatja a lépéseket.
 
    ![Lépések](media/tutorial-classifying-iris/steps.png)
 
-11. Zárja be az adatelőkészítés-szerkesztőt. Válassza a **Bezárás** (x) elemet a diagram ikonnal ellátott **iris-1** lapon. A rendszer automatikusan menti a munkáját az **Adat-előkészítések** fejléc alatt látható **iris-1.dprep** fájlban.
+13. Zárja be az adatelőkészítés-szerkesztőt. Válassza a **Bezárás** (x) elemet a diagram ikonnal ellátott **iris-1** lapon. A rendszer automatikusan menti a munkáját az **Adat-előkészítések** fejléc alatt látható **iris-1.dprep** fájlban.
 
 ## <a name="generate-pythonpyspark-code-to-invoke-a-data-preparation-package"></a>Python-/PySpark-kód létrehozása az adat-előkészítési csomagok meghívásához
 

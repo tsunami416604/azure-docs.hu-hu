@@ -1,6 +1,6 @@
 ---
-title: "Internetkapcsolattal rendelkező terheléselosztó létrehozása – Azure CLI | Microsoft Docs"
-description: "Ismerje meg, hogyan hozható létre internetkapcsolattal rendelkező terheléselosztó a Resource Managerben az Azure parancssori felület használatával"
+title: "Nyilvános terheléselosztó létrehozása – Azure CLI | Microsoft Docs"
+description: "Megismerheti, hogyan hozható létre nyilvános terheléselosztó az Azure CLI használatával."
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 8baf065a7aac0a38624197f8f6a1f6a84aaab2a8
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: bd8c2703a1b43834e1c82e0776e2dee807bb3192
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/23/2018
 ---
-# <a name="creating-an-internet-load-balancer-using-the-azure-cli"></a>Internetes terheléselosztó létrehozása az Azure parancssori felületével
+# <a name="creating-a-public-load-balancer-using-the-azure-cli"></a>Nyilvános terheléselosztó létrehozása az Azure CLI használatával
 
 > [!div class="op_single_selector"]
 > * [Portál](../load-balancer/load-balancer-get-started-internet-portal.md)
@@ -34,13 +34,13 @@ ms.lasthandoff: 12/18/2017
 
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
-Ez a cikk a Resource Manager-alapú üzemi modellt ismerteti. Emellett [azt is megismerheti, hogyan hozható létre internetkapcsolattal rendelkező terheléselosztó a klasszikus üzemelő példány használatával](load-balancer-get-started-internet-classic-portal.md)
+Ez a cikk a Resource Manager-alapú üzemi modellt ismerteti. Emellett [azt is megismerheti, hogyan hozható létre nyilvános terheléselosztó a klasszikus üzemelő példány használatával](load-balancer-get-started-internet-classic-portal.md)
 
 [!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
 ## <a name="deploying-the-solution-using-the-azure-cli"></a>A megoldás üzembe helyezése az Azure parancssori felület használatával
 
-A következő lépések bemutatják, hogyan hozható létre internetkapcsolattal rendelkező terheléselosztó az Azure Resource Manager parancssori felületének használatával. Az Azure Resource Manager lehetővé teszi, hogy az egyes erőforrások konfigurálása egyenként történjen, majd az összerakásukkal jöjjön létre egy erőforrás.
+Az alábbi lépések bemutatják, hogyan hozható létre nyilvános terheléselosztó az Azure Resource Manager parancssori felületének használatával. Az Azure Resource Manager lehetővé teszi, hogy az egyes erőforrások konfigurálása egyenként történjen, majd az összerakásukkal jöjjön létre egy erőforrás.
 
 A terheléselosztó üzembe helyezéséhez a következő objektumokat kell létrehozni és konfigurálni:
 
@@ -89,7 +89,7 @@ A további információkat [Az Azure Resource Manager támogatása a terhelésel
    > A terheléselosztó a nyilvános IP-cím tartománycímkéjét használja FQDN-ként. Ez áttérést jelent a klasszikus üzemelő példányról, amely a felhőszolgáltatást használja a terheléselosztó teljes tartományneveként (FQDN).
    > Ebben a példában a *loadbalancernrp.eastus.cloudapp.azure.com* az FQDN.
 
-## <a name="create-a-load-balancer"></a>Terheléselosztó létrehozása
+## <a name="create-a-load-balancer"></a>Load Balancer létrehozása
 
 A következő parancs létrehoz egy *NRPlb* nevű terheléselosztót az *NRPRG* erőforráscsoportban, az *USA keleti régiója* Azure-helyen.
 
@@ -304,7 +304,7 @@ Terheléselosztó eltávolításához használja a következő parancsot:
 azure network lb delete --resource-group nrprg --name nrplb
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Bevezetés a belső terheléselosztók konfigurálásába](load-balancer-get-started-ilb-arm-cli.md)
 
 [A terheléselosztó elosztási módjának konfigurálása](load-balancer-distribution-mode.md)

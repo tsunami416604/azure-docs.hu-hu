@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/14/2017
 ms.author: sdash
-ms.openlocfilehash: 6932802e7852efa90551c27f9145f7ca6e685d7e
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: c9dd60170e93722cab8e8d5eb5b4202b71bbb8e4
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Webhelyek rendelkezésre állásának és válaszkészségének megfigyelése
 Miután telepítette a webappot vagy a webhelyet bármely kiszolgálóra, webes teszteket állíthat be az alkalmazás rendelkezésre állásának és válaszkészségének megfigyeléséhez. Az [Azure Application Insights](app-insights-overview.md) rendszeres időközönként, világszerte különböző helyekről webes kéréseket küld az alkalmazására. Riasztást jelenít meg, ha az alkalmazás nem válaszol, vagy lassan válaszol.
@@ -30,6 +30,12 @@ A rendelkezésre állási teszteknek két típusuk van:
 * [Többlépéses webes teszt](#multi-step-web-tests): ezt a Visual Studio Enterprise segítségével hozhatja létre és feltöltheti a portálra.
 
 Alkalmazás-erőforrásonként legfeljebb 100 rendelkezésre állási tesztet hozhat létre.
+
+
+> [!NOTE] 
+> * A rendelkezésreállási tesztek helyei nemrég átkerültek az Azure adatközpontjaiba. Ezzel a lépéssel növelhetjük a helyek számát az Azure-adatközpontok növekvő hálózatában.  
+> * Nem szükséges frissítenie a teszteket. Az összes teszt átkerül, és az új helyekről fut. 
+>* További információért tekintse meg a [szolgáltatási híreket](https://blogs.msdn.microsoft.com/applicationinsights-status/2018/01/24/application-insights-availability-monitoring-test-locations-updated/).
 
 ## <a name="create"></a>Erőforrás megnyitása a rendelkezésre állási tesztek jelentéseihez
 
@@ -118,7 +124,8 @@ Olyan forgatókönyveket is figyelhet, amelyek egy URL-címek sorozatából áll
 Többlépéses teszt létrehozásához rögzíteni kell a forgatókönyvet a Visual Studio Enterprise segítségével, majd fel kell tölteni a felvételt az Application Insights-ba. Az Application Insights időközönként visszajátssza a forgatókönyvet, és ellenőrzi a válaszokat.
 
 > [!NOTE]
-> A tesztekben nem használhat kódolt függvényeket vagy hurkokat. A .webtest szkriptnek teljes egészében tartalmaznia kell a tesztet. Ehelyett azonban standard beépülő modulok is használhatók.
+> * A tesztekben nem használhat kódolt függvényeket vagy hurkokat. A .webtest szkriptnek teljes egészében tartalmaznia kell a tesztet. Ehelyett azonban standard beépülő modulok is használhatók.
+> * Kizárólag angol karakterek támogatottak a többlépéses webes tesztekben. Ha más nyelven használja a Visual Studiót, kérjük, frissítse a webes teszt definíciófájlját a nem angol karakterek fordításához/kihagyásához.
 >
 
 #### <a name="1-record-a-scenario"></a>1. Forgatókönyv rögzítése

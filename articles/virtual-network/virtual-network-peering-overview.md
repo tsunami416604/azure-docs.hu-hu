@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: narayan;anavin
-ms.openlocfilehash: df1d316654bdfd282965000966f79543e0d5124c
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: f43c95753e2cb190270a25fecd4c490e6fb0ed34
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="virtual-network-peering"></a>Társviszony létesítése virtuális hálózatok között
 
@@ -35,7 +35,7 @@ A virtuális társhálózatok használatának előnyei:
 
 ## <a name="requirements-constraints"></a>Követelmények és korlátozások
 
-* Az azonos régiókban lévő virtuális hálózatok közötti társviszony kialakítása általánosan elérhető. Az eltérő régiókban lévő virtuális hálózatok közötti társviszony kialakítása jelenleg előzetes kiadásban érhető el az USA nyugati középső régiójában, a Közép-Kanada régióban és az USA 2. nyugati régiójában. Mielőtt különböző régiókban lévő virtuális hálózatok között alakítana ki társviszonyt, [regisztrálnia kell az előfizetését](virtual-network-create-peering.md#register) az előzetes verzióra. A különböző régióban lévő virtuális hálózatok közötti társviszony kialakításának kísérlete meghiúsul, ha még nem regisztrált az előzetes verzióra.
+* Az azonos régiókban lévő virtuális hálózatok közötti társviszony kialakítása általánosan elérhető. Az eltérő régiókban lévő virtuális hálózatok közötti társviszony kialakítása jelenleg előzetes kiadásban érhető el az USA nyugati középső régiójában, a Közép-Kanada régióban, az USA 2. nyugati régiójában, Korea déli régiójában, az Egyesült Királyság déli régiójában, az Egyesült Királyság nyugati régiójában, Kelet-Kanadában, Dél-Indiában, Közép-Indiában és Nyugat-Indiában. Mielőtt különböző régiókban lévő virtuális hálózatok között alakítana ki társviszonyt, [regisztrálnia kell az előfizetését](virtual-network-create-peering.md#register) az előzetes verzióra. A különböző régióban lévő virtuális hálózatok közötti társviszony kialakításának kísérlete meghiúsul, ha még nem regisztrált az előzetes verzióra.
     > [!WARNING]
     > A régiók között létrehozott virtuális társhálózatok rendelkezésre állása és megbízhatósága eltérő lehet az általánosan elérhető kiadások társításaitól. Előfordulhat, hogy a virtuális társhálózatok korlátozott képességekkel rendelkeznek, vagy nem érhetőek el minden Azure-régióban. A szolgáltatás rendelkezésre állásával és állapotával kapcsolatos legfrissebb értesítésekért tekintse meg az [Azure virtuális hálózati frissítésekkel kapcsolatos](https://azure.microsoft.com/updates/?product=virtual-network) oldalát.
 

@@ -44,12 +44,12 @@
 ### [Csatlakoztatás egyéni tartományvezérlőhöz](cloud-services-connect-to-custom-domain.md)
 
 ## Szolgáltatás kezelése
-### [Spekulatív végrehajtás kockázatának csökkentése](mitigate-se.md}
 ### [Gyakori felügyeleti feladatok](cloud-services-how-to-manage-portal.md)
 ### [Felhőszolgáltatás konfigurálása](cloud-services-how-to-configure-portal.md)
 ### [Egy Cloud Service felügyelete az Azure Automationnel](automation-manage-cloud-services.md)
 ### [Az automatikus skálázás konfigurálása](cloud-services-how-to-scale-portal.md)
 ### [Azure-erőforrások felügyelete a Pythonnal](cloud-services-python-how-to-use-service-management.md)
+### [Spekulatív végrehajtás kockázatának csökkentése](mitigate-se.md)
 
 ### [Vendég operációs rendszer javításai](cloud-services-guestos-msrc-releases.md)
 ### Vendég operációs rendszer kivezetése

@@ -31,7 +31,7 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 | Egyidejű TCP vagy UDP-forgalmat egy hálózati Adapterének virtuális gép vagy szerepkörpéldány |500 000 |500 000 |
 | Hálózati adapterek (NIC) |350 |20000 |
 | Hálózati biztonsági csoportok (NSG) |100 |5000 |
-| NSG-ben szereplő NSG-szabályok |200 |500 |
+| NSG-ben szereplő NSG-szabályok |200 |1000 |
 | IP-címek és egy biztonsági csoportot a cél- és a megadott tartományok |2000 |4000 |
 | Alkalmazásbiztonsági csoportok |200 |500 |
 | Biztonsági csoportok / IP-konfiguráció, egy hálózati adapter |10 |20 |

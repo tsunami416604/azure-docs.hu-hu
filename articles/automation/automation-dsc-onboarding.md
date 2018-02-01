@@ -13,11 +13,11 @@ ms.tgt_pltfrm: powershell
 ms.workload: TBD
 ms.date: 12/13/2016
 ms.author: gwallace
-ms.openlocfilehash: bfdec6d3982bb7744374a8026a41c3d548aca612
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: ffe08f0f85f07accdce9e3b8fa9524ef3c99c878
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-dsc"></a>Azure Automation DSC általi kezelésre bevezetési gépek
 
@@ -43,7 +43,7 @@ Az alábbi szakaszok felsorolják, hogyan zajlik bevezetésében Azure Automatio
 
 ## <a name="azure-virtual-machines-classic"></a>Az Azure virtuális gépek (klasszikus)
 
-Az Azure Automation DSC Szolgáltatásban könnyen bevezetni az Azure virtuális gépek (klasszikus) konfigurációs Management az Azure-portálon, vagy a PowerShell használatával is. A technikai részletek alatt, és anélkül, hogy a rendszergazda nem kell a virtuális gép be távolról az Azure virtuális gép célállapot-konfiguráció bővítményt a virtuális gép Azure Automation DSC regisztrálja. Mivel az Azure virtuális gép célállapot-konfiguráció bővítmény aszinkron módon fut, nyomon követheti a telepítés előrehaladását, valamint a hibaelhárítás érdekében szerepelnek a [ **hibaelhárítási Azure virtuális gép bevezetési** ](#troubleshooting-azure-virtual-machine-onboarding) az alábbi szakasz.
+Az Azure Automation DSC Szolgáltatásban könnyen bevezetni az Azure virtuális gépek (klasszikus) konfigurációs Management az Azure-portálon, vagy a PowerShell használatával is. A technikai részletek alatt, és anélkül, hogy a rendszergazda nem kell a virtuális gép be távolról az Azure virtuális gép célállapot-konfiguráció bővítményt a virtuális gép Azure Automation DSC regisztrálja. Mivel az Azure virtuális gép célállapot-konfiguráció bővítmény aszinkron módon fut, nyomon követheti a telepítés előrehaladását, valamint a hibaelhárítás érdekében szerepelnek-e a következő [ **hibaelhárítási Azure virtuális gép bevezetési** ](#troubleshooting-azure-virtual-machine-onboarding) szakasz.
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -51,7 +51,7 @@ Az a [Azure-portálon](http://portal.azure.com/), kattintson a **Tallózás** ->
 
 ![](./media/automation-dsc-onboarding/DSC_Onboarding_1.png)
 
-A regisztrációs URL-Címének megkeresése, és a kulcsot a következőhöz az Automation-fiókhoz való előkészítésére a gépet, tekintse meg a [ **regisztrációs biztonságos** ](#secure-registration) az alábbi szakasz.
+A regisztrációs URL-Címének megkeresése, és a gép, tekintse meg a következőt az Automation-fiókhoz való előkészítésére kulcs [ **regisztrációs biztonságos** ](#secure-registration) szakasz:
 
 ### <a name="powershell"></a>PowerShell
 
@@ -119,11 +119,11 @@ $VM | Update-AzureVM
 
 ## <a name="azure-virtual-machines"></a>Azure virtuális gépek
 
-Az Azure Automation DSC lehetővé teszi a konfigurációkezelésre, könnyen bevezetni az Azure virtuális gépek az Azure portál, Azure Resource Manager-sablonok, vagy a PowerShell használatával. A technikai részletek alatt, és anélkül, hogy a rendszergazda nem kell a virtuális gép be távolról az Azure virtuális gép célállapot-konfiguráció bővítményt a virtuális gép Azure Automation DSC regisztrálja. Mivel az Azure virtuális gép célállapot-konfiguráció bővítmény aszinkron módon fut, nyomon követheti a telepítés előrehaladását, valamint a hibaelhárítás érdekében szerepelnek a [ **hibaelhárítási Azure virtuális gép bevezetési** ](#troubleshooting-azure-virtual-machine-onboarding) az alábbi szakasz.
+Az Azure Automation DSC lehetővé teszi a konfigurációkezelésre, könnyen bevezetni az Azure virtuális gépek az Azure portál, Azure Resource Manager-sablonok, vagy a PowerShell használatával. A technikai részletek alatt, és anélkül, hogy a rendszergazda nem kell a virtuális gép be távolról az Azure virtuális gép célállapot-konfiguráció bővítményt a virtuális gép Azure Automation DSC regisztrálja. Mivel az Azure virtuális gép célállapot-konfiguráció bővítmény aszinkron módon fut, nyomon követheti a telepítés előrehaladását, valamint a hibaelhárítás érdekében szerepelnek-e a következő [ **hibaelhárítási Azure virtuális gép bevezetési** ](#troubleshooting-azure-virtual-machine-onboarding) szakasz.
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Az a [Azure-portálon](https://portal.azure.com/), keresse meg a helyét a bevezetni virtuális gépek Azure Automation-fiók. Az Automation-fiók irányítópultján kattintson **DSC-csomópontok** -> **adja hozzá az Azure virtuális gép**.
+Az a [Azure-portálon](https://portal.azure.com/), keresse meg a helyét a bevezetni virtuális gépek Azure Automation-fiók. Az Automation-fiók irányítópultján kattintson **DSC-csomópontok** -> **+ Azure virtuális gép hozzáadása**.
 
 Válassza ki a bevezetni az Azure virtuális gép.
 
@@ -135,7 +135,7 @@ A **regisztrációs**, adja meg a [PowerShell DSC helyi Configuration Manager é
 
 ### <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sablonok
 
-Azure virtuális gépeken is telepíthető és az Azure Resource Manager-sablonok segítségével az Azure Automation DSC előkészítve. Lásd: [konfigurálja a virtuális gépről a DSC-bővítményt és Azure Automation DSC](https://azure.microsoft.com/documentation/templates/dsc-extension-azure-automation-pullserver/) egy példa sablon, hogy egy meglévő virtuális gép Azure Automation DSC onboards. A regisztrációs kulcs és a regisztrációs URL-cím szükséges bemeneti sablonban szereplő, tekintse meg a [ **regisztrációs biztonságos** ](#secure-registration) az alábbi szakasz.
+Azure virtuális gépeken is telepíthető és az Azure Resource Manager-sablonok segítségével az Azure Automation DSC előkészítve. Lásd: [konfigurálja a virtuális gépről a DSC-bővítményt és Azure Automation DSC](https://azure.microsoft.com/documentation/templates/dsc-extension-azure-automation-pullserver/) egy példa sablon, hogy egy meglévő virtuális gép Azure Automation DSC onboards. A regisztrációs kulcs és a regisztrációs URL-cím szükséges bemeneti sablonban szereplő, tekintse meg a következőt [ **regisztrációs biztonságos** ](#secure-registration) szakasz.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -150,7 +150,7 @@ Azure Automation DSC az AWS DSC eszközkészlet segítségével által konfigur�
 A helyi Windows-alapú gépek és a Windows-alapú gépek az-Azure felhők (például az Amazon Web Services) is lehet előkészítve az Azure Automation DSC, mindaddig, amíg hozzáférhetnek kimenő internet-néhány egyszerű lépésben:
 
 1. Győződjön meg arról, hogy a legújabb [WMF 5](http://aka.ms/wmf5latest) az Azure Automation DSC a bevezetni kívánt számítógépeken telepítve van.
-2. A szakasz útmutatásait [ **generálása DSC metaconfigurations** ](#generating-dsc-metaconfigurations) egy mappát, amely tartalmazza a szükséges DSC metaconfigurations létrehozásához az alábbi.
+2. A következő szakasz útmutatásait [ **generálása DSC metaconfigurations** ](#generating-dsc-metaconfigurations) egy mappát, amely tartalmazza a szükséges DSC metaconfigurations létrehozásához.
 3. A PowerShell DSC metakonfigurációját távolról vonatkoznak a bevezetni kívánt gépek. **Ez a parancs fut a gépen kell rendelkeznie a legújabb [WMF 5](http://aka.ms/wmf5latest) telepített**:
 
     ```powershell
@@ -171,11 +171,11 @@ A helyszíni Linux-gépek, a Linux-gépek Azure-ban és a Linux-gépek-Azure fel
 
      `/opt/microsoft/dsc/Scripts/Register.py <Automation account registration key> <Automation account registration URL>`
 
-   + A regisztrációs kulcs és a regisztrációs URL-cím keresése az Automation-fiók, tekintse meg a [ **regisztrációs biztonságos** ](#secure-registration) az alábbi szakasz.
+   + A regisztrációs kulcs és a regisztrációs URL-cím keresése az Automation-fiók, tekintse meg a következő [ **regisztrációs biztonságos** ](#secure-registration) szakasz.
 
      Ha a PowerShell DSC helyi Configuration Manager alapértelmezett **tegye** **nem** egyezés a használati eset, vagy a bevezetni kívánt gépek úgy, hogy az Azure Automation DSC, csak jelentendő, de nincs lekéréses konfigurációja vagy a PowerShell-modulok tegye azt, hajtsa végre a 3-6. lépéseket. Egyéb esetben folytassa a 6.
 
-3. Kövesse a riasztásban megjelenő utasításokat a [ **generálása DSC metaconfigurations** ](#generating-dsc-metaconfigurations) egy mappát, amely tartalmazza a szükséges DSC metaconfigurations létrehozásához az alábbi szakasz.
+3. Kövesse az utasításokat az alábbi [ **generálása DSC metaconfigurations** ](#generating-dsc-metaconfigurations) létrehozni a mappát, amely tartalmazza a szükséges DSC metaconfigurations szakasz.
 4. A PowerShell DSC metakonfigurációját távolról vonatkoznak a bevezetni kívánt gépek:
 
     ```powershell
@@ -321,7 +321,7 @@ Ez a parancs fut a gépen kell rendelkeznie a legújabb [WMF 5](http://aka.ms/wm
     DscMetaConfigs @Params
     ```
 
-3. Adja meg a regisztrációs kulcs és az URL-cím az Automation-fiók, valamint a gépeket előkészítésére nevét. Más paraméterek opcionálisak. A regisztrációs kulcs és a regisztrációs URL-cím keresése az Automation-fiók, tekintse meg a [ **regisztrációs biztonságos** ](#secure-registration) az alábbi szakasz.
+3. Adja meg a regisztrációs kulcs és az URL-cím az Automation-fiók, valamint a gépeket előkészítésére nevét. Más paraméterek opcionálisak. A regisztrációs kulcs és a regisztrációs URL-cím keresése az Automation-fiók, tekintse meg a következő [ **regisztrációs biztonságos** ](#secure-registration) szakasz.
 4. Ha azt szeretné, hogy a gépek DSC állapotinformáció jelentésének Azure Automation DSC, de a nem lekéréses konfigurációját vagy a PowerShell-modulok, állítsa be a **ReportOnly** paraméter igaz értékű.
 5. Futtassa a szkriptet. Most már rendelkeznie kell egy nevű mappát **DscMetaConfigs** a munkakönyvtárba, a PowerShell DSC metaconfigurations gépek tartalmazó bevezetni (rendszergazdaként):
 
@@ -359,9 +359,9 @@ Ha a PowerShell DSC helyi Configuration Manager alapértelmezett felel meg a has
 
 ## <a name="secure-registration"></a>Biztonságos regisztrációs
 
-Gépek discoveryt biztonságosan számára egy Azure Automation-fiók a WMF 5 DSC regisztrációs protokoll, amely lehetővé teszi, hogy a DSC-csomópont hitelesítése a PowerShell DSC V2 lekéréses vagy a jelentéskészítő kiszolgálóra (beleértve az Azure Automation DSC) keresztül. A kiszolgáló regisztrálása a csomópont egy **regisztrációs URL-cím**, hitelesítő használatával egy **regisztrációs kulcs**. Alatt a regisztrációt a DSC-csomópont és DSC lekérési/jelentéskészítési kiszolgáló egyezteti erről a csomópontról használnak a hitelesítéshez a regisztrációt követő kiszolgáló egyedi tanúsítványt. Ez a folyamat megakadályozza, hogy a előkészítve csomópontok megszemélyesít egy másikra, például ha egy csomópont biztonsága sérül, és rosszindulatúan viselkedik. A regisztrációt követően a regisztrációs kulcs nem újra-hitelesítéshez használt, és a csomópont törlődik.
+Gépek discoveryt biztonságosan számára egy Azure Automation-fiók a WMF 5 DSC regisztrációs protokoll, amely lehetővé teszi, hogy a DSC-csomópont hitelesítése a PowerShell DSC lekéréses vagy a jelentéskészítő kiszolgálóra (beleértve az Azure Automation DSC) keresztül. A kiszolgáló regisztrálása a csomópont egy **regisztrációs URL-cím**, hitelesítő használatával egy **regisztrációs kulcs**. Alatt a regisztrációt a DSC-csomópont és DSC lekérési/jelentéskészítési kiszolgáló egyezteti erről a csomópontról használnak a hitelesítéshez a regisztrációt követő kiszolgáló egyedi tanúsítványt. Ez a folyamat megakadályozza, hogy a előkészítve csomópontok megszemélyesít egy másikra, például ha egy csomópont biztonsága sérül, és rosszindulatúan viselkedik. A regisztrációt követően a regisztrációs kulcs nem újra-hitelesítéshez használt, és a csomópont törlődik.
 
-A DSC-regisztrációs protokoll a szükséges adatokat kaphat a **kulcsok kezelése** panel az Azure betekintő portálon. Nyissa meg ezt a panelt a kulcs ikonra kattintva a **Essentials** az Automation-fiók panelen.
+A DSC-regisztrációs protokoll a szükséges adatokat kaphat **kulcsok** alatt **Fiókbeállítások** az Azure portálon. Nyissa meg ezt a panelt a kulcs ikonra kattintva a **Essentials** az Automation-fiók panelen.
 
 ![](./media/automation-dsc-onboarding/DSC_Onboarding_4.png)
 
@@ -377,15 +377,13 @@ Az Azure Automation DSC könnyen előkészítésére Azure Windows virtuális g�
 > [!NOTE]
 > A Bevezetés az Azure Windows virtuális gép Azure Automation DSC szolgáltatásra, az Azure virtuális gép célállapot-konfiguráció bővítmény használó bármely metódusát egy órát a csomópont regisztrálva az Azure Automation legfeljebb megjelenítendő eltarthat. Ez az miatt a virtuális gép által a Azure VM DSC-bővítményt, amely pedig szükséges érheti Windows Management Framework 5.0 telepítése a virtuális gép Azure Automation DSC szolgáltatásra.
 
-Hibaelhárítása, vagy tekintse meg az Azure virtuális gép célállapot-konfiguráció-bővítmény, az Azure portálon állapotának keresse meg a virtuális gép előkészítve alatt, majd kattintson -> **összes beállítás** -> **bővítmények** -> **DSC**. További részletekért kattintson **az állapot**.
-
-[![](./media/automation-dsc-onboarding/DSC_Onboarding_5.png)](https://technet.microsoft.com/library/dn249912.aspx)
+Hibaelhárítását, és tekintse meg az Azure virtuális gép célállapot-konfiguráció bővítmény állapotát, az Azure portálon keresse meg a virtuális gép előkészítve alatt, majd kattintson **bővítmények** alatt **beállítások**. Kattintson a **DSC** vagy **DSCForLinux** operációs rendszertől függően. További részletekért kattintson **az állapot**.
 
 ## <a name="certificate-expiration-and-reregistration"></a>Tanúsítványok és ismételt
 
 A gépek DSC-csomópontként az Azure Automation DSC a regisztrálás után a rendszer számos oka lehet, hogy miért regisztrálja újra a jövőben csomópontot kell:
 
-* A regisztrálás után minden csomóponton automatikusan egyezteti egyedi tanúsítványt a hitelesítéshez, amely egy év után lejár. Jelenleg a PowerShell DSC regisztrációs protokoll nem tudja automatikusan megújítani a tanúsítványokat, amikor azok hamarosan lejáró, ezért a csomópontok egy év idő után ismét meg kell. Előtt újraregisztrálása, ellenőrizze, hogy mindegyik csomópontján fut a Windows Management Framework 5.0 RTM-re. Ha a csomópont-hitelesítési tanúsítvány lejár, és a csomópontot a rendszer nem újra regisztrálja, a csomópont nem lehet kommunikálni az Azure Automation, és megjelöli "Unresponsive." Ismételt 90 naponta végrehajtott vagy kisebb a tanúsítvány lejárati ideje, vagy a tanúsítvány lejárati ideje után bármikor egy új tanúsítványt generált és a használt eredményez.
+* A regisztrálás után minden csomóponton automatikusan egyezteti egyedi tanúsítványt a hitelesítéshez, amely egy év után lejár. Jelenleg a PowerShell DSC regisztrációs protokoll nem tudja automatikusan megújítani a tanúsítványokat, amikor azok hamarosan lejáró, ezért a csomópontok egy év idő után ismét meg kell. Előtt újraregisztrálása, ellenőrizze, hogy mindegyik csomópontján fut a Windows Management Framework 5.0 RTM-re. Ha a csomópont-hitelesítési tanúsítvány lejár, és a csomópontot a rendszer nem újra regisztrálja, a csomópont nem lehet kommunikálni az Azure Automation-e, és jelölése "Unresponsive." Ismételt 90 naponta végrehajtott vagy kisebb a tanúsítvány lejárati ideje, vagy a tanúsítvány lejárati ideje után bármikor egy új tanúsítványt generált és a használt eredményez.
 * Módosíthatja a [PowerShell DSC helyi Configuration Manager értékek](https://msdn.microsoft.com/powershell/dsc/metaconfig4) , hogy a csomópont, például a ConfigurationMode kezdeti regisztráció során lettek beállítva. Jelenleg a DSC-ügynök értékeiről csak módosítható újraregisztrálni keresztül. Az egyetlen kivétel a csomópont-konfigurációnak a csomópont rendelt – ez módosítható az Azure Automation DSC közvetlenül.
 
 Ismételt regisztrálta a csomópont kezdetben a bevezetési módszereket a jelen dokumentumban ismertetett azonos módon hajtható végre. Nem kell egy Azure Automation DSC csomópont regisztrációját előtt újraregisztrálása azt.

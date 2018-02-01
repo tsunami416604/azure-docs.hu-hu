@@ -1,6 +1,6 @@
 ---
-title: "Az Azure felügyeleti API-tanúsítvány feltöltése |} Microsoft Docs"
-description: "Útmutató az Azure portál felügyeleti API-tanúsítvány feltöltése."
+title: "Azure-szolgáltatások felügyeleti tanúsítvány feltöltése |} Microsoft Docs"
+description: "Megtudhatja, hogyan töltse fel a Service Management az Azure-portálon."
 services: cloud-services
 documentationcenter: .net
 author: Thraka
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: adegeo
-ms.openlocfilehash: ad55d71a56657e9cf33c1d33e09c58295206a2ae
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e74a3e918a7c7426c743447e23ede9938ce3f63e
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="upload-an-azure-management-api-management-certificate"></a>Az Azure szolgáltatásfelügyeleti API Management-tanúsítvány feltöltése
+# <a name="upload-an-azure-service-management-certificate"></a>Azure-szolgáltatások felügyeleti tanúsítvány feltöltése
 Felügyeleti tanúsítványok hitelesítik magukat az Azure által biztosított klasszikus üzembe helyezési modellel teszik lehetővé. Számos programok telepítése és eszközök (például a Visual Studio vagy az Azure SDK-val) és a különböző Azure-szolgáltatások telepítési automatizálására használható ezeket a tanúsítványokat. 
 
 > [!WARNING]
@@ -54,5 +54,5 @@ Ha elvégezte a felügyeleti tanúsítvány létrehozása, (.cer-fájl csak a ny
 
     ![Beállítások](./media/azure-api-management-certs/certificate_details.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy egy előfizetéshez társított felügyeleti tanúsítvány, (miután helyileg a megfelelő tanúsítvány telepítése) programokon keresztül csatlakozhat a [klasszikus üzembe helyezési modellel REST API](https://msdn.microsoft.com/library/azure/mt420159.aspx) és automatizálhatja a különböző Azure-erőforrások, amelyek is, hogy az előfizetéshez társítva.

@@ -67,6 +67,14 @@
           href: automation-runbook-types.md
         - name: Runbookok létrehozása és importálása
           href: automation-creating-importing-runbook.md
+        - name: Grafikus runbook létrehozása
+          href: automation-first-runbook-graphical.md
+        - name: PowerShell-runbook létrehozása
+          href: automation-first-runbook-textual-powershell.md
+        - name: PowerShell-alapú munkafolyamati runbook létrehozása
+          href: automation-first-runbook-textual.md
+        - name: Python-runbook létrehozása
+          href: automation-first-runbook-textual-python2.md
         - name: Szöveges runbookok szerkesztése
           href: automation-edit-textual-runbook.md
         - name: Grafikus runbookok szerkesztése

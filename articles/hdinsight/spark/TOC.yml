@@ -167,6 +167,21 @@
             - name: HDInsight-alkalmazások közzététele az Azure Marketplace-en
               href: ../hdinsight-apps-publish-applications.md
               maintainContext: true
+            - name: Közzétett alkalmazás telepítése – Cask Data Application Platform (CDAP)
+              href: ../hdinsight-apps-install-cask.md
+              maintainContext: true
+            - name: Közzétett alkalmazás telepítése – Dataiku
+              href: ../hdinsight-apps-install-dataiku.md
+              maintainContext: true
+            - name: Közzétett alkalmazás telepítése – Datameer
+              href: ../hdinsight-apps-install-datameer.md
+              maintainContext: true
+            - name: Közzétett alkalmazás telepítése – H2O
+              href: ../hdinsight-apps-install-h2o.md
+              maintainContext: true
+            - name: Közzétett alkalmazás telepítése – Streamsets
+              href: ../hdinsight-apps-install-streamsets.md
+              maintainContext: true
     - name: Biztonságos
       items:
         - name: SSH használata a HDInsighttal

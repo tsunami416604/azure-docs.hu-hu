@@ -2,64 +2,91 @@
 title: "Az Azure Storage-fiók beállításai | Microsoft Docs"
 description: "Az Azure Storage használatához kapcsolódó beállítások megismerése."
 services: storage
-documentationcenter: 
 author: jirwin
 manager: jwillis
-editor: 
 ms.service: storage
 ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/11/2017
+ms.date: 01/17/2018
 ms.author: jirwin
-ms.openlocfilehash: 1b1770e25b4b423466120cb74c08edacf2de3977
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: bdbcdc7d46d5395b28cf9ba7066703ce5da900a5
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-storage-account-options"></a>Az Azure Storage-fiók beállításai
 
 ## <a name="overview"></a>Áttekintés
-Az Azure Storage három eltérő fiókbeállítási lehetőség kínál, amelyekhez különböző díjszabás és támogatott szolgáltatások tartoznak. Az alkalmazásaik számára legelőnyösebb beállítás kiválasztásához a felhasználóknak figyelembe kell venniük ezeket az eltéréseket.  A következő három beállítási lehetőség közül választhat:
+Az Azure Storage három eltérő fiókbeállítási lehetőség kínál, amelyekhez különböző díjszabás és támogatott szolgáltatások tartoznak. Egy tárfiók létrehozása előtt vegye figyelembe ezeket a különbségeket, és döntse el, hogy az alkalmazásai számára melyik a legelőnyösebb beállítás. A következő három tárfiók-beállítás közül választhat:
 
-* A **General Purpose v2 (GPv2)** (általános célú) fiókok tartalmazzák az összes új szolgáltatást, valamint egyaránt támogatják a blobok, a fájlok, az üzenetsorok és a táblák használatát. A legújabb szolgáltatások közé jelenleg a blobszintű rétegezés, az archív tároló, a nagyobb fiókméretezhetőségi korlátozás és a Storage-események tartoznak. A díjszabás úgy lett kialakítva, hogy a legalacsonyabb GB-onkénti árak és iparági szinten versenyképes tranzakciós költségek legyenek elérhetőek.
+* **Általános célú v2- (GPv2-)** fiók 
+* **Általános célú v1- (GPv1-)** fiók
+* **Blob Storage**-fiók
 
-* A **Blob Storage**-fiókok biztosítják a legújabb blokkblob-szolgáltatásokat, de kizárólag a blokkblobokat támogatják.  A díjszabás általánosságban a General Purpose v2-höz hasonló. A legtöbb felhasználó számára azt javasoljuk, hogy Blob Storage-fiókok helyett General Purpose v2 fiókokat használjanak.
+A következő szakasz mindegyik fióktípust bővebben ismerteti.
 
-* A **General Purpose v1 (GPv1)** (általános célú) fiókoknál az összes Azure Storage-szolgáltatás használható, de előfordulhat, hogy nem állnak rendelkezésre a legújabb szolgáltatások vagy a legalacsonyabb GB-onkénti díjszabás. A ritkán használt és az archivált adatok tárolása például a GPv1 esetében nem támogatott.  A tranzakciós díjszabás alacsonyabb, így magas adatváltozású vagy magas olvasási sebességű számítási feladatok esetében ennek a fióktípusnak a használata előnyösebb lehet.
+## <a name="storage-account-options"></a>Tárfiók-beállítások
 
-### <a name="changing-account-kind"></a>A fiók típusának módosítása
-A portálon, illetve a parancssori felület vagy a PowerShell használatával a felhasználók bármikor frissíthetik GPv1-fiókjukat GPv2-fiókra. Ez a módosítás nem vonható vissza, és minden egyéb módosítás tiltott. Hamarosan a Blob Storage-fiókokat is lehet majd frissíteni GPv2-fiókra.
+### <a name="general-purpose-v2"></a>Általános célú v2
 
-## <a name="general-purpose-v2"></a>General Purpose v2
-Az általános célú **General Purpose v2 (GPv2)** fiókok olyan tárfiókok, amelyek a Storage-szolgáltatások összes funkcióját támogatják, beleértve a blobokat, a fájlokat, az üzenetsorokat és a táblákat is. A blokkblobok esetében a fiók szintjén a gyakori és a ritka elérésű tárolási szint, az egyes blobok szintjén pedig a gyakori és ritka elérésű, illetve az archív tárolási szint közül választhat az adathozzáférési mintáknak megfelelően. A költségek optimalizálása érdekében a gyakran, nem gyakran és ritkán használt adatokat tárolja a megfelelő gyakori elérésű, ritka elérésű vagy archív tárolási szinten. Fontos megjegyezni, hogy a portálon, illetve a parancssori felület vagy PowerShell használatával bármely GPv1-fiók frissíthető GPv2-fiókra. A GPv2-fiókok támogatják a Blob Storage- és a GPv1-fiókok által támogatott összes API-t és szolgáltatást, vagyis az ezekkel a fióktípusokkal megegyező szintű tartósságot, rendelkezésre állást, méretezhetőséget és teljesítményt nyújtó szolgáltatásokat biztosítanak.
+Az általános célú v2- (GPv2-) fiókok olyan tárfiókok, amelyek támogatják a blobok, a fájlok, az üzenetsorok és a táblák összes legújabb funkcióját. A GPv2-fiókok a GPv1- és Blob Storage-fiókok által támogatott összes API-t és funkciót is támogatják. Emellett az ezekkel a fióktípusokkal megegyező szintű tartósságot, rendelkezésre állást, méretezhetőséget és teljesítményt nyújtó szolgáltatásokat biztosítanak. A GPv2-fiókok díjszabása úgy lett kialakítva, hogy a legalacsonyabb gigabájtonkénti árak és iparági szinten versenyképes tranzakciós költségek legyenek elérhetők.
 
-A Blob Storage-fiókokban fiókszinten elérhető a **Hozzáférési szint** attribútum, amellyel megadható, hogy a tárfiók alapértelmezett szintje **gyakori** vagy **ritka** elérésű legyen. Az alapértelmezett tárfiókszint érvényes az összes olyan blobra, amelynél nincs explicit módon meghatározva a szint az egyes blobokra vonatkozóan. Ha változik az adatok használati módja, bármikor válthat a tárolási rétegek között. Az **archív szint** csak a blobok szintjén alkalmazható.
+GPv1-fiókjáról a PowerShell vagy az Azure CLI használatával válthat GPv2-fiókra. 
+
+A GPv2-fiókokhoz tartozó blokkblobok esetében a fiók szintjén a gyakori és a ritka elérésű tárolási szint, az egyes blobok szintjén pedig a gyakori és ritka elérésű, illetve az archív tárolási szint közül választhat az adathozzáférési mintáknak megfelelően. A költségek optimalizálása érdekében a gyakran, nem gyakran és ritkán használt adatokat tárolja a megfelelő gyakori elérésű, ritka elérésű vagy archív tárolási szinten. 
+
+A GPv2-tárfiókokban fiókszinten elérhető a **Hozzáférési szint** attribútum, amellyel megadható, hogy a tárfiók alapértelmezett szintje **gyakori** vagy **ritka** elérésű legyen. Az alapértelmezett tárfiókszint érvényes az összes olyan blobra, amelynél nincs explicit módon meghatározva a szint az egyes blobokra vonatkozóan. Ha változik az adatok használati módja, bármikor válthat a tárolási rétegek között. Az **archív szint** csak a blobok szintjén alkalmazható.
 
 > [!NOTE]
-> A tárolási rétegek módosítása további díjakat vonhat maga után. További részleteket a következő szakaszban talál: [Árak és számlázás](#pricing-and-billing).
+> A tárolási rétegek módosítása további díjakat vonhat maga után. További részleteket az [árakat és számlázást](#pricing-and-billing) ismertető szakaszban olvashat.
+>
+> A Microsoft a legtöbb esetben az általános célú v2-tárfiókok használatát javasolja a Blob Storage-fiókokkal szemben.
 
-## <a name="blob-storage-accounts"></a>Blob Storage-fiókok
+### <a name="upgrade-a-storage-account-to-gpv2"></a>Tárfiók frissítése GPv2-fiókra
 
-A **Blob Storage-fiókok** ugyanazokat a blokkblob-szolgáltatásokat támogatják, mint a GPv2-fiókok, viszont kizárólag a blokkblobok használatát támogatják. Az ügyfeleknek érdemes áttekinteni a Blob Storage- és a GPv2-fiókok közötti árképzési eltéréseket, és megfontolniuk a GPv2-re történő frissítést. Vegye figyelembe, hogy a frissítés nem vonható vissza.
+A felhasználók bármikor frissíthetik GPv1-fiókjukat GPv2-fiókra a PowerShell vagy az Azure CLI használatával. Ez a módosítás nem vonható vissza, és minden egyéb módosítás tiltott.
+
+#### <a name="upgrade-with-powershell"></a>Frissítés a PowerShell-lel
+
+Ha GPv1-fiókját a PowerShell segítségével kívánja GPv2-fiókra frissíteni, először frissítse a PowerShellt, hogy az az **AzureRm.Storage** modul legfrissebb verzióját használja. A PowerShell telepítésével kapcsolatos információkért lásd [az Azure PowerShell telepítését és konfigurálását](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) ismertető cikket. Ezután a fiók frissítéséhez hívja meg a következő parancsot, amelybe helyettesítse be az erőforráscsoportja és a tárfiókja nevét:
+
+```powershell
+Set-AzureRmStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2
+```
+
+#### <a name="upgrade-with-azure-cli"></a>Frissítés az Azure CLI-vel
+
+Ha GPv1-fiókját az Azure CLI segítségével kívánja GPv2-fiókra frissíteni, először telepítse az Azure CLI legújabb verzióját. A CLI telepítésével kapcsolatban lásd [az Azure CLI 2.0-s verziójának telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ismertető szakaszt. Ezután a fiók frissítéséhez hívja meg a következő parancsot, amelybe helyettesítse be az erőforráscsoportja és a tárfiókja nevét:
+
+```cli
+az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2
+```` 
+
+### <a name="general-purpose-v1"></a>Általános célú v1
+
+Az általános célú v1- (GPv1-) fiókok hozzáférést biztosítanak az összes Azure Storage-szolgáltatáshoz, de előfordulhat, hogy nem állnak rendelkezésre a legújabb funkciók vagy a legalacsonyabb gigabájtonkénti díjszabás. A ritkán használt és az archivált adatok tárolása például a GPv1 esetében nem támogatott. A GPv1-tranzakciók díjszabása alacsonyabb, így magas adatváltozású vagy magas olvasási sebességű számítási feladatok esetében ennek a fióktípusnak a használata előnyösebb lehet.
+
+Az általános célú v1 (GPv1) a legrégebbi tárfióktípus, és az egyetlen olyan altípus, amely a klasszikus üzemi modellben használható. 
+
+### <a name="blob-storage-accounts"></a>Blob Storage-fiókok
+
+A Blob Storage-fiókok ugyanazokat a blokkblob-szolgáltatásokat támogatják, mint a GPv2-fiókok, viszont kizárólag a blokkblobok használatát támogatják. A díjszabás általánosságban az általános célú v2-fiókokéhoz hasonló. Az ügyfeleknek érdemes áttekinteni a Blob Storage- és a GPv2-fiókok közötti árképzési eltéréseket, és megfontolniuk a GPv2-re történő frissítést. Ez a frissítés nem vonható vissza.
+
+Hamarosan a Blob Storage-fiókokat is lehet majd frissíteni GPv2-fiókra.
 
 > [!NOTE]
 > A Blob Storage-fiókok csak a blokkblobokat és a hozzáfűző blobokat támogatják, a lapblobokat nem.
 
-## <a name="general-purpose-v1"></a>General Purpose v1
-Az általános célú **General Purpose v1 (GPv1)** a legrégebbi tárfiók, és az egyetlen olyan altípus, amely a klasszikus üzemi modellben használható. Az olyan szolgáltatások, mint például a ritkán használt és az archivált adatok tárolása, GPv1-fiókok esetében nem érhető el. A GPv1 esetében a GB-onkénti tárolási költség általában magasabb, a tranzakciós költségek azonban alacsonyabbak, mint a GPv2- vagy Blob Storage-fiókok esetében.
-
 ## <a name="recommendations"></a>Javaslatok
 
-A tárfiókokkal kapcsolatos további információk: [Tudnivalók az Azure Storage-fiókokról](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+A tárfiókokkal kapcsolatosan további információt [az Azure Storage-fiókok ismertetésében](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) talál.
 
-A csak blokk- és hozzáfűző blobok tárolását igénylő alkalmazásokhoz javasoljuk a GPv2-tárfiókok használatát, így kiaknázhatóak a szintekre bontott tárolás differenciált árképzési modelljének előnyei. Tisztában vagyunk azonban azzal, hogy ez bizonyos körülmények között nem feltétlenül lehetséges, és inkább a GPv1-tárfiókok használata javasolt, például:
+A csak blokk- és hozzáfűző blobok tárolását igénylő alkalmazásokhoz javasoljuk a GPv2-tárfiókok használatát, így kiaknázhatóak a szintekre bontott tárolás differenciált árképzési modelljének előnyei. Bizonyos esetekben azonban érdemes a GPv1-et használni, például:
 
 * Ha továbbra is a klasszikus üzemi modellt kell alkalmaznia. A Blob Storage-fiókok kizárólag az Azure Resource Manager-alapú üzemi modellben érhetőek el.
 
-* Ha sok tranzakciót vagy georeplikációs sávszélességet használ (a kapcsolódó költségek egyaránt magasabbak a GPv2- és Blob Storage-fiókok esetében, mint a GPv1-nél), és nem áll rendelkezésre elegendő olyan tárterület, amelyen az alacsonyabb GB-onkénti tárolási költség előnyeit kihasználhatná.
+* Ha sok tranzakciót vagy georeplikációs sávszélességet használ (a kapcsolódó költségek egyaránt magasabbak a GPv2- és Blob Storage-fiókok esetében, mint a GPv1-nél), és nem áll rendelkezésre elegendő olyan tárterület, amelyen az alacsonyabb gigabájtonkénti tárolási költség előnyeit kihasználhatná.
 
 * A [Storage szolgáltatások REST API felülete](https://msdn.microsoft.com/library/azure/dd894041.aspx) 2014. 02. 14-nél korábbi verzióját vagy egy 4.x-nél korábbi verziójú ügyfélkódtárat használ, és nem tudja frissíteni az alkalmazást.
 
@@ -82,7 +109,7 @@ Az összes tárfiók az egyes blobok szintjén alapuló árképzési modellt alk
 * **A tárolási szint módosítása**: a fiók tárolási szintjének a ritka elérésű szintről gyakori elérésűre váltása esetében felmerülő díj megegyezik a tárfiókban lévő összes adat beolvasásának költségével. A fiók tárolási szintjének gyakori elérésűről ritka elérésűre való váltása esetében felmerülő díj viszont az összes adat ritka elérésű szintre írásának költségével egyezik meg (csak a GPv2-fiókok esetében).
 
 > [!NOTE]
-> A Blob Storage-fiókok árképzési modelljével kapcsolatos további részletekért lásd [Az Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage/) oldalt. A kimenő adatátviteli díjakkal kapcsolatos további részletekért lásd az [Adatforgalmi díjszabás](https://azure.microsoft.com/pricing/details/data-transfers/) lapot.
+> A Blob Storage-fiókok árképzési modelljével kapcsolatos további információért lásd [az Azure Storage díjszabását](https://azure.microsoft.com/pricing/details/storage/) ismertető lapot. A kimenő adatátviteli díjakkal kapcsolatos további információért lásd az [adatátviteli díjszabást](https://azure.microsoft.com/pricing/details/data-transfers/) ismertető lapot.
 
 ## <a name="quickstart-scenarios"></a>Rövid útmutatóul szolgáló forgatókönyvek
 
@@ -106,19 +133,17 @@ A következő példákban nem állíthatja a hozzáférési szintet archívra, m
 
 4. Válassza a **Resource Manager** lehetőséget üzemi modellként.
 
-    A rétegezett tárolás csak a Resource Manager tárfiókjaival használható. Ez az új erőforrások ajánlott üzembe helyezési modellje. További információk: [Az Azure Resource Manager áttekintése](../../azure-resource-manager/resource-group-overview.md).  
+    A többszintű tárolás csak a Resource Manager tárfiókjaival használható. A Resource Manager az új erőforrások ajánlott üzembehelyezési modellje. További információért lásd [az Azure Resource Manager áttekintését](../../azure-resource-manager/resource-group-overview.md).  
 
-5. A Fiók típusa legördülő listában válassza a **General Purpose v2** elemet.
+5. A **Fiók típusa** legördülő listában válassza az **Általános célú v2** elemet.
 
-    Itt választhatja ki a tárfiók típusát. A többszintű tárolás nem érhető el az általános célú tárolóknál, csak Blob Storage típusú fiókban.     
+    Ha a GPv2-t választja, a teljesítményszint beállítása Standard lesz. A rétegezett tárolás nem érhető el a Prémium teljesítményrétegnél.
 
-    Ha ezt választja, a teljesítményszint beállítása Standard lesz. A rétegezett tárolás nem érhető el a Prémium teljesítményrétegnél.
+6. Válassza ki a tárfiók replikálási beállítását: **LRS**, **ZRS**, **GRS** vagy **RA-GRS**. Az alapértelmezett beállítás az **RA-GRS**.
 
-6. Válassza ki a tárfiók replikálási beállítását: **LRS**, **GRS** vagy **RA-GRS**. Az alapértelmezett beállítás az **RA-GRS**.
+    LRS = helyileg redundáns tárolás, ZRS = zónaredundáns tárolás, GRS = georedundáns tárolás (két régió), RA-GRS = olvasási hozzáférésű georedundáns tárolás (két régió, olvasási hozzáférés a másodikhoz).
 
-    LRS = helyileg redundáns tárolás, GRS = georedundáns tárolás (két régió), RA-GRS = olvasási hozzáférésű georedundáns tárolás (2 régió, olvasási hozzáférés a másodikhoz).
-
-    Az Azure Storage replikálási beállításaival kapcsolatos további részleteket lásd: [Azure Storage replication](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) (Az Azure Storage replikációja).
+    Az Azure Storage replikálási beállításaival kapcsolatos további részletek: [Azure Storage replication](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) (Az Azure Storage replikációja).
 
 7. Válassza ki az igényeinek megfelelő tárolási réteget: a **Hozzáférési szint** beállításnál válassza a **Ritka** vagy a **Gyakori** lehetőséget. Az alapértelmezett réteg a **gyakran használt adatok**.
 
@@ -136,11 +161,11 @@ A következő példákban nem állíthatja a hozzáférési szintet archívra, m
 
 2. A tárfiókjának eléréséhez válassza az Összes erőforrás lehetőséget, majd válassza ki a tárfiókját.
 
-3. A Beállítások panelen kattintson a **Konfiguráció** elemre.
+3. A Beállítások szakaszában kattintson a **Konfiguráció** elemre.
 
-4. A Fiók típusa területen kattintson a **Frissítés** elemre.
+4. A **Fiók típusa** területen kattintson a **Frissítés** elemre.
 
-5. Egy új jóváhagyási panel jelenik meg a jobb oldalon. A Frissítés megerősítése területen írja be a fiók nevét. 
+5. A **Frissítés megerősítése** területen írja be a fiók nevét. 
 
 5. Kattintson a Frissítés gombra a panel alján.
 
@@ -167,7 +192,7 @@ A következő példákban nem állíthatja a hozzáférési szintet archívra, m
 5. Kattintson a panel tetején lévő Mentés elemre.
 
 > [!NOTE]
-> A tárolási rétegek módosítása további díjakat vonhat maga után. További részleteket a következő szakaszban talál: [Árak és számlázás](#pricing-and-billing).
+> A tárolási rétegek módosítása további díjakat vonhat maga után. További részleteket az [árakat és számlázást](#pricing-and-billing) ismertető szakaszban olvashat.
 
 
 ## <a name="evaluating-and-migrating-to-gpv2-storage-accounts"></a>A lehetőség mérlegelése és migrálás GPv2-tárfiókokra
@@ -188,20 +213,20 @@ A GPv2-tárfiókban lévő adatok tárolási és hozzáférési költségeire vo
 
 ## <a name="monitoring-existing-storage-accounts"></a>A meglévő tárfiókok figyelése
 
-A meglévő tárfiókok monitorozásához és az ezzel kapcsolatos adatgyűjtéshez nyújt segítséget az Azure Storage Analytics, amellyel naplózhatja a tárfiókokat, és a fiókokra vonatkozó mérőszámokat kaphat. A Storage Analytics olyan mérőszámokat tárol, amelyek a tárolási szolgáltatáshoz érkező kérések összesített tranzakcióstatisztikáját és kapacitási adatait tartalmazzák mind a GPv1 és a GPv2, mind a Blob Storage fióktípusok esetében. Ezeket az adatokat a jól ismert táblák tárolják az adott tárfiókban.
+A meglévő tárfiókok monitorozásához és az ezzel kapcsolatos adatgyűjtéshez nyújt segítséget az Azure Storage Analytics, amellyel naplózhatja a tárfiókokat, és a fiókokra vonatkozó mérőszámokat kaphat. A Storage Analytics olyan mérőszámokat tárol, amelyek a tárolási szolgáltatáshoz érkező kérések összesített tranzakcióstatisztikáját és kapacitási adatait tartalmazzák mind a GPv1 és a GPv2, mind a Blob Storage fióktípus esetében. Ezeket az adatokat a jól ismert táblák tárolják az adott tárfiókban.
 
-A további részleteket lásd: [About Storage Analytics Metrics](https://msdn.microsoft.com/library/azure/hh343258.aspx) (A Storage Analytics mérőszámainak áttekintése) és [Storage Analytics Metrics Table Schema](https://msdn.microsoft.com/library/azure/hh343264.aspx) (A Storage Analytics mérőszámainak táblasémája).
+További információért lásd [a Storage Analytics mérőszámainak áttekintését](https://msdn.microsoft.com/library/azure/hh343258.aspx) és [a Storage Analytics mérőszámainak táblasémáját](https://msdn.microsoft.com/library/azure/hh343264.aspx).
 
 > [!NOTE]
-> A Blob Storage-fiókok a tábla szolgáltatásvégpontját csak az adott fiók mérőszámadatainak tárolásához és eléréséhez jelenítik meg. A GPv1 ZRS tárfiókok nem támogatják a mérőszámadatokat.
+> A Blob Storage-tárfiókok a tábla szolgáltatásvégpontját csak az adott fiók mérőszámadatainak tárolásához és eléréséhez jelenítik meg. A zónaredundáns tárfiókok (ZRS) támogatják a mérőszámok gyűjtését, míg a klasszikus ZRS-tárfiókok nem. További információt a [zónaredundáns tárolást](storage-redundancy.md#zone-redundant-storage) ismertető szakaszban talál. 
 
-A Blob Storage szolgáltatás tárolófelhasználásának figyeléséhez engedélyeznie kell a kapacitási mérőszámot.
+A Blob Storage tárolófelhasználásának figyeléséhez engedélyeznie kell a kapacitási mérőszámot.
 Ha ez a mérőszám engedélyezve van, a rendszer naponta rögzíti a tárfiók Blob szolgáltatásának kapacitásadatait, és létrehoz egy táblabejegyzést az adott tárfiók *$MetricsCapacityBlob* táblájában.
 
-A Blob Storage szolgáltatás adathozzáférési mintájának figyeléséhez engedélyeznie kell az óránkénti tranzakció-mérőszámot az API szintjén. Amikor engedélyezve van ez a mérőszám, a rendszer óránként összesíti az API-tranzakciókat, és táblabejegyzést hoz létre az adott tárfiók *$MetricsHourPrimaryTransactionsBlob* táblájában. A *$MetricsHourSecondaryTransactionsBlob* tábla a másodlagos végpontra rögzíti a tranzakciókat RA-GRS-tárfiókok használata esetében.
+A Blob Storage adathozzáférési mintáinak figyeléséhez engedélyeznie kell az óránkénti tranzakciók mérőszámát az API szintjén. Ha az óránkénti tranzakciók mérőszáma engedélyezve van, a rendszer óránként összesíti az API-tranzakciókat, és táblabejegyzést hoz létre az adott tárfiók *$MetricsHourPrimaryTransactionsBlob* táblájában. A *$MetricsHourSecondaryTransactionsBlob* tábla a másodlagos végpontra rögzíti a tranzakciókat RA-GRS-tárfiókok használata esetében.
 
 > [!NOTE]
-> Abban az esetben, ha rendelkezik egy általános célú tárfiókkal, amelyben lapblobokat és virtuálisgép-lemezeket, illetve üzenetsorokat, fájlokat vagy táblákat tárol a blokkblobok és a hozzáfűző blobok adatai mellett, akkor ez a becslési folyamat nem alkalmazható. Ez azért van, mert a kapacitási adatok nem tesznek különbséget a blokkblobok és más adattípusok között, és nem is adnak meg kapacitási adatokat az utóbbiakhoz. Ilyen adattípusok használatakor a legutóbb számlázott mennyiségi tételek feltárásához alternatív módszert kell alkalmazni.
+> Ha rendelkezik egy általános célú tárfiókkal, amelyben lapblobokat és virtuálisgép-lemezeket, illetve üzenetsorokat, fájlokat vagy táblákat tárol a blokkblobok és a hozzáfűző blobok adatai mellett, akkor ez a becslési folyamat nem alkalmazható. A kapacitási adatok nem tesznek különbséget a blokkblobok és más adattípusok között, és nem is adnak meg kapacitási adatokat az utóbbiakhoz. Ilyen adattípusok használatakor a legutóbb számlázott mennyiségi tételek feltárásához alternatív módszert kell alkalmazni.
 
 Azt javasoljuk, hogy az adatfelhasználás és -hozzáférés megfelelő mintájának előállításához olyan megőrzési időszakot válasszon a mérőszámhoz, amely a megfelel az Ön használati szokásainak, és extrapolálja az adatokat. Az egyik lehetőség az, hogy hét napig őrzi meg a mérőszámadatokat, és minden héten összegyűjti az adatokat a hónap végén elvégzendő elemzéshez. A másik lehetőség az, hogy az utolsó 30 nap mérőszámadatait őrzi meg, és a 30 napos időszak végén hajtja végre az adatok összegyűjtését és elemzését.
 
@@ -212,17 +237,17 @@ További tudnivalók a mérőszámadatok engedélyezésével, gyűjtésével és
 
 ### <a name="utilizing-usage-metrics-to-estimate-costs"></a>Költségbecslés a használati mérőszámok alapján
 
-### <a name="storage-costs"></a>Tárolási költségek
+#### <a name="storage-costs"></a>Tárolási költségek
 
 A kapacitási mérőszám *$MetricsCapacityBlob* táblájának *„data”* sorkulcsú utolsó bejegyzése mutatja a felhasználói adatok által igénybe vett tárolókapacitást. A kapacitási mérőszám *$MetricsCapacityBlob* táblájának *„analytics”* sorkulcsú utolsó bejegyzése mutatja az elemzési naplók által igénybe vett tárolókapacitást.
 
 A felhasználói adatok és az elemzési naplók (ha engedélyezve vannak) által igénybe vett teljes kapacitás alapján lehet megbecsülni a tárfiókban lévő adatok tárolási költségét. Ugyanezzel a módszerrel becsülhetők meg a tárolási költségek a GPv1-tárfiókokban.
 
-### <a name="transaction-costs"></a>Tranzakciós költségek
+#### <a name="transaction-costs"></a>Tranzakciós költségek
 
 A tranzakciók mérőszámának táblájában az adott API-hoz tartozó bejegyzések *„TotalBillableRequests”* összege mutatja az adott API tranzakcióinak teljes számát. *Például* az adott időszakba eső *„GetBlob”* tranzakciók száma a *„user;GetBlob”* sorkulcsú bejegyzések összes számlázható kérelmének összege alapján számítható ki.
 
-A Blob Storage-fiókok tranzakciós költségeinek kiszámításához a tranzakciókat három csoportra kell felosztania, mivel ezekhez különböző árak tartoznak.
+A Blob Storage-tárfiókok tranzakciós költségeinek kiszámításához a tranzakciókat három csoportra kell felosztania, mivel ezekhez különböző árak tartoznak.
 
 * Írási tranzakciók, például *„PutBlob”*, *„PutBlock”*, *„PutBlockList”*, *„AppendBlock”*, *„ListBlobs”*, *„ListContainers”*, *„CreateContainer”*, *„SnapshotBlob”* és *„CopyBlob”*.
 * Törlési tranzakciók, például *„DeleteBlob”* és *„DeleteContainer”*.
@@ -234,63 +259,63 @@ A GPv1-tárfiókok tranzakciós költségeinek becsléséhez összesítenie kell
 
 Bár a tároló elemzése nem jelzi a tárfiókból olvasott és a tárfiókba írt adatok mennyiségét, a tranzakciók mérőszámának táblája alapján lehetőség van megközelítőleges becslésre. A tranzakciók mérőszámának táblájában az adott API-hoz tartozó bejegyzések *„TotalIngress”* összege mutatja az adott API bejövő adatainak teljes mennyiségét bájtban. Hasonlóképpen a *„TotalEgress”* összege a kimenő adatok teljes mennyiségét mutatja bájtban.
 
-A Blob Storage-fiókok adathozzáférési költségeinek kiszámításához a tranzakciókat két csoportra kell felosztania.
+A Blob Storage-tárfiókok adat-hozzáférési költségeinek kiszámításához a tranzakciókat két csoportra kell felosztania.
 
 * A tárfiókból lekért adatok mennyisége a *„TotalEgress”* összegéből becsülhető meg, elsődlegesen a *„GetBlob”* és a *„CopyBlob”* művelet alapján.
 
 * A tárfiókba írt lekért adatok mennyisége a *„TotalIngress”* összegéből becsülhető meg, elsődlegesen a *„PutBlob”*, a *„PutBlock”*, a *„CopyBlob”* és az *„AppendBlock”* művelet alapján.
 
-A Blob Storage-fiókok georeplikációs adatátviteli költségei szintén az írt adatok mennyiségének becslése alapján számítható ki GRS- vagy RA-GRS-tárfiókok használata esetében.
+A Blob Storage-tárfiókok georeplikációs adatátviteli költségei szintén az írt adatok mennyiségének becslése alapján számítható ki GRS- vagy RA-GRS-tárfiókok használata esetében.
 
 > [!NOTE]
 > Ha részletesebb példát szeretne látni a gyakran használt és a ritkán használt adatok tárolási rétegének használatához kapcsolódó költségek kiszámítására, tekintse át a *„What are Hot and Cool access tiers and how should I determine which one to use?”* (Mi a gyakran használt adatok rétege és a ritkán használt adatok rétege, és hogyan határozhatom meg, hogy melyiket kell használnom?) című gyakori kérdéseket az [Azure Storage díjszabását tartalmazó oldalon](https://azure.microsoft.com/pricing/details/storage/).
 
 ## <a name="migrating-existing-data"></a>Meglévő adatok áttelepítése
 
-A GPv1-fiókok egyszerűen, leállás és API-módosítás, valamint adatok áthelyezése nélkül frissíthetők GPv2-re. Ez a GPv2-fiókok egyik fő előnye a Blob Storage-fiókokkal szemben.
+A GPv1-fiókok egyszerűen, leállás és API-módosítás, valamint adatok migrálása nélkül frissíthetők GPv2-re. Ezen oknál fogva ajánlott a GPv1-fiókokat Blob Storage-fiók helyett GPv2-fiókba migrálni.
 
 Ha azonban Blob Storage-fiókba kell migrálnia, az alábbi utasítások szerint járjon el.
 
-A Blob Storage-fiókok kifejezetten blokkblobok és hozzáfűző blobok tárolására készültek. A meglévő általános célú tárfiókok, amelyek a blobok mellett táblák, üzenetsorok, fájlok és lemezek tárolását is lehetővé teszik, nem konvertálhatóak Blob Storage-fiókká. A tárolási szintek használatához létre kell hoznia egy új Blob Storage-fiókot, és migrálni meglévő adatait az újonnan létrehozott fiókra.
+A Blob Storage-fiókok kifejezetten blokkblobok és hozzáfűző blobok tárolására készültek. A meglévő általános célú tárfiókok, amelyek a blobok mellett táblák, üzenetsorok, fájlok és lemezek tárolását is lehetővé teszik, nem konvertálhatóak Blob Storage-fiókká. A tárolási rétegek használatához létre kell hoznia egy új Blob Storage-fiókot, és áttelepíteni meglévő adatait az újonnan létrehozott fiókra.
 
-A meglévő adatok helyszíni tárolóeszközökről, külső felhőtárolási szolgáltatókból vagy meglévő általános célú Azure-tárfiókokból Blob Storage-fiókokba való migrálásához az alábbi módszereket használhatja:
+A meglévő adatok helyszíni tárolóeszközökről, külső felhőtárolási szolgáltatókból vagy meglévő általános célú Azure-tárfiókokból Blob Storage-fiókokba való áttelepítéséhez az alábbi módszereket használhatja:
 
 ### <a name="azcopy"></a>AzCopy
 
 Az AzCopy egy Windows parancssori segédprogram, amely az adatok az Azure Storage szolgáltatásba vagy onnan máshová való nagyteljesítményű másolására lett kifejlesztve. Az AzCopy használatával adatait átmásolhatja Blob Storage-fiókjába meglévő általános célú tárfiókjából, vagy feltölthet adatokat helyi tárolóeszközeiről a Blob Storage-fiókba.
 
-További részletekért lásd: [Transfer data with the AzCopy Command-Line Utility](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) (Adatátvitel az AzCopy parancssori segédprogrammal).
+További információt [az AzCopy parancssori segédprogrammal történő adatátvitelt](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) ismertető szakaszban talál.
 
 ### <a name="data-movement-library"></a>Adatátviteli könyvtár
 
-Az Azure Storage a .NET-keretrendszerhez készült adatátviteli könyvtára az AzCopyt működtető alapvető adatátviteli keretrendszeren alapul. A könyvtár az AzCopyhoz hasonló nagy teljesítményű, megbízható és könnyű adatátviteli műveletekhez készült. Így az AzCopy által kínált szolgáltatások előnyeit teljes mértékben kiaknázhatja alkalmazásában natív módon, anélkül, hogy ehhez az AzCopy külső példányait kellene futtatnia vagy felügyelnie.
+Az Azure Storage .NET-keretrendszerhez készült adatátviteli kódtára az AzCopyt működtető alapvető adatátviteli keretrendszeren alapul. A könyvtár az AzCopyhoz hasonló nagy teljesítményű, megbízható és könnyű adatátviteli műveletekhez készült. Így az AzCopy által kínált szolgáltatások funkcióit teljes mértékben, natív módon kiaknázhatja az alkalmazásában anélkül, hogy ehhez az AzCopy külső példányait kellene futtatnia vagy felügyelnie.
 
-További részletek: [Azure Storage adatátviteli könyvtár a .Net-keretrendszerhez](https://github.com/Azure/azure-storage-net-data-movement)
+További információt [az Azure Storage a .Net-keretrendszerhez készült adatátviteli kódtárát](https://github.com/Azure/azure-storage-net-data-movement) ismertető szakaszban talál.
 
 ### <a name="rest-api-or-client-library"></a>REST API vagy ügyfélkódtár
 
-Az adatok a Blob Storage-fiókra való migrálásához létrehozhat egy egyéni alkalmazást az Azure ügyfélkódtárai vagy az Azure Storage szolgáltatások REST API felülete segítségével. Az Azure Storage gazdag ügyfélkódtárakat biztosít több nyelvhez és platformhoz is, beleértve a következőket: .NET, Java, C++, Node.JS, PHP, Ruby és Python. Az ügyfélkódtárak olyan fejlett képességeket biztosítanak, mint az újrapróbálkozási logika, a naplózás vagy a párhuzamos feltöltések. Fejleszthet közvetlenül a REST API-n is, amely minden, HTTP-/HTTPS-kérelmek létrehozására alkalmas nyelven meghívható.
+Az adatok a Blob Storage-fiókra való áttelepítéséhez létrehozhat egy egyéni alkalmazást az Azure ügyfélkódtárai vagy az Azure Storage szolgáltatások REST API felülete segítségével. Az Azure Storage gazdag ügyfélkódtárakat biztosít több nyelvhez és platformhoz is, beleértve a következőket: .NET, Java, C++, Node.JS, PHP, Ruby és Python. Az ügyfélkódtárak olyan fejlett képességeket biztosítanak, mint az újrapróbálkozási logika, a naplózás vagy a párhuzamos feltöltések. Fejleszthet közvetlenül a REST API-n is, amely minden, HTTP-/HTTPS-kérelmek létrehozására alkalmas nyelven meghívható.
 
-További részletekért lásd [az Azure Blob Storage szolgáltatás használatának első lépéseit](../blobs/storage-dotnet-how-to-use-blobs.md) ismertető cikket.
+További információért lásd [az Azure Blob Storage ismertetését](../blobs/storage-dotnet-how-to-use-blobs.md).
 
 > [!NOTE]
-> Az ügyféloldali titkosítással titkosított blobok a titkosítással kapcsolatos metaadatokat a blobbal együtt tárolják. Ezért elengedhetetlen, hogy a másolási műveletek során a blob metaadatai, különösen a titkosítással kapcsolatos metaadatok megmaradjanak. Ha a blobokat a metaadatok nélkül másolja, a blob tartalma nem kérhető le újból. A titkosítással kapcsolatos metaadatok további részletei: [Az Azure Storage ügyféloldali titkosítása](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+> Az ügyféloldali titkosítással titkosított blobok a titkosítással kapcsolatos metaadatokat a blobbal együtt tárolják. Ezért elengedhetetlen, hogy a másolási műveletek során a blob metaadatai, különösen a titkosítással kapcsolatos metaadatok megmaradjanak. Ha a blobokat a metaadatok nélkül másolja, a blob tartalma nem kérhető le újból. További információt a titkosítással kapcsolatos metaadatokról [az Azure Storage ügyféloldali titkosítását](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) ismertető szakaszban talál.
 
 ## <a name="faq"></a>GYIK
 
 **A meglévő tárfiókok továbbra is elérhetőek?**
 
-Igen, a meglévő tárfiókok (GPv1) továbbra is elérhetőek változatlan árképzéssel és funkcionalitással.  A GPv1-fiókokhoz nem érhető el a tárolási szintek kiválasztásának lehetősége, és a jövőben sem rendelkeznek majd ezzel a képességgel.
+Igen, a meglévő tárfiókok (GPv1) továbbra is elérhetőek változatlan árképzéssel és funkcionalitással. A GPv1-fiókokhoz nem érhető el a tárolási szintek kiválasztásának lehetősége, és a jövőben sem rendelkeznek majd ezzel a képességgel.
 
 **Miért és mikor érdemes elkezdenem GPv2-tárfiókot használni?**
 
-A GPv2-tárfiókok egyedi tulajdonsága, hogy a legkisebb GB-onkénti tárolási költséget biztosítják, emellett pedig iparági szinten is versenyképes tranzakciós és adathozzáférési költségeket garantálnak. A továbbiakban a GPv2-tárfiókot ajánljuk a blobok tárolására, mivel a későbbi képességek, például a módosítási értesítések ezen fióktípus alapján lesznek bevezetve. Azonban Ön döntheti el üzleti igényei alapján, mikor kíván frissíteni.  Dönthet például úgy is, hogy a frissítést megelőzően optimalizálja a tranzakciós mintákat.
+A GPv2-tárfiókok egyedi tulajdonsága, hogy a legkisebb GB-onkénti tárolási költséget biztosítják, emellett pedig iparági szinten is versenyképes tranzakciós és adathozzáférési költségeket garantálnak. A továbbiakban a GPv2-tárfiókot ajánljuk a blobok tárolására, mivel a későbbi képességek, például a módosítási értesítések ezen fióktípus alapján lesznek bevezetve. Azonban Ön döntheti el üzleti igényei alapján, mikor kíván frissíteni. Dönthet például úgy is, hogy a frissítést megelőzően optimalizálja a tranzakciós mintákat.
 
 A GPv2-fiókról GPv1-fiókra való visszalépés nem támogatott, ezért a fiókjai GPv2-fiókra frissítése előtt vegye figyelembe a díjszabást.
 
 **Frissíthetem meglévő tárfiókomat GPv2-tárfiókra?**
 
-Igen. A GPv1-fiókok egyszerűen frissíthetők GPv2-re a portálon, vagy a PowerShell, illetve a parancssori felület használatával. A Blob Storage-fiókok a PowerShell vagy a parancssori felület használatával frissíthetők GPv2-re. Hamarosan a portálon is konvertálhatóak a Blob Storage-fiókok GPv2-fiókra.
+Igen. A GPv1-fiókok egyszerűen frissíthetők GPv2-re a portálon, vagy a PowerShell, illetve a parancssori felület használatával. A Blob Storage-fiókok a PowerShell vagy a parancssori felület használatával frissíthetők GPv2-re. Hamarosan a Blob Storage-fiókokat a portálon is lehet majd frissíteni GPv2-fiókra.
 
 A GPv2-fiókról GPv1-fiókra való visszalépés nem támogatott, ezért a fiókjai GPv2-fiókra frissítése előtt vegye figyelembe a díjszabást.
 
@@ -302,7 +327,7 @@ Igen. A **Hozzáférési szint** attribútum a fiók szintjén beállított alap
 
 Igen, a fiók tárolási szintjét úgy változtathatja meg, hogy a tárfiókban megadja a **Hozzáférési szint** attribútum kívánt értékét. A fiók tárolási szintjének módosítása az adott fiókban lévő összes olyan objektumra vonatkozik, amelyhez nincs külön szint beállítva. A tárolási szint gyakoriról ritka elérésű szintre váltása költséggel jár az írási műveletek (10 000 műveletenként) vonatkozásában (csak GPv2-tárfiókok esetében), a ritkáról gyakori elérésű szintre való váltás pedig az olvasási műveletek (10 000 műveletenként) és az adatlekérés (GB-onként) vonatkozásában jár költséggel a fiókban lévő összes adat beolvasására vonatkozóan.
 
-**Milyen gyakran módosíthatom a Blob Storage-fiókom tárolási szintjét?**
+**Milyen gyakran módosíthatom a Blob Storage-fiókom tárolási rétegét?**
 
 Bár nem határoztunk meg korlátozást a tárolási réteg módosításának gyakoriságára vonatkozóan, vegye figyelembe, hogy a tárolási rétegnek a ritkán használt adatok rétegéről a gyakran használt adatok rétegére való váltása jelentős költségekkel jár. A tárolási szintek közötti gyakori váltás nem javasolt.
 
@@ -310,15 +335,15 @@ Bár nem határoztunk meg korlátozást a tárolási réteg módosításának gy
 
 A GPv2- és Blob Storage-fiókok gyakori elérésű tárolási szintjén a blobok ugyanolyan késéssel rendelkeznek, mint a GPv1-tárfiókok esetében. A ritka elérésű tárolási szinten a blobok hasonló késéssel rendelkeznek (ezredmásodpercben), mint a gyakori elérésű szint esetében. Az archív tárolási szinten lévő blobok esetében több óra késés tapasztalható.
 
-A ritkán használt adatok tárolási rétegében a blobok rendelkezésre állási szolgáltatási szintje (SLA) kissé alacsonyabb, mint a gyakran használt adatok tárolási rétegében. További információkért lásd: [SLA a következőhöz: Storage](https://azure.microsoft.com/support/legal/sla/storage).
+A ritkán használt adatok tárolási rétegében a blobok rendelkezésre állási szolgáltatási szintje (SLA) kissé alacsonyabb, mint a gyakran használt adatok tárolási rétegében. További információt a [tárolók rendelkezésreállási szolgáltatási szintjeit](https://azure.microsoft.com/support/legal/sla/storage) ismertető szakaszban talál.
 
-**Tárolhatok lapblobokat és virtuálisgép-lemezeket a Blob Storage-fiókban?**
+**Tárolhatok lapblobokat és virtuális gépek lemezeit a Blob Storage-fiókban?**
 
-Nem. A Blob Storage-fiókok csak a blokkblobokat és a hozzáfűző blobokat támogatják, a lapblobokat nem. Az Azure virtuális gépek lemezei lapblobokon alapulnak, ezért a Blob Storage-fiókok nem használhatóak virtuális gépek lemezeinek tárolására. Azt azonban megteheti, hogy a virtuális gépek lemezeinek biztonsági másolatait blokkblobként tárolja a Blob Storage-fiókokban. Ez egyike azon okoknak, amelyek miatt érdemes megfontolnia a GPv2 használatát a Blob Storage-fiókokkal szemben.
+Nem. A Blob Storage-fiókok csak a blokkblobokat és a hozzáfűző blobokat támogatják, a lapblobokat nem. Az Azure virtuális gépek lemezei lapblobokon alapulnak, ezért a Blob Storage-fiókok nem használhatóak virtuális gépek lemezeinek tárolására. Azonban lehetséges a virtuális gépek lemezeinek biztonsági másolatait blokkblobként tárolni a Blob Storage-fiókokban. Ez az egyik ok, ami miatt érdemes megfontolnia a GPv2 használatát a Blob Storage-fiókokkal szemben.
 
 **Módosítanom kell a meglévő alkalmazásaimat a GPv2-tárfiókok használatához?**
 
-A GPv2-tárfiókok 100%-ban API-konzisztensek a GPv1 és a Blob Storage-fiókokkal. Ha az alkalmazás blokkblobokat vagy hozzáfűző blobokat használ, és a [Storage szolgáltatások REST API felülete](https://msdn.microsoft.com/library/azure/dd894041.aspx) 2014. 02. 14-i vagy újabb verzióját használja, az alkalmazásnak működnie kellene. Ha a protokoll egy régebbi verzióját használja, frissítenie kell az alkalmazást, hogy az az új verziót használja, és mindkét típusú tárfiókkal zökkenőmentesen működjön. Általánosságban véve mindig a legújabb verzió használatát javasoljuk, függetlenül a használt tárfiók típusától.
+A GPv2-tárfiókok 100%-ban API-konzisztensek a GPv1- és a Blob Storage-fiókokkal. Ha az alkalmazás blokkblobokat vagy hozzáfűző blobokat használ, és a [Storage szolgáltatások REST API felülete](https://msdn.microsoft.com/library/azure/dd894041.aspx) 2014. 02. 14-i vagy újabb verzióját használja, az alkalmazásnak működnie kellene. Ha a protokoll egy régebbi verzióját használja, frissítenie kell az alkalmazást, hogy az az új verziót használja, és mindkét típusú tárfiókkal zökkenőmentesen működjön. Általánosságban véve mindig a legújabb verzió használatát javasoljuk, függetlenül a használt tárfiók típusától.
 
 A GPv2-fiókok tranzakcióinak és sávszélességének díjszabása általában magasabb, mint a GPv1-fiókoké. Ezért a frissítés előtt érdemes lehet optimalizálni a tranzakciós mintákat, ha nem szeretné, hogy nőjön a számla végösszege.
 

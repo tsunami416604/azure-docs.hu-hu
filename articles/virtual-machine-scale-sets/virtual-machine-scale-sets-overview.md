@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 09/01/2017
 ms.author: negat
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7f2048a39f28a74ca8a31c2e6d7466c69ba4d58f
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 6c796377b90fb3cd697f6d77589e3995b3eac338
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="what-are-virtual-machine-scale-sets-in-azure"></a>Mik azok a virtuálisgép-méretezési csoportok az Azure-ban?
 A virtuálisgép-méretezési csoportok olyan számítási Azure-erőforrások, amelyek egymással teljesen azonos virtuális gépek csoportjainak üzembe helyezésére és felügyeletére használhatók. Az egyformán konfigurált virtuális gépeket tartalmazó méretezési csoportok a valódi automatikus méretezés támogatására készültek – szükségtelenné téve a virtuális gépek előzetes kiépítését. Ezzel is egyszerűsödik a nagy számítási igényű, nagy adatmennyiséget kezelő és tárolóalapú számítási feladatokra koncentráló nagyméretű szolgáltatások kiépítése.
@@ -35,10 +35,7 @@ A méretezési csoportokkal kapcsolatban további információkat tudhat meg az 
 ## <a name="creating-and-managing-scale-sets"></a>Méretezési csoportok létrehozása és kezelése
 Ha méretezési csoportokat szeretne létrehozni az [Azure Portalon](https://portal.azure.com), válassza az **új** lehetőséget, majd írja be a keresőmezőbe a **scale** (méretezés) szót. Az eredmények között megjelenik a **Virtual machine scale set** (Virtuálisgép-méretezési csoport) kifejezés. Ezután kitöltheti a méretezési csoport testreszabásához és üzembe helyezéséhez szükséges mezőket. A portálon alapszintű automatikus méretezési szabályokat is beállíthat a processzorhasználat alapján. A méretezési csoport kezeléséhez az Azure Portalt, az [Azure PowerShell-parancsmagokat](virtual-machine-scale-sets-windows-manage.md) vagy az Azure CLI 2.0-t használhatja.
 
-A [rendelkezésreállási zónákban](../availability-zones/az-overview.md) méretezési csoportok helyezhetők üzembe.
-
-> [!NOTE]
-> Jelenleg a virtuálisgép-méretezési csoportok csak az egyetlen rendelkezésre állási zónában való üzembe helyezést támogatják. A jövőben a többzónás üzembe helyezés is támogatott lesz.
+A [rendelkezésre állási zónákban](virtual-machine-scale-sets-use-availability-zones.md) méretezési csoportok helyezhetők üzembe.
 
 A méretezési csoportok megadását és üzembe helyezését – az egyedi Azure Resource Manager-alapú virtuális gépekhez hasonlóan – JSON-sablonok és [REST API-k](https://msdn.microsoft.com/library/mt589023.aspx) segítségével is elvégezheti. Ezért lehetőség van bármilyen szabványos Azure Resource Manager-alapú üzembe helyezési módszer használatára. A sablonokról további információkat az [Authoring Azure Resource Manager templates](../azure-resource-manager/resource-group-authoring-templates.md) (Azure Resource Manager-sablonok készítése) című témakörben talál.
 
@@ -94,7 +91,7 @@ Ha meg kell tekintenie vagy szerkesztenie kell egy Azure-erőforrás mögöttes 
 Ez a szakasz a méretezési csoportok használatának néhány tipikus esetét sorolja fel. Ezek az esetek néhány magasabb szintű Azure-szolgáltatás (például a Batch, a Service Fabric és a Container Service) használatakor merülhetnek fel.
 
 * **Csatlakozás az RDP vagy az SSH segítségével a méretezési csoport példányaihoz**: A rendszer egy méretezési csoportot hozott létre egy virtuális hálózaton belül, és a méretezési csoportba tartozó egyes virtuális gépekhez nem osztott ki nyilvános IP-címeket. Ez a házirend elkerüli az egyes nyilvános IP-címeknek a számítási grid összes csomópontjához való kiosztásával járó költségeket és munkaterhelést. Ha nem igényel közvetlen külső kapcsolatokat a méretezési csoport virtuális gépeihez, akkor beállíthatja a méretezési csoportot úgy, hogy automatikusan nyilvános IP-címet osszon ki az új virtuális gépeknek. Ezekhez a virtuális gépekhez csatlakozhat a virtuális hálózat más erőforrásairól is (például terheléselosztókról, önálló virtuális gépekről), amelyekhez lehet nyilvános IP-címeket kiosztani. 
-* **Csatlakozás virtuális gépekhez NAT-szabályok használatával**: Létrehozhat egy nyilvános IP-címet, hozzárendelheti egy terheléselosztóhoz, majd megadhat egy bejövő NAT-készletet. Ezek a műveletek az IP-címen található portokat hozzárendelik a méretezési csoportban lévő virtuális gépen található porthoz. Példa:
+* **Csatlakozás virtuális gépekhez NAT-szabályok használatával**: Létrehozhat egy nyilvános IP-címet, hozzárendelheti egy terheléselosztóhoz, majd megadhat egy bejövő NAT-készletet. Ezek a műveletek az IP-címen található portokat hozzárendelik a méretezési csoportban lévő virtuális gépen található porthoz. Például:
   
   | Forrás | Forrásport | Cél | Célport |
   | --- | --- | --- | --- |

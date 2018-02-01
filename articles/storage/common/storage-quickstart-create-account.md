@@ -7,15 +7,15 @@ manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 12/12/2017
+ms.date: 01/19/2018
 ms.author: tamram
-ms.openlocfilehash: c97e1b5115a8a97b8d9345c02d12b55b1d7a58fd
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 926b78bbe1ec8efaf6529a084af47747325f6096
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/24/2018
 ---
-# <a name="create-a-new-storage-account"></a>Új tárfiók létrehozása
+# <a name="create-a-storage-account"></a>Create a storage account
 
 Az Azure Storage-fiók egyedi névteret biztosít a felhőben az Azure Storage-adatobjektumok tárolásához és eléréséhez. A tárfiókok bármely olyan blobot, fájlt, üzenetsort, táblát vagy lemezt tartalmazhatnak, amelyeket az adott fiók használata során létrehoz. 
 
@@ -138,9 +138,19 @@ az account list-locations \
 
 ---
 
-# <a name="create-a-general-purpose-storage-account"></a>Általános célú tárfiók létrehozása
+## <a name="create-a-general-purpose-storage-account"></a>Általános célú tárfiók létrehozása
 
-Az általános célú tárfiókok az összes Azure Storage-szolgáltatáshoz (blobokhoz, fájlokhoz, üzenetsorokhoz és táblákhoz) hozzáférést biztosítanak. Az általános célú tárfiókok standard és prémium szinten is létrehozhatók. A jelen cikkben szereplő példák egy általános célú tárfiók (alapértelmezett) standard szinten történő létrehozását mutatják be. További információ a tárfiók-beállításokról: [A Microsoft Azure Storage bemutatása](storage-introduction.md).
+Az általános célú tárfiókok az összes Azure Storage-szolgáltatáshoz (blobokhoz, fájlokhoz, üzenetsorokhoz és táblákhoz) hozzáférést biztosítanak. Az általános célú tárfiókok standard és prémium szinten is létrehozhatók. A jelen cikkben szereplő példák egy általános célú tárfiók (alapértelmezett) standard szinten történő létrehozását mutatják be.
+
+Az Azure Storage két különböző általános tárfióktípust tesz elérhetővé:
+
+- Általános célú v2-fiókok 
+- Általános célú v1-fiókok 
+
+> [!NOTE]
+> Javasoljuk, hogy az új tárfiókokat **általános célú v2-fiókokként** hozza létre, hogy kihasználhassa az ilyen fiókok számára elérhető újabb funkciókat.  
+
+További információt a tárfiókok típusairól [az Azure Storage-fiók beállításait](storage-account-options.md) ismertető szakaszban talál.
 
 Ne feledje ezeket a szabályokat a tárfiók elnevezésekor:
 
@@ -149,43 +159,72 @@ Ne feledje ezeket a szabályokat a tárfiók elnevezésekor:
 
 # <a name="portaltabportal"></a>[Portal](#tab/portal)
 
-Kövesse az alábbi lépéseket egy általános célú tárfiók létrehozásához az Azure Portalon:
+Kövesse az alábbi lépéseket egy általános célú v2-tárfiók létrehozásához az Azure Portalon:
 
 1. Az Azure Portalon nyissa ki bal oldalon a szolgáltatásmenüt, és válassza a **További szolgáltatások** lehetőséget. Ezután görgessen le a **Storage** szakaszig, és válassza a **Storage-fiókok** lehetőséget. A megjelenő **Storage-fiókok** ablakban válassza a **Hozzáadás** lehetőséget.
 2. Adja meg a tárfiók nevét.
-3. Ne módosítsa a következő mezők alapértelmezett értékeit: **Üzemi modell**, **Fiók altípusa**, **Teljesítmény**, **Replikáció**, **Biztonságos átvitelre van szükség**.
-4. Válassza ki azt az előfizetést, amelyikben létre kívánja hozni a tárfiókot.
-5. Az **Erőforráscsoport** szakaszban válassza a **Meglévő használata** lehetőséget, majd válassza ki az előző szakaszban létrehozott erőforráscsoportot.
-6. Válassza ki az új tárfiók helyét.
-7. Kattintson a **Létrehozás** parancsra a tárfiók létrehozásához.      
+3. Állítsa be a **Fiók típusa** mezőben a **StorageV2 (általános célú v2)** értéket.
+4. A **Replikáció** mezőben hagyja meg a **Helyileg redundáns tárolás (LRS)** értéket. Ezenkívül a következő lehetőségek közül választhat: **Zónaredundáns tárolás (ZRS előzetes verzió)**, **Georedundáns tárolás (GRS)** vagy **Írásvédett georedundáns tárolás (RA-GRS)**.
+5. Ne módosítsa a következő mezők alapértelmezett értékeit: **Üzemi modell**, **Teljesítmény**, **Biztonságos átvitelre van szükség**.
+6. Válassza ki azt az előfizetést, amelyikben létre kívánja hozni a tárfiókot.
+7. Az **Erőforráscsoport** szakaszban válassza a **Meglévő használata** lehetőséget, majd válassza ki az előző szakaszban létrehozott erőforráscsoportot.
+8. Válassza ki az új tárfiók helyét.
+9. Kattintson a **Létrehozás** parancsra a tárfiók létrehozásához.      
 
 ![A tárfiók Azure Portalon történő létrehozását bemutató képernyőkép](./media/storage-quickstart-create-account/create-account-portal.png)
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
-Az általános célú tárfiók PowerShellből történő létrehozása a [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount) paranccsal történik: 
+Egy helyileg redundáns tárolást (LRS) használó általános célú v2-tárfiók létrehozásához a PowerShellben használja a [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount) parancsot: 
 
 ```powershell
 New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
   -Name "storagequickstart" `
   -Location $location `
   -SkuName Standard_LRS `
-  -Kind Storage 
+  -Kind StorageV2 
 ```
+
+Egy zónaredundáns tárolást (ZRS előzetes verzió), georedundáns tárolást (GRS) vagy írásvédett georedundáns tárolást (RA-GRS) használó általános célú v2-tárfiók létrehozásához illessze be a kívánt értéket az alábbi táblázatból az **SkuName** paraméternél. 
+
+|Replikációs beállítás  |SkuName paraméter  |
+|---------|---------|
+|Helyileg redundáns tárolás (LRS)     |Standard_LRS         |
+|Zónaredundáns tárolás (ZRS)     |Standard_ZRS         |
+|Georedundáns tárolás (GRS)     |Standard_GRS         |
+|Írásvédett georedundáns tárolás (GRS)     |Standard_RAGRS         |
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Az [az storage account create](/cli/azure/storage/account#create) paranccsal hozzon létre egy általános célú tárfiókot az Azure CLI-n.
+Egy helyileg redundáns tárolást (LRS) használó általános célú v2-tárfiók létrehozásához az Azure CLI-ben használja az [az storage account create](/cli/azure/storage/account#create) parancsot.
 
 ```azurecli-interactive
 az storage account create \
     --name storagequickstart \
     --resource-group storage-quickstart-resource-group \
     --location westus \
-    --sku Standard_LRS 
+    --sku Standard_LRS \
+    --kind StorageV2
 ```
 
+Egy zónaredundáns tárolást (ZRS előzetes verzió), georedundáns tárolást (GRS) vagy írásvédett georedundáns tárolást (RA-GRS) használó általános célú v2-tárfiók létrehozásához illessze be a kívánt értéket az alábbi táblázatból az **sku** paraméternél. 
+
+|Replikációs beállítás  |sku paraméter  |
+|---------|---------|
+|Helyileg redundáns tárolás (LRS)     |Standard_LRS         |
+|Zónaredundáns tárolás (ZRS)     |Standard_ZRS         |
+|Georedundáns tárolás (GRS)     |Standard_GRS         |
+|Írásvédett georedundáns tárolás (GRS)     |Standard_RAGRS         |
+
 ---
+
+> [!NOTE]
+> A [Zónaredundáns tárolás](https://azure.microsoft.com/blog/announcing-public-preview-of-azure-zone-redundant-storage/preview/) jelenleg előzetes verzióban van, és csak a következő helyeken érhető el:
+>    - USA keleti régiója 2
+>    - USA középső régiója
+>    - Közép-Franciaország (Ez a régió jelenleg előzetes verzióban érhető el. Hozzáférés kéréséhez lásd [a Microsoft Azure előzetes verziójának franciaországi rendelkezésreállási zónáit bejelentő bejegyzést](https://azure.microsoft.com/blog/microsoft-azure-preview-with-azure-availability-zones-now-open-in-france).)
+    
+További információt a replikáció különböző elérhető típusairól a [tárreplikációs beállításokat](storage-redundancy.md) ismertető szakaszban talál.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

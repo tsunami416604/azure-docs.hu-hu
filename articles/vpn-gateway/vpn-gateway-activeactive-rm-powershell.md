@@ -13,32 +13,34 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/16/2017
+ms.date: 01/24/2018
 ms.author: yushwang
-ms.openlocfilehash: a9f71b566ffdb163f95634835f64589a700d712f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 41cca764335f21bed60fe968288bc8b8274f3215
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>Az Azure VPN Gatewayek aktív-aktív S2S VPN-kapcsolatok konfigurálása
 
 Ez a cikk végigvezeti a aktív-aktív létesítmények közötti és VNet – VNet kapcsolatokhoz a Resource Manager üzembe helyezési modellben és a PowerShell használatával létrehozni.
 
 ## <a name="about-highly-available-cross-premises-connections"></a>Magas rendelkezésre állású létesítmények közötti kapcsolatok
-A létesítmények közötti és VNet – VNet-kapcsolatot a magas rendelkezésre állás eléréséhez kell több VPN-átjáró telepítése, és a hálózatok és az Azure közötti több párhuzamos kapcsolatok létesítéséhez. Ellenőrizze a [magas rendelkezésre álló létesítmények közötti és VNet – VNet-kapcsolatot](vpn-gateway-highlyavailable.md) kapcsolati lehetőségek és topológiájának áttekintését.
+A létesítmények közötti és VNet – VNet-kapcsolatot a magas rendelkezésre állás eléréséhez kell több VPN-átjáró telepítése, és a hálózatok és az Azure közötti több párhuzamos kapcsolatok létesítéséhez. Lásd: [magas rendelkezésre álló létesítmények közötti és VNet – VNet-kapcsolatot](vpn-gateway-highlyavailable.md) kapcsolati lehetőségek és topológiájának áttekintését.
 
-Ez a cikk leírja egy aktív-aktív létesítmények közötti VPN-kapcsolat és két virtuális hálózatok közötti aktív-aktív kapcsolat beállításához:
+Ez a cikk bemutatja az állíthat be egy aktív-aktív létesítmények közötti VPN-kapcsolat és két virtuális hálózatok közötti aktív-aktív kapcsolat.
 
 * [1. rész – létrehozása és konfigurálása az Azure VPN gateway aktív-aktív módban](#aagateway)
 * [2. rész – aktív-aktív létesítmények közötti kapcsolatot.](#aacrossprem)
 * [3. rész – aktív-aktív VNet – VNet-kapcsolatot létrehozni](#aav2v)
-* [4. rész - frissítés meglévő átjáró aktív-aktív és aktív-készenléti állapotban lévő között](#aaupdate)
+
+Ha már rendelkezik egy VPN-átjárót, akkor a következőket teheti:
+* [Egy meglévő VPN-átjárót aktív-készenléti állapotban lévő frissíteni az aktív-aktív, vagy fordítva](#aaupdate)
 
 Ezek együtt egy összetettebb, magas rendelkezésre állású hálózati topológia az igényeinek megfelelő létrehozásához kombinálhatja.
 
 > [!IMPORTANT]
-> Vegye figyelembe, hogy a az aktív-aktív mód csak a következő termékváltozatok használja: 
+> Az aktív-aktív mód csak a következő termékváltozatok használja: 
   * VpnGw1, VpnGw2, VpnGw3
   * (A régi örökölt SKU) HighPerformance
 > 
@@ -141,26 +143,25 @@ $vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $R
 Az alábbi parancsmagok segítségével a VPN-átjáró és az egyes átjárópéldány megfelelő BGP-Társgép IP-címeit számára lefoglalt két nyilvános IP-címe:
 
 ```powershell
+PS D:\> $gw1pip1.IpAddress
+40.112.190.5
 
-    PS D:\> $gw1pip1.IpAddress
-    40.112.190.5
+PS D:\> $gw1pip2.IpAddress
+138.91.156.129
 
-    PS D:\> $gw1pip2.IpAddress
-    138.91.156.129
-
-    PS D:\> $vnet1gw.BgpSettingsText
-    {
-      "Asn": 65010,
-      "BgpPeeringAddress": "10.12.255.4,10.12.255.5",
-      "PeerWeight": 0
-    }
+PS D:\> $vnet1gw.BgpSettingsText
+{
+  "Asn": 65010,
+  "BgpPeeringAddress": "10.12.255.4,10.12.255.5",
+  "PeerWeight": 0
+}
 ```
 
 A nyilvános IP sorrendjének szünteti meg a példány, és a megfelelő BGP társviszony-létesítés címek megegyeznek. Ebben a példában az átjáró nyilvános IP-címe 40.112.190.5 rendelkező virtuális gépet fog használni a BGP társviszony-létesítés cím 10.12.255.4, és az átjáró 138.91.156.129 10.12.255.5 fogja használni. Ezek az információk szükségesek a az aktív-aktív átjáró csatlakozik a helyi VPN-eszközök beállításához. Az átjáró összes címre alatt az ábrán látható:
 
 ![aktív-aktív átjáró](./media/vpn-gateway-activeactive-rm-powershell/active-active-gw.png)
 
-Az átjáró létrehozása után az átjáró segítségével aktív-aktív létesítmények közötti és VNet – VNet-kapcsolatot létesíteni. A következő szakaszok haladhat végig a lépéseken a gyakorlatban befejezéséhez.
+Az átjáró létrehozása után az átjáró segítségével aktív-aktív létesítmények közötti és VNet – VNet-kapcsolatot létesíteni. A következő szakaszok végezze el a szükséges lépések a gyakorlatban.
 
 ## <a name ="aacrossprem"></a>2. rész – egy aktív-aktív létesítmények közötti kapcsolat
 A létesítmények közötti kapcsolatot szüksége a helyszíni VPN-eszköz képviselő helyi hálózati átjáró és a kapcsolat az Azure VPN gateway kapcsolódni a helyi hálózati átjáró létrehozásához. Ebben a példában az Azure VPN gateway aktív-aktív módban van. Ennek eredményeképpen ellenére, hogy csak az egyiket a helyszíni VPN-eszközön (helyi hálózati átjáró) és egy kapcsolati erőforrást, mindkét Azure VPN gateway példányok fog létrehozni a S2S VPN-alagutat a helyszíni eszközök.
@@ -205,7 +206,7 @@ $lng5gw1 = Get-AzureRmLocalNetworkGateway  -Name $LNGName51 -ResourceGroupName $
 ```
 
 #### <a name="2-create-the-testvnet1-to-site5-connection"></a>2. A TestVNet1 Site5 kapcsolat létrehozása
-Ebben a lépésben hoz létre a kapcsolat a TestVNet1 való Site5_1 a "EnableBGP" $True értékre.
+Ebben a lépésben hoz létre a kapcsolat TestVNet1 való Site5_1 a "EnableBGP" $True értékre.
 
 ```powershell
 New-AzureRmVirtualNetworkGatewayConnection -Name $Connection151 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw1 -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP True
@@ -214,31 +215,36 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $Connection151 -ResourceGroupNa
 #### <a name="3-vpn-and-bgp-parameters-for-your-on-premises-vpn-device"></a>3. A helyszíni VPN-eszköz VPN és BGP paraméterei
 Az alábbi példa az ebben a gyakorlatban a helyszíni VPN-eszköz a BGP konfigurációs szakaszba módba lép paramétereket tartalmazza:
 
-    - Site5 ASN: 65050
-    - BGP-IP-Site5: 10.52.255.253
-    - Értesítés előtagok: (példa) 10.51.0.0/16 és 10.52.0.0/16
-    - Az Azure VNet ASN: 65010
-    - Az Azure VNet BGP-IP-1: 10.12.255.4 az alagutat a 40.112.190.5
-    - Az Azure VNet BGP IP 2: 10.12.255.5 az alagutat a 138.91.156.129
-    - Statikus útvonal: cél 10.12.255.4/32, a következő ugrás a VPN-alagút csatoló 40.112.190.5 a cél 10.12.255.5/32, a következő ugrás 138.91.156.129 a csatoló a VPN-alagút
-    - Többszörös ugrási eBGP: az ebgp-t az eszközön engedélyezve van, ha szükséges, győződjön meg arról, hogy a "Többszörös ugrási" lehetőséget
+```
+- Site5 ASN            : 65050
+- Site5 BGP IP         : 10.52.255.253
+- Prefixes to announce : (for example) 10.51.0.0/16 and 10.52.0.0/16
+- Azure VNet ASN       : 65010
+- Azure VNet BGP IP 1  : 10.12.255.4 for tunnel to 40.112.190.5
+- Azure VNet BGP IP 2  : 10.12.255.5 for tunnel to 138.91.156.129
+- Static routes        : Destination 10.12.255.4/32, nexthop the VPN tunnel interface to 40.112.190.5
+                         Destination 10.12.255.5/32, nexthop the VPN tunnel interface to 138.91.156.129
+- eBGP Multihop        : Ensure the "multihop" option for eBGP is enabled on your device if needed
+```
 
 A kapcsolatot kell kialakítani, néhány perc múlva, és a BGP társviszony-létesítési munkamenetet IPsec-kapcsolat létrejötte után indul el. Ebben a példában, amennyiben csak egy helyszíni VPN-eszköz, ami azt eredményezi, az alábbi ábrán van beállítva:
 
-![aktív-aktív-crossprem](./media/vpn-gateway-activeactive-rm-powershell/active-active.png)
+![active-active-crossprem](./media/vpn-gateway-activeactive-rm-powershell/active-active.png)
 
 ### <a name="step-3---connect-two-on-premises-vpn-devices-to-the-active-active-vpn-gateway"></a>3. lépés - a két helyszíni VPN-eszközök csatlakozni az aktív-aktív VPN-átjáró
 Ha két VPN-eszközök, a helyi hálózaton, kettős redundancia érhet el, a második VPN-eszköz az Azure VPN gatewayhez csatlakozó.
 
 #### <a name="1-create-the-second-local-network-gateway-for-site5"></a>1. A második helyi hálózati átjáró létrehozása Site5
-Vegye figyelembe, hogy az átjáró IP-címe, a címelőtagot és a BGP társviszony-létesítési címét, a második helyi hálózati átjáró nem lehet átfedésben az előző helyi hálózati átjáró ugyanabban a helyi hálózaton.
+Az átjáró IP-címe, a címelőtagot és a BGP társviszony-létesítési címét, a második helyi hálózati átjáró nem fedhetik az előző helyi hálózati átjáró ugyanabban a helyszíni hálózat.
 
 ```powershell
 $LNGName52 = "Site5_2"
 $LNGPrefix52 = "10.52.255.254/32"
 $LNGIP52 = "131.107.72.23"
 $BGPPeerIP52 = "10.52.255.254"
+```
 
+```powershell
 New-AzureRmLocalNetworkGateway -Name $LNGName52 -ResourceGroupName $RG5 -Location $Location5 -GatewayIpAddress $LNGIP52 -AddressPrefix $LNGPrefix52 -Asn $LNGASN5 -BgpPeeringAddress $BGPPeerIP52
 ```
 
@@ -247,7 +253,9 @@ Hozza létre a kapcsolatot TestVNet1 Site5_2 a "EnableBGP" $True értékre
 
 ```powershell
 $lng5gw2 = Get-AzureRmLocalNetworkGateway -Name $LNGName52 -ResourceGroupName $RG5
+```
 
+```powershell
 New-AzureRmVirtualNetworkGatewayConnection -Name $Connection152 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw2 -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP True
 ```
 
@@ -268,7 +276,7 @@ Ehhez hasonlóan listája alább a paraméterek megadja azokat a második VPN-es
 
 Miután létrejött a kapcsolat (alagutak) is meg kell kettős redundáns VPN-eszközök és a helyszíni hálózat és az Azure csatlakozás alagutak:
 
-![kettős-redundancia-crossprem](./media/vpn-gateway-activeactive-rm-powershell/dual-redundancy.png)
+![dual-redundancy-crossprem](./media/vpn-gateway-activeactive-rm-powershell/dual-redundancy.png)
 
 ## <a name ="aav2v"></a>3. rész – egy aktív-aktív VNet – VNet-kapcsolatot létesíteni
 Ez a szakasz egy aktív-aktív VNet – VNet-kapcsolatot hoz létre a BGP. 
@@ -364,19 +372,19 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $Connection21 -ResourceGroupNam
 
 Társviszony-létesítési munkamenetet a kapcsolat néhány percet, és a BGP kell meghatározzák ezeket a lépéseket befejezését követően lesz mentése után a VNet – VNet kapcsolódást kettős redundanciával:
 
-![aktív-aktív-v2v](./media/vpn-gateway-activeactive-rm-powershell/vnet-to-vnet.png)
+![active-active-v2v](./media/vpn-gateway-activeactive-rm-powershell/vnet-to-vnet.png)
 
-## <a name ="aaupdate"></a>4. rész - frissítés meglévő átjáró aktív-aktív és aktív-készenléti állapotban lévő között
-Az utolsó szakasza ismerteti, hogyan konfigurálhat egy meglévő Azure VPN-átjárót aktív-készenléti állapotban lévő aktív-aktív módban, vagy fordítva.
+## <a name ="aaupdate"></a>Egy meglévő VPN-átjáró frissítése
 
-> [!NOTE]
-> Ez a szakasz a lépésekből áll egy örökölt Termékváltozat (régi SKU) átméretezni egy már létrehozott VPN-átjáró a normál HighPerformance. Ezeket a lépéseket ne frissítse egy régi örökölt SKU egy új SKU.
-> 
-> 
+Ez a szakasz segítségével módosíthatja egy meglévő Azure VPN gateway aktív-készenléti mód aktív-aktív, vagy fordítva.
 
-### <a name="configure-an-active-standby-gateway-to-active-active-gateway"></a>Egy aktív-készenléti állapotban lévő átjáró aktív-aktív átjáró konfigurálása
-#### <a name="1-gateway-parameters"></a>1. Átjáró paraméterek
-A következő példa egy aktív-készenléti állapotban lévő átjáró alakít át egy aktív-aktív átjárót. Hozzon létre egy másik nyilvános IP-címet, majd adja hozzá a második átjáró IP-konfiguráció kell. Alább látható használt paraméterek:
+### <a name="change-an-active-standby-gateway-to-an-active-active-gateway"></a>Egy aktív-készenléti állapotban lévő átjárót egy aktív-aktív átjáró módosítása
+
+A következő példa egy aktív-készenléti állapotban lévő átjáró alakít át egy aktív-aktív átjárót. Ha megváltoztatja egy aktív-aktív aktív-készenléti állapotban lévő átjárót, hozzon létre egy másik nyilvános IP-címet, majd adja hozzá a második átjáró IP-konfigurációja.
+
+#### <a name="1-declare-your-variables"></a>1. A változók deklarálása
+
+Cserélje le a példák a beállításokkal, hogy a saját konfigurációjához szükséges, majd deklarálja ezeket az értékeket a következő paramétereket.
 
 ```powershell
 $GWName = "TestVNetAA1GW"
@@ -384,7 +392,11 @@ $VNetName = "TestVNetAA1"
 $RG = "TestVPNActiveActive01"
 $GWIPName2 = "gwpip2"
 $GWIPconf2 = "gw1ipconf2"
+```
 
+Után deklaráló a változókat, másolja, és illessze be az ebben a példában a PowerShell-konzolba.
+
+```powershell
 $vnet = Get-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $RG
 $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
 $gw = Get-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG
@@ -399,28 +411,39 @@ Add-AzureRmVirtualNetworkGatewayIpConfig -VirtualNetworkGateway $gw -Name $GWIPc
 ```
 
 #### <a name="3-enable-active-active-mode-and-update-the-gateway"></a>3. Aktív-aktív mód engedélyezése és az átjáró frissítése
-Meg kell adni az átjáróobjektum a PowerShellben a tényleges frissítés indításához. A virtuális hálózati átjáró Termékváltozata is kell változtatni (átméretezett) HighPerformance szabványként korábban létrehozása óta.
+
+Ebben a lépésben aktív-aktív mód engedélyezése, és frissítheti az átjárót. A példában a VPN-átjáró jelenleg használja egy örökölt Standard Termékváltozat. Aktív-aktív azonban nem támogatja a Standard Termékváltozat. (Ebben az esetben az HighPerformance) támogat a hagyományos SKU átméretezéséhez, egyszerűen adja meg a támogatott régi SKU használni kívánt.
+
+* Az új SKU használata ebben a lépésben egy örökölt Termékváltozat nem módosítható. Csak egy örökölt SKU támogatott örökölt egy másikra is átméretezhetők. Például nem módosíthatja a Termékváltozat szabványos VpnGw1 való (annak ellenére, hogy aktív-aktív támogatott VpnGw1) mert Standard örökölt SKU, és VpnGw1 aktuális Termékváltozat. Átméretezési és áttelepítése termékváltozatok kapcsolatos további információkért lásd: [Gateway SKU-n](vpn-gateway-about-vpngateways.md#gwsku).
+
+* Ha azt szeretné, méretezze át a jelenlegi SKU, például a VpnGw3, VpnGw1 ezt teheti használatával ezt a lépést, mert a azonos SKU-család szerepelnek a termékváltozat. Ehhez használja az értéket:```-GatewaySku VpnGw3```
+
+Használata esetén ez a környezetben, ha nincs szüksége az átjáró átméretezése, nincs szükség a - GatewaySku adja meg. Figyelje meg, hogy ebben a lépésben meg kell adnia az átjáróobjektum PowerShell, a tényleges frissítés indításához. A frissítés eltarthat 30 – 45 perc, akkor is, ha nem átméretezni az átjáró.
 
 ```powershell
 Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw -EnableActiveActiveFeature -GatewaySku HighPerformance
 ```
 
-A frissítés a 30-45 percet is igénybe vehet.
+### <a name="change-an-active-active-gateway-to-an-active-standby-gateway"></a>Egy aktív-aktív átjárót egy aktív-készenléti állapotban lévő átjáró módosítása
+#### <a name="1-declare-your-variables"></a>1. A változók deklarálása
 
-### <a name="configure-an-active-active-gateway-to-active-standby-gateway"></a>Egy aktív-aktív átjáró aktív-készenléti állapotban lévő átjáró konfigurálása
-#### <a name="1-gateway-parameters"></a>1. Átjáró paraméterek
-Az ugyanezen paraméterekkel a fenti használatához el az eltávolítani kívánt IP-konfiguráció neve.
+Cserélje le a példák a beállításokkal, hogy a saját konfigurációjához szükséges, majd deklarálja ezeket az értékeket a következő paramétereket.
 
 ```powershell
 $GWName = "TestVNetAA1GW"
 $RG = "TestVPNActiveActive01"
+```
 
+A változók deklaráló, után el az eltávolítani kívánt IP-konfiguráció neve.
+
+```powershell
 $gw = Get-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG
 $ipconfname = $gw.IpConfigurations[1].Name
 ```
 
 #### <a name="2-remove-the-gateway-ip-configuration-and-disable-the-active-active-mode"></a>2. Távolítsa el az átjáró IP-konfiguráció és az aktív-aktív mód letiltása
-Hasonlóképpen be kell állítani a az átjáróobjektum PowerShell indításához az aktuális frissítés.
+
+Ez a példa segítségével távolítsa el az átjáró IP-konfiguráció, és aktív-aktív mód letiltása. Figyelje meg, hogy meg kell adnia az átjáróobjektum PowerShell, a tényleges frissítés indításához.
 
 ```powershell
 Remove-AzureRmVirtualNetworkGatewayIpConfig -Name $ipconfname -VirtualNetworkGateway $gw
@@ -429,5 +452,5 @@ Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw -DisableActiveActive
 
 A frissítés 45 percig is eltarthat 30-ig.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. A lépésekért lásd: [Virtuális gép létrehozása](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

@@ -72,6 +72,21 @@
             - name: HDInsight-alkalmazások közzététele az Azure Marketplace-en
               href: ../hdinsight-apps-publish-applications.md
               maintainContext: true
+            - name: Közzétett alkalmazás telepítése – Cask Data Application Platform (CDAP)
+              href: ../hdinsight-apps-install-cask.md
+              maintainContext: true
+            - name: Közzétett alkalmazás telepítése – Dataiku
+              href: ../hdinsight-apps-install-dataiku.md
+              maintainContext: true
+            - name: Közzétett alkalmazás telepítése – Datameer
+              href: ../hdinsight-apps-install-datameer.md
+              maintainContext: true
+            - name: Közzétett alkalmazás telepítése – H2O
+              href: ../hdinsight-apps-install-h2o.md
+              maintainContext: true
+            - name: Közzétett alkalmazás telepítése – Streamsets
+              href: ../hdinsight-apps-install-streamsets.md
+              maintainContext: true
     - name: Biztonságos
       items:
         - name: SSH használata a HDInsighttal
@@ -165,6 +180,8 @@
         - name: A HDInsight-fürt frissítése újabb verzióra
           href: ../hdinsight-upgrade-cluster.md
           maintainContext: true
+        - name: A HBase-fürt migrálása újabb verzióra
+          href: apache-hbase-migrate-new-version.md
         - name: Az operációs rendszer javításai a HDInsight-fürthöz
           href: ../hdinsight-os-patching.md
           maintainContext: true
@@ -227,11 +244,15 @@
           href: apache-hbase-provision-vnet.md
         - name: HBase-fürt replikációja az Azure VNetben
           href: apache-hbase-replication.md
+        - name: A HBase és a Phoenix biztonsági mentésének és replikációjának beállítása
+          href: apache-hbase-backup-replication.md
     - name: Monitorozás az OMS-szel
       items:
         - name: Az Azure Log Analytics használata
           href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
           maintainContext: true
+        - name: A HBase monitorozása az OMS-szel
+          href: apache-hbase-monitor-with-oms.md
         - name: Fürtre jellemző irányítópultok
           href: ../hdinsight-hadoop-oms-log-analytics-management-solutions.md
           maintainContext: true
@@ -241,6 +262,8 @@
         - name: Fürtteljesítmény monitorozása
           href: ../hdinsight-key-scenarios-to-monitor.md
           maintainContext: true
+        - name: A Phoenix teljesítményével kapcsolatos ajánlott eljárások
+          href: apache-hbase-phoenix-performance.md
 - name: Referencia
   items:
     - name: Kódminták

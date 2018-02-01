@@ -9,11 +9,11 @@ ms.workload: storage
 ms.topic: article
 ms.date: 01/21/2018
 ms.author: tamram
-ms.openlocfilehash: 1514750b13f5108c480d5dd234132d35dc82fdd2
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
-ms.translationtype: HT
+ms.openlocfilehash: 18d0e8bc6cc1559f9ae1a1a4457aa85d2a206597
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-storage-replication"></a>Azure Storage replication (Azure Storage replikáció)
 
@@ -49,17 +49,8 @@ Lásd: [Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/p
 ## <a name="locally-redundant-storage"></a>Helyileg redundáns tárolás
 [!INCLUDE [storage-common-redundancy-LRS](../../../includes/storage-common-redundancy-LRS.md)]
 
-## <a name="zone-redundant-storage"></a>Zónaredundáns tárolás
-
-Zónaredundáns tárolás (ZRS) (előzetes verzió) célja, egyszerűbbé teheti a magas rendelkezésre állású alkalmazások fejlesztéséhez. Zrs-t a tárolási objektum legalább 99.9999999999 % tartósságot biztosít (12 9 meg) egy adott évben. A ZRS az adatok több rendelkezésre állási zóna között szinkron módon replikálja. Vegye figyelembe a zrs-t a helyzetekben, ahol nem az elfogadható állásidő tranzakciós alkalmazások például.
-
-A ZRS lehetővé teszi az ügyfelek olvashatja és írhatja az adatokat, akkor is, ha egy zóna nem érhető el vagy helyreállíthatatlan. Szúrja be és adatok frissítései szinkron módon történik, és határozottan konzisztens.   
-
-A ZRS érhető el jelenleg a következő régiókban, további régiókban hamarosan már az előzetes verzió:
-
-- USA 2. keleti régiója 
-- USA középső régiója 
-- Franciaország központi (ebben a régióban jelenleg előzetes verzió. Lásd: [Azure rendelkezésre állási zónák francia most nyissa meg a Microsoft Azure preview](https://azure.microsoft.com/blog/microsoft-azure-preview-with-azure-availability-zones-now-open-in-france) a hozzáférés kéréséhez.)
+## <a name="zone-redundant-storage"></a>Redundáns tárolási zóna
+[!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-ZRS.md)]
 
 ### <a name="zrs-classic-accounts"></a>A ZRS klasszikus fiókok
 

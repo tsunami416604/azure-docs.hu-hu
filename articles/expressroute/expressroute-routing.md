@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/03/2017
 ms.author: ganesr
-ms.openlocfilehash: 088147060eeeba5c900cdcdc3fb38fc1d4ccfc58
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 87cf32c23c2b3f50057016a23212c95b706f2910
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="expressroute-routing-requirements"></a>Az ExpressRoute útválasztási követelményei
 Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltatásokhoz, be kell állítania és kezelnie kell az útválasztást. Egyes kapcsolatszolgáltatók az útválasztás beállítását és kezelését felügyelt szolgáltatásként kínálják. Ellenőrizze kapcsolatszolgáltatójánál, hogy kínálja-e ezt a szolgáltatást. Ha nem, akkor meg kell felelnie az alábbi követelményeknek:
@@ -118,7 +118,7 @@ A saját AS-számok Microsoft társviszony-létesítés esetében engedélyezett
 Az útválasztás cseréje az eBGP protokollon keresztül történik. Az EBGP-munkamenetek az MSEE-k és az Ön útválasztója között jönnek létre. A BGP-munkamenetek hitelesítése nem szükséges. Szükség esetén konfigurálható egy MD5-kivonat. A BGP-munkamenetek konfigurálásával kapcsolatban lásd az [útválasztás konfigurálását](expressroute-howto-routing-classic.md) és a [kapcsolatcsoport-kiépítési munkafolyamatokat és a kapcsolatcsoportok állapotait](expressroute-workflows.md) ismertető témaköröket.
 
 ## <a name="autonomous-system-numbers"></a>Autonóm rendszerek számai
-A Microsoft az AS 12076 számot használja az Azure nyilvános, az Azure privát és a Microsoft társviszony-létesítéshez. Az 65515–65520 AS-számok belső használatra vannak fenntartva. A 16 és a 32 bites AS-számok is támogatottak.
+A Microsoft az AS 12076 számot használja az Azure nyilvános, az Azure privát és a Microsoft társviszony-létesítéshez. Az 65515–65520 AS-számok belső használatra vannak fenntartva. A 16 és a 32 bites AS-számok is támogatottak. Nyilvánosan regisztrált AS-számra csak Microsoft társviszony-létesítés esetén van szükség. A privát és nyilvános társviszony-létesítésekhez privát AS-számok is használhatók.
 
 Az adatátvitel szimmetriájára nem vonatkoznak követelmények. Az előre és visszafelé haladó útvonalak különböző útválasztópárokon haladhatnak keresztül. Az azonos útvonalakat az Önhöz tartozó kapcsolatcsoport-párokon mindkét oldalról meg kell hirdetni. Az útvonalmetrikáknak nem kell megegyezniük.
 
@@ -238,7 +238,7 @@ A fentiek mellett a Microsoft a kapcsolódó szolgáltatások alapján is címk�
 | Dynamics 365 |12076:5140 |
 | Egyéb Office 365-szolgáltatások |12076:5200 |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Az ExpressRoute-kapcsolat konfigurálása.
   
   * [Kapcsolatcsoport létrehozása és módosítása](expressroute-howto-circuit-arm.md)

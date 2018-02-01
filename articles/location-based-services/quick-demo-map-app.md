@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 0edca9e5eb709eb3e1b42b45e5a41ac7a5ba1e75
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: bfc31553c32ac4dbfde55aa30b33025b579f6139
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="launch-a-demo-interactive-map-search-using-azure-location-based-services-preview"></a>Bemutató interaktív térképes keresés indítása az Azure Location Based Services (előzetes verzió) használatával
 
@@ -25,7 +25,7 @@ Ez a cikk bemutatja az Azure Location Based Services (előzetes verzió, rövide
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 
-## <a name="log-in-to-the-azure-portal"></a>Jelentkezzen be az Azure portálra.
+## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 
 Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
@@ -38,13 +38,13 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
     ![Location Based Services-fiók létrehozása a portálon](./media/quick-demo-map-app/create-lbs-account.png)
 
-5. Miután sikeresen létrehozta a fiókot, nyissa meg, és lépjen a fiók **BEÁLLÍTÁSAIHOZ**. Kattintson a **Kulcsok** elemre a fiók elsődleges és másodlagos előfizetési kulcsainak lekéréséhez. Másolja az **Elsődleges kulcs** értékét a vágólapra, mert a következő szakaszban használnia kell majd. 
+5. Miután sikeresen létrehozta a fiókot, nyissa meg, és lépjen a fiók **BEÁLLÍTÁSAIHOZ**. Kattintson a **Kulcsok** elemre az Azure Location Based Services-fiók elsődleges és másodlagos kulcsainak lekéréséhez. Másolja az **Elsődleges kulcs** értékét a vágólapra, mert a következő szakaszban használnia kell majd. 
 
 ## <a name="download-the-demo-application-for-azure-maps"></a>Az Azure Maps bemutató alkalmazás letöltése
 
 1. Töltse le vagy másolja ki az [interactiveSearch.html](https://github.com/Azure-Samples/location-based-services-samples/blob/master/src/interactiveSearch.html) fájl tartalmát.
 2. Mentse a fájl tartalmát helyileg **AzureMapDemo.html** néven, és nyissa meg egy szövegszerkesztőben.
-3. Keresse meg benne az **&#60;insert-key&#62;** kifejezést, és cserélje le az előző szakaszban kimásolt **Elsődleges kulcs** értékére. 
+3. Keresse meg benne az `<insert-key>` karakterláncot, és cserélje le az előző szakaszban kimásolt **Elsődleges kulcs** értékére. 
 
 
 ## <a name="launch-the-demo-application-for-azure-maps"></a>Az Azure Maps bemutató alkalmazás indítása
@@ -64,7 +64,7 @@ Az oktatóanyagok részletesen leírják, hogyan használhatja és konfigurálha
 1. Zárja be a böngészőt, amelyben az **AzureMapDemo.html** webalkalmazást megnyitotta.
 2. Az Azure Portal bal oldali menüjében kattintson az **Összes erőforrás** lehetőségre, majd válassza ki a saját LBS-fiókját. Az **Összes erőforrás** panel felső részén kattintson a **Törlés** elemre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozta a saját Azure LBS-fiókját, melynek használatával elindított egy bemutató alkalmazást. Ha szeretné megtudni, hogyan hozhatja létre a saját alkalmazását az Azure Location Based Services API-k használatával, lépjen tovább a következő oktatóanyagra.
 

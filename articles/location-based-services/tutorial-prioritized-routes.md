@@ -1,6 +1,6 @@
 ---
-title: "Több útvonal rendelkezik Azure-alapú helyszolgáltatás |} Microsoft Docs"
-description: "Az Azure-alapú helyszolgáltatás használatával utazás különböző módokban útvonalak keresése"
+title: "Több útvonal az Azure Location Based Services használatával | Microsoft Docs"
+description: "Útvonalak keresése különböző utazási módokhoz az Azure Location Based Services használatával"
 services: location-based-services
 keywords: 
 author: dsk-2015
@@ -12,33 +12,33 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 19cf9da839d9d3a1ec78c8d1f6994628684f4e31
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
-ms.translationtype: MT
+ms.openlocfilehash: 78e911d17fe8c468cf89ec1477f1c5144e6669b6
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/24/2018
 ---
-# <a name="find-routes-for-different-modes-of-travel-using-azure-location-based-services"></a>Az Azure-alapú helyszolgáltatás használatával utazás különböző módokban útvonalak keresése
+# <a name="find-routes-for-different-modes-of-travel-using-azure-location-based-services"></a>Útvonalak keresése különböző utazási módokhoz az Azure Location Based Services használatával
 
-Ez az oktatóanyag bemutatja, hogyan használja az Azure-alapú helyszolgáltatás fiókját és az útválasztási szolgáltatás SDK iránt, a módban az utazás előrébb pontjának az útvonal kereséséhez. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan használhatja az Azure Location Based Services-fiókot és a Route Service SDK-t a hasznos helyekre vezető útvonalak megkereséséhez, az utazási mód szerint rendezve. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Az útvonal-szolgáltatás lekérdezés konfigurálása
-> * Útvonalak utazás módban előrébb leképezése
+> * a Route Service-lekérdezés konfigurálása;
+> * útvonalak megjelenítése utazási mód alapján rendezve.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt továbblépne, győződjön meg arról, hogy [létre Azure-alapú helyszolgáltatás fiókját](./tutorial-search-location.md#createaccount), és [fiókja előfizetés kulcs lekérése](./tutorial-search-location.md#getkey). Is láthatja, akkor előfordulhat, hogy a térkép vezérlőelem és a keresési szolgáltatás API-k használata az oktatóanyag leírtaknak megfelelően [keresési közelben pont használatával, Azure-alapú helyszolgáltatás](./tutorial-search-location.md), valamint megtudhatja, az alapvető használatát, az útvonal Service API-k az oktatóanyag tárgyalt [használatával, Azure-alapú helyszolgáltatás pontra útvonal](./tutorial-route-location.md).
+A folytatás előtt [hozza létre a saját Azure Location Based Services-fiókját](./tutorial-search-location.md#createaccount), és [kérjen le egy kulcsot a fiókból](./tutorial-search-location.md#getkey). Azt is megfigyelheti, hogyan használhatók a Térkép vezérlőelem és a Search szolgáltatás API-jai a [Közeli hasznos helyek keresése az Azure Location Based Services használatával](./tutorial-search-location.md) című oktatóanyag szerint, valamint megismerheti a Route Service API-k alapvető használatát az [Útvonal egy hasznos helyhez az Azure Location Based Services használatával](./tutorial-route-location.md) című oktatóanyag szerint.
 
 
 <a id="queryroutes"></a>
 
-## <a name="configure-your-route-service-query"></a>Az útvonal-szolgáltatás lekérdezés konfigurálása
+## <a name="configure-your-route-service-query"></a>a Route Service-lekérdezés konfigurálása;
 
-Az alábbi lépések segítségével hozzon létre egy statikus HTML-lapot a hely alapú szolgáltatások térkép vezérlő API a beágyazott. 
+A következő lépésekkel hozzon létre egy statikus HTML-oldalt, amelybe be van ágyazva a Location Based Services Térkép vezérlőelem API-ja. 
 
-1. A helyi gépén, hozzon létre egy új fájlt, és adjon neki nevet **MapTruckRoute.html**. 
-2. Az alábbi HTML-összetevők hozzáadása a fájlhoz:
+1. A helyi gépén hozzon létre egy új fájlt **MapTruckRoute.html** néven. 
+2. Adja a következő HTML-összetevőket a fájlhoz:
 
     ```HTML
     <!DOCTYPE html>
@@ -75,19 +75,19 @@ Az alábbi lépések segítségével hozzon létre egy statikus HTML-lapot a hel
 
     </html>
     ```
-    Vegye figyelembe, hogy a HTML-fejléc beágyazza a CSS- és JavaScript fájlok az Azure-alapú helyszolgáltatás szalagtár erőforrás helyeit. Figyelje meg is a *parancsfájl* a HTML-KÓDBAN, magában foglalja a beágyazott JavaScript-kód az Azure térkép vezérlőelem API eléréséhez törzsébe szegmens.
-3. Adja hozzá a következő JavaScript-kódot a *parancsfájl* blokk a HTML-fájl. Cserélje le a helyőrző *< insert-kulcs >* a hely alapú Services-fiók elsődleges kulccsal.
+    Látható, hogy a HTML-fejléc beágyazza a CSS- és a JavaScript-fájlok erőforráshelyeit az Azure Location Based Services-kódtárba. Figyelje meg a HTML törzséhez adott *szkript* szakaszt is, amely tartalmazza az Azure Térkép vezérlőelem API elérésére szolgáló beágyazott JavaScript-kódot.
+3. Adja hozzá a következő JavaScript-kódot a HTML-fájl *szkript* blokkjához. Cserélje le az *<insert-key>* helyőrzőt a Location Based Services-fiók elsődleges kulcsára.
 
     ```JavaScript
     // Instantiate map to the div with id "map"
-    var subscriptionKey = "<insert-key>";
+    var LBSAccountKey = "<_your account key_>";
     var map = new atlas.Map("map", {
-        "subscription-key": subscriptionKey
+        "subscription-key": LBSAccountKey
     });
     ```
-    A **atlas. Térkép** vezérlő biztosít a vizuális és interaktív webes térképre, és az Azure térkép vezérlőelem API összetevője.
+    Az Azure Térkép vezérlőelem API **atlas.Map** összetevőjével egy vizuális és interaktív webes térkép vezérelhető.
 
-4. Adja hozzá a következő JavaScript-kódot a *parancsfájl* blokkot, a forgalom folyamata megjelenítési hozzáadása a térkép:
+4. Adja hozzá a következő JavaScript-kódot a *szkript* blokkhoz, hogy a térképen megjelenjen a forgalom megjelenítése:
 
     ```JavaScript
     // Add Traffic Flow to the Map
@@ -95,9 +95,9 @@ Az alábbi lépések segítségével hozzon létre egy statikus HTML-lapot a hel
         flow: "relative"
     });
     ```
-    Ez a kód értékűre állítja be a forgalom áramlását `relative`, ez az a sebesség szabad folyamata mappától kiinduló relatív elérési út. Is beállíthatja `absolute` sebessége utazás közben, vagy `relative-delay` jelenít meg a relatív sebesség ahol során is tapasztalhatunk eltéréseket ingyenes-adatfolyamban. 
+    Ez a kód beállítja `relative` adatforgalmat állít be, amely az üres úton elérhető sebességhez viszonyított érték. Az út `absolute` sebességére is állíthatja ezt, vagy a `relative-delay` sebességre, amely a relatív sebességet jeleníti meg, ha eltér az üres úton elérhető sebességtől. 
 
-5. Adja hozzá a következő JavaScript-kódot a PIN-kódok a kezdő- és útvonal végpontok létrehozásához:
+5. Adja hozzá a következő JavaScript-kódot, amellyel létrehozza az útvonal indulási és célpontját jelölő gombostűket:
 
     ```JavaScript
     // Create the GeoJSON objects which represent the start and end point of the route
@@ -113,9 +113,9 @@ Az alábbi lépések segítségével hozzon létre egy statikus HTML-lapot a hel
         icon: "pin-blue"
     });
     ```
-    Ez a kód létrehoz két [GeoJSON objektumok](https://en.wikipedia.org/wiki/GeoJSON) kezdő- és végpontok útvonal képviseli. 
+    Ez a kód két [GeoJSON-objektumot](https://en.wikipedia.org/wiki/GeoJSON) hoz létre, amelyek az útvonal indulási és célpontját jelzik. 
 
-6. Adja hozzá a következő JavaScript-kódot adja hozzá a rétegek *linestring* a térkép vezérlőelem megjelenítéséhez útvonalak szállítási, például mód alapján történő _car_ és _teherautó_.
+6. A következő JavaScript-kód hozzáadásával *linestring* karakterláncok rétegeit adhatja hozzá adja a Térkép vezérlőelemhez az útvonalak utazási mód szerinti megjelenítéséhez (például _autó_ és _teherautó_).
 
     ```JavaScript
     // Place route layers on the map
@@ -140,7 +140,7 @@ Az alábbi lépések segítségével hozzon létre egy statikus HTML-lapot a hel
     });
     ```
 
-7. Adja hozzá a kezdő- és végpontok hozzáadása a leképezés a következő JavaScript-kódot:
+7. Adja hozzá a következő JavaScript-kódot, amellyel hozzáadja az indulási és célpontot a térképhez:
 
     ```JavaScript
     // Fit the map window to the bounding box defined by the start and destination points
@@ -160,17 +160,17 @@ Az alábbi lépések segítségével hozzon létre egy statikus HTML-lapot a hel
         textOffset: [0, -20]
     });
     ``` 
-    Az API-t **map.setCameraBounds** beállítja a térkép ablakban a kezdő- és végpontjainak koordinátáival megfelelően. Az API-t **map.addPins** a térkép vezérlőelem visual összetevőként a pontok hozzáadása.
+    A **map.setCameraBounds** API az indulási és célpontok koordinátái alapján állítja be a térkép ablakát. A **map.addPins** API vizuális összetevőként adja hozzá a pontokat a Térkép vezérlőelemhez.
 
-8. Mentse a **MapTruckRoute.html** fájlt a számítógépre. 
+8. Mentse a **MapTruckRoute.html** fájlt a gépén. 
 
 <a id="multipleroutes"></a>
 
-## <a name="render-routes-prioritized-by-mode-of-travel"></a>Útvonalak utazás módban előrébb leképezése
+## <a name="render-routes-prioritized-by-mode-of-travel"></a>útvonalak megjelenítése utazási mód alapján rendezve.
 
-Ez a szakasz bemutatja, hogyan használatát az Azure-alapú helyszolgáltatás útvonal Service API egy adott indítás több útvonal egy helyhez, az átviteli mód alapján mutasson. Az útvonal-szolgáltatás API-k segítségével tervezhető a leggyorsabb, a lehető legrövidebb, vagy között két helyen, figyelembe véve a valós idejű forgalom feltételek ökocímkével útvonalat biztosít. Azt is lehetővé teszi a felhasználóknak tervezze meg a jövőben útvonalak Azure kiterjedt történelmi forgalom adatbázis használatával, és előrejelzésére útvonal trendelemzés céljából, bármely napját és időpontját. 
+Ez a szakasz bemutatja, hogyan kereshet egy indulási és célpont között több útvonalat az utazás módja alapján az Azure Location Based Services Route Service API-jával. A Route Service API-kat biztosít a két hely közötti leggyorsabb, legrövidebb vagy leggazdaságosabb útvonal megtervezéséhez, a valós idejű forgalmi viszonyokat figyelembe véve. A felhasználók előre is megtervezhetik az útvonalakat az Azure széles körű forgalmi adatbázisával, amely előre jelzi az útvonalak menetidejét bármely napon és időpontban. 
 
-1. Nyissa meg a **MapTruckRoute.html** fájl az előző szakaszban létrehozott, és adja hozzá a következő JavaScript-kódot a *parancsfájl* letiltása, az útvonal lekérése egy teherautó az útvonal-szolgáltatás segítségével.
+1. Nyissa meg az előző szakaszban létrehozott **MapTruckRoute.html** fájlt, és adja hozzá a következő JavaScript-kódot a *szkript* blokkhoz a teherautós útvonal Route Service-szel való lekéréséhez.
 
     ```JavaScript
     // Perform a request to the route service and draw the resulting truck route on the map
@@ -195,7 +195,7 @@ Ez a szakasz bemutatja, hogyan használatát az Azure-alapú helyszolgáltatás 
 
     var truckRouteUrl = "https://atlas.microsoft.com/route/directions/json?";
     truckRouteUrl += "&api-version=1.0";
-    truckRouteUrl += "&subscription-key=" + subscriptionKey;
+    truckRouteUrl += "&subscription-key=" + LBSAccountKey;
     truckRouteUrl += "&query=" + startPoint.coordinates[1] + "," + startPoint.coordinates[0] + ":" +
         destinationPoint.coordinates[1] + "," + destinationPoint.coordinates[0];
     truckRouteUrl += "&travelMode=truck";
@@ -207,13 +207,13 @@ Ez a szakasz bemutatja, hogyan használatát az Azure-alapú helyszolgáltatás 
     xhttpTruck.open("GET", truckRouteUrl, true);
     xhttpTruck.send();
     ```
-    A kódrészletet létrehoz egy [XMLHttpRequest](https://xhr.spec.whatwg.org/), és hozzáadja a bejövő válasz elemzése eseménykezelő. A sikeres válasz, a koordináták az útvonal visszaadott tömb hoz létre, és hozzáadja azt a térkép `truckRouteLayerName` réteg. 
+    Ez a kódrészlet létrehoz egy [XMLHttpRequest](https://xhr.spec.whatwg.org/) kérést, és hozzáad egy eseménykezelőt a bejövő válasz elemzéséhez. A sikeres válasz érdekében létrehozza a visszaadott útvonal koordinátáinak gyűjteményét, és hozzáadja a térkép `truckRouteLayerName` rétegéhez. 
     
-    A kódrészletet a lekérdezést is küld az útvonal-szolgáltatás, az útvonal lekérése az adott kezdő és záró pontot, a fiók előfizetés kulcs. A következő kötelező paraméterek használatosak nehéz teherautó útvonal:-a paraméter `travelMode=truck` , utazás mód *teherautó*. Egyéb támogatott utazás módok a következők *taxi*, *bus*, *van*, *motorkerékpárja*, és az alapértelmezett *autó* .  
-        -A paraméterek `vehicleWidth`, `vehicleHeight`, és `vehicleLength` adhatók meg a vehicle szemlélteti, és csak minősülnek, hogy van-e a mód utazás *teherautó*.  
-        -A `vehicleLoadType` veszélyes és néhány utakon korlátozott rakomány osztályozza. Ez csak a jelenleg is előnyben a *teherautó* mód.  
+    Ez a kódrészlet a Route Service-nek is elküldi a lekérdezést, hogy a fiókkulcshoz kapcsolva lekérje a megadott kiindulási és célpont útvonalát. A következő választható paraméterekkel jelezhető egy nehéz teherautó útvonala: – A `travelMode=truck` paraméter *teherautóként* határozza meg az utazás módját. A többi támogatott utazási mód a *taxi*, *busz*, *kisteherautó*, *motorkerékpár* és az alapértelmezett *autó*.  
+        – A `vehicleWidth`, `vehicleHeight` és `vehicleLength` paraméterek határozzák meg a jármű méretét méterben, és a rendszer csak akkor veszi figyelembe ezeket, ha az utazási mód a *teherautó*.  
+        – A `vehicleLoadType` veszélyesként sorolja be a rakományt, és egyes utakon korlátozott. Jelenleg ez is csak a *teherautó* módban érvényes.  
 
-2. Adja hozzá a következő JavaScript-kódot az útvonal lekérése egy autó az útvonal-szolgáltatás segítségével:
+2. Adja hozzá a következő JavaScript-kódot egy autós útvonal Route Service-szel való lekéréséhez:
 
     ```JavaScript
     // Perform a request to the route service and draw the resulting car route on the map
@@ -238,28 +238,28 @@ Ez a szakasz bemutatja, hogyan használatát az Azure-alapú helyszolgáltatás 
 
     var carRouteUrl = "https://atlas.microsoft.com/route/directions/json?";
     carRouteUrl += "&api-version=1.0";
-    carRouteUrl += "&subscription-key=" + subscriptionKey;
+    carRouteUrl += "&subscription-key=" + LBSAccountKey;
     carRouteUrl += "&query=" + startPoint.coordinates[1] + "," + startPoint.coordinates[0] + ":" +
         destinationPoint.coordinates[1] + "," + destinationPoint.coordinates[0];
 
     xhttpCar.open("GET", carRouteUrl, true);
     xhttpCar.send();
     ```
-    A kódrészletet hoz létre egy másik [XMLHttpRequest](https://xhr.spec.whatwg.org/), és hozzáadja a bejövő válasz elemzése eseménykezelő. A sikeres válasz, a koordináták az útvonal visszaadott tömb hoz létre, és hozzáadja azt a térkép `carRouteLayerName` réteg. 
+    Ez a kódrészlet egy másik [XMLHttpRequest](https://xhr.spec.whatwg.org/) kérést hoz létre, és hozzáad egy eseménykezelőt a bejövő válasz elemzéséhez. A sikeres válasz érdekében létrehozza a visszaadott útvonal koordinátáinak gyűjteményét, és hozzáadja a térkép `carRouteLayerName` rétegéhez. 
     
-    A kódrészletet a lekérdezést is küld az útvonal-szolgáltatás, az útvonal lekérése az adott kezdő és záró pontot, a fiók előfizetés kulcs. Mivel nincs más paraméterek szerepelnek, az alapértelmezett mód utazás útvonal *autó* adja vissza. 
+    Ez a kódrészlet a Route Service-nek is elküldi a lekérdezést, hogy a fiókkulcshoz kapcsolva lekérje a megadott kiindulási és célpont útvonalát. Mivel nem használ más paramétereket, a rendszer az alapértelmezett *autó* utazási mód útvonalát adja vissza. 
 
-3. Mentse a **MapTruckRoute.html** fájlt helyben, majd nyissa meg az Ön által választott webböngészőben, és tekintse meg az eredménye. A sikeres csatlakozáshoz a hely alapú szolgáltatások API-khoz meg kell jelennie az alábbihoz hasonló térképet. 
+3. Mentse helyben a **MapTruckRoute.html** fájlt, majd nyissa meg egy tetszőleges webböngészőben, és vizsgálja meg az eredményt. A Location Based Services API-jaival való sikeres kapcsolat esetén a következőhöz hasonló térkép jelenik meg. 
 
-    ![Rangsorolt útvonalak Azure útvonal szolgáltatással](./media/tutorial-prioritized-routes/lbs-prioritized-routes.png)
+    ![Prioritás szerint rendezett útvonalak az Azure Route Service-szel](./media/tutorial-prioritized-routes/lbs-prioritized-routes.png)
 
-    Vegye figyelembe, hogy a teherautó útvonal kék színnel, míg a car útvonal lila.
+    Vegye figyelembe, hogy a teherautó útvonala kék, az autó útvonala pedig lila.
 
 ## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Az útvonal-szolgáltatás lekérdezés konfigurálása
-> * Útvonalak utazás módban előrébb leképezése
+> * a Route Service-lekérdezés konfigurálása;
+> * útvonalak megjelenítése utazási mód alapján rendezve.
 
-Folytassa a **fogalmak** és **útmutató** cikkekből tudhat meg az Azure hely alapú szolgáltatások SDK részletesen. 
+Ha alaposabban szeretné megismerni az Azure Location Based Services SDK-t, tekintse át az **alapfogalmakat** és az **útmutatókat** tartalmazó cikkeket. 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/03/2018
+ms.date: 01/22/2018
 ms.author: yurid
-ms.openlocfilehash: e471f04a86cde73bbdb333826a5e0d25684a4547
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 8c5c999d7c9924726804ccd18183d8e383a037cc
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center – Hibaelhárítási útmutató
 Ez az útmutató olyan informatikai (IT) szakemberek, információbiztonsági elemzők és felhőrendszergazdák számára készült, akik szervezetei az Azure Security Centert használják, és el kell hárítaniuk a használathoz kapcsolódó problémákat.
@@ -76,7 +76,7 @@ A **Figyelés állapota** megmutatja, hogy a Security Center miért nem tudja si
 | A telepítés nem sikerült – a helyi ügynök már telepítve van | A Microsoft Monitoring Agent telepítése nem sikerült. A Security Center egy helyi ügynököt (OMS vagy SCOM) talált, amely már telepítve van a virtuális gépre. A Microsoft Monitoring Agent telepítése leállt a többkiszolgálós konfiguráció elkerülése érdekében, ahol a virtuális gép két különálló munkaterületnek küld jelentéseket. | Két megoldás létezik: az egyik [a bővítmény manuális telepítése](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) és csatlakoztatása a kívánt munkaterülethez. A másik a kívánt munkaterület alapértelmezettként való beállítása, és az ügynök automatikus üzembe helyezésének engedélyezése.  Lásd az [automatikus üzembe helyezés engedélyezését](security-center-enable-data-collection.md) ismertető részt. |
 | Az ügynök nem tud csatlakozni a munkaterülethez | A Microsoft Monitoring Agent telepítése sikerült, de a futtatás a hálózati kapcsolat hibája miatt nem sikerült.  Ellenőrizze az internetkapcsolatot, és hogy érvényes HTTP proxy van-e konfigurálva az ügynökhöz. | Lásd a [Monitoring Agent hálózati követelményeit](#troubleshooting-monitoring-agent-network-requirements) ismertető részt. |
 | Az ügynök hiányzó vagy ismeretlen munkaterülethez van csatlakoztatva | A Security Center megállapította, hogy a virtuális gépre telepített Microsoft Monitoring Agent olyan munkaterülethez van csatlakoztatva, amelyhez nem rendelkezik hozzáféréssel. | Ez két esetben fordulhat elő. A munkaterületet törölték, és már nem létezik. Telepítse újra az ügynököt a megfelelő munkaterülettel, vagy távolítsa el az ügynököt, és engedélyezze a Security Centernek az automatikus üzembe helyezési telepítés végrehajtását. A másik eset, amikor a munkaterület egy olyan előfizetés része, amelyhez a Security Center nem rendelkezik engedéllyel. A Security Center működéséhez az előfizetéseknek engedélyezniük kell a hozzáférést a Microsoft Security erőforrás-szolgáltató számára. Az engedélyezéshez regisztrálja az előfizetést a Microsoft Security erőforrás-szolgáltatóban. Ezt megteheti egy API, a PowerShell vagy a portál segítségével, vagy a Security Center **Áttekintés** irányítópultján az előfizetésre történő szűréssel. További információ: [Erőforrás-szolgáltatók és típusaik](../azure-resource-manager/resource-manager-supported-services.md#portal). |
-| Az ügynök nem válaszol, vagy hiányzik az azonosító | A Security Center annak ellenére sem tudja lekérni a virtuális gépről beolvasott biztonsági adatokat, hogy az ügynök telepítve van. | Az ügynök nem jelent semmilyen adatot, például szívverést sem. Előfordulhat, hogy az ügynök sérült, vagy valami blokkolja a forgalmat. Az is lehetséges, hogy az ügynök jelenti az adatokat, de hiányzik az Azure-erőforrás azonosítója, ezért nem lehet az adatokat az Azure-beli virtuális gépnek megfeleltetni. |
+| Az ügynök nem válaszol, vagy hiányzik az azonosító | A Security Center annak ellenére sem tudja lekérni a virtuális gépről beolvasott biztonsági adatokat, hogy az ügynök telepítve van. | Az ügynök nem jelent semmilyen adatot, például szívverést sem. Előfordulhat, hogy az ügynök sérült, vagy valami blokkolja a forgalmat. Az is lehetséges, hogy az ügynök jelenti az adatokat, de hiányzik az Azure-erőforrás azonosítója, ezért nem lehet az adatokat az Azure-beli virtuális gépnek megfeleltetni. Linux hibaelhárítása: [A Linuxhoz készült OMS-ügynök hibaelhárítási útmutatója](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal). Windows hibaelhárítása: [Windows rendszerű virtuális gépek hibaelhárítása](https://github.com/MicrosoftDocs/azure-docs/blob/8c53ac4371d482eda3d85819a4fb8dac09996a89/articles/log-analytics/log-analytics-azure-vm-extension.md#troubleshooting-windows-virtual-machines). |
 | Az ügynök nincs telepítve | Az adatgyűjtés le van tiltva. | Kapcsolja be az adatgyűjtést a biztonsági szabályzatban, vagy telepítse manuálisan a Microsoft Monitoring Agentet. |
 
 

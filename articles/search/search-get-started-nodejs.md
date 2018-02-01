@@ -14,15 +14,15 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.date: 04/26/2017
 ms.author: evboyle
-ms.openlocfilehash: 32865ed986f5eea961ef2c3813dcc6531498c90a
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 511f3327972672deaa321fb34bc5f91d355370a2
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="get-started-with-azure-search-in-nodejs"></a>Bevezetés az Azure Search használatába Node.js-ben
 > [!div class="op_single_selector"]
-> * [Portal](search-get-started-portal.md)
+> * [Portál](search-get-started-portal.md)
 > * [.NET](search-howto-dotnet-sdk.md)
 > 
 > 
@@ -57,7 +57,7 @@ Miután létrehozta a szolgáltatást, térjen vissza a portálra az URL-cím va
 ## <a name="download-the-sample-files"></a>A mintafájlok letöltése
 A minta letöltéséhez a következő módszerek bármelyikét használhatja.
 
-1. Lépjen az [AzureSearchNodeJSIndexerDemo](https://github.com/AzureSearch/AzureSearchNodejsIndexerDemo) elemre.
+1. Lépjen a következőhöz: [search-node-indexer-demo](https://github.com/Azure-Samples/search-node-indexer-demo).
 2. Kattintson a **Download ZIP** (ZIP-fájl letöltése) elemre, mentse el a .zip-fájlt, és bontsa ki a benne található összes fájlt.
 
 Minden további fájlmódosítás és utasításfuttatás az ebben a mappában lévő fájlokra vonatkozóan történik.
@@ -101,7 +101,7 @@ Megpróbálhatja beírni az alábbi kifejezések bármelyikét is:
 * Pembroke
 * goose+cape
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez az Azure Search első oktatóanyaga, amely a Node.js és a USGS-adatkészlet alapján készült. Idővel majd tovább bővítjük oktatóanyagunkat, és olyan kiegészítő keresési funkciókat fogunk bemutatni, amelyeket esetleg szívesen használna egyéni megoldásaiban.
 
 Ha már rendelkezik bizonyos tapasztalattal az Azure Search használatában, ezt a mintát akár ugródeszkaként is használhatja a javaslattevők (előre begépelt vagy automatikusan kitöltött lekérdezések), szűrők és a jellemzőalapú navigáció kipróbálásához. A keresési eredmények oldalát is tovább fejlesztheti számok és kötegelt dokumentumok hozzáadásával úgy, hogy a felhasználók lapozhassanak az eredmények között.

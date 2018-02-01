@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/10/2018
 ms.author: jingwang
-ms.openlocfilehash: 2100b5d1804f81f7c5a9dacfbb133e8d14dee39e
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 6aa5d4aa032ef4dc3583bf76b9c451874b74f9a6
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Táblák tömeges másolása az Azure Data Factory használatával
 Ez az oktatóanyag azt mutatja be, hogyan lehet **táblákat másolni az Azure SQL Database-ből az Azure SQL Data Warehouse-ba**. A minta egyéb másolási forgatókönyvek esetén is alkalmazható. Például táblák másolására az SQL Serverről/Oracle-ből az Azure SQL Database-be/Data Warehouse-ba/Azure Blobba, vagy különböző elérési utak másolására a Blobból Azure SQL Database-táblákba.
@@ -195,7 +195,7 @@ Ebben az oktatóanyagban a forrás és cél SQL-táblái nincsenek fixen rögzí
 5. Váltson a **Paraméterek** lapra, és kattintson az **+ Új** elemre
 
     ![Forrásadatkészlet kapcsolata lap](./media/tutorial-bulk-copy-portal/sink-dataset-new-parameter-button.png)
-6. A paraméter nevénél adja meg a **DWTableName** nevet. 
+6. A paraméter nevénél adja meg a **DWTableName** nevet. Ha másolja/beilleszti ezt a nevet az oldalról, gondoskodjon arról, hogy ne legyen **szóköz karakter** a **DWTableName** név végén. 
 7. A **Paraméteres tulajdonságok** szakaszban a **tableName** tulajdonságnál adja meg a `@{dataset().DWTableName}` értéket. Az adatkészlet **tableName** tulajdonságához beállított értéket továbbítja a rendszer argumentumként a **DWTableName** paraméterhez. A ForEach tevékenység végighalad egy táblalistán, és egyesével továbbítja azokat a másolási tevékenységnek. 
    
     ![Paraméter neve](./media/tutorial-bulk-copy-portal/dwtablename-tablename.png)

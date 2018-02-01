@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: 
 ms.devlang: powershell
 ms.topic: hero-article
-ms.date: 10/06/2017
+ms.date: 01/22/2018
 ms.author: spelluru
-ms.openlocfilehash: 350c7784da1abb24df4ccd292cad28f73f3f8c0c
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 6265c6b72e37f5f25234c03080b2d5e6c5533cd1
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="deploy-sql-server-integration-services-packages-to-azure"></a>SQL Server Integration Services-csomagok üzembe helyezése az Azure-ban
 Ez az oktatóanyag egy Azure-SSIS integrációs modul (IR) az Azure Data Factoryben való üzembe helyezésének lépéseit ismerteti. Ezután az SQL Server Data Tools (SSDT) vagy az SQL Server Management Studio (SSMS) használatával üzembe helyezhet SQL Server Integration Services- (SSIS-) csomagokat ebben az Azure-beli modulban. Az oktatóanyag során a következő lépéseket hajtja végre:
@@ -38,6 +38,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 - **Azure SQL Database-kiszolgáló**. Ha még nem rendelkezik adatbázis-kiszolgálóval, először hozzon létre egyet az Azure Portalon. Ez a kiszolgáló üzemelteti az SSIS-katalógusadatbázist (SSISDB-t). Javasoljuk, hogy az adatbáziskiszolgálót az integrációs modullal megegyező Azure-régióban hozza létre. Ez a konfiguráció lehetővé teszi, hogy az integrációs modul Azure-régiók határainak átlépése nélkül írjon végrehajtási naplókat a katalógusadatbázisba. 
     - Győződjön meg arról, hogy az **Allow access to Azure services** (Azure-szolgáltatások hozzáférésének engedélyezése) beállítás **BE** van kapcsolva az adatbázis-kiszolgálón. További információkért lásd: [Az Azure SQL-adatbázis védelme](../sql-database/sql-database-security-tutorial.md#create-a-server-level-firewall-rule-in-the-azure-portal). A beállítás engedélyezése PowerShell használatával: [New-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/new-azurermsqlserverfirewallrule?view=azurermps-4.4.1).
     - Vegye fel az ügyfélszámítógép IP-címét vagy az ügyfélszámítógép IP-címét tartalmazó IP-címtartományt az ügyfél IP-címeinek listájára az adatbázis-kiszolgáló tűzfalbeállításainál. További információkért lásd: [Kiszolgáló- és adatbázisszintű Azure SQL Database-tűzfalszabályok](../sql-database/sql-database-firewall-configure.md). 
+    - Győződjön meg arról, hogy az Azure SQL Database-kiszolgálóján nincs SSIS-katalógus (SSIDB-adatbázis). Az Azure-SSIS IR üzembe helyezése nem támogatja a meglévő SSIS-katalógusok használatát. 
 - **Azure PowerShell**. Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-azurerm-ps) ismertető cikkben szereplő utasításokat. Egy PowerShell-lel futtatott szkripttel üzembe helyez egy Azure SSIS integrációs modult, amely a felhőben futtat SSIS-csomagokat. 
 
 > [!NOTE]
@@ -62,11 +63,11 @@ $DataFactoryLocation = "EastUS"
 $AzureSSISName = "<Specify a name for your Azure-SSIS IR>"
 $AzureSSISDescription = "<Specify description for your Azure-SSIS IR"
 $AzureSSISLocation = "EastUS" 
- # In public preview, only Standard_A4_v2, Standard_A8_v2, Standard_D1_v2, Standard_D2_v2, Standard_D3_v2, Standard_D4_v2 are supported
-$AzureSSISNodeSize = "Standard_A4_v2"
+# In public preview, only Standard_A4_v2, Standard_A8_v2, Standard_D1_v2, Standard_D2_v2, Standard_D3_v2, Standard_D4_v2 are supported
+$AzureSSISNodeSize = "Standard_D3_v2"
 # In public preview, only 1-10 nodes are supported.
 $AzureSSISNodeNumber = 2 
-# In public preview, only 1-8 parallel executions per node are supported.
+# For a Standard_D1_v2 node, 1-4 parallel executions per node are supported. For other nodes, it's 1-8.
 $AzureSSISMaxParallelExecutionsPerNode = 2 
 
 # SSISDB info
@@ -204,7 +205,9 @@ Az ebben a szakaszban szereplő PowerShell-szkript konfigurál a felhőben egy A
 5. Futtassa a szkriptet. A szkript végén lévő `Start-AzureRmDataFactoryV2IntegrationRuntime` parancs futtatása **20–30 percet** vesz igénybe.
 
 > [!NOTE]
-> A szkript csatlakozik az Azure SQL Database-hez, és előkészíti az SSIS-katalógusadatbázist (SSISDB). A szkript konfigurálja a virtuális hálózat engedélyeit és beállításait is, ha ez lett megadva, és csatlakoztatja az Azure SSIS integrációs modul új példányát a virtuális hálózathoz.
+> - A szkript csatlakozik az Azure SQL Database-hez, és előkészíti az SSIS-katalógusadatbázist (SSISDB). A szkript konfigurálja a virtuális hálózat engedélyeit és beállításait is, ha ez lett megadva, és csatlakoztatja az Azure SSIS integrációs modul új példányát a virtuális hálózathoz.
+> - Amikor üzembe helyez egy SQL Database-példányt az SSISDB futtatásához, akkor az Azure Feature Pack for SSIS és az Access Redistributable is települ. Ezek az összetevők biztosítják a csatlakozást az Excel- és Access-fájlokhoz és különböző Azure-adatforrásokhoz a beépített összetevők által támogatott adatforrások mellett. Jelenleg az SSIS-hez nem lehet külső gyártóktól származó összetevőket telepíteni (beleértve a Microsofttól származó külső gyártású összetevőket, például az Attunity Oracle és Teradata összetevőit és az SAP BI összetevőket).
+
 
 Az Azure SQL Database támogatott **tarifacsomagjainak** listájáért lásd az [SQL Database erőforrás-korlátozásaival](../sql-database/sql-database-resource-limits.md) foglalkozó témakört. 
 
@@ -224,10 +227,10 @@ $AzureSSISName = "<Specify a name for your Azure-SSIS (IR)>"
 $AzureSSISDescription = "<Specify description for your Azure-SSIS IR"
 $AzureSSISLocation = "EastUS" 
  # In public preview, only Standard_A4_v2, Standard_A8_v2, Standard_D1_v2, Standard_D2_v2, Standard_D3_v2, Standard_D4_v2 are supported
-$AzureSSISNodeSize = "Standard_A4_v2"
+$AzureSSISNodeSize = "Standard_D3_v2"
 # In public preview, only 1-10 nodes are supported.
 $AzureSSISNodeNumber = 2 
-# In public preview, only 1-8 parallel executions per node are supported.
+# For a Standard_D1_v2 node, 1-4 parallel executions per node are supported. For other nodes, it's 1-8.
 $AzureSSISMaxParallelExecutionsPerNode = 2 
 
 # SSISDB info
@@ -288,7 +291,7 @@ write-host("If any cmdlet is unsuccessful, please consider using -Debug option f
 ```
 
 ## <a name="join-azure-ssis-ir-to-a-vnet"></a>Az Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz
-Ha felügyelt Azure SQL-példány (privát előzetes verzió) segítségével futtatja az SQL Server Integration Services (SSIS) katalógust egy virtuális hálózaton (VNeten), az Azure-SSIS integrációs modulját is ugyanahhoz a virtuális hálózathoz kell csatlakoztatnia. Az Azure Data Factory 2.(előzetes) verzió használatával csatlakoztathatja az Azure-SSIS integrációs modult egy klasszikus virtuális hálózathoz. További információkért lásd [az Azure-SSIS integrációs modul virtuális hálózathoz történő csatlakoztatásával](join-azure-ssis-integration-runtime-virtual-network.md) foglalkozó cikket.
+Ha felügyelt Azure SQL-példány (privát előzetes verzió) segítségével futtatja az SQL Server Integration Services (SSIS) katalógust egy virtuális hálózaton (VNeten), az Azure-SSIS integrációs modulját is ugyanahhoz a virtuális hálózathoz kell csatlakoztatnia. Az Azure Data Factory 2. (előzetes) verzió használatával csatlakoztathatja az Azure-SSIS integrációs modult egy virtuális hálózathoz. További információkért lásd [az Azure-SSIS integrációs modul virtuális hálózathoz történő csatlakoztatásával](join-azure-ssis-integration-runtime-virtual-network.md) foglalkozó cikket.
 
 Virtuális hálózathoz csatlakozó Azure-SSIS integrációs modul létrehozására alkalmas teljes szkript: [Azure-SSIS integrációs modul létrehozása](create-azure-ssis-integration-runtime.md).
 

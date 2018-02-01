@@ -14,60 +14,52 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 12/11/2017
+ms.date: 01/17/2018
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 401230c6d7ef522a6a607fd03f798483f942a226
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: e8a43febdb2958f58ecb8d82f9f42b39c591522d
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Az első függvény létrehozása a Visual Studio használatával
 
 Az Azure Functions lehetővé teszi a kód [kiszolgáló nélküli](https://azure.microsoft.com/overview/serverless-computing/) környezetben történő végrehajtását anélkül, hogy először létre kellene hoznia egy virtuális gépet, vagy közzé kellene tennie egy webalkalmazást.
 
-Ebből a témakörből megtudhatja, hogy az Azure Functions Visual Studio 2017-es eszközei használatával miként hozhat létre és tesztelhet helyileg egy „Helló világ!”-függvényt. Ezután közzéteheti a függvénykódot az Azure-ban. Ezek az eszközök a Visual Studio 2017 15.3-as és újabb verziójában található Azure-fejlesztési számítási feladat részeként érhetők el.
+Ebből a cikkből megtudhatja, hogy az Azure Functions Visual Studio 2017-es eszközei használatával miként hozhat létre és tesztelhet helyileg egy „Helló világ!”-függvényt. Ezután közzéteheti a függvénykódot az Azure-ban. Ezek az eszközök a Visual Studio 2017 Azure-fejlesztési számítási feladatának részeként érhetők el.
 
 ![Azure-függvénykód Visual Studio-projektben](./media/functions-create-your-first-function-visual-studio/functions-vstools-intro.png)
 
-Igény szerint [megtekintheti a videót](#watch-the-video) is.
+A témakör tartalmaz [egy videót](#watch-the-video) is, amely ugyanezeket az alapszintű lépéseket mutatja be.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
+Az oktatóanyag elvégzéséhez:
 
-* A [Visual Studio 2017 15.4-es](https://www.visualstudio.com/vs/) vagy azt követő verziója, amely tartalmazza az **Azure-fejlesztési** számítási feladatot is.
+* Telepítse a [Visual Studio 2017 15.4-es](https://www.visualstudio.com/vs/) vagy újabb verzióját, amely tartalmazza az **Azure-fejlesztési** számítási feladatot is.
 
     ![Az Azure-fejlesztési számítási feladatot is tartalmazó Visual Studio 2017 telepítése](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
+
+* Győződjön meg arról, hogy az Azure Functions és a WebJobs Tools legfrissebb verzióival rendelkezik. Ezt a **Frissítések** > **Visual Studio Marketplace** lehetőség segítségével teheti meg a **Bővítmények és frissítések** területen.
     
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 
-## <a name="create-an-azure-functions-project-in-visual-studio"></a>Hozzon létre egy Azure Functions-projektet a Visual Studióban
+## <a name="create-a-function-app-project"></a>Függvényalkalmazás-projekt létrehozása
 
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
-Most, hogy már létrehozta a projektet, hozza létre első függvényét.
+A Visual Studio létrehoz egy projektet, benne egy olyan osztállyal, amely tartalmazza a kiválasztott függvénytípus sablonkódját. A metódus **FunctionName** attribútuma adja meg a függvény nevét. A **HttpTrigger** attribútum adja meg, hogy a függvényt egy HTTP-kérelem aktiválja. A sablonkód elküld egy HTTP-választ, amely tartalmaz egy értéket a kérelem szövegtörzséből vagy a lekérdezési karakterláncból. A függvényhez további bemeneti és kimeneti kötések adhatók hozzá, ha a metóduson a megfelelő attribútumokat alkalmazza. További információkért lásd az [Azure Functions C#-fejlesztői referenciaanyagának](functions-dotnet-class-library.md) [Eseményindítók és kötések](functions-dotnet-class-library.md#triggers-and-bindings) szakaszát.
 
-## <a name="create-the-function"></a>A függvény létrehozása
+![Függvény kódfájlja](./media/functions-create-your-first-function-visual-studio/functions-code-page.png)
 
-1. A **Solution Explorer** (Megoldáskezelő) felületén kattintson a jobb gombbal a projektcsomópontra, majd válassza az **Add** (Hozzáadás)  > **New Item** (Új elem) lehetőséget. Válassza ki az **Azure Function** (Azure-függvény) elemet, adja meg a `HttpTriggerCSharp.cs` nevet a **Name** (Név) mezőben, majd kattintson az **Add** (Hozzáadás) elemre.
-
-2. Válassza ki a **HttpTrigger** elemet, az **Access Rights** (Hozzáférési jog) lehetőségnél válassza az **Anonymous** (Névtelen) elemet, majd kattintson az **OK** gombra. A létrehozott függvény HTTP-kéréssel bármely ügyfél részéről hozzáférhető. 
-
-    ![Új Azure-függvény létrehozása](./media/functions-create-your-first-function-visual-studio/functions-vstools-add-new-function-2.png)
-
-    A rendszer egy kódfájlt ad a projekthez, amely a függvény kódját implementáló osztályt tartalmazza. A kód egy sablonon alapul, amely egy névértéket kap, majd azt továbbítja. A **FunctionName** attribútum a függvény nevét adja meg. A **HttpTrigger** attribútum a függvényt aktiváló üzenetet jelöli. 
-
-    ![Függvény kódfájlja](./media/functions-create-your-first-function-visual-studio/functions-code-page.png)
-
-Most, hogy már létrehozta a HTTP-triggerrel aktivált függvényt, tesztelheti a helyi számítógépen.
+Most, hogy már létrehozott egy függvényprojektet és egy HTTP-eseményindítóval aktivált függvényt, tesztelheti a helyi számítógépen.
 
 ## <a name="test-the-function-locally"></a>A függvény helyi tesztelése
 
 Az Azure Functions Core Tools lehetővé teszi Azure Functions-projektek helyi fejlesztői számítógépen való futtatását. Amikor a Visual Studióból először indít el egy függvényt, a rendszer arra kéri, hogy telepítse ezeket az eszközöket.  
 
-1. A függvény teszteléséhez nyomja le az F5 billentyűt. Ha a rendszer kéri, fogadja el a Visual Studio kérését az Azure Functions Core (CLI) eszközök telepítéséhez.  Lehet, hogy egy tűzfalkivételt is engedélyeznie kell, hogy az eszközök kezelhessék a HTTP-kéréseket.
+1. A függvény teszteléséhez nyomja le az F5 billentyűt. Ha a rendszer kéri, fogadja el a Visual Studio kérését az Azure Functions Core (CLI) eszközök telepítéséhez. Lehet, hogy egy tűzfalkivételt is engedélyeznie kell, hogy az eszközök kezelhessék a HTTP-kéréseket.
 
 2. Másolja a függvény URL-címét az Azure-függvény futtatókörnyezetéből.  
 
@@ -91,7 +83,7 @@ A projekt közzétételéhez rendelkeznie kell egy függvényalkalmazással.az A
 
 1. Másolja a függvényalkalmazás alap URL-címét a Publish (Közzététel) profiloldalról. Cserélje ki a függvény helyi tesztelésekor használt `localhost:port` URL-címrészt az új alap URL-címmel. Ahogyan korábban, most is az URL-címhez fűzze hozzá a `?name=<yourname>` lekérdezési sztringet, és hajtsa végre a kérelmet.
 
-    A HTTP-triggert használó függvényt meghívó URL-cím így néz ki:
+    A HTTP-eseményindítót használó függvényt meghívó URL-címnek az alábbi formátumban kell lennie:
 
         http://<functionappname>.azurewebsites.net/api/<functionname>?name=<yourname> 
 
@@ -103,7 +95,7 @@ A projekt közzétételéhez rendelkeznie kell egy függvényalkalmazással.az A
 
 > [!VIDEO https://www.youtube-nocookie.com/embed/DrhG-Rdm80k]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Visual Studio segítéségével létrehozott egy egyszerű, HTTP-triggerrel aktivált függvényt tartalmazó C#-függvényalkalmazást. 
 

@@ -1,6 +1,6 @@
 ---
-title: "Futásidejű kivételek Azure Application Insights segítségével diagnosztizálhatja |} Microsoft Docs"
-description: "Az oktatóanyagban található, és diagnosztizálhatja az alkalmazás használatával Azure Application Insights futásidejű kivételek."
+title: "Futásidejű kivételek diagnosztizálása az Azure Application Insights használatával | Microsoft Docs"
+description: "Oktatóanyag az alkalmazásában előforduló futásidejű kivételek észleléséhez és diagnosztizálásához az Azure Application Insights használatával."
 services: application-insights
 keywords: 
 author: mrbullwinkle
@@ -10,23 +10,23 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: f6844dd6747854a60ff8eb8be0d913b73ca2bdb2
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
-ms.translationtype: MT
+ms.openlocfilehash: 115611c5d4eeffb0f0600dd0a792ee9f80247e36
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/23/2018
 ---
-# <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Keresse meg és diagnosztizálhatja a futásidejű kivételek az Azure Application insights szolgáltatással
+# <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Futásidejű kivételek észlelése és diagnosztizálása az Azure Application Insights segítségével
 
-Azure Application Insights telemetria gyűjti az azonosításához, és diagnosztizálhatja a futásidejű kivételek az alkalmazásból.  Ez az oktatóanyag végigvezeti a folyamat az alkalmazással.  Az alábbiak végrehajtásának módját ismerheti meg:
+Az Azure Application Insights telemetriát gyűjt az alkalmazásából a futásidejű kivételek azonosításához és diagnosztizálásához.  Ez az oktatóanyag ismerteti a folyamatot az alkalmazására vonatkozóan.  Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> * Módosítsa a projekt kivétel követése engedélyezése
-> * Az alkalmazás különböző összetevők kivételek azonosítása
+> * A projekt módosítása a kivételek nyomon követésének engedélyezéséhez
+> * Az alkalmazás különböző összetevőihez tartozó kivételek azonosítása
 > * Egy kivétel részleteinek megtekintése
-> * A kivétel Pillanatfelvétel letöltése a Visual Studio hibakeresési
-> * Részleteket a sikertelen kérelmek lekérdezési nyelv használatával
-> * Hozzon létre egy új munkaelemet javítsa ki a hibás kódot
+> * A kivételről készített pillanatfelvétel letöltése a Visual Studio alkalmazásba a hibakereséshez
+> * A sikertelen kérelmek részleteinek elemzése a lekérdezési nyelv segítségével
+> * Egy új munkaelem létrehozása a hibás kód kijavításához
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -36,80 +36,85 @@ Az oktatóanyag elvégzéséhez:
 - Telepítse a [Visual Studio 2017](https://www.visualstudio.com/downloads/) szoftvert a következő számítási feladatokkal:
     - ASP.NET és webfejlesztés
     - Azure-fejlesztés
-- Töltse le és telepítse a [Visual Studio pillanatkép hibakereső](http://aka.ms/snapshotdebugger).
-- Engedélyezése [Visual Studio hibakereső pillanatképet készíteni.](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger)
-- Az Azure-bA egy .NET-alkalmazás központi telepítése és [engedélyezze az Application Insights SDK](app-insights-asp-net.md). 
-- Az oktatóanyag azt követi nyomon az alkalmazásban kivétel azonosítása, így módosíthatja a fejlesztési vagy tesztelési környezetben kivétel létrehozásához a kódot. 
+- Töltse le és telepítse a [Visual Studio Snapshot Debugger](http://aka.ms/snapshotdebugger) alkalmazást.
+- Engedélyezze a [Visual Studio Snapshot Debugger](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger) alkalmazást.
+- Telepítsen egy .NET-alkalmazást az Azure-hoz, és [engedélyezze az Application Insights SDK](app-insights-asp-net.md)-t. 
+- Ez az oktatóanyag az alkalmazásban történt kivétel azonosításának módszerét ismerteti, ezért módosítsa a kódot a fejlesztési vagy a tesztelési környezetben, hogy létrehozzon egy kivételt. 
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) címen.
 
 
 ## <a name="analyze-failures"></a>Hibák elemzése
-Az Application Insights gyűjti az esetleges hibákat az alkalmazásban, és megtekintheti az gyakoriságát segítséget nyújtanak a próbálkozások összpontosítani a legnagyobb mértékben rendelkező különböző műveletek között.  Majd részletezve részletei ilyen hibához okának azonosításához.   
+Az Application Insights összegyűjti az alkalmazásában felmerült hibákat, és szemlélteti a gyakoriságukat a különböző műveleteknél, hogy Ön a legnagyobb problémát okozó hibákra koncentrálhasson.  Ezután részletesen elemezheti a hibákat, hogy megtalálja a probléma okát.   
 
-1. Válassza ki **Application Insights** és az előfizetés majd.  
-1. Megnyitásához a **hibák** panelen válassza ki **hibák** alatt a **vizsgálat** menüből, vagy kattintson a **sikertelen kérelmek** grafikon.
+1. Válassza ki az **Application Insights** elemet, majd az előfizetését.  
+2. A **Hibák** panel megnyitásához válassza a **Hibák** elemet a **Vizsgálat** menüben, vagy kattintson a **Sikertelen kérelmek** gráfra.
 
-    ![Sikertelen kérések](media/app-insights-tutorial-runtime-exceptions/failed-requests.png)
+    ![Sikertelen kérelmek](media/app-insights-tutorial-runtime-exceptions/failed-requests.png)
 
-2. A **sikertelen kérelmek** panel jeleníti meg. a sikertelen kérelmek és az érintett felhasználók számát mutatja az alkalmazás minden művelethez.  A felhasználó által az adatok rendezése azonosíthatja azokat, hogy a legtöbb felhasználóit érintő hibák.  Ebben a példában a **beolvasása az alkalmazottak/létrehozása** és **beolvasása ügyfelek/részletek** valószínűleg-zel vizsgálja meg a hibákat és azokat az érintett felhasználók nagy száma miatt.  Egy művelet kiválasztása információkat jeleníti meg további ezt a műveletet a jobb oldali panelen.
+3. A **Sikertelen kérelmek** panel megmutatja a sikertelen kérelmek és az érintett felhasználók számát, az alkalmazás minden egyes műveletére vonatkozóan.  Ha ezeket az információkat felhasználók szerint rendezi, megtalálhatja azokat a hibákat, amelyek a legnagyobb hatással vannak a felhasználókra.  Ebben a példában a **GET Employees/Create** és a **GET Customers/Details** elemeket érdemes megvizsgálni a hibák és az érintett felhasználók nagy száma miatt.  Egy művelet kiválasztásával további információkat tekinthet meg a műveletről a jobb oldali panelen.
 
     ![Sikertelen kérelmek panel](media/app-insights-tutorial-runtime-exceptions/failed-requests-blade.png)
 
-3. Csökkentse a időszak időszak nagyítása, amely a hibaaránya mutatja egy csúcs.
+4. Az időtartomány csökkentésével ráközelíthet arra az időszakra, amelyben a hibák száma kiugróan magas.
 
     ![Sikertelen kérelmek ablak](media/app-insights-tutorial-runtime-exceptions/failed-requests-window.png)
 
-4. Kattintson a **részleteinek megtekintése** a művelet a részletek megtekintéséhez.  Ez magában foglalja a Gantt két sikertelen függőség végrehajtani egy második felében szinte együttesen hozó megjelenítő diagram.  További információk a teljesítménnyel kapcsolatos problémák elemzése az oktatóanyag végrehajtásával található [található, és az Azure Application insights szolgáltatással a teljesítménnyel kapcsolatos problémák diagnosztizálásához](app-insights-tutorial-performance.md).
+5. Kattintson a **Részletek megtekintése** elemre a művelet részleteinek megtekintéséhez.  Itt talál egy Gantt-diagramot is két olyan sikertelen függőséggel, amelyek befejezéséhez majdnem fél másodperc kellett összesen.  Többet megtudhat a teljesítménybeli problémák elemzéséről, ha elolvassa a [Teljesítménybeli problémák észlelése és diagnosztizálása az Application Insights segítségével](app-insights-tutorial-performance.md) című oktatóanyagot.
 
     ![Sikertelen kérelmek részletei](media/app-insights-tutorial-runtime-exceptions/failed-requests-details.png)
 
-5. A műveletek részletei, megjelenítheti a FormatException megjelenő okozta a hibát.  Kattintson a kivétel vagy a **felső 3 kivétel típusok** számát, hogy a részletek megtekintéséhez.  Láthatja, hogy a rendszer egy érvénytelen irányítószám miatt.
+6. A művelet részleteiben egy FormatException elem is látható, amely valószínűleg a hibát okozta.  Kattintson a kivételre vagy a **3 leggyakoribb kivételtípus** elemre a részletek megtekintéséhez.  Láthatja, hogy az ok egy érvénytelen irányítószám volt.
 
-    ![A kivétel részletei](media/app-insights-tutorial-runtime-exceptions/failed-requests-exception.png)
+    ![Kivétel részletei](media/app-insights-tutorial-runtime-exceptions/failed-requests-exception.png)
+
+> [!NOTE]
+Engedélyezze az „Egyesített részletek: Végpontok közötti tranzakció diagnosztikája” [előnézeti felület](app-insights-previews.md) elemet, hogy az összes kapcsolódó kiszolgálóoldali telemetriát, például a kéréseket, a függőségeket, a kivételeket, a nyomokat, az eseményeket stb. egyetlen teljes képernyős nézetben tekinthesse meg. 
+
+Ha az előnézet engedélyezve van, egy egységes felületen tekintheti meg a függőségi hívásokkal eltöltött idő mennyiségét, valamint az egyesített élményben előforduló hibákat és kivételeket. A több összetevőt érintő tranzakciók esetében a Gantt-diagram és a részletek panel segítenek, hogy gyorsan megtalálja a problémát okozó összetevőt, függőséget vagy kivételt. Az alsó szakaszt kibontva megtekintheti a kiválasztott összetevő-művelethez összegyűjtött nyomok vagy események időrendjét. [További információk az új felületről](app-insights-transaction-diagnostics.md)  
+
+![Tranzakció diagnosztikája](media/app-insights-tutorial-runtime-exceptions/e2e-transaction-preview.png)
+
+## <a name="identify-failing-code"></a>Sikertelen kód azonosítása
+A Snapshot Debugger az alkalmazásában leggyakrabban előforduló kivételekről gyűjt pillanatfelvételeket, hogy segítsen éles környezetben diagnosztizálni azok alapvető okát.  A portálon a hibakeresési pillanatfelvételeket megtekintve láthatja a hívásvermet és megvizsgálhatja a változókat az egyes hívásveremkeretekre vonatkozóan. Ezután a pillanatfelvételt letöltve és Visual Studio 2017 alkalmazásban megnyitva hibakeresést végezhet a forráskódon.
+
+1. A kivétel tulajdonságaiban kattintson a **Hibakeresési pillanatfelvétel megnyitása** elemre.
+2. A **Hibakeresési pillanatfelvétel** panel a kérés hívásvermével nyílik meg.  Az egyes metódusokra kattintva megtekintheti az összes helyi változónak a kérés időpontjában rögzített értékeit.  Ebben a példában a legfelső metódustól kezdve olyan változókat láthatunk, amelyeknek nincs értéke.
+
+    ![Hibakeresési pillanatkép](media/app-insights-tutorial-runtime-exceptions/debug-snapshot-01.png)
+
+4. A **ValidZipCode** az első hívás, amely érvényes értékkel rendelkezik, és láthatjuk, hogy egy olyan, betűkkel megadott irányítószámot kaptunk, amelyet nem lehet egész számra fordítani.  Úgy tűnik, ez az a hiba, amelyet ki kell javítani.
+
+    ![Hibakeresési pillanatkép](media/app-insights-tutorial-runtime-exceptions/debug-snapshot-02.png)
+
+5. Ahhoz, hogy letöltse ezt a pillanatfelvételt a Visual Studióba, ahol megkereshetjük a javításra szoruló kódot, kattintson a **Pillanatfelvétel letöltése** elemre.
+6. A rendszer betölti a pillanatfelvételt a Visual Studióba.
+7. Most már elindíthat egy hibakeresési munkamenetet, amely gyorsan azonosítja a kivételt okozó kódsort.
+
+    ![Kivétel a kódban](media/app-insights-tutorial-runtime-exceptions/exception-code.png)
 
 
+## <a name="use-analytics-data"></a>Elemzési adatok használata
+Az Application Insights által gyűjtött minden adatot az Azure Log Analytics tárol, amely egy részletes lekérdezési nyelvet biztosít, lehetővé téve az adatok különféle módon történő elemzését.  Arra használhatjuk ezeket az adatokat, hogy elemezzük azokat a kéréseket, amelyek a vizsgált kivételt létrehozták. 
 
-## <a name="identify-failing-code"></a>Kód hiányában azonosítása
-A pillanatkép-hibakereső gyűjti a pillanatképek készítése a leggyakoribb kivételeket az alapvető ok éles környezetben azonosításában segít az alkalmazásban.  A portálon, hogy a hívási verem, és vizsgálja meg a változókat, minden egyes Hívásiverem-keret hibakeresési pillanatképek tekintheti meg. A forráskód Ha letölti a pillanatképet, és nyissa meg a Visual Studio 2017 majd hibakeresési.
-
-1. Kattintson a tulajdonságok a kivétel **nyitott hibakeresési pillanatkép**.
-2. A **Debug pillanatkép** panel nyílik meg a kérelem a hívási veremben.  Kattintson bármelyik módszert az összes helyi változók értékeinek megtekintése a kérés idején.  Ebben a példában a felső metódus-től kezdődő láthatja helyi változók érték nélküli.
-
-    ![Pillanatkép hibakeresése](media/app-insights-tutorial-runtime-exceptions/debug-snapshot-01.png)
-
-4. Az első hívás, amely rendelkezik az érvényes értékek **ValidZipCode**, és láthatja, hogy a zip-kód, amely nem fordítható le egy egész számot tudni meghajtóbetűjellel rendelkező lett megadva.  Ez valószínűleg a kódot, amely ki kell javítani a hibát.
-
-    ![Pillanatkép hibakeresése](media/app-insights-tutorial-runtime-exceptions/debug-snapshot-02.png)
-
-5. A pillanatkép letöltése a Visual Studio, ahol azt keresheti meg a tényleges kód, amely ki kell javítani a **letöltése pillanatkép**.
-6. A pillanatkép betöltődik, a Visual Studio.
-7. A Visual Studio, amely gyorsan azonosítja a kivételt okozó kódsort most futtathatja a hibakeresési munkamenetben.
-
-    ![Kivétel fordult elő a kódot](media/app-insights-tutorial-runtime-exceptions/exception-code.png)
-
-
-## <a name="use-analytics-data"></a>Analitikai adatok használata
-Az Application Insights által gyűjtött összes adat Azure Naplóelemzés, amely egy részletes lekérdező nyelv, amely lehetővé teszi az adatok elemzése az sokféleképpen biztosít tárolja.  Az adatokat a kérelmeket, azt még tart a kivételt okozó elemzéséhez használhatja azt. 
-
-8. Kattintson a CodeLens információk megtekintése az Application Insights által biztosított telemetriai kód fent.
+8. Kattintson a CodeLens információra a kód felett az Application Insights által biztosított telemetria megtekintéséhez.
 
     ![Kód](media/app-insights-tutorial-runtime-exceptions/codelens.png)
 
-9. Kattintson a **hatás elemzése** Application Insights Analytics megnyitásához.  A telepítéskor több lekérdezések sikertelen kérések, például az érintett felhasználók, a böngésző támogatja, és a régiók részletekkel szolgálnak.<br><br>![Elemzés](media/app-insights-tutorial-runtime-exceptions/analytics.png)<br>
+9. Kattintson a **Hatás elemzése** elemre az Application Insights Analytics megnyitásához.  Több lekérdezés is található itt, amelyek részleteket biztosítanak a sikertelen kérésekről, például az érintett felhasználókról, böngészőkről és régiókról.<br><br>![Elemzés](media/app-insights-tutorial-runtime-exceptions/analytics.png)<br>
 
 ## <a name="add-work-item"></a>Munkaelem hozzáadása
-Ha például a Visual Studio Team Services, GitHub vagy a követési rendszerünk Application Insights csatlakozni, a munkaelem közvetlenül az Application Insights is létrehozhat.
+Ha az Application Insights alkalmazást egy követőrendszerhez csatlakoztatja, például a Visual Studio Team Serviceshez vagy a GitHubhoz, létrehozhat egy munkaelemet közvetlenül az Application Insightsból.
 
-1. Lépjen vissza a **kivétel tulajdonságok** az Application Insightsban panel.
-2. Kattintson a **új munkaelem**.
-3. A **új munkaelem** panel nyílik meg a már fel kivételhiba adatait.  Hozzáadhat további adatok mentése előtt.
+1. Térjen vissza a **Kivétel tulajdonságai** panelhez az Application Insightsban.
+2. Kattintson az **Új munkaelem** elemre.
+3. A megnyíló **Új munkaelem** panelen automatikusan megjelennek a kivétel részletei.  Bármilyen egyéb információt hozzáadhat mentés előtt.
 
     ![Új munkaelem](media/app-insights-tutorial-runtime-exceptions/new-work-item.png)
 
-## <a name="next-steps"></a>Következő lépések
-Most, hogy megismerte a futásidejű kivételek azonosítása, hogy értékről a következő oktatóanyag áttekintésével megismerheti, hogyan azonosíthatja és teljesítménnyel kapcsolatos problémák diagnosztizálásához.
+## <a name="next-steps"></a>További lépések
+Most már megtanulta, hogyan azonosíthatja a futásidejű kivételeket. Térjen át a következő oktatóanyagra, hogy megtanulja, hogyan azonosíthatja és diagnosztizálhatja a teljesítménybeli problémákat.
 
 > [!div class="nextstepaction"]
-> [Teljesítménnyel kapcsolatos problémákat azonosítása](app-insights-tutorial-performance.md)
+> [Teljesítménybeli problémák azonosítása](app-insights-tutorial-performance.md)

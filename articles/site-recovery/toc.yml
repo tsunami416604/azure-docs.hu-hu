@@ -123,6 +123,8 @@
           href: site-recovery-create-recovery-plans.md
         - name: Azure runbookok hozzáadása helyreállítási tervekhez
           href: site-recovery-runbook-automation.md
+        - name: VMM-szkriptek hozzáadása helyreállítási tervekhez
+          href: site-recovery-how-to-add-vmmscript.md
         - name: Feladatátvétel
           items:
             - name: Tudnivalók a feladatátvételről

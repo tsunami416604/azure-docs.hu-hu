@@ -1,0 +1,616 @@
+- name: Service Fabric-dokumentáció
+  href: /azure/service-fabric
+- name: Áttekintés
+  items:
+    - name: Mi a Service Fabric?
+      href: service-fabric-overview.md
+- name: Gyors útmutatók
+  items:
+    - name: .NET-alkalmazás létrehozása
+      href: service-fabric-quickstart-dotnet.md
+    - name: Linux-alapú tárolóalkalmazás üzembe helyezése
+      href: service-fabric-quickstart-containers-linux.md
+    - name: Windows-alapú tárolóalkalmazás üzembe helyezése
+      href: service-fabric-quickstart-containers.md
+    - name: Java-gyorsútmutatók
+      items:
+        - name: Spring Boot-alkalmazás üzembe helyezése
+          href: service-fabric-quickstart-java-spring-boot.md
+        - name: Reliable Services-alkalmazás üzembe helyezése
+          href: service-fabric-quickstart-java-reliable-services.md
+- name: Oktatóanyagok
+  items:
+    - name: .NET-alkalmazás üzembe helyezése
+      items:
+        - name: 1 – .NET-alkalmazás összeállítása
+          href: service-fabric-tutorial-create-dotnet-app.md
+        - name: 2 – Az alkalmazás telepítése
+          href: service-fabric-tutorial-deploy-app-to-party-cluster.md
+        - name: 3 – A CI/CD beállítása
+          href: service-fabric-tutorial-deploy-app-with-cicd-vsts.md
+        - name: 4 – Monitorozás és diagnosztika
+          href: service-fabric-tutorial-monitoring-aspnet.md
+    - name: Meglévő .NET-alkalmazás tárolóba helyezése
+      items:
+        - name: 1 – .NET-alkalmazás üzembe helyezése a Docker Compose használatával
+          href: service-fabric-host-app-in-a-container.md
+        - name: 2 – A tároló figyelése
+          href: service-fabric-tutorial-monitoring-wincontainers.md
+    - name: Linux rendszerű tárolóalkalmazás létrehozása
+      items:
+        - name: 1 – Tárolórendszerképek létrehozása
+          href: service-fabric-tutorial-create-container-images.md
+        - name: 2 – Csomagolás és tárolók üzembe helyezése
+          href: service-fabric-tutorial-package-containers.md
+        - name: 3 – Feladatátadás és skálázás
+          href: service-fabric-tutorial-containers-failover.md
+    - name: Fürt létrehozása és felügyelete
+      items:
+        - name: 1 – Fürt létrehozása az Azure-ban
+          items:
+            - name: 1a – Windows rendszerű fürt létrehozása
+              href: service-fabric-tutorial-create-vnet-and-windows-cluster.md
+            - name: 1b – Linux rendszerű fürt létrehozása
+              href: service-fabric-tutorial-create-vnet-and-linux-cluster.md
+        - name: 2 – A fürt átméretezése
+          href: service-fabric-tutorial-scale-cluster.md
+        - name: 3 – A fürt futtatókörnyezetének frissítése
+          href: service-fabric-tutorial-upgrade-cluster.md
+        - name: 4 – Az API Management üzembe helyezése a Service Fabrickel
+          href: service-fabric-tutorial-deploy-api-management.md
+- name: Példák
+  items:
+    - name: Kódminták
+      href: 'https://azure.microsoft.com/resources/samples/?service=service-fabric'
+    - name: Azure PowerShell
+      href: service-fabric-powershell-samples.md
+    - name: Service Fabric parancssori felület
+      href: samples-cli.md
+- name: Alapelvek
+  items:
+    - name: A mikroszolgáltatások ismertetése
+      href: service-fabric-overview-microservices.md
+    - name: Átfogó áttekintés
+      href: service-fabric-content-roadmap.md
+    - name: Alkalmazáshasználati helyzetek
+      href: service-fabric-application-scenarios.md
+    - name: Minták és forgatókönyvek
+      href: service-fabric-patterns-and-scenarios.md
+    - name: Architektúra
+      href: service-fabric-architecture.md
+    - name: Terminológia
+      href: service-fabric-technical-overview.md
+    - name: Támogatott programozási modellek
+      href: service-fabric-choose-framework.md
+      items:
+        - name: Tárolók
+          href: service-fabric-containers-overview.md
+          items:
+            - name: Docker Compose (előzetes verzió)
+              href: service-fabric-docker-compose.md
+            - name: Erőforrások szabályozása
+              href: service-fabric-resource-governance.md
+        - name: Reliable Services
+          href: service-fabric-reliable-services-introduction.md
+          items:
+            - name: 'A Reliable Services életciklusa – C#'
+              href: service-fabric-reliable-services-lifecycle.md
+            - name: A Reliable Services életciklusa – Java
+              href: service-fabric-reliable-services-lifecycle-java.md
+            - name: Reliable Collections
+              href: service-fabric-reliable-services-reliable-collections.md
+            - name: Reliable Collections – irányelvek és javaslatok
+              href: service-fabric-reliable-services-reliable-collections-guidelines.md
+            - name: A Reliable Collections használata
+              href: service-fabric-work-with-reliable-collections.md
+            - name: Tranzakciók és zárolások
+              href: service-fabric-reliable-services-reliable-collections-transactions-locks.md
+            - name: Reliable Concurrent Queue
+              href: service-fabric-reliable-services-reliable-concurrent-queue.md
+            - name: Reliable Collections-szerializáció
+              href: service-fabric-reliable-services-reliable-collections-serialization.md
+            - name: A Reliable State Manager és a Reliable Collection belső elemei
+              href: service-fabric-reliable-services-reliable-collections-internals.md
+            - name: Haladó szintű használat
+              href: service-fabric-reliable-services-advanced-usage.md
+        - name: Reliable Actors
+          href: service-fabric-reliable-actors-introduction.md
+          items:
+            - name: Architektúra
+              href: service-fabric-reliable-actors-platform.md
+            - name: Életciklus-kezelés és szemétgyűjtés
+              href: service-fabric-reliable-actors-lifecycle.md
+            - name: Állapotkezelés
+              href: service-fabric-reliable-actors-state-management.md
+            - name: Polimorfizmus
+              href: service-fabric-reliable-actors-polymorphism.md
+            - name: Újbóli belépés
+              href: service-fabric-reliable-actors-reentrancy.md
+            - name: Típusszerializáció
+              href: service-fabric-reliable-actors-notes-on-actor-type-serialization.md
+    - name: Alkalmazások és szolgáltatások
+      items:
+        - name: Alkalmazásmodell
+          href: service-fabric-application-model.md
+        - name: Alkalmazás- és szolgáltatásjegyzékek
+          href: service-fabric-application-and-service-manifests.md
+        - name: Futtatási modell
+          href: service-fabric-hosting-model.md
+        - name: Szolgáltatás állapota
+          href: service-fabric-concepts-state.md
+        - name: Szolgáltatás particionálása
+          href: service-fabric-concepts-partitioning.md
+        - name: Az alkalmazások méretezhetősége
+          href: service-fabric-concepts-scalability.md
+        - name: A szolgáltatások rendelkezésre állása
+          href: service-fabric-availability-services.md
+        - name: Replika és példány életciklusa
+          href: service-fabric-concepts-replica-lifecycle.md
+        - name: Reconfiguration
+          href: service-fabric-concepts-reconfiguration.md
+        - name: A szolgáltatások közötti kommunikáció
+          href: service-fabric-connect-and-communicate-with-services.md
+          items:
+            - name: DNS-szolgáltatás
+              href: service-fabric-dnsservice.md
+            - name: Fordított proxy
+              href: service-fabric-reverseproxy.md
+            - name: Fordított proxy konfigurálása biztonságos kommunikációhoz
+              href: service-fabric-reverseproxy-configure-secure-communication.md
+            - name: Fordítottproxy-diagnosztika
+              href: service-fabric-reverse-proxy-diagnostics.md
+            - name: ASP.NET-mag
+              href: service-fabric-reliable-services-communication-aspnetcore.md
+        - name: Alkalmazás-életciklus
+          href: service-fabric-application-lifecycle.md
+          items:
+            - name: Alkalmazás frissítése
+              href: service-fabric-application-upgrade.md
+              items:
+                - name: Konfiguráció
+                  href: service-fabric-visualstudio-configure-upgrade.md
+                - name: Alkalmazásfrissítési paraméterek
+                  href: service-fabric-application-upgrade-parameters.md
+                - name: Adatok szerializálása az alkalmazásfrissítésekben
+                  href: service-fabric-application-upgrade-data-serialization.md
+                - name: Alkalmazásfrissítések – haladó témakörök
+                  href: service-fabric-application-upgrade-advanced.md
+            - name: Alkalmazások kezelése több környezethez
+              href: service-fabric-manage-multiple-environment-app-configuration.md
+            - name: Alkalmazások tesztelése hibaelemzéssel
+              href: service-fabric-testability-overview.md
+            - name: Az ImageStoreConnectionString beállítás
+              href: service-fabric-image-store-connection-string.md
+        - name: Szolgáltatás-erőforrások
+          href: service-fabric-service-manifest-resources.md
+    - name: Fürtök
+      href: service-fabric-deploy-anywhere.md
+      items:
+        - name: Fürtbiztonság
+          href: service-fabric-cluster-security.md
+        - name: Különbségek a Linux és a Windows szolgáltatásai között
+          href: service-fabric-linux-windows-differences.md
+        - name: Fürtök az Azure-on
+          items:
+            - name: Csomóponttípusok és virtuálisgép-méretezési csoportok
+              href: service-fabric-cluster-nodetypes.md
+            - name: Fürthálózatminták
+              href: service-fabric-patterns-networking.md
+        - name: Fürterőforrás-kezelő
+          href: service-fabric-cluster-resource-manager-introduction.md
+          items:
+            - name: Architektúra
+              href: service-fabric-cluster-resource-manager-architecture.md
+            - name: Fürt leírása
+              href: service-fabric-cluster-resource-manager-cluster-description.md
+            - name: Az alkalmazáscsoportok áttekintése
+              href: service-fabric-cluster-resource-manager-application-groups.md
+            - name: A fürterőforrás-kezelő beállításainak konfigurálása
+              href: service-fabric-cluster-resource-manager-configure-services.md
+            - name: Erőforrás-felhasználási mérőszámok
+              href: service-fabric-cluster-resource-manager-metrics.md
+            - name: A szolgáltatási affinitás használata
+              href: service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md
+            - name: Szolgáltatás-elhelyezési házirendek
+              href: service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md
+            - name: Fürt kezelése
+              href: service-fabric-cluster-resource-manager-management-integration.md
+            - name: Fürt töredezettségmentesítése
+              href: service-fabric-cluster-resource-manager-defragmentation-metrics.md
+            - name: Fürt terhelésének elosztása
+              href: service-fabric-cluster-resource-manager-balancing.md
+            - name: Szabályozás
+              href: service-fabric-cluster-resource-manager-advanced-throttling.md
+            - name: Szolgáltatás áthelyezése
+              href: service-fabric-cluster-resource-manager-movement-cost.md
+    - name: Monitorozás és diagnosztika
+      items:
+        - name: Alkalmazások figyelése és diagnosztikája
+          href: service-fabric-diagnostics-overview.md
+        - name: Események létrehozása
+          items:
+            - name: Platformszintű események létrehozása
+              href: service-fabric-diagnostics-event-generation-infra.md
+              items:
+                - name: Műveleti csatorna
+                  href: service-fabric-diagnostics-event-generation-operational.md
+                - name: A Reliable Services eseményei
+                  href: service-fabric-reliable-services-diagnostics.md
+                - name: A Reliable Actors eseményei
+                  href: service-fabric-reliable-actors-diagnostics.md
+                - name: Teljesítmény-mérőszámok
+                  href: service-fabric-diagnostics-event-generation-perf.md
+                - name: Megfigyelő szolgáltatás távelérésének lehetővé tétele
+                  href: service-fabric-reliable-serviceremoting-diagnostics.md
+            - name: Alkalmazásszintű események létrehozása
+              href: service-fabric-diagnostics-event-generation-app.md
+        - name: Az alkalmazás és a fürt állapotának vizsgálata
+          items:
+            - name: A Service Fabric állapotának figyelése
+              href: service-fabric-health-introduction.md
+            - name: Szolgáltatásállapot jelentése és ellenőrzése
+              href: service-fabric-diagnostics-how-to-report-and-check-service-health.md
+            - name: Egyéni állapotjelentések hozzáadása
+              href: service-fabric-report-health.md
+            - name: Hibaelhárítás rendszerállapot-jelentések segítségével
+              href: service-fabric-understand-and-troubleshoot-with-system-health-reports.md
+            - name: Állapotjelentések megtekintése
+              href: service-fabric-view-entities-aggregated-health.md
+        - name: Események összesítése
+          items:
+            - name: Események összesítése az EventFlow segítségével
+              href: service-fabric-diagnostics-event-aggregation-eventflow.md
+            - name: Események összesítése az Azure Diagnostics segítségével
+              items:
+                - name: Windows
+                  href: service-fabric-diagnostics-event-aggregation-wad.md
+                - name: Linux
+                  href: service-fabric-diagnostics-event-aggregation-lad.md
+        - name: Események elemzése
+          items:
+            - name: Események elemzése az Application Insights segítségével
+              href: service-fabric-diagnostics-event-analysis-appinsights.md
+            - name: Események elemzése az OMS szolgáltatással
+              href: service-fabric-diagnostics-event-analysis-oms.md
+        - name: A helyi fürt hibaelhárítása
+          href: service-fabric-troubleshoot-local-cluster-setup.md
+    - name: Integráció az API Management szolgáltatással
+      href: service-fabric-api-management-overview.md
+- name: Útmutatók
+  items:
+    - name: A fejlesztési környezet beállítása
+      items:
+        - name: Windows
+          href: service-fabric-get-started.md
+        - name: Linux
+          href: service-fabric-get-started-linux.md
+        - name: Mac OS
+          href: service-fabric-get-started-mac.md
+        - name: A Service Fabric parancssori felület beállítása
+          href: service-fabric-cli.md
+    - name: Tervezés és előkészítés
+      items:
+        - name: Fürtkapacitás tervezése
+          href: service-fabric-cluster-capacity.md
+        - name: Önálló fürtkonfiguráció tervezése
+          href: service-fabric-cluster-standalone-deployment-preparation.md
+        - name: Felkészülés vészhelyreállításra
+          href: service-fabric-disaster-recovery.md
+        - name: Alkalmazás kapacitásának megtervezése
+          href: service-fabric-capacity-planning.md
+    - name: Első alkalmazás létrehozása...
+      items:
+        - name: 'C# alkalmazás a Visual Studióban'
+          href: service-fabric-create-your-first-application-in-visual-studio.md
+        - name: Windows-alapú tárolóalkalmazás
+          href: service-fabric-get-started-containers.md
+        - name: Linux-alapú tárolóalkalmazás
+          href: service-fabric-get-started-containers-linux.md
+        - name: 'C# Reliable Services-alkalmazás Windows rendszeren'
+          href: service-fabric-reliable-services-quick-start.md
+        - name: Java Reliable Services-alkalmazás Linux rendszeren
+          href: service-fabric-reliable-services-quick-start-java.md
+        - name: 'C# Reliable Services-alkalmazás Linux rendszeren'
+          href: service-fabric-create-your-first-linux-application-with-csharp.md
+        - name: 'C# Reliable Actors-alkalmazás Windows rendszeren'
+          href: service-fabric-reliable-actors-get-started.md
+        - name: Java Reliable Actors-alkalmazás Linux rendszeren
+          href: service-fabric-create-your-first-linux-application-with-java.md
+        - name: Futtatható vendégalkalmazás Windows rendszeren
+          href: quickstart-guest-app.md
+        - name: Önálló fürt
+          href: service-fabric-get-started-standalone-cluster.md
+    - name: Alkalmazás készítése
+      items:
+        - name: Futtatható vendégszolgáltatás készítése
+          items:
+            - name: Futtatható vendégalkalmazás üzembe helyezése
+              href: service-fabric-deploy-existing-app.md
+            - name: Több futtatható vendégalkalmazás üzembe helyezése
+              href: service-fabric-deploy-multiple-apps.md
+        - name: Tárolószolgáltatás készítése
+          items:
+            - name: Tárolóbiztonság
+              href: service-fabric-securing-containers.md
+            - name: Docker Compose (előzetes verzió)
+              href: service-fabric-docker-compose.md
+            - name: Tárolók és szolgáltatások erőforrás-szabályozása
+              href: service-fabric-resource-governance.md
+            - name: Kötet- és naplózási illesztők
+              href: service-fabric-containers-volume-logging-drivers.md
+            - name: Tárolókon belüli szolgáltatások
+              href: service-fabric-services-inside-containers.md
+            - name: Tárolóalapú hálózatkezelés módjai
+              href: service-fabric-networking-modes.md
+        - name: Reliable Services-szolgáltatás összeállítása
+          items:
+            - name: Reliable Collections
+              items:
+                - name: A Reliable Collections használata
+                  href: service-fabric-work-with-reliable-collections.md
+                - name: Reliable Concurrent Queue
+                  href: service-fabric-reliable-services-reliable-concurrent-queue.md
+                - name: Reliable Collections-szerializáció
+                  href: service-fabric-reliable-services-reliable-collections-serialization.md
+            - name: Kommunikáció a szolgáltatásokkal
+              items:
+                - name: Kommunikáció a Reliable Services szolgáltatással
+                  href: service-fabric-reliable-services-communication.md
+                - name: 'Szolgáltatás távelérésének lehetővé tétele – C#'
+                  href: service-fabric-reliable-services-communication-remoting.md
+                - name: Szolgáltatás távelérésének lehetővé tétele – Java
+                  href: service-fabric-reliable-services-communication-remoting-java.md
+                - name: WCF
+                  href: service-fabric-reliable-services-communication-wcf.md
+                - name: 'Biztonságos kommunikáció – C#'
+                  href: service-fabric-reliable-services-secure-communication.md
+                - name: Biztonságos kommunikáció – Java
+                  href: service-fabric-reliable-services-secure-communication-java.md
+            - name: Konfigurálás
+              href: service-fabric-reliable-services-configuration.md
+            - name: Értesítések küldése
+              href: service-fabric-reliable-services-notifications.md
+            - name: Biztonsági mentés és visszaállítás
+              href: service-fabric-reliable-services-backup-restore.md
+        - name: Reliable Actors-szolgáltatás összeállítása
+          items:
+            - name: Értesítések küldése
+              href: service-fabric-reliable-actors-events.md
+            - name: Időzítők és emlékeztetők beállítása
+              href: service-fabric-reliable-actors-timers-reminders.md
+            - name: Configure KvsActorStateProvider
+              href: service-fabric-reliable-actors-kvsactorstateprovider-configuration.md
+            - name: Kommunikációs beállítások konfigurálása
+              href: service-fabric-reliable-actors-fabrictransportsettings.md
+            - name: Configure ReliableDictionaryActorStateProvider
+              href: service-fabric-reliable-actors-reliabledictionarystateprovider-configuration.md
+        - name: Régi Java-alkalmazás migrálása a Maven támogatására
+          href: service-fabric-migrate-old-javaapp-to-use-maven.md
+        - name: Fordított proxy konfigurálása biztonságos kommunikációhoz
+          href: service-fabric-reverseproxy-configure-secure-communication.md
+        - name: ASP.NET Core-szolgáltatás összeállítása
+          href: service-fabric-add-a-web-frontend.md
+        - name: Biztonság konfigurálása
+          items:
+            - name: Titkos alkalmazáskulcsok kezelése
+              href: service-fabric-application-secret-management.md
+            - name: Biztonsági házirendek beállítása az alkalmazáshoz
+              href: service-fabric-application-runas-security.md
+    - name: Munka a Windows/VS fejlesztői környezetében
+      items:
+        - name: Alkalmazások kezelése a Visual Studióban
+          href: service-fabric-manage-application-in-visual-studio.md
+        - name: Biztonságos kapcsolatok konfigurálása a Visual Studióban
+          href: service-fabric-visualstudio-configure-secure-connections.md
+        - name: .NET-szolgáltatás hibakeresése a VS-ben
+          href: service-fabric-debugging-your-application.md
+        - name: Gyakori hibák és kivételek
+          href: service-fabric-errors-and-exceptions.md
+        - name: Helyi monitorozás és diagnosztika
+          href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md
+        - name: Linux-fürt beállítása Windowson
+          href: service-fabric-local-linux-cluster-windows.md
+    - name: Munka a Linux/Eclipse fejlesztői környezetében
+      items:
+        - name: Az Eclipse beépülő modul használatának első lépései Java-fejlesztésekhez
+          href: service-fabric-get-started-eclipse.md
+        - name: Java szolgáltatás hibakeresése az Eclipse-ben
+          href: service-fabric-debugging-your-application-java.md
+        - name: Helyi monitorozás és diagnosztika
+          href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md
+    - name: Áttelepítés a Cloud Servicesből
+      items:
+        - name: A Cloud Services és a Service Fabric összehasonlítása
+          href: service-fabric-cloud-services-migration-differences.md
+        - name: Migráció a Service Fabricre
+          href: service-fabric-cloud-services-migration-worker-role-stateless-service.md
+        - name: Ajánlott eljárások
+          href: /azure/architecture/service-fabric/migrate-from-cloud-services
+    - name: Alkalmazások életciklus-kezelése
+      items:
+        - name: Alkalmazás becsomagolása
+          href: service-fabric-package-apps.md
+        - name: Paraméterek használata konfigurációs fájlokkal
+          href: service-fabric-how-to-parameterize-configuration-files.md
+        - name: Portszámok megadása paraméterekkel
+          href: service-fabric-how-to-specify-port-number-using-parameters.md
+        - name: Környezeti változók megadása
+          href: service-fabric-how-to-specify-environment-variables.md
+        - name: Alkalmazások üzembe helyezése vagy eltávolítása
+          items:
+            - name: Alkalmazások telepítése helyi fürtre
+              href: service-fabric-get-started-with-a-local-cluster.md
+            - name: Azure Resource Manager
+              href: service-fabric-application-arm-resource.md
+            - name: Azure PowerShell
+              href: service-fabric-deploy-remove-applications.md
+            - name: Service Fabric parancssori felület
+              href: service-fabric-application-lifecycle-sfctl.md
+            - name: FabricClient API-k
+              href: service-fabric-deploy-remove-applications-fabricclient.md
+        - name: Alkalmazások frissítése
+          items:
+            - name: Frissítés az Azure PowerShell-lel
+              href: service-fabric-application-upgrade-tutorial-powershell.md
+            - name: Frissítés a Visual Studióval
+              href: service-fabric-application-upgrade-tutorial.md
+            - name: Alkalmazásfrissítések hibaelhárítása
+              href: service-fabric-application-upgrade-troubleshooting.md
+        - name: Alkalmazások és szolgáltatások tesztelése
+          items:
+            - name: A szolgáltatások közötti kommunikáció tesztelése
+              href: service-fabric-testability-scenarios-service-communication.md
+            - name: Hibaszimuláció
+              items:
+                - name: Szabályozott káosz használata
+                  href: service-fabric-controlled-chaos.md
+                - name: Tesztműveletek használata
+                  href: service-fabric-testability-actions.md
+                - name: Számítási feladatok során
+                  href: service-fabric-testability-workload-tests.md
+                - name: Tesztelési forgatókönyvek használata
+                  href: service-fabric-testability-scenarios.md
+                - name: A csomópontváltó API-k használata
+                  href: service-fabric-node-transition-apis.md
+        - name: A folyamatos integráció beállítása
+          items:
+            - name: A folyamatos integráció beállítása a VSTS-sel
+              href: service-fabric-set-up-continuous-integration.md
+            - name: Linuxos alkalmazások üzembe helyezése a Jenkins használatával
+              href: service-fabric-cicd-your-linux-applications-with-jenkins.md
+    - name: Fürtök létrehozása és felügyelete
+      items:
+        - name: Fürtök az Azure-on
+          items:
+            - name: Létrehozás
+              items:
+                - name: Azure Portal
+                  href: service-fabric-cluster-creation-via-portal.md
+                - name: Azure Resource Manager
+                  href: service-fabric-cluster-creation-via-arm.md
+            - name: Méretezés
+              items:
+                - name: Manuálisan
+                  href: service-fabric-cluster-scale-up-down.md
+                - name: Programozott módon
+                  href: service-fabric-cluster-programmatic-scaling.md
+            - name: Frissítés
+              href: service-fabric-cluster-upgrade.md
+            - name: Hozzáférés-vezérlés beállítása
+              href: service-fabric-cluster-security-roles.md
+            - name: Konfigurálás
+              href: service-fabric-cluster-fabric-settings.md
+            - name: Port megnyitása a terheléselosztóban
+              href: create-load-balancer-rule.md
+            - name: Fürttanúsítványok kezelése
+              href: service-fabric-cluster-security-update-certs-azure.md
+            - name: Törlés
+              href: service-fabric-cluster-delete.md
+        - name: Önálló fürtök
+          items:
+            - name: Létrehozás
+              items:
+                - name: Helyszíni létrehozás
+                  href: service-fabric-cluster-creation-for-windows-server.md
+                - name: Biztonságossá tétel tanúsítványokkal
+                  href: service-fabric-windows-cluster-x509-security.md
+                - name: Biztonságossá tétel a Windows-rendszerbiztonság használatával
+                  href: service-fabric-windows-cluster-windows-security.md
+                - name: A különálló csomag tartalma
+                  href: service-fabric-cluster-standalone-package-contents.md
+            - name: Méretezés
+              href: service-fabric-cluster-windows-server-add-remove-nodes.md
+            - name: Hozzáférés-vezérlés beállítása
+              href: service-fabric-cluster-security-roles.md
+            - name: Konfigurálás
+              href: service-fabric-cluster-manifest.md
+            - name: Frissítés
+              href: service-fabric-cluster-upgrade-windows-server.md
+        - name: Fürt ábrázolása
+          href: service-fabric-visualizing-your-cluster.md
+        - name: Csatlakozás biztonságos fürthöz
+          href: service-fabric-connect-to-secure-cluster.md
+        - name: Fürtcsomópontok javítása
+          href: service-fabric-patch-orchestration-application.md
+    - name: Megfigyelés és diagnosztika
+      items:
+        - name: OMS
+          items:
+            - name: OMS Log Analytics beállítása
+              href: service-fabric-diagnostics-oms-setup.md
+            - name: Az OMS-ügynök hozzáadása
+              href: service-fabric-diagnostics-oms-agent.md
+            - name: Tárolók figyelése
+              href: service-fabric-diagnostics-oms-containers.md
+        - name: Teljesítményfigyelés
+          items:
+            - name: Teljesítményfigyelés WAD használatával
+              href: service-fabric-diagnostics-perf-wad.md
+- name: Referencia
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.servicefabric/
+    - name: PowerShell
+      href: /powershell/module/servicefabric/?view=azureservicefabricps
+    - name: Azure CLI (az sf)
+      href: /cli/azure/sf
+    - name: Service Fabric parancssori felület (sfctl)
+      href: service-fabric-sfctl.md
+      items:
+        - name: sfctl-alkalmazás
+          href: service-fabric-sfctl-application.md
+        - name: sfctl-káosz
+          href: service-fabric-sfctl-chaos.md
+        - name: sfctl-fürt
+          href: service-fabric-sfctl-cluster.md
+        - name: sfctl-összeállítás
+          href: service-fabric-sfctl-compose.md
+        - name: sfctl értéke
+          href: service-fabric-sfctl-is.md
+        - name: sfctl-csomópont
+          href: service-fabric-sfctl-node.md
+        - name: sfctl-partíció
+          href: service-fabric-sfctl-partition.md
+        - name: sfctl-replika
+          href: service-fabric-sfctl-replica.md
+        - name: sfctl rpm
+          href: service-fabric-sfctl-rpm.md
+        - name: sfctl service
+          href: service-fabric-sfctl-service.md
+        - name: sfctl-tároló
+          href: service-fabric-sfctl-store.md
+    - name: Java API
+      href: /java/api/overview/azure/servicefabric
+      items:
+        - name: Java REST-ügyfél API
+          href: service-fabric-java-rest-api-usage.md
+    - name: .NET
+      href: /dotnet/api/overview/azure/service-fabric?view=azure-dotnet
+    - name: REST
+      href: /rest/api/servicefabric
+    - name: Szolgáltatásmodell XML-sémája
+      href: service-fabric-service-model-schema.md
+    - name: Környezeti változók
+      href: service-fabric-environment-variables-reference.md
+- name: További források
+  items:
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Gyakori kérdések
+      href: service-fabric-common-questions.md
+    - name: Képzési terv
+      href: 'https://azure.microsoft.com/documentation/learning-paths/service-fabric/'
+    - name: MSDN fórum
+      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureServiceFabric'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/service-fabric/'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Mintakód
+      href: 'http://aka.ms/servicefabricsamples'
+    - name: Támogatási lehetőségek
+      href: service-fabric-support.md
+    - name: Szolgáltatási hírek
+      href: 'https://azure.microsoft.com/updates/?product=service-fabric'
+    - name: Videók
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=service-fabric'

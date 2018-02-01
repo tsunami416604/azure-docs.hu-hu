@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/06/2017
 ms.author: jgao
-ms.openlocfilehash: b23e62d3ae0fa3468a8a9a5608eb3d316852f086
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 9924a9656f2e2e268356b8ce293d58afc3d535a9
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="install-third-party-hadoop-applications-on-azure-hdinsight"></a>Külső gyártótól származó Hadoop-alkalmazások telepítése az Azure HDInsighton
 
@@ -28,14 +28,14 @@ ms.lasthandoff: 11/06/2017
 
 HDInsight-alkalmazások olyan alkalmazás, amely a felhasználók telepíthetik a HDInsight-fürtöt. Ezek az alkalmazások lehetnek a Microsoft, független szoftvergyártók (ISV-k) vagy a felhasználók fejlesztései.  
 
-A follosing lista mutatja azokat a közzétett alkalmazásokhoz:
+Az alábbi lista tartalmazza a közzétett alkalmazásokhoz:
 
 * **AtScale Eszközintelligencia Platform** bekapcsolja a HDInsight-fürt kibővített OLAP-kiszolgálót. Az alkalmazás lehetővé teszi a lekérdezés egy interaktív használatával az Üzletiintelligencia-eszközök a Microsoft Excel, a Power bi Tableau szoftver a QlikView adatsorokat.
 * **A HDInsight CDAP cask** az első egyesített integrációs platformot kínál a big Data típusú adatok, alkalmazások és adatok tavakat üzemi 80 %-kal kivágása az állásidő. Ez az alkalmazás kizárólag a Standard HBase 3.4-fürtöket támogatja.
 * **A HDInsight DATAIKU DDS** lehetővé teszi az adatok szakemberek prototípusként, elkészítéséhez és magas adott szolgáltatások telepítését, amelyek nyers adatok átalakítása impactful üzleti előrejelzéseket.
 * **Datameer**: a [Datameer](http://www.datameer.com/documentation/display/DAS50/Home?ls=Partners&lsd=Microsoft&c=Partners&cd=Microsoft) interaktív módot kínál az elemzőknek a Big Data-eredmények felfedezésére, elemzésére és vizuális megjelenítésére. Vonjon be további adatforrásokat, fedezzen fel új kapcsolatokat, és kapjon még gyorsabban választ kérdéseire.
 * **A HDInsight (béta) H2O mesterséges Eszközintelligencia** H2O készült vízjel támogatja a következő elosztott algoritmusok: GLM, natív Bayes, elosztott véletlenszerű erdő, átmenetes kiemelése gép, Neurális hálózatokat, mély tanulási, a K-közép, PEM, Alacsony Rank modellek, Anomáliadetektálás és Autoencoders általánosítva van.
-* **Kyligence Analytics Platform** Kyligence Analytics Platform (KAP) Apache Kylin és Apache Hadoop kapcsolva, nagyvállalati használatra kész adatraktár; a lehetővé teszi az alárendelt második lekérdezés késés jelentős mértékű adatkészlethez, és leegyszerűsíti az adatelemzés üzleti felhasználók és az elemzők. 
+* **Kyligence Analytics Platform** Kyligence Analytics Platform (KAP) Apache Kylin és Apache Hadoop kapcsolva, nagyvállalati használatra kész adatraktár; a alárendelt második biztosít késés jelentős mértékű adatkészlethez lekérdezésére és egyszerűbbé teszi a adatelemzés üzleti felhasználók és az elemzők. 
 * **Paxata önkiszolgáló adatok előkészítése**
 * **SnapLogic Hadooplex** hdinsighton futó a SnapLogic Hadooplex lehetővé teszi az ügyfelek önkiszolgáló adatfeldolgozást és szinte bármilyen forrás előkészítése a Microsoft Azure cloud platform megadásával üzleti elemzéseket gyorsabb eléréséhez.
 * **Spark-feladatkiszolgálót KNIME Spark végrehajtó** Spark-feladatkiszolgálót KNIME Spark végrehajtó és a KNIME Analytics Platform csatlakoztatásával a HDInsight-fürtök szolgál.
@@ -75,7 +75,7 @@ HDInsight-alkalmazásokat fürt létrehozása közben is telepíthet. A HDInsigh
 ## <a name="list-installed-hdinsight-apps-and-properties"></a>Telepített HDInsight-alkalmazások és az alkalmazástulajdonságok listázása
 A portál megjeleníti a fürthöz tartozó telepített HDInsight-alkalmazásokat, valamint az egyes telepített alkalmazásokhoz tartozó tulajdonságokat.
 
-**HDInsight-alkalmazások listázása és az alkalmazástulajdonságok megjelenítése**
+**HDInsight-alkalmazások felsorolása, és a Tulajdonságok megjelenítése**
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A bal oldali menüben kattintson a **HDInsight Clusters** (HDInsight-fürtök) elemre. 
@@ -100,7 +100,7 @@ A HTTP végpont hitelesítő adatai ugyanazok, mint amelyeket a HDInsight-fürth
 ## <a name="troubleshoot"></a>Hibaelhárítás
 Lásd: [A telepítési folyamat hibaelhárítása](hdinsight-apps-install-custom-applications.md#troubleshoot-the-installation).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md): telepítése egy közzé nem tett HDInsight-alkalmazást.
 * [HDInsight-alkalmazások közzététele](hdinsight-apps-publish-applications.md): Megtudhatja, hogyan teheti közzé egyéni HDInsight-alkalmazásait az Azure Piactéren.
 * [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx) (MSDN: HDInsight-alkalmazás telepítése): Megtudhatja, hogyan adhat meg HDInsight-alkalmazásokat.

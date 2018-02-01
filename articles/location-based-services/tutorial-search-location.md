@@ -1,6 +1,6 @@
 ---
-title: "Az Azure-beli hely keresési alapú szolgáltatások |} Microsoft Docs"
-description: "Pont használatával, Azure-alapú helyszolgáltatás közelben keresése"
+title: "Keresés az Azure Location Based Services használatával | Microsoft Docs"
+description: "Közeli hasznos helyek keresése az Azure Location Based Services használatával"
 services: location-based-services
 keywords: 
 author: dsk-2015
@@ -12,67 +12,67 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: e033b1005902a9639fc352ffb9af91cb20875bee
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
-ms.translationtype: MT
+ms.openlocfilehash: 8da7d9112c9527945ab4b524625603faa84cf00d
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/24/2018
 ---
-# <a name="search-nearby-point-of-interest-using-azure-location-based-services"></a>Pont használatával, Azure-alapú helyszolgáltatás közelben keresése
+# <a name="search-nearby-point-of-interest-using-azure-location-based-services"></a>Közeli hasznos helyek keresése az Azure Location Based Services használatával
 
-Ez az oktatóanyag bemutatja, hogyan az Azure-alapú helyszolgáltatás fiókot, és a megadott API-k segítségével keressen rá az érdeklődési pont. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag azt mutatja be, hogyan állatható be egy fiók az Azure Location Based Services használatához, majd hogyan használhatók a megadott API-k egy hasznos hely kereséséhez. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Az Azure hely alapú Services-fiók létrehozása
-> * A fiók előfizetés kulcs lekérése
-> * Hozzon létre a térkép vezérlőelem API-jával új weblap
-> * Keresési szolgáltatását használja az egyik fontos pont közelben található
+> * Azure Location Based Services szolgáltatást használó fiók létrehozása
+> * Az Azure Location Based Services-fiók elsődleges kulcsának lekérése
+> * Új weblap létrehozása a Térkép vezérlőelem API használatával
+> * A Search Service használata egy közeli hasznos hely kereséséhez
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
-# <a name="log-in-to-the-azure-portal"></a>Jelentkezzen be az Azure portálra.
+# <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 <a id="createaccount"></a>
 
-## <a name="create-an-account-with-azure-location-based-services"></a>Az Azure hely alapú Services-fiók létrehozása
+## <a name="create-an-account-with-azure-location-based-services"></a>Azure Location Based Services szolgáltatást használó fiók létrehozása
 
-Kövesse az alábbi lépéseket egy új helyre alapú Services-fiók létrehozásához.
+Kövesse az alábbi lépéseket egy új Location Based Services-fiók létrehozásához:
 
 1. Kattintson az [Azure Portal](https://portal.azure.com) bal felső sarkában az **Erőforrás létrehozása** gombra.
 2. A *Keresés a piactéren* mezőbe írja be: **location based services**.
 3. Az *Eredmények* közül válassza az **Azure Location Based Services (előzetes verzió)** elemet. Kattintson a térkép alatt megjelenő **Létrehozás** gombra. 
-4. Az a **hely alapú szolgáltatások fiók létrehozása** lapján adja meg a következő értékeket:
-    - A *neve* az új fiók. 
-    - A *előfizetés* ehhez a fiókhoz használni kívánt.
-    - A *erőforráscsoport* neve ehhez a fiókhoz. Előfordulhat, hogy *hozzon létre új* vagy *meglévő* erőforráscsoportot.
-    - Válassza ki a *erőforráscsoport helye*.
-    - Olvassa el a *Preview feltételek* és bejelöli a jelölőnégyzetet, fogadja el a feltételeket. 
-    - Végül kattintson a **létrehozása** gombra.
+4. A **Location Based Services-fiók létrehozása** lapon adja meg a következő értékeket:
+    - Az új fiók *neve*. 
+    - A fiókhoz használni kívánt *előfizetés*.
+    - A fiókhoz tartozó *erőforráscsoport* neve. Választhat, hogy *létrehoz egy új erőforráscsoportot*, vagy egy *meglévő erőforráscsoportot használ*.
+    - Válassza ki az *erőforráscsoport helyét*.
+    - Olvassa el az *Előzetes verziójú szolgáltatás feltételeit* és jelölje be az azok elfogadását jelző jelölőnégyzetet. 
+    - Végül kattintson a **Létrehozás** gombra.
    
     ![Location Based Services-fiók létrehozása a portálon](./media/tutorial-search-location/create-lbs-account.png)
 
 
 <a id="getkey"></a>
 
-## <a name="get-the-subscription-key-for-your-account"></a>A fiók előfizetés kulcs lekérése
+## <a name="get-the-primary-key-for-your-account"></a>A fiók elsődleges kulcsának lekérése
 
-A hely alapú Services-fiók sikeres létrehozását követően a csatolható a térkép keresési API-k a lépések végrehajtásával:
+A Location Based Services-fiók sikeres létrehozása után kövesse az alábbi lépéseket, amelyekkel hozzákapcsolhatja a fiókot a térképes kereső API-khoz.
 
-1. Nyissa meg a hely alapú Services-fiókját a portálon.
-2. Keresse meg a fiók **beállítások**, majd válassza ki **kulcsok**.
-3. Másolás a **elsődleges kulcs** a vágólapra. Mentse helyileg használandó eljárás lépéseit. 
+1. Nyissa meg a Location Based Services-fiókját a portálon.
+2. Lépjen a fiók **BEÁLLÍTÁSOK** lapjára, majd válassza a **Kulcsok** elemet.
+3. Másolja ki az **elsődleges kulcsot** a vágólapra. Mentse helyileg a későbbi lépésekben való felhasználáshoz. 
 
-    ![A portál elsődleges kulcs beszerzése](./media/tutorial-search-location/lbs-get-key.png)
+    ![Elsődleges kulcs lekérése a portálon](./media/tutorial-search-location/lbs-get-key.png)
 
 
 <a id="createmap"></a>
 
-## <a name="create-new-web-page-using-azure-map-control-api"></a>Hozzon létre új weblap Azure térkép vezérlőelem API használatával
-Az Azure térkép vezérlőelem API egy kényelmes ügyféloldali kódtár, amely lehetővé teszi az Azure-alapú helyszolgáltatás könnyen integrálható a webes alkalmazás. Az operációs rendszer REST-hívások összetettsége elrejti, és a termelékenység styleable és testre szabható összetevőkkel boosts. A következő lépések bemutatják egy statikus HTML-lapot a hely alapú szolgáltatások térkép vezérlő API a beágyazott létrehozása. 
+## <a name="create-new-web-page-using-azure-map-control-api"></a>Új weblap létrehozása az Azure Térkép vezérlőelem API használatával
+Az Azure Térkép vezérlőelem API egy kényelmes ügyféloldali kódtár, amely segítségével az Azure Location Based Services könnyedén integrálható a webalkalmazásokba. A kódtár elrejti a REST-szolgáltatás puszta hívásainak összetettségét, a stílusos és testre szabható összetevők segítségével pedig növeli a munkavégzés hatékonyságát. A következő lépések bemutatják, hogyan hozhat létre egy statikus HTML-oldalt, amelybe be van ágyazva a Location Based Services Térkép vezérlőelem API-ja. 
 
-1. A helyi gépén, hozzon létre egy új fájlt, és adjon neki nevet **MapSearch.html**. 
-2. Az alábbi HTML-összetevők hozzáadása a fájlhoz:
+1. A helyi gépén hozzon létre egy új fájlt **MapSearch.html** néven. 
+2. Adja a következő HTML-összetevőket a fájlhoz:
 
     ```HTML
     <!DOCTYPE html>
@@ -111,20 +111,20 @@ Az Azure térkép vezérlőelem API egy kényelmes ügyféloldali kódtár, amel
 
     </html>
     ``` 
-    Figyelje meg, hogy a HTML-fejléc tartalmazza-e a térkép vezérlőelem Azure könyvtár üzemelteti a CSS- és JavaScript erőforrás fájlok. Megjegyzés: a *parancsfájl* szegmens hozzáadni a *törzs* a HTML-fájl. Ezt a szegmenst a beágyazott JavaScript-kód az Azure hely alapú szolgáltatás API-k elérésére fogja tartalmazni.
+    Figyelje meg, hogy a HTML-fejléc tartalmazza az Azure Térkép vezérlőelem-kódtárban található CSS- és JavaScript-erőforrásfájlokat. Figyelje meg a HTML-fájl *törzséhez* adott *szkript* szakaszt is. Ez a szakasz tartalmazza az Azure Térkép vezérlőelem API elérésére szolgáló beágyazott JavaScript-kódot.
  
-3.  Adja hozzá a következő JavaScript-kódot a *parancsfájl* blokk a HTML-fájl. Cserélje le a helyőrző *< insert-kulcs >* a hely alapú Services-fiók elsődleges kulccsal. 
+3.  Adja hozzá a következő JavaScript-kódot a HTML-fájl *szkript* blokkjához. Használja a Location Based Services-fiók elsődleges kulcsát a szkriptben. 
 
     ```JavaScript
     // Instantiate map to the div with id "map"
-    var subscriptionKey = "<insert-key>";
+    var LBSAccountKey = "<_your account key_>";
     var map = new atlas.Map("map", {
-        "subscription-key": subscriptionKey
+        "subscription-key": LBSAccountKey
     });
     ```
-    Ezt a szegmenst a térkép vezérlőelem API tartozó előfizetés kezdeményezi. **Atlas** névtér, amely az Azure térkép vezérlőelem API és a kapcsolódó vizuális összetevőket tartalmazza. **Atlas. Térkép** a felügyeletét biztosítja a vizuális és interaktív webes a térképen. Azt is láthatja, hogyan nyissa meg a HTML-lapot a böngészőben tűnik a térkép. 
+    Ez a szakasz indítja el az Azure Location Based Services-fiók kulcsához tartozó Térkép vezérlőelem API-t. Az **Atlas** az a névtér, amely az Azure Térkép vezérlőelem API-t és a hozzá tartozó vizuális összetevőket tartalmazza. Az **atlas.Map** biztosítja a vizuális és interaktív webes térkép vezérlőit. A térkép megtekintéséhez nyissa meg a HTML-oldalt a böngészőben. 
 
-4. Adja hozzá a következő JavaScript-kódot a *parancsfájl* blokkot, a keresési PIN-kódok réteg hozzáadása a térkép vezérlőelem:
+4. Adja hozzá a *szkript* blokkhoz a következő JavaScript-kódot, amely hozzáad egy gombostű réteget a Térkép vezérlőelemhez:
 
     ```JavaScript
     // Initialize the pin layer for search results to the map
@@ -136,16 +136,16 @@ Az Azure térkép vezérlőelem API egy kényelmes ügyféloldali kódtár, amel
     });
     ```
 
-5. Mentse a fájlt a számítógépre. 
+5. Mentse a fájlt a gépén. 
 
 
 <a id="usesearch"></a>
 
-## <a name="use-search-service-to-find-nearby-point-of-interest"></a>Keresési szolgáltatását használja az egyik fontos pont közelben található
+## <a name="use-search-service-to-find-nearby-point-of-interest"></a>A Search Service használata egy közeli hasznos hely kereséséhez
 
-Ez a szakasz bemutatja, hogyan használható az Azure-alapú helyszolgáltatás Search szolgáltatás API érdeklő pont megtalálásához a térképen. Egy RESTful API, címek, bizonyos elemek kikeresése és más földrajzi információk keresése fejlesztők számára készült. A keresési szolgáltatás rendel a megadott cím a szélességi és hosszúsági információkat. 
+Ez a szakasz bemutatja, hogyan használható az Azure Location Based Services Search Service API-ja egy hasznos hely megkereséséhez a térképen. Ez az API egy fejlesztőknek szánt RESTful API, amely lehetővé teszi a címek, hasznos helyek és egyéb földrajzi adatok keresését. A Search Service szélességi és hosszúsági koordinátákat rendel egy adott címhez. 
 
-1. Nyissa meg a **MapSearch.html** fájl az előző szakaszban létrehozott, és adja hozzá a következő JavaScript-kódot a *parancsfájl* letiltása, hogy bemutassa a keresési szolgáltatás. 
+1. Nyissa meg az előző szakaszban létrehozott **MapSearch.html** fájlt, és adja hozzá a következő JavaScript-kódot a *szkript* blokkhoz a Search Service ábrázolásához. 
     ```JavaScript
     // Perform a request to the search service and create a pin on the map for each result
     var xhttp = new XMLHttpRequest();
@@ -185,15 +185,15 @@ Ez a szakasz bemutatja, hogyan használható az Azure-alapú helyszolgáltatás 
         }
     };
     ```
-    A kódrészletet létrehoz egy [XMLHttpRequest](https://xhr.spec.whatwg.org/), és hozzáadja a bejövő válasz elemzése eseménykezelő. Sikeres választ, a címeket, neveket, mindegyik helyen adja vissza, a szélességi és logitude információkat összegyűjti a `searchPins` változó. Végül, ez a témakörgyűjtemény a hely hozzáadása a `map` vezérlőelemet jelöli meg PIN-kód. 
+    Ez a kódrészlet létrehoz egy [XMLHttpRequest](https://xhr.spec.whatwg.org/) kérést, és hozzáad egy eseménykezelőt a bejövő válasz elemzéséhez. A sikeres válaszhoz összegyűjti az egyes visszaadott helyek címét, nevét, valamint a szélességi és hosszúsági koordinátáit a `searchPins` változóban. Végül hozzáadja ezt a helypont-gyűjteményt a `map` vezérlőhöz gombostűk formájában. 
 
-2. Adja hozzá a következő kódot a *parancsfájl* blokkot, a XMLHttpRequest küldeni az Azure-alapú helyszolgáltatás keresési szolgáltatást:
+2. Adja hozzá a *szkript* blokkhoz a következő kódot, amely elküldi az XMLHttpRequest kérést az Azure Location Based Services Search Service szolgáltatása felé:
 
     ```JavaScript
     var url = "https://atlas.microsoft.com/search/fuzzy/json?";
     url += "&api-version=1.0";
     url += "&query=gasoline%20station";
-    url += "&subscription-key=" + subscriptionKey;
+    url += "&subscription-key=" + LBSAccountKey;
     url += "&lat=47.6292";
     url += "&lon=-122.2337";
     url += "&radius=100000";
@@ -201,9 +201,9 @@ Ez a szakasz bemutatja, hogyan használható az Azure-alapú helyszolgáltatás 
     xhttp.open("GET", url, true);
     xhttp.send();
     ``` 
-    Ezt a kódrészletet használja az egyszerű keresés API hívása a keresési szolgáltatás a **intelligens egyeztetésű keresési**. A legtöbb intelligens cím bármilyen kombinációját kezelése bemenetek kezelési vagy *POI* jogkivonatokat. Keres a közeli **üzemanyag állomás**, a megadott cím a szélességi és hosszúsági, és a megadott radius belül. A fiók előfizetés kulcs korábban a minta fájlban megadott használja a hely alapú szolgáltatásokhoz a hívást. Azt az eredményt ad vissza, szélesség/hosszúsági párok található helyeket. Nyissa meg a HTML-lapot a böngészőben a keresési PIN-kódok jelenhet meg. 
+    Ez a kódrészlet a Search Service alapszintű kereső API-ját, az **intelligens keresést** használja. Ez a legtöredékesebb bemeneti adatokból is képes címeket vagy *POI* tokeneket kinyerni. Rákeres a legközelebbi **benzinkútra**, valamint a megadott címre a szélességi és hosszúsági koordináta szerint, illetve keresést végez a megadott sugarú körön belül. A fiók a példafájlban korábban megadott elsődleges kulcsát használja a Location Based Services meghívásához. Eredményként a megtalált helyekhez tartozó szélességi/hosszúsági koordinátapárokat adja vissza. A gombostűk megtekintéséhez nyissa meg a HTML-oldalt a böngészőben. 
 
-3. Adja hozzá a következő sorokat a *parancsfájl* blokkot, a keresési szolgáltatás által visszaadott egyik fontos pontok előugró ablakok létrehozásához:
+3. Adja hozzá a *szkript* blokkhoz a következő sorokat, amelyek felugró ablakokat hoznak létre a Search Service által visszaadott hasznos helyekhez:
 
     ```JavaScript
     // Add a popup to the map which will display some basic information about a search result on hover over a pin
@@ -232,20 +232,20 @@ Ez a szakasz bemutatja, hogyan használható az Azure-alapú helyszolgáltatás 
         popup.open(map);
     });
     ```
-    Az API-t **atlas. Előugró** olyan információkat nyújt a megfelelő helyre a térképen rögzített ablak. A kódrészletet beállítja a tartalom megjelenítése és elhelyezése az előugró, valamint egy esemény figyelőt, hogy hozzáadja a `map` vezérlő, Várakozás a _egér_ való váltása a helyi menü. 
+    Az **atlas.Popup** API egy információs ablakot biztosít, amely a térkép megfelelő pozíciójához van kötve. Ez a kódrészlet állítja be a felugró ablak tartalmát és pozícióját, valamint hozzáad egy eseményfigyelőt a `map` vezérlőhöz, amely arra vár, hogy az _egérmutatót_ a felugró ablak fölé vigyék. 
 
-4. Mentse a fájlt, és nyissa meg a **MapSearch.html** egy webböngészőben az Ön által választott fájlt, és vizsgálja meg az eredményt. Ezen a ponton a böngészőben a térkép látható információk előugró ablakok, ha bármely, a keresési PIN-kódok is látható, az alábbihoz hasonló mutat. 
+4. Mentse a fájlt, majd nyissa meg a **MapSearch.html** fájlt egy tetszőleges webböngészőben, és tekintse meg az eredményt. A térkép felugró információs ablakokat jelenít meg böngészőben, ha az egérmutatót valamelyik megjelenített gombostű fölé viszi, az alább láthatóhoz hasonló módon. 
 
-    ![Az Azure térkép vezérlőelem és a keresési szolgáltatást](./media/tutorial-search-location/lbs-map-search.png)
+    ![Azure Térkép vezérlőelem és Search Service](./media/tutorial-search-location/lbs-map-search.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Az Azure hely alapú Services-fiók létrehozása
-> * A fiók előfizetés kulcs lekérése
-> * Hozzon létre a térkép vezérlőelem API-jával új weblap
-> * Keresési szolgáltatását használja az egyik fontos pont közelben található
+> * Azure Location Based Services szolgáltatást használó fiók létrehozása
+> * A fiók elsődleges kulcsának lekérése
+> * Új weblap létrehozása a Térkép vezérlőelem API használatával
+> * A Search Service használata egy közeli hasznos hely kereséséhez
 
-Az oktatóanyag folytassa [használatával, Azure-alapú helyszolgáltatás pontra útvonal](./tutorial-route-location.md) való használata az Azure-alapú helyszolgáltatás érdeklő pontjának továbbításához. 
+Folytassa az [Útvonal egy hasznos helyhez az Azure Location Based Services használatával](./tutorial-route-location.md) című oktatóanyaggal, amelyből megtudhatja, hogyan használhatja az Azure Location Based Services szolgáltatást a hasznos helyekhez vezető útvonalak megkeresésére. 

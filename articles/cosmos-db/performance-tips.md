@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/08/2017
+ms.date: 01/24/2018
 ms.author: mimig
-ms.openlocfilehash: 242ec5bfbe33acd4731809efed9b70897b7a9608
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 2e49613cf37fa625efc7859802db86780dcb128a
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/29/2018
 ---
 > [!div class="op_single_selector"]
 > * [Java](performance-tips-java.md)
@@ -120,6 +120,13 @@ Ezért ha még kérése "Hogyan javítható az adatbázis teljesítménye?" Vegy
 6. **Leállítási RetryAfter időközönként megvalósítása**
 
     Teljesítmény tesztelés során terhelés csak a kis mértékben kérelmek get halmozódni növelje meg. Ha szabályozva, az ügyfélalkalmazás kell a késleltetési leállítási a kiszolgáló által megadott újrapróbálkozási időköz. A leállítási tiszteletben biztosítja, hogy az újrapróbálkozások közötti várakozási idő a lehető legrövidebb idő. Újrapróbálkozási házirend támogatása a rendszer része, a verzió 1.8.0 és az újabb, az SQL [.NET](sql-api-sdk-dotnet.md) és [Java](sql-api-sdk-java.md), 1.9.0 verzió vagy újabb verzió, a [Node.js](sql-api-sdk-node.md) és [Python](sql-api-sdk-python.md), és az összes támogatott verziója a [.NET Core](sql-api-sdk-dotnet-core.md) SDK-k. További információkért lásd: [Exceeding fenntartott átviteli sebességének korlátai](request-units.md#RequestRateTooLarge) és [RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx).
+    
+    1,19 és a .NET SDK újabb verziójával nincs eljárást, amely további diagnosztikai adatok és a következő mintában látható módon késési problémák elhárításához. A diagnosztikai karakterláncot, amelynek késleltetése nagyobb olvasási kérések bejelentkezhet. A rögzített diagnosztikai karakterlánc segítenek megérteni, egy adott kérés esetében 429s megfigyelt száma.
+    ```csharp
+    ResourceResponse<Document> readDocument = await this.readClient.ReadDocumentAsync(oldDocuments[i].SelfLink);
+    readDocument.RequestDiagnosticsString 
+    ```
+    
 7. **Horizontális felskálázás az ügyfél-alkalmazások és szolgáltatások**
 
     Ha nagy átviteli szinten teszteli (> 50 000 RU/mp), az ügyfélalkalmazás gép határértékét el a Processzor- vagy hálózati kihasználtsága miatt a szűk keresztmetszetek válhat. Ha eléri ezt a pontot, továbbra is az Azure Cosmos DB fiók további leküldéses által az ügyfélalkalmazások kiterjesztése több kiszolgáló között.
