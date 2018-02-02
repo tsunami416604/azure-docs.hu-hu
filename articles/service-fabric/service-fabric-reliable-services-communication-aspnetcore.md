@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: a98e9ad891fcfaf02ca7df5d10d5b310445c9d34
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 4f5bc49bf58773a1510b552ce6fc20aa61076348
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="aspnet-core-in-service-fabric-reliable-services"></a>Az ASP.NET Core a Service Fabric megbízható szolgáltatások
 
@@ -26,7 +26,7 @@ Az ASP.NET Core egy új nyílt forráskódú és platformfüggetlen keretrendsze
 
 Ez a cikk egy részletes útmutató a Service Fabric Reliable Services használatával az ASP.NET Core szolgáltatásait üzemeltető a **Microsoft.ServiceFabric.AspNetCore.** * NuGet-csomagok készlete.
 
-Egy bevezető oktatóanyag az ASP.NET Core a Service Fabric és a fejlesztési környezet beállítása történt utasításokat lásd: [egy webes előtér-, az ASP.NET Core segítségével alkalmazás felépítése](service-fabric-add-a-web-frontend.md).
+Egy bevezető oktatóanyag az ASP.NET Core a Service Fabric és a fejlesztési környezet beállítása történt utasításokat lásd: [.NET-alkalmazás létrehozása](service-fabric-tutorial-create-dotnet-app.md).
 
 Ez a cikk többi azt feltételezi, hogy ismeri az ASP.NET Core. Ha nem, azt javasoljuk olvasása a [ASP.NET Core – alapok](https://docs.microsoft.com/aspnet/core/fundamentals/index).
 
@@ -308,10 +308,10 @@ Ha kapcsolódik az internethez, állapotmentes szolgáltatások egy jól ismert 
 
 |  |  | **Megjegyzések** |
 | --- | --- | --- |
-| Webkiszolgáló | vércse | Vércse esetén az elsődleges webkiszolgálón, mert a Windows és Linux esetén támogatott. |
-| Port konfigurálása | Statikus | A jól ismert statikus port lehet beállítani a `Endpoints` ServiceManifest.xml, például a 80-as HTTP vagy HTTPS-hez a 443-as konfigurációját. |
+| Webkiszolgáló | Kestrel | Vércse esetén az elsődleges webkiszolgálón, mert a Windows és Linux esetén támogatott. |
+| Port konfigurálása | statikus | A jól ismert statikus port lehet beállítani a `Endpoints` ServiceManifest.xml, például a 80-as HTTP vagy HTTPS-hez a 443-as konfigurációját. |
 | ServiceFabricIntegrationOptions | None | A `ServiceFabricIntegrationOptions.None` beállítást kell használni, amikor a Service Fabric-integráció köztes konfigurálása, hogy a szolgáltatás nem próbálja meg egy egyedi azonosítót a bejövő kérelmeket. Az alkalmazás külső felhasználók nem fogja tudni az egyedi azonosító adatokat, a köztes használják. |
-| A példányok száma | -1 | Tipikus használati esetekben a példányok száma beállítást meg kell-"1", hogy egy példány érhető el az összes olyan csomóponton, amelyet a forgalom fogadására a terheléselosztótól. |
+| Példányszám | -1 | Tipikus használati esetekben a példányok száma beállítást meg kell-"1", hogy egy példány érhető el az összes olyan csomóponton, amelyet a forgalom fogadására a terheléselosztótól. |
 
 Ha több külsőleg kitett szolgáltatás ugyanazokat a csomópontok megosztásához httpsys kiszolgálón egy stabil, de egyedi URL-cím használható. Ehhez a IWebHost konfigurálásakor megadott URL-cím módosításával. Megjegyzés: Ez kizárólag a httpsys kiszolgálón.
 
@@ -333,21 +333,21 @@ Csak a fürtön belül hívását állapotmentes szolgáltatások egyedi URL-eke
 
 |  |  | **Megjegyzések** |
 | --- | --- | --- |
-| Webkiszolgáló | vércse | Bár a httpsys kiszolgálón belső állapotmentes szolgáltatásokhoz használható, vércse a javasolt kiszolgálót úgy, hogy több-gazdagépet megosztásához szolgáltatáspéldány.  |
+| Webkiszolgáló | Kestrel | Bár a httpsys kiszolgálón belső állapotmentes szolgáltatásokhoz használható, vércse a javasolt kiszolgálót úgy, hogy több-gazdagépet megosztásához szolgáltatáspéldány.  |
 | Port konfigurálása | dinamikusan kiosztott | Az állapotalapú szolgáltatás több replika megoszthatja a gazdafolyamat vagy a gazda operációs rendszer, és így kell egyedi portok. |
 | ServiceFabricIntegrationOptions | UseUniqueServiceUrl | A dinamikus port-hozzárendelés Ez a beállítás megakadályozza a korábban leírt téves identitás probléma. |
-| InstanceCount | bármely | A példányok száma beállítás állítható be értéket a szolgáltatás működtetéséhez szükséges. |
+| InstanceCount | any | A példányok száma beállítás állítható be értéket a szolgáltatás működtetéséhez szükséges. |
 
 ### <a name="internal-only-stateful-aspnet-core-service"></a>Csak belső állapot-nyilvántartó ASP.NET Core szolgáltatás
 Állapotalapú szolgáltatások, amelyek csak a fürtön belül hívását dinamikusan hozzárendelt portok használjon több szolgáltatás együttműködésének biztosításához. A következő konfiguráció ajánlott:
 
 |  |  | **Megjegyzések** |
 | --- | --- | --- |
-| Webkiszolgáló | vércse | A `HttpSysCommunicationListener` több replikák osztozik egy állapotalapú szolgáltatások használatra nem szolgál. |
+| Webkiszolgáló | Kestrel | A `HttpSysCommunicationListener` több replikák osztozik egy állapotalapú szolgáltatások használatra nem szolgál. |
 | Port konfigurálása | dinamikusan kiosztott | Az állapotalapú szolgáltatás több replika megoszthatja a gazdafolyamat vagy a gazda operációs rendszer, és így kell egyedi portok. |
 | ServiceFabricIntegrationOptions | UseUniqueServiceUrl | A dinamikus port-hozzárendelés Ez a beállítás megakadályozza a korábban leírt téves identitás probléma. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [A Service Fabric-alkalmazás hibakeresése a Visual Studio használatával](service-fabric-debugging-your-application.md)
 
 <!--Image references-->

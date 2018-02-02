@@ -2,17 +2,18 @@
 title: "Az Azure verem datacenter integrációs - biztonsági"
 description: "Útmutató: Azure verem biztonsági integrálása a datacenter-biztonság"
 services: azure-stack
-author: troettinger
+author: jeffgilb
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/17/2017
-ms.author: victorh
+ms.date: 01/31/2018
+ms.author: jeffgilb
+ms.reviewer: wfayed
 keywords: 
-ms.openlocfilehash: eb7c651362838d44d6558e080e6130b4a8041d1e
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: 0ce7585552f39f59f83df88320e52ea257bb74dd
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-stack-datacenter-integration---security"></a>Az Azure verem datacenter integrációs - biztonsági
 
@@ -74,7 +75,7 @@ Az alábbi eljárás egy példa segítségével Azure Tártallózó konfigurál�
 
 Különböző programnyelveken segítségével a tárfiókhoz. Használja az alábbi dokumentáció egy példa, amely megfelel a nyelv kiválasztása:
 
-[https://Azure.microsoft.com/resources/Samples/?term=Storage+Account](https://azure.microsoft.com/resources/samples/?term=storage+account)
+[https://azure.microsoft.com/resources/samples/?term=storage+account](https://azure.microsoft.com/resources/samples/?term=storage+account)
 
 ## <a name="device-access-auditing"></a>Eszköz-hozzáférés naplózása
 
@@ -91,6 +92,6 @@ Minden fizikai eszköz Azure verem Syslog-üzeneteket küldhet. Az Azure verem m
 
 A Syslog-célcím összegyűjtött ehhez a központi telepítés nem kötelező paraméter, de azt is hozzáadhatók feladás egy vagy több központi telepítési.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[Azure datacenter integráció a verem - végpontok közzététele](azure-stack-integrate-endpoints.md)
+[Házirend karbantartása](azure-stack-servicing-policy.md)

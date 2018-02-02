@@ -6,13 +6,13 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 94771578d94b5b9bc23451049a78506e80c87d26
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: e082b9014e3734b554d3dae1cf8aecbaed65a28a
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="choose-between-azure-services-that-deliver-messages"></a>Válassza az Azure-szolgáltatásokat, hogy a üzenetek
 
@@ -20,7 +20,7 @@ Az Azure, amelyek segítik a teljes megoldás esemény üzenetek kézbesítése 
 
 * [Esemény rács](/azure/event-grid/)
 * [Event Hubs](/azure/event-hubs/)
-* [Szolgáltatásbusz](/azure/service-bus-messaging/)
+* [Service Bus](/azure/service-bus-messaging/)
 
 Annak ellenére, hogy néhány Hasonlóságok, minden egyes szolgáltatás célja, adott helyzetekben. Ez a cikk ismerteti ezek a szolgáltatások, és a, valamit megismerheti, hogy melyiket válassza az alkalmazás közötti különbségekről. Sok esetben az üzenetkezelési szolgáltatások kiegészítik, és együtt is használható.
 
@@ -54,7 +54,7 @@ A következő jellemzőkkel rendelkezik:
 
 * dinamikusan méretezhető
 * Alacsony költség
-* Kiszolgáló nélküli
+* serverless
 
 ### <a name="event-hubs"></a>Event Hubs
 
@@ -84,7 +84,7 @@ Más esetekben csatolunk összeállíthat egy esemény és az adatok csővezeté
 
 ![Az adatfolyam adatok áttekintése](./media/compare-messaging-services/overview.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az Azure üzenetküldési szolgáltatásokkal kapcsolatos további információkért lásd a következő blogbejegyzésben [események, adatpontok és üzenetek - az adatok közvetlenül az Azure üzenetküldési szolgáltatás kiválasztása](https://azure.microsoft.com/blog/events-data-points-and-messages-choosing-the-right-azure-messaging-service-for-your-data/).
 * Esemény rácshoz ismertetőért lásd: [esemény rács](overview.md).

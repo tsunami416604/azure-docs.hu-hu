@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: shlo
-ms.openlocfilehash: cf98bb7fab4942955287e8e211e98b9da59472f6
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: dd2475d5940927c65cae4d12b9697cbe535b69a8
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-data-factory-faq"></a>Az Azure Data Factory – gyakori kérdések
 Ez a cikk az Azure Data Factory szolgáltatásnak 2 verziójára vonatkozik. Adat-előállító gyakran feltett kérdésekre adott válaszok biztosít.  
@@ -68,7 +68,7 @@ Most már rendelkezik a szabadságot, hogy a modell összes folyamat stílus, am
 További információkért lásd: [oktatóanyag: szabályozza a forgalom](tutorial-control-flow.md).
 
 ### <a name="deploy-ssis-packages-to-azure"></a>SSIS-csomagok üzembe helyezése az Azure-ban 
-Ha szeretné a SSIS-munkaterhelések, hozzon létre egy adat-előállító 2-es verzióját, és az Azure-SSIS-integrációs futásidejű kiépítéséhez. Az Azure-SSIS integrációs futásidejű rendszere Azure virtuális gépeken (csomópontok) felhőben való futtatásra a SSIS-csomagok a dedikált teljes körűen felügyelt fürtben. Részletes útmutatásért lásd: a [Azure telepítése SSIS-csomagok](tutorial-deploy-ssis-packages-azure.md) oktatóanyag. 
+Ha szeretné a SSIS-munkaterhelések, hozzon létre egy adat-előállító 2-es verzióját, és az Azure-SSIS-integrációs futásidejű kiépítéséhez. Az Azure-SSIS integrációs futásidejű rendszere Azure virtuális gépeken (csomópontok) felhőben való futtatásra a SSIS-csomagok a dedikált teljes körűen felügyelt fürtben. Részletes útmutatásért lásd: a [Azure telepítése SSIS-csomagok](tutorial-create-azure-ssis-runtime-portal.md) oktatóanyag. 
  
 
 ### <a name="sdks"></a>SDK-k

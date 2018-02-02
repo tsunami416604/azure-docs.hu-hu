@@ -1,6 +1,6 @@
 ---
-title: "Adatok másolása az Azure Data Factory (béta) használatával Impala |} Microsoft Docs"
-description: "Útmutató: adatok másolása Impala támogatott fogadó adattárolókhoz egy Azure Data Factory-folyamat a másolási tevékenység használatával."
+title: "Adatok másolása az Impala Azure Data Factory (béta) használatával |} Microsoft Docs"
+description: "Útmutató: adatok másolása Impala támogatott fogadó adattárolókhoz a másolási tevékenység használatával a data factory-folyamathoz."
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -13,51 +13,51 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: jingwang
-ms.openlocfilehash: e87117731a8af59fedc1bba903ef81b67d91c9f3
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 06b60968931d18e7c7219d83801a5433631ed470
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="copy-data-from-impala-using-azure-data-factory-beta"></a>Adatok másolása az Azure Data Factory (béta) használatával Impala
+# <a name="copy-data-from-impala-by-using-azure-data-factory-beta"></a>Adatok másolása az Impala Azure Data Factory (béta) használatával
 
-Ez a cikk ismerteti, hogyan használható a másolási tevékenység az Azure Data Factory adatokat másolni Impala. Buildekről nyújtanak a [másolása tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
+Ez a cikk a másolási tevékenység használható az Azure Data Factory adatokat másolni Impala módját ismerteti. Buildekről nyújtanak a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 
 > [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [másolási tevékenység során a V1](v1/data-factory-data-movement-activities.md).
+> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. Ha a Data Factory, amely általában a rendelkezésre álló, 1 verzióját használja [másolási tevékenység az 1-es verziójú](v1/data-factory-data-movement-activities.md).
 
 > [!IMPORTANT]
 > Ez az összekötő jelenleg bétaverziójú. Próbálja ki, és visszajelzést. Ne használja éles környezetben.
 
 ## <a name="supported-capabilities"></a>Támogatott képességei
 
-Adatok bármely támogatott fogadó adattárolóhoz Impala másolhatja. Adattároló források/mosdók, a másolási tevékenység által támogatott listájáért lásd: a [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
+Adatok bármely támogatott fogadó adattárolóhoz Impala másolhatja. A másolási tevékenység által támogatott adatforrások vagy mosdók adattárolókhoz listájáért lásd: a [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
-Az Azure Data Factory kapcsolódásának engedélyezése beépített illesztőprogramot tartalmaz, ezért nem szükséges manuálisan kell telepítenie minden olyan illesztőprogram ezt az összekötőt használja.
+ Adat-előállító kapcsolódásának engedélyezése beépített illesztőprogramot tartalmaz. Emiatt nem kell manuálisan a ezzel az összekötővel az illesztőprogram telepítéséhez.
 
-## <a name="getting-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 [!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
 
-A következő szakaszok részletesen bemutatják való Impala összekötő adat-előállító tartozó entitások meghatározásához használt tulajdonságokat.
+A következő szakaszok részletesen bemutatják adat-előállító tartozó entitások megadhatók a Impala összekötőhöz használt tulajdonságokat.
 
 ## <a name="linked-service-properties"></a>A kapcsolódószolgáltatás-tulajdonságok
 
-A következő tulajdonságok esetén Impala társított szolgáltatás támogatottak:
+A következő tulajdonságok Impala társított szolgáltatás esetén támogatottak.
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot kell beállítani: **Impala** | Igen |
-| gazdagép | A kiszolgáló IP-címét vagy állomásnevét kiszolgálónevét a Impala. (Ez 192.168.222.160)  | Igen |
+| type | A type tulajdonságot meg kell **Impala**. | Igen |
+| gazdagép | A kiszolgáló IP-címét vagy állomásnevét kiszolgálónevét a Impala (Ez azt jelenti, hogy 192.168.222.160).  | Igen |
 | port | A TCP-portot, amelyen a Impala kiszolgáló ügyfélkapcsolatokat. Az alapértelmezett érték: 21050.  | Nem |
-| authenticationType | A használandó hitelesítési típus. <br/>Két érték engedélyezett: **névtelen**, **SASLUsername**, **UsernameAndPassword** | Igen |
+| authenticationType | A használandó hitelesítési típus. <br/>Két érték engedélyezett **névtelen**, **SASLUsername**, és **UsernameAndPassword**. | Igen |
 | felhasználónév | A felhasználónév, a Impala kiszolgálóhoz való hozzáféréshez. Az alapértelmezett értéke névtelen SASLUsername használatakor.  | Nem |
-| jelszó | A jelszó, a felhasználónév megfelelő UsernameAndPassword használata esetén. Ez a mező megjelölése a SecureString tárolja biztonságos helyen az ADF, vagy a jelszó tárolása az Azure Key Vault választhat, és lehetővé teszik a másolási tevékenység lekéréses ott adatmásolás végrehajtása során – további információhoz [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). | Nem |
-| enableSsl | Meghatározza, hogy a kapcsolat titkosítása SSL használatával. Az alapértelmezett értéke hamis.  | Nem |
-| trustedCertPath | Megbízható Hitelesítésszolgáltatói tanúsítványok ellenőrzése a kiszolgáló SSL-en keresztül kapcsolódáskor tartalmazó .pem fájl teljes elérési útja. Ez a tulajdonság csak akkor állítható, önálló üzemeltetett infravörös SSL használatakor Az alapértelmezett érték a cacerts.pem fájlt az infravörös telepített:  | Nem |
-| useSystemTrustStore | Megadja, hogy a rendszer megbízható áruházból vagy a megadott PEM-fájl egy Hitelesítésszolgáltatói tanúsítványt használjon-e. Az alapértelmezett értéke hamis.  | Nem |
-| allowHostNameCNMismatch | Megadja, hogy egy hitelesítésszolgáltató által kiállított SSL tanúsítvány nevének egyeznie kell a gazdagép nevével a kiszolgáló SSL-en keresztül kapcsolódáskor-e. Az alapértelmezett értéke hamis.  | Nem |
-| allowSelfSignedServerCert | Megadja, hogy engedélyezi a kiszolgáló önaláírt tanúsítványokat. Az alapértelmezett értéke hamis.  | Nem |
+| jelszó | A jelszót, amely megfelel a felhasználó nevét UsernameAndPassword használatakor. Ez a mező szerint tárolja biztonságos helyen a Data Factory SecureString jelölheti meg. Is Azure Key Vault tárolni a jelszó és lehetővé teszik a másolási tevékenység lekéréses ott adatmásolás végrehajtásakor. További tudnivalókért lásd: [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). | Nem |
+| enableSsl | Meghatározza, hogy a kapcsolat SSL használatával titkosított. Az alapértelmezett érték **hamis**.  | Nem |
+| trustedCertPath | A teljes elérési útja a .pem fájl, amely tartalmazza a megbízható Hitelesítésszolgáltatói tanúsítvány segítségével ellenőrizze a kiszolgáló SSL-en keresztül csatlakoztatásakor. Ez a tulajdonság csak akkor, ha az SSL használatát Self-hosted integrációs futásidejű állítható be. Az alapértelmezett érték: a telepített integrációs futásidejű cacerts.pem fájlt.  | Nem |
+| useSystemTrustStore | Megadja, hogy a rendszer megbízható áruházból vagy a megadott PEM-fájl egy Hitelesítésszolgáltatói tanúsítványt használjon-e. Az alapértelmezett érték **hamis**.  | Nem |
+| allowHostNameCNMismatch | Megadja, hogy egy hitelesítésszolgáltató által kiállított SSL tanúsítvány nevének egyeznie kell a gazdagép nevével a kiszolgáló SSL-en keresztül csatlakoztatásakor-e. Az alapértelmezett érték **hamis**.  | Nem |
+| allowSelfSignedServerCert | Megadja, hogy engedélyezi a kiszolgáló önaláírt tanúsítványokat. Az alapértelmezett érték **hamis**.  | Nem |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhatja Self-hosted integrációs futásidejű vagy Azure integrációs futásidejű (ha az adattároló nyilvánosan elérhető). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
 
 **Példa**
@@ -87,7 +87,7 @@ A következő tulajdonságok esetén Impala társított szolgáltatás támogato
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Szakaszok és meghatározása adatkészletek esetében elérhető tulajdonságok teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a témakör Impala dataset által támogatott tulajdonságokról.
+Szakaszok és meghatározása adatkészletek esetében elérhető tulajdonságok teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a témakör a Impala dataset által támogatott tulajdonságokról.
 
 Adatok másolása Impala, állítsa be a type tulajdonságot az adathalmaz **ImpalaObject**. Nincs ilyen típusú dataset további típusra vonatkozó tulajdonság.
 
@@ -108,15 +108,15 @@ Adatok másolása Impala, állítsa be a type tulajdonságot az adathalmaz **Imp
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-Szakaszok és a rendelkezésre álló tevékenységek meghatározó tulajdonságok teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a témakör Impala forrás által támogatott tulajdonságokról.
+Szakaszok és a rendelkezésre álló tevékenységek meghatározó tulajdonságok teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a témakör a Impala forrástípus által támogatott tulajdonságokról.
 
-### <a name="impala-as-source"></a>Impala forrásaként
+### <a name="impala-as-a-source-type"></a>A forrás típusaként impala
 
-Adatok másolása Impala, állítsa be a forrás típusa a másolási tevékenység **ImpalaSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakasz:
+Adatok másolása Impala, állítsa be a forrás típusa a másolási tevékenység **ImpalaSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakasz.
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot a másolási tevékenység forrás értékre kell állítani: **ImpalaSource** | Igen |
+| type | A type tulajdonságot a másolási tevékenység forrás értékre kell állítani **ImpalaSource**. | Igen |
 | lekérdezés | Az egyéni SQL-lekérdezés segítségével adatokat olvasni. Például: `"SELECT * FROM MyTable"`. | Igen |
 
 **Példa**
@@ -152,4 +152,4 @@ Adatok másolása Impala, állítsa be a forrás típusa a másolási tevékenys
 ```
 
 ## <a name="next-steps"></a>További lépések
-Azure Data Factory támogatott adattárolókhoz adatok listáját tárolja, a következő témakörben: [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats).
+Források és mosdók adat-előállítóban másolási tevékenység által támogatott adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats).

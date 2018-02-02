@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/22/2017
+ms.date: 1/26/2018
 ms.author: pkc
-ms.openlocfilehash: 0e4a2aa0ed7327a8ed19e9a716b0bd97abc71d5c
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 970f1ff59560beaf898f22eb4e701088a6d5902a
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-service-fabric-support-options"></a>Az Azure Service Fabric támogatási lehetőségek
 
@@ -76,14 +76,15 @@ Az alábbiakban a Service Fabric által támogatott verziók listáját és azok
 | 5.5.* | 5.4.164.* |Kisebb vagy egyenlő, mint 2.5-ös verzió |Augusztus 10,2017    |
 | 5.6.* | 5.4.164.* |Kisebb vagy egyenlő, mint 2.6-os verziója |Október 13,2017   |
 | 5.7.* | 5.4.164.* |Kisebb vagy egyenlő, mint 2.7-es verzió |December 15,2017  |
-| 6.0.* | 5.6.205.* |Kisebb vagy egyenlő, mint 2.8-as verziója |Aktuális verzióra, és ezért nincs befejezési dátum |
+| 6.0.* | 5.6.205.* |Kisebb vagy egyenlő, mint 2.8-as verziója |30,2018. március     | 
+| 6.1.* | 5.7.221.* |Kisebb vagy egyenlő, mint a 3.0-s verzió |Aktuális verzióra, és ezért nincs befejezési dátum |
 
 ## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>Service Fabric előzetes verzió – üzemi használatra nem támogatott.
 Időről időre azt verzióira, amelyek azt szeretnénk, ha visszajelzést, amelyeket mintaként jelentős funkciót. Ezen előzetes verziói csak tesztelési célra használható. Az éles fürt mindig futnia kell egy támogatott, stabil, a Service Fabric-verzió. Előzetes verzióval mindig a fő- és alverzió verziószámát 255 kezdődik. Például a Service Fabric 255.255.5703.949 verzió jelenik meg, ha a verzió csak a tesztfürtökön lévő használni kívánt tartalmaz, és jelenleg előzetes verzióban érhető. Ezen előzetes kiadások is nem jelentik be a [Service Fabric csapat blogja](https://blogs.msdn.microsoft.com/azureservicefabric) és részletek rendelkezzen a szolgáltatásai.
 
 Nincs a preview kiadásokban fizetős támogatási lehetőség. A felsorolt lehetőségek valamelyikével [jelentés Azure Service Fabric problémák](https://docs.microsoft.com/azure/service-fabric/service-fabric-support#report-azure-service-fabric-issues) felteheti kérdéseit és visszajelzés küldése.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Service fabric-verzió egy Azure fürt frissítése](service-fabric-cluster-upgrade.md)
 - [Service Fabric verziója a különálló windows server-fürt frissítése](service-fabric-cluster-upgrade-windows-server.md)

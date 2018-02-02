@@ -5,19 +5,17 @@ services: azure-stack
 author: mattbriggs
 ms.service: azure-stack
 ms.topic: article
-ms.date: 12/12/2017
-ms.author: mabrigg
+ms.date: 01/31/2018
+ms.author: jeffgilb
+ms.reviewer: wfayed
 keywords: 
-ms.openlocfilehash: 642ed3298eec0bab5515df117c0310786358e417
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 2f15e130859272a729fb0ad6e0b718d4724f2103
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Az Azure verem datacenter integrációs - identitás
-
-*A következőkre vonatkozik: Azure verem integrált rendszerek*
-
 Az identitás-szolgáltatóktól Azure verem Azure Active Directory (Azure AD) vagy Active Directory összevonási szolgáltatások (AD FS) használatával telepítheti. Azure verem központi telepítése előtt meg kell nyitnia a választás. AD FS segítségével központi telepítés is nevezzük Azure verem kapcsolat nélküli módban való telepítése.
 
 A következő táblázatban a két azonosító lehetőségek közötti eltéréseket:
@@ -26,7 +24,7 @@ A következő táblázatban a két azonosító lehetőségek közötti eltérés
 |---------|---------|---------|
 |Számlázás|Kapacitás kell lennie.<br> Nagyvállalati Szerződés (EA) csak|A kapacitás vagy a fizetési,-akkor-használható<br>EA vagy Felhőszolgáltató (CSP)|
 |Identitás|Az AD FS kell lennie.|Azure AD vagy AD FS|
-|Piactér szindikálási|Jelenleg nem érhető el|Támogatott<br>BYOL licencelés|
+|Piactér szindikálási|Támogatott<br>BYOL licencelés|Támogatott<br>BYOL licencelés|
 |Regisztráció|Ajánlott, cserélhető adathordozóra van szükség<br> és egy különálló csatlakoztatott eszközön.|Automatikus|
 |Javítás és frissítés|Szükséges, cserélhető adathordozóra van szükség<br> és egy különálló csatlakoztatott eszközön.|Frissítési csomag közvetlenül tölthető le<br> az Azure verem az internetről.|
 
@@ -57,7 +55,7 @@ Követelmények:
 |Összetevő|Követelmény|
 |---------|---------|
 |Graph|Microsoft Active Directory 2012/2012 R2/2016|
-|AD FS|Windows Server 2012 vagy 2012 R2/2016|
+|AD FS|Windows Server 2012/2012 R2/2016|
 
 ## <a name="setting-up-graph-integration"></a>Graph-integráció beállítása
 
@@ -66,7 +64,7 @@ A következő információkra szükség az automation paraméterek bemeneteként
 
 |Paraméter|Leírás|Példa|
 |---------|---------|---------|
-|CustomADGlobalCatalog|A cél az Active Directory-erdő teljes Tartományneve<br>Biztosan el kívánja integrálni|a contoso.com|
+|CustomADGlobalCatalog|A cél az Active Directory-erdő teljes Tartományneve<br>Biztosan el kívánja integrálni|Contoso.com|
 |CustomADAdminCredentials|Egy LDAP olvasási engedéllyel rendelkező felhasználó|YOURDOMAIN\graphservice|
 
 ### <a name="create-user-account-in-the-existing-active-directory-optional"></a>Felhasználói fiók létrehozása, ha a meglévő Active Directoryban (nem kötelező)
@@ -110,7 +108,7 @@ Graph szolgáltatás Azure-készletben a következő protokollokat és portokat 
 |LDAP|389|TCP ÉS UDP|
 |LDAP SSL|636|TCP|
 |LDAP GC|3268|TCP|
-|A GLOBÁLIS KATALÓGUS – LDAP SSL|3269|TCP|
+|LDAP GC SSL|3269|TCP|
 
 ## <a name="setting-up-ad-fs-integration-by-downloading-federation-metadata"></a>Az AD FS-integráció beállítása úgy, hogy letölti az összevonási metaadatok
 
@@ -119,7 +117,7 @@ A következő információkra szükség az automation paraméterek bemenetként:
 |Paraméter|Leírás|Példa|
 |---------|---------|---------|
 |CustomAdfsName|A jogcím-szolgáltató neve. <cr>Úgy tűnik, így az AD FS kezdőlapja.|Contoso|
-|CustomAD<br>FSFederationMetadataEndpointUri|Összevonási metaadatok hivatkozás|https://ad01.contoso.com/federationmetadata/2007-06/federationmetadata.XML|
+|CustomAD<br>FSFederationMetadataEndpointUri|Összevonási metaadatok hivatkozás|https://ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml|
 
 
 ### <a name="trigger-automation-to-configure-claims-provider-trust-in-azure-stack"></a>Eseményindító automatizálási jogcím-szolgáltatói megbízhatóság Azure verem konfigurálása
@@ -158,7 +156,7 @@ A következő információkra szükség az automation paraméterek bemenetként:
 |Paraméter|Leírás|Példa|
 |---------|---------|---------|
 |CustomAdfsName|A jogcím-szolgáltató neve. Így az AD FS kezdőlapja jelenik meg.|Contoso|
-|CustomADFSFederationMetadataFile|Összevonási metaadatait tartalmazó fájl|https://ad01.contoso.com/federationmetadata/2007-06/federationmetadata.XML|
+|CustomADFSFederationMetadataFile|Összevonási metaadatait tartalmazó fájl|https://ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml|
 
 ### <a name="create-federation-metadata-file"></a>Hozzon létre összevonási metaadatait tartalmazó fájl
 
@@ -333,6 +331,6 @@ Ha nem sikerül, a parancsmagokat használatával hozhatja létre további napl�
    ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[Azure datacenter integráció a verem - végpontok közzététele](azure-stack-integrate-endpoints.md)
+[Az Azure verem regisztrálása](azure-stack-registration.md)

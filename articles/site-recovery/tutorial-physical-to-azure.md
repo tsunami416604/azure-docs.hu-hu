@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2017
 ms.author: raynew
-ms.openlocfilehash: ceb4b13e326b24360799c1a7a25fe48f213fabd7
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 1761da23c669d5370d12e5619e09b56c8b00c9a6
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>A helyszíni fizikai kiszolgálók Azure-bA vész-helyreállítási beállítása
 
@@ -64,7 +64,7 @@ Ellenőrizze, hogy az Azure-fiók jogosult az Azure virtuális gépek replikál�
 
 ### <a name="set-up-an-azure-network"></a>Azure-hálózat beállítása
 
-Állítson be egy [Azure hálózati](../virtual-network/virtual-network-get-started-vnet-subnet.md).
+Állítson be egy [Azure hálózati](../virtual-network/quick-create-portal.md).
 
 - Azure virtuális gépek kerülnek ehhez a hálózathoz, ha feladatátvételt követően jönnek létre.
 - A hálózati és a Recovery Services-tárolónak ugyanabban a régióban kell lennie.
@@ -142,7 +142,7 @@ Válassza ki, és ellenőrizze a tároló erőforrásait.
 2. Adja meg a tároló üzembe helyezési modellben.
 3. A Site Recovery ellenőrzi, hogy rendelkezik-e legalább egy kompatibilis Azure-tárfiókkal és -hálózattal.
 
-   ![cél](./media/tutorial-physical-to-azure/network-storage.png)
+   ![Cél](./media/tutorial-physical-to-azure/network-storage.png)
 
 
 ## <a name="create-a-replication-policy"></a>Replikációs házirend létrehozása
@@ -181,6 +181,6 @@ Az egyes kiszolgálók replikáció engedélyezése.
 
 Hozzáadott kiszolgálók figyelése, ellenőrizheti a számukra a felderített legutóbbi **konfigurációs kiszolgálók** > **utolsó lépjen kapcsolatba a**. Egy ütemezett felderítési idő várakozás nélkül hozzáadni, jelölje ki a konfigurációs kiszolgálót (ne kattintson azt), és kattintson a **frissítése**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Vészhelyreállítási próba végrehajtása](tutorial-dr-drill-azure.md)

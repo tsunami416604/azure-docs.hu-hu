@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: 381dacd14afe8a2cb20be8d5e5d8065034db22c8
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: dcc3da77d18a4488dcb4b74d78198f806cf3d64e
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Létrehozása, módosítása vagy törlése a virtuális hálózati társviszony-létesítés
 
 Megtudhatja, hogyan létrehozása, módosítása vagy törlése a virtuális hálózati társviszony-létesítés. Virtuális hálózati társviszony-létesítés lehetővé teszi a virtuális hálózatok csatlakoztatása az Azure gerincét a hálózaton keresztül. Amennyiben nincsenek társviszonyban, a rendszer továbbra is kezeli a virtuális hálózatok, külön erőforrások. Ha még nem ismeri a virtuális hálózati társviszony-létesítést, ajánlott olvasási a [virtuális hálózati társviszony-létesítési – áttekintés](virtual-network-peering-overview.md) befejezése és a [hozzon létre egy virtuális hálózati társviszony-létesítési oktatóanyag](virtual-network-create-peering.md), befejezése előtt a Ez a cikk feladatokat.
 
-Az azonos régiókban lévő virtuális hálózatok közötti társviszony kialakítása általánosan elérhető. Az eltérő régiókban lévő virtuális hálózatok közötti társviszony kialakítása jelenleg előzetes kiadásban érhető el az USA nyugati középső régiójában, a Közép-Kanada régióban és az USA 2. nyugati régiójában. [Regisztrálhatja az előfizetését az előzetes verzióra.](virtual-network-create-peering.md)
+Az azonos régiókban lévő virtuális hálózatok közötti társviszony kialakítása általánosan elérhető. Virtuális hálózatok különböző régiókban jelenleg előzetes verzióban érhetők társviszony. Lásd: [virtuális hálózati frissítések](https://azure.microsoft.com/en-us/updates/?product=virtual-network) az elérhető régiók. Meg kell [az előfizetés regisztrálása a előzetes](virtual-network-create-peering.md).
 
 > [!WARNING]
 > Az ezzel a forgatókönyvvel létrehozott virtuális társhálózatok rendelkezésre állása és megbízhatósága eltérő lehet az általánosan elérhető kiadások forgatókönyveitől. Előfordulhat, hogy a virtuális társhálózatok korlátozott képességekkel rendelkeznek, vagy nem érhetőek el minden Azure-régióban. A szolgáltatás rendelkezésre állásával és állapotával kapcsolatos legfrissebb értesítésekért tekintse meg az [Azure virtuális hálózati frissítésekkel kapcsolatos](https://azure.microsoft.com/updates/?product=virtual-network) oldalát.

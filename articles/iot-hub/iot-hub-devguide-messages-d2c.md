@@ -11,19 +11,19 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/19/2017
+ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 4e346306ecb8f4897a249454c537ce9a1a4c4011
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 48b904818c80b9175d45b88345634f11cf4a4812
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="send-device-to-cloud-messages-to-iot-hub"></a>Eszköz-felhő üzenetek küldése az IoT-központ
 
 Küldendő idősorozat telemetriai adatok és riasztások az eszközökről a megoldás háttérrendszeréhez, eszköz-felhő üzenetek küldése az eszközről az IoT hub. Az IoT-központ által támogatott eszközről a felhőbe lehetőségeket tárgyalását lásd: [eszközről a felhőbe kommunikációs útmutatást][lnk-d2c-guidance].
 
-Egy eszköz felé néző végpont keresztül eszközről a felhőbe üzeneteket küld (**/devices/ {deviceId} / üzenetek/események**). Útválasztási szabályokat, majd az üzenetek továbbításához a szolgáltatás felé néző végpontok az IoT hub egyikére. Útválasztási szabályokat a fejlécek és a központ átfutó eszközről a felhőbe üzenetek törzsének használatával ezek helyének meghatározása. Alapértelmezés szerint üzenetek átirányítja a beépített service felé néző végpont (**üzenetek/események**), amely pedig kompatibilis [Event Hubs][lnk-event-hubs]. Ezért, használhatja a szabványos [Event Hubs-integrációval és SDK-k] [ lnk-compatible-endpoint] a megoldás háttérrendszeréhez az eszközről a felhőbe üzeneteket fogadni.
+Egy eszköz felé néző végpont keresztül eszközről a felhőbe üzeneteket küld (**/devices/ {deviceId} / üzenetek/események**). Útválasztási szabályokat, majd az üzenetek továbbításához a szolgáltatás felé néző végpontok az IoT hub egyikére. Útválasztási szabályokat a fejlécek és az eszköz-felhő üzenetek törzsének használatával ezek helyének meghatározása. Alapértelmezés szerint üzenetek átirányítja a beépített service felé néző végpont (**üzenetek/események**), amely pedig kompatibilis [Event Hubs][lnk-event-hubs]. Ezért, használhatja a szabványos [Event Hubs-integrációval és SDK-k] [ lnk-compatible-endpoint] a megoldás háttérrendszeréhez az eszközről a felhőbe üzeneteket fogadni.
 
 Az IoT-központ megvalósítja az eszközről a felhőbe üzenetküldési adatfolyam üzenetkezelési minta használatával. Az IoT-központ eszközről a felhőbe üzenetek mint [Event Hubs] [ lnk-event-hubs] *események* mint [Service Bus] [ lnk-servicebus] *üzenetek* abban, hogy van egy nagy mennyiségű esemény haladnak át a szolgáltatást, amely több olvasók által is olvasható.
 
@@ -36,11 +36,11 @@ Eszköz-felhő IoT-központ az üzenetküldési jellemzői a következők:
 * Az IoT-központ lehetővé teszi, hogy egyidejűleg csatlakoztatott eszközök millióira (lásd: [kvóták és sávszélesség-szabályozási][lnk-quotas]).
 * Az IoT-központ nem engedélyezi a tetszőleges particionálást. Eszköz a felhőbe küldött üzeneteket particionáltak, azok származó alapján **deviceId**.
 
-Az IoT-központ és az Event Hubs szolgáltatások közötti különbségekről további információkért lásd: [összehasonlítása az Azure IoT-központ és az Azure Event Hubs][lnk-comparison].
+Az IoT-központ és az Event Hubs közötti különbségekről további információkért lásd: [összehasonlítása az Azure IoT-központ és az Azure Event Hubs][lnk-comparison].
 
 ## <a name="send-non-telemetry-traffic"></a>Nem telemetriai forgalom küldése
 
-Gyakran telemetriai adatpontok mellett eszközök küldött üzenetek és külön végrehajtásához, és a megoldás háttérrendszeréhez a kezelést igénylő kérelmek. Például kritikus riasztások háttérben lévő olyan adott műveletet kell kiváltani. A felhasználó egyszerűen készíthet egy [útválasztási szabály] [ lnk-devguide-custom] ilyen típusú üzenetek küldésére a feldolgozás, vagy a fejléc az üzenetben vagy az üzenet törzsében érték alapján dedikált végpont.
+Gyakran telemetriai adatokat mellett eszközök küldött üzenetek és külön végrehajtásához, és a megoldás háttérrendszeréhez a kezelést igénylő kérelmek. Például kritikus riasztások háttérben lévő olyan adott műveletet kell kiváltani. Írhat egy [útválasztási szabály] [ lnk-devguide-custom] ilyen típusú üzenetek küldésére a feldolgozás, vagy a fejléc az üzenetben vagy az üzenet törzsében érték alapján dedikált végpont.
 
 A legjobb módszer az ilyen üzenet feldolgozása kapcsolatos további információkért tekintse meg a [oktatóanyag: az IoT-központ eszközről a felhőbe üzenetek feldolgozása] [ lnk-d2c-tutorial] oktatóanyag.
 
@@ -71,7 +71,7 @@ A **ConnectionAuthMethod** tulajdonsága tartalmazza egy szerializált JSON-obje
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az SDK-k segítségével eszközről a felhőbe üzenetek küldéséhez,: [Azure IoT SDK-k][lnk-sdks].
 

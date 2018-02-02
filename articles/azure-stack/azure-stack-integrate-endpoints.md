@@ -5,15 +5,15 @@ services: azure-stack
 author: jeffgilb
 ms.service: azure-stack
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 01/31/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
 keywords: 
-ms.openlocfilehash: ae59ae74dd6dfe29a077ed5943eb1a16e561078a
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: e368109adc7db4c589ac37b28c4891cb3ec5346f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure datacenter integráció a verem - végpontok közzététele
 
@@ -46,11 +46,13 @@ Virtuális IP-címek nem jelennek meg, mert nem Azure közzétételi verem szük
 |Graph|Graph.*&lt;region>.&lt;fqdn>*|HTTPS|443|
 |Tanúsítvány-visszavonási listát|Crl.*&lt;region>.&lt;fqdn>*|HTTP|80|
 |DNS|&#42;.*&lt;region>.&lt;fqdn>*|TCP ÉS UDP|53|
-|Key Vault (felhasználó)|*.vault.*&lt;region>.&lt;fqdn>*|TCP|443|
-|Key Vault (rendszergazda)|&#42;.adminvault.*&lt;region>.&lt;fqdn>*|TCP|443|
+|Key Vault (felhasználó)|&#42;.vault.*&lt;region>.&lt;fqdn>*|HTTPS|443|
+|Key Vault (rendszergazda)|&#42;.adminvault.*&lt;region>.&lt;fqdn>*|HTTPS|443|
 |Tárolási üzenetsor|&#42;.queue.*&lt;region>.&lt;fqdn>*|HTTP<br>HTTPS|80<br>443|
 |Tárolási tábla|&#42;.table.*&lt;region>.&lt;fqdn>*|HTTP<br>HTTPS|80<br>443|
 |Storage Blob|&#42;.blob.*&lt;region>.&lt;fqdn>*|HTTP<br>HTTPS|80<br>443|
+|SQL-erőforrás-szolgáltató|sqladapter.dbadapter.*&lt;region>.&lt;fqdn>*|HTTPS|44300-44304|
+|MySQL-erőforrás-szolgáltató|mysqladapter.dbadapter.*&lt;region>.&lt;fqdn>*|HTTPS|44300-44304
 
 ## <a name="ports-and-urls-outbound"></a>Portok és URL-címek (kimenő)
 
@@ -67,4 +69,4 @@ Az Azure verem csak a transzparens proxy kiszolgálókat támogatja. Egy közpon
 
 
 ## <a name="next-steps"></a>További lépések
-[Az Azure verem datacenter integrációs - biztonsági](azure-stack-integrate-security.md)
+[Azure verem PKI-követelmények](azure-stack-pki-certs.md)

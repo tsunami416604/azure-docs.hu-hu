@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/09/2017
 ms.author: tdykstra
-ms.openlocfilehash: 522d0590595b0fc0fef503599f1677658f223bd8
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 58fc58049e346d60c0882a91bd04485746a15cbd
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="hostjson-reference-for-azure-functions"></a>az Azure Functions Host.JSON referenciája
 
@@ -49,6 +49,13 @@ Az alábbi minta *host.json* fájl van megadva az összes lehetséges beállít�
     },
     "functions": [ "QueueProcessor", "GitHubWebHook" ],
     "functionTimeout": "00:05:00",
+    "healthMonitor": {
+        "enabled": true,
+        "healthCheckInterval": "00:00:10",
+        "healthCheckWindow": "00:02:00",
+        "healthCheckThreshold": 6,
+        "counterThreshold": 0.80
+    },
     "http": {
         "routePrefix": "api",
         "maxOutstandingRequests": 20,
@@ -95,7 +102,7 @@ Az alábbi minta *host.json* fájl van megadva az összes lehetséges beállít�
 
 Ez a cikk az alábbi szakaszok azt ismertetik, hogy minden legfelső szintű tulajdonság. Az összes opcionálisak hiányában.
 
-## <a name="aggregator"></a>gyűjtő
+## <a name="aggregator"></a>aggregator
 
 Meghatározza, hogy hány függvény meghívásához kell összesíteni mikor [kiszámítása metrikákat az Application Insights](functions-monitoring.md#configure-the-aggregator). 
 
@@ -135,13 +142,13 @@ Szabályozza a [Application Insights szolgáltatással mintavételi](functions-m
 |IsEnabled|hamis|Engedélyezheti vagy letilthatja a mintavétel.| 
 |maxTelemetryItemsPerSecond|5|A küszöbérték, mely mintavételi kezdődik.| 
 
-## <a name="eventhub"></a>Az EventHub
+## <a name="eventhub"></a>eventHub
 
 Konfigurációs beállításainak [Eseményközpont eseményindítók és kötések](functions-bindings-event-hubs.md).
 
 [!INCLUDE [functions-host-json-event-hubs](../../includes/functions-host-json-event-hubs.md)]
 
-## <a name="functions"></a>függvény
+## <a name="functions"></a>functions
 
 A feladat gazdagépen futtatandó funkciók listáját.  Üres tömb azt jelenti, hogy minden függvények futtatása.  Készült, csak ha [helyileg futó](functions-run-local.md). Függvény alkalmazásokban, használja a *function.json* `disabled` helyett ezt a tulajdonságot a *host.json*.
 
@@ -161,6 +168,30 @@ Azt jelzi, hogy az időkorlát tartama az összes funkciót. A felhasználási c
 }
 ```
 
+## <a name="healthmonitor"></a>healthMonitor
+
+Konfigurációs beállításainak [állomás figyelő](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Host-Health-Monitor).
+
+```
+{
+    "healthMonitor": {
+        "enabled": true,
+        "healthCheckInterval": "00:00:10",
+        "healthCheckWindow": "00:02:00",
+        "healthCheckThreshold": 6,
+        "counterThreshold": 0.80
+    }
+}
+```
+
+|Tulajdonság  |Alapértelmezett | Leírás |
+|---------|---------|---------| 
+|engedélyezve|igaz|Hogy az engedélyezve van. | 
+|healthCheckInterval|10 másodperc|A háttérben történő rendszeres állapotfigyelő közötti időközt ellenőrzi. | 
+|healthCheckWindow|2 perc|Egy alkalommal csúszóablak együtt használható a `healthCheckThreshold` beállítást.| 
+|healthCheckThreshold|6|Az állapot-ellenőrzéssel maximálisan megengedett számú meghiúsulhatnak előtt állomás újrahasznosítást lehet kezdeményezni.| 
+|counterThreshold|0.80|A küszöbérték, amelynél a teljesítményszámláló akkor veszi figyelembe a nem megfelelő.| 
+
 ## <a name="http"></a>http
 
 Konfigurációs beállításainak [http eseményindítók és kötések](functions-bindings-http-webhook.md).
@@ -177,7 +208,7 @@ Egy feladat állomás egyedi azonosítója. A kötőjelek kisbetű GUID távolí
 }
 ```
 
-## <a name="logger"></a>Naplózó
+## <a name="logger"></a>logger
 
 Vezérlők szerint naplók szűrése egy [ILogger objektum](functions-monitoring.md#write-logs-in-c-functions) vagy [context.log](functions-monitoring.md#write-logs-in-javascript-functions).
 
@@ -226,7 +257,7 @@ Konfigurációs beállításainak [tárolási eseményindítók és kötések](f
 |maxDequeueCount|5|A rendszer hányszor próbálkozzon, egy üzenet feldolgozása előtt helyezze át a poison várólista száma.| 
 |newBatchThreshold|batchSize/2|A küszöbérték, ahol az üzenetek új kötegelt beolvasott.| 
 
-## <a name="servicebus"></a>A Szolgáltatásbusz
+## <a name="servicebus"></a>serviceBus
 
 Konfigurációs beállítást [Service Bus-eseményindítók és kötések](functions-bindings-service-bus.md).
 
@@ -298,7 +329,7 @@ Egy [megosztott kód könyvtárak](functions-reference-csharp.md#watched-directo
 Feladatnév hub kell betűvel kezdődhet, és csak betűkből és számokból állhat. Ha nincs megadva, alapértelmezés szerint a feladat hub függvény alkalmazások ez **DurableFunctionsHub**. További információkért lásd: [hubok feladat](durable-functions-task-hubs.md).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Útmutató: a host.json fájl frissítése](functions-reference.md#fileupdate)

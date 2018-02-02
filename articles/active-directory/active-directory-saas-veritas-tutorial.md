@@ -4,20 +4,20 @@ description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Az
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.assetid: c47894b1-f5df-4755-845d-f12f4c602dc4
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/08/2017
+ms.date: 01/31/2017
 ms.author: jeedes
-ms.openlocfilehash: fbec2cee6e1ecd23b34fd879d978a05bd5a04ac4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: eb9243367d0817d37549fa147c6c5e1d2acf3761
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-veritas-enterprise-vaultcloud-sso"></a>Oktatóanyag: Azure Active Directoryval integrált Veritas vállalati Vault.cloud egyszeri bejelentkezés
 
@@ -110,7 +110,23 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-veritas-tutorial/tutorial_veritas_url.png)
 
-    Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://personal.ap.archive.veritas.com/CID=<CUSTOMERID>`
+    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://personal.ap.archive.veritas.com/CID=<CUSTOMERID>`
+
+    b. Az a **azonosító** szövegmezőhöz az Adatközponton adott az URL-cím használata
+
+    | Adatközpont| URL-cím |
+    |----------|----|
+    | Észak-Amerika| `https://auth.lax.archivecloud.net` |
+    | Európa | `https://auth.ams.archivecloud.net` |
+    | Ázsia és a Csendes-óceáni térség| `https://auth.syd.archivecloud.net`|
+
+    c. Az a **válasz URL-CÍMEN** szövegmezőhöz az Adatközponton adott az URL-cím használata
+
+    | Adatközpont| URL-cím |
+    |----------|----|
+    | Észak-Amerika| `https://auth.lax.archivecloud.net` |
+    | Európa | `https://auth.ams.archivecloud.net` |
+    | Ázsia és a Csendes-óceáni térség| `https://auth.syd.archivecloud.net`|
     
     > [!NOTE] 
     > Ez az érték nincs valós. Frissítse ezt az értéket a tényleges bejelentkezési URL-címet. Ügyfél [Veritas vállalati Vault.cloud SSO ügyfél-támogatási csoport](https://www.veritas.com/support/.html) lekérni ezt az értéket. 

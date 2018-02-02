@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 10/11/2017
 ms.author: sashan
-ms.openlocfilehash: ef9463e464928b8fa8e64019037a41711cb77830
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 7d731865ae8da9e1ae9e9f11eef814b86fc10c64
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="overview-failover-groups-and-active-geo-replication"></a>Áttekintés: Feladatátvételi csoportok és aktív georeplikáció
 Aktív georeplikáció legfeljebb négy olvasható másodlagos adatbázisok konfigurálása az ugyanazon vagy másik data center helyeken (régió) teszi lehetővé. Másodlagos adatbázisok érhetők el, a lekérdezésre, és a feladatátvételi, ha van egy adatközpont-meghibásodás után, vagy nem az elsődleges adatbázishoz való kapcsolódáshoz. A feladatátvételi kell kezdeményeznie manuálisan az alkalmazás a felhasználó. A feladatátvétel után az új elsődleges van egy másik kapcsolati végpontot. 
@@ -71,7 +71,7 @@ Az aktív georeplikáció szolgáltatás a következő alapvető lehetőségeket
 * **Több olvasható másodlagos adatbázis**: két vagy több másodlagos adatbázist növelni a redundanciát és az elsődleges adatbázis és az alkalmazás adatvédelmi szintet. Ha több másodlagos adatbázist, az alkalmazás akkor is védett akkor is, ha egy másodlagos adatbázis nem sikerül. Ha csak egy másodlagos adatbázist, és nem sikerül, az alkalmazás van kitéve nagyobb eséllyel addig, amíg létrejön egy új másodlagos adatbázis.
 
    > [!NOTE]
-   > Aktív georeplikáció segítségével összeállíthat egy globálisan elosztott alkalmazást, és meg kell adni az négynél több segions tárolt adatok csak olvasási hozzáféréssel, ha egy másodlagos (Ez a folyamat láncolás) másodlagos hozhat létre. Így az adatbázis-replikáció gyakorlatilag korlátlan méretezési érhető el. Ezenkívül láncolás csökkenti a replikációt az elsődleges adatbázisból. A kompromisszum a levél szélső másodlagos adatbázisok a megnövekedett replikációs késés. 
+   > Aktív georeplikáció segítségével összeállíthat egy globálisan elosztott alkalmazást és meg kell adni a csak olvasható hozzáférést négynél több régióban lévő adatokhoz, ha egy másodlagos (Ez a folyamat láncolás) másodlagos hozhat létre. Így az adatbázis-replikáció gyakorlatilag korlátlan méretezési érhető el. Ezenkívül láncolás csökkenti a replikációt az elsődleges adatbázisból. A kompromisszum a levél szélső másodlagos adatbázisok a megnövekedett replikációs késés. 
    >
 
 * **Az adatbázisok rugalmas készlethez támogatási**: aktív georeplikáció a rugalmas készletben bármely adatbázis konfigurálhatók. A másodlagos adatbázis lehet egy másik rugalmas készletben. Rendszeres adatbázisok esetén a másodlagos lehet egy rugalmas készlet és fordítva fordítva, amíg a szolgáltatási rétegekkel megegyeznek. 
@@ -148,7 +148,7 @@ Korábban bemutatott automatikus feladatátvételt csoportok (az előzetes verzi
 | [sys.geo_replication_links (az Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |Az összes meglévő replikációs hivatkozások az egyes adatbázisok információt ad vissza az Azure SQL Database logikai kiszolgálón. |
 | [sys.dm_geo_replication_link_status (az Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |A replikáció legutóbbi utolsó replikációs késés és egyéb információkat a replikációs hivatkozás lekérdezi a megadott SQL-adatbázis. |
 | [sys.dm_operation_status (az Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Minden adatbázis-műveleteknél, többek között a replikációs hivatkozások állapotának állapotát jeleníti meg. |
-| [az sp_wait_for_database_copy_sync (az Azure SQL Database)](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |hatására a alkalmazás Várjon, amíg a végrehajtott tranzakciók replikációja és az aktív másodlagos adatbázis nyugtázni. |
+| [sp_wait_for_database_copy_sync (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |hatására a alkalmazás Várjon, amíg a végrehajtott tranzakciók replikációja és az aktív másodlagos adatbázis nyugtázni. |
 |  | |
 
 ## <a name="manage-sql-database-failover-using-powershell"></a>SQL-adatbázis feladatátvétel PowerShell használatával kezelése
@@ -156,15 +156,15 @@ Korábban bemutatott automatikus feladatátvételt csoportok (az előzetes verzi
 | Parancsmag | Leírás |
 | --- | --- |
 | [Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase) |Egy vagy több adatbázis lekérdezi. |
-| [Új AzureRmSqlDatabaseSecondary](/powershell/module/azurerm.sql/new-azurermsqldatabasesecondary) |Létrehoz egy meglévő adatbázis másodlagos adatbázist, és elindítja a adatreplikáció. |
+| [New-AzureRmSqlDatabaseSecondary](/powershell/module/azurerm.sql/new-azurermsqldatabasesecondary) |Létrehoz egy meglévő adatbázis másodlagos adatbázist, és elindítja a adatreplikáció. |
 | [Set-AzureRmSqlDatabaseSecondary](/powershell/module/azurerm.sql/set-azurermsqldatabasesecondary) |Egy másodlagos az adatbázis elsődleges feladatátvétel kezdeményezése vált. |
 | [Remove-AzureRmSqlDatabaseSecondary](/powershell/module/azurerm.sql/remove-azurermsqldatabasesecondary) |SQL-adatbázis és a megadott másodlagos adatbázis közötti adatreplikáció leáll. |
 | [Get-AzureRmSqlDatabaseReplicationLink](/powershell/module/azurerm.sql/get-azurermsqldatabasereplicationlink) |Lekérdezi a földrajzi-replikációs hivatkozások az Azure SQL Database és egy erőforráscsoport vagy SQL Server között. |
-| [Új AzureRmSqlDatabaseFailoverGroup](/powershell/module/azurerm.sql/set-azurermsqldatabasefailovergroup) |   Ez a parancs létrehoz egy feladatátvételi csoport, és regisztrálja azt az elsődleges és másodlagos kiszolgálók|
+| [New-AzureRmSqlDatabaseFailoverGroup](/powershell/module/azurerm.sql/set-azurermsqldatabasefailovergroup) |   Ez a parancs létrehoz egy feladatátvételi csoport, és regisztrálja azt az elsődleges és másodlagos kiszolgálók|
 | [Remove-AzureRmSqlDatabaseFailoverGroup](/powershell/module/azurerm.sql/remove-azurermsqldatabasefailovergroup) | A feladatátvételi csoport eltávolítása a kiszolgálóról, és törli az összes másodlagos adatbázisok a csoport tartalmazza |
 | [Get-AzureRmSqlDatabaseFailoverGroup](/powershell/module/azurerm.sql/get-azurermsqldatabasefailovergroup) | Lekéri a feladatátvételi csoport konfigurálása |
 | [Set-AzureRmSqlDatabaseFailoverGroup](/powershell/module/azurerm.sql/set-azurermsqldatabasefailovergroup) |   A feladatátvételi csoport konfigurációját módosítja |
-| [Kapcsoló-AzureRMSqlDatabaseFailoverGroup](/powershell/module/azurerm.sql/switch-azurermsqldatabasefailovergroup) | Eseményindítók a másodlagos kiszolgáló a feladatátvételi csoport feladatainak átvétele |
+| [Switch-AzureRMSqlDatabaseFailoverGroup](/powershell/module/azurerm.sql/switch-azurermsqldatabasefailovergroup) | Eseményindítók a másodlagos kiszolgáló a feladatátvételi csoport feladatainak átvétele |
 |  | |
 
 > [!IMPORTANT]
@@ -190,7 +190,7 @@ Korábban bemutatott automatikus feladatátvételt csoportok (az előzetes verzi
 | [Frissítés feladatátvételi csoport](/rest/api/sql/failovergroups/update) | Egy feladatátvételi csoport frissíti. |
 |  | |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Mintaparancsfájlok lásd:
    - [Konfigurálja és feladatátvételi egy önálló adatbázis aktív georeplikációt használ](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
    - [Konfigurálja és feladatátvételi egy készletezett adatbázis aktív georeplikációt használ](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)

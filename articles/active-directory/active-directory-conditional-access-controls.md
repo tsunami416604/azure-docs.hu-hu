@@ -16,11 +16,11 @@ ms.workload: identity
 ms.date: 11/29/2017
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 4cb225266a45808e5fda271e901749bf03c636e2
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 533229ae90828a0aeba9f10cbdfdb70afa21e1c5
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="controls-in-azure-active-directory-conditional-access"></a>A vezérlők Azure Active Directory feltételes hozzáférés beállítása 
 
@@ -30,11 +30,11 @@ A [Azure Active Directory (Azure AD) feltételes hozzáférés](active-directory
 
 - "**Majd ehhez**" nevezik **vezérlők**
 
-![vezérlő](./media/active-directory-conditional-access-controls/11.png)
+![Vezérlés](./media/active-directory-conditional-access-controls/11.png)
 
 Egy feltétel utasítást a vezérlőkkel kombinációja a feltételes hozzáférési házirend jelöli.
 
-![vezérlő](./media/active-directory-conditional-access-controls/12.png)
+![Vezérlés](./media/active-directory-conditional-access-controls/12.png)
 
 Minden vezérlő követelmény, hogy teljesülnek a személy által vagy rendszer jelentkezik be, vagy a bejelentkezés után a felhasználó a korlátozását teheti meg. 
 
@@ -46,18 +46,18 @@ A vezérlők két típusa van:
 
 Ez a témakör ismerteti a különböző vezérlők elérhető Azure AD feltételes hozzáférésével. 
 
-## <a name="grant-controls"></a>Támogatás vezérlők
+## <a name="grant-controls"></a>Engedélyezési vezérlők
 
 Támogatás vezérlőkkel teljesen letiltja a hozzáférést, vagy a kívánt vezérlők kiválasztásával további követelményekkel rendelkező hozzáférést. Több vezérlő is van szüksége:
 
 - Az összes kijelölt vezérlők teljesítendő (*és*) 
 - Egy kijelölt teljesítendő vezérlő (*vagy*)
 
-![vezérlő](./media/active-directory-conditional-access-controls/17.png)
+![Vezérlés](./media/active-directory-conditional-access-controls/17.png)
 
 
 
-### <a name="multi-factor-authentication"></a>Többtényezős hitelesítés
+### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
 Ez a vezérlő segítségével a többtényezős hitelesítést a megadott felhő-alkalmazás eléréséhez. Ez a vezérlő a következő multi-factor Authentication-szolgáltatók támogatja: 
 
@@ -69,7 +69,7 @@ A multi-factor authentication segítségével erőforrások védelme a fent konf
 
 
 
-### <a name="compliant-device"></a>Szabályzatnak megfelelő eszköz
+### <a name="compliant-device"></a>Megfelelő eszköz
 
 Konfigurálhatja, amelyek az eszközalapú feltételes hozzáférési szabályzatokat. Eszközalapú feltételes hozzáférési házirend célja a hozzáférési jogot a konfigurált erőforrások megbízható eszközökről. Megfelelő eszközökre használata egy beállítást meg kell adnia a megbízható eszközök. További információkért lásd: [Azure Active Directory eszközalapú feltételes hozzáférés szabályzatainak beállítása](active-directory-conditional-access-policy-connected-applications.md).
 
@@ -107,7 +107,7 @@ Ezek az intézkedések egyes külső vagy egyéni szolgáltatást is feltételes
 
 Jelenleg a egy kompatibilis szolgáltatást nyújtó szolgáltatók a következők:
 
-- Duo biztonsági
+- [Duo biztonsági](https://duo.com/docs/azure-ca)
 
 - RSA
 
@@ -123,12 +123,12 @@ Másolja át a JSON-adatokat, és illessze be a kapcsolódó szövegmezőbe. Ne 
 
 Hozzon létre egy egyéni vezérlő nem található a **kezelése** szakasza a **feltételes hozzáférés** lap.
 
-![vezérlő](./media/active-directory-conditional-access-controls/82.png)
+![Vezérlés](./media/active-directory-conditional-access-controls/82.png)
 
 Kattintson a **új egyéni vezérlő**, megnyílik egy panel a szövegmezőben a JSON-adatok a vezérlő.  
 
 
-![vezérlő](./media/active-directory-conditional-access-controls/81.png)
+![Vezérlés](./media/active-directory-conditional-access-controls/81.png)
 
 
 ### <a name="deleting-custom-controls"></a>Egyéni vezérlők törlése
@@ -150,18 +150,18 @@ Egyéni vezérlő szerkesztése, törlése az aktuális vezérlő, és hozzon l�
 
 ## <a name="session-controls"></a>Munkamenet-vezérlők
 
-Munkamenet vezérlők a felhőalapú alkalmazások korlátozott tapasztalatok teszik lehetővé. A munkamenet vezérlők felhőalkalmazások érvényesíti, és további Azure AD-be a munkamenetre vonatkozó az alkalmazás által biztosított információk alapján.
+A munkamenet-vezérlők a funkciók korlátozását teszik lehetővé a felhőalkalmazásokban. A munkamenet vezérlők felhőalkalmazások érvényesíti, és további Azure AD-be a munkamenetre vonatkozó az alkalmazás által biztosított információk alapján.
 
-![vezérlő](./media/active-directory-conditional-access-controls/31.png)
+![Vezérlés](./media/active-directory-conditional-access-controls/31.png)
 
-### <a name="use-app-enforced-restrictions"></a>Használja a kényszerített alkalmazásra vonatkozó korlátozások
+### <a name="use-app-enforced-restrictions"></a>Alkalmazás által kényszerített korlátozások használata
 
 A vezérlő segítségével az Azure AD át az eszköz információkat a cloud app szükséges. Ez segít a cloud app, ha a felhasználó a megfelelő eszköz vagy a tartományhoz csatlakoztatott eszköz származik. Ez a vezérlő jelenleg csak a SharePoint, a cloud app támogatott. SharePoint biztosít a felhasználók egy teljes vagy korlátozott élmény attól függően, hogy az eszköz állapota az eszközinformáció használja.
 A SharePoint korlátozott hozzáférést igényelnek kapcsolatos további tudnivalókért lásd: [szabályozhatja a hozzáférést a nem felügyelt eszközökön](https://aka.ms/spolimitedaccessdocs).
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha meg szeretné ismerni a feltételes hozzáférési házirend konfigurálása tudnivalókat [Ismerkedés a feltételes hozzáférés az Azure Active Directoryban](active-directory-conditional-access-azure-portal-get-started.md).
 

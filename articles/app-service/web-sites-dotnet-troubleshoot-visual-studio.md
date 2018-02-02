@@ -3,8 +3,8 @@ title: "Az Azure App Service szolgáltatásban a Visual Studio használatával w
 description: "Megtudhatja, hogyan hibáinak elhárítása az Azure-webalkalmazás távoli hibakeresés, a nyomkövetés és a Visual Studio 2013-bA beépített naplózási eszközök segítségével."
 services: app-service
 documentationcenter: .net
-author: tdykstra
-manager: erikre
+author: cephalin
+manager: cfowler
 editor: 
 ms.assetid: def8e481-7803-4371-aa55-64025d116c97
 ms.service: app-service
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
-ms.author: rachelap
-ms.openlocfilehash: 1e3aff1898665c834a70e6c49f23e408a508b10a
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.author: cephalin
+ms.openlocfilehash: 6b1d5694c4d80a4db584b0c76a044dd596c5d553
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="troubleshoot-a-web-app-in-azure-app-service-using-visual-studio"></a>Az Azure App Service szolgáltatásban a Visual Studio használatával webes alkalmazás hibaelhárítása
 ## <a name="overview"></a>Áttekintés
@@ -96,14 +96,14 @@ Gyakran a legegyszerűbb módja, ha a hiba okát az engedélyezi a részletes hi
     Megjelenik a csomópontot, amely hozzáférést biztosít a webalkalmazás tartalmi fájlokat és naplófájlokat.
 2. Bontsa ki a **fájlok** csomópontját, és kattintson duplán a *Web.config* fájlt.
 
-    ![Nyissa meg a Web.config fájlban](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfig.png)
+    ![Open Web.config](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfig.png)
 
     A Visual Studio a Web.config fájl megnyitása a távoli webes alkalmazás, és a címsorában található a fájl neve melletti [távoli] mutatja.
 3. Adja hozzá a következő sort a `system.web` elem:
 
     `<customErrors mode="Off"></customErrors>`
 
-    ![Web.config szerkesztése](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfigedit.png)
+    ![Edit Web.config](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfigedit.png)
 4. Frissítse a böngészőt, amely a unhelpful hibaüzenet látható, és most kap egy részletes hibaüzenetet, például az alábbi példa:
 
     ![Részletes hibaüzenet](./media/web-sites-dotnet-troubleshoot-visual-studio/detailederror.png)
@@ -117,9 +117,9 @@ Ha a részletes hibaüzenet nem elegendő információt tartalmaznak, és nem le
 
 Távoli hibakeresés nem működik a Visual Studio Express kiadásait.
 
-Ez a szakasz bemutatja, hogyan segítségével távolról hoz létre a projekt hibakeresési [ASP.NET webalkalmazás létrehozása a Azure][app-service-web-get-started-dotnet.md].
+Ez a szakasz bemutatja, hogyan segítségével távolról hoz létre a projekt hibakeresési [egy ASP.NET-webalkalmazás létrehozása az Azure-ban](app-service-web-get-started-dotnet.md).
 
-1. Nyissa meg a webes projektet a [ASP.NET webalkalmazás létrehozása a Azure][app-service-web-get-started-dotnet.md].
+1. Nyissa meg a webes projektet a [egy ASP.NET-webalkalmazás létrehozása az Azure-ban](app-service-web-get-started-dotnet.md).
 
 2. Nyissa meg *Controllers\HomeController.cs*.
 
@@ -135,7 +135,7 @@ Ez a szakasz bemutatja, hogyan segítségével távolról hoz létre a projekt h
 
 5. A **Megoldáskezelőben**, kattintson jobb gombbal a projektre, majd kattintson **közzététel**.
 
-6. Az a **profil** legördülő listában válassza azonos kiértékelése során használt [ASP.NET webalkalmazás létrehozása a Azure][app-service-web-get-started-dotnet.md]. Kattintson a beállítások.
+6. Az a **profil** legördülő listában válassza azonos profilját, amikor a használt [egy ASP.NET-webalkalmazás létrehozása az Azure-ban](app-service-web-get-started-dotnet.md). Kattintson a beállítások.
 
 7. Az a **közzététel** párbeszédpanel, kattintson a **beállítások** lapra, és módosítsa **konfigurációs** való **Debug**, és kattintson a  **Mentés**.
 
@@ -222,7 +222,7 @@ Távoli hibakeresés csak működik együtt a folyamatos webjobs-feladatok. Üte
 
 15. Jelentkezzen be Azure hitelesítő adataival, és kattintson a webjobs-feladat neve az a webjobs-feladat a lap megnyitásához.
 
-     ![Kattintson a ContosoAdsWebJob](./media/web-sites-dotnet-troubleshoot-visual-studio/clickcaw.png)
+     ![Click ContosoAdsWebJob](./media/web-sites-dotnet-troubleshoot-visual-studio/clickcaw.png)
 
      Az irányítópult azt mutatja, hogy a `GenerateThumbnail` nemrég végrehajtott függvény.
 
@@ -579,7 +579,7 @@ Sikertelen kérelmek nyomkövetési naplóit egy böngészőben, közvetlenül a
 
 7. Nyissa meg a *naplófájlok* mappát.
 
-    ![Nyissa meg a naplófájlok mappa](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilesfolder.png)
+    ![Open LogFiles folder](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilesfolder.png)
 
 8. Nyissa meg a W3SVC plusz egy numerikus érték nevű mappát.
 
@@ -595,7 +595,7 @@ Sikertelen kérelmek nyomkövetési naplóit egy böngészőben, közvetlenül a
 
     ![Sikertelen kérelmek követésének böngészőben](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-failedrequestinbrowser.png)
 
-## <a name="nextsteps"></a>Következő lépések
+## <a name="nextsteps"></a>További lépések
 Megtudhatta, hogyan Visual Studio segítségével egyszerűen egy Azure webalkalmazás által létrehozott naplófájlok megtekintéséhez. Az alábbi szakaszokban további forrásanyagokra mutató hivatkozásokat tartalmaz a kapcsolódó témaköröket:
 
 * Az Azure web app hibaelhárítása
@@ -637,7 +637,7 @@ Nincsenek nem alapos, naprakész állapotban Bevezetés az ASP.NET nyomkövetés
 
 * [Figyelés és Telemetriai (valós felhőalapú alkalmazások összeállítása az Azure-ral)](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry).<br>
   E-könyv fejezet az ajánlások a nyomkövetés az Azure felhőalapú alkalmazásokhoz.
-* [Az ASP.NET nyomkövetési](http://msdn.microsoft.com/library/ms972204.aspx)<br/>
+* [ASP.NET Tracing](http://msdn.microsoft.com/library/ms972204.aspx)<br/>
   Régi, de továbbra is a tulajdonos alapszintű bevezetést helyes erőforrás.
 * [Nyomkövetésfigyelők](http://msdn.microsoft.com/library/4y5y10s7.aspx)<br/>
   Információ a nyomkövetésfigyelők, de nem említse meg a [WebPageTraceListener](http://msdn.microsoft.com/library/system.web.webpagetracelistener.aspx).

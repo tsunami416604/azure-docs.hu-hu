@@ -15,18 +15,18 @@ ms.workload: web
 ms.date: 6/7/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: 490112417870fb3bfdb75abdb82f9adfff550f0a
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 2b568bd22858a42178e2821e0e97a3b4ebdfccd5
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>Az Azure App Service Jenkins és az Azure parancssori felület telepítése
-Java-webalkalmazás telepítése az Azure-ba, használja az Azure CLI [Jenkins csővezeték](https://jenkins.io/doc/book/pipeline/). Ebben az oktatóanyagban létrehoz egy CI/CD folyamat egy Azure virtuális gépen történő is beleértve:
+Java-webalkalmazás telepítése az Azure-ba, használja az Azure CLI [Jenkins csővezeték](https://jenkins.io/doc/book/pipeline/). Ebben az oktatóanyagban létrehozhat egy CI/CD folyamatot egy Azure-beli virtuális gépen, továbbá megismerkedhet a következőkkel is:
 
 > [!div class="checklist"]
 > * Jenkins virtuális gép létrehozása
-> * Jenkins konfigurálása
+> * A Jenkins konfigurálása
 > * Webalkalmazás létrehozása az Azure-ban
 > * A GitHub-tárházban előkészítése
 > * Jenkins folyamat létrehozása
@@ -62,7 +62,7 @@ Egy Azure hitelesítő adatok Azure CLI végrehajtására van szükség.
 
 ## <a name="create-an-azure-app-service-for-deploying-the-java-web-app"></a>Az Azure App Service üzembe helyezéséhez a Java-webalkalmazás létrehozása
 
-Az Azure App Service-csomagot hozzon létre a **szabad** árképzési szint használatával a [az App Service-csomagot hozzon létre](/cli/azure/appservice/plan#create) CLI parancsot. Az App Service-csomagot határoz meg a fizikai erőforrásokat, az alkalmazások tárolására szolgálnak. Az App Service-csomagra hozzárendelt összes alkalmazás ossza meg ezeket az erőforrásokat, lehetővé téve költség menthetők, ha több alkalmazást üzemeltető. 
+Az Azure App Service-csomagot hozzon létre a **szabad** árképzési szint használatával a [az App Service-csomagot hozzon létre](/cli/azure/appservice/plan#az_appservice_plan_create) CLI parancsot. Az App Service-csomagot határoz meg a fizikai erőforrásokat, az alkalmazások tárolására szolgálnak. Az App Service-csomagra hozzárendelt összes alkalmazás ossza meg ezeket az erőforrásokat, lehetővé téve költség menthetők, ha több alkalmazást üzemeltető. 
 
 ```azurecli-interactive
 az appservice plan create \
@@ -121,7 +121,7 @@ Amikor készen áll a web app-definíciót, az Azure parancssori felület inform
 
 ### <a name="configure-java"></a>Java konfigurálása 
 
-A Java runtime konfiguráció az alkalmazást igénylő a [az App Service web config frissítés](/cli/azure/appservice/web/config#update) parancsot.
+A Java runtime konfiguráció az alkalmazást igénylő a [az App Service web config frissítés](/cli/azure/appservice/web/config#az_appservice_web_config_update) parancsot.
 
 A következő parancsot konfigurálása a webalkalmazás a legújabb Java 8 JDK futtathatnak és [Apache Tomcat](http://tomcat.apache.org/) 8.0.
 
@@ -167,7 +167,7 @@ Nyissa meg webböngészővel Jenkins, kattintson **új elem**.
 ## <a name="verify-your-web-app"></a>A webalkalmazás ellenőrzése
 A WAR ellenőrzése fájl sikeresen telepítve lett a webes alkalmazást. Nyisson meg egy webböngészőt:
 
-* Keresse fel a http://&lt;alkalmazás_neve >.azurewebsites.net/api/calculator/ping  
+* Go to http://&lt;app_name>.azurewebsites.net/api/calculator/ping  
 Lásd:
 
         Welcome to Java Web App!!! This is updated!
@@ -214,19 +214,19 @@ Webes alkalmazás Linux egy másik módja a környezetben, amely Docker használ
     ]
     ```
     
-    Keresse fel a http://&lt;alkalmazás_neve >.azurewebsites.net/api/calculator/ping. Az üzenet jelenik meg: 
+    Go to http://&lt;app_name>.azurewebsites.net/api/calculator/ping. Az üzenet jelenik meg: 
     
         Welcome to Java Web App!!! This is updated!
         Sun Jul 09 16:39:10 UTC 2017
 
     Keresse fel a http://&lt;alkalmazás_neve >.azurewebsites.net/api/calculator/add?x=&lt;x > & y =&lt;y > (helyettesítse &lt;x > és &lt;y > bármely számokkal) lekérni az összegük az x és y
     
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban egy Jenkins folyamatot, amely a forráskódot, a GitHub-tárház kivesz konfigurálva. A war-fájl létrehozásához Maven fut, és az Azure parancssori felület használatával telepítése az Azure App Service. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Jenkins virtuális gép létrehozása
-> * Jenkins konfigurálása
+> * A Jenkins konfigurálása
 > * Webalkalmazás létrehozása az Azure-ban
 > * A GitHub-tárházban előkészítése
 > * Jenkins folyamat létrehozása

@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/31/2017
+ms.date: 12/23/2017
 ms.author: sutalasi
-ms.openlocfilehash: 55323df68715c80d5e8535199cd739921a3baad9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3610409691b71fcce0c36a3af94184dbe6db8661
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="replicate-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Azure Site Recovery segítségével vész-helyreállítási egy többrétegű SharePoint alkalmazás replikálása
 
@@ -66,18 +66,19 @@ Ez a cikk létrehozásához, a VMware virtuális gépek, a Windows Server 2012 R
 
 ### <a name="source-and-target"></a>Forrása és célja
 
-**A forgatókönyv** | **Egy másodlagos helyre** | **Az Azure-bA**
+**Scenario** | **Egy másodlagos helyre** | **Az Azure-bA**
 --- | --- | ---
 **Hyper-V** | Igen | Igen
 **VMware** | Igen | Igen
 **Fizikai kiszolgáló** | Igen | Igen
+**Azure** | NA | Igen
 
 ### <a name="sharepoint-versions"></a>SharePoint-verziók
 A SharePoint server következő verziói támogatottak.
 
-* A SharePoint server 2013 Standard
+* SharePoint server 2013 Standard
 * SharePoint server 2013 Enterprise
-* A SharePoint server 2016 Standard
+* SharePoint server 2016 Standard
 * SharePoint server 2016 Enterprise
 
 ### <a name="things-to-keep-in-mind"></a>Vegye figyelembe a következőkre
@@ -90,7 +91,7 @@ Hajtsa végre a [Ez az útmutató](site-recovery-vmware-to-azure.md) elindítani
 
 * Ha a replikáció befejeződött, győződjön meg arról, nyissa meg az egyes rétegek minden virtuális gép, és válassza ki az azonos rendelkezésre állási csoport "replikált elemek > Beállítások > Tulajdonságok > Számítás és hálózat". Például ha a webes réteg 3 virtuális gép, ellenőrizze a 3 virtuális gép beállítása az Azure-ban ugyanabban a rendelkezésre állási részeként.
 
-    ![Set-rendelkezésre állási-csoport](./media/site-recovery-sharepoint/select-av-set.png)
+    ![Set-Availability-Set](./media/site-recovery-sharepoint/select-av-set.png)
 
 * Active Directory és a DNS védelméről útmutatásért tekintse meg [Active Directory védelmére és a DNS-](site-recovery-active-directory.md) dokumentum.
 
@@ -114,10 +115,10 @@ Hajtsa végre a [Ez az útmutató](site-recovery-vmware-to-azure.md) elindítani
 Az internetre irányuló helyek ["Priority" típusú Traffic Manager-profil létrehozása](../traffic-manager/traffic-manager-create-profile.md) az Azure-előfizetésben. Majd konfigurálja a DNS és a Traffic Manager-profilt a következő módon.
 
 
-| **Ha** | **Forrás** | **Cél**|
+| **Where** | **Source** | **Target**|
 | --- | --- | --- |
-| Nyilvános DNS-ben | Nyilvános DNS-ben, a SharePoint-webhelyekhez <br/><br/> Például: sharepoint.contoso.com | Traffic Manager <br/><br/> contososharepoint.trafficmanager.NET |
-| A helyi DNS | sharepointonprem.contoso.com | A helyszíni farm nyilvános IP-cím |
+| Nyilvános DNS-ben | Nyilvános DNS-ben, a SharePoint-webhelyekhez <br/><br/> Például: sharepoint.contoso.com | Traffic Manager <br/><br/> contososharepoint.trafficmanager.net |
+| On-premises DNS | sharepointonprem.contoso.com | A helyszíni farm nyilvános IP-cím |
 
 
 A Traffic Manager-profilt [az elsődleges és a helyreállítási végpontokat hoz létre](../traffic-manager/traffic-manager-configure-priority-routing-method.md). A külső végpont a helyszíni végpont és az Azure-végpont nyilvános IP-címet használja. Győződjön meg arról, hogy a prioritás értéke magasabb a helyszíni végpont számára.
@@ -152,15 +153,15 @@ A leggyakrabban használt Azure Site Recovery-parancsfájlok telepítheti be az 
 
 1. Előtti parancsfájlművelet hozzáadása csoporthoz "% 1" SQL rendelkezésre állási csoport feladatai. A parancsfájllal "ASR-SQL-FailoverAG" a minta parancsfájlokat tesznek közzé. Győződjön meg arról, kövesse az útmutató a parancsfájlt, és végrehajtják a szükséges módosításokat a parancsfájl megfelelően.
 
-    ![Adja hozzá-AG-parancsfájl--1. lépés](./media/site-recovery-sharepoint/add-ag-script-step1.png)
+    ![Add-AG-Script-Step-1](./media/site-recovery-sharepoint/add-ag-script-step1.png)
 
-    ![Adja hozzá-AG-parancsfájl-– 2. lépés](./media/site-recovery-sharepoint/add-ag-script-step2.png)
+    ![Add-AG-Script-Step-2](./media/site-recovery-sharepoint/add-ag-script-step2.png)
 
 2. Post művelet parancsfájl csatolni a feladatait egy terheléselosztó hozzáadása a virtuális gépeket webes réteg (csoport 2). A parancsfájllal "ASR-AddSingleLoadBalancer" a minta parancsfájlokat tesznek közzé. Győződjön meg arról, kövesse az útmutató a parancsfájlt, és végrehajtják a szükséges módosításokat a parancsfájl megfelelően.
 
-    ![Adja hozzá-LB-parancsfájl--1. lépés](./media/site-recovery-sharepoint/add-lb-script-step1.png)
+    ![Add-LB-Script-Step-1](./media/site-recovery-sharepoint/add-lb-script-step1.png)
 
-    ![Adja hozzá-LB-parancsfájl-– 2. lépés](./media/site-recovery-sharepoint/add-lb-script-step2.png)
+    ![Add-LB-Script-Step-2](./media/site-recovery-sharepoint/add-lb-script-step2.png)
 
 3. Adjon hozzá egy manuális lépés, hogy a farmban az Azure-ban mutasson a DNS-rekordok frissítéséhez.
 
@@ -211,5 +212,5 @@ Hajtsa végre a [Ez az útmutató](site-recovery-failover.md) a a feladatátvét
 3.  Kattintson a "Failover".
 4.  Válassza ki a helyreállítási pontot a feladatátvételi folyamat elindításához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További tudnivalók [replikál a többi alkalmazás](site-recovery-workload.md) Site Recovery segítségével.

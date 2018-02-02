@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/18/2017
+ms.date: 1/31/2018
 ms.author: ancav
-ms.openlocfilehash: 673f5a5cd6832adb031ef72ce25f8a1622717cfd
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: a7d28de33090995b0a036d528fb82f9e0d7335bf
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure-figyelő támogatott metrikák
 Azure figyelő többféleképpen is kommunikál a metrikákat, többek között a diagramkészítési őket a portálon, a hozzájuk férni a REST API-n keresztül, vagy a őket lekérdezése a PowerShell vagy a parancssori felület. Alatt érhető el teljes listáját és az összes metrikák jelenleg Azure figyelő metrika folyamat.
@@ -395,7 +395,7 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |DCIProfilesCount|Profil példányok száma|Darabszám|Vezetéknév||Nincs dimenzió|
 |DCIInteractionsPerMonthCount|Kapcsolati hónap száma|Darabszám|Vezetéknév||Nincs dimenzió|
 |DCIKpisCount|KPI száma|Darabszám|Vezetéknév||Nincs dimenzió|
-|DCISegmentsCount|Szegmensek száma|Darabszám|Vezetéknév||Nincs dimenzió|
+|DCISegmentsCount|Szegmens száma|Darabszám|Vezetéknév||Nincs dimenzió|
 |DCIPredictiveMatchPoliciesCount|A prediktív egyezés száma|Darabszám|Vezetéknév||Nincs dimenzió|
 |DCIPredictionsCount|Előrejelzés száma|Darabszám|Vezetéknév||Nincs dimenzió|
 
@@ -433,10 +433,10 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |TotalStorage|Teljes tárterület|Bájt|Maximum|A fiókban tárolt adatok teljes mennyisége.|Nincs dimenzió|
-|DataWritten|Az adatok írása|Bájt|Összes|Teljes adatmennyiség ír a fiókba.|Nincs dimenzió|
+|DataWritten|Kiírt adatok|Bájt|Összes|Teljes adatmennyiség ír a fiókba.|Nincs dimenzió|
 |DataRead|Olvasott adatok|Bájt|Összes|Az adatok olvasása-fiókból.|Nincs dimenzió|
-|WriteRequests|Írási kérelmek|Darabszám|Összes|Adatok száma írási kérelmeket szolgál ahhoz a fiókhoz.|Nincs dimenzió|
-|ReadRequests|Olvasási kérelmek|Darabszám|Összes|Adatok száma az olvasási kérésekre ahhoz a fiókhoz.|Nincs dimenzió|
+|WriteRequests|Írási kérelmeket szolgál|Darabszám|Összes|Adatok száma írási kérelmeket szolgál ahhoz a fiókhoz.|Nincs dimenzió|
+|ReadRequests|Olvasási kérések|Darabszám|Összes|Adatok száma az olvasási kérésekre ahhoz a fiókhoz.|Nincs dimenzió|
 
 ## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
 
@@ -529,6 +529,7 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |jobs.Failed|A sikertelen feladatok|Darabszám|Összes|Összes sikertelen feladatok száma.|Nincs dimenzió|
 |d2c.telemetry.ingress.sendThrottle|Sávszélesség-szabályozási hibák száma|Darabszám|Összes|Azelőtt gyorsítja fel az eszköz átviteli miatt szabályozás hibák száma|Nincs dimenzió|
 |dailyMessageQuotaUsed|Használt üzenetek teljes száma|Darabszám|Átlag|Jelenleg használt teljes üzenetek száma. Ez az összesített érték, amely nulla értékre állítását: 00:00 UTC minden nap.|Nincs dimenzió|
+|deviceDataUsage|Teljes devicedata kihasználtsága|Darabszám|Összes|Átvitt adatok és az egyik eszközön sem csatlakozik az IOT hubbal|Nincs dimenzió|
 
 ## <a name="microsoftdevicesprovisioningservices"></a>Microsoft.Devices/provisioningServices
 
@@ -707,15 +708,6 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |BillableTriggerExecutions|Számlázható triggerek végrehajtásai|Darabszám|Összes|Számlázandó munkafolyamati triggerek végrehajtásainak száma.|Nincs dimenzió|
 |TotalBillableExecutions|Összes számlázható végrehajtás|Darabszám|Összes|Számlázandó munkafolyamat-végrehajtások száma.|Nincs dimenzió|
 
-## <a name="microsoftnetworknetworkinterfaces"></a>Microsoft.Network/networkInterfaces
-
-|Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
-|---|---|---|---|---|---|
-|BytesSentRate|Küldött bájtok|Darabszám|Összes|A hálózati illesztő küldött bájtok száma|Nincs dimenzió|
-|BytesReceivedRate|Fogadott bájtok|Darabszám|Összes|A hálózati illesztő fogadott bájtok száma|Nincs dimenzió|
-|PacketsSentRate|Küldött csomagok|Darabszám|Összes|A hálózati illesztő küldött csomagok száma|Nincs dimenzió|
-|PacketsReceivedRate|Fogadott csomagok|Darabszám|Összes|A hálózati illesztő kapott csomagok száma|Nincs dimenzió|
-
 ## <a name="microsoftnetworkloadbalancers"></a>Microsoft.Network/loadBalancers
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
@@ -757,13 +749,6 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |ByteCount|Bájtok száma|Darabszám|Összes|Időtartamon belül átvitt bájtok teljes száma|Port, iránya|
 |PacketCount|Csomagok száma|Darabszám|Összes|Időtartamon belül küldött csomagok teljes száma|Port, iránya|
 |SynCount|Szinkronizálás a mi száma|Darabszám|Összes|Továbbított időtartamon belül SZIN csomagok száma összesen|Port, iránya|
-
-## <a name="microsoftnetworkvirtualnetworks"></a>Microsoft.Network/virtualNetworks
-
-|Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
-|---|---|---|---|---|---|
-|PacketsInDroppedVMProtection|A virtuális gépek védelmét eldobott bemeneti csomagok|Egység/s|Átlag|A virtuális gépek védelmét eldobott bemeneti csomagok|Nincs dimenzió|
-|PacketsOutDroppedVMProtection|A virtuális gépek védelmét eldobott kimeneti csomagok|Egység/s|Átlag|A virtuális gépek védelmét eldobott kimeneti csomagok|Nincs dimenzió|
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.Network/applicationGateways
 
@@ -861,8 +846,15 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |outgoing.mpns.pnserror|MPNS-hibák|Darabszám|Összes|Az MPNS szolgáltatással való kommunikáció közben történt hibák miatt sikertelen leküldések száma.|Nincs dimenzió|
 |outgoing.mpns.authenticationerror|MPNS – hitelesítési hibák|Darabszám|Összes|Az amiatt sikertelen leküldések száma, hogy a PNS nem fogadta el a megadott hitelesítő adatokat vagy a hitelesítő adatok le vannak tiltva.|Nincs dimenzió|
 |notificationhub.pushes|Minden kimenő értesítés|Darabszám|Összes|Az értesítési központ minden kimenő értesítése|Nincs dimenzió|
-|Incoming.all.Requests|Minden bejövő kérelem|Darabszám|Összes|Egy értesítési központ összes bejövő kérelme|Nincs dimenzió|
-|Incoming.all.failedrequests|Minden sikertelen bejövő kérelem|Darabszám|Összes|Egy értesítési központ összes sikertelen bejövő kérelme|Nincs dimenzió|
+|incoming.all.requests|Minden bejövő kérelem|Darabszám|Összes|Egy értesítési központ összes bejövő kérelme|Nincs dimenzió|
+|incoming.all.failedrequests|Minden sikertelen bejövő kérelem|Darabszám|Összes|Egy értesítési központ összes sikertelen bejövő kérelme|Nincs dimenzió|
+
+## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/capacities
+
+|Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|---|---|---|---|---|---|
+|QueryDuration||Darabszám|Átlag||Nincs dimenzió|
+|QueryPoolJobQueueLength|Szálak: Lekérdezés készlet feladat várólistájának hossza|Darabszám|Átlag|A lekérdezés szálkészlet sorban lévő feladatok száma.|Nincs dimenzió|
 
 ## <a name="microsoftrelaynamespaces"></a>Microsoft.Relay/namespaces
 
@@ -937,23 +929,16 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |cpu_percent|Processzorhasználat (%)|Százalék|Átlag|Processzorhasználat (%)|Nincs dimenzió|
-|database_cpu_percent|Processzorhasználat (%)|Százalék|Átlag|Processzorhasználat (%)|DatabaseResourceId|
 |physical_data_read_percent|Adat IO kihasználtsága (%)|Százalék|Átlag|Adat IO kihasználtsága (%)|Nincs dimenzió|
-|database_physical_data_read_percent|Adat IO kihasználtsága (%)|Százalék|Átlag|Adat IO kihasználtsága (%)|DatabaseResourceId|
 |log_write_percent|Napló IO százalékos aránya|Százalék|Átlag|Napló IO százalékos aránya|Nincs dimenzió|
-|database_log_write_percent|Napló IO százalékos aránya|Százalék|Átlag|Napló IO százalékos aránya|DatabaseResourceId|
 |dtu_consumption_percent|DTU-kihasználtság (%)|Százalék|Átlag|DTU-kihasználtság (%)|Nincs dimenzió|
-|database_dtu_consumption_percent|DTU-kihasználtság (%)|Százalék|Átlag|DTU-kihasználtság (%)|DatabaseResourceId|
 |storage_percent|Tárolási százalékos aránya|Százalék|Átlag|Tárolási százalékos aránya|Nincs dimenzió|
 |workers_percent|Feldolgozók százalékos aránya|Százalék|Átlag|Feldolgozók százalékos aránya|Nincs dimenzió|
-|database_workers_percent|Feldolgozók százalékos aránya|Százalék|Átlag|Feldolgozók százalékos aránya|DatabaseResourceId|
 |sessions_percent|Munkamenetek százalékos aránya|Százalék|Átlag|Munkamenetek százalékos aránya|Nincs dimenzió|
-|database_sessions_percent|Munkamenetek százalékos aránya|Százalék|Átlag|Munkamenetek százalékos aránya|DatabaseResourceId|
 |eDTU_limit|eDTU korlátot|Darabszám|Átlag|eDTU korlátot|Nincs dimenzió|
 |storage_limit|Tárolási kapacitása|Bájt|Átlag|Tárolási kapacitása|Nincs dimenzió|
 |eDTU_used|felhasznált edtu-ra|Darabszám|Átlag|felhasznált edtu-ra|Nincs dimenzió|
 |storage_used|Felhasznált tárterület|Bájt|Átlag|Felhasznált tárterület|Nincs dimenzió|
-|database_storage_used|Felhasznált tárterület|Bájt|Átlag|Felhasznált tárterület|DatabaseResourceId|
 |xtp_storage_percent|A memórián belüli online Tranzakciófeldolgozási tárolási százaléka|Százalék|Átlag|A memórián belüli online Tranzakciófeldolgozási tárolási százaléka|Nincs dimenzió|
 
 ## <a name="microsoftsqlservers"></a>Microsoft.Sql/servers
@@ -961,35 +946,33 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |dtu_consumption_percent|DTU-kihasználtság (%)|Százalék|Átlag|DTU-kihasználtság (%)|ElasticPoolResourceId|
-|database_dtu_consumption_percent|DTU-kihasználtság (%)|Százalék|Átlag|DTU-kihasználtság (%)|DatabaseResourceId, ElasticPoolResourceId|
 |storage_used|Felhasznált tárterület|Bájt|Átlag|Felhasznált tárterület|ElasticPoolResourceId|
-|database_storage_used|Felhasznált tárterület|Bájt|Átlag|Felhasznált tárterület|DatabaseResourceId, ElasticPoolResourceId|
 
 ## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |UsedCapacity|Használt kapacitás|Bájt|Átlag|A fiók felhasznált kapacitása|Nincs dimenzió|
-|Tranzakciók|Tranzakciók|Darabszám|Összes|A társzolgáltatás vagy a megadott API-művelet felé intézett kérések száma. Ez a szám sikeres és sikertelen kérelmeket, valamint a hibák előállított kérelem tartalmazza. A választ más típusú számú ResponseType dimenziót használhat.|ResponseType, GeoType, APINÉV|
-|Belépő|Belépő|Bájt|Összes|Az adatmennyiség érkező, bájtban. Ez a szám egy külső ügyféltől érkező tartalmazza az Azure Storage, valamint a bejövő adatok Azure-ban.|GeoType, APINÉV|
-|Kimenő forgalom|Kimenő forgalom|Bájt|Összes|Az adatmennyiség kilépő, bájtban. Ez a szám kilépő külső ügyfélről az Azure Storage, valamint az Azure virtuális tartalmazza. Ez a szám emiatt nem tükrözi számlázható kimenő forgalom.|GeoType, APINÉV|
-|SuccessServerLatency|Sikeres kiszolgálói kérések késése|Ezredmásodperc|Átlag|Átlagosan ilyen késéssel jár által az Azure Storage segítségével dolgozza fel a kérelem sikeres, ezredmásodpercben. Ez az érték nem tartalmazza a hálózati késés megadott AverageE2ELatency.|GeoType, APINÉV|
-|SuccessE2ELatency|Sikeres kérések végpontok közötti késése|Ezredmásodperc|Átlag|A társzolgáltatás vagy a megadott API-művelet ezredmásodpercben a sikeres kérelmek átlagos végpontok közötti késését. Ezt az értéket tartalmazza a szükséges feldolgozási ideje az Azure Storage olvasni a kérelmet, küldés és a választ kap belül.|GeoType, APINÉV|
-|Rendelkezésre állás|Rendelkezésre állás|Százalék|Átlag|A százalékos aránya a társzolgáltatás vagy a megadott API-művelet rendelkezésre állása. Rendelkezésre állási TotalBillableRequests értéke, és azt vonatkozó kérés, beleértve azokat is, váratlan hibák előállított számát elosztjuk számítja ki. Váratlan hibákat eredményez romlik a rendelkezésre állás a társzolgáltatás vagy a megadott API-művelet.|GeoType, APINÉV|
+|Tranzakciók|Tranzakciók|Darabszám|Összes|A társzolgáltatás vagy a megadott API-művelet felé intézett kérések száma. Ez a szám sikeres és sikertelen kérelmeket, valamint a hibák előállított kérelem tartalmazza. A választ más típusú számú ResponseType dimenziót használhat.|ResponseType, GeoType, ApiName|
+|Belépő|Belépő|Bájt|Összes|Az adatmennyiség érkező, bájtban. Ez a szám egy külső ügyféltől érkező tartalmazza az Azure Storage, valamint a bejövő adatok Azure-ban.|GeoType, ApiName|
+|Kimenő forgalom|Kimenő forgalom|Bájt|Összes|Az adatmennyiség kilépő, bájtban. Ez a szám kilépő külső ügyfélről az Azure Storage, valamint az Azure virtuális tartalmazza. Ez a szám emiatt nem tükrözi számlázható kimenő forgalom.|GeoType, ApiName|
+|SuccessServerLatency|Sikeres kiszolgálói kérések késése|Ezredmásodperc|Átlag|Átlagosan ilyen késéssel jár által az Azure Storage segítségével dolgozza fel a kérelem sikeres, ezredmásodpercben. Ez az érték nem tartalmazza a hálózati késés megadott AverageE2ELatency.|GeoType, ApiName|
+|SuccessE2ELatency|Sikeres kérések végpontok közötti késése|Ezredmásodperc|Átlag|A társzolgáltatás vagy a megadott API-művelet ezredmásodpercben a sikeres kérelmek átlagos végpontok közötti késését. Ezt az értéket tartalmazza a szükséges feldolgozási ideje az Azure Storage olvasni a kérelmet, küldés és a választ kap belül.|GeoType, ApiName|
+|Rendelkezésre állás|Rendelkezésre állás|Százalék|Átlag|A százalékos aránya a társzolgáltatás vagy a megadott API-művelet rendelkezésre állása. Rendelkezésre állási TotalBillableRequests értéke, és azt vonatkozó kérés, beleértve azokat is, váratlan hibák előállított számát elosztjuk számítja ki. Váratlan hibákat eredményez romlik a rendelkezésre állás a társzolgáltatás vagy a megadott API-művelet.|GeoType, ApiName|
 
 ## <a name="microsoftstoragestorageaccountsblobservices"></a>Microsoft.Storage/storageAccounts/blobServices
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |BlobCapacity|Blob-kapacitása|Bájt|Átlag|A tárfiók Blob Service-példánya által felhasznált tárterület mérete bájtban megadva.|BlobType|
-|Blobok száma|Blobok száma|Darabszám|Átlag|A tárfiók Blob Service-példányában található blobok száma.|BlobType|
+|BlobCount|Blobok száma|Darabszám|Átlag|A tárfiók Blob Service-példányában található blobok száma.|BlobType|
 |ContainerCount|Blobtárolók száma|Darabszám|Átlag|A tárfiók Blob Service-példányában található tárolók száma.|Nincs dimenzió|
-|Tranzakciók|Tranzakciók|Darabszám|Összes|A társzolgáltatás vagy a megadott API-művelet felé intézett kérések száma. Ez a szám sikeres és sikertelen kérelmeket, valamint a hibák előállított kérelem tartalmazza. A választ más típusú számú ResponseType dimenziót használhat.|ResponseType, GeoType, APINÉV|
-|Belépő|Belépő|Bájt|Összes|Az adatmennyiség érkező, bájtban. Ez a szám egy külső ügyféltől érkező tartalmazza az Azure Storage, valamint a bejövő adatok Azure-ban.|GeoType, APINÉV|
-|Kimenő forgalom|Kimenő forgalom|Bájt|Összes|Az adatmennyiség kilépő, bájtban. Ez a szám kilépő külső ügyfélről az Azure Storage, valamint az Azure virtuális tartalmazza. Ez a szám emiatt nem tükrözi számlázható kimenő forgalom.|GeoType, APINÉV|
-|SuccessServerLatency|Sikeres kiszolgálói kérések késése|Ezredmásodperc|Átlag|Átlagosan ilyen késéssel jár által az Azure Storage segítségével dolgozza fel a kérelem sikeres, ezredmásodpercben. Ez az érték nem tartalmazza a hálózati késés megadott AverageE2ELatency.|GeoType, APINÉV|
-|SuccessE2ELatency|Sikeres kérések végpontok közötti késése|Ezredmásodperc|Átlag|A társzolgáltatás vagy a megadott API-művelet ezredmásodpercben a sikeres kérelmek átlagos végpontok közötti késését. Ezt az értéket tartalmazza a szükséges feldolgozási ideje az Azure Storage olvasni a kérelmet, küldés és a választ kap belül.|GeoType, APINÉV|
-|Rendelkezésre állás|Rendelkezésre állás|Százalék|Átlag|A százalékos aránya a társzolgáltatás vagy a megadott API-művelet rendelkezésre állása. Rendelkezésre állási TotalBillableRequests értéke, és azt vonatkozó kérés, beleértve azokat is, váratlan hibák előállított számát elosztjuk számítja ki. Váratlan hibákat eredményez romlik a rendelkezésre állás a társzolgáltatás vagy a megadott API-művelet.|GeoType, APINÉV|
+|Tranzakciók|Tranzakciók|Darabszám|Összes|A társzolgáltatás vagy a megadott API-művelet felé intézett kérések száma. Ez a szám sikeres és sikertelen kérelmeket, valamint a hibák előállított kérelem tartalmazza. A választ más típusú számú ResponseType dimenziót használhat.|ResponseType, GeoType, ApiName|
+|Belépő|Belépő|Bájt|Összes|Az adatmennyiség érkező, bájtban. Ez a szám egy külső ügyféltől érkező tartalmazza az Azure Storage, valamint a bejövő adatok Azure-ban.|GeoType, ApiName|
+|Kimenő forgalom|Kimenő forgalom|Bájt|Összes|Az adatmennyiség kilépő, bájtban. Ez a szám kilépő külső ügyfélről az Azure Storage, valamint az Azure virtuális tartalmazza. Ez a szám emiatt nem tükrözi számlázható kimenő forgalom.|GeoType, ApiName|
+|SuccessServerLatency|Sikeres kiszolgálói kérések késése|Ezredmásodperc|Átlag|Átlagosan ilyen késéssel jár által az Azure Storage segítségével dolgozza fel a kérelem sikeres, ezredmásodpercben. Ez az érték nem tartalmazza a hálózati késés megadott AverageE2ELatency.|GeoType, ApiName|
+|SuccessE2ELatency|Sikeres kérések végpontok közötti késése|Ezredmásodperc|Átlag|A társzolgáltatás vagy a megadott API-művelet ezredmásodpercben a sikeres kérelmek átlagos végpontok közötti késését. Ezt az értéket tartalmazza a szükséges feldolgozási ideje az Azure Storage olvasni a kérelmet, küldés és a választ kap belül.|GeoType, ApiName|
+|Rendelkezésre állás|Rendelkezésre állás|Százalék|Átlag|A százalékos aránya a társzolgáltatás vagy a megadott API-művelet rendelkezésre állása. Rendelkezésre állási TotalBillableRequests értéke, és azt vonatkozó kérés, beleértve azokat is, váratlan hibák előállított számát elosztjuk számítja ki. Váratlan hibákat eredményez romlik a rendelkezésre állás a társzolgáltatás vagy a megadott API-művelet.|GeoType, ApiName|
 
 ## <a name="microsoftstoragestorageaccountstableservices"></a>Microsoft.Storage/storageAccounts/tableServices
 
@@ -998,12 +981,12 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |TableCapacity|Table Storage kapacitása|Bájt|Átlag|A tárfiók Table Storage-szolgáltatás-példánya által felhasznált tárterület mérete bájtban megadva.|Nincs dimenzió|
 |TableCount|Táblák száma|Darabszám|Átlag|A tárfiók Table Storage-szolgáltatás-példányában található táblák száma.|Nincs dimenzió|
 |TableEntityCount|Táblaentitások száma|Darabszám|Átlag|A tárfiók Table Storage-szolgáltatás-példányában található táblaentitások száma.|Nincs dimenzió|
-|Tranzakciók|Tranzakciók|Darabszám|Összes|A társzolgáltatás vagy a megadott API-művelet felé intézett kérések száma. Ez a szám sikeres és sikertelen kérelmeket, valamint a hibák előállított kérelem tartalmazza. A választ más típusú számú ResponseType dimenziót használhat.|ResponseType, GeoType, APINÉV|
-|Belépő|Belépő|Bájt|Összes|Az adatmennyiség érkező, bájtban. Ez a szám egy külső ügyféltől érkező tartalmazza az Azure Storage, valamint a bejövő adatok Azure-ban.|GeoType, APINÉV|
-|Kimenő forgalom|Kimenő forgalom|Bájt|Összes|Az adatmennyiség kilépő, bájtban. Ez a szám kilépő külső ügyfélről az Azure Storage, valamint az Azure virtuális tartalmazza. Ez a szám emiatt nem tükrözi számlázható kimenő forgalom.|GeoType, APINÉV|
-|SuccessServerLatency|Sikeres kiszolgálói kérések késése|Ezredmásodperc|Átlag|Átlagosan ilyen késéssel jár által az Azure Storage segítségével dolgozza fel a kérelem sikeres, ezredmásodpercben. Ez az érték nem tartalmazza a hálózati késés megadott AverageE2ELatency.|GeoType, APINÉV|
-|SuccessE2ELatency|Sikeres kérések végpontok közötti késése|Ezredmásodperc|Átlag|A társzolgáltatás vagy a megadott API-művelet ezredmásodpercben a sikeres kérelmek átlagos végpontok közötti késését. Ezt az értéket tartalmazza a szükséges feldolgozási ideje az Azure Storage olvasni a kérelmet, küldés és a választ kap belül.|GeoType, APINÉV|
-|Rendelkezésre állás|Rendelkezésre állás|Százalék|Átlag|A százalékos aránya a társzolgáltatás vagy a megadott API-művelet rendelkezésre állása. Rendelkezésre állási TotalBillableRequests értéke, és azt vonatkozó kérés, beleértve azokat is, váratlan hibák előállított számát elosztjuk számítja ki. Váratlan hibákat eredményez romlik a rendelkezésre állás a társzolgáltatás vagy a megadott API-művelet.|GeoType, APINÉV|
+|Tranzakciók|Tranzakciók|Darabszám|Összes|A társzolgáltatás vagy a megadott API-művelet felé intézett kérések száma. Ez a szám sikeres és sikertelen kérelmeket, valamint a hibák előállított kérelem tartalmazza. A választ más típusú számú ResponseType dimenziót használhat.|ResponseType, GeoType, ApiName|
+|Belépő|Belépő|Bájt|Összes|Az adatmennyiség érkező, bájtban. Ez a szám egy külső ügyféltől érkező tartalmazza az Azure Storage, valamint a bejövő adatok Azure-ban.|GeoType, ApiName|
+|Kimenő forgalom|Kimenő forgalom|Bájt|Összes|Az adatmennyiség kilépő, bájtban. Ez a szám kilépő külső ügyfélről az Azure Storage, valamint az Azure virtuális tartalmazza. Ez a szám emiatt nem tükrözi számlázható kimenő forgalom.|GeoType, ApiName|
+|SuccessServerLatency|Sikeres kiszolgálói kérések késése|Ezredmásodperc|Átlag|Átlagosan ilyen késéssel jár által az Azure Storage segítségével dolgozza fel a kérelem sikeres, ezredmásodpercben. Ez az érték nem tartalmazza a hálózati késés megadott AverageE2ELatency.|GeoType, ApiName|
+|SuccessE2ELatency|Sikeres kérések végpontok közötti késése|Ezredmásodperc|Átlag|A társzolgáltatás vagy a megadott API-művelet ezredmásodpercben a sikeres kérelmek átlagos végpontok közötti késését. Ezt az értéket tartalmazza a szükséges feldolgozási ideje az Azure Storage olvasni a kérelmet, küldés és a választ kap belül.|GeoType, ApiName|
+|Rendelkezésre állás|Rendelkezésre állás|Százalék|Átlag|A százalékos aránya a társzolgáltatás vagy a megadott API-művelet rendelkezésre állása. Rendelkezésre állási TotalBillableRequests értéke, és azt vonatkozó kérés, beleértve azokat is, váratlan hibák előállított számát elosztjuk számítja ki. Váratlan hibákat eredményez romlik a rendelkezésre állás a társzolgáltatás vagy a megadott API-művelet.|GeoType, ApiName|
 
 ## <a name="microsoftstoragestorageaccountsqueueservices"></a>Microsoft.Storage/storageAccounts/queueServices
 
@@ -1012,26 +995,26 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |QueueCapacity|Queue Storage kapacitása|Bájt|Átlag|A tárfiók Queue Storage-szolgáltatás-példánya által felhasznált tárterület mérete bájtban megadva.|Nincs dimenzió|
 |QueueCount|Üzenetsorok száma|Darabszám|Átlag|A tárfiók Queue-szolgáltatás-példányában található üzenetsorok száma.|Nincs dimenzió|
 |QueueMessageCount|Üzenetsorbeli üzenetek száma|Darabszám|Átlag|A tárfiók Queue Storage-szolgáltatás-példányában található üzenetsorbeli üzenetek hozzávetőleges száma.|Nincs dimenzió|
-|Tranzakciók|Tranzakciók|Darabszám|Összes|A társzolgáltatás vagy a megadott API-művelet felé intézett kérések száma. Ez a szám sikeres és sikertelen kérelmeket, valamint a hibák előállított kérelem tartalmazza. A választ más típusú számú ResponseType dimenziót használhat.|ResponseType, GeoType, APINÉV|
-|Belépő|Belépő|Bájt|Összes|Az adatmennyiség érkező, bájtban. Ez a szám egy külső ügyféltől érkező tartalmazza az Azure Storage, valamint a bejövő adatok Azure-ban.|GeoType, APINÉV|
-|Kimenő forgalom|Kimenő forgalom|Bájt|Összes|Az adatmennyiség kilépő, bájtban. Ez a szám kilépő külső ügyfélről az Azure Storage, valamint az Azure virtuális tartalmazza. Ez a szám emiatt nem tükrözi számlázható kimenő forgalom.|GeoType, APINÉV|
-|SuccessServerLatency|Sikeres kiszolgálói kérések késése|Ezredmásodperc|Átlag|Átlagosan ilyen késéssel jár által az Azure Storage segítségével dolgozza fel a kérelem sikeres, ezredmásodpercben. Ez az érték nem tartalmazza a hálózati késés megadott AverageE2ELatency.|GeoType, APINÉV|
-|SuccessE2ELatency|Sikeres kérések végpontok közötti késése|Ezredmásodperc|Átlag|A társzolgáltatás vagy a megadott API-művelet ezredmásodpercben a sikeres kérelmek átlagos végpontok közötti késését. Ezt az értéket tartalmazza a szükséges feldolgozási ideje az Azure Storage olvasni a kérelmet, küldés és a választ kap belül.|GeoType, APINÉV|
-|Rendelkezésre állás|Rendelkezésre állás|Százalék|Átlag|A százalékos aránya a társzolgáltatás vagy a megadott API-művelet rendelkezésre állása. Rendelkezésre állási TotalBillableRequests értéke, és azt vonatkozó kérés, beleértve azokat is, váratlan hibák előállított számát elosztjuk számítja ki. Váratlan hibákat eredményez romlik a rendelkezésre állás a társzolgáltatás vagy a megadott API-művelet.|GeoType, APINÉV|
+|Tranzakciók|Tranzakciók|Darabszám|Összes|A társzolgáltatás vagy a megadott API-művelet felé intézett kérések száma. Ez a szám sikeres és sikertelen kérelmeket, valamint a hibák előállított kérelem tartalmazza. A választ más típusú számú ResponseType dimenziót használhat.|ResponseType, GeoType, ApiName|
+|Belépő|Belépő|Bájt|Összes|Az adatmennyiség érkező, bájtban. Ez a szám egy külső ügyféltől érkező tartalmazza az Azure Storage, valamint a bejövő adatok Azure-ban.|GeoType, ApiName|
+|Kimenő forgalom|Kimenő forgalom|Bájt|Összes|Az adatmennyiség kilépő, bájtban. Ez a szám kilépő külső ügyfélről az Azure Storage, valamint az Azure virtuális tartalmazza. Ez a szám emiatt nem tükrözi számlázható kimenő forgalom.|GeoType, ApiName|
+|SuccessServerLatency|Sikeres kiszolgálói kérések késése|Ezredmásodperc|Átlag|Átlagosan ilyen késéssel jár által az Azure Storage segítségével dolgozza fel a kérelem sikeres, ezredmásodpercben. Ez az érték nem tartalmazza a hálózati késés megadott AverageE2ELatency.|GeoType, ApiName|
+|SuccessE2ELatency|Sikeres kérések végpontok közötti késése|Ezredmásodperc|Átlag|A társzolgáltatás vagy a megadott API-művelet ezredmásodpercben a sikeres kérelmek átlagos végpontok közötti késését. Ezt az értéket tartalmazza a szükséges feldolgozási ideje az Azure Storage olvasni a kérelmet, küldés és a választ kap belül.|GeoType, ApiName|
+|Rendelkezésre állás|Rendelkezésre állás|Százalék|Átlag|A százalékos aránya a társzolgáltatás vagy a megadott API-művelet rendelkezésre állása. Rendelkezésre állási TotalBillableRequests értéke, és azt vonatkozó kérés, beleértve azokat is, váratlan hibák előállított számát elosztjuk számítja ki. Váratlan hibákat eredményez romlik a rendelkezésre állás a társzolgáltatás vagy a megadott API-művelet.|GeoType, ApiName|
 
 ## <a name="microsoftstoragestorageaccountsfileservices"></a>Microsoft.Storage/storageAccounts/fileServices
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |FileCapacity|File Storage kapacitása|Bájt|Átlag|A tárfiók File Storage-szolgáltatás-példánya által felhasznált tárterület mérete bájtban megadva.|Nincs dimenzió|
-|Filecount;/%totalfilecount|Fájlok száma|Darabszám|Átlag|A tárfiók File Storage-szolgáltatás-példányában található fájlok száma.|Nincs dimenzió|
+|FileCount|Fájlok száma|Darabszám|Átlag|A tárfiók File Storage-szolgáltatás-példányában található fájlok száma.|Nincs dimenzió|
 |FileShareCount|Fájlmegosztások száma|Darabszám|Átlag|A tárfiók File Storage-szolgáltatás-példányában található fájlmegosztások száma.|Nincs dimenzió|
-|Tranzakciók|Tranzakciók|Darabszám|Összes|A társzolgáltatás vagy a megadott API-művelet felé intézett kérések száma. Ez a szám sikeres és sikertelen kérelmeket, valamint a hibák előállított kérelem tartalmazza. A választ más típusú számú ResponseType dimenziót használhat.|ResponseType, GeoType, APINÉV|
-|Belépő|Belépő|Bájt|Összes|Az adatmennyiség érkező, bájtban. Ez a szám egy külső ügyféltől érkező tartalmazza az Azure Storage, valamint a bejövő adatok Azure-ban.|GeoType, APINÉV|
-|Kimenő forgalom|Kimenő forgalom|Bájt|Összes|Az adatmennyiség kilépő, bájtban. Ez a szám kilépő külső ügyfélről az Azure Storage, valamint az Azure virtuális tartalmazza. Ez a szám emiatt nem tükrözi számlázható kimenő forgalom.|GeoType, APINÉV|
-|SuccessServerLatency|Sikeres kiszolgálói kérések késése|Ezredmásodperc|Átlag|Átlagosan ilyen késéssel jár által az Azure Storage segítségével dolgozza fel a kérelem sikeres, ezredmásodpercben. Ez az érték nem tartalmazza a hálózati késés megadott AverageE2ELatency.|GeoType, APINÉV|
-|SuccessE2ELatency|Sikeres kérések végpontok közötti késése|Ezredmásodperc|Átlag|A társzolgáltatás vagy a megadott API-művelet ezredmásodpercben a sikeres kérelmek átlagos végpontok közötti késését. Ezt az értéket tartalmazza a szükséges feldolgozási ideje az Azure Storage olvasni a kérelmet, küldés és a választ kap belül.|GeoType, APINÉV|
-|Rendelkezésre állás|Rendelkezésre állás|Százalék|Átlag|A százalékos aránya a társzolgáltatás vagy a megadott API-művelet rendelkezésre állása. Rendelkezésre állási TotalBillableRequests értéke, és azt vonatkozó kérés, beleértve azokat is, váratlan hibák előállított számát elosztjuk számítja ki. Váratlan hibákat eredményez romlik a rendelkezésre állás a társzolgáltatás vagy a megadott API-művelet.|GeoType, APINÉV|
+|Tranzakciók|Tranzakciók|Darabszám|Összes|A társzolgáltatás vagy a megadott API-művelet felé intézett kérések száma. Ez a szám sikeres és sikertelen kérelmeket, valamint a hibák előállított kérelem tartalmazza. A választ más típusú számú ResponseType dimenziót használhat.|ResponseType, GeoType, ApiName|
+|Belépő|Belépő|Bájt|Összes|Az adatmennyiség érkező, bájtban. Ez a szám egy külső ügyféltől érkező tartalmazza az Azure Storage, valamint a bejövő adatok Azure-ban.|GeoType, ApiName|
+|Kimenő forgalom|Kimenő forgalom|Bájt|Összes|Az adatmennyiség kilépő, bájtban. Ez a szám kilépő külső ügyfélről az Azure Storage, valamint az Azure virtuális tartalmazza. Ez a szám emiatt nem tükrözi számlázható kimenő forgalom.|GeoType, ApiName|
+|SuccessServerLatency|Sikeres kiszolgálói kérések késése|Ezredmásodperc|Átlag|Átlagosan ilyen késéssel jár által az Azure Storage segítségével dolgozza fel a kérelem sikeres, ezredmásodpercben. Ez az érték nem tartalmazza a hálózati késés megadott AverageE2ELatency.|GeoType, ApiName|
+|SuccessE2ELatency|Sikeres kérések végpontok közötti késése|Ezredmásodperc|Átlag|A társzolgáltatás vagy a megadott API-művelet ezredmásodpercben a sikeres kérelmek átlagos végpontok közötti késését. Ezt az értéket tartalmazza a szükséges feldolgozási ideje az Azure Storage olvasni a kérelmet, küldés és a választ kap belül.|GeoType, ApiName|
+|Rendelkezésre állás|Rendelkezésre állás|Százalék|Átlag|A százalékos aránya a társzolgáltatás vagy a megadott API-művelet rendelkezésre állása. Rendelkezésre állási TotalBillableRequests értéke, és azt vonatkozó kérés, beleértve azokat is, váratlan hibák előállított számát elosztjuk számítja ki. Váratlan hibákat eredményez romlik a rendelkezésre állás a társzolgáltatás vagy a megadott API-művelet.|GeoType, ApiName|
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft.StreamAnalytics/streamingjobs
 
@@ -1080,6 +1063,7 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |MemoryWorkingSet|Memória-munkakészlet|Bájt|Átlag|Memória-munkakészlet|Példány|
 |AverageMemoryWorkingSet|Átlagos memória-munkakészlet|Bájt|Átlag|Átlagos memória-munkakészlet|Példány|
 |AverageResponseTime|Átlagos válaszidő|másodperc|Átlag|Átlagos válaszidő|Példány|
+|AppConnections|Kapcsolatok|Darabszám|Átlag|Kapcsolatok|Példány|
 
 ## <a name="microsoftwebsites-functions"></a>Microsoft.Web/sites (funkciók)
 
@@ -1113,8 +1097,9 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |MemoryWorkingSet|Memória-munkakészlet|Bájt|Átlag|Memória-munkakészlet|Példány|
 |AverageMemoryWorkingSet|Átlagos memória-munkakészlet|Bájt|Átlag|Átlagos memória-munkakészlet|Példány|
 |AverageResponseTime|Átlagos válaszidő|másodperc|Átlag|Átlagos válaszidő|Példány|
-|FunctionExecutionUnits|Függvény-végrehajtási egység|Darabszám|Átlag|Függvény-végrehajtási egység|Példány|
-|FunctionExecutionCount|Függvény végrehajtásainak száma|Darabszám|Átlag|Függvény végrehajtásainak száma|Példány|
+|FunctionExecutionUnits|Függvény-végrehajtási egység|Darabszám|Összes|Függvény-végrehajtási egység|Példány|
+|FunctionExecutionCount|Függvény végrehajtásainak száma|Darabszám|Összes|Függvény végrehajtásainak száma|Példány|
+|AppConnections|Kapcsolatok|Darabszám|Átlag|Kapcsolatok|Példány|
 
 ## <a name="microsoftwebhostingenvironmentsmultirolepools"></a>Microsoft.Web/hostingEnvironments/multiRolePools
 
@@ -1138,18 +1123,18 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |DiskQueueLength|Lemezvárólista hossza|Darabszám|Átlag|Lemezvárólista hossza|Példány|
 |HttpQueueLength|HTTP-várólista hossza|Darabszám|Átlag|HTTP-várólista hossza|Példány|
 |ActiveRequests|Aktív kérelmek|Darabszám|Összes|Aktív kérelmek|Példány|
-|TotalFrontEnds|Előterek száma|Darabszám|Átlag|Előterek száma|Példány|
-|SmallAppServicePlanInstances|Kis méretű App Service-csomag feldolgozói|Darabszám|Átlag|Kis méretű App Service-csomag feldolgozói|Példány|
-|MediumAppServicePlanInstances|Közepes méretű App Service-csomag feldolgozói|Darabszám|Átlag|Közepes méretű App Service-csomag feldolgozói|Példány|
-|LargeAppServicePlanInstances|Nagy méretű App Service-csomag feldolgozói|Darabszám|Átlag|Nagy méretű App Service-csomag feldolgozói|Példány|
+|TotalFrontEnds|Előterek száma|Darabszám|Átlag|Előterek száma|Nincs dimenzió|
+|SmallAppServicePlanInstances|Kis méretű App Service-csomag feldolgozói|Darabszám|Átlag|Kis méretű App Service-csomag feldolgozói|Nincs dimenzió|
+|MediumAppServicePlanInstances|Közepes méretű App Service-csomag feldolgozói|Darabszám|Átlag|Közepes méretű App Service-csomag feldolgozói|Nincs dimenzió|
+|LargeAppServicePlanInstances|Nagy méretű App Service-csomag feldolgozói|Darabszám|Átlag|Nagy méretű App Service-csomag feldolgozói|Nincs dimenzió|
 
 ## <a name="microsoftwebhostingenvironmentsworkerpools"></a>Microsoft.Web/hostingEnvironments/workerPools
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|Feldolgozók|Feldolgozók összesen|Darabszám|Átlag|Feldolgozók összesen|Példány|
-|WorkersAvailable|Rendelkezésre álló feldolgozók|Darabszám|Átlag|Rendelkezésre álló feldolgozók|Példány|
-|WorkersUsed|Használt feldolgozók|Darabszám|Átlag|Használt feldolgozók|Példány|
+|Feldolgozók|Feldolgozók összesen|Darabszám|Átlag|Feldolgozók összesen|Nincs dimenzió|
+|WorkersAvailable|Rendelkezésre álló feldolgozók|Darabszám|Átlag|Rendelkezésre álló feldolgozók|Nincs dimenzió|
+|WorkersUsed|Használt feldolgozók|Darabszám|Átlag|Használt feldolgozók|Nincs dimenzió|
 |CpuPercentage|Processzorhasználat (%)|Százalék|Átlag|Processzorhasználat (%)|Példány|
 |MemoryPercentage|Memóriahasználat (%)|Százalék|Átlag|Memóriahasználat (%)|Példány|
 

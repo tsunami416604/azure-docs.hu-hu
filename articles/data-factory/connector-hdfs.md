@@ -11,20 +11,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 
+ms.date: 01/29/2018
 ms.author: jingwang
-ms.openlocfilehash: 80892d5f87c1f7a588023e4baa5de79bd73329a5
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: fb4802a6a3bed163f0d2bba04cf9d80a917ba7ba
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="copy-data-from-and-to-hdfs-using-azure-data-factory"></a>Másolja az adatokat, a kezdő és a HDFS Azure Data Factory használatával
+# <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával HDFS
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1. verzió – Általánosan elérhető](v1/data-factory-hdfs-connector.md)
 > * [2. verzió – Előzetes verzió](connector-hdfs.md)
 
-Ez a cikk ismerteti, hogyan használható a másolási tevékenység során az Azure Data Factory másolja az adatokat, a kezdő és a HDFS. Buildekről nyújtanak a [másolása tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
+Ez a cikk a másolási tevékenység használható az Azure Data Factory adatokat másolni HDFS módját ismerteti. Buildekről nyújtanak a [másolása tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 
 > [!NOTE]
 > Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [HDFS-összekötőt a V1](v1/data-factory-hdfs-connector.md).
@@ -42,7 +42,7 @@ Pontosabban a HDFS összekötő támogatja:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az adatok másolása az vagy egy HDFS, amely nincs nyilvánosan elérhető, akkor be kell állítania egy Self-hosted integrációs futásidejű. Lásd: [Self-hosted integrációs futásidejű](concepts-integration-runtime.md) cikk további részleteket.
+Adatok másolása egy HDFS, amely nincs nyilvánosan elérhető, akkor be kell állítania egy Self-hosted integrációs futásidejű. Lásd: [Self-hosted integrációs futásidejű](concepts-integration-runtime.md) cikk további részleteket.
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -151,7 +151,7 @@ Adatok másolása HDFS, az adatkészlet típus tulajdonságának beállítása *
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-Szakaszok és a rendelkezésre álló tevékenységek meghatározó tulajdonságok teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz a HDFS-forrás és a fogadó által támogatott tulajdonságokról listáját tartalmazza.
+Szakaszok és a rendelkezésre álló tevékenységek meghatározó tulajdonságok teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a szakasz a HDFS forrás által támogatott tulajdonságok listáját tartalmazza.
 
 ### <a name="hdfs-as-source"></a>HDFS forrásaként
 

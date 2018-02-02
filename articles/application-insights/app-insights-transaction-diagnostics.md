@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: sdash
-ms.openlocfilehash: b090699cf90c74af8480b811901b6e3078b007b3
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 8c1d8600b7f4aaa1e95f4acfbbdd55fdbfebb8fb
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>Egyesített kereszt-összetevő tranzakció diagnosztika
 
@@ -26,7 +26,7 @@ Az előzetes egy új, egyesített diagnosztika kezelőfelülettel automatikusan 
 
 ## <a name="what-does-component-mean-in-the-context-of-application-insights"></a>Mi az összetevő jelent az Application Insights környezetében?
 
-Összetevők az elosztott/mikroszolgáltatások alkalmazás egymástól függetlenül telepíthető részét képezik. A fejlesztők és a műveletek csapat kód szintű láthatóságot, vagy próbáljon elérni ezeket alkalmazás-összetevők által létrehozott telemetriai rendelkezik. 
+Összetevők az elosztott/mikroszolgáltatások alkalmazás egymástól függetlenül telepíthető részét képezik. A fejlesztők és a műveletek csapat kód szintű láthatóságot, vagy próbáljon elérni ezeket alkalmazás-összetevők által létrehozott telemetriai rendelkezik.
 
 * Összetevők eltérnek "megfigyelt" külső függőségei, például az SQL, EventHub stb., amelyek a csoport/szervezeti nem lehet hozzáférni a (kód vagy telemetria).
 * Összetevők tetszőleges server/szerepkör/tároló példányát futtatni.
@@ -40,11 +40,11 @@ Engedélyezze "egyesített részletek: E2E tranzakció diagnosztika" a a [az el�
 
 ![Minta engedélyezése](media/app-insights-e2eTxn-diagnostics/previews.png)
 
-Ebben az előzetes verzióban érhető el jelenleg a kiszolgálóoldali kérelmeket, függőségeket és kivételeket. Érheti el az új felület a **keresési eredmények**, **teljesítmény**, vagy **hiba** osztályozhatja a feladatait. Az előzetes a felváltja a megfelelő klasszikus részletei panelen. 
+Ebben az előzetes verzióban érhető el jelenleg a kiszolgálóoldali kérelmeket, függőségeket és kivételeket. Érheti el az új felület a **keresési eredmények**, **teljesítmény**, vagy **hiba** osztályozhatja a feladatait. Az előzetes a felváltja a megfelelő klasszikus részletei panelen.
 
 ![Teljesítmény – minták](media/app-insights-e2eTxn-diagnostics/performanceSamplesClickThrough.png)
 
-## <a name="transaction-diagnostics-experience"></a>Tranzakció diagnosztika élmény 
+## <a name="transaction-diagnostics-experience"></a>Tranzakció diagnosztika élmény
 Ez a nézet három részből kulcs: kereszt-összetevő tranzakció diagram, egy adott összetevő művelet, és bármely kiválasztott telemetriai elem a bal oldali ablaktáblában az összes telemetriai adat idő szekvenciális listáját.
 
 ![Legfontosabb elemei](media/app-insights-e2eTxn-diagnostics/3partsCrossComponent.png)
@@ -77,6 +77,10 @@ Ezen az ablaktáblán látható a bal oldali vagy a két szakasz a kiválasztott
 ## <a name="profiler-and-snapshot-debugger"></a>Profilkészítő és a pillanatfelvételek hibakereső
 
 [Application Insights Profilkészítő](app-insights-profiler.md) vagy [pillanatkép hibakereső](app-insights-snapshot-debugger.md) súgó a kód szintű diagnosztika a teljesítmény és meghibásodási problémákra. Ez a felület a szolgáltatásprofil-elemzői adat megjelenik, vagy kattintson a egyetlen összetevők közül bármelyik pillanatképeinek.
+
+Ha nem sikerült a Profilkészítő működik-e, lépjen kapcsolatba**serviceprofilerhelp@microsoft.com**
+
+Ha nem sikerült a pillanatkép-hibakereső működik-e, lépjen kapcsolatba**snapshothelp@microsoft.com**
 
 ![Integráció a hibakereső](media/app-insights-e2eTxn-diagnostics/debugSnapshot.png)
 

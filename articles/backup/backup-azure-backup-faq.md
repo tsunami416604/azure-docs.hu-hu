@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/21/2017
 ms.author: markgal;arunak;trinadhk;sogup;
-ms.openlocfilehash: 66c2f1c5e8ba26d5c50cf60b7f448406814408b0
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: d6ee96b17c6bc85a2278bbe98867a579ff9c550a
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="questions-about-the-azure-backup-service"></a>Kérdések az Azure Backup szolgáltatással kapcsolatban
 Ez a cikk az Azure Backup szolgáltatás-összetevőivel kapcsolatos gyakori kérdésekre ad választ. Egyes válaszokban részletes információkat tartalmazó cikkekre mutató hivatkozások találhatók. Ha kérdést szeretne feltenni az Azure Backup szolgáltatással kapcsolatban, kattintson a jobb oldalon található **Megjegyzések** gombra. A megjegyzések a cikk alján jelennek meg. Megjegyzések írásához Livefyre-fiók szükséges. Emellett egy fórumbejegyzésben is feltehet kérdéseket az Azure Backup szolgáltatással kapcsolatban a [vitafórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -33,7 +33,7 @@ A cikk szakaszainak gyors áttekintéséhez használja **A cikk tartalma** terü
 Igen. 2016 szeptemberétől 25 Recovery Services-tárolók előfizetésenként is létrehozhat. Előfizetésenként az Azure Backup szolgáltatás minden támogatott régiójához legfeljebb 25 Recovery Services-tároló hozható létre. Ha több tárolóra van szüksége, hozzon létre egy további előfizetést.
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault-br"></a>Az egyes tárolókhoz regisztrálható kiszolgálók/gépek száma korlátozott? <br/>
-Igen, tárolónként 50 gépet regisztrálhat. Az Azure IaaS virtuális gépei esetén a korlát 200 virtuális gép tárolónként. Ha több gépet szeretne regisztrálni, hozzon létre egy másik tárolót.
+Legfeljebb 200 Azure virtuális gépek száma a tároló lehet regisztrálni. MAB ügynök használata regisztrálhatja legfeljebb 50 MAB ügynökök / tárolóban. És regisztrálhatja 50 MAB kiszolgálók/DPM-kiszolgálók egy tárolóba.
 
 ### <a name="if-my-organization-has-one-vault-how-can-i-isolate-one-servers-data-from-another-server-when-restoring-databr"></a>Ha a szervezetem egy tárolóval rendelkezik, hogyan tudom az egyik kiszolgáló adatait elszigetelni egy másik kiszolgálóétól az adatok visszaállításakor?<br/>
 Minden kiszolgáló, amely ugyanahhoz a tárolóhoz van regisztrálva, képes helyreállítani más, *ugyanazt a hozzáférési kódot használó* kiszolgálók adatainak biztonsági másolatait. Ha olyan kiszolgálókkal rendelkezik, amelyek adatainak biztonsági másolatait szeretné elszigetelni a szervezetében található más kiszolgálóétól, használjon egy erre kijelölt hozzáférési kódot ezekhez a kiszolgálókhoz. Például a humánerőforrás-kiszolgálók használhatnának egy titkosító hozzáférési kódot, a könyvelési kiszolgálók egy másikat és a tároló kiszolgálók egy harmadikat.
@@ -161,6 +161,9 @@ Az Azure Backupból történő helyreállítások száma korlátlan.
 
 ### <a name="when-restoring-data-do-i-pay-for-the-egress-traffic-from-azure-br"></a>Az adatok visszaállításakor fizetnem kell az Azure-ból kimenő forgalomért? <br/>
 Nem. A helyreállítások ingyenesek, és nem kell fizetni a kimenő forgalomért.
+
+### <a name="what-happens-when-i-change-my-backup-policy"></a>Mi történik, ha a biztonsági mentési házirend módosítása?
+Ha egy új házirend van érvényben, ütemezését és az új házirend megőrzési követi. Ha a megőrzési ki van bővítve, a meglévő helyreállítási pontok leegyszerűsítheti az új házirend szerint lesznek megjelölve. Ha a megőrzési csökken, ezeket a következő karbantartási feladat a törlésre megjelölt és törlődnek.
 
 ## <a name="azure-backup-encryption"></a>Azure Backup-titkosítás
 ### <a name="is-the-data-sent-to-azure-encrypted-br"></a>Az Azure-ba küldött adatok titkosítottak? <br/>

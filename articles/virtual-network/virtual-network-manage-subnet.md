@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: jdial
-ms.openlocfilehash: 85ba6ef3e51c339a77eb9b4198c4f87e2a64cf09
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 413ec2ef4fcc7752b95984a209818eeba535746e
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Hozzáadása, módosítása vagy virtuális hálózati alhálózat törlése
 
@@ -35,7 +35,7 @@ Ez a cikk azt ismerteti, hogyan hozzáadása, módosítása és törlése az Azu
 
 Az ebben a cikkben ismertetett feladatok megkezdése előtt hajtsa végre a következő előfeltételek teljesülését:
 
-- Ha most ismerkedik a virtuális hálózatok használata, azt javasoljuk, hogy tekintse át a gyakorlatban [az első Azure virtuális hálózat létrehozása](virtual-network-get-started-vnet-subnet.md). Ebben a gyakorlatban segítségével Megismerkedés a virtuális hálózatok.
+- Ha most ismerkedik a virtuális hálózatok használata, azt javasoljuk, hogy tekintse át a gyakorlatban [az első Azure virtuális hálózat létrehozása](quick-create-portal.md). Ebben a gyakorlatban segítségével Megismerkedés a virtuális hálózatok.
 - Virtuális hálózatok korlátairól kapcsolatos információkért tekintse át a [Azure korlátozását](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 - Jelentkezzen be az Azure-portálon, az Azure parancssori eszköz (Azure CLI) vagy az Azure PowerShell használatával az Azure-fiókjával. Ha nem rendelkezik Azure-fiókja, regisztráljon egy [ingyenes próbafiók](https://azure.microsoft.com/free).
 - Ha azt tervezi, a jelen cikkben ismertetett feladatok végrehajtásához PowerShell-parancsok használata, először [Azure PowerShell telepítése és konfigurálása](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json). Győződjön meg arról, hogy rendelkezik-e a legújabb verziója található az Azure PowerShell-parancsmagjai telepítve vannak-e. A példákban PowerShell-parancsok súgójának megjelenítéséhez írja be a következőt `get-help <command> -full`.
@@ -67,7 +67,7 @@ Egy alhálózat hozzáadása:
 |Eszköz|Parancs|
 |---|---|
 |Azure CLI|[az alhálózaton virtuális hálózat létrehozása](/cli/azure/network/vnet/subnet?toc=%2fazure%2fvirtual-network%2ftoc.json#create)|
-|PowerShell|[Új AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig?toc=%2fazure%2fvirtual-network%2ftoc.json), [hozzáadása AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/add-azurermvirtualnetworksubnetconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|PowerShell|[New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig?toc=%2fazure%2fvirtual-network%2ftoc.json), [Add-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/add-azurermvirtualnetworksubnetconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="change-subnet"></a>Alhálózati beállítások módosítása
 
@@ -107,4 +107,4 @@ Csak akkor, ha nincsenek erőforrások az alhálózatban lévő alhálózatot t�
 
 ## <a name="next-steps"></a>Következő lépések
 
-A virtuális gép egy alhálózat létrehozásához lásd: [hozzon létre egy virtuális hálózatot és az alhálózatban lévő virtuális gépek telepítése](virtual-network-get-started-vnet-subnet.md#create-vms).
+A virtuális gép egy alhálózat létrehozásához lásd: [hozzon létre egy virtuális hálózatot és az alhálózatban lévő virtuális gépek telepítése](quick-create-portal.md#create-virtual-machines).

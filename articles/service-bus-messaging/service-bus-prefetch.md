@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2017
+ms.date: 01/30/2018
 ms.author: sethm
-ms.openlocfilehash: 4a4a06f90c2c48d35d836f0be89fec9cc47f32c0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0a61918108a48f4a9fa3d1c07cc8d41525f1f2a0
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="prefetch-azure-service-bus-messages"></a>Előzetesen lehívott lapok Azure Service Bus-üzenetek
 
@@ -37,7 +37,7 @@ Előzetes betöltés is működik együtt a [OnMessage](/dotnet/api/microsoft.se
 
 ## <a name="if-it-is-faster-why-is-prefetch-not-the-default-option"></a>Ha gyorsabb, miért nem előzetes betöltési az alapértelmezett lehetőség?
 
-Előzetes betöltési felgyorsítja azzal, hogy azonnal elérhetők legyenek a helyi beolvasásához üzenet, amikor előtt legalább egy kéri az alkalmazás és az üzenet-adatfolyam. Az átviteli sebesség nyereség oka egy kompromisszum döntés, hogy az alkalmazás szerzőjéhez explicit módon kell végrehajtania:
+Előzetes betöltési felgyorsítja azzal, hogy azonnal elérhetők legyenek a helyi beolvasásához üzenet, amikor előtt legalább egy kéri az alkalmazás és az üzenet-adatfolyam. Az átviteli sebesség nyereség oka egy kompromisszum, amely az alkalmazás szerzőjéhez explicit módon kell végrehajtania:
 
 Az a [ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode.receiveanddelete) fogadás módban, az előzetes betöltési puffer beszerzett összes üzenet már nem érhetők el a várólistában, és csak a memórián belüli előzetes betöltési pufferben találhatók, amíg az alkalmazás kaptak keresztül a **kap**/**ReceiveAsync** vagy **OnMessage**/**OnMessageAsync** API-k. Ha az alkalmazás leállása előtt az üzenetek fogadása az alkalmazásba, az üzenetek is végleg elvesznek.
 
@@ -53,7 +53,7 @@ Ha magas teljes kell, és általában olcsó üzenet feldolgozása, a lehívott 
 
 A lehívott maximális számát és a várólista vagy az előfizetés a zárolás konfigurált kell úgy, hogy a zárolás időtúllépését legalább meghaladja a feldolgozási ideje az előzetes betöltési puffer maximális méretét az összegző várható üzenet, valamint egy üzenet lehet átgondolni. Egy időben, a zárolás időtúllépését kell kerülnie nem lehet, hogy üzenetek lépheti túl a maximális hosszú [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) Ha véletlenül megszakadnak, így igénylő a zárolás lejárati dátuma előtt éppen újra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tudhat meg többet a Service Bus üzenetkezelés, a következő témakörökben:
 

@@ -3,7 +3,7 @@ title: "Azure IoT Hub feladatok ismertetése |} Microsoft Docs"
 description: "Az IoT hub fejlesztői útmutató - feladatütemezés több eszközökön való futtatására csatlakoztatva. Feladatok címkék és a kívánt tulajdonságok frissítése, és több eszközön közvetlen metódusok."
 services: iot-hub
 documentationcenter: .net
-author: juanjperez
+author: dominicbetts
 manager: timlt
 editor: 
 ms.assetid: fe78458f-4f14-4358-ac83-4f7bd14ee8da
@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/24/2017
-ms.author: juanpere
-ms.openlocfilehash: f90ecb70ad12ed05d5d40f8b26a0a4e461c9f835
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.date: 01/29/2018
+ms.author: dobett
+ms.openlocfilehash: 7e0af40b2fd5bbb12d5565765aae4026922aec5c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>Feladatok ütemezése több eszközön
 
@@ -103,13 +103,13 @@ Az alábbi lista a tulajdonságait és a használható lekérdezésekor feladat 
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| **a JobId értékének** |Alkalmazás azonosítója megadva a feladathoz. |
-| **Kezdő időpont** |Alkalmazás által biztosított a feladat kezdési időpontja (ISO 8601). |
-| **Befejezés időpontja** |Az IoT-központ dátuma (ISO 8601) Ha a feladat befejeződött-e megadva. Csak azt követően a feladat eléri a "kész" állapot érvényes. |
+| **jobId** |Alkalmazás azonosítója megadva a feladathoz. |
+| **startTime** |Alkalmazás által biztosított a feladat kezdési időpontja (ISO 8601). |
+| **endTime** |Az IoT-központ dátuma (ISO 8601) Ha a feladat befejeződött-e megadva. Csak azt követően a feladat eléri a "kész" állapot érvényes. |
 | **típusa** |Feladatok típusai: |
 | | **scheduledUpdateTwin**: egy kívánt tulajdonságokkal vagy címkék frissítésére szolgáló feladatot. |
 | | **scheduledDeviceMethod**: egy eszköz twins a megfelelő eszköz metódus hívásához használt feladat. |
-| **állapot** |A feladat jelenlegi állapota. Az állapotot a lehetséges értékek: |
+| **status** |A feladat jelenlegi állapota. Az állapotot a lehetséges értékek: |
 | | **függőben lévő**: ütemezett és váró észlelnie kell a feladat szolgáltatás. |
 | | **ütemezett**: jövőbeli időpontra ütemezve. |
 | | **futó**: jelenleg aktív feladat. |
@@ -130,11 +130,11 @@ Az IoT Hub fejlesztői útmutató más hivatkozás témaköröket tartalmazza:
 * [IoT-központok végpontjai] [ lnk-endpoints] ismerteti a különböző végpontok, amelyek minden egyes IoT-központ elérhetővé teszi a futásidejű és felügyeleti műveletek.
 * [Sávszélesség-szabályozási és kvóták] [ lnk-quotas] ismerteti a kvótákat, az IoT-központ szolgáltatás és a sávszélesség-szabályozási viselkedését történik, ha a szolgáltatás használatához.
 * [Az Azure IoT eszköz és a szolgáltatás SDK-k] [ lnk-sdks] felsorolja a különböző nyelvi használhatja az eszköz és a szolgáltatás alkalmazások gondoskodnak az IoT hubbal fejlesztésekor SDK-k.
-* [Az IoT-központ lekérdezési nyelv eszköz twins, feladatok és üzenet útválasztási] [ lnk-query] az IoT-központ lekérdezési nyelv segítségével adatok lekérését az IoT-központ az eszköz twins és feladatok ismertetése.
+* [Az IoT-központ lekérdezési nyelv eszköz twins, feladatok és üzenet útválasztási] [ lnk-query] az IoT-központ lekérdezési nyelv ismerteti. A lekérdezési nyelv használatával IoT Hub eszköz twins és feladatok kapcsolatos adatok lekérését.
 * [Az IoT Hub MQTT támogatási] [ lnk-devguide-mqtt] IoT-központ támogatásával kapcsolatos további információkat biztosít a MQTT protokoll.
 
-## <a name="next-steps"></a>Következő lépések
-Ha azt szeretné, hogy próbálja ki azokat a jelen cikkben ismertetett fogalmakat, esetleg megváltozása a következő IoT Hub-oktatóanyag:
+## <a name="next-steps"></a>További lépések
+Próbálja ki azokat a jelen cikkben ismertetett fogalmakat, olvassa el a következő IoT Hub-oktatóanyag:
 
 * [Ütemezés és a feladatok][lnk-jobs-tutorial]
 

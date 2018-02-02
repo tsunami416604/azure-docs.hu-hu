@@ -5,18 +5,18 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 11/27/2017
+ms.date: 01/30/2018
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: 
-ms.openlocfilehash: df2108a6e2a01195340a09eacf1c56f9d738c923
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 38c1313f42a58403e158cad9c2930b6541da5adc
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="understanding-cost-reports"></a>Jelentések költségek ismertetése
+# <a name="understanding-cost-reports"></a>A költségjelentések értelmezése
 
 Ez a cikk segít megérteni a Cloudyn jelentések alapszintű struktúrát és funkcióit. A legtöbb Cloudyn jelentések intuitív és egy egységes megjelenés és működés. Ez a cikk elolvasása után készen áll a jelentésekre. Számos szabványos szolgáltatást a különböző jelentéseket, lehetővé téve, keresse meg a jelentések kihívásokra keresztül érhetőek el. Jelentések testre szabható, és kiszámításához ki és jelenítheti meg az eredmények több lehetőség közül választhat.
 
@@ -124,7 +124,7 @@ Az előző ábrán minden számozott területen a következő információ rész
 
     ![megjelenítési formátum](./media/understanding-cost-reports/display-formats.png)
 
-13. **Több szín**
+13. **Multi-color**
 
     A jelentésben szereplő diagramok színének beállításához használja több szín.
 
@@ -132,6 +132,6 @@ Az előző ábrán minden számozott területen a következő információ rész
 
     Műveletek segítségével mentése, exportálhatja vagy ütemezni a jelentést.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha még nem fejezte első oktatóanyaga, amely költség-kezelésre, olvassa el a [tekintse át a használati és költségek](tutorial-review-usage.md).

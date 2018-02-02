@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c1909183a33ed03d8165671cff25cc8b83b77733
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1097b1ddd2e8f2fae0ffc809aee63be5c2ed4cb1
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="adding-azure-automation-resources-to-an-oms-management-solution-preview"></a>Azure Automation-erőforrások hozzáadása egy OMS-felügyeleti megoldás (előzetes verzió)
 > [!NOTE]
@@ -40,7 +40,7 @@ Ez a cikk feltételezi, hogy már ismeri a következő információkat.
 - Hogyan [Resource Manager-sablonok készítésének](../azure-resource-manager/resource-group-authoring-templates.md)
 
 ## <a name="automation-account"></a>Automation-fiók
-Az Azure Automationben összes erőforrás található egy [Automation-fiók](../automation/automation-security-overview.md#automation-account-overview).  A [OMS munkaterületet, és az Automation-fiók](operations-management-suite-solutions.md#oms-workspace-and-automation-account) az Automation-fiók nem található meg a felügyeleti megoldás, de már léteznie kell a megoldás telepítve van.  Ha nem érhető el, akkor a megoldás telepítése sikertelen lesz.
+Az Azure Automationben összes erőforrás található egy [Automation-fiók](../automation/automation-security-overview.md#automation-account-overview).  A [OMS munkaterületet, és az Automation-fiók](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account) az Automation-fiók nem található meg a felügyeleti megoldás, de már léteznie kell a megoldás telepítve van.  Ha nem érhető el, akkor a megoldás telepítése sikertelen lesz.
 
 Minden egyes Automation-erőforrás nevét tartalmazza az Automation-fiók nevét.  Ezt a megoldást a **accountName** paraméter egy runbook-erőforrást az alábbi példában látható módon.
 
@@ -77,7 +77,7 @@ Az alábbi táblázat ismerteti a runbookok tulajdonságai.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| a kötelező runbookType |Adja meg a runbook típusú. <br><br> Parancsfájl - PowerShell-parancsfájl <br>PowerShell - PowerShell munkafolyamat <br> GraphPowerShell - grafikus PowerShell-parancsfájl forgatókönyv <br> GraphPowerShellWorkflow - grafikus PowerShell-munkafolyamati forgatókönyv |
+| runbookType |Adja meg a runbook típusú. <br><br> Parancsfájl - PowerShell-parancsfájl <br>PowerShell - PowerShell munkafolyamat <br> GraphPowerShell - grafikus PowerShell-parancsfájl forgatókönyv <br> GraphPowerShellWorkflow - grafikus PowerShell-munkafolyamati forgatókönyv |
 | logProgress |Megadja, hogy [rekordok előrehaladás](../automation/automation-runbook-output-and-messages.md) elő kell állítani a runbookot. |
 | logVerbose |Megadja, hogy [részletes rekordok](../automation/automation-runbook-output-and-messages.md) elő kell állítani a runbookot. |
 | leírás |Megadhat egy leírást a runbook. |
@@ -281,10 +281,10 @@ Ha a változó a kezdeti érték, akkor be kell állítani a megfelelő adattíp
 
 | Adattípus | Leírás | Példa | Oldja fel a rendszer |
 |:--|:--|:--|:--|
-| Karakterlánc   | Érték tegye idézőjelek közé foglalt.  | "\"Hello world\"" | "Hello world" |
+| karakterlánc   | Érték tegye idézőjelek közé foglalt.  | "\"Hello world\"" | "Hello world" |
 | Numerikus  | Szimpla idézőjelben numerikus értéket.| "64" | 64 |
-| Logikai érték  | **Igaz** vagy **hamis** idézőjelben.  Vegye figyelembe, hogy ez az érték kisbetűnek kell lennie. | "true" | Igaz |
-| Dátum és idő | A szerializált dátumértéket.<br>A PowerShell ConvertTo-Json-parancsmaggal előállításához ezt az értéket egy adott dátumot.<br>Példa: get-date "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
+| logikai  | **Igaz** vagy **hamis** idézőjelben.  Vegye figyelembe, hogy ez az érték kisbetűnek kell lennie. | "true" | igaz |
+| dátum/idő | A szerializált dátumértéket.<br>A PowerShell ConvertTo-Json-parancsmaggal előállításához ezt az értéket egy adott dátumot.<br>Példa: get-date "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>Modulok
 A felügyeleti megoldás nem kell meghatároznia [globális modulok](../automation/automation-integration-modules.md) a runbookok által használt, mert azok mindig elérhető lesz az Automation-fiók.  Meg kell adnia egy erőforrás bármely más, a runbookok által használt modul.
@@ -322,7 +322,7 @@ Ha egy felügyeleti megoldás, amely tartalmazza a runbook által használt üte
 
 
 
-## <a name="sample"></a>Minta
+## <a name="sample"></a>Sample
 Az alábbiakban látható egy minta a megoldás, amely tartalmazza, amely a következőket tartalmazza:
 
 - Runbook.  Ez a példa runbook egy nyilvános GitHub-tárházban tárolt.
@@ -649,5 +649,5 @@ A mintánkban [szokásos megoldást paraméterek](operations-management-suite-so
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Nézet felvétele a megoldás](operations-management-suite-solutions-resources-views.md) összegyűjtött adatok megjelenítéséhez.

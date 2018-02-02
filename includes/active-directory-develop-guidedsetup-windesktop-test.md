@@ -35,4 +35,4 @@ A felhasználók naptáraiban a környezetben, az alkalmazások eléréséhez ve
 
 <!--end-collapse-->
 
-[!INCLUDE  [Help and support](./active-directory-develop-help-support-include.md)]
+[!INCLUDE [Help and support](./active-directory-develop-help-support-include.md)]

@@ -3,7 +3,7 @@ title: "Ismerkedés az Azure AD alkalmazás Proxy - összekötő telepítése |}
 description: "Alkalmazásproxy bekapcsolása az Azure portálon, és a fordított proxyhoz tartozó az összekötők telepítése."
 services: active-directory
 documentationcenter: 
-author: billmath
+author: MarkusVi
 manager: mtillman
 ms.assetid: c7186f98-dd80-4910-92a4-a7b8ff6272b9
 ms.service: active-directory
@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/02/2017
-ms.author: billmath
+ms.date: 01/31/2018
+ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 09497144ef4047c1191f3c02afccb881d48aaf3c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2c2e0f977cdf0d31da19f71d9260b500184858e9
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="get-started-with-application-proxy-and-install-the-connector"></a>Az alkalmazásproxy első lépései, és az összekötő telepítése
 Ez a cikk útmutatást nyújt a felhőcímtárhoz tartozó Microsoft Azure AD alkalmazásproxy engedélyezéséhez szükséges lépésekről az Azure AD-ben.
@@ -57,8 +57,8 @@ A környezet előkészítése az Azure AD-alkalmazásproxy, először az Azure-a
 
 3. Microsoft négy címet használ a tanúsítványok ellenőrzése. A következő URL-hozzáférés engedélyezése, ha ezt még nem tette meg egyéb termékek esetében:
    * mscrl.microsoft.com:80
-   * CRL.microsoft.com:80
-   * OCSP.msocsp.com:80
+   * crl.microsoft.com:80
+   * ocsp.msocsp.com:80
    * www.microsoft.com:80
 
 4. Az összekötő számára a regisztrációs folyamat során hozzá kell férnie login.windows.net és login.microsoftonline.com.
@@ -102,7 +102,7 @@ A kiszolgálón ellenőrizze az összekötő, és megtekinti a connector aktív 
 Összekötők és hogyan azok friss kapcsolatos információkért lásd: [megértéséhez Azure AD-alkalmazásproxy összekötők](application-proxy-understand-connectors.md).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most már készen áll az [alkalmazások közzétételére az alkalmazásproxy használatával](application-proxy-publish-azure-portal.md).
 
 Ha olyan alkalmazásokkal rendelkezik, különálló hálózatokból vagy különböző helyeken lévő, összekötő csoportok használata a különböző összekötők rendezze a logikai egységeket. További információ: [Az alkalmazásproxy-összekötők használata](active-directory-application-proxy-connectors-azure-portal.md).

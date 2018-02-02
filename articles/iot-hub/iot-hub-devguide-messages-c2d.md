@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2017
 ms.author: dobett
-ms.openlocfilehash: a3ebda292d16b2a420fb6d586f18201e34efffa7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1b34e579f2ba40f4d77f7a3ba1841f59f795d292
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="send-cloud-to-device-messages-from-iot-hub"></a>Felhő-eszközre küldött üzenetek küldése az IoT-központ
 
@@ -41,12 +41,12 @@ Az IoT-központ szolgáltatás üzenetet küld egy eszközt, ha a szolgáltatás
 
 Egy eszköz is megteheti, hogy:
 
-* *Elutasítása* az üzenet, amely azt eredményezi, állítsa be az IoT-központ a **Deadlettered** állapotát. A MQTT protokollon keresztül csatlakozó eszközökön nem utasíthat el a felhő-eszközre küldött üzenetek.
+* *Elutasítása* az üzenet, amely azt eredményezi, állítsa be az IoT-központ a **Dead lettered** állapotát. A MQTT protokollon keresztül csatlakozó eszközökön nem utasíthat el a felhő-eszközre küldött üzenetek.
 * *Abandon* az üzenet, amely azt eredményezi, az üzenet vissza a várólistába helyezni, az állapot beállítása az IoT-központ **a várólistában levő**. A MQTT protokollon keresztül csatlakozó eszközök felhő-eszközre küldött üzenetek nem abandon.
 
 A szál nem sikerül felvenni feldolgozni egy üzenetet az IoT-központ értesítése nélkül. Ebben az esetben üzenetek automatikusan állnak a **láthatatlan** állapot vissza a **a várólistában levő** állapot után egy *látható (vagy a zárolás) időtúllépési*. Ez az időkorlát alapértelmezett értéke egy perc.
 
-A **kézbesítési száma legfeljebb** IoT hub tulajdonság határozza meg, egy üzenet is átmenet között a maximálisan megengedett számú a **a várólistában levő** és **láthatatlan** állapotok. Követően, hogy áttérések számával, IoT-központ állapotát állítja, az üzenet **Deadlettered**. Ehhez hasonlóan az IoT-központ üzenet állapotúra állítja **Deadlettered** a lejárati idő után (lásd: [élettartama][lnk-ttl]).
+A **kézbesítési száma legfeljebb** IoT hub tulajdonság határozza meg, egy üzenet is átmenet között a maximálisan megengedett számú a **a várólistában levő** és **láthatatlan** állapotok. Követően, hogy áttérések számával, IoT-központ állapotát állítja, az üzenet **Dead lettered**. Ehhez hasonlóan az IoT-központ üzenet állapotúra állítja **Dead lettered** a lejárati idő után (lásd: [élettartama][lnk-ttl]).
 
 A [IoT hubbal felhő eszközre üzenetek küldése] [ lnk-c2d-tutorial] bemutatja, hogyan felhő-eszközre küldött üzenetek küldéséhez a felhőből, és fogadásukra az eszközön.
 
@@ -75,9 +75,9 @@ A felhőből eszközre üzenetet küld, ha a szolgáltatás kérhetnek az üzene
 
 | Nyugtázási tulajdonság | Viselkedés |
 | ------------ | -------- |
-| **pozitív** | Ha a felhő eszközre üzenet eléri a **befejezve** állapotba kerül, az IoT-központ visszajelzés üzenetet hoz létre. |
-| **negatív.** | Ha a felhő eszközre üzenet eléri a **Deadlettered** állapotba kerül, az IoT-központ visszajelzés üzenetet hoz létre. |
-| **teljes**     | Az IoT-központ visszajelzés üzenet mindkét esetben állít elő. |
+| **positive** | Ha a felhő eszközre üzenet eléri a **befejezve** állapotba kerül, az IoT-központ visszajelzés üzenetet hoz létre. |
+| **negative** | Ha a felhő eszközre üzenet eléri a **Dead lettered** állapotba kerül, az IoT-központ visszajelzés üzenetet hoz létre. |
+| **full**     | Az IoT-központ visszajelzés üzenet mindkét esetben állít elő. |
 
 Ha **nyugtázási** van **teljes**, és nem kap egy üzenetet, visszajelzést, az azt jelenti, hogy a visszajelzés üzenet lejárt. A szolgáltatás nem tudja az eredeti üzenet Mi történt. A gyakorlatban egy szolgáltatás győződjön meg arról, hogy a visszajelzés lejárata előtt is feldolgozza. A lejárati idő két nap, így a szolgáltatás elemszámú fut újra hiba esetén.
 
@@ -86,18 +86,18 @@ A [végpontok][lnk-endpoints], IoT-központ biztosítja a szolgáltatás felé n
 | Tulajdonság     | Leírás |
 | ------------ | ----------- |
 | EnqueuedTime | Az üzenet létrehozásának jelző időbélyegző. |
-| Felhasználói azonosítóját       | `{iot hub name}` |
-| A ContentType  | `application/vnd.microsoft.iothub.feedback.json` |
+| UserId       | `{iot hub name}` |
+| ContentType  | `application/vnd.microsoft.iothub.feedback.json` |
 
 A szervezet rekord, egy JSON-szerializált tömbje, minden, a következő tulajdonságokkal:
 
 | Tulajdonság           | Leírás |
 | ------------------ | ----------- |
 | EnqueuedTimeUtc    | Mikor történt, az üzenet eredményeit jelző időbélyegző. Például az eszköz befejeződött vagy az üzenet lejárt. |
-| originalMessageId  | **MessageId** a felhőből eszközre üzenet, amely a visszajelzési információk vonatkozik. |
-| statusCode         | Szükséges karakterlánc. Az IoT-központ által generált visszajelzés üzenetekben használatos. <br/> "Sikeres" <br/> "A lejárt" <br/> "DeliveryCountExceeded" <br/> "Visszautasított" <br/> "Kiürítve" |
+| OriginalMessageId  | **MessageId** a felhőből eszközre üzenet, amely a visszajelzési információk vonatkozik. |
+| statusCode         | Szükséges karakterlánc. Az IoT-központ által generált visszajelzés üzenetekben használatos. <br/> 'Success' <br/> 'Expired' <br/> 'DeliveryCountExceeded' <br/> "Visszautasított" <br/> "Kiürítve" |
 | Leírás        | Karakterlánc-értékek **StatusCode**. |
-| Eszközazonosító           | **DeviceId** a célként megadott eszköz a felhőből eszközre üzenet, amely a visszajelzésekben vonatkozik. |
+| DeviceId           | **DeviceId** a célként megadott eszköz a felhőből eszközre üzenet, amely a visszajelzésekben vonatkozik. |
 | DeviceGenerationId | **DeviceGenerationId** a célként megadott eszköz a felhőből eszközre üzenet, amely a visszajelzésekben vonatkozik. |
 
 A szolgáltatás meg kell adnia egy **MessageId** a felhőből eszközre üzenet tudjanak a visszajelzés a kivizsgált az eredeti üzenet.
@@ -134,7 +134,7 @@ Minden egyes IoT-központ mutatja meg a következő konfigurációs beállítás
 
 A konfigurációs beállításokról telepítésével kapcsolatos további információkért lásd: [létrehozása IoT-központok][lnk-portal].
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az SDK-k segítségével felhő eszközre üzeneteket fogadni,: [Azure IoT SDK-k][lnk-sdks].
 

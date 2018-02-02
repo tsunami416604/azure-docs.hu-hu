@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: iainfou
-ms.openlocfilehash: 6ae05dc8faf950f584806d9b4a3e7e1466ded652
-ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
+ms.openlocfilehash: a484cf6734ff663a852be1a46e2b2ca2f75bb17d
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>A virtuálisgép-méretezési beállítása az Azure CLI 2.0 kezelése
 A virtuálisgép-méretezési csoport életciklusa során szükség lehet egy vagy több felügyeleti feladatok futtatásához. Emellett érdemes lehet különböző életciklus-feladatokat automatizáló parancsfájlokat hozhatnak létre. Ez a cikk részletezi az egyes közös Azure CLI 2.0 parancsok, amelyek lehetővé teszik, hogy ezeket a műveleteket.
@@ -28,7 +28,7 @@ Felügyeleti feladatok elvégzéséhez szüksége van a legújabb Azure CLI 2.0 
 
 
 ## <a name="view-information-about-a-scale-set"></a>A méretezési adatainak megtekintése
-A méretezési általános információ megtekintéséhez használja [az vmss megjelenítése](/cli/azure/vmss#show). A következő példa a méretezési készletben elnevezett információ lekérése *myScaleSet* a a *myResourceGroup* erőforráscsoportot. Adja meg a saját nevek a következők szerint:
+A méretezési általános információ megtekintéséhez használja [az vmss megjelenítése](/cli/azure/vmss#az_vmss_show). A következő példa a méretezési készletben elnevezett információ lekérése *myScaleSet* a a *myResourceGroup* erőforráscsoportot. Adja meg a saját nevek a következők szerint:
 
 ```azurecli
 az vmss show --resource-group myResourceGroup --name myScaleSet
@@ -68,7 +68,7 @@ az vmss list-instance-connection-info \
 ## <a name="change-the-capacity-of-a-scale-set"></a>A kapacitás, a méretezési módosítása
 A fenti parancsok bemutatta, a méretezési és a Virtuálisgép-példányok kapcsolatos információkat. Növeléséhez vagy csökkentéséhez tegye a következőket a méretezési csoportban lévő példányok, módosíthatja a kapacitást. A méretezési hoz létre vagy eltávolítja a virtuális gépek szükséges számát, majd konfigurálja a virtuális gépek alkalmazás forgalom fogadására.
 
-Már van egy méretezési csoportban lévő példányok száma, használja a [az vmss megjelenítése](/cli/azure/vmss#show) és a lekérdezés *sku.capacity*:
+Már van egy méretezési csoportban lévő példányok száma, használja a [az vmss megjelenítése](/cli/azure/vmss#az_vmss_show) és a lekérdezés *sku.capacity*:
 
 ```azurecli
 az vmss show \
@@ -78,7 +78,7 @@ az vmss show \
     --output table
 ```
 
-Ezután manuálisan növeléséhez vagy csökkentéséhez tegye a következőket a méretezési készletben rendelkező virtuális gépek [az vmss méretezési](/cli/azure/vmss#scale). Az alábbi példában a virtuális gépek számát beállítja a méretezés beállítása *5*:
+Ezután manuálisan növeléséhez vagy csökkentéséhez tegye a következőket a méretezési készletben rendelkező virtuális gépek [az vmss méretezési](/cli/azure/vmss#az_vmss_scale). Az alábbi példában a virtuális gépek számát beállítja a méretezés beállítása *5*:
 
 ```azurecli
 az vmss scale \
@@ -99,7 +99,7 @@ A következő példakód leállítja a példányt *0* a méretezési készletben
 az vmss stop --resource-group myResourceGroup --name myScaleSet --instance-ids 0
 ```
 
-Leállított virtuális gépek maradnak, és továbbra is számítási költségek. Ha ehelyett kívánja a virtuális gép felszabadítása, és csak a tárolási költségek fel Önnek, akkor [az vmss felszabadítani](/cli/azure/vmss#deallocate). Felszabadítani a több virtuális géphez, külön szóközzel minden példány azonosítója. Az alábbi példa leáll, és felszabadítja a példány *0* a méretezési készletben elnevezett a *myScaleSet* és a *myResourceGroup* erőforráscsoportot. Adja meg a következőképpen:
+Leállított virtuális gépek maradnak, és továbbra is számítási költségek. Ha ehelyett kívánja a virtuális gép felszabadítása, és csak a tárolási költségek fel Önnek, akkor [az vmss felszabadítani](/cli/azure/vmss#az_vmss_deallocate). Felszabadítani a több virtuális géphez, külön szóközzel minden példány azonosítója. Az alábbi példa leáll, és felszabadítja a példány *0* a méretezési készletben elnevezett a *myScaleSet* és a *myResourceGroup* erőforráscsoportot. Adja meg a következőképpen:
 
 ```azurecli
 az vmss deallocate --resource-group myResourceGroup --name myScaleSet --instance-ids 0
@@ -107,7 +107,7 @@ az vmss deallocate --resource-group myResourceGroup --name myScaleSet --instance
 
 
 ### <a name="start-vms-in-a-scale-set"></a>Méretezési csoportban lévő virtuális gépek elindítása
-Méretezési csoportban lévő egy vagy több virtuális gép indításához használja [az vmss start](/cli/azure/vmss#start). A `--instance-ids` paraméter lehetővé teszi egy vagy több virtuális gép elindításához. Ha nem adja meg a Példányazonosítót, a méretezési csoportban lévő összes virtuális gép indulnak el. Több virtuális gép elindításához külön szóközzel minden példány azonosítója.
+Méretezési csoportban lévő egy vagy több virtuális gép indításához használja [az vmss start](/cli/azure/vmss#az_vmss_start). A `--instance-ids` paraméter lehetővé teszi egy vagy több virtuális gép elindításához. Ha nem adja meg a Példányazonosítót, a méretezési csoportban lévő összes virtuális gép indulnak el. Több virtuális gép elindításához külön szóközzel minden példány azonosítója.
 
 A következő példában elindul a példány *0* a méretezési készletben elnevezett a *myScaleSet* és a *myResourceGroup* erőforráscsoportot. Adja meg a következőképpen:
 
@@ -117,7 +117,7 @@ az vmss start --resource-group myResourceGroup --name myScaleSet --instance-ids 
 
 
 ## <a name="restart-vms-in-a-scale-set"></a>Indítsa újra a virtuális gépek méretezési csoportban lévő
-Méretezési csoportban lévő egy vagy több virtuális gép újraindításához használja [az vmss újraindítása](/cli/azure/vmss#restart). A `--instance-ids` paraméter lehetővé teszi egy vagy több virtuális gépek újraindítására. Ha nem adja meg a Példányazonosítót, a méretezési csoportban lévő összes virtuális gép újraindul. Több virtuális gép újraindításához külön szóközzel minden példány azonosítója.
+Méretezési csoportban lévő egy vagy több virtuális gép újraindításához használja [az vmss újraindítása](/cli/azure/vmss#az_vmss_restart). A `--instance-ids` paraméter lehetővé teszi egy vagy több virtuális gépek újraindítására. Ha nem adja meg a Példányazonosítót, a méretezési csoportban lévő összes virtuális gép újraindul. Több virtuális gép újraindításához külön szóközzel minden példány azonosítója.
 
 Az alábbi példa újraindul példány *0* a méretezési készletben elnevezett a *myScaleSet* és a *myResourceGroup* erőforráscsoportot. Adja meg a következőképpen:
 

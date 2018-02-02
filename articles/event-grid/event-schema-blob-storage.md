@@ -6,13 +6,13 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 11/08/2017
+ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: bdc64733b75fd809cf0245986aa96370343c1a34
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: d0a8a3726ac3c33668d8ad91c97c35937c299b46
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-event-grid-event-schema-for-blob-storage"></a>A Blob storage Azure esemény rács esemény séma
 
@@ -51,7 +51,9 @@ A következő példa bemutatja a séma, esemény létrehozott BLOB:
     "storageDiagnostics": {
       "batchId": "b68529f3-68cd-4744-baa4-3c0498ec19f0"
     }
-  }
+  },
+  "dataVersion": "",
+  "metadataVersion": "1"
 }]
 ```
 
@@ -74,7 +76,9 @@ A séma blob törlése esemény hasonlít:
     "storageDiagnostics": {
       "batchId": "b68529f3-68cd-4744-baa4-3c0498ec19f0"
     }
-  }
+  },
+  "dataVersion": "",
+  "metadataVersion": "1"
 }]
 ```
  
@@ -84,29 +88,31 @@ Az esemény a következő legfelső szintű adatokat tartalmaz:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| A témakör | Karakterlánc | A forrás teljes erőforrás elérési útja. Ez a mező nincs írható. |
-| Tulajdonos | Karakterlánc | Az esemény tulajdonos közzétevő által megadott elérési útja. |
-| Esemény típusa | Karakterlánc | Az esemény adatforrás regisztrált esemény típusok egyike. |
-| eventTime | Karakterlánc | Az esemény jön létre az idő alapján a szolgáltató UTC idő szerint. |
-| id | Karakterlánc | Az esemény egyedi azonosítója. |
-| Adatok | Objektum | A BLOB storage eseményadatok. |
+| A témakör | karakterlánc | A forrás teljes erőforrás elérési útja. Ez a mező nincs írható. Esemény rács biztosítja ezt az értéket. |
+| Tulajdonos | karakterlánc | Az esemény tulajdonos közzétevő által megadott elérési útja. |
+| eventType | karakterlánc | Az esemény adatforrás regisztrált esemény típusok egyike. |
+| eventTime | karakterlánc | Az esemény jön létre az idő alapján a szolgáltató UTC idő szerint. |
+| id | karakterlánc | Az esemény egyedi azonosítója. |
+| adat | objektum | A BLOB storage eseményadatok. |
+| dataVersion | karakterlánc | Az objektum séma verziója. A közzétevő a sémaverziót határozza meg. |
+| metadataVersion | karakterlánc | Az esemény-metaadatok séma verziója. Esemény rács a séma legfelső szintű tulajdonság határozza meg. Esemény rács biztosítja ezt az értéket. |
 
 Az objektum tulajdonságai a következők:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| api-t | Karakterlánc | A művelet az eseményt kiváltó. |
-| clientRequestId | Karakterlánc | Egy ügyfél által létrehozott, nem átlátszó értéket egy 1 KB-os karakteres korlátot. Ha engedélyezte a naplózás tárolási analitika, az elemzési naplókat van rögzítve. |
-| Kérelemazonosító | Karakterlánc | A kérelem egyedi azonosítója. A hibaelhárítás a kérelem használni. |
-| ETag | Karakterlánc | Az érték, amely feltételesen műveletek végrehajtásához használhatja. |
-| A ContentType | Karakterlánc | A BLOB megadott tartalomtípus. |
-| contentLength | egész szám | A blob bájtban kifejezett mérete. |
-| BlobType | Karakterlánc | A blob típusú. |
-| URL-címe | Karakterlánc | A blob elérési útja. |
-| sorrendvezérlő | Karakterlánc | Egy felhasználó által felügyelt érték, amely segítségével nyomon követheti a kéréseket. |
-| storageDiagnostics | Objektum | A tárolási diagnosztikai információt. |
+| api-t | karakterlánc | A művelet az eseményt kiváltó. |
+| clientRequestId | karakterlánc | Egy ügyfél által létrehozott, nem átlátszó értéket egy 1 KB-os karakteres korlátot. Ha engedélyezte a naplózás tárolási analitika, az elemzési naplókat van rögzítve. |
+| requestId | karakterlánc | A kérelem egyedi azonosítója. A hibaelhárítás a kérelem használni. |
+| ETag | karakterlánc | Az érték, amely feltételesen műveletek végrehajtásához használhatja. |
+| contentType | karakterlánc | A BLOB megadott tartalomtípus. |
+| contentLength | integer | A blob bájtban kifejezett mérete. |
+| blobType | karakterlánc | A blob típusú. Érvényes értékek: "BlockBlob" vagy "PageBlob". |
+| url | karakterlánc | A blob elérési útja. |
+| sorrendvezérlő | karakterlánc | Egy felhasználó által felügyelt érték, amely segítségével nyomon követheti a kéréseket. |
+| storageDiagnostics | objektum | A tárolási diagnosztikai információt. |
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Megismerkedhet az Azure Event rács, lásd: [Mi az az esemény rács?](overview.md)
 * Egy esemény rács Azure-előfizetés létrehozásával kapcsolatos további információkért lásd: [esemény rács előfizetés séma](subscription-creation-schema.md).

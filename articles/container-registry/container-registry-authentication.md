@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fc29d9a57f1dd452d2b4b77a53f52a5b66a25416
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 70758f938718aef160670bc023aff5fc0c9fb92a
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>A hitelesítést egy titkos Docker-tároló beállításjegyzék
 
@@ -45,7 +45,7 @@ A következő szerepkörök választhatók:
 
 Szolgáltatás rendszerbiztonsági tagok a lekérést és a küldést helyzetekben, például a következő regisztrációs távfelügyeleti kapcsolódásának engedélyezése:
 
-  * *Olvasó*: a beállításjegyzék Kubernetes, a DC/OS és a Docker Swarm vezénylési rendszerekre üzemelő Tárolópéldányokat. Akkor is is lekéréses tároló nyilvántartó a kapcsolódó Azure-szolgáltatásokhoz való például [AKS](../aks/index.yml), [App Service](../app-service/index.yml), [kötegelt](../batch/index.md), [Service Fabric](/azure/service-fabric/), és mások számára.
+  * *Olvasó*: a beállításjegyzék Kubernetes, a DC/OS és a Docker Swarm vezénylési rendszerekre üzemelő Tárolópéldányokat. Akkor is is lekéréses tároló nyilvántartó a kapcsolódó Azure-szolgáltatásokhoz való például [AKS](../aks/index.yml), [App Service](../app-service/index.yml), [kötegelt](../batch/index.yml), [Service Fabric](/azure/service-fabric/), és mások számára.
 
   * *A közreműködői*: folyamatos integrációt és telepítést megoldások, például a Visual Studio Team Services (VSTS) vagy a tároló lemezképeket, és azok leküldése a beállításjegyzék Jenkins.
 

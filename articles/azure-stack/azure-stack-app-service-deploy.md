@@ -12,21 +12,22 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 01/29/2018
 ms.author: anwestg
-ms.openlocfilehash: 522e5a334b5165344b66524d03f0d85468b81332
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 6851fd46d243fcdce4f69811495c74dfe8311478
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Az App Service erőforrás-szolgáltató hozzáadása Azure verem
+*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
 Kezelőként Azure verem felhő biztosíthat a felhasználók a web- és API-alkalmazások létrehozásának képességét. Ehhez fel kell vennie a [App Service erőforrás-szolgáltató](azure-stack-app-service-overview.md) a Azure verem telepítéséhez ebben a cikkben leírtak szerint. Az App Service erőforrás-szolgáltató telepítése után a ajánlatok és tervek megadhat. Felhasználók majd kérhet le a szolgáltatást, és indítsa el az alkalmazások létrehozása.
 
 > [!IMPORTANT]
 > A telepítő futtatása, előtt győződjön meg arról, hogy elvégezte-e az útmutató [megkezdése előtt](azure-stack-app-service-before-you-get-started.md).
-> 
+>
 >
 
 
@@ -85,7 +86,7 @@ App Service erőforrás-szolgáltató telepítéséhez kövesse az alábbi lép�
 
     | Box | Tanúsítvány fájl neve – példa |
     | --- | --- |
-    | **App Service alapértelmezett SSL-tanúsítványfájl** | \_. appservice.local.AzureStack.external.pfx |
+    | **App Service alapértelmezett SSL-tanúsítványfájl** | \_.appservice.local.AzureStack.external.pfx |
     | **Az App Service API SSL tanúsítványfájl** | api.appservice.local.AzureStack.external.pfx |
     | **App Service Publisher SSL tanúsítványfájl** | ftp.appservice.local.AzureStack.external.pfx |
 
@@ -101,7 +102,7 @@ App Service erőforrás-szolgáltató telepítéséhez kövesse az alábbi lép�
 
     > [!NOTE]
     > Az üzemi környezetek útmutatása [Azure App Service kiszolgálói szerepkörök Azure verem Kapacitástervezését](azure-stack-app-service-capacity-planning.md).
-    > 
+    >
     >
 
     | Szerepkör | Minimális példányok | Minimális Termékváltozat | Megjegyzések |
@@ -183,7 +184,7 @@ Webes API és Azure létrehozásához funkciókkal, alkalmazások, kell a bérl�
 
 3. Ha egy SQL Server erőforrás-szolgáltató is telepített, telepítheti a piactérről DNN webhely. Amikor a rendszer kéri az adatbázis-paraméterek, válasszon egy adatbázist, amely kapcsolódik az erőforrás-szolgáltató SQL Server rendszert futtató számítógép.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Is kipróbálhatja más [platformok (PaaS) szolgáltatás](azure-stack-tools-paas-services.md).
 

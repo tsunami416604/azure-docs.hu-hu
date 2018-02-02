@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/01/2017
+ms.date: 01/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 35b737cf5b53f0ad0dbe4a50772fdcaa2e14ca5e
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 8ced5aff33ed23aee3f3399d876c1ed62d2b5707
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="stream-data-from-azure-storage-blob-into-data-lake-store-using-azure-stream-analytics"></a>Adatok streamelése az Azure Storage-blobokból a Data Lake Store-ba az Azure Stream Analytics használatával
 Ebben a cikkben, megtudhatja, hogyan használható az Azure Data Lake Store kimenetként egy Azure Stream Analytics-feladat. Ez a cikk bemutatja egy olyan egyszerű forgatókönyvet, amely egy Azure Storage-blobba (bemeneti) olvassa be az adatokat, és írja az adatokat Data Lake Store (kimenet).
@@ -120,5 +120,5 @@ Indítsa el a Stream Analytics-feladat, amely tartalmaz egy bemeneti forrás- é
 
     A Data Explorer ablaktáblában figyelje meg, hogy a kimeneti íródik a Data Lake Store megadott egyik mappaelérési útvonalára kimeneti beállításai (`streamanalytics/job/output/{date}/{time}`).  
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Data Lake Store használatára HDInsight-fürtök létrehozása](data-lake-store-hdinsight-hadoop-use-portal.md)

@@ -1,6 +1,6 @@
 ---
-title: "Az Operations Management Suite (OMS) megoldások |} Microsoft Docs"
-description: "Megoldások bővítése Operations Management Suite (OMS), adja meg a csomagolt felügyeleti lehetőségeket, amelyek az ügyfelek az OMS-munkaterület adhat hozzá.  Ez a cikk ügyfelek és partnerek által létrehozott hogyan egyéni megoldások részleteit."
+title: "Az Azure felügyeleti megoldások |} Microsoft Docs"
+description: "Kezelési megoldásai a következők csomagolt felügyeleti lehetőségeket, amelyek az ügyfelek a Naplóelemzési munkaterület adhat hozzá az Azure-ban.  Ez a cikk ügyfelek és partnerek által létrehozott hogyan egyéni megoldások részleteit."
 services: operations-management-suite
 documentationcenter: 
 author: bwren
@@ -15,19 +15,19 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2443dd73fdf441721bd6f6f340da515d9f5a22a2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2b9ad6da3963fefc5441581d113f6f690bd72be0
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="working-with-management-solutions-in-operations-management-suite-oms-preview"></a>Felügyeleti megoldások Operations Management Suite (OMS) (előzetes verzió) használatával
+# <a name="working-with-management-solutions-in-azure-preview"></a>Felügyeleti megoldások Azure (előzetes verzió) használatával
 > [!NOTE]
-> Ez a felügyeleti megoldásokra az OMS Szolgáltatáshoz, amely jelenleg előzetes verzióban érhetők előzetes dokumentáció.    
+> Ez a felügyeleti megoldásokra, amelyek jelenleg előzetes verzióban érhetők az Azure-ban előzetes dokumentáció.    
 > 
 > 
 
-Megoldások bővítése Operations Management Suite (OMS), adja meg a csomagolt felügyeleti lehetőségeket, amelyek az ügyfelek a környezetükben adhat hozzá.  Kívül [Microsoft által biztosított megoldások](../log-analytics/log-analytics-add-solutions.md), partnereinknek és ügyfeleinknek hozhat létre a saját környezetben használt vagy elérhetővé tenni az ügyfelek a közösségi keresztül megoldások.
+Kezelési megoldásai a következők csomagolt felügyeleti lehetőségeket, amelyek az ügyfelek adhat hozzá az Azure környezetben.  Kívül [Microsoft által biztosított megoldások](../log-analytics/log-analytics-add-solutions.md), partnereinknek és ügyfeleinknek hozhat létre a saját környezetben használt vagy elérhetővé tenni az ügyfelek a közösségi keresztül megoldások.
 
 ## <a name="finding-and-installing-management-solutions"></a>Keresése és telepítése a megoldások
 Több módon keresése és telepítése a felügyeleti megoldás, a következő szakaszokban ismertetett módon.
@@ -35,14 +35,14 @@ Több módon keresése és telepítése a felügyeleti megoldás, a következő 
 ### <a name="azure-marketplace"></a>Azure Piactér
 A Microsoft által biztosított megoldások és megbízható partnerei az Azure-portálon az Azure piactérről is települ.
 
-1. Jelentkezzen be az Azure-portálon.
+1. Jelentkezzen be az Azure Portalra.
 2. A bal oldali panelen válassza ki a **további szolgáltatások**.
 3. Görgessen le a vagy **megoldások** vagy típus *megoldások* be a **szűrő** párbeszédpanel.
 4. Kattintson a **+ Hozzáadás** gombra.
 5. Keresse meg a megoldások, amelyek továbbra is érdekli vagy keresse meg azt, kattintson a **szűrő** gombra, vagy írja be a a **keresési Everthing** mezőbe.
 6. Kattintson a Piactéri elemet a részletes információk megtekintéséhez.
 7. Kattintson a **létrehozása** megnyitásához a **megoldás hozzáadása** ablaktáblán.
-8. Kérni fogja a szükséges információkat, mint a [OMS munkaterületet, és az Automation-fiók](#oms-workspace-and-automation-account) mellett a megoldásban a paraméterek értékeit.
+8. Kérni fogja a szükséges információkat, mint a [Naplóelemzési munkaterületet, és az Automation-fiók](#log-analytics-workspace-and-automation-account) mellett a megoldásban a paraméterek értékeit.
 9. Kattintson a **létrehozása** a megoldás telepítéséhez.
 
 ### <a name="oms-portal"></a>OMS-portálon
@@ -50,14 +50,14 @@ A Microsoft által biztosított megoldások is települ a megoldások galériáb
 
 1. Jelentkezzen be az OMS-portálon.
 2. Kattintson a **megoldások gyűjtemény** csempére.
-3. Az OMS-megoldások gyűjtemény oldalon megismerése minden elérhető megoldás. Kattintson a nevére, a megoldás, amely hozzá szeretne adni az OMS Szolgáltatáshoz.
-4. A választott megoldás az oldalon a megoldás részletes információkat jelenít meg. Kattintson az **Add** (Hozzáadás) parancsra.
-5. Egy új csempe jelenik meg a lap OMS, és kezdheti azt követően az OMS-szolgáltatás feldolgozza az adatok áttekintésében hozzáadott a megoldáshoz.
+3. Az OMS-megoldások gyűjtemény oldalon megismerése minden elérhető megoldás. Kattintson a megoldás, amely a hozzáadni kívánt nevét.
+4. A választott megoldás az oldalon a megoldás részletes információkat jelenít meg. Kattintson a **Hozzáadás** parancsra.
+5. Egy új csempe jelenik meg a lap a portálon, és kezdheti azt követően Naplóelemzési dolgozza fel az adatok áttekintésében hozzáadott a megoldáshoz.
 
 ### <a name="azure-quickstart-templates"></a>Azure-gyorssablonok
 A Közösség tagjai elküldheti a megoldások Azure gyors üzembe helyezési sablonokat.  Töltse le a későbbi telepítési ezeket a sablonokat vagy vizsgálja meg, hogy ismerje meg, hogyan [hozzon létre egy saját megoldások](#creating-a-solution).
 
-1. Kövesse az ismertetett folyamatot [OMS munkaterületet, és az Automation-fiók](#oms-workspace-and-automation-account) egy munkaterület és a fiók összekapcsolásához.
+1. Kövesse az ismertetett folyamatot [Naplóelemzési munkaterületet, és az Automation-fiók](#log-analytics-workspace-and-automation-account) egy munkaterület és a fiók összekapcsolásához.
 2. Ugrás a [Azure gyors üzembe helyezési sablonokat](https://azure.microsoft.com/documentation/templates/).  
 3. Keressen olyan megoldás, amely kíváncsiak vagyunk.
 4. Az eredmények a részletek megtekintéséhez válasszon a megoldás.
@@ -66,34 +66,32 @@ A Közösség tagjai elküldheti a megoldások Azure gyors üzembe helyezési sa
 7. Kattintson a **beszerzési** a megoldás telepítéséhez.
 
 ### <a name="deploy-azure-resource-manager-template"></a>Azure Resource Manager-sablon üzembe helyezése
-Megoldások, hogy a közösségi vagy, hogy [saját](#creating-a-solution) valósíthatók meg a Resource Manager sablonként is használhatja a szabványos módszerek és [a sablonok telepítésével](../azure-resource-manager/resource-group-template-deploy-portal.md).  Vegye figyelembe, hogy a megoldás a telepítés előtt létre kell hoznia és csatolja a [OMS munkaterületet, és az Automation-fiók](#oms-workspace-and-automation-account).
+Megoldások, hogy a közösségi vagy, hogy [saját](#creating-a-solution) valósíthatók meg a Resource Manager sablonként is használhatja a szabványos módszerek és [a sablonok telepítésével](../azure-resource-manager/resource-group-template-deploy-portal.md).  Vegye figyelembe, hogy a megoldás a telepítés előtt létre kell hoznia és csatolja a [Naplóelemzési munkaterületet, és az Automation-fiók](#log-analytics-workspace-and-automation-account).
 
-## <a name="oms-workspace-and-automation-account"></a>OMS-munkaterület és Automation-fiók
-A legtöbb felügyeleti megoldás szükséges egy [OMS-munkaterület](../log-analytics/log-analytics-manage-access.md) nézeteket tartalmaz, és egy [Automation-fiók](../automation/automation-security-overview.md#automation-account-overview) magában foglalja a runbookok és kapcsolódó erőforrások. A munkaterület és a fiók az alábbi követelményeknek kell megfelelniük.
+## <a name="log-analytics-workspace-and-automation-account"></a>A Naplóelemzési munkaterület és Automation-fiók
+A legtöbb felügyeleti megoldás szükséges egy [Naplóelemzési munkaterület](../log-analytics/log-analytics-manage-access.md) nézeteket tartalmaz, és egy [Automation-fiók](../automation/automation-security-overview.md#automation-account-overview) magában foglalja a runbookok és kapcsolódó erőforrások. A munkaterület és a fiók az alábbi követelményeknek kell megfelelniük.
 
-* A megoldás csak akkor tudja használni, egy OMS-munkaterület és egy Automation-fiók.  
-* Az OMS-munkaterület és a megoldás által használt Automation-fiók össze kell kapcsolni egy másik. Az OMS-munkaterület csak lehet, hogy egy Automation-fiók csatolva, és előfordulhat, hogy egy OMS-munkaterület csak csatolható Automation-fiók.
-* Kell társítani, az OMS-munkaterület és Automation-fiók az erőforráscsoportot és a régióban kell lennie.  A kivétel: USA keleti régiójában az OMS-munkaterület és és az Automation-fiók az USA keleti régiója 2.
+* A megoldás csak akkor tudja használni, egy Naplóelemzési munkaterület és egy Automation-fiók.  
+* A Naplóelemzési munkaterület és a megoldás által használt Automation-fiókhoz kell kapcsolni egy másik. A Naplóelemzési munkaterület csak lehet, hogy egy Automation-fiókhoz csatolva, és egy Automation-fiók csak lehet, hogy egy Naplóelemzési munkaterület kapcsolódik.
+* Kell társítani, a Naplóelemzési munkaterület és Automation-fiók ugyanabban az erőforráscsoportban és régióban kell lennie.  A kivétel: USA keleti régiójában munkaterületeinek és és az Automation-fiók az USA keleti régiója 2.
 
-### <a name="creating-a-link-between-an-oms-workspace-and-automation-account"></a>Automation-fiók és az OMS-munkaterület közötti kapcsolat létrehozása
-Hogyan az OMS-munkaterület ad meg, és a megoldás a telepítési módszer függ az Automation-fiókhoz.
+### <a name="creating-a-link-between-a-log-analytics-workspace-and-automation-account"></a>A Naplóelemzési munkaterület és Automation-fiók csatolása
+A megoldás a telepítési módszer függ, hogy hogyan határozza meg a Naplóelemzési munkaterület és Automation-fiók.
 
-* A Microsoft-megoldás az OMS-portálon keresztül történő telepítésekor van telepítve, a jelenlegi OMS-munkaterület, és nem Automation-fiók szükséges.
-* Amikor telepít egy megoldást az Azure piactéren keresztül, az OMS-munkaterület és Automation-fiók kéri, és azokat közötti kapcsolat jön létre.  
-* Az Azure piactéren kívül megoldásainak kell kapcsolni az OMS-munkaterület és Automation-fiók a megoldás telepítése előtt.  Ehhez jelölje ki a megoldás az Azure piactéren, és az OMS-munkaterület és Automation-fiók kiválasztása.  Nem kell ténylegesen telepíteni a megoldás, mert a kapcsolat létrejön, amint az OMS-munkaterület Automation-fiók ki van választva.  Ha a kapcsolat létrejött, majd használhatja, hogy OMS-munkaterület és Automation-fiók minden megoldás. 
+* A Microsoft-megoldás az OMS-portálon keresztül történő telepítésekor van telepítve, az aktuális munkaterület, és nem Automation-fiók szükséges.
+* Amikor telepít egy megoldást az Azure piactéren keresztül, egy munkaterület és Automation-fiók kéri, és azokat közötti kapcsolat jön létre.  
+* Az Azure piactéren kívül megoldásainak kell kapcsolni a Naplóelemzési munkaterület és Automation-fiók a megoldás telepítése előtt.  Ehhez jelölje ki a megoldás az Azure piactéren, és a Naplóelemzési munkaterület és Automation-fiók kiválasztása.  Nem kell ténylegesen telepíteni a megoldás, mert a kapcsolat létrejön, amint a Naplóelemzési munkaterület Automation-fiók ki van választva.  Ha a kapcsolat létrejött, majd használhatja, hogy a Naplóelemzési munkaterület és Automation-fiók minden megoldás. 
 
-### <a name="verifying-the-link-between-an-oms-workspace-and-automation-account"></a>Az OMS-munkaterület és az Automation-fiók közötti kapcsolat ellenőrzése
-Ellenőrizheti az alábbi eljárást követve Automation-fiók és az OMS-munkaterület közötti kapcsolat.
+### <a name="verifying-the-link-between-a-log-analytics-workspace-and-automation-account"></a>A Naplóelemzési munkaterület és az Automation-fiók közötti kapcsolat ellenőrzése
+Ellenőrizheti a Naplóelemzési munkaterület és a következő eljárás segítségével Automation-fiók közötti kapcsolatot.
 
 1. Válassza ki az Automation-fiók az Azure portálon.
-2. Alján görgessen a **beállítások** ablaktáblán.
-3. Van-e nevű szakaszban **OMS-erőforrások** a a **beállítások** ablaktáblán, majd ezt a fiókot az OMS-munkaterület van csatolva.
-4. Válassza ki **munkaterület** az OMS-munkaterület részletes adatainak megtekintéséhez az Automation-fiókhoz csatolva.
+2. Ha a **munkaterület** beállítást azokban a **kapcsolódó erőforrások** a menü részét engedélyezve van, akkor ez a fiók csatolva van a Naplóelemzési munkaterület.  Rákattinthat a **munkaterület** a munkaterület részletes adatainak megtekintéséhez.
 
 ## <a name="listing-management-solutions"></a>Megoldások listázása
 A következő eljárás segítségével a tekintse meg a felügyeleti megoldásokra a munkaterületek csatolva az Azure-előfizetéshez.
 
-1. Jelentkezzen be az Azure-portálon.
+1. Jelentkezzen be az Azure Portalra.
 2. A bal oldali panelen válassza ki a **további szolgáltatások**.
 3. Görgessen le a vagy **megoldások** vagy típus *megoldások* be a **szűrő** párbeszédpanel.
 4. A munkaterületek telepített megoldások jelenik meg.
@@ -110,7 +108,7 @@ Ha eltávolítja az olyan felügyeleti megoldást, a megoldás összes erőforr�
 ## <a name="creating-a-management-solution"></a>A felügyeleti megoldás létrehozása
 Teljes útmutatás létrehozása kezelési megoldások érhetők el [megoldások létrehozása az Operations Management Suite (OMS)](operations-management-suite-solutions-creating.md). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Keresési [Azure gyors üzembe helyezési sablonokat](https://azure.microsoft.com/documentation/templates) példákért különböző Resource Manager-sablonok.
 * Hozza létre a sajátját [megoldások](operations-management-suite-solutions-creating.md).
 

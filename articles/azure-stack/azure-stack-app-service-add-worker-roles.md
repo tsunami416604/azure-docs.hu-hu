@@ -12,15 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2017
+ms.date: 01/29/2018
 ms.author: anwestg
-ms.openlocfilehash: 30ab325488684a26a6ef442e7c8241526a66aa4c
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: a9be9011062f07d59842d417bf6761ec81c39275
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="app-service-on-azure-stack-add-more-infrastructure-or-worker-roles"></a>App Service Azure veremben: további infrastruktúra vagy feldolgozói szerepkörök hozzáadása
+*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*  
 
 Ez a dokumentum bemutatja, Azure verem infrastruktúra és a feldolgozói szerepkörök az App Service méretezése. Bármilyen méretű alkalmazások támogatásához további feldolgozói szerepkörök létrehozásának lépései tartalmaz.
 
@@ -40,15 +41,15 @@ Adja hozzá a további munkavállalók közvetlenül belül az App Service erőf
 2. Keresse meg a **alkalmazásszolgáltatások**.
 
     ![](media/azure-stack-app-service-add-worker-roles/image01.png)
-  
+
 3. Kattintson a **szerepkörök**. Itt láthatja a telepített szerepkörök az App Service bontásban tartalmazza.
 
 4. Kattintson jobb gombbal a méretezhető, és kattintson a kívánt típusú sor **ScaleSet**.
 
     ![](media/azure-stack-app-service-add-worker-roles/image02.png)
-  
+
 5. Kattintson a **méretezés**, válassza ki a kívánt méretezhető, és kattintson a példányok száma **mentése**.
-    
+
     ![](media/azure-stack-app-service-add-worker-roles/image03.png)
 
 6. Veremben Azure App Service fog most adja hozzá a további virtuális gépeket, konfigurálja őket, a szükséges szoftver telepítéséhez és megjelölhetők üzemkész, ha a folyamat befejeződik. Ez a folyamat a körülbelül 80 percet is igénybe vehet.
@@ -64,6 +65,6 @@ Miután bekerültek a teljes körűen rendszerbe állított és készen áll, a 
 
 Horizontális kezelés, az előtér vagy a közzétevő szerepkört, kövesse a lépéseket, jelölje ki a megfelelő szerepkörrel. Tartományvezérlők méretezési készlet nem üzemelnek, és ezért két kell telepíteni az összes üzemi környezetek telepítéskor.
 
-### <a name="next-steps"></a>Következő lépések
+### <a name="next-steps"></a>További lépések
 
 [Központi telepítés forrásának konfigurálása](azure-stack-app-service-configure-deployment-sources.md)

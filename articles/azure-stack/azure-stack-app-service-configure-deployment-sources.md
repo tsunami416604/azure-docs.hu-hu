@@ -12,15 +12,17 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2017
+ms.date: 01/29/2018
 ms.author: anwestg
-ms.openlocfilehash: dc341d872a3b8943a934217ace21537f45bafd10
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 3738ca8ce8dfe0e5375779e9273a3d10baf8861a
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="configure-deployment-sources"></a>Központi telepítés forrásának konfigurálása
+*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+
 
 App Service Azure veremben több verziókövetési szolgáltatók igény szerinti telepítését támogatja. Ez a funkció lehetővé teszi, hogy a forrás vezérlő tárolóhelyekkel való közvetlen telepítése alkalmazásfejlesztők. Szeretnék csatlakozni a tárolóhelyekkel App Service konfigurálása, a felhő üzemeltetője először konfigurálnia kell a veremben Azure App Service és a szolgáltatót a verziókövetési közötti integrációt.  
 
@@ -29,7 +31,7 @@ A helyi Git mellett támogatott verziókövetési szolgáltatók a következők:
 * GitHub
 * Bitbucket szolgáltatásokhoz
 * OneDrive
-* Dropbox-bA
+* DropBox
 
 ## <a name="view-deployment-sources-in-app-service-administration"></a>App Service felügyeleti nézet telepítési források
 
@@ -150,6 +152,6 @@ A feladat végrehajtásához Microsoft Account csatolva a OneDrive-fiókja kell 
 [15]: ./media/azure-stack-app-service-configure-deployment-sources/App-service-provider-admin-Dropbox-application-registration.png
 [16]: ./media/azure-stack-app-service-configure-deployment-sources/App-service-provider-admin-Dropbox-application-configuration.png
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A felhasználók már a a telepítési források mint például a [folyamatos üzembe helyezés](https://docs.microsoft.com/azure/app-service-web/app-service-continuous-deployment), [helyi Git-telepítésének](https://docs.microsoft.com/azure/app-service-web/app-service-deploy-local-git), és [mappa szinkronizálása a felhőalapú](https://docs.microsoft.com/azure/app-service-web/app-service-deploy-content-sync).

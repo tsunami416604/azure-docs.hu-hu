@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: mahender
-ms.openlocfilehash: 5fe981b96725917b9cf567ded9ff38a8055fdb4d
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 608f5ec2fb4b8fa374778cb4f506f1d25eb7642b
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-functions-http-and-webhook-bindings"></a>Az Azure Functions HTTP és a webhook kötések
 
@@ -528,6 +528,8 @@ A webhook fogadó összetevőt, a HTTP-eseményindítóval részét Webhook enge
 ## <a name="trigger---limits"></a>Eseményindító - korlátok
 
 A HTTP-kérelem hosszabb 100 kilobájt (102,400) korlátozott, és az URL-cím hossza legfeljebb 4 KB-os (4096) bájt. Ezek a korlátozások vannak megadva a `httpRuntime` elem a futtatókörnyezet [Web.config fájl](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config).
+
+Ha egy függvény által használt nem körülbelül 2,5 perc, az átjáró lesz időkorláton belül végrehajtani az a HTTP-eseményindítóval, és HTTP 502-es hibát ad vissza. A függvény futása folytatódik, de nem lehet egy HTTP-válasz visszaadása. Hosszan futó feladatokat az azt javasoljuk, hogy hajtsa végre az aszinkron minták, és adott vissza egy helyet, ahol megpingelheti a kérés állapotát. Mennyi ideig futhat egy függvény kapcsolatos információkért lásd: [méretezés és a tároló - fogyasztás megtervezése](functions-scale.md#consumption-plan). 
 
 ## <a name="trigger---hostjson-properties"></a>Eseményindító - host.json tulajdonságai
 

@@ -3,8 +3,8 @@ title: "Az Azure Batch kvótái és korlátai szolgáltatás |} Microsoft Docs"
 description: "További tudnivalók az alapértelmezett Azure Batch kvóták, korlátozások és megkötések-re, arról, hogyan kérhet kvóta"
 services: batch
 documentationcenter: 
-author: v-dotren
-manager: timlt
+author: dlepow
+manager: jeconnoc
 editor: 
 ms.assetid: 28998df4-8693-431d-b6ad-974c2f8db5fb
 ms.service: batch
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 210ba4a90f24ce9b0b55c4565028232c2b7fd7cc
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 06445845ef8f93a06cb4b52e07108965cc3b7f8a
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="batch-service-quotas-and-limits"></a>A Bach szolgáltatás kvótái és korlátozásai
 
@@ -49,13 +49,13 @@ Ha egy korábbi verzióját a kötegelt API Batch-fiók létrehozása az alkalma
 | [Egyidejű feladatok](batch-parallel-node-tasks.md) egyes számítási csomópontjain |csomópont magok száma 4 x |
 | [Alkalmazások](batch-application-packages.md) / Batch-fiókhoz. |20 |
 | Alkalmazáscsomagok alkalmazásonként |40 |
-| Csomag mérete (minden) |KB. 195GB<sup>1</sup> |
+| Csomag mérete (minden) |Approx. 195GB<sup>1</sup> |
 | Maximális kezdő tevékenység mérete | 32768 karakterek<sup>2</sup> |
 | Maximális feladatütemezés élettartama | 7 nap<sup>3</sup> |
 
 <sup>1</sup> blob maximális blokkméretének azure tárolási kapacitása<br />
 <sup>2</sup> erőforrás fájlok és a környezeti változók<br />
-<sup>3</sup> maximális élettartamát egy feladatot, amikor felveszik a feladat befejezését követően a rendszer 7 nap. Befejezett feladatok megőrzése határozatlan ideig; nem fejeződött be a maximális élettartama belüli tevékenységek nem érhető el.
+<sup>3</sup> maximális élettartamát egy feladatot, amikor felveszik a feladat befejezését követően a rendszer 7 nap. A befejezett tevékenységek korlátlan ideig megőrződnek; a maximális élettartamon belül nem befejezett tevékenységek adatai nem elérhetőek.
 
 
 ## <a name="view-batch-quotas"></a>Kötegelt kvóták megtekintése

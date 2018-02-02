@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: ed6e4ec438cc445645d55514c2bd51596d566af8
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: a7bb330657d14ac42cddf2e20fbb2e5a5b2a589b
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="deploy-kubernetes-cluster-for-windows-containers"></a>Kubernetes-fürt üzembe helyezése Windows-tárolókhoz
 
@@ -33,7 +33,7 @@ Ha a CLI helyi telepítését és használatát választja, akkor ehhez a gyors�
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#create) paranccsal. Az Azure-erőforráscsoport olyan logikai csoport, amelyben az Azure-erőforrások üzembe helyezése és kezelése zajlik. 
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. Az Azure-erőforráscsoport olyan logikai csoport, amelyben az Azure-erőforrások üzembe helyezése és kezelése zajlik. 
 
 A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
 
@@ -42,7 +42,7 @@ az group create --name myResourceGroup --location eastus
 ```
 
 ## <a name="create-kubernetes-cluster"></a>Kubernetes-fürt létrehozása
-Kubernetes-fürt létrehozása az Azure Container Service szolgáltatásban az [az acs create](/cli/azure/acs#create) parancs használatával. 
+Kubernetes-fürt létrehozása az Azure Container Service szolgáltatásban az [az acs create](/cli/azure/acs#az_acs_create) parancs használatával. 
 
 Az alábbi példa egy *myK8sCluster* nevű fürtöt hoz létre egy Linux rendszerű főcsomóponttal és két Windows rendszerű ügynökcsomóponttal. A példa létrehozza a Linux-főcsomóponthoz való kapcsolódáshoz szükséges SSH-kulcsokat. A példa az *azureuser* rendszergazdanevet és a *myPassword12* jelszót használja a Windows-csomópontokon. Az értékeket módosítsa a környezetének megfelelően. 
 
@@ -183,14 +183,14 @@ A külső IP-cím alapján tetszőleges webböngészővel rákereshet az alapér
 
 
 ## <a name="delete-cluster"></a>A fürt törlése
-Ha a fürtre már nincs szükség, az [az group delete](/cli/azure/group#delete) paranccsal törölheti az erőforráscsoportot, a tárolószolgáltatást és az összes kapcsolódó erőforrást.
+Ha a fürtre már nincs szükség, az [az group delete](/cli/azure/group#az_group_delete) paranccsal törölheti az erőforráscsoportot, a tárolószolgáltatást és az összes kapcsolódó erőforrást.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A rövid útmutató segítségével üzembe helyezett egy Kubernetes-fürtöt, kapcsolatot hozott létre a `kubectl` parancssori ügyféllel, és üzembe helyezett egy IIS-tárolóval rendelkező podot. Ha többet szeretne megtudni az Azure Container Service szolgáltatásról, tekintse meg a Kubernetes-oktatóanyagot.
 

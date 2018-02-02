@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: fb4a24fd758ad4b7231364f3ee7d56a9a2dbccb1
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: aa77b1db03dc03f2b4fa1006a0fae823bb113615
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="find-out-what-the-next-hop-type-is-using-the-next-hop-capability-in-azure-network-watcher-using-azure-cli-20"></a>Megtudhatja, milyen a következő ugrás típusa van a következő ugrás funkció használatát az Azure CLI 2.0 verziót használja Azure hálózati figyelőt
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 12/21/2017
 > - [PowerShell](network-watcher-check-next-hop-powershell.md)
 > - [CLI 1.0](network-watcher-check-next-hop-cli-nodejs.md)
 > - [CLI 2.0](network-watcher-check-next-hop-cli.md)
-> - [Az Azure REST API-n](network-watcher-check-next-hop-rest.md)
+> - [Azure REST API](network-watcher-check-next-hop-rest.md)
 
 Következő ugrás csak a hálózati figyelő, amely a képességét get biztosít, a következő ugrás típusa és az IP-cím a megadott virtuális gép alapján. Ez a szolgáltatás akkor hasznos, meghatározni, hogy ha egy virtuális gép elhagyó forgalomra halad át egy átjárót, az interneten vagy a virtuális hálózatok a cél eléréséhez.
 
@@ -50,7 +50,7 @@ A forgatókönyv, a cikkben szereplő használja a következő ugrás, egyik fun
 
 A következő ugrás nevezzük eléréséhez a `az network watcher show-next-hop` parancsmag. Azt adja át a parancsmag a hálózati figyelőt erőforráscsoport NetworkWatcher, virtuális gép azonosítója, IP-forráscím, és az IP-címre. Ebben a példában a cél IP-címét, hogy egy virtuális Gépet egy másik virtuális hálózaton. Nincs a virtuális hálózati átjáró a két virtuális hálózatok között.
 
-Ha még nem még konfigurál, a legutóbbi [Azure CLI 2.0](/cli/azure/install-az-cli2) és való bejelentkezéshez az Azure fiók használatával [az bejelentkezési](/cli/azure/#login). Ezután futtassa a következő parancsot:
+Ha még nem még konfigurál, a legutóbbi [Azure CLI 2.0](/cli/azure/install-az-cli2) és való bejelentkezéshez az Azure fiók használatával [az bejelentkezési](/cli/azure/#az_login). Ezután futtassa a következő parancsot:
 
 ```azurecli
 az network watcher show-next-hop --resource-group <resourcegroupName> --vm <vmNameorID> --source-ip <source-ip> --dest-ip <destination-ip>
@@ -82,7 +82,7 @@ Az alábbi listában a jelenleg rendelkezésre álló NextHopType értékeket mu
 * VnetLocal
 * HyperNetGateway
 * VnetPeering
-* None
+* Nincs
 
 ## <a name="next-steps"></a>További lépések
 

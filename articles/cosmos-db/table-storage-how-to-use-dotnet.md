@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 01/30/2018
 ms.author: mimig
-ms.openlocfilehash: 0019858e1142c1f7e7b6fedea5c2ec97518548c9
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: f95d66950feb8729a7edcad3e02ea9a932123e16
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="get-started-with-azure-table-storage-using-net"></a>Az Azure Table Storage használatának első lépései a .NET-keretrendszerrel
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -29,14 +29,18 @@ Az Azure Table Storage szolgáltatás strukturált NoSQL-adatokat tárol a felh�
 A Table Storage segítségével olyan rugalmas adatkészleteket tárolhat, mint például webalkalmazások felhasználói adatai, címtárak, eszközadatok és bármilyen egyéb metaadat, amelyre a szolgáltatásnak szüksége van. Egy táblán korlátlan számú entitást tárolhat, és egy tárfiók a kapacitásán belül korlátlan számú táblát tartalmazhat.
 
 ### <a name="about-this-tutorial"></a>Az oktatóanyag ismertetése
-Ez az oktatóanyag [az Azure Storage .NET-hez készült ügyféloldali kódtárának](https://www.nuget.org/packages/WindowsAzure.Storage/) használatát mutatja be néhány gyakori Azure Table Storage-forgatókönyv esetében. A forgatókönyveket a táblák létrehozásának és törlésének, valamint a táblaadatok beillesztésének, frissítésének, törlésének és lekérdezésének a C# programozási nyelvben írt példáin keresztül mutatjuk be.
+Az oktatóanyag bemutatja, hogyan használható a [Microsoft Azure CosmosDB tábla .NET-keretrendszerhez készült](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) az Azure Table storage gyakori forgatókönyvet. A csomag nevét jelzi való használathoz az Azure Cosmos DB, de a csomag és kiadással egyaránt Azure Cosmos DB Azure táblák tárolási, az egyes szolgáltatások csak egy egyedi végponttal rendelkezik. Forgatókönyvekben írja használatával C# példák bemutatják, hogyan:
+* Hozzon létre vagy töröljön a táblák
+* INSERT, update és sorokat törölni
+* Lekérdezés táblák
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag sikeres teljesítéséhez a következőkre lesz szüksége:
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
-* [Az Azure Storage .NET-hez készült ügyféloldali kódtára](https://www.nuget.org/packages/WindowsAzure.Storage/)
+* [Az Azure Storage közös .NET-keretrendszerhez készült (előzetes verzió)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/). A csomag egy szükséges előzetes éles környezetekben támogatott. 
+* [Microsoft Azure CosmosDB tábla könyvtár a .NET-hez](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)
 * [Azure Configuration Manager a .NET-hez](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
 * [Azure Storage-fiók](../storage/common/storage-create-storage-account.md#create-a-storage-account)
 
@@ -47,17 +51,120 @@ További példák a Table Storage használatára: [Getting Started with Azure Ta
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
-[!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
+## <a name="create-an-azure-service-account"></a>Az Azure szolgáltatás-fiók létrehozása
 
-[!INCLUDE [storage-development-environment-include](../../includes/storage-development-environment-include.md)]
+Azure Table storage vagy Azure Cosmos DB használatával táblák dolgozhat. További ehhez beolvassa a szolgáltatások közötti különbségekről [ajánlatok tábla](table-introduction.md#table-offerings). Hozzon létre egy fiókot a szolgáltatás használni fog lesz szüksége. 
+
+### <a name="create-an-azure-storage-account"></a>Azure-tárfiók létrehozása
+Legegyszerűbben az [Azure Portal](https://portal.azure.com) segítségével hozhatja létre első Azure Storage-fiókját. További tudnivalókért lásd: [Create a storage account](../storage/common/storage-create-storage-account.md#create-a-storage-account) (Tárfiók létrehozása).
+
+Ezenkívül az [Azure PowerShell](../storage/common/storage-powershell-guide-full.md), az [Azure CLI](../storage/common/storage-azure-cli.md), illetve a [.NET-keretrendszerhez készült Storage erőforrás-szolgáltató ügyfél](/dotnet/api/microsoft.azure.management.storage) használatával is létrehozhat egy Azure Storage-fiókot.
+
+Ha most nem kíván tárfiókot létrehozni, az Azure Storage Emulatorral helyi környezetben futtathatja és tesztelheti a kódját. További információkért lásd: [Use the Azure Storage Emulator for Development and Testing](../storage/common/storage-use-emulator.md) (Fejlesztés és tesztelés az Azure Storage Emulatorral).
+
+### <a name="create-an-azure-cosmos-db-table-api-account"></a>Azure Cosmos DB tábla API-fiók létrehozása
+
+Egy Azure Cosmos DB tábla API-fiók létrehozásával kapcsolatos utasításokért lásd: [tábla API-fiók létrehozása](create-table-dotnet.md#create-a-database-account).
+
+## <a name="set-up-your-development-environment"></a>A fejlesztési környezet beállítása
+A következő lépésként állítsa be a fejlesztési környezetet a Visual Studióban, hogy kipróbálhassa az útmutatóban megadott példákat.
+
+### <a name="create-a-windows-console-application-project"></a>Windows-konzolalkalmazás projekt létrehozása
+Hozzon létre egy új Windows-konzolalkalmazást a Visual Studióban. A következő lépések azt mutatják be, hogyan hozhat létre konzolalkalmazást a Visual Studio 2017-ben. A lépések a Visual Studio más verziói esetén is hasonlók.
+
+1. Válassza a **File** (Fájl) > **New** (Új) > **Project** (Projekt) lehetőséget.
+2. Válassza ki **telepített** > **Visual C#** > **klasszikus Windows asztal**.
+3. Válassza a **Console App (.NET Framework)** (Konzolalkalmazás (.NET keretrendszer)) lehetőséget.
+4. Írja be az alkalmazás nevét a **Name** (Név) mezőbe.
+5. Kattintson az **OK** gombra.
+
+Az oktatóanyagban szereplő példák hozzáadhatók a konzolalkalmazás `Program.cs` fájljában található `Main()` metódushoz.
+
+Az Azure CosmosDB tábla kódtárat bármilyen .NET-alkalmazás, beleértve az Azure felhőalapú szolgáltatás, vagy a webes alkalmazás, és az asztali és mobil alkalmazások is használhatja. Ebben az útmutatóban az egyszerűség kedvéért egy konzolalkalmazást használunk.
+
+### <a name="use-nuget-to-install-the-required-packages"></a>A szükséges csomagok telepítése a NuGettel
+Nincsenek a projektben az oktatóanyag elvégzéséhez hivatkoznia kell három csomagok:
+
+* [Az Azure Storage közös .NET-keretrendszerhez készült (előzetes verzió)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/). 
+* [A Microsoft Azure CosmosDB tábla .NET-keretrendszerhez készült](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table). Ez a csomag az Azure Table storage-fiók vagy Azure Cosmos DB tábla API-fiók adatforrásaihoz programozott hozzáférést biztosít.
+* [A Microsoft Azure Configuration Manager könyvtár a .NET-hez](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/): Ez a csomag egy osztályt biztosít a konfigurációs fájlban található kapcsolati karakterlánc elemzéséhez, függetlenül attól, hogy az alkalmazás hol fut.
+
+A NuGettel mindkét csomagot beszerezheti. Kövesse az alábbi lépéseket:
+
+1. Kattintson a jobb gombbal a projektjére a **Megoldáskezelőben**, és válassza a **Manage NuGet Packages** (NuGet-csomagok kezelése) lehetőséget.
+2. Keresse rá az interneten a "Microsoft.Azure.Storage.Common", és válassza ki **telepítése** telepítése az Azure Storage közös kódtár .NET (előzetes verzió) és annak függőségeit. Győződjön meg arról a **közé tartoznak az előzetes** jelölőnégyzet be van jelölve, a csomag egy minta.
+3. Keresse rá az interneten a "Microsoft.Azure.CosmosDB.Table", és válassza ki **telepítése** telepítése a Microsoft Azure CosmosDB tábla könyvtárban.
+4. Keresse rá az interneten a "WindowsAzure.ConfigurationManager", és válassza ki **telepítése** telepítése a Microsoft Azure Configuration Manager könyvtár.
+
+> [!NOTE]
+> A Storage .NET közös könyvtárban ODataLib-függőségeit a ODataLib-csomagok érhető el a NuGet, nem a WCF Data Services által megoldott. Az ODataLib-kódtárak letölthetők közvetlenül, vagy a kódprojektje hivatkozhat rájuk a NuGeten keresztül. A Storage ügyféloldali kódtár által használt konkrét ODataLib-csomagok az [OData](http://nuget.org/packages/Microsoft.Data.OData/), az [Edm](http://nuget.org/packages/Microsoft.Data.Edm/) és a [Spatial](http://nuget.org/packages/System.Spatial/) csomagok. Ezeket a kódtárakat az Azure Table storage osztályai használják, amíg azok szükséges függőségek a Storage közös kódtár való programozáshoz.
+> 
+> 
+
+### <a name="determine-your-target-environment"></a>A célkörnyezet meghatározása
+Az útmutatóban lévő példákat kétféle környezetben futtathatja:
+
+* A kódot futtathatja a felhőben, egy Azure Storage-fiókban. 
+* A kódot futtathatja a felhőben Azure Cosmos DB fiók ellen.
+* A kódot futtathatja az Azure Storage Emulatorban is. A Storage Emulator egy helyi környezet, amely egy Azure Storage-fiókot emulál a felhőben. Az emulátor ingyenes lehetőséget biztosít a kódja tesztelésére és hibakeresésére, amíg az alkalmazása fejlesztés alatt áll. Az emulátor egy jól ismert fiókot és kulcsot használ. További információkért lásd: [Fejlesztés és tesztelés az Azure Storage Emulatorral](../storage/common/storage-use-emulator.md).
+
+Ha egy felhőbeli tárfiókot céloz meg, akkor másolja ki a tárfiók elsődleges hívóbetűjét az Azure Portalról. További információért lásd: [View and copy storage access keys](../storage/common/storage-create-storage-account.md#view-and-copy-storage-access-keys) (A tárelérési kulcsok megtekintése és másolása).
+
+> [!NOTE]
+> A Storage Emulator megcélzásával elkerülheti az Azure Storage-hoz kapcsolódó költségeket. Ha azonban mégis egy Azure Storage-fiókot céloz meg a felhőben, az oktatóanyag végrehajtásával járó költségek elhanyagolhatóak.
+> 
+> 
+
+Egy Azure Cosmos DB fiókot céloz meg, ha az elsődleges elérési kulcsot a tábla API fiók másolása az Azure-portálon. További információkért lásd: [frissítse a kapcsolati karakterlánc](create-table-dotnet.md#update-your-connection-string).
+
+### <a name="configure-your-storage-connection-string"></a>A tárolási kapcsolati karakterlánc konfigurálása
+Az Azure Storage közös kódtára a .NET által támogatott végpontok és tárolási szolgáltatások eléréséhez szükséges hitelesítő adatok konfigurálása egy tárolási kapcsolati karakterlánc használatával. A tárolási kapcsolati karakterlánc egy konfigurációs fájlban tartható fenn a legjobban. 
+
+A kapcsolati sztringekkel kapcsolatos további információkért lásd: [Az Azure Storage kapcsolati sztringjének konfigurálása](../storage/common/storage-configure-connection-string.md).
+
+> [!NOTE]
+> A fiókkulcs hasonlít a tárfiók rendszergazdai jelszavához. Mindig ügyeljen a tárfiók kulcsának védelmére. Ne adja ki másoknak, ne kódolja fixen és ne mentse egy mások számára elérhető egyszerű szöveges fájlban. Ha azt gyanítja, hogy a kulcs biztonsága sérült, az Azure portál segítségével generálja újra.
+> 
+> 
+
+A kapcsolati karakterlánc konfigurálásához nyissa meg az `app.config` fájlt a Visual Studio Megoldáskezelőjében. Adja hozzá az alábbi `<appSettings>` elem tartalmát. Cserélje le `account-name` nevű, a fiókjához, és `account-key` rendelkező a hívóbetűre:
+
+```xml
+<configuration>
+    <startup> 
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.6.1" />
+    </startup>
+    <appSettings>
+        <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key" />
+    </appSettings>
+</configuration>
+```
+
+Például ha egy Azure Storage-fiókot használ, a konfigurációs beállítások jelenik meg:
+
+```xml
+<add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=storagesample;AccountKey=GMuzNHjlB3S9itqZJHHCnRkrokLkcSyW7yK9BRbGp0ENePunLPwBgpxV1Z/pVo9zpem/2xSHXkMqTHHLcx8XRA==" />
+```
+
+Ha egy Cosmos-DB Azure-fiókot használ, a konfigurációs beállítások jelenik meg:
+
+```xml
+<add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=tableapiacct;AccountKey=GMuzNHjlB3S9itqZJHHCnRkrokLkcSyW7yK9BRbGp0ENePunLPwBgpxV1Z/pVo9zpem/2xSHXkMqTHHLcx8XRA==;TableEndpoint=https://tableapiacct.table.cosmosdb.azure.com:443/;" />
+```
+
+A Storage Emulator célzásához használhat egy hivatkozást, amely leképezi a jól ismert fióknevet és kulcsot. Ebben az esetben a kapcsolati sztring beállítása a következő:
+
+```xml
+<add key="StorageConnectionString" value="UseDevelopmentStorage=true;" />
+```
 
 ### <a name="add-using-directives"></a>Hozzáadás irányelvekkel
 Adja hozzá a következő **using** irányelveket a `Program.cs` fájl elejéhez:
 
 ```csharp
 using Microsoft.Azure; // Namespace for CloudConfigurationManager
-using Microsoft.WindowsAzure.Storage; // Namespace for CloudStorageAccount
-using Microsoft.WindowsAzure.Storage.Table; // Namespace for Table storage types
+using Microsoft.Azure.Storage.Common; // Namespace for StorageAccounts
+using Microsoft.Azure.CosmosDB.Table; // Namespace for Table storage types
 ```
 
 ### <a name="parse-the-connection-string"></a>Kapcsolati karakterlánc elemzése

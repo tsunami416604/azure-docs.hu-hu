@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/12/2017
 ms.author: billgib
-ms.openlocfilehash: 1b6c780000d8c5e31a78f7f83ae74c002e8f8349
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: c4c5b79342aaa3c9b09e922956b095e8191cafd9
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Több-bérlős SaaS adatbázis bérleti minták
 
@@ -96,7 +96,7 @@ Azure SQL Database biztosít az eszközök konfigurálásához, megfigyeléséhe
 
 Az Azure SQL Database platform számos felügyeleti szolgáltatást arra tervezték, hogy léptékű, például a is több mint 100 000 adatbázisok adatbázisok felügyeleti nagyszámú rendelkezik.  Ezek a funkciók ellenőrizze az adatbázis-/-bérlő mintát egyértelmű.
 
-Tegyük fel, hogy a rendszer rendelkezik a csak egy adatbázisaként 1000-bérlő adatbázis.  Az adatbázis 20 indexek rendelkezhet.  Ha a rendszer, hogy 1000 single-bérlő adatbázisok alakítja át, az indexek quatity 20 000 nő.  Az SQL-adatbázis részeként [automatikus hangolása][docu-sql-db-automatic-tuning-771a], az automatikus indexelési funkciók alapértelmezés szerint engedélyezettek.  Automatikus indexeléshez meg minden 20 000 indexek és kezeli a folyamatban lévő létrehozása és az vetett optimalizálás.  Ezek a automatizált műveletek történnek belül egyedi adatbázis, és nem koordinált vagy más adatbázisokban hasonló műveletek korlátozza.  Automatikus indexeléshez kezeli indexek eltérő adatbázisban foglalt mint kevésbé foglalt-adatbázisban.  Az ilyen típusú index felügyeleti testreszabási az adatbázis-/-bérlő léptékű nem célszerű lenne, ha hatalmas felügyeleti feladat kellett manuálisan kell elvégezni.
+Tegyük fel, hogy a rendszer rendelkezik a csak egy adatbázisaként 1000-bérlő adatbázis.  Az adatbázis 20 indexek rendelkezhet.  Ha a rendszer, hogy 1000 single-bérlő adatbázisok alakítja át, indexek mennyisége 20 000 nő.  Az SQL-adatbázis részeként [automatikus hangolása][docu-sql-db-automatic-tuning-771a], az automatikus indexelési funkciók alapértelmezés szerint engedélyezettek.  Automatikus indexeléshez meg minden 20 000 indexek és kezeli a folyamatban lévő létrehozása és az vetett optimalizálás.  Ezek a automatizált műveletek történnek belül egyedi adatbázis, és nem koordinált vagy más adatbázisokban hasonló műveletek korlátozza.  Automatikus indexeléshez kezeli indexek eltérő adatbázisban foglalt mint kevésbé foglalt-adatbázisban.  Az ilyen típusú index felügyeleti testreszabási az adatbázis-/-bérlő léptékű nem célszerű lenne, ha hatalmas felügyeleti feladat kellett manuálisan kell elvégezni.
 
 Egyéb szolgáltatásokat, amelyek jól méretezhető a következők:
 
@@ -185,7 +185,7 @@ A következő táblázat összefoglalja a fő bérleti modellek közötti külö
 | Működési összetettsége | Alacsony magas. Külön-külön egyszerű, összetett méretekben. | Alacsony – közepes. Minták cím összetettsége méretekben. | Alacsony magas. Az egyes bérlői felügyeleti összetett. |
 | &nbsp; ||||
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Központi telepítése, és vizsgálja meg az adatbázis-/-bérlő Szolgáltatottszoftver modell - Azure SQL Database egy több-bérlős Wingtip alkalmazás][docu-sql-db-saas-tutorial-deploy-wingtip-db-per-tenant-496y]
 

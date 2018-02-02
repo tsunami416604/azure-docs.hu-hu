@@ -2,17 +2,17 @@
 title: "Az Azure Event rács kézbesítési, és próbálkozzon újra"
 description: "Ismerteti, hogyan nyújt az Azure esemény rács a eseményeket, és hogyan kezeli az kézbesítetlen üzenetek."
 services: event-grid
-author: djrosanova
+author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/10/2018
-ms.author: darosa
-ms.openlocfilehash: fe9089334deceb38186add56ce3fb1d6ecc20363
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.date: 01/30/2018
+ms.author: tomfitz
+ms.openlocfilehash: cdf6a4e999d55196e8f4eac5695163a7e5a933de
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Esemény rács üzenetkézbesítést, és próbálkozzon újra 
 
@@ -29,7 +29,7 @@ Esemény rács események nyugtázta használja a HTTP válaszkódot.
 A következő HTTP-válaszkódot azt jelzi, hogy az esemény kézbesítése megtörtént sikeresen a webhook. Esemény rács úgy ítéli meg kézbesítési befejeződött.
 
 - 200 OK
-- 202 elfogadott
+- 202 Accepted
 
 ### <a name="failure-codes"></a>Hibát kódok
 
@@ -40,8 +40,8 @@ A következő HTTP-válaszkódot azt jelzi, hogy az esemény kézbesítési tett
 - 404 – Nem található
 - 408 kérelmi időkorlátot.
 - 414 URI túl hosszú
-- 500 belső kiszolgálóhiba
-- 503-as szolgáltatás nem érhető el
+- 500 Internal Server Error
+- 503 Service Unavailable
 - 504-es számú átjáró időtúllépése
 
 Bármely más válaszkód vagy hiányoznak a választ egy hibát jelez. Esemény rács kézbesítési próbálkozások. 
@@ -58,11 +58,11 @@ Esemény rács az exponenciális leállítási újrapróbálkozási házirend es
 6. 30 perc
 7. 1 óra
 
-Esemény rács intervallumokban újra egy kis véletlenszerű hozzáadja.
+Esemény rács intervallumokban újra egy kis véletlenszerű hozzáadja. Egy óra múlva esemény kézbesítési a rendszer ismét megkísérli óránként.
 
 ## <a name="retry-duration"></a>Ismételje meg az időtartama
 
-Az előzetes Azure esemény rács összes eseményt, amely nem érkeznek meg két órán belül lejár.
+Azure esemény rács összes eseményt, amely nem érkeznek meg 24 órán belül lejár.
 
 ## <a name="next-steps"></a>További lépések
 

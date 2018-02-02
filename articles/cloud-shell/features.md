@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: juluk
-ms.openlocfilehash: a6627ab6febc763ae3f1cd464f26ad641f7c717d
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
-ms.translationtype: MT
+ms.openlocfilehash: c77f31929b7fa8f98d7e30616c6645f79d135a1e
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="features--tools-for-bash-in-azure-cloud-shell"></a>Szolgáltatások & Azure Cloud rendszerhéj Bash eszközei
 
@@ -59,7 +59,7 @@ Fájlok kívüli `$Home` és a gép állapota nem maradnak meg a munkamenetek k�
 |Buildet            |Ellenőrizze<br> maven<br> npm<br> a pip         |
 |Tárolók             |[A docker parancssori felület](https://github.com/docker/cli)/[Docker gép](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [DC/OS PARANCSSORI FELÜLET](https://github.com/dcos/dcos-cli)         |
 |Adatbázisok              |MySQL-ügyfél<br> PostgreSql client<br> [Az Sqlcmd segédprogram használatával](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli) |
-|Egyéb                  |iPython ügyfél<br> [Felhő Foundry parancssori felület](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/) |
+|Egyéb                  |iPython ügyfél<br> [Felhő Foundry parancssori felület](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)| 
 
 ## <a name="language-support"></a>Nyelvi támogatás
 

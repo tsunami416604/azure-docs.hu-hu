@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/26/2016
 ms.author: magoedte
-ms.openlocfilehash: afe7043e31c05444dded089dc02689a3b0c94659
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 86d62ba7fb12b09a2c19b4689af38bb8c121880b
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Hibakezelés az Azure Automation grafikus runbookokban
 
@@ -40,7 +40,7 @@ Az Azure Automation grafikus runbookok kiegészültek a hibakezelés képesség�
 
 A kritikus tevékenységekkel kapcsolatos hibák vagy kivételek felmerülésekor fontos megakadályozni a runbook következő tevékenységének feldolgozását, és megfelelően kezelni a hibát. Ez kritikus fontosságú abban az esetben, ha a runbookok valamilyen üzleti vagy szolgáltatási műveleti folyamatot támogatnak.
 
-A runbook szerzője minden egyes tevékenységhez, amely hibát eredményezhet, hozzáadhat egy hibahivatkozást, amely bármely más tevékenységre mutathat.  A céltevékenység bármilyen típusú lehet, többek között kóddal végzett tevékenységek, parancsmag meghívása, másik runbook meghívása stb.
+A runbook szerzője minden egyes tevékenységhez, amely hibát eredményezhet, hozzáadhat egy hibahivatkozást, amely bármely más tevékenységre mutathat. A céltevékenység bármilyen típusú lehet, többek között kóddal végzett tevékenységek, parancsmag meghívása, másik runbook meghívása stb.
 
 Emellett a céltevékenység kimenő hivatkozásokat is tartalmazhat. Ezek lehetnek szokványos hivatkozások vagy hibahivatkozások. Ez azt jelenti, hogy a runbook szerzője összetett hibakezelési logikát valósíthat meg anélkül, hogy kóddal végzett tevékenységekre kellene hagyatkoznia. Az ajánlott eljárás egy általános funkciókkal rendelkező dedikált hibakezelési runbook létrehozása, ez azonban nem kötelező. A PowerShell-kóddal végzett tevékenységben szereplő hibakezelési logika pedig nem az egyetlen alternatíva.  
 
@@ -63,7 +63,7 @@ A konfiguráció beállítását követően hozza létre a hiba kezelésére ir�
 
 Az alábbi példában egy runbook egy virtuális gép számítógép nevét tartalmazó változót ad vissza. Ezután a következő tevékenységgel megkísérli a virtuális gép elindítását.<br><br> ![Példa egy Automation runbook hibakezelésére](media/automation-runbook-graphical-error-handling/runbook-example-error-handling.png)<br><br>      
 
-A **Get-AutomationVariable** tevékenység és a **Start-AzureRmVm** a kivételek hibákká történő konvertálására vannak konfigurálva.  Ha probléma adódik a változó lekérésével vagy a virtuális gép indításával, akkor hiba jön létre.<br><br> ![Egy Automation runbook hibakezelési tevékenységének beállításai](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png)
+A **Get-AutomationVariable** tevékenység és a **Start-AzureRmVm** a kivételek hibákká történő konvertálására vannak konfigurálva. Ha probléma adódik a változó lekérésével vagy a virtuális gép indításával, akkor hiba jön létre.<br><br> ![Egy Automation runbook hibakezelési tevékenységének beállításai](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png)
 
 Az ezen tevékenységekből származó hibahivatkozások egyetlen **hibakezelés** tevékenységbe (kóddal végzett tevékenység) áramlanak. Ez a tevékenység egy egyszerű PowerShell-kifejezéssel van konfigurálva, amely a *Throw* (eldobás) kulcsszó használatával leállítja a feldolgozást, az *$Error.Exception.Message* segítségével pedig lekéri az aktuális kivételt leíró üzenetet.<br><br> ![Példa egy Automation runbook hibakezelési kódra](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
 

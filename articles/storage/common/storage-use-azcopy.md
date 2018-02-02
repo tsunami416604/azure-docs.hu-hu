@@ -12,13 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/14/2017
+ms.date: 01/29/2018
 ms.author: seguler
-ms.openlocfilehash: 3d4a7ceabc8cdb97fc8a0f29756d7648d253fe21
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 7d875a1e43908f49424f4e40fe923639cfa02385
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>Adatátvitel az AzCopy a Windows rendszeren
 AzCopy egy parancssori segédprogram, és a Microsoft Azure Blob, a fájl és a tábla tárolási, adat másolása az optimális teljesítményének készült egyszerű parancsok használatával. Másolhat adatokat a fájlrendszer és a storage-fiók, vagy tárfiókok között.  
@@ -624,7 +624,7 @@ Megadja a forrás adatait, amelynek be kell másolni. A forrás lehet egy fájl 
 
 **Alkalmazandó:** blobokat, fájlok, táblák
 
-### <a name="destdestination"></a>/ Cél: "cél"
+### <a name="destdestination"></a>/Dest:"destination"
 
 Megadja azt a helyet, másolja. A cél lehet fájl rendszer könyvtár, egy blob-tároló, egy blob virtuális könyvtár, egy tárolói fájlmegosztást, egy tárolási könyvtárának vagy egy Azure-tábla.
 
@@ -646,13 +646,13 @@ Az alapértelmezett fájl minta használható, ha nincs fájl mintát *.* egy ol
 
 **Alkalmazandó:** Blobok, fájlok
 
-### <a name="destkeystorage-key"></a>/ DestKey: "storage-kulcsot"
+### <a name="destkeystorage-key"></a>/DestKey:"storage-key"
 
 Adja meg a tárfiók hívóbetűjét a cél az erőforráshoz.
 
 **Alkalmazandó:** blobokat, fájlok, táblák
 
-### <a name="destsassas-token"></a>/ DestSAS: "sas-token"
+### <a name="destsassas-token"></a>/DestSAS:"sas-token"
 
 OLVASÁSI és írási jogosultsággal a cél egy közös hozzáférésű Jogosultságkód (SAS) határozza meg, (ha van ilyen). Helyezze a dupla idézőjelek között, SAS tartalmaz, így előfordulhat, hogy speciális parancssori karaktereket.
 
@@ -662,13 +662,13 @@ Ha a forrás és cél mindkét blobokat, majd a cél blob, a forrás blob tárfi
 
 **Alkalmazandó:** blobokat, fájlok, táblák
 
-### <a name="sourcekeystorage-key"></a>/ SourceKey: "storage-kulcsot"
+### <a name="sourcekeystorage-key"></a>/SourceKey:"storage-key"
 
 Adja meg a tárfiók hívóbetűjét a forrás-erőforrás.
 
 **Alkalmazandó:** blobokat, fájlok, táblák
 
-### <a name="sourcesassas-token"></a>/ SourceSAS: "sas-token"
+### <a name="sourcesassas-token"></a>/SourceSAS:"sas-token"
 
 Adja meg a közös hozzáférésű Jogosultságkód OLVASÁSI és lista engedélyekkel a forrás (ha van ilyen). Helyezze a dupla idézőjelek között, SAS tartalmaz, így előfordulhat, hogy speciális parancssori karaktereket.
 
@@ -678,7 +678,7 @@ Ha a forrás egy fájlmegosztás vagy a tábla, meg kell adni egy kulcs- vagy SA
 
 **Alkalmazandó:** blobokat, fájlok, táblák
 
-### <a name="s"></a>/ S
+### <a name="s"></a>/S
 
 Meghatározza a másolási műveletek rekurzív módját. Rekurzív módban AzCopy blobokkal vagy a fájlokat, amelyek megfelelnek a megadott fájl mintát, beleértve az almappákat másolja át.
 
@@ -690,7 +690,7 @@ Megadja, hogy a cél blob egy blokkblob, oldalakra vonatkozó blob vagy hozzáf�
 
 **Alkalmazandó:** Blobok
 
-### <a name="checkmd5"></a>/ CheckMD5
+### <a name="checkmd5"></a>/CheckMD5
 
 Kiszámítja az MD5 kivonatoló letöltött adatok, és ellenőrzi, hogy a blob tárolja az MD5 kivonatoló vagy a fájl Content-MD5 tulajdonsága egyezést mutat a kiszámított kivonatát. Az MD5-ellenőrzése ki van kapcsolva, alapértelmezés szerint, meg kell adnia ezt a beállítást, végezze el az MD5 ellenőrzését, amikor az adatok letöltése.
 
@@ -700,7 +700,7 @@ AzCopy a Content-MD5 tulajdonság az Azure blob vagy a fájl mindig beállítás
 
 **Alkalmazandó:** Blobok, fájlok
 
-### <a name="snapshot"></a>Vagy pillanatkép
+### <a name="snapshot"></a>/Snapshot
 
 Azt jelzi, hogy pillanatképet továbbít. Ez a beállítás csak akkor érvényes, ha a forrás, a blob.
 
@@ -710,7 +710,7 @@ Alapértelmezés szerint a pillanatképek nem kerülnek.
 
 **Alkalmazandó:** Blobok
 
-### <a name="vverbose-log-file"></a>/ V: [részletes-naplófájl]
+### <a name="vverbose-log-file"></a>/V:[verbose-log-file]
 
 Kimeneti részletes üzenetek fájlba.
 
@@ -718,7 +718,7 @@ Alapértelmezés szerint a részletes naplófájl neve a AzCopyVerbose.log `%Loc
 
 **Alkalmazandó:** blobokat, fájlok, táblák
 
-### <a name="zjournal-file-folder"></a>/ Z: [napló-fájlok és mappák]
+### <a name="zjournal-file-folder"></a>/Z:[journal-file-folder]
 
 A művelet folytatása napló fájl mappáját adja meg.
 
@@ -736,7 +736,7 @@ Vegye figyelembe, hogy a Folytatás, az AzCopy egy korábbi verziójával létre
 
 **Alkalmazandó:** blobokat, fájlok, táblák
 
-### <a name="parameter-file"></a>/@:"Parameter-File"
+### <a name="parameter-file"></a>/@:"parameter-file"
 
 Megadja a paramétereket tartalmazó fájlt. AzCopy dolgozza fel a paramétereket a fájlt a, mintha csak a parancssorban megadott lett.
 
@@ -750,11 +750,11 @@ Válasz több fájl is megadható. Vegye figyelembe azonban, hogy az AzCopy nem 
 
 ### <a name="y"></a>/Y
 
-Letiltja az összes AzCopy megerősítést kér.
+Letiltja az összes AzCopy megerősítést kér. Ezt a lehetőséget is lehetővé teszi az adatok feltöltése forgatókönyvek esetén csak írható SAS-tokenje használatát, ha nincs megadva a /XO és /XN.
 
 **Alkalmazandó:** blobokat, fájlok, táblák
 
-### <a name="l"></a>/ L
+### <a name="l"></a>/L
 
 Megadja a listázási művelet csak; adatot nem másolódik.
 
@@ -789,7 +789,7 @@ Csak a Archiválandó fájlok feltöltését.
 
 **Alkalmazandó:** Blobok, fájlok
 
-### <a name="iarashcnetoi"></a>/ IA: [RASHCNETOI]
+### <a name="iarashcnetoi"></a>/IA:[RASHCNETOI]
 
 Csak a megadott attribútumok közül bármelyik rendelkező fájlok feltöltését.
 
@@ -808,7 +808,7 @@ A rendelkezésre álló attribútumok a következők:
 
 **Alkalmazandó:** Blobok, fájlok
 
-### <a name="xarashcnetoi"></a>/ XA: [RASHCNETOI]
+### <a name="xarashcnetoi"></a>/XA:[RASHCNETOI]
 
 Olyan fájlra, amely a megadott attribútumok közül bármelyik nem tartalmazza.
 
@@ -837,7 +837,7 @@ Ez a beállítás csak akkor alkalmazható blobok letöltése.
 
 **Alkalmazandó:** Blobok
 
-### <a name="ncnumber-of-concurrent-operations"></a>/ NC: "számot-az-egyidejű-műveletek"
+### <a name="ncnumber-of-concurrent-operations"></a>/NC:"number-of-concurrent-operations"
 
 Megadja a párhuzamos műveletek számát.
 
@@ -847,13 +847,13 @@ A párhuzamos műveletek felső határa 512.
 
 **Alkalmazandó:** blobokat, fájlok, táblák
 
-### <a name="sourcetypeblob--table"></a>/ Forrástípus: "Blob" |} "Table"
+### <a name="sourcetypeblob--table"></a>/SourceType:"Blob" | "Table"
 
 Megadja, hogy a `source` erőforrás elérhető a helyi fejlesztési környezetben, a storage emulator-beli blob.
 
 **Alkalmazandó:** Blobok, táblák
 
-### <a name="desttypeblob--table"></a>/ DestType: "Blob" |} "Table"
+### <a name="desttypeblob--table"></a>/DestType:"Blob" | "Table"
 
 Megadja, hogy a `destination` erőforrás elérhető a helyi fejlesztési környezetben, a storage emulator-beli blob.
 
@@ -875,7 +875,7 @@ Egyes műveletek exportálja egy három partíció kulcstartományokkal, alább 
 
 **Alkalmazandó:** táblák
 
-### <a name="splitsizefile-size"></a>/ SplitSize: "fájl mérete"
+### <a name="splitsizefile-size"></a>/SplitSize:"file-size"
 
 Itt adhatja meg az exportált fájlt, osztott mérete MB-ban, a minimális megengedett érték 32.
 
@@ -895,7 +895,7 @@ Megadja a tábla importálása működéshez.
 
 **Alkalmazandó:** táblák
 
-### <a name="manifestmanifest-file"></a>/ Jegyzékfájl: "jegyzékfájl-file"
+### <a name="manifestmanifest-file"></a>/Manifest:"manifest-file"
 
 A jegyzékfájl megadja a tábla exportálása és az importálási művelet.
 
@@ -905,7 +905,7 @@ Ez a beállítás akkor szükséges az adatfájlok helyének az importálási m�
 
 **Alkalmazandó:** táblák
 
-### <a name="synccopy"></a>/ SyncCopy
+### <a name="synccopy"></a>/SyncCopy
 
 Azt jelzi, hogy szinkron módon történik a blobok vagy két Azure Storage-végpontok közötti fájlok másolása.
 
@@ -915,7 +915,7 @@ Ezt a beállítást is használhatja, amikor Blob-tároló, a File storage belü
 
 **Alkalmazandó:** Blobok, fájlok
 
-### <a name="setcontenttypecontent-type"></a>/ SetContentType: "content-type"
+### <a name="setcontenttypecontent-type"></a>/SetContentType:"content-type"
 
 Megadja a MIME content-type cél blobokkal vagy a fájlokat.
 
@@ -960,7 +960,7 @@ Létrehozhat egy app.config fájl `AzCopy.exe.config` tulajdonsággal `AzureStor
       </appSettings>
     </configuration>
 
-A tulajdonság "AzureStorageUseV1MD5":
+For property "AzureStorageUseV1MD5":
 
 * Az alapértelmezett érték, az AzCopy igaz - .NET MD5 végrehajtására használ.
 * Hamis – AzCopy FIPS előírásainak megfelelő MD5 algoritmust használ.

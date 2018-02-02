@@ -3,7 +3,7 @@ title: "Útmutató a helyszíni alkalmazások biztonságos távoli hozzáférés
 description: "Bemutatja, hogyan adhat a helyszíni alkalmazások biztonságos távoli hozzáférést biztosítanak az Azure AD alkalmazásproxy segítségével."
 services: active-directory
 documentationcenter: 
-author: daveba
+author: MarkusVi
 manager: mtillman
 ms.assetid: d5450da1-9e06-4d08-8146-011c84922ab5
 ms.service: active-directory
@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/04/2017
-ms.author: daveba
+ms.date: 01/31/2018
+ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 24def898f282c4e122ae53932ae86047e815595c
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 819226d0ecace0be617e9a3ebc22942782510ec4
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="how-to-provide-secure-remote-access-to-on-premises-applications"></a>Útmutató a helyszíni alkalmazások biztonságos távoli hozzáférést biztosítanak
 
@@ -45,7 +45,7 @@ Az Azure AD-alkalmazásproxy van:
 * **Biztonságos**
    * Az Azure AD alkalmazásproxy használó alkalmazások közzétételekor kihasználhatja a gazdag engedélyezési vezérlők és a biztonsági analytics az Azure-ban. A felhőméretű biztonsági és az Azure biztonsági szolgáltatások, mint a feltételes hozzáférés és a kétlépéses ellenőrzés kapják meg.
    * Nem kell megnyitni a bejövő kapcsolatokat a távoli hozzáférést biztosíthat felhasználóinak a tűzfalon keresztül. 
-* **Költséghatékony**
+* **Cost-effective**
    * Alkalmazásproxy működik a felhőben, így időt és pénzt menthető. A helyszíni megoldások általában szükséges beállításához és karbantartásához DMZ-k, a peremhálózati kiszolgálóinak vagy más összetett infrastruktúra.  
 
 ## <a name="what-kind-of-applications-work-with-application-proxy"></a>Milyen típusú alkalmazások munkahelyi az alkalmazásproxy?

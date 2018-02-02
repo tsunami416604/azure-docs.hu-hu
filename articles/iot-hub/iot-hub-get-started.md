@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2017
+ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 764c6bd3c2466ceb93e33d03bece1c9036c1b1d9
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 34742208e9189eb31310b58770ee4a22e33f56d5
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-iot-hub-get-started-tutorials"></a>Az Azure IoT Hub get oktatóanyagok indítása
 
 Azure IoT-központ és az Azure IoT-eszközök SDK-k segítségével az eszközök internetes hálózatát (IoT) megoldások:
 
 * Az Azure IoT-központot egy olyan teljes körűen felügyelt szolgáltatás a felhőben, amelyek biztonságosan csatlakozik, figyeli, és kezeli az IoT-eszközök. Az Azure IoT eszközoldali SDK-k segítségével valósítja meg az IoT-eszközök.
-* Az IoT-átjáró összetettebb IoT-forgatókönyvek esetén használható. Például, ha szeretné például az örökölt eszközök, a sávszélességgel kapcsolatos költségek, a biztonsági és adatvédelmi szabályzatok vagy a biztonsági adatok feldolgozása tényezőket kell figyelembe venni. Ezekben az esetekben a Azure IoT peremhálózati átjáró, amely az eszköz csatlakozik az IoT hub végrehajtásához használhatja.
+* Az IoT-átjáró összetettebb IoT-forgatókönyvek esetén használható. Például, ha szeretné például az örökölt eszközök, a sávszélességgel kapcsolatos költségek, a biztonsági és adatvédelmi szabályzatok vagy a biztonsági adatok feldolgozása tényezőket kell figyelembe venni. Ezekben az esetekben használható [Azure IoT peremhálózati](https://docs.microsoft.com/azure/iot-edge/) egy átjáró, amely az eszköz csatlakozik az IoT hub végrehajtásához.
 
 ## <a name="what-the-tutorials-cover"></a>Az oktatóanyagok vonatkozik
 
@@ -40,7 +40,7 @@ Csatlakoztassa az IoT-eszközön vagy Azure IoT Hub-átjárót. Első lépéské
 |----------------------------------|----------------------|
 | Raspberry Pi                     | [Python][Pi_Py], [Node.js][Pi_Nd], [C][Pi_C]  |
 | Az IoT-DevKit                       | [A VSCode Arduino][DevKit]     |
-| Intel Edison                     | [NODE.js][Ed_Nd], [C][Ed_C]    |
+| Intel Edison                     | [Node.js][Ed_Nd], [C][Ed_C]    |
 | Adafruit lágyított HUZZAH ESP8266  | [Arduino][Hu_Ard]              |
 | Sparkfun ESP8266 dolog fejlesztői       | [Arduino][Th_Ard]              |
 | Adafruit lágyított M0              | [Arduino][M0_Ard]              |

@@ -12,22 +12,22 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/19/2017
+ms.date: 01/29/2018
 ms.author: nberdy
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 243845139c7ae0389333d7490098ef73f95dceac
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 003b3f6ef8a6fbc1c6fcdfc58f7d35bf6c42c9ee
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Ismertetés és az IoT-központ közvetlen metódusok
-Az IoT-központ lehetővé teszi a felhőből eszközök közvetlen módszerek meghívására. Közvetlen módszerek határoz meg egy kérelem-válasz interakció egy HTTP-hívás hasonló eszközökkel abban, hogy sikeres legyen, vagy közvetlenül (felhasználó által meghatározott időtúllépési) után sikertelen. Ez a megközelítés forgatókönyvekben, ahol azonnali lépéseket, attól függően, hogy képesek válaszolni, például egy SMS ébresztési küld egy eszközt, ha egy eszköz kapcsolat nélküli (SMS drágább, mint egy metódus hívása folyamatban) volt-e az eszköz különböző érdemes használni.
+Az IoT-központ lehetővé teszi a felhőből eszközök közvetlen módszerek meghívására. Közvetlen módszerek határoz meg egy kérelem-válasz interakció egy HTTP-hívás hasonló eszközökkel abban, hogy sikeres legyen, vagy közvetlenül (felhasználó által meghatározott időtúllépési) után sikertelen. Ez a megközelítés forgatókönyvekben, ahol azonnali lépéseket, attól függően, hogy képesek válaszolni volt-e az eszköz különböző érdemes használni. Az SMS ébresztési például küld egy eszközt, ha kapcsolat nélküli (SMS drágább, mint egy metódus hívása folyamatban).
 Minden eszköz metódus egyetlen eszközt célozza. [Feladatok] [ lnk-devguide-jobs] nyújtanak olyan közvetlen metódusok több eszközön, és ütemezés szerinti metódushívás leválasztott eszközökhöz.
 
 Bárki, aki **service csatlakozás** IoT-központ engedélyeinek indít el egy metódust az eszközön.
 
-Közvetlen módszerek hajtsa végre a kérelem-válasz mintát, és úgy van kialakítva, az eredmény, az eszköz, például egy ventilátor bekapcsolása általában interaktív vezérléshez azonnali megerősítését igénylő kommunikációhoz.
+Közvetlen módszerek hajtsa végre a kérelem-válasz mintát, és úgy van kialakítva, az eredmény azonnali megerősítését igénylő kommunikációhoz. Például interaktív vezérléshez az eszköz, például egy ventilátor bekapcsolásával.
 
 Tekintse meg [felhő eszközre kommunikációs útmutatást] [ lnk-c2d-guidance] bizonytalan kívánt tulajdonságai között, ha a közvetlen módszer vagy a felhő-eszközre küldött üzenetek.
 
@@ -39,7 +39,7 @@ Közvetlen módszerek valósíthatók meg az eszközön, és előfordulhat, hogy
 > 
 > 
 
-Szinkron módszerek és vagy sikeres közvetlen vagy követően az időkorlát (alapértelmezett: 30 másodperces, állítható be 3600 másodperc). Közvetlen módszereket hasznos interaktív olyan esetekben, ahol azt szeretné, hogy az eszköz csak, ha az eszköz nem online és a fogadó parancsok, például egy világos telefonos bekapcsolásával jár el. Ezekben az esetekben meg szeretné tekinteni az azonnali sikeres vagy sikertelen volt, a felhőalapú szolgáltatás működhet-e az eredmény a lehető leghamarabb. Az eszköz néhány üzenettörzs metódus miatt előfordulhat, hogy vissza, de ez nem szükséges ehhez a metódushoz. Van a rendezés nem garantálja, vagy a metódushívások bármely párhuzamossági szemantikáját.
+Szinkron módszerek és vagy sikeres közvetlen vagy követően az időkorlát (alapértelmezett: 30 másodperces, állítható be 3600 másodperc). Közvetlen módszerek interaktív olyan esetekben, ahol azt szeretné, hogy egy eszköz való működésre, csak ha az eszköz nem online és a fogadó parancsok hasznosak. Például a telefonos fény bekapcsolását. Ezekben az esetekben meg szeretné tekinteni az azonnali sikeres vagy sikertelen volt, a felhőalapú szolgáltatás működhet-e az eredmény a lehető leghamarabb. Az eszköz néhány üzenettörzs metódus miatt előfordulhat, hogy vissza, de ez nem szükséges ehhez a metódushoz. Van a rendezés nem garantálja, vagy a metódushívások bármely párhuzamossági szemantikáját.
 
 Közvetlen módszerek HTTPS csak a felhő oldalon, és a MQTT vagy az AMQP eszköz oldaláról.
 
@@ -54,16 +54,16 @@ Az eszközön a közvetlen módszer meghívásához HTTPS hívások alkotó:
 * *Fejlécek* , amely tartalmaz az engedélyezési, a kérelem azonosítója, tartalomtípus, és a tartalom kódolása
 * A transzparens JSON *törzs* a következő formátumban:
 
-   ```
-   {
-       "methodName": "reboot",
-       "responseTimeoutInSeconds": 200,
-       "payload": {
-           "input1": "someInput",
-           "input2": "anotherInput"
-       }
-   }
-   ```
+    ```json
+    {
+        "methodName": "reboot",
+        "responseTimeoutInSeconds": 200,
+        "payload": {
+            "input1": "someInput",
+            "input2": "anotherInput"
+        }
+    }
+    ```
 
 Időtúllépés másodpercben van. Ha időtúllépési nincs megadva, alapértelmezés szerint 30 másodperc.
 
@@ -74,13 +74,14 @@ A háttér-alkalmazást, amely magában választ kap:
 * *Fejlécek* , amely tartalmazza az ETag, a kérelem azonosítója, tartalomtípus, és a tartalom kódolása
 * A JSON *törzs* a következő formátumban:
 
-   ```   {
-       "status" : 201,
-       "payload" : {...}
-   }
-   ```
+    ```json
+    {
+        "status" : 201,
+        "payload" : {...}
+    }
+    ```
 
-   Mindkét `status` és `body` az eszköz által biztosított és a használt szeretne válaszolni az eszköz saját állapotkód és/vagy a leírását.
+    Mindkét `status` és `body` az eszköz által biztosított és a használt szeretne válaszolni az eszköz saját állapotkód és/vagy a leírását.
 
 ## <a name="handle-a-direct-method-on-a-device"></a>Kezeli az eszközön a közvetlen módszer
 ### <a name="mqtt"></a>MQTT
@@ -89,7 +90,7 @@ Eszköz megkapja a MQTT témakör közvetlen metódusú kérelmeket:`$iothub/met
 
 A szervezet, amely az eszköz megkapja a következő formátumban kell megadni:
 
-```
+```json
 {
     "input1": "someInput",
     "input2": "anotherInput"
@@ -127,7 +128,7 @@ A metódusra adott válasz akkor adja vissza a küldő hivatkozásra, és a köv
 Az IoT Hub fejlesztői útmutató más hivatkozás témaköröket tartalmazza:
 
 * [IoT-központok végpontjai] [ lnk-endpoints] ismerteti a különböző végpontok, amelyek minden egyes IoT-központ elérhetővé teszi a futásidejű és felügyeleti műveletek.
-* [Sávszélesség-szabályozási és kvóták] [ lnk-quotas] ismerteti a kvótákat, az IoT-központ szolgáltatás és a sávszélesség-szabályozási viselkedését történik, ha a szolgáltatás használatához.
+* [Sávszélesség-szabályozási és kvóták] [ lnk-quotas] ismerteti, amelyek érvényesek a kvóták és a sávszélesség-szabályozási viselkedését történik, ha az IoT-központ használja.
 * [Az Azure IoT eszköz és a szolgáltatás SDK-k] [ lnk-sdks] felsorolja a különböző nyelvi használhatja az eszköz és a szolgáltatás alkalmazások gondoskodnak az IoT hubbal fejlesztésekor SDK-k.
 * [Az IoT-központ lekérdezési nyelv eszköz twins, feladatok és üzenet útválasztási] [ lnk-query] az IoT-központ lekérdezési nyelv segítségével adatok lekérését az IoT-központ az eszköz twins és feladatok ismertetése.
 * [Az IoT Hub MQTT támogatási] [ lnk-devguide-mqtt] IoT-központ támogatásával kapcsolatos további információkat biztosít a MQTT protokoll.

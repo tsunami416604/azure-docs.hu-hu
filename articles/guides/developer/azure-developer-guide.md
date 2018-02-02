@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: b54b806aad1e15702d2167dcf2870ba19c4708df
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 8eb3cae792a09fc530b84243f2baa01ecc5d13dc
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Első lépésekhez készült útmutató Azure-fejlesztőknek
 
@@ -44,7 +44,7 @@ Most egyes, javasoljuk, hogy vizsgálja meg az alkalmazások adott szolgáltatá
 
 Azure biztosít több felhőalapú számítási ajánlatokat az alkalmazás futtatásához, így nem kell foglalkoznia az infrastruktúra részleteit. Könnyedén növelheti vagy horizontális felskálázás az erőforrások, az alkalmazás használatának növekedésével.
 
-Az Azure az alkalmazások fejlesztése és az üzemeltetési igények támogató szolgáltatásokat kínál. Azure infrastruktúra,--szolgáltatás (IaaS) az alkalmazás-gazdaszolgáltatás teljes szabályozható biztosít. Azure platform,--szolgáltatás (PaaS) ajánlatok adja meg a teljes körűen felügyelt, az alkalmazások bekapcsolására szükséges szolgáltatásokat. Nincs még akkor is igaz kiszolgáló nélküli üzemeltető az Azure-ban ahol csak annyit kell tennie a kód írása.
+Az Azure az alkalmazások fejlesztése és az üzemeltetési igények támogató szolgáltatásokat kínál. Azure (IaaS) az alkalmazás-gazdaszolgáltatás teljes szabályozható szolgáltatás infrastruktúrát biztosít. Azure Platform (PaaS) szolgáltatásajánlatok szerint adja meg a teljes körűen felügyelt, az alkalmazások bekapcsolására szükséges szolgáltatásokat. Nincs még akkor is igaz kiszolgáló nélküli üzemeltető az Azure-ban ahol csak annyit kell tennie a kód írása.
 
 ![Azure-alkalmazást üzemeltető beállítások](./media/azure-developer-guide/azure-developer-hosting-options.png)
 
@@ -69,7 +69,7 @@ A meglévő alkalmazások App Service segítségével telepíthet át a [online 
 
 #### <a name="azure-virtual-machines"></a>Azure-alapú virtuális gépek
 
-Egy infrastruktúra--a-szolgáltatásként (IaaS) szolgáltatói Azure lehetővé teszi, hogy telepíteni, vagy az alkalmazás Windows vagy Linux rendszerű virtuális gépek áttelepítéséhez. Azure-beli virtuális hálózatra, és Azure virtuális gépek támogatja a központi telepítés Windows vagy Linux rendszerű virtuális gépek Azure-bA. Virtuális gépek befolyásolni teljes a gép konfigurációját. Virtuális gépek használatakor Ön felelős az összes kiszolgáló telepítéshez, konfiguráláshoz, karbantartási és operációs rendszer szoftverjavítások.
+Az infrastruktúra (IaaS) szolgáltató a Azure lehetővé teszi telepíteni, vagy az alkalmazás Windows vagy Linux rendszerű virtuális gépek áttelepítéséhez. Azure-beli virtuális hálózatra, és Azure virtuális gépek támogatja a központi telepítés Windows vagy Linux rendszerű virtuális gépek Azure-bA. Virtuális gépek befolyásolni teljes a gép konfigurációját. Virtuális gépek használatakor Ön felelős az összes kiszolgáló telepítéshez, konfiguráláshoz, karbantartási és operációs rendszer szoftverjavítások.
 
 Vezérlő, amely a virtuális gépeken, mivel számos különböző kiszolgáló-munkaterhelések futtathatja, amelyek nem felelnek meg Azure egy PaaS-modellbe. Az ilyen terhelések közé tartozik az adatbázis-kiszolgálók, a Windows Server Active Directory és a Microsoft SharePoint. További információ a dokumentációban a virtuális gépek vagy [Linux](/azure/virtual-machines/linux/) vagy [Windows](/azure/virtual-machines/windows/).
 
@@ -77,7 +77,7 @@ Vezérlő, amely a virtuális gépeken, mivel számos különböző kiszolgáló
 
 >**Első lépések**: hozzon létre egy [Linux virtuális gép](../../virtual-machines/virtual-machines-linux-quick-create-portal.md) vagy [Windows virtuális gép](../../virtual-machines/virtual-machines-windows-hero-tutorial.md) Azure-portálról.
 
-#### <a name="azure-functions-serverless"></a>Az Azure Functions (kiszolgáló nélküli)
+#### <a name="azure-functions-serverless"></a>Azure Functions (serverless)
 
 Nem pedig a kimenő felépítését és kezelését az Ön kódjának futtatásához egy egész alkalmazással vagy az infrastruktúra aggódni. Mi történik, ha Ön volt ebben az esetben a kód írása és azt válaszként események vagy ütemezés szerint?  [Az Azure Functions](../../azure-functions/functions-overview.md) van a "kiszolgáló"nélküli-stílus ajánlat, amely lehetővé teszi, hogy csak a kód írását, van szüksége. Azokat a funkciókat kód aktiválja a végrehajtást, vagy ütemezés szerint HTTP-kérelmekre, webhookokkal, felhőalapú szolgáltatás eseményeit. A fejlesztési nyelven szerkesztőprogramban, például C is kódaláírással\#, F\#, Node.js, Python vagy a PHP. A fogyasztás alapján történő számlázáshoz, csak fizetnie végrehajtja a kódot, és Azure méretezi igény szerint.
 
@@ -153,7 +153,7 @@ Azure többféleképpen is tárolók használata az alkalmazásokban.
 
     >**Első lépések**: [Docker egyéni lemezképet használ az App Service Linux](../../app-service/containers/quickstart-custom-docker-image.md).
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Hitelesítés
 
 Rendkívül fontos tudni, hogy nem csak az alkalmazásokat használó, hanem a jogosulatlan hozzáférés elkerülése érdekében az erőforrások. Azure többféleképpen is, hogy az alkalmazás ügyfelek hitelesítése.
 

@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 504316a7d09595d24318d1f574b0f8927914d424
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 2744c848b81c688f4083cf51b7ef7bc89f0e34e1
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Jelszó alaphelyzetbe állítása, anélkül, hogy a végfelhasználói regisztrálási telepítése
 
@@ -44,6 +44,11 @@ Ha az Azure AD Connectben az alapértelmezett beállításokat használja, a kö
 | TelephoneNumber | Irodai telefon | Másodlagos telefonszám |
 | Mobileszköz | Mobiltelefon | Telefonszám |
 
+Ezek a mezők üres jelenhetnek meg addig, amíg a felhasználó megerősíti, hogy a hitelesítési adatokat.
+
+Egy globális rendszergazda manuálisan állíthatja be a hitelesítési kapcsolattartási adatokat a felhasználó az alábbi képernyőképen látható módon.
+
+![Contact][Contact]
 
 ## <a name="security-questions-and-answers"></a>Biztonsági kérdések és válaszok
 
@@ -154,3 +159,5 @@ Get-AzureADUser | select DisplayName,UserPrincipalName,otherMails,Mobile,Telepho
 * [Mik az SSPR beállításai, és mit jelentenek?](active-directory-passwords-how-it-works.md)
 * [Azt hiszem, hogy valami nem működik. Hogyan háríthatom el az SSPR hibáit?](active-directory-passwords-troubleshoot.md)
 * [Olyan kérdésem van, amely máshol nem szerepelt](active-directory-passwords-faq.md)
+
+[Contact]: ./media/active-directory-passwords-data/user-authentication-contact-info.png "Globális rendszergazdák módosíthatja a felhasználó hitelesítési kapcsolattartási adatai"

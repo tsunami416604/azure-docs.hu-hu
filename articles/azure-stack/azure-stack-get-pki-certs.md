@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2018
+ms.date: 01/31/2018
 ms.author: jeffgilb
-ms.reviewer: wfayed
-ms.openlocfilehash: e7edbc1c4aa6e3cb1026d493886ef7ca704b9131
-ms.sourcegitcommit: 5108f637c457a276fffcf2b8b332a67774b05981
+ms.reviewer: ppacent
+ms.openlocfilehash: a9f2a882947e07cde0e0505458608f86043b2a67
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="generate-pki-certificates-for-azure-stack-deployment"></a>Azure Alkalmazásveremben üzembe nyilvános kulcsú infrastruktúra tanúsítványainak előállításához
 Most, hogy tudja [a PKI-tanúsítványkövetelmények](azure-stack-pki-certs.md) Azure verem telepítések esetén be kell szereznie ezeknek a tanúsítványoknak a tanúsítvány hitelesítésszolgáltatói (CA) az Ön által választott. 
@@ -74,3 +74,5 @@ Az alábbi munkafolyamat ismerteti, hogyan testre szabhatja és a korábban lét
 4. **Importálja. CER**. A CA értéket ad vissza egy. CER-fájljával. Az azonos Windows-számítógép, amelyből létre a kérelem fájl segítségével importálhatja a. A számítógép, illetve személyes tárolójába visszaadott CER-fájljával. 
 5. **Exportálni, és másolja. A telepítési mappák PFX**. (A titkos kulcsot is beleértve) a tanúsítvány exportálása a. PFX fájlt, és másolja a. PFX-fájlt a telepítési mappák ismertetett [Azure verem PKI követelményektől](azure-stack-pki-certs.md).
 
+## <a name="next-steps"></a>További lépések
+[Identitásintegráció](azure-stack-integrate-identity.md)

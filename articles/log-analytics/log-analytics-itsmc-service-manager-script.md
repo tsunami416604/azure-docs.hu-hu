@@ -1,6 +1,6 @@
 ---
-title: "Parancsfájl létrehozása IT Service Management-összekötő az OMS Szolgáltatáshoz kapcsolódni a Service Manager webalkalmazás automatikus |} Microsoft Docs"
-description: "A Service Manager-webalkalmazás létrehozása IT Service Management-összekötő OMS-ben, a csatlakozás központilag figyelheti és a ITSM munkaelemek kezelésére egy automatizált parancsfájl használatával."
+title: "Parancsfájl létrehozása IT Service Management-összekötő az Azure-ban kapcsolódni a Service Manager webalkalmazás automatikus |} Microsoft Docs"
+description: "A Service Manager-webalkalmazás létrehozása IT Service Management-összekötő Azure, a csatlakozás központilag figyelheti és a ITSM munkaelemek kezelésére egy automatizált parancsfájl használatával."
 services: log-analytics
 documentationcenter: 
 author: JYOTHIRMAISURI
@@ -12,26 +12,26 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/15/2017
+ms.date: 01/23/2018
 ms.author: v-jysur
-ms.openlocfilehash: ad69d82e57be8bfd9ba40dd88cbc0a979c9e1722
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 34ec15781776fc8373cd6c9dafa75010e942e167
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="create-service-manager-web-app-using-the-automated-script-preview"></a>Az automatizált parancsfájl (előzetes verzió) használatával a Service Manager webalkalmazás létrehozása
+# <a name="create-service-manager-web-app-using-the-automated-script"></a>Az automatizált parancsfájl használatával a Service Manager webalkalmazás létrehozása
 
 A webalkalmazás a Service Manager-példány létrehozásához használja az alábbi parancsfájlt. További információ a Service Manager-kapcsolat a következő helyen: [Service Manager-webalkalmazás](log-analytics-itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
 
 Futtassa a parancsfájlt a következő szükséges adatok megadásával:
 
 - Azure-előfizetés részletei
-- Az erőforráscsoport neve
+- Erőforráscsoport neve
 - Hely
 - A Service Manager-kiszolgálóadatok (kiszolgáló neve, tartomány, felhasználónév és jelszó)
 - A webalkalmazás hely előtagja
-- A Szolgáltatásbusz-Namespace.
+- ServiceBus Namespace.
 
 A parancsfájlt a webes alkalmazás az Ön által megadott nevét (valamint néhány további karakterláncok, ami) használatával hoz létre. Előállítja a **webes alkalmazás URL-címhez**, **ügyfél-azonosító** és **ügyfélkulcs**.
 
@@ -318,5 +318,5 @@ if(!$err)
 }
 
 ```
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [A hibrid kapcsolat beállítása](log-analytics-itsmc-connections.md#configure-the-hybrid-connection).

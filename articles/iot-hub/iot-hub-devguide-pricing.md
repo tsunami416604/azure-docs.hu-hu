@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/29/2017
-ms.author: elioda
-ms.openlocfilehash: 05006a78cc7d82bc048ec5706465f7140eb40e94
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 01/29/2018
+ms.author: dobett
+ms.openlocfilehash: dbceca3daed53da2a383fd8a6b7a0bd1f225cf77
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Díjszabási információkért Azure IoT Hub
 
@@ -29,10 +29,10 @@ ms.lasthandoff: 10/11/2017
 | Művelet | Számlázási adatokat | 
 | --------- | ------------------- |
 | Identitásjegyzék műveletei <br/> (létrehozása, beolvasása, listázása, frissítése és törlése) | Nem számítjuk fel. |
-| Az eszközről a felhőbe irányuló üzenetek | Sikeresen elküldött üzenetek van szó, a 4 KB-os adattömbök érkező az IoT hubhoz például 6 KB-os üzenet díjfizetéssel 2 üzenet. |
+| Az eszközről a felhőbe irányuló üzenetek | Sikeresen küldött üzenetek a 4 KB-os adattömböket a érkező van szó, az IoT-központot. Például egy 6 KB-os üzenet díjfizetéssel 2 üzenet. |
 | Felhő-eszközre küldött üzenetek | Sikeresen elküldött üzenetek van szó, a 4 KB-os adattömböket, például egy 6 KB-os üzenet díjfizetéssel 2 üzenet. |
 | Fájlfeltöltések | Azure Storage fájlátvitel nem forgalmi díjas IoT hubból. Átviteli kezdeményezés és befejezési üzeneteit van szó, mint 4 KB-os lépésekben mért messaged. Például egy 10 MB-os fájlban fel van töltve az Azure Storage költség mellett két üzenet. |
-| Közvetlen metódusok | Sikeres metóduskérelmek van szó, a 4 KB-os adattömböket, nem üres azokkal válaszait van szó, a 4 KB-os további üzeneteihez. Kérelmek leválasztott eszközökre van szó, a 4 KB-os adattömbök üzeneteihez. Például egy metódust, amely az eszköz válaszára nem szervezethez eredményez 6 KB-os szervezethez díjfizetéssel két üzenetekként; egy metódust, amely az eszközről egy 1 KB-os válasz eredményez 6 KB-os szervezethez fel van töltve, a kérelem két üzenetről és a válasz egy másik üzenetet. |
+| Közvetlen metódusok | Sikeres metóduskérelmek van szó, a 4 KB-os adattömböket, nem üres azokkal válaszait van szó, a 4 KB-os adattömböket, a további üzeneteket. Kérelmek leválasztott eszközökre van szó, a 4 KB-os adattömbök üzeneteihez. Például egy metódust, amely az eszköz válaszára nem szervezethez eredményez 6 KB-os szervezethez két üzenetekként számítjuk fel. Egy metódust, amely az eszközről egy 1 KB-os válasz eredményez 6 KB-os szervezethez fel van töltve, a kérelem két üzenetről és a válasz egy másik üzenetet. |
 | Ikereszköz-olvasások | Eszköz iker beolvassa az eszköz és a megoldás háttérrendszere end van szó, mint 512 bájtos adattömbök üzenetek. Például egy 6 KB-os eszköz iker olvasása díjfizetéssel 12 üzeneteihez. |
 | A két eszközfrissítésekhez (címkék és tulajdonságait) | Kettős eszközfrissítésekhez az eszközről, és a megoldás háttérből van szó, az 512 bájtos adattömbök üzeneteihez. Például egy 6 KB-os eszköz iker olvasása díjfizetéssel 12 üzeneteihez. |
 | Eszköz iker lekérdezések | Lekérdezések van szó, attól függően, hogy az eredmény méretének az 512 bájtos adattömbök üzeneteihez. |
@@ -40,20 +40,31 @@ ms.lasthandoff: 10/11/2017
 | Feladatok eszközönkénti műveletek | Feladatok műveletek (például a kettős eszközfrissítésekhez, és módszerek) normál van szó. Például egy 1 KB-os kérelmek és üres-törzsének válaszokban 1000 metódushívások eredményezve feladat díjfizetéssel 1000 üzeneteket. |
 
 > [!NOTE]
-> Különböző méretű arra az esetre vonatkoznak annak eldöntéséhez, hogy a terhelés méretének bájtban (protokoll keretezési van figyelmen kívül hagyva). Üzenetek (melyek tulajdonságait és a szervezet) esetén a méret számított protokoll-független módon leírtak szerint a [IoT Hub fejlesztői útmutató üzenetküldési][lnk-message-size].
+> Különböző méretű arra az esetre vonatkoznak annak eldöntéséhez, hogy a terhelés méretének bájtban (protokoll keretezési van figyelmen kívül hagyva). Az üzenetek, amelyeknek tulajdonságait és a szervezet, méretének számított protokoll-független módon. További információkért lásd: [IoT Hub fejlesztői útmutató üzenetküldési][lnk-message-size].
 
 ## <a name="example-1"></a>#1. példa
 
-Egy eszköz küld az IoT-központ, amely majd beolvassa az Azure Stream Analytics egy 1 KB-os eszközről a felhőbe üzenet / perc. A megoldás háttérrendszeréhez hív meg (a 512 bájtos tartalom) metódus az eszközön 10 percenként egy bizonyos művelet elindítása. Az eszköz válaszol-e a metódus eredménye 200 bájt.
+Egy eszköz küld az IoT-központ, amely majd beolvassa az Azure Stream Analytics egy 1 KB-os eszközről a felhőbe üzenet / perc. A megoldás háttérrendszeréhez hív meg (a 512 bájtos tartalom) metódus az eszközön 10 percenként egy bizonyos művelet indításához. Az eszköz válaszol-e a metódus eredménye 200 bájt.
 
-Az eszköz akkor 1 üzenetet * 60 perc * 24 óra = 1440 üzenet eszközről a felhőbe üzenetek naponta és 2 kérés és válasz * 6 alkalommal óránként * 24 óra = 288 üzenetek a módszer naponta 1728 üzenetek összesen.
+Az eszköz használ:
+
+* Egy üzenet * 60 perc * 24 óra = 1440 üzenet az eszközről a felhőbe üzenetek naponta.
+* Két kérelem és válasz * 6 alkalommal óránként * 24 óra = 288 üzenetek a módszer.
+
+A számítás 1728 üzenet naponta összesen biztosít.
 
 ## <a name="example-2"></a>#2. példa
 
-Egy eszköz óránként egy 100 KB-os eszközről a felhőbe üzenetet küld. Azt is frissíti az eszköz kettős 1 KB-os hasznos adat található 4 óránként. A megoldás háttérrendszere végén, egyszer naponta, a 14-KB eszköz iker olvas, és frissíti azt konfigurációk módosítása 512 bájtos Payload van jelen.
+Egy eszköz óránként egy 100 KB-os eszközről a felhőbe üzenetet küld. Azt is frissíti az eszköz kettős 1 KB-os hasznos adat található négy óránként. A megoldás háttérrendszere végén, egyszer naponta, a 14-KB eszköz iker olvas, és frissíti azt konfigurációk módosítása 512 bájtos Payload van jelen.
 
-Az eszköz akkor 25 (100KB/4 KB-os) üzenetek * 24 órát eszközről a felhőbe üzenetek, valamint 2 üzenet (1KB/0,5 KB) * 6 napi időpontot az eszközfrissítésekhez két, összesen 612 üzenet naponta.
-A megoldás háttérrendszeréhez 28 üzenetek (14KB/0,5 KB) az eszköz iker olvasására, valamint 1 az üzenethez, és a frissítést, akkor 29 üzenetek összesen.
+Az eszköz használ:
+
+* 25 (100 KB/4 KB-os) üzenetek * 24 órát eszköz a felhőbe küldött üzeneteket.
+* Két üzenet (1 KB/0,5 KB) * hat napi időpontot az eszközfrissítésekhez iker.
+
+A számítás 612 üzenet naponta összesen biztosít.
+
+A megoldás háttérrendszeréhez 29 üzenetek összesen 28 üzenetek (14 KB/0,5 KB) az eszköz iker olvasására, valamint frissíti, egy üzenet használ fel.
 
 Az összes, az eszköz és a megoldás háttérrendszeréhez 641 üzenet naponta felhasználását.
 

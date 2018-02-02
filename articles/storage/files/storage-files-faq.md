@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/04/2017
 ms.author: renash
-ms.openlocfilehash: bae09ffafc14463fa00d0c29dfa6c2628e644773
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 8762b2cca03f4c95f7543803a024bff4573927a1
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="frequently-asked-questions-about-azure-files"></a>Azure-fájlok kapcsolatos gyakori kérdések
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló a felhőben, amelyek elérhetők a szabványos [Server Message Block (SMB) protokoll](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (más néven Common Internet File System vagy CIFS). Akkor is csatlakoztathatja az Azure fájlmegosztások egyidejűleg felhőalapú vagy helyszíni üzemelő példányok esetében a Windows, Linux és macOS. Azure fájlmegosztásokat Windows kiszolgáló gépen a gyors hozzáférés megközelíti az adatok helyének Azure fájlszinkronizálás (előzetes verzió) segítségével képes gyorsítótárazni.
@@ -90,7 +90,7 @@ Ebben a cikkben megválaszolunk Azure fájlok szolgáltatásokat és funkciókat
 
 * <a id="afs-region-availability"></a>
 **Milyen régiókban támogatott Azure fájlszinkronizálás (előzetes verzió)?**  
-    Azure fájlszinkronizálás jelenleg elérhető az USA keleti régiója, USA nyugati régiója, Nyugat-Európában, Kelet-Ausztrália és Délkelet-Ázsia. További régiókhoz fogja támogatni, általánosan rendelkezésre álló felé dolgozunk. További információkért lásd: [régiónkénti elérhetőség](storage-sync-files-planning.md#region-availability).
+    Azure fájlszinkronizálás jelenleg Kelet-Ausztrália Kanada központi, USA keleti régiója, Délkelet-Ázsiában, Egyesült Királyság déli régiója, Nyugat-Európa, USA nyugati régiója érhető el. További régiókhoz fogja támogatni, általánosan rendelkezésre álló felé dolgozunk. További információkért lásd: [régiónkénti elérhetőség](storage-sync-files-planning.md#region-availability).
 
 * <a id="cross-domain-sync"></a>
 **Szinkronizálási ugyanabban a csoportban is rendelkezem tartományhoz csatlakoztatott és a nem tartományhoz csatlakoztatott?**  

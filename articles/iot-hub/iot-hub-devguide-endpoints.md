@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/19/2017
+ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: dc983549aea53ed29859205102d6308a3367bec7
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 54491d0ca1f515786af07146d83ef65fc7d46f11
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="reference---iot-hub-endpoints"></a>Referencia - IoT-központok végpontjai
 
@@ -81,7 +81,12 @@ Hozzáadhat végpontok számának használati korlátait, lásd: [kvóták és s
 
 ### <a name="when-using-azure-storage-containers"></a>Azure Storage tárolók használata
 
-Az IoT-központ csak támogatja az írás a Azure-tárolókban lévő blobokat, a [Apache Avro](http://avro.apache.org/) formátumban. Az IoT-központ kötegek üzeneteket, és írja az adatokat egy blobba vagy egy adott méretet érve, vagy egy bizonyos idő eltelte után, amelyik először történik. Az IoT-központ nem fog kiírni, üres blob nincs-e írni adat.
+Az IoT-központ csak támogatja az írás a Azure-tárolókban lévő blobokat, a [Apache Avro](http://avro.apache.org/) formátumban. Az IoT-központ kötegek üzeneteket, és írja az adatokat a blob amikor:
+
+* A kötegelt elér egy adott méretet.
+* Vagy egy bizonyos idő eltelte.
+
+Az IoT-központ lesz biztosítja írási egy üres blob, ha nincsenek adatok írása.
 
 Az IoT-központ alapértelmezett értéke a következő fájl elnevezési konvenció:
 

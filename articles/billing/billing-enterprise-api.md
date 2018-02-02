@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: aedwin
-ms.openlocfilehash: 62a69aeb7499a961f95739fb3836942b670c7320
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f7a480c77c93035e655606433aea2547a1c105cc
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>A vállalati ügyfelek a Reporting API-k – áttekintés
 A Reporting API-k engedélyezése a vállalati Azure-ügyfelek számára használati és elszámolási adatok programozott módon le az elsődleges adatok elemzésére szolgáló eszközöket. 
@@ -43,6 +43,9 @@ A Swagger-végpont esetében elérhető [Itt](https://consumption.azure.com/swag
 
 * **Árlista** – a [Price Sheet API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) alkalmazható sebessége biztosít minden a megadott regisztrációs és számlázási időszak. 
 
+## <a name="data-freshness"></a>Adatok frissessége
+A fenti API a válaszban visszaadott ETag-EK. Etag változás azt jelzi, hogy az adatok frissítése.  A következő hívásokat az azonos API telepítést azonos paraméterekkel adja át a rögzített Etag a kulcs "If-None-Match" http-kérelem fejlécében. A válasz állapotkódja "NotModified" lenne, ha az adatok további nem frissültek, és nem az adatok visszaadásához fog. API ad vissza a teljes adatkészletet a szükséges időszak, amikor az egy etag is módosul.
+
 ## <a name="helper-apis"></a>Segéd API-k
  **Számlázási időszakok listában** – a [számlázási időszakok API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) időszakokat, amelyek a megadott regisztrációs fordított időrendben adatokkal rendelkezik számlázási listáját adja vissza. Minden időszak mutat az API útvonalat az adat - BalanceSummary, UsageDetails, piactér díjakat és árlista négy csoportjai tulajdonságot tartalmaz.
 
@@ -50,10 +53,10 @@ A Swagger-végpont esetében elérhető [Itt](https://consumption.azure.com/swag
 ## <a name="api-response-codes"></a>API-válaszkódok  
 |Válasz állapotkódja|Üzenet|Leírás|
 |-|-|-|
-|200| OKÉ|Nem történt hiba|
+|200| OK|Nincs hiba|
 |401| Nem engedélyezett| Az API-kulcs nem található, érvénytelen, lejárt stb.|
 |404| Nem érhető el| A jelentés a végpont nem található|
-|400| Helytelen kérelem| Érvénytelen paraméterek – dátumtartományok, EA számok stb.|
+|400| Hibás kérelem| Érvénytelen paraméterek – dátumtartományok, EA számok stb.|
 |500| Kiszolgálóhiba| Unexoected hiba a kérelem feldolgozása| 
 
 

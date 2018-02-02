@@ -1,22 +1,22 @@
 ---
 title: "A távoli felügyeleti megoldás - Azure Java telepítése |} Microsoft Docs"
-description: "Ez az oktatóanyag bemutatja, hogyan kiépítése a távoli figyelési előkonfigurált megoldás Java microsoervices a parancssori felület használatával."
+description: "Ez az oktatóanyag bemutatja, hogyan lehet kiépíteni a távoli figyelési előkonfigurált megoldás, a parancssori felület használatával."
 services: 
 suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 12/12/2017
+ms.date: 01/29/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: ea3764299d07f548abbc2857a3adbfb4dc50dec8
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 94c3db3286623264e9df7873962d10dd5cc662d4
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="deploy-the-remote-monitoring-preconfigured-solution-using-the-cli"></a>A távoli figyelési előkonfigurált megoldás, a parancssori felület használatával
 
@@ -54,8 +54,10 @@ Az előkonfigurált megoldás telepítésekor többféle módon, hogy a telepít
 
 | Beállítás | Értékek | Leírás |
 | ------ | ------ | ----------- |
-| SKU    | `basic`, `standard` | A _alapvető_ központi telepítés a célja a teszt-és bemutatók, egyetlen virtuális gépre telepíti a mikroszolgáltatások létrehozására. A _szabványos_ központi telepítés a célja az üzemi, több virtuális gép telepíti a mikroszolgáltatások létrehozására. |
-| Futásidejű | `dotnet`, `java` | Kiválasztja a mikroszolgáltatások nyelvi végrehajtására. |
+| SKU    | `basic`, `standard`, `local` | A _alapvető_ központi telepítés a célja a teszt-és bemutatók, egyetlen virtuális gépre telepíti a mikroszolgáltatások létrehozására. A _szabványos_ központi telepítés a célja az üzemi, több virtuális gép telepíti a mikroszolgáltatások létrehozására. A _helyi_ telepítési konfigurál egy Docker-tároló a helyi számítógépen a mikroszolgáltatások futtatásához, és használja az Azure-szolgáltatások, például a tárolási és Cosmos DB, a felhőben. |
+| Futtatókörnyezet | `dotnet`, `java` | Kiválasztja a mikroszolgáltatások nyelvi végrehajtására. |
+
+A helyi telepítés használatával kapcsolatos további tudnivalókért lásd: [helyben fut a távoli felügyeleti megoldás](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Running-the-Remote-Monitoring-Solution-Locally#deploy-azure-services-and-set-environment-variables).
 
 ## <a name="deploy-the-preconfigured-solution"></a>Az előkonfigurált megoldás üzembe helyezéséhez
 
@@ -94,7 +96,7 @@ pcs -h
 
 A parancssori Felülettel kapcsolatos további információkért lásd: [a CLI használata](https://github.com/Azure/pcs-cli/blob/master/README.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

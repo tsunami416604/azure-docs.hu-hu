@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 01/31/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: 43d79a8c14751ee25eaca7a3b50649702d159d76
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: a198ff5fe7135e17301025d6a712236b76be0ede
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/01/2018
 ---
-## <a name="network-connectivity"></a>Hálózati kapcsolat
+# <a name="network-connectivity"></a>Hálózati kapcsolat
 Ez a cikk információival Azure verem hálózati infrastruktúra segítségével eldöntheti, hogyan Azure verem legjobb integrálhatók a meglévő hálózati környezethez. 
 
 > [!NOTE]
@@ -62,10 +62,10 @@ A /24 (254 gazdagép IP-címekhez) hálózat az Azure-verem régió (nem bővít
 - **Belső virtuális IP-hálózat**. A/25 hálózati csak belső dedikált virtuális IP-címek esetében az szoftveres terheléselosztóként üzemeljen.
 
 ### <a name="azure-stack-infrastructure-network"></a>Verem Azure infrastruktúra-hálózathoz
-Ez/24 van számára kijelölt hálózat belső Azure verem összetevők, hogy kommunikál, és exchange-adatok egymás között. Ez az alhálózat elérhető IP-címet igényel, de tartják titokban megoldás hozzáférés-vezérlési listák (ACL) segítségével, akkor nem várt túl a szegély kapcsolók, kivéve egy /27 mérete egyenértékű nagyon kis széles irányíthatja át, ezek némelyike a által használt hálózati Ha a külső források és/vagy az internet eléréséhez szükséges szolgáltatásokat. 
+Ez/24 van számára kijelölt hálózat belső Azure verem összetevők, hogy kommunikál, és exchange-adatok egymás között. Ez az alhálózat elérhető IP-címet igényel, de tartják titokban megoldás hozzáférés-vezérlési listák (ACL) segítségével. Azt a szegély kapcsolók, kivéve egy kis méretű egyenértékű egy /27 tartomány túl irányíthatja át nem várt hálózati külső erőforrások és/vagy az internet eléréséhez szükséges néhány szolgáltatás által használatos. 
 
 ### <a name="public-infrastructure-network"></a>Nyilvános infrastruktúra-hálózathoz
-Ez/27 hálózati a nagyon kis közé az Azure-verem infrastruktúra-alhálózat már említettük, nem igényel nyilvános IP-címek, de azt internetelérés NAT vagy transzparens Proxy keresztül. Ez a hálózat oszt ki a sürgős helyreállítási konzol rendszer (ERCS) a, a ERCS VM internet-hozzáférést igényel az Azure-bA regisztráció során, és a felügyeleti hálózathoz hibaelhárítási célból irányíthatóknak kell lenniük.
+Ez/27 hálózati a kis közé az Azure-verem infrastruktúra-alhálózat már említettük, nem igényel nyilvános IP-címek, de azt internetelérés NAT vagy transzparens Proxy keresztül. Ez a hálózat oszt ki a sürgős helyreállítási konzol rendszer (ERCS) a, a ERCS VM internet-hozzáférést igényel az Azure-bA regisztráció során, és a felügyeleti hálózathoz hibaelhárítási célból irányíthatóknak kell lenniük.
 
 ### <a name="public-vip-network"></a>Nyilvános virtuális IP-hálózat
 A nyilvános virtuális IP-hálózati hozzá van rendelve a hálózati vezérlő Azure-készletben. Egy logikai hálózatot a kapcsoló nincs. A SLB címek készletét használja, és hozzárendeli/32 hálózatokra vonatkozó bérlői munkaterheléseket. A kapcsoló-útválasztási táblázat ezek 32 IP-cím van-e hirdetve BGP keresztül a rendelkezésre álló útvonalként. Ez a hálózat a külső érhető el vagy nyilvános IP-címet tartalmaz. Az Azure-verem infrastruktúra a nyilvános virtuális IP-hálózati legalább 8 címeket használ, amíg a többi bérlői virtuális gépek által használt. Az alhálózaton hálózati mérete között lehet (64 gazdagépek) /26 legalább /22 (1022 gazdagépek) legfeljebb, azt javasoljuk, hogy tervezi-e egy/24 hálózati.
@@ -82,12 +82,7 @@ Azure verem szolgáltatások felhasználók számára elérhetővé külső Azur
 ### <a name="ports-and-urls"></a>Portok és URL-címek
 Azure verem szolgáltatásokat (például a portálok, Azure Resource Manager-, DNS, stb.) külső hálózatok számára elérhető, engedélyeznie kell a fenti végpontokkal való bejövő forgalom az adott URL-címeket, portokat és protokollokat.
  
-Központi telepítés, ahol a transzparens proxy kimenő hagyományos proxykiszolgálónak engedélyeznie kell a adott portok és URL-címek kimenő kommunikációra. Idetartozik a portok és URL-címek identitás, piactér szindikálási, javítási és frissítési, regisztrációs és használati adatok.
-
-További információkért lásd:
-- [Bejövő portok és protokollok](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-protocols-inbound)
-- [Kimenő portok és URL-címek](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-urls-outbound)
-
+Központi telepítés, ahol a transzparens proxy kimenő kapcsolatot biztosítani a hagyományos proxykiszolgálót, engedélyeznie kell a adott portok és URL-címeket mindkét [bejövő](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-protocols-inbound) és [kimenő](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-urls-outbound) kommunikációt. Idetartozik a portok és URL-címek identitás, piactér szindikálási, javítási és frissítési, regisztrációs és használati adatok.
 
 ## <a name="next-steps"></a>További lépések
-[Az Azure verem szegély kapcsolat](azure-stack-border-connectivity.md)
+[Szegély kapcsolat](azure-stack-border-connectivity.md)

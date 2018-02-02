@@ -47,4 +47,4 @@ Ha egy háttér-API (nem ajánlott) hatókör nem igényel, használhatja a **cl
 
 <!--end-collapse-->
 
-[!INCLUDE  [Help and support](./active-directory-develop-help-support-include.md)]
+[!INCLUDE [Help and support](./active-directory-develop-help-support-include.md)]

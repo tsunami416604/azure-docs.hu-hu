@@ -15,38 +15,40 @@ ms.workload: data-services
 ms.custom: security
 ms.date: 12/14/2017
 ms.author: rortloff;barbkess
-ms.openlocfilehash: aa0d6cb03196167ec077b0ed4bbbb9d118951219
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: efc0ca9b156bd69a39197d40083830c6c7e77647
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="secure-a-database-in-sql-data-warehouse"></a>Az SQL Data Warehouse adatbázis védelme
 > [!div class="op_single_selector"]
 > * [Biztonság – áttekintés](sql-data-warehouse-overview-manage-security.md)
 > * [Hitelesítés](sql-data-warehouse-authentication.md)
 > * [Titkosítás (portál)](sql-data-warehouse-encryption-tde.md)
-> * [Titkosítás (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
+> * [Encryption (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 > 
 > 
 
-Ez a cikk végigvezeti az Azure SQL Data Warehouse-adatbázis védelme alapjait. Különösen, ez a cikk segítséget erőforrásaival korlátozza a hozzáférést, az adatok védelme és figyelési tevékenységek egy adatbázison.
+Ez a cikk végigvezeti az Azure SQL Data Warehouse-adatbázis védelme alapjait. Ebben az esetben, ez a cikk lekérdezi használatba erőforrásaival korlátozza a hozzáférést, az adatok védelme és figyelési tevékenységek egy adatbázison.
 
 ## <a name="connection-security"></a>Kapcsolatbiztonság
 A kapcsolatbiztonság azt jelenti, hogy hogyan korlátozza és védi az adatbázis kapcsolatait a tűzfalszabályok és a csatlakozástitkosítás használatával.
 
-A tűzfalszabályokat a kiszolgáló és az adatbázis is felhasználja, hogy elutasítsa a csatlakozási kísérleteket a nem kifejezetten engedélyezett IP-címekről. Az alkalmazás ügyfél gép nyilvános IP- címének kapcsolódásának engedélyezéséhez először létre kell hoznia egy kiszolgálószintű tűzfalszabályt, az Azure portálon, a REST API-t vagy a PowerShell használatával. Az ajánlott eljárás a kiszolgáló tűzfalán átengedett IP-címtartományokat lehető legnagyobb mértékű korlátozása.  Az Azure SQL Data Warehouse hozzáférést a helyi számítógépen, győződjön meg arról, a hálózat és a helyi számítógépen a tűzfal lehetővé teszi, hogy az 1433-as TCP-port kimenő kommunikációra.  További információkért lásd: [Azure SQL Database-tűzfal][Azure SQL Database firewall], [sp_set_firewall_rule][sp_set_firewall_rule].
+A tűzfalszabályokat a kiszolgáló és az adatbázis is felhasználja, hogy elutasítsa a csatlakozási kísérleteket a nem kifejezetten engedélyezett IP-címekről. Az alkalmazás ügyfél gép nyilvános IP- címének kapcsolódásának engedélyezéséhez először létre kell hoznia egy kiszolgálószintű tűzfalszabályt, az Azure-portálon, a REST API-t vagy a PowerShell használatával. Az ajánlott eljárás a kiszolgáló tűzfalán átengedett IP-címtartományokat lehető legnagyobb mértékű korlátozása.  Az Azure SQL Data Warehouse hozzáférést a helyi számítógépen, győződjön meg arról, a hálózat és a helyi számítógépen a tűzfal lehetővé teszi, hogy az 1433-as TCP-port kimenő kommunikációra.  
+
+Az SQL Data Warehouse kiszolgálószintű tűzfal-szabályokat használ. Adatbázis-szintű tűzfalszabályok nem támogatja. További információkért lásd: [Azure SQL Database-tűzfal][Azure SQL Database firewall], [sp_set_firewall_rule][sp_set_firewall_rule].
 
 Az SQL Data warehouse kapcsolatokat a rendszer alapértelmezés szerint titkosítja.  Tiltsa le a titkosítást a kapcsolódási beállítások módosítása a rendszer figyelmen kívül hagyja.
 
 ## <a name="authentication"></a>Hitelesítés
-A hitelesítés azt jelenti, hogy hogyan igazolja az identitását az adatbázishoz való kapcsolódáskor. SQL Data Warehouse jelenleg támogatja az SQL Server-hitelesítés egy felhasználónév és jelszó, valamint egy Azure Active Directoryban. 
+A hitelesítés azt jelenti, hogy hogyan igazolja az identitását az adatbázishoz való kapcsolódáskor. Az SQL Data Warehouse jelenleg támogatja az SQL Server-hitelesítés egy felhasználónévvel és jelszóval, és az Azure Active Directoryban. 
 
 Az adatbázis logikai kiszolgálójának létrehozásakor megadta a „kiszolgálói rendszergazda” bejelentkezés felhasználónevét és jelszavát. Ezeket a hitelesítő adatokat használ, elvégezheti a hitelesítést bármely adatbázis a kiszolgálón az adatbázis tulajdonosa vagy a "dbo" SQL Server-hitelesítésen keresztül.
 
 Azonban célszerű, a szervezet felhasználói fiók használata ajánlott a különböző hitelesítéséhez. Így korlátozhatja az alkalmazás számára megadott engedélyeket és a kártékony tevékenység a kockázatok csökkentése, abban az esetben, ha az alkalmazás kódjában téve egy SQL injektálási támadásnak. 
 
-Csatlakozás SQL-kiszolgáló hitelesített felhasználó létrehozásához a **fő** adatbázis a kiszolgálón a kiszolgáló-rendszergazdai bejelentkezés, és hozzon létre egy új bejelentkezés a kiszolgálóra.  Ezenkívül célszerű egy felhasználó létrehozása az Azure SQL Data Warehouse-felhasználók számára a fő adatbázist. A felhasználó létrehozása a fő lehetővé teszi a felhasználóknak például az SSMS használatával adatbázis nevének megadása nélkül.  Emellett lehetővé teszi az object explorer segítségével megtekintheti az összes adatbázis SQL-kiszolgálón.
+Csatlakozás SQL-kiszolgáló hitelesített felhasználó létrehozásához a **fő** adatbázis a kiszolgálón a kiszolgáló-rendszergazdai bejelentkezés, és hozzon létre egy új bejelentkezés a kiszolgálóra.  Ezenkívül célszerű egy felhasználó létrehozása az Azure SQL Data Warehouse-felhasználók számára a fő adatbázist. A felhasználó létrehozása a fő lehetővé teszi, hogy a felhasználót, hogy jelentkezzen be például az SSMS használatával adatbázis nevének megadása nélkül.  Emellett lehetővé teszi az object explorer segítségével megtekintheti az összes adatbázis SQL-kiszolgálón.
 
 ```sql
 -- Connect to master database and create a login
@@ -54,17 +56,17 @@ CREATE LOGIN ApplicationLogin WITH PASSWORD = 'Str0ng_password';
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
-Majd kapcsolódjon a **SQL Data Warehouse-adatbázis** az a kiszolgáló-rendszergazdai bejelentkezés, és hozzon létre egy adatbázis-felhasználó, a most létrehozott server bejelentkezés alapján.
+Majd kapcsolódjon a **SQL Data Warehouse-adatbázis** az a kiszolgáló-rendszergazdai bejelentkezés, és hozzon létre egy adatbázis-felhasználó alapján létrehozott bejelentkezés a kiszolgálóra.
 
 ```sql
 -- Connect to SQL DW database and create a database user
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
-Ha a felhasználó további műveletek, például a bejelentkezések létrehozása vagy új adatbázisok létrehozásához mindaddig végre, akkor is meg kell hozzá kell rendelni a `Loginmanager` és `dbmanager` szerepkörök a főadatbázisban. A további szerepkörök és SQL-adatbázishoz hitelesítésével kapcsolatos további információkért lásd: [adatbázisok és az Azure SQL Database bejelentkezések kezelése][Managing databases and logins in Azure SQL Database].  Az SQL Data Warehouse az Azure AD a további részletekért lásd: [kapcsolódás az SQL Data Warehouse által használata Azure Active Directory-hitelesítéssel][Connecting to SQL Data Warehouse By Using Azure Active Directory Authentication].
+Egy felhasználónak engedélyt például bejelentkezések létrehozása vagy új adatbázisok létrehozásához további műveletek végrehajtásához, rendelje hozzá a felhasználót, hogy a `Loginmanager` és `dbmanager` szerepkörök a főadatbázisban. Ezek a további szerepkörök és SQL-adatbázishoz hitelesítésével kapcsolatos további információkért lásd: [adatbázisok és az Azure SQL Database bejelentkezések kezelése][Managing databases and logins in Azure SQL Database].  További információkért lásd: [kapcsolódás az SQL Data Warehouse által használata Azure Active Directory-hitelesítéssel][Connecting to SQL Data Warehouse By Using Azure Active Directory Authentication].
 
 ## <a name="authorization"></a>Engedélyezés
-Engedélyezési hivatkozik, mi mindent az Azure SQL Data Warehouse-adatbázison belül, és ez a felhasználói fiók szerepkörtagságok és engedélyek által szabályozott. Ajánlott eljárásként csak a minimálisan szükséges engedélyeket adja meg a felhasználóknak. Az SQL Data Warehouse megkönnyíti ezt a T-SQL szerepkörök kezeléséhez:
+Engedélyezési hivatkozik, mi mindent az Azure SQL Data Warehouse-adatbázison belül. Engedélyezési jogosultságokkal szerepkörtagságok és engedélyek határozzák meg. Ajánlott eljárásként csak a minimálisan szükséges engedélyeket adja meg a felhasználóknak. Szerepkörök kezelése, a következő tárolt eljárásokat használhatja:
 
 ```sql
 EXEC sp_addrolemember 'db_datareader', 'ApplicationUser'; -- allows ApplicationUser to read data
@@ -75,22 +77,24 @@ A kapcsolódáshoz használt kiszolgálói rendszergazdai fiók a db_owner szere
 
 Tovább korlátozhatja a felhasználók mit tehetnek az Azure SQL Data Warehouse szolgáltatással módja van:
 
-* A részletes [engedélyek] [ Permissions] lehetővé teszik, hogy mely műveletek, akkor az egyes oszlopok, táblák, megtekinti vezérlő, sémák, eljárások és egyéb objektumok az adatbázisban. A részletes engedélyeket használ a legtöbb vezérlő, majd adja meg a minimálisan szükséges engedélyeket. A részletes engedély rendszer némileg bonyolult, és néhány vizsgálat hatékony használata esetén.
+* A részletes [engedélyek] [ Permissions] lehetővé teszik, hogy mely műveletek, akkor az egyes oszlopok, táblák, megtekinti vezérlő, sémák, eljárások és egyéb objektumok az adatbázisban. A részletes engedélyeket használ a legtöbb vezérlő, majd adja meg a minimálisan szükséges engedélyeket. 
 * [Adatbázis-szerepkörök] [ Database roles] eltérő db_datareader és db_datawriter nagyobb teljesítményű alkalmazás felhasználói fiókok vagy kevésbé hatékony felügyeleti fiókok létrehozására használható. A beépített rögzített adatbázis-szerepkörök olyan engedélyek megadásához könnyű megoldást biztosítson, de a szükségesnél több jogosultságokat eredményezhet.
 * [Tárolt eljárások] [ Stored procedures] segítségével korlátozhatja a műveleteket, amelyen átvihető az adatbázishoz.
 
-Az alábbiakban példája olvasási hozzáférés egy felhasználó által definiált séma megadása.
+A következő példa egy felhasználó által definiált séma olvasási hozzáférést biztosít.
 ```sql
 --CREATE SCHEMA Test
 GRANT SELECT ON SCHEMA::Test to ApplicationUser
 ```
 
-Az Azure portálról adatbázisok és a logikai kiszolgáló kezelése vagy az Azure Resource Manager API-val a portál felhasználói fiók szerepkör-hozzárendelések vezérli. A témakörrel kapcsolatos további információkért lásd: [Azure portál szerepköralapú hozzáférés-vezérlés][Role-based access control in Azure Portal].
+Az Azure portálról adatbázisok és a logikai kiszolgáló kezelése vagy az Azure Resource Manager API-val a portál felhasználói fiók szerepkör-hozzárendelések vezérli. További információkért lásd: [Azure portál szerepköralapú hozzáférés-vezérlés][Role-based access control in Azure portal].
 
 ## <a name="encryption"></a>Titkosítás
-Az Azure SQL Data adatraktár átlátszó adatok titkosítás (TDE) abban a kártékony tevékenység fenyegetés valós idejű titkosítási és visszafejtési az adatok aktívan elvégzésével.  Az adatbázis titkosításakor társított biztonsági másolatok és a tranzakciós naplófájlok vannak titkosítva az alkalmazások módosítása nélkül. TDE teljes adatbázis tárterülete az adatbázis-titkosítási kulcs nevű szimmetrikus kulcs használatával titkosítja. Az SQL-adatbázis az adatbázis-titkosítási kulcs védi egy beépített kiszolgálói tanúsítványt. A beépített kiszolgálói tanúsítványa nem egyedi a következő SQL-adatbázis kiszolgálónként. Microsoft legalább 90 naponta automatikusan elforgatja ezeket a tanúsítványokat. Az SQL Data Warehouse által használt titkosítási algoritmus az AES-256. TDE általános ismertetését lásd: [átlátható adattitkosítási][Transparent Data Encryption].
+Az Azure SQL Data adatraktár átlátszó adatok titkosítás (TDE) abban a fenyegetés kártevő szándékú tevékenységek által az inaktív adatok titkosítása és visszafejtése.  Az adatbázis titkosításakor társított biztonsági másolatok és a tranzakciós naplófájlok vannak titkosítva az alkalmazások módosítása nélkül. TDE teljes adatbázis tárterülete az adatbázis-titkosítási kulcs nevű szimmetrikus kulcs használatával titkosítja. 
 
-Az adatbázis használatával titkosíthatja az [Azure Portal] [ Encryption with Portal] vagy [T-SQL][Encryption with TSQL].
+Az SQL-adatbázis az adatbázis-titkosítási kulcs védi egy beépített kiszolgálói tanúsítványt. A beépített kiszolgálói tanúsítványa nem egyedi a következő SQL-adatbázis kiszolgálónként. Microsoft legalább 90 naponta automatikusan elforgatja ezeket a tanúsítványokat. Az SQL Data Warehouse által használt titkosítási algoritmus az AES-256. TDE általános ismertetését lásd: [átlátható adattitkosítási][Transparent Data Encryption].
+
+Az adatbázis használatával titkosíthatja az [Azure-portálon] [ Encryption with Portal] vagy [T-SQL][Encryption with TSQL].
 
 ## <a name="next-steps"></a>További lépések
 Részletek és csatlakozás az SQL Data Warehouse a különböző protokollokkal példák: [csatlakozás az SQL Data Warehouse][Connect to SQL Data Warehouse].
@@ -115,4 +119,4 @@ Részletek és csatlakozás az SQL Data Warehouse a különböző protokollokkal
 [Azure portal]: https://portal.azure.com/
 
 <!--Other Web references-->
-[Role-based access control in Azure Portal]: https://azure.microsoft.com/documentation/articles/role-based-access-control-configure
+[Role-based access control in Azure portal]: https://azure.microsoft.com/documentation/articles/role-based-access-control-configure

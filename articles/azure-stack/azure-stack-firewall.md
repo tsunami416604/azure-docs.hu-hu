@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 01/31/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 737df48a24d8e077f898d00526c7138db69dbb93
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: f7b621312677c0b250e267770ae0c445ee9f083f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-stack-firewall-integration"></a>Azure verem tűzfal-integráció
 Javasoljuk, hogy a tűzfal eszközt használ-e biztonságos Azure verem segítségével. Bár tűzfalak segítségére lehetnek többek között elosztott-szolgáltatásmegtagadásos (DDOS-) támadások, a behatolás-észlelés és a tartalomvizsgálat a, a teljesítmény szűk keresztmetszetek az Azure storage szolgáltatások, például a blobot, táblát és üzenetsort is válnának is.
@@ -59,7 +59,9 @@ A vállalati intranet vagy szegélyhálózat üzembe helyezés Azure-verem telep
 
 ![Az Azure verem szegélyhálózati hálózati – példa](.\media\azure-stack-firewall\perimeter-network-scenario.png)
 
+## <a name="learn-more"></a>Részletek
+További információ [Azure verem végpontok által használt portokról és protokollokról](azure-stack-integrate-endpoints.md).
 
 ## <a name="next-steps"></a>További lépések
-További információ [Azure verem végpontok által használt portokról és protokollokról](azure-stack-integrate-endpoints.md)
+[Azure verem PKI-követelmények](azure-stack-pki-certs.md)
 

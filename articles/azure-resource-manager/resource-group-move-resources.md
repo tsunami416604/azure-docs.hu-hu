@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2017
+ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7d500d20dcce3e472e3e1e15b9ce307874caf22a
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
-ms.translationtype: MT
+ms.openlocfilehash: ea0c2487e24fcb924632d3277163b7732442b414
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -53,7 +53,10 @@ Néhány fontos lépést végre kell hajtani az erőforrások áthelyezése elő
   az account show --subscription <your-destination-subscription> --query tenantId
   ```
 
-  Ha a bérlő azonosítók a forrás és cél előfizetésekhez nem egyeznek, vegye fel a kapcsolatot [támogatja](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) az erőforrások áthelyezése új bérlőhöz.
+  Ha a bérlő azonosítók a forrás és cél előfizetésekhez nem egyeznek, az alábbi módszerekkel egyeztetni a bérlő azonosítók: 
+
+  * [Azure-előfizetés tulajdonjogának átruházása másik fiókra](../billing/billing-subscription-transfer.md)
+  * [Azure-előfizetés társítása vagy az Azure Active Directory](../active-directory/active-directory-how-subscriptions-associated-directory.md)
 
 2. A szolgáltatásnak lehetővé kell tennie az erőforrások áthelyezését. Ez a cikk felsorolja a szolgáltatások lehetővé teszik az erőforrások áthelyezése, és a szolgáltatások nem engedélyezi az erőforrások áthelyezése.
 3. A cél előfizetést regisztrálni kell az áthelyezett erőforrás erőforrás-szolgáltatóján. Ha nem, hibaüzenet arról, hogy a **az előfizetés nincs regisztrálva az erőforrástípus**. Ez a probléma erőforrások új előfizetésre történő áthelyezésekor fordulhat elő, ha az előfizetést még nem használták az adott erőforrástípushoz.
@@ -93,7 +96,7 @@ Néhány fontos lépést végre kell hajtani az erőforrások áthelyezése elő
 
 Ügyfél [támogatja](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) kell tennie:
 
-* Az erőforrások áthelyezése egy új Azure-fiók (és az Azure Active Directory-bérlő).
+* Az erőforrások áthelyezése egy új Azure-fiók (és az Azure Active Directory-bérlő), és segítségre van az előző szakaszban leírt utasításokat.
 * Hagyományos erőforrások áthelyezéséhez, de problémát tapasztal a korlátozásokkal.
 
 ## <a name="services-that-enable-move"></a>Szolgáltatások, amelyek lehetővé teszik a áthelyezése
@@ -319,7 +322,7 @@ A regisztrált virtuális gép áthelyezése **Azure biztonsági mentés** erőf
  1. Ideiglenesen állítsa le a biztonsági mentés és a biztonsági mentési adatok megőrzése mellett
  2. A virtuális gép áthelyezése a célként megadott erőforráscsoportja
  3. Védelmének újbóli beállításához, a felhasználók állíthatja vissza az áthelyezés előtt létrehozott rendelkezésre visszaállítási pontok azonos/új tárolóban.
-Ha a felhasználó a biztonsági másolat virtuális Gépet egy előfizetések között, 1 és 2. lépést változatlanok maradnak. 3. lépésben a felhasználónak kell egy új tárolóban található / a célként megadott előfizetés-ben jött létre a virtuális gép védelme. Helyreállítási szolgáltatások tárolóban nem tartalmazza támogatás előfizetés biztonsági mentések közötti.
+Ha a felhasználó a biztonsági másolat virtuális Gépet egy előfizetések között, 1 és 2. lépést változatlanok maradnak. 3. lépésben a felhasználónak kell egy új tárolóban található / a célként megadott előfizetés-ben jött létre a virtuális gép védelme. Recovery Services-tároló nem támogatja az alhálózatok közötti előfizetés biztonsági másolatok.
 
 ## <a name="hdinsight-limitations"></a>A HDInsight-korlátozások
 

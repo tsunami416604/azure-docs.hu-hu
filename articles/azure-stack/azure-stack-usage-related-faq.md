@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2018
+ms.date: 01/30/2018
 ms.author: alfredop
-ms.openlocfilehash: 65b9ff0881e46836d9f19a04cf470835679e7b2f
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 855d74698f2109fa426d34044cbc89b83c224e6f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="frequently-asked-questions-in-azure-stack-usage-api"></a>Gyakori kérdések az Azure-verem használata API
 Ebben a cikkben megválaszolunk néhány kapcsolatos gyakori kérdések az Azure verem használati API-t.
@@ -28,8 +28,8 @@ A következő erőforrás-szolgáltató használata esetén jelentést kap:
 
 | **Erőforrás-szolgáltató** | **A mérési azonosítója** | **A mérési neve** | **Unit** | **További információ** |
 | --- | --- | --- | --- | --- |
-| **Hálózat** |F271A8A388C44D93956A063E1D2FA80B |Statikus IP-cím használata |IP-címek| Használt száma az IP-címek |
-| |9E2739BA86744796B465F64674B822BA |Dinamikus IP-cím használata |IP-címek| Használt száma az IP-címek |
+| **Hálózat** |F271A8A388C44D93956A063E1D2FA80B |Statikus IP-cím használata |IP-címek| Count IP-címekre. Ha felhívja a használati API a napi részletességű, a mérni visszaállítja az órák számát szorozva IP-címet. |
+| |9E2739BA86744796B465F64674B822BA |Dinamikus IP-cím használata |IP-címek| Count IP-címekre. Ha felhívja a használati API a napi részletességű, a mérni visszaállítja az órák számát szorozva IP-címet. |
 | **Storage** |B4438D5D-453B-4EE1-B42A-DC72E377F1E4 |TableCapacity |GB\*üzemideje (óra) |Tábla által felhasznált teljes kapacitás |
 | |B5C15376-6C94-4FDD-B655-1A69D138ACA3 |PageBlobCapacity |GB\*üzemideje (óra) |Lapblobokat által felhasznált teljes kapacitás |
 | |B03C6AE7-B080-4BFA-84A3-22C800F315C6 |QueueCapacity |GB\*üzemideje (óra) |Várólista által felhasznált teljes kapacitás |
@@ -43,10 +43,10 @@ A következő erőforrás-szolgáltató használata esetén jelentést kap:
 | |EB43DD12-1AA6-4C4B-872C-FAF15A6785EA |QueueTransactions |10., 000's kérelmek száma |Várólista szolgáltatás kérelmek (10, 000's) |
 | |E518E809-E369-4A45-9274-2017B29FFF25 |QueueDataTransIn |Érkező adatok GB-ban |Várólista szolgáltatás adatok érkező GB-ban |
 | |DD0A10BA-A5D6-4CB6-88C0-7D585CEF9FC2 |QueueDataTransOut |Kimenő forgalom GB-ban |Várólista szolgáltatás adatforgalommal GB-ban |
-| **Sql RP**            | CBCFEF9A-B91F-4597-A4D3-01FE334BED82 | DatabaseSizeHourSqlMeter   | MB\*üzemideje (óra)   | Teljes DB-kapacitás létrehozását, minden órában jelentett.  |
-| **MySql RP**          | E6D8CFCD-7734-495E-B1CC-5AB0B9C24BD3 | DatabaseSizeHourMySqlMeter | MB\*üzemideje (óra)    | Teljes DB-kapacitás létrehozását, minden órában jelentett. |
-| **Számítás** |FAB6EB84-500B-4A09-A8CA-7358F8BBAEA5 |Alapszintű VM-méret órák |Virtuális core perc | Virtuális magok száma alkalommal fordult elő a virtuális gép futott perc |
-| |9CD92D4C-BAFD-4492-B278-BEDC2DE8232A |Windows virtuális gép mérete üzemideje (óra) |Virtuális core perc | Virtuális magok száma alkalommal fordult elő a virtuális gép futott perc |
+| **Sql RP**            | CBCFEF9A-B91F-4597-A4D3-01FE334BED82 | DatabaseSizeHourSqlMeter   | MB\*üzemideje (óra)   | Teljes DB kapacitása a létrehozásakor. Ha felhívja a használati API a napi részletességű, a mérni visszaállítja az órák számát szorozva MB. |
+| **MySql RP**          | E6D8CFCD-7734-495E-B1CC-5AB0B9C24BD3 | DatabaseSizeHourMySqlMeter | MB\*üzemideje (óra)    | Teljes DB kapacitása a létrehozásakor. Ha felhívja a használati API a napi részletességű, a mérni visszaállítja az órák számát szorozva MB. |
+| **Számítás** |FAB6EB84-500B-4A09-A8CA-7358F8BBAEA5 |Alapszintű VM-méret órák |Virtuális processzor-üzemóra | Az óra, a virtuális gép futott megszorozza virtuális magok száma |
+| |9CD92D4C-BAFD-4492-B278-BEDC2DE8232A |Windows virtuális gép mérete üzemideje (óra) |Virtuális processzor-üzemóra | Virtuális magok száma és a virtuális gép futott üzemideje (óra) |
 | |6DAB500F-A4FD-49C4-956D-229BB9C8C793 |Virtuális gép mérete üzemideje (óra) |Virtuális gép üzemideje (óra) |Kiinduló és a Windows virtuális gép rögzíti. Nem igazítja a magok |
 | **Key Vault** |EBF13B9F-B3EA-46FE-BF54-396E93D48AB4 |Key Vault tranzakciók | 10., 000's kérelmek száma| Kulcstároló adatainak vezérlősík által fogadott REST API-kérelmek száma |
 | **Az App service** |190C935E-9ADA-48FF-9AB8-56EA1CF9ADAA  | App Service   | Virtuális processzor-üzemóra  | Az app service futtatásához használt virtuális magok száma |

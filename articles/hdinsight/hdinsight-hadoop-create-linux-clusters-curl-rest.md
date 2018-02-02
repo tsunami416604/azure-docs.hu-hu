@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/06/2017
+ms.date: 01/31/2018
 ms.author: larryfr
-ms.openlocfilehash: f35c50a3b05bfeb06556f5eb9ba70e24b80de6e9
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 4fcdde200fa9d54c7eb5b0ffe151aff3fbd0ed85
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-hadoop-clusters-using-the-azure-rest-api"></a>Az Azure REST API használatával Hadoop-fürtök létrehozása
 
@@ -355,7 +355,7 @@ Ez a parancs visszaadja a központi telepítés működésével kapcsolatos adat
 
 Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](hdinsight-administer-use-portal-linux.md#create-clusters).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy sikeresen létrehozott egy HDInsight-fürtre, használja a következő megtudhatja, hogyan működnek a fürthöz.
 
@@ -367,7 +367,7 @@ Most, hogy sikeresen létrehozott egy HDInsight-fürtre, használja a következ�
 
 ### <a name="hbase-clusters"></a>HBase-fürtökkel
 
-* [Az a HDInsight HBase első lépései](hbase/apache-hbase-tutorial-get-started-linux.md)
+* [A HDInsighton futó HBase használatának első lépései](hbase/apache-hbase-tutorial-get-started-linux.md)
 * [A HDInsight HBase Java-alkalmazások fejlesztése](hbase/apache-hbase-build-java-maven-linux.md)
 
 ### <a name="storm-clusters"></a>Storm-fürtök

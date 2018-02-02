@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 1/29/2018
 ms.author: mabrigg
-ms.openlocfilehash: 4937b7725c8f39314ccc41584a8646b7197f6bdf
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.openlocfilehash: 7018f0122ab1ef11d64cce8a9adf58419d0e9ba7
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="replace-a-hardware-component-on-an-azure-stack-scale-unit-node"></a>Cserélje le az Azure-verem skálázási egység csomóponton egy hardverösszetevő
 
@@ -28,7 +28,7 @@ Ez a cikk ismerteti, amelyek nem közbeni-cserélhető hardverösszetevők lecse
 
 Nem közbeni-cserélhető összetevők közé tartoznak a következők:
 
-- CPU *
+- CPU*
 - Memória *
 - Alaplap/alaplapi felügyeleti vezérlővel (BMC) / videó kártya
 - Lemez vezérlő/gazdabuszadaptert (HBA) / csatlakozópanel
@@ -44,11 +44,11 @@ A következő folyamatábra nem közbeni-cserélhető hardverösszetevő cseréj
 
 * Ez a művelet nem lehet szükség a fizikai hardver-feltételen alapszik.
 
-** E OEM hardvergyártójához hajt végre összetevő váltja fel, és a belső vezérlőprogram frissítése sikerült függően változnak, a szerződés támogatott.
+** A támogatási szerződése alapján e OEM hardvergyártójához hajt végre, az összetevő cseréje és a frissítések a belső vezérlőprogram eltérőek lehetnek.
 
 ## <a name="review-alert-information"></a>Riasztási információk áttekintése
 
-Az Azure-verem és a felügyeleti rendszer követi nyomon a hálózati adapterek és a közvetlen tárolóhelyek által vezérelt adatmeghajtókon állapotát. Egyéb hardverelemek nem követi nyomon. Az összes egyéb hardverelemek riasztásokról értesítő a szállító-specifikus hardver felügyeleti megoldás, amely a hardver életciklus gazdagépen futtatja.
+Az Azure-verem és a felügyeleti rendszer követi nyomon a hálózati adapterek és a közvetlen tárolóhelyek által vezérelt adatmeghajtókon állapotát. Egyéb hardverelemek nem követi nyomon. Az összes egyéb hardverelemek riasztásokról értesítő a szállító-specifikus hardver felügyeleti megoldás, amely a hardver életciklus gazdagépen futtatja.  
 
 ## <a name="component-replacement-process"></a>Az összetevő cseréjét.
 
@@ -60,7 +60,7 @@ Az alábbi lépéseket a összetevő cseréjét magas szintű áttekintését ad
    > Minden esetben merül le és ki van kapcsolva egy időben a S2D megszüntetése nélkül a csak egy csomópont (közvetlen tárolóhelyek).
 
 2. Miután a skálázási egység csomópontot karbantartási módban van, a [kikapcsolásához](azure-stack-node-actions.md#scale-unit-node-actions) művelet. Ez a művelet nem lehet szükség a fizikai hardver-feltételen alapszik.
- 
+
    > [!NOTE]
    > Az valószínű esetében, amelyek a kikapcsolási művelet nem működik használja helyette az alaplapi felügyeleti vezérlővel (BMC) webes felülete.
 
@@ -74,4 +74,3 @@ Az alábbi lépéseket a összetevő cseréjét magas szintű áttekintését ad
 
 - További információ a közbeni-cserélhető fizikai lemez cseréje: [olyan lemezt cserél ki](azure-stack-replace-disk.md).
 - További információ a fizikai csomópont cseréje: [cserélje le a skálázási egység csomópont](azure-stack-replace-node.md).
-- 

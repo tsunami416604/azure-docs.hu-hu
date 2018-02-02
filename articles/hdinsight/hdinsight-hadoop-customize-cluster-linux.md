@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/06/2017
+ms.date: 01/29/2018
 ms.author: larryfr
-ms.openlocfilehash: 5e4fe189a3fa7269a271b422116dc6838e7ef3cb
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 42bf760b793f3c035a766c4d39524e03c1cbe6ee
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>A Parancsfájlműveletek Linux-alapú HDInsight-fürtök testreszabása
 
@@ -55,7 +55,7 @@ A hozzáférés-kezelés használatával kapcsolatos további információk a k�
 
 ## <a name="understanding-script-actions"></a>A Parancsfájlműveletek ismertetése
 
-A parancsfájlművelet Bash parancsfájlok mutató URI-t biztosító, de a paraméterek. A parancsfájl a HDInsight-fürt csomópontján fut. Jellemzőit és Parancsfájlműveletek jellemzői a következők:
+A parancsfájlművelet egy HDInsight-fürt csomópontjain futó Bash parancsfájl. Jellemzőit és Parancsfájlműveletek jellemzői a következők:
 
 * A HDInsight-fürt által elérhető URI kell tárolni. A lehetséges tárolási helyek a következők:
 
@@ -79,9 +79,7 @@ A parancsfájlművelet Bash parancsfájlok mutató URI-t biztosító, de a param
 
 * Lehet **megőrzött** vagy **alkalmi**.
 
-    **Megőrzött** parancsfájlok munkavégző csomópontokhoz felvenni a fürtbe, a parancsfájl futtatása után is vonatkozik. Például, amikor a fürt vertikális felskálázásával.
-
-    Egy megőrzött parancsfájl típusú csomópont egy másik, például egy átjárócsomóponttal módosításokat is jelentkezhet.
+    **Megőrzött** parancsfájlok segítségével testre szabhatja a fürthöz műveletek a méretezés során hozzáadott új munkavégző csomópontokhoz. Egy megőrzött parancsfájl is is vonatkozhatnak módosítások típusú csomópont egy másik, például egy átjárócsomópont skálázási műveletek esetén.
 
   > [!IMPORTANT]
   > A megőrzött Parancsfájlműveletek egy egyedi névvel kell rendelkeznie.
@@ -94,30 +92,32 @@ A parancsfájlművelet Bash parancsfájlok mutató URI-t biztosító, de a param
   > Parancsfájlok, amelyek nem sikertelen tárolt, még akkor is, ha kifejezetten Megadja, hogy azok kell lennie.
 
 * Fogadhat **paraméterek** használt a parancsfájl végrehajtása közben.
+
 * Futtassa a **gyökér szintű jogosultságokkal** a fürtcsomópontokon.
-* Keresztül is használható a **Azure-portálon**, **Azure PowerShell**, **Azure CLI**, vagy **HDInsight .NET SDK**
+
+* Keresztül is használható a **Azure-portálon**, **Azure PowerShell**, **Azure CLI 1.0-s verziójú**, vagy **HDInsight .NET SDK**
 
 A fürt megtart lett futtatott összes parancsfájl előzményeit. Az előzmények akkor hasznos, ha a parancsfájl-azonosító található a(z) előléptetés vagy a lefokozás műveletek kell.
 
 > [!IMPORTANT]
 > Nincs automatikus mód egy parancsfájl művelet által végrehajtott módosítások visszavonásához. Vagy manuálisan a változtatásokat, vagy adjon meg egy parancsfájlt, amely visszavonja őket.
 
-
 ### <a name="script-action-in-the-cluster-creation-process"></a>A Fürtlétrehozási folyamat parancsfájlművelet
 
 Fürt létrehozása során használt Parancsfájlműveletek némileg eltérnek a műveletek egy meglévő fürthöz futtatott parancsfájl:
 
 * A parancsfájl **automatikusan megőrzött**.
+
 * A **hiba** a parancsfájl azt okozhatja, a Fürtlétrehozási folyamat sikertelen lesz.
 
 A következő ábra szemlélteti a parancsfájl művelet végrehajtásakor a létrehozási folyamat során:
 
 ![A HDInsight fürt testreszabási és fürt létrehozása során szakaszai][img-hdi-cluster-states]
 
-A parancsprogram lefut, amíg a HDInsight konfigurálása. Ebben a szakaszban a parancsfájl a megadott csomópontok a fürt párhuzamosan fut, és a csomópontokon legfelső szintű jogosultságokkal fut.
+A parancsprogram lefut, amíg a HDInsight konfigurálása. A parancsfájl a megadott csomópontok a fürt párhuzamosan fut, és a legfelső szintű jogosultságokkal fut, a csomópontok.
 
 > [!NOTE]
-> Mivel a parancsfájl a fürtcsomópontokon gyökér szintű jogosultságokkal fut, mint például a szolgáltatások, beleértve a Hadoop-kapcsolatos szolgáltatások indítása és leállítása műveleteket hajthat végre. Ha leállítja a szolgáltatások, bizonyosodjon meg, hogy az Ambari szolgáltatás és más Hadoop kapcsolatos szolgáltatások működik, és mielőtt a parancsfájl befejezése után történik. Ezek a szolgáltatások szükségesek sikeresen határozza meg a rendszerállapot és a fürt állapotának azt létrehozása közben.
+> Például a szolgáltatások, beleértve a Hadoop-kapcsolatos szolgáltatások indítása és leállítása műveleteket hajthat végre. Ha leállítja a szolgáltatások, győződjön meg róla, hogy az Ambari szolgáltatás és más Hadoop kapcsolatos szolgáltatások futtatása előtt a parancsfájl befejeződik. Ezek a szolgáltatások szükségesek sikeresen határozza meg a rendszerállapot és a fürt állapotának azt létrehozása közben.
 
 
 Fürt létrehozása során is használhat több Parancsfájlműveletek egyszerre. A parancsfájlokat a megadott volt sorrendben hívják.
@@ -130,12 +130,12 @@ Fürt létrehozása során is használhat több Parancsfájlműveletek egyszerre
 
 ### <a name="script-action-on-a-running-cluster"></a>Egy futó fürtön parancsfájlművelet
 
-Egy hiba történt egy parancsfájlt a fürt létrehozása során használt műveletek egy már futó fürtön futtatott parancsfájl eltérően automatikusan indítják el a fürt módosítása sikertelen állapotba. Miután befejeződött egy parancsfájl, a fürt "fut" állapotba kell visszaadnia.
+Egy hiba történt a parancsfájl lefutott egy már fut a fürt automatikusan indítják el a fürt módosítása sikertelen állapotba. Miután befejeződött egy parancsfájl, a fürt "fut" állapotba kell visszaadnia.
 
 > [!IMPORTANT]
 > Akkor is, ha a fürt "fut" állapotú, előfordulhat, hogy a sikertelen parancsfájlt megszakítják dolgot. Például egy parancsfájlt a fürt számára szükséges fájlok sikerült törölni.
 >
-> Parancsfájlok műveletek futtassa legfelső szintű jogosultságokkal, ezért meg kell győződnie arról, hogy tudomásul veszi a parancsfájl funkciója mielőtt telepítené azt a fürtöt.
+> Parancsfájlok műveletek legfelső szintű jogosultságokkal futtassa. Győződjön meg arról, hogy tudomásul veszi a parancsfájl funkciója mielőtt telepítené azt a fürtöt.
 
 Egy parancsfájl fürtre alkalmazásakor a fürt állapota megosztottról **futtató** való **elfogadott**, majd **HDInsight konfigurációs**, és végül biztonsági  **Futó** sikeres parancsfájlok. A parancsfájl állapota a parancsfájlművelet előzményeinek van bejelentkezve, és ezen információk használatával határozza meg, hogy a parancsfájl sikeres vagy sikertelen volt. Például a `Get-AzureRmHDInsightScriptActionHistory` PowerShell-parancsmag segítségével egy parancsfájl állapotának megtekintése. Olyan információkat ad vissza az alábbihoz hasonló:
 
@@ -144,7 +144,7 @@ Egy parancsfájl fürtre alkalmazásakor a fürt állapota megosztottról **futt
     EndTime           : 8/14/2017 7:41:05 PM
     Status            : Succeeded
 
-> [!NOTE]
+> [!IMPORTANT]
 > A fürt felhasználói (rendszergazda) jelszavát megváltoztatta a fürt létrehozása után, ha parancsfájlt a fürt lefutott műveletek sikertelenek lehetnek. Ha bármely a megőrzött Parancsfájlműveletek adott cél munkavégző csomópontokhoz, ezek a parancsfájlok nem tud a fürt méretezni.
 
 ## <a name="example-script-action-scripts"></a>Példa parancsfájl művelet parancsfájlok
@@ -153,20 +153,20 @@ Parancsfájl művelet parancsfájlok segítségével az alábbi segédprogramoka
 
 * Azure Portal
 * Azure PowerShell
-* Azure CLI
+* Azure CLI v1.0
 * HDInsight .NET SDK
 
 HDInsight parancsprogramokat a HDInsight-fürtök az alábbi összetevők telepítése itt:
 
-| Név | Szkript |
+| Name (Név) | Szkript |
 | --- | --- |
-| **Egy Azure Storage-fiók hozzáadása** |https://hdiconfigactions.BLOB.Core.Windows.NET/linuxaddstorageaccountv01/Add-Storage-Account-v01.SH. Lásd: [további tárhelyet adhat a HDInsight-fürtök](hdinsight-hadoop-add-storage.md). |
-| **Hue telepítése** |https://hdiconfigactions.BLOB.Core.Windows.NET/linuxhueconfigactionv02/Install-hue-uber-v02.SH. Lásd: [telepítése és használata a HDInsight Hue-fürtök](hdinsight-hadoop-hue-linux.md). |
-| **Presto telepítése** |https://RAW.githubusercontent.com/hdinsight/presto-hdinsight/Master/installpresto.SH. Lásd: [telepítése és használata Presto a HDInsight-fürtök](hdinsight-hadoop-install-presto.md). |
-| **Solr telepítése** |https://hdiconfigactions.BLOB.Core.Windows.NET/linuxsolrconfigactionv01/solr-Installer-v01.SH. Lásd: [telepítése és használata Solr a HDInsight-fürtök](hdinsight-hadoop-solr-install-linux.md). |
-| **Giraph telepítése** |https://hdiconfigactions.BLOB.Core.Windows.NET/linuxgiraphconfigactionv01/giraph-Installer-v01.SH. Lásd: [telepítése és használata Giraph a HDInsight-fürtök](hdinsight-hadoop-giraph-install-linux.md). |
-| **Hive-könyvtárakhoz előzetes betöltése** |https://hdiconfigactions.BLOB.Core.Windows.NET/linuxsetupcustomhivelibsv01/Setup-customhivelibs-v01.SH. Lásd: [kódtárak hozzáadása Hive HDInsight-fürtök](hdinsight-hadoop-add-hive-libraries.md). |
-| **Mono telepítése vagy frissítése** | https://hdiconfigactions.BLOB.Core.Windows.NET/Install-mono/Install-mono.bash. Lásd: [telepítése vagy frissítése a HDInsight monó](hdinsight-hadoop-install-mono.md). |
+| **Egy Azure Storage-fiók hozzáadása** |https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh. Lásd: [további tárhelyet adhat a HDInsight-fürtök](hdinsight-hadoop-add-storage.md). |
+| **Hue telepítése** |https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh. Lásd: [telepítése és használata a HDInsight Hue-fürtök](hdinsight-hadoop-hue-linux.md). |
+| **Presto telepítése** |https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh. Lásd: [telepítése és használata Presto a HDInsight-fürtök](hdinsight-hadoop-install-presto.md). |
+| **Solr telepítése** |https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh. Lásd: [telepítése és használata Solr a HDInsight-fürtök](hdinsight-hadoop-solr-install-linux.md). |
+| **Giraph telepítése** |https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh. Lásd: [telepítése és használata Giraph a HDInsight-fürtök](hdinsight-hadoop-giraph-install-linux.md). |
+| **Hive-könyvtárakhoz előzetes betöltése** |https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh. Lásd: [kódtárak hozzáadása Hive HDInsight-fürtök](hdinsight-hadoop-add-hive-libraries.md). |
+| **Mono telepítése vagy frissítése** | https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash. Lásd: [telepítése vagy frissítése a HDInsight monó](hdinsight-hadoop-install-mono.md). |
 
 ## <a name="use-a-script-action-during-cluster-creation"></a>Egy parancsfájlművelettel fürt létrehozása során
 
@@ -192,10 +192,10 @@ Ez a szakasz a különböző módszereket, Parancsfájlműveletek létrehozása 
 
     | Tulajdonság | Érték |
     | --- | --- |
-    | Válassza ki a parancsprogramot | A saját parancsfájl használatához válassza __egyéni__. Ellenkező esetben válasszon egyet a megadott parancsprogramok. |
-    | Név |Adja meg a parancsfájlművelet nevét. |
-    | Bash parancsfájlok URI |Adja meg az URI-t a parancsfájlt, amelyet a fürt testreszabásához. |
-    | HEAD/munkavégző/Zookeeper |Adja meg a csomópontok (**Head**, **munkavégző**, vagy **ZooKeeper**) a a testreszabási parancsfájl futtatásához. |
+    | Szkript kiválasztása | A saját parancsfájl használatához válassza __egyéni__. Ellenkező esetben válasszon egyet a megadott parancsprogramok. |
+    | Name (Név) |Adja meg a parancsfájlművelet nevét. |
+    | Bash parancsfájl URI azonosítója |Adja meg a parancsfájl URI. |
+    | HEAD/munkavégző/Zookeeper |Adja meg a csomópontok (**Head**, **munkavégző**, vagy **ZooKeeper**) a parancsfájl futtatásához. |
     | Paraméterek |Adja meg a paraméterek, ha a parancsfájl által igényelt. |
 
     Használja a __parancsfájlműveletet__ bejegyzést, hogy a parancsfájl skálázás műveletek során van alkalmazva.
@@ -269,10 +269,10 @@ Ebben a szakaszban megtudhatja, hogyan Parancsfájlműveletek alkalmazandó műk
 
     | Tulajdonság | Érték |
     | --- | --- |
-    | Válassza ki a parancsprogramot | A saját parancsfájl használatához válassza __egyéni__. Ellenkező esetben válassza ki a megadott parancsfájlt. |
-    | Név |Adja meg a parancsfájlművelet nevét. |
-    | Bash parancsfájlok URI |Adja meg az URI-t a parancsfájlt, amelyet a fürt testreszabásához. |
-    | HEAD/munkavégző/Zookeeper |Adja meg a csomópontok (**Head**, **munkavégző**, vagy **ZooKeeper**) a a testreszabási parancsfájl futtatásához. |
+    | Szkript kiválasztása | A saját parancsfájl használatához válassza __egyéni__. Ellenkező esetben válassza ki a megadott parancsfájlt. |
+    | Name (Név) |Adja meg a parancsfájlművelet nevét. |
+    | Bash parancsfájl URI azonosítója |Adja meg a parancsfájl URI. |
+    | HEAD/munkavégző/Zookeeper |Adja meg a csomópontok (**Head**, **munkavégző**, vagy **ZooKeeper**) a parancsfájl futtatásához. |
     | Paraméterek |Adja meg a paraméterek, ha a parancsfájl által igényelt. |
 
     Használja a __parancsfájlműveletet__ bejegyzést győződjön meg arról, hogy a parancsfájl skálázás műveletek során alkalmazzák.
@@ -298,9 +298,10 @@ Amint a művelet befejeződik, az alábbihoz hasonló információkat kapni:
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-the-azure-cli"></a>Egy működő fürthöz az Azure parancssori felületen a parancsfájlművelet alkalmazása
 
-A folytatás előtt győződjön meg arról, hogy telepítette és konfigurálta az Azure parancssori felület. További információkért lásd: [az Azure parancssori felület telepítése](../cli-install-nodejs.md).
+A folytatás előtt győződjön meg arról, hogy telepítette és konfigurálta az Azure parancssori felület. További információkért lásd: [telepítse az Azure CLI 1.0](../cli-install-nodejs.md).
 
-[!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
+> [!IMPORTANT]
+> HDInsight az Azure CLI 1.0 van szükség. Jelenleg Azure CLI 2.0 nem biztosít a HDInsight használatához parancsok.
 
 1. Váltson Azure Resource Manager módra, használja a következő parancsot a parancssorból:
 
@@ -458,7 +459,7 @@ Ha a fürt létrehozása a parancsfájl hibája miatt nem sikerül, a naplók a 
 
     * **Zookeeper csomópont** - `<uniqueidentifier>AmbariDb-zk0-<generated_value>.cloudapp.net`
 
-* Stdout és az stderr a megfelelő fogadó feltöltése a tárfiókba. Van egy **kimeneti -\*.txt** és **hibák -\*.txt** parancsfájl műveleteket. A kimeneti-*.txt fájlt a gazdagépen futó kapott a parancsfájl URI információt tartalmaz. Példa:
+* Stdout és az stderr a megfelelő fogadó feltöltése a tárfiókba. Van egy **kimeneti -\*.txt** és **hibák -\*.txt** parancsfájl műveleteket. A kimeneti-*.txt fájlt a gazdagépen futó kapott a parancsfájl URI információt tartalmaz. A következő szöveg ezt az információt példája:
 
         'Start downloading script locally: ', u'https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh'
 
@@ -510,7 +511,7 @@ Ez alól két kivétel van:
 
     Nem lehet műveleteket új parancsfájl lefutott, meglévő parancsfájlokban egymással ütköző parancsfájl név miatt ezen a fürtön. Fürt elérhető parancsfájl nevét kell létrehozni minden egyedi lehet. Meglévő parancsfájlok megbízhatóságához ablakhoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Parancsfájl művelet-parancsfájlok fejlesztése a HDInsight](hdinsight-hadoop-script-actions-linux.md)
 * [Telepítheti és használhatja a HDInsight-fürtök Solr](hdinsight-hadoop-solr-install-linux.md)

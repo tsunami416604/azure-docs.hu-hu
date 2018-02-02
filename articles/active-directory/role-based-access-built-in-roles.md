@@ -3,24 +3,23 @@ title: "Műveletek és NotActions - Azure szerepköralapú hozzáférés-vezérl
 description: "Ez a témakör ismerteti a beépített szerepkörök szerepköralapú hozzáférés-vezérlés (RBAC). A szerepkörök folyamatosan kerülnek, ezért ellenőrizze a dokumentációt frissesség."
 services: active-directory
 documentationcenter: 
-author: andredm7
+author: curtand
 manager: mtillman
 editor: 
-ms.assetid: b547c5a5-2da2-4372-9938-481cb962d2d6
 ms.service: active-directory
-ms.devlang: na
+ms.devlang: 
 ms.topic: article
-ms.tgt_pltfrm: na
+ms.tgt_pltfrm: 
 ms.workload: identity
-ms.date: 06/28/2017
-ms.author: andredm
-ms.reviewer: 
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3e7c563547f04a16a1059ed709d9ded25d60792f
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.date: 01/30/2018
+ms.author: curtand
+ms.reviewer: rqureshi
+ms.custom: it-pro
+ms.openlocfilehash: 43a958129b3c86f5e7a596b992d793a600c46dfd
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>Az Azure szerepköralapú hozzáférés-vezérlés beépített szerepkörök
 Azure szerepköralapú hozzáférés-vezérlés (RBAC) tartalmaz a következő beépített szerepkörök, felhasználók, csoportok és szolgáltatások rendelhető. A beépített szerepkörök definíciója nem módosítható. Azonban létrehozhat [egyéni szerepkörök az Azure RBAC](role-based-access-control-custom-roles.md) a szervezet igényeinek megfelelően.
@@ -68,7 +67,9 @@ Ez a cikk csak a különböző szerepkörök ma foglalkozik. Amikor szerepkör h
 | [Redis gyorsítótár közreműködő](#redis-cache-contributor) |Kezelheti a Redis gyorsítótár |
 | [A Feladatütemező feladat gyűjtemények közreműködő](#scheduler-job-collections-contributor) |Kezelheti a scheduler feladatgyűjteményei |
 | [Keresési szolgáltatás közreműködő](#search-service-contributor) |Kezelheti a keresési szolgáltatások |
-| [Biztonsági kezelője](#security-manager) |Kezelheti a biztonsági összetevők, a biztonsági házirendek és a virtuális gépek |
+| [Biztonsági rendszergazda](#security-administrator) | A csak a Security Center: is megtekintheti a biztonsági házirendek, biztonsági állapotok megtekintéséhez, szerkesztheti a biztonsági házirendek, a riasztások megtekintése és a javaslatok, hagyja figyelmen kívül a riasztások és javaslatok |
+| [Biztonsági kezelője](#security-manager) | Kezelheti a biztonsági összetevők, a biztonsági házirendek és a virtuális gépek |
+| [Biztonsági olvasó](#security-reader) | A csak a Security Center: javaslatokra és riasztásokra, biztonsági házirendeket, biztonsági állapotok megtekintéséhez, de nem módosíthatnak semmit nézet megtekintéséhez |
 | [Webhely-helyreállítási közreműködő](#site-recovery-contributor) | Kezelheti a Site Recovery a Recovery Services-tároló |
 | [Webhely-helyreállítási operátor](#site-recovery-operator) | Kezelheti a feladatátvétel és a feladat-visszavételi művelet Site Recovery Recovery Services-tároló |
 | [Webhely-helyreállítási olvasó](#site-recovery-reader) | Megtekintheti a Site Recovery összes felügyeleti művelet  |
@@ -506,21 +507,50 @@ Kezelheti a keresési szolgáltatások
 | Microsoft.Search/searchServices/* |Hozzon létre és keresési szolgáltatások kezelése |
 | Microsoft.Support/* |Hozzon létre és támogatási jegyek kezelése |
 
+### <a name="security-administrator"></a>Biztonsági rendszergazda
+A csak a Security Center: is megtekintheti a biztonsági házirendek, biztonsági állapotok megtekintéséhez, szerkesztheti a biztonsági házirendek, a riasztások megtekintése és a javaslatok, hagyja figyelmen kívül a riasztások és javaslatok
+
+| **Műveletek** |  |
+| --- | --- |
+| Microsoft.Authorization/*/read |Olvassa el szerepköröket és szerepkör-hozzárendelések |
+| Microsoft.Authorization/policyAssignments/* | Hozzon létre és kezelheti a házirend-hozzárendelések |
+| Microsoft.Authorization/policySetDefinitions/* | Létrehozásához és kezeléséhez házirend beállítása |
+| Microsoft.Authorization/policyDefinitions/* | Létrehozásához és kezeléséhez a házirend-definíciók száma |
+| Microsoft.Insights/alertRules/* | Hozzon létre és riasztási szabályok kezelése |
+| Microsoft.operationalInsights/workspaces/*/read | Log Analytics-adatok megtekintése |
+| Microsoft.Resources/deployments/* |Hozzon létre és erőforrás-csoport központi telepítések felügyeletéhez szükséges |
+| Microsoft.Resources/subscriptions/resourceGroups/read |Olvassa el az erőforráscsoport-sablonok |
+| Microsoft.Security/*/read | Olvasási biztonsági összetevőinek és házirendek |
+| Microsoft.Support/* |Hozzon létre és támogatási jegyek kezelése |
+
 ### <a name="security-manager"></a>Biztonságkezelő
 Kezelheti a biztonsági összetevők, a biztonsági házirendek és a virtuális gépek
 
 | **Műveletek** |  |
 | --- | --- |
-| Microsoft.Authorization/*/read |Olvassa el szerepköröket és hozzárendelések szerepkör |
-| Microsoft.ClassicCompute/*/read |Olvassa el a klasszikus virtuális gépek számítási konfigurációs adatait |
-| Microsoft.ClassicCompute/virtualMachines/*/write |A virtuális gépek konfigurációs írása |
+| Microsoft.Authorization/*/read |Olvassa el szerepköröket és szerepkör-hozzárendelések |
+| Microsoft.ClassicCompute/*/read |Olvassa el a konfigurációs adatok klasszikus virtuális gépek |
+| Microsoft.ClassicCompute/virtualMachines/*/write |A klasszikus virtuális gépek konfigurációs írása |
 | Microsoft.ClassicNetwork/*/read |Olvassa el hagyományos hálózati konfigurációs adatait |
-| Microsoft.Insights/alertRules/* |Hozzon létre és riasztási szabályok kezelése |
+| Microsoft.Insights/alertRules/* | Hozzon létre és riasztási szabályok kezelése |
 | Microsoft.ResourceHealth/availabilityStatuses/read |Az erőforrások állapotának olvasása |
 | Microsoft.Resources/deployments/* |Hozzon létre és erőforrás-csoport központi telepítések felügyeletéhez szükséges |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Olvassa el az erőforráscsoport-sablonok |
 | Microsoft.Security/* |Biztonsági összetevők és házirendek létrehozása és kezelése |
 | Microsoft.Support/* |Hozzon létre és támogatási jegyek kezelése |
+
+### <a name="security-reader"></a>Biztonsági olvasó
+A csak a Security Center: javaslatokra és riasztásokra, biztonsági házirendeket, biztonsági állapotok megtekintéséhez, de nem módosíthatnak semmit nézet megtekintéséhez
+
+| **Műveletek** |  |
+| --- | --- |
+| Microsoft.Authorization/*/read |Olvassa el szerepköröket és szerepkör-hozzárendelések |
+| Microsoft.Insights/alertRules/* | Hozzon létre és riasztási szabályok kezelése |
+| Microsoft.operationalInsights/workspaces/*/read | Log Analytics-adatok megtekintése |
+| Microsoft.Resources/subscriptions/resourceGroups/read |Olvassa el az erőforráscsoport-sablonok |
+| Microsoft.Security/*/read | Olvasási biztonsági összetevőinek és házirendek |
+| Microsoft.Support/* |Hozzon létre és támogatási jegyek kezelése |
+| Microsoft.Resources/deployments/* |Hozzon létre és erőforrás-csoport központi telepítések felügyeletéhez szükséges |
 
 ### <a name="site-recovery-contributor"></a>Site Recovery-közreműködő
 Összes helyreállítás felügyeleti műveletek, kivéve a Recovery Services-tároló létrehozása és hozzárendelése hozzáférési jogosultsága ahhoz, hogy más felhasználók is kezelése
@@ -872,3 +902,4 @@ Kezelheti a webhely, de nem a webes terveket, amelyhez csatlakoznak
 * [Egyéni szerepkörök az Azure RBAC](role-based-access-control-custom-roles.md): megtudhatja, hogyan hozzon létre egyéni szerepkörök az access igényeihez.
 * [Access módosítási előzményeit jelentés létrehozása](role-based-access-control-access-change-history-report.md): nyomon követjük, hogy az RBAC más szerepkörök hozzárendeléséről.
 * [Szerepköralapú hozzáférés-vezérlés hibaelhárítási](role-based-access-control-troubleshooting.md): kapcsolatos gyakori hibák elhárítására vonatkozó javaslatok beolvasása.
+* [Engedélyek az Azure Security Centerben](../security-center/security-center-permissions.md)

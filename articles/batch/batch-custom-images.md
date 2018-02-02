@@ -2,17 +2,17 @@
 title: "Az egyéni lemezképek Azure Batch készletek kiépítése |} Microsoft Docs"
 description: "Létrehozhat egy kötegelt kiépítését egyéni lemezképéről készlet számítási csomópontokra, amelyeket a szoftver- és az alkalmazáshoz szükséges adatokat tartalmazzák. Egyéni lemezkép egy hatékony módját a számítási csomópontok a Batch-alkalmazások futtatásához."
 services: batch
-author: v-dotren
-manager: timlt
+author: dlepow
+manager: jeconnoc
 ms.service: batch
 ms.topic: article
 ms.date: 10/11/2017
-ms.author: v-dotren
-ms.openlocfilehash: d62abd673f89fd51edba721119d1680762a60c76
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.author: danlep
+ms.openlocfilehash: 63a567e9fdfef8dfceb275953cc0ac606355ea30
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="use-a-managed-custom-image-to-create-a-pool-of-virtual-machines"></a>Felügyelt egyéni lemezképet használ a virtuális gépek készlet létrehozása 
 
@@ -93,6 +93,6 @@ Ellenőrizze, hogy egy meglévő készlet egyéni lemezkép alapul, tekintse meg
 
 A készlethez társított összes egyéni lemezképek jelenik meg a készlet **tulajdonságok** ablak.
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Kötegelt, áttekintéséért lásd: [Develop nagyméretű párhuzamos számítási solutions a kötegelt](batch-api-basics.md).

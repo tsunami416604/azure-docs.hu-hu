@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/13/2017
+ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 27b296092335ec5b95e8f259756aaf9572da1c16
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: 37f9da7dcc8dd527fe0bfbf2fbcc40a3ba0e8a1c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-iot-hub-developer-guide"></a>Az Azure IoT Hub fejlesztői útmutató
 
@@ -42,10 +42,10 @@ Az IoT Hub fejlesztői útmutató tartalmazza a következő cikkeket:
   * [Felhő-eszközre küldött üzenetek küldése az IoT-központ][devguide-messages-c2d].
   * [Hozzon létre, és az IoT-központ olvashatja][devguide-format].
 * [Az eszközről tölt fel] [ devguide-upload] ismerteti, hogyan tölthet fájlok az eszközről. A cikk is magában foglalja a tudnivalókat az értesítéseket küldhet a feltöltési folyamat.
-* [Az IoT Hub eszköz identitáskezelést] [ devguide-identities] milyen információkat ismerteti, minden IoT-központ beállításjegyzék identitástárolók, és hogyan elérheti és módosíthatja azt.
+* [Az IoT Hub eszköz identitáskezelést] [ devguide-identities] milyen információkat ismerteti, minden IoT-központ beállításjegyzék identitástárolók. A cikk azt is ismerteti, hogyan elérheti és módosíthatja azt.
 * [Az IoT-központ való hozzáférés szabályozása] [ devguide-security] a biztonsági modell segítségével hozzáférést biztosíthat az IoT-központ funkciót mindkét eszközökhöz és összetevők a felhőalapú ismerteti. A cikk tokeneket és X.509-tanúsítványokat, és az engedélyek megadásához részleteit használatával kapcsolatos információt tartalmaz.
-* [Eszköz twins segítségével szinkronizálja az állapotot és konfigurációk] [ devguide-device-twins] ismerteti a *eszköz iker* koncepciót és a funkciókat, például az eszköz szinkronizálása az eszköz iker teszi elérhetővé. A cikk egy eszköz iker tárolt adatokra vonatkozó információt tartalmaz.
-* [Az eszközön közvetlen metódus] [ devguide-directmethods] az életciklus közvetlen módszer, információ a metódusok a háttér-alkalmazás egy eszközön, és a közvetlen módszer az eszköz kezelését ismerteti.
+* [Eszköz twins segítségével szinkronizálja az állapotot és konfigurációk] [ devguide-device-twins] ismerteti a *eszköz iker* fogalom. A cikk is descibes a funkciók eszköz twins teszi közzé, például az eszköz a két eszköz szinkronizálása. A cikk egy eszköz iker tárolt adatokra vonatkozó információt tartalmaz.
+* [Az eszközön közvetlen metódus] [ devguide-directmethods] közvetlen módszer az életciklus ismerteti. A cikk ismerteti a háttér-alkalmazás egy eszközön metódusok és kezelni a közvetlen módszer az eszközön.
 * [Több eszközön feladatok ütemezése] [ devguide-jobs] ismerteti, hogyan több eszközön futó feladatot is ütemezheti. A cikk ismerteti, hogyan, feladatokat végrehajtó egy közvetlen módszer, egy eszközt egy eszközt a két frissítési feladatok küldéséhez. Emellett bemutatja, hogyan lehet a feladat állapotának lekérdezéséhez.
 * [Olyan kommunikációs protokollt hivatkozhat - a] [ devguide-protocol] írja le a kommunikációs protokollt, hogy az IoT-Központ támogatja az eszközök közötti kommunikáció, és nyitva kell lennie portokat sorolja fel.
 * [Referencia - IoT-központok végpontjai] [ devguide-endpoints] ismerteti a különböző végpontok, amelyek minden egyes IoT-központ elérhetővé teszi a futásidejű és felügyeleti műveletek. A cikk is ismerteti, hogyan hozhat létre további végpontokat az IoT hub, és hogyan mező átjáró segítségével engedélyezze a kapcsolatot a nem szabványos helyzetekben az IoT-központok végpontjai.

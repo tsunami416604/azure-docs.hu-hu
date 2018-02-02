@@ -12,15 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2017
+ms.date: 01/29/2018
 ms.author: anwestg
-ms.openlocfilehash: fd2d355b2556faddb06acf2998b54ffcc9aa7919
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: f3f0add4cf48ebcb4235fb05aa8bfa0b5365848c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="app-service-on-azure-stack-overview"></a>Az Azure Stack App Service szolgáltatásának áttekintése
+*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
 Az Azure App Service Azure veremben egy Azure verem használható Microsoft Azure platform,--szolgáltatás (PaaS) elérhető. A szolgáltatás lehetővé teszi, hogy az ügyfelek - belső vagy külső – hozzon létre web API és az Azure Functions bármilyen platformra vagy eszközre az alkalmazások. Ezek az alkalmazások integrálása a helyszíni alkalmazások, és az üzleti folyamatok automatizálása. Az Azure verem a felhő üzemeltetői is futtathatók alkalmazások vevői teljes körűen felügyelt virtuális gépek (VM), az általuk választott megosztott Virtuálisgép-erőforrások vagy dedikált virtuális gépek.
 
@@ -59,7 +60,7 @@ Nincsenek megosztott és dedikált munkavállalók Azure-ban. A megosztott worke
 
 A verem Azure App Service használ ugyanabban a szövegben, hogy Azure App Service által használt, módon a háttérrendszer működésében igaz. Néhány funkció le van tiltva, és nem működési Azure-készletben. Az Azure-specifikus elvárásainak, vagy azokat a funkciókat, hogy még nem érhetők el a Azure verem.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 
 - [Az App Service Azure veremben megkezdése előtt](azure-stack-app-service-before-you-get-started.md)

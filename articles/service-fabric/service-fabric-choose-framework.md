@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 237b8396b56fdec86cc005c121646556825d8e98
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: a68db62f87bca5c641db310823588df6fb74f75e
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="service-fabric-programming-model-overview"></a>A Service Fabric programozási modell áttekintése
 A Service Fabric és a szolgáltatások kezeléséhez több lehetőséget is kínál. Szolgáltatások használhat a Service Fabric API-k a platform szolgáltatásai és alkalmazás-keretrendszerek számára teljes körű kihasználása érdekében. Szolgáltatások bármilyen nyelven vagy egyszerűen csak a Service Fabric fürt által futtatott tároló futó lefordított végrehajtható programok is lehet.
@@ -45,7 +45,7 @@ Megbízható szolgáltatásokat is lehet állapotalapú, érhető el a Service F
 ## <a name="aspnet-core"></a>ASP.NET-mag
 Az ASP.NET Core egy új nyílt forráskódú és platformfüggetlen keretrendszer modern felhőalapú internetre kapcsolódó alkalmazások, például webalkalmazások, az IoT-alkalmazásokhoz és a mobil háttérkiszolgálókon. Service Fabric ASP.NET Core integrálható, így írhat az ASP.NET Core mind az állapotmentes és állapotalapú alkalmazások megbízható gyűjtemények, valamint a Service Fabric speciális vezénylési képességek előnyeit.
 
-[További tudnivalók az ASP.NET Core a Service Fabric](service-fabric-reliable-services-communication-aspnetcore.md) vagy Kezdésként [az első ASP.NET Core Service Fabric-alkalmazás írása](service-fabric-add-a-web-frontend.md).
+[További tudnivalók az ASP.NET Core a Service Fabric](service-fabric-reliable-services-communication-aspnetcore.md) vagy Kezdésként [az első ASP.NET Core Service Fabric-alkalmazás írása](service-fabric-reliable-services-communication-aspnetcore.md).
 
 ## <a name="reliable-actors"></a>Reliable Actors
 Reliable Services platformra épül, a megbízható szereplő keretrendszer egy alkalmazás-keretrendszer, amely a virtuális szereplő mintában szereplő kialakítási minta alapján. A megbízható szereplő keretrendszer a számítási műveletek és állapot független egység szereplője nevű egyszálas végrehajtási használ. A megbízható szereplő keretrendszer szereplője és előre beállított állapot megőrzését és kibővített konfigurációk beépített kommunikációt biztosít.
@@ -55,9 +55,9 @@ Mivel a Reliable Actors magát a Reliable Services épülő alkalmazás-keretren
 [További tudnivalók a Reliable Actors](service-fabric-reliable-actors-introduction.md) vagy Kezdésként [az első megbízható szereplő szolgáltatás írása](service-fabric-reliable-actors-get-started.md)
 
 
-[ASP.NET Core segítségével egy előtér-szolgáltatás létrehozása](service-fabric-add-a-web-frontend.md)
+[ASP.NET Core segítségével egy előtér-szolgáltatás létrehozása](service-fabric-reliable-services-communication-aspnetcore.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [A Service Fabric és a tárolók – áttekintés](service-fabric-containers-overview.md)
 
 [Megbízható szolgáltatások – áttekintés](service-fabric-reliable-services-introduction.md)

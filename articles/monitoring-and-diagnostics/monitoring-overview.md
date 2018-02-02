@@ -1,7 +1,7 @@
 ---
-title: "Figyelés a Microsoft Azure |} Microsoft Docs"
-description: "Ha semmit, a Microsoft Azure-ban figyelni kívánt választási lehetőségek. A figyelő az Azure, az Application Insights és Naplóelemzési"
-author: rboucher
+title: "Azure-alkalmazások és erőforrások figyelése |} Microsoft Docs"
+description: "A különböző Microsoft szolgáltatásokat és funkciókat, amelyek a teljes felügyeleti stratégia az Azure-szolgáltatások és alkalmazások áttekintése."
+author: robb
 manager: carmonm
 editor: 
 services: monitoring-and-diagnostics
@@ -12,87 +12,105 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2017
-ms.author: robb
-ms.openlocfilehash: c34211e0c55c10defaa32f1e0a2195514ff3ae5f
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.date: 01/30/2018
+ms.author: robb,bwren
+ms.openlocfilehash: ffd9a6f75a549b246a04adc5480e988b1622c5ca
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="overview-of-monitoring-in-microsoft-azure"></a>A figyelés a Microsoft Azure-ban – áttekintés
-Ez a cikk áttekintést nyújt az eszközök és a szolgáltatások holistically figyelése a Microsoft Azure részt. Ez a kategória:
-- Azure-infrastruktúra és az alkalmazások figyeléséhez használt Azure-szolgáltatások
-- A figyelő hibrid és az-Azure infrastruktúra és az alkalmazások Azure-szolgáltatások használata
-- Azure-infrastruktúra és az alkalmazások figyeléséhez használt-Azure szolgáltatások
+# <a name="monitoring-azure-applications-and-resources"></a>Azure-alkalmazások és erőforrások figyelése
 
-Ez a cikk ismerteti a különböző termékek és szolgáltatások érhető el, és hogyan működnek együtt. Ez segít annak meghatározására, hogy mely eszközök legmegfelelőbb meg, milyen esetekben.  
+Figyelési összegyűjtése és annak meghatározásához, a teljesítmény, állapotának és rendelkezésre állását, valamint az üzleti alkalmazás attól függ, az erőforrások elemzéséhez. Egy hatékony felügyeleti stratégia segítenek megérteni a különböző összetevőket az alkalmazás és a hasznos üzemidő növeléséhez a proaktív értesítés, kritikus fontosságú problémáit, hogy a megoldásuk mielőtt azok veszélyeztetnék részletes működését.
 
-## <a name="why-use-azures-monitoring-services"></a>Miért érdemes az Azure figyelési szolgáltatásokat használni?
+Azure több szolgáltatást, amely külön-külön végrehajtani egy adott szerepkör vagy a feladatot a figyelés munkaterületen, és együttesen hoznak létre működő gyűjtése, elemzése és az alkalmazás és az alapjául szolgáló Azure-erőforrások telemetriai ható átfogó megoldást tartalmaz támogató őket.  Ezek is működnek, így biztosíthatja a figyelési környezet hibrid fontos a helyi erőforrások figyelése.   Az eszközök és a rendelkezésre álló adatok ismertetése első lépése az alkalmazás teljes felügyeleti stratégia kidolgozásában. 
 
-A cloud app teljesítményével kapcsolatos problémákat hatással lehet az üzleti. A több összekapcsolt összetevőkkel és gyakori kiadásokban degradations bármikor fordulhat elő. És ha az alkalmazást, a felhasználók általában felderítése a tesztjei során nem talált problémákat. Meg kell ezekről a problémákról értesülnek azonnal, eszközöket, és diagnosztizálására és a problémák elhárításához. Ezenkívül problémák az alkalmazás oka lehet az alkalmazás mögötti infrastruktúra, amely ezeket az alkalmazásokat futtatja, így az alkalmazás és az infrastruktúra átfogó képet, akkor az az Azure-alapú környezetben figyelés kulcs. A Microsoft Azure tartománnyal rendelkező eszközök azonosítására és az ilyen problémák megoldásához.
+Az alábbi ábrán látható a különböző összetevőket, amelyek együttműködve biztosítják az Azure-erőforrások figyelése konceptuális ábrázolása.  Ezek leírását a következő szakaszok a részletes műszaki információkra mutató hivatkozásokat tartalmaz.
 
-## <a name="how-do-i-monitor-my-azure-environment"></a>Hogyan figyelhetek az Azure környezetben?
+![Figyelés – áttekintés](media/monitoring-overview/overview.png)
 
-Nincsenek számos eszközt az Azure környezetben a szolgáltatások és az infrastruktúra az alkalmazást az Azure-on futó a figyelésre. Ezek az eszközök együttműködése kínálnak a felhő átfogó figyelést, és adja meg:
+## <a name="basic-monitoring"></a>Alapszintű figyelés
+Alapvető figyelését teszi lehetővé alapvető szükség Azure-erőforrások között.  Ezek a szolgáltatások minimális konfigurációs és gyűjthet mag, hogy a rendszer elkészítéséhez használja a Premium-szolgáltatások figyelése.    
 
--   **Az Azure figyelő** – az Azure-szolgáltatás, amely egy olyan összevont Azure-szolgáltatások összes figyelési adatot folyamatot működik. Metrikák és az Azure-infrastruktúra és használ az Azure szolgáltatások működését leíró események biztosít hozzáférést. Azure figyelő a figyelési adatok folyamatot az Azure környezetben, és kínál az adatok közvetlenül a Naplóelemzési, valamint a 3. fél eszközök, ahol adatok betekintést és összevonásához a helyszíni vagy más felhőalapú erőforrások adatait.
+### <a name="azure-monitor"></a>Azure Monitor
+[Az Azure figyelő](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md) lehetővé teszi, hogy alapvető figyelési Azure Service gyűjteménye tételével [metrikák](../monitoring-and-diagnostics/monitoring-overview-metrics.md), [tevékenységi naplóit](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md), és [diagnosztikai naplók](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).  Például a tevékenységnapló megtudhatja, amikor új erőforrásokat létrehozni vagy módosítani.  Metrikák érhetők el, amely teljesítménystatisztikáit. Adja meg a különböző erőforrások és még az operációs rendszer egy virtuális gépen belül.  Az adat megtekintéséhez az Azure-portálon szoftverkategóriák valamelyikét, elküldi a Log Analyticshez trendekkel és részletes elemzéséhez vagy proaktív értesítik a kritikus fontosságú problémáit riasztási szabályok létrehozásához.
 
--   **Az Application Insights** – az Azure-szolgáltatás, amely az alkalmazás teljesítményének figyelése és a felhasználó analytics kínál. Azt figyeli, hogy a korábban írt kódot és az alkalmazások telepítése után az Azure, a helyszíni vagy más felhők. Az alkalmazás az Application Insights SDK-val tagolása juthat adatokat, többek között a válaszidők függőségek, a kivétel nyomkövetési adatokat, a hibakeresési pillanatképek és a végrehajtási profilok számos elérésére. Hatékony eszközöket biztosít a telemetriai elemzése közben fejleszt, és az alkalmazás működik. Ez mélyen integrálja a Visual Studio segítségével lehetővé teszik a probléma sor(ok) kód jobbra, hogy kijavíthassuk, és termék vezetőknek, valamint az alkalmazások vevői használati elemzése használatelemzési információkat nyújt.
+### <a name="service-health"></a>Service Health
+Az alkalmazás állapotát az Azure-szolgáltatásokhoz, amelyektől függ támaszkodik.  [Az Azure szolgáltatás állapota](../service-health/service-health-overview.md) azonosítja a probléma merül fel az Azure-szolgáltatásokkal, amelyek hatással lehetnek az alkalmazás- és is segítséget nyújt bármely ütemezés karbantartási tervet.
 
--   **Naplófájl Analytics** – korábbi nevén az OMS szolgáltatáshoz, akkor az Azure-szolgáltatások (az Azure-figyelő) keresztül Azure-szolgáltatások, Azure virtuális gépeken, és a helyszíni vagy más felhőalapú infrastruktúra napló és a metrika adatait ingests és rugalmas naplófájl-keresési kínál és out-az-a Ezek az adatok felett analytics mezőbe. Gazdag eszközök adatelemzéshez forrás lehetővé teszi összetett lekérdezések összes naplófájlt, és a megadott feltételek proaktív riasztást küldhet biztosít.  Még akkor is gyűjtheti egyéni adatok azokat a központi tárházához így lekérdezési és jelenítheti meg azt. Azonnali betekintést nyerhet a biztonsági napló elemzési beépített megoldások előnyeit és az infrastruktúra működését is igénybe vehet.
-
-## <a name="accessing-monitoring-in-the-azure-portal"></a>Az Azure portálon figyelési elérése
-Minden Azure figyelési szolgáltatásokat is elérhető a felhasználói felület egytáblás. Ez a terület elérésével további információkért lásd: [Ismerkedés az Azure-figyelő](monitoring-get-started.md). 
-
-Az adott Azure-erőforrások figyelési funkciók kiemelése ezeket az erőforrásokat, és a figyelési lehetőségek adatlehatolás úgy is elérheti. 
-
-## <a name="examples-of-when-to-use-which-tool"></a>Példák a mely eszközzel 
-
-A következő szakaszok bemutatják, néhány alapvető forgatókönyv, mely eszközök együtt használható. 
-
-### <a name="scenario-1--fix-errors-in-an-azure-application-under-development"></a>A forgatókönyv 1 – javítás hibák fejlesztés alatt az Azure alkalmazásban   
-
-**A legjobb lehetőség, hogy az Application Insights, az Azure-figyelő és a Visual Studio együtt használja**
-
-Azure most kínál a felhőben a Visual Studio hibakereső teljes hatványa. Konfigurálja az Azure figyelő telemetriai adatokat küldhet az Application Insights részére. Visual Studio Application Insights SDK tartalmazza az alkalmazás engedélyezése. Az Application Insights, egyszer használhat az alkalmazás-hozzárendelés vizuálisan felderítésére, mely a futó alkalmazás részei kifogástalan-e. Ezen részein, amelyek nem működik megfelelően hibákat és kivételeket már rendelkezésre állnak feltárási. Az Application Insights a különböző analytics segítségével mélyebben lépjen. Ha nem biztos a hibával kapcsolatos, a probléma további kód és a PIN-kód pontba nyomon követni a Visual Studio hibakereső segítségével. 
-
-További információkért lásd: [webalkalmazások figyelése](../application-insights/app-insights-azure-web-apps.md) , és nézze meg a különböző típusú alkalmazások és nyelvek utasításokat a bal oldali tartalomjegyzék.  
-
-### <a name="scenario-2--debug-an-azure-net-web-application-for-errors-that-only-show-in-production"></a>2 –. forgatókönyv hibakeresése az Azure .NET webalkalmazás, amelyek csak a termelési megjelenítése 
-
-> [!NOTE]
-> Ezek a funkciók még csak előzetes verziójúak. 
-
-**A legjobb lehetőség, hogy használja a Application insights szolgáltatással, és ha lehetséges Visual Studio, a teljes hibakeresés tapasztalhat.**
-
-Az Application Insights pillanatkép hibakereső segítségével az alkalmazás hibakeresését. Egy bizonyos Hibaküszöb éles összetevőkkel esetén a rendszer automatikusan rögzíti az idő "pillanatképek." nevű windows telemetriai A rögzített mérete egy éles felhő biztonságos, mivel már elég kicsi nincs hatása a teljesítményre, de elég jelentős nyomkövetésének engedélyezése.  A rendszer több pillanatkép is rögzítheti. Egy időben az Azure portálon keresse meg, vagy a Visual Studio eszközzel a teljes felület. A Visual Studio a fejlesztők is végezze el, hogy a pillanatkép, mintha csak azok a valós idejű volt hibakeresését. Helyi változók, a paraméterek, a memória és a keretek is elérheti. A fejlesztők a termelési adatok használatával hozzáférést kell biztosítani az [RBAC szerepkör](../active-directory/role-based-access-built-in-roles.md).  
-
-További információkért lásd: [pillanatkép hibakeresés](../application-insights/app-insights-snapshot-debugger.md). 
-
-### <a name="scenario-3--debug-an-azure-application-that-uses-containers-or-microservices"></a>3 –. forgatókönyv-tárolók és mikroszolgáltatások használó Azure alkalmazás hibakeresése 
-
-**Ugyanaz, mint 1. forgatókönyv. Az Application Insights, az Azure-figyelő és a Visual Studio együtt használható**
-
-Az Application Insights gyűjtése telemetriai tárolókba futó folyamatok és mikroszolgáltatások (Kubernetes, Docker, Azure Service Fabric) is támogatja. További információ [tekintse meg ezt a videót a tárolók és mikroszolgáltatások hibakeresés](https://go.microsoft.com/fwlink/?linkid=848184). 
+### <a name="azure-advisor"></a>Azure Advisor
+[Az Azure Advisor](../advisor/advisor-overview.md) folyamatosan figyeli a erőforrás konfigurációs és használati telemetriai ajánlott eljárásai alapján javaslatok testreszabás biztosításához.  Követően ezek az ajánlások növelheti a teljesítményt, biztonsági és az alkalmazásokat támogató erőforrásokban rendelkezésre állását.
 
 
-### <a name="scenario-4--fix-performance-issues-in-your-azure-application"></a>Az Azure alkalmazásban kapcsolatos teljesítményproblémák javítás 4 –. forgatókönyv
+## <a name="premium-monitoring-services"></a>Prémium szintű figyelési szolgáltatásokat
+Az Azure-szolgáltatásokat gyűjtése és elemzése a figyelési adatok gazdag képességeit adja meg.  Ezek alapvető figyelési és használja ki az általános funkciókkal Azure készítse el és hatékony analytics biztosítson Önnek egyedi insights az alkalmazásaikat és infrastruktúrájukat az összegyűjtött adatokat.  Ezek megjeleníteni az adatokat különböző irányuló adott helyzetekben kontextusában.
 
-A [Application Insights Profilkészítő](../application-insights/app-insights-profiler.md) célja segíteni az ilyen jellegű problémák elhárításához. Azonosítsa és a teljesítménnyel kapcsolatos problémák elhárítása az App Services (Web Apps, a Logic Apps, Mobile Apps, az API Apps, függvény alkalmazások) és a többi futó alkalmazások számítási erőforrások, például a virtuális gépek, a virtuálisgép-méretezési csoportok (VMSS), a Cloud Services és a A Service Fabric. 
+### <a name="application-insights"></a>Application Insights
+[Az Application Insights](http://azure.microsoft.com/documentation/services/application-insights) lehetővé teszi a rendelkezésre állás figyelése, teljesítményét és az alkalmazás használatát, hogy a felhő vagy a helyi helyezkedik el.  Az alkalmazás működéséhez az Application insights szolgáltatással leírására, érhet mélyebben elemezheti, így gyorsan azonosíthatja és hibák diagnosztizálása a felhasználót, hogy ezeket várakozás nélkül. Gyűjtött adatokat hogy az alkalmazás karbantartása és fejlesztése megalapozott döntések.  A széles körű összegyűjti az adatokat az eszközök mellett a Application Insights megosztott funkciók, például a riasztások, irányítópultok és a Log Analytics lekérdezési nyelv mélyreható elemzéseket kihasználhatják a közös helyen tárolja az adatokat.
 
-> [!NOTE]
-> Virtuális gépek, virtuális gép méretezési csoportok (VMSS) felhőalapú szolgáltatások és szolgáltatások háló profil lehetősége jelenleg előzetes verzióban érhető.   
+### <a name="log-analytics"></a>Log Analytics
+[Naplófájl Analytics](http://azure.microsoft.com/documentation/services/log-analytics) begyűjtenie az adatokat a különböző erőforrások egy tárházba ahol elemzése hatékony lekérdezési nyelv Azure figyelési központi szerepet játszik.  Application insights szolgáltatással és az Azure Security Center tárolja az adatokat a Naplóelemzési adatokat tárolja és használja ki az analytics motor.  Ezzel együtt a következővel Azure figyelő, megoldásokkal, gyűjtött adatokat, és a felhőben, vagy a helyszíni virtuális gépeken telepített ügynökök lehetővé teszik a teljes környezet átfogó képet alkotnak. 
 
-Ezenkívül proaktív értesíti, kapcsolatos hibákat, például a lassú lapbetöltési idők, bizonyos típusú e-mailben az intelligens Kártevőészlelő eszköz.  Nem kell tennie, hogy az eszköz a beállításra. További információkért lásd: [intelligens észlelési - Teljesítményanomáliákat](../application-insights/app-insights-proactive-performance-diagnostics.md).
+
+### <a name="service-map"></a>Szolgáltatástérkép
+[Szolgáltatástérkép](../operations-management-suite/operations-management-suite-service-map.md) IaaS környezetét betekintést biztosít a virtuális gépek a különböző folyamatok és a más számítógépeken és a külső folyamatok függőségek elemzésével.  Integrálható eseményeket, teljesítményadatokat és felügyeleti megoldásokat a Naplóelemzési, hogy minden számítógép és a környezet többi részére viszonya környezetében megtekintheti ezeket az adatokat.  Szolgáltatástérkép hasonlít a [Application Insights az alkalmazás-hozzárendelés](../application-insights/app-insights-app-map.md) , de az alkalmazásokat támogató infrastruktúra-összetevőihez összpontosít.
+
+### <a name="network-watcher"></a>Network Watcher
+[Hálózati figyelő](../network-watcher/network-watcher-monitoring-overview.md) forgatókönyv-alapú figyelési és diagnosztika biztosít a különböző hálózati forgatókönyvek az Azure-ban.  Azure metrikák és diagnosztika további elemzés céljából tárolja az adatokat, és együttműködik a [Naplóelemzési felügyeleti megoldásokat](../log-analytics/log-analytics-azure-networking-analytics.md) teljes figyelésére a hálózati erőforrásokhoz.
+
+
+### <a name="management-solutions"></a>Felügyeleti megoldások
+[Megoldások](../log-analytics/log-analytics-add-solutions.md) logika, amely áttekintést adnak a egy adott alkalmazás vagy szolgáltatás csomagolt csoportja.  Log Analytics tárolását és elemzését a figyelési adatokat gyűjtenek támaszkodnak.  Felügyeleti megoldások érhetők el a Microsoft és a partnerek figyelésére szolgáló különböző Azure és a harmadik fél számára. Példa figyelési megoldásoknak tartalmaznak [tároló figyelési](../log-analytics/log-analytics-containers.md) segítségével megtekintheti és kezelheti a tároló gazdagépek és [Azure SQL elemzés](../log-analytics/log-analytics-azure-sql.md) gyűjt, és amely teljesítménymutatók visualizes az SQL Az Azure adatbázisok.
+
+
+## <a name="shared-functionality"></a>Megosztott funkció
+A következő Azure eszközök kritikus ellátni a Premium-szolgáltatások figyelése.  A megosztott által több olyan szolgáltatás, amely lehetővé teszi, hogy kihasználja a közös funkciókat és konfigurációk több szolgáltatásban.
+
+### <a name="alerts"></a>Riasztások
+[Az Azure riasztások](../monitoring-and-diagnostics/monitoring-overview-alerts.md) proaktív értesíti kritikus feltételek és vélhetően intézkedéseket.  A riasztási szabályok kihasználhatják a metrikák és a naplók beleértve több forrásból származó adatok. Használata [művelet csoportok](../monitoring-and-diagnostics/monitoring-action-groups.md) tartalmazó címzettek és a riasztás válaszul műveletek egyedi beállítása.  A követelmények alapján, indítsa el a webhookok külső műveleteket, és a ITSM eszközök integrálása riasztások rendelkezik.
+
+### <a name="dashboards"></a>Irányítópultok
+[Az Azure irányítópultok](../azure-portal/azure-portal-dashboards.md) lehetővé teszik a különböző típusú adatok egyesítése egyetlen az Azure portál és a megosztás ablaktábla Azure másokkal.  Például létrehozhat egy irányítópultot, amely egy grafikont a metrikákat, tevékenységi naplóit táblázatát, az Application Insights használati diagramot és egy naplófájl-keresési kimenete jelenik meg a Naplóelemzési csempék egyesíti.
+
+Naplóelemzési adatokat emellett exportálhatja [Power BI](https://docs.microsoft.com/power-bi/) további képi megjelenítést kihasználásához, valamint, hogy az adatok belül, mind a szervezeten kívül másokkal elérhető.
+
+### <a name="metrics-explorer"></a>Metrics Explorer
+[Metrikák](../monitoring-and-diagnostics/monitoring-overview-metrics.md) az Azure-erőforrások, amelyek segítenek által generált számértékeket ismeri, a művelet és a teljesítmény az erőforrás. Elküldheti metrikák Naplóelemzési analitikai adatok más forrásból.
 
 
 
-## <a name="next-steps"></a>Következő lépések
+### <a name="activity-logs"></a>Tevékenységnaplók
+[Tevékenységi naplóit](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) adja meg a műveletet az Azure-erőforrások adatait.  Tartalmazzák az ilyen információkat az erőforrás, a szolgáltatás állapotát az incidensek, a javaslatok konfigurációs módosítás jobb használata az erőforrás és az automatikus skálázás műveleteivel kapcsolatos információkat.  Egy adott erőforráshoz naplók az Azure portál vagy a nézet naplóban tevékenység napló Explorer erőforrásairól a lapon tekintheti meg.  Is küldhet tevékenységi naplóit Naplóelemzési, megoldások, az ügynököt a virtuális gépek és a más forrásokból gyűjtött adatok elemezhetők.
+
+
+## <a name="example-scenarios"></a>Példaforgatókönyvek
+Az alábbiakban a magas szintű példák bemutatják, hogyan különböző Hálózatfigyelő eszközök az Azure-ban a különböző alkalmazási helyzetek volna használni.
+
+### <a name="monitoring-a-web-application"></a>A webes alkalmazás figyelése
+Fontolja meg egy webalkalmazást az Azure App Service szolgáltatások, Azure Storage és az SQL-adatbázis telepítve.  Sikerült megkezdése elérésével [metrikák](../monitoring-and-diagnostics/monitoring-overview-metrics.md) és [tevékenységi naplóit](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) az egyes Azure-portálon a felhasználók ezeket az egyéni erőforrásokat.  Ebbe beletartozik a fontos információkat, például az alkalmazás és az átlagos válaszidő kívül végrehajtott bármilyen konfigurációs módosításokat azonosító kérelmek száma.
+
+Ön tudta folytassa a figyelő a portálon metrikák és a naplókat a különböző erőforrások együtt megtekintéséhez.  A metrikák szabványos paramétereinek meghatározása akkor [riasztási szabályok létrehozásához](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) proaktív értesítse arról, ha például növeli az átlagos válaszideje meghaladja a küszöbértéket.  Ahhoz, hogy az alkalmazás napi teljesítmény gyors áttekintést kap, hozzon létre egy Azure irányítópult a kritikus KPI-k képviselő mérőszámok diagramok megjelenítéséhez.
+
+Az alkalmazás figyelést végrehajtásához, [konfigurálja az Application Insights](../application-insights/quick-monitor-portal.md).  Most gyűjtheti további adatokat biztosító további betekintést a művelet és az alkalmazás teljesítményét.  Az Application Insights lehetővé teszi a vizuális ábrázolását keresztül az alkalmazás-összetevők alapul szolgáló kapcsolatai észleli a [alkalmazás-hozzárendelés](../application-insights/app-insights-app-map.md) alapján kialakulhat [végpont nyomkövetés](../application-insights/app-insights-transaction-diagnostics.md) felderítéséhez a pontos összetevő, függőség és ahol probléma történt kivétel.  Létrehozhat [rendelkezésreállás figyelésére szolgáló tesztek](../application-insights/app-insights-monitor-web-app-availability.md) proaktív a különböző régiókban az alkalmazás teszteléséhez.  Segítségével a fejlesztők akkor [engedélyezése a Profilkészítő](../application-insights/enable-profiler-compute.md) , nyomon követheti az kérelmek és egy adott kódsort le kivételek.  
+
+Ahhoz, hogy hogy további az alkalmazásban használt szolgáltatások lássák, vegye fel a [SQL elemzési megoldások](../log-analytics/log-analytics-azure-sql.md) Log Analyticshez való további adatok gyűjtéséért felelős ügyfélfeladatot. Némi várakozás után úgy dönt, hogy vizsgálja ki az időszakot, amikor a hely teljesítményére küszöbérték alá csökken az alapvető okát.  Írt Naplóelemzési a használati és teljesítményadatokat adatai közötti összefüggések keresésére lekérdezést által gyűjtött Application Insights teljesítményt és a konfiguráció a adatok az alkalmazás támogató Azure-erőforrások között.
+
+
+### <a name="monitoring-virtual-machines"></a>Virtuális gépek figyelése
+Lehetősége van a Windows és Linux rendszerű virtuális gépek az Azure-beli kombinációját.  Azure Monitor segítségével megtekintheti [tevékenységi naplóit](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) és [szintű metrikák gazdagép](../monitoring-and-diagnostics/monitoring-overview-metrics.md) majd adja hozzá a [Azure Diagnostics bővítmény](../virtual-machines/linux/tutorial-monitoring.md#install-diagnostics-extension) ahhoz, hogy gyűjtéséhez virtuális gépekhez a vendég operációs rendszerből.  Hoz majd létre [riasztási szabályok](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) proaktív értesítése, ha az alapvető metrikák ilyen processzorhasználat és a memória cross küszöbértékeket.
+
+Egy üzleti alkalmazás futó virtuális gépek kapcsolatos további adatokat gyűjthet, [Naplóelemzési munkaterület létrehozása és a Virtuálisgép-bővítmény engedélyezése](../log-analytics/log-analytics-quick-collect-azurevm.md) minden egyes számítógépen.  Konfigurálja [különböző adatforrások gyűjteménye](../log-analytics/log-analytics-data-sources.md) az alkalmazáshoz és [nézeteket hozhat létre](../log-analytics/log-analytics-view-designer.md) számára, a napi művelet és a teljesítményt.  Majd [riasztási szabályok létrehozásához](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) értesítse arról, ha adott hibaesemények érkezik.  Ahhoz, hogy folyamatosan a telepített ügynök állapotának figyelésére, vegye fel a [ügyfélállapot-kezelési megoldás](../operations-management-suite/oms-solution-agenthealth.md).
+
+Ahhoz, hogy további betekintést az alkalmazás akkor [adja hozzá a függőségi ügynök](../operations-management-suite/operations-management-suite-service-map-configure.md) ahhoz, hogy azok hozzáadása a virtuális gépek [Szolgáltatástérkép](../operations-management-suite/operations-management-suite-service-map.md).  Felderíti a folyamatokat, és más szolgáltatásokkal gépek közötti kapcsolatok azonosítja.  Egy jelentett leállás után a Szolgáltatástérkép az adott azon gépek azonosításához, a problémát tapasztalt Törvényszéki végrehajtásához használhatja.  Ezután létrehozhat egy [a Log Analytics-adatok lekérdezése](../log-analytics/log-analytics-log-search-new.md) a későbbiekben azonosítani a problémát, és proaktív értesítést küldenek, ha a feltétel már telepítve van a riasztási szabályt létrehozni.
+
+
+
+## <a name="next-steps"></a>További lépések
 További információ
 
 * [Az ignite-on 2016 videó az Azure figyelője](https://myignite.microsoft.com/videos/4977)
 * [Ismerkedés az Azure-figyelő](monitoring-get-started.md)
 * [Az Azure Diagnostics](../azure-diagnostics.md) Ha a felhőalapú szolgáltatás, a virtuális gépet, a problémák diagnosztizálásához kívánt virtuális gép skálázása állítsa be, vagy a Service Fabric-alkalmazás.
 * [Az Application Insights](https://azure.microsoft.com/documentation/services/application-insights/) Ha kívánt diagnosztikai problémák az App Service Web app alkalmazásban.
-* [Naplófájl Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) és a [Operations Management Suite](https://www.microsoft.com/oms/) üzemi felügyeleti megoldás
+* [Naplófájl Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) összegyűjtött figyelési adatok elemzéséhez.

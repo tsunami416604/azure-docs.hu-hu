@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/17/2017
+ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: 1744e3c49ac06abe9e1067d507fd56d694201ffc
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: bfa020e29a9bb67f0634d220725bc11279e1565c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>A Service Fabric-fürt méretezése programozott módon 
 
@@ -93,7 +93,7 @@ Ha manuálisan ad hozzá egy csomópont, a méretezési példány hozzáadása k
 
 A méretezés hasonlít kiterjesztése. A tényleges virtuálisgép-méretezési beállítása módosítások vannak gyakorlatilag azonos. De volt korábban bemutatott, a Service Fabric csak automatikusan törli a szükségtelenné az eltávolított csomópontokat a tartós arany vagy ezüst. Igen, a bronz-tartóssági méretezési a helyzet, szükség az eltávolítandó csomópont leállítása a Service Fabric-fürt kommunikál, majd távolítsa el az állapotát.
 
-A csomópont előkészítése az leállítási magában foglalja a tekinti a csomópontot eltávolítani (a legutóbb hozzáadott csomópont) keresése és inaktiválása. Nem kezdőérték csomópontok újabb csomópontok található összehasonlításával `NodeInstanceId`. 
+A csomópont előkészítése az leállítási magában foglalja a tekinti a csomópontot keresése eltávolítani (a legutóbb hozzáadott virtuális gép méretezési készlet példány) és inaktiválása. Virtuálisgép-méretezési készlet példánya a sorrendben Hozzáadás számozása, újabb csomópontok összehasonlítva a szám utótagot a csomópontok (amelyek egyeznek az alapul szolgáló virtuálisgép-méretezési megadott nevei példánynevek) található. 
 
 ```csharp
 using (var client = new FabricClient())
@@ -101,11 +101,14 @@ using (var client = new FabricClient())
     var mostRecentLiveNode = (await client.QueryManager.GetNodeListAsync())
         .Where(n => n.NodeType.Equals(NodeTypeToScale, StringComparison.OrdinalIgnoreCase))
         .Where(n => n.NodeStatus == System.Fabric.Query.NodeStatus.Up)
-        .OrderByDescending(n => n.NodeInstanceId)
+        .OrderByDescending(n =>
+        {
+            var instanceIdIndex = n.NodeName.LastIndexOf("_");
+            var instanceIdString = n.NodeName.Substring(instanceIdIndex + 1);
+            return int.Parse(instanceIdString);
+        })
         .FirstOrDefault();
 ```
-
-Kezdőérték csomópont különböző, és nem feltétlenül kövesse az egyezmény nagyobb példány azonosítók először törlődnek.
 
 Az eltávolítandó csomópont található, ha inaktiválhatók, és eltávolítja a azonos `FabricClient` példány és a `IAzure` példányának regisztrációját a korábbi.
 

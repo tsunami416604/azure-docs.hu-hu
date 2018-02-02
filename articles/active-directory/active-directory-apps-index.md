@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 01/26/2018
 ms.author: markvi
 ms.reviewer: asteen
-ms.openlocfilehash: 254f1913f1b9cb1a165d007a1f4204f7783472c1
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: eaceab7d0dba7719452000cc4e1bd19baa28af9e
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Article Index for Application Management in Azure Active Directory (Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke)
 Ezen a lapon minden egyes dokumentum írása az alkalmazással kapcsolatos szolgáltatásokra vonatkozó az Azure Active Directory (Azure AD) átfogó listáját tartalmazza.
@@ -137,7 +137,7 @@ A létrehozási, karbantartási és SaaS-alkalmazásokhoz, például a Dropbox, 
 | További tudnivalók: hogyan működik, és a gyakori kérdésekre adott válaszok |[Kiépítés és megszüntetés SaaS-alkalmazásokhoz való felhasználói automatizálásához](active-directory-saas-app-provisioning.md) |
 | Hogyan van rendelve az információk között az Azure AD konfigurálása és az SaaS-alkalmazás |[Attribútum-leképezésekhez testreszabása](active-directory-saas-customizing-attribute-mappings.md)<br><br>[Attribútum-leképezésekhez kifejezések írása](active-directory-saas-writing-expressions-for-attribute-mappings.md) |
 | Bármely alkalmazás, amely támogatja a SCIM protokoll automatikus kiépítés engedélyezése |[Automatizált Felhasználókiépítése bármely SCIM-Enabled alkalmazás beállítása](active-directory-scim-provisioning.md) |
-| Jelentés és a felhasználók átadása hibaelhárítása |[A felhasználók automatikus átadása jelentések](active-directory-saas-provisioning-reporting.md)<br><br>[Üzembe helyezési értesítések](active-directory-saas-account-provisioning-notifications.md)<br><br>[Hibaelhárítás a felhasználók átadása](active-directory-application-provisioning-content-map.md) |
+| Jelentés és a felhasználók átadása hibaelhárítása |[A felhasználók automatikus átadása jelentések](active-directory-saas-provisioning-reporting.md)<br><br>[Hibaelhárítás a felhasználók átadása](active-directory-application-provisioning-content-map.md) |
 | Korlát, akik lekérdezi létrehozni, hogy az alkalmazást a saját attribútumértékek alapján |[Helyezése Hatókörszűrőkkel](active-directory-saas-scoping-filters.md) |
 
 Automatizált felhasználókiépítése felhasználónként legfeljebb tíz alkalmazásokhoz az Azure AD összes verziója érhető el. [Prémium szintű Azure AD](https://azure.microsoft.com/pricing/details/active-directory/) korlátlan alkalmazásokat támogatja. Ha a szervezete [Azure AD alapvető](https://azure.microsoft.com/pricing/details/active-directory/) vagy [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/), akkor [csoportoknak a segítségével kezelheti a felhasználókat első üzembe](#managing-access-to-applications).

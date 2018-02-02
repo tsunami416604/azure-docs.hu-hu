@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2017
 ms.author: cherylmc
-ms.openlocfilehash: 6a03986288fdb6acaf234a8abf690f728d160fd7
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
-ms.translationtype: MT
+ms.openlocfilehash: 63160bc8f334b975ade8b35ce809578ad3a5b3fa
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="configure-network-performance-monitor-for-expressroute-preview"></a>Konfigurálja a hálózati Teljesítményfigyelő az ExpressRoute (előzetes verzió)
 
@@ -46,6 +46,7 @@ Figyelheti a világ minden részén ExpressRoute-Kapcsolatcsoportok üzemeltetet
 * Nyugat-Európa 
 * USA keleti régiója 
 * Délkelet-Ázsia 
+* Dél-kelet-Ausztrália
 
 ## <a name="workflow"></a>Munkafolyamat
 
@@ -174,16 +175,13 @@ A figyelési ügynök kiszolgálók, amelyek az Azure-ban, konfigurálnia kell a
 
 NSG kapcsolatos további információkért lásd: [hálózati biztonsági csoportok](../virtual-network/virtual-networks-create-nsg-arm-portal.md).
 
-## <a name="whitelist"></a>4. lépés: Kérelem engedélyezett munkaterület
-
 >[!NOTE]
 >Győződjön meg arról, hogy telepítette az ügynököt (a helyszíni kiszolgáló ügynöke és az Azure-kiszolgálóügynök), és ebben a lépésben a PowerShell-parancsfájlt, a folytatás előtt futtatta.
 >
 >
 
-Előtt ExpressRoute figyelési az szolgáltatásával NPM, kérnie kell rendelkeznie a munkaterület szerepel az engedélyezési listán. [Kattintson ide a lapra, és töltse ki az űrlap](https://aka.ms/npmcohort). (Mutató: érdemes lehet a hivatkozás megnyitásához az egy új ablakot vagy lapot). Az engedélyezett végre üzleti napi egy vagy több. Ha a engedélyezése befejeződött, kapni fog egy e-mailt.
 
-## <a name="setupmonitor"></a>5. lépés: NPM ExpressRoute-figyelés konfigurálása.
+## <a name="setupmonitor"></a>4. lépés: NPM ExpressRoute-figyelés konfigurálása.
 
 >[!WARNING]
 >Ne folytassa tovább, amíg a munkaterület már szerepel az engedélyezési listán, és megjelenik egy visszaigazoló e-mailben.
@@ -208,7 +206,7 @@ Miután befejezte a korábbi szakaszokban, és győződjön meg arról, hogy ki 
 
   ![csempék figyelést](.\media\how-to-npm\15.png)
 
-## <a name="explore"></a>6. lépés: Figyelési csempék megtekintése
+## <a name="explore"></a>5. lépés: Figyelési csempék megtekintése
 
 ### <a name="dashboard"></a>Hálózati Teljesítményfigyelő lap
 

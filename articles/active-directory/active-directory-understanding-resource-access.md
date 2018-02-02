@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 12/06/2017
 ms.author: curtand
 ms.custom: it-pro;
-ms.openlocfilehash: ad6658aaed55801ac8f6a39a721fb7469892303d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 621ebec898e5b345556832097b12ca9b54506e7c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="understanding-resource-access-in-azure"></a>Az az Azure-erőforrások hozzáférésének megismerése
 
-Hozzáférés-vezérlés az Azure-ban elindul egy számlázási szempontjából. Azure-fiók esetén érhető el, látogasson el a tulajdonosa a [Azure Accounts Center](https://account.windowsazure.com/subscriptions), a fiók rendszergazdai AA van. Előfizetések számlázási tárolója, de úgy is működnek, mint a biztonsági határ: minden előfizetés rendelkezik egy szolgáltatás rendszergazdai (SA) számára adja hozzá, távolítsa el, és módosítsa az adott előfizetés Azure-erőforrások használatával a [Azure-portálon](https://portal.azure.com/). Az alapértelmezett biztonsági Társítás az új előfizetés az AA, de az AA módosíthatja a rendszergazdai (SA) az Azure Accounts Center a.
+Hozzáférés-vezérlés az Azure-ban elindul egy számlázási szempontjából. Azure-fiók esetén érhető el, látogasson el a tulajdonosa a [Azure Account Center](https://account.azure.com), a fiók rendszergazdai AA van. Előfizetések számlázási tárolója, de úgy is működnek, mint a biztonsági határ: minden előfizetés rendelkezik egy szolgáltatás rendszergazdai (SA) számára adja hozzá, távolítsa el, és módosítsa az adott előfizetés Azure-erőforrások használatával a [Azure-portálon](https://portal.azure.com/). Az alapértelmezett biztonsági Társítás az új előfizetés az AA, de az AA módosíthatja a biztonsági Társítás az az Azure Account Center.
 
 <br><br>![Azure-fiókra][1]
 
@@ -45,7 +45,7 @@ Több címtárban előfizetések felhasználók eltávolíthatnak-Váltás az ak
 
 Lehet, hogy a műveletek, például az erőforrások áthelyezése másik előfizetések nehezebb előfizetések egyetlen nézetének miatt. Az erőforrás-áthelyezés végrehajtásához az első használat szükség lehet a **könyvtár szerkesztése** parancsot az előfizetések oldalán a **beállítások** rendelje hozzá a az előfizetések ugyanabban a könyvtárban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Az Azure-előfizetések rendszergazdáinak módosításáról további információ: [Azure-rendszergazdai szerepkörök felvétele vagy módosítása](../billing/billing-add-change-azure-subscription-administrator.md)
 * Hogyan Azure Active Directory vonatkozik-e az Azure-előfizetéshez további információkért lásd: [kapcsolódnak hogyan Azure-előfizetések az Azure Active Directoryval](active-directory-how-subscriptions-associated-directory.md)
 * A szerepkörök Azure AD-ben történő hozzárendeléséről további információért lásd: [Rendszergazdai szerepkörök hozzárendelése az Azure Active Directoryban](active-directory-assign-admin-roles-azure-portal.md).

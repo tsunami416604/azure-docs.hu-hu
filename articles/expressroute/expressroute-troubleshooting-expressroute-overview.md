@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: cherylmc
-ms.openlocfilehash: e52e53255a1462522f297d8918eb1c347a460f77
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 74b6589a7e06570d978dfe40c5f5bf140e092cc6
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="verifying-expressroute-connectivity"></a>Az ExpressRoute-kapcsolat ellenőrzése
 ExpressRoute, egy a helyszíni hálózat kibővítve a Microsoft felhőbe, amely a kapcsolat szolgáltatójánál megkönnyíthető titkos kapcsolaton keresztül, a következő három különböző hálózati zónák foglal magában:
 
 -   Ügyfél hálózati
 -   Szolgáltató
--   A Microsoft Datacenter
+-   Microsoft Datacenter
 
 A jelen dokumentum célja, hogy segítségével a felhasználó határozza meg, hol (vagy ha a) a kapcsolódási problémát létezik, és melyik zónába, és ezáltal a probléma megoldásához megfelelő csapat segítségért belül. Ha egy probléma megoldásához szükség van a Microsoft támogatási szolgálatához, nyissa meg a támogatási jegy [Microsoft Support][Support].
 
@@ -216,12 +216,12 @@ A minta választ, egy sikeresen konfigurált magánhálózati társviszony-léte
 Ahhoz, hogy az Azure nyilvános társviszony-létesítési konfiguráció részletei, használja a következő parancsokat:
 
     $ckt = Get-AzureRmExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
-    Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -Circuit $ckt
+    Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt
 
 Ahhoz, hogy a Microsoft társviszony-létesítési konfiguráció részletei, használja a következő parancsokat:
 
     $ckt = Get-AzureRmExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
-    Get-AzureRmExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -Circuit $ckt
+     Get-AzureRmExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt
 
 Ha nincs konfigurálva a társviszony-létesítés, nem lenne egy hibaüzenetet. Mintaválasz, ha a megadott társviszony-létesítés (Azure nyilvános társviszony-létesítés ebben a példában) nincs beállítva a kapcsolatcsoport belül:
 
@@ -384,7 +384,7 @@ A minta a nem létező társviszony-létesítés parancs kimenete:
         + CategoryInfo          : CloseError: (:) [Get-AzureDedicatedCircuitStats], CloudException
         + FullyQualifiedErrorId : Microsoft.WindowsAzure.Commands.ExpressRoute.GetAzureDedicatedCircuitPeeringStatsCommand
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információt vagy a help tekintse meg a következőket:
 
 - [A Microsoft támogatás][Support]

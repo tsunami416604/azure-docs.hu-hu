@@ -2,19 +2,19 @@
 title: "Azure Batch tároló munkaterhelések |} Microsoft Docs"
 description: "Megtudhatja, hogyan tároló képek Azure Batch alkalmazások futtatását."
 services: batch
-author: v-dotren
-manager: timlt
+author: dlepow
+manager: jeconnoc
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
 ms.workload: na
 ms.date: 12/01/2017
-ms.author: v-dotren
-ms.openlocfilehash: 1795bdde5506f599849a30d4e59ed7b916595ac4
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.author: danlep
+ms.openlocfilehash: 2fa5f9335a4d00f489f11c0db23322ab971a224f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Azure Batch tároló alkalmazások futtatásához
 
@@ -30,8 +30,8 @@ Ez a cikk Docker-tároló fogalmakat és a Batch-készlet és a .NET SDK haszná
 * SDK-verzió: A kötegelt SDK-k támogatása tároló képek a következő verziók:
     * Batch REST API verziója 2017-09-01.6.0
     * Batch .NET SDK verzió 8.0.0
-    * Kötegelt Python SDK 4.0-s verziója
-    * Kötegelt Java SDK 3.0-s verzió
+    * Batch Python SDK version 4.0
+    * Batch Java SDK version 3.0
     * Kötegelt Node.js SDK 3.0-s verzió
 
 * Fiókok: Az Azure-fiókja, szüksége Batch-fiók, és opcionálisan egy általános célú tárfiók létrehozásához.
@@ -237,7 +237,7 @@ CloudTask containerTask = new CloudTask (
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Kötegelt, áttekintéséért lásd: [Develop nagyméretű párhuzamos számítási solutions a kötegelt](batch-api-basics.md).
 
