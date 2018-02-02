@@ -4,6 +4,8 @@
   items:
     - name: Az SQL DB névjegye
       href: sql-database-technical-overview.md
+    - name: PaaS vagy IaaS
+      href: sql-database-paas-vs-sql-server-iaas.md
 - name: Gyors útmutatók
   expanded: true
   items:
@@ -59,7 +61,7 @@
       href: sql-database-powershell-samples.md
 - name: Alapelvek
   items:
-    - name: Szolgáltatásjellemzők
+    - name: Adatbázis-szolgáltatás
       items:
         - name: Kiszolgálók és adatbázisok
           href: sql-database-servers-databases.md
@@ -73,42 +75,22 @@
           href: sql-database-elastic-pool.md
         - name: Kapcsolati architektúra
           href: sql-database-connectivity-architecture.md
-        - name: Tűzfalszabályok
-          href: sql-database-firewall-configure.md
-        - name: Virtuális hálózatok tűzfalszabályai
-          href: sql-database-vnet-service-endpoint-rule-overview.md
         - name: DTU-k és eDTU-k
           href: sql-database-what-is-a-dtu.md
         - name: DTU-teljesítményteszt
           href: sql-database-benchmark-overview.md
-        - name: PaaS vagy IaaS
-          href: sql-database-paas-vs-sql-server-iaas.md
-        - name: Naplózás
-          href: sql-database-auditing.md
-        - name: Fenyegetések észlelése
-          href: sql-database-threat-detection.md
-        - name: Adatbázisok biztonsági mentése
-          href: sql-database-automated-backups.md
-        - name: Biztonsági mentés megőrzése
-          href: sql-database-long-term-retention.md
-        - name: Feladatátvételi csoportok
-          href: sql-database-geo-replication-overview.md
-        - name: Rugalmas ügyfélkönyvtár
-          href: sql-database-elastic-database-client-library.md
-        - name: Rugalmas lekérdezések
-          href: sql-database-elastic-query-overview.md
-        - name: Rugalmas tranzakciók
-          href: sql-database-elastic-transactions-overview.md
-        - name: Rugalmas feladatok
-          href: sql-database-elastic-jobs-overview.md
-        - name: SQL-sebezhetőségi felmérés
-          href: sql-vulnerability-assessment.md
         - name: Az SQL Server általános funkciói
           href: sql-database-features.md
+    - name: Magas rendelkezésre állás
+      href: sql-database-high-availability.md
     - name: Biztonság
       items:
         - name: Áttekintés
           href: sql-database-security-overview.md
+        - name: Tűzfalszabályok
+          href: sql-database-firewall-configure.md
+        - name: Virtuális hálózatok tűzfalszabályai
+          href: sql-database-vnet-service-endpoint-rule-overview.md
         - name: Hozzáférés-vezérlés
           href: sql-database-control-access.md
         - name: Azure AD
@@ -117,16 +99,28 @@
           href: sql-database-manage-logins.md
         - name: Többtényezős hitelesítés
           href: sql-database-ssms-mfa-authentication.md
+        - name: Naplózás
+          href: sql-database-auditing.md
+        - name: Fenyegetések észlelése
+          href: sql-database-threat-detection.md
         - name: Táblanaplózás és TDS
           href: sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md
-        - name: Adatmaszkolás
+        - name: Dinamikus adatmaszkolás
           href: sql-database-dynamic-data-masking-get-started.md
-    - name: Magas rendelkezésre állás
-      href: sql-database-high-availability.md
+        - name: Sebezhetőségi felmérés
+          href: sql-vulnerability-assessment.md
+        - name: Adatfelderítés és besorolás
+          href: sql-database-data-discovery-and-classification.md
     - name: Az üzletmenet folytonossága
       items:
         - name: Áttekintés
           href: sql-database-business-continuity.md
+        - name: Adatbázisok biztonsági mentése
+          href: sql-database-automated-backups.md
+        - name: Biztonsági mentés megőrzése
+          href: sql-database-long-term-retention.md
+        - name: Feladatátvételi csoportok
+          href: sql-database-geo-replication-overview.md
         - name: Adatbázis-helyreállítás
           href: sql-database-recovery-using-backups.md
         - name: Biztonság konfigurálása
@@ -185,6 +179,14 @@
       items:
         - name: Áttekintés
           href: sql-database-elastic-scale-introduction.md
+        - name: Rugalmas ügyfélkönyvtár
+          href: sql-database-elastic-database-client-library.md
+        - name: Rugalmas lekérdezések
+          href: sql-database-elastic-query-overview.md
+        - name: Rugalmas tranzakciók
+          href: sql-database-elastic-transactions-overview.md
+        - name: Rugalmas feladatok
+          href: sql-database-elastic-jobs-overview.md
         - name: Szilánkleképezések
           href: sql-database-elastic-scale-shard-map-management.md
         - name: Lekérdezési útválasztás
@@ -299,6 +301,8 @@
           href: sql-database-advisor-portal.md
         - name: Automatikus hangolás engedélyezése
           href: sql-database-automatic-tuning-enable.md
+        - name: Automatikus hangolási e-mail-értesítések
+          href: sql-database-automatic-tuning-email-notifications.md
         - name: Intelligent Insights – Teljesítménnyel kapcsolatos hibaelhárítás
           href: sql-database-intelligent-insights-troubleshoot-performance.md
         - name: A teljesítmény monitorozása DMV-kkel

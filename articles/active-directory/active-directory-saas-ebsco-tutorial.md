@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2018
+ms.date: 01/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 385d3aa356e6f4ec313790321b5b926810a06394
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 150609a7bf326c243b1a0b5f10bfcfe9a426c2de
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ebsco"></a>Oktatóanyag: Azure Active Directoryval integrált EBSCO
 
@@ -80,13 +80,11 @@ Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentk
 
 Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó EBSCO a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a EBSCO közötti kapcsolat kapcsolatot kell létrehozni.
 
-EBSCO, rendelje hozzá a értékének a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
-
 Az Azure AD egyszeri bejelentkezést a EBSCO tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
 
 1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
 2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[EBSCO tesztfelhasználó létrehozása](#create-a-ebsco-test-user)**  - való Britta Simon valami EBSCO, amely csatolva van a felhasználó az Azure AD-ábrázolását.
+3. **[Hozzon létre egy EBSCO tesztfelhasználó](#create-an-ebsco-test-user)**  -EBSCOhost kiépítés felhasználó/személyre szabása automatizálható. EBSCO közvetlenül időponthoz kötött támogatja a felhasználók átadása.
 4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
 5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
@@ -128,6 +126,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 5. EBSCO alkalmazás vár a SAML helyességi feltételek egy meghatározott formátumban. A következő jogcímek alkalmazás konfigurálása. Ezek az attribútumok értékének kezelheti a "**felhasználói attribútumok**" szakasz alkalmazás integráció lapján. Az alábbi képernyőfelvételen látható egy példa a.
     
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-ebsco-tutorial/tutorial_ebsco_attribute.png)
+
+    > [!Note]
+    > A **neve** attribútum megadása kötelező, és az le van képezve **felhasználói azonosító** EBSCO alkalmazásban. Ez az alapértelmezés szerint hozzáadva, nem kell manuálisan adja hozzá ezt.
     
 6. A a **felhasználói attribútumok** a szakasz a **egyszeri bejelentkezés** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, a fenti ábrán látható módon, és hajtsa végre a következő lépéseket:
     
@@ -196,22 +197,14 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
  
 ### <a name="create-an-ebsco-test-user"></a>Hozzon létre egy EBSCO tesztfelhasználó számára
 
-Ez a szakasz célja EBSCO Britta Simon nevű felhasználót létrehozni.
-
-EBSCO, ha a felhasználók átadása automatikus, de kövesse az alábbi lépéseket, ha az alkalmazás első alkalommal való bejelentkezés.
+EBSCO, ha a felhasználók átadása akkor automatikus.
 
 **Felhasználói fiók létrehozásához hajtsa végre az alábbi lépéseket:**
 
-1. Ha az alkalmazás bejelentkezni, kattintson a a **"bejelentkezés"** gombra a jobb felső sarokban.
+Az Azure AD EBSCO alkalmazás továbbítja a szükséges adatokat. EBSCO meg a felhasználók átadása lehet automatikus vagy egyszeri űrlap igényelnek. Ez attól függ, hogy az ügyfél rendelkezik-e nagy mennyiségű, korábban létező EBSCOhost fiókok mentett személyes beállításokkal. Ugyanez a kell megvitatni a [EBSCO támogatási csoport](mailto:sso@ebsco.com) végrehajtása során. Mindkét módszer esetén az ügyfél nem fiókokat kell létrehoznia a EBSCOhost tesztelése előtt.
 
-    ![Az alkalmazások listáját EBSCO bejelentkezni](./media/active-directory-saas-ebsco-tutorial/tutorial_ebsco_signin.png)
- 
-2. Kapni fog egy egyszeri kérdés kell párosítani a intézményi SAML/jelentkezzen be egy **a fiókját meglévő MyEBSCOhost intézmény fiókja most** vagy **hozzon létre egy új MyEBSCOhost fiókot, és a hivatkozás a intézmény fiók**. A fiók személyre szabása a EBSCOhost alkalmazására szolgál. A beállításnak a **hozzon létre egy új fiókot** és látni fogja, hogy az űrlap testre szabási célból saml-válasz értékeivel előre kész-e az alábbi képernyőfelvételen látható módon. Kattintson a **"Folytatás"** a mentéshez.
-    
-     ![Az alkalmazások listáját a EBSCO felhasználó](./media/active-directory-saas-ebsco-tutorial/tutorial_ebsco_user.png)
-
-3. A fenti telepítés befejezése után törölje a cookie-k/gyorsítótár bejelentkezési újra. Nem kell manuálisan signin újra, és a rendszer megjegyezze a személyre szabási beállításait 
-
+   >[!Note]
+   >EBSCOhost kiépítés felhasználó/személyre szabása automatizálható. Ügyfél [EBSCO támogatási csoport](mailto:sso@ebsco.com) közvetlenül időbeni elmozdítására vonatkozó a felhasználók átadása. 
  
 ### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
 
@@ -247,8 +240,18 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
 
-Ha a hozzáférési panelen EBSCO csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az EBSCO alkalmazására.
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](active-directory-saas-access-panel-introduction.md). 
+1. Ha a hozzáférési panelen EBSCO csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az EBSCO alkalmazására.
+A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](active-directory-saas-access-panel-introduction.md).
+
+2. Ha az alkalmazás bejelentkezni, kattintson a a **bejelentkezés** gombra a jobb felső sarokban.
+
+    ![Az alkalmazások listáját EBSCO bejelentkezni](./media/active-directory-saas-ebsco-tutorial/tutorial_ebsco_signin.png)
+ 
+3. Kapni fog egy egyszeri kérdés kell párosítani a intézményi SAML/jelentkezzen be egy **a fiókját meglévő MyEBSCOhost intézmény fiókja most** vagy **hozzon létre egy új MyEBSCOhost fiókot, és a hivatkozás a intézmény fiók**. A fiók személyre szabása a EBSCOhost alkalmazására szolgál. A beállításnak a **hozzon létre egy új fiókot** és látni fogja, hogy az űrlap testre szabási célból saml-válasz értékeivel előre kész-e az alábbi képernyőfelvételen látható módon. Kattintson a **"Folytatás"** a mentéshez.
+    
+     ![Az alkalmazások listáját a EBSCO felhasználó](./media/active-directory-saas-ebsco-tutorial/tutorial_ebsco_user.png)
+
+4. A fenti telepítés befejezése után törölje a cookie-k/gyorsítótár bejelentkezési újra. Nem kell manuálisan signin újra, és a rendszer megjegyezze a személyre szabási beállításait
 
 ## <a name="additional-resources"></a>További források
 

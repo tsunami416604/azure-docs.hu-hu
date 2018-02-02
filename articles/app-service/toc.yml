@@ -41,6 +41,8 @@
           href: app-service-web-tutorial-nodejs-mongodb-app.md
         - name: Java és MySQL
           href: app-service-web-tutorial-java-mysql.md
+        - name: Python és PostgreSQL
+          href: app-service-web-tutorial-python-postgresql.md
     - name: 1 – RESTful API létrehozása
       href: app-service-web-tutorial-rest-api.md
     - name: 2 – Egyéni tartomány leképezése

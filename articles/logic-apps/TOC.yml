@@ -62,25 +62,7 @@
         - name: A logikai alkalmazások védelme
           href: logic-apps-securing-a-logic-app.md
         - name: Egyéni összekötők fejlesztése
-          items:
-            - name: Egyéni összekötők áttekintése
-              href: custom-connector-overview.md
-            - name: Összekötők létrehozása webes API-kból
-              href: custom-connector-build-web-api-app-tutorial.md
-            - name: Összekötők védelmének biztosítása az Azure AD-vel
-              href: custom-connector-azure-active-directory-authentication.md
-            - name: API-k leírása a Postman használatával
-              href: custom-connector-api-postman-collection.md
-            - name: OpenAPI-k kiterjesztése egyéni összekötőkhöz
-              href: custom-connector-openapi-extensions.md
-            - name: OpenAPI-összekötő létrehozása és regisztrálása
-              href: logic-apps-custom-connector-register.md
-            - name: SOAP-összekötő létrehozása és regisztrálása
-              href: logic-apps-soap-connector-create-register.md
-            - name: Összekötő tanúsítása
-              href: custom-connector-submit-certification.md
-            - name: Egyéni összekötőkkel kapcsolatos gyakori kérdések
-              href: custom-connector-faq.md
+          href: custom-connector-overview.md
         - name: Egyéni API-k fejlesztése
           items:
             - name: Egyéni API-k létrehozása logikai alkalmazásokhoz
@@ -140,6 +122,8 @@
           href: logic-apps-enterprise-integration-transform.md
         - name: Leképezések hozzáadása XML-átalakításhoz
           href: logic-apps-enterprise-integration-maps.md
+        - name: JSON-átalakítás
+          href: logic-apps-enterprise-integration-liquid-transform.md
         - name: Biztonsági tanúsítványok hozzáadása
           href: logic-apps-enterprise-integration-certificates.md
         - name: B2B-hibák elhárítása

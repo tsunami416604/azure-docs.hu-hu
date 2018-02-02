@@ -29,9 +29,13 @@
       href: understading-cost-reports.md
 - name: Útmutatók
   items:
+    - name: Azure-előfizetések és -fiókok aktiválása
+      href: activate-subs-accounts.md
+    - name: Kiterjesztett metrikák hozzáadása a virtuális gépekhez
+      href: azure-vm-extended-metrics.md
     - name: A Cost Management jelentéseinek használata
       href: use-reports.md
-- name: Erőforrások
+- name: További források
   items:
     - name: Költségkezelési videók
       href: ref-videos.md

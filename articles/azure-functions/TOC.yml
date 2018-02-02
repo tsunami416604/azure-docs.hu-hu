@@ -63,6 +63,8 @@
       href: functions-cli-samples.md
 - name: Alapelvek
   items:
+    - name: Az 1.x és a 2.x összehasonlítása
+      href: functions-versions.md
     - name: Méretezés és üzemeltetés
       href: functions-scale.md
     - name: Eseményindítók és kötések
@@ -146,7 +148,7 @@
         - name: Függvényalkalmazás kezelése
           href: functions-how-to-use-azure-function-app-settings.md
         - name: Futtatókörnyezet verziójának beállítása
-          href: functions-versions.md
+          href: set-runtime-version.md
     - name: Figyelés
       href: functions-monitoring.md
     - name: Integrálás
@@ -175,7 +177,7 @@
           href: durable-functions-counter.md
         - name: Emberi beavatkozás
           href: durable-functions-phone-verification.md
-- name: Hivatkozás
+- name: Referencia
   items:
     - name: Kötések
       items:
@@ -183,6 +185,8 @@
           href: functions-bindings-storage-blob.md
         - name: Azure Cosmos DB
           href: functions-bindings-cosmosdb.md
+        - name: Event Grid
+          href: functions-bindings-event-grid.md
         - name: Event Hubs
           href: functions-bindings-event-hubs.md
         - name: Külső fájl

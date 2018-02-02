@@ -117,6 +117,7 @@
 ### [Helyszíni kódolók konfigurálása felhőalapú kódolóval való használatra](media-services-live-encoders-overview.md)
 #### [Elemental Live kódoló](media-services-configure-elemental-live-encoder.md)
 #### [FMLE kódoló](media-services-configure-fmle-live-encoder.md)
+#### [Haivision KB kódoló](media-services-configure-kb-live-encoder.md)
 #### [NewTek TriCaster kódoló](media-services-configure-tricaster-live-encoder.md)
 #### [Wirecast kódoló](media-services-configure-wirecast-live-encoder.md)
 ### [A hosszú ideig futó műveletek kezelése](media-services-dotnet-long-operations.md)

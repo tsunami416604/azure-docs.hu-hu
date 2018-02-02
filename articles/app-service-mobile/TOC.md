@@ -100,7 +100,7 @@
 
 ### [Meglévő alkalmazás klónozása](../app-service/app-service-web-app-cloning.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Erőforráscsoportok](../app-service/app-service-move-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [Erőforráscsoportok](../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json#app-service-limitations)
 #### [Háttérfeladatok futtatása WebJobs-feladatokkal](../app-service/web-sites-create-web-jobs.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 #### [Konfigurálás](../app-service/environment/app-service-web-configure-an-app-service-environment.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
@@ -163,11 +163,11 @@
 ## [JavaScript/Cordova ügyfél-SDK](https://azure.github.io/azure-mobile-apps-js-client/)
 ## [Windows/Xamarin ügyfél-SDK](https://msdn.microsoft.com/library/azure/mt419521.aspx)
 
-# Kapcsolódó
+# Kapcsolódó témakörök
 ## [GitHub adattárak](https://github.com/Azure/azure-mobile-apps)
 
-# Erőforrások
-## [App Service – ajánlott eljárások](../app-service/app-service-best-practices.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+# További források
+## [Azure App Service – ajánlott eljárások](../app-service/app-service-best-practices.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=azuremobile)
 ## [Díjszabás](https://azure.microsoft.com/en-us/pricing/details/app-service/)

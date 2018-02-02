@@ -176,6 +176,16 @@
 ##### [A beállításjegyzék-beállítások frissítése](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
 ##### [A biztonsággal és adatvédelemmel kapcsolatos tudnivalók](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
 
+### [Felhasználók átadása és az átadás megszüntetése SaaS-alkalmazásokban](active-directory-saas-app-provisioning.md)
+#### [Alkalmazások integrációjának oktatóanyagai](active-directory-saas-tutorial-list.md)
+#### [Automatikus üzembe helyezés SCIM-kompatibilis alkalmazásokhoz](active-directory-scim-provisioning.md)
+#### [Attribútumleképezések testreszabása](active-directory-saas-customizing-attribute-mappings.md)
+#### [Kifejezések írása attribútumleképezésekhez](active-directory-saas-writing-expressions-for-attribute-mappings.md)
+#### [Hatókörszűrők használata](active-directory-saas-scoping-filters.md)
+#### [Jelentés a felhasználók automatikus átadásáról](active-directory-saas-provisioning-reporting.md)
+#### [A felhasználók átadásának hibaelhárítása](active-directory-application-provisioning-content-map.md)
+
+
 
 ### [Appok távoli elérése az App Proxyval](active-directory-application-proxy-get-started.md)
 #### Bevezetés
@@ -219,7 +229,7 @@
 #### [Speciális tanúsítvány-aláírás a SAML-alkalmazások számára](active-directory-enterprise-apps-advance-certificate-options.md)
 #### [Alkalmazás elrejtése a felhasználói felületen](active-directory-coreapps-hide-third-party-app.md)
 ### [Bejelentkezés automatikus gyorsításának konfigurálása HRD-szabályzattal](active-directory-auto-acceleration-using-hrd.md)
-
+### [AD FS-alkalmazások migrálása az Azure AD-be](migrate-adfs-apps-to-azure.md)
 ### [Alkalmazások hozzáférésének kezelése](active-directory-managing-access-to-apps.md)
 #### [Egyszeri bejelentkezéses hozzáférés](active-directory-appssoaccess-whatis.md)
 #### [Egyszeri bejelentkezés tanúsítványai](active-directory-sso-certs.md)
@@ -264,7 +274,8 @@
 
 ## Erőforrások hozzáférésének delegálása
 ### [Rendszergazdai szerepkörök](active-directory-assign-admin-roles-azure-portal.md)
-#### [Rendszergazdai szerepkörök hozzárendelése](active-directory-users-assign-role-azure-portal.md)
+#### [Rendszergazdai szerepkör hozzárendelése felhasználóhoz](active-directory-users-assign-role-azure-portal.md)
+#### [A tagok és vendégfelhasználók engedélyeinek összehasonlítása](users-default-permissions.md)
 ### [Felügyeleti egységek](active-directory-administrative-units-management.md)
 ### [A jogkivonatok élettartamának beállítása](active-directory-configurable-token-lifetimes.md)
 ### [A rendszergazdai fiókok vészhelyzeti hozzáférésének kezelése](active-directory-admin-manage-emergency-access-accounts.md)
@@ -321,8 +332,8 @@
 #### [Microsoft Graph](active-directory-identityprotection-graph-getting-started.md)
 ### [Privileged Identity Management](./privileged-identity-management/active-directory-securing-privileged-access.md)
 
-## [Más szolgáltatások integrálása az Azure AD-vel]()
-### [LinkedIn-integráció engedélyezése](linkedin-integration.md)
+## Más szolgáltatások integrálása az Azure AD-vel
+### [LinkedIn integrálása az Azure AD-vel](linkedin-integration.md)
 
 ## [AD DS üzembe helyezése Azure-beli virtuális gépeken](virtual-networks-windows-server-active-directory-virtual-machines.md)
 ### [Windows Server Active Directory Azure-beli virtuális gépeken](active-directory-deploying-ws-ad-guidelines.md)
