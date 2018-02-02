@@ -13,17 +13,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/16/2017
+ms.date: 01/20/2018
 ms.author: miprasad
-ms.openlocfilehash: 255c39ea21378aae23fc61da6dc882138fb66ab1
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 3b0a5bfc911f3edf91367cbf4fde907cbf98e114
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="sentiment-analysis-using-deep-learning-with-azure-machine-learning"></a>Részletes tanulás használatával az Azure Machine Learning véleményeket elemzés
 
-Véleményeket elemzésre abban a tartományban, a természetes nyelvű feldolgozásának jól ismert feladat. Megadott szövegek készlete, célja annak meghatározásához, hogy a szöveg a céggel kapcsolatos véleményeket. Ez a megoldás célja CNTK használják a háttérkiszolgálón a Keras (egy modell szintű könyvtár, biztosítva, hogy a magas szintű építőelemeket mély tanulási modellek fejlesztése), és valósíthatnak meg movie értékelést elemzéshez céggel kapcsolatos véleményeket.
+Véleményeket elemzésre abban a tartományban, a természetes nyelvű feldolgozásának jól ismert feladat. Megadott szövegek készlete, célja annak meghatározásához, hogy a szöveg a céggel kapcsolatos véleményeket. Ez a megoldás célja mély Learning használatához előrejelzésére movie értékelést a céggel kapcsolatos véleményeket.
 
 A megoldás nem található https://github.com/Azure/MachineLearningSamples-SentimentAnalysis:
 
@@ -67,8 +67,8 @@ A megoldás elvégzésére Hands-on Labs sorrendjét a következőképpen tört�
 
 | Sorrend| Fájlnév | Kapcsolódó fájlokat |
 |--|-----------|------|
-| 1 | [`SentimentAnalysisDataPreparation.md`](https://github.com/Azure/MachineLearningSamples-SentimentAnalysis/blob/master/docs/SentimentAnalysisDataPreparation.md) | "data/sampleReviews.txt" |
-| 2 | [`SentimentAnalysisModelingKeras.md`](https://github.com/Azure/MachineLearningSamples-SentimentAnalysis/blob/master/docs/SentimentAnalysisModelingKeras.md) | "SentimentExtraction.py" |
+| 1 | [`SentimentAnalysisDataPreparation.md`](https://github.com/Azure/MachineLearningSamples-SentimentAnalysis/blob/master/docs/SentimentAnalysisDataPreparation.md) | 'data/sampleReviews.txt' |
+| 2 | [`SentimentAnalysisModelingKeras.md`](https://github.com/Azure/MachineLearningSamples-SentimentAnalysis/blob/master/docs/SentimentAnalysisModelingKeras.md) | 'SentimentExtraction.py' |
 | 4 | [`SentimentAnalysisOperationalization.md`](https://github.com/Azure/MachineLearningSamples-SentimentAnalysis/blob/master/docs/SentimentAnalysisOperationalization.md) | "Operaionalization" |
 
 ## <a name="conclusion"></a>Összegzés

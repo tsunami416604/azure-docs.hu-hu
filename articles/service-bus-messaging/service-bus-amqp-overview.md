@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 10/06/2017
+ms.date: 01/30/2018
 ms.author: sethm
-ms.openlocfilehash: e2d190dddc3b84eb07eaf2ffea1af48bba0ea13a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6d2dffd22ecfc0aaf6e338567d5cf107a2c07383
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="amqp-10-support-in-service-bus"></a>A Service Bus AMQP 1.0-támogatás
 Az Azure Service Bus cloud service és a helyszíni [Service Bus a Windows Server (Service Bus 1.1)](https://msdn.microsoft.com/library/dn282144.aspx) támogatja a speciális üzenet Várólistázást protokoll (AMQP) 1.0-s. AMQP platformok közötti, egy megnyitott szabványos protokollt használó hibrid alkalmazások létrehozását teszi lehetővé. Alkalmazás-összetevők, amelyek különböző nyelv és keretrendszer használatával készített, és a különböző operációs rendszereken futó, hogyan hozhat létre. Ezeket az összetevőket a Service Bus és zökkenőmentesen csatlakozni tud az összes üzenetváltásra strukturált üzleti hatékonyan és teljes visszaadása.
@@ -80,11 +80,11 @@ Jelenleg a következő klienskódtárak segítségével ismert, hogy a Service B
 
 **2. ábra: Tábla AMQP 1.0-ügyfél szalagtárak**
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 * AMQP 1.0 egy olyan nyitott, megbízható üzenetkezelési protokoll, platformfüggetlen, hibrid alkalmazások létrehozásához használhat. AMQP 1.0 az OASIS szabványa.
 * AMQP 1.0 a rendszer támogatja az Azure Service Bus, valamint a Service Bus a Windows Server (Service Bus 1.1). Árképzési ugyanúgy történik, mint a meglévő protokollokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Készen áll a további? Látogasson el a következő hivatkozásokra:
 
 * [Az AMQP, a Service Bus a .NET használatával]

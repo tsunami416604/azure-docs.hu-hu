@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: c283fb4d1a390de88b425ce51a312b5404503f0d
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: a43d2ea10bfd6de2f8177283821f7aad59e9f610
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>Csomag rögzítésekre kezelése Azure hálózati figyelőt a portál használatával
 
@@ -80,6 +80,7 @@ A csomagrögzítéssel lehet definiálni tulajdonságok a következők:
 
 **Konfigurációjának rögzítése**
 
+- **Helyi fájl elérési útját** -csomagrögzítéssel menteni a virtuális gépen helyi elérési út (érvényes csak akkor, ha **[-fájl]** van kiválasztva). Adjon meg érvényes elérési utat. A Linux virtuális gép használ, ha az elérési út kezdődhet / var / rögzíti.
 - **A Tárfiók** -határozza meg, ha a tárfiók csomagrögzítéssel menti.
 - **Fájl** -határozza meg, ha egy csomagrögzítéssel rendszer helyileg menti a virtuális gépen.
 - **Storage-fiókok** – a kiválasztott tárolási fiók segítségével menti a csomagrögzítéssel a. Alapértelmezett helye https://{storage name}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscription fiókazonosító} /resourcegroups/ {erőforráscsoport name}/providers/microsoft.compute/virtualmachines/{virtual gép neve} / {éé} / {MM} / {NN} / {HH} packetcapture__{MM}_{SS} {XXX} _ .cap. (Csak akkor engedélyezett, ha **tárolási** van kiválasztva)

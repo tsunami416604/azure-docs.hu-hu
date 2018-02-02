@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/04/2017
-ms.openlocfilehash: 8d709936bfba5c89091d7f26449d165bddb930de
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 49e22c5136da67f62a43374817fb1e462fcbcaf0
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="scaling-the-cluster-to-manage-web-service-throughput"></a>Webes szolgáltatás teljesítmény kezelését a fürt méretezése
 
@@ -85,11 +85,11 @@ Például beállítása `autoscale-min-replicas` 5 a öt replikákat hoz létre.
 
 | Paraméter neve | Típus | Leírás |
 |--------------------|--------------------|--------------------|
-| `autoscale-enabled` | Logikai érték | Meghatározza, hogy engedélyezve van-e az automatikus skálázási. Alapértelmezett: igaz |
-| `autoscale-min-replicas` | egész szám | Három munkaállomás-csoporttal minimális számát határozza meg. 0 vagy nagyobb szám lehet. Alapértelmezett: 1 |
-| `autoscale-max-replicas` | egész szám | Meghatározza a három munkaállomás-csoporttal maximális számát. 1 vagy nagyobb lehet. Ha automatikus skálázás-maximális-replikák kisebb, mint az automatikus skálázás-min-replikák, automatikus skálázás-maximális-replikák figyelmen kívül hagyja. Alapértelmezett: 10 |
-| `autoscale-refresh-period-seconds` | egész szám | Megadja azt az időtartamot másodpercben automatikus skálázás frissítései között. Alapértelmezett: 1 |
-| `autoscale-target-utilization` | egész szám | Adja meg az automatikus skálázás fertőzi, 1 és 100 közötti kihasználtsági százalék. Alapértelmezett: 70 |
+| `autoscale-enabled` | logikai | Meghatározza, hogy engedélyezve van-e az automatikus skálázási. Alapértelmezett: igaz |
+| `autoscale-min-replicas` | integer | Három munkaállomás-csoporttal minimális számát határozza meg. 0 vagy nagyobb szám lehet. Alapértelmezett: 1 |
+| `autoscale-max-replicas` | integer | Meghatározza a három munkaállomás-csoporttal maximális számát. 1 vagy nagyobb lehet. Ha automatikus skálázás-maximális-replikák kisebb, mint az automatikus skálázás-min-replikák, automatikus skálázás-maximális-replikák figyelmen kívül hagyja. Alapértelmezett: 10 |
+| `autoscale-refresh-period-seconds` | integer | Megadja azt az időtartamot másodpercben automatikus skálázás frissítései között. Alapértelmezett: 1 |
+| `autoscale-target-utilization` | integer | Adja meg az automatikus skálázás fertőzi, 1 és 100 közötti kihasználtsági százalék. Alapértelmezett: 70 |
 
 Automatikus skálázási működik, győződjön meg arról az alábbi két feltétel:
 
@@ -159,6 +159,6 @@ Az irányítópult kiszolgáló megkezdése után nyisson meg egy böngészőt, 
 
 A fő irányítópultot, kattintson **központi telepítések** a bal oldali navigációs sávon. Ha nem jelennek meg a navigációs panelen, jelölje be erre az ikonra ![menü három rövid vízszintes vonal álló](media/how-to-scale-clusters/icon-hamburger.png) bal felső.
 
-Keresse meg a központi telepítés módosítása, és kattintson az ikonra ![három függőleges pontokból álló ikonjára](media/how-to-scale-clusters/icon-kebab.png) a jobb oldalon, majd **YAM megtekintése/szerkesztése**.
+Keresse meg a központi telepítés módosítása, és kattintson az ikonra ![három függőleges pontokból álló ikonjára](media/how-to-scale-clusters/icon-kebab.png) a jobb oldalon, majd **megtekintése/módosítása YAM**.
 
 A Szerkesztés telepítési képernyőn, keresse meg a *spec* csomópont, módosítsa a *replikák* értékét, majd kattintson **frissítés**.

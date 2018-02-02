@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: byvinyal
 ms.openlocfilehash: 72694743a9e1f520211d133dcc0d7f473c087f38
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="how-to-monitor-apps-in-azure-app-service"></a>Útmutató: az Azure App Service-alkalmazások figyelése
 [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) a beépített felügyeleti funkciókat biztosítja a [Azure-portálon](https://portal.azure.com).
@@ -44,10 +44,10 @@ Ha az alkalmazás a egy **alapvető**, **szabványos** vagy **prémium** tervez,
   * Ehhez az alkalmazáshoz egy napon belül engedélyezett Processzor teljes mennyisége. Ez a kvóta alaphelyzetbe állítja az UTC idő szerint éjfélkor 24 óránként.
 * **Memória**
   * Teljes memóriamennyiség engedélyezett ehhez az alkalmazáshoz.
-* **Sávszélesség**
+* **Bandwidth**
   * Kimenő sávszélesség engedélyezett ehhez az alkalmazáshoz egy nap teljes mennyisége.
     Ez a kvóta alaphelyzetbe állítja az UTC idő szerint éjfélkor 24 óránként.
-* **Fájlrendszer**
+* **Filesystem**
   * Teljes méretű tárolóhely.
 
 A futó alkalmazások alkalmazandó csak kvóta **alapvető**, **szabványos**, és **prémium** tervek van **fájlrendszer**.

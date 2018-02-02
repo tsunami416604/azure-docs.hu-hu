@@ -11,13 +11,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/13/2017
+ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: c9e6aa03e3a1e0592223630c7b81634bcb09add6
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 82681214e9e42819bfc698aa670755467d250fa7
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Eszköz a felhőbe küldött üzeneteket beolvasni a beépített végpont
 
@@ -32,7 +32,7 @@ Az IoT-központ is lehetővé teszi kezelését a beépített eszközről-a-felh
 
 Alapértelmezés szerint minden üzenetet, amely explicit módon a szabálynak üzenet útválasztási a beépített végpont kerülnek. Ha letiltja ezt a tartalék útvonalat, eldobott üzenetek, amely explicit módon nem egyezik a minden üzenet útválasztási szabályokat.
 
-Módosíthatja a megőrzési időtartam, vagy programozott módon a a [IoT-központ erőforrás-szolgáltató REST API-k][lnk-resource-provider-apis], vagy a [Azure-portálon][lnk-management-portal].
+Módosíthatja a megőrzési időtartam vagy programozott módon, a [IoT-központ erőforrás-szolgáltató REST API-k][lnk-resource-provider-apis], vagy a [Azure-portálon] [ lnk-management-portal].
 
 Az IoT-központ elérhetővé teszi a **üzenetek/események** olvashatja az eszközről a felhőbe a központ fogadja a háttér-szolgáltatások beépített végpont. Ezt a végpontot az esemény lehetővé teszi, hogy mechanizmusok az Event Hubs szolgáltatás Hub-kompatibilis támogatja az üzenetek olvasásához.
 
@@ -40,14 +40,14 @@ Az IoT-központ elérhetővé teszi a **üzenetek/események** olvashatja az esz
 
 Használatakor a [Azure Service Bus SDK for .NET] [ lnk-servicebus-sdk] vagy a [Event Hubs - Event Processor Host][lnk-eventprocessorhost], minden IoT-központ kapcsolati karakterláncok használatával a megfelelő engedélyekkel. Ezután **üzenetek/események** az Eseményközpont neveként.
 
-Amikor az SDK-k (vagy a termék integrációja), amely nem tudnak a IoT-központ, be kell olvasni az Event Hub-kompatibilis végpont és Event Hub-kompatibilis nevét a IoT hub beállításai közül:
+Amikor az SDK-k (vagy a termék integrációja), amely nem tudnak a IoT-központot, be kell olvasni, az Event Hub-kompatibilis végpont és Event Hub-kompatibilis nevét:
 
 1. Jelentkezzen be a [Azure-portálon] [ lnk-management-portal] , és keresse meg az IoT hub.
 1. Kattintson a **Végpontok** elemre.
 1. Az a **beépített végpontok** kattintson **események**. 
 1. Megnyílik egy tulajdonságok oldal, amely tartalmazza a következő értékek: **Event Hub-kompatibilis végpont**, **Event Hub-kompatibilis neve**, **partíciók**,  **Megőrzési idő**, és **fogyasztói csoportok**.
 
-    ![Eszköz-felhő beállításai][img-eventhubcompatible]
+    ![Eszközről-a-felhőbe típusú üzenetek beállításai][img-eventhubcompatible]
 
 Az IoT Hub SDK igényel az IoT-központ végpont neve, amely **üzenetek/események** alatt látható **végpontok**.
 
@@ -65,7 +65,7 @@ Az SDK-k és az IoT-központ elérhetővé tévő Event Hub-kompatibilis végpon
 * [Apache Storm spout](../hdinsight/storm/apache-storm-develop-csharp-event-hub-topology.md). Megtekintheti a [forrás spout](https://github.com/apache/storm/tree/master/external/storm-eventhubs) a Githubon.
 * [Apache Spark-integráció](../hdinsight/spark/apache-spark-eventhub-streaming.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 IoT-központok végpontjai kapcsolatos további információkért lásd: [IoT-központok végpontjai][lnk-endpoints].
 

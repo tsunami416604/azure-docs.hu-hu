@@ -1,6 +1,6 @@
 ---
-title: "Adatok másolása az Azure Data Factory használatával Oracle |} Microsoft Docs"
-description: "Ismerje meg az adatok másolása az Oracle-adatbázishoz a támogatott forráshierarchiából áruházakból (vagy) az Oracle támogatott fogadó áruházak Data Factory használatával."
+title: "Adatok másolása és Oracle az Azure Data Factory használatával |} Microsoft Docs"
+description: "Ismerje meg az adatok másolása támogatott forrás áruházakból Oracle-adatbázishoz, vagy a támogatott fogadó áruházak Oracle Data Factory használatával."
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -13,27 +13,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: jingwang
-ms.openlocfilehash: 10db7959396b4ee9927e4272dec9939ac8c13580
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: d6b96bc40325d398c91e293ec6ca8f8cc2993e58
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="copy-data-from-and-to-oracle-using-azure-data-factory"></a>Másolja az adatokat, a kezdő és a Oracle Azure Data Factory használatával
+# <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Adatok másolása az és Oracle Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1. verzió – Általánosan elérhető](v1/data-factory-onprem-oracle-connector.md)
+> * [1 - általánosan elérhető verzió](v1/data-factory-onprem-oracle-connector.md)
 > * [2. verzió – Előzetes verzió](connector-oracle.md)
 
-Ez a cikk ismerteti, hogyan használható a másolási tevékenység az Azure Data Factory adatok másolása az és Oracle-adatbázishoz. Buildekről nyújtanak a [másolása tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
+Ez a cikk ismerteti a másolási tevékenység használata az Azure Data Factory-adatok másolása az és Oracle-adatbázishoz. Buildekről nyújtanak a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 
 > [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [Oracle-összekötőt a V1](v1/data-factory-onprem-oracle-connector.md).
+> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. Ha a Data Factory, amely általában a rendelkezésre álló, 1 verzióját használja [1-es verziójú Oracle-összekötőjét](v1/data-factory-onprem-oracle-connector.md).
 
 ## <a name="supported-capabilities"></a>Támogatott képességei
 
-Adatok másolása az Oracle-adatbázishoz az egyetlen támogatott fogadó adattár, vagy adatok másolása az egyetlen támogatott forrás adattár az Oracle-adatbázishoz. Adattároló források/mosdók, a másolási tevékenység által támogatott listájáért lásd: a [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
+Adatok bármely támogatott fogadó adattárolóhoz másolhatja Oracle-adatbázishoz. Is másolhatja adatok bármely támogatott forrás adattár Oracle-adatbázishoz. A másolási tevékenység által támogatott adatforrások vagy mosdók adattárolókhoz listájáért lásd: a [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
-Pontosabban az Oracle-összekötő Oracle-adatbázishoz a következő verzióit támogatja, és a Basic vagy az OID hitelesítések támogatja.
+Az Oracle-összekötő kifejezetten, Oracle-adatbázishoz a következő verzióit támogatja. Basic vagy az OID hitelesítések is támogatja:
 
 - Oracle 12c R1 (12.1)
 - Oracle 11g R1 vagy R2 (11.1, 11.2)
@@ -43,22 +43,22 @@ Pontosabban az Oracle-összekötő Oracle-adatbázishoz a következő verzióit 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az adatok másolása az/Oracle-adatbázishoz, amely nincs nyilvánosan elérhető, akkor be kell állítania egy Self-hosted integrációs futásidejű. Lásd: [Self-hosted integrációs futásidejű](create-self-hosted-integration-runtime.md) szóló cikkben olvashat integrációs futásidejű. Integrációs futásidejű biztosít egy beépített Oracle-illesztőprogramot, ezért nem, manuálisan kell telepítenie minden olyan illesztőprogram a/az Oracle adatok másolásakor kell.
+Adatok másolása az és Oracle-adatbázishoz, amely nem a nyilvánosan elérhető, akkor be kell állítania egy Self-hosted integrációs futásidejű. Integrációs futásidejű kapcsolatos további információkért lásd: [Self-hosted integrációs futásidejű](create-self-hosted-integration-runtime.md). Az integrációs futásidejű beépített Oracle illesztőprogram biztosít. Emiatt nem kell manuálisan a kezdő és a Oracle adatok másolása az illesztőprogram telepítéséhez.
 
-## <a name="getting-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-A következő szakaszok részletesen bemutatják megadhatók a Data Factory tartozó entitások Oracle-összekötőhöz használt tulajdonságokat.
+A következő szakaszok részletesen bemutatják, amely segítségével határozza meg a Data Factory tartozó entitások és az Oracle-összekötő tulajdonságait.
 
 ## <a name="linked-service-properties"></a>A kapcsolódószolgáltatás-tulajdonságok
 
-Oracle kapcsolódó szolgáltatás támogatott a következő tulajdonságokkal:
+Az Oracle csatolt szolgáltatás a következő tulajdonságok támogatottak.
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot kell beállítani: **Oracle** | Igen |
-| connectionString | Adja meg az Oracle-adatbázispéldány való kapcsolódáshoz szükséges adatokat. Ez a mező megjelölése a SecureString.<br><br>**Kapcsolat típusa támogatott**: szeretne használni **Oracle SID** vagy **Oracle szolgáltatásnév** az adatbázis azonosításához:<br>-SID használata:`Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>-Szolgáltatás neve használatával:`Host=<host>;Port=<port>;ServiceName=<sid>;User Id=<username>;Password=<password>;` | Igen |
+| type | A type tulajdonságot meg kell **Oracle**. | Igen |
+| connectionString | Adja meg az Oracle-adatbázispéldány való kapcsolódáshoz szükséges adatokat. Ez a mező megjelölése SecureString.<br><br>**Kapcsolattípus támogatott**: használható **Oracle SID** vagy **Oracle szolgáltatásnév** az adatbázis azonosításához:<br>– Ha SID használ:`Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>-Ha a szolgáltatás a nevet használja:`Host=<host>;Port=<port>;ServiceName=<sid>;User Id=<username>;Password=<password>;` | Igen |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhatja Self-hosted integrációs futásidejű vagy Azure integrációs futásidejű (ha az adattároló nyilvánosan elérhető). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
 
 **Példa**
@@ -84,14 +84,14 @@ Oracle kapcsolódó szolgáltatás támogatott a következő tulajdonságokkal:
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Szakaszok és meghatározása adatkészletek esetében elérhető tulajdonságok teljes listájáért tekintse meg az adatkészletek cikket. Ez a témakör az Oracle-adatkészlet által támogatott tulajdonságokról.
+Szakaszok és meghatározása adatkészletek esetében elérhető tulajdonságok teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. Ez a rész felsorolja az Oracle-adatkészlet által támogatott tulajdonságokról.
 
-Másolja az adatokat, vagy Oracle, állítsa be a adatkészlet type tulajdonsága **OracleTable**. A következő tulajdonságok támogatottak:
+Adatok másolása az és Oracle, állítsa be a type tulajdonságot az adathalmaz **OracleTable**. A következő tulajdonságok támogatottak.
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot az adathalmaz értékre kell állítani: **OracleTable** | Igen |
-| tableName |A tábla az Oracle-adatbázishoz, amely hivatkozik a társított szolgáltatás neve. | Igen |
+| type | A type tulajdonságot az adathalmaz értékre kell állítani **OracleTable**. | Igen |
+| tableName |A neve annak a táblának az Oracle-adatbázishoz, amelyre a társított szolgáltatás hivatkozik. | Igen |
 
 **Példa**
 
@@ -114,15 +114,15 @@ Másolja az adatokat, vagy Oracle, állítsa be a adatkészlet type tulajdonság
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-Szakaszok és a rendelkezésre álló tevékenységek meghatározó tulajdonságok teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a témakör az Oracle-forrás és a fogadó által támogatott tulajdonságokról.
+Szakaszok és a rendelkezésre álló tevékenységek meghatározó tulajdonságok teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a rész felsorolja az Oracle-forrás és a fogadó által támogatott tulajdonságokról.
 
-### <a name="oracle-as-source"></a>Oracle forrásaként
+### <a name="oracle-as-a-source-type"></a>Oracle a forrás típusa
 
-Adatok másolása Oracle, állítsa be a forrás típusa a másolási tevékenység **OracleSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakasz:
+Adatok másolása Oracle, állítsa be a forrás típusa a másolási tevékenység **OracleSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakasz.
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot a másolási tevékenység forrás értékre kell állítani: **OracleSource** | Igen |
+| type | A type tulajdonságot a másolási tevékenység forrás értékre kell állítani **OracleSource**. | Igen |
 | oracleReaderQuery | Az egyéni SQL-lekérdezés segítségével adatokat olvasni. Például: `"SELECT * FROM MyTable"`. | Nem |
 
 Ha nem adja meg a "oracleReaderQuery", az adatkészletet a "structure" szakaszában meghatározott oszlopokat segítségével olyan lekérdezést (`select column1, column2 from mytable`) futtatásához az Oracle-adatbázishoz. Az adatkészlet-definícióban nem rendelkezik a "structure", ha minden kiválasztott oszlop. a táblából.
@@ -159,16 +159,16 @@ Ha nem adja meg a "oracleReaderQuery", az adatkészletet a "structure" szakaszá
 ]
 ```
 
-### <a name="oracle-as-sink"></a>A fogadó, Oracle
+### <a name="oracle-as-a-sink-type"></a>Oracle a fogadó típusa
 
-Adatok másolása Oracle, állítsa be a fogadó típusa a másolási tevékenység **OracleSink**. A következő tulajdonságok támogatottak a másolási tevékenység **fogadó** szakasz:
+Adatok másolása Oracle, állítsa be a fogadó típusa a másolási tevékenység **OracleSink**. A következő tulajdonságok támogatottak a másolási tevékenység **fogadó** szakasz.
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység fogadó type tulajdonsága értékre kell állítani: **OracleSink** | Igen |
-| WriteBatchSize | Szúr be az SQL-tábla adatokat, amikor a puffer mérete eléri writeBatchSize.<br/>Két érték engedélyezett: egész szám (sorok száma). |Nem (alapértelmezett beállítás 10000) |
-| writeBatchTimeout | Várakozási idő a kötegelt beszúrási művelet befejezését, mielőtt azt az időkorlátot.<br/>Két érték engedélyezett: Timespan. . Példa: 00:30:00 (30 perc). | Nem |
-| preCopyScript | Adjon meg egy SQL-lekérdezést végrehajtani az adatok írása az Oracle minden futtatása előtt a másolási tevékenységhez. Ez a tulajdonság segítségével törölje az előre betöltött adatokat. | Nem |
+| type | A másolási tevékenység fogadó type tulajdonsága értékre kell állítani **OracleSink**. | Igen |
+| writeBatchSize | Szúr be az SQL-tábla adatokat, amikor a puffer mérete eléri writeBatchSize.<br/>Megengedett értékek: egész szám (sorok száma). |Nem (alapértelmezett érték 10 000) |
+| writeBatchTimeout | Várakozási idő a kötegelt beszúrási művelet befejezését, mielőtt azt az időkorlátot.<br/>Megengedett értékek: Timespan. Egy példa: 00:30:00 (30 perc). | Nem |
+| preCopyScript | Adja meg a másolási tevékenység végrehajtása előtt minden egyes futtatásához írt adatok az Oracle egy SQL-lekérdezést. Ez a tulajdonság segítségével törölje az előre betöltött adatokat. | Nem |
 
 **Példa**
 
@@ -203,12 +203,12 @@ Adatok másolása Oracle, állítsa be a fogadó típusa a másolási tevékenys
 
 ## <a name="data-type-mapping-for-oracle"></a>Adattípus-leképezés az Oracle rendszerhez
 
-A/az Oracle adatok másolásakor a következő megfeleltetéseket szolgálnak az Oracle típusú adatokat Azure Data Factory ideiglenes adattípusokat. Lásd: [séma- és írja be a leképezéseket](copy-activity-schema-and-type-mapping.md) hogyan másolási tevékenység van leképezve a séma- és adatok típusa a fogadó tájékozódhat.
+A kezdő és Oracle a másolt adatok, a következő megfeleltetéseket segítségével Oracle típusú adatokat a Data Factory ideiglenes adattípusokat. Hogyan a másolási tevékenység van leképezve a séma- és adatok típusa a fogadó kapcsolatos további tudnivalókért lásd: [séma- és írja be a leképezéseket](copy-activity-schema-and-type-mapping.md).
 
-| Oracle-adattípusra | Data factory ideiglenes adattípus |
+| Oracle-adattípusra | Data Factory ideiglenes adattípus |
 |:--- |:--- |
-| BFÁJL |Byte] |
-| A BLOB |Byte]<br/>(csak támogatja az Oracle 10g és újabb) |
+| BFILE |Byte] |
+| BLOB |Byte]<br/>(csak támogatja az Oracle 10g és újabb) |
 | KARAKTER |Karakterlánc |
 | CLOB |Karakterlánc |
 | DATE |DateTime |
@@ -220,7 +220,7 @@ A/az Oracle adatok másolásakor a következő megfeleltetéseket szolgálnak az
 | NCLOB |Karakterlánc |
 | SZÁM |Decimális, karakterlánc (Ha pontosság > 28) |
 | NVARCHAR2 |Karakterlánc |
-| NYERS |Byte] |
+| RAW |Byte] |
 | ROWID |Karakterlánc |
 | IDŐBÉLYEG |DateTime |
 | A HELYI IDŐZÓNÁRA IDŐBÉLYEG |Karakterlánc |
@@ -230,8 +230,8 @@ A/az Oracle adatok másolásakor a következő megfeleltetéseket szolgálnak az
 | XML |Karakterlánc |
 
 > [!NOTE]
-> Adattípus IDŐKÖZ év, hónap és nap TO IDŐKÖZ második nem támogatottak.
+> Az adattípusok IDŐKÖZ év TO hónap és nap TO IDŐKÖZ második nem támogatottak.
 
 
 ## <a name="next-steps"></a>További lépések
-Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md##supported-data-stores-and-formats).
+Források és mosdók adat-előállítóban másolási tevékenység által támogatott adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md##supported-data-stores-and-formats).

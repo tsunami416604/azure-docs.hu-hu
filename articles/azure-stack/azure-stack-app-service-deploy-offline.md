@@ -12,15 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2017
+ms.date: 01/29/2018
 ms.author: anwestg
-ms.openlocfilehash: d2a9b9fbe2a057a6d36e80c89af83a543e90d3be
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: 2e527620825a3b419c0191244ba0baff4b74f0fa
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>Az App Service erőforrás-szolgáltató felvétele AD FS által védett leválasztott Azure verem környezet
+*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
 Ez a cikk utasításait követve telepítheti a [App Service erőforrás-szolgáltató](azure-stack-app-service-overview.md) Azure verem környezetbe, amely:
 - nem csatlakozik az internethez
@@ -98,7 +99,7 @@ App Service-t leválasztott környezetben telepíti, akkor először létre kell
 
     | Box | Tanúsítvány fájl neve – példa |
     | --- | --- |
-    | **App Service alapértelmezett SSL-tanúsítványfájl** | \_. appservice.local.AzureStack.external.pfx |
+    | **App Service alapértelmezett SSL-tanúsítványfájl** | \_.appservice.local.AzureStack.external.pfx |
     | **Az App Service API SSL tanúsítványfájl** | api.appservice.local.AzureStack.external.pfx |
     | **App Service Publisher SSL tanúsítványfájl** | ftp.appservice.local.AzureStack.external.pfx |
 
@@ -114,7 +115,7 @@ App Service-t leválasztott környezetben telepíti, akkor először létre kell
 
      > [!NOTE]
      > Az üzemi környezetek útmutatása [Azure App Service kiszolgálói szerepkörök Azure verem Kapacitástervezését](azure-stack-app-service-capacity-planning.md).
-     > 
+     >
      >
 
     | Szerepkör | Minimális példányok | Minimális Termékváltozat | Megjegyzések |
@@ -197,7 +198,7 @@ A harmadik technical preview frissítésétől webes API és Azure létrehozás�
 
 3. Ha egy SQL Server erőforrás-szolgáltató is telepített, telepítheti a piactérről DNN webhely. Amikor a rendszer kéri az adatbázis-paraméterek, válasszon egy adatbázist, amely kapcsolódik az erőforrás-szolgáltató SQL Server rendszert futtató számítógép.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Is kipróbálhatja más [platformok (PaaS) szolgáltatás](azure-stack-tools-paas-services.md).
 

@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: bryanla
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 447844d1779c537eb9e336a32575cb68ac9ad9eb
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 8194e6bab35fe7a486fcc3bf0cdf5b00fcd9000c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="faq-and-known-issues-with-managed-service-identity-msi-for-azure-active-directory"></a>Gyakori kérdések és ismert problémákat a felügyelt szolgáltatás Identity (MSI) az Azure Active Directory
 
@@ -61,9 +61,12 @@ Az elemek magyarázata:
 ### <a name="are-there-rbac-roles-for-user-assigned-identities"></a>Vannak-e az RBAC-szerepkörök felhasználói hozzárendelt identitások?
 igen:
 1. MSI-közreműködői: 
+
 - A következőket teheti: CRUD a felhasználói identitások. 
 - Nem: A felhasználó identitása az erőforráshoz rendelt rendelhető hozzá. (azaz hozzárendelése az identitás a virtuális gépek)
+
 2. MSI operátor: 
+
 - Is: Hozzárendelése egy erőforrást egy hozzárendelt felhasználói azonosító. (azaz hozzárendelése az identitás a virtuális gépek)
 - Nem lehet: CRUD a felhasználói identitások.
 
@@ -118,10 +121,9 @@ az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 
 - Távolítsa el az összes felhasználó lehet hozzárendelve MSIs csak úgy azáltal, hogy a rendszer tartozik MSI-fájl. 
 - Egy virtuális géphez a Virtuálisgép-bővítmény telepítése sikertelen lehet DNS-keresési hibák miatt. Indítsa újra a virtuális Gépet, és próbálkozzon újra. 
-- Az Azure CLI: `Az resource show` és `Az resource list` sikertelen lesz, a virtuális gép és egy felhasználó lehet hozzárendelve MSI-fájl. Megoldás használja`az vm/vmss show`
+- A "nem létező" MSI hozzáadása miatt sikertelen a virtuális gép. *Megjegyzés: A javítás sikertelen hozzárendelés-azonosító, ha MSI-fájl nem létezik, folyamatban van a építeni*
 - Azure Storage útmutató jelenleg csak központi Velünk EUAP érhető el. 
-- Ha egy felhasználó hozzárendelt MSI engedélyeznek egy erőforráshoz való hozzáférés, a IAM az adott erőforrás megjelenik "Nem fér hozzá adatokhoz." A probléma megoldásához az adott erőforrás szerepkör-hozzárendelések megtekintése/módosítása a parancssori felület használatával.
-- MSI rendelve a nevében aláhúzás felhasználó létrehozása nem támogatott.
+- MSI rendelve speciális karakterek (pl. aláhúzásjel) neve a felhasználó létrehozása nem támogatott.
 - A második felhasználó hozzáadása hozzárendelése az identitás, a clientID nem feltétlenül érhető el a kérelmek jogkivonatainak. A megoldás, mint indítsa újra a MSI Virtuálisgép-bővítmény, az alábbi két bash parancsokkal:
  - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler disable"`
  - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler enable"`

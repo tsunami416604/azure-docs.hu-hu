@@ -64,4 +64,4 @@ Bejelentkezési hozzáférés csak felhasználói fiókot, amely szerepel a list
 #### <a name="use-a-custom-method-to-validate-issuers"></a>Egyéni módszer segítségével ellenőrizheti azokat kibocsátók
 Megvalósíthat egy egyéni módszer használatával kiállítók érvényesítéséhez a **IssuerValidator** paraméter. Ez a paraméter használatával kapcsolatos további információkért olvassa el a [TokenValidationParameters osztály](https://msdn.microsoft.com/library/system.identitymodel.tokens.tokenvalidationparameters.aspx) az MSDN Webhelyén.
 
-[!INCLUDE  [Help and support](./active-directory-develop-help-support-include.md)]
+[!INCLUDE [Help and support](./active-directory-develop-help-support-include.md)]

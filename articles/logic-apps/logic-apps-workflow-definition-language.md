@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 36eee42b7b10dfb62e569d665f62a94fc94365be
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: cee0619df4e2ed2e31becc764dd64dafef6e97d5
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="workflow-definition-language-schema-for-azure-logic-apps"></a>Az Azure Logic Apps munkafolyamat Definition Language séma
 
@@ -44,7 +44,7 @@ Egy munkafolyamat-definíciót tartalmaz a tényleges logika, amely végrehajtja
   
 |Elem neve|Szükséges|Leírás|  
 |------------------|--------------|-----------------|  
-|$schema|Nem|A JSON-fájl, amely az adatdefiníciós nyelv verziója a helyét adja meg. Ezen a helyen, ha a definíció külsőleg hivatkozik. Ez a dokumentum helye a következő: <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2015-08-01-preview/workflowdefinition.json#`|  
+|$schema|Nem|A JSON-fájl, amely az adatdefiníciós nyelv verziója a helyét adja meg. Ezen a helyen, ha a definíció külsőleg hivatkozik. Itt az a hely, a dokumentum: <p>`https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json`|  
 |contentVersion|Nem|Megadja a definíció verzióját. Amikor telepít egy munkafolyamatot, a definíció használatával, ezt az értéket segítségével győződjön meg arról, hogy a megfelelő meghatározása szolgál.|  
 |paraméterek|Nem|Megadja a definíció adatok bemeneteként használt paraméterek. Legfeljebb 50 paraméterekkel definiálható.|  
 |Eseményindítók|Nem|Az eseményindítók a munkafolyamat kezdeményező adatait adja meg. Legfeljebb 10 eseményindítók meghatározása.|  
@@ -90,7 +90,7 @@ Ez a példa bemutatja, hogyan használhatja a paraméter a szervezet szakaszban 
 
 Eseményindítók és műveletek megadása a részvételre alkalmas hívások munkafolyamat végrehajtása. Ez a szakasz kapcsolatos részletekért lásd: [munkafolyamat-műveleteket és eseményindítók](logic-apps-workflow-actions-triggers.md).
   
-## <a name="outputs"></a>kimenetek  
+## <a name="outputs"></a>Kimenetek  
 
 Kimenetek információt visszaadható egy munkafolyamat futtatásához adja meg. Például ha egy adott állapot vagy minden egyes futtatásához nyomon követni kívánt értéket, a futtatási kimenetek telepíthet is adatokat. Az adatok a felügyeleti REST API-t a rendszert futtató, és a felügyeleti felhasználói Felületét a rendszert futtató, Azure-portálon jelenik meg. Ezek a más külső rendszerekkel, például a Power bi kimenetek is áramolhasson az irányítópultok létrehozásához. Kimenetek vannak *nem* válaszolni a bejövő kérelmeket a szolgáltatás REST API használatával. Egy bejövő kérelem használatával válaszolni a `response` művelet típusa, például:
   
@@ -128,7 +128,7 @@ Lehet, hogy a JSON-értékek meghatározásában szövegkonstans, vagy a definí
   
 Kifejezések bárhol megjelenhet egy JSON karakterláncértéket, és egy másik JSON-érték mindig eredményez. Amikor egy JSON-érték meghatározása egy kifejezést kell a szervezet a kifejezés ki kell olvasni, a-kukac eltávolításával (@). Egy szöveges karakterlánc van szüksége a kezdetű @, hogy karakterlánc használatával kell megjelölni@. Az alábbi példák bemutatják, hogyan kifejezések kiértékelése.  
   
-|JSON-érték|eredménye|  
+|JSON-érték|Eredmény|  
 |----------------|------------|  
 |"paraméterek"|A "parameters" karaktert adja vissza.|  
 |"[1] Paraméterek"|A "parameters [1]" karaktert adja vissza.|  
@@ -139,7 +139,7 @@ A *köztes karakterlánc*, akkor is megjelenhet, kifejezések adott kifejezések
 
 Az eredménye mindig egy karakterláncot, amely hasonló Ez a funkció lehetővé teszi a `concat` függvény. Tegyük fel, hogy az Ön által definiált `myNumber` , `42` és `myString` , `sampleString`:  
   
-|JSON-érték|eredménye|  
+|JSON-érték|Eredmény|  
 |----------------|------------|  
 |"@parameters("sajatString")"|Beolvasása `sampleString` karakterláncként.|  
 |"@{parameters('myString')}"|Beolvasása `sampleString` karakterláncként.|  
@@ -164,7 +164,7 @@ Operátorok a következők: a kifejezések vagy funkciók belül használható k
 
 Ön is meghívhatja kifejezések függvényeket. A következő táblázat a funkciók használható kifejezésben.  
   
-|kifejezés|Értékelés|  
+|Kifejezés|Próbaverzió|  
 |----------------|----------------|  
 |"@function("Hello")"|Meghívja a literál karakterlánc Hello első paraméterként a definíció függvény tagja legyen.|  
 |"@function(" Az "s ritkán!") "|Meghívja a definíció karaktert függvény tagja "ritkán!" az első paraméterként|  
@@ -179,7 +179,7 @@ Ezek a funkciók segítségével kimenetének létrehozása a logikai alkalmazá
 |Függvény neve|Leírás|  
 |-------------------|-----------------|  
 |paraméterek|A paraméter értékét a definícióban megadott adja vissza. <p>`parameters('password')` <p> **Számú paraméter**: 1 <p> **Név**: paraméter <p> **Leírás**: kötelező. A paraméter-értékekhez neve.|  
-|A művelet|Lehetővé teszi, hogy annak értéke származik más JSON-név és érték párok vagy az aktuális futásidejű művelet eredményének kifejezés. A tulajdonság a következő példa a propertyPath által képviselt nem kötelező megadni. A propertyPath nincs megadva, a hivatkozás akkor teljes művelet objektumhoz. Ez a funkció csak akkor használható belül tegye-csak egy művelet feltételeket. <p>`action().outputs.body.propertyPath`|  
+|művelet|Lehetővé teszi, hogy annak értéke származik más JSON-név és érték párok vagy az aktuális futásidejű művelet eredményének kifejezés. A tulajdonság a következő példa a propertyPath által képviselt nem kötelező megadni. A propertyPath nincs megadva, a hivatkozás akkor teljes művelet objektumhoz. Ez a funkció csak akkor használható belül tegye-csak egy művelet feltételeket. <p>`action().outputs.body.propertyPath`|  
 |műveletek|Lehetővé teszi, hogy annak értéke származik más JSON-név és érték párok vagy a futásidejű művelet eredményének kifejezés. Ezek a kifejezések explicit módon deklarálja, hogy egy-egy művelettel függ-e egy másik művelet. A tulajdonság a következő példa a propertyPath által képviselt nem kötelező megadni. A propertyPath nincs megadva, a hivatkozás akkor teljes művelet objektumhoz. Függőségeket használhatja ezt az elemet vagy a feltételek elem, de nem szeretné használni, mind az azonos függő erőforráshoz. <p>`actions('myAction').outputs.body.propertyPath` <p> **Számú paraméter**: 1 <p> **Név**: a művelet neve <p> **Leírás**: kötelező. A művelet, amelynek az értékét a neve. <p> A műveleti objektum a rendelkezésre álló tulajdonságok a következők: <ul><li>`name`</li><li>`startTime`</li><li>`endTime`</li><li>`inputs`</li><li>`outputs`</li><li>`status`</li><li>`code`</li><li>`trackingId`</li><li>`clientTrackingId`</li></ul> <p>Tekintse meg a [Rest API](http://go.microsoft.com/fwlink/p/?LinkID=850646) meg azokat a tulajdonságokat.|
 |Eseményindító|Lehetővé teszi, hogy a kifejezés értéke származik más JSON-név és érték párok vagy a futásidejű eseményindító kimenetét. A tulajdonság a következő példa a propertyPath által képviselt nem kötelező megadni. A propertyPath nincs megadva, a hivatkozás akkor teljes eseményindító objektumhoz. <p>`trigger().outputs.body.propertyPath` <p>A trigger ráfordítások használni, ha a függvény a kimenetek, hogy az előző adja vissza. Azonban, ha egy eseményindító feltételében használni a `trigger` függvény az aktuális végrehajtási kimenetének adja vissza. <p> Az eseményindító objektum rendelkezésre álló tulajdonságok a következők: <ul><li>`name`</li><li>`scheduledTime`</li><li>`startTime`</li><li>`endTime`</li><li>`inputs`</li><li>`outputs`</li><li>`status`</li><li>`code`</li><li>`trackingId`</li><li>`clientTrackingId`</li></ul> <p>Tekintse meg a [Rest API](http://go.microsoft.com/fwlink/p/?LinkID=850644) meg azokat a tulajdonságokat.|
 |actionOutputs|Ez a funkció csak a rövid szintaxist`actions('actionName').outputs` <p> **Számú paraméter**: 1 <p> **Név**: a művelet neve <p> **Leírás**: kötelező. A művelet, amelynek az értékét a neve.|  
@@ -194,7 +194,7 @@ Ezek a funkciók hatnak a gyűjtemények, és általában tömbök, karakterlán
   
 |Függvény neve|Leírás|  
 |-------------------|-----------------|  
-|tartalmazza|Igaz értéket ad eredményül, ha a szótár tartalmaz-e, kulcslista értéket tartalmaz, vagy karakterlánc karakterláncrészletet tartalmazza. Például, a függvény `true`: <p>`contains('abacaba','aca')` <p> **Számú paraméter**: 1 <p> **Név**: gyűjteményen belül <p> **Leírás**: kötelező. A gyűjteményt, amelyben keresni. <p> **Számú paraméter**: 2. régiója <p> **Név**: objektum keresése <p> **Leírás**: kötelező. Az objektum belül található a **gyűjteményben**.|  
+|tartalmazza a következőt:|Igaz értéket ad eredményül, ha a szótár tartalmaz-e, kulcslista értéket tartalmaz, vagy karakterlánc karakterláncrészletet tartalmazza. Például, a függvény `true`: <p>`contains('abacaba','aca')` <p> **Számú paraméter**: 1 <p> **Név**: gyűjteményen belül <p> **Leírás**: kötelező. A gyűjteményt, amelyben keresni. <p> **Számú paraméter**: 2. régiója <p> **Név**: objektum keresése <p> **Leírás**: kötelező. Az objektum belül található a **gyűjteményben**.|  
 |Hossza|A tömb vagy karakterlánc elemek számát adja vissza. Például, a függvény `3`:  <p>`length('abc')` <p> **Számú paraméter**: 1 <p> **Név**: gyűjtemény <p> **Leírás**: kötelező. A gyűjtemény, amelynek hossza eléréséhez.|  
 |üres|Igaz értéket ad eredményül, ha az objektum, a tömb vagy karakterlánc üres. Például, a függvény `true`: <p>`empty('')` <p> **Számú paraméter**: 1 <p> **Név**: gyűjtemény <p> **Leírás**: kötelező. Annak ellenőrzése, hogy az üres gyűjtemény.|  
 |metszetének|Visszaadja egy egyetlen tömb vagy objektum, amely a tömb, vagy az átadott objektumok közötti közös elemmel rendelkezik. Például, a függvény `[1, 2]`: <p>`intersection([1, 2, 3], [101, 2, 1, 10],[6, 8, 1, 2])` <p>A függvény paramétereinek lehet egy objektum vagy egy lemezkészlet tömbök (nem keverékével is). Ha két objektum ugyanazzal a névvel, a végső objektum megjelenik az utolsó objektum ezzel a névvel. <p> **Számú paraméter**: 1...*n* <p> **Név**: gyűjtemény*n* <p> **Leírás**: kötelező. A gyűjtemények kiértékelése. Az objektum összes gyűjtemény megjelenjen az eredményben továbbított kell lennie.|  
@@ -243,13 +243,13 @@ Ezek a funkciók feltételek belül lehetnek hasznosak, és bármilyen típusú 
 
 Ezek a függvények minden nyelven natív típusai közötti átváltásra használhatók:  
   
-- Karakterlánc  
+- karakterlánc  
   
 - egész szám  
   
 - Lebegőpontos  
   
-- Logikai érték  
+- logikai  
   
 - Tömbök  
   
@@ -260,7 +260,7 @@ Ezek a függvények minden nyelven natív típusai közötti átváltásra haszn
 |Függvény neve|Leírás|  
 |-------------------|-----------------|  
 |int|A paraméter átalakítása egy egész számot. Ez a funkció például 100 karakterlánc helyett egy számot adja vissza: <p>`int('100')` <p> **Számú paraméter**: 1 <p> **Név**: érték <p> **Leírás**: kötelező. Az érték, amely alakítja át egy egész számot.|  
-|Karakterlánc|A paraméter alakítható át karakterlánccá. Például, a függvény `'10'`: <p>`string(10)` <p>Az objektum is konvertálhatók karakterlánccá. Például ha a `myPar` paraméter egy tulajdonság az objektum `abc : xyz`, akkor ez a függvény visszaadja `{"abc" : "xyz"}`: <p>`string(parameters('myPar'))` <p> **Számú paraméter**: 1 <p> **Név**: érték <p> **Leírás**: kötelező. Az érték, amely karakterlánccá alakítja át.|  
+|karakterlánc|A paraméter alakítható át karakterlánccá. Például, a függvény `'10'`: <p>`string(10)` <p>Az objektum is konvertálhatók karakterlánccá. Például ha a `myPar` paraméter egy tulajdonság az objektum `abc : xyz`, akkor ez a függvény visszaadja `{"abc" : "xyz"}`: <p>`string(parameters('myPar'))` <p> **Számú paraméter**: 1 <p> **Név**: érték <p> **Leírás**: kötelező. Az érték, amely karakterlánccá alakítja át.|  
 |JSON-ban|A paraméternek JSON típusú értékké konvertálni és fordítottja `string()`. Például, a függvény `[1,2,3]` tömb, nem pedig egy karakterlánc: <p>`json('[1,2,3]')` <p>Hasonlóképpen átválthat a karakterlánc objektum. Például, a függvény `{ "abc" : "xyz" }`: <p>`json('{"abc" : "xyz"}')` <p> **Számú paraméter**: 1 <p> **Név**: karakterlánc <p> **Leírás**: kötelező. A karakterlánc, amely natív típusa értékre alakítja át. <p>A `json()` függvény túl a bemeneti XML használatát támogatja. Ha például a paraméter értékét: <p>`<?xml version="1.0"?> <root>   <person id='1'>     <name>Alan</name>     <occupation>Engineer</occupation>   </person> </root>` <p>a JSON formátumúvá alakul: <p>`{ "?xml": { "@version": "1.0" },   "root": {     "person": [     {       "@id": "1",       "name": "Alan",       "occupation": "Engineer"     }   ]   } }`|  
 |Lebegőpontos|A paraméter argumentum konvertálható lebegőpontos szám. Például, a függvény `10.333`: <p>`float('10.333')` <p> **Számú paraméter**: 1 <p> **Név**: érték <p> **Leírás**: kötelező. Az érték, amely a lebegőpontos számként alakítja át.|  
 |logikai érték|A paraméter átalakítása olyan logikai érték. Például, a függvény `false`: <p>`bool(0)` <p> **Számú paraméter**: 1 <p> **Név**: érték <p> **Leírás**: kötelező. Az érték, amely egy logikai érték alakítja át.|  
@@ -279,7 +279,7 @@ Ezek a függvények minden nyelven natív típusai közötti átváltásra haszn
 |uriComponentToBinary|Visszaadja a bináris megjelenítése egy URI-kódolású karakterlánc. Például, a függvény a bináris megjelenítése `You Are:Cool/Awesome`: <p>`uriComponentToBinary('You+Are%3ACool%2FAwesome')` <p> **Számú paraméter**: 1 <p> **Név**: karakterlánc<p> **Leírás**: kötelező. Az URI-kódolású karakterlánc.|  
 |uriComponentToString|Visszaadja a URI karakterlánc-ábrázolása kódolású karakterlánc. Például, a függvény `You Are:Cool/Awesome`: <p>`uriComponentToBinary('You+Are%3ACool%2FAwesome')` <p> **Számú paraméter**: 1<p> **Név**: karakterlánc<p> **Leírás**: kötelező. Az URI-kódolású karakterlánc.|  
 |xml|Térjen vissza az értéket XML-ábrázolása. Például ezt a funkciót XML-kódot eredményezzen tartalom által képviselt `'\<name>Alan\</name>'`: <p>`xml('\<name>Alan\</name>')` <p>A `xml()` függvény túl a bemeneti JSON-objektum használatát támogatja. Például a paraméter `{ "abc": "xyz" }` alakítja át az XML-tartalom:`\<abc>xyz\</abc>` <p> **Számú paraméter**: 1<p> **Név**: érték<p> **Leírás**: kötelező. Az érték átalakítása XML.|  
-|A tömb|A paraméter átalakítása tömb. Például, a függvény `["abc"]`: <p>`array('abc')` <p> **Számú paraméter**: 1 <p> **Név**: érték <p> **Leírás**: kötelező. Az érték, amely a tömb alakítja át.|
+|tömb|A paraméter átalakítása tömb. Például, a függvény `["abc"]`: <p>`array('abc')` <p> **Számú paraméter**: 1 <p> **Név**: érték <p> **Leírás**: kötelező. Az érték, amely a tömb alakítja át.|
 |createArray|A paraméter egy tömb jön létre. Például, a függvény `["a", "c"]`: <p>`createArray('a', 'c')` <p> **Számú paraméter**: 1...*n* <p> **Név**: bármely*n* <p> **Leírás**: kötelező. Az értékek egy tömb egységgé kombinálják.|
 |triggerFormDataValue|Űrlap-adatok, vagy a képernyő-kódolású eseményindító kimenetét a kulcsnév megfelelő egyetlen értéket ad vissza.  Ha egyszerre több megfelelő azt fogja hiba.  Például a következő visszaadható `bar`:`triggerFormDataValue('foo')`<br /><br />**Számú paraméter**: 1<br /><br />**Név**: kulcs neve<br /><br />**Leírás**: kötelező. Az űrlap adatérték vissza kulcs neve.|
 |triggerFormDataMultiValues|Űrlap-adatok, vagy a képernyő-kódolású eseményindító kimenetét a kulcsnév egyező tömbjét adja vissza.  Például a következő visszaadható `["bar"]`:`triggerFormDataValue('foo')`<br /><br />**Számú paraméter**: 1<br /><br />**Név**: kulcs neve<br /><br />**Leírás**: kötelező. Az űrlap adatértékek vissza kulcs neve.|
@@ -306,13 +306,13 @@ Ezeket a funkciókat használhatja bármelyik típusú számot: **egész számok
   
 |Függvény neve|Leírás|  
 |-------------------|-----------------|  
-|Hozzáadása|A két számok eredményét adja vissza. Például, a függvény `20.333`: <p>`add(10,10.333)` <p> **Számú paraméter**: 1 <p> **Név**: Summand 1 <p> **Leírás**: kötelező. A hozzáadni kívánt számot **Summand 2**. <p> **Számú paraméter**: 2. régiója <p> **Név**: Summand 2 <p> **Leírás**: kötelező. A hozzáadni kívánt számot **Summand 1**.|  
+|hozzáadás|A két számok eredményét adja vissza. Például, a függvény `20.333`: <p>`add(10,10.333)` <p> **Számú paraméter**: 1 <p> **Név**: Summand 1 <p> **Leírás**: kötelező. A hozzáadni kívánt számot **Summand 2**. <p> **Számú paraméter**: 2. régiója <p> **Név**: Summand 2 <p> **Leírás**: kötelező. A hozzáadni kívánt számot **Summand 1**.|  
 |Sub|A két szám különbsége eredményét adja vissza. Például, a függvény `-0.333`: <p>`sub(10,10.333)` <p> **Számú paraméter**: 1 <p> **Név**: Minuend <p> **Leírás**: kötelező. A szám, amely **Subtrahend** törlődik. <p> **Számú paraméter**: 2. régiója <p> **Név**: Subtrahend <p> **Leírás**: kötelező. Távolítsa el a számot a **Minuend**.|  
 |MUL számú|Az eredményt ad vissza a két szám szorzásával. Például, a függvény `103.33`: <p>`mul(10,10.333)` <p> **Számú paraméter**: 1 <p> **Név**: Multiplicand 1 <p> **Leírás**: kötelező. A szám szorzóját **Multiplicand 2** együtt. <p> **Számú paraméter**: 2. régiója <p> **Név**: Multiplicand 2 <p> **Leírás**: kötelező. A szám szorzóját **Multiplicand 1** együtt.|  
 |DIV|A két szám osztásával kapott eredményét adja vissza. Például, a függvény `1.0333`: <p>`div(10.333,10)` <p> **Számú paraméter**: 1 <p> **Név**: osztandó <p> **Leírás**: kötelező. A szám nullával a **osztó**. <p> **Számú paraméter**: 2. régiója <p> **Név**: osztó <p> **Leírás**: kötelező. A szám felosztása a **osztandó** által.|  
 |MOD|A két szám (modulo) felosztásával után a maradékot adja vissza. Például, a függvény `2`: <p>`mod(10,4)` <p> **Számú paraméter**: 1 <p> **Név**: osztandó <p> **Leírás**: kötelező. A szám nullával a **osztó**. <p> **Számú paraméter**: 2. régiója <p> **Név**: osztó <p> **Leírás**: kötelező. A szám felosztása a **osztandó** által. A felosztás után ezeket a többi használatban van.|  
 |perc|Ez a függvény hívásakor két különböző mintát van. <p>Itt `min` egy tömb vesz igénybe, és a függvény visszaadja `0`: <p>`min([0,1,2])` <p>Azt is megteheti, ez a funkció is igénybe vehet, értékeket, és visszaadja a vesszővel tagolt listáját `0`: <p>`min(0,1,2)` <p> **Megjegyzés:**: minden értékeknek kell lenniük, számok, ha a paraméter egy tömb, a tömb rendelkezik, hogy csak a számokat. <p> **Számú paraméter**: 1 <p> **Név**: gyűjtemény vagy érték <p> **Leírás**: kötelező. Vagy tömbje értékek a legkisebb értéket keresi, vagy egy első értékét. <p> **Számú paraméter**: 2...*n* <p> **Név**: érték*n* <p> **Leírás**: nem kötelező. Ha az első paraméter értéke, átadhatók további értékek, és a minimális átadott értékek adja vissza.|  
-|maximális|Ez a függvény hívásakor két különböző mintát van. <p>Itt `max` egy tömb vesz igénybe, és a függvény visszaadja `2`: <p>`max([0,1,2])` <p>Azt is megteheti, ez a funkció is igénybe vehet, értékeket, és visszaadja a vesszővel tagolt listáját `2`: <p>`max(0,1,2)` <p> **Megjegyzés:**: minden értékeknek kell lenniük, számok, ha a paraméter egy tömb, a tömb rendelkezik, hogy csak a számokat. <p> **Számú paraméter**: 1 <p> **Név**: gyűjtemény vagy érték <p> **Leírás**: kötelező. Vagy tömbje értékek a legnagyobb értéket keresi, vagy egy első értékét. <p> **Számú paraméter**: 2...*n* <p> **Név**: érték*n* <p> **Leírás**: nem kötelező. Ha az első paraméter értéke, átadhatók további értékek, és a maximális átadott értékek adja vissza.|  
+|max.|Ez a függvény hívásakor két különböző mintát van. <p>Itt `max` egy tömb vesz igénybe, és a függvény visszaadja `2`: <p>`max([0,1,2])` <p>Azt is megteheti, ez a funkció is igénybe vehet, értékeket, és visszaadja a vesszővel tagolt listáját `2`: <p>`max(0,1,2)` <p> **Megjegyzés:**: minden értékeknek kell lenniük, számok, ha a paraméter egy tömb, a tömb rendelkezik, hogy csak a számokat. <p> **Számú paraméter**: 1 <p> **Név**: gyűjtemény vagy érték <p> **Leírás**: kötelező. Vagy tömbje értékek a legnagyobb értéket keresi, vagy egy első értékét. <p> **Számú paraméter**: 2...*n* <p> **Név**: érték*n* <p> **Leírás**: nem kötelező. Ha az első paraméter értéke, átadhatók további értékek, és a maximális átadott értékek adja vissza.|  
 |tartomány|Egy adott értéket egész számok tömbje állít elő. A visszaadott tömb hosszának megadása. <p>Például, a függvény `[3,4,5,6]`: <p>`range(3,4)` <p> **Számú paraméter**: 1 <p> **Név**: kezdőindex <p> **Leírás**: kötelező. A tömb első egész szám. <p> **Számú paraméter**: 2. régiója <p> **Név**: száma <p> **Leírás**: kötelező. Ez az érték egész szám, amely a tömb száma.|  
 |VÉL|Hoz létre egy véletlenszerű egész (csak az első vége között lehet) a megadott tartományban. Például ezt a funkciót adhat vissza vagy `0` vagy "1": <p>`rand(0,2)` <p> **Számú paraméter**: 1 <p> **Név**: minimális <p> **Leírás**: kötelező. A visszaadható legkisebb egész. <p> **Számú paraméter**: 2. régiója <p> **Név**: maximális <p> **Leírás**: kötelező. Ez az érték a következő egész számra a legnagyobb egész számot visszatérő utánra esik.|  
  
@@ -343,6 +343,6 @@ Ezek a funkciók segítséget nyújt a futási időben magát a munkafolyamatot 
 |listCallbackUrl|Meghívni az eseményindító vagy művelet hívására karakterláncot ad vissza. <p> **Megjegyzés:**: Ez a függvény csak a használható egy **httpWebhook** és **apiConnectionWebhook**, nem a egy **manuális**, **ismétlődési**, **http**, vagy **apiConnection**. <p>Például a `listCallbackUrl()` működéshez adja vissza: <p>`https://prod-01.westus.logic.azure.com:443/workflows/1235...ABCD/triggers/manual/run?api-version=2015-08-01-preview&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=xxx...xxx` |  
 |munkafolyamat|Ez a funkció teszi lehetővé a részletek magát a munkafolyamat a futási időben. <p> A munkafolyamat-objektumot a rendelkezésre álló tulajdonságok a következők: <ul><li>`name`</li><li>`type`</li><li>`id`</li><li>`location`</li><li>`run`</li></ul> <p> Értékét a `run` tulajdonsága egy objektum a következő tulajdonságokkal: <ul><li>`name`</li><li>`type`</li><li>`id`</li></ul> <p>Tekintse meg a [Rest API](http://go.microsoft.com/fwlink/p/?LinkID=525617) meg azokat a tulajdonságokat.<p> Például futtassa az aktuális nevét, amelyet a `"@workflow().run.name"` kifejezés. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Munkafolyamat-műveletek és eseményindítók](logic-apps-workflow-actions-triggers.md)

@@ -1,6 +1,6 @@
 ---
-title: "Létrehozása kezelési megoldásai Operations Management Suite (OMS) |} Microsoft Docs"
-description: "Megoldások bővítése Operations Management Suite (OMS), adja meg a csomagolt felügyeleti lehetőségeket, amelyek az ügyfelek az OMS-munkaterület adhat hozzá.  Ez a cikk részletesen hogyan hozhat létre a saját környezetében használható felügyeleti megoldás, vagy szeretné elérhetővé tenni az ügyfelek számára."
+title: "A felügyeleti megoldás fájl létrehozása az Azure-ban |} Microsoft Docs"
+description: "-Kezelési megoldás biztosítja, hogy az ügyfelek adhat hozzá az Azure környezetben csomagolt felügyeleti lehetőségeket.  Ez a cikk részletesen hogyan hozhat létre a saját környezetében használható felügyeleti megoldás, vagy szeretné elérhetővé tenni az ügyfelek számára."
 services: operations-management-suite
 documentationcenter: 
 author: bwren
@@ -15,17 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1ace3042cc00cedd005955cdfb82c557fd4a8fb2
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: d896fb7c5ffed5c0fe338c2d2f1ef864aacd6f79
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="creating-a-management-solution-file-in-operations-management-suite-oms-preview"></a>A felügyeleti megoldás fájl létrehozása az Operations Management Suite (OMS) (előzetes verzió)
+# <a name="creating-a-management-solution-file-in-azure-preview"></a>Felügyeleti megoldás fájl létrehozása az Azure (előzetes verzió)
 > [!NOTE]
-> Ez az előzetes dokumentum megoldások létrehozásához az OMS Szolgáltatáshoz, amely jelenleg előzetes verziójúak. Az alábbiakban a séma van változhat.  
+> Ez az előzetes dokumentum megoldások létrehozásához Azure, amely jelenleg előzetes verziójúak. Az alábbiakban a séma van változhat.  
 
-Az Operations Management Suite (OMS) megoldások használják, mint [Resource Manager-sablonok](../azure-resource-manager/resource-manager-template-walkthrough.md).  A fő feladat hozhatnak létre megoldások hogyan van tanulási hogyan [sablon szerzői](../azure-resource-manager/resource-group-authoring-templates.md).  Ez a cikk ismerteti egyedi megoldások és a szokásos megoldás erőforrások konfigurálása használt sablonokat.
+Az Azure-ban megoldások használják, mint [Resource Manager-sablonok](../azure-resource-manager/resource-manager-template-walkthrough.md).  A fő feladat hozhatnak létre megoldások hogyan van tanulási hogyan [sablon szerzői](../azure-resource-manager/resource-group-authoring-templates.md).  Ez a cikk ismerteti egyedi megoldások és a szokásos megoldás erőforrások konfigurálása használt sablonokat.
 
 
 ## <a name="tools"></a>Eszközök
@@ -53,7 +53,8 @@ A felügyeleti megoldás fájl alapvető szerkezete megegyezik egy [Resource Man
 ## <a name="parameters"></a>Paraméterek
 [Paraméterek](../azure-resource-manager/resource-group-authoring-templates.md#parameters) értékek, amelyekre szüksége van a felhasználótól a felügyeleti megoldás telepítésekor.  Standard paramétert, amely minden megoldás fog rendelkezni, és az adott megoldáshoz szükség szerint további paramétereket is hozzáadhat.  Hogyan felhasználók nyújtják a paraméterértékek való telepítésekor a megoldás függ az adott paraméter és a megoldás telepítésének módját.
 
-Amikor a felhasználó telepíti a felügyeleti megoldás keresztül a [Azure piactér](operations-management-suite-solutions.md#finding-and-installing-management-solutions) vagy [Azure gyors üzembe helyezési sablonokat](operations-management-suite-solutions.md#finding-and-installing-management-solutions) megadását kéri az [OMS munkaterületet, és az Automation-fiók](operations-management-suite-solutions.md#oms-workspace-and-automation-account).  Ezek használhatók a szabványos paraméterek értékeit feltöltéséhez.  Nem kéri a felhasználót, hogy közvetlenül a szabványos paraméterek értékének megadására, de meg kell minden további paraméterek értékének megadására.
+Amikor a felhasználó telepíti a felügyeleti megoldás keresztül a [Azure piactér](operations-management-suite-solutions.md#finding-and-installing-management-solutions) vagy [Azure gyors üzembe helyezési sablonokat](operations-management-suite-solutions.md#finding-and-installing-management-solutions) megadását kéri a [Naplóelemzési munkaterület és automatizálás fiók](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account).  Ezek használhatók a szabványos paraméterek értékeit feltöltéséhez.  Nem kéri a felhasználót, hogy közvetlenül a szabványos paraméterek értékének megadására, de meg kell minden további paraméterek értékének megadására.
+
 
 Amikor a felhasználó telepíti a megoldás [egy másik módszer](operations-management-suite-solutions.md#finding-and-installing-management-solutions), meg kell adniuk egy értéket az összes szabványos és az összes további paraméterei.
 
@@ -89,7 +90,7 @@ Az alábbi táblázat a minden felügyeleti megoldások szabványos paraméterek
 | Fióknév |karakterlánc |Azure Automation-fiók nevét. |
 | pricingTier |karakterlánc |A Naplóelemzési munkaterület- és Azure Automation-fiók tarifacsomagot. |
 | regionId |karakterlánc |Az Azure Automation-fiók területet. |
-| Megoldás neve |karakterlánc |A megoldás neve.  Ha a megoldás gyorsindítási sablonok keresztül telepíti, majd meg kell határozni megoldás neve paraméterként úgy határozhatja meg kell adnia egy felhasználói helyette igénylő karakterlánc. |
+| solutionName |karakterlánc |A megoldás neve.  Ha a megoldás gyorsindítási sablonok keresztül telepíti, majd meg kell határozni megoldás neve paraméterként úgy határozhatja meg kell adnia egy felhasználói helyette igénylő karakterlánc. |
 | workspaceName |karakterlánc |Napló Analytics munkaterület neve. |
 | workspaceRegionId |karakterlánc |A Naplóelemzési munkaterület területet. |
 
@@ -168,8 +169,9 @@ Ebben az esetben hivatkozik, a megoldással a szintaxissal változók értékein
 ### <a name="dependencies"></a>Függőségek
 A **dependsOn** elem azt adja meg a [függőségi](../azure-resource-manager/resource-group-define-dependencies.md) egy másik erőforrás.  A megoldás telepítésekor egy erőforrás nem jön létre, amíg az összes függősége létrejött.  A megoldás lehet például [runbookot](operations-management-suite-solutions-resources-automation.md#runbooks) használatával telepített egy [erőforrás feladat](operations-management-suite-solutions-resources-automation.md#automation-jobs).  A feladat erőforrás lenne erőforrástól függ a runbook győződjön meg arról, hogy a runbook létrehozása, a feladat létrehozása előtt.
 
-### <a name="oms-workspace-and-automation-account"></a>OMS-munkaterület és Automation-fiók
-Megoldások szükséges egy [OMS-munkaterület](../log-analytics/log-analytics-manage-access.md) nézeteket tartalmaz, és egy [Automation-fiók](../automation/automation-security-overview.md#automation-account-overview) magában foglalja a runbookok és kapcsolódó erőforrások.  Ezek előtt elérhetőnek kell lennie a megoldás az erőforrások jönnek létre, és nem lehet megadni, a megoldás magát.  A felhasználó fog [adjon meg egy munkaterület és a fiók](operations-management-suite-solutions.md#oms-workspace-and-automation-account) amikor azok a megoldás üzembe helyezéséhez, de a szerző vegye figyelembe a következő szempontokat.
+### <a name="log-analytics-workspace-and-automation-account"></a>A Naplóelemzési munkaterület és Automation-fiók
+Megoldások szükséges egy [Naplóelemzési munkaterület](../log-analytics/log-analytics-manage-access.md) nézeteket tartalmaz, és egy [Automation-fiók](../automation/automation-security-overview.md#automation-account-overview) magában foglalja a runbookok és kapcsolódó erőforrások.  Ezek előtt elérhetőnek kell lennie a megoldás az erőforrások jönnek létre, és nem lehet megadni, a megoldás magát.  A felhasználó fog [adjon meg egy munkaterület és a fiók](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account) amikor azok a megoldás üzembe helyezéséhez, de a szerző vegye figyelembe a következő szempontokat.
+
 
 ## <a name="solution-resource"></a>Megoldás erőforrás
 Minden egyes megoldáshoz szükségesek egy erőforrás bejegyzés a **erőforrások** elem, amely meghatározza a megoldás magát.  Ez lesz az olyan típusú **Microsoft.OperationsManagement/solutions** és az alábbi szerkezettel rendelkezik. Ez magában foglalja [szabványos paraméterek](#parameters) és [változók](#variables) , amely általában meghatározásához használják a megoldás tulajdonságait.
@@ -227,7 +229,7 @@ A **terv** entitás a megoldás erőforrás tulajdonságokkal rendelkezik, az al
 | név |A megoldás neve. |
 | verzió: |A megoldás a szerző által meghatározott verziója. |
 | termék |A megoldás azonosításához egyedi karakterlánc. |
-| Közzétevő |A megoldás közzétevője. |
+| publisher |A megoldás közzétevője. |
 
 
 

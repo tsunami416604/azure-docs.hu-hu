@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/12/2017
+ms.date: 01/29/2018
 ms.author: andredm
 ms.reviewer: rqureshi
-ms.openlocfilehash: b99264eb69f115db6e334b6aceae6ed897202d56
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: f9ca915718cb9016b82ba6a415715c5527657dad
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="manage-role-based-access-control-with-the-azure-command-line-interface"></a>Szerepköralapú hozzáférés-vezérlés az Azure parancssori felületével kezelése
 > [!div class="op_single_selector"]
@@ -27,9 +27,14 @@ ms.lasthandoff: 12/21/2017
 > * [REST API](role-based-access-control-manage-access-rest.md)
 
 
-Szerepköralapú hozzáférés-vezérlést (RBAC) az Azure portálon, és az Azure Resource Manager API segítségével kezelheti az előfizetést és a minden részletre kiterjedő szinten erőforrásokhoz való hozzáférését. Ez a szolgáltatás egyes szerepkörök hozzárendelése el egy adott hatókörhöz szerint engedélyezheti a hozzáférést az Active Directory felhasználók, csoportok vagy szolgáltatásnevekről.
+Szerepköralapú hozzáférés-vezérlést (RBAC) az Azure portálon, és az Azure Resource Manager API segítségével kezelheti az előfizetést és a minden részletre kiterjedő szinten erőforrásokhoz való hozzáférését. Ez a szolgáltatás egyes szerepkörök hozzárendelése el egy adott hatókörhöz szerint engedélyezheti a hozzáférést az Active Directory felhasználók, csoportok vagy szolgáltatásnevekről. 
 
-Az Azure parancssori felület (CLI) kezelheti az RBAC használata előtt rendelkeznie kell a következő előfeltételek teljesülését:
+> [!NOTE] 
+> A legfrissebb szerepkör dokumentáció készen áll a [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/role?view=azure-cli-latest).
+
+
+ 
++ > Legújabb szerepkör dokumentációjában [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/role?view=azure-cli-latest) az Azure parancssori felület (CLI) kezelheti az RBAC használata előtt rendelkeznie kell a következő előfeltételek teljesülését:
 
 * Az Azure CLI 0.8.8 verzió vagy újabb. Telepítse a legújabb verziót, és társítsa azt az Azure-előfizetése, [telepítése és konfigurálása az Azure parancssori felület](../cli-install-nodejs.md).
 * Az Azure Resource Manager az Azure parancssori felület. Ugrás a [az Azure parancssori felület használatával az erőforrás-kezelővel](../xplat-cli-azure-resource-manager.md) további részleteket.

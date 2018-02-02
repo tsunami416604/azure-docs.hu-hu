@@ -13,11 +13,11 @@ ms.devlang: powershell
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: 66b4f068189fd17f08a6a57ed44233c04c16fff7
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 99e3365a846f35262489fdccd753b4ce2e50fa49
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Egy SSIS-csomagot, a tárolt eljárási tevékenység az Azure Data Factory meghívása
 Ez a cikk ismerteti, hogyan lehet meghívni egy SSIS-csomagot az Azure Data Factory-folyamat a tárolt eljárási tevékenység használatával. 
@@ -31,7 +31,7 @@ Ez a cikk ismerteti, hogyan lehet meghívni egy SSIS-csomagot az Azure Data Fact
 Ez a cikk a forgatókönyv, amelyen az SSIS-katalógus Azure SQL-adatbázis. Egy Azure SQL felügyelt példányát (magán előnézetben) is használhatja.
 
 ### <a name="create-an-azure-ssis-integration-runtime"></a>Azure SSIS integrációs modul létrehozása
-Ha még nem rendelkezik a részletes utasításokat a következő, hozzon létre egy Azure-SSIS-integrációs futásidejű a [oktatóanyag: telepítése SSIS-csomagok](../tutorial-deploy-ssis-packages-azure.md). Egy adat-előállító létrehozása az Azure-SSIS-integrációs futásidejű 2-es verzióját, létre kell hoznia. 
+Ha még nem rendelkezik a részletes utasításokat a következő, hozzon létre egy Azure-SSIS-integrációs futásidejű a [oktatóanyag: telepítése SSIS-csomagok](../tutorial-create-azure-ssis-runtime-portal.md). Egy adat-előállító létrehozása az Azure-SSIS-integrációs futásidejű 2-es verzióját, létre kell hoznia. 
 
 ## <a name="azure-portal"></a>Azure Portal
 Ebben a szakaszban az Azure-portálon a tárolt eljárás tevékenység, amely hívja meg az SSIS-csomag létrehozása a Data Factory-folyamat használja.
@@ -43,11 +43,11 @@ Első lépés az adat-előállító létrehozása az Azure-portál használatáv
 2. Kattintson az **Új** elemre, majd az **Adatok + analitika**, végül a **Data Factory** elemre. 
    
    ![New (Új)->DataFactory](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory-menu.png)
-2. Az a **új adat-előállító** lapján adja meg **ADFTutorialDataFactory** a a **neve**. 
+2. Az **Új adat-előállító** lapon, a **Név** mezőben adja meg a következőt: **ADFTutorialDataFactory**. 
       
-     ![Új előállító lap](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory.png)
+     ![Új adat-előállító lap](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory.png)
  
-   Az Azure data factory nevének **globálisan egyedinek** kell lennie. Ha a név mező a következő hibát látja, módosítsa az adat-előállítóban (például yournameADFTutorialDataFactory) nevét. Lásd: [Data Factory - elnevezési szabályait](data-factory-naming-rules.md) cikk az adat-előállító összetevők elnevezési szabályait.
+   Az Azure data factory nevének **globálisan egyedinek** kell lennie. Ha a Név mezőnél az alábbi hiba jelenik meg, módosítsa az adat-előállító nevét (például a következőre: sajátneveADFTutorialDataFactory). A Data Factory-összetevők részleteit a [Data Factory elnevezési szabályait](data-factory-naming-rules.md) ismertető cikkben találja.
 
     `Data factory name ADFTutorialDataFactory is not available`
 3. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni. 
@@ -58,13 +58,13 @@ Első lépés az adat-előállító létrehozása az Azure-portál használatáv
          
     Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
 4. Válassza ki **V1** a a **verzió**.
-5. Válassza ki a Data Factory **helyét**. Csak a Data Factory által támogatott helyek egyaránt megjelennek az a legördülő listában. Az adatokat tárolja (Azure Storage, Azure SQL Database stb.), és kiszámítja az (HDInsight, stb.) adat-előállító által használt más helyeken.
+5. Válassza ki a Data Factory **helyét**. A legördülő listában csak a Data Factory által támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más helyeken is lehetnek.
 6. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
 7. Kattintson a **Create** (Létrehozás) gombra.
 8. Az irányítópulton megjelenő csempén a következő állapotleírás látható: **Adat-előállító üzembe helyezése**. 
 
     ![adat-előállító üzembe helyezése csempe](media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png)
-9. A létrehozásának befejezése után megjelenik a **adat-előállító** lapon, az ábrán látható módon.
+9. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.
    
     ![Data factory kezdőlap](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
 10. Kattintson a **Szerző és központi telepítése** indítsa el a Data Factory Editor csempére.

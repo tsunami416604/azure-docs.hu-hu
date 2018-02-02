@@ -15,23 +15,24 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/25/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 43df04d6478e44c82c88b17d916cfc9fe4afc03e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 525df7ddb8cd569bfd361da10d14ae08c1a721e0
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Az Azure Logic Apps – 2016. június 1 sémafrissítések
 
-Az új séma- és API-t az Azure Logic Apps verzió magában foglalja a fontos fejlesztést tartalmaz, amelyek a logic apps megbízhatóbb és könnyebben használható:
+A [sémája frissítve](https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json) és az Azure Logic Apps az API-verziót tartalmazza a fontos fejlesztést tartalmaz, amelyek a logic apps megbízhatóbb és könnyebben használható:
 
 * [Hatókörök](#scopes) lehetővé teszik, hogy a csoport- vagy beágyazni műveletek műveletek gyűjteményeként.
 * [Feltételek és a hurkok](#conditions-loops) első osztályú műveletek is.
 * Pontosabb rendezést a műveletek futtatása a `runAfter` tulajdonság, cseréje`dependsOn`
 
-A logic apps a 2015. augusztus 1 preview séma frissítéséhez a 2016. június 1 séma [tekintse meg a verziófrissítés szakasz](##upgrade-your-schema).
+A logic apps a 2015. augusztus 1 preview séma frissítéséhez a 2016. június 1 séma [tekintse meg a verziófrissítés szakasz](#upgrade-your-schema).
 
 <a name="scopes"></a>
+
 ## <a name="scopes"></a>Hatókörök
 
 A séma tartalmaz a hatókörök, amelyek lehetővé teszik, hogy együtt műveleteit, vagy a nest műveletek belül egymással. Egy feltétel tartalmazhat például egy másik feltétel. További információ [szintaxis hatókör](../logic-apps/logic-apps-loops-and-scopes.md), vagy tekintse át a alapvető hatókör példa:
@@ -57,6 +58,7 @@ A séma tartalmaz a hatókörök, amelyek lehetővé teszik, hogy együtt művel
 ```
 
 <a name="conditions-loops"></a>
+
 ## <a name="conditions-and-loops-changes"></a>Feltételek és a hurkok módosítása
 
 Előző séma verziója, a feltételek és a hurkok voltak egyetlen művelettel társított paraméter. Ebben a sémában liftek ezt a korlátozást, így a feltételek és a hurkok megjelenni művelettípusok. További információ [hurkok és hatókörök](../logic-apps/logic-apps-loops-and-scopes.md), vagy tekintse át az egyszerű példában feltétel művelethez:
@@ -86,6 +88,7 @@ Előző séma verziója, a feltételek és a hurkok voltak egyetlen művelettel 
 ```
 
 <a name="run-after"></a>
+
 ## <a name="runafter-property"></a>"runAfter" tulajdonság
 
 A `runAfter` tulajdonság cserél `dependsOn`, nyújtó további pontosság megadása a futtatási ahhoz, hogy a műveletek előző műveletek állapota alapján.
@@ -104,7 +107,7 @@ A `dependsOn` azonos a "a művelet futtatása és sikeres volt-e" tulajdonsága,
 
 ## <a name="upgrade-your-schema"></a>A séma frissítése
 
-Az új séma frissítése csak néhány lépésben vesz igénybe. A frissítési folyamat magában foglalja a frissítési parancsprogram futtatása mentése új logikai alkalmazás, és ha azt szeretné, valószínűleg felülírja az előző logikai alkalmazást.
+Frissítéséhez a [legutóbbi séma](https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json), akkor kell csak néhány lépéseket fogja végrehajtani. A frissítési folyamat magában foglalja a frissítési parancsprogram futtatása mentése új logikai alkalmazás, és ha azt szeretné, valószínűleg felülírja az előző logikai alkalmazást.
 
 1. Nyissa meg a Logic Apps alkalmazást az Azure-portálon.
 
@@ -175,7 +178,7 @@ Műveletek is most már rendelkezik egy további tulajdonság nevű `trackedProp
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A logic apps munkafolyamat-meghatározások létrehozása](../logic-apps/logic-apps-author-definitions.md)
 * [A logic Apps alkalmazások központi telepítési sablonok létrehozása](../logic-apps/logic-apps-create-deploy-template.md)
 

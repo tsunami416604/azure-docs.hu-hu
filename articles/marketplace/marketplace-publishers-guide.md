@@ -14,11 +14,11 @@ ms.devlang:
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: ellacroi
-ms.openlocfilehash: 7a980a9a4f0a4fa22e72aa9d6eec83865250a084
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
-ms.translationtype: HT
+ms.openlocfilehash: 0017986f9766fb8ad9fe15f04a064273ca675f9f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-marketplace-publisher-guide"></a>Az Azure piactér Publisher útmutató
 
@@ -106,7 +106,7 @@ Minden egyes kirakat támogatja több közzétételi beállítások és Ajánlat
 
 |**Közzétételi beállítás**  | **Az ajánlattípus** | **Kirakat**  |
 |---------|---------|---------|
-|**Lista**    |    Megkereshetnek, szolgáltatás tanácsadás     |  Az Azure piactér, AppSource       |
+|**List**    |    Megkereshetnek, szolgáltatás tanácsadás     |  Az Azure piactér, AppSource       |
 |**Próbaverzió**   |     Ingyenes próbaverzió, SaaS-próbaverzióra, interaktív bemutató, tesztelése    |  Az Azure piactér, AppSource       |
 |**Transact**     |   Virtuális gép, sablon megoldás, felügyelt alkalmazás      |    Azure Piactér     |
 
@@ -225,7 +225,7 @@ Nagyvállalati ügyfeleink az Azure-ra vonatkozó előzetes pénzügyi köteleze
 
 |**Követelmény**  |**Részletek**  |**Közzétételi beállítás**  |
 |---------|---------|---------|
-|**Részvétel házirendek**    |  Tekintse át az Azure piactér Publisher szerződés [here](file:///C:/Users/ellacroi/Downloads/Microsoft%20Marketplace%20Publisher%20Agreement.pdf). Tekintse át az Azure piactér részvételét házirendek [itt] (https://azure.microsoft.com/support/legal/marketplace/participation-policies/).       | Lista, próbaverzió Transact        |
+|**Részvétel házirendek**    | Tekintse át az Azure piactér részvételét házirendek [itt] (https://azure.microsoft.com/support/legal/marketplace/participation-policies/).       | Lista, próbaverzió Transact        |
 |**Integráció a Microsoft**    | Az Azure piactér ajánlatok kell kihasználja kiterjesztése a Microsoft Azure-szolgáltatások, például a számítási, hálózati vagy tárolási, illetve hangolhatók össze a meglévő Azure piactér kategóriát, például adatbázisok, biztonság, hálózat, stb. A teljes listát található [Itt](https://azuremarketplace.microsoft.com/marketplace/apps).        | Lista, próbaverzió Transact        |
 |**Célközönség**    | Az Azure piactér ajánlatokat az informatikai szakemberek számára, a felhő fejlesztők és az egyéb technikai felhasználói szerepkörök kell lennie.       |  Lista, próbaverzió Transact 
 |**Felügyeleti vezethet**    | Érdeklődők kap a piactérről, engedélyeznie kell a CRM (Marketo, Microsoft Dynamics vagy Salesforce) átfutási adatok fogadására.        |   Lista, próbaverzió Transact      |

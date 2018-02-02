@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
-ms.openlocfilehash: 7ed018c8c9759bc497c5fea129257486f6128531
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b0de4aa816d7decab1831449f855ab01b101db3a
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-networking"></a>Az Azure hálózatkezelés
 
@@ -157,8 +157,8 @@ Telepítheti és konfigurálhatja az Azure-hálózati erőforrások a következ�
 
 Az Azure hálózati szolgáltatások rendelkeznek járnak, míg mások szabad. Nézet a [virtuális hálózati](https://azure.microsoft.com/pricing/details/virtual-network), [VPN-átjáró](https://azure.microsoft.com/pricing/details/vpn-gateway), [Alkalmazásátjáró](https://azure.microsoft.com/en-us/pricing/details/application-gateway/), [terheléselosztó](https://azure.microsoft.com/pricing/details/load-balancer), [hálózatifigyelőt](https://azure.microsoft.com/pricing/details/network-watcher), [DNS](https://azure.microsoft.com/pricing/details/dns), [Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager) és [ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute) árképzési lapok további információt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Az első virtuális hálózat létrehozása, és csatlakozik néhány virtuális géppel, Ehhez hajtsa végre a lépéseket a [az első virtuális hálózat létrehozása](../virtual-network/virtual-network-get-started-vnet-subnet.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
+- Az első virtuális hálózat létrehozása, és csatlakozik néhány virtuális géppel, Ehhez hajtsa végre a lépéseket a [az első virtuális hálózat létrehozása](../virtual-network/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
 - A lépések végrehajtásával csatlakoztassa a számítógépet egy Vnetet az [egy pont – hely kapcsolat beállítása](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
 - Terhelésének elosztása internetes forgalom nyilvános kiszolgálókon található lépések végrehajtásával a [hozzon létre egy internetre irányuló terheléselosztót](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk.

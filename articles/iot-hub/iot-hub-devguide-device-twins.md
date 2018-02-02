@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/19/2017
+ms.date: 01/29/2018
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3b2b2877efe5f898b5759c03ac0ddcf3ecc03901
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: 5bf2d24d0d5eadfea5ec8fd239a115c05a54fe99
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Ismertetés és az IoT Hub eszköz twins használata
 
@@ -58,47 +58,49 @@ Egy eszköz iker tartalmazó JSON-dokumentumhoz:
 
 A következő példa bemutatja egy eszköz iker JSON-dokumentum:
 
-        {
-            "deviceId": "devA",
-            "etag": "AAAAAAAAAAc=", 
-            "status": "enabled",
-            "statusReason": "provisioned",
-            "statusUpdateTime": "0001-01-01T00:00:00",
-            "connectionState": "connected",
-            "lastActivityTime": "2015-02-30T16:24:48.789Z",
-            "cloudToDeviceMessageCount": 0, 
-            "authenticationType": "sas",
-            "x509Thumbprint": {     
-                "primaryThumbprint": null, 
-                "secondaryThumbprint": null 
-            }, 
-            "version": 2, 
-            "tags": {
-                "$etag": "123",
-                "deploymentLocation": {
-                    "building": "43",
-                    "floor": "1"
-                }
-            },
-            "properties": {
-                "desired": {
-                    "telemetryConfig": {
-                        "sendFrequency": "5m"
-                    },
-                    "$metadata" : {...},
-                    "$version": 1
-                },
-                "reported": {
-                    "telemetryConfig": {
-                        "sendFrequency": "5m",
-                        "status": "success"
-                    }
-                    "batteryLevel": 55,
-                    "$metadata" : {...},
-                    "$version": 4
-                }
-            }
+```json
+{
+    "deviceId": "devA",
+    "etag": "AAAAAAAAAAc=", 
+    "status": "enabled",
+    "statusReason": "provisioned",
+    "statusUpdateTime": "0001-01-01T00:00:00",
+    "connectionState": "connected",
+    "lastActivityTime": "2015-02-30T16:24:48.789Z",
+    "cloudToDeviceMessageCount": 0, 
+    "authenticationType": "sas",
+    "x509Thumbprint": {     
+        "primaryThumbprint": null, 
+        "secondaryThumbprint": null 
+    }, 
+    "version": 2, 
+    "tags": {
+        "$etag": "123",
+        "deploymentLocation": {
+            "building": "43",
+            "floor": "1"
         }
+    },
+    "properties": {
+        "desired": {
+            "telemetryConfig": {
+                "sendFrequency": "5m"
+            },
+            "$metadata" : {...},
+            "$version": 1
+        },
+        "reported": {
+            "telemetryConfig": {
+                "sendFrequency": "5m",
+                "status": "success"
+            }
+            "batteryLevel": 55,
+            "$metadata" : {...},
+            "$version": 4
+        }
+    }
+}
+```
 
 A legfelső szintű objektum az eszköz azonosító tulajdonságainak, és a tárolóobjektumok `tags` és mindkét `reported` és `desired` tulajdonságok. A `properties` tároló néhány írásvédett elemet tartalmaz (`$metadata`, `$etag`, és `$version`) ismertetett a [eszköz iker metaadatok] [ lnk-twin-metadata] és [egyidejű hozzáférések optimista] [ lnk-concurrency] szakaszok.
 
@@ -112,26 +114,32 @@ Az előző példában az eszköz iker tartalmaz egy `batteryLevel` az eszköz al
 Az előző példában a `telemetryConfig` eszköz iker szükséges, és a jelentett tulajdonságok szinkronizálni a telemetria-konfigurációt, az eszköz a megoldás háttérrendszeréhez, és az eszköz alkalmazás által használt. Példa:
 
 1. A megoldás háttérrendszeréhez állítja be a kívánt tulajdonságot a szükségeskonfiguráció-értékkel. Ez a dokumentum a kívánt tulajdonság értéke:
-   
-        ...
-        "desired": {
-            "telemetryConfig": {
-                "sendFrequency": "5m"
-            },
-            ...
+
+    ```json
+    ...
+    "desired": {
+        "telemetryConfig": {
+            "sendFrequency": "5m"
         },
         ...
+    },
+    ...
+    ```
+
 2. Az eszköz alkalmazásának a változás azonnal, ha létrejött a kapcsolat, vagy első újbóli értesítést kap. Az eszköz alkalmazás majd jelentést készít a frissített konfigurációt (vagy egy hiba feltétel használatával a `status` tulajdonság). A jelentésben szereplő tulajdonságok része a következő:
-   
-        ...
-        "reported": {
-            "telemetryConfig": {
-                "sendFrequency": "5m",
-                "status": "success"
-            }
-            ...
+
+    ```json
+    ...
+    "reported": {
+        "telemetryConfig": {
+            "sendFrequency": "5m",
+            "status": "success"
         }
         ...
+    }
+    ...
+    ```
+
 3. A megoldás háttérrendszeréhez nyomon követheti a konfigurációs művelet eredménye számos eszközön, az [lekérdezése] [ lnk-query] eszköz twins.
 
 > [!NOTE]
@@ -144,23 +152,26 @@ Twins segítségével szinkronizálása hosszú ideig futó műveletek, példáu
 ## <a name="back-end-operations"></a>Háttér-műveletek
 A megoldás háttérrendszeréhez végez műveleteket ezeken az eszköz a két a következő atomi műveletek közzétéve az HTTPS használatával:
 
-* **Id eszköz két lekérni**. Ez a művelet eszköz iker dokumentumát, beleértve a címkék és a kívánt és jelentett rendszer tulajdonságai adja vissza.
+* **Eszköz iker azonosítójú beolvasása**. Ez a művelet eszköz iker dokumentumát, beleértve a címkék és a kívánt és jelentett rendszer tulajdonságai adja vissza.
 * **Részlegesen frissítse az eszköz iker**. Ez a művelet lehetővé teszi, hogy a megoldás háttérrendszeréhez részben frissíteni a címkék vagy egy eszköz iker kívánt tulajdonságokat. A részleges frissítés, amely ad hozzá vagy bármilyen tulajdonságot JSON-dokumentumként van kifejezve. Tulajdonságok beállítása `null` törlődnek. Az alábbi példa hoz létre egy új kívánt tulajdonság értéke `{"newProperty": "newValue"}`, felülírja a meglévő értéket az `existingProperty` rendelkező `"otherNewValue"`, és eltávolítja a `otherOldProperty`. Nincs más módosításai meglévő kívánt tulajdonságok vagy a címkék:
-   
-        {
-            "properties": {
-                "desired": {
-                    "newProperty": {
-                        "nestedProperty": "newValue"
-                    },
-                    "existingProperty": "otherNewValue",
-                    "otherOldProperty": null
-                }
+
+    ```json
+    {
+        "properties": {
+            "desired": {
+                "newProperty": {
+                    "nestedProperty": "newValue"
+                },
+                "existingProperty": "otherNewValue",
+                "otherOldProperty": null
             }
         }
+    }
+    ```
+
 * **Cserélje ki a kívánt tulajdonságokkal**. Ez a művelet lehetővé teszi, hogy a megoldás háttérrendszeréhez teljesen felülírja az összes meglévő kívánt tulajdonságokat, és helyettesítse be az új JSON-dokumentum `properties/desired`.
 * **Cserélje le a címkék**. Ez a művelet lehetővé teszi, hogy a megoldás háttérrendszeréhez teljesen felülírja az összes meglévő címkék és helyettesítse be az új JSON-dokumentum `tags`.
-* **A két értesítéseket**. Ez a művelet lehetővé teszi, hogy a megoldás háttérrendszeréhez értesíti, ha a két módosul. Ehhez az IoT-megoldásból egy útvonal létrehozása és kell beállítani az adatforrás egyenlő *twinChangeEvents*. Alapértelmezés szerint nincs iker értesítések küldése általában olyan, ez azt jelenti, hogy, hogy nincs ilyen útvonal létezik-e előre. Ha a módosítási aránya túl magas, vagy más okokból belső hibák, az IoT Hub el tudja küldeni csak egy értesítést, amely tartalmazza az összes módosítást. Ezért, ha az alkalmazásnak megbízható vizsgálati és naplózási az összes köztes állapotok, majd továbbra is ajánlott D2C üzenetek használata. A két üzenet tulajdonságait és a szervezet tartalmaz.
+* **A két értesítéseket**. Ez a művelet lehetővé teszi, hogy a megoldás háttérrendszeréhez értesíti, ha a két módosul. Ehhez az IoT-megoldásból egy útvonal létrehozása és kell beállítani az adatforrás egyenlő *twinChangeEvents*. Alapértelmezés szerint nincs iker értesítések küldése általában olyan, ez azt jelenti, hogy, hogy nincs ilyen útvonal létezik-e előre. Ha a módosítási aránya túl magas, vagy más okokból belső hibák, az IoT Hub el tudja küldeni csak egy értesítést, amely tartalmazza az összes módosítást. Ezért ha az alkalmazásnak megbízható vizsgálati és naplózási az összes köztes állapotok, használjon eszköz a felhőbe küldött üzeneteket. A két üzenet tulajdonságait és a szervezet tartalmaz.
 
     - Tulajdonságok
 
@@ -169,11 +180,11 @@ A megoldás háttérrendszeréhez végez műveleteket ezeken az eszköz a két a
     $content-típus | application/json |
     $iothub-enqueuedtime |  Ha az értesítés küldése idő |
     $iothub-üzenet-forrás | twinChangeEvents |
-    $content-kódolás | az UTF-8 |
+    $content-kódolás | utf-8 |
     deviceId | Az eszköz azonosítója |
     hubName | Az IoT-központ nevét |
     operationTimestamp | [ISO8601] művelet időbélyegzője |
-    IOT hubbal-üzenet-séma | deviceLifecycleNotification |
+    iothub-message-schema | deviceLifecycleNotification |
     opType | "replaceTwin" vagy "updateTwin" |
 
     Üzenet Rendszertulajdonságok fűzve előtagként a `'$'` szimbólum.
@@ -181,7 +192,8 @@ A megoldás háttérrendszeréhez végez műveleteket ezeken az eszköz a két a
     - Törzs
         
     Ez a szakasz a kettős módosításokat tartalmazza JSON formátumban. Ugyanazt a formátumot használja, a javítás, azzal a különbséggel, hogy minden iker szakasz tartalmazhat: címkék, properties.reported, properties.desired és, hogy az tartalmazza-e a "$metadata" elemek. Például:
-    ```
+
+    ```json
     {
         "properties": {
             "desired": {
@@ -198,10 +210,10 @@ A megoldás háttérrendszeréhez végez műveleteket ezeken az eszköz a két a
             }
         }
     }
-    ``` 
+    ```
 
 Az előző műveletei támogatják [egyidejű hozzáférések optimista] [ lnk-concurrency] , és van szüksége a **ServiceConnect** engedéllyel, akkor az a [biztonsági] [ lnk-security] cikk.
- 
+
 Ezek a műveletek mellett a megoldás háttérrendszeréhez is:
 
 * Az eszköz twins használata az SQL-szerű lekérdezése [IoT-központ lekérdezési nyelv][lnk-query].
@@ -225,23 +237,25 @@ Címkék, a kívánt tulajdonságokat és a jelentésben szereplő tulajdonságo
 * JSON-objektumok összes értéke lehet a következő JSON-típusok: boolean, számot, karakterlánc, objektum. Tömbök használata nem megengedett. Egész számok maximális értéke 4503599627370495, és az egész számok legkisebb értéke-4503599627370496.
 * Címkék, kívánt és jelentett tulajdonságok minden JSON-objektumok maximális mélysége 5 rendelkezhet. Például a következő objektum érvénytelen:
 
-        {
-            ...
-            "tags": {
-                "one": {
-                    "two": {
-                        "three": {
-                            "four": {
-                                "five": {
-                                    "property": "value"
-                                }
+    ```json
+    {
+        ...
+        "tags": {
+            "one": {
+                "two": {
+                    "three": {
+                        "four": {
+                            "five": {
+                                "property": "value"
                             }
                         }
                     }
                 }
-            },
-            ...
-        }
+            }
+        },
+        ...
+    }
+    ```
 
 * Az összes karakterlánc-értékek legfeljebb 4 KB-os hossza.
 
@@ -254,48 +268,50 @@ Az IoT-központ hibával elutasítja a összes művelet lenne növelje a mérete
 Az IoT-központ tárolja a minden JSON-objektumból, az eszköz a két utolsó frissítésének időbélyeg szükséges tulajdonságok jelentett. Az időbélyeg helyi időre UTC és kódolású a [ISO8601] formátum `YYYY-MM-DDTHH:MM:SS.mmmZ`.
 Példa:
 
-        {
-            ...
-            "properties": {
-                "desired": {
-                    "telemetryConfig": {
-                        "sendFrequency": "5m"
-                    },
-                    "$metadata": {
-                        "telemetryConfig": {
-                            "sendFrequency": {
-                                "$lastUpdated": "2016-03-30T16:24:48.789Z"
-                            },
-                            "$lastUpdated": "2016-03-30T16:24:48.789Z"
-                        },
+```json
+{
+    ...
+    "properties": {
+        "desired": {
+            "telemetryConfig": {
+                "sendFrequency": "5m"
+            },
+            "$metadata": {
+                "telemetryConfig": {
+                    "sendFrequency": {
                         "$lastUpdated": "2016-03-30T16:24:48.789Z"
                     },
-                    "$version": 23
+                    "$lastUpdated": "2016-03-30T16:24:48.789Z"
                 },
-                "reported": {
-                    "telemetryConfig": {
-                        "sendFrequency": "5m",
-                        "status": "success"
-                    }
-                    "batteryLevel": "55%",
-                    "$metadata": {
-                        "telemetryConfig": {
-                            "sendFrequency": "5m",
-                            "status": {
-                                "$lastUpdated": "2016-03-31T16:35:48.789Z"
-                            },
-                            "$lastUpdated": "2016-03-31T16:35:48.789Z"
-                        }
-                        "batteryLevel": {
-                            "$lastUpdated": "2016-04-01T16:35:48.789Z"
-                        },
-                        "$lastUpdated": "2016-04-01T16:24:48.789Z"
-                    },
-                    "$version": 123
-                }
+                "$lastUpdated": "2016-03-30T16:24:48.789Z"
+            },
+            "$version": 23
+        },
+        "reported": {
+            "telemetryConfig": {
+                "sendFrequency": "5m",
+                "status": "success"
             }
-            ...
+            "batteryLevel": "55%",
+            "$metadata": {
+                "telemetryConfig": {
+                    "sendFrequency": "5m",
+                    "status": {
+                        "$lastUpdated": "2016-03-31T16:35:48.789Z"
+                    },
+                    "$lastUpdated": "2016-03-31T16:35:48.789Z"
+                }
+                "batteryLevel": {
+                    "$lastUpdated": "2016-04-01T16:35:48.789Z"
+                },
+                "$lastUpdated": "2016-04-01T16:24:48.789Z"
+            },
+            "$version": 123
         }
+    }
+    ...
+}
+```
 
 Ezek az információk megőrzése érdekében távolítsa el a objektum kulcsok frissítések tartják minden szinten (nem csak a JSON struktúrában leaves).
 
@@ -336,7 +352,7 @@ Most már rendelkezik megismerte eszköz twins, előfordulhat, hogy érdeklődik
 * [Az eszközön közvetlen metódus][lnk-methods]
 * [Több eszközön feladatok ütemezése][lnk-jobs]
 
-Ha azt szeretné, hogy próbálja ki azokat a jelen cikkben ismertetett fogalmakat, esetleg érdekli az IoT-központ anyagra:
+Próbálja ki azokat a jelen cikkben ismertetett fogalmakat, olvassa el az alábbi IoT Hub-oktatóanyagok:
 
 * [A két eszköz használata][lnk-twin-tutorial]
 * [A két eszköztulajdonságok használata][lnk-twin-properties]

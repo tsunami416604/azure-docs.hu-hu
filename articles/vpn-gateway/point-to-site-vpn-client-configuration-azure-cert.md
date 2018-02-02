@@ -13,21 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/27/2017
+ms.date: 01/29/2018
 ms.author: cherylmc
-ms.openlocfilehash: 7fe8d5e473e2c8281b1d6c8d7d5423294c428678
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: efe5d3db16db83568bb844894198b59a6b39f626
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Hozzon létre és VPN-ügyfél konfigurációs fájljai natív Azure tanúsítvány P2S hitelesítési konfigurációk telepítése
 
 VPN-ügyfél konfigurációs fájlokat a zip-fájl tartalmazza. Konfigurációs fájlokat adja meg a natív Windows vagy Mac IKEv2 VPN-ügyfelek natív Azure Tanúsítványalapú hitelesítés használatára, pont-pont kapcsolatokon keresztül csatlakozni a virtuális hálózat szükséges beállításokat.
-
->[!NOTE]
->Az IKEv2 for P2S jelenleg előzetes verzióban érhető el.
->
 
 ### <a name="workflow"></a>P2S munkafolyamat
 
@@ -98,7 +94,7 @@ Kattintson a **Hozzáadás** importálásához.
 
   A **felület** értéke 'VPN' és **VPN-típus** értéke "IKEv2". Adja meg a profil nevét a **szolgáltatásnév** mezőben, majd kattintson az **létrehozása** a VPN-ügyfél-csatlakozási profil létrehozásához.
 
-  ![Hálózati](./media/point-to-site-vpn-client-configuration-azure-cert/network.png)
+  ![network](./media/point-to-site-vpn-client-configuration-azure-cert/network.png)
 3. Az a **általános** mappa, a a **VpnSettings.xml** fájlt, másolja a **VpnServer** címke értéke. Illessze be ezt az értéket a **kiszolgálócímet** és **távoli azonosítója** mezők a profil.
 
   ![kiszolgáló adatai](./media/point-to-site-vpn-client-configuration-azure-cert/server.png)
@@ -113,9 +109,9 @@ Kattintson a **Hozzáadás** importálásához.
   ![identity](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
 7. Az a **helyi azonosítója** mezőben adja meg azt a tanúsítványt (a 6. lépés). Ebben a példában a "ikev2Client.com" esetében. Kattintson a **alkalmaz** gombra a módosítások mentéséhez.
 
-  ![alkalmazása](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
+  ![alkalmaz](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
 8. Az a **hálózati** párbeszédpanel, kattintson a **alkalmaz** összes módosítások mentéséhez. Kattintson a **Connect** elindítani az Azure VNet P2S csatlakozni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Térjen vissza a cikkhez [végezze el a P2S konfigurálását](vpn-gateway-howto-point-to-site-rm-ps.md).

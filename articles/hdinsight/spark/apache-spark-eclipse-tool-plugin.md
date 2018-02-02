@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: nitinme
-ms.openlocfilehash: ede1a974b32227edf44464ed56ae85a1ea7ee97b
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: c668dde33b3571436711c6c5e5289993a9edf1a2
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-spark-applications-for-an-hdinsight-cluster"></a>Azure eszköztára Eclipse használata Spark-alkalmazások a HDInsight-fürtök létrehozása
 
@@ -44,7 +44,7 @@ Az Eclipse eszköztára Azure HDInsight Tools használatával scalában írt Spa
 
 
 ## <a name="install-hdinsight-tools-in-azure-toolkit-for-eclipse-and-the-scala-plug-in"></a>A HDInsight Tools az eclipse-ben és a beépülő modul Scala Azure eszközkészlet telepítése
-### <a name="install-hdinsight-toolsazure-toolkit-for"></a>Telepítés HDInsight Toolsazure-eszközkészlet-számára
+### <a name="install-azure-toolkit-for-eclipse"></a>Az Eclipse Azure eszközkészlet telepítése
 A HDInsight Tools for eclipse-ben érhető el az Eclipse Azure eszköztára részeként. A telepítési utasításokért lásd: [Azure eszközkészlet telepítése az Eclipse](https://docs.microsoft.com/java/azure/eclipse/azure-toolkit-for-eclipse-installation).
 ### <a name="install-the-scala-plug-in"></a>A beépülő modul Scala telepítése
 Eclipse megnyitásakor a HDInsight eszközzel automatikusan észleli, hogy telepítette-e a Scala beépülő modult. Válassza ki **OK** a folytatáshoz, majd kövesse az utasításokat az Eclipse piactérről a beépülő modul telepítéséhez.

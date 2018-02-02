@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 52e176711f512e8a3788309a58011c8484821a1e
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: d65341ae79a8894d054503e0b0807dee3e4cca8c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="security-in-azure-data-lake-store"></a>Az Azure Data Lake Store biztonsági
 Sok vállalat vannak kihasználja a big data elemzésre szolgáló üzleti elemzéseket felhasználóinál intelligens döntéseket. Egy szervezet előfordulhat, hogy rendelkezik egy összetett és szabályozott környezetben, a különböző felhasználók növekvő számú. Győződjön meg arról, hogy kritikus fontosságú üzleti adatokat tárolja a rendszer biztonsága érdekében együtt a megfelelő szintű hozzáférést biztosít az egyéni felhasználók számára a vállalati létfontosságú. Azure Data Lake Store célja e biztonsági követelményeknek. Ebből a cikkből megtudhatja, Data Lake Store biztonsági képességeivel kapcsolatos többek között:
 
-* Authentication
+* Hitelesítés
 * Engedélyezés
 * Hálózatelkülönítés
 * Adatvédelem
@@ -54,7 +54,7 @@ Vegye figyelembe, hogy bár szerepkörök fiókkezelés vannak hozzárendelve, a
 
 | Szerepkörök | A rights Management | Adatok hozzáférési jogok | Magyarázat |
 | --- | --- | --- | --- |
-| Nem hozzárendelt szerepkör |None |Hozzáférés-vezérlési lista által szabályozott |A felhasználó nem használható az Azure portálon vagy az Azure PowerShell-parancsmagok keresse meg a Data Lake Store. A felhasználó csak a parancssori eszközöket használhatja. |
+| Nem hozzárendelt szerepkör |Nincs |Hozzáférés-vezérlési lista által szabályozott |A felhasználó nem használható az Azure portálon vagy az Azure PowerShell-parancsmagok keresse meg a Data Lake Store. A felhasználó csak a parancssori eszközöket használhatja. |
 | Tulajdonos |Összes |Összes |A tulajdonosi szerepkört felügyelőt. Ez a szerepkör mindent felügyelhetnek, és az adatok teljes hozzáféréssel rendelkezik. |
 | Olvasó |Csak olvasható |Hozzáférés-vezérlési lista által szabályozott |Az olvasó szerepkört mindent megtekinthetnek vonatkozó felhasználóifiók-kezelés, például, hogy melyik felhasználó mely szerepkör van rendelve. Az olvasó szerepkört nem módosíthatja. |
 | Közreműködő |Hozzáadás és eltávolítás szerepkört kivéve |Hozzáférés-vezérlési lista által szabályozott |A közreműködői szerepkör kezelheti adatait, például a központi telepítések és létrehozása és a riasztások kezelése az egyes funkcióit. A közreműködői szerepkör nem hozzáadása vagy eltávolítása a szerepkörök. |
@@ -63,7 +63,7 @@ Vegye figyelembe, hogy bár szerepkörök fiókkezelés vannak hozzárendelve, a
 Útmutatásért lásd: [felhasználók vagy biztonsági csoportok hozzárendelése Data Lake Store-fiók](data-lake-store-secure-data.md#assign-users-or-security-groups-to-azure-data-lake-store-accounts).
 
 ### <a name="using-acls-for-operations-on-file-systems"></a>Hozzáférés-vezérlési listák segítségével a fájlrendszerek műveleteihez
-Data Lake Store hierarchikus fájlrendszer például a Hadoop elosztott fájlrendszerrel (HDFS), és támogatja [POSIX hozzáférés-vezérlési listák](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists). Azt szabályozza, hogy olvasási (r), (w) írási és végrehajtási (x) erőforrásokra a tulajdonosi szerepkört, a tulajdonosok csoport és más felhasználók és csoportok engedélyeit. A Data Lake Store nyilvános előzetes verziójában (a jelenlegi kiadásban) a hozzáférés-vezérlési listákat a legfelső szintű mappához, az almappákhoz vagy egyes fájlokhoz lehet engedélyezni. További információkat a hozzáférés-vezérlési listák Data Lake Store-környezetben való működéséről a következő témakörben talál: [Hozzáférés-vezérlés a Data Lake Store-ban](data-lake-store-access-control.md).
+Data Lake Store hierarchikus fájlrendszer például a Hadoop elosztott fájlrendszerrel (HDFS), és támogatja [POSIX hozzáférés-vezérlési listák](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists). Azt szabályozza, hogy olvasási (r), (w) írási és végrehajtási (x) erőforrásokra a tulajdonosi szerepkört, a tulajdonosok csoport és más felhasználók és csoportok engedélyeit. A Data Lake Store a hozzáférés-vezérlési listák engedélyezhető a legfelső szintű mappa, almappák és a fájlokat. További információkat a hozzáférés-vezérlési listák Data Lake Store-környezetben való működéséről a következő témakörben talál: [Hozzáférés-vezérlés a Data Lake Store-ban](data-lake-store-access-control.md).
 
 Azt javasoljuk, hogy Ön hozzáférés-vezérlési listák többfelhasználós segítségével meghatározhatók [biztonsági csoportok](../active-directory/active-directory-groups-create-azure-portal.md). Felhasználók hozzáadása az egy biztonsági csoportot, és hozzárendelheti a hozzáférés-vezérlési listákat, a fájl vagy mappa biztonsági csoportba. Ez akkor hasznos, ha lehetővé szeretné tenni egyéni hozzáférési, mert egy legfeljebb kilenc egyéni hozzáférés hozzáadása. Azure Active Directory biztonsági csoportok használatával a Data Lake Store-ban tárolt adatok védelmét kapcsolatos további információkért lásd: [felhasználók vagy biztonsági csoport hozzárendelése az Azure Data Lake Store-fájlrendszer hozzáférés-vezérlési listákat,](data-lake-store-secure-data.md#filepermissions).
 
@@ -105,12 +105,12 @@ Diagnosztikai beállítások konfigurálása után megtekintheti a naplók a **d
 
 Diagnosztikai naplók az Azure Data Lake Store munkavégzés további információkért lásd: [hozzáférni a diagnosztikai naplókat a Data Lake Store](data-lake-store-diagnostic-logs.md).
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 A vállalati ügyfelek igény egy analytics felhőalapú adatplatform, amely biztonságos, könnyen használható. Azure Data Lake Store az célja, hogy ezek a követelmények, az Identitáskezelés és a hitelesítési keresztül Azure Active Directory-integráció, az ACL-alapú hitelesítési, a hálózati elkülönítési, az átvitel során, és az adatok titkosítása rest-(a továbbiakban hamarosan segítse ), és a naplózás.
 
 Ha meg szeretné tekinteni a Data Lake Store új funkcióiról, küldjön visszajelzést a [Data Lake Store UserVoice fórum](https://feedback.azure.com/forums/327234-data-lake).
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Az Azure Data Lake Store áttekintése](data-lake-store-overview.md)
 * [Bevezetés a Data Lake Store használatába](data-lake-store-get-started-portal.md)
 * [Biztonságos adattárolás a Data Lake Store-ban](data-lake-store-secure-data.md)

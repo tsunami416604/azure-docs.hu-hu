@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/12/2017
 ms.author: jdial
-ms.openlocfilehash: 6cc7035e798ef72f69958a7536a741f80939d4fe
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 55aece3f20ee98d21d7bb2b96cb3d039d4849f8f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-virtual-network"></a>Azure Virtual Network
 
@@ -90,6 +90,6 @@ Gyakori kérdések az Azure Virtual Network ellenőrzéséhez tekintse meg a [vi
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Az első virtuális hálózat létrehozása, és néhány virtuális gépek üzembe helyezés, a lépések végrehajtásával [az első virtuális hálózat létrehozása](virtual-network-get-started-vnet-subnet.md).
+- Az első virtuális hálózat létrehozása, és néhány virtuális gépek üzembe helyezés, a lépések végrehajtásával [az első virtuális hálózat létrehozása](quick-create-portal.md).
 - A virtuális hálózati pont – hely kapcsolat létrehozása a lépések végrehajtásával [egy pont – hely kapcsolat beállítása](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 - Ismerje meg, azzal kapcsolatban, a másik kulccsal [hálózati képességek](../networking/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Azure.

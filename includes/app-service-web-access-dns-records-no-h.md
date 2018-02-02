@@ -1,3 +1,8 @@
+> [!NOTE]
+> Használhatja az Azure DNS konfigurálása az Azure Web Apps egy egyéni DNS-nevet. További információkért lásd: [használata Azure DNS számára adja meg az egyéni tartomány beállításait az Azure-szolgáltatások](../articles/dns/dns-custom-domain.md#app-service-web-apps).
+>
+>
+
 Jelentkezzen be a tartományszolgáltatója webhelyére.
 
 Keresse meg a DNS-rekordok kezelésére szolgáló oldalt. Minden tartományszolgáltató saját felülettel rendelkezik a DNS-rekordok kezelésére, ezért tekintse meg a szolgáltatói dokumentációt. A webhely **Tartománynév**, **DNS** vagy **Névkiszolgáló kezelése** címkével ellátott területeit keresse. 

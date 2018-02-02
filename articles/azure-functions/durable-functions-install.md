@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 58f23406f20f6b0e75ec65197e4cebb6e4e788ac
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: e1e8b019fe4632b0b6ac02888b562d6718c14fcc
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="install-the-durable-functions-extension-and-samples-azure-functions"></a>Telepítse a tartós funkciók bővítményt, és minták (az Azure Functions)
 
@@ -123,7 +123,7 @@ Tetszés szerint használhatja az Azure-portálon a tartós funkciók fejleszté
 
 1. Hozzon létre egy új funkció alkalmazást [functions.azure.com](https://functions.azure.com/signin).
 
-2. A függvény alkalmazás konfigurálása [futtatókörnyezet 2.0-s verzióját használja a](functions-versions.md).
+2. A függvény alkalmazás konfigurálása [futtatókörnyezet 2.0-s verzióját használja a](set-runtime-version.md).
 
 3. Hozzon létre egy új függvényt kiválasztásával **"létrehozása a saját egyéni függvény."** .
 
@@ -175,7 +175,7 @@ Tetszés szerint használhatja az Azure-portálon a tartós funkciók fejleszté
 
 Gratulálunk! Az első tartós függvény megfelelően működik, és az Azure portálon!
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [A minta-láncolás funkció futtatásához](durable-functions-sequence.md)

@@ -4,7 +4,7 @@ description: "Az Azure Cosmos DB Emulator használatával, fejlesztése és tesz
 services: cosmos-db
 documentationcenter: 
 keywords: "Az Azure Cosmos DB emulátor"
-author: arramac
+author: David-Noble-at-work
 manager: jhubbard
 editor: 
 ms.assetid: 90b379a6-426b-4915-9635-822f1a138656
@@ -13,13 +13,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/18/2017
-ms.author: arramac
-ms.openlocfilehash: 240961e0caa1cf2b5c31e854e925f914eb7edc00
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
-ms.translationtype: MT
+ms.date: 01/29/2018
+ms.author: danoble
+ms.openlocfilehash: daaa628fae3e495a0c9c7a3c74e643caa56fb18b
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Az Azure Cosmos DB Emulator használja a helyi fejlesztéshez és teszteléshez
 
@@ -39,6 +39,9 @@ ms.lasthandoff: 12/14/2017
 </table>
   
 Az Azure Cosmos DB Emulator emulálja a Azure Cosmos DB szolgáltatás fejlesztési célokra szolgál egy helyi környezet biztosít. Az Azure Cosmos DB Emulator használatával, létrehozhatja és helyileg, az alkalmazás tesztelése egy Azure-előfizetés létrehozása, és ezzel járó költségeket nélkül. Ha elégedett az alkalmazás az Azure Cosmos DB emulátorban alakulását, átválthat a felhőben Azure Cosmos DB fiókkal.
+
+> [!NOTE]
+> Jelenleg az adatkezelő az emulátorban csak teljes mértékben támogatja az SQL API-gyűjtemények és a MongoDB-gyűjtemény. Tábla Graph és Cassandra tárolók jelenleg nem teljes mértékben támogatottak. 
 
 Ez a cikk ismerteti a következő feladatokat: 
 
@@ -62,9 +65,6 @@ Azt javasoljuk, hogy Kezdésként tekintse meg az alábbi videót, amely Kirill 
 Az Azure Cosmos DB Emulator egy valósághű emuláció a Azure Cosmos DB szolgáltatást biztosít. Azure Cosmos DB, például létrehozása és a JSON-dokumentumok lekérdezését kiépítés azonos funkciókat támogatja, és gyűjtemények skálázás, és végrehajtása tárolt eljárásokként és eseményindítókként. Fejlesztés és tesztelje az alkalmazásokat az Azure Cosmos DB Emulator használatával, és telepítheti őket az Azure-ba, globális méretű azáltal, hogy csak a módosítsa a csatlakozási végpont az Azure Cosmos DB egyetlen konfigurációja.
 
 Létrehoztunk egy valósághű helyi emuláció a tényleges Azure Cosmos DB szolgáltatást, amíg az Azure Cosmos DB Emulator végrehajtásának eltér attól, hogy a szolgáltatás. Például a Azure Cosmos DB Emulator szabványos operációs rendszer összetevők például a helyi fájlrendszerben; adatmegőrzési, és a HTTPS protokollhoz tartozó, a hálózati kapcsolatot. Ez azt jelenti, hogy bizonyos funkciók, amely az Azure infrastruktúra például globális replikációs, egyjegyű ezredmásodperces késési olvasása/írása, és beállítható konzisztenciaszinteket nem érhetők el az Azure Cosmos DB Emulator támaszkodik.
-
-> [!NOTE]
-> Jelenleg az adatkezelő az emulátorban csak az SQL API-gyűjtemények és a MongoDB-gyűjtemény létrehozását támogatja. Az adatkezelő az emulátorban jelenleg nem támogatja a táblák és diagramokat létrehozását. 
 
 ## <a name="differences-between-the-emulator-and-the-service"></a>Az emulátor és a szolgáltatás közötti különbségek 
 Az Azure Cosmos DB Emulator egy helyi fejlesztői munkaállomáson fut emulált környezetet biztosít, mivel számos bizonyos funkciók és közötti különbségek az emulátor Azure Cosmos DB fiók a felhőben.
@@ -197,25 +197,25 @@ Beállítások listájának megtekintéséhez írja be a `CosmosDB.Emulator.exe 
 <tr>
   <td>Leállítás</td>
   <td>Az Azure Cosmos DB Emulator leáll.</td>
-  <td>CosmosDB.Emulator.exe shutdown</td>
+  <td>CosmosDB.Emulator.exe /Shutdown</td>
   <td></td>
 </tr>
 <tr>
   <td>DataPath</td>
   <td>Meghatározza az adatforrás adatfájljainak tárolására használt elérési utat. Alapértelmezett érték a % LocalAppdata%\CosmosDBEmulator.</td>
-  <td>CosmosDB.Emulator.exe /DataPath =&lt;datapath&gt;</td>
+  <td>CosmosDB.Emulator.exe /DataPath=&lt;datapath&gt;</td>
   <td>&lt;DataPath&gt;: egy elérhető elérési útja</td>
 </tr>
 <tr>
   <td>Port</td>
   <td>Adja meg a portszámot az emulátor használandó.  Alapértelmezés szerint 8081.</td>
-  <td>CosmosDB.Emulator.exe/port =&lt;port&gt;</td>
+  <td>CosmosDB.Emulator.exe /Port=&lt;port&gt;</td>
   <td>&lt;port&gt;: egy portszám</td>
 </tr>
 <tr>
   <td>MongoPort</td>
   <td>Adja meg a MongoDB kompatibilitási API használandó portszámot. Alapértelmezés szerint 10255.</td>
-  <td>CosmosDB.Emulator.exe /MongoPort =&lt;mongoport&gt;</td>
+  <td>CosmosDB.Emulator.exe /MongoPort=&lt;mongoport&gt;</td>
   <td>&lt;mongoport&gt;: egy portszám</td>
 </tr>
 <tr>
@@ -257,19 +257,19 @@ Beállítások listájának megtekintéséhez írja be a `CosmosDB.Emulator.exe 
 <tr>
   <td>PartitionCount</td>
   <td>A particionált gyűjtemények maximális számát határozza meg. Lásd: [gyűjtemények számának módosítása](#set-partitioncount) további információt.</td>
-  <td>CosmosDB.Emulator.exe /PartitionCount =&lt;partitioncount&gt;</td>
+  <td>CosmosDB.Emulator.exe /PartitionCount=&lt;partitioncount&gt;</td>
   <td>&lt;partitioncount&gt;: maximális száma az egypartíciós gyűjtemények engedélyezett. Alapértelmezett érték 25. Megengedett legnagyobb érték 250.</td>
 </tr>
 <tr>
   <td>DefaultPartitionCount</td>
   <td>A particionált gyűjtemény partíciók alapértelmezett számát adja meg.</td>
-  <td>CosmosDB.Emulator.exe /DefaultPartitionCount =&lt;defaultpartitioncount&gt;</td>
+  <td>CosmosDB.Emulator.exe /DefaultPartitionCount=&lt;defaultpartitioncount&gt;</td>
   <td>&lt;defaultpartitioncount&gt; alapértelmezett érték 25.</td>
 </tr>
 <tr>
   <td>AllowNetworkAccess</td>
   <td>Lehetővé teszi a hozzáférést az emulátor egy hálózaton keresztül. Is át kell /Key =&lt;key_string&gt; vagy /KeyFile =&lt;Fájlnév&gt; a hálózati hozzáférés engedélyezéséhez.</td>
-  <td>CosmosDB.Emulator.exe AllowNetworkAccess /Key =&lt;key_string&gt;<br><br>vagy<br><br>CosmosDB.Emulator.exe /AllowNetworkAccess /KeyFile =&lt;fájlnév&gt;</td>
+  <td>CosmosDB.Emulator.exe /AllowNetworkAccess /Key=&lt;key_string&gt;<br><br>vagy<br><br>CosmosDB.Emulator.exe /AllowNetworkAccess /KeyFile=&lt;file_name&gt;</td>
   <td></td>
 </tr>
 <tr>
@@ -287,7 +287,7 @@ Beállítások listájának megtekintéséhez írja be a `CosmosDB.Emulator.exe 
 <tr>
   <td>Konzisztencia</td>
   <td>A fiók az alapértelmezett konzisztencia szintjének beállítása.</td>
-  <td>CosmosDB.Emulator.exe /Consistency =&lt;konzisztencia&gt;</td>
+  <td>CosmosDB.Emulator.exe /Consistency=&lt;consistency&gt;</td>
   <td>&lt;konzisztencia&gt;: értéknek kell lennie a következő [konzisztenciaszintek](consistency-levels.md): munkamenet, erős, Eventual vagy BoundedStaleness.  Az alapértelmezett érték: a munkamenet.</td>
 </tr>
 <tr>
@@ -405,7 +405,15 @@ Hibakeresési nyomkövetési adatokat gyűjteni a következő parancsokat egy re
 3. Az alkalmazások listájának, görgessen **Azure Cosmos DB emulátor**, válassza ki azt, kattintson a **Eltávolítás**, majd erősítse meg, és kattintson a **Eltávolítás** újra.
 4. Amikor a rendszer eltávolítja az alkalmazást, navigáljon a C:\Users\<felhasználó > \AppData\Local\CosmosDBEmulator, törölje a mappát. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="change-list"></a>A változások listája
+
+A verziószám ellenőrizheti a jobb gombbal a tálcán helyi emulátor ikonjára kattintva, majd kattintson a menüpont kapcsolatban.
+
+### <a name="120-released-on-january-26-2018"></a>1.20 2018 január 26 kiadása
+
+* A MongoDB-összesítési feldolgozási folyamat alapértelmezés szerint engedélyezett.
+
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban ezt a következők:
 

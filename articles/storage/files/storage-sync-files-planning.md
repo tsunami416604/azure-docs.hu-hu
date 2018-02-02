@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 0aac388f4499af018a4603bcad835ab41d6b6642
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 8f20e8d4329d815351147f90b598180839ce917a
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Egy Azure fájlszinkronizálás (előzetes verzió) telepítésének tervezése
 Sync szolgáltatás használatával Azure fájl (előzetes verzió) központosítása fájlmegosztások a szervezet Azure fájlokban, ugyanakkor változatlanul megőrizze a rugalmasság, a teljesítmény és a kompatibilitási egy helyszíni fájlkiszolgáló. Azure fájlszinkronizálás átalakítja a Windows Server az Azure fájlmegosztás gyors gyorsítótárába. Minden protokoll, amely a Windows Server helyileg, az adatok eléréséhez használhatja, többek között a ftps-t, SMB és NFS. Akkor is annyi gyorsítótárak világszerte szükség szerint.
@@ -131,7 +131,7 @@ A következő megoldásokat ismert, hogy támogatja a rendszer kihagyja a kapcso
 
 - [Symantec Endpoint Protection](https://support.symantec.com/en_US/article.tech173752.html)
 - [McAfee végpont biztonsági](https://kc.mcafee.com/resources/sites/MCAFEE/content/live/PRODUCT_DOCUMENTATION/26000/PD26799/en_US/ens_1050_help_0-00_en-us.pdf) (lásd a "Vizsgálata csak mit kell" a PDF 90 lapján)
-- [Kaspersky víruskereső](https://support.kaspersky.com/4684)
+- [Kaspersky Anti-Virus](https://support.kaspersky.com/4684)
 - [Sophos az Endpoint Protection](https://community.sophos.com/kb/en-us/40102)
 - [TrendMicro OfficeScan](https://success.trendmicro.com/solution/1114377-preventing-performance-or-backup-and-restore-issues-when-using-commvault-software-with-osce-11-0#collapseTwo) 
 
@@ -158,11 +158,13 @@ Az Azure fájlszinkronizálás csak a következő régiókban Preview érhető e
 
 | Régió | Adatközpont helye |
 |--------|---------------------|
-| USA keleti régiója | Virginia, USA |
-| USA nyugati régiója | Kaliforniai, USA |
-| Nyugat-Európa | Hollandia |
+| Kelet-Ausztrália | Új-Dél-Wales |
+| Közép-Kanada | Toronto |
+| USA keleti régiója | Virginia |
 | Délkelet-Ázsia | Szingapúr |
-| Kelet-Ausztrália | Új déli Walesben Ausztrália |
+| Az Egyesült Királyság déli régiója | London |
+| Nyugat-Európa | Hollandia |
+| USA nyugati régiója | Kalifornia |
 
 A képen támogatjuk a szinkronizálás csak a az Azure fájlmegosztások, amely ugyanabban a régióban, mint a tároló szinkronizálási szolgáltatás.
 

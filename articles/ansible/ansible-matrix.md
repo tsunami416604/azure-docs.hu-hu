@@ -8,11 +8,11 @@ manager: routlaw
 ms.author: tarcher
 ms.date: 01/19/2018
 ms.topic: article
-ms.openlocfilehash: da5d1a8277d87a771b080ef9cefb3b40448d1563
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
-ms.translationtype: HT
+ms.openlocfilehash: f62cc2df9e4ce815c4427b80e271ddc672748e4f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="ansible-module-and-version-matrix"></a>Ansible modul és verzió mátrix
 
@@ -33,6 +33,7 @@ Ez a cikk az Azure-hoz, amely építhető ki az Azure felhőalapú erőforrások
 | azure_rm_virtualmachine                     | Igen          | Igen                         | Igen                                 | 
 | azure_rm_virtualmachine_extension           | Igen          | Igen                         | Igen                                 | 
 | azure_rm_virtualmachine_scaleset            | Igen          | Igen                         | Igen                                 | 
+| azure_rm_image                              |              | Igen                         | Igen                                 | 
 | **Hálózat**                    |           |                          |                                  | 
 | azure_rm_virtualnetwork                     | Igen          | Igen                         | Igen                                 | 
 | azure_rm_virtualnetwork_facts               | Igen          | Igen                         | Igen                                 | 
@@ -45,13 +46,16 @@ Ez a cikk az Azure-hoz, amely építhető ki az Azure felhőalapú erőforrások
 | azure_rm_dnsrecordset_facts                 | Igen          | Igen                         | Igen                                 | 
 | azure_rm_dnszone                            | Igen          | Igen                         | Igen                                 | 
 | azure_rm_dnszone_facts                      | Igen          | Igen                         | Igen                                 | 
-| **Storage**                    |           |                          |                                  | 
 | azure_rm_loadbalancer                       | Igen          | Igen                         | Igen                                 | 
 | azure_rm_loadbalancer_facts                 | Igen          | Igen                         | Igen                                 | 
-| azure_rm_applicationgateway                 | -            | Igen                         |                                     | 
-| azure_rm_applicationgateway_facts           | -            | -                           | Igen                                 | 
-| azure_rm_securitygroup                      | -            | -                           | Igen                                 | 
-| azure_rm_securitygroup_facts                | -            | -                           | Igen                                 | 
+| azure_rm_appgw                              | -            | -                           | Igen                                 | 
+| azure_rm_appgwroute                         | -            | -                           | Igen                                 | 
+| azure_rm_appgwroute                         | -            | -                           | Igen                                 |
+| azure_rm_appgwroute_facts                   | -            | -                           | Igen                                 |
+| azure_rm_appgwroutetable                    | -            | -                           | Igen                                 |
+| azure_rm_securitygroup                      | Igen          | Igen                         | Igen                                 | 
+| azure_rm_appgwroutetable_facts              | Igen          | Igen                         | Igen                                 | 
+| **Storage**                    |           |                          |                                  | 
 | azure_rm_storageaccount                     | Igen          | Igen                         | Igen                                 | 
 | azure_rm_storageaccount_facts               | Igen          | Igen                         | Igen                                 | 
 | azure_rm_storageblob                        | Igen          | Igen                         | Igen                                 | 
@@ -59,7 +63,7 @@ Ez a cikk az Azure-hoz, amely építhető ki az Azure felhőalapú erőforrások
 | azure_rm_managed_disk_facts                 | Igen          | Igen                         | Igen                                 | 
 | **Tárolók**                    |           |                          |                                  | 
 | azure_rm_acs                                | Igen          | Igen                         | Igen                                 | 
-| azure_rm_containerinstance                  | -            | Igen                        |                                     | 
+| azure_rm_containerinstance                  | -            | Igen                         | Igen                                 | 
 | azure_rm_containerinstance_facts            | -            | -                           | Igen                                 | 
 | azure_rm_containerregistry                  | -            | Igen                         | Igen                                 | 
 | azure_rm_containerregistry_facts            | -            | -                           | Igen                                 | 
@@ -73,7 +77,7 @@ Ez a cikk az Azure-hoz, amely építhető ki az Azure felhőalapú erőforrások
 | **Adatbázisok**                    |           |                          |                                  | 
 | azure_rm_sqlserver                          | -            | Igen                         | Igen                                 | 
 | azure_rm_sqlserver_facts                    | -            | -                           | Igen                                 | 
-| azure_rm_sqldatabase                        | -            | -                           | Igen                                 | 
+| azure_rm_sqldatabase                        | -            | Igen                         | Igen                                 | 
 | azure_rm_sqldatabase_facts                  | -            | -                           | Igen                                 | 
 | azure_rm_sqlelasticpool                     | -            | -                           | Igen                                 | 
 | azure_rm_sqlelasticpool_facts               | -            | -                           | Igen                                 | 
@@ -81,7 +85,7 @@ Ez a cikk az Azure-hoz, amely építhető ki az Azure felhőalapú erőforrások
 | azure_rm_sqlfirewallrule_facts              | -            | -                           | Igen                                 | 
 | azure_rm_mysqlserver                        | -            | Igen                         | Igen                                 | 
 | azure_rm_mysqlserver_facts                  | -            | -                           | Igen                                 | 
-| azure_rm_mysqldatabase                      | -            | -                           | Igen                                 | 
+| azure_rm_mysqldatabase                      | -            | Igen                         | Igen                                 | 
 | azure_rm_mysqldatabase_facts                | -            | -                           | Igen                                 | 
 | azure_rm_mysqlfirewallrule                  | -            | -                           | Igen                                 | 
 | azure_rm_mysqlfirewallrule_facts            | -            | -                           | Igen                                 | 
@@ -89,12 +93,17 @@ Ez a cikk az Azure-hoz, amely építhető ki az Azure felhőalapú erőforrások
 | azure_rm_mysqlconfiguration_facts           | -            | -                           | Igen                                 | 
 | azure_rm_postgresqlserver                   | -            | Igen                         | Igen                                 | 
 | azure_rm_postgresqlserver_facts             | -            | -                           | Igen                                 | 
-| azure_rm_postgresqldatabase                 | -            | -                           | Igen                                 | 
+| azure_rm_postgresqldatabase                 | -            | Igen                         | Igen                                 | 
 | azure_rm_postgresqldatabase_facts           | -            | -                           | Igen                                 | 
 | azure_rm_postgresqlfirewallrule             | -            | -                           | Igen                                 | 
 | azure_rm_postgresqlfirewallrule_facts       | -            | -                           | Igen                                 | 
 | azure_rm_postgresqlconfiguration            | -            | -                           | Igen                                 | 
 | azure_rm_postgresqlconfiguration_facts      | -            | -                           | Igen                                 | 
+| **Key Vault**                    |           |                          |                                  | 
+| azure_rm_keyvault                           | -            | -                           | Igen                                 |
+| azure_rm_keyvault_facts                     | -            | -                           | Igen                                 |
+| azure_rm_keyvaultkey                        | -            | -                           | Igen                                 |
+| azure_rm_keyvaultsecret                     | -            | -                           | Igen                                 |
 
 ## <a name="introduction-to-azuremodule"></a>Azure_module bemutatása
 A [azure_module alkalmazástervezési szerepkör](https://galaxy.ansible.com/Azure/azure_modules/) tartalmazza a legújabb módosításait és az Azure modulok hibajavítások a [devel fiókirodai Ansible tárház](https://github.com/ansible/ansible/tree/devel). Ha nem várja meg a Ansible a következő verzióra, a azure_module szerepkör telepítése akkor hasznos.

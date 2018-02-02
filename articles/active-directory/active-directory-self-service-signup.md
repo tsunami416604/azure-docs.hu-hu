@@ -1,5 +1,5 @@
 ---
-title: "Az Azure Active Directoryban önkiszolgáló vagy ugrásszerű előfizetési |} Microsoft Docs"
+title: "Az Azure Active Directoryban önkiszolgáló vagy próbaverziós előfizetés |} Microsoft Docs"
 description: "Egy Azure Active Directory (Azure AD) bérlői önkiszolgáló regisztrációt használni"
 services: active-directory
 documentationcenter: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/03/2017
+ms.date: 01/28/2018
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 2b41bb1b72cc773c29d464228c3177fbd1d9f5e0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9f2b541d5028596f9beabc7fd82001b4c9dacad4
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="what-is-self-service-signup-for-azure-active-directory"></a>Mi az az Azure Active Directory önkiszolgáló regisztráció?
 Ez a cikk azt ismerteti, önkiszolgáló regisztrációt, és hogyan támogatják a forgatókönyvet az Azure Active Directory (Azure AD). Ha azt szeretné, hogy átvehesse a tartománynév egy nem felügyelt Azure ad-bérlői című [rendszergazdaként egy nem felügyelt directory átveszi](domains-admin-takeover.md).
@@ -46,7 +46,12 @@ Rendszergazdák két önkiszolgáló vezérlők ma rendelkezik. Is hogy:
 Egy rendszergazda konfigurálhatja ezeket a képességeket a következő Azure AD-parancsmag Set-MsolCompanySettings paraméterekkel:
 
 * **AllowEmailVerifiedUsers** meghatározza, hogy a felhasználó létrehozása, vagy egy nem felügyelt directory join. $False értékre állítja, hogy a paramétert, ha nem ellenőrzött e-mail felhasználók csatlakozhatnak a könyvtár.
-* **AllowAdHocSubscriptions** meghatározza, hogy a felhasználók önkiszolgáló regisztrációt végrehajtásához. $False értékre állítja, hogy a paramétert, ha a felhasználók nem végezheti önkiszolgáló regisztrációt.
+* **AllowAdHocSubscriptions** meghatározza, hogy a felhasználók önkiszolgáló regisztrációt végrehajtásához. $False értékre állítja, hogy a paramétert, ha a felhasználók nem végezheti önkiszolgáló regisztrációt. 
+  
+  > [!NOTE]
+  > Folyamat és a PowerApps próba signups nem szabályozzák a **AllowAdHocSubscriptions** beállítást. További információkért tekintse át a következő cikkeket:
+  > * [Hogyan akadályozhatom meg, hogy a meglévő felhasználók használata a Power bi-ban?](https://support.office.com/article/Power-BI-in-your-Organization-d7941332-8aec-4e5e-87e8-92073ce73dc5#bkmk_preventjoining)
+  > * [A Q & A szervezetében flow](https://docs.microsoft.com/flow/organization-q-and-a)
 
 ### <a name="how-do-the-controls-work-together"></a>Hogyan vezérlők működnek együtt?
 A két paraméter önkiszolgáló regisztrációt szabályozhatják pontosabb meghatározásához használható együtt. Például az alábbi parancs segítségével a felhasználók önkiszolgáló regisztrációt, de csak végrehajtásához, ha azoknak a felhasználóknak már rendelkezik fiókkal az Azure ad-ben (más szóval, felhasználók, akik létrehozni ellenőrzött e-mail fiókkal kell először nem hajtható végre önkiszolgáló regisztrációt):
@@ -60,7 +65,7 @@ Az alábbi folyamatábra bemutatja a különböző kombinációkban e paraméter
 
 További információt és példákat ezekkel a paraméterekkel, [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Egyéni tartománynév hozzáadása az Azure AD](add-custom-domain.md)
 * [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview)
 * [Azure PowerShell](/powershell/azure/overview)

@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 01/31/2018
 ms.author: sethm
-ms.openlocfilehash: f927aa7a33a650354abd090b6280795875ab693f
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: efcfad2834c2d6775c6693f5c705a0531b2650d6
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="service-bus-messaging-exceptions"></a>A Service Bus-alapú üzenetkezelés kivételei
 Ez a cikk a Microsoft Azure Service Bus üzenetküldési API-k által létrehozott kivételek sorolja fel. Ez a hivatkozás változhat, így biztonsági frissítések keresése.
 
 ## <a name="exception-categories"></a>Kivétel kategóriák
-A üzenettovábbítási API-kat hoz létre a kivételeket, amelyek a következő kategóriákba, amelyekkel javító őket a társított művelet együtt tartalék is. Vegye figyelembe, hogy jelentését és okok kivétel üzenetküldési entitásra (várólisták/témakörök vagy az Event Hubs) típusától függően változhat:
+A üzenettovábbítási API-kat hoz létre a kivételeket, amelyek a következő kategóriákba, amelyekkel javító őket a társított művelet együtt tartalék is. Vegye figyelembe, hogy jelentését és okok kivétel üzenetküldési entitásra típusától függően változhat:
 
 1. Kódolási hiba felhasználói ([System.ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx), [System.InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx), [System.OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx), [System.Runtime.Serialization.SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx)). Általános művelet: javító a kódot, a folytatás előtt.
 2. A telepítő-konfigurációs hiba ([Microsoft.ServiceBus.Messaging.MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.servicebus.messagingentitynotfoundexception), [System.UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx). Általános művelet: Ellenőrizze a konfigurációt, és szükség esetén módosítsa.
@@ -66,7 +66,7 @@ A következő táblázat felsorolja az üzenetkezelési kivétel típusait, és 
 ### <a name="queues-and-topics"></a>Üzenetsorok és témakörök
 Üzenetsorok és témakörök ez pedig gyakran a sor mérete. A hiba üzenettulajdonságot tartalmaz további részleteket az alábbi példában látható módon:
 
-```
+```Output
 Microsoft.ServiceBus.Messaging.QuotaExceededException
 Message: The maximum entity size has been reached or exceeded for Topic: ‘xxx-xxx-xxx’. 
     Size of entity in bytes:1073742326, Max entity size in bytes:
@@ -79,7 +79,7 @@ Az üzenet jelzi, hogy a témakör meghaladta a maximális méretét, a nagybet�
 
 A névterek [QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) azt jelezheti, hogy egy alkalmazás túllépte a névtérre kapcsolatok maximális számát. Példa:
 
-```
+```Output
 Microsoft.ServiceBus.Messaging.QuotaExceededException: ConnectionsQuotaExceeded for namespace xxx.
 <tracking-id-guid>_G12 ---> 
 System.ServiceModel.FaultException`1[System.ServiceModel.ExceptionDetail]: 
@@ -94,9 +94,6 @@ Két közös Ez a hiba oka: a kézbesítetlen levelek várólistájára, és az 
     A probléma megoldásához olvassa el, és végezze el a kézbesítetlen levelek várólistájára üzeneteinek, mint bármely más várólistából. Használhatja a [FormatDeadLetterPath](/dotnet/api/microsoft.azure.servicebus.entitynamehelper.formatdeadletterpath) segítségével formázza a kézbesítetlen levelek várólistájára elérési útja.
 2. **A fogadó leállt** A fogadó leállt üzenetek fogadása egy üzenetsorból vagy előfizetés. A azonosítása ez módja tekintse meg a [QueueDescription.MessageCountDetails](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails) tulajdonság, amely az üzenetek teljes lebontása látható. Ha a [ActiveMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.activemessagecount) tulajdonság magas vagy növekvő, akkor az üzenetek nem olvas gyors azok ír.
 
-### <a name="event-hubs"></a>Event Hubs
-Az Event Hubs maximális hossza 20 felhasználói csoportot az Event Hubs egy rendelkezik. Hozzon létre több kísérli meg, amikor egy [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception). 
-
 ## <a name="timeoutexception"></a>TimeoutException
 A [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx) azt jelzi, hogy egy felhasználó által kezdeményezett művelet a vártnál a művelet időkorlátja lejár. 
 
@@ -107,13 +104,13 @@ Az üzenetsoroktól és témaköröktől megadott időkorlát vagy a [MessagingF
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Service Bus .NET API teljes referenciáért lásd: a [Azure .NET API-referencia](/dotnet/api/overview/azure/service-bus).
 
 További részletek [Service Bus](https://azure.microsoft.com/services/service-bus/), a következő cikkekben talál:
 
-* [Service Bus messaging overview](service-bus-messaging-overview.md) (A Service Bus üzenetkezelésének áttekintése)
+* [A Service Bus üzenetkezelésének áttekintése](service-bus-messaging-overview.md)
 * [A Service Bus alapjai](service-bus-fundamentals-hybrid-solutions.md)
 * [Service Bus-architektúra](service-bus-architecture.md)
 

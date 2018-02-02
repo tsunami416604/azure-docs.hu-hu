@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2018
+ms.date: 01/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 2738af56782dbe8c917afd942e3f6b1eada026b2
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
-ms.translationtype: HT
+ms.openlocfilehash: 47ba146d18a20cf6c7e7480d74a02ba354486988
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-patentsquare"></a>Oktatóanyag: Azure Active Directoryval integrált PatentSQUARE
 
@@ -118,7 +118,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/active-directory-saas-patentsquare-tutorial/tutorial_general_400.png)
 
-6. Egyszeri bejelentkezés konfigurálása **PatentSQUARE** oldalon kell küldeniük a letöltött **metaadatainak XML-kódja** való [PatentSQUARE támogatási csoport](http://www.panasonic.com/jp/company/pstc.html). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
+6. Egyszeri bejelentkezés konfigurálása **PatentSQUARE** oldalon kell küldeniük a letöltött **metaadatainak XML-kódja** való [PatentSQUARE támogatási csoport](https://www.panasonic.com/jp/business/its/patentsquare.html). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -158,7 +158,7 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
  
 ### <a name="create-a-patentsquare-test-user"></a>PatentSQUARE tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy PatentSQUARE Britta Simon nevű felhasználót hoz létre. Együttműködve [PatentSQUARE támogatási csoport](http://www.panasonic.com/jp/company/pstc.html) a felhasználók hozzáadása a PatentSQUARE platform. Felhasználók kell létrehoznia és aktiválni az egyszeri bejelentkezés használata előtt. 
+Ebben a szakaszban egy PatentSQUARE Britta Simon nevű felhasználót hoz létre. Együttműködve [PatentSQUARE támogatási csoport](https://www.panasonic.com/jp/business/its/patentsquare.html) a felhasználók hozzáadása a PatentSQUARE platform. Felhasználók kell létrehoznia és aktiválni az egyszeri bejelentkezés használata előtt. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
 

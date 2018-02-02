@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: e57ad43cc9a82e3944e93c6500ad5740818d10cc
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: d8943db3ec6ef5875b2b884d42ea25dbb44a30e5
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="explore-the-capabilities-of-the-remote-monitoring-preconfigured-solution"></a>A távoli felügyeleti előkonfigurált megoldás funkcióinak felfedezése
 
@@ -31,6 +31,10 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Egy riasztás válaszolni
 > * Az eszközök a belső vezérlőprogram frissítése
 > * Az eszközök rendszerezéséhez
+
+A következő videó bemutatja a távoli felügyeleti megoldás részletes útmutatás:
+
+>[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Part-28-An-introduction-to-Azure-IoT-through-the-new-Remote-Monitoring-Preconfigured-Solution/Player]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -58,9 +62,9 @@ Contoso intelligens eszközök különböző használ. Ezek az eszközök a kül
 
 A következő táblázat a kiépített eszköztípusok összegzését jeleníti meg:
 
-| Eszköz típusa        | Telemetria                                  | Tulajdonságok                                  | Címkék                    | Metódusok                                                                                      |
+| Eszköztípus        | Telemetria                                  | Tulajdonságok                                  | Címkék                    | Metódusok                                                                                      |
 | ------------------ | ------------------------------------------ | ------------------------------------------- | ----------------------- | -------------------------------------------------------------------------------------------- |
-| Hűtő            | Hőmérséklet, páratartalom, nyomás            | Típus, a belső vezérlőprogram-verziója, a modell               | Hely, emelet, egyetemi | Indítsa újra a belső vezérlőprogram frissítési, vészhelyzeti szelep kiadásban növekedése nyomás                          |
+| Chiller            | Hőmérséklet, páratartalom, nyomás            | Típus, a belső vezérlőprogram-verziója, a modell               | Hely, emelet, egyetemi | Indítsa újra a belső vezérlőprogram frissítési, vészhelyzeti szelep kiadásban növekedése nyomás                          |
 | Prototípusának eszköz | Hőmérséklet, terhelés, földrajzi helyhez        | Típus, a belső vezérlőprogram-verziója, a modell               | Hely, mód          | Indítsa újra, belső vezérlőprogram frissítési áthelyezés eszköz, Stop eszköz, hőmérséklet-kiadás, hőmérséklet növelése |
 | Motor             | Tartály üzemanyag szint hűtőközeg érzékelő, vibráció | Típus, a belső vezérlőprogram-verziója, a modell               | Hely, emelet, egyetemi | Indítsa újra, belső vezérlőprogram frissítési üres tartály, kitöltés tartály                                              |
 | Teherautó              | Földrajzi hely, sebessége rakomány hőmérséklet     | Típus, a belső vezérlőprogram-verziója, a modell               | Hely, betöltése          | Alacsonyabb rakomány hőmérséklet, növelje rakomány hőmérséklet, belső vezérlőprogram frissítése                         |
@@ -76,9 +80,9 @@ A Contoso operátorok ismeri a küszöbértékeket, amelyek meghatározzák, hog
 | Szabály neve | Leírás | Küszöbérték | Súlyosság | Érintett eszközök |
 | --------- | ----------- | --------- | -------- | ---------------- |
 | Hűtő nyomás túl magas | Riasztást küld, ha hőmérsékletű elérni nagyobbnak, mint a szokásos terhelés szintek   |P > 250 psi       | Kritikus | Hőmérsékletű            |
-| Prototípusának eszköz temp túl magas  | Riasztást küld, ha prototípusának eszközök elérni nagyobbnak, mint a normál hőmérséklet szintek  |T > 80&deg; F |Kritikus | Prototípusának eszközök |
+| Prototípusának eszköz temp túl magas  | Riasztást küld, ha prototípusának eszközök elérni nagyobbnak, mint a normál hőmérséklet szintek  |T>80&deg; F |Kritikus | Prototípusának eszközök |
 | Üres motor tartály  | Riasztást küld, ha motor tüzelőanyagtartály üres kerül.                     | F < 5 gallon | Információ     | Végrehajtók             |
-| Nagyobb, mint a normál rakomány hőmérséklet | Ha teherautó tartozó rakomány hőmérséklet értéke magasabb, mint a normál                 | T < 45&deg; F |Figyelmeztetés  | Teherautók              |
+| Nagyobb, mint a normál rakomány hőmérséklet | Ha teherautó tartozó rakomány hőmérséklet értéke magasabb, mint a normál                 | T<45&deg; F |Figyelmeztetés  | Teherautók              |
 | Foglalhatja vibráció leállt      | Riasztást küld, ha foglalhatja nem teljesen (vibráció szint alapján)                     | V < 0,1 mm |Figyelmeztetés  | Felvonók           |
 
 ### <a name="operate-the-contoso-sample-deployment"></a>Működik a Contoso üzembe helyezési minta
@@ -226,7 +230,7 @@ Eszközök használata a címkenevek hozhat létre.
 
 Most már a Contoso operátor lekérdezheti a működési csapat anélkül, hogy az eszközök bármit módosíthat alapú eszközök.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóprogramban megismerte a:
 

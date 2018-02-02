@@ -4,22 +4,24 @@ description: "Bevezetés az Azure idő adatsorozat Insights, egy új szolgáltat
 services: time-series-insights
 ms.service: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: anshan, jasonh
 manager: jhubbard
 editor: MarkMcGeeAtAquent
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: article
-ms.date: 11/15/2017
-ms.openlocfilehash: 2a0d3e829ed28912b56a022aa6aa82ade1718e35
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.date: 01/26/2018
+ms.openlocfilehash: e31cebfd027e93096e233f2963445e4fc50a7e9d
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="what-is-azure-time-series-insights"></a>Mi az Azure idő adatsorozat Insights?
 
 Idő adatsorozat Insights épül, tárolás, megjeleníteni és nagy mennyiségű időt adatsorozat adatok, például az IoT-eszközök által generált lekérdezése.  Ha szeretné tárolni, kezelheti, lekérdezése vagy idő adatsorozat adato a felhőben, idő adatsorozat Insights valószínű jogot az Ön számára.  
+
+! [Idő adatsorozat Insights folyamatábra] (media/overview/time-series-insights-flowchart.png)
 
 Idő adatsorozat Insights négy fő feladatok rendelkezik:
 
@@ -67,7 +69,6 @@ Első lépések kevesebb, mint 5 percet vesz igénybe.
 
 ## <a name="time-series-insights-explorer"></a>Time Series Insights Explorer
 Ez az ábra szemlélteti, a time series insights megtekinteni az Intéző:! [Idő adatsorozat Insights explorer] (media/time-series-insights-explorer/explorer4.png)
-
 
 ## <a name="next-steps"></a>További lépések
  - [Megismerkedhet a bemutató környezetben idő adatsorozat Insights Explorerrel](./time-series-quickstart.md)

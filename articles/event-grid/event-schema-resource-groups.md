@@ -6,13 +6,13 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 11/08/2017
+ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: c7435d87f9aaa906c3f6758186b64f3458cb9716
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 109f5af5cc1647cebee805c3141f4bc83c73bcfc
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-event-grid-event-schema-for-resource-groups"></a>Erőforráscsoportok Azure esemény rács esemény séma
 
@@ -39,7 +39,7 @@ A következő példa bemutatja a séma, esemény létrehozott erőforrás:
 
 ```json
 [
-    {
+  {
     "topic":"/subscriptions/{subscription-id}/resourceGroups/{resource-group}",
     "subject":"/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/eventSubscriptions/LogicAppdd584bdf-8347-49c9-b9a9-d1f980783501",
     "eventType":"Microsoft.Resources.ResourceWriteSuccess",
@@ -56,8 +56,10 @@ A következő példa bemutatja a séma, esemény létrehozott erőforrás:
         "status":"Succeeded",
         "subscriptionId":"{subscription-id}",
         "tenantId":"72f988bf-86f1-41af-91ab-2d7cd011db47"
-        },
-    }
+    },
+    "dataVersion": "",
+    "metadataVersion": "1"
+  }
 ]
 ```
 
@@ -81,7 +83,9 @@ A séma erőforrás törlése esemény hasonlít:
     "status": "Succeeded",
     "subscriptionId": "{subscription-id}",
     "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47"
-  }
+  },
+  "dataVersion": "",
+  "metadataVersion": "1"
 }]
 ```
 
@@ -91,29 +95,31 @@ Az esemény a következő legfelső szintű adatokat tartalmaz:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| A témakör | Karakterlánc | A forrás teljes erőforrás elérési útja. Ez a mező nincs írható. |
-| Tulajdonos | Karakterlánc | Az esemény tulajdonos közzétevő által megadott elérési útja. |
-| Esemény típusa | Karakterlánc | Az esemény adatforrás regisztrált esemény típusok egyike. |
-| eventTime | Karakterlánc | Az esemény jön létre az idő alapján a szolgáltató UTC idő szerint. |
-| id | Karakterlánc | Az esemény egyedi azonosítója. |
-| Adatok | Objektum | Erőforrás-csoport eseményadatok. |
+| A témakör | karakterlánc | A forrás teljes erőforrás elérési útja. Ez a mező nincs írható. Esemény rács biztosítja ezt az értéket. |
+| Tulajdonos | karakterlánc | Az esemény tulajdonos közzétevő által megadott elérési útja. |
+| eventType | karakterlánc | Az esemény adatforrás regisztrált esemény típusok egyike. |
+| eventTime | karakterlánc | Az esemény jön létre az idő alapján a szolgáltató UTC idő szerint. |
+| id | karakterlánc | Az esemény egyedi azonosítója. |
+| adat | objektum | Erőforrás-csoport eseményadatok. |
+| dataVersion | karakterlánc | Az objektum séma verziója. A közzétevő a sémaverziót határozza meg. |
+| metadataVersion | karakterlánc | Az esemény-metaadatok séma verziója. Esemény rács a séma legfelső szintű tulajdonság határozza meg. Esemény rács biztosítja ezt az értéket. |
 
 Az objektum tulajdonságai a következők:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| Engedélyezési | Karakterlánc | A kért engedélyezése a művelethez. |
-| Jogcímek | Karakterlánc | A jogcímek tulajdonságait. |
-| correlationId | Karakterlánc | Hibaelhárítási művelet azonosítója. |
-| httpRequest | Karakterlánc | A művelet részleteit. |
-| resourceProvider | Karakterlánc | Az erőforrás-szolgáltató a művelet végrehajtása. |
-| resourceUri | Karakterlánc | A műveletet az erőforrás URI. |
-| operationName | Karakterlánc | A műveletet, hogy végre lett hajtva. |
-| status | Karakterlánc | A művelet állapotát. |
-| subscriptionId | Karakterlánc | Az erőforrás előfizetés-azonosítója. |
-| A TenantId | Karakterlánc | A bérlő azonosítója, az erőforrás. |
+| Engedélyezési | karakterlánc | A kért engedélyezése a művelethez. |
+| Jogcímek | karakterlánc | A jogcímek tulajdonságait. |
+| correlationId | karakterlánc | Hibaelhárítási művelet azonosítója. |
+| httpRequest | karakterlánc | A művelet részleteit. |
+| resourceProvider | karakterlánc | Az erőforrás-szolgáltató a művelet végrehajtása. |
+| resourceUri | karakterlánc | A műveletet az erőforrás URI. |
+| operationName | karakterlánc | A műveletet, hogy végre lett hajtva. |
+| status | karakterlánc | A művelet állapotát. |
+| subscriptionId | karakterlánc | Az erőforrás előfizetés-azonosítója. |
+| tenantId | karakterlánc | A bérlő azonosítója, az erőforrás. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Megismerkedhet az Azure Event rács, lásd: [Mi az az esemény rács?](overview.md)
 * Egy esemény rács Azure-előfizetés létrehozásával kapcsolatos további információkért lásd: [esemény rács előfizetés séma](subscription-creation-schema.md).

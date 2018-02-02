@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/31/2017
+ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 37602bf78f7a43fb8255ddc0aad21f24095cb43c
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: f115d1e7313d2c9d378129c021a37489674fe81f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="reference---choose-a-communication-protocol"></a>Olyan kommunikációs protokollt hivatkozhat - a
 
@@ -44,7 +44,7 @@ Ha úgy dönt, hogy a eszközoldali kommunikációs protokollja, vegye figyelemb
 
 * **Felhő eszközre mintát**. HTTPS nincs hatékonyan kiszolgáló leküldéses végrehajtásához. Ha HTTPS PROTOKOLLT használ, eszközök kérdezze le az IoT-központ az felhő-eszközre küldött üzenetek. Ez a módszer nem hatékony, az eszköz és az IoT-központ is. Az aktuális HTTPS irányelveit minden egyes eszköz kell kérdezze le az üzenetek 25 percenként vagy több. MQTT és AMQP kiszolgáló leküldéses támogatja a felhő-eszközre küldött üzenetek fogadásakor. Lehetővé teszik az azonnali leküldéses értesítések az üzenetek az IoT-központ az eszközre. Kézbesítési késés fontos, ha MQTT vagy AMQP a a legjobb protokollok használatára. A ritkán csatlakoztatott eszközök esetében a HTTPS is működik.
 * **Átjárók mezőben**. MQTT és a HTTPS használata esetén nem lehet csatlakoztatni (minden saját eszköz hitelesítő adatokkal rendelkező) több eszközön ugyanazt a TLS-kapcsolatot használja. A [mezőben az átjáró alkalmazásának típusai] [ lnk-azure-gateway-guidance] , amely egy TLS kapcsolatot igényelnek a mező átjáró és az IoT-központ között az egyes csatlakoztatott eszközök esetén ezeket a protokollokat optimálisnál.
-* **Kevés erőforrás eszközök**. A MQTT és a HTTPS-tárak egy kisebb kezdjen, mint az AMQP szalagtárak rendelkezik. Ha az eszköz csak korlátozott erőforrásokat (például, kevesebb mint 1 MB RAM), ezeket a protokollokat lehet a kizárólag protokollmegvalósítás érhető el.
+* **Kevés erőforrás eszközök**. A MQTT és a HTTPS-tárak egy kisebb kezdjen, mint az AMQP szalagtárak rendelkezik. Ha az eszköz csak korlátozott erőforrásokat (például kisebb, mint 1 MB RAM), ezeket a protokollokat lehet a kizárólag protokollmegvalósítás érhető el.
 * **A hálózati átviteli**. A szabványos AMQP-protokoll által használt port: 5671, és MQTT 8883 portot figyeli. Ezek a portok használata problémákat okozhatnak hálózatokban, amelyek nem HTTPS protokollokhoz be van zárva. Keresztül használja a MQTT websocket elemeket, AMQP websocket elemeket, vagy a HTTPS ebben a forgatókönyvben.
 * **Terhelés méretének**. MQTT és AMQP a bináris protokollok, következtében a HTTPS-nál több kompakt hasznos adat található.
 
@@ -66,7 +66,7 @@ Eszközök képesek kommunikálni az Azure-ban a különböző protokollok IoT-k
 Miután létrehozta az IoT-központ Azure-régióban, az IoT hub megtartja ugyanazt a címet, hogy az IoT-központ teljes. Azonban ha a Microsoft szolgáltatás-minőségi fenntartásához különböző méretezési egység az IoT hub kerül, majd ezt a jogosultságot egy új IP-címet.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Hogyan IoT-központ megvalósítja a MQTT protokoll kapcsolatos további információkért lásd: [kommunikáljon az IoT hub MQTT protokollal a][lnk-mqtt-support].
 

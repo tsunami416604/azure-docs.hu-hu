@@ -1,6 +1,6 @@
 ---
-title: "Célcsoport-kezelési megoldás az OMS |} Microsoft Docs"
-description: "Megoldás célcsoportkezelést egy olyan szolgáltatás, az Operations Management Suite (OMS), amely lehetővé teszi az ügynökök meghatározott megoldások korlátozza.  Ez a cikk ismerteti, hogyan segítségével hozzon létre egy hatókör konfigurációját, és a megoldáshoz."
+title: "Célcsoport-kezelési megoldások Azure-ban |} Microsoft Docs"
+description: "Célcsoport-kezelési megoldások lehetővé teszi az ügynökök meghatározott megoldások korlátozza.  Ez a cikk ismerteti, hogyan segítségével hozzon létre egy hatókör konfigurációját, és a megoldáshoz."
 services: operations-management-suite
 documentationcenter: 
 author: bwren
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
-ms.openlocfilehash: cb73a2d7ae57a5a11869259dbe913ae83ffb2b01
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e24a7540a67f842b8229223bf6602cd9e0ee5dbd
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="use-solution-targeting-in-operations-management-suite-oms-to-scope-management-solutions-to-specific-agents-preview"></a>Használja a megoldás a célcsoport-kezelési Operations Management Suite (OMS) hatókör-kezelési megoldások adott ügynökökkel (előzetes verzió)
-A megoldás az OMS-be való hozzáadásakor automatikusan telepíti a Naplóelemzési munkaterület csatlakozó Windows és Linux ügynökök alapértelmezés szerint.  Érdemes lehet a költségek kezelésére, és egy meghatározott ügynökök korlátozásával megoldás gyűjtött adatok mennyiségét.  Ez a cikk ismerteti, hogyan használható **célcsoport-kezelési megoldás** Ez az az OMS-szolgáltatása, amely lehetővé teszi a hatókör vonatkozik.
+# <a name="targeting-management-solutions-in-azure-preview"></a>Az Azure (előzetes verzió) célcsoport-kezelési megoldások
+Ha olyan felügyeleti megoldást hozzáadása az előfizetéshez, automatikusan telepíti a Naplóelemzési munkaterület csatlakozó Windows és Linux ügynökök alapértelmezés szerint.  Érdemes lehet a költségek kezelésére, és egy meghatározott ügynökök korlátozásával megoldás gyűjtött adatok mennyiségét.  Ez a cikk ismerteti, hogyan használható **célcsoport-kezelési megoldás** Ez lehetővé teszi, hogy a hatókör alkalmazhat a megoldásokat.
 
 ## <a name="how-to-target-a-solution"></a>A megoldás bemutatásához
-A következő szakaszokban ismertetett módon célcsoport-kezelési megoldás három lépésben történik.  Vegye figyelembe, hogy szüksége lesz az OMS-portállal, mind az Azure-portálon más lépéseket.
+A következő szakaszokban ismertetett módon célcsoport-kezelési megoldás három lépésben történik. 
 
 
 ### <a name="1-create-a-computer-group"></a>1. Hozzon létre egy számítógépcsoportot
@@ -72,6 +72,6 @@ Célcsoport-kezelési megoldás nem használható a következő megoldásokat an
 
 - Ügynök állapotfigyelő értékelése
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - További információ a megoldások, amelyek telepíthető a környezetben, beleértve a felügyeleti megoldásokra [megoldások Azure Naplóelemzés adja hozzá a munkaterületre](../log-analytics/log-analytics-add-solutions.md).
 - További információ a számítógépcsoportok létrehozása [számítógépcsoportokat a Log Analyticshez jelentkezzen keresések](../log-analytics/log-analytics-computer-groups.md).

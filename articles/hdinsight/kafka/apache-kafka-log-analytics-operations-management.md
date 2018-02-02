@@ -12,13 +12,13 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/07/2017
+ms.date: 01/30/2018
 ms.author: larryfr
-ms.openlocfilehash: 440133da32f4565aa247b273984b3affe18379ec
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 6fcb925829e33704c94c96209a61346b0404e13b
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>A HDInsight az Apache Kafka naplóinak elemzése
 
@@ -64,13 +64,13 @@ A Naplóelemzési ahhoz, hogy a HDInsight lépései megegyeznek a HDInsight-für
 
     | Napló típusa | Leírás |
     | ---- | ---- |
-    | napló\_kafkaserver\_CL | Kafka broker Server.log elérési úton található |
+    | napló\_kafkaserver\_CL | Kafka broker server.log |
     | napló\_kafkacontroller\_CL | Kafka broker controller.log |
-    | metrikák\_kafka\_CL | Kafka JMX metrikák |
+    | metrikák\_kafka\_CL | Kafka JMX metrics |
 
     ![A CPU-használat keresési képe](./media/apache-kafka-log-analytics-operations-management/kafka-cpu-usage.png)
  
- ## <a name="next-steps"></a>Következő lépések
+ ## <a name="next-steps"></a>További lépések
 
 A naplóelemzési további információkért lásd: a [Ismerkedjen meg a Naplóelemzési munkaterület](../../log-analytics/log-analytics-get-started.md) dokumentum.
 

@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2018
+ms.date: 01/31/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: c1a3b2107abdc3ef19a314616518c494687d81bf
-ms.sourcegitcommit: 5108f637c457a276fffcf2b8b332a67774b05981
+ms.openlocfilehash: a2d4efc3a3e1480de71528144ae3f025f4879f07
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-connected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Az Azure-csatlakoztatott telepítés tervezési megfontolások Azure verem integrált rendszerek
 Után úgy döntött, [hogyan fogja integrálja Azure verem a hibrid felhőkörnyezet](azure-stack-deployment-decisions.md), majd véglegesítése is az Azure-verem telepítési döntések meghozatalában.
@@ -41,7 +41,7 @@ Ha inkább az Azure AD a identitás tárolására van szükség, két Azure AD-f
     - A szolgáltatás-rendszergazda fiókot. Ez az az alapértelmezett szolgáltató előfizetés (amely később módosítható) tulajdonosa. Ezzel a fiókkal az Azure-verem felügyeleti portál be tud jelentkezni, és ajánlatokat és tervek létrehozása, kvótáit és más felügyeleti feladatokat Azure verem használható.
 2. **Számlázási partner** (szükséges is csatlakoztathatók, illetve központi telepítések). Az Azure-fiókot az Azure-verem integrált rendszert és az Azure kereskedelmi háttér számlázási kapcsolatának létrehozására szolgál. Ez az a fiók, amely az Azure-verem díjak alapján számlázzuk. Ez a fiók lesz a piactér szindikálási és egyéb hibrid környezetekben is. 
 
-### <a name="ad-fs-identity-store"></a>AD FS IDENTITÁS TÁROLÁSÁRA
+### <a name="ad-fs-identity-store"></a>AD FS identitás tárolására
 Válassza ezt a beállítást, ha a szolgáltatás-rendszergazdai fiókok, például a vállalati Active Directory, a saját identitás tárolására használni kívánt.  
 
 ## <a name="choose-a-billing-model"></a>Válassza ki a számlázási modelljét
@@ -57,9 +57,8 @@ Ha szeretne egy CSP-előfizetés használatára, mely CSP előfizetés használa
 
 |Forgatókönyv|Tartomány és az előfizetés beállításai|
 |-----|-----|
-|Közvetlen vagy közvetett CSP partnert, és az Azure-verem fog működni|Egy CSL (közös szolgáltatás réteg)-előfizetés használatára.|
-|Közvetlen vagy közvetett CSP partnert, és az Azure-verem fog működni|A Partnerközpontját, készítsen az Azure AD-bérlő egy leíró nevet; például <your organization>CSPAdmin, és az Azure CSP-előfizetéssel társítva.|
-|Egy közvetett CSP viszonteladóhoz, és az Azure-verem fog működni|Kérje meg a közvetett CSP szolgáltató szeretne létrehozni, az erőforráspartner központtal, a szervezet, és egy Azure CSP-előfizetése társítva van az Azure AD-bérlő.|
+|Ön egy **közvetlen CSP Partner** vagy egy **közvetett CSP-szolgáltató**, és az Azure-verem fog működni|Egy CSL (közös szolgáltatás réteg)-előfizetés használatára.<br>     vagy<br>Hozzon létre egy leíró nevet a Partner Centerben az Azure AD-bérlő. Például &lt;a szervezet > CSPAdmin egy Azure CSP-előfizetéshez társítva.|
+|Ön egy **közvetett CSP viszonteladóhoz**, és az Azure-verem fog működni|Kérje meg a közvetett CSP-szolgáltató a szervezet Azure AD-bérlő létrehozása egy Azure CSP-előfizetése társítva van Partnerközpontjában használatával.|
 
 ### <a name="capacity-based-billing"></a>A kapacitás alapján számlázási
 Ha úgy dönt, hogy a kapacitás számlázási modellt használja, meg kell vásárolnia egy Azure verem kapacitásának megtervezése SKU a kapacitás, a rendszer alapján. Meg kell tudni, hogy a helyes mennyiség megvásárlásához a Azure verem fizikai magok száma. 
@@ -70,3 +69,6 @@ A kapacitás számlázási szükséges egy nagyvállalati szerződés (EA) Azure
 - További információ a használati esetek, megvásárlásáról, partnerek és OEM hardverszállítók: a [Azure verem](https://azure.microsoft.com/overview/azure-stack/) termék oldalát.
 - A terv és a földrajzi rendelkezésre állása információt Azure verem integrált rendszerek, tekintse meg a: [Azure verem: Azure kiterjesztése](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/). 
 - További információt a Microsoft Azure verem csomagolás és árképzési [töltse le a .pdf](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf). 
+
+## <a name="next-steps"></a>További lépések
+[Datacenter hálózati integráció](azure-stack-network.md)

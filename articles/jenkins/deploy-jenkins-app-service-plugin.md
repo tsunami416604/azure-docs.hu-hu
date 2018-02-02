@@ -15,11 +15,11 @@ ms.workload: web
 ms.date: 7/24/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: 9b79e3b498e51e626e7e9a87d2bb1a66366acff5
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.openlocfilehash: 0e5916b2f8f901ff549ef74fca57cf09dc9fec21
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Telepítése az Azure App Service a Jenkins beépülő modul használatával 
 
@@ -71,7 +71,7 @@ A projekt telepítésére a webalkalmazások, Git vagy FTP segítségével felt�
 A feladat Jenkins beállítása előtt kell az Azure App Service-csomag és a webes alkalmazás a Java-alkalmazás futtatását.
 
 
-1. Az Azure App Service-csomagot hozzon létre a **szabad** IP-címek használatával a `az appservice plan create` [Azure CLI parancs](/cli/azure/appservice/plan#create). Az App Service-csomag határozza meg az alkalmazások futtatásához használt fizikai erőforrásokat. Egy App Service-csomagra hozzárendelt összes alkalmazások ossza meg ezeket az erőforrásokat. Megosztott erőforrások menthetők a költségek, ha több alkalmazást üzemeltető nyújt segítséget.
+1. Az Azure App Service-csomagot hozzon létre a **szabad** IP-címek használatával a `az appservice plan create` [Azure CLI parancs](/cli/azure/appservice/plan#az_appservice_plan_create). Az App Service-csomag határozza meg az alkalmazások futtatásához használt fizikai erőforrásokat. Egy App Service-csomagra hozzárendelt összes alkalmazások ossza meg ezeket az erőforrásokat. Megosztott erőforrások menthetők a költségek, ha több alkalmazást üzemeltető nyújt segítséget.
 2. Hozzon létre egy webes alkalmazást. Használhatja a [Azure-portálon](/azure/app-service-web/web-sites-configure) vagy a következő `az` Azure CLI-parancsot:
     ```azurecli-interactive 
     az webapp create --name <myAppName> --resource-group <myResourceGroup> --plan <myAppServicePlan>
@@ -200,13 +200,13 @@ Az a **Docker beállításjegyzék URL-cím** értéket, az URL-címet megadni a
 ## <a name="verify-your-web-app"></a>A webalkalmazás ellenőrzése
 
 1. Győződjön meg arról, hogy a WAR-fájl sikeresen telepítve lett a webalkalmazás, nyissa meg webböngészővel.
-2. Keresse fel a http://&lt;your_app_name >.azurewebsites.net/api/calculator/ping. Cserélje le &lt;your_app_name > a webalkalmazás nevét. Az üzenet jelenik meg:
+2. Go to http://&lt;your_app_name>.azurewebsites.net/api/calculator/ping. Cserélje le &lt;your_app_name > a webalkalmazás nevét. Az üzenet jelenik meg:
     ```
     Welcome to Java Web App!!! This is updated!
     Sun Jun 17 16:39:10 UTC 2017
     ```
 
-3. Keresse fel a http://&lt;your_app_name >.azurewebsites.net/api/calculator/add?x=&lt;x > & y =&lt;y >. Cserélje le &lt;x > és &lt;y > bármely számokkal x összege beolvasandó + y. A Számológép összegét mutatja: ![Számológép: hozzáadása](./media/execute-cli-jenkins-pipeline/calculator-add.png)
+3. Go to http://&lt;your_app_name>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y>. Cserélje le &lt;x > és &lt;y > bármely számokkal x összege beolvasandó + y. A Számológép összegét mutatja: ![Számológép: hozzáadása](./media/execute-cli-jenkins-pipeline/calculator-add.png)
 
 ### <a name="for-azure-app-service-on-linux"></a>Azure App Service Linux rendszeren
 
@@ -219,13 +219,13 @@ Az a **Docker beállításjegyzék URL-cím** értéket, az URL-címet megadni a
     ["calculator"]
     ```
     
-2. Keresse fel a http://&lt;your_app_name >.azurewebsites.net/api/calculator/ping. Cserélje le &lt;your_app_name > a webalkalmazás nevét. Az üzenet jelenik meg: 
+2. Go to http://&lt;your_app_name>.azurewebsites.net/api/calculator/ping. Cserélje le &lt;your_app_name > a webalkalmazás nevét. Az üzenet jelenik meg: 
     ```
     Welcome to Java Web App!!! This is updated!
     Sun Jul 09 16:39:10 UTC 2017
     ```
 
-3. Keresse fel a http://&lt;your_app_name >.azurewebsites.net/api/calculator/add?x=&lt;x > & y =&lt;y >. Cserélje le &lt;x > és &lt;y > bármely számokkal x összege beolvasandó + y.
+3. Go to http://&lt;your_app_name>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y>. Cserélje le &lt;x > és &lt;y > bármely számokkal x összege beolvasandó + y.
     
 ## <a name="next-steps"></a>További lépések
 

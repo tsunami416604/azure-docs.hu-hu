@@ -15,11 +15,11 @@ ms.custom:
 ms.workload: infrastructure-services
 ms.date: 06/07/2017
 ms.author: davidmu
-ms.openlocfilehash: abed4095bcacac4ca3995acfaafae2f16d5f1532
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e0ae5d797a2a502cceeb1be20af4953f16f1320a
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="overview-of-integration-between-application-gateway-and-azure-security-center"></a>Alkalmazásátjáró és az Azure Security Center közötti integráció áttekintése
 
@@ -37,7 +37,7 @@ Kattintson a javaslatokkal kapcsolatos webalkalmazási tűzfal megnyílik egy ú
 
 Navigáljon a **több szolgáltatások** > **biztonság + identitás szakaszában** > **Security Center** és az a **Security Center – áttekintés** panelen kattintson a **alkalmazások**. Az a **Security Center - alkalmazások** panelen, a tábla a Security Center az előfizetésében észlelt alkalmazások listáját tartalmazza.
 
-![webalkalmazások][3]
+![webalkalmazás][3]
 
 Kattintva kritikus problémát webalkalmazás, azzal a **biztonsági állapotának** panelen. Az alábbi képen, a webes alkalmazás webalkalmazási tűzfal által nem védett. 
 
@@ -79,9 +79,9 @@ Kattintson egy szabály nyújtják adott WAF szabályhoz tartozó riasztások li
  
 ![riasztás részletei][9]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogy a meglévő Alkalmazásátjáró webalkalmazási tűzfal engedélyezése, látogasson el a [létrehozás vagy frissítés webalkalmazási tűzfal az Azure-Alkalmazásátjáró](application-gateway-web-application-firewall-portal.md#add-web-application-firewall-to-an-existing-application-gateway)
+Ismerje meg, hogy a meglévő Alkalmazásátjáró webalkalmazási tűzfal engedélyezése, látogasson el a [létrehozás vagy frissítés webalkalmazási tűzfal az Azure-Alkalmazásátjáró](application-gateway-web-application-firewall-portal.md).
 
 [1]: ./media/application-gateway-integration-security-center/figure1.png
 [2]: ./media/application-gateway-integration-security-center/figure2.png

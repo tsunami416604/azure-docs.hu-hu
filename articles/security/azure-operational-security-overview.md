@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: dba643f5c8e926bee1c5d13e71f785e5cc72a2dc
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: f656edee1460ce2bb17a582ca240e3bb4089b708
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-operational-security-overview"></a>Az Azure operational biztonsági áttekintése
 Az Azure Operational biztonsági hivatkozik a szolgáltatások, a vezérlők és a felhasználók számára elérhető szolgáltatások védelmére az adatok, alkalmazások és egyéb eszközök a Microsoft Azure-ban. [Az Azure Operational biztonsági](https://docs.microsoft.com/azure/security/azure-operational-security) egy keretrendszer, amely magában foglalja a Tudásbázis a különböző képességeket, amelyeket a Microsoft, beleértve a Microsoft biztonsági fejlesztési életciklus (SDL), a Microsoft Security Response egyedi keresztül szerzett Center programot, és részletes tájékoztatást nyújthatnak a számítógépes biztonsági fenyegetésekről alkotott képet.
@@ -28,9 +28,9 @@ Ez a cikk Azure működési biztonsági áttekintése összpontosít a következ
 - Az Azure Operations Management Suite szolgáltatásban
 -   Azure Security Center
 -   Azure Monitor
--   Az Azure hálózati figyelőt
+-   Azure Network watcher
 -   Az Azure Storage analytics
--   Az Azure Active directory
+-   Azure Active directory
 
 ## <a name="azure-operations-management-suite"></a>Az Azure Operations Management Suite szolgáltatásban
 IT-üzemeltetők adatközpont infrastruktúrájában, alkalmazások és adatok, beleértve a stabilitás és az ilyen rendszerek biztonsági felügyeletéért felelős. Biztonság és ellenőrzött való növelésével gyakran összetett informatikai környezetben különböző azonban van szükség a szervezetek cobble egyszerre több biztonsági és felügyeleti rendszerek adatait.
@@ -56,7 +56,7 @@ Microsoft [Azure Automation](https://docs.microsoft.com/azure/automation/automat
 [Azure biztonsági mentés](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup) biztonsági mentése (vagy védelme) is használhatja az Azure-alapú szolgáltatás, és állítsa vissza az adatokat a Microsoft felhőben. Az Azure Backup megbízható, biztonságos és költséghatékony felhőalapú megoldással váltja fel a meglévő helyszíni vagy külső helyszínen lévő biztonsági mentési megoldást. Az Azure Backup több összetevőjét letöltheti és telepítheti a megfelelő számítógépre, kiszolgálóra vagy a felhőbe. A telepítendő összetevő vagy ügynök attól függ, hogy mit szeretne megvédeni. Minden Azure Backup-összetevővel (függetlenül attól, hogy helyszíni vagy a felhőben tárolt adatokat kíván védeni) készíthetők biztonsági másolatok az Azure Recovery Services-tárolójába. Tekintse meg a [Azure biztonsági mentés összetevők tábla](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup#which-azure-backup-components-should-i-use).
 
 ### <a name="site-recovery"></a>A Site recovery
-Az [Azure Site Recovery](http://azure.microsoft.com/documentation/services/site-recovery) a helyszíni virtuális és fizikai gépeknek az Azure-ba vagy egy másodlagos helyre való replikálásának vezénylésével biztosítja az üzletmenet-folytonosságot. Ha az elsődleges hely nem érhető el, a rendszer feladatátvételt végez a másodlagos helyre, így a felhasználók tovább dolgozhatnak, majd amikor a rendszer újra működőképessé válik, az elsődleges hely visszaveszi a feladatokat. intelligens és hatékony fenyegetések észlelése.
+Az [Azure Site Recovery](http://azure.microsoft.com/documentation/services/site-recovery) a helyszíni virtuális és fizikai gépeknek az Azure-ba vagy egy másodlagos helyre való replikálásának vezénylésével biztosítja az üzletmenet-folytonosságot. Ha az elsődleges hely nem érhető el, a rendszer feladatátvételt végez a másodlagos helyre, így a felhasználók tovább dolgozhatnak, majd amikor a rendszer újra működőképessé válik, az elsődleges hely visszaveszi a feladatokat. Használja az Azure Security Center több intelligens és hatékony fenyegetések észlelése végrehajtásához.
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
 [Az Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-enable-sso-scenario) van a Microsoft átfogó szolgáltatott identitási (IDaaS) szolgáltatás megoldás, amely:
@@ -154,7 +154,7 @@ DevOps alkalmazásfejlesztés, mielőtt csoportok feladata üzleti követelmény
 -   [Szolgáltatott infrastruktúra (IaC) kód](https://www.visualstudio.com/learn/what-is-infrastructure-as-code/) eljárás, amely lehetővé teszi az automatizálás és létrehozásának érvényesítése és lebontás hálózatok és virtuális gépeket futtató rendszerek biztonságos, stabil alkalmazás továbbítása érdekében.
 -   [Mikroszolgáltatások](https://www.visualstudio.com/learn/what-are-microservices/) architektúra elkülönítése üzleti alkalmazási esetek az kis újrafelhasználható szolgáltatásaiba elkészítéséhez használja.  Ez az architektúra lehetővé teszi a méretezhetőség és a hatékonyságot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Többet OMS biztonsági, naplózási megoldást, olvassa el a következő cikkeket:
 
 - [Az Operations Management Suite |} Biztonsági és megfelelőségi](https://www.microsoft.com/cloud-platform/security-and-compliance).

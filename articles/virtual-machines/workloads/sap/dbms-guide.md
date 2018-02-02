@@ -18,10 +18,10 @@ ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 87c4573ce3b688cdc63b3a342bbc0bebb416ad36
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Az SAP NetWeaver Azure virtuális gépek adatbázis-kezelő telepítése
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -336,7 +336,7 @@ A dokumentumban a következő kifejezéseket használjuk:
 
 Néhány Microsoft dokumentációjában létesítmények közötti forgatókönyv különösen az adatbázis-kezelő magas rendelkezésre ÁLLÁSÚ konfiguráció egy kicsit másképp ismerteti. Az SAP-kapcsolódó dokumentumok esetében a létesítmények közötti forgatókönyv csak forrni kezd a pont-pont vagy titkos (ExpressRoute) megszakadt a kapcsolat le, és arra, hogy a SAP fekvő elosztása között a helyszíni és az Azure.
 
-### <a name="resources"></a>Erőforrások
+### <a name="resources"></a>További források
 Az alábbi útmutatók érhetők el a témakör az SAP-telepítések az Azure-on:
 
 * [Azure virtuális gépek tervezési és megvalósítási az SAP NetWeaver][planning-guide]
@@ -345,7 +345,7 @@ Az alábbi útmutatók érhetők el a témakör az SAP-telepítések az Azure-on
 
 Az alábbi SAP megjegyzések Azure SAP témakör kapcsolódnak:
 
-| Megjegyzés száma | Cím |
+| Megjegyzés száma | Beosztás |
 | --- | --- |
 | [1928533] |Az Azure-on SAP-alkalmazásokból: támogatott termékek és az Azure virtuális Gépen |
 | [2015553] |A Microsoft Azure SAP: Előfeltételek támogatja |
@@ -1323,7 +1323,7 @@ Minden Azure virtuális gép példány által támogatott eszköztípusok SAP, h
 
 Ez szempontjából ajánlott használni az új D sorozatú vagy a DS sorozatnak (prémium szintű Azure Storage kombináltan) Azure virtuális gép típus, A-sorozatú mint 60 % processzorral rendelkeznek. A legnagyobb RAM Memóriát és CPU betöltési használhatja a legújabb Intel G-sorozat és GS sorozatnak (prémium szintű Azure Storage együtt) a virtuális gépek?? Xeon?? processzor E5 v3 termékcsalád, amelyek kétszer a memória és négy alkalommal fordult elő a D/DS sorozatnak tartós állapotú meghajtót tárterülete (SSD).
 
-#### <a name="storage-configuration"></a>Tárolás beállítása
+#### <a name="storage-configuration"></a>Tároló konfigurációja
 SAP liveCache SAP MaxDB technológia alapul, mert az az Azure storage ajánlott a fejezet az SAP MaxDB említett ajánlott bevált [tárkonfiguráció] [ dbms-guide-8.4.1] SAP liveCache is érvényesek. 
 
 #### <a name="dedicated-azure-vm-for-livecache"></a>Dedikált Azure virtuális gép liveCache
@@ -1360,7 +1360,7 @@ Támogatott Windows-verzió SAP-kiszolgálóhoz az Azure-on, című témakör ta
 Erősen ajánlott a Microsoft Windows Server legújabb verzióját használja.
 
 ### <a name="sap-content-server-configuration-guidelines-for-sap-installations-in-azure-vms"></a>SAP tartalomkiszolgáló beállítási útmutatója SAP-telepítések az Azure virtuális gépeken
-#### <a name="storage-configuration"></a>Tárolás beállítása
+#### <a name="storage-configuration"></a>Tároló konfigurációja
 Ha konfigurálja a fájlok tárolására az SAP MaxDB adatbázisban SAP tartalomkiszolgáló, ajánlott az Azure storage eljárásokat a fejezet az SAP MaxDB említett javaslat [tárolási konfigurációt] [ dbms-guide-8.4.1] a SAP kiszolgáló-forgatókönyv esetében is érvényesek. 
 
 Ha a fájlok tárolásához a fájlrendszer SAP tartalomkiszolgáló konfigurálásához dedikált logikai meghajtó használata ajánlott. Windows tárolóhelyek használatával lehetővé teszi, hogy is növelheti a logikai lemez méretét és IOPS átviteli fejezetben leírtak [szoftver RAID][dbms-guide-2.2]. 
@@ -1406,7 +1406,7 @@ A Microsoft Azure virtuális gép Services LUW IBM DB2 SAP 10.5 DB2 verzió fris
 Támogatott SAP-termékek és Azure Virtuálisgép-típusokon kapcsolatos információkért tekintse meg a SAP ne feledje [1928533].
 
 ### <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>IBM DB2 Linux, UNIX és a Windows konfigurációs irányelveket SAP-telepítések az Azure virtuális gépeken
-#### <a name="storage-configuration"></a>Tárolás beállítása
+#### <a name="storage-configuration"></a>Tároló konfigurációja
 Minden adatbázisfájlt a közvetlenül csatlakoztatott lemezek alapján NTFS fájlrendszerben kell tárolni. Ezeknek a lemezeknek az Azure virtuális géphez csatlakoztatott és a rendszer az Azure lap BLOB Storage (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) vagy felügyelt lemezeket (<https://docs.microsoft.com/azure/storage/storage-managed-disks-overview>). Valamilyen hálózati meghajtók vagy távoli megosztások, például a következő fájl Azure-szolgáltatások **nem** támogatott adatbázis-fájlok: 
 
 * <https://blogs.msdn.com/b/windowsazurestorage/Archive/2014/05/12/Introducing-Microsoft-Azure-File-Service.aspx>
@@ -1462,7 +1462,7 @@ A Microsoft Azure virtuális gép Services LUW IBM DB2 SAP 10.5 DB2 verzió fris
 Támogatott SAP-termékek és Azure Virtuálisgép-típusokon kapcsolatos információkért tekintse meg a SAP ne feledje [1928533].
 
 ### <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>IBM DB2 Linux, UNIX és a Windows konfigurációs irányelveket SAP-telepítések az Azure virtuális gépeken
-#### <a name="storage-configuration"></a>Tárolás beállítása
+#### <a name="storage-configuration"></a>Tároló konfigurációja
 Minden adatbázisfájlt a közvetlenül csatlakoztatott lemezek alapján fájlrendszeren kell tárolni. Ezeknek a lemezeknek az Azure virtuális géphez csatlakoztatott és a rendszer az Azure lap BLOB Storage (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) vagy felügyelt lemezeket (<https://docs.microsoft.com/azure/storage/storage-managed-disks-overview>). Valamilyen hálózati meghajtók vagy távoli megosztások, például a következő fájl Azure-szolgáltatások **nem** támogatott adatbázis-fájlok:
 
 * <https://blogs.msdn.com/b/windowsazurestorage/Archive/2014/05/12/Introducing-Microsoft-Azure-File-Service.aspx>

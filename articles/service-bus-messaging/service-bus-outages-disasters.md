@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/06/2017
+ms.date: 01/30/2018
 ms.author: sethm
-ms.openlocfilehash: 6dd9045d7aa8d4dc8b3a1acbe6f927e232d9b505
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7b01412202b5091ad3ae420089049bf456f9a30b
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>A Service Bus kimaradások és vészhelyzetek alkalmazások szigetelő ajánlott eljárásai
 
@@ -31,12 +31,7 @@ Egy olyan vészhelyzet esetén a végleges adatvesztést egy Service Bus skálá
 ## <a name="current-architecture"></a>Aktuális architektúrája
 A Service Bus üzenetsorok és témakörök küldött üzenetek tárolására használja több üzenetküldési tároló. Nem particionált üzenetsor vagy témakör egyetlen üzenetküldési tárolóra van hozzárendelve. Az üzenetküldési tárolóban nem érhető el, ha az adott üzenetsor vagy témakör összes művelet sikertelen lesz.
 
-Az összes Service Bus üzenetküldési entitásokat (üzenetsorok, témakörök, továbbítók) egy névtér, amely tagja-e a datacenter találhatók. A Service Bus nem engedélyezi az automatikus georeplikációt adatok, és nem teszi lehetővé a névtér számára több adatközpontot.
-
-## <a name="protecting-against-acs-outages"></a>ACS kimaradások elleni védelem
-Ha ACS hitelesítő adatokat használ, és az ACS nem érhető el, az ügyfelek már nem kaphatnak jogkivonatokat. Jelenleg az ACS leáll jogkivonat rendelkező ügyfelek továbbra is használhatja a Service Bus, a jogkivonatok lejártáig. Alapértelmezett élettartam 3 óra.
-
-Az ACS-kimaradások elleni, használjon közös hozzáférésű Jogosultságkód (SAS) tokeneket. Ebben az esetben az ügyfél végzi a hitelesítést közvetlenül a Service Bus egy önálló minted jogkivonat titkos kulcsával aláírásával. ACS hívásainak már nem szükségesek. További információ a SAS-tokenje: [Service Bus hitelesítési][Service Bus authentication].
+Az összes Service Bus üzenetküldési entitásokat (üzenetsorok, témakörök, továbbítók) egy névtér, amely tagja-e a datacenter találhatók. A Service Bus most támogatja [ *földrajzi-vész-helyreállítási* és *georeplikáció* ](service-bus-geo-dr.md) a névterek szintjén.
 
 ## <a name="protecting-queues-and-topics-against-messaging-store-failures"></a>Üzenetsorok és témakörök üzenetküldési tároló hibák elleni védelme
 Nem particionált üzenetsor vagy témakör egyetlen üzenetküldési tárolóra van hozzárendelve. Az üzenetküldési tárolóban nem érhető el, ha az adott üzenetsor vagy témakör összes művelet sikertelen lesz. A particionált várólista, másrészt több töredék áll. Minden egyes töredék egy másik üzenetküldési tárolóban van tárolva. Amikor egy üzenetet küld egy particionált üzenetsor vagy témakör, a Service Bus rendel az üzenet a töredék egyikéhez. A megfelelő üzenetküldési tárolóban nem érhető el, ha a Service Bus ír az üzenet egy másik kódrészletet, ha lehetséges. Particionált entitások kapcsolatos további információkért lásd: [particionált üzenetküldési entitások][Partitioned messaging entities].
@@ -82,9 +77,14 @@ Ha a passzív replikációt használ, a következő esetekben üzenetek néha el
 
 A [georeplikálási a Service Bus közvetítőalapú üzenetek] [ Geo-replication with Service Bus Brokered Messages] az üzenetküldési entitások passzív replikációs mutatja be.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="geo-replication"></a>Georeplikáció
+
+A Service Bus földrajzi-vész-helyreállítási és georeplikáció, a névterek szintjén támogatja. További információkért lásd: [Azure Service Bus földrajzi-vész-helyreállítási](service-bus-geo-dr.md). A vész helyreállítási szolgáltatás érhető el a [Premium Termékváltozat](service-bus-premium-messaging.md) csak, metaadatok vész-helyreállítási valósítja meg, és az elsődleges és másodlagos vész-helyreállítási névterek támaszkodik.
+
+## <a name="next-steps"></a>További lépések
 Vész-helyreállítási kapcsolatos további tudnivalókért tekintse meg az alábbi cikkek:
 
+* [Az Azure Service Bus földrajzi-vész-helyreállítási](service-bus-geo-dr.md)
 * [Az Azure SQL Database üzletmenet folytonossága][Azure SQL Database Business Continuity]
 * [Az Azure-rugalmas alkalmazások tervezése][Azure resiliency technical guidance]
 

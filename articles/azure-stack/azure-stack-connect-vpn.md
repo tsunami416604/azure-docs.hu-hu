@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: victorh
-ms.openlocfilehash: c06eb0bb44bdfeab956e9b5051786b5bc631acf5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5d963fe8b1b576768156500af39254f45939f90d
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="connect-azure-stack-to-azure-using-vpn"></a>Csatlakozás Azure verem Azure VPN-nel
 
@@ -43,7 +43,7 @@ A hálózati példa értékek táblázat használt minta értékeket ebben a cik
 **Hálózati példa értékek tábla**
 |   |Azure Stack|Azure|
 |---------|---------|---------|
-|Virtuális hálózat neve     |Azs-hálózatok|AzureVNet |
+|Virtuális hálózat neve     |Azs-VNet|AzureVNet |
 |Virtuális hálózat címtere |10.1.0.0/16|10.100.0.0/16|
 |Alhálózat neve     |Előtér|Előtér|
 |Alhálózati címtartomány|10.1.0.0/24 |10.100.0.0/24 |
@@ -71,7 +71,7 @@ Először hoz létre a hálózati erőforrások az Azure-bA. Az alábbi utasít�
 3. Válassza ki **átjáróalhálózatot** hozzáadása egy átjáró-alhálózatot a virtuális hálózathoz.
 4. Az alhálózat neve alapértelmezés szerint **GatewaySubnet**.
    Az átjáró-alhálózatok egyediek, és a megfelelő működéshez ezzel az adott névvel kell rendelkezniük.
-5. Az a **-címtartományt** mezőbe a címe **10.100.0.0/24**.
+5. Az a **-címtartományt** mezőbe a címe **10.100.1.0/24**.
 6. Válassza ki **OK** az átjáró alhálózatának létrehozásához.
 
 ### <a name="create-the-virtual-network-gateway"></a>Virtuális hálózati átjáró létrehozása
@@ -93,7 +93,7 @@ Először hoz létre a hálózati erőforrások az Azure-bA. Az alábbi utasít�
 5. Válassza ki a listáról az erőforrások **helyi hálózati átjáró**.
 6. A **neve**, típus **Azs-GW**.
 7. A **IP-cím**, írja be a nyilvános IP-cím a Azure verem virtuális hálózati átjáró, amely korábban a hálózati konfiguráció táblázatban szerepel.
-8. A **Címterület**, az Azure-vermet, írja be a **10.0.10.0/23** címterének a **AzureVNet**.
+8. A **Címterület**, az Azure-vermet, írja be a **10.1.0.0/24** és **10.1.1.0/24** címterének a **AzureVNet**.
 9. Ellenőrizze, hogy a **előfizetés**, **erőforráscsoport**, és **hely** helyes-e, majd válassza ki **létrehozása**.
 
 ## <a name="create-the-connection"></a>A kapcsolat létrehozása
@@ -118,7 +118,7 @@ Létrehoz egy virtuális gépet az Azure-ban, és a Virtuálisgép-alhálózatot
 5. Írjon be egy érvényes felhasználónevet és jelszót. Ez a fiók használatával jelentkezzen be a virtuális gép létrehozása után.
 6. Adjon meg egy **előfizetés**, **erőforráscsoport**, és **hely**, majd válassza ki **OK**.
 7. Az a **mérete** szakaszban, a virtuális gép méretét, az adott példány, majd válassza ki és **válasszon**.
-8. Az a **beállítások** szakaszban elfogadhatja az alapértelmezett beállításokat. Győződjön meg arról, hogy a **AzureVnet** virtuális hálózat van kiválasztva, és ellenőrizze, hogy az alhálózat **10.0.20.0/24**. Kattintson az **OK** gombra.
+8. Az a **beállítások** szakaszban elfogadhatja az alapértelmezett beállításokat. Győződjön meg arról, hogy a **AzureVnet** virtuális hálózat van kiválasztva, és ellenőrizze, hogy az alhálózat **10.100.0.0/24**. Kattintson az **OK** gombra.
 9. Tekintse át a beállításokat a a **összegzés** szakaszt, és válassza ki **OK**.
 
 ## <a name="create-the-network-resources-in-azure-stack"></a>A hálózati erőforrások létrehozása az Azure-verem
@@ -181,7 +181,7 @@ Egy gondolja, hogy a több általános módja, hogy a helyi hálózati átjáró
 4. Válassza ki a listáról az erőforrások **helyi hálózati átjáró**.
 5. A **neve**, típus **Azure-GW**.
 6. A **IP-cím**, írja be a virtuális hálózati átjáró nyilvános IP-címét az Azure-ban **Azure-GW-PiP**. Ez a cím jelenik meg a korábban a hálózati konfiguráció táblázatban.
-7. A **Címterület**, a létrehozott Azure virtuális hálózat a címtér, írja be a következőt **10.0.20.0/23**.
+7. A **Címterület**, a létrehozott Azure virtuális hálózat a címtér, írja be a következőt **10.100.0.0/24** és **10.100.1.0/24**.
 8. Ellenőrizze, hogy a **előfizetés**, **erőforráscsoport**, és **hely** helyes-e, majd válassza ki **létrehozása**.
 
 ### <a name="create-the-connection"></a>A kapcsolat létrehozása
@@ -225,7 +225,7 @@ Győződjön meg arról, hogy a helyek kapcsolaton keresztül a forgalom küldé
 5. Jelentkezzen be a virtuális gép létrehozásakor beállított fiókot.
 6. Nyisson meg egy emelt szintű **Windows PowerShell** ablak.
 7. Írja be az **ipconfig /all** parancsot.
-8. A kimenetben keresse meg a **IPv4-cím**, majd mentse a cím későbbi használatra. Ez az a cím, amely pingelést az Azure-ból. Ebben a példakörnyezetben a cím **10.0.10.4**, de az Ön környezetében ettől eltérő lehet. Alá kell tartozniuk a **10.0.10.0/24** korábban létrehozott alhálózati.
+8. A kimenetben keresse meg a **IPv4-cím**, majd mentse a cím későbbi használatra. Ez az a cím, amely pingelést az Azure-ból. Példa környezetben, a cím az **10.1.0.4**, de a környezetében előfordulhat, hogy különböző. Alá kell tartozniuk a **10.1.0.0/24** korábban létrehozott alhálózati.
 9. Hozzon létre egy tűzfalszabályt, amely lehetővé teszi, hogy a virtuális gép pingelésre, futtassa a következő PowerShell-parancsot:
 
    ```powershell
@@ -242,7 +242,7 @@ Győződjön meg arról, hogy a helyek kapcsolaton keresztül a forgalom küldé
 5. Jelentkezzen be a virtuális gép létrehozásakor beállított fiókot.
 6. Nyisson meg egy emelt szintű **Windows PowerShell** ablak.
 7. Írja be az **ipconfig /all** parancsot.
-8. Egy IPv4-címet, amely kell megjelennie **10.0.20.0/24**. Példa környezetben, a cím az **10.0.20.4**, de lehet, hogy a cím különböző.
+8. Egy IPv4-címet, amely kell megjelennie **10.100.0.0/24**. Példa környezetben, a cím az **10.100.0.4**, de lehet, hogy a cím különböző.
 9. Hozzon létre egy tűzfalszabályt, amely lehetővé teszi, hogy a virtuális gép pingelésre, futtassa a következő PowerShell-parancsot:
 
    ```powershell
@@ -252,7 +252,7 @@ Győződjön meg arról, hogy a helyek kapcsolaton keresztül a forgalom küldé
    ```
 
 10. A virtuális gépről az Azure-ban Pingelje meg a virtuális gép Azure-készletben, az alagúton keresztül. Ehhez az szükséges, a DIP Azs-virtuális gépről rögzített pingelést.
-   Példa környezetben, ami **10.0.10.4**, de ügyeljen arra, hogy pingelni a címre, amelyet a tesztkörnyezetben. Az alábbi képernyőfelvételen hasonló egy eredmény kell megjelennie:
+   Példa környezetben, ami **10.1.0.4**, de ügyeljen arra, hogy pingelni a címre, amelyet a tesztkörnyezetben. Az alábbi képernyőfelvételen hasonló egy eredmény kell megjelennie:
    
     ![Sikeres ping](media/azure-stack-create-vpn-connection-one-node-tp2/image19b.png)
 11. A távoli virtuális gépről a válasz azt jelzi, hogy a sikeres vizsgálat! A virtuális gép ablak bezárása A kapcsolat tesztelésére, próbálja meg más típusú adatátvitelek például egy fájl másolása.
@@ -264,8 +264,8 @@ Ha szeretné tudni, hogy mennyi adatot továbbítja a helyek kapcsolaton kereszt
 2. Nyissa meg a **összes erőforrás**, majd válassza ki a **Azs-Azure** kapcsolat. **Kapcsolatok** jelenik meg.
 4. Az a **kapcsolat** részben, a statisztikája **adatok** és **kimenő adatforgalmat** jelennek meg. Az alábbi képernyőképen a nagy mennyiségű rendelnek a további fájlok átvitele. Néhány nullától eltérő értéket kell megjelennie.
    
-    ![Adatok és kimenő](media/azure-stack-connect-vpn/Connection.png)
+    ![Bejövő és kimenő adatforgalom](media/azure-stack-connect-vpn/Connection.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Alkalmazások telepítése Azure és az Azure verem](azure-stack-solution-pipeline.md)

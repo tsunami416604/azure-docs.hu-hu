@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: ddove
-ms.openlocfilehash: d985008bf4aa6710f3aae89f13fc7e36ac0c176b
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: c5fe5256d4a8b8479f5e4aff95ec03fc1ba1018a
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>Ismerkedés a rugalmas adatbázis-feladatok
-Rugalmas adatbázis feladat (előzetes verzió) Azure SQL-adatbázis lehetővé teszi, hogy a megbízhatóság hajtható végre T-SQL-parancsfájlok, amelyek több adatbázis több során automatikusan újrapróbálkozás és a végleges befejezési garanciák. A rugalmas adatbázis feladat szolgáltatással kapcsolatos további információkért lásd: [rugalmas feladatok](sql-database-elastic-jobs-overview.md).
+A rugalmas adatbázis feladataihoz (előzetes verzió) Azure SQL Database megbízhatóan hajtható végre T-SQL-parancsfájlok, amelyek több adatbázis több során automatikusan újrapróbálkozás és a végleges befejezési garanciák teszi lehetővé. A rugalmas adatbázis feladat szolgáltatással kapcsolatos további információkért lásd: [rugalmas feladatok](sql-database-elastic-jobs-overview.md).
 
 Ez a cikk bővíti a minta található [Ismerkedés a rugalmas adatbáziseszközöket](sql-database-elastic-scale-get-started.md). Amikor elkészült, megtanulhatja a kapcsolódó adatbázisok csoportja felügyelt feladatok létrehozásához és kezeléséhez. Nincs szükség a rugalmas bővítést eszközeit használja a rugalmas feladatok előnyeinek kihasználása érdekében.
 
@@ -38,7 +38,7 @@ Itt létre shard térképre manager több szegmensben osztják, az adatok beszú
 2. A parancsablakban írja be a "1", és nyomja le az ENTER **Enter**. Létrehozza a shard térkép manager, és két szilánkok hozzáadása a kiszolgálóhoz. Ezután írja be a "3", és nyomja le az ENTER **Enter**; Ez a művelet megismétlése négy alkalommal. Ez a szilánkok minta adatsorok szúrja be.
 3. A [Azure-portálon](https://portal.azure.com) három új adatbázist kell megjelenítenie:
 
-   ![A Visual Studio-jóváhagyás](./media/sql-database-elastic-query-getting-started/portal.png)
+   ![Visual Studio confirmation](./media/sql-database-elastic-query-getting-started/portal.png)
 
    Ezen a ponton azt hozzon létre egy egyéni adatbázis-gyűjteményt, amely tükrözi a shard térkép összes adatbázisát. Ez lehetővé teszi, hogy létrehozni és végrehajtani egy feladatot, amely egy új tábla szilánkok között.
 
@@ -461,7 +461,7 @@ Távolítsa el a feladat eseményindító megfelelően egy ütemezés használat
 
 Összes sorát **ügyfelek** tábla különböző szilánkok tárolt feltölti az Excel-táblában.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most már használhatja az Excel adatok funkciók. A kapcsolati karakterláncot használ a kiszolgáló nevét, az adatbázisnév és a hitelesítő adatok adatbázishoz való kapcsolódáshoz a BI és az integráció eszközök a rugalmas lekérdezés. Győződjön meg arról, hogy az SQL Server támogatja-e az eszköz adatforrásként. Tekintse meg a lekérdezés rugalmas adatbázis és a külső táblák csakúgy, mint bármely más SQL Server-adatbázis és SQL Server-táblázatot, amely az eszköz kíván csatlakozni.
 
 ### <a name="cost"></a>Költségek

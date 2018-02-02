@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/06/2017
+ms.date: 01/29/2018
 ms.author: larryfr
-ms.openlocfilehash: 65d6dc7bf96666f004038c6dae00d2f4e9ea5d7f
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 4674008523704b9b1fb86de8606641f6140e2910
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="generate-movie-recommendations-by-using-apache-mahout-with-linux-based-hadoop-in-hdinsight-ssh"></a>Film javaslatok generálása Apache Mahout Linux-alapú hadooppal a HDInsight-(SSH) használatával
 
@@ -45,13 +45,13 @@ A hdinsight Mahout verziójával kapcsolatos további információkért lásd: [
 
 ## <a name="recommendations"></a>Understanding javaslatok
 
-A funkciók Mahout által biztosított egyike egy javaslat motor. Ez a motor elfogadja a kell adatokat `userID`, `itemId`, és `prefValue` (a beállítások a cikkhez). Mahout végezhet el, közös elemként elemzés meghatározásához: *egy elem előnyben rendelkező felhasználók is hozzáférhetnek ezeket a beállításokat szabályozó egyéb elemek*. Mahout majd határozza meg a felhasználók hasonló-cikk beállítások, amely ajánlásokat is használható.
+A funkciók Mahout által biztosított egyike egy javaslat motor. Ez a motor elfogadja a kell adatokat `userID`, `itemId`, és `prefValue` (a beállítások a cikkhez). Mahout végezhet el, közös előfordulási elemzés meghatározásához: *egy elem előnyben rendelkező felhasználók is hozzáférhetnek ezeket a beállításokat szabályozó egyéb elemek*. Mahout majd határozza meg a felhasználók hasonló-cikk beállítások, amely ajánlásokat is használható.
 
 Az alábbi munkafolyamat egy egyszerűsített példa movie adatait használó:
 
-* **Közös elemként**: Joe, Ágnes és minden tetszését Bob *csillag ütközések*, *vissza sztrájkok a Empire*, és *a Jedi visszaküldése*. Mahout határozza meg, hogy a felhasználók számára is, például a filmek egyikét sem például a másik kettőt.
+* **Közös előfordulási**: Joe, Ágnes és minden tetszését Bob *csillag ütközések*, *vissza sztrájkok a Empire*, és *a Jedi visszaküldése*. Mahout határozza meg, hogy a felhasználók számára is, például a filmek egyikét sem például a másik kettőt.
 
-* **Közös elemként**: Bálint és Alice is tetszését *a látszólagos támadása*, *támadás a klónja*, és *a Sith a megtorlás*. Mahout határozza meg, hogy felhasználók, akik az előző három filmek is tetszését hasonlóan ezen három filmek.
+* **Közös előfordulási**: Bálint és Alice is tetszését *a látszólagos támadása*, *támadás a klónja*, és *megtorlás a Sith a*. Mahout határozza meg, hogy felhasználók, akik az előző három filmek is tetszését hasonlóan ezen három filmek.
 
 * **Hasonlóság ajánlás**: mivel Joe tetszését az első három filmek, Mahout ellenőrzi, hogy az filmek, hogy más, hasonló beállítások tetszett, de Joe rendelkezik nem figyelt (tetszését/névleges). Ebben az esetben Mahout javasolja *a látszólagos támadása*, *támadás a klónja*, és *a Sith a megtorlás*.
 
@@ -200,7 +200,7 @@ hdfs dfs -rm -f -r /temp/mahouttemp
 > `hdfs dfs -rm -f -r /example/data/mahoutout`
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy rendelkezik megismerte Mahout használata, felderítése egyéb módjait a HDInsight-adatokkal végzett munka:
 

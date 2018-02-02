@@ -6,13 +6,13 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 12/14/2017
+ms.date: 01/30/2018
 ms.author: babanisa
-ms.openlocfilehash: e6665b3b0c6e92ed462f18dbd41d62ccd9304928
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 5e700e3e9d17e790083facf00c7f4b8decf9037a
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="an-introduction-to-azure-event-grid"></a>Azure Event rács bemutatása
 
@@ -22,18 +22,20 @@ Szűrők segítségével meghatározott események különböző végpontokhoz, 
 
 Esemény rács jelenleg a következő régióban:
 
+* Ázsia óceáni térség délkeleti régiója
+* Ázsiai keleti régiója
 * USA középső régiója
 *   USA keleti régiója
 *   USA 2. keleti régiója
+* Nyugat-Európa
+* Észak-Európa
 *   USA nyugati középső régiója
 *   USA nyugati régiója
 *   USA nyugati régiója, 2.
 
-Más régiókban lesz hozzáadva.
-
 Ez a cikk áttekintést Azure esemény rács. Ha azt szeretné, esemény rács használatába, lásd: [Azure esemény rácshoz hozza létre és útvonal egyéni események](custom-event-quickstart.md). A következő kép bemutatja, hogyan csatlakozzon az esemény rács a közzétevők és kezelők, de nem biztosít a támogatott beállítások átfogó listáját.
 
-![Esemény rács működési modell](./media/overview/event-grid-functional-model.png)
+![Esemény rács működési modell](./media/overview/functional-model.png)
 
 ## <a name="event-publishers"></a>Esemény-közzétevők
 
@@ -42,10 +44,10 @@ Jelenleg az Azure-szolgáltatásokat kell beépített publisher az esemény rác
 * Azure-előfizetések (műveletek)
 * Egyéni kapcsolatos témakörök
 * Event Hubs
+* IoT Hub
 * Erőforráscsoportok (műveletek)
-* Storage-Blobba
-
-Más Azure-szolgáltatásokkal fog bővülni az év.
+* Storage Blob
+* Tárolási célú v2 (GPv2)
 
 ## <a name="event-handlers"></a>Az eseménykezelők
 
@@ -55,10 +57,10 @@ Jelenleg az Azure-szolgáltatásokat kell beépített kezelő az esemény rács:
 * Azure Functions
 * Event Hubs
 * Logic Apps
-* Microsoft folyamata
+* Microsoft Flow
 * Webhookok
 
-Más Azure-szolgáltatásokkal fog bővülni az év.
+Az Azure Functions kezelőként használjon az esemény rács eseményindító általános HTTP-eseményindítók helyett. Esemény rács automatikusan ellenőrzi az esemény rácsos függvényt eseményindítók. Az általános HTTP-eseményindítók, meg kell valósítani a [érvényesítési válasz](security-authentication.md#webhook-event-delivery).
 
 ## <a name="concepts"></a>Alapelvek
 
@@ -111,11 +113,9 @@ Az Event Grids más szolgáltatásokkal kapcsolja össze alkalmazását. Példá
 
 ## <a name="how-much-does-event-grid-cost"></a>Milyen mértékű nem költség esemény rács?
 
-Azure esemény rács fizetési / esemény árképzési modellt használ, így csak a valóban használt funkciókért fizet.
+Azure esemény rács fizetési / esemény árképzési modellt használ, így csak a valóban használt funkciókért fizet. Havonta az első 100 000 műveletek szabadon. Esemény érkező egyeznek, a kézbesítési kísérletek és a felügyeleti hívások speciális műveleteket is meg van adva. További információkért lásd: a [árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/event-grid/).
 
-Esemény rács költségek 0,60 $ millió műveleteket ($0,30 előzetes), és szabadon havonta az első 100 000 műveletet. Esemény érkező egyeznek, a kézbesítési kísérletek és a felügyeleti hívások speciális műveleteket is meg van adva.  További részletek találhatók a [árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/event-grid/).
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Útvonal tárolási Blob események](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)  
   A blob storage-események válaszolni esemény rács használatával.

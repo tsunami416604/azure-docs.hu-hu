@@ -15,11 +15,11 @@ ms.workload: NA
 ms.custom: backup-restore
 ms.date: 10/23/2017
 ms.author: jrj;barbkess
-ms.openlocfilehash: e76349ef7a2afa02d4f9e5295f299bb8084d1e08
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 159a1d34caba829750da33dbc4ad403fb21cd147
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="backup-and-restore-in-sql-data-warehouse"></a>Biztonsági mentés és visszaállítás az SQL Data Warehouse
 Ez a cikk ismerteti az SQL Data Warehouse a biztonsági másolatok tulajdonságait. Az adatok adatraktár biztonsági használatával állítsa vissza egy pillanatképet készíteni az elsődleges régióban adatbázist, vagy földrajzi – biztonsági másolat visszaállítása a párosítása, földrajzi régióban. 
@@ -42,7 +42,7 @@ order by run_id desc
 ## <a name="geo-backups"></a>Földrajzi-biztonsági mentések
 Az SQL Data Warehouse egy földrajzi-biztonsági mentés naponta egyszer indít hajt végre egy [párosított adatközpont](../best-practices-availability-paired-regions.md). A helyreállítási Időkorlát földrajzi-helyreállítás 24 óra. A kiszolgáló párosítása, földrajzi régióban visszaállíthatja a földrajzi-biztonsági mentés. földrajzi – biztonsági másolat biztosítja, hogy visszaállíthassa data warehouse-ba, abban az esetben, ha nem fér hozzá a pillanatképeket az elsődleges régióban.
 
-Földrajzi-biztonsági mentések a rendszer alapértelmezés szerint. Ha az adatraktár úgy optimalizálták, hogy a rugalmasság, akkor [nem vesznek részt](https://docs.microsoft.com/powershell/resourcemanager/Azurerm.sql/v2.1.0/Set-AzureRmSqlDatabaseGeoBackupPolicyredirectedfrom=msdn) Ha. Nem tilthatják földrajzi-biztonsági másolatok a optimalizált számítási teljesítmény szinthez.
+Földrajzi-biztonsági mentések a rendszer alapértelmezés szerint. Ha az adatraktár úgy optimalizálták, hogy a rugalmasság, akkor [nem vesznek részt](/powershell/module/azurerm.sql/set-azurermsqldatabasegeobackuppolicy) Ha. Nem tilthatják földrajzi-biztonsági másolatok a optimalizált számítási teljesítmény szinthez.
 
 ## <a name="backup-costs"></a>Biztonsági mentési költségek
 Megfigyelheti, hogy az Azure számlázásának van egy sor eleme a prémium szintű Azure Storage és a sor elem georedundáns tárolást. A prémium szintű Storage kell fizetni az adatok tárolása az elsődleges régióban, köztük a pillanatképek teljes költsége.  A georedundáns kell fizetni hozzá van rendelve a költség, a földrajzi-biztonsági mentések tárolására.  
@@ -72,7 +72,7 @@ Amikor egy adatraktár, az SQL Data Warehouse végső pillanatképet készít, �
 > Ha törli a logikai SQL server-példány, a példányhoz tartozó összes adatbázis is törlődnek, és nem állítható helyre. A Törölt kiszolgáló nem tudja visszaállítani.
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 SQL data warehouse visszaállítani, tekintse meg a [visszaállítása az SQL data warehouse](sql-data-warehouse-restore-database-overview.md).
 
 Üzleti folytonosság áttekintéséért lásd: [üzleti folytonosság – áttekintés](../sql-database/sql-database-business-continuity.md)

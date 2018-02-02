@@ -1,6 +1,6 @@
 ---
-title: "Az OMS megoldás létrehozása kezelési |} Microsoft Docs"
-description: "Megoldások bővítése Operations Management Suite (OMS), adja meg a csomagolt felügyeleti lehetőségeket, amelyek az ügyfelek az OMS-munkaterület adhat hozzá.  Ez a cikk részletesen hogyan hozhat létre a saját környezetében használható felügyeleti megoldás, vagy szeretné elérhetővé tenni az ügyfelek számára."
+title: "A felügyeleti megoldás az Azure-ban |} Microsoft Docs"
+description: "Kezelési megoldásai a következők csomagolt felügyeleti lehetőségeket, amelyek az ügyfelek a Naplóelemzési munkaterület adhat hozzá az Azure-ban.  Ez a cikk részletesen hogyan hozhat létre a saját környezetében használható felügyeleti megoldás, vagy szeretné elérhetővé tenni az ügyfelek számára."
 services: operations-management-suite
 documentationcenter: 
 author: bwren
@@ -15,21 +15,21 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a17c73393ecbdff693e9b200d1506887e0f1d71e
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 0f5d42292c8e885491aed55ada129f05cb3bcd35
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="design-and-build-a-management-solution-in-operations-management-suite-oms-preview"></a>Tervezési és a megoldás létrehozása kezelési Operations Management Suite (OMS) (előzetes verzió)
+# <a name="design-and-build-a-management-solution-in-azure-preview"></a>Tervezése és készítése olyan felügyeleti megoldást az Azure (előzetes verzió)
 > [!NOTE]
-> Ez az előzetes dokumentum megoldások létrehozásához az OMS Szolgáltatáshoz, amely jelenleg előzetes verziójúak. Az alábbiakban a séma van változhat.
+> Ez az előzetes dokumentum megoldások létrehozásához Azure, amely jelenleg előzetes verziójúak. Az alábbiakban a séma van változhat.
 
-[Megoldások](operations-management-suite-solutions.md) bővítése Operations Management Suite (OMS), adja meg a csomagolt felügyeleti lehetőségeket, amelyek az ügyfelek az OMS-munkaterület adhat hozzá.  Ez a cikk egy alapvető folyamat tervezése és a megoldás létrehozása kezelési leggyakoribb követelményeknek megfelelő mutatja be.  Ha most ismerkedik létrehozása kezelési megoldásai, akkor használja ezt a folyamatot a kiindulási pontként, és majd a fogalmakat, a követelmények fejlődnek bonyolultabb megoldások.
+[Megoldások](operations-management-suite-solutions.md) adja meg, hogy az ügyfelek adhat hozzá a Naplóelemzési munkaterület csomagolt felügyeleti lehetőségeket.  Ez a cikk egy alapvető folyamat tervezése és a megoldás létrehozása kezelési leggyakoribb követelményeknek megfelelő mutatja be.  Ha most ismerkedik létrehozása kezelési megoldásai, akkor használja ezt a folyamatot a kiindulási pontként, és majd a fogalmakat, a követelmények fejlődnek bonyolultabb megoldások.
 
 ## <a name="what-is-a-management-solution"></a>Mi az a felügyeleti megoldás?
 
-Megoldások tartalmazhat OMS és az Azure-erőforrások, amelyek együttműködése egy adott figyelési forgatókönyv eléréséhez.  Akkor használják, mint [erőforrás-kezelés sablonok](../azure-resource-manager/resource-manager-template-walkthrough.md) tartalmaznak, telepítése és konfigurálása a benne lévő erőforrások, a megoldás telepítésekor részleteit.
+Megoldások Azure-erőforrások, amelyek együttműködése egy adott felügyeleti forgatókönyv eléréséhez tartalmaz.  Akkor használják, mint [erőforrás-kezelés sablonok](../azure-resource-manager/resource-manager-template-walkthrough.md) tartalmaznak, telepítése és konfigurálása a benne lévő erőforrások, a megoldás telepítésekor részleteit.
 
 Az alapvető stratégia a felügyeleti megoldás az Azure környezetben az egyes összetevők épület elindításához.  Miután a funkciót, megfelelően működik, majd elindíthatja csomagolására őket egy [felügyeleti megoldást fájl](operations-management-suite-solutions-solution-file.md). 
 
@@ -37,7 +37,7 @@ Az alapvető stratégia a felügyeleti megoldás az Azure környezetben az egyes
 ## <a name="design-your-solution"></a>A megoldás tervezése
 A leggyakrabban használt minta felügyeleti megoldás a következő ábrán látható.  Ebben a mintában a különböző összetevőket ismerteti a alatt.
 
-![OMS megoldási áttekintés](media/operations-management-suite-solutions-creating/solution-overview.png)
+![Felügyeleti megoldás áttekintése](media/operations-management-suite-solutions-creating/solution-overview.png)
 
 
 ### <a name="data-sources"></a>Adatforrások

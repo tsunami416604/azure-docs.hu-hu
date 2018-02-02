@@ -10,11 +10,11 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
 ms.author: davidmu
-ms.openlocfilehash: 961642796525223eba4b19d77568d4149ee9d3c6
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 611e9b27baeddf61531421d7ad2bed20188ad279
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-an-application-gateway-with-a-web-application-firewall-using-the-azure-cli"></a>Hozzon létre egy alkalmazást az Azure parancssori felület használatával webalkalmazási tűzfal
 
@@ -49,19 +49,19 @@ az group create --name myResourceGroupAG --location eastus
 A virtuális hálózat és az alhálózatokat használják az Alkalmazásátjáró és a kapcsolódó erőforrások hálózati kapcsolatot biztosít. Nevű a virtuális hálózat létrehozása *myVNet* és nevű alhálózat *myAGSubnet* rendelkező [az hálózati vnet létrehozása](/cli/azure/network/vnet#az_network_vnet_create) és [az alhálózaton virtuális hálózat létrehozása](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create). Hozzon létre egy nyilvános IP-cím nevű *myAGPublicIPAddress* rendelkező [létrehozása az hálózati nyilvános ip-](/cli/azure/network/public-ip#az_network_public_ip_create).
 
 ```azurecli-interactive
-az network vnet create 
+az network vnet create \
   --name myVNet \
   --resource-group myResourceGroupAG \
   --location eastus \
   --address-prefix 10.0.0.0/16 \
   --subnet-name myBackendSubnet \
   --subnet-prefix 10.0.1.0/24
-az network vnet subnet create 
+az network vnet subnet create \
   --name myAGSubnet \
   --resource-group myResourceGroupAG \
   --vnet-name myVNet \
-  --address-prefix 10.0.2.0/24 
-az network public-ip create 
+  --address-prefix 10.0.2.0/24
+az network public-ip create \
   --resource-group myResourceGroupAG \
   --name myAGPublicIPAddress
 ```
@@ -84,10 +84,12 @@ az network application-gateway create \
   --http-settings-port 80 \
   --http-settings-protocol Http \
   --public-ip-address myAGPublicIPAddress
-az network application-gateway waf-config set --enabled true \
+az network application-gateway waf-config set \
+  --enabled true \
   --gateway-name myAppGateway \
   --resource-group myResourceGroupAG \
-  --firewall-mode Detection
+  --firewall-mode Detection \
+  --rule-set-version 3.0
 ```
 
 Az alkalmazás-átjáró hozható létre több percig is eltarthat. Az Alkalmazásátjáró létrehozása után megtekintheti az új szolgáltatásokat is:
@@ -120,15 +122,6 @@ az vmss create \
 
 ### <a name="install-nginx"></a>Az NGINX telepítése
 
-A szerkesztő létre szeretne hozni a fájlt a felhő rendszerhéj használata. Adja meg `sensible-editor cloudConfig.json` a fájl létrehozásához elérhető szerkesztők listájának megjelenítéséhez. Az aktuális rendszerhéjban customConfig.json nevű fájl létrehozása, és illessze be a következő konfigurációt:
-
-```json
-{
-  "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"],
-  "commandToExecute": "./install_nginx.sh"
-}
-```
-
 ```azurecli-interactive
 az vmss extension set \
   --publisher Microsoft.Azure.Extensions \
@@ -136,7 +129,7 @@ az vmss extension set \
   --name CustomScript \
   --resource-group myResourceGroupAG \
   --vmss-name myvmss \
-  --settings @cloudConfig.json
+  --settings '{ "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"],"commandToExecute": "./install_nginx.sh" }'
 ```
 
 ## <a name="create-a-storage-account-and-configure-diagnostics"></a>Hozzon létre egy tárfiókot, és diagnosztika konfigurálása
@@ -161,9 +154,11 @@ az storage account create \
 Erőforrásrekord-adatokat a diagnosztika konfigurálja azokat a ApplicationGatewayAccessLog ApplicationGatewayPerformanceLog és ApplicationGatewayFirewallLog naplók. Helyettesítő `<subscriptionId>` az előfizetés-azonosítóval, majd konfigurálja a diagnosztika [az figyelő diagnosztikai-beállítások létrehozása](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az_monitor_diagnostic_settings_create).
 
 ```azurecli-interactive
-az monitor diagnostic-settings create --resource-id '/subscriptions/<subscriptionId>/resourceGroups/myResourceGroupAG/providers/Microsoft.Network/applicationGateways/myAppGateway' \
+appgwid=$(az network application-gateway show --name myAppGateway --resource-group myResourceGroupAG --query id -o tsv)
+storeid=$(az storage account show --name myagstore1 --resource-group myResourceGroupAG --query id -o tsv)
+az monitor diagnostic-settings create --name appgwdiag --resource $appgwid \
   --logs '[ { "category": "ApplicationGatewayAccessLog", "enabled": true, "retentionPolicy": { "days": 30, "enabled": true } }, { "category": "ApplicationGatewayPerformanceLog", "enabled": true, "retentionPolicy": { "days": 30, "enabled": true } }, { "category": "ApplicationGatewayFirewallLog", "enabled": true, "retentionPolicy": { "days": 30, "enabled": true } } ]' \
-  --storage-account '/subscriptions/<subscriptionId>/resourceGroups/myResourceGroupAG/providers/Microsoft.Storage/storageAccounts/myagstore1'
+  --storage-account $storeid
 ```
 
 ## <a name="test-the-application-gateway"></a>Az Alkalmazásátjáró tesztelése

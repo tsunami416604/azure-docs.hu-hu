@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 75a6b9bc3ecfe6d6901bb38e312d62333f38daf1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7bf1ba333f36dcfa8959320566bcb771f37cfe22
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="upload-files-with-iot-hub"></a>Az IoT hubbal fájlok feltöltése
 
@@ -96,16 +96,16 @@ A következő témaköröket nyújtanak további információt az eszközről f�
 
 ## <a name="file-upload-notifications"></a>Fájl feltöltése értesítések
 
-Nem kötelező amikor egy eszköz értesíti az IoT-központ, hogy befejeződött-e a feltöltés, IoT-központ hozhat létre egy értesítési üzenetet, amely tartalmazza a fájl nevét és a tárolási helyét.
+Ha szükséges amikor egy eszköz értesíti az IoT-központ, hogy befejeződött-e a feltöltés, IoT-központ állít elő, egy értesítési üzenetet, amely tartalmazza a fájl nevét és a tárolási helyét.
 
 A [végpontok][lnk-endpoints], IoT-központ biztosítja a fájl feltöltése értesítések keresztül a szolgáltatás felé néző végpont (**/messages/servicebound/fileuploadnotifications**) üzeneteihez. A fájl feltöltése értesítések receive szemantikája ugyanúgy felhő-eszközre küldött üzenetek, és az [üzenet életciklus][lnk-lifecycle]. Minden egyes a fájl feltöltése értesítési végpont lekért üzenet egy JSON-rekord a következő tulajdonságokkal:
 
 | Tulajdonság | Leírás |
 | --- | --- |
 | EnqueuedTimeUtc |Az értesítés létrehozásának jelző időbélyegző. |
-| Eszközazonosító |**DeviceId** az eszköz, amely a fájl feltöltése. |
+| DeviceId |**DeviceId** az eszköz, amely a fájl feltöltése. |
 | BlobUri |A feltöltött fájl URI Azonosítóját. |
-| Blobnév |A feltöltött fájl neve. |
+| BlobName |A feltöltött fájl neve. |
 | LastUpdatedTime |Timestamp típusú, amely azt jelzi, ha a fájl utolsó módosításának. |
 | BlobSizeInBytes |A feltöltött fájl méretét. |
 
@@ -143,7 +143,7 @@ Az IoT Hub fejlesztői útmutató más hivatkozás témaköröket tartalmazza:
 * [Az IoT-központ lekérdezési nyelv] [ lnk-query] a lekérdezési nyelv segítségével adatok lekérését az IoT-központ az eszköz twins és feladatokat ismerteti.
 * [Az IoT Hub MQTT támogatási] [ lnk-devguide-mqtt] IoT-központ támogatásával kapcsolatos további információkat biztosít a MQTT protokoll.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most már rendelkezik megtudta, hogyan eszközök IoT-központ a fájlok feltöltéséhez, esetleg a következő IoT Hub fejlesztői útmutató témakörei iránt érdeklődik:
 
@@ -153,7 +153,7 @@ Most már rendelkezik megtudta, hogyan eszközök IoT-központ a fájlok feltöl
 * [Az eszközön közvetlen metódus][lnk-devguide-directmethods]
 * [Több eszközön feladatok ütemezése][lnk-devguide-jobs]
 
-Ha azt szeretné, hogy próbálja ki azokat a jelen cikkben ismertetett fogalmakat, esetleg megváltozása a következő IoT Hub-oktatóanyag:
+Próbálja ki azokat a jelen cikkben ismertetett fogalmakat, olvassa el a következő IoT Hub-oktatóanyag:
 
 * [A felhőhöz, az IoT-központ eszközökről fájlok feltöltéséről][lnk-fileupload-tutorial]
 

@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 10/24/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6f7ef46d9c40138c211427845423783fefde5dc3
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 6533ab205e07243e2f757ea0a66028e1d140c52b
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="install-a-sql92iis92net-stack-in-azure"></a>SQL &#92; IIS &#92; telepítése. HÁLÓZATI verem az Azure-ban
 
@@ -32,7 +32,9 @@ Ebben az oktatóanyagban az telepítjük SQL &#92; IIS &#92;. HÁLÓZATI verem A
 > * SQL Server rendszert futtató virtuális gép létrehozása
 > * Az SQL Server-bővítményének telepítése
 
+[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
+Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az Azure PowerShell-modul 5.1.1-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: ` Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 ## <a name="create-a-iis-vm"></a>Az IIS virtuális gép létrehozása 
 
@@ -41,9 +43,10 @@ A jelen példában használjuk a [New-AzVM](https://www.powershellgallery.com/pa
 Kattintson a **, próbálja** gombra a képernyő jobb felső sarkában a kódblokk elindíthatja a felhő rendszerhéj ebben az ablakban. Rendszer kéri, hogy a hitelesítő adatok megadása a virtuális gépet, a parancssort.
 
 ```azurepowershell-interactive
+$vmName = "IISVM$(Get-Random)"
 $vNetName = "myIISSQLvNet"
 $resourceGroup = "myIISSQLGroup"
-New-AzVm -Name myIISVM -ResourceGroupName $resourceGroup -VirtualNetworkName $vNetName 
+New-AzureRMVm -Name $vmName -ResourceGroupName $resourceGroup -VirtualNetworkName $vNetName 
 ```
 
 Telepítse az IIS és a .NET-keretrendszer használatával az egyéni parancsprogramok futtatására szolgáló bővítmény.
@@ -52,7 +55,7 @@ Telepítse az IIS és a .NET-keretrendszer használatával az egyéni parancspro
 
 Set-AzureRmVMExtension -ResourceGroupName $resourceGroup `
     -ExtensionName IIS `
-    -VMName myIISVM `
+    -VMName $vmName `
     -Publisher Microsoft.Compute `
     -ExtensionType CustomScriptExtension `
     -TypeHandlerVersion 1.4 `
@@ -60,7 +63,7 @@ Set-AzureRmVMExtension -ResourceGroupName $resourceGroup `
     -Location EastUS
 ```
 
-## <a name="azure-sql-vm"></a>Azure SQL-virtuális gép
+## <a name="azure-sql-vm"></a>Azure SQL VM
 
 Egy SQL Server előre konfigurált Azure Piactéri rendszerkép használatával az SQL virtuális gép létrehozása. Azt először létre kell hoznia a virtuális Gépet, majd azt az SQL Server-bővítmény telepítése a virtuális Gépre. 
 
@@ -109,7 +112,7 @@ Használjon [Set-AzureRmVMSqlServerExtension](/powershell/module/azurerm.compute
 Set-AzureRmVMSqlServerExtension -ResourceGroupName $resourceGroup -VMName mySQLVM -name "SQLExtension"
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban telepítette, egy SQL &#92; IIS &#92;. HÁLÓZATI verem Azure PowerShell használatával. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

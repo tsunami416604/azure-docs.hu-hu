@@ -1,5 +1,5 @@
 ---
-title: "OMSManagement megoldás gyakorlati tanácsok |} Microsoft Docs"
+title: "Gyakorlati tanácsok az Azure felügyeleti megoldás |} Microsoft Docs"
 description: 
 services: operations-management-suite
 documentationcenter: 
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
-ms.openlocfilehash: b3d07ad3164609a5628c0d9805de55a32870ab94
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 155a7117f4c02bafcf66d0f7abca7dd97dc1236f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="best-practices-for-creating-management-solutions-in-operations-management-suite-oms-preview"></a>Ajánlott eljárások létrehozása kezelési megoldásai Operations Management Suite (OMS) (előzetes verzió)
+# <a name="best-practices-for-creating-management-solutions-in-azure-preview"></a>Ajánlott eljárások megoldások létrehozásához Azure (előzetes verzió)
 > [!NOTE]
-> Ez az előzetes dokumentum megoldások létrehozásához az OMS Szolgáltatáshoz, amely jelenleg előzetes verziójúak. Az alábbiakban a séma van változhat.  
+> Ez az előzetes dokumentum megoldások létrehozásához Azure, amely jelenleg előzetes verziójúak. Az alábbiakban a séma van változhat.  
 
-Ez a cikk vonatkozó gyakorlati tanácsokat [felügyeleti megoldás fájl létrehozásával](operations-management-suite-solutions-solution-file.md) Operations Management Suite (OMS).  Ezek az információk további gyakorlati tanácsok meghatározott frissül.
+Ez a cikk vonatkozó gyakorlati tanácsokat [felügyeleti megoldás fájl létrehozásával](operations-management-suite-solutions-solution-file.md) az Azure-ban.  Ezek az információk további gyakorlati tanácsok meghatározott frissül.
 
 ## <a name="data-sources"></a>Adatforrások
 - Adatforrások lehet [egy Resource Manager sablonhoz konfigurált](../log-analytics/log-analytics-template-workspace-configuration.md), de azok nem tartozhatnak a megoldásfájlt.  Az oka, hogy az adatforrások konfigurálása jelenleg nem idempotent, ami azt jelenti, hogy a megoldás felülírhatja a meglévő konfigurációt a felhasználó munkaterületen.<br><br>A megoldás például szükség lehet az alkalmazások eseménynaplójában keresse meg a figyelmeztetési és események.  Ha megadja ezt adatforrásként a megoldásban, azzal kockáztatja eltávolítása tájékoztató eseményeket, ha a felhasználó rendelkezik-e ez nincs konfigurálva a munkaterületen.  Szereplő összes esemény, ha majd, előfordulhat, hogy lehet túlzott információk események gyűjtése a felhasználó munkaterületen.
@@ -48,7 +48,7 @@ Ez a cikk vonatkozó gyakorlati tanácsokat [felügyeleti megoldás fájl létre
 - Konfigurálja a megoldást a [hivatkozás](operations-management-suite-solutions-solution-file.md#solution-resource) riasztás szabályok úgy, hogy a felhasználók módosíthatják a konfigurációt.  Előfordulhat, hogy szeretnék módosítani a címzettek listájának módosítása, a riasztás küszöbértéke módosítása vagy a riasztási szabály letiltása. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Végezze el az alapvető folyamatainak [tervezéséről és kiépítéséről olyan felügyeleti megoldást](operations-management-suite-solutions-creating.md).
 * Megtudhatja, hogyan [hozzon létre egy megoldást fájlt](operations-management-suite-solutions-solution-file.md).
 * [Adja hozzá a mentett keresések és riasztások](operations-management-suite-solutions-resources-searches-alerts.md) a kezelési megoldással.

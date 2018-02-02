@@ -12,25 +12,25 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/18/2017
+ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 68a6e999ac0ffe97c08b6420dd6e71d7154b5de8
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: e16c8b9e8bfb75226d7dec32e545da72cba107e9
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referencia - IoT-központ kvóták és sávszélesség-szabályozás
 
 ## <a name="quotas-and-throttling"></a>Kvóták és szabályozás
 Minden Azure-előfizetéssel, legfeljebb 10 IoT-központok, és legfeljebb 1 szabad hub rendelkezhet.
 
-Minden egyes IoT-központot egy adott SKU egység bizonyos számú ki van építve (további információkért lásd: [Azure IoT Hub árképzési][lnk-pricing]). A Termékváltozat és egységek számát határozza meg, küldhet üzeneteket napi kvóta felső határát.
+Minden egyes IoT-központot egy adott SKU egység bizonyos számú ki van építve. További információkért lásd: [Azure IoT Hub árképzési][lnk-pricing]. A Termékváltozat és egységek számát határozza meg, küldhet üzeneteket napi kvóta felső határát.
 
 A Termékváltozat is meghatározza, hogy az IoT-központ az összes művelet kikényszeríti szabályozási korlát.
 
 ## <a name="operation-throttles"></a>A művelet szabályozások
-A művelet szabályozások percben tartományok lesznek alkalmazva, és célja, hogy visszaélés elkerülése sebessége korlátozások is. Az IoT-központ megpróbál ad vissza, amikor csak lehetséges hibák elkerülése érdekében, de kivételek ad vissza, ha a késleltetési sérül túl sokáig kezdődik.
+Művelet szabályozások percben tartományok lesznek alkalmazva, és célja, hogy visszaélés megakadályozására arány korlátozások is. Az IoT-központ ad vissza, amikor csak lehetséges hibák elkerülése érdekében megkísérli, de elindítja a kivételek ad vissza, ha a késleltetési túl sokáig sérül.
 
 A következő táblázat a kényszerített szabályozások. Értékek egyes hubhoz hivatkozik.
 
@@ -50,15 +50,16 @@ A következő táblázat a kényszerített szabályozások. Értékek egyes hubh
 
 <sup>1</sup>8 KB-os sávszélesség-szabályozás mérő mérete.
 
-Fontos, hogy a *eszközcsatlakozás* késleltetési szabályozza a sebesség, amellyel új eszköz kapcsolatok hozhatók létre és az IoT-központ. A *eszközcsatlakozás* késleltetési nem szabályozza a egyidejűleg csatlakoztatott eszközök maximális számát. A szabályozási attól függ, hogy az IoT hub kiépített egységek száma.
+> [!IMPORTANT]
+> A *eszközcsatlakozás* késleltetési szabályozza a sebesség, amellyel új eszköz kapcsolatok hozhatók létre és az IoT-központ. A *eszközcsatlakozás* késleltetési nem szabályozza a egyidejűleg csatlakoztatott eszközök maximális számát. A szabályozási attól függ, hogy az IoT hub kiépített egységek száma.
 
 Például ha vásárol S1 egyetlen egységben, kap egy 100-kapcsolatok a késleltetési. Ezért 100 000 eszközt a csatlakozáshoz tart legalább 1 000 másodperc (körülbelül 16 perc). Rendelkezik a identitásjegyzékhez-ben regisztrált eszközök annyi egyidejűleg csatlakoztatott eszközök azonban akkor is.
 
 Az IoT-központot egy részletes ismertető a sávszélesség-szabályozás viselkedését, lásd a következő blogbejegyzésben [IoT Hub-szabályozás és][lnk-throttle-blog].
 
 > [!NOTE]
-> Egy adott időpontban az IoT-központ a kiépített egységek számának növelésével kvótákat vagy korlátozásokat késleltetési növelése érdekében.
-> 
+> Egy adott időpontban növelhető kvótákat vagy korlátozásokat késleltetési által kiosztott egység az IoT-központ számának növelése.
+
 > [!IMPORTANT]
 > Identitás kapcsolatos műveletek az eszközkezelés és a üzembe helyezési forgatókönyvek futásidejű használatra lettek tervezve. Keresztül támogatja a olvasása vagy frissítése nagyszámú eszköz identitások [importálni és exportálni a feladatokat][lnk-importexport].
 > 
@@ -77,7 +78,7 @@ Az IoT-központ érvényesíti a más működési korlátai:
 | Üzenetküldési eszközről a felhőbe | Maximális üzenet mérete 256 KB |
 | Felhő eszközre üzenetkezelés | Maximális méret 64 KB |
 | Felhő eszközre üzenetkezelés | Függőben levő üzenetek a szállítási maximális érték 50 |
-| Közvetlen módszer | Tartalom mérete 128KB maximális közvetlen módszer |
+| Közvetlen módszer | Tartalom mérete 128 KB maximális közvetlen módszer |
 
 > [!NOTE]
 > Csatlakozhat egy IoT-központ eszközök maximális számát jelenleg 500 000 értéket. Ha azt szeretné, a korlát növeléséhez, forduljon a [Microsoft Support](https://azure.microsoft.com/support/options/).

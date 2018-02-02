@@ -1,5 +1,5 @@
 ---
-title: "Azure AD Connect szinkronizálása: elsődleges hely az Office 365-felhasználók konfigurálása |} Microsoft Docs"
+title: "Azure AD Connect szinkronizálása: Multi-földrajzi képességeinek elsődleges hely konfigurálása az Office 365-ben |} Microsoft Docs"
 description: "Ismerteti, hogyan kell állítania az Office 365 felhasználói erőforrások megközelíti a felhasználót az Azure AD Connect szinkronizálási szolgáltatás."
 services: active-directory
 documentationcenter: 
@@ -12,19 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/13/2018
+ms.date: 01/30/2018
 ms.author: billmath
-ms.openlocfilehash: 73b9b8d208b5eac2e62f62ab786efafa056e3cb4
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 8a36fc45334a2f1d12e6eabbfb16731ccc9998bf
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-ad-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure AD Connect szinkronizálása: elsődleges hely az Office 365-erőforrások konfigurálása
-Ha ez a témakör történései preferredDataLocation beállítása az Azure AD Connect szinkronizálási szolgáltatás célja. Ez az attribútum jelzi az Office 365, ahol a felhasználó, az erőforrások helyezhetik megközelíti a felhasználó szolgál. Ez a funkció a nagyobb ügyfelek számára készült.
+Ez a témakör célja lépésre PreferredDataLocation beállítása az Azure AD Connect szinkronizálási szolgáltatás. Amikor egy ügyfél Multi-földrajzi szolgáltatásait használja az Office 365-ben, ezt az attribútumot használja az Office 365-adatokat a felhasználó földrajzi helye megadását.
 
 > [!IMPORTANT]
-> Ez a funkció jelenleg előzetes megtekintéséhez és a felhőben alapértelmezés szerint kikapcsolva. Ha szeretné a részt venni az előzetes programban, lépjen kapcsolatba a Microsoft-képviselőjére.
+> Multi-földrajzi jelenleg előzetes verzió. Ha szeretné a részt venni az előzetes programban, lépjen kapcsolatba a Microsoft-képviselőjére.
 >
 >
 
@@ -34,11 +34,11 @@ Alapértelmezés szerint a felhasználók az Office 365-erőforrások és az Azu
 Beállítások alapján ez az attribútum, akkor a felhasználó Office 365 erőforrások, például a postaláda és a onedrive-ban ugyanabban a régióban, mint a felhasználónak pedig továbbra is a teljes szervezet számára több bérlő.
 
 > [!IMPORTANT]
-> Jogosult legyen ez a funkció az Office 365-előfizetéshez legalább 5000 munkaállomásokat kell rendelkeznie.
+> Jogosult Multi-földrajzi, rendelkeznie kell legalább 5000 munkaállomásokat az Office 365-előfizetéshez
 >
 >
 
-Az Office 365-ben a régiók a következők:
+Az Office 365 rendszerben elérhető Multi-földrajzi régiók a következők:
 
 | Régió | Leírás |
 | --- | --- |
@@ -56,7 +56,6 @@ Nem minden Office 365 számítási feladattal támogatja a felhasználó régió
 Az Azure AD Connect szinkronizálásának támogatja a **PreferredDataLocation** az attribútum **felhasználói** objektumok verziójában 1.1.524.0 és után. Pontosabban a következő módosításokat vezettek:
 
 * A séma az objektumtípus **felhasználói** a az Azure AD-összekötő az időtartam PreferredDataLocation attribútum, amely egyértékű karakterlánc típusú.
-
 * A séma az objektumtípus **személy** a Metaverzumban ki van bővítve PreferredDataLocation attribútum, amely karakterlánc típusú, és egyértékű tartalmazza.
 
 Alapértelmezés szerint a PreferredDataLocation attribútum nincs engedélyezve a szinkronizáláshoz. A szolgáltatás célja a nagyobb szervezeteknek, és nem mindenki számára előnyös azt. A felhasználók számára az Office 365 régió tárolására, mivel nincs a helyszíni Active Directoryban PreferredDataLocation attribútum attribútum is meg kell adnia. A topológiában a minden egyes szervezet különböző.
@@ -69,14 +68,13 @@ Alapértelmezés szerint a PreferredDataLocation attribútum nincs engedélyezve
 
 A szinkronizálás a PreferredDataLocation attribútum engedélyezése előtt kell:
 
- * Először döntse el, mely a helyszíni Active Directory-attribútumot, az adatforrás-attribútum használható. Típusúnak kell lennie **egyértékű karakterlánc**. Az egyik a extensionAttributes alábbi lépéseket a szolgál.
-
- * Ha korábban már konfigurálta a PreferredDataLocation attribútum a felhasználói objektumok meglévő szinkronizálva az Azure AD PowerShell Azure AD-ben, meg kell **backport** attribútumértékek a megfelelő felhasználói objektumok a helyszíni Active Directoryba.
+* Először döntse el, mely a helyszíni Active Directory-attribútumot, az adatforrás-attribútum használható. Típusúnak kell lennie **egyértékű karakterlánc**. Az egyik a extensionAttributes alábbi lépéseket a szolgál.
+* Ha korábban már konfigurálta a PreferredDataLocation attribútum a felhasználói objektumok meglévő szinkronizálva az Azure AD PowerShell Azure AD-ben, meg kell **backport** attribútumértékek a megfelelő felhasználói objektumok a helyszíni Active Directoryba.
 
     > [!IMPORTANT]
     > Ebben az esetben nem backport a helyszíni Active Directoryban a megfelelő felhasználói objektumok attribútum értékeket az Azure AD Connect eltávolítja a meglévő attribútumértékek az Azure AD, ha a szinkronizálás a PreferredDataLocation attribútum engedélyezve van.
 
- * Ajánlott a forrásattribútum konfigurálja a helyszíni legalább néhány AD-felhasználó objektumokat, ellenőrzésre később is használható.
+* Ajánlott a forrásattribútum konfigurálja a helyszíni legalább néhány AD-felhasználó objektumokat, ellenőrzésre később is használható.
 
 A szinkronizálási attribútum PreferredDataLocation engedélyezésének lépései összegezhető:
 
@@ -102,7 +100,7 @@ Győződjön meg arról, szinkronizálás nem történik meg, amíg nem szándé
 
 ![Synchronization Service Managert - ellenőrizze, nincs folyamatban lévő műveletekkel](./media/active-directory-aadconnectsync-feature-preferreddatalocation/preferreddatalocation-step1.png)
 
-### <a name="step-2-add-the-source-attribute-to-the-on-premises-adds-connector-schema"></a>2. lépés: Az adatforrás-attribútum hozzáadása a helyi ADDS összekötő séma
+## <a name="step-2-add-the-source-attribute-to-the-on-premises-adds-connector-schema"></a>2. lépés: Az adatforrás-attribútum hozzáadása a helyi ADDS összekötő séma
 Nem minden AD attribútumot a rendszer importálta a helyszíni AD kapcsolódási térbe. Ha be van jelölve, alapértelmezés szerint nem szinkronizált attribútum használatára, akkor szüksége importálnia. Az adatforrás-attribútum hozzáadása az importált attribútumok listáját:
 
 1. Lépjen a **összekötők** lapon a Synchronization Service Managert.
@@ -124,7 +122,7 @@ Alapértelmezés szerint a PreferredDataLocation attribútum nem importálja az 
 
 ![Adatforrás-attribútum hozzáadása az Azure AD-összekötő séma](./media/active-directory-aadconnectsync-feature-preferreddatalocation/preferreddatalocation-step3.png)
 
-### <a name="step-4-create-an-inbound-synchronization-rule-to-flow-the-attribute-value-from-on-premises-active-directory"></a>4. lépés: Az attribútum értékét a helyszíni Active Directoryból rendszer vonatkozó bejövő szinkronizálási szabály létrehozása
+## <a name="step-4-create-an-inbound-synchronization-rule-to-flow-the-attribute-value-from-on-premises-active-directory"></a>4. lépés: Az attribútum értékét a helyszíni Active Directoryból rendszer vonatkozó bejövő szinkronizálási szabály létrehozása
 A bejövő szinkronizálási szabály lehetővé teszi a forrásattribútum a helyszíni Active Directoryból a Metaverzumba haladjanak attribútumérték:
 
 1. Indítsa el a **szinkronizálási szabályok szerkesztő** címen **START** > **szinkronizálási szabályok szerkesztő**.
@@ -256,6 +254,15 @@ Feltéve, hogy a bérlő jelölte meg kell tudni használni a szolgáltatás, a 
 4. Győződjön meg arról, hogy ez a beállítás volt hatékony sok postafiókot, használja a parancsfájl a [Technet gallery](https://gallery.technet.microsoft.com/office/PowerShell-Script-to-a6bbfc2e). Ezt a parancsfájlt is rendelkezik Office 365 adatközpontok server előtagok és amely listája régióban található. Használat az előző lépésben hivatkozásként való ellenőrizze a postaláda helyét.
 
 ## <a name="next-steps"></a>További lépések
+
+**További tudnivalók Multi-földrajzi az Office 365-ben:**
+
+* Az ignite-on multi-földrajzi munkamenetek: https://aka.ms/MultiGeoIgnite
+* A onedrive-on multi-földrajzi: https://aka.ms/OneDriveMultiGeo
+* A SharePoint Online multi-földrajzi: https://aka.ms/SharePointMultiGeo
+
+**További tudnivalók a Szinkronizáló vezérlő konfigurációs modell:**
+
 * További információk a konfigurációs modell [ismertetése deklaratív kiépítés](active-directory-aadconnectsync-understanding-declarative-provisioning.md).
 * További információk az a kifejezés nyelv [ismertetése deklaratív kiépítés kifejezések](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md).
 

@@ -5,18 +5,18 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 11/29/2017
+ms.date: 01/30/2018
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: 
-ms.openlocfilehash: 92bb4f2a6458057613bdbcb749026781111a778d
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 0a4f6a5940ccffe897a5609b837ddaeea98d87aa
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="use-cost-management-reports"></a>Költség felügyeleti jelentések használata
+# <a name="use-cost-management-reports"></a>A Cost Management jelentéseinek használata
 
 Ez a cikk ismerteti a különböző költség hálózatkezelési jelentések használata a Cloudyn portálon. A legtöbb Cloudyn jelentések intuitív és egy egységes megjelenés és működés. Cloudyn jelentésekkel kapcsolatos áttekintéséért lásd: [ismertetése költség jelentések](understading-cost-reports.md). A cikk a különböző beállítások és a legtöbb jelentésekben használt mezőket is ismerteti.
 
@@ -135,7 +135,7 @@ Itt látható példa táblázat nézetben ugyanazokat az információkat.
 
 
 
-### <a name="cost-over-time-report"></a>Költség keresztül idő jelentés
+### <a name="cost-over-time-report"></a>Időalapú költségek jelentése
 
 A költség keresztül idő a jelentés jeleníti meg, ugyanis adott idő alatt, így láthatja a trendek és szabálytalanságok észleli a telepítésben. Lényegében egy meghatározott időszakban elosztott költségek jeleníti meg. A jelentés tartalmazza a fő közreműködők, beleértve a folyamatban lévő költségeket és a kijelölt időtartományban fordított egyszeri fenntartott példány díjakat. Ez a jelentés használható költség-kezelő 360° beállított szabályzatoknak.
 
@@ -160,6 +160,6 @@ Ez a jelentés egy példát.
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha még nem fejezte első oktatóanyaga, amely költség-kezelésre, olvassa el a [tekintse át a használati és költségek](tutorial-review-usage.md).

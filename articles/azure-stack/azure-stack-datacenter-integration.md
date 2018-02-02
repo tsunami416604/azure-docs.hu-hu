@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 01/31/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: ef8b30744c3334086680ab8c7211ad73b792c95c
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 2c013c11dea5217d564ac15a13a8d11614989057
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>Integrált Azure verem rendszerek Datacenter integrációs szempontjai
 Ha érdekli, egy integrált Azure verem rendszerben, tisztában kell lennie egy központi telepítés, és hogy a rendszer hogyan illeszkedik az Adatközpont a fő szempontokat. Ez a cikk a magas szintű áttekintést nyújt az ezeket a szempontokat segítséget nyújtanak az Azure-verem többcsomópontos rendszer fontos infrastruktúra döntéseket. Ezeket a szempontokat megértését megkönnyíti módon működik-e az OEM hardver gyártójánál azok telepítése Azure verem az Adatközpont.  
@@ -27,9 +27,7 @@ Ha érdekli, egy integrált Azure verem rendszerben, tisztában kell lennie egy 
 > [!NOTE]
 > Az Azure verem több csomópontos rendszerekhez csak hitelesített hardveren szállítóktól származó vásárolható meg. 
 
-Központi telepítése nincs Azure-verem olyan meg kell győződnie Azure verem megfelelően integrálása a környezet az alábbi döntéseket. Adja meg ezt az információt a tervezési folyamat során a megoldás-szolgáltatóhoz, és készen áll a hardver szállítójával telepítési nyissa meg gyorsan és problémamentesen lezajlott folyamat megkezdése előtt kell.
-
-Az információk tartományok szükséges hálózati, biztonsági és a legtöbb fontos döntés, amelyre szüksége lehet a Tudásbázis számos különböző területein és döntéshozók azonosító adatok között. Emiatt előfordulhat, hogy van bekérésére személyeket a szervezetében, több csapat, és győződjön meg arról, hogy minden szükséges információ készen áll a telepítés megkezdése előtt. Forduljon a hardver forgalmazójával ezen információk összegyűjtése közben tanácsot hasznos lehet a döntések meghozatala során előfordulhat, hogy rendelkeznek segítséget.
+Azure verem központi telepítéséhez adja meg a tervezési információkat a megoldás szolgáltató telepítési nyissa meg gyorsan és problémamentesen lezajlott folyamat megkezdése előtt kell. Az információk tartományok szükséges hálózati, biztonsági és a legtöbb fontos döntés, amelyre szüksége lehet a Tudásbázis számos különböző területein és döntéshozók azonosító adatok között. Emiatt előfordulhat, hogy van bekérésére személyeket a szervezetében, több csapat, és győződjön meg arról, hogy minden szükséges információ készen áll a telepítés megkezdése előtt. Forduljon a hardver forgalmazójával ezen információk összegyűjtése közben tanácsot hasznos lehet a döntések meghozatala során előfordulhat, hogy rendelkeznek segítséget.
 
 Vizsgálja, és a szükséges információk gyűjtésére, miközben szükség lehet néhány központi telepítés előtti konfigurációs módosításokat végezni a hálózati környezetben. Ez magában foglalhatja foglalása az IP-címteret a útválasztók, kapcsolók és a kapcsolatot az új Azure verem megoldás kapcsolók előkészítése tűzfalak konfigurálása az Azure verem megoldásban. Ügyeljen arra, hogy a tulajdonos terület szakértő legfeljebb vonalas segítséget nyújtanak az tervezés rendelkezik.
 
@@ -38,7 +36,7 @@ Azure verem rendszer lezárt, ahol az infrastruktúra zárolva van az egy enged�
 
 A napi felügyelete és műveletei nem az infrastruktúra nem korlátozott rendszergazdai hozzáférés van. Az Azure verem operátorok a rendszer a felügyeleti portálon keresztül vagy a keresztül Azure Resource Manager (keresztül a PowerShell vagy a REST API-t) kell kezelni. Nincs más felügyeleti eszközökhöz, például a Hyper-V kezelője vagy a Feladatátvevőfürt-kezelő által a rendszer nem lehet hozzáférni. A számítógép védelme érdekében harmadik féltől származó szoftverek (például ügynökök) nem telepíthető az Azure-verem infrastruktúra összetevői belül. Együttműködés külső felügyeleti és biztonsági szoftver a PowerShell vagy a REST API használatával következik be.
 
-Amikor egy magasabb szintű hozzáférés szükséges problémák megoldásához, amelyek nem megoldott riasztás közvetítés lépéseit, együttműködve támogatása. Támogatásával a ideiglenes teljes rendszergazdai hozzáférést biztosít a rendszer speciális műveletek végrehajtásához módszer. 
+Ha magasabb szintű hozzáférési problémák megoldásához, amelyek nem megoldott riasztás közvetítés lépések van szükség, kérje a Microsoft Support. Támogatásával a ideiglenes teljes rendszergazdai hozzáférést biztosít a rendszer speciális műveletek végrehajtásához módszer. 
 
 ## <a name="identity-considerations"></a>Identitás kapcsolatos szempontok
 
@@ -179,7 +177,10 @@ A másodlagos helyre replikálja az adatokat, és az alkalmazás feladatátvéte
 > [!IMPORTANT]
 > Integrált rendszerek eredeti kiadásának az infrastruktúra-szolgáltatási virtuális gép vendég szintű védelmet technológiákat lesz támogatott. Az alapul szolgáló infrastruktúra-kiszolgálók nem telepíthet ügynököket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="learn-more"></a>Részletek
 
 - További információ a használati esetek, megvásárlásáról, partnerek és OEM hardverszállítók: a [Azure verem](https://azure.microsoft.com/overview/azure-stack/) termék oldalát.
 - A terv és a földrajzi rendelkezésre állása információt Azure verem integrált rendszerek, tekintse meg a: [Azure verem: Azure kiterjesztése](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/). 
+
+## <a name="next-steps"></a>További lépések
+[Az Azure verem telepítési kapcsolat modellje](azure-stack-connection-models.md)

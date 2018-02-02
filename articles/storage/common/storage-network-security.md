@@ -1,5 +1,5 @@
 ---
-title: "Konfigurálja az Azure Storage tűzfalak és a virtuális hálózatok (előzetes verzió) |} Microsoft Docs"
+title: "Az Azure Storage tűzfalak és a virtuális hálózatok konfigurálása |} Microsoft Docs"
 description: "A tárfiók rétegezett hálózati biztonságának konfigurálása."
 services: storage
 documentationcenter: 
@@ -13,20 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 10/25/2017
 ms.author: cbrooks
-ms.openlocfilehash: d29f2d180df93f45202e881336e492c45587b276
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: fc13b7cc164c948f25a6908bdf71124a5be02fb9
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="configure-azure-storage-firewalls-and-virtual-networks-preview"></a>Azure Storage tűzfalak és a virtuális hálózatok (előzetes verzió) konfigurálása
+# <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Az Azure Storage tűzfalak és a virtuális hálózatok konfigurálása
 Az Azure Storage lehetővé téve a storage-fiókok egy meghatározott engedélyezett hálózatok biztonságos többrétegű biztonsági modellt biztosít.  Ha hálózati szabályok úgy vannak konfigurálva, csak az engedélyezett hálózatokhoz alkalmazások férhet hozzá a tárfiók.  Egy engedélyezett hálózatból meghívásakor az alkalmazások továbbra is szükséges megfelelő jogosultságokkal (egy érvényes tárelérési kulccsal vagy SAS-token) a tárfiók eléréséhez szükséges.
 
-## <a name="preview-availability-and-support"></a>Előzetes rendelkezésre állási és támogatás
-Tárolási tűzfalak és a virtuális hálózatok még csak előzetes verziójúak.  Ez a funkció érhető el jelenleg az Azure nyilvános felhő minden egyes új vagy meglévő tárfiókok.
-
-> [!NOTE]
-> Előzetes nem támogatottak a termelési számítási feladatokhoz.
+> [!IMPORTANT]
+> Bekapcsolja a tűzfalszabályok a tárfiók blokkolja a bejövő kérelmek adatok, beleértve a más Azure-szolgáltatásokhoz való hozzáférését.  Ez magában foglalja a portálon, írása naplói, stb.  A programban részt vevő szolgáltatásokhoz engedélyezheti újra funkció keresztül a [kivételek](#Exceptions) az alábbi szakasz.  A portál eléréséhez kellene ehhez belül a megbízható (IP vagy VNet), amely meg van adva a gépről.
 >
 
 ## <a name="scenarios"></a>Forgatókönyvek
@@ -55,9 +52,6 @@ Alapértelmezés szerint a storage-fiókok a hálózaton lévő ügyfelek kapcso
 
 #### <a name="azure-portal"></a>Azure Portal
 1. Nyissa meg a védeni kívánt tárfiókot.  
-> [!NOTE]
-> Ellenőrizze, hogy a tárfiók szerepel a támogatott régiók egyikéhez a nyilvános előzetes verzióhoz.
->
 
 2. Kattintson a beállítások menü nevű **tűzfalak és a virtuális hálózatok**.
 3. Alapértelmezés szerint engedélyezi a hozzáférést, válassza a "Kijelölt hálózatok" engedélyezése.  Minden hálózati forgalom engedélyezéséhez válassza a "Minden hálózati" hozzáférést.

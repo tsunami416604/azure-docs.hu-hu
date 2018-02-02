@@ -1,5 +1,5 @@
 ---
-title: "Az Azure tároló beállításjegyzék webhookok"
+title: Azure Container Registry webhooks
 description: "Útmutató webhookok eseményindító eseményekre, ha bizonyos műveleteket a beállításjegyzék adattárak lép fel."
 services: container-registry
 author: neilpeterson
@@ -8,11 +8,11 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 12/02/2017
 ms.author: nepeters
-ms.openlocfilehash: 133e36179a500dc65c3a543266a7afcf9988b87d
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.openlocfilehash: 915f90fd5d969d5544d56e5bec754b799f349015
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Azure-tároló beállításjegyzék webhookok használatával
 
@@ -35,7 +35,7 @@ A webhook kérelmek részletekért lásd: [Azure tároló beállításjegyzék w
 
 | Érték | Leírás |
 |---|---|
-| Név | Kíván beállítani a webhook nevét. Csak kisbetűket és számokat tartalmazhat, és 5-50 karakter hosszúságúnak kell lennie. |
+| Name (Név) | Kíván beállítani a webhook nevét. Csak kisbetűket és számokat tartalmazhat, és 5-50 karakter hosszúságúnak kell lennie. |
 | Szolgáltatás URI-ja | Az URI, ahol a webhook POST értesítést küldjön-e. |
 | Egyéni fejlécek | A POST-kérelmet együtt átadni kívánt fejléceket. Össze kell a "kulcs: érték" formátumban. |
 | Eseményindító műveletek | A webhook kiváltó műveletek. Webhook jelenleg forrása a kép leküldéses és/vagy törlési műveletek. |
@@ -48,7 +48,7 @@ Példa webhook űrlap:
 
 ## <a name="create-webhook-azure-cli"></a>Az Azure parancssori felület webhook létrehozása
 
-A webhook az Azure parancssori felület használatával hozhat létre a [az acr webhook létrehozása](/cli/azure/acr/webhook#create) parancsot.
+A webhook az Azure parancssori felület használatával hozhat létre a [az acr webhook létrehozása](/cli/azure/acr/webhook#az_acr_webhook_create) parancsot.
 
 ```azurecli-interactive
 az acr webhook create --registry mycontainerregistry --name myacrwebhook01 --actions delete --uri http://webhookuri.com
@@ -68,7 +68,7 @@ Való használata előtt a webhook tárolóra kép leküldéses és törlési m�
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Az Azure parancssori felülettel ACR webhook teszteléséhez használja a [az acr webhook ping](/cli/azure/acr/webhook#ping) parancsot.
+Az Azure parancssori felülettel ACR webhook teszteléséhez használja a [az acr webhook ping](/cli/azure/acr/webhook#az_acr_webhook_ping) parancsot.
 
 ```azurecli-interactive
 az acr webhook ping --registry mycontainerregistry --name myacrwebhook01
@@ -92,6 +92,6 @@ Minden egyes webhook törölheti a webhook kiválasztásával, majd a **törlés
 az acr webhook delete --registry mycontainerregistry --name myacrwebhook01
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Az Azure tároló beállításjegyzék webhook adatbázisséma hivatkozása](container-registry-webhook-reference.md)

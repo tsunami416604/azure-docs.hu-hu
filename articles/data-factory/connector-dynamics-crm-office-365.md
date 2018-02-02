@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 01/30/2018
 ms.author: jingwang
-ms.openlocfilehash: 2847be0fec83e923126ba436f09f24d83d69bd9d
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
-ms.translationtype: HT
+ms.openlocfilehash: 9481d8d9bbdb5081eae9b9a3d4b9a280cba86be5
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="copy-data-from-and-to-dynamics-365-or-dynamics-crm-by-using-azure-data-factory"></a>Adatok másolása Dynamics 365 vagy a Dynamics CRM és Azure Data Factory használatával
 
@@ -45,8 +45,7 @@ A Dynamics 365 konkrétan az alábbi alkalmazástípusokat támogatja:
 - Dynamics 365 a projekt szolgáltatás automatizálásához
 - Dynamics 365 a Marketing
 
-> [!NOTE]
-> A Dynamics összekötő használatára, a jelszó tárolása az Azure Key Vault, valamint lehetővé teszik a másolási tevékenység lekéréses ott adatmásolás végrehajtásakor. A konfiguráció további információkért lásd: a [szolgáltatástulajdonságok kapcsolódó](#linked-service-properties) szakasz.
+Másik alkalmazás típusokat, például a műveletek és a pénzügyi, a tehetség, stb. használata nem támogatott.
 
 ## <a name="get-started"></a>Bevezetés
 
@@ -67,7 +66,7 @@ A Dynamics társított szolgáltatás a következő tulajdonságok támogatottak
 | Szervezetnév | A Dynamics példány szervezet nevét. | Nem szabad megadni, ha a felhasználóhoz társított egynél több Dynamics-példány |
 | authenticationType | A hitelesítési típus Dynamics kiszolgálóhoz csatlakozik. Adja meg **"Office365"** Dynamics online. | Igen |
 | felhasználónév | Adja meg a felhasználónevet Dynamics való kapcsolódáshoz. | Igen |
-| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. A jelszó be Key Vault és a jelszót, konfigurálnia kell **"AzureKeyVaultSecret"**. További tudnivalókért lásd: [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). | Igen |
+| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Ez a mező megjelölése a SecureString tárolja biztonságos helyen az ADF, vagy a jelszó tárolása az Azure Key Vault választhat, és lehetővé teszik a másolási tevékenység lekéréses ott adatmásolás végrehajtása során – további információhoz [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). | Igen |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. | Nincs forrás, Igen a fogadó Ha a forrás kapcsolódó szolgáltatás nem rendelkezik egy integrációs futásidejű |
 
 >[!IMPORTANT]
@@ -87,12 +86,8 @@ A Dynamics társított szolgáltatás a következő tulajdonságok támogatottak
             "authenticationType": "Office365",
             "username": "test@contoso.onmicrosoft.com",
             "password": {
-                "type": "AzureKeyVaultSecret",
-                "secretName": "<secret name in AKV>",
-                "store":{
-                    "referenceName": "<Azure Key Vault linked service>",
-                    "type": "LinkedServiceReference"
-                }
+                "type": "SecureString",
+                "value": "<password>"
             }
         },
         "connectVia": {
@@ -116,7 +111,7 @@ A Dynamics társított szolgáltatás a következő tulajdonságok támogatottak
 | Szervezetnév | A Dynamics példány szervezet nevét. | Igen |
 | authenticationType | A hitelesítési típus a Dynamics kiszolgálóhoz való csatlakozáshoz. Adja meg **"Elérés"** Dynamics helyszíni az Internetre. | Igen |
 | felhasználónév | Adja meg a felhasználónevet Dynamics való kapcsolódáshoz. | Igen |
-| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. A jelszó be Key Vault és a jelszót, konfigurálnia kell **"AzureKeyVaultSecret"**. További tudnivalókért lásd: [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). | Igen |
+| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Ez a mező megjelölése a SecureString tárolja biztonságos helyen az ADF, vagy a jelszó tárolása az Azure Key Vault választhat, és lehetővé teszik a másolási tevékenység lekéréses ott adatmásolás végrehajtása során – további információhoz [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). | Igen |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. | Nem a forrást, a fogadó Igen |
 
 >[!IMPORTANT]
@@ -138,12 +133,8 @@ A Dynamics társított szolgáltatás a következő tulajdonságok támogatottak
             "authenticationType": "Ifd",
             "username": "test@contoso.onmicrosoft.com",
             "password": {
-                "type": "AzureKeyVaultSecret",
-                "secretName": "<secret name in AKV>",
-                "store":{
-                    "referenceName": "<Azure Key Vault linked service>",
-                    "type": "LinkedServiceReference"
-                }
+                "type": "SecureString",
+                "value": "<password>"
             }
         },
         "connectVia": {

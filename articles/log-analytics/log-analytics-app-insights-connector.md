@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: banders
-ms.openlocfilehash: c1f543d3379b7f6a29cb57b5d41825abaacabfc3
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: e3ff3d9c667e00995daa2023a7137870247b9ab3
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="application-insights-connector-solution-preview-in-operations-management-suite-oms"></a>Application Insights-összekötő megoldás (előzetes verzió) Operations Management Suite (OMS)
 
@@ -84,7 +84,7 @@ Kattintson a **Application Insights** csempére kattintva nyissa meg a **Applica
 
 Az irányítópult tartalmaz a paneleken a táblázatban látható. Minden egyes panel adott panelhez feltételeknek, a megadott hatókör és időtartomány legfeljebb 10 elemeket sorolja fel. A napló keresési, amely visszaadja az összes rekord kattintva futtathatja **láthatja az összes** alján a panelről, vagy a panel fejléc kattint.
 
-[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+[!INCLUDE [log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 | **Oszlop** | **Leírás** |
 | --- | --- |
@@ -164,7 +164,7 @@ A megoldás a következő telemetriai típusú adatokat fogad az Application Ins
 
 Amint az elérhetővé válik az Application Insights OMS adatok érkezik.
 
-## <a name="output-data"></a>kimeneti adatok
+## <a name="output-data"></a>Kimeneti adatok
 
 Egy rekordot egy *típus* a *ApplicationInsights* jön létre az egyes bemeneti adatokat. ApplicationInsights rögzíti az alábbiakban megtekintheti jellemzőkkel rendelkezik:
 
@@ -173,7 +173,7 @@ Egy rekordot egy *típus* a *ApplicationInsights* jön létre az egyes bemeneti 
 | Tulajdonság | Leírás |
 | --- | --- |
 | Típus | ApplicationInsights |
-| Ügyfélip |   |
+| ClientIP |   |
 | TimeGenerated | A rekord idő |
 | ApplicationId | Az Application Insights alkalmazás Instrumentation kulcs |
 | ApplicationName | Az Application Insights neve alkalmazás |
@@ -182,16 +182,16 @@ Egy rekordot egy *típus* a *ApplicationInsights* jön létre az egyes bemeneti 
 | ScreenResolution |   |
 | Kontinens | A kérelem származási helyének kontinensen |
 | Ország | A kérelem származási helyének ország |
-| Tartomány | Tartomány, állapot vagy a kérelem származási helyének területi beállítás |
+| Megye | Tartomány, állapot vagy a kérelem származási helyének területi beállítás |
 | Város | Település a kérelem származási helyének |
 | isSynthetic | Azt jelzi, hogy a felhasználó által vagy automatikus módon a kérelmet létrehozták. = Igaz a felhasználók által létrehozott vagy false = automatikus módszer |
 | Érvénytelen a SamplingRate | A portál küldött SDK által generált telemetriai százalékát. Tartomány 0,0-100.0. |
 | SampledCount | 100/(SamplingRate). Például, 4 =&gt; 25 %-át |
 | IsAuthenticated | Igaz vagy hamis |
-| OperationID azonosítójú | Ugyanazt a műveletet azonosító sablonobjektumhoz kapcsolódó elemként láthatók a portálon rendelkező elemek. Általában a kérelem azonosítója |
+| OperationID | Ugyanazt a műveletet azonosító sablonobjektumhoz kapcsolódó elemként láthatók a portálon rendelkező elemek. Általában a kérelem azonosítója |
 | ParentOperationID | A szülő művelet azonosítója |
 | OperationName |   |
-| Munkamenet-azonosító | A munkamenet, amelyen a kérelmet létrehozták egyedi azonosításához GUID |
+| SessionId | A munkamenet, amelyen a kérelmet létrehozták egyedi azonosításához GUID |
 | SourceSystem | ApplicationInsights |
 
 ### <a name="availability-specific-fields"></a>Rendelkezésre állási-specifikus mezők
@@ -244,7 +244,7 @@ Egy rekordot egy *típus* a *ApplicationInsights* jön létre az egyes bemeneti 
 | TelemetryType | Kérés |
 | ResponseCode | Az ügyfélnek küldött HTTP-válasz |
 | RequestSuccess | Azt jelzi, sikeres vagy sikertelen volt. IGAZ vagy hamis értéket. |
-| Kérelemazonosító | A kérelem egyedi azonosításához azonosítója |
+| RequestID | A kérelem egyedi azonosításához azonosítója |
 | RequestName | GET/POST + alap URL-je |
 | RequestDuration | A kérelem időtartam másodpercben |
 | URL-cím | A kérelem nem többek között a gazdagépre URL-címe |
@@ -261,6 +261,6 @@ Egy rekordot egy *típus* a *ApplicationInsights* jön létre az egyes bemeneti 
 
 Ez a megoldás nem rendelkeznek egy minta napló keresések az irányítópulton látható. Azonban leírását a napló keresési lekérdezés megjelennek-e a [nézet Application Insights-összekötő információk](#view-application-insights-connector-information) szakasz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Használjon [naplófájl-keresési](log-analytics-log-searches.md) az Application Insights-alkalmazásokhoz részletes információk megtekintéséhez.

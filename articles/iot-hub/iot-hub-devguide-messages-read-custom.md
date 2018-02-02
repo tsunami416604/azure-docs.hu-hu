@@ -11,26 +11,26 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/29/2017
+ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: d1e22a4378caf69d2077d79f78682c4d438dbcd2
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: a40fa94260b488e9c01ac09b22da8c0677d73968
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>Üzenet útvonalak és egyéni végpontokat használja az eszköz a felhőbe küldött üzeneteket
 
-Az IoT-központ lehetővé teszi a továbbításához [eszköz a felhőbe küldött üzeneteket] [ lnk-device-to-cloud] az IoT-központ szolgáltatás felé néző végpontok üzenet tulajdonságai alapján. Útválasztási szabályokat csoportjai üzenetek küldéséhez, hová kell Ugrás a további szolgáltatások nélkül folyamat üzenetek vagy kód írása a rugalmasságot. Egyes útválasztási szabályokat konfigurál a következő tulajdonságokkal rendelkeznek:
+Az IoT-központ lehetővé teszi a továbbításához [eszköz a felhőbe küldött üzeneteket] [ lnk-device-to-cloud] az IoT-központ szolgáltatás felé néző végpontok üzenet tulajdonságai alapján. Útválasztási szabályokat a munkakörnyezetnek üzenetek küldése, ha szükségük nyissa meg a további szolgáltatásainak vagy egyéni kód nélkül. Egyes útválasztási szabályokat konfigurál a következő tulajdonságokkal rendelkeznek:
 
 | Tulajdonság      | Leírás |
 | ------------- | ----------- |
 | **Name (Név)**      | A szabály azonosító egyedi név. |
-| **Forrás**    | Az adatfolyamot kell bírálni a forrása. Például telemetriát. |
-| **Az állapot** | Az útválasztási szabály, amely az üzenet fejlécek és body és határozzák meg, hogy a végpont egyezés használt lekérdezési kifejezésben. Útvonal feltétel létrehozásával kapcsolatos további információkért tekintse meg a [referencia - lekérdezési nyelv eszköz twins és feladatok][lnk-devguide-query-language]. |
+| **Source**    | Az adatfolyamot kell bírálni a forrása. Például telemetriát. |
+| **Az állapot** | Az útválasztási szabály, amely az üzenet fejlécek és body futtatni, és határozza meg, ha a végpont egyezés lekérdezési kifejezésben. Útvonal feltétel létrehozásával kapcsolatos további információkért tekintse meg a [referencia - lekérdezési nyelv eszköz twins és feladatok][lnk-devguide-query-language]. |
 | **Végpont**  | A végpont, ahol az IoT-központ elküldi a feltételnek megfelelő üzenetek neve. Végpontok az IoT hub ugyanabban a régióban kell lennie, ellenkező esetben meg kell felszámítani kereszt-régió írási műveleteket. |
 
-Egyetlen üzenet előfordulhat, hogy felel meg a feltétel több útválasztási szabályokat, amelyben eset az IoT-központ kézbesíti az üzenetet minden egyező szabályt társított végpont. Az IoT-központ is automatikusan deduplicates üzenetkézbesítést, így ha egy állapotüzenet megfelel a több szabályok azonos céllal rendelkező, csak írás célhoz egyszer.
+Egyetlen üzenet előfordulhat, hogy felel meg a feltétel több útválasztási szabályokat, amelyben eset az IoT-központ kézbesíti az üzenetet minden egyező szabályt társított végpont. Az IoT-központ is automatikusan deduplicates üzenetkézbesítést, így ha egy üzenet rendelkezhet azonos céllal több szabály megfelel, csak írás egyszer célhoz.
 
 Az IoT-központ rendelkezik egy alapértelmezett [beépített végpont][lnk-built-in]. Egyéni végpontokat üzeneteknek az előfizetésében szereplő más szolgáltatások létrehozhatja, ha szeretne az elosztóhoz hozhat létre. Az IoT-központ jelenleg támogatja az Azure Storage tárolók, az Event Hubs, a Service Bus-üzenetsorok és a Service Bus-üzenettémakörök egyéni végpontként.
 
@@ -51,7 +51,7 @@ A egyéni végpontok olvasását kapcsolatos további információkért lásd:
 * A olvasásakor [Service Bus-üzenetsorok][lnk-getstarted-queue].
 * A olvasásakor [Service Bus-üzenettémakörök][lnk-getstarted-topic].
 
-### <a name="next-steps"></a>Következő lépések
+### <a name="next-steps"></a>További lépések
 
 IoT-központok végpontjai kapcsolatos további információkért lásd: [IoT-központok végpontjai][lnk-devguide-endpoints].
 

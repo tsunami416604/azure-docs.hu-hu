@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 1/29/2018
 ms.author: v-craic
-ms.openlocfilehash: d376909a46da11ac1b6b1fa968e53ebef8f3dbf7
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 99b0938d5f4c8b022ead3473a0367de5d75cd6ff
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>A laborokhoz közlemény fel Azure DevTest Labs szolgáltatásban
 
@@ -47,6 +47,13 @@ A közlemény szolgáltatást arra szolgál, hogy az ideiglenes értesítések h
 
 1. Hozzon létre egy üzenetet, a felhasználóknak ebben a tesztkörnyezetben, állítsa **engedélyezve** való **Igen**.
 
+1. Megadhat egy **lejárati dátum** adhatja meg a dátumot és időpontot, amely után a közlemény már nem jelenik meg a felhasználók számára. Ha nem adja meg a lejárat dátumát, a közlemény marad letilthatja azt.
+
+   > [!NOTE]
+   > A közlemény lejárata után már nem jelenik meg a felhasználók számára, de továbbra is szerepel a **labor közlemény** ablaktáblán. Módosíthatja azt is, és engedélyezze újra azt, hogy legyen aktív újra.
+   >
+   >
+
 1. Adjon meg egy **közlemény címét** és a **közlemény szöveg**.
 
    A cím legfeljebb 100 karakter hosszúságú lehet, és megjelenik-e a felhasználó a tesztlabor áttekintése lapon. Ha a felhasználó kijelöli a cím, az értesítés jelenik meg.
@@ -58,7 +65,7 @@ A közlemény szolgáltatást arra szolgál, hogy az ideiglenes értesítések h
 
 1. Válassza ki **mentése** Ha hirdetmény visszaküldeni az elkészült.
 
-Ha már nem kívánja megjeleníteni ezt az értesítést a labor felhasználók számára, térjen vissza a **labor közlemény** lapon, és állítsa be **engedélyezve** való **nem**.
+Ha már nem kívánja megjeleníteni ezt az értesítést a labor felhasználók számára, térjen vissza a **labor közlemény** lapon, és állítsa be **engedélyezve** való **nem**. Ha meg van adva a lejárat dátumát, a közlemény le van tiltva automatikusan, amely dátum és idő.
 
 ## <a name="steps-for-users-to-view-an-announcement"></a>Felhasználók megtekintése bejelentés lépései
 

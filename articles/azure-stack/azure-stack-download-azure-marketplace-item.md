@@ -3,8 +3,8 @@ title: "Töltse le a Piactéri elemek az Azure-ból |} Microsoft Docs"
 description: "A saját Azure Alkalmazásveremben üzembe az Azure-ból letölthető Piactéri elemek."
 services: azure-stack
 documentationcenter: 
-author: ErikjeMS
-manager: byronr
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 
 ms.service: azure-stack
@@ -12,23 +12,24 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/30/2017
-ms.author: erikje
-ms.openlocfilehash: 33b7be4a85723ab03e4c656a8dd28632ad854e29
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.date: 01/30/2018
+ms.author: brenduns
+ms.openlocfilehash: 58f8287e5675e1134cb2fcceef9a9128ef97207c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Töltse le a Piactéri elemek az Azure-ból az Azure-verem
 
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
+
 Hogy mely tartalmak ahhoz, hogy szerepeljen a verem Azure piactér mellett dönt, érdemes a tartalom érhető el az Azure piactérről. A tesztelt futtatásához Azure veremben volt az Azure piactéren elemek válogatott listáját is letölthető. Új elem gyakran felkerül a listára, ezért ügyeljen arra, hogy keressen új tartalom.
 
 ## <a name="download-marketplace-items-in-a-connected-scenario-with-internet-connectivity"></a>Töltse le a Piactéri elemek csatlakoztatott forgatókönyv esetében (internetes kapcsolattal rendelkező)
 
-1. Töltse le a Piactéri elemek, először [Azure verem regisztrálni Azure](azure-stack-register.md). 
+1. Töltse le a Piactéri elemek, először [Azure verem regisztrálni Azure](azure-stack-register.md).
 2. Jelentkezzen be a verem Azure felügyeleti portálra (https://portal.local.azurestack.external).
 3. Néhány Piactéri elemek tekintélyes lehet. Győződjön meg arról, hogy elegendő lemezterület a számítógépen kattintva **erőforrás-szolgáltató** > **tárolási**.
 
@@ -51,7 +52,7 @@ Hogy mely tartalmak ahhoz, hogy szerepeljen a verem Azure piactér mellett dönt
 
 ## <a name="download-marketplace-items-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity"></a>Töltse le a Piactéri elemek egy leválasztott vagy részben csatlakoztatott forgatókönyv (az korlátozott internetkapcsolat)
 
-Ha Azure verem (nélkül bármely internetkapcsolat) kapcsolat nélküli módban telepíti, a verem Azure portál használatával nem tudja letölteni a Piactéri elemek. Azonban a piactér szindikálási eszköz használatával töltse le a Piactéri elemek egy internetkapcsolattal rendelkező gép, és majd átviszi a verem Azure környezetben. 
+Ha Azure verem (nélkül bármely internetkapcsolat) kapcsolat nélküli módban telepíti, a verem Azure portál használatával nem tudja letölteni a Piactéri elemek. Azonban a piactér szindikálási eszköz használatával töltse le a Piactéri elemek egy internetkapcsolattal rendelkező gép, és majd átviszi a verem Azure környezetben.
 
 ### <a name="prerequisites"></a>Előfeltételek
 A piactér szindikálási eszköz használata előtt győződjön meg arról, hogy rendelkezik [Azure verem regisztrálva az Azure-előfizetéssel való](azure-stack-register.md).  
@@ -132,12 +133,12 @@ A gépen, amely internetkapcsolattal rendelkezik az alábbi lépések segítség
     -Version "2017.09.25" `
     -OsDiskLocalPath "C:\AzureStack-Tools-master\Syndication\Microsoft.WindowsServer2016DatacenterServerCore-ARM-Eval.2017.09.25.vhd" `
     -CreateGalleryItem $False `
-    -Location Local 
+    -Location Local
    ```
 
 4. Töltse fel a Piactéri elemet használja portal (. Azpkg) Azure-verem blobtárolóba. Töltse fel a helyi Azure verem tárterület, vagy töltse fel az Azure-tárhelyre. (A csomag egy ideiglenes helyre szó.) Győződjön meg arról, hogy a blob nyilvánosan elérhető, és jegyezze fel az URI azonosító.  
 
-5. A Piactéri elemet közzétételét Azure verem használatával a **Add-AzureRMGalleryItem**. Példa:
+5. A Piactéri elemet közzétételét Azure verem használatával a **Add-AzsGalleryItem**. Példa:
 
    ```powershell
    Add-AzsGalleryItem `
@@ -149,6 +150,6 @@ A gépen, amely internetkapcsolattal rendelkezik az alábbi lépések segítség
 
    ![Piactér](./media/azure-stack-download-azure-marketplace-item/image06.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Hozzon létre, és tegye közzé a Piactéri elemet](azure-stack-create-and-publish-marketplace-item.md)

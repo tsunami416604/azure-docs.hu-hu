@@ -3,7 +3,7 @@ title: "A módosítást végzett adatcsatorna-támogatás az Azure Cosmos Adatb�
 description: "Azure Cosmos DB módosítás adatcsatorna támogatási használja a dokumentumok nyomon követéséhez és esemény-alapú feldolgozási például eseményindítók és gyorsítótárak és elemzési rendszerek frissítése."
 keywords: "Adatcsatorna módosítása"
 services: cosmos-db
-author: arramac
+author: rafats
 manager: jhubbard
 editor: mimig
 documentationcenter: 
@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: 
 ms.topic: article
-ms.date: 10/30/2017
-ms.author: arramac
-ms.openlocfilehash: d1968e9fea0fb08edfdbf9e09acca9c4af00b048
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.date: 01/29/2018
+ms.author: rafats
+ms.openlocfilehash: d179f2880b026cb10db53c1218507e7d1e396b8a
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>A módosítás adatcsatorna-támogatás az Azure Cosmos Adatbázisba használata
 
@@ -60,6 +60,7 @@ További részletek:
 * Módosítások is szinkronizálhatja a bármely-időpontban, ez azt jelenti, hogy nincs nem rögzített adatmegőrzési időtartam, amelynek módosítások érhetők el.
 * Változások a partíció kulcstartományokkal adattömböket írnak érhetők el. Ez a funkció lehetővé teszi, hogy a módosítások több fogyasztók/kiszolgáló párhuzamos feldolgozásra nagy gyűjteményekre.
 * Alkalmazások kérhet több módosítás hírcsatornákra egyidejűleg az ugyanahhoz a gyűjteményekhez.
+* ChangeFeedOptions.StartTime is használható, például egy kezdeti kiindulási pont, így, megadott idő megfelelő folytatási kereséséhez. A ContinuationToken, ha meg van adva, a WINS-be a StartTime és StartFromBeginning értékek. A pontosság ChangeFeedOptions.StartTime ~ 5 másodperc. 
 
 ## <a name="use-cases-and-scenarios"></a>Használati esetek és forgatókönyvek
 

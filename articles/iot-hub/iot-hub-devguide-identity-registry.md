@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/19/2017
+ms.date: 01/29/2018
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 653c31fb1115c79216f882a52484cd37303e0322
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
-ms.translationtype: MT
+ms.openlocfilehash: 05b1f11158233a7c02950320741b405429a08d50
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Az IoT hub a az identitásjegyzékhez ismertetése
 
@@ -74,11 +74,11 @@ Eszközök frissítésével letilthatja a **állapot** identitás az identity be
 
 ## <a name="import-and-export-device-identities"></a>Importálás és exportálás eszköz identitások
 
-Segítségével exportálhatja eszköz identitások tömeges az IoT-központ identitásjegyzékhez aszinkron műveletek használatával a [IoT-központ erőforrás-szolgáltató végpont][lnk-endpoints]. Export eszköz identitási adatokat olvasni az identitásjegyzékhez menteni egy ügyfél által megadott blob tároló használó hosszan futó feladatokat.
+Az aszinkron műveletek használatát a [IoT-központ erőforrás-szolgáltató végpont] [ lnk-endpoints] eszköz identitások tömeges exportálása az IoT-központ identitásjegyzékhez. Export eszköz identitási adatokat olvasni az identitásjegyzékhez menteni egy ügyfél által megadott blob tároló használó hosszan futó feladatokat.
 
-Az IoT-központ identitásjegyzékhez eszköz identitások tömeges a az aszinkron műveletek segítségével importálhatja a [IoT-központ erőforrás-szolgáltató végpont][lnk-endpoints]. Importálja olyan ügyfél által megadott blob tároló adatokat írjon az eszköz identitásadatok be az identitásjegyzékhez használó hosszan futó feladatokat.
+Az aszinkron műveletek használatát a [IoT-központ erőforrás-szolgáltató végpont] [ lnk-endpoints] eszköz identitások tömegesen importálhatja az IoT-központ identitásjegyzékhez. Importálja olyan ügyfél által megadott blob tároló adatokat írjon az eszköz identitásadatok be az identitásjegyzékhez használó hosszan futó feladatokat.
 
-Az importálás és exportálás API-k kapcsolatos részletes információkért lásd: [IoT-központ erőforrás-szolgáltató REST API-k][lnk-resource-provider-apis]. További információk a importálás fut, és exportálni a feladatokat, [IoT Hub eszköz identitások kezelését tömeges][lnk-bulk-identity].
+Az importálás és exportálás API-k kapcsolatos további információkért lásd: [IoT-központ erőforrás-szolgáltató REST API-k][lnk-resource-provider-apis]. További információk a importálás fut, és exportálni a feladatokat, [IoT Hub eszköz identitások kezelését tömeges][lnk-bulk-identity].
 
 ## <a name="device-provisioning"></a>Eszköz kiépítése
 
@@ -110,12 +110,12 @@ Tulajdonságai: Üzenet Rendszertulajdonságok fűzve előtagként a `'$'` szimb
 $content-típus | application/json |
 $iothub-enqueuedtime |  Ha az értesítés küldése idő |
 $iothub-üzenet-forrás | deviceLifecycleEvents |
-$content-kódolás | az UTF-8 |
+$content-kódolás | utf-8 |
 opType | **createDeviceIdentity** vagy **deleteDeviceIdentity** |
 hubName | Az IoT-központ nevét |
 deviceId | Az eszköz azonosítója |
 operationTimestamp | A művelet ISO8601 időbélyegzője |
-IOT hubbal-üzenet-séma | deviceLifecycleNotification |
+iothub-message-schema | deviceLifecycleNotification |
 
 Törzs: Ez a szakasz JSON formátumú, és a kettős az létrehozott eszközt identitás jelöli. Például:
 
@@ -180,7 +180,7 @@ Most, hogy rendelkezik megtudta, hogyan használható az IoT-központ identitás
 * [Az eszközön közvetlen metódus][lnk-devguide-directmethods]
 * [Több eszközön feladatok ütemezése][lnk-devguide-jobs]
 
-Ha azt szeretné, hogy próbálja ki azokat a jelen cikkben ismertetett fogalmakat, esetleg megváltozása a következő IoT Hub-oktatóanyag:
+Próbálja ki azokat a jelen cikkben ismertetett fogalmakat, olvassa el a következő IoT Hub-oktatóanyag:
 
 * [Ismerkedés az Azure IoT Hub][lnk-getstarted-tutorial]
 

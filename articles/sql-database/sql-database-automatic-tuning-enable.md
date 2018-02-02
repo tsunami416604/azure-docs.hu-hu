@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: Inactive
 ms.date: 09/19/2016
 ms.author: veljko-msft
-ms.openlocfilehash: bf8e0203112a42132a80e234964747c550fea284
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: b599273874a4b5a3bbcb78284d69b4c8d02b5f2c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="enable-automatic-tuning"></a>Automatikus hangolás engedélyezése
 
@@ -28,7 +28,11 @@ Az Azure SQL Database az automatikusan kezelt adatok szolgáltatása, amely foly
 ## <a name="enable-automatic-tuning-on-server"></a>Engedélyezze a kiszolgálón automatikus hangolása
 A kiszolgáló szintjén választhat öröklik az "Azure alapértelmezett értéke" automatikus hangolási beállítás, vagy nem az, hogy örökölje a konfigurációt. Az Azure alapértelmezett FORCE_LAST_GOOD_PLAN engedélyezve van, CREATE_INDEX engedélyezve van, és DROP_INDEX le van tiltva.
 
-### <a name="portal"></a>Portál
+## <a name="configure-automiatic-tuning-e-mail-notifications"></a>E-mail értesítések hangolása automiatic konfigurálása
+
+Lásd: [automatikus e-mail értesítések beállítása](sql-database-automatic-tuning-email-notifications.md)
+
+### <a name="azure-portal"></a>Azure Portal
 Engedélyezi az automatikus hangolással Azure SQL adatbázis-kiszolgálón, keresse fel a kiszolgálót az Azure portálon, és válassza ki **automatikus hangolása** a menüben. Válassza ki a engedélyezése, és válassza ki az automatikus hangolási lehetőségeket **alkalmaz**:
 
 ![Kiszolgáló](./media/sql-database-automatic-tuning-enable/server.png)
@@ -38,7 +42,7 @@ A kiszolgáló automatikus hangolási lehetőségeket a kiszolgálón lévő ös
 ### <a name="rest-api"></a>REST API
 [Ide kattintva további engedélyezéséről a REST API-n keresztül a kiszolgáló szintjén automatikus hangolása](https://docs.microsoft.com/rest/api/sql/serverautomatictuning)
 
-## <a name="enable-automatic-tuning-on-database"></a>Az adatbázis automatikus hangolása engedélyezése
+## <a name="enable-automatic-tuning-on-an-individual-database"></a>Egyedi adatbázis automatikus hangolása engedélyezése
 
 Az Azure SQL Database lehetővé teszi, hogy egyesével adja meg az automatikus hangolási beállítás az összes adatbázisra. Az adatbázis szintjén választhat automatikus hangolási beállítás öröklése a fölérendelt kiszolgáló, "Azure alapértelmezett értéke", vagy nem az, hogy örökölje a konfigurációt. Az Azure alapértelmezett FORCE_LAST_GOOD_PLAN engedélyezve van, CREATE_INDEX engedélyezve van, és DROP_INDEX le van tiltva.
 
@@ -46,7 +50,7 @@ Az Azure SQL Database lehetővé teszi, hogy egyesével adja meg az automatikus 
 > Az általános javasoljuk, hogy ugyanazokat a konfigurációs beállításokat is az összes adatbázis automatikusan alkalmazza az automatikus hangolási beállítás kiszolgálói szinten kezelését. Konfigurálja automatikus hangolással a egyedi adatbázis Ha az adatbázis különböző, hogy mások ugyanazon a kiszolgálón.
 >
 
-### <a name="portal"></a>Portál
+### <a name="azure-portal"></a>Azure Portal
 
 Egy önálló adatbázis automatikus hangolása engedélyezéséhez nyissa meg az adatbázis az Azure portálon, és majd, és válassza ki **automatikus hangolása**. Beállíthatja, hogy a beállítások öröklése a kiszolgálóról a beállítás kiválasztásával egyetlen adatbázis, vagy a konfigurációs adatbázis egyesével adja meg.
 
@@ -78,7 +82,7 @@ Az egyes hangolási beállítás beállítása ON értékre állítása, örök�
 ## <a name="disabled-by-the-system"></a>A rendszer le van tiltva
 Az automatikus hangolással figyeli időt vesz igénybe, az adatbázis az összes műveletet, és egyes esetekben meg tudja határozni, hogy automatikus hangolása nem megfelelően működik az adatbázison. Ebben a helyzetben hangolási beállítás letiltja a rendszer. A legtöbb esetben ez akkor fordul elő, mert a Lekérdezéstár nincs engedélyezve, vagy egy adott adatbázis csak olvasható állapotban van.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Olvassa el a [automatikus hangolási cikk](sql-database-automatic-tuning.md) tudhat meg többet automatikus hangolása és szerepéről javítják a teljesítményt.
 * Lásd: [teljesítmény javaslatok](sql-database-advisor.md) teljesítmény javaslatok az Azure SQL Database áttekintését.
 * Lásd: [lekérdezési teljesítmény Insights](sql-database-query-performance.md) a teljesítményre gyakorolt hatását a leggyakoribb lekérdezések megtekintésének megismerése.

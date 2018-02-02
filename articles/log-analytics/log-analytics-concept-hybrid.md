@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2017
+ms.date: 01/30/2018
 ms.author: magoedte
-ms.openlocfilehash: 513855084c8b89d97b049f1df2ec24d0f9789afe
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: d12743b752c42e6a7373e9c15df6dac71b7f9d27
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="collect-data-from-computers-in-your-environment-with-log-analytics"></a>Adatgyűjtés a Naplóelemzési a környezetében lévő számítógépek
 
@@ -32,7 +32,7 @@ A környezetében üzemeltetett számítógépek közvetlenül lehet csatlakozta
 
 ## <a name="overview"></a>Áttekintés
 
-![log-Analytics-Agent-Direct-Connect-diagram](media/log-analytics-concept-hybrid/log-analytics-on-prem-comms.png)
+![log-analytics-agent-direct-connect-diagram](media/log-analytics-concept-hybrid/log-analytics-on-prem-comms.png)
 
 Előtt elemzése és a gyűjtött adatok alapján, először telepítse, és csatlakozzon az ügynököt az összes számítógépet, amelyet szeretne adatokat küldeni a Naplóelemzés szolgáltatás. Ügynökök telepítővel, parancssor, a helyszíni számítógépekre vagy a Szükségeskonfiguráció-konfiguráló (DSC) az Azure Automationben telepíthető. 
 
@@ -41,6 +41,10 @@ Az ügynök a Linux és a Windows 443-as TCP-porton keresztül kommunikál a Log
 Az ügynök a Linux és a Windows nem csak a Log Analyticshez való kapcsolódás, azt is támogatja a gazdagép a hibrid forgatókönyv-feldolgozói szerepkör és felügyeleti megoldások, például a változások követése és a frissítések kezelése az Azure Automation szolgáltatásban csatlakozást.  A hibrid forgatókönyv-feldolgozói szerepkör kapcsolatos további információkért lásd: [Azure Automation hibrid forgatókönyv-feldolgozó](../automation/automation-offering-get-started.md#automation-architecture-overview).  
 
 Ha az IT-biztonsági házirendeknek nem engedélyezi a számítógépek a hálózat csatlakozik az internethez, az ügynök beállítható úgy, hogy az OMS-átjárón, attól függően, hogy a megoldás engedélyezte az összegyűjtött adatok küldésére és fogadására a konfigurációs adatokat. További információk és a Linux vagy a Windows ügynök kommunikációja áthaladjon egy OMS-átjáró a Log Analytics szolgáltatás konfigurálásával kapcsolatos lépéseket, [számítógépeket csatlakoztatni az OMS Szolgáltatáshoz az OMS-átjáró](log-analytics-oms-gateway.md). 
+
+> [!NOTE]
+> Az ügynök a Windows csak a Transport Layer Security (TLS) 1.0 és 1.1 támogatja.  
+> 
 
 ## <a name="prerequisites"></a>Előfeltételek
 Megkezdése előtt tekintse át a következő adatok ellenőrzése a minimális követelményeknek.
@@ -94,7 +98,7 @@ A proxy konfigurációs érték szintaxisa a következő:
 |Tulajdonság| Leírás |
 |--------|-------------|
 |Protokoll | https |
-|felhasználó | Nem kötelező felhasználónév a proxyhitelesítéshez |
+|felhasználótól | Nem kötelező felhasználónév a proxyhitelesítéshez |
 |jelszó | Opcionális jelszót a proxyhitelesítéshez |
 |proxyhost | Cím vagy FQDN-jét a proxy server/OMS átjáró |
 |port | A proxy server/OMS átjáró választható portszáma |
@@ -113,7 +117,7 @@ A helyszíni számítógépek kapcsolódásához közvetlenül a Naplóelemzési
 |Linux rendszerű számítógép| [Manuális telepítés](log-analytics-quick-collect-linux-computer.md)|A hívó burkoló-parancsfájl a Githubon található Linux-ügynök telepítése. | 
 | System Center Operations Manager|[Az Operations Manager integrálása a Naplóelemzési](log-analytics-om-agents.md) | Operations Manager és a Naplóelemzési továbbítására közötti integráció konfigurálása adatokat gyűjtött Linux és Windows küldő számítógépek hardverhibái is egy felügyeleti csoportban.|  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Felülvizsgálati [adatforrások](log-analytics-data-sources.md) az elérhető adatokat gyűjteni a Windows vagy Linux rendszer adatforrásokat. 
 

@@ -10,11 +10,11 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/18/2018
 ms.author: davidmu
-ms.openlocfilehash: f0a18f940cf3b4bbedd4b8e5c89cbbeb1bafef77
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: c69ab3db9f23b714f7de9244e4e7015ae60a4f6e
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>Hozzon létre egy alkalmazást az Azure parancssori felület használatával SSL-lezárást
 
@@ -137,17 +137,6 @@ az vmss create \
 
 ### <a name="install-nginx"></a>Az NGINX telepítése
 
-A szerkesztő létre szeretne hozni a fájlt a felhő rendszerhéj használata. Adja meg `sensible-editor cloudConfig.json` a fájl létrehozásához elérhető szerkesztők listájának megjelenítéséhez. Az aktuális rendszerhéjban customConfig.json nevű fájl létrehozása, és illessze be a következő konfigurációt:
-
-```json
-{
-  "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"],
-  "commandToExecute": "./install_nginx.sh"
-}
-```
-
-Futtassa a parancsot a rendszerhéj ablakban:
-
 ```azurecli-interactive
 az vmss extension set \
   --publisher Microsoft.Azure.Extensions \
@@ -155,7 +144,8 @@ az vmss extension set \
   --name CustomScript \
   --resource-group myResourceGroupAG \
   --vmss-name myvmss \
-  --settings @cloudConfig.json
+  --settings '{ "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"],
+  "commandToExecute": "./install_nginx.sh" }'
 ```
 
 ## <a name="test-the-application-gateway"></a>Az Alkalmazásátjáró tesztelése
@@ -172,7 +162,7 @@ az network public-ip show \
 
 ![Biztonságos figyelmeztetés](./media/application-gateway-ssl-cli/application-gateway-secure.png)
 
-Válassza ki a biztonsági figyelmeztetést, ha egy önaláírt tanúsítványt használt elfogadásához **részletek** , majd **nyissa meg a képernyőn látható weblapon**. A biztonságos NGINX-webhelyet akkor jelenik meg, az alábbi példában látható módon:
+Válassza ki a biztonsági figyelmeztetést, ha egy önaláírt tanúsítványt használt elfogadásához **részletek** , majd **nyissa meg a képernyőn látható weblapon**. Ekkor a biztonságos NGINX-webhely a következő példához hasonlóan jelenik meg:
 
 ![Az alkalmazás átjáró alap URL-cím tesztelése](./media/application-gateway-ssl-cli/application-gateway-nginx.png)
 

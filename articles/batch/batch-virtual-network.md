@@ -2,17 +2,17 @@
 title: "Azure Batch-készlet része virtuális hálózatnak kiépítése |} Microsoft Docs"
 description: "A Batch-készlet létrehozhat egy virtuális hálózatot, hogy a számítási csomópontok is biztonságos kommunikáció valósítható meg a többi virtuális gép a hálózaton, például egy fájlkiszolgálón."
 services: batch
-author: v-dotren
-manager: timlt
+author: dlepow
+manager: jeconnoc
 ms.service: batch
 ms.topic: article
 ms.date: 10/16/2017
-ms.author: v-dotren
-ms.openlocfilehash: f34647afc600b72704859952d0a40edad4a3b40f
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.author: danlep
+ms.openlocfilehash: 647a123e403b0ed6458bc26e7b26a73f3c1f8e91
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Azure Batch-készlet létrehozása a virtuális hálózat
 
@@ -67,7 +67,7 @@ Amikor egy felhasználó által megadott útvonal, mindegyik kapcsolódó köteg
 
 ![Felhasználó által megadott útvonal](./media/batch-virtual-network/user-defined-route.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Kötegelt, áttekintéséért lásd: [Develop nagyméretű párhuzamos számítási solutions a kötegelt](batch-api-basics.md).
 - Felhasználó által megadott útvonal létrehozása kapcsolatban bővebben lásd: [hozzon létre egy felhasználó által megadott útvonal - Azure-portálon](../virtual-network/create-user-defined-route-portal.md).

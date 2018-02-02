@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2017
 ms.author: elioda
-ms.openlocfilehash: 3ea10ee8652dc2a03791feb66041431e7b3c6ae1
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: ecc5da8daf0f5c93dffc93798f40507f8eac48be
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>Az IoT-központ magas rendelkezésre állás és katasztrófa-helyreállítás
 Az Azure-szolgáltatások, mint az IoT-központ biztosítja a magas rendelkezésre ÁLLÁS létszámcsökkentések használata az Azure-régiót szinten bármit tennie kellene a megoldás által igényelt nélkül. A Microsoft Azure platform olyan vész-helyreállítási képességek vagy kereszt-régiónkénti elérhetőség megoldások létrehozásához szolgáltatásokat is tartalmaz. Ha lehetővé szeretné tenni globális, kereszt-régió eszközöket vagy felhasználókat, a magas rendelkezésre állású Azure vész-Helyreállítási felhasználásokhoz előnyeit. A cikk [Azure üzleti folytonossági műszaki útmutatót](../resiliency/resiliency-technical-guidance.md) az Azure-ban az üzletmenet folytonosságát és vész-Helyreállítási beépített funkcióit mutatja be. A [vész-helyreállítási és magas rendelkezésre állás a Azure-alkalmazások] [ Disaster recovery and high availability for Azure applications] papír architektúra-útmutatót biztosít az Azure-alkalmazások elérése a magas rendelkezésre ÁLLÁSÚ és vész-Helyreállítási stratégiát.
 
-## <a name="azure-iot-hub-dr"></a>Az Azure IoT Hub DR
+## <a name="azure-iot-hub-dr"></a>Azure IoT Hub DR
 Mellett intra-régió magas rendelkezésre ÁLLÁSÚ az IoT-központ feladatátvételi mechanizmusok, felhasználói beavatkozás nélküli igénylő vész-helyreállítási valósítja meg. Az IoT Hub vész-Helyreállítási önálló kezdeményezett, és a helyreállítási idő célkitűzése (RTO) 2 – 26 óra, és a következő helyreállítási helyreállításipont-céljai (Rpo):
 
 | Funkció | A HELYREÁLLÍTÁSI IDŐKORLÁT |
@@ -34,6 +34,8 @@ Mellett intra-régió magas rendelkezésre ÁLLÁSÚ az IoT-központ feladatátv
 | Műveletek üzenetek figyelése |Az összes olvasatlan üzenetek elvesznek. |
 | Felhő-eszközre küldött üzenetek |0-5 perc adatvesztés |
 | Felhő eszközre a visszajelzési üzenetsor |Az összes olvasatlan üzenetek elvesznek. |
+| A két eszközadatok |0-5 perc adatvesztés |
+| Szülő- és eszköz feladatok |0-5 perc adatvesztés |
 
 ## <a name="regional-failover-with-iot-hub"></a>Az IoT-központ regionális feladatátvétel
 Az IoT-megoldások üzembe helyezési topológiájához teljes kezelés van ez a cikk hatókörén kívül. A cikk ismerteti a *regionális feladatátvétel* üzembe helyezési modellel magas rendelkezésre állás és a katasztrófa utáni helyreállítás céljából.
@@ -46,7 +48,7 @@ Magas szinten az IoT-központ, egy regionális feladatátvétel modell megvalós
 * **Identitás beállításjegyzék replikációs**: is használható, a másodlagos IoT-központ tartalmaznia kell az összes eszköz identitást, amely csatlakozni tudna a megoldás. A megoldás kell tartani a biztonsági mentések georeplikált eszköz identitások, és a másodlagos IoT hub előtti feltöltésükhöz Váltás az eszközök aktív végpontja. Az IoT Hub eszköz identitása exportálási funkció akkor hasznos, ebben a környezetben. További információkért lásd: [IoT Hub fejlesztői útmutató - identitásjegyzékhez][IoT Hub developer guide - identity registry].
 * **Az egyesítés logika**: Ha az elsődleges régióban ismét elérhetővé válik, állapotának és adatainak a másodlagos helyen létrehozott kell áttelepíteni az összes biztonsági az elsődleges régióban. Ez állapotának és adatainak többnyire kapcsolódnak eszköz identitások és az alkalmazás metaadatait, amelyet egyesíteni kell az elsődleges IoT hub és más alkalmazás-specifikus tárolja az elsődleges régióban. Ez a lépés leegyszerűsítése idempotent műveletek kell használnia. Az Idempotent műveletek minimalizálása érdekében a mellékhatással működő a végleges konzisztens terjesztési események, illetve a duplikálás vagy események soron kézbesítését. Emellett az alkalmazáslogikát úgy kell megtervezni, tűrését lehetséges inkonzisztenciát vagy "némileg" elavult állapotban. Ez a helyzet akkor fordulhat elő, miatt a további szükséges időt a rendszer "javítandó" helyreállításipont-céljai (RPO) alapján.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az alábbi hivatkozásokból tudhat meg többet az Azure IoT Hub:
 
 * [Ismerkedés az IoT-központok (Útmutató)][lnk-get-started]

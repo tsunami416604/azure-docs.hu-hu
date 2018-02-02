@@ -2,22 +2,20 @@
 title: "Az Azure verem datacenter integrációs - DNS"
 description: "Útmutató: Azure verem DNS integrálása a DNS adatközpontot"
 services: azure-stack
-author: troettinger
+author: jeffgilb
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/10/2017
-ms.author: victorh
+ms.date: 01/31/2018
+ms.author: jeffgilb
+ms.reviewer: wfayed
 keywords: 
-ms.openlocfilehash: 40d6d4858ef2e3df61d04dc68c00e09c04f000e2
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 504cbabe6ea4b7ad71601186dac853515f8c4709
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-stack-datacenter-integration---dns"></a>Az Azure verem datacenter integrációs - DNS
-
-*A következőkre vonatkozik: Azure verem integrált rendszerek*
-
 Az Azure verem végpontok hozzáférhetnek (`portal`, `adminportal`, `management`, `adminmanagement`stb.)  Azure külső-veremből a DNS-zónák Azure verem használni kívánt futtató DNS-kiszolgálók az Azure verem DNS-szolgáltatások integrálni kell.
 
 ## <a name="azure-stack-dns-namespace"></a>Az Azure verem DNS-névtér
@@ -55,8 +53,8 @@ Kell tudni oldania az Azure-verem végpontok és példányok külső Azure verem
 
 Kétféle DNS-kiszolgáló létezik:
 
-- Egy mérvadó DNS-kiszolgáló DNS-zónákat üzemeltet. Csak az ezekben a zónákban található rekordokra irányuló DNS-lekérdezéseket válaszolja meg.
-- A rekurzív DNS-kiszolgáló nem üzemeltet DNS-zónákat. Minden DNS-lekérdezést megválaszol a mérvadó DNS-kiszolgálók adatait összegyűjtve.
+- An authoritative DNS server hosts DNS zones. Csak az ezekben a zónákban található rekordokra irányuló DNS-lekérdezéseket válaszolja meg.
+- A recursive DNS server does not host DNS zones. Minden DNS-lekérdezést megválaszol a mérvadó DNS-kiszolgálók adatait összegyűjtve.
 
 Azure verem tartalmazza a mérvadó is és a rekurzív DNS-kiszolgálók. A rekurzív kiszolgálók névfeloldását minden, a kivételével a belső személyes és a külső nyilvános DNS-zónát, hogy Azure Alkalmazásveremben üzembe szolgálnak. 
 
@@ -97,8 +95,8 @@ A mérvadó kiszolgálók esetén a gazdarendszerhez a külső DNS-zóna adatain
 
 A DNS-infrastruktúra az Azure Alkalmazásveremben üzembe integrálása, szüksége van a következő információkat:
 
-- DNS-kiszolgáló teljes tartománynevek
-- DNS-kiszolgáló IP-címek
+- DNS server FQDNs
+- DNS server IP addresses
 
 Az Azure verem DNS-kiszolgálók teljes tartományneveit formátuma a következő:
 
@@ -138,6 +136,6 @@ Minden tartományregisztráló a saját DNS-kezelési eszközeit használja a ta
 
 A legtöbb DNS-regisztráló szervezetek esetén meg kell adni legalább két DNS-kiszolgáló a delegálás befejezéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[Az Azure verem datacenter integrációs - identitás](azure-stack-integrate-identity.md)
+[Tűzfal-integráció](azure-stack-firewall.md)

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2017
 ms.author: chackdan
-ms.openlocfilehash: 249fb4903c7b2de3ce290850a7759a4793f10aa7
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: 4813276ea8180aa8bdd385da289e6073f08d400e
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules"></a>Bejövő vagy kimenő automatikus méretezése szabályok használatával a Service Fabric-fürt méretezése
 Virtuálisgép-méretezési csoportok olyan Azure számítási erőforrás, melyekkel telepíthetnek és kezelhetnek olyan virtuális gépek gyűjteménye. Minden csomópont-típus, a Service Fabric-fürt definiált egy külön virtuálisgép-méretezési csoport lett beállítva. Az egyes csomóponttípusok majd méretezhetők a kimenő portok nyitva különböző tulajdonságkészletekkel rendelkező egymástól függetlenül, illetve különböző teljesítmény-mérőszámait rendelkezhet. Azt a további információk a [Service Fabric NodeType tulajdonságok értéke](service-fabric-cluster-nodetypes.md) dokumentum. Mivel a Service Fabric csomóponttípusok a fürt virtuálisgép-méretezési csoportok: a háttér épülnek, kell minden egyes csomópont típus vagy virtuális gép méretezési automatikus méretezése szabályokat.
@@ -91,7 +91,7 @@ Hajtsa végre a következő lépéseket egy Virtuálisgép-példány egyszerre k
 4. Ismételje meg az 1 – 3 igény szerint, de soha nem csökkentheti az elsődleges csomóponttípusok kisebb, mint a megbízhatósági szint indokol található példányok száma. Tekintse meg [a részleteket itt megbízhatóság rétegek](service-fabric-cluster-capacity.md).
 
 ## <a name="behaviors-you-may-observe-in-service-fabric-explorer"></a>Viselkedéshez jelenhet meg a Service Fabric Explorerben
-Amikor a fürt méretezni a Service Fabric Explorer (virtuálisgép-méretezési készlet példányok) a fürt részét képező csomópontok száma fogja tartalmazni.  Akkor a fürt működik, megjelenik a eltávolított csomópontot vagy Virtuálisgép-példány nem megfelelő állapot jelenik meg, kivéve, ha meghívja a [Remove-ServiceFabricNodeState cmd](https://msdn.microsoft.com/library/mt125993.aspx) a megfelelő csomópont névvel.   
+Amikor a fürt méretezni a Service Fabric Explorer (virtuálisgép-méretezési készlet példányok) a fürt részét képező csomópontok száma fogja tartalmazni.  Akkor a fürt működik, megjelenik a eltávolított csomópontot vagy Virtuálisgép-példány nem megfelelő állapot jelenik meg, kivéve, ha meghívja a [Remove-ServiceFabricNodeState cmd](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) a megfelelő csomópont névvel.   
 
 Ez a magyarázat az ilyen viselkedést.
 
@@ -109,7 +109,7 @@ Tekintse meg [a részleteket itt tartóssági szint](service-fabric-cluster-capa
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Olvassa el a fürt kapacitás megtervezésének, fürt frissítése és szolgáltatások particionálás is olvashat a következő:
 
 * [A fürt kapacitásának megtervezése](service-fabric-cluster-capacity.md)

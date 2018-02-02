@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/29/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: d6a950d69e5279c3cc19d8e457bfa23c2b40f515
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 91aa10b1e7dfbe47107257fa0a5fe14f7b43ff71
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Az Azure Automation forgatókönyv- és minták
 Ahelyett, hogy a saját forgatókönyveit és moduljait létrehozása az Azure Automationben, különféle forgatókönyvekhez, amik már Microsoft és a Közösség által készített végezheti el.  Használja a következő használati helyzetekben módosítás nélkül, vagy használhatja őket a kiindulási pontként, és szerkesztheti azokat az adott igények szerint.
@@ -37,11 +37,8 @@ Csak importálhatja a Runbook gyűjteményből közvetlenül az Azure portál ha
 
 ### <a name="to-import-a-runbook-from-the-runbook-gallery-with-the-azure-portal"></a>Runbook importálása a Runbook-galériából és az Azure portál
 1. Az Azure Portalon nyissa meg az Automation-fiókját.
-2. Kattintson a **Forgatókönyvek** csempére a forgatókönyvek listájának megnyitásához.
-3. Kattintson a **Tallózás gyűjtemény** gombra.
-   
-    ![Keresse meg a gyűjtemény gomb](media/automation-runbook-gallery/browse-gallery-button.png)
-4. Keresse meg a gyűjteményelem szeretne, és válassza ki azt a részletek megtekintéséhez.
+2. A **folyamat**, kattintson a **Runbookok gyűjteménye**
+3. Keresse meg a gyűjteményelem szeretne, és válassza ki azt a részletek megtekintéséhez. A bal oldali további keresési paraméterek megadása a gyártó és típus.
    
     ![Keresse meg a gyűjtemény](media/automation-runbook-gallery/browse-gallery.png)
 5. Kattintson a **nézet forráskódú projektként** elem megtekintéséhez a [TechNet Script Center](http://gallery.technet.microsoft.com/).
@@ -94,14 +91,8 @@ PowerShell-modul a runbookokban használható parancsmagokat tartalmaznak, és a
    
     ![PowerShell modul részletei](media/automation-runbook-gallery/gallery-item-details-blade.png) <br>
 7. Közvetlenül az Azure Automation-modul telepítéséhez, kattintson a **importálási** gombra.
-   
-    ![Importálás modul gombra](media/automation-runbook-gallery/module-import-button.png)
 8. Ha az Importálás gombra kattint, a a **importálása** ablaktáblán látható a neve, amely az importálni kívánt. Ha az összes függősége telepítve van, a **OK** gomb aktiválásakor. Ha függőségek hiányzik, azokat importálni, ez a modul importálása előtt szeretné.
-9. Kattintson a **OK** a modul importálásához. Azure Automation importálja a modult, a fiókjához, amíg a modul és a parancsmagokkal kapcsolatos metaadatok bontja ki.
-   
-    ![Importálás modul lap](media/automation-runbook-gallery/module-import-blade.png)
-   
-    Ez eltarthat néhány percig, mivel minden tevékenység kinyerni kell.
+9. Az a **importálása** kattintson **OK** a modul importálásához. Azure Automation importálja a modult, a fiókjához, amíg a modul és a parancsmagokkal kapcsolatos metaadatok bontja ki. Ez eltarthat néhány percig, mivel minden tevékenység kinyerni kell.
 10. Befejezését követően, hogy a modul telepítése értesítés és egy másik értesítést kapni.
 11. A modul az importálása után megjelenik az elérhető tevékenységeket, és használhatja az erőforrásokat a runbookok és a célállapot-konfiguráció.
 

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/18/2018
+ms.date: 01/27/2018
 ms.author: JeffGoldner
-ms.openlocfilehash: d6a0cbf696d59cec5b70e147de2879a311d88687
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: a23b5ff4dc8b0cf18e529d9cdc9925ea7fcedba0
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure verem használható az Azure piactéren elemek
 
@@ -38,8 +38,6 @@ Tanácsos ezek letöltése, amikor csak szüksége van a Virtuálisgép-bővítm
 | ![](media/azure-stack-marketplace-azure-items/cse.png) | [Linux virtuális gép hozzáférés](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/)| <b>A frissítés letöltéséhez a vmaccess bővítmény beépített verziója Linux-bővítmény. Ez azért fontos, ha a Debian Linux virtuális gépek használatát tervezi.</b> | Microsoft | Linux |
 | ![](media/azure-stack-marketplace-azure-items/acronis.png) | [Linux Acronis biztonsági mentés kiterjesztése](https://azuremarketplace.microsoft.com/marketplace/apps/Acronis.acronis-backup-lin-arm) | A Microsoft Azure Acronis biztonsági mentés kiterjesztése a Acronis biztonsági mentés termékcsalád data protection részét képezi. | Nemzetközi GmbH Acronis. | Linux |
 | ![](media/azure-stack-marketplace-azure-items/acronis.png) | [A Windows Acronis biztonsági mentés bővítmény](https://azuremarketplace.microsoft.com/marketplace/apps/Acronis.acronis-backup-win-arm) | A Microsoft Azure Acronis biztonsági mentés kiterjesztése a Acronis biztonsági mentés termékcsalád data protection részét képezi. | Nemzetközi GmbH Acronis. | Windows |
-| ![](media/azure-stack-marketplace-azure-items/trendmicro.png) | [A részletes biztonsági Linux-ügynök](https://azuremarketplace.microsoft.com/marketplace/apps/TrendMicroDeepSecurity.dsa-linux) | Linux Trend Micro mély biztonsági kiterjesztése. | Trend Micro | Linux |
-| ![](media/azure-stack-marketplace-azure-items/trendmicro.png) | [A részletes biztonsági ügynök a Windows](https://azuremarketplace.microsoft.com/marketplace/apps/TrendMicroDeepSecurity.dsa-windows-arm) | Windows Trend Micro mély biztonsági kiterjesztése. | Trend Micro | Windows |
 
 ## <a name="microsoft-virtual-machine-images-and-solution-templates"></a>Virtuálisgép-rendszerképek a Microsoft és a megoldás sablonok
 
@@ -47,7 +45,7 @@ A Microsoft Azure verem támogatja a következő Azure piactér virtuális gépe
 
 |  | Elem neve | Leírás | Közzétevő |
 | --- | --- | --- | --- |
-| ![](media/azure-stack-marketplace-azure-items/windowsserver.png) | [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WindowsServer) | Vállalati szintű megoldások, amelyek egyszerű, központi telepítéséhez, költséghatékony, alkalmazás-arra irányul, és felhasználó-központú. Ezek a lemezképek a legújabb javítások és rendszeresen frissülnek. | Microsoft |
+| ![](media/azure-stack-marketplace-azure-items/windowsserver.png) | [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WindowsServer) | Vállalati szintű megoldások, amelyek egyszerű, központi telepítéséhez, költséghatékony, alkalmazás-arra irányul, és felhasználó-központú. Ezek a lemezképek a legújabb javítások és rendszeresen frissülnek. <b>Fontos információk: lemezképek le, mielőtt 2018. január 18. törölni kell, majd a legújabb verziók helyett.</b> | Microsoft |
 | ![](media/azure-stack-marketplace-azure-items/remotedesktopservicesdeployment.png) | [Távoli asztali szolgáltatások (RDS) központi telepítés](https://azuremarketplace.microsoft.com/marketplace/apps/rds.remote-desktop-services-basic-deployment) | Egy alapszintű távoli asztali szolgáltatások (RDS) központi telepítés létrehozásához. | Microsoft |
 | ![](media/azure-stack-marketplace-azure-items/sharepoint.png) | [SharePoint Server 2013 Trial](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SharePointServer2013Trial) | A Microsoft SharePoint Server 2013 próbaverzió Windows Server 2012 Datacenter és a Visual Studio 2017 közösségi kiadásán. | Microsoft |
 | ![](media/azure-stack-marketplace-azure-items/sharepoint.png) | [SharePoint Server 2016 Trial](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SharePointServer2016Trial) | A Microsoft SharePoint Server 2016 próbaverzióját Windows Server 2016 adatközpontjában. | Microsoft |

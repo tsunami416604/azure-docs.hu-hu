@@ -12,15 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/27/2017
+ms.date: 01/29/2018
 ms.author: anwestg
-ms.openlocfilehash: 4ad91def00ca73f91f0ffd8e57afa442a93176f6
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: 93e10235e3de4ecea4d0e356bb4b52922c8afac8
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="capacity-planning-for-azure-app-service-server-roles-in-azure-stack"></a>Kapacitástervezési Azure verem Azure App Service kiszolgálói szerepköre tekintetében
+*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
 Az Azure App Service Azure veremben készen éles környezet kiépítéséhez, figyelembe kell vennie a kapacitás, a rendszer támogatja a várt.  Ez a példányok és számítási kell használnia minden éles környezet termékváltozat minimális száma útmutatást.
 
@@ -28,8 +29,8 @@ Az App Service kapacitás stratégia használja ezeket az irányelveket is terve
 
 | App Service-kiszolgálói szerepkör | Ajánlott a példányok száma | Ajánlott számítási Termékváltozat|
 | --- | --- | --- |
-| Tartományvezérlő | 2 | A1 |
-| Előtérbeli | 2 | A1 |
+| Vezérlő | 2 | A1 |
+| Előtér | 2 | A1 |
 | Kezelés | 2 | A3 |
 | Közzétevő | 2 | A1 |
 | Webes munkavállalók - megosztott | 2 | A1 |
@@ -91,12 +92,12 @@ Amikor eldönti, a megosztott webes feldolgozói szerepkörök számának haszn�
 A Fájlkiszolgáló szerepkör használható önálló fájlkiszolgáló fejlesztési és tesztelési, például amikor üzembe helyezése az Azure verem szoftverfejlesztői készlet az Azure App Service használhatja ezt a sablont - https://aka.ms/appsvconmasdkfstemplate. Élesben való használat esetén érdemes használni a előre beállított Windows-fájlkiszolgálón, vagy egy előre megadott-Windows fájlkiszolgálókon.
 
 Éles környezetben a Fájlkiszolgáló szerepkör intenzív lemez i/o észlel. Mert Kezelőkód összes tartalom és alkalmazás fájlt a felhasználó-webhelyekhez, előre, konfigurálnia kell a szerepkör a következőket:
-- Windows-fájlkiszolgálón
+- a Windows File Server
 - Fájlkiszolgálófürt
 - a-Windows fájlkiszolgáló
 - fájlkiszolgálófürt
 - További információt NAS (hálózati csatolt tároló) eszköz lásd [kiépíteni egy fájlkiszolgáló](azure-stack-app-service-before-you-get-started.md#prepare-the-file-server).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Az App Service Azure veremben megkezdése előtt](azure-stack-app-service-before-you-get-started.md)

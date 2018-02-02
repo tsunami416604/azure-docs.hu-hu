@@ -12,15 +12,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 01/30/2018
 ms.author: juluk
-ms.openlocfilehash: a04342f77126afe1e0a2707f1d213e0a8eb5825d
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: d8188634846a7ce75b5294cb3012069d9eafafc1
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 02/01/2018
 ---
-[!include [features-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
+[!INCLUDE [features-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
 
 ## <a name="how-bash-in-cloud-shell-storage-works"></a>A felhő rendszerhéj tárolási Bash működése 
 A felhő rendszerhéj bash továbbra is fennáll, az alábbi eljárások közül mindkettő keresztül fájlokat: 
@@ -69,7 +69,7 @@ A fájlmegosztás továbbra is létezik, kivéve, ha manuálisan törölni. Felh
 ![Fut a "clouddrive unmount'command](media/persisting-shell-storage/unmount-h.png)
 
 > [!WARNING]
-> Bár a parancs futtatása nem összes erőforrást törli, egy erőforráscsoport, a tárfiók törlésével vagy felhő rendszerhéj leképezett fájlmegosztás törli a `$Home` directory lemezképét, és a fájlmegosztást a fájlokat. Ez a művelet nem vonható vissza.
+> Bár a parancs futtatása nem töröl semmilyen erőforráshoz, egy erőforráscsoport, a tárfiókhoz vagy a felhő rendszerhéj leképezett fájlmegosztás törlésével törli a `$Home` directory lemezképét, és a fájlmegosztást a fájlokat. Ez a művelet nem vonható vissza.
 
 ## <a name="list-clouddrive"></a>Lista`clouddrive`
 Derítsen fel, melyik fájlmegosztás csatlakoztatva van, mint `clouddrive`- ben futtassa a `df` parancsot. 
@@ -88,9 +88,9 @@ shm                                                    65536       0      65536 
 justin@Azure:~$
 ```
 
-[!include [features-introblock](../../includes/cloud-shell-persisting-shell-storage-endblock.md)]
+[!INCLUDE [features-introblock](../../includes/cloud-shell-persisting-shell-storage-endblock.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [A felhő rendszerhéj gyors üzembe helyezés bash](quickstart.md) <br>
 [További tudnivalók a Microsoft Azure Files storage:](https://docs.microsoft.com/azure/storage/storage-introduction#file-storage) <br>
 [További információk a tárolási címkék](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) <br>

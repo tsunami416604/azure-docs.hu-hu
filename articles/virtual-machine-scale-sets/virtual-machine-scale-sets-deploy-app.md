@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 7e03d5e2bbdb1b3b206fa7fa455f7dce7951f02b
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: 288bcdf6628f60d0b08fe151e630784d665db56f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>A virtuálisgép-méretezési csoportok az alkalmazás központi telepítése
 A virtuális gép (VM)-példányok méretezési csoportban lévő alkalmazások futtatásához, először telepítse az alkalmazás-összetevők és a szükséges fájlokat. Ez a cikk egy egyéni Virtuálisgép-lemezkép összeállítása a terjedő skálán-példány beállítása, vagy automatikusan az install-parancsfájlok futtathatók a meglévő Virtuálisgép-példányok módjai be. Azt is megtudhatja, hogyan alkalmazást vagy az operációs rendszer frissítése érdekében kezelése érdekében egy méretezési.
@@ -43,11 +43,11 @@ A konfigurációs felügyeleti és egy virtuális gép kiépítése idő csökke
 
 
 ## <a name="already-provisioned"></a>Alkalmazások telepítése és az egyéni parancsprogramok futtatására szolgáló bővítmény
-Az egyéni parancsprogramok futtatására szolgáló bővítmény és hajtanak végre a parancsfájlok Azure virtuális gépeken. A bővítmény akkor hasznos, ha a feladás egy vagy több központi telepítés konfigurálása, a szoftver telepítése vagy a más beállításokat / kezelési feladatot. Parancsfájlok le: az Azure storage vagy a Githubon, vagy az Azure portálon bővítmény futásidőben megadott.
+Az egyéni parancsprogramok futtatására szolgáló bővítmény és hajtanak végre a parancsfájlok Azure virtuális gépeken. A bővítmény az üzembe helyezést követő konfiguráció, szoftvertelepítés, illetve bármely konfigurációs/felügyeleti feladat végrehajtása során hasznos. A szkriptek az Azure Storage-ből vagy a GitHubról tölthetők le, illetve megadhatók az Azure Portalon a bővítmény futásidejében.
 
 Az egyéni parancsprogramok futtatására szolgáló bővítmény integrálódik az Azure Resource Manager-sablonok, és is futtathat az Azure parancssori felület, PowerShell, Azure-portálon vagy az Azure virtuális gép REST API használatával. 
 
-További információkért lásd: a [egyéni parancsprogramok futtatására szolgáló bővítmény áttekintése](../virtual-machines/windows/extensions-customscript.md).
+További információ: [Az egyéni szkriptbővítmény áttekintése](../virtual-machines/windows/extensions-customscript.md).
 
 
 ### <a name="use-azure-powershell"></a>Azure PowerShell használatával
@@ -91,10 +91,10 @@ Update-AzureRmVmss `
 Ha a házirend a méretezési csoportban lévő *manuális*, frissítse a Virtuálisgép-példányok a [frissítés-AzureRmVmssInstance](/powershell/module/azurerm.compute/update-azurermvmssinstance). Ez a parancsmag a Virtuálisgép-példányok a frissített méretezési készlet konfigurációja vonatkozik, és telepíti az alkalmazást.
 
 
-### <a name="use-azure-cli-20"></a>Azure parancssori felület használatával 2.0
+### <a name="use-azure-cli-20"></a>Use Azure CLI 2.0
 Az Azure parancssori felület segítségével az egyéni parancsprogramok futtatására szolgáló bővítmény használatához hozzon létre egy JSON-fájl, amely meghatározza, milyen fájlok beszerzése és végrehajtandó, parancsokat. Ezek a JSON-definíciók ismételten használhatók méretű készlet telepítések alkalmazni a konzisztens alkalmazás telepítését.
 
-Hozzon létre egy fájlt az aktuális rendszerhéjban *customConfig.json* , majd illessze be a következő konfigurációt. A felhő rendszerhéj nem a helyi számítógépen hozzon létre például a fájlt. A szerkesztő kívánja használata. Adja meg `sensible-editor cloudConfig.json` hozza létre a fájlt, és elérhető szerkesztők listájának megtekintéséhez.
+Hozzon létre egy fájlt az aktuális rendszerhéjban *customConfig.json* , majd illessze be a következő konfigurációt. Például hozza létre a fájlt a Cloud Shellben, és ne a helyi gépén. A szerkesztő kívánja használata. Írja be a `sensible-editor cloudConfig.json` parancsot a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez.
 
 ```json
 {
@@ -103,7 +103,7 @@ Hozzon létre egy fájlt az aktuális rendszerhéjban *customConfig.json* , majd
 }
 ```
 
-Az egyéni parancsprogramok futtatására szolgáló bővítmény konfiguráció alkalmazása a skála beállítani a Virtuálisgép-példány [az vmss bővítmény set](/cli/azure/vmss/extension#set). A következő példa érvényes a *customConfig.json* konfigurációját, és a *myScaleSet* nevű erőforráscsoport Virtuálisgép-példány *myResourceGroup*. Adja meg a saját nevek a következők szerint:
+Az egyéni parancsprogramok futtatására szolgáló bővítmény konfiguráció alkalmazása a skála beállítani a Virtuálisgép-példány [az vmss bővítmény set](/cli/azure/vmss/extension#az_vmss_extension_set). A következő példa érvényes a *customConfig.json* konfigurációját, és a *myScaleSet* nevű erőforráscsoport Virtuálisgép-példány *myResourceGroup*. Adja meg a saját nevek a következők szerint:
 
 ```azurecli
 az vmss extension set \
@@ -166,13 +166,13 @@ Ha a házirend a méretezési csoportban lévő *manuális*, frissítse a Virtu�
 
 
 ## <a name="install-an-app-to-a-linux-vm-with-cloud-init"></a>Alkalmazások telepítése a Linux virtuális gép és felhő inicializálás
-[Felhő inicializálás](https://cloudinit.readthedocs.io/latest/) Linux virtuális gép testreszabása, először elinduló széles körben használt módszer. Felhő inicializálás használhatja csomagok és a fájlok írási, vagy a felhasználók és biztonsági beállításainak. Felhő inicializálás során a rendszerindítási folyamat fut, mert nincsenek további lépéseket vagy a konfiguráció alkalmazásához szükséges ügynökök.
+A [cloud-init](https://cloudinit.readthedocs.io/latest/) egy széles körben használt módszer a Linux rendszerű virtuális gépek első indításkor való testreszabásához. A cloud-init használatával csomagokat telepíthet és fájlokat írhat, vagy beállíthatja a felhasználókat és a biztonságot. Mivel a cloud-init a kezdeti rendszerindítás során fut, nincs szükség további lépésekre vagy ügynökökre a konfiguráció alkalmazásához.
 
 Felhő inicializálás terjesztéseket is használható. Például, hogy ne használjon **apt-get-telepítés** vagy **yum telepítése** csomag telepítéséhez. Helyette megadhatja a telepítendő csomagok listája. Felhő inicializálás automatikusan használja a natív csomag felügyeleti eszköz a distro választja.
 
 További információt, beleértve például *felhő-init.txt* fájl című [felhő inicializálás használni ahhoz, hogy Azure virtuális gépek](../virtual-machines/linux/using-cloud-init.md).
 
-Hozzon létre egy méretezési készletet, és a felhő inicializálás fájl használatát, adja hozzá a `--custom-data` paramétert a [az vmss létrehozása](/cli/azure/vmss#create) parancsot, és adja meg a felhő-inicializációs fájl neve. Az alábbi példakód létrehozza a méretezési készletben elnevezett *myScaleSet* a *myResourceGroup* , és konfigurálja a Virtuálisgép-példányok nevű fájlt tartalmazó *felhő-init.txt*. Adja meg a saját nevek a következők szerint:
+Hozzon létre egy méretezési készletet, és a felhő inicializálás fájl használatát, adja hozzá a `--custom-data` paramétert a [az vmss létrehozása](/cli/azure/vmss#az_vmss_create) parancsot, és adja meg a felhő-inicializációs fájl neve. Az alábbi példakód létrehozza a méretezési készletben elnevezett *myScaleSet* a *myResourceGroup* , és konfigurálja a Virtuálisgép-példányok nevű fájlt tartalmazó *felhő-init.txt*. Adja meg a saját nevek a következők szerint:
 
 ```azurecli
 az vmss create \
@@ -222,5 +222,5 @@ Ha új operációsrendszer-verziókban áll rendelkezésre, használhatja, vagy 
 Ha egyéni Virtuálisgép-lemezképet használhat előre telepített alkalmazásokkal rendelkező, az alkalmazás frissítései sikerült integrálja egy központi telepítési folyamatot, az új lemezképeket és központi telepítése az operációs rendszer frissítései között a méretezési szolgáltatást a. Ez a megközelítés lehetővé teszi, hogy a kimenetátirányítási a legfrissebb alkalmazás buildek átvételéhez, hozzon létre, ellenőrizze a Virtuálisgép-lemezképet, majd a méretezési csoportban lévő Virtuálisgép-példányok frissítéséhez. Alapszik, és telepíti az alkalmazás frissítései között egyéni Virtuálisgép-lemezképek központi telepítési folyamat futtatásához használhatja [Visual Studio Team Services](https://www.visualstudio.com/team-services/), [Spinnaker](https://www.spinnaker.io/), vagy [Jenkins](https://jenkins.io/) .
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Build, és telepítsen alkalmazásokat olyan a méretezési csoportok, tekintse át a [méretezési beállítása kialakítás áttekintése](virtual-machine-scale-sets-design-overview.md). A méretezési kezeléséről további információkért lásd: [a PowerShell szolgáltatás használatával kezelheti a méretezési](virtual-machine-scale-sets-windows-manage.md).

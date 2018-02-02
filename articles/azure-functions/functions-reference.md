@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/12/2017
 ms.author: tdykstra
-ms.openlocfilehash: 80996c8bc6e40665201057ed185700ddaeea170a
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 53ba5eaf3272746bd107efbcbae4b5d5889a197f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-functions-developers-guide"></a>Az Azure Functions fejlesztői útmutatója
 Az Azure Functions adott funkciókhoz ossza meg néhány alapvető technikai kulcsfogalmak és összetevők, függetlenül a nyelvet, vagy a kötés használja. Ahhoz, hogy belevágjon tanulási egy adott nyelven vagy a kötési adatait, mindenképpen olvassa végig az áttekintés, amely az összes vonatkozik.
@@ -53,9 +53,9 @@ A `bindings` tulajdonság értéke, ahol konfigurálhatja az eseményindítók �
 
 | Tulajdonság | Értékek/típusok | Megjegyzések |
 | --- | --- | --- |
-| `type` |Karakterlánc |Kötés típusa. Például: `queueTrigger`. |
+| `type` |karakterlánc |Kötés típusa. Például: `queueTrigger`. |
 | `direction` |"in" "out" |Azt jelzi, hogy a kötés adatfogadásra a függvénynek vagy adatokat küld a függvény. |
-| `name` |Karakterlánc |A függvény a kötött adatok használt név. C# ez pedig egy argumentum neve; a JavaScript esetén a kulcsot a kulcs/érték listáját. |
+| `name` |karakterlánc |A függvény a kötött adatok használt név. C# ez pedig egy argumentum neve; a JavaScript esetén a kulcsot a kulcs/érték listáját. |
 
 ## <a name="function-app"></a>Függvényalkalmazás
 Egy vagy több egyéni függvények felügyelete együtt, amelyet az Azure App Service egy függvény alkalmazást magában foglalja. Összes függvény alkalmazásban funkció ossza meg az árképzési csomagot, a folyamatos üzembe helyezés és a futásidejű verzióját. Több nyelven írt funkciók összes megoszthatja függvény ugyanahhoz az alkalmazáshoz. Egy függvény app gondol rendszerezését és a funkciók együttesen kezelését is. 
@@ -102,7 +102,7 @@ Több eseményindító események bekövetkezésekor gyorsabb, mint az egyszála
 
 ## <a name="functions-runtime-versioning"></a>Funkciók futásidejű versioning
 
-Konfigurálhatja a funkciók futásidejű használatával verzióját a `FUNCTIONS_EXTENSION_VERSION` Alkalmazásbeállítás. Például a "~ 1" érték azt jelzi, hogy a függvény App 1 fog használni a fő verziószáma. Függvény alkalmazások verzióra, hogy minden új kisebb vannak. További információ, beleértve a függvény app pontos verziójának megtekintése: [bemutatásához az Azure Functions futásidejű verziók](functions-versions.md).
+Konfigurálhatja a funkciók futásidejű használatával verzióját a `FUNCTIONS_EXTENSION_VERSION` Alkalmazásbeállítás. Például a "~ 1" érték azt jelzi, hogy a függvény App 1 fog használni a fő verziószáma. Függvény alkalmazások verzióra, hogy minden új kisebb vannak. További információ, beleértve a függvény app pontos verziójának megtekintése: [bemutatásához az Azure Functions futásidejű verziók](set-runtime-version.md).
 
 ## <a name="repositories"></a>Adattárak
 A kód az Azure Functions nyílt forráskódú, és a GitHub-adattárak tárolja:
@@ -110,8 +110,8 @@ A kód az Azure Functions nyílt forráskódú, és a GitHub-adattárak tárolja
 * [Az Azure Functions futtatókörnyezettel](https://github.com/Azure/azure-webjobs-sdk-script/)
 * [Az Azure Functions portálra](https://github.com/projectkudu/AzureFunctionsPortal)
 * [Az Azure Functions sablonokkal](https://github.com/Azure/azure-webjobs-sdk-templates/)
-* [Az Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/)
-* [Azure WebJobs SDK-bővítmények](https://github.com/Azure/azure-webjobs-sdk-extensions/)
+* [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/)
+* [Azure WebJobs SDK Extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/)
 
 ## <a name="bindings"></a>Kötések
 Ez az összes támogatott kötések tábla.
@@ -121,7 +121,7 @@ Ez az összes támogatott kötések tábla.
 ## <a name="reporting-issues"></a>Jelentéskészítési problémák
 [!INCLUDE [Reporting Issues](../../includes/functions-reporting-issues.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információkért lásd a következőket:
 
 * [Azure Functions – ajánlott eljárások](functions-best-practices.md)
