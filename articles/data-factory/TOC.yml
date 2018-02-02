@@ -37,7 +37,7 @@
           href: tutorial-copy-data-tool.md
         - name: Felhasználói felület (UI)
           href: tutorial-copy-data-portal.md
-        - name: Azure PowerShell
+        - name: .NET
           href: tutorial-copy-data-dot-net.md
     - name: 3 – Helyszíni adatok másolása a felhőbe
       items:
@@ -90,7 +90,7 @@
       items:
         - name: Felhasználói felület (UI)
           href: tutorial-control-flow-portal.md
-        - name: Azure PowerShell
+        - name: .NET
           href: tutorial-control-flow.md
 - name: Példák
   items:
@@ -350,6 +350,8 @@
           href: configure-azure-ssis-integration-runtime-performance.md
         - name: SSIS-csomagok meghívása tárolt eljárási tevékenységgel
           href: how-to-invoke-ssis-package-stored-procedure-activity.md
+        - name: Azure-SSIS integrációs modul ütemezése
+          href: how-to-schedule-azure-ssis-integration-runtime.md
     - name: Eseményindítók létrehozása
       items:
         - name: Ütemezési eseményindító létrehozása

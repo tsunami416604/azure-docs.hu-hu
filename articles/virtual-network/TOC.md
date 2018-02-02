@@ -15,7 +15,9 @@
 ### [Hozzáférés-vezérlési listák](virtual-networks-acl.md)
 
 # Első lépések
-## [Az első virtuális hálózat létrehozása](virtual-network-get-started-vnet-subnet.md)
+## [Virtuális hálózat létrehozása – portál](quick-create-portal.md)
+## [Virtuális hálózat létrehozása – PowerShell](quick-create-powershell.md)
+## [Virtuális hálózat létrehozása – Azure CLI](quick-create-cli.md)
 
 # Útmutató
 ## Tervezés és kialakítás

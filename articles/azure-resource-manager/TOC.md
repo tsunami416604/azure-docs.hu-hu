@@ -20,8 +20,6 @@
 ### [Függőség megadása két erőforrás között](resource-group-define-dependencies.md)
 ### [Több példány létrehozása](resource-group-create-multiple.md)
 ### [Erőforrás frissítése](/azure/architecture/building-blocks/extending-templates/update-resource)
-### [Minták sablonok tervezéséhez](best-practices-resource-manager-design-templates.md)
-
 
 ## Üzembe helyezés
 ### Azure PowerShell
@@ -80,7 +78,7 @@
 #### [Üzembe helyezési problémák Windows rendszerben](../virtual-machines/windows/troubleshoot-deploy-vm.md)
 ### [A telepítési hibák értelmezése](resource-manager-troubleshoot-tips.md)
 
-# Hivatkozás
+# Referencia
 ## [Sablon formátuma](/azure/templates/)
 ## [Sablonfüggvények](resource-group-template-functions.md)
 ### [Tömb- és objektumfüggvények](resource-group-template-functions-array.md)

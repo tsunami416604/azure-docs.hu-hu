@@ -2,8 +2,8 @@
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Azure Monitor
-      href: monitoring-overview-azure-monitor.md
+    - name: Monitorozás az Azure-ban
+      href: monitoring-overview.md
 - name: Gyors útmutatók
   expanded: true
   items:
@@ -27,8 +27,8 @@
       href: monitoring-partners.md
     - name: További áttekintések
       items:
-        - name: Figyelési eszközök az Azure-ban
-          href: monitoring-overview.md
+        - name: Azure Monitor
+          href: monitoring-overview-azure-monitor.md
         - name: Mérőszámok
           href: monitoring-overview-metrics.md
         - name: Riasztások
@@ -182,7 +182,7 @@
       href: monitoring-activity-log-schema.md
     - name: Azure Diagnostics-bővítményséma
       href: azure-diagnostics-schema.md
-- name: Erőforrások
+- name: További források
   items:
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'

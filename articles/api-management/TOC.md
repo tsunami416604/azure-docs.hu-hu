@@ -42,7 +42,7 @@
 ## Gyorsítótár
 ### [Gyorsítótárazás hozzáadása a hatékonyabb működés érdekében](api-management-howto-cache.md)
 ## A háttérmodul védelme
-### [A Web API háttérmodul védelme az AAD-vel](api-management-howto-protect-backend-with-aad.md)
+### [A Web API háttérmodul védelme az Azure AD-vel](api-management-howto-protect-backend-with-aad.md)
 ### [Csatlakozás virtuális hálózathoz](api-management-using-with-vnet.md)
 ### [Csatlakozás belső virtuális hálózathoz](api-management-using-with-internal-vnet.md)
 ### [Az Application Gateway integrálása belső VNET-en](api-management-howto-integrate-internal-vnet-appgateway.md)
@@ -50,8 +50,8 @@
 ## A fejlesztői élmény testreszabása
 ### [Lap tartalmának és elrendezésének módosítása](api-management-modify-content-layout.md)
 ### [Rendszerlapok testreszabása sablonok használatával](api-management-developer-portal-templates.md)
-### [Hitelesítés az AAD-vel](api-management-howto-aad.md)
-### [Hitelesítés az AAD B2C-vel](api-management-howto-aad-b2c.md)
+### [Hitelesítés az Azure AD-vel](api-management-howto-aad.md)
+### [Hitelesítés az Azure AD B2C-vel](api-management-howto-aad-b2c.md)
 ### [Delegált hitelesítés](api-management-howto-setup-delegation.md)
 ### [E-mail-értesítések és sablonok](api-management-howto-configure-notifications.md)
 ### [OAuth-támogatás engedélyezése a konzolon](api-management-howto-oauth2.md)
@@ -97,8 +97,8 @@
 ## [Azure PowerShell](/powershell/azure/overview)
 ## [REST](/rest/api/apimanagement/)
 ## [REST (eredeti)](/rest/api/apimanagement/ApiManagementREST/api-management-REST)
-# Erőforrások
-## [Gyakori kérdések](api-management-faq.md)
+# További források
+## [GYIK](api-management-faq.md)
 ## [Régiónkénti rendelkezésre állás](https://azure.microsoft.com/regions/services/)
 ## [API-tervezési segédlet](https://docs.microsoft.com/azure/architecture/best-practices/api-design?toc=%2Fazure%2Fapi-management%2Ftoc.json)
 ## [API-implementálási segédlet](https://docs.microsoft.com/azure/architecture/best-practices/api-implementation?toc=%2Fazure%2Fapi-management%2Ftoc.json)

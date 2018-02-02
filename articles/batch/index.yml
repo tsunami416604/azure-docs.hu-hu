@@ -1,0 +1,76 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: "Batch – dokumentáció"
+metadata:
+  title: "A Batch dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
+  description: "A Batch használatával hatékonyan futtathat nagy méretű párhuzamos és nagy teljesítményű feldolgozási (high-performance computing, HPC) alkalmazásokat a felhőben. Definiálhat olyan Azure számítási erőforrásokat, amelyek manuális konfigurálás vagy infrastruktúra-kezelés nélkül is párhuzamosan vagy a megfelelő léptékben futtatják az alkalmazásokat. Beütemezhet nagy számítási igényű feladatokat, és dinamikusan, a pillanatnyi szükségletek alapján adhat hozzá vagy távolíthat el számítási erőforrásokat. Gyors útmutatóink, oktatóanyagaink és a felhozott példák segítségével megismerkedhet az Azure Batch használatával."
+  services: batch
+  author: czeumault
+  manager: carolz
+  ms.service: batch
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 11/30/2017
+  ms.author: carolz
+  ms.openlocfilehash: 9e9a160762ae31087a2be36734ca528f65723818
+  ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 02/01/2018
+abstract:
+  description: "A Batch használatával hatékonyan futtathat nagy méretű párhuzamos és nagy teljesítményű feldolgozási (high-performance computing, HPC) alkalmazásokat a felhőben. Definiálhat olyan Azure számítási erőforrásokat, amelyek manuális konfigurálás vagy infrastruktúra-kezelés nélkül is párhuzamosan vagy a megfelelő léptékben futtatják az alkalmazásokat. Beütemezhet nagy számítási igényű feladatokat, és dinamikusan, a pillanatnyi szükségletek alapján adhat hozzá vagy távolíthat el számítási erőforrásokat. Gyors útmutatóink, oktatóanyagaink és a felhozott példák segítségével megismerkedhet az Azure Batch használatával."
+sections:
+- title: "5 perces gyors útmutatók"
+  items:
+  - type: paragraph
+    text: "Útmutató az első Batch-feladat futtatásához az Azure-ban."
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: https://docs.microsoft.com/en-us/media/common/i_cligeneric.svg
+      text: Azure CLI
+      href: quick-create-cli
+    - image:
+        src: https://docs.microsoft.com/en-us/media/common/i_portal.svg
+      text: Azure Portal
+      href: quick-create-portal
+    - image:
+        src: https://docs.microsoft.com/en-us/media/logos/logo_NET.svg
+      text: .NET
+      href: quick-run-dotnet
+    - image:
+        src: https://docs.microsoft.com/en-us/media/logos/logo_python.svg
+      text: Python
+      href: quick-run-python
+- title: "Részletes útmutatók"
+  items:
+  - type: paragraph
+    text: "Útmutató a nagy számítási igényű számítási feladatok futtatásához a Batch szolgáltatásban."
+  - type: list
+    style: ordered
+    items:
+    - html: "<a href=\"tutorial-parallel-dotnet\">Párhuzamos fájlfeldolgozás a .NET SDK-val</a>"
+    - html: "<a href=\"tutorial-parallel-python\">Párhuzamos fájlfeldolgozás a Python SDK-val</a>"
+    - html: "<a href=\"tutorial-rendering-cli\">Jelenetek renderelése az Arnolddal</a>"
+    - html: "<a href=\"tutorial-r-doazureparallel\">Párhuzamos R-szimuláció</a>"
+- title: "Példák"
+  items:
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="cli-samples">Azure CLI</a>
+- title: Referencia
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Parancssor
+      html: <p><a href="/cli/azure/batch">Azure CLI</a></p><p><a href="/powershell/module/azurerm.batch">Azure PowerShell</a></p>
+    - title: Nyelvek
+      html: <p><a href="/dotnet/api/microsoft.azure.batch">.NET</a></p><p><a href="/java/api/com.microsoft.azure.batch">Java</a></p><p><a href="/nodejs/api/overview/azure/batch">Node.js</a></p><p><a href="/python/api/overview/azure/batch">Python</a></p>
+    - title: REST
+      html: "<p><a href=\"/rest/api/batchservice\">A Batch szolgáltatás REST API-ja</a></p><p><a href=\"/rest/api/batchmanagement/\">A Batch Management REST API</a></p>"
