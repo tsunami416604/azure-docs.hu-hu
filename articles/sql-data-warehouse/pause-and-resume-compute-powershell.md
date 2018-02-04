@@ -14,11 +14,11 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 01/25/2018
 ms.author: barbkess
-ms.openlocfilehash: 799210366978c68a390fa6d671184e94cf021301
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e2401f31ad88c8ee5fdd8912ff6033f0619a06b0
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="quickstart-pause-and-resume-compute-for-an-azure-sql-data-warehouse-in-powershell"></a>Gyors üzembe helyezés: Felfüggesztése és folytatása számítási az Azure SQL Data Warehouse a PowerShellben
 Az Azure SQL Data Warehouse költségek csökkentése érdekében számítási szüneteltetése a PowerShell használatával. Amikor készen áll az adatraktárat, folytathatja a számítást.
@@ -59,15 +59,16 @@ Kövesse az alábbi lépéseket az adatraktár Tartózkodásihely-adatok keresé
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Kattintson a **SQL-adatbázisok** az Azure portál bal oldalán.
-3. Válassza ki **mySampleDataWarehouse** a a **SQL-adatbázisok** lap. Ekkor megnyílik az adatraktárba. 
+3. Válassza ki **mySampleDataWarehouse** a a **SQL-adatbázisok** lap. Megnyitja az adatraktárba.
 
     ![Kiszolgáló nevét és az erőforrás-csoport](media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)
 
-4. Jegyezze fel az adatraktár nevét, amely az adatbázis neve lesz. Is írja be a kiszolgáló nevét, és az erőforráscsoportot. Először használja ezeket az szüneteltetése, folytatása parancsok.
-5. Ha a kiszolgáló foo.database.windows.net, akkor csak az első rész a PowerShell-parancsmagok a kiszolgálónevet. Az előző ábrán a teljes kiszolgálónevet newserver-20171113.database.windows.net. Használjuk **newserver-20171113** a PowerShell-parancsmag a kiszolgálónevet.
+4. Jegyezze fel az adatraktár-nevét, amely az adatbázis nevét. Is írja be a kiszolgáló nevét, és az erőforráscsoportot. Ön 
+5.  Ezek a szüneteltetése és folytatása parancsokban.
+6. Ha a kiszolgáló foo.database.windows.net, akkor csak az első rész a PowerShell-parancsmagok a kiszolgálónevet. Az előző ábrán a teljes kiszolgálónevet newserver-20171113.database.windows.net. A utótag dobja el, és használja **newserver-20171113** a PowerShell-parancsmag a kiszolgálónevet.
 
 ## <a name="pause-compute"></a>Felfüggesztés számítási
-Költségek csökkentése érdekében szüneteltetése, és folytassa a számítási erőforrások igény. Például nem fogja használni az adatbázis éjszaka és hétvégén, akkor is ilyen alkalmakkor szünetelteti, és folytatásához azt a nap folyamán. Ön nem számlázni számítási erőforrásokat, amíg az adatbázis fel van függesztve. Azonban Ön továbbra is tárolási számlázni. 
+Költségek csökkentése érdekében szüneteltetése, és folytassa a számítási erőforrások igény. Például ha az adatbázis éjszaka és hétvégén nem használ, után ilyen alkalmakkor szünetelteti, is fogják folytatni azt a nap folyamán. Amíg az adatbázis fel van függesztve, nincs díjmentes számítási erőforrásokat. Azonban továbbra is tárolási számlázni. 
 
 Egy adatbázis felfüggesztése, használja a [Suspend-AzureRmSqlDatabase](/powershell/module/azurerm.sql/suspend-azurermsqldatabase.md) parancsmag. A következő példa egy adatraktár nevű felfüggesztése **mySampleDataWarehouse** nevű kiszolgálón található **newserver-20171113**. A kiszolgáló van egy Azure erőforráscsoport nevű **myResourceGroup**.
 

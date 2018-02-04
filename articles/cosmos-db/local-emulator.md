@@ -15,9 +15,9 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: danoble
-ms.openlocfilehash: daaa628fae3e495a0c9c7a3c74e643caa56fb18b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
-ms.translationtype: HT
+ms.openlocfilehash: 40d7b8a52f67d116ab764b9716c917d5c7865467
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/01/2018
 ---
@@ -359,9 +359,16 @@ Starting interactive shell
 
 Most a végpont és a válaszban szereplő található főkulcs használata az ügyfél és az SSL-tanúsítvány importálása a gazdagépen. Az SSL-tanúsítvány importálásához hajtsa végre a következő parancsot egy rendszergazdai parancssort:
 
-```
+A parancssorból:
+```cmd 
 cd %LOCALAPPDATA%\CosmosDBEmulatorCert
 powershell .\importcert.ps1
+```
+
+A Powershellből:
+```powershell
+cd $env:LOCALAPPDATA\CosmosDBEmulatorCert
+.\importcert.ps1
 ```
 
 Leáll az interaktív rendszerhéj bezárja az emulátor követően elindult az emulátor tároló.

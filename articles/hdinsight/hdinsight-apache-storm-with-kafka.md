@@ -13,13 +13,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/07/2017
+ms.date: 01/31/2018
 ms.author: larryfr
-ms.openlocfilehash: 50a22877241c77ccb1a7df24ab7df006094a439f
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 866dd3abbcca12413d0e02651826365166db616f
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="use-apache-kafka-with-storm-on-hdinsight"></a>Apache Kafka használata a HDInsight alatt futó Storm
 
@@ -70,7 +70,7 @@ Létrehozhat egy Azure virtuális hálózatra, Kafka, és a Storm-fürtök manu�
    
     Az Azure Resource Manager sablon itt található: **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-storm-cluster-in-vnet-v2.json**. Létrehozza a következőket:
     
-    * Azure-erőforráscsoportot
+    * Azure-erőforráscsoport
     * Azure Virtual Network
     * Azure Storage-fiók
     * A HDInsight 3.6 (három munkavégző csomópontokhoz) verzió Kafka
@@ -119,7 +119,7 @@ A projekt két topológiát tartalmaz:
 * **KafkaReader**: által meghatározott a **reader.yaml** fájl, ez a topológia Kafka az Apache Storm megadott KafkaSpout segítségével olvassa be az adatokat, majd az adatokat naplózza az stdout.
 
     Ez a topológia a Storm HdfsBolt adatokat írni az alapértelmezett tároló a Storm-fürt használja.
-### <a name="flux"></a>Fluxus
+### <a name="flux"></a>Flux
 
 A topológia meghatározása [fluxus](https://storm.apache.org/releases/1.1.0/flux.html). Fluxus bemutatott Storm 0.10.x, és lehetővé teszi a topológia konfigurációjával kód külön. A fluxus keretrendszert használó topológia esetén a topológia egy YAM fájlban definiálva van. A YAM fájl a topológia része lehet. A topológia elküldésekor használt önálló fájl is lehet. Fluxus futásidőben, ebben a példában használt változók behelyettesítését is támogatja.
 
@@ -339,7 +339,7 @@ A Storm fürthöz SSH-munkamenetet a Storm-topológiák leállításához alkalm
 
 A jelen dokumentumban leírt lépések az azonos Azure erőforráscsoport mindkét fürtöket létrehozni, mert az erőforráscsoportot az Azure portálon törölheti. Az erőforráscsoport törlése eltávolítja a jelen dokumentum a következő által létrehozott összes erőforrást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg a HDInsight alatt futó Storm használható további példa topológiák [példa Storm-topológiák és összetevők](storm/apache-storm-example-topology.md).
 

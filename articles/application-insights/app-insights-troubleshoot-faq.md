@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 9f6cf019d681ce6e844481ca58de1ff472b3d32c
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: ed10b364a809c519fe9fe49e019df22598b8c04e
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Az Application Insights: Gyakran ismételt kérdések
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 01/03/2018
 * [Azure cloud Services csomag](app-insights-cloudservices.md)
 * [A Docker alkalmazást futtató](app-insights-docker.md)
 * [Egyoldalas webalkalmazások](app-insights-javascript.md)
-* [SharePoint](app-insights-sharepoint.md)
+* [Sharepoint](app-insights-sharepoint.md)
 * [Windows asztali alkalmazás](app-insights-windows-desktop.md)
 * [Más platformok](app-insights-platforms.md)
 
@@ -69,7 +69,7 @@ A részletek a projekt típusától függ. Egy webes alkalmazáshoz:
 * Ezek a fájlok hozzáadása a projekthez:
 
   * ApplicationInsights.config.
-  * AI.js
+  * ai.js
 * A NuGet-csomagok telepíti:
 
   * *Application Insights API* – az alapszintű API
@@ -82,7 +82,7 @@ A részletek a projekt típusától függ. Egy webes alkalmazáshoz:
 * Beszúrja azokat:
 
   * Web.config
-  * Packages.config
+  * packages.config
 * (Új projekt csak – ha Ön [az Application Insights hozzáadása egy meglévő projektjébe][start], ehhez manuálisan kell.) Kódtöredékek szúr be az ügyfél és kiszolgáló kódot inicializálása őket az Application Insights erőforrás-azonosító. Például egy MVC alkalmazás kód bekerülnek a mesterlap Views/Shared/_Layout.cshtml
 
 ## <a name="how-do-i-upgrade-from-older-sdk-versions"></a>Hogyan lehet frissíteni a régebbi SDK?
@@ -152,7 +152,7 @@ Vessen egy pillantást [az adatmegőrzés és az adatvédelmi][data].
 
 Ez akkor lehetséges, ha a kód elküldi ezeket az adatokat. Akkor is előfordulhat, ha változók híváslánc megjelenik a személyhez köthető adatokat tartalmazza. A fejlesztői csapat kockázatértékelések annak érdekében, hogy a rendszer megfelelően kezelje személyhez köthető adatokat kell végezniük. [További információ az adatmegőrzés és adatvédelmi tudnivalók](app-insights-data-retention-privacy.md).
 
-Az ügyfél webcímet utolsó oktettje értéke mindig 0 bevitel után a portál által.
+**Minden** oktettjének meg az ügyfél webcímet mindig értéke 0 után a földrajzi hely attribútumok keresni.
 
 ## <a name="my-ikey-is-visible-in-my-web-page-source"></a>A iKey látható lesz a weblap forrása. 
 

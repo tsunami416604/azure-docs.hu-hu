@@ -16,13 +16,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: ashishth
-ms.openlocfilehash: 59382931d4b5478888238760b268af7f962a10b5
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 00c4ac0e2ac059efebbfbe0b2426b27361ad8e37
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="troubleshoot-a-slow-or-failing-hdinsight-cluster"></a>A lassú vagy meghibásodott HDInsight-fürt hibaelhárítása
+# <a name="troubleshoot-a-slow-or-failing-hdinsight-cluster"></a>Lassú vagy meghibásodott HDInsight-fürt hibaelhárítása
 
 Ha a HDInsight-fürtök lassan fut vagy hibakód miatt sikertelenül működő, több lehetőség közül választhat hibaelhárítási. Ha a feladat futtatásához a vártnál hosszabb ideig tart, vagy Ön válaszidejű általában, hibák előtt a fürtről, például amikor a fürt fut. szolgáltatások lehet. Az ilyen lassulás leggyakoribb okait azonban megfelelő méretezés. Amikor létrehoz egy új HDInsight-fürtöt, válassza ki a megfelelő [virtuálisgép-méretek](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters)
 
@@ -112,7 +112,7 @@ Ha lassulást tapasztal a fürtben, fontolja meg a szolgáltatások az Ambari fe
 
 A HDInsight-fürtök különböző típusú virtuálisgép-példányok futó csomópontok állnak. Erőforrás adatforgalom leállásának, a hálózati kapcsolat hibái és egyéb problémák, ami lelassíthatja a fürt minden csomópont alatt. Minden fürt két központi csomópontokat tartalmazza, és a legtöbb fürttípusok munkavégző és a peremhálózati csomópontok tartalmazzák. 
 
-<!-- For a description of the various nodes each cluster type uses, see [HDInsight Architecture](hdinsight-architecture.md). -->
+A különböző csomópontok minden egyes fürttípus használja, olvassa el [állítsa be a HDInsight Hadoop, Spark, Kafka és több fürt](hdinsight-hadoop-provision-linux-clusters.md).
 
 Az alábbi szakaszok ismertetik az egyes csomópontok és a teljes fürt állapotának ellenőrzése.
 
@@ -134,7 +134,7 @@ $ curl -u admin:{HTTP PASSWD} https://{CLUSTERNAME}.azurehdinsight.net/templeton
 
 Ambari megjelenít egy riasztást jelenít meg a gazdagépek, amelyen a WebHCat szolgáltatás le van állítva. Próbálja meg elindítani a WebHCat szolgáltatás vissza indítsa újra a szolgáltatást a gazdagépen.
 
-![Indítsa újra a WebHCat-kiszolgáló](./media/hdinsight-troubleshoot-failed-cluster/restart-webhcat.png)
+![Restart WebHCat Server](./media/hdinsight-troubleshoot-failed-cluster/restart-webhcat.png)
 
 Ha a Webhcaten-kiszolgáló még nem kapja meg, majd a naplóban a műveletek hibaüzenetek. Részletes információkat, ellenőrizze a `stderr` és `stdout` a csomóponton hivatkozott fájlok.
 
@@ -255,7 +255,7 @@ Halommemória memóriaképek tartalmaz egy pillanatkép, az alkalmazás memória
 
 A HDInsight-fürtök olyan előre konfigurált alapértelmezett beállításokkal, a kapcsolódó szolgáltatásokra, például a Hadoop, struktúra, HBase, és így tovább. Attól függően, hogy a fürt, a hardverkonfigurációja, a csomópontok száma típusú feladatok típusai futtatja, és az adatok típusától (és adatok feldolgozásának módja), szükség lehet a konfigurációs optimalizálása.
 
-<!-- For detailed instructions on optimizing performance configurations for most scenarios, see [Changing configurations with Ambari](hdinsight-changing-configs-via-ambari.md). When using Spark, see [Optimizing Spark jobs for performance](spark/apache-spark-perf.md).  -->
+A legtöbb esetben konfigurációi teljesítmény optimalizálása részletes utasításokért lásd: [optimalizálhatja az Ambari fürtkonfigurációk](hdinsight-changing-configs-via-ambari.md). Spark használata esetén lásd: [a teljesítmény optimalizálása Spark feladatok](spark/apache-spark-perf.md). 
 
 ## <a name="step-7-reproduce-the-failure-on-a-different-cluster"></a>7. lépés: Reprodukálja a hibát egy másik fürtön
 

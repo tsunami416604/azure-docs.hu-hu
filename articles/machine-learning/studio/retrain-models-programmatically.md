@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: raymondl;garye;v-donglo
-ms.openlocfilehash: c56ce659766536772d203d0366ef6b53e544a82b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: raymondl;garye
+ms.openlocfilehash: d228021564cdfe5c898c67cce0038b3ec36d014b
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="retrain-machine-learning-models-programmatically"></a>Azure Machine Learning-modellek szoftveres átképezése
 Ebben a bemutatóban, megtudhatja, hogyan való programozott módon működik az Azure Machine Learning webszolgáltatás C# és a Machine Learning kötegelt végrehajtási szolgáltatás használatával.
@@ -167,7 +167,7 @@ Vizsgálja meg az eredményeket a meghatározásához, hogy az újonnan betanít
 
 Másolás a *BaseLocation*, *RelativeLocation*, és *SasBlobToken* a kimeneti eredmények használhatja azokat a megőrzési során.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha telepítette a prediktív webszolgáltatás kattintva **webes szolgáltatás telepítése [klasszikus]**, lásd: [egy klasszikus webszolgáltatás újratanítása](retrain-a-classic-web-service.md).
 
 Ha telepítette a prediktív webszolgáltatás kattintva **[Új] webes szolgáltatás telepítése**, lásd: [egy új webszolgáltatás-bővítmény, a Machine Learning Management-parancsmagok használatával újratanítása](retrain-new-web-service-using-powershell.md).

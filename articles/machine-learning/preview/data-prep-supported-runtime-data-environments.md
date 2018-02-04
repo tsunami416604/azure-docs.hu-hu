@@ -11,25 +11,25 @@ ms.workload: data-services
 ms.custom: 
 ms.devlang: 
 ms.topic: article
-ms.date: 09/15/2017
-ms.openlocfilehash: 248cbcfe35db646a8bc71c6f825dcaa8a4661e91
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.date: 02/01/2018
+ms.openlocfilehash: 9025982d2a350941ef82733292ebbf15ab48d7fe
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="supported-matrix-for-this-release"></a>Ebben a kiadásban támogatott mátrix 
 Ha a kód adatokat tölt az Azure Machine Learning adatforrások vagy az Azure Machine Learning adatok előkészített, vagy egy Pandas első használatával, vagy a Spark dataframe, kísérlet a következő kombinációk számítási és az adatok helyek támogatottak:
 
-|     |Helyi fájlok  |Azure Blob Storage  |SQL Server adatbázis x  |
+|     |Helyi fájlok  |Azure Blob Storage  |SQL Server database***  |
 |---------|---------|---------|---------|---------|
 |Helyi Python    |     Támogatott    |Nem támogatott         | Nem támogatott        |         |
 |Python docker (Linux virtuális gép)     |Project fájlok csak a támogatott *         | Nem támogatott        |        Nem támogatott |         |
 |PySpark docker (Linux virtuális gép)     |Project fájlok csak a támogatott *     |Támogatott         | Támogatott**        |         |
 |Az Azure Data tudományos virtuális gép Python     |Project fájlok csak a támogatott *         |Nem támogatott         |Nem támogatott         |         |
 |Az Azure Data tudományos virtuális gép PySPark     | Project fájlok csak a támogatott *        |Nem támogatott         |Nem támogatott         |         |
-|Az Azure HDInsight PySpark     | Nem támogatott        |Támogatott         |Támogatott**         |         |
-|Az Azure HDInsight Python     | Nem támogatott        | Nem támogatott        | Nem támogatott        |         |
+|Azure HDInsight PySpark     | Nem támogatott        |Támogatott         |Támogatott**         |         |
+|Azure HDInsight Python     | Nem támogatott        | Nem támogatott        | Nem támogatott        |         |
 
 Azure Data Lake Store jelenleg nem támogatott a számítási cél.
 

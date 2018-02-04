@@ -6,21 +6,22 @@ documentationcenter:
 author: MarkusVi
 manager: mtillman
 editor: 
-featureFlags: clicktale
+featureFlags:
+- clicktale
 ms.assetid: 06a149f7-4aa1-4fb9-a8ec-ac2633b031fb
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 02/01/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f32fc2d2df73f4a01c300d565595e2c00b2baf4b
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 34826332db2e63d442d47ada74fcbad4cad600ae
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Újdonságok az Azure Active Directoryban?
 
@@ -74,7 +75,7 @@ A a észlelt kockázati események történő betekintést az Azure AD-előfizet
 
 Az Azure AD Premium P1 kiadásával észlelések, amelyekre nem vonatkozik a licenc jelennek meg a kockázat esemény bejelentkezési további kockázattal észlelte.
 
-További információkért tekintse át [Az Azure Active Directory kockázati eseményeivel](active-directory-reporting-risk-events.md) foglalkozó cikket.
+További információkért tekintse át [Az Azure Active Directory kockázati eseményeivel](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-risk-events) foglalkozó cikket.
  
 
 ---
@@ -89,7 +90,7 @@ További információkért tekintse át [Az Azure Active Directory kockázati es
 Most jobban kezelhető hogyan Office 365-alkalmazások jelenik meg a felhasználói hozzáférés panelek egy új felhasználói beállítás segítségével. Ez a beállítás akkor hasznos, ha Ön szeretné csak az Office portálon az Office-alkalmazások megjelenítése az alkalmazások a felhasználó hozzáférési paneleken csökkentésével a. A beállítás a található a **felhasználói beállítások** és lett címkézve **csak értesülhet az Office 365 portál Office 365-alkalmazások**.
  
 
-További információkért lásd: [elrejtése az alkalmazás a felhasználói élmény az Azure Active Directoryban](active-directory-coreapps-hide-third-party-app.md).
+További információkért lásd: [elrejtése az alkalmazás a felhasználói élmény az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-hide-third-party-app).
 
 ---
  
@@ -109,7 +110,7 @@ A személyes alkalmazások bővítmény kényelmes eszköz használatával, amel
 - A bővítmény legutóbb használt alkalmazások parancsikonjai
 - A bővítmény él, Chrome és Firefox érhető el.
  
-További információkért lásd: [saját alkalmazások biztonságos bejelentkezési bővítmény](active-directory-saas-access-panel-introduction.md#my-apps-secure-sign-in-extension).
+További információkért lásd: [saját alkalmazások biztonságos bejelentkezési bővítmény](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction#my-apps-secure-sign-in-extension).
 
 ---
 
@@ -154,9 +155,9 @@ Az új felügyeleti konzol áttérés részeként hajtottunk 2 új API-k érhet�
 
 További információkért lásd:
 
-- [Bevezetés az Azure Active Directory reporting API használatába](active-directory-reporting-api-getting-started-azure-portal.md)
+- [Bevezetés az Azure Active Directory reporting API használatába](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal)
 
-- [Ismerkedés az Azure Active Directory azonosító adatok védelmét és a Microsoft Graph](active-directory-identityprotection-graph-getting-started.md)
+- [Ismerkedés az Azure Active Directory azonosító adatok védelmét és a Microsoft Graph](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-graph-getting-started)
 
 
 ---
@@ -226,7 +227,7 @@ A beállítás a rendszergazdák a felhasználónak kell bontsa ki a használati
 
 Válassza ki vagy **a** vagy **ki** a felhasználók bontsa ki a használati feltételeket. A **a** beállítás használatakor a felhasználóknak a megtekintése előtt őket a használati feltételek.
 
-További információkért lásd: a [(előzetes verzió) szolgáltatás az Azure AD feltételeinek](active-directory-tou.md).
+További információkért lásd: a [(előzetes verzió) szolgáltatás az Azure AD feltételeinek](https://docs.microsoft.com/azure/active-directory/active-directory-tou).
  
 ---
  
@@ -239,7 +240,7 @@ További információkért lásd: a [(előzetes verzió) szolgáltatás az Azure
  
 Hatókörön belüli aktiválási jogosult Azure-erőforrás szerepkör-hozzárendelések kisebb, mint az eredeti hozzárendelés alapértelmezett önállóan aktiválásához használhatja. Például akkor, ha a kapott előfizetés tulajdonosaként az Ön bérelt szolgáltatásának. A hatókörbe tartozó aktiválási aktiválhatja a tulajdonosi szerepkört az előfizetés (például a csoportok és a virtuális gépek) lévő öt erőforrások. Az aktiválás hatókörének előfordulhat, hogy az esélye, a kritikus fontosságú Azure-erőforrások nemkívánatos módosítások végrehajtásakor.
 
-További információkért lásd: [Mi az Azure AD Privileged Identity Management?](active-directory-privileged-identity-management-configure.md).
+További információkért lásd: [Mi az Azure AD Privileged Identity Management?](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure).
  
 ---
  
@@ -342,7 +343,7 @@ Jelenleg nincs hozzáférése a probléma használatakor. A kép nem érhető el
 
 Keresse meg a képességre és a közelgő blogok és a kibocsátási megjegyzések a további információk. 
 
-További információkért lásd: [feltételes hozzáférés az Azure AD](active-directory-conditional-access-azure-portal.md).
+További információkért lásd: [feltételes hozzáférés az Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal).
 
  
 ---
@@ -357,7 +358,7 @@ További információkért lásd: [feltételes hozzáférés az Azure AD](active
 
 
 
-A következő alkalmazások listájának hozzáadni tervezett [ügyfélalkalmazások jóváhagyott](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement):
+A következő alkalmazások listájának hozzáadni tervezett [ügyfélalkalmazások jóváhagyott](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement):
 
 - [Microsoft Kaizala](https://www.microsoft.com/garage/profiles/kaizala/)
 - [Microsoft StaffHub](https://staffhub.office.com/what-it-is)
@@ -365,8 +366,8 @@ A következő alkalmazások listájának hozzáadni tervezett [ügyfélalkalmaz�
 
 További információkért lásd:
 
-- [Jóváhagyott app követelmény](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement)
-- [Azure AD, alkalmazás-alapú feltételes hozzáférés](active-directory-conditional-access-mam.md)
+- [Jóváhagyott app követelmény](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
+- [Azure AD, alkalmazás-alapú feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
 
 
 ---
@@ -408,7 +409,7 @@ Ha a kapcsolat a helyszíni visszaírási ügyfél problémák vannak, egy hiba�
 - Dokumentáció, és segítséget nyújt a probléma megoldását mutató hivatkozást. 
 
 
-További információkért lásd: [helyszíni integráció](active-directory-passwords-how-it-works.md#on-premises-integration).
+További információkért lásd: [helyszíni integráció](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-how-it-works#on-premises-integration).
 
  
 ---
@@ -427,9 +428,9 @@ További információkért lásd: [helyszíni integráció](active-directory-pas
 
 
 
-Most korlátozzuk Office 365 és más Azure AD-csatlakoztatott felhőalapú alkalmazások [ügyfélalkalmazások jóváhagyott](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement) , amely támogatja az Intune app adatvédelmi szabályzatok használatával [az Azure AD alkalmazás-alapú feltételes hozzáférés](active-directory-conditional-access-mam.md). Intune app adatvédelmi szabályzatok segítségével konfigurálhatja, és ezeket az ügyfél alkalmazásokat a vállalati adatok védelme.
+Most korlátozzuk Office 365 és más Azure AD-csatlakoztatott felhőalapú alkalmazások [ügyfélalkalmazások jóváhagyott](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement) , amely támogatja az Intune app adatvédelmi szabályzatok használatával [az Azure AD alkalmazás-alapú feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam). Intune app adatvédelmi szabályzatok segítségével konfigurálhatja, és ezeket az ügyfél alkalmazásokat a vállalati adatok védelme.
 
-Kombinálásával [alkalmazás-alapú](active-directory-conditional-access-mam.md) rendelkező [eszközalapú](active-directory-conditional-access-policy-connected-applications.md) feltételes hozzáférési házirendeket, így rugalmasan adatok a személyes és vállalati eszközök védelme érdekében.
+Kombinálásával [alkalmazás-alapú](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam) rendelkező [eszközalapú](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications) feltételes hozzáférési házirendeket, így rugalmasan adatok a személyes és vállalati eszközök védelme érdekében.
 
 A következő feltételek és szabályozza a való használathoz az alkalmazás-alapú feltételes hozzáférés mostantól érhetők el:
 
@@ -447,7 +448,7 @@ A következő feltételek és szabályozza a való használathoz az alkalmazás-
 - Jóváhagyott ügyfélalkalmazás megkövetelése
 
 
-További információkért lásd: [az Azure AD alkalmazás-alapú feltételes hozzáférés](active-directory-conditional-access-mam.md).
+További információkért lásd: [az Azure AD alkalmazás-alapú feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam).
 
  
 ---
@@ -471,7 +472,7 @@ Most már található az Azure ad Szolgáltatásba csatlakoztatott összes eszk�
 - BitLocker-kulcsok a Azure AD-csatlakoztatott eszközök keresése, az eszköz Intune-nal, és több kezelését.
 - Az Azure AD eszközzel kapcsolatos beállítások kezelése.
 
-További információkért lásd: [eszközök kezelése az Azure portál használatával](device-management-azure-portal.md).
+További információkért lásd: [eszközök kezelése az Azure portál használatával](https://docs.microsoft.com/azure/active-directory/device-management-azure-portal).
 
 
 
@@ -496,7 +497,7 @@ Most belefoglalható (vagy kizárása) macOS eszköz platform feltétele az Azur
 További információkért lásd:
 
 - [MacOS eszközök megfelelőségi szabályzat létrehozása az Intune-nal](https://aka.ms/macoscompliancepolicy)
-- [Feltételes hozzáférés az Azure ad-ben](active-directory-conditional-access-azure-portal.md)
+- [Feltételes hozzáférés az Azure ad-ben](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)
 
 
  
@@ -517,7 +518,7 @@ A hálózati házirend-kiszolgáló bővítmény, az Azure multi-factor Authenti
 Ezt a bővítményt a szervezeteknek, amelyek a virtuális magánhálózati kapcsolatok védelme az Azure multi-factor Authentication kiszolgáló telepítés nélkül kívánja lett létrehozva. A hálózati házirend-kiszolgáló között RADIUS és a felhőalapú Azure multi-factor Authentication második tényezőként hitelesítésének biztosításához adapterként működik bővítmény összevont, vagy a szinkronizált felhasználók.
 
 
-További információkért lásd: [a meglévő hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure multi-factor Authentication](../multi-factor-authentication/multi-factor-authentication-nps-extension.md).
+További információkért lásd: [a meglévő hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure multi-factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-nps-extension).
 
  
 ---
@@ -556,7 +557,7 @@ Az Azure AD felügyeleti központban az alábbi műveleteket hajthatja végre:
 **A termék képesség:** identitás biztonság és védelem
 
 
-A következő alkalmazások listáját a rendszer adott [ügyfélalkalmazások jóváhagyott](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement):
+A következő alkalmazások listáját a rendszer adott [ügyfélalkalmazások jóváhagyott](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement):
 
 - Microsoft Planner
 - Azure Information Protection 
@@ -564,8 +565,8 @@ A következő alkalmazások listáját a rendszer adott [ügyfélalkalmazások j
 
 További információkért lásd:
 
-- [Jóváhagyott app követelmény](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement)
-- [Azure AD, alkalmazás-alapú feltételes hozzáférés](active-directory-conditional-access-mam.md)
+- [Jóváhagyott app követelmény](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
+- [Azure AD, alkalmazás-alapú feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
 
 
 ---
@@ -580,7 +581,7 @@ További információkért lásd:
  
 Most már használhatja "vagy" (van szükség a kijelölt vezérlők egyik) a feltételes hozzáférés-vezérlést. E szolgáltatás használatával házirendek létrehozása, a "vagy" közötti hozzáférés-vezérlést. Például használhatja ezt a szolgáltatást, amelyhez a felhasználó a multi-factor authentication használatával bejelentkezni "vagy" kell lennie a megfelelő eszközökre házirend létrehozása.
 
-További információkért lásd: [vezérlők az Azure AD feltételes hozzáférésével](active-directory-conditional-access-controls.md).
+További információkért lásd: [vezérlők az Azure AD feltételes hozzáférésével](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-controls).
 
  
 ---
@@ -634,7 +635,7 @@ Az új lehetőségekhez, mert a jelentés API-k alapján a/Reports végpont 2017
 
 
 
-Az Azure AD egy HTML-felhasználó nevét és jelszavát mező leképező alkalmazások automatikus bejelentkezési mező észlelését támogatja. Ezeket a lépéseket ismertetett [automatikusan rögzítése az alkalmazás bejelentkezési mezők](application-config-sso-problem-configure-password-sso-non-gallery.md#how-to-manually-capture-sign-in-fields-for-an-application). Ez a funkció található hozzáadásával egy *nem-gyűjtemény* alkalmazás a a **vállalati alkalmazások** lapját a [Azure-portálon](http://aad.portal.azure.com). Emellett konfigurálhatja a **egyszeri bejelentkezés** módra az új alkalmazást a **jelszó-alapú egyszeri bejelentkezést**, adja meg a webszolgáltatás URL-címet, és mentse a a lap.
+Az Azure AD egy HTML-felhasználó nevét és jelszavát mező leképező alkalmazások automatikus bejelentkezési mező észlelését támogatja. Ezeket a lépéseket ismertetett [automatikusan rögzítése az alkalmazás bejelentkezési mezők](https://docs.microsoft.com/azure/active-directory/application-config-sso-problem-configure-password-sso-non-gallery#how-to-manually-capture-sign-in-fields-for-an-application). Ez a funkció található hozzáadásával egy *nem-gyűjtemény* alkalmazás a a **vállalati alkalmazások** lapját a [Azure-portálon](http://aad.portal.azure.com). Emellett konfigurálhatja a **egyszeri bejelentkezés** módra az új alkalmazást a **jelszó-alapú egyszeri bejelentkezést**, adja meg a webszolgáltatás URL-címet, és mentse a a lap.
  
 Ez a funkció egy szolgáltatási probléma miatt ideiglenesen letiltotta. A probléma, és az automatikus bejelentkezési mező észlelési érhető el újra.
 
@@ -656,7 +657,7 @@ Többtényezős hitelesítés (MFA) a szervezet védelmének fontos részét ké
 
 Ebben az nyilvános előzetes MFA felügyeleti és jelentéskészítési konfigurációs tapasztalatok core az Azure AD integrált részét képezik. Most már a többtényezős hitelesítés felügyeleti portál funkció az Azure AD-élmény belül kezelheti.
 
-További információkért lásd: [a többtényezős hitelesítés az Azure portálon jelentési hivatkozás](active-directory-reporting-activity-sign-ins-mfa.md). 
+További információkért lásd: [a többtényezős hitelesítés az Azure portálon jelentési hivatkozás](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-sign-ins-mfa). 
 
 
 ---
@@ -679,7 +680,7 @@ Az Azure AD használati feltételek a következő helyzetekben használhatja:
 - Egy felhasználói attribútum (például ápolók és orvosi) vagy belföldi és nemzetközi alkalmazottai, a dinamikus csoportok által megadott használati feltételek
 - Konkrét használati feltételek a nagy jelentőségű üzleti alkalmazások, például a Salesforce elérése
 
-További információkért lásd: [az Azure AD használati feltételek](active-directory-tou.md).
+További információkért lásd: [az Azure AD használati feltételek](https://docs.microsoft.com/azure/active-directory/active-directory-tou).
 
 
 ---
@@ -700,7 +701,7 @@ Az Azure AD Privileged Identity Management kezelése, szabályozása, és figyel
 
 Erőforrások az Azure portálon az Azure RBAC-funkciók használatára kihasználhatja a biztonsági és életciklus-kezelési képességei, amelyre az Azure AD Privileged Identity Management kínálnak.
 
-További információkért lásd: [Privileged Identity Management az Azure-erőforrások](privileged-identity-management/azure-pim-resource-rbac.md).
+További információkért lásd: [Privileged Identity Management az Azure-erőforrások](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-pim-resource-rbac).
 
 
 ---
@@ -721,7 +722,7 @@ Szervezet hozzáférés értékelést (előzetes verzió) segítségével haték
 
 A hozzáférési felülvizsgálati vezérlőket cég- vagy szervezetspecifikus programokban is összegyűjtheti a megfelelőség vagy a kockázatérzékeny alkalmazások felülvizsgálatának nyomon követése céljából.
 
-További információkért lásd: [ellenőrzi, hogy az Azure AD hozzáférési](active-directory-azure-ad-controls-access-reviews-overview.md).
+További információkért lásd: [ellenőrzi, hogy az Azure AD hozzáférési](https://docs.microsoft.com/azure/active-directory/active-directory-azure-ad-controls-access-reviews-overview).
 
 
 ---
@@ -738,7 +739,7 @@ További információkért lásd: [ellenőrzi, hogy az Azure AD hozzáférési](
 
 Most jobban kezelhető jelenik meg a felhasználói portálon keresztül egy új alkalmazások **app elrejtése** tulajdonság. Azokban az esetekben, ahol alkalmazások ikonjaihoz jelenik meg a háttér-szolgáltatásaihoz vagy ismétlődő csempék és zsúfoltságát felhasználók app kilövők alkalmazások elrejthetők. A váltógomb van a **tulajdonságok** szakasz a külső alkalmazás és lett címkézve **látható a felhasználó számára?** Egy alkalmazás programozott módon a PowerShell segítségével is elrejthetők. 
 
-További információkért lásd: [egy külső alkalmazások az Azure AD-ben a felhasználói élmény elrejtése](active-directory-coreapps-hide-third-party-app.md). 
+További információkért lásd: [egy külső alkalmazások az Azure AD-ben a felhasználói élmény elrejtése](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-hide-third-party-app). 
 
 
 **Mi az az elérhető?**

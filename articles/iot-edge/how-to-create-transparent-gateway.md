@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 12/04/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 1a35a6adae1eec88b314252ea0e3f2eb86f10c1d
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: c3621cb860339499089ebdf3c3581faf770f1fe3
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="create-an-iot-edge-device-that-acts-as-a-transparent-gateway---preview"></a>Hozzon létre egy IoT peremhálózati eszköz, amely átlátszó átjáróként – előzetes
 
@@ -104,12 +104,12 @@ Az IoT-peremhálózati eszköz most konfigurálnia kell az eszköz tanúsítván
 
 Feltételezzük, hogy a következő fájlneveket, a fenti mintaparancsfájlok:
 
-| Kimenet | Bash parancsfájlok | PowerShell |
-| ------ | ----------- | ---------- |
-| Eszköz tanúsítványa | `certs/new-edge-device.cert.pem` | `certs/new-edge-device.cert.pem` |
-| Titkos kulcs | `private/new-edge-device.cert.pem` | `private/new-edge-device.cert.pem` |
-| Eszköz tanúsítványlánc | `certs/new-edge-device-full-chain.cert.pem` | `certs/new-edge-device-full-chain.cert.pem` |
-| Az IoT hub tulajdonos hitelesítésszolgáltató | `certs/azure-iot-test-only.root.ca.cert.pem` | `RootCA.pem` |
+| Kimenet | Fájlnév |
+| ------ | --------- |
+| Eszköz tanúsítványa | `certs/new-edge-device.cert.pem` |
+| Titkos kulcs | `private/new-edge-device.cert.pem` |
+| Eszköz tanúsítványlánc | `certs/new-edge-device-full-chain.cert.pem` |
+| Az IoT hub tulajdonos hitelesítésszolgáltató | `certs/azure-iot-test-only.root.ca.cert.pem`  |
 
 Az eszköz és a tanúsítvány az IoT-Edge futásidejű információt tartalmaznak. 
  

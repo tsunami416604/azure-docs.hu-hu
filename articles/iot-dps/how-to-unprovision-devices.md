@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 83ed72c0f2eb342c372ef97e5443d60eab1e2174
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 1d057a4df43cf25e6817672d198207d9a50e462e
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="how-to-unprovision-devices-enrolled-by-your-provisioning-service"></a>Hogyan leépíteni a következőt: a létesítési szolgáltatás által regisztrált eszközök
 
@@ -31,10 +31,17 @@ Előfordulhat az szükséges, hogy az eszköz kiépítése szolgáltatáson kere
 
 2. Tiltsa le, vagy törölheti az identitásjegyzékhez bejegyzést az eszközt az IoT Hub, ahol lett kiépítve. További tudnivalókért lásd: [eszköz Identitáskezelést](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-identity-registry#disable-devices) az Azure IoT Hub-dokumentációban. 
 
-A pontos lépéseket leépíteni a következőt: egy eszközt az igazolás mechanizmust használ függ.
+A pontos lépéseket leépíteni a következőt: egy eszközt az igazolás mechanizmus és a vonatkozó regisztrációs bejegyzés az üzembe helyezési szolgáltatással függ.
 
-TPM tanúsítványt vagy X.509-tanúsítvány önaláírt levéltanúsítvány (nincs tanúsítványlánc) használó eszközöket törlődnek, az egyes regisztrációs bejegyzés. Ezen eszközök a bejegyzés véglegesen visszavonni a hozzáférést az eszköz a létesítési szolgáltatás, vagy tiltsa le a bejegyzés törlésével, vagy tiltsa le az eszközt az IoT rendelkező az identitásjegyzékhez ideiglenesen visszavonni a hozzáférést, és utólagos törlése -hubhoz, amely azt a lett kiépítve.
+## <a name="individual-enrollments"></a>Egyes regisztrációkat
+A levél tanúsítvánnyal TPM tanúsítványt vagy X.509 tanúsítvány használó eszközök törlődnek, az egyes regisztrációs bejegyzés. 
 
+Egy eszköz, amely rendelkezik az egyes tagság leépíteni a következőt: 
+1. TPM tanúsítványt használó eszközök esetében törölje az egyes regisztrációs bejegyzés véglegesen visszavonni a hozzáférést az eszköz a létesítési szolgáltatás, vagy tiltsa le a bejegyzés ideiglenesen visszavonni a hozzáférést. Az X.509 tanúsítvány használó eszközt vagy törölheti vagy tiltsa le a bejegyzést. Vegye figyelembe, azonban, hogy ha egy egyéni egy eszköz regisztrációjának törlése, amely használ X.509 tanúsítvány, és egy engedélyezett beléptetési csoport létezik-e egy aláíró tanúsítványt abban, hogy az eszköz tanúsítványlánc, az eszköz mindig újból beléptethetik. Az ilyen eszközök hogy biztonságosabb lehet letiltani a regisztrációs bejegyzés. Ez megakadályozza az eszköz a beléptetés, függetlenül attól, hogy egy engedélyezett beléptetési csoport létezik-e aláíró tanúsítványt.
+2. Tiltsa le, vagy törli a identitás beállításkulcsot, amely még lett beállítva, az IoT-központ az eszközt. 
+
+
+## <a name="enrollment-groups"></a>Beléptetési csoportok
 X.509 tanúsítvány, az eszközök kiépíthető egy beléptetési csoporton keresztül. Beléptetési csoportok be van állítva egy aláíró tanúsítványt, vagy egy köztes legfelső szintű Hitelesítésszolgáltatói tanúsítványt, illetve a üzembe helyezési szolgáltatással, hogy a tanúsítványt a tanúsítványlánc eszközökhöz való hozzáférést. Beléptetési csoportok és X.509-tanúsítványokat az üzembe helyezési szolgáltatással kapcsolatos további információkért lásd: [X.509-tanúsítványokat](concepts-security.md#x509-certificates). 
 
 Az eszközről, amelyen keresztül a beléptetési csoport lettek kiosztva listájának megtekintéséhez, megtekintheti a beléptetési csoport részletes adatait. Ez egyszerű módja tudni, hogy mely minden eszköz van kiépítve az IoT-központ. Az eszközlista megtekintése: 
@@ -48,8 +55,15 @@ Az eszközről, amelyen keresztül a beléptetési csoport lettek kiosztva list�
 
 A beléptetési csoportok esetén két esetben kell figyelembe venni:
 
-- Leépíteni a következőt: összes egy beléptetési csoporton keresztül kiépített eszközt, le kell tiltania a beléptetési csoport aláíró tanúsítványát tiltólistára kell helyezni. A beléptetési csoport kiépített eszközök listája segítségével majd tiltsa le, vagy minden eszköz a megfelelő IoT hub identitás beállításjegyzékből való törlése. Után letiltása, vagy minden eszköz eltávolítása a saját IoT-központok, a beléptetési csoport opcionálisan törölheti. Ne feledje azonban, hogy a beléptetési csoport és egy engedélyezett beléptetési csoport egy vagy több olyan eszközt a magasabb a tanúsítványlánc aláíró tanúsítványt, az eszközök mindig újból beléptethetik. 
-- Leépíteni a következőt: regisztráció csoportból egyetlen eszközt, először létre kell hoznia egy letiltott egyes regisztrációja a levél (eszközök) tanúsítványát. Ez visszavonja az eszköznek a létesítési szolgáltatás ugyanakkor továbbra is lehetővé teszi a hozzáférést a beléptetési csoport aláíró tanúsítványt a láncban lévő más eszközök. Majd segítségével kiépített eszközök listája a beléptetési csoport részleteit az IoT hub, amely az eszköz lett kiépítve a Keresés és tiltsa le vagy törölni az adott központi identitásjegyzékhez. Ne törölje a letiltott egyes regisztrációt az adott eszköz. Így lehetővé teheti az eszköz újítsa meg a beléptetési csoporton keresztül. 
+- Az eszközöket, amelyek egy beléptetési csoporton keresztül lettek kiosztva mindegyikét leépíteni a következőt:
+  1. Tiltsa le a regisztrációs csoport aláíró tanúsítványát tiltólistára kell helyezni. 
+  2. A beléptetési csoport kiépített eszközök listája használatával tiltsa le, illetve törölhet minden eszköz a megfelelő IoT hub az identitásjegyzékhez. 
+  3. Után letiltása, vagy minden eszköz eltávolítása a saját IoT-központok, a beléptetési csoport opcionálisan törölheti. Ne feledje azonban, hogy a beléptetési csoport és egy engedélyezett beléptetési csoport egy vagy több olyan eszközt a magasabb a tanúsítványlánc aláíró tanúsítványt, az eszközök mindig újból beléptethetik. 
+- Beléptetési csoportból egyetlen eszközt leépíteni a következőt:
+  1. Hozzon létre egy letiltott egyes regisztrációja a levél (eszközök) tanúsítványát. Ez visszavonja az eszköznek a létesítési szolgáltatás ugyanakkor továbbra is lehetővé teszi a hozzáférést a beléptetési csoport aláíró tanúsítványt a láncban lévő más eszközök. Ne törölje a letiltott egyes regisztrációt az adott eszköz. Így lehetővé teheti az eszköz újítsa meg a beléptetési csoporton keresztül. 
+  2. Használja a beléptetési csoport kiépített eszközök listáját az IoT hub, amely az eszköz számára lett kiépítve található, és tiltsa le, vagy törölni az adott központi identitásjegyzékhez. 
+  
+  
 
 
 

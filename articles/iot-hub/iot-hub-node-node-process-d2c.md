@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/17/2017
 ms.author: v-masebo
-ms.openlocfilehash: e5d57e087e5f4dc1e0abf112001218aa7390a4f7
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: f314d24250330a4dadf99d98b94c98b3db03f22c
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="routing-messages-with-iot-hub-node"></a>Üzenetek (csomópont) az IoT hubbal
 
@@ -104,6 +104,9 @@ Ebben a szakaszban létrehozott eszközalkalmazás módosítja a [Ismerkedés az
 Ebben a szakaszban hozzon létre egy Service Bus-üzenetsorba, csatlakoztassa az IoT hub, és konfigurálja az IoT hub, az üzenetek küldése az üzenetsorba, annak alapján, hogy az üzenet-tulajdonság. A Service Bus-üzenetsorok folyamat üzenetek módjáról további információkért lásd: [Ismerkedés a várólisták][lnk-sb-queues-node].
 
 1. Hozzon létre egy Service Bus-üzenetsorba, a [Ismerkedés a várólisták][lnk-sb-queues-node]. Jegyezze fel az a névtér és a várólista nevét.
+
+    > [!NOTE]
+    > Service Bus-üzenetsorok és témakörök használatos az IoT-központok végpontjai nem lehet **munkamenetek** vagy **ismétlődő észlelési** engedélyezve van. Ha ezek a lehetőségek valamelyikét engedélyezve vannak, a végpont megjelenik **Unreachable** az Azure portálon.
 
 2. Az Azure portálon, nyissa meg az IoT hub, és kattintson **végpontok**.
 

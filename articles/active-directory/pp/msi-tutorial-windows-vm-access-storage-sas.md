@@ -3,22 +3,22 @@ title: "A Windows virtuális gép MSI SAS hitelesítő adat segítségével Azur
 description: "Ez az oktatóanyag bemutatja, hogyan egy Windows virtuális gép felügyelt szolgáltatás identitás (MSI) Azure Storage egy SAS-hitelesítő adat használata helyett a fiók tárelérési kulcs elérésére használhat."
 services: active-directory
 documentationcenter: 
-author: BryanLa
-manager: mbaldwin
-editor: bryanla
+author: daveba
+manager: mtillman
+editor: daveba
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/15/2017
-ms.author: bryanla
+ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 0c6150c01c8ca31bba748741b2285cb4f29beaa6
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.openlocfilehash: 9102ea255e533e4233b2cba77a6f7f38b992e2a5
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>Az Azure Storage érhetnek el egy SAS-hitelesítő adat szolgáltatás Windows virtuális gép felügyelt identitás használatára
 
@@ -94,7 +94,7 @@ Később rendszer feltöltése és töltse le a fájlt az új tárfiókot. Mivel
 3. Kattintson a **+ tároló** tetején a lap és az "új tároló" panel diák ki.
 4. Nevezze el a tároló, válassza ki a hozzáférési szintet, majd kattintson a **OK**. A megadott név az oktatóanyag későbbi részében fogja használni. 
 
-    ! [Tárolási container]~/articles/active-directory/(media/msi-tutorial-linux-vm-access-storage/create-blob-container.png) létrehozása
+    ![Create storage container]~/articles/active-directory/(media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
 ## <a name="grant-your-vms-msi-access-to-use-a-storage-sas"></a>A virtuális gép MSI hozzáférést egy SAS tárolók használatához 
 

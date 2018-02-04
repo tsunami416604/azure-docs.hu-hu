@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
-ms.author: fashah;bradsev
-ms.openlocfilehash: 4157820bad3c0d7c07965e4a5556db2f6fb69fe2
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.author: bradsev
+ms.openlocfilehash: 03def1f07d45b9bde5f54922984c33879a80744c
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>A művelet az Team tudományos folyamat: SQL Server használata
 Az oktatóanyag ismerteti a folyamatot, amely létrehozása és telepítése a gépi tanulási modellek SQL Server és a nyilvánosan elérhető dataset – a [NYC Taxi Utazgatással](http://www.andresmh.com/nyctaxitrips/) adatkészlet. Az eljárást követi a szabványos adatelemezési munkafolyamatot: betöltési, és áttekintheti az adatokat, a visszafejtés szolgáltatások megkönnyítése tanulási, majd építsenek, és a modell rendszerbe állítása.
@@ -111,7 +111,7 @@ Betöltés/átvitele a nagy mennyiségű adat egy SQL-adatbázis és a lekérdez
    
    * Kattintson a jobb gombbal a bal oldali panelen az SQL Server nevét, és kattintson a **tulajdonságok**.
      
-       ![SQL-kiszolgáló tulajdonságai][14]
+       ![SQL Server Properties][14]
    * Válassza ki **adatbázis beállításainak** a a **oldal kijelölése** a bal oldali listában.
    * Ellenőrizze és/vagy módosításához a **adatbázis alapértelmezett helyek** való a **adatlemez** az Ön által választott helyen. Ez azért, ahol új adatbázisok találhatók, ha az alapértelmezett hely beállításokkal hozza létre.
      
@@ -604,7 +604,7 @@ Egy új webszolgáltatás-bővítmény telepítéséhez kell:
 
 Egy pontozási kísérletet a létrehozásához egy **befejezett** betanítása kísérletet, kattintson a **létrehozása pontozási KÍSÉRLETEZHET** alacsonyabb műveletsávon.
 
-![Pontozás az Azure][18]
+![Azure Scoring][18]
 
 Az Azure Machine Learning megpróbál létrehozni egy pontozási kísérletet, a tanítási kísérletet összetevői alapján. Különösen a következőket hajtja végre:
 

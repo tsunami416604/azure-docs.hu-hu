@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: fashah;garye;bradsev
-ms.openlocfilehash: fd669f3951b1f7f05932634f039a04e02993399f
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.author: garye;bradsev
+ms.openlocfilehash: a82e4703f68271d6d10719e6be8465efa9b71a79
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="heading"></a>Mintaadatok az SQL Server az Azure-on
 Ez a cikk bemutatja, hogyan az SQL Server az Azure-on tárolt adatokat SQL vagy a Python programozási nyelv használatával. Azt is bemutatja, hogyan mintaadatokat áthelyezi az Azure Machine Learning fájlba menti, feltölti az Azure blob, és olvassa Azure Machine Learning Studio.

@@ -3,7 +3,7 @@ title: "Az MSI-hozzáférés hozzárendelése egy Azure-erőforrás, Azure paran
 description: "Lépésről lépésre utasítások hozzárendelése egy olyan MSI Csomaghoz, egy erőforráson hozzáférni más erőforráshoz, Azure parancssori felület használatával."
 services: active-directory
 documentationcenter: 
-author: bryanla
+author: daveba
 manager: mtillman
 editor: 
 ms.service: active-directory
@@ -12,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/25/2017
-ms.author: bryanla
-ms.openlocfilehash: 15a7d43da7b5a700ae84a42d59a7f01f1711c5cd
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: daveba
+ms.openlocfilehash: be80065f83e8c80e7c1d6ab383cea04e0d2679a0
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="assign-a-managed-service-identity-msi-access-to-a-resource-using-azure-cli"></a>A kezelt Service Identity (MSI) hozzáférés hozzárendelése egy erőforrás Azure parancssori felület használatával
 

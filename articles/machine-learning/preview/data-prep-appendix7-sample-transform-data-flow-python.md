@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: 
 ms.devlang: 
 ms.topic: article
-ms.date: 09/11/2017
-ms.openlocfilehash: 4a716c1934258e687eb48ecb4077c6be7b269c1f
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.date: 02/01/2018
+ms.openlocfilehash: 8146c2a41a2b8fc241131a42ec74227795867609
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="sample-of-custom-data-flow-transforms-python"></a>Egyéni adatok folyamata átalakítások (Python) minta 
 A menü átalakító neve **átalakítási Adatfolyamblokk (parancsfájl)**. Ahhoz, hogy olvassa el a jelen függelék, olvassa el a [Python bővítési áttekintése](data-prep-python-extensibility-overview.md).
@@ -49,7 +49,7 @@ Kitöltés lefelé két átalakítások igényel. Feltételezi, következőhöz 
 |--------------|-----------|
 |Washington    |Redmond    |
 |              |Bellevue   |
-|              |Issaquahi   |
+|              |Issaquah   |
 |              |Seattle    |
 |Kalifornia    |Los Angeles|
 |              |San Diego  |
@@ -73,7 +73,7 @@ Az adatok mostantól a következőképpen néznek:
 |--------------|--------------|-----------|
 |Washington    |Washington    |Redmond    |
 |              |Washington    |Bellevue   |
-|              |Washington    |Issaquahi   |
+|              |Washington    |Issaquah   |
 |              |Washington    |Seattle    |
 |Kalifornia    |Kalifornia    |Los Angeles|
 |              |Kalifornia    |San Diego  |
@@ -83,7 +83,7 @@ Az adatok mostantól a következőképpen néznek:
 |              |Texas         |Houston    |
 
 
-### <a name="min-max-normalization"></a>Min maximális értéke
+### <a name="min-max-normalization"></a>Minimális-maximális értéke
 ```python
     df["NewCol"] = (df["Col1"]-df["Col1"].mean())/df["Col1"].std()
 ```

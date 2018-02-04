@@ -1,6 +1,6 @@
 ---
 title: "Alkalmazás-hozzárendelés Azure Application insightsban |} Microsoft Docs"
-description: "Az alkalmazások összetevői között fennálló vizuális megjelenítését feliratú KPI-k és riasztásokkal."
+description: "Az alkalmazás-hozzárendelés rendelkező összetett alkalmazás topológiák figyelése"
 services: application-insights
 documentationcenter: 
 author: SoubhagyaDash
@@ -13,23 +13,52 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: e1eb2177d6032142781e6e31af6c7f6313d38f4d
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 3bbed59bf93eab5e729fbdd3ccae04599ac47081
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 02/03/2018
 ---
-# <a name="application-map-in-application-insights"></a>Az Application Insightsban alkalmazás-hozzárendelés
-A [Azure Application Insights](app-insights-overview.md), alkalmazás-hozzárendelés az alkalmazás-összetevői közötti függőségi kapcsolatokat visual elrendezés. Minden egyes összetevő KPI-k például a terhelés, teljesítmény, hibák és figyelmeztetések, segítségével megkeresheti az adott teljesítményprobléma vagy hiba, amely összetevők közül bármelyik jeleníti meg. Kattintva keresztül valamelyik összetevő a részletesebb diagnosztikai, például az Application Insights események. Ha az alkalmazás Azure-szolgáltatásokat használja, akkor is átkattintással is Azure Diagnostics, például az SQL Database Advisor-javaslatokra.
+# <a name="application-map-triage-distributed-applications"></a>Alkalmazás-hozzárendelés: Osztályozhatja elosztott alkalmazások
+Alkalmazás-hozzárendelés segít direkt szűk keresztmetszetek vagy hiba csatlakozási pontokhoz termékcsalád összes tagjára vonatkozó az elosztott alkalmazás. Minden csomópont a térképen képviseli, alkalmazás-összetevő, illetve annak függőségeit; és KPI állapot és riasztások állapotát. Kattintva keresztül valamelyik összetevő a részletesebb diagnosztikai, például az Application Insights események. Ha az alkalmazás Azure-szolgáltatásokat használja, akkor is átkattintással is Azure Diagnostics, például az SQL Database Advisor-javaslatokra.
 
-Más típusú diagramokkal, például PIN-kód egy alkalmazás-hozzárendelés az Azure irányítópultot, ahol is teljes körűen használható. 
+## <a name="what-is-a-component"></a>Mi az, hogy egy összetevő?
 
-## <a name="open-the-application-map"></a>Nyissa meg az alkalmazás-hozzárendelés
-Nyissa meg a térképen az alkalmazáshoz – Áttekintés paneljéről:
+Összetevők az elosztott/mikroszolgáltatások alkalmazás egymástól függetlenül telepíthető részét képezik. A fejlesztők és a műveletek csapat kód szintű láthatóságot, vagy próbáljon elérni ezeket alkalmazás-összetevők által létrehozott telemetriai rendelkezik. 
 
-![Nyissa meg az alkalmazás-leképezés](./media/app-insights-app-map/01.png)
+* Összetevők eltérnek "megfigyelt" külső függőségei, például az SQL, EventHub stb., amelyek a csoport/szervezeti nem lehet hozzáférni a (kód vagy telemetria).
+* Összetevők tetszőleges server/szerepkör/tároló példányát futtatni.
+* Összetevők külön Application Insights instrumentation kulcsok (akkor is, ha előfizetések különböző) vagy egy Application Insights instrumentation kulcs jelentéskészítés külön szerepköröket is. A kép ábrázolási tapasztalat összetevők függetlenül attól, hogy azok be vannak állítva.
 
-![alkalmazás-leképezés](./media/app-insights-app-map/02.png)
+## <a name="composite-application-map-preview"></a>Összetett alkalmazás-hozzárendelés (előzetes verzió)
+*Ez egy korai preview, és bővítjük több szolgáltatást ezen a térképen való. Szívesen meghallgatnánk a kérni a változásról. Válthat a kép és a klasszikus lép könnyen.*
+
+Engedélyezhetik a "Összetett alkalmazás-hozzárendelés" a [előzetes lista](app-insights-previews.md), vagy kattintson a jobb felső sarkában a váltógomb "Előzetes térképen". A váltógomb segítségével átválthat a klasszikus felhasználói élmény.
+![Előzetes térkép engedélyezése](media/app-insights-app-map/preview-from-classic.png)
+
+>[!Note]
+Ebben az előzetes verzióban a felváltja a korábbi "Mult-alkalmazás leképezést" előzetes verzió. Most ezzel a teljes topológia több szinten összetevő alkalmazásfüggőségek között. Küldje el visszajelzését, bővítjük további képességeket hasonló a hagyományos térkép támogatja.
+
+A teljes alkalmazás topológia több szinten kapcsolódó alkalmazás-összetevők között tekintheti meg. Összetevők lehet különböző az Application Insights-erőforrások, vagy egyetlen belüli szerepkörei. Az alkalmazás térkép úgy összetevők alábbi HTTP függőségi hívások esetében az Application Insights SDK telepítve kiszolgálók között. 
+
+Ez a felület összetevőt fokozatos felderítés kezdődik. Először betölteni az előzetes kiadásban, ha lekérdezések készlete lépnek működésbe. Ez az összetevő kapcsolódó összetevőket felderítéséhez. A bal felső sarokban lévő gomb felfedezett frissíti az alkalmazás összetevők száma. 
+![Előnézet-leképezés](media/app-insights-app-map/preview.png)
+
+Az "Frissítés leképezési összetevők" kattint, a térkép összes összetevőkkel is, hogy a pont frissülnek.
+![Előzetes betöltése térkép](media/app-insights-app-map/components-loaded-hierarchical.png)
+
+Ha az összetevők mindegyikét szerepkörök belül egyetlen Application Insights-erőforrást, majd a felderítési lépésre nincs szükség. A kezdeti betöltés az alkalmazáshoz fog rendelkezni az összetevők.
+
+Az új felület a fő célkitűzéseket egyik tudni megjelenítése összetevők száz komplex topológiákba. Az új felület nagyítása támogatja, és hozzáadja a részletes, akkor nagyítás növelésére. Azt is ki további egy pillanat alatt, és továbbra is direkt összetevői a magasabb hiba díjszabás megtekintése. 
+
+![Nagyítási szint](media/app-insights-app-map/zoom-levels.png)
+
+Kattintson a kapcsolódó elemzések és a teljesítmény és az összetevő hiba osztályozás élmény összetevők közül bármelyik.
+
+![Menü](media/app-insights-app-map/preview-flyout.png)
+
+
+## <a name="classic-application-map"></a>Klasszikus alkalmazás-hozzárendelés
 
 A térkép mutatja:
 
@@ -38,9 +67,11 @@ A térkép mutatja:
 * Kiszolgálóoldali összetevő
 * Az ügyfél és kiszolgáló összetevők függőségei
 
+![alkalmazás-leképezés](./media/app-insights-app-map/02.png)
+
 Bontsa ki, és a függőségi hivatkozás elemcsoportok:
 
-![összecsukása](./media/app-insights-app-map/03.png)
+![összecsukás](./media/app-insights-app-map/03.png)
 
 Ha egy típust (SQL, HTTP stb.) a számos függőségi, jelennek meg a csoportosított. 
 
@@ -99,22 +130,6 @@ Az egyes erőforrástípusok erőforrás állapota a hiba ablaktábla tetején j
 
 Az erőforrás nevét, az adott erőforrás szabványos áttekintése metrikák megtekintéséhez rákattinthat.
 
-## <a name="end-to-end-system-app-maps"></a>Végpontok közötti rendszer app maps
-
-*SDK 2.3-as vagy újabb verziója szükséges*
-
-Ha az alkalmazás több részből áll – például egy háttér-szolgáltatás emellett a webes alkalmazás -, akkor is megjeleníthetők az összes egy integrált alkalmazás térképen.
-
-![Szűrők beállítása](./media/app-insights-app-map/multi-component-app-map.png)
-
-Az alkalmazás térkép csomópontok bármely HTTP függőségi hívások esetében az Application Insights SDK telepítve a kiszolgálók közötti következő talál. Minden egyes Application Insights-erőforrás feltételezett, hogy egy kiszolgálót tartalmaz.
-
-### <a name="multi-role-app-map-preview"></a>Több szerepkör app térkép (előzetes verzió)
-
-Több szerepkör app térkép előnézet lehetővé teszi, hogy az alkalmazás térkép használja az adatok küldése az Application Insights-erőforrások több kiszolgáló / instrumentation kulcs. A térkép kiszolgálók vannak szegmentált telemetriai elemek cloud_RoleName tulajdonság által. Állítsa be *alkalmazás több szerepkör-hozzárendelés* való *a* ahhoz, hogy ez a konfiguráció az előzetes verziójú funkciók paneljén.
-
-Ez a megközelítés kívánatos lehet egy micro-szolgáltatások alkalmazás, vagy a más helyzetekben, ahol szeretné események összefüggéseket egyetlen Application Insights-erőforrás belül több kiszolgáló között.
-
 ## <a name="video"></a>Videó
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player] 
@@ -125,6 +140,6 @@ Adja meg a portál visszajelzési lehetőség visszajelzései.
 ![MapLink-1 kép](./media/app-insights-app-map/13.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Portal](https://portal.azure.com)

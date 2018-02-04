@@ -3,8 +3,8 @@ title: "Felhasználó által hozzárendelt felügyelt Szolgáltatásidentitás a
 description: "Az Azure SDK-k használata a virtuális gép egy felhasználó által hozzárendelt MSI mintakódok."
 services: active-directory
 documentationcenter: 
-author: BryanLa
-manager: mbaldwin
+author: daveba
+manager: mtillman
 editor: 
 ms.service: active-directory
 ms.devlang: na
@@ -12,24 +12,25 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/22/2017
-ms.author: bryanla
+ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: f9a31a0500a6f5f1c49fc45d5811e28788e6f2b1
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.openlocfilehash: 59d65e42c9b32bd0acd98645342833b4d57ad7a4
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="use-azure-sdks-with-a-user-assigned-managed-service-identity-msi"></a>Azure SDK-k használata az egy felhasználó által hozzárendelt felügyelt szolgáltatás identitás (MSI)
 
-[!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]Ez a cikk a SDK-mintákat, amelyek bemutatják, használja a felhasználó által hozzárendelt MSI-fájl a megfelelő Azure SDK támogatása listáját tartalmazza.
+[!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
+Ez a cikk a SDK-mintákat, amelyek bemutatják, használja a felhasználó által hozzárendelt MSI-fájl a megfelelő Azure SDK támogatása listáját tartalmazza.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [msi-core-prereqs](~/includes/active-directory-msi-core-prereqs-ua.md)]
 
 > [!IMPORTANT]
-> - Minden minta kódot, a parancsfájl a cikkben azt feltételezi, hogy az ügyfél egy MSI-kompatibilis virtuális gépen futó. A virtuális gép "Csatlakozás" szolgáltatást használja az Azure-portálon távolról csatlakozni a virtuális Gépet. A virtuális gép MSI engedélyezésével kapcsolatos részletekért lásd: [konfigurálja a virtuális gép felügyelt szolgáltatás identitásának (MSI) az Azure parancssori felület használatával](msi-qs-configure-cli-windows-vm.md), vagy a variant cikkekben (a PowerShell, Azure portál, sablon vagy egy Azure SDK használatával). 
+> - Minden minta kódot, a parancsfájl a cikkben azt feltételezi, hogy az ügyfél egy MSI-kompatibilis virtuális gépen futó. A virtuális gép "Csatlakozás" szolgáltatást használja az Azure-portálon távolról csatlakozni a virtuális Gépet. A virtuális gép MSI engedélyezésével kapcsolatos részletekért lásd: [konfigurálja a virtuális gép felügyelt szolgáltatás identitásának (MSI) az Azure parancssori felület használatával](msi-qs-configure-cli-windows-vm.md), vagy a variant cikkekben (a PowerShell, Azure-portálon, sablon vagy egy Azure SDK használatával). 
 
 ## <a name="sdk-code-samples"></a>SDK-kódmintákat
 

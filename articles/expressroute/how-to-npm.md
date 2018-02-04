@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/13/2017
-ms.author: cherylmc
-ms.openlocfilehash: 63160bc8f334b975ade8b35ce809578ad3a5b3fa
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
-ms.translationtype: HT
+ms.date: 01/31/2018
+ms.author: pareshmu
+ms.openlocfilehash: 269c2e8a7867521b34128980e33ed97aa7b62a04
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/01/2018
 ---
@@ -43,7 +43,8 @@ A következőket teheti:
 
 Figyelheti a világ minden részén ExpressRoute-Kapcsolatcsoportok üzemeltetett munkaterület használatával a következő területek közül:
 
-* Nyugat-Európa 
+* Nyugat-Európa
+* USA nyugati középső régiója
 * USA keleti régiója 
 * Délkelet-Ázsia 
 * Dél-kelet-Ausztrália
@@ -57,14 +58,13 @@ Több kiszolgáló figyelési ügynökök telepítve vannak a helyszíni és az 
     * A telepítés figyelését a helyszíni kiszolgálók és az Azure virtuális gépeken futó ügynököket.
     * A beállítások a kiszolgálókon figyelési ügynök engedélyezése a figyelőügynökök való kommunikációhoz. (Nyissa meg a tűzfal portjait, stb.)
 3. Konfigurálja a hálózati biztonsági csoport (NSG) szabályokat az ügynök figyelését a helyszíni kommunikálni Azure virtuális gépeken telepített figyelési ügynökökhöz.
-4. Engedélyezett az NPM-munkaterület kérelmet.
-5. Figyelés beállítása: automatikus felderítése és kezelése a hálózatok láthatók a NPM.
+4. Figyelés beállítása: automatikus felderítése és kezelése a hálózatok láthatók a NPM.
 
 Használata hálózati Teljesítményfigyelő más objektumok, vagy a szolgáltatások figyelésére, és már rendelkezik munkaterület a támogatott régiók egyikéhez sem, ha az 1. lépésben és a 2. lépés kihagyhatja, és a konfiguráció 3. lépés megkezdése.
 
-## <a name="configure"></a>1. lépés: A munkaterület létrehozása
+## <a name="configure"></a>1. lépés:, (az előfizetést, a Vnetek az ExpressRoute Circuit(s)) csatolva van a munkaterület létrehozása
 
-1. Az a [Azure-portálon](https://portal.azure.com), a szolgáltatások listájában keresse a **piactér** "Hálózati Teljesítményfigyelő". Megnyitásához kattintson a vissza a **hálózati Teljesítményfigyelő** lap.
+1. Az a [Azure-portálon](https://portal.azure.com), válassza ki az előfizetést, amely rendelkezik a Vnetek társítottak, az ExpressRoute-kapcsolatcsoportot. Majd keresse meg a szolgáltatások listájában a **piactér** "Hálózati Teljesítményfigyelő". Megnyitásához kattintson a vissza a **hálózati Teljesítményfigyelő** lap.
 
   ![portal](.\media\how-to-npm\3.png)<br><br>
 2. A fő alján **hálózati Teljesítményfigyelő** kattintson **létrehozása** megnyitásához **hálózati Teljesítményfigyelő - hozzon létre új megoldás** lap. Kattintson a **OMS-munkaterület - ki kell jelölnie egy munkaterület** munkaterületek lapjának megnyitásához. Kattintson a **+ hozzon létre új munkaterület** munkaterület lapjának megnyitásához.
@@ -105,7 +105,7 @@ Használata hálózati Teljesítményfigyelő más objektumok, vagy a szolgálta
 
   ![PowerShell-szkript](.\media\how-to-npm\7.png)
 
-### <a name="installagent"></a>2.2: a figyelési ügynök telepítése minden felügyeleti kiszolgálón
+### <a name="installagent"></a>2.2: a figyelési ügynök telepítése minden felügyeleti kiszolgálón (az egyes virtuális Hálózatot, amely segítségével nyomon követni kívánt)
 
 Azt javasoljuk, hogy telepítse a redundancia érdekében legalább két ügynököket (vagyis a helyszíni Azure Vnetekhez) ExpressRoute-kapcsolat mindkét oldalán. Az ügynökök telepítéséhez tegye a következőket:
 
@@ -127,6 +127,8 @@ Azt javasoljuk, hogy telepítse a redundancia érdekében legalább két ügynö
 6. Az a **telepítésre kész** lapon ellenőrizze a megadott beállításokat, és kattintson a **telepítése**.
 7. **A konfigurálás sikeresen befejeződött** lapon kattintson a **Befejezés** gombra.
 8. Amikor végzett, a Microsoft Monitoring Agent jelenik meg a Vezérlőpultot. Tekintse át a hiba a konfiguráció, és ellenőrizze, hogy az ügynök csatlakozik-e az Operational Insights (OMS). Csatlakoztatva az OMS-be, amikor az ügynök jeleníti meg a következő üzenet: **a Microsoft Monitoring Agent sikeresen csatlakozott-e a Microsoft Operations Management Suite szolgáltatással**.
+
+9. Ismételje meg a figyelést igénylő minden vnet.
 
 ### <a name="proxy"></a>2.3: konfigurálja a proxybeállításokat (nem kötelező)
 
@@ -165,7 +167,7 @@ Alapértelmezett port 8084 már meg van nyitva. A parancsprogram "portszám" par
 >
 >
 
-Az ügynök kiszolgálón nyissa meg egy PowerShell-ablakot rendszergazdai jogosultságokkal. Futtassa a [EnableRules](https://gallery.technet.microsoft.com/OMS-Network-Performance-04a66634) PowerShell parancsfájlt (a korábban letöltött). Ne használjon a paramétereket.
+Az ügynök kiszolgálón nyissa meg egy PowerShell-ablakot rendszergazdai jogosultságokkal. Futtassa a [EnableRules](https://aka.ms/npmpowershellscript) PowerShell parancsfájlt (a korábban letöltött). Ne használjon a paramétereket.
 
   ![PowerShell_Script](.\media\how-to-npm\script.png)
 
@@ -183,12 +185,7 @@ NSG kapcsolatos további információkért lásd: [hálózati biztonsági csopor
 
 ## <a name="setupmonitor"></a>4. lépés: NPM ExpressRoute-figyelés konfigurálása.
 
->[!WARNING]
->Ne folytassa tovább, amíg a munkaterület már szerepel az engedélyezési listán, és megjelenik egy visszaigazoló e-mailben.
->
->
-
-Miután befejezte a korábbi szakaszokban, és győződjön meg arról, hogy ki lett-e az engedélyezési listán szereplő, állíthat be figyelését.
+Miután elvégezte a korábbi szakaszokban, állíthat be figyelését.
 
 1. Nyissa meg a hálózati Teljesítményfigyelő áttekintés csempe navigáljon a **összes erőforrás** lapon, majd kattintson az engedélyezési listán szereplő NPM munkaterület a.
 

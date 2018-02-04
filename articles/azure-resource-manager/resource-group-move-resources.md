@@ -14,9 +14,9 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: ea0c2487e24fcb924632d3277163b7732442b414
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
-ms.translationtype: HT
+ms.openlocfilehash: 3f8b5e8b8af4be85e830bde8eb0587c632a9dd1f
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/01/2018
 ---
@@ -190,43 +190,29 @@ Virtuális hálózat nem helyezhető át egy másik előfizetésben található,
 
 ## <a name="app-service-limitations"></a>App Service korlátozásai
 
-Az App Service apps használatakor csak egy App Service-csomag nem helyezhető át. App Service apps áthelyezéséhez a lehetőségek a következők:
+A korlátozások vonatkoznak az App Service-erőforrások áthelyezésére attól függően változnak, hogy helyez át az erőforrásokat egy előfizetésen belül vagy egy új előfizetést.
 
-* Helyezze át az App Service-csomag és egyéb App Service-erőforrások az erőforráscsoport egy új erőforráscsoportot, amely még nincs az App Service-erőforrások. Ez a követelmény azt jelenti, hogy akkor is, amelyek nem kapcsolódnak az App Service-csomag az App Service erőforrások kell áthelyeznie.
-* Az alkalmazások áthelyezése egy másik erőforráscsoportban található, de az App Service-csomagokról ne az eredeti erőforráscsoport.
+### <a name="moving-within-the-same-subscription"></a>Egyazon előfizetésen belül
 
-Az App Service-csomag nem kell lennie, ugyanabban az erőforráscsoportban, az alkalmazás az alkalmazás megfelelő működéséhez.
+Ha áthelyezi a webes alkalmazás _egyazon előfizetésen belül_, a feltöltött SSL-tanúsítványok nem helyezhető át. Azonban áthelyezheti egy webalkalmazást az új erőforráscsoport anélkül, hogy a feltöltött SSL-tanúsítványt, és az alkalmazás SSL funkció továbbra is működik. 
 
-Ha például az erőforráscsoport tartalmazza:
+Ha szeretné helyezni az SSL-tanúsítványt a Web App, kövesse az alábbi lépéseket:
 
-* **webalkalmazás-a** amely társítva van **terv-a**
-* **webalkalmazás-b** amely társítva van **terv-b**
+1.  Törölje a feltöltött tanúsítványt a webalkalmazásból.
+2.  Helyezze át a webes alkalmazás.
+3.  A tanúsítvány feltöltése az áthelyezett webalkalmazásban.
 
-A lehetőségek a következők:
+### <a name="moving-across-subscriptions"></a>Az előfizetések közötti áthelyezése
 
-* Helyezze át **web-a**, **terv a**, **web-b**, és **terv-b**
-* Helyezze át **web-a** és **web-b**
-* Helyezze át **web-a**
-* Helyezze át **web-b**
+Ha áthelyezi a webes alkalmazás _előfizetésekhez_, a következő korlátozások vonatkoznak:
 
-Minden más kombináció tartalmaz, amely így maradnak, amely nem hagyható mögött, amikor az App Service-csomag (bármilyen típusú App Service erőforrás) erőforrástípus.
-
-Ha a webalkalmazás helyezkedik el, mint az App Service-csomag egy másik erőforráscsoportban található, de egyaránt egy új erőforráscsoportot át szeretné helyezni, el kell végeznie az áthelyezés két lépésben. Példa:
-
-* **webalkalmazás-a** található **webalkalmazás-csoport**
-* **terv a** található **terv-csoport**
-* Kívánt **web-a** és **terv a** lenniük, hogy **kombinált csoport**
-
-Az áthelyezés végrehajtásához két külön áthelyezési műveletet végrehajtani az alábbi sorrendben:
-
-1. Helyezze át a **web-a** való **terv-csoport**
-2. Helyezze át **web-a** és **terv a** való **kombinált csoport**.
-
-Egy új erőforráscsoportot, vagy probléma nélkül előfizetési áthelyezheti egy App Service-tanúsítványt. Azonban ha a webalkalmazás SSL-tanúsítványt adott beszerzett kívülről, és az alkalmazásba feltöltött tartalmaz, törölnie kell a tanúsítvány előtt a webalkalmazást. Például végezheti el az alábbi lépéseket:
-
-1. A feltöltött tanúsítvány törlése a webalkalmazásról
-2. Helyezze át a webes alkalmazás
-3. A webes alkalmazás a tanúsítvány feltöltése
+- A célként megadott erőforráscsoport nem lehet a meglévő App Service-erőforrásokat. App Service-erőforrások többek között:
+    - Web Apps
+    - App Service-csomagok
+    - Feltöltött vagy importált SSL-tanúsítványok
+    - App Service-környezetek
+- Az erőforráscsoport összes App Service erőforrások csak együtt helyezhetők.
+- App Service-erőforrások csak eltolható az erőforráscsoport, amelyekben azokat eredetileg létrehozott. Ha egy App Service-erőforrás már nem az eredeti erőforráscsoportban, azt kell vissza kell helyezni az eredeti erőforráscsoport először, és majd akkor helyezheti át előfizetésekhez. 
 
 ## <a name="classic-deployment-limitations"></a>Klasszikus üzembe helyezési korlátozásai
 

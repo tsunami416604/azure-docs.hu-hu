@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2017
 ms.author: maxluk
-ms.openlocfilehash: b4bdf3339e585a7b22a1945871f802854020fb94
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 391b691e895c672ef872f8b98c88567175ad8030
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>A HDInsight-fürtök kapacitástervezését
 
@@ -67,9 +67,7 @@ A fürt másik storage-fiókok kombinációjával érheti el. Gyakori példák a
 
 ## <a name="choose-a-cluster-type"></a>Válassza ki a fürt típusa
 
-A fürt típusa meghatározza, hogy a munkaterhelés, a HDInsight-fürt futtatásához, például a Hadoop, Storm, Kafka vagy Spark van konfigurálva. 
-<!-- For a detailed description of the available cluster types, see [HDInsight Architecture](hdinsight-architecture.md). -->
-Minden egyes fürttípus rendelkezik egy adott központi telepítési topológia, amely tartalmazza az követelményei a csomópontok száma és mérete.
+A fürt típusa meghatározza, hogy a munkaterhelés, a HDInsight-fürt futtatásához, például a Hadoop, Storm, Kafka vagy Spark van konfigurálva. A rendelkezésre álló fürttípusok részletes ismertetését lásd: [Azure HDInsight bemutatása](hadoop/apache-hadoop-introduction.md#cluster-types-in-hdinsight). Minden egyes fürttípus rendelkezik egy adott központi telepítési topológia, amely tartalmazza az követelményei a csomópontok száma és mérete.
 
 ## <a name="choose-the-vm-size-and-type"></a>Válassza ki a Virtuálisgép-méretet és típusa
 
@@ -96,9 +94,7 @@ Ki lehet terjeszteni a fürt csúcs terhelés követelményeinek, majd vertikál
 
 ### <a name="cluster-lifecycle"></a>Fürt életciklusa
 
-Van szó, a fürt élettartamát. Ha csak adott időpontokat, amelyekre szüksége van a fürt fel és fut, használja az Azure Data Factory igény szerinti tárolófürtöket hozhat létre.
-<!-- [create on-demand clusters using Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md). -->
-Is létrehozhat a PowerShell-parancsfájlok, amelyek kiépíteni, és törölje a fürtöt, és majd ütemezze a parancsfájlok használatával [Azure Automation](https://azure.microsoft.com/services/automation/).
+Van szó, a fürt élettartamát. Ha csak adott, hogy kell-e a fürt fel és fut, akkor [Azure Data Factory igény-fürtök létrehozása](hdinsight-hadoop-create-linux-clusters-adf.md). Is létrehozhat a PowerShell-parancsfájlok, amelyek kiépíteni, és törölje a fürtöt, és majd ütemezze a parancsfájlok használatával [Azure Automation](https://azure.microsoft.com/services/automation/).
 
 > [!NOTE]
 > A fürt törlésekor az alapértelmezett Hive metaadattárhoz is törlődik. A következő fürt újbóli létrehozása a metaadattárhoz megőrizni, egy külső metaadat-tároló, például az Azure-adatbázis vagy Oozie használja.
@@ -118,7 +114,7 @@ Után annak meghatározásához, hogy a cél fürtnek Virtuálisgép-méretet, m
 
 Azonban néhány rögzített kvóta korlátozott, például egy Azure-előfizetéssel, legfeljebb 10 000 magok lehet. Ezek a korlátozások a részletekért lásd: [Azure-előfizetés és szolgáltatási korlátok, kvóták és megkötések](https://docs.microsoft.com/azure/azure-subscription-service-limits#limits-and-the-azure-resource-manager).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Állítsa be a HDInsight Hadoop, Spark, Kafka és több fürt](hdinsight-hadoop-provision-linux-clusters.md): megtudhatja, hogyan telepítheti és konfigurálhatja a fürtök hdinsight Hadoop, Spark, Kafka, interaktív struktúra, HBase, R Server, vagy a Storm.
 * [Fürt teljesítményének figyelése](hdinsight-key-scenarios-to-monitor.md): további információk a HDInsight-fürthöz, amelyek hatással lehetnek a fürt kapacitásának figyelése főbb forgatókönyvek.

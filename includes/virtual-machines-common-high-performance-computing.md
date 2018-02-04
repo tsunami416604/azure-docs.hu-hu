@@ -57,14 +57,14 @@ Futtassa az egyéni vagy kereskedelmi HPC-alkalmazásokhoz az Azure-ban. Ebben a
 * [Altair RADIOSS](https://azure.microsoft.com/blog/availability-of-altair-radioss-rdma-on-microsoft-azure/)
 * [ANSYS CFD](https://azure.microsoft.com/blog/ansys-cfd-and-microsoft-azure-perform-the-best-hpc-scalability-in-the-cloud/)
 * [MATLAB elosztott számítástechnikai kiszolgáló](../articles/virtual-machines/windows/matlab-mdcs-cluster.md)
-* [StarCCM +](https://blogs.msdn.microsoft.com/azurecat/2017/07/07/run-star-ccm-in-an-azure-hpc-cluster/)
+* [StarCCM+](https://blogs.msdn.microsoft.com/azurecat/2017/07/07/run-star-ccm-in-an-azure-hpc-cluster/)
 * [OpenFOAM](https://simulation.azure.com/casestudies/Team-182-ABB-UC-Final.pdf)
 
 
 
 ### <a name="graphics-and-rendering"></a>Grafikus és megjelenítés
 
-* [Autodesk Maya, 3ds Max és Arnold](../articles/batch/batch-rendering-service.md) Azure Batch (előzetes verzió)
+* [Autodesk Maya, 3ds Max és Arnold](../articles/batch/batch-rendering-service.md) az Azure Batch 
 
 ### <a name="ai-and-deep-learning"></a>AI és részletes tanulás
 
@@ -103,11 +103,12 @@ SaaS-szolgáltatók és a fejlesztőknek a kötegelt SDK-k és eszközök segít
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
-* [A kötegelt fejlesztés első](../articles/batch/batch-dotnet-get-started.md)
+* [A kötegelt fejlesztés első](../articles/batch/quick-run-dotnet.md)
 * [Használja az Azure Batch-Kódminták](https://github.com/Azure/azure-batch-samples)
 * [Kis prioritású virtuális gépek használata a kötegelt](../articles/batch/batch-low-pri-vms.md)
 * [HPC tárolóalapú munkafolyamatok hibaüzenettel kötegelt hajógyárnak](https://github.com/Azure/batch-shipyard)
 * [A kötegelt az R nyelv használatával](https://github.com/Azure/doAzureParallel)
+* [Futtassa az Azure elosztott mérnöki eszközkészlet kötegelt](https://github.com/Azure/aztk)
 
 ## <a name="workload-managers"></a>Munkaterhelés-kezelők
 
@@ -127,26 +128,30 @@ A nagyméretű kötegelt és HPC munkaterhelések igényekkel rendelkezhetnek ad
 További információ:
 
 * [Párhuzamos fájlrendszerek HPC tárolás az Azure-on](https://blogs.msdn.microsoft.com/azurecat/2017/03/17/parallel-file-systems-for-hpc-storage-on-azure/)
+* Nagy teljesítményű felhőalapú tárolási megoldások az [Avere](http://www.averesystems.com/about-us/about-avere) (most [csatlakoztatni a Microsoft](https://blogs.microsoft.com/blog/2018/01/03/microsoft-to-acquire-avere-systems-accelerating-high-performance-computing-innovation-for-media-and-entertainment-industry-and-beyond/))
 
 
 ## <a name="related-azure-services"></a>Kapcsolódó Azure-szolgáltatások
 
 Az Azure virtuális gépek, a virtuálisgép-méretezési csoportok, a kötegelt és a kapcsolódó számítási szolgáltatások olyan Azure HPC-megoldások többsége alapját. A megoldás azonban számos kapcsolódó Azure-szolgáltatások előnyeinek életbe. Ez egy részleges lista:
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Tárolás
 
 * [A BLOB, table és a queue storage](../articles/storage/storage-introduction.md)
 * [A File storage](../articles/storage/storage-files-introduction.md)
 
 ### <a name="data-and-analytics"></a>Adatok és analitika
-* [HDInsight](../articles/hdinsight/hadoop/apache-hadoop-introduction.md) a Hadoop-fürtök az Azure-on
+* [HDInsight](../articles/hdinsight/hadoop/apache-hadoop-introduction.md)
 * [Data Factory](../articles/data-factory/introduction.md)
 * [Data Lake Store](../articles/data-lake-store/data-lake-store-overview.md)
 * [Machine Learning](../articles/machine-learning/machine-learning-what-is-machine-learning.md)
 * [SQL Database](../articles/sql-database/sql-database-technical-overview.md)
 
+### <a name="ai-and-cognitive-services"></a>AI és kognitív szolgáltatások
+* [Batch AI](../articles/batch-ai/overview.md)
+
 ### <a name="networking"></a>Hálózat
-* [Virtuális hálózat](../articles/virtual-network/virtual-networks-overview.md)
+* [Virtual Network](../articles/virtual-network/virtual-networks-overview.md)
 * [ExpressRoute](../articles/expressroute/expressroute-introduction.md)
 
 ### <a name="containers"></a>Tárolók
@@ -160,7 +165,7 @@ Az Azure virtuális gépek, a virtuálisgép-méretezési csoportok, a kötegelt
 Az alábbiakban példát kell megoldani az üzleti problémák Azure HPC-megoldás az ügyfelek:
 
 * [ANEO](https://customers.microsoft.com/story/it-provider-finds-highly-scalable-cloud-based-hpc-redu) 
-* [Globális P & C AXA](https://customers.microsoft.com/story/axa-global-p-and-c)
+* [AXA Global P&C](https://customers.microsoft.com/story/axa-global-p-and-c)
 * [Axioma](https://customers.microsoft.com/story/axioma-delivers-fintechs-first-born-in-the-cloud-multi-asset-class-enterprise-risk-solution)
 * [d3View](https://customers.microsoft.com/story/big-data-solution-provider-adopts-new-cloud-gains-thou)
 * [Hymans Robertson](https://customers.microsoft.com/story/hymans-robertson)
@@ -172,7 +177,7 @@ Az alábbiakban példát kell megoldani az üzleti problémák Azure HPC-megold�
 * [Torony Watson](https://customers.microsoft.com/story/insurance-tech-provider-delivers-disruptive-solutions)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ a megoldások nagy számítási [szimuláció mérnöki](https://simulation.azure.com/), [megjelenítési](https://simulation.azure.com/), [banki és nagy piacok](https://finance.azure.com/), és [genomika](https://enterprise.microsoft.com/en-us/industries/health/genomics/) .
 * A legújabb bejelentésekért lásd: [A Microsoft HPC és Batch csapatának blogja](http://blogs.technet.com/b/windowshpc/) és [Azure-blog](https://azure.microsoft.com/blog/tag/hpc/).
 

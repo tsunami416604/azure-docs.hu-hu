@@ -3,8 +3,8 @@ title: "Szolgáltatásidentitás (MSI) az Azure Active Directory felügyelete"
 description: "Az Azure-erőforrások Szolgáltatásidentitás felügyelt áttekintése."
 services: active-directory
 documentationcenter: 
-author: bryanla
-manager: mbaldwin
+author: daveba
+manager: mtillman
 editor: 
 ms.service: active-directory
 ms.devlang: 
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: 
 ms.workload: identity
 ms.date: 12/15/2017
-ms.author: bryanla
+ms.author: daveba
 ms.reviewer: skwan
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 53577c8da5f82235284d1cb9e48f2d47254aa6bd
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.openlocfilehash: 95980c082b09ad959ab8bbaae0250b40ac08d2c8
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 02/03/2018
 ---
 #  <a name="managed-service-identity-msi-for-azure-resources"></a>Szolgáltatás-identitás (MSI) felügyelt Azure-erőforrások
 
@@ -84,7 +84,7 @@ Az Azure-szolgáltatásokat támogatja a felügyelt szolgáltatás identitást.
 
 | Szolgáltatás | status | Dátum | Konfigurálás | A jogkivonat beolvasása |
 | ------- | ------ | ---- | --------- | ----------- |
-| Azure-alapú virtuális gépek | Előzetes verzió | 2017. szeptember | [Azure CLI](msi-qs-configure-cli-windows-vm.md)<br>[Az Azure Resource Manager-sablonok](msi-qs-configure-template-windows-vm.md) | [Bash/Curl](msi-how-to-use-vm-msi-token.md#get-a-token-using-curl)<br>[A HTTP/REST](msi-how-to-use-vm-msi-token.md#get-a-token-using-http) |
+| Azure-alapú virtuális gépek | Előzetes verzió | 2017. szeptember | [Azure CLI](msi-qs-configure-cli-windows-vm.md)<br>[Az Azure Resource Manager-sablonok](msi-qs-configure-template-windows-vm.md) | [Bash/Curl](msi-how-to-use-vm-msi-token.md#get-a-token-using-curl)<br>[HTTP/REST](msi-how-to-use-vm-msi-token.md#get-a-token-using-http) |
 
 ### <a name="azure-services-that-support-azure-ad-authentication"></a>Azure-szolgáltatások, a támogatás az Azure AD-hitelesítés
 
@@ -92,10 +92,10 @@ A következő szolgáltatásokat támogatja az Azure AD-alapú hitelesítés, é
 
 | Szolgáltatás | Erőforrás-azonosító | status | Dátum | Hozzáférés hozzárendelése |
 | ------- | ----------- | ------ | ---- | ------------- |
-| Azure Resource Manager | https://Management.Azure.com/ | Elérhető | 2017. szeptember | [Azure CLI](msi-howto-assign-access-CLI.md) |
-| Azure Key Vault | https://vault.Azure.NET/ | Elérhető | 2017. szeptember | |
-| Azure Data Lake | https://datalake.Azure.NET/ | Elérhető | 2017. szeptember | |
-| Azure SQL | https://Database.Windows.NET/ | Elérhető | 2017. október | |
+| Azure Resource Manager | https://management.azure.com/ | Elérhető | 2017. szeptember | [Azure CLI](msi-howto-assign-access-CLI.md) |
+| Azure Key Vault | https://vault.azure.net/ | Elérhető | 2017. szeptember | |
+| Azure Data Lake | https://datalake.azure.net/ | Elérhető | 2017. szeptember | |
+| Azure SQL | https://database.windows.net/ | Elérhető | 2017. október | |
 
 ## <a name="how-much-does-managed-service-identity-cost"></a>Milyen mértékű nem felügyelt Szolgáltatásidentitás költség?
 

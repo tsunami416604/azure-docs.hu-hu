@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 11/16/2017
 ms.author: genli
-ms.openlocfilehash: 54ca65ac6fa794c542fc07cd64458b17c327d56d
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.openlocfilehash: 362614d28cf62bd288d8aff10539c81381474955
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Azure tárterület-áttelepítés kapcsolatos gyakori kérdések
 
@@ -280,7 +280,7 @@ A más felhasználók hozzáférésének a tárolási erőforrások:
       
     - **AzCopy**: hozzáfűzése **-másodlagos** a tárfiók nevét a másodlagos végpont elérésére az URL-cím számára. Példa:  
      
-      https://storageaccountname-Secondary.BLOB.Core.Windows.NET/vhds/BlobName.vhd
+      https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd
 
     - **SAS-jogkivonat**: egy SAS-jogkivonat segítségével érheti el az adatait a végpontról. További információkért lásd: [használata közös hozzáférésű jogosultságkód](storage-dotnet-shared-access-signature-part-1.md).
 
@@ -294,6 +294,10 @@ De egyéni tartományok nem HTTPS. További információkért lásd: [állítson
 Nincs mód FTP segítségével közvetlenül a tárfiók eléréséhez. Azonban állítson be egy Azure virtuális gépet, és telepítse az FTP-kiszolgáló a virtuális gépen. A fájlok tárolására az Azure-fájlok megosztáson vagy a virtuális gép számára elérhető adatlemezt FTP-kiszolgáló lehet.
 
 Ha azt szeretné, csak az adatok letöltése Tártallózó vagy más hasonló alkalmazás használata nélkül, előfordulhat, hogy fogja tudni használni az SAS-tokent. További információkért lásd: [használata közös hozzáférésű jogosultságkód](storage-dotnet-shared-access-signature-part-1.md).
+
+**Hogyan tudom át Blobok egy tárfiókot a másik?**
+
+ Ehhez használja a [Blob-áttelepítési parancsfájl](../scripts/storage-common-transfer-between-storage-accounts.md).
 
 ## <a name="need-help-contact-support"></a>Segítség Forduljon a támogatási szolgálathoz.
 

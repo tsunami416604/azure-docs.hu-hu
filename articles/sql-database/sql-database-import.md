@@ -10,16 +10,16 @@ ms.assetid: cf9a9631-56aa-4985-a565-1cacc297871d
 ms.service: sql-database
 ms.custom: load & move data
 ms.devlang: NA
-ms.date: 06/26/2017
+ms.date: 01/29/2018
 ms.author: carlrab
 ms.workload: Active
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.openlocfilehash: 34dee9511822acec46ba4854729939b84f3c06c6
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: a37fa94df794487969dfbaebf7a001de16857ea7
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="import-a-bacpac-file-to-a-new-azure-sql-database"></a>Új Azure SQL-adatbázis BACPAC fájl importálása
 
@@ -27,10 +27,6 @@ Ha egy adatbázis archívumból importálnia kell vagy egy másik platformról �
 
 > [!IMPORTANT] 
 > Az adatbázis az Azure SQL Database az áttelepítés után válassza ki az adatbázist, a jelenlegi kompatibilitási szinten (100. szint a AdventureWorks2008R2 adatbázis) vagy magasabb szinten működik. A implications és a beállításokat egy adatbázis kompatibilitási szintű működő további információkért lásd: [adatbázis kompatibilitási szintje ALTER](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level). Lásd még: [adatbázis HATÓKÖRŰ konfiguráció ALTER](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql) kompatibilitási szintre vonatkozó további adatbázis-szintű beállítással kapcsolatos információkat.   >
-
-> [!NOTE]
-> Egy új adatbázist egy BACPAC importálni, először létre kell hoznia egy Azure SQL Database logikai kiszolgálóhoz. Az oktatóanyag bemutatja, hogyan egy SQL Server-adatbázis áttelepítése az Azure SQL Database szolgáltatásba SQLPackage, lásd: [SQL Server-adatbázis áttelepítése](sql-database-migrate-your-sql-server-database.md)
->
 
 ## <a name="import-from-a-bacpac-file-using-azure-portal"></a>Azure-portál használatával BACPAC-fájlból való importálása
 
@@ -109,7 +105,7 @@ $importStatus
 > [!TIP]
 Egy másik mintaparancsfájl, lásd: [adatbázis BACPAC-fájlból való importálása](scripts/sql-database-import-from-bacpac-powershell.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Megtudhatja, hogyan csatlakozhat, és az importált SQL-adatbázis lekérdezése, lásd: [Csatlakozás SQL Database adatbázishoz az SQL Server Management Studio eszközt, és végezze el a T-SQL-mintalekérdezés](sql-database-connect-query-ssms.md).
 * További információ a BACPAC-fájlokkal végzett migrálásról az SQL Server ügyféltanácsadói csapat blogján: [Migrálás SQL Serverről az Azure SQL Database-re BACPAC-fájlokkal](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
 * A teljes SQL Server adatbázis áttelepítési folyamat, többek között teljesítmény javaslatok leírását lásd: [egy SQL Server-adatbázis áttelepítése az Azure SQL Database](sql-database-cloud-migrate.md).

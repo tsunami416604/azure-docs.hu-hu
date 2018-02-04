@@ -1,7 +1,5 @@
 # Áttekintés
 ## [Fejlesztői útmutató](azure-developer-guide.md) 
-## [Az Azure szolgáltatásainak áttekintése](../../fundamentals-introduction-to-azure.md?toc=%2fazure%2fguides%2fdeveloper%2ftoc.json)
-## [A portál áttekintése](../../azure-portal-overview.md?toc=%2fazure%2fguides%2fdeveloper%2ftoc.json)
 ## [SDK-k és eszközök](https://docs.microsoft.com/azure/index#pivot=sdkstools)
 
 # Első lépések
@@ -14,7 +12,7 @@
 ### [Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-create-your-first-application-in-visual-studio)
 ### [Container Service](https://docs.microsoft.com/azure/container-service/dcos-swarm/container-service-deployment) 
 
-# oktatóanyagokat
+# Oktatóanyagok
 ## Webalkalmazás létrehozása és üzembe helyezése
 ### [.NET és SQL DB](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase)
 ### [Node.js és MongoDB](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-nodejs-mongodb-app)
@@ -106,10 +104,10 @@
 ### [Azure PowerShell](https://docs.microsoft.com/powershell/)
 ## [Számlázás](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview)
 
-# Erőforrások
+# További források
 ## [Az Azure-ra vonatkozó korlátok és kvóták](../../azure-subscription-service-limits.md?toc=%2fazure%2fguides%2fdeveloper%2ftoc.json)
 ## [Azure-régiók](https://azure.microsoft.com/regions/)
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
-## [Példák](https://azure.microsoft.com/resources/samples/)
+## [Minták](https://azure.microsoft.com/resources/samples/)
 ## [Videók](https://azure.microsoft.com/resources/videos/home/)

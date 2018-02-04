@@ -16,20 +16,18 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/19/2018
 ms.author: ashishth
-ms.openlocfilehash: 85383cc32e67db1f7e6964dc0b55bf3977311d40
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 49277871026e79b871b0216c05e051a1c93336b3
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="hadoop-architecture-in-hdinsight"></a>Hdinsight Hadoop-architektúra
+# <a name="hadoop-architecture-in-hdinsight"></a>Hadoop-architektúra a HDInsightban
 
 Hadoop két fő összetevőjének, a nagy sűrűségű fájlrendszerrel (HDFS), amely a tároló és a még egy másik erőforrás egyeztető (YARN) feldolgozási biztosító tartalmazza. Tárolás és feldolgozás képességekkel fürt válik a kívánt adatok feldolgozási végrehajtásához MapReduce programok futtatására képes, vagyis.
 
 > [!NOTE]
-> Egy HDFS jellemzően nincs telepítve a HDInsight-fürt tárolást belül. Ehelyett egy HDFS-kompatibilis felület réteg Hadoop-összetevők használja. A tényleges tárolási lehetőségek vagy az Azure Storage, vagy az Azure Data Lake Store biztosítja. A Hadoop a MapReduce-feladatok végrehajtása a HDInsight-fürt futtatása, mintha egy HDFS voltak jelen, és ezért az nem tárolási igényei támogatásához módosítások szükségesek. A HDInsight Hadoop, a tárolási kihelyezett van, de YARN feldolgozási alappillére marad. 
-
-<!--   As described in [HDInsight architecture](hdinsight-architecture.md)  -->
+> Egy HDFS jellemzően nincs telepítve a HDInsight-fürt tárolást belül. Ehelyett egy HDFS-kompatibilis felület réteg Hadoop-összetevők használja. A tényleges tárolási lehetőségek vagy az Azure Storage, vagy az Azure Data Lake Store biztosítja. A Hadoop a MapReduce-feladatok végrehajtása a HDInsight-fürt futtatása, mintha egy HDFS voltak jelen, és ezért az nem tárolási igényei támogatásához módosítások szükségesek. A HDInsight Hadoop, a tárolási kihelyezett van, de YARN feldolgozási alappillére marad. További információkért lásd: [Azure HDInsight bemutatása](hadoop/apache-hadoop-introduction.md).
 
 Ez a cikk a YARN, és hogyan koordinálja a hdinsight-alkalmazások végrehajtási be.
 
@@ -56,8 +54,7 @@ Az összes HDInsight-fürttípusok YARN telepítése. Az erőforrás-kezelő mag
 
 ![A HDInsight YARN](./media/hdinsight-hadoop-architecture/yarn-on-hdinsight.png)
 
-## <a name="see-also"></a>Lásd még
+## <a name="next-steps"></a>További lépések
 
 * [A HDInsight Hadoop MapReduce használata](hadoop/hdinsight-use-mapreduce.md)
-
-<!--  * [HDInsight Architecture](hdinsight-architecture.md)  -->
+* [Az Azure HDInsight bemutatása](hadoop/apache-hadoop-introduction.md)

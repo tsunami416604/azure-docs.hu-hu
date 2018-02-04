@@ -7,7 +7,7 @@ Az alábbi példában a cURL eszköz a .zip-fájlt tartalmazó kérés küldése
 Cserélje le a `<deployment_user>` helyőrző, valamint az üzembe helyezési hitelesítő adatok. Amikor a cURL kéri, írja be a jelszót. Az alkalmazás üzembe helyezési hitelesítő adatok beállítása, lásd: [beállítása és a felhasználói szintű hitelesítő adatok alaphelyzetbe állítása](../articles/app-service/app-service-deployment-credentials.md#userscope).   
 
 ```bash
-curl POST -u <deployment_user> --data-binary @"<zip_file_path>" https://<app_name>.scm.azurewebsites.net/api/zipdeploy
+curl -X POST -u <deployment_user> --data-binary @"<zip_file_path>" https://<app_name>.scm.azurewebsites.net/api/zipdeploy
 ```
 
 A kérelem elindítja a leküldéses telepítési feltöltött .zip fájlból. Az aktuális és korábbi telepítések https://<app_name>.scm.azurewebsites.net/api/deployments végpont használatával tekintheti meg a következő cURL-példában látható módon. Ebben az esetben cserélje le `<app_name>` az alkalmazás nevével és `<deployment_user>` az üzembe helyezési hitelesítő adatok a felhasználónévvel.

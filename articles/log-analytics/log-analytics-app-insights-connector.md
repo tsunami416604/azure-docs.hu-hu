@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: banders
-ms.openlocfilehash: e3ff3d9c667e00995daa2023a7137870247b9ab3
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 49a78faa98bd7eb3da16dc069f65ef39b5e092af
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/03/2018
 ---
-# <a name="application-insights-connector-solution-preview-in-operations-management-suite-oms"></a>Application Insights-összekötő megoldás (előzetes verzió) Operations Management Suite (OMS)
+# <a name="application-insights-connector-management-solution-preview"></a>Application Insights-összekötő felügyeleti megoldás (előzetes verzió) 
 
 ![Application Insights szimbólum](./media/log-analytics-app-insights-connector/app-insights-connector-symbol.png)
 
-Az alkalmazások Insights-összekötő a megoldással teljesítménnyel kapcsolatos problémák diagnosztizálásához és megérteni a felhasználók mit az alkalmazással, ha a számítógép megfigyelés alatt áll a [Application Insights](../application-insights/app-insights-overview.md). Az Application Insights fejlesztők látható azonos telemetriai nézet áll rendelkezésre az OMS Szolgáltatáshoz. Azonban ha integrálja az Application Insights alkalmazások OMS, látható-e az alkalmazások jobb lesz, azzal, hogy a művelet és az alkalmazások adatainak egy helyen. Az azonos nézetek rendelkező segítségével az alkalmazásfejlesztők együttműködni. A közös nézetek csökkentheti a idő észlelésére és az alkalmazás és a platform-problémák megoldása.
+Az alkalmazások Insights-összekötő a megoldással teljesítménnyel kapcsolatos problémák diagnosztizálásához és megérteni a felhasználók mit az alkalmazással, ha a számítógép megfigyelés alatt áll a [Application Insights](../application-insights/app-insights-overview.md). Az Application Insights fejlesztők látható azonos telemetriai nézeteinek Naplóelemzési érhetők el. Azonban ha Log Analytics integrálja az Application Insights-alkalmazásokat, látható-e az alkalmazások jobb lesz, azzal, hogy a művelet és az alkalmazások adatainak egy helyen. Az azonos nézetek rendelkező segítségével az alkalmazásfejlesztők együttműködni. A közös nézetek csökkentheti a idő észlelésére és az alkalmazás és a platform-problémák megoldása.
 
 A megoldás használata esetén is:
 
 - Az Application Insights alkalmazások megtekintése az egyik helyen, akkor is, ha a különböző Azure-előfizetések
 - Az alkalmazásadatok infrastruktúra adatainak
 - Alkalmazás-adatok ábrázolása a naplófájl-keresési nézetből
-- Forgáspont Naplóelemzési adatokból az Application Insights-alkalmazásban, az OMS és az Azure portálon
+- Forgáspont Naplóelemzési adatokból az Application Insights-alkalmazásban, az Azure-portálon
 
 ## <a name="connected-sources"></a>Összekapcsolt források
 
@@ -63,8 +63,8 @@ Körülbelül 30 percet, az adatok elérhetővé válik, és az Application Insi
 
 Ne feledje egyéb szempontok:
 
-- Csak az Application Insights alkalmazások hozzákapcsolhatja egy OMS-munkaterület.
-- Csak társíthatja [Standard vagy prémium Application Insights-erőforrások](https://azure.microsoft.com/pricing/details/application-insights) OMS szolgáltatáshoz. A Naplóelemzési ingyenes szint is használhatja.
+- Csak az Application Insights alkalmazások hozzákapcsolhatja egy Naplóelemzési munkaterület.
+- Csak társíthatja [Standard vagy prémium Application Insights-erőforrások](https://azure.microsoft.com/pricing/details/application-insights) szolgáltatáshoz. A Naplóelemzési ingyenes szint is használhatja.
 
 ## <a name="management-packs"></a>Felügyeleti csomagok
 
@@ -129,7 +129,7 @@ Perspektíva összetevők attól függően, hogy a keresési lekérdezés friss�
 
 ### <a name="pivot-to-an-app-in-the-azure-portal"></a>Forgáspont alkalmazásokhoz az Azure-portálon
 
-Application Insights-összekötő paneleken úgy tervezték, hogy lehetővé teszik a kijelölt Application Insights alkalmazásba forgáspont *használatakor az OMS-portálon*. A megoldás egy magas szintű felügyeleti platform, amely segít az alkalmazás hibaelhárítása is használhatja. Amikor megjelenik egy potenciális problémát sem az egymáshoz kapcsolódó alkalmazások, vagy részletezési bele az OMS search is, vagy akkor is forgáspont közvetlenül az Application Insights alkalmazás számára.
+Application Insights-összekötő paneleken úgy tervezték, hogy lehetővé teszik a kijelölt Application Insights alkalmazásba forgáspont *használatakor az OMS-portálon*. A megoldás egy magas szintű felügyeleti platform, amely segít az alkalmazás hibaelhárítása is használhatja. Amikor megjelenik egy potenciális problémát sem az egymáshoz kapcsolódó alkalmazások, vagy részletezési bele a Naplóelemzési keresési is, vagy akkor is forgáspont közvetlenül az Application Insights alkalmazás számára.
 
 Forgáspont, kattintson a három pontot (**...** ), amely minden sor végén jelenik meg, és válassza ki **nyissa meg az Application Insightsban**.
 
@@ -140,7 +140,7 @@ Forgáspont, kattintson a három pontot (**...** ), amely minden sor végén jel
 
 ### <a name="sample-corrected-data"></a>A minta-javítani adatok
 
-Az Application Insights biztosít  *[javítási mintavételi](../application-insights/app-insights-sampling.md)*  telemetriai forgalom csökkentése érdekében. Az Application Insights-alkalmazás mintavételi engedélyezi, az Application Insights és az OMS tárolt bejegyzések csökkentett számos nyílik meg. Amíg az adatok konzisztenciájának megőrződik a **Application Insights-összekötő** perspektívák, és a lap a egyéni lekérdezések általában elhárítja mintaadatokat manuálisan.
+Az Application Insights biztosít  *[javítási mintavételi](../application-insights/app-insights-sampling.md)*  telemetriai forgalom csökkentése érdekében. Az Application Insights-alkalmazás mintavételi engedélyezi, az Application Insights és a Naplóelemzési tárolt bejegyzések csökkentett számos nyílik meg. Amíg az adatok konzisztenciájának megőrződik a **Application Insights-összekötő** perspektívák, és a lap a egyéni lekérdezések általában elhárítja mintaadatokat manuálisan.
 
 Itt látható egy példa a naplófájl-keresési lekérdezés mintavételi javítása:
 
@@ -162,7 +162,7 @@ A megoldás a következő telemetriai típusú adatokat fogad az Application Ins
 - Lapmegtekintések – munkaterület fogadásához Lapmegtekintések, konfigurálnia kell összegyűjteni ezeket az információkat az alkalmazások. További információkat lásd: [PageViews](../application-insights/app-insights-api-custom-events-metrics.md#page-views).
 - Egyéni események – egyéni események fogadásához munkaterület konfigurálnia kell az alkalmazások összegyűjteni ezeket az információkat. További információkat lásd: [TrackEvent](../application-insights/app-insights-api-custom-events-metrics.md#trackevent).
 
-Amint az elérhetővé válik az Application Insights OMS adatok érkezik.
+Amint az elérhetővé válik adatok az Application Insights szolgáltatáshoz érkezik.
 
 ## <a name="output-data"></a>Kimeneti adatok
 
