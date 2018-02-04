@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/31/2018
 ms.author: jeffgilb
 ms.reviewer: ppacent
-ms.openlocfilehash: c8dd2866e24faacfccff7f5f490710853f426345
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 75a8f521135757ceb99cb0086f331c35827e4800
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Az Azure verem nyilvános kulcsokra épülő infrastruktúrát tanúsítványkövetelmények
 Azure verem van egy nyilvános infrastruktúra-hálózaton kívülről hozzáférhető nyilvános IP-címtartományból egy kis készletét a verem Azure-szolgáltatások, és esetleg a bérlői virtuális gépek használatával. Azure verem központi telepítése során a megfelelő DNS-neveit Azure verem nyilvános infrastruktúra végpontokkal PKI-tanúsítványok szükségesek. Ez a cikk nyújt tájékoztatást:
@@ -27,6 +27,8 @@ Azure verem van egy nyilvános infrastruktúra-hálózaton kívülről hozzáfé
 - Milyen tanúsítványokra szükség Azure verem telepítése
 - A folyamat az i alapprofil megfelelő tanúsítványok beszerzése
 - Hogyan lehet előkészíteni, érvényesítése és azok a tanúsítványok központi telepítése során használja
+> [!NOTE]
+> Központi telepítése során a telepítési mappát, amely megfelel az identitásszolgáltató (az Azure AD vagy AD FS) ellen telepít tanúsítványokat kell másolnia. Végpontjai használja a rendszer egy tanúsítványt, ha minden központi telepítési mappába, az alábbi táblázatban leírt módon, hogy a tanúsítványfájl kell másolnia. A mappastruktúra a központi telepítés virtuális gépen előre épül, és helyen találhatók: C:\CloudDeployment\Setup\Certificates. 
 
 ## <a name="certificate-requirements"></a>Tanúsítványkövetelmények
 Az alábbi lista a tanúsítvány Azure verem telepítéséhez szükséges követelményeket ismerteti: 

@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 01/31/2018
 ms.author: billmath
-ms.openlocfilehash: 8a36fc45334a2f1d12e6eabbfb16731ccc9998bf
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
-ms.translationtype: HT
+ms.openlocfilehash: 021f009e66e57665a2252646b210f0e6dc55d33c
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-ad-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure AD Connect szinkronizálása: elsődleges hely az Office 365-erőforrások konfigurálása
-Ez a témakör célja lépésre PreferredDataLocation beállítása az Azure AD Connect szinkronizálási szolgáltatás. Amikor egy ügyfél Multi-földrajzi szolgáltatásait használja az Office 365-ben, ezt az attribútumot használja az Office 365-adatokat a felhasználó földrajzi helye megadását.
+Ez a témakör célja lépésre PreferredDataLocation beállítása az Azure AD Connect szinkronizálási szolgáltatás. Amikor egy ügyfél Multi-földrajzi szolgáltatásait használja az Office 365-ben, ezt az attribútumot használja az Office 365-adatokat a felhasználó földrajzi helye megadását. A feltételek **régió** és **földrajzi** cserélhető szolgálnak.
 
 > [!IMPORTANT]
 > Multi-földrajzi jelenleg előzetes verzió. Ha szeretné a részt venni az előzetes programban, lépjen kapcsolatba a Microsoft-képviselőjére.
@@ -29,36 +29,41 @@ Ez a témakör célja lépésre PreferredDataLocation beállítása az Azure AD 
 >
 
 ## <a name="enable-synchronization-of-preferreddatalocation"></a>PreferredDataLocation szinkronizálásának engedélyezése
-Alapértelmezés szerint a felhasználók az Office 365-erőforrások és az Azure AD-bérlő ugyanabban a régióban találhatók. Például ha a bérlő Észak-Amerika található, majd a felhasználó Exchange-postaládák is található Észak-Amerikában. Több nemzeti szervezet számára ez nem feltétlenül optimális. A felhasználó régió úgy, hogy az attribútum preferredDataLocation adható meg.
+Alapértelmezés szerint a felhasználók az Office 365-erőforrások, az Azure AD-bérlő azonos földrajzi találhatók. Például ha a bérlő Észak-Amerika található, majd a felhasználó Exchange-postaládák is található Észak-Amerikában. Több nemzeti szervezet számára ez nem feltétlenül optimális. A felhasználó földrajzi úgy, hogy az attribútum preferredDataLocation adható meg.
 
-Beállítások alapján ez az attribútum, akkor a felhasználó Office 365 erőforrások, például a postaláda és a onedrive-ban ugyanabban a régióban, mint a felhasználónak pedig továbbra is a teljes szervezet számára több bérlő.
+Beállítások alapján ez az attribútum, akkor a felhasználó Office 365 erőforrások, például a postaláda és a onedrive vállalati verzió, a felhasználó ugyanazon földrajzi pedig továbbra is a teljes szervezet számára több bérlő.
 
 > [!IMPORTANT]
 > Jogosult Multi-földrajzi, rendelkeznie kell legalább 5000 munkaállomásokat az Office 365-előfizetéshez
 >
 >
 
-Az Office 365 rendszerben elérhető Multi-földrajzi régiók a következők:
+Az Office 365 összes Geos listája található [esetén az adatok található](https://aka.ms/datamaps).
 
-| Régió | Leírás |
+Az Office 365 Multi-földrajzi elérhető geos a következők:
+
+| Geo (Térség) | preferredDataLocation érték |
 | --- | --- |
-| NÉV | Észak-Amerika |
-| EUR | Európa |
-| APC | Ázsia és a Csendes-óceáni térség |
-| JPN | Japán |
-| AUSZTRÁLIAI | Ausztrália |
-| IS | Kanada |
-| GBR | Nagy-Britannia |
-| LAM | Latin-Amerika |
+| Ázsia és a Csendes-óceáni térség | APC |
+| Ausztrália | AUSZTRÁLIAI |
+| Kanada | IS |
+| Európai Unió | EUR |
+| India | IND |
+| Japán | JPN |
+| Dél-Korea | KOR |
+| Egyesült Királyság | GBR |
+| Egyesült Államok | NÉV |
 
-Nem minden Office 365 számítási feladattal támogatja a felhasználó régió beállítása.
+* Ha egy földrajzi nem szerepel ebben a táblázatban, például a Dél-Amerikában, akkor azt nem használható a Multi-földrajzi.
+* Indiai és dél koreai geos csak ügyfelek számlázási címet, és ezek geos a megvásárolt licencek számára elérhetők lesznek.
+* Nem minden Office 365 számítási feladattal a felhasználó földrajzi beállítás használatát támogatja.
 
 Az Azure AD Connect szinkronizálásának támogatja a **PreferredDataLocation** az attribútum **felhasználói** objektumok verziójában 1.1.524.0 és után. Pontosabban a következő módosításokat vezettek:
 
 * A séma az objektumtípus **felhasználói** a az Azure AD-összekötő az időtartam PreferredDataLocation attribútum, amely egyértékű karakterlánc típusú.
 * A séma az objektumtípus **személy** a Metaverzumban ki van bővítve PreferredDataLocation attribútum, amely karakterlánc típusú, és egyértékű tartalmazza.
 
-Alapértelmezés szerint a PreferredDataLocation attribútum nincs engedélyezve a szinkronizáláshoz. A szolgáltatás célja a nagyobb szervezeteknek, és nem mindenki számára előnyös azt. A felhasználók számára az Office 365 régió tárolására, mivel nincs a helyszíni Active Directoryban PreferredDataLocation attribútum attribútum is meg kell adnia. A topológiában a minden egyes szervezet különböző.
+Alapértelmezés szerint a PreferredDataLocation attribútum nincs engedélyezve a szinkronizáláshoz. A szolgáltatás célja a nagyobb szervezeteknek, és nem mindenki számára előnyös azt. A felhasználók számára az Office 365 földrajzi tárolására, mivel nincs a helyszíni Active Directoryban PreferredDataLocation attribútum attribútum is meg kell adnia. A topológiában a minden egyes szervezet különböző.
 
 > [!IMPORTANT]
 > Jelenleg az Azure AD lehetővé teszi, hogy a szinkronizált felhasználói objektumok és a felhő felhasználói PreferredDataLocation attribútum objektumok közvetlenül segítségével konfigurálható: az Azure AD PowerShell segítségével. Miután engedélyezte a szinkronizálási attribútum PreferredDataLocation, le kell állítania az Azure AD PowerShell segítségével állítsa be az attribútumot a **szinkronizált felhasználói objektumok** , az Azure AD Connect felülírják őket alapján a forrás attribútumértékek a helyszíni Active Directoryban.
@@ -245,13 +250,13 @@ Engedélyezze újra a beépített szinkronizálásütemezési:
 ## <a name="step-8-verify-the-result"></a>8. lépés: Az eredmény ellenőrzése
 Ellenőrizze a konfigurációt, majd engedélyezze a felhasználók számára az idő már.
 
-1. A régió adja hozzá a felhasználó a kijelölt attribútumot. Az elérhető régiók listáját található [ezt a táblázatot](#enable-synchronization-of-preferreddatalocation).  
+1. Adja hozzá a felhasználó a kijelölt attribútum a földrajzi. A rendelkezésre álló földrajzi listája megtalálható [ezt a táblázatot](#enable-synchronization-of-preferreddatalocation).  
 ![A felhasználó hozzá AD attribútum](./media/active-directory-aadconnectsync-feature-preferreddatalocation/preferreddatalocation-adattribute.png)
 2. Várjon, amíg az attribútum az Azure AD-szinkronizálásának engedélyezése.
 3. Exchange Online PowerShell használ, győződjön meg arról, hogy a postaláda régió helyesen van beállítva.  
 ![Postaláda-régiót állítsa be a felhasználó az Exchange Online](./media/active-directory-aadconnectsync-feature-preferreddatalocation/preferreddatalocation-mailboxregion.png)  
-Feltéve, hogy a bérlő jelölte meg kell tudni használni a szolgáltatás, a postaláda áthelyezése a megfelelő régióba. Ez a kiszolgálónév megnézi, ahol a postaláda ellenőrizheti.
-4. Győződjön meg arról, hogy ez a beállítás volt hatékony sok postafiókot, használja a parancsfájl a [Technet gallery](https://gallery.technet.microsoft.com/office/PowerShell-Script-to-a6bbfc2e). Ezt a parancsfájlt is rendelkezik Office 365 adatközpontok server előtagok és amely listája régióban található. Használat az előző lépésben hivatkozásként való ellenőrizze a postaláda helyét.
+Feltéve, hogy a bérlő jelölte meg kell tudni használni a szolgáltatás, a postaláda átkerül a megfelelő földrajzi. Ez a kiszolgálónév megnézi, ahol a postaláda ellenőrizheti.
+4. Győződjön meg arról, hogy ez a beállítás volt hatékony sok postafiókot, használja a parancsfájl a [Technet gallery](https://gallery.technet.microsoft.com/office/PowerShell-Script-to-a6bbfc2e). Ezt a parancsfájlt is rendelkezik Office 365 adatközpontok server előtagok és amely listája földrajzi található. Használat az előző lépésben hivatkozásként való ellenőrizze a postaláda helyét.
 
 ## <a name="next-steps"></a>További lépések
 

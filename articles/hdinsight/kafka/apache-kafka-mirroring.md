@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/07/2017
+ms.date: 01/31/2018
 ms.author: larryfr
-ms.openlocfilehash: a7063375ac4a2f9f172b5c380c2d5472a12e1bfb
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 87b5912e7f9244dc1be74ac357200122b194dbdc
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>Apache Kafka témakörök replikálhat a HDInsight Kafka MirrorMaker segítségével
 
@@ -120,7 +120,7 @@ Létrehozhat egy Azure virtuális hálózatra, és manuálisan fürtök Kafka, c
     export SOURCE_ZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
     ```
 
-    Cserélje le `$CLUSTERNAME` a kiindulási fürt nevével. Amikor a rendszer kéri, adja meg a jelszót a fürt (rendszergazda) bejelentkezési fiók.
+    Cserélje le `$CLUSTERNAME` a kiindulási fürt nevével. Ha a rendszer kéri, adja meg a fürt bejelentkezési (rendszergazdai) fiókjának jelszavát.
 
 3. Egy nevű üzenettémakör létrehozásához `testtopic`, használja a következő parancsot:
 
@@ -187,7 +187,7 @@ Létrehozhat egy Azure virtuális hálózatra, és manuálisan fürtök Kafka, c
     echo $DEST_BROKERHOSTS
     ```
 
-    Cserélje le `$CLUSTERNAME` a célfürt nevével. Amikor a rendszer kéri, adja meg a jelszót a fürt (rendszergazda) bejelentkezési fiók.
+    Cserélje le `$CLUSTERNAME` a célfürt nevével. Ha a rendszer kéri, adja meg a fürt bejelentkezési (rendszergazdai) fiókjának jelszavát.
 
     A `echo` parancs adatait adja vissza az alábbihoz hasonló:
 
@@ -209,6 +209,41 @@ Létrehozhat egy Azure virtuális hálózatra, és manuálisan fürtök Kafka, c
     Cserélje le **DEST_BROKERS** az előző lépésben broker adataival.
 
     További információk készítő konfigurációs, lásd: [készítő Configs](https://kafka.apache.org/documentation#producerconfigs) kafka.apache.org címen.
+
+5. Az alábbi parancsokkal a Zookeeper állomások találhatók a fürt céltárhelyét:
+
+    ```bash
+    # Install jq if it is not installed
+    sudo apt -y install jq
+    # get the zookeeper hosts for the source cluster
+    export DEST_ZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
+    ```
+
+    Cserélje le `$CLUSTERNAME` a célfürt nevével. Ha a rendszer kéri, adja meg a fürt bejelentkezési (rendszergazdai) fiókjának jelszavát.
+
+7. A HDInsight Kafka alapértelmezett konfigurációja nem engedélyezi a témakörök automatikus létrehozását. Az alábbi lehetőségek egyikét a tükrözés folyamat elindítása előtt kell használnia:
+
+    * **Hozzon létre a témakörök a célfürtön**: ezt a lehetőséget is lehetővé teszi a partíciókat és a replikációs tényező adjon meg.
+
+        A következő paranccsal létrehozhat időben témakörök:
+
+        ```bash
+        /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 2 --partitions 8 --topic testtopic --zookeeper $DEST_ZKHOSTS
+        ```
+
+        Cserélje le `testtopic` nevű, a témakörhöz, és hozzon létre.
+
+    * **A témakör az automatikus létrehozása a fürt konfigurálása**: Ezzel a beállítással MirrorMaker automatikusan létrehozza a témaköröket, azonban eltérő számú partíciót vagy replikációs tényező, mint a forrás témakör létrehozhat őket.
+
+        Konfigurálja a célfürt automatikusan létrehozza a témaköröket, hajtsa végre ezeket a lépéseket:
+
+        1. Az a [Azure-portálon](https://portal.azure.com), válassza ki a célhelyet Kafka fürt.
+        2. Válassza ki a fürt áttekintése __fürt irányítópult__. Válassza ki __HDInsight fürt irányítópult__. Amikor a rendszer kéri, hitelesíteni a fürt (rendszergazda) bejelentkezési hitelesítő adataival.
+        3. Válassza ki a __Kafka__ a lap bal oldali listában a szolgáltatást.
+        4. Válassza ki __Configs__ a lap közepén.
+        5. Az a __szűrő__ mezőbe írja be az érték `auto.create`. A szűrés a tulajdonságlista és megjeleníti a `auto.create.topics.enable` beállítást.
+        6. Módosítsa az értéket a `auto.create.topics.enable` true, és jelölje ki __mentése__. Megjegyzés hozzáadása, és válassza ki __mentése__ újra.
+        7. Válassza ki a __Kafka__ szolgáltatás, válassza __indítsa újra a__, majd válassza ki __indítsa újra az összes érintett__. Amikor a rendszer kéri, válassza ki a __megerősítése indítsa újra az összes__.
 
 ## <a name="start-mirrormaker"></a>Indítsa el a MirrorMaker
 
@@ -243,19 +278,17 @@ Létrehozhat egy Azure virtuális hálózatra, és manuálisan fürtök Kafka, c
     /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list $SOURCE_BROKERHOSTS --topic testtopic
     ```
 
-    Cserélje le `$CLUSTERNAME` a kiindulási fürt nevével. Amikor a rendszer kéri, adja meg a jelszót a fürt (rendszergazda) bejelentkezési fiók.
+    Cserélje le `$CLUSTERNAME` a kiindulási fürt nevével. Ha a rendszer kéri, adja meg a fürt bejelentkezési (rendszergazdai) fiókjának jelszavát.
 
      Amikor egy üres sort a kurzorral érkeznek, adja meg néhány szöveges üzeneteket. Az üzenettémakörbe küldött üzeneteket a témakör a **forrás** fürt. Amikor végzett, **Ctrl + C** a gyártó folyamat befejezéséhez.
 
-3. Az SSH-kapcsolatot a a **cél** fürt esetén használjon **Ctrl + C** a MirrorMaker folyamat befejezéséhez. Győződjön meg arról, hogy a cél a témakör és az üzenetek lettek replikálva, használja a következő parancsokat:
+3. Az SSH-kapcsolatot a a **cél** fürt esetén használjon **Ctrl + C** a MirrorMaker folyamat befejezéséhez. A folyamat befejezéséhez néhány másodpercet vehet igénybe. Győződjön meg arról, hogy az üzenetek a cél lettek replikálva, használja a következő parancsot:
 
     ```bash
-    DEST_ZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
-    /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $DEST_ZKHOSTS
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper $DEST_ZKHOSTS --topic testtopic --from-beginning
     ```
 
-    Cserélje le `$CLUSTERNAME` a célfürt nevével. Amikor a rendszer kéri, adja meg a jelszót a fürt (rendszergazda) bejelentkezési fiók.
+    Cserélje le `$CLUSTERNAME` a célfürt nevével. Ha a rendszer kéri, adja meg a fürt bejelentkezési (rendszergazdai) fiókjának jelszavát.
 
     Most már tartalmaz témakörök listáját `testtopic`, ami akkor jön létre, amikor MirrorMaster tükrözi a témakör a forrás-fürtről a célhelyre. A témakör sorból beolvasott üzenetekből ugyanazok a kiindulási fürt beírtak szerint.
 
@@ -265,7 +298,7 @@ Létrehozhat egy Azure virtuális hálózatra, és manuálisan fürtök Kafka, c
 
 A jelen dokumentumban leírt lépések az azonos Azure erőforráscsoport mindkét fürtöket létrehozni, mert az erőforráscsoportot az Azure portálon törölheti. Az erőforráscsoport törlése eltávolítja a következő Ez a dokumentum, az Azure-beli virtuális hálózatra és a fürt által használt tárfiók által létrehozott összes erőforrást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a dokumentumban megtanulhatta MirrorMaker Kafka fürt másolatának létrehozásához használja. Az alábbi hivatkozások segítségével felderíteni a más módon történő együttműködésre Kafka:
 

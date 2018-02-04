@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: szark
-ms.openlocfilehash: ccadf55c492c097ef96f25e469dbf36fc87b6102
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 771b3ffa0ece10e7373011536a12ed4cb1a1dd6d
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Nem támogatott disztribúciókkal kapcsolatos tudnivalók
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -143,6 +143,7 @@ A [Azure Linux ügynök](../windows/agent-user-guide.md?toc=%2fazure%2fvirtual-m
 * Az Azure Linux ügynök szükséges Python v2.6 +.
 * Az ügynök a python-pyasn1 modul is szükséges. A legtöbb terjesztéseket adja meg, ez különálló csomagként telepíthető.
 * Bizonyos esetekben az Azure Linux ügynök nem lehet NetworkManager kompatibilis. A felosztás által biztosított RPM/Deb-csomagok számos NetworkManager beállítása ütközés waagent-csomagot, és így is el fogja távolítani NetworkManager telepít a Linux-ügynök csomagja.
+* Az Azure Linux ügynök kell lennie a támogatott legalacsonyabb verziójú fent lásd a jelen cikk [részletek](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).
 
 ## <a name="general-linux-system-requirements"></a>Általános Linux rendszerre vonatkozó követelmények
 

@@ -1,6 +1,6 @@
 ---
 title: "Adja hozzá az Azure Naplóelemzés megoldások |} Microsoft Docs"
-description: "Az Operations Management Suite (OMS) / Log Analytics-kezelési megoldások programot, a képi megjelenítés és az adatokat, amelyek egy adott probléma terület körül átalakítani metrikák biztosítanak beszerzési szabályok gyűjteménye."
+description: "Az Azure-ban megoldások programot, a képi megjelenítés és az adatokat, amelyek egy adott probléma terület körül átalakítani metrikák biztosítanak beszerzési szabályok gyűjteménye."
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d951387882a5a8f5e0ebdc01841bb8384e4848ee
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 6c7d8d6946d89e4c6541636287e3022c444e0eb8
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="add-azure-log-analytics-management-solutions-to-your-workspace"></a>A munkaterület Azure Log Analytics-kezelési megoldások hozzáadása
 
-Napló elemzési megoldásokat, melyek **logika**, **képi megjelenítés**, és **adatok megszerzése szabályok** , amely egy adott körül átalakítani metrikákat biztosít probléma területen. Ez a cikk felsorolja a Naplóelemzési által támogatott felügyeleti megoldás, és bemutatja, hogyan hozzá és távolíthat el egy munkaterület az Azure portál használatával. Az OMS-portálon a megoldások végzi a megoldások is hozzáadhat.
+Napló elemzési megoldásokat, melyek **logika**, **képi megjelenítés**, és **adatok megszerzése szabályok** , amely egy adott körül átalakítani metrikákat biztosít probléma területen. Ez a cikk felsorolja a Naplóelemzési által támogatott felügyeleti megoldás, és bemutatja, hogyan hozzá és távolíthat el egy munkaterület az Azure portál használatával.
 
 Felügyeleti megoldás lehetővé teszi a részleteinek megtekintésével mélyebb betekintést:
 
@@ -34,9 +34,9 @@ Felügyeleti megoldás lehetővé teszi a részleteinek megtekintésével mélye
 > [!NOTE]
 > Naplóelemzési napló keresési funkcióját tartalmazza, így nem kell engedélyezni az adott felügyeleti megoldás telepítéséhez. Azonban elérhetővé adatmegjelenítésekkel, javasolt keresések és elemzések megoldások hozzáadásával a munkaterületre.
 
-Ez a cikk használ, megoldások hozzáadja egy munkaterület piactér Azure portál használatával. Megoldás hozzáadása után adatok gyűjtése az infrastruktúra található kiszolgálókról, és az OMS-szolgáltatásnak küldött. Az OMS általi feldolgozás szolgáltatás általában néhány percet vesz igénybe egy órát. Miután a szolgáltatás feldolgozza az adatokat, megtekintheti az OMS Szolgáltatáshoz.
+Ez a cikk használ, megoldások hozzáadja egy munkaterület piactér Azure portál használatával. Megoldás hozzáadása után adatok gyűjtése az infrastruktúra található kiszolgálókról, és Naplóelemzési küldött. Feldolgozás általában néhány percet vesz igénybe egy órát. Miután a szolgáltatás feldolgozza az adatokat, megtekintheti a Naplóelemzési.
 
-Olyan felügyeleti megoldást egyszerűen távolítsa el, amikor már nincs szükség. Ha eltávolít egy felügyeleti megoldás, az adatok nem küldi el az OMS Szolgáltatáshoz. Ha az ingyenes tarifacsomag, a megoldás eltávolítása csökkenti az adatok használva segít az adatok naponkénti kvótájának alatt maradjunk.
+Olyan felügyeleti megoldást egyszerűen távolítsa el, amikor már nincs szükség. Ha eltávolít egy felügyeleti megoldás, az adatokat a rendszer nem küld Naplóelemzési. Ha az ingyenes tarifacsomag, a megoldás eltávolítása csökkenti az adatok használva segít az adatok naponkénti kvótájának alatt maradjunk.
 
 ## <a name="view-available-management-solutions"></a>Rendelkezésre álló felügyeleti megoldások megjelenítése
 
@@ -126,14 +126,14 @@ Közösségi biztosított megoldások érhetők el a [Azure sablon gyűjtemény]
 ## <a name="data-collection-details"></a>Az gyűjtemény adatait
 Az alábbi táblázatok bemutatják az adatgyűjtési módszerek és egyéb hogyan adatgyűjtés Naplóelemzési megoldások és adatforrások részleteit. A táblák szerint vannak kategóriába ajánlatok megoldás, amely egyenlő [tarifacsomagok előfizetés](https://go.microsoft.com/fwlink/?linkid=827926). A tevékenység Naplóelemzési megoldás az ingyenesen elérhető árképzési szinteket érhető el.
 
-A napló Analytics Windows-ügynök és a System Center Operations Manager-ügynököt a következők azonos. A Windows-ügynök tartalmaz további szolgáltatásokat, hogy engedélyezi az OMS-munkaterület csatlakozhat, és egy proxyn keresztül történő irányításához. Ha használja az Operations Manager ügynök, az OMS-ügynök OMS kommunikálni kell megcélzott. A jelen táblázatban lévő Operations Manager-ügynökök az OMS-ügynököt az Operations Manager alkalmazáshoz kapcsolódó. Lásd: [csatlakozás az Operations Manager szolgáltatáshoz](log-analytics-om-agents.md) információ a Kapcsolódás a meglévő Operations Manager-környezetben az OMS Szolgáltatáshoz.
+A napló Analytics Windows-ügynök és a System Center Operations Manager-ügynököt a következők azonos. A Windows-ügynök tartalmaz további funkciókat, hogy engedélyezi a Naplóelemzési munkaterület csatlakozhat, és egy proxyn keresztül történő irányításához. Az Operations Manager ügynök használatakor, Log Analyticshez kommunikálni OMS-ügynököt kell megcélzott. A jelen táblázatban lévő Operations Manager-ügynökök az OMS-ügynököt az Operations Manager alkalmazáshoz kapcsolódó. Lásd: [csatlakozás az Operations Manager szolgáltatáshoz](log-analytics-om-agents.md) információt a meglévő Operations Manager-környezetben Log Analyticshez való kapcsolódás.
 
 > [!NOTE]
-> Ügynök, amelyekkel típusa határozza meg, hogyan küld adatokat a OMS-ben, a következő feltételeknek:
+> Ügynök, amelyekkel típusa határozza meg, hogyan küld adatokat a Naplóelemzési, a következő feltételeknek:
 > - Használhat a Windows-ügynök vagy Operations Manager-csatolású OMS-ügynököt.
-> - Amikor szükség az Operations Manager, az Operations Manager ügynök a megoldás mindig adatküldést az OMS-be az Operations Manager felügyeleti csoport használatával. Továbbá, amikor szükség az Operations Manager, az Operations Manager-ügynök a megoldás használja.
-> - Ha nincs szükség az Operations Manager és a táblázat mutatja be, hogy az Operations Manager ügynök adatainak zajlik az OMS-be a felügyeleti csoport használata, majd az Operations Manager ügynök mindig küld adatokat a OMS felügyeleti csoportok használatával. Windows-ügynökök a felügyeleti csoport megkerülése, és közvetlenül OMS küldik az adatokat.
-> - Amikor az Operations Manager ügynök nem történik adatküldés használjon felügyeleti csoportot, majd a adatküldést közvetlenül az OMS-be – a felügyeleti csoport kihagyásával.
+> - Amikor szükség az Operations Manager, az Operations Manager ügynök a megoldás mindig adatküldést szolgáltatáshoz az Operations Manager felügyeleti csoport használatával. Továbbá, amikor szükség az Operations Manager, az Operations Manager-ügynök a megoldás használja.
+> - Nincs szükség az Operations Manager és a táblázat azt mutatja, hogy az Operations Manager ügynök adatküldés Naplóelemzési használ a felügyeleti csoportban, akkor az Operations Manager ügynök mindig adatküldést szolgáltatáshoz felügyeleti csoportok használatával. Windows-ügynökök kihagyása a felügyeleti csoport, és közvetlenül Naplóelemzési küldik az adatokat.
+> - Ha Operations Manager ügynök nem történik adatküldés használjon felügyeleti csoportot, majd a küld adatokat közvetlenül a Naplóelemzési – a felügyeleti csoport kihagyásával.
 
 ### <a name="insight--analytics--log-analytics"></a>Betekintést & Analytics / Log Analytics
 
@@ -242,7 +242,7 @@ A következő információkat a nyilvános és privát előzetes vonatkozik:
 * Dolgot nem mindig működnek megfelelően.
   * Tartományon keresztül történő valami nem működik minden kisebb zajterhelést nem ad ki.
 * Az Előnézet gombra negatív hatással van a rendszeren esetlegesen / környezetben.
-  * Próbálja meg az OMS használata azonban néha váratlan dolog történik történik a rendszer negatív dolgot elkerülése érdekében.
+  * Próbálja meg negatív dolgot történik a rendszer használata esetén azonban néha váratlan dolog történik elkerülése érdekében.
 * Adatvesztés / eredményezhet.
 * Előfordulhat, hogy kérjük, hogy a diagnosztikai naplók és a problémák elhárítását más adatok gyűjtése.
 * A funkció vagy megoldás eltávolíthatja (ideiglenesen vagy véglegesen).

@@ -3,7 +3,7 @@ title: "Egy Windows virtuális gép felügyelt szolgáltatás identitás (MSI) h
 description: "Ez az oktatóanyag bemutatja, hogyan használják a Windows virtuális gép felügyelt szolgáltatás identitásának (MSI) az Azure Data Lake Store eléréséhez."
 services: active-directory
 documentationcenter: 
-author: skwan
+author: daveba
 manager: mtillman
 editor: 
 ms.service: active-directory
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: skwan
-ms.openlocfilehash: ad9b92f11571b013f371eb36c0676afb3e9e5213
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 367008c41aee6ee31811f7fa7ee4be69120b8851
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>Azure Data Lake Store eléréséhez használja a Windows virtuális gép felügyelt szolgáltatás identitásának (MSI)
 
@@ -77,7 +77,7 @@ A Data Lake Store-ban hozzon létre egy új mappát, és engedélyt ad a virtuá
 2. Kattintson a Data Lake Store az oktatóanyag használni kívánt.
 3. Kattintson a **adatkezelő** parancsra a parancssávon.
 4. A Data Lake Store gyökérmappájában van kiválasztva.  Kattintson a **hozzáférés** parancsra a parancssávon.
-5. Kattintson az **Add** (Hozzáadás) parancsra.  Az a **válasszon** mezőbe írja be például a virtuális gép neve **DevTestVM**.  Jelölje be a virtuális Gépet a keresési eredmények közül, majd kattintson a **válasszon**.
+5. Kattintson a **Hozzáadás** parancsra.  Az a **válasszon** mezőbe írja be például a virtuális gép neve **DevTestVM**.  Jelölje be a virtuális Gépet a keresési eredmények közül, majd kattintson a **válasszon**.
 6. Kattintson a **engedélyként válassza**.  Válassza ki **olvasási** és **Execute**, hozzáadása **Ez a mappa**, és adja hozzá **csak olyan hozzáférési engedélyek**.  Kattintson az **OK** gombra.  Az engedély sikeresen hozzá kell adni.
 7. Zárja be a **hozzáférés** panelen.
 8. Ebben az oktatóanyagban hozzon létre egy új mappát.  Kattintson a **új mappa** a parancssávon, és adja meg az új mappa nevét, például **TestFolder**.  Kattintson az **OK** gombra.

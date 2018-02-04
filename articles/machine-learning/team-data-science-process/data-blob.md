@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: fashah;garye;bradsev
-ms.openlocfilehash: a31b77ca2d315b506c925a83a5050c0e70c54842
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.author: garye;bradsev
+ms.openlocfilehash: f3388728b2c2ea699a2caf764dc0fd3e9ff19505
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="heading"></a>A speciális elemzés Azure blob-adatok feldolgozása
 Ez a dokumentum ismerteti az adatok felfedezése és az Azure Blob storage-ban tárolt adatok előállítása szolgáltatások. 
@@ -77,7 +77,7 @@ Most már készen áll az adatokba, és ez az adatkészlet funkcióinak generál
         print miss_num
 7. Ha az adatok egy adott oszlopban a hiányzó értékeket, elvetné azokat az alábbiak szerint:
    
-     dataframe_blobdata_noNA dataframe_blobdata.dropna() dataframe_blobdata_noNA.shape =
+     dataframe_blobdata_noNA = dataframe_blobdata.dropna()   dataframe_blobdata_noNA.shape
    
    Egy másik cserélje le a hiányzó értékeket módja a mód függvénnyel:
    

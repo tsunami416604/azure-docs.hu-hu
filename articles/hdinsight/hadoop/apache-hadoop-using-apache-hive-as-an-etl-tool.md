@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 1ccbfe23e9c887a98a0dbfa8031078a15c6e41b6
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 6d0d7c8643551dde69a7bf785de72c1ca984c580
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>Apache Hive használata a kinyerési, átalakítási és betöltési (ETL) eszköz
 
@@ -94,7 +94,8 @@ Az adatok célja nem egy adatbázist, ha a fájl a megfelelő formátumú a lek�
 
 Ha az adatok több műveletek végrehajtása az ETL-folyamat részeként van szüksége, fontolja meg, hogyan kezelheti azokat. Ha a művelet egy külső program által vezérelt, helyett a megoldáson munkafolyamatként kell döntse el, hogy bizonyos műveleteket hajtható végre párhuzamosan, illetve annak észlelése, ha minden feladat befejeződik. Egy munkafolyamat mechanizmussal, például a Hadoop belül Oozie egyszerűbb, mint az egyéni programok és a külső parancsfájlok használatával műveletek sorozata vezénylését tett kísérlet lehet. Oozie kapcsolatos további információkért lásd: [munkafolyamat és a feladat vezénylési](https://msdn.microsoft.com/library/dn749829.aspx).
 
-<!-- ## Next steps -->
-<!-- * [ETL at scale](../hdinsight-etl-at-scale.md): Learn more about performing ETL at scale. -->
-<!-- * [Operationalize Data Pipelines with Oozie](hdinsight-operationalize-data-pipeline.md): Learn how to build a data pipeline that uses Hive to summarize CSV flight delay data, stage the prepared data in Azure Storage blobs, and then use Sqoop to load the summarized data into Azure SQL Database. -->
-<!-- * [ETL Deep Dive](../hdinsight-etl-deep-dive.md): Walk through an end-to-end ETL pipeline.  -->
+## <a name="next-steps"></a>További lépések
+
+* [ETL léptékű](apache-hadoop-etl-at-scale.md)
+* [Azok az adatok folyamat](../hdinsight-operationalize-data-pipeline.md)
+<!-- * [ETL Deep Dive](../hdinsight-etl-deep-dive.md) -->

@@ -16,13 +16,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: ashish
-ms.openlocfilehash: 682b73aefff2ac20cbd38f6780b73cde859378ed
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: a5db3848eda2dbb6f117562e059b909575966993
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="analyze-hadoop-logs"></a>Hadoop-naplóinak elemzése
+# <a name="analyze-hadoop-logs"></a>Hadoop-naplók elemzése
 
 Minden Azure hdinsight Hadoop-fürt rendelkezik egy Azure storage-fiók alapértelmezett fájlrendszert használja. A tárfiók kezeli az alapértelmezett tárfiók. Fürt használja az Azure Table storage és a Blob-tároló az alapértelmezett tárfiók a naplók tárolásához.  Az alapértelmezett tárfiókot, a fürt számára, lásd: [Hadoop kezelése a HDInsight-fürtök](../hdinsight-administer-use-management-portal.md#find-the-default-storage-account). A naplók a tárfiókban lévő megőrzése mellett, a fürtök törlése után is.
 
@@ -45,7 +45,7 @@ Ezek a táblázatok a következő mezőket tartalmazhatja:
 
 * ClusterDnsName
 * Most letölthető a KomponensNév
-* eventTimestamp
+* EventTimestamp
 * Gazdagép
 * MALoggingHash
 * Üzenet
@@ -55,7 +55,7 @@ Ezek a táblázatok a következő mezőket tartalmazhatja:
 * A RowIndex
 * Bérlő
 * IDŐBÉLYEG
-* A TraceLevel
+* TraceLevel
 
 ### <a name="tools-for-accessing-the-logs"></a>A naplók eléréséhez eszközök
 Számos eszköz áll rendelkezésre egyes táblák adatait:
@@ -321,7 +321,4 @@ Bizonyos hibaüzenetek sikerült is látható az Azure-portálon kezelheti a HDI
 
 * [Az Ambari nézetek használata a HDInsight-on Tez feladatokhoz](../hdinsight-debug-ambari-tez-view.md)
 * [Halommemória memóriaképek a Linux-alapú HDInsight Hadoop-szolgáltatások engedélyezése](../hdinsight-hadoop-collect-debug-heap-dump-linux.md)
-
-<!--
-TODO  * [Manage HDInsight clusters by using the Ambari Web UI](hdinsight-hadoop-manage-ambari.md)
--->
+* [A HDInsight-fürtök kezelése az Ambari webes felhasználói felület használatával](../hdinsight-hadoop-manage-ambari.md)

@@ -15,11 +15,11 @@ ms.prod: vs-devops-alm
 ms.date: 01/30/2018
 ms.author: phillee
 keywords: visualstudio
-ms.openlocfilehash: 813022f1778e2c7f3174e11192b845c2c33ad219
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 599a890be4d014d22bae899be4cf6e281c4109d4
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a id="top"></a> Visual Studio képek az Azure-on
 Egy előre konfigurált Azure virtuális gépen (VM) futó Visual Studio használatával módja a legegyszerűbben és leggyorsabban eljusson semmi sem egy összesítő és futó fejlesztői környezetben.  A Visual Studio különböző konfigurációival rendszerkép érhetők el a [Azure piactér](https://portal.azure.com/). Ebben az esetben indítsa el a virtuális gép, és ki, hogy nyissa meg.
@@ -27,14 +27,14 @@ Egy előre konfigurált Azure virtuális gépen (VM) futó Visual Studio haszná
 Most ismerkedik az Azure-ral? [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free).
 
 ## <a name="what-configurations-and-versions-are-available"></a>Milyen konfigurációk és verziói érhetők el?
-Az Azure piactéren képek keresése a legutóbbi Főverziók: a Visual Studio 2017 és a Visual Studio 2015-öt.  Az egyes főverzió, megjelenik az eredetileg kiadott (más néven RTW) verzióját, és a "legújabb" frissített verzióitól.  Minden egyes ezen különböző verziói esetében a Visual Studio Enterprise és a Visual Studio Community kiadások található.
+Az Azure piactéren képek keresése a legutóbbi Főverziók: a Visual Studio 2017 és a Visual Studio 2015-öt.  Az egyes főverzió, megjelenik az eredetileg kiadott (más néven RTW) verzióját, és a "legújabb" frissített verzióitól.  Minden egyes ezen különböző verziói esetében a Visual Studio Enterprise és a Visual Studio Community kiadások található.  Frissítjük a lemezképek legalább havonta tartalmazza a legújabb Visual Studio és a Windows-frissítések.  A képek nevének azonban változatlan marad, mindegyik lemezkép leírása tartalmazza a telepített verzió és a lemezkép "dátum".
 
-|               Verzió              |          Kiadás            |    Termékverzió    |
-|:------------------------------------------:|:----------------------------:|:---------------------:|
-| A Visual Studio 2017 - legújabb (15.5 verzió) |    Enterprise, Community     |     15.5.3 verzió    |
-|         A Visual Studio 2017 – RTW           |    Enterprise, Community     |     15.0.7 verzió    |
-|   A Visual Studio 2015 - legújabb (3. frissítés)   |    Enterprise, Community     | 14.0.25431.01 verzió |
-|         A Visual Studio 2015 - RTW           | Nincs (a karbantartási lejárt) |          ---          |
+|               Verzió              |          Kiadás            |     Termékverzió     |
+|:------------------------------------------:|:----------------------------:|:-----------------------:|
+| A Visual Studio 2017 - legújabb (15.5 verzió) |    Enterprise, Community     |      15.5.3 verzió     |
+|         A Visual Studio 2017 – RTW           |    Enterprise, Community     |      15.0.7 verzió     |
+|   A Visual Studio 2015 - legújabb (3. frissítés)   |    Enterprise, Community     |  14.0.25431.01 verzió  |
+|         A Visual Studio 2015 - RTW           |              Nincs            | (A karbantartáshoz lejárt) |
 
 > [!NOTE]
 > Karbantartás házirend, az eredetileg kiadott Microsoft megfelelően (más néven RTW) Visual Studio 2015 lejárt a karbantartáshoz.  Ezért a Visual Studio 2015 Update 3, az egyetlen fennmaradó verzió érhető el a Visual Studio 2015-öt sor a.
@@ -52,20 +52,32 @@ Minden rendszerkép, hogy a Visual Studio Edition ajánlott szolgáltatáskészl
 
 Ez az a Visual Studio telepítésére, amikor a lemezképek összeállításakor használt parancssor:
 
-   * vs_enterprise.exe --allWorkloads --includeRecommended --passive ^
-   * add Microsoft.Net.Component.4.7.SDK ^
-   * add Microsoft.Net.Component.4.7.TargetingPack ^ 
-   * add Microsoft.Net.Component.4.6.2.SDK ^
-   * add Microsoft.Net.Component.4.6.2.TargetingPack ^
-   * add Microsoft.Net.ComponentGroup.4.7.DeveloperTools ^
-   * add Microsoft.VisualStudio.Component.FSharp ^
-   * add Component.GitHub.VisualStudio ^
-   * add Microsoft.VisualStudio.Component.LinqToSql
+```
+    vs_enterprise.exe --allWorkloads --includeRecommended --passive ^
+       add Microsoft.Net.Component.4.7.SDK ^
+       add Microsoft.Net.Component.4.7.TargetingPack ^ 
+       add Microsoft.Net.Component.4.6.2.SDK ^
+       add Microsoft.Net.Component.4.6.2.TargetingPack ^
+       add Microsoft.Net.ComponentGroup.4.7.DeveloperTools ^
+       add Microsoft.VisualStudio.Component.FSharp ^
+       add Component.GitHub.VisualStudio ^
+       add Microsoft.VisualStudio.Component.LinqToSql
+```
 
 A lemezképek nem szolgáltatásnak szüksége van a Visual Studio szolgáltatással, adja meg ezt a visszajelzést a visszajelzés eszközzel (a lap jobb felső sarkában).
 
 ## <a name="what-size-vm-should-i-choose"></a>Milyen méretű VM válasszam?
-Új virtuális gépek kiépítése egyszerű, és Azure számos teljes virtuális gépek méretét.  Csakúgy, mint bármely hardver beszerzési kívánt egyenleg költség és teljesítmény.  Mivel a Visual Studio egy hatékony, többszálas alkalmazást, érdemes, amely tartalmazza a processzorok és a 7 Gigabájt memóriát legalább két Virtuálisgép-méretet.  A legújabb méreteket további információkért lásd: [méretek a Windows virtuális gépek Azure-ban](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes).
+Új virtuális gépek kiépítése egyszerű, és Azure számos teljes virtuális gépek méretét.  Csakúgy, mint bármely hardver beszerzési kívánt egyenleg költség és teljesítmény.  Mivel a Visual Studio egy hatékony, többszálas alkalmazást, érdemes legalább 2 processzorok és a 7 Gigabájt memóriát tartalmazó Virtuálisgép-méretet.  A Visual Studio lemezképek ajánlott Virtuálisgép-méretek a következők:
+
+   * Standard_D2_v3
+   * Standard_D2s_v3
+   * Standard_D4_v3
+   * Standard_D4s_v3
+   * Standard_D2_v2
+   * Standard_D2S_v2
+   * Standard_D3_v2
+    
+A legújabb méreteket további információkért lásd: [méretek a Windows virtuális gépek Azure-ban](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes).
 
 Az Azure-ral az első mentse a nem kötelező – a virtuális gép átméretezésével is egyensúlyba a a kezdeti beállítás.  Vagy megadhat egy új virtuális Gépet egy megfelelő méretű, vagy a meglévő virtuális Gépet a különböző mögöttes hardver méretezheti.  További információkért lásd: [a Windows virtuális gépek átméretezésével](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/resize-vm).
 
@@ -76,7 +88,7 @@ A Visual Studio modelljébe "megadják Önnek azt saját licenc" az Azure-ban.  
 
 Fejlesztési környezetekben skáláját túl nagy, és nincs társítva a összetettebb környezetben létrehozására.  A környezet konfigurációs függetlenül Azure azonban mentése/rögzítve a teljesen konfigurált VM képként"base" későbbi használatra – saját maga és/vagy más olyan tagok esetében a csoport megőrzi az adott befektetési könnyen.  Ezután egy új virtuális gép indításakor építse ki azt az alapjául szolgáló lemezképhez, hanem a Piactéri lemezképhez.
 
-A gyors összegző kell sysprep és a leállítási a virtuális gép, majd *rögzítési (1. ábra)* a virtuális gépet rendszerképként az Azure portál felhasználói felületén keresztül.  Azure menti a `.vhd` fájlt, amely tartalmazza a tárfiók a kép.  Ezt követően az új lemezképet jeleníti meg az előfizetés az erőforrások listájához a kép erőforrásként.
+A gyors összegző kell sysprep és a leállítási a virtuális gép, majd *rögzítési (1. ábra)* a virtuális gépet rendszerképként az Azure portál felhasználói felületén keresztül.  Az Azure menti a `.vhd` fájlt, amely tartalmazza a tárfiók a kép.  Ezt követően az új lemezképet jeleníti meg az előfizetés az erőforrások listájához a kép erőforrásként.
 
 <img src="media/using-visual-studio-vm/capture-vm.png" alt="Capture an image through the Azure portal’s UI" style="border:3px solid Silver; display: block; margin: auto;"><center>*(1. ábra) Rögzítsen egy rendszerképet az Azure portál felhasználói felületén keresztül.*</center>
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: anwestg
-ms.openlocfilehash: 3738ca8ce8dfe0e5375779e9273a3d10baf8861a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e73a607a7f8ad948ab821b0aeda164418509f076
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="configure-deployment-sources"></a>Központi telepítés forrásának konfigurálása
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
@@ -49,8 +49,7 @@ A feladat végrehajtásához GitHub fiókkal kell rendelkeznie. Előfordulhat, h
 2. Adjon meg egy **alkalmazásnév** például - App Service-Azure veremben.
 3. Adja meg a **kezdőlap URL-cím**. A kezdőlap URL-CÍMÉT az Azure verem Portal címnek kell lennie. Például https://portal.local.azurestack.external.
 4. Adjon meg egy **alkalmazás leírása**.
-5. Adja meg a **engedélyezési visszahívási URL-címet**.  Alapértelmezett Azure verem telepítésében az URL-cím esetén a képernyő https://portal.local.azurestack.external/tokenauthorize le egy másik tartományba helyettesítő azurestack.local a tartományt.
-    ![GitHub - értékekkel fel az új alkalmazás regisztrálása][4]
+5. Adja meg a **engedélyezési visszahívási URL-címet**.  Alapértelmezett Azure verem üzembe helyezése esetén az URL-cím van az űrlap https://portal.local.azurestack.external/tokenauthorize, ha le egy másik tartományba helyettesítő local.azurestack.external a tartomány ![GitHub - új alkalmazás feltöltve értékekkel][4]
 6. Kattintson a **alkalmazás regisztrálása**.  Most már választhat az oldal lista tartalmazza a **ügyfél-azonosító** és **Ügyfélkulcs** az alkalmazáshoz.
     ![GitHub - regisztrációja befejeződött][5]
 7.  Egy új böngészőlapon vagy ablakban jelentkezzen be az Azure verem felügyeleti portál (https://adminportal.local.azurestack.external) a szolgáltatás-rendszergazdaként.

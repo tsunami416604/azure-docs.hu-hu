@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
-ms.openlocfilehash: 3a84a7ae7572145df8154ec5cbccf9f97e81866b
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: ed35a703774fdb2f2896414b6022b6f13fb7a307
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Oktatóanyag: Konfigurálja automatikus felhasználói kialakítási munkanap
 
@@ -164,13 +164,17 @@ Hozzon létre egy korlátozás nélküli integrációs rendszerbiztonsági csopo
     ![Rendszerbiztonsági csoport](./media/active-directory-saas-workday-inbound-tutorial/IC750985.png "rendszerbiztonsági csoport")  
 
 ### <a name="configure-security-group-options"></a>Biztonsági csoport beállítások konfigurálása
-Ebben a lépésben megadta az új biztonsági csoport engedélyeinek **beolvasása** és **Put** műveleteket végez a következő tartományi biztonsági házirend által felügyelt objektumok:
+Ebben a lépésben engedélyt kell adnia lesz tartományi biztonsági házirend esetében a következő tartományi biztonsági házirend által védett adatok:
 
-* Külső fiók
-* Adatok: Nyilvános dolgozó jelentések
-* Adatok: Minden helyzetben
-* Adatok: Aktuális személyzeti információk
-* Adatok: Üzleti cím munkavégző profil
+
+| Művelet | Tartományi biztonsági házirend |
+| ---------- | ---------- | 
+| GET és a Put |  Külső fiók |
+| GET és a Put | Adatok: Nyilvános dolgozó jelentések |
+| GET és a Put | Adatok: Minden helyzetben |
+| GET és a Put | Adatok: Aktuális személyzeti információk |
+| GET és a Put | Adatok: Üzleti cím munkavégző profil |
+| Megtekintése és módosítása | Adatok: A munkahelyi E-mail |
 
 **Biztonsági csoport beállítások konfigurálása:**
 
@@ -348,7 +352,7 @@ Ebben a szakaszban konfigurál, hogy felhasználói adatáramlás a WORKDAY-ből
 | **AddressLineData**    |  streetAddress  |     |   Hozzon létre + frissítése |
 | **PrimaryWorkTelephone**  |  TelephoneNumber   |     | Hozzon létre + frissítése |
 | **BusinessTitle**   |  cím     |     |  Hozzon létre + frissítése |
-| **Join("@",Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Join(".", [FirstName], [LastName]), , "([Øø])", , "oe", , ), , "[Ææ]", , "ae", , ), , "([äãàâãåáąÄÃÀÂÃÅÁĄA])", , "a", , ), , "([B])", , "b", , ), , "([CçčćÇČĆ])", , "c", , ), , "([ďĎD])", , "d", , ), , "([ëèéêęěËÈÉÊĘĚE])", , "e", , ), , "([F])", , "f", , ), , "([G])", , "g", , ), , "([H])", , "h", , ), , "([ïîìíÏÎÌÍI])", , "i", , ), , "([J])", , "j", , ), , "([K])", , "k", , ), , "([ľłŁĽL])", , "l", , ), , "([M])" ,, "m",), "([ñńňÑŃŇN])", "n",), "([öòőõôóÖÒŐÕÔÓO])", "o",), "([P])", "p",), "([Q])", "q",), "([řŘR])", "r",), "([ßšśŠŚS])", "s",), "([TŤť])", "t",), "([üùûúůűÜÙÛÚŮŰU])", "u",), "([V])", "v",), "([w" karakter]), "w",), "([ýÿýŸÝY])", "y",), "([źžżŹŽŻZ])", "z",), "",,, "",), "contoso.com")**   | userPrincipalName     |     | Hozzon létre + frissítése                                                   
+| **Join("@",Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Join(".", [FirstName], [LastName]), , "([Øø])", , "oe", , ), , "[Ææ]", , "ae", , ), , "([äãàâãåáąÄÃÀÂÃÅÁĄA])", , "a", , ), , "([B])", , "b", , ), , "([CçčćÇČĆ])", , "c", , ), , "([ďĎD])", , "d", , ), , "([ëèéêęěËÈÉÊĘĚE])", , "e", , ), , "([F])", , "f", , ), , "([G])", , "g", , ), , "([H])", , "h", , ), , "([ïîìíÏÎÌÍI])", , "i", , ), , "([J])", , "j", , ), , "([K])", , "k", , ), , "([ľłŁĽL])", , "l", , ), , "([M])" ,, "m",), "([ñńňÑŃŇN])", "n",), "([öòőõôóÖÒŐÕÔÓO])", "o",), "([P])", "p",), "([Q])", "q",), "([řŘR])", "r",), "([ßšśŠŚS])", "s",), "([TŤť])", "t",), "([üùûúůűÜÙÛÚŮŰU])", "u",), "([V])", "v",), "([w" karakter]), "w",), "([ýÿýŸÝY])", "y",), "([źžżŹŽŻZ])", "z",), "",,, "",), "contoso.com")**   | userPrincipalName     |     | Írt csak létrehozásakor                                                   
 | **Kapcsoló (\[település\], "OU általános jogú felhasználók, OU = felhasználók, OU = alapértelmezett, OU = helyek, DC = contoso, DC = = com", "Dallas", "OU általános jogú felhasználók, OU = felhasználók, OU = Dallas, OU = helyek, DC = contoso, DC = = com", "Austin", "OU általános jogú felhasználók, OU = felhasználók, OU = Austin, OU = helyek, DC = contoso, DC = = com", "Seattle", "OU általános jogú felhasználók, OU = felhasználók, OU = budapesti, OU = helyek, DC = contoso, DC = = com", "Londoni", "OU = általános jogú felhasználók Szervezeti egység felhasználók, OU = London, OU = helyek, DC = contoso, DC = = com ")**  | parentDistinguishedName     |     |  Hozzon létre + frissítése |
   
 ### <a name="part-3-configure-the-on-premises-synchronization-agent"></a>3. lépés: A helyszíni-szinkronizálási ügynök konfigurálása
@@ -638,11 +642,121 @@ Ebben a szakaszban konfigurál, hogy felhasználói adatáramlás a WORKDAY-ből
 
 5. Fejeződött be, akkor fog kiírni, összefoglaló jelentést a **kiépítési** lapon, a lent látható módon.
 
+
+## <a name="customizing-the-list-of-workday-user-attributes"></a>A Workday felhasználói attribútumok listáját testreszabása
+Alkalmazások telepítése az Active Directory és az Azure AD egyaránt tartalmazza az alapértelmezett Workday felhasználói attribútumok listáját a munkanapok közül választhat. Azonban a fájlok nem átfogó. Munkanapok támogatja a több száz lehetséges felhasználói attribútumok, amelyek lehet standard vagy a Workday-bérlő egyedi. 
+
+Az Azure AD szolgáltatás kiépítését támogatja a lista vagy a Workday attribútum olyan bármely felfedett attribútumok testreszabása a [Get_Workers](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v29.2/Get_Workers.html) az emberi erőforrások API működését.
+
+Ehhez az szükséges, használjon [Workday Studio](https://community.workday.com/studio-download) kinyerni az XPath kifejezések, amely a használni kívánt attribútumokat jelöl, és adja őket a létesítési konfiguráció a speciális Attribútumszerkesztő az Azure portálon.
+
+**A Workday felhasználói attribútum az XPath kifejezések beolvasása:**
+
+1. Töltse le és telepítse [Workday Studio](https://community.workday.com/studio-download). Szüksége lesz egy Workday közösségi fiókot a telepítő eléréséhez.
+
+2. Töltse le a Workday Human_Resources WDSL fájlt az URL-cím: https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v29.2/Human_Resources.wsdl
+
+3. Indítsa el a Workday Studiót.
+
+4. A parancssávon válassza ki a **Workday > teszt webszolgáltatás a tesztelő** lehetőséget.
+
+5. Válassza ki **külső**, és válassza ki a letöltött Human_Resources WSDL-fájl a 2.
+
+    ![Workday Studio](./media/active-directory-saas-workday-inbound-tutorial/WDstudio1.PNG)
+
+6. Állítsa be a **hely** mezőről `https://IMPL-CC.workday.com/ccx/service/TENANT/Human_Resources`, de cseréje "IMPL-CC" az aktuális példánytípus és "BÉRLŐBEN" a valódi bérlő neve.
+
+7. Állítsa be **művelet** való **Get_Workers**
+
+8.  Kattintson a kis **konfigurálása** hivatkozás alatt a kérelem/válasz ablaktábla a Workday használandó hitelesítő adatok beállításához. Ellenőrizze **hitelesítési**, és a Workday-integrációs rendszerfiók adja meg a felhasználónevet és jelszót. Ügyeljen arra, hogy a felhasználó nevét, name@tenant, és hagyja a **WS-biztonsági UsernameToken** kiválasztott beállítás.
+
+    ![Workday Studio](./media/active-directory-saas-workday-inbound-tutorial/WDstudio2.PNG)
+
+9. Kattintson az **OK** gombra.
+
+10. A **kérelem** ablaktáblán, illessze be az XML-fájl, az alábbi és beállított **Employee_ID** a Workday-bérlői valós felhasználónak alkalmazott azonosítója. Válasszon ki egy felhasználót, hogy a attribútummal rendelkezik, hogy szeretné-e kibontása feltöltve.
+
+    ```
+    <?xml version="1.0" encoding="UTF-8"?>
+    <env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <env:Body>
+        <wd:Get_Workers_Request xmlns:wd="urn:com.workday/bsvc" wd:version="v28.0">
+          <wd:Request_References wd:Skip_Non_Existing_Instances="true">
+            <wd:Worker_Reference>
+              <wd:ID wd:type="Employee_ID">21008</wd:ID>
+            </wd:Worker_Reference>
+          </wd:Request_References>
+        </wd:Get_Workers_Request>
+      </env:Body>
+    </env:Envelope>
+    ```
+ 
+11. Kattintson a **kérés küldése** (zöld nyílra) hajtsa végre a parancsot. Ha sikeres, a válasz meg kell jelennie a **válasz** ablaktáblán. Ellenőrizze az annak érdekében, hogy a megadott felhasználói azonosító adatot tartalmaz, és nem hiba.
+
+12. Ha sikeres, másolja az XML az **válasz** ablaktáblán, és mentse egy XML-fájlt.
+
+13. Válassza a a parancs sáv a Workday Studio **fájl > fájl megnyitása...**  , és nyissa meg az imént mentett XML-fájlt. Ekkor megnyílik a Workday Studio XML-szerkesztőben.
+
+    ![Workday Studio](./media/active-directory-saas-workday-inbound-tutorial/WDstudio3.PNG)
+
+14. A fájl fában járja végig **/env:Envelope > env > wd:Get_Workers_Response > wd:Response_Data > wd:Worker** a felhasználói adatok kereséséhez. 
+
+15. A **wd:Worker**, a hozzáadni kívánt attribútumot, és válassza ki azt.
+
+16. Másolja ki a kijelölt attribútum az XPath-kifejezés az **dokumentum elérési útját** mező.
+
+17. Távolítsa el a **/env:Envelope / env / wd:Get_Workers_Response / wd:Response_Data /** előtag a másolt kifejezésben. 
+
+18. Ha a másolt kifejezés utolsó elemének a csomópont (Példa: "/ wd:Birth_Date"), majd fűzze **/text()** kifejezés végén. Erre nincs szükség, ha az utolsó elem attribútuma (Példa: "/@wd:type").
+
+19. Az eredmény hasonlót kell `wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Birth_Date/text()`. Ez az az Azure portált fogja másolni.
+
+
+**Az üzembe helyezési konfigurációját a Workday egyéni felhasználói attribútum hozzáadása:**
+
+1. Indítsa el a [Azure-portálon](https://portal.azure.com), és navigáljon a kiépítés szakaszában a Workday-kiépítés alkalmazás, ez az oktatóanyag a korábban ismertetett módon.
+
+2. Állítsa be **kiépítési állapot** való **ki**, és válassza ki **mentése**. Ez megakadályozza a módosítások életbe léptetéséhez, csak akkor, amikor készen áll.
+
+3. A **hozzárendelések**, jelölje be **OnPremises dolgozók szinkronizálása** (vagy **munkavállalók szinkronizálása az Azure AD**).
+
+4. A következő képernyő alján görgessen, és válassza ki **speciális beállítások megjelenítése**.
+
+5. Válassza ki **Szerkesztés attribútumlista a Workday**.
+
+    ![Workday Studio](./media/active-directory-saas-workday-inbound-tutorial/WDstudio_AAD1.PNG)
+
+6. A beviteli mezők esetén a attribútum lista alján görgessen.
+
+7. A **neve**, adja meg az attribútum megjelenítendő nevét.
+
+8. A **típus**, válassza ki a megfelelő megfelelő az attribútum típusa (**karakterlánc** leggyakrabban).
+
+9. A **API kifejezés**, adja meg a Workday Studióból másolta az XPath-kifejezés. Példa:`wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Birth_Date/text()`
+
+10. Válassza ki **attribútum hozzáadása**.
+
+    ![Workday Studio](./media/active-directory-saas-workday-inbound-tutorial/WDstudio_AAD2.PNG)
+
+11. Válassza ki **mentése** fenti, majd **Igen** a párbeszédpanelre. Zárja be a attribútum leképezési képernyő, ha folyamatban.
+
+12. Vissza a fő **kiépítési** lapon jelölje be **OnPremises dolgozók szinkronizálása** (vagy **munkavállalók szinkronizálása az Azure AD**) újra.
+
+13. Válassza ki **új leképezés hozzáadása**.
+
+14. Ekkor megjelenik az új attribútumot a **forrásattribútum** listája.
+
+15. Adja hozzá az új attribútum társítás tetszés szerint.
+
+16. Ha elkészült, akkor ne felejtse el beállítása **kiépítési állapot** vissza **a** és mentéséhez.
+
+
 ## <a name="known-issues"></a>Ismert problémák
 
 * Futtatásakor a **Add-ADSyncAgentAzureActiveDirectoryConfiguration** Powershell parancsot, jelenleg egy ismert probléma globális rendszergazdai hitelesítő adatokkal nem működik, ha azok az egyéni tartománynév (Példa: admin@contoso.com) . A probléma megoldásához hozzon létre, és egy globális rendszergazdai fiókját használja az Azure AD egy onmicrosoft.com tartománnyal (Példa: admin@contoso.onmicrosoft.com).
 
 * Egy vizsgálati naplóit Azure AD-bérlő található, az Európai Unió nem jelenik meg az előző problémát sikerült megoldani. Azonban további ügynök konfigurálni kell a Azure AD-bérlőt az EU-ban. További információkért lásd: [3. rész: a helyszíni-szinkronizálási ügynök konfigurálása](#Part 3: Configure the on-premises synchronization agent)
+
 
 ## <a name="additional-resources"></a>További források
 * [Oktatóanyag: Az egyszeri bejelentkezés közötti Workday és az Azure Active Directory konfigurálása](active-directory-saas-workday-tutorial.md)

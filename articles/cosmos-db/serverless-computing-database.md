@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
 ms.author: mimig
-ms.openlocfilehash: aeef39294bbf3ad4192fe116c6972e52bfa1c816
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 297f8929ec11b37a2cbbfb79bb442da75b4368a8
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Az Azure Cosmos DB: Kiszolgáló nélküli adatbázis számítási Azure Functions használatával
 
@@ -35,7 +35,7 @@ Az Azure Cosmos-adatbázis és az Azure Functions lehetővé teszik az adatbázi
 * Egy Azure Cosmos DB gyűjtemény használja kötést létrehozni a következő függvényt egy **kimeneti kötése**. Kimeneti kötések adatokat írni egy tároló, egy olyan függvényt befejezéséről.
 
 > [!NOTE]
-> Jelenleg az Azure Cosmos DB eseményindító, a bemeneti kötések és a kimeneti kötések működik, csak SQL API-t és a Graph API fiókokhoz.
+> Az Azure Cosmos DB-eseményindító, illetve a bemeneti és a kimeneti kötések jelenleg csak az SQL API- és a Graph API-fiókokkal képesek együttműködni.
 
 A következő ábra szemlélteti a három integrációja: 
 
@@ -101,7 +101,7 @@ Kereskedelmi implementációkban, amikor egy felhasználó egy elem hozzáadása
 
 **Végrehajtás:** figyel egy gyűjteményhez több Azure Cosmos DB eseményindítók
 
-1. Létrehozhat több Azure-funkciók Azure Cosmos DB eseményindítók-ezek mindegyike figyelésére azonos módosítása a bevásárlókocsiból adatok vásárlás adatcsatorna hozzáadásával. Vegye figyelembe, hogy amikor több funkciók figyelésére azonos adatcsatorna módosításához új bérleti gyűjtemény szükség az egyes funkciók.
+1. Létrehozhat több Azure-funkciók Azure Cosmos DB eseményindítók-ezek mindegyike figyelésére azonos módosítása a bevásárlókocsiból adatok vásárlás adatcsatorna hozzáadásával. Vegye figyelembe, hogy amikor több funkciók figyelésére azonos adatcsatorna módosításához új bérleti gyűjtemény szükség az egyes funkciók. Címbérlet gyűjtemények kapcsolatos további információkért lásd: [a módosítás hírcsatorna processzor-könyvtár ismertetése](change-feed.md#understand-cf).
 2. Új elem a bevásárlókocsiból vásárlás felhasználókat ad hozzá, amikor egyes funkciók egymástól függetlenül meghívták a hírcsatorna a vásárlási bevásárlókocsiból tárolóból módosítani.
     * Egy függvény az aktuális kosár tartalmát segítségével lehetséges, hogy a felhasználó előfordulhat, hogy érdeklődik más elemeket megjelenésének módosítása.
     * Egy másik függvényen módosíthatjuk készlet.

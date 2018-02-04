@@ -3,7 +3,7 @@ title: "A különböző műveletek utasítás kapcsoló Azure Logic Apps |} Micr
 description: "Válassza ki a különböző műveleteket hajthat végre a logic Apps alkalmazások kifejezés értékek alapján a switch utasítás használatával"
 services: logic-apps
 keywords: "Switch utasítás"
-author: derek1ee
+author: ecfan
 manager: anneta
 editor: 
 documentationcenter: 
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
-ms.author: LADocs; deli
-ms.openlocfilehash: a459fb131cb9f917f2b0cf79679b04da48d76c42
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: LADocs; estfan
+ms.openlocfilehash: 8f11d18009d60ea5c74781ccef2ff7d811516750
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="perform-different-actions-in-logic-apps-with-a-switch-statement"></a>A logic apps kapcsoló utasítással különböző műveleteket
 
@@ -74,7 +74,7 @@ A switch utasítás működése megjelenítéséhez az alábbi példa létrehoz 
 
 4. A switch utasítás után törli az eredeti fájlt adja hozzá ezt a műveletet a dropbox alkalmazásba feltöltött: **Dropbox - fájl törlése**
 
-5. Mentse a Logic Apps alkalmazást. Tesztelje az alkalmazás feltölteni a fájlt a dropbox alkalmazásba. Hamarosan jóváhagyása e-mailt kell kapnia. Jelöljön ki egy lehetőséget, és tekintse meg a viselkedést.
+5. Mentse a logikai alkalmazást. Tesztelje az alkalmazás feltölteni a fájlt a dropbox alkalmazásba. Hamarosan jóváhagyása e-mailt kell kapnia. Jelöljön ki egy lehetőséget, és tekintse meg a viselkedést.
 
    > [!TIP]
    > Ellenőrizze, hogy miként [logikai alkalmazások figyelése](logic-apps-monitor-your-logic-apps.md).

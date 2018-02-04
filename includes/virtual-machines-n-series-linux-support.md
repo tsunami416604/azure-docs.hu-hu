@@ -4,7 +4,11 @@
 ### <a name="nc-ncv2-and-nd-instances---nvidia-cuda-drivers"></a>Hálózati vezérlő által NCv2 és ND példányok - NVIDIA CUDA illesztőprogramok
 | Disztribúció | Illesztőprogram |
 | --- | --- | 
-| Ubuntu 16.04 LTS<br/><br/> Red Hat Enterprise Linux 7.3<br/><br/> CentOS-alapú 7.3 | NVIDIA CUDA 9.1, illesztőprogram fiókirodai R387 |
+| Ubuntu 16.04 LTS<br/><br/> Red Hat Enterprise Linux 7.3 vagy 7.4<br/><br/> 7.3 vagy 7.4 centOS | NVIDIA CUDA 9.1, illesztőprogram fiókirodai R390 |
+
+> [!IMPORTANT]
+> Győződjön meg arról, hogy telepíteni, vagy frissítse a legújabb CUDA illesztőprogramokat a terjesztéshez. R390 verziónál régebbi illesztőprogram frissített Linux kernelek problémák léphetnek fel.
+>
 
 ### <a name="nv-instances---nvidia-grid-drivers"></a>NV-példányok – NVIDIA GRID illesztőprogramok
 

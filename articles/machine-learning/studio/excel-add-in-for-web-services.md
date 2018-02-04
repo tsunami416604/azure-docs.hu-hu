@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 03/14/2017
+ms.date: 2/1/2018
 ms.author: tedway;garye
-ms.openlocfilehash: 4dbb1779bf36be74ee83aeed8e4940902915603a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cec26a5ccd4620dd0dabc92f4655f5fdfaf62e20
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="excel-add-in-for-azure-machine-learning-web-services"></a>Excel-bővítmény az Azure Machine Learning webszolgáltatásokhoz
 Excel megkönnyíti a webszolgáltatások közvetlenül a szükséges kód írása nélkül.
@@ -74,7 +74,7 @@ A webszolgáltatáshoz API-kulcs beszerzése. Ahol elvégezhető ez a művelet f
 5. Kattintson a **webszolgáltatás hozzáadása**.
 6. Az URL-cím illessze be az Excel-bővítmény szövegmező feliratú **URL-cím**.
 7. Az API/elsődleges kulcs illessze be a mezőbe **API-kulcs**.
-8. Kattintson az **Add** (Hozzáadás) parancsra.
+8. Kattintson a **Hozzáadás** parancsra.
    
     ![URL-CÍMÉT és API-kulcsát egy klasszikus webszolgáltatáshoz.][06]
 9. A webszolgáltatás hajtsa végre az előző szakasz utasításait, "Lépéseket egy meglévő webes szolgáltatás használatára."

@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: magoedte;banders
-ms.openlocfilehash: 209968a598d3a579cc40edaf52bd7344fa3f60ed
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: e2176a41a115d77a60a8348d2d1b5928109dd65b
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview-in-log-analytics"></a>Azure SQL adatbázis Azure SQL elemzés (előzetes verzió) Naplóelemzési figyelése
 
-![Az Azure SQL elemzés szimbólum](./media/log-analytics-azure-sql/azure-sql-symbol.png)
+![Azure SQL Analytics symbol](./media/log-analytics-azure-sql/azure-sql-symbol.png)
 
 Az Azure SQL elemzési megoldás az Azure Naplóelemzés gyűjt, és fontos SQL Azure teljesítménymutatók visualizes. A metrikák gyűjtött megoldás segítségével létrehozhat egyéni ellenőrzési szabályok és értesítések. Figyelheti, hogy az Azure SQL Database és a rugalmas készlet metrikák több Azure-előfizetések és rugalmas készletek, és jelenítheti meg őket. A megoldás is segítséget az alkalmazás-készlet minden egyes rétegben problémák azonosításához.  Használja [Azure diagnosztikai metrikák](log-analytics-azure-storage.md) Log Analytics-nézetet megjeleníteni az adatokat az Azure SQL-adatbázisok és rugalmas készletek egyetlen Naplóelemzési munkaterület együtt.
 
@@ -93,7 +93,7 @@ PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
 
 A megoldás a munkaterülethez való hozzáadásakor az Azure SQL elemzés csempe hozzáadódik a munkaterület, és megjeleníti a áttekintése. A csempe az Azure SQL-adatbázisok és az Azure SQL rugalmas készletek a megoldás csatlakozik a számát mutatja.
 
-![Az Azure SQL elemzés csempe](./media/log-analytics-azure-sql/azure-sql-sol-tile.png)
+![Azure SQL Analytics tile](./media/log-analytics-azure-sql/azure-sql-sol-tile.png)
 
 ### <a name="viewing-azure-sql-analytics-data"></a>Azure SQL analitikai adatok megtekintése
 
@@ -122,21 +122,21 @@ Minden szempontból ezekkel az előfizetés, a kiszolgáló, a rugalmas készlet
 
 Az Azure SQL Database [intelligens Insights](../sql-database/sql-database-intelligent-insights.md) jelzi, mi történik az adatbázis-teljesítménnyel. Gyűjti az összes intelligens Insights ábrázolt, és az elemzések szempontjából keresztül érhetők el.
 
-![Az Azure SQL elemzés Insights](./media/log-analytics-azure-sql/azure-sql-sol-insights.png)
+![Azure SQL Analytics Insights](./media/log-analytics-azure-sql/azure-sql-sol-insights.png)
 
 ### <a name="elastic-pool-and-database-reports"></a>A rugalmas készlet-és adatbázis
 
 Rugalmas készletek és adatbázisokat is rendelkezzen a saját konkrét jelentéseket, amelyek megjelenítése az erőforrás a megadott idő alatt gyűjtött összes adat.
 
-![Az Azure SQL elemzés adatbázis](./media/log-analytics-azure-sql/azure-sql-sol-database.png)
+![Azure SQL Analytics Database](./media/log-analytics-azure-sql/azure-sql-sol-database.png)
 
-![Az Azure SQL elemzés rugalmas készlet](./media/log-analytics-azure-sql/azure-sql-sol-pool.png)
+![Azure SQL Analytics Elastic Pool](./media/log-analytics-azure-sql/azure-sql-sol-pool.png)
 
 ### <a name="query-reports"></a>Lekérdezés-jelentések
 
 Lekérdezés időtartam és a lekérdezés vár perspektíva hozhatók lekérdezés jelentés használatával lekérdezés teljesítményét. Ez a jelentés a lekérdezési teljesítmény hasonlítja különböző adatbázist, és megkönnyíti a rögzítési ponthoz az adatbázisok, hajtsa végre a kijelölt lekérdezés jól és azokat, amelyek lassú.
 
-![Az Azure SQL elemzési lekérdezések](./media/log-analytics-azure-sql/azure-sql-sol-queries.png)
+![Azure SQL Analytics Queries](./media/log-analytics-azure-sql/azure-sql-sol-queries.png)
 
 ### <a name="analyze-data-and-create-alerts"></a>Adatok elemzése és értesítések
 
@@ -157,7 +157,7 @@ AzureMetrics | where ResourceProvider=="MICROSOFT.SQL" and ResourceId contains "
 AzureMetrics | where ResourceProvider=="MICROSOFT.SQL" and ResourceId contains "/ELASTICPOOLS/" and MetricName=="dtu_consumption_percent" | summarize avg(Maximum) by ResourceId
 ```
 
-A riasztás-alapú lekérdezések segítségével az Azure SQL Database és a rugalmas készletek megadott küszöbértékek riasztás. Az OMS-munkaterület a riasztás konfigurálása:
+A riasztás-alapú lekérdezések segítségével az Azure SQL Database és a rugalmas készletek megadott küszöbértékek riasztás. A Naplóelemzési munkaterület riasztás konfigurálása:
 
 #### <a name="to-configure-an-alert-for-your-workspace"></a>A munkaterület riasztás konfigurálása
 
@@ -170,7 +170,7 @@ A riasztás-alapú lekérdezések segítségével az Azure SQL Database és a ru
 6. Az a **riasztási szabály hozzáadása** lapján konfigurálja a megfelelő tulajdonságokat és a meghatározott küszöbértékeket, majd kattintson **mentése**.  
 ![riasztási szabály hozzáadása](./media/log-analytics-azure-sql/create-alert02.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Használjon [napló keresések](log-analytics-log-searches.md) a Log Analyticshez Azure SQL részletes adatainak megtekintéséhez.
 - [Hozzon létre egy saját irányítópultok](log-analytics-dashboards.md) Azure SQL-adatok jelennek meg.

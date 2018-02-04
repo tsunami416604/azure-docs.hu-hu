@@ -1,7 +1,7 @@
 ---
 title: "Létrehozni és regisztrálni az SOAP összekötők - Azure Logic Apps |} Microsoft Docs"
-description: "Az Azure Logic Apps használatra SOAP-összekötők beállítása"
-author: divyaswarnkar
+description: "SOAP-összekötők beállítása az Azure Logic Appsben való használatra"
+author: ecfan
 manager: anneta
 editor: 
 services: logic-apps
@@ -13,161 +13,161 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
-ms.author: LADocs; divswa
-ms.openlocfilehash: 0323b0f7ee03dce209d5a71c6711988a34ba7633
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.author: LADocs; estfan
+ms.openlocfilehash: 031762e5639fc52e0b0a6a5bf8d12db25da25e12
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="create-and-register-soap-connectors-in-azure-logic-apps"></a>Létrehozni és regisztrálni az Azure Logic Apps a SOAP-összekötők
 
-A logic app munkafolyamatok integrálását a SOAP-szolgáltatások, hozhat létre és regisztrálja egy egyéni egyszerű SOAP Object Access Protocol ()-összekötő Web Services Description Language (WSDL), amely leírja a SOAP-szolgáltatás használatával. A SOAP-összekötők úgy működik, mint előre elkészített összekötők, hogy használhassa őket a ugyanúgy, mint a többi összekötőt a logic Apps alkalmazásait.
+A SOAP-szolgáltatások a logikai alkalmazások munkafolyamataiba való integrálásához létrehozhat és regisztrálhat egy egyéni SOAP-összekötőt a SOAP-szolgáltatás a webszolgáltatások leíró nyelvén (WSDL) való leírásával. A SOAP-összekötők előre létrehozott összekötőként működnek, így az egyéb összekötőkhöz hasonlóan használhatók a logikai alkalmazásokban.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A SOAP-összekötő regisztrálásához kell ezeket az elemeket:
+A SOAP-összekötők regisztrálásához a következőkre van szükség:
 
-* Azure-előfizetés. Ha nem rendelkezik előfizetéssel, Kezdésként használhatja az egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/). Ellenkező esetben regisztráljon egy [használatalapú fizetés előfizetés](https://azure.microsoft.com/pricing/purchase-options/).
+* Azure-előfizetés. Ha nem rendelkezik előfizetéssel, kezdhet egy [ingyenes Azure-fiókkal](https://azure.microsoft.com/free/). Egyéb esetben regisztráljon egy [használatalapú fizetéses előfizetésre](https://azure.microsoft.com/pricing/purchase-options/).
 
-* Bármely elem itt:
-  * A WSDL, amely meghatározza a SOAP-szolgáltatás és az API-k URL-CÍMÉT
-  * A WSDL-fájl, amely meghatározza a SOAP-szolgáltatás és az API-k
+* Bármelyik a következők közül:
+  * Egy URL-cím, amely a SOAP-szolgáltatást és az API-kat definiáló WSDL-leírásra mutat
+  * Egy, a SOAP-szolgáltatást és az API-kat definiáló WSDL-fájl
 
-  Ebben az oktatóanyagban használhatja a fenti példában [rendelések SOAP szolgáltatás](http://fazioapisoap.azurewebsites.net/FazioService.svc?singleWsdl).
+  Ebben az oktatóanyagban használhatja a [Megrendelések SOAP-szolgáltatás](http://fazioapisoap.azurewebsites.net/FazioService.svc?singleWsdl) példafájlt.
 
-* Választható lehetőség: Egy kép ikonként az egyéni összekötő használatára
+* Nem kötelező: Egy, az egyéni összekötőhöz ikonként használható kép
 
 
-## <a name="1-create-your-connector"></a>1. Az összekötő létrehozása
+## <a name="1-create-your-connector"></a>1. Saját összekötő létrehozása
 
-1. Az Azure portálon, a fő Azure menüben válasszon **új**. A keresési mezőbe írja be a "logic apps-összekötők" szűrőként, és nyomja le az ENTER billentyűt.
+1. Az Azure Portalon válassza az **Új** lehetőséget a főmenüben. Írja be a „logic apps összekötő” kifejezést szűrőként a keresőmezőbe, majd nyomja le az ENTER billentyűt.
 
-   ![Új keressen a "logic apps-összekötők"](./media/logic-apps-soap-connector-create-register/create-logic-apps-connector.png)
+   ![A „logic apps összekötő” kifejezés keresése az Új menüpont alatt](./media/logic-apps-soap-connector-create-register/create-logic-apps-connector.png)
 
-2. Az eredmények listájában válassza ki a **Logic Apps-összekötők** > **létrehozása**.
+2. Az eredmények listájában válassza a **Logic Apps-összekötő** > **Létrehozás** lehetőséget.
 
-   ![A Logic Apps-összekötő létrehozása](./media/logic-apps-soap-connector-create-register/choose-logic-apps-connector.png)
+   ![Logic Apps-összekötő létrehozása](./media/logic-apps-soap-connector-create-register/choose-logic-apps-connector.png)
 
-3. Adja meg a részleteket az az összekötő regisztrálása a táblázatban ismertetett módon. Amikor elkészült, válassza ki a **rögzítés az irányítópulton** > **létrehozása**.
+3. Adja meg az összekötő regisztrálásához szükséges adatokat a táblázatban leírtak szerint. Ha elkészült, válassza a **Rögzítés az irányítópulton** > **Létrehozás** lehetőséget.
 
-   ![Logic App egyéni connector részletei](./media/logic-apps-soap-connector-create-register/logic-apps-soap-connector-details.png)
+   ![Egyéni Logic Apps-összekötő adatai](./media/logic-apps-soap-connector-create-register/logic-apps-soap-connector-details.png)
 
    | Tulajdonság | Ajánlott érték | Leírás | 
    | -------- | --------------- | ----------- | 
-   | **Name (Név)** | *SOAP-összekötő-neve* | Adja meg az összekötő nevét. | 
-   | **Előfizetés** | *Azure-előfizetés-neve* | Válassza ki az Azure-előfizetéshez. | 
-   | **Erőforráscsoport** | *Azure-erőforrás-csoportnév* | Hozzon létre vagy válassza ki az Azure-csoportok a az Azure-erőforrások rendszerezéséhez. | 
-   | **Hely** | *központi telepítés-terület* | Az összekötő telepítési régiót. | 
+   | **Name (Név)** | *soap-összekötő-neve* | Adja meg az összekötő nevét. | 
+   | **Előfizetés** | *Azure-előfizetés-neve* | Válassza ki az Azure-előfizetését. | 
+   | **Erőforráscsoport** | *Azure-erőforráscsoport-neve* | Hozzon létre vagy válasszon ki egy Azure-erőforráscsoportot az Azure-erőforrások rendszerezéséhez. | 
+   | **Hely** | *üzembehelyezési-régió* | Válassza ki a régiót az összekötő üzembe helyezéséhez. | 
    |||| 
 
-   Miután az Azure az összekötőt telepíti, a logic apps összekötő menü automatikusan megnyílik. 
-   Ha nem, az Azure-irányítópultjának lehetőségek közül választhat a soap-összekötőt.
+   Miután az Azure üzembe helyezte az összekötőt, automatikusan megnyílik a Logic Apps-összekötő menüje. 
+   Ha mégsem nyílna meg, válassza ki a SOAP-összekötőt az Azure irányítópultján.
 
-## <a name="2-define-your-connector"></a>2. Adja meg az összekötő
+## <a name="2-define-your-connector"></a>2. Összekötő definiálása
 
-Most adja meg a WSDL-fájl vagy URL-címe az összekötő, a hitelesítés, amely az összekötőt használja, és a műveletek és eseményindítók, amely a soap-összekötő létrehozása
+Most adja meg a WSDL-fájlt vagy URL-címet az összekötő létrehozásához, az összekötő által használt hitelesítést, valamint a SOAP-összekötő által biztosított műveleteket és eseményindítókat.
 
 
-### <a name="2a-specify-the-wsdl-file-or-url-for-your-connector"></a>2a. Adja meg a WSDL-fájl vagy URL-címe az összekötőhöz
+### <a name="2a-specify-the-wsdl-file-or-url-for-your-connector"></a>2a. Az összekötő WSDL-fájljának vagy URL-címének megadása
 
-1. Az összekötő menü, ha nincs bejelölve, válasszon **Logic Apps-összekötők**. Az eszköztáron válassza **szerkesztése**.
+1. Ha még nem lenne kiválasztva, az összekötő menüjében válassza a **Logic Apps-összekötő** lehetőséget. Az eszköztáron válassza a **Szerkesztés** elemet.
 
    ![Egyéni összekötő szerkesztése](./media/logic-apps-soap-connector-create-register/edit-soap-connector.png)
 
-2. Válasszon **általános** , hogy a táblázatokban adatainak megadása létrehozása, biztonságossá tétele és a műveletek és a SOAP-összekötő eseményindítók meghatározása.
+2. Az **Általános** lehetőséget választva a táblázatokban megadott adatok segítségével hozhatja létre és biztosíthatja a SOAP-összekötőt, valamint definiálhatja annak műveleteit és eseményindítóit.
 
-   1. A **egyéni összekötők**, jelölje be **SOAP** a a **API-végpont** , megadhatja a WSDL-fájl, mely leírja az API-t.
+   1. Az **Egyéni összekötők** területen válassza a **SOAP** lehetőséget **API-végpontként**, így a WSDL-fájl megadásával definiálhatja az API-t.
 
-      ![Adja meg a WSDL-fájl az API-hoz](./media/logic-apps-soap-connector-create-register/provide-wsdl-file.png)
+      ![Az API WSDL-fájljának megadása](./media/logic-apps-soap-connector-create-register/provide-wsdl-file.png)
 
       | Beállítás | Formátum |Leírás | 
       | ------ | ------ | ----------- | 
-      | **Töltse fel a WSDL-fájlból** | *WSDL-fájl* | Keresse meg a helyet, a WSDL-fájl, és válassza ki a fájlt. | 
-      | **Töltse fel az URL-címről WSDL** | http://*útvonal-wsdl-fájl –* | Adja meg az URL-címet a szolgáltatás WSDL-fájl. | 
-      | **SOAP-többi** |   | Alakítsa át API-k SOAP szolgáltatás REST API-k. | 
+      | **WSDL feltöltése fájlból** | *WSDL-fájl* | Keresse meg a WSDL-fájl helyét, és válassza ki a fájlt. | 
+      | **WSDL feltöltése URL-címből** | http://*wsdl-fájl-elérési-útja* | Adja meg a szolgáltatás WSDL-fájljának URL-címét. | 
+      | **SOAP–REST** |   | A SOAP-szolgáltatás API-jai átalakíthatók REST API-kká. | 
       |||| 
 
-   2. A **általános információkat**, töltse fel az összekötő ikont. 
-   Általában a **leírás**, **állomás**, és **alap URL-cím** mezőket a rendszer automatikusan feltölti a WSDL-fájlból. 
-   De ha még nem, adja hozzá ezeket az információkat a táblázatban ismertetett módon, és válassza a **Folytatás**. 
+   2. Az **Általános információk** területen töltsön fel egy ikont az összekötőhöz. 
+   A **Leírás**, a **Gazdagép** és a **Kiindulási URL-cím** mezőket a rendszer általában automatikusan kitölti a WSDL-fájlból. 
+   Ha mégsem lennének kitöltve, adja meg az adatokat a táblázat szerint, majd kattintson a **Folytatás** gombra. 
 
-      ![Connector részletei](./media/logic-apps-soap-connector-create-register/add-general-details.png)
+      ![Összekötő adatai](./media/logic-apps-soap-connector-create-register/add-general-details.png)
 
-      | A beállítás vagy beállítás | Formátum | Leírás | 
+      | Beállítás | Formátum | Leírás | 
       | ----------------- | ------ | ----------- | 
-      | **Töltse fel az ikon** | *PNG-or-jpg-File-under-1-MB* | Az összekötő jelölő ikon <p>Szín: Lehetőleg fehér szín háttér emblémát. <p>Dimenziók: ~ 160 képpontos embléma 230 képpontos négyzet belül | 
-      | **Ikon háttérszíne** | *ikon-márka-szín-hexadecimális-kód* | <p>Az ikon, amely megfelel az ikonfájl háttérszíne hátterének színét. <p>Formátum: hexadecimális. #007ee5 például a kék szín jelöli. | 
-      | **Leírás** | *összekötő-leírása* | Adjon meg egy rövid leírást a Connector. | 
-      | **Állomás** | *összekötő-állomás* | A SOAP-a gazdagép tartományhoz adni. | 
-      | **Alap URL-cím** | *összekötő-alap-URL-cím* | A SOAP-adni az alap URL-címet. | 
+      | **Ikon feltöltése** | *png-vagy-jpg-fájl-1-MB-alatt* | Az összekötőt jelölő ikon <p>Szín: Ideális esetben egy fehér embléma színes háttér előtt. <p>Méretek: Egy ~160 pixeles embléma egy 230 pixeles négyzetben. | 
+      | **Ikon háttérszíne** | *ikon-arculati-színének-hexadecimális-kódja* | <p>Az ikon mögötti szín, amely egyezik az ikonfájl háttérszínével. <p>Formátum: hexadecimális. A #007ee5 kód például a kék színt jelenti. | 
+      | **Leírás** | *összekötő-leírása* | Adja meg az összekötő rövid leírását. | 
+      | **Gazdagép** | *összekötő-gazdagépe* | Adja meg a SOAP-szolgáltatás gazdagép-tartományát. | 
+      | **Kiindulási URL-cím** | *összekötő-kiindulási-URL-címe* | Adja meg a SOAP-szolgáltatás kiindulási URL-címét. | 
       |||| 
 
-### <a name="2b-describe-the-authentication-that-your-connector-uses"></a>2b. A hitelesítés az összekötőt használó leírása
+### <a name="2b-describe-the-authentication-that-your-connector-uses"></a>2b. Az összekötő által használt hitelesítés leírása
 
-1. Válasszon **biztonsági** , tekintse át, vagy a hitelesítés az összekötőt használó ismertetik. Hitelesítési gondoskodik arról, hogy a felhasználók identitását megfelelően a szolgáltatás és az ügyfelek közötti áramlását.
+1. Most válassza a **Biztonság** lehetőséget, hogy áttekinthesse vagy megadhassa az összekötő által használt hitelesítési módot. A hitelesítés segítségével biztosíthatja, hogy a rendszer zökkenőmentesen kommunikálja a felhasználók azonosságait a szolgáltatás és az ügyfelek közt.
 
-   Alapértelmezés szerint az összekötő által **hitelesítési típus** értéke **nincs hitelesítés**.
+   Alapértelmezés szerint az összekötő **Hitelesítési típus** beállításának értéke **Nincs hitelesítés**.
    
    ![Hitelesítés típusa](./media/logic-apps-soap-connector-create-register/security-authentication-options.png)
 
-   A hitelesítési típus módosításához válassza **szerkesztése**. Kiválaszthatja **az egyszerű hitelesítés**. Paraméter címkék eltérő alapértelmezett értékek használatához frissítse azokat a **paraméter címke**.
+   A hitelesítési típus módosításához válassza a **Szerkesztés** lehetőséget. Választhatja az **Alapszintű hitelesítés** beállítást. Az alapértelmezett értékektől eltérő paramétercímkék használatához frissítse azokat a **Paramétercímke** területen.
 
    ![Az egyszerű hitelesítés](./media/logic-apps-soap-connector-create-register/security.png)
 
    
-2. Az összekötő mentéséhez a biztonsági adatokat a lap tetején megadása után válassza **összekötő frissítése**, majd válassza a **Folytatás**. 
+2. Ha szeretné menteni az összekötőt a biztonsági adatok megadása után, válassza a lap tetején lévő **Összekötő frissítése**, majd a **Folytatás** lehetőséget. 
 
-### <a name="2c-review-update-or-define-actions-and-triggers-for-your-connector"></a>2c. Tekintse át, a frissítést, vagy a műveletek és a Connector eseményindítók definiálása
+### <a name="2c-review-update-or-define-actions-and-triggers-for-your-connector"></a>2c. Összekötő műveleteinek és eseményindítóinak áttekintése, frissítése és definiálása
 
-1. Válasszon **Definition** áttekintheti, szerkesztése vagy új műveletek és eseményindítókat, amelyek felhasználókat adhat hozzá a munkafolyamatok megadása.
+1. A **Definíció** elemre kattintva áttekintheti, szerkesztheti és definiálhatja a műveleteket és eseményindítókat, amelyeket a felhasználók hozzáadhatnak munkafolyamataikhoz.
 
-   Műveletek és eseményindítók alapján a WSDL-fájl megadott műveleteket, amelyek automatikusan feltölti a **Definition** lapon, és a kérés- és értékeket tartalmaznak. Ezért ha a szükséges műveletek már itt jelenik meg, megnyithatja a regisztrációs folyamat során a következő lépéssel ezen az oldalon módosítások nélkül.
+   A műveletek és eseményindítók a WSDL-fájlban definiált műveleteken alapulnak, amely automatikusan feltölti a **Definíció** lapot, valamint a kérés és a válasz értékeit is megadja. Így, ha a szükséges műveletek már megjelennek itt, az oldal módosítása nélkül léphet tovább a regisztrációs folyamat következő lépésére.
 
-   ![Összekötő meghatározása](./media/logic-apps-soap-connector-create-register/definition.png)
+   ![Összekötő definíciója](./media/logic-apps-soap-connector-create-register/definition.png)
 
 2. Ha szükséges, ha azt szeretné, meglévő műveletek és eseményindítók szerkesztéséhez vagy újak, hozzáadásával [folytassa a következő lépéseket](logic-apps-custom-connector-register.md#add-action-or-trigger).
 
 
-## <a name="3-finish-creating-your-connector"></a>3. Az összekötő létrehozásának befejezéséhez
+## <a name="3-finish-creating-your-connector"></a>3. Az összekötő létrehozásának befejezése
 
-Ha elkészült, válassza ki a **frissítés összekötő** , hogy az összekötőt. 
+Ha elkészült, válassza az **Összekötő frissítése** lehetőséget az összekötő üzembe helyezéséhez. 
 
-Gratulálunk! Most logikai alkalmazás létrehozása, amikor is megkeresi a connector Logic Apps-tervezőben, és adja hozzá ezt az összekötőt a Logic Apps alkalmazást.
+Gratulálunk! Amikor létrehoz egy logikai alkalmazást, mostantól megtalálja az összekötőt a Logic Apps Designerben, és hozzáadhatja a logikai alkalmazáshoz.
 
-![Logic Apps Designer keresse meg az összekötő](./media/logic-apps-soap-connector-create-register/soap-connector-created.png)
+![Összekötő keresése a Logic Apps Designerben](./media/logic-apps-soap-connector-create-register/soap-connector-created.png)
 
-## <a name="share-your-connector-with-other-logic-apps-users"></a>Az összekötő megosztása más Logic Apps felhasználókkal
+## <a name="share-your-connector-with-other-logic-apps-users"></a>Összekötő megosztása más Logic Apps-felhasználókkal
 
-Regisztrált, de a nem hitelesített egyéni összekötők úgy működik, mint a Microsoft által felügyelt összekötők, de látható és *csak* az összekötő Szerző és azonos Azure Active Directory-bérlőt és Azure-előfizetéssel rendelkező felhasználók a logic apps a régióban, ahol az alkalmazások vannak telepítve. Bár megosztása nem kötelező, lehetséges, hogy a forgatókönyvek az összekötők megosztása más felhasználókkal helyét. 
+A regisztrált, de nem tanúsított egyéni összekötők a Microsoft által felügyelt összekötőként működnek, azonban *kizárólag* a szerző és az olyan felhasználók számára láthatók és elérhetők, akik ugyanazzal az Azure Active Directory-bérlővel és Azure-előfizetéssel rendelkeznek a logikai alkalmazásokhoz abban a régióban, ahol az alkalmazások üzembe vannak helyezve. Bár a megosztás nem kötelező, valószínűleg adódnak olyan alkalmazási helyzetek, amikor meg kívánja osztani az összekötőit más felhasználókkal. 
 
 > [!IMPORTANT]
-> Ha megosztott egy összekötőt, mások is elindíthatják összekötőt függ. 
-> ***Az összekötő törlése az összes kapcsolatot az összekötőt.***
+> Miután megoszt egy összekötőt, lehet, hogy mások egy idő után számítani fognak rá. 
+> ***Az összekötő törlésével az összekötővel való összes kapcsolatot is törli.***
  
 Az összekötő kívül a határok, például külső felhasználókkal való megosztása senki Logic Apps [küldje el a Microsoft-tanúsítvány-összekötő](../logic-apps/custom-connector-submit-certification.md).
 
 ## <a name="faq"></a>GYIK
 
-**K:** a SOAP összekötő általánosan elérhető (GA)? </br>
-**V:** a SOAP-összekötő **előzetes**, és még nincs GA szolgáltatás.
+**K:** A SOAP-összekötő általánosan elérhető? </br>
+**V:** A SOAP-összekötő **előzetes verziójú** szolgáltatás, így általánosan még nem érhető el.
 
-**K:** bármely korlátozások és a SOAP-összekötővel kapcsolatos ismert problémák vannak-e? </br>
-**V:** Igen, tekintse meg a [SOAP összekötő korlátozások és ismert problémákat](../api-management/api-management-api-import-restrictions.md#wsdl).
+**K:** Rendelkezik a SOAP-összekötő valamilyen korlátozással vagy ismert hibákkal? </br>
+**V:** Igen, lásd: [A SOAP összekötők korlátozásai és ismert hibái](../api-management/api-management-api-import-restrictions.md#wsdl).
 
-**K:** vannak-e bármilyen egyéni összekötők korlátai? </br>
-**V:** Igen, tekintse meg a [egyéni összekötő korlátozza Itt](../logic-apps/logic-apps-limits-and-config.md#custom-connector-limits).
+**K:** Rendelkeznek az egyéni összekötők valamilyen korlátozással? </br>
+**A:** Igen. [Az egyéni összekötők korlátait itt tekintheti meg](../logic-apps/logic-apps-limits-and-config.md#custom-connector-limits).
 
 ## <a name="get-support"></a>Támogatás kérése
 
-* Forduljon a támogatási fejlesztési és bevezetési, vagy a kérelem-szolgáltatások, amelyek nem érhetők el a regisztrációs varázslót a, [ condevhelp@microsoft.com ](mailto:condevhelp@microsoft.com). A Microsoft developer kérdések és problémák ehhez a fiókhoz figyeli, és továbbítja a dokumentumokat a megfelelő csapat.
+* A fejlesztéssel és a bevezetéssel kapcsolatos támogatásért, illetve a regisztrációs varázslóban nem elérhető funkciók igénylésével kapcsolatban írjon a következő címre: [condevhelp@microsoft.com](mailto:condevhelp@microsoft.com). A Microsoft figyelemmel kíséri az erre a címre küldött, fejlesztéssel kapcsolatos kérdéseket és problémákat, és továbbítja azokat az illetékes csapatoknak.
 
-* Kérje meg vagy kérdésekre, vagy más Azure Logic Apps felhasználók tevékenységeit megtekintéséhez keresse fel a [Azure Logic Apps-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps), ahol kérdéseket tehet fel és válaszolhat meg, valamint megtudhatja, mivel foglalkoznak az Azure Logic Apps más felhasználói.
 
-* A Logic Apps javítása érdekében, szavazhatnak, vagy küldje el a következő ötleteket a [Logic Apps felhasználói visszajelzési webhelyet](http://aka.ms/logicapps-wish). 
+* Ha szeretne segíteni a Logic Apps fejlesztésében, szavazzon vagy küldje el javaslatait a [Logic Apps felhasználói visszajelzések oldalon](http://aka.ms/logicapps-wish). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Választható lehetőség: Az összekötő tanúsítás](../logic-apps/custom-connector-submit-certification.md)
 * [Egyéni összekötő – gyakori kérdések](../logic-apps/custom-connector-faq.md)

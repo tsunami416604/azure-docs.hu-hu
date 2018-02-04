@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/30/2015
 ms.author: robb
 ms.openlocfilehash: efcafa40c3d47ebfdd4520f98b65ad2c05b03c57
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="introducing-microsoft-azure"></a>Introducing Microsoft Azure
 A Microsoft Azure a Microsoft alkalmazás platformja a nyilvános felhő.  Ez a cikk célja, hogy biztosítson alaprendszert az Azure-ban – alapok megértéséhez még akkor is, ha a felhő semmit nem tudja a számítástechnikai.
@@ -68,7 +68,7 @@ Ez a felhőalapú informatika általános megközelítése segítségével szám
 3. **Az Adatközpont kiterjesztése** -használata Azure futó virtuális gépeket a helyszíni adatközpont kiterjesztése SharePoint vagy más alkalmazásokat. Ezt támogatja, nem lehet létrehozni a Windows-tartományokban a felhőben futó Active Directory az Azure virtuális gépeken. Az Azure Virtual Network (később említett) segítségével összekötni a helyi hálózat és a hálózat az Azure-ban.
 
 ### <a name="web-apps"></a>Web Apps
-![Az Azure Web Apps ROBBCSIART_TEST](./media/fundamentals-introduction-to-azure/mscsiart_AzureWebsitesIntroNew_12345.png)   
+![Azure Web Apps ROBBCSIART_TEST](./media/fundamentals-introduction-to-azure/mscsiart_AzureWebsitesIntroNew_12345.png)   
  *. Ábra: Az Azure Web Apps egy webhely alkalmazást futtat a felhőben anélkül, hogy az alapul szolgáló webkiszolgálókat kezelheti.*
 
 A leggyakoribb dolog, amelyek személyek a felhőben fut webhelyekhez és webes alkalmazásokhoz. Ez lehetővé teszi az Azure virtuális gépek, de továbbra is hagyja meg az ezzel az egy vagy több virtuális gépek és az alapjául szolgáló operációs rendszerek felügyelete. Cloud services webes szerepkörök ehhez, de telepíteni és fenntartani, azokat továbbra is szükséges adminisztratív munka.  Mi történik, ha csak kívánt webhely Ha valaki másnak gondoskodik a felügyeleti feladatok meg?
@@ -77,12 +77,12 @@ Ez az pontosan, Web Apps biztosít. A számítási modellt kínál a felügyelt 
 
 Fejlesztési Web Apps támogatja a .NET, PHP, Node.js, Java és Python, valamint az SQL-adatbázis és az Azure-adatbázis a MySQL relációs tárolására. Azt is beépített támogatást nyújt több népszerű alkalmazások, beleértve a WordPress, a Joomla vagy a Drupal. A cél, hogy egy alacsony költségű, méretezhető és körben használható platformot biztosít webhelyek és webalkalmazások létrehozása a nyilvános felhőben.
 
-**Web Apps forgatókönyvek**
+**Web Apps Scenarios**
 
 Webes alkalmazások hasznosak lehetnek a vállalatok, a fejlesztők és a webes tervezési szerveinek célja. A vállalatok egy könnyen kezelhető, méretezhető, rendkívül biztonságos és magas rendelkezésre állású megoldás futtatásához jelenléte webhelyek esetén. Állítson be egy webhelyet van szüksége, célszerű az Azure Web Apps indításához és a Cloud Services folytassa, ha egy szolgáltatás, amely nem érhető el kell. Tekintse meg a további hivatkozások, amelyek segítséget nyújtanak a beállítások között válassza a "Számítási" szakasz.
 
 ### <a name="cloud-services"></a>Cloud Services
-![Azure-Felhőszolgáltatás](./media/fundamentals-introduction-to-azure/CloudServicesIntroNew.png)   
+![Azure Cloud Service](./media/fundamentals-introduction-to-azure/CloudServicesIntroNew.png)   
 *Ábra: Azure Cloud Services Itt adható meg olyan platformon, mint egy Platformszolgáltatási környezetben kiválóan méretezhető egyéni kód futtatása*
 
 Tegyük fel, hogy hozható létre egy felhő-alkalmazás, amely képes támogatni az egyidejű felhasználók sok nem igényel sok felügyeleti és soha nem működik. Egy meglévő szoftver gyártójához Előfordulhat például, hogy határozott vezessék be a szoftver (SaaS) szolgáltatás épület egy verziója, a felhőben az alkalmazások közül. Vagy előfordulhat, hogy a kezdeti egy fogyasztó alkalmazás várható méretének növelése gyors létrehozása. Ha Azure van építve, mely végrehajtási modell használja?
@@ -111,7 +111,7 @@ SQL Server vagy egy másik adatbázis-kezelő futtatását létrehozott Azure vi
 Ebben az esetben állapotát, a virtuális gép és minden további adatlemezt létrehozása és feltöltése a blob storage (amely a döntésről bővebben később) által támogatott.  
 
 ### <a name="azure-sql-database"></a>Azure SQL Database
-![Az Azure Storage SQL-adatbázis](./media/fundamentals-introduction-to-azure/StorageAzureSQLDatabaseIntroNew.png)   
+![Azure Storage SQL Database](./media/fundamentals-introduction-to-azure/StorageAzureSQLDatabaseIntroNew.png)   
 
 *Ábra: Azure SQL Database biztosít a felhőben felügyelt relációs adatbázis-szolgáltatás.*
 
@@ -126,7 +126,7 @@ Azonban csak az SQL-adatbázis nem a felhő-Ez egy adatbázis-kezelő által egy
 Ha az Azure-alkalmazások (bármely a számítási modell használatával), amelyet a relációs tároló hoz létre, SQL-adatbázis jó választás lehet. A felhő kívül futó alkalmazások is használható ez a szolgáltatás azonban, a többi egyéb forgatókönyvek. Például különböző ügyfélrendszer, beleértve az asztali számítógépek, laptopok, táblagépek és telefonok SQL-adatbázisban tárolt adatok elérhető. És mivel replikáció útján magas rendelkezésre állást biztosít, SQL-adatbázis használata segíthet minimalizálják az állásidőt.
 
 ### <a name="tables"></a>Táblák
-![Az Azure Storage-táblákat](./media/fundamentals-introduction-to-azure/StorageTablesIntroNew.png)  
+![Azure Storage Tables](./media/fundamentals-introduction-to-azure/StorageTablesIntroNew.png)  
 
 *. Ábra: Azure-táblákban módszert kínál a strukturálatlan NoSQL adatainak tárolásához.*
 
@@ -139,7 +139,7 @@ Nem keverendő nevével és: Ez a technológia nem relációs tárhely biztosít
 Tegyük fel, hogy szeretne létrehozni az Azure-alkalmazások gyors hozzáférést igénylő adta-e adatokat, lehet, hogy azt a nagyszámú, de nem szükséges összetett SQL-lekérdezések végrehajtásához ezeken az adatokon. Tegyük fel, hogy hoz létre, egy fogyasztó alkalmazás, amelyet a minden felhasználó felhasználói profil adatait tárolja. Az alkalmazás népszerű, lehet, hogy engedélyeznie kell a nagy mennyiségű adatot, de akkor nem nem sok és az adatok tárolásához, majd beolvasása egyszerű módon lesz. Ez az, hogy pontosan milyen típusú forgatókönyvet, ahol Azure táblák teljesen logikus.
 
 ### <a name="blobs"></a>Blobok
-![Az Azure Storage blobs szolgáltatásban](./media/fundamentals-introduction-to-azure/StorageBlobsIntroNew.png)    
+![Azure Storage Blobs](./media/fundamentals-introduction-to-azure/StorageBlobsIntroNew.png)    
 *Ábra: Az Azure BLOB strukturálatlan bináris adatokat biztosít.*  
 
 Azure-blobokat (újra a "Blob tároló" és "Storage Blobsba" csak olyan az ugyanaz) strukturálatlan bináris adatok tárolására szolgál. Például a táblákat Blobok alacsony költségű tárolására szolgál, és lehet, hogy egyetlen blob akkora, mint 1 TB-os (egy terabájtnál). Azure-alkalmazások Azure meghajtót, adja meg az állandó tároló-e csatlakoztatva egy Azure-példányt Windows fájlrendszer blobok módosítását is lehet használni. Az alkalmazás látja a szokásos Windows-fájlok, de a tartalom ténylegesen tárolódnak a blob.
@@ -151,7 +151,7 @@ A BLOB storage használják sok más Azure-szolgáltatások (beleértve a virtu�
 Videók, nagy fájlok, vagy más bináris tároló alkalmazás egyszerű, olcsó tárolási BLOB is használhat. Blobok általában is használhatók, például a Content Delivery Network, amely előadás később más szolgáltatásokkal együtt.  
 
 ### <a name="import--export"></a>Import / Export (Importálás és exportálás)
-![Azure importálási Export szolgáltatásról](./media/fundamentals-introduction-to-azure/ImportExportIntroNew.png)  
+![Azure Import Export Service](./media/fundamentals-introduction-to-azure/ImportExportIntroNew.png)  
 
 *Ábra: Az Azure Import / Export szállítási egy fizikai merevlemez-meghajtóról vagy az Azure-ral gyorsabb és olcsóbb tömeges adatok importálása vagy exportálása lehetőséget nyújt.*  
 
@@ -162,8 +162,8 @@ Néha szükség nagy mennyiségű adat áthelyezése az Azure. Amely ehhez hossz
 * **Nagy adatáttelepítés** -bármikor nagy mennyiségű adat (TB), amely az Azure-bA feltölteni kívánt rendelkezik, az Import/Export szolgáltatás nem gyakran sokkal gyorsabb és lehet, hogy olcsóbbak áthelyezte azt az interneten keresztül. Ha az adatokat a BLOB, például a Table storage vagy egy SQL-adatbázis más űrlapba tud feldolgozni.
 * **Archivált adat-helyreállítás** -importálási/exportálási segítségével rendelkezik Microsoft átviteli nagy mennyiségű adat tárolja az Azure Blob Storage és a tárolóeszköz között küldött és rendelkezik eszköz kézbesítését a kívánt helyre. Ez némi időt vesz igénybe, mert nincs vész-helyreállítási jó választás. Érdemes az archivált adatok gyors eléréséhez nem szükséges.
 
-### <a name="file-service"></a>File szolgáltatás
-![Az Azure File Service](./media/fundamentals-introduction-to-azure/FileServiceIntroNew.png)    
+### <a name="file-service"></a>File Service
+![Azure File Service](./media/fundamentals-introduction-to-azure/FileServiceIntroNew.png)    
 *Ábra: Az Azure a Fájlszolgáltatások olyan SMB \\ \\server\share elérési utak a felhőben futó alkalmazások.*
 
 A helyszíni, gyakori, hogy elérhető a Server Message Block (SMB) protokoll használatával a file storage nagy mennyiségű egy \\ \\Server\share formátumban. Azure most már rendelkezik egy szolgáltatás, amely lehetővé teszi a protokoll használatát a felhőben. Az Azure-ban futó alkalmazások segítségével fájlokat megosztani a jól ismert fájlrendszer API-k például ReadFile és WriteFile használatával virtuális gépek között. Emellett a fájlokat is elérhető, egyszerre egy REST-felület, amely lehetővé teszi a virtuális hálózat is beállításakor a megosztások elérésére a helyszíni keresztül. Az Azure Files a blob szolgáltatás épül, ezért a azonos rendelkezésre állási, tartóssága, méretezhetőség és georedundancia Azure Storage épített örökli.
@@ -236,7 +236,7 @@ A Visual Studio Team Services egy terheléselosztási tesztelési szolgáltatás
 
 A Visual Studio Team Services is biztosít, szolgáltatásokat, például a folyamatos integrációt alkot, Kanban modulok és virtuális team helyiségekben gyors fejlesztési támogatása.
 
-**A Visual Studio Team Services-forgatókönyvek**
+**Visual Studio Team Services Scenarios**
 
 A Visual Studio Team Services rendszer vállalatok közötti együttműködés világszerte, és nem jó választás az infrastruktúra már rendelkezik az ehhez az. A telepítő percben beolvasása, válassza ki a forrásrendszerben vezérlő, és indítsa programozás és felépítése adott napon.  A team eszközök olyan helyen nyújtanak koordinációs, és együttműködés és további eszközöket biztosít az elemzés tesztelésére és hangolására gyorsan az alkalmazás szükséges.
 
@@ -372,7 +372,7 @@ Ha már használja a Windows Server vagy a System Center, Azure biztonsági ment
 Függetlenül attól, milyen műveletet a kód gyakran kell más kód kommunikálni.  Bizonyos helyzetekben szükség van csak a alapvető aszinkron üzenetkezelési. Más esetekben összetettebb kapcsolati szükség. Azure biztosít az ilyen problémák megoldására fejlesztésében többféle formában. 5. ábra a lehetőségeit szemlélteti.
 
 ### <a name="queues"></a>Üzenetsorok
-![Az Azure Service Bus-továbbító](./media/fundamentals-introduction-to-azure/QueuesIntroNew.png)
+![Azure Service Bus Relay](./media/fundamentals-introduction-to-azure/QueuesIntroNew.png)
 
 *. Ábra: A várólisták laza alkalmazás részei között csatolási engedélyezése, és lehetővé teszi a méretezés.*  
 
@@ -398,7 +398,7 @@ Futtatja a felhőben, az adatközpont, a mobil eszköz vagy valahol máshol, hog
 A korábban ismertetett várólisták (egy az egyhez típusú), valamint a Service Bus is biztosít további kommunikációs módszerek.
 
 #### <a name="service-bus-relay"></a>Service Bus Relay
-![Az Azure Service Bus-továbbító](./media/fundamentals-introduction-to-azure/ServiceBusRelayIntroNew.png)
+![Azure Service Bus Relay](./media/fundamentals-introduction-to-azure/ServiceBusRelayIntroNew.png)
 
 *Ábra: Service Bus Relay lehetővé teszi, hogy egy tűzfal másik oldalon található alkalmazások közötti kommunikációt.*
 
@@ -419,12 +419,12 @@ A Service Bus témakörök és előfizetések közzététel és előfizetés mec
 Bármikor hoz létre Ha sok üzeneteket, amelyek fontos, de különböző alárendelt rendszereket csak kell azokat kommunikációs, a Service Bus-témakörbe eltérő részhalmaza figyelésére és előfizetések jó választás.
 
 ### <a name="biztalk-services"></a>BizTalk Services
-![BizTalk szolgáltatások](./media/fundamentals-introduction-to-azure/BizTalkServicesIntroNew.png)   
+![BizTalk Services](./media/fundamentals-introduction-to-azure/BizTalkServicesIntroNew.png)   
  *Ábra: BizTalk szolgáltatás lehetővé teszi a átalakítására XML-üzenetek formátumainak a felhőben.*
 
 Egyes esetekben kell kapcsolni rendszerek, amelyek segítségével különböző üzenetkezelési formátumok kommunikálnak. Esetében gyakori, a vállalatok különböző adatbázis sémák és XML messaging formátumok, akkor is, ha egy általános szabvány érhető el. Helyett a egyéni kódot ír, használhatja a helyszíni BizTalk Server különböző rendszerek integrálására.  Az Azure BizTalk biztosít az azonos típusú szolgáltatást, de a felhőben. Is kell fizetnie csak mi használ, és nem kell foglalkoznia méretezési, mint a helyszíni kellene lennie.
 
-**BizTalk szolgáltatások forgatókönyvek**
+**BizTalk Services Scenarios**
 
 Üzleti vállalatközi (B2B) kapcsolati gyakran igényelnek fordítási az ilyen típusú.  Például egy vállalat repülőgépek felépítése kell rendelés részeit különböző részeit beszállítói. Sok részből szállítók lesz.  A szállítók rendszerekbe közvetlenül a repülőgép szerkesztők rendszerekből go rendeléseket érdemes automatizálni.  A core rendszerek és üzenetformátumok módosítani szeretné sem üzleti, és nem nagyon valószínű, hogy ezek a formátumok megegyeznek. BizTalk szolgáltatások üzenetek igénybe, és állomásneveket, az új formátum mindkét irányba között. Vagy repülőgép szállítójához teheti meg lefordítani a munkahelyi vagy az egyes szállítók is, attól függően ki szeretne rendelni a további ellenőrzési és a szükséges fordítási mennyisége.     
 

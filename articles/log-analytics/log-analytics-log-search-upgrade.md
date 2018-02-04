@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: 36a08cab2b1d409d2de382a07cfd7259a1c94e13
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3bb54f7897876d656da6f1a4b349c9db202a142d
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="azure-log-analytics-upgrade-to-new-log-search"></a>Új naplófájl-keresési frissítsen az Azure Naplóelemzés
 
@@ -52,7 +52,7 @@ Ha a munkaterületet automatikusan frissítve van, majd, megjelenik egy szalagc�
 A következő változnak a munkaterület átalakítás után:
 
 - A mentett keresések, a riasztási szabályok és a nézeteket, a nézet-tervezővel létrehozott automatikusan alakítja át az új nyelven.  Megoldások szereplő keresések nem automatikusan történik, de a azok még inkább parancsprogramok megnyitásakor.  
-- [Saját irányítópult](log-analytics-dashboards.md) az alábbi szempontból is elavult [adatforrásnézet-tervezőből](log-analytics-view-designer.md) és [Azure irányítópultok](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards.md).  Saját irányítópult hozzáadott csempék továbbra is elérhetők, de azok most csak olvasható.
+- [Saját irányítópult](log-analytics-dashboards.md) az alábbi szempontból is elavult [adatforrásnézet-tervezőből](log-analytics-view-designer.md) és [Azure irányítópultok](../azure-portal/azure-portal-dashboards.md).  Saját irányítópult hozzáadott csempék továbbra is elérhetők, de azok most csak olvasható.
 - [A Power BI-integráció](log-analytics-powerbi.md) új folyamat helyére.  Minden létrehozott meglévő Power BI ütemezések le lesz tiltva, és ki kell cserélni őket az új folyamat során.
 - A válaszok [műveletek riasztási](log-analytics-alerts-actions.md) webhookok és runbookok használatával új formátumuk, és ennek megfelelően frissíti a riasztási szabályok esetleg.
 - Tekintse meg a következő a [naplófájl-keresési gyakran ismételt kérdések](log-analytics-log-search-faq.md) esetében a frissítés kapcsolatos gyakori kérdésekre.
@@ -95,7 +95,7 @@ Ha már ismeri a hagyományos Log Analytics lekérdezési nyelv a, ha, majd hasz
 ![Nyelvi konverter](media/log-analytics-log-search-upgrade/language-converter.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Tekintse meg a [oktatóanyag új nyelvi](https://go.microsoft.com/fwlink/?linkid=856078).
 - Végezze el a [a naplófájl-keresési portál használata az oktatóanyag](log-analytics-log-search-log-search-portal.md) az új lekérdezés nyelven.
 - Ismerkedjen meg az új [Advanced Analytics portál](https://go.microsoft.com/fwlink/?linkid=856587).

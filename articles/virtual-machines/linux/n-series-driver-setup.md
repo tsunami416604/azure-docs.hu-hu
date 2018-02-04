@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/12/2018
+ms.date: 02/01/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: de82062f605d060dc388022cdb8ee9d5c09b2b89
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: 421e594f7bd4df1bc1c5faedc2c8bfab0540ca61
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>N-sorozat linuxos virtuális gépek NVIDIA GPU illesztőprogramok telepítéséhez
 
@@ -101,18 +101,21 @@ sudo apt-get install cuda-drivers
 sudo reboot
 ```
 
-### <a name="centos-based-73-or-red-hat-enterprise-linux-73"></a>7.3 centOS-alapú vagy a Red Hat Enterprise Linux 7.3.
+### <a name="centos-or-red-hat-enterprise-linux-73-or-74"></a>CentOS vagy a Red Hat Enterprise Linux 7.3 vagy 7.4
 
-1. Telepítse a legújabb Hyper-v Linux integrációs szolgáltatások.
+1. A kernel frissítése.
 
-  > [!IMPORTANT]
-  > Ha telepítette a CentOS-alapú HPC-lemezkép egy NC24r VM, folytassa a 3. lépés. Mivel az Azure RDMA-illesztőprogramjai és a Linux integrációs szolgáltatások a HPC-lemezképben előre telepített, LIS nem kell frissíteni, és a kernel frissítések alapértelmezés szerint le vannak tiltva.
-  >
+  ```
+  sudo yum install kernel kernel-tools kernel-headers kernel-devel
+  
+  sudo reboot
+
+2. Install the latest Linux Integration Services for Hyper-V.
 
   ```bash
-  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3-2.tar.gz
+  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3-5.tar.gz
  
-  tar xvzf lis-rpms-4.2.3-2.tar.gz
+  tar xvzf lis-rpms-4.2.3-5.tar.gz
  
   cd LISISO
  
@@ -124,8 +127,6 @@ sudo reboot
 3. Csatlakozzon újra a virtuális Gépet, és folytathatja a telepítést a következő parancsokat:
 
   ```bash
-  sudo yum install kernel-devel
-
   sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 
   sudo yum install dkms
@@ -162,20 +163,22 @@ Ha az illesztőprogram telepítve van, látni fogja a következőhöz hasonló k
 ![NVIDIA eszköz állapota](./media/n-series-driver-setup/smi.png)
 
 
-
 ## <a name="rdma-network-connectivity"></a>RDMA hálózati kapcsolat
 
 RDMA hálózati kapcsolatot az RDMA-kompatibilis N sorozatú virtuális gépeken futó engedélyezhető, mint például az azonos rendelkezésre állási készlet NC24r telepítve. Az RDMA hálózati Message Passing Interface (MPI) forgalmat támogatja az Intel MPI futó alkalmazások 5.x-es vagy újabb verziója. Kövesse a további követelmények:
 
 ### <a name="distributions"></a>Felosztások
 
-RDMA-kompatibilisek-e N sorozatú virtuális gépeket, egy az Azure piactéren, amely támogatja az RDMA-kapcsolatot a következő lemezképek központi telepítése:
+RDMA-kompatibilisek-e N sorozatú virtuális gépek, az Azure piactéren, amely támogatja az RDMA-kapcsolatot az N-sorozatú virtuális gépeken futó lemezkép központi telepítése:
   
-* **Ubuntu** -Ubuntu Server 16.04 LTS. RDMA-illesztőprogramok konfigurálja a virtuális Gépre, és regisztrálhatja az Intel Intel MPI letöltése:
+* **Ubuntu 16.04 LTS** - RDMA illesztőprogramok konfigurálja a virtuális Gépre, és regisztrálhatja az Intel Intel MPI letöltése:
 
   [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../../includes/virtual-machines-common-ubuntu-rdma.md)]
 
-* **CentOS-alapú HPC** -7.3 HPC CentOS-alapú. RDMA-illesztőprogramok és Intel MPI 5.1 telepítve vannak a virtuális Gépet. 
+> [!NOTE]
+> CentOS-alapú HPC képek jelenleg nem ajánlottak RDMA csatlakozási N sorozatú virtuális gépeken. A legújabb CentOS 7.4 kernel, amely támogatja a NVIDIA Feldolgozóegységekkel nem támogatják az RDMA.
+> 
+
 
 ## <a name="install-grid-drivers-for-nv-vms"></a>Portok HV virtuális gépek rács illesztőprogramok telepítése
 
@@ -237,7 +240,7 @@ Portok HV virtuális gépeken NVIDIA rács illesztőprogramok telepítéséhez a
 9. A virtuális gép újraindul, és ellenőrizheti a telepítést.
 
 
-### <a name="centos-based-73-or-red-hat-enterprise-linux-73"></a>7.3 centOS-alapú vagy a Red Hat Enterprise Linux 7.3.
+### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS vagy a Red Hat Enterprise Linux 
 
 1. A kernel és DKMS frissítése.
  
@@ -262,9 +265,9 @@ Portok HV virtuális gépeken NVIDIA rács illesztőprogramok telepítéséhez a
 3. Indítsa újra a virtuális gép, csatlakozzon újra, és telepítse a legújabb Linux integrációs szolgáltatásokat a Hyper-V:
  
   ```bash
-  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3-2.tar.gz
+  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3-5.tar.gz
 
-  tar xvzf lis-rpms-4.2.3-2.tar.gz
+  tar xvzf lis-rpms-4.2.3-5.tar.gz
 
   cd LISISO
 
@@ -343,8 +346,6 @@ if grep -Fxq "${BUSID}" /etc/X11/XF86Config; then     echo "BUSID is matching"; 
 Hozzon létre egy bejegyzést, az ezt a fájlt is elindítható a rendszerindító legfelső szintű `/etc/rc.d/rc3.d`.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
-
-* Egy ismert probléma az Azure virtuális gépeken N-sorozat a 4.4.0-75 Linux kernel futó Ubuntu 16.04 LTS CUDA illesztőprogramok van. Ha egy korábbi kernel frissít, frissítsen legalább kernel verzió 4.4.0-77.
 
 * Adatmegőrzési mód használatával állíthatja be `nvidia-smi` , a parancs kimenetében esetén gyorsabb lekérdezés kártyák kell. Adatmegőrzési üzemmód beállítása, hajtsa végre a `nvidia-smi -pm 1`. Vegye figyelembe, hogy a virtuális gép újraindul, ha a üzemmódját eltűnik. Lehet mindig parancsprogramot futtatni a üzemmódját indításkor végrehajtásához.
 

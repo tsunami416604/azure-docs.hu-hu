@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: 32ddb1489c89303ca3d094c1346d5071c7380c56
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 4e3c17a86281176726be64008fa9e59e08e026f0
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Virtuális hálózatok az Azure API Management használata
 Az Azure virtuális hálózatokról (Vnetekről) helyezze el az Azure-erőforrások bármelyike nem internetes routeable hálózati hozzáférést szabályozó teszik lehetővé. Ezek a hálózatok csatlakozhatnak különböző VPN technológiáin a helyszíni hálózatokhoz. További információk az Azure virtuális hálózatok indítsa el az adatok Itt további: [Azure virtuális hálózat áttekintése](../virtual-network/virtual-networks-overview.md).
@@ -111,20 +111,21 @@ Ha egy API-kezelés szolgáltatás példányát a VNETEN belül üzemel a portok
 | * / 3443 |Bejövő |TCP |INTERNET / VIRTUAL_NETWORK|Az Azure portál és a Powershell felügyeleti végpont |Belső |
 | * / 80, 443 |Kimenő |TCP |VIRTUAL_NETWORK / INTERNET|**Azure Storage függőség**, Azure Service Bus és az Azure Active Directory (ha alkalmazható).|Külső és belső | 
 | * / 1433 |Kimenő |TCP |VIRTUAL_NETWORK / INTERNET|**Hozzáférés az Azure SQL-végpontok** |Külső és belső |
-| * / 5671, 5672 |Kimenő |TCP |VIRTUAL_NETWORK / INTERNET|Az Event Hubs házirend- és figyelési ügynök napló függőség |Külső és belső |
+| * / 5672 |Kimenő |TCP |VIRTUAL_NETWORK / INTERNET|Az Event Hubs házirend- és figyelési ügynök napló függőség |Külső és belső |
 | * / 445 |Kimenő |TCP |VIRTUAL_NETWORK / INTERNET|Azure-fájlmegosztáshoz git függőség |Külső és belső |
+| * / 1886 |Kimenő |TCP |VIRTUAL_NETWORK / INTERNET|A Resource Health állapot közzétételéhez szükséges |Külső és belső |
 | * / 25028 |Kimenő |TCP |VIRTUAL_NETWORK / INTERNET|Csatlakozzon az SMTP-továbbító az e-mailek küldésekor |Külső és belső |
 | * / 6381 - 6383 |Bejövő és kimenő |TCP |VIRTUAL_NETWORK / VIRTUAL_NETWORK|Hozzáférés a Redis gyorsítótár példányok RoleInstances között |Külső és belső |
 | * / * | Bejövő |TCP |AZURE_LOAD_BALANCER / VIRTUAL_NETWORK| Azure Infrastructure Load Balancer |Külső és belső |
 
 >[!IMPORTANT]
-> * A portok, amelynek a *célú* van **félkövér** szükséges API-kezelés szolgáltatás sikeresen telepíthető. A más portok blokkolása azonban miatt teljesítménycsökkenést használja, és figyelje a futó szolgáltatás az lehetősége.
+> A portok, amelynek a *célú* van **félkövér** szükséges API-kezelés szolgáltatás sikeresen telepíthető. A más portok blokkolása azonban miatt teljesítménycsökkenést használja, és figyelje a futó szolgáltatás az lehetősége.
 
 * **SSL-funkció**: SSL-tanúsítvány láncának felépítése és -ellenőrzés az API Management engedélyezéséhez szolgáltatásnak kell a kimenő hálózati kapcsolat ocsp.msocsp.com, mscrl.microsoft.com és crl.microsoft.com. A függőség nincs szükség, ha bármely olyan tanúsítvány, az API Management-be feltölteni a teljes lánc és a legfelső szintű tartalmaz.
 
 * **DNS hozzáférési**: 53-as port kimenő hozzáférést kell DNS-kiszolgálókkal való kommunikációhoz. Ha egy egyéni DNS-kiszolgáló létezik a VPN-átjáró másik végén, a DNS-kiszolgáló elérhető-e az API Management üzemeltető alhálózatból kell lennie.
 
-* **Metrikák és az állapotfigyelés**: Azure figyelési végpontok, amelyek oldja meg a következő tartományokkal a kimenő hálózati kapcsolat: global.metrics.nsatc.net, shoebox2.metrics.nsatc.net, prod3.metrics.nsatc.net, prod.warmpath.msftcloudes.com.
+* **Metrikák és az állapotfigyelés**: Azure figyelési végpontok, amelyek oldja meg a következő tartományokkal a kimenő hálózati kapcsolat: global.metrics.nsatc.net, shoebox2.metrics.nsatc.net, prod3.metrics.nsatc.net, prod.warmpath.msftcloudes.com, prod3-black.prod3.metrics.nsatc.net és prod3-red.prod3.metrics.nsatc.net.
 
 * **Útvonal gyorstelepítése**: egy közös felhasználói konfigurálás az, hogy a saját alapértelmezett útvonalat (0.0.0.0/0), amely arra kényszeríti a kimenő Internet forgalmat inkább a helyszínen. A forgalom áramlását tüntetnek megsérti kapcsolat az Azure API Management szolgáltatással, mert a kimenő adatforgalmat a letiltott helyi, vagy NAT-címek, amelyek már nem használhatók a különböző Azure-végpontok egy felismerhetetlen készletéhez lenne. A megoldás, hogy egy (vagy több) felhasználó által definiált útvonalak megadása ([udr-EK][UDRs]), amely tartalmazza az Azure API Management az alhálózaton. Egy UDR helyett az alapértelmezett útvonal szembeni szerződéses kötelezettségeket vonatkozó alhálózati útvonalakat határozza meg.
   Ha lehetséges javasoljuk, hogy az alábbi konfigurációt használja:
@@ -132,7 +133,7 @@ Ha egy API-kezelés szolgáltatás példányát a VNETEN belül üzemel a portok
  * Az Azure API Management tartalmazó alkalmazva UDR 0.0.0.0/0 az Internet egy következő ugrás típusa határozza meg.
  A kombinált hatását, hogy ezeket a lépéseket az, hogy az alhálózat-szintű UDR elsőbbséget élvez az ExpressRoute kényszerített bújtatás, biztosítva ezzel az Azure API Management a kimenő Internet-hozzáféréssel.
 
-**Virtuális hálózati berendezések keresztül útválasztási**: teljes megakadályozza a konfigurációkat, amelyekkel egy olyan alapértelmezett útvonalat (0.0.0.0/0) UDR szánt internetes forgalmat az API Management alhálózatból egy hálózati Azure-beli virtuális készüléken keresztül az API Management és a szükséges szolgáltatások közötti kommunikáció során. Ez a konfiguráció nem támogatott. 
+* **Virtuális hálózati berendezések keresztül útválasztási**: konfigurációkat, amelyekkel egy olyan alapértelmezett útvonalat (0.0.0.0/0) UDR szánt internetes forgalmat az API Management alhálózatból egy hálózati Azure-beli virtuális készüléken keresztül blokkolja. felügyeleti forgalom Internet származik a virtuális hálózati alhálózat belül telepített API Management szolgáltatáspéldányra. Ez a konfiguráció nem támogatott.
 
 >[!WARNING]  
 >Az Azure API Management használata nem támogatott az ExpressRoute-konfigurációkat, amelyek **helytelenül kereszt-hirdetményt a magánhálózati társviszony-létesítési elérési utat a nyilvános társviszony-létesítési elérési útvonalak**. ExpressRoute-konfigurációk, amelyek rendelkeznek a nyilvános társviszony konfigurálva, a Microsoft Azure IP-címtartományok számos útvonal-hirdetéseinek kap Microsoft. Ha ezen címtartomány helytelenül határokon meghirdetett a magánhálózati társviszony-létesítési elérési úton, a záró eredménye, hogy minden kimenő hálózati rendszer érkező csomagokat, az Azure API Management példány alhálózati helytelenül kényszerített-tunneled az ügyfél a helyi hálózati infrastruktúra. Hálózati folyamatot az Azure API Management megszakítja. Ez a probléma megoldása, hogy állítsa le a kereszt-hirdetési útvonalak a nyilvános társviszony-létesítési elérési útról a magánhálózati társviszony-létesítési elérési utat.
@@ -153,7 +154,7 @@ Ha egy API-kezelés szolgáltatás példányát a VNETEN belül üzemel a portok
 ## <a name="subnet-size"></a> Alhálózati Méretkövetelményt
 Azure fenntartja az egyes IP-címek minden alhálózaton belül, és ezeknél a címeknél nem használható. Az első és utolsó IP-címek alhálózatok protokoll megfelelési, valamint három további címek az Azure-szolgáltatásokhoz használt számára vannak fenntartva. További információkért lásd: [vannak-e bármilyen korlátozás belül ezek alhálózatok IP-címeket használnak?](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
 
-Az Azure virtuális hálózat infrastruktúra által használt IP-címek mellett az Api Management feltünteti az az alhálózat által használt két IP-címek egységenként Premium Termékváltozat vagy egy 1 IP-címek a fejlesztői termékváltozat. Minden példány fenntartja a külső terheléselosztóhoz 1 IP-címet. Ha olyan belső virtuális hálózat üzembe helyezve, egy további IP-címet igényel a a belső terheléselosztó.
+Mellett az IP-címeit az Azure virtuális hálózat infrastruktúra az Api Management feltünteti az alhálózat a fejlesztői SKU Premium Termékváltozat egységenként két IP-címet vagy egy IP-címet használ. Minden példány fenntartja a külső terheléselosztó további IP-címet. Ha olyan belső virtuális hálózat üzembe helyezve, egy további IP-címet igényel a a belső terheléselosztó.
 
 Az alhálózat, ahol az API Management is telepíthető a minimális méret fent a számítást megadott van /29, amely 3 IP-címeket.
 

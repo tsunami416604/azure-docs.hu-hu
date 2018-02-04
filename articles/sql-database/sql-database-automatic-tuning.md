@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: On Demand
-ms.date: 11/08/2017
+ms.date: 11/09/2017
 ms.author: jovanpop
-ms.openlocfilehash: 50d1548637ecc6862f680f73e333e8d7f8d20e39
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: dcea2c34ab26349c6f937c582bfe35d7a42f24a6
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Az Azure SQL-adatbázis automatikus hangolása
 
@@ -75,9 +75,10 @@ Az Azure SQL Database azonosítja **a CREATE INDEX**, **DROP INDEX**, és **KÉN
 
 Automatikus hangolása beállítások egymástól függetlenül kapcsolható be- és kikapcsolása adatbázisonként, vagy logikai kiszolgálón konfigurált és az összes adatbázisra, amelyet a örököl beállításokat a kiszolgálón alkalmazott. Automatikus hangolása beállítások a kiszolgálón és a beállítások a kiszolgálón az adatbázisok öröklődés konfigurálása konfigurálása automatikus hangolása, mert a nagy számú adatbázis automatikus hangolási lehetőségeket kezelését megkönnyíti a módszer használata ajánlott.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az Azure SQL Database a számítási feladatok kezelésére automatikus hangolása engedélyezéséről [engedélyezze az automatikus hangolással](sql-database-automatic-tuning-enable.md).
 - Manuálisan tekintse át és az automatikus hangolással javaslatok alkalmazása [keresse meg és teljesítmény javaslatok alkalmazása](sql-database-advisor-portal.md).
-- Automatikus hangolása használt beépített eszközintelligencia kapcsolatos további információkért lásd: [mesterséges Eszközintelligencia beállítja az Azure SQL-adatbázisok](https://azure.microsoft.com/blog/artificial-intelligence-tunes-azure-sql-databases/).
-- Az Azure SQL Database és SQL server 2017 automatikus hangolási works kapcsolatos további információkért lásd: [SQL Server automatikus hangolása](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning).
+- Értesítő e-mailek automatikus hangolási ajánlások létrehozásával kapcsolatos további tudnivalókért lásd: [E-mail értesítések automatikus hangolása](sql-database-automatic-tuning-email-notifications.md)
+- Automatikus hangolása használt beépített eszközintelligencia kapcsolatos további tudnivalókért lásd: [mesterséges Eszközintelligencia beállítja az Azure SQL-adatbázisok](https://azure.microsoft.com/blog/artificial-intelligence-tunes-azure-sql-databases/).
+- Az Azure SQL Database és SQL server 2017 automatikus hangolási működését, lásd: [SQL Server automatikus hangolása](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning).

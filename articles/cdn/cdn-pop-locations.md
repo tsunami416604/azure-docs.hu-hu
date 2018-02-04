@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 242be346f975e013004c520a41bf14b95a3f27a4
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 3c1095c67b9a5369a9ac797bf17342499675e244
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="azure-cdn-pop-locations"></a>Azure CDN POP-helyszínek
 Ez a cikk ismerteti a jelenlegi pont nyújtó jelenléti (POP) helyét **Azure CDN Verizon** és **Akamai Azure CDN**.
@@ -33,13 +33,14 @@ Ez a cikk ismerteti a jelenlegi pont nyújtó jelenléti (POP) helyét **Azure C
 | Régió | Verizon | Akamai |
 | --- | --- | --- |
 | Észak-Amerika | Atlanta –, ám<br />Boston, MA<br />Chicago, Illinois<br />Dallas, TX<br />Jelenti, CO<br />Másik Debrecenben, CA<br />Miami, FL<br />Budapest<br />Philadelphia, PA<br />San Jose, CA<br />Budapesti, WA<br />Washingtoni, | Kanada<br />Mexikó<br />Egyesült Államok |
-| Dél-Amerika | Buenos Aires, argentin<br />A Rio de Janeiróban, Brazília<br />São Paulo, Brazília<br />Valparaíso, Chilei<br />Barranquilla, Kolumbia<br />Medellin, Kolumbia<br />Minden jog fenntartva<br />Lima, Perui | Brazília<br />Peru |
-| Kelet- és Észak-Európa | Koppenhága, Dánia<br />Helsinki, Finnország<br />Varsói, lengyel<br />Stockholm, svéd | Dánia<br />Lengyelország<br />Svédország<br /> |
-| Nyugat-Európa | Bécs, Ausztria<br />Párizs, Franciaország<br />Frankfurt, Németország<br />Amszterdami, Hollandia<br />Londoni, UK | Ausztria<br />Franciaország<br />Németország<br />Írország<br />Hollandia<br />Svájc<br />Egyesült Királyság |
-| Dél-Európa | Milánó, Olaszország<br />Madrid, Spanyolország | Olaszország<br />Spanyolország |
-| Ázsia | Hongkong<br />Bangalore-i, India<br />Chennai, India<br />Delhi, India<br />Mumbai, India<br />Újdelhi, India<br />Batam, indonéziai<br />Dzsakarta, indonéziai<br />Oszaka, japán<br />Tokió, japán<br />Szingapúr<br />Koreai Szöul déli régiója<br />Kaohsiung, Tajvan | Hongkong<br />India<br />Indonézia<br />Japán<br />Malajzia<br />Fülöp-szigetek<br />Szingapúr<br />Tajvan<br />Thaiföld<br />Vietnam |
+| Dél-Amerika | Buenos Aires, Argentina<br />Rio de Janeiro, Brazil<br />São Paulo, Brazília<br />Valparaíso, Chilei<br />Barranquilla, Kolumbia<br />Medellin, Kolumbia<br />Quito, Ecuador<br />Lima, Peru | Brazília<br />Peru |
+| Kelet- és Észak-Európa | Koppenhága, Dánia<br />Helsinki, Finnország<br />Varsó, Lengyelország<br />Stockholm, Svédország | Dánia<br />Lengyelország<br />Svédország<br /> |
+| Nyugat-Európa | Bécs, Ausztria<br />Párizs, Franciaország<br />Frankfurt, Németország<br />Amszterdam, Hollandia<br />London, UK | Ausztria<br />Franciaország<br />Németország<br />Írország<br />Hollandia<br />Svájc<br />Egyesült Királyság |
+| Dél-Európa | Milánó, Olaszország<br />Madrid, Spain | Olaszország<br />Spanyolország |
+| Afrika | Johannesburg, Dél-Afrika | |
 | Közel-Kelet | Muscat, Omán<br />Fujirah, Egyesült Arab emírségekbeli | Katar |
-| Ausztrália és Új-Zéland | Melbourne, Ausztrália<br />Sydney, Ausztrália<br />Aucklandi, Új-Zéland | Ausztrália<br />Új-Zéland |
+| Ázsia | Hongkong<br />Bangalore, India<br />Chennai, India<br />Delhi, India<br />Mumbai, India<br />Újdelhi, India<br />Batam, indonéziai<br />Jakarta, Indonesia<br />Oszaka, japán<br />Tokió, Japán<br />Szingapúr<br />Koreai Szöul déli régiója<br />Kaohsiung, Tajvan | Hongkong<br />India<br />Indonézia<br />Japán<br />Malajzia<br />Fülöp-szigetek<br />Szingapúr<br />Tajvan<br />Thaiföld<br />Vietnam |
+| Ausztrália és Új-Zéland | Melbourne, Australia<br />Sydney, Ausztrália<br />Aucklandi, Új-Zéland | Ausztrália<br />Új-Zéland |
 
 ## <a name="see-also"></a>Lásd még:
 * [Az Azure CDN peremhálózati csomópontok API legújabb IP-címek lekérése engedélyezése](https://docs.microsoft.com/rest/api/cdn/edgenodes)

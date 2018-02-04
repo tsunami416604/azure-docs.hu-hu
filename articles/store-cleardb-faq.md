@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
-ms.openlocfilehash: 0d1e3c826e61b8dee264e1c01fd2d54ba7ebb636
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 8186e86bd7a441fcefb0759d75ded6f063a4722f
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>ClearDB MySQL-adatbázisok használata az Azure App Service szolgáltatásban – gyakori kérdések
 Ez a GYIK kapcsolatos kérdésekre ad közös használatával, és az Azure Web Apps adatbázisok beszerzési a ClearDB MySQL.
@@ -80,7 +80,7 @@ Nem. További felhasználók nem hozható létre, de további adatbázisok a Cle
 Igen, adatbázisok lehet alapvető adatsorozat frissítése helyi (alapvető 500 keresztül alapvető 60). Pro adatsorozat lehet frissíteni a helyi (és Pro 1000 Pro 125) kivételével Pro 60. Pro 60 adatbázis frissítése jelenleg nem támogatott. 
 
 ## <a name="when-i-migrate-my-resources-from-one-subscription-to-another-does-my-cleardb-mysql-database-get-migrated-as-well"></a>Ha az erőforrások egy előfizetésből, másik telepítek, nem a ClearDB MySQL-adatbázis települnek át is?
-Végrehajtásakor erőforrásmigrálás előfizetésekhez, néhány [korlátozások](app-service/app-service-move-resources.md) alkalmazni. A ClearDB MySQL-adatbázis egy külső szolgáltatás, és ezért nem települnek át az Azure-előfizetés az áttelepítés során. Ha nem kezelheti az Azure-erőforrások áttelepítése előtt a MySQL-adatbázis áttelepítése, a ClearDB MySQL-adatbázisok letiltható. Manuálisan telepítse át először az adatbázisokat, és utána végezze el az Azure-előfizetés áttelepítése a webalkalmazás. 
+Végrehajtásakor erőforrásmigrálás előfizetésekhez, néhány [korlátozások](azure-resource-manager/resource-group-move-resources.md#app-service-limitations) alkalmazni. A ClearDB MySQL-adatbázis egy külső szolgáltatás, és ezért nem települnek át az Azure-előfizetés az áttelepítés során. Ha nem kezelheti az Azure-erőforrások áttelepítése előtt a MySQL-adatbázis áttelepítése, a ClearDB MySQL-adatbázisok letiltható. Manuálisan telepítse át először az adatbázisokat, és utána végezze el az Azure-előfizetés áttelepítése a webalkalmazás. 
 
 ## <a name="i-hit-the-spending-limit-on-my-subscription-i-removed-the-limit-and-my-app-service-is-online-however-the-database-is-not-accessible-how-do-i-re-enable-the-cleardb-database"></a>Az előfizetésem az I elérte a költségkeret maximumát. A korlát eltávolított, és az App Service érhető el, de az adatbázis nem érhető el. Hogyan újból engedélyezhető a ClearDB adatbázist?
 Ügyfél [ClearDB támogatási](https://www.cleardb.com/developers/help/support) az adatbázis újbóli engedélyezéséhez. Biztosítani nekik a Azure-előfizetés információkat és az adatbázis nevét.

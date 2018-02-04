@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 10/30/2017
+ms.date: 02/02/2018
 ms.author: owend
-ms.openlocfilehash: 0b11c005ddcf4a3416104e7cef39a7ce97957ba3
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: a0af2e0448d8ce991c9bcc138d6132d216715768
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="connecting-to-on-premises-data-sources-with-azure-on-premises-data-gateway"></a>Csatlakozás az adatforrásokhoz helyszíni Azure a helyszíni adatok átjáróval
 Az a helyszíni átjáró működik hídként, a helyszíni adatforrások és a felhőben az Azure Analysis Services-kiszolgálók közötti biztonságos adatátvitel biztosítása. Mellett több Azure Analysis Services-kiszolgáló ugyanabban a régióban dolgozik, az átjáró legújabb verzióját is működik az Azure Logic Apps, a Power bi-ban, a kiemelt alkalmazások és a Microsoft Flow. Csak egyetlen átjáró ugyanabban a régióban több szolgáltatáshoz is társíthat. 
@@ -28,11 +28,11 @@ Az átjáró telepítése az első alkalommal első az egy négyrészes folyamat
 
 - **Töltse le és futtassa a telepítőt** – Ez a lépés telepíti egy átjáró szolgáltatás a szervezet egyik számítógépén. Is jelentkezzen be egy olyan fiókkal az Azure a [bérlő](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) az Azure AD. Az Azure B2B (vendég) fiókok nem támogatottak.
 
-- **Regisztrálnia kell az átjárót** – ebben a lépésben adjon nevet és helyreállítási az átjáró kulcsát, és válasszon ki egy régiót, az átjáró regisztrálása az átjáró Felhőszolgáltatáshoz. Az átjáró erőforrás **regisztrálni kell az ugyanabban a régióban** az Analysis Services-kiszolgálóként. 
+- **Regisztrálnia kell az átjárót** – ebben a lépésben adjon nevet és helyreállítási az átjáró kulcsát, és válasszon ki egy régiót, az átjáró regisztrálása az átjáró Felhőszolgáltatáshoz. Az átjáró erőforrás bármely régióban lehet regisztrálni, de javasoljuk, hogy az Analysis Services-kiszolgáló ugyanabban a régióban legyen. 
 
 - **Hozzon létre egy átjáró erőforrást az Azure-ban** -ebben a lépésben az Azure-előfizetése létrehozhat egy átjáró-erőforráshoz.
 
-- **Csatlakoztassa a kiszolgálókat az átjáró erőforrás** -előfizetése van egy átjáró-erőforráshoz, amennyiben a kiszolgálók csatlakoztatása megkezdheti. Kapcsolódás több kiszolgálót és más erőforrások, feltéve fontosságúak a régióban.
+- **Csatlakoztassa a kiszolgálókat az átjáró erőforrás** -előfizetése van egy átjáró-erőforráshoz, amennyiben a kiszolgálók csatlakoztatása megkezdheti. Kapcsolódás több kiszolgáló és az egyéb erőforrások azt.
 
 Rögtön használatba, lásd: [telepítse és konfigurálja a helyszíni adatátjáró](analysis-services-gateway-install.md).
 
@@ -55,7 +55,7 @@ Az a helyszíni átjáró használatára van konfigurálva *NT SERVICE\PBIEgwSer
 
 Ha problémák lépnek fel a proxykiszolgáló hitelesítést miatt, előfordulhat, hogy módosítani szeretné a Windows-fiók egy tartományi felhasználó vagy a felügyelt szolgáltatásfiók.
 
-## <a name="ports"></a>Portok
+## <a name="ports"> </a>Ports
 Az átjáró Azure Service Bus egy kimenő kapcsolatot hoz létre. A kimenő portokon kommunikál: TCP 443-as (alapértelmezett), 5671, 5672, 9350 – 9354-es.  Az átjáró nincs szükség a bejövő portra.
 
 Javasoljuk, hogy a tűzfal az adatterület az IP-címek engedélyezési listája. Letöltheti a [Microsoft Azure Datacenter IP-lista](https://www.microsoft.com/download/details.aspx?id=41653). A lista a heti frissül.
@@ -69,16 +69,16 @@ Az alábbiakban a teljes tartománynevek az átjáró által használt.
 
 | Tartománynevek | Kimenő portok | Leírás |
 | --- | --- | --- |
-| *. powerbi.com webhelyre |80 |A telepítő letöltéséhez használt HTTP. |
-| *. powerbi.com webhelyre |443 |HTTPS |
-| *. analysis.windows.net |443 |HTTPS |
-| *. login.windows.net |443 |HTTPS |
-| *. servicebus.windows.net |5671-5672 |Speciális üzenetsor-kezelési protokoll (AMQP) |
-| *. servicebus.windows.net |443, 9350-9354 |A Service Bus Relay (a 443-as kér a hozzáférés-vezérlés jogkivonat beszerzése) TCP-n keresztül figyelői |
-| *. frontend.clouddatahub.net |443 |HTTPS |
-| *. core.windows.net |443 |HTTPS |
+| *.powerbi.com |80 |A telepítő letöltéséhez használt HTTP. |
+| *.powerbi.com |443 |HTTPS |
+| *.analysis.windows.net |443 |HTTPS |
+| *.login.windows.net |443 |HTTPS |
+| *.servicebus.windows.net |5671-5672 |Speciális üzenetsor-kezelési protokoll (AMQP) |
+| *.servicebus.windows.net |443, 9350-9354 |A Service Bus Relay (a 443-as kér a hozzáférés-vezérlés jogkivonat beszerzése) TCP-n keresztül figyelői |
+| *.frontend.clouddatahub.net |443 |HTTPS |
+| *.core.windows.net |443 |HTTPS |
 | login.microsoftonline.com |443 |HTTPS |
-| *. msftncsi.com |443 |Használja az internet kapcsolat tesztelése, ha az átjáró a Power BI szolgáltatás nem érhető el. |
+| *.msftncsi.com |443 |Használja az internet kapcsolat tesztelése, ha az átjáró a Power BI szolgáltatás nem érhető el. |
 | *.microsoftonline-p.com |443 |Konfigurációjától függően a hitelesítéshez használt. |
 
 ### <a name="force-https"></a>Az Azure Service Bus HTTPS-kommunikációt kényszerítése
@@ -131,7 +131,7 @@ A külső eszköz Azure sebesség teszt alkalmazás segítségével fel tudja m�
 **A**: nem. A Windows-szolgáltatás egy érvényes Windows-fiókkal kell rendelkeznie. Alapértelmezés szerint a szolgáltatás fut a szolgáltatás SID NT SERVICE\PBIEgwService.
 
 **A Q**: hogyan felvásárlási átjáró? <br/>
-**A**: annak érdekében, hogy felvásárlási átjáró (telepítés/módosítás futtatja a Vezérlőpult > programok) kell lennie az Azure-ban az átjáró erőforrás tulajdonosa, és a helyreállítási kulcs. Erőforrás-tulajdonosok átjáró esetében a hozzáférés-vezérlés konfigurálhatók.
+**A**: az átjáró felvásárlási (telepítő/módosítás futtatja a Vezérlőpult > programok), az Azure-ban az átjáró erőforrás tulajdonosa és a helyreállítási kulcsot kell. Erőforrás-tulajdonosok átjáró esetében a hozzáférés-vezérlés konfigurálhatók.
 
 ### <a name="high-availability"></a>Magas rendelkezésre állás és a katasztrófa utáni helyreállítás
 
@@ -144,7 +144,7 @@ A külső eszköz Azure sebesség teszt alkalmazás segítségével fel tudja m�
 ## <a name="troubleshooting"></a>Hibaelhárítása
 
 **A Q**: Miért nem látom az átjáró a példányai közül az Azure-ban az átjáró erőforrás létrehozása közben? <br/>
-**A**: két lehetséges oka lehet. Első az erőforrás már létre van hozva a jelenlegi vagy valamilyen más előfizetés átjáró. Elkerülése érdekében ezt a lehetőséget, az a típusú erőforrások számbavétele **helyszíni Data Gateways** a portálról. Ügyeljen arra, hogy az előfizetések válassza, ha az erőforrások számbavétele. Vegye figyelembe, hogy az erőforrás létrehozása után az átjáró nem jelennek az átjáró erőforrás létrehozása portál élményt nyújt átjárópéldányokról listája. A második lehetőség, hogy a felhasználó, aki telepítette az átjárót az Azure AD identitása eltér a felhasználó bejelentkezve az Azure portálon. A probléma megoldásához, jelentkezzen be a portálra, ugyanazzal a fiókkal, a felhasználó, aki telepítette az átjárót.
+**A**: két lehetséges oka lehet. Első az erőforrás már létre van hozva a jelenlegi vagy valamilyen más előfizetés átjáró. Elkerülése érdekében ezt a lehetőséget, az a típusú erőforrások számbavétele **helyszíni Data Gateways** a portálról. Ügyeljen arra, hogy az előfizetések válassza, ha az erőforrások számbavétele. Az erőforrás létrehozása után az átjáró nem szerepelnek a listán az átjáró erőforrás létrehozása portál élmény átjáró példánya. A második lehetőség, hogy a felhasználó, aki telepítette az átjárót az Azure AD identitása eltér a felhasználó bejelentkezve az Azure-portálon. Oldja meg, jelentkezzen be a portálon ugyanazzal a fiókkal, a felhasználó, aki telepítette az átjárót.
 
 **A Q**: Hogyan tekinthető meg mi lekérdezések folyamatban van a helyszíni adatforrás küldött? <br/>
 **A**: engedélyezheti a lekérdezés nyomon követése, beleértve a küldött lekérdezések. Ne felejtse el módosítani a lekérdezés vissza az eredeti értéket, miután befejezte a hibakeresési nyomkövetés. A lekérdezés nyomon követése engedélyezve van a Kilépés hoz létre a nagyobb naplókat.
@@ -182,7 +182,7 @@ Naplófájlok egy fontos erőforrás hibaelhárítása során.
 Az adatkezelési átjáró, a PowerBIGateway naplókat alatt található **alkalmazás- és szolgáltatásnaplók**.
 
 
-## <a name="telemetry"></a>Telemetria
+## <a name="telemetry"></a>Telemetry
 Telemetriai adatainak figyelés és hibaelhárítás céljából is használható. Alapértelmezés szerint
 
 **Telemetria bekapcsolása**
@@ -201,7 +201,7 @@ Telemetriai adatainak figyelés és hibaelhárítás céljából is használhat�
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Telepítse és konfigurálja a helyszíni adatátjáró](analysis-services-gateway-install.md).   
 * [Analysis Services kezelése](analysis-services-manage.md)
 * [Adatok beolvasása az Azure Analysis Services](analysis-services-connect.md)

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 12/08/2017
 ms.author: sujayt
-ms.openlocfilehash: c15583b9420355bb7c35bd107b899c59e80e3741
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: 6157ec92433830998c275b3b01b32f25c8d9f758
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-azure-to-azure"></a>Az Azure Site Recovery mátrix a replikálása Azure-bA az Azure-ból
 
@@ -98,7 +98,7 @@ Az alábbi támogatási esetén alkalmazható bármilyen munkaterhelést futtat�
 
 ### <a name="supported-ubuntu-kernel-versions-for-azure-virtual-machines"></a>Az Azure virtuális gépek támogatott Ubuntu kernel verziók
 
-**Kiadás** | **Mobilitási szolgáltatás verziója** | **Kernel-verzió** |
+**Release** | **Mobilitási szolgáltatás verziója** | **Kernel-verzió** |
 --- | --- | --- |
 14.04 LTS | 9.10 | a 3.13.0-121-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-81-generic 4.4.0-21-Generic |
 14.04 LTS | 9.11 | a 3.13.0-125-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-83-generic 4.4.0-21-Generic |
@@ -154,15 +154,15 @@ Virtuális gépek áttelepítése a Site Recovery | Támogatott | Ha a rendszer 
 Maximális operációsrendszer-lemez mérete | 2048 GB | Tekintse meg [virtuális gépek által használt lemezek.](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms)
 Maximális adattároló lemezeinek mérete | 4095 GB | Tekintse meg [virtuális gépek által használt lemezek.](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms)
 Adatlemezek száma | Egy adott Azure virtuális gép mérete által támogatott legfeljebb 64 | Tekintse meg [Azure virtuálisgép-méretek](../virtual-machines/windows/sizes.md)
-Ideiglenes lemez | Mindig ki vannak zárva a replikációból | Ideiglenes lemez ki van zárva a replikációból mindig. Az Azure útmutatás szerint ideiglenes lemezen ne helyezzen állandó adatokat. Tekintse meg [Azure virtuális gépeken mennyiségű ideiglenes lemezes](../virtual-machines/windows/about-disks-and-vhds.md#temporary-disk) további részleteket.
-A lemezen adatváltozási sebesség | Legfeljebb egy lemezen 6 MB/s | Ha átlagos adatváltozási sebessége a lemez túl 6 MB/s folyamatosan, replikációs fog nem dolgozza. Azonban ha egy alkalmanként adatokat kapacitásnövelés, és az adatmódosítási arány nagyobb, mint 6 MB/s egy kis ideig, és előre replikációs fog szinkronizálásához. Ebben az esetben jelenhet meg némileg késleltetett helyreállítási pontokat.
+Ideiglenes lemez | Mindig ki vannak zárva a replikációból | Ideiglenes lemez ki van zárva a replikációból mindig. Azure guida nce szerint ideiglenes lemezen ne helyezzen állandó adatokat. Tekintse meg [Azure virtuális gépeken mennyiségű ideiglenes lemezes](../virtual-machines/windows/about-disks-and-vhds.md#temporary-disk) további részleteket.
+A lemezen adatváltozási sebesség | Legfeljebb egy prémium szintű storage a lemezen 10 MB/s és a Standard tárolási lemezenként 2 MB/s | Ha a lemezen a átlagos adatváltozási sebesség meghaladja a 10 MB/s (a Premium) és 2 MB/s (általános) folyamatosan, replikáció nem képes. Azonban ha egy alkalmanként adatokat kapacitásnövelés, és az adatmódosítási arány nagyobb, mint 10 MB/s (a Premium) és 2 MB/s (általános) egy kis ideig, és származnak, replikációs fog szinkronizálásához. Ebben az esetben jelenhet meg némileg késleltetett helyreállítási pontokat.
 Standard szintű storage-fiókok lemezek | Támogatott |
 Prémium szintű storage-fiókok lemezek | Támogatott | Ha egy virtuális gép prémium és standard szintű storage-fiókok elosztva lemezzel rendelkezik, válassza az egyes lemezek ugyanazt a tárolási konfigurációt, hogy a cél régióban másik cél tárfiók
 Standard szintű felügyelt lemez | Nem támogatott |  
 Prémium szintű felügyelt lemez | Nem támogatott |
 Tárolóhelyek | Támogatott |         
 Titkosítását (SSE) | Támogatott | Gyorsítótár és a cél storage-fiókok válassza ki az engedélyezett SSE tárfiókot.     
-Az Azure Disk Encryption (ADE) | Nem támogatott |
+Azure Disk Encryption (ADE) | Nem támogatott |
 Gyakran használt adatok hozzáadása lemez | Nem támogatott | Ha ad hozzá, vagy távolítsa el a virtuális Gépre adatlemez, szeretné tiltsa le a replikációt, és engedélyezze újra a virtuális gép replikálását.
 Lemez kizárása | Nem támogatott|   Ideiglenes lemez alapértelmezés szerint ki van zárva.
 LRS | Támogatott |
@@ -170,7 +170,7 @@ GRS | Támogatott |
 RA-GRS | Támogatott |
 ZRS | Nem támogatott |  
 Ritkán használt adatok és a gyakran használt adatok tárolási | Nem támogatott | Virtuálisgép-lemezek használata nem támogatott a ritkán használt adatok és a gyakran használt adatok tárolási
-Virtuális hálózati Szolgáltatásvégpontok (Azure Storage tűzfalak és virtuális hálózatok)  | Nem | Adott Azure virtuális hálózatokhoz való hozzáférés engedélyezése a replikált adatok tárolására szolgáló gyorsítótár tárfiókok használata nem támogatott. 
+Virtuális hálózati Szolgáltatásvégpontok (Azure Storage tűzfalak és virtuális hálózatok)  | Nem | Adott Azure virtuális hálózatokhoz való hozzáférés engedélyezése a replikált adatok tárolására szolgáló gyorsítótár tárfiókok használata nem támogatott.
 Általános célú V2 storage-fiókok (a gyakran és ritkán. szint) | Nem | Tranzakciós költségek növekedését jelentősen képest általános célú tárfiókok 1-es verzió
 
 >[!IMPORTANT]
@@ -189,7 +189,7 @@ NSG a virtuális gép (klasszikus)| Támogatott | A hálózati adapterhez, egy a
 Fenntartott IP (statikus IP-cím) / megőrizni a forrás IP-címe | Támogatott | Ha a forrás virtuális gép hálózati adapter van statikus IP-konfigurációt, és a cél alhálózathoz az azonos IP-cím elérhető, a virtuális gép feladatátvételi hozzá van rendelve. A célként megadott alhálózat nem rendelkezik az azonos IP-cím elérhető, ha az alhálózat elérhető IP-címek egyikét a virtuális gép számára van fenntartva. Megadhat egy fix IP-cím az Ön által választott, a "replikált elemek > Beállítások > Számítás és hálózat > hálózati illesztőt. Válassza ki a hálózati Adaptert, és adja meg az alhálózatot és IP-címe a kiválasztott.
 Dinamikus IP| Támogatott | Ha a hálózati adapter a forrás virtuális gép dinamikus IP-konfiguráció, a hálózati adapter a feladatátvétel virtuális gép is alapértelmezés szerint dinamikus. Megadhat egy fix IP-cím az Ön által választott, a "replikált elemek > Beállítások > Számítás és hálózat > hálózati illesztőt. Válassza ki a hálózati Adaptert, és adja meg az alhálózatot és IP-címe a kiválasztott.
 A Traffic Manager integrálása | Támogatott | A traffic manager úgy, hogy a továbbítódik a végpont rendszeresen forrás régióban, és a cél régióban feladatátvétel esetén az endpoint előre konfigurálhatja.
-Azure DNS által felügyelt | Támogatott |
+Azure managed DNS | Támogatott |
 Egyéni DNS  | Támogatott |    
 Nem hitelesített Proxy | Támogatott | Tekintse meg [hálózati útmutató.](site-recovery-azure-to-azure-networking-guidance.md)    
 Hitelesített Proxy | Nem támogatott | Ha a virtuális gép egy hitelesített proxykiszolgálót használ a kimenő hálózati kapcsolatot, akkor nem replikálhatók Azure Site Recovery segítségével.    

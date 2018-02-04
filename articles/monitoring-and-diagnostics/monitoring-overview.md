@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: robb,bwren
-ms.openlocfilehash: ffd9a6f75a549b246a04adc5480e988b1622c5ca
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 3ab7d2d5c3b95d215f3ee9eb9346e8a7895e734c
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="monitoring-azure-applications-and-resources"></a>Azure-alkalmazások és erőforrások figyelése
 
 Figyelési összegyűjtése és annak meghatározásához, a teljesítmény, állapotának és rendelkezésre állását, valamint az üzleti alkalmazás attól függ, az erőforrások elemzéséhez. Egy hatékony felügyeleti stratégia segítenek megérteni a különböző összetevőket az alkalmazás és a hasznos üzemidő növeléséhez a proaktív értesítés, kritikus fontosságú problémáit, hogy a megoldásuk mielőtt azok veszélyeztetnék részletes működését.
 
-Azure több szolgáltatást, amely külön-külön végrehajtani egy adott szerepkör vagy a feladatot a figyelés munkaterületen, és együttesen hoznak létre működő gyűjtése, elemzése és az alkalmazás és az alapjául szolgáló Azure-erőforrások telemetriai ható átfogó megoldást tartalmaz támogató őket.  Ezek is működnek, így biztosíthatja a figyelési környezet hibrid fontos a helyi erőforrások figyelése.   Az eszközök és a rendelkezésre álló adatok ismertetése első lépése az alkalmazás teljes felügyeleti stratégia kidolgozásában. 
+Azure több szolgáltatást, amely külön-külön végrehajtani egy adott szerepkör vagy a feladatot a figyelés munkaterületen, és együttesen hoznak létre működő gyűjtése, elemzése és az alkalmazás és az alapjául szolgáló Azure-erőforrások telemetriai ható átfogó megoldást tartalmaz támogató őket.  Ezek is működnek, ahhoz, hogy adja meg a figyelési környezet hibrid kritikus a helyszíni erőforrások figyelése.   Az eszközök és a rendelkezésre álló adatok ismertetése első lépése az alkalmazás teljes felügyeleti stratégia kidolgozásában. 
 
 Az alábbi ábrán látható a különböző összetevőket, amelyek együttműködve biztosítják az Azure-erőforrások figyelése konceptuális ábrázolása.  Ezek leírását a következő szakaszok a részletes műszaki információkra mutató hivatkozásokat tartalmaz.
 
@@ -47,7 +47,7 @@ Az alkalmazás állapotát az Azure-szolgáltatásokhoz, amelyektől függ táma
 Az Azure-szolgáltatásokat gyűjtése és elemzése a figyelési adatok gazdag képességeit adja meg.  Ezek alapvető figyelési és használja ki az általános funkciókkal Azure készítse el és hatékony analytics biztosítson Önnek egyedi insights az alkalmazásaikat és infrastruktúrájukat az összegyűjtött adatokat.  Ezek megjeleníteni az adatokat különböző irányuló adott helyzetekben kontextusában.
 
 ### <a name="application-insights"></a>Application Insights
-[Az Application Insights](http://azure.microsoft.com/documentation/services/application-insights) lehetővé teszi a rendelkezésre állás figyelése, teljesítményét és az alkalmazás használatát, hogy a felhő vagy a helyi helyezkedik el.  Az alkalmazás működéséhez az Application insights szolgáltatással leírására, érhet mélyebben elemezheti, így gyorsan azonosíthatja és hibák diagnosztizálása a felhasználót, hogy ezeket várakozás nélkül. Gyűjtött adatokat hogy az alkalmazás karbantartása és fejlesztése megalapozott döntések.  A széles körű összegyűjti az adatokat az eszközök mellett a Application Insights megosztott funkciók, például a riasztások, irányítópultok és a Log Analytics lekérdezési nyelv mélyreható elemzéseket kihasználhatják a közös helyen tárolja az adatokat.
+[Az Application Insights](http://azure.microsoft.com/documentation/services/application-insights) rendelkezésre állás figyelése, teljesítmény és az alkalmazás használati lehetővé teszi, hogy a felhőben, vagy a helyszínen található.  Az alkalmazás működéséhez az Application insights szolgáltatással leírására, érhet mélyebben elemezheti, így gyorsan azonosíthatja és hibák diagnosztizálása a felhasználót, hogy ezeket várakozás nélkül. Gyűjtött adatokat hogy az alkalmazás karbantartása és fejlesztése megalapozott döntések.  A széles körű összegyűjti az adatokat az eszközök mellett a Application Insights megosztott funkciók, például a riasztások, irányítópultok és a Log Analytics lekérdezési nyelv mélyreható elemzéseket kihasználhatják a közös helyen tárolja az adatokat.
 
 ### <a name="log-analytics"></a>Log Analytics
 [Naplófájl Analytics](http://azure.microsoft.com/documentation/services/log-analytics) begyűjtenie az adatokat a különböző erőforrások egy tárházba ahol elemzése hatékony lekérdezési nyelv Azure figyelési központi szerepet játszik.  Application insights szolgáltatással és az Azure Security Center tárolja az adatokat a Naplóelemzési adatokat tárolja és használja ki az analytics motor.  Ezzel együtt a következővel Azure figyelő, megoldásokkal, gyűjtött adatokat, és a felhőben, vagy a helyszíni virtuális gépeken telepített ügynökök lehetővé teszik a teljes környezet átfogó képet alkotnak. 

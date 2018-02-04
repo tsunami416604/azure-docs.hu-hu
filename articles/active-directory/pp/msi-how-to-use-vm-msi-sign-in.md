@@ -3,7 +3,7 @@ title: "Egy Azure virtuális gép felügyelt Szolgáltatásidentitás használat
 description: "Lépésenkénti útmutatásért és példákért használatával jelentkezzen be a parancsfájl-ügyfél egy Azure virtuális gép MSI egyszerű szolgáltatásnév és az erőforrás eléréséhez."
 services: active-directory
 documentationcenter: 
-author: bryanla
+author: daveba
 manager: mtillman
 editor: 
 ms.service: active-directory
@@ -12,17 +12,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/05/2018
-ms.author: bryanla
+ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: c5f71d27a9e07cc6d6a260b809e91aaa2a50270c
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: c5c1be01947dba8b7f4ef8aa54aa6aedfb191d32
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="sign-in-using-a-vm-user-assigned-managed-service-identity-msi"></a>Jelentkezzen be egy virtuális Gépet, felhasználó által hozzárendelt felügyelt szolgáltatás identitásának (MSI)
 
-[!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]Ez a cikk példákat CLI parancsfájl jelentkezzen be egy felhasználó által hozzárendelt MSI egyszerű szolgáltatást, és útmutatást használatával hibakezelés például a fontos kérdésekben.
+[!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
+Ez a cikk példákat CLI parancsfájl jelentkezzen be egy felhasználó által hozzárendelt MSI egyszerű szolgáltatást, és útmutatást használatával hibakezelés például a fontos kérdésekben.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

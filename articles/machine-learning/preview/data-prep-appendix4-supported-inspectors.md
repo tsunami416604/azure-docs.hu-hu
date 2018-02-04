@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: 
 ms.devlang: 
 ms.topic: article
-ms.date: 09/11/2017
-ms.openlocfilehash: ff5fcbc6df8cb07e0b98b877f20d981d6bef5117
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.date: 02/01/2018
+ms.openlocfilehash: 1046f08d4e3b1111f8f82551b71252856174a308
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="supported-inspectors-for-the-azure-machine-learning-data-preparation-preview"></a>Az Azure Machine Learning data előkészítése Preview ellenőrök támogatott
 Ez a dokumentum ismerteti az előzetes verzióban elérhető ellenőrök készletét.
@@ -52,6 +52,7 @@ Ez Inspector halo hatásának támogatja.
 - Alapértelmezett számú gyűjtőbe (Scott szabály) 
 - Halo megjelenítése
 - Kernel sűrűség rajzot átfedő (Gauss kernel) 
+- A Logaritmikus skála használata
 
 
 ### <a name="actions"></a>Műveletek
@@ -62,9 +63,10 @@ Ez inspector jeleníti a jelenleg kiválasztott oszlop értékeinek gyakoriság�
 
 ### <a name="options"></a>Beállítások 
 - A felső érték
-- Csökkenő
+- Csökkenő sorrendben
 - Null vagy hibaértéket tartalmazza
 - Halo megjelenítése
+- A Logaritmikus skála használata
 
 
 ### <a name="actions"></a>Műveletek 
@@ -123,7 +125,7 @@ Ez inspector a kijelölt oszlopban karakterlánc minták listáját tartalmazza.
 
 ### <a name="options"></a>Beállítások
 - A felső érték
-- Csökkenő
+- Csökkenő sorrendben
 - Halo megjelenítése
 
 ### <a name="actions"></a>Műveletek

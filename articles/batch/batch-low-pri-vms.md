@@ -9,22 +9,22 @@ ms.service: batch
 ms.devlang: multiple
 ms.topic: article
 ms.workload: na
-ms.date: 01/26/2018
+ms.date: 02/01/2018
 ms.author: markscu
-ms.openlocfilehash: 8490bd8c18930c025902a247e6c1df8a0716ed76
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 7e4f37ca6997f1770de8acbc10eeeb25ddf87deb
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Kis prioritású virtuális gépek használata a kötegelt
 
-Az Azure Batch biztosít alacsony prioritású virtuális gépek (VM) kötegelt munkaterhelések költségeinek csökkentése érdekében. Kis prioritású virtuális gépek új kötegelt munkaterhelés-típusok lehetővé teszik, adja meg a számítási teljesítményt, amely egyúttal gazdaságos nagy mennyiségű.
-
-Kis prioritású virtuális gépek előnyeit felesleges kapacitás az Azure-ban. Kis prioritású virtuális gépek a készletek megadásakor Azure Batch automatikusan használhatják az eredmény, ha elérhető.
-
-Mi a fontosabb: az alacsony prioritású virtuális gép, hogy virtuális gépek az Azure-ban elérhető nincs felesleges kapacitás esetén előfordulhat, hogy foglalható. Emiatt alacsony prioritású virtuális gépek legmegfelelőbb bizonyos munkaterhelések esetében. Alacsony prioritású virtuális gépek használata kötegelt és aszinkron feldolgozási terheléshez, ahol a feladat befejezési idő rugalmas, és a munka sok virtuális gép között van elosztva.
-
+Az Azure Batch biztosít alacsony prioritású virtuális gépek (VM) kötegelt munkaterhelések költségeinek csökkentése érdekében. Alacsony prioritású virtuális gépek új munkaterhelések lehetséges, mivel lehetővé teszi nagy mennyiségű számítási teljesítményt, nagyon alacsony költséggel használt kötegelt teszik.
+ 
+Kis prioritású virtuális gépek előnyeit felesleges kapacitás az Azure-ban. Kis prioritású virtuális gépek a készletek megadásakor Azure Batch használhatja az eredmény, ha elérhető.
+ 
+Mi a fontosabb: az alacsony prioritású virtuális gépeket, hogy a virtuális gépek nem állnak rendelkezésre kiosztani, vagy előfordulhat, hogy tetszőleges időpontban, attól függően, hogy a rendelkezésre álló kapacitásból foglalható. Emiatt alacsony prioritású virtuális gépek legmegfelelőbb bizonyos munkaterhelések esetében. Alacsony prioritású virtuális gépek használata kötegelt és aszinkron feldolgozási terheléshez, ahol a feladat befejezési idő rugalmas, és a munka sok virtuális gép között van elosztva.
+ 
 Kis prioritású virtuális gépek dedikált virtuális gépek képest jelentősen csökkentett áron érhető el. Díjszabása, lásd: [kötegelt árképzési](https://azure.microsoft.com/pricing/details/batch/).
 
 

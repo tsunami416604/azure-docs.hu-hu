@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/28/2017
 ms.author: tomfitz
-ms.openlocfilehash: 9431483293bcc252b79d02ba2d655a3aa86aaa4a
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 8262162ce73176426057af4654f12614cac85472
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="use-azure-powershell-to-create-a-service-principal-to-access-resources"></a>Szolgáltatásnév létrehozása erőforrások eléréséhez az Azure PowerShell használatával
 
@@ -46,7 +46,7 @@ Egy egyszerű beállításához használhatja:
 
 | Parancs | Leírás |
 | ------- | ----------- | 
-| [Új AzureRmADServicePrincipal](/powershell/module/azurerm.resources/new-azurermadserviceprincipal) | Létrehoz egy Azure Active Directory szolgáltatás egyszerű |
+| [New-AzureRmADServicePrincipal](/powershell/module/azurerm.resources/new-azurermadserviceprincipal) | Létrehoz egy Azure Active Directory szolgáltatás egyszerű |
 | [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) | A megadott RBAC szerepkört rendel hozzá a megadott rendszerbiztonsági tag, a megadott hatókörben. |
 
 
@@ -62,7 +62,7 @@ Sleep 20
 New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
 ```
 
-A példa alvó állapotban van, várja meg, hogy az új szolgáltatáshoz Azure Active Directory teljes propagálása egyszerű 20 másodpercig. Ha a parancsfájl nem elegendő ideig kell várni, megjelenik egy üzenet szerint: "PrincipalNotFound: {Azonosítójú} rendszerbiztonsági tag nem létezik a címtárban."
+A példa alvó állapotban van, várja meg, hogy az új szolgáltatáshoz Azure Active Directory teljes propagálása egyszerű 20 másodpercig. Ha a parancsfájl nem elegendő ideig kell várni, egy üzenet szerint láthatja: "{} Azonosítójú rendszerbiztonsági tag nem létezik a következő könyvtárban: {DIR-azonosító}."
 
 A következő parancsfájl lehetővé teszi az alapértelmezett előfizetés nem határoz meg, és a szerepkör-hozzárendelés újrapróbálkozik, ha a hiba akkor fordul elő:
 
@@ -128,7 +128,7 @@ Néhány elemet a parancsfájllal kapcsolatos figyelembe venni:
 * Az identitás hozzáférést biztosít az alapértelmezett előfizetés, nem kell megadnia a ResourceGroup vagy a SubscriptionId paraméterek.
 * Itt adhatja meg, a ResourceGroup paraméter csak korlátozhatja azon szerepkör-hozzárendelés erőforráscsoporthoz.
 *  Ebben a példában hozzáadja a közreműködő szerepkört az egyszerű szolgáltatás. Más szerepköreivel kapcsolatban, tekintse meg a [RBAC: beépített szerepkörök](../active-directory/role-based-access-built-in-roles.md).
-* A parancsfájl alvó állapotban van, várja meg, hogy az új szolgáltatáshoz Azure Active Directory teljes propagálása egyszerű 15 másodpercig. Ha a parancsfájl nem elegendő ideig kell várni, megjelenik egy üzenet szerint: "PrincipalNotFound: {Azonosítójú} rendszerbiztonsági tag nem létezik a címtárban."
+* A parancsfájl alvó állapotban van, várja meg, hogy az új szolgáltatáshoz Azure Active Directory teljes propagálása egyszerű 15 másodpercig. Ha a parancsfájl nem elegendő ideig kell várni, egy üzenet szerint láthatja: "{} Azonosítójú rendszerbiztonsági tag nem létezik a következő könyvtárban: {DIR-azonosító}."
 * Ha a szolgáltatás egyszerű hozzáférést biztosít a további előfizetések vagy erőforráscsoportok kell futtatni a `New-AzureRMRoleAssignment` parancsmagot újra különböző hatóköröket.
 
 
@@ -160,7 +160,7 @@ Sleep 20
 New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
 ```
 
-A példa alvó állapotban van, várja meg, hogy az új szolgáltatáshoz Azure Active Directory teljes propagálása egyszerű 20 másodpercig. Ha a parancsfájl nem elegendő ideig kell várni, megjelenik egy üzenet szerint: "PrincipalNotFound: {Azonosítójú} rendszerbiztonsági tag nem létezik a címtárban."
+A példa alvó állapotban van, várja meg, hogy az új szolgáltatáshoz Azure Active Directory teljes propagálása egyszerű 20 másodpercig. Ha a parancsfájl nem elegendő ideig kell várni, egy üzenet szerint láthatja: "{} Azonosítójú rendszerbiztonsági tag nem létezik a következő könyvtárban: {DIR-azonosító}."
 
 A következő parancsfájl lehetővé teszi az alapértelmezett előfizetés nem határoz meg, és a szerepkör-hozzárendelés újrapróbálkozik, ha a hiba akkor fordul elő. Azure PowerShell 2.0 a Windows 10 vagy Windows Server 2016 kell rendelkeznie.
 
@@ -223,7 +223,7 @@ Néhány elemet a parancsfájllal kapcsolatos figyelembe venni:
 * Az identitás hozzáférést biztosít az alapértelmezett előfizetés, nem kell megadnia a ResourceGroup vagy a SubscriptionId paraméterek.
 * Itt adhatja meg, a ResourceGroup paraméter csak korlátozhatja azon szerepkör-hozzárendelés erőforráscsoporthoz.
 * Ebben a példában hozzáadja a közreműködő szerepkört az egyszerű szolgáltatás. Más szerepköreivel kapcsolatban, tekintse meg a [RBAC: beépített szerepkörök](../active-directory/role-based-access-built-in-roles.md).
-* A parancsfájl alvó állapotban van, várja meg, hogy az új szolgáltatáshoz Azure Active Directory teljes propagálása egyszerű 15 másodpercig. Ha a parancsfájl nem elegendő ideig kell várni, megjelenik egy üzenet szerint: "PrincipalNotFound: {Azonosítójú} rendszerbiztonsági tag nem létezik a címtárban."
+* A parancsfájl alvó állapotban van, várja meg, hogy az új szolgáltatáshoz Azure Active Directory teljes propagálása egyszerű 15 másodpercig. Ha a parancsfájl nem elegendő ideig kell várni, egy üzenet szerint láthatja: "{} Azonosítójú rendszerbiztonsági tag nem létezik a következő könyvtárban: {DIR-azonosító}."
 * Ha a szolgáltatás egyszerű hozzáférést biztosít a további előfizetések vagy erőforráscsoportok kell futtatni a `New-AzureRMRoleAssignment` parancsmagot újra különböző hatóköröket.
 
 Ha Ön **nem rendelkeznek Windows 10 vagy Windows Server 2016 Technical Preview**, le kell töltenie a [önaláírt tanúsítvány generátor](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6/) Microsoft Script Center. Bontsa ki a tartalmát, és importálni kell a parancsmagot.
@@ -321,7 +321,7 @@ Néhány elemet a parancsfájllal kapcsolatos figyelembe venni:
 
 * Az előfizetés hozzáférés hatókörét.
 * Ebben a példában hozzáadja a közreműködő szerepkört az egyszerű szolgáltatás. Más szerepköreivel kapcsolatban, tekintse meg a [RBAC: beépített szerepkörök](../active-directory/role-based-access-built-in-roles.md).
-* A parancsfájl alvó állapotban van, várja meg, hogy az új szolgáltatáshoz Azure Active Directory teljes propagálása egyszerű 15 másodpercig. Ha a parancsfájl nem elegendő ideig kell várni, megjelenik egy üzenet szerint: "PrincipalNotFound: {Azonosítójú} rendszerbiztonsági tag nem létezik a címtárban."
+* A parancsfájl alvó állapotban van, várja meg, hogy az új szolgáltatáshoz Azure Active Directory teljes propagálása egyszerű 15 másodpercig. Ha a parancsfájl nem elegendő ideig kell várni, egy üzenet szerint láthatja: "{} Azonosítójú rendszerbiztonsági tag nem létezik a következő könyvtárban: {DIR-azonosító}."
 * Ha a szolgáltatás egyszerű hozzáférést biztosít a további előfizetések vagy erőforráscsoportok kell futtatni a `New-AzureRMRoleAssignment` parancsmagot újra különböző hatóköröket.
 
 ### <a name="provide-certificate-through-automated-powershell-script"></a>Adja meg a tanúsítvány automatikus PowerShell-parancsfájl segítségével

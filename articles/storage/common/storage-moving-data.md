@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: jarrettr
-ms.openlocfilehash: db0f09433750a3af2d70039d780a25ad64bb4df1
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: 980e4675c2d2e88716a3133abb027988aecd538f
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="moving-data-to-and-from-azure-storage"></a>Adatok áthelyezése az Azure Storage szolgáltatásba vagy onnan máshová
 Ha azt szeretné, hogy helyezze át a helyszíni adatok Azure Storage (vagy fordítva), nincsenek többféleképpen ehhez. A megközelítés, amely a legjobban a forgatókönyvtől függ. Ez a cikk különböző alkalmazási helyzetek és minden egyes megfelelő ajánlatok gyors áttekintést biztosít.
@@ -41,9 +41,9 @@ Tekintse meg a kiválasztott [Azure Tártallózók](../storage-explorers.md) tov
 Ha szükséges, vagy több részeként (pl. a rendszergazdák) parancssori segédprogram, itt figyelembe kell venni néhány lehetőség áll:
 
 ### <a name="azcopy"></a>AzCopy
-Az AzCopy egy Windows parancssori segédprogram, amely az adatok az Azure Storage szolgáltatásba vagy onnan máshová való nagyteljesítményű másolására lett kifejlesztve. Adatok egy tárfiókon belül, vagy eltérő tárfiókokból között is másolhatja.
+AzCopy egy parancssori segédprogram tartozó nagyteljesítményű másolására az adatok és az Azure Storage. Adatok egy tárfiókon belül, vagy eltérő tárfiókokból között is másolhatja. AzCopy érhető el a [Windows](storage-use-azcopy.md) és a [Linux](storage-use-azcopy-linux.md).
 
-Lásd: [adatátvitel az AzCopy parancssori segédprogram a](storage-use-azcopy.md) további.
+Lásd: [adatátvitel az AzCopy parancssori segédprogram a](storage-use-azcopy.md) vagy [adatátvitel az AzCopy Linux](storage-use-azcopy-linux.md) további.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 Az Azure PowerShell modul parancsmagokat biztosít az Azure-szolgáltatások kezeléséhez. Ez egy feladatalapú parancshéj és parancsnyelv, amely kifejezetten rendszer-felügyeleti célra készült.
