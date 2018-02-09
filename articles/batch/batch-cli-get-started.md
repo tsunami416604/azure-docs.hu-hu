@@ -3,8 +3,8 @@ title: "A Batch Azure CLI használatának első lépései | Microsoft Docs"
 description: "Gyors bevezetést olvashat Azure Batch szolgáltatás erőforrásainak kezelésére szolgáló Batch parancsokhoz az Azure CLI-ben"
 services: batch
 documentationcenter: 
-author: v-dotren
-manager: timlt
+author: dlepow
+manager: jeconnoc
 editor: 
 ms.assetid: fcd76587-1827-4bc8-a84d-bba1cd980d85
 ms.service: batch
@@ -13,13 +13,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
 ms.date: 09/28/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 763a8884b65f64b4807cd42c937f43b2f5517ed5
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: 11fad18c7b51625a29c58058aebd412cbf8cffdd
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Batch-erőforrássok kezelése az Azure CLI-vel
 
@@ -40,7 +40,7 @@ Az Azure CLI telepítéséhez kövesse a [Telepítse az Azure CLI-t](https://doc
 
 ## <a name="command-help"></a>Segítség a parancsokhoz
 
-Az Azure CLI-ben minden parancshoz megjeleníthet súgószöveget, ha a parancshoz hozzáfűzi a `-h` utótagot. Az egyéb beállításokat hagyja változatlanul. Példa:
+Az Azure CLI-ben minden parancshoz megjeleníthet súgószöveget, ha a parancshoz hozzáfűzi a `-h` utótagot. Az egyéb beállításokat hagyja változatlanul. Például:
 
 * Ha segítséget szeretne kérni az `az` parancshoz, írja be a következőt: `az -h`
 * Ha le szeretné kérni az összes Batch parancs listáját a parancssori felületen, használja a következőt: `az batch -h`
@@ -69,7 +69,7 @@ Az Azure-szolgáltatásba több módon is bejelentkezhet, ezeket részletesen a 
 1. [Interaktív bejelentkezés](https://docs.microsoft.com/cli/azure/authenticate-azure-cli#az_authenticate_azure_cli_interactive_log_in). Az Interaktív bejelentkezést akkor használja, ha személyesen szeretne Azure CLI-parancsokat futtatni a parancssor használatával.
 2. [Bejelentkezés szolgáltatásnévvel](https://docs.microsoft.com/cli/azure/authenticate-azure-cli#az_authenticate_azure_cli_logging_in_with_a_service_principal). Jelentkezzen be szolgáltatásnévvel, ha szkript vagy alkalmazás használatával kíván Azure CLI-parancsokat futtatni.
 
-Ebben a cikkben az Interaktív bejelentkezést fogjuk használni az Azure-ba történő belépéshez. Írja be az [az login](https://docs.microsoft.com/cli/azure/#login) utasítást a parancssorba:
+Ebben a cikkben az Interaktív bejelentkezést fogjuk használni az Azure-ba történő belépéshez. Írja be az [az login](https://docs.microsoft.com/cli/azure/#az_login) utasítást a parancssorba:
 
 ```azurecli
 # Log in to Azure and authenticate interactively.
@@ -120,20 +120,13 @@ A [Shell-szkript minták](#sample-shell-scripts) rész példákon keresztül mut
 
 Az Azure parancssori felületén végpontok között futtathat Batch-feladatokat kódírás nélkül. A Batch sablonfájljai támogatják készletek, feladatok és tevékenységek létrehozását az Azure parancssori felületéről. Az Azure parancssori felületéről feltöltheti a feladatok bemeneti fájljait a Batch-fiókhoz társított Azure Storage-fiókba, és onnan letöltheti a feladat kimeneti fájljait. További információk: [Az Azure Batch parancssori felületi sablonjainak és fájlátviteli funkciójának (előzetes verzió) használata](batch-cli-templates.md).
 
-## <a name="sample-shell-scripts"></a>Shell-szkript minták
+## <a name="script-examples"></a>Példaszkriptek
 
-A következő táblázatban felsorolt mintaszkriptek bemutatják, hogyan hajthatja végre a leggyakoribb feladatokat az Azure CLI parancsainak segítségével a Batch, és a Batch Management szolgáltatás használatával. A mintaszkriptek az Azure CLI-ben és a Batch-ben elérhetőek közül számos parancsot bemutatnak. 
-
-| Szkript | Megjegyzések |
-|---|---|
-| [Batch-fiók létrehozása](./scripts/batch-cli-sample-create-account.md) | Létrehoz egy Batch-fiókot és hozzárendeli egy tárfiókhoz. |
-| [Alkalmazás hozzáadása](./scripts/batch-cli-sample-add-application.md) | Hozzáad egy alkalmazást és feltölti a csomagolt bináris fájlokat.|
-| [Batch-készletek kezelése](./scripts/batch-cli-sample-manage-pool.md) | Bemutatja a készletek létrehozását, átméretezését és kezelését. |
-| [Feladatok és tevékenységek futtatása a Batch-csel](./scripts/batch-cli-sample-run-job.md) | Bemutatja a feladatok futtatását és a tevékenységek hozzáadását. |
+A gyakori feladatok végrehajtásával kapcsolatban tekintse meg a Batch [parancssori példaszkriptjeit](cli-samples.md). A példák az Azure CLI-ben és a Batchben a fiókok, készletek, feladatok és tevékenységek létrehozásához és felügyeletéhez elérhetők közül számos parancsot bemutatnak. 
 
 ## <a name="json-files-for-resource-creation"></a>Erőforrás létrehozása JSON-fájlok használatával
 
-Amikor olyan Batch-erőforrásokat hoz létre, mint a készletek és a feladatok, megadhat egy JSON-fájlt, amely az új erőforrás konfigurációját tartalmazza, ahelyett, hogy parancssori kapcsolókként adná át a paramétereket. Példa:
+Amikor olyan Batch-erőforrásokat hoz létre, mint a készletek és a feladatok, megadhat egy JSON-fájlt, amely az új erőforrás konfigurációját tartalmazza, ahelyett, hogy parancssori kapcsolókként adná át a paramétereket. Például:
 
 ```azurecli
 az batch pool create my_batch_pool.json
@@ -183,7 +176,7 @@ Az következő tippek segíthetnek az Azure CLI használata során felmerülő p
 <!---Loc Comment: Please, check link [JSON files] since it's not redirecting to any location.--->
 * A [Batch fórumát][batch_forum] a Batch fejlesztőcsapat tagjai is figyelik. Ott felteheti kérdéseit, ha problémákba ütközne, vagy segítségre lenne szüksége egy adott művelethez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információt az Azure CLI-vel kapcsolatban az [Azure CLI dokumentációjában](https://docs.microsoft.com/cli/azure/overview) talál.
 * További információt a Batch-erőforrásokkal kapcsolatban a [Az Azure Batch áttekintése fejlesztők számára](batch-api-basics.md) című cikkben talál.

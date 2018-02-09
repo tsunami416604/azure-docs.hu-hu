@@ -1,6 +1,6 @@
 ---
-title: "Azure Tárolószolgáltatás útmutató - fürt központi telepítése"
-description: "Azure Tárolószolgáltatás útmutató - fürt központi telepítése"
+title: "Azure Container Service-oktatóanyag – Fürt üzembe helyezése"
+description: "Azure Container Service-oktatóanyag – Fürt üzembe helyezése"
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,56 +9,56 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: c91eea3734820239187bcf7b497fb06d7fd5f7ef
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
-ms.translationtype: MT
+ms.openlocfilehash: 6ef789bc017e670566d25dd9d167698515e88349
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="deploy-a-kubernetes-cluster-in-azure-container-service"></a>Az Azure Tárolószolgáltatásban Kubernetes fürt központi telepítése
+# <a name="deploy-a-kubernetes-cluster-in-azure-container-service"></a>Kubernetes-fürt üzembe helyezése az Azure Container Service-ben
 
 [!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
 
-A Kubernetes tárolóalapú alkalmazásokhoz kínál elosztott platformot. Azure Tárolószolgáltatás készen áll a Kubernetes éles fürt üzembe esetén egyszerűen és gyorsan. Ez az oktatóanyag, 7, 3. rész egy Azure-tároló szolgáltatás Kubernetes fürtre van telepítve. Befejeződött a lépések az alábbiak:
+A Kubernetes tárolóalapú alkalmazásokhoz kínál elosztott platformot. Az Azure Container Service használatával egyszerűen és gyorsan építhető ki egy üzemkész Kubernetes-fürt. Ebben az oktatóanyagban, amely egy hétrészes sorozat harmadik része, egy Azure Container Service-beli Kubernetes-fürtöt helyezünk üzembe. Ennek lépései az alábbiak:
 
 > [!div class="checklist"]
-> * Egy Kubernetes ACS-fürt telepítése
-> * A Kubernetes CLI (kubectl) telepítése
-> * Kubectl konfigurálása
+> * Kubernetes ACS-fürt üzembe helyezése
+> * A Kubernetes parancssori felület (kubectl) telepítése
+> * A kubectl konfigurálása
 
-A következő útmutatókból az Azure szavazattal alkalmazás központi telepítése a fürt, méretezhető, frissítése, és az Operations Management Suite a Kubernetes fürt figyelésére van beállítva.
+Az ezt követő oktatóanyagokban üzembe helyezzük majd az Azure Vote alkalmazást a fürtön, méretezzük, frissítjük, majd konfiguráljuk az Operations Management Suite szolgáltatást a Kubernetes-fürt monitorozására.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Az előző oktatóanyagokat a tároló-lemezkép létrejött, de feltöltött egy Azure-tároló beállításjegyzék-példányon. Ha nem volna ezeket a lépéseket, és szeretné követéséhez, vissza [oktatóanyag 1 – létrehozás tároló képek](./container-service-tutorial-kubernetes-prepare-app.md).
+Az előző oktatóanyagokban létrehoztunk egy tárolórendszerképet, és feltöltöttük egy Azure Container Registry-példányra. Ha ezeket a lépéseket még nem hajtotta végre, és szeretné követni az oktatóanyagot, lépjen vissza az [1. oktatóanyag – Tárolórendszerképek létrehozása](./container-service-tutorial-kubernetes-prepare-app.md) részhez.
 
 ## <a name="create-kubernetes-cluster"></a>Kubernetes-fürt létrehozása
 
-Hozzon létre egy Kubernetes-fürtöt az Azure Container Service-ben az [az acs create](/cli/azure/acs#create) paranccsal. 
+Hozzon létre egy Kubernetes-fürtöt az Azure Container Service-ben az [az acs create](/cli/azure/acs#az_acs_create) paranccsal. 
 
-Az alábbi példakód létrehozza a fürt nevű `myK8sCluster` nevű erőforráscsoportban `myResourceGroup`. Ez az erőforráscsoport jött létre a [az oktatóanyag előző](./container-service-tutorial-kubernetes-prepare-acr.md).
+A következő példában létrehozunk egy `myK8sCluster` nevű fürtöt egy `myResourceGroup` nevű erőforráscsoportban. Az erőforráscsoportot [az előző oktatóanyagban](./container-service-tutorial-kubernetes-prepare-acr.md) hoztuk létre.
 
 ```azurecli-interactive 
 az acs create --orchestrator-type kubernetes --resource-group myResourceGroup --name myK8SCluster --generate-ssh-keys 
 ```
 
-Egyes esetekben – például korlátozott próbaverziónál – az Azure-előfizetés korlátozott hozzáféréssel rendelkezik az Azure-erőforrásokhoz. Ha az üzembe helyezés az elérhető magok korlátozott száma miatt hiúsul meg, csökkentse az alapértelmezett ügynökök számát az `--agent-count 1` az [az acs create](/cli/azure/acs#create) parancshoz történő hozzáadásával. 
+Egyes esetekben – például korlátozott próbaverziónál – az Azure-előfizetés korlátozott hozzáféréssel rendelkezik az Azure-erőforrásokhoz. Ha az üzembe helyezés az elérhető magok korlátozott száma miatt hiúsul meg, csökkentse az alapértelmezett ügynökök számát az `--agent-count 1` az [az acs create](/cli/azure/acs#az_acs_create) parancshoz történő hozzáadásával. 
 
-Pár perc múlva a telepítés befejeződik, és értéket ad vissza json formátumú az ACS telepítési információkat.
+Néhány perc múlva befejeződik az üzembe helyezés, és a rendszer visszaadja az ACS-beli üzembe helyezéssel kapcsolatos adatokat JSON formátumban.
 
 ## <a name="install-the-kubectl-cli"></a>A kubectl parancssori felület telepítése
 
-Az Kubernetes fürthöz csatlakoztatja az ügyfélszámítógépről, használja a [kubectl](https://kubernetes.io/docs/user-guide/kubectl/), a Kubernetes parancssori ügyfél. 
+Ahhoz, hogy csatlakozni tudjon a Kubernetes-fürthöz az ügyfélszámítógépről, használja a Kubernetes [kubectl](https://kubernetes.io/docs/user-guide/kubectl/) nevű parancssori ügyfelét. 
 
-Ha az Azure CloudShellt használja, a kubectl már telepítve van. Ha helyileg telepíteni szeretne, használja a [az acs kubernetes install-cli](/cli/azure/acs/kubernetes#install-cli) parancsot.
+Ha az Azure CloudShellt használja, a kubectl már telepítve van. Ha helyileg szeretné telepíteni, használja az [az acs kubernetes install-cli](/cli/azure/acs/kubernetes#install-cli) parancsot.
 
-Ha a Linux vagy macOS fut, szükség lehet a sudo futtatásához. A Windows győződjön meg arról, a rendszerhéj futtatása rendszergazdaként.
+Linux vagy macOS használata esetén előfordulhat, hogy sudo használatával kell futtatnia. Windows használata esetén győződjön meg róla, hogy a felület rendszergazdaként lett futtatva.
 
 ```azurecli-interactive 
 az acs kubernetes install-cli 
 ```
 
-A Windows, az alapértelmezett telepítési van *c:\program files (x86)\kubectl.exe*. Szükség lehet a fájl hozzáadása a Windows útvonalhoz. 
+Windows rendszeren az alapértelmezett telepítés telepítési hely a *c:\program files (x86)\kubectl.exe*. Előfordulhat, hogy ezt a fájlt hozzá kell adnia a Windows-útvonalhoz. 
 
 ## <a name="connect-with-kubectl"></a>Kapcsolódás a kubectl parancssori ügyfélhez
 
@@ -68,7 +68,7 @@ A kubectl a Kubernetes-fürthöz való csatlakozásra konfigurálásához futtas
 az acs kubernetes get-credentials --resource-group myResourceGroup --name myK8SCluster
 ```
 
-Ellenőrizze a kapcsolatot a fürthöz, futtassa a [kubectl beolvasása csomópontok](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) parancsot.
+A fürthöz való csatlakozás ellenőrzéséhez futtassa a [kubectl get nodes](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) parancsot.
 
 ```azurecli-interactive
 kubectl get nodes
@@ -84,18 +84,18 @@ k8s-agent-98dc3136-2    Ready                      5m        v1.6.2
 k8s-master-98dc3136-0   Ready,SchedulingDisabled   5m        v1.6.2
 ```
 
-Oktatóanyag befejezése után következő, hogy az ACS Kubernetes fürt készen áll a munkaterhelések. A következő útmutatókból egy több tároló alkalmazás üzemel a fürthöz, horizontálisan, frissítése, és figyeli.
+Az oktatóanyag befejezésével rendelkezésére áll majd egy számítási feladatok végrehajtására kész ACS Kubernetes-fürt. Az ezt követő oktatóanyagokban egy többtárolós alkalmazást helyezünk üzembe a fürtön, majd elvégezzük annak horizontális skálázását, frissítését és monitorozását.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban az Azure-tároló szolgáltatás Kubernetes fürt tették elérhetővé telepítésre. A következő lépéseket hajtotta végre:
+Az oktatóanyagban egy Azure Container Service-beli Kubernetes fürtöt helyezett üzembe. A következő lépéseket hajtotta végre:
 
 > [!div class="checklist"]
-> * Egy Kubernetes ACS-fürt telepítése
-> * A Kubernetes CLI (kubectl) telepítése
-> * Konfigurált kubectl
+> * Üzembe helyezett egy Kubernetes ACS-fürtöt
+> * Telepítette a Kubernetes parancssori felületet (kubectl)
+> * Konfigurálta a kubectl parancssori felületet
 
-Továbblépés a következő oktatóanyag fürtben futó alkalmazás megismeréséhez.
+Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan futtathatók alkalmazások a fürtön.
 
 > [!div class="nextstepaction"]
-> [Kubernetes az alkalmazás központi telepítése](./container-service-tutorial-kubernetes-deploy-application.md)
+> [Alkalmazások üzembe helyezése a Kubernetesben](./container-service-tutorial-kubernetes-deploy-application.md)

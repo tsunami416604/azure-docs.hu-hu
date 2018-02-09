@@ -55,6 +55,7 @@
 ### [Jelszó-szinkronizálás](active-directory-aadconnectsync-implement-password-synchronization.md)
 ### [Azure AD-szolgáltatásfiók](active-directory-aadconnectsync-howto-azureadaccount.md)
 ### [Telepítő varázsló](active-directory-aadconnectsync-installation-wizard.md)
+### [A UserPrincipalName feltöltésének menete](active-directory-aadconnect-userprincipalname.md)
 ### [Az alapértelmezett konfiguráció módosítása](active-directory-aadconnectsync-best-practices-changing-default-configuration.md)
 ### [A szűrés konfigurálása](active-directory-aadconnectsync-configure-filtering.md)
 ### [Scheduler](active-directory-aadconnectsync-feature-scheduler.md)
@@ -104,12 +105,12 @@
 
 
 
-# Kapcsolódó
+# Kapcsolódó témakörök
 ## [A helyszíni identitás-infrastruktúra és a szinkronizálási szolgáltatások megfigyelése a felhőben](../connect-health/active-directory-aadconnect-health.md)
 ## [Hibrid identitáskezelés – kialakítási útmutató](https://azure.microsoft.com/documentation/articles/active-directory-hybrid-identity-design-considerations-overview/)
 
 
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=security-identity)
 ##[Azure AD Connect – gyakori kérdések](active-directory-aadconnect-faq.md)
 ##[DirSync elavulása](active-directory-aadconnect-dirsync-deprecated.md)

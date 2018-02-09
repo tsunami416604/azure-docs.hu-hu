@@ -1,104 +1,104 @@
 ---
-title: "Tekintse át a használati és Azure költség felügyeleti költségek |} Microsoft Docs"
-description: "Tekintse át a használati és költségek nyomon követhető a trendeket, hatékonyság hiánya észleli, és létre riasztásokat."
+title: "A használat és a költségek áttekintése az Azure Cost Managementben | Microsoft Docs"
+description: "A használat és a költségek áttekintésével nyomon követheti a trendeket, észlelheti a hatékonysági hiányosságokat, és riasztásokat állíthat be."
 services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 10/11/2017
+ms.date: 01/30/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 363a7e8a5b5be2175cb2f6d3539878673a2b469a
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
-ms.translationtype: MT
+ms.openlocfilehash: 72c5c9ff13577e7b4008c42133742d8de4904ae0
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="review-usage-and-costs"></a>Felülvizsgálati használati és költségek
+# <a name="review-usage-and-costs"></a>A használat és a költségek áttekintése
 
-Azure költség-kezelést úgy Cloudyn használatát mutatja meg, és költségek, hogy a trendeket, nyomon követheti hatékonyság hiánya észleli, és létre riasztásokat. Minden használati és a költséghatékonyság adatok Cloudyn irányítópultok és jelentések jelennek meg. Ebben az oktatóanyagban szereplő példák ismerteti, ha a használati és költségek az irányítópultok és jelentések megtekintésével. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az Azure Cost Management by Cloudynben megtekintheti a használati mutatókat és a költségeket, így nyomon követheti a trendeket, észlelheti a hatékonysági hiányosságokat, és riasztásokat állíthat be. Minden használati és költségadat megjelenik a Cloudyn irányítópultjain és jelentéseiben. Az oktatóanyagban szereplő példák bemutatják, hogyan tekintheti át a használatot és a költségeket az irányítópultok és jelentések segítségével. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Használat követése és trendek költsége
-> * Használati hatékonyság hiánya észlelése
-> * Szokatlan költségeik vagy túlköltekezés figyelmeztetések létrehozása
+> * Használati és költségtrendek követése
+> * A használat hatékonysági hiányosságainak észlelése
+> * Szokatlan kiadásokra és túlköltekezésre figyelmeztető riasztások létrehozása
 
 
 
-## <a name="open-the-cloudyn-portal"></a>Nyissa meg a Cloudyn portált
+## <a name="open-the-cloudyn-portal"></a>A Cloudyn portál megnyitása
 
-Megtekintheti az összes használati és költségek az Cloudyn portálon. Nyissa meg a Cloudyn portált Azure-portálról, vagy navigáljon a https://azure.cloudyn.com, és jelentkezzen be.
+A használati és költségadatokat a Cloudyn portálon tekintheti át. Nyissa meg a Cloudyn portált az Azure Portalról, vagy lépjen a https://azure.cloudyn.com helyre, és jelentkezzen be.
 
-## <a name="track-usage-and-cost-trends"></a>Használat követése és trendek költsége
+## <a name="track-usage-and-cost-trends"></a>Használati és költségtrendek követése
 
-Használati és az idő alatt jelentések segítségével azonosíthatja a trendeket a költségek töltött tényleges pénz követi nyomon. A tényleges költség keresztül idő jelentéssel trendek megtekint indításához. Kattintson a portál felső jelentések menü **költség** > **költség Analysis** > **tényleges költség keresztül idő**. A jelentés első megnyitásakor nem csoportokat vagy a szűrők vonatkoznak rá.
+A használattal és költségekkel kapcsolatos tényleges kiadásokat időalapú jelentésekkel követheti, és megfigyelheti a kirajzolódó tendenciákat. A tendenciák követéséhez használja a tényleges időalapú költségeket tartalmazó jelentést. A portál tetején a Jelentések menüben kattintson a **Cost**(Költségek) > **Cost Analysis**(Költségelemzés) > **Actual Cost Over Time** (Tényleges időalapú költségek) elemre. Amikor először megnyitja a jelentést, még nincsenek beállítva rajta csoportok vagy szűrők.
 
-Íme egy példa a jelentés:
+Egy példa a jelentésekre:
 
-![Példa jelentésre](./media/tutorial-review-usage/actual-cost01.png)
+![példa jelentésre](./media/tutorial-review-usage/actual-cost01.png)
 
-Ebben a jelentésben az összes költségkeretet az elmúlt 30 napban. Az Azure-szolgáltatásokhoz csak költségeik megtekintéséhez alkalmazni a csoportot, és az összes Azure-szolgáltatások majd szűréséhez. A következő kép bemutatja a szűrt szolgáltatások.
+A jelentés az elmúlt 30 nap összes kiadását megjeleníti. Ha csak az Azure-szolgáltatásokhoz tartozó költségeket szeretné megtekinteni, alkalmazza a Service (Szolgáltatás) csoportot, és szűrjön rá az összes Azure-szolgáltatásra. A következő képen a szűrt szolgáltatások láthatók.
 
 ![szűrt szolgáltatások](./media/tutorial-review-usage/actual-cost02.png)
 
-Az előző példában a kevesebb pénz telt indítása a 2017-08-31 mint előtt. Adott költségtrend továbbra is fennáll, a különböző szolgáltatások készül kilenc napig. Ezt követően további költségeik továbbra is mint korábban. Túl sok oszlop azonban egy nyilvánvaló trend lehet átalakítani. A jelentések nézetének módosítható egy vonal, vagy terület diagram más nézetekhez megjelenő adatok megjelenítéséhez. Az alábbi ábrán a trend egyértelműbben.
+Az előző példában 2017. augusztus 31-től kezdve a korábbinál kevesebb kiadás volt tapasztalható. Ez a költségtrend nagyjából kilenc napon keresztül volt megfigyelhető a különböző szolgáltatásoknál. Ezt követően a költségek visszaálltak a korábbi szintre. Ha túl sok az oszlop, az megnehezítheti a trendek értelmezését. A jelentés nézetét módosíthatja vonal- vagy területdiagramra, hogy az adatok másképp jelenjenek meg. Az alábbi képen a trend sokkal jobban kirajzolódik.
 
-![a jelentés trend](./media/tutorial-review-usage/actual-cost03.png)
+![trend a jelentésben](./media/tutorial-review-usage/actual-cost03.png)
 
-A példa jól látható, hogy Azure tárolási költség eldobott indítása a 2017-08-31 miközben szint más Azure-szolgáltatásokkal beszállítói költségeit maradt. Hogy Igen, a kiadások okáról? Ebben a példában néhány alkalmazott igényléséhez szabadságon volt, és nem használja a tároló szolgáltatást.
+A példában jól látható, hogy az Azure Storage költségei 2017. augusztus 31-ével alacsonyabbak lettek, miközben a többi Azure-szolgáltatással kapcsolatos kiadások változatlanok maradtak. Mi okozta vajon a kiadások csökkenését? A példánkban az történt, hogy néhány alkalmazott szabadságon volt a kérdéses időszakban, és nem használta a Storage szolgáltatást.
 
-Útmutató videót nyomon követése a használati és a költséghatékonyság trendeket, lásd: [elemzése a felhőben, számlázási adatok és az Azure költség Management Cloudyn idő](https://youtu.be/7LsVPHglM0g).
+A használati és költségtrendek követéséről szóló oktatóvideó: [Időalapú felhőszámlázási adatok elemzése az Azure Cost Management by Cloudynben](https://youtu.be/7LsVPHglM0g).
 
-## <a name="detect-usage-inefficiencies"></a>Használati hatékonyság hiánya észlelése
+## <a name="detect-usage-inefficiencies"></a>A használat hatékonysági hiányosságainak észlelése
 
-Optimalizáló jelentések hatékonyság javítása, használat optimalizálása, és menti a felhőben lévő erőforrások költött módokon azonosítása. Akkor hasznosak lehetnek szánt csökkentése érdekében az üresjárati vagy drága virtuális gépek költséghatékony méretezési ajánlásokkal.
+Az optimalizálással kapcsolatos jelentések segítenek növelni a hatékonyságot és optimalizálni a használatot, illetve azonosítani azokat a pontokat, ahol megtakarítások érhetők el a felhőalapú erőforrásokra fordított költségekben. Ezek a jelentések különösen nagy segítséget nyújthatnak azon költséghatékonysági méretezési javaslatok kidolgozásához, amelyek a tétlen vagy túl költséges virtuális gépek mennyiségének csökkentésére irányulnak.
 
-Gyakori probléma, amely befolyásolja a szervezetek, amikor azok kezdetben erőforrások áthelyezése felhőben a virtualizálási stratégiát is. Azok a helyszíni-virtualizálási környezet a virtuális gépek létrehozásához használt hasonló megközelítést gyakran használnak. És azok azt feltételezik, hogy költségek csökkentése a helyszíni virtuális gépek áthelyezését a felhőbe, mint-van. Azonban ezt a megközelítést valószínűleg nem csökkentheti a költségeket.
+Amikor a cégek átviszik az erőforrásaikat a felhőbe, gyakran jelent problémát a megfelelő virtualizálási stratégia kialakítása. Sokszor alkalmaznak hasonló megközelítést, mint a helyszíni virtualizálási környezethez létrehozott virtuális gépek esetében. Azt feltételezik, hogy ha a helyszíni virtuális gépeket módosítás nélkül helyezik át a felhőbe, a költségeik csökkennek majd. Ez a megközelítés azonban nagy valószínűséggel nem eredményezi a költségek csökkenését.
 
-A probléma oka, hogy a meglévő infrastruktúra már kifizetett. Felhasználók létrehozására és nagy virtuális gép fut, ha azok tetszését tartsa – inaktív vagy nem és kevés következménye. Nagy vagy tétlen virtuális gépek áthelyezését a felhőbe várhatóan *növelése* költségeket. Költség-foglalás erőforrások fontos, amikor a felhőszolgáltatók megállapodásokat ad meg. Véglegesítenie kell hogy használ-e az erőforrás teljes vagy nem kell fizetnie.
+A probléma forrása, hogy a meglévő infrastruktúra már ki van fizetve. A felhasználók bármikor létrehozhatnak nagy méretű virtuális gépeket, és tetszés szerint működtethetik azokat – üresjáratban vagy sem, ennek nem sok jelentősége van. A nagy méretű vagy tétlen virtuális gépek felhőbe való áthelyezése azonban várhatóan a költségek *növekedését* fogja eredményezni. A felhőszolgáltatókkal kötött megállapodások során nagyon fontos szerepet játszik az erőforrások megfelelő költséglefoglalása. Akár teljes mértéken kihasználja őket, akár nem, a lefoglalt erőforrásokat ki kell fizetnie.
 
-A költség hatályos méretezési javaslatok jelentés azonosítja a potenciális éves megtakarítások összehasonlítja a virtuális gép példány típus kapacitás el a korábbi CPU és memória-használati adatok.  
+A költséghatékony méretezési javaslatokat tartalmazó jelentés a virtuálisgép-példánytípusok kapacitásának a processzor- és memóriahasználati előzményadatokkal való összevetésével azonosítja az éves szinten lehetséges megtakarításokat.  
 
-Kattintson a jelentések menü felső részén a portálon, **optimalizáló** > **árképzési optimalizálási** > **költség hatályos méretezési javaslatok**. Az Azure-bA csak az Azure virtuális gépek tekintse meg a szolgáltató szűréséhez. Íme egy példa lemezképet.
+A portál tetején, a jelentések menüjében kattintson az **Optimizer** (Optimalizáló) > **Pricing Optimization** (Díjszabás optimalizálása) > **Cost Effective Sizing Recommendations** (Költséghatékony méretezési javaslatok) lehetőségre. A szolgáltatónál szűrjön az Azure-ra, hogy csak az Azure-beli virtuális gépek adatai jelenjenek meg. Íme egy példa.
 
 ![Azure-beli virtuális gépek](./media/tutorial-review-usage/sizing01.png)
 
-Ebben a példában $3,114 sikerült menteni a következő ajánlások módosítása a Virtuálisgép-példány típusokon. Kattintson a plusz jelre (+) **részletek** az első javasolt. Az alábbiakban az első ajánlás részleteit.
+Példánkban 3114 dollár takarítható meg a virtuálisgép-példánytípusok módosítására vonatkozó javaslatok elfogadásával. Kattintson a plusz (+) jelre az első javaslat **Details** (Részletek) oszlopában. Megjelennek az első javaslat részletei.
 
-![Javaslat részletei](./media/tutorial-review-usage/sizing02.png)
+![javaslat részletei](./media/tutorial-review-usage/sizing02.png)
 
-Virtuális gép példány azonosítók megtekintése mellett a pluszjelre kattintva **lista a deduplikációra kijelölt**.
+A virtuálisgép-példányok azonosítóit a **List of Candidates** (Jelöltek listája) melletti plusz (+) jelre kattintva tekintheti meg.
 
-![A deduplikációra kijelölt listája](./media/tutorial-review-usage/sizing03.png)
+![Jelöltek listája](./media/tutorial-review-usage/sizing03.png)
 
-Útmutató videót használati hatékonyság hiánya észleléséről, lásd: [Virtuálisgép-méret optimalizálása Azure költség felügyeleti által Cloudyn](https://youtu.be/1xaZBNmV704).
+A használattal kapcsolatos hatékonysági hiányosságok felderítéséről szóló oktatóvideó: [Virtuális gépek méretének optimalizálása az Azure Cost Management by Cloudynban](https://youtu.be/1xaZBNmV704).
 
-## <a name="create-alerts-for-unusual-spending"></a>Hozzon létre riasztásokat szokatlan kiadások
+## <a name="create-alerts-for-unusual-spending"></a>Szokatlan kiadásokra figyelmeztető riasztások létrehozása
 
-Automatikusan a költségkeret rendellenességek észlelését és túlköltekezés kockázatok érdekelt felek is riasztást. Gyorsan és egyszerűen létrehozhat jelentést, hogy támogatási riasztások költségvetési alapján, és a küszöbértékek költség riasztásokról.
+Az érintetteket automatikusan figyelmeztetheti a rendellenes kiadásokról és a túlköltekezési kockázatokról. A költségvetés és a költségek küszöbértékeit használó jelentések alapján gyorsan és egyszerűen hozhat létre riasztásokat.
 
-A költségkeret használatával bármilyen bármely jelentés riasztást hoz létre. Ebben a példában a tényleges költség keresztül idő jelentéssel értesítést küldenek, ha a teljes költségvetést Azure virtuális gép költségeik megújítására. Kattintson a portál felső jelentések menü **költség** > **költség Analysis** > **tényleges költség keresztül idő**. Állítsa be **csoportok** való **szolgáltatás** és **szűrőt a szolgáltatás a** való **Azure vagy Virtuálisgép**. A felső sarkában a jelentést, kattintson a **műveletek** , és válassza **ütemezni a jelentést**.
+Riasztásokat bármely kiadáshoz és bármely költségjelentés alapján létrehozhat. Példánkban a rendszer a tényleges időalapú költségeket tartalmazó jelentés alapján értesíti, amint az Azure-beli virtuális gépekkel kapcsolatos kiadások megközelítik a teljes költségkeretet. A portál tetején a Jelentések menüben kattintson a **Cost**(Költségek) > **Cost Analysis**(Költségelemzés) > **Actual Cost Over Time** (Tényleges időalapú költségek) elemre. A **Groups** (Csoportok) alatt állítsa be a **Service** (Szolgáltatás), a **Filter on the service** (Szűrés a következő szolgáltatásra) alatt pedig az **Azure/VM** (Azure/virtuális gép) lehetőséget. A jelentés jobb felső sarkában kattintson az **Actions** (Műveletek) gombra, majd válassza a **Schedule report** (Jelentés ütemezése) lehetőséget.
 
-Használja a **ütemezés** lapon, a jelentés segítségével a gyakorisága, amelyet e-mailt küldhet magának. Csoportosítás és a szűrés meg használt címkéket, az e-mailben elküldött jelentésben szereplő. Kattintson a **küszöbérték** kiválasztása lapon, majd válassza ki **tényleges költség vs. Küszöbérték**. Ha a teljes költségvetést $ 500 000 értéket és lesz értesítési amikor költségek közelében felét, hozzon létre egy **vörös színnel** $250,000, és egy **sárga riasztás** : $240,000. Ezután válassza az egymást követő riasztások számát. Amikor megjelenik a megadott riasztások teljes számát, további rendszer nem küld figyelmeztetést. Az ütemezett jelentés mentése.
+A **Scheduling** (Ütemezés) lapon állítsa be a jelentés elküldését a saját e-mail-címére a kívánt gyakorisággal. Az e-mailben küldött jelentés az összes használt címkét, csoportosítást és szűrőt tartalmazza majd. Kattintson a **Threshold** (Küszöbérték) lapra, és válassza az **Actual Cost vs. Threshold** (Tényleges költségek a küszöbértékhez képest) lehetőséget. Ha a teljes költségvetése 500 000 dollár, és szeretne értesítést kapni, amikor a költségek elérik ennek a felét, hozzon létre egy **vörös riasztást** 250 000 és egy **sárga riasztást** 240 000 dollárra. Ezután válassza ki az egymást követő riasztások számát. Ha a riasztások száma eléri a megadott számot, a rendszer nem küld további riasztásokat. Mentse az ütemezett jelentést.
 
-![Példa jelentésre](./media/tutorial-review-usage/schedule-alert01.png)
+![példa jelentésre](./media/tutorial-review-usage/schedule-alert01.png)
 
-Választhatja azt is, a költség százalékát vs. Keret küszöbérték metrika riasztások létrehozásához. Adott metrika használatával használhat költségvetési százalékos pénznem értékek helyett.
+Azt is megteheti, hogy a Cost Percentage vs. Budget (Költségszázalék a költségvetési küszöbértékhez képest) mutatót választja a riasztások alapjául. Ennek a mutatónak a használatával pontos összegek helyett a költségvetés százalékos arányában határozhatja meg a küszöböket.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Használat követése és trendek költsége
-> * Használati hatékonyság hiánya észlelése
-> * Szokatlan költségeik vagy túlköltekezés figyelmeztetések létrehozása
+> * Használati és költségtrendek követése
+> * A használat hatékonysági hiányosságainak észlelése
+> * Szokatlan kiadásokra és túlköltekezésre figyelmeztető riasztások létrehozása
 
 
-Előzetes adataihoz való hozzáférés szabályozásának ismertetése a következő oktatóanyagot.
+Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan szabályozható az adatokhoz való hozzáférés.
 
 > [!div class="nextstepaction"]
-> [Adatok elérés](tutorial-user-access.md)
+> [Az adatok hozzáférésének szabályozása](tutorial-user-access.md)

@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 01/02/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 70167322f1576b4a9cbd5f499edfc934b8a9a799
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 0ba6cf4532e5bcd86c53a63349241509bfc941ec
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="create-a-net-service-fabric-application-in-azure"></a>.NET Service Fabric-alkalmazás létrehozása az Azure-ban
 Az Azure Service Fabric egy elosztott rendszerplatform, amely skálázható és megbízható mikroszolgáltatások és tárolók üzembe helyezésére és kezelésére szolgál. 
@@ -123,9 +123,27 @@ A hibakeresési munkamenet leállításához nyomja le a **Shift+F5** billentyű
 Ha az alkalmazást üzembe szeretné helyezni az Azure-ban, szüksége lesz egy azt futtató Service Fabric-fürtre. 
 
 ### <a name="join-a-party-cluster"></a>Csatlakozás nyilvános fürthöz
-A nyilvános fürtök ingyenes, korlátozott időtartamú Azure Service Fabric-fürtök, amelyek futtatását a Service Fabric csapata végzi, és amelyeken bárki üzembe helyezhet alkalmazásokat, és megismerkedhet a platform használatával. 
+A nyilvános fürtök ingyenes, korlátozott időtartamú Azure Service Fabric-fürtök, amelyek futtatását a Service Fabric csapata végzi, és amelyeken bárki üzembe helyezhet alkalmazásokat, és megismerkedhet a platform használatával. A fürt egy önaláírt tanúsítványt használ a csomópontok közötti, valamint a kliens és a csomópont közötti biztonsághoz. 
 
-Jelentkezzen be, és [csatlakozzon egy Windows-fürthöz](http://aka.ms/tryservicefabric). Jegyezze fel a **Kapcsolati végpont** értékét, mert azt a következő lépésekben használni fogja.
+Jelentkezzen be, és [csatlakozzon egy Windows-fürthöz](http://aka.ms/tryservicefabric). A **PFX** hivatkozásra kattintva töltse le a PFX-tanúsítványt a számítógépre. A tanúsítványra és a **Kapcsolati végpont** értékére a következő lépésekben szükség lesz.
+
+![PFX és kapcsolati végpont](./media/service-fabric-quickstart-dotnet/party-cluster-cert.png)
+
+Egy Windows rendszerű gépen telepítse a PFX-et a *CurrentUser\My* tanúsítványtárolóba.
+
+```powershell
+PS C:\mycertificates> Import-PfxCertificate -FilePath .\party-cluster-873689604-client-cert.pfx -CertStoreLocation Cert:
+\CurrentUser\My
+
+
+   PSParentPath: Microsoft.PowerShell.Security\Certificate::CurrentUser\My
+
+Thumbprint                                Subject
+----------                                -------
+3B138D84C077C292579BA35E4410634E164075CD  CN=zwin7fh14scd.westus.cloudapp.azure.com
+```
+
+Jegyezze meg az ujjlenyomatot a következő lépésekhez.
 
 > [!Note]
 > Alapértelmezés szerint a webes kezelőfelületi szolgáltatás a konfigurációja szerint a 8080-as porton figyeli a bejövő forgalmat. A 8080-as port a nyilvános fürtön nyitva van.  Ha meg kell változtatnia az alkalmazásportot, olyat válasszon, amely nyitva van a nyilvános fürtön.
@@ -136,24 +154,29 @@ Az alkalmazást a létrehozása után telepítheti a fürtben, közvetlenül a V
 
 1. A Megoldáskezelőben kattintson a jobb gombbal a **Voting** (Szavazás) elemre, majd válassza a **Publish** (Közzététel) lehetőséget. Ekkor megjelenik a Publish (Közzététel) párbeszédpanel.
 
-    ![Publish (Közzététel) párbeszédpanel](./media/service-fabric-quickstart-dotnet/publish-app.png)
 
-2. Másolja be a **Kapcsolati végpont** értékét a nyilvános fürt lapjáról a **Connection Endpoint** (Kapcsolati végpont) mezőbe, majd kattintson a **Publish** (Közzététel) parancsra. Például: `winh1x87d1d.westus.cloudapp.azure.com:19000`.
+2. Másolja be a **Kapcsolati végpont** értékét a nyilvános fürt lapjáról a **Connection Endpoint** (Kapcsolati végpont) mezőbe. Például: `zwin7fh14scd.westus.cloudapp.azure.com:19000`. Kattintson az **Advanced Connection Parameters** (Speciális kapcsolati paraméterek) lehetőségre, és töltse ki a következő információkat.  A *FindValue* és *ServerCertThumbprint* értékeknek egyezniük kell az egyik előző lépésben telepített tanúsítvány ujjlenyomatával. 
+
+    ![Publish (Közzététel) párbeszédpanel](./media/service-fabric-quickstart-dotnet/publish-app.png)
 
     A fürtben szereplő minden alkalmazásnak egyedi névvel kell rendelkeznie.  A nyilvános fürtök azonban nyilvános és megosztott környezetek, így ütközés léphet fel egy meglévő alkalmazással.  Névütközés esetén nevezze át a Visual Studio-projektet, és végezze el újra az üzembe helyezést.
 
-3. Ahhoz, hogy eljusson az alkalmazáshoz a fürtön, nyisson meg egy böngészőt, és gépelje be a fürt címét, majd a végéhez adja hozzá a „:8080” kifejezést, például: `http://winh1x87d1d.westus.cloudapp.azure.com:8080`. Ezután megjelenik a fürtön futó alkalmazás az Azure-ban.
+3. Kattintson a **Publish** (Közzététel) gombra.
+
+4. Ahhoz, hogy eljusson az alkalmazáshoz a fürtön, nyisson meg egy böngészőt, és gépelje be a fürt címét, majd a végéhez adja hozzá a „:8080” kifejezést, például: `http://zwin7fh14scd.westus.cloudapp.azure.com:8080`. Ezután megjelenik a fürtön futó alkalmazás az Azure-ban.
 
 ![Alkalmazás kezelőfelülete](./media/service-fabric-quickstart-dotnet/application-screenshot-new-azure.png)
 
 ## <a name="scale-applications-and-services-in-a-cluster"></a>Alkalmazások és szolgáltatások méretezése a fürtökben
 A Service Fabric-szolgáltatások egy adott fürtben könnyedén méretezhetők, hogy igazodjanak a szolgáltatások terhelésének változásaihoz. A szolgáltatások méretezése a fürtben futó példányok számának módosításával történik. A szolgáltatások méretezésének többféle módja is van: használhat szkripteket, vagy a PowerShell, illetve a Service Fabric parancssori felület (sfctl) parancsait. Ebben a példában a Service Fabric Explorert használjuk.
 
-A Service Fabric Explorer az összes Service Fabric-fürtben fut. Eléréséhez egy böngészőben navigáljon az adott fürt HTTP-kezelési portjára (19080), például: `http://winh1x87d1d.westus.cloudapp.azure.com:19080`.
+A Service Fabric Explorer az összes Service Fabric-fürtben fut. Eléréséhez egy böngészőben navigáljon az adott fürt HTTP-kezelési portjára (19080), például: `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`. 
+
+Előfordulhat, hogy a böngésző nem megbízhatóként jelzi a helyet. Ennek oka az, hogy a tanúsítvány önaláírt. Ezt akár figyelmen kívül is hagyhatja, és tovább léphet. Amikor a böngésző arra kéri, válassza ki a telepített tanúsítványt a csatlakozáshoz. 
 
 A webes előtér-szolgáltatás méretezéséhez hajtsa végre a következő lépéseket:
 
-1. Nyissa meg a Service Fabric Explorert a fürtben – például: `http://winh1x87d1d.westus.cloudapp.azure.com:19080`.
+1. Nyissa meg a Service Fabric Explorert a fürtben – például: `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`.
 2. Kattintson a három pontra a fanézetben a **fabric:/Voting/VotingWeb** csomópont mellett, és válassza a **Scale Service** (Szolgáltatás méretezése) lehetőséget.
 
     ![Service Fabric Explorer](./media/service-fabric-quickstart-dotnet/service-fabric-explorer-scale.png)
@@ -185,7 +208,7 @@ Az alkalmazás frissítéséhez tegye a következőket:
 7. A **Publish Service Fabric Application** (Service Fabric-alkalmazás közzététele) párbeszédpanelen jelölje be az Upgrade the Application (Alkalmazás frissítése) jelölőnégyzetet, majd kattintson a **Publish** (Közzététel) parancsra.
 
     ![A Közzététel párbeszédpanel frissítési beállításai](./media/service-fabric-quickstart-dotnet/upgrade-app.png)
-8. Nyissa meg a böngészőt, és keresse meg a fürt címét az 19080-as porton, például: `http://winh1x87d1d.westus.cloudapp.azure.com:19080`.
+8. Nyissa meg a böngészőt, és keresse meg a fürt címét az 19080-as porton, például: `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`.
 9. Kattintson az **Alkalmazások** csomópontra a fanézetben, majd a jobb oldali ablaktáblán található **Folyamatban lévő frissítések** elemre. Ekkor láthatja, hogy a frissítés hogyan lépked végig a fürt frissítési tartományain, miközben továbblépés előtt minden tartomány állapotát ellenőrzi. A frissítési tartomány zöld színnel jelenik meg a folyamatjelzőn, ha a tartomány állapota ellenőrizve lett.
     ![Frissítési nézet a Service Fabric Explorerben](./media/service-fabric-quickstart-dotnet/upgrading.png)
 

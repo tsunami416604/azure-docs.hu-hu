@@ -1,6 +1,6 @@
 ---
-title: "A figyelő API-k közzé az Azure API Management |} Microsoft Docs"
-description: "Ez az oktatóanyag az Azure API Management az API figyeléséről további lépések."
+title: "A közzétett API-k monitorozása az Azure API Management szolgáltatásban | Microsoft Docs"
+description: "Az API-k Azure API Management szolgáltatásban való monitorozásához kövesse az oktatóanyag lépéseit."
 services: api-management
 documentationcenter: 
 author: juliako
@@ -14,25 +14,25 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: bdca9d4968e9e68314f350787907f15e417821f7
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
-ms.translationtype: MT
+ms.openlocfilehash: db1ed08c4d4c9e9abd525ec13f5511da82ee1fe4
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="monitor-published-apis"></a>Közzétett API-k figyelése
+# <a name="monitor-published-apis"></a>A közzétett API-k monitorozása
 
-Az Azure figyelő az Azure-szolgáltatások, amely az összes Azure-erőforrások figyelése egyetlen helyről biztosít. Azure megfigyelővel ábrázolhatja, lekérdezése, továbbítani, archiválására, és a metrikák és a naplók az Azure erőforrások, például az API Management érkező műveletek. 
+Az Azure Monitor Azure-szolgáltatás használatával egyetlen eszközön keresztül monitorozhatja Azure-erőforrásait. Az Azure Monitorral az egyes Azure-erőforrásoktól, például az API Managementtől az Azure-ba érkező mérőszámokat és naplókat jelenítheti meg, kérdezheti le, irányíthatja át, archiválhatja, illetve különböző műveleteket is végezhet velük. 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Tevékenységnaplók megtekintése
 > * Diagnosztikai naplók megtekintése
-> * Az API-nézet metrikája 
-> * Riasztási szabályt beállítani, ha az API lekérdezi a jogosulatlan hívások
+> * Az API-k mérőszámainak megtekintése 
+> * Riasztási szabály beállítása a jogosulatlan API-hívások esetére
 
-A következő videó bemutatja, hogyan figyelheti a figyelővel az Azure API Management. 
+A következő videó bemutatja, hogyan monitorozhatja az API Managementet az Azure Monitor használatával. 
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Monitor-API-Management-with-Azure-Monitor/player]
 >
@@ -40,85 +40,87 @@ A következő videó bemutatja, hogyan figyelheti a figyelővel az Azure API Man
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-+ Fejezze be a következő gyorsindítási: [hozzon létre egy Azure API Management példányt](get-started-create-service-instance.md).
-+ Is, végezze el a következő oktatóanyagot: [importálása és az első API-t közzétenni](import-and-publish.md).
++ Tekintse át a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md).
++ Végezze el a következő oktatóanyagot is: [Az első API importálása és közzététele](import-and-publish.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="diagnostic-logs"></a>Tevékenység naplók megtekintése
+## <a name="diagnostic-logs"></a>Tevékenységnaplók megtekintése
 
-Tevékenységi naplóit adja meg az API Management-szolgáltatások a végrehajtott műveletek betekintést. Tevékenység-naplók segítségével meghatározhatja a "mi, ki, és mikor" az összes írni az API Management szolgáltatásokban végzett műveleteket (PUT, POST, Törlés). 
+A tevékenységnaplók betekintést engednek az API Management-szolgáltatásokban végrehajtott műveletekbe. A tevékenységnaplók segítségével az API Management-szolgáltatásokban végrehajtott írási műveletek (PUT, POST, DELETE) kapcsán megállapíthatja, hogy a „ki, mit és mikor” hajtott végre. 
 
 > [!NOTE]
-> Tevékenység naplói nem tartalmazzák (GET) olvasási műveletek vagy a műveletek végre Publisher a klasszikus portálon vagy az eredeti felügyeleti API-k használatával.
+> A tevékenységnaplók az olvasási műveleteket (GET), illetve a klasszikus közzétételi portálon vagy az eredeti felügyeleti API-k használatával végzett műveleteket nem tartalmazzák.
 
-Tevékenység naplók elérhetők az API Management szolgáltatásban, és elérni az összes Azure-erőforrások Azure figyelőben naplókat. 
+A tevékenységnaplók az API Management szolgáltatásban, az összes Azure-erőforrás naplói pedig az Azure Monitorban érhetők el. 
 
-Tevékenység naplók megtekintése:
+A tevékenységnaplók megtekintése:
 
-1. Az a **API Management** példányt, kattintson a **tevékenységnapló**.
+1. Válassza ki az APIM-szolgáltatáspéldányt.
+2. Kattintson a **Tevékenységnapló** gombra.
 
 ## <a name="view-diagnostic-logs"></a>Diagnosztikai naplók megtekintése
 
-Diagnosztikai naplók gazdag információkkal kapcsolatos műveletek és a naplózás és a hibaelhárítási célból fontos hibák. Diagnosztikai naplók eltérnek a tevékenységi naplóit. Tevékenység naplók az Azure-erőforrások a végrehajtott műveletek betekintést. Diagnosztikai naplók Észreveheti az olyan műveletek, hogy az erőforrás végre magát.
+A diagnosztikai naplók rengeteg információt tartalmaznak a műveletekkel és a hibákkal kapcsolatban, amelyek felülvizsgálati és hibaelhárítási célból egyaránt fontosak lehetnek. A diagnosztikai naplók különböznek a tevékenységnaplóktól. A tevékenységnaplók az Azure-erőforrásokon végrehajtott műveletekkel kapcsolatos információkat tartalmaznak. A diagnosztikai naplókban az erőforrás által végrehajtott műveletekkel kapcsolatos információk találhatók meg.
 
-Diagnosztikai naplók elérése:
+A diagnosztikai naplók elérése:
 
-1. Az a **API Management** példányt, kattintson a **diagnosztikai naplófájl**.
+1. Válassza ki az APIM-szolgáltatáspéldányt.
+2. Kattintson a **Diagnosztikai napló** gombra.
 
-## <a name="view-metrics-of-your-apis"></a>Az API-k nézet metrikák
+## <a name="view-metrics-of-your-apis"></a>Az API-k metrikáinak megtekintése
 
-Az API Management bocsát ki metrikák percenként, felkínálva a valós idejű információkat az állapot és az API-kat állapotának közelében. Az alábbiakban néhány elérhető metrikai összefoglalása látható:
+Az API Management percenként biztosít mérőszámokat, így közel valós idejű képet ad az API-k állapotáról. Az alábbiakban néhány rendelkezésre álló mérőszámról adunk összefoglaló tájékoztatást:
 
-* Kapacitás (előzetes verzió): döntések frissítése/alacsonyabb verziójúra változtatása a APIM szolgáltatások segítségével. A metrika egy perc alatt kibocsátott, és az átjáró kapacitás tükrözi a jelentés időpontjában. A metrika terjedő 0 – 100, és az átjáró recourses például a Processzor- és memóriafelhasználását alapján számítja ki.
-* Átjáró kérelmek teljes száma: az API-lekérdezések száma az időtartamon belül. 
-* Átjáró sikeres kérelmek:, beleértve a 304, 307 és annak minden kisebb, mint 301 (például 200) sikeres HTTP válaszkódot kapott API-kérelmek száma. 
-* Sikertelen átjáró kérelmek:, beleértve a 400-as és annak minden nagyobb, mint 500 hibás HTTP válaszkódot kapott API-kérelmek száma.
-* Jogosulatlan átjáró kérelmek: érkezett a HTTP válaszkódot, beleértve a 401-es, a 403-as és a 429 API-kérelmek száma. 
-* Más átjáró kérelmek: érkezett a HTTP válaszkódot, amelyek nem tartoznak sem a megelőző kategóriák (például 418) API-kérelmek száma.
+* Kapacitás (előzetes verzió): az APIM-szolgáltatások magasabb/alacsonyabb verzióra váltásával kapcsolatos döntések meghozatalát segíti elő. A mérőszám percentként keletkezik, és az átjáró a jelentés pillanatában érvényes kapacitását tükrözi. A mérőszám értéke a 0–100 tartományban mozog, és az átjáró erőforrásainak, például a processzornak és a memóriának a kihasználtsága alapján számítódik ki.
+* Összes átjárókérés: az API-lekérdezések száma az adott időszakban. 
+* Sikeres átjárókérések: a sikert jelző HTTP-válaszkódot kapott API-kérések száma, beleértve a 304-es, a 307-es, valamint a 301-nél alacsonyabb (például 200-as) válaszkódokat. 
+* Sikertelen átjárókérések: a hibát jelző HTTP-válaszkódot kapott API-kérések száma, beleértve a 400-as, valamint az 500-nál magasabb válaszkódokat.
+* Jogosulatlan átjárókérések: a 401-es, 403-as és 429-es HTTP-válaszkódot kapott API-kérések száma. 
+* Egyéb átjárókérések: az előző kategóriákba nem tartozó (például 418-as) HTTP-válaszkódot kapott API-kérések száma.
 
-Metrikák eléréséhez:
+A mérőszámok elérése:
 
-1. Válassza ki **metrikák** a lap alján a menüből.
-2. A legördülő listában válassza ki szeretné metrikák (több metrikák adhat hozzá). 
+1. Válassza a lap alján lévő menü **Metrika** elemét.
+2. A legördülő listából válassza ki a megtekinteni kívánt mérőszámokat (több mérőszámot is hozzáadhat). 
     
-    Válassza például **átjáró kérelmek teljes száma** és **sikertelen átjáró kérelmek** az elérhető mérőszámok listájából.
-3. A diagram bemutatja az API-hívások száma összesen. Azt is bemutatja, melyeknél nem sikerült API-hívások száma. 
+    Például válassza az **Összes átjárókérés** és a **Sikertelen átjárókérések** mérőszámot az elérhető mérőszámok listájából.
+3. A diagram az API-hívások teljes számát mutatja, és a sikertelen API-hívások számát is megjeleníti. 
 
-## <a name="set-up-an-alert-rule-for-unauthorized-request"></a>Jogosulatlan kérelmet riasztási szabály beállítása
+## <a name="set-up-an-alert-rule-for-unauthorized-request"></a>Riasztási szabály beállítása jogosulatlan hívások esetére
 
-A riasztások metrikák és tevékenység naplók alapján konfigurálhatja. Azure a figyelő riasztást tegye a következőket, amikor elindítja a konfigurálását teszi lehetővé:
+A mérőszámok és tevékenységnaplók alapján beállíthatja, hogy milyen riasztásokat szeretne kapni. Az Azure Monitor segítségével konfigurálhat riasztásokat, amelyek aktiválása esetén a követező műveletek végrehajtására kerülhet sor:
 
-* E-mail értesítés küldése
-* A webhook hívása
-* Egy Azure logikai alkalmazás meghívása
+* E-mail-értesítés küldése
+* Webhook meghívása
+* Egy Azure Logic App-alkalmazás meghívása
 
-Riasztások konfigurálása:
+A riasztások konfigurálása:
 
-1. Válassza ki **riasztási szabályok** a menüsorában az oldal alján.
-2. Válassza ki **metrika riasztás hozzáadása**.
-3. Adjon meg egy **neve** erre a riasztásra vonatkozóan.
-4. Válassza ki **jogosulatlan átjáró kérelmek** , a figyelendő metrikát.
-5. Válassza ki **E-mail-tulajdonosok, közreműködőknek és olvasóknak**.
+1. Válassza a lap alján lévő menü **Riasztási szabályok** elemét.
+2. Válassza a **Metrikariasztás hozzáadása** lehetőséget.
+3. Adja meg a riasztás **Nevét**.
+4. A monitorozni kívánt mérőszámként válassza a **Jogosulatlan átjárókérések** mérőszámot.
+5. Jelölje be az **E-mail küldése a tulajdonosoknak, közreműködőknek és olvasóknak** beállítást.
 6. Kattintson az **OK** gombra.
-7. Próbálja meg az API-kulcs nélkül konferencia-API hívása. Ez az API Management szolgáltatás tulajdonosa egy figyelmeztető e-mailt. 
+7. Próbálja API-kulcs nélkül meghívni a Conference API-t. Az adott API Management-szolgáltatás tulajdonosaként egy figyelmeztető e-mailt kap. 
 
     > [!TIP]
-    > A riasztási szabály is meghívhatja a webes Hook vagy Azure Logic Apps kiváltásakor van.
+    > A riasztási szabály egy webhookot vagy egy Azure Logic Apps-alkalmazást is meghívhat az aktiválásakor.
 
-    ![set Close-Up riasztás](./media/api-management-azure-monitor/set-up-alert.png)
+    ![riasztás-beállítása](./media/api-management-azure-monitor/set-up-alert.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Tevékenységnaplók megtekintése
 > * Diagnosztikai naplók megtekintése
-> * Az API-nézet metrikája 
-> * Riasztási szabályt beállítani, ha az API lekérdezi a jogosulatlan hívások
+> * Az API-k mérőszámainak megtekintése 
+> * Riasztási szabály beállítása a jogosulatlan API-hívások esetére
 
-Előzetes következő oktatóanyagot:
+Folytassa a következő oktatóanyaggal:
 
 > [!div class="nextstepaction"]
-> [Nyomkövetés-hívások](api-management-howto-api-inspector.md)
+> [Hívások nyomon követése](api-management-howto-api-inspector.md)

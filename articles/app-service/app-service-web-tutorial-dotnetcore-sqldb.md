@@ -14,13 +14,17 @@ ms.topic: tutorial
 ms.date: 01/23/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 4701d19cf3b10dc42a5df7cbcb82c0d458894247
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 1a60c76b2687e4c6561eabf8a19dbfffffbe8681
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="build-a-net-core-and-sql-database-web-app-in-azure-app-service"></a>.NET Core- és SQL Database-webalkalmazás összeállítása az Azure App Service-ben
+
+> [!NOTE]
+> Ebben a cikkben egy alkalmazást helyezünk üzembe a Windowson futó App Service-ben. A _Linuxon_ futó App Service-ben való üzembe helyezéssel kapcsolatban lásd: [.NET Core- és SQL Database-webalkalmazás összeállítása a Linuxon futó Azure App Service-ben](./containers/tutorial-dotnetcore-sqldb-app.md).
+>
 
 Az [App Service](app-service-web-overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás az Azure-ban. Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre .NET Core-webalkalmazást, és hogyan csatlakoztathatja azt egy SQL Database-adatbázishoz. Az oktatóanyag eredménye egy, az App Service-ben futó .NET Core MVC-alkalmazás lesz.
 
@@ -36,14 +40,14 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 > * Diagnosztikai naplók streamelése az Azure-ból
 > * Az alkalmazás kezelése az Azure Portalon
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez:
 
 1. [A Git telepítése](https://git-scm.com/)
 1. [A .NET Core SDK 1.1.2 telepítése](https://github.com/dotnet/core/blob/master/release-notes/download-archives/1.1.2-download.md)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-local-net-core-app"></a>Helyi .NET Core-alkalmazás létrehozása
 
@@ -92,7 +96,7 @@ Ez az oktatóanyag az SQL Database-hez az [Azure SQL Database-t](/azure/sql-data
 
 ### <a name="create-a-sql-database-logical-server"></a>SQL Database logikai kiszolgáló létrehozása
 
-A Cloud Shellben hozzon létre egy SQL Database logikai kiszolgálót az [az sql server create](/cli/azure/sql/server?view=azure-cli-latest#az_sql_server_create) paranccsal.
+A Cloud Shellben hozzon létre egy SQL Database logikai kiszolgálót az [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az_sql_server_create) paranccsal.
 
 Cserélje le a *\<server_name>* helyőrzőt az SQL Database-adatbázis egyedi nevére. Ezt a nevet a rendszer SQL Database-végpontként (`<server_name>.database.windows.net`) fogja használni, így annak egyedinek kell lennie az összes Azure-beli logikai kiszolgálóban. A név csak kisbetűket, számokat és kötőjel (-) karaktert tartalmazhat, és 3–50 karakter hosszúságú lehet. Valamint cserélje le a *\<db_username>* és a *\<db_password>* helyőrzőket a választott felhasználónévre és jelszóra. 
 
@@ -123,7 +127,7 @@ Az SQL Database logikai kiszolgáló létrehozása után az Azure CLI az alábbi
 
 ### <a name="configure-a-server-firewall-rule"></a>Konfiguráljon egy kiszolgálói tűzfalszabályt
 
-Hozzon létre egy [Azure SQL Database kiszolgálószintű tűzfalszabályt](../sql-database/sql-database-firewall-configure.md) az [az sql server firewall create](/cli/azure/sql/server/firewall-rule?view=azure-cli-latest#az_sql_server_firewall_rule_create) parancs használatával. Ha a kezdő IP-cím és a záró IP-cím is 0.0.0.0 értékre van állítva, a tűzfal csak más Azure-erőforrások számára van nyitva. 
+Hozzon létre egy [Azure SQL Database kiszolgálószintű tűzfalszabályt](../sql-database/sql-database-firewall-configure.md) az [`az sql server firewall create`](/cli/azure/sql/server/firewall-rule?view=azure-cli-latest#az_sql_server_firewall_rule_create) parancs használatával. Ha a kezdő IP-cím és a záró IP-cím is 0.0.0.0 értékre van állítva, a tűzfal csak más Azure-erőforrások számára van nyitva. 
 
 ```azurecli-interactive
 az sql server firewall-rule create --resource-group myResourceGroup --server <server_name> --name AllowYourIp --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
@@ -131,7 +135,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server <se
 
 ### <a name="create-a-database"></a>Adatbázis létrehozása
 
-Hozzon létre egy [S0 teljesítményszintű](../sql-database/sql-database-service-tiers.md) adatbázist a kiszolgálón az [az sql db create](/cli/azure/sql/db?view=azure-cli-latest#az_sql_db_create) paranccsal.
+Hozzon létre egy [S0 teljesítményszintű](../sql-database/sql-database-service-tiers.md) adatbázist a kiszolgálón az [`az sql db create`](/cli/azure/sql/db?view=azure-cli-latest#az_sql_db_create) parancs használatával.
 
 ```azurecli-interactive
 az sql db create --resource-group myResourceGroup --server <server_name> --name coreDB --service-objective S0
@@ -165,7 +169,7 @@ Ebben a lépésben az SQL Database-hez csatlakoztatott .NET Core-alkalmazást he
 
 ### <a name="configure-an-environment-variable"></a>Környezeti változó konfigurálása
 
-Kapcsolati karakterláncok beállításához az Azure-alkalmazáshoz használja az [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) parancsot a Cloud Shellben. A következő parancsban cserélje az *\<app name>*, valamint a *\<connections_string>* paramétert a korábban beállított kapcsolati karakterláncra.
+Kapcsolati karakterláncok az Azure-alkalmazáshoz való beállításához használja az [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) parancsot a Cloud Shellben. A következő parancsban cserélje az *\<app name>*, valamint a *\<connections_string>* paramétert a korábban beállított kapcsolati karakterláncra.
 
 ```azurecli-interactive
 az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection='<connection_string>' --connection-string-type SQLServer

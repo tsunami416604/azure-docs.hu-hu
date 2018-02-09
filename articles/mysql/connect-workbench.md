@@ -6,15 +6,15 @@ author: jasonwhowell
 ms.author: jasonh
 manager: jhubbard
 editor: seanli1988
-ms.service: mysql
+ms.service: mysql-database
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 09/22/2017
-ms.openlocfilehash: 4214b80dc4c5db644d5a05f942907c86f292fe18
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.date: 01/24/2018
+ms.openlocfilehash: 89ccd30abfb6f25563ceb4493514c3d102ea37fe
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-database-for-mysql-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MySQL: Csatlakozás és adatlekérdezés a MySQL Workbench használatával
 Ebben a rövid útmutatóban azt szemléltetjük, hogy miként lehet a MySQL Workbench alkalmazás használatával csatlakozni egy Azure Database for MySQL kiszolgálóhoz. 
@@ -69,7 +69,8 @@ Kapcsolódás az Azure MySQL-kiszolgálóhoz a MySQL Workbench GUI eszköz haszn
         Megnyílik egy új SQL lap egy üres szerkesztővel, ahol beírhatja a lekérdezéseket.
     
         > [!NOTE]
-        > Alapértelmezés szerint kötelezően SSL-kapcsolatbiztonságra van szükség az Azure Database for MySQL kiszolgálón. Bár általában nincs szükség az SSL-tanúsítványok további konfigurációjára ahhoz, hogy a MySQL Workbench csatlakozzon a kiszolgálóhoz, ajánlott az SSL-hitelesítésszolgáltatói tanúsítványt a MySQL Workbenchhez kötni. A tanúsítvány letöltéséről és kötéséről [az SSL-kapcsolatok alkalmazásban való konfigurálását ismertető, Azure Database for MySQL kiszolgálóra vonatkozó](./howto-configure-ssl.md) cikkben talál további információkat.  Ha le kell tiltania az SSL-t, látogasson el az Azure Portalra, és a Kapcsolatbiztonság lapon használja az SSL-kapcsolat kikényszerítése kapcsológombot a letiltásához.
+        > Alapértelmezés szerint kötelezően SSL-kapcsolatbiztonságra van szükség az Azure Database for MySQL kiszolgálón. Bár általában nincs szükség az SSL-tanúsítványok további konfigurációjára ahhoz, hogy a MySQL Workbench csatlakozzon a kiszolgálóhoz, ajánlott az SSL-hitelesítésszolgáltatói tanúsítványt a MySQL Workbenchhez kötni. A tanúsítvány letöltéséről és kötéséről [az SSL-kapcsolatok alkalmazásban való konfigurálását ismertető, Azure Database for MySQL kiszolgálóra vonatkozó](./howto-configure-ssl.md) cikkben talál további információkat.  
+        > Ha le kell tiltania az SSL-t, látogasson el az Azure Portalra, és a Kapcsolatbiztonság lapon használja az SSL-kapcsolat kikényszerítése kapcsológombot a letiltásához. A MySQL Workbench SSL-beállításának letiltásához módosítsa a kapcsolatot (csavarkulcs ikon) a kezdő irányítópult oldalán, majd a kapcsolat SSL lapján állítsa az **SSL használata** beállítást **Nem** értékre. Ha az SSL-beállítás helytelenül van konfigurálva, a következő hibaüzenet jelenhet meg: „Megszakadt a kapcsolat a MySQL-kiszolgálóval a „végső kapcsolati adatok beolvasásakor”, rendszerhiba: 0”.
 
 ## <a name="create-a-table-insert-data-read-data-update-data-delete-data"></a>Tábla létrehozása, adatok beszúrása, adatok olvasása, adatok frissítése, adatok törlése
 1. Másolja és illessze be az SQL-mintakódot egy üres SQL-lapra néhány mintaadat bemutatása érdekében.

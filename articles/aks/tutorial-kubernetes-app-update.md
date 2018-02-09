@@ -1,6 +1,6 @@
 ---
-title: "Az Azure útmutató - alkalmazása Kubernetes"
-description: "AKS oktatóanyag - alkalmazása"
+title: "Azure-on futó Kubernetes oktatóanyag – Alkalmazás frissítése"
+description: "AKS-oktatóanyag – Alkalmazás frissítése"
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,45 +9,45 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 6de5173aedc836f7a2d56370ea8e54ad6e77ab5e
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
-ms.translationtype: MT
+ms.openlocfilehash: 5fdd3e621ac97da86897b8cc8b20466fab0b0a42
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="update-an-application-in-azure-container-service-aks"></a>Az alkalmazás Azure tároló szolgáltatás (AKS) frissítése
+# <a name="update-an-application-in-azure-container-service-aks"></a>Alkalmazás frissítése az Azure Container Service (AKS) szolgáltatásban
 
-Után az alkalmazás telepítve lett Kubernetes, akkor egy új tároló kép vagy lemezkép verziója lehet frissíteni. Annak során, a frissítés tartalma, hogy a központi telepítés egy részének egyidejűleg frissül. A két lépésben frissítés lehetővé teszi, hogy az alkalmazás tovább futnak a frissítés során. Azt is lehetővé teszi a visszaállítási központi telepítési hiba esetén. 
+A Kubernetesben való telepítésüket követően az alkalmazások egy új tárolórendszerkép- vagy rendszerképverzió megadásával frissíthetőek. Ilyen esetben a frissítés úgy lesz ütemezve, hogy egy adott pillanatban az üzemelő példánynak csak egy része legyen frissítve. Ennek az eltolásos frissítésnek köszönhetően az alkalmazás a frissítés során is tovább fut. Ezen kívül visszaállítási mechanizmust is biztosít az üzembe helyezés során fellépő hibák esetére. 
 
-Ebben az oktatóanyagban nyolc, hat része a mintaalkalmazás Azure szavazattal frissül. Feladatokat, a következők:
+Ebben az oktatóanyagban, amely egy nyolcrészes sorozat hatodik része, az Azure Vote alkalmazást frissítjük. A következő feladatokat fogjuk végrehajtani:
 
 > [!div class="checklist"]
-> * Az előtér-alkalmazás kódja frissítése
-> * Frissített tároló lemezkép létrehozása
-> * A tároló kép küldését Azure tároló beállításjegyzék
-> * A frissített tároló rendszerkép központi telepítése
+> * Az előtér-alkalmazás kódjának frissítése
+> * Frissített tárolórendszerkép létrehozása
+> * A tárolórendszerkép leküldése az Azure Container Registrybe
+> * A frissített tárolórendszerkép üzembe helyezése
 
-A következő útmutatókból Operations Management Suite a Kubernetes fürt figyelésére van konfigurálva.
+Az ezt követő oktatóanyagokban az Operations Management Suite csomagot fogjuk konfigurálni a Kubernetes-fürt monitorozására.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Az előző oktatóanyagok egy tároló lemezképet, az Azure-tároló beállításjegyzék feltöltött lemezkép és a létrehozott Kubernetes fürt alkalmazás lett csomagolva. Az alkalmazás ezután futtatták a Kubernetes fürtön. 
+Az előző oktatóanyagokban egy alkalmazást csomagoltunk egy tárolórendszerképbe, a rendszerképet feltöltöttük az Azure Container Registrybe, és létrehoztunk egy Kubernetes-fürtöt. Az alkalmazást ezután a Kubernetes-fürtön futtattuk. 
 
-Egy alkalmazás tárház lett is klónozott ide tartozik az alkalmazás forráskódjához, és ebben az oktatóanyagban használt előre létrehozott Docker Compose fájl. Győződjön meg arról, hogy létrehozta a tárház másolat, és hogy módosult-könyvtárak a klónozott könyvtárba. Belső út egy könyvtár nevű `azure-vote` és nevű fájlt `docker-compose.yaml`.
+Emellett klónoztunk egy alkalmazás-adattárat, amely tartalmazza az alkalmazás forráskódját, valamint a jelen oktatóanyagban használt, előre létrehozott Docker Compose-fájlt. Bizonyosodjon meg róla, hogy az adattár klónja valóban létrejött, és hogy a könyvtárakat átállította a klónozott könyvtárra. Itt egy `azure-vote` nevű könyvtár és egy `docker-compose.yaml` nevű fájl található.
 
-Ha még nem fejeződött be az alábbi lépéseket, és követéséhez, térjen vissza [oktatóanyag 1 – létrehozás tároló képek][aks-tutorial-prepare-app]. 
+Ha ezeket a lépéseket még nem hajtotta végre, és szeretné követni az oktatóanyagot, lépjen vissza az [1. oktatóanyag – Tárolórendszerképek létrehozása][aks-tutorial-prepare-app] részhez. 
 
-## <a name="update-application"></a>Alkalmazás frissítése
+## <a name="update-application"></a>Az alkalmazás frissítése
 
-Ebben az oktatóanyagban egy módosításakor az alkalmazást, és a Kubernetes fürt központi telepítése a frissített alkalmazás. 
+Ebben az oktatóanyagban módosítjuk az alkalmazást, és a frissített alkalmazást üzembe helyezzük a Kubernetes-fürtön. 
 
-Az alkalmazás forráskódjához található található a `azure-vote` könyvtár. Nyissa meg a `config_file.cfg` bármely kód vagy szöveges szerkesztővel fájlt. Ebben a példában `vi` szolgál.
+Az alkalmazás forráskódja az `azure-vote` könyvtárban található. Nyissa meg a `config_file.cfg` fájlt bármilyen kód- vagy szövegszerkesztővel. Ebben a példában a `vi` eszközt használjuk.
 
 ```console
 vi azure-vote/azure-vote/config_file.cfg
 ```
 
-Megváltoztatni az `VOTE1VALUE` és `VOTE2VALUE`, majd mentse a fájlt.
+Módosítsa a `VOTE1VALUE` és a `VOTE2VALUE` értékét, majd mentse a fájlt.
 
 ```console
 # UI Configurations
@@ -59,45 +59,45 @@ SHOWHOST = 'false'
 
 Mentse és zárja be a fájlt.
 
-## <a name="update-container-image"></a>Tároló lemezképek
+## <a name="update-container-image"></a>A tárolórendszerkép frissítése
 
-Használjon [docker compose] [ docker-compose] hozza létre az előtér-kép és a frissített alkalmazás futtatásához. A `--build` argumentum használata az utasítási kiadása a Docker Compose újra létre kell hoznia az alkalmazás-lemezképet.
+A [docker-compose][docker-compose] használatával hozza újból létre az előtérrendszerképet, és futtassa a frissített alkalmazást. A `--build` argumentummal lehet utasítani a Docker Compose-t, hogy hozza újra létre az alkalmazás rendszerképét.
 
 ```console
 docker-compose up --build -d
 ```
 
-## <a name="test-application-locally"></a>Alkalmazás helyi teszteléséhez
+## <a name="test-application-locally"></a>Az alkalmazás helyi tesztelése
 
-Tallózással keresse meg az frissített alkalmazást 8080.
+A böngészőben nyissa meg a http://localhost:8080 címet a frissített alkalmazás megtekintéséhez.
 
 ![Egy Azure-beli Kubernetes-fürt képe](media/container-service-kubernetes-tutorials/vote-app-updated.png)
 
-## <a name="tag-and-push-images"></a>Címke és leküldéses lemezképek
+## <a name="tag-and-push-images"></a>Rendszerképek címkézése és leküldése
 
-Címke a `azure-vote-front` a tároló beállításjegyzék loginServer lemezkép. 
+Címkézze fel az `azure-vote-front` rendszerképet a tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának nevével. 
 
-A bejelentkezési kiszolgáló nevét, a [az acr lista](/cli/azure/acr#list) parancsot.
+Kérje le a bejelentkezési kiszolgáló nevét az [az acr list](/cli/azure/acr#az_acr_list) paranccsal.
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-Használjon [docker címke] [ docker-tag] használatával címkézhesse a lemezképet. Cserélje le `<acrLoginServer>` az Azure-tároló beállításjegyzék bejelentkezési kiszolgáló neve vagy a nyilvános beállításjegyzék állomásnév. Is figyelje meg, hogy a kép verzióra frissül, és `redis-v2`.
+A [docker tag][docker-tag] paranccsal címkézze fel a rendszerképet. Az `<acrLoginServer>` helyére az Azure Container Registry bejelentkezési kiszolgáló nevét vagy a nyilvános beállításjegyzék gazdanevét írja. Figyelje meg, hogy a rendszerkép verziója a `redis-v2` verzióra frissült.
 
 ```console
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:redis-v2
 ```
 
-Használjon [docker leküldéses] [ docker-push] való feltölti a lemezképet a beállításjegyzékhez. Cserélje le `<acrLoginServer>` az Azure-tároló beállításjegyzék bejelentkezési kiszolgáló nevével.
+A [docker push][docker-push] paranccsal töltse fel a rendszerképet a beállításjegyzékbe. Az `<acrLoginServer>` helyére az Azure Container Registry bejelentkezési kiszolgálójának nevét írja be.
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:redis-v2
 ```
 
-## <a name="deploy-update-application"></a>Frissítés alkalmazás központi telepítése
+## <a name="deploy-update-application"></a>A frissített alkalmazás üzembe helyezése
 
-Maximális hasznos üzemidő biztosítása érdekében az alkalmazás fogyasztanak több példánya fut. Ez a konfiguráció ellenőrzése a [kubectl beolvasása pod] [ kubectl-get] parancsot.
+A rendelkezésre állás maximalizálása érdekében az alkalmazáspodot több példányban kell futtatni. Ezt a konfigurációt a [kubectl get pod][kubectl-get] paranccsal ellenőrizheti.
 
 ```
 kubectl get pod
@@ -113,20 +113,20 @@ azure-vote-front-233282510-dhrtr   1/1       Running   0          10m
 azure-vote-front-233282510-pqbfk   1/1       Running   0          10m
 ```
 
-Ha nem rendelkezik több három munkaállomás-csoporttal fut az azure-szavazat-első kép, méretezni a `azure-vote-front` központi telepítés.
+Amennyiben az azure-vote-front rendszerkép nem fut egyszerre több podon, méretezze át az `azure-vote-front` üzemi környezetet.
 
 
 ```azurecli
 kubectl scale --replicas=3 deployment/azure-vote-front
 ```
 
-Az alkalmazás frissítésére, használja a [kubectl set] [ kubectl-set] parancsot. Frissítés `<acrLoginServer>` a tároló beállításjegyzék bejelentkezési kiszolgáló vagy a gazdagép nevével.
+Az alkalmazás frissítéséhez használja a [kubectl set][kubectl-set] parancsot. Az `<acrLoginServer>` helyére a tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának nevét vagy gazdanevét írja.
 
 ```azurecli
 kubectl set image deployment azure-vote-front azure-vote-front=<acrLoginServer>/azure-vote-front:redis-v2
 ```
 
-Az üzemelő példány figyelése a [kubectl beolvasása pod] [ kubectl-get] parancsot. A frissített alkalmazás lett telepítve, mint a három munkaállomás-csoporttal lezárva, és újból létrehozza az új tároló lemezképpel.
+Az üzemelő példány monitorozásához használja a [kubectl get pod][kubectl-get] parancsot. A frissített alkalmazás üzembe helyezése során a rendszer a podokat megszünteti, majd az új tárolórendszerképpel újból létrehozza.
 
 ```azurecli
 kubectl get pod
@@ -142,32 +142,32 @@ azure-vote-front-1297194256-tptnx   1/1       Running   0         5m
 azure-vote-front-1297194256-zktw9   1/1       Terminating   0         1m
 ```
 
-## <a name="test-updated-application"></a>Frissített alkalmazás tesztelése
+## <a name="test-updated-application"></a>A frissített alkalmazás tesztelése
 
-A külső IP-címet az beszerzése a `azure-vote-front` szolgáltatás.
+Kérje le az `azure-vote-front` szolgáltatás külső IP-címét.
 
 ```azurecli
 kubectl get service azure-vote-front
 ```
 
-Tallózással keresse meg az IP-címet a frissített alkalmazás megtekintéséhez.
+A böngészőben nyissa meg ezt az IP-címet a frissített alkalmazás megtekintéséhez.
 
 ![Egy Azure-beli Kubernetes-fürt képe](media/container-service-kubernetes-tutorials/vote-app-updated-external.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban egy alkalmazás frissítése, és a frissítés Kubernetes fürtre megkezdődött. Befejeződtek a következő feladatokat:
+Az oktatóanyagban frissítettünk egy alkalmazást, és a frissítést kivezettük egy Kubernetes-fürtre. A következő feladatokat hajtottuk végre:
 
 > [!div class="checklist"]
-> * Frissítve az előtér-alkalmazás kódja
-> * Frissített tároló lemezkép létrehozása
-> * A tároló kép leküldött Azure tároló beállításjegyzék
-> * A frissített alkalmazás telepítve
+> * Frissítettük az előtér-alkalmazás kódját
+> * Létrehoztunk egy frissített tárolórendszerképet
+> * Leküldtük a tárolórendszerképet az Azure Container Registrybe
+> * Üzembe helyeztük a frissített alkalmazást
 
-Továbblépés figyelése az Operations Management Suite Kubernetes olvashat a következő oktatóanyag.
+Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan monitorozható a Kubernetes az Operations Management Suite segítségével.
 
 > [!div class="nextstepaction"]
-> [A Naplóelemzési figyelő Kubernetes][aks-tutorial-monitor]
+> [A Kubernetes monitorozása a Log Analytics használatával][aks-tutorial-monitor]
 
 <!-- LINKS - external -->
 [docker-compose]: https://docs.docker.com/compose/

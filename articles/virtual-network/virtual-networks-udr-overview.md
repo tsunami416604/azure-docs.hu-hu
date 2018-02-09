@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: 85be79261d5fc214ab4b46fa5d7b4d0a5b13db27
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: d05492425381649a7893b872c4b1c49e9f241b50
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="virtual-network-traffic-routing"></a>Virtuális hálózat forgalmának útválasztása
 
@@ -151,7 +151,7 @@ A 0.0.0.0/0 címelőtagú útvonal utasítást ad az Azure-nak arra vonatkozóan
 
 Ha felülbírálja a 0.0.0.0/0 címelőtagot, akkor az alhálózatról a virtuális hálózati átjárón vagy virtuális berendezésen keresztül kimenő forgalom mellett a következő változások következhetnek be az Azure alapértelmezett útválasztásában: 
 
-- Az Azure minden forgalmat az útvonalban megadott következő ugrási típus szerint küld ki. Ebbe beletartozik az Azure szolgáltatásainak nyilvános IP-címeire irányuló forgalom is. Amikor a 0.0.0.0/0 címelőtagú útvonal következő ugrásának típusa **Internet**, az alhálózatról érkező, az Azure-szolgáltatások nyilvános IP-címei felé irányuló adatforgalom sosem hagyja el az Azure gerinchálózatát. Ez független az Azure-régiótól, ahol a virtuális hálózat vagy az Azure-szolgáltatási erőforrás megtalálható. Ha azonban felhasználó által megadott vagy BGP-útvonalat hoz létre **Virtuális hálózati átjáró** vagy **Virtuális berendezés** következő ugrási típussal, minden adatforgalom (beleértve az Azure-szolgáltatások nyilvános IP-címeire irányuló adatforgalmat is), amelyhez nem engedélyezett [szolgáltatásvégpontokat](virtual-network-service-endpoints-overview.md), az útvonalban megadott következő ugrási típusba kerül. Ha szolgáltatásvégpontot engedélyezett egy szolgáltatáshoz, az ahhoz vezető adatforgalom nincs következő ugrástípusra terelve egy 0.0.0.0/0 címelőtagú útvonalban, mert a szolgáltatás címelőtagjai a szolgáltatásvégpontok engedélyezésekor az Azure által létrehozott útvonalban vannak megadva, azok pedig hosszabbak, mint a 0.0.0.0/0.
+- Az Azure minden forgalmat az útvonalban megadott következő ugrási típus szerint küld ki. Ebbe beletartozik az Azure szolgáltatásainak nyilvános IP-címeire irányuló forgalom is. Amikor a 0.0.0.0/0 címelőtagú útvonal következő ugrásának típusa **Internet**, az alhálózatról érkező, az Azure-szolgáltatások nyilvános IP-címei felé irányuló adatforgalom sosem hagyja el az Azure gerinchálózatát. Ez független az Azure-régiótól, ahol a virtuális hálózat vagy az Azure-szolgáltatási erőforrás megtalálható. Ha azonban felhasználó által megadott vagy BGP-útvonalat hoz létre **Virtuális hálózati átjáró** vagy **Virtuális berendezés** következő ugrási típussal, minden adatforgalom (beleértve az Azure-szolgáltatások nyilvános IP-címeire irányuló adatforgalmat is, amelyhez nem engedélyezett [szolgáltatásvégpontokat](virtual-network-service-endpoints-overview.md)) az útvonalban megadott következő ugrási típusba kerül. Ha szolgáltatásvégpontot engedélyezett egy szolgáltatáshoz, az ahhoz vezető adatforgalom nincs következő ugrástípusra terelve egy 0.0.0.0/0 címelőtagú útvonalban, mert a szolgáltatás címelőtagjai a szolgáltatásvégpontok engedélyezésekor az Azure által létrehozott útvonalban vannak megadva, azok pedig hosszabbak, mint a 0.0.0.0/0.
 - Már nem férhet közvetlenül hozzá az alhálózati erőforrásokhoz az internetről. Közvetett módon hozzáférhet az alhálózat erőforrásaihoz az internetről, ha a beérkező adatforgalom áthalad a következő ugrás típusa által megadott eszközön egy olyan útvonal esetében, amely a virtuális hálózatban lévő erőforrás elérését megelőzően a 0.0.0.0/0 címelőtaggal rendelkezik. Ha az útvonal a következő értékeket tartalmazza a következő ugrás típusára vonatkozóan:
     - **Virtuális berendezés**: A berendezésnek:
         - Elérhetőnek kell lennie az internetről;
@@ -161,7 +161,7 @@ Ha felülbírálja a 0.0.0.0/0 címelőtagot, akkor az alhálózatról a virtuá
         - Képesnek kell lennie a hálózati címek fordítására és továbbítására, vagy az adatforgalom a célerőforrásra történő átadására proxykapcsolaton keresztül, majd az internetre való visszairányítására. 
     - **Virtuális hálózati kapcsolat**: Ha az átjáró egy ExpressRoute virtuális hálózati átjáró, akkor egy internetre csatlakoztatott, helyszíni eszköz képes a hálózati címek fordítására és továbbítására, vagy az adatforgalom a célerőforrásra történő átadására proxykapcsolaton keresztül, az ExpressRoute [privát társviszony-létesítése](../expressroute/expressroute-circuit-peerings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-private-peering) révén. 
 
-  A [DMZ az Azure és a helyszíni adatközpont között](/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2fazure%2fvirtual-network%2ftoc.json) és a [DMZ az Azure és az internet között](/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2fazure%2fvirtual-network%2ftoc.json) témakörökkel foglalkozó cikkekben talál további információt a megvalósításról, ha az Azure és az internet közötti kommunikációhoz virtuális hálózati átjárókat és virtuális berendezéseket szeretne használni.
+  A [DMZ az Azure és a helyszíni adatközpont között](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2fazure%2fvirtual-network%2ftoc.json) és a [DMZ az Azure és az internet között](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2fazure%2fvirtual-network%2ftoc.json) témakörökkel foglalkozó cikkekben talál további információt a megvalósításról, ha az Azure és az internet közötti kommunikációhoz virtuális hálózati átjárókat és virtuális berendezéseket szeretne használni.
 
 ## <a name="routing-example"></a>Útválasztási példa
 
@@ -207,8 +207,8 @@ A képen látható *Subnet1* alhálózat útvonaltáblája a következő útvona
 |3   |Felhasználó   |Aktív |10.0.0.0/24         |Virtuális hálózat        |                   |Ezen belül: Subnet1|
 |4   |Alapértelmezett|Érvénytelen|10.1.0.0/16         |Társviszony létesítése virtuális hálózatok között           |                   |              |
 |5   |Alapértelmezett|Érvénytelen|10.2.0.0/16         |Társviszony létesítése virtuális hálózatok között           |                   |              |
-|6   |Felhasználó   |Aktív |10.1.0.0/16         |None                   |                   |Ide: VNet2-1-Elejtés|
-|7   |Felhasználó   |Aktív |10.2.0.0/16         |None                   |                   |Ide: VNet2-2-Elejtés|
+|6   |Felhasználó   |Aktív |10.1.0.0/16         |Nincs                   |                   |Ide: VNet2-1-Elejtés|
+|7   |Felhasználó   |Aktív |10.2.0.0/16         |Nincs                   |                   |Ide: VNet2-2-Elejtés|
 |8   |Alapértelmezett|Érvénytelen|10.10.0.0/16        |Virtuális hálózati átjáró|[X.X.X.X]          |              |
 |9   |Felhasználó   |Aktív |10.10.0.0/16        |Virtuális berendezés      |10.0.100.4         |A helyszínire    |
 |10  |Alapértelmezett|Aktív |[X.X.X.X]           |VirtualNetworkServiceEndpoint    |         |              |
@@ -241,9 +241,9 @@ A *Subnet2* a képen látható útvonaltáblája a következő útvonalakat tart
 |Alapértelmezett |Aktív |10.2.0.0/16         |Társviszony létesítése virtuális hálózatok között              |                   |
 |Alapértelmezett |Aktív |10.10.0.0/16        |Virtuális hálózati átjáró   |[X.X.X.X]          |
 |Alapértelmezett |Aktív |0.0.0.0/0           |Internet                  |                   |
-|Alapértelmezett |Aktív |10.0.0.0/8          |Nincs                      |                   |
-|Alapértelmezett |Aktív |100.64.0.0/10       |Nincs                      |                   |
-|Alapértelmezett |Aktív |172.16.0.0/12       |Nincs                      |                   |
+|Alapértelmezett |Aktív |10.0.0.0/8          |None                      |                   |
+|Alapértelmezett |Aktív |100.64.0.0/10       |None                      |                   |
+|Alapértelmezett |Aktív |172.16.0.0/12       |None                      |                   |
 |Alapértelmezett |Aktív |192.168.0.0/16      |Nincs                      |                   |
 
 A *Subnet2* útvonaltáblája tartalmazza az összes, Azure által létrehozott alapértelmezett útvonalat és a választható virtuális hálózatok közötti társviszony és a virtuális hálózati átjáró választható útvonalait. Az Azure a virtuális hálózaton lévő összes alhálózathoz hozzáadta a választható útvonalakat, amikor az átjáró és a társviszony a virtuális hálózathoz lett adva. Az Azure eltávolította a 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16 és 100.64.0.0/10 címelőtagok útvonalait a *Subnet1* útvonaltáblából, amikor a 0.0.0.0/0 címelőtag felhasználó által megadott útvonala a *Subnet1* alhálózathoz került.  

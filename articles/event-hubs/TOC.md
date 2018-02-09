@@ -1,18 +1,16 @@
 # Áttekintés
 ## [Mi az Event Hubs?](event-hubs-what-is-event-hubs.md)
 ## [Event Hubs-szolgáltatások](event-hubs-features.md)
-## [Gyakori kérdések](event-hubs-faq.md)
+## [GYIK](event-hubs-faq.md)
 
 # Első lépések
 ## [Eseményközpont létrehozása](event-hubs-create.md)
 ## Események küldése
 ### [.NET Standard](event-hubs-dotnet-standard-getstarted-send.md)
-### [.NET-keretrendszer](event-hubs-dotnet-framework-getstarted-send.md)
 ### [Java](event-hubs-java-get-started-send.md)
 ### [C](event-hubs-c-getstarted-send.md)
 ## Események fogadása
 ### [.NET Standard](event-hubs-dotnet-standard-getstarted-receive-eph.md)
-### [.NET-keretrendszer](event-hubs-dotnet-framework-getstarted-receive-eph.md)
 ### [Java](event-hubs-java-get-started-receive-eph.md)
 ### [Apache Storm](event-hubs-storm-getstarted-receive.md)
 ## Események rögzítése
@@ -30,6 +28,8 @@
 ### [Rendelkezésre állás és konzisztencia](event-hubs-availability-and-consistency.md)
 ### [Átviteli egységek automatikus skálázása](event-hubs-auto-inflate.md)
 ## Fejlesztés
+### [Események küldése a .NET-keretrendszer használatával](event-hubs-dotnet-framework-getstarted-send.md)
+### [Események fogadása a .NET-keretrendszer használatával](event-hubs-dotnet-framework-getstarted-receive-eph.md)
 ### [Elérhető API-k](event-hubs-api-overview.md)
 #### [.NET Standard](event-hubs-dotnet-standard-api-overview.md)
 #### [.NET-keretrendszer](event-hubs-dotnet-framework-api-overview.md)
@@ -60,7 +60,7 @@
 ## [Kivételek](event-hubs-messaging-exceptions.md)
 ## [Kvóták](event-hubs-quotas.md)
 
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=internet-of-things)
 ## [Kódminták](event-hubs-samples.md)
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/event-hubs/)

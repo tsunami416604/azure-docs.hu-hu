@@ -12,17 +12,17 @@ ms.devlang: tbd
 ms.topic: get-started-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 12/20/2017
+ms.date: 01/30/2018
 ms.author: sethm
-ms.openlocfilehash: cb4df0495420776ba2ff7b471c44c4ca3aa1dcff
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 09345b32e80008d4afe61078bd4d272fafe631d2
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>Névtér létrehozása egy eseményközponttal és a Rögzítés funkció engedélyezése sablon használatával
 
-Ez a cikk ismerteti egy olyan Azure Resource Manager-sablon használatát, amely egy Event Hubs-névteret hoz létre egy Event Hubs-példánnyal, valamint leírja az eseményközpont [Capture funkciójának](event-hubs-capture-overview.md) engedélyezését is. A cikk leírja továbbá, hogyan kell meghatározni, hogy mely erőforrások lesznek üzembe helyezve, és hogyan kell meghatározni az üzembe helyezés végrehajtásakor megadandó paramétereket. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően.
+Ez a cikk ismerteti egy olyan Azure Resource Manager-sablon használatát, amely egy [Event Hubs](event-hubs-what-is-event-hubs.md)-névteret hoz létre egy Event Hubs-példánnyal, valamint leírja az eseményközpont [Capture funkciójának](event-hubs-capture-overview.md) engedélyezését is. A cikk leírja továbbá, hogyan kell meghatározni, hogy mely erőforrások lesznek üzembe helyezve, és hogyan kell meghatározni az üzembe helyezés végrehajtásakor megadandó paramétereket. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően.
 
 Ez a cikk azt is bemutatja, hogyan adhatja meg, hogy a rendszer az Azure Storage-blobokban vagy egy Azure Data Lake Store-ban rögzítse az eseményeket, az Ön által kiválasztott célhely alapján.
 
@@ -42,11 +42,7 @@ Az összes sablon eléréséhez kattintson az alábbi GitHub-hivatkozásokra:
 
 ## <a name="what-will-you-deploy"></a>Mit fog üzembe helyezni?
 
-Ezzel a sablonnal egy Event Hubs-névteret helyez üzembe eseményközponttal, továbbá engedélyezi az [az Event Hubs Rögzítés funkcióját](event-hubs-capture-overview.md).
-
-Az [Event Hubs](event-hubs-what-is-event-hubs.md) egy eseményfeldolgozási szolgáltatás, amely az Azure-ba irányuló, nagy léptékű esemény- és telemetriabevitelt biztosít alacsony késéssel és nagy megbízhatósággal. Az Event Hubs Capture funkciója lehetővé teszi a streamelt Event Hubs-adatok automatikus továbbítását az Azure Blob Storage-ba vagy az Azure Data Lake Store-ba egy megadott időtartamon belül vagy az Ön által kiválasztott méretegységekben.
-
-Kattintson az alábbi gombra az Event Hubs Azure Storage-ba való rögzítésének engedélyezéséhez:
+Ezzel a sablonnal egy Event Hubs-névteret helyez üzembe eseményközponttal, továbbá engedélyezi az [az Event Hubs Rögzítés funkcióját](event-hubs-capture-overview.md). Az Event Hubs Capture funkciója lehetővé teszi a streamelt Event Hubs-adatok automatikus továbbítását az Azure Blob Storage-ba vagy az Azure Data Lake Store-ba egy megadott időtartamon belül vagy az Ön által kiválasztott méretegységekben. Kattintson az alábbi gombra az Event Hubs Azure Storage-ba való rögzítésének engedélyezéséhez:
 
 [![Üzembe helyezés az Azure-ban](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-eventhubs-create-namespace-and-enable-capture%2Fazuredeploy.json)
 
@@ -62,7 +58,7 @@ A sablon a következő paramétereket adja meg.
 
 ### <a name="eventhubnamespacename"></a>eventHubNamespaceName
 
-A létrehozni kívánt [Event Hubs-névtér](event-hubs-create.md) neve.
+A létrehozandó Event Hubs-névtér neve.
 
 ```json
 "eventHubNamespaceName":{  
@@ -75,7 +71,7 @@ A létrehozni kívánt [Event Hubs-névtér](event-hubs-create.md) neve.
 
 ### <a name="eventhubname"></a>eventHubName
 
-Az [Event Hubs-névtérben](event-hubs-create.md) létrehozott eseményközpont neve.
+Az Event Hubs-névtérben létrehozott eseményközpont neve.
 
 ```json
 "eventHubName":{  
@@ -423,7 +419,7 @@ azure config mode arm
 azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture-for-adls/azuredeploy.json][]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Event Hubs Rögzítés funkcióját az [Azure Portal](https://portal.azure.com) segítségével is konfigurálhatja. További információért tekintse meg az [Enable Event Hubs Capture using the Azure portal](event-hubs-capture-enable-through-portal.md) (Az Event Hubs Rögzítés funkciójának engedélyezése az Azure Portalon) című témakört.
 

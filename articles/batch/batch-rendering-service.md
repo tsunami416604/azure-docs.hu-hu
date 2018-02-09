@@ -2,17 +2,17 @@
 title: "Azure Batch Rendering szolgáltatás – felhőméretű renderelés | Microsoft Docs"
 description: "Renderelési feladatok végezhetők Azure-alapú virtuális gépeken, közvetlenül a Maya szoftverből és használatalapú fizetéssel."
 services: batch
-author: v-dotren
-manager: timlt
+author: dlepow
+manager: jeconnoc
 ms.service: batch
 ms.topic: hero-article
 ms.date: 09/14/2017
 ms.author: danlep
-ms.openlocfilehash: aab68b4275edc48e1726b26a7400bbfdd8d40d6f
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: f1aa8de26afd8b54746c706047a6b6b21cbf311c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="get-started-with-the-batch-rendering-service"></a>Ismerkedés a Batch Rendering szolgáltatással
 
@@ -25,12 +25,8 @@ A Maya és a 3ds Max szoftverekkel a [BatchLabs](https://github.com/Azure/BatchL
 
 A Batch Rendering szolgáltatás jelenleg a következő alkalmazások használatát támogatja:
 
-- Autodesk Maya
-- Autodesk 3ds Max
-- Autodesk Arnold for Maya
-- Autodesk Arnold for 3ds Max
-- Chaos Group V-Ray for Maya
-- Chaos Group V-Ray for 3ds Max
+•   Autodesk Maya I/O 2017 4. frissítés (17.4.5459-es verzió) •   Autodesk 3ds Max I/O 2018 1. frissítés (20.1.0.238-as verzió) •   Autodesk Arnold for Maya (5.0.1.1-es verzió) •   Autodesk Arnold for 3ds Max (1.0.836-os verzió) •   Chaos Group V-Ray for Maya (3.52.03-as verzió) •   Chaos Group V-Ray for 3ds Max (3.60.02-es verzió)
+
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -262,6 +258,6 @@ A kimenetek letöltéséhez az **Outputs** (Kimenetek) mező módosításával a
 
 A Maya alkalmazást bezárhatja, ez ugyanis nem zavarja meg a letöltési folyamatot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Batch szolgáltatással kapcsolatos további információkért lásd [a párhuzamos számítási feladatok Batch használatával történő futtatását](batch-technical-overview.md) ismertető cikket.

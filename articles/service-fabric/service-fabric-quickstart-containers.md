@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/02/2017
+ms.date: 01/25/18
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 9d3d15c63055f3eeb0e6cb292d75a8c42b33f7fe
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 4043c600dcc79cc85b66d66051416218507432af
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="deploy-a-service-fabric-windows-container-application-on-azure"></a>Windows-alapú Service Fabric-tároló üzembe helyezése az Azure-on
 Az Azure Service Fabric egy elosztott rendszerplatform, amely skálázható és megbízható mikroszolgáltatások és tárolók üzembe helyezésére és kezelésére szolgál. 
@@ -79,24 +79,44 @@ A tárolóport-gazdagépport leképezés konfigurálásához adjon meg egy `Port
 A cikk végén talál egy például szolgáló teljes ApplicationManifest.xml fájlt.
 
 ## <a name="create-a-cluster"></a>Fürt létrehozása
-Az alkalmazás Azure-fürtön történő üzembe helyezéséhez létrehozhat egy saját fürtöt, vagy használhat nyilvános fürtöt is.
+Az alkalmazás Azure-fürtön történő üzembe helyezése érdekében csatlakozhat egy nyilvános fürthöz, vagy [létrehozhat egy saját fürtöt az Azure-ban](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
 
-A nyilvános fürtök ingyenes, korlátozott időtartamú Azure Service Fabric-fürtök, amelyek futtatását a Service Fabric csapata végzi, és amelyeken bárki üzembe helyezhet alkalmazásokat, és megismerkedhet a platform használatával. A nyilvános fürt eléréséhez [kövesse az alábbi utasításokat](http://aka.ms/tryservicefabric).  
+A nyilvános fürtök ingyenes, korlátozott időtartamú Azure Service Fabric-fürtök, amelyek futtatását a Service Fabric csapata végzi, és amelyeken bárki üzembe helyezhet alkalmazásokat, és megismerkedhet a platform használatával. A fürt egy önaláírt tanúsítványt használ a csomópontok közötti, valamint a kliens és a csomópont közötti biztonsághoz. 
 
-További információk saját fürtök létrehozásáról: [Service Fabric-fürt létrehozása az Azure-on](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
+Jelentkezzen be, és [csatlakozzon egy Windows-fürthöz](http://aka.ms/tryservicefabric). A **PFX** hivatkozásra kattintva töltse le a PFX-tanúsítványt a számítógépre. A tanúsítványra és a **Kapcsolati végpont** értékére a következő lépésekben szükség lesz.
 
-Jegyezze fel a kapcsolati végpont értékét, mert azt használni fogja a következő lépésben.  
+![PFX és kapcsolati végpont](./media/service-fabric-quickstart-containers/party-cluster-cert.png)
+
+Egy Windows-számítógépen telepítse a PFX-et a *CurrentUser\My* tanúsítványtárolóba.
+
+```powershell
+PS C:\mycertificates> Import-PfxCertificate -FilePath .\party-cluster-873689604-client-cert.pfx -CertStoreLocation Cert:
+\CurrentUser\My
+
+
+  PSParentPath: Microsoft.PowerShell.Security\Certificate::CurrentUser\My
+
+Thumbprint                                Subject
+----------                                -------
+3B138D84C077C292579BA35E4410634E164075CD  CN=zwin7fh14scd.westus.cloudapp.azure.com
+```
+
+Jegyezze meg az ujjlenyomatot a következő lépéshez.  
 
 ## <a name="deploy-the-application-to-azure-using-visual-studio"></a>Alkalmazás üzembe helyezése az Azure-ban a Visual Studio használatával
 Az alkalmazást a létrehozása után telepítheti a fürtben, közvetlenül a Visual Studióból.
 
 A Solution Explorerben (Megoldáskezelőben) kattintson a jobb gombbal a **MyFirstContainer** elemre, majd kattintson a **Publish** (Közzététel) parancsra. Ekkor megjelenik a Publish (Közzététel) párbeszédpanel.
 
-![Publish (Közzététel) párbeszédpanel](./media/service-fabric-quickstart-dotnet/publish-app.png)
+Másolja be a **Kapcsolati végpont** értékét a nyilvános fürt lapjáról a **Connection Endpoint** (Kapcsolati végpont) mezőbe. Például: `zwin7fh14scd.westus.cloudapp.azure.com:19000`. Kattintson az **Advanced Connection Parameters** (Speciális kapcsolati paraméterek) lehetőségre, és töltse ki a következő információkat.  A *FindValue* és *ServerCertThumbprint* értékeknek egyezniük kell az előző lépésben telepített tanúsítvány ujjlenyomatával. 
 
-A **Connection Endpoint** (Kapcsolati végpont) mezőbe írja be a fürt kapcsolati végpontját. Nyilvános fürtre való regisztráláskor a kapcsolati végpont a böngészőben szerepel, például: `winh1x87d1d.westus.cloudapp.azure.com:19000`.  Kattintson a **Publish** (Közzététel) gombra az alkalmazás üzembe helyezéséhez.
+![Publish (Közzététel) párbeszédpanel](./media/service-fabric-quickstart-containers/publish-app.png)
 
-Nyisson meg egy böngészőt, majd navigáljon a http://winh1x87d1d.westus.cloudapp.azure.com:80 helyre. Ekkor az IIS alapértelmezett webhelyének kell megjelennie: ![Az IIS alapértelmezett webhelye][iis-default]
+Kattintson a **Publish** (Közzététel) gombra.
+
+A fürtben szereplő minden alkalmazásnak egyedi névvel kell rendelkeznie.  A nyilvános fürtök azonban nyilvános és megosztott környezetek, így ütközés léphet fel egy meglévő alkalmazással.  Névütközés esetén nevezze át a Visual Studio-projektet, és végezze el újra az üzembe helyezést.
+
+Nyisson meg egy böngészőt, majd navigáljon a http://zwin7fh14scd.westus.cloudapp.azure.com:80 helyre. Ekkor az IIS alapértelmezett webhelyének kell megjelennie: ![Az IIS alapértelmezett webhelye][iis-default]
 
 ## <a name="complete-example-service-fabric-application-and-service-manifests"></a>Példa teljes Service Fabric-alkalmazásra és szolgáltatásjegyzékre
 Itt találja a jelen rövid útmutatóban használt teljes szolgáltatás- és alkalmazásjegyzéket.
@@ -167,6 +187,7 @@ Itt találja a jelen rövid útmutatóban használt teljes szolgáltatás- és a
         <PortBinding ContainerPort="80" EndpointRef="MyContainerServiceTypeEndpoint"/>
       </ContainerHostPolicies>
     </Policies>
+
   </ServiceManifestImport>
   <DefaultServices>
     <!-- The section below creates instances of service types, when an instance of this 
@@ -183,7 +204,7 @@ Itt találja a jelen rövid útmutatóban használt teljes szolgáltatás- és a
 </ApplicationManifest>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 > [!div class="checklist"]
 > * Docker-rendszerképtároló becsomagolása

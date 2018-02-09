@@ -1,6 +1,6 @@
 ---
-title: "Azure Tárolószolgáltatás útmutató – DC/OS kezelése"
-description: "Azure Tárolószolgáltatás útmutató – DC/OS kezelése"
+title: "Azure Container Service-oktatóanyag – A DC/OS kezelése"
+description: "Azure Container Service-oktatóanyag – A DC/OS kezelése"
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,31 +9,31 @@ ms.topic: tutorial
 ms.date: 07/17/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 0c58bd764cf0fdacd55675f8343c6e7481a11823
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
-ms.translationtype: MT
+ms.openlocfilehash: 04b5d158c636668a726e046e4f471b452e31ff0d
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="azure-container-service-tutorial---manage-dcos"></a>Azure Tárolószolgáltatás útmutató – DC/OS kezelése
+# <a name="azure-container-service-tutorial---manage-dcos"></a>Azure Container Service-oktatóanyag – A DC/OS kezelése
 
-A DC/OS elosztott platformot kínál a futó modern és indexelése alkalmazások. Teljes Azure Tárolószolgáltatás egy éles készen áll a DC/OS-fürtben üzembe, akkor egyszerűen és gyorsan. A gyors üzembe helyezési részletek szükséges alapvető lépések a DC/OS-fürtről és futtatási alapvető munkaterhelés központi telepítése.
+A DC/OS elosztott platformot nyújt a modern és tárolóalapú alkalmazások futtatásához. Az Azure Container Service használatával egyszerűen és gyorsan építhető ki üzemkész DC/OS fürt. Ez a rövid útmutató a DC/OS fürt üzembe helyezéséhez és az alapvető számítási feladatok futtatásához szükséges alaplépéseket részletezi.
 
 > [!div class="checklist"]
-> * Az ACS a DC/OS-fürt létrehozása
+> * ACS DC/OS fürt létrehozása
 > * Csatlakozás a fürthöz
-> * A DC/OS parancssori felület telepítése
-> * A fürt alkalmazás központi telepítése
-> * Egy alkalmazás méretezni a fürtön
-> * A DC/OS-fürt csomópontjai méretezése
+> * A DC/OS parancssori felületének telepítése
+> * Alkalmazás üzembe helyezése a fürtön
+> * Alkalmazás méretezése a fürtön
+> * A DC/OS fürt csomópontjainak méretezése
 > * Alapszintű DC/OS-kezelés
-> * A DC/OS-fürt törlése
+> * A DC/OS fürt törlése
 
 Az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
 
-## <a name="create-dcos-cluster"></a>A DC/OS-fürt létrehozása
+## <a name="create-dcos-cluster"></a>DC/OS-fürt létrehozása
 
-Először hozzon létre egy erőforráscsoport a [az csoport létrehozása](/cli/azure/group#create) parancsot. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
+Első lépésként hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
 
 A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *westeurope* helyen.
 
@@ -41,9 +41,9 @@ A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscso
 az group create --name myResourceGroup --location westeurope
 ```
 
-Ezután hozzon létre a DC/OS fürtben a [az acs létre](/cli/azure/acs#create) parancsot.
+Ezután hozzon létre egy DC/OS fürtöt az [az acs create](/cli/azure/acs#az_acs_create) paranccsal.
 
-Az alábbi példakód létrehozza a DC/OS-fürt nevű *myDCOSCluster* és SSH-kulcsok létrehozása, ha még nem léteznek. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.  
+Az alábbi példa egy *myDCOSCluster* nevű DC/OS fürtöt és SSH-kulcsokat hoz létre, ha azok még nem léteznek. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.  
 
 ```azurecli
 az acs create \
@@ -53,31 +53,31 @@ az acs create \
   --generate-ssh-keys
 ```
 
-Pár perc múlva a parancs befejeződik, és a központi telepítés információt ad vissza.
+Néhány perc múlva befejeződik a parancs végrehajtása, és visszaadja az üzembe helyezéssel kapcsolatos adatokat.
 
-## <a name="connect-to-dcos-cluster"></a>Csatlakozzon a DC/OS-fürt
+## <a name="connect-to-dcos-cluster"></a>Csatlakozás DC/OS fürthöz
 
-A DC/OS-fürt létrehozása után célszerű egy SSH-alagúton keresztül fér hozzá. A következő parancsot a DC/OS-főkiszolgáló nyilvános IP-címét adja vissza. Az IP-cím egy változó tárolja és használja a következő lépésben.
+A DC/OS fürt létrehozása után az SSH-alagúton keresztül érhető el. Futtassa a következő parancsot a fő DC/OS nyilvános IP-címének visszaadásához. Ez az IP-cím változóban van tárolva, és a következő lépésben használjuk.
 
 ```azurecli
 ip=$(az network public-ip list --resource-group myResourceGroup --query "[?contains(name,'dcos-master')].[ipAddress]" -o tsv)
 ```
 
-Az SSH-alagút létrehozásához a következő parancsot, és kövesse a képernyőn megjelenő utasításokat. Ha a 80-as port már használatban van, a parancs sikertelen lesz. Frissítse a bújtatott port nincs a használatát, például a `85:localhost:80`. 
+Az SSH-alagút létrehozásához futtassa a következő parancsot, és kövesse a képernyőn látható utasításokat. Ha a 80-as port már használatban van, a parancs meghiúsul. Frissítse a bújtatott portot egy nem használtra, például a következőre: `85:localhost:80`. 
 
 ```azurecli
 sudo ssh -i ~/.ssh/id_rsa -fNL 80:localhost:80 -p 2200 azureuser@$ip
 ```
 
-## <a name="install-dcos-cli"></a>DC/OS parancssori felület telepítése
+## <a name="install-dcos-cli"></a>A DC/OS parancssori felület telepítése
 
-A DC/OS parancssori felület használatával telepítse a [az acs vezénylőtípusú install-cli](/azure/acs/dcos#install-cli) parancsot. Ha Azure CloudShell használ, a DC/OS parancssori felület már telepítve van. Ha az Azure parancssori felület macOS vagy Linux rendszer használata esetén szükség lehet a sudo futtassa a parancsot.
+Telepítse a DC/OS parancssori felületet az [az acs dcos install-cli](/azure/acs/dcos#install-cli) paranccsal. Az Azure Cloud Shell használata esetén a DC/OS parancssori felület már telepítve van. Ha az Azure CLI felületet macOS vagy Linux rendszeren futtatja, előfordulhat, hogy sudo módban kell futtatnia a parancsot.
 
 ```azurecli
 az acs dcos install-cli
 ```
 
-Megelőzően a parancssori felület használható a fürt, az SSH-alagút használatára kell konfigurálni. Ehhez futtassa a következő parancsot, és beállítja a port, ha szükséges.
+A parancssori felületet fürttel való használata előtt konfigurálnia kell azt az SSH-alagút használatához. Ehhez futtassa az alábbi parancsot, szükség esetén a port módosításával.
 
 ```azurecli
 dcos config set core.dcos_url http://localhost
@@ -85,7 +85,7 @@ dcos config set core.dcos_url http://localhost
 
 ## <a name="run-an-application"></a>Alkalmazás futtatása
 
-Az alapértelmezett ütemezés mechanizmus egy ACS DC/OS-fürt Marathon. Marathon olyan alkalmazást, és a DC/OS-fürtön alkalmazás állapota kezelésére szolgál. Ütemezés marathon egy alkalmazás, hozzon létre egy fájlt **marathon-app.json**, és a következő tartalom másolása. 
+Az ACS DC/OS fürtök alapértelmezett ütemezési mechanizmusa a Marathon. A Marathon az alkalmazások elindítására és az alkalmazás állapotának kezelésére szolgál a DC/OS fürtön. Ha a Marathonon keresztül szeretne ütemezni egy alkalmazást, hozza létre a **marathon-app.json** nevű fájlt, és másolja bele a következő tartalmakat. 
 
 ```json
 {
@@ -113,28 +113,28 @@ Az alapértelmezett ütemezés mechanizmus egy ACS DC/OS-fürt Marathon. Maratho
 }
 ```
 
-A következő parancsot az alkalmazás futtatásához a DC/OS-fürtön ütemezni.
+Futtassa a következő parancsot az alkalmazás DC/OS fürttel való futásának ütemezéséhez.
 
 ```azurecli
 dcos marathon app add marathon-app.json
 ```
 
-Az alkalmazás központi telepítési állapotának megtekintéséhez futtassa a következő parancsot.
+Az alkalmazás üzembe helyezési állapotának megtekintéséhez futtassa a következő parancsot.
 
 ```azurecli
 dcos marathon app list
 ```
 
-Ha a **feladatok** oszlopérték vált *0 vagy 1* való *1/1*, alkalmazás központi telepítése befejeződött.
+Amikor a **TASKS** (Feladatok) oszlop értéke *0/1* értékről *1/1* értékre vált, az alkalmazás üzembe helyezése befejeződött.
 
 ```azurecli
 ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD   
 /test   32   1     0/1    ---       ---      False      DOCKER   None
 ```
 
-## <a name="scale-marathon-application"></a>A Marathon alkalmazás skálázása
+## <a name="scale-marathon-application"></a>A Marathon-alkalmazás méretezése
 
-Az előző példában egy egypéldányos alkalmazás lett létrehozva. A központi telepítés, hogy az alkalmazás három példányainak frissítéséhez nyissa meg a **marathon-app.json** fájlt, és frissítse a példányt tulajdonságát a 3.
+Az előző példában egy egypéldányos alkalmazást hoztunk létre. Ahhoz, hogy frissíthessük az üzemi környezetet, hogy az alkalmazás három példányban legyen elérhető, nyissa meg a **marathon-app.json** fájlt, és a Példány tulajdonság értékét módosítsa 3-ra.
 
 ```json
 {
@@ -162,32 +162,32 @@ Az előző példában egy egypéldányos alkalmazás lett létrehozva. A közpon
 }
 ```
 
-Az alkalmazás használatával frissítse a `dcos marathon app update` parancsot.
+Frissítse az alkalmazást a `dcos marathon app update` parancs használatával.
 
 ```azurecli
 dcos marathon app update demo-app-private < marathon-app.json
 ```
 
-Az alkalmazás központi telepítési állapotának megtekintéséhez futtassa a következő parancsot.
+Az alkalmazás üzembe helyezési állapotának megtekintéséhez futtassa a következő parancsot.
 
 ```azurecli
 dcos marathon app list
 ```
 
-Ha a **feladatok** oszlopérték vált *1/3* való *3/1*, alkalmazás központi telepítése befejeződött.
+Amikor a **TASKS** (Feladatok) oszlop értéke *1/3* értékről *3/1* értékre vált, az alkalmazás üzembe helyezése befejeződött.
 
 ```azurecli
 ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD   
 /test   32   1     1/3    ---       ---      False      DOCKER   None
 ```
 
-## <a name="run-internet-accessible-app"></a>Elérhető az internet-alkalmazás futtatása
+## <a name="run-internet-accessible-app"></a>Az internetről elérhető alkalmazás futtatása
 
-Az ACS DC/OS fürtben két csomópont-készlet, az interneten elérhető egy nyilvános és egy saját, amely nem érhető el az interneten áll. Alapértelmezés szerint az utolsó példában használt a titkos csomópontok.
+Az ACS DC/OS fürt két csomópontkészletet tartalmaz: az egyik nyilvános és elérhető az interneten keresztül, a másik pedig privát, és az interneten keresztül nem érhető el. Az alapértelmezett készlet a privát csomópontoké, azt használtuk a legutóbbi példában.
 
-Ahhoz, hogy az alkalmazás elérhető az interneten, azok a nyilvános csomópont-készlethez. Ehhez az szükséges, hogy a `acceptedResourceRoles` érték objektum `slave_public`.
+Ahhoz, hogy az alkalmazás elérhető legyen az interneten, a nyilvános csomópontkészleten kell üzembe helyezni. Ehhez az `acceptedResourceRoles` objektumhoz a `slave_public` értéket kell rendelni.
 
-Hozzon létre egy fájlt **nginx-public.json** és a következő tartalom másolása.
+Hozzon létre egy fájlt **nginx-public.json** néven, és másolja bele a következő tartalmat.
 
 ```json
 {
@@ -219,60 +219,60 @@ Hozzon létre egy fájlt **nginx-public.json** és a következő tartalom másol
 }
 ```
 
-A következő parancsot az alkalmazás futtatásához a DC/OS-fürtön ütemezni.
+Futtassa a következő parancsot az alkalmazás DC/OS fürttel való futásának ütemezéséhez.
 
 ```azurecli 
 dcos marathon app add nginx-public.json
 ```
 
-A nyilvános IP-cím a DC/OS nyilvános fürt ügynökök beolvasni.
+Szerezze be a DC/OS nyilvános fürtügynökök nyilvános IP-címét.
 
 ```azurecli 
 az network public-ip list --resource-group myResourceGroup --query "[?contains(name,'dcos-agent')].[ipAddress]" -o tsv
 ```
 
-Az alapértelmezett NGINX hely keresse meg ezt a címet adja vissza.
+Ha erre a címre ugrik, a rendszer visszaadja az alapértelmezett NGINX helyet.
 
 ![NGINX](./media/container-service-dcos-manage-tutorial/nginx.png)
 
-## <a name="scale-dcos-cluster"></a>Skála DC/OS-fürtről
+## <a name="scale-dcos-cluster"></a>DC/OS fürt méretezése
 
-A fenti példákban egy alkalmazás több példánya lett méretezhető. A DC/OS-infrastruktúra is méretezhetők, amelyek több vagy kevesebb számítási kapacitást biztosítanak. Ez a lépés a [az acs méretezése]() parancsot. 
+Az előzőekben egy alkalmazást többpéldányosra méreteztünk. A DC/OS infrastruktúra is méretezhető attól függően, hogy több vagy kevesebb számítási kapacitásra van-e szükség. Ez a művelet az [az acs scale]() paranccsal hajtható végre. 
 
-A DC/OS-ügynökök jelenlegi száma megjelenítéséhez használja a [az acs megjelenítése](/cli/azure/acs#show) parancsot.
+A DC/OS ügynökök aktuális számának megtekintéséhez használja az [az acs show](/cli/azure/acs#az_acs_show) parancsot.
 
 ```azurecli
 az acs show --resource-group myResourceGroup --name myDCOSCluster --query "agentPoolProfiles[0].count"
 ```
 
-5 számának növeléséhez használja a [az acs méretezése](/cli/azure/acs#scale) parancsot. 
+Növelje a számot 5-re az [az acs scale](/cli/azure/acs#az_acs_scale) paranccsal. 
 
 ```azurecli
 az acs scale --resource-group myResourceGroup --name myDCOSCluster --new-agent-count 5
 ```
 
-## <a name="delete-dcos-cluster"></a>A DC/OS-fürt törlése
+## <a name="delete-dcos-cluster"></a>DC/OS fürt törlése
 
-Ha már nincs szüksége, használhatja a [az csoport törlése](/cli/azure/group#delete) parancs eltávolítja az erőforráscsoportot, a DC/OS-fürtről, és az összes kapcsolódó erőforrásokat.
+Ha már nincs rá szükség, az [az group delete](/cli/azure/group#az_group_delete) paranccsal eltávolítható az erőforráscsoport, a DC/OS fürt és az összes kapcsolódó erőforrás.
 
 ```azurecli 
 az group delete --name myResourceGroup --no-wait
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóprogramban megtanulhatta, kapcsolatos alapvető DC/OS fájlkezelési feladat, többek között a következőket. 
+Ebben az oktatóanyagban a DC/OS alapvető kezelési feladataival ismerkedtünk meg: 
 
 > [!div class="checklist"]
-> * Az ACS a DC/OS-fürt létrehozása
+> * ACS DC/OS fürt létrehozása
 > * Csatlakozás a fürthöz
-> * A DC/OS parancssori felület telepítése
-> * A fürt alkalmazás központi telepítése
-> * Egy alkalmazás méretezni a fürtön
-> * A DC/OS-fürt csomópontjai méretezése
-> * A DC/OS-fürt törlése
+> * A DC/OS parancssori felületének telepítése
+> * Alkalmazás üzembe helyezése a fürtön
+> * Alkalmazás méretezése a fürtön
+> * A DC/OS fürt csomópontjainak méretezése
+> * A DC/OS fürt törlése
 
-Továbblépés a következő oktatóanyag terheléselosztási a DC/OS Azure alkalmazás megismeréséhez. 
+Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan osztható el az alkalmazások terhelése a DC/OS-ben az Azure rendszerében. 
 
 > [!div class="nextstepaction"]
 > [Terheléselosztási alkalmazások](container-service-load-balancing.md)

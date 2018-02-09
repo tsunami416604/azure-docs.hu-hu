@@ -1,6 +1,6 @@
 ---
-title: "A Polybase adatbetöltés - Azure Storage-Blobból az Azure SQL Data Warehouse |} Microsoft Docs"
-description: "Az Azure portál és az SQL Server Management Studio New York Taxicab adatok betöltése az Azure blob storage az Azure SQL Data Warehouse alkalmazó oktatóanyagot."
+title: "Oktatóanyag: Polybase-adatbetöltés az Azure Storage Blobból az Azure SQL Data Warehouse-ba | Microsoft Docs"
+description: "Oktatóanyag, amelyben az Azure Portal és az SQL Server Management Studio használatával töltheti be New York-i taxik adatait az Azure Blob Storage-ból az Azure SQL Data Warehouse-ba."
 services: sql-data-warehouse
 documentationcenter: 
 author: ckarst
@@ -17,46 +17,46 @@ ms.workload: Active
 ms.date: 11/17/2017
 ms.author: cakarst
 ms.reviewer: barbkess
-ms.openlocfilehash: 64315945d977ba912634eb626491a4513def1556
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
-ms.translationtype: MT
+ms.openlocfilehash: a1f504f5bb728ce080e51678d44ed4eef4c3faa7
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="use-polybase-to-load-data-from-azure-blob-storage-to-azure-sql-data-warehouse"></a>Adatok betöltése az Azure blob storage az Azure SQL Data Warehouse PolyBase segítségével
+# <a name="tutorial-use-polybase-to-load-data-from-azure-blob-storage-to-azure-sql-data-warehouse"></a>Oktatóanyag: Adatok betöltése az Azure Blob Storage-ból az Azure SQL Data Warehouse-ba a PolyBase használatával.
 
-A PolyBase betöltése az SQL Data Warehouse-adatok beolvasása technológia normál. Ebben az oktatóanyagban a PolyBase New York Taxicab adatok betöltése az Azure blob storage az Azure SQL Data Warehouse használhatja. Az oktatóprogram a [Azure-portálon](https://portal.azure.com) és [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS) számára: 
+A PolyBase az adatok SQL Data Warehouse-ba történő beolvasásához használt standard betöltési technológia. Ebben az oktatóanyagban a PolyBase használatával New York-i taxik adatait töltheti be az Azure Blob Storage-ból az Azure SQL Data Warehouse-ba. Az oktatóanyag az [Azure Portalt](https://portal.azure.com) és az [SQL Server Management Studiót](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS) használja a következőkhöz: 
 
 > [!div class="checklist"]
-> * A data warehouse létrehozása az Azure-portálon
-> * Állítson be egy kiszolgálószintű tűzfalszabályt az Azure-portálon
-> * Csatlakozás az adatraktár ssms alkalmazásával
-> * Adatok betöltése a kijelölt felhasználó létrehozása
-> * Az adatok külső táblák létrehozása az Azure blob storage
-> * Adatok betöltése az adatraktár az az CTAS T-SQL-utasítás használatával
-> * Mint azt tölt adatok állapotának megtekintése
-> * Statisztikák létrehozása az újonnan betöltött adatokról
+> * Adattárház létrehozása az Azure Portalon
+> * Kiszolgálószintű tűzfalszabály létrehozása az Azure Portalon
+> * Csatlakozás az adattárházhoz az SSMS használatával
+> * Adatok betöltésére kijelölt felhasználó létrehozása
+> * Külső táblák létrehozása az Azure Blob Storage-ban található adatokhoz
+> * Adatok betöltése az adattárházba a CTAS T-SQL-utasítás használatával
+> * Az adatok állapotának megtekintése betöltés közben
+> * Statisztikák készítése az újonnan betöltött adatokról
 
-Ha nem rendelkezik Azure-előfizetéssel, [ingyenes fiók létrehozását](https://azure.microsoft.com/free/) megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez az oktatóanyag megkezdése előtt töltse le és telepítse a legújabb verzióját [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS).
+Az oktatóanyag megkezdése előtt töltse le és telepítse az [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS) legújabb verzióját.
 
 
 ## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 
 Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
-## <a name="create-a-blank-sql-data-warehouse"></a>Üres SQL data warehouse létrehozása
+## <a name="create-a-blank-sql-data-warehouse"></a>Üres SQL-adattárház létrehozása
 
 Az Azure SQL Data Warehouse [számítási erőforrások](performance-tiers.md) egy meghatározott készletével együtt jön létre. Az adatbázis egy [Azure-erőforráscsoporton](../azure-resource-manager/resource-group-overview.md) belül egy [Azure SQL logikai kiszolgálón](../sql-database/sql-database-features.md) jön létre. 
 
-Kövesse az alábbi lépéseket egy üres SQL data warehouse létrehozásához. 
+Kövesse az alábbi lépéseket egy üres SQL-adattárház létrehozásához. 
 
 1. Kattintson az Azure Portal bal felső sarkában az **Új** gombra.
 
-2. Az **Új** oldalon válassza az **Adatbázisok** elemet, majd az **Új** oldal **Kiemelt** területén válassza az **SQL Data Warehouse** lehetőséget.
+2. Az **Új** oldalon válassza az **Adatbázisok** elemet, majd az **Új **oldal** Kiemelt **területén válassza az** SQL Data Warehouse** lehetőséget.
 
     ![adattárház létrehozása](media/load-data-from-azure-blob-storage-using-polybase/create-empty-data-warehouse.png)
 
@@ -67,7 +67,7 @@ Kövesse az alábbi lépéseket egy üres SQL data warehouse létrehozásához.
    | **Adatbázis neve** | mySampleDataWarehouse | Az érvényes adatbázisnevekkel kapcsolatban lásd az [adatbázis-azonosítókat](/sql/relational-databases/databases/database-identifiers) ismertető cikket. | 
    | **Előfizetés** | Az Ön előfizetése  | Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.windowsazure.com/Subscriptions) ismertető cikket. |
    | **Erőforráscsoport** | myResourceGroup | Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket. |
-   | **Forrás kiválasztása** | Az üres adatbázis | Meghatározza, hogy egy üres adatbázis létrehozásához. Megjegyzés: Az adattárház az adatbázisok egy típusa.|
+   | **Forrás kiválasztása** | Üres adatbázis | Megköveteli egy üres adatbázis létrehozását. Megjegyzés: Az adattárház az adatbázisok egy típusa.|
 
     ![adattárház létrehozása](media/load-data-from-azure-blob-storage-using-polybase/create-data-warehouse.png)
 
@@ -84,14 +84,14 @@ Kövesse az alábbi lépéseket egy üres SQL data warehouse létrehozásához.
 
 5. Kattintson a **Kiválasztás** gombra.
 
-6. Kattintson a **teljesítményszinttel** -e az adatraktár rugalmasság vagy számítási van optimalizálva, és adatraktár-egységek számának megadásához. 
+6. Kattintson a **Teljesítményszint** elemre az adattárházegységek számának, valamint annak meghatározásához, hogy az adattárház rugalmasságra vagy számítási feladatokra legyen optimalizálva. 
 
-7. A jelen oktatóanyag esetében válassza ki a **rugalmasság optimalizálva** szolgáltatási rétegben. A csúszka alapértelmezés szerint a **DW400** értéken áll.  Csúsztassa fel és le, hogy kipróbálja a működését a gyakorlatban. 
+7. A jelen oktatóanyag esetében válassza a **Rugalmasságra optimalizált** szolgáltatásszintet. A csúszka alapértelmezés szerint a **DW400** értéken áll.  Csúsztassa fel és le, hogy kipróbálja a működését a gyakorlatban. 
 
     ![teljesítmény konfigurálása](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
 8. Kattintson az **Alkalmaz** gombra.
-9. Az SQL Data Warehouse lapon válassza a **rendezés** az üres adatbázis. A jelen oktatóanyag esetében használja az alapértelmezett értéket. Rendezések kapcsolatos további információkért lásd: [rendezések](/sql/t-sql/statements/collations.md)
+9. Az SQL Data Warehouse lapon válasszon **rendezést** az üres adatbázishoz. A jelen oktatóanyag esetében használja az alapértelmezett értéket. A rendezésekkel kapcsolatos további információkért lásd: [Rendezések](/sql/t-sql/statements/collations.md)
 
 11. Most, hogy kitöltötte az SQL Database űrlapját, kattintson a **Létrehozás** gombra az adatbázis létrehozásához. Az üzembe helyezés eltarthat néhány percig. 
 
@@ -111,11 +111,11 @@ Az SQL Data Warehouse szolgáltatás egy tűzfalat hoz létre a kiszolgáló szi
 
 1. Az üzembe helyezés befejezése után kattintson az **SQL-adatbázisok** elemre a bal oldali menüben, majd kattintson a **mySampleDatabase** adatbázisra az **SQL-adatbázisok** lapon. Megnyílik az adatbázis áttekintőoldala, amelyen látható a teljes kiszolgálónév (például: **mynewserver-20171113.database.windows.net**), valamint a további konfigurálható beállítások. 
 
-2. Másolja le ezt a teljes kiszolgálónevet, mert a későbbi rövid útmutatók során szüksége lesz rá a kiszolgálóhoz és az adatbázisokhoz való csatlakozáshoz. Kattintson a kiszolgáló nevére kiszolgáló beállításainak megnyitásához.
+2. Másolja le ezt a teljes kiszolgálónevet, mert a későbbi rövid útmutatók során szüksége lesz rá a kiszolgálóhoz és az adatbázisokhoz való csatlakozáshoz. Ezután kattintson a kiszolgáló nevére a kiszolgáló beállításainak megnyitásához.
 
     ![kiszolgálónév keresése](media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png) 
 
-3. Kattintson a kiszolgáló nevét a kiszolgáló beállításainak megnyitásához.
+3. A kiszolgáló beállításainak megnyitásához kattintson a kiszolgálónévre.
 
     ![kiszolgáló beállításai](media/load-data-from-azure-blob-storage-using-polybase/server-settings.png) 
 
@@ -136,7 +136,7 @@ Mostantól csatlakozhat az SQL-kiszolgálóhoz és annak adattárházaihoz errő
 
 ## <a name="get-the-fully-qualified-server-name"></a>A teljes kiszolgálónév lekérése
 
-Kérje le az SQL-kiszolgáló teljes kiszolgálónevét az Azure Portalon. Később szüksége lesz a teljes nevet a kiszolgálóhoz való csatlakozáskor.
+Kérje le az SQL-kiszolgáló teljes kiszolgálónevét az Azure Portalon. Később ezt a teljes nevet fogja majd használni a kiszolgálóhoz való kapcsolódás során.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. Válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd kattintson az új adatbázisra az **SQL-adatbázisok** oldalon. 
@@ -155,7 +155,7 @@ Ebben a részben az [SQL Server Management Studio](/sql/ssms/download-sql-server
     | Beállítás      | Ajánlott érték | Leírás | 
     | ------------ | --------------- | ----------- | 
     | Kiszolgáló típusa | Adatbázismotor | Kötelezően megadandó érték |
-    | Kiszolgálónév | A teljes kiszolgálónév | A névnek kell lennie, például ehhez hasonló: **mynewserver-20171113.database.windows.net**. |
+    | Kiszolgálónév | A teljes kiszolgálónév | A névnek a következőhöz hasonlónak kell lennie:  **mynewserver-20171113.database.windows.net**. |
     | Hitelesítés | SQL Server-hitelesítés | Az SQL-hitelesítés az egyetlen hitelesítési típus, amelyet ebben az oktatóanyagban konfiguráltunk. |
     | Bejelentkezés | A kiszolgálói rendszergazdai fiók | Ez az a fiók, amely a kiszolgáló létrehozásakor lett megadva. |
     | Jelszó | A kiszolgálói rendszergazdai fiók jelszava | Ezt a jelszót adta meg a kiszolgáló létrehozásakor. |
@@ -164,23 +164,23 @@ Ebben a részben az [SQL Server Management Studio](/sql/ssms/download-sql-server
 
 4. Kattintson a **Connect** (Csatlakozás) gombra. Megnyílik az Object Explorer ablak az SSMS-ben. 
 
-5. Az Object Explorerben bontsa ki a **Databases** (Adatbázisok) elemet. Majd **rendszeradatbázisokban** és **fő** a objektumok megtekintéséhez a főadatbázisban.  Bontsa ki a **mySampleDatabase** az új adatbázis a objektumok megtekintéséhez.
+5. Az Object Explorerben bontsa ki a **Databases** (Adatbázisok) elemet. Ezután bontsa ki a **System databases** (Rendszeradatbázisok) és a **master** elemeket az objektumok megtekintéséhez a master adatbázisban.  Bontsa ki a **mySampleDatabase** csomópontot az új adatbázisban található objektumok megtekintéséhez.
 
     ![adatbázis-objektumok](media/load-data-from-azure-blob-storage-using-polybase/connected.png) 
 
-## <a name="create-a-user-for-loading-data"></a>Adatok betöltése a felhasználó létrehozása
+## <a name="create-a-user-for-loading-data"></a>Felhasználó létrehozása az adatok betöltéséhez
 
-A kiszolgáló rendszergazdai fiókjának célja, hogy a felügyeleti műveleteket, és nem alkalmas a felhasználói adatok lekérdezések futtatását. Adatok betöltése az egy memóriaigényes művelet. [Memória maximális értékeket](performance-tiers.md#memory-maximums) a következők szerint definiált [teljesítményszinttel](performance-tiers.md), és [erőforrásosztály](resource-classes-for-workload-management.md). 
+A kiszolgáló rendszergazdai fiókjának célja, hogy felügyeleti műveleteket végezzenek vele, és nem alkalmas a felhasználói adatok lekérdezésére. Az adatok betöltése memóriaigényes művelet. A [memória maximális értékei](performance-tiers.md#memory-maximums) [teljesítményszint](performance-tiers.md) és [erőforrásosztály](resource-classes-for-workload-management.md) szerint vannak definiálva. 
 
-Érdemes a bejelentkezési és az adatok betöltése a dedikált felhasználók létrehozásához. Majd adja hozzá a betöltés felhasználót egy [erőforrásosztály](resource-classes-for-workload-management.md) , amely lehetővé teszi, hogy a megfelelő maximális memóriafoglalást.
+Érdemes létrehozni egy adatok betöltésére kijelölt felhasználót és fiókot. Ezután adja hozzá a betöltést végző felhasználót egy olyan [erőforrásosztályhoz](resource-classes-for-workload-management.md), amely lehetővé teszi a megfelelő mértékű maximális memórialefoglalást.
 
-Mivel jelenleg kapcsolódik, a kiszolgáló rendszergazdája, bejelentkezéseket és a felhasználók is létrehozhat. Ezeket a lépéseket használhatja a bejelentkezési és a felhasználók nevű létrehozásához **LoaderRC20**. Ezután rendelje hozzá a felhasználót a **staticrc20** erőforrásosztály. 
+Mivel jelenleg a kiszolgálói rendszergazdaként csatlakozik, létrehozhat bejelentkezéseket és felhasználókat. Kövesse ezeket a lépéseket egy **LoaderRC20** nevű fiók és felhasználó létrehozásához. Ezután rendelje hozzá a felhasználót a **staticrc20** erőforrásosztályhoz. 
 
-1.  Az SSMS, kattintson a jobb gombbal **fő** legördülő menü megjelenítése, és válassza a **új lekérdezés**. Megnyílik egy új lekérdezési ablak.
+1.  Az SSMS-ben kattintson jobb gombbal a **master** elemre egy legördülő menü megjelenítéséhez, majd válassza a **New Query** (Új lekérdezés) elemet. Megnyílik egy új lekérdezési ablak.
 
-    ![A fő új lekérdezés](media/load-data-from-azure-blob-storage-using-polybase/create-loader-login.png)
+    ![Új lekérdezés a master adatbázisban](media/load-data-from-azure-blob-storage-using-polybase/create-loader-login.png)
 
-2. A lekérdezési ablakban írja be a felhasználónevét és LoaderRC20, nevű felhasználót a saját jelszavát a "a123STRONGpassword!" és a T-SQL parancsokkal. 
+2. A lekérdezési ablakban adja meg ezeket a T-SQL-parancsokat egy LoaderRC20 nevű fiók és felhasználó létrehozásához, az „a123STRONGpassword!” helyett pedig adjon meg egy saját jelszót. 
 
     ```sql
     CREATE LOGIN LoaderRC20 WITH PASSWORD = 'a123STRONGpassword!';
@@ -189,11 +189,11 @@ Mivel jelenleg kapcsolódik, a kiszolgáló rendszergazdája, bejelentkezéseket
 
 3. Kattintson az **Execute** (Végrehajtás) parancsra.
 
-4. Kattintson a jobb gombbal **mySampleDataWarehouse**, és válassza a **új lekérdezés**. Egy új lekérdezési ablak.  
+4. Kattintson jobb gombbal a **mySampleDataWarehouse** elemre, majd válassza a **New Query** (Új lekérdezés) elemet. Megnyílik egy új lekérdezési ablak.  
 
-    ![Új lekérdezés: a minta-adatraktár](media/load-data-from-azure-blob-storage-using-polybase/create-loading-user.png)
+    ![Új lekérdezés futtatása a minta-adattárházon](media/load-data-from-azure-blob-storage-using-polybase/create-loading-user.png)
  
-5. Adja meg a következő T-SQL-parancsokat a LoaderRC20 bejelentkezési azonosítóhoz LoaderRC20 nevű adatbázis-felhasználó létrehozásához. A második sor engedélyt ad az új felhasználói vezérlő új adatraktár.  Ezek az engedélyek is hasonló, hogy a felhasználó az adatbázis tulajdonosa. A harmadik sorban a staticrc20 tagjaként ad hozzá az új felhasználó [erőforrásosztály](resource-classes-for-workload-management.md).
+5. A következő T-SQL-parancsok begépelésével hozzon létre egy LoaderRC20 nevű felhasználót a LoaderRC20-fiókhoz. A második sor az új adattárházra vonatkozó CONTROL (vezérlési) engedélyeket ad az új felhasználónak.  Ezen engedélyek megadása ahhoz hasonló, mintha az adatbázis tulajdonosává tenné a felhasználót. A harmadik sor a staticrc20 [erőforrásosztály](resource-classes-for-workload-management.md) tagjaként veszi fel az új felhasználót.
 
     ```sql
     CREATE USER LoaderRC20 FOR LOGIN LoaderRC20;
@@ -203,41 +203,41 @@ Mivel jelenleg kapcsolódik, a kiszolgáló rendszergazdája, bejelentkezéseket
 
 6. Kattintson az **Execute** (Végrehajtás) parancsra.
 
-## <a name="connect-to-the-server-as-the-loading-user"></a>A betöltés felhasználóként csatlakozzon a kiszolgálóhoz
+## <a name="connect-to-the-server-as-the-loading-user"></a>Csatlakozás a kiszolgálóhoz a betöltést végző felhasználóként
 
-Adatok betöltése az első lépés az, hogy LoaderRC20, bejelentkezéshez.  
+Az adatok betöltésének első lépése a LoaderRC20-ként való bejelentkezés.  
 
-1. Az Object Explorerben kattintson az **Connect** legördülő menüre, majd válassza **adatbázismotor**. A **kapcsolódás a kiszolgálóhoz** párbeszédpanel jelenik meg.
+1. Az Object Explorerben kattintson a **Connect** (Csatlakozás) legördülő menüre, majd válassza a **Database Engine** (Adatbázismotor) elemet. A **Connect to Server** (Kapcsolódás a kiszolgálóhoz) párbeszédpanel jelenik meg.
 
-    ![Csatlakoztassa az új bejelentkezés](media/load-data-from-azure-blob-storage-using-polybase/connect-as-loading-user.png)
+    ![Csatlakozás az új fiókkal](media/load-data-from-azure-blob-storage-using-polybase/connect-as-loading-user.png)
 
-2. Írjon be a teljes kiszolgálónév és **LoaderRC20** a bejelentkezésként.  Adja meg a jelszót LoaderRC20.
+2. Gépelje be a teljes kiszolgálónevet, és adja meg a **LoaderRC20** felhasználónévként.  Adja meg a LoaderRC20-hoz tartozó jelszót.
 
 3. Kattintson a **Connect** (Csatlakozás) gombra.
 
-4. Ha a kapcsolat készen áll, az Object Explorer két kiszolgálói kapcsolatok jelenik meg. Kiszolgáló-rendszergazdai és MedRCLogin egy kapcsolat egy kapcsolatot.
+4. Ha a kapcsolat készen áll, az Object Explorerben két kiszolgálói kapcsolat lesz látható. Az egyik kapcsolat ServerAdmin-ként, a másik pedig MedRCLogin-ként jelenik meg.
 
-    ![Kapcsolódás sikeres a rendszer](media/load-data-from-azure-blob-storage-using-polybase/connected-as-new-login.png)
+    ![Sikeres csatlakozás](media/load-data-from-azure-blob-storage-using-polybase/connected-as-new-login.png)
 
-## <a name="create-external-tables-for-the-sample-data"></a>A minta adatok külső táblák létrehozása
+## <a name="create-external-tables-for-the-sample-data"></a>Külső táblák létrehozása a mintaadatokhoz
 
-Készen áll az adatok betöltését az új data warehouse a folyamat megkezdéséhez. Az oktatóanyag bemutatja, hogyan használható [Polybase](/sql/relational-databases/polybase/polybase-guide.md) a New York Város taxi cab adatok betöltése az Azure storage-blob. Ha később szeretné megismerni az adatok Azure Blob Storage-be való áthelyezésének vagy a forrásból közvetlenül az SQL Data Warehouse-ba való betöltésének a módját, olvassa el a [betöltés áttekintését](sql-data-warehouse-overview-load.md).
+Készen áll megkezdeni az adatok az új adattárházba való betöltésének folyamatát. Az oktatóanyag bemutatja, hogyan használható a [Polybase](/sql/relational-databases/polybase/polybase-guide.md) New York-i taxik adatainak betöltésére egy Azure-tárolóblobból. Ha később szeretné megismerni az adatok Azure Blob Storage-be való áthelyezésének vagy a forrásból közvetlenül az SQL Data Warehouse-ba való betöltésének a módját, olvassa el a [betöltés áttekintését](sql-data-warehouse-overview-load.md).
 
-Futtassa a következő SQL parancsfájlok betölteni kívánt adatok adatainak megadása. Ezen információk közé tartozik, amelyen az adatok, a tartalmát az adatokat, és a tábla definícióját, az adatok formátuma. 
+Futtassa a következő SQL-szkripteket a betölteni kívánt adatokra vonatkozó információk megadásához. Ezen információk közé tartozik az adatok helye, az adatok tartalmának formátuma és az adatok tábladefiníciója. 
 
-1. Az előző szakaszban jelentkezett be az adatraktár LoaderRC20 szerint. Az SSMS, kattintson a jobb gombbal a LoaderRC20 kapcsolatot, és válassza ki **új lekérdezés**.  Egy új lekérdezési ablak. 
+1. Az előző szakaszban LoaderRC20-ként jelentkezett be az adattárházba. Az SSMS-ben kattintson jobb gombbal a LoaderRC20-kapcsolatra, és válassza a **New Query** (Új lekérdezés) elemet.  Megnyílik egy új lekérdezési ablak. 
 
-    ![Új betöltése a lekérdezési ablakban](media/load-data-from-azure-blob-storage-using-polybase/new-loading-query.png)
+    ![Új betöltési lekérdezési ablak](media/load-data-from-azure-blob-storage-using-polybase/new-loading-query.png)
 
-2. Hasonlítsa össze a lekérdezési ablakban az előző lemezképre.  Győződjön meg arról, az új lekérdezési ablakba LoaderRC20 futtató és a MySampleDataWarehouse adatbázis lévő lekérdezések végrehajtásához. A lekérdezési ablakban segítségével hajtsa végre a betöltés lépéseket.
+2. Hasonlítsa össze a lekérdezési ablakot az előző képpel.  Győződjön meg arról, hogy az új lekérdezési ablak LoaderRC20-ként fut, és a MySampleDataWarehouse adatbázison hajt végre lekérdezéseket. A betöltés összes lépését ebben a lekérdezési ablakban végezze el.
 
-3. Hozzon létre egy főkulcsot az MySampleDataWarehouse adatbázis. Adatbázisonként csak egyszer kell főkulcsot létrehoznia. 
+3. Hozzon létre egy főkulcsot a MySampleDataWarehouse adatbázishoz. Adatbázisonként csak egyszer kell főkulcsot létrehoznia. 
 
     ```sql
     CREATE MASTER KEY;
     ```
 
-4. Futtassa a következő [külső ADATFORRÁS létrehozása](/sql/t-sql/statements/create-external-data-source-transact-sql.md) nyilatkozatot, így a helyének meghatározása az Azure-blobot. Ez az a hely a külső taxi cab adatok.  Rendelkezik fűz hozzá a lekérdezési ablakban parancsot futtatja, jelölje ki a parancsok futtatása, és kattintson a **Execute**.
+4. Futtassa a következő [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql.md) utasítást az Azure blob helyének meghatározásához. Ez a külső taxiadatok helye.  A lekérdezési ablakhoz hozzáfűzött parancsok futtatásához jelölje ki a futtatni kívánt parancsokat, majd kattintson az **Execute** (Végrehajtás) elemre.
 
     ```sql
     CREATE EXTERNAL DATA SOURCE NYTPublic
@@ -248,7 +248,7 @@ Futtassa a következő SQL parancsfájlok betölteni kívánt adatok adatainak m
     );
     ```
 
-5. Futtassa a következő [külső FÁJLFORMÁTUM létrehozása](/sql/t-sql/statements/create-external-file-format-transact-sql.md) T-SQL-utasítás formázási jellemzőit és a külső adatokat fájl beállításait adja meg. A jelen nyilatkozat megadja a szöveg a külső adatokat tárolja, és az értékeket a cső el egymástól ("|} ') karaktert. A külső fájl Gzip tömörített. 
+5. Futtassa a következő [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql.md) T-SQL-utasítást a külső adatfájl formázási jellemzőinek és beállításainak megadásához. Ez az utasítás adja meg, hogy a külső adatok szövegként legyenek tárolva, továbbá azt is, hogy az értékeket függőleges vonal („|”) karakter válassza el egymástól. A külső fájl tömörítése a Gzip használatával történik. 
 
     ```sql
     CREATE EXTERNAL FILE FORMAT uncompressedcsv
@@ -273,13 +273,13 @@ Futtassa a következő SQL parancsfájlok betölteni kívánt adatok adatainak m
     );
     ```
 
-6.  Futtassa a következő [CREATE SCHEMA](/sql/t-sql/statements/create-schema-transact-sql.md) utasítás létrehozása a külső fájlformátumot sémát. A séma rendszerezésére a létrehozni kívánt külső táblák segítségével.
+6.  Futtassa a következő [CREATE SCHEMA](/sql/t-sql/statements/create-schema-transact-sql.md) utasítást egy séma létrehozásához a külső fájlformátum számára. A séma lehetővé teszi a létrehozni kívánt külső táblák rendszerezését.
 
     ```sql
     CREATE SCHEMA ext;
     ```
 
-7. Hozza létre a külső táblákat. A tábla az SQL Data Warehouse tárolja, de a táblák hivatkozik az Azure blob storage szolgáltatásban tárolt adatokat. A következő T-SQL parancsok futtatásával hozzon létre több külső táblát, amelyek mind a külső adatforrásban korábban meghatározott Azure-blobra mutatnak.
+7. Hozza létre a külső táblákat. A tábladefiníciókat az SQL Data Warehouse tárolja, de a táblák az Azure Blob Storage-ban tárolt adatokra hivatkoznak. A következő T-SQL parancsok futtatásával hozzon létre több külső táblát, amelyek mind a külső adatforrásban korábban meghatározott Azure-blobra mutatnak.
 
     ```sql
     CREATE EXTERNAL TABLE [ext].[Date] 
@@ -444,21 +444,21 @@ Futtassa a következő SQL parancsfájlok betölteni kívánt adatok adatainak m
     ;
     ```
 
-8. Az Object Explorerben bontsa ki az imént létrehozott külső táblák listáját mySampleDataWarehouse.
+8. Az Object Explorerben bontsa ki a mySampleDataWarehouse elemet az imént létrehozott külső táblák listájának megtekintéséhez.
 
-    ![Külső tábla megtekintése](media/load-data-from-azure-blob-storage-using-polybase/view-external-tables.png)
+    ![Külső táblák megtekintése](media/load-data-from-azure-blob-storage-using-polybase/view-external-tables.png)
 
-## <a name="load-the-data-into-your-data-warehouse"></a>Az adatok betöltése az az adatraktár
+## <a name="load-the-data-into-your-data-warehouse"></a>Az adatok betöltése az adattárházba
 
-Ennek a szakasznak a külső táblák a mintaadatok betöltése az Azure Storage-Blobból SQL Data warehouse most adott meg.  
+Ez a szakasz az imént definiált külső táblák használatával tölti be a példaadatokat az Azure Storage-blobból az SQL Data Warehouse-ba.  
 
 > [!NOTE]
-> Ez az oktatóanyag az adatok közvetlenül a végső táblázatba tölti be. Éles környezetben általában használhatjuk a CREATE TABLE AS SELECT betöltése az előkészítési táblában. Közben az átmeneti tárolási tábla az összes szükséges átalakítás végezheti el. Az előkészítési táblában lévő adatokat fűzi hozzá éles, használja az INSERT... SELECT utasítással. További információkért lásd: [adatok beszúrása egy éles tábla](guidance-for-loading-data.md#inserting-data-into-a-production-table).
+> Ez az oktatóanyag az adatokat közvetlenül a végső táblázatba tölti be. Éles környezetben általában a CREATE TABLE AS SELECT utasítás használatával végez betöltést egy előkészítési táblába. Amíg az adatok az előkészítési táblában vannak, bármilyen szükséges átalakítás elvégezhető rajtuk. Az előkészítési táblában lévő adatok éles táblához való hozzáfűzéséhez használhatja az INSERT...SELECT utasítást. További információkért lásd: [Adatok beszúrása egy éles táblába](guidance-for-loading-data.md#inserting-data-into-a-production-table).
 > 
 
-A parancsfájl használja a [létrehozása TABLE AS kiválasztása (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse.md) T-SQL-utasítást az adatok betöltése az Azure Storage-Blobból az új táblák az adatraktárban. CTAS új táblába a select utasítás eredményei alapján. Az új tábla oszlopai és adattípusai megegyeznek a kiválasztási utasítás eredményeivel. Ha a select utasítás kiválaszt egy külső táblát, az SQL Data Warehouse importálja az adatokat az adatraktárban egy relációs táblába. 
+A szkript a [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse.md) T-SQL-utasítást használja az adatok betöltéséhez az Azure Storage-blobból az adattárházban található új táblákba. A CTAS egy új táblát hoz létre egy kiválasztási utasítás eredményei alapján. Az új tábla oszlopai és adattípusai megegyeznek a kiválasztási utasítás eredményeivel. Amikor a kiválasztási utasítás egy külső táblából választ, az SQL Data Warehouse egy relációs táblába importálja az adatokat az adattárházban. 
 
-1. Futtassa a következő adatok betöltése az új táblák az adatraktárban.
+1. Futtassa a következő szkriptet az adatok betöltéséhez az adattárházban található új táblákba.
 
     ```sql
     CREATE TABLE [dbo].[Date]
@@ -563,15 +563,15 @@ A parancsfájl használja a [létrehozása TABLE AS kiválasztása (CTAS)](/sql/
     SELECT * FROM sys.dm_pdw_exec_requests;
     ```
 
-4. Helyi szépen az data warehouse-bA betöltött az adatokat.
+4. Láthatja, ahogy adatai szépen betöltődnek az adattárházba.
 
     ![A betöltött táblák megtekintése](media/load-data-from-azure-blob-storage-using-polybase/view-loaded-tables.png)
 
-## <a name="create-statistics-on-newly-loaded-data"></a>Statisztika létrehozása újonnan betöltött adatokról
+## <a name="create-statistics-on-newly-loaded-data"></a>Statisztikák készítése az újonnan betöltött adatokról
 
 Az SQL Data Warehouse nem tudja automatikus létrehozni és frissíteni a statisztikákat. A lekérdezési teljesítmény eléréséhez ezért fontos statisztikákat létrehozni minden tábla minden oszlopához az első betöltéskor. Fontos a statisztikák frissítése is az adatok lényeges módosításai után.
 
-Futtassa az alábbi parancsokat az oszlopokat, amelyek várhatóan az illesztésekben használt statisztika létrehozásához.
+Futtassa az alábbi parancsokat az összekapcsolásokban várhatóan használt oszlopokra vonatkozó statisztikák létrehozásához.
 
     ```sql
     CREATE STATISTICS [dbo.Date DateID stats] ON dbo.Date (DateID);
@@ -580,40 +580,40 @@ Futtassa az alábbi parancsokat az oszlopokat, amelyek várhatóan az illesztés
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A számítási erőforrások és az a data warehouse-bA betöltött adatok van folyamatban szó. Ezek külön-külön számlázzuk. 
+Az adattárházába betöltött számítási erőforrások és adatok díjkötelesek. Ezeket külön-külön számlázzuk. 
 
-- Ha szeretné az adatokat megtartani a tárolóban, a számítási erőforrásokat szüneteltetheti, amíg nem használja az adattárházat. A számítási felfüggesztése csak akkor kell fizetni tárolására, és is folytathatja a számítást, amikor készen áll az adatokat.
+- Ha szeretné az adatokat megtartani a tárolóban, a számítási erőforrásokat szüneteltetheti, amíg nem használja az adattárházat. A számítás felfüggesztése esetén csak az adattárolásért kell fizetni, és folytathatja a számítást, amikor már készen áll az adatokkal való munkára.
 - Ha szeretné megelőzni a jövőbeli kiadásokat, az adattárházat törölheti is. 
 
 Kövesse az alábbi lépéseket a fölöslegessé vált erőforrások eltávolítására.
 
-1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com), kattintson az adatraktár a.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és kattintson az adattárházra.
 
     ![Az erőforrások eltávolítása](media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. A számítási erőforrások szüneteltetéshez kattintson a **Szüneteltetés** gombra. Ha az adatraktár fel van függesztve, jelennek meg a **Start** gombra.  A számítási erőforrások újraindításához kattintson az **Indítás** gombra.
+2. A számítási erőforrások szüneteltetéshez kattintson a **Szüneteltetés** gombra. Ha az adattárház szüneteltetve van, az **Indítás** gomb látható.  A számítási erőforrások újraindításához kattintson az **Indítás** gombra.
 
-3. Az adatraktár, akkor nem kell fizetnie számítási és tárolási eltávolításához kattintson **törlése**.
+3. Ha el szeretné távolítani az adattárházat, hogy a számítási és tárolási erőforrásokért se kelljen fizetnie, kattintson a **Törlés** parancsra.
 
-4. A korábban létrehozott SQL-kiszolgáló eltávolításához kattintson az előző képen látható **mynewserver-20171113.database.windows.net** elemre, majd a **Törlés** parancsra.  Ügyeljen arra, mint ennek a kiszolgáló törlésével a kiszolgálóhoz hozzárendelt összes adatbázisra.
+4. A korábban létrehozott SQL-kiszolgáló eltávolításához kattintson az előző képen látható **mynewserver-20171113.database.windows.net** elemre, majd a **Törlés** parancsra.  Ezzel kapcsolatban legyen körültekintő, mert a kiszolgáló törlésével a kiszolgálóhoz rendelt összes adatbázis is törölve lesz.
 
 5. Az erőforráscsoport törléséhez kattintson a **myResourceGroup** elemre, majd az **Erőforráscsoport törlése** parancsra.
 
 ## <a name="next-steps"></a>További lépések 
-Ebben az oktatóprogramban megismerte data warehouse létrehozása és a felhasználó létrehozása az adatok betöltése. Az Azure Storage-Blobba tárolt adatok struktúra külső táblák létrehozása, és a PolyBase CREATE TABLE AS SELECT utasítás használatával adatok betöltése az az adatraktár. 
+Ennek az oktatóanyagnak a segítségével megtanulta, hogyan hozhat létre egy adattárházat, illetve egy felhasználót az adatok betöltéséhez. Külső táblákat hozott létre, hogy definiálhassa az Azure Storage-blobban tárolt adatok struktúráját, majd a PolyBase CREATE TABLE AS SELECT utasításával adatokat töltött be az adattárházába. 
 
-Ezeket a módosításokat is tette:
+A következőket hajtotta végre:
 > [!div class="checklist"]
-> * Egy data warehouse létrehozása az Azure-portálon
-> * Állítson be egy kiszolgálószintű tűzfalszabályt az Azure-portálon
-> * A data warehouse szolgáltatáshoz az SSMS csatlakozik
-> * A kijelölt adatok betöltése a felhasználó létrehozása
-> * Adatok külső táblái létrehozott Azure Storage-Blobba
-> * Adatok betöltése az adatraktár az az CTAS T-SQL-utasítás használatával
-> * A folyamatban lévő adatok tekinthetők, akkor betöltése
-> * Az újonnan betöltött adatokról létrehozott statisztikák
+> * Egy adattárház létrehozása az Azure Portalon
+> * Kiszolgálószintű tűzfalszabály létrehozása az Azure Portalon
+> * Csatlakozás az adattárházhoz az SSMS használatával
+> * Adatok betöltésére kijelölt felhasználó létrehozása
+> * Külső táblák létrehozása az Azure Storage-blobban található adatokhoz
+> * Adatok betöltése az adattárházba a CTAS T-SQL-utasítás használatával
+> * Az adatok állapotának megtekintése betöltés közben
+> * Statisztikák készítése az újonnan betöltött adatokról
 
-Az áttelepítés – áttekintés megtudhatja, hogyan telepíthet át egy meglévő adatbázist az SQL Data Warehouse előzetes.
+Folytassa az áttelepítés áttekintésével, amelyből megtudhatja, hogyan telepíthet át egy meglévő adatbázist az SQL Data Warehouse-ba.
 
 > [!div class="nextstepaction"]
->[Ismerje meg, hogyan telepíthet át egy meglévő adatbázist az SQL Data Warehouse](sql-data-warehouse-overview-migrate.md)
+>[Ismerje meg, hogyan telepíthet át egy meglévő adatbázist az SQL Data Warehouse-ba](sql-data-warehouse-overview-migrate.md)

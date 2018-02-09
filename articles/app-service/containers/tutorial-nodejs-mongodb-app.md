@@ -1,6 +1,6 @@
 ---
-title: "A Node.js és a MongoDB webalkalmazás az Azure App Service létrehozása Linux rendszeren |} Microsoft Docs"
-description: "Útmutató az Azure App Service Linux, a MongoDB kapcsolati karakterlánccal Cosmos-adatbázis adatbázis-kapcsolat használata Node.js-alkalmazásokat."
+title: "Node.js- és MongoDB-webalkalmazás létrehozása Linuxon futó Azure App Service-ben | Microsoft Docs"
+description: "Megismerheti, hogyan tehet szert egy olyan, a Linuxon futó Azure App Service-ben működő Node.js-alkalmazásra, amely MongoDB-kapcsolati karakterlánccal rendelkező Cosmos DB-hez csatlakozik."
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
@@ -15,64 +15,64 @@ ms.topic: tutorial
 ms.date: 10/10/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: c2087af14ad456c679479334c9391055f6b2e45e
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
-ms.translationtype: MT
+ms.openlocfilehash: f497e9427885ab1d2e827e9fa1dd3c468aa39239
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="build-a-nodejs-and-mongodb-web-app-in-azure-app-service-on-linux"></a>A Node.js és a MongoDB webalkalmazás az Azure App Service létrehozása Linux-kiszolgálón
+# <a name="build-a-nodejs-and-mongodb-web-app-in-azure-app-service-on-linux"></a>Node.js- és MongoDB-webalkalmazás létrehozása Linuxon futó Azure App Service-ben
 
 > [!NOTE]
-> Ez a cikk egy alkalmazást az App Service Linux központilag telepíti. Az App Service üzembe _Windows_, lásd: [összeállítása a Node.js és a MongoDB webalkalmazás az Azure-ban](../app-service-web-tutorial-nodejs-mongodb-app.md).
+> Ebben a cikkben egy alkalmazást helyezünk üzembe a Linuxon futó App Service-ben. A _Windowson_ futó App Service-ben való üzembe helyezéssel kapcsolatban lásd: [Node.js- és MongoDB-webalkalmazás létrehozása az Azure-ban](../app-service-web-tutorial-nodejs-mongodb-app.md).
 >
 
-A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ez az oktatóanyag bemutatja, hogyan Node.js-webalkalmazás létrehozása, helyileg csatlakoztassa a MongoDB-adatbázist, majd telepítse az Azure a MongoDB API-jával CosmosDB adatbázishoz kapcsolódó. Amikor elkészült, konfigurálnia kell egy átlagos alkalmazás (MongoDB, Express, AngularJS és Node.js) az App Service-ben futó Linux. Az egyszerűség kedvéért a mintaalkalmazást használ a [MEAN.js webes keretrendszer](http://meanjs.org/).
+A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy Node.js-webalkalmazást, hogyan csatlakoztathatja egy helyi MongoDB-adatbázishoz, majd hogyan helyezheti üzembe az Azure-ban, egy CosmosDB-adatbázishoz csatlakoztatva a MongoDB API segítségével. Az oktatóanyag eredménye egy, a Linux App Service-ben futó MEAN-alkalmazás (MongoDB, Express, AngularJS, and Node.js) lesz. Az egyszerűség kedvéért a mintaalkalmazás a [MEAN.js webes keretrendszert](http://meanjs.org/) használja.
 
 ![Az Azure App Service-ben futó MEAN.js alkalmazás](./media/tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
 
-Amiről tanulni hogyan:
+Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> * A MongoDB API használata az Azure-ban CosmosDB adatbázis létrehozása
-> * A Node.js alkalmazás csatlakoztatása a mongodb-Protokolltámogatással
-> * Az alkalmazás telepítése az Azure-bA
-> * Az adatmodell frissítése, és telepítse újra az alkalmazást
-> * Az adatfolyam diagnosztikai naplók az Azure-ból
-> * Felügyelheti az alkalmazást az Azure-portálon
+> * CosmosDB-adatbázis létrehozása a MongoDB API segítségével az Azure-ban
+> * Node.js-alkalmazás csatlakoztatása a MongoDB-hez
+> * Az alkalmazás üzembe helyezése az Azure-ban
+> * Az adatmodell frissítése és az alkalmazás ismételt üzembe helyezése
+> * Diagnosztikai naplók streamelése az Azure-ból
+> * Az alkalmazás kezelése az Azure Portalon
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez:
 
 1. [A Git telepítése](https://git-scm.com/)
-1. [Telepítse a Node.js v6.0 vagy újabb és NPM](https://nodejs.org/)
-1. [Telepítse a Gulp.js](http://gulpjs.com/) (által megkövetelt [MEAN.js](http://meanjs.org/docs/0.5.x/#getting-started))
-1. [Telepítheti és futtathatja a MongoDB Community Edition](https://docs.mongodb.com/manual/administration/install-community/)
+1. [Telepítse a Node.js 6.0-s vagy újabb verzióját és az NPM-et](https://nodejs.org/).
+1. [Telepítse a Gulp.js-t](http://gulpjs.com/) (a [MEAN.js](http://meanjs.org/docs/0.5.x/#getting-started) követelménye)
+1. [Telepítse és futtassa a MongoDB Community Editiont](https://docs.mongodb.com/manual/administration/install-community/).
 
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+## <a name="test-local-mongodb"></a>Helyi MongoDB tesztelése
 
-## <a name="test-local-mongodb"></a>Teszt helyi mongodb-Protokolltámogatással
+Nyissa meg a terminálablakot, és a `cd` paranccsal lépjen a `bin` MongoDB telepítés könyvtárába. Ezzel a terminálablakkal futtathatja az oktatóanyagban szereplő összes parancsot.
 
-Nyissa meg a terminálablakot, és `cd` való a `bin` a MongoDB telepítési könyvtárába. Ebben az oktatóanyagban a parancsok futtatásához használhatja a terminálablakot.
-
-Futtatás `mongo` a terminálban a helyi MongoDB-kiszolgálóhoz való csatlakozáshoz.
+Futtassa a `mongo` parancsot a terminálban a helyi MongoDB-kiszolgálójához való csatlakozáshoz.
 
 ```bash
 mongo
 ```
 
-Ha a kapcsolódás sikeres, majd a MongoDB adatbázis már fut. Ha nem, győződjön meg arról, hogy elindult-e a helyi MongoDB-adatbázist a következő lépéseket követve [MongoDB Community Edition telepítése](https://docs.mongodb.com/manual/administration/install-community/). Gyakran, MongoDB telepítve van, de továbbra is szeretné el `mongod`.
+Ha a kapcsolat létrejött, akkor a MongoDB-adatbázis már fut. Ha nem, a [MongoDB Community Edition telepítését](https://docs.mongodb.com/manual/administration/install-community/) ismertető cikk lépései szerint indítsa el a helyi MongoDB-adatbázist. Gyakran előfordul, hogy a MongoDB telepítése már megtörtént, azonban még el kell indítani a `mongod` parancs futtatásával.
 
-Ha elkészült a MongoDB adatbázis tesztelése, írja be a `Ctrl+C` a terminálon.
+Ha végzett a MongoDB-adatbázis tesztelésével, írja be a `Ctrl+C` parancsot a terminálon.
 
 ## <a name="create-local-nodejs-app"></a>Helyi Node.js-alkalmazás létrehozása
 
-Ebben a lépésben beállíthatja a helyi Node.js-projektet.
+Ebben a lépésben a helyi Node.js-projektet állítja be.
 
 ### <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
-A Terminálszolgáltatások ablakban `cd` egy működő könyvtárba.
+A terminálablakban a `cd` paranccsal lépjen egy munkakönyvtárra.
 
 Futtassa a következő parancsot a minta tárház klónozásához.
 
@@ -80,11 +80,11 @@ Futtassa a következő parancsot a minta tárház klónozásához.
 git clone https://github.com/Azure-Samples/meanjs.git
 ```
 
-Ez a minta-tárház másolatát tartalmazza a [MEAN.js tárház](https://github.com/meanjs/mean). Az App Service futtatásához módosítása (további információkért lásd: a MEAN.js tárház [információs fájl](https://github.com/Azure-Samples/meanjs/blob/master/README.md)).
+Ez a mintaadattár a [MEAN.js-adattár](https://github.com/meanjs/mean) másolatát tartalmazza. Módosítva lett az App Service-ben való futtatáshoz (további információért tekintse meg a MEAN.js-adattár [információs fájlját](https://github.com/Azure-Samples/meanjs/blob/master/README.md)).
 
 ### <a name="run-the-application"></a>Az alkalmazás futtatása
 
-A következő parancsokat a szükséges csomagok telepítése, és indítsa el az alkalmazást.
+Futtassa az alábbi parancsokat a szükséges csomagok telepítéséhez és az alkalmazás elindításához.
 
 ```bash
 cd meanjs
@@ -92,7 +92,7 @@ npm install
 npm start
 ```
 
-A config.domain figyelmeztetést figyelmen kívül. Az alkalmazás teljesen betöltődik, lásd a következő üzenet hasonló:
+Hagyja figyelmen kívül a config.domain figyelmeztetést. Az alkalmazás teljes betöltését követően az alábbihoz hasonló üzenet jelenik meg:
 
 ```txt
 --
@@ -106,41 +106,41 @@ MEAN.JS version: 0.5.0
 --
 ```
 
-Egy böngészőben nyissa meg a `http://localhost:3000` oldalt. Kattintson a **regisztráció** a felső menüben és tesztfelhasználó létrehozása. 
+Egy böngészőben nyissa meg a `http://localhost:3000` oldalt. A felső menüben kattintson a **Regisztráció** lehetőségre, és hozzon létre egy tesztfelhasználót. 
 
-A MEAN.js-mintaalkalmazás a felhasználói adatokat az adatbázisban tárolja. Ha a felhasználó létrehozásának és a bejelentkezés sikeres, majd az alkalmazás ír adatokat a helyi MongoDB-adatbázist.
+A MEAN.js-mintaalkalmazás a felhasználói adatokat az adatbázisban tárolja. Ha a felhasználó létrehozása és a bejelentkezés sikeres volt, akkor az alkalmazás a helyi MongoDB-adatbázisba írja az adatokat.
 
 ![A MEAN.js sikeresen csatlakozik a MongoDB-hez](./media/tutorial-nodejs-mongodb-app/mongodb-connect-success.png)
 
-Válassza ki **Admin > kezelése cikkek** egyes cikkek hozzáadni.
+Válassza az **Admin > Manage Articles** (Felügyelet > Cikkek kezelése) elemet néhány cikk hozzáadásához.
 
-Node.js bármikor leállításához nyomja le az `Ctrl+C` a terminálon.
+A Node.js leállításához nyomja le a `Ctrl+C` billentyűkombinációt a terminálon.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-production-mongodb"></a>Éles MongoDB létrehozása
 
-Ebben a lépésben az Azure-ban MongoDB adatbázis létrehozása. Az alkalmazás telepítésekor az Azure-ba, használja a felhő adatbázis.
+Ebben a lépésben egy MongoDB-adatbázist hoz létre az Azure-ban. Miután az alkalmazás üzembe lett helyezve az Azure-ban, ezt a felhőadatbázist használja.
 
-Ez az oktatóanyag használja a MongoDB, [Azure Cosmos DB](/azure/documentdb/). Cosmos DB támogatja a MongoDB-ügyfélkapcsolatokat.
+A MongoDB esetében ez az oktatóanyag az [Azure Cosmos DB-t](/azure/documentdb/) használja. A Cosmos DB támogatja a MongoDB-ügyfélkapcsolatokat.
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 [!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-no-h.md)]
 
-### <a name="create-a-cosmos-db-account"></a>A Cosmos DB-fiók létrehozása
+### <a name="create-a-cosmos-db-account"></a>Cosmos DB-fiók létrehozása
 
-A felhő rendszerhéj a Cosmos DB-fiók létrehozása a [az cosmosdb létrehozása](/cli/azure/cosmosdb?view=azure-cli-latest#az_cosmosdb_create) parancsot.
+A Cloud Shellben hozzon létre egy Cosmos DB-fiókot az [`az cosmosdb create`](/cli/azure/cosmosdb?view=azure-cli-latest#az_cosmosdb_create) paranccsal.
 
-Az alábbi parancs egyedi Cosmos DB nevet helyettesítse a  *\<cosmosdb_name >* helyőrző. Ez a név a Cosmos DB végpont részeként használatos `https://<cosmosdb_name>.documents.azure.com/`, így a nevének egyedinek kell lennie az Azure-ban összes Cosmos DB fiók. A név csak kisbetűket, számokat és a kötőjel (-) karaktert kell tartalmaznia, és 3 – 50 karakter közé kell esnie.
+Az alábbi parancsban a *\<cosmosdb_name>* helyőrző helyére írjon be egy egyedi Cosmos DB-nevet. Ezt a nevet a rendszer a Cosmos DB-végpont (`https://<cosmosdb_name>.documents.azure.com/`) részeként fogja használni, így a névnek egyedinek kell lennie az Azure-ban található összes Cosmos DB-fiókban. A név csak kisbetűket, számokat és kötőjel (-) karaktert tartalmazhat, és 3–50 karakter hosszúságú lehet.
 
 ```azurecli-interactive
 az cosmosdb create --name <cosmosdb_name> --resource-group myResourceGroup --kind MongoDB
 ```
 
-A *--kind MongoDB* paraméter lehetővé teszi, hogy a MongoDB-ügyfélkapcsolatokat.
+A *--kind MongoDB* paraméter lehetővé teszi a MongoDB-ügyfélkapcsolatok használatát.
 
-Ha a Cosmos DB-fiók létrehozása az Azure parancssori felület információkat jeleníti meg az alábbi példához hasonló:
+A Cosmos DB-fiók létrehozása után az Azure CLI az alábbi példához hasonló információkat jelenít meg:
 
 ```json
 {
@@ -158,19 +158,19 @@ Ha a Cosmos DB-fiók létrehozása az Azure parancssori felület információkat
 }
 ```
 
-## <a name="connect-app-to-production-mongodb"></a>Alkalmazás csatlakoztatása a termelési mongodb-Protokolltámogatással
+## <a name="connect-app-to-production-mongodb"></a>Alkalmazás csatlakoztatása az éles MongoDB-hez
 
-Ebben a lépésben csatlakoztatja az imént létrehozott, a MongoDB-kapcsolati karakterlánc használatával Cosmos DB adatbázishoz MEAN.js mintaalkalmazást.
+Ebben a lépésben a MEAN.js-mintaalkalmazást a MongoDB-kapcsolati karakterlánc használatával a korábban létrehozott Cosmos DB-adatbázishoz fogjuk csatlakoztatni.
 
-### <a name="retrieve-the-database-key"></a>Az adatbázis-kulcs beolvasása
+### <a name="retrieve-the-database-key"></a>Az adatbáziskulcs lekérése
 
-A Cosmos DB adatbázishoz való kapcsolódáshoz szükséges az adatbázis-kulcs. A felhő rendszerhéj használata a [az cosmosdb lista-kulcsok](/cli/azure/cosmosdb?view=azure-cli-latest#az_cosmosdb_list_keys) parancsot az elsődleges kulcs lekéréséhez.
+A Cosmos DB-adatbázishoz való csatlakozáshoz adatbáziskulcs szükséges. A Cloud Shellben használja az [`az cosmosdb list-keys`](/cli/azure/cosmosdb?view=azure-cli-latest#az_cosmosdb_list_keys) parancsot az elsődleges kulcs lekéréséhez.
 
 ```azurecli-interactive
 az cosmosdb list-keys --name <cosmosdb_name> --resource-group myResourceGroup
 ```
 
-Az Azure parancssori felület információkat jeleníti meg az alábbi példához hasonló:
+Az Azure CLI az alábbi példához hasonló formában jeleníti meg az adatokat:
 
 ```json
 {
@@ -187,9 +187,9 @@ Másolja a `primaryMasterKey` értékét. A következő lépés során szükség
 
 ### <a name="configure-the-connection-string-in-your-nodejs-application"></a>A kapcsolati karakterlánc konfigurálása a Node.js-alkalmazásban
 
-A helyi MEAN.js tárházban lévő a _config/env/_ mappa, hozzon létre egy fájlt _helyi-production.js_. _.gitignore_ ezt a fájlt a tárház kívül van konfigurálva.
+A helyi MEAN.js-adattár _config/env/_ mappájában hozzon létre egy _local-production.js_ nevű fájlt. A _.gitignore_ a fájlnak az adattáron kívül való tartására lett konfigurálva.
 
-A következő kódot bemásolhatja azt. Ügyeljen arra, hogy cserélje le a két  *\<cosmosdb_name >* helyőrzőt a Cosmos DB adatbázis neve, és cserélje le a  *\<primary_master_key >* helyőrző a kulccsal, az előző lépésben a vágólapra másolt.
+Másolja az alábbi kódot a fájlba. Ügyeljen arra, hogy cserélje le a két *\<cosmosdb_name>* helyőrzőt a Cosmos DB-adatbázis nevére, illetve cserélje le a *\<primary_master_key>* helyőrzőt az előző lépésben másolt kulcsra.
 
 ```javascript
 module.exports = {
@@ -199,27 +199,27 @@ module.exports = {
 };
 ```
 
-A `ssl=true` beállítást azért szükség, mert [Cosmos DB SSL megkövetelése](../../cosmos-db/connect-mongodb-account.md#connection-string-requirements).
+A `ssl=true` beállításra azért van szükség, mert a [Cosmos DB SSL használatát igényli](../../cosmos-db/connect-mongodb-account.md#connection-string-requirements).
 
 Mentse a módosításokat.
 
-### <a name="test-the-application-in-production-mode"></a>Az alkalmazást tesztelheti éles módban
+### <a name="test-the-application-in-production-mode"></a>Az alkalmazás tesztelése éles módban
 
-Egy helyi terminálablakot futtassa a következő parancsot minify és csomagot az éles környezet parancsfájlok. Ez a folyamat által az éles környezetben szükséges fájlok állít elő.
+Egy helyi terminálablakban futtassa a következő parancsot a szkriptek lekicsinyítésére és csomagolására az éles környezet számára. Ez a folyamat az éles környezet számára szükséges fájlokat hozza létre.
 
 ```bash
 gulp prod
 ```
 
-Egy helyi terminálablakot, futtassa a következő parancsot a kapcsolati karakterlánc, amelyet _config/env/local-production.js_. A Tanúsítványhiba és a config.domain figyelmeztetést figyelmen kívül.
+Egy helyi terminálablakban futtassa az alábbi parancsot a _config/env/local-production.js_ fájlban konfigurált kapcsolati karakterlánc használatára. Hagyja figyelmen kívül a tanúsítványhibát és a config.domain figyelmeztetést.
 
 ```bash
 NODE_ENV=production node server.js
 ```
 
-`NODE_ENV=production`Beállítja a környezeti változó, amely közli a Node.js az éles környezetben történő futását.  `node server.js`Elindítja a Node.js-kiszolgálót `server.js` az adattár gyökérkönyvtárában található. Ez az, hogy be van töltve a Node.js-alkalmazás az Azure-ban.
+A `NODE_ENV=production` beállítja a környezeti változót, amely az éles környezetben történő futásra utasítja a Node.js-t.  A `node server.js` elindítja a Node.js-kiszolgálót az adattár gyökérkönyvtárában található `server.js` fájllal. Így történik a Node.js-alkalmazás betöltése az Azure-ban.
 
-Ha az alkalmazás be van töltve, ellenőrizze, hogy fut-e az éles környezetben:
+Az alkalmazás betöltése után ellenőrizze, hogy fut-e az éles környezetben:
 
 ```
 --
@@ -232,13 +232,13 @@ App version:     0.5.0
 MEAN.JS version: 0.5.0
 ```
 
-Egy böngészőben nyissa meg a `http://localhost:8443` oldalt. Kattintson a **regisztráció** a felső menüben és tesztfelhasználó létrehozása. Ha sikeres felhasználó létrehozása, és jelentkezzen be, majd az alkalmazás az adatok Cosmos DB adatbázis írásakor az Azure-ban.
+Egy böngészőben nyissa meg a `http://localhost:8443` oldalt. A felső menüben kattintson a **Regisztráció** lehetőségre, és hozzon létre egy tesztfelhasználót. Ha a felhasználó létrehozása és a bejelentkezés sikeres volt, akkor az alkalmazás a Cosmos DB-adatbázisba írja az adatokat az Azure-ban.
 
-A terminálban leállításához írja be a Node.js `Ctrl+C`.
+A Node.js leállításához nyomja le a `Ctrl+C` billentyűkombinációt a terminálon.
 
-## <a name="deploy-app-to-azure"></a>Alkalmazás telepítése az Azure-bA
+## <a name="deploy-app-to-azure"></a>Alkalmazás üzembe helyezése az Azure-ban
 
-Ebben a lépésben az Azure App Service a Node.js MongoDB-kompatibilis alkalmazást telepít központilag.
+Ebben a lépésben a MongoDB-hez csatlakoztatott Node.js-alkalmazást fogja üzembe helyezni az Azure App Service-ben.
 
 ### <a name="configure-local-git-deployment"></a>A Git helyi üzemelő példányának konfigurálása
 
@@ -248,25 +248,27 @@ Ebben a lépésben az Azure App Service a Node.js MongoDB-kompatibilis alkalmaz�
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux-no-h.md)]
 
-### <a name="create-a-linux-based-web-app"></a>Linux-alapú webalkalmazás létrehozása
+<a name="create"></a>
+
+### <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-nodejs-no-h.md)] 
 
-### <a name="configure-an-environment-variable"></a>Egy környezeti változó beállítása
+### <a name="configure-an-environment-variable"></a>Környezeti változó konfigurálása
 
-Alapértelmezés szerint a MEAN.js projekt tartja _config/env/local-production.js_ kívül a Git-tárházba. Ezért a Azure webalkalmazás app beállításai segítségével határozza meg a MongoDB-kapcsolati karakterlánc.
+Alapértelmezés szerint a MEAN.js-projekt a Git-adattáron kívül tartja a _config/env/local-production.js_ fájlt. Az Azure-webalkalmazás esetén ezért alkalmazásbeállításokat kell használnia a MongoDB kapcsolati karakterláncának meghatározásához.
 
-Alkalmazásbeállítások beállításához használja a [az webapp appsettings konfiguráció](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) a felhő rendszerhéj parancsot.
+Az alkalmazásbeállítások megadásához használja az [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) parancsot a Cloud Shellben.
 
-A következő példa egy `MONGODB_URI` Alkalmazásbeállítás az Azure web app alkalmazásban. Cserélje le a  *\<alkalmazás_neve >*,  *\<cosmosdb_name >*, és  *\<primary_master_key >* helyőrzők.
+A következő példa egy `MONGODB_URI` alkalmazásbeállítást konfigurál az Azure-webalkalmazásban. Cserélje le az *\<app_name>*, a *\<cosmosdb_name>* és a *\<primary_master_key>* helyőrzőt.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings MONGODB_URI="mongodb://<cosmosdb_name>:<primary_master_key>@<cosmosdb_name>.documents.azure.com:10250/mean?ssl=true"
 ```
 
-A Node.js-kódnak érheti el az alkalmazás setting `process.env.MONGODB_URI`, ahogy bármely környezeti változó elérésére. 
+A Node.js-kódban a `process.env.MONGODB_URI` használatával érheti el ezt az alkalmazásbeállítást, mint ahogy bármelyik környezeti változót is. 
 
-Nyissa meg a helyi MEAN.js tárház _config/env/production.js_ (nem _config/env/local-production.js_), amely éles környezet adott konfigurációval rendelkezik. Vegye figyelembe, hogy az alapértelmezett MEAN.js alkalmazás már használatára konfigurált a `MONGODB_URI` létrehozott környezeti változó.
+A helyi MEAN.js-adattárban nyissa meg a _config/env/production.js_ fájlt (ne a _config/env/local-production.js_ fájlt), amely az éles környezetre vonatkozó konfigurációval rendelkezik. Az alapértelmezett MEAN.js-alkalmazás már a létrehozott `MONGODB_URI` környezeti változó használatára lett konfigurálva.
 
 ```javascript
 db: {
@@ -299,40 +301,40 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
  * [new branch]      master -> master
 ```
 
-Azt tapasztalhatja, hogy fut-e a telepítési folyamat [Gulp](http://gulpjs.com/) után `npm install`. App Service nem futtatható Gulp vagy Grunt feladatok központi telepítése során így ez a minta-tárház két további fájlok a gyökérkönyvtárban engedélyezéséhez:
+Azt tapasztalhatja, hogy az üzembehelyezési folyamat az `npm install` után kezdi meg a [Gulp](http://gulpjs.com/) futtatását. Az App Service nem futtatja a Gulp vagy a Grunt feladatait az üzembe helyezés során, ezért ez a mintaadattár két további fájllal rendelkezik a gyökérkönyvtárában ennek lehetővé tételéhez:
 
-- _.Deployment_ – Ez a fájl közli az App Service futtatásához `bash deploy.sh` , az egyéni telepítési parancsfájl.
-- _Deploy.SH_ – az egyéni telepítési parancsfájl. Tekintse át a fájlt, ha látni fogja, hogy fusson `gulp prod` után `npm install` és `bower install`.
+- _.deployment_ – Ez a fájl utasítja az App Service-t, hogy a `bash deploy.sh` fájlt futtassa egyéni üzembehelyezési szkriptként.
+- _deploy.sh_ – Az egyéni üzembehelyezési szkript. Ha áttekinti a fájlt, láthatja, hogy az `npm install` és a `bower install` után futtatja a `gulp prod` parancsot.
 
-Ez a módszer segítségével bármely lépése hozzáadni a Git-alapú telepítéshez. Újraindítja az Azure-webalkalmazásban bármikor, ha az App Service automatizálási feladatok nem futtassa újra.
+Ezzel a módszerrel adhat hozzá további lépéseket a Git-alapú üzemelő példányhoz. Ha újraindítja az Azure-webalkalmazást, az App Service nem futtatja újra ezeket az automatizálási feladatokat.
 
-### <a name="browse-to-the-azure-web-app"></a>Keresse meg az Azure-webalkalmazásban
+### <a name="browse-to-the-azure-web-app"></a>Az Azure webalkalmazás megkeresése
 
-Tallózással keresse meg a telepített webalkalmazás webböngészővel.
+Keresse meg az üzembe helyezett webalkalmazást a webböngésző használatával.
 
 ```bash
 http://<app_name>.azurewebsites.net
 ```
 
-Kattintson a **regisztráció** a felső menüben, és hozzon létre egy üres felhasználó.
+A felső menüben kattintson a **Regisztráció** lehetőségre, és hozzon létre egy tesztfelhasználót.
 
-Ha sikeres, és az alkalmazás automatikusan bejelentkezik a létrehozott felhasználót, majd az Azure-ban a MEAN.js alkalmazás rendelkezik MongoDB API Cosmos-adatbázis adatbázis-kapcsolata.
+Ha sikerrel jár, és az alkalmazás automatikusan bejelentkezik a létrehozott felhasználói fiókba, akkor a MEAN.js-alkalmazás az Azure-ban kapcsolódik a Cosmos DB-adatbázis MongoDB API felületéhez.
 
 ![Az Azure App Service-ben futó MEAN.js alkalmazás](./media/tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
 
-Válassza ki **Admin > kezelése cikkek** egyes cikkek hozzáadni.
+Válassza az **Admin > Manage Articles** (Felügyelet > Cikkek kezelése) elemet néhány cikk hozzáadásához.
 
-**Gratulálunk!** Adatalapú Node.js-alkalmazás az Azure App Service Linux futtatja.
+**Gratulálunk!** Egy adatvezérelt Node.js-alkalmazást futtat a Linuxon futó Azure App Service-ben.
 
-## <a name="update-data-model-and-redeploy"></a>Frissítés adatmodell, és helyezze üzembe újra
+## <a name="update-data-model-and-redeploy"></a>Az adatmodell frissítése és ismételt üzembe helyezése
 
-Ebben a lépésben módosítsa a `article` adatok modell, és közzéteheti a módosítást az Azure-bA.
+Ebben a lépésben módosítja az `article` adatmodellt, és közzéteszi a módosítást az Azure-ban.
 
 ### <a name="update-the-data-model"></a>Az adatmodell frissítése
 
-Nyissa meg a helyi MEAN.js tárház _modules/articles/server/models/article.server.model.js_.
+A helyi MEAN.js-adattárban nyissa meg a _modules/articles/server/models/article.server.model.js_ fájlt.
 
-A `ArticleSchema`, vegye fel a `String` nevű típus `comment`. Amikor elkészült, a séma kódot kell néznek ki:
+Az `ArticleSchema` sémában adjon hozzá egy `comment` nevű `String` típust. Amikor elkészült, a séma kódjának így kell kinéznie:
 
 ```javascript
 var ArticleSchema = new Schema({
@@ -349,15 +351,15 @@ var ArticleSchema = new Schema({
 });
 ```
 
-### <a name="update-the-articles-code"></a>Frissítse a cikkek kódot
+### <a name="update-the-articles-code"></a>A cikkek kódjának frissítése
 
-Frissíti a többi a `articles` használandó kódját `comment`.
+Frissítse az `articles` kód többi részét a `comment` használatára.
 
-Módosítania kell öt fájl van: a kiszolgáló tartományvezérlő, és a négy ügyfél nézeteket. 
+Öt fájlt kell módosítania: a kiszolgálóvezérlőt és a négy ügyfélnézetet. 
 
-Nyissa meg _modules/articles/server/controllers/articles.server.controller.js_.
+Nyissa meg a _modules/articles/server/controllers/articles.server.controller.js_ fájlt.
 
-Az a `update` működik, vegye fel a hozzárendelés `article.comment`. A következő kód bemutatja a befejezett `update` függvény:
+A `update` függvényben vegyen fel egy hozzárendelést a `article.comment` számára. Az alábbi kódban a befejezett `update` függvény látható:
 
 ```javascript
 exports.update = function (req, res) {
@@ -371,33 +373,33 @@ exports.update = function (req, res) {
 };
 ```
 
-Nyissa meg _modules/articles/client/views/view-article.client.view.html_.
+Nyissa meg a _modules/articles/client/views/view-article.client.view.html_ fájlt.
 
-A záró felett `</section>` címkét, adja hozzá a következő sort a megjelenítendő `comment` együtt a cikk többi:
+Közvetlenül a záró `</section>` címke felett adja hozzá a következő sort a `comment` megjelenítéséhez a cikk további adatai mellett.
 
 ```HTML
 <p class="lead" ng-bind="vm.article.comment"></p>
 ```
 
-Nyissa meg _modules/articles/client/views/list-articles.client.view.html_.
+Nyissa meg a _modules/articles/client/views/list-articles.client.view.html_ fájlt.
 
-A záró felett `</a>` címkét, adja hozzá a következő sort a megjelenítendő `comment` együtt a cikk többi:
+Közvetlenül a záró `</a>` címke felett adja hozzá a következő sort a `comment` megjelenítéséhez a cikk további adatai mellett.
 
 ```HTML
 <p class="list-group-item-text" ng-bind="article.comment"></p>
 ```
 
-Nyissa meg _modules/articles/client/views/admin/list-articles.client.view.html_.
+Nyissa meg a _modules/articles/client/views/admin/list-articles.client.view.html_ fájlt.
 
-Belül a `<div class="list-group">` elem és a záró felett `</a>` címkét, adja hozzá a következő sort a megjelenítendő `comment` a cikk többi együtt:
+A `<div class="list-group">` elemben és közvetlenül a záró `</a>` címke felett adja hozzá a következő sort a `comment` megjelenítéséhez a cikk további adatai mellett:
 
 ```HTML
 <p class="list-group-item-text" data-ng-bind="article.comment"></p>
 ```
 
-Nyissa meg _modules/articles/client/views/admin/form-article.client.view.html_.
+Nyissa meg a _modules/articles/client/views/admin/form-article.client.view.html_ fájlt.
 
-Keresés a `<div class="form-group">` elem, amely tartalmazza a Küldés gomb, mely dolgozunk:
+Keresse meg az elküldés gombot tartalmazó `<div class="form-group">` elemet, amelynek a következőképpen kell kinéznie:
 
 ```HTML
 <div class="form-group">
@@ -405,7 +407,7 @@ Keresés a `<div class="form-group">` elem, amely tartalmazza a Küldés gomb, m
 </div>
 ```
 
-Ez a tag fölött hozzáadása egy másik `<div class="form-group">` elem, amelynek segítségével a szerkesztése a `comment` mező. Az új elem kell kinéznie:
+Közvetlenül a címke felett adjon hozzá egy másik `<div class="form-group">` elemet, amely lehetővé teszi a `comment` mező szerkesztését a felhasználók számára. Az új elemnek így kell kinéznie:
 
 ```HTML
 <div class="form-group">
@@ -414,54 +416,51 @@ Ez a tag fölött hozzáadása egy másik `<div class="form-group">` elem, amely
 </div>
 ```
 
-### <a name="test-your-changes-locally"></a>A módosításokat a helyi tesztelése
+### <a name="test-your-changes-locally"></a>Módosítások helyi tesztelése
 
 Mentse az összes módosítást.
 
-A helyi terminálablakot, a teszteléshez éles módban a módosításokat.
+A helyi terminálablakban tesztelje újra a módosításokat éles módban.
 
 ```bash
 gulp prod
 NODE_ENV=production node server.js
 ```
 
-> [!NOTE]
-> Ne feledje, hogy a _config/env/production.js_ vissza lett állítva, és a `MONGODB_URI` környezeti változó csak akkor állítható be, az Azure web app alkalmazásban, és nem a helyi számítógépen. A konfigurációs fájl tekinti meg, ha látnia, hogy az üzemi configuration értéke alapértelmezés szerint a helyi MongoDB-adatbázist használja. Ezzel biztosíthatja, hogy nem touch termelési adatok helyben a kódmódosításokat tesztelésekor.
+Nyissa meg a `http://localhost:8443` címet egy böngészőben, és ellenőrizze, hogy bejelentkezett-e.
 
-Navigáljon a `http://localhost:8443` a böngészőben, és győződjön meg arról, hogy be van jelentkezve.
+Válassza az **Admin > Manage Articles** (Felügyelet > Cikkek kezelése) elemet, majd vegyen fel egy cikket a **+** gombra kattintva.
 
-Válassza ki **Admin > cikkek kezelése**, majd adja hozzá a cikk kiválasztásával a  **+**  gombra.
+Megjelenik az új `Comment` szövegmező.
 
-Megjelenik az új `Comment` szövegmező most.
+![Cikkekhez hozzáadott megjegyzésmező](./media/tutorial-nodejs-mongodb-app/added-comment-field.png)
 
-![A hozzáadott megjegyzés mező cikkekhez](./media/tutorial-nodejs-mongodb-app/added-comment-field.png)
+A Node.js leállításához nyomja le a `Ctrl+C` billentyűkombinációt a terminálon.
 
-A terminálban leállításához írja be a Node.js `Ctrl+C`.
+### <a name="publish-changes-to-azure"></a>Módosítások közzététele az Azure-ba
 
-### <a name="publish-changes-to-azure"></a>Változások közzétételére Azure
-
-A Git a változtatások véglegesítése a határidő, majd küldje le a kód módosításokat az Azure-bA.
+Mentse a módosításokat a Gitben, majd továbbítsa a kód módosításait az Azure-ba.
 
 ```bash
 git commit -am "added article comment"
 git push azure master
 ```
 
-Egyszer a `git push` befejezése, navigáljon az Azure web app és az új funkciók kipróbálásához.
+Miután a `git push` befejeződött, lépjen az Azure webalkalmazáshoz, és próbálja ki az új funkciót.
 
-![Az Azure-bA közzétett modell és adatbázis módosítása](media/tutorial-nodejs-mongodb-app/added-comment-field-published.png)
+![Az Azure-ban közzétett modell- és adatbázis-módosítások](media/tutorial-nodejs-mongodb-app/added-comment-field-published.png)
 
-Ha korábban hozzáadott olyan cikkek, továbbra is láthatja azokat. A Cosmos DB meglévő adatait nem elvész. A Adatséma is, a frissítések és a meglévő adatok sértetlenek.
+Ha korábban hozzáadott cikkeket, továbbra is láthatja őket. A Cosmos DB-ben meglévő adatok nem vesztek el. Emellett az adatséma frissítései is érintetlenül hagyják a meglévő adatokat.
 
-## <a name="manage-your-azure-web-app"></a>Az Azure-webalkalmazásban kezelése
+## <a name="manage-your-azure-web-app"></a>Az Azure-webalkalmazás kezelése
 
-Lépjen a [Azure-portálon](https://portal.azure.com) létrehozott webalkalmazás megjelenítéséhez.
+Lépjen az [Azure Portalra](https://portal.azure.com), és tekintse meg a létrehozott webalkalmazást.
 
 A bal oldali menüben kattintson az **App Services** lehetőségre, majd az Azure-webapp nevére.
 
 ![Navigálás a portálon az Azure-webapphoz](./media/tutorial-nodejs-mongodb-app/access-portal.png)
 
-Alapértelmezés szerint a portál megjeleníti a webalkalmazás **áttekintése** lap. Ezen az oldalon megtekintheti az alkalmazás állapotát. Itt elvégezhet olyan alapszintű felügyeleti feladatokat is, mint a böngészés, leállítás, elindítás, újraindítás és törlés. A lap bal oldalán a lapok megnyithatja a különböző konfigurációs lapok megjelenítése.
+Alapértelmezés szerint a portálon a webalkalmazás **Áttekintés** oldala jelenik meg. Ezen az oldalon megtekintheti az alkalmazás állapotát. Itt elvégezhet olyan alapszintű felügyeleti feladatokat is, mint a böngészés, leállítás, elindítás, újraindítás és törlés. Az oldal bal oldalán lévő lapok a különböző megnyitható konfigurációs oldalakat jelenítik meg.
 
 ![Az App Service lap az Azure Portalon](./media/tutorial-nodejs-mongodb-app/web-app-blade.png)
 
@@ -469,19 +468,19 @@ Alapértelmezés szerint a portál megjeleníti a webalkalmazás **áttekintése
 
 <a name="next"></a>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Hogy mit tudott:
+Az alábbiak elvégzését ismerte meg:
 
 > [!div class="checklist"]
-> * A MongoDB API használata az Azure-ban CosmosDB adatbázis létrehozása
-> * A Node.js alkalmazás csatlakoztatása a mongodb-Protokolltámogatással
-> * Az alkalmazás telepítése az Azure-bA
-> * Az adatmodell frissítése, és telepítse újra az alkalmazást
-> * Stream naplók az Azure-ból a Terminálszolgáltatások számára
-> * Felügyelheti az alkalmazást az Azure-portálon
+> * CosmosDB-adatbázis létrehozása a MongoDB API segítségével az Azure-ban
+> * Node.js-alkalmazás csatlakoztatása a MongoDB-hez
+> * Az alkalmazás üzembe helyezése az Azure-ban
+> * Az adatmodell frissítése és az alkalmazás ismételt üzembe helyezése
+> * Naplók streamelése az Azure-ból a saját terminálba
+> * Az alkalmazás kezelése az Azure Portalon
 
-A következő oktatóanyag megtudhatja, hogyan képezheti egy egyéni DNS-nevet a webalkalmazás továbblépés.
+Lépjen a következő oktatóanyaghoz, amelyből megtudhatja, hogyan képezhet le egyedi DNS-nevet a webalkalmazáshoz.
 
 > [!div class="nextstepaction"]
 > [Meglévő egyéni DNS-név hozzákapcsolása az Azure-webalkalmazásokhoz](../app-service-web-tutorial-custom-domain.md)

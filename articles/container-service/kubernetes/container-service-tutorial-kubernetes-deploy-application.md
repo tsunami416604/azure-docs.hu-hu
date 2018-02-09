@@ -1,6 +1,6 @@
 ---
-title: "Azure Tárolószolgáltatás útmutató - alkalmazás központi telepítése"
-description: "Azure Tárolószolgáltatás útmutató - alkalmazás központi telepítése"
+title: "Azure Container Service oktatóanyag – Alkalmazás üzembe helyezése"
+description: "Azure Container Service oktatóanyag – Alkalmazás üzembe helyezése"
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,52 +9,52 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: c763d6867deb76f5b9d197c7062ee07d7ed6d865
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
-ms.translationtype: MT
+ms.openlocfilehash: 46274241841d3fec475a9fb6172e68daaa1f6303
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="run-applications-in-kubernetes"></a>A Kubernetes alkalmazások futtatásához
+# <a name="run-applications-in-kubernetes"></a>Alkalmazások futtatása a Kubernetesben
 
 [!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
 
-Ebben az oktatóanyagban négy hét része, egy minta-alkalmazás központi telepítése egy Kubernetes fürtbe. Befejeződött a lépések az alábbiak:
+Ebben az oktatóanyagban, amely egy hétrészes sorozat negyedik része, egy alkalmazást helyezünk üzembe egy Kubernetes-fürtön. Ennek lépései az alábbiak:
 
 > [!div class="checklist"]
-> * Frissítse a jegyzékfájlt Kubernetes
-> * Futtatja az alkalmazást Kubernetes
+> * Kubernetes-jegyzékfájlok frissítése
+> * Alkalmazás futtatása a Kubernetesben
 > * Az alkalmazás tesztelése
 
-A következő útmutatókból az alkalmazás van méretezhető, frissítése és az Operations Management Suite a Kubernetes fürt figyelésére konfigurálni.
+Az ezt követő oktatóanyagokban méretezzük és frissítjük majd az alkalmazást, és az Operations Management Suite szolgáltatást konfiguráljuk a Kubernetes-fürt monitorozására.
 
-Ez az oktatóanyag azt feltételezi, hogy alapszinten megértse, Kubernetes fogalmak Kubernetes tekintse meg a részletes információkat a [Kubernetes dokumentáció](https://kubernetes.io/docs/home/).
+Ez az oktatóanyag feltételezi, hogy ismeri a Kubernetes alapvető fogalmait. A Kubernetesszel kapcsolatos részletes információkat a [Kubernetes dokumentációjában](https://kubernetes.io/docs/home/) találja.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Az előző oktatóanyagokat egy alkalmazás egy tároló lemezképpel csomagolása, ez a Rendszerkép feltöltése Azure tároló beállításjegyzék és Kubernetes fürt létrejött. 
+Az előző oktatóanyagokban egy alkalmazást csomagoltunk egy tárolórendszerképbe, a rendszerképet feltöltöttük az Azure Container Registrybe, és létrehoztunk egy Kubernetes-fürtöt. 
 
-Az oktatóanyag teljesítéséhez szüksége az előre létrehozott `azure-vote-all-in-one-redis.yml` Kubernetes manifest fájlt. Ez a fájl egy korábbi oktatóprogram letöltött alkalmazás forráskódja. Győződjön meg arról, hogy rendelkezik-e klónozták a tárházban, és hogy módosult-könyvtárak a klónozott tárház be.
+Az oktatóanyag teljesítéséhez szüksége lesz az előzőleg létrehozott `azure-vote-all-in-one-redis.yml` Kubernetes-jegyzékfájlra. Ezt a fájlt az alkalmazás forráskódjával együtt egy korábbi oktatóanyagban letöltöttük. Bizonyosodjon meg róla, hogy az adattár klónja létrejött, és hogy a könyvtárakat átállította a klónozott adattárra.
 
-Ha nem volna ezeket a lépéseket, és szeretné követéséhez, vissza [oktatóanyag 1 – létrehozás tároló képek](./container-service-tutorial-kubernetes-prepare-app.md). 
+Ha ezeket a lépéseket még nem hajtotta végre, és szeretné követni az oktatóanyagot, lépjen vissza az [1. oktatóanyag – Tárolórendszerképek létrehozása](./container-service-tutorial-kubernetes-prepare-app.md) részhez. 
 
 ## <a name="update-manifest-file"></a>A jegyzékfájl frissítése
 
-Ebben az oktatóanyagban szereplő Azure tároló beállításjegyzék (ACR) tároló-lemezkép mentéséhez használatban van. Mielőtt futtatná az alkalmazást, a ACR bejelentkezési kiszolgálónév Kubernetes jegyzékfájl frissíteni kell.
+Ebben az oktatóanyagban az Azure Container Registryt (ACR) tárolólemezkép tárolására használtuk. Mielőtt futtatná az alkalmazást, az ACR bejelentkezési kiszolgálójának nevét frissíteni kell a Kubernetes-jegyzékfájlban.
 
-A ACR bejelentkezési kiszolgáló nevét, a [az acr lista](/cli/azure/acr#list) parancsot.
+Kérje le az ACR bejelentkezési kiszolgáló nevét az [az acr list](/cli/azure/acr#az_acr_list) paranccsal.
 
 ```azurecli-interactive
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-A jegyzékfájl lett egy bejelentkezési kiszolgálónevet az előre létrehozott `microsoft`. Szövegszerkesztőben nyissa meg a fájlt. Ebben a példában a fájl a Megnyitás a `vi`.
+A jegyzékfájlt előzőleg a `microsoft` bejelentkezési kiszolgálónévvel hoztuk létre. Nyissa meg a fájlt bármilyen szövegszerkesztőben. Jelen példában a fájlt a `vi` eszközzel nyitjuk meg.
 
 ```bash
 vi azure-vote-all-in-one-redis.yml
 ```
 
-Cserélje le `microsoft` az ACR bejelentkezési kiszolgáló nevével. Ez az érték megtalálható a sor **47** a jegyzékfájl.
+Helyettesítse be a `microsoft` nevet az ACR bejelentkezési kiszolgálójának nevével. Ez az érték a jegyzékfájl **47**. sorában található.
 
 ```yaml
 containers:
@@ -64,9 +64,9 @@ containers:
 
 Mentse és zárja be a fájlt.
 
-## <a name="deploy-application"></a>Alkalmazás központi telepítése
+## <a name="deploy-application"></a>Alkalmazás üzembe helyezése
 
-Az alkalmazást a [kubectl create](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#create) paranccsal futtathatja. A parancs elemzi az Alkalmazásjegyzék-fájl, és a meghatározott Kubernetes objektumokat létrehozni.
+Az alkalmazást a [kubectl create](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#create) paranccsal futtathatja. A parancs elemzi jegyzékfájlt, és létrehozza a meghatározott Kubernetes-objektumokat.
 
 ```azurecli-interactive
 kubectl create -f azure-vote-all-in-one-redis.yml
@@ -83,7 +83,7 @@ service "azure-vote-front" created
 
 ## <a name="test-application"></a>Alkalmazás tesztelése
 
-A [Kubernetes szolgáltatás](https://kubernetes.io/docs/concepts/services-networking/service/) jön létre, amely mutatja, hogy az alkalmazás az internethez. A folyamat eltarthat néhány percig. 
+A rendszer létrehoz egy [Kubernetes-szolgáltatást](https://kubernetes.io/docs/concepts/services-networking/service/), amely közzéteszi az alkalmazást az interneten. Ez eltarthat pár percig. 
 
 A folyamat állapotának monitorozásához használja [kubectl get service](https://review.docs.microsoft.com/azure/container-service/container-service-kubernetes-walkthrough?branch=pr-en-us-17681) parancsot a `--watch` argumentummal.
 
@@ -91,7 +91,7 @@ A folyamat állapotának monitorozásához használja [kubectl get service](http
 kubectl get service azure-vote-front --watch
 ```
 
-Kezdetben a **külső IP-** a a `azure-vote-front` szolgáltatás jelenik meg `pending`. Miután a külső IP-cím megváltozott `pending` való egy `IP address`, használja `CTRL-C` kubectl figyelési megszakításához.
+Kezdetben az `azure-vote-front` szolgáltatás **EXTERNAL-IP** értéke `pending` állapotú. Miután az EXTERNAL-IP cím `pending` állapotról `IP address` állapotúra változik, a `CTRL-C` billentyűparanccsal állítsa le a kubectl figyelési folyamatát.
 
 ```bash
 NAME               CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
@@ -99,20 +99,20 @@ azure-vote-front   10.0.42.158   <pending>     80:31873/TCP   1m
 azure-vote-front   10.0.42.158   52.179.23.131 80:31873/TCP   2m
 ```
 
-Az alkalmazás megtekintéséhez navigáljon a külső IP-címet.
+Az alkalmazás megtekintéséhez navigáljon a külső IP-címhez.
 
 ![Egy Azure-beli Kubernetes-fürt képe](media/container-service-kubernetes-tutorials/azure-vote.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban az Azure szavazattal alkalmazás Azure-tároló szolgáltatás Kubernetes fürthöz lett telepítve. Befejeződött a következő feladatokból áll:  
+Az oktatóanyagban az Azure Vote alkalmazást egy Azure Container Service-beli Kubernetes-fürtön helyeztünk üzembe. Az eddig végrehajtott feladatok a következők:  
 
 > [!div class="checklist"]
-> * Kubernetes fájlok letöltése
-> * Az alkalmazás futtatásához Kubernetes
-> * Az alkalmazás tesztelése
+> * Letöltöttük a Kubernetes-jegyzékfájlokat
+> * Futtattuk az alkalmazást a Kubernetesben
+> * Teszteltük az alkalmazást
 
-A következő oktatóanyag egy Kubernetes alkalmazási és az alapjául szolgáló Kubernetes infrastruktúra méretezésével kapcsolatos további továbblépés. 
+Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan méretezhető együtt egy Kubernetes-alkalmazás, és az alapul szolgáló Kubernetes-infrastruktúra. 
 
 > [!div class="nextstepaction"]
-> [Skála Kubernetes alkalmazás- és infrastruktúra](./container-service-tutorial-kubernetes-scale.md)
+> [Kubernetes-alkalmazás és -infrastruktúra méretezése](./container-service-tutorial-kubernetes-scale.md)

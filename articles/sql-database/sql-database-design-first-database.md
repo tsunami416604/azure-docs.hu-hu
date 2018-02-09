@@ -1,6 +1,6 @@
 ---
-title: "Az első Azure SQL-adatbázis megtervezése |} Microsoft Docs"
-description: "Ismerje meg, az első Azure SQL-adatbázis az Azure portálon, és az SQL Server Management Studio tervezéséhez."
+title: "Az első Azure SQL-adatbázis megtervezése | Microsoft Docs"
+description: "Ismerje meg, hogyan tervezheti meg első Azure SQL-adatbázisát az Azure Portalon az SQL Server Management Studióval."
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -14,36 +14,36 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 08/25/2017
+ms.date: 01/29/2018
 ms.author: carlrab
-ms.openlocfilehash: 329003c7c4abe89f4af04473ee3664605b2ea81f
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
-ms.translationtype: MT
+ms.openlocfilehash: d7c0ba8a8ac477e7e3175d590a6de13fb3f460cb
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="design-your-first-azure-sql-database"></a>Az első Azure SQL-adatbázis megtervezése
 
-Az Azure SQL-adatbázis egy relációs adatbázis-mint – a szolgáltatás, a Microsoft Cloud (Azure) a rendszer. Ebben az oktatóanyagban elsajátíthatja, hogyan használhatja az Azure portált és [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) számára: 
+Az Azure SQL Database a Microsoft Cloudon (Azure) alapuló, szolgáltatásként nyújtott relációs adatbázis (DBaaS). Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket az Azure Portal és az [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) használatával: 
 
 > [!div class="checklist"]
-> * Adatbázis létrehozása az Azure-portálon
-> * Állítson be egy kiszolgálószintű tűzfalszabályt az Azure-portálon
-> * Kapcsolódni az adatbázishoz ssms alkalmazásával
-> * Táblázatok létrehozása az ssms alkalmazásával
-> * A tömeges adatok betöltése a BCP-vel
-> * Lekérdezés ssms alkalmazásával adatok
-> * Állítsa vissza az adatbázist egy előző [időponthoz kötött visszaállítás](sql-database-recovery-using-backups.md#point-in-time-restore) az Azure-portálon
+> * Adatbázis létrehozása az Azure Portalon
+> * Kiszolgálószintű tűzfalszabály létrehozása az Azure Portalon
+> * Kapcsolódás az adatbázishoz SSMS segítségével
+> * Táblázatok létrehozása az SSMS használatával
+> * Adatok kötegelt betöltése a BCP használatával
+> * Lekérdezés végrehajtása az adatokon az SSMS használatával
+> * Adatbázis egy korábbi [időponthoz kötött visszaállítása](sql-database-recovery-using-backups.md#point-in-time-restore) az Azure Portalon
 
-Ha nem rendelkezik Azure-előfizetéssel, [ingyenes fiók létrehozását](https://azure.microsoft.com/free/) megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez, győződjön meg arról, hogy telepítette:
-- A legújabb verziójának [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS).
-- A legújabb verziójának [BCP és SQLCMD](https://www.microsoft.com/download/details.aspx?id=36433).
+Az oktatóanyag elvégzéséhez győződjön meg arról, hogy telepítette a következőket:
+- Az [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) legújabb verziója.
+- A [BCP és SQLCMD](https://www.microsoft.com/download/details.aspx?id=36433) legújabb verziója.
 
-## <a name="log-in-to-the-azure-portal"></a>Jelentkezzen be az Azure portálra.
+## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 
 Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
@@ -57,7 +57,7 @@ Kövesse az alábbi lépéseket egy üres SQL-adatbázis létrehozásához.
 
 2. Az **Új** oldalon válassza az **Adatbázisok** lehetőséget, majd az **Új** oldal **SQL Database** területén válassza a **Létrehozás** lehetőséget.
 
-   ![Üres-adatbázis létrehozása](./media/sql-database-design-first-database/create-empty-database.png)
+   ![üres adatbázis létrehozása](./media/sql-database-design-first-database/create-empty-database.png)
 
 3. Töltse ki az SQL Database űrlapját a következő információkkal az előző képen látható módon:   
 
@@ -66,24 +66,24 @@ Kövesse az alábbi lépéseket egy üres SQL-adatbázis létrehozásához.
    | **Adatbázis neve** | mySampleDatabase | Az érvényes adatbázisnevekkel kapcsolatban lásd az [adatbázis-azonosítókat](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) ismertető cikket. | 
    | **Előfizetés** | Az Ön előfizetése  | Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.windowsazure.com/Subscriptions) ismertető cikket. |
    | **Erőforráscsoport** | myResourceGroup | Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket. |
-   | **Forrás kiválasztása** | Az üres adatbázis | Meghatározza, hogy egy üres adatbázist kell létrehozni. |
+   | **Forrás kiválasztása** | Üres adatbázis | Meghatározza, hogy egy üres adatbázist kell létrehozni. |
 
-4. Kattintson a **Kiszolgáló** lehetőségre új kiszolgáló létrehozásához és konfigurálásához az új adatbázis számára. Töltse ki a **új kiszolgáló űrlap** a következő információkat: 
+4. Kattintson a **Kiszolgáló** lehetőségre új kiszolgáló létrehozásához és konfigurálásához az új adatbázis számára. Adja meg az alábbi adatokat az **Új kiszolgálóűrlapon**: 
 
    | Beállítás       | Ajánlott érték | Leírás | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | **Kiszolgálónév** | Bármely globálisan egyedi név | Az érvényes kiszolgálónevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket. | 
    | **Kiszolgálói rendszergazdai bejelentkezés** | Bármely érvényes név | Az érvényes bejelentkezési nevekkel kapcsolatban lásd az [adatbázis-azonosítókat](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) ismertető cikket.|
-   | **Jelszó** | Bármely érvényes jelszó | A jelszó legalább 8 karakterből kell állnia, és az alábbiak közül hármat tartalmaznia kell: nagybetűk, kisbetűk, számok és nem alfanumerikus karakterek száma. |
+   | **Jelszó** | Bármely érvényes jelszó | A jelszónak legalább nyolc karakter hosszúságúnak kell lennie, és tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: nagybetűs karakterek, kisbetűs karakterek, számjegyek és nem alfanumerikus karakterek. |
    | **Hely** | Bármely érvényes hely | A régiókkal kapcsolatos információkért lásd [az Azure régióit](https://azure.microsoft.com/regions/) ismertető cikket. |
 
    ![adatbázis-kiszolgáló létrehozása](./media/sql-database-design-first-database/create-database-server.png)
 
 5. Kattintson a **Kiválasztás** gombra.
 
-6. Kattintson a **Tarifacsomag** parancsra a szolgáltatásszint, a DTU-szám és a tárterületméret megadásához. Megismerkedhet a dtu-inak száma és az Ön számára elérhető egyes száma beállításait. 
+6. Kattintson a **Tarifacsomag** parancsra a szolgáltatásszint, a DTU-szám és a tárterületméret megadásához. Fedezze fel a DTU-k számára és a tárterületre vonatkozó, egyes szolgáltatásszinteken elérhető lehetőségeket. 
 
-7. A jelen oktatóanyag esetében válassza ki a **szabványos** szolgáltatásréteget, és a csúszka segítségével válassza ki a **100 dtu-i (S3)** és **400** GB tárhelyet.
+7. Ebben az oktatóanyagban válassza a **Standard** szolgáltatásszintet, majd a csúszkával állítson be **100 DTU (S3)** egységet, illetve **400** GB tárhelyet.
 
    ![adatbázis létrehozása-s1](./media/sql-database-design-first-database/create-empty-database-pricing-tier.png)
 
@@ -92,12 +92,12 @@ Kövesse az alábbi lépéseket egy üres SQL-adatbázis létrehozásához.
    > [!IMPORTANT]
    > \* A szolgáltatási keretbe foglaltnál nagyobb tárterületek előzetes verzióban érhetők el, és extra költségek vonatkoznak rájuk. Részletes információ: [SQL Database – Díjszabás](https://azure.microsoft.com/pricing/details/sql-database/). 
    >
-   >\* Az 1 TB tárhelyméretet meghaladó prémium szintű készletek jelenleg a következő régiókban érhetők el: USA 2. keleti régiója, USA nyugati régiója, USA-beli államigazgatás – Virginia, Nyugat-Európa, Közép-Németország, Délkelet-Ázsia, Kelet-Japán, Kelet-Ausztrália, Közép-Kanada és Kelet-Kanada. Lásd: [P11–P15 – Aktuális korlátozások](sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+   >\* Az 1 TB tárhelyméretet meghaladó prémium szintű készletek jelenleg a következő régiókban érhetők el: Kelet-Ausztrália, Délkelet-Ausztrália, Dél-Brazília, Közép-Kanada, Kelet-Kanada, USA középső régiója, Közép-Franciaország, Közép-Németország, Kelet-Japán, Nyugat-Japán, Korea középső régiója, USA északi középső régiója, Észak-Európa, USA déli középső régiója, Délkelet-Ázsia, az Egyesült Királyság déli régiója, az Egyesült Királyság nyugati régiója, USA keleti régiója 2, USA nyugati régiója, USA-beli államigazgatás – Virginia, és Nyugat-Európa. Lásd: [P11–P15 – Aktuális korlátozások](sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
    > 
 
 9. A kiszolgálószint, a DTU-szám és a tárterületméret kiválasztása után kattintson az **Alkalmaz** gombra.  
 
-10. Válassza ki a **rendezés** az üres adatbázis (a jelen oktatóanyag esetében használja az alapértelmezett érték). Rendezések kapcsolatos további információkért lásd: [rendezések](https://docs.microsoft.com/sql/t-sql/statements/collations)
+10. Válasszon **rendezést** az üres adatbázis számára (ebben az oktatóanyagban használja az alapértelmezett értéket). A rendezésekkel kapcsolatos további információkért lásd: [Rendezések](https://docs.microsoft.com/sql/t-sql/statements/collations)
 
 11. Most, hogy kitöltötte az SQL Database űrlapját, kattintson a **Létrehozás** gombra az adatbázis létrehozásához. Az üzembe helyezés eltarthat néhány percig. 
 
@@ -119,7 +119,7 @@ Az SQL Database szolgáltatás egy tűzfalat hoz létre a kiszolgáló szintjén
 
    ![kiszolgáló neve](./media/sql-database-get-started-portal/server-name.png) 
 
-3. Kattintson a **kiszolgáló tűzfalának beállítása** az eszköztáron. Megnyílik az SQL Database kiszolgálóhoz tartozó **Tűzfalbeállítások** oldal. 
+3. Kattintson a **Kiszolgálótűzfal beállítása** lehetőségre az eszköztáron. Megnyílik az SQL Database kiszolgálóhoz tartozó **Tűzfalbeállítások** oldal. 
 
    ![kiszolgálói tűzfalszabály](./media/sql-database-get-started-portal/server-firewall-rule.png) 
 
@@ -144,9 +144,9 @@ Kérje le az Azure SQL Database kiszolgáló teljes kiszolgálónevét az Azure 
 
    ![kapcsolatadatok](./media/sql-database-get-started-portal/server-name.png)
 
-## <a name="connect-to-the-database-with-ssms"></a>Kapcsolódni az adatbázishoz ssms alkalmazásával
+## <a name="connect-to-the-database-with-ssms"></a>Kapcsolódás az adatbázishoz SSMS segítségével
 
-Használjon [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) az Azure SQL Database-kiszolgálóhoz csatlakozni.
+Az [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) segítségével hozzon létre kapcsolatot az Azure SQL Database-kiszolgálóval.
 
 1. Nyissa meg az SQL Server Management Studiót.
 
@@ -154,9 +154,9 @@ Használjon [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/s
 
    | Beállítás       | Ajánlott érték | Leírás | 
    | ------------ | ------------------ | ------------------------------------------------- | 
-   | Kiszolgáló típusa | Adatbázismotor | Ez értékének megadása kötelező. |
-   | Kiszolgálónév | A teljes kiszolgálónév | A névnek kell lennie, például ehhez hasonló: **mynewserver20170824.database.windows.net**. |
-   | Authentication | SQL Server-hitelesítés | Az SQL-hitelesítés az egyetlen hitelesítési típus, amelyet ebben az oktatóanyagban konfiguráltunk. |
+   | Kiszolgáló típusa | Adatbázismotor | Kötelezően megadandó érték |
+   | Kiszolgálónév | A teljes kiszolgálónév | A névnek a következőhöz hasonlónak kell lennie: **mynewserver20170824.database.windows.net**. |
+   | Hitelesítés | SQL Server-hitelesítés | Az SQL-hitelesítés az egyetlen hitelesítési típus, amelyet ebben az oktatóanyagban konfiguráltunk. |
    | Bejelentkezés | A kiszolgálói rendszergazdai fiók | Ez az a fiók, amely a kiszolgáló létrehozásakor lett megadva. |
    | Jelszó | A kiszolgálói rendszergazdai fiók jelszava | Ezt a jelszót adta meg a kiszolgáló létrehozásakor. |
 
@@ -170,27 +170,27 @@ Használjon [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/s
 
 5. Az Object Explorerben bontsa ki a **Database** (Adatbázisok), majd a **mySampleDatabese** csomópontot a mintaadatbázisban található objektumok megtekintéséhez.
 
-   ![Adatbázis-objektumok](./media/sql-database-connect-query-ssms/connected.png)  
+   ![adatbázis-objektumok](./media/sql-database-connect-query-ssms/connected.png)  
 
-## <a name="create-tables-in-the-database"></a>Hozzon létre táblák az adatbázisban 
+## <a name="create-tables-in-the-database"></a>Táblák létrehozása az adatbázisban 
 
-Hozzon létre egy adatbázis-séma négy-táblázatot, amely a modell használatával felsőoktatási student felügyeleti rendszer [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-reference):
+A [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-reference) használatával hozzon létre egy adatbázis-sémát négy táblázattal, amelyek az egyetemek hallgatókezelési rendszerét modellezik:
 
 - Személy
-- Tanfolyam
-- Tanuló
-- A modell felsőoktatási student felügyeleti rendszer jóváírása
+- Kurzus
+- Hallgató
+- Kredit
 
-Az alábbi ábrán látható, hogyan ezek a táblázatok kapcsolódnak egymáshoz. Ezek a táblázatok némelyike hivatkozhat, más táblák oszlopaira. Például a Student tábla hivatkozik a **PersonId** oszlopa a **személy** tábla. A diagram megértése, hogyan az ebben az oktatóanyagban kapcsolódó egy másik elemzésére. Egy hatékony adatbázistáblák létrehozásáról részletes pillantást, lásd: [hatékony adatbázistáblák létrehozása](https://msdn.microsoft.com/library/cc505842.aspx). Adattípusok kiválasztására vonatkozó további információkért lásd: [adattípusok](https://docs.microsoft.com/sql/t-sql/data-types/data-types-transact-sql).
+Az alábbi ábrán látható, hogyan kapcsolódnak ezek a táblázatok egymáshoz. Ezen táblázatok némelyike más táblák oszlopaira hivatkozik. Például a Hallgató tábla a **PersonId** oszlopra hivatkozik, amely a **Személy** táblában található. Tanulmányozza a diagramot az ebben az oktatóanyagban szereplő táblák kapcsolatainak megértéséhez. A hatékony adatbázistáblák létrehozásának részleteiért lásd: [Hatékony adatbázistáblák létrehozása](https://msdn.microsoft.com/library/cc505842.aspx). Az adattípusok kiválasztására vonatkozó további információkért lásd: [Adattípusok](https://docs.microsoft.com/sql/t-sql/data-types/data-types-transact-sql).
 
 > [!NOTE]
-> Használhatja a [tábla designer az SQL Server Management Studio](https://msdn.microsoft.com/library/hh272695.aspx) létrehozásához, és a táblák tervezéséhez. 
+> Használhatja az [SQL Server Management Studio táblatervezőjét](https://msdn.microsoft.com/library/hh272695.aspx) is a táblák létrehozásához és tervezéséhez. 
 
-![Tábla kapcsolatokat](./media/sql-database-design-first-database/tutorial-database-tables.png)
+![Táblák közötti kapcsolatok](./media/sql-database-design-first-database/tutorial-database-tables.png)
 
 1. Az Object Explorerben kattintson a jobb gombbal a **mySampleDatabase** adatbázisra, majd kattintson a **New Query** (Új lekérdezés) elemre. Megnyílik egy, az adatbázishoz csatlakoztatott üres lekérdezési ablak.
 
-2. A lekérdezési ablakban hajtható végre a következő lekérdezés futtatásával hozzon létre négy táblák az adatbázisban: 
+2. A lekérdezési ablakban hozzon létre négy táblát az adatbázisban a következő lekérdezés futtatásával: 
 
    ```sql 
    -- Create Person table
@@ -239,24 +239,24 @@ Az alábbi ábrán látható, hogyan ezek a táblázatok kapcsolódnak egymásho
 
    ![Táblázatok létrehozása](./media/sql-database-design-first-database/create-tables.png)
 
-3. Bontsa ki a "tábla" csomópontot az SQL Server Management Studio objektum explorer létrehozott tábláinak megtekintéséhez.
+3. Bontsa ki a „táblák” csomópontot az SQL Server Management Studio Object Explorer eszközében a létrehozott táblák megtekintéséhez.
 
-   ![az ssms táblák létrehozása](./media/sql-database-design-first-database/ssms-tables-created.png)
+   ![létrehozott ssms-táblák](./media/sql-database-design-first-database/ssms-tables-created.png)
 
 ## <a name="load-data-into-the-tables"></a>Adatok betöltése a táblákba
 
-1. Hozzon létre egy nevű **SampleTableData** a Letöltések mappába, az adatbázis mintaadatok tárolásához. 
+1. Hozzon létre egy **SampleTableData** nevű mappát a Letöltések mappában az adatbázisba szánt mintaadatok tárolásához. 
 
-2. Kattintson a jobb gombbal az alábbi hivatkozások, és mentse őket a **SampleTableData** mappa. 
+2. Kattintson a jobb gombbal az alábbi hivatkozásokra, és mentse őket a **SampleTableData** mappába. 
 
    - [SampleCourseData](https://sqldbtutorial.blob.core.windows.net/tutorials/SampleCourseData)
    - [SamplePersonData](https://sqldbtutorial.blob.core.windows.net/tutorials/SamplePersonData)
    - [SampleStudentData](https://sqldbtutorial.blob.core.windows.net/tutorials/SampleStudentData)
    - [SampleCreditData](https://sqldbtutorial.blob.core.windows.net/tutorials/SampleCreditData)
 
-3. Nyisson meg egy parancssori ablakot, és keresse meg a SampleTableData mappát.
+3. Nyisson meg egy parancssori ablakot, és lépjen a SampleTableData mappára.
 
-4. A következő parancsok futtatásával mintaadatok beilleszteni a táblázatok értékeit cseréje **kiszolgálónév**, **DatabaseName**, **felhasználónév**, és  **Jelszó** a környezetnek az értékekkel.
+4. Futtassa a következő parancsokat a mintaadatok táblákba való beszúrásához, a környezetének megfelelő értékekre cserélve a **ServerName** (kiszolgálónév), **DatabaseName** (adatbázisnév), **UserName** (felhasználónév) és **Password** (jelszó) értékeit.
   
    ```bcp
    bcp Course in SampleCourseData -S <ServerName>.database.windows.net -d <DatabaseName> -U <Username> -P <password> -q -c -t ","
@@ -265,13 +265,13 @@ Az alábbi ábrán látható, hogyan ezek a táblázatok kapcsolódnak egymásho
    bcp Credit in SampleCreditData -S <ServerName>.database.windows.net -d <DatabaseName> -U <Username> -P <password> -q -c -t ","
    ```
 
-A korábban létrehozott táblázataiba mintaadatok most töltött.
+Ezzel mintaadatokat töltött be a korábban létrehozott táblákba.
 
 ## <a name="query-data"></a>Adatok lekérdezése
 
-Hajtsa végre az alábbi lekérdezéseket a információt lekérni a táblák. Lásd: [SQL-lekérdezések írása](https://technet.microsoft.com/library/bb264565.aspx) tudhat meg többet az SQL-lekérdezések írása. Az első lekérdezés csatlakozik a diákok által "Dominick Pope" tanított egy besorolási 75 %-nál nagyobb rendelkező annak osztályban található összes négy tábla. A második lekérdezés összes négy táblák, és megkeresi, amelyben "Noe Coleman" legalább egyszer regisztrált összes tanfolyamokat.
+Hajtsa végre a következő lekérdezéseket az adatbázistáblákban lévő információk lekéréséhez. Az SQL-lekérdezések írására vonatkozó további információkért lásd: [SQL-lekérdezések írása](https://technet.microsoft.com/library/bb264565.aspx). Az első lekérdezés mind a négy tábla összekapcsolásával keresi meg az összes olyan, „Dominick Pope” által tanított hallgatót, aki 75%-nál jobb osztályzatot ért el az adott kurzuson. A második lekérdezés mind a négy tábla összekapcsolásával keresi meg az összes olyan kurzust, amelyekre „Noe Coleman” valaha feliratkozott.
 
-1. Egy SQL Server Management Studio lekérdezési ablakban hajtható végre a következő lekérdezést:
+1. Az SQL Server Management Studio lekérdezési ablakában hajtsa végre a következő lekérdezést:
 
    ```sql 
    -- Find the students taught by Dominick Pope who have a grade higher than 75%
@@ -288,7 +288,7 @@ Hajtsa végre az alábbi lekérdezéseket a információt lekérni a táblák. L
    AND Grade > 75
    ```
 
-2. Egy SQL Server Management Studio lekérdezési ablakban hajtható végre a következő lekérdezést:
+2. Az SQL Server Management Studio lekérdezési ablakában hajtsa végre a következő lekérdezést:
 
    ```sql
    -- Find all the courses in which Noe Coleman has ever enrolled
@@ -306,36 +306,36 @@ Hajtsa végre az alábbi lekérdezéseket a információt lekérni a táblák. L
 
 ## <a name="restore-a-database-to-a-previous-point-in-time"></a>Adatbázis visszaállítása egy korábbi időpontra
 
-Tegyük fel, hogy véletlenül törölt egy tábla. Ez a valami nem egyszerűen állíthat helyre. Az Azure SQL Database teszi lépjen vissza bármely pontra az utolsó legfeljebb 35 nappal időpont, és állítsa vissza ezt a pontot egy új adatbázist szükséges idő. Ez az adatbázis helyreállítása a törölt adatokat van lehetősége. Az alábbi lépéseket a a mintaadatbázis pontra visszaállításához, mielőtt a táblák lettek hozzáadva.
+Tegyük fel, hogy véletlenül törölt egy táblát. Ez nem olyasvalami, ami könnyen helyreállítható. Az Azure SQL Database segítségével az elmúlt 35 nap bármelyik pillanatára vissza lehet térni, és ezt az időpontot egy új adatbázisra vissza lehet állítani. Ezzel az adatbázissal visszaállíthatók a törölt adatok. Az alábbi lépések a mintaadatbázist a táblák hozzáadása előtti időpontra állítják vissza.
 
-1. Az adatbázis SQL-adatbázis lapján kattintson a **visszaállítása** az eszköztáron. A **visszaállítása** lap megnyitásakor.
+1. Az adatbázishoz tartozó SQL Database oldalán kattintson az eszköztár **Visszaállítás** elemére. Megnyílik a **Visszaállítás** oldal.
 
-   ![Visszaállítás](./media/sql-database-design-first-database/restore.png)
+   ![visszaállítás](./media/sql-database-design-first-database/restore.png)
 
-2. Töltse ki a **visszaállítása** a szükséges adatokat az űrlap:
+2. Töltse ki a **Visszaállítás** űrlapot a szükséges információkkal:
     * Adatbázis neve: Adjon meg egy adatbázisnevet 
-    * Időpontban: Válassza ki a **-időpontban** visszaállítási képernyő lapján 
-    * Visszaállítási pont: válassza ki a megfelelő, amely az adatbázis módosítása előtt
-    * Célkiszolgáló: Ez az érték nem módosítható, ha az adatbázis visszaállítása 
-    * A rugalmas adatbáziskészlet: válasszon **nincs**  
-    * Tarifacsomag: válasszon **20 Dtu** és **40 GB** tárolási.
+    * Időponthoz kötött: Válassza az **Időponthoz kötött** fület a Visszaállítás űrlapon 
+    * Visszaállítási pont: Válasszon ki egy, az adatbázis módosítása előtti időpontot
+    * Célkiszolgáló: Ez az érték adatbázis visszaállításakor nem módosítható 
+    * Rugalmas adatbáziskészlet: Válassza a **Nincs** lehetőséget  
+    * Tarifacsomag: Válassza a **20 DTU** egységet, illetve a **40 GB** tárhelyet.
 
-   ![helyreállítási pont](./media/sql-database-design-first-database/restore-point.png)
+   ![visszaállítási pont](./media/sql-database-design-first-database/restore-point.png)
 
-3. Kattintson a **OK** állítsa vissza az adatbázist a [egy időben visszaállítása](sql-database-recovery-using-backups.md#point-in-time-restore) előtt a táblák lettek hozzáadva. Adatbázis visszaállítása egy másik pontra időben adatbázist hoz létre duplikált ugyanarra a kiszolgálóra az eredeti adatbázist a pont frissítésétől időben ad meg, mindaddig, amíg a megőrzési idő belül van a [szolgáltatásréteg](sql-database-service-tiers.md).
+3. Kattintson az **OK** gombra az adatbázis a táblák hozzáadása előtti [időpontra](sql-database-recovery-using-backups.md#point-in-time-restore) való visszaállításához. Az adatbázis egy másik időpontra való visszaállítása a megadott időpontnak megfelelő duplikált adatbázist hoz létre ugyanazon a kiszolgálón, amelyen az eredeti adatbázis található, amennyiben az adott pont a [szolgáltatásszint](sql-database-service-tiers.md) adatmegőrzési időszakán belül esik.
 
-## <a name="next-steps"></a>Következő lépések 
-Ebben az oktatóanyagban megismerte az alapvető adatbázis-feladatok például egy adatbázis és a táblák létrehozása, betölteni és kérdezhet le adatokat, és állítsa vissza az adatbázist egy korábbi időpontra időben. Megismerte, hogyan végezheti el az alábbi műveleteket:
+## <a name="next-steps"></a>További lépések 
+Ebben az oktatóanyagban megismerte az alapvető adatbázis-feladatokat, mint például az adatbázisok és táblák létrehozását, az adatok betöltését és lekérdezését, valamint az adatbázisok korábbi időpontra való visszaállítását. Megismerte, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]
 > * Adatbázis létrehozása
-> * A tűzfalszabályok beállítása
-> * Kapcsolódás az adatbázishoz [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS)
+> * Tűzfalszabály beállítása
+> * Kapcsolódás az adatbázishoz [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) használatával
 > * Táblázatok létrehozása
-> * Tömeges betöltési adatok
-> * Adatok lekérdezése
-> * Állítsa vissza az adatbázist egy korábbi időpontra, amikor az SQL-adatbázis [időponthoz kötött visszaállítás](sql-database-recovery-using-backups.md#point-in-time-restore) képességek
+> * Adatok kötegelt betöltése
+> * Az adatok lekérdezése
+> * Adatbázis visszaállítása egy korábbi időpontra az SQL Database [időponthoz kötött visszaállítási](sql-database-recovery-using-backups.md#point-in-time-restore) képességeinek használatával
 
-Előzetes tervezése a Visual Studio és a C# egy adatbázist a következő oktatóanyagot.
+Folytassa a következő oktatóanyaggal, amely az adatbázisok Visual Studio és C# használatával történő tervezését ismerteti.
 
 > [!div class="nextstepaction"]
->[Azure SQL-adatbázis megtervezése és C# és ADO.NET](sql-database-design-first-database-csharp.md)
+>[Azure SQL-adatbázis megtervezése, és kapcsolódás C# és ADO.NET használatával](sql-database-design-first-database-csharp.md)
