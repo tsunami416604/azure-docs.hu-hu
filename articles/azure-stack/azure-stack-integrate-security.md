@@ -9,16 +9,13 @@ ms.date: 01/31/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: 
-ms.openlocfilehash: 0ce7585552f39f59f83df88320e52ea257bb74dd
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 16d97765c9340555bfc0db22975a43227cc6b517
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-stack-datacenter-integration---security"></a>Az Azure verem datacenter integrációs - biztonsági
-
-*A következőkre vonatkozik: Azure verem integrált rendszerek*
-
 Az Azure verem tervezték és a biztonságot szem előtt tartva a beépített. Azure verem rendszer zárolt, így biztonsági ügynök telepítése nem támogatott.
 
 Ez a cikk segít Azure verem biztonsági funkciók integrálása a biztonsági megoldások már telepítették az adatközpontban található.
@@ -44,7 +41,7 @@ Az alábbi eljárás egy példa segítségével Azure Tártallózó konfigurál�
 
 3. Válassza ki **frphealthaccount**, majd kattintson a **hívóbetűk**.
 
-   ![Elérési kulcs](media/azure-stack-integrate-security/access-keys.png)
+   ![Elérési kulcsok](media/azure-stack-integrate-security/access-keys.png)
 
 4. A hozzáférési kulcs másolása a vágólapra.
 5. Nyissa meg az Azure Storage Explorert.

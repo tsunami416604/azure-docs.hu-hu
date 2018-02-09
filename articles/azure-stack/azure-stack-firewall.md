@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 02/01/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: f7b621312677c0b250e267770ae0c445ee9f083f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 919618c0779d47f0add02d5e7d3ab9ab4b5bdd10
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-stack-firewall-integration"></a>Azure verem tűzfal-integráció
 Javasoljuk, hogy a tűzfal eszközt használ-e biztonságos Azure verem segítségével. Bár tűzfalak segítségére lehetnek többek között elosztott-szolgáltatásmegtagadásos (DDOS-) támadások, a behatolás-észlelés és a tartalomvizsgálat a, a teljesítmény szűk keresztmetszetek az Azure storage szolgáltatások, például a blobot, táblát és üzenetsort is válnának is.
@@ -41,7 +41,7 @@ A NAT nyilvános VIP-címhez használatával downsides vannak:
 - Hibrid felhős rendszerekben az Azure-ral vegye figyelembe, hogy az Azure nem támogatja a hálózati címfordítást. használja a végpont VPN-alagúton beállítása
 
 ### <a name="ssl-decryption"></a>SSL-visszafejtés
-Jelenleg az ajánlott megoldás a SSL visszafejtés után. tiltsa le az összes Azure verem forgalmat, akkor a későbbiekben lesz nyújtunk segítséget történő SSL visszafejtési Azure verem.
+Jelenleg javasoljuk, hogy tiltsa le az összes Azure verem forgalom SSL visszafejtése. A jövőbeli frissítéseket támogatja, SSL visszafejtési Azure verem engedélyezésével kapcsolatos útmutatást fog adni.
 
 ## <a name="edge-firewall-scenario"></a>Peremhálózati tűzfal forgatókönyv
 Az él központi telepítése Azure verem közvetlenül a peremhálózati útválasztó vagy a tűzfal mögött van telepítve. Ezekben az esetekben, támogatott a tűzfalon a szegély vagy a szegély eszközként működő, ha az támogatja-e azonos költségű több útvonalas (ECMP) vagy a BGP, vagy a statikus útválasztás.
@@ -59,7 +59,7 @@ A vállalati intranet vagy szegélyhálózat üzembe helyezés Azure-verem telep
 
 ![Az Azure verem szegélyhálózati hálózati – példa](.\media\azure-stack-firewall\perimeter-network-scenario.png)
 
-## <a name="learn-more"></a>Részletek
+## <a name="learn-more"></a>További információ
 További információ [Azure verem végpontok által használt portokról és protokollokról](azure-stack-integrate-endpoints.md).
 
 ## <a name="next-steps"></a>További lépések

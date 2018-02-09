@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 02/06/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 2c013c11dea5217d564ac15a13a8d11614989057
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: f93fc95d6bed517cae3adb706f690941f97c366e
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>Integrált Azure verem rendszerek Datacenter integrációs szempontjai
 Ha érdekli, egy integrált Azure verem rendszerben, tisztában kell lennie egy központi telepítés, és hogy a rendszer hogyan illeszkedik az Adatközpont a fő szempontokat. Ez a cikk a magas szintű áttekintést nyújt az ezeket a szempontokat segítséget nyújtanak az Azure-verem többcsomópontos rendszer fontos infrastruktúra döntéseket. Ezeket a szempontokat megértését megkönnyíti módon működik-e az OEM hardver gyártójánál azok telepítése Azure verem az Adatközpont.  
@@ -45,7 +45,7 @@ Fontolja meg, melyik identitásszolgáltató az Azure Alkalmazásveremben üzemb
 
 Az identitás szolgáltató választásra nincs hatással a bérlői virtuális gépeket, a identitásrendszere és fiókokat használnak, hogy lehetővé teszi azok csatlakoztatását egy Active Directory-tartomány, stb. Ez a külön.
 
-Az identitásszolgáltató kiválasztására vonatkozó többet is megtudhat a [telepítési döntések Azure verem integrált rendszerek cikk](.\azure-stack-deployment-decisions.md).
+Az identitásszolgáltató kiválasztására vonatkozó többet is megtudhat a [Azure verem integrált rendszerek kapcsolat modellek cikk](.\azure-stack-connection-models.md).
 
 ### <a name="ad-fs-and-graph-integration"></a>Az AD FS és a Graph-integráció
 Ha az AD FS segítségével az identitás-szolgáltatóként Azure verem telepítése mellett dönt, integrálnia kell az AD FS-példányt Azure veremben keresztül összevonási megbízhatósági kapcsolat egy meglévő AD FS-példányt a. Ez lehetővé teszi, hogy egy meglévő Active Directory-erdőben való hitelesítéshez szükséges erőforrások Azure verem identitások.
@@ -53,22 +53,29 @@ Ha az AD FS segítségével az identitás-szolgáltatóként Azure verem telepí
 A Graph szolgáltatás Azure-készletben is integrálható a meglévő Active Directory. Ez lehetővé teszi, hogy kezelése szerepköralapú hozzáférés-vezérlés (RBAC) Azure-készletben. Delegált hozzáférést egy erőforráshoz, amikor a diagram összetevő keres a felhasználói fiók a meglévő Active Directory-erdőben, az LDAP protokoll használatával.
 
 Az alábbi ábrán látható, integrált az AD FS és a Graph adatforgalmat.
-![Az AD FS és a Graph adatforgalmat bemutató ábra](media/azure-stack-deployment-planning/ADFSIntegration.PNG)
+![Az AD FS és a Graph adatforgalmat bemutató ábra](media/azure-stack-datacenter-integration/ADFSIntegration.PNG)
 
 ## <a name="licensing-model"></a>Licencelési modelltől
+Döntse el, melyik licencelési modelltől szeretne használni. Az elérhető lehetőségek függ-e az internethez csatlakozó Azure verem telepít:
+- Az egy [kapcsolódó telepítési](azure-stack-connected-deployment.md), dönthet úgy, vagy a fizetési,-akkor-használható, vagy a kapacitás-alapú licencelési. Fizetési,-akkor-használható jelentés használatra, amely majd lesz számlázva keresztül Azure kereskedelmi Azure való kapcsolatot igényel. 
+- Csak kapacitás-alapú licencelési támogatott, ha Ön [telepítése leválasztása](azure-stack-disconnected-deployment.md) az internetről. 
 
-Döntse el, melyik licencelési modelltől szeretne használni. Csatlakoztatott üzembe helyezés esetén dönthet úgy, vagy a fizetési,-akkor-használható, vagy a kapacitás-alapú licencelési. Fizetési,-akkor-használható jelentés használatra, amely majd lesz számlázva keresztül Azure kereskedelmi Azure való kapcsolatot igényel. Csak kapacitás-alapú licencelési támogatott, ha telepít kapcsolódik az internethez. A licencelési modellek kapcsolatos további információkért lásd: [Microsoft Azure verem csomagolás és árképzési](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf).
+A licencelési modellek kapcsolatos további információkért lásd: [Microsoft Azure verem csomagolás és árképzési](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf).
+
 
 ## <a name="naming-decisions"></a>Elnevezési döntések
 
-Tervezze meg az Azure-verem névtér, különösen a régió nevét, és külső tartománynév módját gondolja át lesz szüksége. A nyilvánosan elérhető végpontok Azure verem telepítés teljesen minősített tartománynevét (FQDN) beállítás a következő két neve kombinációja &lt; *régió*&gt;&lt;*external_FQDN*  &gt;, például *east.cloud.fabrikam.com*. Ebben a példában az Azure-verem portálok lenne a következő URL-címekkel érhető el:
+Tervezze meg az Azure-verem névtér, különösen a régió nevét és külső tartománynév módját gondolja át lesz szüksége. Az Azure Alkalmazásveremben üzembe nyilvánosan elérhető végpontok külső teljesen minősített tartománynevét (FQDN) beállítás a következő két neve kombinációja: &lt; *régió*&gt;.&lt; *fqdn*&gt;. Például *east.cloud.fabrikam.com*. Ebben a példában az Azure-verem portálok lenne a következő URL-címekkel érhető el:
 
 - https://portal.east.cloud.fabrikam.com
 - https://adminportal.east.cloud.fabrikam.com
 
+> [!IMPORTANT]
+> A régió nevét, az Azure-verem üzembe helyezéshez választott egyedinek kell lennie, és a portál címek jelennek meg. 
+
 A következő táblázat összefoglalja a tartományi névhasználati döntéseket.
 
-| Name (Név) | Leírás | 
+| Név | Leírás | 
 | -------- | ------------- | 
 |Régió neve | Az első Azure verem terület neve. Ez a név a nyilvános virtuális IP-címek (VIP), amely Azure verem intelligens módon kezeli az FQDN részeként használatos. A terület neve általában egy fizikai hely azonosítója, például egy adatközpont helye lesz. | 
 | Külső tartomány neve | A tartománynévrendszer (DNS) zóna neve kívülre irányuló virtuális IP-címmel rendelkező végpontokon. Az FQDN használatos a nyilvános virtuális IP-címmel. | 
@@ -114,7 +121,7 @@ A hibrid kapcsolat fontos figyelembe kell venni, hogy milyen típusú központi 
  
 A következő táblázat összefoglalja a hibrid kapcsolat forgatókönyveket, az informatikai szakemberek, hátrányait és használati eseteket.
 
-| Forgatókönyv | Csatlakozási módszer | Informatikai szakemberek | Hátrányok | A jó |
+| Eset | Csatlakozási módszer | Informatikai szakemberek | Hátrányok | A jó |
 | -- | -- | --| -- | --|
 | Az egyszeri bérlői Azure verem, intranet központi telepítés | Kimenő forgalmat kezelő NAT | Gyorsabb átvitelt jobb sávszélességet. Egyszerű megvalósítani; nem szükséges átjárók. | A forgalom nem titkosított; Nincs elkülönítés vagy a titkosítási túl a TOR. | Nagyvállalati környezetben, ahol egyetlen bérlő számára egyaránt megbízhatónak számítanak.<br><br>A vállalatok, amelyek az Azure-bA Azure ExpressRoute-kapcsolatcsoportot. |
 | Több-bérlős Azure verem intranetes központi telepítés | Telephelyek közötti VPN | A bérlői hálózatok érkező forgalom cél biztonságos. | Pont-pont VPN-alagúton korlátozza a sávszélesség.<br><br>A virtuális hálózat és a VPN-eszköz a cél hálózati átjáró szükséges. | Nagyvállalati környezetben, ahol az egyes bérlői forgalom védetté kell tennie a többi bérlőtől. |
@@ -128,14 +135,14 @@ Kapcsolódás Azure verem keresztül Azure [ExpressRoute](https://docs.microsoft
 
 Az alábbi ábrán látható ExpressRoute single-bérlő forgatókönyv esetén (ha "Az ügyfél kapcsolat" ExpressRoute-kapcsolatcsoport van).
 
-![Diagram megjelenítése egyetlen-bérlő ExpressRoute forgatókönyv](media/azure-stack-deployment-planning/ExpressRouteSingleTenant.PNG)
+![Diagram megjelenítése egyetlen-bérlő ExpressRoute forgatókönyv](media/azure-stack-datacenter-integration/ExpressRouteSingleTenant.PNG)
 
 Az alábbi ábrán látható ExpressRoute egy több-bérlős forgatókönyv esetén.
 
-![Diagram ábrázoló több-bérlős ExpressRoute forgatókönyv](media/azure-stack-deployment-planning/ExpressRouteMultiTenant.PNG)
+![Diagram ábrázoló több-bérlős ExpressRoute forgatókönyv](media/azure-stack-datacenter-integration/ExpressRouteMultiTenant.PNG)
 
 ## <a name="external-monitoring"></a>Külső figyelése
-Az összes riasztás egyetlen nézetben a Azure Alkalmazásveremben üzembe és az eszközök, illetve riasztások integrálja a meglévő informatikai szolgáltatás felügyeleti munkafolyamatainak jegykezelési, Azure verem integrálható figyelési megoldásoknak külső datacenter.
+Az összes riasztás egyetlen nézetben a Azure Alkalmazásveremben üzembe és az eszközök, illetve riasztások integrálja a meglévő informatikai szolgáltatás felügyeleti munkafolyamatainak jegykezelési, akkor [Azure verem integrálása figyelési megoldásoknakkülsődatacenter](azure-stack-integrate-monitor.md).
 
 Az Azure-verem megoldás részét képező, a hardver életciklus állomás kívüli Azure verem hardver OEM szállító által biztosított felügyeleti eszközöket futtató számítógépen. Ezek az eszközök vagy egyéb megoldások, amelyek közvetlenül integrálható az Adatközpont meglévő figyelési megoldások is használhatja.
 
@@ -143,15 +150,15 @@ A következő táblázat összefoglalja a jelenleg rendelkezésre álló beáll�
 
 | Terület | Külső felügyeleti megoldás |
 | -- | -- |
-| Az Azure verem szoftver | - [Az Azure verem felügyeleti csomag az Operations Manager](https://azure.microsoft.com/blog/management-pack-for-microsoft-azure-stack-now-available/)<br>- [Nagios beépülő modul](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details)<br>-REST-alapú API-hívások | 
-| Fizikai kiszolgálók (bmc-k IPMI keresztül) | -Operations Manager szállító felügyeleti csomag<br>-OEM hardveres szállító által biztosított megoldás<br>-Hardvergyártójához Nagios beépülő modulok | OEM partner által támogatott felügyeleti megoldás (tartalmazza) | 
-| Hálózati eszközök (SNMP) | -Az operations Manager hálózati eszközök felderítését<br>-OEM hardveres szállító által biztosított megoldás<br>-Nagios kapcsoló beépülő modul |
-| Bérlői előfizetéshez állapotfigyelés | - [System Center felügyeleti csomag a Windows Azure](https://www.microsoft.com/download/details.aspx?id=50013) | 
+| Az Azure verem szoftver | [Az Azure verem felügyeleti csomag az Operations Manager](https://azure.microsoft.com/blog/management-pack-for-microsoft-azure-stack-now-available/)<br>[Nagios beépülő modul](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details)<br>REST-alapú API-hívások | 
+| Fizikai kiszolgálók (bmc-k IPMI keresztül) | OEM hardver - Operations Manager szállító felügyeleti csomag<br>OEM hardveres szállító által biztosított megoldás<br>Hardver szállítójával Nagios beépülő modulok | OEM partner által támogatott felügyeleti megoldás (tartalmazza) | 
+| Hálózati eszközök (SNMP) | Az Operations Manager hálózati eszközök felderítését<br>OEM hardveres szállító által biztosított megoldás<br>Nagios kapcsoló beépülő modul |
+| Bérlői előfizetéshez állapotfigyelés | [System Center felügyeleti csomag a Windows Azure](https://www.microsoft.com/download/details.aspx?id=50013) | 
 |  |  | 
 
 Vegye figyelembe az alábbi követelményeknek:
 - A megoldás, használja az ügynök nélkül kell lennie. Külső ügynökök belül Azure verem összetevő nem telepíthető. 
-- Ha szeretné használni a System Center Operations Manager, az ehhez szükséges, az Operations Manager 2012 R2 vagy az Operations Manager 2016-ot.
+- Ha szeretné használni a System Center Operations Manager, az Operations Manager 2012 R2 vagy az Operations Manager 2016 megadása kötelező.
 
 ## <a name="backup-and-disaster-recovery"></a>Biztonsági mentés és katasztrófa utáni helyreállítás
 
@@ -159,7 +166,7 @@ Biztonsági mentés és katasztrófa utáni helyreállítás megtervezése magá
 
 ### <a name="protect-infrastructure-components"></a>Infrastruktúra-összetevőihez védelme
 
-Az Azure verem megadott megosztásra készít biztonsági infrastruktúra-összetevőihez.
+Is [biztonsági mentése Azure verem](azure-stack-backup-back-up-azure-stack.md) infrastruktúra-összetevőihez egy SMB-fájlmegosztás meg kell adnia:
 
 - Külső SMB-fájlmegosztásra egy meglévő, Windows-alapú fájlkiszolgálón vagy egy külső eszköz lesz szüksége.
 - A biztonsági mentés hálózati kapcsolók és a hardver életciklus gazdagép ugyanennek a megosztásnak kell használnia. OEM hardvergyártójához útmutatás nyújtása a biztonsági mentési és visszaállítási ezeket az összetevőket, ezek a külső Azure verem segítségével. Ön a felelős a OEM gyártója által biztosított a javaslaton alapuló biztonsági mentési munkafolyamatokat futtató.
@@ -177,7 +184,7 @@ A másodlagos helyre replikálja az adatokat, és az alkalmazás feladatátvéte
 > [!IMPORTANT]
 > Integrált rendszerek eredeti kiadásának az infrastruktúra-szolgáltatási virtuális gép vendég szintű védelmet technológiákat lesz támogatott. Az alapul szolgáló infrastruktúra-kiszolgálók nem telepíthet ügynököket.
 
-## <a name="learn-more"></a>Részletek
+## <a name="learn-more"></a>További információ
 
 - További információ a használati esetek, megvásárlásáról, partnerek és OEM hardverszállítók: a [Azure verem](https://azure.microsoft.com/overview/azure-stack/) termék oldalát.
 - A terv és a földrajzi rendelkezésre állása információt Azure verem integrált rendszerek, tekintse meg a: [Azure verem: Azure kiterjesztése](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/). 
