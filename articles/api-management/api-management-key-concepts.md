@@ -14,11 +14,11 @@ ms.topic: overview
 ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 727be96828b9217f89214722f474abfc220b0b3c
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 010c4619a2a4d8ae477ebd6e66747c55cde0fc08
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="what-is-api-management"></a>Mi az API Management?
 
@@ -30,7 +30,7 @@ Az alábbi videó segítségével áttekintheti az Azure API Management szolgál
 > 
 > 
 
-Ez a témakör áttekintést nyújt az APIM-ot érintő gyakori forgatókönyvekről.  Emellett rövid áttekintést ad az APIM rendszer főbb összetevőiről. A témakör ezután részletesebben mutatja be az egyes összetevőket.
+Ez a cikk áttekintést nyújt az APIM-ot érintő gyakori forgatókönyvekről.  Emellett rövid áttekintést ad az APIM rendszer főbb összetevőiről. A cikk ezután részletesebben mutatja be az egyes összetevőket.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -50,14 +50,14 @@ A rendszer az alábbi összetevőkből áll:
   * Villámgyorsan, kódmódosítás nélkül átalakítja az API-kat.
   * Gyorsítótárazza a háttérrendszer válaszait, ahol ez be van állítva.
   * Elemzési céllal naplózza a hívások metaadatait.
-* A **közzétevő portál** az a rendszergazdai felület, ahol beállíthatja az API-programot. A következőkre lehet használni:
+* Az **Azure Portal** az a rendszergazdai felület, ahol beállíthatja az API-programot. A következőkre lehet használni:
   
   * API-séma meghatározása vagy importálása.
   * API-k termékekbe csomagolása.
   * Házirendek, például kvóták vagy átalakítások beállítása az API-kra.
   * Elemzések lekérése.
   * Felhasználók kezelése.
-* A **fejlesztői portál** a fejlesztők fő webhelye, ahol a következőket tehetik:
+* A **Developer portal** a fejlesztők fő webhelye, ahol a következőket tehetik:
   
   * Elolvashatják az API-dokumentációt.
   * API-kat próbálhatnak ki az interaktív konzollal.
@@ -104,7 +104,7 @@ Amikor a fejlesztők előfizetnek egy termékre, megkapják a termék elsődlege
 További információkért lásd: [Fejlesztők létrehozása vagy meghívása][How to create or invite developers] és [Csoportok társítása a fejlesztőkhöz][How to associate groups with developers].
 
 ## <a name="policies"></a> Házirendek
-A házirend az API Management kiemelkedő funkciója, amely lehetővé teszi a közzétevő számára, hogy konfigurálással módosítsa az API viselkedését. A házirendek utasítások gyűjteményei, amelyeket az API-k kérelmei és válaszai szerint egymást követően hajtanak végre. A népszerű utasítások közé tartozik a formátumátalakítás XML-ről JSON-ra, a hívások sebességének korlátozása a fejlesztőktől érkező hívások számának korlátozásához és számos más elérhető házirend.
+A házirend az API Management kiemelkedő funkciója, amely lehetővé teszi az Azure Portal számára, hogy konfigurálással módosítsa az API viselkedését. A házirendek utasítások gyűjteményei, amelyeket az API-k kérelmei és válaszai szerint egymást követően hajtanak végre. A népszerű utasítások közé tartozik a formátumátalakítás XML-ről JSON-ra, a hívások sebességének korlátozása a fejlesztőktől érkező hívások számának korlátozásához és számos más elérhető házirend.
 
 A házirend-kifejezéseket attribútumértékekként vagy szövegértékekként lehet használni bármelyik API Management házirendben, hacsak a házirend másként nem rendelkezik. Néhány házirend, például a [Vezérlés folyamata](https://msdn.microsoft.com/library/azure/dn894085.aspx#choose) és a [Változó beállítása](https://msdn.microsoft.com/library/azure/dn894085.aspx#set-variable) házirend-kifejezéseken alapul. További információ: [Speciális szabályzatok](https://msdn.microsoft.com/library/azure/dn894085.aspx#AdvancedPolicies) és [Szabályzatkifejezések](https://msdn.microsoft.com/library/azure/dn910913.aspx).
 

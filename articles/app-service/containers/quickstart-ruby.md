@@ -16,11 +16,11 @@ ms.topic: quickstart
 ms.date: 10/10/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: f160a3291357387fcef75d8c2257e6e37274b0e7
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: db3086724c22e485e2a9a69c36a990fc5b8016a9
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-a-ruby-app-in-app-service-on-linux"></a>Ruby alkalmazás létrehozása a Linux App Service-ben | Microsoft Docs
 
@@ -28,12 +28,12 @@ A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan skálázha
 
 ![Hello-world](./media/quickstart-ruby/hello-world-updated.png)
 
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 * <a href="https://www.ruby-lang.org/en/documentation/installation/#rubyinstaller" target="_blank">A Ruby 2.4.1 vagy újabb telepítése</a>
 * <a href="https://git-scm.com/" target="_blank">A Git telepítése</a>
-
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="download-the-sample"></a>A minta letöltése
 
@@ -90,19 +90,19 @@ Az alkalmazás konfigurálása ekkor kész. Webböngészőjével a `http://local
 
 ## <a name="create-a-ruby-web-app-on-azure"></a>Ruby-webalkalmazás létrehozása Azure-ban
 
-A webalkalmazáshoz szükséges adategységek tárolásához szükség van egy erőforráscsoportra. Az erőforráscsoport létrehozásához használja az [az group create]() parancsot.
+A webalkalmazáshoz szükséges adategységek tárolásához szükség van egy erőforráscsoportra. Erőforráscsoport létrehozásához használja a következő parancsot: [`az group create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create).
 
 ```azurecli-interactive
 az group create --location westeurope --name myResourceGroup
 ```
 
-Hozzon létre egy App Service-csomagot webalkalmazása számára az [az appservice plan create](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create) paranccsal.
+Használja az [ `az appservice plan create` ](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create) parancsot, ha egy App Service-csomagot szeretne létrehozni a webalkalmazáshoz.
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --is-linux
 ```
 
-Ezt követően az [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) paranccsal hozza létre az újonnan készített App Service-csomagot használó webalkalmazást. Figyelje meg, hogy a futtatókörnyezet beállítása `ruby|2.3` lett. Ne felejtse el kicserélni az `<app name>` nevet egy egyedi alkalmazásnévre.
+Ezt követően az [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) paranccsal hozza létre az újonnan készített App Service-csomagot használó webalkalmazást. Figyelje meg, hogy a futtatókörnyezet beállítása `ruby|2.3` lett. Ne felejtse el kicserélni az `<app name>` nevet egy egyedi alkalmazásnévre.
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> \
@@ -147,7 +147,7 @@ To https://<your web app name>.scm.azurewebsites.net/<your web app name>.git
 myuser@ubuntu1234:~workspace/<app name>$
 ```
 
-Az üzembe helyezés befejezését követően az [az webalkalmazás restart](/cli/azure/webapp?view=azure-cli-latest#az_webapp_restart) paranccsal indítsa újra a webalkalmazást az üzembe helyezés érvénybe léptetéséhez az itt látottak szerint:
+Az üzembe helyezés befejezését követően az [`az webapp restart`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_restart) paranccsal indítsa újra a webalkalmazást az üzembe helyezés érvénybe léptetéséhez az itt látottak szerint:
 
 ```azurecli-interactive
 az webapp restart --name <app name> --resource-group myResourceGroup

@@ -1,6 +1,6 @@
 ---
-title: "Mi az Operations Management Suite (OMS) részét képező Log Analytics? | Microsoft Docs"
-description: "A Log Analytics az Operations Management Suite (OMS) egy szolgáltatása, amely segít összegyűjteni és elemezni a felhőben és a helyszíni környezetekben található erőforrások által létrehozott működési adatokat.  Ez a cikk tömör áttekintést nyújt a Log Analytics különböző összetevőiről, és részletes tartalmakra mutató hivatkozásokat tartalmaz."
+title: Mi az a Log Analytics az Azure-ban? | Microsoft Docs
+description: "A Log Analytics az Azure egy szolgáltatása, amely segít összegyűjteni és elemezni a felhőben és a helyszíni környezetekben található erőforrások által létrehozott működési adatokat.  Ez a cikk tömör áttekintést nyújt a Log Analytics különböző összetevőiről, és részletes tartalmakra mutató hivatkozásokat tartalmaz."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/12/2017
+ms.date: 01/24/2018
 ms.author: bwren
-ms.openlocfilehash: 7f12958550738ff465c06d0e5d774d8bffa0b90b
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: a95528f5bd259a36ea96c7bc0660ca082c09d6e6
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="what-is-log-analytics"></a>Mi az a Log Analytics?
-A Log Analytics az [Operations Management Suite\(OMS\)](../operations-management-suite/operations-management-suite-overview.md) egy szolgáltatása, amely figyeli a felhőbeli és helyszíni környezeteket az elérhetőségük és a teljesítményük fenntartása érdekében.  A felhőben és a helyszíni környezetben található erőforrások által létrehozott, valamint egyéb figyelési eszközök által biztosított adatokat gyűjtésével biztosítsa elemzést több forráson.  Ez a cikk tömören összefoglalja a Log Analytics nyújtotta értékeket, áttekintés nyújt a működéséről, és részletes tartalmakra mutató hivatkozásokat tartalmaz, így még többet tudhat meg.
+A Log Analytics az Azure egy szolgáltatása, amely figyeli a felhőbeli és helyszíni környezeteket a rendelkezésre állásuk és teljesítményük fenntartása érdekében.  A felhőben és a helyszíni környezetben található erőforrások által létrehozott, valamint egyéb figyelési eszközök által biztosított adatokat gyűjtésével biztosítsa elemzést több forráson.  Ez a cikk tömören összefoglalja a Log Analytics nyújtotta értékeket, áttekintés nyújt a működéséről, és részletes tartalmakra mutató hivatkozásokat tartalmaz, így még többet tudhat meg.
 
 ## <a name="is-log-analytics-for-you"></a>A Log Analytics az Önnek megfelelő szolgáltatás?
 Ha jelenleg nincs monitorozás üzembe helyezve az Azure-környezetében, érdemes az [Azure Monitorral](../monitoring-and-diagnostics/monitoring-overview.md) kezdenie, amely az Azure-erőforrások figyelési adatait gyűjti és elemzi.  A Log Analytics [adatokat gyűjt az Azure Monitorból](log-analytics-azure-storage.md), hogy összehasonlítsa őket egyéb adatokkal, valamint további elemzést hajtson végre.
@@ -30,9 +30,9 @@ Ha szeretné figyelni a helyszíni környezetet, illetve már megvalósította a
 
 
 ## <a name="using-log-analytics"></a>A Log Analytics használata
-A Log Analytics szolgáltatást elérheti az OMS-portálon vagy az Azure Portalon keresztül, amelyek bármely böngészőben futnak, és hozzáférést biztosítanak a konfigurációs beállításokhoz és több eszközhöz, amelyekkel elemezheti az összegyűjtött adatokat, és műveleteket végezhet el rajtuk.  A portálon [naplókereséseket](log-analytics-log-searches.md) használhat, ahol lekérdezéseket hozhat létre az összegyűjtött adatok és az [irányítópultok](log-analytics-dashboards.md) elemzéséhez. Ezeket a legértékesebb kereséseinek grafikus nézeteivel, valamint a további funkciókat és elemzőeszközöket biztosító [megoldásaival](log-analytics-add-solutions.md) testre is szabhatja.
+A Log Analytics szolgáltatást elérheti az Azure Portalon keresztül, amely bármely böngészőben futtatható, és hozzáférést biztosít a konfigurációs beállításokhoz és több eszközhöz, amelyekkel elemezheti az összegyűjtött adatokat, és műveleteket végezhet el rajtuk.  A portálon [naplókereséseket](log-analytics-log-searches.md) használhat, ahol lekérdezéseket hozhat létre az összegyűjtött adatok és az [irányítópultok](log-analytics-dashboards.md) elemzéséhez. Ezeket a legértékesebb kereséseinek grafikus nézeteivel, valamint a további funkciókat és elemzőeszközöket biztosító [megoldásaival](log-analytics-add-solutions.md) testre is szabhatja.
 
-Az OMS-portálról származó alábbi képen az irányítópult látható, amely a munkaterületen telepített [megoldások](#add-functionality-with-management-solutions) összegző információit jeleníti meg.  Bármelyik csempére kattinthat, hogy további részleteket kapjon a megoldáshoz tartozó adatokról.
+Az alábbi képen a munkaterületen telepített [megoldások](#add-functionality-with-management-solutions) összegző információit megjelenítő Áttekintés képernyő látható.  Bármelyik csempére kattinthat, hogy további részleteket kapjon a megoldáshoz tartozó adatokról.
 
 ![OMS-portál](media/log-analytics-overview/portal.png)
 
@@ -40,25 +40,21 @@ A Log Analyticsben található lekérdezési nyelv segítségével adatokat olva
 
 ![Naplókeresés](media/log-analytics-overview/log-search.png)
 
-Ha teljes környezetének állapotáról szeretne gyors grafikus nézetet kapni, az [irányítópultra](log-analytics-dashboards.md) a mentett naplóbeli keresésekre vonatkozó képi megjelenítéseket vehet fel.   
-
-![Irányítópult](media/log-analytics-overview/dashboard.png)
-
-Ahhoz, hogy a Log Analyticsen kívül végezhessen adatelemzéseket, az OMS-tárházból olyan eszközökbe exportálhat adatokat, mint a [Power BI](log-analytics-powerbi.md) vagy az Excel.  Használhatja a [Naplókeresési API](log-analytics-log-search-api.md)-t is, ha a Log Analytics adatait felhasználó egyéni megoldásokat szeretne kiépíteni, illetve ha más rendszerekkel szeretne integrációt létrehozni.
+A Log Analyticsen kívüli adatelemzésekhez olyan eszközökbe exportálhatja az adatokat, mint a [Power BI](log-analytics-powerbi.md) vagy az Excel.  Használhatja a [Naplókeresési API](log-analytics-log-search-api.md)-t is, ha a Log Analytics adatait felhasználó egyéni megoldásokat szeretne kiépíteni, illetve ha más rendszerekkel szeretne integrációt létrehozni.
 
 ## <a name="add-functionality-with-management-solutions"></a>Funkciók hozzáadása felügyeleti megoldásokkal
-A [Felügyeleti megoldások](log-analytics-add-solutions.md) további funkciókkal bővítik az OMS-t, további adat- és elemzőeszközöket biztosítva a Log Analytics számára.  Ezen felül új, összegyűjtendő rekordtípusokat is meghatározhatnak, amelyek Naplókeresésekkel, illetve az irányítópulton lévő megoldás által biztosított további felhasználói felület segítségével elemezhetők.  Az alábbi mintaábrán a [Változáskövetési megoldás](log-analytics-change-tracking.md) látható.
+A [Felügyeleti megoldások](log-analytics-add-solutions.md) további funkciókkal bővítik a Log Analytics szolgáltatást, további adat- és elemzőeszközöket biztosítva a Log Analytics számára.  Ezen felül új, összegyűjtendő rekordtípusokat is meghatározhatnak, amelyek Naplókeresésekkel, illetve az irányítópulton lévő megoldás által biztosított további felhasználói felület segítségével elemezhetők.  Az alábbi mintaábrán a [Változáskövetési megoldás](log-analytics-change-tracking.md) látható.
 
 ![Változáskövetési megoldás](media/log-analytics-overview/change-tracking.png)
 
-A megoldások változatos funkciókkal érhetők el, valamint a további hozzáadott megoldások listája is folyamatosan bővül.  A Megoldástárból vagy az Azure Marketplace-en keresztül könnyűszerrel böngészhet az elérhető megoldások között, majd [hozzáadhatja őket az OMS-munkaterülethez](log-analytics-add-solutions.md).  Számos megoldást automatikusan telepíti a rendszer, és azonnal elkezdenek működni, míg mások némi konfigurálást igényelnek.
+A megoldások változatos funkciókkal érhetők el, valamint a további hozzáadott megoldások listája is folyamatosan bővül.  Az Azure Marketplace-en keresztül könnyűszerrel böngészhet az elérhető megoldások között, majd [hozzáadhatja őket a munkaterülethez](log-analytics-add-solutions.md).  Számos megoldást automatikusan telepíti a rendszer, és azonnal elkezdenek működni, míg mások némi konfigurálást igényelnek.
 
 ![Megoldástár](media/log-analytics-overview/solution-gallery.png)
 
 ## <a name="log-analytics-components"></a>A Log Analytics összetevői
-A Log Analytics középpontjában az OMS-adattár áll, amelyet az Azure-felhő üzemeltet.  Az adatok a csatlakozó forrásokból kerülnek be a tárházba az adatforrások konfigurálása és a megoldások előfizetésbe való felvétele révén.  Az adatforrások és megoldások egyaránt különböző rekordtípusokat fognak létrehozni, amelyek saját tulajdonsághalmazzal rendelkeznek, de mégis elemezhetők együtt a tárházra irányuló lekérdezésekben.  Ez lehetővé teszi, hogy ugyanazokat az eszközöket és módszereket használva dolgozzon a különböző források által gyűjtött különböző típusú adatokkal.
+A Log Analytics középpontjában az összegyűjtött adatokat tartalmazó adattár áll, amelyet az Azure-felhő üzemeltet.  Az adatok a csatlakozó forrásokból származnak az adatforrások konfigurálása és a megoldások előfizetésbe való felvétele révén.  Az adatforrások és megoldások egyaránt különböző rekordtípusokat fognak létrehozni, amelyek saját tulajdonsághalmazzal rendelkeznek, de mégis elemezhetők együtt a tárházra irányuló lekérdezésekben.  Ez lehetővé teszi, hogy ugyanazokat az eszközöket és módszereket használva dolgozzon a különböző források által gyűjtött különböző típusú adatokkal.
 
-![OMS-tárház](media/log-analytics-overview/overview.png)
+![A Log Analytics összetevői](media/log-analytics-overview/overview.png)
 
 A csatlakoztatott források azok a számítógépek és egyéb erőforrások, amelyek Log Analytics által összegyűjtött adatokat generálnak.  Ilyenek lehetnek például a közvetlenül csatlakozó [Windows](log-analytics-windows-agent.md)- és [Linux](log-analytics-linux-agents.md)-rendszerű számítógépeken telepített, illetve az egy [csatlakoztatott System Center Operations Manager felügyeleti csoportban](log-analytics-om-agents.md) lévő ügynökök.  Az Azure-erőforrásokhoz a Log Analytics az [Azure Monitor és Azure Diagnostics](log-analytics-azure-storage.md) szolgáltatásokból gyűjt adatot.
 
@@ -69,14 +65,14 @@ Egyéni követelmények érvényesülése esetén a [HTTP-adatgyűjtő API](log-
 ## <a name="log-analytics-architecture"></a>Log Analytics-architektúra
 A Log Analytics telepítési követelményei minimálisak, hiszen a központi összetevőket az Azure-felhő üzemelteti.  Ez a szolgáltatásokon túl magában foglalja a tárházat is, amely lehetővé teszi az összegyűjtött adatok összevetésének és elemzésének elvégzését.  A portál bármilyen böngészőből elérhető, így nincsenek ügyfélszoftverre vonatkozó követelmények.
 
-[Windows](log-analytics-windows-agent.md)- és [Linux](log-analytics-linux-agents.md)-rendszerű számítógépeken ügynököket kell telepítenie, ám azok a számítógépek, amelyek már egy [csatlakoztatott SCOM-felügyeleti csoport](log-analytics-om-agents.md) tagjai, nem igényelnek további ügynököket.  Az SCOM-ügynökök továbbra is a felügyeleti kiszolgálókkal kommunikálnak, amelyek a Log Analyticsnek továbbítják az adatokat.  Néhány megoldás esetében azonban ügynökökre lesz szükség a Log Analytics-szel való közvetlen kommunikációhoz.  A kommunikáció követelményeit az egyes megoldásokra vonatkozó dokumentáció fogja megadni.
+[Windows](log-analytics-windows-agent.md)- és [Linux](log-analytics-linux-agents.md)-rendszerű számítógépeken ügynököket kell telepítenie, ám azok a számítógépek, amelyek már egy [csatlakoztatott System Center Operations Manager felügyeleti csoport](log-analytics-om-agents.md) tagjai, nem igényelnek további ügynököket.  Az Operations Manager-ügynökök továbbra is a felügyeleti kiszolgálókkal kommunikálnak, amelyek a Log Analyticsnek továbbítják az adatokat.  Néhány megoldás esetében azonban ügynökökre lesz szükség a Log Analytics-szel való közvetlen kommunikációhoz.  A kommunikáció követelményeit az egyes megoldásokra vonatkozó dokumentáció fogja megadni.
 
-[Log Analytics-regisztrációkor](log-analytics-get-started.md) egy OMS-munkaterületet fog létrehozni.  A munkaterületre tekinthet úgy, mint egy saját adattárházzal, -forrásokkal és megoldásokkal rendelkező egyedülálló Log Analytics-környezetre. Több munkaterületet is létrehozhat az előfizetésében, melyekkel több környezetet, például munka- vagy tesztelési környezeteket támogathat.
+A [Log Analytics-regisztráció](log-analytics-get-started.md) során egy munkaterületet fog létrehozni.  A munkaterületre tekinthet úgy, mint egy saját adattárházzal, -forrásokkal és megoldásokkal rendelkező egyedülálló Log Analytics-környezetre. Több munkaterületet is létrehozhat az előfizetésében, melyekkel több környezetet, például munka- vagy tesztelési környezeteket támogathat.
 
 ![Log Analytics-architektúra](media/log-analytics-overview/architecture.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Regisztráljon ingyenes Log Analytics-fiókra](log-analytics-get-started.md), és saját környezetében tesztelheti működését.
-* Tekintse meg a különböző elérhető, az adatokat az OMS-tárházba gyűjtő [Adatforrásokat](log-analytics-data-sources.md).
+* Tekintse meg a különböző elérhető [Adatforrásokat](log-analytics-data-sources.md), amelyek az adatokat a Log Analytics-be gyűjtik.
 * [Böngésszen a Megoldástárban az elérhető megoldások között](log-analytics-add-solutions.md), ha funkciókkal szeretné bővíteni a Log Analytics-szolgáltatást.
 

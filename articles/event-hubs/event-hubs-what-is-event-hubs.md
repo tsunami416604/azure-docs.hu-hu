@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/05/2017
-ms.author: sethm; babanisa
-ms.openlocfilehash: 236d49b7d8104b410e2a4c768820c3c9ebcdce96
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 01/30/2018
+ms.author: sethm
+ms.openlocfilehash: 9b7be70d726edfa9dbda3719d431e532106724b6
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="what-is-event-hubs"></a>Mi az Event Hubs?
 
@@ -44,7 +44,7 @@ Az Event Hubs üzenetstream-kezelési képességet is biztosít, de olyan tulajd
 
 ## <a name="event-hubs-features"></a>Event Hubs-szolgáltatások
 
-Az Event Hubs az alábbi fő elemeket foglalja magába:
+Az Event Hubs az alábbi fő elemeket kínálja:
 
 - [**Esemény-közzétevő**](event-hubs-features.md#event-publishers): minden entitás, amely adatokat küld egy eseményközpontnak. Az esemény közzététele AMQP 1.0-n vagy HTTPS-en keresztül történik.
 - [**Rögzítés**](event-hubs-features.md#capture): Event Hubs-alapú streamelt adatokat rögzíthet, amelyeket egy Azure Blob Storage-fiókban tárolhat.
@@ -56,7 +56,7 @@ Az Event Hubs az alábbi fő elemeket foglalja magába:
 
 További technikai részletek ezekről és más Event Hubs-szolgáltatásokról: [Event Hubs features overview](event-hubs-features.md) (Event Hubs-szolgáltatások – Áttekintés). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Részletes információk az Event Hubs díjszabásáról: [Event Hubs-díjszabás](https://azure.microsoft.com/pricing/details/event-hubs/).
 

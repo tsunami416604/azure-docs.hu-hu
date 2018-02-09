@@ -1,6 +1,6 @@
 ---
-title: "A tárolóban lévő .NET alkalmazás telepítése az Azure Service Fabric |} Microsoft Docs"
-description: "Útmutatást ad meg egy Docker-tároló a Visual Studio .NET-alkalmazás csomagolása. Az új \"container\" az alkalmazást majd telepíti a Service Fabric-fürt."
+title: "Tárolóban lévő .NET-alkalmazás telepítése Azure Service Fabricre | Microsoft Docs"
+description: "A cikk bemutatja, hogyan lehet egy Visual Studióban lévő .NET-alkalmazást egy Docker-tárolóba csomagolni. Ezt az új tárolóalkalmazást a rendszer ezután egy Service Fabric-fürtre telepíti."
 services: service-fabric
 documentationcenter: .net
 author: mikkelhegn
@@ -9,67 +9,67 @@ editor:
 ms.assetid: 
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/19/2017
 ms.author: mikhegn
-ms.openlocfilehash: 31c1cee5ddc4c8893da729af884ae7b7b8a58093
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
-ms.translationtype: MT
+ms.openlocfilehash: cd1c3b063132ae549bfbf1e059667c5056c91046
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Azure Service Fabric Windows tároló .NET-alkalmazás telepítése
+# <a name="deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Windows-tárolóban lévő .NET-alkalmazás telepítése Azure Service Fabricre
 
-Ez az oktatóanyag bemutatja, hogyan Windows Azure tároló meglévő ASP.NET alkalmazás központi telepítése.
+Ez az oktatóanyag bemutatja, hogyan telepíthet egy meglévő ASP.NET-alkalmazást egy Azure-on lévő Windows-tárolóban.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Hozzon létre egy Docker-projektet a Visual Studióban
-> * Egy meglévő alkalmazást containerize
-> * A telepítő folyamatos integráció a Visual Studio és a VSTS
+> * Docker-projekt létrehozása Visual Studióban
+> * Meglévő alkalmazás tárolóba helyezése
+> * Folyamatos integráció beállítása a Visual Studio és a VSTS használatával
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. Telepítés [Docker CE Windows](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description) , hogy a Windows 10-tárolók is futtathatja.
-2. Ismerje meg, a [Windows 10-tárolók gyors üzembe helyezés][link-container-quickstart].
-3. Töltse le a [Fabrikam Fiber CallCenter] [ link-fabrikam-github] mintaalkalmazást.
-4. Telepítés [Azure PowerShell][link-azure-powershell-install]
-5. Telepítse a [Visual Studio 2017 folyamatos kézbesítési eszközök kiterjesztése][link-visualstudio-cd-extension]
-6. Hozzon létre egy [Azure-előfizetés] [ link-azure-subscription] és egy [Visual Studio Team Services-fiók][link-vsts-account]. 
-7. [Fürt létrehozása az Azure-on](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
+1. A [Docker CE for Windows](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description) telepítése tárolók Windows 10 rendszeren való futtatásához.
+2. Ismerkedjen meg a [Windows 10-tárolók gyors üzembe helyezési útmutatójával][link-container-quickstart].
+3. Töltse le a [Fabrikam Fiber CallCenter][link-fabrikam-github] mintaalkalmazást.
+4. Az [Azure PowerShell][link-azure-powershell-install] telepítése
+5. A [Visual Studio 2017 Continuous Delivery Tools bővítményének][link-visualstudio-cd-extension] telepítése
+6. Hozzon létre egy [Azure-előfizetést][link-azure-subscription] és egy [Visual Studio Team Services-fiókot][link-vsts-account]. 
+7. [Fürt létrehozása az Azure-ban](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 
 ## <a name="create-a-cluster-on-azure"></a>Fürt létrehozása az Azure-ban
-Service Fabric-alkalmazások futtatása egy fürtön, virtuális vagy fizikai gépek hálózathoz csatlakozó halmaza. [A telepítő egy Azure-ban futó Service Fabric-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) létrehozása és az alkalmazás központi telepítése előtt. A fürt létrehozásakor válassza ki a Termékváltozat, amely támogatja a futó tárolók (például Windows Server 2016 adatközpont tárolók).
+A Service Fabric-alkalmazások egy fürtön, azaz virtuális vagy fizikai gépek hálózaton keresztül csatlakozó halmazán futnak. Az alkalmazása létrehozása és üzembe helyezése előtt [állítson be egy Azure-ban futó Service Fabric-fürtöt](service-fabric-tutorial-create-vnet-and-windows-cluster.md). A fürt létrehozásakor válassza ki a tárolók futtatását támogató termékváltozatot (például: Windows Server 2016 Datacenter tárolókkal).
 
-## <a name="containerize-the-application"></a>Az alkalmazás containerize
+## <a name="containerize-the-application"></a>Az alkalmazás tárolóba helyezése
 
-Most, hogy egy Azure-ban futó Service Fabric-fürt készen áll a tárolóalapú alkalmazás létrehozását és telepítését. Indítsa el az alkalmazást futtató tároló, hozzá kell **Docker támogatási** a projektre a Visual Studióban. Amikor felvesz **Docker támogatási** az alkalmazás két dolog történik. Először egy _Dockerfile_ hozzáadódik a projektet. Ez az új fájl leírja, hogy a tároló kép kialakítani. Majd a második, egy új _docker compose_ Projekt hozzáadódik a megoldás. Az új projekt tartalmaz néhány docker compose fájlokat. Docker-compose fájlok segítségével a tároló futtatásának módját ismerteti.
+Most, hogy már rendelkezik egy Azure-ban futó Service Fabric-fürttel, létrehozhat és üzembe helyezhet tárolóba helyezett alkalmazásokat. Ahhoz, hogy elindíthassuk az alkalmazásunkat egy tárolóban, hozzá kell adnunk a **Docker-támogatást** a Visual Studióban a projekthez. Amikor **Docker-támogatást** adunk az alkalmazáshoz, két dolog történik. Először is a rendszer hozzáad egy _Dockerfile_-t a projekthez. Ez az új fájl leírja, hogyan kell létrehozni a tároló rendszerképét. Ezután a rendszer hozzáad egy új _docker-compose_ projektet a megoldáshoz. Az új projekt tartalmaz néhány docker-compose-fájlt. A docker-compose-fájlok segítségével leírhatja a tárolók futtatásának módját.
 
-További információ a használata [Visual Studio tároló eszközök][link-visualstudio-container-tools].
+További információ a [Visual Studio tárolóeszközeinek][link-visualstudio-container-tools] használatáról.
 
 >[!NOTE]
->Ha az első alkalommal futtatja a Windows-tároló lemezképek a számítógépen, Docker CE kell lekérik a tárolók skálázása alap lemezképei. A jelen oktatóanyagban használt lemezkép 14 GB. Lépjen tovább, és a következő parancsot a Terminálszolgáltatások való lekérésére az alap lemezképek:
+>Ha az első alkalommal futtatja a Windows-tárolórendszerképeket a számítógépen, a Docker CE-nek le kell kérnie a tárolók alaprendszerképeit. A jelen oktatóanyagban használt rendszerképek mérete 14 GB. Lépjen tovább, és futtassa a következő terminálparancsot az alaprendszerképek lekéréshez:
 >```cmd
 >docker pull microsoft/mssql-server-windows-developer
 >docker pull microsoft/aspnet:4.6.2
 >```
 
-### <a name="add-docker-support"></a>Adja hozzá a Docker-támogatás
+### <a name="add-docker-support"></a>Docker-támogatás hozzáadása
 
-Nyissa meg a [FabrikamFiber.CallCenter.sln] [ link-fabrikam-github] fájlt a Visual Studióban.
+Nyissa meg a [FabrikamFiber.CallCenter.sln][link-fabrikam-github] fájlt a Visual Studióban.
 
-Kattintson a jobb gombbal a **FabrikamFiber.Web** project > **Hozzáadás** > **Docker támogatási**.
+Kattintson a jobb gombbal a **FabrikamFiber.Web** projektre, és válassza a **Hozzáadás** > **Docker-támogatás** elemet.
 
-### <a name="add-support-for-sql"></a>Az SQL támogatását
+### <a name="add-support-for-sql"></a>SQL-támogatás hozzáadása
 
-Az alkalmazás adatokat szolgáltató SQL akkor használ, ezért az alkalmazás futtatásához szükség egy SQL-kiszolgálóra. Egy SQL Server tároló lemezképet a docker-compose.override.yml fájl hivatkozik.
+Ez az alkalmazás SQL-adatszolgáltatást használ, ezért egy SQL-kiszolgáló szükséges az alkalmazás futtatásához. Jelöljön meg egy SQL Server-tárolórendszerképet a docker-compose.override.yml fájlunkban.
 
-A Visual Studióban nyissa meg a **Megoldáskezelőben**, található **docker compose**, és nyissa meg a fájlt **docker-compose.override.yml**.
+A Visual Studióban keresse meg a **Megoldáskezelőben** található **docker-compose** elemet, és nyissa meg a **docker-compose.override.yml** fájlt.
 
-Keresse meg a `services:` csomópont, nevű csomópont hozzáadása `db:` , amely meghatározza, hogy az SQL Server bejegyzést ahhoz a tárolóhoz.
+Lépjen a `services:` csomóponthoz, és vegyen fel egy `db:` nevű, a tárolóhoz az SQL Server-bejegyzést meghatározó csomópontot.
 
 ```yml
   db:
@@ -86,12 +86,12 @@ Keresse meg a `services:` csomópont, nevű csomópont hozzáadása `db:` , amel
 ```
 
 >[!NOTE]
->Bármely SQL Server helyi hibakeresési inkább használható, amíg a gazdagép elérhető legyen. Azonban **localdb** nem támogatja a `container -> host` kommunikációt.
+>A helyi hibakereséshez tetszése szerinti SQL Servert választhat, csak legyen elérhető a gazdagépről. A **localdb** azonban nem támogatja a `container -> host` irányú kommunikációt.
 
 >[!WARNING]
->A tárolóban lévő SQL Server szoftvert futtató nem támogatja az adatait. Ha nem a tárolóban, az adat törlődik. Termelési környezetben ne használja ezt a konfigurációt.
+>Az SQL Server tárolóban való futtatása nem támogatja az adatok megtartását. Ha a tároló leáll, a rendszer törli az adatokat. Éles környezetben ne használja ezt a konfigurációt.
 
-Keresse meg a `fabrikamfiber.web:` csomópont, és adja hozzá a nevű gyermekcsomópontja `depends_on:`. Ez biztosítja, hogy a `db` (az SQL Server-tároló) szolgáltatás elindulása előtt a webalkalmazást (fabrikamfiber.web).
+Lépjen a `fabrikamfiber.web:` csomóponthoz, és adjon hozzá egy `depends_on:` nevű gyermekcsomópontot. Ez biztosítja, hogy a `db` (az SQL Server-tároló) szolgáltatás a webalkalmazás (fabrikamfiber.web) előtt elindul.
 
 ```yml
   fabrikamfiber.web:
@@ -101,7 +101,7 @@ Keresse meg a `fabrikamfiber.web:` csomópont, és adja hozzá a nevű gyermekcs
 
 ### <a name="update-the-web-config"></a>A webes konfiguráció frissítése
 
-Vissza a **FabrikamFiber.Web** projektre, frissítse a kapcsolati karakterlánc a **web.config** fájlt úgy, hogy az SQL Server, a tároló mutasson.
+Lépjen vissza a **FabrikamFiber.Web** projektre, frissítse a kapcsolati karakterláncot a **web.config** fájlban, hogy az a tárolóban lévő SQL Serverre mutasson.
 
 ```xml
 <add name="FabrikamFiber-Express" connectionString="Data Source=db,1433;Database=FabrikamFiber;User Id=sa;Password=Password1;MultipleActiveResultSets=True" providerName="System.Data.SqlClient" />
@@ -110,33 +110,33 @@ Vissza a **FabrikamFiber.Web** projektre, frissítse a kapcsolati karakterlánc 
 ```
 
 >[!NOTE]
->Ha egy másik használni kívánt SQL Server kiadási fejlesztéskor a webalkalmazás létrehozása, adja hozzá egy másik kapcsolati karakterláncot a web.release.config fájlhoz.
+>Ha egy másik SQL Servert kíván használni a webes alkalmazása kiadásra szánt verziójában, adjon hozzá egy másik kapcsolati karakterláncot a web.release.config fájlhoz.
 
 ### <a name="test-your-container"></a>A tároló tesztelése
 
-Nyomja le az **F5** futtatásához, és a tároló az alkalmazás hibakeresése.
+Az alkalmazás tárolóban való futtatásához és a hibakereséshez nyomja le az **F5** billentyűt.
 
-Peremhálózati az alkalmazás meghatározott indítási lap használata az IP-cím, a tároló a belső NAT-hálózaton (általában 172.x.x.x) megnyitása. A Visual Studio 2017 használatával tárolókban lévő alkalmazások hibakeresése kapcsolatos további információkért lásd: [Ez a cikk][link-debug-container].
+Az Edge megnyitja az alkalmazás megadott kezdőoldalát a tároló belső NAT-hálózatán lévő IP-címe segítségével (ez általában a 172.x.x.x). További információt a tárolókban található alkalmazások Visual Studio 2017 használatával történő hibakereséséről [ebben a cikkben][link-debug-container] találhat.
 
-![fabrikam tároló – példa][image-web-preview]
+![Példa tárolóban lévő Fabrikamra][image-web-preview]
 
-A tároló készen áll a beépített és a Service Fabric-alkalmazás csomagolva. Miután a tároló kép, összeállítása a számítógépre, hogy a tároló beállításjegyzék, és lekérni a le minden állomás futtatásához.
+A tároló készen áll a Service Fabric-alkalmazásban való létrehozásra és csomagolásra. Ha a tárolórendszerkép létrejött a számítógépén, továbbíthatja bármely más tárolójegyzékbe, és lekérheti bármelyik gazdagépre, majd futtathatja.
 
-## <a name="get-the-application-ready-for-the-cloud"></a>A felhő Felkészülés az alkalmazás
+## <a name="get-the-application-ready-for-the-cloud"></a>Az alkalmazás felkészítése a felhőre
 
-Ahhoz, hogy az alkalmazás készen áll az Azure Service Fabric futó, végezze el két lépésben kell:
+Ahhoz, hogy az alkalmazás készen álljon az Azure-on lévő Service Fabricen való futásra, két lépést kell végrehajtania:
 
-1. Elérhetővé tenni a port, ahol azt szeretnénk tudni érnie a webes alkalmazás a Service Fabric-fürt.
-2. Adja meg az alkalmazás üzemi készen SQL-adatbázis.
+1. Tegye elérhetővé azt a portot, ahol el szeretné éri a Service Fabric-fürtön lévő webes alkalmazást.
+2. Adjon meg egy éles üzemre felkészített SQL-adatbázist az alkalmazáshoz.
 
-### <a name="expose-the-port-for-the-app"></a>A port, az alkalmazás elérhetővé
-A Service Fabric-fürt rendelkezik konfigurált,-porttal rendelkezik *80* nyissa meg az Azure Load Balancer alapértelmezés szerint, elosztja a fürt bejövő forgalmat. Is elérhetővé kell tenni a tárolót a porton keresztül a docker-compose.yml fájlt.
+### <a name="expose-the-port-for-the-app"></a>A port elérhetővé tétele az alkalmazáshoz
+A már konfigurált Service Fabric-fürt *80*-as portja alapértelmezés szerint meg van nyitva a fürtre beérkező adatforgalmat elosztó Azure Load Balancerben. A tárolónkat ezen a porton keresztül tehetjük elérhetővé a docker-compose.yml fájl segítségével.
 
-A Visual Studióban nyissa meg a **Megoldáskezelőben**, található **docker compose**, és nyissa meg a fájlt **docker-compose.yml**.
+A Visual Studióban keresse meg a **Megoldáskezelőben** található **docker-compose** elemet, és nyissa meg a **docker-compose.yml** fájlt.
 
-Módosítsa a `fabrikamfiber.web:` csomópont, nevű alárendelt csomópont hozzáadása `ports:`.
+Módosítsa a `fabrikamfiber.web:` csomópontot, és adjon hozzá egy `ports:` nevű gyermekcsomópontot.
 
-Adjon hozzá egy karakterlánc-bejegyzést `- "80:80"`. Ez az, hogy mi a docker-compose.yml fájlt hasonlóan kell kinéznie:
+Adjon hozzá egy `- "80:80"` karakterlánc-bejegyzést. A docker-compose.yml fájlnak a következőképpen kell kinéznie:
 
 ```yml
   version: '3'
@@ -151,74 +151,74 @@ Adjon hozzá egy karakterlánc-bejegyzést `- "80:80"`. Ez az, hogy mi a docker-
         - "80:80"
 ```
 
-### <a name="use-a-production-sql-database"></a>SQL-adatbázis használata
-Ha éles környezetben fut, igazolnia kell-e az adatok maradnak az adatbázisban. Jelenleg nincs mód állandó adatokat tároló biztosítása érdekében, ezért nem tárolhatók termelési adatok a tárolóban lévő SQL Server.
+### <a name="use-a-production-sql-database"></a>Éles SQL Database használata
+Éles környezetben való futtatáskor szükség van arra, hogy az adatok megmaradjanak az adatbázisban. Jelenleg nincs mód az állandó adatok biztosítására egy tárolóban, ezért nem tárolhat éles adatokat az SQL Serveren egy tárolóban.
 
-Azt javasoljuk, hogy egy Azure SQL Database használják. Telepítsen és futtasson egy kezelt SQL Server az Azure-ban, látogasson el a [Azure SQL Database – Gyorsútmutatók] [ link-azure-sql] cikk.
+Javasoljuk, hogy használjon egy Azure SQL Database-adatbázist. Egy felügyelt SQL Server Azure-ban való beállításához és futtatásához tekintse meg az [Azure SQL Database rövid útmutatóját][link-azure-sql].
 
 >[!NOTE]
->Ne felejtse el a kapcsolati karakterláncok módosítsa az SQL-kiszolgálót a **web.release.config** fájlt a **FabrikamFiber.Web** projekt.
+>Ne felejtse el módosítani az SQL-kiszolgálóra mutató kapcsolati karakterláncokat a **FabrikamFiber.Web** projekt **web.release.config** fájljában.
 >
->Ez az alkalmazás szabályosan meghiúsul, ha az SQL-adatbázis nem érhető el. Ha szeretné, lépjen tovább, és a nem SQL server alkalmazás központi telepítését.
+>Ez az alkalmazás szabályosan leáll, ha az SQL-adatbázis nem érhető el. Ha szeretné, lépjen tovább, és telepítse az alkalmazást SQL-kiszolgáló nélkül.
 
-## <a name="deploy-with-visual-studio-team-services"></a>A Visual Studio Team Services telepítéséhez
+## <a name="deploy-with-visual-studio-team-services"></a>Üzembe helyezés a Visual Studio Team Services használatával
 
-Visual Studio Team Services használatával üzembe helyezés beállítása, telepíteni kell a [folyamatos kézbesítési eszközök bővítményt a Visual Studio 2017][link-visualstudio-cd-extension]. A bővítmény megkönnyíti, hogy telepítse az Azure úgy konfigurálja a Visual Studio Team Services, és az alkalmazás központi telepítése a Service Fabric-fürt.
+A Visual Studio Team Services segítségével végzett üzembe helyezéshez telepítenie kell a [Visual Studio 2017 Continuous Delivery Tools bővítményét][link-visualstudio-cd-extension]. Ez a bővítmény megkönnyíti az Azure-ra végzett telepítést a Visual Studio Team Services konfigurálásával és az alkalmazás Service Fabric-fürtön való telepítésével.
 
-A kezdéshez a kódot a verziókövetési rendszerrel kell futnia. Ez a szakasz a többi azt feltételezi, hogy **git** használatban van.
+A kezdéshez a kódot verziókövetési rendszerben kell futtatnia. A szakasz további része feltételezi a **git** használatát.
 
-### <a name="set-up-a-vsts-repo"></a>Egy VSTS-tárház beállítása
-Kattintson a jobb alsó sarkában, a Visual Studio, **adja hozzá a verziókövetési** > **Git** (vagy célszerű beállítás).
+### <a name="set-up-a-vsts-repo"></a>VSTS-adattár beállítása
+A Visual Studio jobb alsó sarkában kattintson a **Hozzáadás a forráskezelőhöz** > **Git** (vagy a kívánt) lehetőségre.
 
-![az adatforrás-vezérlő gombra][image-source-control]
+![a forráskezelés gomb megnyomása][image-source-control]
 
-Az a _Team Explorer_ ablaktáblában kattintson az **Git-tárház közzététele**.
+A _Team Explorer_ ablaktáblán válassza a **Git-adattár közzététele** lehetőséget.
 
-Válassza ki a VSTS-tárház nevét, és nyomja le az **tárház**.
+Válassza ki a VSTS-adattár nevét, és nyomja meg az **Adattár** gombot.
 
-![tárház VSTS közzététele][image-publish-repo]
+![adattár közzététele a VSTS-ben][image-publish-repo]
 
-Most, hogy a kód egy VSTS-forrás tárházat szinkronizálva van, beállíthatja a folyamatos integrációt és folyamatos kézbesítését.
+Most, hogy a kód szinkronizálva van egy VSTS-forrásadattárral, konfigurálhatja a folyamatos integrációt és a folyamatos teljesítést.
 
-### <a name="setup-continuous-delivery"></a>A telepítő folyamatos kézbesítés
+### <a name="setup-continuous-delivery"></a>Folyamatos teljesítés beállítása
 
-A _Megoldáskezelőben_, kattintson a jobb gombbal a **megoldás** > **konfigurálása a folyamatos kézbesítési**.
+A _Megoldáskezelőben_ kattintson a jobb gombbal a **megoldás** > **Folyamatos teljesítés konfigurálása** lehetőségre.
 
-Válassza ki az Azure-előfizetés.
+Válassza az Azure-előfizetés lehetőséget.
 
-Állítsa be **típus gazdagép** való **Service Fabric-fürt**.
+A **Gazdagép típusa** beállításnál a **Service Fabric-fürtöt** adja meg.
 
-Állítsa be **célállomás** az előző szakaszban létrehozott service fabric-fürt számára.
+A **Célgazdagép** beállításnál az előző szakaszban létrehozott Service Fabric-fürtöt adja meg.
 
-Válasszon egy **tároló beállításjegyzék** a tárolóban való közzétételéhez.
+Válasszon egy **Tárolóregisztrációs adatbázist**, ahol közzé szeretné tenni a tárolót.
 
 >[!TIP]
->Használja a **szerkesztése** gomb segítségével hozza létre a tároló beállításkulcs.
+>A **Szerkesztés** gomb segítségével hozzon létre egy tárolójegyzéket.
 
 Kattintson az **OK** gombra.
 
-![a telepítő service fabric folyamatos integrációt][image-setup-ci]
+![Folyamatos Service Fabric-integráció beállítása][image-setup-ci]
    
-   Ha a konfiguráció befejeződött, a tároló a Service Fabric rendszer. Amikor Ön leküldéses frissíti a tárház új buildverziót, és kiadás végrehajtása.
+   Ha a konfigurálás befejeződött, a tároló telepítve van a Service Fabricben. Valahányszor frissítést küld az adattárba, a rendszer végrehajt egy új létrehozást és kiadást.
    
    >[!NOTE]
-   >A tároló képek hajtsa végre a megfelelő felépítése körülbelül 15 perc.
-   >A Service Fabric-fürt első telepített hatására a Windows Server Core alap tároló képek le kell tölteni. A letöltés további 5-10 percet is igénybe vehet.
+   >A tárolórendszerkép létrehozása körülbelül 15 percet vesz igénybe.
+   >Amikor először végez telepítést a Service Fabric-fürtön, az alapszintű Windows Server Core-tárolórendszerképeket le kell tölteni. A letöltés további 5–10 percet is igénybe vehet.
 
-Keresse meg a Fabrikam ügyfélszolgálatával alkalmazást a fürt URL-címe: például *http://mycluster.westeurope.cloudapp.azure.com*
+Keresse meg a Fabrikam Call Center alkalmazást a fürt URL-címe segítségével (például: *http://mycluster.westeurope.cloudapp.azure.com*).
 
-Most, hogy indexelése, és a Fabrikam ügyfélszolgálatával megoldás telepített, akkor nyissa meg a [Azure-portálon] [ link-azure-portal] és tekintse meg a Service Fabric futó alkalmazások. Próbálja meg az alkalmazás, nyisson meg egy webböngészőt, és nyissa meg a Service Fabric-fürt URL-címét.
+Most, hogy tárolóba helyezte és telepítette a Fabrikam Call Center-megoldást, az [Azure Portalt][link-azure-portal] megnyitva láthatja, hogy az alkalmazása a Service Fabricben fut. Az alkalmazás kipróbálásához nyisson meg egy webböngészőt, és keresse fel a Service Fabric-fürtje URL-címét.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Hozzon létre egy Docker-projektet a Visual Studióban
-> * Egy meglévő alkalmazást containerize
-> * A telepítő folyamatos integráció a Visual Studio és a VSTS
+> * Docker-projekt létrehozása Visual Studióban
+> * Meglévő alkalmazás tárolóba helyezése
+> * Folyamatos integráció beállítása a Visual Studio és a VSTS használatával
 
-Az oktatóanyag következő része, megtudhatja, hogyan állíthat be [a tároló figyelési](service-fabric-tutorial-monitoring-wincontainers.md).
+Az oktatóanyag következő részéből megtudhatja, hogyan állíthat be [figyelést a tárolójához](service-fabric-tutorial-monitoring-wincontainers.md).
 
 <!--   NOTE SURE WHAT WE SHOULD DO YET HERE
 

@@ -1,6 +1,6 @@
 ---
 title: "A Service Map megoldás saját ütemben megtekinthető bemutatója | Microsoft Docs"
-description: "A Szolgáltatástérkép az Operations Management Suite (OMS) egyik megoldása, amely automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt.  A saját ütemben megtekinthető bemutató a Service Map megoldást használja arra, hogy azonosítsa és diagnosztizálja egy webalkalmazás szimulált hibáját."
+description: "A Service Map az Azure egyik megoldása, amely automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt.  A saját ütemben megtekinthető bemutató a Service Map megoldást használja arra, hogy azonosítsa és diagnosztizálja egy webalkalmazás szimulált hibáját."
 services: operations-management-suite
 documentationcenter: 
 author: bwren
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: bwren
-ms.openlocfilehash: c3548d24c74f8ad865b22d6af3490d0b5cc77a84
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 35fe4e95eae8b63425abc8ed2970c0ad51073883
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="operations-management-suite-oms-self-paced-demo---service-map"></a>Operations Management Suite (OMS) saját ütemben megtekinthető bemutató – Szolgáltatástérkép
-Ebben a saját ütemben megtekinthető bemutatóban az Operations Management Suite (OMS) [Service Map megoldását](operations-management-suite-service-map.md) használjuk arra, hogy egy webalkalmazás szimulált hibáját azonosítsuk és diagnosztizáljuk.  A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt.  Emellett összevonja a többi OMS-szolgáltatás által gyűjtött adatokat, hogy segítsen a teljesítményelemzésben és a problémák azonosításában.  A [Log Analytics naplóbeli kereséseivel](../log-analytics/log-analytics-log-searches.md) a gyűjtött adatok részletes elemzésén keresztül azonosíthatja a kiindulási problémát.
+# <a name="self-paced-demo---service-map"></a>Saját ütemben megtekinthető bemutató – Service Map
+Ez egy saját ütemben megtekinthető bemutató, amely végigvezeti az Azure [Service Map megoldásának](operations-management-suite-service-map.md) használatán egy webalkalmazás szimulált hibájának azonosításához és diagnosztizálásához.  A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt.  Emellett összevonja a más szolgáltatások és megoldások által gyűjtött adatokat, hogy segítsen a teljesítményelemzésben és a problémák azonosításában.  A [Log Analytics naplóbeli kereséseivel](../log-analytics/log-analytics-log-searches.md) a gyűjtött adatok részletes elemzésén keresztül azonosíthatja a kiindulási problémát.
 
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
@@ -35,7 +35,7 @@ Ebben a saját ütemben megtekinthető bemutatóban az Operations Management Sui
 ## <a name="walk-through"></a>Útmutató
 
 ### <a name="1-connect-to-the-oms-experience-center"></a>1. Csatlakozás az OMS Experience Centerhez
-Ez az útmutató az [Operations Management Suite Experience Centert](https://experience.mms.microsoft.com/) használja, amely egy teljes OMS-környezetet biztosít mintaadatokkal. Először kattintson erre a hivatkozásra, adja meg az adatait, majd válassza az **Insight and Analytics** forgatókönyvet.
+Ez az útmutató az [Operations Management Suite Experience Centert](https://experience.mms.microsoft.com/) használja, amely egy teljes Log Analytics-környezetet biztosít mintaadatokkal. Először kattintson erre a hivatkozásra, adja meg az adatait, majd válassza az **Insight and Analytics** forgatókönyvet.
 
 
 ### <a name="2-start-service-map"></a>2. Szolgáltatástérkép indítása
@@ -80,7 +80,7 @@ Vizsgáljuk meg közelebbről az **acmetomcat** elemet.  Kattintson az **acmetom
 
 
 ### <a name="7-view-change-tracking"></a>7. Változáskövetés megtekintése
-Lássuk, mi okozza a magas kihasználtságot.  Kattintson az **Összefoglalás** lapra.  Ez megjeleníti az OMS által a számítógépről gyűjtött információkat, például a hibás csatlakozásokat, a kritikus riasztásokat és a szoftverek változásait.  Az érdekes közelmúltbeli információkat tartalmazó szakaszok már eleve ki vannak bontva, azonban a többi szakasz is kibontható, ha meg szeretné vizsgálni a bennük lévő információkat.
+Lássuk, mi okozza a magas kihasználtságot.  Kattintson az **Összefoglalás** lapra.  Ez megjeleníti a Log Analytics által a számítógépről gyűjtött információkat, például a hibás csatlakozásokat, a kritikus riasztásokat és a szoftverek változásait.  A közelmúltbeli lényeges információkat tartalmazó szakaszok már eleve ki vannak bontva, azonban a többi szakasz is kibontható, ha meg szeretné vizsgálni a bennük lévő információkat.
 
 
 Ha a **Változáskövetés** nincs megnyitva, bontsa ki.  Ez megjeleníti a [változáskövetési megoldás](../log-analytics/log-analytics-change-tracking.md) által gyűjtött információkat.  Úgy tűnik, hogy az adott időtartományban változás történt a szoftverekben.  Kattintson a **Szoftver** elemre a részletekért.  Nem sokkal 4:00 után egy biztonsági mentési folyamat lett hozzáadva a géphez, és úgy tűnik, hogy ez okozza a túlzott erőforrás-használatot.
@@ -90,13 +90,13 @@ Ha a **Változáskövetés** nincs megnyitva, bontsa ki.  Ez megjeleníti a [vá
 
 
 ### <a name="8-view-details-in-log-search"></a>8. Részletek megtekintése a naplókeresésben
-Ezt ellenőrizhetjük a Log Analytics-adattárban gyűjtött részletes teljesítményinformációk vizsgálatával.  Kattintson ismét a **Riasztások** lapra, majd valamelyik **magas fokú processzorhasználattal kapcsolatos** riasztásra.  Kattintson a **Megjelenítés a naplókeresésben** lehetőségre.  Ez megnyitja a Naplókeresés ablakot, ahol [naplókereséseket](../log-analytics/log-analytics-log-searches.md) hajthat végre az adattárban tárolt adatokon.  A Szolgáltatástérkép már kitöltött egy lekérdezést a megtekinteni kívánt riasztás lekéréséhez.  
+Ezt ellenőrizhetjük a Log Analytics-munkaterületen gyűjtött részletes teljesítményinformációk vizsgálatával.  Kattintson ismét a **Riasztások** lapra, majd valamelyik **magas fokú processzorhasználattal kapcsolatos** riasztásra.  Kattintson a **Megjelenítés a naplókeresésben** lehetőségre.  Ez megnyitja a Naplókeresés ablakot, ahol [naplókereséseket](../log-analytics/log-analytics-log-searches.md) hajthat végre a munkaterületen tárolt adatokon.  A Service Map már kitöltött egy lekérdezést a megtekinteni kívánt riasztás lekéréséhez.  
 
 ![Naplókeresés](./media/operations-management-suite-walkthrough-servicemap/log-search.png)
 
 
 ### <a name="9-open-saved-search"></a>9. Mentett keresés megnyitása
-Lássuk, találunk-e további részleteket a gyűjtött teljesítményadatokban, amelyek ezt a riasztást létrehozták, és tudjuk-e igazolni a feltevésünket, hogy a problémákat a biztonsági mentési folyamat okozza.  Állítsa az időtartományt **6 órára**.  Ezután kattintson a **Kedvencek** lehetőségre, és görgessen le a **Szolgáltatástérkép** mentett kereséseiig.  Ezek olyan lekérdezések, amelyeket külön ehhez az elemzéshez hozunk létre.  Kattintson az **Első 5 folyamat processzorhasználat alapján – acmetomcat** elemre.
+Lássuk, találunk-e további részleteket a gyűjtött teljesítményadatokban, amelyek ezt a riasztást létrehozták, és tudjuk-e igazolni a feltevésünket, hogy a problémákat a biztonsági mentési folyamat okozza.  Állítsa az időtartományt **6 órára**.  Ezután kattintson a **Kedvencek** lehetőségre, és görgessen le a **Szolgáltatástérkép** mentett kereséseiig.  Ezeket a lekérdezéseket külön ehhez az elemzéshez hoztuk létre.  Kattintson az **Első 5 folyamat processzorhasználat alapján – acmetomcat** elemre.
 
 ![Mentett keresés](./media/operations-management-suite-walkthrough-servicemap/saved-search.png)
 
@@ -108,10 +108,10 @@ Esetünkben láthatjuk, hogy a biztonsági mentési folyamat folyamatosan az alk
 
 ## <a name="summary-points"></a>Összefoglaló pontok
 - A [Szolgáltatástérkép](operations-management-suite-service-map.md) megjeleníti a teljes alkalmazás nézetét, még akkor is, ha nem ismeri az összes kiszolgálóját és függőségét.
-- A Szolgáltatástérkép a többi OMS-megoldás által gyűjtött adatok feltárásával segít azonosítani az alkalmazással és az annak alapjául szolgáló infrastruktúrával kapcsolatos problémákat.
-- A [naplókeresésekkel](../log-analytics/log-analytics-log-searches.md) lefúrhat a Log Analytics-adattárban gyűjtött konkrét adatokba.    
+- A Szolgáltatástérkép más kezelési megoldások által gyűjtött adatok feltárásával segít azonosítani az alkalmazással és az annak alapjául szolgáló infrastruktúrával kapcsolatos problémákat.
+- A [naplókeresésekkel](../log-analytics/log-analytics-log-searches.md) részletesen elemezheti a Log Analytics-munkaterületen gyűjtött konkrét adatokat.    
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Tudjon meg többet a [Szolgáltatástérképről](operations-management-suite-service-map.md).
 - A Szolgáltatástérkép [üzembe helyezése és konfigurálása](operations-management-suite-service-map-configure.md).
 - Tudjon meg többet a [Log Analyticsről](../log-analytics/log-analytics-overview.md), amely szükséges a Szolgáltatástérkép használatához, és amely az ügynökök által gyűjtött működési adatokat tárolja.

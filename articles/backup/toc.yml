@@ -183,6 +183,8 @@
           href: backup-azure-troubleshoot-slow-backup-performance-issue.md
         - name: Az Azure Backup Server hibaelhárítása
           href: backup-azure-mabs-troubleshoot.md
+        - name: A System Center Data Protection Manager hibaelhárítása
+          href: backup-azure-scdpm-troubleshooting.md
         - name: Az Azure Backup Agent hibaelhárítása
           href: backup-azure-mars-troubleshoot.md
 - name: Referencia

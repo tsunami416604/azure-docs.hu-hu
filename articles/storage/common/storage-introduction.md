@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/21/2018
 ms.author: tamram
-ms.openlocfilehash: 9af4bfd5b5ae46a856b25a94cdbe55e098ea940e
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 088a58bf5bfe3736a158d2384c69cb5928b53556
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="introduction-to-microsoft-azure-storage"></a>A Microsoft Azure Storage bemutatása
 
@@ -131,21 +131,21 @@ A Blob szolgáltatás segítségével nyilvános hozzáférést adhat a tároló
 
 ## <a name="encryption"></a>Titkosítás
 
-A Storage-szolgáltatásokban több alapszintű titkosítási módszer áll rendelkezésre.
+A Storage-szolgáltatásokban két alapszintű titkosítási módszer áll rendelkezésre. A biztonsággal és a titkosítással kapcsolatos további információkért lásd az [Azure Storage biztonsági útmutatóját](storage-security-guide.md).
 
 ### <a name="encryption-at-rest"></a>Titkosítás inaktív állapotban
 
-A Storage Service Encryption (SSE) az Azure tárfiókhoz tartozó Files szolgáltatáson (előzetes verzió) vagy Blob szolgáltatáson engedélyezhető. Engedélyezésével az adott szolgáltatásba írt összes adat titkosítva lesz az írást megelőzően. Az adatok olvasásakor a rendszer visszafejti az adatokat, mielőtt visszaadná azokat.
+Az Azure Storage Service Encryption (SSE) segít az adatok biztonságos megőrzésében inaktív állapotban a vállalat által előírt biztonsági és megfelelőségi követelmények kielégítése érdekében. Ezzel a funkcióval az Azure Storage automatikusan titkosítja az adatokat a tárolás előtt, és visszafejti őket a lekérés előtt. A titkosítás, visszafejtés, és kulcskezelés teljes mértékben átlátható a felhasználók számára.
+
+A Storage Service Encryption (SSE) engedélyezhető a Blob-tárterülethez vagy az Azure Files szolgáltatáshoz (előzetes verzió). Engedélyezésével az adott szolgáltatásba írt összes adat titkosítva lesz az írást megelőzően. Az adatok olvasásakor a rendszer visszafejti az adatokat, mielőtt visszaadná azokat.
+
+Az inaktív adatok SSE-titkosításával kapcsolatos további információkért látogasson el ide: [Azure Storage szolgáltatás inaktívadat-titkosítása](storage-service-encryption.md).
 
 ### <a name="client-side-encryption"></a>Ügyféloldali titkosítás
 
 A Storage ügyfélkódtárai tartalmaznak olyan metódusokat, amelyek meghívásával az adatok programozott módon titkosíthatóak, mielőtt az ügyfélből az Azure-ba kerülnének. Az adatok tárolása titkosítva történik, tehát inaktív állapotban is titkosítva vannak. Az adatok lehívásakor azok visszafejtése a megérkezésük után történik.
 
-### <a name="encryption-in-transit-with-azure-file-shares"></a>Titkosítás az átvitel során az Azure-fájlmegosztásokkal
-
-További információ a közös hozzáférésű jogosultságkódokról: [Using Shared Access Signatures (SAS)](../storage-dotnet-shared-access-signature-part-1.md) (Közös hozzáférésű jogosultságkódok (SAS) használata). További információ a tárfiók biztonságos hozzáféréséről: [Manage anonymous read access to containers and blobs](../blobs/storage-manage-access-to-resources.md) (Tárolók és blobok névtelen olvasási hozzáférésének kezelése) és [Az Azure Storage szolgáltatásainak hitelesítése](https://msdn.microsoft.com/library/azure/dd179428.aspx).
-
-A Storage-fiók védelmével és a titkosítással kapcsolatos további információkért lásd az [Azure Storage biztonsági útmutatóját](storage-security-guide.md).
+Az ügyféloldali titkosítással kapcsolatos további információkért látogasson el ide: [Ügyféloldali titkosítás a .NET for Microsoft Azure Storage szolgáltatással](storage-client-side-encryption.md).
 
 ## <a name="replication"></a>Replikáció
 

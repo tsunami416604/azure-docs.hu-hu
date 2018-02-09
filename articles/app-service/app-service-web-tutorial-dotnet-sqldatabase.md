@@ -1,6 +1,6 @@
 ---
-title: "Azure SQL Database és az ASP.NET alkalmazás létrehozása |} Microsoft Docs"
-description: "Ismerje meg, hogyan kérhet egy ASP.NET-alkalmazást az Azure SQL adatbázis-kapcsolat használata."
+title: "ASP.NET-alkalmazás létrehozása az Azure-ban SQL Database használatával | Microsoft Docs"
+description: "Megismerheti, hogyan tehet szert egy olyan, az Azure-ban működő ASP.NET-alkalmazásra, amely csatlakozik egy SQL Database-adatbázishoz."
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
@@ -15,27 +15,29 @@ ms.topic: tutorial
 ms.date: 06/09/2017
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: db3be8068ef9e560614daa0e7f0dcf62467fd338
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
-ms.translationtype: MT
+ms.openlocfilehash: bd5aa5186bdec84e1943887ef0980fa50cd26324
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="build-an-aspnet-app-in-azure-with-sql-database"></a>Azure SQL Database és az ASP.NET alkalmazás létrehozása
+# <a name="build-an-aspnet-app-in-azure-with-sql-database"></a>ASP.NET-alkalmazás létrehozása az Azure-ban SQL Database használatával
 
-Az [Azure Web Apps](app-service-web-overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Az oktatóanyag bemutatja, hogyan telepítheti az adatvezérelt ASP.NET webalkalmazás az Azure-ban, és kösse össze [Azure SQL Database](../sql-database/sql-database-technical-overview.md). Amikor végzett, a Azure-beli ASP.NET alkalmazás, és csatlakozik az SQL Database.
+Az [Azure Web Apps](app-service-web-overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ebből az oktatóanyagból megtudhatja, hogyan helyezhet üzembe egy adatvezérelt ASP.NET-webalkalmazást az Azure-ban, és hogyan csatlakoztathatja az [Azure SQL Database-adatbázishoz](../sql-database/sql-database-technical-overview.md). Az oktatóanyag eredménye egy, az Azure-ban futó és az SQL Database-adatbázishoz csatlakozó ASP.NET-alkalmazás lesz.
 
-![Közzétett ASP.NET-alkalmazást az Azure-webalkalmazásban](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
+![Közzétett ASP.NET-alkalmazás az Azure-webalkalmazásban](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * SQL-adatbázis létrehozása az Azure-ban
-> * ASP.NET alkalmazás csatlakoztatása az SQL-adatbázishoz
-> * Az alkalmazás telepítése az Azure-bA
-> * Az adatmodell frissítése, és telepítse újra az alkalmazást
-> * Stream naplók az Azure-ból a Terminálszolgáltatások számára
-> * Felügyelheti az alkalmazást az Azure-portálon
+> * SQL Database-adatbázis létrehozása az Azure-ban
+> * ASP.NET-alkalmazás csatlakoztatása SQL Database-adatbázishoz
+> * Az alkalmazás üzembe helyezése az Azure-ban
+> * Az adatmodell frissítése és az alkalmazás ismételt üzembe helyezése
+> * Naplók streamelése az Azure-ból a saját terminálba
+> * Az alkalmazás kezelése az Azure Portalon
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -47,31 +49,29 @@ Az oktatóanyag elvégzéséhez:
 
   ![ASP.NET és webfejlesztés és Azure-fejlesztés (Web és felhőszolgáltatások alatt)](media/app-service-web-tutorial-dotnet-sqldatabase/workloads.png)
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
 ## <a name="download-the-sample"></a>A minta letöltése
 
-[A minta-projekt letöltése](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/archive/master.zip).
+[Töltse le a mintaprojektet](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/archive/master.zip).
 
-Extract (csomagolja ki) a *dotnet-sqldb-oktatóanyag – master.zip* fájlt.
+Bontsa ki (csomagolja ki) a *dotnet-sqldb-tutorial-master.zip* fájlt.
 
-A minta-projekt tartalmazza az alapvető [ASP.NET MVC](https://www.asp.net/mvc) CRUD (hozzon létre-olvasás-Módosítás-Törlés) alkalmazás használatával [Entity Framework Code First](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application).
+A mintaprojekt az [Entity Framework Core](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application) szolgáltatást használó, alapszintű [ASP.NET MVC](https://www.asp.net/mvc) CRUD (létrehoz-olvas-frissít-töröl) alkalmazást tartalmaz.
 
 ### <a name="run-the-app"></a>Az alkalmazás futtatása
 
-Nyissa meg a *dotnet-sqldb-oktatóanyag – master/DotNetAppSqlDb.sln* fájlt a Visual Studióban. 
+Nyissa meg a *dotnet-sqldb-tutorial-master/DotNetAppSqlDb.sln* fájlt a Visual Studióban. 
 
-Típus `Ctrl+F5` hibakeresés nélkül az alkalmazás futtatásához. Az alkalmazás az alapértelmezett böngésző jelenik meg. Válassza ki a **hozzon létre új** hivatkozásra, és hozzon létre több *tennivaló* elemeket. 
+Az alkalmazás hibakeresés nélküli futtatásához nyomja le a `Ctrl+F5` billentyűkombinációt. Az alkalmazás megjelenik az alapértelmezett böngészőben. Kattintson az **Új létrehozása** hivatkozásra, és hozzon létre néhány *teendőt*. 
 
 ![A New ASP.NET Project (Új ASP.NET-projekt) párbeszédpanel](media/app-service-web-tutorial-dotnet-sqldatabase/local-app-in-browser.png)
 
-Teszt a **szerkesztése**, **részletek**, és **törlése** hivatkozásokat.
+Tesztelje az **Edit** (Szerkesztés), a **Details** (Részletek) és a **Delete** (Törlés) hivatkozást.
 
-Az alkalmazás egy adatbázis-környezet használatával kapcsolódni az adatbázishoz. Ez a példa az adatbázis-környezet nevű kapcsolati karakterláncot használ `MyDbConnection`. A kapcsolati karakterlánc megadása a *Web.config* fájlt, és hivatkozik a *Models/MyDatabaseContext.cs* fájlt. A kapcsolati karakterlánc nevét az Azure web app egy Azure SQL adatbázishoz való csatlakozáshoz használt az oktatóanyag későbbi részében. 
+Az alkalmazás adatbázis-környezetet használ az adatbázishoz való kapcsolódáshoz. Ebben a példában az adatbázis-környezet a `MyDbConnection` nevű kapcsolati karakterláncot használja. A kapcsolati karakterlánc a *Web.config* fájlban adható meg, és a *Models/MyDatabaseContext.cs* fájl hivatkozik rá. A kapcsolati karakterlánc nevét az oktatóanyag későbbi részében is használni fogjuk az Azure-webalkalmazásnak egy Azure SQL Database-adatbázishoz való csatlakoztatásához. 
 
-## <a name="publish-to-azure-with-sql-database"></a>Az Azure SQL Database közzététele
+## <a name="publish-to-azure-with-sql-database"></a>Közzététel az Azure-ban az SQL Database használatával
 
-Az a **Megoldáskezelőben**, kattintson a jobb gombbal a **DotNetAppSqlDb** projektre, és válassza ki **közzététel**.
+A **Solution Explorer** (Megoldáskezelő) lapon kattintson a jobb gombbal a **DotNetAppSqlDb** projektre, és válassza a **Publish** (Közzététel) elemet.
 
 ![Közzététel a Megoldáskezelőből](./media/app-service-web-tutorial-dotnet-sqldatabase/solution-explorer-publish.png)
 
@@ -79,7 +79,7 @@ Győződjön meg arról, hogy a **Microsoft Azure App Service** van kiválasztva
 
 ![Közzététel a projekt áttekintő oldaláról](./media/app-service-web-tutorial-dotnet-sqldatabase/publish-to-app-service.png)
 
-Közzétételi megnyílik a **létrehozása az App Service** párbeszédpanel, amely segít az összes Azure-erőforrást az Azure-ban az ASP.NET webalkalmazás futtatásához szükséges.
+A közzététel megnyitja a **Create App Service** (App Service létrehozása) párbeszédpanelt, amely segítségével létrehozhatja az ASP.NET-webalkalmazásnak az Azure-ban való futtatásához szükséges összes Azure-erőforrást.
 
 ### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -91,12 +91,12 @@ Ha már bejelentkezett, ezen a panelen már létre is hozhatja az összes, az Az
 
 ### <a name="configure-the-web-app-name"></a>A webalkalmazás nevének konfigurálása
 
-Megtartja-e a létrehozott webalkalmazás neve, vagy módosítsa azt egy másik egyedi nevét (érvényes karakterek: `a-z`, `0-9`, és `-`). A webalkalmazás-nevet az alkalmazás használatos az alapértelmezett URL-cím (`<app_name>.azurewebsites.net`, ahol `<app_name>` a webes alkalmazás neve). A webalkalmazás nevének egyedinek kell lennie az Azure-ban minden alkalmazások között. 
+Megtarthatja a webalkalmazás létrehozott nevét, vagy módosíthatja egy másik egyedi névre (érvényes karakterek: `a-z`, `0-9` és `-`). A webalkalmazás neve az alkalmazás alapértelmezett URL-címének a részeként használatos (`<app_name>.azurewebsites.net`, amelyben az `<app_name>` a webalkalmazás neve). A webalkalmazás nevének egyedinek kell lennie az Azure összes alkalmazása tekintetében. 
 
-![Hozzon létre az app service párbeszédpanelen](media/app-service-web-tutorial-dotnet-sqldatabase/wan.png)
+![A Create App Service (App Service létrehozása) párbeszédpanel](media/app-service-web-tutorial-dotnet-sqldatabase/wan.png)
 
 > [!NOTE]
-> Ne kattintson **létrehozása**. Először egy későbbi lépésben egy SQL-adatbázis létrehozása.
+> Ne kattintson a **Create** (Létrehozás) gombra. Először egy SQL-adatbázist kell beállítania egy későbbi lépésben.
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
@@ -104,9 +104,9 @@ Megtartja-e a létrehozott webalkalmazás neve, vagy módosítsa azt egy másik 
 
 A **Resource Group** (Erőforráscsoport) mellett kattintson a **New** (Új) elemre.
 
-![Erőforráscsoport mellett az új gombra.](media/app-service-web-tutorial-dotnet-sqldatabase/new_rg2.png)
+![A Resource Group (Erőforráscsoport) mellett kattintson a New (Új) elemre.](media/app-service-web-tutorial-dotnet-sqldatabase/new_rg2.png)
 
-Nevezze el az erőforráscsoportot **myResourceGroup**.
+Adja a **myResourceGroup** nevet az erőforráscsoportnak.
 
 ### <a name="create-an-app-service-plan"></a>App Service-csomag létrehozása
 
@@ -118,153 +118,153 @@ A **Configure App Service Plan** (App Service-csomag konfigurálása) párbeszé
 
 ![App Service-csomag létrehozása](./media/app-service-web-tutorial-dotnet-sqldatabase/configure-app-service-plan.png)
 
-| Beállítás  | Ajánlott érték | További információ |
+| Beállítás  | Ajánlott érték | További tudnivalók |
 | ----------------- | ------------ | ----|
 |**App Service-csomag**| myAppServicePlan | [App Service-csomagok](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) |
 |**Hely**| Nyugat-Európa | [Azure-régiók](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) |
-|**Méret**| Ingyenes | [Tarifacsomagok](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)|
+|**Méret**| Ingyenes | [Árképzési szintek](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)|
 
 ### <a name="create-a-sql-server-instance"></a>SQL Server-példány létrehozása
 
-Adatbázis létrehozása előtt kell egy [Azure SQL Database logikai kiszolgáló](../sql-database/sql-database-features.md). A logikai kiszolgálók adatbázisok egy csoportját tartalmazzák, amelyeket a rendszer egy csoportként kezel.
+Adatbázis létrehozása előtt szüksége van egy [Azure SQL Database logikai kiszolgálóra](../sql-database/sql-database-features.md). A logikai kiszolgálók adatbázisok egy csoportját tartalmazzák, amelyeket a rendszer egy csoportként kezel.
 
-Válassza ki **további Azure-szolgáltatások felfedezés**.
+Válassza az **Explore additional Azure services** (További Azure-szolgáltatások megismerése) elemet.
 
 ![A webapp nevének konfigurálása](media/app-service-web-tutorial-dotnet-sqldatabase/web-app-name.png)
 
-Az a **szolgáltatások** lapra, majd a  **+**  melletti ikon **SQL-adatbázis**. 
+A **Services** (Szolgáltatások) lapon kattintson az **SQL Database** melletti **+** ikonra. 
 
-![A szolgáltatások lapon kattintson a + SQL-adatbázis melletti ikonra.](media/app-service-web-tutorial-dotnet-sqldatabase/sql.png)
+![A Services (Szolgáltatások) lapon kattintson az SQL Database melletti + ikonra.](media/app-service-web-tutorial-dotnet-sqldatabase/sql.png)
 
-Az a **SQL-adatbázis beállítása** párbeszédpanel, kattintson a **új** melletti **SQL Server**. 
+A **Configure SQL Database** (SQL Database konfigurálása) párbeszédpanelen kattintson az **SQL Server** melletti **New** (Új) elemre. 
 
-Létrejön egy egyedi kiszolgálónevet. Ez a név részeként az alapértelmezett URL-cím a logikai kiszolgálóhoz használt `<server_name>.database.windows.net`. Egyedinek kell lennie az Azure-ban minden logikai kiszolgáló példányára. Módosítsa a kiszolgáló nevét, de ebben az oktatóanyagban tartsa meg a létrehozott értéket.
+A rendszer létrehoz egy egyedi kiszolgálónevet. Ez a név a `<server_name>.database.windows.net` logikai kiszolgáló alapértelmezett URL-címének a részeként használatos. Egyedinek kell lennie Azure összes logikaikiszolgáló-példányán. Módosíthatja a kiszolgáló nevét, ezen oktatóanyag esetén azonban tartsa meg a létrehozott értéket.
 
-Adjon hozzá egy rendszergazdai jogosultságú felhasználónevet és jelszót. Összetettségi követelményeknek, lásd: [jelszóházirend](/sql/relational-databases/security/password-policy).
+Adjon meg egy rendszergazdai felhasználónevet és jelszót. A jelszó „összetettségére” vonatkozó követelményeket a [jelszavakra vonatkozó szabályzattal](/sql/relational-databases/security/password-policy) foglalkozó cikkben tekintheti meg.
 
-Ne felejtse el ezt a felhasználónevet és jelszót. Azokat a logikai kiszolgálópéldány később kezelésére van szüksége.
+Jegyezze meg ezt a felhasználónevet és jelszót. Később szüksége lesz rájuk a logikaikiszolgáló-példány kezeléséhez.
 
 ![SQL Server-példány létrehozása](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-server.png)
 
-Kattintson az **OK** gombra. Ne zárja be a **SQL-adatbázis beállítása** még párbeszédpanel.
+Kattintson az **OK** gombra. Ne zárja még be a **Configure SQL Database** (SQL Database konfigurálása) párbeszédpanelt.
 
 ### <a name="create-a-sql-database"></a>SQL-adatbázis létrehozása
 
-Az a **SQL-adatbázis beállítása** párbeszédpanel: 
+A **Configure SQL Database** (SQL Database konfigurálása) párbeszédpanelen: 
 
-* Tartsa meg az alapértelmezett generált **adatbázisnév**.
-* A **kapcsolati karakterlánc nevét**, típus *MyDbConnection*. Ezt a nevet meg kell egyeznie a kapcsolati karakterláncot, amely hivatkozik a *Models/MyDatabaseContext.cs*.
+* Tartsa meg a **Database Name** (Adatbázisnév) alapértelmezés szerint létrehozott értékét.
+* A **Connection String Name** (Kapcsolati karakterlánc neve) mezőben írja be a *MyDbConnection* nevet. Ennek a névnek meg kell egyeznie a *Models/MyDatabaseContext.cs* fájlban hivatkozott kapcsolati karakterlánccal.
 * Kattintson az **OK** gombra.
 
-![SQL-adatbázis konfigurálása](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database.png)
+![SQL Database konfigurálása](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database.png)
 
-A **létrehozása az App Service** párbeszédpanel jeleníti meg az erőforrások létrehozott. Kattintson a **Create** (Létrehozás) gombra. 
+A **Create App Service** (App Service létrehozása) párbeszédpanel jeleníti meg a létrehozott erőforrásokat. Kattintson a **Create** (Létrehozás) gombra. 
 
 ![a létrehozott erőforrások](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
 
-Miután a varázsló létrehozta az Azure-erőforrások, az Azure-bA közzéteszi az ASP.NET-alkalmazás. Az alapértelmezett böngésző indították el a telepített alkalmazás URL-címét. 
+Ha a varázsló befejezte az Azure-erőforrások létrehozását, közzéteszi az ASP.NET-alkalmazást az Azure-ban. Az alapértelmezett böngésző az üzembe helyezett alkalmazásra mutató URL-címmel indul el. 
 
-Adjon hozzá néhány Tennivalólista elemein.
+Adjon hozzá néhány teendőt.
 
-![Közzétett ASP.NET-alkalmazást az Azure-webalkalmazásban](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
+![Közzétett ASP.NET-alkalmazás az Azure-webalkalmazásban](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
 
-Gratulálunk! Az adatvezérelt ASP.NET-alkalmazás fut élő az Azure App Service-ben.
+Gratulálunk! Az adatvezérelt ASP.NET-alkalmazás fut és elérhető az Azure App Service-ben.
 
-## <a name="access-the-sql-database-locally"></a>Hozzáférés az SQL-adatbázis helyi
+## <a name="access-the-sql-database-locally"></a>Az SQL Database elérése helyben
 
-A Visual Studio lehetővé teszi, hogy vizsgálatát, és az új SQL-adatbázis egyszerűen a kezelése a **SQL Server Object Explorer**.
+A Visual Studio az **SQL Server Object Explorerben** teszi lehetővé az új SQL Database megismerését és egyszerű kezelését.
 
 ### <a name="create-a-database-connection"></a>Adatbázis-kapcsolat létrehozása
 
-Az a **nézet** menü **SQL Server Object Explorer**.
+A **View** (Nézet) menüben válassza az **SQL Server Object Explorer** lehetőséget.
 
-Felső részén **SQL Server Object Explorer**, kattintson a **SQL-kiszolgáló hozzáadása** gombra.
+Az **SQL Server Object Explorer** felső részében kattintson az **Add SQL Server** (SQL Server hozzáadása) gombra.
 
 ### <a name="configure-the-database-connection"></a>Az adatbázis-kapcsolat konfigurálása
 
-Az a **Connect** párbeszédpanelen bontsa ki a **Azure** csomópont. Az SQL-adatbázis példányainak az Azure-ban az itt felsorolt.
+A **Connect** (Csatlakozás) párbeszédpanelen bontsa ki az **Azure** csomópontot. Az Azure-ban található összes SQL Database-példány látható itt.
 
-Válassza ki a korábban létrehozott SQL-adatbázis. A korábban létrehozott kapcsolat a program automatikusan kitölti a lap alján.
+Válassza ki a korábban létrehozott SQL Database-adatbázist. A korábban létrehozott kapcsolatot a rendszer automatikusan megadja a lap alján.
 
-Írja be a korábban létrehozott adatbázis-rendszergazda jelszavát, és kattintson a **Connect**.
+Írja be a korábban létrehozott adatbázis-rendszergazdai jelszót, és kattintson a **Connect** (Csatlakozás) elemre.
 
-![A Visual Studio adatbázis-kapcsolat konfigurálása](./media/app-service-web-tutorial-dotnet-sqldatabase/connect-to-sql-database.png)
+![Az adatbázis-kapcsolat konfigurálása a Visual Studióban](./media/app-service-web-tutorial-dotnet-sqldatabase/connect-to-sql-database.png)
 
-### <a name="allow-client-connection-from-your-computer"></a>A számítógép az ügyfél-kapcsolat engedélyezése
+### <a name="allow-client-connection-from-your-computer"></a>Ügyfélkapcsolat engedélyezése a számítógépen
 
-A **hozzon létre egy új tűzfalszabályt** párbeszédpanel már meg van nyitva. Alapértelmezés szerint az SQL Database-példányt csak Azure-szolgáltatások, például az Azure-webalkalmazásban kapcsolatokat engedélyez. Kapcsolódás saját adatbázishoz, hozzon létre egy tűzfalszabályt SQL-adatbázispéldány. A tűzfalszabály lehetővé teszi, hogy a helyi számítógépen a nyilvános IP-címét.
+Megnyílik a **Create a new firewall rule** (Új tűzfalszabály létrehozása) párbeszédpanel. Alapértelmezés szerint az SQL Database-példány csak Azure-szolgáltatásokból, például az Azure-webalkalmazásból származó kapcsolatokat engedélyez. Az adatbázishoz való kapcsolódáshoz hozzon létre egy tűzfalszabályt az SQL Database-példányban. A tűzfalszabály engedélyezi a helyi számítógép nyilvános IP-címét.
 
-A párbeszédpanel már ki van töltve, a számítógép nyilvános IP-címmel.
+A párbeszédpanel már ki van töltve a számítógép nyilvános IP-címével.
 
-Győződjön meg arról, hogy **a ügyfél IP-cím hozzáadása** van kiválasztva, és kattintson a **OK**. 
+Jelölje be az **Add my client IP** (Ügyfél IP-címének hozzáadása) választógombot, és kattintson az **OK** gombra. 
 
-![SQL Database-példányt a tűzfal beállítása](./media/app-service-web-tutorial-dotnet-sqldatabase/sql-set-firewall.png)
+![Tűzfal beállítása az SQL Database-példány számára](./media/app-service-web-tutorial-dotnet-sqldatabase/sql-set-firewall.png)
 
-Visual Studio befejezi a tűzfal beállítása a SQL Database-példányt, ha a kapcsolat megjelennek **SQL Server Object Explorer**.
+Miután a Visual Studio befejezte a tűzfal beállítását az SQL Database-példány számára, a kapcsolat megjelenik az **SQL Server Object Explorerben**.
 
-Itt végezheti a leggyakoribb adatbázis műveletek, például a lekérdezések futtatása hozhat létre, nézetek és tárolt eljárások, és több. 
+Itt elvégezheti a leggyakoribb adatbázis-műveleteket, például lekérdezések futtatását, nézetek és tárolt eljárások létrehozását és sok minden mást. 
 
-Bontsa ki a kapcsolat > **adatbázisok** > **&lt;az adatbázis >** > **táblák**. Kattintson a jobb gombbal a `Todoes` tábla, és válassza ki **adatok megtekintéséhez**. 
+Bontsa ki a kapcsolat > **Databases** (Adatbázisok)  > **&lt;saját adatbázis>** > **Tables** (Táblák) csomópontot. Kattintson a jobb gombbal a `Todoes` táblára, és válassza a **View Data** (Adatok megtekintése) lehetőséget. 
 
-![Fedezze fel az SQL adatbázis-objektumok](./media/app-service-web-tutorial-dotnet-sqldatabase/explore-sql-database.png)
+![SQL Database-objektumok megismerése](./media/app-service-web-tutorial-dotnet-sqldatabase/explore-sql-database.png)
 
-## <a name="update-app-with-code-first-migrations"></a>Frissítse app Code First áttelepítést
+## <a name="update-app-with-code-first-migrations"></a>Az alkalmazás frissítése Code First migrálásokkal
 
-Az adatbázis és a webes alkalmazást az Azure-ban frissíti használhatja a Visual Studio a jól ismert eszközökkel. Ebben a lépésben segítségével Code First áttelepítést az Entity Framework megváltoztatja az adatbázis-séma, és tegye közzé az Azure-bA.
+Az adatbázist és az Azure-ban található webes alkalmazást a Visual Studio jól ismert eszközeivel frissítheti. Ebben a lépésben Code First migrálásokat használ az Entity Frameworkben az adatbázisséma módosításához, majd annak közzétételéhez az Azure-ban.
 
-Entity Framework Code First áttelepítést használatával kapcsolatos további információkért lásd: [Ismerkedés az Entity Framework 6 Code First MVC 5-öt használó](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application).
+Az Entity Framework Code First migrálásainak a használatával kapcsolatos további információkért tekintse meg a [Getting Started with Entity Framework 6 Code First using MVC 5](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application) (Ismerkedés az Entity Framework 6 Code First használatával az MVC 5 segítségével) című cikket.
 
-### <a name="update-your-data-model"></a>Az adatmodell frissítése
+### <a name="update-your-data-model"></a>Adatmodell frissítése
 
-Nyissa meg _Models\Todo.cs_ kód-szerkesztőben. A következő tulajdonság hozzáadása a `ToDo` osztály:
+A kódszerkesztőben nyissa meg a _Models\Todo.cs_ fájlt. Adja hozzá a következő tulajdonságot a `ToDo` osztályhoz:
 
 ```csharp
 public bool Done { get; set; }
 ```
 
-### <a name="run-code-first-migrations-locally"></a>Code First áttelepítést helyileg történő futtatása
+### <a name="run-code-first-migrations-locally"></a>Code First migrálás helyi futtatása
 
-Futtassa a frissítések a helyi adatbázis néhány parancsokat. 
+Futtasson néhány parancsot a helyi adatbázis frissítéséhez. 
 
-Az a **eszközök** menüben kattintson a **NuGet-Csomagkezelő** > **Csomagkezelő konzol**.
+Kattintson a **Tools** (Eszközök) menü **NuGet Package Manager** > **Package Manager Console** (NuGet-csomagkezelő > Csomagkezelő konzol) elemére.
 
-A Package Manager Console ablakban Code First áttelepítést engedélyezése:
+A Package Manager Console (Csomagkezelő konzol) ablakban engedélyezze a Code First migrálásokat:
 
 ```PowerShell
 Enable-Migrations
 ```
 
-Vegye fel az áttelepítés:
+Migrálás felvétele:
 
 ```PowerShell
 Add-Migration AddProperty
 ```
 
-A helyi adatbázis frissítése:
+Frissítse a helyi adatbázist:
 
 ```PowerShell
 Update-Database
 ```
 
-Típus `Ctrl+F5` az alkalmazás futtatásához. A Szerkesztés, részletek tesztelése, és hivatkozások létrehozása.
+Az alkalmazás futtatásához nyomja le a `Ctrl+F5` billentyűkombinációt. Tesztelje a szerkesztést, a részletek megtekintését és a létrehozást lehetővé tevő hivatkozást.
 
-Ha az alkalmazás betölt nem jelenik meg hibaüzenet, Code First áttelepítést sikeresen befejeződött. Azonban a lap továbbra is ugyanúgy az alkalmazáslogikát még nem használja ezt az új tulajdonságot. 
+Ha az alkalmazás betöltése hibák nélkül fejeződik be, a Code First migrálások sikeresek voltak. A lap azonban továbbra is ugyanúgy néz ki, mert az alkalmazáslogika még nem használja az új tulajdonságot. 
 
-### <a name="use-the-new-property"></a>Az új tulajdonsággal
+### <a name="use-the-new-property"></a>Az új tulajdonság használata
 
-Néhány módosítást használata a kódban a `Done` tulajdonság. Az egyszerűség kedvéért ebben az oktatóanyagban, csak fogja módosítani a `Index` és `Create` nézeteket, művelet: a tulajdonság.
+Hajtson végre néhány módosítást a kódban a `Done` tulajdonság használatához. Ebben az oktatóanyagban az egyszerűség kedvéért csak az `Index` és a `Create` nézetet módosítja, így láthatja a tulajdonságot működés közben.
 
-Nyissa meg _Controllers\TodosController.cs_.
+Nyissa meg a _Controllers\TodosController.cs_ fájlt.
 
-Keresés a `Create()` metódusa 52. sor, és adja hozzá `Done` a tulajdonságok listájának a `Bind` attribútum. Amikor elkészült, a `Create()` metódus-aláírás néz ki a következő kódot:
+Keresse meg a `Create()` metódust az 52. sorban, és adja hozzá a `Done` kifejezést a `Bind` attribútum tulajdonságlistájához. Amikor végzett, a `Create()` metódus aláírása a következő kódhoz hasonló:
 
 ```csharp
 public ActionResult Create([Bind(Include = "Description,CreatedDate,Done")] Todo todo)
 ```
 
-Nyissa meg _Views\Todos\Create.cshtml_.
+Nyissa meg a _Views\Todos\Create.cshtml_ fájlt.
 
-A Razor kódban kell megjelennie a `<div class="form-group">` elem által használt `model.Description`, és majd egy másik `<div class="form-group">` elem által használt `model.CreatedDate`. Ez a két elem követő hozzáadása egy másik `<div class="form-group">` elem által használt `model.Done`:
+A Razor-kódban látnia kell a `<div class="form-group">` elemet, amely a `model.Description` elemet használja, majd egy másik `<div class="form-group">` elemet, amely a `model.CreatedDate` elemet használja. Közvetlenül ezután a két elem után adjon hozzá egy másik `<div class="form-group">` elemet, amely a `model.Done` elemet használja:
 
 ```csharp
 <div class="form-group">
@@ -278,9 +278,9 @@ A Razor kódban kell megjelennie a `<div class="form-group">` elem által haszn�
 </div>
 ```
 
-Nyissa meg _Views\Todos\Index.cshtml_.
+Nyissa meg a _Views\Todos\Index.cshtml_ fájlt.
 
-Keresse meg az üres `<th></th>` elemet. Ez az elem felett adja hozzá a következő Razor-kódot:
+Keresse meg az üres `<th></th>` elemet. Az elem felett adja hozzá a következő Razor-kódot:
 
 ```csharp
 <th>
@@ -288,7 +288,7 @@ Keresse meg az üres `<th></th>` elemet. Ez az elem felett adja hozzá a követk
 </th>
 ```
 
-Keresés a `<td>` elem, amely tartalmazza a `Html.ActionLink()` segédmódszereket. _Fent_ ez `<td>`, adja hozzá egy másik `<td>` Razor kódot a következő elem:
+Keresse meg a `Html.ActionLink()` segédmetódusokat tartalmazó `<td>` elemet. Ezen `<td>` _felett_ adjon hozzá egy másik `<td>` elemet a következő Razor-kóddal:
 
 ```csharp
 <td>
@@ -296,87 +296,87 @@ Keresés a `<td>` elem, amely tartalmazza a `Html.ActionLink()` segédmódszerek
 </td>
 ```
 
-Ez minden szeretne látni a változtatásokat a `Index` és `Create` nézetek. 
+Mást nem kell tennie a módosítások megtekintéséhez az `Index` és a `Create` nézetben. 
 
-Típus `Ctrl+F5` az alkalmazás futtatásához.
+Az alkalmazás futtatásához nyomja le a `Ctrl+F5` billentyűkombinációt.
 
-Ezután egy teendő hozzáadása és ellenőrzése **végzett**. Ezután azt kell jelennek meg az Ön újragondolt befejezett elemként. Ne feledje, hogy a `Edit` nézet nem jeleníti meg a `Done` mezőben, mert nem módosítja a `Edit` nézet.
+Most hozzáadhat teendőket, és bejelölheti a **Kész** jelölőnégyzetet. Ezután ennek meg kell jelennie a főoldalon befejezett elemként. Ne feledje, hogy az `Edit` nézetben nem jelenik meg a `Done` mező, mivel az `Edit` nézetet nem módosította.
 
-### <a name="enable-code-first-migrations-in-azure"></a>Engedélyezze a Code First áttelepítést az Azure-ban
+### <a name="enable-code-first-migrations-in-azure"></a>Code First migrálások engedélyezése az Azure-ban
 
-Most, hogy a kód módosítása működéséről, beleértve az adatbázis az áttelepítés akkor tegye közzé az Azure-webalkalmazásban, és frissítse az SQL-adatbázis Code First áttelepítést túl.
+Most, hogy a kódmódosítás működik, az adatbázis-migrálást is beleértve, közzéteheti az Azure-webalkalmazásban, és frissítheti az SQL Database-adatbázist is a Code First migrálásokkal.
 
-Fentiekhez hasonló, kattintson jobb gombbal a projektre, és válassza ki **közzététel**.
+Fentiekhez hasonlóan kattintson jobb gombbal a projektre, majd válassza a **Publish** (Közzététel) lehetőséget.
 
-Kattintson a **beállítások** a Közzététel varázsló megnyitásához.
+Kattintson a **Settings** (Beállítások) elemre a közzétételi varázsló megnyitásához.
 
-![Nyissa meg a közzétételi beállítások](./media/app-service-web-tutorial-dotnet-sqldatabase/publish-settings.png)
+![Közzétételi beállítások megnyitása](./media/app-service-web-tutorial-dotnet-sqldatabase/publish-settings.png)
 
-A varázslóban kattintson **következő**.
+A varázslóban kattintson a **Next** (Tovább) gombra.
 
-Győződjön meg arról, hogy az SQL-adatbázis kapcsolati karakterlánca nem üres **MyDatabaseContext (MyDbConnection)**. Előfordulhat, hogy kell kiválasztania a **myToDoAppDb** adatbázis a legördülő listából. 
+Ellenőrizze, hogy az SQL Database-adatbázis kapcsolati karakterlánca látható a **MyDatabaseContext (MyDbConnection)** alatt. Előfordulhat, hogy kell kiválasztania a **myToDoAppDb** adatbázist a legördülő listából. 
 
-Válassza ki **hajtható végre Code First áttelepítést (fut az alkalmazás indítása)**, majd kattintson a **mentése**.
+Válassza az **Execute Code First Migrations (runs on application start)** (Code First migrálások végrehajtása (alkalmazásindításakor fut)) elemet, majd kattintson a **Save** (Mentés) gombra.
 
-![Az Azure web app alkalmazásban Code First áttelepítést engedélyezése](./media/app-service-web-tutorial-dotnet-sqldatabase/enable-migrations.png)
+![Code First migrálások engedélyezése az Azure-webalkalmazásban](./media/app-service-web-tutorial-dotnet-sqldatabase/enable-migrations.png)
 
-### <a name="publish-your-changes"></a>A változtatások közzététele
+### <a name="publish-your-changes"></a>A módosítások közzététele
 
-Most, hogy Code First áttelepítést az Azure web app alkalmazásban engedélyezve van, a kód változtatások közzététele.
+Most, hogy engedélyezte a Code First migrálásokat az Azure-webalkalmazásban, tegye közzé a kódmódosításokat.
 
 A közzétételi oldalon kattintson a **Publish** (Közzététel) elemre.
 
-Próbálja meg újból hozzáadni a Tennivalólista elemein, és válassza ki **végzett**, és Ön újragondolt befejezett elemként jelenniük.
+Próbálkozzon újabb teendő elemek hozzáadásával, kattintson a **Done** (Kész) gombra, ami után az elemeknek befejezett elemekként kell megjelenniük a kezdőlapon.
 
-![Azure-webalkalmazásban kód első áttelepítés után](./media/app-service-web-tutorial-dotnet-sqldatabase/this-one-is-done.png)
+![Az Azure webalkalmazás a Code First migrálás után](./media/app-service-web-tutorial-dotnet-sqldatabase/this-one-is-done.png)
 
-A meglévő Tennivalólista elemein továbbra is megjelennek. Ha az ASP.NET-alkalmazás közzétételéhez meglévő az SQL-adatbázis adatai nem elveszett. Code First áttelepítést is, csak a Adatséma változik, és a meglévő adatok sértetlenek.
+A meglévő teendők továbbra is megjelennek. Ha ismét közzéteszi az ASP.NET-alkalmazást, az SQL Database-ben meglévő adatok nem vesznek el. A Code First migrálások emellett csak az adatsémát módosítják, a meglévő adatokat érintetlenül hagyják.
 
 
-## <a name="stream-application-logs"></a>Az adatfolyam alkalmazásnaplók
+## <a name="stream-application-logs"></a>Alkalmazásnaplók streamelése
 
-Nyomkövetési üzenet az Azure-webalkalmazásban közvetlenül a Visual Studio adatfolyam.
+A nyomkövetési üzeneteket közvetlenül az Azure-webalkalmazásból streamelheti a Visual Studióba.
 
-Nyissa meg _Controllers\TodosController.cs_.
+Nyissa meg a _Controllers\TodosController.cs_ fájlt.
 
-Minden egyes művelethez kezdődik-e a `Trace.WriteLine()` metódust. Ez a kód bemutatják a nyomkövetési üzenetek hozzáadása az Azure-webalkalmazásban kerül.
+Minden művelet egy `Trace.WriteLine()` metódussal indul. Ez a kód azért lett hozzáadva, hogy megmutassa hogyan vehet fel nyomkövetési üzeneteket az Azure-webalkalmazásba.
 
-### <a name="open-server-explorer"></a>Nyissa meg a Server Explorer
+### <a name="open-server-explorer"></a>A Server Explorer megnyitása
 
-Az a **nézet** menü **Server Explorer**. Naplózás konfigurálása az Azure-webalkalmazásban a **Server Explorer**. 
+A **View** (Nézet) menüben válassza a **Server Explorer** (Kiszolgálókezelő) lehetőséget. A **Server Explorer** (Kiszolgálókezelő) segítségével konfigurálhatja az Azure-webalkalmazás bejelentkezési beállításait. 
 
-### <a name="enable-log-streaming"></a>Adatfolyamként-napló
+### <a name="enable-log-streaming"></a>Naplóstreamelés engedélyezése
 
-A **Server Explorer**, bontsa ki a **Azure** > **App Service**.
+A **Server Explorer** (Kiszolgálókezelő) ablakában bontsa ki az **Azure** > **App Service** csomópontot.
 
-Bontsa ki a **myResourceGroup** erőforráscsoport, létrehozta az Azure web app kezdeti létrehozásakor.
+Bontsa ki az Azure-webalkalmazás első létrehozásakor létrehozott **myResourceGroup** erőforráscsoportot.
 
-Kattintson a jobb gombbal az Azure-webalkalmazásban, és válassza ki **folyamatos átviteli naplók megtekintése**.
+Kattintson a jobb gombbal az Azure-webalkalmazásra, és válassza a **View Streaming Logs** (Streamelt naplók megtekintése) lehetőséget.
 
-![Adatfolyamként-napló](./media/app-service-web-tutorial-dotnet-sqldatabase/stream-logs.png)
+![Naplóstreamelés engedélyezése](./media/app-service-web-tutorial-dotnet-sqldatabase/stream-logs.png)
 
-A naplók mostantól a folyamatos átviteli a **kimeneti** ablak. 
+A naplókat mostantól az **Output** (Kimenet) ablakba streameli a rendszer. 
 
-![A kimeneti ablakban adatfolyam-napló](./media/app-service-web-tutorial-dotnet-sqldatabase/log-streaming-pane.png)
+![Az Output (Kimenet) ablakban streamelt napló](./media/app-service-web-tutorial-dotnet-sqldatabase/log-streaming-pane.png)
 
-Azonban nem jelennek meg a nyomkövetési üzenetek még. Meg mert először kiválasztásakor **folyamatos átviteli naplók megtekintése**, az Azure-webalkalmazásban beállítja a nyomkövetési szint beállítása azokhoz a `Error`, amely csak naplózza hibaesemények (az a `Trace.TraceError()` metódus).
+Nem jelennek még azonban meg a nyomkövetési üzenetek. Ennek oka az, hogy amikor először választja a **View Streaming Logs** (Streamelt naplók megtekintése) lehetőséget, az Azure-webalkalmazás `Error` értékűre állítja be a nyomkövetési szintet, amely csak a hibaeseményeket rögzíti (a `Trace.TraceError()` metódussal).
 
 ### <a name="change-trace-levels"></a>Nyomkövetési szintek módosítása
 
-Ha módosítani szeretné a nyomkövetési szintek többi nyomkövetési üzenet kimeneti, lépjen vissza **Server Explorer**.
+Ha módosítani szeretné a nyomkövetési szinteket a többi nyomkövetési üzenet megjelenítéséhez, lépjen vissza a **Server Explorer** (Kiszolgálókezelő) ablakába.
 
-Az Azure-webalkalmazás ismét gombbal és válassza ki **nézetbeállítások**.
+Kattintson újra a jobb gombbal az Azure-webalkalmazásra, és válassza a **View Settings** (Megjelenítési beállítások) lehetőséget.
 
-Az a **Alkalmazásnaplózást (fájlrendszer)** legördülő menüből válassza **részletes**. Kattintson a **Save** (Mentés) gombra.
+Az **Application Logging (File System)** (Alkalmazásnaplózás (fájlrendszer)) legördülő menüben válassza a **Verbose** (Részletes) elemet. Kattintson a **Save** (Mentés) gombra.
 
-![A részletes nyomkövetési szint módosítása](./media/app-service-web-tutorial-dotnet-sqldatabase/trace-level-verbose.png)
+![Nyomkövetési szint módosítása Verbose (Részletes) értékűre](./media/app-service-web-tutorial-dotnet-sqldatabase/trace-level-verbose.png)
 
 > [!TIP]
-> Kísérletezhet, és hogy milyen típusú üzenetek jelennek meg az egyes különböző nyomkövetési szintek. Például a **információkat** szint továbbít minden által létrehozott naplók `Trace.TraceInformation()`, `Trace.TraceWarning()`, és `Trace.TraceError()`, de nem által létrehozott naplók `Trace.WriteLine()`.
+> Kísérletezhet a különböző szintű nyomkövetésekkel, hogy lássa, milyen típusú üzenetek jelennek meg az egyes szintek esetén. Az **Information** (Tájékoztatás) szint a `Trace.TraceInformation()`, `Trace.TraceWarning()` és `Trace.TraceError()` által létrehozott naplók mindegyikét tartalmazza, a `Trace.WriteLine()` által létrehozott naplókat azonban nem.
 >
 >
 
-A böngészőben nyissa meg újra a webes alkalmazás *http://&lt;az alkalmazás neve >. azurewebsites.net*, ismételje meg az Azure-ban a Tennivalók listája alkalmazás körül kattint. A nyomkövetési üzenetek most részére a **kimeneti** ablak a Visual Studióban.
+A böngészőben nyissa meg újra a webalkalmazását a *http://&lt;az alkalmazás neve>.azurewebsites.net* címen, majd próbáljon az Azure-ban a teendőlista alkalmazás körül kattintani. A nyomkövetési üzeneteket mostantól a Visual Studio **Output** (Kimenet) ablakába streameli a rendszer.
 
 ```console
 Application: 2017-04-06T23:30:41  PID[8132] Verbose     GET /Todos/Index
@@ -387,15 +387,15 @@ Application: 2017-04-06T23:30:54  PID[8132] Verbose     GET /Todos/Index
 
 
 
-### <a name="stop-log-streaming"></a>Állítsa le az adatfolyam-napló
+### <a name="stop-log-streaming"></a>Naplóstreamelés leállítása
 
-A napló-adatfolyam-szolgáltatás leállításához kattintson a **figyelés leállításának** gombra a **kimeneti** ablak.
+A naplóstreamelési szolgáltatás leállításához kattintson az **Output** (Kimenet) ablak **Stop monitoring** (Megfigyelés leállítása) gombjára.
 
-![Állítsa le az adatfolyam-napló](./media/app-service-web-tutorial-dotnet-sqldatabase/stop-streaming.png)
+![Naplóstreamelés leállítása](./media/app-service-web-tutorial-dotnet-sqldatabase/stop-streaming.png)
 
-## <a name="manage-your-azure-web-app"></a>Az Azure-webalkalmazásban kezelése
+## <a name="manage-your-azure-web-app"></a>Az Azure-webalkalmazás kezelése
 
-Lépjen a [Azure-portálon](https://portal.azure.com) létrehozott webalkalmazás megjelenítéséhez. 
+Lépjen az [Azure Portalra](https://portal.azure.com), és tekintse meg a létrehozott webalkalmazást. 
 
 
 
@@ -403,9 +403,9 @@ A bal oldali menüben kattintson az **App Service** lehetőségre, majd az Azure
 
 ![Navigálás a portálon az Azure-webapphoz](./media/app-service-web-tutorial-dotnet-sqldatabase/access-portal.png)
 
-A webalkalmazás lapon rendelkezik ki. 
+A webalkalmazás lapjára jut. 
 
-Alapértelmezés szerint a portál megjeleníti a **áttekintése** lap. Ezen az oldalon megtekintheti az alkalmazás állapotát. Itt elvégezhet olyan alapszintű felügyeleti feladatokat is, mint a böngészés, leállítás, elindítás, újraindítás és törlés. A lap bal oldalán a lapok megnyithatja a különböző konfigurációs lapok megjelenítése. 
+Alapértelmezés szerint a portál megjeleníti az **Áttekintés** oldalt. Ezen az oldalon megtekintheti az alkalmazás állapotát. Itt elvégezhet olyan alapszintű felügyeleti feladatokat is, mint a böngészés, leállítás, elindítás, újraindítás és törlés. Az oldal bal oldalán lévő lapok a különböző megnyitható konfigurációs oldalakat jelenítik meg. 
 
 ![Az App Service lap az Azure Portalon](./media/app-service-web-tutorial-dotnet-sqldatabase/web-app-blade.png)
 
@@ -413,19 +413,19 @@ Alapértelmezés szerint a portál megjeleníti a **áttekintése** lap. Ezen az
 
 <a name="next"></a>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * SQL-adatbázis létrehozása az Azure-ban
-> * ASP.NET alkalmazás csatlakoztatása az SQL-adatbázishoz
-> * Az alkalmazás telepítése az Azure-bA
-> * Az adatmodell frissítése, és telepítse újra az alkalmazást
-> * Stream naplók az Azure-ból a Terminálszolgáltatások számára
-> * Felügyelheti az alkalmazást az Azure-portálon
+> * SQL Database-adatbázis létrehozása az Azure-ban
+> * ASP.NET-alkalmazás csatlakoztatása SQL Database-adatbázishoz
+> * Az alkalmazás üzembe helyezése az Azure-ban
+> * Az adatmodell frissítése és az alkalmazás ismételt üzembe helyezése
+> * Naplók streamelése az Azure-ból a saját terminálba
+> * Az alkalmazás kezelése az Azure Portalon
 
-A következő oktatóanyag megtudhatja, hogyan képezheti egy egyéni DNS-nevet a webalkalmazás továbblépés.
+Lépjen a következő oktatóanyaghoz, amelyből megtudhatja, hogyan képezhet le egyedi DNS-nevet a webalkalmazáshoz.
 
 > [!div class="nextstepaction"]
 > [Meglévő egyéni DNS-név hozzákapcsolása az Azure-webalkalmazásokhoz](app-service-web-tutorial-custom-domain.md)

@@ -1,6 +1,6 @@
 ---
-title: "Egyéni Docker lemezképet használ az tárolókat - Azure webalkalmazás számára |} Microsoft Docs"
-description: "Hogyan használható az egyéni Docker-lemezkép webalkalmazás az tárolókat."
+title: "Egyéni Docker-rendszerkép használata a Web App for Containers szolgáltatásban – Azure | Microsoft Docs"
+description: "Egyéni Docker-rendszerkép használata a Web App for Containers szolgáltatásban."
 keywords: azure app service, web app, linux, docker, container
 services: app-service
 documentationcenter: 
@@ -16,39 +16,48 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 2580c2109ce33b1ce99aa491f7d0002edf060693
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
-ms.translationtype: MT
+ms.openlocfilehash: 5f60dde981465709c16a9813ca24335c67252585
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>Egyéni Docker kép webalkalmazás a tárolók használata
+# <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>Egyéni Docker-rendszerkép használata a Web App for Containers szolgáltatásban
 
-[A tárolók webalkalmazás](app-service-linux-intro.md) biztosít beépített Docker képek Linux-támogatással rendelkező a különböző verziókat, például a PHP 7.0 és a Node.js 4.5. Web App az tárolókat használ a Docker-tároló technológia beépített képek, mind az egyéni lemezképek szolgáltatásként platformként. Ebben az oktatóanyagban elsajátíthatja egyéni Docker-lemezkép elkészítése és telepíteni kell a webalkalmazást az tárolókat. Ebben a mintában akkor hasznos, ha a beépített képek nem jelennek meg a választott nyelv, vagy ha az alkalmazás által igényelt, amelyet nem a beépített képekben adott konfigurációval.
+A [Web App for Containers](app-service-linux-intro.md) beépített Docker-rendszerképeket biztosít Linux rendszeren, a különböző verziók támogatásával (például: PHP 7.0 és Node.js 4.5). A Web App for Containers a Docker tárolótechnológiát használja beépített és egyéni rendszerképek szolgáltatásként nyújtott platformként történő üzemeltetéséhez. Ebből az oktatóanyagól megismerheti az egyéni Docker-rendszerképek készítésének és a Web App for Containers szolgáltatásban történő üzembe helyezésének módját. Ez a minta akkor hasznos, ha a beépített rendszerképek nem tartalmazzák a választott nyelvet, vagy ha az alkalmazás egy meghatározott konfigurációt igényel, amelyet a beépített rendszerképek nem tartalmaznak.
+
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+
+> [!div class="checklist"]
+> * Egyéni Docker-rendszerkép üzembe helyezése az Azure-ban
+> * Környezeti változók konfigurálása a tároló futtatásához
+> * A Docker-rendszerkép frissítése és ismételt üzembe helyezése
+> * Csatlakozás a tárolóhoz SSH használatával
+> * Privát Docker-rendszerkép üzembe helyezése az Azure-ban
+
+[!INCLUDE [Free trial note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 * [Git](https://git-scm.com/downloads)
-* Az aktív [Azure-előfizetés](https://azure.microsoft.com/pricing/free-trial/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+* Aktív [Azure-előfizetés](https://azure.microsoft.com/pricing/free-trial/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 * [Docker](https://docs.docker.com/get-started/#setup)
-* A [Docker Hub fiók](https://docs.docker.com/docker-id/)
-
-[!INCLUDE [Free trial note](../../../includes/quickstarts-free-trial-note.md)]
+* Egy [Docker Hub-fiók](https://docs.docker.com/docker-id/)
 
 ## <a name="download-the-sample"></a>A minta letöltése
 
-Egy terminálablakot futtassa a következő parancsot klónozza a sample app tárházat a helyi számítógépen, majd nyissa meg azt a könyvtárat a mintakódot tartalmazó.
+Egy terminálablakban futtassa a következő parancsot a mintaalkalmazás adattárának a helyi számítógépre történő klónozásához, majd lépjen át a mintakódot tartalmazó könyvtárba.
 
 ```bash
 git clone https://github.com/Azure-Samples/docker-django-webapp-linux.git --config core.autocrlf=input
 cd docker-django-webapp-linux
 ```
 
-## <a name="build-the-image-from-the-docker-file"></a>A lemezkép a Docker-fájlból
+## <a name="build-the-image-from-the-docker-file"></a>A rendszerkép létrehozása a Docker-fájlból
 
-A Git-tárházban, vessen egy pillantást _Dockerfile_. Ezt a fájlt az alkalmazás futtatásához szükséges Python-környezetben ismerteti. Emellett a lemezképet állít be egy [SSH](https://www.ssh.com/ssh/protocol/) server, a tároló és a gazdagép közötti biztonságos kommunikációhoz.
+A Git-adattárban tekintse meg a _Dockerfile_ nevű fájlt. Ez a fájl az alkalmazás futtatásához szükséges Python-környezetet írja le. Emellett a rendszerkép beállít egy [SSH](https://www.ssh.com/ssh/protocol/)-kiszolgálót a tároló és a gazdagép közötti biztonságos kommunikációhoz.
 
 ```docker
 FROM python:3.4
@@ -76,13 +85,13 @@ EXPOSE 8000 2222
 ENTRYPOINT ["init.sh"]
 ```
 
-A Docker-lemezkép létrehozásához futtassa a `docker build` parancsot, és adjon meg egy nevet, `mydockerimage`, és címkében `v1.0.0`. Cserélje le `<docker-id>` a Docker hubbal fiók azonosítóját.
+A Docker-rendszerkép létrehozásához futtassa a `docker build` parancsot, majd adjon meg egy nevet (_mydockerimage_) és egy címkét (_v1.0.0_). A _\<docker-id>_ helyére a Docker Hub-fiók azonosítóját írja.
 
 ```bash
 docker build --tag <docker-id>/mydockerimage:v1.0.0 .
 ```
 
-A parancs a következőhöz hasonló kimenetet hoz létre:
+A parancs a következőhöz hasonló kimenetet eredményez:
 
 ```
 # The output from the commands in this article has been shortened for brevity.
@@ -107,46 +116,46 @@ Successfully built e7cf08275692
 Successfully tagged cephalin/mydockerimage:v1.0.0
 ```
 
-Tesztelje, hogy a build működik a Docker-tároló futtatásával. A probléma a [futtatása docker](https://docs.docker.com/engine/reference/commandline/run/) parancsot, és átadni nevét és a lemezkép címke. Adja meg a portot a `-p` argumentum.
+Tesztelje a build működését a Docker-tároló futtatásával. Adja ki a [`docker run`](https://docs.docker.com/engine/reference/commandline/run/) parancsot, és adja meg a rendszerkép nevét és címkéjét. Ügyeljen arra, hogy a `-p` argumentum használatával megadja a portot is.
 
 ```bash
 docker run -p 2222:8000 <docker-ID>/mydockerimage:v1.0.0
 ```
 
-Ellenőrizze, hogy a webalkalmazás és a tároló vannak jól működő meghajtói tallózással `http://localhost:2222`.
+Győződjön meg arról, hogy a webalkalmazás és a tároló megfelelően működik. Ehhez keresse fel a következő címet: `http://localhost:2222`.
 
-![Teszt webalkalmazást helyileg](./media/app-service-linux-using-custom-docker-image/app-service-linux-browse-local.png)
+![Webalkalmazás helyi tesztelése](./media/app-service-linux-using-custom-docker-image/app-service-linux-browse-local.png)
 
-## <a name="push-the-docker-image-to-docker-hub"></a>A Docker kép leküldése Docker Hub
+## <a name="push-the-docker-image-to-docker-hub"></a>Docker-rendszerkép leküldése a Docker Hubba
 
-A beállításjegyzék olyan alkalmazás, amely üzemelteti a képek és szolgáltatások kép és a tároló szolgáltatásokat biztosít. Ahhoz, hogy megoszthatja a képet, meg kell leküldéses a beállításjegyzékhez. 
+A tárolójegyzék egy olyan alkalmazás, amely elérhetővé teszi a rendszerképeket, valamint rendszerkép- és tárolószolgáltatásokat is biztosít. A rendszerkép megosztásához le kell küldenie azt a tárolójegyzékbe. 
 
 <!-- Depending on your requirements, you may have your docker images in a Public Docker Registry, such as Docker Hub, or a Private Docker Registry such as Azure Container Registry. Select the appropriate tab for your scenario below (your selection will switch multiple tabs on this page). -->
 
 > [!NOTE]
-> Kérdez le, hogy a Magánfelhő Docker beállításjegyzék? A választható utasítások [a Docker-lemezkép leküldése titkos beállításjegyzék](#push-a-docker-image-to-private-registry-optional).
+> Leküldi a privát Docker-tárolójegyzékbe? Lásd a [bármelyik privát tárolójegyzék Docker-rendszerképének használatát](#use-a-docker-image-from-any-private-registry-optional) ismertető témakör nem kötelező lépéseit.
 
 <!--## [Docker Hub](#tab/docker-hub)-->
 
-Docker, amely lehetővé teszi a saját adattárak nyilvános vagy titkos beállításjegyzékbeli Docker lemezképek is. Egyéni Docker-lemezkép leküldése a nyilvános Docker-hubhoz, használja a [docker leküldéses](https://docs.docker.com/engine/reference/commandline/push/) parancsot, és a teljes lemezképet a felhasználónév és a címke. A teljes lemezképet nevét és az alábbi minta néz címke:
+A Docker Hub egy olyan tárolójegyzék a Docker-rendszerképek számára, amely saját nyilvános vagy privát adattárak üzemeltetését teszi lehetővé. Egyéni Docker-rendszerkép a nyilvános Docker Hubhoz történő leküldéséhez használja a [`docker push`](https://docs.docker.com/engine/reference/commandline/push/) parancsot, majd adja meg a teljes rendszerképnevet és a címkét. A teljes rendszerképnév és címke az alábbi mintához hasonlóan néz ki:
 
 ```
 <docker-id>/image-name:tag
 ```
 
-Ha még nem jelentkezett Docker-hubhoz, a [docker bejelentkezési](https://docs.docker.com/engine/reference/commandline/login/) előtt lemezkép próbáló parancsot.
+A rendszerkép leküldése előtt be kell jelentkeznie a Docker Hubra a [`docker login`](https://docs.docker.com/engine/reference/commandline/login/) paranccsal. A _\<docker-id >_ helyére a fiók nevét írja, majd adja meg a jelszót a konzol parancssorában.
 
 ```bash
-docker login --username <docker-id> --password <docker-hub-password>
+docker login --username <docker-id>
 ```
 
-"Sikeres bejelentkezés" üzenet jelzi, hogy van bejelentkezve. Miután bejelentkezett, a lemezkép leküldése Docker Hub használata a [docker leküldéses](https://docs.docker.com/engine/reference/commandline/push/) parancsot.
+A „login succeeded” (sikeres bejelentkezés) üzenet jelzi, hogy sikerült bejelentkeznie. Miután bejelentkezett, leküldheti a rendszerképet Docker Hubra a [`docker push`](https://docs.docker.com/engine/reference/commandline/push/) paranccsal.
 
 ```bash
 docker push <docker-id>/mydockerimage:v1.0.0
 ```
 
-Győződjön meg arról, hogy az sikeres volt. a parancs megvizsgálásával leküldéses kimenetét.
+A parancs kimenetének megvizsgálásával győződjön meg a leküldés sikerességéről.
 
 ```
 The push refers to a repository [docker.io/<docker-id>/mydockerimage:v1.0.0]
@@ -178,9 +187,9 @@ v1.0.0: digest: sha256:21f2798b20555f4143f2ca0591a43b4f6c8138406041f2d32ec908974
 
 [!INCLUDE [Try Cloud Shell](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="deploy-app-to-azure"></a>Alkalmazás telepítése az Azure-bA
+## <a name="deploy-app-to-azure"></a>Alkalmazás üzembe helyezése az Azure-ban
 
-Natív Linux alkalmazásaikat a felhőben tárolhatja, Azure Web Apps használatával. Hozzon létre egy webalkalmazást az tárolókat, hozzon létre egy csoportot, majd egy service-csomagot, végül a webes alkalmazás maga az Azure parancssori felület parancsait kell futtatnia. 
+Az Azure Web Apps használatával natív Linux-alkalmazásokat tehet elérhetővé a felhőben. A Web App for Containers szolgáltatás létrehozásához Azure CLI-parancsokat kell futtatnia, amelyek létrehoznak csoportot, majd egy szolgáltatáscsomagot, végül pedig magát a webalkalmazást. 
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
@@ -192,7 +201,7 @@ Natív Linux alkalmazásaikat a felhőben tárolhatja, Azure Web Apps használat
 
 ### <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 
-A Cloud Shellben az [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) paranccsal hozzon létre egy [webalkalmazást](app-service-linux-intro.md) a `myAppServicePlan` App Service-csomagban. Ne felejtse el lecserélni `<app_name>` egy olyan egyedi alkalmazás nevét, és a < docker-azonosító > a a Docker-azonosító.
+A Cloud Shellben az [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) paranccsal hozzon létre egy [webalkalmazást](app-service-linux-intro.md) a `myAppServicePlan` App Service-csomagban. Ne felejtse el egyedi alkalmazásnévre cserélni az _<appname>_, valamint a Docker-azonosítóra a _\<docker-ID>_ kifejezést.
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --deployment-container-image-name <docker-ID>/mydockerimage:v1.0.0
@@ -217,9 +226,9 @@ A webalkalmazás létrehozása után az Azure CLI az alábbi példához hasonló
 
 ### <a name="configure-environment-variables"></a>Környezeti változók konfigurálása
 
-A legtöbb Docker képeknek környezeti változókat, amelyek úgy kell konfigurálni. Ha valaki más beépített meglévő Docker lemezképet használ, a lemezképet használhatják a 80-as portra. A lemezkép használatával által használt port kapcsolatos utasítja az Azure a `WEBSITES_PORT` Alkalmazásbeállítás. A GitHub-oldalon a [ebben az oktatóanyagban a Python minta](https://github.com/Azure-Samples/docker-django-webapp-linux) azt mutatja, hogy be kell állítani `WEBSITES_PORT` való _8000_.
+A legtöbb Docker-rendszerképhez környezeti változók tartoznak, amelyeket konfigurálni kell. Ha valaki más által létrehozott, meglévő Docker-rendszerképet használ, előfordulhat, hogy a rendszerkép nem a 80-as portot használja. Az Azure-t a `WEBSITES_PORT` alkalmazásbeállítás használatával tájékoztathatja a rendszerkép által használt portról. A [jelen oktatóanyagban lévő Python-mintához](https://github.com/Azure-Samples/docker-django-webapp-linux) tartozó GitHub-oldalon az látható, hogy a `WEBSITES_PORT` értékét _8000_-re kell állítani.
 
-Alkalmazásbeállítások beállításához használja a [az webapp appsettings konfiguráció](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) a felhő rendszerhéj parancsot. Alkalmazásbeállítások a kis-és nagybetűket, és szóközökkel elválasztott.
+Az alkalmazásbeállítások megadásához használja az [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) parancsot a Cloud Shellben. Az alkalmazásbeállítások megkülönböztetik a kis-és nagybetűket, és szóközzel vannak elválasztva.
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group myResourceGroup --name <app_name> --settings WEBSITES_PORT=8000
@@ -228,7 +237,7 @@ az webapp config appsettings set --resource-group myResourceGroup --name <app_na
 <!-- Depending on your requirements, you may have your docker images in a Public Docker Registry, such as Docker Hub, or a Private Docker Registry, such as Azure Container Registry. Select the appropriate tab for your scenario below: -->
 
 > [!NOTE]
-> Telepíti a saját Docker beállításjegyzékből? A választható utasítások [webalkalmazás konfigurálása a Docker-tároló titkos beállításjegyzékből használandó](#configure-web-app-to-use-docker-container-from-a-private-registry-optional).
+> Privát Docker-tárolójegyzékből végez üzembe helyezést? Lásd a [webalkalmazás privát tárolójegyzékből származó Docker-tároló használatára történő beállítását](#configure-web-app-to-use-docker-container-from-a-private-registry-optional) ismertető témakör nem kötelező lépéseit.
 
 <!-- # [Docker Hub](#tab/docker-hub)-->
 
@@ -239,15 +248,15 @@ az webapp config appsettings set --resource-group myResourceGroup --name <app_na
 ---
 -->
 
-### <a name="test-the-web-app"></a>A webes alkalmazás tesztelése
+### <a name="test-the-web-app"></a>A webalkalmazás tesztelése
 
-Győződjön meg arról, hogy a webalkalmazás működik-e azt (`http://<app_name>azurewebsites.net`). 
+Tallózással győződjön meg arról, hogy a webalkalmazás működik (`http://<app_name>azurewebsites.net`). 
 
-![Teszt web app port konfigurálása](./media/app-service-linux-using-custom-docker-image/app-service-linux-browse-azure.png)
+![Webalkalmazás portkonfigurációjának tesztelése](./media/app-service-linux-using-custom-docker-image/app-service-linux-browse-azure.png)
 
-## <a name="change-web-app-and-redeploy"></a>Webalkalmazás módosítása és helyezze üzembe újra
+## <a name="change-web-app-and-redeploy"></a>Webalkalmazás módosítása és ismételt üzembe helyezése
 
-Nyissa meg a helyi Git-tárház app/templates/app/index.html. Keresse meg az első HTML-elem, és módosítsa úgy, hogy.
+A helyi Git-adattárban nyissa meg az app/templates/app/index.html fájlt. Keresse meg az első HTML-elemet, és módosítsa a következőre:
 
 ```python
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -259,13 +268,13 @@ Nyissa meg a helyi Git-tárház app/templates/app/index.html. Keresse meg az els
   </nav> 
 ```
 
-Miután módosította a Python-fájlt, és menti azt, és építse újra kell, az új Docker-lemezkép leküldéses. A webalkalmazás a módosítások életbe léptetéséhez indítsa újra. Használja ugyanazokat a parancsokat, amelyek ebben az oktatóanyagban korábban használt. Olvassa el a [a Docker-fájlból a lemezkép](#build-the-image-from-the-docker-file) és [a Docker kép leküldése Docker Hub](#push-the-docker-image-to-docker-hub). A webes alkalmazás tesztelése a utasításait követve [a webes alkalmazás tesztelése a](#test-the-web-app).
+Miután módosította a Python-fájlt, és mentette azt, hozza létre újra, majd küldje le az új Docker-rendszerképet. Ezt követően indítsa újra a webalkalmazást a módosítások életbe léptetéséhez. Használja ugyanazokat a parancsokat, amelyeket ebben az oktatóanyagban korábban használt. Olvassa el a [rendszerkép Docker-fájlból történő létrehozását](#build-the-image-from-the-docker-file) és a [Docker-rendszerkép Docker Hubra történő leküldését](#push-the-docker-image-to-docker-hub) ismertető témakört. Tesztelje a webalkalmazást a [webalkalmazás tesztelését](#test-the-web-app) ismertető témakör utasításai szerint.
 
-## <a name="connect-to-web-app-for-containers-using-ssh"></a>Csatlakozzon az SSH használatával tárolókat webalkalmazás
+## <a name="connect-to-web-app-for-containers-using-ssh"></a>Csatlakozás a Web App for Containers szolgáltatáshoz az SSH használatával
 
-SSH lehetővé teszi, hogy a tároló és az ügyfél közötti biztonságos kommunikációhoz. Ahhoz, hogy egy egyéni Docker lemezképeinek SSH meg kell összeállítani, egy Dockerfile be. Engedélyezi a SSH magában a Docker fájlban. Az SSH-utasításokat már hozzáadott minta dockerfile, a saját egyéni rendszerképét is kövesse az alábbi utasításokat:
+Az SSH lehetővé teszi a tároló és az ügyfél közötti biztonságos kommunikációt. Ahhoz, hogy egy egyéni Docker-rendszerképe támogathassa az SSH-t, először egy Dockerfile-ban kell ezt engedélyeznie. Engedélyezi az SSH-t magában a Docker-fájlban. Az SSH-utasítások a mintául szolgáló dockerfile-hoz már hozzá lettek adva, így követheti ezeket az utasításokat az egyéni rendszerképe esetében is:
 
-* A [futtatása](https://docs.docker.com/engine/reference/builder/#run) utasítást, amely behívja `apt-get`, majd a rendszergazdafiók jelszavának beállítása `"Docker!"`.
+* Egy [RUN](https://docs.docker.com/engine/reference/builder/#run) utasítás, amely meghívja az `apt-get` parancsot, majd beállítja a rendszergazdafiók jelszavát erre: `"Docker!"`.
 
     ```docker
     ENV SSH_PASSWD "root:Docker!"
@@ -277,47 +286,47 @@ SSH lehetővé teszi, hogy a tároló és az ügyfél közötti biztonságos kom
     ```
 
     > [!NOTE]
-    > Ez a konfiguráció nem teszi lehetővé a tároló külső kapcsolatot. SSH csak a Kudu/SCM webhelyen keresztül érhető el. A Kudu/SCM hely hitelesítése a közzétételi hitelesítő adatokkal.
+    > Ez a konfiguráció nem tesz elérhetővé külső kapcsolatokat a tárolóhoz. Az SSH csak a Kudu/SCM webhelyen keresztül érhető el. A Kudu/SCM webhely a közzétételi hitelesítő adatokkal van hitelesítve.
 
-* A [MÁSOLÁSI](https://docs.docker.com/engine/reference/builder/#copy) utasítást, amely arra utasítja a Docker-motorhoz másolása a [sshd_config](http://man.openbsd.org/sshd_config) fájlt a */stb/ssh/* könyvtár. A konfigurációs fájl alapján [a sshd_config fájl](https://github.com/Azure-App-Service/node/blob/master/6.11.1/sshd_config).
+* Egy [COPY](https://docs.docker.com/engine/reference/builder/#copy) utasítás, amely utasítja a Docker-motort az [sshd_config](http://man.openbsd.org/sshd_config) fájl az */etc/ssh/* könyvtárba történő másolására. A konfigurációs fájlnak [ezen az sshd_config fájlon](https://github.com/Azure-App-Service/node/blob/master/6.11.1/sshd_config) kell alapulnia.
 
     ```docker
     COPY sshd_config /etc/ssh/
     ```
 
     > [!NOTE]
-    > A *sshd_config* fájl a következő elemeket kell tartalmaznia: 
-    > * `Ciphers`tartalmaznia kell legalább egy elemet a listában szereplő: `aes128-cbc,3des-cbc,aes256-cbc`.
-    > * `MACs`tartalmaznia kell legalább egy elemet a listában szereplő: `hmac-sha1,hmac-sha1-96`.
+    > Az *sshd_config* fájlnak tartalmaznia kell a következő elemeket: 
+    > * A `Ciphers` beállításnak tartalmaznia kell legalább egy elemet a következő listából: `aes128-cbc,3des-cbc,aes256-cbc`.
+    > * A `MACs` beállításnak tartalmaznia kell legalább egy elemet a következő listából: `hmac-sha1,hmac-sha1-96`.
 
-* Egy [teszi közzé](https://docs.docker.com/engine/reference/builder/#expose) utasítást, hogy tesz elérhetővé a tárolóban 2222 port. Bár a gyökér szintű jelszó is ismert, port 2222 nem érhető el az internetről. Egy belső port elérhető csak által a virtuális magánhálózat híd hálózati tárolókra is. Ezt követően a parancsok SSH konfigurációs részletek másolása, és indítsa el a `ssh` szolgáltatás.
+* Egy [EXPOSE](https://docs.docker.com/engine/reference/builder/#expose) utasítás, amely elérhetővé teszi a tároló 2222-es portját. Bár a rendszergazdai szintű jelszó ismert, a 2222-es port nem érhető el az internet irányából. Ez egy belső port, amely csak egy privát virtuális hálózat hálózati hidas kapcsolatán belüli tárolók által érhető el. Ezt követően a parancsok átmásolják az SSH konfigurációs részleteit, majd elindítják az `ssh` szolgáltatást.
 
     ```docker
     EXPOSE 8000 2222
     ```
 
-* Ügyeljen arra, hogy [indítsa el az ssh szolgáltatás ](https://github.com/Azure-App-Service/node/blob/master/6.9.3/startup/init_container.sh) /bin könyvtárban rendszerhéj parancsfájl használatával.
+* Ügyeljen arra, hogy az [ssh szolgáltatás elindítását](https://github.com/Azure-App-Service/node/blob/master/6.9.3/startup/init_container.sh) a /bin könyvtárban lévő héjparancsfájl használatával végezze.
  
     ```bash
     #!/bin/bash
     service ssh start
     ```
      
-### <a name="open-ssh-connection-to-container"></a>Tároló SSH-kapcsolat
+### <a name="open-ssh-connection-to-container"></a>A tároló SSH-kapcsolatának megnyitása
 
-Webes alkalmazás a tárolók nem engedélyezi a külső kapcsolatokat a tárolóhoz. Az SSH egy csak a a Kudu helyre, amely elérhető a `https://<app_name>.scm.azurewebsites.net`.
+A Web App for Containers nem teszi lehetővé külső kapcsolatok létesítését a tárolóval. Az SSH csak a Kudu webhelyen keresztül érhető el, amelynek címe: `https://<app_name>.scm.azurewebsites.net`.
 
-Szeretne csatlakozni, tallózással `https://<app_name>.scm.azurewebsites.net/webssh/host` és jelentkezzen be az Azure-fiókjával.
+A keresse fel a következő címet: `https://<app_name>.scm.azurewebsites.net/webssh/host`, majd jelentkezzen be az Azure-fiókjával.
 
-Ezután átirányítja egy interaktív konzolt olyan oldalán. 
+Ezután a rendszer átirányítja egy interaktív konzolt tartalmazó oldalra. 
 
-Kezdésként érdemes lehet ellenőrizze, hogy egyes alkalmazások futnak-e a tárolóban. Vizsgálja meg a tároló és a folyamatok futtatásával ellenőrizze, ki a `top` parancsot a parancssorba.
+Érdemes lehet ellenőrizze, hogy bizonyos alkalmazások futnak-e a tárolóban. A tároló és a futó folyamatok ellenőrzéséhez adja ki a `top` parancsot a parancssorban.
 
 ```bash
 top
 ```
 
-A `top` parancs közzététele tároló minden futó folyamatot.
+Az `top` parancs minden, a tárolóban futó folyamatot megjelenít.
 
 ```
 PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND
@@ -334,19 +343,19 @@ PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND
 77 root      20   0   21920   2304   1972 R  0.0  0.1   0:00.00 top
 ```
 
-Gratulálunk! A webalkalmazás az tárolókat konfigurálta az egyéni Docker-lemezkép.
+Gratulálunk! Sikeresen konfigurált egy egyéni Docker-rendszerképet a Web App for Containers szolgáltatáshoz.
 
-## <a name="use-a-private-image-from-docker-hub-optional"></a>(Választható) Docker hubról titkos lemezkép
+## <a name="use-a-private-image-from-docker-hub-optional"></a>Docker Hubról származó privát rendszerkép használata (nem kötelező)
 
-A [webalkalmazás létrehozása](#create-a-web-app), Docker csomópontjában megadott lemezkép a `az webapp create` parancsot. Ez az elég jó egy nyilvános lemezképet. A saját lemezképek használatához szüksége a Docker Fiókazonosítót és a jelszó beállítása az Azure web app alkalmazásban.
+A [webalkalmazás létrehozása](#create-a-web-app) során megadott egy Docker Hubon lévő rendszerképet az `az webapp create` paranccsal. Ez nyilvános rendszerkép esetén használatos. Privát rendszerkép használatához be kell állítania a Docker-fiókja azonosítóját és jelszavát az Azure-webalkalmazásában.
 
-A felhő rendszerhéj kövesse a `az webapp create` parancsot [az webapp tároló konfiguráció](/cli/azure/webapp/config/container?view=azure-cli-latest#az_webapp_config_container_set). Cserélje le  *\<alkalmazás_neve >*, és is _< docker-azonosító >_ és  _<password>_  a Docker Azonosítóját és jelszavát.
+A Cloud Shellben az `az webapp create` parancs után adja ki az [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az_webapp_config_container_set) parancsot. Cserélje le az *\<app_name>* kifejezést, illetve a _\<docker-id>_ és a _\<password>_ esetén használja a Docker-azonosítóját és a jelszavát.
 
 ```azurecli-interactive
 az webapp config container set --name <app_name> --resource-group myResourceGroup --docker-registry-server-user <docker-id> --docker-registry-server-password <password>
 ```
 
-A parancs azt jelzi, hogy a következő JSON-karakterláncban, megjeleníti, hogy a konfiguráció módosítása sikeres volt hasonló kimenetet:
+A parancs a következő JSON-karakterlánchoz hasonló kimenetet jelenít meg, ezzel jelezve, hogy a konfiguráció módosítása sikeres volt:
 
 ```json
 [
@@ -372,21 +381,21 @@ A parancs azt jelzi, hogy a következő JSON-karakterláncban, megjeleníti, hog
 ]
 ```
 
-## <a name="use-a-docker-image-from-any-private-registry-optional"></a>A Docker-lemezkép használata a beállításjegyzékből. minden személyes (nem kötelező)
+## <a name="use-a-docker-image-from-any-private-registry-optional"></a>Bármelyik privát tárolójegyzék Docker-rendszerképének használata (nem kötelező)
 
-Ebben a szakaszban megismerheti, hogyan használható a Docker-lemezkép Web App alkalmazásban egy titkos beállításjegyzékből tárolók, és Azure tároló beállításjegyzék használ példaként. A más személyes nyilvántartó használatához vezető lépések hasonlóak. 
+Ebben a szakaszban megismerheti, hogyan használható privát tárolójegyzékből származó Docker-rendszerkép a Web App for Containers szolgáltatásban. Példaként az Azure Container Registryt használjuk majd. Az egyéb privát tárolójegyzékek használatának lépései is hasonlóak. 
 
-Azure tároló beállításjegyzék egy olyan felügyelt Docker-szolgáltatás az Azure-ból titkos lemezképek tárolásához. Lehet, hogy a központi telepítések bármilyen, beleértve a [Docker Swarm](https://docs.docker.com/engine/swarm/), [Kubernetes](https://kubernetes.io/), és a Web App az tárolókat. 
+Az Azure Container Registry az Azure egy felügyelt, privát rendszerképek használatára szolgáló Docker-szolgáltatása. A környezetek típusa bármilyen lehet, beleértve a [Docker Swarm](https://docs.docker.com/engine/swarm/), a [Kubernetes](https://kubernetes.io/) és a Web App for Containers típust is. 
 
 ### <a name="create-an-azure-container-registry"></a>Azure Container Registry létrehozása
 
-A felhő rendszerhéj használata a [az acr létrehozása](/cli/azure/acr?view=azure-cli-latest#az_acr_create) parancs segítségével hozza létre az Azure-tároló beállításkulcs. Adjon át a neve, az erőforráscsoport, és `Basic` a termékváltozat. Elérhető termékváltozatok vannak `Classic`, `Basic`, `Standard`, és `Premium`.
+A Cloud Shellben használja az [`az acr create`](/cli/azure/acr?view=azure-cli-latest#az_acr_create) parancsot egy Azure Container Registry létrehozásához. Adja meg a nevet, az erőforráscsoportot és termékváltozatként a `Basic` értéket. Az elérhető termékváltozatok a következők: `Classic`, `Basic`, `Standard` és `Premium`.
 
 ```azurecli-interactive
 az acr create --name <azure-container-registry-name> --resource-group myResourceGroup --sku Basic --admin-enabled true
 ```
 
-Tároló létrehozása a következő kimenetet hoz létre:
+Tároló létrehozásakor a következő kimenet jön létre:
 
 ```
  - Finished ..
@@ -416,15 +425,15 @@ Use an existing service principal and assign access:
 }
 ```
 
-### <a name="log-in-to-azure-container-registry"></a>Jelentkezzen be Azure-tárolót beállításjegyzék
+### <a name="log-in-to-azure-container-registry"></a>Bejelentkezés az Azure Container Registrybe
 
-Ahhoz, hogy a lemezkép leküldése a beállításjegyzéket, hogy hitelesítő adatait kell megadnia, a beállításjegyzék elfogadják a leküldéses. Ezek a hitelesítő adatok használatával kérheti le a [az acr megjelenítése](/cli/azure/acr?view=azure-cli-latest#az_acr_show) a felhő rendszerhéj parancsot. 
+A rendszerkép a tárolójegyzékbe küldéséhez meg kell adnia a hitelesítő adatokat, különben a tárolójegyzék nem fogadja el a leküldést. Ezeket a hitelesítő adatokat az [`az acr show`](/cli/azure/acr?view=azure-cli-latest#az_acr_show) parancs használatával kérheti le a Cloud Shellben. 
 
 ```azurecli-interactive
 az acr credential show --name <azure-container-registry-name>
 ```
 
-A parancs megjeleníti a felhasználónévhez használt két jelszavak.
+A parancs megjeleníti a felhasználónévhez használható két jelszót.
 
 ```json
 <
@@ -442,35 +451,35 @@ A parancs megjeleníti a felhasználónévhez használt két jelszavak.
 }
 ```
 
-Az a helyi terminálablakot, jelentkezzen be az Azure-tároló beállításjegyzék használatával a `docker login` parancsot. A kiszolgáló nevét kell-e jelentkezni. A formátum használata `{azure-container-registry-name>.azurecr.io`.
+A helyi terminálablakból jelentkezzen be az Azure Container Registrybe a `docker login` parancs használatával. A kiszolgálónév is szükséges a bejelentkezéshez. Használja a következő formátumot: `{azure-container-registry-name>.azurecr.io`. Adja meg a jelszót a konzol parancssorában.
 
 ```bash
-docker login <azure-container-registry-name>.azurecr.io --username <registry-username> --password <password> 
+docker login <azure-container-registry-name>.azurecr.io --username <registry-username>
 ```
 
-Győződjön meg arról, hogy a bejelentkezés sikeres volt. 
+Ellenőrizze, hogy a bejelentkezés sikeres volt-e. 
 
-### <a name="push-an-image-to-azure-container-registry"></a>A képfájl leküldése Azure tároló beállításjegyzék
+### <a name="push-an-image-to-azure-container-registry"></a>Rendszerkép leküldése az Azure Container Registrybe
 
 > [!NOTE]
-> Saját rendszerkép használata, címkét a lemezképet az alábbiak szerint:
+> Ha saját rendszerképet használ, lássa el azt címkével a következő módon:
 > ```bash
 > docker tag <azure-container-registry-name>.azurecr.io/mydockerimage
 > ```
 
-A lemezkép használatával leküldéses a `docker push` parancsot. Címke a kép és a beállításjegyzék, a lemezkép neve, majd a címke nevét.
+Küldje le a rendszerképet a `docker push` paranccsal. Lássa el a rendszerképet a tárolójegyzék nevével, amelyet a rendszerkép neve, majd a címke követ.
 
 ```bash
 docker push <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0
 ```
 
-Győződjön meg arról, hogy a leküldéses sikeresen hozzáadva egy tároló a beállításjegyzék ehhez listázza az ACR tárházak találhatók. 
+Az ACR-adattárak kilistázásával győződjön meg arról, hogy a leküldés sikeresen hozzáadott egy tárolót a tárolójegyzékhez. 
 
 ```azurecli-interactive
 az acr repository list -n <azure-container-registry-name>
 ```
 
-A beállításjegyzékben a képek listázása megerősíti, hogy `mydockerimage` a rendszerleíró adatbázis.
+A tárolójegyzék rendszerképeinek kilistázásával ellenőrizheti, hogy a tárolójegyzék tartalmazza-e a `mydockerimage` bejegyzést.
 
 ```json
 [
@@ -478,11 +487,11 @@ A beállításjegyzékben a képek listázása megerősíti, hogy `mydockerimage
 ]
 ```
 
-### <a name="configure-web-app-to-use-the-image-from-azure-container-registry-or-any-private-registry"></a>A lemezképen Azure tároló beállításjegyzék (vagy bármely titkos beállításjegyzék) webalkalmazás konfigurálása
+### <a name="configure-web-app-to-use-the-image-from-azure-container-registry-or-any-private-registry"></a>A webalkalmazás beállítása az Azure Container Registryből (vagy bármely privát tárolójegyzékből) származó rendszerkép használatára
 
-Web App az tárolókat beállíthatja, hogy fut az Azure-tároló beállításjegyzékben tárolt tárolója. Csakúgy, mint bármely titkos beállításjegyzék használ, így ha meg szeretné használni a saját titkos beállításjegyzék, a feladat végrehajtásához szükséges lépések hasonlóak az Azure-tároló beállításjegyzékkel van.
+Beállíthatja a Web App for Containers szolgáltatást egy, az Azure Container Registryben eltárolt tároló futtatására. Az Azure Container Registry használata megegyezik bármilyen egyéb privát tárolójegyzékével, így ha saját, privát tárolójegyzéket kell használnia, a feladat elvégzéséhez szükséges lépések hasonlóak.
 
-A felhő Rendszerhéjában futtassa az [az acr hitelesítő adatok megjelenítése](/cli/azure/acr/credential?view=azure-cli-latest#az_acr_credential_show) Azure tároló beállításjegyzék a felhasználónév és jelszó megjelenítéséhez. Másolja a felhasználónév és a jelszavak egyike, hogy használhassa a webalkalmazás konfigurálása a következő lépésben.
+A Cloud Shellben futtassa az [`az acr credential show`](/cli/azure/acr/credential?view=azure-cli-latest#az_acr_credential_show) parancsot az Azure Container Registryhez tartozó felhasználónév és jelszó megjelenítéséhez. Másolja ki a felhasználónevet és a jelszavak egyikét, hogy felhasználhassa azokat a webalkalmazás konfigurálásához a következő lépésben.
 
 ```bash
 az acr credential show --name <azure-container-registry-name>
@@ -504,17 +513,17 @@ az acr credential show --name <azure-container-registry-name>
 }
 ```
 
-A felhő Rendszerhéjában futtassa a [az webapp tároló konfiguráció](/cli/azure/webapp/config/container?view=azure-cli-latest#az_webapp_config_container_set) parancs a Docker egyéni rendszerkép hozzárendelése a webalkalmazást. Cserélje le  *\<alkalmazás_neve >*,  *\<docker-beállításjegyzék-kiszolgáló-URL-címe >*,  _\<beállításjegyzék-username >_, és  _\<jelszó >_. Az Azure-tároló beállításjegyzék  *\<docker-beállításjegyzék-kiszolgáló-URL-címe >* formátumú `https://<azure-container-registry-name>.azurecr.io`. 
+A Cloud Shellben futtassa az [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az_webapp_config_container_set) parancsot az egyéni Docker-rendszerkép a webalkalmazáshoz való hozzárendeléséhez. Cserélje le az *\<app_name>*, a *\<docker-registry-server-url>*, a _\<registry-username>_ és a _\<password>_ értékét. Az Azure Container Registry esetében a *\<docker-registry-server-url>* formátuma a következő: `https://<azure-container-registry-name>.azurecr.io`. Ha bármilyen tárolójegyzéket használ a Docker Hubon kívül, a rendszerkép nevének a tárolójegyzék teljes tartománynevével (FQDN) kell kezdődnie. Az Azure Container Registry esetében ez így fog kinézni: `<azure-container-registry>.azurecr.io/mydockerimage`. 
 
 ```azurecli-interactive
-az webapp config container set --name <app_name> --resource-group myResourceGroup --docker-custom-image-name mydockerimage --docker-registry-server-url https://<azure-container-registry-name>.azurecr.io --docker-registry-server-user <registry-username> --docker-registry-server-password <password>
+az webapp config container set --name <app_name> --resource-group myResourceGroup --docker-custom-image-name <azure-container-registry-name>.azurecr.io/mydockerimage --docker-registry-server-url https://<azure-container-registry-name>.azurecr.io --docker-registry-server-user <registry-username> --docker-registry-server-password <password>
 ```
 
 > [!NOTE]
-> `https://`a szükséges  *\<docker-beállításjegyzék-kiszolgáló-URL-címe >*.
+> `https://` használata szükséges a *\<docker-registry-server-url>* esetén.
 >
 
-A parancs azt jelzi, hogy a következő JSON-karakterláncban, megjeleníti, hogy a konfiguráció módosítása sikeres volt hasonló kimenetet:
+A parancs a következő JSON-karakterlánchoz hasonló kimenetet jelenít meg, ezzel jelezve, hogy a konfiguráció módosítása sikeres volt:
 
 ```json
 [
@@ -543,7 +552,7 @@ A parancs azt jelzi, hogy a következő JSON-karakterláncban, megjeleníti, hog
 
 [!INCLUDE [Clean-up section](../../../includes/cli-script-clean-up.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Az Azure-ban Docker Python és PostgreSQL webalkalmazás létrehozása](tutorial-docker-python-postgresql-app.md)
+> [Docker Python- és PostgreSQL-webalkalmazás létrehozása az Azure-ban](tutorial-docker-python-postgresql-app.md)

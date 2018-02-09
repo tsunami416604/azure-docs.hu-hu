@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/12/2017
+ms.date: 01/31/2018
 ms.author: sethm
-ms.openlocfilehash: f095407a58e00ed9143e8f19d91a212d2167564b
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: fab765480a2f480e8c54035d903d24843490ee38
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-service-bus"></a>Azure Service Bus
 
@@ -26,9 +26,9 @@ Függetlenül attól, hogy egy alkalmazás vagy szolgáltatás a felhőben vagy 
 
 ## <a name="service-bus-fundamentals"></a>Service Bus fundamentals (A Service Bus alapjai)
 
-A különféle helyzetekben különféle stílusú kommunikáció lehet szükséges. Néha az a legjobb megoldás, ha az alkalmazások egy egyszerű üzenetsoron keresztül küldik és fogadják az üzeneteket. Más helyzetekben a hagyományos üzenetsorok nem elegendőek, és a közzétételi-előfizetési mechanizmus a jobb megoldás. Egyes esetekben mindössze kapcsolatra van szükség az alkalmazások között, és nincs szükség üzenetsorokra. A Service Bus mindhárom lehetőséget biztosítja, lehető téve az alkalmazások számára a különféle módokon zajló interakciót.
+A különféle helyzetekben különféle stílusú kommunikáció lehet szükséges. Néha az a legjobb megoldás, ha az alkalmazások egy egyszerű üzenetsoron keresztül küldik és fogadják az üzeneteket. Más helyzetekben a hagyományos üzenetsorok nem elegendőek, és a közzétételi-előfizetési mechanizmus a jobb megoldás. Egyes esetekben mindössze kapcsolatra van szükség az alkalmazások között, és nincs szükség üzenetsorokra. Az Azure Service Bus mindhárom lehetőséget biztosítja, lehetővé téve az alkalmazások számára a különféle módokon zajló interakciót.
 
-A Service Bus egy több-bérlős felhőszolgáltatás, ami azt jelenti, hogy a szolgáltatást több felhasználó megosztva használja. Minden egyes felhasználó, például az alkalmazásfejlesztő, létrehoz egy *névteret*, majd meghatározza a szükséges kommunikációs mechanizmusokat az adott névtérben. Az 1. ábra ezt az architektúrát mutatja be.
+A Service Bus egy több-bérlős felhőszolgáltatás, ami azt jelenti, hogy a szolgáltatást több felhasználó megosztva használja. Minden egyes felhasználó, például az alkalmazásfejlesztő, létrehoz egy *névteret*, majd meghatározza a szükséges kommunikációs mechanizmusokat az adott névtérben. Az 1. ábra ezt az architektúrát mutatja be:
 
 ![][1]
 
@@ -48,13 +48,13 @@ Fontos megérteni, hogy jóllehet a Service Bus maga a felhőben fut (azaz a Mic
 
 ## <a name="queues"></a>Üzenetsorok
 
-Tegyük fel, hogy két alkalmazás egy Service Bus-üzenetsorral való csatlakoztatása mellett dönt. A 2. ábra ezt a helyzetet mutatja be.
+Tegyük fel, hogy két alkalmazás egy Service Bus-üzenetsorral való csatlakoztatása mellett dönt. A 2. ábra ezt a helyzetet mutatja be:
 
 ![][2]
 
 **2. ábra: A Service Bus-üzenetsorok egyirányú aszinkron sorkezelést biztosítanak.**
 
-A folyamat egyszerű: A küldő egy üzenetet küld a Service Bus-üzenetsorba, a fogadó pedig egy későbbi időpontban fogadja az üzenetet. Az egyes üzenetsorok rendelkezhetnek egyetlen fogadóval, amint az a 2. ábrán látható. Esetleg több alkalmazás is olvashat ugyanabból az üzenetsorból. Az utóbbi esetben az egyes üzeneteket csak egyetlen fogadó olvassa. A csoportos küldési szolgáltatáshoz inkább témakört használjon.
+A küldő egy üzenetet küld a Service Bus-üzenetsorba, a fogadó pedig egy későbbi időpontban fogadja az üzenetet. Az egyes üzenetsorok rendelkezhetnek egyetlen fogadóval, amint az a 2. ábrán látható. Esetleg több alkalmazás is olvashat ugyanabból az üzenetsorból. Az utóbbi esetben az egyes üzeneteket csak egyetlen fogadó olvassa. A csoportos küldési szolgáltatáshoz inkább témakört használjon.
 
 Mindegyik üzenet két részből áll: egy sor tulajdonságból, amelyek mindegyike egy kulcs/érték pár, valamint az üzenet hasznos adattartalmából. A hasznos adattartalom lehet bináris, szöveges vagy akár XML formátumú is. A használatuk módja attól függ, hogy mire szolgál az alkalmazás. A legutóbbi értékesítésről üzenetet küldő alkalmazás például az **Értékesítő="Ava"** és az **Összeg=10000** tulajdonságot tartalmazhatja. Az üzenettörzs tartalmazhatja az aláírt értékesítési szerződés beolvasott képét, vagy ha nincs ilyen, üres is lehet.
 
@@ -72,13 +72,13 @@ Az üzenetsorok számos helyzetben lehetnek hasznosak. A használatukkal az alka
 
 ## <a name="topics"></a>Témakörök
 
-Bármennyire hasznosak is, az üzenetsorok nem minden esetben bizonyulnak a megfelelő megoldásnak. Esetenként célszerűbb Service Bus-témaköröket használni. A 3. ábra ezt az elképzelést mutatja be.
+Bármennyire hasznosak is, az üzenetsorok nem minden esetben bizonyulnak a megfelelő megoldásnak. Esetenként célszerűbb témaköröket használni. A 3. ábra ezt az elképzelést mutatja be:
 
 ![][3]
 
 **3. ábra: Az előfizető alkalmazás az általa megadott szűrő alapján a Service Bus-témakörbe küldött üzenetek közül csak néhányat vagy mindegyiket is fogadhatja.**
 
-A *témakörök* sok szempontból hasonlóak az üzenetsorokhoz. A küldők ugyanúgy küldik az üzeneteket a témakörökbe, ahogy az üzenetsorokba, és az üzenetek is ugyanúgy néznek ki, mint az üzenetsorok esetén. A különbség az, hogy a témakörök használatával mindegyik fogadó alkalmazás létrehozhatja saját *előfizetését* egy *szűrő* definiálásával. Az előfizető csak azokat az üzeneteket látja majd, amelyek megfelelnek a szűrőnek. A 3. ábrán például egy küldő és egy 3 előfizetővel rendelkező témakör látható, mely előfizetők mindegyike saját szűrővel rendelkezik:
+A *témakörök* sok szempontból hasonlóak az üzenetsorokhoz. A küldők ugyanúgy küldik az üzeneteket a témakörökbe, ahogy az üzenetsorokba, és az üzenetek is ugyanúgy néznek ki, mint az üzenetsorok esetén. A különbség az, hogy a témakörök használatával mindegyik fogadó alkalmazás létrehozhatja saját *előfizetését*, valamint definiálhat egy *szűrőt*. Az előfizető csak azokat az üzeneteket látja majd, amelyek megfelelnek a szűrőnek. A 3. ábrán például egy küldő és egy 3 előfizetővel rendelkező témakör látható, mely előfizetők mindegyike saját szűrővel rendelkezik:
 
 * Az 1. előfizető csak azokat az üzeneteket fogadja, amelyek tartalmazzák az *Értékesítő="Ava"* tulajdonságot.
 * Az 2. előfizető csak azokat az üzeneteket fogadja, amelyek tartalmazzák az *Értékesítő="Ruby"* tulajdonságot és/vagy tartalmaznak egy *Összeg* tulajdonságot, amelynek az értéke nagyobb mint 100 000. Lehet, hogy Ruby az értékesítési igazgató, és szeretné látni a saját értékesítéseit, valamint minden nagy értékű értékesítést az értékesítő személyétől függetlenül.
@@ -88,7 +88,7 @@ Ahogy az üzenetsorok esetében is, az üzenetek olvasásakor a témakörök el�
 
 ## <a name="relays"></a>Továbbítók
 
-Az üzenetsorok és a témakörök egyaránt egyirányú aszinkron kommunikációt tesznek lehetővé egy közvetítőn keresztül. A forgalom csak egy irányban folyik, és nincs közvetlen kapcsolat a küldők és a fogadók közt. De mi történik, ha nem szeretné ezt a kapcsolatot? Tegyük fel, hogy az alkalmazásainak küldenie és fogadnia is kell üzeneteket, vagy talán közvetlen kapcsolatot szeretne közöttük, és nincs szüksége közvetítőre az üzenetek tárolásához. Az ilyen forgatókönyvek kezeléséhez a Service Bus *továbbítókat* biztosít, amint az a 4. ábrán látható.
+Az üzenetsorok és a témakörök egyaránt egyirányú aszinkron kommunikációt tesznek lehetővé egy közvetítőn keresztül. A forgalom csak egy irányban folyik, és nincs közvetlen kapcsolat a küldők és a fogadók közt. De mi történik, ha nem szeretné ezt a kapcsolatot? Tegyük fel, hogy az alkalmazásainak küldenie és fogadnia is kell üzeneteket, vagy talán közvetlen kapcsolatot szeretne közöttük, és nincs szüksége közvetítőre az üzenetek tárolásához. Az ilyen forgatókönyvek kezeléséhez a Service Bus *továbbítókat* biztosít, amint az a 4. ábrán látható:
 
 ![][4]
 
@@ -96,7 +96,7 @@ Az üzenetsorok és a témakörök egyaránt egyirányú aszinkron kommunikáci�
 
 A továbbítókkal kapcsolatban felmerül a nyilvánvaló kérdés: miért használnék ilyet? Annak ellenére, hogy nincs szükségem üzenetsorokra, miért kommunikáljanak az alkalmazások egy felhőszolgáltatáson keresztül a közvetlen interakció helyett? A válasz az, hogy a közvetlen kommunikáció néha nehezebb, mint gondolná.
 
-Tegyük fel, hogy két helyszíni alkalmazást kíván összekapcsolni, és mindkettő vállalati adatközpontban fut. Mindkét alkalmazás egy tűzfal mögött található, és mindkét adatközpont valószínűleg hálózati címfordítást (NAT) használ. A tűzfal néhány port kivételével az összes porton blokkolja a bejövő adatokat, és a NAT miatt az a gép, amelyen az egyes alkalmazások futnak, nem rendelkezik rögzített IP-címmel, amelyet közvetlenül elérhetne az adatközponton kívülről. Külön segítség nélkül ezeknek az alkalmazásoknak az összekapcsolása a nyilvános interneten keresztül problémás lehet.
+Tegyük fel, hogy két helyszíni alkalmazást kíván összekapcsolni, és mindkettő vállalati adatközpontban fut. Mindkét alkalmazás egy tűzfal mögött található, és mindkét adatközpont valószínűleg hálózati címfordítást (NAT) használ. A tűzfal néhány port kivételével az összes porton blokkolja a bejövő adatokat, és a NAT miatt az a számítógép, amelyen az egyes alkalmazások futnak, nem rendelkezik rögzített IP-címmel, amelyet közvetlenül elérhetne az adatközponton kívülről. Külön segítség nélkül ezeknek az alkalmazásoknak az összekapcsolása a nyilvános interneten keresztül problémás lehet.
 
 A Service Bus Relay használata ezt megkönnyítheti. A továbbítón keresztüli kétirányú kommunikációhoz mindegyik alkalmazás létrehoz egy kimenő TCP-kapcsolatot a Service Busszal, és nyitva tartja azt. A két alkalmazás közötti minden kommunikáció ezeken a kapcsolatokon keresztül történik. Mivel mindegyik kapcsolat az adatközponton belül lett létrehozva, a tűzfal engedélyezi a bejövő forgalmat mindegyik alkalmazás felé, új portok megnyitása nélkül. Ez a megközelítés megkerüli a NAT miatti problémát, mivel mindegyik alkalmazás állandó végponttal rendelkezik a felhőben a kommunikáció során. Az adatoknak a továbbítón keresztüli cseréjével az alkalmazások elkerülhetik azokat a problémákat, amelyek egyébként megnehezítenék a kommunikációt. 
 

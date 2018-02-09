@@ -114,7 +114,7 @@ Ebben a szakaszban létrehozott eszközalkalmazás módosítja a [Ismerkedés az
 
 ## <a name="add-queues-to-your-iot-hub-and-route-messages-to-them"></a>Az IoT hub és útvonal üzenetek számukra várólisták hozzáadása
 
-Ez a szakasz mind a Service Bus-üzenetsorba, és a Storage-fiók létrehozása, csatlakoztassa őket az IoT hub, és az IoT hub üzenetek küldése az üzenetsorba, annak alapján, hogy az üzenet és minden üzenetet a tárfiók-tulajdonság a beállítása. A Service Bus-üzenetsorok folyamat üzenetek módjáról további információkért lásd: [Ismerkedés a várólisták] [ lnk-sb-queues-node] és felügyelni a tárolást tudnivalókat [Ismerkedés az Azure Storage szolgáltatással] [Az azure Storage].
+Ez a szakasz mind a Service Bus-üzenetsorba, és a Storage-fiók létrehozása, csatlakoztassa őket az IoT hub, és az IoT hub üzenetek küldése az üzenetsorba, annak alapján, hogy az üzenet és minden üzenetet a tárfiók-tulajdonság a beállítása. A Service Bus-üzenetsorok folyamat üzenetek módjáról további információkért lásd: [Ismerkedés a várólisták][lnk-sb-queues-node] és felügyelni a tárolást tudnivalókat [Ismerkedés az Azure Storage szolgáltatással][Azure Storage].
 
 1. Hozzon létre egy Service Bus-üzenetsorba, a [Ismerkedés a várólisták][lnk-sb-queues-node]. Jegyezze fel az a névtér és a várólista nevét.
 

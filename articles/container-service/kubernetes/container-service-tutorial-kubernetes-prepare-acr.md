@@ -1,6 +1,6 @@
 ---
-title: "Azure Tárolószolgáltatás útmutató - ACR előkészítése"
-description: "Azure Tárolószolgáltatás útmutató - ACR előkészítése"
+title: "Azure Container Service-oktatóanyag – Az ACR előkészítése"
+description: "Azure Container Service-oktatóanyag – Az ACR előkészítése"
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,62 +9,62 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: c9c8ad6dfd6df0e99f9e41eaf1da12ebeb2a2da6
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
-ms.translationtype: MT
+ms.openlocfilehash: ea2574a64c5ae5c10680ad0da7e06ffe12cc72cb
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/03/2018
 ---
-# <a name="deploy-and-use-azure-container-registry"></a>Üzembe helyezés és használat Azure tároló beállításjegyzék
+# <a name="deploy-and-use-azure-container-registry"></a>Az Azure Container Registry üzembe helyezése és használata
 
 [!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
 
-Az Azure tároló beállításjegyzék (ACR) egy Azure-alapú, személyes beállításjegyzék Docker-tároló lemezképek. Ez az oktatóanyag, része két hét, végigvezeti Azure tároló beállításjegyzék-példány telepítését, valamint a végez leküldést a tároló-lemezkép. Befejeződött a lépések az alábbiak:
+Az Azure Container Registry (ACR) egy Azure-alapú privát regisztrációs adatbázis Docker-tárolórendszerképekhez. Ez az oktatóanyag, amely egy hétrészes sorozat második része, azt ismerteti, hogyan lehet üzembe helyezni egy Azure Container Registry-példányt, és hogyan lehet továbbítani rá egy tárolórendszerképet. Ennek lépései az alábbiak:
 
 > [!div class="checklist"]
-> * Egy Azure tároló beállításjegyzék (ACR) példány telepítése
-> * A tároló lemezkép ACR a címkézés
-> * ACR a Rendszerkép feltöltése
+> * Egy Azure Container Registry- (ACR-) példány üzembe helyezése
+> * Egy tárolórendszerkép címkézése az ACR-hez
+> * A rendszerkép feltöltése az ACR-be
 
-A következő útmutatókból adott ACR példány integrálva van az Azure-tároló szolgáltatás Kubernetes fürtöt. 
+Az ezt követő oktatóanyagokban ezt az ACR-példányt integráljuk egy Azure Container Service-beli Kubernetes-fürttel. 
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Az a [az oktatóanyag előző](./container-service-tutorial-kubernetes-prepare-app.md), a tároló-lemezkép létrejött egy egyszerű Azure szavazás alkalmazáshoz. Ha nem hozott létre az Azure szavazás alkalmazás lemezképét, térjen vissza [oktatóanyag 1 – létrehozás tároló képek](./container-service-tutorial-kubernetes-prepare-app.md).
+Az [előző lépésben](./container-service-tutorial-kubernetes-prepare-app.md) létrehoztunk egy tárolórendszerképet egy egyszerű Azure-szavazóalkalmazáshoz. Ha még nem hozta létre az Azure-szavazóalkalmazás rendszerképét, lépjen vissza az [1. oktatóanyag – Tárolórendszerképek létrehozása](./container-service-tutorial-kubernetes-prepare-app.md) részhez.
 
-Ez az oktatóanyag megköveteli, hogy futnak-e az Azure parancssori felület 2.0.4 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Az oktatóanyag elvégzéséhez az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
 
-## <a name="deploy-azure-container-registry"></a>Telepítse az Azure tároló beállításjegyzék
+## <a name="deploy-azure-container-registry"></a>Azure Container Registry üzembe helyezése
 
-Egy Azure-tároló beállításjegyzék való telepítésekor, először egy erőforráscsoportot. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
+Az Azure Container Registry üzembe helyezéséhez először is szükség van egy erőforráscsoportra. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#create) paranccsal. Ebben a példában az erőforráscsoport neve `myResourceGroup` jön létre a `westeurope` régióban.
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. Ebben a példában egy `myResourceGroup` nevű erőforráscsoport jön létre a `westeurope` régióban.
 
 ```azurecli
 az group create --name myResourceGroup --location westeurope
 ```
 
-Hozzon létre egy Azure-tárolóba beállításjegyzéket a [az acr létrehozása](/cli/azure/acr#create) parancsot. Egy tároló beállításjegyzék neve **egyedinek kell lennie**.
+Hozzon létre egy Azure tárolóregisztrációs adatbázist az [az acr create](/cli/azure/acr#az_acr_create) paranccsal. A tárolóregisztrációs adatbázisoknak **egyedi nevekkel kell rendelkezniük**.
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
 ```
 
-Ez az oktatóanyag a többi, egész használjuk `<acrname>` számára a tároló neve.
+Az oktatóanyag hátralevő részében az `<acrname>` elem helyettesíti a tárolóregisztrációs adatbázis nevét.
 
-## <a name="container-registry-login"></a>Tároló beállításjegyzék bejelentkezés
+## <a name="container-registry-login"></a>Bejelentkezés a tárolóregisztrációs adatbázisba
 
-Használja a [az acr bejelentkezési](https://docs.microsoft.com/cli/azure/acr#az_acr_login) próbál bejelentkezni az ACR példány parancsot. Meg kell adnia az egyedi név, a tároló beállításjegyzék létrehozásakor.
+Az [az acr login](https://docs.microsoft.com/cli/azure/acr#az_acr_login) paranccsal jelentkezzen be az ACR-példányba. Meg kell adnia a tárolóregisztrációs adatbázis egyedi nevét, amelyet az adatbázis létrehozásakor adott meg.
 
 ```azurecli
 az acr login --name <acrName>
 ```
 
-A parancs visszaadja a "Sikeres bejelentkezés" üzenet, amint befejeződött.
+A parancs a „Bejelentkezés sikeres” üzenetet adja vissza, ha befejeződött.
 
-## <a name="tag-container-images"></a>Címke tároló lemezképek
+## <a name="tag-container-images"></a>Tárolórendszerképek címkézése
 
-Lemezképek aktuális listájának megtekintéséhez használja a [docker képek](https://docs.docker.com/engine/reference/commandline/images/) parancsot.
+A meglévő rendszerképek listájának megtekintéséhez használja a [docker images](https://docs.docker.com/engine/reference/commandline/images/) parancsot.
 
 ```bash
 docker images
@@ -79,21 +79,21 @@ redis                        latest              a1b99da73d05        7 days ago 
 tiangolo/uwsgi-nginx-flask   flask               788ca94b2313        9 months ago        694MB
 ```
 
-Minden egyes tároló lemezképet kell címkézését a beállításjegyzék loginServer nevét. Ezt a címkét tároló képek terjesztése egy kép beállításjegyzék műveletterv szolgál.
+Minden tárolórendszerképet fel kell címkézni a tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának nevével. Ezt a címkét a rendszer az útválasztáshoz használja, amikor tárolórendszerképeket küld le egy regisztrációs adatbázisba.
 
-Ahhoz, hogy a loginServer nevét, a következő parancsot.
+A bejelentkezési kiszolgáló nevének lekéréséhez futtassa a következő parancsot.
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-Most, címkét a `azure-vote-front` a tároló beállításjegyzék loginServer lemezkép. Továbbá adja hozzá `:redis-v1` , a lemezkép neve végén. Ezt a címkét azt jelzi, hogy a lemezkép verziója.
+Ezután címkézze fel az `azure-vote-front` rendszerképet a tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának nevével. Adja hozzá a `:v1` kifejezést a rendszerkép nevének végéhez. Ez a címke a rendszerkép verziószámát jelöli.
 
 ```bash
-docker tag azure-vote-front <acrLoginServer>/azure-vote-front:redis-v1
+docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v1
 ```
 
-Miután megjelölve, futtassa az [docker képek] (https://docs.docker.com/engine/reference/commandline/images/) a művelet megerősítéséhez.
+Ha elkészült a címkézéssel, futtassa a [docker images] (https://docs.docker.com/engine/reference/commandline/images/) parancsot a művelet ellenőrzéséhez.
 
 ```bash
 docker images
@@ -104,26 +104,26 @@ Kimenet:
 ```bash
 REPOSITORY                                           TAG                 IMAGE ID            CREATED             SIZE
 azure-vote-front                                     latest              eaf2b9c57e5e        8 minutes ago       716 MB
-mycontainerregistry082.azurecr.io/azure-vote-front   redis-v1            eaf2b9c57e5e        8 minutes ago       716 MB
+mycontainerregistry082.azurecr.io/azure-vote-front   v1            eaf2b9c57e5e        8 minutes ago       716 MB
 redis                                                latest              a1b99da73d05        7 days ago          106MB
 tiangolo/uwsgi-nginx-flask                           flask               788ca94b2313        8 months ago        694 MB
 ```
 
-## <a name="push-images-to-registry"></a>Leküldéses képek beállításjegyzék
+## <a name="push-images-to-registry"></a>Rendszerképek leküldése a regisztrációs adatbázisba
 
-Leküldéses a `azure-vote-front` kép a beállításjegyzékhez. 
+Küldje le az `azure-vote-front` rendszerképet a regisztrációs adatbázisba. 
 
-Az alábbi példa használatával, cserélje le a környezetből loginServer loginServer ACR neve.
+Az alábbi példában helyettesítse be az ACR bejelentkezési kiszolgálójának nevét az adott környezet bejelentkezési kiszolgálójának nevével.
 
 ```bash
-docker push <acrLoginServer>/azure-vote-front:redis-v1
+docker push <acrLoginServer>/azure-vote-front:v1
 ```
 
-Ez a néhány percet vesz igénybe.
+Ez eltarthat néhány percig.
 
-## <a name="list-images-in-registry"></a>A beállításjegyzékben lemezképek felsorolása
+## <a name="list-images-in-registry"></a>A regisztrációs adatbázisban található rendszerképek felsorolása
 
-Olyan lemezképkészlet, amellyel az Azure-tárolóba beállításjegyzék értesítését listájához való visszatéréshez felhasználói a [az acr tárház lista](/cli/azure/acr/repository#list) parancsot. A parancs frissíti az ACR-példány neve.
+Az Azure Container Registrybe elküldött rendszerképek listájának lekéréséhez használja az [az acr repository list](/cli/azure/acr/repository#az_acr_repository_list) parancsot. Frissítse a parancsot az ACR-példány nevével.
 
 ```azurecli
 az acr repository list --name <acrName> --output table
@@ -137,7 +137,7 @@ Result
 azure-vote-front
 ```
 
-A címkék azokba megtekintéséhez használja a [az acr tárház megjelenítése-címkék](/cli/azure/acr/repository#show-tags) parancsot.
+Ezután egy adott rendszerkép címkéinek megtekintéséhez használja az [az acr repository show-tags](/cli/azure/acr/repository#show-tags) parancsot.
 
 ```azurecli
 az acr repository show-tags --name <acrName> --repository azure-vote-front --output table
@@ -148,21 +148,21 @@ Kimenet:
 ```azurecli
 Result
 --------
-redis-v1
+v1
 ```
 
-Oktatóanyag befejezése után a tároló kép rendelkezik lett tárolja, a saját Azure tároló beállításjegyzék-példányban. Ez a rendszerkép a rendszer az ACR Kubernetes fürthöz a következő útmutatókból.
+Az oktatóanyag végeztével a tárolórendszerképet egy privát Azure Container Registry-példány tárolja. Ezt a rendszerképet telepítjük az ACR-ből egy Kubernetes-fürtre a következő oktatóanyagok során.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban az Azure-tároló beállításjegyzék ACS Kubernetes fürt használatra lett előkészítve. A következő lépéseket hajtotta végre:
+Ebben az oktatóanyagban előkészítettünk egy Azure Container Registry tárolóregisztrációs adatbázist az ACS Kubernetes-fürtben való használatra. A következő lépéseket hajtotta végre:
 
 > [!div class="checklist"]
-> * Egy Azure-tároló beállításjegyzék-példány telepítése
-> * A tároló-lemezkép az ACR címkézett
-> * A kép feltöltött ACR
+> * Telepített egy Azure Container Registry-példányt
+> * Címkézett egy tárolórendszerképet az ACR-hez
+> * Feltöltötte a rendszerképet az ACR-be
 
-A következő oktatóanyag az Azure-ban Kubernetes fürt telepítésével kapcsolatos további továbblépés.
+Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan helyezhető üzembe egy Kubernetes-fürt az Azure-ban.
 
 > [!div class="nextstepaction"]
-> [Kubernetes fürt központi telepítése](./container-service-tutorial-kubernetes-deploy-cluster.md)
+> [Kubernetes-fürt üzembe helyezése](./container-service-tutorial-kubernetes-deploy-cluster.md)

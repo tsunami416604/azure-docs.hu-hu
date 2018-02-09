@@ -15,10 +15,10 @@ ms.topic: overview
 ms.date: 12/16/2015
 ms.author: dwrede
 ms.openlocfilehash: 45decfdec01b7086d1f9d18b31cf01cec1adb34d
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="microsoft-azure-portal-overview"></a>A Microsoft Azure Portal áttekintése
 A Microsoft Azure Portal egy központi felület, ahol kioszthatja és kezelheti az Azure-erőforrásokat.  Ez az oktatóanyag bemutatja a portált, illetve megmutatja, hogyan használhatja néhány főbb funkcióját
@@ -65,7 +65,7 @@ Ha problémába ütközik, mi szívesen segítünk Önnek.  A portál rendelkezi
 
 ![Súgó és támogatás][HelpSupport]
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Tekintsük át, hogy mit tudott meg ebből az oktatóanyagból:
 
 * Megtudta, hogyan lehet regisztrálni, előfizetést beszerezni és elérni a portált

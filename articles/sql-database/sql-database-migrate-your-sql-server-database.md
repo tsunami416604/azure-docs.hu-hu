@@ -1,6 +1,6 @@
 ---
-title: "SQL Server adatbázis áttelepítése az Azure SQL Database |} Microsoft Docs"
-description: "Ismerje meg, hogy az SQL Server-adatbázis áttelepítése az Azure SQL Database."
+title: "SQL Server-adatbázis migrálása az Azure SQL Database szolgáltatásba | Microsoft Docs"
+description: "Ismerje meg, hogyan telepítheti át SQL Server-adatbázisát az Azure SQL Database szolgáltatásba."
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -14,35 +14,35 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 09/01/2017
+ms.date: 01/29/2018
 ms.author: carlrab
-ms.openlocfilehash: 526222944974c08f92aec2a8418e9b42401bc4d3
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
-ms.translationtype: MT
+ms.openlocfilehash: 0b45661bbfc3d86542bd7424329e504d1d9c91e4
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="migrate-your-sql-server-database-to-azure-sql-database"></a>Az SQL Server-adatbázis áttelepítése az Azure SQL Database
+# <a name="migrate-your-sql-server-database-to-azure-sql-database"></a>SQL Server-adatbázis migrálása az Azure SQL Database szolgáltatásba
 
-Helyezze át az SQL Server az Azure SQL Database-adatbázis más dolga, mint egy üres SQL-adatbázis létrehozása az Azure-ban, majd ezzel a [adatok áttelepítési Segéd](https://www.microsoft.com/download/details.aspx?id=53595) (DMA-) az adatbázis importálására az Azure. Ebben az oktatóanyagban elsajátíthatja, hogy:
+Az SQL Server-adatbázis áthelyezéséhez az Azure SQL Database-be csak létre kell hoznia egy üres SQL-adatbázist az Azure-ban, majd a [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) segítségével importálni az adatbázist az Azure-ba. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Üres Azure SQL-adatbázis létrehozása az Azure portálon (egy új vagy meglévő Azure SQL adatbázis-kiszolgáló)
-> * Az Azure-portálon hozzon létre egy kiszolgálószintű tűzfal (Ha nem a korábban létrehozott)
-> * Használja a [adatok áttelepítési Segéd](https://www.microsoft.com/download/details.aspx?id=53595) (DMA-) az SQL Server adatbázis importálása az üres Azure SQL-adatbázis 
-> * Használjon [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) adatbázis tulajdonságainak módosításához.
+> * Üres Azure SQL-adatbázis létrehozása az Azure Portalon (egy új vagy meglévő Azure SQL Database-kiszolgáló használatával)
+> * Kiszolgálószintű tűzfal létrehozása az Azure Portalon (ha korábban még nem lett létrehozva)
+> * A [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) használata SQL Server-adatbázis importálásához üres Azure SQL-adatbázisba 
+> * Az [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) szolgáltatás használata adatbázisok tulajdonságainak módosításához.
 
-Ha nem rendelkezik Azure-előfizetéssel, [ingyenes fiók létrehozását](https://azure.microsoft.com/free/) megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételeknek:
 
-- A legújabb verziójának telepítése [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).  
-- A legújabb verzióját a [adatok áttelepítési Segéd](https://www.microsoft.com/download/details.aspx?id=53595) (DMA-).
-- Azonosította, és egy adatbázis áttelepítéséhez hozzáféréssel rendelkeznek. Ez az oktatóanyag használja a [SQL Server 2008R2 AdventureWorks OLTP adatbázis](https://msftdbprodsamples.codeplex.com/releases/view/59211) egy példány SQL Server 2008R2 vagy újabb, de használhatja az Ön által választott bármely adatbázis. Kompatibilitási problémák megoldásához használjon [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)
+- Telepítette az [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) legújabb verzióját.  
+- Telepítette a [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) legújabb verzióját.
+- Azonosított egy adatbázist, amelybe telepíthet, és rendelkezik hozzáféréssel az adatbázishoz. Ez az oktatóanyag a [SQL Server 2008R2 AdventureWorks OLTP adatbázist](https://msftdbprodsamples.codeplex.com/releases/view/59211) használja a SQL Server 2008R2-es vagy újabb példányán, de bármilyen adatbázist használhat. A kompatibilitási problémák megoldásához használja a [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) szolgáltatást
 
-## <a name="log-in-to-the-azure-portal"></a>Jelentkezzen be az Azure portálra.
+## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 
 Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
@@ -56,7 +56,7 @@ Kövesse az alábbi lépéseket egy üres SQL-adatbázis létrehozásához.
 
 2. Az **Új** oldalon válassza az **Adatbázisok** lehetőséget, majd az **Új** oldal **SQL Database** területén válassza a **Létrehozás** lehetőséget.
 
-   ![Üres-adatbázis létrehozása](./media/sql-database-design-first-database/create-empty-database.png)
+   ![üres adatbázis létrehozása](./media/sql-database-design-first-database/create-empty-database.png)
 
 3. Töltse ki az SQL Database űrlapját a következő információkkal az előző képen látható módon:   
 
@@ -65,24 +65,24 @@ Kövesse az alábbi lépéseket egy üres SQL-adatbázis létrehozásához.
    | **Adatbázis neve** | mySampleDatabase | Az érvényes adatbázisnevekkel kapcsolatban lásd az [adatbázis-azonosítókat](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) ismertető cikket. | 
    | **Előfizetés** | Az Ön előfizetése  | Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.windowsazure.com/Subscriptions) ismertető cikket. |
    | **Erőforráscsoport** | myResourceGroup | Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket. |
-   | **Forrás kiválasztása** | Az üres adatbázis | Meghatározza, hogy egy üres adatbázist kell létrehozni. |
+   | **Forrás kiválasztása** | Üres adatbázis | Meghatározza, hogy egy üres adatbázist kell létrehozni. |
 
-4. Kattintson a **Kiszolgáló** lehetőségre új kiszolgáló létrehozásához és konfigurálásához az új adatbázis számára. Töltse ki a **új kiszolgáló űrlap** a következő információkat: 
+4. Kattintson a **Kiszolgáló** lehetőségre új kiszolgáló létrehozásához és konfigurálásához az új adatbázis számára. Adja meg az alábbi adatokat az **Új kiszolgálóűrlapon**: 
 
    | Beállítás       | Ajánlott érték | Leírás | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | **Kiszolgálónév** | Bármely globálisan egyedi név | Az érvényes kiszolgálónevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket. | 
    | **Kiszolgálói rendszergazdai bejelentkezés** | Bármely érvényes név | Az érvényes bejelentkezési nevekkel kapcsolatban lásd az [adatbázis-azonosítókat](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) ismertető cikket.|
-   | **Jelszó** | Bármely érvényes jelszó | A jelszó legalább 8 karakterből kell állnia, és az alábbiak közül hármat tartalmaznia kell: nagybetűk, kisbetűk, számok és nem alfanumerikus karakterek száma. |
+   | **Jelszó** | Bármely érvényes jelszó | A jelszónak legalább nyolc karakter hosszúságúnak kell lennie, és tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: nagybetűs karakterek, kisbetűs karakterek, számjegyek és nem alfanumerikus karakterek. |
    | **Hely** | Bármely érvényes hely | A régiókkal kapcsolatos információkért lásd [az Azure régióit](https://azure.microsoft.com/regions/) ismertető cikket. |
 
    ![adatbázis-kiszolgáló létrehozása](./media/sql-database-design-first-database/create-database-server.png)
 
 5. Kattintson a **Kiválasztás** gombra.
 
-6. Kattintson a **Tarifacsomag** parancsra a szolgáltatásszint, a DTU-szám és a tárterületméret megadásához. Megismerkedhet a dtu-inak száma és az Ön számára elérhető egyes száma beállításait. 
+6. Kattintson a **Tarifacsomag** parancsra a szolgáltatásszint, a DTU-szám és a tárterületméret megadásához. Fedezze fel a DTU-k számára és a tárterületre vonatkozó, egyes szolgáltatásszinteken elérhető lehetőségeket. 
 
-7. A jelen oktatóanyag esetében válassza ki a **szabványos** szolgáltatásréteget, és a csúszka segítségével válassza ki a **100 dtu-i (S3)** és **400** GB tárhelyet.
+7. Ebben az oktatóanyagban válassza a **Standard** szolgáltatásszintet, majd a csúszkával állítson be **100 DTU (S3)** egységet, illetve **400** GB tárhelyet.
 
    ![adatbázis létrehozása-s1](./media/sql-database-design-first-database/create-empty-database-pricing-tier.png)
 
@@ -91,12 +91,12 @@ Kövesse az alábbi lépéseket egy üres SQL-adatbázis létrehozásához.
    > [!IMPORTANT]
    > \* A szolgáltatási keretbe foglaltnál nagyobb tárterületek előzetes verzióban érhetők el, és extra költségek vonatkoznak rájuk. Részletes információ: [SQL Database – Díjszabás](https://azure.microsoft.com/pricing/details/sql-database/). 
    >
-   >\* Az 1 TB tárhelyméretet meghaladó prémium szintű készletek jelenleg a következő régiókban érhetők el: USA 2. keleti régiója, USA nyugati régiója, USA-beli államigazgatás – Virginia, Nyugat-Európa, Közép-Németország, Délkelet-Ázsia, Kelet-Japán, Kelet-Ausztrália, Közép-Kanada és Kelet-Kanada. Lásd: [P11–P15 – Aktuális korlátozások](sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+   >\* Az 1 TB tárhelyméretet meghaladó prémium szintű készletek jelenleg a következő régiókban érhetők el: Kelet-Ausztrália, Délkelet-Ausztrália, Dél-Brazília, Közép-Kanada, Kelet-Kanada, USA középső régiója, Közép-Franciaország, Közép-Németország, Kelet-Japán, Nyugat-Japán, Korea középső régiója, USA északi középső régiója, Észak-Európa, USA déli középső régiója, Délkelet-Ázsia, az Egyesült Királyság déli régiója, az Egyesült Királyság nyugati régiója, USA keleti régiója 2, USA nyugati régiója, USA-beli államigazgatás – Virginia, és Nyugat-Európa. Lásd: [P11–P15 – Aktuális korlátozások](sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
    > 
 
 9. A kiszolgálószint, a DTU-szám és a tárterületméret kiválasztása után kattintson az **Alkalmaz** gombra.  
 
-10. Válassza ki a **rendezés** az üres adatbázis (a jelen oktatóanyag esetében használja az alapértelmezett érték). Rendezések kapcsolatos további információkért lásd: [rendezések](https://docs.microsoft.com/sql/t-sql/statements/collations)
+10. Válasszon **rendezést** az üres adatbázis számára (ebben az oktatóanyagban használja az alapértelmezett értéket). A rendezésekkel kapcsolatos további információkért lásd: [Rendezések](https://docs.microsoft.com/sql/t-sql/statements/collations)
 
 11. Most, hogy kitöltötte az SQL Database űrlapját, kattintson a **Létrehozás** gombra az adatbázis létrehozásához. Az üzembe helyezés eltarthat néhány percig. 
 
@@ -118,7 +118,7 @@ Az SQL Database szolgáltatás egy tűzfalat hoz létre a kiszolgáló szintjén
 
    ![kiszolgáló neve](./media/sql-database-get-started-portal/server-name.png) 
 
-3. Kattintson a **kiszolgáló tűzfalának beállítása** az eszköztáron. Megnyílik az SQL Database kiszolgálóhoz tartozó **Tűzfalbeállítások** oldal. 
+3. Kattintson a **Kiszolgálótűzfal beállítása** lehetőségre az eszköztáron. Megnyílik az SQL Database kiszolgálóhoz tartozó **Tűzfalbeállítások** oldal. 
 
    ![kiszolgálói tűzfalszabály](./media/sql-database-get-started-portal/server-firewall-rule.png) 
 
@@ -128,14 +128,14 @@ Az SQL Database szolgáltatás egy tűzfalat hoz létre a kiszolgáló szintjén
 
 6. Kattintson az **OK** gombra, majd zárja be a **Tűzfalbeállítások** lapot.
 
-Most csatlakozhat az SQL adatbázis-kiszolgáló és az adatbázisok, SQL Server Management Studio eszközt, adatok áttelepítési Segéd vagy az Ön által választott, ez a kiszolgáló rendszergazdai fiókjának az előző eljárásban létrehozott használatával IP-címről egy másik eszköz használatával.
+Mostantól csatlakozhat az SQL Database-kiszolgálóhoz és annak adatbázisaihoz erről az IP-címről az SQL Server Management Studióval, a Data Migration Assistanttel, vagy más választott eszközzel, az előző folyamatban létrehozott kiszolgálói rendszergazdai fiókkal.
 
 > [!IMPORTANT]
 > Alapértelmezés szerint az összes Azure-szolgáltatás számára engedélyezett a hozzáférés az SQL Database tűzfalán keresztül. Kattintson a **KI** gombra ezen az oldalon az összes Azure-szolgáltatás hozzáférésének letiltásához.
 
 ## <a name="sql-server-connection-information"></a>Az SQL-kiszolgáló kapcsolatadatai
 
-Kérje le az Azure SQL Database kiszolgáló teljes kiszolgálónevét az Azure Portalon. A teljes kiszolgálónév használhatja az ügyféleszközök elől, beleértve az adatok áttelepítési segítséget és az SQL Server Management Studio használatával Azure SQL-kiszolgálóhoz való csatlakozáshoz.
+Kérje le az Azure SQL Database kiszolgáló teljes kiszolgálónevét az Azure Portalon. Használja a teljes kiszolgálónevet az Azure SQL-kiszolgálóhoz történő csatlakozáshoz ügyféloldali eszközök, például a Data Migration Assistant és az SQL Server Management Studio segítségével.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. Válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd kattintson az új adatbázisra az **SQL-adatbázisok** oldalon. 
@@ -145,84 +145,84 @@ Kérje le az Azure SQL Database kiszolgáló teljes kiszolgálónevét az Azure 
 
 ## <a name="migrate-your-database"></a>Adatbázis migrálása
 
-Következő lépések segítségével használja a  **[adatok áttelepítési Segéd](https://www.microsoft.com/download/details.aspx?id=53595)**  az áttelepítés az Azure SQL Database adatbázisba vizsgálata, és az áttelepítés befejezéséhez.
+Az alábbi lépések követésével a **[Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595)** segítségével felmérheti, készen áll-e az adatbázis az Azure SQL Database-be történő migrálásra, és befejezheti a migrálást.
 
-1. Nyissa meg a **adatok áttelepítési Segéd**. Futtathatja DMA minden olyan számítógépen, amely az áttelepíteni kívánt adatbázist tartalmazó SQL Server-példányhoz való kapcsolódás és képes kapcsolódni az internetre. Nem kell telepíteni az SQL Server-példány áttelepíteni kívánt futtató számítógépen. A tűzfalszabály, amely egy előző eljárásban létrehozott kell lennie a számítógépen, amelyen az adatok áttelepítési Segéd futtatja.
+1. Nyissa meg a **Data Migration Assistant** szolgáltatást. Futtathatja a DMA-t minden olyan számítógépen, amely kapcsolódik az internethez és a migrálni kívánt adatbázist tartalmazó SQL Server-példányhoz. Nem kell telepítenie arra a számítógépre, amelyen a migrálni kívánt SQL Server-példány található. Az előző folyamatban létrehozott tűzfalszabálynak arra a számítógépre kell vonatkoznia, amelyen a Data Migration Assistant szolgáltatást futtatja.
 
-     ![Nyissa meg az adatok áttelepítési Segéd](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-open.png)
+     ![data migration assistant megnyitása](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-open.png)
 
-2. Kattintson a bal oldali menüből **+ új** létrehozásához egy **Assessment** projekt. Adja meg a kért értékeket, és kattintson a **létrehozása**:
+2. A bal oldali menüben kattintson az **+ Új** lehetőségre egy **Felmérés** projekt létrehozásához. Adja meg a kért értékeket, és kattintson a **Létrehozás** gombra:
 
    | Beállítás      | Ajánlott érték | Leírás | 
    | ------------ | ------------------ | ------------------------------------------------- | 
-   | Projekt típusa | Migrálás | Az adatbázis az áttelepítéshez értékeléséhez, vagy válassza ki annak ellenőrzéséhez, és ugyanabban a munkafolyamatban részeként áttelepítése |
-   |Projekt neve|Áttelepítési útmutató| Egy leíró nevet |
-   |Adatforrás kiszolgáló típusa| SQL Server | Ez az, hogy a jelenleg támogatott egyedüli információforrásként |
-   |Cél kiszolgáló típusa| Azure SQL Database| Választási lehetőségek: Azure SQL-adatbázis, az SQL Server, az SQL Server Azure virtuális gépeken |
-   |Áttelepítési hatókör| Séma- és adatok| Választási lehetőségek: csak a séma- és adatokat, csak, séma adatok |
+   | Projekt típusa | Migrálás | Adatbázis felmérése migráláshoz, vagy felmérés és migrálás ugyanabban a munkafolyamatban |
+   |Projektnév|Migrálási útmutató| Leíró név |
+   |Forráskiszolgáló típusa| SQL Server | Jelenleg ez az egyetlen támogatott forrás |
+   |Célkiszolgáló típusa| Azure SQL Database| Választási lehetőségek: Azure SQL Database, SQL Server, SQL Server Azure-beli virtuális gépeken |
+   |Migrálási hatókör| Séma és adatok| Választási lehetőségek: séma és adatok, csak séma, csak adatok |
    
-   ![új adatok áttelepítési Segéd projekt](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-new-project.png)
+   ![új data migration assistant projekt](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-new-project.png)
 
-3.  Az a **forrás kiválasztása** lapon, töltse ki a kért értékek, majd kattintson **Connect**:
-
-    | Beállítás      | Ajánlott érték | Leírás | 
-    | ------------ | ------------------ | ------------------------------------------------- | 
-    | Kiszolgálónév | A kiszolgáló neve vagy IP-cím | A kiszolgáló neve vagy IP-cím |
-    | Hitelesítés típusa | Az elsődleges hitelesítés típusa| Választási lehetőségek: A Windows-hitelesítés, az SQL Server-hitelesítés Active Directory beépített hitelesítés, az Active Directory jelszavas hitelesítést |
-    | Felhasználónév | A bejelentkezési név | Rendelkeznie kell a bejelentkezési **CONTROL SERVER** engedélyek |
-    | Jelszó| a jelszó | a jelszó |
-    | Kapcsolat tulajdonságai| Válassza ki **Kapcsolattitkosítása** és **megbízható kiszolgálói tanúsítvány** a környezetnek megfelelően. | A csatlakozás a kiszolgálóhoz megfelelő tulajdonságok kiválasztása |
-
-    ![új adatok áttelepítési forrás kiválasztása](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-source.png)
-
-5. Válasszon egy önálló adatbázis áttelepítése az Azure SQL Database, és kattintson a forráskiszolgálóról történő **következő**. Ebben az oktatóanyagban nincs csak egyetlen adatbázist.
-
-6. Az a **válassza célként** lapon, töltse ki a kért értékek, majd kattintson **Connect**:
+3.  A **Forrás kiválasztása** lapon töltse ki a kért értékeket, majd kattintson a **Csatlakozás** elemre:
 
     | Beállítás      | Ajánlott érték | Leírás | 
     | ------------ | ------------------ | ------------------------------------------------- | 
-    | Kiszolgálónév | A teljes Azure-adatbázis-kiszolgáló neve | A teljesen minősített Azure adatbázis-kiszolgáló nevét az előző eljárás |
-    | Hitelesítés típusa | SQL Server-hitelesítés | SQL Server-hitelesítést a lehetőség csak ebben az oktatóanyagban írása, de az Active Directory integrált hitelesítést és az Active Directory jelszavas hitelesítést is támogat az Azure SQL adatbázis |
-    | Felhasználónév | A bejelentkezési név | Rendelkeznie kell a bejelentkezési **FELADATVEZÉRLŐ ADATBÁZISHOZ** engedéllyel kell rendelkeznie a forrás-adatbázishoz |
-    | Jelszó| a jelszó | a jelszó |
-    | Kapcsolat tulajdonságai| Válassza ki **Kapcsolattitkosítása** és **megbízható kiszolgálói tanúsítvány** a környezetnek megfelelően. | A csatlakozás a kiszolgálóhoz megfelelő tulajdonságok kiválasztása |
+    | Kiszolgálónév | Kiszolgálónév vagy IP-cím | Kiszolgálónév vagy IP-cím |
+    | Hitelesítés típusa | Előnyben részesített hitelesítési típus| Választási lehetőségek: Windows-hitelesítés, SQL Server-hitelesítés, Active Directory beépített hitelesítés, Active Directory jelszavas hitelesítés |
+    | Felhasználónév | Az Ön bejelentkezési neve | Bejelentkezési nevének rendelkeznie kell **KISZOLGÁLÓ VEZÉRLÉSE** engedélyekkel |
+    | Jelszó| Az Ön jelszava | Az Ön jelszava |
+    | Kapcsolat tulajdonságai| Válassza a **Kapcsolat titkosítása** és a **Megbízhatósági kiszolgáló tanúsítványa** lehetőségeket a környezetének megfelelően. | Válassza ki a kiszolgálóhoz való csatlakozásnak megfelelő tulajdonságokat |
 
-    ![új adatok áttelepítési válassza cél](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-target.png)
+    ![forrás kiválasztása új adatmigráláshoz](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-source.png)
 
-7. Válassza ki az adatbázist a célkiszolgálóról az előző eljárásban létrehozott, és kattintson a **tovább** a source adatbázis séma értékelési folyamat elindításához. Ebben az oktatóanyagban nincs csak egyetlen adatbázist. Figyelje meg, hogy az adatbázis kompatibilitási szintjének beállításai 140, amely az összes új adatbázisokat az Azure SQL-adatbázis alapértelmezett kompatibilitási szintje.
+5. Válasszon a forráskiszolgálóról egy önálló adatbázist, amelyet át kíván telepíteni az Azure SQL Database-be, majd kattintson a **Tovább** gombra. Ebben az oktatóanyagban egyetlen adatbázis található.
+
+6. A **Cél kiválasztása** lapon töltse ki a kért értékeket, majd kattintson a **Csatlakozás** elemre:
+
+    | Beállítás      | Ajánlott érték | Leírás | 
+    | ------------ | ------------------ | ------------------------------------------------- | 
+    | Kiszolgálónév | A teljes Azure Database-kiszolgálónév | Az előző folyamatban használt teljes Azure Database-kiszolgálónév |
+    | Hitelesítés típusa | SQL Server-hitelesítés | Az oktatóanyag írásának pillanatában az SQL Server-hitelesítés az egyetlen lehetőség, de az Azure SQL Database támogatja az Active Directory beépített hitelesítést és az Active Directory jelszavas hitelesítést is |
+    | Felhasználónév | Az Ön bejelentkezési neve | Bejelentkezési nevének rendelkeznie kell a forrásadatbázisra vonatkozó **ADATBÁZIS VEZÉRLÉSE** engedélyekkel |
+    | Jelszó| Az Ön jelszava | Az Ön jelszava |
+    | Kapcsolat tulajdonságai| Válassza a **Kapcsolat titkosítása** és a **Megbízhatósági kiszolgáló tanúsítványa** lehetőségeket a környezetének megfelelően. | Válassza ki a kiszolgálóhoz való csatlakozásnak megfelelő tulajdonságokat |
+
+    ![új adatmigrálás cél kiválasztása](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-target.png)
+
+7. Válassza ki az adatbázist az előző folyamatban létrehozott célkiszolgálóról, és kattintson a **Tovább** gombra a forrásadatbázis sémaértékelési folyamatának elindításához. Ebben az oktatóanyagban egyetlen adatbázis található. Az adatbázis kompatibilitási szintje 140-re van állítva, amely az összes új Azure SQL Database-beli adatbázis alapértelmezett kompatibilitási szintje.
 
    > [!IMPORTANT] 
-   > Az adatbázis az Azure SQL Database az áttelepítés után dönthet úgy fog működni az adatbázis előző verziókkal való kompatibilitás célokra megadott kompatibilitási szinten. A implications és a beállításokat egy adatbázis kompatibilitási szintű működő további információkért lásd: [adatbázis kompatibilitási szintje ALTER](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level). Lásd még: [adatbázis HATÓKÖRŰ konfiguráció ALTER](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql) kompatibilitási szintre vonatkozó további adatbázis-szintű beállítással kapcsolatos információkat.
+   > Miután migrálta az adatbázist az Azure SQL Database-be, működtetheti az adatbázist egy meghatározott kompatibilitási szinten a visszamenőleges kompatibilitás céljából. Az adatbázis meghatározott kompatibilitási szinten való működtetésének következményeivel és lehetőségeivel kapcsolatos további információkért lásd: [ADATBÁZIS kompatibilitási szintjének MÓDOSÍTÁSA](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level). A kompatibilitási szintekkel kapcsolatos további adatbázisszintű beállításokról itt talál információt: [ADATBÁZISHOZ KÖTŐDŐ KONFIGURÁCIÓ MÓDOSÍTÁSA](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql).
    >
 
-8. Az a **objektumok kijelölése** lap, miután a source adatbázis-séma értékelési folyamat befejeződik, tekintse át az áttelepítési a kijelölt objektumokat, és tekintse át az objektumokat tartalmazó problémákat. Tekintse át például a **dbo.uspSearchCandidateResumes** objektum **SERVERPROPERTY('LCID')** viselkedésváltozások és a **HumanResourcesJobCandidate** -objektuma A teljes szöveges keresés módosításait. 
+8. Miután a forrásadatbázis sémaértékelő folyamata befejeződött, a **Select objects** (Objektumok kiválasztása) lapon tekintse át a migrálni kívánt objektumokat, valamint a hibás objektumokat. Tekintse át például a **dbo.uspSearchCandidateResumes** objektumot, figyelve a **SERVERPROPERTY('LCID')** viselkedésváltozásokra, és a **HumanResourcesJobCandidate** objektumot, figyelve a teljes szöveges keresési változásokra. 
 
    > [!IMPORTANT] 
-   > Attól függően, az adatbázis tervezés és az alkalmazás, a forrás-adatbázis áttelepítésekor, előfordulhat, hogy módosítania vagy vagy mind az adatbázis vagy az alkalmazás az áttelepítés után (és egyes esetekben az áttelepítés előtt). Az áttelepítés hatással lehet a Transact-SQL közötti különbségeket kapcsolatos információkért lásd: [feloldása Transact-SQL különbségek SQL-adatbázishoz való áttelepítéskor](sql-database-transact-sql-information.md).
+   > Az adatbázis és az alkalmazás tervezésétől függően a forrásadatbázis migrálásakor előfordulhat, hogy módosítania kell az adatbázist és/vagy az alkalmazást a migrálást követően (és néhány esetben azt megelőzően is). A Transact-SQL migrálást esetlegesen befolyásoló eltéréseivel kapcsolatos tudnivalókat lásd: [Transact-SQL különbségek feloldása az SQL Database-be végzett migrálások során](sql-database-transact-sql-information.md).
 
-     ![új adatok áttelepítési értékelési és objektum kijelölése](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-assessment-results.png)
+     ![új adatmigrálás értékelése és objektum kijelölése](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-assessment-results.png)
 
-9. Kattintson a **létrehozni SQL-parancsfájl** az adatbázisséma objektumaiban a forrásadatbázis parancsfájllal történő. 
-10. Nézze át a létrehozott parancsfájlt, és kattintson a **ezután ki** áttekintheti az azonosított assessment problémák és javaslatokat igény szerint. Például teljes szöveges keresést, az ajánlás frissítésekor, hogy tesztelje az alkalmazásokat, a teljes szöveges szolgáltatásokat kihasználva. Mentse, vagy másolja a parancsfájlt, ha.
+9. Kattintson a **Generate SQL script** (SQL-szkript létrehozása) elemre a sémaobjektumok szkripteléséhez a forrásadatbázisban. 
+10. Tekintse át a létrehozott szkriptet, és szükség szerint kattintson a **Next issue** (Következő probléma) elemre az azonosított értékelési problémák és javaslatok áttekintéséhez. Teljes szöveges keresés esetében például frissítéskor a javaslat az alkalmazások tesztelése a teljes szöveges funkciók kihasználásával. Mentheti vagy másolhatja a szkriptet.
 
-     ![új adatok létrehozott áttelepítési parancsfájl](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-generated-script.png)
+     ![új adatmigrálás által létrehozott szkript](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-generated-script.png)
 
-11. Kattintson a **telepítés séma** és a séma áttelepítési folyamat megtekintése.
+11. Kattintson a **Deploy schema** (Séma üzembe helyezése) elemre, és figyelje meg a séma migrálási folyamatát.
 
-     ![új áttelepítési séma adatáttelepítés](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-schema-migration.png)
+     ![új adatmigrálás séma migrálása](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-schema-migration.png)
 
-12. A séma áttelepítés befejezése után tekintse át az eredményeket a hibákat, és ha nincsenek nincs, kattintson a **adatok áttelepítése**.
-13. Az a **táblák kiválasztása** lapon ellenőrizze az áttelepítéshez kijelölt táblák és kattintson a **indítsa el az adatok áttelepítése**.
+12. Miután a séma migrálása befejeződött, tekintse át az eredményeket, és ha nem talált hibát, kattintson a **Migrate data** (Adatok migrálása) elemre.
+13. A **Select tables** (Táblák kiválasztása) lapon tekintse át a migrálásra kiválasztott táblákat, majd kattintson a **Start data migration** (Adatok migrálásának indítása) elemre.
 
-     ![új adatok áttelepítési adatok áttelepítése](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-data-migration.png)
+     ![új adatok migrálása adatok migrálása](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-data-migration.png)
 
-14. Tekintse meg az áttelepítési folyamat.
+14. Figyelje meg a migrálási folyamatot.
 
-     ![új az áttelepítési adatok áttelepítési folyamata](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-data-migration-process.png)
+     ![új adatok migrálása adatmigrálás folyamata](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-data-migration-process.png)
 
-## <a name="connect-to-the-database-with-ssms"></a>Kapcsolódni az adatbázishoz ssms alkalmazásával
+## <a name="connect-to-the-database-with-ssms"></a>Kapcsolódás az adatbázishoz SSMS segítségével
 
-Használjon [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) az Azure SQL Database-kiszolgálóhoz csatlakozni.
+Az [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) segítségével hozzon létre kapcsolatot az Azure SQL Database-kiszolgálóval.
 
 1. Nyissa meg az SQL Server Management Studiót.
 
@@ -230,9 +230,9 @@ Használjon [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/s
 
    | Beállítás       | Ajánlott érték | Leírás | 
    | ------------ | ------------------ | ------------------------------------------------- | 
-   | Kiszolgáló típusa | Adatbázismotor | Ez értékének megadása kötelező. |
-   | Kiszolgálónév | A teljes kiszolgálónév | A névnek kell lennie, például ehhez hasonló: **mynewserver20170824.database.windows.net**. |
-   | Authentication | SQL Server-hitelesítés | Az SQL-hitelesítés az egyetlen hitelesítési típus, amelyet ebben az oktatóanyagban konfiguráltunk. |
+   | Kiszolgáló típusa | Adatbázismotor | Kötelezően megadandó érték |
+   | Kiszolgálónév | A teljes kiszolgálónév | A névnek a következőhöz hasonlónak kell lennie: **mynewserver20170824.database.windows.net**. |
+   | Hitelesítés | SQL Server-hitelesítés | Az SQL-hitelesítés az egyetlen hitelesítési típus, amelyet ebben az oktatóanyagban konfiguráltunk. |
    | Bejelentkezés | A kiszolgálói rendszergazdai fiók | Ez az a fiók, amely a kiszolgáló létrehozásakor lett megadva. |
    | Jelszó | A kiszolgálói rendszergazdai fiók jelszava | Ezt a jelszót adta meg a kiszolgáló létrehozásakor. |
 
@@ -246,15 +246,15 @@ Használjon [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/s
 
 5. Az Object Explorerben bontsa ki a **Database** (Adatbázisok), majd a **mySampleDatabese** csomópontot a mintaadatbázisban található objektumok megtekintéséhez.
 
-   ![Adatbázis-objektumok](./media/sql-database-connect-query-ssms/connected.png)  
+   ![adatbázis-objektumok](./media/sql-database-connect-query-ssms/connected.png)  
 
 ## <a name="change-database-properties"></a>Adatbázis tulajdonságainak módosítása
 
-A szolgáltatási rétegben, teljesítményszintet és SQL Server Management Studio használatával kompatibilitási szint módosítása Az importálás fázisban azt javasoljuk, hogy a legjobb teljesítmény érdekében magasabb teljesítmény réteg adatbázis importálja, de méretezni kevesebbet költeni, amíg az aktívan használja az importált adatbázis készen áll az importálás után. A kompatibilitási szint módosítása eredményezhet a jobb teljesítmény és az elérhető legújabb képességeket az Azure SQL Database szolgáltatás elérését. Egy régebbi adatbázis áttelepítésekor az adatbázis kompatibilitási szintje, amely kompatibilis az adatbázis a támogatott legalacsonyabb szintű költséget. További információkért lásd: [növeli a lekérdezési teljesítményt kompatibilitási szint 130 az Azure SQL Database](sql-database-compatibility-level-query-performance-130.md).
+Az SQL Server Management Studio használatával módosíthatja a szolgáltatási szintet, a teljesítményszintet és a kompatibilitási szintet. Azt javasoljuk, hogy az importálási fázisban a legjobb teljesítmény érdekében importáljon magasabb teljesítményszintű adatbázisba, de az importálás befejeztével váltson alacsonyabbra, hogy pénzt takarítson meg, amíg készen nem áll az importált adatbázis aktív használatára. A kompatibilitási szint módosítása jobb teljesítményt eredményezhet, és hozzáférést nyújthat az Azure SQL Database szolgáltatás legújabb képességeihez. Egy régebbi adatbázis migrálásakor az adatbázis kompatibilitási szintje az a legalacsonyabb támogatott szint, amely kompatibilis a migrált adatbázissal. További információkért lásd: [Továbbfejlesztett lekérdezési teljesítmény 130-as kompatibilitási szinttel az Azure SQL Database-ben](sql-database-compatibility-level-query-performance-130.md).
 
-1. Az Object Explorerben kattintson a jobb gombbal **mySampleDatabase** majd **új lekérdezés**. A lekérdezés ablak csatlakozik-e az adatbázis.
+1. Az Object Explorerben kattintson a jobb gombbal a **mySampleDatabase** adatbázisra, majd kattintson az **Új lekérdezés** elemre. Megnyílik egy, az adatbázishoz csatlakoztatott lekérdezési ablak.
 
-2. Hajtsa végre a következő parancsot történő beállítása a szolgáltatási rétegben **szabványos** és a teljesítményszintet **S1**.
+2. Hajtsa végre az alábbi parancsot a **Standard** szolgáltatásszint és az **S1** teljesítményszint beállításához.
 
     ```sql
     ALTER DATABASE mySampleDatabase 
@@ -266,15 +266,15 @@ A szolgáltatási rétegben, teljesítményszintet és SQL Server Management Stu
     );
     ```
 
-## <a name="next-steps"></a>Következő lépések 
-Ez az oktatóanyag megtanulta, hogy:
+## <a name="next-steps"></a>További lépések 
+Ez az oktatóanyag a következőket mutatta be:
 
-> * Üres Azure SQL-adatbázis létrehozása az Azure portálon 
-> * Egy kiszolgálószintű tűzfal létrehozása az Azure portálon 
-> * Használja a [adatok áttelepítési Segéd](https://www.microsoft.com/download/details.aspx?id=53595) (DMA-) az SQL Server adatbázis importálása az üres Azure SQL-adatbázis 
-> * Használjon [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) adatbázis tulajdonságainak módosításához.
+> * Üres Azure SQL-adatbázis létrehozása az Azure Portalon 
+> * Kiszolgálószintű tűzfal létrehozása az Azure Portalon 
+> * A [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) használata SQL Server-adatbázis importálásához üres Azure SQL-adatbázisba 
+> * Az [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) szolgáltatás használata adatbázisok tulajdonságainak módosításához.
 
-A következő oktatóanyag áttekintésével megismerheti, hogyan az adatbázis védelme továbblépés.
+A következő oktatóanyag azt mutatja be, hogyan gondoskodhat az adatbázis védelméről.
 
 > [!div class="nextstepaction"]
 > [Az Azure SQL-adatbázis védelme](sql-database-security-tutorial.md).

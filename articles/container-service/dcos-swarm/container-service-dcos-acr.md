@@ -1,6 +1,6 @@
 ---
-title: "ACR használata az Azure DC/OS-fürt"
-description: "Egy Azure-tároló beállításjegyzék használata a DC/OS fürtben, az Azure Tárolószolgáltatásban"
+title: "Az ACR használata Azure DC/OS-fürtökkel"
+description: "Azure Container Registry használata DC/OS-fürttel az Azure Container Service szolgáltatásban"
 services: container-service
 author: julienstroheker
 manager: dcaro
@@ -9,39 +9,39 @@ ms.topic: tutorial
 ms.date: 03/23/2017
 ms.author: juliens
 ms.custom: mvc
-ms.openlocfilehash: 4a3213c28f24e9d1dfc309c6d34771ccc062dae4
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
-ms.translationtype: MT
+ms.openlocfilehash: 90d449de19022b3b427e3d89d5beb18bbd36c6b4
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>A DC/OS-fürtről ACR használni az alkalmazás központi telepítése
+# <a name="use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>Alkalmazások üzembe helyezése ACR és egy DC/OS-fürt használatával
 
-Ebben a cikkben megismerkedhet a Microsoft Azure tároló beállításjegyzék használata a DC/OS-fürtről. ACR használatával lehetővé teszi, hogy közvetlenül a Microsoftnak tárolásához és tároló-lemezképek kezelése. Ez az oktatóanyag ismerteti a következő feladatokat:
+Ebben a cikkben az Azure Container Registry a DC/OS-fürtökkel való használatával ismerkedünk meg. Az ACR használatával a tárolórendszerképeket privát módon tárolhatja és kezelheti. Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
-> * Telepítse az Azure-tároló beállításjegyzék, (ha szükséges)
-> * A DC/OS-fürtről ACR hitelesítés beállítása
-> * Lemezkép feltöltése az Azure-tároló beállításjegyzék
-> * A tároló-lemezkép az Azure-tároló regisztrációs futtatása
+> * Azure Container Registry üzembe helyezése (szükség esetén)
+> * ACR-hitelesítés konfigurálása DC/OS-fürtön
+> * Rendszerkép feltöltése az Azure Container Registrybe
+> * Tárolórendszerkép futtatása az Azure Container Registryből
 
-Az ACS DC/OS-fürt az oktatóanyag lépéseinek végrehajtásához van szüksége. Ha szükséges, [a parancsfájl minta](./../kubernetes/scripts/container-service-cli-deploy-dcos.md) hozhat létre egyet.
+Az oktatóanyagban ismertetett lépések végrehajtásához szüksége lesz egy ACS DC/OS-fürtre. Amennyiben szükséges, [ezzel a mintaszkripttel](./../kubernetes/scripts/container-service-cli-deploy-dcos.md) létrehozhat egyet.
 
 Az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="deploy-azure-container-registry"></a>Telepítse az Azure tároló beállításjegyzék
+## <a name="deploy-azure-container-registry"></a>Azure Container Registry üzembe helyezése
 
-Szükség esetén hozzon létre egy Azure-tárolóba beállításjegyzéket a [az acr létrehozása](/cli/azure/acr#create) parancsot. 
+Amennyiben szükséges, hozzon létre egy Azure tárolóregisztrációs adatbázist az [az acr create](/cli/azure/acr#az_acr_create) paranccsal. 
 
-Az alábbi példakód létrehozza a beállításjegyzéket a véletlenszerű előállításához a neve. A beállításjegyzék egy rendszergazdai fiók használatával is konfigurálva van a `--admin-enabled` argumentum.
+Az alábbi példa egy véletlenszerűen elnevezett beállításjegyzéket hoz létre. A beállításjegyzékhez egy rendszergazdai fiók is konfigurálva lesz az `--admin-enabled` argumentum használatával.
 
 ```azurecli-interactive
 az acr create --resource-group myResourceGroup --name myContainerRegistry$RANDOM --sku Basic
 ```
 
-A beállításkulcs létrehozása után az Azure parancssori felület kimenete az alábbihoz hasonló adatok. Vegye figyelembe a `name` és `loginServer`, ezek a későbbi lépésekben használhatók.
+A beállítás létrehozása után az Azure parancssori felület az alábbihoz hasonló adatokat jelenít meg. Jegyezzük fel a `name` és a `loginServer` értékét, ezeket a későbbi lépések során használni fogjuk.
 
 ```azurecli
 {
@@ -64,87 +64,87 @@ A beállításkulcs létrehozása után az Azure parancssori felület kimenete a
 }
 ```
 
-A tároló beállításjegyzék hitelesítő adatokat lekérni a [az acr hitelesítő adatok megjelenítése](/cli/azure/acr/credential) parancsot. Helyettesítő a `--name` az utolsó lépésben feljegyzett találhatóval. Jegyezze fel a egy jelszó, szükség esetén egy későbbi lépésben.
+Kérje le a tárolóregisztrációs adatbázis hitelesítő adatait az [az acr credential show](/cli/azure/acr/credential) paranccsal. A `--name` helyére írja be az előző lépésben feljegyzett értéket. Jegyezze fel az egyik jelszót, mivel egy későbbi lépésben szükség lesz rá.
 
 ```azurecli-interactive
 az acr credential show --name myContainerRegistry23489
 ```
 
-Azure tároló beállításjegyzékkel kapcsolatos további információkért lásd: [Docker-tároló TITKOS nyilvántartó bemutatása](../../container-registry/container-registry-intro.md). 
+Az Azure Container Registryvel kapcsolatos további információkért lásd: [A privát Docker-tárolójegyzékek bemutatása](../../container-registry/container-registry-intro.md). 
 
-## <a name="manage-acr-authentication"></a>ACR hitelesítés kezelésére szolgál
+## <a name="manage-acr-authentication"></a>Az ACR-hitelesítés kezelése
 
-A hagyományos leküldéses és lekéréses kép titkos beállításjegyzékből módja először a beállításjegyzékben a hitelesítést. Ehhez használja a `docker login` parancs bármely ügyfélnek, amely a saját beállításjegyzék hozzáférésre van szüksége. Mivel a DC/OS-fürtről tartalmazhat sok csomópontok, amelyek kell hitelesíteni a ACR adatokkal, akkor célszerű automatizálható a folyamat egyes csomópontok között. 
+A rendszerképek a privát jegyzékekbe való hagyományos küldése vagy az onnan való lekérése során először hitelesítést kell végezni a beállításjegyzékkel. Ez a `docker login` parancs használatával lehetséges bármely olyan ügyfélen, amelynek hozzá kell férnie a privát jegyzékhez. Mivel a DC/OS-fürt számos csomópontot tartalmazhat, amelyek mindegyikét hitelesíteni kell az ACR-rel, célszerű ezt a folyamatot automatizálni az egyes csomópontokon. 
 
 ### <a name="create-shared-storage"></a>Megosztott tároló létrehozása
 
-Ez a folyamat használja az Azure fájlmegosztások csatlakoztatva lett a fürt mindegyik csomópontján. Ha már nem beállított megosztott tárolót, lásd: [a DC/OS fürtben található fájlmegosztás beállítása](container-service-dcos-fileshare.md).
+Ez a folyamat egy, a fürt minden egyes csomópontjához csatlakoztatott Azure-fájlmegosztást alkalmaz. Ha még nem állított volna be megosztott tárolót, tekintse meg a [fájlmegosztás a DC/OS-fürtökben való beállítását](container-service-dcos-fileshare.md) ismertető szakaszt.
 
-### <a name="configure-acr-authentication"></a>ACR hitelesítés konfigurálása
+### <a name="configure-acr-authentication"></a>Az ACR-hitelesítés konfigurálása
 
-Először beolvasása a DC/OS fő teljes Tartománynevét, és tárolható egy változóban.
+Először kérje le a DC/OS főkiszolgáló teljes tartománynevét, és tárolja egy változóban.
 
 ```azurecli-interactive
 FQDN=$(az acs list --resource-group myResourceGroup --query "[0].masterProfile.fqdn" --output tsv)
 ```
 
-Az SSH-kapcsolat létrehozása a főkiszolgáló (vagy az első főkiszolgálójának) a DC/OS-alapú fürt. Frissítse a felhasználó nevét, ha egy nem alapértelmezett érték lett megadva, a fürt létrehozásakor.
+Hozzon létre SSH-kapcsolatot a DC/OS-alapú fürt főkiszolgálójával (vagy az első főkiszolgálójával). Amennyiben a fürt eredeti létrehozása alkalmával nem alapértelmezett értéket használt, frissítse a felhasználónevet.
 
 ```azurecli-interactive
 ssh azureuser@$FQDN
 ```
 
-A következő parancsot az Azure-tároló beállításjegyzék számára. Cserélje le a `--username` nevű, a tároló beállításjegyzék és a `--password` a megadott jelszavak egyikével. Cserélje le az utolsó argumentumnak *mycontainerregistry.azurecr.io* loginServer nevű példájában a tároló beállításjegyzék. 
+Futtassa a következő parancsot az Azure Container Registrybe való bejelentkezéshez. A `--username` helyére írja a tárolóregisztrációs adatbázis nevét, a `--password` helyére pedig a megadott jelszavak egyikét. A példában szereplő utolsó argumentum (*mycontainerregistry.azurecr.io*) helyére írja a tárolóregisztrációs adatbázis loginServer-nevét. 
 
-Ez a parancs hitelesítési értékeit a helyileg tárolja a `~/.docker` elérési útja.
+A parancs a hitelesítési adatok értékét helyileg, a `~/.docker` útvonalon tárolja.
 
 ```azurecli-interactive
 docker -H tcp://localhost:2375 login --username=myContainerRegistry23489 --password=//=ls++q/m+w+pQDb/xCi0OhD=2c/hST mycontainerregistry.azurecr.io
 ```
 
-Hozzon létre egy tömörített fájl, amely tartalmazza a tároló hitelesítési beállításazonosítókat.
+Hozzon létre egy tömörített fájlt, amely tartalmazza a tárolóregisztrációs adatbázis hitelesítési adatainak értékeit.
 
 ```azurecli-interactive
 tar czf docker.tar.gz .docker
 ```
 
-Ez a fájl átmásolása a fürt megosztott tároló. Ebben a lépésben elérhetővé teszi a fájl a DC/OS-fürt összes csomópontján.
+Másolja ezt a fájlt a fürt megosztott tárolójába. Ezzel a lépéssel a fájl a DC/OS fürt összes csomópontján elérhetővé válik.
 
 ```azurecli-interactive
 cp docker.tar.gz /mnt/share/dcosshare
 ```
 
-## <a name="upload-image-to-acr"></a>ACR Rendszerkép feltöltése
+## <a name="upload-image-to-acr"></a>A rendszerkép feltöltése az ACR-be
 
-Most már a fejlesztési számítógépén, vagy bármely más rendszer Docker telepítve, a lemezkép létrehozása, és töltse fel az Azure-tároló beállításjegyzék.
+Most egy fejlesztési gépen, vagy bármely olyan rendszeren, amelyen a Docker telepítve van, hozzon létre egy rendszerképet, és töltse fel az Azure Container Registrybe.
 
-Hozzon létre egy tárolót a Ubuntu lemezképből.
+Hozzon létre egy tárolót az Ubuntu-rendszerképből.
 
 ```azurecli-interactive
 docker run ubuntu --name base-image
 ```
 
-Most rögzítése a tárolót az új lemezképet. A lemezkép neve is kell tartalmaznia a `loginServer` neve a tároló registrywith formátuma a `loginServer/imageName`.
+Most rögzítése a tárolót egy új rendszerképbe. A rendszerkép nevének tartalmaznia kell a tárolóregisztrációs adatbázis `loginServer` nevét `loginServer/imageName` formátumban.
 
 ```azurecli-interactive
 docker -H tcp://localhost:2375 commit base-image mycontainerregistry30678.azurecr.io/dcos-demo
 ````
 
-Bejelentkezés az Azure-tárolót beállításjegyzékbe. A név helyére loginServer nevét, a--felhasználónév nevű, a tároló beállításjegyzék és a – a megadott jelszavak egyikével jelszót.
+Jelentkezzen be az Azure Container Registrybe. A név helyére írja a loginServer-nevet, a --username helyére a tárolóregisztrációs adatbázis nevét, a --password helyére pedig a megadott jelszavak egyikét.
 
 ```azurecli-interactive
 docker login --username=myContainerRegistry23489 --password=//=ls++q/m+w+pQDb/xCi0OhD=2c/hST mycontainerregistry2675.azurecr.io
 ```
 
-Végezetül feltölti a lemezképet a ACR beállításjegyzék. Ez a példa feltölt egy képet vezénylőtípusú-bemutató nevű.
+Végezetül töltse fel a rendszerképet az ACR-beállításjegyzékbe. Ebben a példában a dcos-demo nevű rendszerképet töltjük fel.
 
 ```azurecli-interactive
 docker push mycontainerregistry30678.azurecr.io/dcos-demo
 ```
 
-## <a name="run-an-image-from-acr"></a>Futtassa a képfájl ACR
+## <a name="run-an-image-from-acr"></a>Rendszerkép futtatása az ACR-ből
 
-A képfájl ACR beállításjegyzékből való használatához hozzon létre egy fájlt nevek *acrDemo.json* és a következő szöveg másolása. Cserélje le a lemezkép neve a beállításjegyzék loginServer Tárolónév és a lemezkép neve, például `loginServer/imageName`. Vegye figyelembe a `uris` tulajdonság. Ez a tulajdonság tárolja a tároló beállításjegyzék hitelesítési fájl, amely ebben az esetben a DC/OS-fürt mindegyik csomópontján csatlakoztatott Azure fájlmegosztás helyét.
+Az ACR-beállításjegyzékben tárolt rendszerkép használatához hozzon létre egy fájlt *acrDemo.json* néven, és másolja bele a következő szöveget. A rendszerkép neve helyére a tárolóregisztrációs adatbázis loginServer-nevét és tárolónevét írja, például `loginServer/imageName`. Jegyezze fel az `uris` tulajdonságot. Ez a tulajdonság tárolja a tárolóregisztrációs adatbázis hitelesítési fájljának helyét, amely esetünkben a DC/OS-fürt egyes csomópontjaihoz csatlakoztatott Azure-fájlmegosztás.
 
 ```json
 {
@@ -184,18 +184,18 @@ A képfájl ACR beállításjegyzékből való használatához hozzon létre egy
 }
 ```
 
-A DC/c CLI az alkalmazás központi telepítését.
+Helyezze üzembe az alkalmazást a DC/OS parancssori felületével.
 
 ```azurecli-interactive
 dcos marathon app add acrDemo.json
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban konfigurálnia kell a DC/OS használata Azure tároló beállításjegyzék, beleértve a következő feladatokat:
+Ebben az oktatóanyagban a DC/OS-t az Azure Container Registry használatára konfiguráltuk, beleértve az alábbi feladatokat:
 
 > [!div class="checklist"]
-> * Telepítse az Azure-tároló beállításjegyzék, (ha szükséges)
-> * A DC/OS-fürtről ACR hitelesítés beállítása
-> * Lemezkép feltöltése az Azure-tároló beállításjegyzék
-> * A tároló-lemezkép az Azure-tároló regisztrációs futtatása
+> * Azure Container Registry üzembe helyezése (szükség esetén)
+> * ACR-hitelesítés konfigurálása DC/OS-fürtön
+> * Rendszerkép feltöltése az Azure Container Registrybe
+> * Tárolórendszerkép futtatása az Azure Container Registryből

@@ -3,23 +3,23 @@ title: "Egyéni események az Azure Event Gridhez az Azure Portal használatáva
 description: "Az Azure Event Grid és a PowerShell segítségével közzétehet egy témakört, és feliratkozhat a kapcsolódó eseményre."
 services: event-grid
 keywords: 
-author: djrosanova
-ms.author: darosa
-ms.date: 10/11/2017
+author: tfitzmac
+ms.author: tomfitz
+ms.date: 01/30/2018
 ms.topic: hero-article
 ms.service: event-grid
-ms.openlocfilehash: 0fe498b7b6dcf59bc5caef8ff5a40053e0498f85
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: 01472ffc7a98cd2c99793c8675efe2cefffe5558
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-and-route-custom-events-with-the-azure-portal-and-event-grid"></a>Egyéni események létrehozása és átirányítása az Azure Portallal és az Event Griddel
 
-Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a cikkben létrehozunk egy egyéni témakört az Azure Portallal, feliratkozunk a témakörre, majd kiváltjuk az eseményt az eredmény megtekintéséhez. Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek reagálnak az eseményre, például egy webhooknak vagy egy Azure-függvénynek. A cikk egyszerűsítése érdekében azonban az eseményeket egy olyan URL-címnek küldjük el, amely pusztán üzenetek gyűjtésével foglalkozik. Az URL-címet a [RequestBin](https://requestb.in/) nevű nyílt forráskódú, külső fél által biztosított eszközzel fogjuk létrehozni.
+Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a cikkben létrehozunk egy egyéni témakört az Azure Portallal, feliratkozunk a témakörre, majd kiváltjuk az eseményt az eredmény megtekintéséhez. Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek reagálnak az eseményre, például egy webhooknak vagy egy Azure-függvénynek. A cikk egyszerűsítése érdekében azonban az eseményeket egy olyan URL-címnek küldjük el, amely pusztán üzenetek gyűjtésével foglalkozik. Az URL-címet a [RequestBin](https://requestb.in/) vagy a [Hookbin](https://hookbin.com/) külső fejlesztésű eszközeivel fogjuk létrehozni.
 
 >[!NOTE]
->A **RequestBin** egy nyílt forráskódú eszköz, amely nagy teljesítményt megkövetelő használati területekhez nem alkalmas. Az eszköz használata ebben az esetben kizárólag bemutató célt szolgál. Ha egyszerre több eseményt továbbít, lehetséges, hogy az eszközben nem fog megjelenni az összes esemény.
+>A **RequestBin** és a **Hookbin** a nagy teljesítményt megkövetelő használati területekhez nem alkalmas. Az eszközök jelen használata kizárólag bemutató célt szolgál. Ha egyszerre több eseményt továbbít, lehetséges, hogy az eszközben nem fog megjelenni az összes esemény.
 
 A folyamat végén látni fogja, hogy az eseményadatokat egy végpontnak küldte el a rendszer.
 
@@ -51,7 +51,7 @@ A témakör egy felhasználó által meghatározott végpontot biztosít, amelyb
 
    ![Event Grid-témakör hozzáadása](./media/custom-event-quickstart-portal/add-topic.png)
 
-1. Adja meg a témakör nevét. A témakör nevének egyedinek kell lennie, mert a nevet egy DNS-bejegyzés képviseli. Az előzetes verzió esetén az Event Grid a **westus2** és a **westcentralus** helyet támogatja. Válassza ki a korábban létrehozott erőforráscsoportot. Kattintson a **Létrehozás** gombra.
+1. Adja meg a témakör nevét. A témakör nevének egyedinek kell lennie, mert a nevet egy DNS-bejegyzés képviseli. Válasszon egyet a [támogatott régiók](overview.md) közül. Válassza ki a korábban létrehozott erőforráscsoportot. Kattintson a **Létrehozás** gombra.
 
    ![Event Grid-témakör értékeinek megadása](./media/custom-event-quickstart-portal/provide-topic-values.png)
 
@@ -61,11 +61,11 @@ A témakör egy felhasználó által meghatározott végpontot biztosít, amelyb
 
 ## <a name="create-a-message-endpoint"></a>Üzenetvégpont létrehozása
 
-A témakörre való előfizetés előtt hozzuk létre az eseményüzenet végpontját. Az eseményre reagáló kód írása helyett egy olyan végpontot hozzunk létre, amely gyűjti az üzeneteket, hogy meg tudja őket tekinteni. A RequestBin egy nyílt forráskódú, külső gyártótól származó eszköz, amely lehetővé teszi egy végpont létrehozását és a neki küldött kérések megtekintését. Nyissa meg a [RequestBin](https://requestb.in/) eszközt, és kattintson a **Create a RequestBin** (Kéréstár létrehozása) elemre.  Másolja ki a tár URL-címét, mert szüksége lesz rá, amikor feliratkozik a témakörre.
+A témakörre való feliratkozás előtt hozzuk létre az eseményüzenet végpontját. Az eseményre reagáló kód írása helyett egy olyan végpontot hozzunk létre, amely gyűjti az üzeneteket, hogy meg tudja őket tekinteni. A RequestBin és a Hookbin külső gyártótól származó eszközök, amelyek végpontok létrehozását és az azokra küldött kérések megtekintését teszik lehetővé. Nyissa meg a [RequestBin](https://requestb.in/) eszközt, és kattintson a **Create a RequestBin** (Kéréstár létrehozása) elemre, vagy nyissa meg a [Hookbin](https://hookbin.com/) eszközt, és kattintson a **Create New Endpoint** (Új végpont létrehozása) elemre.  Másolja ki a tár URL-címét, mert szüksége lesz rá, amikor feliratkozik a témakörre.
 
-## <a name="subscribe-to-a-topic"></a>Előfizetés témakörre
+## <a name="subscribe-to-a-topic"></a>Feliratkozás témakörre
 
-A témakörre való előfizetéssel lehet tudatni az Event Griddel, hogy mely eseményeket kívánja nyomon követni. 
+A témakörre való feliratkozással lehet tudatni az Event Griddel, hogy mely eseményeket kívánja nyomon követni. 
 
 1. Event Grid-előfizetés létrehozásához válassza ismét a **További szolgáltatások** lehetőséget, és keressen az *event grid* kifejezésre. Válassza az **Event Grid-előfizetések** lehetőséget az elérhető lehetőségek közül.
 
@@ -75,7 +75,7 @@ A témakörre való előfizetéssel lehet tudatni az Event Griddel, hogy mely es
 
    ![Event Grid-előfizetés hozzáadása](./media/custom-event-quickstart-portal/add-subscription.png)
 
-1. Adjon egy egyedi nevet az esemény-előfizetésnek. A témakör típusánál válassza az **Event Grid-témakörök** lehetőséget. A példányhoz válassza ki a létrehozott egyéni témakört. Az eseményértesítés végpontjaként adja meg a RequestBinből átemelt URL-címet. Miután végzett az értékek megadásával, válassza a **Létrehozás** lehetőséget.
+1. Adjon egy egyedi nevet az esemény-előfizetésnek. A témakör típusánál válassza az **Event Grid-témakörök** lehetőséget. A példányhoz válassza ki a létrehozott egyéni témakört. Az eseményértesítés végpontjaként adja meg a RequestBinből vagy a Hookbinből átemelt URL-címet. Miután végzett az értékek megadásával, válassza a **Létrehozás** lehetőséget.
 
    ![Event Grid-előfizetés értékeinek megadása](./media/custom-event-quickstart-portal/provide-subscription-values.png)
 
@@ -100,13 +100,13 @@ body=$(eval echo "'$(curl https://raw.githubusercontent.com/Azure/azure-docs-jso
 
 Ha kiadja az `echo "$body"` parancsot, a teljes eseményt megtekintheti. A JSON `data` eleme az esemény hasznos adata. Bármilyen, megfelelően formált JSON megadható ebben a mezőben. A speciális útválasztáshoz és szűréshez használhatja a tárgy mezőt is.
 
-A CURL egy olyan segédprogram, amely HTTP-kéréseket hajt végre. Ebben a cikkben a CURL használatával küldjük el az eseményt a témakörbe. 
+A CURL egy olyan segédprogram, amely HTTP-kéréseket hajt végre. Ebben a cikkben a CURL használatával küldünk egy eseményt a témakörbe. 
 
 ```azurecli-interactive
 curl -X POST -H "aeg-sas-key: $key" -d "$body" $endpoint
 ```
 
-Ön kiváltotta az eseményt, az Event Grid pedig elküldte az üzenetet az előfizetéskor konfigurált végpontnak. Lépjen a RequestBin eszközben korábban létrehozott URL-címre, vagy kattintson a megnyitott RequestBin-böngésző frissítés elemére. Megjelenik az imént elküldött esemény.
+Ön kiváltotta az eseményt, az Event Grid pedig elküldte az üzenetet a feliratkozáskor konfigurált végpontnak. Lépjen a végpont korábban létrehozott URL-címére, vagy kattintson a megnyitott böngésző frissítés gombjára. Megjelenik az imént elküldött esemény.
 
 ```json
 [{
@@ -118,6 +118,8 @@ curl -X POST -H "aeg-sas-key: $key" -d "$body" $endpoint
     "make": "Ducati",
     "model": "Monster"
   },
+  "dataVersion": "1.0",
+  "metadataVersion": "1",
   "topic": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/topics/{topic}"
 }]
 ```
@@ -128,11 +130,11 @@ Ha azt tervezi, hogy folytatja az esemény használatát, akkor ne törölje a c
 
 Válassza ki az erőforráscsoportot, majd válassza az **Erőforráscsoport törlése** elemet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerkedett vele, hogyan hozhat létre témaköröket és eseményelőfizetéseket, bővebben is tájékozódhat arról, hogy miben nyújthat segítséget az Event Grid:
+Most, hogy megismerkedett vele, hogyan hozhat létre témaköröket és eseményfeliratkozásokat, bővebben is tájékozódhat arról, hogy miben nyújthat segítséget az Event Grid:
 
 - [Bevezetés az Event Grid használatába](overview.md)
 - [Azure Blob Storage-események átirányítása egyéni webes végpontra](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)
 - [Virtuális gépek módosításainak monitorozása az Azure Event Grid és a Logic Apps segítségével](monitor-virtual-machine-changes-event-grid-logic-app.md)
-- [Big data típusú adatok streamelése adattárházba](event-grid-event-hubs-integration.md)
+- [Big Data típusú adatok streamelése adattárházba](event-grid-event-hubs-integration.md)

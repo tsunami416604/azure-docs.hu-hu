@@ -6,11 +6,11 @@ ms.service: azure-migrate
 ms.topic: overview
 ms.date: 01/08/2018
 ms.author: raynew
-ms.openlocfilehash: 0bd3d7a9961e7a095684262ae1031f5a3ac0c3fb
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 393f2dfa29b930622a37b8ad90ee17b794c70aeb
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="about-azure-migrate"></a>Az Azure Migrate bemutatása
 
@@ -42,7 +42,7 @@ Az Azure Migrate az alábbiakban nyújt segítséget:
 
 ## <a name="what-do-i-need-to-pay-for"></a>Mi az, amiért fizetnem kell?
 
-Az Azure Migrate díjmentesen érhető el. A nyilvános előzetes kiadásban azonban a függőségmegjelenítési képességek használata további díjakat von maga után. A [függőségmegjelenítés](concepts-dependency-visualization.md) támogatásához az Azure Migrate alapértelmezés szerint létrehoz egy Log Analytics-munkaterületet. Ha függőségmegjelenítést használ, vagy az Azure Migrate-en kívül használja a munkaterületet, a munkaterület használata díjköteles. [Itt tudhat meg többet](https://azure.microsoft.com/en-us/pricing/details/insight-analytics/) a díjakról. Amikor a szolgáltatás általánosan elérhetővé válik, a függőségmegjelenítési képességek használata díjmentes lesz.
+További tudnivalókat az Azure Migrate díjszabásáról [itt](https://azure.microsoft.com/en-in/pricing/details/azure-migrate/) talál.
 
 
 ## <a name="whats-in-an-assessment"></a>Mit tartalmaz egy értékelés?

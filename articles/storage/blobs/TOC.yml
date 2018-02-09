@@ -22,6 +22,8 @@
       href: storage-quickstart-blobs-java.md
     - name: Blobok használata – Python
       href: storage-quickstart-blobs-python.md
+    - name: Blobok használata – Go
+      href: storage-quickstart-blobs-go.md
     - name: Blobok használata – Ruby
       href: storage-quickstart-blobs-ruby.md
     - name: Blobok használata – Node.js

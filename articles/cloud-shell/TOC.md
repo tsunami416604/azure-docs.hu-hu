@@ -17,6 +17,8 @@
 # Példák
 ## [Azure-erőforrások üzembe helyezése a Terraform segítségével Bashben](example-terraform-bash.md)
 
+## [A Bash Ansible futtatása](../ansible/ansible-run-playbook-in-cloudshell.md)
+
 # [Cloud Shell beágyazása](embed-cloud-shell.md)
 
 # [hibaelhárítással](troubleshooting.md)
@@ -25,6 +27,6 @@
 ## [Azure CLI](/cli/azure)
 ## [Azure PowerShell](/powershell/azure)
 
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)

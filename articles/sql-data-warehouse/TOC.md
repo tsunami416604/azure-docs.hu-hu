@@ -9,6 +9,10 @@
 ## Számítás szüneteltetése és folytatása
 ### [Portal](pause-and-resume-compute-portal.md)
 ### [PowerShell](pause-and-resume-compute-powershell.md)
+## Számítások méretezése
+### [Portal](quickstart-scale-compute-portal.md)
+### [PowerShell](quickstart-scale-compute-powershell.md)
+### [T-SQL](quickstart-scale-compute-tsql.md)
 
 
 # Oktatóanyagok
@@ -113,8 +117,6 @@
 ### [A számítási feladatok elemzése](analyze-your-workload.md)
 
 ## Horizontális felskálázás
-### [Számítások kezelése – portál](sql-data-warehouse-manage-compute-portal.md)
-### [Számítások kezelése – PowerShell](sql-data-warehouse-manage-compute-powershell.md)
 ### [Számítások kezelése – REST API](sql-data-warehouse-manage-compute-rest-api.md)
 ### [Számítási szintek automatizálása](manage-compute-with-azure-functions.md)
 

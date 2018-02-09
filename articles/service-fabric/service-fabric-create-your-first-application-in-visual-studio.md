@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: bdabdbbb3037f3325c107a4e6148873a923b4ded
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 2ecb8f8068043936d00f2c9752666490137414e3
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-your-first-c-service-fabric-stateful-reliable-services-application"></a>Az első Service Fabric Stateful Reliable Services-alkalmazás létrehozása C#-környezettel
 
@@ -81,6 +81,17 @@ Amikor a fürt létrejött, értesítést kap a helyi fürt SDK-hoz tartozó ren
 Az alkalmazás elindításakor a Visual Studio automatikusan megjeleníti a **Diagnosztikai eseménynaplót**, ahol az Ön szolgáltatásainak nyomkövetési kimenetei tekinthetők meg.
    
 ![Diagnosztikai eseménynapló][5]
+
+>[!NOTE]
+>Az eseményeknek automatikusan el kell kezdeniük a nyomkövetést a Diagnosztikai eseménynaplóban, ha azonban manuálisan kell azt konfigurálnia, először nyissa meg a **MyStatefulService** projektben található `ServiceEventSource.cs` fájlt. Másolja a `ServiceEventSource` osztály tetején található `EventSource` attribútum értékét. Az alábbi példában az eseményforrás neve `"MyCompany-MyApplication-MyStatefulService"`, ami az Ön esetében eltérő lehet.
+>
+>![A szolgáltatáshoz tartozó eseményforrás nevének helye][service-event-source-name]
+>
+>Ezután kattintson a Diagnosztikai eseménynapló lapon található fogaskerék ikonra az **ETW Providers** (ETW-szolgáltatók) párbeszédpanel megnyitásához. Illessze be az imént másolt eseményforrásnevet az **ETW Providers** (ETW-szolgáltatók) beviteli mezőjébe. Ezután kattintson az **Apply** (Alkalmaz) gombra. Ezzel automatikusan elindítja az események követését.
+>
+>![A diagnosztikai eseményforrás nevének beállítása][setting-event-source-name]
+>
+>A Diagnostics Events (Diagnosztikai események) ablakban látnia kell a megjelenő eseményeket.
 
 A használt állapotalapúszolgáltatás-sablon esetében a **MyStatefulService.cs** `RunAsync` metódusához tartozó számláló növekvő értékei jelennek meg.
 
@@ -146,3 +157,5 @@ További információk a [Reliable Services](service-fabric-reliable-services-in
 [sfe-delete-application]: ./media/service-fabric-create-your-first-application-in-visual-studio/sfe-delete-application.png
 [switch-cluster-mode]: ./media/service-fabric-create-your-first-application-in-visual-studio/switch-cluster-mode.png
 [cluster-setup-success-1-node]: ./media/service-fabric-get-started-with-a-local-cluster/cluster-setup-success-1-node.png
+[service-event-source-name]: ./media/service-fabric-create-your-first-application-in-visual-studio/event-source-attribute-value.png
+[setting-event-source-name]: ./media/service-fabric-create-your-first-application-in-visual-studio/setting-event-source-name.png

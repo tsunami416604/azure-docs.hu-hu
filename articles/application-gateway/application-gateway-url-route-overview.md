@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2017
 ms.author: davidmu
-ms.openlocfilehash: b94e879de8136eeaddbf2a277d9634025dc99bc1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a5d26a603eb1bbe3ce7f8f95b19ba816c32222c2
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="url-path-based-routing-overview"></a>Az URL-alapú útválasztás áttekintése
 
@@ -30,7 +30,7 @@ Az alábbi példában az alkalmazásátjáró a contoso.com webhelyet szolgálja
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1.png)
 
-A http://contoso.com/video* URL-hez kapcsolódó kérések a VideoServerPool, a http://contoso.com/images* URL-hez kapcsolódóak pedig az ImageServerPool készlethez lesznek átirányítva. Ha a kérés egyik elérésiút-kategóriába sem sorolható, a DefaultServerPool az alapértelmezett kiszolgáló.
+A http://contoso.com/video/* URL-hez kapcsolódó kérések a VideoServerPool, a http://contoso.com/images/* URL-hez kapcsolódóak pedig az ImageServerPool készlethez lesznek átirányítva. Ha a kérés egyik elérésiút-kategóriába sem sorolható, a DefaultServerPool az alapértelmezett kiszolgáló.
 
 > [!IMPORTANT]
 > A szabályok abban a sorrendben vannak feldolgozva, amelyben a portálon szerepelnek. Alapszintű figyelő konfigurálása előtt határozottan ajánlott többhelyes figyelőket konfigurálni.  Ez biztosítja, hogy a forgalom a megfelelő háttérbe legyen irányítva. Ha előbb egy alapszintű figyelő szerepel a listában, és az megfelel egy bejövő kérésnek, a figyelő feldolgozza azt.
@@ -98,6 +98,6 @@ A PathBasedRouting szabály kódrészlete:
 ]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Miután elsajátította az URL-alapú tartalom-átirányításról szóló ismereteket, látogasson el [az URL-alapú átirányítást használó alkalmazásátjáró létrehozását bemutató témakörhöz](application-gateway-create-url-route-portal.md).

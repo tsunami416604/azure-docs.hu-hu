@@ -1,89 +1,89 @@
 ---
-title: "Azure költség felügyeleti hozzáférés hozzárendelése |} Microsoft Docs"
-description: "Rendeljen hozzá felhasználói fiókokkal, amelyek a hozzáférési szintek meghatározásához entitások felügyeleti költségadatok elérésére."
+title: "Hozzáférések hozzárendelése az Azure Cost Managementben | Microsoft Docs"
+description: "A költségkezelési adatokhoz olyan felhasználói fiókokkal rendelhet hozzáféréseket, amelyek meghatározzák az entitások hozzáférési szintjeit."
 services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 10/11/2017
+ms.date: 01/30/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: a42f3b51bf6d888d0d5602887ed317c6164391ef
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
-ms.translationtype: MT
+ms.openlocfilehash: 89639e6d9c06edf110dc8432fbefe1fbfd1298c9
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="assign-access-to-cost-management-data"></a>Hozzáférés hozzárendelése a felügyeleti adatokat költség
+# <a name="assign-access-to-cost-management-data"></a>Hozzáférések hozzárendelése költségkezelési adatokhoz
 
-Felhasználó vagy entitás felügyeleti költség felügyeleti adataihoz való hozzáférés biztosítja. Cloudyn felhasználói fiókok hozzáférés meghatározása *entitások* és felügyeleti funkciókat. Ott a két típusú hozzáférést: rendszergazdai és felhasználói. Csak a módosított felhasználónként, rendszergazdai hozzáférés engedélyezi, hogy egy felhasználó korlátozás összes funkciójának Cloudyn portálon többek között: felhasználók kezelése, a címzettek listák felügyeleti és a legfelső szintű entitás hozzáférés entitás összes adatra. Felhasználói hozzáférés célja a végfelhasználók számára, a jelentések megtekintéséhez és Entitásadatok kell a hozzáférés-jelentések létrehozása.
+A költségkezelési adatokhoz való hozzáférés felhasználó- vagy entitáskezeléssel biztosítható. A Cloudyn felhasználói fiókok határozzák meg az *entitásokhoz* és az adminisztratív funkciókhoz való hozzáférést. Két típusú hozzáférés létezik: rendszergazdai és felhasználói. Hacsak az adott felhasználónál nincs máshogy beállítva, a rendszergazdai hozzáférés lehetővé teszi a Cloudyn portál összes funkciójának korlátlan használatát, beleértve a felhasználókezelést, a címzettlisták kezelését és a gyökérszintű entitás-hozzáférést az entitások összes adatához. A felhasználói hozzáférés a végfelhasználóknak van szánva, hogy jelentéseket tekinthessenek meg és állíthassanak össze az általuk elérhető entitásadatok alapján.
 
-Entitások segítségével az üzleti szervezet hierarchikus struktúra tükrözik. Szervezeti egységek, osztályok és csoportok az Ön szervezetében Cloudyn azonosításának. Az entitáshierarchia segít pontosabban nyomon követheti a Költekezési személyek.
+Az entitások az üzleti szervezet hierarchikus struktúráját hivatottak leképezni. A cég részlegeit, osztályait és csapatait jelölik a Cloudynban. Az entitáshierarchia segítségével pontosan nyomon követheti az entitások kiadásait.
 
-A fiók vagy Azure szerződés regisztrálásakor rendszergazdai engedéllyel rendelkező fiók készült Cloudyn, ebben az oktatóanyagban a lépések végrehajtása érdekében. Ez az oktatóanyag ismerteti felhasználókezelés és entitás felügyeletét beleértve költség felügyeleti adataihoz való hozzáférés. Az alábbiak végrehajtásának módját ismerheti meg:
+Az Azure-szerződés vagy -fiók regisztrálásakor a rendszer létrehozott egy rendszergazdai jogosultságokkal rendelkező fiókot a Cloudynban, így az oktatóanyag összes lépését végrehajthatja. Az oktatóanyag a költségkezelési adatokhoz való hozzáférést ismerteti, beleértve a felhasználó- és entitáskezelést. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> * Hozzon létre egy felhasználó rendszergazdai hozzáférés
-> * A felhasználói hozzáférés egy felhasználó létrehozása
+> * Rendszergazdai hozzáféréssel rendelkező felhasználó létrehozása
+> * Felhasználói hozzáféréssel rendelkező felhasználó létrehozása
 > * Entitások létrehozása
 
 
 
-## <a name="create-a-user-with-admin-access"></a>Hozzon létre egy felhasználó rendszergazdai hozzáférés
+## <a name="create-a-user-with-admin-access"></a>Rendszergazdai hozzáféréssel rendelkező felhasználó létrehozása
 
-Már rendelkezik rendszergazdai hozzáféréssel, de a szervezet munkatársai számára is módosítania kell rendszergazdai hozzáféréssel rendelkeznek. A Cloudyn portálon kattintson a felső, jobb és válassza ki a fogaskerék szimbólum **felhasználókezelés**. Kattintson a **új felhasználó hozzáadása** új felhasználó hozzáadásához.
+Bár Ön eleve rendelkezik rendszergazdai hozzáféréssel, előfordulhat, hogy erre a cég más munkatársainak is szüksége lesz. A Cloudyn portálon kattintson a fogaskerék szimbólumra a jobb felső sarokban, és válassza a **User Management** (Felhasználókezelés) lehetőséget. Új felhasználó hozzáadásához kattintson az **Add New User** (Új felhasználó hozzáadása) gombra.
 
-Adja meg a felhasználó vonatkozó szükséges információkat. Képes a jelszó mező üresen hagyja, hogy a felhasználó első bejelentkezés beállíthatja az új jelszót. Egy hivatkozás a bejelentkezési adatok beolvasása a felhasználó e-mailben a küldött Cloudyn kiválasztásakor **e-mailben értesítse felhasználói**. Válassza ki a felhasználók kezelése, hogy a felhasználó létrehozása és módosítása a más felhasználók engedélyeket. Felsorolja Címzettkezelés a felhasználó szerkesztése címzettjeinek listája.
+Adja meg a felhasználóra vonatkozó kötelező adatokat. A jelszó mezőt üresen hagyhatja, így a felhasználó állíthatja be a jelszót az első bejelentkezésekor. A **Notify user by email** (Felhasználó értesítése e-mailben) lehetőségre kattintva a Cloudyn egy e-mailt küld a felhasználónak a bejelentkezési információkkal. Adjon felhasználókezelési jogosultságokat, ha azt szeretné, hogy a felhasználó létrehozhasson és módosíthasson más felhasználókat. A címzettlisták kezelésére vonatkozó jogosultsággal a felhasználó szerkesztheti a címzettlistákat.
 
-A **felhasználó rendelkezik rendszergazdai hozzáférési**, a legfelső szintű entitás a szervezet van kiválasztva. Legfelső szintű kijelölt hagyja, és mentse a felhasználói adatokat. A legfelső szintű entitás kiválasztása a felhasználó nem csak a fa legfelső szintű entitás, hanem az alatta található entitások rendszergazdai jogosultsággal kell rendelkeznie.  
-  ![rendszergazdai hozzáféréssel rendelkező új felhasználók hozzáadása](.\media\tutorial-user-access\new-admin-access.png)
+A **User has admin access** (A felhasználó rendszergazdai hozzáféréssel rendelkezik) alatt a cég gyökérszintű entitása van kiválasztva. Hagyja kiválasztva a gyökérszintű entitást, és mentse a felhasználói adatokat. A gyökérszintű entitás kiválasztásával a felhasználó nem csupán a fa legfelső szintű entitásához fér majd hozzá, hanem az össze az alá tartozóhoz is.  
+  ![rendszergazdai hozzáféréssel rendelkező új felhasználó hozzáadása](.\media\tutorial-user-access\new-admin-access.png)
 
-## <a name="create-a-user-with-user-access"></a>A felhasználói hozzáférés egy felhasználó létrehozása
-Tipikus felhasználót kell költség felügyeleti adataihoz való hozzáférés, például az irányítópultok és jelentések felhasználói jogosultságra megtekintheti őket. Hozzon létre egy új felhasználót a felhasználói hozzáférés hasonló hozta létre a rendszergazdai hozzáférés a következő eltérésekkel:
+## <a name="create-a-user-with-user-access"></a>Felhasználói hozzáféréssel rendelkező felhasználó létrehozása
+A költségvetési adatokhoz irányítópult- és jelentésszintű hozzáférést igénylő felhasználóknak felhasználói jogosultságra van szükségük ezek megtekintéséhez. Hozzon létre egy új felhasználót a rendszergazdai hozzáféréssel rendelkező felhasználóhoz hasonló felhasználói hozzáféréssel, a következő eltérésekkel:
 
-- Törölje a jelet **felhasználókezelés engedélyezése**, **engedélyezése címzett sorolja fel a felügyeleti**, és minden a **felhasználónak rendszergazdai hozzáféréssel rendelkezik** listája.
-- Jelölje ki az entitásokat, hogy a felhasználónak kell-e a hozzáférés a **felhasználó rendelkezik-e a felhasználói hozzáférés** listája.
-- Akkor is a rendszergazda konkrét személyek által elérhető, igény szerint.
+- Törölje az **Allow User Management** (Felhasználókezelés engedélyezése) és az **Allow Recipient lists Management** (Címzettlisták kezelésének engedélyezése) beállítás, valamint a **User has admin access** (A felhasználó rendszergazdai hozzáféréssel rendelkezik) lista összes beállításának jelölését.
+- Jelölje be a **User has user access** (A felhasználó felhasználói hozzáféréssel rendelkezik) listában azokat az entitásokat, amelyekhez a felhasználónak hozzáféréssel kell rendelkeznie.
+- Emellett igény szerint egyes entitásokhoz rendszergazdai hozzáférést is adhat.
 
-![felhasználói hozzáférés az új felhasználó hozzáadása](.\media\tutorial-user-access\new-user-access.png)
+![felhasználói hozzáféréssel rendelkező új felhasználó hozzáadása](.\media\tutorial-user-access\new-user-access.png)
 
-Útmutató videót felhasználók hozzáadásáról, lásd: [felhasználók hozzáadása az Azure költség Management Cloudyn](https://youtu.be/Nzn7GLahx30).
+A felhasználók hozzáadásáról szóló oktatóvideó: [Felhasználók felvétele az Azure Cost Management by Cloudyn rendszerébe](https://youtu.be/Nzn7GLahx30).
 
 ## <a name="create-entities"></a>Entitások létrehozása
 
-A költségek entitáshierarchia határozza meg, az ajánlott eljárás esetén a szervezet felépítése azonosításához.
+A költségentitás-hierarchia meghatározásakor az az ajánlott eljárás, ha felméri a cég felépítését.
 
-A fa létrehozása, vegye figyelembe, hogyan szeretné, vagy tekintse meg az üzleti egységek erőforrásokat, és az értékesítési részleg költség elkülönített költségek kell. Az entitás fában Cloudyn kvórummodellje rugalmas entitás öröklési miatt. A felhő fiókok egyéni előfizetések adott entitások van csatolva. Igen entitások olyan több-bérlős. Rendelhet bizonyos felhasználók hozzáférés csak az üzleti entitásokat használatával szegmensében. Így megtartja elkülönített, akár keresztül nagy részének leányvállalatai például egy üzleti adatok. És adatok elkülönítési elősegíti a cégirányítási.  
+A fa létrehozásakor mérlegelje, miként szeretné követni vagy miként kell követnie a költségeket üzleti egységenként, költséghelyenként, környezetenként és értékesítési részlegenként elkülönítve. A Cloudyn entitásfája az entitásöröklésnek köszönhetően rugalmas. A felhőfiókok egyéni előfizetései adott entitásokhoz vannak csatolva. Az entitások tehát több-bérlősek. Az egyes felhasználókat az entitások használatával hozzárendelheti csak a vállalat őket érintő szegmenseihez. Így az adatok elkülönítve maradnak, akár kisebb, akár nagyobb egységekről, például a leányvállalatokról van szó. Az adatok elkülönítése segít abban, hogy kézben tarthassa az irányítást.  
 
-Amikor regisztrál az Azure szerződés vagy a fiók Cloudyn, az Azure-erőforrás adatokat, többek között a használat, a teljesítmény, a számlázási és a címke adatait az előfizetések Cloudyn fiókja át lett másolva. Azonban manuálisan kell létrehoznia az entitás fa. Ha kihagyja az Azure Resource Manager regisztrálása, majd csak számlázási adatai és néhány eszközintelligencia-jelentések érhetők el a Cloudyn portálon.
+Az Azure-szerződés vagy -fiók a Cloudynben való regisztrálásakor az előfizetett Azure-erőforrások adatait, többek között a használatra, a teljesítményre, a számlázásra és a címkékre vonatkozó adatokat a rendszer átmásolta a Cloudyn-fiókjába. Az entitásfát azonban manuálisan kell létrehoznia. Ha kihagyta az Azure Resource Manager-regisztrációt, csak a számlázási adatok és néhány adategység-jelentés érhetők el a Cloudyn portálján.
 
-A Cloudyn portálon kattintson **beállítások** a felső, jobb és válassza ki a **felhő fiókok**. Egyetlen entitás (root) kezdődnie, és a legfelső szintű az entitás-fa létrehozása. Íme egy példa egy entitás hierarchiában, amely hasonló lehet a következőhöz számos informatikai szervezet a fa befejezése után:
+A Cloudyn portálon kattintson a **Settings** (Beállítások) gombra a jobb felső sarokban, és válassza a **Cloud Accounts** (Felhőbeli fiókok) lehetőséget. Egyetlen entitásból (a gyökérből) kell kiindulni, és ebből kell kiépíteni a teljes entitásfát. Példa egy entitáshierarchiára, amely számos informatika vállalatéhoz hasonlóan fog kinézni, amint a fa elkészül:
 
-![entitás fa](.\media\tutorial-user-access\entity-tree.png)
+![entitásfa](.\media\tutorial-user-access\entity-tree.png)
 
-A **entitások**, kattintson a **entitás hozzáadása**. Adja meg a személy vagy a részleg, amelyhez hozzá szeretné adni. A **teljes nevét** és **E-mail** mezőket a meglévő felhasználók nem rendelkeznek. Ha meg szeretné tekinteni a hozzáférési szintek listája, keressen a súgóban *entitás hozzáadása*.
+Az **Entities** (Entitások) elem mellett kattintson az **Add Entity** (Entitás hozzáadása) gombra. Adja meg a hozzáadni kívánt személy vagy részleg adatait. A **Full Name** (Teljes név) és az **Email** (E-mail-cím) mezőknek nem szükséges meglévő felhasználók adatait tartalmaznia. Ha meg szeretné tekinteni a hozzáférési szintek listáját, keressen rá a Súgóban az *Adding an entity* (Entitások hozzáadása) témakörre.
 
-![Entitás hozzáadása](.\media\tutorial-user-access\add-entity.png)
+![entitás hozzáadása](.\media\tutorial-user-access\add-entity.png)
 
-Amikor elkészült, **mentése** az entitás.
+Amikor elkészült, **mentse** az entitást.
 
 
-Útmutató videót egy költség entitáshierarchia létrehozásával kapcsolatban, tekintse meg a [költség entitás hierarchia létrehozása az Azure költség Management Cloudyn a](https://youtu.be/dAd9G7u0FmU).
+A költségentitás-hierarchiák létrehozásáról szóló oktatóvideó: [Költségentitás-hierarchia létrehozása az Azure Cost Management by Cloudynben](https://youtu.be/dAd9G7u0FmU).
 
-Ha egy Azure nagyvállalati szerződéssel felhasználók videót tekintené oktatóanyag előfizetési entitásokat, és a fiókok társításával kapcsolatos [csatlakozás az Azure Resource Manager és az Azure költség Management Cloudyn](https://youtu.be/oCIwvfBB6kk).
+Ha Ön Azure Nagyvállalati Szerződés alá tartozó felhasználó, tekintse meg a fiókok és előfizetések entitásokkal való társításáról szóló videót: [Csatlakozás az Azure Resource Managerhez az Azure Cost Management by Cloudynben](https://youtu.be/oCIwvfBB6kk).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Hozzon létre egy felhasználó rendszergazdai hozzáférés
-> * A felhasználói hozzáférés egy felhasználó létrehozása
+> * Rendszergazdai hozzáféréssel rendelkező felhasználó létrehozása
+> * Felhasználói hozzáféréssel rendelkező felhasználó létrehozása
 > * Entitások létrehozása
 
-A következő oktatóanyag felmérheti a kiadásokat előzményadatok használatával hogyan továbblépés.
+A következő oktatóanyag azt mutatja be, hogyan jelezheti előre a kiadásokat az előzményadatok alapján.
 
 > [!div class="nextstepaction"]
 > [Jövőbeli kiadások előrejelzése](tutorial-forecast-spending.md)

@@ -42,6 +42,9 @@
 ### [Azure PowerShell](application-gateway-create-multisite-azureresourcemanager-powershell.md)
 ## Átirányítás konfigurálása
 ### [Azure PowerShell](application-gateway-configure-redirect-powershell.md)
+## Külső átirányítás konfigurálása
+### [Azure PowerShell](tutorial-external-site-redirect-cli.md)
+### [Azure CLI](tutorial-external-site-redirect-powershell.md)
 ## Webalkalmazások konfigurálása háttérkészlet-tagként
 ### [Azure PowerShell](application-gateway-web-app-powershell.md)
 ## Állapotminták konfigurálása

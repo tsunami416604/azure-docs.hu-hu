@@ -1,128 +1,128 @@
 ---
-title: "Azure költség kezelése beépülő modullal költségeinek kezelése |} Microsoft Docs"
-description: "Költség foglalás és a visszajelzés és a jóváírási jelentések költségek kezelésére."
+title: "Költségek kezelése az Azure Cost Managementtel | Microsoft Docs"
+description: "Költségek kezelése költséglefoglalási, költséghelyi visszacsatolási és költséghelyi elszámolási jelentésekkel."
 services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 11/21/2017
+ms.date: 01/30/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: bfbcded98814500a03b2b79b0248c84f8f043dc0
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
-ms.translationtype: MT
+ms.openlocfilehash: 804b50d6ba054bbb0eb60b659c98f161ea5272ee
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="manage-costs-by-using-azure-cost-management"></a>Azure költség kezelése beépülő modullal költségeinek kezelése
+# <a name="manage-costs-by-using-azure-cost-management"></a>Költségek kezelése az Azure Cost Managementtel
 
-Költségek kezelésére, és az Azure költség Management Cloudyn a visszajelzési jelentéseket készíthet a címkék alapján kiosztásával. Költség foglalási folyamatán a felhasznált felhőalapú erőforrások költségek rendel hozzá. Költségek teljesen foglal le, ha az erőforrások szerint vannak kategóriába címkékkel. Költségek le van foglalva, miután biztosíthat visszajelzés vagy jóváírási a felhasználók számára az irányítópultokat és jelentéseket. Azonban számos olyan forrás lehet címkézetlen vagy untaggable költség felügyeleti indításakor.
+Az Azure Cost Management by Cloudynben a költségeket címkék alapján foglalhatja le a költségek kezelése és a visszacsatolási jelentések előállítása érdekében. A költséglefoglalási folyamat során költségeket rendel hozzá a felhasznált felhőalapú erőforrásokhoz. A költségek teljes lefoglalása akkor történik meg, ha az összes erőforrást kategóriákba sorolta címkék segítségével. A költségek lefoglalását követően irányítópultokon és jelentéseken keresztül biztosíthat költséghelyi visszacsatolást és elszámolást a felhasználóknak. Azonban a Cost Management használatba vételekor előfordulhat, hogy számos erőforrás nem rendelkezik vagy nem látható el címkével.
 
-Például előfordulhat, hogy kívánt mérnöki költségek térített beolvasása. Tudja megjeleníteni a mérnöki csapathoz, amelyekre szüksége van egy adott értékre, erőforrás költségek alapján kell. Megjelenítheti őket a jelentés a felhasznált erőforrások címkézett *mérnöki*.
+Például előfordulhat, hogy szeretné megtéríttetni a műszaki tervezési költségeket. Be kell tudnia mutatni a műszaki csapat számára az adott igényelt összeget az erőforrásköltségek alapján. Mutathat nekik egy jelentést, amely a *műszaki tervezés* címkével ellátott összes felhasznált erőforrást tartalmazza.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Egyéni címkék használata költségek lefoglalni.
-> * Visszajelzés és a jóváírási jelentések létrehozásához.
+> * Költségek lefoglalása egyéni címkék használatával.
+> * Költséghelyi visszacsatolási és költséghelyi elszámolási jelentések létrehozása.
 
-## <a name="use-custom-tags-to-allocate-costs"></a>Egyéni címkék használata költségek lefoglalni
+## <a name="use-custom-tags-to-allocate-costs"></a>Költségek lefoglalása egyéni címkék használatával
 
-Költség foglalási indításakor a először, a hatókör definiálásához költség-modell használatával. A költségek modell nem változtatja meg a költségek, továbbítja azokat. Költség modell létrehozásakor szegmenseket egy, az adatok költség entitás, fiók vagy előfizetés, és több címkék alapján. Általános példa címkék közé tartozik a egy számlázási kódot, a költségközpont vagy a csoport nevét. A címkék segítségével hajtsa végre a visszajelzési vagy a szervezet többi részével jóváírások is.
+A költséglefoglalás első lépéseként a hatókört kell definiálni egy költségmodell segítségével. A költségmodell nem módosítja a költségeket, csak leosztja azokat. A költségmodell létrehozásakor az adatokat költségentitás, fiók vagy előfizetés, valamint több címke alapján szegmentálja. A címkék általában lehetnek számlázási kódok, költséghelyek vagy csoportnevek. A címkék emellett abban is segítenek, hogy költséghelyi visszacsatolást és elszámolást végezzen a vállalat egyéb részeire vonatkozóan.
 
-Egy egyéni költség foglalási modell létrehozásához válassza **költség** &gt; **költség felügyeleti** &gt; **költség foglalási 360°** a jelentés menüben.
+Egyéni költséglefoglalási modell létrehozásához válassza a **Költségek** &gt; **Költségkezelés** &gt; **Cost Allocation 360°** lehetőséget a jelentés menüjében.
 
-![Költség foglalási 360 kiválasztása](./media/tutorial-manage-costs/cost-allocation-360.png)
+![A Cost Allocation 360 kiválasztása](./media/tutorial-manage-costs/cost-allocation-360.png)
 
-Az a **költség foglalási 360** lapon jelölje be **Hozzáadás** és írja be nevét és leírását, a költség modell. Válassza ki az összes fiókok vagy egyedi fiókokat. Ha azt szeretné, egyedi fiókokat használ, több fiók választhat több felhőszolgáltatók. Ezután kattintson **kategorizálási** , a költség adatok kategorizálása felderített címkék kiválasztásához. Válassza ki a modell szerepeltetni kívánt címkéket (kategóriák). A következő példában a **egység** címke van kiválasztva.
+A **Cost Allocation 360** lapon kattintson a **Hozzáadás** elemre, majd adja meg a költségmodell nevét és leírását. Válassza ki az összes fiókot vagy válasszon egy egyénit. Egyéni fiókok kiválasztása esetén egyszerre több fiókot is választhat akár különböző felhőszolgáltatóktól is. Ezután kattintson a **Kategorizálás** gombra a költségadatok kategorizálásához használt felderített címkék kiválasztásához. Válassza ki a modellbe felvenni kívánt címkéket (kategóriákat). A következő példában az **Egység** címke van kiválasztva.
 
-![Példa költség modell kategorizálási](./media/tutorial-manage-costs/cost-model01.png)
-
-
-
-A példa bemutatja, hogy $14,444 Kategorizálatlan (nélkül).
-
-Válassza ki, **Kategorizálatlan erőforrások** , és válassza ki, amely nem lefoglalt költségek rendelkezni szolgáltatásokat. Ezután határozzon meg szabályok költségek lefoglalni.
-
-Például érdemes az Azure storage költségei és felosztani a költségeket egyaránt az Azure virtuális gépek (VM). Ehhez az szükséges, válassza ki a **Azure tárolási** szolgáltatás, válassza **Categorized arányos**, majd válassza ki **Azure vagy Virtuálisgép**. Ezt követően válassza **létrehozása**.
-
-![Példa költség modell felosztási szabály egyenlő terjesztéshez](./media/tutorial-manage-costs/cost-model02.png)
+![Példa a költségmodellek kategorizálására](./media/tutorial-manage-costs/cost-model01.png)
 
 
 
-Egy másik példa lehet szükség, az Azure-hálózat költségeit lefoglalása egy adott részleg a szervezet számára. Ehhez az szükséges, válassza ki a **Azure/hálózati** szolgáltatást, majd **Explicit terjesztési**. Ezután, a terjesztési-százalék beállítása 100, és válassza a részleg –**G&amp;A** az alábbi képen:
+A példában látható, hogy 14 444 dollár nincs kategorizálva (nem rendelkezik címkével).
 
-![Példa költség modell felosztási szabály egy adott üzleti egység](./media/tutorial-manage-costs/cost-model03.png)
+Ezután kattintson a **Kategorizálatlan erőforrások** gombra, és válassza ki a szolgáltatásokat, amelyekhez le nem lefoglalt költségek tartoznak. Ezután definiáljon szabályokat a költségek lefoglalásához.
 
+Például előfordulhat, hogy az Azure Storage költségeit szeretné egyenletesen elosztani az Azure-beli virtuális gépek (VM-ek) között. Ehhez válassza az **Azure/Storage** szolgáltatást, **A kategorizáltakkal arányosan**, majd az **Azure/VM** lehetőséget. Ezután kattintson a **Létrehozás** elemre.
 
-
-Az összes többi Kategorizálatlan erőforrás kiegészítő szabályokat létrehozni.
-
-Ha le nem foglalt Amazon Web Services (AWS) fenntartott példányok, hozzárendelheti azokat a címkézett kategóriákhoz **fenntartott példányok**.
-
-Válassza ki, ha a megadott költségek lefoglalni választások információ **összegzés**. Menti az adatokat, és később folytathatja a munkát a további szabályok, válassza ki a **mentése vázlatként megjelölt**. Vagy menti az adatokat, és indítsa el, a költség foglalási modell feldolgozása Cloudyn rendelkezik, válasszon **mentéséhez, majd aktiválja**.
-
-A költségek modellek jeleníti meg az új költség modellel **feldolgozás állapota**. Egy ideig, amíg a Cloudyn adatbázis frissül, a költség modellel is igénybe vehet. Nem hajtja végre, amikor az állapot frissül **befejezve**. A költségek elemző jelentés alapján, a költség modellből tekinthetnek **kiterjesztett szűrők** &gt; **költség modell**.
-
-### <a name="category-manager"></a>Kategória Manager
-
-Kategória Manager olyan adatok tisztítására eszköz, amely segít több kategóriák (címke) hozzon létre újakat értékének egyesítése. Ez egy olyan egyszerű szabályalapú eszköz válasszon egy kategóriát, és ahol a egyesítése a létező értéket a szabályt hoz létre. Például lehetséges, hogy a meglévő kategóriák **R&amp;D** és **fejlesztői** ahol mindkettő határoz meg a fejlesztési csoport.
-
-A Cloudyn portálon kattintson a felső, jobb és válassza ki a fogaskerék szimbólum **kategória Manager**. Hozzon létre új kategóriát, válassza ki a pluszjelre (**+**). Adjon meg egy nevet a kategória, majd a **kulcsok**, adja meg az új kategória szerepeltetni kívánt kategória kulcsok.
-
-Ha egy szabály, vagy feltétel megadásával több értéket is hozzáadhat. Néhány alapvető karakterlánc műveleteket is végezhet. Mindkét esetben kattintson a három pont szimbólum (**...** ) jobb oldalán **szabály**.
-
-Adjon meg egy új szabályt, hogy a **szabályok** terület, hozzon létre egy új szabályt. Adja meg például **fejlesztői** alatt **szabályok** és írja be **R&amp;D** alatt **műveletek**. Amikor elkészült, mentse az új kategóriát.
-
-Az alábbi ábrán egy példa egy új kategóriát a létrehozott szabályok **munkaterhelés**:
-
-![Kategória – példa](./media/tutorial-manage-costs/category01.png)
-
-### <a name="tag-sources-and-reports"></a>Címke források és jelentések
-
-Címke adatait Cloudyn jelentések látható három helyen származik:
-
-- Felhő szolgáltató erőforrásai API-k
-- API-k számlázási felhőszolgáltatóként
-- Manuálisan létrehozott címkék a következő forrásból:
-    - Cloudyn entitáscímkék - Cloudyn entitások alkalmazott felhasználói metaadatai
-    - Kategória-kezelő – a adatok tisztítására eszköz, amely meglévő címkék alkalmazott szabályok alapján új címkék létrehozása
-
-Felhő szolgáltató címkék Cloudyn költség jelentésekben megjelenített egyéni költség foglalási-modellben költség foglalási 360 kell létrehoznia. Ehhez nyissa meg a **költség** > **költség felügyeleti** > **költség foglalási 360**, válassza ki a kívánt címkét, és adja a szabályok kezelésének címkézetlen költségek. Ezután hozzon létre egy új költség modell. Ezután jelentések megtekintéséhez költség foglalási elemzés nézet, szűrési és rendezési az Azure erőforrás-címkéket.
-
-Az Azure erőforrás-címkék csak akkor jelennek meg **költség foglalási elemzés** jelentéseket.
-
-Felhő szolgáltató számlázási címkék összes költség jelentések jelennek meg.
-
-Cloudyn entitáscímkék és címkék manuálisan létrehozott összes költség jelentések jelennek meg.
+![Példa az egyenlő leosztáshoz létrehozott költségmodell-lefoglalási szabályra](./media/tutorial-manage-costs/cost-model02.png)
 
 
-## <a name="create-showback-and-chargeback-reports"></a>Visszajelzés és a jóváírási jelentések létrehozása
 
-A metódus visszajelzési és jóváírási használó szervezetek jelentősen változhat. Azonban használhatja a irányítópultokat és jelentéseket a Cloudyn portálon alapját képező vagy célra. Megadhatja a felhasználói hozzáférés bárki számára a szervezetében, hogy az igény szerinti adatmegjelenítésre irányítópultokat és jelentéseket. Az összes költség elemzési jelentések visszajelzési támogatja, mert azok által felhasznált erőforrások megjelenítése felhasználók. És lehetővé teszik a költség, vagy a használati adatok a szervezeten belül a csoporthoz adott elemezze.
+Egy másik példa kedvéért tegyük fel, hogy az Azure-hálózattal kapcsolatos összes költséget a vállalat egy adott üzleti egységéhez szeretné rendelni. Ehhez válassza az **Azure/hálózat** szolgáltatást, majd a **Kifejezett leosztás** lehetőséget. Ezután állítsa a leosztás százalékos arányát 100-ra, és válassza ki az üzleti egységet – ez a **G&amp;A** a következő képen:
 
-Költség foglalási eredményeinek megtekintéséhez nyissa meg a költség elemző jelentés, és válassza ki a létrehozott költség modell. Adja hozzá egy vagy több, a címkék, a költség modell kiválasztott csoportosítása.
-
-![Költség Teljesítményelemzésének jelentése.](./media/tutorial-manage-costs/cost-analysis.png)
-
-Egyszerűen létrehozása és mentése a jelentések, amelyek arra utalnak a meghatározott csoportok által használt egyes szolgáltatások. Például lehetséges, hogy a részleg által nagymértékben használt Azure virtuális gépeken. Használati és költségek megjelenítendő Azure virtuális gépeken szűrt jelentést hozhat létre.
-
-Ha meg kell adnia a pillanatkép-adatok más csoportokhoz, PDF- vagy CSV formátumú jelentései exportálhatók.
+![Példa egy adott üzleti egységhez létrehozott költségmodell-lefoglalási szabályra](./media/tutorial-manage-costs/cost-model03.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+
+Hozzon létre további lefoglalási szabályokat a többi kategorizálatlan erőforráshoz is.
+
+Ha ki nem osztott Amazon Web Services (AWS) lefoglalt példányokkal rendelkezik, a **Lefoglalt példányok** lehetőséggel címkézett kategóriákhoz rendelheti azokat.
+
+A költségek lefoglalásával kapcsolatos választásainak áttekintéséhez kattintson az **Összefoglalás** gombra. Ha mentené az adatokat, és később térne vissza a további szabályok létrehozásához, kattintson a **Mentése vázlatként** gombra. Választhatja a **Mentés és aktiválás** lehetőséget is az adatok mentéséhez. Ekkor a Cloudyn megkezdi a költséglefoglalási modell feldolgozását.
+
+A költségmodellek listájában az új költségmodell **Feldolgozás alatt** állapotúként jelenik meg. Beletelhet némi időbe, mire a Cloudyn adatbázisa frissül a költségmodelljével. A feldolgozás végeztével a modell **Kész** állapotúra vált. Ezt követően a költségmodell adatai a Költségelemzés jelentésben tekinthetők meg a **Bővített szűrők** &gt; **Költségmodell** menüpont alatt.
+
+### <a name="category-manager"></a>Kategóriakezelő
+
+A Kategóriakezelő egy adattisztító eszköz, amellyel több kategória (címke) értékeinek egyesítésével új kategóriák hozhatóak létre. Ez egy egyszerű szabályalapú eszköz, amelyben egy kategóriát kiválasztva szabályokat hozhat létre a meglévő értékek egyesítésére. Például rendelkezhet az **R&amp;D** és a **dev** meglévő kategóriákkal, ahol mindkettő a fejlesztői csapatot jelöli.
+
+A Cloudyn portálon kattintson a fogaskerék ikonra a jobb felső sarokban, és válassza a **Kategóriakezelő** elemet. Új kategória létrehozásához kattintson a plusz (**+**) jelre. Adja meg a kategória nevét, majd a **Kulcsok** mezőben adja meg a kategóriakulcsokat, amelyeket fel szeretne venni az új kategóriába.
+
+A szabályok definiálásakor több értéket is hozzáadhat az OR (VAGY) feltétel használatával. Emellett néhány alapvető sztringműveletet is végrehajthat. Mindkét esetben kattintson a három pontra (**…**) a **Szabály** elem jobb oldalán.
+
+Új szabály definiálásához a **Szabályok** területen hozza létre az új szabályt. Például adja meg a **dev** elemet a **Szabályok** alatt, majd az **R&amp;D** elemet a **Műveletek** alatt. Miután végzett, mentse az új kategóriát.
+
+Az alábbi képen a **Work-Load** elnevezésű új kategóriához létrehozott szabályokat bemutató példa látható.
+
+![Példa kategória](./media/tutorial-manage-costs/category01.png)
+
+### <a name="tag-sources-and-reports"></a>Címkék forrásai és jelentések
+
+A Cloudyn jelentésekben szereplő címkeadatok három helyről származhatnak:
+
+- A felhőszolgáltatók erőforrásainak API-jai
+- A felhőszolgáltatók számlázási API-jai
+- A következő forrásokból származó manuálisan létrehozott címkék:
+    - Cloudyn-entitáscímkék – a Cloudyn-entitásokra alkalmazott felhasználói metaadatok
+    - Kategóriakezelő – a meglévő címkékre alkalmazott szabályok alapján új címkéket létrehozó adattisztító eszköz
+
+A felhőszolgáltatói címkék a Cloudyn-költségjelentésekben való megjelenítéséhez egyéni költséglefoglalási modellt kell létrehoznia a Cost Allocation 360 használatával. Ehhez nyissa meg a **Költségek** > **Költségkezelés** > **Cost Allocation 360** eszközt, válassza ki a kívánt címkéket, majd adja meg a szabályokat a címkézetlen költségek kezeléséhez. Ezután hozzon létre egy új költségmodellt. Ezt követően a Költséglefoglalási elemzésben elérhető jelentésekben megtekintheti, szűrheti és rendezheti az Azure-erőforráscímkéket.
+
+Az Azure-erőforráscímkék kizárólag a **Költséglefoglalási elemzés** jelentéseiben jelennek meg.
+
+A felhőszolgáltatói számlázási címkék az összes költségjelentésben megjelennek.
+
+A Cloudyn-entitáscímkék és a manuálisan létrehozott címkék az összes költségjelentésben megjelennek.
+
+
+## <a name="create-showback-and-chargeback-reports"></a>Költséghelyi visszacsatolási és költséghelyi elszámolási jelentések létrehozása
+
+Az egyes vállalatok egészen különböző módszereket alkalmazhatnak a költséghelyi visszacsatolások és a költséghelyi elszámolások készítéséhez. Azonban a Cloudyn portál bármely irányítópultja és jelentése használható mindkét célra. A vállalat bármely tagja számára adhat felhasználói hozzáférést, így igény szerint megtekinthetik az irányítópultokat és jelentéseket. A visszacsatolást az összes Költségelemzési jelentés támogatja, mivel megmutatják a felhasználók számára, hogy mely erőforrásokat használták fel. Emellett lehetővé teszik, hogy a felhasználók a saját vállalati egységükhöz tartozó költség- és használati adatokat részleteikben is megtekintsék.
+
+A költséglefoglalási eredmények megtekintéséhez nyissa meg a Költségelemzési jelentést, és válassza ki a létrehozott költségmodellt. Ezután hozzon létre csoportosítást a költségmodellben kiválasztott egy vagy több címke alapján.
+
+![Költségelemzési jelentés](./media/tutorial-manage-costs/cost-analysis.png)
+
+Egyszerűen hozhat létre és menthet az adott csoportok által használt adott szolgáltatásokra összpontosító jelentéseket. Például elképzelhető, hogy az egyik részleg jelentős mértékben használ Azure-beli virtuális gépeket. Létrehozhat egy, az Azure-beli virtuális gépekre szűrt jelentést a használat mértékének és a költségeknek a megjelenítéséhez.
+
+Amennyiben szeretné a csapatokat a pillanatnyi állapotokat mutató jelentésekkel ellátni, a jelentéseket exportálhatja PDF- vagy CSV-formátumba.
+
+
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Egyéni címkék használata költségek lefoglalni.
-> * Visszajelzés és a jóváírási jelentések létrehozásához.
+> * Költségek lefoglalása egyéni címkék használatával.
+> * Költséghelyi visszacsatolási és költséghelyi elszámolási jelentések létrehozása.
 
 
 
-Ismerkedés a Cloudyn kapcsolatos további, és a funkciók használatához előzetes Cloudyn dokumentációját.
+A Cloudyn használatának első lépéseivel és a szolgáltatásaival kapcsolatos további információkért lépjen tovább a Cloudyn dokumentációjára.
 
 > [!div class="nextstepaction"]
-> [Cloudyn dokumentáció](https://support.cloudyn.com/hc/)
+> [A Cloudyn dokumentációja](https://support.cloudyn.com/hc/)

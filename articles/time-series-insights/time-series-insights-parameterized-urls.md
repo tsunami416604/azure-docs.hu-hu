@@ -12,11 +12,11 @@ ms.devlang: rest-api
 ms.topic: get-started-article
 ms.workload: big-data
 ms.date: 11/21/2017
-ms.openlocfilehash: b7c58697323ec12ac08575916cb3ac5b38cc39c1
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: ffa8e96ab9a5344c924400fe55b4d1e6aee95f06
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Egyéni nézet megosztása paraméteres URL-cím használatával
 
@@ -63,14 +63,16 @@ Az elfogadott értékek megfelelnek a Time Series Insights Explorer **quick time
 
 Az adott Time Series Insights-nézet kifejezéseit a `timeSeriesDefinitions=<collection of term objects>` paraméter határozza meg, amely a következőket tartalmazza:
 
-- `name=<string>`
+- „name”:„<string>”
   - A *kifejezés* neve.
-- `splitBy=<string>`
+- „splitBy”:„<string>”
   - A *felosztás* alapjául szolgáló oszlop neve.
-- `measureName=<string>`
+- „measureName”:„<string>”
   - A *mérték* oszlopneve.
-- `predicate=<string>`
+- „predicate”:„<string>”
   - A kiszolgálóoldali szűrés *where* záradéka.
+-  „useSum”:„igaz”
+  - Ez egy nem kötelező paraméter, amely meghatározza az összeg használatát a mértékhez.  Vegye figyelembe, ha az „Események” a kiválasztott mérték, a darabszám alapértelmezés szerint ki van választva.  Ha az „Események” nincs kiválasztva, az átlag van alapértelmezettként kiválasztva.  
 
 A multiChartStack=<true/false> paraméter engedélyezi a diagramon történő rétegezést, a multiChartSameScale=<true/false> paraméter pedig engedélyezi ugyanannak az Y tengely irányú skálázásnak a használatát több feltételen egy választható paraméteren belül.  
 
@@ -118,5 +120,5 @@ A teljes nézet (a diagramot is beleértve) a következőképpen fog kinézni:
 
 ![Diagramnézet](media/parameterized-url/url2.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Adatok lekérdezése a C# használatával](time-series-insights-query-data-csharp.md)

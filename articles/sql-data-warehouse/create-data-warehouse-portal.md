@@ -1,5 +1,5 @@
 ---
-title: "Azure SQL Data Warehouse létrehozása – Azure Portal | Microsoft Docs"
+title: "Rövid útmutató: Azure SQL Data Warehouse létrehozása – Azure Portal | Microsoft Docs"
 description: "Az Azure SQL Data Warehouse számára létrehozhat egy SQL-kiszolgálót, egy kiszolgálószintű tűzfalszabályt és egy adattárházat az Azure Portalon. Ezután lekérdezéseket futtathat rajta."
 keywords: "sql data warehouse oktatóanyag, sql data warehouse létrehozása"
 services: sql-database
@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/20/2017
 ms.author: barbkess
-ms.openlocfilehash: 65c1344aa9d5a997e4917191978f5d12da5eb0db
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 9b904190e7a799d480446fcdcd57316a21051d1e
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Azure SQL Data Warehouse létrehozása és lekérdezése az Azure Portalon
+# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Rövid útmutató: Azure SQL Data Warehouse létrehozása és lekérdezése az Azure Portalon
 
 Azure SQL Data Warehouse gyors létrehozása és lekérdezése az Azure Portal használatával.
 
@@ -144,7 +144,7 @@ Ebben a részben az [SQL Server Management Studio](/sql/ssms/download-sql-server
    | ------------ | ------------------ | ------------------------------------------------- | 
    | Kiszolgáló típusa | Adatbázismotor | Kötelezően megadandó érték |
    | Kiszolgálónév | A teljes kiszolgálónév | Például: **mynewserver-20171113.database.windows.net**. |
-   | Authentication | SQL Server-hitelesítés | Ebben az oktatóanyagban az SQL-hitelesítésen kívül más hitelesítéstípus nincs konfigurálva. |
+   | Hitelesítés | SQL Server-hitelesítés | Ebben az oktatóanyagban az SQL-hitelesítésen kívül más hitelesítéstípus nincs konfigurálva. |
    | Bejelentkezés | A kiszolgálói rendszergazdai fiók | Ez az a fiók, amely a kiszolgáló létrehozásakor lett megadva. |
    | Jelszó | A kiszolgálói rendszergazdai fiók jelszava | Ezt a jelszót adta meg a kiszolgáló létrehozásakor. |
 
@@ -202,7 +202,7 @@ Kövesse az alábbi lépéseket a fölöslegessé vált erőforrások eltávolí
 4. Az erőforráscsoport törléséhez kattintson a **myResourceGroup** elemre, majd az **Erőforráscsoport törlése** parancsra.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az eddigiekben létrehozott egy adattárházat, hozzá egy tűzfalszabályt, csatlakozott hozzá, és futtatott néhány lekérdezést. Ha bővebb információra van szüksége az Azure SQL Data Warehouse-zal kapcsolatban, folytassa az adatok betöltésével foglalkozó oktatóanyaggal.
 > [!div class="nextstepaction"]
 >[Adatok betöltése az SQL Data Warehouse-okba](load-data-from-azure-blob-storage-using-polybase.md)

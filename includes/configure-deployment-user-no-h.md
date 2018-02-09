@@ -1,6 +1,6 @@
-A Cloud Shellben hozza létre az üzembehelyezési hitelesítő adatokat az [az webapp deployment user set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az_webapp_deployment_user_set) paranccsal. Az FTP és a helyi Git webalkalmazásban történő üzembe helyezéséhez üzembe helyező felhasználóra van szükség. A felhasználónevek és a jelszavak megadása fiókszinten történik. _Ezek nem azonosak az Azure-előfizetés hitelesítő adataival._
+A Cloud Shellben hozza létre az üzembehelyezési hitelesítő adatokat az [`az webapp deployment user set`](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az_webapp_deployment_user_set) paranccsal. Az FTP és a helyi Git webalkalmazásban történő üzembe helyezéséhez üzembe helyező felhasználóra van szükség. A felhasználónevek és a jelszavak megadása fiókszinten történik. _Ezek nem azonosak az Azure-előfizetés hitelesítő adataival._
 
-Az alábbi példában cserélje le  *\<felhasználónév >* és  *\<jelszó >* (beleértve a szögletes zárójel) új felhasználónevet és jelszót. A felhasználónévnek egyedinek kell lennie. A jelszónak legalább nyolc karakter hosszúságúnak kell lennie, és a következő három elem közül kettőnek szerepelnie kell benne: betűk, számok, szimbólumok. 
+A következő példában cserélje le a *\<username>* és a *\<password>* elemet (beleértve a zárójeleket is) az új felhasználónévre és jelszóra. A felhasználónévnek egyedinek kell lennie. A jelszónak legalább nyolc karakter hosszúságúnak kell lennie, és a következő három elem közül kettőnek szerepelnie kell benne: betűk, számok, szimbólumok. 
 
 ```azurecli-interactive
 az webapp deployment user set --user-name <username> --password <password>

@@ -11,15 +11,15 @@ ms.service: functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: cfowler
-ms.openlocfilehash: d04e2000f2043e8bb11e15f6b9d7fd06ef5b9da3
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 49931155339660fc7a0a39f5b60dc9443374b8b0
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-your-first-function-running-on-linux-using-the-azure-cli-preview"></a>Az első függvény létrehozása Linux rendszerben az Azure CLI használatával (előzetes verzió)
 
-Az Azure Functions lehetővé teszi, hogy a függvényeit Linux rendszerben egy alapértelmezett Azure App Service-tárolóban üzemeltesse. Ez a szolgáltatás jelenleg csak előzetes verzióban érhető el. [Használhatja saját egyéni tárolóját](functions-create-function-linux-custom-image.md) is. 
+Az Azure Functions lehetővé teszi, hogy a függvényeit Linux rendszerben egy alapértelmezett Azure App Service-tárolóban üzemeltesse. [Használhatja saját egyéni tárolóját](functions-create-function-linux-custom-image.md) is. Ez a szolgáltatás jelenleg csak előzetes verzióban érhető el, és a használatához a szintén előzetes verzióként elérhető [Functions 2.0 futtatókörnyezet](functions-versions.md) szükséges.
 
 Ez a rövid útmutató bemutatja, hogyan hozhatja létre az első, az alapértelmezett App Service-tárolóban üzemeltetett függvényalkalmazását Linux rendszerben az Azure Functions és az Azure CLI segítségével. Magát a függvénykódot a GitHub mintaadattárából helyezheti üzembe a rendszerképen.    
 
@@ -49,7 +49,7 @@ A Functions üzemeltetése Linuxon jelenleg csak App Service-csomagok részekén
 
 ## <a name="create-a-function-app-on-linux"></a>Függvényalkalmazás létrehozása Linux rendszerben
 
-Rendelkeznie kell egy függvényalkalmazással a függvények Linux rendszerben való végrehajtásának biztosításához. A függvényalkalmazás szolgáltat környezetet a függvénykód végrehajtásához. Lehetővé teszi, hogy logikai egységbe csoportosítsa a függvényeket az erőforrások egyszerűbb kezelése, üzembe helyezése és megosztása érdekében. Hozzon létre egy függvényalkalmazást az [az functionapp create](/cli/azure/functionapp#create) parancs használatával egy Linux App Service-csomag keretén belül. 
+Rendelkeznie kell egy függvényalkalmazással a függvények Linux rendszerben való végrehajtásának biztosításához. A függvényalkalmazás szolgáltat környezetet a függvénykód végrehajtásához. Lehetővé teszi, hogy logikai egységbe csoportosítsa a függvényeket az erőforrások egyszerűbb kezelése, üzembe helyezése és megosztása érdekében. Hozzon létre egy függvényalkalmazást az [az functionapp create](/cli/azure/functionapp#az_functionapp_create) parancs használatával egy Linux App Service-csomag keretén belül. 
 
 A következő parancsban a `<app_name>` helyőrző helyett írjon be egy egyedi függvényalkalmazás-nevet, a `<storage_name>` helyőrző helyett pedig a tárfiók nevét. Az `<app_name>` nevet a rendszer a függvényalkalmazás alapértelmezett DNS-tartományának részeként használja, ezért annak egyedinek kell lennie az Azure összes alkalmazásában. A _deployment-source-url_ paraméter egy GitHubon található mintaadattár, amely tartalmaz egy „Hello World” HTTP-eseményindító által aktivált függvényt.
 
