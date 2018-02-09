@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 1/23/2018
 ms.author: mabrigg
-ms.openlocfilehash: b0b0a4af1d852de516d387697afb2760b967db43
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: be4a61f185435238db68e4dc43c323a30a754f03
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="add-the-windows-server-2016-vm-image-to-the-azure-stack-marketplace"></a>A Windows Server 2016 Virtuálisgép-lemezkép hozzáadása a verem Azure piactéren
 
@@ -139,19 +139,19 @@ Győződjön meg arról, hogy a Windows Server 2016 Virtuálisgép-lemezkép van
 
 ### <a name="new-azsserver2016vmimage"></a>New-AzsServer2016VMImage 
 
-Hoz létre, és egy új 2016 kiszolgálómag feltöltését és, vagy a teljes lemezképet és a hozza létre a Piactéri elemet.
+Hoz létre, és feltölti egy új Server 2016 Core vagy a teljes lemezképet, és a hozza létre a Piactéri elemet.
 
 | Paraméterek | Szükséges | Példa | Leírás |
 |-----|-----|------|---- |
 |ISOPath|Igen| N:\ISO\en_windows_16_x64_dvd | A Windows Server 2016 ISO letöltött teljes elérési útja.|
-|Net35|Nem| True (Igaz) | A .NET 3.5 futásidejű telepít a Windows Server 2016-lemezképet. Alapértelmezés szerint ez az érték értéke **igaz**.|
-|Verzió|Nem| Korlátlan |  Adja meg **Core**, **teljes**, vagy **mindkét** Windows Server 2016-lemezképeket. Alapértelmezés szerint ez az érték értéke **teljes**.|
-|VHDSizeInMB|Nem| 40,960 | Beállítja a mérete (MB) a virtuális merevlemez lemezképet, fel kell venni a verem Azure környezetben. Alapértelmezés szerint a értéke 40 960 MB-ra.|
-|CreateGalleryItem|Nem| True (Igaz) | Meghatározza, hogy a Piactéri elemet kell létrehozni a Windows Server 2016-lemezképet. Alapértelmezés szerint ez az érték értéke **igaz**.|
-|location |Nem | D:\ | Adja meg a helyet, amelyhez a Windows Server 2016 kép közzé kell tenni.|
-|IncludeLatestCU|Nem| False (Hamis) | A legújabb Windows Server 2016-os összesítő frissítéssel vonatkozik az új virtuális Merevlemezt. Ellenőrizze a parancsprogramot annak biztosítása érdekében, hogy mutat a legújabb frissítés, vagy használja a következő két lehetőség közül. |
-|CUUri |Nem | https://yourupdateserver/winservupdate2016 | A Windows Server 2016 beállítása összegző frissítés egy adott URI-ről futtatva. |
-|CUPath |Nem | C:\winservupdate2016 | Beállítja a Windows Server 2016 összegző frissítés futtatásához helyi útvonalon. Ez a beállítás akkor hasznos, ha telepítette az Azure-verem példány leválasztott környezetben.|
+|Net35|Nincs| True | A .NET 3.5 futásidejű telepít a Windows Server 2016-lemezképet. Alapértelmezés szerint ez az érték értéke **igaz**.|
+|Verzió|Nincs| Korlátlan |  Adja meg **Core**, **teljes**, vagy **mindkét** Windows Server 2016-lemezképeket. Alapértelmezés szerint ez az érték értéke **teljes**.|
+|VHDSizeInMB|Nincs| 40,960 | Beállítja a mérete (MB) a virtuális merevlemez lemezképet, fel kell venni a verem Azure környezetben. Alapértelmezés szerint a értéke 40 960 MB-ra.|
+|CreateGalleryItem|Nincs| True | Meghatározza, hogy a Piactéri elemet kell létrehozni a Windows Server 2016-lemezképet. Alapértelmezés szerint ez az érték értéke **igaz**.|
+|hely |Nincs | D:\ | Adja meg a helyet, amelyhez a Windows Server 2016 kép közzé kell tenni.|
+|IncludeLatestCU|Nincs| False | A legújabb Windows Server 2016-os összesítő frissítéssel vonatkozik az új virtuális Merevlemezt. Ellenőrizze a parancsprogramot annak biztosítása érdekében, hogy mutat a legújabb frissítés, vagy használja a következő két lehetőség közül. |
+|CUUri |Nincs | https://yourupdateserver/winservupdate2016 | A Windows Server 2016 beállítása összegző frissítés egy adott URI-ről futtatva. |
+|CUPath |Nincs | C:\winservupdate2016 | Beállítja a Windows Server 2016 összegző frissítés futtatásához helyi útvonalon. Ez a beállítás akkor hasznos, ha telepítette az Azure-verem példány leválasztott környezetben.|
 
 ## <a name="next-steps"></a>További lépések
 
