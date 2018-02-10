@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 63081e2e5a2c792c8e688e7b8aaff0eca40e48a1
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 1afb1980f5056482d94aef80d076c8b31d29e7a6
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>Adatok másolása az Azure Search-index Azure Data Factory használatával
 
@@ -48,7 +48,7 @@ Csatolt Azure Search szolgáltatás támogatott a következő tulajdonságokkal:
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **AzureSearch** | Igen |
 | url | Az Azure Search szolgáltatás URL-címe. | Igen |
-| kulcs | Az Azure Search szolgáltatás adminisztrációs kulcsot. Ez a mező megjelölése a SecureString. | Igen |
+| kulcs | Az Azure Search szolgáltatás adminisztrációs kulcsot. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhat Azure integrációs futásidejű vagy Self-hosted integrációs futásidejű (amennyiben az adattároló magánhálózaton található). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
 
 > [!IMPORTANT]

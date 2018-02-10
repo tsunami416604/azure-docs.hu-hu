@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: Inactive
 ms.date: 01/10/2017
 ms.author: carlrab
-ms.openlocfilehash: c76ba2189929113c2c6fbdf13f0c9b2b714ae73b
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: c25a66daa87da96d4e77c9021a1ceb4366d7a224
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="umbraco-uses-azure-sql-database-to-quickly-provision-and-scale-services-for-thousands-of-tenants-in-the-cloud"></a>Umbraco használja az Azure SQL Database gyors kiépítése és a skála szolgáltatások a felhőben bérlők akár több ezer
 ![Umbraco embléma](./media/sql-database-implementation-umbraco/umbracologo.png)
@@ -124,7 +124,6 @@ Hálózatiadapter-Azure-bA a felhő partnerrel, Umbraco óta kell biztosítania 
 ## <a name="more-information"></a>További információ
 * Az Azure rugalmas készletek kapcsolatos további információkért lásd: [rugalmas készletek](sql-database-elastic-pool.md).
 * Azure Service Bus kapcsolatos további információkért lásd: [Azure Service Bus](https://azure.microsoft.com/services/service-bus/).
-* Webes és feldolgozói szerepkörök kapcsolatos további információkért lásd: [feldolgozói szerepkörök](../fundamentals-introduction-to-azure.md#compute).    
 * Virtuális hálózat kapcsolatos további információkért lásd: [virtuális hálózat](https://azure.microsoft.com/documentation/services/virtual-network/).    
 * Biztonsági mentési és helyreállítási kapcsolatos további információkért lásd: [az üzletmenet folytonossága](sql-database-business-continuity.md).    
 * Ppols figyelésével kapcsolatos további tudnivalókért lásd: [figyelése erőforráskészleteket](sql-database-elastic-pool-manage-portal.md).    

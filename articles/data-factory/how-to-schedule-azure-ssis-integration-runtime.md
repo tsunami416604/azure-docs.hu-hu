@@ -13,11 +13,11 @@ ms.devlang: powershell
 ms.topic: article
 ms.date: 01/25/2018
 ms.author: spelluru
-ms.openlocfilehash: 60a4afdb8a78cffdc7eb1ee82c7daf3b06e5fe15
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 814ef63f317c2c0c9081579c16a12a908c05ff74
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-schedule-starting-and-stopping-of-an-azure-ssis-integration-runtime"></a>Indítása és leállítása egy Azure SSIS-integráció futtatókörnyezetet ütemezése 
 Egy Azure SSIS (SQL Server Integration Services) integrációs futásidejű fut (IR) van társítva járnak. Ezért futtatni kívánt az infravörös csak akkor, ha SSIS-csomagok futtathatja az Azure-ban, és állítsa le, ha már nincs szükség van szüksége. A Data Factory felhasználói felületén vagy az Azure PowerShell [manuálisan indítsa el, vagy állítsa le az Azure SSIS-IR](manage-azure-ssis-integration-runtime.md)). Ez a cikk ismerteti, hogyan ütemezése indítása és leállítása egy Azure SSIS-integráció futtatókörnyezetet (IR) Azure Automation és az Azure Data Factory használatával. Ebben a cikkben leírt magas szintű lépései a következők:
@@ -44,8 +44,9 @@ Ebben a szakaszban hajtsa végre a következő lépéseket:
 ### <a name="create-an-azure-automation-account"></a>Azure Automation-fiók létrehozása
 Ha egy Azure Automation-fiók nem rendelkezik, hozzon létre ebben a lépésben szereplő utasításokat követve. Részletes útmutató: [hozzon létre egy Azure Automation-fiók](../automation/automation-quickstart-create-account.md). Ez a lépés részeként létrehozhat egy **Azure-beli futtató** fiókhoz (egy egyszerű szolgáltatásnév az Azure Active Directoryban), és hozzá kell adnia a **közreműködő** szerepe az Azure-előfizetéshez. Győződjön meg arról, hogy az ugyanaz, mint az előfizetés, amely tartalmazza az adat-előállítóban, amely rendelkezik az Azure SSIS infravörös Azure Automation szolgáltatásbeli hitelesítéshez az Azure Resource Manager és az erőforrások működik ezt a fiókot használja. 
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).    
-2. Válassza ki **új** a bal oldali menüben válassza **figyelés + felügyeleti**, és válassza ki **Automation**. 
+1. Indítsa el **Microsoft Edge** vagy **Google Chrome** webböngésző. Data Factory felhasználói felület jelenleg csak a Microsoft Edge és a Google Chrome webböngésző használata támogatott.
+2. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).    
+3. Válassza ki **új** a bal oldali menüben válassza **figyelés + felügyeleti**, és válassza ki **Automation**. 
 
     ![Új -> figyelés + Management Automation ->](./media/how-to-schedule-azure-ssis-integration-runtime/new-automation.png)
 2. Az a **Automation-fiók hozzáadása** ablakban, a következő lépéseket: 

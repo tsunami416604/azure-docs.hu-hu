@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: wesmc
-ms.openlocfilehash: 74ec104bebec2004a8b7116865c2394c02b12638
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 5ed5af627fa8ec8007f095face2cbf115ead4b27
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-redis-cache"></a>Virtuális hálózati támogatásának konfigurálása prémium szintű Azure Redis Cache
 Azure Redis Cache rendelkezik másik gyorsítótármappa ajánlatokat, amelyek gyorsítótár mérete és a funkciót, beleértve a prémium réteg szolgáltatások, például a fürtszolgáltatás, az adatmegőrzésre és a virtuális hálózat támogatásának rugalmasságot biztosítanak. A virtuális hálózat egy magánhálózaton a felhőben. Azure Redis Cache példány konfigurálásakor a virtuális hálózaton nincs nyilvánosan megcímezhető, és csak érhetők el a virtuális gépek és az alkalmazások a Vneten belül. Ez a cikk ismerteti a premium Azure Redis Cache példányt virtuális hálózat támogatásának konfigurálása.
@@ -117,6 +117,7 @@ Nincsenek hét kimenő port.
 | 20226 |Kimenő |TCP |Belső Redis-kommunikáció | (Redis alhálózati) |(Redis alhálózati) |
 | 13000-13999 |Kimenő |TCP |Belső Redis-kommunikáció | (Redis alhálózati) |(Redis alhálózati) |
 | 15000-15999 |Kimenő |TCP |Belső Redis-kommunikáció | (Redis alhálózati) |(Redis alhálózati) |
+| 6379-6380 |Kimenő |TCP |Belső Redis-kommunikáció | (Redis alhálózati) |(Redis alhálózati) |
 
 
 ### <a name="inbound-port-requirements"></a>Bejövő portokra vonatkozó követelmények
@@ -125,7 +126,7 @@ Nincsenek nyolc bejövő port tartományon. Bejövő kérelmek ezen tartományok
 
 | Port(s) | Irány | Átviteli protokoll | Cél | Helyi IP | Távoli IP |
 | --- | --- | --- | --- | --- | --- |
-| 6379, 6380 |Bejövő |TCP |Ügyfél-kommunikációt kíván Redis, Azure terheléselosztás | (Redis alhálózati) |Virtuális hálózat, az Azure terheléselosztó |
+| 6379, 6380 |Bejövő |TCP |Ügyfél-kommunikációt kíván Redis, Azure terheléselosztás | (Redis alhálózati) | (Redis alhálózati), virtuális hálózat, az Azure Load Balancer |
 | 8443 |Bejövő |TCP |Belső Redis-kommunikáció | (Redis alhálózati) |(Redis alhálózati) |
 | 8500 |Bejövő |TCP/UDP |Az Azure terheléselosztás | (Redis alhálózati) |Azure Load Balancer |
 | 10221-10231 |Bejövő |TCP |Belső Redis-kommunikáció | (Redis alhálózati) |(Redis alhálózati), Azure Load Balancer |
@@ -146,7 +147,7 @@ Nincsenek hálózati kapcsolat az Azure Redis Cache, előfordulhat, hogy kezdetb
 ### <a name="how-can-i-verify-that-my-cache-is-working-in-a-vnet"></a>Hogyan ellenőrizhetem, hogy működik-e a gyorsítótár a VNETEN belül?
 
 >[!IMPORTANT]
->Amikor egy virtuális hálózat alkotóelem Azure Redis Cache példány csatlakozik, a gyorsítótárazási ügyfelek számára ugyanazon virtuális, beleértve az alkalmazások tesztelése vagy diagnosztikai pingelés eszközök kell lennie.
+>Az Azure Redis Cache példány egy virtuális hálózat alkotóelem való csatlakozáskor a gyorsítótár-ügyfelek vagy kell lennie ugyanazon virtuális a VNETEN belül a VNETBEN társviszony-létesítés engedélyezve van. Ez magában foglalja a teszt alkalmazásokhoz és diagnosztikai pingelés eszközök. Függetlenül attól, ahol az ügyfélalkalmazás tárolása hálózati biztonsági csoportok kell konfigurálni úgy, hogy az ügyfél hálózati forgalom engedélyezve van a Redis-példány eléréséhez.
 >
 >
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: 3de1e9b042a7a356c3c88e604e1e26c256d85657
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 8a098d2ecc004b1593310579c47c53778858e799
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-functions-c-developer-reference"></a>Az Azure Functions C# fejlesztői leírás
 
@@ -40,6 +40,9 @@ A Visual Studio a **Azure Functions** projektsablon hoz létre egy C# hordozhat�
 
 * [Host.JSON](functions-host-json.md) -konfigurációs beállítások, amelyek hatással vannak a projekt összes funkciójának futtatásakor, helyileg vagy az Azure-ban tárolja.
 * [Local.Settings.JSON](functions-run-local.md#local-settings-file) -Alkalmazásbeállítások és a helyi futtatás során használt kapcsolati karakterláncok tárolja.
+
+> [!IMPORTANT]
+> Az összeállítási folyamat létrehoz egy *function.json* fájlt minden funkciót. Ez *function.json* fájl nem célja, hogy közvetlenül szerkeszthetők. Nem kötelező konfigurációjának módosítása, vagy tiltsa le a függvény a fájl szerkesztésével. A funkció letiltásához használja a [letiltása](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/DisableAttribute.cs) attribútum. Például MY_TIMER_DISABLED beállítás logikai alkalmazás hozzáadása, és alkalmazni `[Disable("MY_TIMER_DISABLED")]` a függvénynek. Ezután engedélyezése és letiltása az alkalmazás beállításainak megváltoztatása.
 
 ### <a name="functionname-and-trigger-attributes"></a>Eseményindító és függvénynév attribútumok
 
@@ -83,11 +86,11 @@ public static class SimpleExampleWithOutput
 
 ### <a name="conversion-to-functionjson"></a>Function.json átalakítása
 
-Az összeállítási folyamat létrehoz egy *function.json* fájlban egy függvény a build mappában. Ez a fájl nem célja, hogy közvetlenül szerkeszthetők. Nem kötelező konfigurációjának módosítása, vagy tiltsa le a függvény a fájl szerkesztésével. 
+Az összeállítási folyamat létrehoz egy *function.json* fájlban egy függvény a build mappában. Ahogy azt korábban említettük, ez a fájl nem célja, hogy közvetlenül szerkeszthetők. Nem kötelező konfigurációjának módosítása, vagy tiltsa le a függvény a fájl szerkesztésével. 
 
 Ezt a fájlt az a célja, hogy kapcsolatban nyújtanak információkat a méretezési vezérlő használandó [döntések méretezésének a fogyasztás terv](functions-scale.md#how-the-consumption-plan-works). Ezért a fájl csak eseményindító adatait nem bemeneti vagy kimeneti kötések rendelkezik.
 
-A létrehozott *function.json* fájl tartalmaz egy `configurationSource` tulajdonság, amely közli a futtatókörnyezet kötések, a .NET-attribútumok használata helyett *function.json* konfigurációs. Íme egy példa:
+A létrehozott *function.json* fájl tartalmaz egy `configurationSource` tulajdonság, amely közli a futtatókörnyezet kötések, a .NET-attribútumok használata helyett *function.json* konfigurációs. Például:
 
 ```json
 {

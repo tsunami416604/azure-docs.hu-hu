@@ -12,16 +12,16 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
 ms.date: 11/30/2017
-ms.openlocfilehash: 04e5465a56b8da9f2a078e513d5176f134fd011d
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: d09292cce1414a1b89e4b75df27d0a689738b4d6
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="azure-time-series-insights-explorer"></a>Az Azure idő adatsorozat Insights explorer
+# <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights explorer
 Ez a cikk ismerteti a különböző szolgáltatások és az idő adatsorozat Insights explorer web App lehetőségeket. Képi megjelenítéseket készíthet az adatok idő adatsorozat Insights explorer használja a böngészőben.
  
-Az Azure Time Series Insights egy teljes körűen felügyelt elemzési, tárolási és vizualizációs szolgáltatás, amellyel egyszerűen elvégezhető IoT-események milliárdjainak párhuzamos vizsgálata és elemezése. Ez lehetővé teszi az adatokat, ami lehetővé teszi, hogy az IoT-megoldásból gyorsan érvényesítése és elkerülheti a kritikus fontosságú eszközökre költséges állásidőt globális nézetét. Rejtett trendeket, helyszíni rendellenességek észlelését, felderítését és a kiváltó okának közel valós idejű elemzést. Az idő adatsorozat Insights explorer jelenleg nyilvános előzetes verziójához.
+Az Azure Time Series Insights egy teljes körűen felügyelt elemző, tároló és megjelenítő szolgáltatás, amely megkönnyíti IoT-események milliárdjainak párhuzamos felderítését és elemzését. Ez lehetővé teszi az adatokat, ami lehetővé teszi, hogy az IoT-megoldásból gyorsan érvényesítése és elkerülheti a kritikus fontosságú eszközökre költséges állásidőt globális nézetét. Rejtett trendeket, helyszíni rendellenességek észlelését, felderítését és a kiváltó okának közel valós idejű elemzést. Az idő adatsorozat Insights explorer jelenleg nyilvános előzetes verziójához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -37,7 +37,7 @@ Az az idő adatsorozat Insights-környezethez való csatlakozását az eseményf
 
 2. Amikor kiválaszt egy olyan környezetben, vagy használja a **FROM** és **TO** konfiguráció az oldal tetején, vagy kattintson és húzza a mutatót a kívánt időtartama.  Kattintson a jobb felső sarokban, Nagyító, vagy kattintson a jobb gombbal a kijelölt timespan keresztül, és válasszon **keresési**.  
 
-3. Is frissítheti rendelkezésre állási automatikusan percenként, kiválasztásával a **automatikus a** gombra.
+3. Is frissítheti rendelkezésre állási automatikusan percenként, kiválasztásával a **automatikus a** gombra.  Vegye figyelembe, hogy az "Auto-On" gomb csak a rendelkezésre állási diagram, a fő képi megjelenítés tartalma nem vonatkozik.
 
 4. Figyelje meg, hogy az Azure-felhőbe ikon megnyitná a környezet az Azure portálon.
 
@@ -60,7 +60,7 @@ Az az idő adatsorozat Insights-környezethez való csatlakozását az eseményf
          |<, >, <=, >=     |  Kettős, DateTime, TimeSpan       |         |
          |=, !=, <>     | String, Bool, Double, DateTime, TimeSpan, NULL értékű        |         |
          |IN     | String, Bool, Double, DateTime, TimeSpan, NULL értékű        |  Minden operandusok kell azonos típusú és NULL állandó.        |
-         |RENDELKEZIK     | Karakterlánc        |  Csak állandó karakterlánc-literálnak jobb oldalán használhatók. Üres karakterlánc, és a NULL nem engedélyezettek.       |
+         |HAS     | Karakterlánc        |  Csak állandó karakterlánc-literálnak jobb oldalán használhatók. Üres karakterlánc, és a NULL nem engedélyezettek.       |
 
       - **Lekérdezések példák**
       
@@ -102,10 +102,10 @@ Az az idő adatsorozat Insights-környezethez való csatlakozását az eseményf
 
    - **Oszlop statisztikák**: oszlop statisztikák diagramkészítési és a táblázatot, amely a kijelölt időtartamának keresztül minden oszlopa kijelölt adatsorozat lebontva biztosítanak.  
  
-      ![STATISZTIKÁK](media/time-series-insights-explorer/explorer8.png) 
+      ![STATISZTIKA](media/time-series-insights-explorer/explorer8.png) 
 
 Most láthatta a különböző szolgáltatások és az idő adatsorozat Insights explorer web App lehetőségeket. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 >[Hibáinak diagnosztizálásához és elhárításához idő adatsorozat Insights környezetében](time-series-insights-diagnose-and-solve-problems.md)

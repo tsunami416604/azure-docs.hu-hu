@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2017
 ms.author: vikdesai
-ms.openlocfilehash: 96e9cf2fed0b22fd7aa7b9ffeab0e94738ce510d
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 799abddc4894bc090d860e7fe100ee65d4d085ab
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="save-money-on-virtual-machines-with-reserved-virtual-machine-instances"></a>Kevesebbet költeni a virtuális gépek a fenntartott virtuálisgép-példányok 
 Fenntartott virtuálisgép-példányok engedélyezi, hogy egy- vagy kedvezményes hozzáférhet a virtuális gépek számítási kapacitás három évnyi előre fizet. Ez jelentősen csökkenti a virtuális gép költségek – 72 %-át használatalapú árak – az egy- vagy három év társaságuk előre. Fenntartott virtuálisgép-példányok számlázási kedvezménnyel érhető el, és nem befolyásolja a virtuális gépek futásidejű állapotát.
@@ -58,7 +58,16 @@ A legtöbb Virtuálisgép-méretek néhány kivétellel foglalások érhetők el
 - Nincs elegendő kvótája – A fenntartott virtuális gép példány egyetlen előfizetéssel hatókörű vCPU kvóta az új RI az előfizetésben elérhető kell rendelkeznie. Például ha a célként megadott előfizetés kvótája D sorozatú termékcsalád 10 Vcpu, majd nem vásárol egy fenntartott Virtuálisgép-példány 11 standard szintű, D1-példányok. A kvóta ellenőrzése, zárolások magában foglalja az előfizetésben már telepített virtuális gépek. Például, ha az előfizetésnek 10 Vcpu tartozó kvóta D sorozatú termékcsalád. Ha ez az előfizetés két standard szintű, D1-példányt, majd vásárolhatja meg a fenntartott virtuális gép példánya 10 standard szintű, D1-példányok ebben az előfizetésben. 
 - Kapacitás korlátozások – a ritka esetekben előfordulhat, hogy a VM-méretek régióban alacsony kapacitás miatt részéhez új foglalások Azure korlátozását beszerzési.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Menti a virtuális gépek által biztosított Start egy [fenntartott virtuális gép példány](https://go.microsoft.com/fwlink/?linkid=861721). 
+
+Tudhat meg többet a fenntartott virtuálisgép-példányok, tekintse meg a következő cikkekben talál.
+
+- [A virtuális gépek fenntartott virtuális gép osztályt előre fizetés](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Fenntartott virtuálisgép-példányok kezelése](billing-manage-reserved-vm-instance.md)
+- [A fenntartott virtuális gép példány kedvezményeket alkalmazásának a módját ismertetése](billing-understand-vm-reservation-charges.md)
+- [A használatalapú fizetéses előfizetésre fenntartott példány használatának megértéséhez](billing-understand-reserved-instance-usage.md)
+- [A nagyvállalati beléptetés használata fenntartott példány ismertetése](billing-understand-reserved-instance-usage-ea.md)
+- [A Windows szoftverek költségeit fenntartott példányok nem találhatók](billing-reserved-instance-windows-software-costs.md)
 
 Ha segítségre van szüksége, [forduljon a támogatási szolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma elhárítva gyors eléréséhez.

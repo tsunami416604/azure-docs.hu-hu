@@ -13,13 +13,13 @@ ms.custom: hdinsightactive
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/07/2017
+ms.date: 02/05/2018
 ms.author: larryfr
-ms.openlocfilehash: 2b55de4de6bb94be78649112161211346090b23a
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: c82629c0f3d3b32314d22467164a06a4c7bcabfe
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="connect-to-kafka-on-hdinsight-through-an-azure-virtual-network"></a>A HDInsight az Azure virtuális hálózaton keresztül Kafka kapcsolódni
 
@@ -47,7 +47,7 @@ A HDInsight nem engedélyezi a Kafka közvetlen kapcsolatra a nyilvános interne
 * Az egyes gépek csatlakozni a virtuális hálózat VPN-átjáró és a VPN-ügyfél segítségével. Ahhoz, hogy ez a konfiguráció, a következő feladatokat:
 
     1. Hozzon létre egy virtuális hálózatot.
-    2. Hozzon létre egy pont – hely konfigurációt használó VPN-átjáró. Ez a konfiguráció biztosítja a VPN-ügyfél, amely a Windows-ügyfelek is telepíthető.
+    2. Hozzon létre egy pont – hely konfigurációt használó VPN-átjáró. Ez a konfiguráció a Windows és a MacOS ügyfeleit használható.
     3. A HDInsight Kafka telepítse a virtuális hálózat.
     4. IP-hirdetési Kafka konfigurálása. Ez a konfiguráció lehetővé teszi, hogy az ügyfél történő csatlakozáshoz az IP-címzés tartománynevek helyett.
     5. Töltse le, és a fejlesztői rendszeren a VPN-ügyfél használja.
@@ -57,7 +57,7 @@ A HDInsight nem engedélyezi a Kafka közvetlen kapcsolatra a nyilvános interne
     > [!WARNING]
     > Ez a konfiguráció csak ajánlott fejlesztési célra miatt a következő korlátozások vonatkoznak:
     >
-    > * Minden ügyfél szoftver VPN-ügyfél használatával kell csatlakoztatni. Azure csak egy Windows-alapú ügyfelek tartalmazza.
+    > * Minden ügyfél szoftver VPN-ügyfél használatával kell csatlakoztatni.
     > * A VPN-ügyfél nem felel meg névfeloldási a virtuális hálózathoz, így IP-címzési Kafka kommunikálni kell használni. Integrációs csomaggal folytatott kommunikációhoz az Kafka fürtön további konfigurációt igényel.
 
 A HDInsight eszközzel virtuális hálózatban további információkért lásd: [kiterjesztése HDInsight Azure virtuális hálózatok használatával](../hdinsight-extend-hadoop-virtual-network.md).
@@ -232,22 +232,13 @@ Ebben a szakaszban a lépések segítségével hozza létre a következő konfig
         -DefaultStorageAccountName "$storageName.blob.core.windows.net" `
         -DefaultStorageAccountKey $defaultStorageKey `
         -DefaultStorageContainer $defaultContainerName `
+        -DisksPerWorkerNode 2 `
         -VirtualNetworkId $network.Id `
         -SubnetName $defaultSubnet.Id
     ```
 
   > [!WARNING]
   > Ez a folyamat mintegy 15 perc szükséges teljes.
-
-8. A Windows VPN-ügyfelek a virtuális hálózat az URL-cím lekéréséhez használja a következő parancsmagot:
-
-    ```powershell
-    Get-AzureRmVpnClientPackage -ResourceGroupName $resourceGroupName `
-        -VirtualNetworkGatewayName $vpnName `
-        -ProcessorArchitecture Amd64
-    ```
-
-    A Windows VPN-ügyfél letöltéséhez, a visszaadott URI használata a böngészőben.
 
 ### <a name="configure-kafka-for-ip-advertising"></a>IP-hirdetési Kafka konfigurálása
 
@@ -299,7 +290,7 @@ Alapértelmezés szerint Zookeeper az ügyfelek számára a Kafka brókerek tart
 
 ### <a name="connect-to-the-vpn-gateway"></a>A VPN-átjárón
 
-A VPN-átjárót csatlakozni egy __Windows ügyfél__, használja a __csatlakozás az Azure__ szakasza a [egy pont – hely kapcsolat beállítása](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#clientcertificate) dokumentum.
+Ha csatlakozni szeretne a VPN-átjáró, használja a __csatlakozás az Azure-bA__ szakasza a [egy pont – hely kapcsolat beállítása](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#connect) dokumentum.
 
 ## <a id="python-client"></a>Példa: Python ügyfél
 
@@ -375,7 +366,7 @@ Kafka kapcsolat ellenőrzéséhez tegye a következőket hozhat létre és futta
 
     * Ha rendelkezik __engedélyezve van egy egyéni DNS-kiszolgálón keresztül névfeloldás__, cserélje le a `kafka_broker` bejegyzést, amelyben a feldolgozó csomópontok teljes Tartománynevét.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A HDInsight használata a virtuális hálózaton további információkért lásd: a [kiterjesztése Azure HDInsight Azure virtuális hálózat használatával](../hdinsight-extend-hadoop-virtual-network.md) dokumentum.
 

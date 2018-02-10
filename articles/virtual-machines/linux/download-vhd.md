@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
 ms.author: davidmu
-ms.openlocfilehash: 3eb88478b43f8e3a36ae04bf3703f238e8cb1f3e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 03a29faeed71334253f9aa5bc88653fd689cc55b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Töltse le a Linux virtuális merevlemez az Azure-ból
 
@@ -43,7 +43,7 @@ Más virtuális gépek létrehozásához használja a virtuális merevlemez kép
     exit 
     ```
 
-2. Jelentkezzen be az Azure-fiókja [az bejelentkezési](https://docs.microsoft.com/cli/azure/#login).
+2. Jelentkezzen be az Azure-fiókja [az bejelentkezési](https://docs.microsoft.com/cli/azure/#az_login).
 3. Állítsa le, és a virtuális gép felszabadítása.
 
     ```azurecli
@@ -85,7 +85,7 @@ A VHD-fájl letöltésére, szeretne létrehozni egy [közös hozzáférésű jo
 
     ![Kattintson a Mentés gombra a böngészőben](./media/download-vhd/export-save.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan [feltöltése és a Linux virtuális gép létrehozása az Azure CLI 2.0 egyéni lemezről](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
 - [Az Azure CLI Azure-lemezeket kezelése](tutorial-manage-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

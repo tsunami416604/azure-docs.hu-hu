@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: f09dad590f32c10f75484bba9afb7ea60f29d81e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c12c4fc6cabd695101abf922eba77b9cd3ee00fa
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="application-upgrade-parameters"></a>Alkalmazásfrissítési paraméterek
 Ez a cikk ismerteti a különböző paraméterek, amelyek érvényesek az Azure Service Fabric-alkalmazás frissítése során. A paraméternek számít a nevét és az alkalmazás verziója. Az időtúllépések és állapot-ellenőrzést, a frissítés során alkalmazott szabályozó forgatógombját, és azok adja meg a házirendekben, amelyek kell alkalmazni, ha egy frissítés sikertelen lesz.
@@ -47,19 +47,19 @@ Az állapotfigyelő értékelési feltételek opcionálisak. Ha a rendszerállap
 
 | Paraméter | Leírás |
 | --- | --- |
-| A ConsiderWarningAsError |Alapértelmezett értéke False. Hibaként a figyelmeztetések állapotát az alkalmazáshoz frissítés során az alkalmazás állapotának kiértékelésekor. Alapértelmezés szerint a Service Fabric nem értékelik ki figyelmeztetés állapotát az eseményeket hiba (hibák), így a frissítést folytatni lehessen, még akkor is, ha nincsenek a figyelmeztetési események. |
+| ConsiderWarningAsError |Alapértelmezett értéke False. Hibaként a figyelmeztetések állapotát az alkalmazáshoz frissítés során az alkalmazás állapotának kiértékelésekor. Alapértelmezés szerint a Service Fabric nem értékelik ki figyelmeztetés állapotát az eseményeket hiba (hibák), így a frissítést folytatni lehessen, még akkor is, ha nincsenek a figyelmeztetési események. |
 | MaxPercentUnhealthyDeployedApplications |Alapértelmezett és ajánlott érték: 0. Adja meg a központilag telepített alkalmazások maximális számát (lásd a [állapotfigyelő szakasz](service-fabric-health-introduction.md)), amely lehet a nem megfelelő, mielőtt az alkalmazás nem megfelelő állapotúnak számít, és a frissítés sikertelen lesz. Ez a paraméter határozza meg az alkalmazás állapotának a csomóponton és segítséget nyújt a problémák a frissítés során. Általában a replikákat az alkalmazás első terhelésű másik fürtcsomópontra, amely lehetővé teszi az alkalmazás megjelenik a kifogástalan állapotú, így a frissítés gombra. A szigorú MaxPercentUnhealthyDeployedApplications állapotfigyelő megadásával a Service Fabric képesek észlelni az alkalmazás a csomaggal kapcsolatos problémára gyorsan és előállíthatja egy gyors frissítése sikertelen. |
 | MaxPercentUnhealthyServices |Alapértelmezett és ajánlott érték: 0. Adja meg a szolgáltatások maximális számát az alkalmazáspéldány, amely a nem megfelelő lehet, mielőtt az alkalmazás nem megfelelő állapotúnak számít, és a frissítés sikertelen lesz. |
 | MaxPercentUnhealthyPartitionsPerService |Alapértelmezett és ajánlott érték: 0. Adja meg a maximális számú partíciót egy szolgáltatás, amely a nem megfelelő lehet, mielőtt a szolgáltatás nem megfelelő állapotúnak számít. |
 | MaxPercentUnhealthyReplicasPerPartition |Alapértelmezett és ajánlott érték: 0. A partíció, amely a nem megfelelő lehet, mielőtt a partíció nem megfelelő állapotúnak számít. Adja meg a másodpéldányok maximális száma. |
-| UpgradeReplicaSetCheckTimeout |**Állapotmentes szolgáltatások**--frissítési tartományon belüli, a Service Fabric megpróbálja győződjön meg arról, hogy rendelkezésre állnak-e a szolgáltatás további példányai. Ha a cél-példányok száma több, a Service Fabric megvárja-e a egynél több példány van, akár a maximális időkorlátot. Ez az időkorlát a UpgradeReplicaSetCheckTimeout tulajdonság használatával van megadva. Ha az időkorlát lejár, a Service Fabric folytatja, a frissítést, függetlenül a szolgáltatás példányainak száma. Ha a cél-példányok száma, a Service Fabric nem történik meg, és azonnal folytatja a frissítést. **Az állapotalapú szolgáltatás**--frissítési tartományon belüli, a Service Fabric megpróbálja győződjön meg arról, hogy rendelkezik-e a kvórum a replikakészlethez. A Service Fabric egy kvórum van, akár (UpgradeReplicaSetCheckTimeout tulajdonság által megadott) maximális időtúllépési értéket vár. Ha az időkorlát lejár, a Service Fabric folytatja, a frissítést, függetlenül a kvórum. Ez a beállítás be, soha nem (végtelen), ha a működés közbeni előre, 900 másodperc visszaállításakor. |
+| UpgradeReplicaSetCheckTimeout |<p>**Állapotmentes szolgáltatások**--frissítési tartományon belüli, a Service Fabric megpróbálja győződjön meg arról, hogy rendelkezésre állnak-e a szolgáltatás további példányai. Ha a cél-példányok száma több, a Service Fabric megvárja-e a egynél több példány van, akár a maximális időkorlátot. Ez az időkorlát a UpgradeReplicaSetCheckTimeout tulajdonság használatával van megadva. Ha az időkorlát lejár, a Service Fabric folytatja, a frissítést, függetlenül a szolgáltatás példányainak száma. Ha a cél-példányok száma, a Service Fabric nem történik meg, és azonnal folytatja a frissítést.</p><p>**Az állapotalapú szolgáltatás**--frissítési tartományon belüli, a Service Fabric megpróbálja győződjön meg arról, hogy rendelkezik-e a kvórum a replikakészlethez. A Service Fabric egy kvórum van, akár (UpgradeReplicaSetCheckTimeout tulajdonság által megadott) maximális időtúllépési értéket vár. Ha az időkorlát lejár, a Service Fabric folytatja, a frissítést, függetlenül a kvórum. Ez a beállítás be, soha nem (végtelen), ha a működés közbeni előre, 1200-as másodperc visszaállításakor.</p> |
 | ForceRestart |Egy konfigurációs vagy az adatcsomag frissíti a szolgáltatást kód frissítése nélkül, ha a szolgáltatás újraindításakor csak akkor, ha a ForceRestart tulajdonság értéke igaz. Ha a frissítés befejeződött, a Service Fabric értesíti a szolgáltatás, hogy egy új konfigurációs csomagot vagy adatcsomag érhető el. A szolgáltatás felelős a módosítások végrehajtásakor. Ha szükséges, a szolgáltatás újraindíthatja magát. |
 
 <br>
 <br>
 A MaxPercentUnhealthyServices MaxPercentUnhealthyPartitionsPerService és MaxPercentUnhealthyReplicasPerPartition feltételek egy alkalmazás példány szolgáltatás típusonkénti adható meg. Ezen paraméterek /-szolgáltatás beállítása lehetővé teszi, hogy az alkalmazás különböző értékelési házirendekkel különböző szolgáltatásokat tartalmaznak. Például egy állapot nélküli átjáró szolgáltatás típusa lehet egy MaxPercentUnhealthyPartitionsPerService, egy állapot-nyilvántartó motor szolgáltatástípus egy adott alkalmazás példány eltér.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Az alkalmazás használata a Visual Studio frissítése](service-fabric-application-upgrade-tutorial.md) végigvezeti Önt az alkalmazásfrissítés Visual Studio használatával.
 
 [Az alkalmazás használatával Powershell frissítése](service-fabric-application-upgrade-tutorial-powershell.md) végigvezeti Önt az alkalmazásfrissítés PowerShell használatával.

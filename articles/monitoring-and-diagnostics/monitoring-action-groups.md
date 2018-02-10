@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: ancav
-ms.openlocfilehash: 05775415e210333cf63565e7b5b554d014f6ba23
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 9f7f9dcc473e6925000ebe76a6592779c228a9af
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Az Azure portálon művelet csoportok létrehozása és kezelése
 ## <a name="overview"></a>Áttekintés ##
@@ -58,10 +58,10 @@ Művelet csoportok konfigurálása Azure Resource Manager-sablonok használatáv
 
     b. **Művelet típusa**: válassza ki az SMS, e-mailek, webhook, Azure-alkalmazás, ITSM vagy Automation-forgatókönyv.
 
-    c. **Részletek**: művelet típusa alapján, adjon meg egy telefonszámot, e-mail címét, webhook URI, az Azure app, ITSM kapcsolat, vagy Automation-runbook. A ITSM művelet, továbbá meg **munkaelem** és más mezők a ITSM eszköz szükséges. 
+    c. **Részletek**: művelet típusa alapján, adjon meg egy telefonszámot, e-mail címét, webhook URI, az Azure app, ITSM kapcsolat, vagy Automation-runbook. A ITSM művelet, továbbá meg **munkaelem** és más mezők a ITSM eszköz szükséges.
 
    > [!NOTE]
-   > ITSM művelet ITSM kapcsolatot igényel. Megtudhatja, hogyan hozzon létre egy [ITSM kapcsolat](../log-analytics/log-analytics-itsmc-overview.md). ITSM művelet jelenleg csak napló Tevékenységriasztásokat működik. A más típusú Ez a művelet jelenleg nem műveletvégzés.
+   > ITSM művelet ITSM kapcsolatot igényel. Megtudhatja, hogyan hozzon létre egy [ITSM kapcsolat](../log-analytics/log-analytics-itsmc-overview.md). 
 
 8. Válassza ki **OK** a művelet csoport létrehozásához.
 
@@ -75,6 +75,6 @@ Egy művelet csoport létrehozása után is látható, az a **művelet csoportok
 * További információ [SMS riasztási viselkedés](monitoring-sms-alert-behavior.md).  
 * Szerezzen egy [megismerni a műveletnapló riasztási webhook séma](monitoring-activity-log-alerts-webhook.md).  
 * További információ [ITSM összekötő](../log-analytics/log-analytics-itsmc-overview.md)
-* További információ [sebességkorlátozást](monitoring-alerts-rate-limiting.md) értesítésekről. 
+* További információ [sebességkorlátozást](monitoring-alerts-rate-limiting.md) értesítésekről.
 * Első egy [tevékenység napló riasztások áttekintése](monitoring-overview-alerts.md), és megtudhatja, hogyan szeretné megkapni a riasztásokat.  
 * Megtudhatja, hogyan [riasztások konfigurálása, ha az állapotfigyelő szolgáltatáshoz értesítést visszaküldi](monitoring-activity-log-alerts-on-service-notifications.md).

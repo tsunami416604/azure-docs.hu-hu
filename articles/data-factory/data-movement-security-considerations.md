@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 02/07/2018
 ms.author: abnarain
-ms.openlocfilehash: 8bd5ae2aac23b18aeb3ef44692f448b50b7e3d44
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 7bd08a838bef504e41f7aa63516a1b54ba497441
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Az Azure Data Factory - adatátvitelt jelölik a kapcsolódó biztonsági szempontok
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -82,10 +82,10 @@ Azure Data Lake store is biztosít a fiókban tárolt adatok titkosítása. Ha e
 Az Azure Blob Storage és az Azure Table storage támogatja a Storage szolgáltatás titkosítási (SSE), mely automatikusan Storage megőrzése előtt titkosítja az adatokat, és lekérése előtt visszafejti. További információkért lásd: [Azure Storage szolgáltatás titkosítási inaktív adatok](../storage/common/storage-service-encryption.md).
 
 #### <a name="amazon-s3"></a>Amazon S3
-Amazon S3 inaktív adatok titkosítása ügyfél és kiszolgáló egyaránt támogatja. További információkért lásd: [védelmének használatával adattitkosítás](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html). Jelenleg adat-előállító nem támogatja a Amazon S3 virtuális magánfelhőbe (VPC) belül.
+Amazon S3 inaktív adatok titkosítása ügyfél és kiszolgáló egyaránt támogatja. További információkért lásd: [védelmének használatával adattitkosítás](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html).
 
 #### <a name="amazon-redshift"></a>Amazon Redshift
-Amazon Redshift támogatja a fürt titkosítást az inaktív adatok. További információkért lásd: [Amazon Redshift az adatbázis-titkosítás](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html). Adat-előállító jelenleg nem támogatja a Amazon Redshift egy VPC belül. 
+Amazon Redshift támogatja a fürt titkosítást az inaktív adatok. További információkért lásd: [Amazon Redshift az adatbázis-titkosítás](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html). 
 
 #### <a name="salesforce"></a>Salesforce
 Salesforce Shield Platform titkosítási, amely lehetővé teszi az összes olyan fájlok, mellékleteket, egyéni mezők titkosítási támogatja. További információkért lásd: [ismertetése a Web Server OAuth hitelesítési Flow](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm).  

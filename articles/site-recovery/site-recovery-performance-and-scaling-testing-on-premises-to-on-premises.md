@@ -2,23 +2,17 @@
 title: "A vizsgálati eredmények, a Hyper-V replikáció az Azure Site Recovery a helyek közötti |} Microsoft Docs"
 description: "Ez a cikk tájékoztatást ad azokról teljesítményének tesztelésekor a helyszíni helyszíni Hyper-V virtuális gépek replikálása az Azure Site Recovery segítségével."
 services: site-recovery
-documentationcenter: 
 author: rayne-wiselman
-manager: jwhit
-editor: tysonn
-ms.assetid: 96ff404f-0d88-43fa-a00b-2dffde93d192
+manager: carmonm
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 10/30/2017
+ms.date: 02/07/2018
 ms.author: raynew
-ms.openlocfilehash: c221fe94c5301b0a36882d5ae1c57e523002ecc4
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: f25bbca86fdbb480a4db7623d4ee8d296415a4be
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="test-results-for-on-premises-to-on-premises-hyper-v-replication-with-site-recovery"></a>A vizsgálati eredmények, a helyszíni Hyper-V replikáció Site Recovery szolgáltatással történő helyszíni
 
@@ -109,10 +103,10 @@ Az eredmények szétválasztásához, hogy Azure Site Recovery szolgáltatásban
 
 ![Elsődleges hardverkövetelmények](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744922.png)
 
-| Kiszolgáló | RAM | Modell | Processzor | Processzorok száma | A HÁLÓZATI ADAPTER | Szoftver |
+| Kiszolgáló | RAM | Modell | Processzor | Processzorok száma | NIC | Szoftver |
 | --- | --- | --- | --- | --- | --- | --- |
-| Hyper-V fürtben lévő kiszolgálókat: <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128ESTLAB-HOST25 rendelkezik 256 |Dell™ PowerEdge™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 @ 2,20 GHz |4 |I x 4 kapcsolóport |Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
-| VMM-kiszolgáló |2 | | |2 |1 Gbps |Windows Server 2012 adatbázis R2 (x 64) + VMM 2012 R2 |
+| Hyper-V fürtben lévő kiszolgálókat: <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128ESTLAB-HOST25 rendelkezik 256 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 @ 2,20 GHz |4 |I x 4 kapcsolóport |Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
+| VMM Server |2 | | |2 |1 Gbps |Windows Server 2012 adatbázis R2 (x 64) + VMM 2012 R2 |
 
 ### <a name="secondary-recovery-site"></a>Másodlagos (helyreállítási) helyet
 
@@ -121,12 +115,12 @@ Az eredmények szétválasztásához, hogy Azure Site Recovery szolgáltatásban
 
 ![Elsődleges hardver meghatározása](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744923.png)
 
-| Kiszolgáló | RAM | Modell | Processzor | Processzorok száma | A HÁLÓZATI ADAPTER | Szoftver |
+| Kiszolgáló | RAM | Modell | Processzor | Processzorok száma | NIC | Szoftver |
 | --- | --- | --- | --- | --- | --- | --- |
-| Hyper-V fürtben lévő kiszolgálókat: <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10 |96 |Dell™ PowerEdge™ R720 |Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30-as GHz |2 |I x 4 kapcsolóport |Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
-| ESTLAB-HOST17 |128 |Dell™ PowerEdge™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 @ 2,20 GHz |4 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
-| ESTLAB-HOST24 |256 |Dell™ PowerEdge™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 @ 2,20 GHz |2 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
-| VMM-kiszolgáló |2 | | |2 |1 Gbps |Windows Server 2012 adatbázis R2 (x 64) + VMM 2012 R2 |
+| Hyper-V fürtben lévő kiszolgálókat: <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10 |96 |Dell ™ PowerEdge ™ R720 |Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30-as GHz |2 |I x 4 kapcsolóport |Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
+| ESTLAB-HOST17 |128 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 @ 2,20 GHz |4 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
+| ESTLAB-HOST24 |256 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 @ 2,20 GHz |2 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
+| VMM Server |2 | | |2 |1 Gbps |Windows Server 2012 adatbázis R2 (x 64) + VMM 2012 R2 |
 
 ### <a name="server-workloads"></a>Kiszolgáló-munkaterhelések
 
@@ -140,7 +134,7 @@ Az eredmények szétválasztásához, hogy Azure Site Recovery szolgáltatásban
 | SQL Server (1. kötet) SQL Server (kötet 2) |864 |100%100% |70%0% |88 |szekvenciális 100 %-os random100 % |
 | Exchange |32 |100% |67% |8 |100 %-os véletlenszerű |
 | Munkaállomás/VDI |464 |66%34% |70%95% |11 |Mindkét véletlenszerű 100 %. |
-| Webkiszolgáló-fájl |4864 |33%34%33% |95%95%95% |888 |Véletlenszerű 75 % |
+| Web File Server |4864 |33%34%33% |95%95%95% |888 |Véletlenszerű 75 % |
 
 ### <a name="vm-configuration"></a>Virtuálisgép-konfiguráció
 
@@ -155,7 +149,7 @@ Az eredmények szétválasztásához, hogy Azure Site Recovery szolgáltatásban
 | Fájlkiszolgáló |50 |1 |2 |552 |22 |
 | VDI |149 |.5 |1 |80 |6 |
 | Webkiszolgáló |149 |.5 |1 |80 |6 |
-| ÖSSZESEN |470 | | |96.83 TB |4108 |
+| ÖSSZES |470 | | |96.83 TB |4108 |
 
 ### <a name="site-recovery-settings"></a>Webhely-helyreállítási beállításai
 
@@ -164,12 +158,12 @@ Az eredmények szétválasztásához, hogy Azure Site Recovery szolgáltatásban
 
 | Elsődleges VMM-felhő | A felhőben lévő védett virtuális gépek | Replikációs gyakoriság | A további helyreállítási pontok |
 | --- | --- | --- | --- |
-| PrimaryCloudRpo15m |142 |15 perc |None |
-| PrimaryCloudRpo30s |47 |30 másodperc |None |
+| PrimaryCloudRpo15m |142 |15 perc |Nincs |
+| PrimaryCloudRpo30s |47 |30 másodperc |Nincs |
 | PrimaryCloudRpo30sArp1 |47 |30 másodperc |1 |
 | PrimaryCloudRpo5m |235 |5 perc |None |
 
-### <a name="performance-metrics"></a>Teljesítménymértékeket
+### <a name="performance-metrics"></a>Teljesítmény-mérőszámok
 
 A táblázat összefoglalja a metrikák és a központi telepítésben lévő volt mért számlálókat.
 
@@ -177,12 +171,12 @@ A táblázat összefoglalja a metrikák és a központi telepítésben lévő vo
 | --- | --- |
 | CPU |\Processor(_Total)\% Processor Time |
 | Rendelkezésre álló memória |\Memory\Available memória (MB) |
-| IO |\PhysicalDisk (_Total) \Disk átvitel/mp |
+| IO |\PhysicalDisk(_Total)\Disk Transfers/sec |
 | Virtuális gép olvasási művelet/mp (IOPS) |\Hyper-V virtuális tárolóeszköz (<VHD>) \Read művelet/mp |
 | Virtuális gép (IOPS) írási művelet/mp |\Hyper-V virtuális tárolóeszköz (<VHD>) \Write műveletek/mp |
 | Olvassa el az átviteli sebesség VM |\Hyper-V virtuális tárolóeszköz (<VHD>) \Read bájtok/s |
 | Virtuális gép teljesítménye |\Hyper-V virtuális tárolóeszköz (<VHD>) \Write bájtok/s |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A két helyszíni VMM-helyek közötti replikáció beállítása](site-recovery-vmm-to-vmm.md)

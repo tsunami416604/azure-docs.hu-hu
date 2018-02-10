@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: aa81f9d163da8d9236470c0b797f5430163ed39d
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 1c2cd0cc648269c4e07d0f0fcd04a10cf7092432
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory-beta"></a>Adatok másolása az Azure Data Factory (béta) használatával Xero
 
@@ -32,6 +32,8 @@ Ez a cikk ismerteti, hogyan használható a másolási tevékenység során az A
 ## <a name="supported-capabilities"></a>Támogatott képességei
 
 Adatok bármely támogatott fogadó adattárolóhoz Xero másolhatja. Adattároló források/mosdók, a másolási tevékenység által támogatott listájáért lásd: a [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
+
+Minden Xero táblázatok (API-végpontok) "Jelentések" kivéve támogatottak. Összetett elemet tartalmazó táblák több táblájához lesznek osztva. Például banki tranzakciók rendelkezik olyan összetett adatszerkezet "LineItems", így banki tranzakció adatok tábla Bank_Transaction és Bank_Transaction_Line_Items Bank_Transaction_ID idegen kulcs együtt összekapcsolhatja őket a van leképezve.
 
 Az Azure Data Factory kapcsolódásának engedélyezése beépített illesztőprogramot tartalmaz, ezért nem szükséges manuálisan kell telepítenie minden olyan illesztőprogram ezt az összekötőt használja.
 
@@ -48,8 +50,8 @@ A következő tulajdonságok Xero kapcsolódó szolgáltatás támogatottak:
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **Xero** | Igen |
-| gazdagép | A végpont a Xero kiszolgáló. (Ez azt jelenti, hogy api.xero.com)  | Igen |
-| consumerKey | A Xero alkalmazáshoz kapcsolódó kulcsa. Ez a mező megjelölése a SecureString tárolja biztonságos helyen a Data Factory, vagy a jelszó tárolása az Azure Key Vault választhat, és lehetővé teszik a másolási tevékenység lekéréses ott adatmásolás végrehajtása során – további információhoz [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). | Igen |
+| gazdagép | A Xero Server endpoint (`api.xero.com`).  | Igen |
+| consumerKey | A Xero alkalmazáshoz kapcsolódó kulcsa. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen |
 | privateKey | A .pem fájl lett létrehozva, a Xero titkos alkalmazás titkos kulcs. A .pem fájl, többek között a Unix sor endings(\n) összes szöveget tartalmaznak. Ez a mező megjelölése a SecureString tárolja biztonságos helyen a Data Factory, vagy a jelszó tárolása az Azure Key Vault választhat, és lehetővé teszik a másolási tevékenység lekéréses ott adatmásolás végrehajtása során – további információhoz [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). | Igen |
 | useEncryptedEndpoints | Meghatározza, hogy a data source végpontok titkosítása HTTPS használatával. Az alapértelmezett érték: igaz.  | Nem |
 | useHostVerification | Meghatározza, hogy az állomásnév szükséges a kiszolgálói tanúsítvány felel meg a kiszolgáló állomásnevét, SSL-en keresztüli kapcsolódás esetén. Az alapértelmezett érték: igaz.  | Nem |

@@ -15,15 +15,18 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 0735dd186e53a72c29040fcde51ceb70024784e4
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 1f83b3568cf5c6ad0650f2289263d855ab395772
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="data-management-gateway"></a>Adatkezelési átjáró
 > [!NOTE]
 > Ez a cikk a Data Factory általánosan elérhető 1. verziójára vonatkozik. Lásd a 2-es verziójának a Data Factory szolgáltatásnak, amely jelenleg előzetes verzióban érhető, használatakor [önállóan üzemel a 2-es integrációs futásidejű](../create-self-hosted-integration-runtime.md). 
+
+> [!NOTE]
+> Az adatkezelési átjáró Self-hosted integrációs futásidejű, most már rebranded.  
 
 Az adatkezelési átjáró egy olyan ügyfélügynök, telepítenie kell a helyszíni környezetben másolása közötti felhő- és a helyszíni adattárolókhoz. A Data Factory által támogatott tárolók jelennek meg a helyszíni adatokhoz a [támogatott adatforrások](data-factory-data-movement-activities.md#supported-data-stores-and-formats) szakasz.
 
@@ -188,7 +191,7 @@ Az adatkezelési átjáró gazdaszolgáltatás a frissített proxybeállítások
 Miután átjáró sikeresen regisztrálva van, ha azt szeretné, megtekintéséhez, vagy frissíteni a proxykiszolgáló beállításait, használja az adatkezelési átjáró konfigurációkezelőjének.
 
 1. Indítsa el **az adatkezelési átjáró konfigurációkezelőjének**.
-2. Váltás a **beállítások** fülre.
+2. Váltson a **Settings** (Beállítások) lapra.
 3. Kattintson a **módosítás** hivatkozásra **HTTP-Proxy** elindíthatja a szakasz a **HTTP-Proxy beállítása** párbeszédpanel.  
 4. Miután rákattintott a **következő** gomb, megjelenik egy figyelmeztető párbeszédpanel, mentse a proxybeállítást, és indítsa újra az átjáró Gazdaszolgáltatást az engedélyt kér.
 

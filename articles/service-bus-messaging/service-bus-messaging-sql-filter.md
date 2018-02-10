@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/16/2017
+ms.date: 02/05/2018
 ms.author: sethm
-ms.openlocfilehash: 159bb0500dd98a428d60d6aeb78767a3460b40dc
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: ec9d728eb31eb979e82bfb53cf619f823750e65c
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="sqlfilter-syntax"></a>SQLFilter szintaxis
 
@@ -192,7 +192,7 @@ A kulcsszavak jelölik a logikai állandók **igaz** vagy **hamis**. Az értéke
 
 A karakterlánckonstansokat egyetlen idézőjelek közé vannak, és a érvényes Unicode-karaktereket tartalmaz. Egy olyan karakterlánc-konstansra ágyazott szimpla idézőjel szerepel, mint két darab szimpla idézőjelek között.  
   
-## <a name="function"></a>Függvény  
+## <a name="function"></a>függvény  
   
 ```  
 <function> :=  
@@ -278,8 +278,8 @@ Vegye figyelembe a következőket [SqlFilter](/dotnet/api/microsoft.servicebus.m
   
 -   Aritmetikai operátor például `+`, `-`, `*`, `/`, és `%` hajtsa végre a azonos szemantikákkal, a C# operátor adatok típusa előléptetések és implicit konverzió kötelező.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [SQLFilter osztály (.NET-keretrendszer)](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
 - [SQLFilter osztály (.NET-szabvány)](/dotnet/api/microsoft.azure.servicebus.filters.sqlfilter)
-- [SQLRuleAction osztály](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
+- [SQLRuleAction class](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2017
 ms.author: genli
-ms.openlocfilehash: 69d363b5ff0b94884cf6d13ae0260f3747e4e69a
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 83d96a2706e879f8817540e85369729289be9456
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Hibáinak elhárítása: Az Azure pont – hely kapcsolat problémák
 
@@ -45,8 +45,8 @@ A probléma megoldásához kövesse az alábbi lépéseket:
     | Tanúsítvány | Hely |
     | ------------- | ------------- |
     | AzureClient.pfx  | Aktuális User\Personal\Certificates |
-    | Azuregateway -*GUID*. cloudapp.net  | Aktuális User\Trusted legfelső szintű hitelesítésszolgáltatók|
-    | AzureGateway -*GUID*. cloudapp.net, AzureRoot.cer    | Helyi számítógép\Megbízható legfelső szintű hitelesítésszolgáltatók|
+    | Azuregateway-*GUID*.cloudapp.net  | Aktuális User\Trusted legfelső szintű hitelesítésszolgáltatók|
+    | AzureGateway-*GUID*.cloudapp.net, AzureRoot.cer    | Helyi számítógép\Megbízható legfelső szintű hitelesítésszolgáltatók|
 
 2. Nyissa meg a felhasználók számára\<felhasználónév > \AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID >, manuálisan telepítse a tanúsítványt (*.cer fájlt) a felhasználói és számítógép tárolójában.
 
@@ -61,15 +61,22 @@ Az ügyféltanúsítvány telepítésével kapcsolatos további információkér
 
 A VPN-ügyfél használatával csatlakoznak az Azure virtuális hálózat megkísérlésekor a következő hibaüzenet jelenhet meg:
 
-**A fogadott üzenet volt-e váratlan vagy rosszul formázott. (0x80090326 hiba)**
+**A fogadott üzenet volt-e váratlan vagy rosszul formázott. (Error 0x80090326)**
 
 ### <a name="cause"></a>Ok
 
-Ez a probléma akkor fordul elő, ha a legfelső szintű tanúsítvány nyilvános kulcsa nem van töltve az Azure VPN gateway. Ez akkor is előfordulhat, ha a kulcs sérült vagy lejárt.
+Ez a probléma akkor fordul elő, ha a következő feltételek valamelyike teljesül:
+
+- A használható felhasználó által definiált útvonalak (UDR) alapértelmezett útvonalat az átjáró-alhálózat helytelenül van beállítva.
+- A legfelső szintű tanúsítvány nyilvános kulcsa nem az Azure VPN gateway van töltve. 
+- A kulcs sérült vagy lejárt.
 
 ### <a name="solution"></a>Megoldás
 
-A probléma megoldásához, a legfelső szintű tanúsítvány megtekintéséhez, hogy azt vissza lett vonva az Azure portálon állapotának ellenőrzéséhez. Ha nincs visszavonva, próbálja meg törölni a főtanúsítványt és reupload. További információkért lásd: [olyan tanúsítványokat hoznak létre](vpn-gateway-howto-point-to-site-classic-azure-portal.md#generatecerts).
+A probléma megoldásához kövesse az alábbi lépéseket:
+
+1. Távolítsa el az átjáró-alhálózat UDR. Ellenőrizze, hogy UDR megfelelően az összes forgalmat továbbítja.
+2. A legfelső szintű tanúsítvány megtekintéséhez, hogy azt vissza lett vonva az Azure portálon állapotának ellenőrzéséhez. Ha nincs visszavonva, próbálja meg törölni a főtanúsítványt és reupload. További információkért lásd: [olyan tanúsítványokat hoznak létre](vpn-gateway-howto-point-to-site-classic-azure-portal.md#generatecerts).
 
 ## <a name="vpn-client-error-a-certificate-chain-processed-but-terminated"></a>VPN-ügyfél hiba: A tanúsítványlánc feldolgozása, de a megszakadt 
 
@@ -86,10 +93,10 @@ A VPN-ügyfél használatával csatlakoznak az Azure virtuális hálózat megkí
     | Tanúsítvány | Hely |
     | ------------- | ------------- |
     | AzureClient.pfx  | Aktuális User\Personal\Certificates |
-    | Azuregateway -*GUID*. cloudapp.net  | Aktuális User\Trusted legfelső szintű hitelesítésszolgáltatók|
-    | AzureGateway -*GUID*. cloudapp.net, AzureRoot.cer    | Helyi számítógép\Megbízható legfelső szintű hitelesítésszolgáltatók|
+    | Azuregateway-*GUID*.cloudapp.net  | Aktuális User\Trusted legfelső szintű hitelesítésszolgáltatók|
+    | AzureGateway-*GUID*.cloudapp.net, AzureRoot.cer    | Helyi számítógép\Megbízható legfelső szintű hitelesítésszolgáltatók|
 
-2. Ha a tanúsítvány már a helyen, próbálja meg törölni a tanúsítványokat, és telepítse újra. A  **azuregateway -*GUID*. az ügyfél VPN-konfiguráció Azure-portálról letöltött csomag cloudapp.net** tanúsítvány van. Fájl archivers segítségével csomagolja ki a fájlokat a csomagból.
+2. Ha a tanúsítvány már a helyen, próbálja meg törölni a tanúsítványokat, és telepítse újra. A **azuregateway -*GUID*. cloudapp.net** tanúsítványa megtalálható-e az ügyfél VPN-konfiguráció Azure-portálról letöltött csomagot. Fájl archivers segítségével csomagolja ki a fájlokat a csomagból.
 
 ## <a name="file-download-error-target-uri-is-not-specified"></a>Letöltési hiba: nincs megadva a cél URI Azonosítóját
 
@@ -113,7 +120,7 @@ A VPN-átjáró típusúnak kell lennie **VPN**, és a VPN-típus lehet **RouteB
 
 A VPN-ügyfél használatával csatlakoznak az Azure virtuális hálózat megkísérlésekor a következő hibaüzenet jelenhet meg:
 
-**Egyéni parancsfájl (frissítés az útválasztási táblában) sikertelen volt. (8007026f hiba)**
+**Egyéni parancsfájl (frissítés az útválasztási táblában) sikertelen volt. (Error 8007026f)**
 
 ### <a name="cause"></a>Ok
 
@@ -146,7 +153,7 @@ Bontsa ki a VPN-ügyfélcsomag konfigurációs, és keresse meg a .cer fájlt. A
 
 A VPN-átjáró módosításainak mentése az Azure-portálon megkísérlésekor a következő hibaüzenet jelenhet meg:
 
-**Nem sikerült menteni a virtuális hálózati átjáró &lt;* átjárónevet*&gt;. Tanúsítvány adatainak &lt; *tanúsítvány azonosító* &gt; van invalid.* *
+**Nem sikerült menteni a virtuális hálózati átjáró &lt; *átjárónevet*&gt;. Tanúsítvány adatainak &lt; *tanúsítvány azonosító* &gt; érvénytelen.**
 
 ### <a name="cause"></a>Ok 
 
@@ -181,7 +188,7 @@ Győződjön meg arról, hogy az adatok a tanúsítvány nem tartalmaz érvényt
 
 A VPN-átjáró módosításainak mentése az Azure-portálon megkísérlésekor a következő hibaüzenet jelenhet meg: 
 
-**Nem sikerült menteni a virtuális hálózati átjáró &lt;* átjárónevet*&gt;. Az erőforrásnév &lt; *megpróbálja feltölteni a tanúsítvány neve* &gt; van érvénytelen **.
+**Nem sikerült menteni a virtuális hálózati átjáró &lt; *átjárónevet*&gt;. Az erőforrásnév &lt; *megpróbálja feltölteni a tanúsítvány neve* &gt; érvénytelen**.
 
 ### <a name="cause"></a>Ok
 
@@ -199,7 +206,7 @@ Töltse le a VPN-ügyfélcsomag konfigurációs megkísérlésekor a következő
 
 Ez a hiba átmeneti hálózati probléma okozhatja. Próbálkozzon újra néhány perc múlva a VPN-csomagjának letöltése.
 
-## <a name="azure-vpn-gateway-upgrade-all-p2s-clients-are-unable-to-connect"></a>Az Azure VPN Gateway frissítése: minden P2S-ügyfelek nem tudnak csatlakozni
+## <a name="azure-vpn-gateway-upgrade-all-point-to-site-clients-are-unable-to-connect"></a>Az Azure VPN Gateway frissítése: minden pont helyrendszer-ügyfelek nem tudnak csatlakozni
 
 ### <a name="cause"></a>Ok
 
@@ -207,7 +214,7 @@ Ha a tanúsítvány több mint 50 %-a keresztül élettartamuk, a tanúsítvány
 
 ### <a name="solution"></a>Megoldás
 
-Ez a probléma megoldása érdekében hozzon létre, és újra elosztják a VPN-ügyfelek az új tanúsítványok. 
+A probléma megoldásához, telepítse újra az összes ügyfél a hely csomag mutasson.
 
 ## <a name="too-many-vpn-clients-connected-at-once"></a>Túl sok a VPN-ügyfelek egyszerre csatlakoztatva
 
@@ -234,6 +241,10 @@ Ha a cím az Öné egy--> alkalmazása /8
 Ha a cím az Öné B--> osztály /16 alkalmazása
 
 Ha a cím az Öné C--> osztály /24 alkalmazása
+
+### <a name="solution"></a>Megoldás
+
+Útvonalak más hálózatok leghosszabb előtag-match vagy alacsonyabb metrika (így magasabb prioritású) mint helyhez pontja az útvonaltábla beszúrásra rendelkezik. 
 
 ## <a name="vpn-client-cannot-access-network-file-shares"></a>VPN-ügyfél nem tud hozzáférni a hálózati fájlmegosztások
 
@@ -262,7 +273,7 @@ Távolítsa el a pont-pont VPN-kapcsolatot, és telepítse újra a VPN-ügyfél.
 
 ### <a name="solution"></a>Megoldás
 
-A probléma megoldása érdekében törölje a régi VPN ügyfél konfigurációs fájlokat a **C:\Users\TheUserName\AppData\Roaming\Microsoft\Network\Connections**, majd futtassa újra a VPN-ügyfél telepítőjét.
+A probléma megoldása érdekében törölje a régi VPN ügyfél konfigurációs fájlokat a **C:\users\username\AppData\Microsoft\Network\Connections\<VirtualNetworkId >**, majd futtassa újra a VPN-ügyfél telepítőjét.
 
 ## <a name="point-to-site-vpn-client-cannot-resolve-the-fqdn-of-the-resources-in-the-local-domain"></a>Pont-pont VPN-ügyfél nem tudja feloldani az erőforrásokat a helyi tartomány teljes Tartományneve
 
@@ -301,7 +312,7 @@ Ellenőrizze a proxykiszolgáló beállításait, győződjön meg arról, hogy 
 
 ### <a name="cause"></a>Ok
 
-Ez a hiba akkor fordul elő, ha a RADIUS-kiszolgáló, amelyet a VPN-ügyfél hitelesítéséhez használt helytelen beállításokkal rendelkezik. 
+Ez a hiba akkor fordul elő, ha a RADIUS-kiszolgáló, amelyet a VPN-ügyfél hitelesítéséhez használt helytelen beállításokkal rendelkezik, vagy az Azure-átjáró nem érhető el a RADIUS-kiszolgáló.
 
 ### <a name="solution"></a>Megoldás
 
@@ -312,3 +323,45 @@ Győződjön meg arról, hogy a RADIUS-kiszolgáló megfelelően van-e konfigur�
 ### <a name="cause"></a>Ok
 
 Legfelső szintű tanúsítvány nem volt telepítve. A legfelső szintű tanúsítvány telepítve van az ügyfél a **megbízható tanúsítványokat** tárolja.
+
+## <a name="vpn-client-error-the-remote-connection-was-not-made-because-the-attempted-vpn-tunnels-failed-error-800"></a>VPN-ügyfél hiba: A távoli kapcsolat nem történt mert a megkísérelt VPN-alagutat sikertelen volt. (Error 800) 
+
+### <a name="cause"></a>Ok
+
+A hálózati adapter illesztőprogramja elavult.
+
+### <a name="solution"></a>Megoldás
+
+A hálózati illesztőprogram frissítése:
+
+1. Kattintson a **Start**, típus **Eszközkezelő**, és válassza ki azt a listából, az eredmények. Ha a számítógép rendszergazdai jelszót vagy megerősítést kér, írja be a jelszót, vagy erősítse meg a műveletet.
+2. Az a ** a hálózati adapterek ** kategóriák, a frissíteni kívánt hálózati adapter található.  
+3. Kattintson duplán az eszköz nevére, válassza ki **illesztőprogram frissítése**, jelölje be **automatikusan frissített illesztőprogram keresése**.
+4. Ha a Windows egy új illesztőprogram nem található, megpróbálhatja keres egy, az eszköz gyártójának webhelyén, és kövesse az utasításokat.
+5. Indítsa újra a számítógépet, és próbáljon meg újra.
+
+## <a name="error-file-download-error-target-uri-is-not-specified"></a>Hiba: "fájl nincs megadva a cél URI letöltési hiba"
+
+### <a name="cause"></a>Ok
+
+Ennek oka, hogy egy hibás átjáró típusa úgy van beállítva.
+
+### <a name="solution"></a>Megoldás
+
+Az Azure VPN gateway típusúnak kell lennie a VPN és a VPN-típus lehet **RouteBased**.
+
+## <a name="vpn-package-installer-doesnt-complete"></a>VPN alkalmazáscsomag-telepítő befejezése
+
+### <a name="cause"></a>Ok
+
+Ez a probléma a korábbi VPN-ügyfél telepítések okozhatja. 
+
+### <a name="solution"></a>Megoldás
+
+Törölje a régi VPN ügyfél konfigurációs fájlokat a **C:\users\username\AppData\Microsoft\Network\Connections\<VirtualNetworkId >** , és futtassa újra a VPN-ügyfél telepítőjét. 
+
+## <a name="the-vpn-client-hibernates-or-sleep-after-some-time"></a>A VPN-ügyfél szeretné, vagy egy kis idő múlva alvó
+
+### <a name="solution"></a>Megoldás
+
+Ellenőrizze az alvó állapot, és a hibernált állapot beállításait, hogy a VPN-ügyfél fut a számítógépen.

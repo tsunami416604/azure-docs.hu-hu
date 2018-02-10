@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 14f654979f004186e81b2f18578ced3c9aab3815
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: ab29338b5ce2090166e75f3860744562aa9f6b01
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Adatok másolása az és ODBC adattárolókhoz Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -55,10 +55,10 @@ ODBC kapcsolódó szolgáltatás támogatott a következő tulajdonságokkal:
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **Odbc** | Igen |
-| connectionString | A kapcsolati karakterlánc credential rész. A kapcsolati karakterlánc megadhatja például a mintával `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`, vagy használja a rendszer DSN (adatforrás neve), a integrációs futásidejű gépen beállította `"DSN=<name of the DSN on IR machine>;"` (kell továbbra is megadhatja a hitelesítő adatok részében hivatkozott szolgáltatásban található ennek megfelelően).| Igen |
+| connectionString | A kapcsolati karakterlánc credential rész. A kapcsolati karakterlánc megadhatja például a mintával `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`, vagy használja a rendszer DSN (adatforrás neve), a integrációs futásidejű gépen beállította `"DSN=<name of the DSN on IR machine>;"` (kell továbbra is megadhatja a hitelesítő adatok részében hivatkozott szolgáltatásban található ennek megfelelően).<br>Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md).| Igen |
 | authenticationType | Az ODBC-adattár eléréséhez használt hitelesítés típusa.<br/>Két érték engedélyezett: **alapvető** és **névtelen**. | Igen |
 | Felhasználónév | Ha egyszerű hitelesítést használ, adja meg a felhasználónevet. | Nem |
-| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Ez a mező megjelölése a SecureString. | Nem |
+| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Nem |
 | hitelesítő adatok | A hozzáférési hitelesítő adatok része illesztőprogram-specifikus tulajdonság-érték formátumban megadott kapcsolódási karakterlánc. Példa: `"RefreshToken=<secret refresh token>;"`. Ez a mező megjelölése a SecureString. | Nem |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Egy Self-hosted integrációs futásidejű szükség, ahogyan az [Előfeltételek](#prerequisites). |Igen |
 

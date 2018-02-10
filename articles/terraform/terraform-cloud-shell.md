@@ -7,11 +7,11 @@ author: dcaro
 ms.author: dcaro
 ms.date: 10/19/2017
 ms.topic: article
-ms.openlocfilehash: 253e5d341f93e61d851893eb05832fbf35707cfc
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 5157066086f1bdfa580c1946942bda4505e48935
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="terraform-cloud-shell-development"></a>Fejlesztési Terraform felhő rendszerhéj 
 
@@ -36,7 +36,7 @@ provider "azurerm" {
 }
 ```
 
-A felhő rendszerhéj szükséges értékeket adja át a `azurerm` szolgáltatót, amelyet a környezeti változók esetén – a `terraform` parancssori felület parancsait.
+A felhő rendszerhéj szükséges értékeket adja át a `azurerm` környezeti változók esetén-szolgáltató a `terraform` parancssori felület parancsait.
 
 ## <a name="other-cloud-shell-developer-tools"></a>Más felhőalapú rendszerhéj fejlesztői eszközök
 
@@ -45,7 +45,7 @@ Fájlok és a rendszerhéj állapotok megőrizni az Azure Storage felhőalapú r
 Az Azure CLI 2.0 érhető el a felhő rendszerhéj, és kiváló eszköz a konfiguráció tesztelése és ellenőrzése után a munkáját a `terraform apply` vagy `terraform destroy` befejeződik.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Hozzon létre egy kis méretű fürtöt, a modul beállításjegyzékkel](terraform-create-vm-cluster-module.md)
 [használatával egyéni Hardverkompatibilitási kis méretű fürt létrehozása](terraform-create-vm-cluster-with-infrastructure.md)

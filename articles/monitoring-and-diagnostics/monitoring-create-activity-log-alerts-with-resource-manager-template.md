@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: ancav
-ms.openlocfilehash: 2bfeba27b6de9e5db623eba1526bd2d2ff1b7211
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: b30912c44bd66f8c6fca548dc905f750e05c8621
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-an-activity-log-alert-with-a-resource-manager-template"></a>Tevékenység napló riasztás létrehozása egy Resource Manager sablonnal
 Ez a cikk bemutatja, hogyan használható egy [Azure Resource Manager sablon](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) tevékenység napló riasztások konfigurálása. Sablonok segítségével egyszerűen állíthat be sok riasztást, amely aktiválja az automatikus telepítési folyamat részeként az adott tevékenységre napló esemény feltételek alapján.
@@ -82,10 +82,10 @@ Tevékenység napló riasztás létrehozása a Resource Manager sablonnal, hozzo
               "field": "resourceType",
               "equals": "Microsoft.Resources/deployments"
             }
-          ] 
+          ]
         },
         "actions": {
-          "actionGroups": 
+          "actionGroups":
           [
             {
               "actionGroupId": "[parameters('actionGroupResourceId')]"
@@ -100,7 +100,11 @@ Tevékenység napló riasztás létrehozása a Resource Manager sablonnal, hozzo
 
 Látogasson el a [Azure gyorsindítási galéria](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Insights) néhány példa a naplófájl értesítési sablonok számára.
 
-## <a name="next-steps"></a>Következő lépések
+> [!NOTE]
+
+> Is létrehozhat tevékenység napló riasztási szabályok használata a felhasználói élmény figyelése > [riasztások (előzetes verzió)](monitoring-overview-unified-alerts.md). Ezek létrehozásával kapcsolatos további információkért lásd: [Ez a cikk](monitoring-activity-log-alerts-new-experience.md).
+
+## <a name="next-steps"></a>További lépések
 - További információ [riasztások](monitoring-overview-alerts.md).
 - Ismerje meg, hogyan adhat [művelet csoportok Resource Manager sablonnal](monitoring-create-action-group-with-resource-manager-template.md).
 - Megtudhatja, hogyan [az előfizetés minden automatikus skálázási motor műveletek figyelése tevékenység napló értesítés létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert).

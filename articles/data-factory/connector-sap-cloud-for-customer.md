@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: e580c3f36ce19679d3edcf7a8861e4e492dfa9c5
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 4d7df73bec7306b135f5a559c2bc66ac88d88809
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Azure Data Factory használatával SAP felhőből ügyfél (C4C) adatok másolása
 
@@ -47,7 +47,7 @@ Az alábbi tulajdonságokat az ügyfélszolgálat kapcsolódó SAP felhő támog
 | type | A type tulajdonságot kell beállítani: **SapCloudForCustomer**. | Igen |
 | url | Az SAP C4C OData-szolgáltatás URL-CÍMÉT. | Igen |
 | felhasználónév | Adja meg a felhasználónevet, a SAP C4C való kapcsolódáshoz. | Igen |
-| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Ez a mező megjelölése a SecureString. | Igen |
+| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. | Nem a forrást, a fogadó Igen |
 
 >[!IMPORTANT]
@@ -160,7 +160,7 @@ Adatok másolása SAP felhő ügyfél, állítsa be a fogadó típusa a másolá
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **SapCloudForCustomerSink**  | Igen |
 | WriteBehavior | A művelet írási viselkedését. "Insert", "Update" lehet. | Nem. Alapértelmezett "Insert". |
-| WriteBatchSize | A Köteg mérete írási művelet. A Köteg mérete, a legjobb teljesítmény különböző tábla vagy a kiszolgáló eltérőek lehetnek. | Nem. Alapértelmezés szerint 10. |
+| writeBatchSize | A Köteg mérete írási művelet. A Köteg mérete, a legjobb teljesítmény különböző tábla vagy a kiszolgáló eltérőek lehetnek. | Nem. Alapértelmezés szerint 10. |
 
 **Példa**
 
@@ -208,7 +208,7 @@ Amikor adatokat másol SAP felhő ügyfél, a következő megfeleltetéseket seg
 | SAP C4C OData adattípus | Data factory ideiglenes adattípus |
 |:--- |:--- |
 | Edm.Binary | Byte] |
-| Edm.Boolean | logikai érték |
+| Edm.Boolean | Logikai |
 | Edm.Byte | Byte] |
 | Edm.DateTime | DateTime |
 | Edm.Decimal | Decimális |
@@ -220,7 +220,7 @@ Amikor adatokat másol SAP felhő ügyfél, a következő megfeleltetéseket seg
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
 | Edm.String | Karakterlánc |
-| Edm.Time | A TimeSpan |
+| Edm.Time | TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |
 
 

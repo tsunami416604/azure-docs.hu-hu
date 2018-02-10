@@ -2,19 +2,19 @@
 title: "Hogyan Futtatás előzmények és az Azure-ban modell metrikák gép munkaterület tanulási |} Microsoft Docs"
 description: "Útmutató az Azure Machine Learning-munkaterület az előzmények futtatása és a modell metrikák funkciók használatához"
 services: machine-learning
-author: jopela
-ms.author: jopela
+author: rastala
+ms.author: roastala
 manager: haining
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
-ms.openlocfilehash: 143cbfa66436796e1b61b100def030dde43faac9
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 2d1bce6463ac7880fd9091b4f3f2cbb226ea516d
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-use-run-history-and-model-metrics-in-azure-machine-learning-workbench"></a>Használjon futtatási előzményei és az Azure Machine Learning-munkaterület modell metrikák
 
@@ -230,7 +230,7 @@ $ az ml history list -o table
 ```
 A **parancssori felület** van egy alternatív út Azure Machine Learning-munkaterület a teljesítmény eléréséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ezek a funkciók érhetők el segít az adatok tudományos kísérletezhet folyamatát.
 Reméljük, hogy azokat, hogy hasznos legyen, és jelentős mértékben fogadjuk visszajelzéseit.
 Ez csak a kezdeti telepítés, és tervezett fejlesztései nagy mennyiségű van.

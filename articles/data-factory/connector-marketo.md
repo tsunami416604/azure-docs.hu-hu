@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: dc4e8b8682e686abc77f43427615c7069585f327
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 58ae292514a1f5c98218d7a879beb9c15cb25f60
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-beta"></a>Adatok másolása az Azure Data Factory (béta) használatával Marketo
 
@@ -50,7 +50,7 @@ A következő tulajdonságok társított Marketo szolgáltatás támogatottak:
 | type | A type tulajdonságot kell beállítani: **Marketo** | Igen |
 | endpoint | A végpont a Marketo-kiszolgáló. (i.e. 123-ABC-321.mktorest.com)  | Igen |
 | clientId | Az ügyfél-azonosítóját a Marketo-szolgáltatás.  | Igen |
-| clientSecret | A Marketo szolgáltatás ügyfélkulcsot. Ha szeretné, ebben a mezőben megjelölése a SecureString tárolja biztonságos helyen az ADF, vagy a jelszó tárolása az Azure Key Vault, és lehetővé teszik az ADF másolja át a tevékenységek lekéréses ott adatmásolás végrehajtása során – további információhoz [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). | Igen |
+| clientSecret | A Marketo szolgáltatás ügyfélkulcsot. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen |
 | useEncryptedEndpoints | Meghatározza, hogy a data source végpontok titkosítása HTTPS használatával. Az alapértelmezett érték: igaz.  | Nem |
 | useHostVerification | Meghatározza, hogy az a számítógép neve a egyeznie kell a gazdagép nevével a kiszolgáló SSL-en keresztüli kapcsolódás esetén a kiszolgáló tanúsítványát. Az alapértelmezett érték: igaz.  | Nem |
 | usePeerVerification | Megadja, hogy a kiszolgáló identitásának ellenőrzése SSL-en keresztüli kapcsolódás esetén. Az alapértelmezett érték: igaz.  | Nem |

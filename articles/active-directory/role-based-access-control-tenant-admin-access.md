@@ -3,7 +3,7 @@ title: "Bérlői rendszergazda jogosultságszintjének emelése – az Azure AD 
 description: "Ez a témakör ismerteti a beépített szerepkörök szerepköralapú hozzáférés-vezérlés (RBAC)."
 services: active-directory
 documentationcenter: 
-author: andredm7
+author: rolyon
 manager: mtillman
 editor: rqureshi
 ms.assetid: b547c5a5-2da2-4372-9938-481cb962d2d6
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2017
-ms.author: andredm
-ms.openlocfilehash: 894ccd13684a79590b75821514ef6922abb8fdaf
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: rolyon
+ms.openlocfilehash: 8be842018cadfc36eb74b14a02a8f9bc9ddf098d
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="elevate-access-as-a-tenant-admin-with-role-based-access-control"></a>Bérlői rendszergazdaként a szerepköralapú hozzáférés-vezérlés jogosultságszintjének emelése
 
@@ -28,7 +28,7 @@ Ez a funkció fontos, mert lehetővé teszi a bérlői rendszergazda szerepel a 
 
 ## <a name="use-elevateaccess-for-tenant-access-with-azure-ad-admin-center"></a>Az Azure AD felügyeleti központban bérlő eléréséhez elevateAccess használata
 
-1. Lépjen a [Azure Active Directory felügyeleti központ](https://aad.portal.azure.com) és jelentkezzen be, hogy hitelesítő adatok.
+1. Lépjen a [Azure Active Directory felügyeleti központ](https://aad.portal.azure.com) és jelentkezzen be a hitelesítő adatait.
 
 2. Válasszon **tulajdonságok** az Azure ad-bal oldali menüben.
 
@@ -40,7 +40,7 @@ Ez a funkció fontos, mert lehetővé teszi a bérlői rendszergazda szerepel a 
     > Ha úgy dönt, **nem**, eltávolítja a **felhasználói hozzáférés adminisztrátora** gyökerében szerepkör "/" (gyökérszintű hatókörben), amellyel jelenleg bejelentkezett a portál a használatra.
 
 > [!TIP] 
-> A benyomást, hogy ez az Azure Active Directory globális tulajdonság, azonban a bejelentkezett felhasználó felhasználónkénti alapon működik. Ha a globális rendszergazdai jogosultságokkal rendelkezik az Azure Active Directoryban, hívhat meg a elevateAccess funkció, amely Azure Active Directory felügyeleti központ jelenleg bejelentkezett felhasználó.
+> A benyomást, hogy ez az Azure Active Directory globális tulajdonság, azonban a bejelentkezett felhasználó felhasználónkénti alapon működik. Ha a globális rendszergazdai jogosultságokkal rendelkezik az Azure Active Directoryban, hívhat meg a elevateAccess funkció, amellyel jelenleg bejelentkezett az Azure Active Directory felügyeleti központ a felhasználó számára.
 
 ![Az Azure AD - tulajdonságok – felügyeleti központot Globalisrendszergazda kezelheti az Azure-előfizetés – képernyőkép](./media/role-based-access-control-tenant-admin-access/aad-azure-portal-global-admin-can-manage-azure-subscriptions.png)
 
@@ -53,13 +53,13 @@ Get-AzureRmRoleAssignment* | where {$_.RoleDefinitionName -eq "User Access Admin
 
 **Példa a kimenetre**:
 
-RoleAssignmentId: /providers/Microsoft.Authorization/roleAssignments/098d572e-c1e5-43ee-84ce-8dc459c7e1f0    
+RoleAssignmentId   : /providers/Microsoft.Authorization/roleAssignments/098d572e-c1e5-43ee-84ce-8dc459c7e1f0    
 Hatókör: /    
 DisplayName: felhasználónév    
 SignInName:username@somedomain.com    
 RoleDefinitionName: Felhasználói hozzáférés adminisztrátora    
 Roledefinitionid-értékkel: 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9    
-Objektumazonosító: d65fd0e9-c185-472c-8f26-1dafa01f72cc    
+ObjectId           : d65fd0e9-c185-472c-8f26-1dafa01f72cc    
 Objektumtípus: felhasználó    
 
 ## <a name="delete-the-role-assignment-at--scope-using-powershell"></a>A szerepkör-hozzárendelés törlése "/" hatókör a Powershell használatával:
@@ -101,8 +101,8 @@ A folyamat alapvetően együttműködik az alábbi lépéseket:
 
 A hívás esetén *elevateAccess* , szerepkör-hozzárendelés létrehozása a szolgáltatást, ezért ezek a jogosultságok visszavonásához szüksége lesz a hozzárendelést.
 
-1.  GET szerepkör-definíciók hívás ahol roleName = a felhasználói hozzáférés adminisztrátora a felhasználói hozzáférés adminisztrátora szerepkör GUID nevének megállapítása érdekében.
-    1.  ELSŐ *https://management.azure.com/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01&$ szűrő roleName + eq + = "felhasználót + hozzáférés + rendszergazda*
+1.  GET roleDefinitions hívás ahol roleName = a felhasználói hozzáférés adminisztrátora a felhasználói hozzáférés adminisztrátora szerepkör GUID nevének megállapítása érdekében.
+    1.  GET *https://management.azure.com/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01&$filter=roleName+eq+'User+Access+Administrator*
 
         ```
         {"value":[{"properties":{
@@ -124,12 +124,12 @@ A hívás esetén *elevateAccess* , szerepkör-hozzárendelés létrehozása a s
         Mentse a GUID-Azonosítójának a *neve* paraméter, ebben az esetben **18d7d88d-d35e-4fb5-a5c3-7773c20a72d9**.
 
 2. Is fel kell sorolnia bérlői hatókörből Bérlői rendszergazda szerepkör-hozzárendelést. A listában, a PrincipalId a tenantadmin rendszergazdát. a jogosultságszint-emelés hozzáférés hívás leadó a bérlői hatókört vonatkozó összes hozzárendelést. Ez felsorolja az ObjectId azonosító a bérlő vonatkozó összes hozzárendelést. 
-    1. ELSŐ *https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$ szűrő = principalId + eq + "{objectid}"*
+    1. GET *https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=principalId+eq+'{objectid}'*
     
         >[!NOTE] 
-        >Egy Bérlői rendszergazda nem rendelkezhet több hozzárendelések, ha a fenti lekérdezés túl sok hozzárendelések is lekérheti vonatkozó összes hozzárendelést csak bérlői hatókör szintjén, majd az eredmények szűréséhez: első *https://management.azure.com/providers/ Microsoft.Authorization/roleAssignments? api-version = 2015-07-01 & $filter=atScope()*
+        >Egy Bérlői rendszergazda nem rendelkezhet több hozzárendelések, ha az előző lekérdezés túl sok hozzárendelések is lekérheti vonatkozó összes hozzárendelést csak bérlői hatókör szintjén, majd az eredmények szűréséhez: első *https://management.azure.com/providers/ Microsoft.Authorization/roleAssignments? api-version = 2015-07-01 & $filter=atScope()*
         
-    2. A fenti hívások szerepkör-hozzárendelések listáját adja vissza. A szerepkör-hozzárendelés található, ahol a hatókör az "/" és a roledefinitionid-értékkel végződik-e a szerepkör nevét, az 1. lépésben található GUID Azonosítót és a PrincipalId megegyezik a bérlői rendszergazda ObjectId A szerepkör-hozzárendelés így néz ki:
+    2. Az előző hívások szerepkör-hozzárendelések listáját adja vissza. A szerepkör-hozzárendelés található, ahol a hatókör az "/" és a roledefinitionid-értékkel végződik-e a szerepkör nevét, az 1. lépésben található GUID Azonosítót és a PrincipalId megegyezik a bérlői rendszergazda ObjectId A szerepkör-hozzárendelés így néz ki:
 
         ```
         {"value":[{"properties":{
@@ -150,9 +150,9 @@ A hívás esetén *elevateAccess* , szerepkör-hozzárendelés létrehozása a s
 
     3. Végül, használja a kijelölt **RoleAssignment azonosító** a hozzárendelést jogosultságszint-emelés hozzáférési által hozzáadott:
 
-        Https://management.azure.com /providers/Microsoft.Authorization/roleAssignments/e7dd75bc-06f6-4e71-9014-ee96a929d099?api-version=2015-07-01 törlése
+        DELETE https://management.azure.com /providers/Microsoft.Authorization/roleAssignments/e7dd75bc-06f6-4e71-9014-ee96a929d099?api-version=2015-07-01
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ [szerepköralapú hozzáférés-vezérlés többi kezelése](role-based-access-control-manage-access-rest.md)
 

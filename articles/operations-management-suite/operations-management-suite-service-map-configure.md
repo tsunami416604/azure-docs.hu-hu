@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: e23173fb6708104c39071145595e4eec3454ee76
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 1be3dd5718f940c784d22dbafb75c217dddecb9b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="configure-service-map-in-operations-management-suite"></a>Az Operations Management Suite a Szolgáltatástérkép konfigurálása
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Használhatja a kiszolgálók megtekintéséhez, módon úgy gondolja, hogy azok--összekapcsolt rendszerekhez, hogy a kritikus szolgáltatásokhoz. Szolgáltatástérkép kiszolgálók, folyamatok és portok közötti kapcsolatok között nincs konfigurációjával kapcsolatban egy ügynök telepítése nem szükséges bármely TCP-csatlakoztatott architektúra jeleníti meg.
@@ -28,8 +28,8 @@ Ez a cikk ismerteti a Service Map és bevezetése az ügynökök konfigurálása
 ## <a name="dependency-agent-downloads"></a>A függőségi ügynök letöltése
 | Fájl | Operációs rendszer | Verzió | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.3.0 | 1F5261CAAF6C8DF4E03E4927DA918B3461B40B41C6BF5845803878D7CF975693 |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.3.0 | 7BADFF2411899114F0214766160E4E871A2462DC137141CEEDEFAF528F428ADD  |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.4.0 | 13CE5E232311010A6E63B21615F669C63B5DF450F26F7BA092F951E924656611 |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.4.0 | A8913CA5308A0ED2EAEAC6E1E374B62E0EA4F8A941C560F63E89EBC3F8971D38  |
 
 
 ## <a name="connected-sources"></a>Összekapcsolt források
@@ -235,7 +235,7 @@ sudo rpm -e dependency-agent
 ```
 Ubuntu:
 ```
-sudo dpkg --purge dependency-agent
+sudo apt -y purge dependency-agent
 ```
 ## <a name="troubleshooting"></a>Hibaelhárítás
 Ha bármely telepítését és futtatását a Service Map, akkor ez a szakasz segítséget. Ha még mindig nem tudja megoldani a problémát, forduljon a Microsoft Support.
@@ -350,8 +350,8 @@ Az alábbiakban a támogatott operációs rendszerek a függőségi ügynök lis
 
 | Operációs rendszer verziója | Kernel-verzió |
 |:--|:--|
-| 16.04 | 4.4.0-103<br>4.11.0-1016 |
-| 14.04 | 3.13.0-137<br>4.4.0-103 |
+| 16.04 | 4.4.\*<br>4.8.\*<br>4.10.\*<br>4.11.\*<br>4.13.\* |
+| 14.04 | 3.13.\*<br>4.4.\* |
 
 ### <a name="oracle-enterprise-linux-with-unbreakable-enterprise-kernel"></a>Szoros vállalati Kernel az Oracle Enterprise Linux
 #### <a name="oracle-linux-6"></a>Oracle Linux 6

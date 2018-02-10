@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: v-donglo
-ms.openlocfilehash: 7f7498c63db89a77121d33afc9d48a4132b1a51d
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.author: raymondl
+ms.openlocfilehash: 4a4c5e6bf44fb4774d9ba501479383d6c7d3b128
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-batch-service-for-machine-learning-jobs"></a>A gépi tanulási feladatok az Azure Batch szolgáltatás
 
@@ -46,7 +46,7 @@ Webszolgáltatások létrehozásával kapcsolatos további információkért lá
 
 Miután létrehozta a készletben, a a kötegelt kérelem URL-cím segítségével a webszolgáltatás BES feladat elküldése. Dönthet úgy, hogy küldje el a készlethez, vagy a klasszikus kötegfeldolgozási. A Batch-készlet feldolgozása a feladat elküldése, a következő paraméter a feladat elküldése kérelemtörzset hozzáadhat:
 
-"AzureBatchPoolId": "&lt;azonosító tárolókészlet&gt;"
+"AzureBatchPoolId":"&lt;pool ID&gt;"
 
 Ha nem adja hozzá a paramétert, a feladat a klasszikus kötegelt folyamat-környezetében futtatható. A készlet elegendő erőforrás áll rendelkezésre, ha a a feladat futtatása azonnal elindul. A készlet nem rendelkezik szabad erőforrást, ha a feladat várólistára van állítva, amíg egy erőforrás áll rendelkezésre.
 
@@ -54,7 +54,7 @@ Ha talál meg, hogy rendszeresen eléri a készletek kapacitását, és nagyobb 
 
 Példa egy kérelem:
 
-https://ussouthcentral.Services.azureml.NET/Subscriptions/80c77c7674ba4c8c82294c3b2957990c/Services/9fe659022c9747e3b9b7b923c3830623/Jobs?API-Version=2.0
+https://ussouthcentral.services.azureml.net/subscriptions/80c77c7674ba4c8c82294c3b2957990c/services/9fe659022c9747e3b9b7b923c3830623/jobs?api-version=2.0
 
 ```json
 {

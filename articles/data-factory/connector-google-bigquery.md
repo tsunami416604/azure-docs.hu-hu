@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 3b559e64f38727b1e390160515b7614ad1dfaa97
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 03aeb4fd190ec83a61875168116157404c1d730d
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory-beta"></a>Adatok másolása az Google BigQuery Azure Data Factory (béta) használatával
 
@@ -52,7 +52,7 @@ A Google BigQuery társított szolgáltatásnak az alábbi tulajdonságok eseté
 | additionalProjects | Nyilvános projektazonosítók vesszővel elválasztott listája BigQuery projekt eléréséhez.  | Nem |
 | requestGoogleDriveScope | E Google meghajtó hozzáférést kérni. Google meghajtó hozzáférés lehetővé teszi, hogy a támogatás a Google meghajtóról adatokkal BigQuery adatok egyesítése összevont táblák esetében. Az alapértelmezett érték **hamis**.  | Nem |
 | authenticationType | A hitelesítéshez használt OAuth 2.0 hitelesítési módszert. ServiceAuthentication csak Self-hosted integrációs futásidejű is használhatók. <br/>Két érték engedélyezett **ServiceAuthentication** és **UserAuthentication**. | Igen |
-| refreshToken | A frissítési jogkivonat BigQuery hozzáférés hitelesítése a UserAuthentication használt Google kapott. Ez a mező szerint tárolja biztonságos helyen a Data Factory SecureString jelölheti meg. Is Azure Key Vault tárolni a jelszó és lehetővé teszik a másolási tevékenység lekéréses ott adatmásolás végrehajtásakor. További tudnivalókért lásd: [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). | Nem |
+| refreshToken | A frissítési jogkivonat BigQuery hozzáférés hitelesítése a UserAuthentication használt Google kapott. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Nem |
 | e-mail | A szolgáltatás e-mail Fiókazonosító ServiceAuthentication használt. Csak a Self-hosted integrációs futásidejű használható.  | Nem |
 | keyFilePath | A fájl teljes elérési útja a .p12 kulcs, amely segítségével hitelesíti a szolgáltatási fiók e-mail címét. Csak a Self-hosted integrációs futásidejű használható.  | Nem |
 | trustedCertPath | A teljes elérési útja a .pem fájl, amely tartalmazza a megbízható Hitelesítésszolgáltatói tanúsítvány segítségével ellenőrizze a kiszolgáló SSL-en keresztül csatlakoztatásakor. Ez a tulajdonság csak akkor, ha az SSL használatát Self-hosted integrációs futásidejű állítható be. Az alapértelmezett érték: a telepített integrációs futásidejű cacerts.pem fájlt.  | Nem |

@@ -14,11 +14,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: cynthn
-ms.openlocfilehash: 98b27f5f86cdb17893a5c98950a2299f8aa30105
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 26e09f4e408b92034594215f602d5ca0ff259c5a
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-20-and-managed-disks"></a>Hozzon létre egy Linux virtuális gép egy másolatát Azure CLI 2.0 és felügyelt lemezek
 
@@ -32,14 +32,14 @@ Emellett [töltse fel, és hozzon létre egy virtuális gép olyan virtuális me
 
 -   Telepítés [Azure CLI 2.0](/cli/azure/install-az-cli2)
 
--   Jelentkezzen be Azure-fiókkal rendelkező [az bejelentkezési](/cli/azure/#login).
+-   Jelentkezzen be Azure-fiókkal rendelkező [az bejelentkezési](/cli/azure/#az_login).
 
 -   Egy Azure virtuális Gépen, a másolás forrásaként használandó rendelkezik.
 
 ## <a name="step-1-stop-the-source-vm"></a>1. lépés: A forrás virtuális gép leállítása
 
 
-A forrás virtuális gép felszabadítása használatával [az virtuális gép felszabadítása](/cli/azure/vm#deallocate).
+A forrás virtuális gép felszabadítása használatával [az virtuális gép felszabadítása](/cli/azure/vm#az_vm_deallocate).
 Az alábbi példa felszabadítja a nevű virtuális gép **myVM** erőforráscsoportban **myResourceGroup**:
 
 ```azurecli
@@ -55,7 +55,7 @@ A virtuális gépek másolásához az alapul szolgáló virtuális merevlemez m�
 
 További információ az Azure Managed Disksről: [Azure Managed Disks – áttekintés](../windows/managed-disks-overview.md). 
 
-1.  A lemez minden virtuális gép és az operációs rendszer neve lista [az vm lista](/cli/azure/vm#list). Az alábbi példa felsorolja az összes virtuális gép nevű erőforráscsoportban **myResourceGroup**:
+1.  A lemez minden virtuális gép és az operációs rendszer neve lista [az vm lista](/cli/azure/vm#az_vm_list). Az alábbi példa felsorolja az összes virtuális gép nevű erőforráscsoportban **myResourceGroup**:
     
     ```azurecli
     az vm list -g myResourceGroup \
@@ -71,14 +71,14 @@ További információ az Azure Managed Disksről: [Azure Managed Disks – átte
     myVM    myDisk
     ```
 
-1.  Másolás a lemez hozzon létre egy új lemez használatával kezelhetők [az lemez létrehozása](/cli/azure/disk#create). Az alábbi példakód létrehozza nevű lemez **myCopiedDisk** nevű felügyelt lemezről **myDisk**:
+1.  Másolás a lemez hozzon létre egy új lemez használatával kezelhetők [az lemez létrehozása](/cli/azure/disk#az_disk_create). Az alábbi példakód létrehozza nevű lemez **myCopiedDisk** nevű felügyelt lemezről **myDisk**:
 
     ```azurecli
     az disk create --resource-group myResourceGroup \
          --name myCopiedDisk --source myDisk
     ``` 
 
-1.  Ellenőrizheti a felügyelt lemezek most az erőforráscsoportban [az Lemezlista](/cli/azure/disk#list). Az alábbi példa felsorolja a felügyelt lemezek nevű erőforráscsoportban **myResourceGroup**:
+1.  Ellenőrizheti a felügyelt lemezek most az erőforráscsoportban [az Lemezlista](/cli/azure/disk#az_disk_list). Az alábbi példa felsorolja a felügyelt lemezek nevű erőforráscsoportban **myResourceGroup**:
 
     ```azurecli
     az disk list --resource-group myResourceGroup --output table
@@ -94,7 +94,7 @@ A virtuális gép másolása hibaelhárítási célokra, vagy további központi
 
 Ha szeretne létrehozni egy virtuális hálózati infrastruktúra a másolt virtuális gépek, hajtsa végre a következő néhány lépést. Ha nem szeretné létrehozni a virtuális hálózatot, folytassa a [4. lépés: virtuális gép létrehozása](#step-4-create-a-vm).
 
-1.  A virtuális hálózat létrehozása a [az hálózati vnet létrehozása](/cli/azure/network/vnet#create). Az alábbi példa létrehoz egy virtuális hálózatot nevű **myVnet** és nevű alhálózat **mySubnet**:
+1.  A virtuális hálózat létrehozása a [az hálózati vnet létrehozása](/cli/azure/network/vnet#az_network_vnet_create). Az alábbi példa létrehoz egy virtuális hálózatot nevű **myVnet** és nevű alhálózat **mySubnet**:
 
     ```azurecli
     az network vnet create --resource-group myResourceGroup \
@@ -104,7 +104,7 @@ Ha szeretne létrehozni egy virtuális hálózati infrastruktúra a másolt virt
         --subnet-prefix 192.168.1.0/24
     ```
 
-1.  Hozzon létre egy nyilvános IP-cím használatával [létrehozása az hálózati nyilvános ip-](/cli/azure/network/public-ip#create). Az alábbi példa létrehoz egy nyilvános IP-cím nevű **myPublicIP** a DNS-nevét **mypublicdns**. (A DNS-név kell egyedinek lennie, így adjon meg egy egyedi nevet.)
+1.  Hozzon létre egy nyilvános IP-cím használatával [létrehozása az hálózati nyilvános ip-](/cli/azure/network/public-ip#az_network_public_ip_create). Az alábbi példa létrehoz egy nyilvános IP-cím nevű **myPublicIP** a DNS-nevét **mypublicdns**. (A DNS-név kell egyedinek lennie, így adjon meg egy egyedi nevet.)
 
     ```azurecli
     az network public-ip create --resource-group myResourceGroup \
@@ -112,7 +112,7 @@ Ha szeretne létrehozni egy virtuális hálózati infrastruktúra a másolt virt
         --allocation-method static --idle-timeout 4
     ```
 
-1.  Hozzon létre a hálózati adapter által használt [az hálózat összevont hálózati létrehozása](/cli/azure/network/nic#create).
+1.  Hozzon létre a hálózati adapter által használt [az hálózat összevont hálózati létrehozása](/cli/azure/network/nic#az_network_nic_create).
     Az alábbi példa létrehoz egy hálózati adapter nevű **myNic** , amely csatolva van a **mySubnet** alhálózati:
 
     ```azurecli
@@ -124,7 +124,7 @@ Ha szeretne létrehozni egy virtuális hálózati infrastruktúra a másolt virt
 
 ## <a name="step-4-create-a-vm"></a>4. lépés: Virtuális gép létrehozása
 
-Mostantól létrehozhat egy virtuális gép használatával [az virtuális gép létrehozása](/cli/azure/vm#create).
+Mostantól létrehozhat egy virtuális gép használatával [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create).
 
 Adja meg a másolt felügyelt lemezt kell használni az operációs rendszer lemezeként (--csatolása operációsrendszer-lemez), az alábbiak szerint:
 
@@ -135,6 +135,6 @@ az vm create --resource-group myResourceGroup \
     --attach-os-disk myCopiedDisk
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Azure CLI használata az új virtuális gép kezelése című témakörben talál [Azure parancssori felület parancsait az Azure Resource Manager](../azure-cli-arm-commands.md).

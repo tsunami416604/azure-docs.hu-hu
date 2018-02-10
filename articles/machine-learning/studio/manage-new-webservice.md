@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2017
-ms.author: v-donglo
-ms.openlocfilehash: 2e71fa46f88ce219bee96a223a034078a037b4d3
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.author: raymondl
+ms.openlocfilehash: 88eba56424d9289a35b7de4dcf5f50191411a09a
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-web-services-portal"></a>Kezelheti egy webszolgáltatás-bővítmény, az Azure Machine Learning webszolgáltatások portál használatával
 A Machine Learning új és a Microsoft Azure Machine Learning webszolgáltatások portálon klasszikus webszolgáltatások segítségével kezelheti. Klasszikus webszolgáltatások és új webes szolgáltatások különböző alapul szolgáló technológiák alapján, mert némileg eltérő felügyeleti képességek állnak a rendelkezésére az egyes őket.

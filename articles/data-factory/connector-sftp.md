@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
-ms.openlocfilehash: 046172d8c4cff880c8e5d59834f5753927fb90c2
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 1d90bafebcd942454b31d0f62b0daf3f01ad6926
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-sftp-server-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory SFTP-kiszolgáló
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -65,7 +65,7 @@ Az egyszerű hitelesítést használ, állítsa "authenticationType" tulajdonsá
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | Felhasználónév | Felhasználó, aki hozzáfér az SFTP-kiszolgálóhoz. |Igen |
-| jelszó | A felhasználó (felhasználónév) jelszavát. Ez a mező megjelölése a SecureString. | Igen |
+| jelszó | A felhasználó (felhasználónév) jelszavát. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen |
 
 **Példa**
 
@@ -104,8 +104,8 @@ SSH nyilvános kulcsos hitelesítés használatához állítsa "authenticationTy
 |:--- |:--- |:--- |
 | Felhasználónév | SFTP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó |Igen |
 | privateKeyPath | Adja meg a titkos kulcsfájl integrációs futásidejű hozzáférő abszolút elérési útja. Csak akkor, ha önálló üzemeltetett integrációs futásidejű van megadva a "connectVia" vonatkozik. | Adja meg a `privateKeyPath` vagy `privateKeyContent`.  |
-| privateKeyContent | Base64 kódolású SSH titkos kulcs tartalmát. Titkos SSH-kulcsot OpenSSH formátumban kell lennie. Ez a mező megjelölése a SecureString. | Adja meg a `privateKeyPath` vagy `privateKeyContent`. |
-| hozzáférési kód | Adja meg a pass kifejezést/jelszót a titkos kulcs visszafejtésére, ha a kulcs fájlját egy hozzáférési kódot védi. Ez a mező megjelölése a SecureString. | Igen, ha a titkos kulcsfájl védik a hozzáférési kód. |
+| privateKeyContent | Base64 kódolású SSH titkos kulcs tartalmát. Titkos SSH-kulcsot OpenSSH formátumban kell lennie. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Adja meg a `privateKeyPath` vagy `privateKeyContent`. |
+| hozzáférési kód | Adja meg a pass kifejezést/jelszót a titkos kulcs visszafejtésére, ha a kulcs fájlját egy hozzáférési kódot védi. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen, ha a titkos kulcsfájl védik a hozzáférési kód. |
 
 > [!NOTE]
 > SFTP-összekötő csak a protokoll OpenSSH-kulcsot támogatja. Győződjön meg arról, hogy a fájl nem megfelelő formátumú. Használhatja a Putty eszközt .ppk átalakítása OpenSSH formátumban.

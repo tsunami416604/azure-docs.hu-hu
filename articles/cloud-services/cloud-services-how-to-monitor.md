@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2018
+ms.date: 01/29/2018
 ms.author: adegeo
-ms.openlocfilehash: 3ffbdb121aa558d69547db294cad83b5d11e3f56
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 9b94d9c66f69fac7c73a70618f782b811d4c9e62
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>Bevezetés a felhőalapú szolgáltatás figyelése
 
@@ -39,9 +39,9 @@ Alapvető figyelését a tárfiók nem szükséges.
 
 ## <a name="advanced-monitoring"></a>Speciális figyelés
 
-Speciális figyelésére használatát foglalja magában a **Azure Diagnostics** bővítmény (és nem kötelezően az Application Insights SDK) a figyelni kívánt szerepkört. A diagnosztika kiterjesztést használ egy konfigurációs fájl (egy szerepkör) nevű **diagnostics.wadcfgx** a figyelt diagnosztika metrikák konfigurálásához. Az adatok Azure Storage-fiók, amely konfigurálva van az Azure diagnosztikai bővítmény gyűjti tárolja a **.wadcfgx** és a [.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) és [.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) fájlokat. Ez azt jelenti, hogy van-e egy plusz költsége speciális figyelést.
+Speciális figyelésére használatát foglalja magában a **Azure Diagnostics** bővítmény (és nem kötelezően az Application Insights SDK) a figyelni kívánt szerepkört. A diagnosztika kiterjesztést használ egy konfigurációs fájl (egy szerepkör) nevű **diagnostics.wadcfgx** a figyelt diagnosztika metrikák konfigurálásához. Az Azure diagnosztikai bővítmény gyűjt, és tárolja az adatokat egy Azure Storage-fiókot. Ezek a beállítások vannak konfigurálva a **.wadcfgx**, [.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef), és [.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) fájlokat. Ez azt jelenti, hogy van-e egy plusz költsége speciális figyelést.
 
-Egyes szerepkörök létrehozását, a Visual Studio ad hozzá az Azure Diagnostics bővítmény azt. A bővítmény gyűjthet információt a következő típusú:
+Egyes szerepkörök létrehozását, a Visual Studio ad hozzá az Azure Diagnostics bővítmény azt. A diagnosztika bővítmény össze tudják gyűjteni a következő típusú információkat:
 
 * Egyéni teljesítményszámlálói
 * Alkalmazásnaplók
@@ -54,12 +54,6 @@ Egyes szerepkörök létrehozását, a Visual Studio ad hozzá az Azure Diagnost
 
 > [!IMPORTANT]
 > Ezeket az adatokat a tárfiók összesítve, amíg a portál does **nem** biztosít a Diagramadat natív módot. Erősen ajánlott, hogy egy másik szolgáltatást, mint az Application Insights az alkalmazásba integrálja.
-
-### <a name="use-application-insights"></a>Az Application Insights használata
-
-Ha közzéteszi a Visual Studio Felhőszolgáltatás, lehetősége van a diagnosztikai adatok küldése az Application Insights lehetőséget. Ekkor az Application Insights Azure-erőforrás létrehozása, vagy elküldheti az adatokat egy meglévő Azure-erőforrás. A felhőalapú szolgáltatás rendelkezésre állási, a teljesítmény, a hibák és a használati Application Insights tudja figyelni. Egyéni diagramok felveheti az Application Insights részére, hogy az adatokat látja, amely a leginkább az Ön számít. Az Application Insights SDK használatával a felhőszolgáltatás-projekt szerepkör példány adatokat lehessen gyűjteni. Az Application Insights integrációjával kapcsolatos további információkért lásd: [Application Insights a Cloud Serviceshez](../application-insights/app-insights-cloudservices.md).
-
-Vegye figyelembe, hogy az Application Insights használhatja a teljesítményszámlálók (és az egyéb beállítások) megjelenítendő adta a Windows Azure diagnosztikai bővítményével csak elérhetővé válik egy gazdagabb élmény az Application Insights SDK integrálásával be a munkavégző és a webes szerepkör.
 
 ## <a name="setup-diagnostics-extension"></a>A telepítő diagnosztika bővítmény
 
@@ -96,7 +90,15 @@ Valószínűleg van két **.cscfg** fájlok, nevű **ServiceConfiguration.cloud.
       -->
 ```
 
+## <a name="use-application-insights"></a>Az Application Insights használata
+
+Ha közzéteszi a Visual Studio Felhőszolgáltatás, lehetősége van a diagnosztikai adatok küldése az Application Insights lehetőséget. Ekkor az Application Insights Azure-erőforrás létrehozása, vagy elküldheti az adatokat egy meglévő Azure-erőforrás. A felhőalapú szolgáltatás rendelkezésre állási, a teljesítmény, a hibák és a használati Application Insights tudja figyelni. Egyéni diagramok felveheti az Application Insights részére, hogy az adatokat látja, hogy a legtöbb számít. Az Application Insights SDK használatával a felhőszolgáltatás-projekt szerepkör példány adatokat lehessen gyűjteni. Az Application Insights integrációjával kapcsolatos további információkért lásd: [Application Insights a Cloud Serviceshez](../application-insights/app-insights-cloudservices.md).
+
+Vegye figyelembe, hogy közben az Application Insights segítségével a teljesítményszámlálók (és az egyéb beállítások) megadott, akkor csak a Windows Azure diagnosztikai bővítményével lekérni egy gazdagabb élmény azokat az Application Insights SDK integrálásával a munkavégző és a webes szerepkör.
+
+
 ## <a name="next-steps"></a>További lépések
 
-- [Ismerje meg az Application Insights a Felhőszolgáltatásokkal.](../application-insights/app-insights-cloudservices.md)
+- [További tudnivalók az Application Insights a Felhőszolgáltatásokkal.](../application-insights/app-insights-cloudservices.md)
+- [Teljesítményszámlálók beállítása](diagnostics-performance-counters.md)
 

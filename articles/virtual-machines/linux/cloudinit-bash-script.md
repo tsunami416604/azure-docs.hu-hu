@@ -14,11 +14,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 1fcc432e8437a7fd284a75aa40454848a2af3006
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 471749563fae5b5de6e98e22ebf2ec5cc9365368
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="use-cloud-init-to-run-a-bash-script-in-a-linux-vm-in-azure"></a>Használja a felhő inicializálás bash parancsfájlok futtatására egy Linux virtuális gépre az Azure-ban
 Ez a cikk bemutatja, hogyan használható [felhő inicializálás](https://cloudinit.readthedocs.io) futtatásához egy meglévő bash parancsfájl egy Linux virtuális gép (VM) vagy virtuálisgép-méretezési (VMSS) beállítja kiépítés idő az Azure-ban. Ezen felhő inicializálás parancsfájlok futtatása az első betöltés után az erőforrásokat az Azure-ban kiépített. Felhő inicializálás működése natív Azure-ban és a Linux támogatott disztribúciókkal kapcsolatos további információkért lásd: [felhő inicializálás áttekintése](using-cloud-init.md)
@@ -28,20 +28,20 @@ A felhő inicializálás nem kell a meglévő parancsfájlok alakítani egy felh
 
 Ha használja a Linux egyéni parancsprogramok futtatására szolgáló Azure bővítmény a parancsfájlok futtatásához, áttelepítheti a felhő inicializálás használhatják. Azonban Azure-bővítményekkel rendelkezik integrált jelentéskészítési riasztáshoz parancsfájl sikertelen, a felhő inicializálás lemezkép-telepítés nem meghiúsul, ha a parancsfájl futása sikertelen.
 
-Tekintse meg ezt a funkciót az a művelet, hozzon létre egy egyszerű bash parancsprogram teszteléséhez. A felhő inicializálás, például `#cloud-config` fájl, a parancsfájl kell elhelyezkednie, ahol fog futni a AzureCLI parancsok a virtuális gép kiépítéséhez.  Hozzon létre a fájl ebben a példában a felhő rendszerhéj nem a helyi számítógépen. A szerkesztő kívánja használata. Adja meg `sensible-editor simple_bash.sh` hozza létre a fájlt, és elérhető szerkesztők listájának megtekintéséhez. Válassza ki a használandó #1 a **nano** szerkesztő. Győződjön meg arról, hogy az egész felhő inicializálás fájl megfelelően lett lemásolva különösen az első sor.  
+Tekintse meg ezt a funkciót az a művelet, hozzon létre egy egyszerű bash parancsprogram teszteléséhez. A felhő inicializálás, például `#cloud-config` fájl, a parancsfájl kell elhelyezkednie, ahol fog futni a AzureCLI parancsok a virtuális gép kiépítéséhez.  Hozzon létre a fájl ebben a példában a felhő rendszerhéj nem a helyi számítógépen. A szerkesztő kívánja használata. Írja be a `sensible-editor simple_bash.sh` parancsot a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. Válassza ki a használandó #1 a **nano** szerkesztő. Győződjön meg arról, hogy az egész felhő inicializálás fájl megfelelően lett lemásolva különösen az első sor.  
 
 ```bash
 #!/bin/sh
 echo "this has been written via cloud-init" + $(date) >> /tmp/myScript.txt
 ```
 
-Ez a rendszerkép telepítés megkezdése előtt hozzon létre egy erőforráscsoportot a kell a [az csoport létrehozása](/cli/azure/group#create) parancsot. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
+Ez a rendszerkép telepítés megkezdése előtt hozzon létre egy erőforráscsoportot a kell a [az csoport létrehozása](/cli/azure/group#az_group_create) parancsot. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-Ezután hozzon létre a virtuális gép és [az virtuális gép létrehozása](/cli/azure/vm#create) és meg kell adni a bash parancsfájlt a `--custom-data simple_bash.sh` az alábbiak szerint:
+Ezután hozzon létre a virtuális gép és [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create) és meg kell adni a bash parancsfájlt a `--custom-data simple_bash.sh` az alábbiak szerint:
 
 ```azurecli-interactive 
 az vm create \
@@ -64,7 +64,7 @@ Módosítsa a **/tmp** könyvtár, és ellenőrizze, hogy myScript.txt fájl lé
 Running config-scripts-user using lock Running command ['/var/lib/cloud/instance/scripts/part-001']
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Konfigurációs módosítások további felhőalapú inicializálás példákért lásd a következő:
  
 - [Egy további Linux-felhasználó hozzáadása a virtuális gépek](cloudinit-add-user.md)

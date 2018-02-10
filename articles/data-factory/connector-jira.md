@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 74b5a792fcc94c4a9ae45b07604e1b392b8df7d1
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 83d8c275e533c59f9380d9c44735912b9219a068
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-jira-using-azure-data-factory-beta"></a>Adatok másolása az Azure Data Factory (béta) használatával Jira
 
@@ -51,7 +51,7 @@ A következő tulajdonságok Jira kapcsolódó szolgáltatás támogatottak:
 | gazdagép | Az IP cím vagy a Jira szolgáltatás neve. (például jira.example.com)  | Igen |
 | port | A TCP-portot, amelyen a Jira kiszolgáló ügyfélkapcsolatokat. Az alapértelmezett érték: 443-as, ha HTTPS vagy a 8080-as keresztül kapcsolódik, ha HTTP Protokollon keresztül csatlakozó.  | Nem |
 | felhasználónév | A felhasználónév Jira szolgáltatás eléréséhez használt.  | Igen |
-| jelszó | A jelszót, amit a felhasználónév mezőben megadott felhasználónév megfelelő. Ez a mező megjelölése a SecureString tárolja biztonságos helyen az ADF, vagy a jelszó tárolása az Azure Key Vault választhat, és lehetővé teszik a másolási tevékenység lekéréses ott adatmásolás végrehajtása során – további információhoz [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). | Igen |
+| jelszó | A jelszót, amit a felhasználónév mezőben megadott felhasználónév megfelelő. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen |
 | useEncryptedEndpoints | Meghatározza, hogy a data source végpontok titkosítása HTTPS használatával. Az alapértelmezett érték: igaz.  | Nem |
 | useHostVerification | Meghatározza, hogy az a számítógép neve a egyeznie kell a gazdagép nevével a kiszolgáló SSL-en keresztüli kapcsolódás esetén a kiszolgáló tanúsítványát. Az alapértelmezett érték: igaz.  | Nem |
 | usePeerVerification | Megadja, hogy a kiszolgáló identitásának ellenőrzése SSL-en keresztüli kapcsolódás esetén. Az alapértelmezett érték: igaz.  | Nem |

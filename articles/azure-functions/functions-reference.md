@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/12/2017
 ms.author: tdykstra
-ms.openlocfilehash: 53ba5eaf3272746bd107efbcbae4b5d5889a197f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 461557b415ec816860acb5308e7aeba34468f4ae
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-functions-developers-guide"></a>Az Azure Functions fejlesztői útmutatója
 Az Azure Functions adott funkciókhoz ossza meg néhány alapvető technikai kulcsfogalmak és összetevők, függetlenül a nyelvet, vagy a kötés használja. Ahhoz, hogy belevágjon tanulási egy adott nyelven vagy a kötési adatait, mindenképpen olvassa végig az áttekintés, amely az összes vonatkozik.
@@ -117,6 +117,8 @@ A kód az Azure Functions nyílt forráskódú, és a GitHub-adattárak tárolja
 Ez az összes támogatott kötések tábla.
 
 [!INCLUDE [dynamic compute](../../includes/functions-bindings.md)]
+
+A kötések érkező hibák problémák történtek? Tekintse át a [Azure Functions kötés hibakódok](functions-bindings-error-pages.md) dokumentációját.
 
 ## <a name="reporting-issues"></a>Jelentéskészítési problémák
 [!INCLUDE [Reporting Issues](../../includes/functions-reporting-issues.md)]

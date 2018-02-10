@@ -15,23 +15,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
 ms.author: genemi
-ms.openlocfilehash: a7e6e319fb2fa8fee762055b625427403d14d679
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: dc652b1d0357a815b14820fc837d7a287e5d4ba0
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application-that-uses-azure-sql-database"></a>Központi telepítése, és vizsgálja meg a szilánkos több-bérlős alkalmazás által használt Azure SQL adatbázis
 
-Ebben az oktatóanyagban telepíti, és megismerkedhet SaaS több-bérlős adatbázis mintaalkalmazás Wingtip jegyek nevű. A Wingtip app tervezték, SaaS-forgatókönyvek végrehajtását egyszerűsítő szolgáltatásairól az Azure SQL Database megjelenítve.
+Ebben az oktatóanyagban telepíti, és egy példa több-bérlős SaaS-alkalmazáshoz Wingtip jegyek nevű vizsgálatát. A Wingtip jegyek app tervezték, SaaS-forgatókönyvek végrehajtását egyszerűsítő szolgáltatásairól az Azure SQL Database megjelenítve.
 
-Ebben az implementációban a Wingtips szilánkos több-bérlős adatbázis mintát alkalmaz. A horizontális van bérlői azonosítóval. Bérlői adatokat egy adott adatbázis a bérlői azonosító értékek alapján történik. Függetlenül attól, hogy hány bérlők bármely adott adatbázis tartalmaz az összes adatbázis rendelkezésre több-bérlős abban az értelemben, hogy a tábla sémái tartalmazzák a bérlő azonosítója. 
+Ez a megvalósítás a Wingtip jegyek alkalmazás szilánkos több-bérlős adatbázis mintát alkalmaz. A horizontális van bérlői azonosítóval. Bérlői adatokat egy adott adatbázis a bérlői azonosító értékek alapján történik. 
 
 Ebben a mintában adatbázis lehetővé teszi egy vagy több tenant minden shard vagy az adatbázis tárolja. Azzal, hogy több bérlő megoszthatók az egyes adatbázisok optimalizálható a legalacsonyabb költséget. Vagy azzal, hogy az egyes adatbázisok csak egy bérlő tárolására is optimalizálhatja az elkülönítés. A optimalizálási választott egymástól függetlenül az egyes konkrét bérlők is végezhető. A kiválasztott is végezhető el, amikor a bérlő először tárolja, vagy később bármikor módosíthatja a szem előtt. Az alkalmazás jól mindkét módszer tervezték.
 
 #### <a name="app-deploys-quickly"></a>Gyorsan telepíti a alkalmazás
 
-A központi telepítés következő szakasz biztosít a kék **az Azure telepítéséhez** gombra. A gomb megnyomott állapota esetén, a Wingtip alkalmazás teljes mértékben telepítve van egy 5 percen belül. A Wingtip app Azure felhőben fut, és az Azure SQL Database. A Wingtip telepítve van az Azure-előfizetéshez. Együttműködik az egyéni alkalmazás-összetevők teljes hozzáféréssel rendelkezik.
+Az alkalmazás Azure felhőben fut, és az Azure SQL Database. A központi telepítés következő szakasz biztosít a kék **az Azure telepítéséhez** gombra. A gomb megnyomott állapota esetén, az alkalmazás teljes mértékben telepítve van az Azure-előfizetéshez öt percen belül. Együttműködik az egyéni alkalmazás-összetevők teljes hozzáféréssel rendelkezik.
 
 Az alkalmazás központi adatokkal három minta bérlők számára. A bérlők együtt egy több-bérlős adatbázisban tárolódnak.
 
@@ -40,7 +40,7 @@ Bárki, aki a C# és PowerShell forráskód letöltheti a Wingtip jegyekhez [a G
 #### <a name="learn-in-this-tutorial"></a>Ismerje meg, az oktatóanyag
 
 > [!div class="checklist"]
-> - Ügyfélszoftverek központi telepítése a Wingtip SaaS-alkalmazáshoz.
+> - Ügyfélszoftverek központi telepítése a Wingtip jegyek SaaS-alkalmazáshoz.
 > - Honnan szerezhetők be az alkalmazás forráskódjához, és a parancsfájlok.
 > - A kiszolgálók és adatbázisok, amelyek az alkalmazás alkotják.
 > - Hogyan bérlők vannak leképezve az adataikat a *katalógus*.
@@ -139,14 +139,14 @@ Egy központi **események Hub** weblap mutató hivatkozásokat biztosít a bér
 
 A bejövő kérelmek terjesztési szabályozására, a Wingtip alkalmazás használ [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). Az események lapról, az egyes bérlők számára a bérlő neve szerepel az URL-CÍMÉT. Minden egyes URL-címet is az adott felhasználó érték. Minden egyes URL-cím obeys látható formátuma a következő lépések segítségével:
 
-- http://events.Wingtip. &lt;Felhasználói&gt;.trafficmanager.net/*fabrikamjazzclub*
+- http://events.wingtip.&lt;USER&gt;.trafficmanager.net/*fabrikamjazzclub*
 
 1. Az események alkalmazás elemzi a bérlő nevét az URL-címről. A bérlő neve *fabrikamjazzclub* az előző példa URL-címben.
 2. Az alkalmazás ezután csak a bérlő nevét, a katalógus használatával eléréséhez kulcs létrehozásához [shard térkép felügyeleti](sql-database-elastic-scale-shard-map-management.md).
 3. Az alkalmazás a katalógust a kulcs talál, és beszerzi a bérlő adatbázis megfelelő helyét.
 4. Az alkalmazás az adatok található, és a bérlőhöz tartozó összes adatot tartalmazó egy adatbázist használ.
 
-#### <a name="events-hub"></a>Események Hub
+#### <a name="events-hub"></a>Events Hub
 
 1. A **események Hub** a bérlők a katalógusban, és azok helyszínek regisztrált sorolja fel.
 2. A **események Hub** kiterjesztett metaadatokat használ a katalógus összeállítani az URL-címeket és minden kapcsolódó a bérlő nevének beolvasására.

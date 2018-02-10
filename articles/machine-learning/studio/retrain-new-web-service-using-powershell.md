@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.author: v-donglo
-ms.openlocfilehash: 630e9958d5083300fdf7910c5fdd47989b0376ad
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.author: raymondl
+ms.openlocfilehash: 2a9302502594fa23d7bde1a71e7b096bc4152e59
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="retrain-a-new-resource-manager-based-web-service-using-the-machine-learning-management-powershell-cmdlets"></a>A Machine Learning Management PowerShell-parancsmagok használatával egy új erőforrás-kezelő alapú webszolgáltatás újratanítása
 Ha újratanítása egy új webszolgáltatás-bővítmény, frissítenie kell hivatkoznia, az új betanított modell a prediktív webszolgáltatás-definíciójának.  
@@ -101,7 +101,7 @@ Végezetül használhatja [frissítés-AzureRmMlWebService](https://msdn.microso
 
     Update-AzureRmMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'  -ServiceUpdates $wsd
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 A Machine Learning PowerShell parancsmagokat használva frissítheti a betanított modell egy prediktív webszolgáltatás forgatókönyvek például engedélyezése:
 
 * Az új adatokat átképezési rendszeres modell.

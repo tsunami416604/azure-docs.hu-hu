@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 34f14f42150e46edae2d1352827f96a411117a62
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: 479e486dca432020d5fcbaf98971a9803888bf98
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Esemény elemzése és a képi megjelenítés az Application insights szolgáltatással
 
@@ -96,11 +96,11 @@ Ha EventFlow az összegyűjtött eseményeket használ, ügyeljen arra, hogy imp
 
 Ügyeljen arra, hogy végezze el a szükséges módosításokat a szűrőket, valamint bármely más bemeneti (valamint a megfelelő NuGet-csomagok) tartalmazza.
 
-## <a name="aisdk"></a>AI. SDK
+## <a name="aisdk"></a>AI.SDK
 
 Általában javasolt EventFlow és ÜVEGVATTA használandó összesítési megoldások, mivel lehetővé teszik több moduláris megközelítésre diagnosztika és a figyelését, azaz a EventFlow a kimenetek módosítani szeretné, ha nem módosítja a tényleges instrumentation, a konfigurációs fájl csak egy egyszerű módosítását igényli. Ha azonban úgy dönt, hogy az Application Insights segítségével beruházásának, és valószínűleg nem módosítható a különböző platform, kell keresnie az való összesítése eseményeket, és elküldi őket AI AI tartozó új SDK használatával. Ez azt jelenti, hogy már nem kell konfigurálnia a adatokat küldeni a AI EventFlow, de ehelyett a ApplicationInsight Service Fabric NuGet csomag telepíti. A csomag a részletek megtalálhatók [Itt](https://github.com/Microsoft/ApplicationInsights-ServiceFabric).
 
-[Az Application Insights mikroszolgáltatások létrehozására és a tárolók támogatása](https://azure.microsoft.com/app-insights-microservices/) elsajátíthatja, hogy néhány új szolgáltatásai a (jelenleg továbbra is a bétaverzió) működő, amely engedélyezi, hogy gazdagabb out-of-az-box figyelési beállítások AI rendelkezik. Ezek közé tartozik a függőségi követési (a szolgáltatások és alkalmazások egy fürt és a köztük folyó kommunikációt egy AppMap létrehozásakor használt), és a szolgáltatások (segíti a hatékonyabb felügyelő a munkafolyamat egy alkalmazás vagy szolgáltatás problémát) érkező nyomkövetési jobb összekapcsolását.
+[Az Application Insights mikroszolgáltatások létrehozására és a tárolók támogatása](https://azure.microsoft.com/en-us/blog/app-insights-microservices/) elsajátíthatja, hogy néhány új szolgáltatásai a (jelenleg továbbra is a bétaverzió) működő, amely engedélyezi, hogy gazdagabb out-of-az-box figyelési beállítások AI rendelkezik. Ezek közé tartozik a függőségi követési (a szolgáltatások és alkalmazások egy fürt és a köztük folyó kommunikációt egy AppMap létrehozásakor használt), és a szolgáltatások (segíti a hatékonyabb felügyelő a munkafolyamat egy alkalmazás vagy szolgáltatás problémát) érkező nyomkövetési jobb összekapcsolását.
 
 Ha a .NET fejleszt, és valószínűleg használ, a Service Fabric programozási modellek és AI használják a platform megjelenítése és esemény és naplózási adatok elemzése a hajlandó, majd ajánlott lépjen a keresztül a AI SDK útvonal, a figyelési, diagnosztikai munkafolyamat. Olvasási [ez](../application-insights/app-insights-asp-net-more.md) és [ez](../application-insights/app-insights-asp-net-trace-logs.md) használatába AI gyűjtése ki és jelenítheti meg a naplók segítségével.
 
@@ -112,7 +112,7 @@ Miután konfigurálta a AI kimenetként az események és a naplókat, informác
 
 Kattintson a **Analytics** léphet vissza az Application Insights Analytics portálra, ahol események és nagyobb hatókörrel és a lehetőség a nyomkövetéseket lekérheti. További információk a következő [az Application Insightsban Analytics](../application-insights/app-insights-analytics.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Állítson be riasztásokat a AI](../application-insights/app-insights-alerts.md) teljesítmény vagy a használati változásaira vonatkozó értesítést
 * [Az Application Insights az észlelést intelligens](../application-insights/app-insights-proactive-diagnostics.md) hajt végre egy proaktív figyelmezteti a felhasználót, mert ez teljesítményproblémákat okozhat AI küldött telemetriai adatok elemzése

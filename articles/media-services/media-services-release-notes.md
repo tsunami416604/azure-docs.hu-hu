@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: juliako
-ms.openlocfilehash: 4775374b7e91930daa686e48e2869b4891615c4c
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 919851db455e1ac727d8c98346d13e45d4336bc7
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-media-services-release-notes"></a>Az Azure Media Services kibocsátási megjegyzései
 Ezek a kibocsátási megjegyzések az Azure Media Services összesítse a módosításokat a korábbi kiadásokban és ismert problémákat.
@@ -190,7 +190,7 @@ A Media Services mostantól lehetővé teszi igény szerinti és élő adatfolya
 
 További információkért lásd: [ebben a blogban](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/).
   
-Használhatja a [Media Services .NET SDK](https://www.nuget.org/packages/windowsazure.mediaservices/) (3.5.1 verziójától kezdve) vagy a REST API AssetDeliveryConfiguration Widevine használatára történő konfigurálásához. 
+Az AssetDeliveryConfiguration Widevine használatára történő beállításához használja a [Media Services .NET SDK-t](https://www.nuget.org/packages/windowsazure.mediaservices/) (a 3.5.1-es vagy egy újabb verziót), vagy a REST API-t. 
 * A Media Services Apple ProRes videók támogatása. A forrás QuickTime-videók Apple ProRes vagy más használó fájlok most már feltöltheti. További információkért lásd: [ebben a blogban](https://azure.microsoft.com/blog/announcing-support-for-apple-prores-videos-in-azure-media-services/).
 * Most már használhatja Media Encoder Standard subclipping és élő archív kiolvasásához elvégzéséhez. További információkért lásd: [ebben a blogban](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/).
 * Az alábbi szűrési frissítések történtek: 
@@ -307,7 +307,7 @@ A [Media Services .NET SDK](http://www.nuget.org/packages/windowsazure.mediaserv
 ### <a id="new_encoder_release"></a>Media Services kódoló kiadás
  A Media Services Azure Media Encoder új kiadásának jelentették. A legújabb Media Encoder meg van szó, csak a kimeneti GB-ban. Ellenkező esetben az új kódoló egy olyan szolgáltatás, amely kompatibilis a korábbi kódoló. További információkért lásd: [Media Services díjszabása].
 
-### <a id="oct_sdk"></a>Media Services .NET SDK-val
+### <a id="oct_sdk"></a>Media Services .NET SDK
 A Media Services SDK .NET-bővítmények verziója most 2.0.0.3.
 
 A Media Services SDK for .NET verziója most 3.0.0.8. A következő frissítéseket történtek:
@@ -348,8 +348,8 @@ A Media Services SDK for .NET verziója most 3.0.0.7
 * Élő adatfolyam-továbbítási minta. További információkért lásd: [a Media Services használata élő adatfolyam](http://msdn.microsoft.com/library/azure/dn783466.aspx).
 * Kulcs kézbesítési szolgáltatás. További információkért lásd: [a dinamikus titkosítás használata AES-128 és a kulcs kézbesítési szolgáltatás](http://msdn.microsoft.com/library/azure/dn783457.aspx).
 * A dinamikus titkosítás AES. További információkért lásd: [a dinamikus titkosítás használata AES-128 és a kulcs kézbesítési szolgáltatás](http://msdn.microsoft.com/library/azure/dn783457.aspx).
-* PlayReady-licenctovábbítási szolgáltatásra. További információkért lásd: [a dinamikus titkosítás használata PlayReady és a kézbesítési szolgáltatás](http://msdn.microsoft.com/library/azure/dn783467.aspx).
-* PlayReady-titkosítás dinamikus. További információkért lásd: [a dinamikus titkosítás használata PlayReady és a kézbesítési szolgáltatás](http://msdn.microsoft.com/library/azure/dn783467.aspx).
+* PlayReady-licenctovábbítási szolgáltatásra. 
+* PlayReady-titkosítás dinamikus. 
 * Media Services PlayReady licenc sablonja. További információkért lásd: a [Media Services PlayReady licenc sablon áttekintése].
 * Adatfolyam tárolási titkosított eszközökre. További információkért lásd: [adatfolyam formájában a tartalmat tároló titkosított](http://msdn.microsoft.com/library/azure/dn783451.aspx).
 
@@ -456,19 +456,19 @@ A következő módosításokat-e adva a júniusi 2013 a Media Services SDK kiad�
 
 * A Media Services SDK-t támogatja, több tároló linking fiókok 2.3.0.0 verziójától kezdve, a Media Services-fiók. A következő API-kat támogatja ezt a szolgáltatást:
   
-    * IStorageAccount típusa
-    * Microsoft.WindowsAzure.MediaServices.Client.CloudMediaContext.StorageAccounts tulajdonság
+    * IStorageAccount type
+    * Microsoft.WindowsAzure.MediaServices.Client.CloudMediaContext.StorageAccounts property
     * StorageAccount tulajdonság
-    * StorageAccountName tulajdonság
+    * StorageAccountName property
   
     További információkért lásd: [Media Services kezelése eszközök több tárfiókok között](http://msdn.microsoft.com/library/azure/dn271889.aspx).
 * Értesítési kapcsolatos API-k. 2.2.0.0 verziójától kezdve, hogy figyelheti az Azure Queue storage értesítésekre. További információkért lásd: [kezelni a Media Services feladat értesítések](http://msdn.microsoft.com/library/azure/dn261241.aspx).
   
     * Microsoft.WindowsAzure.MediaServices.Client.IJob.JobNotificationSubscriptions tulajdonság
-    * Microsoft.WindowsAzure.MediaServices.Client.INotificationEndPoint típusa
+    * Microsoft.WindowsAzure.MediaServices.Client.INotificationEndPoint type
     * Microsoft.WindowsAzure.MediaServices.Client.IJobNotificationSubscription típusa
-    * Microsoft.WindowsAzure.MediaServices.Client.NotificationEndPointCollection típusa
-    * Microsoft.WindowsAzure.MediaServices.Client.NotificationEndPointType típusa
+    * Microsoft.WindowsAzure.MediaServices.Client.NotificationEndPointCollection type
+    * Microsoft.WindowsAzure.MediaServices.Client.NotificationEndPointType type
 * A tárolási ügyfél SDK 2.0 (Microsoft.WindowsAzure.StorageClient.dll) függőség
 * Függőség OData 5.5 (Microsoft.Data.OData.dll)
 

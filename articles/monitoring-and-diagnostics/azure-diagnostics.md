@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2017
 ms.author: robb
-ms.openlocfilehash: 0c6e4d9d2a3744f607b72364f3944c700acd070c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fbeacd2acfd2fba9d26e7cbc94d8660d15c75642
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="what-is-azure-diagnostics"></a>Mi az Azure Diagnostics
 Az Azure Diagnostics a funkció, amely lehetővé teszi a telepített alkalmazás diagnosztikai adatok gyűjtésére Azure belül. Számos különböző forrásokból származó használja a diagnosztika bővítményét. Azure Cloud Service webes és feldolgozói szerepkörök, Microsoft Windows és a Service Fabric rendszert futtató Azure virtuális gépek jelenleg támogatott vannak. Más Azure-szolgáltatásokkal rendelkezik saját külön diagnosztika.
@@ -43,7 +43,7 @@ Az Azure diagnostics-bővítmény, az adatok átviteléhez az Azure storage-fió
 ## <a name="versioning"></a>Verziókezelés
 Lásd: [Azure Diagnostics Rendszerverzió-előzmények](azure-diagnostics-versioning-history.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Válassza ki a diagnosztikai adatok gyűjtéséhez és használja a következő cikkeket a kezdéshez kívánt melyik szolgáltatás. Az általános Azure diagnostics hivatkozásokkal az egyes feladatok esetében.
 
 ## <a name="web-apps"></a>Web Apps
@@ -75,6 +75,6 @@ A kezdéshez [a Service Fabric-alkalmazás figyelése](../service-fabric/service
 ## <a name="general-azure-diagnostics-articles"></a>Általános Azure Diagnostics cikkek
 * [Az Azure Diagnostics séma konfigurációs](https://msdn.microsoft.com/library/azure/mt634524.aspx) -útmutató a fájl az adatgyűjtésre és útvonal-diagnosztikai adatok módosításához. Vegye figyelembe, hogy is használhatja a Visual Studio a fájl módosítása.
 * [Az Azure Storage Azure diagnosztikai adatok tárolási módjára](../cloud-services/cloud-services-dotnet-diagnostics-storage.md) -tábla és blobokat, ha a diagnosztikai adatok írása a nevét.
-* Ismerje meg, hogy [teljesítményszámlálók használata az Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics-performance-counters.md).
+* Ismerje meg, hogy [teljesítményszámlálók használata az Azure Diagnostics](../cloud-services/diagnostics-performance-counters.md).
 * Ismerje meg, hogy [útvonal Azure diagnosztikai adatokat az Application Insights részére](azure-diagnostics-configure-application-insights.md)
 * Ha problémája van diagnosztika indítása, vagy hogy a rendszer az adatok Azure Storage-táblákat, lásd: [Azure Diagnostics hibaelhárítása](azure-diagnostics-troubleshooting.md)

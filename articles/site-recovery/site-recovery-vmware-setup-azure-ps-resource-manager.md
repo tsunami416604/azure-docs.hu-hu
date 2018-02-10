@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/23/2017
+ms.date: 12/19/2017
 ms.author: anoopkv
-ms.openlocfilehash: 035336efa6be0d00c41baba168eaffd80939cc82
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 1b75acb13ac4c8990f99f7454a6de5483f6ca2f1
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="manage-a-process-server-running-in-azure-resource-manager"></a>(Erőforrás-kezelő) Azure-ban futó folyamat kiszolgáló kezelése
 > [!div class="op_single_selector"]
@@ -56,7 +56,7 @@ A feladat-visszavétel során ajánlott telepíteni a folyamatkiszolgáló az Az
   ![Összegzési folyamat-kiszolgáló hozzáadása](./media/site-recovery-vmware-setup-azure-ps-arm/add-ps-page-2.png)
 |**Mező neve**|**Érték**|
 |-|-|
-|Kiszolgálónév|Megjelenített név és a folyamat kiszolgáló virtuális gép állomásnevét|
+|Kiszolgáló neve|Megjelenített név és a folyamat kiszolgáló virtuális gép állomásnevét|
 | Felhasználónév|A felhasználónevet, amely a virtuális gépen a rendszergazda válik|
 |Tárfiók|A tárfiók, ahol kerülnek, a virtuális gép virtuális lemez neve|
 |Alhálózat|Az alhálózat az Azure vnet, amelyhez a virtuális gép csatlakozik|

@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2017
 ms.author: maxluk
-ms.openlocfilehash: 391b691e895c672ef872f8b98c88567175ad8030
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: 70451c5a69a1a268aef0eb957cb92791b92eb221
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>A HDInsight-fürtök kapacitástervezését
 
@@ -89,8 +89,7 @@ A fürt méretezése a virtuális gép csomópontjainak mennyisége határozza m
 
 Attól függően, hogy a fürt típusa feldolgozó csomópontok számának növelésével ad hozzá a további számítási kapacitás (például a több mag), de előfordulhat, hogy a feldolgozott adatok tárolása a memóriában támogatásához az egész fürt számára szükséges memória teljes mennyiségétől is hozzáadhat. Csakúgy, mint a virtuális gép méretét, és írja be a választott, a fürt megfelelő méretezés kiválasztása általában elérésekor empirically, a szimulált munkaterhelések vagy Kanári lekérdezések.
 
-Ki lehet terjeszteni a fürt csúcs terhelés követelményeinek, majd vertikális le, ha azokat a további csomópontokat, már nem szükséges.
-<!-- - see [Scaling - best practices](hdinsight-scaling-best-practices.md). -->
+Ki lehet terjeszteni a fürt csúcs terhelés követelményeinek, majd vertikális le, ha azokat a további csomópontokat, már nem szükséges. További információkért lásd: [méretezési HDInsight-fürtök](hdinsight-scaling-best-practices.md).
 
 ### <a name="cluster-lifecycle"></a>Fürt életciklusa
 

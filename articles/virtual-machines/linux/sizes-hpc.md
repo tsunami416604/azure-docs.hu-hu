@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/08/2017
 ms.author: jonbeck
-ms.openlocfilehash: a235261dc477ab29dc17fe1e680e4e91ae2f4ede
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: cdfd09d90be9696dacc151e138920944c8bbd2c9
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="high-performance-compute-virtual-machine-sizes"></a>Nagy teljesítményű számítási virtuálisgép-méretek
 
@@ -30,13 +30,13 @@ ms.lasthandoff: 11/17/2017
 [!INCLUDE [virtual-machines-common-a8-a9-a10-a11-specs](../../../includes/virtual-machines-common-a8-a9-a10-a11-specs.md)]
 
 ## <a name="rdma-capable-instances"></a>Az RDMA-kompatibilis példányok
-A számítási igényű példányok (H16r, H16mr, A8 és A9) egy részét a beállítást, a távoli közvetlen memória-hozzáférés (RDMA) hálózati kapcsolatot a hálózati adaptert. Ez az interfész mellett más Virtuálisgép-méretek elérhető szabványos Azure hálózati kapcsolat van. 
+A számítási igényű példányok (H16r, H16mr, NC24r, A8 és A9) egy részét a beállítást, a távoli közvetlen memória-hozzáférés (RDMA) hálózati kapcsolatot a hálózati adaptert. Ez az interfész mellett más Virtuálisgép-méretek elérhető szabványos Azure hálózati kapcsolat van. 
   
-Ez az interfész lehetővé teszi az RDMA-kompatibilis példányok egy InfiniBand hálózati FDR sebességét H16r és H16mr virtuális gépek és a gyorsító A8 és A9 virtuális gépek QDR sebességet működő protokollt használó kommunikációra. E RDMA-képességeinek képes javítani, a méretezhetőség és teljesítmény Intel MPI alatt futó Message Passing Interface (MPI) alkalmazások 5.x-es vagy újabb verziója.
+Ez az interfész lehetővé teszi az RDMA-kompatibilisek-e példányok egy InfiniBand hálózaton, működő FDR díjszabás H16r H16mr és NC24r virtuális gépekhez, és QDR díjszabás A8 és A9 virtuális gépekhez való kommunikációhoz. E RDMA-képességeinek képes javítani, a méretezhetőség és teljesítmény Intel MPI alatt futó Message Passing Interface (MPI) alkalmazások 5.x csak. Újabb verzió (2017, 2018), az Intel MPI futásidejű kódtár nem kompatibilisek az Azure RDMA-illesztőprogramokat.
 
 Telepítse az azonos rendelkezésre állási csoport (Ha használja az Azure Resource Manager telepítési modell) vagy felhő ugyanezt a RDMA-kompatibilisek-e virtuális gépek (Ha használja a klasszikus üzembe helyezési modellel). Hajtsa végre az RDMA-kompatibilis Linux virtuális gépet az Azure RDMA hálózati elérésére vonatkozó további követelményeket.
 
-### <a name="distributions"></a>Azokat a terjesztéseket
+### <a name="distributions"></a>Felosztások
  
 A számítási igényű a virtuális gép telepíthető az Azure piactéren, amely támogatja az RDMA-kapcsolatot a képek egyikét:
   
@@ -76,7 +76,7 @@ További rendszerkonfiguráció MPI-feladatok futtatása a fürtözött virtuál
 - [GPU](../windows/sizes-gpu.md)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Első lépésként telepítésére és használatára számítási igényű méretek és rdma-t, Linux, lásd: [MPI alkalmazások futtatásához hozzon létre egy Linux RDMA fürt](classic/rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
 

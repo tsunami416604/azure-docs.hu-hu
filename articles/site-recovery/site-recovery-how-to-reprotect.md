@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 06/05/2017
+ms.date: 02/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: 17a43de3faaa3a146fa9d8f43d36545d6d82b274
-ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
+ms.openlocfilehash: c336966f9a785707e76bc6a10c4a9283d797d064
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="reprotect-from-azure-to-an-on-premises-site"></a>Lássa el újból védelemmel az Azure-ból a helyszíni helyhez
 
@@ -221,13 +221,7 @@ A helyreállítási terv szintjén is állítsa. Replikációs csoport is látha
 
 Miután az ismételt védelem sikeres, a virtuális gép módba lép, egy védett állapotban.
 
-## <a name="next-steps"></a>Következő lépések
-
-Miután a virtuális gép védett állapotba került, [kezdeményezni a feladat-visszavétel](site-recovery-how-to-failback-azure-to-vmware.md#steps-to-fail-back). 
-
-A feladat-visszavételt a virtuális gép az Azure-ban leáll és a helyszíni virtuális gép. Némi állásidőt jelent a alkalmazás várt. Válassza az időpontot a feladat-visszavétel, ha az alkalmazás működését állásidő.
-
-## <a name="common-problems"></a>Gyakori problémák
+## <a name="common-issues"></a>Gyakori problémák
 
 * Ha egy sablon használatával a virtuális gépek létrehozásakor, győződjön meg arról, hogy minden virtuális gép rendelkezik-e a saját a lemezek UUID azonosítója. Ha a helyszíni virtuális gép UUID ütközik a, a fő célkiszolgálón, mert mindkét ugyanazon sablon alapján létrehozott, az ismételt védelem sikertelen lesz. Telepítsen egy másik fő célkiszolgáló ugyanazon sablonból nem lett létrehozva.
 
@@ -245,38 +239,9 @@ A feladat-visszavételt a virtuális gép az Azure-ban leáll és a helyszíni v
 
 * Windows Server 2008 R2 SP1 kiszolgáló védett, mint a helyszíni fizikai kiszolgáló nem sikertelen az Azure-ból a helyszíni-helyhez.
 
-### <a name="common-error-codes"></a>Gyakori hibakódokat
 
-#### <a name="error-code-95226"></a>95226. Hibakód:
+## <a name="next-steps"></a>További lépések
 
-*Védelem-újrabeállítási sikertelen volt, mert a virtuális gépet az Azure nem tudta elérni a helyi konfigurációs kiszolgálót.*
+Miután a virtuális gép védett állapotba került, [kezdeményezni a feladat-visszavétel](site-recovery-how-to-failback-azure-to-vmware.md#steps-to-fail-back). 
 
-Ez akkor fordul elő, amikor 
-1. Az Azure virtuális gép nem tudta elérni a helyszíni konfigurációs kiszolgáló és ezért sikertelen nem felderítése és a konfigurációs kiszolgáló regisztrálva. 
-2. Az InMage Scout szolgáltatás a való kommunikációhoz és a helyszíni konfigurációs kiszolgáló futnia kell az Azure virtuális gépen nem fut a feladatátvétel utáni.
-
-A probléma megoldásához
-1. Gondoskodnia kell arról, hogy az Azure virtuális gép hálózati konfigurálva van, úgy, hogy a virtuális gép kommunikálhat a helyszíni konfigurációs kiszolgáló. Ehhez az szükséges, egy a helyszíni adatközpontját a helyek közötti virtuális magánhálózat beállításához, vagy ExpressRoute kapcsolat konfigurálása a magánhálózati társviszony-létesítés az Azure virtuális gép a virtuális hálózaton. 
-2. Ha már rendelkezik egy hálózatot, hogy a virtuális gépet az Azure kommunikálhat a helyszíni konfigurációs kiszolgáló, majd jelentkezzen be a virtuális gépet, és ellenőrizze a "InMage Scout alkalmazásszolgáltatás". Ha azt láthatja, hogy az InMage Scout alkalmazásszolgáltatás nem fut. Indítsa el kézzel a szolgáltatást, és győződjön meg arról, hogy a szolgáltatás indítási típusa automatikusra van beállítva.
-
-### <a name="error-code-78052"></a>78052. Hibakód:
-Védelem-újrabeállítási a következő hibaüzenettel meghiúsul: *védelmet a virtuális géphez nem lehetett befejezni.*
-
-Ez akkor fordulhat elő két oknál
-1. A virtuális gép, amelyek újbóli védelméhez egy Windows Server 2016. Ez az operációs rendszer curently feladat-visszavétel esetében nem támogatott, de hamarosan elhárítjuk támogatott.
-2. Már van egy virtuális gép ugyanazzal a névvel, a fő célkiszolgáló, amelyek nem vissza.
-
-A probléma megoldásához kiválaszthatja, hogy a védelem-újrabeállítási hoz létre a gépet egy másik gazdagépet, ahol a nevek nem ütköznek egy másik fő célkiszolgáló egy másik gazdagépen. A fő célkiszolgáló egy másik gazdagépen, ha nem történik a névütközés vMotion is. Ha a meglévő virtuális gép szétszórt gép, csak átnevezheti azt, hogy az új virtuális gép is létrehozása ugyanazon az ESXi-állomáson.
-
-### <a name="error-code-78093"></a>78093. Hibakód:
-
-*A virtuális gép nem fut, lefagyott állapotban vagy nem érhető el.*
-
-A állítsa vissza a helyszíni virtuális gép keresztül egy sikertelen, a futó Azure virtuális géphez van szükség. Ez azért, hogy a mobilitási szolgáltatás regisztrálja a konfigurációs kiszolgálón a helyi és elindíthatja a replikáló által a folyamat kiszolgálóval való kommunikáció során. Ha a számítógépen helytelen hálózaton vagy nem fut (lefagyott állam vagy -leállítás), majd a konfigurációs kiszolgáló nem érhető el a mobilitási szolgáltatást a virtuális gépen, a védelem-újrabeállítási megkezdéséhez. A virtuális gépet, hogy a kommunikáció hátsó helyszíni elindíthatja indíthatja újra. Az Azure virtuális gép elindítása után a védelem-újrabeállítási feladat újraindításához
-
-### <a name="error-code-8061"></a>8061. Hibakód:
-
-*Az adattároló nem érhető el az ESXi-állomáson.*
-
-Tekintse meg a [fő cél a szükséges előfeltételek](site-recovery-how-to-reprotect.md#common-things-to-check-after-completing-installation-of-the-master-target-server) és a [datastores támogatja](site-recovery-how-to-reprotect.md#what-datastore-types-are-supported-on-the-on-premises-esxi-host-during-failback) feladat-visszavételhez
-
+A feladat-visszavételt a virtuális gép az Azure-ban leáll és a helyszíni virtuális gép. Némi állásidőt jelent a alkalmazás várt. Válassza az időpontot a feladat-visszavétel, ha az alkalmazás működését állásidő.

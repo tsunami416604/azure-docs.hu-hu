@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 12/18/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a7bd5b8c0534a51c6b6c9e8871be513194d38788
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: 2750bed40707872bb120a7cb7130d8be01aabf7d
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>A Linux virtuális gép létrehozása Azure Resource Manager-sablonok
 Ez a cikk bemutatja, hogyan helyezhet üzembe gyorsan Linux virtuális gépek (VM) az Azure Resource Manager-sablonok és az Azure CLI 2.0. Az [Azure CLI 1.0-s](create-ssh-secured-vm-from-template-nodejs.md) verziójával is elvégezheti ezeket a lépéseket.
@@ -38,7 +38,7 @@ az group create --name myResourceGroup --location eastus
 ```
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
-Az alábbi példakód létrehozza a virtuális gép [Azure Resource Manager sablon](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json) rendelkező [az csoport központi telepítésének létrehozása](/cli/azure/group/deployment#create). Csak SSH hitelesítés engedélyezett. Amikor a rendszer kéri, adja meg a saját nyilvános SSH-kulcs, például a tartalmát értékének *~/.ssh/id_rsa.pub*. Ha egy SSH-kulcspárral létrehozásához szüksége, tekintse meg [létrehozása, és egy SSH-kulcspárral használata a Linux virtuális gépek Azure-ban](mac-create-ssh-keys.md).
+Az alábbi példakód létrehozza a virtuális gép [Azure Resource Manager sablon](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json) rendelkező [az csoport központi telepítésének létrehozása](/cli/azure/group/deployment#az_group_deployment_create). Csak SSH hitelesítés engedélyezett. Amikor a rendszer kéri, adja meg a saját nyilvános SSH-kulcs, például a tartalmát értékének *~/.ssh/id_rsa.pub*. Ha egy SSH-kulcspárral létrehozásához szüksége, tekintse meg [létrehozása, és egy SSH-kulcspárral használata a Linux virtuális gépek Azure-ban](mac-create-ssh-keys.md).
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \
@@ -49,7 +49,7 @@ Az előző példában a Githubon tárolt sablon adott meg. Is letöltheti vagy -
 
 
 ## <a name="connect-to-virtual-machine"></a>Csatlakozás virtuális géphez
-SSH-kapcsolatot a virtuális Gépet, szerezze be a nyilvános IP-cím [az vm megjelenítése](/cli/azure/vm#show):
+SSH-kapcsolatot a virtuális Gépet, szerezze be a nyilvános IP-cím [az vm megjelenítése](/cli/azure/vm#az_vm_show):
 
 ```azurecli
 az vm show \

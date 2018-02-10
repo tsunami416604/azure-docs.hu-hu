@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/17/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ecc50a54feca6c3e9304821e0a5bdbb50708bd11
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: cb99f121a1ddf079008ed97edde71b067d6b5edb
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-network-security-groups-using-the-azure-cli"></a>Hozza létre a hálózati biztonsági csoportokat az Azure parancssori felület használatával
 
@@ -36,9 +36,9 @@ Az alábbi Példaparancsok Azure CLI alapján az előző példában meglévő eg
 
 Az NSG nevű létrehozásához *NSG-előtérbeli* a fenti forgatókönyv alapján, kövesse a lépéseket következő.
 
-1. Ha még nem még konfigurál, a legutóbbi [Azure CLI 2.0](/cli/azure/install-az-cli2) és való bejelentkezéshez az Azure fiók használatával [az bejelentkezési](/cli/azure/#login). 
+1. Ha még nem még konfigurál, a legutóbbi [Azure CLI 2.0](/cli/azure/install-az-cli2) és való bejelentkezéshez az Azure fiók használatával [az bejelentkezési](/cli/azure/#az_login). 
 
-2. Hozzon létre egy NSG-t használ a [az hálózati nsg létrehozása](/cli/azure/network/nsg#create) parancsot. 
+2. Hozzon létre egy NSG-t használ a [az hálózati nsg létrehozása](/cli/azure/network/nsg#az_network_nsg_create) parancsot. 
 
     ```azurecli
     az network nsg create \
@@ -76,7 +76,7 @@ Az NSG nevű létrehozásához *NSG-előtérbeli* a fenti forgatókönyv alapjá
 
 
 
-3. Hozzon létre egy szabályt, amely hozzáférést biztosít a 3389-es port (RDP) az internetről a [az hálózati nsg-szabály létrehozása](/cli/azure/network/nsg/rule#create) parancsot.
+3. Hozzon létre egy szabályt, amely hozzáférést biztosít a 3389-es port (RDP) az internetről a [az hálózati nsg-szabály létrehozása](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) parancsot.
 
     > [!NOTE]
     > Attól függően, hogy a rendszerhéj használ, előfordulhat, hogy módosítania a `*` az argumentumok, hogy ne bontsa ki a következő argumentum végrehajtása előtt a következő karakter.
@@ -171,7 +171,7 @@ Az NSG nevű létrehozásához *NSG-előtérbeli* a fenti forgatókönyv alapjá
     }
     ```
 
-5. Az NSG kötni a **előtér** alhálózat a [az hálózati vnet alhálózati frissítés](/cli/azure/network/vnet/subnet#update) parancs.
+5. Az NSG kötni a **előtér** alhálózat a [az hálózati vnet alhálózati frissítés](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update) parancs.
         
     ```azurecli
     az network vnet subnet update \

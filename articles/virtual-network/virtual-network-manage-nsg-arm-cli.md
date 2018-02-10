@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3c8d9f932746811a5b21dbd667d7c7bdc8f721fb
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 36ff6d8fc956f5c863884e4591cbcb2909fcb200
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="manage-network-security-groups-using-the-azure-cli"></a>Az Azure parancssori felület használatával a hálózati biztonsági csoportok kezelése
 
@@ -35,10 +35,10 @@ ms.lasthandoff: 11/17/2017
 [!INCLUDE [virtual-network-manage-nsg-arm-scenario-include.md](../../includes/virtual-network-manage-nsg-arm-scenario-include.md)]
 
 ## <a name="prerequisite"></a>Előfeltétel
-Ha még nem még konfigurál, a legutóbbi [Azure CLI 2.0](/cli/azure/install-az-cli2) és való bejelentkezéshez az Azure fiók használatával [az bejelentkezési](/cli/azure/#login). 
+Ha még nem még konfigurál, a legutóbbi [Azure CLI 2.0](/cli/azure/install-az-cli2) és való bejelentkezéshez az Azure fiók használatával [az bejelentkezési](/cli/azure/#az_login). 
 
 ## <a name="view-existing-nsgs"></a>Meglévő NSG-k megtekintése
-Egy adott erőforráscsoportban NSG-k listájának megtekintéséhez futtassa a [az nsg lista](/cli/azure/network/nsg#list) parancsot egy `-o table` kimeneti formátum:
+Egy adott erőforráscsoportban NSG-k listájának megtekintéséhez futtassa a [az nsg lista](/cli/azure/network/nsg#az_network_nsg_list) parancsot egy `-o table` kimeneti formátum:
 
 ```azurecli
 az network nsg list -g RG-NSG -o table
@@ -52,7 +52,7 @@ Várt kimenet:
     centralus   NSG-FrontEnd  Succeeded            RG-NSG           <guid>
 
 ## <a name="list-all-rules-for-an-nsg"></a>A szabályok egy NSG listázása
-Az NSG nevű szabályainak megtekintéséhez **NSG-előtér**- ben futtassa a [az hálózati nsg megjelenítése](/cli/azure/network/nsg#show) parancs használatával egy [JMESPATH lekérdezésszűrő](/cli/azure/query-az-cli2) és a `-o table` kimeneti formátum:
+Az NSG nevű szabályainak megtekintéséhez **NSG-előtér**- ben futtassa a [az hálózati nsg megjelenítése](/cli/azure/network/nsg#az_network_nsg_show) parancs használatával egy [JMESPATH lekérdezésszűrő](/cli/azure/query-az-cli2) és a `-o table` kimeneti formátum:
 
 ```azurecli
     az network nsg show \
@@ -75,7 +75,7 @@ Várt kimenet:
     rdp-rule                                                                               Allow     Inbound      3389             *                 *               Internet
     web-rule                                                                               Allow     Inbound      80               *                 *               Internet
 > [!NOTE]
-> Is [az hálózati nsg-szabályok listája](/cli/azure/network/nsg/rule#list) egy NSG-t csak az egyéni szabályok listáját.
+> Is [az hálózati nsg-szabályok listája](/cli/azure/network/nsg/rule#az_network_nsg_rule_list) egy NSG-t csak az egyéni szabályok listáját.
 >
 
 ## <a name="view-nsg-associations"></a>NSG-társítások megtekintése
@@ -151,7 +151,7 @@ Várt kimenet:
 ```
 
 ## <a name="change-a-rule"></a>Szabály módosítása
-A korábban létrehozott szabály módosítása, hogy a bejövő forgalom engedélyezése a **Internet** csak, futtassa a [az hálózati nsg-szabály frissítése](/cli/azure/network/nsg/rule#update) parancs:
+A korábban létrehozott szabály módosítása, hogy a bejövő forgalom engedélyezése a **Internet** csak, futtassa a [az hálózati nsg-szabály frissítése](/cli/azure/network/nsg/rule#az_network_nsg_rule_update) parancs:
 
 ```azurecli
 az network nsg rule update \
@@ -194,7 +194,7 @@ az network nsg rule delete \
 
 
 ## <a name="associate-an-nsg-to-a-nic"></a>Társít egy NSG egy hálózati adapter
-Rendelje hozzá a a **NSG-előtérbeli** NSG a **TestNICWeb1** NIC, használja a [az hálózati nic frissítés](/cli/azure/network/nic#update) parancs:
+Rendelje hozzá a a **NSG-előtérbeli** NSG a **TestNICWeb1** NIC, használja a [az hálózati nic frissítés](/cli/azure/network/nic#az_network_nic_update) parancs:
 
 ```azurecli
 az network nic update \
@@ -277,7 +277,7 @@ Várt kimenet:
 
 ## <a name="dissociate-an-nsg-from-a-nic"></a>A társítást egy NSG-t a hálózati Adapterhez
 
-Leválasztja a **NSG-előtérbeli** az NSG-t a **TestNICWeb1** hálózati adapter, futtassa a [az hálózati nsg-szabály frissítése](/cli/azure/network/nsg/rule#update) újra a parancsot, de cserélje le a `--network-security-group` argumentumot egy üres karakterlánc (`""`).
+Leválasztja a **NSG-előtérbeli** az NSG-t a **TestNICWeb1** hálózati adapter, futtassa a [az hálózati nsg-szabály frissítése](/cli/azure/network/nsg/rule#az_network_nsg_rule_update) újra a parancsot, de cserélje le a `--network-security-group` argumentumot egy üres karakterlánc (`""`).
 
 ```azurecli
 az network nic update --resource-group RG-NSG --name TestNICWeb3 --network-security-group ""
@@ -286,7 +286,7 @@ az network nic update --resource-group RG-NSG --name TestNICWeb3 --network-secur
 A kimenetben a `networkSecurityGroup` kulcs értéke null.
 
 ## <a name="dissociate-an-nsg-from-a-subnet"></a>Az NSG alhálózatból származó leválasztani
-Leválasztja a **NSG-előtérbeli** az NSG-t a **előtér** alhálózati, futtassa újra a [az hálózati nsg-szabály frissítése](/cli/azure/network/nsg/rule#update) újra a parancsot, de cserélje le a `--network-security-group` argumentum egy üres karakterláncot (`""`).
+Leválasztja a **NSG-előtérbeli** az NSG-t a **előtér** alhálózati, futtassa újra a [az hálózati nsg-szabály frissítése](/cli/azure/network/nsg/rule#az_network_nsg_rule_update) újra a parancsot, de cserélje le a `--network-security-group` argumentum egy üres karakterláncot (`""`).
 
 ```azurecli
 az network vnet subnet update \
@@ -340,6 +340,6 @@ Az NSG csak törölheti, ha nem kapcsolódik semmilyen erőforráshoz. Ha törö
     ```azurecli
     az network nsg delete --resource-group RG-NSG --name NSG-FrontEnd
     ```
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Naplózás engedélyezése](virtual-network-nsg-manage-log.md) az NSG-ket.
 

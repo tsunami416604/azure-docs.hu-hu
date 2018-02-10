@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 10/16/2017
+ms.date: 02/05/2018
 ms.author: sethm
-ms.openlocfilehash: 2bf65b7c5b0518da59e767db18fe6f4193e0ab6e
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: 4ce724adc9ca167634be9a0b7137b6a3d54211bf
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="service-bus-diagnostic-logs"></a>A Service Bus diagnosztikai naplók
 
@@ -63,10 +63,10 @@ Naplózza a **OperationalLogs** kategória rögzítéséhez, mi történik, a Se
 
 Műveleti napló JSON karakterláncok a következő táblázatban felsorolt elemeket tartalmazza:
 
-Név | Leírás
+Name (Név) | Leírás
 ------- | -------
 Tevékenységazonosító | Belső azonosító, nyomon követésére használható
-EventName | A művelet neve           
+EventName | Művelet neve           
 resourceId | Az Azure Resource Manager erőforrás-azonosító
 SubscriptionId | Előfizetés azonosítója
 EventTimeString | Művelet ideje
@@ -91,9 +91,9 @@ category | OperationalLogs
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Látogasson el az alábbi hivatkozások tudhat meg többet a Service Bus:
+Tekintse meg a következőket tudhat meg többet a Service Bus:
 
 * [A Service Bus bemutatása](service-bus-messaging-overview.md)
 * [Ismerkedés a Service Bus](service-bus-dotnet-get-started-with-queues.md)

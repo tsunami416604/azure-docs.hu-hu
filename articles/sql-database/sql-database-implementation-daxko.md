@@ -15,14 +15,14 @@ ms.tgt_pltfrm: NA
 ms.workload: Inactive
 ms.date: 01/10/2017
 ms.author: carlrab
-ms.openlocfilehash: 7a05836be4a0879fa7103d070c683f45c06cd741
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 4ecef0526bcdc61d29ae0ee0ac0d55c5651a1b2b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="daxkocsi-used-azure-to-accelerate-its-development-cycle-and-to-enhance-its-customer-services-and-performance"></a>Daxko/CSI Azure használni, annak érdekében, a fejlesztési ciklus, valamint az ügyfélszolgálat és a teljesítmény javítása érdekében
-![Daxko/CSI embléma](./media/sql-database-implementation-daxko/csidaxkologo25.png)
+![Daxko/CSI Logo](./media/sql-database-implementation-daxko/csidaxkologo25.png)
 
 Daxko/CSI szoftver egy ellenőrző tapasztalt: alkalmasságra és újbóli központok az ügyfél alapja gyorsan, növekszik az környezetnek köszönhetően az átfogó vállalati-szoftveres megoldás, sikeres volt, de tartja az IT-infrastruktúra igényekkel növekvő vevő Alap lett tesztelése a vállalat informatikai személyzetet tart fenn. A vállalat egyre növekvő műveletek terhelést jelenthet, különösen a növekvő adatbázisok kezelése által lett korlátozott. Adott műveletek terhelés rosszabb, fejlesztői erőforrások a új kezdeményezések, például a vállalati szoftver új mobilitási szolgáltatásai be lett kivágja.
 
@@ -91,7 +91,6 @@ Azure SQL-adatbázis nem csupán az SpectrumNG ügyfél számára, akiknek a a g
 * Adatbázis-eszközök és a rugalmas méretezést kapcsolatos további információkért lásd: [skálázáshoz rugalmas adatbáziseszközöket és a rugalmas méretezést](sql-database-elastic-scale-get-started.md).
 * SQL Server-adatbázis migrálása kapcsolatos további információkért lásd: lásd: [egy SQL Server-adatbázis áttelepítése az Azure-bA](sql-database-cloud-migrate.md).
 * Aktív georeplikáció kapcsolatos további információkért lásd: [aktív georeplikáció](sql-database-geo-replication-overview.md).
-* Webes és feldolgozói szerepkörök kapcsolatos további információkért lásd: [feldolgozói szerepkörök](../fundamentals-introduction-to-azure.md#compute).    
 * Azure Service Bus kapcsolatos további információkért lásd: [Azure Service Bus](https://azure.microsoft.com/services/service-bus/).
 * Automatikus méretezése kapcsolatos további információkért lásd: [felhőszolgáltatások skálázás](../cloud-services/cloud-services-how-to-scale-portal.md).
 

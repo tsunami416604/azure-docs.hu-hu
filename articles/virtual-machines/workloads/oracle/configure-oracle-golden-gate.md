@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: rclaus
-ms.openlocfilehash: a05711357d345267647c02e42336fd37c09e1bff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5c0011da9d7c57a532589b4b8ae19643ab554c35
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Oracle Golden kapu valósítja meg az Azure Linux virtuális gép 
 
@@ -43,14 +43,14 @@ Az alábbiakban áttekintjük a környezet konfigurációjának összefoglalása
 > | **Számítógép neve** |myVM1 |myVM2 |
 > | **Operációs rendszer** |Oracle Linux 6.x |Oracle Linux 6.x |
 > | **Oracle SID** |CDB1 |CDB1 |
-> | **Replikációs séma** |TESZT|TESZT |
-> | **Tulajdonos vagy replicate Golden kapu** |C ##GGADMIN |REPUSER |
+> | **Replikációs séma** |TEST|TEST |
+> | **Tulajdonos vagy replicate Golden kapu** |C##GGADMIN |REPUSER |
 > | **Golden kapu folyamat** |EXTORA |REPORA|
 
 
 ### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba 
 
-Jelentkezzen be Azure előfizetés a [az bejelentkezési](/cli/azure/#login) parancsot. Ezután kövesse a képernyőn megjelenő utasításokat.
+Jelentkezzen be Azure előfizetés a [az bejelentkezési](/cli/azure/#az_login) parancsot. Ezután kövesse a képernyőn megjelenő utasításokat.
 
 ```azurecli
 az login
@@ -58,7 +58,7 @@ az login
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#create) paranccsal. Egy Azure erőforráscsoport egy olyan logikai tároló mely Azure-erőforrások vannak telepítve és onnan, ami által kezelhető legyen. 
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. Egy Azure erőforráscsoport egy olyan logikai tároló mely Azure-erőforrások vannak telepítve és onnan, ami által kezelhető legyen. 
 
 A következő példában létrehozunk egy `westus` nevű erőforráscsoportot a `myResourceGroup` helyen.
 
@@ -80,7 +80,7 @@ az vm availability-set create \
 
 ### <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
-Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#create) paranccsal. 
+Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az_vm_create) paranccsal. 
 
 Az alábbi példakód létrehozza nevű két virtuális gép `myVM1` és `myVM2`. SSH-kulcsok létrehozása, ha még nem léteznek a kulcs alapértelmezett helye. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.
 
@@ -436,7 +436,7 @@ Oracle Golden kapu telepítéséhez kövesse az alábbi lépéseket:
 
   ![A telepítő telepítési válasszon oldalát bemutató képernyőkép](./media/oracle-golden-gate/golden_gate_install_01.png)
 
-3. Módosíthatja a szoftver helyét. Válassza ki a **Start Manager** mezőbe, majd adja meg az adatbázis helyén. Válassza ki **tovább** a folytatáshoz.
+3. Módosíthatja a szoftver helyét. Válassza ki a **Start Manager** mezőbe, majd adja meg az adatbázis helyén. A folytatáshoz kattintson a **Tovább** gombra.
 
   ![A telepítés válasszon oldalát bemutató képernyőkép](./media/oracle-golden-gate/golden_gate_install_02.png)
 
@@ -803,7 +803,7 @@ Ha már nincs szükség, az alábbi parancs segítségével távolítsa el az er
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Magas rendelkezésre állású virtuális gép létrehozása oktatóanyag](../../linux/create-cli-complete.md)
 

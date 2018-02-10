@@ -2,23 +2,17 @@
 title: "Kapacitástervezés és a VMware-replikáció az Azure szolgáltatásban az Azure Site Recovery skálázás |} Microsoft Docs"
 description: "Ez a cikk terv kapacitás és a skála használja, ha VMware virtuális gépek replikálása Azure-bA az Azure Site Recovery szolgáltatással"
 services: site-recovery
-documentationcenter: 
 author: rayne-wiselman
-manager: jwhit
-editor: 
-ms.assetid: 0a1cd8eb-a8f7-4228-ab84-9449e0b2887b
+manager: carmonm
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 10/30/2017
+ms.date: 02/07/2018
 ms.author: rayne
-ms.openlocfilehash: 0f4d82d450a6ca2e73c68452a409f300841dbf32
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: 02f5a7270b5d8b7657a585fce99946cff8ed8d67
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-replication-with-azure-site-recovery"></a>Kapacitás és a VMware-replikáció az Azure Site Recovery méretezés tervezése
 
@@ -38,11 +32,11 @@ A replikálási környezetre vonatkozó információt parancsprogram futtatásá
 
 ## <a name="size-recommendations-for-the-configuration-server"></a>A konfigurációs kiszolgáló méretével kapcsolatos megfontolások
 
-**PROCESSZOR** | **Memória** | **Gyorsítótár-lemez mérete** | **Adatváltozási sebesség** | **Védett gépek**
+**CPU** | **Memória** | **Gyorsítótár-lemez mérete** | **Adatváltozási sebesség** | **Védett gépek**
 --- | --- | --- | --- | ---
 8 Vcpu (2 sockets * @ 2,5 gigahertz [GHz] 4 mag) | 16 GB | 300 GB | 500 GB vagy kevesebb | 100-nál kevesebb gépek replikálása.
 12 Vcpu (2 sockets * @ 2,5 GHz-es 6 mag) | 18 GB | 600 GB | 1 TB 500 GB | 100-150 gépek közti replikálásához.
-16 Vcpu (2 sockets * @ 2,5 GHz-es 8 mag) | 32 GB | 1 TB | 1 TB-os és 2 TB | 150-200 gépek közti replikálásához.
+16 Vcpu (2 sockets * @ 2,5 GHz-es 8 mag) | 32 GB | 1 TB | 1 TB to 2 TB | 150-200 gépek közti replikálásához.
 Egy másik folyamat-kiszolgáló központi telepítése | | | > 2 TB | Ha több mint 200 gépeket replikál, vagy ha napi módosítása aránya meghaladja a 2 TB további folyamat kiszolgálók telepítése
 
 Az elemek magyarázata:
@@ -68,7 +62,7 @@ A következő táblázat egy olyan forgatókönyvet, amelyben:
 --- | --- | --- | --- | ---
 8 Vcpu (2 sockets * @ 2,5 GHz, 4 mag), 16 GB memória | 4 Vcpu (2 sockets * @ 2,5 GHz-es 2 mag), 8 GB memória | 300 GB | 250 GB vagy kevesebb | 85 vagy kevesebb gépek replikálása.
 8 Vcpu (2 sockets * @ 2,5 GHz, 4 mag), 16 GB memória | 8 Vcpu (2 sockets * @ 2,5 GHz, 4 mag), 12 GB memória | 600 GB | 250 GB és 1 TB | Replikálja a 85-150 gépek között.
-12 Vcpu (2 sockets * @ 2,5 GHz-es 6 mag), 18 GB memória | 12 Vcpu (2 sockets * @ 2,5 GHz-es 6 mag) 24 GB memória | 1 TB | 1 TB-os és 2 TB | 150-225 gépek közti replikálásához.
+12 Vcpu (2 sockets * @ 2,5 GHz-es 6 mag), 18 GB memória | 12 Vcpu (2 sockets * @ 2,5 GHz-es 6 mag) 24 GB memória | 1 TB | 1 TB to 2 TB | 150-225 gépek közti replikálásához.
 
 Amelyben a kiszolgálók méretezése módja attól függ, hogy egy méretezett és kibővített modell igény szerint.  Vertikális felskálázás néhány csúcskategóriás konfigurációs és folyamat-kiszolgálók üzembe helyezésével, vagy kevesebb erőforrást további kiszolgálók üzembe helyezésével kiterjesztése. Például ha 220 gépek védelmére van szüksége, módszerekkel a következők:
 
@@ -140,6 +134,6 @@ Ha rendelkezik méretezési ki a központi telepítés meghaladja a 200 forrásg
 3. A **válassza folyamat-célkiszolgálót**, válassza ki a használni kívánt új folyamat kiszolgálót, majd válassza ki a virtuális gépek, amelyek a kiszolgáló fogja kezelni. Kattintson az ikonra az a kiszolgáló adatainak beolvasása. Annak érdekében, hogy a döntések tölthető be, szükség van az összes kiválasztott virtuális gépet replikálni az új folyamatkiszolgáló átlagos terület jelenik meg. Kattintson a pipa jelre az új folyamatkiszolgáló a replikáló elindításához.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Töltse le és futtassa a [Azure Site Recovery telepítési Planner](https://aka.ms/asr-deployment-planner)

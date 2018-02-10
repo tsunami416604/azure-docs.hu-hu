@@ -9,7 +9,7 @@ A következő táblázat felsorolja a IoT Hub eszköz kiépítése szolgáltatá
 | A CA-k maximális száma | 10 |
 
 > [!NOTE]
-> Azok a nyilvános előzetes verziójához. Ha a szolgáltatás általánosan elérhető, akkor vegye fel a kapcsolatot [Microsoft Support](https://azure.microsoft.com/support/options/) az előfizetésében szereplő példányok számának növeléséhez.
+> Felveheti a kapcsolatot [Microsoft Support](https://azure.microsoft.com/support/options/) az előfizetésében szereplő példányok számának növeléséhez.
 
 Az eszköz kiépítése szolgáltatáshoz azelőtt gyorsítja fel kérelmeket, a következő kvóták túllépése esetén:
 

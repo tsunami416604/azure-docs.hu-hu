@@ -8,13 +8,13 @@ editor: spelluru
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 6df7d74d572a59c83105905fbe0a9e218aadc28f
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: b5dbf4b7ae0fc1f8871fbf6df1a29f0f7324d83a
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Adatok másolása az Amazon egyszerű Társzolgáltatás Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -37,9 +37,9 @@ Pontosabban, az Amazon S3 összekötő támogatja-e a fájlok másolása,-, vagy
 Adatok másolása az Amazon S3, győződjön meg arról, hogy rendelkezik a következő engedélyekkel:
 
 - `s3:GetObject`és `s3:GetObjectVersion` Amazon S3 objektum műveletekhez.
-- `s3:ListBucket`Amazon S3 gyűjtő műveletekhez. A Data Factory másolása varázsló használata `s3:ListAllMyBuckets` is szükség.
+- `s3:ListBucket`vagy `s3:GetBucketLocation` Amazon S3 gyűjtő műveletekhez. A Data Factory másolása varázsló használata `s3:ListAllMyBuckets` is szükség.
 
-A teljes listát az Amazon S3 engedélyekkel kapcsolatos részletekért lásd: [megadása engedélyeket egy házirendben](http://docs.aws.amazon.com/amazons3/latest/dev/using-with-s3-actions.html).
+A teljes listát az Amazon S3 engedélyekkel kapcsolatos részletekért lásd: [megadása engedélyeket egy házirendben](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html).
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -55,7 +55,7 @@ Amazon S3 kapcsolódó szolgáltatás támogatott a következő tulajdonságokka
 |:--- |:--- |:--- |
 | type | A type tulajdonságot meg kell **AmazonS3**. | Igen |
 | accessKeyId | A titkos hívóbetű azonosítója. |Igen |
-| secretAccessKey | A titkos hívóbetű magát. Ez a mező megjelölése a SecureString. |Igen |
+| secretAccessKey | A titkos hívóbetű magát. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). |Igen |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhat Azure integrációs futásidejű vagy Self-hosted integrációs futásidejű (amennyiben az adattároló magánhálózaton található). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
 
 >[!NOTE]

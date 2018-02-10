@@ -6,11 +6,11 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 01/08/2018
 ms.author: raynew
-ms.openlocfilehash: 67661e03e65cde3ec2f1aafd5ef755899cf0c77b
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 2e17d30dcc95677053fd6c8c1ee75fd3cc0afb5b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Fedezze fel és nagy VMware-környezet felmérése
 
@@ -38,7 +38,7 @@ Tervezze meg a felderítések és a vizsgálatok során a következő korlátoz�
 - Ha 1,001 való 1500 gépekkel rendelkezik, két felderítések azt az egyetlen projekt kell.
 - Ha több mint 1500 gépekkel rendelkezik, akkor kell hozzon létre több projektet, és hajtsa végre több felderítések, a követelményeknek megfelelően. Példa:
     - Ha 3000 olyan gépeken, állíthat be két felderítések-projektek két vagy három projektek egy adott felderítési.
-    - Ha 5000 gépekkel rendelkezik, akkor állíthatja négy projektek: két 1500 gépek felderítést, és a felderítés 500 gépek másikat. Másik lehetőségként állíthat be egy adott felderítési egyes öt projektek. 
+    - Ha 5000 gépekkel rendelkezik, akkor állíthatja négy projektek: három 1500 gépek felderítést, és a felderítés 500 gépek másikat. Másik lehetőségként állíthat be egy adott felderítési egyes öt projektek. 
 
 ## <a name="plan-multiple-discoveries"></a>Több felderítések megtervezése
 
@@ -49,7 +49,7 @@ Az azonos Azure áttelepítése gyűjtő segítségével egy vagy több projekte
 - Azt javasoljuk, értékelési célokra, akkor ne gépek egymástól függő szolgáltatásainak ugyanabban a projektben és értékelési belül. A vCenter Server ellenőrizze, hogy a függő gépek ugyanazon a mappa, datacenter vagy fürt értékeléséhez.
 
 
-## <a name="create-a-project"></a>Projekt létrehozása
+## <a name="create-a-project"></a>A projekt létrehozása
 
 A követelményeknek megfelelően Azure áttelepítése projekt létrehozása:
 
@@ -88,9 +88,9 @@ Ellenőrizze, hogy a petesejtek fájlt biztonságos telepítése előtt:
 
     **Algoritmus** | **Kivonat értéke**
     --- | ---
-    MD5 | 8779eea842a1ac465942295c988ac0c7
-    SHA1 | c136c52a0f785e1fd98865e16479dd103704887d
-    SHA256 | 5143b1144836f01dd4eaf84ff94bc1d2c53f51ad04b1ca43ade0d14a527ac3f9
+    MD5 | cefd96394198b92870d650c975dbf3b8
+    SHA1 | 4367a1801cf79104b8cd801e4d17b70596481d6f
+    SHA256 | fda59f076f1d7bd3ebf53c53d1691cc140c7ed54261d0dc4ed0b14d7efef0ed9
 
     A petesejtek verziója 1.0.8.40:
 
@@ -134,7 +134,7 @@ A következő táblázatban a értékelési eredmények, amelyek befolyásolják
 |A számláló                                  |Szint    |Eszközönkénti szint  |Értékelés gyakorolt hatás                               |
 |-----------------------------------------|---------|------------------|------------------------------------------------|
 |CPU.Usage.average                        | 1       |NA                |Ajánlott Virtuálisgép-méretet és költség                    |
-|mem.Usage.average                        | 1       |NA                |Ajánlott Virtuálisgép-méretet és költség                    |
+|mem.usage.average                        | 1       |NA                |Ajánlott Virtuálisgép-méretet és költség                    |
 |virtualDisk.read.average                 | 2       |2                 |Lemez méretét, a tárolási költségek és a Virtuálisgép-méretet         |
 |virtualDisk.write.average                | 2       |2                 |Lemez méretét, a tárolási költségek és a Virtuálisgép-méretet         |
 |virtualDisk.numberReadAveraged.average   | 1       |3                 |Lemez méretét, a tárolási költségek és a Virtuálisgép-méretet         |

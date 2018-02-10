@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 736d286bb7b97e842e73afd362ba70a42d1a9d9d
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 62036e8a4e0611958ffacf7f7d7896e6ebde5e16
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory-beta"></a>Adatok másolása az Azure Data Factory (béta) használatával Amazon piactér webszolgáltatás
 
@@ -51,9 +51,9 @@ Amazon piactér webszolgáltatás kapcsolódó szolgáltatás támogatott a köv
 | endpoint | A végpont és az Amazon MWS server (Ez azt jelenti, hogy mws.amazonservices.com)  | Igen |
 | marketplaceID | Az Amazon Piactér azonosítója szeretné beolvasni az adatokat. Adatok lekérése több piactér azonosítók, válassza el őket egy vesszővel (`,`). (Ez azt jelenti, hogy A2EUQ1WTGCTBG2)  | Igen |
 | sellerID | Az Amazon értékesítő azonosítóját.  | Igen |
-| mwsAuthToken | Az Amazon MWS hitelesítési jogkivonat. Ez a mező megjelölése a SecureString tárolja biztonságos helyen a Data Factory szolgáltatás, vagy a jelszó tárolása az Azure Key Vault választhat, és lehetővé teszik a másolási valók lekéréses ott adatmásolás végrehajtása során – további információhoz [hitelesítő adatok tárolása a Key Vault ](store-credentials-in-key-vault.md). | Igen |
+| mwsAuthToken | Az Amazon MWS hitelesítési jogkivonat. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen |
 | accessKeyId | A hozzáférési kulcs adatok eléréséhez használt azonosítója.  | Igen |
-| secretKey | Az adatok eléréséhez használt titkos kulcs. Ez a mező megjelölése a SecureString tárolja biztonságos helyen az ADF, vagy a jelszó tárolása az Azure Key Vault választhat, és lehetővé teszik a másolási valók lekéréses ott adatmásolás végrehajtása során – további információhoz [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). | Igen |
+| secretKey | Az adatok eléréséhez használt titkos kulcs. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen |
 | useEncryptedEndpoints | Meghatározza, hogy a data source végpontok titkosítása HTTPS használatával. Az alapértelmezett érték: igaz.  | Nem |
 | useHostVerification | Meghatározza, hogy az a számítógép neve a egyeznie kell a gazdagép nevével a kiszolgáló SSL-en keresztüli kapcsolódás esetén a kiszolgáló tanúsítványát. Az alapértelmezett érték: igaz.  | Nem |
 | usePeerVerification | Megadja, hogy a kiszolgáló identitásának ellenőrzése SSL-en keresztüli kapcsolódás esetén. Az alapértelmezett érték: igaz.  | Nem |

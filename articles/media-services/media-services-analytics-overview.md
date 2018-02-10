@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: milanga;juliako;johndeu
-ms.openlocfilehash: c0bbe6f80370515fa783b12757434897fe2221b6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 88c854a6a2bc98a6851246c0ac3481869bbd9c34
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>A Media Services platform Médiaelemzés használatával
 ## <a name="overview"></a>Áttekintés
@@ -34,7 +34,7 @@ A következő ábrán az látható, Médiaelemzés és egyéb a Media Services p
 
 A Médiaelemzés médiafeldolgozói MP4- vagy JSON-fájlokat hoznak létre. Egy media processzor MP4-fájlokat hoz létre, ha fokozatosan lehet letölteni a fájlt. Egy media processzor JSON-fájlt hoz létre, ha az Azure Blob storage letöltheti a fájlt. 
 
-## <a name="media-analytics-services"></a>Médiaelemzés-szolgáltatások
+## <a name="media-analytics-services"></a>Media Analytics services
 
 ### <a name="indexer"></a>Indexelő
 Az Azure Media Indexer hogy tartalom kereshető és készítése kódolt-feliratok követi nyomon. Az előző verzió képest, Azure Media Indexer 2 Preview rendelkezik gyorsabban indexelési és szélesebb körű nyelv támogatja. Támogatott nyelvek angol, német, francia, német, olasz, kínai, portugál és arab. Részletes útmutatást és példákat, lásd: [videók feldolgozása az Azure Media Indexer 2](media-services-process-content-with-indexer2.md).
@@ -50,6 +50,8 @@ Videóösszegzés segítségével létre videók kijelölésével automatikusan 
 Az Azure Media OCR (optikai karakter használata) átalakíthatja videofájlok a szöveges tartalom szerkeszthető, kereshető digitális szöveg. A médiafájlt a videó jel jelentéssel bíró metaadatok kibontásával majd automatizálható.
 ### <a name="scalable-face-redaction"></a>Méretezhető arcfelismerési kivonási
 Az Azure Media Redactor kínál a felhőben méretezhető arcfelismerési kivonási Médiaelemzés media processzor. Arcfelismerési kivonási használatával módosíthatja az lehetőséget felületei kijelölt személyek a videó. Előfordulhat, hogy használni kívánt a tapasztalt kivonási szolgáltatás hírek media, vagy ha nyilvános biztonsági van szó. Több lapokat tartalmazó felvételei, néhány perc múlva a kivonás a manuálisan órát is igénybe vehet, de ezzel a szolgáltatással arcfelismerési kivonási tart néhány egyszerű lépésben. További információkért lásd: a [az Azure Media Analytics lapok kivonás](media-services-face-redaction.md) cikk.
+### <a name="content-moderation"></a>Tartalom-jóváhagyás
+Azure tartalom moderátor lehetővé teszi, hogy a videók gép támogatású moderálás használhat. Például előfordulhat, hogy kívánt lehetséges felnőtt és ellopható tartalom észlelése a videók, és tekintse át a megjelölt tartalom emberi moderálás csapat által. Sok időt vesz igénybe, és költséges feladat manuálisan moderálás a videók nemkívánatos tartalom. A szolgáltatás és a kapcsolódó felülvizsgálati eszközök kombinálásával gép támogatású moderálás a legjobb eredmények elérése érdekében emberi hurok kezelésére képes hatékonyan és gazdaságosan. További tudnivalókért tekintse meg a [a videók feldolgozása az Azure Content moderátor](media-services-content-moderation.md) cikk.
 
 ## <a name="common-scenarios"></a>Gyakori forgatókönyvek
 Media Analytics segítségével a szervezetek és vállalatok glean videó új információkat kaphat, és több hogyan kezelhet hatékonyan videotartalom nagy mennyiségű. Az alábbiakban néhány forgatókönyv:
@@ -69,6 +71,7 @@ Ebben a szakaszban a Médiaelemzés media processzorok sorolja fel, és a media 
 * Azure Media Motion Detector
 * Azure Media Video Thumbnails
 * Azure Media OCR
+* Az Azure Media tartalom moderátor
 
 ### <a name="net"></a>.NET
 A következő függvény egyikét a megadott felügyeleti csomag nevét, és a felügyeleti csomag objektum beállítása/beolvasása.
@@ -123,11 +126,6 @@ Válasz:
 ## <a name="demos"></a>Bemutatók
 Lásd: [Azure Médiaelemzés használatával bemutatók](http://azuremedialabs.azurewebsites.net/demos/Analytics.html).
 
-## <a name="next-steps"></a>Következő lépések
-Tekintse át a Media Services képzési terveket.
-
-[!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
-
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
@@ -137,3 +135,8 @@ Lásd: [Médiaelemzés-szolgáltatások közlemény](https://azure.microsoft.com
 <!-- Images -->
 
 [overview]: ./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png
+
+## <a name="next-steps"></a>További lépések
+Tekintse át a Media Services képzési terveket.
+
+[!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

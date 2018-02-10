@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: damaerte
-ms.openlocfilehash: b454720dd5bd2df036a400c8bfc1c383de5af542
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 71ae70c13b4de87593345fd957a773741294b49c
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell-preview"></a>Gyors üzembe helyezés PowerShell Azure-felhőbe rendszerhéj (előzetes verzió)
 
@@ -41,7 +41,7 @@ Ez a dokumentum részletesen a PowerShell használatával a felhő rendszerhéj 
 
 Rendszeres PowerShell-parancsok futtatásával a felhő rendszerhéj, például:
 
-```Powershell
+```PowerShell
 PS Azure:\> Get-Date
 Monday, September 25, 2017 08:55:09 AM
 
@@ -58,13 +58,13 @@ MyResourceGroup         MyVM2       eastus   Standard_DS2_v2_Promo  Windows    S
 
  1. Az előfizetések felsorolása
 
-    ``` Powershell
+    ``` PowerShell
     PS Azure:\> dir
     ```
 
  2. `cd`az előnyben részesített előfizetéséhez
 
-    ``` Powershell
+    ``` PowerShell
     PS Azure:\> cd MySubscriptionName
     PS Azure:\MySubscriptionName>
     ```
@@ -184,20 +184,20 @@ TestVm10   MyResourceGroup2   eastus    Standard_DS1_v2 Windows           mytest
  > [!WARNING]
  > Tekintse meg [hibaelhárítása az Azure virtuális gépek távoli felügyeleti](troubleshooting.md#powershell-resolutions).
 
-  Feltéve, hogy egy virtuális MyVM1, most használja `Invoke-AzureRmVMCommand` meghívni egy PowerShell parancsprogram-blokk a távoli számítógépen.
+  Feltéve, hogy egy virtuális MyVM1, most használja `Invoke-AzureRmVMCommand` meghívni a PowerShell parancsprogram-blokkot tartalmazzon a távoli számítógépen.
 
   ``` Powershell
   Invoke-AzureRmVMCommand -Name MyVM1 -ResourceGroupName MyResourceGroup -Scriptblock {Get-ComputerInfo} -EnableRemoting
   ```
   Is keresse meg a virtuális gép könyvtárba, és futtassa `Invoke-AzureRmVMCommand` az alábbiak szerint.
 
-  ``` Powershell
+  ``` PowerShell
   PS Azure:\> cd MySubscriptionName\MyResourceGroup\Microsoft.Compute\virtualMachines
   PS Azure:\MySubscriptionName\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Invoke-AzureRmVMCommand -Scriptblock{Get-ComputerInfo}
   ```
   A kimenet az alábbihoz hasonló jelenik meg:
 
-  ``` Powershell
+  ``` PowerShell
   PSComputerName                                          : 65.52.28.207
   RunspaceId                                              : 2c2b60da-f9b9-4f42-a282-93316cb06fe1
   WindowsBuildLabEx                                       : 14393.1066.amd64fre.rs1_release_sec.170327-1835
@@ -215,13 +215,13 @@ TestVm10   MyResourceGroup2   eastus    Standard_DS1_v2 Windows           mytest
 
 Használhat `Enter-AzureRmVM` Azure-beli virtuális gép interaktívan bejelentkezni.
 
-  ``` Powershell
+  ``` PowerShell
   Enter-AzureRmVM -Name MyVM1 -ResourceGroupName MyResourceGroup -EnableRemoting
   ```
 
-Akkor is megtalálhatja a `virtualMachines` directory első és futtatási `Enter-AzureRmVM` az alábbiak szerint
+Akkor is megtalálhatja a `VirtualMachines` directory első és futtatási `Enter-AzureRmVM` az alábbiak szerint
 
-  ``` Powershell
+  ``` PowerShell
  PS Azure:\MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Enter-AzureRmVM
  ```
 
@@ -266,20 +266,20 @@ mywebapp3       Running  MyResourceGroup3   {mywebapp3.azurewebsites.net...   So
 
 ## <a name="ssh"></a>SSH
 
-[A Win32-OpenSSH](https://github.com/PowerShell/Win32-OpenSSH) PowerShell CloudShell érhető el.
-Hitelesítés kiszolgálók vagy az SSH használatával virtuális gépek, a nyilvános-titkos kulcsból álló kulcspárt CloudShell létrehozni, és közzéteszi a nyilvános kulcsot a `authorized_keys` a távoli számítógépen, mint például `/home/user/.ssh/authorized_keys`.
+[A Win32-OpenSSH](https://github.com/PowerShell/Win32-OpenSSH) PowerShell felhő rendszerhéj érhető el.
+Hitelesítés kiszolgálók vagy az SSH használatával virtuális gépek, a nyilvános-titkos kulcsból álló kulcspárt felhő rendszerhéj létrehozni, és közzéteszi a nyilvános kulcsot a `authorized_keys` a távoli számítógépen, mint például `/home/user/.ssh/authorized_keys`.
 
 > [!NOTE]
-> SSH nyilvános és titkos kulcsok használatával hozhat létre `ssh-keygen` és közzétenni a `$env:USERPROFILE\.ssh` a CloudShell.
+> SSH nyilvános és titkos kulcsok használatával hozhat létre `ssh-keygen` és közzétenni a `$env:USERPROFILE\.ssh` felhő rendszerhéjban.
 
 ### <a name="using-a-custom-profile-to-persist-git-and-ssh-settings"></a>Egy egyéni profilt használ a GIT és az SSH-beállítások megtartására
 
-Mivel munkamenetek nem maradnak kijelentkezési, mentse a `$env:USERPROFILE\.ssh` mappa `CloudDrive` , vagy hozzon létre egy symlink CloudShell lekérdezi indításakor.
-Adja hozzá a következő kódot a profile.ps1 egy symlink CloudDrive történő létrehozásához a parancsmaghoz.
+Mivel munkamenetek nem maradnak kijelentkezési, mentse a `$env:USERPROFILE\.ssh` mappa `CloudDrive` , vagy hozzon létre egy symlink felhő rendszerhéj lekérdezi indításakor.
+Adja hozzá a következő kódrészletet a profile.ps1 egy symlink CloudDrive történő létrehozásához a.
 
-``` Powershell
-# Check if the ssh folder exists
-if( -not (Test-Path $home\CloudDrive\.ssh){
+``` PowerShell
+# Check if the .ssh folder exists
+if( -not (Test-Path $home\CloudDrive\.ssh)){
     mkdir $home\CloudDrive\.ssh
 }
 
@@ -298,24 +298,24 @@ if(Test-Path $script:sshFolderPath){
 ### <a name="using-ssh"></a>SSH használatával
 
 Kövesse az utasításokat [Itt](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell) AzureRM-parancsmagok használatával új Virtuálisgép-konfiguráció létrehozásához.
-Mielőtt hívja be `New-AzureRMVM` indító a központi telepítést, hogy adja hozzá az SSH nyilvános kulcs a Virtuálisgép-konfigurációhoz.
-Az újonnan létrehozott virtuális gép a nyilvános kulcsot fogja tartalmazni az `~\.ssh\authorized_keys` helyét, ezáltal hitelesítőadat-mentes ssh-munkamenetet a virtuális gép.
+Mielőtt hívja be `New-AzureRmVM` indító a központi telepítést, hogy adja hozzá az SSH nyilvános kulcsát a Virtuálisgép-konfigurációhoz.
+Az újonnan létrehozott virtuális gép a nyilvános kulcsot fogja tartalmazni az `~\.ssh\authorized_keys` helyét, ezáltal a hitelesítőadat-mentes SSH-munkamenetet a virtuális géphez.
 
-``` Powershell
+``` PowerShell
 
 # Create VM config object - $vmConfig using instructions on linked page above
 
-# Generate SSH Keys in CloudShell
+# Generate SSH keys in Cloud Shell
 ssh-keygen -t rsa -b 2048 -f $HOME\.ssh\id_rsa 
 
-# Ensure VM config is updated with SSH Keys
+# Ensure VM config is updated with SSH keys
 $sshPublicKey = Get-Content "$env:USERPROFILE\.ssh\id_rsa.pub"
 Add-AzureRmVMSshPublicKey -VM $vmConfig -KeyData $sshPublicKey -Path "/home/azureuser/.ssh/authorized_keys"
 
 # Create a virtual machine
 New-AzureRmVM -ResourceGroupName <yourResourceGroup> -Location <vmLocation> -VM $vmConfig
 
-# ssh to the VM
+# SSH to the VM
 ssh azureuser@MyVM.Domain.Com
 
 ```
@@ -335,13 +335,13 @@ Futtathat `Install-Module` modulok telepítése a [PowerShell-galériában][gall
 
 Típus `Get-Help` Azure Cloud rendszerhéj PowerShell lekérése.
 
-``` Powershell
+``` PowerShell
 PS Azure:\> Get-Help
 ```
 
-Egy adott parancs továbbra is végezhet a Get-Help parancsmag követ.
+Egy adott parancs továbbra is mindent `Get-Help` parancsmag követ.
 
-``` Powershell
+``` PowerShell
 PS Azure:\> Get-Help Get-AzureRmVM
 ```
 
@@ -349,7 +349,7 @@ PS Azure:\> Get-Help Get-AzureRmVM
 
 Létrehozhat egy parancsfájlt, mondja ki `helloworld.ps1`, és menti a `CloudDrive` rendszerhéj-munkamenetek között használandó.
 
-``` Powershell
+``` PowerShell
 cd C:\users\ContainerAdministrator\CloudDrive
 PS C:\users\ContainerAdministrator\CloudDrive> vim .\helloworld.ps1
 # Add the content, such as 'Hello World!'
@@ -367,7 +367,7 @@ Arról, hogyan hozza létre a profilt, hogy [kapcsolatos profilok][profile].
 
 ## <a name="use-git"></a>A Git
 
-A felhő rendszerhéj egy git-tárház klónozása, szeretne létrehozni egy [személyes hozzáférési jogkivonat] [ githubtoken] , és használja azt a felhasználónevet. Ha már van a token, klónozás a tárházban az alábbiak szerint:
+A felhő rendszerhéj egy Git-tárház klónozása, szeretne létrehozni egy [személyes hozzáférési jogkivonat] [ githubtoken] , és használja azt a felhasználónevet. Ha már van a token, klónozás a tárházban az alábbiak szerint:
 
  ``` PowerShell
   git clone https://<your-access-token>@github.com/username/repo.git
@@ -383,7 +383,7 @@ $script:gitconfigPath = Join-Path $PSScriptRoot .gitconfig
 # Create a symlink to .gitconfig in user's $home
 if(Test-Path $script:gitconfigPath){
 
-    if(-not (Test-Path (Join-Path $Home .gitconfig ))){
+    if(-not (Test-Path (Join-Path $home .gitconfig ))){
          New-Item -ItemType SymbolicLink -Path $home -Name .gitconfig -Value $script:gitconfigPath
     }
 }

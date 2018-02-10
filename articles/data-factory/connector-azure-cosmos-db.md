@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 1114fd272bd16d17fbeb382b0f374a69dc74916a
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: c791f335bfa9ec6073eb83149068571ceb253f82
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>Másolja az adatokat, vagy az Azure Data Factory használatához Azure Cosmos-Adatbázisból
 
@@ -54,7 +54,7 @@ Azure Cosmos DB kapcsolódó szolgáltatás támogatott a következő tulajdons�
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **CosmosDb**. | Igen |
-| connectionString |Adja meg Azure Cosmos DB adatbázishoz való kapcsolódáshoz szükséges adatokat. Vegye figyelembe, hogy meg kell adni az adatbázis-információ a kapcsolódási karakterláncban minta alatt. Ez a mező megjelölése a SecureString. |Igen |
+| connectionString |Adja meg Azure Cosmos DB adatbázishoz való kapcsolódáshoz szükséges adatokat. Vegye figyelembe, hogy meg kell adni az adatbázis-információ a kapcsolódási karakterláncban minta alatt. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). |Igen |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhat Azure integrációs futásidejű vagy Self-hosted integrációs futásidejű (amennyiben az adattároló magánhálózaton található). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
 
 **Példa**

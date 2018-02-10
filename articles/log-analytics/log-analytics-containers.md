@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/06/2017
 ms.author: magoedte;banders
-ms.openlocfilehash: 4087cb787e43c3d1b40ad082e84534b34918c9e9
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: a4b2407f392ed35968c9a6c8eeeb49c0c3cfe10e
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>A Naplóelemzési tároló figyelés megoldás
 
@@ -46,12 +46,12 @@ Megkezdése előtt tekintse át az alábbi részleteket megfelel az Előfeltéte
 ### <a name="container-monitoring-solution-support-for-docker-orchestrator-and-os-platform"></a>Figyelési megoldást igényelnek tároló Docker Orchestrator és az operációs rendszer platform támogatása
 Az alábbi táblázat ismerteti a Docker vezénylési és az operációs rendszer figyelési tároló készlet, a teljesítmény és a naplók és a Naplóelemzési támogatást.   
 
-| | ACS | Linux | Windows | Tároló<br>Szoftverleltár | Kép<br>Szoftverleltár | Csomópont<br>Szoftverleltár | Tároló<br>Teljesítmény | Tároló<br>Esemény | Esemény<br>Napló | Tároló<br>Napló |
+| | ACS | Linux | Windows | Tároló<br>Leltár | Kép<br>Leltár | Csomópont<br>Leltár | Tároló<br>Teljesítmény | Tároló<br>Esemény | Esemény<br>Napló | Tároló<br>Napló |
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 | Kubernetes | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
 | Docker<br>Swarm | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
-| Szolgáltatás<br>Háló | | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
+| Szolgáltatás<br>Fabric | | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Red Hat megnyitása<br>Shift | | &#8226; | | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; | | &#8226; |
 | Windows Server<br>(önálló) | | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
 | Linux-kiszolgáló<br>(önálló) | | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
@@ -545,19 +545,19 @@ Az alábbi táblázat a tároló figyelésére szolgáló megoldás és az adato
 | Adattípus | A naplófájl-keresési adattípust tartalmaz | Mezők |
 | --- | --- | --- |
 | A gazdagépek és a tárolók teljesítmény | `Type=Perf` | Számítógép, ObjectName, CounterName &#40; a processzor kihasználtsága, lemez beolvassa MB, szabad MB memória kihasználtsága (MB), írja hálózati fogadott bájtok, hálózati küldését bájt, a processzor kihasználtsága mp hálózati &#41; ellenértéknek, TimeGenerated, Számláló_elérési_útja, SourceSystem |
-| Tároló leltár | `Type=ContainerInventory` | TimeGenerated, a számítógép, a tároló neve, ContainerHostname, kép, ImageTag, ContainerState, ExitCode, EnvironmentVar, a parancs, CreatedTime, StartedTime, FinishedTime, SourceSystem, Tárolóazonosító, ImageID |
+| Tároló leltár | `Type=ContainerInventory` | TimeGenerated, Computer, container name, ContainerHostname, Image, ImageTag, ContainerState, ExitCode, EnvironmentVar, Command, CreatedTime, StartedTime, FinishedTime, SourceSystem, ContainerID, ImageID |
 | Tároló kép készlet | `Type=ContainerImageInventory` | TimeGenerated, számítógép, kép, ImageTag, ImageSize, VirtualSize, futó, szünetel, leállítását követően nem sikerült, SourceSystem, ImageID, TotalContainer |
 | Tároló-napló | `Type=ContainerLog` | TimeGenerated, a számítógép, a lemezkép-Azonosítót, a tároló neve, LogEntrySource, LogEntry, SourceSystem, Tárolóazonosító |
 | Tároló szolgáltatás bejelentkezési | `Type=ContainerServiceLog`  | TimeGenerated, számítógép, TimeOfCommand, kép, a parancs, SourceSystem, Tárolóazonosító |
-| Tároló csomópont készlet | `Type=ContainerNodeInventory_CL`| TimeGenerated, számítógép, ClassName_s, DockerVersion_s, OperatingSystem_s, Volume_s, Network_s, NodeRole_s, OrchestratorType_s, InstanceID_g, SourceSystem|
-| Kubernetes készlet | `Type=KubePodInventory_CL` | TimeGenerated, számítógép, PodLabel_deployment_s, PodLabel_deploymentconfig_s, PodLabel_docker_registry_s, Name_s, Namespace_s, PodStatus_s, PodIp_s, PodUid_g, PodCreationTimeStamp_t, SourceSystem |
+| Tároló csomópont készlet | `Type=ContainerNodeInventory_CL`| TimeGenerated, Computer, ClassName_s, DockerVersion_s, OperatingSystem_s, Volume_s, Network_s, NodeRole_s, OrchestratorType_s, InstanceID_g, SourceSystem|
+| Kubernetes készlet | `Type=KubePodInventory_CL` | TimeGenerated, Computer, PodLabel_deployment_s, PodLabel_deploymentconfig_s, PodLabel_docker_registry_s, Name_s, Namespace_s, PodStatus_s, PodIp_s, PodUid_g, PodCreationTimeStamp_t, SourceSystem |
 | Tároló folyamat | `Type=ContainerProcess_CL` | TimeGenerated, számítógép, Pod_s, Namespace_s, ClassName_s, InstanceID_s, Uid_s, PID_s, PPID_s, C_s, STIME_s, Tty_s, TIME_s, Cmd_s, Id_s, Name_s, SourceSystem |
-| Kubernetes események | `Type=KubeEvents_CL` | TimeGenerated, számítógép, Name_s, ObjectKind_s, Namespace_s, Reason_s, Type_s, SourceComponent_s, SourceSystem, üzenet |
+| Kubernetes események | `Type=KubeEvents_CL` | TimeGenerated, Computer, Name_s, ObjectKind_s, Namespace_s, Reason_s, Type_s, SourceComponent_s, SourceSystem, Message |
 
 Címkék fűzött *PodLabel* adattípusok a következők saját címkét. A hozzáfűzött PodLabel címkék a táblázatban szereplő példák. Igen `PodLabel_deployment_s`, `PodLabel_deploymentconfig_s`, `PodLabel_docker_registry_s` lesznek a környezet adatkészlet különböznek és általános hasonlítanak `PodLabel_yourlabel_s`.
 
 
-## <a name="monitor-containers"></a>A figyelő tárolók
+## <a name="monitor-containers"></a>Tárolók figyelése
 Miután az OMS-portálon, a megoldás a **tárolók** csempe a tároló gazdagépek és a tárolók az állomáson fut összegző információit jeleníti meg.
 
 ![Tárolók csempe](./media/log-analytics-containers/containers-title.png)
@@ -653,7 +653,7 @@ Amely az egyes tároló összegyűjtött teljesítménymutatók listáját jelen
 ## <a name="example-log-search-queries"></a>Példa napló keresési lekérdezések
 Gyakran érdemes hozhatók létre olyan lekérdezések például vagy két és megfeleljenek a környezet módosításával. Kiindulási pontként, kísérletezhet az **mintalekérdezések** terület segíteni bonyolultabb lekérdezéseket.
 
-[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ![Tárolók lekérdezések](./media/log-analytics-containers/containers-queries.png)
 
@@ -663,5 +663,5 @@ Lekérdezések mentése az Naplóelemzési szabványos szolgáltatása. Mentve, 
 
 Miután létrehozott egy lekérdezést, amely akkor hasznosak, mentse kattintva **Kedvencek** a napló keresése oldal tetején. Ezután egyszerűen hozzáférhet az azt később a **saját irányítópult** lap.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Naplók keresése](log-analytics-log-searches.md) részletes tároló rekordok megtekintéséhez.

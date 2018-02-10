@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: giladm
-ms.openlocfilehash: 4538ad9c048a3e84bbe793572f569dd7126803da
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e6b9b5e497258f37037e0dc3f8efe656d5206af3
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Az Azure SQL-adatbázis adatainak felderítése és besorolása
-Felderítési adatok & besorolás (jelenleg előzetes verzió) Azure SQL Database beépített felderítésével, zárolásának, címkézés és az adatbázisok a bizalmas adatok védelmének speciális funkciókat biztosít.
+Az Azure SQL Database beépített speciális képességeket biztosít a felderítési adatok & besorolás (jelenleg előzetes verzió) **felderítéséhez**, **zárolásának**, **címkézés**  &  **védelme** az adatbázisokat a bizalmas adatokat.
 Felderítésének, illetve a lehető legnagyobb mértékben bizalmas adatok zárolásának (üzleti/pénzügyi, egészségügyi, személyazonosításra alkalmas adatok, stb.) is döntő szerepet játszanak a szervezeti adatokat védelmi stature. Az infrastruktúra lehetnek:
 * Különféle biztonsági forgatókönyvek, például a figyelési (naplózás), és riasztást küld rendellenes bizalmas adatokhoz való hozzáférést.
 * Hozzáférés szabályozása, és a bizalmas adatokat tartalmazó adatbázisok biztonsági korlátozására.
@@ -93,7 +93,7 @@ A besorolási két metaadat-attribútumok tartalmazza:
 
 ## <a id="subheading-3"></a>A bizalmas adatokhoz való hozzáférés naplózása
 
-[Az Azure SQL Database Auditing](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-auditing) új mező szerepeljen a biztonsági naplóba nevű továbbfejlesztett *data_sensitivity_information*, amely naplózza a tényleges által visszaadott adatok érzékenysége osztályozása (címke) a lekérdezés.
+Az információk védelme paradigma fontos eleme azt a képességet figyelje a bizalmas adatokhoz való hozzáférést. [Az Azure SQL Database Auditing](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-auditing) új mező szerepeljen a biztonsági naplóba nevű továbbfejlesztett *data_sensitivity_information*, amely naplózza a tényleges által visszaadott adatok érzékenysége osztályozása (címke) a lekérdezés.
 
 ![Navigációs ablaktábla][11]
 

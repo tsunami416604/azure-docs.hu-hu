@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: johnkem
-ms.openlocfilehash: a101039b59eb1a4a3bcac25162c7f6373283e1b6
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: f093c0cfdc6f59133c39cc8c2b10f9fe74692977
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Az Azure tevékenységnapló figyelő előfizetés tevékenység
 A **Azure tevékenységnapló** van egy előfizetési napló, amely történt az Azure-előfizetés szintű események betekintést nyújt. Ez magában foglalja az Azure Resource Manager működési adatokat a frissítésekre a szolgáltatás állapotával kapcsolatos események adatait számos. A műveletnapló korábban hívták "Naplófájlok" vagy "Működési Logs", a felügyeleti kategória jelentések vezérlő-vezérlősík eseményeket az előfizetések óta. A tevékenység-naplót használó, meghatározhatja a "mi, ki, és mikor" az esetleges írási műveleteket (PUT, POST, Törlés) végzett az erőforrást az előfizetésében. A művelet és az egyéb kapcsolódó tulajdonságainak állapotának értelmezni is lehet. A műveletnapló nem tartalmaz olvasható (GET) vagy a klasszikus használó erőforrások / "RDFE" modell.
@@ -29,18 +29,21 @@ A **Azure tevékenységnapló** van egy előfizetési napló, amely történt az
 
 A műveletnapló eltér az [diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md). Tevékenységi naplóit biztosítanak kívülről erőforráson műveleteire vonatkozó adatokat (a "vezérlő vezérlősík"). Diagnosztikai naplók az erőforrás által kibocsátott, és adja meg (az "adatok vezérlősík") erőforrás működésével kapcsolatos adatokat.
 
-Az Azure portál, CLI, PowerShell-parancsmagok használatával tevékenységnapló kérhetnek le események és Azure figyelő REST API-t.
-
-
 > [!WARNING]
 > Az Azure tevékenységnapló van, amely elsősorban az Azure Resource Manager-tevékenységek. A klasszikus/RDFE modellt használó erőforrások nem követi nyomon. Egyes klasszikus erőforrás állnak a proxy erőforrás-szolgáltató az Azure Resource Manager (például Microsoft.ClassicCompute). Ha Ön a szolgáltatóosztályokkal klasszikus erőforrástípus Azure Resource Manageren keresztül a proxy erőforrás-szolgáltatókat használ, a műveletek a műveletnapló jelennek meg. Ha Ön a szolgáltatóosztályokkal kívül az Azure Resource Manager-proxyk klasszikus erőforrástípus, a műveletek csak tárolja, amely a műveletnaplóban. A műveletnapló tallózható a portál egy külön szakaszban.
 >
 >
 
+Az Azure portál, CLI, PowerShell-parancsmagok használatával tevékenységnapló kérhetnek le események és Azure figyelő REST API-t.
+
+> [!NOTE]
+
+>  [Riasztások (előzetes verzió)](monitoring-overview-unified-alerts.md) jelenleg a tevékenység napló riasztási szabályok létrehozását és kezelését a bővített megoldást kínál.  [További információk](monitoring-activity-log-alerts-new-experience.md).
+
+
 Tekintse meg a következő videót a műveletnapló bemutatása.
 > [!VIDEO https://channel9.msdn.com/Blogs/Seth-Juarez/Logs-John-Kemnetz/player]
-> 
->
+
 
 ## <a name="categories-in-the-activity-log"></a>A műveletnapló kategóriák
 A műveletnapló számos modulkategória közül adatokat tartalmazza. Az ezekben a kategóriákban sémákra részletes [ebben a cikkben találhat](monitoring-activity-log-schema.md). Ezek a következők:
@@ -138,11 +141,11 @@ Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/r
 
 | Tulajdonság | Szükséges | Leírás |
 | --- | --- | --- |
-| Név |Igen |A napló profil neve. |
+| Name (Név) |Igen |A napló profil neve. |
 | StorageAccountId |Nem |Erőforrás-azonosító a tárfiók a műveletnapló mentésére. |
 | serviceBusRuleId |Nem |Service Bus-Szabályazonosító a Service Bus-névtér szeretné létrehozni az event hubs rendelkezik. Egy karakterlánc, ebben a formátumban: `{service bus resource ID}/authorizationrules/{key name}`. |
 | Helyek |Igen |Régiók, amelynek szeretné tevékenységnapló eseményeinek gyűjtése vesszővel tagolt listája. |
-| retentionInDays |Igen |Az eseményeket meg kell őrizni, 1 és 2147483647 közötti napok számát. A nulla érték a naplók határozatlan ideig tárolja (végtelen). |
+| RetentionInDays |Igen |Az eseményeket meg kell őrizni, 1 és 2147483647 közötti napok számát. A nulla érték a naplók határozatlan ideig tárolja (végtelen). |
 | Kategóriák |Nem |Be kell esemény kategóriák vesszővel tagolt listája. Lehetséges értékek a következők: Olvasás, törlés és művelet. |
 
 #### <a name="remove-a-log-profile"></a>Napló-profil eltávolítása
@@ -179,6 +182,6 @@ azure insights logprofile add --name my_log_profile --storageId /subscriptions/s
 azure insights logprofile delete --name my_log_profile
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [További információ a tevékenységnapló (korábbi nevén naplók)](../azure-resource-manager/resource-group-audit.md)
 * [Az Event hubs Azure tevékenységnapló adatfolyam](monitoring-stream-activity-logs-event-hubs.md)

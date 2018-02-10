@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 232b9bed1ea719dfb76d639bc8d5274551cdab6f
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 888b75ad16a3835ca988dd9aa6a146cc26e6370a
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-http-endpoint-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával HTTP-végpont
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -66,7 +66,7 @@ Kapcsolódó HTTP-szolgáltatás támogatott a következő tulajdonságokkal:
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | Felhasználónév | A felhasználónév, a HTTP-végpont elérésére. | Igen |
-| jelszó | A felhasználó (felhasználónév) jelszavát. Ez a mező megjelölése SecureString. | Igen |
+| jelszó | A felhasználó (felhasználónév) jelszavát. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen |
 
 **Példa**
 
@@ -100,7 +100,7 @@ ClientCertificate hitelesítés használatához állítsa "authenticationType" t
 |:--- |:--- |:--- |
 | embeddedCertData | A Base64 kódolású tanúsítványának adatait. | Adja meg a `embeddedCertData` vagy `certThumbprint`. |
 | CertThumbprint | A tanúsítványtároló Self-hosted integrációs futásidejű számítógépre telepített tanúsítvány ujjlenyomatát. Csak akkor, ha önálló üzemeltetett integrációs futásidejű van megadva a connectVia vonatkozik. | Adja meg a `embeddedCertData` vagy `certThumbprint`. |
-| jelszó | A tanúsítványhoz tartozó jelszót. Ez a mező megjelölése SecureString. | Nem |
+| jelszó | A tanúsítványhoz tartozó jelszót. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Nem |
 
 Ha a "certThumbprint" használatakor a hitelesítéshez, és a tanúsítvány telepítve van a helyi számítógép személyes tárolójában, olvasási engedélyt ad a Self-hosted integrációs futásidejű szeretné:
 

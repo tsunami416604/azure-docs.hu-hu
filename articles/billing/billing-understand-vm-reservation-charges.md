@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/10/2017
 ms.author: vikdesai
-ms.openlocfilehash: d476380fa841617f7eb914167ebd7d5b8aa611c2
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 2a3854077c7c8bdb20804c6b3e77500659c3c484
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="understand-how-the-reserved-virtual-machine-instance-discount-is-applied"></a>A fenntartott virtuális gép példány kedvezményeket alkalmazásának a módját ismertetése
 Után vásárol egy fenntartott Virtuálisgép-példány, a rendszer automatikusan alkalmaz a Foglalás kedvezményeket az attribútumokat és a foglalási mennyiség virtuális gépek. A foglalási hozzá van rendelve az infrastrukturális költségek a virtuális gépek. A következő táblázat bemutatja a virtuális gép költségek foglalás megvásárlása után. Minden esetben van szó, a tárolás és a hálózatkezelés, a szokásosnál.
@@ -31,7 +31,7 @@ Után vásárol egy fenntartott Virtuálisgép-példány, a rendszer automatikus
 |Windows virtuális gépek [Azure hibrid juttatás](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) | Foglalási hozzá van rendelve az infrastruktúra fenntartási költségeit. A Windows szoftverek költségeit az Azure hibrid juttatás tartoznak. További szoftvereket felszámítása külön történik.| 
 
 ## <a name="application-of-reservation-discount-to-non-windows-vms"></a>A nem - Windows virtuális gépek foglalás kedvezményes alkalmazása
- A foglalási kedvezményeket futó virtuális gép példányait óránként alkalmazzák. A foglalások, amelytől vásárolta a futó virtuális gépeinek alkalmazandó a Foglalás kedvezményeket által kibocsátott kihasználtsága teljesül. A következő ábra szemlélteti számlázható virtuális gépek használata egy foglalási kérelem. Az ábrán két egyező Virtuálisgép-példányok és egy foglalás beszerzési alapul.
+ A foglalási kedvezményeket futó virtuális gép példányait óránként alkalmazzák. A futó virtuális gépeinek alkalmazandó a Foglalás kedvezményeket által kibocsátott használatát a megvásárolt lefoglalását egyeztetését. Virtuális gépek nem futtathatnak a a teljes óra a Foglalás tölti meg más virtuális gépek nem használja a foglalást, beleértve a párhuzamosan futó virtuális gépek. Az órát végén a Foglalás az alkalmazás virtuális gépek órájában zárolva van. Abban az esetben a virtuális gép nem fut egy óráig vagy egyidejű virtuális gépek órán belül nem tölti ki az órát lefoglalás, a foglalást, hogy egy óra van túl. A következő ábra szemlélteti számlázható virtuális gépek használata egy foglalási kérelem. Az ábrán két egyező Virtuálisgép-példányok és egy foglalás beszerzési alapul.
 
 ![Fenntartott virtuális gép példány alkalmazás](media/billing-reserved-vm-instance-application/billing-reserved-vm-instance-application.png)
 
@@ -44,6 +44,16 @@ Megértéséhez, valamint az alkalmazás a foglalások a számlázási használa
 
 ## <a name="application-of-reservation-discount-to-windows-vms"></a>A Windows virtuális gépek foglalás kedvezményes alkalmazása
 Ha Windows Virtuálisgép-példány futtatja, a Foglalás alkalmazva az infrastrukturális költségek. Az alkalmazás a Windows virtuális gépek esetén a virtuális gép infrastruktúra használati díjait foglalási megegyezik esetében nem - Windows virtuális gépek. Van szó, külön-külön a Windows software / vCPU alapon. Lásd: [Windows szoftverek költségeit rendelkező](https://go.microsoft.com/fwlink/?linkid=862756). A Windows licencelési költségek rendelkező [Azure hibrid juttatás for Windows Server] (https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) is foglalkozik.
+
+## <a name="next-steps"></a>További lépések
+Tudhat meg többet a fenntartott virtuálisgép-példányok, tekintse meg a következő cikkekben talál.
+
+- [A virtuális gépek fenntartott virtuális gép osztályt előre fizetés](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Fenntartott virtuálisgép-példányok kezelése](billing-manage-reserved-vm-instance.md)
+- [Kevesebbet költeni a virtuális gépek a fenntartott virtuálisgép-példányok](billing-save-compute-costs-reservations.md)
+- [A használatalapú fizetéses előfizetésre fenntartott példány használatának megértéséhez](billing-understand-reserved-instance-usage.md)
+- [A nagyvállalati beléptetés használata fenntartott példány ismertetése](billing-understand-reserved-instance-usage-ea.md)
+- [A Windows szoftverek költségeit fenntartott példányok nem találhatók](billing-reserved-instance-windows-software-costs.md)
 
 ## <a name="need-help-contact-support"></a>Segítség Kapcsolatfelvétel a támogatási szolgáltatással
 

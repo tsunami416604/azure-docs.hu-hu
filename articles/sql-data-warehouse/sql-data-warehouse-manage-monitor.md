@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 12/14/2017
 ms.author: joeyong;barbkess;kevin
-ms.openlocfilehash: 56bae284bb83b1ff18bf2caf644e6dd071b8eb69
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 1895e9c6174dfb05212991040cc265b8cb6e0651
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Monitor your workload using DMVs
 A cikkből megtudhatja, hogyan lehet a számítási feladat figyeléséhez, és vizsgálja meg a lekérdezés végrehajtása az Azure SQL Data Warehouse dinamikus felügyeleti nézetek (dinamikus felügyeleti nézetek) segítségével.
@@ -269,7 +269,6 @@ FROM sys.dm_pdw_nodes_os_performance_counters
 WHERE 
 instance_name like 'Distribution_%' 
 AND counter_name = 'Log File(s) Used Size (KB)'
-AND counter_name = 'Target Server Memory (KB)'
 ```
 ## <a name="monitor-transaction-log-rollback"></a>A figyelő tranzakciós napló visszaállítása
 Ha a lekérdezések sikertelenek lesznek, vagy folytatja sok időbe telik, ellenőrizze, és figyelése, ha a tranzakciók visszaállítása folyamatban van.
@@ -284,7 +283,7 @@ JOIN sys.dm_pdw_nodes nod ON t.pdw_node_id = nod.pdw_node_id
 GROUP BY t.pdw_node_id, nod.[type]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Lásd: [rendszernézetek] [ System views] dinamikus felügyeleti nézetek olvashat.
 Lásd: [gyakorlati tanácsok az SQL Data Warehouse] [ SQL Data Warehouse best practices] ajánlott eljárásokra vonatkozó további információ
 

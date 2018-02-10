@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 09/19/2017
 ms.author: danlep
 ms.custom: 
-ms.openlocfilehash: 5e742187295d0bd6dbc0767ee164335fc0cf9f02
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 280c31d00acc074653b6594235f78e4d569464b4
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>Hozzon létre egy Linux virtuális gép egy rendelkezésre állási zónát az Azure parancssori felület
 
@@ -28,19 +28,19 @@ Ez a cikk lépéseit az Azure parancssori felület használatával Linux virtuá
 
 [!INCLUDE [availability-zones-preview-statement.md](../../../includes/availability-zones-preview-statement.md)]
 
-Győződjön meg arról, hogy telepítette-e a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) és bejelentkezett az Azure-fiókkal rendelkező [az bejelentkezési](/cli/azure/#login).
+Győződjön meg arról, hogy telepítette-e a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) és bejelentkezett az Azure-fiókkal rendelkező [az bejelentkezési](/cli/azure/#az_login).
 
 
-## <a name="check-vm-sku-availability"></a>Virtuális gép SKU elérhetőségének ellenőrzése
-Lévő Virtuálisgép-méretek vagy SKU, régió, és a zóna változhat. Segítségével megtervezheti a rendelkezésre állási zónákban használhatják, listázhatja a rendelkezésre álló virtuális gép termékváltozatok Azure-régió, és a zóna. Ez a lehetőség lehetővé teszi, hogy válassza ki a megfelelő Virtuálisgép-méretet, és szerezhetik be a kívánt rugalmassági zónák. A különböző Virtuálisgép-típusokon és méretek további információkért lásd: [Virtuálisgép-méretek – áttekintés](sizes.md).
+## <a name="check-vm-sku-availability"></a>A VM-termékváltozatok rendelkezésre állásának ellenőrzése
+A virtuális gépek méretének vagy termékváltozatainak rendelkezésre állása régiónként és zónánként eltérhet. Ha fel szeretne készülni a rendelkezésre állási zónák használatára, megtekintheti a virtuális gépek termékváltozatainak listáját Azure-régió és zóna szerint. Ezáltal megfelelő virtuálisgép-méretet választhat, valamint biztosíthatja a zónák közötti rugalmasság kívánt szintjét. További információ a virtuális gépek különböző típusairól és méreteiről: [Virtuálisgép-méretek – áttekintés](sizes.md).
 
-Megtekintheti a rendelkezésre álló virtuális gép termékváltozatok rendelkező a [az vm lista-SKU](/cli/azure/vm#az_vm_list_skus) parancsot. Az alábbi példa felsorolja a rendelkezésre álló virtuális gép termékváltozatok a *eastus2* régió:
+Megtekintheti a rendelkezésre álló virtuális gép termékváltozatok rendelkező a [az vm lista-SKU](/cli/azure/vm#az_vm_list_skus) parancsot. Az alábbi példa az *eastus2* régióban található virtuális gépek elérhető termékváltozatait listázza:
 
 ```azurecli
 az vm list-skus --location eastus2 --output table
 ```
 
-A kimenete a következőhöz hasonló tömörített, amely mutatja a rendelkezésre állási zónákat, amelyben minden egyes Virtuálisgép-méretet érhető el:
+A kimenet a következő sűrített példához hasonló, amelyben azok a rendelkezésre állási zónák láthatók, amelyekben minden virtuálisgép-méret elérhető:
 
 ```azurecli
 ResourceType      Locations  Name               Tier       Size     Zones

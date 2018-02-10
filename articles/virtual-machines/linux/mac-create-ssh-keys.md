@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 4b677a4063ebef84dbd2fa476b5f633b859f90ed
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: a37bfa01343527a60193d893c7913e4e9c50d210
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-create-and-use-an-ssh-public-and-private-key-pair-for-linux-vms-in-azure"></a>Nyilvános és titkos SSH-kulcspár létrehozása és használata az Azure-ban Linux rendszerű virtuális gépekhez
 Egy SSH-kulcspárral létrehozhat olyan virtuális gépeket az Azure-ban, amelyek SSH-kulcsokat használnak a hitelesítéshez, így nincs szükség jelszavakra a bejelentkezéshez. Ez a cikk bemutatja, hogyan hozhat létre gyorsan és hogyan használhat az SSH-protokoll 2. verziójára épülő nyilvános és titkosított RSA-kulcspárt a Linux rendszerű virtuális gépekhez. Ezeket a lépéseket Azure Cloud Shell használatával, macOS- vagy Linux-gazdagépen, illetve a Linux Windows alrendszerén is végrehajthatja. Részletes lépéseket és a további példákat az [SSH-kulcspárok és -tanúsítványok létrehozásának lépései](create-ssh-keys-detailed.md) között talál.
@@ -32,7 +32,7 @@ ssh-keygen -t rsa -b 2048
 ```
 
 ## <a name="use-the-ssh-key-pair"></a>Az SSH-kulcspár használata
-Az Azure-ban a Linux virtuális gépre helyezett nyilvános kulcs alapértelmezés szerint a `~/.ssh/id_rsa.pub` könyvtárban található, ha a létrehozás során nem változtatta meg a helyet. Ha az [Azure CLI 2.0](/cli/azure) használatával hozta létre a virtuális gépet, határozza meg a nyilvános kulcs helyét, mikor a [az vm create](/cli/azure/vm#create) parancsot használja a `--ssh-key-path` lehetőséggel. Ha másolja és beilleszti a nyilvános kulcsfájl tartalmát az Azure Portalon vagy egy Resource Manager-sablonban való használathoz, bizonyosodjon meg róla, hogy nem másol felesleges szóközöket. Ha például OS X-et használ, átadhatja a nyilvános kulcsfájlt (alapértelmezetten, **~/.ssh/id_rsa.pub**) a **pbcopy** számára, hogy az másolja a tartalmat (erre a műveletre más Linux programok is képesek, például az `xclip`).
+Az Azure-ban a Linux virtuális gépre helyezett nyilvános kulcs alapértelmezés szerint a `~/.ssh/id_rsa.pub` könyvtárban található, ha a létrehozás során nem változtatta meg a helyet. Ha az [Azure CLI 2.0](/cli/azure) használatával hozta létre a virtuális gépet, határozza meg a nyilvános kulcs helyét, mikor a [az vm create](/cli/azure/vm#az_vm_create) parancsot használja a `--ssh-key-path` lehetőséggel. Ha másolja és beilleszti a nyilvános kulcsfájl tartalmát az Azure Portalon vagy egy Resource Manager-sablonban való használathoz, bizonyosodjon meg róla, hogy nem másol felesleges szóközöket. Ha például OS X-et használ, átadhatja a nyilvános kulcsfájlt (alapértelmezetten, **~/.ssh/id_rsa.pub**) a **pbcopy** számára, hogy az másolja a tartalmat (erre a műveletre más Linux programok is képesek, például az `xclip`).
 
 Ha nem ismeri a nyilvános SSH-kulcsokat, megnézheti a saját nyilvános kulcsát a `cat` parancs futtatásával az alábbiak szerint. A `~/.ssh/id_rsa.pub` helyet cserélje le a saját nyilvános kulcsának helyére:
 

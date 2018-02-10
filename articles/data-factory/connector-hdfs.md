@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/29/2018
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: fb4802a6a3bed163f0d2bba04cf9d80a917ba7ba
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 400c58abf04d28dd0e5f1d7aac204f09c43b942e
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával HDFS
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -60,7 +60,7 @@ A következő tulajdonságok HDFS kapcsolódó szolgáltatás támogatottak:
 | url |A HDFS URL-címe |Igen |
 | authenticationType | Két érték engedélyezett: **névtelen**, vagy **Windows**. <br><br> Használandó **Kerberos-hitelesítés** HDFS-összekötőhöz, tekintse meg [ebben a szakaszban](#use-kerberos-authentication-for-hdfs-connector) ennek megfelelően a helyszíni környezet beállítása. |Igen |
 | Felhasználónév |Felhasználónév a Windows-hitelesítést. A Kerberos-hitelesítés meg `<username>@<domain>.com`. |Igen (a Windows-hitelesítés) |
-| jelszó |A Windows-hitelesítés jelszót. Ez a mező megjelölése SecureString. |Igen (a Windows-hitelesítés) |
+| jelszó |A Windows-hitelesítés jelszót. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). |Igen (a Windows-hitelesítés) |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhatja Self-hosted integrációs futásidejű vagy Azure integrációs futásidejű (ha az adattároló nyilvánosan elérhető). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
 
 **Példa: a névtelen hitelesítést használó**

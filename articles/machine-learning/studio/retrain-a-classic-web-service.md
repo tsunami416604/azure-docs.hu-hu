@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: v-donglo
-ms.openlocfilehash: ad18d82109e3048625f32d90af9677956350fb84
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.author: raymondl
+ms.openlocfilehash: a0ec3191448362f8bf98ca6b5133d173735046ed
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="retrain-a-classic-web-service"></a>Klasszikus webszolgáltatás újratanítása
 A prediktív telepített webes szolgáltatás az alapértelmezett érték scoring-végpontja. Alapértelmezett végpontok szinkronban vannak az eredeti képzési és kísérletek pontozási tárolják, és ezért a betanított modell alapértelmezett végpont nem cserélhető le. A webszolgáltatás működik, hozzá kell adnia egy új végpont a webszolgáltatással. 
@@ -45,7 +45,7 @@ Egy új pontozási végpont létrehozásához a betanított modell frissíthető
 
 Kétféleképpen, amelyben hozzáadhat egy új végpont egy webszolgáltatás-bővítmény:
 
-1. Automatizáltan
+1. Programozott módon
 2. A Microsoft Azure Web Services portál
 
 ### <a name="programmatically-add-an-endpoint"></a>Programozott módon a végpont hozzáadása
@@ -68,7 +68,7 @@ Az útvonal URL-cím beolvasása:
 2. A frissítés erőforrás hivatkozásra.
 3. Másolja a PATCH kérés POST URL-CÍMÉT. Példa:
    
-     JAVÍTÁS URL-CÍM: HTTPS://MANAGEMENT.AZUREML.NET/WORKSPACES/00BF70534500B34REBFA1843D6/WEBSERVICES/AF3ER32AD393852F9B30AC9A35B/ENDPOINTS/NEWENDPOINT2
+     PATCH URL: https://management.azureml.net/workspaces/00bf70534500b34rebfa1843d6/webservices/af3er32ad393852f9b30ac9a35b/endpoints/newendpoint2
 
 Most már használhatja a betanított modell a korábban létrehozott pontozási végpont frissítéséhez.
 

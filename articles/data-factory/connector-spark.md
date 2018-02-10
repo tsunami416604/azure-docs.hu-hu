@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 0107c0e02e7158ad73671ae8e4599e1e998f20fc
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 2682b6d149fc9a8b1a1a70351ea90fbd701dd4ec
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-spark-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatához Spark 
 
@@ -52,7 +52,7 @@ A következő tulajdonságok kapcsolódó Spark szolgáltatást támogatja:
 | thriftTransportProtocol | Az átviteli protokoll a Thrift-rétegben használatára. <br/>Két érték engedélyezett: **bináris**, **SASL**, ** HTTP ** | Nem |
 | authenticationType | A Spark on server eléréséhez használt hitelesítési módszert. <br/>Két érték engedélyezett: **névtelen**, **felhasználónév**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Igen |
 | felhasználónév | A Spark-kiszolgáló eléréséhez használt felhasználónév.  | Nem |
-| jelszó | A jelszót, amit a felhasználónév mezőben megadott felhasználónév megfelelő esetén dönthet úgy, hogy a SecureString tárolja biztonságos helyen az ADF, vagy az Azure Key Vault jelszó tárolására, és lehetővé teszik a másolási tevékenység lekéréses ott adatmásolás - végrehajtása során, a jelölőnégyzet bejelölésével vezetővonalak a további RN [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). | Nem |
+| jelszó | A jelszót a felhasználónak megfelelő. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Nem |
 | httpPath | A részleges URL-címet a Spark-kiszolgáló megfelelő.  | Nem |
 | enableSsl | Meghatározza, hogy a kapcsolat titkosítása SSL használatával. Az alapértelmezett értéke hamis.  | Nem |
 | trustedCertPath | Megbízható Hitelesítésszolgáltatói tanúsítványok ellenőrzése a kiszolgáló SSL-en keresztül kapcsolódáskor tartalmazó .pem fájl teljes elérési útja. Ez a tulajdonság csak akkor állítható, önálló üzemeltetett infravörös SSL használatakor Az alapértelmezett érték a cacerts.pem fájlt az infravörös telepített:  | Nem |

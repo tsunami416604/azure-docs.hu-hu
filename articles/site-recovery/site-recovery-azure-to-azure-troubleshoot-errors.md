@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/21/2017
+ms.date: 02/05/2017
 ms.author: sujayt
-ms.openlocfilehash: 9e5719cd81408f6732826c90505a3ce8aa10f8ed
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 8f9ff8332f33972489721e0d16717d1d6fe15fcd
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure-Azure virtuális gép replikálási problémák elhárítása
 
@@ -61,34 +61,93 @@ Mivel az SuSE Linux symlinks tanúsítvány listának a karbantartására haszn�
 
 1.  Jelentkezzen be egy legfelső szintű felhasználóként.
 
-2.  Futtassa ezt a parancsot:
+2.  Futtassa ezt a parancsot a könyvtár módosításához.
 
       ``# cd /etc/ssl/certs``
 
-3.  Ha a Symantec legfelső szintű Hitelesítésszolgáltatói tanúsítvány jelen-e vagy sem megtekintéséhez futtassa a parancsot:
+3. Ellenőrizze, hogy a Symantec legfelső szintű Hitelesítésszolgáltatói tanúsítvány jelen-e.
 
       ``# ls VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem``
 
-4.  Ha a fájl nem található, futtassa az alábbi parancsokat:
+4. Ha a Symantec legfelső szintű Hitelesítésszolgáltatói tanúsítvány nem található, a következő parancsot a fájl letöltéséhez. Keressen hibákat, és kövesse a hálózati hibák javasolt műveletet.
 
       ``# wget https://www.symantec.com/content/dam/symantec/docs/other-resources/verisign-class-3-public-primary-certification-authority-g5-en.pem -O VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem``
 
-      ``# c_rehash``
+5. Ellenőrizze, hogy a Baltimore legfelső szintű Hitelesítésszolgáltatói tanúsítvány jelen-e.
 
-5.  Egy symlink létrehozása a b204d74a.0 -> VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem, futtassa a parancsot:
+      ``# ls Baltimore_CyberTrust_Root.pem``
 
-      ``# ln -s  VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem b204d74a.0``
+6. Ha a Baltimore legfelső szintű Hitelesítésszolgáltatói tanúsítvány nem található, töltse le a tanúsítványt.  
 
-6.  Ellenőrizze, hogy ha a parancsnak a következő kimenetet. Ha nem, akkor létre kell hoznia egy symlink:
+    ``# wget http://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem -O Baltimore_CyberTrust_Root.pem``
 
-      ``# ls -l | grep Baltimore
-      -rw-r--r-- 1 root root   1303 Apr  7  2016 Baltimore_CyberTrust_Root.pem
-      lrwxrwxrwx 1 root root     29 May 30 04:47 3ad48a91.0 -> Baltimore_CyberTrust_Root.pem
-      lrwxrwxrwx 1 root root     29 May 30 05:01 653b494a.0 -> Baltimore_CyberTrust_Root.pem``
+7. Ellenőrizze, hogy a DigiCert_Global_Root_CA tanúsítvány jelen-e.
 
-7. Ha symlink 653b494a.0 nincs telepítve, ez a parancs segítségével hozzon létre egy symlink:
+    ``# ls DigiCert_Global_Root_CA.pem``
 
-      ``# ln -s Baltimore_CyberTrust_Root.pem 653b494a.0``
+8. Ha a DigiCert_Global_Root_CA nem található, a következő parancsokat a tanúsítvány letöltése.
+
+    ``# wget http://www.digicert.com/CACerts/DigiCertGlobalRootCA.crt``
+
+    ``# openssl x509 -in DigiCertGlobalRootCA.crt -inform der -outform pem -out DigiCert_Global_Root_CA.pem``
+
+9. Parancsprogrammal rehash frissíteni a tanúsítvány tulajdonos kivonatok az újonnan letöltött tanúsítványok.
+
+    ``# c_rehash``
+
+10. Ellenőrizze, hogy ha a tulajdonos csak symlinks a tanúsítványok létrehozásához szükségesek.
+
+    - Parancs
+
+      ``# ls -l | grep Baltimore``
+
+    - Kimenet
+
+      ``lrwxrwxrwx 1 root root   29 Jan  8 09:48 3ad48a91.0 -> Baltimore_CyberTrust_Root.pem
+      -rw-r--r-- 1 root root 1303 Jun  5  2014 Baltimore_CyberTrust_Root.pem``
+
+    - Parancs
+
+      ``# ls -l | grep VeriSign_Class_3_Public_Primary_Certification_Authority_G5``
+
+    - Kimenet
+
+      ``-rw-r--r-- 1 root root 1774 Jun  5  2014 VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem
+      lrwxrwxrwx 1 root root   62 Jan  8 09:48 facacbc6.0 -> VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem``
+
+    - Parancs
+
+      ``# ls -l | grep DigiCert_Global_Root``
+
+    - Kimenet
+
+      ``lrwxrwxrwx 1 root root   27 Jan  8 09:48 399e7759.0 -> DigiCert_Global_Root_CA.pem
+      -rw-r--r-- 1 root root 1380 Jun  5  2014 DigiCert_Global_Root_CA.pem``
+
+11. Hozzon létre a fájlról VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem fájlnév b204d74a.0
+
+    ``# cp VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem b204d74a.0``
+
+12. Hozzon létre a fájlról Baltimore_CyberTrust_Root.pem fájlnév 653b494a.0
+
+    ``# cp Baltimore_CyberTrust_Root.pem 653b494a.0``
+
+13. Hozzon létre a fájlról DigiCert_Global_Root_CA.pem fájlnév 3513523f.0
+
+    ``# cp DigiCert_Global_Root_CA.pem 3513523f.0``  
+
+
+14. Ellenőrizze, hogy ha a fájlok találhatók.  
+
+    - Parancs
+
+      ``# ls -l 653b494a.0 b204d74a.0 3513523f.0``
+
+    - Kimenet
+
+      ``-rw-r--r-- 1 root root 1774 Jan  8 09:52 3513523f.0
+      -rw-r--r-- 1 root root 1303 Jan  8 09:52 653b494a.0
+      -rw-r--r-- 1 root root 1774 Jan  8 09:52 b204d74a.0``
 
 
 ## <a name="outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072"></a>Kimenő kapcsolatok a Site Recovery URL-címek vagy IP-címtartományok (hibakód: 151037 vagy 151072)
@@ -131,6 +190,20 @@ Előfordulhat, hogy nem látja az Azure virtuális gép kiválasztható a [enged
 
 Használhat [távolítsa el az elavult automatikus konfigurációs parancsfájl](https://gallery.technet.microsoft.com/Azure-Recovery-ASR-script-3a93f412) , és távolítsa el az elavult Site Recovery konfigurálása az Azure virtuális gépen. A virtuális gép kell megjelennie [engedélyezze a replikálást: 2. lépés](./site-recovery-azure-to-azure.md#step-2-select-virtual-machines) elavult konfigurációjának eltávolítása után.
 
+## <a name="vms-provisioning-state-is-not-valid-error-code-150019"></a>A virtuális gép üzembe helyezési állapota érvénytelen (hibakód: 150019)
+
+Ahhoz, hogy a replikáció a virtuális Gépre, a telepítés állapotát kell **sikeres**. Az alábbi lépéseket követve ellenőrizheti a virtuális gép állapota.
+
+1.  Válassza ki a **erőforrás-kezelő** a **minden szolgáltatás** Azure-portálon.
+2.  Bontsa ki a **előfizetések** listában, és jelölje ki az előfizetését.
+3.  Bontsa ki a **ResourceGroups** listában, és válassza ki az erőforráscsoportot, a virtuális gép.
+4.  Bontsa ki a **erőforrások** listában, és válassza ki a virtuális gépet
+5.  Ellenőrizze a **provisioningState** mező mellett a jobb oldali példányait tartalmazó nézetet.
+
+### <a name="fix-the-problem"></a>A probléma elhárításához
+
+- Ha **provisioningState** van **sikertelen**, forduljon a támogatási szolgálathoz elhárítása adatokkal.
+- Ha **provisioningState** van **Frissítéskísérleti**, egy másikat is első telepíthető. Ellenőrizze, hogy van-e a virtuális Gépre, várjon, amíg befejeződik, majd próbálja megismételni a sikertelen helyreállítás, hogy a folyamatban lévő műveleteket **engedélyezze a replikálást** feladat.
 
 ## <a name="next-steps"></a>További lépések
 [Azure-alapú virtuális gépek replikálása](site-recovery-replicate-azure-to-azure.md)

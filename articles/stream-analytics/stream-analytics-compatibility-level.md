@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 01/03/2018
 ms.author: sngun
-ms.openlocfilehash: 0d89259d54fba0bd57881ec69cb61b5af6d603b5
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: f354c39fc3b366795fe4ed8dbeeb961bb11d5420
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics-feladatok kompatibilitási szintje
  
@@ -57,7 +57,10 @@ A következő jelentős változások történtek az 1.1-es kompatibilitási szin
   * **korábbi verziók:** mezőnevek módosult kisbetű, amikor az Azure Stream Analytics-végrehajtó dolgozza fel. 
 
   * **aktuális verzió:** Kisbetű/nagybetű megkülönböztetése a mezőnevek maradnak, ha azokat az Azure Stream Analytics-végrehajtó dolgozza fel. 
- 
+
+  > [!NOTE] 
+  > Persisting Kisbetű/nagybetű megkülönböztetése még nem érhető el a biztonsági környezet használatával által üzemeltetett adatfolyam elemzési feladatok. Ennek eredményeképpen minden vannak kisbetűssé konvertált Ha a feladat peremhálózati üzemelteti. 
+
 * **FloatNaNDeserializationDisabled**  
 
   * **korábbi verziók:** CREATE TABLE parancs nem volt szűrése események NaN (nem szám. Például végtelen, - végtelen) egy LEBEGŐPONTOS oszlop írja be, mert ezeket a számokat az dokumentált tartományon kívül van.
