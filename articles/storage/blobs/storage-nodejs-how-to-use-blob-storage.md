@@ -14,11 +14,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
-ms.openlocfilehash: e52f38d5fb3c100e4275032f9a2a1234961c672b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 52f1f1543fe0ef15cf71d2cf1f9a8bfeaae8933f
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-use-blob-storage-from-nodejs"></a>How to use Blob storage from Node.js (A Blob Storage használata Node.js-sel)
 [!INCLUDE [storage-selector-blob-include](../../../includes/storage-selector-blob-include.md)]
@@ -33,7 +33,7 @@ Ez a cikk bemutatja, hogyan hajthat végre a Blob storage használatával gyakor
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-nodejs-application"></a>Node.js alkalmazás létrehozása
-A Node.js-alkalmazás létrehozása, lásd: [hozzon létre egy Node.js-webalkalmazás az Azure App Service], [létrehozása és központi telepítése egy Azure Cloud Service a Node.js-alkalmazás](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md) – Windows PowerShell használatával vagy [hozza létre, és a Node.js webalkalmazás telepítése az Azure-ban a Web Matrix](https://www.microsoft.com/web/webmatrix/).
+A Node.js-alkalmazás létrehozása, lásd: [Node.js-webalkalmazás létrehozása az Azure App Service](../../app-service/app-service-web-get-started-nodejs.md), [létrehozása és központi telepítése egy Azure Cloud Service a Node.js-alkalmazás](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md) – Windows PowerShell használatával vagy [hozza létre, és a Node.js webalkalmazás telepítése az Azure-ban a Web Matrix](https://www.microsoft.com/web/webmatrix/).
 
 ## <a name="configure-your-application-to-access-storage"></a>Állítsa be az alkalmazását tároló elérésére
 Az Azure storage használatához szüksége az Azure Storage szolgáltatás SDK a Node.js, amely tartalmaz egy kényelmi szalagtár szerepel, amely a többi tárolási szolgáltatásokkal kommunikálni.
@@ -90,7 +90,7 @@ blobSvc.createContainerIfNotExists('mycontainer', function(error, result, respon
 
 A tároló újonnan jön létre, ha `result.created` értéke true. Ha a tároló már létezik, `result.created` értéke "false". `response`a művelet, beleértve a tároló ETag információkat adatait tartalmazza.
 
-### <a name="container-security"></a>Tároló biztonsági
+### <a name="container-security"></a>Tárolóbiztonság
 Alapértelmezés szerint az új tárolók személyesek, és nem érhető el névtelen hozzáféréssel. Ahhoz, hogy a tároló nyilvános, úgy, hogy hozzá tud férni névtelenül, beállíthatja a tároló hozzáférési szint beállítása azokhoz a **blob** vagy **tároló**.
 
 * **a BLOB** -lehetővé teszi a névtelen olvasási hozzáférés blob tartalom és metaadatok található, de nem tároló metaadatait, például az összes BLOB a tárolóban lévő listázása
@@ -409,7 +409,7 @@ Miután a hozzáférés-vezérlési lista van beállítva, majd a házirend-azon
 blobSAS = blobSvc.generateSharedAccessSignature('mycontainer', { Id: 'user2' });
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információkért lásd a következőket.
 
 * [Az azure Storage SDK API-referencia csomópont] [Az azure Storage SDK API-referencia csomópont]  
@@ -423,6 +423,6 @@ További információkért lásd a következőket.
 [Build and deploy a Node.js web app to Azure using Web Matrix]: https://www.microsoft.com/web/webmatrix/  
 [Using the REST API]: http://msdn.microsoft.com/library/azure/hh264518.aspx  
 [Azure portal]: https://portal.azure.com  
-[Hozza létre és Azure Cloud Service a Node.js-alkalmazás központi telepítése](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md)  
-[Az azure Storage csapat blogja]: http://blogs.msdn.com/b/windowsazurestorage/  
+[Node.js alkalmazás létrehozása és üzembe helyezése Azure Cloud Service-ben](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md)  
+[Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/  
 [Az azure Storage SDK API-referencia csomópont]: http://dl.windowsazure.com/nodestoragedocs/index.html  
