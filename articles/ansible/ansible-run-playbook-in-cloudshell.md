@@ -1,22 +1,22 @@
 ---
-title: "Az Azure-felhőbe rendszerhéj Ansible futtatása"
-description: "Ismerje meg, hogyan hajthat végre különböző Ansible feladatokat az Azure-felhő rendszerhéj"
+title: "Futtassa a Ansible Bash Azure felhőben rendszerhéj"
+description: "Megtudhatja, hogyan végezhető különböző Ansible Bash Azure Cloud rendszerhéj"
 ms.service: ansible
-keywords: "ansible, azure, devops, bash, cloudshell, forgatókönyv"
+keywords: "ansible, az azure, a devops, a bash, a cloudshell, a forgatókönyv, a bash"
 author: tomarcher
 manager: routlaw
 ms.author: tarcher
-ms.date: 01/14/2018
+ms.date: 02/01/2018
 ms.topic: article
-ms.openlocfilehash: d5a818616d382954d0880bcae58bb13b632ad757
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 0cd0390a381e85c8f047960ce06c581a433d4a2c
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="run-ansible-in-the-azure-cloud-shell"></a>Az Azure-felhőbe rendszerhéj Ansible futtatása
+# <a name="run-ansible-with-bash-in-azure-cloud-shell"></a>Futtassa a Ansible Bash Azure felhőben rendszerhéj
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan különböző Ansible feladatok végrehajtása az Azure-felhő rendszerhéjba. Ezek a feladatok közé tartozik egy virtuális géphez való kapcsolódás és Ansible playbooks létrehozása és törlése az Azure-erőforráscsoport létrehozása.
+Ebben az oktatóanyagban elsajátíthatja a felhő rendszerhéj Bash Ansible különböző feladatok elvégzéséhez. Ezek a feladatok közé tartozik egy virtuális géphez való kapcsolódás és Ansible playbooks létrehozása és törlése az Azure-erőforráscsoport létrehozása.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -24,12 +24,14 @@ Ebben az oktatóanyagban elsajátíthatja, hogyan különböző Ansible feladato
 
 - **Azure hitelesítő adataival** - [létrehozása Azure-felhasználó hitelesítő adatait, és Ansible konfigurálása](/azure/virtual-machines/linux/ansible-install-configure#create-azure-credentials)
 
-- **Azure Cloud rendszerhéj konfigurálása** – Ha még nem ismeri a Azure Cloud rendszerhéj, a cikk [gyors üzembe helyezés az Azure felhőalapú rendszerhéj Bash](https://docs.microsoft.com/en-us/azure/cloud-shell/quickstart) azt ábrázolja, hogyan indítani és konfigurálni a felhő rendszerhéj.
+- **Azure Cloud rendszerhéj konfigurálása** – Ha még nem ismeri a Azure Cloud rendszerhéj, a cikk [gyors üzembe helyezés az Azure felhőalapú rendszerhéj Bash](https://docs.microsoft.com/en-us/azure/cloud-shell/quickstart) azt ábrázolja, hogyan indítani és konfigurálni a felhő rendszerhéj. Egy külön webhelyen itt felhő rendszerhéj elindításához:
+
+[![Indítsa el a felhő rendszerhéjat](https://shell.azure.com/images/launchcloudshell.png "indítsa el a felhő rendszerhéjat")](https://shell.azure.com)
 
 ## <a name="use-ansible-to-connect-to-a-vm"></a>Csatlakoztassa a virtuális Gépet Ansible segítségével
 Ansible hozott létre nevű Python-parancsfájl [azure_rm.py](https://github.com/ansible/ansible/blob/devel/contrib/inventory/azure_rm.py) azáltal, hogy az API-kérelmek az Azure erőforrás-kezelő létrehozó Azure-erőforrások dinamikus készlet. A következő lépések végigvezetik használatával a `azure_rm.py` parancsfájl egy Azure virtuális géphez való csatlakozáshoz:
 
-1. Nyissa meg az Azure-felhőbe rendszerhéjat.
+1. Nyissa meg a felhő rendszerhéj Bash. A felhő rendszerhéj ablak bal oldalán rendszerhéj típus helyén.
 
 1. Ha nem rendelkezik a virtuális gép használja, adja meg a következő parancsokat a felhő felület, amellyel tesztelheti a virtuális gép létrehozásához:
 
@@ -78,7 +80,7 @@ Ansible hozott létre nevű Python-parancsfájl [azure_rm.py](https://github.com
   az group delete -n <resourceGroup>
   ```
 
-## <a name="run-a-playbook-in-cloud-shell"></a>A forgatókönyv futtatása felhő rendszerhéj
+## <a name="run-a-playbook-in-cloud-shell"></a>Forgatókönyv futtatása a Cloud Shellben
 A [ansible-forgatókönyv](https://docs.ansible.com/ansible/2.4/ansible-playbook.html) parancs végrehajtása során Ansible playbooks, a feladatok futó célzott gazdagépe (ke). Ez a szakasz bemutatja, hogyan hozhatnak létre és két playbooks - érdekében hozzon létre egy erőforráscsoportot, és egy második, a csoport törléséhez egy futtathatnak a felhőalapú rendszerhéjának használatával. 
 
 1. Hozzon létre egy fájlt `rg.yml` az alábbiak szerint:

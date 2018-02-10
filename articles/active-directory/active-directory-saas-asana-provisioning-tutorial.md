@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: d72b5aa352a9c6724e801c1741969525387f6b90
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: c2c9588e6c452714edcc594c05c59ed05f3c6666
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés Asana konfigurálása
 
@@ -93,7 +93,7 @@ Ez a szakasz végigvezeti az Azure AD API kiépítés Asana felhasználói fiók
 
 12. Kattintson a **Mentés** gombra. 
 
-Most a kezdeti szinkronizálás indítása a Asana rendelt bármely felhasználó számára a **felhasználók** szakasz. A kezdeti szinkronizálás végrehajtásához ezt követő szinkronizálások, amely körülbelül 20 percenként történik, amíg a szolgáltatás fut-nál több időt vesz igénybe. Használja a **szinkronizálás részleteivel** figyelemmel az előrehaladást, és hivatkozásokat követve történő rendszerbe állításához Tevékenységjelentések szakaszt. A jelentések az Asana alkalmazás a létesítési szolgáltatás által végzett összes műveletet írják le.
+Most a kezdeti szinkronizálás indítása a Asana rendelt bármely felhasználó számára a **felhasználók** szakasz. A kezdeti szinkronizálás végrehajtásához ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amíg a szolgáltatás fut-nál több időt vesz igénybe. Használja a **szinkronizálás részleteivel** szakasz figyelemmel az előrehaladást, és hivatkozásokat követve a tevékenységi naplóit kiépítésére. A felügyeleti naplók az Asana alkalmazás a létesítési szolgáltatás által végzett összes műveletet írják le.
 
 Olvassa el az Azure AD-naplók kiépítés módjáról további információkért lásd: [automatikus felhasználói fiók kiépítése jelentést](active-directory-saas-provisioning-reporting.md).
 

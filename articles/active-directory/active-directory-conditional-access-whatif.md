@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/21/2017
+ms.date: 02/08/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: de6b3dcd77132154e583d7333983d6745c4aa3bd
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 19ebb30164eee8e03a3cd8f18b6d575c6eee5438
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-active-directory-conditional-access-what-if-tool---preview"></a>Az Azure Active Directory, mi történik, ha eszköz feltételes hozzáférés – előzetes
 
@@ -78,14 +78,14 @@ Ez a beállítás alapértelmezés szerint **összes felhőalapú alkalmazások*
 
 ### <a name="ip-address"></a>IP-cím
 
-Az IP-cím nem egy egyetlen IPv4-cím, hogy utánozzák a [hely feltétel](active-directory-conditional-access-azure-portal.md#locations). A cím internetre irányuló jelentkezhet be a felhasználó által használt eszköz címe jelöli. Ellenőrizheti az IP-cím egy eszköz, például máshová [Mi az az IP-cím](https://whatismyipaddress.com).    
+Az IP-cím nem egy egyetlen IPv4-cím, hogy utánozzák a [hely feltétel](active-directory-conditional-access-locations.md). A cím internetre irányuló jelentkezhet be a felhasználó által használt eszköz címe jelöli. Ellenőrizheti az IP-cím egy eszköz, például máshová [Mi az az IP-cím](https://whatismyipaddress.com).    
 
 ### <a name="device-platforms"></a>Eszközplatformok
 
-Ez a beállítás utánozza a [eszköz platformok feltétel](active-directory-conditional-access-azure-portal.md#device-platforms) , pedig a egyenértékű **minden platform (beleértve a nem támogatott)**. 
+Ez a beállítás utánozza a [eszköz platformok feltétel](active-directory-conditional-access-conditions.md#device-platforms) , pedig a egyenértékű **minden platform (beleértve a nem támogatott)**. 
 ### <a name="client-apps"></a>Ügyfélalkalmazások
 
-Ez a beállítás utánozza a [ügyfél alkalmazások feltétel](active-directory-conditional-access-azure-portal.md#client-apps).
+Ez a beállítás utánozza a [ügyfél alkalmazások feltétel](active-directory-conditional-access-conditions.md#client-apps).
 Alapértelmezés szerint ez a beállítás hatására az rendelkező összes házirend értékelését **böngésző** vagy **mobilalkalmazások és asztali ügyfelek** vagy külön-külön vagy mindkettő kiválasztva. Azt is észleli, amely kötelezővé házirendek **Exchange ActiveSync (EAS)**. Megadásával szűkíthető, ez a beállítás kiválasztásával:
 
 - **Böngésző** , legalább az összes házirendek kiértékelése **böngésző** kijelölt. 
@@ -95,7 +95,7 @@ Alapértelmezés szerint ez a beállítás hatására az rendelkező összes há
 
 ### <a name="sign-in-risk"></a>Bejelentkezési kockázat
 
-Ez a beállítás utánozza a [bejelentkezési kockázat feltétel](active-directory-conditional-access-azure-portal.md#sign-in-risk).   
+Ez a beállítás utánozza a [bejelentkezési kockázat feltétel](active-directory-conditional-access-conditions.md#sign-in-risk).   
 
 
 ## <a name="evaluation"></a>Próbaverzió 

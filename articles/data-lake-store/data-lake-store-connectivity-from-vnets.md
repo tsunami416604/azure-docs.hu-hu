@@ -3,7 +3,7 @@ title: "Csatlakozás az Azure Data Lake Store a Vnetek |} Microsoft Docs"
 description: "Csatlakozás az Azure Data Lake Store az Azure Vnetekhez"
 services: data-lake-store,data-catalog
 documentationcenter: 
-author: nitinme
+author: esung22
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 683fcfdc-cf93-46c3-b2d2-5cb79f5e9ea5
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/28/2017
-ms.author: nitinme
-ms.openlocfilehash: 029939eabc7283d7591576fa1b14731a9e626a88
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 01/31/2018
+ms.author: elsung
+ms.openlocfilehash: c1bb9d8f5759ece8fe6384441c692adea190aba8
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="access-azure-data-lake-store-from-vms-within-an-azure-vnet"></a>Az Azure Data Lake Store egy Azure virtuális hálózaton belüli virtuális gépek
 Azure Data Lake Store PaaS szolgáltatás, amely a nyilvános Internet IP-címek. Bármely kiszolgáló csatlakozni tud-e a nyilvános internethez általában csatlakozhat, valamint az Azure Data Lake Store-végpontok. Alapértelmezés szerint az Azure Vnetekhez lévő összes virtuális gép hozzáférhet az interneten, és ezért férhetnek hozzá az Azure Data Lake Store. Azonban úgy is egy VNET és nem rendelkezik Internet-hozzáférés a virtuális gépek konfigurálása. Ilyen virtuális gépek elérése az Azure Data Lake Store történik is. Nyilvános Internet-hozzáférés letiltása a virtuális gépek az Azure Vnetekhez végezhető a következő módon használja.
@@ -51,7 +51,7 @@ Használatakor egy NSG-szabály Internet-hozzáférés letiltása, majd létreho
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-expressroute"></a>Virtuális gépek szolgáltatással ExpressRoute kapcsolat engedélyezése
 Ha ExpressRoute-kapcsolatcsoportot van konfigurálva, a helyszíni kiszolgálók elérhető Data Lake Store nyilvános társviszony keresztül. További részleteket a nyilvános társviszony található ExpressRoute konfigurálása [ExpressRoute – gyakori kérdések](../expressroute/expressroute-faqs.md).
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Az Azure Data Lake Store áttekintése](data-lake-store-overview.md)
 * [Azure Data Lake Store-ban tárolt adatok védelme](data-lake-store-security-overview.md)
 

@@ -30,8 +30,15 @@ Megvásárolhatja fenntartott virtuálisgép-példánya a [Azure-portálon](http
 
     ![Képernyőfelvétel a Foglalás beszerzési elküldése előtt](./media/virtual-machines-buy-compute-reservations/virtualmachines-reservedvmInstance-submit.png)
 
-## <a name="next-steps-after-buying-a-reservation"></a>Vásárlás foglalás követő lépések
+## <a name="next-steps"></a>További lépések 
 A foglalási kedvezményeket automatikusan alkalmazzák a futó virtuális gépek, amelyek megfelelnek a fenntartási hatókör és attribútumok számát. Frissítheti a Foglalás keresztül hatóköre [Azure-portálon](https://portal.azure.com), PowerShell, a parancssori felületen vagy az API-n keresztül. 
 
 A foglalási kezelése című témakörben talál [kezelése Azure fenntartott virtuálisgép-példányok](../articles/billing/billing-manage-reserved-vm-instance.md).
 
+Tudhat meg többet a fenntartott virtuálisgép-példányok, tekintse meg a következő cikkekben talál.
+
+- [Kevesebbet költeni a virtuális gépek a fenntartott virtuálisgép-példányok](../articles/billing/billing-save-compute-costs-reservations.md)
+- [A fenntartott virtuális gép példány kedvezményeket alkalmazásának a módját ismertetése](../articles/billing/billing-understand-vm-reservation-charges.md)
+- [A használatalapú fizetéses előfizetésre fenntartott példány használatának megértéséhez](../articles/billing/billing-understand-reserved-instance-usage.md)
+- [A nagyvállalati beléptetés használata fenntartott példány ismertetése](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
+- [A Windows szoftverek költségeit fenntartott példányok nem találhatók](../articles/billing/billing-reserved-instance-windows-software-costs.md)

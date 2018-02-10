@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: ca828dab7bdb47e41596be2717598cfe828953ca
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f13ca506197ff8b9b86cf1f69300fd974b9ddd5a
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="kubernetes-dashboard-with-azure-container-service-aks"></a>Kubernetes irányítópult Azure tároló szolgáltatás (AKS)
 
@@ -23,14 +23,14 @@ Az Azure CLI segítségével a Kubernetes irányítópult elindításához. Ez a
 
 A dokumentumban foglalt lépések feltételezik, hogy korábban már létrehozott egy AKS-fürtöt, és kiépített egy kubectl-kapcsolatot a fürttel. Ha ezek az elemek megjelenítéséhez a [AKS gyors üzembe helyezés][aks-quickstart].
 
-Emellett az Azure CLI 2.0.21-es vagy újabb, telepített és konfigurált verziójával is rendelkeznie kell. A verzió megkereséséhez futtassa a következő parancsot: az --version. Ha szeretné telepíteni vagy frissíteni, lásd: [Azure CLI telepítése][install-azure-cli].
+Emellett az Azure CLI 2.0.21-es vagy újabb, telepített és konfigurált verziójával is rendelkeznie kell. A verzió megkereséséhez futtassa a következő parancsot: az --version. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
 
 ## <a name="start-kubernetes-dashboard"></a>Indítsa el a Kubernetes irányítópult
 
 Használja a `az aks browse` parancsot a Kubernetes irányítópult elindításához. A parancs futtatásakor cserélje le az erőforrás-csoport és a fürt nevét.
 
 ```azurecli
-az aks browse --resource-group myResourceGroup --name myK8SCluster
+az aks browse --resource-group myResourceGroup --name myAKSCluster
 ```
 
 A parancs létrehozza a fejlesztői rendszerhez és a Kubernetes API között elhelyezkedő proxy, és a Kubernetes irányítópult egy webböngészőben megnyílik.
@@ -51,7 +51,7 @@ Az alkalmazás állapotát a Kubernetes irányítópulton látható. Ha az alkal
 
 Az alkalmazás három munkaállomás-csoporttal kapcsolatos további információk megtekintéséhez kattintson a **három munkaállomás-csoporttal** a bal oldali menüből, majd válassza ki a **NGINX** pod. Itt látható, például az erőforrás-felhasználás pod-specifikus adatait.
 
-![Kubernetes erőforrások](./media/container-service-kubernetes-ui/running-pods.png)
+![Kubernetes Resources](./media/container-service-kubernetes-ui/running-pods.png)
 
 Az alkalmazás az IP-cím kereséséhez kattintson az **szolgáltatások** a bal oldali menüből, majd válassza ki a **NGINX** szolgáltatás.
 
@@ -63,15 +63,15 @@ Létrehozásán és alkalmazások megtekintése, a Kubernetes Irányítópult se
 
 A központi telepítés szerkesztéséhez kattintson **központi telepítések** a bal oldali menüből, majd válassza ki a **NGINX** központi telepítés. Végül válassza ki **szerkesztése** jobb felső navigációs sávon.
 
-![Kubernetes szerkesztése](./media/container-service-kubernetes-ui/view-deployment.png)
+![Kubernetes Edit](./media/container-service-kubernetes-ui/view-deployment.png)
 
 Keresse meg a `spec.replica` értéket, amely 1 kell lennie, módosítsa ezt az értéket a 3. Ennek során a replika száma az NGINX-telepítés megnövelik 1-3.
 
 Válassza ki **frissítés** Ha készen áll.
 
-![Kubernetes szerkesztése](./media/container-service-kubernetes-ui/edit-deployment.png)
+![Kubernetes Edit](./media/container-service-kubernetes-ui/edit-deployment.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Kubernetes irányítópulttal kapcsolatos további információkért a Kubernetes dokumentációjában talál.
 

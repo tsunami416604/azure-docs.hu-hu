@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: 19b573f77f2ee84600955d00d30bdb16c84e3623
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3cbc25099b99499a6186e57c155d195e75bd61bf
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Egy képet egy virtuális géphez vagy virtuális merevlemez létrehozása
 
@@ -37,7 +37,7 @@ Győződjön meg arról, hogy teljesülnek-e a következő előfeltételek telje
 
 * Egy Azure virtuális gép létrehozása a Resource Manager üzembe helyezési modellel felügyelt lemezekkel van szüksége. Ha még nem hozott létre egy Linux virtuális Gépet, használhatja a [portal](quick-create-portal.md), a [Azure CLI](quick-create-cli.md), vagy [Resource Manager-sablonok](create-ssh-secured-vm-from-template.md). Igény szerint konfigurálhatja a virtuális Gépet. Például [adatok lemezek hozzáadása a](add-disk.md), frissítések és alkalmazások telepítéséhez. 
 
-* Szükség van a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és az Azure-fiók használatával kell bejelentkezett [az bejelentkezési](/cli/azure/#login).
+* Szükség van a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és az Azure-fiók használatával kell bejelentkezett [az bejelentkezési](/cli/azure/#az_login).
 
 ## <a name="quick-commands"></a>Gyors parancsok
 
@@ -79,7 +79,7 @@ Az Azure CLI 2.0 segítségével a virtuális gép megjelölése általánosítv
       --name myVM
     ```
 
-3. Most létrehozza a virtuális gép erőforrásához a kép [az lemezkép létrehozása](/cli//azure/image#create). Az alábbi példakód létrehozza nevű kép *myImage* az erőforráscsoport neve *myResourceGroup* nevű VM erőforrás használatával *myVM*:
+3. Most létrehozza a virtuális gép erőforrásához a kép [az lemezkép létrehozása](/cli/azure/image#az_image_create). Az alábbi példakód létrehozza nevű kép *myImage* az erőforráscsoport neve *myResourceGroup* nevű VM erőforrás használatával *myVM*:
    
     ```azurecli
     az image create \
@@ -91,7 +91,7 @@ Az Azure CLI 2.0 segítségével a virtuális gép megjelölése általánosítv
    > A kép mint a forrás virtuális gép ugyanabban az erőforráscsoportban jön létre. Bármely erőforráscsoport virtuális gépeket hozhat létre a lemezképből az előfizetésen belül. Felügyeleti szempontból Kezdésként hozzon létre egy adott erőforráscsoportot a Virtuálisgép-erőforrások és a képeket.
 
 ## <a name="step-3-create-a-vm-from-the-captured-image"></a>3. lépés: Virtuális gép létrehozása a rögzített lemezképből
-A lemezkép segítségével létrehozott virtuális gép létrehozása [az virtuális gép létrehozása](/cli/azure/vm#create). Az alábbi példakód létrehozza a virtuális gépek nevű *myVMDeployed* nevű lemezkép alapján *myImage*:
+A lemezkép segítségével létrehozott virtuális gép létrehozása [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create). Az alábbi példakód létrehozza a virtuális gépek nevű *myVMDeployed* nevű lemezkép alapján *myImage*:
 
 ```azurecli
 az vm create \
@@ -104,7 +104,7 @@ az vm create \
 
 ### <a name="creating-the-vm-in-another-resource-group"></a>A virtuális gép létrehozása egy másik erőforráscsoportban található 
 
-Bármely erőforráscsoport lemezkép virtuális gépeket hozhat létre az előfizetésen belül. A virtuális gép egy másik erőforráscsoportban található, mint a lemezkép létrehozásához adja meg a teljes erőforrás-azonosítója a képhez. Használjon [az képlistában](/cli/azure/image#list) képek listájának megtekintéséhez. A kimenet a következő példához hasonló:
+Bármely erőforráscsoport lemezkép virtuális gépeket hozhat létre az előfizetésen belül. A virtuális gép egy másik erőforráscsoportban található, mint a lemezkép létrehozásához adja meg a teljes erőforrás-azonosítója a képhez. Használjon [az képlistában](/cli/azure/image#az_image_list) képek listájának megtekintéséhez. A kimenet a következő példához hasonló:
 
 ```json
 "id": "/subscriptions/guid/resourceGroups/MYRESOURCEGROUP/providers/Microsoft.Compute/images/myImage",
@@ -112,7 +112,7 @@ Bármely erőforráscsoport lemezkép virtuális gépeket hozhat létre az előf
    "name": "myImage",
 ```
 
-Az alábbi példában [az virtuális gép létrehozása](/cli/azure/vm#create) egy másik erőforráscsoportban található, mint a forrás lemezkép virtuális gép létrehozása a képerőforrás-azonosító megadásával:
+Az alábbi példában [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create) egy másik erőforráscsoportban található, mint a forrás lemezkép virtuális gép létrehozása a képerőforrás-azonosító megadásával:
 
 ```azurecli
 az vm create \
@@ -126,7 +126,7 @@ az vm create \
 
 ## <a name="step-4-verify-the-deployment"></a>4. lépés: A telepítés ellenőrzése
 
-A virtuális géphez, ellenőrizze a központi telepítés és a használatával az új virtuális gép indítási létrehozott most SSH. SSH-kapcsolaton keresztül csatlakozni az IP-cím vagy FQDN-jét az a virtuális gép található [az vm megjelenítése](/cli/azure/vm#show):
+A virtuális géphez, ellenőrizze a központi telepítés és a használatával az új virtuális gép indítási létrehozott most SSH. SSH-kapcsolaton keresztül csatlakozni az IP-cím vagy FQDN-jét az a virtuális gép található [az vm megjelenítése](/cli/azure/vm#az_vm_show):
 
 ```azurecli
 az vm show \
@@ -135,7 +135,7 @@ az vm show \
    --show-details
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A forrás Virtuálisgép-lemezkép létrehozhat több virtuális géphez. Ha módosítania kell a lemezkép: 
 
 - Hozzon létre egy virtuális Gépet a lemezképből.

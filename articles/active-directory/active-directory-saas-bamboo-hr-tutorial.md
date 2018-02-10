@@ -14,168 +14,160 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: jeedes
-ms.openlocfilehash: 6582a0b05539f322801273374d7c8fbccfe2da60
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 081144a645683d4d00ed0d464e23558378dc1b38
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bamboohr"></a>Oktatóanyag: Azure Active Directoryval integrált BambooHR
 
 Ebben az oktatóanyagban elsajátíthatja BambooHR integrálása az Azure Active Directory (Azure AD).
 
-BambooHR integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+BambooHR integrálása az Azure AD a következő előnyökkel jár:
 
 - Az Azure AD, aki hozzáfér BambooHR szabályozhatja.
-- Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett BambooHR (egyszeri bejelentkezés) számára a saját Azure AD-fiókok.
-- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
+- Engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett BambooHR az Azure AD-fiókok egyszeri bejelentkezés (SSO) használatával.
+- A fiók egyetlen központi helyen, az Azure-portálon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Az Azure AD SaaS integrálásáról további információért lásd: [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Konfigurálása az Azure AD-integrációs BambooHR, a következőkre van szükség:
 
 - Az Azure AD szolgáltatásra
-- Egy BambooHR egyszeri bejelentkezés engedélyezve van az előfizetés
+- Előfizetés BambooHR SSO engedélyezése
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban tesztelésekor a lépéseket, ajánlott, hogy nem éles környezetben.
 
-Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
+Ez az oktatóanyag lépéseit teszteléséhez hajtsa végre az ezek az ajánlások:
 
 - Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [ingyenes, egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. 
+
+Ez az oktatóanyag ismerteti a forgatókönyv két fő építőelemeket áll:
 
 1. A gyűjteményből BambooHR hozzáadása
 2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
 
-## <a name="adding-bamboohr-from-the-gallery"></a>A gyűjteményből BambooHR hozzáadása
-Az Azure AD integrálása a BambooHR konfigurálásához kell hozzáadnia BambooHR a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="add-bamboohr-from-the-gallery"></a>Adja hozzá a BambooHR a gyűjteményből
+Az Azure AD integrálása a BambooHR konfigurálásához hozzáadása BambooHR a gyűjteményből a kezelt SaaS-alkalmazások listáját a következő módon:
 
-**A gyűjteményből BambooHR hozzáadásához hajtsa végre az alábbi lépéseket:**
-
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a [Azure-portálon](https://portal.azure.com), a bal oldali panelen válassza ki a **Azure Active Directory**. 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Válassza ki **vállalati alkalmazások** > **összes alkalmazás**.
 
-    ![A vállalati alkalmazások panel][2]
+    ![A vállalati alkalmazások ablaktábla][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Hozzáadhat egy alkalmazást, válassza ki a **új alkalmazás**.
 
-    ![Az új alkalmazás gomb][3]
+    ![Az "új alkalmazás" gomb][3]
 
-4. Írja be a keresőmezőbe, **BambooHR**, jelölje be **BambooHR** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. Írja be a keresőmezőbe, **BambooHR**. Az eredmények listájában válassza **BambooHR**, majd válassza ki **Hozzáadás**.
 
     ![Az eredménylistában BambooHR](./media/active-directory-saas-bamboo-hr-tutorial/tutorial_bamboohr_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezéshez "Britta Simon" nevű tesztfelhasználó alapján BambooHR.
+Ebben a szakaszban konfigurálása és tesztelése Azure AD SSO BambooHR tesztfelhasználó "Britta Simon."
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó BambooHR a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a BambooHR közötti kapcsolat kapcsolatot kell létrehozni.
+Az egyszeri bejelentkezés működjön az Azure AD tudnia kell, mi a párjukhoz felhasználó van BambooHR. Más szóval BambooHR az Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolat kapcsolatot kell létesítenie.
 
-BambooHR, rendelje hozzá a értékének a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+A hivatkozás kapcsolatot létesíteni a BambooHR, rendelje hozzá az Azure AD **felhasználónév** érték, mint a BambooHR **felhasználónév** érték.
 
-Az Azure AD egyszeri bejelentkezést a BambooHR tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
-
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[BambooHR tesztfelhasználó létrehozása](#create-a-bamboohr-test-user)**  - való Britta Simon valami BambooHR, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
-5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+Azure AD BambooHR egyszeri bejelentkezés tesztelése és konfigurálása, végezze el a következő öt szakaszokban építőelemeit.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az BambooHR alkalmazásban.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri Bejelentkezést az Azure portálon, és egyszeri bejelentkezés konfigurálása az BambooHR alkalmazásban a következő módon:
 
-**Konfigurálása az Azure AD az egyszeri bejelentkezés BambooHR, hajtsa végre az alábbi lépéseket:**
-
-1. Az Azure portálon a a **BambooHR** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure portálon a a **BambooHR** alkalmazás integrációs lapon jelölje be **egyszeri bejelentkezés**.
 
     ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezés** ablakban, a a **mód** legördülő listában válassza **SAML-alapú bejelentkezés**.
  
-    ![Egyszeri bejelentkezés párbeszédpanel](./media/active-directory-saas-bamboo-hr-tutorial/tutorial_bamboohr_samlbase.png)
+    ![Egyszeri bejelentkezés ablak](./media/active-directory-saas-bamboo-hr-tutorial/tutorial_bamboohr_samlbase.png)
 
-3. Az a **BambooHR tartomány és az URL-címek** területen tegye a következőket:
+3. A **BambooHR tartomány és az URL-címek**, tegye a következőket:
 
-    ![Az egyszeri bejelentkezés információk BambooHR tartomány és az URL-címek](./media/active-directory-saas-bamboo-hr-tutorial/tutorial_bamboohr_url.png)
+    ![A BambooHR tartomány és az URL-címek szakasz](./media/active-directory-saas-bamboo-hr-tutorial/tutorial_bamboohr_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<company>.bamboohr.com`
+    a. Az a **bejelentkezési URL-cím** mezőbe, írja be egy URL-címet a következő formátumban: `https://<company>.bamboohr.com`.
 
-    b. Az a **azonosító** szövegmezőhöz be egy értéket:`BambooHR-SAML`
+    b. Az a **azonosító** mezőbe írjon be egy értéket: `BambooHR-SAML`.
 
     > [!NOTE] 
-    > A bejelentkezési URL-cím értéke nincs valós. Frissítse az értéket a tényleges bejelentkezési URL-címet. Ügyfél [BambooHR ügyfél-támogatási csoport](https://www.bamboohr.com/contact.php) az értéket be kell olvasni. 
+    > A **bejelentkezési URL-cím** érték nincs valós. Frissíti a tényleges bejelentkezési URL-CÍMÉT. Beszerezni az értéket, lépjen kapcsolatba a [BambooHR ügyfél-támogatási csoport](https://www.bamboohr.com/contact.php). 
  
-4. A a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+4. A **SAML-aláíró tanúsítványa**, jelölje be **tanúsítvány (Base64)**, és mentse a tanúsítványfájlt, a számítógépen.
 
     ![A tanúsítvány letöltési hivatkozását](./media/active-directory-saas-bamboo-hr-tutorial/tutorial_bamboohr_certificate.png) 
 
-5. Kattintson a **mentése** gombra.
+5. Kattintson a **Mentés** gombra.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/active-directory-saas-bamboo-hr-tutorial/tutorial_general_400.png)
+    ![A Mentés gombra](./media/active-directory-saas-bamboo-hr-tutorial/tutorial_general_400.png)
 
-6. A a **BambooHR konfigurációs** kattintson **konfigurálása BambooHR** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+6. A **BambooHR konfigurációs**, jelölje be **konfigurálása BambooHR** megnyitásához a **bejelentkezés konfigurálása** ablak. Az a **rövid összefoglaló** szakaszban, másolja a **SAML-alapú egyszeri bejelentkezési URL-címe** későbbi használatra.
 
     ![BambooHR konfiguráció](./media/active-directory-saas-bamboo-hr-tutorial/tutorial_bamboohr_configure.png) 
 
-6. Egy másik webes böngészőablakban jelentkezzen be a BambooHR vállalati webhely rendszergazdaként.
+7. Egy új ablakban jelentkezzen be a BambooHR vállalati webhely rendszergazdaként.
 
-7. A kezdőlapon hajtsa végre a következő lépéseket:
+8. A kezdőlapon tegye a következőket:
    
-    ![Egyszeri bejelentkezés](./media/active-directory-saas-bamboo-hr-tutorial/ic796691.png "egyszeri bejelentkezés")   
+    ![A BambooHR egyszeri bejelentkezés lap](./media/active-directory-saas-bamboo-hr-tutorial/ic796691.png "egyszeri bejelentkezést.")   
 
-    a. Kattintson a **alkalmazások**.
+    a. Válassza ki **alkalmazások**.
    
-    b. Kattintson a bal oldali alkalmazások menüben **egyszeri bejelentkezés**.
+    b. Az a **alkalmazások** ablaktáblán válassza előbb **egyszeri bejelentkezés**.
    
-    c. Kattintson a **SAML-alapú egyszeri bejelentkezést**.
+    c. Válassza ki **SAML-alapú egyszeri bejelentkezést**.
 
-8. Az a **SAML-alapú egyszeri bejelentkezést** területen tegye a következőket:
+9. Az a **SAML-alapú egyszeri bejelentkezést** ablaktáblán tegye a következőket:
    
-    ![SAML-alapú egyszeri bejelentkezést](./media/active-directory-saas-bamboo-hr-tutorial/IC796692.png "SAML-alapú egyszeri bejelentkezést.")
+    ![A SAML-alapú egyszeri bejelentkezést ablaktábla](./media/active-directory-saas-bamboo-hr-tutorial/IC796692.png "SAML-alapú egyszeri bejelentkezést.")
    
-    a. A a **Egyszeri bejelentkezési URL-cím** szövegmezőhöz illessze be az értékét **SAML-alapú egyszeri bejelentkezési URL-címe**, amely az Azure-portálon másolta.
+    a. Azokat a **Egyszeri bejelentkezési URL-cím** mezőbe illessze be a **SAML-alapú egyszeri bejelentkezési URL-címe** , az Azure-portálon a 6. lépésben másolt.
       
-    b. Nyissa meg a Jegyzettömbben az Azure portálról letöltött base-64 kódolású tanúsítvány, a tartalmának másolása a vágólapra és illessze be azt a **X.509 tanúsítvány** szövegmező
+    b. A Jegyzettömbben, nyissa meg a base-64 kódolású tanúsítvány Azure-portálról letöltött, másolja a tartalmat, és illessze be azt a **X.509 tanúsítvány** mezőbe.
    
-    c. Kattintson a **Save** (Mentés) gombra.
+    c. Kattintson a **Mentés** gombra.
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Az alkalmazás beállítása, amíg el tudja olvasni ezeket az utasításokat a tömör verzióját a [Azure-portálon](https://portal.azure.com). Miután hozzáadta az alkalmazásból a **Active Directory** > **vállalati alkalmazások** szakaszban egyszerűen jelölje be a **egyszeri bejelentkezés** lapot, és hozzáférhet a beágyazott keresztül dokumentáció a **konfigurációs** szakasz alján. További információ: [az Azure AD dokumentációjában beágyazott]( https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
 
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+Ez a szakasz célja az Azure portálon Britta Simon nevű tesztfelhasználó létrehozása.
 
-   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
+   ![Az Azure AD tesztfelhasználó Britta Simon létrehozása][100]
 
-**Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
+Tesztfelhasználó létrehozása az Azure ad-ben, tegye a következőket:
 
-1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+1. Az Azure portálon a bal oldali panelen válassza ki a **Azure Active Directory**.
 
     ![Az Azure Active Directory gomb](./media/active-directory-saas-bamboo-hr-tutorial/create_aaduser_01.png)
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, majd válassza ki **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/active-directory-saas-bamboo-hr-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
+3. Felső részén a **minden felhasználó** ablaktáblán válassza előbb **Hozzáadás**.
 
     ![A Hozzáadás gombra.](./media/active-directory-saas-bamboo-hr-tutorial/create_aaduser_03.png)
 
-4. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+4. Az a **felhasználói** ablakban tegye a következőket:
 
-    ![A felhasználó párbeszédpanel](./media/active-directory-saas-bamboo-hr-tutorial/create_aaduser_04.png)
+    ![A felhasználó ablak](./media/active-directory-saas-bamboo-hr-tutorial/create_aaduser_04.png)
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
 
@@ -183,73 +175,70 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
     c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** gombra.
  
 ### <a name="create-a-bamboohr-test-user"></a>BambooHR tesztfelhasználó létrehozása
 
-Ahhoz, hogy az Azure AD-felhasználók BambooHR bejelentkezni, akkor ki kell építenie a BambooHR.  
-
-BambooHR, ha egy kézi tevékenység.
-
-**Felhasználói fiók létrehozásához hajtsa végre az alábbi lépéseket:**
+Ahhoz, hogy az Azure AD-felhasználók BambooHR bejelentkezni, állítsa be őket manuálisan a BambooHR a következő módon:
 
 1. Jelentkezzen be a **BambooHR** hely rendszergazdaként.
 
-2. A felső eszköztáron kattintson **beállítások**.
+2. Válassza ki a felső eszköztáron **beállítások**.
    
-    ![Beállítás](./media/active-directory-saas-bamboo-hr-tutorial/IC796694.png "beállítás")
+    ![A beállítások gombra](./media/active-directory-saas-bamboo-hr-tutorial/IC796694.png "beállítás")
 
-3. Kattintson a **áttekintése**.
+3. Válassza ki **áttekintése**.
 
-4. A bal oldali ablaktáblában lépjen **biztonsági \> felhasználók**.
+4. A bal oldali panelen válassza ki a **biztonsági** > **felhasználók**.
 
-5. Írja be a felhasználónevet, jelszót és egy érvényes szeretné azokat a kapcsolódó szövegmezők rendelkezés AAD-fiókhoz tartozó e-mail cím.
+5. A felhasználónév, jelszó és e-mail cím a érvényes Azure ad fiók beállításához használni kívánt típusát.
 
-6. Kattintson a **Save** (Mentés) gombra.
+6. Kattintson a **Mentés** gombra.
         
 >[!NOTE]
->Bármely más BambooHR felhasználói fiók létrehozása eszközök vagy rendelkezés AAD felhasználói fiókokhoz BambooHR által nyújtott API-k.
+>Azure AD-felhasználói fiókok beállításához BambooHR felhasználói fiók létrehozása eszközök vagy API-t is használhatja.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés BambooHR Azure egyszeri bejelentkezéshez használandó.
+Engedélyezze a felhasználó által biztosított hozzáférés BambooHR Azure SSO használandó Britta Simon.
 
 ![A felhasználói szerepkör hozzárendelése][200] 
 
-**Britta Simon hozzárendelése BambooHR, hajtsa végre az alábbi lépéseket:**
+Felhasználó Britta Simon hozzárendelése BambooHR, tegye a következőket:
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure portálon, az alkalmazások nézet megnyitásához, nyissa meg a könyvtár nézetet, és válassza **vállalati alkalmazások** > **összes alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **BambooHR**.
+2. Az a **vállalati alkalmazások** listáról válassza ki **BambooHR**.
 
-    ![Az alkalmazások listáját a BambooHR hivatkozás](./media/active-directory-saas-bamboo-hr-tutorial/tutorial_bamboohr_app.png)  
+    ![A vállalati alkalmazások listáját a BambooHR hivatkozás](./media/active-directory-saas-bamboo-hr-tutorial/tutorial_bamboohr_app.png)  
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali panelen válassza ki a **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Válassza ki a **Hozzáadás** gombra, majd a a **hozzáadása hozzárendelés** ablaktáblán válassza előbb **felhasználók és csoportok**.
 
     ![A hozzárendelés hozzáadása panelen][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+5. Az a **felhasználók és csoportok** ablakban, a a **felhasználók** listáról válassza ki **Britta Simon**.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Válassza ki a **válasszon** gombra.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Az a **hozzáadása hozzárendelés** ablakban válassza ki a **hozzárendelése** gombra.
     
 ### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+A hozzáférési Panel az Azure AD egyszeri bejelentkezési beállítások tesztelése.
 
-Ha a hozzáférési panelen BambooHR csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az BambooHR alkalmazására.
+Ha bejelöli a **BambooHR** csempére a hozzáférési panelen, be kell beolvasni automatikusan jelentkezve az BambooHR alkalmazás.
+
 A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directoryval kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
 
 

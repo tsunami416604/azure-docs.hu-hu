@@ -14,16 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2017
 ms.author: johnkem
-ms.openlocfilehash: 3885469ec0e1fcc31386dd0ad7fe6cb5d03ab28e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c8a2ce3ca90895262e77c3895867d29c9d3530a2
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-activity-log-alerts"></a>Napló riasztások tevékenység létrehozása
 
 ## <a name="overview"></a>Áttekintés
 Tevékenység napló riasztások az éppen aktiválása, ha egy új tevékenység napló esemény történik a riasztás megadott feltételeknek megfelelő riasztásokat. Azure-erőforrások, így azok hozhat létre Azure Resource Manager-sablonnal. Akkor is is létrehozása, frissítése, vagy törölve az Azure portálon. Ez a cikk bemutatja a napló tevékenységriasztásokat mögött. Azt ezután bemutatja, hogyan használható az Azure-portálon naplózási eseményeket a riasztás beállításához.
+
+> [!NOTE]
+
+>  [Riasztások (előzetes verzió)](monitoring-overview-unified-alerts.md) létrehozásának és kezelésének tevékenységi naplóit fokozott élményt nyújtó jelenleg kínál.  [További információk](monitoring-activity-log-alerts-new-experience.md).
 
 Általában létrehozhat tevékenység napló riasztásokat, értesítéseket során:
 
@@ -37,21 +41,19 @@ A JSON-objektumokat az tevékenység naplóesemény legfelső szintű tulajdons�
 - **Kategória**: felügyeleti, a szolgáltatás állapotát, automatikus skálázás és javaslat. További információkért lásd: [az Azure tevékenységnapló áttekintése](./monitoring-overview-activity-logs.md#categories-in-the-activity-log). A szolgáltatás állapotával kapcsolatos események kapcsolatos további információkért lásd: [szolgáltatáshoz értesítést tevékenység napló riasztásokat fogadhat](./monitoring-activity-log-alerts-on-service-notifications.md).
 - **Erőforráscsoport**
 - **Erőforrás**
-- **Erőforrástípus**
+- **Erőforrás típusa**
 - **A művelet neve**: hozzáférés-vezérlés The Resource Manager Role-Based művelet neve.
 - **Szint**: A súlyossági szintet az esemény (részletes, tájékoztatás, figyelmeztetés, hiba vagy kritikus).
 - **Állapot**: az esemény, általában elindult, sikertelen vagy sikeres állapotát.
 - **Az esemény által kezdeményezett**: más néven a "hívó." Az e-mail cím vagy a műveletet a felhasználó Azure Active Directory azonosítója.
 
->[!NOTE]
->Meg kell adnia a fenti feltételek közül legalább kettő kattintson a riasztásra, egy a kategória alatt. Nem hozható létre egy riasztást, amely minden alkalommal, amikor egy esemény jön létre a tevékenységi naplóit aktiválja.
->
->
+> [!NOTE]
+> "Rendszergazda" kategória esetén meg kell adnia legalább egy a fenti feltételek közül a riasztásban. Nem hozható létre egy riasztást, amely minden alkalommal, amikor egy esemény jön létre a tevékenységi naplóit aktiválja.
 
 Amikor egy tevékenység napló riasztás aktív, az egy műveletek vagy értesítések. Egy olyan újrafelhasználható értesítési fogadók, például az e-mail címeket, a webhook URL-címek vagy SMS telefonszámokat. A fogadók központosítása és az értesítési csatornák csoport több riasztás lehet hivatkozni. Ha a napló figyelmeztetés, két választási lehetősége van. A következőket teheti:
 
-* A napló figyelmeztetés művelet meglévő csoport használata 
-* Hozzon létre egy új művelet. 
+* A napló figyelmeztetés művelet meglévő csoport használata
+* Hozzon létre egy új művelet.
 
 Művelet csoportokkal kapcsolatos további tudnivalókért lásd: [létrehozása és kezelése az Azure portálon művelet csoportok](monitoring-action-groups.md).
 
@@ -121,7 +123,7 @@ Riasztás létrehozása után már látható a riasztások szakaszban, a figyel�
 * Törölje a parancsikont.
 * Tiltsa le, vagy engedélyezheti, ha azt szeretné, ideiglenesen leállítani, vagy folytassa a riasztás értesítések fogadásának.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Első egy [riasztások áttekintése](monitoring-overview-alerts.md).
 - További tudnivalók [értesítési sebessége korlátozza az](monitoring-alerts-rate-limiting.md).
 - Tekintse át a [műveletnapló riasztási webhook séma](monitoring-activity-log-alerts-webhook.md).

@@ -16,11 +16,11 @@ ms.date: 01/23/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro;
-ms.openlocfilehash: 918e1c535ea8779a8aff3d94c6f1ef2cb2a17fd5
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: de26452dfb32438ef56fa0c9a31a24b05987b48c
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Rendszergazdai jogosultságok kiosztása az Azure Active Directoryban
 
@@ -64,7 +64,7 @@ A következő rendszergazdai szerepkörök állnak rendelkezésre:
 
 * **Vendég meghívó**: a szerepet betöltő felhasználók kezelhetik az Azure Active Directory B2B Vendég felhasználó meghívókat, amikor a felhasználó "Tagok kérhetnek" beállítás értéke nem. További információ a következő B2B együttműködés [kapcsolatban az Azure AD B2B együttműködés előzetes verziója](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b). Nem tartalmazza azokat az engedélyeket.
 
-* **Információk védelme rendszergazda**: Ezzel a szerepkörrel rendelkező felhasználók férhetnek hozzá Azure Information Protection az Azure portálon. Azok címkéket az Azure Information Protection-házirend konfigurálása, védelmi sablonok kezelése és védelme aktiválja.
+<!-- * **Information Protection Administrator**: Users with this role can access Azure Information Protection in the Azure portal. They can configure labels for the Azure Information Protection policy, manage protection templates, and activate protection.-->
 
 * **Intune szolgáltatás-rendszergazda**: Ezzel a szerepkörrel rendelkező felhasználók engedélye globális belül a Microsoft Intune Online, ha a szolgáltatás jelen. Ez a szerepkör emellett képes kezelni a felhasználók és eszközök számára ahhoz, hogy társítja a házirendet, valamint a csoportok létrehozásához és kezeléséhez tartalmazza.
 
@@ -128,11 +128,11 @@ A következő rendszergazdai szerepkörök állnak rendelkezésre:
 | --- | --- |
 | <p>Vállalati és felhasználói adatok megtekintése</p><p>Office támogatási jegyek kezelése</p><p>Módosíthatja a felhasználók és más segélyszolgálat-rendszergazdák jelszavát</p>|<p>Office-termékek számlázási és beszerzési műveletek végrehajtása</p><p>Hozzon létre és kezelheti a felhasználói nézetek</p><p>Létrehozása, szerkesztése, törlése a felhasználók és csoportok és felhasználói licencek kezelése</p><p>Manage domains</p><p>Vállalati adatok kezelése</p><p>Rendszergazdai szerepkörök delegálása</p><p>Címtár-szinkronizálás</p><p>Jelentések megtekintése</p>|
 
-### <a name="information-protection-administrator"></a>Információk védelme rendszergazda 
-A | Teheti meg
+<!--### Information Protection Administrator 
+In | Can do
 -------- | ---------
-Azure Information Protection | * Globális, hatókörbe tartozó házirendek és címkék konfigurálása<br>* A kezelése, konfigurálása, védelmi sablonok frissítése<br>* Védelmi aktiválási használatra engedélyezése 
-Privileged Identity Management | Olvasási engedélyekkel<br>* Nem tudja kezelni az Azure AD szerepkörtagságok vagy beállítások.
+Azure Information Protection | * Configure global, scoped policies and labels<br>* Manage, configure, update protection templates<br>* Enable protection activation for use 
+Privileged Identity Management | * Read permissions<br>* Cannot manage Azure AD role memberships or settings. --->
  
 ### <a name="reports-reader"></a>Jelentések olvasó 
 Teheti meg | Nem hajtható végre

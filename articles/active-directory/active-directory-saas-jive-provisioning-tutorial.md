@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 67bbf48c0ce67b0fef5cc2b1c61e3612e0201534
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 4190b1cbc7e32b1471795e29a211f7a7e5831648
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés Jive konfigurálása
 
@@ -93,9 +93,9 @@ Ez az eljárás részeként meg kell beszereznie Jive.com felhasználó biztons�
 
 12. Kattintson a **mentéséhez.**
 
-A kezdeti szinkronizálás bármely felhasználói és/vagy a felhasználók és csoportok szakaszban Jive rendelt csoportok kezdődik. A kezdeti szinkronizálás végrehajtásához ezt követő szinkronizálások, amely körülbelül 20 percenként történik, amíg a szolgáltatás fut-nál több időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz figyelemmel az előrehaladást, és hivatkozásokat követve történő rendszerbe állításához tevékenység jelentéseit, amelyek a létesítési szolgáltatás az Jive alkalmazás által végzett összes műveletet írják le.
+A kezdeti szinkronizálás bármely felhasználói és/vagy a felhasználók és csoportok szakaszban Jive rendelt csoportok kezdődik. A kezdeti szinkronizálás végrehajtásához ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amíg a szolgáltatás fut-nál több időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz figyelemmel az előrehaladást, és hivatkozásokat követve történő rendszerbe állításához tevékenységi naplóit, amelyek ismertetik a Jive app a létesítési szolgáltatás által végzett összes műveletet.
 
-Mostantól létrehozhat egy olyan fiókot. Akár 20 percig várjon győződjön meg arról, hogy a fiók Jive lett-e szinkronizálva.
+Olvassa el az Azure AD-naplók kiépítés módjáról további információkért lásd: [automatikus felhasználói fiók kiépítése jelentések](active-directory-saas-provisioning-reporting.md).
 
 ## <a name="additional-resources"></a>További források
 

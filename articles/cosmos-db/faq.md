@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2018
 ms.author: mimig
-ms.openlocfilehash: 0f7998ca4000a4ccfd77b173cb3dd9756b4777ae
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: ac0088478701a1796380daa74602569800c1522e
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-cosmos-db-faq"></a>Az Azure Cosmos DB – gyakori kérdések
 ## <a name="azure-cosmos-db-fundamentals"></a>Az Azure Cosmos DB – alapok
 ### <a name="what-is-azure-cosmos-db"></a>Mi az Azure Cosmos DB?
-Azure Cosmos-adatbázis egy globálisan replikált, több modellre adatbázis biztosító szolgáltatás, amely sémamentes adatok gazdag lekérdezését nyújt konfigurálható és megbízható teljesítményt, és gyors fejlesztést tesz lehetővé. Az összes érhető el, egy felügyelt platform, amely a kiemelt alapját, és a Microsoft Azure sokoldalúsága keresztül. 
+Azure Cosmos-adatbázis olyan globálisan replikált, több modellre adatbázis szolgáltatás, amely sémamentes adatok gazdag lekérdezését kínál, segítségével konfigurálható és megbízható teljesítményt és gyors fejlesztést tesz lehetővé. Az összes érhető el, egy felügyelt platform, amely a kiemelt alapját, és a Microsoft Azure sokoldalúsága keresztül. 
 
 Azure Cosmos-adatbázis az ideális megoldás a webes, mobil-, játék- és IoT-alkalmazásokhoz, amikor a kiszámítható átviteli sebességet, magas rendelkezésre állású, alacsony késést és a sémamentesadat-modell kapcsolatos követelményeket. Séma rugalmasságát és a gazdag indexelési biztosítja, és több dokumentumos tranzakciótámogatást JavaScript-integrációval ellátott tartalmazza. 
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 8a2211e76150a90e4e10d79fd527decd3cbcc220
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 2bdb8c30ffa630f85d666f3a16ce2b9dcdab6492
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>Az Azure API Management developer portálon sablonok testreszabása
 
@@ -28,16 +28,10 @@ A fejlesztői portál három alapvető módon szabható testre az Azure API Mana
 * [A teljes fejlesztői portál oldalelemeihez használt stílusok frissítése][customize-styles]
 * [Módosíthatja a sablonokat a portál által létrehozott lapok] [ portal-templates] (Ez az útmutató alapján)
 
-Sablonok segítségével testre szabhatja a tartalmát a rendszer fejlesztői portál lapjai (pl. API docs, termékek, felhasználói hitelesítés, stb.). Használatával [DotLiquid](http://dotliquidmarkup.org/) szintaxis és a megadott készlete a honosított karakterlánc-erőforrások, ikonok és Lapvezérlők, konfigurálja a tartalmat, a lapok, ahogyan szeretné nagyfokú rugalmasságot biztosítanak.
+Sablonok segítségével testre szabhatja a tartalmát a rendszer fejlesztői portál lapjai (például API docs, termékek, felhasználói hitelesítés, stb.). Használatával [DotLiquid](http://dotliquidmarkup.org/) szintaxis és a megadott készlete a honosított karakterlánc-erőforrások, ikonok és Lapvezérlők, konfigurálja a tartalmat, a lapok, ahogyan szeretné nagyfokú rugalmasságot biztosítanak.
 
 ## <a name="developer-portal-templates-overview"></a>Fejlesztői portál sablonok – áttekintés
-A sablonok szerkesztése történik a **fejlesztői portálján** közben rendszergazdaként naplózva. Nincs először nyissa meg az Azure portálon, és kattintson a **Publisher portal** az API Management-példány service eszköztárból.
-
-![Közzétevő portál][api-management-management-console]
-
-Ezután kattintson a **Fejlesztői portálra** a jobb felső sarokban. 
-
-![Fejlesztői portál menüjében][api-management-developer-portal-menu]
+A sablonok szerkesztése történik a **fejlesztői portálján** közben rendszergazdaként naplózva. Nincs először nyissa meg az Azure portálon, és kattintson a **fejlesztői portálján** az API Management-példány service eszköztárból.
 
 A fejlesztői portál sablonok eléréséhez kattintson a Testreszabás ikon megjelenítése a testreszabási menü, majd kattintson a bal oldali **sablonok**.
 
@@ -65,7 +59,7 @@ A **sablon adatok** ablaktáblán az adatokat az adatmodellbe való biztosít az
 
 ![Sablon adatmodell][api-management-template-data]
 
-Az előző példában szereplő nincsenek két termékek jelenik meg a fejlesztői portálon megjelenő adatok lettek beolvasva a **sablon adatok** ablaktáblán, a következő példában látható módon.
+Az előző példában a rendszer két termékek jelenik meg a fejlesztői portálon megjelenő adatok lettek beolvasva a **sablon adatok** ablaktáblán, a következő példában látható módon:
 
 ```json
 {
@@ -164,7 +158,7 @@ Vissza az előző közzétett verzió kívánt sablont, kattintson a sablon szer
 
 Kattintson a **Yes** (Igen) gombra a megerősítéshez.
 
-![Erősítse meg][api-management-revert-template-confirm]
+![Megerősítés][api-management-revert-template-confirm]
 
 A korábban közzétett sablont verziója élő a fejlesztői portálra a visszaállítási művelet végrehajtása után.
 
@@ -177,7 +171,7 @@ Ugyanazt a sablont az alapértelmezett verzió visszaállításához kattintson 
 
 Kattintson a **Yes** (Igen) gombra a megerősítéshez.
 
-![Erősítse meg][api-management-reset-template-confirm]
+![Megerősítés][api-management-reset-template-confirm]
 
 A alapértelmezett verzióját az összes sablon visszaállításához kattintson **visszaállítása az alapértelmezett sablonok** a sablon listában.
 
@@ -185,7 +179,7 @@ A alapértelmezett verzióját az összes sablon visszaállításához kattintso
 
 A visszaállított sablonok majd közzé kell tegye a külön-külön és egyszerre lépéseit [a sablon közzététele](#to-publish-a-template).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A fejlesztői portál sablonok, erőforrásait, ikonok és Lapvezérlők hivatkozás információkért lásd: [API Management fejlesztői portál sablonok referenciája](api-management-developer-portal-templates-reference.md).
 
 [modify-content-layout]: api-management-modify-content-layout.md

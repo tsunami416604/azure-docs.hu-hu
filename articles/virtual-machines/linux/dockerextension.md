@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: ce44a5e4db080822aaec0b50a265b863059bd45a
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: 2fd7be23c4146051197c4b6d7db6deb06dfa416d
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-a-docker-environment-in-azure-using-the-docker-vm-extension"></a>Hozzon létre egy Docker-környezetet az Azure-ban a Docker Virtuálisgép-bővítmény
 Docker egy népszerű tárolóinak kezelése és a lemezkép-készítési platform, amely lehetővé teszi, hogy gyorsan alkalmazásában tárolók Linux rendszeren. Az Azure különböző módja van Docker igény szerint telepítheti. Ez a cikk foglalkozik a a Docker Virtuálisgép-bővítmény és az Azure Resource Manager-sablonok az Azure CLI 2.0-s verziójával. Az [Azure CLI 1.0-s](dockerextension-nodejs.md) verziójával is elvégezheti ezeket a lépéseket.
@@ -33,15 +33,15 @@ További információ a különböző központi telepítési módszer, beleértv
 
 
 ## <a name="deploy-a-template-with-the-azure-docker-vm-extension"></a>A sablon az Azure Docker Virtuálisgép-bővítmény telepítése
-Gyors üzembe helyezés meglévő sablon használatával hozzon létre egy Ubuntu virtuális gép által használt az Azure Docker Virtuálisgép-bővítmény telepítése és konfigurálása a Docker-állomás. A sablon Itt tekintheti meg: [egyszerű Ubuntu virtuális gép a Docker-telepítés](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). A legújabb kell [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett az Azure-fiók használatával [az bejelentkezési](/cli/azure/#login).
+Gyors üzembe helyezés meglévő sablon használatával hozzon létre egy Ubuntu virtuális gép által használt az Azure Docker Virtuálisgép-bővítmény telepítése és konfigurálása a Docker-állomás. A sablon Itt tekintheti meg: [egyszerű Ubuntu virtuális gép a Docker-telepítés](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). A legújabb kell [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett az Azure-fiók használatával [az bejelentkezési](/cli/azure/#az_login).
 
-Először hozzon létre egy erőforráscsoportot a [az csoport létrehozása](/cli/azure/group#create). Az alábbi példa létrehoz egy erőforráscsoportot *myResourceGroup* a a *eastus* helye:
+Először hozzon létre egy erőforráscsoportot a [az csoport létrehozása](/cli/azure/group#az_group_create). A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Ezután telepítse a virtuális gép és [az csoport központi telepítésének létrehozása](/cli/azure/group/deployment#create) , amely tartalmazza az Azure Docker Virtuálisgép-bővítmény a [a Githubon az Azure Resource Manager sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). Amikor a rendszer kéri, adja meg a saját egyedi értékeket az *newStorageAccountName*, *adminUsername*, *adminPassword*, és *dnsNameForPublicIP*:
+Ezután telepítse a virtuális gép és [az csoport központi telepítésének létrehozása](/cli/azure/group/deployment#az_group_deployment_create) , amely tartalmazza az Azure Docker Virtuálisgép-bővítmény a [a Githubon az Azure Resource Manager sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). Amikor a rendszer kéri, adja meg a saját egyedi értékeket az *newStorageAccountName*, *adminUsername*, *adminPassword*, és *dnsNameForPublicIP*:
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \
@@ -52,7 +52,7 @@ Az üzembe helyezés befejeződik néhány percet vesz igénybe.
 
 
 ## <a name="deploy-your-first-nginx-container"></a>Az első NGINX tároló üzembe
-A virtuális gép, beleértve a DNS-nevét, a részletek megtekintéséhez használja a [az vm megjelenítése](/cli/azure/vm#show):
+A virtuális gép, beleértve a DNS-nevét, a részletek megtekintéséhez használja a [az vm megjelenítése](/cli/azure/vm#az_vm_show):
 
 ```azurecli
 az vm show \

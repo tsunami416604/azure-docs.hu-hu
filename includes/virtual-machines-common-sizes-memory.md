@@ -81,7 +81,7 @@ ACU: 180–240
 
 <sup>1</sup> a maximális átviteli sebesség (IOPS vagy MB/s) lehetséges GS több virtuális gép korlátozhatja a száma, mérete és a csatlakoztatott lemezek az csíkozást. Részletekért lásd a [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure-alapú virtuális gépek számítási feladataihoz](../articles/virtual-machines/windows/premium-storage.md) című cikket. 
 
-<sup>2</sup> példány el különítve az egyetlen ügyfél számára dedikált hardver.
+<sup>2</sup> példány el különítve az egyetlen ügyfél számára dedikált hardver. 
 
 <sup>3</sup> korlátozott használható core méret 
 
@@ -103,7 +103,7 @@ ACU: 180–240
 <br>
 
 
-## <a name="dsv2-series-sup1sup"></a>DSv2-sorozat <sup>1</sup>
+## <a name="dsv2-series-sup1sup"></a>DSv2-series <sup>1</sup>
 
 ACU: 210–250
 
@@ -117,7 +117,7 @@ ACU: 210–250
 
 <sup>1</sup> a maximális átviteli sebesség (IOPS vagy MB/s) lehetséges DSv2 több virtuális gép korlátozhatja a száma, mérete és a csatlakoztatott lemezek az csíkozást.  Részletekért lásd a [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure-alapú virtuális gépek számítási feladataihoz](../articles/virtual-machines/windows/premium-storage.md) című cikket.
 
-<sup>2</sup> egy elkülönített csomópont, amely biztosítja, hogy a virtuális Gépet az Intel Haswell csomóponton csak Virtuálisgép-példány.
+<sup>2</sup> példány el különítve az egyetlen ügyfél számára dedikált hardver. 
 
 <sup>3</sup> 25000 Mbps gyorsított hálózattal.
 
@@ -132,10 +132,10 @@ ACU: 210–250
 | Standard_D11_v2   | 2         | 14          | 100            | 6000 / 93 / 46                                           | 8 / 8x500                         | 2 / 1500                     |
 | Standard_D12_v2   | 4         | 28          | 200            | 12000 / 187 / 93                                         | 16 / 16x500                         | 4 / 3000                     |
 | Standard_D13_v2   | 8         | 56          | 400            | 24000 / 375 / 187                                        | 32 / 32x500                       | 8 / 6000                     |
-| Standard_D14_v2   | 16        | 112         | 800            | 48000 / 750 / 375                                        | 64 / 64 x 500                       | 8 / 12000          |
-| Standard_D15_v2 <sup>1</sup> | 20        | 140         | 1,000          | 60000 / 937 / 468                                        | 64 / 64 x 500                       | 8 / 25000 <sup>2</sup> |
+| Standard_D14_v2   | 16        | 112         | 800            | 48000 / 750 / 375                                        | 64 / 64x500                       | 8 / 12000          |
+| Standard_D15_v2 <sup>1</sup> | 20        | 140         | 1,000          | 60000 / 937 / 468                                        | 64 / 64x500                       | 8 / 25000 <sup>2</sup> |
 
-<sup>1</sup> egy elkülönített csomópont, amely biztosítja, hogy a virtuális Gépet az Intel Haswell csomóponton csak Virtuálisgép-példány.
+<sup>1</sup> példány el különítve az egyetlen ügyfél számára dedikált hardver. 
 
 <sup>2</sup> 25000 Mbps gyorsított hálózattal.
 
@@ -164,7 +164,7 @@ ACU: 160
 | Standard_D11 | 2         | 14          | 100            | 6000 / 93 / 46                                           | 8 / 8x500                         | 2 / 1000                     |
 | Standard_D12 | 4         | 28          | 200            | 12000 / 187 / 93                                         | 16 / 16x500                         | 4 / 2000                     |
 | Standard_D13 | 8         | 56          | 400            | 24000 / 375 / 187                                        | 32 / 32x500                       | 8 / 4000                     |
-| Standard_D14 | 16        | 112         | 800            | 48000 / 750 / 375                                        | 64 / 64 x 500                       | 8 / 8000                |
+| Standard_D14 | 16        | 112         | 800            | 48000 / 750 / 375                                        | 64 / 64x500                       | 8 / 8000                |
 
 <br>
 

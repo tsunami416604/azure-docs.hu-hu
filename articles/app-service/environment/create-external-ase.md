@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 70c43b25aea364d7254137b46af31f851dcf8bc6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e1beb06301807c35a1b070989a0f80f4c8097762
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-an-external-app-service-environment"></a>Külső App Service-környezet létrehozása #
 
-Az Azure App Service Environment-környezet az Azure App Service egy Azure virtuális hálózatot (VNet) lévő alhálózatot történő központi telepítését. Két módon telepítheti az App Service-környezetek (ASE):
+Az Azure App Service Environment az Azure App Service egy olyan példánya, amelyet egy Azure virtuális hálózat alhálózatában helyeztek üzembe. Az App Service Environment (ASE) üzembe helyezésének két módja van:
 
-- A virtuális IP-címre a külső IP-cím, egy külső ASE gyakran nevezik.
+- Egy virtuális IP-cím vagy külső IP-cím, azaz külső ASE használatával.
 - A virtuális IP-címre a belső IP-címet gyakran nevezik egy ILB ASE, mert a belső végpont nem egy belső terheléselosztón (ILB).
 
 Ez a cikk bemutatja, hogyan hozzon létre egy külső ASE. A ASE áttekintését lásd: [az App Service Environment bemutatása][Intro]. Egy ILB ASE létrehozásával kapcsolatos további információkért lásd: [létrehozása és használata egy ILB ASE][MakeILBASE].
@@ -87,7 +87,7 @@ Egy ASE létrehozása, az App Service-csomag létrehozása során:
 
     b. Adjon meg egy új alhálózat neve.
 
-    c. Adja meg az alhálózat. *Ne felejtse el kiválasztásához elég nagy a ASE jövőbeli növekedésének megfelelően.* Ajánlott `/25`, amely 128-címekkel rendelkezik, és kezelni tud a maximális méretű ASE. Nem ajánlott `/28`, például mert csak 16 címek érhetők el. Infrastruktúra legalább öt címet használ. Az egy `/28` alhálózathoz folyamatban hagyta a 11 példányok maximális skálázás.
+    c. Adja meg az alhálózat. *Ne felejtse el kiválasztásához elég nagy a ASE jövőbeli növekedésének megfelelően.* Ajánlott `/25`, amely 128-címekkel rendelkezik, és kezelni tud a maximális méretű ASE. Nem ajánlott `/28`, például mert csak 16 címek érhetők el. Infrastruktúra legalább hét címeket használ, és egy másik 5 Azure Networking használja. Az egy `/28` alhálózathoz folyamatban hagyta App Service-csomag egy ILB ASE példányának legfeljebb egy külső ASE 4 az alkalmazásszolgáltatási csomag példányok méretezési és csak 3.
 
     d. Válassza ki azt az alhálózati IP-címtartomány.
 

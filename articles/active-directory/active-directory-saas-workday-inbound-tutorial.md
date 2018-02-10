@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
-ms.openlocfilehash: ed35a703774fdb2f2896414b6022b6f13fb7a307
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: 2db9e60fe2807b1aa8ed7cab7eed6f7db8059a89
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Oktatóanyag: Konfigurálja automatikus felhasználói kialakítási munkanap
 
@@ -297,7 +297,7 @@ Ebben a szakaszban konfigurál, hogy felhasználói adatáramlás a WORKDAY-ből
 
          * **Kifejezés** – lehetővé teszi egy egyéni érték írható AD attribútum egy vagy több Workday-attribútumok alapján. [További információk: Ez a cikk a kifejezések](active-directory-saas-writing-expressions-for-attribute-mappings.md).
 
-      * **Adatforrás-attribútum** -a felhasználói attribútum a WORKDAY-ből.
+      * **Adatforrás-attribútum** -a felhasználói attribútum a WORKDAY-ből. Ha a keresett attribútum nincs jelen, lásd: [testreszabása a Workday felhasználói attribútumok listáját](#customizing-the-list-of-workday-user-attributes).
 
       * **Alapértelmezett érték** – nem kötelező. A forrásattribútum nem üres érték tartozik, ha a leképezés fog kiírni, ez az érték helyett.
             Általános beállítások mellett akkor hagyja üresen a mezőt.
@@ -549,7 +549,7 @@ Ebben a szakaszban konfigurál, hogyan felhasználói adatáramlás a WORKDAY-b�
 
       * **Kifejezés** – lehetővé teszi egy egyéni érték írható AD attribútum egy vagy több Workday-attribútumok alapján. [További információk: Ez a cikk a kifejezések](active-directory-saas-writing-expressions-for-attribute-mappings.md).
 
-   * **Adatforrás-attribútum** -a felhasználói attribútum a WORKDAY-ből.
+   * **Adatforrás-attribútum** -a felhasználói attribútum a WORKDAY-ből. Ha a keresett attribútum nincs jelen, lásd: [testreszabása a Workday felhasználói attribútumok listáját](#customizing-the-list-of-workday-user-attributes).
 
    * **Alapértelmezett érték** – nem kötelező. A forrásattribútum nem üres érték tartozik, ha a leképezés fog kiírni, ez az érték helyett.
             Általános beállítások mellett akkor hagyja üresen a mezőt.
@@ -646,7 +646,7 @@ Ebben a szakaszban konfigurál, hogy felhasználói adatáramlás a WORKDAY-ből
 ## <a name="customizing-the-list-of-workday-user-attributes"></a>A Workday felhasználói attribútumok listáját testreszabása
 Alkalmazások telepítése az Active Directory és az Azure AD egyaránt tartalmazza az alapértelmezett Workday felhasználói attribútumok listáját a munkanapok közül választhat. Azonban a fájlok nem átfogó. Munkanapok támogatja a több száz lehetséges felhasználói attribútumok, amelyek lehet standard vagy a Workday-bérlő egyedi. 
 
-Az Azure AD szolgáltatás kiépítését támogatja a lista vagy a Workday attribútum olyan bármely felfedett attribútumok testreszabása a [Get_Workers](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v29.2/Get_Workers.html) az emberi erőforrások API működését.
+Az Azure AD szolgáltatás kiépítését támogatja a lista vagy a Workday attribútum olyan bármely felfedett attribútumok testreszabása a [Get_Workers](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) az emberi erőforrások API működését.
 
 Ehhez az szükséges, használjon [Workday Studio](https://community.workday.com/studio-download) kinyerni az XPath kifejezések, amely a használni kívánt attribútumokat jelöl, és adja őket a létesítési konfiguráció a speciális Attribútumszerkesztő az Azure portálon.
 
@@ -654,7 +654,7 @@ Ehhez az szükséges, használjon [Workday Studio](https://community.workday.com
 
 1. Töltse le és telepítse [Workday Studio](https://community.workday.com/studio-download). Szüksége lesz egy Workday közösségi fiókot a telepítő eléréséhez.
 
-2. Töltse le a Workday Human_Resources WDSL fájlt az URL-cím: https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v29.2/Human_Resources.wsdl
+2. Töltse le a Workday Human_Resources WDSL fájlt az URL-cím: https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Human_Resources.wsdl
 
 3. Indítsa el a Workday Studiót.
 
@@ -680,12 +680,23 @@ Ehhez az szükséges, használjon [Workday Studio](https://community.workday.com
     <?xml version="1.0" encoding="UTF-8"?>
     <env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
       <env:Body>
-        <wd:Get_Workers_Request xmlns:wd="urn:com.workday/bsvc" wd:version="v28.0">
+        <wd:Get_Workers_Request xmlns:wd="urn:com.workday/bsvc" wd:version="v21.1">
           <wd:Request_References wd:Skip_Non_Existing_Instances="true">
             <wd:Worker_Reference>
               <wd:ID wd:type="Employee_ID">21008</wd:ID>
             </wd:Worker_Reference>
           </wd:Request_References>
+          <wd:Response_Group>
+            <wd:Include_Reference>true</wd:Include_Reference>
+            <wd:Include_Personal_Information>true</wd:Include_Personal_Information>
+            <wd:Include_Employment_Information>true</wd:Include_Employment_Information>
+            <wd:Include_Management_Chain_Data>true</wd:Include_Management_Chain_Data>
+            <wd:Include_Organizations>true</wd:Include_Organizations>
+            <wd:Include_Reference>true</wd:Include_Reference>
+            <wd:Include_Transaction_Log_Data>true</wd:Include_Transaction_Log_Data>
+            <wd:Include_Photo>true</wd:Include_Photo>
+            <wd:Include_User_Account>true</wd:Include_User_Account>
+          </wd:Response_Group>
         </wd:Get_Workers_Request>
       </env:Body>
     </env:Envelope>

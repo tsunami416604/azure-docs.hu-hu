@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apimpm
-ms.openlocfilehash: df2ebb6ee8b1f108c751226188556ced907314e1
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: cf062cfcbbb2454adf20a06c31c81a60f6f5719f
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Belső virtuális hálózat az Azure API Management szolgáltatással
 Azure virtuális hálózatok, az Azure API Management kezelheti API-k nem érhető el, az interneten. A kapcsolat VPN technológiáin számos érhetők el. Az API Management olyan virtuális hálózaton belül két fő módban telepíthető:
@@ -26,7 +26,7 @@ Azure virtuális hálózatok, az Azure API Management kezelheti API-k nem érhet
 * Belső
 
 
-Az API Management belső virtuális hálózat módban telepíti, ha a szolgáltatás végpontok (átjáró, fejlesztői portálján, publisher portált, közvetlen felügyelet és Git) láthatók csak egy virtuális hálózatban, amely a elérését Ön szabályozza. A végpontok egyike a nyilvános DNS-kiszolgálón van regisztrálva.
+Az API Management belső virtuális hálózat módban telepíti, ha a szolgáltatás végpontok (átjáró, a fejlesztői portálján, az Azure-portált, közvetlen felügyelet és Git) láthatók csak egy virtuális hálózatban, amely a elérését Ön szabályozza. A végpontok egyike a nyilvános DNS-kiszolgálón van regisztrálva.
 
 Az API Management belső módban, érhet el a következő esetekben:
 * Ellenőrizze a harmadik felek kívülről-webhelyek vagy Azure ExpressRoute VPN-kapcsolatok használatával biztonságosan elérhetik a saját adatközpont-környezetben üzemeltetett API.
@@ -72,14 +72,14 @@ Engedélyezheti a virtuális hálózati kapcsolat PowerShell-parancsmagok haszn�
 Ha az API Management külső virtuális hálózat módban van, a DNS Azure kezeli. Belső virtuális hálózat mód felügyelni a saját útválasztási kell.
 
 > [!NOTE]
-> API-kezelés szolgáltatás nem figyel IP-címekről érkező kérésekre. Csak a szolgáltatás végpontját a konfigurált kérelmére reagálás. Ezeket a végpontokat a következők: átjáró, fejlesztői portálján, publisher portált, közvetlen felügyelet végpont és Git.
+> API-kezelés szolgáltatás nem figyel IP-címekről érkező kérésekre. Csak a szolgáltatás végpontját a konfigurált kérelmére reagálás. Ezeket a végpontokat a következők: átjáró, a fejlesztői portálján, a Azurethe portált, közvetlen felügyelet végpont és Git.
 
 ### <a name="access-on-default-host-names"></a>Az alapértelmezett állomásnevek hozzáférés
 Az API Management szolgáltatásnak, például a "contoso" nevű létrehozásakor a következő végpontok alapértelmezés szerint vannak konfigurálva:
 
    * Az átjáróként vagy proxyként: contoso.azure-api.net
 
-   * Közzétevő és fejlesztői portálhoz: contoso.portal.azure-api.net
+   * az Azure portál és a fejlesztői portálján: contoso.portal.azure-api.net
 
    * Közvetlen felügyelet végpont: contoso.management.azure-api.net
 
@@ -87,13 +87,13 @@ Az API Management szolgáltatásnak, például a "contoso" nevű létrehozásako
 
 API-kezelés szolgáltatás a végpontokkal eléréséhez hozzon létre egy virtuális gép a virtuális hálózathoz van telepítve az API Management alhálózat. Ha a szolgáltatás belső virtuális IP-cím 10.0.0.5, leképezheti a hosts fájl % SystemDrive%\drivers\etc\hosts, az alábbiak szerint:
 
-   * 10.0.0.5 contoso.azure-api.net
+   * 10.0.0.5     contoso.azure-api.net
 
-   * 10.0.0.5 contoso.portal.azure-api.net
+   * 10.0.0.5     contoso.portal.azure-api.net
 
-   * 10.0.0.5 contoso.management.azure-api.net
+   * 10.0.0.5     contoso.management.azure-api.net
 
-   * 10.0.0.5 contoso.scm.azure-api.net
+   * 10.0.0.5     contoso.scm.azure-api.net
 
 Ezután hozzáférhetnek a Szolgáltatásvégpontok létrehozott virtuális gépről. Ha egy egyéni DNS-kiszolgáló egy virtuális hálózatot használ, is A DNS-rekordok létrehozása, és ezeket a végpontokat hozzáférni bárhonnan a virtuális hálózat. 
 

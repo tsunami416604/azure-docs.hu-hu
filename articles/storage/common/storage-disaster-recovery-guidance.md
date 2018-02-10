@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 1/19/2017
 ms.author: tamram
-ms.openlocfilehash: c768bdbb8e1ce2aae3eb5b6db0e48977366c83fb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 327816874fb2f2d43192e02410bd31c168e574f7
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="what-to-do-if-an-azure-storage-outage-occurs"></a>Mi a teendő az Azure Storage leállása esetén?
 A Microsoft dolgozunk merevlemez annak biztosítását, hogy a szolgáltatások mindig elérhető. Egyes esetekben kényszeríti a vezérlő hatás túl velünk, melyek következtében a nem tervezett szolgáltatáskimaradások egy vagy több régióban. Segítséget az ilyen ritka események kezelésére, az Azure Storage szolgáltatás a következő magas szintű útmutatást nyújtunk.
@@ -26,10 +26,10 @@ A Microsoft dolgozunk merevlemez annak biztosítását, hogy a szolgáltatások 
 ## <a name="how-to-prepare"></a>Előkészítése
 Minden ügyfél számára kritikus fontosságú, hogy előkészítse a saját vészhelyreállítási tervét. Általában egy tároló leállás helyreállítás részéről az erőfeszítés ahhoz, hogy az alkalmazások működőképes állapotban újraaktiválása műveleti személyzet és automatizált eljárások egyaránt magában foglalja. Tekintse meg az alábbi saját vész-helyreállítási terv létrehozása az Azure dokumentációja:
 
-* [Vészhelyreállítás és magas szintű rendelkezésre állás az Azure-alkalmazásokhoz](/azure/architecture/resiliency/disaster-recovery-high-availability-azure-applications.md)
-* [Műszaki útmutató az Azure rugalmasságáról](/azure/architecture/resiliency.md)
+* [Rendelkezésre állási ellenőrzőlista](https://docs.microsoft.com/azure/architecture/checklist/availability)
+* [Rugalmas alkalmazások tervezése az Azure számára](/azure/architecture/resiliency)
 * [Az Azure Site Recovery szolgáltatásban](https://azure.microsoft.com/services/site-recovery/)
-* [Azure Storage replication (Azure Storage replikáció)](storage-redundancy.md)
+* [Azure Storage replication (Azure Storage replikáció)](storage-redundancy)
 * [Az Azure biztonsági mentési szolgáltatás](https://azure.microsoft.com/services/backup/)
 
 ## <a name="how-to-detect"></a>Hogyan észlelése

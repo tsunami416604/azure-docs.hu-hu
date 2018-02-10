@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: support-article
 ms.date: 09/13/2017
 ms.author: tomfitz
-ms.openlocfilehash: e58c10cfb4cdd4ba49945e6c19845cbc957d6326
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 87bc6e4def624785c5052a9a25f579b022c940ec
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="resolve-errors-for-invalid-template"></a>Érvénytelen a sablon által jelzett hibákat feloldása
 
@@ -131,6 +131,10 @@ part of the allowed values
 
 Kettős ellenőrzi az engedélyezett értékek a sablonban, és egy központi telepítése során.
 
-### <a name="solution-4---circular-dependency-detected"></a>Megoldás 4 - körkörös függőséget észlelt
+### <a name="solution-4---too-many-target-resource-groups"></a>Túl sok cél-erőforráscsoport 4 - megoldás
+
+Ha ötnél több cél-erőforráscsoport egy központi telepítésnél ad meg, ez a hibaüzenet jelenik meg. Vegye figyelembe, egyesítse a központi telepítésben lévő erőforrás-csoportok száma, vagy külön központi telepítéseket, sablonokat némelyike telepítése. További információkért lásd: [telepítése Azure erőforrások több mint egy előfizetéshez vagy erőforráscsoporthoz](resource-manager-cross-resource-group-deployment.md).
+
+### <a name="solution-5---circular-dependency-detected"></a>Megoldás 5 - körkörös függőséget észlelt
 
 Hibaüzenet az erőforrások egymástól függenek, hogy megakadályozza, hogy a telepítés indítását. Egy egymástól függő szolgáltatásainak összevonás a két vagy több erőforrás, várjon, amíg más erőforrások, amelyek is várnak. Például resource1 resource3 függ, resource2 resource1 függ, és resource3 resource2 függ. Eltávolítja a szükségtelen függőségek általában megoldhatja a problémát.

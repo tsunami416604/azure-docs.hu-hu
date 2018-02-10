@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 47b8e43d1da031bdbe356917fd950ae106f8d96f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 860b1e0a214b107cfe37ffe9c77e804503ef2dde
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="api-management-advanced-policies"></a>Házirendek speciális API Management
 Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [házirendek az API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -383,7 +383,7 @@ status code and media type. If no example or schema found, the content is empty.
 |Attribútum|Leírás|Szükséges|Alapértelmezett|  
 |---------------|-----------------|--------------|--------------|  
 |állapotkód-:|Válasz állapotkódja határozza meg, és válassza ki a megfelelő példa vagy séma használatával.|Nem|200|  
-|content-type|Itt adhatja meg `Content-Type` válasz állomásfejléc-érték, és válassza ki a megfelelő példa vagy séma.|Nem|Nincs|  
+|content-type|Itt adhatja meg `Content-Type` válasz állomásfejléc-érték, és válassza ki a megfelelő példa vagy séma.|Nem|None|  
   
 ### <a name="usage"></a>Használat  
  Ez a házirend használható a következő házirend [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
@@ -615,7 +615,7 @@ status code and media type. If no example or schema found, the content is empty.
         <!-- Check active property in response -->  
         <when condition="@((bool)((IResponse)context.Variables["tokenstate"]).Body.As<JObject>()["active"] == false)">  
             <!-- Return 401 Unauthorized with http-problem payload -->  
-            <return-response response-variable-name="existing response variable">  
+            <return-response>  
                 <set-status code="401" reason="Unauthorized" />  
                 <set-header name="WWW-Authenticate" exists-action="override">  
                     <value>Bearer error="invalid_token"</value>  

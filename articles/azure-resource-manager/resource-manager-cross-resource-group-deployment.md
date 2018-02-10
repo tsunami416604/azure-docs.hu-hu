@@ -11,17 +11,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/18/2017
+ms.date: 02/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: 48ba938db992ce192d8afb51365d87fba4422590
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 40b2d04fe829c51a58fb3bec1519a590a12cfdb8
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>Azure-erőforrások telepítése egynél több előfizetésnek vagy erőforráscsoport
 
 Általában, központilag telepített összes erőforrást a sablonhoz, amelyekkel egyetlen [erőforráscsoport](resource-group-overview.md). Vannak azonban forgatókönyvek, ahol szeretne erőforráscsoport telepítsen együtt, de másik erőforráscsoport-sablonok és előfizetések helyezze el őket. Érdemes lehet például a biztonsági mentési virtuális gép telepítése az Azure Site Recovery egy külön erőforráscsoportot és helyet. Erőforrás-kezelő beágyazott cél különböző előfizetésekhez és erőforráscsoportokhoz, mint az előfizetés és a szülő sablon használt erőforráscsoport-sablonok használatát teszi lehetővé.
+
+> [!NOTE]
+> Egy központi telepítésnél csak öt erőforráscsoportok telepítene.
 
 ## <a name="specify-a-subscription-and-resource-group"></a>Adjon meg egy előfizetésbe és erőforráscsoportba csoportot
 

@@ -14,17 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/06/2017
 ms.author: parakhj
-ms.openlocfilehash: dde17c89c49223c75842f328f455c6637aa1915b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4dbc70d866a728a63102bd169a124bd26990aeb2
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-twitter-accounts"></a>Az Azure Active Directory B2C: Regisztráció és bejelentkezés adhat Twitter-fiókkal rendelkező felhasználók
-
-> [!NOTE]
-> A funkció jelenleg előzetes verzió.
-> 
 
 ## <a name="create-a-twitter-application"></a>Twitter-alkalmazás létrehozása
 Az Azure Active Directory (Azure AD) B2C identitás-szolgáltatóként Twitter használatához szüksége Twitter-alkalmazás létrehozása, és adja meg azt a megfelelő paraméterekkel. Ehhez Twitter developer-fiók szükséges. Ha még nincs fiókja, beszerezheti a [https://dev.twitter.com/](https://dev.twitter.com/).
@@ -46,3 +42,6 @@ Az Azure Active Directory (Azure AD) B2C identitás-szolgáltatóként Twitter h
 6. Kattintson a **az identitásszolgáltató beállítása** , és írja be a Twitteren **kulcsa** a a **ügyfél-azonosító** és a Twitter **felhasználói titok** a a **ügyfélkulcs**.
 7. Kattintson a **OK**, és kattintson a **létrehozása** a Twitter-konfiguráció mentéséhez.
 
+## <a name="next-steps"></a>További lépések
+
+Hozzon létre vagy szerkessze a [beépített házirend](active-directory-b2c-reference-policies.md) , és adja hozzá a Twitter identitás-szolgáltatóként.

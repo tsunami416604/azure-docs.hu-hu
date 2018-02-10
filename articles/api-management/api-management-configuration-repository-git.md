@@ -6,25 +6,22 @@ documentationcenter:
 author: vladvino
 manager: erikre
 editor: mattfarm
-ms.assetid: 364cd53e-88fb-4301-a093-f132fa1f88f5
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: 0abf2635e08bfc3113e9dec1947b9bb162cd3952
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 57d14b6aa6caca0cc9b075723d4c350b0a50c9f8
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Mentse, és a Git használatával az API Management-konfigurációjának beállítása
-> 
-> 
 
-Minden API Management service-példány konfigurációs és a szolgáltatáspéldány metaadatok kapcsolatos adatokat tartalmazó konfigurációs adatbázis tárolja. Is módosítható a szolgáltatáspéldány módosításával a közzétevő portált a megfelelő értéket, PowerShell-parancsmag használatával, vagy a REST API-hívással. Ezek a módszerek mellett is kezelhet, a példány konfigurációjának Git használatával, a szolgáltatás felügyeleti lehetőségeket, mint engedélyezése:
+Minden API Management service-példány konfigurációs és a szolgáltatáspéldány metaadatok kapcsolatos adatokat tartalmazó konfigurációs adatbázis tárolja. Is módosítható a szolgáltatáspéldány módosításával az Azure-portál a megfelelő értéket, PowerShell-parancsmag használatával, vagy a REST API-hívással. Ezek a módszerek mellett is kezelhet, a példány konfigurációjának Git használatával, a szolgáltatás felügyeleti lehetőségeket, mint engedélyezése:
 
 * Konfigurációs rendszerverzió - töltse le, és tárolja a szolgáltatás konfigurációs különböző verziói
 * Konfigurációs módosítások tömeges - módosítja a szolgáltatás konfigurációját a helyi tárházban több részét, és a módosítások a kiszolgáló integrálása egyetlen műveletben
@@ -34,7 +31,7 @@ Az alábbi ábra a különböző módokon konfigurálhatja az API Management szo
 
 ![Git konfigurálása][api-management-git-configure]
 
-Amikor módosítja a szolgáltatás a közzétevő portal, PowerShell-parancsmagokkal vagy a REST API-t használó, kezelt a szolgáltatás konfigurációs adatbázis használata a `https://{name}.management.azure-api.net` végpont, a diagram jobb oldalán látható módon. Bal oldalán található a diagram bemutatja, hogyan kezelheti a Git használatával konfigurációjának és a szolgáltatás Git-tárházban található `https://{name}.scm.azure-api.net`.
+Ha módosítja a szolgáltatás az Azure-portálon, PowerShell-parancsmagokkal vagy a REST API-t használó, kezelt a szolgáltatás konfigurációs adatbázis használata a `https://{name}.management.azure-api.net` végpont, a diagram jobb oldalán látható módon. Bal oldalán található a diagram bemutatja, hogyan kezelheti a Git használatával konfigurációjának és a szolgáltatás Git-tárházban található `https://{name}.scm.azure-api.net`.
 
 Az alábbi lépések nyújtanak a Git használatával az API Management szolgáltatáspéldány kezelését.
 
@@ -47,11 +44,8 @@ Az alábbi lépések nyújtanak a Git használatával az API Management szolgál
 Ez a cikk ismerteti, hogyan lehet engedélyezése és a Git segítségével kezelheti a szolgáltatás konfigurációját, és nyújt a fájlok és mappák a Git-tárházban.
 
 ## <a name="access-git-configuration-in-your-service"></a>A szolgáltatás a Git-konfiguráció
-A közzétevő portál jobb felső sarkában a Git ikon megtekintésével gyorsan megtekintheti a Git konfigurációs állapotát. Ebben a példában az állapotüzenet azt jelzi, amely nincs vannak nem mentett módosításokat a tárházba. Ennek az az oka az API Management szolgáltatás konfigurációs adatbázis még nem lett mentve a tárházba.
 
-![Git állapota][api-management-git-icon-enable]
-
-Megtekintheti, és a Git konfigurációs beállításait, kattintson a Git ikonra, vagy kattintson a **biztonsági** menü, és keresse meg a **konfigurációs tárház** fülre.
+Tekintheti meg és konfigurálhatja a Git-konfigurációs beállításokat, kattintson a **biztonsági** menüt, és keresse meg a **konfigurációs tárház** fülre.
 
 ![GIT engedélyezése][api-management-enable-git]
 
@@ -63,43 +57,30 @@ Megtekintheti, és a Git konfigurációs beállításait, kattintson a Git ikonr
 Engedélyezésével vagy letiltásával Git hozzáférés a REST API használatával kapcsolatos tudnivalókért lásd: [engedélyezheti vagy letilthatja a REST API használatával Git hozzáférést](https://msdn.microsoft.com/library/dn781420.aspx#EnableGit).
 
 ## <a name="to-save-the-service-configuration-to-the-git-repository"></a>A szolgáltatáskonfiguráció a Git-tárházba mentéséhez
-Az első lépéseket, mielőtt a tárház klónozása, hogy a szolgáltatáskonfiguráció a jelenlegi állapotában a tárházba mentéséhez. Kattintson a **mentés konfigurációs tárházba**.
 
-![Konfiguráció mentése][api-management-save-configuration]
+Az első lépéseket, mielőtt a tárház klónozása, hogy a szolgáltatáskonfiguráció a jelenlegi állapotában a tárházba mentéséhez. Kattintson a **tárházba mentéséhez**.
 
 Adja meg a kívánt módosításokat a megerősítő képernyőn a, és kattintson a **Ok** mentéséhez.
 
-![Konfiguráció mentése][api-management-save-configuration-confirm]
-
 A konfiguráció mentése után néhány percet, és az állapotot a tárház jelenik meg, beleértve a dátum és idő az utolsó konfigurációváltozás és a szolgáltatás konfigurációját és a tárház között a legutóbbi szinkronizálás.
-
-![Konfiguráció állapota][api-management-configuration-status]
 
 Ha a tárház menti a konfigurációt, akkor klónozható.
 
 Információ a REST API használatával a művelet végrehajtása: [véglegesítési konfiguráció pillanatkép-REST API használatával](https://msdn.microsoft.com/library/dn781420.aspx#CommitSnapshot).
 
 ## <a name="to-clone-the-repository-to-your-local-machine"></a>Klónozza a tárházat a helyi számítógép számára
-Klónozza a tárházat, kell az URL-cím a tárház, a felhasználónevet és jelszót. A felhasználói nevet és az URL-cím jelennek meg az tetején a **konfigurációs tárház** fülre.
 
-![Git-klón][api-management-configuration-git-clone]
-
-A jelszó alján jön létre a **konfigurációs tárház** fülre.
-
-![Jelszó létrehozása][api-management-generate-password]
-
-Olyan jelszót létrehozni, először győződjön meg róla, hogy a **lejárati** állítsa be a kívánt lejárati dátumát és idejét, és kattintson a **azonosító létrehozása**.
-
-![Jelszó][api-management-password]
+Klónozza a tárházat, kell az URL-cím a tárház, a felhasználónevet és jelszót. Ahhoz, hogy a felhasználó nevét és más hitelesítő adatokat, kattintson a **hozzáférési hitelesítő adatokat** az oldal tetején.  
+ 
+Olyan jelszót létrehozni, először győződjön meg róla, hogy a **lejárati** állítsa be a kívánt lejárati dátumát és idejét, és kattintson a **Generate**.
 
 > [!IMPORTANT]
 > Jegyezze fel ezt a jelszót. Ha bezárja ezt az oldalt a jelszó nem jelenik meg újra.
 > 
-> 
 
 Az alábbi példák a Git Bash eszközt használja [Git for Windows](http://www.git-scm.com/downloads) , de bármely, a ismeri a Git-eszközt is használhatja.
 
-A Git eszköz nyissa meg a kívánt mappa, és futtassa a következő parancsot a helyi számítógépen, a közzétevő portál által szolgáltatott paranccsal git-tárház klónozása.
+A Git eszköz nyissa meg a kívánt mappa, és futtassa a következő parancsot a helyi számítógépen, az Azure portál által szolgáltatott paranccsal git-tárház klónozása.
 
 ```
 git clone https://bugbashdev4.scm.azure-api.net/
@@ -116,7 +97,7 @@ git clone https://username:password@bugbashdev4.scm.azure-api.net/
 Ez biztosítja, hogy a hiba, ha próbálja meg a jelszót a parancs része kódolás URL-címet. Nyissa meg a Visual Studio, és adja ki a következő parancsot a egy gyors módja, ha ehhez a **parancsablakban**. Megnyitásához a **parancsablakban**, nyissa meg a bármely megoldás vagy a projektet a Visual Studio (vagy hozzon létre egy új üres konzolalkalmazást), és válassza a **Windows**, **Immediate** a a **Debug** menü.
 
 ```
-?System.NetWebUtility.UrlEncode("password from publisher portal")
+?System.NetWebUtility.UrlEncode("password from the Azure portal")
 ```
 
 A kódolt jelszót használhatja a felhasználó nevét és a tárház helye a git parancs összeállításához.
@@ -128,7 +109,8 @@ git clone https://username:url encoded password@bugbashdev4.scm.azure-api.net/
 Ha a tárház klónozták tekintheti meg és a helyi rendszer használható. További információkért lásd: [fájl- és helyi Git-tárház hivatkozás szerkezeti](#file-and-folder-structure-reference-of-local-git-repository).
 
 ## <a name="to-update-your-local-repository-with-the-most-current-service-instance-configuration"></a>A helyi tárház frissítheti a legfrissebb példányának konfigurációja
-Ha módosítja az API Management szolgáltatáspéldány publisher portálon vagy REST API használatával, mentenie kell ezeket a módosításokat a tárházba a helyi tárház legújabb módosításainak frissítése előtt. Ehhez kattintson **mentés konfigurációs tárházba** a a **konfigurációs tárház** a közzétevő portál lapot, és hogyan adhat ki az alábbi parancsot a helyi tárházba.
+
+Ha módosítja a API-kezelés szolgáltatás példányát az Azure-portálon vagy REST API használatával, mentenie kell ezeket a módosításokat a tárházba a helyi tárház legújabb módosításainak frissítése előtt. Ehhez kattintson **mentés konfigurációs tárházba** a a **konfigurációs tárház** az Azure portálon lapot, és hogyan adhat ki az alábbi parancsot a helyi tárházba.
 
 ```
 git pull
@@ -155,13 +137,13 @@ git push
 ```
 
 ## <a name="to-deploy-any-service-configuration-changes-to-the-api-management-service-instance"></a>A szolgáltatás konfigurációs változásokat az API Management szolgáltatáspéldány központi telepítése
-Ha a helyi módosításokat vannak, és a kiszolgáló tárházba leküldött, az API Management szolgáltatáspéldány telepíthetné őket.
 
-![Üzembe helyezés][api-management-configuration-deploy]
+Ha a helyi módosításokat vannak, és a kiszolgáló tárházba leküldött, az API Management szolgáltatáspéldány telepíthetné őket.
 
 Információ a REST API használatával a művelet végrehajtása: [telepítése Git vált, a REST API használatával konfigurációs adatbázis](https://docs.microsoft.com/rest/api/apimanagement/tenantconfiguration).
 
 ## <a name="file-and-folder-structure-reference-of-local-git-repository"></a>Fájl- és helyi Git-tárház szerkezete-hivatkozás
+
 A fájlok és mappák a helyi git-tárházban tartalmaz a szolgáltatáspéldány konfigurációs adatait.
 
 | Elem | Leírás |
@@ -178,7 +160,7 @@ Minden mappa tartalmazhat egy vagy több fájlt, és bizonyos esetekben egy vagy
 
 | Fájltípus | Cél |
 | --- | --- |
-| JSON-ban |A megfelelő entitás konfigurációs adatait |
+| json |A megfelelő entitás konfigurációs adatait |
 | HTML |Entitás, gyakran megjelenik a fejlesztői portálon leírása |
 | xml |Házirend-utasítások |
 | CSS |A fejlesztői portálon testreszabáshoz stíluslapok |
@@ -192,7 +174,6 @@ Ezeket a fájlokat létrehozása, törlése, szerkeszthető, és a helyi fájlre
 > * Előfizetések
 > * Tulajdonságok
 > * Fejlesztői portálon entitások eltérő stílusok
-> 
 > 
 
 ### <a name="root-api-management-folder"></a>Api-felügyeleti gyökérmappa
@@ -223,8 +204,6 @@ Az első négy beállítások (`RegistrationEnabled`, `UserRegistrationTerms`, `
 | UserRegistrationTermsEnabled |**Használati feltételek megjelenítése a bejelentkezési lapon** jelölőnégyzet |
 | UserRegistrationTermsConsentRequired |**Hozzájárulás szükséges** jelölőnégyzet |
 
-![Identitás][api-management-identity-settings]
-
 A következő négy beállítások (`DelegationEnabled`, `DelegationUrl`, `DelegatedSubscriptionEnabled`, és `DelegationValidationKey`) leképezése a következő beállításokat, a a **delegálás** lapra a **biztonsági** szakasz.
 
 | Delegálási beállítás | Van leképezve |
@@ -233,8 +212,6 @@ A következő négy beállítások (`DelegationEnabled`, `DelegationUrl`, `Deleg
 | DelegationUrl |**Delegálás végponti URL-cím** szövegmező |
 | DelegatedSubscriptionEnabled |**Termék-előfizetéshez delegálása** jelölőnégyzet |
 | DelegationValidationKey |**Érvényesítési kulcs delegálása** szövegmező |
-
-![A delegálási beállításokat][api-management-delegation-settings]
 
 A végső beállítás `$ref-policy`, a globális utasítások házirendfájl a szolgáltatáspéldány van leképezve.
 
@@ -277,21 +254,15 @@ A `templates` mappa konfigurációját tartalmazza a [e-mail sablonok](api-manag
 * `<template name>\configuration.json`-az e-mail sablon beállítani.
 * `<template name>\body.html`-Ez az az e-mail sablon szövegtörzsét.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Más módokon kezelheti a szolgáltatáspéldány információkért lásd:
 
 * A szolgáltatáspéldány, a következő PowerShell-parancsmagok használatával kezelheti.
   * [Szolgáltatások üzembe helyezése – PowerShell-parancsmagok leírása](https://msdn.microsoft.com/library/azure/mt619282.aspx)
   * [Szolgáltatás-felügyelet PowerShell parancsmag-referencia](https://msdn.microsoft.com/library/azure/mt613507.aspx)
-* A szolgáltatáspéldány, a közzétevő portálon kezelése
-  * [Az első API kezelése](import-and-publish.md)
 * A szolgáltatáspéldány, a REST API használatával kezelése
   * [API Management REST API-referencia](https://msdn.microsoft.com/library/azure/dn776326.aspx)
 
-## <a name="watch-a-video-overview"></a>Áttekintő videó megtekintése
-> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Configuration-over-Git/player]
-> 
-> 
 
 [api-management-enable-git]: ./media/api-management-configuration-repository-git/api-management-enable-git.png
 [api-management-git-enabled]: ./media/api-management-configuration-repository-git/api-management-git-enabled.png

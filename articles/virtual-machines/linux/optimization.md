@@ -16,19 +16,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
-ms.openlocfilehash: e63b50e06ae280819aea88f61bf9f25b6e44eac7
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 5484f0422e67c75320cc76ffcf08a2b8d6cc6108
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Linuxos virtuális gép optimalizálása az Azure-ban
 A Linux virtuális gép (VM) létrehozása áll a parancssorból vagy a portálról. Ez az oktatóanyag bemutatja, hogyan annak beállítása, a Microsoft Azure platformon a teljesítmény optimalizálása érdekében. Ez a témakör az Ubuntu Server virtuális gép használja, de is létrehozhat Linux virtuális gép használt [a saját lemezképek sablonként](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez a témakör azt feltételezi, hogy már rendelkezik Azure-előfizetés ([ingyenes próbaidőszakra](https://azure.microsoft.com/pricing/free-trial/)) és a virtuális gép már létrehozta az Azure-előfizetése. Győződjön meg arról, hogy rendelkezik-e a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és az Azure-előfizetése bejelentkezett [az bejelentkezési](/cli/azure/#login) előtt [hozzon létre egy virtuális Gépet](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Ez a témakör azt feltételezi, hogy már rendelkezik Azure-előfizetés ([ingyenes próbaidőszakra](https://azure.microsoft.com/pricing/free-trial/)) és a virtuális gép már létrehozta az Azure-előfizetése. Győződjön meg arról, hogy rendelkezik-e a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és az Azure-előfizetése bejelentkezett [az bejelentkezési](/cli/azure/#az_login) előtt [hozzon létre egy virtuális Gépet](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-## <a name="azure-os-disk"></a>Az Azure operációsrendszer-lemez
+## <a name="azure-os-disk"></a>Azure OS Disk
 Miután létrehozott egy Linux virtuális Gépet az Azure-ban, két lemez társítva van. **/ dev/sda** az operációsrendszer-lemez van **/dev/sdb** az ideiglenes lemez.  Ne használja a fő operációsrendszer-lemez (**/dev/sda**) számára, mert az operációs rendszer kivételével bármely más virtuális gép gyors rendszerindítás van optimalizálva, és nem biztosítja a megfelelő teljesítmény a munkaterhelések. Egy vagy több lemezt csatolni a beolvasandó állandó VM és az adatok tárolási optimalizált. 
 
 ## <a name="adding-disks-for-size-and-performance-targets"></a>A lemezek hozzáadása a méret és Teljesítménycélok
@@ -126,7 +126,7 @@ echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local
 ## <a name="using-software-raid-to-achieve-higher-iops"></a>Szoftver RAID használatával eléréséhez magasabb I / Ops
 Ha a munkaterhelések magasabb iops-értéket, mint egyetlen lemez biztosíthat igényelnek, több lemezt a szoftver RAID-konfigurációt használni szeretné. Azure már lemez rugalmasság a helyi háló rétegben hajt végre, mert a legmagasabb szintű RAID-0 csíkozást konfigurációról teljesítmény elérése érdekében.  Kiépítése és lemezek létrehozása az Azure környezetben, és csatolja őket a Linux virtuális gép particionálás, formázásával, és a meghajtó csatlakoztatása előtt.  További részleteket a RAID Szoftvertelepítés konfigurálása a Linux virtuális Gépet az azure-ban található a  **[szoftver RAID konfigurálása Linux](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**  dokumentum.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ne feledje, hogy minden optimalizálási vitafórum tesztek végrehajtása előtt, és a módosítás a hatás méréséhez minden módosítás után szükség szerint.  Optimalizálás rendkívül részletes folyamat, amely rendelkezik a különböző eredmények a környezetben az egyes számítógépek közötti.  Mi működik egy konfiguráció mások esetében nem használható.
 
 Néhány hasznos további forrásanyagokra mutató hivatkozásokat: 

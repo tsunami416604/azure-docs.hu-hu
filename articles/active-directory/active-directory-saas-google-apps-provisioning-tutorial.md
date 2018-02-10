@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 0a0dd38fda35b1eee1fdce196a3ed15f6e73dde6
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: a90fe2c919e0c5452072c4129dcb7a1135d9ec25
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="tutorial-configure-google-apps-for-automatic-user-provisioning"></a>Oktatóanyag: A Google Apps konfigurálása automatikus a felhasználók átadása
 
@@ -157,9 +157,9 @@ Ez a szakasz végigvezeti az Azure AD kapcsolódni a felhasználói fiók API Go
 
 20. Kattintson a **Mentés** gombra.
 
-A kiszolgáló megkezdi a felhasználók és csoportok, a felhasználók és csoportok szakaszban Google Apps rendelt kezdeti szinkronizálása. A kezdeti szinkronizálás végrehajtásához ezt követő szinkronizálások, amely körülbelül 20 percenként történik, miközben fut a szolgáltatás-nál több időt vesz igénybe. 
+A kiszolgáló megkezdi a felhasználók és csoportok, a felhasználók és csoportok szakaszban Google Apps rendelt kezdeti szinkronizálása. A kezdeti szinkronizálás végrehajtásához ezt követő szinkronizálások, amely körülbelül 40 percenként történik, miközben fut a szolgáltatás-nál több időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz figyelemmel az előrehaladást, és hivatkozásokat követve a tevékenységi naplóit kiépítésére. Ezek a naplók a Google Apps-alkalmazások létesítési szolgáltatás által elvégzett összes műveleteket írják le.
 
-Használhatja a **szinkronizálás részleteivel** figyelemmel az előrehaladást, és hivatkozásokat követve történő rendszerbe állításához Tevékenységjelentések szakaszt. Ezek a jelentések a következők végzi el a kiépítési szolgáltatást a Google Apps-alkalmazás az összes műveleteket ismertetik.
+Olvassa el az Azure AD-naplók kiépítés módjáról további információkért lásd: [automatikus felhasználói fiók kiépítése jelentések](active-directory-saas-provisioning-reporting.md).
 
 ## <a name="additional-resources"></a>További források
 

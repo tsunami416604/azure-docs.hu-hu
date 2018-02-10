@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 08/24/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e0c27a7ee9e9a7ab1a3b004e070fa556b56a36a5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 79eb69b83e4ffc0a4ad7c2631ce4d1306a1e335c
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Linux virtuális gép lemezképek megkeresése az Azure piactéren az Azure parancssori felülettel
 Ez a témakör ismerteti, hogyan használható az Azure CLI 2.0 Virtuálisgép-lemezképek megkeresése az Azure piactéren. Ezen információk használatával adja meg a Piactéri rendszerkép Linux virtuális gép létrehozásakor.
@@ -41,7 +41,7 @@ Adja meg a Piactéri rendszerkép, általában használhatja a kép *URN*. A URN
 
 ## <a name="list-popular-images"></a>Népszerű lemezképek felsorolása
 
-Futtassa a [az vm képlistában](/cli/azure/vm/image#list) nélkül parancsot a `--all` beállítás, az Azure piactéren népszerű Virtuálisgép-rendszerképekről listájának megjelenítéséhez. Például futtassa a következő parancsot, és jelenítse meg a gyorsítótárazott népszerű képek táblázatos formátumú:
+Futtassa a [az vm képlistában](/cli/azure/vm/image#az_vm_image_list) nélkül parancsot a `--all` beállítás, az Azure piactéren népszerű Virtuálisgép-rendszerképekről listájának megjelenítéséhez. Például futtassa a következő parancsot, és jelenítse meg a gyorsítótárazott népszerű képek táblázatos formátumú:
 
 ```azurecli
 az vm image list --output table
@@ -134,7 +134,7 @@ Debian   credativ     8                  credativ:Debian:8:8.0.201706210        
 ```
 
 ## <a name="navigate-the-images"></a>Lépjen a lemezképek 
-Lemezkép a helyen található egy másik módszer a [az méretű kép lista-közzétevők](/cli/azure/vm/image#list-publishers), [az méretű kép lista-ajánlatok](/cli/azure/vm/image#list-offers), és [az méretű kép lista-SKU](/cli/azure/vm/image#list-skus) parancsok sorrendben. A következő parancsokkal ezek az értékek határozzák meg:
+Lemezkép a helyen található egy másik módszer a [az méretű kép lista-közzétevők](/cli/azure/vm/image#az_vm_image_list_publishers), [az méretű kép lista-ajánlatok](/cli/azure/vm/image#az_vm_image_list_offers), és [az méretű kép lista-SKU](/cli/azure/vm/image#az_vm_image_list_skus) parancsok sorrendben. A következő parancsokkal ezek az értékek határozzák meg:
 
 1. Listázza a rendszerkép-közzétevőket.
 2. Listázza egy adott közzétevő ajánlatait.
@@ -256,5 +256,5 @@ UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201
 UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201708110  16.04.201708110
 UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201708151  16.04.201708151
 ```
-## <a name="next-steps"></a>Következő lépések
-Most választhatja meg pontosan a URN értéket megtételével használni kívánt kép. Ezt az értéket átadni a `--image` paraméter, a virtuális gép létrehozásakor a [az virtuális gép létrehozása](/cli/azure/vm#create) parancsot. Ne feledje, hogy választhatóan lecserélheti a verziószámot a URN "legutóbbi". Ebben a verzióban az mindig a terjesztési legújabb verziója. Hozzon létre egy virtuális gép gyors URN információk segítségével, lásd: [létrehozása és kezelése a Linux virtuális gépek az Azure parancssori felülettel](tutorial-manage-vm.md).
+## <a name="next-steps"></a>További lépések
+Most választhatja meg pontosan a URN értéket megtételével használni kívánt kép. Ezt az értéket átadni a `--image` paraméter, a virtuális gép létrehozásakor a [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create) parancsot. Ne feledje, hogy választhatóan lecserélheti a verziószámot a URN "legutóbbi". Ebben a verzióban az mindig a terjesztési legújabb verziója. Hozzon létre egy virtuális gép gyors URN információk segítségével, lásd: [létrehozása és kezelése a Linux virtuális gépek az Azure parancssori felülettel](tutorial-manage-vm.md).

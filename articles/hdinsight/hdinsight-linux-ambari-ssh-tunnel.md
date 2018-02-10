@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/10/2017
+ms.date: 02/07/2018
 ms.author: larryfr
-ms.openlocfilehash: 7f55abc84a8afea398cf0e95761d922b77e1c248
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: a6604cca4056acf3ce759eaf56bb9130ef672bc7
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="use-ssh-tunneling-to-access-ambari-web-ui-jobhistory-namenode-oozie-and-other-web-uis"></a>SSH Tunneling Ambari webes felhasználói felület, JobHistory, NameNode, Oozie és egyéb web UI eléréséhez használja
 
@@ -55,7 +55,7 @@ Ha a Parancsfájlműveletek segítségével testre szabhatja a fürt, lehetnek s
     > [!WARNING]
     > A Windows beépített SOCKS proxy támogatási SOCKS5 nem támogatja, és nem működik a jelen dokumentumban leírt lépések. Az alábbi böngészők Windows proxybeállítások alapulnak, és a jelen dokumentumban leírt lépések jelenleg nem működnek:
     >
-    > * A Microsoft Edge
+    > * Microsoft Edge
     > * Microsoft Internet Explorer
     >
     > Google Chrome is használ a Windows proxybeállításokat. Bővítmények SOCKS5 támogató is telepítheti. Ajánlott [FoxyProxy Standard](https://chrome.google.com/webstore/detail/foxyproxy-standard/gcknhkkoolaabfmlnjonogaaifnjlfnp).
@@ -146,7 +146,7 @@ A fürt létrehozása után az alábbi lépések segítségével győződjön me
    > [!NOTE]
    > Figyelje meg ezen a lapon; URL-címe meg kell hasonló **http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/fürt**. Ezt az URI a csomópont a belső teljesen minősített tartománynevét (FQDN) használja, és csak elérhető az SSH-alagút használatakor.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy rendelkezik megtudta, hogyan létrehozhat és használhat SSH-alagút, tekintse meg a következő dokumentumban más Ambari használatának módjai:
 

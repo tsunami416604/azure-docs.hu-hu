@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 3de048a88b2a14936f7a49afefc8c96e56909c37
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 6ffec33ba922fc59fa68f2c39a1d5b587e816d0b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Oktatóanyag: Netsuite konfigurálása az automatikus felhasználó létesítése
 
@@ -86,9 +86,9 @@ Ez a szakasz célja engedélyezése a felhasználók átadása, az Active Direct
 
 12. Kattintson a **mentéséhez.**
 
-A kezdeti szinkronizálás bármely felhasználói és/vagy a felhasználók és csoportok szakaszban Netsuite rendelt csoportok kezdődik. Figyelje meg, hogy a kezdeti szinkronizálás végrehajtásához bekövetkező körülbelül 20 percenként, mindaddig, amíg a szolgáltatás fut. ezt követő szinkronizálások hosszabb időbe telik. Használhatja a **szinkronizálás részleteivel** szakasz figyelemmel az előrehaladást, és hivatkozásokat követve történő rendszerbe állításához tevékenység jelentéseit, amelyek a létesítési szolgáltatás az Netsuite alkalmazás által végzett összes műveletet írják le.
+A kezdeti szinkronizálás bármely felhasználói és/vagy a felhasználók és csoportok szakaszban Netsuite rendelt csoportok kezdődik. Figyelje meg, hogy a kezdeti szinkronizálás végrehajtásához körülbelül 40 percenként bekövetkező mindaddig, amíg a szolgáltatás fut. ezt követő szinkronizálások hosszabb időbe telik. Használhatja a **szinkronizálás részleteivel** szakasz figyelemmel az előrehaladást, és hivatkozásokat követve történő rendszerbe állításához tevékenységi naplóit, amelyek ismertetik a Netsuite app a létesítési szolgáltatás által végzett összes műveletet.
 
-Mostantól létrehozhat egy olyan fiókot. Akár 20 percig várjon győződjön meg arról, hogy a fiók Netsuite lett-e szinkronizálva.
+Olvassa el az Azure AD-naplók kiépítés módjáról további információkért lásd: [automatikus felhasználói fiók kiépítése jelentések](active-directory-saas-provisioning-reporting.md).
 
 ## <a name="additional-resources"></a>További források
 

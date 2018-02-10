@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: Inactive
 ms.date: 01/10/2017
 ms.author: carlrab
-ms.openlocfilehash: 4fa21cf9cbd1680ddd855189f50af50e1068ccd5
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: a5100941675b6bdd1934bfcabe10172b4949fff9
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="with-azure-snelstart-has-rapidly-expanded-its-business-services-at-a-rate-of-1000-new-azure-sql-databases-per-month"></a>Az Azure-SnelStart gyorsan bővített 1000 új Azure SQL-adatbázisok havi gyakorisággal az üzleti szolgáltatás
 ![SnelStartLogo](./media/sql-database-implementation-snelstart/snelstartlogo.png)
@@ -104,7 +104,6 @@ A közvetlen SnelStart a célja egyre több adatra meg ügyfelének alap. Mivel 
 
 ## <a name="more-information"></a>További információ
 * Az Azure rugalmas készletek kapcsolatos további információkért lásd: [rugalmas készletek](sql-database-elastic-pool.md).
-* Webes és feldolgozói szerepkörök kapcsolatos további információkért lásd: [feldolgozói szerepkörök](../fundamentals-introduction-to-azure.md#compute).    
 * Azure SQL Data Warehouse kapcsolatos további információkért lásd: [SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/)
 * SnelStart kapcsolatos további információkért lásd: [SnelStart](http://www.snelstart.nl).
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
 ms.reviewer: asmalser
-ms.openlocfilehash: 4f4160a3f4005c2449da2b45a171766963febb4d
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: b0bbc310edddcc461633e57340950a0f4050f66a
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés Slackhez konfigurálása
 
@@ -107,7 +107,9 @@ Másik lehetőségként engedélyezheti a slackhez Azure ad-csoport objektumok k
 
 4) Kattintson a **Save** (Mentés) gombra.
 
-Ez bármilyen a Slackhez rendelt objektumok eredményez a **felhasználók és csoportok** Slackhez teljesen szinkronizált Azure ad-szakasz. Használhatja a **szinkronizálás részleteivel** szakasz figyelemmel az előrehaladást, és hivatkozásokat követve történő rendszerbe állításához tevékenység jelentéseit, amelyek a létesítési szolgáltatás az közzététele a Slack-alkalmazás által végzett összes műveletet írják le.
+Ez bármilyen a Slackhez rendelt objektumok eredményez a **felhasználók és csoportok** Slackhez teljesen szinkronizált Azure ad-szakasz. Használhatja a **szinkronizálás részleteivel** szakasz figyelemmel az előrehaladást, és hivatkozásokat követve történő rendszerbe állításához tevékenységi naplóit, amelyek ismertetik a Slack app a létesítési szolgáltatás által végzett összes műveletet.
+
+Olvassa el az Azure AD-naplók kiépítés módjáról további információkért lásd: [automatikus felhasználói fiók kiépítése jelentések](active-directory-saas-provisioning-reporting.md).
 
 
 ## <a name="additional-resources"></a>További források

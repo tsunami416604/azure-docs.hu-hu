@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/12/2017
+ms.date: 01/31/2018
 ms.author: mimig
-ms.openlocfilehash: 02bb5d23ee9468ab1f74396877cdcd6bdd8b8fba
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 9083ae631f654789b621a1fc62e0b9d31c24f119
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Az Azure Cosmos DB táblában .NET API: Töltse le és kibocsátási megjegyzések
 > [!div class="op_single_selector"]
@@ -41,6 +41,10 @@ ms.lasthandoff: 12/18/2017
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
+### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
+* Add TableQueryMaxItemCount, TableQueryEnableScan, TableQueryMaxDegreeOfParallelism and TableQueryContinuationTokenLimitInKb to TableRequestOptions
+* Hibajavítások
+
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 * Általános rendelkezésre állási kiadás
 
@@ -60,7 +64,7 @@ A szolgáltatás bármely Azure Cosmos DB kivont SDK használatával kérelmeket
 | Verzió | Kiadás dátuma | Kivezetési dátum |
 | --- | --- | --- |
 | [1.0.0](#1.0.0) |2017. november 15.|--- |
-| [0.9.0-Preview](#0.9.0-preview) |2017. november 11. |--- |
+| [0.9.0-preview](#0.9.0-preview) |2017. november 11. |--- |
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -84,5 +88,5 @@ megkísérlésekor. a Microsoft.Azure.CosmosDB.Table NuGet-csomagot használja, 
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 Az Azure Cosmos DB tábla API-val kapcsolatos további információkért lásd: [Bevezetés az Azure Cosmos DB tábla API](table-introduction.md). 

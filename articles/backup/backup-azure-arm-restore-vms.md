@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: markgal;trinadhk;
-ms.openlocfilehash: 1a1855cc3f83d7fcba749ce94167039feb5bebe1
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 84fb2cc08e97541d2d9d327ca2b6865ff9a6fe20
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>Az Azure-portál használatával állítsa vissza a virtuális gépek
 Pillanatképek készítése a adatait meghatározott időközönként védeni az adatokat. Ezeket a pillanatképeket nevezzük helyreállítási pontokat, és vannak tárolva, a Recovery Services-tárolók. Szükség esetén javítsa vagy építse újra a virtuális gép (VM), visszaállíthatja a virtuális gép bármelyik mentett helyreállítási pontok. A helyreállítási pont visszaállításakor teheti:
@@ -104,7 +104,7 @@ Miután kiválasztotta a visszaállítási pontot, válassza ki a helyreállít�
 
    * **Lemezek visszaállítása**
 
-A portál biztosít egy **Gyorslétrehozás** a visszaállított virtuális gépek lehetőséget. A Virtuálisgép-konfiguráció vagy egy új virtuális gép választott létrehozásának részeként létrejött erőforrásokat nevei egyéni beállításához használja PowerShell vagy a portál lemezek biztonsági másolat visszaállítása. PowerShell-parancsok segítségével csatolja őket a kiválasztott Virtuálisgép-konfigurációhoz. Vagy a visszaállított lemezek testreszabása a visszaállított virtuális Gépet a sablon is használhat. Állítsa vissza, amely több hálózati adapterrel rendelkezik, vagy a terheléselosztó információkért lásd: [állítsa helyre a virtuális Gépet speciális hálózati konfigurációkkal](#restore-a vm-with-special-network-configurations). Ha a Windows virtuális gép használ [HUB licencelési](../virtual-machines/windows/hybrid-use-benefit-licensing.md), állítsa vissza a lemezek és a PowerShell/sablon használatával Ez a cikk a virtuális gép létrehozása. Győződjön meg arról, hogy megadja a **licenctípus** mint "Windows_Server" a virtuális gép, további bejelentkezések nélkül hozzáférhet a központ előnyeit a visszaállított virtuális Gépre való létrehozása során. 
+A portál biztosít egy **Gyorslétrehozás** a visszaállított virtuális gépek lehetőséget. A Virtuálisgép-konfiguráció vagy egy új virtuális gép választott létrehozásának részeként létrejött erőforrásokat nevei egyéni beállításához használja PowerShell vagy a portál lemezek biztonsági másolat visszaállítása. PowerShell-parancsok segítségével csatolja őket a kiválasztott Virtuálisgép-konfigurációhoz. Vagy a visszaállított lemezek testreszabása a visszaállított virtuális Gépet a sablon is használhat. Állítsa vissza, amely több hálózati adapterrel rendelkezik, vagy a terheléselosztó információkért lásd: [állítsa helyre a virtuális Gépet speciális hálózati konfigurációkkal](#restore-vms-with-special-network-configurations). Ha a Windows virtuális gép használ [HUB licencelési](../virtual-machines/windows/hybrid-use-benefit-licensing.md), állítsa vissza a lemezek és a PowerShell/sablon használatával Ez a cikk a virtuális gép létrehozása. Győződjön meg arról, hogy megadja a **licenctípus** mint "Windows_Server" a virtuális gép, további bejelentkezések nélkül hozzáférhet a központ előnyeit a visszaállított virtuális Gépre való létrehozása során. 
  
 ## <a name="create-a-new-vm-from-a-restore-point"></a>Hozzon létre egy új virtuális Gépet egy visszaállítási pont
 1. Ha még nem tette, [válasszon ki egy helyreállítási pontot](#restore-a vm-with-special-network-configurations) új virtuális gép egy visszaállítási pont létrehozása előtt. Miután kijelölt egy visszaállítási pontot a a **konfiguráció visszaállítása** panelen adja meg vagy válassza ki az értékeket az egyes a következő mezőket:
@@ -115,7 +115,7 @@ A portál biztosít egy **Gyorslétrehozás** a visszaállított virtuális gép
 
     c. **Erőforráscsoport**. Használjon egy meglévő erőforráscsoportot, vagy hozzon létre egy újat. Ha a klasszikus virtuális gépek visszaállításához a mező használatával adja meg egy új felhőalapú szolgáltatás nevét. Ha hoz létre egy új erőforrás csoport/felhőalapú szolgáltatás, a nevének globálisan egyedinek kell lennie. A felhőszolgáltatás neve általában társítva van egy nyilvánosan elérhető URL-cím: például: [cloudservice]. cloudapp.net. Ha használja a felhő erőforrás csoport/felhőszolgáltatás nevét már használja, Azure az erőforrás-csoport/felhőalapú szolgáltatás neve megegyezik a virtuális gép rendeli hozzá. Azure erőforrás-csoportok/felhőszolgáltatások és virtuális gépek nem társított bármely affinitáscsoportok jeleníti meg. További információkért lásd: [hogyan kell áttelepíteni egy regionális virtuális hálózat affinitáscsoportok](../virtual-network/virtual-networks-migrate-to-regional-vnet.md).
 
-    d. **Virtuális hálózati**. Válassza ki a virtuális hálózatot, a virtuális gép létrehozásakor. A mező teszi lehetővé az előfizetéshez tartozó összes virtuális hálózatot. Az erőforráscsoport, a virtuális gép zárójelben jelennek meg.
+    d. **Virtuális hálózat**. Válassza ki a virtuális hálózatot, a virtuális gép létrehozásakor. A mező teszi lehetővé az előfizetéshez tartozó összes virtuális hálózatot. Az erőforráscsoport, a virtuális gép zárójelben jelennek meg.
 
     e. **Alhálózati**. Ha a virtuális hálózati alhálózat, az első alhálózat alapértelmezettként van beállítva. Ha további alhálózatokat, válassza ki a kívánt alhálózat.
 

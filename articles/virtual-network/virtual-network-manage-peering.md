@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: dcc3da77d18a4488dcb4b74d78198f806cf3d64e
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e4f1d24da2a775007bf9172bc9267952d0a9bf48
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Létrehozása, módosítása vagy törlése a virtuális hálózati társviszony-létesítés
 
@@ -110,7 +110,7 @@ A virtuális hálózatok közötti társviszony az azonos vagy eltérő előfize
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|[az hálózati vnetben társviszony-létesítési lista](/cli/azure/network/vnet/peering?toc=%2fazure%2fvirtual-network%2ftoc.json#list) a lista esetében a virtuális hálózat [az hálózati vnetben társviszony-létesítési megjelenítése](/cli/azure/network/vnet/peering?toc=%2fazure%2fvirtual-network%2ftoc.json#show) beállítások megjelenítése az adott társviszony-létesítés, és [az hálózati társviszony-létesítési frissítés vnetet](/cli/azure/network/vnet/peering?toc=%2fazure%2fvirtual-network%2ftoc.json#update) módosítása társviszony-létesítési beállításokat.|
+|parancssori felület|[az hálózati vnetben társviszony-létesítési lista](/cli/azure/network/vnet/peering?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_vnet_peering_list) a lista esetében a virtuális hálózat [az hálózati vnetben társviszony-létesítési megjelenítése](/cli/azure/network/vnet/peering?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_vnet_peering_show) beállítások megjelenítése az adott társviszony-létesítés, és [az hálózati társviszony-létesítési frissítés vnetet](/cli/azure/network/vnet/peering?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_vnet_peering_update) módosítása társviszony-létesítési beállításokat.|
 |PowerShell|[Get-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering?toc=%2fazure%2fvirtual-network%2ftoc.json) beolvasása társviszony-létesítési beállításainak megjelenítése és [Set-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/set-azurermvirtualnetworkpeering?toc=%2fazure%2fvirtual-network%2ftoc.json) beállításainak módosításához.|
 
 ## <a name="delete-a-peering"></a>Törölje a társviszony-létesítés
@@ -129,7 +129,7 @@ Ha azt szeretné, hogy a virtuális hálózatok néha kommunikációra, de nem m
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|[az hálózati vnetben társviszony törlése](/cli/azure/network/vnet/peering?toc=%2fazure%2fvirtual-network%2ftoc.json#delete)|
+|parancssori felület|[az hálózati vnetben társviszony törlése](/cli/azure/network/vnet/peering?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_vnet_peering_delete)|
 |PowerShell|[Remove-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/remove-azurermvirtualnetworkpeering?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="requirements-and-constraints"></a>Követelmények és korlátozások 

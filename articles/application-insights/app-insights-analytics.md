@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/27/2017
+ms.date: 02/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: adda6335b702470cd491f07d750236c368325a9e
-ms.sourcegitcommit: 21a58a43ceceaefb4cd46c29180a629429bfcf76
+ms.openlocfilehash: 5f324051a2eeedd35a22f77c771793af9c90c434
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="analytics-in-application-insights"></a>Az Application Insightsban elemzés
 Elemzés a hatékony keresési és lekérdezés eszköz [Application Insights](app-insights-overview.md). Analytics egy webes eszköz, így nem szükséges. Ha már konfigurálta az Application Insights egy, az alkalmazások, akkor az alkalmazás adatainak elemezheti a alkalmazás Analytics megnyitásával [áttekintése panel](app-insights-dashboards.md).
@@ -47,15 +47,15 @@ Azt, majd száma az egyes országok rekordok száma (, hogy az oszlopban találh
 
 A nyelv számos vonzó lehetőséggel rendelkezik:
 
-* [Szűrő](https://docs.loganalytics.io/queryLanguage/query_language_whereoperator.html) által a mezőket, beleértve az egyéni tulajdonságok és a metrikák a nyers app telemetriai adatokat.
-* [Csatlakozás](https://docs.loganalytics.io/queryLanguage/query_language_joinoperator.html) több táblázatot – korrelálja Lapmegtekintések, függőségi hívások esetében, kivételeket és naplókivonatokat kéri.
-* Hatékony statisztikai [összesítések](https://docs.loganalytics.io/docs/Learn/Tutorials/Aggregation-functions).
+* [Szűrő](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/where-operator) által a mezőket, beleértve az egyéni tulajdonságok és a metrikák a nyers app telemetriai adatokat.
+* [Csatlakozás](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/join-operator) több táblázatot – korrelálja Lapmegtekintések, függőségi hívások esetében, kivételeket és naplókivonatokat kéri.
+* Hatékony statisztikai [összesítések](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions).
 * Közvetlen és erőteljes képi megjelenítések.
 * [REST API](https://dev.applicationinsights.io/) használható lekérdezések futtatása programozott módon, például a Powershellből.
 
 A [teljes nyelvi referencia](https://go.microsoft.com/fwlink/?linkid=856079) minden támogatott parancs adatokat, és rendszeresen frissíti.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Az első lépései a [Analytics portál](https://go.microsoft.com/fwlink/?linkid=856587)
 * Első lépések [lekérdezések írásáról](https://go.microsoft.com/fwlink/?linkid=856078)
 * Tekintse át a [SQL-felhasználók lap cheat](https://aka.ms/sql-analytics) a leggyakrabban használt idioms kifejezés fordítását.

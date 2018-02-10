@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: iainfou
-ms.openlocfilehash: cdd8c5e932815c5741b1091a743d235de882c5b1
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 33b9c36d4600646c36a519e647bd8cc8b6d68666
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Telepítse és konfigurálja a távoli asztal egy Linux virtuális Gépet az Azure-ban való kapcsolódáshoz
 A parancssorból, a secure shell (SSH-) kapcsolaton keresztül általában felügyelt Linux virtuális gépek (VM) az Azure-ban. Új Linux vagy gyors hibaelhárítási helyzetekben, amikor a távoli asztal használata könnyebben lehet. Ez a cikk részletesen telepítése és konfigurálása az asztali környezetet ([xfce](https://www.xfce.org)) és a távoli asztal ([xrdp](http://www.xrdp.org)) a Linux virtuális gép használata a Resource Manager üzembe helyezési modellben.
@@ -85,7 +85,7 @@ sudo passwd azureuser
 ## <a name="create-a-network-security-group-rule-for-remote-desktop-traffic"></a>A távoli asztal forgalmat hálózati biztonsági csoport szabály létrehozása
 A távoli asztal forgalom való elérni a Linux virtuális Gépet, a hálózati biztonsági csoport szabályt kell létrehozni, amely lehetővé teszi a TCP-port 3389-es elérni a virtuális Gépet. További információ a hálózati biztonsági csoportszabályok: [Mi az a hálózati biztonsági csoport?](../../virtual-network/virtual-networks-nsg.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Emellett [egy hálózati biztonsági szabály létrehozása az Azure portál segítségével](../windows/nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Az alábbi példa létrehoz egy hálózati biztonsági csoport szabály [az vm-port megnyitása](/cli/azure/vm#open-port) porton *3389-es*.
+Az alábbi példa létrehoz egy hálózati biztonsági csoport szabály [az vm-port megnyitása](/cli/azure/vm#az_vm_open_port) porton *3389-es*.
 
 ```azurecli
 az vm open-port --resource-group myResourceGroup --name myVM --port 3389
@@ -133,7 +133,7 @@ Előfordulhat, hogy más például Red Hat Enterprise Linux és SUSE Linux terje
 Ha a távoli asztali ügyfél nem kapott választ, és nem látja a rendszernaplóba eseményeket, ez arra utal, hogy a távoli asztali forgalom nem tudja elérni a virtuális Gépet. Tekintse át a hálózati biztonsági csoportszabályok annak érdekében, hogy rendelkezik-e egy szabályt, amely engedélyezi a TCP-port 3389-es. További információkért lásd: [alkalmazás csatlakozási problémák](../windows/troubleshoot-app-connection.md).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Létrehozásával és az SSH-kulcsok használata a Linux virtuális gépek kapcsolatos további információkért lásd: [hozzon létre SSH-kulcsok Linux virtuális gépek Azure-ban](mac-create-ssh-keys.md).
 
 Az SSH használata a Windows további információkért lásd: [SSH használata a Windows kulcsok](ssh-from-windows.md).

@@ -3,7 +3,7 @@ title: "Szerepköralapú hozzáférés-vezérlés REST - az Azure AD |} Microsof
 description: "A REST API szerepköralapú hozzáférés-vezérlés kezelése"
 services: active-directory
 documentationcenter: na
-author: andredm7
+author: rolyon
 manager: mtillman
 editor: 
 ms.assetid: 1f90228a-7aac-4ea7-ad82-b57d222ab128
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
-ms.author: andredm
-ms.openlocfilehash: 9ec64dc3ce95de9c29331699ad2140e5a3c25673
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: rolyon
+ms.openlocfilehash: d449b53d348471275cea3c7129245569e2151864
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="manage-role-based-access-control-with-the-rest-api"></a>A REST API szerepköralapú hozzáférés-vezérlés kezelése
 > [!div class="op_single_selector"]
@@ -43,8 +43,8 @@ Az URI belül győződjön testre szabhatja a kérelem a következő helyettesí
 1. Cserélje le *{hatókör}* a hatókörben, amelynek kívánja a szerepkör-hozzárendelések listáját. A következő példák bemutatják, hogyan adhatja meg a különböző szintű hatóköre:
 
    * Előfizetés: /subscriptions/ {előfizetés-azonosító}  
-   * Erőforráscsoport: /subscriptions/ {előfizetés-azonosító} / resourceGroups/myresourcegroup1  
-   * Erőforrás: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+   * Resource Group: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
+   * Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
 2. Cserélje le *{api-version}* a 2015-07-01.
 3. Cserélje le *{szűrő}* azzal a feltétellel, amelyet meg kíván alkalmazni a szerepkör-hozzárendelés csoportlista szűréséhez:
 
@@ -93,8 +93,8 @@ Az URI belül győződjön testre szabhatja a kérelem a következő helyettesí
 1. Cserélje le *{hatókör}* a hatókörben, amelynek kívánja a szerepkör-hozzárendelések listáját. A következő példák bemutatják, hogyan adhatja meg a különböző szintű hatóköre:
 
    * Előfizetés: /subscriptions/ {előfizetés-azonosító}  
-   * Erőforráscsoport: /subscriptions/ {előfizetés-azonosító} / resourceGroups/myresourcegroup1  
-   * Erőforrás: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+   * Resource Group: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
+   * Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
 2. Cserélje le *{szerepkör-hozzárendelés-azonosító}* azon szerepkör-hozzárendelés GUID azonosítóval.
 3. Cserélje le *{api-version}* a 2015-07-01.
 
@@ -134,8 +134,8 @@ Az URI belül győződjön testre szabhatja a kérelem a következő helyettesí
 1. Cserélje le *{hatókör}* a hatókörben, ahol létre szeretne hozni a szerepkör-hozzárendeléseket. Szerepkör-hozzárendelés létrehozása a szülő hatókörben, minden gyermekhatókörében örökli a azonos szerepkör-hozzárendelés. A következő példák bemutatják, hogyan adhatja meg a különböző szintű hatóköre:
 
    * Előfizetés: /subscriptions/ {előfizetés-azonosító}  
-   * Erőforráscsoport: /subscriptions/ {előfizetés-azonosító} / resourceGroups/myresourcegroup1   
-   * Erőforrás: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+   * Resource Group: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1   
+   * Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
 2. Cserélje le *{szerepkör-hozzárendelés-azonosító}* egy új GUID, amely válik az új szerepkör-hozzárendelés GUID azonosítóját.
 3. Cserélje le *{api-version}* a 2015-07-01.
 
@@ -153,7 +153,7 @@ A kérelem törzsében adja meg az értékeket a következő formátumban:
 
 | Elem neve | Szükséges | Típus | Leírás |
 | --- | --- | --- | --- |
-| roledefinitionid-értékkel |Igen |Karakterlánc |A szerepkör azonosítóját. Az azonosító formátuma:`{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id-guid}` |
+| roleDefinitionId |Igen |Karakterlánc |A szerepkör azonosítóját. Az azonosító formátuma:`{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id-guid}` |
 | principalId |Igen |Karakterlánc |objectId az Azure AD rendszerbiztonsági tag (felhasználó, csoport vagy egyszerű szolgáltatásneve), amely a szerepkör hozzá van rendelve. |
 
 ### <a name="response"></a>Válasz
@@ -192,8 +192,8 @@ Az URI belül győződjön testre szabhatja a kérelem a következő helyettesí
 1. Cserélje le *{hatókör}* a hatókörben, ahol létre szeretne hozni a szerepkör-hozzárendeléseket. A következő példák bemutatják, hogyan adhatja meg a különböző szintű hatóköre:
 
    * Előfizetés: /subscriptions/ {előfizetés-azonosító}  
-   * Erőforráscsoport: /subscriptions/ {előfizetés-azonosító} / resourceGroups/myresourcegroup1  
-   * Erőforrás: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+   * Resource Group: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
+   * Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
 2. Cserélje le *{szerepkör-hozzárendelés-azonosító}* a GUID azonosító.
 3. Cserélje le *{api-version}* a 2015-07-01.
 
@@ -233,8 +233,8 @@ Az URI belül győződjön testre szabhatja a kérelem a következő helyettesí
 1. Cserélje le *{hatókör}* a hatókörben, amelynek meg szeretné össze a szerepkörök listáját. A következő példák bemutatják, hogyan adhatja meg a különböző szintű hatóköre:
 
    * Előfizetés: /subscriptions/ {előfizetés-azonosító}  
-   * Erőforráscsoport: /subscriptions/ {előfizetés-azonosító} / resourceGroups/myresourcegroup1  
-   * Erőforrás /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+   * Resource Group: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
+   * Resource /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
 2. Cserélje le *{api-version}* a 2015-07-01.
 3. Cserélje le *{szűrő}* azzal a feltétellel, akkor a szerepkörök szűréséhez alkalmazni kíván:
 
@@ -316,8 +316,8 @@ Az URI belül győződjön testre szabhatja a kérelem a következő helyettesí
 1. Cserélje le *{hatókör}* a hatókörben, amelynek kívánja a szerepkör-hozzárendelések listáját. A következő példák bemutatják, hogyan adhatja meg a különböző szintű hatóköre:
 
    * Előfizetés: /subscriptions/ {előfizetés-azonosító}  
-   * Erőforráscsoport: /subscriptions/ {előfizetés-azonosító} / resourceGroups/myresourcegroup1  
-   * Erőforrás: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+   * Resource Group: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
+   * Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
 2. Cserélje le *{szerepkör-definíció-azonosító}* a szerepkör-definíció GUID azonosítóval.
 3. Cserélje le *{api-version}* a 2015-07-01.
 
@@ -396,8 +396,8 @@ Az URI belül győződjön testre szabhatja a kérelem a következő helyettesí
 1. Cserélje le *{hatókör}* az első *AssignableScope* az egyéni szerepkör. A következő példák bemutatják, hogyan határozhatja meg a különböző szintű hatókörét.
 
    * Előfizetés: /subscriptions/ {előfizetés-azonosító}  
-   * Erőforráscsoport: /subscriptions/ {előfizetés-azonosító} / resourceGroups/myresourcegroup1  
-   * Erőforrás: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+   * Resource Group: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
+   * Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
 2. Cserélje le *{szerepkör-definíció-azonosító}* egy új GUID, amely válik az új egyéni szerepkör GUID azonosítóját.
 3. Cserélje le *{api-version}* a 2015-07-01.
 
@@ -438,9 +438,9 @@ A kérelem törzsében adja meg az értékeket a következő formátumban:
 | --- | --- | --- | --- |
 | név |Igen |Karakterlánc |Az egyéni szerepkör GUID azonosítója |
 | properties.roleName |Igen |Karakterlánc |Az egyéni szerepkör nevét jeleníti meg. Legfeljebb 128 karakter. |
-| Properties.Description |Nem |Karakterlánc |Az egyéni szerepkör leírása Maximális méret 1024 karakternél. |
-| Properties.Type |Igen |Karakterlánc |Állítsa be a "CustomRole." |
-| Properties.permissions.Actions |Igen |String] |Adja meg az egyéni szerepkör által biztosított műveletek művelet karakterláncokból álló tömb. |
+| properties.description |Nem |Karakterlánc |Az egyéni szerepkör leírása Maximális méret 1024 karakternél. |
+| properties.type |Igen |Karakterlánc |Állítsa be a "CustomRole." |
+| properties.permissions.actions |Igen |String] |Adja meg az egyéni szerepkör által biztosított műveletek művelet karakterláncokból álló tömb. |
 | properties.permissions.notActions |Nem |String] |Ha szeretne kizárni a műveletek az egyéni szerepkör által biztosított műveletek művelet karakterláncokkal tömbjét. |
 | properties.assignableScopes |Igen |String] |A tömb hatókörök, amelyben az egyéni biztonsági szerepkört is használható. |
 
@@ -499,8 +499,8 @@ Az URI belül győződjön testre szabhatja a kérelem a következő helyettesí
 1. Cserélje le *{hatókör}* az első *AssignableScope* az egyéni szerepkör. A következő példák bemutatják, hogyan adhatja meg a különböző szintű hatóköre:
 
    * Előfizetés: /subscriptions/ {előfizetés-azonosító}  
-   * Erőforráscsoport: /subscriptions/ {előfizetés-azonosító} / resourceGroups/myresourcegroup1  
-   * Erőforrás: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+   * Resource Group: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
+   * Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
 2. Cserélje le *{szerepkör-definíció-azonosító}* az egyéni szerepkör GUID azonosítóval.
 3. Cserélje le *{api-version}* a 2015-07-01.
 
@@ -541,9 +541,9 @@ A kérelem törzsében adja meg az értékeket a következő formátumban:
 | --- | --- | --- | --- |
 | név |Igen |Karakterlánc |Az egyéni szerepkör GUID azonosítója |
 | properties.roleName |Igen |Karakterlánc |A frissített egyéni szerepkör nevét jeleníti meg. |
-| Properties.Description |Nem |Karakterlánc |A frissített egyéni szerepkör leírása |
-| Properties.Type |Igen |Karakterlánc |Állítsa be a "CustomRole." |
-| Properties.permissions.Actions |Igen |String] |Adja meg a frissített egyéni biztonsági szerepkört, amelyhez engedélyezi a hozzáférést a műveletek művelet karakterláncokból álló tömb. |
+| properties.description |Nem |Karakterlánc |A frissített egyéni szerepkör leírása |
+| properties.type |Igen |Karakterlánc |Állítsa be a "CustomRole." |
+| properties.permissions.actions |Igen |String] |Adja meg a frissített egyéni biztonsági szerepkört, amelyhez engedélyezi a hozzáférést a műveletek művelet karakterláncokból álló tömb. |
 | properties.permissions.notActions |Nem |String] |Adja meg a műveleteket, így a frissített egyéni szerepkörök műveletekről kizárása művelet karakterláncokból álló tömb. |
 | properties.assignableScopes |Igen |String] |A tömb hatókörök, amelyben a frissített egyéni biztonsági szerepkört is használható. |
 
@@ -602,8 +602,8 @@ Az URI belül győződjön testre szabhatja a kérelem a következő helyettesí
 1. Cserélje le *{hatókör}* , amelyen a szerepkör-definíció törölni kívánt hatókörű. A következő példák bemutatják, hogyan adhatja meg a különböző szintű hatóköre:
 
    * Előfizetés: /subscriptions/ {előfizetés-azonosító}  
-   * Erőforráscsoport: /subscriptions/ {előfizetés-azonosító} / resourceGroups/myresourcegroup1  
-   * Erőforrás: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+   * Resource Group: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
+   * Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
 2. Cserélje le *{szerepkör-definíció-azonosító}* a GUID azonosító az egyéni szerepkör.
 3. Cserélje le *{api-version}* a 2015-07-01.
 

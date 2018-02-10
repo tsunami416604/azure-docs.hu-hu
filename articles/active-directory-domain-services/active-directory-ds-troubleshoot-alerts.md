@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2018
+ms.date: 02/05/2018
 ms.author: ergreenl
-ms.openlocfilehash: b2e0edf3588f3b1db5f4b6641019be1ded9cb50e
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 8a0b30e6c975bd8f3bfbe70a64c085b729115f24
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-ad-domain-services---troubleshoot-alerts"></a>Azure AD tartományi szolgáltatások - riasztások hibaelhárítása
 A cikkben hibaelhárítási útmutatók a felügyelt tartományok indításakor a riasztásokhoz.
@@ -75,6 +75,11 @@ A szolgáltatás visszaállításához kövesse az alábbi lépéseket:
 
 Megkezdése előtt olvassa el a **privát IP v4 cím címtér** szakasz [Ez a cikk](https://en.wikipedia.org/wiki/Private_network#Private_IPv4_address_spaces).
 
+A virtuális hálózaton belüli gépek előfordulhat, hogy kéréseket küld az Azure-erőforrást az azonos IP-címtartományt, az alhálózat konfigurálva. Azonban mivel a virtuális hálózati ebben a tartományban van konfigurálva, ezeket a kérelmeket továbbítja a virtuális hálózaton belül, és a nem érte el a kívánt webes erőforrások. Ez az Azure AD tartományi szolgáltatások kiszámíthatatlan hibákat eredményezhet.
+
+**Ha Ön a tulajdonosa az IP-címtartományt az interneten, amely a virtuális hálózat van konfigurálva, a riasztás figyelmen kívül hagyható. Azonban nem véglegesíthető a Azure AD tartományi szolgáltatások számára a [SLA](https://azure.microsoft.com/support/legal/sla/active-directory-ds/v1_0/)] Ezzel a konfigurációval, mivel azt kiszámíthatatlan hibákat okozhat.**
+
+
 1. [Törölje a felügyelt tartományok](active-directory-ds-disable-aadds.md) a könyvtárból.
 2. Javítsa ki az IP-címtartományt az alhálózat
   1. Keresse meg a [oldalon virtuális hálózatok, az Azure-portálon](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_AAD_DomainServices=preview#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FvirtualNetworks).
@@ -86,7 +91,7 @@ Megkezdése előtt olvassa el a **privát IP v4 cím címtér** szakasz [Ez a ci
   7. A címtartomány frissítése, és mentse a módosításokat.
 3. Hajtsa végre a [az első lépések használatával Azure AD tartományi szolgáltatások útmutató](active-directory-ds-getting-started.md) újbóli létrehozásához hajtsa végre a felügyelt tartományok. Győződjön meg arról, hogy egy privát IP-címtartománnyal rendelkező virtuális hálózatot választ.
 4. Tartományhoz való csatlakozást a virtuális gépeket az új tartományba, hajtsa végre a [Ez az útmutató](active-directory-ds-admin-guide-join-windows-vm-portal.md).
-8. Ellenőrizze a tartomány állapotát annak érdekében, hogy végrehajtotta a megfelelően két órában.
+8. Annak érdekében, hogy a riasztás fel lett oldva, a tartomány állapotának ellenőrzése két órában.
 
 
 ## <a name="contact-us"></a>Kapcsolat

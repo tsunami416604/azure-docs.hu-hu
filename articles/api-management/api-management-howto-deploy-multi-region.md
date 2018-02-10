@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: e126e34bc9fce21243b0ef79f5ab661aec3a2de6
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 6f84c1b2092f71eaeba0005a36018390242869ea
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Az Azure API Management szolgáltatáspéldány üzembe helyezése több Azure-régiók
 Az API Management több területi környezetben, amely lehetővé teszi, hogy egyetlen API management szolgáltatás szét a kívánt Azure-régiók tetszőleges számú API közzétevők támogatja. Ezzel csökkenthető a kérelem által érzékelt késleltetés földrajzilag elosztott API fogyasztók és a szolgáltatás rendelkezésre állása is támogatja, ha egy régió tartozik offline állapotba kerül. 
@@ -52,13 +52,12 @@ Kattintson a **Hozzáadás** helyezhető el a kiválasztott a helyek táblában.
 Ismételje meg ezt a folyamatot, amíg a konfigurált összes hellyel rendelkezik, és kattintson a **mentése** a telepítési folyamat elindításához az eszköztáron.
 
 ## <a name="remove-region"></a>Egy API-kezelés szolgáltatás példány törlése
+
 Az Azure portálon keresse meg a **és az árképzés** az API Management szolgáltatáspéldány a lap. 
 
 ![Skála lap][api-management-scale-service]
 
 Szeretné eltávolítani a helyet nyissa meg a helyi menü használatával a **...**  gomb a tábla jobb oldali végén. Válassza ki a **törlése** lehetőséget.
-
-![Távolítsa el a régió][api-management-remove-region]
 
 A törlés jóváhagyásához, és kattintson a **mentése** a módosítások életbe léptetéséhez.
 

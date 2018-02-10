@@ -3,7 +3,7 @@ title: "Hozzon létre egyéni szerepkörök az Azure RBAC |} Microsoft Docs"
 description: "Megtudhatja, hogyan pontosabb identitáskezeléshez átruházásához hozzáférés-vezérléssel egyéni szerepkörök definiálása az Azure-előfizetésben."
 services: active-directory
 documentationcenter: 
-author: andredm7
+author: rolyon
 manager: mtillman
 ms.assetid: e4206ea9-52c3-47ee-af29-f6eef7566fa5
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/11/2017
-ms.author: andredm
+ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 53c8060413f5625273360d9bf23cf27b3f56fb32
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2871ff5eea8fb99040dfab2593d1640d79f51092
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-custom-roles-for-azure-role-based-access-control"></a>Hozzon létre egyéni szerepkörök átruházásához hozzáférés-vezérlés
 Hozzon létre egy egyéni biztonsági szerepkört a átruházásához hozzáférés-vezérlés (RBAC) Ha az adott hozzáférési igényeinek a beépített szerepkörök egyike. Egyéni szerepkörök segítségével hozhatók létre [Azure PowerShell](role-based-access-control-manage-access-powershell.md), [Azure parancssori felület](role-based-access-control-manage-access-azure-cli.md) (CLI), és a [REST API](role-based-access-control-manage-access-rest.md). Hasonlóan a beépített szerepkörök egyéni szerepkörök hozzárendelése felhasználók, csoportok és alkalmazások előfizetés, erőforráscsoport és erőforrás-hatókörök. Egyéni szerepkörök az Azure AD-bérlő tárolódnak, és előfizetések között megosztható legyen.
@@ -116,7 +116,7 @@ A **AssignableScopes** tulajdonsága az egyéni biztonsági szerepkört is vezé
 * Kik tekinthetik meg egyéni szerepkörök?
     Minden beépített szerepkörök az Azure RBAC kiosztására használható szerepkörtől megtekintésének engedélyezése. Felhasználók, akik hajthat végre a `Microsoft.Authorization/roleDefinition/read` hatókörre művelet megtekintheti az adott hatókörben kiosztására használható RBAC szerepköröket.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Szerepköralapú hozzáférés-vezérlés](role-based-access-control-configure.md): az RBAC első lépései az Azure portálon.
 * Elérhető műveletek listájának megtekintéséhez lásd: [Azure Resource Manager erőforrás-szolgáltató műveletek](role-based-access-control-resource-provider-operations.md).
 * Útmutató: a hozzáférés kezelése:

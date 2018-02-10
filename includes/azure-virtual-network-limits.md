@@ -52,7 +52,7 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 | Basic erőforrásonként szabályok | 150 | 250 |
 | Standard erőforrásonként szabályok | 1250 | 1500 |
 | IP-konfiguráció / szabályok | 299 |299 |
-| Előtérbeli IP-konfigurációk, Basic | 10 | kapcsolatfelvétel az ügyfélszolgálattal |
+| Előtérbeli IP-konfigurációk, Basic | 10 | 200 |
 | Előtérbeli IP-konfigurációk, a Standard | 10 | 600 |
 | A háttérkészlet, Basic | 100, egy rendelkezésre állási csoport | - |
 | Háttérkészlet, a Standard | 1000, egyetlen virtuális hálózat | - |

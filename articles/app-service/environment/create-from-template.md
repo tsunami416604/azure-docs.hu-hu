@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: b3829f0e1b87451bf0706edc268359be5c4480bc
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 015bf031aea6b79fcca0a416253e9aa47bb245b6
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Hozzon létre egy ASE Azure Resource Manager-sablon használatával
 
@@ -40,7 +40,7 @@ A ASE létrehozásának automatizálása:
 
 2. A ILB ASE létrehozása után, amely megfelel a ILB ASE tartomány SSL-tanúsítvány feltöltése.
 
-3. A feltöltött SSL-tanúsítvány hozzá van rendelve a ILB ASE az "alapértelmezett" SSL-tanúsítványt.  Ez a tanúsítvány használható SSL-forgalom a ILB ASE található alkalmazások használata a közös gyökértartomány, amely hozzá van rendelve a ASE (például https://someapp.mycustomrootcomain.com).
+3. A feltöltött SSL-tanúsítvány hozzá van rendelve a ILB ASE az "alapértelmezett" SSL-tanúsítványt.  Ez a tanúsítvány használható SSL-forgalom a ILB ASE található alkalmazások használata a közös gyökértartomány, amely hozzá van rendelve a ASE (például https://someapp.mycustomrootdomain.com).
 
 
 ## <a name="create-the-ase"></a>A ASE létrehozása
@@ -69,7 +69,7 @@ Szerezzen be egy érvényes SSL-tanúsítvány belső hitelesítésszolgáltató
 * **Tulajdonos**: meg kell ezt az attribútumot **.your-gyökér-tartományi-here.com*.
 * **Tulajdonos alternatív neve**: ennek az attribútumnak kell tartalmaznia a **.your-gyökér-tartományi-here.com* és **.scm.your-gyökér-tartományi-here.com*. Minden alkalmazáshoz társított SCM/Kudu webhely SSL-kapcsolatot az űrlap cím használata *your-app-name.scm.your-root-domain-here.com*.
 
-Egy érvényes SSL-tanúsítvánnyal aktuális két további előkészítő lépések szükségesek. A konvertálás/mentése az SSL-tanúsítvány egy .pfx fájlba. Ne feledje, hogy a .pfx fájl tartalmazza az összes köztes kell, és legfelső szintű tanúsítványok. A biztonság jelszóval.
+Egy érvényes SSL-tanúsítvánnyal aktuális két további előkészítő lépések szükségesek. Konvertálja/mentse az SSL-tanúsítványt .pfx fájlként. Ne feledje, hogy a .pfx fájl tartalmazza az összes köztes kell, és legfelső szintű tanúsítványok. Jelszóval gondoskodjon a védelméről.
 
 A .pfx-fájlt kell a Base64 kódolású karakterlánc alakítja át, mivel az SSL-tanúsítvány feltöltése a Resource Manager-sablon használatával. Mivel Resource Manager-sablonok szövegfájlok, a .pfx fájl konvertálni kell egy Base64 kódolású karakterlánc. Ezzel a módszerrel azt is meg lehet adni a sablon paraméterként.
 
@@ -146,11 +146,11 @@ A sablon befejezése után a ILB ASE alkalmazások HTTPS-KAPCSOLATON keresztül 
 Csakúgy, mint a nyilvános több-bérlős szolgáltatást a futó alkalmazások, azonban fejlesztők konfigurálható egyéni állomásnevek egyes alkalmazásokhoz. Egyedi SNI SSL-tanúsítványok kötései egyes alkalmazások esetében is konfigurálhatja.
 
 ## <a name="app-service-environment-v1"></a>App Service-környezet v1 ##
-App Service Environment-környezet két verziója van: ASEv1 és ASEv2. A fenti adatokat ASEv2 alapján. Ez a szakasz a ASEv1 és ASEv2 közötti különbséget mutatja.
+Kétféle verzió érhető el az App Service Environment szolgáltatáshoz: ASEv1 és ASEv2. A fenti információ az ASEv2 verzión alapul. Ebben a szakaszban az ASEv1 és ASEv2 különbségeiről olvashat.
 
-Az ASEv1 kezelhetők a összes erőforrást manuálisan. Amely tartalmazza az előtér-webkiszolgálóinak dolgozó munkatársak és az IP-alapú SSL-hez használt IP-címek. Ki lehet terjeszteni a App Service-csomagot, mielőtt a feldolgozókészleten üzemeltetnie kívánt kell kiterjesztése.
+Az ASEv1 kezelhetők a összes erőforrást manuálisan. Ebbe beletartoznak az előtérrendszerek, a feldolgozók, valamint IP-alapú SSL esetén az IP-címek is. Ki lehet terjeszteni a App Service-csomagot, mielőtt a feldolgozókészleten üzemeltetnie kívánt kell kiterjesztése.
 
-ASEv1 ASEv2 a különböző árképzési modellt használ. A ASEv1 akkor fizessen az egyes lefoglalt vCPU. Az előtér-webkiszolgálóinak vagy bármilyen számítási feladatot nem futtató munkavállalók használt Vcpu, amely tartalmazza. A ASEv1 az alapértelmezett maximális méretű egy ASE mérete 55 összes állomás. Amely tartalmazza a dolgozók és első akkor ér véget. Egy ASEv1 előnye, hogy központilag telepíthető a klasszikus virtuális hálózatot és egy erőforrás-kezelő virtuális hálózatot. ASEv1 kapcsolatos további információkért lásd: [App Service Environment-környezet v1 bemutatása][ASEv1Intro].
+Az ASEv1 díjszabása eltér az ASEv2-étől. Az ASEv1 esetében minden lefoglalt vCPU után fizet. Az előtér-webkiszolgálóinak vagy bármilyen számítási feladatot nem futtató munkavállalók használt Vcpu, amely tartalmazza. Az ASEv1 esetében egy ASE alapértelmezett maximális skálázhatósága összesen 55 gazdagép. Ez tartalmazza a feldolgozókat és az előtérrendszereket is. Az ASEv1 egyik előnye az, hogy klasszikus, illetve Resource Manager virtuális hálózatokban is üzembe helyezhető. Az ASEv1 verzióról további információt az [App Service Environment v1 bemutatása][ASEv1Intro] témakörben találhat.
 
 Egy ASEv1 létrehozása egy Resource Manager-sablon használatával, lásd: [hozzon létre egy ILB ASE v1 Resource Manager-sablon][ILBASEv1Template].
 

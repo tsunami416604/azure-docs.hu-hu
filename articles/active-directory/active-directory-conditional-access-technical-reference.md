@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/12/2017
+ms.date: 02/08/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 1ce1fc4c03130dfea4e79c89c25cf5a9004e4dc8
-ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
+ms.openlocfilehash: fd82d77e79f05a67f8e818095753b8dc22ccf314
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Az Azure Active Directory feltételes hozzáférési beállításainak ismertetése
 
@@ -39,7 +39,7 @@ Ha ez nem csak a keresett információkat, hozzászólásban Ez a cikk végén.
 
 ## <a name="cloud-apps-assignments"></a>Felhőalapú alkalmazások hozzárendelések
 
-Feltételes hozzáférési házirendekkel, szabályozhatja, hogy a felhasználók hogyan férhetnek hozzá a [felhőalapú alkalmazásokba](active-directory-conditional-access-azure-portal.md#who). A feltételes hozzáférési házirendjének konfigurálásakor kell legalább egy felhő-alkalmazás kiválasztása. 
+Feltételes hozzáférési házirendekkel, szabályozhatja, hogy a felhasználók hogyan férhetnek hozzá a [felhőalapú alkalmazásokba](active-directory-conditional-access-conditions.md#cloud-apps). A feltételes hozzáférési házirendjének konfigurálásakor kell legalább egy felhő-alkalmazás kiválasztása. 
 
 ![Válassza ki a felhőalapú alkalmazások, a házirend](./media/active-directory-conditional-access-technical-reference/09.png)
 
@@ -62,7 +62,7 @@ A feltételes hozzáférési házirend a Microsoft hozzárendelheti a következ�
 
 - Microsoft Power BI 
 
-- A Microsoft Visual Studio Team Services
+- Microsoft Visual Studio Team Services
 
 - Microsoft Teams
 
@@ -105,7 +105,7 @@ Feltételes hozzáférési szabályzatot konfigurálhatja a házirendet, az oper
 
 ## <a name="client-apps-condition"></a>Ügyfél alkalmazások feltétel 
 
-A feltételes hozzáférési szabályzatot konfigurálhat a [ügyfélalkalmazások](active-directory-conditional-access-azure-portal.md#client-apps) feltétel összekötését a házirendet, az ügyfél-alkalmazást, amelynek már kezdeményezte a hozzáférési kísérlet. Állítsa be az ügyfél adja meg, vagy letiltja a hozzáférést, ha egy hozzáférési kísérlet a következő típusú ügyfél alkalmazásokat az alkalmazások feltétel:
+A feltételes hozzáférési szabályzatot konfigurálhat a [ügyfélalkalmazások](active-directory-conditional-access-conditions.md#client-apps) feltétel összekötését a házirendet, az ügyfél-alkalmazást, amelynek már kezdeményezte a hozzáférési kísérlet. Állítsa be az ügyfél adja meg, vagy letiltja a hozzáférést, ha egy hozzáférési kísérlet a következő típusú ügyfél alkalmazásokat az alkalmazások feltétel:
 
 - Böngésző
 - Hordozható és asztali alkalmazások
@@ -123,16 +123,16 @@ Ez a beállítás minden böngészőben működik. Azonban kielégítéséhez eg
 
 | Operációs rendszer                     | Böngészők                            | Támogatás     |
 | :--                    | :--                                 | :-:         |
-| Windows 10             | Internet Explorer, a peremhálózati, Chrome     | ![Jelölőnégyzet][1] |
-| Windows 8 / 8.1        | Internet Explorer, a Chrome           | ![Jelölőnégyzet][1] |
-| Windows 7              | Internet Explorer, a Chrome           | ![Jelölőnégyzet][1] |
+| Windows 10             | Internet Explorer, Edge, Chrome     | ![Jelölőnégyzet][1] |
+| Windows 8 / 8.1        | Internet Explorer, Chrome           | ![Jelölőnégyzet][1] |
+| Windows 7              | Internet Explorer, Chrome           | ![Jelölőnégyzet][1] |
 | iOS                    | Safari, Intune által felügyelt böngésző      | ![Jelölőnégyzet][1] |
 | Android                | Chrome, Intune által felügyelt böngésző      | ![Jelölőnégyzet][1] |
-| Windows Phone          | Internet Explorer, a peremhálózati             | ![Jelölőnégyzet][1] |
-| Windows Server 2016    | Internet Explorer, a peremhálózati             | ![Jelölőnégyzet][1] |
+| Windows Phone          | Internet Explorer, Edge             | ![Jelölőnégyzet][1] |
+| Windows Server 2016    | Internet Explorer, Edge             | ![Jelölőnégyzet][1] |
 | Windows Server 2016    | Chrome                              | Hamarosan elérhető |
-| Windows Server 2012 R2 | Internet Explorer, a Chrome           | ![Jelölőnégyzet][1] |
-| Windows Server 2008 R2 | Internet Explorer, a Chrome           | ![Jelölőnégyzet][1] |
+| Windows Server 2012 R2 | Internet Explorer, Chrome           | ![Jelölőnégyzet][1] |
+| Windows Server 2008 R2 | Internet Explorer, Chrome           | ![Jelölőnégyzet][1] |
 | macOS                  | Chrome, Safari                      | ![Jelölőnégyzet][1] |
 
 
@@ -169,10 +169,9 @@ Ez a beállítás hatással van a következő mobilalkalmazások és az asztali 
 |Outlook 2016 (Office macOS)|Az Office 365 Exchange online-hoz|Mac OS X|
 |Outlook 2016, az Outlook 2013 (modern hitelesítést), a Skype vállalati verzió (a modern hitelesítést)|Az Office 365 Exchange online-hoz|Windows 8.1, Windows 7|
 |Outlook mobilalkalmazás|Az Office 365 Exchange online-hoz|Android, iOS|
-|Power bi alkalmazásról. Az Androidhoz készült Power BI alkalmazás jelenleg nem támogatja a eszközalapú feltételes hozzáférés.|Power bi szolgáltatás|Windows 10, Windows 8.1, Windows 7 és iOS|
-|A Skype vállalati verzió|Az Office 365 Exchange online-hoz|Android, IOS |
+|Power bi alkalmazásról|Power bi szolgáltatás|Windows 10, Windows 8.1, Windows 7 és iOS|
+|Skype Vállalati verzió|Az Office 365 Exchange online-hoz|Android, IOS |
 |A Visual Studio Team Services-alkalmazás|Visual Studio Team Services|Windows 10, Windows 8.1, Windows 7, iOS és Android|
-
 
 
 ## <a name="approved-client-app-requirement"></a>Jóváhagyott app követelmény 
@@ -186,16 +185,18 @@ Ez a beállítás a következő ügyfél alkalmazásokra vonatkoznak:
 
 - Microsoft Azure Information Protection
 - Microsoft Excel
-- Microsoft onedrive vállalati verzió
+- Microsoft Kaizala 
+- Microsoft OneDrive
 - Microsoft OneNote
-- A Microsoft Outlook
+- Microsoft Outlook
 - Microsoft Planner
 - Microsoft PowerPoint
 - Microsoft SharePoint
 - Microsoft Skype vállalati verzió
+- Microsoft StaffHub
 - Microsoft Teams
-- A Microsoft Visio
-- A Microsoft Word
+- Microsoft Visio
+- Microsoft Word
 
 
 

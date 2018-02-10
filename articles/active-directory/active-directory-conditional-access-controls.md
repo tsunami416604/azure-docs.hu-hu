@@ -13,28 +13,32 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/29/2017
+ms.date: 02/08/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 533229ae90828a0aeba9f10cbdfdb70afa21e1c5
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 24db2d29684f7ce5822c77c71f944327476b7196
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="controls-in-azure-active-directory-conditional-access"></a>A vezérlők Azure Active Directory feltételes hozzáférés beállítása 
 
-A [Azure Active Directory (Azure AD) feltételes hozzáférés](active-directory-conditional-access-azure-portal.md), szabályozhatja a hogyan engedéllyel rendelkező felhasználók hozzáférést a felhőalapú alkalmazásokat. A feltételes hozzáférési szabályzatot akkor határozza meg a válaszát ("Ehhez") egy adott feltételnek ("Ez akkor fordul elő"). Az a környezetben, a feltételes hozzáférés 
+A [Azure Active Directory (Azure AD) feltételes hozzáférés](active-directory-conditional-access-azure-portal.md), szabályozhatja a hogyan engedéllyel rendelkező felhasználók hozzáférést a felhőalapú alkalmazásokat. A feltételes hozzáférési szabályzatot a válasz ("Ehhez") okának indítására, a házirend ("Amikor ez történik,") megadása. 
 
-- "**Ha ez történik**" nevezik **utasítás feltétel**
+![Vezérlés](./media/active-directory-conditional-access-controls/10.png)
 
-- "**Majd ehhez**" nevezik **vezérlők**
 
-![Vezérlés](./media/active-directory-conditional-access-controls/11.png)
+Az a környezetben, a feltételes hozzáférés 
+
+- "**Ha ez történik**" nevezik **feltételek**
+
+- "**Majd ehhez**" nevezik **hozzáférés-szabályozási**
+
 
 Egy feltétel utasítást a vezérlőkkel kombinációja a feltételes hozzáférési házirend jelöli.
 
-![Vezérlés](./media/active-directory-conditional-access-controls/12.png)
+![Vezérlés](./media/active-directory-conditional-access-controls/61.png)
 
 Minden vezérlő követelmény, hogy teljesülnek a személy által vagy rendszer jelentkezik be, vagy a bejelentkezés után a felhasználó a korlátozását teheti meg. 
 
