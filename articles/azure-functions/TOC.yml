@@ -133,6 +133,8 @@
           href: functions-run-local.md
         - name: A Visual Studio fejlesztése
           href: functions-develop-vs.md
+        - name: Hibakezelés
+          href: functions-bindings-error-pages.md
     - name: Üzembe helyezés
       items:
         - name: Folyamatos üzembe helyezés

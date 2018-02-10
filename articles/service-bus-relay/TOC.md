@@ -2,12 +2,12 @@
 ## [Mi az a Relay?](relay-what-is-it.md)
 ## [GYIK](relay-faq.md)
 
-# Első lépések
+# Gyors útmutatók
 ## [Névtér létrehozása](relay-create-namespace-portal.md)
 ## [Hibrid helyszíni/felhőbeli alkalmazás létrehozása](service-bus-dotnet-hybrid-app-using-service-bus-relay.md)
 ## Hibrid kapcsolatok
 ### [.NET](relay-hybrid-connections-dotnet-get-started.md)
-### [Csomópont](relay-hybrid-connections-node-get-started.md)
+### [Node](relay-hybrid-connections-node-get-started.md)
 ## [WCF-továbbító](relay-wcf-dotnet-get-started.md)
 ## [Útmutató a WCF-továbbítóhoz](service-bus-relay-tutorial.md)
 ## [WCF Relay REST oktatóanyag](service-bus-relay-rest-tutorial.md)
@@ -31,10 +31,10 @@
 ## [Kivételek](relay-exceptions.md)
 ## [Portbeállítások](relay-port-settings.md)
 
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=enterprise-integration)
 ## [Blog](https://blogs.msdn.microsoft.com/servicebus/)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/service-bus/)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
-## [Példák](https://github.com/azure/azure-relay/tree/master/samples)
+## [Minták](https://github.com/azure/azure-relay/tree/master/samples)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-servicebusrelay)

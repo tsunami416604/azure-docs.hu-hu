@@ -3,7 +3,7 @@
 ## [Event Hubs-szolgáltatások](event-hubs-features.md)
 ## [GYIK](event-hubs-faq.md)
 
-# Első lépések
+# Gyors útmutatók
 ## [Eseményközpont létrehozása](event-hubs-create.md)
 ## Események küldése
 ### [.NET Standard](event-hubs-dotnet-standard-getstarted-send.md)
