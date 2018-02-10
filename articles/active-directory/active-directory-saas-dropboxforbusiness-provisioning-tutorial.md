@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: ff85b5c20d74bde476416bdd70d5a345f4a6fefb
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 6b082127f74ff5f823506c0f75f40c4b4246dcfe
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>Oktatóanyag: A vállalati Dropbox konfigurálása automatikus a felhasználók átadása
 
@@ -88,13 +88,9 @@ Ez a szakasz végigvezeti az Azure AD az üzleti a felhasználói fiók kiépít
 
 14. Kattintson a **mentéséhez.**
 
-A kezdeti szinkronizálás bármely felhasználói és/vagy a dropbox-ba, a felhasználók és csoportok szakaszban vállalati rendelt csoportok kezdődik. A kezdeti szinkronizálás végrehajtásához ezt követő szinkronizálások, amely körülbelül 20 percenként történik, amíg a szolgáltatás fut-nál több időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz figyelemmel az előrehaladást, és hivatkozásokat követve történő rendszerbe állításához Tevékenységjelentések, amely alkalmazás a Dropbox a létesítési szolgáltatás által végzett összes műveletet írják le.
+A kezdeti szinkronizálás bármely felhasználói és/vagy a dropbox-ba, a felhasználók és csoportok szakaszban vállalati rendelt csoportok kezdődik. A kezdeti szinkronizálás végrehajtásához ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amíg a szolgáltatás fut-nál több időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz figyelemmel az előrehaladást, és hivatkozásokat követve történő rendszerbe állításához tevékenységi naplóit, amely alkalmazás a Dropbox a létesítési szolgáltatás által végzett összes műveletet írják le.
 
-Mostantól létrehozhat egy olyan fiókot. Várjon 20 percig győződjön meg arról, hogy a szinkronizált fiókkal a vállalati dropbox alkalmazásba.
-
-A sikeresen befejezett felhasználók átadásához ciklus kapcsolódó állapotát jelzi.
-
-![Felhasználók hozzárendelése](./media/active-directory-saas-dropboxforbusiness-provisioning-tutorial/IC769523.png "felhasználók hozzárendelése")
+Olvassa el az Azure AD-naplók kiépítés módjáról további információkért lásd: [automatikus felhasználói fiók kiépítése jelentések](active-directory-saas-provisioning-reporting.md).
 
 
 ## <a name="additional-resources"></a>További források

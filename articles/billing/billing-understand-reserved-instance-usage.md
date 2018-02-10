@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/03/2017
 ms.author: manshuk
-ms.openlocfilehash: 6982d6177ef5c94436a28cd68beb9feb5cc343e5
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 29f153803d5eb74e2d287d97cf9436e81b2a3e20
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="understand-reserved-instance-usage-for-your-pay-as-you-go-subscription"></a>A használatalapú fizetéses előfizetésre fenntartott példány használatának megértéséhez
 
@@ -56,6 +56,16 @@ További információ a szűrésére, és írja be a foglalási azonosítóját.
 3. Base-foglalás VM mérő alkategória vonal jelzi a $0 sorában utasítás szakaszban található. Ez a virtuális gép futtatásának már fizeti a foglalás.
 4. Ez a Foglalás mérő azonosítója. A mérő költsége $0 lesz. Minden virtuális gép által fenntartott példány a CSV-kódot, hogy figyelembe vegye a költségeket a MeterId van. 
 5. Standard_DS1_v2 egy vCPU virtuális gép és a virtuális gép központi telepítése Azure hibrid juttatás nélkül. Ezért a mérési hozzá van rendelve a felesleges ingyenesen elérhető Windows szoftver. Lásd: [Azure tartalék virtuális gép példányok Windows szoftverek költségeit.](billing-reserved-instance-windows-software-costs.md) a mérő megfelelő D sorozat 1 core virtuális gép található. Azure hibrid juttatás használata esetén a felesleges ingyenesen elérhető nem lesz alkalmazva. 
+
+## <a name="next-steps"></a>További lépések
+Tudhat meg többet a fenntartott virtuálisgép-példányok, tekintse meg a következő cikkekben talál.
+
+- [A virtuális gépek fenntartott virtuális gép osztályt előre fizetés](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Fenntartott virtuálisgép-példányok kezelése](billing-manage-reserved-vm-instance.md)
+- [Kevesebbet költeni a virtuális gépek a fenntartott virtuálisgép-példányok](billing-save-compute-costs-reservations.md)
+- [A fenntartott virtuális gép példány kedvezményeket alkalmazásának a módját ismertetése](billing-understand-vm-reservation-charges.md)
+- [A nagyvállalati beléptetés használata fenntartott példány ismertetése](billing-understand-reserved-instance-usage-ea.md)
+- [A Windows szoftverek költségeit fenntartott példányok nem találhatók](billing-reserved-instance-windows-software-costs.md)
 
 ## <a name="need-help-contact-support"></a>Segítség Forduljon a támogatási szolgálathoz.
 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 82c7e8ff7d8a6692005bdc7a40d5e12be09bca5d
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 48b8072b5ebe61f5a9dccd9d8ea31e5a6945f265
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="tutorial-configure-gotomeeting-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés GoToMeeting konfigurálása
 
@@ -84,7 +84,9 @@ Ez a szakasz végigvezeti az Azure AD kapcsolódás GoToMeeting a felhasználói
 
 12. Kattintson a **mentéséhez.**
 
-A kezdeti szinkronizálás bármely felhasználói és/vagy a felhasználók és csoportok szakaszban GoToMeeting rendelt csoportok kezdődik. A kezdeti szinkronizálás végrehajtásához ezt követő szinkronizálások, amely körülbelül 20 percenként történik, amíg a szolgáltatás fut-nál több időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz figyelemmel az előrehaladást, és hivatkozásokat követve történő rendszerbe állításához tevékenység jelentéseit, amelyek a létesítési szolgáltatás az GoToMeeting alkalmazás által végzett összes műveletet írják le.
+A kezdeti szinkronizálás bármely felhasználói és/vagy a felhasználók és csoportok szakaszban GoToMeeting rendelt csoportok kezdődik. A kezdeti szinkronizálás végrehajtásához ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amíg a szolgáltatás fut-nál több időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz figyelemmel az előrehaladást, és hivatkozásokat követve történő rendszerbe állításához tevékenységi naplóit, amelyek ismertetik a GoToMeeting app a létesítési szolgáltatás által végzett összes műveletet.
+
+Olvassa el az Azure AD-naplók kiépítés módjáról további információkért lásd: [automatikus felhasználói fiók kiépítése jelentések](active-directory-saas-provisioning-reporting.md).
 
 ## <a name="additional-resources"></a>További források
 

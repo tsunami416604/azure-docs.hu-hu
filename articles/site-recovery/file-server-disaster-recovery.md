@@ -9,14 +9,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/23/2017
+ms.date: 02/06/2018
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: ac734ffc6cb57188b7b0959cbe7655949b2853de
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 779ec70a3b45a0ac3e766c956aac94932d4d126b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="protect-a-file-server-using-azure-site-recovery"></a>Egy Azure Site Recovery segítségével fájlkiszolgáló védelme 
 
@@ -32,7 +32,7 @@ A rendszer megosztása nyitott elosztott fájlok célja, hogy adjon meg egy olya
 
 A következő topológia a fájlkiszolgáló-környezet az elosztott fájlrendszer-replikációs megvalósított mutatja be.
                 
-![Elosztott fájlrendszer-replikációs-architexture](media/site-recovery-file-server/dfsr-architecture.JPG)
+![dfsr-architexture](media/site-recovery-file-server/dfsr-architecture.JPG)
 
 A fenti hivatkozás több fájlkiszolgáló említett tagként, aktívan részt vesz a fájlok egy replikációs csoport replikálása. A replikált mappa tartalmát küldött kérésekkel vagy a tagok, még offline állapotra vált, tag esetén minden ügyfél számára elérhető lesz.
 
@@ -59,12 +59,12 @@ Következő diagramon ad meg a döntést a fájl kiszolgálói környezet eseté
 |---------|---------|---------|
 |A fájl/elosztott fájlrendszer replikációs szolgáltatása nem kiszolgálói környezet|   [Azure Site Recovery replikáláshoz használni](#replicate-an-onpremises-file-servers-using-azure-site-recovery)   |    A Site Recovery nem támogatja a megosztott lemezfürt esetén NAS. Ha a környezet bármelyik ezeket a konfigurációkat, használja az egyéb módszerek valamelyikét. <br> Az Azure Site Recovery nem támogatja az SMB 3.0-s, ami azt jelenti, hogy csak akkor, ha a fájlok módosításainak frissíti benne a fájl eredeti helye lesz a replikált virtuális gép változtatásokat.
 |Az elosztott fájlrendszer replikációs szolgáltatása a fájl kiszolgálói környezet     |  [Elosztott fájlrendszer-replikációs Azure IaaS virtuális gépként terjed ki:](#extend-dfsr-to-an-azure-iaas-virtual-machine)  |     Elosztott fájlrendszer-replikációs remekül működik rendkívül crunched sávszélesség környezetekben, ezt a módszert azonban szüksége van egy Azure virtuális gép mentése és bekapcsolva. A VM költsége kell a tervezés veendő.         |
-|Azure Iaas virtuális gép     |     [Az Azure File szinkronizálása](#use-azure-file-sync-service-to-replicate-your-files)   |     A vész-Helyreállítási forgatókönyvek használata Azure fájlszinkronizálás, a feladatátvétel során manuális műveletek kell tenni annak érdekében, hogy a fájlmegosztások, az ügyfélszámítógép átlátható módon érhető el. AFS is meg kell nyitni az ügyfélszámítógépen a 445-ös portra van szüksége.     |
+|Azure Iaas virtuális gép     |     [Azure File Sync ](#use-azure-file-sync-service-to-replicate-your-files)   |     A vész-Helyreállítási forgatókönyvek használata Azure fájlszinkronizálás, a feladatátvétel során manuális műveletek kell tenni annak érdekében, hogy a fájlmegosztások, az ügyfélszámítógép átlátható módon érhető el. AFS is meg kell nyitni az ügyfélszámítógépen a 445-ös portra van szüksége.     |
 
 
 ### <a name="site-recovery-support"></a>Webhely-helyreállítási támogatás
 A Site Recovery replikációs alkalmazás független, a ajánlás itt várhatóan tartsa igaz az alábbi helyzetekben:
-| Forrás    |Egy másodlagos helyre    |Az Azure-bA
+| Forrás    |Egy másodlagos helyre    |To Azure
 |---------|---------|---------|
 |Azure| -|Igen|
 |Hyper-V|   Igen |Igen

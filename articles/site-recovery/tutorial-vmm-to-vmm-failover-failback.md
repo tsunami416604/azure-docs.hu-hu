@@ -2,29 +2,23 @@
 title: "A feladatátvétel és a sikertelen biztonsági Hyper-V virtuális gépek replikálása egy másodlagos adatközpontba Site Recovery szolgáltatással |} Microsoft Docs"
 description: "Megtudhatja, hogyan Hyper-V virtuális gépek feladatátvétele a másodlagos helyszíni helyre, és vissza az elsődleges hely, az Azure Site Recovery sikertelen"
 services: site-recovery
-documentationcenter: 
 author: rayne-wiselman
 manager: carmonm
-editor: 
-ms.assetid: 44a662fa-2e7a-4996-86df-fdd6d6f5dedf
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 09/16/2017
+ms.date: 02/07/2018
 ms.author: raynew
-ms.openlocfilehash: 8f139070de99c4249207d048d445e86dd41e9060
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cb282a18efe2e3c7435377e02fa8c4d97a85ac63
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>A feladatátvétel, és sikertelen lesz a másodlagos helyszíni helyre replikált Hyper-V virtuális gépek biztonsági
 
 A [Azure Site Recovery](site-recovery-overview.md) szolgáltatás kezeli, és koordinálja a replikációt, a feladatátvételi és a feladat-visszavétel a helyszíni gépeket, és az Azure virtuális gépek (VM).
 
-Ez az oktatóanyag ismerteti a Hyper-V virtuális gépek kezelése a System Center Virtual Machine Manager (VMM) felhő, egy másodlagos VMM helyre a feladatátvétel. Miután keresztül korábban meghiúsult, hogy visszaadják feladataikat a helyszíni hely a rendelkezésre álló. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+A cikk ismerteti, hogy áthelyezze a feladatokat a Hyper-V virtuális gépek kezelése a System Center Virtual Machine Manager (VMM) felhő, egy másodlagos VMM-helyre. Miután keresztül korábban meghiúsult, hogy visszaadják feladataikat a helyszíni hely a rendelkezésre álló. Ebből a cikkből megismerheti, hogyan:
 
 > [!div class="checklist"]
 > * Feladatok átadása a Hyper-V virtuális gépek egy elsődleges felhőből a VMM egy másodlagos VMM-felhő

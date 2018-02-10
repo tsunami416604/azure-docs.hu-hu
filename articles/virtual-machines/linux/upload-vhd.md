@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: cynthn
-ms.openlocfilehash: 7c297725c26ea6c44403a10ecdcc3542f89f10b4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2d72094fb34c73e511b1003be25594a1dedddb1e
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-a-linux-vm-from-custom-disk-with-the-azure-cli-20"></a>Linux virtuális gép létrehozása az Azure CLI 2.0 egyéni lemezről
 
@@ -35,7 +35,7 @@ Erre két lehetősége van:
 
 ## <a name="quick-commands"></a>Gyors parancsok
 
-Segítségével új virtuális gép létrehozásakor [az virtuális gép létrehozása](/cli/azure/vm#create) testreszabott vagy speciális lemezről, **csatolása** a lemez (--csatolása operációsrendszer-lemez) egy egyéni vagy Piactéri lemezkép megadása helyett (--kép). Az alábbi példakód létrehozza a virtuális gépek nevű *myVM* nevű felügyelt lemezzel *myManagedDisk* a testreszabott virtuális merevlemezből létrehozni:
+Segítségével új virtuális gép létrehozásakor [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create) testreszabott vagy speciális lemezről, **csatolása** a lemez (--csatolása operációsrendszer-lemez) egy egyéni vagy Piactéri lemezkép megadása helyett (--kép). Az alábbi példakód létrehozza a virtuális gépek nevű *myVM* nevű felügyelt lemezzel *myManagedDisk* a testreszabott virtuális merevlemezből létrehozni:
 
 ```azurecli
 az vm create --resource-group myResourceGroup --location eastus --name myVM \
@@ -56,7 +56,7 @@ A következő lépések elvégzéséhez szüksége:
 > 
 
 
-* Győződjön meg arról, hogy rendelkezik-e a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett az Azure-fiók használatával [az bejelentkezési](/cli/azure/#login).
+* Győződjön meg arról, hogy rendelkezik-e a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett az Azure-fiók használatával [az bejelentkezési](/cli/azure/#az_login).
 
 A következő példákban cserélje le a saját értékeit példa paraméterek nevei. Példa paraméter nevekre *myResourceGroup*, *mystorageaccount*, és *mydisks*.
 
@@ -87,7 +87,7 @@ Testre szabott virtuális Merevlemezt, amely a helyi számítógépen futó vagy
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Feltöltése az egyéni lemez és virtuális gépek létrehozását, mielőtt először hozzon létre egy erőforráscsoportot a [az csoport létrehozása](/cli/azure/group#create).
+Feltöltése az egyéni lemez és virtuális gépek létrehozását, mielőtt először hozzon létre egy erőforráscsoportot a [az csoport létrehozása](/cli/azure/group#az_group_create).
 
 Az alábbi példa létrehoz egy erőforráscsoportot *myResourceGroup* a a *eastus* helye: [Azure felügyelt lemezekhez – áttekintés](../windows/managed-disks-overview.md)
 ```azurecli
@@ -98,7 +98,7 @@ az group create \
 
 ### <a name="create-a-storage-account"></a>Create a storage account
 
-Hozzon létre egy tárfiókot, az egyéni lemez és virtuális gépek [az storage-fiók létrehozása](/cli/azure/storage/account#create). 
+Hozzon létre egy tárfiókot, az egyéni lemez és virtuális gépek [az storage-fiók létrehozása](/cli/azure/storage/account#az_storage_account_create). 
 
 Az alábbi példa létrehoz egy nevű tárfiók *mystorageaccount* a korábban létrehozott erőforráscsoport:
 
@@ -112,7 +112,7 @@ az storage account create \
 ```
 
 ### <a name="list-storage-account-keys"></a>Tárfiókkulcsok listázása
-Az Azure létrehoz két 512 bites kulcsot minden tárfiók. A hozzáférési kulcsot használnak az hitelesítésekor, a tárfiók, például az írási műveletek elvégzésére. Tudjon meg többet az [tárolási itt történő hozzáférés felügyeletéhez](../../storage/common/storage-create-storage-account.md#manage-your-storage-account). Megtekintheti a tárelérési kulcsokat a [az tárolási fióklista kulcsok](/cli/azure/storage/account/keys#list).
+Az Azure létrehoz két 512 bites kulcsot minden tárfiók. A hozzáférési kulcsot használnak az hitelesítésekor, a tárfiók, például az írási műveletek elvégzésére. Tudjon meg többet az [tárolási itt történő hozzáférés felügyeletéhez](../../storage/common/storage-create-storage-account.md#manage-your-storage-account). Megtekintheti a tárelérési kulcsokat a [az tárolási fióklista kulcsok](/cli/azure/storage/account/keys#az_storage_account_keys_list).
 
 A létrehozott tárfiók hozzáférési kulcsainak megtekintése:
 
@@ -136,7 +136,7 @@ info:    storage account keys list command OK
 Jegyezze fel a **key1** , amellyel kommunikálni tud a storage-fiókot a következő lépéseket fogja használni.
 
 ### <a name="create-a-storage-container"></a>A tároló létrehozása
-Az Ön által létrehozott különböző könyvtárak, hogy logikusan rendszerezhesse az a helyi fájlrendszer ugyanúgy hozzon létre egy tárfiókot, a lemezek rendszerezéséhez tárolókra. A storage-fiók korlátlan számú tárolót tárolhat tartalmazhat. Hozzon létre egy tárolót a [az tároló létrehozása](/cli/azure/storage/container#create).
+Az Ön által létrehozott különböző könyvtárak, hogy logikusan rendszerezhesse az a helyi fájlrendszer ugyanúgy hozzon létre egy tárfiókot, a lemezek rendszerezéséhez tárolókra. A storage-fiók korlátlan számú tárolót tárolhat tartalmazhat. Hozzon létre egy tárolót a [az tároló létrehozása](/cli/azure/storage/container#az_storage_container_create).
 
 Az alábbi példa létrehoz egy nevű tárolót *mydisks*:
 
@@ -147,7 +147,7 @@ az storage container create \
 ```
 
 ### <a name="upload-the-vhd"></a>A virtuális merevlemez feltöltéséhez
-Töltsön fel az egyéni lemezzel [az tárolási blob feltöltése](/cli/azure/storage/blob#upload). Töltse fel, és tárolja az egyéni lemezt oldalblobként.
+Töltsön fel az egyéni lemezzel [az tárolási blob feltöltése](/cli/azure/storage/blob#az_storage_blob_upload). Töltse fel, és tárolja az egyéni lemezt oldalblobként.
 
 Adja meg a hozzáférési kulcsot a tároló létrehozott az előző lépést, és az egyéni lemez elérési útja a helyi számítógépen:
 
@@ -164,7 +164,7 @@ A virtuális merevlemez feltöltése eltarthat egy ideig.
 ### <a name="create-a-managed-disk"></a>Kezelt lemez létrehozása
 
 
-Hozzon létre egy felügyelt lemezes a VHD-t a [az lemez létrehozása](/cli/azure/disk#create). Az alábbi példakód létrehozza nevű felügyelt lemezes *myManagedDisk* feltöltött a nevű tárfiók és tároló virtuális merevlemezről:
+Hozzon létre egy felügyelt lemezes a VHD-t a [az lemez létrehozása](/cli/azure/disk#az_disk_create). Az alábbi példakód létrehozza nevű felügyelt lemezes *myManagedDisk* feltöltött a nevű tárfiók és tároló virtuális merevlemezről:
 
 ```azurecli
 az disk create \
@@ -210,7 +210,7 @@ az disk create \
 
 ## <a name="create-the-vm"></a>Virtuális gép létrehozása
 
-Hozza létre a virtuális Gépet a [az virtuális gép létrehozása](/cli/azure/vm#create) , és csatlakoztassa (--csatolása operációsrendszer-lemez) a kezelt lemez az operációs rendszer lemezeként. Az alábbi példakód létrehozza a virtuális gépek nevű *myNewVM* a felügyelt lemezes, a feltöltött virtuális merevlemezből létrehozni:
+Hozza létre a virtuális Gépet a [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create) , és csatlakoztassa (--csatolása operációsrendszer-lemez) a kezelt lemez az operációs rendszer lemezeként. Az alábbi példakód létrehozza a virtuális gépek nevű *myNewVM* a felügyelt lemezes, a feltöltött virtuális merevlemezből létrehozni:
 
 ```azurecli
 az vm create \
@@ -223,6 +223,6 @@ az vm create \
 
 SSH-ból a virtuális Gépet, a hitelesítő adatok használatával a forrás virtuális gép képesnek kell lennie. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Miután előkészített és feltöltése az egyéni virtuális lemez, akkor további információ [erőforrás-kezelő és a sablonok használatával](../../azure-resource-manager/resource-group-overview.md). Is érdemes lehet [hozzá adatlemezt](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) az új virtuális gépek. Ha fut a virtuális gépek elérését igénylő alkalmazások, ügyeljen arra, hogy [nyisson meg portokat és a végpontok](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 

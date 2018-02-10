@@ -1,27 +1,20 @@
 ---
-title: "A Site Recovery szolgáltatással a Hyper-V virtuális gép replikációs hálózatleképezés megtervezése |} Microsoft Docs"
+title: "A Site Recovery szolgáltatással a Hyper-V virtuális gép replikációs hálózatleképezés kapcsolatos |} Microsoft Docs"
 description: "Állítsa be a hálózatra való leképezést a Hyper-V virtuális gépek replikációját egy helyszíni adatközpontot az Azure-bA vagy másodlagos helyhez."
 services: site-recovery
-documentationcenter: 
 author: rayne-wiselman
 manager: carmonm
-editor: tysonn
-ms.assetid: fcaa2f52-489d-4c1c-865f-9e78e000b351
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 10/30/2017
+ms.date: 02/07/2018
 ms.author: raynew
-ms.openlocfilehash: 91d6d0466789daa662162c60bc3c97ba6115e7eb
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: d56f8f5bfb40c1c43090f43e119bf9b98918d6e5
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="plan-network-mapping-for-hyper-v-vm-replication-with-site-recovery"></a>A Site Recovery szolgáltatással a Hyper-V virtuális gép replikációs hálózatleképezés megtervezése
-
+# <a name="about-network-mapping-for-hyper-v-vm-replication"></a>A Hyper-V virtuális gép replikációs hálózatleképezés kapcsolatban
 
 
 Ez a cikk segít megismernie és megterveznie hálózati leképezése során a Hyper-V virtuális gépek Azure-bA vagy másodlagos helyre replikációt, használja a [Azure Site Recovery szolgáltatás](site-recovery-overview.md).
@@ -68,7 +61,7 @@ Vegye figyelembe:
 
 **Hely** | **VMM-kiszolgáló** | **A Virtuálisgép-hálózatok** | **Leképezve**
 ---|---|---|---
-New York | A VMM-NewYork| VMNetwork1-NewYork | VMNetwork1-Chicagói leképezve
+New York | VMM-NewYork| VMNetwork1-NewYork | VMNetwork1-Chicagói leképezve
  |  | VMNetwork2-NewYork | Nincsenek leképezve:
 Chicago | A VMM-Chicagói| VMNetwork1-Chicagói | VMNetwork1-NewYork leképezve
  | | VMNetwork1-Chicagói | Nincsenek leképezve:
@@ -95,7 +88,7 @@ SilverCloud2 | <p>NA</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwor
 ---|---|---
 New York | LogicalNetwork1-NewYork | VMNetwork1-NewYork
 Chicago | LogicalNetwork1-Chicagói | VMNetwork1-Chicagói
- | LogicalNetwork2Chicago | VMNetwork2-Chicagói
+ | LogicalNetwork2Chicago | VMNetwork2-Chicago
 
 #### <a name="target-network-settings"></a>Cél hálózati beállításai
 
@@ -105,7 +98,7 @@ Ezek a beállítások alapján a célként megadott Virtuálisgép-hálózat kiv
 ---|---|---|---
 VMNetwork1-Chicagói | SilverCloud1 | SilverCloud2 | Elérhető
  | GoldCloud1 | GoldCloud2 | Elérhető
-VMNetwork2-Chicagói | SilverCloud1 | SilverCloud2 | Nincs
+VMNetwork2-Chicago | SilverCloud1 | SilverCloud2 | Nincs
  | GoldCloud1 | GoldCloud2 | Elérhető
 
 
@@ -119,12 +112,12 @@ Mi történik, a feladat-visszavétel (visszirányú replikálás) esetén megte
 
 **Virtuális gép** | **Virtuálisgép-hálózathoz csatlakozik**
 ---|---
-VM1 | VMNetwork1-hálózat
+VM1 | VMNetwork1-Network
 Vm2 virtuális gépnek (VM1 replika) | VMNetwork1-Chicagói
 
 Ezekkel a beállításokkal tekintsük át, mi történik, több lehetséges forgatókönyv szerint.
 
-**A forgatókönyv** | **Eredménye**
+**Scenario** | **Eredménye**
 ---|---
 A feladatátvételt követően VM-2 hálózati tulajdonságok nem módosult. | VM-1 a forrás hálózati kapcsolatban marad.
 VM-2 hálózati tulajdonságainak a feladatátvételt követően módosulnak, és le van választva. | VM-1 le van választva.
@@ -133,6 +126,6 @@ Hálózati leképezése VMNetwork1-Chicagói módosul. | VM-1 VMNetwork1-Chicag�
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További tudnivalók [a hálózati infrastruktúra tervezési](site-recovery-network-design.md).

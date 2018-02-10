@@ -12,20 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2017
+ms.date: 02/02/2018
 ms.author: vinagara
-ms.openlocfilehash: 99d222102ab0245c7c4dc8603eaedcfc88ae7a66
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: f6072e4e8a9ab72f677c35e498e31b5218579f1b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="log-alerts-in-azure-monitor---alerts-preview"></a>Napló riasztások figyelése Azure - riasztások (előzetes verzió)
 Ez a cikk részletesen ismerteti, hogyan riasztási szabályok elemzési lekérdezések használata az Azure-riasztások (előzetes verzió), és különböző típusú riasztási szabályok napló közötti különbségeket ismerteti.
-Jelenleg Azure riasztások (előzetes verzió), támogat jelentkezzen ki riasztást a lekérdezések [Azure Naplóelemzés](../log-analytics/log-analytics-tutorial-viewdata.md) írt [új Log Analytics lekérdezési nyelv](../log-analytics/log-analytics-log-search-upgrade.md)
+
+Jelenleg Azure riasztások (előzetes verzió), támogatja jelentkezzen ki riasztást a lekérdezések [Azure Naplóelemzés](../log-analytics/log-analytics-tutorial-viewdata.md) és [Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events).
 
 > [!WARNING]
-> Az Azure riasztások (előzetes verzió) – napló riasztások, jelenleg nem támogatja a kereszt-munkaterület vagy az alkalmazások közötti lekérdezések. 
+
+> Jelenleg napló riasztásait az Azure-riasztások (előzetes verzió) nem támogatja a kereszt-munkaterület vagy az alkalmazások közötti lekérdezések.
 
 ## <a name="log-alert-rules"></a>Napló riasztási szabályok
 
@@ -70,7 +72,16 @@ Bizonyos esetekben érdemes lehet egy esemény hiányában hozzon létre egy ria
 
 **Összesítő függvény**: meghatározza a számítás, amely történik, és potenciálisan egy numerikus összesítendő mező.  Például **count()** rekordok számát adja vissza a lekérdezésben **avg(CounterValue)** arra az időtartamra, a ellenértéknek mező átlagát adja vissza.
 
+> [!NOTE]
+
+> A lekérdezés aggregátumfüggvényt nevű/nevű kell lennie: AggregatedValue, és adjon meg számértéket.
+
+
 **Csoport mező**: egy rekord, egy összesített értéket ebben a mezőben minden példánya létrejön, és riasztás is generálható minden.  Például, ha az egyes számítógépek riasztás létrehozása, használhatja **számítógépenként**   
+
+> [!NOTE]
+
+> Metrika mérési riasztási szabályok az Application Insights alapuló megadhatja a mező az adatok csoportosításához. Ehhez használja a **összesített a** beállítást a szabályát leíró definíció beolvasása.   
 
 **Időköz**: az időtartam alatt, amelyben az adatokat összesített értéket határoz meg.  Például, ha a megadott **öt perc**, létrehozott egy rekordot az a csoportmező, 5 perces időközönként a riasztás megadott időszak alatt összesített értéket minden egyes példányánál.
 
@@ -93,6 +104,6 @@ Ebben a példában külön riasztások létrehozott KSZLG02 és srv03 mivel azok
 
 
 ## <a name="next-steps"></a>További lépések
-* [Azure riasztások (előzetes verzió) áttekintése](monitoring-overview-unified-alerts.md) 
+* [Azure riasztások (előzetes verzió) áttekintése](monitoring-overview-unified-alerts.md)
 * További tudnivalók [Azure riasztások használatával (előzetes verzió)](monitor-alerts-unified-usage.md)
 * További információ [Naplóelemzési](../log-analytics/log-analytics-overview.md).    

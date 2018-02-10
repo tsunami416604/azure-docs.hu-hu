@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: jeedes
-ms.openlocfilehash: 8ac0c78c09b30c1a9cc698f5e78166a2b64240d7
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: d1bbafdb8bbd5ea7bfa193832992d56016b6ee5e
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Oktatóanyag: Az automatikus felhasználó lépnek beállítása használata
 
@@ -108,9 +108,9 @@ Ez a szakasz célja felvázoló engedélyezése az Active Directory felhasznál�
 
 14. Kattintson a **mentéséhez.**
 
-Amely elindítja a kezdeti szinkronizálás bármely felhasználói és/vagy csoportok rendelt felhasználók és csoportok részén mezőbe. A kezdeti szinkronizálás végrehajtásához ezt követő szinkronizálások, amely körülbelül 20 percenként történik, amíg a szolgáltatás fut-nál több időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz figyelemmel az előrehaladást, és hivatkozásokat követve történő rendszerbe állításához tevékenység jelentéseit, amelyek a Box alkalmazásához a létesítési szolgáltatás által végzett összes műveletet írják le.
+Amely elindítja a kezdeti szinkronizálás bármely felhasználói és/vagy csoportok rendelt felhasználók és csoportok részén mezőbe. A kezdeti szinkronizálás végrehajtásához ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amíg a szolgáltatás fut-nál több időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz figyelemmel az előrehaladást, és hivatkozásokat követve történő rendszerbe állításához tevékenységi naplóit, amely a Box alkalmazásához a létesítési szolgáltatás által végzett összes műveletet írják le.
 
-Mostantól létrehozhat egy olyan fiókot. Győződjön meg arról, hogy a szinkronizált fiókkal akár 20 percig várjon mezőben.
+Olvassa el az Azure AD-naplók kiépítés módjáról további információkért lásd: [automatikus felhasználói fiók kiépítése jelentések](active-directory-saas-provisioning-reporting.md).
 
 Az mezőbe-bérlőben szinkronizált felhasználók találhatók **felügyelt felhasználók** a a **felügyeleti konzol**.
 

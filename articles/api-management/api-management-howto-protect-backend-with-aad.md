@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: 603a22059dcf07c68f4c6576ea1df97d810eacf3
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 1ba7a415a56f5147e73faa48fcd51151c3c818a8
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-protect-a-web-api-backend-with-azure-active-directory-and-api-management"></a>Hogyan védi meg a webes API háttéralkalmazás az Azure Active Directory és az API Management
 A következő videó bemutatja, hogyan egy webes API háttéralkalmazás létrehozásához, és a védelmét, és Azure Active Directory és az API Management OAuth 2.0 protokoll használatával.  Ez a cikk áttekintése és további információt a videó lépéseit tartalmazza. A 24 perces videó bemutatja, hogyan számára:
@@ -33,7 +33,7 @@ A következő videó bemutatja, hogyan egy webes API háttéralkalmazás létreh
 > 
 
 ## <a name="create-an-azure-ad-directory"></a>Az Azure AD-címtár létrehozása
-A webes API biztonságossá kell Azure Active Directory használatával biztonsági egy AAD-bérlőt. Ez a videó egy bérlő nevű **APIMDemo** szolgál. Hozzon létre egy AAD-bérlőt, hogy jelentkezzen be a [klasszikus Azure portál](https://manage.windowsazure.com) kattintson **új**->**alkalmazásszolgáltatások**->**Active Directory**  -> **Directory**->**egyéni létrehozás**. 
+A webes API háttéralkalmazás, az Azure Active Directoryval kell biztonságossá egy AAD-bérlőt. Ez a videó egy bérlő nevű **APIMDemo** szolgál. Hozzon létre egy AAD-bérlőt, hogy jelentkezzen be a [klasszikus Azure portál](https://manage.windowsazure.com) kattintson **új**->**alkalmazásszolgáltatások**->**Active Directory**  -> **Directory**->**egyéni létrehozás**. 
 
 ![Azure Active Directory][api-management-create-aad-menu]
 
@@ -192,7 +192,7 @@ API-kat úgy vannak konfigurálva, a portálról API publisher, amely az Azure p
 
 A műveleteket lehet [manuálisan hozzáadni az API-k](api-management-howto-add-operations.md), vagy az importálható lesz. Ez a videó műveletek importált 6:40 kezdődő Swagger formátumú.
 
-Hozzon létre egy fájlt `calcapi.json` következő tartalommal, és mentse azt a számítógépet. Győződjön meg arról, hogy a `host` pontok attribútum a webes API háttéralkalmazás segítségével. Ebben a példában `"host": "apimaaddemo.azurewebsites.net"` szolgál.
+Hozzon létre egy fájlt `calcapi.json` következő tartalommal, és mentse azt a számítógépet. Győződjön meg arról, hogy a `host` pontok attribútum a webes API háttéralkalmazás segítségével. Ebben a példában a `"host": "apimaaddemo.azurewebsites.net"` eszközt használjuk.
 
 ```json
 {
@@ -387,7 +387,7 @@ Válasszon **webes alkalmazáshoz és/vagy webes API**, adjon meg egy nevet, és
 
 ![Új alkalmazás][api-management-aad-new-application-devportal-1]
 
-A **bejelentkezési URL-cím** adja meg az URL-címet a API Management szolgáltatás és a hozzáfűző `/signin`. Ebben a példában `https://contoso5.portal.azure-api.net/signin` szolgál.
+A **bejelentkezési URL-cím** adja meg az URL-címet a API Management szolgáltatás és a hozzáfűző `/signin`. Ebben a példában a `https://contoso5.portal.azure-api.net/signin` eszközt használjuk.
 
 A **azonosító URL-címet** adja meg az URL-címet a API Management szolgáltatás és a hozzáfűző néhány egyedi karaktert. Ezek lehetnek a kívánt karaktereket, és ebben a példában `https://contoso5.portal.azure-api.net/dp` szolgál. Ha a kívánt **alkalmazás tulajdonságainak** vannak konfigurálva, kattintson a pipa jelre az alkalmazás létrehozása.
 

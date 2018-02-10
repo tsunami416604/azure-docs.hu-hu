@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/03/2017
 ms.author: manshuk
-ms.openlocfilehash: 7ef601033b36ee968cb766d40a0a6b05afa9a1a4
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 515eae3c9a84a171bebc5213f5824e1b50336e34
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="understand--reserved-instance-usage-for-your-enterprise-enrollment"></a>A nagyvállalati beléptetés használata fenntartott példány ismertetése
 Fenntartott példány kihasználtsági értelmezése a ReservationId segítségével [foglalási lap](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade ) és a használati fájlt [EA portálon.](https://ea.azure.com) Azt is láthatja a használati összefoglaló szakaszában a Foglalás használati [EA portálon.](https://ea.azure.com)
@@ -56,6 +56,16 @@ Használati is megjelennek használati összefoglaló adatai EA portál példán
 
 1. Meg nem felszámított hardverösszetevő a virtuális gép fenntartott példány módosított. 
 2. Van szó, a szoftver a Windows Azure hibrid juttatás nem használt. 
+
+## <a name="next-steps"></a>További lépések
+Tudhat meg többet a fenntartott virtuálisgép-példányok, tekintse meg a következő cikkekben talál.
+
+- [A virtuális gépek fenntartott virtuális gép osztályt előre fizetés](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Fenntartott virtuálisgép-példányok kezelése](billing-manage-reserved-vm-instance.md)
+- [Kevesebbet költeni a virtuális gépek a fenntartott virtuálisgép-példányok](billing-save-compute-costs-reservations.md)
+- [A fenntartott virtuális gép példány kedvezményeket alkalmazásának a módját ismertetése](billing-understand-vm-reservation-charges.md)
+- [A használatalapú fizetéses előfizetésre fenntartott példány használatának megértéséhez](billing-understand-reserved-instance-usage.md)
+- [A Windows szoftverek költségeit fenntartott példányok nem találhatók](billing-reserved-instance-windows-software-costs.md)
 
 ## <a name="need-help-contact-support"></a>Segítség Forduljon a támogatási szolgálathoz.
 

@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/02/2018
+ms.date: 02/05/2018
 ms.author: markvi
 ms.custom: it-pro
 ms.reviewer: jeedes
-ms.openlocfilehash: e924a60096d400cfaa5dba0df288273e3151ab45
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: a7d2776ef3c3daa28bf23535e97f57506c9591d8
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="saas-application-integration-with-azure-active-directory"></a>SaaS alkalmazások integrálása az Azure Active Directoryval
 
@@ -50,7 +50,7 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-adobe-creative-cloud-tutorial.png)| [Az Adobe kreatív felhő](active-directory-saas-adobe-creative-cloud-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-adobeexperiencemanager-tutorial.png)| [Az Adobe élmény Manager](active-directory-saas-adobeexperiencemanager-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-adobe-echosign-tutorial.png)| [Az Adobe bejelentkezési](active-directory-saas-adobe-echosign-tutorial.md)|
-| ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-adpetime-tutorial.png)| [ADP eTime](active-directory-saas-adpetime-tutorial.md)|
+| ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-adpfederatedsso-tutorial.png)| [ADP összevont egyszeri bejelentkezés](active-directory-saas-adpfederatedsso-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-adglobalview-tutorial.png)| [ADP Globalview](active-directory-saas-adglobalview-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-agiloft-tutorial.png)| [Agiloft](active-directory-saas-agiloft-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-aha-tutorial.png)| [AHA!](active-directory-saas-aha-tutorial.md)|
@@ -450,8 +450,8 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-workday-tutorial.png)| [Munkanapok](active-directory-saas-workday-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-workfront-tutorial.png)| [Workfront](active-directory-saas-workfront-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-workpath-tutorial.png)| [Workpath](active-directory-saas-workpath-tutorial.md)|
-| ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-workplacebyfacebook-tutorial.png)| [Munkahelyi által Facebook-on](active-directory-saas-workplacebyfacebook-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-facebook-at-work-tutorial.png)| [Munkahelyi által Facebook-on](active-directory-saas-facebook-at-work-tutorial.md)|[Munkahelyi Facebook - által a felhasználók átadása](active-directory-saas-workplacebyfacebook-provisioning-tutorial.md)|
+| ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-workplacebyfacebook-tutorial.png)| [Munkahelyi által Facebook-on](active-directory-saas-workplacebyfacebook-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-workrite-tutorial.png)| [Workrite](active-directory-saas-workrite-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-workstars-tutorial.png)| [Workstars](active-directory-saas-workstars-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-xaitporter-tutorial.png)| [XaitPorter](active-directory-saas-xaitporter-tutorial.md)|

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: robb,bwren
-ms.openlocfilehash: 3ab7d2d5c3b95d215f3ee9eb9346e8a7895e734c
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 505e92b5fc63f570bc4d0f8899ae977b93850356
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="monitoring-azure-applications-and-resources"></a>Azure-alkalmazások és erőforrások figyelése
 
@@ -57,8 +57,11 @@ Az Azure-szolgáltatásokat gyűjtése és elemzése a figyelési adatok gazdag 
 [Szolgáltatástérkép](../operations-management-suite/operations-management-suite-service-map.md) IaaS környezetét betekintést biztosít a virtuális gépek a különböző folyamatok és a más számítógépeken és a külső folyamatok függőségek elemzésével.  Integrálható eseményeket, teljesítményadatokat és felügyeleti megoldásokat a Naplóelemzési, hogy minden számítógép és a környezet többi részére viszonya környezetében megtekintheti ezeket az adatokat.  Szolgáltatástérkép hasonlít a [Application Insights az alkalmazás-hozzárendelés](../application-insights/app-insights-app-map.md) , de az alkalmazásokat támogató infrastruktúra-összetevőihez összpontosít.
 
 ### <a name="network-watcher"></a>Network Watcher
-[Hálózati figyelő](../network-watcher/network-watcher-monitoring-overview.md) forgatókönyv-alapú figyelési és diagnosztika biztosít a különböző hálózati forgatókönyvek az Azure-ban.  Azure metrikák és diagnosztika további elemzés céljából tárolja az adatokat, és együttműködik a [Naplóelemzési felügyeleti megoldásokat](../log-analytics/log-analytics-azure-networking-analytics.md) teljes figyelésére a hálózati erőforrásokhoz.
-
+[Hálózati figyelő](../network-watcher/network-watcher-monitoring-overview.md) forgatókönyv-alapú figyelési és diagnosztika biztosít a különböző hálózati forgatókönyvek az Azure-ban.  Tárolja az adatokat az Azure metrikák és diagnosztika további elemzés és működik a figyelési megoldásoknak különböző szempontjairól a hálózat figyeléséhez a következő hálózattal:
+* [A hálózati teljesítmény figyelése (NPM)](https://blogs.msdn.microsoft.com/azuregov/2017/09/05/network-performance-monitor-general-availability/) - felhő alapú hálózatfigyelési megoldás, amely a nyilvános felhők, az adatközpontok és a helyszíni környezetben kapcsolatát figyeli
+* [Az ExpressRoute-figyelő](https://azure.microsoft.com/en-in/blog/monitoring-of-azure-expressroute-in-preview/) -az NPM funkció, amely figyeli a végpontok közötti kapcsolat és a teljesítmény ExpressRoute-Kapcsolatcsoportok keresztül.
+* Forgalom Analytics - felhőalapú megoldást, amely a felhasználó-és alkalmazás betekintést biztosít a felhő hálózaton.
+* [DNS Analytics](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-dns) -biztonság, teljesítmény és műveletek kapcsolódó elemzések, a DNS-kiszolgálók alapján biztosít.
 
 ### <a name="management-solutions"></a>Felügyeleti megoldások
 [Megoldások](../log-analytics/log-analytics-add-solutions.md) logika, amely áttekintést adnak a egy adott alkalmazás vagy szolgáltatás csomagolt csoportja.  Log Analytics tárolását és elemzését a figyelési adatokat gyűjtenek támaszkodnak.  Felügyeleti megoldások érhetők el a Microsoft és a partnerek figyelésére szolgáló különböző Azure és a harmadik fél számára. Példa figyelési megoldásoknak tartalmaznak [tároló figyelési](../log-analytics/log-analytics-containers.md) segítségével megtekintheti és kezelheti a tároló gazdagépek és [Azure SQL elemzés](../log-analytics/log-analytics-azure-sql.md) gyűjt, és amely teljesítménymutatók visualizes az SQL Az Azure adatbázisok.

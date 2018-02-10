@@ -12,19 +12,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/15/2016
+ms.date: 02/03/2018
 ms.author: apimpm
-ms.openlocfilehash: 356f98aec072a1295915ae0701a3e3cd793aba07
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 427660be92d3caf4c381cec65f49adce9808e50a
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>Az Azure API Management-szabályozás Speciális kérelem
 Az Azure API Management kulcsfontosságú szerepet igényt bejövő kérelmek szabályozás. Lehet, hogy a kéréseket, és a teljes kérelmek/átvitt adatok mértékű vezérlése, API-kezelés lehetővé teszi a API-szolgáltatókat az API-való visszaélés elleni védelmében, és hozzon létre külön API termék rétegekhez értékét.
 
 ## <a name="product-based-throttling"></a>A termék alapú sávszélesség-szabályozás
-Naprakész, a sebesség szabályozása képességekkel rendelkezik volt korlátozva, éppen hatókörű egy adott termék-előfizetéshez (lényegében egy kulcs), az API Management publisher portálon meghatározott. Ez akkor hasznos, ha az API-szolgáltató szűkítheti a regisztráltak-e az API használatához a fejlesztőknek, azonban nem segítséget, például a szabályozás, az API-t egyéni végfelhasználók. Előfordulhat, hogy az egyetlen teljes kvóta fogadni, és más ügyfelek a fejlesztő megakadályozza az alkalmazás használata a fejlesztői alkalmazás felhasználója. Nagy mennyiségű kérést hozhat létre több felhasználókat is, korlátozhatja az alkalmi felhasználók hozzáférésének.
+Naprakész, a sebesség szabályozása képességekkel rendelkezik volt korlátozva, éppen hatókörű egy adott termék-előfizetéshez (lényegében egy kulcs), az Azure portálon meghatározott. Ez akkor hasznos, ha az API-szolgáltató szűkítheti a regisztráltak-e az API használatához a fejlesztőknek, azonban nem segítséget, például a szabályozás, az API-t egyéni végfelhasználók. Előfordulhat, hogy az egyetlen teljes kvóta fogadni, és más ügyfelek a fejlesztő megakadályozza az alkalmazás használata a fejlesztői alkalmazás felhasználója. Nagy mennyiségű kérést hozhat létre több felhasználókat is, korlátozhatja az alkalmi felhasználók hozzáférésének.
 
 ## <a name="custom-key-based-throttling"></a>Egyéni kulcs alapú sávszélesség-szabályozás
 Az új [arány-korlát-által-kulcs](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRateByKey) és [a kulcs-kvóta](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuotaByKey) házirendek a forgalmi ellenőrzési jóval rugalmasabb megoldást nyújt. Ezeket az új házirendeket engedélyezi annak meghatározását-kifejezések helyesen azonosítani a kulcsokhoz, a forgalom használat nyomon követésére használható. Ez a megfelelő működésének easiest látható egy példa a. 
@@ -70,10 +70,10 @@ Ha a sávszélesség-szabályozási kulcs használatával van megadva egy [házi
 
 Ez lehetővé teszi a fejlesztői ügyfélalkalmazás számára adja meg, hogy azok a sebesség korlátozása a kulcs létrehozásához. Egy kis nyújt az ügyfél a fejlesztők kulcsok készleteinek kiosztása a felhasználók számára, és a kulcshasználati elforgatása létrehozhat saját rétegek.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Az Azure API Management sebessége és ajánlat használatával történő védelméhez és értékkel adja hozzá az API-szolgáltatás is biztosít. Az egyéni szabályának új sávszélesség-szabályozási szabályzatok lehetővé teszik eszközzel kombinálva felhasználóbarát nyomtatott szabályozhatják, ezek a házirendek ahhoz, hogy az ügyfelek még élvezetesebbé alkalmazásokat hozhatnak létre. Ebben a cikkben szereplő példák bemutatják, ezeket az új házirendeket használata korlátozza az ügyfél IP-címeket, a felhasználói azonosító és a generált ügyfél értékek kulcsok gyártó szerint. Van azonban az üzenetet, például a felhasználói ügynök, az URL-cím elérési út töredék, az üzenet mérete használható sok többi részével.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Adja meg a visszajelzést a disqus-beszélgetésben teheti szál az ebben a témakörben. Más lehetséges értékek, amelyek egy logikai választás a forgatókönyvekben lettek szóló értesítésekre nagyszerű lenne.
 
 ## <a name="watch-a-video-overview-of-these-policies"></a>A házirendek áttekintő videó megtekintése

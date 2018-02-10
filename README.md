@@ -38,7 +38,7 @@ A tárházban többször, több cikkben is felhasználható tartalomelemek is ki
 A tárház cikkeit a Markdown-szintaxis GitHub-dialektusa szerint kell formázni.  Néhány segédanyag:
 
 * [Markdown alapjai](https://help.github.com/articles/markdown-basics/)
-* [Nyomtatható markdown-puska](./contributor-guide/media/documents/markdown-cheatsheet.pdf?raw=true)
+* [Nyomtatható markdown-puska](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf)
 
 
 ## <a name="labels"></a>Címkék

@@ -2,25 +2,19 @@
 title: "Állítsa be a vész-helyreállítási Hyper-V virtuális gépek az Azure Site Recovery a helyszíni helyek közötti |} Microsoft Docs"
 description: "Megtudhatja, hogyan beállításához vész-helyreállítási Hyper-V virtuális gépek az Azure Site Recovery a helyszíni helyek közötti."
 services: site-recovery
-documentationcenter: 
 author: rayne-wiselman
 manager: carmonm
-editor: 
-ms.assetid: 65eda71c-3ca3-41bc-b02d-00fecc1557d7
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2017
+ms.date: 02/07/2018
 ms.author: raynew
-ms.openlocfilehash: 1647e9d69da3e991bec4e00b3a1083a254fa9550
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 90c0d8c4f03fab3c3932723eeed0a37cd5112615
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="set-up-disaster-recovery-for-hyper-v-vms-to-your-secondary-on-premises-site"></a>Beállítása a vész-helyreállítási Hyper-V virtuális gépek esetén a másodlagos helyszíni helyre
+# <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Beállítása a vész-helyreállítási Hyper-V virtuális gépek egy másodlagos helyszíni helyre
 
 A [Azure Site Recovery](site-recovery-overview.md) szolgáltatás vész-helyreállítási stratégiát infrastruktúrája azzal segíti a kezelése és koordinálása replikációjának, feladatátvételének és feladat-visszavétel a helyszíni gépeket, és az Azure virtuális gépek (VM).
 
@@ -121,7 +115,7 @@ Válassza ki a cél VMM-kiszolgáló és a felhő:
 1. Kattintson a **infrastruktúra előkészítése** > **cél**, és válassza ki a cél VMM-kiszolgálóval.
 2. Szinkronizálva legyenek a Site Recovery VMM-felhő jelennek meg. Válassza ki a megcélzott felhőt.
 
-   ![cél](./media/tutorial-vmm-to-vmm/target-vmm.png)
+   ![Cél](./media/tutorial-vmm-to-vmm/target-vmm.png)
 
 
 ## <a name="set-up-a-replication-policy"></a>A replikációs házirend beállítása
@@ -159,6 +153,6 @@ Mielőtt elkezdené, győződjön meg arról, hogy minden gazdagép a házirend 
 
 Előrehaladásának nyomon követheti a **Védelemengedélyezési** műveletét **feladatok** > **Site Recovery-feladatok**. Miután a **Védelemvéglegesítési** feladat befejeződik, a kezdeti replikálás befejeződik, és a virtuális gép készen áll a feladatátvételre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Vészhelyreállítási próba végrehajtása](tutorial-dr-drill-secondary.md)

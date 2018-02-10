@@ -12,16 +12,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 01/23/2018
 ms.author: apimpm
-ms.openlocfilehash: d4ea43cb7ca5e9fa50202561c71d6bfb298e2452
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 8ef8d64ba90960281faffc350821d7934e35749a
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-runscope"></a>Az API-kat az Azure API Management, az Event Hubs és Runscope figyelése
-A [API-kezelés szolgáltatás](api-management-key-concepts.md) javítása érdekében a HTTP API küldött HTTP-kérelmek feldolgozási sok képességeket biztosít. Azonban a kérések és válaszok megléte átmeneti. A kérelem, és azt a háttér-API számára az API Management szolgáltatáson keresztül zajlik. Az API-feldolgozza a kérést, és választ áthaladó vissza az API-fogyasztó számára. Az API Management szolgáltatás tartja néhány fontos statisztikai adat kapcsolatos való megjelenítéshez. az API-k Publisher portál irányítópultján, de túl eltűnnek róla, hogy a részletek.
+A [API-kezelés szolgáltatás](api-management-key-concepts.md) javítása érdekében a HTTP API küldött HTTP-kérelmek feldolgozási sok képességeket biztosít. Azonban a kérések és válaszok megléte átmeneti. A kérelem, és azt a háttér-API számára az API Management szolgáltatáson keresztül zajlik. Az API-feldolgozza a kérést, és választ áthaladó vissza az API-fogyasztó számára. Az API Management szolgáltatás végleg néhány fontos statisztikai adat kapcsolatos való megjelenítéshez. az API-kat a az Azure portál Irányítópultjára, de túl eltűnnek róla, hogy a részletek.
 
 Az API Management szolgáltatásban a napló eventhub házirend használatával küldhet minden adatát a kérelem és válasz egy [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md). Nincsenek számos okból miért érdemes lehet események generálása küldi el az API-kat a HTTP-üzenetek. Néhány példa a frissítéseket, használatelemzési információkat, kivétel riasztási és külső Integrációk napló.   
 

@@ -8,6 +8,9 @@ Amikor hoz létre egy új virtuális gép (VM) erőforráscsoportban lemezképek
 > Az Azure két különböző üzemi modellel rendelkezik az erőforrások létrehozásához és használatához: Resource Manager-alapú és klasszikus. Ez a cikk a Resource Manager-alapú modellt ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja.
 > 
 > 
+> [!WARNING]
+> Az Azure virtuális gép operációsrendszer-lemez átméretezése miatt úgy, hogy indítsa újra.
+>
 
 ## <a name="resize-the-os-drive"></a>Az operációs rendszer meghajtójának átméretezése
 Ez a cikk az operációs rendszer meghajtójának az [Azure Powershell](/powershell/azureps-cmdlets-docs) erőforrás-kezelő moduljaival történő átméretezését ismerteti. Bemutatjuk az operációs rendszer meghajtó Unamanged és a felügyelt lemezek átméretezése, mivel mindkét lemeztípusok eltérnek a lemezek átméretezése módja.

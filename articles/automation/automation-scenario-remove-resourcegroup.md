@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: magoedte
-ms.openlocfilehash: e1734bdd22ecfc4e54074f02582f5a8eca7d4f59
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: cb7183cbec1c3efafe58f4508042d329be5dcecf
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-automation-scenario---automate-removal-of-resource-groups"></a>Azure Automation-forgatókönyv – erőforráscsoportok eltávolításának automatizálása
 Számos ügyfél hoz létre több erőforráscsoportot. Vannak, amelyeket éles alkalmazások felügyeletéhez, és vannak, amelyeket fejlesztési, tesztelési és átmeneti környezetként használnak. Az ilyen erőforrások üzembe helyezésének automatizálása egy dolog, az erőforráscsoportok egyetlen kattintással történő üzemen kívül helyezése viszont egy teljesen más kérdés. Az Azure Automation használatával leegyszerűsítheti ezt a gyakori felügyeleti feladatot. Egy ilyen megoldás hasznos lehet, ha egy tagoknak szóló ajánlat (pl. MSDN vagy a Microsoft Partner Network Cloud Essentials programja) keretein belül egy költségkerettel rendelkező Azure-előfizetést használ.
@@ -37,7 +37,7 @@ Ehhez a forgatókönyvhöz a következő bemeneti paraméterek vannak meghatáro
 
 | Paraméter | Leírás |
 | --- | --- |
-| NameFilter (kötelező) |Megad egy névszűrőt a törölni kívánt erőforráscsoportok korlátozására. Vesszővel tagolt listaként több értéket is megadhat.<br>A szűrő nem különbözteti meg a kis- és nagybetűket, így a karakterláncot tartalmazó bármely erőforráscsoport esetében egyezést fog mutatni. |
+| NameFilter (kötelező) |Megad egy névszűrőt a törölni kívánt erőforráscsoportok korlátozására. Vesszővel tagolt listaként több értéket is megadhat.<br>A szűrő nem kis-és nagybetűket, és megegyezik-e bármely erőforráscsoport, amely tartalmazza a karakterláncot. |
 | PreviewMode (választható) |Végrehajtja a forgatókönyvet, hogy láthassa, mely erőforráscsoportok törlődnének, de nem végzi el a műveletet.<br>Az alapértelmezett érték az **igaz**, így elkerülhető, hogy véletlenül törlődjön a forgatókönyvnek továbbadott egy vagy több erőforráscsoport. |
 
 ## <a name="install-and-configure-this-scenario"></a>A forgatókönyv telepítése és konfigurálása
@@ -48,19 +48,19 @@ Ez a forgatókönyv az [Azure-beli futtató fiók](automation-sec-configure-azur
 A forgatókönyvet letöltése után a [forgatókönyvek importálási eljárásait](automation-creating-importing-runbook.md#importing-a-runbook-from-a-file-into-azure-automation) ismertető témakörben leírtak szerint importálhatja. Miután sikerrel importálta az Automation-fiókba, tegye közzé a forgatókönyvet.
 
 ## <a name="using-the-runbook"></a>A forgatókönyv használata
-A következő lépések végigvezetik a forgatókönyv végrehajtásán, és megismertetik annak működésével. Ebben a példában csak a forgatókönyv tesztelését hajtja végre, az erőforráscsoportot valójában nem törli.  
+A következő lépések végigvezetik a runbook és megismerni működésének súgó végrehajtása. Teszteli a runbook ebben a példában ténylegesen nem törli az erőforráscsoportot.  
 
 1. Az Azure Portalon nyissa meg Automation-fiókját, majd kattintson a **Forgatókönyvek** elemre.
 2. Válassza a **Remove-ResourceGroup** forgatókönyvet, majd kattintson az **Indítás** gombra.
-3. A forgatókönyv elindításakor megnyílik a **Forgatókönyv indítása** panel, amelyen konfigurálhatja a paramétereket. Adja meg az előfizetéséhez tartozó erőforráscsoportok nevét, amelyekkel tesztet hajthat végre, és amelyek véletlen törlése nem okoz problémát.<br> ![A Remove-ResouceGroup paraméterei](media/automation-scenario-remove-resourcegroup/remove-resourcegroup-input-parameters.png)
+3. A runbook indítása a **runbook meghívása** lap nyílik meg, és konfigurálhatja a paramétereit. Adja meg az erőforráscsoportok nevei tesztelési használnia, és hatására nem árt, ha véletlenül törli az előfizetésben.
 
    > [!NOTE]
-   > A kiválasztott erőforráscsoport(ok) törlésének elkerülése érdekében győződjön meg arról, hogy a **Previewmode** beállítás értéke **true** (igaz).  **Vegye figyelembe**, hogy ez a forgatókönyv nem távolítja el a forgatókönyvet futtató Automation-fiókot tartalmazó erőforráscsoportot.  
+   > A kiválasztott erőforráscsoport(ok) törlésének elkerülése érdekében győződjön meg arról, hogy a **Previewmode** beállítás értéke **true** (igaz). Ez a forgatókönyv nem távolítja el, hogy fut a runbook Automation-fiók tartalmazó erőforráscsoportot.  
    >
    >
-4. Miután konfigurálta az összes paraméter értékét, kattintson az **OK** gombra, és a forgatókönyv a végrehajtási várólistára kerül.  
+1. Miután konfigurálta az összes paraméter értékét, kattintson az **OK** gombra, és a forgatókönyv a végrehajtási várólistára kerül.  
 
-Ha meg szeretné tekinteni a **Remove-ResourceGroup** forgatókönyv-feladatot az Azure Portalon, válassza a forgatókönyv **Feladatok** elemét. A feladat összegzésében megtekinthetők a bemeneti paraméterek, a kimeneti stream, valamint a feladattal kapcsolatos általános információk és az előforduló kivételek.<br> ![A Remove-ResourceGroup forgatókönyv-feladat állapota](media/automation-scenario-remove-resourcegroup/remove-resourcegroup-runbook-job-status.png).
+A részletek megtekintéséhez a **Remove-ResourceGroup** runbook a feladat az Azure-portálon **erőforrás**, jelölje be **feladatok** a runbook. Válassza ki a megtekinteni kívánt feladat. A feladat összegzésében megtekinthetők a bemeneti paraméterek, a kimeneti stream, valamint a feladattal kapcsolatos általános információk és az előforduló kivételek.<br> ![A Remove-ResourceGroup forgatókönyv-feladat állapota](media/automation-scenario-remove-resourcegroup/remove-resourcegroup-runbook-job-status.png).
 
 A **Feladat összegzése** a kimeneti, figyelmeztető és hibastreamek üzeneteit tartalmazza. A forgatókönyv végrehajtásának részletes eredményeinek megtekintéséhez válassza a **Kimenet** elemet.<br> ![A Remove-ResourceGroup forgatókönyv kimeneti eredményei](media/automation-scenario-remove-resourcegroup/remove-resourcegroup-runbook-job-output.png)
 

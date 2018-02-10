@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: wesmc
-ms.openlocfilehash: 0d48d0b008d76cfb2d7d7815a69774976e184467
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 6577d4ae0f248ac234b2506a6adba04afde5ffce
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Az Azure Functions az Azure Event Hubs kötései
 
@@ -60,7 +60,7 @@ Minden függvény végrehajtások sikeres, nem jelenik meg hibaüzenet, ha a kap
 Tekintse meg a nyelvspecifikus példát:
 
 * [C#](#trigger---c-example)
-* [C# parancsfájl (.csx)](#trigger---c-script-example)
+* [C# script (.csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
 * [JavaScript](#trigger---javascript-example)
 
@@ -220,11 +220,11 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**típusa** | n/a | meg kell `eventHubTrigger`. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon.|
-|**iránya** | n/a | meg kell `in`. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon. |
-|**név** | n/a | Esemény-elem funkciókódot jelölő neve. | 
-|**elérési út** |**EventHubName** | Az event hubs neve. | 
+|**direction** | n/a | meg kell `in`. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon. |
+|**name** | n/a | Esemény-elem funkciókódot jelölő neve. | 
+|**path** |**EventHubName** | Az event hubs neve. | 
 |**consumerGroup** |**ConsumerGroup** | Egy nem kötelező tulajdonság, amely beállítja a [fogyasztói csoportot](../event-hubs/event-hubs-features.md#event-consumers) használt események központban előfizetni. Ha nincs megadva, a `$Default` fogyasztói csoportot használja. | 
-|**kapcsolat** |**Kapcsolat** | A kapcsolati karakterlánc az event hubs névtérhez tartalmazó alkalmazásbeállítás neve. Másolja a kapcsolati karakterláncot kattintva a **kapcsolatadatok** gombra kattint, az a *névtér*, nem magát az eseményközpontba. Ez a kapcsolati karakterlánc kell rendelkeznie legalább olvasási engedéllyel az eseményindítót.|
+|**connection** |**Kapcsolat** | A kapcsolati karakterlánc az event hubs névtérhez tartalmazó alkalmazásbeállítás neve. Másolja a kapcsolati karakterláncot kattintva a **kapcsolatadatok** gombra kattint, az a *névtér*, nem magát az eseményközpontba. Ez a kapcsolati karakterlánc kell rendelkeznie legalább olvasási engedéllyel az eseményindítót.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -243,7 +243,7 @@ Az Event Hubs kimeneti kötése beírni az eseményeket az eseménystream haszn�
 Tekintse meg a nyelvspecifikus példát:
 
 * [C#](#output---c-example)
-* [C# parancsfájl (.csx)](#output---c-script-example)
+* [C# script (.csx)](#output---c-script-example)
 * [F#](#output---f-example)
 * [JavaScript](#output---javascript-example)
 
@@ -393,10 +393,10 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**típusa** | n/a | "Az eventHub" értékre kell állítani. |
-|**iránya** | n/a | "Ki" értékre kell állítani. Ez a paraméter értéke automatikusan kötésének létrehozásakor az Azure portálon. |
-|**név** | n/a | A változó nevét, amely jelöli az esemény függvény kódban használt. | 
-|**elérési út** |**EventHubName** | Az event hubs neve. | 
-|**kapcsolat** |**Kapcsolat** | A kapcsolati karakterlánc az event hubs névtérhez tartalmazó alkalmazásbeállítás neve. Másolja a kapcsolati karakterláncot kattintva a **kapcsolatadatok** gombra kattint, az a *névtér*, nem magát az eseményközpontba. Ez a kapcsolati karakterlánc az üzenetet küldeni az eseménystream küldési engedéllyel kell rendelkeznie.|
+|**direction** | n/a | "Ki" értékre kell állítani. Ez a paraméter értéke automatikusan kötésének létrehozásakor az Azure portálon. |
+|**name** | n/a | A változó nevét, amely jelöli az esemény függvény kódban használt. | 
+|**path** |**EventHubName** | Az event hubs neve. | 
+|**connection** |**Kapcsolat** | A kapcsolati karakterlánc az event hubs névtérhez tartalmazó alkalmazásbeállítás neve. Másolja a kapcsolati karakterláncot kattintva a **kapcsolatadatok** gombra kattint, az a *névtér*, nem magát az eseményközpontba. Ez a kapcsolati karakterlánc az üzenetet küldeni az eseménystream küldési engedéllyel kell rendelkeznie.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -405,6 +405,12 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 A C# és C# a parancsfájlt, használatával üzeneteket metódusparaméter például `out string paramName`. A C# parancsfájl `paramName` érték szerepel a `name` tulajdonsága *function.json*. Több üzenetet írni használható `ICollector<string>` vagy `IAsyncCollector<string>` helyett `out string`.
 
 A JavaScript, hozzáférhet a kimeneti esemény a `context.bindings.<name>`. `<name>`az érték szerepel a `name` tulajdonsága *function.json*.
+
+## <a name="exceptions-and-return-codes"></a>Kivételeket és a visszatérési kódok
+
+| Kötelező | Leírások |
+|---|---|
+| Eseményközpont | [Üzemeltetési útmutató](https://docs.microsoft.com/rest/api/eventhub/publisher-policy-operations) |
 
 ## <a name="next-steps"></a>További lépések
 

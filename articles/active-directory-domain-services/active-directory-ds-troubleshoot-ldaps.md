@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2018
+ms.date: 02/02/2018
 ms.author: ergreenl
-ms.openlocfilehash: ad98f3fb1ddb753976be627764d34864e5bf3d50
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: c6c47d1f9776f9e45711d8139661255dcd44c2a1
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-ad-domain-services---troubleshooting-secure-ldap-configuration"></a>Azure AD tartományi szolgáltatások - hibaelhárítás biztonságos LDAP-konfiguráció
 
@@ -48,6 +48,9 @@ Ha engedélyezve van a biztonságos LDAP, ajánlott bejövő LDAPS hozzáférés
 5. Győződjön meg arról, hogy a szabály jött létre.
 6. Ellenőrizze a tartomány állapotát annak érdekében, hogy végrehajtotta a megfelelően két órában.
 
+> [!TIP]
+> Port: 636 nincs szükség az Azure AD tartományi szolgáltatásokhoz való zökkenőmentes csak szabály. További információkért látogasson el a [hálózatkezelés irányelvek](active-directory-ds-networking.md) vagy [hibaelhárítása NSG konfigurációs](active-directory-ds-troubleshoot-nsg.md) cikkeket.
+>
 
 ## <a name="contact-us"></a>Kapcsolat
 Lépjen kapcsolatba az Azure Active Directory tartományi szolgáltatások termékért felelős csoport a [visszajelzés fájlmegosztás vagy a támogatáshoz](active-directory-ds-contact-us.md).

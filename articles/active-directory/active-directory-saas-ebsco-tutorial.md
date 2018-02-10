@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 150609a7bf326c243b1a0b5f10bfcfe9a426c2de
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: ea7fe09c31d88cf2095b3a3777b6b1f9feb8df46
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ebsco"></a>Oktatóanyag: Azure Active Directoryval integrált EBSCO
 
@@ -119,9 +119,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     o **egyedi elemeket:**  
 
-    **Custid** adjon meg egyedi EBSCO ügyfél azonosítója = 
+    o **Custid** adjon meg egyedi EBSCO ügyfél azonosítója = 
 
-    **profil** = ügyfelek igazíthatja a felhasználó átirányítására egy adott profilt (attól függően, hogy mi ezek vásárolhat EBSCO) mutató hivatkozást. Tudják azt írni egy adott profil. A fő azonosítói eds (EBSCO észlelési szolgáltatás) és ehost (EBSOCOhost adatbázisok). Ugyanazon utasítások [Itt](https://help.ebsco.com/interfaces/EBSCOhost/EBSCOhost_FAQs/How_do_I_set_up_direct_links_to_EBSCOhost_profiles_and_or_databases#profile).
+    o **profil** = ügyfelek igazíthatja a felhasználó átirányítására egy adott profilt (attól függően, hogy mi ezek vásárolhat EBSCO) mutató hivatkozást. Tudják azt írni egy adott profil. A fő azonosítói eds (EBSCO észlelési szolgáltatás) és ehost (EBSOCOhost adatbázisok). Ugyanazon utasítások [Itt](https://help.ebsco.com/interfaces/EBSCOhost/EBSCOhost_FAQs/How_do_I_set_up_direct_links_to_EBSCOhost_profiles_and_or_databases#profile).
 
 5. EBSCO alkalmazás vár a SAML helyességi feltételek egy meghatározott formátumban. A következő jogcímek alkalmazás konfigurálása. Ezek az attribútumok értékének kezelheti a "**felhasználói attribútumok**" szakasz alkalmazás integráció lapján. Az alábbi képernyőfelvételen látható egy példa a.
     

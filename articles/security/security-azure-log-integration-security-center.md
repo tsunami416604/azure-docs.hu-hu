@@ -16,10 +16,10 @@ ms.date: 08/29/2017
 ms.author: barclayn
 ms.custom: azlog
 ms.openlocfilehash: 9acce21d544a43adcd0c0983771c02c6bb39caec
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-get-your-security-center-alerts-in-azure-log-integration"></a>A Security Center riasztásait az Azure naplóelemzés integrációs beolvasásával
 
@@ -49,7 +49,7 @@ Az alábbi lépéseket fogja létrehozni a szükséges Azure Active Directory sz
 
 Ha esetleges problémákat tapasztal a telepítés és konfigurálás során, nyisson egy [támogatási kérelem](/azure-supportability/how-to-create-azure-support-request.md), jelölje be **napló integrációs** a szolgáltatást, amelynek támogatási kérelmet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Azure napló integrációs kapcsolatos további tudnivalókért tekintse meg a következő dokumentumokat:
 
 * [A Microsoft Azure napló integráció az Azure-naplók](https://www.microsoft.com/download/details.aspx?id=53324) – letöltőközpontból részletes rendszerkövetelményeket, és telepítése Azure naplóelemzés integrációs utasításokat.

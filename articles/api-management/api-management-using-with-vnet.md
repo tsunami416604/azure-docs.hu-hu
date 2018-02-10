@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: 4e3c17a86281176726be64008fa9e59e08e026f0
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: fe5e26a957d18f1f7f5ed360a27bb1f9c9826718
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Virtuális hálózatok az Azure API Management használata
 Az Azure virtuális hálózatokról (Vnetekről) helyezze el az Azure-erőforrások bármelyike nem internetes routeable hálózati hozzáférést szabályozó teszik lehetővé. Ezek a hálózatok csatlakozhatnak különböző VPN technológiáin a helyszíni hálózatokhoz. További információk az Azure virtuális hálózatok indítsa el az adatok Itt további: [Azure virtuális hálózat áttekintése](../virtual-network/virtual-networks-overview.md).
@@ -61,7 +61,7 @@ Ebben a cikkben leírt lépések végrehajtásához rendelkeznie kell:
     Ekkor minden régióban, ahol az API Management szolgáltatás ki van építve listáját. Válassza ki a virtuális hálózat és alhálózat minden régióhoz. A lista elkészült a klasszikus és Resource Manager virtuális hálózatok az Azure-előfizetések, amelyek a telepítő konfigurálja a régióban elérhető.
     
     > [!NOTE]
-    > **Szolgáltatásvégpont** a fenti ábrán például a átjáró /-Proxy, Publisher Portal, fejlesztői portálján, GIT, és a közvetlen felügyelet végpont.
+    > **Szolgáltatásvégpont** a fenti ábrán magában foglalja az átjáró /-Proxy, az Azure-portálon, a fejlesztői portálján, GIT és a közvetlen felügyeleti végpontja.
     > **Felügyeleti végpont** a fenti ábrán a végpont-konfiguráció Azure-portál és a Powershell segítségével kezelheti a szolgáltatásban üzemeltetett.
     > Vegye figyelembe azt is, amely akkor is, ha az ábrán látható IP-címek a különböző végpontokhoz, az API Management szolgáltatás **csak** reagál a beállított állomásnevek a.
     

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/28/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: 7694c28dd41b75438bfa4ffc8d032f439173122b
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: af922aaae21ab87c7e8d9354bcbae64fc97c6f02
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="tutorial-configure-linkedin-elevate-for-automatic-user-provisioning"></a>Oktatóanyag: Konfigurálása LinkedIn jogosultságszint-emelés automatikus a felhasználók átadása
 
@@ -116,7 +116,9 @@ Az első lépés a LinkedIn-jogkivonatot lekérdezni. Ha a vállalati rendszerga
 
 16) Kattintson a **Save** (Mentés) gombra. 
 
-Elindítja a kezdeti szinkronizálás bármely felhasználói és/vagy csoportok rendelt LinkedIn jogosultságszint-emelés a felhasználók és csoportok szakaszban. Figyelje meg, hogy a kezdeti szinkronizálás hosszabb ideig tart hajtsa végre ezt követő szinkronizálások, amely körülbelül 20 percenként történik, amíg a szolgáltatás fut-nál. Használhatja a **szinkronizálás részleteivel** szakasz figyelemmel az előrehaladást, és hivatkozásokat követve történő rendszerbe állításához tevékenység jelentéseit, amelyek a létesítési szolgáltatás a LinkedIn jogosultságszint-emelés alkalmazás által végzett összes műveletet írják le.
+Elindítja a kezdeti szinkronizálás bármely felhasználói és/vagy csoportok rendelt LinkedIn jogosultságszint-emelés a felhasználók és csoportok szakaszban. Figyelje meg, hogy a kezdeti szinkronizálás hosszabb ideig tart hajtsa végre ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amíg a szolgáltatás fut-nál. Használhatja a **szinkronizálás részleteivel** szakasz figyelemmel az előrehaladást, és hivatkozásokat követve történő rendszerbe állításához tevékenységi naplóit, amelyek ismertetik a LinkedIn jogosultságszint-emelés app a létesítési szolgáltatás által végzett összes műveletet.
+
+Olvassa el az Azure AD-naplók kiépítés módjáról további információkért lásd: [automatikus felhasználói fiók kiépítése jelentések](active-directory-saas-provisioning-reporting.md).
 
 
 ## <a name="additional-resources"></a>További források

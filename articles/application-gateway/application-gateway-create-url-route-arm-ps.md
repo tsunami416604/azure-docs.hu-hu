@@ -10,11 +10,11 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: davidmu
-ms.openlocfilehash: e5c76ff84fc6409975ce6df076bfe220a092eeec
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 70973684445416d715c5b26d06613b31e0001395
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-azure-powershell"></a>Hozzon létre egy alkalmazás URL-cím elérési út-alapú útválasztási szabályokat Azure PowerShell használatával
 
@@ -352,7 +352,7 @@ Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublic
 
 ![Az alkalmazás átjáró alap URL-cím tesztelése](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest.png)
 
-Az alap URL-cím végére http://<ip-address>:8080/video/test.htm módosítsa az URL-címet, és az alábbihoz hasonlót kell megjelennie:
+Módosítsa az URL-cím http://<ip-address>:8080/video/test.htm, és a < ip-cím > IP-címet, és az alábbihoz hasonlót kell megjelennie:
 
 ![Az alkalmazás átjáró képek URL tesztelése](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest-images.png)
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2017
 ms.author: ancav
-ms.openlocfilehash: 7e16926b5a1c28c0c8c80ee8c17e8c2fdb9e55a7
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 9ff52bd29644c7c585d2a85fcbe49e8800f6a035
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="scale-instance-count-manually-or-automatically"></a>Méretezhető példányszám manuális vagy automatikus
 Az a [Azure Portal](https://portal.azure.com/), manuálisan állíthatja be a példányok száma a szolgáltatás, vagy paramétert adhat meg, hogy automatikusan méretezési igény szerint. Ez általában nevezzük *horizontális felskálázás* vagy *méretezése*.
@@ -30,7 +30,7 @@ Méretezheti a portálon, és használhatja a [REST API](https://msdn.microsoft.
 ## <a name="scaling-manually"></a>Manuális skálázás
 1. A a [Azure Portal](https://portal.azure.com/), kattintson a **Tallózás**, majd keresse meg az erőforrás méretezésére, például egy **App Service-csomag**.
 2. Kattintson a **beállítások > kibővítési (App Service-csomag).**
-3. Felső részén a **méretezési** panelen láthatja, hogy a szolgáltatás automatikus skálázási műveletek előzményeit.
+3. Felső részén a **méretezési** panelen, a a **futtatási előzményei** lapon láthatja, hogy a szolgáltatás automatikus skálázási műveletek előzményeit.
    
     ![Skála panel](./media/insights-how-to-scale/Insights_ScaleBladeDayZero.png)
    
@@ -38,7 +38,7 @@ Méretezheti a portálon, és használhatja a [REST API](https://msdn.microsoft.
    > Csak az automatikus skálázás által végrehajtott műveletek jelennek meg ezen a diagramon. Ha manuálisan módosítja a példányok száma, a módosítás nem jelenik meg ezen a diagramon.
    > 
    > 
-4. Manuálisan módosíthatja a szám **példányok** a csúszkát.
+4. Manuálisan módosíthatja a szám **példányok** a a **konfigurálása** fülre.
 5. Kattintson a **mentése** parancsot, és akkor lesz méretezve, hogy a példányok száma szinte azonnal.
 
 ## <a name="scaling-based-on-a-pre-set-metric"></a>Egy előre meghatározott metrika skálázás alapján
@@ -115,7 +115,7 @@ Azonban érdemes lehet szigorúbb méretezésének során a napot vagy a hét, m
 11. Ügyeljen arra, hogy mindkét kibővítési szabály létrehozásához és a skála a – során a profil a példányok száma csak méretének növelése (vagy csökkentése).
 12. Végezetül kattintson **mentése**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Szolgáltatás metrikát](insights-how-to-customize-monitoring.md) ellenőrizze, hogy a szolgáltatás elérhető, és a gyors.
 * [Figyelés engedélyezésekor és diagnosztikai](insights-how-to-use-diagnostics.md) nagyon gyakori gyűjtéséhez részletes a a szolgáltatásban.
 * [Riasztási értesítéseket kaphat](insights-receive-alert-notifications.md), ha működési események történnek vagy a mérőszámok átlépnek egy küszöbértéket.

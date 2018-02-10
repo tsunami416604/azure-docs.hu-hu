@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2017
+ms.date: 02/08/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: fb646a56b51960d5b076027d942dabe8f2afbe97
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2354a8bf81189f70bb8d0d63c3df3236403c11fc
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="configure-azure-active-directory-device-based-conditional-access-policies"></a>Azure Active Directory eszközalapú feltételes hozzáférési házirendek konfigurálása
 
@@ -41,11 +41,11 @@ Eszközalapú feltételes hozzáférési ties **Azure AD feltételes hozzáfér�
 
 Mobileszköz-first, a felhő-első világában Azure Active Directory lehetővé teszi, hogy az egyszeri bejelentkezés eszközök, alkalmazások és szolgáltatások bárhonnan. Az egyes erőforrásoknak a környezetben, és hozzáférést biztosít az arra jogosult felhasználók előfordulhat elég helyes. Az arra jogosult felhasználók mellett is szüksége lehet a megbízható eszközök erőforrások eléréséhez használt. A környezetben, megadhatja, mi megbízható eszköz alapján a következő összetevőket:
 
-- A [eszközplatformok](active-directory-conditional-access-azure-portal.md#device-platforms) az eszközön
+- A [eszközplatformok](active-directory-conditional-access-conditions.md#device-platforms) az eszközön
 - Egy eszköz-e megfelelő
 - Egy eszköz-e a tartományhoz 
 
-A [eszközplatformok](active-directory-conditional-access-azure-portal.md#device-platforms) jellemzőek, az eszközön futó operációs rendszer. Az eszközalapú feltételes hozzáférési házirendben korlátozhatja az egyes erőforrásokhoz adott eszközplatformhoz való hozzáférést.
+A [eszközplatformok](active-directory-conditional-access-conditions.md#device-platforms) jellemzőek, az eszközön futó operációs rendszer. Az eszközalapú feltételes hozzáférési házirendben korlátozhatja az egyes erőforrásokhoz adott eszközplatformhoz való hozzáférést.
 
 
 
@@ -73,7 +73,7 @@ Ha egy a helyszíni Active Directory (AD) kezdjen, érdemes lehet eszközökön 
 ![Felhőalkalmazások](./media/active-directory-conditional-access-policy-connected-applications/25.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Eszközalapú feltételes hozzáférési házirend konfigurálása a környezetben, előtt meg kell vessen egy pillantást a [ajánlott eljárások a feltételes hozzáférés az Azure Active Directoryban](active-directory-conditional-access-best-practices.md).
 

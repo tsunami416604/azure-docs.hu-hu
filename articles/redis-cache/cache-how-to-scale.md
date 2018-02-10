@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: wesmc
-ms.openlocfilehash: bee7771c53cfad4a925d5c270569b7a82e45b4d8
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: b0a9208681b164fe7be33bf9ef5f635358284ba3
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-scale-azure-redis-cache"></a>Azure Redis Cache méretezése
-Azure Redis Cache rendelkezik másik gyorsítótármappa ajánlatokat, amelyek gyorsítótár mérete és a szolgáltatások rugalmasságot biztosítanak. A gyorsítótár létrehozása után méretezheti méretét és a gyorsítótár az árképzési szint Ha megváltoztatja az alkalmazás követelményeinek. Ez a cikk bemutatja, hogyan méretezése a gyorsítótár az Azure-portálon és Azure PowerShell és az Azure parancssori felület.
+Azure Redis Cache rendelkezik másik gyorsítótármappa ajánlatokat, amelyek gyorsítótár mérete és a szolgáltatások rugalmasságot biztosítanak. A gyorsítótár létrehozása után méretezheti méretét és a gyorsítótár az árképzési szint Ha megváltoztatja az alkalmazás követelményeinek. Ez a cikk bemutatja, hogyan méretezése a gyorsítótár az Azure portál, és az Azure PowerShell vagy az Azure parancssori felület használatával.
 
 ## <a name="when-to-scale"></a>Mikor érdemes méretezni
 Használhatja a [figyelési](cache-how-to-monitor.md) állapotának és a gyorsítótár teljesítményének figyelésére, és segíthet meghatározni, mikor érdemes méretezni a gyorsítótár Azure Redis Cache-funkcióit. 
@@ -51,7 +51,7 @@ Méretezhető egy másik tarifacsomagra a következő korlátozásokkal:
   * Nem lehet méretezni a egy **prémium** le a gyorsítótár egy **szabványos** vagy egy **alapvető** gyorsítótár.
   * Nem lehet méretezni a egy **szabványos** le a gyorsítótár egy **alapvető** gyorsítótár.
 * A méretezheti a **alapvető** gyorsítótárba egy **szabványos** gyorsítótár, de nem módosíthatja a méretét egyszerre. Ha különböző méretű van szüksége, végezhet egy későbbi skálázási műveletet, hogy a kívánt méretet.
-* Nem lehet méretezni a egy **alapvető** gyorsítótár közvetlenül egy **prémium** gyorsítótár. Kell méretezni a **alapvető** való **szabványos** egy skálázási műveletet, majd a **szabványos** való **prémium** a későbbi skálázás a műveletet.
+* Nem lehet méretezni a egy **alapvető** gyorsítótár közvetlenül egy **prémium** gyorsítótár. Először, a méretezési **alapvető** a **szabványos** egy skálázási műveletet, majd a **szabványos** való **prémium** a későbbi skálázás a műveletet.
 * A nagyobb méretű le nem lehet méretezni a **C0 csomag (250 MB)** méretét.
  
 Amíg a gyorsítótár az új tarifacsomagra méretezése folyik a **méretezés** állapota megjelenik a **Redis Cache** panelen.
@@ -118,7 +118,7 @@ Az alábbi lista tartalmazza az Azure Redis Cache skálázás gyakran feltett k�
 ### <a name="can-i-scale-to-from-or-within-a-premium-cache"></a>A, vagy a prémium szintű gyorsítótár is méretezhető?
 * Nem lehet méretezni a egy **prémium** le a gyorsítótár egy **alapvető** vagy **szabványos** tarifacsomagra vált.
 * Az egyik méretezheti **prémium** egy másik tarifacsomagban gyorsítótár.
-* Nem lehet méretezni a egy **alapvető** gyorsítótár közvetlenül egy **prémium** gyorsítótár. Először át kell méretezni **alapvető** való **szabványos** egy skálázási műveletet, majd a **szabványos** való **prémium** egy későbbi skálázási művelet.
+* Nem lehet méretezni a egy **alapvető** gyorsítótár közvetlenül egy **prémium** gyorsítótár. Először, a méretezési **alapvető** a **szabványos** egy skálázási műveletet, majd a **szabványos** való **prémium** a későbbi skálázás a műveletet.
 * Ha engedélyezte a fürtszolgáltatás létrehozásakor a **prémium** gyorsítótárában, akkor [a fürt méretének módosítása](cache-how-to-premium-clustering.md#cluster-size). Ha a gyorsítótár fürtszolgáltatás engedélyezése nélkül hozták létre, akkor nem konfigurálhatja a fürtözést egy későbbi időpontban.
   
   További információk: [How to configure clustering for a Premium Azure Redis Cache](cache-how-to-premium-clustering.md) (Fürtözés konfigurálása prémium szintű Azure Redis Cache-gyorsítótárhoz).
@@ -129,7 +129,7 @@ Nem, a gyorsítótár neve, valamint a kulcsok nem változik a méretezési műv
 ### <a name="how-does-scaling-work"></a>Skálázás működése
 * Ha egy **alapvető** különböző méretű gyorsítótár van méretezhető, le van állítva, és új gyorsítótárat ki van építve, új méret használatával. Ebben az időszakban a gyorsítótár nem érhető el, és a gyorsítótárban lévő összes adatot elvész.
 * Ha egy **alapvető** gyorsítótár méretezve, hogy egy **szabványos** gyorsítótár, a replika gyorsítótár ki van építve, és az adatok másolja az elsődleges gyorsítótár a replika gyorsítótárba. A gyorsítótár a méretezés közben elérhető marad.
-* Ha egy **szabványos** gyorsítótár méretezett egy másik értékre, vagy egy **prémium** gyorsítótár, a replikák közül leáll, és újra létrehozni, hogy az új méretet és az átvitt adatokat, majd a másik replika a feladatátvétel hajt végre, ahhoz, hogy újra kiépített, a folyamat során. a gyorsítótár-csomópontok közül az egyik hibát, hasonló.
+* Ha egy **szabványos** gyorsítótár méretezett egy másik értékre, vagy egy **prémium** gyorsítótár, a replikák leáll és egy új méretét és az átvitt adatokat, majd a másik replika újra kiépíteni a feladatátvétel hajt végre, ahhoz, hogy újra kiépíteni, akárcsak a folyamat, amely során a gyorsítótár-csomópontok közül az egyik hiba fordul elő.
 
 ### <a name="will-i-lose-data-from-my-cache-during-scaling"></a>I adat elvész a gyorsítótárból skálázás során?
 * Ha egy **alapvető** gyorsítótár van méretezve, hogy az új méretét, az összes adat elvész, és a gyorsítótár nem érhető el, a méretezési művelet során.
@@ -137,29 +137,29 @@ Nem, a gyorsítótár neve, valamint a kulcsok nem változik a méretezési műv
 * Ha egy **szabványos** gyorsítótár van méretezve, hogy egy nagyobb méretű vagy a réteg, vagy egy **prémium** gyorsítótár méretezett nagyobb méretűre, általában megmaradjon az összes adatot. Amikor skálázás egy **szabványos** vagy **prémium** gyorsítótár le egy kisebb méretet, az adatok elveszhetnek attól függően, hogy mennyi adatot a gyorsítótárban során azt méretezett kapcsolatos új méretét. Adat elvész, amikor a skálázás, ha a kulcsok kizárt vannak-e használata a [allkeys-lru](http://redis.io/topics/lru-cache) kiürítés házirend. 
 
 ### <a name="is-my-custom-databases-setting-affected-during-scaling"></a>Az egyéni adatbázisok állít érintett skálázás során?
-Különböző tartalmaznak az egyes tarifacsomagok [korlátok adatbázisok](cache-configure.md#databases), úgy, hogy nincs szempontokat konfigurálásakor skálázás Ha, egyéni értéket a `databases` beállítása a gyorsítótár létrehozása közben.
+Ha konfigurálta az egyéni értékét a `databases` beállítás gyorsítótár létrehozása során, ne feledje, hogy néhány árképzési tiers rendelkezik különböző [korlátok adatbázisok](cache-configure.md#databases). Ha ebben a forgatókönyvben skálázás az alábbiakban néhány szempontot:
 
 * Ha a tarifacsomag alsó méretezhetők `databases` a jelenlegi rétegtől határa:
-  * Alapértelmezett számának használata `databases` ez 16 az összes árképzési szinteket, adatok nem vesztek el.
+  * Alapértelmezett számának használata `databases`, amely az összes tarifacsomagok 16, adatok nem vesztek el.
   * Ha egyéni számos használ `databases` , amely esik a határokon belül a réteget, amelyhez van folyamatban, ez a `databases` beállítás akkor is megmarad, és az adatok nem vesztek el.
   * Ha egyéni számos használ `databases` , amely meghaladja a új réteg a `databases` beállítás van az új réteget határain szintűre csökkent, és az eltávolított adatbázisokat az összes adat elvész.
-* Ha a tarifacsomagot az azonos vagy újabb méretezhetők `databases` korlátot, mint a jelenlegi rétegtől a `databases` beállítás akkor is megmarad, és az adatok nem vesztek el.
+* Ha tarifacsomagot az azonos vagy újabb méretezhetők `databases` korlát a jelenlegi rétegtől, mint a `databases` beállítás akkor is megmarad, és az adatok nem vesztek el.
 
-Vegye figyelembe, hogy míg a Standard és Premium gyorsítótárak egy 99,9 %-os SLA-t a rendelkezésre állás érdekében, az adatvesztés nélküli SLA.
+Míg a Standard és Premium gyorsítótárak egy 99,9 %-os SLA-t a rendelkezésre állás érdekében, nincs adatvesztés nélküli SLA.
 
 ### <a name="will-my-cache-be-available-during-scaling"></a>A gyorsítótár elérhető lesz skálázás során?
-* **Standard** és **prémium** gyorsítótárak elérhetők maradnak a méretezési művelet során.
-* **Alapszintű** gyorsítótárak skálázás különböző méretű műveletek során offline módban, de elérhetők maradnak, ha a méretezés **alapvető** való **szabványos**.
+* **Standard** és **prémium** gyorsítótárak elérhetők maradnak a méretezési művelet során. Kapcsolat blips azonban csak akkor fordulhat elő, Standard és Premium gyorsítótárak méretezés közben és a szabványos gyorsítótárak az egyszerű méretezés közben. A kapcsolat blips várható rövid és kell, hogy a redis-ügyfelek azonnal helyreállítani a kapcsolatot.
+* **Alapszintű** során skálázás műveletek különböző méretű gyorsítótárak offline módban. Alapszintű gyorsítótárak továbbra is elérhető, ha a skálázás **alapvető** való **szabványos** , de egy kis kapcsolat blip problémákat tapasztalhat. Egy kapcsolat blip akkor fordul elő, ha a redis-ügyfelek azonnal helyreállítani a kapcsolatot kell lennie.
 
 ### <a name="operations-that-are-not-supported"></a>Nem támogatott műveletek
 * Egy alacsonyabb tarifacsomagra, méretezhető nem a magasabb szintű tarifacsomagban használható.
   * Nem lehet méretezni a egy **prémium** le a gyorsítótár egy **szabványos** vagy egy **alapvető** gyorsítótár.
   * Nem lehet méretezni a egy **szabványos** le a gyorsítótár egy **alapvető** gyorsítótár.
 * A méretezheti a **alapvető** gyorsítótárba egy **szabványos** gyorsítótár, de nem módosíthatja a méretét egyszerre. Ha különböző méretű van szüksége, végezhet egy későbbi skálázási műveletet, hogy a kívánt méretet.
-* Nem lehet méretezni a egy **alapvető** gyorsítótár közvetlenül egy **prémium** gyorsítótár. Először át kell méretezni **alapvető** való **szabványos** egy skálázási műveletet, majd a **szabványos** való **prémium** egy későbbi skálázási művelet.
+* Nem lehet méretezni a egy **alapvető** gyorsítótár közvetlenül egy **prémium** gyorsítótár. Először a méretezési **alapvető** való **szabványos** egy skálázási műveletet, és a skála **szabványos** való **prémium** egy későbbi a műveletet.
 * A nagyobb méretű le nem lehet méretezni a **C0 csomag (250 MB)** méretét.
 
-A méretezési művelet sikertelen lesz, ha a szolgáltatás megpróbál visszaállítani a műveletet, és a gyorsítótár visszaáll az eredeti méret.
+A méretezési művelet sikertelen lesz, ha a szolgáltatás megkísérli a művelet visszaállítja, és a gyorsítótár visszaáll az eredeti méret.
 
 ### <a name="how-long-does-scaling-take"></a>Mennyi időt skálázás igénybe?
 Skálázás vesz körülbelül 20 percet, attól függően, hogy mennyi adatot a gyorsítótárban.

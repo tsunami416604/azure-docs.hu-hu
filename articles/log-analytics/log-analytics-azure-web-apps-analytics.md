@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: banders
-ms.openlocfilehash: d910339cc35e09705e543706b40dfe8e0ea9dd42
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 6662fee875d44f88781be51443d48e86c1bf2d46
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>Az Azure-webalkalmazás-erőforrások között metrikáihoz analitikai adatok megtekintése
 
@@ -57,7 +57,7 @@ Hajtsa végre a következő lépésekkel állíthatja be az Azure Web Apps Analy
 
 Az Azure Web Apps elemzési megoldások metrikák két készletét gyűjti az Azure-ból:
 
-- Az Azure Web Apps metrikák
+- Azure Web Apps metrics
   - Átlagos memória-munkakészlet
   - Átlagos válaszidő
   - Küldött vagy fogadott bájtok
@@ -84,21 +84,21 @@ Miután konfigurálta a megoldás, adatokat kell kezdődnie, 15 percen belül a 
 
 Az Azure Web Apps elemzési megoldások a munkaterülethez való hozzáadásakor a **Azure Web Apps Analytics** csempe hozzáadódik az áttekintő irányítópulthoz. Ez a csempe, hogy a megoldás fér hozzá az Azure-előfizetéshez az Azure Web Apps számát jeleníti meg.
 
-![Az Azure Web Apps Analytics csempe](./media/log-analytics-azure-web-apps-analytics/azure-web-apps-analytics-tile.png)
+![Azure Web Apps Analytics tile](./media/log-analytics-azure-web-apps-analytics/azure-web-apps-analytics-tile.png)
 
 ### <a name="view-azure-web-apps-analytics-information"></a>Azure Web Apps Analytics adatainak megtekintése
 
 Kattintson a **Azure Web Apps Analytics** csempére kattintva nyissa meg a **Azure Web Apps Analytics** irányítópult. Az irányítópult a paneleket az alábbi táblázat tartalmazza. Minden panel adott panelhez feltételeknek, a megadott hatókör és időtartomány legfeljebb tíz elemeket sorolja fel. A napló keresési, amely visszaadja az összes rekord kattintva futtathatja **láthatja az összes** alján a panelről, vagy kattintson a panel fejléc.
 
-[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 | Oszlop | Leírás |
 | --- | --- |
-| Az Azure-webalkalmazás |   |
+| Azure Webapps |   |
 | Web Apps kérelem trendek | A kijelölt dátumtartomány webalkalmazások kérelem trendje sor látható, és a felső tíz webes kérelmek listáját tartalmazza. Kattintson a vonaldiagram futtatásához napló keresése<code>Type=AzureMetrics ResourceId=*"/MICROSOFT.WEB/SITES/"* (MetricName=Requests OR MetricName=Http*) &#124; measure avg(Average) by MetricName interval 1HOUR</code> <br>Kattintson egy webes kérelem elem a napló keresése a webes kérelem metrika trend kérő futtatásához. |
 | Web Apps válaszidő | A kijelölt időtartományban webalkalmazások válaszidő sor diagramot ábrázol. Is felső listája listájának megjelenítése tíz webes alkalmazások response alkalommal fordult elő. Kattintson a diagram futtatásához napló keresése<code>Type:AzureMetrics ResourceId=*"/MICROSOFT.WEB/SITES/"* MetricName="AverageResponseTime" &#124; measure avg(Average) by Resource interval 1HOUR</code><br> Kattintson a válaszidők vissza a webalkalmazáshoz tartozó napló keresés futtatásához egy webalkalmazást. |
-| Webes alkalmazások forgalom | A Web Apps-forgalmat, vonaldiagram mutatja MB-ban, és webalkalmazások forgalom felső sorolja fel. Kattintson a diagram futtatásához napló keresése<code>Type:AzureMetrics ResourceId=*"/MICROSOFT.WEB/SITES/"*  MetricName=BytesSent OR BytesReceived &#124; measure sum(Average) by Resource interval 1HOUR</code><br> Azt az elmúlt percben forgalom minden webalkalmazások jelennek meg. Kattintson a napló keresés kapott, és a webalkalmazás számára küldött bájtok megjelenítő futtatásához a webes alkalmazás. |
-| Az Azure App Service-csomagok |   |
+| Web Apps Traffic | A Web Apps-forgalmat, vonaldiagram mutatja MB-ban, és webalkalmazások forgalom felső sorolja fel. Kattintson a diagram futtatásához napló keresése<code>Type:AzureMetrics ResourceId=*"/MICROSOFT.WEB/SITES/"*  MetricName=BytesSent OR BytesReceived &#124; measure sum(Average) by Resource interval 1HOUR</code><br> Azt az elmúlt percben forgalom minden webalkalmazások jelennek meg. Kattintson a napló keresés kapott, és a webalkalmazás számára küldött bájtok megjelenítő futtatásához a webes alkalmazás. |
+| Azure App Service Plans |   |
 | App Service-csomagok a CPU-felhasználás &gt; 80 %-át | App Service-csomagok, amelyek CPU-kihasználtsága 80 %-nál nagyobb teljes számát jeleníti meg, és felsorolja a CPU-kihasználtság szerinti a felső 10 App Service-csomagok. Kattintson a napló keresése futtatásához teljes terület<code>Type=AzureMetrics ResourceId=*"/MICROSOFT.WEB/SERVERFARMS/"* MetricName=CpuPercentage &#124; measure Avg(Average) by Resource</code><br> Ez az App Service-csomagok és az átlagos processzorhasználat listáját tartalmazza. Kattintson egy App Service-csomag az átlagos processzorhasználat megjelenítő napló keresés futtatásához. |
 | App Service-csomagok memóriahasználata a &gt; 80 %-át | App Service-csomagok, amelyek memória kihasználtsága 80 %-nál nagyobb teljes számát jeleníti meg, és felsorolja a memóriahasználat által a felső 10 App Service-csomagok. Kattintson a napló keresése futtatásához teljes terület<code>Type=AzureMetrics ResourceId=*"/MICROSOFT.WEB/SERVERFARMS/"* MetricName=MemoryPercentage &#124; measure Avg(Average) by Resource</code><br> Ez az App Service-csomagok és az átlagos memóriafelhasználás a listáját jeleníti meg. Kattintson egy App Service-csomag megjelenítő, az átlagos memóriafelhasználás a napló keresés futtatásához. |
 | Az Azure Web Apps tevékenységi naplóit |   |
@@ -138,7 +138,7 @@ A **lista a népszerű Azure Web Apps keresési lekérdezések** elsajátíthatj
 
 Használja a naplófájl-keresési lekérdezések kiindulási pontként, könnyedén létrehozhat egy riasztást. Például előfordulhat, hogy szeretné egy riasztás létrehozása, ha egy metrika az átlagos válaszidő érték nagyobb, mint 1 másodpercenként.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Hozzon létre egy [riasztás](log-analytics-alerts-creating.md) az adott metrika.
 - Használjon [naplófájl-keresési](log-analytics-log-searches.md) a tevékenységi naplóit a részletes információk megtekintéséhez.
