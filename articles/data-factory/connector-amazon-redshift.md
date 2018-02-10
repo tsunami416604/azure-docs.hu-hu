@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 1e1c8e03bbfc2a07f4d4faee4c3b171c44fa312d
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 22bc237d551214997cc21a489c3c4aa20a5fcbd3
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával Amazon Redshift
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -61,7 +61,7 @@ Amazon Redshift kapcsolódó szolgáltatás támogatott a következő tulajdons�
 | port |A TCP-portot, amelyen az Amazon Redshift kiszolgáló ügyfélkapcsolatokat száma. |Nem, az alapértelmezett érték 5439 |
 | adatbázis |Az Amazon Redshift adatbázis nevét. |Igen |
 | felhasználónév |Felhasználó, aki hozzáfér az adatbázis neve. |Igen |
-| jelszó |A felhasználói fiók jelszavát. Ez a mező megjelölése a SecureString. |Igen |
+| jelszó |A felhasználói fiók jelszavát. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). |Igen |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhat Azure integrációs futásidejű vagy Self-hosted integrációs futásidejű (amennyiben az adattároló magánhálózaton található). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
 
 **Példa**

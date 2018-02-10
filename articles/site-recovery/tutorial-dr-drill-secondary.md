@@ -1,26 +1,20 @@
 ---
-title: "A vész-helyreállítási részletezési futtassa az Azure Site Recovery szolgáltatással másodlagos helyszíni helyre |} Microsoft Docs"
+title: "A vész-helyreállítási részletezési futtassa egy másodlagos helyszíni helyre az Azure Site Recovery szolgáltatással |} Microsoft Docs"
 description: "További tudnivalók a vész-helyreállítási részletezési fut az Azure Site Recovery szolgáltatással másodlagos helyszíni helyre"
 services: site-recovery
-documentationcenter: 
 author: rayne-wiselman
 manager: carmonm
-editor: 
-ms.assetid: 445878e2-6682-49ba-914d-4c6824ab08a6
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 09/18/2017
+ms.date: 02/07/2018
 ms.author: raynew
-ms.openlocfilehash: 8737c2a22bd729cfc15d5448e1ec0becef643fd5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2e5f8dce1ca2f728d15161622fb9ff2afb4b6c86
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="run-a-disaster-recovery-drill-for-hyper-v-vms-to-your-secondary-on-premises-site"></a>A vész-helyreállítási részletezési futtatása Hyper-V virtuális gépek esetén a másodlagos helyszíni helyre
+# <a name="run-a-disaster-recovery-drill-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>A vész-helyreállítási részletezési futtatása Hyper-V virtuális gépek egy másodlagos helyszíni helyre
 
 A [Azure Site Recovery](site-recovery-overview.md) szolgáltatás vész-helyreállítási stratégiát infrastruktúrája azzal segíti a kezelése és koordinálása replikációjának, feladatátvételének és feladat-visszavétel a helyszíni gépeket, és az Azure virtuális gépek (VM).
 
@@ -52,7 +46,7 @@ Az oktatóanyag bemutatja, hogyan futtathat egy vész-helyreállítási részlet
 6. A **megjegyzések**, és a feladatátvételi teszttel kapcsolatos megfigyelések feljegyzéséhez mentéséhez. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Éles feladatátvétel futtatása](tutorial-vmm-to-vmm-failover-failback.md)
 

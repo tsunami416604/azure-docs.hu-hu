@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 9c3a725d0d0c5091a280c3fb99279757f1e014f1
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 9151647e29251b627db605d1f1c6c5809bd67269
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-quickbooks-using-azure-data-factory-beta"></a>Adatok másolása az Azure Data Factory (béta) használatával QuickBooks
 
@@ -52,8 +52,8 @@ A következő tulajdonságok QuickBooks kapcsolódó szolgáltatás támogatotta
 | type | A type tulajdonságot kell beállítani: **QuickBooks** | Igen |
 | endpoint | A végpont a QuickBooks kiszolgáló. (Ez azt jelenti, hogy quickbooks.api.intuit.com)  | Igen |
 | companyId | A QuickBooks vállalati engedélyezésére vállalat azonosítója.  | Igen |
-| accessToken | Az OAuth 1.0 hitelesítési jogkivonat. Ez a mező megjelölése a SecureString tárolja biztonságos helyen az ADF, vagy a jelszó tárolása az Azure Key Vault választhat, és lehetővé teszik a másolási tevékenység lekéréses ott adatmásolás végrehajtása során – további információhoz [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). | Igen |
-| accessTokenSecret | A hozzáférési jogkivonat titkos kulcs OAuth 1.0-hitelesítéshez. Ez a mező megjelölése a SecureString tárolja biztonságos helyen az ADF, vagy a jelszó tárolása az Azure Key Vault választhat, és lehetővé teszik a másolási tevékenység lekéréses ott adatmásolás végrehajtása során – további információhoz [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). | Igen |
+| accessToken | Az OAuth 1.0 hitelesítési jogkivonat. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen |
+| accessTokenSecret | A hozzáférési jogkivonat titkos kulcs OAuth 1.0-hitelesítéshez. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen |
 | useEncryptedEndpoints | Meghatározza, hogy a data source végpontok titkosítása HTTPS használatával. Az alapértelmezett érték: igaz.  | Nem |
 
 **Példa**

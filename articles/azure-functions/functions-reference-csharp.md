@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: b6b18f79b0ef50c30335218ef45ba6ed932cb586
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 5e94ba1a45bccefedfa0017ad0123942e66f70bb
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Az Azure parancsfájl (.csx) fejlesztői leírás funkciók C#
 
@@ -124,7 +124,7 @@ public static void MyLogger(TraceWriter log, string logtext)
 }
 ```
 
-Egy megosztott használatával *.csx* fájl egy közös mintát akkor, ha a használni kívánt erősen thet adatok között funkciók által átadott egy POCO objektum használatával. A következő egyszerűsített példában egy HTTP-eseményindítóval és várólista eseményindító megosztani egy POCO nevű objektum `Order` erősen be a sorrendben adatokat:
+Egy megosztott használatával *.csx* fájl egy közös mintát akkor, ha a használni kívánt kifejezetten az adatok között funkciók által átadott egy POCO objektum használatával. A következő egyszerűsített példában egy HTTP-eseményindítóval és várólista eseményindító megosztani egy POCO nevű objektum `Order` erősen be a sorrendben adatokat:
 
 Példa *run.csx* HTTP-eseményindító:
 

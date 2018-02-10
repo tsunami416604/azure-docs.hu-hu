@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/05/2017
+ms.date: 2/5/2018
 ms.author: chackdan
-ms.openlocfilehash: 2bd3053d645d9acd4850fddf7f27237ff954e8c7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 720bb83c9d8540549852ce78ee1709f8c8717348
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric csomóponttípusok és a virtuális gép skálázása beállítása
 Virtuálisgép-méretezési csoportok olyan Azure számítási erőforrás. Méretezési csoportok segítségével telepíthetnek és kezelhetnek olyan virtuális gépek gyűjteménye. Állítson be egy külön méretezési készletben megadhat egy Azure Service Fabric-fürt minden csomópont típushoz. Egymástól függetlenül az egyes csomóponttípusok méretezése felfelé vagy lefelé, eltérő számú portok nyitva és különböző teljesítmény-mérőszámait használja.
@@ -35,7 +35,7 @@ A méretezési növelheti, ha egy új példánya jön létre. A méretezés új 
 ## <a name="map-scale-set-load-balancers-to-node-types-and-scale-sets"></a>Méretezési készlet terheléselosztók leképezése csomóponttípusok, a méretezés beállítása
 Ha az Azure portálon lévő telepítve, vagy használja a minta Azure Resource Manager-sablon, egy erőforráscsoportba tartozó összes erőforrást találhatók. Megtekintheti az egyes méretezési készlet vagy csomópont azokat a terheléselosztókat. A terheléselosztó neve a következő formátumot használja: **LB -&lt;csomóponttípus&gt;**. Példa: LB-sfcluster4doc-0, a következő ábrán látható módon:
 
-![Erőforrások][Resources]
+![További források][Resources]
 ## <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>Távoli kapcsolódás a virtuálisgép-méretezési készlet példányt vagy egy fürt csomópontja
 Állítson be egy külön méretezési készletben, amelyet megadott, a fürt minden egyes csomóponttípus. A csomóponttípusok felfelé vagy lefelé egymástól függetlenül méretezheti. Másik virtuális gép termékváltozatok is használhatja. Egypéldányos virtuális gépeket, eltérően méretezési készlet példányok nem rendelkezik a saját virtuális IP-címek. Ez komoly kihívást jelenthet, amikor egy IP-címet és portot, amelynek távoli csatlakozás az egy adott példányt keres.
 
@@ -137,7 +137,7 @@ Egy adott csomópont típusú csomópontokhoz tartozó jelszó módosításához
     Update-AzureRmVmss -ResourceGroupName $resourceGroup -Name $nodeTypeName -VirtualMachineScaleSet $node
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Tekintse meg a [a "Üzembe helyezés bárhol" szolgáltatás és az Azure által kezelt fürtökkel összehasonlítása áttekintése](service-fabric-deploy-anywhere.md).
 * További tudnivalók [fürt biztonsági](service-fabric-cluster-security.md).
 * További tudnivalók a [Service Fabric SDK és az első lépések](service-fabric-get-started.md).

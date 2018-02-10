@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: rclaus
-ms.openlocfilehash: 11492b85e95ddb39489e36c572af2a168b4c7af8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d3eff4a396c2fd0b52a50a201ceb1a91bae710dc
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Oracle Data Guard valósítja meg az Azure Linux virtuális gép 
 
@@ -39,7 +39,7 @@ A Piactéri lemezképhez, amely a virtuális gépek létrehozására használhat
 
 ### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba 
 
-Jelentkezzen be az Azure-előfizetéshez használatával a [az bejelentkezési](/cli/azure/#login) parancsot, és kövesse a képernyőn megjelenő utasításokat.
+Jelentkezzen be az Azure-előfizetéshez használatával a [az bejelentkezési](/cli/azure/#az_login) parancsot, és kövesse a képernyőn megjelenő utasításokat.
 
 ```azurecli
 az login
@@ -47,7 +47,7 @@ az login
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy erőforráscsoportot használatával a [az csoport létrehozása](/cli/azure/group#create) parancsot. Egy Azure erőforráscsoport egy olyan logikai tároló, amelyre erőforrások telepítése és kezelése. 
+Hozzon létre egy erőforráscsoportot használatával a [az csoport létrehozása](/cli/azure/group#az_group_create) parancsot. Egy Azure erőforráscsoport egy olyan logikai tároló, amelyre erőforrások telepítése és kezelése. 
 
 Az alábbi példa létrehoz egy erőforráscsoportot `myResourceGroup` a a `westus` helye:
 
@@ -69,7 +69,7 @@ az vm availability-set create \
 
 ### <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
-Hozzon létre egy virtuális Gépet a [az virtuális gép létrehozása](/cli/azure/vm#create) parancsot. 
+Hozzon létre egy virtuális Gépet a [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create) parancsot. 
 
 Az alábbi példakód létrehozza nevű két virtuális gép `myVM1` és `myVM2`. SSH-kulcsok, azt is hoz létre, ha még nem léteznek a kulcs alapértelmezett helye. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.
 
@@ -685,7 +685,7 @@ Ha már nincs szüksége a virtuális Gépet, a következő paranccsal távolít
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Oktatóanyag: Magas rendelkezésre állású virtuális gépek létrehozása](../../linux/create-cli-complete.md)
 

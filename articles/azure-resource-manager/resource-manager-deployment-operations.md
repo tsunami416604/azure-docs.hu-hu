@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: infrastructure
 ms.date: 01/13/2017
 ms.author: tomfitz
-ms.openlocfilehash: fb6b3b357fd1f66184e480115a9c863ba31ac193
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 197f890690ff68236cba221988ead9b9abd8c04e
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="view-deployment-operations-with-azure-resource-manager"></a>Az Azure Resource Manager központi telepítési műveletek megtekintése
 
 
 A műveletek a központi telepítés az Azure portálon keresztül tekintheti meg. Előfordulhat, hogy tervezheti meg a műveletek megtekintése hiba beérkezése után üzembe helyezése során, ez a cikk foglalkozik, amelyek nem tudták műveletek megtekintése. A portál, amely lehetővé teszi, hogy könnyedén megtalálhatja a hibák, és határozza meg a lehetséges javítások felületet biztosít.
 
-[!INCLUDE [resource-manager-troubleshoot-introduction](../../includes/resource-manager-troubleshoot-introduction.md)]
+A központi telepítés elháríthatja a naplókat, és a telepítési műveleteket. Ez a témakör mindkét módszer jeleníti meg. Segítség az adott telepítési hibáinak megoldása: [gyakori hibák feloldása, amikor erőforrásokat üzembe helyezi az Azure-bA az Azure Resource Manager](resource-manager-common-deployment-errors.md).
 
 ## <a name="portal"></a>Portál
 Üzembe helyezési műveleteinek megtekintéséhez tegye a következőket:
@@ -42,7 +42,7 @@ A műveletek a központi telepítés az Azure portálon keresztül tekintheti me
     ![sikertelen központi telepítés megtekintése](./media/resource-manager-deployment-operations/view-error.png)
    
     Ez a hibaüzenet jelenik meg a hibaelhárítás elegendő kell lennie. Azonban ha kapcsolatos további részleteket kell mely feladatok befejeződtek, megtekintheti a műveleteket, ahogy az az alábbi lépéseket.
-4. Megtekintheti az összes üzembe helyezési műveleteinek a **telepítési** panelen. Válassza ki a bármilyen műveletet további részletek megtekintéséhez.
+4. Megtekintheti a telepítési műveleteket. Válassza ki a bármilyen műveletet további részletek megtekintéséhez.
    
     ![műveletek megtekintése](./media/resource-manager-deployment-operations/view-operations.png)
    
@@ -50,7 +50,7 @@ A műveletek a központi telepítés az Azure portálon keresztül tekintheti me
 5. Kiválasztásával megtekintheti a központi telepítés események **események**.
    
     ![események megtekintése](./media/resource-manager-deployment-operations/view-events.png)
-6. A központi telepítés az eseményeket, és válassza ki a közül legalább egy további részleteket. Figyelje meg, túl a korrelációs azonosítót. Ez az érték akkor lehet hasznos, amikor olyan központi telepítés hibaelhárítása a technikai támogatási szolgálathoz.
+6. A központi telepítés az eseményeket, és válassza ki a közül legalább egy további részleteket. Figyelje meg a korrelációs azonosítót. Ez az érték akkor lehet hasznos, amikor olyan központi telepítés hibaelhárítása a technikai támogatási szolgálathoz.
    
     ![események](./media/resource-manager-deployment-operations/see-all-events.png)
 
@@ -121,7 +121,7 @@ A műveletek a központi telepítés az Azure portálon keresztül tekintheti me
   ----           -------                                                                        -------
   DnsRecordInUse DNS record dns.westus.cloudapp.azure.com is already used by another public IP. {}
   ```
-4. Minden központi telepítési műveletet az Azure-ban kérés- és tartalmát tartalmazza. A kérelem tartalma az Ön által küldött Azure üzembe helyezése során (például hozzon létre egy virtuális Gépet, az operációsrendszer-lemez és az egyéb erőforrások). A válasz tartalma az Azure által küldött vissza a központi telepítési kérelemből. A telepítés során használhatja **DeploymentDebugLogLevel** paramenter adhatja meg, hogy a kérelem és/vagy a válasz a naplóba kerülnek. 
+4. Minden központi telepítési műveletet az Azure-ban kérés- és tartalmát tartalmazza. A kérelem tartalma az Ön által küldött Azure üzembe helyezése során (például hozzon létre egy virtuális Gépet, az operációsrendszer-lemez és az egyéb erőforrások). A válasz tartalma az Azure által küldött vissza a központi telepítési kérelemből. A telepítés során használhatja **DeploymentDebugLogLevel** paraméterrel megadhatja, hogy a kérelem és/vagy a válasz a naplóba kerülnek. 
 
   Ez az információ lekérése a naplót, és mentse helyileg a következő PowerShell-parancsok használatával:
 
@@ -178,7 +178,7 @@ A műveletek a központi telepítés az Azure portálon keresztül tekintheti me
   }
   ```
 
-2. Az üzembe helyezési műveletek adatainak beolvasása a [összes sablon telepítési művelet](https://docs.microsoft.com/rest/api/resources/deployments#Deployments_List) műveletet. 
+2. A központi telepítések adatainak beolvasása [összes sablon telepítési művelet](https://docs.microsoft.com/rest/api/resources/deployments#Deployments_List). 
 
   ```http
   GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}/operations?$skiptoken={skiptoken}&api-version={api-version}
@@ -212,7 +212,7 @@ A műveletek a központi telepítés az Azure portálon keresztül tekintheti me
   ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Segítség az adott telepítési hibáinak megoldása: [gyakori hibák feloldása, amikor erőforrásokat üzembe helyezi az Azure-bA az Azure Resource Manager](resource-manager-common-deployment-errors.md).
 * A tevékenység-naplók segítségével figyelheti a más típusú műveleteket, lásd: [tevékenységi naplóit Azure-erőforrások kezeléséhez megtekintése](resource-group-audit.md).
 * A telepítés előtt futtatnia kell az ellenőrzéséhez tekintse meg a [Azure Resource Manager sablonnal erőforráscsoport telepítése](resource-group-template-deploy.md).

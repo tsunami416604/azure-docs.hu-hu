@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: edef6987ce85127aff5c44ba526cbb5a3879fd90
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 98f41d1eb77d1823a297492345ffb7a513fbdc3d
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-couchbase-using-azure-data-factory-beta"></a>Adatok másolása az Azure Data Factory (béta) használatával Couchbase
 
@@ -48,7 +48,7 @@ A következő tulajdonságok Couchbase kapcsolódó szolgáltatás támogatottak
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **Couchbase** | Igen |
-| connectionString | Az ODBC kapcsolati karakterlánc Couchbase való kapcsolódáshoz. Ez a mező megjelölése a SecureString tárolja biztonságos helyen az ADF, vagy a jelszó tárolása az Azure Key Vault választhat, és lehetővé teszik a másolási tevékenység lekéréses ott adatmásolás végrehajtása során – további információhoz [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). | Igen |
+| connectionString | Az ODBC kapcsolati karakterlánc Couchbase való kapcsolódáshoz. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhatja Self-hosted integrációs futásidejű vagy Azure integrációs futásidejű (ha az adattároló nyilvánosan elérhető). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
 
 **Példa**

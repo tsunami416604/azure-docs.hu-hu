@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: spelluru
-ms.openlocfilehash: 2131aa75dcfb975f11cff9800087c3e4e7170378
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 72b0965e1fda733651baa04997da1242a73320f1
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Egy Azure-SSIS-integrációs futásidejű csatlakoztatása egy virtuális hálózatot
 Az Azure-SSIS-integrációs futásidejű (IR) csatlakoztassa egy Azure virtuális hálózatot (VNet) a következő esetekben: 
@@ -31,7 +31,13 @@ Az Azure-SSIS-integrációs futásidejű (IR) csatlakoztassa egy Azure virtuáli
 > Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. Ha a Data Factory szolgáltatás általánosan elérhető 1. verzióját használja, lásd: [A Data Factory 1. verziójának dokumentációja](v1/data-factory-introduction.md).
 
 ## <a name="access-on-premises-data-stores"></a>Hozzáférés a helyszíni adattárolókhoz
-Ha SSIS-csomagok hozzáférést, csak a nyilvános felhő, nem kell Azure-SSIS-IR csatlakoztatása egy virtuális hálózatot. SSIS-csomagok hozzáférést, a helyszínen, ha Azure-SSIS-IR kell csatlakoztatnia egy Vnetet, amely a helyszíni hálózathoz csatlakozik. Ha a SSIS-katalógus az Azure SQL-adatbázis, amely nincs a Vneten belül helyezkedik el, akkor nyissa meg a megfelelő portokat. Ha az SSIS-katalógus Azure SQL felügyelt példányon, amely egy Azure Resource Manager virtuális hálózatot, vagy a klasszikus virtuális hálózatot, ugyanazt a virtuális hálózatot (vagy) egy másik virtuális hálózat, amely a VNet – VNet kapcsolattal rendelkezik, amely rendelkezik az Azure SQL-felügyelt példány egy Azure-SSIS-IR csatlakozhat. Az alábbi szakaszokban további részleteket.
+Ha SSIS-csomagok hozzáférést, csak a nyilvános felhő, nem kell Azure-SSIS-IR csatlakoztatása egy virtuális hálózatot. SSIS-csomagok hozzáférést, a helyszínen, ha Azure-SSIS-IR kell csatlakoztatnia egy Vnetet, amely a helyszíni hálózathoz csatlakozik. 
+
+Ha a SSIS-katalógus az Azure SQL-adatbázis, amely nincs a Vneten belül helyezkedik el, akkor nyissa meg a megfelelő portokat. 
+
+A SSIS-katalógus az Azure SQL felügyelt példány (MI), amely a Vneten belül helyezkedik el, ha ugyanazt a virtuális hálózatot (vagy) egy másik virtuális hálózat, amely a VNet – VNet kapcsolattal rendelkezik, amely rendelkezik az Azure SQL-felügyelt példány egy Azure-SSIS-IR csatlakozhat. A virtuális hálózatot lehet egy klasszikus virtuális hálózat vagy egy Azure-erőforrás felügyeleti virtuális hálózatot. Ha azt tervezi, hogy az Azure-SSIS infravörös csatlakozott a **ugyanazt a virtuális hálózatot** , amely rendelkezik az SQL MI, ügyeljen arra, hogy az Azure-SSIS infravörös egy **másik alhálózat** , amely rendelkezik az SQL MI az.   
+
+Az alábbi szakaszokban további részleteket.
 
 Az alábbiakban néhány fontos tényezőt figyelembe venni: 
 
@@ -58,10 +64,11 @@ Ez a szakasz bemutatja, hogyan egy meglévő Azure SSIS futtatókörnyezetet csa
 ### <a name="use-portal-to-configure-a-classic-vnet"></a>A klasszikus virtuális hálózat konfigurálása a portál használatával
 Először a virtuális hálózat konfigurálása előtt egy Azure-SSIS-IR csatlakoztatása a virtuális hálózat.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Kattintson a **további szolgáltatások**. Szűrhet, és válassza ki **virtuális hálózatok (klasszikus)**.
-3. Szűrhet, és válassza ki a **virtuális hálózati** a listában. 
-4. A virtuális hálózat (klasszikus) lapon válassza **tulajdonságok**. 
+1. Indítsa el **Microsoft Edge** vagy **Google Chrome** webböngésző. Data Factory felhasználói felület jelenleg csak a Microsoft Edge és a Google Chrome webböngésző használata támogatott.
+2. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+3. Kattintson a **további szolgáltatások**. Szűrhet, és válassza ki **virtuális hálózatok (klasszikus)**.
+4. Szűrhet, és válassza ki a **virtuális hálózati** a listában. 
+5. A virtuális hálózat (klasszikus) lapon válassza **tulajdonságok**. 
 
     ![klasszikus virtuális hálózatot az erőforrás-azonosító](media/join-azure-ssis-integration-runtime-virtual-network/classic-vnet-resource-id.png)
 5. Kattintson a Másolás gombra a **erőforrás-azonosító** az erőforrás-azonosító, a klasszikus hálózat másolása a vágólapra. Mentse az Azonosítót a OneNote-bA vagy egy fájlt a vágólapról.
@@ -93,13 +100,14 @@ Először a virtuális hálózat konfigurálása előtt egy Azure-SSIS-IR csatla
 ### <a name="use-portal-to-configure-an-azure-resource-manager-vnet"></a>Az Azure Resource Manager virtuális hálózat konfigurálása a portál használatával
 Először a virtuális hálózat konfigurálása előtt egy Azure-SSIS-IR csatlakoztatása a virtuális hálózat.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Kattintson a **további szolgáltatások**. Szűrhet, és válassza ki **virtuális hálózatok**.
-3. Szűrhet, és válassza ki a **virtuális hálózati** a listában. 
-4. Válassza ki a virtuális hálózat lap **tulajdonságok**. 
-5. Kattintson a Másolás gombra a **erőforrás-azonosító** az erőforrás-azonosítója a virtuális hálózat másolása a vágólapra. Mentse az Azonosítót a OneNote-bA vagy egy fájlt a vágólapról.
-6. Kattintson a **alhálózatok** a bal oldali menüben, és győződjön meg arról, hogy hány **elérhető címek** nagyobb, mint a csomópontok az Azure-SSIS-integrációs futásidejű.
-5. Győződjön meg arról, hogy Azure Batch szolgáltató regisztrálva van az Azure-előfizetés, amely rendelkezik a virtuális hálózatot, vagy az Azure Batch-szolgáltató regisztrálása. Ha már rendelkezik Azure Batch-fiók az előfizetéshez, majd az előfizetés az Azure Batch van regisztrálva.
+1. Indítsa el **Microsoft Edge** vagy **Google Chrome** webböngésző. Data Factory felhasználói felület jelenleg csak a Microsoft Edge és a Google Chrome webböngésző használata támogatott.
+2. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+3. Kattintson a **további szolgáltatások**. Szűrhet, és válassza ki **virtuális hálózatok**.
+4. Szűrhet, és válassza ki a **virtuális hálózati** a listában. 
+5. Válassza ki a virtuális hálózat lap **tulajdonságok**. 
+6. Kattintson a Másolás gombra a **erőforrás-azonosító** az erőforrás-azonosítója a virtuális hálózat másolása a vágólapra. Mentse az Azonosítót a OneNote-bA vagy egy fájlt a vágólapról.
+7. Kattintson a **alhálózatok** a bal oldali menüben, és győződjön meg arról, hogy hány **elérhető címek** nagyobb, mint a csomópontok az Azure-SSIS-integrációs futásidejű.
+8. Győződjön meg arról, hogy Azure Batch szolgáltató regisztrálva van az Azure-előfizetés, amely rendelkezik a virtuális hálózatot, vagy az Azure Batch-szolgáltató regisztrálása. Ha már rendelkezik Azure Batch-fiók az előfizetéshez, majd az előfizetés az Azure Batch van regisztrálva.
     1. Az Azure portálon kattintson **előfizetések** a bal oldali menüben. 
     2. Válassza ki a **előfizetés**. 
     3. Kattintson a **erőforrás-szolgáltató** a bal oldali, és ellenőrizze, hogy `Microsoft.Batch` egy regisztrált szolgáltató. 
@@ -111,7 +119,8 @@ Először a virtuális hálózat konfigurálása előtt egy Azure-SSIS-IR csatla
 ### <a name="join-the-azure-ssis-ir-to-a-vnet"></a>Az Azure SSIS infravörös csatlakoztatása egy virtuális hálózat
 
 
-1. Az a [Azure-portálon](https://portal.azure.com), jelölje be **adat-előállítók** a bal oldali menüben. Ha nem látja **adat-előállítók** válassza a menü **további szolgáltatások**, jelölje be **adat-előállítók** a a **ESZKÖZINTELLIGENCIA + ANALITIKA** a szakasz. 
+1. Indítsa el **Microsoft Edge** vagy **Google Chrome** webböngésző. Data Factory felhasználói felület jelenleg csak a Microsoft Edge és a Google Chrome webböngésző használata támogatott.
+2. Az a [Azure-portálon](https://portal.azure.com), jelölje be **adat-előállítók** a bal oldali menüben. Ha nem látja **adat-előállítók** válassza a menü **további szolgáltatások**, jelölje be **adat-előállítók** a a **ESZKÖZINTELLIGENCIA + ANALITIKA** a szakasz. 
     
     ![Adat-előállítók listája](media/join-azure-ssis-integration-runtime-virtual-network/data-factories-list.png)
 2. A listában jelölje ki a data factory Azure SSIS-integráció futtatási idő mellett. A data factory a kezdőlap talál. Válassza ki **Szerző & telepítés** csempére. Megjelenik a Data Factory felhasználói felület (UI) egy külön lapján. 

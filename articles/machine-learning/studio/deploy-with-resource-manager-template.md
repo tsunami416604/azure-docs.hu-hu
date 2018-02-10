@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 3/15/2017
+ms.date: 2/05/2018
 ms.author: ahgyger
-ms.openlocfilehash: e3cbcb8118aa05e554b2493506280d0e24706059
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6189cd2dce2be8c87255dedecd4493767e857031
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="deploy-machine-learning-workspace-using-azure-resource-manager"></a>Machine Learning-munkaterület üzembe helyezése az Azure Resource Manager használatával
 ## <a name="introduction"></a>Bevezetés
@@ -79,7 +79,7 @@ Az alábbi sablont létrehozni a tárfiók nevét az erőforráscsoport nevét �
 Ez a sablon mentése c:\temp\ mlworkspace.json fájlt.
 
 ### <a name="deploy-the-resource-group-based-on-the-template"></a>Az erőforráscsoport a sablon telepítése
-* Nyissa meg a PowerShell
+* Open PowerShell
 * Az Azure Resource Manager és az Azure Service Management-modulok telepítése  
 
 ```
@@ -100,7 +100,7 @@ Add-AzureRmAccount
 ```
 Ebben a lépésben meg kell ismételni, mindegyik munkamenethez. Ha hitelesítése megtörtént, az előfizetési adatok üzenetnek kell megjelennie.
 
-![Azure-fiók][1]
+![Azure Account][1]
 
 Most, hogy Azure-hozzáférést, vannak, létrehozható az erőforráscsoportot.
 
@@ -138,7 +138,7 @@ Get-AzureRmResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |
 ```
 A munkaterület üzembe helyezése után is automatizálhatja a sok Azure Machine Learning Studio feladatok a [Azure Machine Learning PowerShell-modul](http://aka.ms/amlps).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ [Azure Resource Manager sablonok készítése](../../azure-resource-manager/resource-group-authoring-templates.md). 
 * Tekintse meg a következő a [Azure gyors üzembe helyezés sablonok tárházba](https://github.com/Azure/azure-quickstart-templates). 
 * Ezt a videót kapcsolatos [Azure Resource Manager](https://channel9.msdn.com/Events/Ignite/2015/C9-39). 

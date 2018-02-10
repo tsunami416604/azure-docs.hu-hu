@@ -14,15 +14,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/17/2016
 ms.author: LADocs; mandia
-ms.openlocfilehash: 9f95c0c486401e0d709829ce8d560f030932eea7
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 981bf5555d1941509e787adf656fe6310dd43cb9
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="triggers-and-actions-for-logic-app-workflows"></a>Eseményindítók és műveletek a logic app munkafolyamatok
 
-Minden a logic apps indítsa el az eseményindító műveletek követ. Ez a témakör ismerteti az ilyen, eseményindítók és műveletek rendszer Integrációk létrehozásához, és üzleti munkafolyamatok és a folyamatok automatizálása a logic apps épület használható. 
+Minden a logic apps indítsa el az eseményindító műveletek követ. Ez a cikk ismerteti az ilyen, eseményindítók és műveletek rendszer Integrációk létrehozásához, és üzleti munkafolyamatok és a folyamatok automatizálása a logic apps épület használható. 
   
 ## <a name="triggers-overview"></a>Eseményindítók áttekintése 
 
@@ -53,7 +53,7 @@ Minden egyes indítási típus egy másik felülettel rendelkezik, és különb�
 
 | Indítási típus | Leírás | 
 | ------------ | ----------- | 
-| **Ismétlődés** | Akkor következik be, a megadott ütemezés szerint. Beállíthatja, hogy egy jövőbeli dátumot és időt az eseményindító kiváltó. A gyakoriság alapján azt is megadhatja, időpontok és a munkafolyamat futtatási nap. | 
+| **Recurrence** | Akkor következik be, a megadott ütemezés szerint. Beállíthatja, hogy egy jövőbeli dátumot és időt az eseményindító kiváltó. A gyakoriság alapján azt is megadhatja, időpontok és a munkafolyamat futtatási nap. | 
 | **Kérés**  | A Logic Apps alkalmazást teszi az olyan végponttal, amely hívása, más néven "manual" eseményindító. | 
 | **HTTP** | Ellenőrzi, vagy *szavazások*, webes HTTP-végponttal. A HTTP-végpont meg kell felelnie egy meghatározott eseményindító szerződés "202" aszinkron minta használatával vagy tömböt ad vissza. | 
 | **ApiConnection** | Például egy HTTP-eseményindítóval kérdezi le, de használja [Microsoft által felügyelt API-k](../connectors/apis-list.md). | 
@@ -191,13 +191,13 @@ HTTP-eseményindítók kérdezze le a megadott végpont, és ellenőrizze a vál
 
 | Elem neve | Szükséges | Típus | Leírás | 
 | ------------ | -------- | ---- | ----------- | 
-| Módszer | Igen | Karakterlánc | A HTTP-metódus egyikét használja: "GET", "POST", "PUT", "DELETE", "Javítás" vagy "HEAD" | 
-| URI | Igen| Karakterlánc | A HTTP vagy HTTPs végpont az eseményindító-kereső. Maximális méret: 2 KB | 
+| metódus | Igen | Karakterlánc | A HTTP-metódus egyikét használja: "GET", "POST", "PUT", "DELETE", "Javítás" vagy "HEAD" | 
+| uri azonosító | Igen| Karakterlánc | A HTTP vagy HTTPs végpont az eseményindító-kereső. Maximális méret: 2 KB | 
 | Lekérdezések | Nem | Objektum | Lekérdezési paramétereket, hogy az URL-címben felvenni kívánt jelöli. <p>Például `"queries": { "api-version": "2015-02-01" }` hozzáadja `?api-version=2015-02-01` URL-címét. | 
 | fejlécek | Nem | Objektum | Minden egyes fejlécet tartalmazta, amely a kérelemben küldött jelöli. <p>Ha például a nyelv, és írja be a kérelem: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | törzs | Nem | Objektum | A tartalom a végpontnak küldött jelöli. | 
 | retryPolicy | Nem | Objektum | Ez az objektum használata a újrapróbálkozásra 4xx vagy 5xx hiba testreszabása. További információkért lásd: [ismételje meg a házirendek](../logic-apps/logic-apps-exception-handling.md). | 
-| Hitelesítés | Nem | Objektum | A módszert, amelyet a kérés a hitelesítéshez használandó jelöli. További információkért lásd: [Feladatütemező kimenő hitelesítési](../scheduler/scheduler-outbound-authentication.md). <p>Ütemező túl van egy több támogatott tulajdonságot: `authority`. Alapértelmezés szerint ez az érték van `https://login.windows.net` Ha nincs megadva, de használhat például egy másik értéket`https://login.windows\-ppe.net`. | 
+| hitelesítés | Nem | Objektum | A módszert, amelyet a kérés a hitelesítéshez használandó jelöli. További információkért lásd: [Feladatütemező kimenő hitelesítési](../scheduler/scheduler-outbound-authentication.md). <p>Ütemező túl van egy több támogatott tulajdonságot: `authority`. Alapértelmezés szerint ez az érték van `https://login.windows.net` Ha nincs megadva, de használhat például egy másik értéket`https://login.windows\-ppe.net`. | 
 ||||| 
  
 Működnek jól a Logic Apps alkalmazást, a HTTP-eseményindítóval előírja, hogy a HTTP API egy adott minta megfelel. Az eseményindító ismeri fel ezeket a tulajdonságokat:  
@@ -254,13 +254,13 @@ Az API-kapcsolat eseményindító hasonlít az alapszintű funkciókat, hogy a H
 
 | Elem neve | Szükséges | Típus | Leírás | 
 | ------------ | -------- | ---- | ----------- | 
-| állomás | Igen | Objektum | Az üzemeltetett átjáró és az API-alkalmazás azonosítója | 
-| Módszer | Igen | Karakterlánc | A HTTP-metódus egyikét használja: "GET", "POST", "PUT", "DELETE", "Javítás" vagy "HEAD" | 
+| gazdagép | Igen | Objektum | Az üzemeltetett átjáró és az API-alkalmazás azonosítója | 
+| metódus | Igen | Karakterlánc | A HTTP-metódus egyikét használja: "GET", "POST", "PUT", "DELETE", "Javítás" vagy "HEAD" | 
 | Lekérdezések | Nem | Objektum | Lekérdezési paramétereket, hogy az URL-címben felvenni kívánt jelöli. <p>Például `"queries": { "api-version": "2015-02-01" }` hozzáadja `?api-version=2015-02-01` URL-címét. | 
 | fejlécek | Nem | Objektum | Minden egyes fejlécet tartalmazta, amely a kérelemben küldött jelöli. <p>Ha például a nyelv, és írja be a kérelem: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | törzs | Nem | Objektum | A tartalom a végpontnak küldött jelöli. | 
 | retryPolicy | Nem | Objektum | Ez az objektum használata a újrapróbálkozásra 4xx vagy 5xx hiba testreszabása. További információkért lásd: [ismételje meg a házirendek](../logic-apps/logic-apps-exception-handling.md). | 
-| Hitelesítés | Nem | Objektum | A módszert, amelyet a kérés a hitelesítéshez használandó jelöli. További információkért lásd: [Feladatütemező kimenő hitelesítési](../scheduler/scheduler-outbound-authentication.md). | 
+| hitelesítés | Nem | Objektum | A módszert, amelyet a kérés a hitelesítéshez használandó jelöli. További információkért lásd: [Feladatütemező kimenő hitelesítési](../scheduler/scheduler-outbound-authentication.md). | 
 ||||| 
 
 Az a `host` objektumot, az alábbiakban a tulajdonságok:  
@@ -278,8 +278,10 @@ Az alábbiakban egy API-kapcsolat eseményindító kimenetek:
 | fejlécek | Objektum | A fejléceket a HTTP-válaszok | 
 | törzs | Objektum | A HTTP-válasz törzsében | 
 |||| 
-  
-## <a name="httpwebhook-trigger"></a>HTTPWebhook eseményindító  
+
+További információ [hogyan működik az API-kapcsolat díjszabása elindítja](../logic-apps/logic-apps-pricing.md#triggers).
+
+## <a name="httpwebhook-trigger"></a>HTTPWebhook trigger  
 
 A HTTPWebhook eseményindító biztosít egy végpontot, a kérelem eseményindító hasonló, de a HTTPWebhook eseményindító is meghívja a megadott URL-cím regisztrálása és a regisztráció megszüntetését. Íme egy példa hogyan nézhet ki egy HTTPWebhook eseményindító:  
 
@@ -374,7 +376,7 @@ Ebben az esetben a jelentés csak eseményindítók során a munkafolyamat `send
 ```  
   
 > [!NOTE]  
-> Ha bármely kifejezés hivatkozik egy eseményindító állapotkód bármely olyan módon, az alapértelmezett viselkedést, amely eseményindítón csak 200 "OK", váltja fel. Például, ha azt szeretné, állapotkód: 200-as és a 201-es állapotkód is elindítható, fel kell vennie: `@or(equals(triggers().code, 200),equals(triggers().code,201))` a feltételként.
+> Ha bármely kifejezés hivatkozik egy eseményindító állapotkód bármely olyan módon, az alapértelmezett viselkedést, amely csak, a 200 "OK" aktiválódik, váltja fel. Például, ha azt szeretné, állapotkód: 200-as és a 201-es állapotkód is elindítható, fel kell vennie: `@or(equals(triggers().code, 200),equals(triggers().code,201))` a feltételként.
   
 ## <a name="start-multiple-runs-for-a-request"></a>Indítsa el a kérelmek több futtatása
 
@@ -460,30 +462,30 @@ Nincsenek számos különböző típusú műveletek, az egyedi viselkedését. M
 
 ### <a name="standard-actions"></a>Standard műveletek  
 
-| Művelet típusa | Leírás | 
+| Művelettípus | Leírás | 
 | ----------- | ----------- | 
 | **HTTP** | Meghívja a HTTP-webalkalmazás végponttal. | 
 | **ApiConnection**  | A HTTP-művelet hasonlóan működik, de használja [Microsoft által felügyelt API-k](https://docs.microsoft.com/azure/connectors/apis-list). | 
 | **ApiConnectionWebhook** | HTTPWebhook hasonlóan működik, de a Microsoft által felügyelt API-kat használ. | 
 | **Válasz** | A bejövő válasz meghatározása. | 
 | **Függvény** | Egy Azure függvény jelöli. | 
-| **várj** | A rögzített méretű idő vagy egy adott időpontig vár. | 
+| **Wait** | A rögzített méretű idő vagy egy adott időpontig vár. | 
 | **Munkafolyamat** | Egy beágyazott munkafolyamat jelöli. | 
-| **Összeállítás** | A tevékenység bemenetei arbitary objektum hoz létre. | 
+| **Összeállítás** | A tevékenység bemenetei tetszőleges objektum hoz létre. | 
 | **Lekérdezés** | Egy tömb feltétel alapján szűri. | 
 | **Kiválasztás** | A tömb egyes elemei projektek be új értéket. Például átalakíthatja számokból álló tömb egy objektumokból álló tömb. | 
-| **Tábla** | Elemek tömbje alakítja át a CSV és HTML táblát. | 
+| **Table** | Elemek tömbje alakítja át a CSV és HTML táblát. | 
 | **Leáll** | Egy munkafolyamat leáll. | 
 ||| 
 
 ### <a name="collection-actions"></a>Gyűjtemény műveletek
 
-| Művelet típusa | Leírás | 
+| Művelettípus | Leírás | 
 | ----------- | ----------- | 
 | **Az állapot** | Egy kifejezés kiértékelése és eredménye, a megfelelő fiókirodai futtatja. | 
 | **Hatókör** | Ezzel az egyéb műveletek logikai csoportosítása. | 
 | **ForEach** | Ez a ismétlési művelet tömb telepítéseket, és minden tömb elemen belső műveleteket hajtja végre. | 
-| **Amíg** | Az ismétlési művelet belső műveleteket hajtja végre, amíg egy feltétel eredménye igaz. | 
+| **Until** | Az ismétlési művelet belső műveleteket hajtja végre, amíg egy feltétel eredménye igaz. | 
 ||| 
 
 ## <a name="http-action"></a>HTTP-művelet  
@@ -504,14 +506,14 @@ Itt a `inputs` objektum e egy HTTP-hívás megalkotásához szükséges paramét
 
 | Elem neve | Szükséges | Típus | Leírás | 
 | ------------ | -------- | ---- | ----------- | 
-| Módszer | Igen | Karakterlánc | A HTTP-metódus egyikét használja: "GET", "POST", "PUT", "DELETE", "Javítás" vagy "HEAD" | 
-| URI | Igen| Karakterlánc | A HTTP vagy HTTPs végpont az eseményindító-kereső. Maximális méret: 2 KB | 
+| metódus | Igen | Karakterlánc | A HTTP-metódus egyikét használja: "GET", "POST", "PUT", "DELETE", "Javítás" vagy "HEAD" | 
+| uri azonosító | Igen| Karakterlánc | A HTTP vagy HTTPs végpont az eseményindító-kereső. Maximális méret: 2 KB | 
 | Lekérdezések | Nem | Objektum | Lekérdezési paramétereket, hogy az URL-címben felvenni kívánt jelöli. <p>Például `"queries": { "api-version": "2015-02-01" }` hozzáadja `?api-version=2015-02-01` URL-címét. | 
 | fejlécek | Nem | Objektum | Minden egyes fejlécet tartalmazta, amely a kérelemben küldött jelöli. <p>Ha például a nyelv, és írja be a kérelem: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | törzs | Nem | Objektum | A tartalom a végpontnak küldött jelöli. | 
 | retryPolicy | Nem | Objektum | Ez az objektum használata a újrapróbálkozásra 4xx vagy 5xx hiba testreszabása. További információkért lásd: [ismételje meg a házirendek](../logic-apps/logic-apps-exception-handling.md). | 
 | operationsOptions | Nem | Karakterlánc | A speciális viselkedés felülbírálásához csoportját határozza meg. | 
-| Hitelesítés | Nem | Objektum | A módszert, amelyet a kérés a hitelesítéshez használandó jelöli. További információkért lásd: [Feladatütemező kimenő hitelesítési](../scheduler/scheduler-outbound-authentication.md). <p>Ütemező túl van egy több támogatott tulajdonságot: `authority`. Alapértelmezés szerint ez az érték van `https://login.windows.net` Ha nincs megadva, de használhat például egy másik értéket`https://login.windows\-ppe.net`. | 
+| hitelesítés | Nem | Objektum | A módszert, amelyet a kérés a hitelesítéshez használandó jelöli. További információkért lásd: [Feladatütemező kimenő hitelesítési](../scheduler/scheduler-outbound-authentication.md). <p>Ütemező túl van egy több támogatott tulajdonságot: `authority`. Alapértelmezés szerint ez az érték van `https://login.windows.net` Ha nincs megadva, de használhat például egy másik értéket`https://login.windows\-ppe.net`. | 
 ||||| 
 
 Ez a példa HTTP-művelet újrapróbálja hívjon le a legújabb híreket kétszer három végrehajtások és minden kísérlet 30 másodperces késleltetés összesen időszakos hibák esetén:
@@ -531,7 +533,7 @@ Ez a példa HTTP-művelet újrapróbálja hívjon le a legújabb híreket kétsz
 }
 ```
 
-Az újrapróbálkozási időköz megadott [ISO 8601 formátum](https://en.wikipedia.org/wiki/ISO_8601). Ezt az időközt értéke a minimális és az alapértelmezett 20 másodperc, a maximális érték pedig egy óra. Az alapértelmezett és a maximális újrapróbálkozási számláló négy óra. Ha a nem ad meg az újrapróbálkozási házirend-definíció egy `fixed` stratégia használatos az alapértelmezett értékekkel újrapróbálkozási számát és az időközt. Tiltsa le az újrapróbálkozási házirendet, adja meg a típus `None`.
+Az újrapróbálkozási időköz megadott [ISO 8601 formátum](https://en.wikipedia.org/wiki/ISO_8601). Ezt az időközt értéke a minimális és az alapértelmezett 20 másodperc, a maximális érték pedig egy óra. Az alapértelmezett és a maximális újrapróbálkozási számláló négy óra. Ha nem adja meg az újrapróbálkozási házirend-definíció egy `fixed` stratégia használatos az alapértelmezett értékekkel újrapróbálkozási számát és az időközt. Tiltsa le az újrapróbálkozási házirendet, adja meg a típus `None`.
 
 ### <a name="asynchronous-patterns"></a>Aszinkron minták
 
@@ -596,15 +598,15 @@ A APIConnection művelet a Microsoft által felügyelt összekötők hivatkozik.
 
 | Elem neve | Szükséges | Típus | Leírás | 
 | ------------ | -------- | ---- | ----------- | 
-| állomás | Igen | Objektum | Az összekötő adatait jelöli, mint a `runtimeUrl` és a kapcsolat objektum hivatkozását. | 
-| Módszer | Igen | Karakterlánc | A HTTP-metódus egyikét használja: "GET", "POST", "PUT", "DELETE", "Javítás" vagy "HEAD" | 
-| Elérési út | Igen | Karakterlánc | Az API-művelet elérési útja | 
+| gazdagép | Igen | Objektum | Az összekötő adatait jelöli, mint a `runtimeUrl` és a kapcsolat objektum hivatkozását. | 
+| metódus | Igen | Karakterlánc | A HTTP-metódus egyikét használja: "GET", "POST", "PUT", "DELETE", "Javítás" vagy "HEAD" | 
+| elérési út | Igen | Karakterlánc | Az API-művelet elérési útja | 
 | Lekérdezések | Nem | Objektum | Lekérdezési paramétereket, hogy az URL-címben felvenni kívánt jelöli. <p>Például `"queries": { "api-version": "2015-02-01" }` hozzáadja `?api-version=2015-02-01` URL-címét. | 
 | fejlécek | Nem | Objektum | Minden egyes fejlécet tartalmazta, amely a kérelemben küldött jelöli. <p>Ha például a nyelv, és írja be a kérelem: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | törzs | Nem | Objektum | A tartalom a végpontnak küldött jelöli. | 
 | retryPolicy | Nem | Objektum | Ez az objektum használata a újrapróbálkozásra 4xx vagy 5xx hiba testreszabása. További információkért lásd: [ismételje meg a házirendek](../logic-apps/logic-apps-exception-handling.md). | 
 | operationsOptions | Nem | Karakterlánc | A speciális viselkedés felülbírálásához csoportját határozza meg. | 
-| Hitelesítés | Nem | Objektum | A módszert, amelyet a kérés a hitelesítéshez használandó jelöli. További információkért lásd: [Feladatütemező kimenő hitelesítési](../scheduler/scheduler-outbound-authentication.md). |
+| hitelesítés | Nem | Objektum | A módszert, amelyet a kérés a hitelesítéshez használandó jelöli. További információkért lásd: [Feladatütemező kimenő hitelesítési](../scheduler/scheduler-outbound-authentication.md). |
 ||||| 
 
 ## <a name="apiconnection-webhook-action"></a>APIConnection webhook művelet
@@ -640,14 +642,14 @@ A APIConnectionWebhook művelet a Microsoft által felügyelt összekötők hiva
 
 | Elem neve | Szükséges | Típus | Leírás | 
 | ------------ | -------- | ---- | ----------- | 
-| állomás | Igen | Objektum | Az összekötő adatait jelöli, mint a `runtimeUrl` és a kapcsolat objektum hivatkozását. | 
-| Elérési út | Igen | Karakterlánc | Az API-művelet elérési útja | 
+| gazdagép | Igen | Objektum | Az összekötő adatait jelöli, mint a `runtimeUrl` és a kapcsolat objektum hivatkozását. | 
+| elérési út | Igen | Karakterlánc | Az API-művelet elérési útja | 
 | Lekérdezések | Nem | Objektum | Lekérdezési paramétereket, hogy az URL-címben felvenni kívánt jelöli. <p>Például `"queries": { "api-version": "2015-02-01" }` hozzáadja `?api-version=2015-02-01` URL-címét. | 
 | fejlécek | Nem | Objektum | Minden egyes fejlécet tartalmazta, amely a kérelemben küldött jelöli. <p>Ha például a nyelv, és írja be a kérelem: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | törzs | Nem | Objektum | A tartalom a végpontnak küldött jelöli. | 
 | retryPolicy | Nem | Objektum | Ez az objektum használata a újrapróbálkozásra 4xx vagy 5xx hiba testreszabása. További információkért lásd: [ismételje meg a házirendek](../logic-apps/logic-apps-exception-handling.md). | 
 | operationsOptions | Nem | Karakterlánc | A speciális viselkedés felülbírálásához csoportját határozza meg. | 
-| Hitelesítés | Nem | Objektum | A módszert, amelyet a kérés a hitelesítéshez használandó jelöli. További információkért lásd: [Feladatütemező kimenő hitelesítési](../scheduler/scheduler-outbound-authentication.md). |
+| hitelesítés | Nem | Objektum | A módszert, amelyet a kérés a hitelesítéshez használandó jelöli. További információkért lásd: [Feladatütemező kimenő hitelesítési](../scheduler/scheduler-outbound-authentication.md). |
 ||||| 
 
 ## <a name="response-action"></a>Válasz művelet  
@@ -709,7 +711,7 @@ Ez a művelet lehetővé teszi, hogy jelentik és hívás egy [Azure függvény]
 | Elem neve | Szükséges | Típus | Leírás | 
 | ------------ | -------- | ---- | ----------- |  
 | függvény azonosítója | Igen | Karakterlánc | Az Azure függvény hívása kívánt erőforrás-azonosító. | 
-| Módszer | Nem | Karakterlánc | A függvény használt HTTP-metódus. Ha nincs megadva, a "POST" az alapértelmezett mód. | 
+| metódus | Nem | Karakterlánc | A függvény használt HTTP-metódus. Ha nincs megadva, a "POST" az alapértelmezett mód. | 
 | Lekérdezések | Nem | Objektum | Lekérdezési paramétereket, hogy az URL-címben felvenni kívánt jelöli. <p>Például `"queries": { "api-version": "2015-02-01" }` hozzáadja `?api-version=2015-02-01` URL-címét. | 
 | fejlécek | Nem | Objektum | Minden egyes fejlécet tartalmazta, amely a kérelemben küldött jelöli. <p>Ha például a nyelv, és írja be a kérelem: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | törzs | Nem | Objektum | A tartalom a végpontnak küldött jelöli. | 
@@ -758,7 +760,7 @@ Azt is megteheti várakozási idő az adott néhány percet, használhatja a pé
   
 | Elem neve | Szükséges | Típus | Leírás | 
 | ------------ | -------- | ---- | ----------- | 
-| amíg | Nem | Objektum | A pontok alapján időben várakozási időtartama | 
+| lejárati idő: | Nem | Objektum | A pontok alapján időben várakozási időtartama | 
 | amíg időbélyeg | Igen | Karakterlánc | Az az időpont [UTC dátum időformátum](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) várakozási lejáratának | 
 | interval | Nem | Objektum | A várakozási időtartama időköze és száma alapján | 
 | időköze | Igen | Karakterlánc | Az idő egységét. Csak az egyik ezeket az értékeket használja: "második", "perc", "hour", "day", "hét" vagy "honap" | 
@@ -798,7 +800,7 @@ Ez a művelet kimenetének alapján a meghatározása a `response` a gyermek mun
 | Elem neve | Szükséges | Típus | Leírás | 
 | ------------ | -------- | ---- | ----------- |  
 | állomás azonosítója | Igen | Karakterlánc| Az erőforrás-azonosítója a hívni kívánt munkafolyamat | 
-| állomás Eseményindító_neve | Igen | Karakterlánc | A meghívni kívánt eseményindító nevét | 
+| host triggerName | Igen | Karakterlánc | A meghívni kívánt eseményindító nevét | 
 | Lekérdezések | Nem | Objektum | Lekérdezési paramétereket, hogy az URL-címben felvenni kívánt jelöli. <p>Például `"queries": { "api-version": "2015-02-01" }` hozzáadja `?api-version=2015-02-01` URL-címét. | 
 | fejlécek | Nem | Objektum | Minden egyes fejlécet tartalmazta, amely a kérelemben küldött jelöli. <p>Ha például a nyelv, és írja be a kérelem: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | törzs | Nem | Objektum | A tartalom a végpontnak küldött jelöli. | 
@@ -839,10 +841,10 @@ Például egy tömb számok alakítani egy objektumokból álló tömb, használ
 }
 ```
 
-| Név | Szükséges | Típus | Leírás | 
+| Name (Név) | Szükséges | Típus | Leírás | 
 | ---- | -------- | ---- | ----------- | 
-| ettől: | Igen | Tömb | A forrástömb |
-| Válassza ki | Igen | Bármelyik | A forrás tömb egyes elemei alkalmazott leképezése |
+| forrás: | Igen | Tömb | A forrástömb |
+| kiválasztás | Igen | Bármelyik | A forrás tömb egyes elemei alkalmazott leképezése |
 ||||| 
 
 A kimenet a `select` művelet olyan tömb, amely a bemeneti tömb azonos számossága. Minden elem által meghatározott alakította a `select` tulajdonság. Ha a bemeneti érték egy üres tömb, a kimeneti is üres tömb.
@@ -866,9 +868,9 @@ A kimenet a `query` művelete olyan tömb, amely rendelkezik, amelyek megfelelne
 > [!NOTE]
 > Ha nincs érték felel meg a `where` , az eredmény feltétele egy üres tömb.
 
-| Név | Szükséges | Típus | Leírás | 
+| Name (Név) | Szükséges | Típus | Leírás | 
 | ---- | -------- | ---- | ----------- | 
-| ettől: | Igen | Tömb | A forrástömb |
+| forrás: | Igen | Tömb | A forrástömb |
 | Ha | Igen | Karakterlánc | A feltétellel, hogy a forrás tömb egyes elemei vonatkozik |
 ||||| 
 
@@ -931,9 +933,9 @@ Ez a példa az eredmény a HTML-táblázat néz ki:
 
 <table><thead><tr><th>Készítsen azonosítója</th><th>Leírás</th></tr></thead><tbody><tr><td>0</td><td>friss almák</td></tr><tr><td>1</td><td>friss narancs</td></tr></tbody></table>
 
-| Név | Szükséges | Típus | Leírás | 
+| Name (Név) | Szükséges | Típus | Leírás | 
 | ---- | -------- | ---- | ----------- | 
-| ettől: | Igen | Tömb | A forrástömb. Ha a `from` tulajdonság értéke üres tömb, a program üres táblát kimenete. | 
+| forrás: | Igen | Tömb | A forrástömb. Ha a `from` tulajdonság értéke üres tömb, a program üres táblát kimenete. | 
 | Formátumban | Igen | Karakterlánc | A tábla kívánt formátum, vagy **CSV** vagy **HTML** | 
 | oszlopok | Nem | Tömb | A kívánt tábla oszlopait. Használja az alapértelmezett tábla alakzat felülbírálására. | 
 | Oszlopfejléc | Nem | Karakterlánc | Az oszlop fejlécére | 
@@ -959,7 +961,7 @@ Például, amely rendelkezik "sikertelen" állapota futtató leállításához h
 }
 ```
 
-| Név | Szükséges | Típus | Leírás | 
+| Name (Név) | Szükséges | Típus | Leírás | 
 | ---- | -------- | ---- | ----------- | 
 | runStatus | Igen | Karakterlánc | Futtatási tartozó állapotát, amely vagy `Failed` vagy`Cancelled` |
 | runError | Nem | Objektum | A hiba részletes adatait. Támogatott csak akkor, ha `runStatus` értéke `Failed`. |
@@ -1005,7 +1007,7 @@ Ez a művelet lehetővé teszi, hogy olyan feltétel értékelése, majd hajtsa 
 }
 ``` 
 
-| Név | Szükséges | Típus | Leírás | 
+| Name (Név) | Szükséges | Típus | Leírás | 
 | ---- | -------- | ---- | ----------- | 
 | műveletek | Igen | Objektum | A belső műveletek futtatása mikor `expression` kiértékelésének eredménye`true` | 
 | kifejezés | Igen | Karakterlánc | A kiértékelendő kifejezés |
@@ -1047,7 +1049,7 @@ Ez a művelet lehetővé teszi a logikailag a munkafolyamat műveleteit.
 }
 ```
 
-| Név | Szükséges | Típus | Leírás | 
+| Name (Név) | Szükséges | Típus | Leírás | 
 | ---- | -------- | ---- | ----------- |  
 | műveletek | Igen | Objektum | A belső műveletek hatókörében |
 ||||| 
@@ -1083,7 +1085,7 @@ Ez a ismétlési művelet tömb telepítéseket, és minden tömb elemen belső 
 }
 ```
 
-| Név | Szükséges | Típus | Leírás | 
+| Name (Név) | Szükséges | Típus | Leírás | 
 | ---- | -------- | ---- | ----------- | 
 | műveletek | Igen | Objektum | A belső műveletek futtatása a hurkon belül | 
 | foreach | Igen | Karakterlánc | A tömböt az iterációt | 
@@ -1116,7 +1118,7 @@ A ismétlési művelet a futás belső műveletek csak egy feltétel eredménye 
 }
 ```
 
-| Név | Szükséges | Típus | Leírás | 
+| Name (Név) | Szükséges | Típus | Leírás | 
 | ---- | -------- | ---- | ----------- | 
 | műveletek | Igen | Objektum | A belső műveletek futtatása a hurkon belül | 
 | kifejezés | Igen | Karakterlánc | A kifejezés kiértékelése mindegyik iteráció után | 
@@ -1125,7 +1127,7 @@ A ismétlési művelet a futás belső műveletek csak egy feltétel eredménye 
 | timeout | Nem | Karakterlánc | Az időkorlátot a [ISO 8601 formátum](https://en.wikipedia.org/wiki/ISO_8601) , amely megadja, hogy mennyi ideig kell futtatnia a hurok |
 ||||| 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Munkafolyamatdefiníciós nyelve](../logic-apps/logic-apps-workflow-definition-language.md)
 * [Munkafolyamat REST API-n](https://docs.microsoft.com/rest/api/logic/workflows)

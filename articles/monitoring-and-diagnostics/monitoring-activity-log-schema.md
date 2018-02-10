@@ -12,91 +12,104 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2017
 ms.author: johnkem
-ms.openlocfilehash: 91129da9ef7791a506292d9e13e386a25ee341a8
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: a5c05466b21184a73d08190856e00ae95ee3727f
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure tevékenységnapló esemény séma
 A **Azure tevékenységnapló** , amely bármely történt az Azure-előfizetés szintű események betekintést biztosít a naplót. Ez a cikk ismerteti az adatok kategóriánként esemény séma.
 
-## <a name="administrative"></a>Felügyeleti
+## <a name="administrative"></a>Adminisztratív
 Ez a kategória tartalmazza az összes rekord létrehozása, update, delete és művelet műveleteket Resource Manageren keresztül. Milyen típusú mutatunk be, ebbe a kategóriába tartozó eseményeket például "virtuális gép létrehozása" és "hálózati biztonsági csoport törlése" minden felhasználó vagy alkalmazás erőforrás-kezelő használatával végrehajtott műveletet egy adott erőforrástípus művelet van modellezve. Ha a művelet típusa írási, a Delete és a művelet, a rekordokat a kezdő és a sikeres vagy sikertelen lesz, hogy a művelet tárolja, amely a felügyeleti kategória. A felügyeleti kategória is a szerepköralapú hozzáférés-vezérlést módosításokat egy előfizetésben.
 
 ### <a name="sample-event"></a>Mintaesemény
 ```json
 {
-  "authorization": {
-    "action": "microsoft.support/supporttickets/write",
-    "role": "Subscription Admin",
-    "scope": "/subscriptions/s1/resourceGroups/MSSupportGroup/providers/microsoft.support/supporttickets/115012112305841"
-  },
-  "caller": "admin@contoso.com",
-  "channels": "Operation",
-  "claims": {
-    "aud": "https://management.core.windows.net/",
-    "iss": "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/",
-    "iat": "1421876371",
-    "nbf": "1421876371",
-    "exp": "1421880271",
-    "ver": "1.0",
-    "http://schemas.microsoft.com/identity/claims/tenantid": "1e8d8218-c5e7-4578-9acc-9abbd5d23315 ",
-    "http://schemas.microsoft.com/claims/authnmethodsreferences": "pwd",
-    "http://schemas.microsoft.com/identity/claims/objectidentifier": "2468adf0-8211-44e3-95xq-85137af64708",
-    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "admin@contoso.com",
-    "puid": "20030000801A118C",
-    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "9vckmEGF7zDKk1YzIY8k0t1_EAPaXoeHyPRn6f413zM",
-    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname": "John",
-    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname": "Smith",
-    "name": "John Smith",
-    "groups": "cacfe77c-e058-4712-83qw-f9b08849fd60,7f71d11d-4c41-4b23-99d2-d32ce7aa621c,31522864-0578-4ea0-9gdc-e66cc564d18c",
-    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name": " admin@contoso.com",
-    "appid": "c44b4083-3bq0-49c1-b47d-974e53cbdf3c",
-    "appidacr": "2",
-    "http://schemas.microsoft.com/identity/claims/scope": "user_impersonation",
-    "http://schemas.microsoft.com/claims/authnclassreference": "1"
-  },
-  "correlationId": "1e121103-0ba6-4300-ac9d-952bb5d0c80f",
-  "description": "",
-  "eventDataId": "44ade6b4-3813-45e6-ae27-7420a95fa2f8",
-  "eventName": {
-    "value": "EndRequest",
-    "localizedValue": "End request"
-  },
-  "httpRequest": {
-    "clientRequestId": "27003b25-91d3-418f-8eb1-29e537dcb249",
-    "clientIpAddress": "192.168.35.115",
-    "method": "PUT"
-  },
-  "id": "/subscriptions/s1/resourceGroups/MSSupportGroup/providers/microsoft.support/supporttickets/115012112305841/events/44ade6b4-3813-45e6-ae27-7420a95fa2f8/ticks/635574752669792776",
-  "level": "Informational",
-  "resourceGroupName": "MSSupportGroup",
-  "resourceProviderName": {
-    "value": "microsoft.support",
-    "localizedValue": "microsoft.support"
-  },
-  "resourceUri": "/subscriptions/s1/resourceGroups/MSSupportGroup/providers/microsoft.support/supporttickets/115012112305841",
-  "operationId": "1e121103-0ba6-4300-ac9d-952bb5d0c80f",
-  "operationName": {
-    "value": "microsoft.support/supporttickets/write",
-    "localizedValue": "microsoft.support/supporttickets/write"
-  },
-  "properties": {
-    "statusCode": "Created"
-  },
-  "status": {
-    "value": "Succeeded",
-    "localizedValue": "Succeeded"
-  },
-  "subStatus": {
-    "value": "Created",
-    "localizedValue": "Created (HTTP Status Code: 201)"
-  },
-  "eventTimestamp": "2015-01-21T22:14:26.9792776Z",
-  "submissionTimestamp": "2015-01-21T22:14:39.9936304Z",
-  "subscriptionId": "s1"
+    "authorization": {
+        "action": "Microsoft.Network/networkSecurityGroups/write",
+        "scope": "/subscriptions/dd042f02-6b3e-4f79-939a-6a381ffed3c0/resourcegroups/myResourceGroup/providers/Microsoft.Network/networkSecurityGroups/myNSG"
+    },
+    "caller": "rob@contoso.com",
+    "channels": "Operation",
+    "claims": {
+        "aud": "https://management.core.windows.net/",
+        "iss": "https://sts.windows.net/1114444b-7467-4144-a616-e3a5d63e147b/",
+        "iat": "1234567890",
+        "nbf": "1234567890",
+        "exp": "1234567890",
+        "_claim_names": "{\"groups\":\"src1\"}",
+        "_claim_sources": "{\"src1\":{\"endpoint\":\"https://graph.windows.net/1114444b-7467-4144-a616-e3a5d63e147b/users/f409edeb-4d29-44b5-9763-ee9348ad91bb/getMemberObjects\"}}",
+        "http://schemas.microsoft.com/claims/authnclassreference": "1",
+        "aio": "A3GgTJdwK4vy7Fa7l6DgJC2mI0GX44tML385OpU1Q+z+jaPnFMwB",
+        "http://schemas.microsoft.com/claims/authnmethodsreferences": "rsa,mfa",
+        "appid": "355249ed-15d9-460d-8481-84026b065942",
+        "appidacr": "2",
+        "http://schemas.microsoft.com/2012/01/devicecontext/claims/identifier": "10845a4d-ffa4-4b61-a3b4-e57b9b31cdb5",
+        "e_exp": "262800",
+        "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname": "Robertson",
+        "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname": "Rob",
+        "ipaddr": "111.111.1.111",
+        "name": "Rob Robertson",
+        "http://schemas.microsoft.com/identity/claims/objectidentifier": "f409edeb-4d29-44b5-9763-ee9348ad91bb",
+        "onprem_sid": "S-1-5-21-4837261184-168309720-1886587427-18514304",
+        "puid": "18247BBD84827C6D",
+        "http://schemas.microsoft.com/identity/claims/scope": "user_impersonation",
+        "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "b-24Jf94A3FH2sHWVIFqO3-RSJEiv24Jnif3gj7s",
+        "http://schemas.microsoft.com/identity/claims/tenantid": "1114444b-7467-4144-a616-e3a5d63e147b",
+        "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name": "rob@contoso.com",
+        "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "rob@contoso.com",
+        "uti": "IdP3SUJGtkGlt7dDQVRPAA",
+        "ver": "1.0"
+    },
+    "correlationId": "b5768deb-836b-41cc-803e-3f4de2f9e40b",
+    "eventDataId": "d0d36f97-b29c-4cd9-9d3d-ea2b92af3e9d",
+    "eventName": {
+        "value": "EndRequest",
+        "localizedValue": "End request"
+    },
+    "category": {
+        "value": "Administrative",
+        "localizedValue": "Administrative"
+    },
+    "eventTimestamp": "2018-01-29T20:42:31.3810679Z",
+    "id": "/subscriptions/dd042f02-6b3e-4f79-939a-6a381ffed3c0/resourcegroups/myResourceGroup/providers/Microsoft.Network/networkSecurityGroups/myNSG/events/d0d36f97-b29c-4cd9-9d3d-ea2b92af3e9d/ticks/636528553513810679",
+    "level": "Informational",
+    "operationId": "04e575f8-48d0-4c43-a8b3-78c4eb01d287",
+    "operationName": {
+        "value": "Microsoft.Network/networkSecurityGroups/write",
+        "localizedValue": "Microsoft.Network/networkSecurityGroups/write"
+    },
+    "resourceGroupName": "myResourceGroup",
+    "resourceProviderName": {
+        "value": "Microsoft.Network",
+        "localizedValue": "Microsoft.Network"
+    },
+    "resourceType": {
+        "value": "Microsoft.Network/networkSecurityGroups",
+        "localizedValue": "Microsoft.Network/networkSecurityGroups"
+    },
+    "resourceId": "/subscriptions/dd042f02-6b3e-4f79-939a-6a381ffed3c0/resourcegroups/myResourceGroup/providers/Microsoft.Network/networkSecurityGroups/myNSG",
+    "status": {
+        "value": "Succeeded",
+        "localizedValue": "Succeeded"
+    },
+    "subStatus": {
+        "value": "",
+        "localizedValue": ""
+    },
+    "submissionTimestamp": "2018-01-29T20:42:50.0724829Z",
+    "subscriptionId": "dd042f02-6b3e-4f79-939a-6a381ffed3c0",
+    "properties": {
+        "statusCode": "Created",
+        "serviceRequestId": "a4c11dbd-697e-47c5-9663-12362307157d",
+        "responseBody": "",
+        "requestbody": ""
+    },
+    "relatedEvents": []
 }
+
 ```
 
 ### <a name="property-descriptions"></a>Tulajdonság leírása
@@ -111,19 +124,19 @@ Ez a kategória tartalmazza az összes rekord létrehozása, update, delete és 
 | eventDataId |Az esemény egyedi azonosítója. |
 | httpRequest |A Http-kérelem leíró BLOB. Általában tartalmazza a "clientRequestId", "clientIpAddress" és "method" (HTTP-metódus. For example, amelyre az). |
 | szint |Az esemény szintje. A következő értékek egyikét: "Kritikus", "Error", "Figyelmeztetés", "Tájékoztató" és "Részletes" |
-| erőforráscsoport-név |Az érintett erőforrás az erőforráscsoport neve. |
+| resourceGroupName |Az érintett erőforrás az erőforráscsoport neve. |
 | resourceProviderName |Az erőforrás-szolgáltató az érintett erőforrás neve |
 | resourceId |Erőforrás-azonosító az érintett erőforrás. |
-| OperationID azonosítójú |Az eseményeket, amelyek megfelelnek egy művelettel között megosztott GUID. |
+| operationId |Az eseményeket, amelyek megfelelnek egy művelettel között megosztott GUID. |
 | operationName |A művelet neve. |
 | properties |Állítsa be a `<Key, Value>` az esemény részleteit leíró párok (Ez azt jelenti, hogy szótárában). |
 | status |A művelet állapotát leíró karakterlánc. Néhány gyakori értékek a következők: folyamatban van, sikeres, sikertelen, aktív, a lépések megoldva. |
 | a részállapot |Általában a megfelelő REST HTTP-állapotkód: hívja, de más a részállapot, például a gyakori értékek leíró karakterláncok is használható: OK (HTTP-állapotkód:: 200), létrehozott (HTTP-állapotkód:: 201-es), fogadja el (HTTP-állapotkód:: 202), nem tartalom (HTTP-állapotkód: 204), hibás kérés (HTTP-állapotkód:: 400), nem található (HTTP-állapotkód: 404-es), ütközés (HTTP-állapotkód: : 409), belső kiszolgálóhiba (HTTP-állapotkód: 500), a Service nem érhető el (HTTP-állapotkód: 503-as), átjáró időtúllépése (HTTP-állapotkód: 504). |
 | eventTimestamp |Az esemény az esemény megfelelő a kérés feldolgozása az Azure-szolgáltatás által kiváltott idejét jelző időbélyegző. |
 | submissionTimestamp |Az esemény váltak elérhetővé lekérdezése idejét jelző időbélyegző. |
-| subscriptionId |Az Azure előfizetés-azonosító. |
+| subscriptionId |Azure Subscription Id. |
 
-## <a name="service-health"></a>Szolgáltatás állapota
+## <a name="service-health"></a>Szolgáltatások állapota
 Ez a kategória bármely Azure-ban történt szolgáltatás állapotának események adatait tartalmazza. Az ebbe a kategóriába tartozó mutatunk be eseménytípusra példa: "USA keleti régiója az SQL Azure tapasztal állásidő." Szolgáltatás állapotával kapcsolatos események térjen öt fajta: beavatkozás szükséges, támogatott helyreállítási, incidens, karbantartási, adatokat vagy biztonsági, és csak jelenik meg, ha egy erőforrást, amely akkor negatív hatással lehet az esemény az előfizetést.
 
 ### <a name="sample-event"></a>Mintaesemény
@@ -189,26 +202,26 @@ csatornák | A következő értékek egyike: "Rendszergazda", "Művelet"
 correlationId | Az általában egy GUID, amely a karakterlánc-formátum. Ugyanaz a uber művelet tartozik, amely az események az azonos correlationId általában megosztani.
 leírás | Az esemény leírása.
 eventDataId | Az esemény egyedi azonosítója.
-EventName | Az esemény címe.
+eventName | Az esemény címe.
 szint | Az esemény szintje. A következő értékek egyikét: "Kritikus", "Error", "Figyelmeztetés", "Tájékoztató" és "Részletes"
 resourceProviderName | Az érintett erőforrás az erőforrás-szolgáltató neve. Ha nem ismeri, ez lehet null.
-a resourceType| Az erőforrás az érintett erőforrás típusát. Ha nem ismeri, ez lehet null.
+resourceType| Az erőforrás az érintett erőforrás típusát. Ha nem ismeri, ez lehet null.
 a részállapot | A szolgáltatás állapotával kapcsolatos események általában null értékű.
 eventTimestamp | A eseményének generált és a küldve a műveletnapló idejét jelző időbélyegző.
 submissionTimestamp |   Az esemény váltak elérhetővé a műveletnaplóban idejét jelző időbélyegző.
 subscriptionId | Az Azure-előfizetés, amelyben ez az esemény naplózásának.
 status | A művelet állapotát leíró karakterlánc. Néhány gyakori értékek a következők: aktív, a megoldott.
-operationName | A művelet neve. Általában Microsoft.ServiceHealth/incident/action.
+operationName | A művelet neve. Usually Microsoft.ServiceHealth/incident/action.
 category | "ServiceHealth"
 resourceId | Erőforrás-azonosító az érintett erőforrás, ha ismert. Ellenkező esetben van megadva előfizetés-azonosító.
-Properties.Title | Ez a kommunikáció honosított címét. Angol az alapértelmezett nyelv.
+Properties.title | Ez a kommunikáció honosított címét. Angol az alapértelmezett nyelv.
 Properties.Communication | A HTML-kódot szolgáltatással való kommunikációhoz honosított részleteit. Angol az alapértelmezett beállítás.
 Properties.incidentType | A lehetséges értékek: AssistedRecovery, ActionRequired, információk, incidens, karbantartási, biztonsági
 Properties.trackingId | Ez az esemény társítva van az incidens azonosítja. Ezzel az incidensekhez kapcsolódó eseményeket összefüggéseket.
 Properties.impactedServices | Az escape-karakterrel megjelölt JSON-blob a szolgáltatások és az incidens által érintett területek leíró. Szolgáltatások listáját, amelyek mindegyike rendelkezik egy szolgáltatásnév és ImpactedRegions, amelyek mindegyikének a RegionName listáját.
 Properties.defaultLanguageTitle | A kommunikáció, angol nyelven
 Properties.defaultLanguageContent | A kommunikáció vagy a html-kódot, vagy az egyszerű szöveg angol nyelven
-Properties.Stage | AssistedRecovery, a ActionRequired, a információkat, az incidensek, a biztonsági a lehetséges értékek: aktív, amelyek megoldva. A karbantartás vannak: aktív, tervezett, esetbejegyzések, visszavonva, Rescheduled, megoldva, kész
+Properties.stage | AssistedRecovery, a ActionRequired, a információkat, az incidensek, a biztonsági a lehetséges értékek: aktív, amelyek megoldva. A karbantartás vannak: aktív, tervezett, esetbejegyzések, visszavonva, Rescheduled, megoldva, kész
 Properties.communicationId | A kommunikáció ezt az eseményt hozzá rendelve.
 
 ## <a name="alert"></a>Riasztás
@@ -278,24 +291,24 @@ Ez a kategória valamennyi aktiváláshoz Azure riasztások adatait tartalmazza.
 ### <a name="property-descriptions"></a>Tulajdonság leírása
 | Elem neve | Leírás |
 | --- | --- |
-| hívó | Mindig Microsoft.Insights/alertRules |
+| hívó | Always Microsoft.Insights/alertRules |
 | csatornák | Mindig "rendszergazda, a művelet" |
 | Jogcímek | JSON-blob a SPN (egyszerű szolgáltatásnév), vagy az erőforrás típusát, a riasztás motor. |
 | correlationId | A karakterlánc-formátum GUID azonosítója. |
 | leírás |A figyelmeztetési esemény statikus szöveges leírása. |
 | eventDataId |A riasztási eseménynek egyedi azonosítója. |
 | szint |Az esemény szintje. A következő értékek egyikét: "Kritikus", "Error", "Figyelmeztetés", "Tájékoztató" és "Részletes" |
-| erőforráscsoport-név |Ha egy metrika riasztás az érintett erőforrás az erőforráscsoport neve. Más riasztástípusok ettől esetén ez a riasztás saját magát tartalmazó erőforráscsoport nevét. |
+| resourceGroupName |Ha egy metrika riasztás az érintett erőforrás az erőforráscsoport neve. Más riasztástípusok ettől esetén ez a riasztás saját magát tartalmazó erőforráscsoport nevét. |
 | resourceProviderName |Ha egy metrika riasztás az érintett erőforrás az erőforrás-szolgáltató neve. A más típusú Ez az erőforrás-szolgáltató magát a riasztás nevét. |
 | resourceId | Az erőforrás-azonosító a metrika riasztások esetén érintett erőforrás neve. A más típusú Ez az erőforrás-azonosítója, a riasztás erőforrás magát. |
-| OperationID azonosítójú |Az eseményeket, amelyek megfelelnek egy művelettel között megosztott GUID. |
+| operationId |Az eseményeket, amelyek megfelelnek egy művelettel között megosztott GUID. |
 | operationName |A művelet neve. |
 | properties |Állítsa be a `<Key, Value>` az esemény részleteit leíró párok (Ez azt jelenti, hogy szótárában). |
 | status |A művelet állapotát leíró karakterlánc. Néhány gyakori értékek a következők: folyamatban van, sikeres, sikertelen, aktív, a lépések megoldva. |
 | a részállapot | A riasztások általában null értékű. |
 | eventTimestamp |Az esemény az esemény megfelelő a kérés feldolgozása az Azure-szolgáltatás által kiváltott idejét jelző időbélyegző. |
 | submissionTimestamp |Az esemény váltak elérhetővé lekérdezése idejét jelző időbélyegző. |
-| subscriptionId |Az Azure előfizetés-azonosító. |
+| subscriptionId |Azure Subscription Id. |
 
 ### <a name="properties-field-per-alert-type"></a>Tulajdonságok mező szerepeljen riasztás típusa
 A Tulajdonságok mező attól függően, hogy a riasztás esemény forrását különböző értékeket fogja tartalmazni. Két közös riasztási eseménynek szolgáltatók a következők: tevékenységnapló riasztások és metrika riasztásokat.
@@ -309,20 +322,20 @@ A Tulajdonságok mező attól függően, hogy a riasztás esemény forrását k�
 | properties.resourceId | A tevékenység napló riasztási szabály által aktiválható okozó tevékenység napló esemény az erőforrás-azonosító. |
 | properties.eventTimestamp | A tevékenység eseményének tevékenység napló riasztási szabály által aktiválható okozó esemény időbélyegzője. |
 | properties.operationName | A tevékenység napló riasztási szabály által aktiválható okozó tevékenység napló esemény művelet neve. |
-| Properties.status | A tevékenység napló riasztási szabály által aktiválható okozó tevékenység napló esemény állapotát.|
+| properties.status | A tevékenység napló riasztási szabály által aktiválható okozó tevékenység napló esemény állapotát.|
 
 #### <a name="properties-for-metric-alerts"></a>A metrika riasztások tulajdonságai
 | Elem neve | Leírás |
 | --- | --- |
-| tulajdonságok. RuleUri | Erőforrás-azonosító a metrika riasztási szabály saját magát. |
-| tulajdonságok. Szabálynév | A metrika riasztási szabály neve. |
-| tulajdonságok. RuleDescription | A metrika riasztási szabály (meghatározottak szerint a riasztási szabály) leírása. |
-| tulajdonságok. Küszöbérték | A küszöbérték, a metrika riasztási szabály kiértékelésekor. |
-| tulajdonságok. WindowSizeInMinutes | Az ablak mérete a metrika riasztási szabály kiértékelésekor. |
-| tulajdonságok. Összesítés | Az összesítési típusát a metrika riasztási szabályban definiált. |
+| properties.RuleUri | Erőforrás-azonosító a metrika riasztási szabály saját magát. |
+| properties.RuleName | A metrika riasztási szabály neve. |
+| properties.RuleDescription | A metrika riasztási szabály (meghatározottak szerint a riasztási szabály) leírása. |
+| properties.Threshold | A küszöbérték, a metrika riasztási szabály kiértékelésekor. |
+| properties.WindowSizeInMinutes | Az ablak mérete a metrika riasztási szabály kiértékelésekor. |
+| properties.Aggregation | Az összesítési típusát a metrika riasztási szabályban definiált. |
 | tulajdonságok. Operátor | A metrika riasztási szabály értékeléséhez feltételes operátort. |
-| tulajdonságok. MetricName | A metrika a metrika riasztási szabály értékeléséhez metrika neve. |
-| tulajdonságok. MetricUnit | A metrika egység a metrika a metrika riasztási szabály kiértékelésekor. |
+| properties.MetricName | A metrika a metrika riasztási szabály értékeléséhez metrika neve. |
+| properties.MetricUnit | A metrika egység a metrika a metrika riasztási szabály kiértékelésekor. |
 
 ## <a name="autoscale"></a>Automatikus méretezés
 Ez a kategória tartalmazza a rekord a a művelethez az automatikus skálázás motor bármely adta meg az előfizetés automatikus skálázás beállításai alapján a kapcsolódó események. Az ebbe a kategóriába tartozó mutatunk be eseménytípusra példa, hogy "Automatikus skálázás felskálázott művelete nem sikerült." Használja az automatikus skálázás, automatikusan horizontális felskálázás vagy méretezni támogatott erőforrástípus található példányok száma a nap és/vagy terhelés (mérték) adatok az automatikus skálázási beállítás használatával ideje alapján. Ha a feltételek teljesül méretezése felfelé vagy lefelé a start és sikeres vagy sikertelen események rögzítése ebbe a kategóriába tartozó.
@@ -387,29 +400,29 @@ Ez a kategória tartalmazza a rekord a a művelethez az automatikus skálázás 
 ### <a name="property-descriptions"></a>Tulajdonság leírása
 | Elem neve | Leírás |
 | --- | --- |
-| hívó | Mindig Microsoft.Insights/autoscaleSettings |
+| hívó | Always Microsoft.Insights/autoscaleSettings |
 | csatornák | Mindig "rendszergazda, a művelet" |
 | Jogcímek | JSON-blob a SPN (egyszerű szolgáltatásnév), vagy az erőforrás típusát, az automatikus skálázás motor. |
 | correlationId | A karakterlánc-formátum GUID azonosítója. |
 | leírás |Az automatikus skálázás esemény statikus szöveges leírása. |
 | eventDataId |Az automatikus skálázás esemény egyedi azonosítója. |
 | szint |Az esemény szintje. A következő értékek egyikét: "Kritikus", "Error", "Figyelmeztetés", "Tájékoztató" és "Részletes" |
-| erőforráscsoport-név |Az automatikus skálázási beállítás az erőforráscsoport neve. |
+| resourceGroupName |Az automatikus skálázási beállítás az erőforráscsoport neve. |
 | resourceProviderName |Az automatikus skálázási beállítás az erőforrás-szolgáltató neve. |
 | resourceId |Erőforrás-azonosító automatikus skálázási beállítás. |
-| OperationID azonosítójú |Az eseményeket, amelyek megfelelnek egy művelettel között megosztott GUID. |
+| operationId |Az eseményeket, amelyek megfelelnek egy művelettel között megosztott GUID. |
 | operationName |A művelet neve. |
 | properties |Állítsa be a `<Key, Value>` az esemény részleteit leíró párok (Ez azt jelenti, hogy szótárában). |
-| tulajdonságok. Leírás | Az automatikus skálázás motor tevékenységeit részletes leírása. |
-| tulajdonságok. ResourceName | Erőforrás-azonosító az érintett erőforrás (az erőforrás, amelyen a skálázási művelet végrehajtása) |
-| tulajdonságok. OldInstancesCount | Az automatikus skálázási művelet előtt példányok alkalmaztak. |
-| tulajdonságok. NewInstancesCount | Miután az automatikus skálázási művelet végrehajtásának hatása példányok száma. |
-| tulajdonságok. LastScaleActionTime | Ha az automatikus skálázási művelet történt időbélyegzője. |
+| properties.Description | Az automatikus skálázás motor tevékenységeit részletes leírása. |
+| properties.ResourceName | Erőforrás-azonosító az érintett erőforrás (az erőforrás, amelyen a skálázási művelet végrehajtása) |
+| properties.OldInstancesCount | Az automatikus skálázási művelet előtt példányok alkalmaztak. |
+| properties.NewInstancesCount | Miután az automatikus skálázási művelet végrehajtásának hatása példányok száma. |
+| properties.LastScaleActionTime | Ha az automatikus skálázási művelet történt időbélyegzője. |
 | status |A művelet állapotát leíró karakterlánc. Néhány gyakori értékek a következők: folyamatban van, sikeres, sikertelen, aktív, a lépések megoldva. |
 | a részállapot | Az automatikus skálázás általában null értékű. |
 | eventTimestamp |Az esemény az esemény megfelelő a kérés feldolgozása az Azure-szolgáltatás által kiváltott idejét jelző időbélyegző. |
 | submissionTimestamp |Az esemény váltak elérhetővé lekérdezése idejét jelző időbélyegző. |
-| subscriptionId |Az Azure előfizetés-azonosító. |
+| subscriptionId |Azure Subscription Id. |
 
 ## <a name="security"></a>Biztonság
 Ez a kategória tartalmazza azt a bejegyzést, az Azure Security Center által előállított riasztások. Az ebbe a kategóriába tartozó mutatunk be eseménytípusra példa, hogy "gyanús dupla bővítményfájl végrehajtása."
@@ -481,23 +494,23 @@ Ez a kategória tartalmazza azt a bejegyzést, az Azure Security Center által e
 | correlationId | A karakterlánc-formátum GUID azonosítója. |
 | leírás |A biztonsági esemény statikus szöveges leírása. |
 | eventDataId |A biztonsági esemény egyedi azonosítója. |
-| EventName |A biztonsági események rövid neve. |
+| eventName |A biztonsági események rövid neve. |
 | id |A biztonsági esemény egyedi erőforrás-azonosítója. |
 | szint |Az esemény szintje. A következő értékek egyikét: "Kritikus", "Error", "Figyelmeztetés", "Tájékoztató" vagy a "Részletes" |
-| erőforráscsoport-név |Az erőforrás az erőforráscsoport neve. |
-| resourceProviderName |Az Azure Security Center az erőforrás-szolgáltató neve. Mindig "Microsoft.Security." |
-| a resourceType |Az erőforrás által generált biztonsági esemény, például a "Microsoft.Security/locations/alerts" típusát |
+| resourceGroupName |Az erőforrás az erőforráscsoport neve. |
+| resourceProviderName |Az Azure Security Center az erőforrás-szolgáltató neve. Always "Microsoft.Security". |
+| resourceType |Az erőforrás által generált biztonsági esemény, például a "Microsoft.Security/locations/alerts" típusát |
 | resourceId |A biztonsági figyelmeztetés erőforrás-azonosító. |
-| OperationID azonosítójú |Az eseményeket, amelyek megfelelnek egy művelettel között megosztott GUID. |
+| operationId |Az eseményeket, amelyek megfelelnek egy művelettel között megosztott GUID. |
 | operationName |A művelet neve. |
 | properties |Állítsa be a `<Key, Value>` az esemény részleteit leíró párok (Ez azt jelenti, hogy szótárában). Ezek a Tulajdonságok biztonsági riasztás típusától függően változhat. Lásd: [ezen a lapon](../security-center/security-center-alerts-type.md) a riasztástípusokat, amelyekről a Security Center származhat leírását. |
-| tulajdonságok. Súlyosság: |A súlyossági szintet. A lehetséges értékek: "Felső", "Közepes" vagy "Alacsony". |
+| properties.Severity |A súlyossági szintet. A lehetséges értékek: "Felső", "Közepes" vagy "Alacsony". |
 | status |A művelet állapotát leíró karakterlánc. Néhány gyakori értékek a következők: folyamatban van, sikeres, sikertelen, aktív, a lépések megoldva. |
 | a részállapot | Biztonsági események rendszerint null értékű. |
 | eventTimestamp |Az esemény az esemény megfelelő a kérés feldolgozása az Azure-szolgáltatás által kiváltott idejét jelző időbélyegző. |
 | submissionTimestamp |Az esemény váltak elérhetővé lekérdezése idejét jelző időbélyegző. |
-| subscriptionId |Az Azure előfizetés-azonosító. |
+| subscriptionId |Azure Subscription Id. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [További információ a tevékenységnapló (korábbi nevén naplók)](monitoring-overview-activity-logs.md)
 * [Az Event hubs Azure tevékenységnapló adatfolyam](monitoring-stream-activity-logs-event-hubs.md)

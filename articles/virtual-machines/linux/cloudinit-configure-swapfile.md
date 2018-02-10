@@ -14,11 +14,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: a8ccec0dc8ff100c5d067cd50f2a6fa8cb4871fb
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 7f9defc1f414819cf856fc92f5eb51eafdc67be9
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="use-cloud-init-to-configure-a-swapfile-on-a-linux-vm"></a>A lapozófájl konfigurálása a Linux virtuális gép felhőalapú inicializálás segítségével
 Ez a cikk bemutatja, hogyan használható [felhő inicializálás](https://cloudinit.readthedocs.io) konfigurálása a lapozófájl különböző Linux terjesztéseket. A lapozófájl hagyományosan konfigurálása által a Linux ügynök (WALA) alapján mely azokat a terjesztéseket egy szükséges.  Ez a dokumentum fog szerkezeti üzembe helyezési időt felhő inicializálás közben a lapozófájl kiépítése során.  Felhő inicializálás működése natív Azure-ban és a Linux támogatott disztribúciókkal kapcsolatos további információkért lásd: [felhő inicializálás áttekintése](using-cloud-init.md)
@@ -28,7 +28,7 @@ Ubuntu gyűjtemény lemezképei Azure alapértelmezés szerint ne hozzon létre 
 
 ## <a name="create-swapfile-for-redhat-and-centos-based-images"></a>Lapozófájl RedHat és CentOS alapján lemezképek létrehozása
 
-Hozzon létre egy fájlt az aktuális rendszerhéjban nevű *cloud_init_swapfile.txt* , majd illessze be a következő konfigurációt. Hozzon létre a fájl ebben a példában a felhő rendszerhéj nem a helyi számítógépen. A szerkesztő kívánja használata. Adja meg `sensible-editor cloud_init_swapfile.txt` hozza létre a fájlt, és elérhető szerkesztők listájának megtekintéséhez. Válassza ki a használandó #1 a **nano** szerkesztő. Győződjön meg arról, hogy az egész felhő inicializálás fájl megfelelően lett lemásolva különösen az első sor.  
+Hozzon létre egy fájlt az aktuális rendszerhéjban nevű *cloud_init_swapfile.txt* , majd illessze be a következő konfigurációt. Hozzon létre a fájl ebben a példában a felhő rendszerhéj nem a helyi számítógépen. A szerkesztő kívánja használata. Írja be a `sensible-editor cloud_init_swapfile.txt` parancsot a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. Válassza ki a használandó #1 a **nano** szerkesztő. Győződjön meg arról, hogy az egész felhő inicializálás fájl megfelelően lett lemásolva különösen az első sor.  
 
 ```yaml
 #cloud-config
@@ -47,13 +47,13 @@ mounts:
 - ["ephemeral0.2", "none", "swap", "sw", "0", "0"]
 ```
 
-Ez a rendszerkép telepítés megkezdése előtt hozzon létre egy erőforráscsoportot a kell a [az csoport létrehozása](/cli/azure/group#create) parancsot. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
+Ez a rendszerkép telepítés megkezdése előtt hozzon létre egy erőforráscsoportot a kell a [az csoport létrehozása](/cli/azure/group#az_group_create) parancsot. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-Ezután hozzon létre a virtuális gép és [az virtuális gép létrehozása](/cli/azure/vm#create) , és adja meg a felhő inicializálás fájl `--custom-data cloud_init_swapfile.txt` az alábbiak szerint:
+Ezután hozzon létre a virtuális gép és [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create) , és adja meg a felhő inicializálás fájl `--custom-data cloud_init_swapfile.txt` az alábbiak szerint:
 
 ```azurecli-interactive 
 az vm create \
@@ -87,7 +87,7 @@ Filename                Type        Size    Used    Priority
 > [!NOTE] 
 > Ha egy meglévő Azure-rendszerképet, amely rendelkezik beállított lapozófájl rendelkezik, és új képek swap fájl konfigurációjának módosításához, el kell távolítania a meglévő lapozófájl. "Testreszabás képek kiépítését felhő inicializálás" dokumentum további részletekért tekintse meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Konfigurációs módosítások további felhőalapú inicializálás példákért lásd a következő:
  
 - [Egy további Linux-felhasználó hozzáadása a virtuális gépek](cloudinit-add-user.md)

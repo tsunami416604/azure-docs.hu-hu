@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 8842adcc00a1230f252411d64c22d497faeec5b2
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 8816885a7703e89c53bbfd839c9e7eb1337c3879
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-hive-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával struktúra 
 
@@ -54,7 +54,7 @@ A következő tulajdonságok Hive kapcsolódó szolgáltatás támogatottak:
 | zooKeeperNameSpace | ZooKeeper alapján mely Hive Server 2 csomópontokat ad hozzá a névteret.  | Nem |
 | useNativeQuery | Megadja, hogy az illesztőprogram natív HiveQL-lekérdezést használja-e, vagy egy egyenértékű űrlap HiveQL alakítja azokat.  | Nem |
 | felhasználónév | A Hive-kiszolgáló eléréséhez használt felhasználónév.  | Nem |
-| jelszó | A jelszót, amit a felhasználónév mezőben megadott felhasználónév megfelelő esetén dönthet úgy, hogy a SecureString tárolja biztonságos helyen az ADF, vagy az Azure Key Vault jelszó tárolására, és lehetővé teszik a másolási tevékenység lekéréses ott adatmásolás - végrehajtása során, a jelölőnégyzet bejelölésével vezetővonalak a további RN [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). | Nem |
+| jelszó | A jelszót a felhasználónak megfelelő. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Nem |
 | httpPath | A részleges URL-címet a Hive-kiszolgáló megfelelő.  | Nem |
 | enableSsl | Meghatározza, hogy a kapcsolat titkosítása SSL használatával. Az alapértelmezett értéke hamis.  | Nem |
 | trustedCertPath | Megbízható Hitelesítésszolgáltatói tanúsítványok ellenőrzése a kiszolgáló SSL-en keresztül kapcsolódáskor tartalmazó .pem fájl teljes elérési útja. Ez a tulajdonság csak akkor állítható, önálló üzemeltetett infravörös SSL használatakor Az alapértelmezett érték a cacerts.pem fájlt az infravörös telepített:  | Nem |

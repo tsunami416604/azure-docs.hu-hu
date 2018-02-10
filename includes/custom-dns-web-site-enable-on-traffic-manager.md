@@ -26,5 +26,5 @@ Ha nem már hozzáadta a webes alkalmazás a Traffic Manager-végpontként, ezt 
    
    Az egyéni tartománynév konfiguráció befejezése után megjelenik a **tartománynevek** webalkalmazás szakasz.
 
-Ezen a ponton meg kell tudni adja meg a Traffic Manager tartományneve a böngészőben, és tekintse meg, hogy sikeresen tart, a webes alkalmazást.
+Ezen a ponton kell lennie a Traffic Manager tartománynevének megadása a böngészőben, és tekintse meg, hogy sikeresen tart, a webes alkalmazást.
 

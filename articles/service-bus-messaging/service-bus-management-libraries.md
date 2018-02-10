@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/18/2017
+ms.date: 02/05/2018
 ms.author: sethm
-ms.openlocfilehash: 3b7096a073b509217a6ed29b53f88f912e6613f6
-ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
+ms.openlocfilehash: 7946958bec8b2f444155b5a9701f1f7401fe4f3c
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="service-bus-management-libraries"></a>A Service Bus kezelési kódtárakat
 
@@ -33,7 +33,7 @@ Az Azure Service Bus-kezelési kódtárakat dinamikusan építhető ki a Service
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Első lépésként használatával a Service Bus-kezelési kódtárakat, hitelesítenie kell az Azure Active Directory (AAD) szolgáltatással. Az AAD megköveteli, hogy hitelesítse magát egy egyszerű szolgáltatást, amely az Azure-erőforrások hozzáférést tesz lehetővé. Egyszerű szolgáltatás létrehozása kapcsolatos információkért tekintse meg a következő cikkeket:  
+Első lépésként használatával a Service Bus-kezelési kódtárakat, hitelesítenie kell az Azure Active Directory (Azure AD) szolgáltatásban. Az Azure AD szükséges, hogy hitelesítse magát egy egyszerű szolgáltatást, amely az Azure-erőforrások hozzáférést tesz lehetővé. Egyszerű szolgáltatás létrehozása kapcsolatos információkért tekintse meg a következő cikkeket:  
 
 * [Active Directory-alkalmazás és az erőforrások eléréséhez egyszerű szolgáltatás létrehozása az Azure-portál használatával](/azure/azure-resource-manager/resource-group-create-service-principal-portal)
 * [Szolgáltatásnév létrehozása erőforrások eléréséhez az Azure PowerShell használatával](/azure/azure-resource-manager/resource-group-authenticate-service-principal)
@@ -45,13 +45,13 @@ Ezek az oktatóanyagok biztosítanak egy `AppId` (ügyfél-azonosító), `Tenant
 
 A minta segítségével kezelheti a Service Bus-erőforrásoknál egy közös protokollt követi:
 
-1. Az Azure Active Directory használatával jogkivonat beszerzése az **Microsoft.IdentityModel.Clients.ActiveDirectory** könyvtárban.
+1. Az Azure AD használatával jogkivonat beszerzése az **Microsoft.IdentityModel.Clients.ActiveDirectory** könyvtár:
    ```csharp
    var context = new AuthenticationContext($"https://login.microsoftonline.com/{tenantId}");
 
    var result = await context.AcquireTokenAsync("https://management.core.windows.net/", new ClientCredential(clientId, clientSecret));
    ```
-2. Hozzon létre a `ServiceBusManagementClient` objektum.
+2. Hozzon létre a `ServiceBusManagementClient` objektum:
 
    ```csharp
    var creds = new TokenCredentials(token);
@@ -60,7 +60,7 @@ A minta segítségével kezelheti a Service Bus-erőforrásoknál egy közös pr
        SubscriptionId = SettingsCache["SubscriptionId"]
    };
    ```
-3. Állítsa be a `CreateOrUpdate` paramétereit, és a megadott értékeket.
+3. Állítsa be a `CreateOrUpdate` paramétereit, és a megadott értékek:
 
    ```csharp
    var queueParams = new QueueCreateOrUpdateParameters()
@@ -69,12 +69,13 @@ A minta segítségével kezelheti a Service Bus-erőforrásoknál egy közös pr
        EnablePartitioning = true
    };
    ```
-4. A hívás végrehajtása.
+4. A hívás végrehajtása:
 
    ```csharp
    await sbClient.Queues.CreateOrUpdateAsync(resourceGroupName, namespaceName, QueueName, queueParams);
    ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
+
 * [.NET felügyeleti minta](https://github.com/Azure-Samples/service-bus-dotnet-management/)
-* [Microsoft.Azure.Management.ServiceBus API-referencia](/dotnet/api/Microsoft.Azure.Management.ServiceBus)
+* [Microsoft.Azure.Management.ServiceBus API reference](/dotnet/api/Microsoft.Azure.Management.ServiceBus)

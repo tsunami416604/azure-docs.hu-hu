@@ -15,27 +15,27 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/24/2017
 ms.author: singhkay
-ms.openlocfilehash: 2cc9b4c978e9a4deb0c8443c4b0f9e301a7cf492
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: afb8fce7ce7ef432518c58cb6f58951337aebcff
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-set-up-key-vault-for-virtual-machines-with-the-azure-cli-20"></a>A virtuális gépek az Azure CLI 2.0 Key Vault beállítása
 
 Az Azure Resource Manager-készletben, a titkos kulcsokat vagy tanúsítványokat Key Vault által biztosított erőforrásokhoz van modellezve. Az Azure Key Vault kapcsolatos további információkért lásd: [Mi az Azure Key Vault?](../../key-vault/key-vault-whatis.md) Ahhoz, hogy az Azure Resource Manager virtuális gépekhez használni kívánt Key Vault a *EnabledForDeployment* be kell állítani a Key Vault tulajdonságot igaz értékre. Ez a cikk bemutatja, hogyan használható az Azure virtuális gépekkel (VM) használata az Azure CLI 2.0 Key Vault beállítása. Az [Azure CLI 1.0-s](key-vault-setup-cli-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) verziójával is elvégezheti ezeket a lépéseket.
 
-A következő lépésekkel lesz szüksége a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett az Azure-fiók használatával [az bejelentkezési](/cli/azure/#login).
+A következő lépésekkel lesz szüksége a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett az Azure-fiók használatával [az bejelentkezési](/cli/azure/#az_login).
 
 ## <a name="create-a-key-vault"></a>Kulcstartó létrehozása
-Hozzon létre egy kulcstartót és a központi telepítési házirend hozzárendelése [az keyvault létrehozása](/cli/azure/keyvault#create). Az alábbi példakód létrehozza nevű kulcstároló `myKeyVault` a a `myResourceGroup` erőforráscsoport:
+Hozzon létre egy kulcstartót és a központi telepítési házirend hozzárendelése [az keyvault létrehozása](/cli/azure/keyvault#az_keyvault_create). Az alábbi példakód létrehozza nevű kulcstároló `myKeyVault` a a `myResourceGroup` erőforráscsoport:
 
 ```azurecli
 az keyvault create -l westus -n myKeyVault -g myResourceGroup --enabled-for-deployment true
 ```
 
 ## <a name="update-a-key-vault-for-use-with-vms"></a>Frissítés a kulcstároló, használja a virtuális gépek
-A tároló a központi telepítés házirendet, a meglévő kulcs set [az keyvault frissítés](/cli/azure/keyvault#update). A következő frissítése a kulcstartót nevű `myKeyVault` a a `myResourceGroup` erőforráscsoport:
+A tároló a központi telepítés házirendet, a meglévő kulcs set [az keyvault frissítés](/cli/azure/keyvault#az_keyvault_update). A következő frissítése a kulcstartót nevű `myKeyVault` a a `myResourceGroup` erőforráscsoport:
 
 ```azurecli
 az keyvault update -n myKeyVault -g myResourceGroup --set properties.enabledForDeployment=true
@@ -58,5 +58,5 @@ Amikor egy sablont használ, meg kell adnia a `enabledForDeployment` tulajdonsá
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Más beállításokat konfigurálhatja, ha a sablonok használatával hoz létre a kulcstároló, lásd: [hozzon létre egy kulcstartót](https://azure.microsoft.com/documentation/templates/101-key-vault-create/).

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: jdial
-ms.openlocfilehash: 0d3f4a83b654315a5ff9344594323c5dcb801e77
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 6a4a4d29cbfa8a695ed1ad3f007e6ff3e859bda4
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Létrehozása, módosítása vagy a virtuális hálózat törlése
 
@@ -81,7 +81,7 @@ Virtuális hálózat létrehozása:
 
 |Eszköz|Parancs|
 |---|---|
-|Azure CLI|[az hálózati virtuális hálózat létrehozása](/cli/azure/network/vnet?toc=%2fazure%2fvirtual-network%2ftoc.json#create)|
+|Azure CLI|[az hálózati virtuális hálózat létrehozása](/cli/azure/network/vnet?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_vnet_create)|
 |PowerShell|[New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name = "view-vnet"></a>Virtuális hálózatok megjelenítése és beállítások
@@ -115,7 +115,7 @@ Virtuális hálózatok és beállítások megtekintéséhez:
 
 |Eszköz|Parancs|
 |---|---|
-|Azure CLI|[az hálózati vnet megjelenítése](/cli/azure/network/vnet?toc=%2fazure%2fvirtual-network%2ftoc.json#show)|
+|Azure CLI|[az hálózati vnet megjelenítése](/cli/azure/network/vnet?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_vnet_show)|
 |PowerShell|[Get-AzureRmVirtualNetwork](/powershell/module/azurerm.network/get-azurermvirtualnetwork/?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 
@@ -144,7 +144,7 @@ Adja hozzá, vagy távolítsa el az-címtér:
 
 |Eszköz|Parancs|
 |---|---|
-|Azure CLI|Csak az erőforrás-kezelő|[az hálózat virtuális hálózat frissítése](/cli/azure/network/vnet?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
+|Azure CLI|Csak az erőforrás-kezelő|[az hálózat virtuális hálózat frissítése](/cli/azure/network/vnet?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_vnet_update)|
 |PowerShell|[Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="dns-servers"></a>Hozzáadása, módosítása vagy eltávolítása a DNS-kiszolgáló
@@ -169,7 +169,7 @@ Minden virtuális gépek csatlakoznak-e a virtuális hálózati register állít
 
 |Eszköz|Parancs|
 |---|---|
-|Azure CLI|[az hálózat virtuális hálózat frissítése](/cli/azure/network/vnet?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
+|Azure CLI|[az hálózat virtuális hálózat frissítése](/cli/azure/network/vnet?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_vnet_update)|
 |PowerShell|[Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="delete-vnet"></a>A virtuális hálózat törlése
@@ -188,7 +188,7 @@ Virtuális hálózat csak akkor, ha nincsenek erőforrások csatlakozik, vagy t�
 
 |Eszköz|Parancs|
 |---|---|
-|Azure CLI|[Azure-hálózat virtuális hálózat törlése](/cli/azure/network/vnet?toc=%2fazure%2fvirtual-network%2ftoc.json#delete)|
+|Azure CLI|[Azure-hálózat virtuális hálózat törlése](/cli/azure/network/vnet?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_vnet_delete)|
 |PowerShell|[Remove-AzureRmVirtualNetwork](/powershell/module/azurerm.network/remove-azurermvirtualnetwork?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 

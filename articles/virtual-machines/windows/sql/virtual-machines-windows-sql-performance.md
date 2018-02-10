@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 06/27/2017
+ms.date: 01/29/2018
 ms.author: jroth
-ms.openlocfilehash: 03580952800e595125fc48d169f7d4aa7846dd3f
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 6eb55c3d1f339a621050de6b239f840d2cff63fa
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="performance-best-practices-for-sql-server-in-azure-virtual-machines"></a>Ajánlott eljárások az SQL Server teljesítményének Azure Virtual Machines szolgáltatásbeli növeléséhez
 
 ## <a name="overview"></a>Áttekintés
 
-Ez a témakör gyakorlati tanácsokat megfelelően a Microsoft Azure virtuális gép az SQL Server teljesítményének optimalizálásához. SQL Server rendszert futtató Azure virtuális gépeken, miközben azt javasoljuk, hogy folytatja a helyszíni környezetben SQL Server megfelelő lehetőségeket teljesítményhangolás ugyanazon adatbázis használatával. A nyilvános felhőben egy relációs adatbázis teljesítménye azonban, például egy virtuális gép méretét, és az adatlemezek konfigurációjának számos tényezőtől függ.
+Ez a cikk a következő gyakorlati tanácsokat megfelelően a Microsoft Azure virtuális gép az SQL Server teljesítményének optimalizálásához. SQL Server rendszert futtató Azure virtuális gépeken, miközben azt javasoljuk, hogy folytatja a helyszíni környezetben SQL Server megfelelő lehetőségeket teljesítményhangolás ugyanazon adatbázis használatával. A nyilvános felhőben egy relációs adatbázis teljesítménye azonban, például egy virtuális gép méretét, és az adatlemezek konfigurációjának számos tényezőtől függ.
 
 SQL Server-lemezképek létrehozásakor [fontolja meg a virtuális gépek Azure-portálon kiépítés](virtual-machines-windows-portal-sql-server-provision.md). SQL Server virtuális gépen a portálon a Resource Manager üzembe kövesse a bevált gyakorlatokat.
 
@@ -40,10 +40,10 @@ A következő az optimális teljesítmény érdekében az SQL Server Azure virtu
 | Terület | Optimalizálás. |
 | --- | --- |
 | [Virtuálisgép-mérettel](#vm-size-guidance) |[DS3](../../virtual-machines-windows-sizes-memory.md) vagy újabb SQL Enterprise Edition.<br/><br/>[DS2](../../virtual-machines-windows-sizes-memory.md) vagy újabb SQL Standard és Web kiadások. |
-| [Tárolás](#storage-guidance) |Használjon [prémium szintű Storage](../premium-storage.md). Standard szintű tárolót csak fejlesztési és tesztelési célú ajánlott.<br/><br/>Tartsa a [tárfiók](../../../storage/common/storage-create-storage-account.md) és az SQL Server virtuális gép ugyanabban a régióban.<br/><br/>Tiltsa le az Azure [georedundáns tárolás](../../../storage/common/storage-redundancy.md) (georeplikáció) a tárfiók. |
+| [Storage](#storage-guidance) |Használjon [prémium szintű Storage](../premium-storage.md). Standard szintű tárolót csak fejlesztési és tesztelési célú ajánlott.<br/><br/>Tartsa a [tárfiók](../../../storage/common/storage-create-storage-account.md) és az SQL Server virtuális gép ugyanabban a régióban.<br/><br/>Tiltsa le az Azure [georedundáns tárolás](../../../storage/common/storage-redundancy.md) (georeplikáció) a tárfiók. |
 | [Lemezek](#disks-guidance) |Legalább 2 használja [P30 lemezek](../premium-storage.md#scalability-and-performance-targets) (1. a naplófájlok; 1. az adatfájlok és a TempDB).<br/><br/>Ne használja az operációs rendszer vagy ideiglenes lemezek adatbázistár vagy naplózás.<br/><br/>Enable olvassa el a lemez(ek) az adatfájlok és a TempDB üzemeltető gyorsítótárazás.<br/><br/>Ne engedélyezze a naplófájl üzemeltető lemez(ek) gyorsítótárazás.<br/><br/>Fontos: Az SQL Server szolgáltatás leállítása egy Azure virtuális lemezt a gyorsítótár beállításainak módosításakor.<br/><br/>Paritásos több Azure adatlemezek nagyobb IO átviteli sebesség eléréséhez.<br/><br/>Formázza a dokumentált lemezfoglalás méretét. |
 | [I/O](#io-guidance) |Adatbázis lap tömörítésének engedélyezéséhez.<br/><br/>Az adatfájlok azonnali fájlinicializálása engedélyezése.<br/><br/>Korlátozható, vagy tiltsa le az adatbázis automatikus növekedésre.<br/><br/>Tiltsa le az adatbázis autoshrink.<br/><br/>Összes adatbázis áthelyezése adatlemezek, beleértve a rendszer-adatbázisokat.<br/><br/>Helyezze át az SQL Server hiba naplózásához és követéséhez könyvtárak adatlemezek.<br/><br/>A telepítő biztonsági másolat és az adatbázis alapértelmezett tárolási helyeit.<br/><br/>Zárolt lapok engedélyezése.<br/><br/>SQL Server teljesítményét javítások alkalmazása. |
-| [Funkcióspecifikus](#feature-specific-guidance) |Készítsen biztonsági másolatot a közvetlenül a blob storage. |
+| [Szolgáltatás-specifikus](#feature-specific-guidance) |Készítsen biztonsági másolatot a közvetlenül a blob storage. |
 
 További információ a *hogyan* és *miért* ahhoz, hogy ezek az optimalizálások, tekintse át a részletek és a következő szakaszokban található útmutatást.
 
@@ -89,10 +89,10 @@ Virtuális gépekhez, amely támogatja a prémium szintű Storage (DS-méretek, 
 
 ### <a name="data-disks"></a>Adatlemezek
 
-* **Adatlemezek használja az adatok és a naplófájlok**: legalább 2 prémium szintű Storage használata [P30 lemezek](../premium-storage.md#scalability-and-performance-targets) ahol egy lemezt a naplófájl (oka) t tartalmaz, és a másik az adatokat és a TempDB adatbázis (oka) t tartalmaz. Minden prémium szintű tároló lemez számos iops-érték és a sávszélesség (MB/s) attól függően, hogy annak méretét, a következő cikkben leírtak szerint: [prémium szintű Storage használatával lemezek](../premium-storage.md).
+* **Adatlemezek használja az adatok és a naplófájlok**: használatakor nem szabad csíkozást, használjon 2 prémium szintű Storage [P30 lemezek](../premium-storage.md#scalability-and-performance-targets) ahol egy lemezt a naplófájl (oka) t tartalmaz, és a másik az adatokat és a TempDB adatbázis (oka) t tartalmaz. Minden prémium szintű tároló lemez számos iops-érték és a sávszélesség (MB/s) attól függően, hogy annak méretét, a következő cikkben leírtak szerint: [prémium szintű Storage használatával lemezek](../premium-storage.md). Ha egy lemez csíkozást technika, például a tárolóhelyek használ, el kell helyezni az ugyanazon a meghajtón lévő összes fájlt.
 
    > [!NOTE]
-   > Ha egy SQL Server virtuális Gépet a portálon, lehetősége van módosítani a tárolási konfigurációt. A konfigurációtól függően az Azure egy vagy több lemezt állít be. Több lemezzel rendelkező csíkozást egyetlen tárolókészlet van egyesítve. Az adat- és naplófájljai együtt ebben a konfigurációban, nem pedig két különböző lemezen találhatók. További információkért lásd: [tárolási konfigurációt az SQL Server VMs](virtual-machines-windows-sql-server-storage-configuration.md).
+   > Ha egy SQL Server virtuális Gépet a portálon, lehetősége van módosítani a tárolási konfigurációt. A konfigurációtól függően az Azure egy vagy több lemezt állít be. Több lemezzel rendelkező csíkozást egyetlen tárolókészlet van egyesítve. Az adat- és naplófájlok fájlok találhatók együtt ebben a konfigurációban. További információkért lásd: [tárolási konfigurációt az SQL Server VMs](virtual-machines-windows-sql-server-storage-configuration.md).
 
 * **Lemez csíkozást**: további átviteli sebesség eléréséhez, adhat hozzá további adatlemezt és lemez csíkozást használja. Az adatlemezek számának megállapításához kell elemeznie iops-érték és a sávszélességre van szüksége a naplófájl (oka) t, és az adatok és a TempDB adatbázis (oka) t. Figyelje meg, hogy más Virtuálisgép-méretek iops-érték és a támogatott sávszélesség számára különböző korlátokkal rendelkeznek, tekintse meg a táblák iops-értéket a [Virtuálisgép-méretet](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Kövesse az alábbi iránymutatásokat:
 
@@ -112,11 +112,13 @@ Virtuális gépekhez, amely támogatja a prémium szintű Storage (DS-méretek, 
 
   * Windows 2008 R2 vagy korábbi használhatja a dinamikus lemezek (az operációs rendszer csíkozott kötetek) és a paritásos mérete mindig 64 KB. Vegye figyelembe, hogy ez a beállítás Windows 8 és Windows Server 2012-től elavult. Információkért lásd: a következő támogatási nyilatkozattal [Virtuálislemez-szolgáltatás a Windows tárolókezelési API tér át](https://msdn.microsoft.com/library/windows/desktop/hh848071.aspx).
 
-  * Ha a számítási feladatok nem intenzív naplót, és nem kell külön IOPs, beállíthatja a csak egy tárolókészletet. Máskülönben hozzon létre két tárolókészletek, egyet a naplófájl (oka) t, és egy másik tárolókészlettel adatfájllal és a TempDB. Határozza meg a társított minden egyes betöltés elvárásainak alapuló tárolókészlet lemezek számát. Ne feledje, hogy más Virtuálisgép-méretek lehetővé teszik a különböző számú adatlemezt csatolni. További információkért lásd: [virtuális gépek méretei](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+  * Használata [közvetlen tárolóhelyek (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-in-vm) például egy forgatókönyvvel [SQL Server Feladatátvevőfürt-példányokat](virtual-machines-windows-portal-sql-create-failover-cluster.md), konfigurálnia kell egy készlet. Vegye figyelembe, hogy más köteteket, hogy egyetlen címkészlet is létrehozható, bár lesz az összes közös azonos jellemzőkkel, például a azonos gyorsítótárazási házirendet. 
+
+  * A betöltési elvárásainak alapuló tárolókészlet hozzárendelt számának meghatározásához. Ne feledje, hogy más Virtuálisgép-méretek lehetővé teszik a különböző számú adatlemezt csatolni. További információkért lásd: [virtuális gépek méretei](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
   * Használatakor nem prémium szintű Storage (fejlesztési és tesztelési célú forgatókönyv), az ajánlás az adatlemezek által támogatott maximális számának hozzáadása, a [Virtuálisgép-méretet](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) és lemez csíkozást használja.
 
-* **Gyorsítótárazási házirend**: adatlemezek a prémium szintű Storage, engedélyezze az adatfájlok és a TempDB csak üzemeltető adatlemezek olvasási gyorsítótárazás. Használatakor nem prémium szintű Storage, nem engedélyezi a gyorsítótárazást az adatok lemezzel. Lemez gyorsítótárazásának konfigurálása, lásd: a következő témaköröket. A klasszikus (ASM) üzembe helyezési modellel lásd: [Set-AzureOSDisk](https://msdn.microsoft.com/library/azure/jj152847) és [Set-AzureDataDisk](https://msdn.microsoft.com/library/azure/jj152851.aspx). Az Azure Resource Manager telepítési modell lásd: [Set-AzureRMOSDisk](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmosdisk?view=azurermps-4.4.1) és [Set-AzureRMVMDataDisk](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmdatadisk?view=azurermps-4.4.1).
+* **Gyorsítótárazási házirend**: adatlemezek a prémium szintű Storage, engedélyezze az adatfájlok és a TempDB csak üzemeltető adatlemezek olvasási gyorsítótárazás. Használatakor nem prémium szintű Storage, nem engedélyezi a gyorsítótárazást az adatok lemezzel. Lemez gyorsítótárazásának konfigurálása, lásd: a következő cikkekben talál. A klasszikus (ASM) üzembe helyezési modellel lásd: [Set-AzureOSDisk](https://msdn.microsoft.com/library/azure/jj152847) és [Set-AzureDataDisk](https://msdn.microsoft.com/library/azure/jj152851.aspx). Az Azure Resource Manager telepítési modell lásd: [Set-AzureRMOSDisk](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmosdisk?view=azurermps-4.4.1) és [Set-AzureRMVMDataDisk](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmdatadisk?view=azurermps-4.4.1).
 
   > [!WARNING]
   > Állítsa le az SQL Server szolgáltatás, amikor a lehetőségét, amely bármilyen adatbázis-sérülés elkerülése érdekében az Azure virtuális gépek lemezei gyorsítótár beállításainak megváltoztatása.
@@ -146,7 +148,7 @@ Virtuális gépekhez, amely támogatja a prémium szintű Storage (DS-méretek, 
 
     ![Az SQL hibanaplóban képernyőképe](./media/virtual-machines-windows-sql-performance/sql_server_error_log_location.png)
 
-* A telepítő biztonsági másolat és az adatbázis alapértelmezett tárolási helyeit. Ebben a témakörben a javaslatokat használja, és végezze el a módosításokat a kiszolgáló tulajdonságai ablakban. Útmutatásért lásd: [megtekinteni vagy módosítani az alapértelmezett helyek az adatok és naplófájlok (SQL Server Management Studio)](https://msdn.microsoft.com/library/dd206993.aspx). Az alábbi képernyőfelvételen a változtatások where mutatja be.
+* A telepítő biztonsági másolat és az adatbázis alapértelmezett tárolási helyeit. Ebben a cikkben a javaslatokat használja, és végezze el a módosításokat a kiszolgáló tulajdonságai ablakban. Útmutatásért lásd: [megtekinteni vagy módosítani az alapértelmezett helyek az adatok és naplófájlok (SQL Server Management Studio)](https://msdn.microsoft.com/library/dd206993.aspx). Az alábbi képernyőfelvételen a változtatások where mutatja be.
 
     ![SQL Data napló-és biztonsági mentése](./media/virtual-machines-windows-sql-performance/sql_server_default_data_log_backup_locations.png)
 * Engedélyezze a zárolt lapok IO és lapozás tevékenységeket csökkentése érdekében. További információkért lásd: [engedélyezése a zárolási lapok memória beállítás (Windows)](https://msdn.microsoft.com/library/ms190730.aspx).
@@ -155,7 +157,7 @@ Virtuális gépekhez, amely támogatja a prémium szintű Storage (DS-méretek, 
 
 * Vegye figyelembe az adatfájlokról tömörítés vagy kikapcsolása átviteléhez az Azure.
 
-## <a name="feature-specific-guidance"></a>A szolgáltatás konkrét útmutatást
+## <a name="feature-specific-guidance"></a>A szolgáltatás jellemző útmutatást
 
 Egyes központi telepítések további teljesítménybeli előnyökben speciális konfigurációs technikák segítségével elérése érdekében. Az alábbi listában néhány SQL Server szolgáltatásokat tartalmaz, amely segítségével a jobb teljesítmény érdekében információk találhatók:
 
@@ -165,8 +167,8 @@ Egyes központi telepítések további teljesítménybeli előnyökben speciáli
 
 * **SQL Server-adatfájlok az Azure-ban**: ezen új szolgáltatás [SQL Server-adatfájlok az Azure-ban](https://msdn.microsoft.com/library/dn385720.aspx), az SQL Server 2014 kezdve érhető el. Hasonló teljesítményt nyújt, mint az Azure data lemezek használata az Azure-adatfájlok SQL Servert futtató mutatja be.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ajánlott biztonsági eljárások, lásd: [biztonsági szempontok az SQL Server Azure virtuális gépek](virtual-machines-windows-sql-security.md).
 
-Tekintse át a többi SQL Server virtuális gép témakörei [SQL Server Azure virtuális gépek – áttekintés](virtual-machines-windows-sql-server-iaas-overview.md).
+Olvassa el a más SQL Server virtuális gép cikkeket [SQL Server Azure virtuális gépek – áttekintés](virtual-machines-windows-sql-server-iaas-overview.md).

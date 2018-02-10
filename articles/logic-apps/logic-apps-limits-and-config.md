@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 5e3147cbc9fce6737cfb9b2e93e8bf1662163f3c
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 8de3cc6665fc3861aedcf4f36cdce4a4a776e80d
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="logic-apps-limits-and-configuration"></a>Logic Apps korlátozásai és konfigurációja
 
-Ez a témakör ismerteti a jelenlegi korlátozások és a konfigurációs adatait az Azure Logic Apps.
+Ez a cikk ismerteti a jelenlegi korlátozások és a konfigurációs adatait az Azure Logic Apps.
 
 ## <a name="limits"></a>Korlátok
 
@@ -66,7 +66,7 @@ Ezek a korlátozások vonatkoznak egyetlen logikai alkalmazás futtatásához.
 | Maximális ismétlési időköz | 500 (nap) | 
 ||| 
 
-Futtatási időtartama vagy a normál feldolgozása folyamatában tároló megőrzési hosszabb legyen, mint a korlátok [, lépjen velünk kapcsolatba](mailto://logicappsemail@microsoft.com) , hogy a követelményeinek, és segítünk.
+Futtatási időtartama vagy a normál feldolgozása folyamatában tároló megőrzési hosszabb legyen, mint a korlátok [lépjen kapcsolatba a termékért felelős csoport](mailto://logicappsemail@microsoft.com) segítség az igényeinek.
 
 ### <a name="looping-and-debatching-limits"></a>Hurok- és debatching korlátok
 
@@ -82,18 +82,18 @@ Ezek a korlátozások vonatkoznak egyetlen logikai alkalmazás futtatásához.
 
 ### <a name="throughput-limits"></a>Átviteli sebességének korlátai
 
-Ezek a korlátozások vonatkoznak a egy logikai alkalmazás példánya.
+Ezek a korlátozások vonatkoznak egy logikai alkalmazás-erőforrást.
 
 | Name (Név) | Korlát | Megjegyzések | 
 | ----- | ----- | ----- | 
-| Műveletek végrehajtások / 5 perc | 100,000 |<p>A korlát növelhető 300,000 legfeljebb egy logikai alkalmazást futtató `High Througput` módot, és ez teheti úgy, hogy a `operationOptions` tulajdonság alapján`runtimeConfiguration` a munkafolyamat-erőforrás a `OptimizedForHighThroughput`. <p>Vegye figyelembe, hogy a magas teljesítmény üzemmód jelenleg előzetes verzióban érhető. Emellett a munkaterhelés terjeszthető több alkalmazás között szükség szerint. | 
+| Műveletek végrehajtások / 5 perc | 100,000 |<p>A korlát növelhető 300,000 logikai alkalmazás futtatásával `High Througput` mód. Nagy átviteli mód konfigurálható úgy, hogy a `operationOptions` tulajdonság alapján`runtimeConfiguration` a munkafolyamat-erőforrás a `OptimizedForHighThroughput`. <p>Vegye figyelembe, hogy a magas teljesítmény üzemmód jelenleg előzetes verzióban érhető. Emellett a munkaterhelés terjeszthető több alkalmazás között szükség szerint. | 
 | Műveletek párhuzamos kimenő hívások | ~2,500 | Csökkentse az egyidejű kérelmek száma, vagy igény szerint időtartamának csökkentése érdekében. | 
 | Futásidejű végpont: párhuzamos bejövő hívások |~1,000 | Csökkentse az egyidejű kérelmek száma, vagy igény szerint időtartamának csökkentése érdekében. | 
 | Futásidejű végpont: 5 perc hívásszám olvasása  | 60,000 | Szükség szerint több alkalmazást is munkaterhelés szét. | 
 | Futásidejű végpont: 5 perc hívásszám meghívása| 45,000 |Szükség szerint több alkalmazást is munkaterhelés szét. | 
 |||| 
 
-A meghaladja ezt a korlátot, a normál feldolgozása vagy futtatási terhelés tesztelése, amelyek túllépik a működés felső korlátjának, [, lépjen velünk kapcsolatba](mailto://logicappsemail@microsoft.com) , hogy a követelményeinek, és segítünk.
+A meghaladja ezt a korlátot, a normál feldolgozása vagy futtatási terhelés tesztelése, amelyek túllépik a működés felső korlátjának, [lépjen kapcsolatba a termékért felelős csoport](mailto://logicappsemail@microsoft.com) segítség az igényeinek.
 
 ### <a name="logic-app-definition-limits"></a>Logic app definition korlátok
 

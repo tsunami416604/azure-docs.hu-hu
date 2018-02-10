@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: 184a30c91de0d4141d6bd8a8b9db93c539e083b5
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: 80406994402b488f4172069b13dca593c470efe4
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-a-basic-virtual-machine-in-azure-with-ansible"></a>Alapszintű virtuális gép létrehozása az Azure-ban Ansible
 Ansible lehetővé teszi, hogy automatizálja a központi telepítési és konfigurációs az erőforrásoknak a környezetben. Ansible segítségével kezelheti a virtuális gépek (VM), ugyanaz, mint bármely egyéb erőforrásokat az Azure-ban. Ez a cikk bemutatja, hogyan hozzon létre egy egyszerű virtuális gép Ansible. Azt is megtudhatja hogyan [hozzon létre egy teljes körű Virtuálisgép-környezetet Ansible](ansible-create-complete-vm.md).
@@ -37,13 +37,13 @@ Ansible az Azure-erőforrások kezeléséhez, a következőkre lesz szüksége:
 
 
 ## <a name="create-supporting-azure-resources"></a>Hozzon létre az Azure-erőforrások támogatása
-Ebben a példában hoz létre, amely egy virtuális Gépet telepít egy meglévő infrastruktúra a runbookot. Először hozza létre az erőforráscsoport [az csoport létrehozása](/cli/azure/vm#create). Az alábbi példa létrehoz egy erőforráscsoportot *myResourceGroup* a a *eastus* helye:
+Ebben a példában hoz létre, amely egy virtuális Gépet telepít egy meglévő infrastruktúra a runbookot. Először hozza létre az erőforráscsoport [az csoport létrehozása](/cli/azure/vm#az_vm_create). A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Hozzon létre egy virtuális hálózatot a virtuális gép a [az hálózati vnet létrehozása](/cli/azure/network/vnet#create). Az alábbi példa létrehoz egy virtuális hálózatot nevű *myVnet* és nevű alhálózat *mySubnet*:
+Hozzon létre egy virtuális hálózatot a virtuális gép a [az hálózati vnet létrehozása](/cli/azure/network/vnet#az_network_vnet_create). Az alábbi példa létrehoz egy virtuális hálózatot nevű *myVnet* és nevű alhálózat *mySubnet*:
 
 ```azurecli
 az network vnet create \

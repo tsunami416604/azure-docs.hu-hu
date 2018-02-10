@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/11/2017
 ms.author: oanapl
-ms.openlocfilehash: cd9a144baf06422b425a0bc6c516600d6fcd4b97
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: f2a07d58938ae77701d8df8099ec0aedf1524d6b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Rendszerállapot-jelentések használata a hibaelhárítás során
 Azure Service Fabric-összetevők adja meg, hogy közvetlenül a kezdő verzióról a fürt összes entitásának a rendszerállapot-jelentéseket. A [a health Store adatbázisban](service-fabric-health-introduction.md#health-store) hoz létre, és törli a rendszer-jelentéseken alapuló entitásokat. Azt is rendszerezi azokat a hierarchiában, amely rögzíti az entitás interakciókat.
@@ -35,7 +35,7 @@ Rendszerállapot-jelentések adja meg a fürt és az alkalmazás funkciói és j
 > 
 > 
 
-A rendszer az összetevő jelent azonosítják a forrás, amely kezdődik-e a "**System.**" előtag. Watchdogs nem használhatja ugyanazt az előtagot az eseményforrásokat, érvénytelen paramétereket tartalmazó jelentések utasítja el.
+A rendszer az összetevő jelent azonosítják a forrás, amely kezdődik-e a "**System.**" prefix. Watchdogs nem használhatja ugyanazt az előtagot az eseményforrásokat, érvénytelen paramétereket tartalmazó jelentések utasítja el.
 
 Vizsgáljuk meg néhány rendszer jelentések segítségével megtudhatja, mi váltja ki őket, és megtudhatja, hogyan javítsa ki a lehetséges problémák jelölnek.
 
@@ -193,7 +193,7 @@ HealthEvents          :
 **System.PLB** egy hibát jelez, amikor azt észleli, hogy egy másik szolgáltatás, amely létrehoz egy affinitási lánc szolgáltatás frissítése tartozzanak. A jelentés egy sikeres frissítés történik, ha nincs bejelölve.
 
 * **SourceId**: System.PLB
-* **Tulajdonság**: ServiceDescription leírásban.
+* **Property**: ServiceDescription.
 * **További lépések**: Ellenőrizze a kapcsolódó szolgáltatások ismertetése.
 
 ## <a name="partition-system-health-reports"></a>Partíció rendszerállapot-jelentések
@@ -494,7 +494,7 @@ HealthEvents          :
                         Transitions           : Error->Warning = 8/28/2017 1:16:03 AM, LastOk = 1/1/0001 12:00:00 AM
 ```
 
-### <a name="reconfiguration"></a>Újrakonfigurálása
+### <a name="reconfiguration"></a>Reconfiguration
 Ezzel a tulajdonsággal lejátszásához, ha egy replika hajt végre egy [újrakonfigurálás](service-fabric-concepts-reconfiguration.md) észleli, hogy az újrakonfigurálás leállt vagy akadt-e. A jelentés a replikán, amelynek jelenlegi szerepköre: elsődleges, kivéve a lapozófájl-kapacitás elsődleges újrakonfigurálás esetekben előfordulhat, ha a replikán, amely elsődleges aktív másodlagos lefokozni lehet.
 
 Az újrakonfigurálás is elakadt a következő okok valamelyike:
@@ -638,6 +638,21 @@ A rendszer más is elakadnak API-hívások a **IReplicator** felületet. Példa:
 
 - **IReplicator.BuildReplica (<Remote ReplicaId>)**: Ez a figyelmeztetés az összeállítási folyamat kapcsolatos problémát jelez. További információkért lásd: [replika életciklus](service-fabric-concepts-replica-lifecycle.md). Előfordulhat, hogy a replikációs cím egy helytelen konfiguráció miatt. További információkért lásd: [állapotalapú Reliable Services konfigurálása](service-fabric-reliable-services-configuration.md) és [adja meg az erőforrásokat. a szolgáltatás jegyzékben](service-fabric-service-manifest-resources.md). A távoli csomóponton levő probléma is lehet.
 
+### <a name="replicator-system-health-reports"></a>A replikáló rendszerállapot-jelentések
+**Replikációs sor megtelt:**
+**System.Replicator** jelentések figyelmeztetés, ha a replikációs sor megtelt. Az elsődleges a replikációs várólistában általában megtelik, mert egy vagy több másodlagos replikák lassúak múlva nyugtázza a műveletek. A másodlagos Ez általában történik, ha a szolgáltatás lassú műveletek alkalmazásához. A figyelmeztetés nincs bejelölve, ha a várólista már nem teljes.
+
+* **SourceId**: System.Replicator
+* **Tulajdonság**: **PrimaryReplicationQueueStatus** vagy **SecondaryReplicationQueueStatus**, attól függően, a replika szerepkör.
+* **További lépések**: Ha a jelentés az elsődleges, a fürt a csomópontok közötti kapcsolat ellenőrzése. Ha az összes kapcsolat megfelelő, egy magas lemez késéssel műveletek alkalmazásához legalább egy lassú másodlagos lehet. Ha a jelentés a másodlagos, ellenőrizze a lemezek használata terén, és a teljesítmény a csomóponton első és a kimenő kapcsolat a lassú csomópont és az elsődleges.
+
+**RemoteReplicatorConnectionStatus:**
+**System.Replicator** figyelmeztetés az elsődleges replikán jelent, ha a kapcsolat egy másodlagos (távoli) replikációs állapota nem kifogástalan. A jelentést tartalmazó üzenet, így a nem megfelelő konfigurációs került átadásra a vagy hálózati problémák vannak az gyártóitól közötti voltát kényelmesebb távoli replikátor cím jelenik meg.
+
+* **SourceId**: System.Replicator
+* **Tulajdonság**: **RemoteReplicatorConnectionStatus**
+* **További lépések**: tekintse meg a hibaüzenetet, és győződjön meg arról, hogy megfelelően van-e konfigurálva a távoli replikátor címet (például "localhost" figyelési címmel rendelkező távoli replikátor megnyitásakor, nincs elérhető-e kívülről). Ha cím helyes-e, ellenőrizze a kapcsolatot az elsődleges csomópont és a lehetséges hálózati problémák keresése a távoli címnek.
+
 ### <a name="replication-queue-full"></a>Replikációs sor megtelt
 **System.Replicator** jelentések figyelmeztetés, ha a replikációs sor megtelt. Az elsődleges a replikációs várólistában általában megtelik, mert egy vagy több másodlagos replikák lassúak múlva nyugtázza a műveletek. A másodlagos Ez általában történik, ha a szolgáltatás lassú műveletek alkalmazásához. A figyelmeztetés nincs bejelölve, ha a várólista már nem teljes.
 
@@ -747,7 +762,7 @@ HealthEvents                       :
 System.Hosting egy hibát jelez, ha az alkalmazás csomag letöltése sikertelen.
 
 * **SourceId**: System.Hosting
-* **Tulajdonság**: **letöltése:***RolloutVersion*.
+* **Tulajdonság**: **letöltése: x RolloutVersion*.
 * **További lépések**: vizsgálja meg, miért nem sikerült a letöltés a csomóponton.
 
 ## <a name="deployedservicepackage-system-health-reports"></a>DeployedServicePackage rendszerállapot-jelentések
@@ -764,7 +779,7 @@ System.Hosting jelentések OK gombra, ha a csomóponton a szolgáltatás az alka
 System.Hosting jelentések OK kód csomagonként Ha az aktiválás sikeres. Ha az aktiválás sikertelen, akkor hiányára konfigurált módon. Ha **CodePackage** nem tudja aktiválni vagy nagyobb, mint a beállított hibával leáll **CodePackageHealthErrorThreshold**, üzemeltető egy hibát jelez. A service-csomag kód több csomagot tartalmaz, az aktiválási jelentés minden egyes jön létre.
 
 * **SourceId**: System.Hosting
-* **Tulajdonság**: az előtag- **CodePackageActivation** és nevét, valamint a kódcsomag a belépési pontot tartalmaz **CodePackageActivation:***CodePackageName* :*SetupEntryPoint/EntryPoint*. Például **CodePackageActivation:Code:SetupEntryPoint**.
+* **Tulajdonság**: az előtag- **CodePackageActivation** és nevét, valamint a kódcsomag a belépési pontot tartalmaz **CodePackageActivation: x CodePackageName*: *SetupEntryPoint/EntryPoint*. Például **CodePackageActivation:Code:SetupEntryPoint**.
 
 ### <a name="service-type-registration"></a>Szolgáltatási típus regisztrációs
 System.Hosting OK jelent, ha a szolgáltatás típusának regisztrálása sikeresen befejeződött. Egy hibát jelez, ha a regisztrációját nem végezték el időben, használatával konfigurált **ServiceTypeRegistrationTimeout**. A futtatókörnyezet le van zárva, ha a szolgáltatás típusa a csomópont regisztrációját, és üzemeltetési hiányára.
@@ -825,7 +840,7 @@ HealthEvents               :
 Ha a service-csomag letöltése sikertelen, System.Hosting jelent hibát.
 
 * **SourceId**: System.Hosting
-* **Tulajdonság**: **letöltése:***RolloutVersion*.
+* **Tulajdonság**: **letöltése: x RolloutVersion*.
 * **További lépések**: vizsgálja meg, miért nem sikerült a letöltés a csomóponton.
 
 ### <a name="upgrade-validation"></a>Frissítésének ellenőrzése

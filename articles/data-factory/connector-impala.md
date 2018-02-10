@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 06b60968931d18e7c7219d83801a5433631ed470
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e1f745fc70395f06d2eb3d98644d54c314a0ef26
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-impala-by-using-azure-data-factory-beta"></a>Adatok másolása az Impala Azure Data Factory (béta) használatával
 
@@ -52,7 +52,7 @@ A következő tulajdonságok Impala társított szolgáltatás esetén támogato
 | port | A TCP-portot, amelyen a Impala kiszolgáló ügyfélkapcsolatokat. Az alapértelmezett érték: 21050.  | Nem |
 | authenticationType | A használandó hitelesítési típus. <br/>Két érték engedélyezett **névtelen**, **SASLUsername**, és **UsernameAndPassword**. | Igen |
 | felhasználónév | A felhasználónév, a Impala kiszolgálóhoz való hozzáféréshez. Az alapértelmezett értéke névtelen SASLUsername használatakor.  | Nem |
-| jelszó | A jelszót, amely megfelel a felhasználó nevét UsernameAndPassword használatakor. Ez a mező szerint tárolja biztonságos helyen a Data Factory SecureString jelölheti meg. Is Azure Key Vault tárolni a jelszó és lehetővé teszik a másolási tevékenység lekéréses ott adatmásolás végrehajtásakor. További tudnivalókért lásd: [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). | Nem |
+| jelszó | A jelszót, amely megfelel a felhasználó nevét UsernameAndPassword használatakor. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Nem |
 | enableSsl | Meghatározza, hogy a kapcsolat SSL használatával titkosított. Az alapértelmezett érték **hamis**.  | Nem |
 | trustedCertPath | A teljes elérési útja a .pem fájl, amely tartalmazza a megbízható Hitelesítésszolgáltatói tanúsítvány segítségével ellenőrizze a kiszolgáló SSL-en keresztül csatlakoztatásakor. Ez a tulajdonság csak akkor, ha az SSL használatát Self-hosted integrációs futásidejű állítható be. Az alapértelmezett érték: a telepített integrációs futásidejű cacerts.pem fájlt.  | Nem |
 | useSystemTrustStore | Megadja, hogy a rendszer megbízható áruházból vagy a megadott PEM-fájl egy Hitelesítésszolgáltatói tanúsítványt használjon-e. Az alapértelmezett érték **hamis**.  | Nem |

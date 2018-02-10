@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 02/07/2017
 ms.author: jingwang
-ms.openlocfilehash: b3e9597c52a402240d759abb0a96ffc007bcc9dd
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 46efa4c3ce43af04485f383a3e88066aec79acfb
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-phoenix-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával Phoenix 
 
@@ -50,7 +50,7 @@ A következő tulajdonságok Phoenix kapcsolódó szolgáltatás támogatottak:
 | httpPath | A részleges URL-címet a Phoenix kiszolgáló megfelelő. (Ez azt jelenti, hogy /gateway/sandbox/phoenix/version). Az alapértelmezett érték `hbasephoenix` WindowsAzureHDInsightService használata.  | Nem |
 | authenticationType | A a Phoenix kiszolgálóhoz való csatlakozáshoz használt hitelesítési módszert. <br/>Két érték engedélyezett: **névtelen**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Igen |
 | felhasználónév | A Phoenix kiszolgálóhoz való csatlakozáshoz használt felhasználónevet.  | Nem |
-| jelszó | A jelszó, a felhasználónév megfelelő. Ez a mező megjelölése a SecureString tárolja biztonságos helyen az ADF, vagy a jelszó tárolása az Azure Key Vault választhat, és lehetővé teszik a másolási tevékenység lekéréses ott adatmásolás végrehajtása során – további információhoz [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). | Nem |
+| jelszó | A jelszó, a felhasználónév megfelelő. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Nem |
 | enableSsl | Meghatározza, hogy a kapcsolat titkosítása SSL használatával. Az alapértelmezett értéke hamis.  | Nem |
 | trustedCertPath | Megbízható Hitelesítésszolgáltatói tanúsítványok ellenőrzése a kiszolgáló SSL-en keresztül kapcsolódáskor tartalmazó .pem fájl teljes elérési útja. Ez a tulajdonság csak akkor állítható, önálló üzemeltetett infravörös SSL használatakor Az alapértelmezett érték a cacerts.pem fájlt az infravörös telepített:  | Nem |
 | useSystemTrustStore | Megadja, hogy a rendszer megbízható áruházból vagy a megadott PEM-fájl egy Hitelesítésszolgáltatói tanúsítványt használjon-e. Az alapértelmezett értéke hamis.  | Nem |

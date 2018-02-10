@@ -14,11 +14,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 4209bc270a6d255c8512dd6ccd5551b556da5a6b
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: e45bec2a71f94c66ce3044fb81bd2d7cefdf53a5
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="use-cloud-init-to-update-and-install-packages-in-a-linux-vm-in-azure"></a>Felhő inicializálás használatával frissítse és csomagok telepítése egy Linux virtuális gépre az Azure-ban
 Ez a cikk bemutatja, hogyan használható [felhő inicializálás](https://cloudinit.readthedocs.io) egy Linux-csomagok frissítése a virtuális gép (VM) vagy virtuálisgép-méretezési beállítja (VMSS) kiépítési idő az Azure-ban. Ezen felhő inicializálás parancsfájlok futtatása az első betöltés után az erőforrásokat az Azure-ban kiépített. Felhő inicializálás működése natív Azure-ban és a Linux támogatott disztribúciókkal kapcsolatos további információkért lásd: [felhő inicializálás áttekintése](using-cloud-init.md)
@@ -26,7 +26,7 @@ Ez a cikk bemutatja, hogyan használható [felhő inicializálás](https://cloud
 ## <a name="update-a-vm-with-cloud-init"></a>Frissítse a virtuális gép felhőalapú inicializálás
 Biztonsági okokból érdemes lehet konfigurálni a virtuális gép első indításakor a legújabb frissítések alkalmazásához. Felhő inicializálás különböző Linux disztribúciókkal keresztül működik, mert nincs szükség meg `apt` vagy `yum` a package manager számára. Helyette megadhatja `package_upgrade` és a felhő inicializálás folyamat határozza meg a distro használja a megfelelő mechanizmus segítségével. Ez a munkafolyamat lehetővé teszi, hogy az azonos felhő inicializálás parancsfájlok disztribúciókkal használja.
 
-Tekintse meg a frissítési folyamat működés közben, hozzon létre egy fájlt az aktuális rendszerhéjban nevű *cloud_init_upgrade.txt* , majd illessze be a következő konfigurációt. Hozzon létre a fájl ebben a példában a felhő rendszerhéj nem a helyi számítógépen. A szerkesztő kívánja használata. Adja meg `sensible-editor cloud_init_upgrade.txt` hozza létre a fájlt, és elérhető szerkesztők listájának megtekintéséhez. Válassza ki a használandó #1 a **nano** szerkesztő. Győződjön meg arról, hogy az egész felhő inicializálás fájl megfelelően lett lemásolva különösen az első sor.  
+Tekintse meg a frissítési folyamat működés közben, hozzon létre egy fájlt az aktuális rendszerhéjban nevű *cloud_init_upgrade.txt* , majd illessze be a következő konfigurációt. Hozzon létre a fájl ebben a példában a felhő rendszerhéj nem a helyi számítógépen. A szerkesztő kívánja használata. Írja be a `sensible-editor cloud_init_upgrade.txt` parancsot a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. Válassza ki a használandó #1 a **nano** szerkesztő. Győződjön meg arról, hogy az egész felhő inicializálás fájl megfelelően lett lemásolva különösen az első sor.  
 
 ```yaml
 #cloud-config
@@ -35,13 +35,13 @@ packages:
 - httpd
 ```
 
-Ez a rendszerkép telepítés megkezdése előtt hozzon létre egy erőforráscsoportot a kell a [az csoport létrehozása](/cli/azure/group#create) parancsot. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
+Ez a rendszerkép telepítés megkezdése előtt hozzon létre egy erőforráscsoportot a kell a [az csoport létrehozása](/cli/azure/group#az_group_create) parancsot. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-Ezután hozzon létre a virtuális gép és [az virtuális gép létrehozása](/cli/azure/vm#create) , és adja meg a felhő inicializálás fájl `--custom-data cloud_init_upgrade.txt` az alábbiak szerint:
+Ezután hozzon létre a virtuális gép és [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create) , és adja meg a felhő inicializálás fájl `--custom-data cloud_init_upgrade.txt` az alábbiak szerint:
 
 ```azurecli-interactive 
 az vm create \
@@ -76,7 +76,7 @@ Calculating upgrade... Done
 
 Is megtekintheti, hogy `httpd` futtatásával telepítették `yum history` , és ellenőrizze, hogy a kimeneti hivatkozási `httpd`. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Konfigurációs módosítások további felhőalapú inicializálás példákért lásd a következő:
  
 - [Egy további Linux-felhasználó hozzáadása a virtuális gépek](cloudinit-add-user.md)

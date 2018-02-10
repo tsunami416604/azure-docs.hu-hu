@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: abnarain
-ms.openlocfilehash: 4ae54bfda21d06d3d6ec963aaa17eba2b6e04de3
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: a2cf2ac8ac099a92e1534c72d80be6c9647bec59
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Adatok átalakítása Azure Data Lake Analytics U-SQL-parancsfájlok futtatásával 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -47,9 +47,12 @@ A következő táblázat ismerteti a JSON-definícióból használt általános 
 
 ### <a name="service-principal-authentication"></a>Egyszerű szolgáltatásnév hitelesítése
 Az Azure Data Lake Analytics kapcsolódó szolgáltatás egy szolgáltatás egyszerű hitelesítés az Azure Data Lake Analytics szolgáltatáshoz való kapcsolódáshoz szükséges. Szolgáltatás egyszerű hitelesítést használ, egy alkalmazás entitás regisztrálni kell az Azure Active Directory (Azure AD), és a Data Lake Analytics és a Data Lake Store használ hozzáférést engedélyez. Részletes útmutató: [szolgáltatások közötti hitelesítési](../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Jegyezze fel a következő érték, melynek segítségével határozza meg a társított szolgáltatás:
+
 * Alkalmazásazonosító
 * Alkalmazás kulcs 
 * Bérlőazonosító
+
+Engedélyt szolgáltatás egyszerű az Azure Data Lake Anatlyics használatával a [varázslót](../data-lake-analytics/data-lake-analytics-manage-use-portal.md#add-a-new-user).
 
 Szolgáltatás egyszerű hitelesítés használatára a következő tulajdonságok megadásával:
 

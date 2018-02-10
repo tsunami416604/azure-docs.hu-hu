@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: larryfr
-ms.openlocfilehash: 1ea20eceb28fead003c7279632b1e75ae1fd3553
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: be6ed6d4c0c3a5fa55166b84b128881d434c4ab2
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="apache-kafka-streams-api"></a>Apache Kafka streams API
 
@@ -100,6 +100,12 @@ Az alábbi lépések segítségével hozza létre, és a HDInsight-fürt Kafka a
     * Indítsa el a gyártó által a `test` témakör.
     * Így megtekintheti a kimeneti írni, indítsa el a fogyasztó a `wordcounts` témakör
 
+    > [!NOTE]
+    > Ellenőrizze, hogy a `auto.create.topics.enable` tulajdonsága `true` a Kafka Broker konfigurációs fájlban. Ez a tulajdonság tekinthetők meg és módosíthatók a speciális Kafka Broker konfigurációs fájl az Ambari webes felhasználói felület használatával. Ellenkező esetben a köztes témakör létrehozásához szükséges `RekeyedIntermediateTopic` előtt manuálisan futtató ebben a példában a következő parancsot:
+    ```bash
+    /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic RekeyedIntermediateTopic  --zookeeper $KAFKAZKHOSTS
+    ```
+    
     Ezek a műveletek SSH legfeljebb három munkamenet megnyitása sikertelen megvalósításához. De majd kell `$KAFKABROKERS` és `$KAFKAZKHOSTS` futtatásával minden egyes lépést 4 ebben a szakaszban ismertetett minden SSH-munkamenetet. Egy egyszerűbb megoldást a `tmux` segédprogram, amely az aktuális SSH megjelenítésének több szakaszokra fel. A stream, a gyártó és az használatával fogyasztói `tmux`, használja a következő parancsot:
 
     ```bash
@@ -143,9 +149,9 @@ Ebből a dokumentumból megismerte a Kafka adatfolyamok API használata a HDInsi
 
 * [Kafka-naplók elemzése](apache-kafka-log-analytics-operations-management.md)
 * [Adatreplikálás Kafka-fürtök között](apache-kafka-mirroring.md)
-* [A hdinsight eszközzel Kafka gyártó és a fogyasztói API](apache-kafka-producer-consumer-api.md)
+* [Kafka Producer és Consumer API-k a HDInsighttal](apache-kafka-producer-consumer-api.md)
 * [Az Apache Spark stream (DStream) használata a Kafkával a HDInsighton](../hdinsight-apache-spark-with-kafka.md)
 * [Az Apache Spark strukturált stream használata a Kafkával a HDInsighton](../hdinsight-apache-kafka-spark-structured-streaming.md)
-* [Használja az Apache Spark strukturált Streaming tárolt adatok mozgatása Kafka a HDInsight az Cosmos-Adatbázishoz](../apache-kafka-spark-structured-streaming-cosmosdb.md)
+* [Az Apache Spark strukturált stream használata adatok áthelyezéséhez a HDInsighton lévő Kafkáról a Cosmos DB-re](../apache-kafka-spark-structured-streaming-cosmosdb.md)
 * [Az Apache Storm használata a HDInsighton futó Kafkával](../hdinsight-apache-storm-with-kafka.md)
 * [Csatlakozás a Kafkához Azure Virtual Networkön keresztül](apache-kafka-connect-vpn-gateway.md)

@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: tomfitz
-ms.openlocfilehash: b110fd4f9eb70644a6fcb66198113af2ec685142
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 9c8b352194e3a624097a48b5d312356a0ead4276
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure parancssori felületével
 
-Ez a témakör azt ismerteti, hogy az erőforrások telepítése Azure Resource Manager-sablonok Azure CLI 2.0 használata. Ha nem ismeri a telepítésével kapcsolatos alapfogalmakat és kezelése az Azure megoldások, lásd: [Azure Resource Manager áttekintése](resource-group-overview.md).  
+Ez a cikk ismerteti az erőforrások telepítése Azure Resource Manager-sablonok Azure CLI 2.0 használata. Ha nem ismeri a telepítésével kapcsolatos alapfogalmakat és kezelése az Azure megoldások, lásd: [Azure Resource Manager áttekintése](resource-group-overview.md).  
 
 A Resource Manager-sablon, azok a helyi fájl a számítógépre telepít, vagy egy külső egy például a GitHub-tárházban található fájl. Ez a cikk központi telepítését a sablon érhető el a [mintasablon](#sample-template) szakasz, vagy a regisztrációja, mivel egy [tárolási fiók sablon a Githubon](https://github.com/Azure/azure-quickstart-templates/blob/master/101-storage-account-create/azuredeploy.json).
 
@@ -86,6 +86,10 @@ A felhő rendszerhéj az alábbi parancsokat használja:
    az group create --name examplegroup --location "South Central US"
    az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json --parameters storageAccountType=Standard_GRS
    ```
+
+## <a name="deploy-to-more-than-one-resource-group-or-subscription"></a>Egynél több erőforráscsoportba vagy előfizetésbe történő központi telepítése
+
+Általában központi telepítését az erőforrásokat a sablonhoz, amelyekkel egyetlen erőforráscsoportként működnek. Vannak azonban forgatókönyvek, ahol szeretne erőforráscsoport telepítsen együtt, de másik erőforráscsoport-sablonok és előfizetések helyezze el őket. Egy központi telepítésnél csak öt erőforráscsoportok telepítene. További információkért lásd: [telepítése Azure erőforrások több mint egy előfizetéshez vagy erőforráscsoporthoz](resource-manager-cross-resource-group-deployment.md).
 
 ## <a name="parameter-files"></a>A paraméter fájlok
 
@@ -183,7 +187,7 @@ az group deployment create \
 
 ## <a name="sample-template"></a>Minta sablon
 
-Ebben a témakörben szereplő példák a következő sablon használható. Másolja ki és mentse azt egy storage.json nevű fájlba. Ez a sablon létrehozása ismertetése: [az első Azure Resource Manager-sablon létrehozása](resource-manager-create-first-template.md).  
+Ebben a cikkben szereplő példák a következő sablon használható. Másolja ki és mentse azt egy storage.json nevű fájlba. Ez a sablon létrehozása ismertetése: [az első Azure Resource Manager-sablon létrehozása](resource-manager-create-first-template.md).  
 
 ```json
 {

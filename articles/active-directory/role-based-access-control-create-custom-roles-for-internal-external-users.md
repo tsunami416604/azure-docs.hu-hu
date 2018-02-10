@@ -3,7 +3,7 @@ title: "Hozzon létre egyéni szerepköralapú hozzáférés-vezérlés szerepk�
 description: "PowerShell és a parancssori felület használatával a belső és külső felhasználók számára létrehozott egyéni RBAC-szerepkörök hozzárendelése"
 services: active-directory
 documentationcenter: 
-author: andreicradu
+author: rolyon
 manager: mtillman
 editor: kgremban
 ms.assetid: 
@@ -13,20 +13,20 @@ ms.topic: article
 ms.tgt_pltfrm: 
 ms.workload: identity
 ms.date: 12/06/2017
-ms.author: a-crradu
+ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: b3b65812d453a9f7d93ee4381c4261e685a60376
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 75a45b492c230b19d2f7237f8ea7fe2c49de29bf
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="intro-on-role-based-access-control"></a>A szerepköralapú hozzáférés-vezérlés – bevezetés
 
 Szerepköralapú hozzáférés-vezérlés az Azure portál csak szolgáltatása: így tulajdonosai előfizetés részletes szerepkörök hozzárendelése más felhasználók akik kezelhetik a környezetükben meghatározott erőforrás-hatókörök.
 
-Az RBAC lehetővé teszi, hogy jobb biztonságkezelés nagy méretű szervezeteknek, és az SMB-khez működik-e külső közreműködő, szállítókkal és freelancers, amelyhez hozzá kell férniük az adott környezetben meghatározott erőforrás azonban nem feltétlenül a teljes infrastruktúra vagy bármely a számlázással kapcsolatos hatókörök. Az RBAC lehetővé teszi, hogy egy Azure-előfizetéssel rendelkező rugalmasan kezeli a rendszergazdai fiókot (szolgáltatás-rendszergazda szerepkörrel egy előfizetés szintjén), és több felhasználók meghívást az azonos előfizetésben, de bármilyen rendszergazdai jogosultságok nélkül működik az . Felügyeleti és számlázási szempontból az RBAC funkció bizonyul egy idő és a felügyeleti hatékony beállítása a különböző forgatókönyvekben Azure használatával.
+Szerepalapú lehetővé teszi, hogy jobb biztonságkezelés nagy méretű szervezeteknek, és az SMB-khez külső közreműködő, szállítók vagy adott erőforrásoknak a környezetben, de nem feltétlenül a teljes infrastruktúra vagy bármelyik részére hozzáférést igénylő freelancers használata a számlázással kapcsolatos hatókörök. Az RBAC lehetővé teszi, hogy egy Azure-előfizetéssel rendelkező rugalmasan kezeli a rendszergazdai fiókot (szolgáltatás-rendszergazda szerepkörrel egy előfizetés szintjén), és több felhasználók meghívást az azonos előfizetésben, de bármilyen rendszergazdai jogosultságok nélkül működik az . Felügyeleti és számlázási szempontból az RBAC funkció bizonyul egy idő és a felügyeleti hatékony beállítása a különböző forgatókönyvekben Azure használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az RBAC használata az Azure környezetben van szükség:
@@ -50,7 +50,7 @@ Az RBAC alkalmazni lehet az Azure-ban három különböző hatóköröket. A leg
 Nincsenek két gyakori példán RBAC használja (de nem kizárólagosan):
 
 * Hogy a szervezetek a külső felhasználók (nem a rendszergazda felhasználó Azure Active Directory-bérlő része) meghívót, hogy bizonyos erőforrások vagy a teljes előfizetés kezelése
-* A felhasználók a szervezet (részét képezik a felhasználó Azure Active Directory-bérlő), de a különböző csapatok vagy csoportokat, amelyek a teljes előfizetés vagy egy bizonyos erőforráscsoportok vagy az erőforrás-hatókörök részletes hozzáférésre van szükségük belső használata a környezet
+* A felhasználók a szervezet (részét képezik a felhasználó Azure Active Directory-bérlő), de a különböző csapatok vagy csoportokat, amelyek a teljes előfizetés vagy egy bizonyos erőforráscsoportok vagy az erőforrás-hatókörök a környezetben a részletes hozzáférésre van szükségük belső használata
 
 ## <a name="grant-access-at-a-subscription-level-for-a-user-outside-of-azure-active-directory"></a>Hozzáférés egy felhasználó Azure Active Directory kívül egy előfizetés szintjén
 Az RBAC-szerepkörök csak akkor adhatók **tulajdonosok** az előfizetés ezért a rendszergazdai jogú felhasználó kell bejelentkeznie, amely rendelkezik-e előre szerepkörrel, vagy az Azure-előfizetés hozott létre egy felhasználónévvel.
@@ -59,7 +59,7 @@ Az Azure-portálon után bejelentkezés rendszergazdaként, válassza ki "Előfi
 ![előfizetés panel az Azure-portálon](./media/role-based-access-control-create-custom-roles-for-internal-external-users/0.png) alapértelmezés szerint a rendszergazdai jogú felhasználó rendelkezik vásárolt Azure-előfizetést, ha a felhasználó fog megjelenni **Fiókadminisztrátor**, ez az előfizetés szerepkör alatt. Az Azure-előfizetés szerepkörök további részletekért lásd: [hozzáadása vagy módosítása, hogy az előfizetés vagy a szolgáltatások kezelése az Azure rendszergazdai szerepkörök](/billing/billing-add-change-azure-subscription-administrator.md).
 
 Ebben a példában a felhasználó a "alflanigan@outlook.com" van a **tulajdonos** az "Ingyenes" az aad-ben az előfizetéshez bérlői "Alapértelmezett bérlőt Azure". Mivel ez a felhasználó hozta létre a kezdeti Microsoft Account "Outlook" az Azure-előfizetés (Microsoft Account = Outlook, a működés közbeni stb.) az alapértelmezett tartomány nevét ennél a bérlőnél a hozzáadott összes többi felhasználó számára lesz **"@alflaniganuoutlook.onmicrosoft.com"**. Úgy lett kialakítva, a szintaxist, az új tartomány formátuma kiépítésekor a bérlő létrehozó felhasználó felhasználónevét és tartományát nevét, és vegye fel a bővítmény **". onmicrosoft.com"**.
-Ezenkívül felhasználók is jelentkezzen be a bérlő egy egyéni tartománynév hozzáadása, és azt az új bérlő ellenőrzése után. Az Azure Active Directory-bérlő egyéni tartománynév ellenőrzése a további részletekért lásd: [egyéni tartománynév hozzáadása a címtárhoz](/active-directory/active-directory-add-domain).
+Ezenkívül felhasználók bejelentkezhetnek a bérlő az egyéni tartománynév hozzáadása, és azt az új bérlő ellenőrzése után. Az Azure Active Directory-bérlő egyéni tartománynév ellenőrzése További információkért lásd: [egyéni tartománynév hozzáadása a címtárhoz](/active-directory/active-directory-add-domain).
 
 Ebben a példában a "Alapértelmezett bérlőt Azure" könyvtárban található csak azokat a felhasználókat, a tartomány nevét "@alflanigan.onmicrosoft.com".
 
@@ -77,9 +77,9 @@ Az előfizetés kiválasztása után a rendszergazda felhasználó kattintson ke
 
 ![Új felhasználó hozzáadása a hozzáférés-vezérlési IAM funkciója Azure-portálon](./media/role-based-access-control-create-custom-roles-for-internal-external-users/2.png)
 
-A következő lépés, hogy válassza ki hozzá kell rendelni a szerepkört és a felhasználó, akinek a Szerepalapú szerepkör rendeli hozzá. Az a **szerepkör** legördülő menüjében a rendszergazdai jogú felhasználó számára megjelenített csak a beépített RBAC szerepkörök, amelyek elérhetők az Azure-ban. Részletesebb ismereteket szeretnének elsajátítani a minden egyes szerepkör és a hozzárendelhető hatókörök, lásd: [átruházásához hozzáférés-vezérlés beépített szerepkörök](role-based-access-built-in-roles.md).
+A következő lépés, hogy válassza ki hozzá kell rendelni a szerepkört és a felhasználó, akinek a Szerepalapú szerepkör rendeli hozzá. Az a **szerepkör** legördülő menüre, a rendszergazda felhasználó számára megjelenített csak a beépített RBAC szerepkörök az Azure-ban rendelkezésre álló. Részletesebb ismereteket szeretnének elsajátítani a minden egyes szerepkör és a hozzárendelhető hatókörök, lásd: [átruházásához hozzáférés-vezérlés beépített szerepkörök](role-based-access-built-in-roles.md).
 
-A rendszergazdai jogú felhasználó majd hozzá kell a külső felhasználó e-mail címe. A várt működése a külső felhasználó számára nem jelenik meg a meglévő bérlő. Után a külső felhasználó kérték, ő lesz látható a **előfizetések > hozzáférés-vezérlés (IAM)** az aktuális felhasználókkal, amely már hozzá vannak rendelve az RBAC szerepkört az előfizetés hatókörben.
+A rendszergazdai jogú felhasználó majd hozzá kell a külső felhasználó e-mail címe. A várt működése a külső felhasználó számára nem jelenik meg a meglévő bérlő. Után a külső felhasználó kérték, ő lesz látható a **előfizetések > hozzáférés-vezérlés (IAM)** már hozzá vannak rendelve egy Szerepalapú szerepkört az előfizetés hatókörből aktuális felhasználókkal.
 
 
 
@@ -96,7 +96,7 @@ A rendszergazdai jogú felhasználó majd hozzá kell a külső felhasználó e-
 A felhasználó "chessercarlton@gmail.com" kell meghívott egy **tulajdonos** az "Ingyenes" előfizetés. Meghívást, követően a külső felhasználó kap egy e-mailes megerősítés egy aktiválási hivatkozást tartalmazó.
 ![e-mailek meghívó RBAC-szerepkör](./media/role-based-access-control-create-custom-roles-for-internal-external-users/5.png)
 
-Folyamatban a szervezeten kívül, az új felhasználó nem rendelkezik meglévő attribútuma "Alapértelmezett bérlőt Azure" könyvtárban. Azok a rendszer létrehozza, miután a külső felhasználó hozzájárult rögzítsen a rendszer a könyvtárban, amely az előfizetéshez, amely rendelt szerepkör.
+Folyamatban a szervezeten kívül, az új felhasználó nem rendelkezik meglévő attribútuma "Alapértelmezett bérlőt Azure" könyvtárban. Azok a rendszer létrehozza, miután a külső felhasználó hozzájárult rögzítsen a rendszer a könyvtárban, az előfizetéshez társított rendelt szerepkör.
 
 
 
@@ -116,7 +116,7 @@ A külső felhasználó azt mutatja be az Azure Active Directory-bérlő mostant
 
 Az a **felhasználók** nézet, a külső felhasználók felismeri a különböző ikon írja be az Azure-portálon.
 
-Azonban biztosítása **tulajdonos** vagy **közreműködő** a külső felhasználók elérését a **előfizetés** hatókörét, nem engedélyezi a hozzáférést a rendszergazda felhasználó könyvtárába, kivéve, ha a **Globális rendszergazda** lehetővé teszi. A felhasználói tulajdonságokat a **felhasználótípust** két közös paramétert tartalmaz **tag** és **vendég** azonosítható legyen. Egy tag a felhasználó, amely a címtárban regisztrálva van, míg a Vendég egy meghívót, hogy a könyvtár külső forrásból származó felhasználói. További információkért lásd: [hogyan Azure Active Directory rendszergazdák hozzá B2B együttműködés felhasználók](active-directory-b2b-admin-add-users.md).
+Azonban biztosítása **tulajdonos** vagy **közreműködő** a külső felhasználók elérését a **előfizetés** hatókörét, nem engedélyezi a hozzáférést a rendszergazda felhasználó könyvtárába, kivéve, ha a **Globális rendszergazda** lehetővé teszi. A felhasználói tulajdonságokat a **felhasználói típus**, amelynek van két általános paramétert, **tag** és **vendég** azonosítható. Egy tag egy felhasználót, hogy a címtárban regisztrálva van, míg a Vendég egy meghívót, hogy a könyvtár külső forrásból származó felhasználói. További információkért lásd: [hogyan Azure Active Directory rendszergazdák hozzá B2B együttműködés felhasználók](active-directory-b2b-admin-add-users.md).
 
 > [!NOTE]
 > Győződjön meg arról, hogy a portál a hitelesítő adatok megadása után, a külső felhasználó kiválasztja a megfelelő könyvtárban való bejelentkezéshez. Azonos is van a több könyvtárak eléréséhez és az Azure-portálon jobb felső felhasználónév kattintva válassza ki vagy az egyik és a felhasználónak a legördülő listából válassza ki a megfelelő könyvtár.
@@ -129,7 +129,7 @@ A Vendég a címtárban, miközben a külső felhasználó kezelheti az Azure-el
 
 ![az azure active Directoryval az Azure-portálhoz korlátozott hozzáférés](./media/role-based-access-control-create-custom-roles-for-internal-external-users/9.png)
 
-Az Azure Active Directory és az Azure-előfizetés nem rendelkezik egy szülő-gyermek kapcsolat, például a más Azure-erőforrások (például: virtuális gépek, virtuális hálózatok, a webalkalmazások, tárolási stb.) az Azure-előfizetéssel rendelkezik. Minden az utóbbi létrehozott, kezelt és fizetni az Azure-előfizetéssel, míg az Azure-előfizetések az Azure-címtár való hozzáférés kezelése. További részletekért lásd: [hogyan egy Azure-előfizetéshez az Azure AD kapcsolódó](/active-directory/active-directory-how-subscriptions-associated-directory).
+Az Azure Active Directory és az Azure-előfizetés nem rendelkezik egy szülő-gyermek kapcsolat, például a más Azure-erőforrások (például: virtuális gépek, virtuális hálózatok, a webalkalmazások, tárolási stb.) az Azure-előfizetéssel rendelkezik. Összes ez utóbbi van létrehozott, kezelt és fizetni az Azure-előfizetéssel, míg az Azure-előfizetések az Azure-címtár való hozzáférés kezelése. További információkért lásd: [hogyan egy Azure-előfizetéshez az Azure AD kapcsolódó](/active-directory/active-directory-how-subscriptions-associated-directory).
 
 Az összes a beépített RBAC szerepkörből **tulajdonos** és **közreműködő** minden erőforrásoknak a környezetben, a különbség a teljes felügyeleti hozzáférést nyújtanak, előfordulhat, hogy egy közreműködői nem hozható létre, majd új RBAC-szerepkörök törlése . A beépített szerepkörök, például **virtuális gép közreműködő** csak az erőforrásokat, függetlenül attól, hogy a név által jelzett összes felügyeleti hozzáférést nyújtanak a **erőforráscsoport** történő létrehozásuk alatt.
 
@@ -158,10 +158,10 @@ A normál beépített szerephez a külső felhasználó működése áttekinthet
 A folyamat megegyezik a külső felhasználók hozzáadása, mind a felügyelet szempontjából megadását a Szerepalapú szerepkör, valamint a felhasználói hozzáférést megkapják a szerepkörhöz. Itt különbség, hogy a meghívott felhasználók nem kapják meg minden e-mailek meghívókat, a bejelentkezés után az előfizetésen belüli összes erőforrás hatókör az irányítópult elérhető lesz.
 
 ## <a name="assign-rbac-roles-at-the-resource-group-scope"></a>Az erőforrás csoport hatókörű RBAC-szerepkörök hozzárendelése
-Hozzárendelése a Szerepalapú szerepet egy **erőforráscsoport** hatókörben van egy azonos folyamata hozzárendelése a szerepkört az előfizetés szintjén mindkét típusú felhasználók – külső vagy belső (könyvtárába része). A felhasználók, amelyek az RBAC-szerepkör, hogy tekintse meg a környezetben csak az erőforráscsoport van hozzájuk rendelve való hozzáférést a **erőforráscsoportok** ikon az Azure portálon.
+Hozzárendelése a Szerepalapú szerepet egy **erőforráscsoport** hatókörben van egy azonos folyamata hozzárendelése a szerepkört az előfizetés szintjén mindkét típusú felhasználók – külső vagy belső (könyvtárába része). A felhasználók, az RBAC-szerepkör, hogy tekintse meg a környezetben csak az erőforráscsoport van hozzájuk rendelve való hozzáférést a **erőforráscsoportok** ikon az Azure portálon.
 
 ## <a name="assign-rbac-roles-at-the-resource-scope"></a>Az erőforrás-hatókörben RBAC-szerepkörök hozzárendelése
-Hozzárendelése az Azure-erőforrás hatókörre RBAC szerepet van egy azonos folyamata hozzárendelése a szerepkört az előfizetés szintjén vagy az erőforráscsoport szintjén, a következő mindkét forgatókönyvet ugyanabban a munkafolyamatban. Ebben az esetben a felhasználók, amelyek az RBAC-szerepkör csak akkor hozzárendelt hozzáférés, vagy elemek látható a **összes erőforrás** lapon vagy közvetlenül az irányítópulton.
+Hozzárendelése az Azure-erőforrás hatókörre RBAC szerepet van egy azonos folyamata hozzárendelése a szerepkört az előfizetés szintjén vagy az erőforráscsoport szintjén, a következő mindkét forgatókönyvet ugyanabban a munkafolyamatban. Ebben az esetben a felhasználókat, akik az RBAC szerepkör csak akkor hozzárendelt hozzáférés, vagy elemek látható a **összes erőforrás** lapon vagy közvetlenül az irányítópulton.
 
 Az RBAC egyaránt erőforrás csoporthatókör vagy erőforrás hatókör fontos eleme a felhasználók számára, ügyeljen arra, hogy jelentkezzen be a megfelelő könyvtárban van.
 
@@ -172,7 +172,7 @@ Az RBAC egyaránt erőforrás csoporthatókör vagy erőforrás hatókör fontos
 ![Directory bejelentkezés az Azure-portálon](./media/role-based-access-control-create-custom-roles-for-internal-external-users/13.png)
 
 ## <a name="assign-rbac-roles-for-an-azure-active-directory-group"></a>Egy Azure Active Directory csoport RBAC-szerepkörök hozzárendelése
-Az RBAC használata az Azure-ban három különböző hatóköröket, minden helyzet kezeléséhez, a központi telepítését és a különböző erőforrások felügyelete személyes előfizetés kezelése igénye nélkül hozzárendelt felhasználóként jogosultság kínálnak. Attól függetlenül történik az RBAC szerepkör tartozik előfizetés, erőforráscsoporthoz vagy erőforrás hatókör, az összes az erőforrásokat a hozzárendelt felhasználók által létrehozott további a számlázása alatt, ahol a felhasználók rendelkeznek-e a hozzáférést egy Azure-előfizetéssel. Ezzel a módszerrel számlázási a teljes Azure-előfizetéshez rendszergazdai jogosultságokkal rendelkező felhasználók rendelkezik teljes áttekintése a felhasználás, függetlenül az erőforrások kezel.
+Az RBAC használata az Azure-ban három különböző hatóköröket, minden helyzet kínálnak a kezelése, a központi telepítését, és a különböző erőforrások felügyelete személyes előfizetés kezelése igénye nélkül hozzárendelt felhasználóként jogosultságot. Függetlenül a Szerepalapú szerepkör hozzá van rendelve egy előfizetés, erőforráscsoporthoz vagy erőforrás hatókör, a hozzárendelt felhasználók által létrehozott további, az összes erőforrást számlázása alatt, ahol a felhasználók rendelkeznek-e a hozzáférést egy Azure-előfizetéssel. Ezzel a módszerrel számlázási a teljes Azure-előfizetéshez rendszergazdai jogosultságokkal rendelkező felhasználók rendelkezik teljes áttekintése a felhasználás, függetlenül az erőforrások kezel.
 
 Nagyobb szervezeteknek figyelembe véve, hogy a felhasználót a rendszergazda hozzáférést szeretne biztosítani a részletes csoportok vagy részlegek teljes, nem különállóan minden felhasználónak, így annak eldöntéséhez, hogy a terv az Active Directory-csoportok esetében ugyanúgy alkalmazható RBAC-szerepkörök Ez különösen idő és a felügyeleti hatékony lehetőség. Ebben a példában mutatja be a **közreműködő** szerepkört az előfizetés szintjén a bérlő csoportok egyikéhez bővült.
 
@@ -182,16 +182,16 @@ Nagyobb szervezeteknek figyelembe véve, hogy a felhasználót a rendszergazda h
 
 ![az AAD-csoportokat RBAC-szerepkör hozzáadása](./media/role-based-access-control-create-custom-roles-for-internal-external-users/14.png)
 
-Ezek a csoportok üzembe helyezve, és csak az Azure Active Directoryban felügyelni biztonsági csoportokat.
+Ezek a csoportok olyan biztonsági csoportok, ezek kiépített és felügyelt csak az Azure Active Directoryban.
 
 ## <a name="create-a-custom-rbac-role-to-open-support-requests-using-powershell"></a>Nyissa meg a támogatási kérelmek PowerShell használatával történő egyéni RBAC szerepkör létrehozása
 A beépített RBAC-szerepkörök az Azure-ban rendelkezésre álló gondoskodjon arról, hogy bizonyos jogosultsági szintek a környezetben elérhető erőforrások alapján. Azonban ezek a szerepkörök egyike a rendszergazdai jogú felhasználó saját igényeinek megfelelően, ha nincs a beállítás a egyéni RBAC-szerepkörök létrehozásával még jobban hozzáférés korlátozásához.
 
 Egyéni RBAC-szerepkörök létrehozásához egy beépített szerep, szerkesztheti, majd importálja vissza a környezetben. A letöltés és a szerepkör feltöltése felügyelt PowerShell vagy a parancssori felület használatával.
 
-Fontos megismerni az előfeltételeket részletes hozzáférést biztosíthat az előfizetés szintjén és is lehetővé teszi a meghívott felhasználó rugalmasan megnyitása támogatási kérelmek létrehozása egy egyéni biztonsági szerepkört.
+Fontos megismerni az előfeltételeket, amely részletes hozzáférést biztosíthat az előfizetés szintjén és is lehetővé teszi a meghívott felhasználó rugalmasan megnyitása támogatási kérelmek létrehozása egy egyéni biztonsági szerepkört.
 
-Ehhez a példához a beépített szerepkör **olvasó** engedélyezése a felhasználó a lehetőség a támogatási kérelmek megnyitása testreszabása lehetővé teszi a felhasználók elérését a erőforrás hatókörök megtekintése, de nem szerkesztheti azokat, vagy hozzon létre újakat.
+Az ebben a példában a beépített szerepkör **olvasó**, lehetővé teszi a felhasználók megtekinthetik az erőforrás-hatókörök, de nem szerkesztheti azokat, vagy hozzon létre újakat, hogy van szabva engedélyezése a felhasználó a lehetőség a támogatási kérelmek megnyitása.
 
 Az első műveletet exportáló a **olvasó** emelt jogosultsági szintű rendszergazdaként futtatott szerepkör kell PowerShell leforgása alatt elvégezhetők.
 
@@ -293,7 +293,7 @@ A Mac és a PowerShell való hozzáférés nélkül fut, az Azure parancssori fe
 
 Egy egyéni biztonsági szerepkört létrehozásának a lépései megegyeznek, CLI-vel a szerepkör nem tölti le a JSON-sablon, de a a parancssori Felülettel megtekinthetők kivételével.
 
-Ehhez a példához I választotta, a beépített szerepkör **biztonsági mentés olvasó**.
+Az ebben a példában a beépített szerepkör választotta I **biztonsági mentés olvasó**.
 
 ```
 

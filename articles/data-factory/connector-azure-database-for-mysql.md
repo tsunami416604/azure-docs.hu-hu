@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2018
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 89c971ae0dd0a519a1b0214e33b5a6ad2bb7fc99
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: f08f9c1fa141f85077c1e868fb309516ce52342b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-azure-database-for-mysql-using-azure-data-factory"></a>Adatok másolása az Azure-adatbázis a MySQL az Azure Data Factory használatával
 
@@ -45,7 +45,7 @@ A következő tulajdonságok támogatott Azure-adatbázis kapcsolódó MySQL-szo
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **AzureMySql** | Igen |
-| connectionString | Adja meg a MySQL-példány az Azure-adatbázishoz való kapcsolódáshoz szükséges adatokat. Ez a mező megjelölése a SecureString. | Igen |
+| connectionString | Adja meg a MySQL-példány az Azure-adatbázishoz való kapcsolódáshoz szükséges adatokat. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhat Azure integrációs futásidejű vagy Self-hosted integrációs futásidejű (amennyiben az adattároló magánhálózaton található). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
 
 **Példa**

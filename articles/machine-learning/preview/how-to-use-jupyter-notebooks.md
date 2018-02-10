@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/09/2017
-ms.openlocfilehash: 9d8a9f1c32578abff1d98e093469e1a780f6cd80
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.openlocfilehash: 4a8681bfdfe6b387d5790446d8b6dce04aaec580
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-use-jupyter-notebook-in-azure-machine-learning-workbench"></a>Jupyter notebook használata az Azure Machine Learning-munkaterület
 
@@ -42,15 +42,15 @@ Azure ML munkaterület számos különböző kernelek elérheti futtatási konfi
 >Tekintse át a [konfigurálása végrehajtási](experimentation-service-configuration.md) vonatkozó részletes információért futtassa a konfiguráció és célok számítási.
 
 ### <a name="kernel-naming-convention"></a>Kernel elnevezési egyezmény
-A kernelek neve általában formátumban "\<projekt neve > \<futtassa a konfiguráció neve >". Például, ha nevű futtatási konfigurációt _docker-python_ nevű projekt _myIris_, megtalálhatja a kernel "myIris docker-python" a kernel listában nevű Jupyter notebook megnyitásakor.
-
+Az Azure ML munkaterület egyéni Jupyter kernelek állít elő.  Ilyen nevű "\<projekt neve > \<futtassa a konfiguráció neve >". Például, ha nevű futtatási konfigurációt _docker-python_ nevű projekt _myIris_, Azure ML elérhetővé teszi a kernel "myIris docker-python" nevű.  A futó kernel beállítása a Jupyter Notebook "Kernel" menüben, a "Módosítás kernel" a menüben. A futó kernel neve jelenik meg a jobb szélén az egérrel a menüsoron.
+ 
 A munkaterület jelenleg a következő típusú kernelek.
 
 ### <a name="local-python-kernel"></a>Helyi Python kernel
 A Python kernel végrehajtási támogatja a helyi számítógépen. Integrált Azure Machine Learning futtatása előzmények támogatásával. A kernel neve nem általában a "helyi my_project_name".
 
 >[!NOTE]
->Ne használja a "Python 3" kernel. Alapértelmezés szerint a Jupyter által biztosított önálló kernel. Nincs integrálva az Azure Machine Learning képességeit.
+>Ne használja a "Python 3" kernel. Alapértelmezés szerint a Jupyter által biztosított önálló kernel. Nincs integrálva az Azure Machine Learning képességeit. Például a _% azureml_ Jupyter magic függvények visszatérési "nem található" hibák. 
 
 ### <a name="python-kernel-in-docker-local-or-remote"></a>Python Kernel a Docker (helyi vagy távoli)
 A Python kernel futtat egy Docker-tároló vagy a helyi számítógépen, vagy egy távoli Linux virtuális gépre. A kernel értéke általában "my_project docker". A társított `docker.runconfig` fájl a `Framework` mező értéke `Python`.
@@ -135,7 +135,7 @@ with open(modelpath,"wb") as f:
 >[!NOTE]
 >A kimenetek "kimenetek" nevű mappába kell menteni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Jupyter notebook használatával megismeréséhez látogasson el a [Jupyter dokumentációs](http://jupyter-notebook.readthedocs.io/en/latest/).    
 - Ahhoz, hogy az Azure ML kísérletezhet végrehajtási környezet bemutatják, tekintse át a [áttekintés az Azure Machine Learning kísérletezhet szolgáltatás](experimentation-service-configuration.md)
 

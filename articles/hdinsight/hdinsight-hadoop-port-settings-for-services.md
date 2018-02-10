@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/13/2017
+ms.date: 02/07/2018
 ms.author: larryfr
-ms.openlocfilehash: a55180b5d65b268d7c9b51307581a5fe777a26fe
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 70bb69c78a23c9ffe012c0b775c98355da7cbce6
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="ports-used-by-hadoop-services-on-hdinsight"></a>A HDInsight Hadoop-szolgáltatás által használt portok
 
@@ -49,8 +49,8 @@ HDInsight-fürtök minden csomópontján egy Azure virtuális hálózatban talá
 | Ambari |443 |HTTPS |Ambari webes felhasználói felület. Lásd: [kezelése HDInsight az Ambari webes felhasználói felület használatával](hdinsight-hadoop-manage-ambari.md) |
 | Ambari |443 |HTTPS |Ambari REST API-t. Lásd: [kezelése HDInsight az Ambari REST API használatával](hdinsight-hadoop-manage-ambari-rest-api.md) |
 | WebHCat |443 |HTTPS |HCatalog REST API-t. Lásd: [a Hive használata a Curl](hadoop/apache-hadoop-use-pig-curl.md), [a Pig használata Curl](hadoop/apache-hadoop-use-pig-curl.md), [MapReduce használata Curl](hadoop/apache-hadoop-use-mapreduce-curl.md) |
-| Hiveserver2-n |443 |ODBC |Hive ODBC használatával csatlakozik. Lásd: [az Excel csatlakozzon a HDInsight a Microsoft ODBC-illesztőprogram](hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md). |
-| Hiveserver2-n |443 |JDBC |A Hive használatával JDBC csatlakozik. Lásd: [Hive hdinsight Hive JDBC-illesztőprogram használatával csatlakozhat](hadoop/apache-hadoop-connect-hive-jdbc-driver.md) |
+| HiveServer2 |443 |ODBC |Hive ODBC használatával csatlakozik. Lásd: [az Excel csatlakozzon a HDInsight a Microsoft ODBC-illesztőprogram](hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md). |
+| HiveServer2 |443 |JDBC |A Hive használatával JDBC csatlakozik. Lásd: [Hive hdinsight Hive JDBC-illesztőprogram használatával csatlakozhat](hadoop/apache-hadoop-connect-hive-jdbc-driver.md) |
 
 Az alábbiakban adott fürt esetében érhető el:
 
@@ -60,7 +60,7 @@ Az alábbiakban adott fürt esetében érhető el:
 | Livy |443 |HTTPS |Spark |Spark REST API-t. Lásd: [küldje el külső feladatok távolról a Livy használatával](spark/apache-spark-livy-rest-interface.md) |
 | Storm |443 |HTTPS |Storm |A Storm webes felhasználói felület. Lásd: [központi telepítése és kezelése a HDInsight alatt futó Storm-topológiák](storm/apache-storm-deploy-monitor-topology-linux.md) |
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Hitelesítés
 
 Minden szolgáltatás nyilvánosan elérhetővé az interneten hitelesíteni kell:
 
@@ -75,14 +75,14 @@ Minden szolgáltatás nyilvánosan elérhetővé az interneten hitelesíteni kel
 > Egyes szolgáltatások adott fürt típusok csak érhetők el. A HBase például a HBase fürt típusok csak érhető el.
 
 > [!IMPORTANT]
-> Egyes szolgáltatások csak futtatható egy headnode egyszerre. Ha próbál csatlakozni a szolgáltatáshoz, az elsődleges headnode a és a 404-es hibaüzenetet kap, próbálja meg újból, a másodlagos headnode használatával.
+> Egyes szolgáltatások csak futtatható egy headnode egyszerre. Ha próbál csatlakozni a szolgáltatáshoz, az elsődleges headnode, és olyan hibaüzenetet kap, próbálja meg újból, a másodlagos headnode használatával.
 
 ### <a name="ambari"></a>Ambari
 
 | Szolgáltatás | Csomópontok | Port | URL-cím | Protokoll | 
 | --- | --- | --- | --- | --- |
 | Ambari webes felhasználói felület | HEAD csomópontok | 8080 | / | HTTP |
-| Ambari REST API-n | HEAD csomópontok | 8080 | / api/v1 | HTTP |
+| Ambari REST API-n | HEAD csomópontok | 8080 | /api/v1 | HTTP |
 
 Példák:
 
@@ -117,14 +117,14 @@ Példák:
 
 | Szolgáltatás | Csomópontok | Port | Protokoll | Leírás |
 | --- | --- | --- | --- | --- |
-| Hiveserver2-n |HEAD csomópontok |10001 |Thrift |Szolgáltatás struktúra (Thrift/JDBC) való kapcsolódáshoz |
+| HiveServer2 |HEAD csomópontok |10001 |Thrift |Szolgáltatás struktúra (Thrift/JDBC) való kapcsolódáshoz |
 | Hive Metaadattárhoz |HEAD csomópontok |9083 |Thrift |Hive-metaadatok (Thrift/JDBC) való kapcsolódáshoz szolgáltatás |
 
 ### <a name="webhcat-ports"></a>WebHCat-portok
 
 | Szolgáltatás | Csomópontok | Port | Protokoll | Leírás |
 | --- | --- | --- | --- | --- |
-| WebHCat-kiszolgáló |HEAD csomópontok |30111 |HTTP |Webes API-k fölött HCatalog és egyéb Hadoop-szolgáltatás |
+| WebHCat server |HEAD csomópontok |30111 |HTTP |Webes API-k fölött HCatalog és egyéb Hadoop-szolgáltatás |
 
 ### <a name="mapreduce-ports"></a>MapReduce portok
 
@@ -138,8 +138,8 @@ Példák:
 
 | Szolgáltatás | Csomópontok | Port | Protokoll | Leírás |
 | --- | --- | --- | --- | --- |
-| Oozie kiszolgáló |HEAD csomópontok |11000 |HTTP |Oozie szolgáltatás URL-címe |
-| Oozie kiszolgáló |HEAD csomópontok |11001 |HTTP |A Oozie rendszergazdai port |
+| Oozie server |HEAD csomópontok |11000 |HTTP |Oozie szolgáltatás URL-címe |
+| Oozie server |HEAD csomópontok |11001 |HTTP |A Oozie rendszergazdai port |
 
 ### <a name="ambari-metrics"></a>Ambari metrikák
 
@@ -154,7 +154,7 @@ Példák:
 | --- | --- | --- | --- | --- |
 | HMaster |HEAD csomópontok |16000 |&nbsp; |&nbsp; |
 | Webes felhasználói felületén HMaster adatai |HEAD csomópontok |16010 |HTTP |A HBase fő webes felhasználói felület port |
-| A régióban kiszolgáló |Az összes munkavégző csomópontokhoz |16020 |&nbsp; |&nbsp; |
+| Region server |Az összes munkavégző csomópontokhoz |16020 |&nbsp; |&nbsp; |
 | &nbsp; |&nbsp; |2181 |&nbsp; |A port, amelyet az ügyfelek csatlakozhatnak ZooKeeper |
 
 ### <a name="kafka-ports"></a>Kafka portok
@@ -169,7 +169,8 @@ Példák:
 | Szolgáltatás | Csomópontok | Port | Protokoll | URL-cím | Leírás |
 | --- | --- | --- | --- | --- | --- |
 | A Spark Thrift-kiszolgálók |HEAD csomópontok |10002 |Thrift | &nbsp; | Szolgáltatás Spark SQL (Thrift/JDBC) való kapcsolódáshoz |
-| Livy kiszolgáló | HEAD csomópontok | 8998 | HTTP | &nbsp; | Szolgáltatás utasítások, feladatok és alkalmazások |
+| Livy server | HEAD csomópontok | 8998 | HTTP | &nbsp; | Szolgáltatás utasítások, feladatok és alkalmazások |
+| Jupyter notebook | HEAD csomópontok | 8001 | HTTP | &nbsp; | Jupyter notebook webhely |
 
 Példák:
 

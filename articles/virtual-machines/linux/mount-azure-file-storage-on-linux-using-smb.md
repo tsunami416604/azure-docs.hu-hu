@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/13/2017
 ms.author: v-livech
-ms.openlocfilehash: 9eae17b304f8a987b44ebed8906dabd8ff3a36a8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4566e9b236049c336858e9149cca80066b029775
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>A Linux virtuális gépeken, az SMB-csatlakoztatási Azure fájltároló
 
@@ -67,7 +67,7 @@ Helyezze át a fájlokat egy virtuális gépről a File storage egy üzemeltetet
 
 A részletes forgatókönyv azt létrehozásához először létre kell hoznia a File storage-megosztás szükséges előfeltételeket, és csatlakoztathatja SMB-protokollal a Linux virtuális gép.
 
-1. Hozzon létre egy erőforráscsoportot a [az csoport létrehozása](/cli/azure/group#create) ahhoz, hogy a fájlmegosztás.
+1. Hozzon létre egy erőforráscsoportot a [az csoport létrehozása](/cli/azure/group#az_group_create) ahhoz, hogy a fájlmegosztás.
 
     Nevű erőforráscsoport létrehozásához `myResourceGroup` az "USA nyugati régiója" helyen, használja a következő példát:
 
@@ -75,7 +75,7 @@ A részletes forgatókönyv azt létrehozásához először létre kell hoznia a
     az group create --name myResourceGroup --location westus
     ```
 
-2. Az Azure storage-fiók létrehozása [az storage-fiók létrehozása](/cli/azure/storage/account#create) a tényleges fájlok tárolásához.
+2. Az Azure storage-fiók létrehozása [az storage-fiók létrehozása](/cli/azure/storage/account#az_storage_account_create) a tényleges fájlok tárolásához.
 
     A Standard_LRS tárolási SKU használatával mystorageaccount nevű tárfiók létrehozásához használja a következő példát:
 
@@ -90,7 +90,7 @@ A részletes forgatókönyv azt létrehozásához először létre kell hoznia a
 
     Amikor létrehoz egy tárfiókot, a kulcsait jönnek létre párok, hogy a szolgáltatás megszakítás nélkül forgatható el. Amikor a második kulcsot a párok, hozzon létre új kulcspár. Új tárfiókkulcsok mindig párosával győződjön meg arról, hogy mindig legyen legalább egy nem használt tárfiók kulcsa készen áll a Váltás jönnek létre.
 
-    A tárfiók kulcsait a megtekintése a [az tárolási fióklista kulcsok](/cli/azure/storage/account/keys#list). A tárfiók a kulcsok az a megnevezett `mystorageaccount` a következő példában látható:
+    A tárfiók kulcsait a megtekintése a [az tárolási fióklista kulcsok](/cli/azure/storage/account/keys#az_storage_account_keys_list). A tárfiók a kulcsok az a megnevezett `mystorageaccount` a következő példában látható:
 
     ```azurecli
     az storage account keys list --resource-group myResourceGroup \
@@ -107,7 +107,7 @@ A részletes forgatókönyv azt létrehozásához először létre kell hoznia a
 
 4. A tárolási fájlmegosztás létrehozása.
 
-    A File storage-megosztás az SMB-megosztás tartalmaz [az storage-megosztás létrehozása](/cli/azure/storage/share#create). A kvóta mindig gigabájt (GB) van megadva. Az egyik kulcsának fázisra az előző `az storage account keys list` parancsot. Hozzon létre egy megosztást, 10 GB-os kvótával mystorageshare nevű az alábbi példa szerint:
+    A File storage-megosztás az SMB-megosztás tartalmaz [az storage-megosztás létrehozása](/cli/azure/storage/share#az_storage_share_create). A kvóta mindig gigabájt (GB) van megadva. Az egyik kulcsának fázisra az előző `az storage account keys list` parancsot. Hozzon létre egy megosztást, 10 GB-os kvótával mystorageshare nevű az alábbi példa szerint:
 
     ```azurecli
     az storage share create --name mystorageshare \
@@ -137,10 +137,10 @@ A részletes forgatókönyv azt létrehozásához először létre kell hoznia a
     A Linux virtuális gép újraindításakor a csatlakoztatott SMB-megosztáson fürtköteteiről leállítás során. A Linux /etc/fstab vonal felvétele az SMB-megosztáshoz, a rendszerindító csatlakoztatható. Linux fstab fájlt használja, amely a rendszerindítás során csatlakoztatni kell a fájlrendszerek listázásához. Az SMB-megosztás hozzáadása biztosítja, hogy a File storage-megosztást véglegesen csatlakoztatott fájlrendszer a Linux virtuális gép számára. A fájltároló SMB-megosztási ad hozzá egy új virtuális gép felhőalapú inicializálás használata esetén lehetséges.
 
     ```bash
-    //myaccountname.file.core.windows.net/mysharename /mymountpoint cifs vers=3.0,username=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
+    //myaccountname.file.core.windows.net/mystorageshare /mnt/mymountdirectory cifs vers=3.0,username=mystorageaccount,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Felhő inicializálás segítségével testre szabhatja a Linux virtuális gép létrehozása során](using-cloud-init.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Add a disk to a Linux VM (Lemez hozzáadása Linux rendszerű virtuális géphez)](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

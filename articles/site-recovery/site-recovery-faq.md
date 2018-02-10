@@ -2,23 +2,17 @@
 title: "Az Azure Site Recovery: Gyakori kérdések |} Microsoft Docs"
 description: "Ez a cikk ismerteti, amelyek a népszerű kérdések Azure Site Recoveryvel kapcsolatos."
 services: site-recovery
-documentationcenter: 
 author: rayne-wiselman
 manager: carmonm
-editor: 
-ms.assetid: 5cdc4bcd-b4fe-48c7-8be1-1db39bd9c078
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 10/19/2017
+ms.date: 02/07/2018
 ms.author: raynew
-ms.openlocfilehash: 82cec6df5d5d6ecf1147cac29b8fc46966ea57de
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 578ce5d4e661e74003440836304f16579d292d06
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Azure Site Recovery: gyakori kérdések (GYIK)
 A cikk az Azure Site Recovery kapcsolatos gyakran ismételt kérdések tartalmaz. Ha kérdése van a cikk elolvasása után, az fel őket a [Azure Recovery Services fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
@@ -166,10 +160,10 @@ Automatizálható, képes használni a helyszíni Orchestratort vagy az Operatio
 * [További](site-recovery-failback-azure-to-vmware.md) hibás kapcsolatos biztonsági másolatot a VMware virtuális gépek és fizikai kiszolgálók
 
 ### <a name="if-my-on-premises-host-is-not-responding-or-crashed-can-i-failover-back-to-a-different-host"></a>Ha a helyi gazdagép nem válaszol vagy lefagyott, telepíthetek vissza egy másik gazdagépet a feladatátvétel?
-Igen, a másik helyre történő helyreállítást használható feladat-visszavételi egy másik gazdagépen az Azure-ból. További információk a beállítások az alábbi hivatkozások VMware és a Hyper-v virtuális gépek.
+Igen, a másik helyre történő helyreállítást használható feladat-visszavételi egy másik gazdagépen az Azure-ból. További információk a beállítások az alábbi hivatkozások VMware és a Hyper-V virtuális gépek.
 
-* [A VMware virtuális gépek](site-recovery-how-to-failback-azure-to-vmware.md#fail-back-to-the-original-or-alternate-location)
-* [A Hyper-v virtuális gépek](site-recovery-failback-from-azure-to-hyper-v.md#failback-to-an-alternate-location)
+* [A VMware virtuális gépek](concepts-types-of-failback.md#alternate-location-recovery-alr)
+* [A Hyper-V virtuális gépek](site-recovery-failback-from-azure-to-hyper-v.md#perform-failback)
 
 ## <a name="service-providers"></a>Szolgáltatók
 ### <a name="im-a-service-provider-does-site-recovery-work-for-dedicated-and-shared-infrastructure-models"></a>Szolgáltató vagyok. Működik a Site Recovery dedikált és megosztott infrastruktúra-modellekkel?
@@ -198,6 +192,6 @@ Azure-csomag, a Cloud Platform System támogatott, és a System Center-alapú (2
 ### <a name="do-you-support-single-azure-pack-and-single-vmm-server-deployments"></a>Támogatott az egyetlen Azure Pack-re és az egyetlen VMM-kiszolgálóra alapuló üzembe helyezési modell?
 Igen, a Hyper-V virtuális gépek replikálása, az Azure-ba, és replikálhat szolgáltatói helyek között.  Vegye figyelembe, hogy ha a szolgáltatást nyújtó helyei között történik a replikáció, az Azure-forgatókönyvek integrációja nem érhető el.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Olvassa el a [Site Recovery áttekintését](site-recovery-overview.md)
 * Információk a [Site Recovery architektúrájáról](site-recovery-components.md)  

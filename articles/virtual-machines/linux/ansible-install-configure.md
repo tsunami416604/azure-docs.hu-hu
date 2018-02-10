@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: 13b043f3d6154852647f6bb738d3717be6802fa9
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: a27d4422e0d7b116d2aea6f743b9efc27570cdb9
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="install-and-configure-ansible-to-manage-virtual-machines-in-azure"></a>Telepítse és konfigurálja az Azure virtuális gépek kezeléséhez Ansible
 Ez a cikk részletesen Ansible és a szükséges Azure Python SDK-modulok telepítése a leggyakrabban használt Linux disztribúciókkal részénél. Más disztribúciókkal Ansible telepíthető a telepített csomagok, hogy elférjen az adott platform beállításával. Szeretne létrehozni Azure-erőforrások biztonságos elérését, is megismerheti, hogyan hozhat létre és Ansible használandó hitelesítő adatok megadása. 
@@ -28,7 +28,7 @@ További telepítési opciókon és a további platformok lépéseket, tekintse 
 
 
 ## <a name="install-ansible"></a>Ansible telepítése
-Először hozzon létre egy erőforráscsoportot a [az csoport létrehozása](/cli/azure/group#create). Az alábbi példa létrehoz egy erőforráscsoportot *myResourceGroupAnsible* a a *eastus* helye:
+Először hozzon létre egy erőforráscsoportot a [az csoport létrehozása](/cli/azure/group#az_group_create). Az alábbi példa létrehoz egy erőforráscsoportot *myResourceGroupAnsible* a a *eastus* helye:
 
 ```azurecli
 az group create --name myResourceGroupAnsible --location eastus
@@ -41,7 +41,7 @@ Most hozzon létre egy virtuális Gépet, és egy tetszés szerinti következő 
 - [SLES 12 SP2](#sles-12-sp2)
 
 ### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
-Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#create) paranccsal. Az alábbi példakód létrehozza a virtuális gépek nevű *myVMAnsible*:
+Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az_vm_create) paranccsal. Az alábbi példakód létrehozza a virtuális gépek nevű *myVMAnsible*:
 
 ```azurecli
 az vm create \
@@ -72,7 +72,7 @@ Most helyezze át a [létrehozása Azure hitelesítő adatok](#create-azure-cred
 
 
 ### <a name="centos-73"></a>7.3 centOS
-Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#create) paranccsal. Az alábbi példakód létrehozza a virtuális gépek nevű *myVMAnsible*:
+Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az_vm_create) paranccsal. Az alábbi példakód létrehozza a virtuális gépek nevű *myVMAnsible*:
 
 ```azurecli
 az vm create \
@@ -104,7 +104,7 @@ Most helyezze át a [létrehozása Azure hitelesítő adatok](#create-azure-cred
 
 
 ### <a name="sles-12-sp2"></a>SLES 12 SP2
-Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#create) paranccsal. Az alábbi példakód létrehozza a virtuális gépek nevű *myVMAnsible*:
+Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az_vm_create) paranccsal. Az alábbi példakód létrehozza a virtuális gépek nevű *myVMAnsible*:
 
 ```azurecli
 az vm create \
@@ -157,7 +157,7 @@ A kimenet a fenti parancsok például a következőképpen történik:
 }
 ```
 
-A hitelesítéshez az Azure-ba is be kell szereznie az Azure-előfizetése Azonosítóját [az fiók megjelenítése](/cli/azure/account#show):
+A hitelesítéshez az Azure-ba is be kell szereznie az Azure-előfizetése Azonosítóját [az fiók megjelenítése](/cli/azure/account#az_account_show):
 
 ```azurecli
 az account show --query "{ subscription_id: id }"

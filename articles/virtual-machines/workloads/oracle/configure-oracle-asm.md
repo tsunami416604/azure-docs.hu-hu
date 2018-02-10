@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/19/2017
 ms.author: rclaus
-ms.openlocfilehash: 117212a2e7e3da7c3e249798eec804a652e0ef58
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0e34a188271a5ac2fb6cb34a088ec3f650be6cab
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Oracle címterület-kezelés beállítása az Azure Linux virtuális gépen  
 
@@ -35,13 +35,13 @@ Az Azure virtuális gépek adjon meg egy teljes mértékben konfigurálhatók é
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Telepítése és a parancssori felület helyileg használata mellett dönt, ha ez az oktatóanyag van szükség, hogy futnak-e az Azure parancssori felület 2.0.4 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
 
 ## <a name="prepare-the-environment"></a>A környezet előkészítése
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Erőforráscsoport létrehozásához használja a [az csoport létrehozása](/cli/azure/group#create) parancsot. Egy Azure erőforráscsoport egy olyan logikai tároló, amelyre erőforrások telepítése és kezelése. Ebben a példában az erőforráscsoport neve *myResourceGroup* a a *eastus* régióban.
+Az erőforráscsoport létrehozásához használja az [az group create](/cli/azure/group#az_group_create) parancsot. Egy Azure erőforráscsoport egy olyan logikai tároló, amelyre erőforrások telepítése és kezelése. Ebben a példában az erőforráscsoport neve *myResourceGroup* a a *eastus* régióban.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -49,7 +49,7 @@ az group create --name myResourceGroup --location eastus
 
 ### <a name="create-a-vm"></a>Virtuális gép létrehozása
 
-Az Oracle-adatbázishoz lemezképen alapuló virtuális gép létrehozása, és konfigurálja úgy, hogy az Oracle ASM használja, használja a [az virtuális gép létrehozása](/cli/azure/vm#create) parancsot. 
+Az Oracle-adatbázishoz lemezképen alapuló virtuális gép létrehozása, és konfigurálja úgy, hogy az Oracle ASM használja, használja a [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create) parancsot. 
 
 Az alábbi példa létrehoz egy 50 GB négy csatolt adatlemezekkel rendelkező Standard_DS2_v2 méretű myVM nevű virtuális gép. Ha még nem léteznek az alapértelmezett kulcshelyen, SSH-kulcsok is létrehoz.  Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.  
 
@@ -580,7 +580,7 @@ Sikeresen konfigurálta az Azure piactérről az Oracle-DB kép Oracle automatik
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Oktatóanyag: Oracle DataGuard konfigurálása](configure-oracle-dataguard.md)
 

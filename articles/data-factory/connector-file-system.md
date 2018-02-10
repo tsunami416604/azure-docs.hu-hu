@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 8c8edc6e3d3c8330824c767f1bb02668a44e670e
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: ff8fb061a5a5108e574860fa26d0d983ef5ffe99
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-to-or-from-a-file-system-by-using-azure-data-factory"></a>Adatok másolása, vagy a Windows operációs rendszer Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -58,7 +58,7 @@ A következő tulajdonságok fájl kapcsolódó rendszerszolgáltatás támogatj
 | type | A type tulajdonságot kell beállítani: **fájlkiszolgáló**. | Igen |
 | gazdagép | Adja meg a legfelső szintű mappa elérési útját, amelyet szeretne másolni. Az escape-karakter használata "\" speciális karakterek a karakterláncban. Lásd: [minta kapcsolódó szolgáltatás és az adatkészlet-definíciók](#sample-linked-service-and-dataset-definitions) példákat. | Igen |
 | felhasználói azonosítóját | Adja meg a felhasználó, aki hozzáfér a kiszolgáló Azonosítóját. | Igen |
-| jelszó | Adja meg a felhasználó (userid) jelszavát. Ez a mező megjelölése SecureString. | Igen |
+| jelszó | Adja meg a felhasználó (userid) jelszavát. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhatja Self-hosted integrációs futásidejű vagy Azure integrációs futásidejű (ha az adattároló nyilvánosan elérhető). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
 
 ### <a name="sample-linked-service-and-dataset-definitions"></a>Példa társított szolgáltatás és a dataset definíciók

@@ -7,13 +7,13 @@ editor: spelluru
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 199f3f98f71dcc9eb5f7f3338547870f215d3d64
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: d492147b8855d8f1ef64d3421c62e11a1951eadd
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Másolja a adatok vagy az Azure Blob storage Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -52,7 +52,7 @@ A fiók kulcs használatával létrehozhat egy tárolás társított szolgáltat
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot meg kell **AzureStorage**. |Igen |
-| connectionString | Adja meg a connectionString tulajdonság tárolási való kapcsolódáshoz szükséges adatokat. Ez a mező megjelölése SecureString. |Igen |
+| connectionString | Adja meg a connectionString tulajdonság tárolási való kapcsolódáshoz szükséges adatokat. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). |Igen |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhat Azure integrációs futásidejű vagy Self-hosted integrációs futásidejű (ha az adattároló egy magánhálózathoz). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
 
 **Példa**
@@ -95,7 +95,7 @@ Szolgáltatás megosztott hozzáférési aláírást hitelesítés használatáh
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot meg kell **AzureStorage**. |Igen |
-| sasUri | Adja meg a közös hozzáférésű jogosultságkódot URI a tárolási erőforrások, például blob, -tároló vagy tábla. Ez a mező megjelölése SecureString. |Igen |
+| sasUri | Adja meg a közös hozzáférésű jogosultságkódot URI a tárolási erőforrások, például blob, -tároló vagy tábla. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). |Igen |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhatja az Azure integrációs futásidejű vagy a Self-hosted integrációs futásidejű (ha az adattároló egy magánhálózaton található). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
 
 **Példa**

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
-ms.openlocfilehash: e3f84e4757e3854fc63e3069e179446174f0c0bd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 72f962fdc3b5d1b26dc0a08916a21694ddf7afe7
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-create-nsgs-classic-in-powershell"></a>Az NSG-k (klasszikus) létrehozása a PowerShell
 [!INCLUDE [virtual-networks-create-nsg-selectors-classic-include](../../includes/virtual-networks-create-nsg-selectors-classic-include.md)]
@@ -35,7 +35,7 @@ Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. Emellett [NSG-k lét
 A minta az alábbi parancsok várt már létrehozott egy egyszerű környezetben PowerShell a fenti forgatókönyv alapján. Ha szeretné a parancsokat a jelen dokumentum megjelenített, először által a tesztkörnyezet felépítéséhez [létre virtuális hálózatok](virtual-networks-create-vnet-classic-netcfg-ps.md).
 
 ## <a name="how-to-create-the-nsg-for-the-front-end-subnet"></a>Az NSG az előtér-alhálózat létrehozása
-Hozzon létre egy NSG nevű nevű **NSG-előtérbeli** a fenti forgatókönyv alapján, kövesse az alábbi lépéseket:
+Az NSG nevű létrehozásához **NSG-előtérbeli** a fenti forgatókönyv alapján, kövesse az alábbi lépéseket:
 
 1. Ha még nem használta az Azure PowerShellt, tekintse meg [How to Install and Configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása) című részt, majd kövesse az utasításokat egészen az utolsó lépésig az Azure-ba való bejelentkezéshez és az előfizetése kiválasztásához.
 2. Hozzon létre egy hálózati biztonsági csoport nevű **NSG-előtérbeli**.

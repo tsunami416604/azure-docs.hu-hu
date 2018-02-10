@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/28/2017
+ms.date: 02/04/2018
 ms.author: kumud
-ms.openlocfilehash: ddcbe895bdaa6eaa49e8ed129fe92b415f2600ef
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: cf7be370ab0d79be9068534f0c43b88f454bc024
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-load-balancer-standard-overview-preview"></a>Az Azure Load Balancer szabványos áttekintése (előzetes verzió)
 
 Az Azure Load Balancer Standard Termékváltozat és nyilvános IP-Standard Termékváltozat együtt lehetővé teszik rugalmasan méretezhető, megbízható architektúrák létrehozásához. Alkalmazásokat, amelyek használják a Load Balancer szabványos kihasználhatják új képességeit. Kis késleltetésű, a magas teljesítmény és a skála az összes TCP és UDP-alkalmazás adatfolyamok több millió érhetők el.
 
 >[!NOTE]
-> A Load Balancer Standard Termékváltozat jelenleg előzetes verzió. Előzetes a szolgáltatás esetleg nincs azonos szintű rendelkezésre állást és megbízhatóságot, szolgáltatások, amelyek általában a rendelkezésre állási kiadási. További részletekért lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Használja a nyilvánosan elérhető [Load Balancer alapszintű Termékváltozat](load-balancer-overview.md) a termelés számára. Az ebben az előzetes kapcsolódó szolgáltatások [rendelkezésre állási zónák](https://aka.ms/availabilityzones), és [magas rendelkezésre ÁLLÁSÚ portok](https://aka.ms/haports), különálló regisztrációs jelenleg szükséges. A megfelelő utasításokat kövesse ezeket a szolgáltatásokat, regisztrál a Load Balancer mellett az [szabványos előzetes](#preview-sign-up).
+> A Load Balancer Standard Termékváltozat jelenleg előzetes verzió. Előzetes a szolgáltatás esetleg nincs azonos szintű rendelkezésre állást és megbízhatóságot, szolgáltatások, amelyek általában a rendelkezésre állási kiadási. További részletekért lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Használja a nyilvánosan elérhető [Load Balancer alapszintű Termékváltozat](load-balancer-overview.md) a termelés számára. Használandó [rendelkezésre állási zónák előzetes](https://aka.ms/availabilityzones) ebben az előzetes szükséges egy [előfizetési külön](https://aka.ms/availabilityzones), mellett regisztrál a Load Balancer [szabványos előzetes](#preview-sign-up).
 
 ## <a name="why-use-load-balancer-standard"></a>Miért használ a Load Balancer szabványos?
 
@@ -325,13 +325,11 @@ Termékváltozat nem változtatható. Kövesse az ebben a szakaszban található
 
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
 
-Load Balancer szabványos már érhető el ezeken a területeken:
-- USA 2. keleti régiója
-- USA középső régiója
-- Észak-Európa
-- USA nyugati középső régiója
-- Nyugat-Európa
-- Délkelet-Ázsia
+Load Balancer szabványos már érhető el nyilvános felhő minden régióban.
+
+>[!IMPORTANT]
+> Rövid idő alatt, hozzáférni a kezdeti indítási kívül régiók régiók (USA keleti régiója 2. régiója, USA középső RÉGIÓJA, Észak-Európa, Nyugat középső Régiójában, Nyugat-Európában, Délkelet-Ázsiában) előírja, hogy további előfizetési funkciók regisztrációjának (AllowLBPreviewWave2 és AllowLBPreviewWave3).  [Kövesse az alábbi lépéseket](#additionalpreviewregions). Hajtsa végre az összes akkor is, ha korábban már feliratkozott a AllowLBPreview már.
+> Ez a követelmény az elkövetkező hetektől törlődni fog.
 
 ## <a name="sku-service-limits-and-abilities"></a>Termékváltozat-szolgáltatásra vonatkozó korlátozások és képességek
 
@@ -369,7 +367,12 @@ Az alábbi táblázat összehasonlítja a korlátozások és a nyilvános IP Bas
 Az előzetes betöltési terheléselosztó Standard Termékváltozat és a kiegészítő nyilvános IP-Standard Termékváltozat részt, az előfizetés regisztrálása  Az előfizetés hozzáférést tud biztosítani, a PowerShell vagy Azure CLI 2.0 regisztrálása. Regisztrálásához hajtsa végre az alábbi lépéseket:
 
 >[!NOTE]
->A Load Balancer szabványos szolgáltatás regisztrációs órát is igénybe vehet egy globálisan hatályba. Ha szeretné használni a Load Balancer szabványosnak [rendelkezésre állási zónák](https://aka.ms/availabilityzones) és [magas rendelkezésre ÁLLÁSÚ portok](https://aka.ms/haports), ezek az előzetes verziójú funkciók előfizetési külön kell. A megfelelő utasításokat kövesse az azokat a funkciókat.
+>A Load Balancer szabványos szolgáltatás regisztrációs órát is igénybe vehet egy globálisan hatályba. Ha szeretné használni a Load Balancer szabványosnak [rendelkezésre állási zónák](https://aka.ms/availabilityzones), egy [előfizetési külön](https://aka.ms/availabilityzones) a AZ előzetes verzió szükséges.
+
+<a name="additionalpreviewregions"></a>
+>[!IMPORTANT]
+> Rövid időn kívül a kezdeti indítási régiókban elérhető régiók (USA keleti régiója 2. régiója, USA középső RÉGIÓJA, Észak-Európa, Nyugat középső Régiójában, Nyugat-Európában, Délkelet-Ázsiában) a további előfizetési funkciók való regisztráció megkövetelése (AllowLBPreviewWave2 és AllowLBPreviewWave3).  Az alábbi lépéseket az előfizetés további funkciók engedélyezésére módosítva lett. Hajtsa végre az összes akkor is, ha korábban már feliratkozott a AllowLBPreview már. Ez a követelmény az elkövetkező hetektől törlődni fog.
+
 
 ### <a name="sign-up-by-using-azure-cli-20"></a>Jelentkezzen Azure CLI 2.0 használatával
 
@@ -377,15 +380,19 @@ Az előzetes betöltési terheléselosztó Standard Termékváltozat és a kieg�
 
     ```cli
     az feature register --name AllowLBPreview --namespace Microsoft.Network
+    az feature register --name AllowLBPreviewWave2 --namespace Microsoft.Network
+    az feature register --name AllowLBPreviewWave3 --namespace Microsoft.Network
     ```
     
 2. A művelet elvégzéséhez akár 10 percet is igénybe vehet. A állapotának a művelet a következő paranccsal:
 
     ```cli
-    az feature show --name AllowLBPreview --namespace Microsoft.Network
+    az feature list --query "[?name=='Microsoft.Network/AllowLBPreview']" --output json
+    az feature list --query "[?name=='Microsoft.Network/AllowLBPreviewWave2']" --output json
+    az feature list --query "[?name=='Microsoft.Network/AllowLBPreviewWave3']" --output json
     ```
     
-    Folytassa a következő lépés, ha a szolgáltatás regisztrációs állapota "Regisztrált" tér vissza:
+    Ha a szolgáltatás regisztrációs állapota "Regisztrált" minden, a fenti előfizetés funkciók ad vissza. a folytatáshoz a következő lépéssel. Példa:
    
     ```json
     {
@@ -398,28 +405,33 @@ Az előzetes betöltési terheléselosztó Standard Termékváltozat és a kieg�
     }
     ```
     
-3. Fejezze be az előfizetési előzetes újra az erőforrás-szolgáltató előfizetésének regisztrálása:
+4. Fejezze be az előfizetési előzetes újra az erőforrás-szolgáltató előfizetésének regisztrálása:
 
     ```cli
     az provider register --namespace Microsoft.Network
     ```
     
+
 ### <a name="sign-up-by-using-powershell"></a>Iratkozzon fel a PowerShell használatával
 
 1. A szolgáltatás regisztrálja a szolgáltatót:
 
     ```powershell
     Register-AzureRmProviderFeature -FeatureName AllowLBPreview -ProviderNamespace Microsoft.Network
+    Register-AzureRmProviderFeature -FeatureName AllowLBPreviewWave2 -ProviderNamespace Microsoft.Network
+    Register-AzureRmProviderFeature -FeatureName AllowLBPreviewWave3 -ProviderNamespace Microsoft.Network
     ```
     
 2. A művelet elvégzéséhez akár 10 percet is igénybe vehet. A állapotának a művelet a következő paranccsal:
 
     ```powershell
     Get-AzureRmProviderFeature -FeatureName AllowLBPreview -ProviderNamespace Microsoft.Network
+    Get-AzureRmProviderFeature -FeatureName AllowLBPreviewWave2 -ProviderNamespace Microsoft.Network
+    Get-AzureRmProviderFeature -FeatureName AllowLBPreviewWave3 -ProviderNamespace Microsoft.Network
     ```
 
-    Folytassa a következő lépés, ha a szolgáltatás regisztrációs állapota "Regisztrált" tér vissza:
-   
+  Ha a szolgáltatás regisztrációs állapota "Regisztrált" minden, a fenti előfizetés funkciók ad vissza. a folytatáshoz a következő lépéssel. Példa:
+
     ```
     FeatureName      ProviderName        RegistrationState
     -----------      ------------        -----------------
@@ -450,11 +462,14 @@ A következő korlátozások vonatkoznak az előzetes időpontjában alkalmazni,
 - Az IPv6 nem támogatott.
 - A rendelkezésre állási zónák a környezetben egy előtér-nem változtatható zonal a zónaredundáns, vagy fordítva. Egy előtér-létrehozása után a zónaredundáns marad zónaredundáns. Egy előtér-létrehozása után a zonal marad zonal.
 - A rendelkezésre állási zónák környezetében zonal nyilvános IP-címnek nem lehet áthelyezni egy zónából egy másikra.
+- [Riasztások figyelése Azure](../monitoring-and-diagnostics/monitoring-overview-alerts.md) jelenleg nem támogatottak.
+- Portál még nem támogatja a kibővített előzetes régiók.  Használjon például sablonokat, az Azure CLI 2.0-s vagy megoldás PowerShell ügyféleszközök elől.
 
 
 ## <a name="next-steps"></a>További lépések
 
 - További információ [Load Balancer alapvető](load-balancer-overview.md).
 - További információ [rendelkezésre állási zónák](../availability-zones/az-overview.md).
+- További információ [hálózati biztonsági csoportok](../virtual-network/virtual-networks-nsg.md).
 - Ismerje meg, azzal kapcsolatban, a másik kulccsal [hálózati lehetőségeket](../networking/networking-overview.md) az Azure-ban.
-
+- További tudnivalók [kitett metrikák](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnetworkloadbalancers) a [Azure figyelő](../monitoring-and-diagnostics/monitoring-overview.md).

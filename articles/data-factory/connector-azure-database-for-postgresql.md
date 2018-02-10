@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: adc8ebe282fa4e4b242924bf1fea9b62d704835e
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 13be3144455e36b19871d68982b1e9ec40d05d89
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-azure-database-for-postgresql-using-azure-data-factory"></a>Adatok másolása az Azure-adatbázis az Azure Data Factory használatával PostgreSQL 
 
@@ -45,7 +45,7 @@ A következő tulajdonságok támogatott Azure-adatbázis PostgreSQL kapcsolód�
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **AzurePostgreSql** | Igen |
-| connectionString | Az ODBC kapcsolati karakterlánc PostgreSQL Azure adatbázishoz való kapcsolódáshoz. Ez a mező megjelölése a SecureString tárolja biztonságos helyen az ADF, vagy a jelszó tárolása az Azure Key Vault választhat, és lehetővé teszik a másolási tevékenység lekéréses ott adatmásolás végrehajtása során – további információhoz [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). | Igen |
+| connectionString | Az ODBC kapcsolati karakterlánc PostgreSQL Azure adatbázishoz való kapcsolódáshoz. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhat Azure integrációs futásidejű vagy Self-hosted integrációs futásidejű (amennyiben az adattároló magánhálózaton található). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
 
 **Példa**
@@ -90,7 +90,7 @@ Adatok másolása az Azure Database PostgreSQL, állítsa be a type tulajdonság
 
 Szakaszok és a rendelkezésre álló tevékenységek meghatározó tulajdonságok teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a témakör PostgreSQL forrás Azure-adatbázis által támogatott tulajdonságokról.
 
-### <a name="azurepostgresqlsource-as-source"></a>AzurePostgreSqlSource forrásaként
+### <a name="azurepostgresqlsource-as-source"></a>AzurePostgreSqlSource as source
 
 Adatok másolása az Azure Database PostgreSQL, állítsa be a forrás típusa a másolási tevékenység **AzurePostgreSqlSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakasz:
 

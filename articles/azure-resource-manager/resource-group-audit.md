@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: tomfitz
-ms.openlocfilehash: ecfb7f726d5447710948405b2dd83fcd1db3dff2
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: fb6fb3f7172673be70b1a6dcfd77e42cd982e248
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="view-activity-logs-to-audit-actions-on-resources"></a>Az erőforrás műveletek naplózása tevékenység naplók megtekintése
 Keresztül tevékenységi naplóit meghatározhatja:
@@ -29,7 +29,11 @@ Keresztül tevékenységi naplóit meghatározhatja:
 * A művelet állapotát
 * Az értékeket, amelyek segíthetnek tulajdonságokat vizsgálja meg a műveletet
 
-[!INCLUDE [resource-manager-audit-limitations](../../includes/resource-manager-audit-limitations.md)]
+A műveletnapló az erőforrásokon végrehajtott minden írási műveletek (PUT, POST, Törlés) tartalmazza. Az olvasási műveletek (GET) nem tartalmazza. Erőforrás-műveletek listáját, [Azure Resource Manager erőforrás-szolgáltató műveletek](../active-directory/role-based-access-control-resource-provider-operations.md). A vizsgálati naplók található hiba esetén végzett hibaelhárításhoz vagy hogyan a szervezet egy felhasználó módosította a következő erőforrás figyelésére használható.
+
+Tevékenységi naplóit 90 napig megőrződnek. Bármely dátumtartomány alapján is kereshet, mindaddig, amíg a kezdő dátum nem több mint 90 nappal ezelőtti.
+
+
 
 Adatok lekérését a portálon, a PowerShell, az Azure parancssori felület, Insights REST API-t a tevékenységi naplóit vagy [Insights .NET kódtár](https://www.nuget.org/packages/Microsoft.Azure.Insights/).
 
@@ -142,7 +146,7 @@ Adatok lekérését a portálon, a PowerShell, az Azure parancssori felület, In
 ## <a name="rest-api"></a>REST API
 A REST műveleteinek használata a műveletnapló részét képezik a [Insights REST API](https://msdn.microsoft.com/library/azure/dn931943.aspx). Tevékenység naplóeseményeket lekéréséhez lásd: [listában szereplő előfizetés felügyeleti események](https://msdn.microsoft.com/library/azure/dn931934.aspx).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Az Azure tevékenységi naplóit segítségével a Power BI információt kaphat a nagyobb az előfizetésében szereplő műveleteket. Lásd: [megtekintése és elemzése a Power bi-ban és több Azure tevékenységi naplóit](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/).
 * Biztonsági házirendek beállításával kapcsolatos további tudnivalókért lásd: [Azure szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-configure.md).
 * Az üzembe helyezési műveleteinek megtekintése a parancsokkal kapcsolatban további tudnivalókért lásd: [üzembe helyezési műveleteinek megtekintése](resource-manager-deployment-operations.md).

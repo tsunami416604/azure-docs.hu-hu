@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 01/02/2018
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: 908d81c363a556917d211e0bcc92188f849fb690
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: c051fec3369ef0d309ecf6c68b17272bb396eeec
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>A hálózat elérését gyorsítja fel Linux virtuális gép létrehozása
 
@@ -68,9 +68,9 @@ A következő korlátozások vonatkoznak az e funkció használata esetén:
 
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-Telepítse a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) és való bejelentkezéshez az Azure fiók használatával [az bejelentkezési](/cli/azure/#login). A következő példákban cserélje le a saját értékeit példa paraméterek nevei. Példa paraméter nevekre *myResourceGroup*, *myNic*, és *myVm*.
+Telepítse a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) és való bejelentkezéshez az Azure fiók használatával [az bejelentkezési](/cli/azure/#az_login). A következő példákban cserélje le a saját értékeit példa paraméterek nevei. Példa paraméter nevekre *myResourceGroup*, *myNic*, és *myVm*.
 
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#create) paranccsal. Az alábbi példa létrehoz egy erőforráscsoportot *myResourceGroup* a a *centralus* helye:
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. Az alábbi példa létrehoz egy erőforráscsoportot *myResourceGroup* a a *centralus* helye:
 
 ```azurecli
 az group create --name myResourceGroup --location centralus
@@ -78,7 +78,7 @@ az group create --name myResourceGroup --location centralus
 
 Ki kell választania egy támogatott Linux régióban felsorolt [Linux az elérését gyorsítja fel hálózati](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview).
 
-A virtuális hálózat létrehozása [az hálózati vnet létrehozása](/cli/azure/network/vnet#create). Az alábbi példa létrehoz egy virtuális hálózatot nevű *myVnet* egyetlen alhálózattal:
+A virtuális hálózat létrehozása [az hálózati vnet létrehozása](/cli/azure/network/vnet#az_network_vnet_create). Az alábbi példa létrehoz egy virtuális hálózatot nevű *myVnet* egyetlen alhálózattal:
 
 ```azurecli
 az network vnet create \
@@ -90,7 +90,7 @@ az network vnet create \
 ```
 
 ## <a name="create-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása
-Hozzon létre egy hálózati biztonsági csoport [az hálózati nsg létrehozása](/cli/azure/network/nsg#create). Az alábbi példakód létrehozza a hálózati biztonsági csoport nevű *myNetworkSecurityGroup*:
+Hozzon létre egy hálózati biztonsági csoport [az hálózati nsg létrehozása](/cli/azure/network/nsg#az_network_nsg_create). Az alábbi példakód létrehozza a hálózati biztonsági csoport nevű *myNetworkSecurityGroup*:
 
 ```azurecli
 az network nsg create \
@@ -125,7 +125,7 @@ az network public-ip create \
     --resource-group myResourceGroup
 ```
 
-Hozzon létre egy hálózati illesztő – [az hálózat összevont hálózati létrehozása](/cli/azure/network/nic#create) engedélyezett gyorsított hálózattal. Az alábbi példa létrehoz egy adott hálózati csatoló nevű *myNic* a a *mySubnet* alhálózata a *myVnet* virtuális hálózat és társult a  *myNetworkSecurityGroup* a hálózati illesztő hálózati biztonsági csoport:
+Hozzon létre egy hálózati illesztő – [az hálózat összevont hálózati létrehozása](/cli/azure/network/nic#az_network_nic_create) engedélyezett gyorsított hálózattal. Az alábbi példa létrehoz egy adott hálózati csatoló nevű *myNic* a a *mySubnet* alhálózata a *myVnet* virtuális hálózat és társult a  *myNetworkSecurityGroup* a hálózati illesztő hálózati biztonsági csoport:
 
 ```azurecli
 az network nic create \
@@ -141,7 +141,7 @@ az network nic create \
 ## <a name="create-a-vm-and-attach-the-nic"></a>Hozzon létre egy virtuális Gépet, és csatlakoztassa a hálózati adapter
 A virtuális gép létrehozásakor adja meg a hálózati adapter segítségével létrehozott `--nics`. Ki kell választania a méretre és a felsorolt terjesztési [Linux az elérését gyorsítja fel hálózati](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview). 
 
-Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#create) paranccsal. Az alábbi példakód létrehozza a virtuális gépek nevű *myVM* UbuntuLTS kép és a méretet, amely támogatja a hálózat elérését gyorsítja fel (*Standard_DS4_v2*):
+Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az_vm_create) paranccsal. Az alábbi példakód létrehozza a virtuális gépek nevű *myVM* UbuntuLTS kép és a méretet, amely támogatja a hálózat elérését gyorsítja fel (*Standard_DS4_v2*):
 
 ```azurecli
 az vm create \

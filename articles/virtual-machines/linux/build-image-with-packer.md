@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: d548d3df209df2a9ae8fa3f8ee684190bc140175
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 49a3e7f3aab3ae95c6f40b167880bb48d0fc851b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>Linux virtuális gép képek létrehozása az Azure-ban a csomagoló segítségével
 Minden virtuális gép (VM) az Azure-ban, amely meghatározza a Linux-disztribúció és az operációs rendszer verziója lemezkép jön létre. Lemezképek előre telepített alkalmazások és konfigurációk tartalmazhatnak. Az Azure piactéren lehetővé teszi számos első és harmadik fél rendszerképet leggyakoribb disztribúcióiról, valamint az alkalmazás környezetekben, vagy létrehozhat az igényeinek megfelelően igazított a saját egyéni lemezképek. Ez a cikk részletesen a nyílt forráskódú eszköz [csomagoló](https://www.packer.io/) definiálására és egyéni lemezképeket az Azure-ban.
@@ -28,7 +28,7 @@ Minden virtuális gép (VM) az Azure-ban, amely meghatározza a Linux-disztribú
 ## <a name="create-azure-resource-group"></a>Azure erőforráscsoport létrehozása
 A létrehozási folyamat során a csomagoló ideiglenes Azure-erőforrások létrehozza a, a forrás Virtuálisgép-buildekről nyújtanak. A forrás virtuális gép képként rögzíti, meg kell határoznia egy erőforráscsoportot. Ez az erőforráscsoport tárolja a csomagoló felépítési folyamat kimenetét.
 
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#create) paranccsal. Az alábbi példa létrehoz egy erőforráscsoportot *myResourceGroup* a a *eastus* helye:
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
 
 ```azurecli
 az group create -n myResourceGroup -l eastus
@@ -54,7 +54,7 @@ A kimenet a fenti parancsok például a következőképpen történik:
 }
 ```
 
-A hitelesítéshez az Azure-ba is be kell szereznie az Azure-előfizetése Azonosítóját [az fiók megjelenítése](/cli/azure/account#show):
+A hitelesítéshez az Azure-ba is be kell szereznie az Azure-előfizetése Azonosítóját [az fiók megjelenítése](/cli/azure/account#az_account_show):
 
 ```azurecli
 az account show --query "{ subscription_id: id }"
@@ -73,7 +73,7 @@ Hozzon létre egy fájlt *ubuntu.json* , majd illessze be a következő tartalma
 | *client_id*                         | Első sor kimenetét `az ad sp` parancs - *appId* |
 | *client_secret*                     | A második sor kimenetét `az ad sp` parancs - *jelszó* |
 | *tenant_id*                         | A kimenet a harmadik sorban `az ad sp` parancs - *bérlői* |
-| *ELŐFIZETÉS_AZONOSÍTÓJA*                   | A kimeneti `az account show` parancs |
+| *subscription_id*                   | A kimeneti `az account show` parancs |
 | *managed_image_resource_group_name* | Az első lépésben létrehozott erőforráscsoport nevét |
 | *managed_image_name*                | A felügyelt lemezképe létrehozott nevét |
 
@@ -200,7 +200,7 @@ A virtuális gép létrehozása, a provisioners futtatására, és a központi t
 
 
 ## <a name="create-vm-from-azure-image"></a>Kép: Azure virtuális gép létrehozása
-Mostantól létrehozhat egy virtuális Gépet a lemezkép [az virtuális gép létrehozása](/cli/azure/vm#create). Adja meg a létrehozott lemezképet a `--image` paraméter. Az alábbi példakód létrehozza a virtuális gépek nevű *myVM* a *myPackerImage* és az SSH-kulcsokat generál, ha még nem léteznek:
+Mostantól létrehozhat egy virtuális Gépet a lemezkép [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create). Adja meg a létrehozott lemezképet a `--image` paraméter. Az alábbi példakód létrehozza a virtuális gépek nevű *myVM* a *myPackerImage* és az SSH-kulcsokat generál, ha még nem léteznek:
 
 ```azurecli
 az vm create \
@@ -223,12 +223,12 @@ az vm open-port \
 ```
 
 ## <a name="test-vm-and-nginx"></a>Virtuális gép és NGINX tesztelése
-Most nyisson meg egy webböngészőt, és írja be `http://publicIpAddress` a böngésző címsorába. Adja meg a saját nyilvános IP-címet a virtuális gép folyamatot létrehozni. Az alapértelmezett NGINX lap jelenik meg az alábbi példában látható módon:
+Most nyisson meg egy webböngészőt, és írja be `http://publicIpAddress` a böngésző címsorába. Adja meg a saját nyilvános IP-címét, amelyet a virtuális gép létrehozásakor kapott. Az alapértelmezett NGINX lap jelenik meg az alábbi példában látható módon:
 
 ![Alapértelmezett NGINX-webhely](./media/build-image-with-packer/nginx.png) 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a példában a csomagoló NGINX már telepítve van a Virtuálisgép-lemezkép létrehozásához használt. A Virtuálisgép-lemezkép mellett a meglévő központi telepítési munkafolyamatai, például segítségével telepítse az alkalmazást az Ansible, Chef vagy Puppet lemezkép alapján létrehozott virtuális gépek.
 
 További példa csomagoló sablonokat más Linux disztribúciókkal, lásd: [a GitHub-tárház](https://github.com/hashicorp/packer/tree/master/examples/azure).

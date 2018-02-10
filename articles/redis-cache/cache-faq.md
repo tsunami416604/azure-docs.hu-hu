@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: af185725433b0eacc5d57b90fb2e75edd143a59a
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 02850243caaa66a354f06b650a5505a79d7aee54
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-redis-cache-faq"></a>Azure Redis Cache – Gyakori kérdések
 Azure Redis Cache a gyakori kérdéseket, a mintákat és ajánlott eljárások a válaszok megismerése.
@@ -119,36 +119,36 @@ A Cache-ajánlatot kiválasztására vonatkozó szempontok a következők:
 <a name="cache-performance"></a>
 
 ### <a name="azure-redis-cache-performance"></a>Azure Redis Cache-teljesítmény
-Az alábbi táblázat a maximális sávszélesség értéke különböző méretű standard tesztelése során, és prémium gyorsítótárazza a használatával `redis-benchmark.exe` egy infrastruktúra-szolgáltatási virtuális gépről az Azure Redis Cache végpont ellen. 
+Az alábbi táblázat a maximális sávszélesség értéke különböző méretű standard tesztelése során, és prémium gyorsítótárazza a használatával `redis-benchmark.exe` egy infrastruktúra-szolgáltatási virtuális gépről az Azure Redis Cache végpont ellen. Az SSL átviteli redis-teljesítményteszt együtt használatos stunnel csatlakozni az Azure Redis Cache-gyorsítótár végpontjához.
 
 >[!NOTE] 
 >Ezeket az értékeket nem garantált, és ezek nem SLA-számok, de az tipikus van. Be kell tölteni a saját állapítsa meg a megfelelő gyorsítótár méretét, az alkalmazás-alkalmazás tesztelése.
->
+>Ezeket a számokat előfordulhat, hogy módosítható, mert a rendszeres időközönként közzétesszük újabb eredmények.
 >
 
 Ebből a táblázatból a következő következtetéseket is azt:
 
-* A gyorsítótárak, amelyek azonos méretűnek adatátviteli sebességét értéke magasabb a prémium tarifacsomagra képest Standard csomagra. Például egy 6 GB-os gyorsítótárral, P1 átviteli sebességgel esetén 180 000 RPS a C3 49,000 képest.
+* A gyorsítótárak, amelyek azonos méretűnek adatátviteli sebességét értéke magasabb a prémium tarifacsomagra képest Standard csomagra. Például egy 6 GB-os gyorsítótárral, P1 átviteli sebességgel esetén 180 000 RPS C3 a 100 000 képest.
 * A redis gyorsítótárral fürtszolgáltatás átviteli növekszik lineárisan a szilánkok (csomópontok) a fürt számának növeléséhez. Például, ha a 10 szilánkok P4 fürt létrehozása, a rendelkezésre álló átviteli akkor 400000 * 10 = 4 millió RPS.
 * A kulcs mérete nagyobb átviteli sebesség értéke magasabb a prémium tarifacsomagra képest Standard csomagra.
 
-| Tarifacsomag | Méret | Processzormagok | Rendelkezésre álló sávszélesség | 1 KB-os méret |
-| --- | --- | --- | --- | --- |
-| **Standard gyorsítótár mérete** | | |**Megabit / másodperc (Mb/s) vagy megabájt / másodperc (MB/s)** |**Kérelmek / másodperc (RPS)** |
-| C0 |250 MB |Közös |5 / 0.625 |600 |
-| C1 |1 GB |1 |100 / 12.5 |12,200 |
-| C2 |2,5 GB |2 |200 / 25 |24,000 |
-| C3 |6 GB |4 |400 / 50 |49,000 |
-| C4 |13 GB |2 |500 / 62.5 |61,000 |
-| C5 |26 GB |4 |1,000 / 125 |115,000 |
-| C6 |53 GB |8 |2,000 / 250 |150,000 |
-| **Prémium szintű gyorsítótár mérete** | |**CPU-magokat shard száma** | **Megabit / másodperc (Mb/s) vagy megabájt / másodperc (MB/s)** |**Kérelmek / másodperc (RPS) shard száma** |
-| P1 |6 GB |2 |1,500 / 187.5 |180,000 |
-| P2 |13 GB |4 |3,000 / 375 |360,000 |
-| P3 |26 GB |4 |3,000 / 375 |360,000 |
-| P4 |53 GB |8 |6,000 / 750 |400,000 |
+| Tarifacsomag | Méret | Processzormagok | Rendelkezésre álló sávszélesség | 1 KB-os méret | 1 KB-os méret |
+| --- | --- | --- | --- | --- | --- |
+| **Standard gyorsítótár mérete** | | |**Megabit / másodperc (Mb/s) vagy megabájt / másodperc (MB/s)** |**A kérelmek száma a második (RPS) nem SSL** |**A kérelmek száma a második (RPS) SSL** |
+| C0 |250 MB |Közös |100 / 12.5 |15,000 |7,500 |
+| C1 |1 GB |1 |500 / 62.5 |38,000 |20,720 |
+| C2 |2,5 GB |2 |500 / 62.5 |41,000 |37,000 |
+| C3 |6 GB |4 |1000 / 125 |100,000 |90,000 |
+| C4 |13 GB |2 |500 / 62.5 |60,000 |55,000 |
+| C5 |26 GB |4 |1,000 / 125 |102,000 |93,000 |
+| C6 |53 GB |8 |2,000 / 250 |126,000 |120,000 |
+| **Prémium szintű gyorsítótár mérete** | |**CPU-magokat shard száma** | **Megabit / másodperc (Mb/s) vagy megabájt / másodperc (MB/s)** |**Kérések második (RPS) nem SSL, shard másodpercenkénti száma** |**Kérések második (RPS) SSL, shard másodpercenkénti száma** |
+| P1 |6 GB |2 |1,500 / 187.5 |180,000 |172,000 |
+| P2 |13 GB |4 |3,000 / 375 |350,000 |341,000 |
+| P3 |26 GB |4 |3,000 / 375 |350,000 |341,000 |
+| P4 |53 GB |8 |6,000 / 750 |400,000 |373,000 |
 
-A Redis-eszközök például letöltésével kapcsolatban `redis-benchmark.exe`, tekintse meg a [hogyan futtathatom Redis parancsok?](#cache-commands) szakasz.
+Útmutatás stunnel beállításával vagy a Redis-eszközök például letöltése `redis-benchmark.exe`, lásd: a [hogyan futtathatom Redis parancsok?](#cache-commands) szakasz.
 
 <a name="cache-region"></a>
 

@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/18/2017
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 9360c0ee90f9a4ffdffd7649505699f656833bbe
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: dc11ac2ce92fe2b7d3cb51bf60c6b4bd9a5be18d
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Másolja a adatok vagy az Azure SQL Data Warehouse Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -52,7 +52,7 @@ Azure SQL Data Warehouse kapcsolódó szolgáltatás támogatott a következő t
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **AzureSqlDW** | Igen |
-| connectionString |Adja meg a connectionString tulajdonság az Azure SQL Data Warehouse-példány való kapcsolódáshoz szükséges adatokat. Csak az alapszintű hitelesítést is támogatja. Ez a mező megjelölése a SecureString. |Igen |
+| connectionString |Adja meg a connectionString tulajdonság az Azure SQL Data Warehouse-példány való kapcsolódáshoz szükséges adatokat. Csak az alapszintű hitelesítést is támogatja. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). |Igen |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhat Azure integrációs futásidejű vagy Self-hosted integrációs futásidejű (amennyiben az adattároló magánhálózaton található). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
 
 
@@ -226,12 +226,12 @@ Adatok másolása az Azure SQL Data Warehouse, állítsa a fogadó típusa a má
 |:--- |:--- |:--- |
 | type | A másolási tevékenység fogadó type tulajdonsága értékre kell állítani: **SqlDWSink** | Igen |
 | allowPolyBase |Azt jelzi, hogy (ha alkalmazható), a PolyBase használata helyett BULKINSERT mechanizmus. <br/><br/> **Az ajánlott módszer az adatok betöltése az SQL Data Warehouse PolyBase a használata.** Lásd: [használja a PolyBase az adatok betöltése az Azure SQL Data Warehouse](#use-polybase-to-load-data-into-azure-sql-data-warehouse) szakaszban a korlátozások és részleteit.<br/><br/>Két érték engedélyezett: **igaz** (alapértelmezett), és **hamis**.  |Nem |
-| kapcsolódó polyBaseSettings |Egy csoport, amely tulajdonságok megadott, amikor a **allowPolybase** tulajdonsága **igaz**. |Nem |
+| polyBaseSettings |Egy csoport, amely tulajdonságok megadott, amikor a **allowPolybase** tulajdonsága **igaz**. |Nem |
 | rejectValue |Megadja a szám vagy is el kell utasítani, mielőtt a lekérdezés nem sikerült sorokat százalékát.<br/><br/>További információ a PolyBase utasítsa el a beállítások elemre a **argumentumok** szakasza [külső tábla létrehozása (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx) témakör. <br/><br/>Engedélyezett értékek: 0 (alapértelmezés), 1, 2,... |Nem |
 | rejectType |Határozza meg, hogy a rejectValue beállítás konstans értéket vagy százalékában van megadva.<br/><br/>Két érték engedélyezett: **érték** (alapértelmezett), és **százalékos**. |Nem |
 | rejectSampleValue |Mielőtt a PolyBase újraszámítja a visszautasított sorok százalékát beolvasandó sorok számát határozza meg.<br/><br/>Engedélyezett értékek: 1, 2,... |Igen, ha **rejectType** van **százalékos aránya** |
 | useTypeDefault |Megadja, hogyan legyen kezelve tagolt szövegfájlok a hiányzó értékeket, amikor a PolyBase kér le adatokat a szövegfájlból.<br/><br/>Ezt a tulajdonságot, az argumentumok ismertető részben olvashat [létrehozása külső FÁJLFORMÁTUM (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx).<br/><br/>Két érték engedélyezett: **igaz**, **hamis** (alapértelmezett). |Nem |
-| WriteBatchSize |Szúr be az SQL-tábla adatokat, amikor a puffer mérete eléri writeBatchSize. Csak akkor, ha a rendszer nem használja a PolyBase vonatkozik.<br/><br/>Két érték engedélyezett: egész szám (sorok száma). |Nem (alapértelmezett beállítás 10000) |
+| writeBatchSize |Szúr be az SQL-tábla adatokat, amikor a puffer mérete eléri writeBatchSize. Csak akkor, ha a rendszer nem használja a PolyBase vonatkozik.<br/><br/>Két érték engedélyezett: egész szám (sorok száma). |Nem (alapértelmezett beállítás 10000) |
 | writeBatchTimeout |Várakozási idő a kötegelt beszúrási művelet befejezését, mielőtt azt az időkorlátot. Csak akkor, ha a rendszer nem használja a PolyBase vonatkozik.<br/><br/>Két érték engedélyezett: timespan. Példa: "00: 30:00" (30 perc). |Nem |
 | preCopyScript |Adjon meg egy SQL-lekérdezés végrehajtása előtt az adatok írása az Azure SQL Data Warehouse minden egyes futtatásához a másolási tevékenység. Ez a tulajdonság segítségével törölje az előre betöltött adatokat. |Nem |(#repeatability során-másolási). |A lekérdezési utasítást. |Nem |
 
@@ -398,7 +398,7 @@ A következő táblázat példákat tartalmaz a megadása a **tableName** tulajd
 | dbo |Táblanév |MyTable vagy dbo. MyTable vagy [dbo]. [MyTable] |
 | dbo1 |Táblanév |dbo1. MyTable vagy [dbo1]. [MyTable] |
 | dbo |My.Table |[My.Table] vagy [dbo]. [My.Table] |
-| dbo1 |My.Table |[dbo1]. [My.Table] |
+| dbo1 |My.Table |[dbo1].[My.Table] |
 
 A következő hibát látja, ha problémát a tableName tulajdonsághoz megadott érték lehet. Lásd a megfelelő módon adhatja meg a tableName JSON tulajdonság értékei a táblázatban.
 
@@ -429,11 +429,11 @@ A/az Azure SQL Data Warehouse-adatok másolásakor a következő leképezéseit 
 | dátum |DateTime |
 | Dátum és idő |DateTime |
 | datetime2 |DateTime |
-| datetimeoffset |DateTimeOffset |
+| Datetimeoffset |DateTimeOffset |
 | Decimális |Decimális |
 | A FILESTREAM attribútum (varbinary(max)) |Byte] |
 | Lebegőpontos |Dupla |
-| Kép |Byte] |
+| image |Byte] |
 | int |Int32 |
 | pénz |Decimális |
 | nchar |Karakterlánc, Char] |
@@ -447,13 +447,13 @@ A/az Azure SQL Data Warehouse-adatok másolásakor a következő leképezéseit 
 | kis pénz típusú értéknél |Decimális |
 | sql_variant |Objektum * |
 | Szöveg |Karakterlánc, Char] |
-| time |A TimeSpan |
+| time |TimeSpan |
 | időbélyeg |Byte] |
 | tinyint |Bájt |
 | egyedi azonosító |GUID |
 | varbinary |Byte] |
 | varchar |Karakterlánc, Char] |
-| xml |XML |
+| xml |Xml |
 
 ## <a name="next-steps"></a>További lépések
 Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md##supported-data-stores-and-formats).

@@ -1,6 +1,7 @@
 1. A telepítő másolja egy helyi mappába (például /tmp) azon a kiszolgálón, amelyet védeni kíván. A terminálban a következő parancsokat:
   ```
-  cd /tmp
+  cd /tmp ;
+
   tar -xvzf Microsoft-ASR_UA*release.tar.gz
   ```
 2. Szeretné telepíteni a mobilitási szolgáltatást, futtassa a következő parancsot:
@@ -14,7 +15,7 @@
   /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <CSIP> -P /var/passphrase.txt
   ```
 
-#### <a name="mobility-service-installer-command-line"></a>Mobilitási szolgáltatások telepítőjének parancssori
+#### <a name="mobility-service-installer-command-line"></a>Mobilitási szolgáltatás installer parancssorát.
 
 ```
 Usage:
@@ -23,13 +24,13 @@ Usage:
 
 |Paraméter|Típus|Leírás|Lehetséges értékek|
 |-|-|-|-|
-|-r |Kötelező|Megadja, hogy kell telepíteni a mobilitási szolgáltatás (MS), vagy MasterTarget(MT) kell telepíteni.|MS </br> FŐ CÉLKISZOLGÁLÓ|
+|-r |Kötelező|Megadja, hogy kell telepíteni a mobilitási szolgáltatás (MS), vagy MasterTarget(MT) kell telepíteni.|MS </br> MT|
 |-d |Optional|Hely, ahol a mobilitási szolgáltatás telepítve lesz|/usr/local/ASR|
-|-v|Kötelező|Adja meg a platform, amelyen a mobilitási szolgáltatás található első </br> </br>- **VMware** : használja ezt az értéket, ha egy virtuális gépen futó mobilitási szolgáltatás telepít *VMware vSphere ESXi-gazdagépek*, *Hyper-V-gazdagépek* és *Phsyical kiszolgálók* </br> - **Azure** : használja ezt az értéket, ha telepíti az ügynököt egy Azure IaaS virtuális Gépen| VMware </br> Azure|
-|-k|Optional|Meghatározza, hogy a telepítő futtatásához csendes módban| N/A|
+|-v|Kötelező|Adja meg a platform, amelyen a mobilitási szolgáltatás található első </br> </br>-** VMware: használja ezt az értéket, ha egy virtuális gépen futó mobilitási szolgáltatás telepít *VMware vSphere ESXi-gazdagépek*, *, Hyper-V-gazdagépek és *fizikai kiszolgálók* </br> -** Azure: használja ezt az értéket, ha telepíti az ügynököt az Azure infrastruktúra-szolgáltatási virtuális gép| VMware </br> Azure|
+|-k|Optional|Meghatározza, hogy a telepítő futtatásához csendes módban| –|
 
 
-#### <a name="mobility-service-configuration-command-line"></a>Parancssori mobilitási szolgáltatás konfigurációja
+#### <a name="mobility-service-configuration-command-line"></a>Mobilitási szolgáltatás konfigurációs parancssor
 
 ```
 Usage:

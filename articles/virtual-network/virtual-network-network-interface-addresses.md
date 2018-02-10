@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 637b380dacc91e4ad55044c1d92936be2435138d
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 47f72fcfe2a4c9ab6e89314a64dae0027ef76924
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Módosítsa, vagy távolítsa el az Azure hálózati illesztő IP-címek
 
@@ -60,8 +60,8 @@ Annyi adhat hozzá [titkos](#private) és [nyilvános](#public) [IPv4](#ipv4) sz
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|[az hálózati hálózati adapter ip-konfiguráció létrehozása](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#create)|
-|PowerShell|[Adja hozzá AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/add-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|parancssori felület|[az hálózati hálózati adapter ip-konfiguráció létrehozása](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_nic_ip_config_create)|
+|PowerShell|[Add-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/add-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="change-ip-address-settings"></a>IP-cím beállításainak módosítása
 
@@ -81,7 +81,7 @@ Akkor lehet, hogy kell az IPv4-cím, a hozzárendelés módszerének módosítá
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|[az hálózat hálózati adapter ip-konfiguráció frissítése](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
+|parancssori felület|[az hálózat hálózati adapter ip-konfiguráció frissítése](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_nic_ip_config_update)|
 |PowerShell|[Set-AzureRMNetworkInterfaceIpConfig](/powershell/module/azurerm.network/set-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="remove-ip-addresses"></a>Távolítsa el az IP-címek
@@ -99,7 +99,7 @@ Eltávolíthatja [titkos](#private) és [nyilvános](#public) hálózati illeszt
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|[az hálózati hálózati adapter ip-konfiguráció törlése](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#delete)|
+|parancssori felület|[az hálózati hálózati adapter ip-konfiguráció törlése](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_nic_ip_config_delete)|
 |PowerShell|[Remove-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/remove-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="ip-configurations"></a>IP-konfigurációk
@@ -206,6 +206,6 @@ Virtuális gép létrehozása a különböző IP-konfigurációk, olvassa el a k
 
 |Tevékenység|Eszköz|
 |---|---|
-|Több hálózati adapterrel rendelkező virtuális gép létrehozása|[Parancssori felület](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
-|Hozzon létre egy hálózati adapter virtuális több IPv4-címekkel|[Parancssori felület](virtual-network-multiple-ip-addresses-cli.md), [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)|
+|Több hálózati adapterrel rendelkező virtuális gép létrehozása|[CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|Hozzon létre egy hálózati adapter virtuális több IPv4-címekkel|[CLI](virtual-network-multiple-ip-addresses-cli.md), [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)|
 |Hozzon létre egy hálózati adapter virtuális magánhálózati IPv6-cím (mögött egy Azure Load Balancer)|[Parancssori felület](../load-balancer/load-balancer-ipv6-internet-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [PowerShell](../load-balancer/load-balancer-ipv6-internet-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [Azure Resource Manager-sablon](../load-balancer/load-balancer-ipv6-internet-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|

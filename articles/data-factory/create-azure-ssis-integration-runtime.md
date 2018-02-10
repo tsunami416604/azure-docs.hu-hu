@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: spelluru
-ms.openlocfilehash: bb63a3d882d50f509fff220d3eb2c1eb6bf0d70f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 86e624476b7869331720e58363ad14b22704b19b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Egy Azure-SSIS-integrációs futásidejű létrehozása az Azure Data Factory
 Ez a cikk lépéseit egy Azure-SSIS-integráció futtatókörnyezetet, az Azure Data Factory történő üzembe helyezéséhez. Ezután az SQL Server Data Tools (SSDT) vagy az SQL Server Management Studio (SSMS) használatával üzembe helyezhet SQL Server Integration Services- (SSIS-) csomagokat ebben az Azure-beli modulban.
@@ -61,8 +61,9 @@ Ebben a szakaszban használhatja az Azure-portálon, kifejezetten a Data Factory
 
 ### <a name="create-a-data-factory"></a>Data factory létrehozása
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).    
-2. Kattintson az **Új** elemre, majd az **Adatok + analitika**, végül a **Data Factory** elemre. 
+1. Indítsa el **Microsoft Edge** vagy **Google Chrome** webböngésző. Data Factory felhasználói felület jelenleg csak a Microsoft Edge és a Google Chrome webböngésző használata támogatott.
+2. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).    
+3. Kattintson az **Új** elemre, majd az **Adatok + analitika**, végül a **Data Factory** elemre. 
    
    ![New (Új)->DataFactory](./media/tutorial-create-azure-ssis-runtime-portal/new-data-factory-menu.png)
 3. Az **Új data factory** lapon, a **Név** mezőben adja meg a következőt: **MyAzureSsisDataFactory**. 

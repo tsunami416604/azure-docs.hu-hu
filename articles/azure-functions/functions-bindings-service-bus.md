@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/01/2017
 ms.author: tdykstra
-ms.openlocfilehash: 2df003d47291570b31e1091f34994e4023000981
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: ed26abdb76083b9a18f79276ebf4294b4b6967b1
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Az Azure Functions az Azure Service Bus kötései
 
@@ -37,7 +37,7 @@ A Service Bus eseményindító használatával a Service Bus-üzenetsor vagy té
 Tekintse meg a nyelvspecifikus példát:
 
 * [C#](#trigger---c-example)
-* [C# parancsfájl (.csx)](#trigger---c-script-example)
+* [C# script (.csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
 * [JavaScript](#trigger---javascript-example)
 
@@ -199,7 +199,7 @@ A Service Bus használandó fiókot határozza meg a következő sorrendben:
 * A `ServiceBusAccount` attribútuma ugyanezt a paramétert, mint a `ServiceBusTrigger` attribútum.
 * A `ServiceBusAccount` függvény attribútuma.
 * A `ServiceBusAccount` osztály attribútuma.
-* Az "AzureWebJobsServiceBus" alkalmazásbeállítás.
+* The "AzureWebJobsServiceBus" app setting.
 
 ## <a name="trigger---configuration"></a>Eseményindító - konfiguráció
 
@@ -208,12 +208,12 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**típusa** | n/a | "ServiceBusTrigger" értékre kell állítani. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon.|
-|**iránya** | n/a | "A" értékre kell állítani. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon. |
-|**név** | n/a | Az üzenetsor vagy témakör üzenet funkciókódot jelölő neve. "$Return" értékre való hivatkozáshoz függvény visszatérési értéke. | 
+|**direction** | n/a | "A" értékre kell állítani. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon. |
+|**name** | n/a | Az üzenetsor vagy témakör üzenet funkciókódot jelölő neve. "$Return" értékre való hivatkozáshoz függvény visszatérési értéke. | 
 |**queueName**|**QueueName**|A várólista figyelése neve.  Csak akkor, ha a várólista nem a témakör a figyelés beállítása.
 |**topicName**|**TopicName**|A témakör a figyelheti neve. Állítsa be, csak akkor, ha a témakör a várólista nem figyelni.|
 |**subscriptionName**|**SubscriptionName**|Az előfizetés figyelése neve. Állítsa be, csak akkor, ha a témakör a várólista nem figyelni.|
-|**kapcsolat**|**Kapcsolat**|A Service Bus kapcsolati karakterlánc az ehhez a kötéshez használandó tartalmazó alkalmazásbeállítás neve. Ha az alkalmazás neve "AzureWebJobs" kezdődik, megadhatja a név csak a maradékot. Ha például `connection` "MyServiceBus", hogy a Functions futtatókörnyezete keresi, hogy az alkalmazás neve "AzureWebJobsMyServiceBus." Ha nem adja meg `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett Service Bus kapcsolati karakterlánc a "AzureWebJobsServiceBus" nevű Alkalmazásbeállítás.<br><br>Szerezzen be egy kapcsolati karakterláncot, kövesse a lépéseket látható [a felügyeleti hitelesítő adatok beszerzése](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials). A kapcsolati karakterláncnak kell lennie, a Service Bus-névtér, nem kizárólagosan az adott üzenetsor vagy témakör. |
+|**connection**|**Kapcsolat**|A Service Bus kapcsolati karakterlánc az ehhez a kötéshez használandó tartalmazó alkalmazásbeállítás neve. Ha az alkalmazás neve "AzureWebJobs" kezdődik, megadhatja a név csak a maradékot. Ha például `connection` "MyServiceBus", hogy a Functions futtatókörnyezete keresi, hogy az alkalmazás neve "AzureWebJobsMyServiceBus." Ha nem adja meg `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett Service Bus kapcsolati karakterlánc a "AzureWebJobsServiceBus" nevű Alkalmazásbeállítás.<br><br>Szerezzen be egy kapcsolati karakterláncot, kövesse a lépéseket látható [a felügyeleti hitelesítő adatok beszerzése](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials). A kapcsolati karakterláncnak kell lennie, a Service Bus-névtér, nem kizárólagosan az adott üzenetsor vagy témakör. |
 |**accessRights**|**Access (Hozzáférés)**|Hozzáférési jogosultsága a kapcsolódási karakterláncban. Lehetséges értékek a következők `manage` és `listen`. Az alapértelmezett érték `manage`, amely azt jelzi, hogy a `connection` rendelkezik a **kezelése** engedéllyel. Ha használja a kapcsolati karakterláncot, amely nem rendelkezik a **kezelése** engedély, `accessRights` "figyelésére". Ellenkező esetben a futásidejű meghiúsulhat igénylő műveletek végrehajtását megkísérlő funkciók jogosultságaik kezelését.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -251,7 +251,7 @@ Azure Service Bus kimeneti kötés segítségével üzenetsor vagy témakör üz
 Tekintse meg a nyelvspecifikus példát:
 
 * [C#](#output---c-example)
-* [C# parancsfájl (.csx)](#output---c-script-example)
+* [C# script (.csx)](#output---c-script-example)
 * [F#](#output---f-example)
 * [JavaScript](#output---javascript-example)
 
@@ -446,12 +446,12 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**típusa** | n/a | "A Szolgáltatásbusz" értékre kell állítani. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon.|
-|**iránya** | n/a | "Ki" értékre kell állítani. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon. |
-|**név** | n/a | A várólista vagy funkciókódot témakörében jelölő neve. "$Return" értékre való hivatkozáshoz függvény visszatérési értéke. | 
+|**direction** | n/a | "Ki" értékre kell állítani. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon. |
+|**name** | n/a | A várólista vagy funkciókódot témakörében jelölő neve. "$Return" értékre való hivatkozáshoz függvény visszatérési értéke. | 
 |**queueName**|**QueueName**|A várólista nevét.  Állítsa be, csak akkor, ha üzenetküldésre várólista, a témakör a nem.
 |**topicName**|**TopicName**|A témakör a figyelheti neve. Csak akkor, ha üzenetküldésre témakör, a várólista nem beállítása.|
 |**subscriptionName**|**SubscriptionName**|Az előfizetés figyelése neve. Csak akkor, ha üzenetküldésre témakör, a várólista nem beállítása.|
-|**kapcsolat**|**Kapcsolat**|A Service Bus kapcsolati karakterlánc az ehhez a kötéshez használandó tartalmazó alkalmazásbeállítás neve. Ha az alkalmazás neve "AzureWebJobs" kezdődik, megadhatja a név csak a maradékot. Ha például `connection` "MyServiceBus", hogy a Functions futtatókörnyezete keresi, hogy az alkalmazás neve "AzureWebJobsMyServiceBus." Ha nem adja meg `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett Service Bus kapcsolati karakterlánc a "AzureWebJobsServiceBus" nevű Alkalmazásbeállítás.<br><br>Szerezzen be egy kapcsolati karakterláncot, kövesse a lépéseket látható [a felügyeleti hitelesítő adatok beszerzése](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials). A kapcsolati karakterláncnak kell lennie, a Service Bus-névtér, nem kizárólagosan az adott üzenetsor vagy témakör.|
+|**connection**|**Kapcsolat**|A Service Bus kapcsolati karakterlánc az ehhez a kötéshez használandó tartalmazó alkalmazásbeállítás neve. Ha az alkalmazás neve "AzureWebJobs" kezdődik, megadhatja a név csak a maradékot. Ha például `connection` "MyServiceBus", hogy a Functions futtatókörnyezete keresi, hogy az alkalmazás neve "AzureWebJobsMyServiceBus." Ha nem adja meg `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett Service Bus kapcsolati karakterlánc a "AzureWebJobsServiceBus" nevű Alkalmazásbeállítás.<br><br>Szerezzen be egy kapcsolati karakterláncot, kövesse a lépéseket látható [a felügyeleti hitelesítő adatok beszerzése](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials). A kapcsolati karakterláncnak kell lennie, a Service Bus-névtér, nem kizárólagosan az adott üzenetsor vagy témakör.|
 |**accessRights**|**Access (Hozzáférés)** |Hozzáférési jogosultsága a kapcsolódási karakterláncban. Lehetséges értékek a következők: "kezelése" és "figyelő". Az alapértelmezett érték a "kezelése", ami azt jelenti, hogy rendelkezik-e a kapcsolat **kezelése** engedélyek. Ha használja a kapcsolati karakterláncot, amely nem rendelkezik **kezelése** engedélyek beállítása `accessRights` "figyelésére". Ellenkező esetben a futásidejű meghiúsulhat igénylő műveletek végrehajtását megkísérlő funkciók jogosultságaik kezelését.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -468,6 +468,13 @@ C# és C# a parancsfájlt, nyissa meg az üzenetsor vagy témakör metódusparam
 A több üzenet létrehozása a C# vagy C# parancsfájl függvény, használhat `ICollector<T>` vagy `IAsyncCollector<T>`. Egy üzenet jön létre, ha meghívja a `Add` metódust.
 
 JavaScript, nyissa meg az üzenetsor vagy témakör segítségével `context.bindings.<name>`. `<name>`az érték szerepel a `name` tulajdonsága *function.json*. Rendelhet egy karakterlánc, egy bájttömböt vagy egy Javascript-objektum (deszerializálni a JSON-ba) `context.binding.<name>`.
+
+## <a name="exceptions-and-return-codes"></a>Kivételeket és a visszatérési kódok
+
+| Kötelező | Leírások |
+|---|---|
+| Service Bus | [Service Bus hibakódok](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-exceptions) |
+| Service Bus | [Service Bus korlátok](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-quotas) |
 
 ## <a name="next-steps"></a>További lépések
 

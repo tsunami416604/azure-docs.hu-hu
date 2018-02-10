@@ -5,13 +5,13 @@ services: site-recovery
 author: AnoopVasudavan
 ms.service: site-recovery
 ms.topic: article
-ms.date: 01/15/2017
+ms.date: 02/04/2018
 ms.author: anoopkv
-ms.openlocfilehash: e9e4bfc86df2cae1facac62472c915d91fb8c84c
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 9cdabfb4e24423d76e4f247f184ac4156c3b257b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="manage-the-configuration-server"></a>A konfigurációs kiszolgáló kezelése
 
@@ -72,6 +72,22 @@ Ha szeretné újraregisztrálásához a konfigurációs kiszolgáló ugyanabban 
       net stop obengine
       net start obengine
       ```
+## <a name="upgrade-the-configuration-server"></a>A konfigurációs kiszolgáló verziófrissítése
+
+Kumulatív frissítése a konfigurációs kiszolgáló futtatja. Frissítések is alkalmazhatók a legfeljebb N-4 verziók. Példa:
+
+- Ha 9.7, 9.8, 9.9 vagy 9.10 - frissíthet közvetlenül 9.11.
+- Ha 9.6 vagy korábbi futtatja, és frissíti a 9.11, először frissítenie kell 9.7 verzióra. Mielőtt 9.11.
+
+A konfigurációs kiszolgáló az összes verziójára történő frissítés összegző mutató hivatkozások találhatók a [wiki frissítések lap](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx).
+
+A kiszolgáló frissítése az alábbiak szerint:
+
+1. A telepítő fájl letöltése és a konfigurációs kiszolgáló.
+2. A telepítő futtatásához kattintson duplán.
+3. A telepítő észleli az aktuális verzió fut a gépen.
+4. Kattintson a **OK** erősítse meg, és a frissítés futtatásához. 
+
 
 ## <a name="delete-or-unregister-a-configuration-server"></a>Törölje vagy a konfigurációs kiszolgáló regisztrációját
 

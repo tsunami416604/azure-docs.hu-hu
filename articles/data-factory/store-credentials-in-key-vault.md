@@ -10,19 +10,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2017
+ms.date: 02/07/2017
 ms.author: jingwang
-ms.openlocfilehash: 145c2bc0556010389e78e523fde6fd4b9063f930
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 42643c73368597d1caea4aba12bc7b64b7440970
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Hitelesítő adatok tárolása az Azure Key Vault
 
 Az adattároló hitelesítő adatait tárolhatja egy [Azure Key Vault](../key-vault/key-vault-whatis.md). Az Azure Data Factory olvassa be a hitelesítő adatokat, a tárolót használó tevékenység végrehajtása közben.
 
-Jelenleg [Dynamics összekötő](connector-dynamics-crm-office-365.md), [Salesforce összekötő](connector-salesforce.md) és néhány újonnan összekötők támogatásának engedélyezése Ezt a szolgáltatást. Várhatóan több hamarosan újabb. A részletek minden összekötő témakör ellenőrizheti. A titkos mezők, amely támogatja ezt a szolgáltatást, a leírás megkapta a megjegyzés megjelenik "*esetén dönthet úgy, hogy ez a mező megjelölése a SecureString tárolja biztonságos helyen az ADF, vagy a jelszó tárolása az Azure Key Vault, és lehetővé teszik a másolási tevékenységek lekéréses onnan adatok másolása – végrehajtása során az adattárolóhoz használandó hitelesítő adatok a Key Vault további.* "
+Jelenleg az összekötők összes másolási tevékenység támogatja ez a szolgáltatás - ellenőrizze, hogy a "társított szolgáltatás tulajdonságai" szakaszában szerepel [minden összekötő témakör](copy-activity-overview.md#supported-data-stores-and-formats) részleteiről. Más típusú tevékenységek támogatása, és számítási kapcsolódó szolgáltatás később határozza meg.
 
 > [!NOTE]
 > Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [adat-előállító version1 dokumentációja](v1/data-factory-introduction.md).
@@ -35,10 +35,10 @@ Ez a funkció a data factory szolgáltatásidentitás támaszkodik. Ismerje meg,
 
 Az Azure Key Vault tárolt hitelesítő adatok hivatkozik, kell:
 
-1. [Beolvasása a data factory szolgáltatásidentitás](data-factory-service-identity.md#retrieve-service-identity) a "SERVICE IDENTITÁS alkalmazás Azonosítójának értéke" jön létre, valamint a gyári másolásával.
-2. A szolgáltatás identitásának hozzáférési jogot az Azure Key Vault. A key vaultban -> a hozzáférés-vezérlési -> Hozzáadás -> a szolgáltatásalkalmazás-identitás hozzáadása legalább azonosító keresési **olvasó** engedéllyel. Lehetővé teszi a kijelölt gyári titkos kulcstároló eléréséhez.
-3. Az Azure Key Vault mutató társított szolgáltatás létrehozása. Tekintse meg [a társított szolgáltatásnak Azure Key Vault](#azure-key-vault-linked-service).
-4. Adatok kapcsolódó tároló szolgáltatás, mely hivatkozás található a megfelelő mappájában tárolt titkos kulcsot tároló létrehozása. Tekintse meg [key vaultban tárolt hitelesítő adatok hivatkozhat](#reference-credential-stored-in-key-vault).
+1. **[Beolvasása a data factory szolgáltatásidentitás](data-factory-service-identity.md#retrieve-service-identity)**  a "SERVICE IDENTITÁS alkalmazás Azonosítójának értéke" jön létre, valamint a gyári másolásával.
+2. **A szolgáltatás identitásának hozzáférési jogot az Azure Key Vault.** Key vaultban lévő -> házirendek -> hozzáférési Hozzáadás -> Új keresés ehhez a szolgáltatásalkalmazáshoz identitás megadását azonosító **beolvasása** titkos engedélyek legördülő engedéllyel. Lehetővé teszi a kijelölt gyári titkos kulcstároló eléréséhez.
+3. **Az Azure Key Vault mutató társított szolgáltatás létrehozása.** Tekintse meg [a társított szolgáltatásnak Azure Key Vault](#azure-key-vault-linked-service).
+4. **Adatok kapcsolódó tároló szolgáltatás, mely hivatkozás található a megfelelő mappájában tárolt titkos kulcsot tároló létrehozása.** Tekintse meg [key vaultban tárolt hivatkozás titkos](#reference-secret-stored-in-key-vault).
 
 ## <a name="azure-key-vault-linked-service"></a>Az Azure Key Vault társított szolgáltatás
 
@@ -47,7 +47,7 @@ Csatolt Azure Key Vault szolgáltatás támogatott a következő tulajdonságokk
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **AzureKeyVault**. | Igen |
-| BaseUrl | Adja meg az Azure Key Vault URL-CÍMÉT. | Igen |
+| baseUrl | Adja meg az Azure Key Vault URL-CÍMÉT. | Igen |
 
 **Példa**
 
@@ -63,7 +63,7 @@ Csatolt Azure Key Vault szolgáltatás támogatott a következő tulajdonságokk
 }
 ```
 
-## <a name="reference-credential-stored-in-key-vault"></a>A key vaultban tárolt hivatkozás hitelesítő adatok
+## <a name="reference-secret-stored-in-key-vault"></a>A key vaultban tárolt hivatkozás titkos kulcs
 
 A következő tulajdonságok kulcstároló titkos kulcs hivatkozó társított szolgáltatás mező konfigurálásakor támogatottak:
 
@@ -99,5 +99,5 @@ A következő tulajdonságok kulcstároló titkos kulcs hivatkozó társított s
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats).

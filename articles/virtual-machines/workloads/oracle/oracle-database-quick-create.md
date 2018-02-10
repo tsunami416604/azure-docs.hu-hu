@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/17/2017
 ms.author: rclaus
-ms.openlocfilehash: 8683b016c4db2c66fb1dd994405b70c3d137a7fc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4f760165fa8a93bbb7646539af748b647fe63bba
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Oracle-adatbázishoz egy Azure virtuális gép létrehozása
 
@@ -33,7 +33,7 @@ Ha a CLI helyi telepítését és használatát választja, akkor ehhez a gyors�
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
 
 A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
 
@@ -42,7 +42,7 @@ az group create --name myResourceGroup --location eastus
 ```
 ## <a name="create-virtual-machine"></a>Virtuális gép létrehozása
 
-Hozzon létre egy virtuális gépet (VM), használja a [az virtuális gép létrehozása](/cli/azure/vm#create) parancsot. 
+Hozzon létre egy virtuális gépet (VM), használja a [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create) parancsot. 
 
 Az alábbi példa egy `myVM` nevű virtuális gépet hoz létre. SSH-kulcsok, azt is hoz létre, ha még nem léteznek a kulcs alapértelmezett helye. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.  
 
@@ -270,7 +270,7 @@ Alapértelmezés szerint az Oracle-adatbázishoz nem indul el automatikusan a vi
 
 Az utolsó feladat be nem konfigurálhatja az egyes külső végpontok száma. Az Azure hálózati biztonsági csoport, amely védi a virtuális gép beállításához lépjen ki az SSH-munkamenetet a virtuális gép (kell rendelkeznie lett kezdődött SSH kívül ha újraindítás az előző lépésben). 
 
-1.  Nyissa meg a végpont, amelyekkel távolról fér hozzá az Oracle-adatbázishoz, hozzon létre egy hálózati biztonsági csoport szabály [az hálózati nsg-szabály létrehozása](/cli/azure/network/nsg/rule#create) az alábbiak szerint: 
+1.  Nyissa meg a végpont, amelyekkel távolról fér hozzá az Oracle-adatbázishoz, hozzon létre egy hálózati biztonsági csoport szabály [az hálózati nsg-szabály létrehozása](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) az alábbiak szerint: 
 
     ```azurecli-interactive
     az network nsg rule create \
@@ -282,7 +282,7 @@ Az utolsó feladat be nem konfigurálhatja az egyes külső végpontok száma. A
         --destination-port-range 1521
     ```
 
-2.  Nyissa meg a végpont Oracle EM Express távoli eléréséhez használt, hozzon létre egy hálózati biztonsági csoport szabály [az hálózati nsg-szabály létrehozása](/cli/azure/network/nsg/rule#create) az alábbiak szerint:
+2.  Nyissa meg a végpont Oracle EM Express távoli eléréséhez használt, hozzon létre egy hálózati biztonsági csoport szabály [az hálózati nsg-szabály létrehozása](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) az alábbiak szerint:
 
     ```azurecli-interactive
     az network nsg rule create \
@@ -294,7 +294,7 @@ Az utolsó feladat be nem konfigurálhatja az egyes külső végpontok száma. A
         --destination-port-range 5502
     ```
 
-3. Ha szükséges, szerezze be a nyilvános IP-címet a virtuális gép újra [az hálózati nyilvános ip-megjelenítése](/cli/azure/network/public-ip#show) az alábbiak szerint:
+3. Ha szükséges, szerezze be a nyilvános IP-címet a virtuális gép újra [az hálózati nyilvános ip-megjelenítése](/cli/azure/network/public-ip#az_network_public_ip_show) az alábbiak szerint:
 
     ```azurecli-interactive
     az network public-ip show \
@@ -316,13 +316,13 @@ A bejelentkezhet a **SYS** fiókot, és ellenőrizze a **SYSDBA csoport szerint*
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Miután befejezte az első Oracle adatbázis Azure felfedezése és a virtuális gép már nem szükséges, használhatja a [az csoport törlése](/cli/azure/group#delete) parancsot a távolítsa el az erőforráscsoportot, a virtuális gép, és minden kapcsolódó erőforrásokat.
+Miután befejezte az első Oracle adatbázis Azure felfedezése és a virtuális gép már nem szükséges, használhatja a [az csoport törlése](/cli/azure/group#az_group_delete) parancsot a távolítsa el az erőforráscsoportot, a virtuális gép, és minden kapcsolódó erőforrásokat.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tudnivalók más [Oracle megoldások Azure](oracle-considerations.md). 
 

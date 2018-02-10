@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 
 ms.author: haroldw
-ms.openlocfilehash: 5e287cd29fb305e78fe6338782838929007b17fc
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: 467428462260596f21ba59f49e3c48b5fc2526b6
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="common-prerequisites-for-deploying-openshift-in-azure"></a>Az Azure-ban OpenShift telepítésének közös előfeltételei
 
@@ -52,14 +52,14 @@ Ez az útmutató ismerteti a Előfeltételek társított összetevők létrehoz�
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba 
-Jelentkezzen be Azure előfizetés a [az bejelentkezési](/cli/azure/#login) parancsot, és kövesse a képernyőn megjelenő utasításokat, vagy kattintson **próbálja ki** felhő rendszerhéj használata.
+Jelentkezzen be Azure előfizetés a [az bejelentkezési](/cli/azure/#az_login) parancsot, és kövesse a képernyőn megjelenő utasításokat, vagy kattintson **próbálja ki** felhő rendszerhéj használata.
 
 ```azurecli 
 az login
 ```
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Egy dedikált erőforráscsoportot a key vault-segítségével. Ez a csoport nem azonos az erőforráscsoport, amelybe a OpenShift fürterőforrások telepítése. 
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Egy dedikált erőforráscsoportot a key vault-segítségével. Ez a csoport nem azonos az erőforráscsoport, amelybe a OpenShift fürterőforrások telepítése. 
 
 Az alábbi példa létrehoz egy erőforráscsoportot *keyvaultrg* a a *eastus* helye:
 
@@ -68,7 +68,7 @@ az group create --name keyvaultrg --location eastus
 ```
 
 ## <a name="create-a-key-vault"></a>Kulcstartó létrehozása
-Hozzon létre egy kulcstartót a fürthöz az SSH-kulcsok tárolására az [az keyvault létrehozása](/cli/azure/keyvault#create) parancsot. A kulcstároló neve globálisan egyedinek kell lennie.
+Hozzon létre egy kulcstartót a fürthöz az SSH-kulcsok tárolására az [az keyvault létrehozása](/cli/azure/keyvault#az_keyvault_create) parancsot. A kulcstároló neve globálisan egyedinek kell lennie.
 
 Az alábbi példakód létrehozza nevű kulcstároló *keyvault* a a *keyvaultrg* erőforráscsoport:
 
@@ -100,7 +100,7 @@ az keyvault secret set --vault-name keyvault --name keysecret --file ~/.ssh/open
 ## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása 
 OpenShift Azure keresztül kommunikál a felhasználónév és jelszó vagy egy egyszerű szolgáltatást. Egy Azure szolgáltatás egyszerű egy biztonsági azonosító, amely alkalmazások, szolgáltatások és automatizálási eszközökkel, például a OpenShift használható. Szabályozza, és adja meg az engedélyeket, hogy mely műveletek a szolgáltatás egyszerű hajthat végre az Azure-ban. Túl csak a felhasználónév és jelszó megadása a biztonság növelése érdekében ez a példa létrehoz egy alapszintű service egyszerű.
 
-Az egyszerű szolgáltatás létrehozása [az ad sp létrehozása-az-rbac](/cli/azure/ad/sp#create-for-rbac) és kimeneti OpenShift szükséges hitelesítő adatokat.
+Az egyszerű szolgáltatás létrehozása [az ad sp létrehozása-az-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) és kimeneti OpenShift szükséges hitelesítő adatokat.
 
 Az alábbi példa létrehoz egy szolgáltatást egyszerű, és közreműködői engedélyekkel rendeli egy contoso.com nevű erőforráscsoport. Ha használja a Windows, a végrehajtást ```az group show --name myResourceGroup --query id``` külön-külön és a kimeneti segítségével hírcsatorna a--hatókörök lehetőséget.
 

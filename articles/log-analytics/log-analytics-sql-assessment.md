@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/19/2018
 ms.author: magoedte;banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 09fed11830bbbce23f7098050568d68a3b3bebec
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 71caf0e1d58107376888ae454713703d845101eb
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>A Naplóelemzési az SQL Server állapotának ellenőrzése megoldás SQL környezetében optimalizálása
 
@@ -174,7 +174,7 @@ Az összesített megfelelőségi értékelése az infrastruktúrát, és a-felt�
 ## <a name="ignore-recommendations"></a>Figyelmen kívül hagyja a javaslatok
 Ha figyelmen kívül hagyása kívánt ajánlásokat, létrehozhat egy szövegfájlt, amely Naplóelemzési fogja használni az értékelési eredmények jelennek meg javaslatok megelőzése érdekében.
 
-[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ### <a name="to-identify-recommendations-that-you-will-ignore"></a>Javaslatok, figyelmen kívül hagyja majd azonosításához
 1. Az Azure-portálon a kijelölt munkaterülethez tartozó Naplóelemzési munkaterület lapon kattintson a **naplófájl-keresési** csempére.

@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: b0cc1bca6035104aba655bdb6fc63a1a66483f0c
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: ee15e92a6d6b7054b818a46fb5c207614f6d535f
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-paypal-using-azure-data-factory-beta"></a>Adatok másolása az Azure Data Factory (béta) használatával PayPal
 
@@ -50,7 +50,7 @@ A következő tulajdonságok PayPal kapcsolódó szolgáltatás támogatottak:
 | type | A type tulajdonságot kell beállítani: **PayPal** | Igen |
 | gazdagép | A PayPal példány URL-CÍMÉT. (Ez azt jelenti, hogy api.sandbox.paypal.com)  | Igen |
 | clientId | A PayPal az alkalmazáshoz tartozó ügyfél-azonosító.  | Igen |
-| clientSecret | A PayPal az alkalmazáshoz tartozó titkos ügyfélkulcsot. Ez a mező megjelölése a SecureString tárolja biztonságos helyen az ADF, vagy a jelszó tárolása az Azure Key Vault választhat, és lehetővé teszik a másolási tevékenység lekéréses ott adatmásolás végrehajtása során – további információhoz [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). | Igen |
+| clientSecret | A PayPal az alkalmazáshoz tartozó titkos ügyfélkulcsot. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen |
 | useEncryptedEndpoints | Meghatározza, hogy a data source végpontok titkosítása HTTPS használatával. Az alapértelmezett érték: igaz.  | Nem |
 | useHostVerification | Meghatározza, hogy az a számítógép neve a egyeznie kell a gazdagép nevével a kiszolgáló SSL-en keresztüli kapcsolódás esetén a kiszolgáló tanúsítványát. Az alapértelmezett érték: igaz.  | Nem |
 | usePeerVerification | Megadja, hogy a kiszolgáló identitásának ellenőrzése SSL-en keresztüli kapcsolódás esetén. Az alapértelmezett érték: igaz.  | Nem |

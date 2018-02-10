@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2017
 ms.author: banders
-ms.openlocfilehash: 8f83d019c0168aa5abbf3211b4a599f631e9f426
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 2cc40388c77dec68966a8914197d072db38f6eb0
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>A DNS-infrastruktúra DNS Analytics Preview megoldással észrevételeket összegyűjtése
 
-![DNS Analytics szimbólum](./media/log-analytics-dns/dns-analytics-symbol.png)
+![DNS Analytics symbol](./media/log-analytics-dns/dns-analytics-symbol.png)
 
 Ez a cikk ismerteti, hogyan beállítását és az Azure Log Analytics az Azure DNS elemzési megoldások segítségével gyűjtse össze a DNS-infrastruktúra a biztonsággal, a teljesítmény és a műveletek betekintést.
 
@@ -76,12 +76,12 @@ A megoldás irányítópultján kattintson **konfigurációs** a DNS-Analytics k
 
 Ha az Operations Management Suite-munkaterülettel való csatlakozáshoz használ a Microsoft Monitoring Agent, a következő felügyeleti csomag telepítve van:
 
-- Microsoft DNS adatokat gyűjtő Intelligence Pack (Microsft.IntelligencePacks.Dns)
+- Microsoft DNS Data Collector Intelligence Pack (Microsft.IntelligencePacks.Dns)
 
 Ha az Operations Manager felügyeleti csoport az Operations Management Suite-munkaterületre van csatlakoztatva, a következő felügyeleti csomagokat az Operations Manager települnek, amikor ez a megoldás. Nincs szükség konfigurációs vagy karbantartási a felügyeleti csomagok:
 
-- Microsoft DNS adatokat gyűjtő Intelligence Pack (Microsft.IntelligencePacks.Dns)
-- A Microsoft System Center Advisor DNS konfigurációja (Microsoft.IntelligencePack.Dns.Configuration)
+- Microsoft DNS Data Collector Intelligence Pack (Microsft.IntelligencePacks.Dns)
+- Microsoft System Center Advisor DNS Analytics Configuration (Microsoft.IntelligencePack.Dns.Configuration)
 
 A megoldási felügyeleti csomagok frissítéseivel kapcsolatban lásd: [Az Operations Manager csatlakoztatása a Log Analyticshez](log-analytics-om-agents.md).
 
@@ -91,7 +91,7 @@ Ez a szakasz ismerteti az irányítópult funkciók és a használatukat.
 
 A megoldás felvételét a munkaterületet, a megoldás csempe az Operations Management Suite – Áttekintés lapon a DNS-infrastruktúra gyors összegzését tartalmazza. Ez magában foglalja a DNS-kiszolgálók, ahol a folyik adatgyűjtés a száma. Ezenkívül tartalmazza a rosszindulatú tartományok feloldani az elmúlt 24 órában az ügyfelek által intézett kérések száma. A csempére kattintva megnyílik a megoldás irányítópultja.
 
-![DNS Analytics csempe](./media/log-analytics-dns/dns-tile.png)
+![DNS Analytics tile](./media/log-analytics-dns/dns-tile.png)
 
 ### <a name="solution-dashboard"></a>A megoldás irányítópultja
 
@@ -137,7 +137,7 @@ Az információk alapján azonosíthatja a:
 
 4. Ellenőrizze, hogy a zóna konfigurálták biztonságos dinamikus frissítés vagy sem.
 
-    ![Dinamikus DNS-regisztráció panel](./media/log-analytics-dns/dynamic-dns-reg-blade.png)
+    ![Dynamic DNS Registrations blade](./media/log-analytics-dns/dynamic-dns-reg-blade.png)
 
 **Regisztrációs kérelem neve**. A felső csempe sikeres és sikertelen DNS dinamikus frissítési kérelmek trendvonal jeleníti meg. Az alsó csempe felsorolja a felső 10 ügyfelek sikertelen DNS-frissítési kéréseket a DNS-kiszolgálók, a hibák száma alapján rendezve üzenetet küld.
 
@@ -145,7 +145,7 @@ Az információk alapján azonosíthatja a:
 
 **Eszközillesztő elemzési lekérdezések minta**. A leggyakoribb keresési lekérdezések raw analytics adatlehívás közvetlenül listáját tartalmazza.
 
-[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ![A lekérdezés](./media/log-analytics-dns/queries.png)
 
@@ -187,6 +187,6 @@ Két módon visszajelzést is:
 - **UserVoice**. DNS elemzési szolgáltatások működését az ötletek utáni. Látogasson el a [Operations Management Suite UserVoice lap](https://aka.ms/dnsanalyticsuservoice).
 - **Csatlakozás a kohorszok**. Azt mindig kíváncsiak vagyunk abban, csatlakoztassa az új szolgáltatások korai eléréséhez és DNS elemzési javítása érdekében cohorts új ügyfelek. Ha érdekli a cohorts csatlakoztatása, töltse ki [a gyors felmérés](https://aka.ms/dnsanalyticssurvey).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Naplók keresése](log-analytics-log-searches.md) DNS-napló részletes rekordok megtekintéséhez.

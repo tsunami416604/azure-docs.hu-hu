@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2018
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 88d71510c1d966c3250891eb9a430503959a91ba
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: f0fe8f65ff2d6a3029e44b51c004404e336e0129
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával Sybase
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -62,7 +62,7 @@ A következő tulajdonságok Sybase kapcsolódó szolgáltatás támogatottak:
 | adatbázis | Neve a Sybase-adatbázishoz. |Igen |
 | authenticationType | A Sybase-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Két érték engedélyezett: **alapvető**, és **Windows**. |Igen |
 | felhasználónév | Adja meg a felhasználónevet a Sybase-adatbázishoz való kapcsolódáshoz. |Igen |
-| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Ez a mező megjelölése a SecureString. |Igen |
+| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). |Igen |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Egy Self-hosted integrációs futásidejű szükség, ahogyan az [Előfeltételek](#prerequisites). |Igen |
 
 **Példa**

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: magoedte;banders
-ms.openlocfilehash: b7cb178a24b043fe2c884ef0e4b3ad14ca0d73e4
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 2ce9491f7c16baa7805bdb35defc57645b73d18f
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>A Naplóelemzési átviteli adatok 2.0 (előzetes verzió) megoldás
 
@@ -387,7 +387,7 @@ Az OMS-portálon kattintson a **átviteli adatok 2.0** csempére kattintva nyiss
 | Helyi alhálózatok | Az ügynökök felderített helyi alhálózatok számát mutatja.  Kattintson a napló keresése futtatásához <code>Type:WireData &#124; Measure Sum(TotalBytes) by LocalSubnet</code> összes alhálózatot, amely felsorolja a minden egyes küldött bájtok száma. Kattintson a napló-keresés vissza az alhálózat küldött bájtok teljes száma futtatásához a listában lévő alhálózatot. |
 | Alkalmazásszintű protokollok | Alkalmazásszintű protokollok számának ügynököket használja, megjelenítése Kattintson a napló keresése futtatásához <code>Type:WireData &#124; Measure Sum(TotalBytes) by ApplicationProtocol</code>. Kattintson a napló-keresés vissza a protokoll használatával küldött bájtok teljes száma futtatásához protokoll. |
 
-[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ![Átviteli adatokat irányítópult](./media/log-analytics-wire-data/wire-data-dash.png)
 
@@ -413,7 +413,7 @@ Akkor célszerű is tudja, hogy a protokoll forgalom növekvő vagy csökkenő a
 
 Átviteli adatokat gyűjt a metaadatok használatával az ügynököket, amelyeket engedélyezte a hálózati forgalom. Minden ügynök 15 másodpercenként adatokat küld.
 
-## <a name="output-data"></a>kimeneti adatok
+## <a name="output-data"></a>Kimeneti adatok
 
 A típusú rekord _WireData_ jön létre az egyes bemeneti adatokat. WireData rögzíti az alábbi táblázatban szereplő jellemzőkkel rendelkezik:
 

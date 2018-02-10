@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/12/2017
+ms.date: 01/24/2018
 ms.author: dobett
-ms.openlocfilehash: b88ed25e4f434e32423be122569070d896ef7c68
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: df89150867a3c95116ba8ca8cd684af4b32a36de
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-nodejs"></a>Csatlakoztassa az eszközt a távoli felügyeleti előkonfigurált megoldás (Node.js)
 
@@ -31,32 +31,31 @@ Ez az oktatóanyag bemutatja, hogyan egy fizikai eszköz csatlakozni a távoli f
 
 Győződjön meg arról, hogy [Node.js](https://nodejs.org/) 4.0.0 verzió vagy újabb telepítve van a fejlesztési számítógépén. Futtathat `node --version` verziójának a parancssorból.
 
-1. Hozzon létre egy nevű `RemoteMonitoring` a fejlesztési számítógépén. Keresse meg a mappát a parancssori környezetben.
+1. Hozzon létre egy nevű `remotemonitoring` a fejlesztési számítógépén. Keresse meg a mappát a parancssori környezetben.
 
 1. Töltse le és telepítse a csomagokat, végre kell hajtania a mintaalkalmazást, futtassa a következő parancsokat:
 
     ```cmd/sh
     npm init
-    npm install azure-iot-device azure-iot-device-mqtt --save
+    npm install async azure-iot-device azure-iot-device-mqtt --save
     ```
 
-1. Az a `RemoteMonitoring` mappa, hozzon létre egy nevű fájlt **remote_monitoring.js**. Nyissa meg ezt a fájlt egy szövegszerkesztőben.
+1. Az a `remotemonitoring` mappa, hozzon létre egy nevű fájlt **remote_monitoring.js**. Nyissa meg ezt a fájlt egy szövegszerkesztőben.
 
 1. Az a **remote_monitoring.js** fájlt, adja hozzá a következő `require` utasításokat:
 
     ```nodejs
-    'use strict';
-
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     var Client = require('azure-iot-device').Client;
     var ConnectionString = require('azure-iot-device').ConnectionString;
     var Message = require('azure-iot-device').Message;
+    var async = require('async');
     ```
 
-1. Adja hozzá a következő változódeklarációkat az `require` utasítások után. Cserélje le a helyőrző értékeket `{Device Id}` és `{Device Key}` értékekkel, az eszköz feljegyzett kiépítve a távoli felügyeleti megoldás. Cserélje le az IoT Hub állomásnevet a megoldásban való használatával `{IoTHub Name}`. Például, ha az IoT Hub állomásnevet `contoso.azure-devices.net`, cserélje le `{IoTHub Name}` rendelkező `contoso`:
+1. Adja hozzá a következő változódeklarációkat az `require` utasítások után. Cserélje le a helyőrző értékét `{device connection string}` az eszköz feljegyzett értékű kiépítve a távoli felügyeleti megoldásban:
 
     ```nodejs
-    var connectionString = 'HostName={IoTHub Name}.azure-devices.net;DeviceId={Device Id};SharedAccessKey={Device Key}';
+    var connectionString = '{device connection string}';
     var deviceId = ConnectionString.parse(connectionString).DeviceId;
     ```
 
@@ -84,6 +83,7 @@ Győződjön meg arról, hogy [Node.js](https://nodejs.org/) 4.0.0 verzió vagy 
     var deviceLocation = "Building 44";
     var deviceLatitude = 47.638928;
     var deviceLongitude = -122.13476;
+    var deviceOnline = true;
     ```
 
 1. Adja hozzá a következő változót a megoldás küldendő jelentett tulajdonságainak definiálásához. E tulajdonságok közé tartozik a metaadatokra ahhoz, hogy milyen módszereket, és az eszköz telemetriai használja:
@@ -135,7 +135,8 @@ Győződjön meg arról, hogy [Node.js](https://nodejs.org/) 4.0.0 verzió vagy 
       "FirmwareUpdateStatus": deviceFirmwareUpdateStatus,
       "Location": deviceLocation,
       "Latitude": deviceLatitude,
-      "Longitude": deviceLongitude
+      "Longitude": deviceLongitude,
+      "Online": deviceOnline
     }
     ```
 
@@ -157,7 +158,7 @@ Győződjön meg arról, hogy [Node.js](https://nodejs.org/) 4.0.0 verzió vagy 
     }
     ```
 
-1. Adja hozzá a következő függvény közvetlen metódushívások a megoldásban való kezelése. A megoldás közvetlen módszert használ, hogy intézkedjen eszközök:
+1. Adja hozzá a következő általános függvény közvetlen metódushívások a megoldásban való kezelése. A függvény a közvetlen metódus lett meghívva, de ez a példa nem módosítja az eszköz bármilyen módon információit jeleníti meg. A megoldás közvetlen módszert használ, hogy intézkedjen eszközök:
 
     ```nodejs
     function onDirectMethod(request, response) {
@@ -166,14 +167,116 @@ Győződjön meg arról, hogy [Node.js](https://nodejs.org/) 4.0.0 verzió vagy 
 
       // Complete the response
       response.send(200, request.methodName + ' was called on the device', function (err) {
-        if (!!err) {
-          console.error('An error ocurred when sending a method response:\n' +
-            err.toString());
+        if (err) console.error('Error sending method response :\n' + err.toString());
+        else console.log('200 Response to method \'' + request.methodName + '\' sent successfully.');
+      });
+    }
+    ```
+
+1. Adja hozzá a következő függvény kezelni a **FirmwareUpdate** metódushívások a megoldásban való közvetlen. A függvény ellenőrzi az átadott paraméterek: a közvetlen módszer hasznos, és aszinkron módon fut egy belső vezérlőprogram frissítési szimuláció:
+
+    ```node.js
+    function onFirmwareUpdate(request, response) {
+      // Get the requested firmware version from the JSON request body
+      var firmwareVersion = request.payload.Firmware;
+      var firmwareUri = request.payload.FirmwareUri;
+      
+      // Ensure we got a firmware values
+      if (!firmwareVersion || !firmwareUri) {
+        response.send(400, 'Missing firmware value', function(err) {
+          if (err) console.error('Error sending method response :\n' + err.toString());
+          else console.log('400 Response to method \'' + request.methodName + '\' sent successfully.');
+        });
+      } else {
+        // Respond the cloud app for the device method
+        response.send(200, 'Firmware update started.', function(err) {
+          if (err) console.error('Error sending method response :\n' + err.toString());
+          else {
+            console.log('200 Response to method \'' + request.methodName + '\' sent successfully.');
+
+            // Run the simulated firmware update flow
+            runFirmwareUpdateFlow(firmwareVersion, firmwareUri);
+          }
+        });
+      }
+    }
+    ```
+
+1. Adja hozzá a következő függvényt, ezzel szimulálva a hosszan futó belső vezérlőprogram frissítési folyamat, amely a folyamatban lévő jelentést küld vissza a megoldás:
+
+    ```node.js
+    // Simulated firmwareUpdate flow
+    function runFirmwareUpdateFlow(firmwareVersion, firmwareUri) {
+      console.log('Simulating firmware update flow...');
+      console.log('> Firmware version passed: ' + firmwareVersion);
+      console.log('> Firmware URI passed: ' + firmwareUri);
+      async.waterfall([
+        function (callback) {
+          console.log("Image downloading from " + firmwareUri);
+          var patch = {
+            FirmwareUpdateStatus: 'Downloading image..'
+          };
+          reportUpdateThroughTwin(patch, callback);
+          sleep(10000, callback);
+        },
+        function (callback) {
+          console.log("Downloaded, applying firmware " + firmwareVersion);
+          deviceOnline = false;
+          var patch = {
+            FirmwareUpdateStatus: 'Applying firmware..',
+            Online: false
+          };
+          reportUpdateThroughTwin(patch, callback);
+          sleep(8000, callback);
+        },
+        function (callback) {
+          console.log("Rebooting");
+          var patch = {
+            FirmwareUpdateStatus: 'Rebooting..'
+          };
+          reportUpdateThroughTwin(patch, callback);
+          sleep(10000, callback);
+        },
+        function (callback) {
+          console.log("Firmware updated to " + firmwareVersion);
+          deviceOnline = true;
+          var patch = {
+            FirmwareUpdateStatus: 'Firmware updated',
+            Online: true,
+            Firmware: firmwareVersion
+          };
+          reportUpdateThroughTwin(patch, callback);
+          callback(null);
+        }
+      ], function(err) {
+        if (err) {
+          console.error('Error in simulated firmware update flow: ' + err.message);
         } else {
-          console.log('Response to method \'' + request.methodName +
-            '\' sent successfully.');
+          console.log("Completed simulated firmware update flow");
         }
       });
+
+      // Helper function to update the twin reported properties.
+      function reportUpdateThroughTwin(patch, callback) {
+        console.log("Sending...");
+        console.log(JSON.stringify(patch, null, 2));
+        client.getTwin(function(err, twin) {
+          if (!err) {
+            twin.properties.reported.update(patch, function(err) {
+              if (err) callback(err);
+            });      
+          } else {
+            if (err) callback(err);
+          }
+        });
+      }
+
+      function sleep(milliseconds, callback) {
+        console.log("Simulate a delay (milleseconds): " + milliseconds);
+        setTimeout(function () {
+          callback(null);
+        }, milliseconds);
+      }
     }
     ```
 
@@ -181,15 +284,19 @@ Győződjön meg arról, hogy [Node.js](https://nodejs.org/) 4.0.0 verzió vagy 
 
     ```node.js
     function sendTelemetry(data, schema) {
-      var d = new Date();
-      var payload = JSON.stringify(data);
-      var message = new Message(payload);
-      message.properties.add('$$CreationTimeUtc', d.toISOString());
-      message.properties.add('$$MessageSchema', schema);
-      message.properties.add('$$ContentType', 'JSON');
+      if (deviceOnline) {
+        var d = new Date();
+        var payload = JSON.stringify(data);
+        var message = new Message(payload);
+        message.properties.add('$$CreationTimeUtc', d.toISOString());
+        message.properties.add('$$MessageSchema', schema);
+        message.properties.add('$$ContentType', 'JSON');
 
-      console.log('Sending device message data:\n' + payload);
-      client.sendEvent(message, printErrorFor('send event'));
+        console.log('Sending device message data:\n' + payload);
+        client.sendEvent(message, printErrorFor('send event'));
+      } else {
+        console.log('Offline, not sending telemetry');
+      }
     }
     ```
 
@@ -204,7 +311,7 @@ Győződjön meg arról, hogy [Node.js](https://nodejs.org/) 4.0.0 verzió vagy 
     * Nyissa meg a kapcsolatot.
     * A kezelő kívánt tulajdonságok beállítása.
     * Jelentett tulajdonságok küldése.
-    * A közvetlen módszer kezelők regisztrálni.
+    * A közvetlen módszer kezelők regisztrálni. A minta egy külön kezelő belső vezérlőprogram frissítési közvetlen módszer használ.
     * Indítsa el a telemetriai adatok küldését.
 
     ```nodejs
@@ -228,13 +335,13 @@ Győződjön meg arról, hogy [Node.js](https://nodejs.org/) 4.0.0 verzió vagy 
             // Send reported properties
             twin.properties.reported.update(reportedProperties, function (err) {
               if (err) throw err;
-              console.log('twin state reported');
+              console.log('Twin state reported');
             });
 
             // Register handlers for all the method names we are interested in.
             // Consider separate handlers for each method.
             client.onDeviceMethod('Reboot', onDirectMethod);
-            client.onDeviceMethod('FirmwareUpdate', onDirectMethod);
+            client.onDeviceMethod('FirmwareUpdate', onFirmwareUpdate);
             client.onDeviceMethod('EmergencyValveRelease', onDirectMethod);
             client.onDeviceMethod('IncreasePressure', onDirectMethod);
           }

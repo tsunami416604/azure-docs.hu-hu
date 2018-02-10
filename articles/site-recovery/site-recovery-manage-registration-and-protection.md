@@ -2,25 +2,20 @@
 title: "Távolítsa el a kiszolgálókat, és tiltsa le a védelmet |} Microsoft Docs"
 description: "Ez a cikk ismerteti, hogyan a Site Recovery-tároló kiszolgálók regisztrációját, és tiltsa le a védelmet a virtuális gépek és fizikai kiszolgálók."
 services: site-recovery
-documentationcenter: 
 author: rayne-wiselman
-manager: cfreeman
-editor: 
-ms.assetid: ef1f31d5-285b-4a0f-89b5-0123cd422d80
+manager: carmonm
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 10/3/2017
+ms.date: 02/07/2018
 ms.author: raynew
-ms.openlocfilehash: 471d68742668e2b1b1c72579cee9dd493f1bd042
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b26766ec26cc5afd82ec86c21e52d2737512fe8a
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="remove-servers-and-disable-protection"></a>Kiszolgálók eltávolítása és a védelem letiltása
+
 Ez a cikk ismerteti a Recovery Services-tároló kiszolgálók regisztrációját, és tiltsa le a védelmet a Site Recovery által védett gépek.
 
 
@@ -165,7 +160,7 @@ A VMM által nem felügyelt Hyper-V-gazdagépek egy Hyper-V helyre gyűjti az ad
 
 
     
-    $vmName = "SQLVM1" $vm = Get-WmiObject – Namespace "root\virtualization\v2"-lekérdezés "kiválasztása * Msvm_ComputerSystem a ahol ElementName"$vmName"=" $replicationService = Get-WmiObject – Namespace "root\virtualization\v2"-"Válasszon * a Msvm_ lekérdezése ReplicationService"$replicationService.RemoveReplicationRelationship($vm.__PATH)
+    $vmName = "SQLVM1"  $vm = Get-WmiObject -Namespace "root\virtualization\v2" -Query "Select * From Msvm_ComputerSystem Where ElementName = '$vmName'"  $replicationService = Get-WmiObject -Namespace "root\virtualization\v2"  -Query "Select * From Msvm_ReplicationService"  $replicationService.RemoveReplicationRelationship($vm.__PATH)
     
 
 ## <a name="disable-protection-for-a-hyper-v-virtual-machine-replicating-to-azure-using-the-system-center-vmm-to-azure-scenario"></a>Tiltsa le a védelmet a Hyper-V virtuális gépek replikálása Azure-bA a System Center VMM-forgatókönyvet az Azure használatával
@@ -185,7 +180,7 @@ A VMM által nem felügyelt Hyper-V-gazdagépek egy Hyper-V helyre gyűjti az ad
 4. A fenti lépések törölje a replikációs beállításokat a VMM-kiszolgálón. Állítsa le a replikációt a virtuális gép a Hyper-V kiszolgálón futó, futtassa a parancsfájlt. SQLVM1 cserélje le a virtuális gép, és a host01.contoso.com nevű, a Hyper-V gazdakiszolgáló nevét.
 
     
-    $vmName = "SQLVM1" $hostName "host01.contoso.com" $vm = Get-WmiObject – Namespace "root\virtualization\v2" =-lekérdezés "Válassza ki * Msvm_ComputerSystem a ahol ElementName ="$vmName"" - computername $hostName $replicationService = Get-WmiObject – Namespace "root\virtualization\v2"-"Válasszon * a Msvm_ReplicationService" - computername $hostName $replicationService.RemoveReplicationRelationship($vm.__PATH) lekérdezése
+    $vmName = "SQLVM1"  $hostName  = "host01.contoso.com"  $vm = Get-WmiObject -Namespace "root\virtualization\v2" -Query "Select * From Msvm_ComputerSystem Where ElementName = '$vmName'" -computername $hostName  $replicationService = Get-WmiObject -Namespace "root\virtualization\v2"  -Query "Select * From Msvm_ReplicationService"  -computername $hostName  $replicationService.RemoveReplicationRelationship($vm.__PATH)
     
        
  

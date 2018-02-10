@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 9a6e629582b6966d270a2378e585572efe133f3e
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: 69750db615460b3ac69ba9ffe707a970ca8e2e11
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="event-aggregation-and-collection-using-eventflow"></a>Esemény összevonásának és a gyűjtemény EventFlow használatával
 
@@ -43,6 +43,9 @@ A csomagok telepítése után a következő lépés, hogy konfigurálja és Even
 
 ## <a name="configure-and-enable-log-collection"></a>Konfigurálja és engedélyezi a naplógyűjtést
 A EventFlow-feldolgozási folyamat felelős a naplókat küld a konfigurációs fájlban tárolt specifikáció készült. A `Microsoft.Diagnostics.EventFlow.ServiceFabric` a csomag telepíti a kiindulási EventFlow konfigurációs fájl `PackageRoot\Config` nevű megoldás mappa `eventFlowConfig.json`. A konfigurációs fájlnak kell módosítani kell az alapértelmezett szolgáltatás adatait `EventSource` osztály, és bármely más bemeneti adatokat szeretné konfigurálni, és küldhetnek adatokat a megfelelő helyre.
+
+>[!NOTE]
+>Ha a projektfájlban VisualStudio 2017 formátuma a `eventFlowConfig.json` fájl nem lesz automatikusan hozzáadva. Javítsa ki a hozzon létre a fájlt a a `Config` mappa, és a létrehozási művelet `Copy if newer`. 
 
 Íme egy minta *eventFlowConfig.json* a fent említett NuGet-csomagok alapján:
 ```json
@@ -150,7 +153,7 @@ servicefabric:/<section-name>/<setting-name>
 
 Indítsa el a szolgáltatást, és tekintse meg a hibakeresési Visual Studio kimeneti ablakában. A szolgáltatás az elindítása után jelenítse meg az megbizonyosodhat róla, hogy a szolgáltatás rekordot küld a kimeneti konfigurált. Nyissa meg az esemény elemzése és a képi megjelenítés platform, és győződjön meg arról, hogy a naplók megjelenítendő van elindítva (eltarthat néhány percig) fel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Esemény elemzése és a képi megjelenítés az Application insights szolgáltatással](service-fabric-diagnostics-event-analysis-appinsights.md)
 * [Esemény elemzése és az OMS képi megjelenítés](service-fabric-diagnostics-event-analysis-oms.md)

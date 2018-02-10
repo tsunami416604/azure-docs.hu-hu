@@ -11,11 +11,11 @@ ms.workload: na
 ms.date: 08/22/2017
 ms.author: routlaw
 ms.custom: mvc
-ms.openlocfilehash: daa202ddf0dc934c491ead3951ddc4fdc3dd819c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 69bb79a1f02e601b9ed0104dde00211612473adc
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-and-jenkins"></a>Azure-ra és Jenkins
 
@@ -29,7 +29,7 @@ A cikkben megismerkedhet az Azure használatával Jenkins, és részletesen leí
  
 - [A Jenkins megoldássablonban](install-jenkins-solution-template.md) Azure piactéren.
 - [Az Azure virtuális gépek](/azure/virtual-machines/linux/overview). Tekintse meg a [oktatóanyag](/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd) Jenkins példány létrehozása a virtuális gép.
-- Egy Kubernetes fürtön futó [Azure Tárolószolgáltatás](/azure/container-service/kubernetes/container-service-kubernetes-walkthrough), tekintse meg a [útmutató](/azure/container-service/kubernetes/container-service-kubernetes-jenkin).
+- Egy Kubernetes fürtön futó [Azure Tárolószolgáltatás](/azure/container-service/kubernetes/container-service-kubernetes-walkthrough), tekintse meg a [útmutató](/azure/container-service/kubernetes/container-service-kubernetes-jenkins).
 
 Figyelheti és kezelheti a használó Azure Jenkins telepítés [Naplóelemzési](/azure/log-analytics/log-analytics-overview), [Operations Management Suite](/azure/operations-management-suite/operations-management-suite-overview), és az [Azure parancssori felület] (/ cli/azure/áttekintése).
 

@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 10/27/2017
 ms.author: magoedte;banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3a66cc13d05c81de571e2710519ad9474304d656
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: 5709de72032de9e3f7342be43260d3468b9cee66
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>A környezetben a System Center Operations Manager állapotának ellenőrzése (előzetes verzió) megoldás optimalizálása
 
@@ -62,7 +62,7 @@ Az alábbi információk segítségével telepítse és konfigurálja a megoldá
 
 A System Center Operations Manager assessment gyűjti az adatokat az alábbi forrásokból: 
 
-* Beállításkulcs
+* Beállításjegyzék
 * A Windows Management Instrumentation (WMI)
 * Eseménynapló
 * Fájladatok
@@ -216,8 +216,8 @@ Minden javaslat arról, hogy miért fontos útmutatást tartalmazza. Ez az útmu
 Az összesített megfelelőségi értékelése az infrastruktúrát, és a-feltárás javaslatok megtekintése.
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Az egy fókuszban terület javaslatok megtekintése és a szükséges javítási műveletek
-1. Jelentkezzen be az Azure portálon, a [https://portal.azure.com](https://portal.azure.com). 
-2. Az Azure portálon kattintson **további szolgáltatások** bal alsó sarokban található. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza ki **Analytics jelentkezzen**.
+1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) címen. 
+2. Az Azure Portalon kattintson a bal alsó sarokban található **További szolgáltatások** elemre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
 3. A Naplóelemzési előfizetések ablaktáblán jelölje ki a munkaterület, és kattintson a **OMS-portálon** csempére.  
 4. Az a **áttekintése** lapján kattintson a **System Center Operations Manager állapotának ellenőrzése** csempére.
 5. Az a **System Center Operations Manager állapotának ellenőrzése** lapon. Ellenőrizze az összefoglaló információkat a fókusz terület paneleken egyikében, majd kattintson egy adott fókusz területre javaslatok megtekintéséhez.
@@ -228,7 +228,7 @@ Az összesített megfelelőségi értékelése az infrastruktúrát, és a-felt�
 
 Ha figyelmen kívül hagyása kívánt ajánlásokat, létrehozhat egy szövegfájlt, amely Naplóelemzési használja az értékelési eredmények jelennek meg javaslatok megelőzése érdekében.
 
-[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ### <a name="to-identify-recommendations-that-you-want-to-ignore"></a>Javaslatok figyelmen kívül hagyása kívánt azonosításához
 1. Az Azure-portálon a kijelölt munkaterülethez tartozó Naplóelemzési munkaterület lapon kattintson a **naplófájl-keresési** csempére.
@@ -303,6 +303,6 @@ Ha figyelmen kívül hagyása kívánt ajánlásokat, létrehozhat egy szövegf�
 *Van mód figyelmen kívül hagyja az ajánlás?* Igen, tekintse meg a [figyelmen kívül hagyja a javaslatok](#Ignore-recommendations).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Naplók keresése](log-analytics-log-searches.md) megtudhatja, hogyan elemezhet a System Center Operations Manager állapotának ellenőrzése a részletes adatok és javaslatokat.

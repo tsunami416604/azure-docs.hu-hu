@@ -9,13 +9,13 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc, tutorial, azure
-ms.topic: tutorial
+ms.topic: article
 ms.date: 09/21/2017
-ms.openlocfilehash: 69f6911a95be382b06313d984f09c7e85aec10df
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: e4bcf7ec2a18f6068554c2eb85b72ffc36dcc4fc
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="bike-share-tutorial-advanced-data-preparation-with-azure-machine-learning-workbench"></a>Kerékpármegosztással kapcsolatos oktatóanyag: Fejlett adat-előkészítés az Azure Machine Learning Workbench használatával
 Az Azure Machine Learning Services (előzetes verzió) az adatszakértők számára az adatok előkészítéséhez, a kísérletek kidolgozásához és a modellek felhőszinten való üzembe helyezéséhez létrehozott átfogó, integrált és fejlett adatelemzési megoldás.
@@ -27,15 +27,17 @@ Ebben az oktatóanyagban az Azure Machine Learning Services (előzetes verzió) 
 > * Adat-előkészítési csomag létrehozása
 > * Adat-előkészítési csomag futtatása a Pythonnal
 > * Betanítási adatkészletet létrehozása az adat-előkészítési csomag újrafelhasználásával további bemeneti fájlokhoz
+> * Szkriptek végrehajtása helyi Azure CLI-ablakban.
+> * Szkriptek végrehajtása a felhőalapú Azure HDInsight-környezetben.
 
-> [!IMPORTANT]
-> Ebben az oktatóanyagban csak az adatok előkészítését végezzük el, az előrejelzési modellt nem hozzuk létre.
->
-> Az előkészített adatokat használhatja saját előrejelzési modelljeinek betanításához. Létrehozhat például egy modellt a kerékpárigények előrejelzésére egy 2 órás időszakon belül.
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Az Azure Machine Learning Workbenchnek helyileg telepítve kell lennie. További információkért kövesse a [rövid telepítési útmutatót](quickstart-installation.md).
+* Ha nincs telepítve, az Azure parancssori felület, kövesse az utasításokat [telepítse a legújabb Azure CLI]. (https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
+* Egy [HDInsights Spark-fürt](how-to-create-dsvm-hdi.md#create-an-apache-spark-for-azure-hdinsight-cluster-in-azure-portal) kell létrehozni az Azure-ban.
+* Egy Azure Storage-fiókot.
 * A felhasználónak ismernie kell új projekt létrehozásának menetét a Workbenchben.
+* Bár nem kötelező, akkor célszerű rendelkezik [Azure Tártallózó](https://azure.microsoft.com/features/storage-explorer/) , feltöltheti a telepítve, töltse le, és tekintse meg a tárfiók a BLOB. 
 
 ## <a name="data-acquisition"></a>Adatgyűjtés
 Ez az oktatóanyag a [Boston Hubway adatkészletet](https://s3.amazonaws.com/hubway-data/index.html), valamint a [NOAA](http://www.noaa.gov/) Bostonra vonatkozó időjárási adatait használja.
@@ -53,6 +55,22 @@ Ez az oktatóanyag a [Boston Hubway adatkészletet](https://s3.amazonaws.com/hub
       - [201701-hubway-tripdata.zip](https://s3.amazonaws.com/hubway-data/201701-hubway-tripdata.zip)
 
 2. A letöltés után csomagolja ki egyesével a .zip fájlokat.
+
+## <a name="upload-data-files-to-azure-blob-storage"></a>Adatok fájlok feltöltése az Azure Blob storage
+A blob storage segítségével az adatfájlok tárolására.
+
+1. Használja az ugyanazon Azure Storage-fiók, amely a HDInsight-fürtjéhez szolgál.
+
+    ![hdinsightstorageaccount.png](media/tutorial-bikeshare-dataprep/hdinsightstorageaccount.png)
+
+2. Hozzon létre egy új tároló "**-adatfájlok**" BikeShare adatok fájlok tárolásához.
+
+3. Töltse fel az adatfájlokat. Töltse fel a `BostonWeather.csv` nevű `weather`, és a út adatfájlok nevű `tripdata`.
+
+    ![azurestoragedatafile.png](media/tutorial-bikeshare-dataprep/azurestoragedatafile.png)
+
+> [!TIP]
+> Is használhatja **Azure Tártallózó** blobok feltöltése. Ezzel az eszközzel használható, ha meg szeretné tekinteni a fájlokat, valamint az oktatóanyag hozott létre a tartalmát.
 
 ## <a name="learn-about-the-datasets"></a>Tudnivalók az adatkészletekről
 1. A __Boston weather__ nevű fájl az alábbi, időjárással kapcsolatos mezőket tartalmazza órákra lebontott jelentésekkel:
@@ -78,7 +96,7 @@ Ez az oktatóanyag a [Boston Hubway adatkészletet](https://s3.amazonaws.com/hub
 1. Indítsa el az **Azure Machine Learning Workbench** alkalmazást a Start menüből vagy a gyorsindítóból.
 
 2. Hozzon létre egy új Azure Machine Learning-projektet.  Kattintson a **+** gombra a **Projektek** lapon, vagy a **Fájl** > **Új** lehetőségre.
-   - Használja az **Üres projekt** sablont.
+   - Használja a **kerékpárt megosztás** sablont.
    - Adja a projektnek a **BikeShare** nevet. 
 
 ## <a id="newdatasource"></a>Új adatforrás létrehozása
@@ -97,9 +115,9 @@ Ez az oktatóanyag a [Boston Hubway adatkészletet](https://s3.amazonaws.com/hub
 
    ![A Fájl(ok)/Mappa bejegyzés képe](media/tutorial-bikeshare-dataprep/datasources.png)
 
-2. **Fájl kiválasztása**: Adja hozzá az időjárási adatokat. Keresse meg és válassza ki a korábban letöltött `BostonWeather.csv` fájlt. Kattintson a **Tovább** gombra.
+2. **Fájl kiválasztása**: Adja hozzá az időjárási adatokat. Keresse meg és jelölje ki a `BostonWeather.csv` feltöltött fájl __Azure Blob Storage__ korábban. Kattintson a **Tovább** gombra.
 
-   ![A fájl kiválasztását ábrázoló kép, amelyen a BostonWeather.csv ki van kiválasztva](media/tutorial-bikeshare-dataprep/pickweatherdatafile.png)
+   ![A fájl kiválasztását ábrázoló kép, amelyen a BostonWeather.csv ki van kiválasztva](media/tutorial-bikeshare-dataprep/azureblobpickweatherdatafile.png)
 
 3. **Fájl részletei**: Ellenőrizze az észlelt fájlsémát. Az Azure Machine Learning Workbench elemzi a fájlban lévő adatokat, és kikövetkezteti a használandó sémát.
 
@@ -136,9 +154,9 @@ Ez az oktatóanyag a [Boston Hubway adatkészletet](https://s3.amazonaws.com/hub
 
    A folytatáshoz kattintson a __Tovább__ gombra. 
 
-5. **Mintavételezés**: Mintavételezési séma létrehozásához kattintson az **+ Új** gombra. Válassza a hozzáadott új __Első 10 000__ sort, majd a __Szerkesztés__ lehetőséget. A __Mintavételezési stratégia__ esetében válassza a **Teljes fájl** lehetőséget, majd kattintson az **Alkalmaz** gombra.
+5. **A mintavételi**: egy mintavételi séma létrehozásához válassza a **szerkesztése** gombra. Válassza a hozzáadott új __Első 10 000__ sort, majd a __Szerkesztés__ lehetőséget. A __Mintavételezési stratégia__ esetében válassza a **Teljes fájl** lehetőséget, majd kattintson az **Alkalmaz** gombra.
 
-   ![Új mintavételezési stratégia hozzáadását ábrázoló kép](media/tutorial-bikeshare-dataprep/weatherdatasampling.png)
+   ![Új mintavételezési stratégia hozzáadását ábrázoló kép](media/tutorial-bikeshare-dataprep/weatherdatasamplingfullfile.png)
 
    A __Teljes fájl__ stratégia használatához válassza ki a __Teljes fájl__ bejegyzést, majd a __Beállítás aktívként__ lehetőséget. A __Teljes fájl__ lehetőség mellett megjelenik egy csillag, amely jelzi, hogy ez az aktív stratégia.
 
@@ -223,6 +241,8 @@ A __REPORTTYPE__ oszlopra már nincs szüksége. Kattintson a jobb gombbal az os
 
    A hibákat tartalmazó sorok eltávolításához kattintson a jobb gombbal az **HOURLYDRYBULBTEMPF** oszlopfejlécre. Kattintson az **Oszlop szűrése** lehetőségre. Használja a **Cél** lehetőségnél az alapértelmezett **Sorok megtartása** értéket. A **Feltételek** legördülő listában válassza a **nem hibás** lehetőséget. Kattintson az **OK** gombra a szűrő alkalmazásához.
 
+    ![filtererrorvalues.png](media/tutorial-bikeshare-dataprep/filtererrorvalues.png)
+
 4. A többi oszlopban található hibás sorok kiküszöböléséhez ismételje meg ezt a szűrési folyamatot az **HOURLYRelativeHumidity** és az **HOURLYWindSpeed** oszlopok esetén.
 
 ## <a name="use-by-example-transformations"></a>Példa alapján végzett átalakítások használata
@@ -261,7 +281,10 @@ Ha az adatokat egy kétórás időszakokra vonatkozó előrejelzésben szeretné
 
    > [!NOTE]
    > Az Azure ML Workbench a megadott példák alapján szintetizál egy programot, és alkalmazza azt a többi sorra is. A rendszer a megadott példa alapján automatikusan kitölti az összes többi sort. A Workbench emellett elemzi az adatokat, és megkísérli a szélsőséges esetek azonosítását. 
-  
+
+   > [!IMPORTANT]
+   > Biztonsági esetek azonosítása nem feltétlenül Mac a munkaterületet üzemeltető aktuális verziójában. Kihagyás a __3. lépés__ és __4. lépés__ alatt a Mac. Ehelyett nyomja le az __OK__ után az összes sort az beszerzése származtatott értékekkel feltöltve.
+   
 3. A rács fölötti **Adatok elemzése** szöveg azt jelzi, hogy a Workbench a szélsőséges esetek észlelésén dolgozik. Ha ezzel elkészült, az állapot a következők egyikére változik: **Következő javasolt sor felülvizsgálata** vagy **Nincsenek javaslatok**. Ebben a példában az állapot a **Következő javasolt sor felülvizsgálata**.
 
 4. A javasolt változások felülvizsgálatához válassza a **Következő javasolt sor felülvizsgálata** lehetőséget. Ekkor a felülvizsgálandó és (szükség esetén) javítandó cella kiemelve jelenik meg.
@@ -287,10 +310,15 @@ Ha az adatokat egy kétórás időszakokra vonatkozó előrejelzésben szeretné
 
    Írja be a `Jan 01, 2015 12AM-2AM` értéket példaként az első sorhoz, és nyomja le az **Enter** billentyűt.
 
-   A Workbench a megadott példa alapján meghatározza az átalakítást. Ebben a példában eredményként a dátumformátum megváltozik, és össze lesz fűzve a kétórás időtartammal.
+   A Workbench a megadott példa alapján meghatározza az átalakítást. Ebben a példában az eredménye, hogy a dátum, formátuma megváltozott, és a két órát vesz összefűzéséhez.
 
    ![A Jan 01, 2015 12AM-2AM példát ábrázoló kép](media/tutorial-bikeshare-dataprep/wetherdatehourrangeexample.png)
 
+   > [!IMPORTANT]
+   > A Mac, hajtsa végre a következő ahelyett, hogy __8. lépés__ alatt.
+   >
+   > * Ugrás az első cellát tartalmazó `Feb 01, 2015 12AM-2AM`. Meg kell a __15 sor__. Javítsa ki a értéket `Jan 02, 2015 12AM-2AM`, és nyomja le az ENTER __Enter__. 
+   
 
 8. Várjon, amíg az állapot megváltozik **Adatok elemzése** értékről **Következő javasolt sor felülvizsgálata** értékre. Ez eltarthat néhány másodpercig. Kattintson az állapothivatkozásra a javasolt sorhoz való ugráshoz. 
 
@@ -306,6 +334,7 @@ Ha az adatokat egy kétórás időszakokra vonatkozó előrejelzésben szeretné
 
    > [!TIP]
    > Ehhez a lépéshez az **Oszlopok származtatása példa alapján** speciális módját is használhatja, ha a **Lépések** panelen a lefelé mutató nyílra kattint. Az adatrácson jelölőnégyzetek találhatók a **DATE\_1** és az **Hour Range** oszlopnevek mellett. Törölje a jelölést az **Hour Range** oszlop melletti jelölőnégyzetből, és figyelje meg, hogyan változik a kimenet. Az **Hour Range** oszlop mint bemenet hiányában a rendszer állandóként kezeli a **12AM-2AM** értéket, és azt fűzi hozzá a származtatott értékekhez. Ha a módosítások alkalmazása nélkül szeretne visszatérni a fő rácshoz, kattintson a **Mégse** gombra.
+   ![derivedcolumnadvancededitdeselectcolumn.png](media/tutorial-bikeshare-dataprep/derivedcolumnadvancededitdeselectcolumn.png)
 
 10. Az oszlop átnevezéséhez kattintson duplán a fejlécre. Módosítsa a nevet **Date Hour Range** értékűre, majd nyomja le az **Enter** billentyűt.
 
@@ -331,7 +360,7 @@ A következő lépés az időjárás összegzése az óratartomány szerint csop
 
 Ha a numerikus oszlopok adatait 0–1 tartományúra módosítja, azzal felgyorsíthatja egyes modellek átszerveződését. Jelenleg nincs ennek a feladatnak az általános elvégzésére szolgáló beépített átalakítás, de a művelet elvégzéséhez Python-szkriptet is használhat.
 
-1. Az **Átalakítás** menüben kattintson az **Adatfolyam átalakítása** lehetőségre.
+1. Az a **átalakítási** menüjében válassza **átalakítási Adatfolyamblokk (parancsfájl)**.
 
 2. A megjelenő szövegmezőbe írja be a következő kódot. Ha az oszlopneveket használta, a kódnak változtatás nélkül is működnie kell. Egy egyszerű min-max normalizálási logikát kell írnia a Pythonban.
 
@@ -372,6 +401,7 @@ Elkészült az időjárási adatok előkészítésével. A következő lépésbe
 
 1. Importálja a `201701-hubway-tripdata.csv` fájlt az [Új adatforrás létrehozása](#newdatasource) szakaszban szereplő lépések segítségével. Az importálási folyamat során használja a következő beállításokat:
 
+    * __Fájl kiválasztása__: válasszon **Azure Blob** böngészésekor válassza ki a fájlt.
     * __Mintavételezési séma__: **Teljes fájl** mintavételezési séma, állítsa be a mintát aktívként, és 
     * __Adattípus__: fogadja el az alapértelmezett beállításokat.
 
@@ -505,7 +535,12 @@ A kétórás időszakra vonatkozó kerékpárigények összegzéséhez használj
     > Példát bármely sorhoz megadhat. Ebben a példában a `Jan 01, 2017 12AM-2AM` érték az adatok első sorára érvényes.
 
     ![A példaadatokat ábrázoló kép](media/tutorial-bikeshare-dataprep/tripdataderivebyexamplefirstexample.png)
-   
+
+   > [!IMPORTANT]
+   > A Mac, hajtsa végre a következő ahelyett, hogy __3. lépés__ alatt.
+   >
+   > * Ugrás az első cellát tartalmazó `Jan 01, 2017 1AM-2AM`. Meg kell a __14 sor__. Javítsa ki a értéket `Jan 01, 2017 12AM-2AM`, és nyomja le az __Enter__. 
+
 3. Várjon, amíg az alkalmazás kiszámítja a összes sorhoz tartozó értékeket. Ez néhány másodpercig is eltarthat. Ha elkészült az elemzés, kattintson a __Következő javasolt sor felülvizsgálata__ hivatkozásra az adatok felülvizsgálatához.
 
    ![Az elkészült elemzés és a felülvizsgálati hivatkozást ábrázoló kép](media/tutorial-bikeshare-dataprep/tripdatabyexanalysiscomplete.png)
@@ -586,19 +621,95 @@ Ebben az oktatóanyagban a fájl neve `BikeShare Data Prep.py`. A fájlra az okt
 
 ## <a name="save-test-data-as-a-csv-file"></a>Tesztadatok mentése CSV-fájlként
 
-Ha az **Összekapcsolás eredményei** adatfolyamot egy .CSV fájlba szeretné menteni, módosítsa a `BikeShare Data Prep.py` szkriptet. Frissítse a Python-szkriptet az alábbi kód használatával:
+Ha az **Összekapcsolás eredményei** adatfolyamot egy .CSV fájlba szeretné menteni, módosítsa a `BikeShare Data Prep.py` szkriptet. 
 
-```python
-from azureml.dataprep.package import run
+1. Nyissa meg a projekt VSCode szerkesztésre.
 
-# dataflow_idx=2 sets the dataflow to the 3rd dataflow (the index starts at 0), the Join Result.
-df = run('BikeShare Data Prep.dprep', dataflow_idx=2)
+    ![openprojectinvscode.png](media/tutorial-bikeshare-dataprep/openprojectinvscode.png)
 
-# Example file path: C:\\Users\\Jayaram\\BikeDataOut\\BikeShareTest.csv
-df.to_csv('Your Test Data File Path here')
-```
+2. Frissítse a Python-parancsfájl a `BikeShare Data Prep.py` fájlt a következő kódot:
 
-Válassza a **Futtatás** lehetőséget a képernyő felső részén. A szkript egy **feladat** formájában lesz elküldve a helyi gépre. Ha a feladat __Befejezve__ állapotúra változik, a fájl a megadott helyre lett írva.
+    ```python
+    import pyspark
+
+    from azureml.dataprep.package import run
+    from pyspark.sql.functions import *
+
+    # start Spark session
+    spark = pyspark.sql.SparkSession.builder.appName('BikeShare').getOrCreate()
+
+    # dataflow_idx=2 sets the dataflow to the 3rd dataflow (the index starts at 0), the Join Result.
+    df = run('BikeShare Data Prep.dprep', dataflow_idx=2)
+    df.show(n=10)
+    row_count_first = df.count()
+
+    # Example file name: 'wasb://data-files@bikesharestorage.blob.core.windows.net/testata'
+    # 'wasb://<your container name>@<your azure storage name>.blob.core.windows.net/<csv folder name>
+    blobfolder = 'Your Azure Storage blob path'
+
+    df.write.csv(blobfolder, mode='overwrite') 
+
+    # retrieve csv file parts into one data frame
+    csvfiles = "<Your Azure Storage blob path>/*.csv"
+    df = spark.read.option("header", "false").csv(csvfiles)
+    row_count_result = df.count()
+    print(row_count_result)
+    if (row_count_first == row_count_result):
+        print('counts match')
+    else:
+        print('counts do not match')
+    print('done')
+    ```
+
+3. Cserélje le `Your Azure Storage blob path` az elérési útját a kimeneti fájl jön létre. Mindkét cserélje le a `blobfolder` és `csvfiles` változókat.
+
+## <a name="create-hdinsight-run-configuration"></a>HDInsight konfigurációjának létrehozása
+
+1. Az Azure Machine Learning Workbench alkalmazásban nyissa meg a parancssori ablakot. Ehhez kattintson a **Fájl** menüre, majd a **Parancssor megnyitása** elemre. A parancsprompt a projektmappában nyílik meg, a `C:\Projects\BikeShare>` prompttal.
+
+ ![opencommandprompt.png](media/tutorial-bikeshare-dataprep/opencommandprompt.png)
+
+   >[!IMPORTANT]
+   >Az alábbi lépéseket a (Workbench alkalmazásból megnyitott) parancssori ablakban kell elvégeznie.
+
+2. Jelentkezzen be az Azure-ba a parancssor használatával. 
+
+   A Workbench alkalmazás és a CLI az Azure-erőforrások hitelesítésekor független hitelesítőadat-gyorsítótárakat használ. Ezt csak egyszer kell megtennie, amíg a gyorsítótárazott jogkivonat le nem jár. A `az account list` parancsot az elérhető előfizetések listájából a bejelentkezéshez adja vissza. Ha egynél több található, használja a kívánt előfizetés azonosítóértékét. Állítsa be az adott előfizetéshez használandó alapértelmezés szerint a `az account set -s` parancsot, és adja meg az előfizetés-azonosító értéke. Erősítse meg a beállítás a fiók használatával `show` parancsot.
+
+   ```azurecli
+   REM login by using the aka.ms/devicelogin site
+   az login
+   
+   REM lists all Azure subscriptions you have access to 
+   az account list -o table
+   
+   REM sets the current Azure subscription to the one you want to use
+   az account set -s <subscriptionId>
+   
+   REM verifies that your current subscription is set correctly
+   az account show
+   ```
+
+3. A konfiguráció futtatása HDInsight létrehozása. Szüksége lesz a fürt és a sshuser jelszó nevét.
+    ```azurecli
+    az ml computetarget attach --name hdinsight --address <yourclustername>.azurehdinsight.net --username sshuser --password <your password> --type cluster
+    az ml experiment prepare -c hdinsight
+    ```
+> [!NOTE]
+> Üres projekt létrehozásakor, vannak-e a Futtatás alapértelmezett konfigurációk **helyi** és **docker**. Ebben a lépésben létrehoz egy új futtatási konfigurációt, elérhető a **Azure Machine Learning-munkaterület** a parancsfájlok futtatásakor. 
+
+## <a name="run-in-hdinsight-cluster"></a>Futtassa a HDInsight-fürt
+
+Lépjen vissza a **Azure Machine Learning-munkaterület** alkalmazás futtassa a parancsfájlt a HDInsight-fürthöz.
+
+1. A projekt a kezdőképernyő gombra kattintva térjen vissza a **otthoni** ikonra a bal oldalon.
+
+2. Válassza ki **hdinsight** a parancsfájl futtatásához a HDInsight-fürt a legördülő listából.
+
+3. Válassza a **Futtatás** lehetőséget a képernyő felső részén. A parancsfájl nyújtják, mint egy **feladat**. Ha a feladat állapota __befejezve__, a fájl a megadott helyre van írva a **Azure-tárolót**.
+
+    ![hdinsightrunscript.png](media/tutorial-bikeshare-dataprep/hdinsightrunscript.png)
+
 
 ## <a name="substitute-data-sources"></a>Adatforrások behelyettesítése
 
@@ -608,7 +719,7 @@ Az előző lépésekben a `201701-hubway-tripdata.csv` és a `BostonWeather.csv`
 
     * __Fájl kiválasztása__: Fájl kiválasztásakor válassza ki együtt a hat fennmaradó útadatokat tartalmazó .CSV fájlt.
 
-        ![A hat további fájl betöltése](media/tutorial-bikeshare-dataprep/selectsixfiles.png)
+        ![A hat további fájl betöltése](media/tutorial-bikeshare-dataprep/browseazurestoragefortripdatafiles.png)
 
         > [!NOTE]
         > A __+5__ bejegyzés azt jelzi, hogy a felsorolton kívül öt további fájl található.
@@ -619,11 +730,13 @@ Az előző lépésekben a `201701-hubway-tripdata.csv` és a `BostonWeather.csv`
 
    Mentse az adatforrás nevét, mivel arra a későbbi lépések során is szükség lesz.
 
-2. Válassza ki a mappa ikont a projekt fájljainak megtekintéséhez. Bontsa ki az __aml\_config__ könyvtárat, és válassza a `local.runconfig` fájlt.
+2. Válassza ki a mappa ikont a projekt fájljainak megtekintéséhez. Bontsa ki az __aml\_config__ könyvtárat, és válassza a `hdinsight.runconfig` fájlt.
 
-    ![A local.runconfig helyét ábrázoló kép](media/tutorial-bikeshare-dataprep/localrunconfig.png) 
+    ![Hdinsight.runconfig helyét képe](media/tutorial-bikeshare-dataprep/hdinsightsubstitutedatasources.png) 
 
-3. Adja hozzá az alábbi sorokat a `local.runconfig` fájl végéhez, majd a fájl mentéséhez kattintson a lemez ikonra.
+3. A Szerkesztés gombra kattintva nyissa meg a fájlt VSCode.
+
+4. Adja hozzá az alábbi sorokat a `hdinsight.runconfig` fájl végéhez, majd a fájl mentéséhez kattintson a lemez ikonra.
 
     ```yaml
     DataSourceSubstitutions:
@@ -637,15 +750,41 @@ Az előző lépésekben a `201701-hubway-tripdata.csv` és a `BostonWeather.csv`
 Keresse meg a korábban szerkesztett `BikeShare Data Prep.py` Python-fájlt, és adjon meg egy másik fájlútvonalat a betanítási adatok mentéséhez.
 
 ```python
+import pyspark
+
 from azureml.dataprep.package import run
+from pyspark.sql.functions import *
+
+# start Spark session
+spark = pyspark.sql.SparkSession.builder.appName('BikeShare').getOrCreate()
+
 # dataflow_idx=2 sets the dataflow to the 3rd dataflow (the index starts at 0), the Join Result.
 df = run('BikeShare Data Prep.dprep', dataflow_idx=2)
+df.show(n=10)
+row_count_first = df.count()
 
-# Example file path: C:\\Users\\Jayaram\\BikeDataOut\\BikeShareTrain.csv
-df.to_csv('Your Training Data File Path here')
+# Example file name: 'wasb://data-files@bikesharestorage.blob.core.windows.net/traindata'
+# 'wasb://<your container name>@<your azure storage name>.blob.core.windows.net/<csv folder name>
+blobfolder = 'Your Azure Storage blob path'
+
+df.write.csv(blobfolder, mode='overwrite') 
+
+# retrieve csv file parts into one data frame
+csvfiles = "<Your Azure Storage blob path>/*.csv"
+df = spark.read.option("header", "false").csv(csvfiles)
+row_count_result = df.count()
+print(row_count_result)
+if (row_count_first == row_count_result):
+    print('counts match')
+else:
+    print('counts do not match')
+print('done')
 ```
 
-Új feladat elküldéséhez használja a lap tetején található **Futtatás** ikont. A rendszer elküld egy **feladatot** az új konfigurációval. A feladat kimenetei a betanítási adatok. Ezek az adatok a korábban létrehozott adat-előkészítési lépések használatával lettek létrehozva. A feladat végrehajtása eltarthat néhány percig.
+1. A mappa nevét használja `traindata` a tanítási adatokat tartalmazó kimenetével.
+
+2. Új feladat elküldéséhez használja a lap tetején található **Futtatás** ikont. Győződjön meg arról, hogy **hdinsight** van kiválasztva. A rendszer elküld egy **feladatot** az új konfigurációval. A feladat kimenetei a betanítási adatok. Ezek az adatok a korábban létrehozott adat-előkészítési lépések használatával lettek létrehozva. A feladat végrehajtása eltarthat néhány percig.
+
 
 ## <a name="next-steps"></a>További lépések
 Elvégezte a kerékpármegosztással kapcsolatos adat-előkészítési oktatóanyagot. Ebben az oktatóanyagban az Azure Machine Learning Services (előzetes verzió) segítségével a következőket sajátíthatja el:

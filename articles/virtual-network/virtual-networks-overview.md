@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/12/2017
 ms.author: jdial
-ms.openlocfilehash: 55aece3f20ee98d21d7bb2b96cb3d039d4849f8f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 892aa03bd058b50fc4868a225dfe602624ff19ef
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-virtual-network"></a>Azure Virtual Network
 
@@ -44,7 +44,7 @@ Minden Azure belül több virtuális hálózat is létrehozható [előfizetés](
 - Azure által biztosított névfeloldás használata, vagy adja meg a saját DNS-kiszolgáló, a virtuális hálózatán lévő erőforrásokat általi használatra. Névfeloldás a virtuális hálózatok kapcsolatos további információkért lásd: [névfeloldását virtuális hálózatokon lévő erőforrások](virtual-networks-name-resolution-for-vms-and-role-instances.md) cikk.
 
 ## <a name = "internet"></a>Internetes kommunikáció
-A virtuális hálózat összes erőforrás képes kommunikálni a kimenő internetkapcsolat. Alapértelmezés szerint a magánhálózati IP-cím erőforrás az adatforrás hálózati cím lefordított (SNAT) egy nyilvános IP-cím szerint az Azure-infrastruktúra. Kimenő internetkapcsolattal kapcsolatos további tudnivalókért olvassa el a [ismertetése az Azure-ban kimenő kapcsolatok](..\load-balancer\load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json#standalone-vm-with-no-instance-level-public-ip-address) cikk. Ha szeretné megakadályozni a kimenő internetkapcsolat, valósíthatja meg egyéni útvonalak vagy forgalomszűrést végez.
+A virtuális hálózat összes erőforrás képes kommunikálni a kimenő internetkapcsolat. Alapértelmezés szerint a magánhálózati IP-cím erőforrás az adatforrás hálózati cím lefordított (SNAT) egy nyilvános IP-cím szerint az Azure-infrastruktúra. Kimenő internetkapcsolattal kapcsolatos további tudnivalókért olvassa el a [ismertetése az Azure-ban kimenő kapcsolatok](..\load-balancer\load-balancer-outbound-connections.md) cikk. Ha szeretné megakadályozni a kimenő internetkapcsolat, valósíthatja meg egyéni útvonalak vagy forgalomszűrést végez.
 
 Való kommunikációra bejövő Azure-erőforrások az internetről, vagy az internethez nélkül SNAT kimenő kommunikációra, egy erőforrást egy nyilvános IP-címet kell hozzárendelve. Nyilvános IP-címek kapcsolatos további tudnivalókért olvassa el a [nyilvános IP-címek](virtual-network-public-ip-address.md) cikk.
 

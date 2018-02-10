@@ -1,6 +1,6 @@
 ---
-title: "A Linux-fő célkiszolgáló feladatátvevő telepítése az Azure-ból a helyszíni |} Microsoft Docs"
-description: "A Linux virtuális gép újbóli védelméhez, előtt kell egy Linux fő célkiszolgáló. Megtudhatja, hogyan telepítsen."
+title: "Egy Linuxos fő célkiszolgáló feladatátvételi telepítése az Azure-ból a helyszíni |} Microsoft Docs"
+description: "A Linux virtuális gép újbóli védelméhez, mielőtt van szüksége a Linuxos fő célkiszolgáló. Megtudhatja, hogyan telepítsen."
 services: site-recovery
 documentationcenter: 
 author: rajani-janaki-ram
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 11/22/2017
 ms.author: rajanaki
-ms.openlocfilehash: 7b2416617696e1df30b08f039ab39bfe7b57e093
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 11f9385c1082011ee690f48f2579b6f3b156d125
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="install-a-linux-master-target-server"></a>A Linux fő célkiszolgáló telepítése
-Után a virtuális gépeket nem sikerül, akkor is feladat-visszavételt a virtuális gépeket a helyszíni hely. A feladat-visszavételt, állítsa a virtuális gépet az Azure-ból a helyszíni helyre kell. Ez a folyamat szüksége van egy a helyszíni fő célkiszolgáló forgalom fogadására. 
+# <a name="install-a-linux-master-target-server"></a>A Linuxos fő célkiszolgáló telepítése
+Miután a rendszer átadja a virtuális gépek Azure-ba, akkor is feladat-visszavételt a virtuális gépeket a helyszíni hely. A feladat-visszavételt, állítsa a virtuális gépet az Azure-ból a helyszíni helyre kell. Ez a folyamat szüksége van egy a helyszíni fő célkiszolgáló forgalom fogadására. 
 
 Ha a védett virtuális gépet egy Windows rendszerű virtuális gép, majd meg kell olyan Windows fő célkiszolgálót. A Linux virtuális gép van szüksége a Linuxos fő célkiszolgáló. Olvassa el az alábbi lépések végrehajtásával megtudhatja, hogyan hozzon létre és telepítse a Linuxos fő célkiszolgáló.
 
 > [!IMPORTANT]
-> A 9.10.0 a kiadástól kezdve fő célkiszolgálót, a legújabb fő célkiszolgáló csak telepíthető egy Ubuntu 16.04 kiszolgálót. Új telepítések CentOS6.6 kiszolgálók nincsenek engedélyezve. Azonban továbbra is a régi fő célkiszolgálók frissítése a 9.10.0 használatával verziója.
+> A 9.10.0 a kiadástól kezdve fő célkiszolgáló megadásával, a legújabb fő célkiszolgáló megadásával csak telepíthető egy Ubuntu 16.04 kiszolgálón. Új telepítések CentOS6.6 kiszolgálók nincsenek engedélyezve. Azonban továbbra is a régi fő célkiszolgáló kiszolgálók frissítése a 9.10.0 használatával verziója.
 
 ## <a name="overview"></a>Áttekintés
 Ez a cikk ismerteti a Linuxos fő célkiszolgáló telepítése.
@@ -36,13 +36,13 @@ Megjegyzéseit vagy kérdéseit a cikk vagy a végén utáni a [Azure Recovery S
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Válassza ki a gazdagépet, amelyre a fő célkiszolgáló telepítése, használatával állapítsa meg, ha a feladat-visszavétel lesz egy meglévő helyszíni virtuális gép vagy egy új virtuális gépet. 
-    * Egy meglévő virtuális gép a gazdagép a fő célkiszolgáló hozzáféréssel kell rendelkeznie a virtuális gép adattároló.
-    * Ha a helyszíni virtuális gép nem létezik, akkor a feladat-visszavétel a virtuális gép jön létre a fő célkiszolgáló ugyanazon a gazdagépen. Kiválaszthatja, hogy bármely telepítéséhez a fő célkiszolgáló ESXi-állomáson.
+    * Egy meglévő virtuális gép a gazdagép, a fő célkiszolgáló hozzáféréssel kell rendelkeznie a virtuális gép adattároló.
+    * Ha a helyszíni virtuális gép nem létezik (esetén a másodlagos helyre történő helyreállítást), a feladat-visszavétel a virtuális gép jön létre, a fő célkiszolgáló ugyanazon a gazdagépen. Kiválaszthatja, hogy bármely telepítéséhez a fő célkiszolgáló ESXi-állomáson.
 * A fő célkiszolgálón, amely a folyamatkiszolgáló és a kiszolgáló képes kommunikálni a hálózaton kell lennie.
 * A fő célkiszolgáló verziója korábbi, mint a folyamatkiszolgáló és a konfigurációs kiszolgáló verziói vagy azzal egyenlőnek kell lennie. Például ha a konfigurációs kiszolgáló verziószáma 9.4, a fő célkiszolgáló verziója lehet 9.4 vagy 9.3, de nem 9,5.
 * A fő célkiszolgáló csak akkor lehet VMware virtuális gépek nem egy fizikai kiszolgálón.
 
-## <a name="create-the-master-target-according-to-the-sizing-guidelines"></a>Hozzon létre a fő célkiszolgálón a méretezési igényeinek megfelelően
+## <a name="sizing-guidelines-for-creating-master-target-server"></a>A fő célkiszolgáló létrehozásához méretezési irányelvek
 
 Hozza létre a fő célkiszolgálón a következő méretezési irányelvek szerint:
 - **RAM**: legalább 6 GB
@@ -55,7 +55,7 @@ A következő támogatott Ubuntu kernelek támogatottak.
 
 |Kernel-sorozat  |Legfeljebb  |
 |---------|---------|
-|4.4      |4.4.0-81-Generic         |
+|4.4      |4.4.0-81-generic         |
 |4.8      |4.8.0-56-Generic         |
 |4.10     |4.10.0-24-Generic        |
 
@@ -66,119 +66,90 @@ A következő támogatott Ubuntu kernelek támogatottak.
 
 A következő igénybe az Ubuntu 16.04.2 64 bites operációs rendszer telepítésének lépéseit.
 
-**1. lépés:** Ugrás a [letöltése hivatkozásra](https://www.ubuntu.com/download/server/thank-you?version=16.04.2&architecture=amd64) , és válassza a legközelebbi tükrözésének mely le Ubuntu 16.04.2 minimális 64 bites ISO-Lemezképet.
-
+1.   Lépjen a [letöltése hivatkozásra](https://www.ubuntu.com/download/server/thank-you?version=16.04.2&architecture=amd64), válassza ki a legközelebbi tükör anddownload Ubuntu 16.04.2 minimális 64 bites ISO-Lemezképet.
 Ubuntu 16.04.2 minimális 64 bites ISO-Lemezképet tartani a DVD-meghajtóba, és indítsa el a rendszer.
 
-**2. lépés:** válasszon **angol** a kívánt nyelvet, és válassza ki, **Enter**.
+1.  Válassza ki **angol** a kívánt nyelvet, és válassza ki, **Enter**.
+    
+    ![Válasszon nyelvet](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image1.png)
+1. Válassza ki **Ubuntu Server telepítése**, majd válassza ki **Enter**.
 
-![Válasszon nyelvet](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image1.png)
+    ![Válassza ki a telepítés Ubuntu Server](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image2.png)
 
-**3. lépés:** válasszon **Ubuntu Server telepítése**, majd válassza ki **Enter**.
+1.  Válassza ki **angol** a kívánt nyelvet, és válassza ki, **Enter**.
 
-![Válassza ki a telepítés Ubuntu Server](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image2.png)
+    ![Jelölje ki a kívánt nyelvet angol nyelven](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image3.png)
 
-**4. lépés:** válasszon **angol** a kívánt nyelvet, és válassza ki, **Enter**.
+1. Válassza ki a megfelelő beállítást a **időzóna** beállítások listáját, és válassza **Enter**.
 
-![Jelölje ki a kívánt nyelvet angol nyelven](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image3.png)
+    ![Válassza ki a megfelelő időzónát](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image4.png)
 
-**5. lépés:** válassza ki a megfelelő beállítást a **időzóna** beállítások listáját, és válassza **Enter**.
+1. Válassza ki **nem** (az alapértelmezett beállítás), majd válassza ki **Enter**.
 
-![Válassza ki a megfelelő időzónát](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image4.png)
+     ![A billentyűzet konfigurálása](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image5.png)
+1. Válassza ki **angol (amerikai)** , billentyűzet, és válassza ki azt a származási **Enter**.
 
-**6. lépés:** válasszon **nem** (az alapértelmezett beállítás), majd válassza ki **Enter**.
+1. Válassza ki **angol (amerikai)** a billentyűzetkiosztás módosítása, és válassza ki, **Enter**.
 
+1. Adja meg az állomásnevet a kiszolgáló a **állomásnév** mezőbe, majd válassza ki **Folytatás**.
 
-![A billentyűzet konfigurálása](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image5.png)
+1. Hozzon létre egy felhasználói fiókot, adja meg a felhasználónevet, és válassza **Folytatás**.
 
-**7. lépés:** válasszon **angol (amerikai)** , billentyűzet, és válassza ki azt a származási **Enter**.
+      ![Felhasználói fiók létrehozása](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image9.png)
 
-![Jelölje ki a származási USA](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image6.png)
+1. Adja meg az új felhasználói fiók jelszavát, majd válassza ki **Folytatás**.
 
-**8. lépés:** kiválasztása **angol (amerikai)** a billentyűzetkiosztás módosítása, és válassza ki, **Enter**.
+1.  Erősítse meg az új felhasználói jelszót, majd válassza ki **Folytatás**.
 
-![A billentyűzetkiosztás angol kiválasztása](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image7.png)
+    ![A jelszó megerősítése](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image11.png)
 
-**9. lépés:** az állomásnév megadása a kiszolgáló a **állomásnév** mezőbe, majd válassza ki **Folytatás**.
+1.  Válassza ki a következő kijelölés a kezdőkönyvtár titkosítására, **nem** (az alapértelmezett beállítás), majd válassza ki **Enter**.
 
-![Adja meg a kiszolgáló állomásneve](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image8.png)
+1. Ha helyesek az időzónát, amely akkor jelenik meg, válassza ki a **Igen** (az alapértelmezett beállítás), majd válassza ki **Enter**. Válassza ki, hogy engedélyezzék az időzónát, **nem**.
 
-**10. lépés:** hozzon létre egy felhasználói fiókot, adja meg a felhasználónevet, és válassza **Folytatás**.
+1. A particionálási mód közül válassza ki a **interaktív - használja a teljes lemez**, majd válassza ki **Enter**.
 
-![Felhasználói fiók létrehozása](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image9.png)
+     ![Válassza a particionálási mód lehetőséget](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image14.png)
 
-**11. lépés:** adja meg az új felhasználói fiók jelszavát, majd válassza ki **Folytatás**.
+1.  Válassza ki a megfelelő lemezt a **partícióra válassza lemez** beállítások, és válassza **Enter**.
 
-![Adja meg a jelszót](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image10.png)
+    ![Válassza ki a lemezt](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image15.png)
 
-**12. lépés:** erősítse meg az új felhasználói jelszót, majd válassza ki **Folytatás**.
+1.  Válassza ki **Igen** írása a lemezre, majd válassza a módosítások **Enter**.
 
-![A jelszó megerősítése](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image11.png)
+1.  A konfigurálás proxy kiválasztása lapon jelölje be az alapértelmezett beállítás, válassza ki **Folytatás**, majd válassza ki **Enter**.
 
-**13. lépés:** válasszon **nem** (az alapértelmezett beállítás), majd válassza ki **Enter**.
+     ![Válassza ki az alapértelmezett beállítás](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image17.png)
 
-![Felhasználók és a jelszavak beállítása](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image12.png)
+1.  Válassza ki **automatikus frissítések** a telepítendő frissítések a rendszeren kezelése lehetőséget, majd válassza ki **Enter**.
 
-**14. lépés:** Ha helyesek az időzónát, amely akkor jelenik meg, válassza ki a **Igen** (az alapértelmezett beállítás), majd válassza ki **Enter**.
+     ![Válassza ki a frissítések kezelése](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image18.png)
 
-Válassza ki, hogy engedélyezzék az időzónát, **nem**.
+    > [!WARNING]
+    > Az Azure Site Recovery fő célkiszolgáló az Ubuntu olyan speciális verziója szükséges, mert annak érdekében, hogy a frissítések le vannak tiltva, a virtuális gép kernel szüksége. Ha engedélyezve vannak, a rendszeres megjelenjenek a fő célkiszolgáló hibás működését okozhatja. Mindenképpen jelölje ki a **automatikus frissítések** lehetőséget.
 
-![Az óra konfigurálása](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image13.png)
+1.  Válassza ki az alapértelmezett beállításokat. Ha openSSH az SSH csatlakozni, jelölje be a **OpenSSH server** lehetőséget, majd válassza ki **Folytatás**.
 
-**15. lépés:** a particionálási mód közül válassza ki a **interaktív - használja a teljes lemez**, majd válassza ki **Enter**.
+    ![Válassza ki a szoftver](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image19.png)
 
-![Válassza a particionálási mód lehetőséget](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image14.png)
+1. A LÁRVAJÁRAT rendszertöltő telepítésének selction, válassza ki **Igen**, majd válassza ki **Enter**.
 
-**16. lépés:** válassza ki a megfelelő lemezt a **partícióra válassza lemez** beállítások, és válassza **Enter**.
+1. Válassza ki a megfelelő eszköz, a rendszerindító betöltő telepítés (lehetőleg **/dev/sda**), majd válassza ki **Enter**.
 
+1. Válassza ki **Folytatás**, majd válassza ki **Enter** fejezze be a telepítést.
 
-![Válassza ki a lemezt](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image15.png)
+    ![Fejezze be a telepítést](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image22.png)
 
-**17. lépés:** válasszon **Igen** írása a lemezre, majd válassza a módosítások **Enter**.
+1. Miután a telepítés befejeződött, jelentkezzen be a virtuális Gépet az új felhasználói hitelesítő adatokkal. (Hivatkoznak **lépés 10** további információt.)
 
-![A módosítások írása a lemezre](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image16.png)
+1. Az alábbi képernyőfelvételen a legfelső szintű felhasználói jelszó beállítása ismertetett lépésekkel. Legfelső szintű felhasználóként, majd jelentkezzen be.
 
-**18. lépés:** jelölje be az alapértelmezett beállítást, jelölje ki **Folytatás**, majd válassza ki **Enter**.
-
-![Válassza ki az alapértelmezett beállítás](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image17.png)
-
-**19. lépést:** a megfelelő beállítást a rendszer a frissítések kezelése, majd válassza ki és **Enter**.
-
-![Válassza ki a frissítések kezelése](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image18.png)
-
-> [!WARNING]
-> Az Azure Site Recovery fő célkiszolgáló az Ubuntu olyan speciális verziója szükséges, mert annak érdekében, hogy a frissítések le vannak tiltva, a virtuális gép kernel szüksége. Ha engedélyezve vannak, a rendszeres megjelenjenek ezután a fő célkiszolgáló hibás működését. Mindenképpen jelölje ki a **automatikus frissítések** lehetőséget.
+    ![A legfelső szintű felhasználói jelszó beállítása](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image23.png)
 
 
-**20. lépés:** válassza ki az alapértelmezett beállításokat. Ha openSSH az SSH csatlakozni, jelölje be a **OpenSSH server** lehetőséget, majd válassza ki **Folytatás**.
+### <a name="configure-the-machine-as-a-master-target-server"></a>A fő célkiszolgálón a gép beállítása
 
-![Válassza ki a szoftver](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image19.png)
-
-**21. lépés:** válasszon **Igen**, majd válassza ki **Enter**.
-
-![Telepítés céljaként a LÁRVAJÁRAT rendszertöltő](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image20.png)
-
-**22. lépés:** válassza ki a megfelelő eszköz, a rendszerindító betöltő telepítés (lehetőleg **/dev/sda**), majd válassza ki **Enter**.
-
-![Jelöljön ki egy eszközt a rendszerindító betöltő telepítéshez](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image21.png)
-
-**23. lépés:** kiválasztása **Folytatás**, majd válassza ki **Enter** fejezze be a telepítést.
-
-![Fejezze be a telepítést](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image22.png)
-
-Miután a telepítés befejeződött, jelentkezzen be a virtuális Gépet az új felhasználói hitelesítő adatokkal. (Hivatkoznak **lépés 10** további információt.)
-
-Az alábbi képernyőfelvételen a legfelső szintű felhasználói jelszó beállítása ismertetett lépéseket. Legfelső szintű felhasználóként, majd jelentkezzen be.
-
-![A legfelső szintű felhasználói jelszó beállítása](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image23.png)
-
-
-### <a name="prepare-the-machine-for-configuration-as-a-master-target-server"></a>A gép konfigurációjának előkészítése a fő célkiszolgáló-kiszolgálóként
-A következő előkészítése a számítógépet, a konfiguráció fő kiszolgálóként.
-
-Ahhoz, hogy az azonosító az egyes SCSI merevlemezekhez a Linux virtuális gépeken, engedélyezze a **lemez. EnableUUID = TRUE** paraméter.
-
-Ahhoz, hogy ez a paraméter, a következő lépéseket:
+Az azonosító lekérése minden SCSI merevlemez Linux virtuális gépre, a **lemez. EnableUUID = TRUE** paramétert meg kell engedélyezni. Ahhoz, hogy ez a paraméter, a következő lépéseket:
 
 1. Állítsa le a virtuális gépet.
 
@@ -206,18 +177,14 @@ Ahhoz, hogy ez a paraméter, a következő lépéseket:
 
 #### <a name="disable-kernel-upgrades"></a>Tiltsa le a kernel frissítések
 
-Az Azure Site Recovery fő célkiszolgáló az Ubuntu adott verzióját igényli, győződjön meg arról, hogy a rendszermag-frissítéseket a virtuális géphez van-e tiltva.
-
-Kernel frissítések engedélyezve vannak, ha a rendszeres megjelenjenek a fő célkiszolgáló hibás működését okozhatja.
+Az Azure Site Recovery fő célkiszolgáló megadásával az Ubuntu adott verzióját igényli, győződjön meg arról, hogy a rendszermag-frissítéseket a virtuális géphez van-e tiltva. Kernel frissítések engedélyezve vannak, a fő célkiszolgáló hibás működését okozhat.
 
 #### <a name="download-and-install-additional-packages"></a>Töltse le és telepítse a további csomagokat
 
 > [!NOTE]
 > Győződjön meg arról, hogy rendelkezik-e internetkapcsolat, letöltése és telepítése további csomagokat. Ha nem rendelkezik internetkapcsolattal, szeretné manuálisan a RPM csomagok keresése és telepítése.
 
-```
-apt-get install -y multipath-tools lsscsi python-pyasn1 lvm2 kpartx
-```
+ `apt-get install -y multipath-tools lsscsi python-pyasn1 lvm2 kpartx`
 
 ### <a name="get-the-installer-for-setup"></a>A telepítő a telepítés beolvasása
 
@@ -225,15 +192,14 @@ Ha a fő célkiszolgáló rendelkezik internetkapcsolattal, a következő lépé
 
 #### <a name="download-the-master-target-installation-packages"></a>Töltse le a fő célkiszolgáló telepítőcsomagok
 
-[Töltse le a legfrissebb Linux fő célkiszolgáló telepítése bits](https://aka.ms/latestlinuxmobsvc).
+[Töltse le a legfrissebb Linuxos fő célkiszolgáló telepítése bits](https://aka.ms/latestlinuxmobsvc).
 
-Letöltheti a Linux, írja be:
+Töltse le Linux használ, írja be:
 
-```
-wget https://aka.ms/latestlinuxmobsvc -O latestlinuxmobsvc.tar.gz
-```
+`wget https://aka.ms/latestlinuxmobsvc -O latestlinuxmobsvc.tar.gz`
 
-Győződjön meg arról, hogy töltse le és csomagolja ki a telepítő a kezdőkönyvtárban. Ha Ön csomagolja ki, hogy **/usr/helyi**, majd a telepítés sikertelen lesz.
+> [!WARNING]
+> Győződjön meg arról, hogy töltse le és csomagolja ki a telepítő a kezdőkönyvtárban. Ha Ön csomagolja ki, hogy **/usr/helyi**, majd a telepítés sikertelen lesz.
 
 
 #### <a name="access-the-installer-from-the-process-server"></a>A telepítő adatok a folyamatkiszolgálótól hozzáférés
@@ -249,44 +215,44 @@ Egyéni konfigurációs módosítások alkalmazásához, tegye a következőket:
 
 
 1. A következő parancsot a bináris untar.
-    ```
-    tar -zxvf latestlinuxmobsvc.tar.gz
-    ```
+
+    `tar -zxvf latestlinuxmobsvc.tar.gz`
+
     ![Képernyőfelvétel a parancs futtatása](./media/site-recovery-how-to-install-linux-master-target/image16.png)
 
 2. A következő parancsot engedélyt.
-    ```
-    chmod 755 ./ApplyCustomChanges.sh
-    ```
+
+    `chmod 755 ./ApplyCustomChanges.sh`
+
 
 3. A következő parancsot a parancsfájl futtatásához.
-    ```
-    ./ApplyCustomChanges.sh
-    ```
-> [!NOTE]
-> Csak egyszer a parancsfájl futtatása a kiszolgálón. Állítsa le a kiszolgálót. Indítsa újra a kiszolgálót lemez hozzáadása után a következő szakaszban leírtak szerint.
+    
+    `./ApplyCustomChanges.sh`
 
-### <a name="add-a-retention-disk-to-the-linux-master-target-virtual-machine"></a>A fő célkiszolgáló Linux virtuális gép egy adatmegőrzési lemez hozzáadása
+> [!NOTE]
+> Csak egyszer a parancsfájl futtatása a kiszolgálón. Ezután leállíthatja a kiszolgálót. Indítsa újra a kiszolgálót a lemez hozzáadása után a következő szakaszban leírtak szerint.
+
+### <a name="add-a-retention-disk-to-the-linux-master-target-virtual-machine"></a>A Linuxos fő célkiszolgáló virtuális gép egy adatmegőrzési lemez hozzáadása
 
 Adatmegőrzési lemez létrehozásához tegye a következőket:
 
-1. A Linux fő célkiszolgáló virtuális géphez csatolni egy új 1 TB méretű lemezt, és indítsa el a gépet.
+1. A Linuxos fő célkiszolgáló virtuális géphez csatolni egy új 1 TB méretű lemezt, és indítsa el a gépet.
 
 2. Használja a **többutas -inden** parancs további az adatmegőrzési lemez többutas Azonosítóját.
+    
+     `multipath -ll`
 
-    ```
-    multipath -ll
-    ```
-    ![Az adatmegőrzési lemez többutas azonosítója](./media/site-recovery-how-to-install-linux-master-target/media/image22.png)
+        ![The multipath ID of the retention disk](./media/site-recovery-how-to-install-linux-master-target/media/image22.png)
 
 3. Formázza a meghajtót, és majd létrehozni egy fájlrendszert az új meghajtón.
 
-    ```
-    mkfs.ext4 /dev/mapper/<Retention disk's multipath id>
-    ```
+    
+    `mkfs.ext4 /dev/mapper/<Retention disk's multipath id>`
+    
     ![A meghajtón fájlrendszer létrehozása](./media/site-recovery-how-to-install-linux-master-target/media/image23.png)
 
 4. Miután létrehozta a fájlrendszer, csatlakoztassa az adatmegőrzési lemez.
+
     ```
     mkdir /mnt/retention
     mount /dev/mapper/<Retention disk's multipath id> /mnt/retention
@@ -294,9 +260,9 @@ Adatmegőrzési lemez létrehozásához tegye a következőket:
     ![Az adatmegőrzési lemez csatlakoztatása](./media/site-recovery-how-to-install-linux-master-target/media/image24.png)
 
 5. Hozzon létre a **fstab** bejegyzés az adatmegőrzési meghajtó csatlakoztatása, a rendszer minden indításakor.
-    ```
-    vi /etc/fstab
-    ```
+    
+    `vi /etc/fstab`
+    
     Válassza ki **beszúrása** a fájl szerkeszthető. Hozzon létre egy új sort, és helyezze be a következő szöveg. A kijelölt többutas az előző parancs azonosítója alapján többutas Lemezazonosítót szerkesztése.
 
     **/dev/eseményleképező/ <Retention disks multipath id> /mnt/megőrzési ext4 rw 0 0**
@@ -314,18 +280,14 @@ Adatmegőrzési lemez létrehozásához tegye a következőket:
 
 1. Másolja a jelszót a **C:\ProgramData\Microsoft Azure hely Recovery\private\connection.passphrase** a konfigurációs kiszolgálón. Majd mentse a fájt **passphrase.txt** ugyanabban a helyi könyvtárban a következő parancs futtatásával:
 
-    ```
-    echo <passphrase> >passphrase.txt
-    ```
+    `echo <passphrase> >passphrase.txt`
+
     Példa: 
+
+       `echo itUx70I47uxDuUVY >passphrase.txt`
     
-    ```
-    echo itUx70I47uxDuUVY >passphrase.txt
-    ```
 
-2. Megjegyzés: a konfigurációs kiszolgáló IP-címet. A következő lépésben van szükség.
-
-3. A következő parancsot a fő célkiszolgáló telepítése, és regisztrálja a kiszolgálót a konfigurációs kiszolgáló.
+2. Jegyezze fel a konfigurációs kiszolgáló IP-címet. A következő parancsot a fő célkiszolgáló telepítése, és regisztrálja a kiszolgálót a konfigurációs kiszolgáló.
 
     ```
     ./install -q -d /usr/local/ASR -r MT -v VmWare
@@ -338,7 +300,7 @@ Adatmegőrzési lemez létrehozásához tegye a következőket:
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i 104.40.75.37 -P passphrase.txt
     ```
 
-    Várjon, amíg a parancsfájl befejeződik. Ha a fő célkiszolgáló regisztrálása sikeres volt, a fő célkiszolgáló megtalálható a **Site Recovery-infrastruktúra** a portál lapján.
+Várjon, amíg a parancsfájl befejeződik. Ha a fő célkiszolgáló sikeresen regisztrálja, a fő célkiszolgáló megtalálható a **Site Recovery-infrastruktúra** a portál lapján.
 
 
 #### <a name="install-the-master-target-by-using-interactive-installation"></a>Interaktív telepítés használatával a fő célkiszolgáló telepítése
@@ -369,27 +331,21 @@ Miután a telepítés befejeződött, a konfigurációs kiszolgáló regisztrál
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i 104.40.75.37 -P passphrase.txt
     ```
 
-   Várjon, amíg a parancsfájl befejeződik. Ha a fő célkiszolgáló sikeresen regisztrálva van, a fő célkiszolgáló megtalálható a **Site Recovery-infrastruktúra** a portál lapján.
+     Várjon, amíg a parancsfájl befejeződik. Ha a fő célkiszolgáló sikeresen regisztrálva van, a fő célkiszolgáló megtalálható a **Site Recovery-infrastruktúra** a portál lapján.
 
 
-### <a name="upgrade-the-master-target"></a>A fő célkiszolgáló frissítése
+### <a name="install-vmware-tools-on-the-master-target-server"></a>A fő célkiszolgálón a VMware-eszközök telepítése
+
+Telepítse a VMware-eszközök a fő célkiszolgáló, hogy az képes felderíteni az adattároló kell. Ha az eszközök nincsenek telepítve, a védelem-újrabeállítási képernyőn nem szerepel az adattároló. A VMware-eszközök telepítése, után újra kell indítania.
+
+### <a name="upgrade-the-master-target-server"></a>A fő célkiszolgáló frissítése
 
 Futtassa a telepítőt. Automatikusan észleli, hogy az ügynök telepítve van-e a fő célkiszolgáló. Frissítéséhez válassza **Y**.  A telepítés befejezése után, a fő célkiszolgálón a következő parancs használatával telepített verziójának ellenőrzése:
 
-    ```
-    cat /usr/local/.vx_version
-    ```
+`cat /usr/local/.vx_version`
 
-Láthatja, hogy a **verzió** mező biztosít a fő célkiszolgáló verziószámát.
 
-### <a name="install-vmware-tools-on-the-master-target-server"></a>A VMware-eszközök a fő célkiszolgáló telepítése
-
-Szeretne telepíteni a VMware-eszközök a fő célkiszolgáló, így képes felderíteni, akkor az adattároló. Ha az eszközök nincsenek telepítve, a védelem-újrabeállítási képernyőn nem szerepel az adattároló. A VMware-eszközök telepítése, után újra kell indítania.
-
-## <a name="next-steps"></a>Következő lépések
-Miután befejezte a telepítési és a fő célkiszolgáló regisztrálását, megjelenik a fő célkiszolgáló jelennek meg a **fő célkiszolgáló** szakasz **Site Recovery-infrastruktúra**, a konfigurációja Server áttekintése.
-
-Most már folytathatja az [ismételt védelem](site-recovery-how-to-reprotect.md), feladat-visszavétel követ.
+Látni fogja, hogy a **verzió** mező biztosít a fő célkiszolgáló verziószámát.
 
 ## <a name="common-issues"></a>Gyakori problémák
 
@@ -397,6 +353,13 @@ Most már folytathatja az [ismételt védelem](site-recovery-how-to-reprotect.md
 
 * A fő célkiszolgáló nem kell az esetlegesen pillanatképek a virtuális gépen. Ha a pillanatképek vannak, a feladat-visszavétel sikertelen lesz.
 
-* Bizonyos egyéni hálózati konfigurációk, az egyes ügyfelek, mert a hálózati illesztő le van tiltva, indításakor, és a fő célkiszolgáló ügynöke nem tudja inicializálni. Győződjön meg arról, hogy helyesen vannak-e beállítva a következő tulajdonságokkal. Ellenőrizze, hogy ezeket a tulajdonságokat a Ethernet a kártya fájl /etc/sysconfig/network-scripts/ifcfg-eth *.
+* Bizonyos egyéni hálózati konfigurációk, mert a hálózati adapter le van tiltva, indításakor, és a fő célkiszolgáló ügynöke nem tudja inicializálni. Győződjön meg arról, hogy helyesen vannak-e beállítva a következő tulajdonságokkal. Ellenőrizze, hogy ezeket a tulajdonságokat a Ethernet a kártya fájl /etc/sysconfig/network-scripts/ifcfg-eth *.
     * BOOTPROTO = dhcp
-    * ONBOOT = Igen
+    * ONBOOT=yes
+
+
+## <a name="next-steps"></a>További lépések
+Miután a telepítés és a fő célkiszolgáló regisztrációja befejeződött, megjelenik a fő célkiszolgáló jelennek meg a **fő célkiszolgáló** szakasz **Site Recovery-infrastruktúra**, a konfigurációja Server áttekintése.
+
+Most már folytathatja az [ismételt védelem](site-recovery-how-to-reprotect.md), feladat-visszavétel követ.
+

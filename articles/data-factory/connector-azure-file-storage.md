@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: b3f093f84758fe8622f09212b6a11a2c5f3795aa
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 772af3bce6947a92fa62a93a84ee84ee34093d82
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-or-to-azure-file-storage-by-using-azure-data-factory"></a>Adatok másolása az vagy Azure File Storage Azure Data Factory használatával
 
@@ -47,7 +47,7 @@ Azure File Storage társított szolgáltatás támogatott a következő tulajdon
 | type | A type tulajdonságot kell beállítani: **fájlkiszolgáló**. | Igen |
 | gazdagép | Itt adhatja meg, az Azure File Storage endpoint `"host": "\\\\<storage name>.file.core.windows.net\\<file service name>"`. | Igen |
 | felhasználói azonosítóját | Adja meg a felhasználó elérheti az Azure File Storage mint `"userid": "AZURE\\<storage name>"`. | Igen |
-| jelszó | Adja meg a hozzáférési kulcsot. Ez a mező megjelölése SecureString.<br/> | Igen |
+| jelszó | Adja meg a hozzáférési kulcsot. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhat Azure integrációs futásidejű vagy Self-hosted integrációs futásidejű (amennyiben az adattároló magánhálózaton található). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem a forrást, a fogadó Igen |
 
 >[!IMPORTANT]

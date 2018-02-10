@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 4a6138f0927f9761677d6da1ae05546286ad3898
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 4b2561aa338707567b44237e668e9d6d1a01bfea
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Adatok másolása a kezdő és a Salesforce Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -66,8 +66,8 @@ A Salesforce csatolt szolgáltatás a következő tulajdonságok támogatottak.
 | type |A type tulajdonságot meg kell **Salesforce**. |Igen |
 | environmentUrl | Adja meg a Salesforce-példány URL-CÍMÉT. <br> -Alapértelmezett érték a `"https://login.salesforce.com"`. <br> -Adatok másolása az védőfal, adja meg a `"https://test.salesforce.com"`. <br> -Adatok másolása az egyéni tartományt, adja meg, például `"https://[domain].my.salesforce.com"`. |Nem |
 | felhasználónév |Adja meg a felhasználói fiók felhasználói nevét. |Igen |
-| jelszó |Adja meg a felhasználói fiókhoz tartozó jelszót.<br/><br/>Ez a mező szerint tárolja biztonságos helyen a Data Factory SecureString jelölheti meg. Is Azure Key Vault tárolni a jelszó és lehetővé teszik a másolási tevékenység lekéréses ott adatmásolás végrehajtásakor. További tudnivalókért lásd: [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). |Igen |
-| securityToken |Adja meg a felhasználói fiók biztonsági jogkivonatot. Alaphelyzetbe állítása és egy biztonsági jogkivonatot beolvasni, lásd: [egy biztonsági jogkivonatot beolvasni](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm). Általános biztonsági jogkivonatokat kapcsolatos további tudnivalókért lásd: [biztonsági és az API-t](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm).<br/><br/>Ez a mező szerint tárolja biztonságos helyen a Data Factory SecureString jelölheti meg. Is tárolhatja a biztonsági jogkivonat a Key Vault és lehetővé teszik a másolási tevékenység lekéréses ott adatmásolás végrehajtásakor. További tudnivalókért lásd: [hitelesítő adatok tárolása a Key Vault](store-credentials-in-key-vault.md). |Igen |
+| jelszó |Adja meg a felhasználói fiókhoz tartozó jelszót.<br/><br/>Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). |Igen |
+| securityToken |Adja meg a felhasználói fiók biztonsági jogkivonatot. Alaphelyzetbe állítása és egy biztonsági jogkivonatot beolvasni, lásd: [egy biztonsági jogkivonatot beolvasni](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm). Általános biztonsági jogkivonatokat kapcsolatos további tudnivalókért lásd: [biztonsági és az API-t](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm).<br/><br/>Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). |Igen |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. | Nincs forrás, Igen a fogadó Ha a forrás társított szolgáltatás nem rendelkezik integrációs futásidejű |
 
 >[!IMPORTANT]

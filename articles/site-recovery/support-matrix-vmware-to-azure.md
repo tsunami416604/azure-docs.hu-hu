@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: raynew
-ms.openlocfilehash: ead133318d8660e8b8f4b3e9c5dddb6d75878b19
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 837d53c4a70353c92de2475bb355051fdb2fcbb2
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>VMware és fizikai kiszolgálók replikálást az Azure-támogatási mátrix
 
@@ -130,10 +130,14 @@ Guest/server RDM | Igen<br/><br/> A fizikai kiszolgálók N/A
 Vendég-kiszolgáló > 1 TB méretű lemez | Igen<br/><br/>Legfeljebb 4095 GB 
 Vendég/server 4 KB-os logikai és a 4 KB-os fizikai szektort méretű lemez | Igen
 Vendég/server 4 KB-os logikai lemez és 512 bájtos fizikai szektorméretet | Igen 
-Csíkozott > 1 TB-os kötet Vendég-kiszolgáló<br/><br/> LVM logikai kötetkezelés Vendég/kiszolgáló - tárolóhelyek |} Vendég-kiszolgáló gyakran használt adatok hozzáadása lemez |} Vendég/kiszolgáló - a(z) |} Vendég-kiszolgáló több utas (MPIO) Igen |} N/A
+Csíkozott > 4 TB-os kötet Vendég-kiszolgáló <br><br/>LVM logikai kötetkezelés | Igen
+Vendég/kiszolgáló - tárolóhelyek | Nem 
+Vendég/server gyakran használt adatok hozzáadása lemez | Nem 
+Vendég/kiszolgáló - kizárási lemez | Igen 
+Vendég-kiszolgáló több utas (MPIO) | –
 
 > [!NOTE]
-> ** UEFI rendszerindítási VMware virtuális gépek vagy a Windows Server 2012 rendszert futtató fizikai kiszolgálók, vagy később telepíthetők át az Azure-bA. Következő korlátozások vonatkoznak.
+> ** UEFI ** rendszerindító VMware virtuális gépek vagy a Windows Server 2012 rendszert futtató fizikai kiszolgálók, vagy később telepíthetők át az Azure-bA. Következő korlátozások vonatkoznak.
 > - Csak az Azure-bA áttelepítése támogatott. A feladat-visszavétel a helyszíni VMware-hely nem támogatott.
 > - A kiszolgáló nem rendelkezhet több mint 4 partíciók meg az operációsrendszer-lemezképet.
 > - Azure Site Recovery mobilitási szolgáltatás 9.13 vagy újabb verziója szükséges.

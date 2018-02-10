@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2017
 ms.author: ccompy
-ms.openlocfilehash: 3ac630982b47f7105feb034982eae070faa72d9e
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: c4779ada60fab2db5249a107abfc7ca6f80cb16f
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="networking-considerations-for-an-app-service-environment"></a>App Service-környezet hálózati szempontjai #
+# <a name="networking-considerations-for-an-app-service-environment"></a>Az App Service-környezetek hálózati szempontjai #
 
 ## <a name="overview"></a>Áttekintés ##
 
@@ -47,23 +47,30 @@ Ha egy ILB ASE, a ILB IP-címe a HTTP/S, az FTP/S, a webes telepítési és a t�
 
 A normál alkalmazás-hozzáférési portok a következők:
 
-| Használat | Ettől | Művelet |
+| Használat | Forrás | Művelet |
 |----------|---------|-------------|
-|  A HTTP/HTTPS  | Felhasználó által konfigurálható |  80, 443 |
+|  HTTP/HTTPS  | Felhasználó által konfigurálható |  80, 443 |
 |  FTP/FTPS    | Felhasználó által konfigurálható |  21, 990, 10001-10020 |
 |  A Visual Studio távoli hibakeresés  |  Felhasználó által konfigurálható |  4016, 4018, 4020, 4022 |
 
 Ez érvényét veszti, ha egy külső ASE vagy egy ILB ASE. Ha a számítógép egy külső ASE, ezeket a portokat, a nyilvános VIP kattint. Ha a számítógép egy ILB ASE, ezeket a portokat a Példánynak a kattint. Ha zárolását a 443-as porton, néhány funkció, a portálon hatással lehet. További információkért lásd: [Portal függőségek](#portaldep).
 
+## <a name="ase-subnet-size"></a>ASE alhálózat mérete ##
+
+Nem módosítható egy ASE üzemeltetni az alhálózat méretét, a ASE telepítése után.  A ASE egy címet használ az egyes infrastruktúra szerepkörökhöz, valamint minden egyes elkülönített App Service csomag példány esetében.  Emellett nincsenek miden alhálózatában létrehozott Azure-hálózat által használt 5 címek.  Nincsenek App Service-csomagokról és egy ASE minden címeket fogja használni 12-alkalmazás létrehozása előtt.  Ha egy ILB ASE majd fogja használni 13 címek ahhoz, hogy ASE alkalmazást hoz létre. Mivel az alkalmazás állapotát tervek a horizontális azt minden hozzáadott előtér további címeket igényel.  Alapértelmezés szerint minden 15 teljes App Service-csomag példányok előtér-kiszolgáló hozzáadva. 
+
+   > [!NOTE]
+   > Nincs más lehet az alhálózat, de a ASE. Ne válasszon, amely lehetővé teszi a jövőbeli növekedésre címteret. Később Ez a beállítás nem módosítható. Azt javasoljuk, hogy a méretet `/25` 128-címekkel.
+
 ## <a name="ase-dependencies"></a>ASE függőségek ##
 
 Egy ASE befelé függőség:
 
-| Használat | Ettől | Művelet |
+| Használat | Forrás | Művelet |
 |-----|------|----|
 | Kezelés | App Service management címek | ASE alhálózati: 454, 455 |
 |  Belső kommunikációs ASE | ASE alhálózati: minden port | ASE alhálózati: minden port
-|  Engedélyezi az Azure terheléselosztó bejövő | Az Azure terheléselosztó | ASE alhálózati: minden port
+|  Engedélyezi az Azure terheléselosztó bejövő | Azure Load Balancer | ASE alhálózati: minden port
 |  IP-címek hozzárendelt alkalmazás | Címek hozzárendelt alkalmazás | ASE alhálózati: minden port
 
 A bejövő forgalom biztosít a parancs és a rendszer figyelése mellett ASE irányítását. Az ilyen típusú adatforgalom a forrás IP-címek jelennek meg a [ASE felügyeleti címek] [ ASEManagement] dokumentum. A hálózati biztonsági beállításokat kell engedélyezi a hozzáférést a 454 és a 455 portokat összes IP-címekről.
@@ -76,12 +83,12 @@ Alkalmazás-kezelési forgalom engedélyezése a az alkalmazások ASE az alhál�
 
 A kimenő hozzáférés érdekében egy ASE több külső rendszer függ. E rendszer függőségek rendelkező DNS-nevek, és nem feleltethetők meg az IP-címek készletét. Ebből kifolyólag a ASE portok számos minden külső IP-címek a ASE alhálózatból kimenő hozzáférésre van szüksége. Egy ASE a következő kimenő függőségekkel rendelkezik:
 
-| Használat | Ettől | Művelet |
+| Használat | Forrás | Művelet |
 |-----|------|----|
 | Azure Storage | ASE alhálózati | TABLE.Core.Windows.NET, blob.core.windows.net, queue.core.windows.net, file.core.windows.net: 80-as, a 443-as, a 445-ös (445-ös csak szükséges ASEv1.) |
 | Azure SQL Database | ASE alhálózati | Database.Windows.NET: 1433-as számú 11000-11999, 14000-14999 (további információkért lásd: [SQL Database 12-es port használati](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md).)|
-| Azure felügyelet | ASE alhálózati | Management.Core.Windows.NET, management.azure.com: 443 
-| SSL-tanúsítvány ellenőrzése |  ASE alhálózati            |  OCSP.msocsp.com, mscrl.microsoft.com, crl.microsoft.com: 443
+| Azure felügyelet | ASE alhálózati | management.core.windows.net, management.azure.com: 443 
+| SSL-tanúsítvány ellenőrzése |  ASE alhálózati            |  ocsp.msocsp.com, mscrl.microsoft.com, crl.microsoft.com: 443
 | Azure Active Directory        | ASE alhálózati            |  Internet: 443
 | Az alkalmazásszolgáltatási management        | ASE alhálózati            |  Internet: 443
 | Azure DNS                     | ASE alhálózati            |  Internet: 53
@@ -150,7 +157,7 @@ Ha egy alkalmazás a saját IP-alapú SSL-címmel rendelkezik, a ASE fenntartja 
 
 Az NSG-k az Azure portálon keresztül vagy a PowerShell segítségével konfigurálható. Itt tartalmazza az Azure-portálon. Létrehozásához és kezeléséhez az NSG-ket a portálon, a legfelső szintű erőforrásként **hálózati**.
 
-A bejövő és kimenő követelmények figyelembe kell venni, amikor az NSG-ket az NSG-ket ebben a példában látható módon hasonlóan kell kinéznie. A virtuális hálózat címtartomány _192.168.250.0/16_, és az alhálózatot, amely a ASE _192.168.251.128/25_.
+A bejövő és kimenő követelmények figyelembe kell venni, amikor az NSG-ket az NSG-ket ebben a példában látható módon hasonlóan kell kinéznie. A virtuális hálózat címtartomány _192.168.250.0/23_, és az alhálózatot, amely a ASE _192.168.251.128/25_.
 
 A függvény ASE első két bejövő követelményei ebben a példában a lista tetején látható. Ezek ASE és felügyeletét teszi lehetővé maga kommunikálni ASE engedélyezése. A többi bejegyzés összes bérlői konfigurálható és képesek felügyelni a hálózati hozzáférést a ASE állomásokon tárolt alkalmazásokhoz. 
 
@@ -168,13 +175,13 @@ Az NSG-k meghatározása után rendelje hozzá őket az alhálózatot, amely a A
 
 ## <a name="routes"></a>Útvonalak ##
 
-Útvonalak váltak problémássá leggyakrabban a virtuális hálózat az Azure ExpressRoute konfigurálásakor. Az útvonalak a Vneten belül három típusa van:
+Az útvonalak a kényszerített bújtatás és a kényszerített bújtatással folytatott munka kulcsfontosságú elemei. Egy Azure-beli virtuális hálózatban az útválasztás a leghosszabb előtag-megfeleltetés (LPM) alapján történik. Ha egynél több útvonal rendelkezik ugyanazzal az LPM megfeleltetéssel, akkor a rendszer az útvonalat a kiindulás alapján választja ki, az alábbi sorrendben:
 
--   Rendszerútvonalak
--   BGP-útvonalak
--   Felhasználó által definiált útvonalak (udr-EK)
+- Felhasználó által meghatározott útvonal (UDR)
+- BGP-útvonal (ExpressRoute használatánál)
+- Rendszerútvonal
 
-BGP-útvonalakat a rendszer útvonalak bírálja felül. Udr-EK bírálja felül a BGP-útvonalakat. Az Azure virtuális hálózataihoz útvonalakkal kapcsolatban további információkért lásd: [felhasználó által definiált útvonalak áttekintése][UDRs].
+Ha többet szeretne megtudni a virtuális hálózatokban történő útválasztásról, olvassa el a [felhasználó által megadott útvonalakat és IP-továbbítást][UDRs] ismertető cikket.
 
 Az Azure SQL-adatbázis, amely a ASE használja a rendszer egy tűzfal van. Kommunikáció a ASE nyilvános VIP oly módon, hogy ez igényli. Az SQL adatbázishoz a ASE kapcsolódásának elutasításra kerülne, ha elküldi őket egy másik IP-cím és az ExpressRoute-kapcsolatot.
 
@@ -182,15 +189,15 @@ Ha a bejövő felügyeleti kérelmekre adott válaszokat le az ExpressRoute, a v
 
 A ASE működjön, miközben a virtuális hálózat egy ExpressRoute van konfigurálva a legegyszerűbb is van:
 
--   Konfigurálja az ExpressRoute hivatkozik _0.0.0.0/0_. Alapértelmezés szerint azt kényszerített bújtatás minden kimenő forgalom a helyszínen.
--   Hozzon létre egy UDR. Alkalmazza azt az alhálózatot, amely tartalmazza a egy címelőtagot ASE _0.0.0.0/0_ és következőugrás-típusú _Internet_.
+-   Konfigurálja az ExpressRoute hivatkozik _0.0.0.0/0_. Ez alapértelmezés szerint kényszerített bújtatás mellett irányít minden kimenő forgalmat a helyszíni hálózatba.
+-   Hozzon létre egy UDR-t. Alkalmazza azt az alhálózatot, amely tartalmazza a egy címelőtagot ASE _0.0.0.0/0_ és következőugrás-típusú _Internet_.
 
 Ha a módosítások két, a ASE alhálózatról érkező forgalmat az internet felé nem működik az ExpressRoute- és a ASE le kényszerített. 
 
 > [!IMPORTANT]
-> Lehet, hogy egy UDR definiált útvonalak kellően specifikus elsőbbséget élveznek a bármely az ExpressRoute-konfiguráció által hirdetett útvonalakat. Az előző példában a széles körű 0.0.0.0/0 címtartomány. Az esetlegesen véletlenül felülbírálhatja pontosabb címtartományai használó útvonal-hirdetéseinek.
+> Az UDR-ben meghatározott útvonalaknak annyira pontosnak kell lenniük, hogy prioritást kapjanak az ExpressRoute-konfiguráció által meghirdetett bármely útvonallal szemben. Az előző példa a széles 0.0.0.0/0 címtartományt használja. Ezt véletlenül felülírhatják olyan útvonalhirdetések, amelyek pontosabb címtartományokat használnak.
 >
-> ASEs cross-hirdetményt a magánfelhő-társviszony létesítése – elérési utat a nyilvános társviszony elérési útvonalak ExpressRoute beállításokkal nem támogatottak. A nyilvános társviszony konfigurált ExpressRoute-konfigurációk útvonal-hirdetéseinek kapni a Microsofttól. A hirdetmények a Microsoft Azure IP-címtartományok nagy foglal magában. Ha a címtartomány határokon meghirdetett privát társviszony elérési útján, minden kimenő hálózati csomagokat a ASE alhálózatból egy ügyfél a helyi hálózati infrastruktúra bújtatott hatályba. A hálózati folyamat jelenleg nem támogatott a ASEs. Egy megoldást a problémára, hogy állítsa le a kereszt-közzététel útvonalak nyilvános társviszony elérési útjáról a magánfelhő-társviszony létesítése – elérési utat.
+> ASEs cross-hirdetményt a magánfelhő-társviszony létesítése – elérési utat a nyilvános társviszony elérési útvonalak ExpressRoute beállításokkal nem támogatottak. A konfigurált nyilvános társviszonyt létesítő ExpressRoute-konfigurációk útvonalhirdetéseket kapnak a Microsofttól. A meghirdetések Microsoft Azure IP-címtartományok nagy készletét tartalmazzák. Ha a címtartomány határokon meghirdetett privát társviszony elérési útján, minden kimenő hálózati csomagokat a ASE alhálózatból egy ügyfél a helyi hálózati infrastruktúra bújtatott hatályba. A hálózati folyamat jelenleg nem támogatott a ASEs. Egy megoldás erre a problémára az, ha leállítja az útvonalak keresztbe hirdetését a nyilvános társviszony-létesítési útvonalról a privát társviszony-létesítési útvonalra.
 
 Hozzon létre egy UDR, kövesse az alábbi lépéseket:
 

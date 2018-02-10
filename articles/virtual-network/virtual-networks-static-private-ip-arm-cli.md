@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d9925b29a60fc46e9ecc775ca132bd2365f64b15
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: c936518c3cc431bb74dcdfe7f967687d3dc71e42
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Az Azure parancssori felület használatával virtuális gépek magánhálózati IP-címek konfigurálása
 
@@ -41,9 +41,9 @@ Ez a cikk a Resource Manager-alapú üzemi modellt ismerteti. Emellett [statikus
 
 Nevű virtuális gép létrehozása *DNS01* a a *előtér* egy vnet nevű alhálózat *TestVNet* statikus magánhálózati IP-címe a *192.168.1.101*, teljes az alábbi lépéseket:
 
-1. Ha még nem még konfigurál, a legutóbbi [Azure CLI 2.0](/cli/azure/install-az-cli2) és való bejelentkezéshez az Azure fiók használatával [az bejelentkezési](/cli/azure/#login). 
+1. Ha még nem még konfigurál, a legutóbbi [Azure CLI 2.0](/cli/azure/install-az-cli2) és való bejelentkezéshez az Azure fiók használatával [az bejelentkezési](/cli/azure/#az_login). 
 
-2. A virtuális Géphez a nyilvános IP-cím létrehozása a [létrehozása az hálózati nyilvános ip-](/cli/azure/network/public-ip#create) parancsot. A kimenet után látható lista ismerteti a használt paramétereket.
+2. A virtuális Géphez a nyilvános IP-cím létrehozása a [létrehozása az hálózati nyilvános ip-](/cli/azure/network/public-ip#az_network_public_ip_create) parancsot. A kimenet után látható lista ismerteti a használt paramétereket.
 
     > [!NOTE]
     > Azt szeretné, vagy szeretné használni a különböző érték is az argumentumok ezen és a későbbi lépésekben a környezettől függően.
@@ -74,7 +74,7 @@ Nevű virtuális gép létrehozása *DNS01* a a *előtér* egy vnet nevű alhál
    * `--name`: A nyilvános IP-cím neve.
    * `--location`: Az azure-régió, ahol a nyilvános IP-cím létrehozásához.
 
-3. Futtassa a [az hálózat összevont hálózati létrehozása](/cli/azure/network/nic#create) parancs futtatásával hozzon létre egy hálózati Adaptert statikus magánhálózati IP-címe. A kimenet után látható lista ismerteti a használt paramétereket. 
+3. Futtassa a [az hálózat összevont hálózati létrehozása](/cli/azure/network/nic#az_network_nic_create) parancs futtatásával hozzon létre egy hálózati Adaptert statikus magánhálózati IP-címe. A kimenet után látható lista ismerteti a használt paramétereket. 
    
     ```azurecli
     az network nic create \
@@ -126,7 +126,7 @@ Nevű virtuális gép létrehozása *DNS01* a a *előtér* egy vnet nevű alhál
     * `--vnet-name`: A VNet neve, amelyen létrehozásához a hálózati adaptert.
     * `--subnet`: Az alhálózat, amihez létre kívánja hozni a hálózati adaptert. a név
 
-4. Futtassa a [azure virtuális gép létrehozása](/cli/azure/vm/nic#create) parancsot a nyilvános IP- és a hálózati adapter által korábban létrehozott virtuális gép létrehozásához. A kimenet után látható lista ismerteti a használt paramétereket.
+4. Futtassa a [azure virtuális gép létrehozása](/cli/azure/vm/nic#az_vm_nic_create) parancsot a nyilvános IP- és a hálózati adapter által korábban létrehozott virtuális gép létrehozásához. A kimenet után látható lista ismerteti a használt paramétereket.
    
     ```azurecli
     az vm create \
@@ -154,7 +154,7 @@ Nevű virtuális gép létrehozása *DNS01* a a *előtér* egy vnet nevű alhál
     }
     ```
    
-   A basic más paramétereket [az virtuális gép létrehozása](/cli/azure/vm#create) paraméterek.
+   A basic más paramétereket [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create) paraméterek.
 
    * `--nics`: A hálózati adapter, amely a virtuális gép csatlakozik neve.
    
@@ -268,7 +268,7 @@ A hálózati Adaptert a virtuális gép az előző parancsban használt módosí
     > [!NOTE]
     > Ha a virtuális gép elég nagy ahhoz, hogy több hálózati adapter, futtassa a **azure-hálózat hálózati törlése** parancs törli a régi hálózati adaptert.
    
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További tudnivalók [foglalt nyilvános IP-cím](virtual-networks-reserved-public-ip.md) címek.
 * További tudnivalók [példányszintű nyilvános IP (ILPIP)](virtual-networks-instance-level-public-ip.md) címek.
 * Tekintse át a [fenntartott IP-REST API-k](https://msdn.microsoft.com/library/azure/dn722420.aspx).

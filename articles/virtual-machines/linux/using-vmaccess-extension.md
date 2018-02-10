@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: danlep
-ms.openlocfilehash: 3596b50b68cabf212218825566c0f8313f054f65
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5fb3941e0b55f8b5d79c9fc794ec984e074caafe
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli-20"></a>Rendszergazda felhasználók, az SSH és az ellenőrzés kezeléséhez, vagy javítsa ki a Linux virtuális gépeken a VMAccess bővítmény használata az Azure CLI 2.0 lemezek
 A lemezt a Linux virtuális Gépet a hibák láthatók. Valamilyen módon alaphelyzetbe állítja a gyökér szintű jelszavát a Linux virtuális gép számára, vagy véletlenül törli a titkos SSH-kulcsot. Ha vissza a datacenter napban bekövetkezett, meg kell meghajtó van, és nyissa meg a kiszolgáló konzolján beolvasandó KVM. Az Azure VMAccess bővítmény gondol adott KVM kapcsolóéval, amely lehetővé teszi a hozzáférést a következőre Linux, vagy végezzen szintű konzol eléréséhez.
@@ -33,7 +33,7 @@ Kétféleképpen használható a VMAccess bővítmény a Linux virtuális gépek
 * Használja az Azure CLI 2.0 és a szükséges paramétereket.
 * [Használja a VMAccess bővítmény feldolgozó nyers JSON-fájlok](#use-json-files-and-the-vmaccess-extension) és majd rájuk.
 
-A következő példákban [az vm felhasználói](/cli/azure/vm/user) parancsok. A következő lépésekkel lesz szüksége a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett az Azure-fiók használatával [az bejelentkezési](/cli/azure/#login).
+A következő példákban [az vm felhasználói](/cli/azure/vm/user) parancsok. A következő lépésekkel lesz szüksége a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett az Azure-fiók használatával [az bejelentkezési](/cli/azure/#az_login).
 
 ## <a name="reset-ssh-key"></a>SSH-kulcs visszaállítása
 Az alábbi példa visszaállítja az SSH-kulcs a felhasználó `azureuser` nevű virtuális gépen `myVM`:
@@ -91,7 +91,7 @@ az vm user delete \
 
 
 ## <a name="use-json-files-and-the-vmaccess-extension"></a>JSON-fájlok és a VMAccess bővítmény
-Az alábbi példák nyers JSON-fájlokat használja. Használjon [az virtuálisgép-bővítmény készlet](/cli/azure/vm/extension#set) majd hívni a JSON-fájlokat. A JSON-fájlok az Azure-sablonok alapján is hívható. 
+Az alábbi példák nyers JSON-fájlokat használja. Használjon [az virtuálisgép-bővítmény készlet](/cli/azure/vm/extension#az_vm_extension_set) majd hívni a JSON-fájlokat. A JSON-fájlok az Azure-sablonok alapján is hívható. 
 
 ### <a name="reset-user-access"></a>Felhasználói hozzáférés alaphelyzetbe állítása
 Ha elvesztette a hozzáférést, legfelső szintű a Linux virtuális gépre, a felhasználó az SSH-kulcsot, vagy a jelszó alaphelyzetbe állítása a vmaccess bővítmény parancsfájl indíthatja el.
@@ -227,7 +227,7 @@ az vm extension set \
   --protected-settings disk_check_repair.json
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az Azure VMAccess bővítmény használatával Linux frissítése a módosításokat a futó Linux virtuális gép módszerrel. Eszközök, például a felhő inicializálás és az Azure Resource Manager-sablonok segítségével módosíthatja a Linux virtuális gép rendszerindító.
 
 [Virtuálisgép-bővítmények és a Linux funkcióit](extensions-features.md)
