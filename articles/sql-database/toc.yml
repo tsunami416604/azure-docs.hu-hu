@@ -359,6 +359,8 @@
           items:
             - name: Mintaalkalmazás üzembe helyezése
               href: saas-standaloneapp-get-started-deploy.md
+            - name: Bérlők kiosztása
+              href: saas-standaloneapp-provision-and-catalog.md
         - name: Bérlőnkénti adatbázis
           href: saas-dbpertenant-wingtip-app-overview.md
           items:

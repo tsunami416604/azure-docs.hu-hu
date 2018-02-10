@@ -4,7 +4,7 @@
 ## [Service Bus-architektúra](service-bus-architecture.md)
 ## [GYIK](service-bus-faq.md)
 
-# Első lépések
+# Gyors útmutatók
 ## [Névtér létrehozása](service-bus-create-namespace-portal.md)
 ## Üzenetsorok használata
 ### [.NET](service-bus-dotnet-get-started-with-queues.md)

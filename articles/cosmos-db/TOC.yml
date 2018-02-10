@@ -360,6 +360,7 @@
           href: spark-connector-graph.md
         - name: Streamelés a Kafka és a Spark használatával a HDInsighton
           href: ../hdinsight/apache-kafka-spark-structured-streaming-cosmosdb.md
+          maintainContext: true
         - name: Webhely üzembe helyezése az Azure App Service-szel
           href: create-website.md
         - name: Alkalmazásnaplózás a Logic Apps használatával
