@@ -19,6 +19,7 @@
 ### [Xamarin](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native)
 ## Webalkalmazások
 ### [Áttekintés](active-directory-b2c-reference-oidc.md)
+### [Felhasználók hitelesítése az ASP.NET-ben](active-directory-b2c-tutorials-web-app.md)
 ### [ASP.NET](active-directory-b2c-devquickstarts-web-dotnet-susi.md)
 ### [ASP.NET Core](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapp)
 ### [Node.js](active-directory-b2c-devquickstarts-web-node.md)
@@ -27,6 +28,7 @@
 ### [JavaScript az MSAL használatával](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)
 ### [JavaScript a Hello használatával](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi)
 ## Webes API-k
+### [Az ASP.NET API-k védelme](active-directory-b2c-tutorials-web-api.md)
 ### [ASP.NET](active-directory-b2c-devquickstarts-api-dotnet.md)
 ### [ASP.NET Core](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi)
 ### [Node.js](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)
@@ -40,6 +42,7 @@
 ### [Amazon](active-directory-b2c-setup-amzn-app.md)
 ### [LinkedIn](active-directory-b2c-setup-li-app.md)
 ### [Twitter](active-directory-b2c-setup-twitter-app.md)
+### [GitHubon](active-directory-b2c-setup-github-app.md)
 ### [Weibo](active-directory-b2c-setup-weibo-app.md)
 ### [QQ](active-directory-b2c-setup-qq-app.md)
 ### [WeChat](active-directory-b2c-setup-wechat-app.md)
@@ -88,7 +91,7 @@
 ### Hibaelhárítás
 #### [Naplók gyűjtése az Application Insights használatával](active-directory-b2c-troubleshoot-custom.md)
 ## Referencia
-### [Kibocsátási megjegyzések](active-directory-b2c-developer-notes-custom.md)
+### [Kiadási megjegyzések](active-directory-b2c-developer-notes-custom.md)
 ### [Egyszeri bejelentkezés munkamenet-szolgáltatói](active-directory-b2c-reference-sso-custom.md)
 ### [Nyelvi testreszabás](active-directory-b2c-language-customization-custom.md)
 ### [A bizalmi keretrendszer meghatározása](active-directory-b2c-reference-trustframeworks-defined-ief-custom.md) 
@@ -105,11 +108,11 @@
 ## [Címtárak készítésekor előforduló problémák](active-directory-b2c-support-create-directory.md)
 ## [Bővítményalkalmazás](active-directory-b2c-reference-extensions-app.md)
 
-# Kapcsolódó
+# Kapcsolódó témakörök
 ## [Azure Active Directory](../active-directory/active-directory-whatis.md)
 ## [Többtényezős hitelesítés](../multi-factor-authentication/multi-factor-authentication.md)
 
-# Erőforrások
+# További források
 ## [Azure AD B2C visszajelzési fórum](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c)
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [Gyakori kérdések](active-directory-b2c-faqs.md)

@@ -5,11 +5,11 @@ title: "Microsoft Azure-dokumentáció"
 description: "Ismerje meg, hogyan készíthet és felügyelhet hatékony alkalmazásokat a Microsoft Azure Cloud Services használatával. Töltse le a dokumentációt, mintakódokat, oktatóanyagokat és sok egyebet."
 featureFlags:
 - clicktale
-ms.openlocfilehash: 88c99f7aa0af914210e760d498bb4fb514798207
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 2f0316b17dc1bedab724b3174f8f88d9e92f74f8
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/09/2018
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -4263,12 +4263,12 @@ SQL-eszközök </h3>
                             <li>
                                 <div class="container intro">
                                     <p>
-A felhőalapú alkalmazásokhoz ajánlott architektúra-készletek. Minden architektúra ajánlott gyakorlatokat, előírásokat és egy, a javaslatokat megtestesítő, futtatható komponenst is tartalmaz.
+Az Azure architektúra-központ útmutatást nyújt a végpontok közötti megoldások kialakításához a Microsoft Azure-ban. Az alábbiakban referenciaarchitektúrákat, ajánlott eljárásokat, tervezési mintákat, forgatókönyvekre vonatkozó útmutatókat és referencia-alkalmazásokat talál.
                                     </p>
                                 </div>
                             </li>
                             <li>
-                                <a href="/azure/architecture/guide/">
+                                <a href="/azure/architecture/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -4278,8 +4278,27 @@ A felhőalapú alkalmazásokhoz ajánlott architektúra-készletek. Minden archi
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
+                                                    <h3>Azure Architecture Center</h3>
+                                                    <p>Útmutató a végpontok közötti megoldások kialakításához a Microsoft Azure-ban.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/architecture/guide/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/index/azure_best-practices.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
                                                     <h3>Útmutató az Azure alkalmazásarchitektúrájához</h3>
-                                                    <p>A sikeres felhőhasználat alapismeretei. Ha még nem ismeri a felhőt vagy az Azure-t, kezdje ezzel.</p>
+                                                    <p>Ez az útmutató egy strukturált megközelítést mutat be az Azure-on futó skálázható, rugalmas, magas rendelkezésre állású alkalmazások tervezéséhez. Az útmutatót az ügyfélesetekből származó tapasztalatok és az ajánlott eljárások alapján állítottunk össze.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -4318,27 +4337,6 @@ A felhőalapú alkalmazásokhoz ajánlott architektúra-készletek. Minden archi
                                                 <div class="cardText">
                                                     <h3>Tervezési minták felhőkhöz</h3>
                                                     <p>A felhők tervezési mintái. Minden minta egy problémát, egy problémáról szóló mintát és egy Azure-alapú példát ismertet.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/azure/architecture/best-practices/api-design">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage bgdAccent1">
-                                                        <img src="media/index/azure_best-practices.svg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>A felhőalapú alkalmazások ajánlott eljárásai</h3>
-                                                    <p>
-A felhőalapú alkalmazásokhoz ajánlott eljárások, amelyek olyan témákkal foglalkoznak, mint az automatikus méretezés, az adatparticionálás, az API-tervezés és a megfigyelés.
-                                                    </p>
                                                 </div>
                                             </div>
                                         </div>

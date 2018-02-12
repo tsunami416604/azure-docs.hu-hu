@@ -41,6 +41,8 @@
           href: monitoring-overview-autoscale.md
         - name: Tevékenységnapló
           href: monitoring-overview-activity-logs.md
+        - name: Tevékenységnapló-riasztások (előnézet)
+          href: monitoring-activity-log-alerts-new-experience.md
         - name: Műveletcsoportok
           href: monitoring-action-groups.md
         - name: Diagnosztikai naplók
@@ -84,8 +86,8 @@
           href: insights-alerts-command-line-interface.md
         - name: Riasztások beállítása az Azure PowerShell-lel
           href: insights-alerts-powershell.md
-        - name: Webhook meghívatása egy metrikariasztással
-          href: insights-webhooks-alerts.md
+        - name: Naplóriasztásokra vonatkozó webhook-műveletek
+          href: monitor-alerts-unified-log-webhook.md
         - name: Metrikariasztás létrehozása Resource Manager-sablonnal
           href: monitoring-enable-alerts-using-template.md
     - name: Automatikus méretezés használata

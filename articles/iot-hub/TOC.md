@@ -38,6 +38,9 @@
 ### [Eszközfelügyelet az Azure CLI 2.0-hoz készült IoT-bővítménnyel](iot-hub-device-management-iot-extension-azure-cli-2-0.md)
 ### [Távoli figyelés és értesítések a Logic Apps használatával](iot-hub-monitoring-notifications-with-azure-logic-apps.md)
 
+## Az MXChip IoT DevKit használata
+### [Az Azure IoT Suite használata távoli monitorozáshoz](iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring.md)
+
 # Útmutatók
 ## Felkészülés
 ### [Az IoT Hub és az Event Hubs összehasonlítása](iot-hub-compare-event-hubs.md)

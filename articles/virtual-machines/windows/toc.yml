@@ -422,6 +422,8 @@
           href: performance-diagnostics-vm-extension.md
         - name: Beágyazott virtualizálás használata
           href: troubleshoot-vm-by-use-nested-virtualization.md
+        - name: A virtuálisgép-ügynök telepítése kapcsolat nélküli módban
+          href: install-vm-agent-offline.md
 - name: Referencia
   items:
     - name: Azure CLI
