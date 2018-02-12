@@ -3,6 +3,7 @@
 > * [Eszköz: Node.js Szolgáltatás: C#](../articles/iot-hub/iot-hub-csharp-node-device-management-get-started.md)
 > * [Eszköz: C# szolgáltatás: C#](../articles/iot-hub/iot-hub-csharp-csharp-device-management-get-started.md)
 > * [Eszköz: Java szolgáltatás: Java](../articles/iot-hub/iot-hub-java-java-device-management-getstarted.md)
+> * [Eszköz: Python szolgáltatás: Python](../articles/iot-hub/iot-hub-python-python-device-management-get-started.md)
 
 Háttér-alkalmazások használhatják Azure IoT Hub primitívek, például a [eszköz iker] [ lnk-devtwin] és [módszerek közvetlen][lnk-c2dmethod], a távolról start és eszköz figyelése felügyeleti műveleteket. Az oktatóanyag bemutatja, hogyan egy háttér-alkalmazást és egy eszköz alkalmazásának együttműködése hogyan kezdeményezésére és figyelésére a távoli eszköz IoT-központ használatával újra kell indítani.
 

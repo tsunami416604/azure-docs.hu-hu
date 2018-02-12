@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/08/2018
+ms.date: 02/09/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 22cc43a861e2a9d1d0c508da362a5f0b48d0c268
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: bb2124613ccc467f3c560e92bdf760420410267c
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="conditions-in-azure-active-directory-conditional-access"></a>Az Azure Active Directory feltételes hozzáférési feltételek 
 
 A [Azure Active Directory (Azure AD) feltételes hozzáférés](active-directory-conditional-access-azure-portal.md), szabályozhatja a hogyan engedéllyel rendelkező felhasználók hozzáférést a felhőalapú alkalmazásokat. A feltételes hozzáférési szabályzatot a válasz ("Ehhez") okának indítására, a házirend ("Amikor ez történik,") megadása. 
 
-![Vezérlés](./media/active-directory-conditional-access-conditions/10.png)
+![vezérlő](./media/active-directory-conditional-access-conditions/10.png)
 
 
 A feltételes hozzáférés a környezetben:
@@ -36,7 +36,7 @@ A feltételes hozzáférés a környezetben:
 
 A feltételek és a hozzáférés-vezérlést kombinációja a feltételes hozzáférési házirend jelöli.
 
-![Vezérlés](./media/active-directory-conditional-access-conditions/61.png)
+![vezérlő](./media/active-directory-conditional-access-conditions/61.png)
 
 Ez a cikk áttekintést nyújt a feltételeket és azok hogyan használhatók a feltételes hozzáférési házirendben. 
 
@@ -45,7 +45,7 @@ Ez a cikk áttekintést nyújt a feltételeket és azok hogyan használhatók a 
 
 A felhasználók és csoportok feltétele egy feltételes hozzáférési házirendben kötelező. A házirend, vagy válassza ki is **minden felhasználó** , vagy válasszon adott felhasználókat és csoportokat.
 
-![Vezérlés](./media/active-directory-conditional-access-conditions/02.png)
+![vezérlő](./media/active-directory-conditional-access-conditions/02.png)
 
 Ha bejelöli:
 
@@ -67,7 +67,7 @@ A cloud app a webhelyek vagy szolgáltatást. Ez magában foglalja az Azure-Prox
 
 A felhőalapú alkalmazások feltétele egy feltételes hozzáférési házirendben kötelező. A házirend, vagy válassza ki is **összes felhőalapú alkalmazások** , vagy válasszon adott alkalmazásokra.
 
-![Vezérlés](./media/active-directory-conditional-access-conditions/03.png)
+![vezérlő](./media/active-directory-conditional-access-conditions/03.png)
 
 Választhat:
 

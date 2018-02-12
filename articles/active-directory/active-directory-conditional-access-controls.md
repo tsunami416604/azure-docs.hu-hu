@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Active Directory feltételes hozzáférést vezérlő |} Microsoft Docs"
-description: "Ismerje meg, az Azure Active Directory feltételes hozzáférést vezérlő működése."
+title: "Hozzáférés-szabályozási az Azure Active Directory feltételes hozzáférés |} Microsoft Docs"
+description: "Ismerje meg, hogyan hozzáférés-vezérlés az Azure Active Directory feltételes hozzáférés munkálatok."
 services: active-directory
 keywords: "alkalmazások, a feltételes hozzáférés az Azure ad-vel, a biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési házirendekkel a feltételes hozzáférés"
 documentationcenter: 
@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/08/2018
+ms.date: 02/09/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 24db2d29684f7ce5822c77c71f944327476b7196
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: c5a2ab3b8d2fe55eee1f67e4b697a1e5b0dd2daf
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/11/2018
 ---
-# <a name="controls-in-azure-active-directory-conditional-access"></a>A vezérlők Azure Active Directory feltételes hozzáférés beállítása 
+# <a name="access-controls-in-azure-active-directory-conditional-access"></a>Hozzáférés-vezérlést az Azure Active Directory feltételes hozzáférés 
 
 A [Azure Active Directory (Azure AD) feltételes hozzáférés](active-directory-conditional-access-azure-portal.md), szabályozhatja a hogyan engedéllyel rendelkező felhasználók hozzáférést a felhőalapú alkalmazásokat. A feltételes hozzáférési szabályzatot a válasz ("Ehhez") okának indítására, a házirend ("Amikor ez történik,") megadása. 
 
-![Vezérlés](./media/active-directory-conditional-access-controls/10.png)
+![vezérlő](./media/active-directory-conditional-access-controls/10.png)
 
 
 Az a környezetben, a feltételes hozzáférés 
@@ -38,7 +38,7 @@ Az a környezetben, a feltételes hozzáférés
 
 Egy feltétel utasítást a vezérlőkkel kombinációja a feltételes hozzáférési házirend jelöli.
 
-![Vezérlés](./media/active-directory-conditional-access-controls/61.png)
+![vezérlő](./media/active-directory-conditional-access-controls/61.png)
 
 Minden vezérlő követelmény, hogy teljesülnek a személy által vagy rendszer jelentkezik be, vagy a bejelentkezés után a felhasználó a korlátozását teheti meg. 
 
@@ -57,7 +57,7 @@ Támogatás vezérlőkkel teljesen letiltja a hozzáférést, vagy a kívánt ve
 - Az összes kijelölt vezérlők teljesítendő (*és*) 
 - Egy kijelölt teljesítendő vezérlő (*vagy*)
 
-![Vezérlés](./media/active-directory-conditional-access-controls/17.png)
+![vezérlő](./media/active-directory-conditional-access-controls/17.png)
 
 
 
@@ -127,12 +127,12 @@ Másolja át a JSON-adatokat, és illessze be a kapcsolódó szövegmezőbe. Ne 
 
 Hozzon létre egy egyéni vezérlő nem található a **kezelése** szakasza a **feltételes hozzáférés** lap.
 
-![Vezérlés](./media/active-directory-conditional-access-controls/82.png)
+![vezérlő](./media/active-directory-conditional-access-controls/82.png)
 
 Kattintson a **új egyéni vezérlő**, megnyílik egy panel a szövegmezőben a JSON-adatok a vezérlő.  
 
 
-![Vezérlés](./media/active-directory-conditional-access-controls/81.png)
+![vezérlő](./media/active-directory-conditional-access-controls/81.png)
 
 
 ### <a name="deleting-custom-controls"></a>Egyéni vezérlők törlése
@@ -156,7 +156,7 @@ Egyéni vezérlő szerkesztése, törlése az aktuális vezérlő, és hozzon l�
 
 A munkamenet-vezérlők a funkciók korlátozását teszik lehetővé a felhőalkalmazásokban. A munkamenet vezérlők felhőalkalmazások érvényesíti, és további Azure AD-be a munkamenetre vonatkozó az alkalmazás által biztosított információk alapján.
 
-![Vezérlés](./media/active-directory-conditional-access-controls/31.png)
+![vezérlő](./media/active-directory-conditional-access-controls/31.png)
 
 ### <a name="use-app-enforced-restrictions"></a>Alkalmazás által kényszerített korlátozások használata
 

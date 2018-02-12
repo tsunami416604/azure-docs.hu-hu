@@ -1,6 +1,6 @@
 ---
-title: "FedRAMP Azure tervezetének Automation - konfiguráció kezelése"
-description: "Webes alkalmazásokhoz, a FedRAMP - konfiguráció kezelése"
+title: "Az Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - konfiguráció kezelése"
+description: "FedRAMP webes alkalmazások Automation - konfiguráció kezelése"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: e93aa430b7150f07210f5d1f37e2027d95334a59
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 6566783769d37ee829df3894fdb5673b4edafd2c
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="configuration-management-cm"></a>Konfigurációkezelés (CM)
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure Resource Manager-sablonok és a kapcsolódó erőforrások az Azure tervezetének alkotó képviselő "kódú" alapkonfiguráció telepített architektúrájának. A megoldás azonban használhat konfiguráció-ellenőrzés a github webhelyen valósul meg. A megoldás a központilag telepített virtuális gépekhez szükséges konfiguráló (DSC) alapkonfigurációt tartalmaz. |
+| **Ügyfél** | Az Azure Resource Manager-sablonok és a tervezetének alkotó kísérő erőforrások képviselő "kódú" alapkonfiguráció telepített architektúrájának. A megoldás azonban használhat konfiguráció-ellenőrzés a github webhelyen valósul meg. A megoldás a központilag telepített virtuális gépekhez szükséges konfiguráló (DSC) alapkonfigurációt tartalmaz. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -105,7 +105,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure Resource Manager-sablonok és a kapcsolódó erőforrások az Azure tervezetének alkotó képviselő "kódú" alapkonfiguráció telepített architektúrájának. A megoldás azonban használhat konfiguráció-ellenőrzés a github webhelyen valósul meg. Az Azure portálon az automatizálási parancsfájl az összes telepített erőforrás érhető el, és az erőforrások mindig naprakész ábrázolását biztosítja.  |
+| **Ügyfél** | Az Azure Resource Manager-sablonok és a tervezetének alkotó kísérő erőforrások képviselő "kódú" alapkonfiguráció telepített architektúrájának. A megoldás azonban használhat konfiguráció-ellenőrzés a github webhelyen valósul meg. Az Azure portálon az automatizálási parancsfájl az összes telepített erőforrás érhető el, és az erőforrások mindig naprakész ábrázolását biztosítja.  |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -455,7 +455,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének által központilag telepített virtuális gépek Windows, hogy mely felhasználók telepíteni, illetve bizonyos alkalmazások futtatásához adja meg az AppLocker valósítja meg. További, az összes Windows operációs rendszer frissítéseinek digitális singed vannak. |
+| **Ügyfél** | Ez tervezetének által központilag telepített virtuális gépek Windows, hogy mely felhasználók telepíteni, illetve bizonyos alkalmazások futtatásához adja meg az AppLocker valósítja meg. További, az összes Windows operációs rendszer frissítéseinek digitális singed vannak. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -497,7 +497,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének telepített virtuális gépekhez szükséges konfiguráló (DSC) alapterv tartalmazza. A deklaratív PowerShell-parancsfájlok határozza meg, és konfigurálja az erőforrásokat, amelyhez a rendszer alkalmazza azokat. Az alapkonfiguráció érhető el ez a megoldás által telepített erőforrások a DSC bővíthető az ügyfél kritikus igényeinek. |
+| **Ügyfél** | Ez tervezetének telepített virtuális gépekhez szükséges konfiguráló (DSC) alapterv tartalmazza. A deklaratív PowerShell-parancsfájlok határozza meg, és konfigurálja az erőforrásokat, amelyhez a rendszer alkalmazza azokat. Az alapkonfiguráció érhető el ez a megoldás által telepített erőforrások a DSC bővíthető az ügyfél kritikus igényeinek. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -511,7 +511,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének telepített virtuális gépekhez szükséges konfiguráló (DSC) alapterv tartalmazza. Az alapterveket a virtuális gépek automatikusan alkalmazza a használatával egyéni parancsfájl virtuálisgép-bővítmény telepítése során. |
+| **Ügyfél** | Ez tervezetének telepített virtuális gépekhez szükséges konfiguráló (DSC) alapterv tartalmazza. Az alapterveket a virtuális gépek automatikusan alkalmazza a használatával egyéni parancsfájl virtuálisgép-bővítmény telepítése során. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -539,7 +539,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének telepíti az Automation DSC. Automation DSC gépek konfigurációit, egy adott szervezet által meghatározott konfigurációjával igazítása. |
+| **Ügyfél** | Ez tervezetének telepíti az Automation DSC. Automation DSC gépek konfigurációit, egy adott szervezet által meghatározott konfigurációjával igazítása. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -553,7 +553,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének Azure Automation DSC telepíti. Automation DSC gépek konfigurációit, egy adott szervezet által meghatározott konfigurációjával igazítása, és folyamatosan figyeli a változásokat. |
+| **Ügyfél** | Ez tervezetének Azure Automation DSC telepíti. Automation DSC gépek konfigurációit, egy adott szervezet által meghatározott konfigurációjával igazítása, és folyamatosan figyeli a változásokat. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -567,7 +567,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének Azure Automation DSC telepíti. Rész Azure Operations Management Suite (OMS) az Automation DSC riasztást vagy konfigurálható felderítésére észlelésekor orvoslása érdekében. |
+| **Ügyfél** | Ez tervezetének Azure Automation DSC telepíti. Rész Azure Operations Management Suite (OMS) az Automation DSC riasztást vagy konfigurálható felderítésére észlelésekor orvoslása érdekében. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -581,7 +581,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének által telepített erőforrások rendeltetésszerű legalább funkcionalitással vannak konfigurálva. Szükségeskonfiguráció-konfiguráló (DSC) alapterv megtalálható telepített virtuális gépekhez. A deklaratív PowerShell-parancsfájlok határozza meg, és konfigurálja az erőforrásokat, amelyhez a rendszer alkalmazza azokat. Az alapkonfiguráció érhető el ez a megoldás által telepített erőforrások a DSC bővíthető további korlátozására a kritikus igényeihez az ügyfél. |
+| **Ügyfél** | Ez tervezetének által telepített erőforrások rendeltetésszerű legalább funkcionalitással vannak konfigurálva. Szükségeskonfiguráció-konfiguráló (DSC) alapterv megtalálható telepített virtuális gépekhez. A deklaratív PowerShell-parancsfájlok határozza meg, és konfigurálja az erőforrásokat, amelyhez a rendszer alkalmazza azokat. Az alapkonfiguráció érhető el ez a megoldás által telepített erőforrások a DSC bővíthető további korlátozására a kritikus igényeihez az ügyfél. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -595,7 +595,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének Azure Application Gateway és a hálózati biztonsági csoportokat, ha csak a szükséges portok és protokollok használatának korlátozása telepíti. Alkalmazásátjáró, a hálózati biztonsági csoportok és a virtuális gépek DSC alaptervek további konfigurálhatja a felhasználói függvények, portok, protokollok, szolgáltatások és funkcionalitással csak a szánt használatát. |
+| **Ügyfél** | Ez tervezetének Azure Application Gateway és a hálózati biztonsági csoportokat, ha csak a szükséges portok és protokollok használatának korlátozása telepíti. Alkalmazásátjáró, a hálózati biztonsági csoportok és a virtuális gépek DSC alaptervek további konfigurálhatja a felhasználói függvények, portok, protokollok, szolgáltatások és funkcionalitással csak a szánt használatát. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -693,7 +693,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének összes erőforrást az Azure Resource Manager erőforráscsoport központilag telepíti. Az Azure Resource Manager biztosít a telepített erőforrások mindig naprakész listáját, és testre szabható címkét és csoport erőforrásokra vonatkozó készletkezelést. Ez a megoldás által telepített erőforrások kap egy meghatározott erőforrás címke lehet társítva a rendszer a határhoz. |
+| **Ügyfél** | Ez tervezetének összes erőforrást az Azure Resource Manager erőforráscsoport központilag telepíti. Az Azure Resource Manager biztosít a telepített erőforrások mindig naprakész listáját, és testre szabható címkét és csoport erőforrásokra vonatkozó készletkezelést. Ez a megoldás által telepített erőforrások kap egy meghatározott erőforrás címke lehet társítva a rendszer a határhoz. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -707,7 +707,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének összes erőforrást az Azure Resource Manager erőforráscsoport központilag telepíti. Az Azure Resource Manager egy telepített erőforrás áll a felülvizsgálatra az Azure portálon mindig naprakész listáját tartalmazza. |
+| **Ügyfél** | Ez tervezetének összes erőforrást az Azure Resource Manager erőforráscsoport központilag telepíti. Az Azure Resource Manager egy telepített erőforrás áll a felülvizsgálatra az Azure portálon mindig naprakész listáját tartalmazza. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -721,7 +721,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének összes erőforrást az Azure Resource Manager erőforráscsoport központilag telepíti. Az erőforrás panel az Azure portálon sorolja fel az összes telepített erőforrás, így mindig naprakész leltárt, az erőforrások telepítése és eltávolítása. |
+| **Ügyfél** | Ez tervezetének összes erőforrást az Azure Resource Manager erőforráscsoport központilag telepíti. Az erőforrás panel az Azure portálon sorolja fel az összes telepített erőforrás, így mindig naprakész leltárt, az erőforrások telepítése és eltávolítása. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -735,7 +735,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének összes erőforrást az Azure Resource Manager erőforráscsoport központilag telepíti. Az erőforrás panel az Azure portálon sorolja fel az összes telepített erőforrás, így mindig naprakész leltárt, az erőforrások telepítése és eltávolítása. |
+| **Ügyfél** | Ez tervezetének összes erőforrást az Azure Resource Manager erőforráscsoport központilag telepíti. Az erőforrás panel az Azure portálon sorolja fel az összes telepített erőforrás, így mindig naprakész leltárt, az erőforrások telepítése és eltávolítása. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -777,7 +777,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének összes erőforrást az Azure Resource Manager erőforráscsoport központilag telepíti. Az Azure erőforrás-címkék alapvető / érték párok, amelyek kategorizálhatja az erőforrásokat elszámolási kötelezettségéről szóló és/vagy felügyeleti célokra is alkalmazható. |
+| **Ügyfél** | Ez tervezetének összes erőforrást az Azure Resource Manager erőforráscsoport központilag telepíti. Az Azure erőforrás-címkék alapvető / érték párok, amelyek kategorizálhatja az erőforrásokat elszámolási kötelezettségéről szóló és/vagy felügyeleti célokra is alkalmazható. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -791,7 +791,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének összes erőforrást az Azure Resource Manager erőforráscsoport központilag telepíti. Az Azure Resource Manager egy telepített erőforrások mindig naprakész listáját tartalmazza. Ez a megoldás által telepített erőforrások kap egy meghatározott erőforrás címke lehet társítva a rendszer a határhoz. |
+| **Ügyfél** | Ez tervezetének összes erőforrást az Azure Resource Manager erőforráscsoport központilag telepíti. Az Azure Resource Manager egy telepített erőforrások mindig naprakész listáját tartalmazza. Ez a megoldás által telepített erőforrások kap egy meghatározott erőforrás címke lehet társítva a rendszer a határhoz. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -861,7 +861,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az erőforrások az Azure tervezetének által telepített Windows és az SQL Server licencek érhetők el. Ez az Azure beépített szolgáltatása. Meglévő szoftverlicenc-szerződés rendelkező szervezetek fontolja meg alternatív licenc modellek telepítéséről. |
+| **Ügyfél** | Windows és az SQL Server licence az e tervezetének által telepített erőforrások megtalálható. Ez az Azure beépített szolgáltatása. Meglévő szoftverlicenc-szerződés rendelkező szervezetek fontolja meg alternatív licenc modellek telepítéséről. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -875,7 +875,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az erőforrások az Azure tervezetének által telepített Windows és az SQL Server licencek érhetők el. A felhasználónak nem kell külön-külön nyomon követheti a licenc használatát. |
+| **Ügyfél** | Windows és az SQL Server licence az e tervezetének által telepített erőforrások megtalálható. A felhasználónak nem kell külön-külön nyomon követheti a licenc használatát. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -889,7 +889,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Nincs funkció az Azure tervezetének által telepített megosztása társ-társ fájl. |
+| **Ügyfél** | Nincs megosztás funkció a tervezetének által telepített társ-társ fájl. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 

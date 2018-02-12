@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako;anilmur
-ms.openlocfilehash: d5f76d532b236e67a4e69eb820e2cfc3033a80c6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f7cd457fe0660718c3939d39ec1825009c5e4d17
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Többszörös átviteli sebességű streamek létrehozása az Azure Media Services élő streamelési funkciójával
 ## <a name="overview"></a>Áttekintés
@@ -65,7 +65,7 @@ Az alábbi táblázat azt ismerteti, hogy az egyes csatornaállapotok esetében 
 | Csatorna állapota | Jelzése a portál kezelőfelületén | Ennyi az egész számlázási? |
 | --- | --- | --- |
 | Indulás alatt |Indulás alatt |Nem (átmeneti állapot) |
-| Fut |Üzemkész (nincs futó program)<br/>vagy<br/>Streamelés (legalább egy futó program) |IGEN |
+| Futtatás |Üzemkész (nincs futó program)<br/>vagy<br/>Streamelés (legalább egy futó program) |IGEN |
 | Leállítás |Leállítás |Nem (átmeneti állapot) |
 | Leállítva |Leállítva |Nem |
 
@@ -83,7 +83,7 @@ A következő ábra jelöli, amikor egy csatorna kap az alábbi protokollok egyi
 A leggyakrabban használt streamelési alkalmazások kialakításához általában az alábbi lépések szükségesek.
 
 > [!NOTE]
-> Jelenleg az élő események maximálisan ajánlott időtartama 8 óra. Lépjen kapcsolatba az amslived@Microsoft.com e-mail címen, ha szeretné működtetni a csatornát hosszabb ideig. Ne feledje, hogy egy számlázási hatással az élő kódolás és kell ne feledje, hogy egy élő kódolás csatorna hagyja a "Fut" állapotú óránkénti adatforgalmi díjak gyakorisága.  Javasoljuk, hogy azonnal leállítja a futó csatornák után az élő adatfolyam-továbbítási esemény extra óránkénti díjak elkerülése érdekében. 
+> Jelenleg az élő események maximálisan ajánlott időtartama 8 óra. Lépjen kapcsolatba a amslived@microsoft.com Ha át szeretné működtetni a csatornát hosszabb ideig. Ne feledje, hogy egy számlázási hatással az élő kódolás és kell ne feledje, hogy egy élő kódolás csatorna hagyja a "Fut" állapotú óránkénti adatforgalmi díjak gyakorisága.  Javasoljuk, hogy azonnal leállítja a futó csatornák után az élő adatfolyam-továbbítási esemény extra óránkénti díjak elkerülése érdekében. 
 > 
 > 
 
@@ -140,7 +140,7 @@ Szempontok:
   
   * MPEG-2 / H.262 videó 
     
-    * Fő profil (4:2:0)
+    * Main Profile (4:2:0)
     * Erős (4:2:0, 4:2:2)
     * 422 profil (4:2:0, 4:2:2)
   * MPEG-4 AVC / H.264 videó  
@@ -148,7 +148,7 @@ Szempontok:
     * Alapkonfiguráció, fő, nagy profil (8 bites 4:2:0)
     * Magas 10 profil (10 bites 4:2:0)
     * Magas 422 profil (10 bites 4:2:2)
-  * MPEG-2 AAC-LC hang 
+  * MPEG-2 AAC-LC Audio 
     
     * Monó, Sztereó, (5.1, 7.1) között legyen
     * MPEG-2 stílus ADTS csomagolás
@@ -157,7 +157,7 @@ Szempontok:
     * Monó, Sztereó, (5.1, 7.1) között legyen
   * MPEG hang (II és III réteg) 
     
-    * Monó, sztereó
+    * Mono, Stereo
 * Ajánlott szórás kódolók tartalmazza:
   
   * Képzelje el kommunikációs Selenio ENC 1
@@ -175,7 +175,7 @@ Szempontok:
 * Alapkonfiguráció, fő, nagy profil (8 bites 4:2:0)
 * Magas 10 profil (10 bites 4:2:0)
 * Magas 422 profil (10 bites 4:2:2)
-* MPEG-2 AAC-LC hang
+* MPEG-2 AAC-LC Audio
 * Monó, Sztereó, (5.1, 7.1) között legyen
 * 44,1 kHz mintavételi ráta
 * MPEG-2 stílus ADTS csomagolás
@@ -208,7 +208,7 @@ Az IP-címek, amelyek jogosultak videókat közzétenni a csatorna adhat meg. Az
 
 Ha nem ad meg IP-címeket, és nem határoz meg szabálydefiníciót, a rendszer egyetlen IP-címet sem engedélyez. Ha az összes IP-címnek szeretne engedélyt adni, hozzon létre egy szabályt, és állítsa be a következő értéket: 0.0.0.0/0.
 
-## <a name="channel-preview"></a>Csatorna előnézeti
+## <a name="channel-preview"></a>Csatorna előnézete
 ### <a name="preview-urls"></a>Kép URL-címek
 Csatorna előnézeti végpont (előzetes verzió URL-cím), amelyekkel előzetes megtekintéséhez és az adatfolyam érvényesítése előtt további feldolgozás és a szállítási adja meg.
 
@@ -248,7 +248,7 @@ Arról, hogy mely bemeneti video-adatfolyamot kell feldolgozni a csatorna élő 
 
 Alapértelmezett értéke nulla. Javasoljuk, hogy küldjön egy program transport Stream (SPTS). Ha a bemeneti adatfolyam több programokat is tartalmaz, az élő kódoló értelmezi a Program térkép tábla (részlet) a bemeneti adatok, a bemenetek egy adatfolyam típusú nevű MPEG-2 videó vagy H.264 azonosítja és elrendezi a fizetési meghatározott sorrendben A nulla alapú indexét majd szolgál, hogy a megállapodás az n-edik bejegyzés átvételéhez.
 
-### <a name="audio-stream"></a>Hangadatfolyam
+### <a name="audio-stream"></a>Audio Stream
 Választható. A bemeneti hang adatfolyamok ismerteti. Ha ez a mező nincs megadva, a megadott alapértelmezett értékek érvényesek. Ez a beállítás csak akkor, ha a bemeneti adatfolyam-protokoll beállítása RTP (MPEG-TS) engedélyezett.
 
 #### <a name="index"></a>Index
@@ -262,7 +262,7 @@ Nem határozható meg legfeljebb 8 hangadatfolyam beállítása adni, ha a csato
 ### <a id="preset"></a>Rendszer-készlet
 Adja meg a készlet által a csatorna élő kódolója használható. Jelenleg az egyetlen engedélyezett érték **Default720p** (alapértelmezett).
 
-Vegye figyelembe, hogy ha egyéni készletek van szüksége, forduljon amslived@Microsoft.com e-mail címen.
+Vegye figyelembe, hogy ha egyéni készletek van szüksége, forduljon amslived@microsoft.com.
 
 **Default720p** a következő 7 rétegekbe a videó kódolja.
 
@@ -364,7 +364,7 @@ Az alábbi táblázat azt ismerteti, hogy az egyes csatornaállapotok esetében 
 | Csatorna állapota | Jelzése a portál kezelőfelületén | Számlázandó? |
 | --- | --- | --- |
 | Indulás alatt |Indulás alatt |Nem (átmeneti állapot) |
-| Fut |Üzemkész (nincs futó program)<br/>vagy<br/>Streamelés (legalább egy futó program) |Igen |
+| Futtatás |Üzemkész (nincs futó program)<br/>vagy<br/>Streamelés (legalább egy futó program) |Igen |
 | Leállítás |Leállítás |Nem (átmeneti állapot) |
 | Leállítva |Leállítva |Nem |
 
@@ -381,7 +381,7 @@ Az alábbi táblázat azt ismerteti, hogy az egyes csatornaállapotok esetében 
 * Alapértelmezés szerint csak 5 csatornák adhat hozzá a Media Services-fiók. Ez az enyhe kvóták az összes új fiókot. További információkért lásd: [kvóták és korlátozások](media-services-quotas-and-limitations.md).
 * Ha a csatorna vagy a hozzá tartozó programok már elindultak, a bemeneti protokoll nem módosítható. Ha más protokollt szeretne használni, hozzon létre külön-külön csatornákat az egyes bemeneti protokollokhoz.
 * Ha a csatorna csak számlázása a **futtató** állapota. További információkért tekintse meg [ez](media-services-manage-live-encoder-enabled-channels.md#states) szakasz.
-* Jelenleg az élő események maximálisan ajánlott időtartama 8 óra. Ha hosszabb időtartamon át szeretné működtetni a csatornát, forduljon „amslived”-hez a Microsoft.com oldalon.
+* Jelenleg az élő események maximálisan ajánlott időtartama 8 óra. Lépjen kapcsolatba a amslived@microsoft.com Ha át szeretné működtetni a csatornát hosszabb ideig.
 * Ügyeljen arra, hogy rendelkezik a streamvégpontján, amelyből el kívánja segítségével a tartalmat a **futtató** állapotát.
 * Ha a bevitel, több nyelv nyomon követi, valamint arról, hogy az Azure-ral élő kódolás, csak RTP beszélő bemenet esetén támogatott. Megadhatja, hogy MPEG-2 TS over RTP használatával legfeljebb 8 hang adatfolyamokat. Választásával dolgozhat fel RTMP vagy Smooth streaming több zeneszámok jelenleg nem támogatott. Mikor történt az élő kódolás [helyszíni élő kódolja](media-services-live-streaming-with-onprem-encoders.md), nincs korlátozás nélkül, mivel egy csatornán keresztül további feldolgozás nélkül átadja függetlenül AMS küld.
 * A kódolási beállításkészlet használja a "max sebessége" 30 fps fogalmát. Igen, ha a bemeneti érték 60fps / 59.97i, a bemeneti keretek eldobott/inaktiválása-interlaced 30/29,97 fps számára. A bemeneti érték 50fps/50i, ha a bemeneti keretek eldobott/inaktiválása-interlaced 25 fps számára. Ha 25 fps a bemeneti, kimeneti 25 fps értéken marad.

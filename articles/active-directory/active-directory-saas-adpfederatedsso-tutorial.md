@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: jeedes
-ms.openlocfilehash: 9ffac9ea033c1df462297fdb134bf0ead185b09f
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 76bbee514eac36aec8eaf84e8a20f85a27559fc7
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adp-federated-sso"></a>Oktatóanyag: Azure Active Directoryval integrált ADP összevont egyszeri bejelentkezés
 
@@ -196,9 +196,10 @@ Az Ön képviselőjével is ADP megerősítő megérkezésekor a ADP Services-sz
 
     ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
 
-7. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **társított bejelentkezés**. az alkalmazás csatolásához **ADP összevont egyszeri Bejelentkezéses**.
+7. A a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **társított bejelentkezés** az alkalmazás csatolni **ADP összevont egyszeri Bejelentkezéses**.
+<!---Loc Comment:Sentence "to link your application to ADP Federated SSO." should be concatenated with the previous sentence--->
 
-    ![Egyszeri bejelentkezés kapcsolódó](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_linked.png)
+    ![Single sign-on linked](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_linked.png)
 
 8. Keresse meg a **konfigurálása bejelentkezési URL-cím** területen tegye a következőket:
 

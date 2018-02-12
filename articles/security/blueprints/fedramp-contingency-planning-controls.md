@@ -1,6 +1,6 @@
 ---
-title: "FedRAMP Azure tervezetének Automation - készenléti tervezése"
-description: "Webes alkalmazások, a FedRAMP - készenléti tervezése"
+title: "Az Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - készenléti tervezése"
+description: "FedRAMP webes alkalmazások Automation - készenléti tervezése"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: f6e07903b9d7bd69398f23ace168299c6c1bdf44
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: f993271656e9484881ccac357acb3d50830c219e
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="contingency-planning-cp"></a>Készenléti terv készítése (CP)
 
@@ -99,7 +99,7 @@ ms.lasthandoff: 11/23/2017
 
 #### <a name="contingency-plan"></a>Készenléti terv
 
-**A CP-2.e** A szervezet frissíti a készenléti terv történő címet érintő módosításait a szervezet, a rendszer vagy a környezet és a készenléti terv végrehajtására, a végrehajtási vagy a tesztelés során észlelt problémákat.
+**CP-2.e** A szervezet frissíti a készenléti terv történő címet érintő módosításait a szervezet, a rendszer vagy a környezet és a készenléti terv végrehajtására, a végrehajtási vagy a tesztelés során észlelt problémákat.
 
 **Feladatkörök:**`Customer Only`
 
@@ -371,7 +371,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének által telepített összes storage-fiókok replikált georedundáns tárolás (GRS) használatával magas rendelkezésre állásának biztosításához. A GRS biztosítja, hogy adatait replikálja a rendszer másodlagos régióba; az összes adat hat másolatot két üzemeltetésében karbantartása külön csomópontján. |
+| **Ügyfél** | Ez tervezetének által telepített összes storage-fiókok replikált georedundáns tárolás (GRS) használatával magas rendelkezésre állásának biztosításához. A GRS biztosítja, hogy adatait replikálja a rendszer másodlagos régióba; az összes adat hat másolatot két üzemeltetésében karbantartása külön csomópontján. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -385,7 +385,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének által telepített összes storage-fiókok replikált georedundáns tárolás (GRS) használatával magas rendelkezésre állásának biztosításához. Fizikai biztonsági intézkedéseinek valósíthatók egységes Azure üzemeltetésében. |
+| **Ügyfél** | Ez tervezetének által telepített összes storage-fiókok replikált georedundáns tárolás (GRS) használatával magas rendelkezésre állásának biztosításához. Fizikai biztonsági intézkedéseinek valósíthatók egységes Azure üzemeltetésében. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -399,7 +399,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének által telepített összes storage-fiókok replikált georedundáns tárolás (GRS) használatával magas rendelkezésre állásának biztosításához. A GRS biztosítja, hogy az adatok egy másodlagos régióban van replikálva. Elsődleges és másodlagos régiók adatközpontok terület kiterjedő kimaradás vagy katasztrófa esetén rendelkezésre állásának biztosításához szükséges távolságát biztosításához van párosítva. |
+| **Ügyfél** | Ez tervezetének által telepített összes storage-fiókok replikált georedundáns tárolás (GRS) használatával magas rendelkezésre állásának biztosításához. A GRS biztosítja, hogy az adatok egy másodlagos régióban van replikálva. Elsődleges és másodlagos régiók adatközpontok terület kiterjedő kimaradás vagy katasztrófa esetén rendelkezésre állásának biztosításához szükséges távolságát biztosításához van párosítva. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -413,7 +413,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének által telepített összes storage-fiókok replikált georedundáns tárolás (GRS) használatával magas rendelkezésre állásának biztosításához. A GRS biztosítja, hogy az adatok egy másodlagos régióban van replikálva. Az ügyfelek biztosítania kell az Azure replikációs adatmodell készenléti célok kompatibilis. |
+| **Ügyfél** | Ez tervezetének által telepített összes storage-fiókok replikált georedundáns tárolás (GRS) használatával magas rendelkezésre állásának biztosításához. A GRS biztosítja, hogy az adatok egy másodlagos régióban van replikálva. Az ügyfelek biztosítania kell az Azure replikációs adatmodell készenléti célok kompatibilis. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -441,7 +441,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének útmutatást nyújt az hogyan telepítésével egyidejűleg több régióba és konfigurálva, egy másodlagos hely teljes redundanciájának biztosítása a ebben a megoldásban. |
+| **Ügyfél** | Ez tervezetének útmutatást nyújt az hogyan telepítésével egyidejűleg több régióba és konfigurálva, egy másodlagos hely teljes redundanciájának biztosítása a ebben a megoldásban. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -455,7 +455,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének útmutatást nyújt az hogyan telepítésével egyidejűleg több régióba és konfigurálva, egy másodlagos hely teljes redundanciájának biztosítása a ebben a megoldásban. Egy másodlagos Azure régióra telepítésekor berendezések kiépítés munkamenetébe Azure. |
+| **Ügyfél** | Ez tervezetének útmutatást nyújt az hogyan telepítésével egyidejűleg több régióba és konfigurálva, egy másodlagos hely teljes redundanciájának biztosítása a ebben a megoldásban. Egy másodlagos Azure régióra telepítésekor berendezések kiépítés munkamenetébe Azure. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -469,7 +469,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének útmutatást nyújt az hogyan telepítésével egyidejűleg több régióba és konfigurálva, egy másodlagos hely teljes redundanciájának biztosítása a ebben a megoldásban. Biztonsági óvintézkedéseket, az Azure adatközpontjaiban egységesen valósíthatók meg. |
+| **Ügyfél** | Ez tervezetének útmutatást nyújt az hogyan telepítésével egyidejűleg több régióba és konfigurálva, egy másodlagos hely teljes redundanciájának biztosítása a ebben a megoldásban. Biztonsági óvintézkedéseket, az Azure adatközpontjaiban egységesen valósíthatók meg. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -483,7 +483,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének útmutatást nyújt az hogyan telepítésével egyidejűleg több régióba és konfigurálva, egy másodlagos hely teljes redundanciájának biztosítása a ebben a megoldásban. Azure adatközpontjaiban földrajzilag egymástól. |
+| **Ügyfél** | Ez tervezetének útmutatást nyújt az hogyan telepítésével egyidejűleg több régióba és konfigurálva, egy másodlagos hely teljes redundanciájának biztosítása a ebben a megoldásban. Azure adatközpontjaiban földrajzilag egymástól. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -511,7 +511,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének útmutatást nyújt az hogyan telepítésével egyidejűleg több régióba és konfigurálva, egy másodlagos hely teljes redundanciájának biztosítása a ebben a megoldásban. Egy másodlagos Azure régióra telepítésekor erőforrás rendelkezésre állási munkamenetébe Azure. |
+| **Ügyfél** | Ez tervezetének útmutatást nyújt az hogyan telepítésével egyidejűleg több régióba és konfigurálva, egy másodlagos hely teljes redundanciájának biztosítása a ebben a megoldásban. Egy másodlagos Azure régióra telepítésekor erőforrás rendelkezésre állási munkamenetébe Azure. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -525,7 +525,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének útmutatást nyújt az hogyan telepítésével egyidejűleg több régióba és konfigurálva, egy másodlagos hely teljes redundanciájának biztosítása a ebben a megoldásban. Ha egy másodlagos Azure régióra üzembe, fizikai erőforrás előkészítése munkamenetébe Azure. |
+| **Ügyfél** | Ez tervezetének útmutatást nyújt az hogyan telepítésével egyidejűleg több régióba és konfigurálva, egy másodlagos hely teljes redundanciájának biztosítása a ebben a megoldásban. Ha egy másodlagos Azure régióra üzembe, fizikai erőforrás előkészítése munkamenetébe Azure. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -651,7 +651,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének telepíti a Recovery Services-tároló. Felhasználói szintű adatokat a telepített SQL-adatbázis az SQL virtuális gép IaaS-bővítmény segítségével van megvalósítva. |
+| **Ügyfél** | Ez tervezetének telepíti a Recovery Services-tároló. Felhasználói szintű adatokat a telepített SQL-adatbázis az SQL virtuális gép IaaS-bővítmény segítségével van megvalósítva. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -665,7 +665,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének telepíti a Recovery Services-tároló. Egy Azure biztonsági mentési házirend az összes virtuális gép egy napi, heti, havi vagy éves biztonsági mentésébe implementálása jön létre.  |
+| **Ügyfél** | Ez tervezetének telepíti a Recovery Services-tároló. Egy Azure biztonsági mentési házirend az összes virtuális gép egy napi, heti, havi vagy éves biztonsági mentésébe implementálása jön létre.  |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -693,7 +693,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének által telepített összes tárolási BLOB sértetlenségét és bizalmasságát védett használata Azure SSE, amely minden adatokat nyugalmi 256 bites AES titkosítást használ. |
+| **Ügyfél** | Ez tervezetének által telepített összes tárolási BLOB sértetlenségét és bizalmasságát védett használata Azure SSE, amely minden adatokat nyugalmi 256 bites AES titkosítást használ. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -749,7 +749,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | A biztonsági mentéshez, georedundáns tárolás megvalósítása, biztosítva az adatok hat másolatot használt többek között az Azure Blueprint belül az összes telepített tárfiók karbantartása külön csomópontján két adatközpont között. |
+| **Ügyfél** | A biztonsági mentéshez, georedundáns tárolás megvalósítása, biztosítva az adatok hat másolatot használt többek között a blueprint belül az összes telepített tárfiók karbantartása külön csomópontján két adatközpont között. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -777,7 +777,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének egy Always On rendelkezésre állási csoportnak az SQL Server telepítését. SQL Server fenntartja a tranzakciónapló, amely támogatja a tranzakció helyreállítási rendszer hiba esetén. |
+| **Ügyfél** | Ez tervezetének egy Always On rendelkezésre állási csoportnak az SQL Server telepítését. SQL Server fenntartja a tranzakciónapló, amely támogatja a tranzakció helyreállítási rendszer hiba esetén. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 

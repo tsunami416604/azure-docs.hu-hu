@@ -4,7 +4,7 @@ description: "Megtudhatja, hogyan hozzáadása, módosítása vagy törlése a v
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 
@@ -13,98 +13,87 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/10/2017
+ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 7d69cc7e6ffafc66a29504a5b3b3823f4bb7c0b7
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: f8b60a27e760ae74c7f068844fad1ae0d4324366
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Hozzáadása, módosítása vagy virtuális hálózati alhálózat törlése
 
-Megtudhatja, hogyan hozzáadása, módosítása vagy virtuális hálózati alhálózat törlése. 
-
-Ha még nem ismeri a virtuális hálózatok hozzáadása, módosítása vagy alhálózat törlése előtt, azt javasoljuk, hogy olvassa el [Azure Virtual Network áttekintése](virtual-networks-overview.md) és [létrehozása, módosítása vagy törlése a virtuális hálózati](virtual-network-manage-network.md). Egy virtuális hálózatot helyezett összes Azure-erőforrások egy alhálózatba a virtuális hálózaton belül vannak telepítve. Általában több alhálózatot a virtuális hálózaton belüli jönnek létre:
-- **Alhálózatok közötti forgalmat**. Hálózati biztonsági csoportok alkalmazhatja az összes erőforrás (például virtuális gépek), a virtuális hálózat bejövő és kimenő hálózati forgalom szűrésére alhálózatokra. A hálózati biztonsági csoportok létrehozásával kapcsolatos további tudnivalókért lásd: [hálózati biztonsági csoportok létrehozása a](virtual-networks-create-nsg-arm-pportal.md).
-- **Szabályozhatja az alhálózatok közötti útválasztást**. Azure alapértelmezett útvonalak hoz létre, így automatikusan továbbítódik alhálózatok között. Felhasználó által definiált útvonalak létrehozásával felülbírálhatja az Azure alapértelmezett útvonalak. Felhasználó által definiált útvonalak kapcsolatos további információkért lásd: [hozhat létre útvonalakat felhasználói](virtual-network-create-udr-arm-ps.md). 
-
-Ez a cikk azt ismerteti, hogyan hozzáadása, módosítása és törlése az Azure Resource Manager telepítési modell használatával létrehozott virtuális hálózatok alhálózatot.
+Megtudhatja, hogyan hozzáadása, módosítása vagy virtuális hálózati alhálózat törlése. Ha még nem ismeri a virtuális hálózatok hozzáadása, módosítása vagy alhálózat törlése előtt, azt javasoljuk, hogy olvassa el [Azure Virtual Network áttekintése](virtual-networks-overview.md) és [létrehozása, módosítása vagy törlése a virtuális hálózati](virtual-network-manage-network.md). Egy virtuális hálózatot helyezett összes Azure-erőforrások egy alhálózatba a virtuális hálózaton belül vannak telepítve.
  
-## <a name="before"></a>Előkészületek
+## <a name="before-you-begin"></a>Előkészületek
 
-Az ebben a cikkben ismertetett feladatok megkezdése előtt hajtsa végre a következő előfeltételek teljesülését:
+Ez a cikk bármely szakaszának lépéseit befejezése előtt hajtsa végre a következőket:
 
-- Ha most ismerkedik a virtuális hálózatok használata, azt javasoljuk, hogy tekintse át a gyakorlatban [az első Azure virtuális hálózat létrehozása](quick-create-portal.md). Ebben a gyakorlatban segítségével Megismerkedés a virtuális hálózatok.
-- Virtuális hálózatok korlátairól kapcsolatos információkért tekintse át a [Azure korlátozását](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
-- Jelentkezzen be az Azure-portálon, az Azure parancssori eszköz (Azure CLI) vagy az Azure PowerShell használatával az Azure-fiókjával. Ha nem rendelkezik Azure-fiókja, regisztráljon egy [ingyenes próbafiók](https://azure.microsoft.com/free).
-- Ha azt tervezi, a jelen cikkben ismertetett feladatok végrehajtásához PowerShell-parancsok használata, először [Azure PowerShell telepítése és konfigurálása](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json). Győződjön meg arról, hogy rendelkezik-e a legújabb verziója található az Azure PowerShell-parancsmagjai telepítve vannak-e. A példákban PowerShell-parancsok súgójának megjelenítéséhez írja be a következőt `get-help <command> -full`.
-- Ha azt tervezi, a jelen cikkben ismertetett feladatok végrehajtásához Azure parancssori felület parancsai használni, először:
-    - [Telepítse és konfigurálja az Azure parancssori felület](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json). Győződjön meg arról, hogy rendelkezik-e telepítve az Azure parancssori felület legújabb verziója.
-    - Az Azure-felhőbe rendszerhéj használata. A parancssori felület és függőségeinek telepítése, helyett az Azure-felhő rendszerhéj is használhatja. Az Azure Cloud Shell olyan ingyenes Bash-felület, amelyet közvetlenül futtathat az Azure Portalon. A fiókjával való használat érdekében az Azure CLI már előre telepítve és konfigurálva van rajta. A felhő rendszerhéj használatához kattintson a felhő rendszerhéj (**> _**) ikonra a bal felső az Azure portálról. 
+- Ha még nem rendelkezik Azure-fiókja, regisztráljon egy [ingyenes próbafiók](https://azure.microsoft.com/free).
+- Ha a portál használatával, nyissa meg a https://portal.azure.com, és jelentkezzen be az Azure-fiókjával.
+- Ha a PowerShell-parancsokkal ebben a cikkben a feladatokat, vagy futtassa a parancsokat a [Azure Cloud rendszerhéj](https://shell.azure.com/powershell), vagy a PowerShell futtatásával a számítógépről. Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ebben az oktatóanyagban az Azure PowerShell modul verziója 5.2.0 szükséges vagy újabb. Futtatás `Get-Module -ListAvailable AzureRM` telepített verziója található. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+- Azure parancssori felület (CLI) parancsok használata ebben a cikkben a feladatokat, vagy futtassa a parancsokat a [Azure Cloud rendszerhéj](https://shell.azure.com/bash), vagy a CLI-t a számítógépen való futtatásával. Ez az oktatóanyag az Azure parancssori felület 2.0.26 verziója szükséges, vagy később. Futtatás `az --version` telepített verziója található. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja az Azure parancssori felület, is futtatásához szükséges `az login` az Azure VPN-kapcsolat létrehozásához.
 
-  Ha segítséget szeretne kérni az Azure parancssori felület parancsait, adja meg a `az <command> --help`.
+## <a name="add-a-subnet"></a>Adjon hozzá egy alhálózatot
 
-## <a name="create-subnet"></a>Adjon hozzá egy alhálózatot
-
-Egy alhálózat hozzáadása:
-
-1. Jelentkezzen be a [portal](https://portal.azure.com) egy olyan fiókkal, amely hozzá van rendelve a hálózat közreműködő szerepkört az előfizetés (minimum) engedélyeit. Szerepkörök és engedélyek hozzárendelése a fiókok kapcsolatos további információkért lásd: [Azure szerepköralapú hozzáférés-vezérlés beépített szerepkörök](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
-2. A portál keresési mezőbe, írja be a **virtuális hálózatok**. A keresési eredmények között kattintson **virtuális hálózatok**.
-3. Az a **virtuális hálózatok** panelen kattintson a virtuális hálózat hozzá szeretné adni egy alhálózat.
-4. Kattintson a virtuális hálózat panel **alhálózatok**.
-5. Kattintson a **+ alhálózati**.
-6. Az a **alhálózat hozzáadása** panelen adja meg a következő paraméterekkel:
+1. Adja meg a keresési mezőbe, a portál felső, *virtuális hálózatok* be a keresőmezőbe. Ha **virtuális hálózatok** megjelenik a keresési eredmények között, jelölje be.
+2. Válassza ki a virtuális hálózati alhálózat hozzáadni kívánt virtuális hálózatok listája.
+3. A **beállítások**, jelölje be **alhálózatok**.
+4. Válassza ki **+ alhálózati**.
+5. Adja meg a következő paraméterekkel:
     - **Név**: A nevet a virtuális hálózaton belül egyedinek kell lennie.
-    - **Címtartomány**: A tartományon a címtartomány a virtuális hálózaton belül egyedinek kell lennie. A tartomány más alhálózati címtartományt, a virtuális hálózaton belül nem lehet átfedésben. A címterület Classless Inter-Domain Routing (CIDR) jelölésrendszer szerint kell adni. Például cím terület 10.0.0.0/16 rendelkező virtuális hálózatban, megadhat egy alhálózat címtartománya a 10.0.0.0/24. A legkisebb megadható tartománya /29, biztosító nyolc IP-cím az alhálózat. Azure fenntartja az első és utolsó cím protokoll megfelelési minden alhálózatban. Három további címek az Azure szolgáltatás használati számára vannak fenntartva. Ennek eredményeképpen meghatározása egy /29 alhálózat cím a tartomány eredményezi, hogy az alhálózat három használható IP-címet. Ha azt tervezi, VPN-átjáró egy virtuális hálózathoz csatlakozni, létre kell hoznia egy átjáró-alhálózatot. További információ [adott cím tartomány szempontjai átjáró alhálózatok](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub). A címtartomány meghatározott feltételek mellett az alhálózat hozzáadása után módosíthatja. A alhálózati címtartományt módosításáról további tudnivalókért lásd: [alhálózati beállítások módosítása](#change-subnet) ebben a cikkben.
-    - **Hálózati biztonsági csoport**: opcionálisan társíthatja a meglévő hálózati biztonsági csoportot a bejövő és kimenő hálózati forgalmat az alhálózat szűrés alhálózat. A hálózati biztonsági csoport ugyanazt az előfizetést és a virtuális hálózat helyének léteznie kell. Azt is kell használatával hozható létre a Resource Manager üzembe helyezési modellben. A hálózati biztonsági csoportok létrehozásával kapcsolatos további tudnivalókért lásd: [hálózati biztonsági csoportok](virtual-networks-create-nsg-arm-pportal.md).
-    - **Az útvonaltábla**: opcionálisan társíthatja egy meglévő útvonaltábla az alhálózat szabályozhatja a hálózati forgalmának irányítását a más hálózatokhoz. Az útvonal táblázatnak már léteznie kell az előfizetés és a virtuális hálózati helyen. Azt is kell használatával hozható létre a Resource Manager üzembe helyezési modellben. Az útvonaltáblák létrehozásával kapcsolatos további tudnivalókért lásd: [felhasználó által definiált útvonalak](virtual-network-create-udr-arm-ps.md).
+    - **Címtartomány**: A tartományon a címtartomány a virtuális hálózaton belül egyedinek kell lennie. A tartomány más alhálózati címtartományt, a virtuális hálózaton belül nem lehet átfedésben. A címterület Classless Inter-Domain Routing (CIDR) jelölésrendszer szerint kell adni. Például cím terület 10.0.0.0/16 rendelkező virtuális hálózatban, megadhat egy alhálózat címtartománya a 10.0.0.0/24. A legkisebb megadható tartománya /29, biztosító nyolc IP-cím az alhálózat. Azure fenntartja az első és utolsó cím protokoll megfelelési minden alhálózatban. Három további címek az Azure szolgáltatás használati számára vannak fenntartva. Ennek eredményeképpen meghatározása egy /29 alhálózat cím a tartomány eredményezi, hogy az alhálózat három használható IP-címet. Ha azt tervezi, VPN-átjáró egy virtuális hálózathoz csatlakozni, létre kell hoznia egy átjáró-alhálózatot. További információ [adott cím tartomány szempontjai átjáró alhálózatok](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub). A címtartomány meghatározott feltételek mellett az alhálózat hozzáadása után módosíthatja. A alhálózati címtartományt módosításáról további tudnivalókért lásd: [alhálózati beállítások módosítása](#change-subnet-settings).
+    - **Hálózati biztonsági csoport**: nulla vagy egy meglévő hálózati biztonsági csoport alhálózathoz az alhálózat bejövő és kimenő hálózati forgalom szűrésére is társíthat. A hálózati biztonsági csoport ugyanazt az előfizetést és a virtuális hálózat helyének léteznie kell. További információ [hálózati biztonsági csoportok](security-overview.md) és [hálózati biztonsági csoport létrehozása](virtual-networks-create-nsg-arm-pportal.md).
+    - **Az útvonaltábla**: nulla vagy egy meglévő útvonaltábla alhálózathoz vezérlésére hálózati forgalmának irányítását a más hálózatokkal is társíthat. Az útvonal táblázatnak már léteznie kell az előfizetés és a virtuális hálózati helyen. További információ [Azure útválasztási](virtual-networks-udr-overview.md) és [egy útválasztási táblázatot létrehozása](create-user-defined-route-portal.md)
+    - **Szolgáltatás végpontjait:** alhálózat állhat nulla vagy egynél több Szolgáltatásvégpontok az engedélyezve van. A szolgáltatás szolgáltatásvégpont engedélyezéséhez jelölje be a szolgáltatást vagy szolgáltatásokat, a szolgáltatás végpontjainak engedélyezni szeretné a **szolgáltatások** listája. A szolgáltatásvégpont eltávolításához a el kívánja távolítani a szolgáltatási végpont a szolgáltatás eltávolításához. Szolgáltatásvégpontok kapcsolatos további információkért lásd: [virtuális hálózati szolgáltatás végpontok áttekintése](virtual-network-service-endpoints-overview.md). Amennyiben engedélyezi egy szolgáltatás szolgáltatásvégpont, engedélyeznie kell a hálózati hozzáférés az alhálózat, a szolgáltatással létrehozott erőforrás. Például, ha engedélyezi a szolgáltatási végpont a *Microsoft.Storage*, is engedélyeznie kell az összes Azure Storage-fiók hozzáférési jogot szeretné hálózati hozzáférést. A szolgáltatásvégpont engedélyezett alhálózatokra hálózati hozzáférés engedélyezésével kapcsolatos részletekért lásd: a engedélyezte a szolgáltatási végpont a szolgáltatás dokumentációjában.
+6. Az alhálózat hozzáadása a kiválasztott virtuális hálózat, válassza ki a **OK**.
+
+**Parancsok**
+
+- Az Azure CLI: [az alhálózaton virtuális hálózat létrehozása](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create)
+- PowerShell: [Add-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/add-azurermvirtualnetworksubnetconfig)
+
+## <a name="change-subnet-settings"></a>Alhálózati beállítások módosítása
+
+1. Adja meg a keresési mezőbe, a portál felső, *virtuális hálózatok* be a keresőmezőbe. Ha **virtuális hálózatok** megjelenik a keresési eredmények között, jelölje be.
+2. A virtuális hálózatok listájában jelölje ki a virtuális hálózat, amely tartalmazza az alhálózat beállításait módosítani szeretné.
+3. A **beállítások**, jelölje be **alhálózatok**.
+4. Az alhálózatok listájának megtekintéséhez jelölje ki az alhálózatot, beállításait módosítani szeretné. A következő beállításokat módosíthatja:
+
+    - **Címtartomány:** nincsenek erőforrások az alhálózaton belül vannak telepítve, ha a címtartomány módosíthatja. Ha erőforrásokat az alhálózaton található, állítsa az erőforrások áthelyezése egy másik alhálózatot, vagy először törölje azokat az alhálózat. Áthelyezéséhez vagy az erőforrás törlése lépései eltérőek attól függően, hogy az erőforrás. Megtudhatja, hogyan helyezze át vagy törölje az alhálózatok-erőforrást, olvassa el a dokumentációt, helyezze át vagy törölje kívánt minden erőforrástípus. Lásd: korlátait **-címtartományt** az 5. lépésében [adjon hozzá egy alhálózatot](#add-a-subnet).
     - **Felhasználók**: beépített szerepkörök vagy a saját egyéni szerepkörök használatával szabályozhatja a hozzáférést az alhálózathoz. Szerepkörök és a felhasználók hozzáférhessenek az alhálózat hozzárendelése kapcsolatos további információkért lásd: [az Azure-erőforrások hozzáférésének kezelése a szerepkör-hozzárendelés segítségével](../active-directory/role-based-access-control-configure.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-access).
-7. Az alhálózat hozzáadása a kiválasztott virtuális hálózat, kattintson a **OK**.
+    - További információt **hálózati biztonsági csoport**, **útvonaltábla**, **felhasználók**, és **szolgáltatás végpontjait**, tekintse meg az 5. lépés a [ Adjon hozzá egy alhálózatot](#add-a-subnet).
+5. Válassza ki **mentése**.
 
 **Parancsok**
 
-|Eszköz|Parancs|
-|---|---|
-|Azure CLI|[az alhálózaton virtuális hálózat létrehozása](/cli/azure/network/vnet/subnet?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_vnet_subnet_create)|
-|PowerShell|[New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig?toc=%2fazure%2fvirtual-network%2ftoc.json), [Add-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/add-azurermvirtualnetworksubnetconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+- Az Azure CLI: [az hálózat vnet alhálózat frissítése](/cli/azure/network/vnet#az_network_vnet_update)
+- PowerShell: [Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig)
 
-## <a name="change-subnet"></a>Alhálózati beállítások módosítása
+## <a name="delete-a-subnet"></a>Alhálózat törlése
 
-Módosíthatja hálózati biztonsági csoportok, útvonaltábláit és a felhasználói hozzáférés alhálózathoz, amelyek az alhálózat-erőforrások kezelése. Ezek a beállítások tájékozódhat a [adjon hozzá egy alhálózatot](#create-subnet), lásd a 6. lépést. Ha egy alhálózat címtartománya a módosítani kívánt, először törölnie kell minden olyan erőforrásnál, amely az alhálózaton. Erőforrás törlése lépései eltérőek attól függően, hogy az erőforrás. Megtudhatja, hogyan alhálózatok-erőforrást törölni, olvassa el a dokumentációt, minden erőforrástípus, hogy törölni szeretné. Az alhálózat címtartománya módosítása:
+Csak akkor, ha nincsenek erőforrások az alhálózatban lévő alhálózatot törölheti. Ha az alhálózatban lévő erőforrások, törölnie kell az erőforrást, amely az alhálózaton az alhálózat törlése előtt. Erőforrás törlése lépései eltérőek attól függően, hogy az erőforrás. Megtudhatja, hogyan alhálózatok-erőforrást törölni, olvassa el a dokumentációt, minden erőforrástípus, hogy törölni szeretné.
 
-1. Jelentkezzen be a [portal](https://portal.azure.com) egy olyan fiókkal, amely hozzá van rendelve a hálózat közreműködő szerepkört az előfizetés (minimum) engedélyeit. Szerepkörök és engedélyek hozzárendelése a fiókok kapcsolatos további információkért lásd: [Azure szerepköralapú hozzáférés-vezérlés beépített szerepkörök](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
-2. A portál keresési mezőbe, írja be a **virtuális hálózatok**. A keresési eredmények között kattintson **virtuális hálózatok**.
-3. Az a **virtuális hálózatok** panelen kattintson a virtuális hálózat, amelynek a alhálózati címtartományt módosítani szeretné.
-4. Kattintson az alhálózat, amelynek a címtartomány módosítani szeretné.
-5. Az alhálózati panel a a **-címtartományt** mezőbe írja be az új címtartományt. A tartomány a címtartomány a virtuális hálózaton belül egyedinek kell lennie. A tartomány más alhálózati címtartományt, a virtuális hálózaton belül nem lehet átfedésben. A címtartomány CIDR jelölésrendszer szerint kell adni. Például cím terület 10.0.0.0/16 rendelkező virtuális hálózatban, megadhat egy alhálózat címtartománya a 10.0.0.0/24. A legkisebb megadható tartománya /29, biztosító nyolc IP-cím az alhálózat. Azure fenntartja az első és utolsó cím protokoll megfelelési minden alhálózatban. Három további címek az Azure szolgáltatás használati számára vannak fenntartva. Ennek eredményeképpen a /29 alhálózat címtartománya három használható IP-címmel rendelkezik. Ha azt tervezi, VPN-átjáró egy virtuális hálózathoz csatlakozni, létre kell hoznia egy átjáró-alhálózatot. További információ [adott cím tartomány szempontjai átjáró alhálózatok](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub). A címtartomány meghatározott feltételek mellett az alhálózat létrehozása után módosíthatja. A alhálózati címtartományt módosításáról további tudnivalókért lásd: [alhálózati beállítások módosítása](#change-subnet) ebben a cikkben.
-6. Kattintson a **Save** (Mentés) gombra.
+1. Adja meg a keresési mezőbe, a portál felső, *virtuális hálózatok* be a keresőmezőbe. Ha **virtuális hálózatok** megjelenik a keresési eredmények között, jelölje be.
+2. A virtuális hálózatok listájában jelölje ki a törölni kívánt alhálózat tartalmazó virtuális hálózaton.
+3. A **beállítások**, jelölje be **alhálózatok**.
+4. Az alhálózatok listájában jelölje ki **...** , a jobb oldalon, az alhálózat törölni kívánt
+5. Válassza ki **törlése**, majd válassza ki **Igen**.
 
 **Parancsok**
 
-|Eszköz|Parancs|
-|---|---|
-|Azure CLI|[az hálózat vnet alhálózat frissítése](/cli/azure/network/vnet?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_vnet_update)|
-|PowerShell|[Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+- Az Azure CLI: [az hálózati virtuális hálózat törlése](/cli/azure/network/vnet?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_vnet_delete)
+- PowerShell: [Remove-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/remove-azurermvirtualnetworksubnetconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)
 
+## <a name="permissions"></a>Engedélyek
 
-## <a name="delete-subnet"></a>Alhálózat törlése
+Alhálózatok feladatait, a fiókot hozzá kell rendelni a [hálózat közreműködő](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkör vagy egy [egyéni](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szerepkör, amely hozzá van rendelve a megfelelő engedélyekkel a következő táblázatban felsorolt:
 
-Csak akkor, ha nincsenek erőforrások az alhálózatban lévő alhálózatot törölheti. Ha az alhálózatban lévő erőforrások, törölnie kell az erőforrást, amely az alhálózaton az alhálózat törlése előtt. Erőforrás törlése lépései eltérőek attól függően, hogy az erőforrás. Megtudhatja, hogyan alhálózatok-erőforrást törölni, olvassa el a dokumentációt, minden erőforrástípus, hogy törölni szeretné. Egy alhálózat törléséhez:
-
-1. Jelentkezzen be a [portal](https://portal.azure.com) egy olyan fiókkal, amely hozzá van rendelve a hálózat közreműködő szerepkört az előfizetés (minimum) engedélyeit. Szerepkörök és engedélyek hozzárendelése a fiókok kapcsolatos további információkért lásd: [Azure szerepköralapú hozzáférés-vezérlés beépített szerepkörök](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
-2. A portál keresési mezőbe, írja be a **virtuális hálózatok**. A keresési eredmények között kattintson **virtuális hálózatok**.
-3. Az a **virtuális hálózatok** panelen kattintson a virtuális hálózati alhálózat a törölni kívánt.
-4. A virtuális hálózati panelen a **beállítások**, kattintson a **alhálózatok**.
-5. Az alhálózatok listájának az alhálózatok paneljén megjelenő, kattintson a jobb gombbal a törléséhez kattintson a kívánt alhálózat **törlése**, és kattintson a **Igen** törölni az alhálózatot.
-
-**Parancsok**
-
-|Eszköz|Parancs|
-|---|---|
-|Azure CLI|[az hálózati virtuális hálózat törlése](/cli/azure/network/vnet?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_vnet_delete)|
-|PowerShell|[Remove-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/remove-azurermvirtualnetworksubnetconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
-
-## <a name="next-steps"></a>Következő lépések
-
-A virtuális gép egy alhálózat létrehozásához lásd: [hozzon létre egy virtuális hálózatot és az alhálózatban lévő virtuális gépek telepítése](quick-create-portal.md#create-virtual-machines).
+|Művelet                                                                |   Művelet neve                               |
+|-----------------------------------------------------------------------  |   -------------------------------------------  |
+|Microsoft.Network/virtualNetworks/subnets/read                           |   Virtuális hálózati alhálózat beolvasása                   |
+|Microsoft.Network/virtualNetworks/subnets/write                          |   Létrehozni vagy frissíteni a virtuális hálózati alhálózat      |
+|Microsoft.Network/virtualNetworks/subnets/delete                         |   Virtuális hálózati alhálózat törlése                |
+|Microsoft.Network/virtualNetworks/subnets/join/action                    |   Csatlakozás a virtuális hálózat                         |
+|Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action  |   Csatlakozás a Service alhálózathoz                     |
+|Microsoft.Network/virtualNetworks/subnets/virtualMachines/read           |   Virtuális hálózati alhálózat virtuális gépeinek beolvasása  |

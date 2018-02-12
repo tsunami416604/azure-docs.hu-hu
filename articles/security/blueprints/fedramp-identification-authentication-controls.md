@@ -1,6 +1,6 @@
 ---
-title: "FedRAMP Azure tervezetének Automation - azonosítási és hitelesítési"
-description: "Webes alkalmazások FedRAMP - azonosítási és hitelesítési"
+title: "Az Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - azonosítási és hitelesítési"
+description: "FedRAMP webes alkalmazások Automation - azonosítási és hitelesítési"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 5ceac04f3f5c58ac5810dda6c99b40ebc8ad736f
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 21b5c453716f99be26c8dd6400bb3489477b4956
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="identification-and-authentication-ia"></a>Azonosítási és hitelesítési (IA)
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének által létrehozott fiókok jogosultak az egyedi azonosítót. Beépített fiók nem egyedi azonosítót a rendszer letiltották vagy eltávolították. |
+| **Ügyfél** | Ez tervezetének által létrehozott fiókok jogosultak az egyedi azonosítót. Beépített fiók nem egyedi azonosítót a rendszer letiltották vagy eltávolították. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -119,7 +119,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Nincsenek megosztott/csoport fiókok engedélyezve vannak az Azure tervezetének által üzembe helyezett erőforrás. |
+| **Ügyfél** | Nincsenek megosztott/csoport fiókok engedélyezve vannak a tervezetének által üzembe helyezett erőforrás. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -133,7 +133,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének által telepített erőforrásokhoz való hozzáférést a beépített Kerberos-funkciók Azure Active Directory, az Active Directory és a Windows operációs rendszer által védett a ismétléses támadások. A Kerberos-hitelesítés, az ügyfél által küldött a hitelesítő további adatokat tartalmaz, például egy titkosított IP-listájában, a ügyfél időbélyegeket és a jegy élettartamát. Ha a rendszer játssza vissza a csomagot, a Timestamp típusú be van jelölve. Ha a Timestamp típusú korábbi, mint vagy ugyanaz, mint a korábbi hitelesítő, a csomag elutasítva. |
+| **Ügyfél** | Ez tervezetének által telepített erőforrásokhoz való hozzáférést a beépített Kerberos-funkciók Azure Active Directory, az Active Directory és a Windows operációs rendszer által védett a ismétléses támadások. A Kerberos-hitelesítés, az ügyfél által küldött a hitelesítő további adatokat tartalmaz, például egy titkosított IP-listájában, a ügyfél időbélyegeket és a jegy élettartamát. Ha a rendszer játssza vissza a csomagot, a Timestamp típusú be van jelölve. Ha a Timestamp típusú korábbi, mint vagy ugyanaz, mint a korábbi hitelesítő, a csomag elutasítva. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -147,7 +147,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének által telepített erőforrásokhoz való hozzáférést a beépített Kerberos-funkciók Azure Active Directory, az Active Directory és a Windows operációs rendszer által védett a ismétléses támadások. A Kerberos-hitelesítés, az ügyfél által küldött a hitelesítő további adatokat tartalmaz, például egy titkosított IP-listájában, a ügyfél időbélyegeket és a jegy élettartamát. Ha a rendszer játssza vissza a csomagot, a Timestamp típusú be van jelölve. Ha a Timestamp típusú korábbi, mint vagy ugyanaz, mint a korábbi hitelesítő, a csomag elutasítva. |
+| **Ügyfél** | Ez tervezetének által telepített erőforrásokhoz való hozzáférést a beépített Kerberos-funkciók Azure Active Directory, az Active Directory és a Windows operációs rendszer által védett a ismétléses támadások. A Kerberos-hitelesítés, az ügyfél által küldött a hitelesítő további adatokat tartalmaz, például egy titkosított IP-listájában, a ügyfél időbélyegeket és a jegy élettartamát. Ha a rendszer játssza vissza a csomagot, a Timestamp típusú be van jelölve. Ha a Timestamp típusú korábbi, mint vagy ugyanaz, mint a korábbi hitelesítő, a csomag elutasítva. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -217,7 +217,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének megadását kéri az ügyfél által megadott készlet az egyes egyedi fiókok üzembe helyezése során.  |
+| **Ügyfél** | Ez tervezetének megadását kéri az ügyfél által megadott készlet az egyes egyedi fiókok üzembe helyezése során.  |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -259,7 +259,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének egy ütemezett feladatot az Active Directory automatikusan letiltja a fiókok tétlen 35 nap elteltével valósítja meg. |
+| **Ügyfél** | Ez tervezetének egy ütemezett feladatot az Active Directory automatikusan letiltja a fiókok tétlen 35 nap elteltével valósítja meg. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -277,7 +277,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-ia-5a"></a>A NIST 800-53 vezérlő IA-5.a
+ ## <a name="nist-800-53-control-ia-5a"></a>NIST 800-53 Control IA-5.a
 
 #### <a name="authenticator-management"></a>Felügyeleti hitelesítő
 
@@ -301,7 +301,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | A fiókok az Azure tervezetének által létrehozott összes kezdeti hitelesítő tartalmát ellenőrzi a telepítés során az ügyfél által megadott IA-5 (1) a megadott követelményeknek.  |
+| **Ügyfél** | A tervezetének által létrehozott fiókok Tartalomtallózó kezdeti hitelesítő ellenőrzi a telepítés során az ügyfél által megadott IA-5 (1) a megadott követelményeknek.  |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -315,7 +315,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | A hitelesítők FedRAMP által megkövetelt erőssége az Azure tervezetének igazodhat követelmények használják. |
+| **Ügyfél** | A hitelesítők használt a tervezetének igazodhat követelményei erőssége FedRAMP követelményei szerint. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -343,7 +343,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének összetevőihez összes hitelesítők az alapértelmezett módosítottak. Hitelesítők ügyfél által megadott alatt is ez a megoldás központi telepítését. |
+| **Ügyfél** | Az alapértelmezett a tervezetének összetevőihez összes hitelesítők módosítottak. Hitelesítők ügyfél által megadott alatt is ez a megoldás központi telepítését. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -371,7 +371,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének, amelyhez az összes telepített virtuális gépek tartományhoz csatlakoztatott tartományvezérlő telepítését. A csoportházirend létrejött, és úgy konfigurálva, hogy a jelszó élettartama korlátozások (60 nap) megvalósítása. |
+| **Ügyfél** | Ez tervezetének, amelyhez az összes telepített virtuális gépek tartományhoz csatlakoztatott tartományvezérlő telepítését. A csoportházirend létrejött, és úgy konfigurálva, hogy a jelszó élettartama korlátozások (60 nap) megvalósítása. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -385,7 +385,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének valósítja meg a Key Vault szolgáltatás hitelesítő tartalom védelme a jogosulatlan és módosítását. A következő hitelesítők Key Vault vannak tárolva: az Azure-telepítés fiók, a virtuális gép rendszergazdai jelszót, az SQL Server szolgáltatásfiók jelszavát a jelszó. |
+| **Ügyfél** | Ez tervezetének valósítja meg a Key Vault szolgáltatás hitelesítő tartalom védelme a jogosulatlan és módosítását. A következő hitelesítők Key Vault vannak tárolva: az Azure-telepítés fiók, a virtuális gép rendszergazdai jelszót, az SQL Server szolgáltatásfiók jelszavát a jelszó. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -399,7 +399,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének valósítja meg a Key Vault szolgáltatás hitelesítő tartalom védelme a jogosulatlan és módosítását. A következő hitelesítők Key Vault vannak tárolva: az Azure-telepítés fiók, a virtuális gép rendszergazdai jelszót, az SQL Server szolgáltatásfiók jelszavát a jelszó. Key Vault hardveres biztonsági modulokkal (HSM) védett kulcsokkal titkosítja a kulcsok és titkos kulcsokat (például a hitelesítési kulcsokat, tárfiókok kulcsait, az adattitkosítási kulcsokat és jelszavak). |
+| **Ügyfél** | Ez tervezetének valósítja meg a Key Vault szolgáltatás hitelesítő tartalom védelme a jogosulatlan és módosítását. A következő hitelesítők Key Vault vannak tárolva: az Azure-telepítés fiók, a virtuális gép rendszergazdai jelszót, az SQL Server szolgáltatásfiók jelszavát a jelszó. Key Vault hardveres biztonsági modulokkal (HSM) védett kulcsokkal titkosítja a kulcsok és titkos kulcsokat (például a hitelesítési kulcsokat, tárfiókok kulcsait, az adattitkosítási kulcsokat és jelszavak). |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -413,7 +413,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Nincsenek megosztott/csoport fiókok engedélyezve vannak az Azure tervezetének által üzembe helyezett erőforrás. |
+| **Ügyfél** | Nincsenek megosztott/csoport fiókok engedélyezve vannak a tervezetének által üzembe helyezett erőforrás. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -427,7 +427,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének, amelyhez az összes telepített virtuális gépek tartományhoz csatlakoztatott tartományvezérlő telepítését. A csoportházirend létrejött, és kényszeríteni a virtuális gép helyi fiókok és az AD-fiókok jelszava foglalt bonyolultsági követelményeknek.  |
+| **Ügyfél** | Ez tervezetének, amelyhez az összes telepített virtuális gépek tartományhoz csatlakoztatott tartományvezérlő telepítését. A csoportházirend létrejött, és kényszeríteni a virtuális gép helyi fiókok és az AD-fiókok jelszava foglalt bonyolultsági követelményeknek.  |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -469,7 +469,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének, amelyhez az összes telepített virtuális gépek tartományhoz csatlakoztatott tartományvezérlő telepítését. A csoportházirend létrejött, és kényszeríteni, hogy a minimális (1 nap) és (60 nap) maximális élettartama korlátozásai helyi fiókjait és AD-fiókok korlátozásait. |
+| **Ügyfél** | Ez tervezetének, amelyhez az összes telepített virtuális gépek tartományhoz csatlakoztatott tartományvezérlő telepítését. A csoportházirend létrejött, és kényszeríteni, hogy a minimális (1 nap) és (60 nap) maximális élettartama korlátozásai helyi fiókjait és AD-fiókok korlátozásait. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -483,7 +483,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének, amelyhez az összes telepített virtuális gépek tartományhoz csatlakoztatott tartományvezérlő telepítését. A csoportházirend létrehozott, és kényszeríteni újbóli feltételek (24 jelszó) a helyi fiókok és Hirdetési fiókokra vonatkozó korlátozásokat. |
+| **Ügyfél** | Ez tervezetének, amelyhez az összes telepített virtuális gépek tartományhoz csatlakoztatott tartományvezérlő telepítését. A csoportházirend létrehozott, és kényszeríteni újbóli feltételek (24 jelszó) a helyi fiókok és Hirdetési fiókokra vonatkozó korlátozásokat. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -581,7 +581,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Felhasználói fiókok az Azure tervezetének telepítik közé tartoznak az AD és a helyi felhasználói fiókokhoz. Mindkét esetben adja meg a létrehozott jelszó követelményeket, hogy hozzon létre egy kezdeti jelszót, valamint a jelszómódosítást során kényszeríti-mechanizmust. Az Azure Active Directory az az automatizált eszköz alkalmazott annak meghatározására, hogy ha a jelszó hitelesítők elég erős a jelszó hosszát, összetettségét, elforgatás és élettartama korlátozásait a meglévő IA-5 (1) kielégítéséhez. Az Azure Active Directory biztosítja, hogy a létrehozásakor a jelszó hitelesítő erőssége megfelel ezeknek a szabványoknak. Ez a megoldás központi telepítéséhez használt felhasználói által megadott jelszavak jelszó erőssége követelményeinek megfelelően be van jelölve. |
+| **Ügyfél** | Felhasználói fiókok telepítik a tervezetének közé tartoznak az AD és a helyi felhasználói fiókokhoz. Mindkét esetben adja meg a létrehozott jelszó követelményeket, hogy hozzon létre egy kezdeti jelszót, valamint a jelszómódosítást során kényszeríti-mechanizmust. Az Azure Active Directory az az automatizált eszköz alkalmazott annak meghatározására, hogy ha a jelszó hitelesítők elég erős a jelszó hosszát, összetettségét, elforgatás és élettartama korlátozásait a meglévő IA-5 (1) kielégítéséhez. Az Azure Active Directory biztosítja, hogy a létrehozásakor a jelszó hitelesítő erőssége megfelel ezeknek a szabványoknak. Ez a megoldás központi telepítéséhez használt felhasználói által megadott jelszavak jelszó erőssége követelményeinek megfelelően be van jelölve. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -609,7 +609,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | A titkosítatlan statikus hitelesítők nincs használatban az alkalmazásokba beágyazott parancsfájlok elérését, vagy az Azure tervezetének által telepített funkcióbillentyűk. Bármely olyan parancsprogram vagy alkalmazás használ egy hitelesítő hívást indít az Azure Key Vault tároló minden használat előtt. Az Azure Key Vault tárolók eléréséhez naplózott, ami lehetővé teszi, hogy ez a Tiltás megsértésének észlelése szolgáltatásfiók használata az Azure Key Vault tároló megfelelő hívása nélkül egy rendszerhez való hozzáférés. |
+| **Ügyfél** | A titkosítatlan statikus hitelesítők nincs használatban az alkalmazásokba beágyazott parancsfájlok elérését, vagy a tervezetének által telepített funkcióbillentyűk. Bármely olyan parancsprogram vagy alkalmazás használ egy hitelesítő hívást indít az Azure Key Vault tároló minden használat előtt. Az Azure Key Vault tárolók eléréséhez naplózott, ami lehetővé teszi, hogy ez a Tiltás megsértésének észlelése szolgáltatásfiók használata az Azure Key Vault tároló megfelelő hívása nélkül egy rendszerhez való hozzáférés. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -651,7 +651,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Gyorsítótárazott hitelesítő használatának engedélyezése az Azure tervezetének által telepített erőforrások vannak konfigurálva. A telepített virtuális gépek hitelesítéshez az szükséges, hogy a hitelesítő is meg kell adni a hitelesítés során. |
+| **Ügyfél** | Nincs a tervezetének által üzembe helyezett erőforrás konfigurált gyorsítótárazott hitelesítők használatának engedélyezése. A telepített virtuális gépek hitelesítéshez az szükséges, hogy a hitelesítő is meg kell adni a hitelesítés során. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -665,7 +665,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének által telepített erőforrásokhoz való hozzáférés távoli asztalon keresztül, és Windows-hitelesítés támaszkodik. A Windows-hitelesítés munkamenetek alapértelmezés elfedi a jelszavak, mikor adjon meg hitelesítési munkamenet során.  |
+| **Ügyfél** | Ez tervezetének által telepített erőforrásokhoz való hozzáférés távoli asztalon keresztül, és Windows-hitelesítés támaszkodik. A Windows-hitelesítés munkamenetek alapértelmezés elfedi a jelszavak, mikor adjon meg hitelesítési munkamenet során.  |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -679,7 +679,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Windows-hitelesítést, a távoli asztal és a BitLocker által az Azure tervezetének kell használni. Ezek az összetevők beállítható úgy, hogy a titkosítási modulok FIPS 140 érvényesítése támaszkodnak. |
+| **Ügyfél** | Windows-hitelesítést, a távoli asztal és a BitLocker a tervezetének alkalmazottja. Ezek az összetevők beállítható úgy, hogy a titkosítási modulok FIPS 140 érvényesítése támaszkodnak. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 

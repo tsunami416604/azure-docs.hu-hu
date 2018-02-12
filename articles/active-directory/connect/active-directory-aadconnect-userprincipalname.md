@@ -8,11 +8,11 @@ ms.topic: article
 ms.workload: identity
 ms.service: active-Directory
 manager: mtillman
-ms.openlocfilehash: 1fca41a8498cec506298748acd3511a5c5802d26
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 96b12fbddd4293c55e9029b194416541ca44c622
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Az Azure AD UserPrincipalName feltöltése
 
@@ -67,9 +67,10 @@ Az Azure AD UserPrincipalName attribútum értéke beállítható MOERA, mert fo
 Amikor első alkalommal olyan felhasználói objektum szinkronizálja az Azure AD-bérlő számára, az Azure AD a következő, a megadott sorrendben ellenőrzi, és az első meglévőt MailNickName attribútum értéket állítja be:
 
 - A helyszíni mailNickName attribútum
-- A helyszíni levél attribútum előtagja
 - Elsődleges SMTP-cím előtagja
+- A helyszíni levél attribútum előtagja
 - A helyszíni userPrincipalName attribútum/másodlagos bejelentkezési azonosító előtagja
+- Másodlagos SMTP-cím előtagja
 
 Ha olyan felhasználói objektum a frissítéseket az Azure AD-bérlő történő szinkronizálása befejeződik, az Azure AD frissíti a MailNickName attribútum értéke csak abban az esetben, ha van egy frissítést adunk ki a helyszíni mailNickName attribútum értéke.
 
@@ -85,26 +86,26 @@ Az alábbiakban példát arra vonatkozóan, hogyan az egyszerű felhasználóné
 
 A helyszíni felhasználói objektum:
 - mailNickName: &lt;nincs beállítva&gt;
-- e-mail:us1@contoso.com
-- proxyAddresses: {SMTP:us2@contoso.com}
+- proxyAddresses: {SMTP:us1@contoso.com}
+- e-mail:us2@contoso.com
 - userPrincipalName: us3@contoso.com"
 
 Szinkronizálja az Azure AD-bérlő felhasználói objektum első alkalommal
-- A helyszíni mail attribútum előtag Azure AD MailNickName attribútum értéke.
+- Elsődleges SMTP-cím előtagján Azure AD MailNickName attribútum értéke.
 - MOERA beállítása &lt;MailNickName&gt;&#64;&lt; kezdeti tartomány&gt;.
 - Azure AD UserPrincipalName attribútum értéke MOERA.
 
 Az Azure AD-bérlő felhasználói objektum:
 - MailNickName: us1           
-- UserPrincipalName:us1@contoso.onmicrosoft.com
+- userPrincipalName:us1@contoso.onmicrosoft.com
 
 
 ### <a name="scenario-2-non-verified-upn-suffix--set-on-premises-mailnickname-attribute"></a>2. eset: Nem ellenőrzött UPN-utótagot – beállítása a helyszíni mailNickName attribútum
 
 A helyszíni felhasználói objektum:
 - mailNickName: us4
-- e-mail:us1@contoso.com
-- proxyAddresses: {SMTP:us2@contoso.com}
+- proxyAddresses: {SMTP:us1@contoso.com}
+- e-mail:us2@contoso.com
 - userPrincipalName:us3@contoso.com
 
 Frissítés Azure AD-bérlő helyszíni mailNickName attribútum szinkronizálása
@@ -113,14 +114,14 @@ Frissítés Azure AD-bérlő helyszíni mailNickName attribútum szinkronizálá
 
 Az Azure AD-bérlő felhasználói objektum:
 - MailNickName: us4
-- UserPrincipalName:us1@contoso.onmicrosoft.com
+- userPrincipalName:us1@contoso.onmicrosoft.com
 
 ### <a name="scenario-3-non-verified-upn-suffix--update-on-premises-userprincipalname-attribute"></a>3. eset: Nem ellenőrzött UPN-utótagot – frissítés a helyszíni userPrincipalName attribútum
 
 A helyszíni felhasználói objektum:
 - mailNickName: us4
-- e-mail:us1@contoso.com
-- proxyAddresses: {SMTP:us2@contoso.com}
+- proxyAddresses: {SMTP:us1@contoso.com}
+- e-mail:us2@contoso.com
 - userPrincipalName:us5@contoso.com
 
 Frissítés a userPrincipalName attribútum a helyszíni Azure AD-bérlő szinkronizálni
@@ -130,14 +131,14 @@ Frissítés a userPrincipalName attribútum a helyszíni Azure AD-bérlő szinkr
 
 Az Azure AD-bérlő felhasználói objektum:
 - MailNickName: us4
-- UserPrincipalName:us4@contoso.onmicrosoft.com
+- userPrincipalName:us4@contoso.onmicrosoft.com
 
-### <a name="scenario-4-non-verified-upn-suffix--update-on-premises-mail-attribute-and-primary-smtp-address"></a>4. forgatókönyv: Nem ellenőrzött UPN-utótagot – frissítés a helyszíni levél attribútum és az elsődleges SMTP-cím
+### <a name="scenario-4-non-verified-upn-suffix--update-primary-smtp-address-and-on-premises-mail-attribute"></a>4. forgatókönyv: A nem ellenőrzött UPN-utótagot – frissítés elsődleges SMTP-cím és a helyszíni mail attribútum
 
 A helyszíni felhasználói objektum:
 - mailNickName: us4
-- e-mail:us6@contoso.com
-- proxyAddresses: {SMTP:us7@contoso.com}
+- proxyAddresses: {SMTP:us6@contoso.com}
+- e-mail:us7@contoso.com
 - userPrincipalName:us5@contoso.com
 
 Szinkronizálás a helyszíni levél attribútum és az Azure AD-bérlő elsődleges SMTP-címének frissítése
@@ -145,14 +146,14 @@ Szinkronizálás a helyszíni levél attribútum és az Azure AD-bérlő elsődl
 
 Az Azure AD-bérlő felhasználói objektum:
 - MailNickName: us4
-- UserPrincipalName:us4@contoso.onmicrosoft.com
+- userPrincipalName:us4@contoso.onmicrosoft.com
 
 ### <a name="scenario-5-verified-upn-suffix--update-on-premises-userprincipalname-attribute-suffix"></a>5. forgatókönyv: Ellenőrzött UPN-utótagot – frissítés a helyszíni userPrincipalName attribútum utótag
 
 A helyszíni felhasználói objektum:
 - mailNickName: us4
-- e-mail:us6@contoso.com
-- proxyAddresses: {SMTP:us7@contoso.com}
+- proxyAddresses: {SMTP:us6@contoso.com}
+- e-mail:us7@contoso.com
 - serPrincipalName:us5@verified.contoso.com
 
 Szinkronizálja a helyszíni userPrincipalName attribútum a Azure AD-bérlő frissítése
@@ -161,7 +162,7 @@ Szinkronizálja a helyszíni userPrincipalName attribútum a Azure AD-bérlő fr
 
 Az Azure AD-bérlő felhasználói objektum:
 - MailNickName: us4     
-- UserPrincipalName:us5@verified.contoso.com
+- userPrincipalName:us5@verified.contoso.com
 
 ## <a name="next-steps"></a>További lépések
 - [A helyszíni címtárak integrálása az Azure Active Directoryval](active-directory-aadconnect.md)

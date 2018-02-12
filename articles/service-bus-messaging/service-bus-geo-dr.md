@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: sethm
-ms.openlocfilehash: fdeb9ba55fc8eade95f6fca88f47dd12aa18a480
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 9cbeff82f7a237c813ea91cd83e9273cad934991
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 02/11/2018
 ---
-# <a name="azure-service-bus-geo-disaster-recovery"></a>Az Azure Service Bus földrajzi-vész-helyreállítási
+# <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus Geo-disaster recovery
 
 Ha a teljes Azure-régiók vagy adatközpontok (Ha nincs [rendelkezésre állási zónák](../availability-zones/az-overview.md) használt) leállás következik be, nagyon fontos az adatok feldolgozásához továbbra is működik egy másik régióban vagy datacenter. Ilyen *földrajzi-vész-helyreállítási* és *georeplikáció* bármely vállalati fontos funkciókat. Az Azure Service Bus földrajzi-vész-helyreállítási és a georeplikáció, a névterek szintjén is támogatja. 
 
@@ -99,13 +99,13 @@ Ezzel a kiadással szem előtt tartani a következő érdemes figyelembe venni:
 
 1. A feladatátvételi tervezés során is figyelembe kell venni a idő tényező. Például ha több mint 15-20 percig kapcsolat megszakad, előfordulhat, hogy mellett dönt kezdeményezze a feladatátvételt. 
  
-2. Azt a tényt, hogy nincs adat replikálódik azt jelenti, hogy a jelenleg aktív munkamenetek nem replikálva vannak. Továbbá, kettős észlelés és ütemezett üzenetek esetleg nem működnek. Új munkamenetek, ütemezett üzenetek és új ismétlődések fog működni. 
+2. Azt a tényt, hogy nincs adat replikálódik azt jelenti, hogy a jelenleg aktív munkamenetek nem replikálva vannak. Továbbá, kettős észlelés és ütemezett üzenetek esetleg nem működnek. Új munkamenetek, új ütemezett üzenetek és új ismétlődések fog működni. 
 
 3. Egy összetett elosztott infrastruktúra feladatátvételét kell [kipróbálni](/azure/architecture/resiliency/disaster-recovery-azure-applications#disaster-simulation) legalább egyszer. 
 
 4. Entitások szinkronizálása eltarthat egy ideig, körülbelül 50-100 entitások / perc. Előfizetések és szabályok is entitásokat is számítanak. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse meg a földrajzi-vész-helyreállítási [itt REST API-referenciában](/rest/api/servicebus/disasterrecoveryconfigs).
 - Futtassa a földrajzi-vész-helyreállítási [mintát a Githubon](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/SBGeoDR2).

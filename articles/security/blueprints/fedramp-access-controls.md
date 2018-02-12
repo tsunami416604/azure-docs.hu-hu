@@ -1,6 +1,6 @@
 ---
-title: "FedRAMP Azure tervezetének Automation - hozzáférés-vezérlés"
-description: "Webes alkalmazásokhoz, a FedRAMP - hozzáférés-vezérlés"
+title: "Az Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - hozzáférés-vezérlés"
+description: "FedRAMP webes alkalmazások Automation - hozzáférés-vezérlés"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: a7a840b338af3aa6c6a71f2db3cff1e36a8a6794
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 73ce33bc6136b9b76661dc9e29b3a11c3eabc5f8
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="access-control-ac"></a>Hozzáférés-vezérlés (AC)
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének alapul, és valósítja meg a következő rendszer fióktípus: Azure Active Directory-felhasználók (üzembe helyezéséhez és kezelése az Azure-erőforrások elérésére használt), Windows operációs rendszer felhasználók (Active Directory által kezelt), SQL Server szolgáltatásfiókja. |
+| **Ügyfél** | Ez tervezetének alapul, és valósítja meg a következő rendszer fióktípus: Azure Active Directory-felhasználók (üzembe helyezéséhez és kezelése az Azure-erőforrások elérésére használt), Windows operációs rendszer felhasználók (Active Directory által kezelt), SQL Server szolgáltatásfiókja. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -133,7 +133,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének megvalósítja az OMS biztonsági és hitelesítési megoldás identitások és hozzáférések irányítópult. Ez az irányítópult lehetővé teszi, hogy a fiók kezelők figyelése információ rendszer fiókok használatát. |
+| **Ügyfél** | Ez tervezetének megvalósítja az OMS biztonsági és hitelesítési megoldás identitások és hozzáférések irányítópult. Ez az irányítópult lehetővé teszi, hogy a fiók kezelők figyelése információ rendszer fiókok használatát. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -203,7 +203,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének megvalósítja az OMS biztonsági és hitelesítési megoldás identitások és hozzáférések irányítópult. Ez az irányítópult engedélyezése fiók kezelők figyelése információ rendszer fiókok használatát. OMS beállítható úgy, hogy küld riasztást, ha a rendellenes tevékenységek gyanús vagy más előre meghatározott események következnek be. |
+| **Ügyfél** | Ez tervezetének megvalósítja az OMS biztonsági és hitelesítési megoldás identitások és hozzáférések irányítópult. Ez az irányítópult lehetővé teszi, hogy a fiók kezelők figyelése információ rendszer fiókok használatát. OMS beállítható úgy, hogy küld riasztást, ha a rendellenes tevékenységek gyanús vagy más előre meghatározott események következnek be. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -217,7 +217,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének nem ideiglenes vagy vészhelyzeti fiókokat kell telepítenie. Ha nem, manuálisan letiltva, a telepített tartományvezérlő automatikusan letiltja összes inaktív fiókok 35 nap után. |
+| **Ügyfél** | Ez tervezetének nem ideiglenes vagy vészhelyzeti fiókokat kell telepítenie. Ha nem, manuálisan letiltva, a telepített tartományvezérlő automatikusan letiltja összes inaktív fiókok 35 nap után. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -231,7 +231,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | A tartományvezérlő által az Azure tervezetének telepített összes felhasználói fiók letiltása tétlen 35 nap után van konfigurálva. |
+| **Ügyfél** | A tartományvezérlő a tervezetének által telepített összes felhasználói fiók letiltása tétlen 35 nap után van konfigurálva. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -245,7 +245,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének valósítja meg a következő rendszer fióktípus: Azure Active Directory-felhasználók, a Windows operációs rendszer felhasználók, az SQL Server szolgáltatásfiókja. Az Azure Active Directory-fiók felügyeleti műveletek generál egy eseményt az Azure tevékenységnapló; Az operációs rendszer szintű fiók felügyeleti műveletek esemény létrehozása a rendszernaplóba. Ezek a naplók Naplóelemzési által gyűjtött, és az OMS-tárház tárolja. OMS beállítható úgy, hogy küld riasztást, előre meghatározott események bekövetkezésekor.  |
+| **Ügyfél** | Ez tervezetének valósítja meg a következő rendszer fióktípus: Azure Active Directory-felhasználók, a Windows operációs rendszer felhasználók, az SQL Server szolgáltatásfiókja. Az Azure Active Directory-fiók felügyeleti műveletek generál egy eseményt az Azure tevékenységnapló; Az operációs rendszer szintű fiók felügyeleti műveletek esemény létrehozása a rendszernaplóba. Ezek a naplók Naplóelemzési által gyűjtött, és az OMS-tárház tárolja. OMS beállítható úgy, hogy küld riasztást, előre meghatározott események bekövetkezésekor.  |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -273,7 +273,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének valósítja meg a következő rendszer fióktípus: Azure Active Directory-felhasználók, a Windows operációs rendszer felhasználók, az SQL Server szolgáltatásfiókja. Az Azure Active Directory jogosultságot megvalósított szerepköralapú hozzáférés-vezérlés használatával rendelhet a felhasználói szerepkörök; Active Directory jogosultságot szerepköralapú hozzáférés-vezérlés segítségével felhasználókat rendelhet a biztonsági csoportokat lehet létrehozni. Ezek a szerepkör-alapú rendszerek bővíthető az ügyfél kritikus igényeinek. |
+| **Ügyfél** | Ez tervezetének valósítja meg a következő rendszer fióktípus: Azure Active Directory-felhasználók, a Windows operációs rendszer felhasználók, az SQL Server szolgáltatásfiókja. Az Azure Active Directory jogosultságot megvalósított szerepköralapú hozzáférés-vezérlés használatával rendelhet a felhasználói szerepkörök; Active Directory jogosultságot szerepköralapú hozzáférés-vezérlés segítségével felhasználókat rendelhet a biztonsági csoportokat lehet létrehozni. Ezek a szerepkör-alapú rendszerek bővíthető az ügyfél kritikus igényeinek. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -287,7 +287,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének megvalósítja az OMS biztonsági naplózási megoldás azonosítása és irányítópulton. Ez az irányítópult lehetővé teszi, hogy a fiók kezelők figyelése információ rendszer fiókok használatát. Ez a megoldás kiemelt szerepkör-hozzárendelések jelentésének lehet lekérdezni. |
+| **Ügyfél** | Ez tervezetének megvalósítja az OMS biztonsági naplózási megoldás azonosítása és irányítópulton. Ez az irányítópult lehetővé teszi, hogy a fiók kezelők figyelése információ rendszer fiókok használatát. Ez a megoldás kiemelt szerepkör-hozzárendelések jelentésének lehet lekérdezni. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -315,7 +315,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Nincsenek megosztott/csoport fiókok engedélyezve vannak az Azure tervezetének által üzembe helyezett erőforrás. |
+| **Ügyfél** | Nincsenek megosztott/csoport fiókok engedélyezve vannak a tervezetének által üzembe helyezett erőforrás. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -329,7 +329,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Nincsenek megosztott/csoport fiókok engedélyezve vannak az Azure tervezetének által üzembe helyezett erőforrás. |
+| **Ügyfél** | Nincsenek megosztott/csoport fiókok engedélyezve vannak a tervezetének által üzembe helyezett erőforrás. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -343,7 +343,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének, amelyhez az összes telepített virtuális gépek tartományhoz csatlakoztatott tartományvezérlő telepítését. A csoportházirend előfordulhat, hogy az Active Directory ki és beállított idő napi korlátozások vagy más fiók használati feltételek végrehajtásához. |
+| **Ügyfél** | Ez tervezetének, amelyhez az összes telepített virtuális gépek tartományhoz csatlakoztatott tartományvezérlő telepítését. A csoportházirend előfordulhat, hogy az Active Directory ki és beállított idő napi korlátozások vagy más fiók használati feltételek végrehajtásához. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -357,7 +357,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének megvalósítja az OMS biztonsági és hitelesítési megoldás identitások és hozzáférések irányítópult. Ez az irányítópult lehetővé teszi, hogy a fiók kezelők hozzáférések elleni telepített erőforrások figyelése. |
+| **Ügyfél** | Ez tervezetének megvalósítja az OMS biztonsági és hitelesítési megoldás identitások és hozzáférések irányítópult. Ez az irányítópult lehetővé teszi, hogy a fiók kezelők hozzáférések elleni telepített erőforrások figyelése. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -371,7 +371,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének megvalósítja az OMS biztonsági és hitelesítési megoldás identitások és hozzáférések irányítópult. Ez az irányítópult fiók kezelők hozzáférések elleni telepített erőforrások figyelése engedélyezése. Ez a megoldás beállítható úgy, hogy küld riasztást, ha a rendellenes tevékenységek gyanús vagy más előre meghatározott események következnek be. |
+| **Ügyfél** | Ez tervezetének megvalósítja az OMS biztonsági és hitelesítési megoldás identitások és hozzáférések irányítópult. Ez az irányítópult lehetővé teszi, hogy a fiók kezelők hozzáférések elleni telepített erőforrások figyelése. Ez a megoldás beállítható úgy, hogy küld riasztást, ha a rendellenes tevékenységek gyanús vagy más előre meghatározott események következnek be. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -391,7 +391,7 @@ ms.lasthandoff: 11/23/2017
 
  ## <a name="nist-800-53-control-ac-3"></a>A NIST 800-53 vezérlő AC-3
 
-#### <a name="access-enforcement"></a>Hozzáférés kényszerítése
+#### <a name="access-enforcement"></a>Access Enforcement
 
 **AC-3** az adatokat a rendszer érvénybe lépteti a jóváhagyott engedélyek logikai erőforrások elérése érdekében információkat és a rendszer megfelel-e megfelelő hozzáférés-vezérlési házirendeket.
 
@@ -399,7 +399,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének kikényszeríti a logikai hozzáférési engedélyek kényszeríti ki az Azure Active Directory felhasználók hozzárendelése szerepkörökhöz, Active Directory-felhasználók biztonsági csoportokra való hozzárendelésével szerepköralapú hozzáférés-vezérlés használatával, és a Windows operációs rendszer szintű szabályozza. Az Azure Active Directory-szerepkörök hozzárendelve a felhasználókhoz, vagy csoportok az Azure erőforrás-, csoport vagy előfizetés erőforrásokhoz való logikai hozzáférés szabályozása. Active Directory biztonsági csoportokat az operációs rendszer szintű erőforrások és a funkciók való logikai hozzáférést. |
+| **Ügyfél** | Ez tervezetének kikényszeríti a logikai hozzáférési engedélyek kényszeríti ki az Azure Active Directory felhasználók hozzárendelése szerepkörökhöz, Active Directory-felhasználók biztonsági csoportokra való hozzárendelésével szerepköralapú hozzáférés-vezérlés használatával, és a Windows operációs rendszer szintű szabályozza. Az Azure Active Directory-szerepkörök hozzárendelve a felhasználókhoz, vagy csoportok az Azure erőforrás-, csoport vagy előfizetés erőforrásokhoz való logikai hozzáférés szabályozása. Active Directory biztonsági csoportokat az operációs rendszer szintű erőforrások és a funkciók való logikai hozzáférést. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -413,7 +413,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének kikényszeríti információk folyamata korlátozások Alkalmazásátjáró, amelyben erőforrások telepítése, alhálózatok alkalmazott hálózati biztonsági csoportok segítségével és a belső terheléselosztót. Hálózati biztonsági csoportok biztosítására, hogy az információáramlás engedélyezett szabályok alapján erőforrások között. Alkalmazás-átjáró és a terheléselosztó dinamikusan irányíthatja a forgalmat egy adott erőforráshoz való jóváhagyott szerepkörök alapján. |
+| **Ügyfél** | Ez tervezetének kikényszeríti információk folyamata korlátozások Alkalmazásátjáró, amelyben erőforrások telepítése, alhálózatok alkalmazott hálózati biztonsági csoportok segítségével és a belső terheléselosztót. Hálózati biztonsági csoportok biztosítására, hogy az információáramlás engedélyezett szabályok alapján erőforrások között. Alkalmazás-átjáró és a terheléselosztó dinamikusan irányíthatja a forgalmat egy adott erőforráshoz való jóváhagyott szerepkörök alapján. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -483,7 +483,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének hajt végre, amelyen beállítható úgy, hogy a szervezeti követelményeknek megfelelően azon különálló szerepköralapú hozzáférés-vezérlés. Az Azure Active Directory jogosultságot megvalósított szerepköralapú hozzáférés-vezérlés használatával rendelhet a felhasználói szerepkörök; Active Directory jogosultságot szerepköralapú hozzáférés-vezérlés segítségével felhasználókat rendelhet a biztonsági csoportokat lehet létrehozni. |
+| **Ügyfél** | Ez tervezetének valósítja meg, amely beállítható úgy, hogy a szervezeti követelményeknek megfelelően azon különálló szerepköralapú hozzáférés-vezérlést. Az Azure Active Directory jogosultságot megvalósított szerepköralapú hozzáférés-vezérlés használatával rendelhet a felhasználói szerepkörök; Active Directory jogosultságot szerepköralapú hozzáférés-vezérlés segítségével felhasználókat rendelhet a biztonsági csoportokat lehet létrehozni. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -497,7 +497,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének valósítja meg a szerepköralapú hozzáférés-vezérlést az korlátozhatja a felhasználókat csak explicit módon hozzárendelt jogosultságok. Az Azure Active Directory jogosultságot megvalósított szerepköralapú hozzáférés-vezérlés használatával rendelhet a felhasználói szerepkörök; Active Directory jogosultságot szerepköralapú hozzáférés-vezérlés segítségével felhasználókat rendelhet a biztonsági csoportokat lehet létrehozni.  |
+| **Ügyfél** | Ez tervezetének valósítja meg a szerepköralapú hozzáférés-vezérlést az korlátozhatja a felhasználókat csak explicit módon hozzárendelt jogosultságok. Az Azure Active Directory jogosultságot megvalósított szerepköralapú hozzáférés-vezérlés használatával rendelhet a felhasználói szerepkörök; Active Directory jogosultságot szerepköralapú hozzáférés-vezérlés segítségével felhasználókat rendelhet a biztonsági csoportokat lehet létrehozni.  |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -595,7 +595,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének valósítja meg a szerepköralapú hozzáférés-vezérlést az korlátozhatja a felhasználókat csak explicit módon hozzárendelt jogosultságok. Virtuális gép operációs rendszer szintű védelmet nem engedélyezik a szoftvert a szoftver végrehajtása felhasználók magasabb jogosultsági szinten hajtható végre. |
+| **Ügyfél** | Ez tervezetének valósítja meg a szerepköralapú hozzáférés-vezérlést az korlátozhatja a felhasználókat csak explicit módon hozzárendelt jogosultságok. Virtuális gép operációs rendszer szintű védelmet nem engedélyezik a szoftvert a szoftver végrehajtása felhasználók magasabb jogosultsági szinten hajtható végre. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -609,7 +609,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének az OMS a Naplóelemzés szolgáltatás megvalósítja. Telepített virtuális gépek és az Azure storage-fiókok diagnosztika is, amelyeknek nincs csatlakoztatott Naplóelemzési biztosítására jogosultsági szintű funkciók végrehajtását ellenőrzi, hogy. |
+| **Ügyfél** | Ez tervezetének az OMS a Naplóelemzés szolgáltatás megvalósítja. Telepített virtuális gépek és az Azure storage-fiókok diagnosztika is, amelyeknek nincs csatlakoztatott Naplóelemzési biztosítására jogosultsági szintű funkciók végrehajtását ellenőrzi, hogy. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -623,7 +623,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének valósítja meg a szerepköralapú hozzáférés-vezérlést az korlátozhatja a felhasználókat csak explicit módon hozzárendelt jogosultságok.  |
+| **Ügyfél** | Ez tervezetének valósítja meg a szerepköralapú hozzáférés-vezérlést az korlátozhatja a felhasználókat csak explicit módon hozzárendelt jogosultságok.  |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -637,7 +637,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure portál korlátok egymást követő érvénytelen bejelentkezési kísérletek felhasználók. A csoportházirendet alkalmazza az összes virtuális gépet az Azure tervezetének által központilag telepített operációs rendszer szintjén. A házirend korlátozza a felhasználók egy 15 perces időszakon belül legfeljebb három egymást követő érvénytelen bejelentkezési kísérletek. |
+| **Ügyfél** | Az Azure portál korlátok egymást követő érvénytelen bejelentkezési kísérletek felhasználók. A csoportházirendet alkalmazza az összes virtuális gép által a tervezetének telepített operációs rendszer szintjén. A házirend korlátozza a felhasználók egy 15 perces időszakon belül legfeljebb három egymást követő érvénytelen bejelentkezési kísérletek. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -651,7 +651,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure-portálon fiókok zárolja, egymást követő érvénytelen bejelentkezési kísérlet felhasználók után. A csoportházirendet alkalmazza az összes virtuális gépet az Azure tervezetének által központilag telepített operációs rendszer szintjén. A házirend fiókok zárolja három órán keresztül a felhasználók által a három egymást követő érvénytelen bejelentkezési kísérlet után. |
+| **Ügyfél** | Az Azure-portálon fiókok zárolja, egymást követő érvénytelen bejelentkezési kísérlet felhasználók után. A csoportházirendet alkalmazza az összes virtuális gép által a tervezetének telepített operációs rendszer szintjén. A házirend fiókok zárolja három órán keresztül a felhasználók által a három egymást követő érvénytelen bejelentkezési kísérlet után. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -679,7 +679,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének, amelyhez az összes telepített virtuális gépek tartományhoz csatlakoztatott tartományvezérlő telepítését. A csoportházirend a bejelentkezés előtt a felhasználóknak megjelenített használata rendszerértesítőként valósítja meg. Megjegyzés: Az Azure szerkezeti terve valósítja meg egy példa Rendszerértesítő használja. Az ügyfél ezt a szöveget a szervezet és/vagy szabályozó szervezet követelményeinek teljesítéséhez kell szerkeszteni. |
+| **Ügyfél** | Ez tervezetének, amelyhez az összes telepített virtuális gépek tartományhoz csatlakoztatott tartományvezérlő telepítését. A csoportházirend a bejelentkezés előtt a felhasználóknak megjelenített használata rendszerértesítőként valósítja meg. Megjegyzés: A tervezetének megvalósítja egy példa Rendszerértesítő használja. Az ügyfél ezt a szöveget a szervezet és/vagy szabályozó szervezet követelményeinek teljesítéséhez kell szerkeszteni. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -693,7 +693,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének, amelyhez az összes telepített virtuális gépek tartományhoz csatlakoztatott tartományvezérlő telepítését. A csoportházirend a bejelentkezés előtt a felhasználóknak megjelenített használata rendszerértesítőként valósítja meg. A felhasználó megerősíti kell ahhoz, hogy jelentkezzen be az értesítést. |
+| **Ügyfél** | Ez tervezetének, amelyhez az összes telepített virtuális gépek tartományhoz csatlakoztatott tartományvezérlő telepítését. A csoportházirend a bejelentkezés előtt a felhasználóknak megjelenített használata rendszerértesítőként valósítja meg. A felhasználó megerősíti kell ahhoz, hogy jelentkezzen be az értesítést. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -721,7 +721,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az operációs rendszer házirendjét az Azure tervezetének által központilag telepített virtuális gépek. A házirend valósítja meg az egyidejű munkamenet korlátozások (két munkamenet). |
+| **Ügyfél** | Az operációs rendszer házirendjét a tervezetének által központilag telepített virtuális gépek. A házirend valósítja meg az egyidejű munkamenet korlátozások (két munkamenet). |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -735,7 +735,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének, amelyhez az összes telepített virtuális gépek tartományhoz csatlakoztatott tartományvezérlő telepítését. A csoportházirend az RDP-munkamenetekhez valósítja meg az inaktivitási zár. Felhasználók manuális kezdeményezhet a zárolást. |
+| **Ügyfél** | Ez tervezetének, amelyhez az összes telepített virtuális gépek tartományhoz csatlakoztatott tartományvezérlő telepítését. A csoportházirend az RDP-munkamenetekhez valósítja meg az inaktivitási zár. Felhasználók manuális kezdeményezhet a zárolást. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -749,7 +749,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének, amelyhez az összes telepített virtuális gépek tartományhoz csatlakoztatott tartományvezérlő telepítését. A csoportházirend az RDP-munkamenetekhez valósítja meg az inaktivitási zár. Felhasználók ismét hitelesítenie kell magát a munkamenet zárolásának feloldásához.  |
+| **Ügyfél** | Ez tervezetének, amelyhez az összes telepített virtuális gépek tartományhoz csatlakoztatott tartományvezérlő telepítését. A csoportházirend az RDP-munkamenetekhez valósítja meg az inaktivitási zár. Felhasználók ismét hitelesítenie kell magát a munkamenet zárolásának feloldásához.  |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -763,7 +763,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének, amelyhez az összes telepített virtuális gépek tartományhoz csatlakoztatott tartományvezérlő telepítését. A csoportházirend az RDP-munkamenetekhez valósítja meg az inaktivitási zár. A munkamenet zárolási elfedi korábban látható információt. |
+| **Ügyfél** | Ez tervezetének, amelyhez az összes telepített virtuális gépek tartományhoz csatlakoztatott tartományvezérlő telepítését. A csoportházirend az RDP-munkamenetekhez valósítja meg az inaktivitási zár. A munkamenet zárolási elfedi korábban látható információt. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -777,7 +777,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | A távoli asztali munkamenetgazda konfigurálása az Azure tervezetének által telepített Windows virtuális gépek beállítható úgy, hogy a szervezet munkamenet lezárás követelményeknek. |
+| **Ügyfél** | A távoli asztali munkamenetgazda konfigurálása a Windows virtuális gépek által a tervezetének telepített beállítható úgy, hogy a szervezet munkamenet lezárás követelményeknek. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -791,7 +791,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure portál és a virtuális gép telepített operációs rendszerek által a Azure tervezetének használja a kijelentkezési kezdeményezésének engedélyezése. |
+| **Ügyfél** | Az Azure portál és a virtuális gép telepített operációs rendszerek által a tervezetének használja a kijelentkezési kezdeményezésének engedélyezése. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -805,7 +805,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure portál és a virtuális gép telepített operációs rendszerek által a Azure tervezetének használja a kijelentkezési kezdeményezésének engedélyezése. A kijelentkezési folyamat biztosít arra utal, hogy a felhasználók számára, hogy a munkamenet meg lett szakítva. |
+| **Ügyfél** | Az Azure portál és a virtuális gép telepített operációs rendszerek által a tervezetének használja a kijelentkezési kezdeményezésének engedélyezése. A kijelentkezési folyamat biztosít arra utal, hogy a felhasználók számára, hogy a munkamenet meg lett szakítva. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -875,7 +875,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének az információs rendszer az Azure portálon keresztül egy jumpbox távoli asztali kapcsolaton keresztül, és egy ügyfél megvalósított webalkalmazás révén távoli hozzáférést biztosít. Az Azure portál és a távoli asztali munkamenetekhez keresztül fér hozzá naplóz, és OMS révén figyelhető. Az ügyfél távoli hozzáférés-vezérléssel szükség esetén, a webalkalmazásnak kell megvalósítania. |
+| **Ügyfél** | Ez tervezetének az információs rendszer az Azure portálon keresztül egy jumpbox távoli asztali kapcsolaton keresztül, és egy ügyfél megvalósított webalkalmazás révén távoli hozzáférést biztosít. Az Azure portál és a távoli asztali munkamenetekhez keresztül fér hozzá naplóz, és OMS révén figyelhető. Az ügyfél távoli hozzáférés-vezérléssel szükség esetén, a webalkalmazásnak kell megvalósítania. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -889,7 +889,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure-portálon, a távoli asztali kapcsolat és a webes alkalmazás átjáró, beleértve az Azure Blueprint által telepített erőforrásokhoz való távoli hozzáférés biztosított TLS használatával. |
+| **Ügyfél** | Az Azure-portálon, a távoli asztali kapcsolat és a webes alkalmazás átjáró, beleértve a blueprint által telepített erőforrásokhoz való távoli hozzáférés biztosított TLS használatával. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -903,7 +903,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Távoli elérés az Azure tervezetének által telepített fiktív webalkalmazás Alkalmazásátjáró keresztül történik. Egyéb erőforrások táveléréséhez egy jumpbox keresztül történik. Nincsenek más nyilvánosan elérhető végpontok. |
+| **Ügyfél** | Ez tervezetének által telepített fiktív webalkalmazás távelérési Alkalmazásátjáró keresztül történik. Egyéb erőforrások táveléréséhez egy jumpbox keresztül történik. Nincsenek más nyilvánosan elérhető végpontok. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -945,7 +945,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének az információs rendszer az Azure portálon keresztül, egy jumpbox keresztül távoli asztali kapcsolaton keresztül, és a webes alkalmazás segítségével távoli hozzáférést biztosít. Ha egy Azure Active Directory-fiókot le van tiltva, vagy eltávolítja, az Azure portál elérésére azonnal megszakad. Hasonlóképpen ha egy virtuális gép operációs rendszer szintű fiók le van tiltva, vagy eltávolítja, a jumpbox távoli asztali hozzáférésének le van választva azonnal. Az ügyfelek meg kell valósítania a távoli hozzáférés a webes alkalmazás leválasztása. |
+| **Ügyfél** | Ez tervezetének az információs rendszer az Azure portálon keresztül, egy jumpbox keresztül távoli asztali kapcsolaton keresztül, és a webes alkalmazás segítségével távoli hozzáférést biztosít. Ha egy Azure Active Directory-fiókot le van tiltva, vagy eltávolítja, az Azure portál elérésére azonnal megszakad. Hasonlóképpen ha egy virtuális gép operációs rendszer szintű fiók le van tiltva, vagy eltávolítja, a jumpbox távoli asztali hozzáférésének le van választva azonnal. Az ügyfelek meg kell valósítania a távoli hozzáférés a webes alkalmazás leválasztása. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 

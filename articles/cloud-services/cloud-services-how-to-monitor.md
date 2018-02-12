@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: adegeo
-ms.openlocfilehash: 9b94d9c66f69fac7c73a70618f782b811d4c9e62
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: f3a3a1beb8540ee8ab0502379396c06ea505fb44
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>Bevezetés a felhőalapú szolgáltatás figyelése
 
@@ -76,7 +76,7 @@ Az a **ServiceDefinition.csdef** fájlt, adja hozzá egy új nevű beállítás�
 
 Ez határozza meg, hogy egy új beállítás, amelyet hozzá kell adni minden **ServiceConfiguration.cscfg** fájlt. 
 
-Valószínűleg van két **.cscfg** fájlok, nevű **ServiceConfiguration.cloud.cscfg** Azure, és olyan gyermektartománya történő üzembe helyezéshez **ServiceConfiguration.local.cscfg** helyi telepítés esetén a emulált környezetben használt. Nyissa meg és módosíthatja az egyes **.cscfg** fájlt. Egy nevű Alkalmazásbeállítás hozzáadása `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString`. Állítsa be az értéket vagy a **elsődleges kapcsolódási karakterlánc** a klasszikus tárfiók. Ha a helyi tároló a fejlesztői gépen használni kívánt, `UseDevelopmentStorage=true`.
+Valószínűleg van két **.cscfg** fájlok, nevű **ServiceConfiguration.cloud.cscfg** Azure, és olyan gyermektartománya történő üzembe helyezéshez **ServiceConfiguration.local.cscfg** helyi telepítés esetén a emulált környezetben használt. Nyissa meg és módosíthatja az egyes **.cscfg** fájlt. Egy nevű Alkalmazásbeállítás hozzáadása `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString`. Állítsa be az értéket a **elsődleges kapcsolódási karakterlánc** a klasszikus tárfiók. Ha a helyi tároló a fejlesztői gépen használni kívánt, `UseDevelopmentStorage=true`.
 
 ```xml
 <ServiceConfiguration serviceName="AnsurCloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2015-04.2.6">

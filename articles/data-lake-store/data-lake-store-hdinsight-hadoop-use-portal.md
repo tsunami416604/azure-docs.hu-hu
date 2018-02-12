@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 4a27ae1402717c91029eda9d635db124f8bb6b8d
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 43f045033648534e9c0fea344bbc38da34f8454b
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="create-hdinsight-clusters-with-data-lake-store-by-using-the-azure-portal"></a>A HDInsight-fürtök létrehozása a Data Lake Store az Azure-portál használatával
 > [!div class="op_single_selector"]
@@ -56,7 +56,7 @@ Ebben a szakaszban egy HDInsight-fürtöt az alapértelmezett vagy a további t�
 
     ![HDInsight-fürthöz Hozzáadás egyszerű](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.adls.storage.png "Hozzáadás szolgáltatás egyszerű HDInsight-fürthöz")
 
-    - **Válassza ki Data Lake Store-fiók**: Válasszon egy meglévő Data Lake Store-fiókot. Egy meglévő Data Lake Store-fiókot kell megadni.  Lásd: [Előfeltételek](#prereuisites).
+    - **Válassza ki Data Lake Store-fiók**: Válasszon egy meglévő Data Lake Store-fiókot. Egy meglévő Data Lake Store-fiókot kell megadni.  Lásd: [Előfeltételek](#prerequisites).
     - **Elérési útjának gyökeréhez**: Adjon meg útvonalat, ahol a fürt fájlokat vannak-e tárolni. Képernyőképen látható, a rendszer __/fürtök/myhdiadlcluster/__, amelyben a __/fürtök__ mappának léteznie kell, és a portál létrehoz egyet *myhdicluster* mappa.  A *myhdicluster* a fürt neve.
     - **Data Lake Store hozzáférés**: konfigurálja a hozzáférést a Data Lake Store-fiók és a HDInsight-fürt között. Útmutatásért lásd: [konfigurálása Data Lake Store hozzáférés](#configure-data-lake-store-access).
     - **További tárfiókok**: a fürthöz tartozó fiókok hozzáadása Azure Storage-fiókokról további tárolóként. Hozzáadandó további Data Lake tárolók végezhető el a fürt engedélyeket ad a további Data Lake Store-fiók adatait az elsődleges tárolási típus, egy Data Lake Store-fiók konfigurálása közben. Lásd: [A Data Lake Store-hoz történő hozzáférés konfigurálása](#configure-data-lake-store-access).

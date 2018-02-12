@@ -14,17 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: f6095d98ada2974bce03ec8f5527367837daafd3
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: fd3f52de40c6d448d457824bcc675db036d2cb86
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Azure Windows virtuális gép aktiválással kapcsolatos problémák elhárítása
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 Ha gondja támad, amikor aktiválja a Azure Windows virtuális gép (VM), amely egy egyéni lemezképből jön létre, a jelen dokumentum információkat használhatja a probléma elhárítása érdekében. 
+
+## <a name="understanding-azure-kms-endpoints-for-windows-product-activation-of-azure-virtual-machines"></a>A Windows Azure virtuális gépek Azure KMS végpontok ismertetése
+Azure különböző végpontokhoz használja a KMS-aktiválás attól függően, hogy a felhő régió, ahol a virtuális gép található. Hibaelhárítási útmutatóban használjon a megfelelő KMS-végpont a régiójában érvényes.
+
+* Azure public cloud regions: kms.core.windows.net:1688
+* Azure China national cloud regions: kms.core.chinacloudapi.cn:1688
+* Azure Germany national cloud regions: kms.core.cloudapi.de:1688
+* Az Azure Velünk – (kormányzati) nemzeti felhőalapú területeket: kms.core.usgovcloudapi.net:1688
 
 ## <a name="symptom"></a>Jelenség
 

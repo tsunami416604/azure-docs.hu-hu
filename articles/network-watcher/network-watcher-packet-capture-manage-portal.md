@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: a43d2ea10bfd6de2f8177283821f7aad59e9f610
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 40414afbfcd456353b4290585ccd9d594fbf55dd
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>Csomag rögzítésekre kezelése Azure hálózati figyelőt a portál használatával
 
@@ -61,7 +61,10 @@ Keresse meg a [Azure-portálon](https://portal.azure.com) kattintson **hálózat
 A – Áttekintés lapon látható összes csomag listája létező függetlenül állapotát rögzíti.
 
 > [!NOTE]
-> Csomagrögzítéssel a tárfiókkal igényel a 443-as porton keresztül.
+> Csomagrögzítéssel a következő kapcsolat szükséges.
+> * Kimenő kapcsolódás a tárfiók a 443-as porton keresztül.
+> * Bejövő és kimenő kapcsolat 169.254.169.254
+> * Bejövő és kimenő kapcsolat 168.63.129.16
 
 ![csomag rögzítési áttekintés képernyő][1]
 

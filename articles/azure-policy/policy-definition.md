@@ -9,11 +9,11 @@ ms.date: 01/17/2018
 ms.topic: article
 ms.service: azure-policy
 ms.custom: 
-ms.openlocfilehash: af373e2770ad020b3a3eb669424c001670ec9204
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 49efef62b873ba3c688023248f6940d85c33e248
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -66,14 +66,11 @@ Minden Azure házirend sablon minták erővel [sablonok Azure házirend](json-sa
 
 ## <a name="mode"></a>Mód
 
-Azt javasoljuk, hogy állítsa `mode` való `all` házirenddel rendelkeznie hozzárendelés értékelje ki, az összes erőforrás-csoportok és típusát. Láthatja, hogy egy házirend-definíció, amely képes kikényszeríteni a címke van megadva egy erőforráscsoport, például [engedélyezése egyéni Virtuálisgép-lemezkép egy erőforráscsoportból](scripts/allow-custom-vm-image.md).
+A **mód** határozza meg, milyen típusú erőforrások kiértékelendő táblakifejezés házirend. A támogatott módok a következők:
+* `all`: erőforráscsoportok és az összes erőforrástípus kiértékelése 
+* `indexed`: csak értékelje ki, amely támogatja a címkék és a hely típusú erőforrások
 
-Ha beállította azt **összes**, csoportok és az összes erőforrástípus kiértékeli a házirendet. A portál alkalmaz **összes** az összes házirendhez. Ha a PowerShell vagy Azure CLI-t használ, meg kell adnia a `mode` paramétert, majd állítsa be **összes**.
-
-A portál használatával létrehozott összes házirend-definíciók használja egy `all` mód, azonban ha azt szeretné, a PowerShell vagy az Azure parancssori felület, meg kell adnia a `mode` paramétert, majd állítsa be `all`.
-
-Ha a mód beállítása legyen `indexed`, a házirend-hozzárendelés erőforrástípusok esetében, amelyek támogatják a címkék és a hely csak a kiértékelendő táblakifejezés.
-
+Azt javasoljuk, hogy állítsa **mód** való `all`. Az összes házirend-definíciók létrehozása a portál használata révén a `all` mód. Ha a PowerShell vagy Azure CLI-t használ, meg kell adnia a **mód** paramétert, majd állítsa be `all`. 
 
 ## <a name="parameters"></a>Paraméterek
 

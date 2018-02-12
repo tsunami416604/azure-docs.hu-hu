@@ -1,6 +1,6 @@
 ---
-title: "FedRAMP Azure tervezetének Automation - kockázatbecslés"
-description: "A FedRAMP - kockázatbecslés webalkalmazások"
+title: "Az Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - kockázatbecslés"
+description: "FedRAMP webes alkalmazások Automation - kockázatbecslés"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 1c6bc0bc120c6ad80ff28155f73d127352a8bdc3
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 7abdb674b9d6bb000ce9a8e1861d012c1882f2a5
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="risk-assessment-ra"></a>Kockázatbecslés (RA)
 
@@ -161,7 +161,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének telepíti az OMS biztonsági és hitelesítési megoldás. Ez a megoldás révén átfogó képet kaphat a biztonságot. A megoldáson két biztonsági tartomány, a frissítések értékelését és alapkonfiguráció értékelése, érhetők el. Alapkonfiguráció értékelése értékelésére beállításkulcsok, a naplórend-beállítások és a biztonsági házirendjének beállításai a Microsoft ezek a beállítások ajánlott értékeit együtt. Frissítések értékelését értékeli az elérhető frissítések az összes telepített virtuális gépek állapotát. |
+| **Ügyfél** | Ez tervezetének telepíti az OMS biztonsági és hitelesítési megoldás. Ez a megoldás révén átfogó képet kaphat a biztonságot. A megoldáson két biztonsági tartomány, a frissítések értékelését és alapkonfiguráció értékelése, érhetők el. Alapkonfiguráció értékelése értékelésére beállításkulcsok, a naplórend-beállítások és a biztonsági házirendjének beállításai a Microsoft ezek a beállítások ajánlott értékeit együtt. Frissítések értékelését értékeli az elérhető frissítések az összes telepített virtuális gépek állapotát. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -175,7 +175,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének telepíti az OMS biztonsági és hitelesítési megoldás. A megoldáson két biztonsági tartomány, a frissítések értékelését és alapkonfiguráció értékelése, érhetők el. Azonosított hibák elhárítása besorolást kapnak. Common Configuration Enumeration (CCE) azonosítók alapkonfiguráció értékelése szabályok célokat szolgálnak.  |
+| **Ügyfél** | Ez tervezetének telepíti az OMS biztonsági és hitelesítési megoldás. A megoldáson két biztonsági tartomány, a frissítések értékelését és alapkonfiguráció értékelése, érhetők el. Azonosított hibák elhárítása besorolást kapnak. Common Configuration Enumeration (CCE) azonosítók alapkonfiguráció értékelése szabályok célokat szolgálnak.  |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -231,7 +231,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének telepíti az OMS biztonsági és hitelesítési megoldás. A megoldáson két biztonsági tartomány, a frissítések értékelését és alapkonfiguráció értékelése, érhetők el. A feltételek, amelyen ezek a megoldások értékeléséhez automatikusan frissül. |
+| **Ügyfél** | Ez tervezetének telepíti az OMS biztonsági és hitelesítési megoldás. A megoldáson két biztonsági tartomány, a frissítések értékelését és alapkonfiguráció értékelése, érhetők el. A feltételek, amelyen ezek a megoldások értékeléséhez automatikusan frissül. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -245,7 +245,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének telepíti az OMS biztonsági és hitelesítési megoldás. A megoldáson két biztonsági tartomány, a frissítések értékelését és alapkonfiguráció értékelése, érhetők el. A feltételek, amelyen ezek a megoldások értékeléséhez automatikusan frissül. |
+| **Ügyfél** | Ez tervezetének telepíti az OMS biztonsági és hitelesítési megoldás. A megoldáson két biztonsági tartomány, a frissítések értékelését és alapkonfiguráció értékelése, érhetők el. A feltételek, amelyen ezek a megoldások értékeléséhez automatikusan frissül. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -259,7 +259,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének telepíti az OMS biztonsági és hitelesítési megoldás. A megoldáson két biztonsági tartomány, a frissítések értékelését és alapkonfiguráció értékelése, érhetők el. Frissítések értékelését Windows és Linux virtuális gépek elleni assessment hajt végre. Alapkonfiguráció értékelése ágazatban kialakult bevált gyakorlaton alapuló fejlesztett Microsoft alapterv használata Windows virtuális gépek elleni assessment hajt végre. |
+| **Ügyfél** | Ez tervezetének telepíti az OMS biztonsági és hitelesítési megoldás. A megoldáson két biztonsági tartomány, a frissítések értékelését és alapkonfiguráció értékelése, érhetők el. Frissítések értékelését Windows és Linux virtuális gépek elleni assessment hajt végre. Alapkonfiguráció értékelése ágazatban kialakult bevált gyakorlaton alapuló fejlesztett Microsoft alapterv használata Windows virtuális gépek elleni assessment hajt végre. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -287,7 +287,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | A Microsoft Monitoring Agent szolgáltatást, amely konfigurálva van az Azure tervezetének által központilag telepített virtuális gépek, felmérési tevékenységeket a szükséges jogosultságokkal az automatikus szolgáltatás van konfigurálva. |
+| **Ügyfél** | A Microsoft Monitoring Agent szolgáltatást, amely konfigurálva van a tervezetének által központilag telepített virtuális gépek, felmérési tevékenységeket a szükséges jogosultságokkal az automatikus szolgáltatás van konfigurálva. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -329,5 +329,5 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének telepíti az OMS biztonsági és hitelesítési megoldás. Ez a megoldás révén átfogó képet kaphat a biztonságot. A biztonsági és naplózási irányítópult érhetők el adatok használata telepített OMS-megoldásokkal telepített erőforrások biztonsági állapotának magas szintű betekintést nyújt. |
+| **Ügyfél** | Ez tervezetének telepíti az OMS biztonsági és hitelesítési megoldás. Ez a megoldás révén átfogó képet kaphat a biztonságot. A biztonsági és naplózási irányítópult érhetők el adatok használata telepített OMS-megoldásokkal telepített erőforrások biztonsági állapotának magas szintű betekintést nyújt. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |

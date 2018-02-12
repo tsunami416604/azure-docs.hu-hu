@@ -1,6 +1,6 @@
 ---
-title: "Az Azure tervezetének Automation - UK hivatalos háromrétegű webalkalmazások"
-description: "Az Azure tervezetének Automation & - UK hivatalos háromrétegű webalkalmazások"
+title: "Azure biztonsági és megfelelőségi tervezetének - UK hivatalos háromrétegű webes alkalmazások automatizálás"
+description: "Azure biztonsági és megfelelőségi tervezetének - UK hivatalos háromrétegű webes alkalmazások automatizálás"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,25 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 5f5694367d9be2ae66c7303cfea063b7f4979307
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 9d95ccdd536efbff1540fab2b564e7745f5ac397
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/11/2018
 ---
-# <a name="azure-blueprint-automation-three-tier-web-applications-for-uk-official"></a>Azure tervezetének Automation: UK hivatalos háromrétegű webes alkalmazások
+# <a name="azure-security-and-compliance-blueprint---uk-offical-three-tier-web-applications-automation"></a>Azure biztonsági és megfelelőségi tervezetének - UK hivatalos háromrétegű webes alkalmazások automatizálás
 
 ## <a name="overview"></a>Áttekintés
 
  Ez a cikk útmutatást és automatizálási parancsfájlok képes biztosítani a Microsoft Azure háromrétegű web-alapú architektúra megfelelő kezelése az Egyesült Királyságban hivatalos osztályba sorolt számos különféle munkaterheléshez tartalmazza.
 
- Az infrastruktúra használatával kódú közelítse, készletét [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) (ARM) sablonok telepítéséhez olyan környezetet, hogy legyen az a UK nemzeti számítógépes biztonsági központ (NCSC) 14 [biztonsági alapelvei](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles)és az internetes biztonsági (CIS) [kritikus fontosságú biztonsági vezérlők](https://www.cisecurity.org/critical-controls.cfm).
+ Az infrastruktúra használatával kódú közelítse, készletét [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) sablonok telepítéséhez olyan környezetet, hogy legyen az a UK nemzeti számítógépes biztonsági központ (NCSC) 14 [biztonsági alapelvei](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles) és az internetes biztonsági (CIS) [kritikus fontosságú biztonsági vezérlők](https://www.cisecurity.org/critical-controls.cfm).
 
  A NCSC használatát javasolja azok biztonsági alapelvei ügyfelek kiértékelése a szolgáltatás a biztonsági tulajdonságait, és annak megértésében, az osztálynak a feladata a felhasználói és a szállítók között. Nyújtunk egyes segít megérteni a felosztás feladatkörök alapelvek.
 
- Ezen architektúra és a megfelelő ARM-sablonokat a Microsoft tanulmány által támogatott [Azure szerkezeti terve UK kormánya](https://gallery.technet.microsoft.com/14-Cloud-Security-Controls-670292c1). A dokumentum az Azure szolgáltatások katalógusok megfelel-e a UK NCSC 14 biztonsági alapelvei, ezáltal a szervezetek gyorsított felel meg a használatával a Microsoft Azure felhőalapú szolgáltatások globális és a UK kötelezettségek képesek felhő.
+ Ez az architektúra és a megfelelő Azure Resource Manager-sablonok a Microsoft tanulmány által támogatott [UK 14 felhőalapú biztonsági vezérlők használatával a Microsoft Azure cloud](https://gallery.technet.microsoft.com/14-Cloud-Security-Controls-670292c1). A dokumentum az Azure szolgáltatások katalógusok megfelel-e a UK NCSC 14 biztonsági alapelvei, ezáltal a szervezetek gyorsított felel meg a használatával a Microsoft Azure felhőalapú szolgáltatások globális és a UK kötelezettségek képesek felhő.
 
  Ez a sablon a munkaterhelés infrastruktúráját telepíti. Alkalmazás kódjában és az azt támogató üzleti szint és az adatok réteg szoftvert telepíteni és konfigurálni kell. Részletes üzembe helyezési utasítások érhetők el [Itt](https://aka.ms/ukwebappblueprintrepo).
 
@@ -114,7 +114,7 @@ Load Balancer
 - (1) biz réteg terheléselosztó
 - (1) adatokat a réteg terheléselosztó
 
-Storage
+Tárolás
 - (14) teljes Storage-fiókok
   - Az Active Directory tartományi vezérlő rendelkezésre állási csoport
     - (2) elsődleges helyileg redundáns tárolás (LRS) fiókok – az egyes virtuális gépek 1  
@@ -150,7 +150,7 @@ Storage
 
 **Felügyeleti VNet**: Ez [VNet](https://docs.microsoft.com/azure/Virtual-Network/virtual-networks-overviewcontains) olyan erőforrásokat tartalmaz, kezelési és figyelési képességeket az üzemi virtuális hálózaton futó feladatok végrehajtására.
 
-**Jumpbox**: más néven a [megerősített állomás](https://en.wikipedia.org/wiki/Bastion_host), vagyis a hálózaton, amely a rendszergazdák az üzemi virtuális hálózatot a virtuális gépeken való csatlakozáskor használandó biztonságos virtuális gép. A jumpbox van egy NSG-t, amely lehetővé teszi a távoli forgalom csak nyilvános IP-címekről érkező biztonságos listán. Távoli asztal (RDP)-forgalmát engedélyezi, hogy a forgalom forrásának kell definiálni az NSG. A termelési erőforrások kezelésére van használatával egy biztonságos Jumpbox virtuális gép RDP-kapcsolaton keresztül.
+**Jumpbox**: más néven a [megerősített állomás](https://en.wikipedia.org/wiki/Bastion_host), vagyis a hálózaton, amely a rendszergazdák az üzemi virtuális hálózatot a virtuális gépeken való csatlakozáskor használandó biztonságos virtuális gép. A jumpbox olyan NSG-vel rendelkezik, amely csak a biztonságos elemek listáján szereplő nyilvános IP-címekről érkező távoli forgalmat engedélyezi. Távoli asztal (RDP)-forgalmát engedélyezi, hogy a forgalom forrásának kell definiálni az NSG. A termelési erőforrások kezelésére van használatával egy biztonságos Jumpbox virtuális gép RDP-kapcsolaton keresztül.
 
 **Felhasználó által megadott útvonalak**: [felhasználó által megadott útvonalak](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) meghatározásához az Azure Vnetekhez belüli IP-forgalom áramlását használják.
 
@@ -195,17 +195,17 @@ A Vnetek külön erőforrásként továbbra is felügyelt, de egy, a virtuális 
 
 ### <a name="security"></a>Biztonság
 
-**Felügyeleti biztonsági**: az Azure tervezetének lehetővé teszi, hogy a rendszergazdák számára, hogy csatlakozzon a felügyeleti virtuális hálózat és Jumpbox RDP Funkciót használnak a megbízható forrásból származik. A felügyeleti virtuális hálózatot a hálózati forgalmat az NSG-k segítségével kezelhető. Hozzáférés 3389-es port korlátozódik forgalom férhetnek hozzá a Jumpbox tartalmazó alhálózat IP megbízható tartomány.
+**Felügyeleti biztonsági**: A tervezetének lehetővé teszi, hogy a rendszergazdák számára, hogy csatlakozzon a felügyeleti virtuális hálózat és Jumpbox RDP Funkciót használnak a megbízható forrásból származik. A felügyeleti virtuális hálózatot a hálózati forgalmat az NSG-k segítségével kezelhető. Hozzáférés 3389-es port korlátozódik forgalom férhetnek hozzá a Jumpbox tartalmazó alhálózat IP megbízható tartomány.
 
 Az ügyfelek is is érdemes lehet egy [a fokozott biztonság felügyeleti modell](https://technet.microsoft.com/windows-server-docs/security/securing-privileged-access/securing-privileged-access) a környezet biztonságos, amikor csatlakozik a felügyeleti virtuális hálózat és Jumpbox. Ajánlatos, hogy a fokozott biztonság használják, a [Privileged Access munkaállomás](https://technet.microsoft.com/windows-server-docs/security/securing-privileged-access/privileged-access-workstations#what-is-a-privileged-access-workstation-paw) és RDGateway konfigurációját. A virtuális hálózati berendezéseket és a nyilvános és titkos DMZ-k felajánlja a további biztonsági fejlesztések.
 
-**A hálózat védelme**: [hálózati biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) minden alhálózatban a második szintű védelmet biztosít a mellőzés, egy helytelenül konfigurált vagy letiltott átjáró bejövő forgalom (NSG-k) használata ajánlott. Példa - [ARM-sablon üzembe helyezéséhez egy NSG](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/networkSecurityGroups).
+**A hálózat védelme**: [hálózati biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) minden alhálózatban a második szintű védelmet biztosít a mellőzés, egy helytelenül konfigurált vagy letiltott átjáró bejövő forgalom (NSG-k) használata ajánlott. Példa - [Resource Manager-sablon üzembe helyezéséhez egy NSG](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/networkSecurityGroups).
 
 **Nyilvános végpontok védelme**: az internetes átjáró elérhetővé teszi a felhasználók számára az interneten keresztül alkalmazáskiszolgálókhoz. Ezek a szolgáltatások eléréséhez forgalom használatával lett biztonságossá téve egy [Alkalmazásátjáró](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction), amely biztosítja, hogy a webalkalmazási tűzfal és a HTTPS protokoll felügyeleti.
 
 **IP-címtartományok**: az IP-címtartományok az architektúra javasolt tartományok. Az ügyfelek javasolja, hogy a saját környezetben fontolja meg, és megfelelő tartományok használja.
 
-**A hibrid kapcsolat**: A felhő alapú munkaterhelések kapcsolódnak a helyszíni datacentre használata az Azure VPN Gateway IPSEC VPN-en keresztül. Az ügyfelek győződjön meg arról, hogy használják a megfelelő VPN-átjáró Azure való kapcsolódáshoz. Példa - [VPN Gateway ARM-sablon](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/vpn-gateway-vpn-connection). Az ügyfelek a nagyméretű fut, kritikus fontosságú számítási feladatokhoz a big Data típusú adatok követelményeknek megfelelő lehet, hogy szeretnének érdemes egy hibrid hálózati architektúra [ExpressRoute](https://docs.microsoft.com/azure/guidance/guidance-hybrid-network-expressroute) kapcsolattal a Microsoftnak a felhőalapú szolgáltatások.
+**A hibrid kapcsolat**: A felhő alapú munkaterhelések kapcsolódnak a helyszíni adatközpontját használata az Azure VPN Gateway IPSEC VPN-en keresztül. Az ügyfelek győződjön meg arról, hogy használják a megfelelő VPN-átjáró Azure való kapcsolódáshoz. Példa - [VPN Gateway Resource Manager-sablon](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/vpn-gateway-vpn-connection). Az ügyfelek a nagyméretű fut, kritikus fontosságú számítási feladatokhoz a big Data típusú adatok követelményeknek megfelelő lehet, hogy szeretnének érdemes egy hibrid hálózati architektúra [ExpressRoute](https://docs.microsoft.com/azure/guidance/guidance-hybrid-network-expressroute) kapcsolattal a Microsoftnak a felhőalapú szolgáltatások.
 
 **Aggályokat elkülönítése**: A referencia-architektúrában elválasztja a Vnetek felügyeleti műveleteket, illetve üzleti műveletek. Külön virtuális hálózatokat és alhálózatokat engedélyezze a forgalom felügyeletét, forgalom bemenő és kimenő korlátozások, beleértve a következő hálózati szegmensek közötti NSG-k használatával [Microsoft cloud services és a hálózati biztonság](https://docs.microsoft.com/azure/best-practices-network-security) ajánlott eljárások.
 
@@ -221,17 +221,17 @@ Az ügyfelek is is érdemes lehet egy [a fokozott biztonság felügyeleti modell
 
 A korona kereskedelmi szolgáltatást (egy működik, és javítja a kereskedelmi és beszerzési tevékenység kormánya által Ügynökség) megújítani a Microsoft hatókör vállalati felhőalapú szolgáltatások G-felhő v6, a besorolás a Hivatalos szinten az összes ajánlatok lefedik. Azure és a G-felhő részletek megtalálhatók a [Azure UK G-felhő biztonsági felmérés összegzése](https://www.microsoft.com/en-us/trustcenter/compliance/uk-g-cloud).
 
-A UK hivatalos Azure tervezetének megoldás illeszkedik a 14 biztonsági alapelvei a NCSC ismertetett [biztonsági alapelvei](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles) olyan környezetet, amely támogatja a munkaterhelések UK hivatalos besorolása érdekében.
+Ez tervezetének illeszkedik a 14 biztonsági alapelvei a NCSC ismertetett [biztonsági alapelvei](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles) olyan környezetet, amely támogatja a munkaterhelések UK hivatalos besorolása érdekében.
 
 A [ügyfél felelősségi mátrix](https://aka.ms/blueprintuk-gcrm) (Excel-munkafüzet) az összes 14 biztonsági alapelvei, illetve a mátrix jelöli, minden elve (vagy elv alrész), e elv végrehajtása feladata A Microsoft, az ügyfél vagy a kettő között megosztott.
 
-A [elv megvalósítási mátrix](https://aka.ms/ukwebappblueprintpim) (Excel-munkafüzet) listák összes 14 biztonsági alapelvei, és a mátrix jelöli, az egyes elve (vagy elv alrész), amely egy ügyfél felelős az ügyfelek van kijelölve Feladatkörök mátrix, 1.) Ha az Azure tervezetének Automation megvalósítja az elven, és 2) leírását hogyan végrehajtása az elv requirement(s) igazodik. Ez a tartalom is rendelkezésre áll [Itt](https://github.com/Azure/uk-official-three-tier-webapp/blob/master/principles-overview.md).
+A [elv megvalósítási mátrix](https://aka.ms/ukwebappblueprintpim) (Excel-munkafüzet) listák összes 14 biztonsági alapelvei, és a mátrix jelöli, az egyes elve (vagy elv alrész), amely egy ügyfél felelős az ügyfelek van kijelölve Feladatkörök mátrix, 1.) Ha a tervezetének automation megvalósítja az elven, és 2) leírását hogyan végrehajtása az elv requirement(s) igazodik. Ez a tartalom is rendelkezésre áll [Itt](https://github.com/Azure/uk-official-three-tier-webapp/blob/master/principles-overview.md).
 
 Ezenkívül a felhőalapú biztonsági Alliance (CSA) közzé a felhő vezérlő mátrix szolgáltatók értékelése az ügyfelek támogatásához, és azonosíthatja a kérdéseket kell a felhőalapú szolgáltatások áthelyezése előtt. Választ, a Microsoft Azure válaszolni a CSA együttműködési Assessment kezdeményezésére kérdőív ([CSA CAIQ](https://www.microsoft.com/en-us/TrustCenter/Compliance/CSA)), amely ismerteti, hogyan Microsoft címek javasolt elveit.
 
 ## <a name="deploy-the-solution"></a>A megoldás üzembe helyezéséhez
 
-Két módon központi telepítés felhasználók használhatják a Azure tervezetének megoldás üzembe helyezéséhez. Az első módszer PowerShell-parancsfájlokra, míg a második módszer használja fel az Azure-portál telepítése a referencia-architektúrában. Részletes üzembe helyezési utasítások érhetők el [Itt](https://aka.ms/ukwebappblueprintrepo).
+Két módon központi telepítés felhasználók használhatják a tervezetének automation telepítéséhez. Az első módszer PowerShell-parancsfájlokra, míg a második metódust használja fel az Azure-portál telepítése a referencia-architektúrában. Részletes üzembe helyezési utasítások érhetők el [Itt](https://aka.ms/ukwebappblueprintrepo).
 
 ## <a name="disclaimer"></a>Jogi nyilatkozat
 

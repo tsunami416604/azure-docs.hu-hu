@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
-ms.openlocfilehash: e454778c558b9c17c47ad9eb651737aa0b5e2605
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 80d625a6ab2d3c6d5de0a90fbff0760888154d70
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="streaming-endpoints-overview"></a>Adatfolyam-továbbítási végpontok áttekintése 
 
@@ -81,17 +81,17 @@ Teljesítmény |Legfeljebb 600 MB/s Azure CDN nem használata esetén. CDN bevon
 SLA | 99.9|99,9 (200 MB/s / SU).
 Tartalomkézbesítési hálózat (CDN)|Az Azure CDN, harmadik féltől származó CDN vagy nem CDN.|Az Azure CDN, harmadik féltől származó CDN vagy nem CDN.
 Számlázási arányosítva van| Napi|Napi
-A dinamikus titkosítás|Igen|Igen
+Dinamikus titkosítás|Igen|Igen
 Dinamikus csomagolás|Igen|Igen
 Méretezés|Automatikus méretezik akár a célként megadott átviteli sebességet.|További streamelési egység
 IP-szűrés/G20/egyéni állomás|Igen|Igen
 Progresszív letöltés|Igen|Igen
-Ajánlott kihasználtsága |Az adatfolyam-forgatókönyvek többsége ajánlott.|Professional használat.<br/>Ha úgy gondolja, hogy előfordulhat, hogy túl Standard igényeinek. Kapcsolatfelvétel (a microsoft.com amsstreaming) Ha a párhuzamos célközönség mérete nagyobb, mint 50 000 megjelenítők várja.
+Ajánlott kihasználtsága |Az adatfolyam-forgatókönyvek többsége ajánlott.|Professional használat.<br/>Ha úgy gondolja, hogy előfordulhat, hogy túl Standard igényeinek. Kapcsolatfelvétel (amsstreaming@microsoft.com) Ha a párhuzamos célközönség mérete nagyobb, mint 50 000 megjelenítők várja.
 
 
 ## <a name="migration-between-types"></a>Áttelepítési típus között
 
-A | Művelet | Műveletek
+Feladó | Művelet | Műveletek
 ---|---|---
 Klasszikus|Standard|Részt kell
 Klasszikus|Prémium| A skála (További adatfolyam-egységek)
@@ -104,7 +104,7 @@ SU az 1.0-s verzió > = 1 CDN|Standard vagy prémium nem CDN|Engedélyezett a **
 SU az 1.0-s verzió > = 1 CDN|A/nélkül CDN standard|Engedélyezett a **leállt** állapotát. Nem engedélyezett a **lépések** állapotát. CDN 1.0-s verziója lesz törölt és új egyik létrehozott, és elindult.
 SU az 1.0-s verzió > = 1 CDN|A/nélkül CDN Premium|Engedélyezett a **leállt** állapotát. Nem engedélyezett a **lépések** állapotát. Klasszikus CDN lesz törölve, és új egyik létrehozott, és elindult.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse át a Media Services képzési terveket.
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

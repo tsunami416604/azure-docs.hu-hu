@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: giladm
-ms.openlocfilehash: e6b9b5e497258f37037e0dc3f8efe656d5206af3
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 1ff7f3509ccdaa6911cee0487d5a6d90b11eb79f
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Az Azure SQL-adatbázis adatainak felderítése és besorolása
 Az Azure SQL Database beépített speciális képességeket biztosít a felderítési adatok & besorolás (jelenleg előzetes verzió) **felderítéséhez**, **zárolásának**, **címkézés**  &  **védelme** az adatbázisokat a bizalmas adatokat.
-Felderítésének, illetve a lehető legnagyobb mértékben bizalmas adatok zárolásának (üzleti/pénzügyi, egészségügyi, személyazonosításra alkalmas adatok, stb.) is döntő szerepet játszanak a szervezeti adatokat védelmi stature. Az infrastruktúra lehetnek:
+Felderítésének, illetve a leginkább bizalmas adatok zárolásának (üzleti, pénzügyi, egészségügyi, személyazonosításra alkalmas adatok, stb.) is a döntő szerepet játszanak a szervezeti adatok védelmet stature. Az infrastruktúra lehetnek:
+* Gondoskodik a megfelelő adatok adatvédelmi szabványok és az előírásoknak való megfelelés követelményeket, például GDPR.
 * Különféle biztonsági forgatókönyvek, például a figyelési (naplózás), és riasztást küld rendellenes bizalmas adatokhoz való hozzáférést.
 * Hozzáférés szabályozása, és a bizalmas adatokat tartalmazó adatbázisok biztonsági korlátozására.
-* Gondoskodik a megfelelő adatok adatvédelmi szabványok és az előírásoknak való megfelelés követelményeket, például GDPR.
 
 ## <a id="subheading-1"></a>– Áttekintés
 Felderítési adatok & besorolás vezeti be a speciális szolgáltatások és új SQL-képességek, egy új SQL Information Protection-összeállítást az adatokat, nem csak az adatbázis védelmét célzó képező:
@@ -93,7 +93,9 @@ A besorolási két metaadat-attribútumok tartalmazza:
 
 ## <a id="subheading-3"></a>A bizalmas adatokhoz való hozzáférés naplózása
 
-Az információk védelme paradigma fontos eleme azt a képességet figyelje a bizalmas adatokhoz való hozzáférést. [Az Azure SQL Database Auditing](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-auditing) új mező szerepeljen a biztonsági naplóba nevű továbbfejlesztett *data_sensitivity_information*, amely naplózza a tényleges által visszaadott adatok érzékenysége osztályozása (címke) a lekérdezés.
+Az információk védelme paradigma fontos eleme azt a képességet figyelje a bizalmas adatokhoz való hozzáférést.
+
+[Az Azure SQL Database Auditing](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-auditing) új mező szerepeljen a biztonsági naplóba nevű továbbfejlesztett *data_sensitivity_information*, amely naplózza a tényleges által visszaadott adatok érzékenysége osztályozását (címke) a lekérdezés.
 
 ![Navigációs ablaktábla][11]
 

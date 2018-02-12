@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/15/2017
 ms.author: asmalser
-ms.openlocfilehash: cd82ef109abbc5707db4c02c2f14f9d55dfb74e3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e14ba62ce2d6c48e47a6b75387bcede68bb1a5b0
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Felhasználói kiépítésének és megszüntetésének biztosítása SaaS-alkalmazásokhoz az Azure Active Directoryval történő automatizálásához
 ## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>Mi az automatizált felhasználókiépítése SaaS-alkalmazásokhoz?
@@ -34,18 +34,18 @@ Azure Active Directory (Azure AD) lehetővé teszi, hogy automatizálja a létre
 **Az alábbi funkciókat is automatizált felhasználókiépítése tartalmazza:**
 
 * Felel meg a forrás- és rendszerek közötti meglévő identitások lehetővé teszi.
-* Testreszabási beállítások súgójában talál az Azure AD fér el a jelen konfigurációkat, az alkalmazások és azok a rendszerek, a szervezet által jelenleg használt.
-* Nem kötelező e-mailes riasztásokhoz hibák történő üzembe helyezéséhez.
+* Testre szabható attribútum-leképezésekhez, amelyek meghatározzák, milyen felhasználói adatokat kell a forrásrendszerben haladjanak a célrendszerbe.
+* Nem kötelező e-mailes riasztásokhoz hibák történő üzembe helyezéséhez
 * Jelentési és tevékenységkezelési naplófájlok segítségül hívásának figyelés és hibaelhárítás céljából.
 
 ## <a name="why-use-automated-provisioning"></a>Miért érdemes használni az automatizált üzembe helyezést?
 Néhány gyakori összefüggések Ez a funkció használatához a következők:
 
-* A költségek, a hatékonyság hiánya és a manuális üzembe helyezési folyamatok társított emberi tévedések elkerülése érdekében.
-* Üzemeltetési és üzembe helyezési megoldások egyéni által fejlesztett és parancsfájlok fenntartása társított költségek elkerülése érdekében
+* A költségek, a hatékonyság hiánya és a manuális üzembe helyezési folyamatok társított emberi tévedések elkerülése.
+* Üzemeltetési és üzembe helyezési megoldások egyéni által fejlesztett és parancsfájlok fenntartása társított költségek elkerülése
 * A szervezet biztonságos azonnal feloldhatja a felhasználói identitások kulcs Szolgáltatottszoftver-alkalmazásoknál, ha elhagyják a szervezet.
-* Könnyen rendszerbe való importálás érdekében a felhasználók tömeges számát egy adott SaaS-alkalmazáshoz vagy a rendszer.
-* Lehetővé teszik a felhasználók kényelme érdekében, hogy a kiépítési megoldás a azonos alkalmazás-hozzáférési házirendjeit, amelyet az Azure AD egyszeri bejelentkezéshez megadott kijelentkezés futtatni.
+* Könnyen rendszerbe való importálás nagyszámú felhasználó egy adott SaaS-alkalmazáshoz vagy a rendszer.
+* Lehetővé teszik, hogy házirendek annak eldöntéséhez, akik ki van építve, és akik való bejelentkezés egy alkalmazás egyetlen csoportja.
 
 
 ## <a name="how-does-automatic-provisioning-work"></a>Automatikus kiépítés működése
@@ -64,31 +64,34 @@ A **Azure AD-kiépítés szolgáltatás** SaaS-alkalmazásokhoz és más rendsze
 
 ## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>Milyen alkalmazások és rendszerek használható az Azure AD automatikus felhasználókiépítése?
 
-Az Azure AD-funkciókat előre integrált számos népszerű SaaS-alkalmazásokhoz és az emberi erőforrások rendszerek támogatása, valamint az alkalmazások, amelyek megvalósítják az adott részei általános támogatja a [SCIM 2.0 szabvány](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning).
+Az Azure AD-funkciókat előre integrált számos népszerű SaaS-alkalmazásokhoz és az emberi erőforrások rendszerek támogatása, valamint általános támogatja az alkalmazások, amelyek megvalósítják az SCIM 2.0 szabvány meghatározott részeit.
 
-A "Kiemelt" alkalmazások az Azure AD alkalmazás-katalógus mindegyiken automatizált felhasználókiépítése. [A kiemelt alkalmazások listája megtekinthetők.](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured)
+Az összes olyan Azure AD támogatja az előzetesen beépített létesítési összekötő listájáért lásd: a [felhasználói kialakítási alkalmazás bemutatók felsorolása](active-directory-saas-tutorial-list.md).
 
-Ahhoz, hogy egy alkalmazás támogassa a automatizált felhasználók átadásához akkor először biztosítania kell a szükséges felhasználói felügyeleti végpontok, amelyek lehetővé teszik külső programok automatikus létrehozását, karbantartási és a felhasználók törlése. Ezért nem minden SaaS-alkalmazások kompatibilisek-e ezt a szolgáltatást. Felhasználói felügyeleti API-kat támogató alkalmazások esetében az Azure AD mérnöki csapathoz majd tudnak az alkalmazások üzembe helyezési összekötő létrehozásához, és mindezt a jelenlegi és jövőbeli ügyfél igényeitől van előrébb. 
+Támogatás az Azure AD a felhasználók átadása alkalmazáshoz való hozzáadásáról további információkért lásd: [SCIM használata felhasználók és csoportok az Azure Active Directory alkalmazások automatikusan kiépítéséhez](active-directory-scim-provisioning.md).
 
-Mérnöki csapat további alkalmazásokat az üzembe helyezési támogatás kéréséhez forduljon az Azure AD egy üzenet keresztül nyújt a [Azure Active Directory-visszajelzési fórumon](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests/category/172035-user-provisioning). 
+Mérnöki csapat további alkalmazásokat az üzembe helyezési támogatás kéréséhez forduljon az Azure AD egy üzenet keresztül nyújt a [Azure Active Directory-visszajelzési fórumon](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests/filters/new?category_id=172035).    
+
+> [!NOTE]
+> Ahhoz, hogy az alkalmazás támogassa a automatizált felhasználókiépítése azt kell adnia a szükséges felhasználói felügyeleti API-k, amelyek lehetővé teszik külső programok automatikus létrehozását, karbantartási és a felhasználók törlése. Ezért nem minden SaaS-alkalmazások kompatibilisek-e ezt a szolgáltatást. Felhasználói felügyeleti API-kat támogató alkalmazások esetében az Azure AD mérnöki csapathoz majd tudnak az alkalmazások üzembe helyezési összekötő létrehozásához, és mindezt a jelenlegi és jövőbeli ügyfél igényeitől van előrébb. 
     
     
 ## <a name="how-do-i-set-up-automatic-provisioning-to-an-application"></a>Hogyan állíthatom be az alkalmazás automatikus kiépítés?
 
-Az Azure AD szolgáltatás kiépítését, az indítja el a kiválasztott alkalmazás konfigurációja a  **[Azure-portálon](https://potal.azure.com)**. Az a **Azure Active Directory > Vállalati alkalmazások** szakaszban jelölje be **Hozzáadás**, majd **összes**, majd adja hozzá a forgatókönyvtől függően az alábbiak valamelyikét:
+Az Azure AD szolgáltatás kiépítését, az indítja el a kiválasztott alkalmazás konfigurációja a  **[Azure-portálon](https://portal.azure.com)**. Az a **Azure Active Directory > Vállalati alkalmazások** szakaszban jelölje be **Hozzáadás**, majd **összes**, majd adja hozzá a forgatókönyvtől függően az alábbiak valamelyikét:
 
-* Az összes alkalmazás a **kiemelt alkalmazások** szakasz támogatási automatikus kiépítés
+* Az összes alkalmazás a **kiemelt alkalmazások** szakasz támogatási automatikus kiépítés. Tekintse meg az [a felhasználók átadása az alkalmazás bemutatók felsorolása] active-directory-szolgáltatottszoftver-oktatóanyag-list.md) a további néhányat a meglévők közül.
 
 * A "nem galéria alkalmazás" beállítást használja egyéni fejlett SCIM integrációja
 
-![Galéria](./media/active-directory-saas-app-provisioning/gallery.png)
+![Katalógus](./media/active-directory-saas-app-provisioning/gallery.png)
 
 Az alkalmazás felügyeleti képernyőn kiépítés konfigurálva van a **kiépítési** fülre.
 
 ![Beállítások](./media/active-directory-saas-app-provisioning/provisioning_settings0.PNG)
 
 
-* **Rendszergazdai hitelesítő adataival** , amelyek lehetővé teszik, hogy csatlakozzon a felhasználó-kezelési API, az alkalmazás által biztosított szolgáltatás kiépítését az Azure ad meg kell adni.
+* **Rendszergazdai hitelesítő adataival** , amelyek lehetővé teszik, hogy csatlakozzon a felhasználó-kezelési API, az alkalmazás által biztosított szolgáltatás kiépítését az Azure ad meg kell adni. Ez a szakasz emellett lehetővé teszi e-mail értesítések engedélyezése, ha a hitelesítő adatok sikertelen, vagy a kiosztási feladatának hiányzóra [karantén](#quarantine).
 
 * **Attribútum-hozzárendelések** konfigurálhatók, amelyek meghatározzák a forrásrendszerben mezők (Példa: az Azure AD) lesz a tartalmukat történő szinkronizálását mezőket a célrendszeren (Példa: ServiceNow). Ha a cél alkalmazás ezt támogatja, ez a szakasz lehetővé teszi választható lehetőségként konfigurálhatja a felhasználói fiókok mellett csoportok kiépítését. "Egyező tulajdonságok" engedélyezi, hogy válassza ki, melyik mező használható felel meg a fiókokat a rendszer között. "[Kifejezések](active-directory-saas-writing-expressions-for-attribute-mappings.md)" lehetővé teszik a célrendszeren írás előtt a forrásrendszerben lekért értékek átalakító és módosításához. További információkért lásd: [testreszabása attribútum-leképezésekhez](active-directory-saas-customizing-attribute-mappings.md).
 
@@ -96,9 +99,9 @@ Az alkalmazás felügyeleti képernyőn kiépítés konfigurálva van a **kiép�
 
 * **Helyezése hatókörszűrőkkel** kérje meg a létesítési szolgáltatás mely felhasználók és a csoport a forrásrendszerben kell hogy kiosztott és/vagy a célrendszerbe platformelőfizetés. Két szempontot való helyezése hatókörszűrőkkel, amelyek együtt lett kiértékelve, amely annak megállapítása, aki hatókör történő üzembe helyezéséhez:
 
-* **Szűrő attribútumértékek** -a "Forrás objektum hatóköre" menüjében a attribútum-leképezésekhez meghatározott attribútumértékek szűrését teszi lehetővé. Megadhatja például, hogy csak az "Értékesítési" a "Részleg" attribútummal rendelkező felhasználók kialakítási hatókörében kell lennie.
+    * **Szűrő attribútumértékek** -a "Forrás objektum hatóköre" menüjében a attribútum-leképezésekhez meghatározott attribútumértékek szűrését teszi lehetővé. Megadhatja például, hogy csak az "Értékesítési" a "Részleg" attribútummal rendelkező felhasználók kialakítási hatókörében kell lennie. További információkért lásd: [tartalmazó szűrőkkel](active-directory-saas-scoping-filters.md).
 
-* **Szűrő hozzárendelések** -létesítése "Hatókör" menüjére > beállítások a portál területen adhatja meg, hogy csak "hozzárendelt" felhasználók és csoportok kell hatókörében történő üzembe helyezéséhez, vagy kell-e az Azure AD-címtár összes felhasználója üzembe helyezve. "Hozzárendelésével" felhasználók és csoportok információkért lásd: [egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás Azure Active Directoryban](active-directory-coreapps-assign-user-azure-portal.md).
+    * **Szűrő hozzárendelések** -létesítése "Hatókör" menüjére > beállítások a portál területen adhatja meg, hogy csak "hozzárendelt" felhasználók és csoportok kell hatókörében történő üzembe helyezéséhez, vagy kell-e az Azure AD-címtár összes felhasználója üzembe helyezve. "Hozzárendelésével" felhasználók és csoportok információkért lásd: [egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás Azure Active Directoryban](active-directory-coreapps-assign-user-azure-portal.md).
     
 * **Beállítások** az alkalmazáshoz, beleértve, hogy fut-e a létesítési szolgáltatás működését.
 
@@ -106,39 +109,92 @@ Az alkalmazás felügyeleti képernyőn kiépítés konfigurálva van a **kiép�
 
 ![Beállítások](./media/active-directory-saas-app-provisioning/audit_logs.PNG)
 
+> [!NOTE]
+> A szolgáltatás kiépítését az Azure AD-felhasználó is konfigurálhatók, és kezeli a [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview).
+
+
 ## <a name="what-happens-during-provisioning"></a>Mi történik a kiépítés során?
 
-1. Ha engedélyezi az alkalmazás első indításakor kiépítés, a következő műveleteket kell végrehajtani:
-   * Az Azure AD megkísérli minden meglévő felhasználók kereséséhez a könyvtárban megfelelő letöltésük a SaaS-alkalmazás. Amikor egy felhasználó egyezik, azok *nem* automatikusan engedélyezve van, az egyszeri bejelentkezést. Ahhoz, hogy egy felhasználó hozzáférjen az alkalmazáshoz ezek társítva kell lenni explicit módon az alkalmazás az Azure AD közvetlenül, vagy csoporttagság.
-   * Ha korábban már megadta felhasználókat hozzá kell rendelni az alkalmazáshoz, és az Azure AD sikertelen lesz a meglévő fiókokat azoknak a felhasználóknak, az Azure AD kiépíti új fiókokat számukra az alkalmazásban.
-2. Miután a kezdeti szinkronizálás befejezése után fent leírt módon, az Azure AD a következő módosítások 20 percenként ellenőrzi:
-   * Ha nincsenek hozzárendelve az új felhasználók az alkalmazás (közvetlenül vagy csoporttagság), majd kiépítésüket a SaaS-alkalmazás új fiókkal.
-   * Ha a felhasználó hozzáférési el lett távolítva, akkor az SaaS-alkalmazás fiókjuk van megjelölve (felhasználók soha nem teljesen törlődnek, amely megakadályozza, hogy adatvesztés esetén a helytelen konfiguráció).
-   * Ha a felhasználó nemrég lett hozzárendelve az alkalmazást, és a Szolgáltatottszoftver-alkalmazás már volt egy fiókot, fiók van megjelölve, mivel engedélyezve van, és bizonyos felhasználói tulajdonságok frissülhet, ha azok leírásai a könyvtár képest.
-   * Ha a felhasználó adatai (például a telefonszám, irodák) megváltozott a könyvtárban, majd ezt az információt is frissül az SaaS-alkalmazáshoz.
+Ha az Azure AD a forrásrendszerben, a létesítési szolgáltatás használ a [különbözeti lekérdezés funkció az Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-differential-query) felhasználók és csoportok figyelése. A létesítési szolgáltatás fut egy kezdeti szinkronizálást a forrás és cél rendszer, rendszeres növekményes szinkronizálás követ. 
+
+### <a name="initial-sync"></a>Kezdeti szinkronizálás
+A létesítési szolgáltatás indításakor fogja az első szinkronizálás legalább egyszer végre:
+
+1. Összes felhasználók és csoportok a forrásrendszerből lekérése során meghatározott összes attribútum lekérdezni a [attribútum-hozzárendelések](active-directory-saas-customizing-attribute-mappings.md).
+2. A felhasználók és csoportok lett visszaadva, akkor e konfigurált szűrése [hozzárendelések](active-directory-coreapps-assign-user-azure-portal.md) vagy [Attribútumalapú helyezése hatókörszűrőkkel](active-directory-saas-scoping-filters.md).
+3. Amikor egy felhasználó található hozzá kell rendelni vagy hatókör történő üzembe helyezéséhez, a szolgáltatás lekérdezi a célrendszeren egy egyező felhasználó használja a kijelölt [attribútumok megfelelő](active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-properties). Példa: Ha a forrásrendszerben userPrincipal nevét a megfelelő attribútum, és van leképezve a felhasználónév a célrendszeren, majd a létesítési szolgáltatás lekérdezi a célrendszeren, amelyek megfelelnek a userPrincipal értékeket a forrásrendszerben felhasználónevek.
+4. Ha egyező felhasználó nem található a célrendszeren, létrejön a forrás rendszer által visszaadott attribútumai használatával.
+5. Ha egyező felhasználó megtalálható, frissül a forrásrendszerben által biztosított attribútumai használatával.
+6. Ha az attribútum-leképezésekhez "hivatkozás" attribútumokat tartalmaznak, a szolgáltatás további frissítések a célrendszeren létrehozhatja és összekapcsolhatja a hivatkozott objektum hajtja végre. Azt jelzi, például egy felhasználó lehet-e a célrendszeren, ami a célrendszeren létrehozott egy másik felhasználó kapcsolódik a "Manager" attribútummal.
+7. A kezdeti szinkronizálást, amely a kiindulási pontot nyújt az ezt követő növekményes szinkronizálás végén vízjel megőrzéséhez.
+
+Egyes alkalmazások, például a ServiceNow, Google Apps, és be nem csak a felhasználók kiépítés, de a csoportok és azok tagjait is kiépítés támogatása. Ezekben az esetekben, ha csoport kiépítés engedélyezve van a [hozzárendelések](active-directory-saas-customizing-attribute-mappings.md), a szolgáltatás kiépítését szinkronizálja a felhasználók és a csoportokat, és ezt követően szinkronizálja a csoporttagságokat. 
+
+### <a name="incremental-syncs"></a>Növekményes szinkronizálás
+A kezdeti szinkronizálás után minden ezt követő szinkronizálások lesz:
+
+1. A forrásrendszerben, felhasználók és csoportok, mert az utolsó vízjel tárolta frissített lekérdezése.
+2. A felhasználók és csoportok lett visszaadva, akkor e konfigurált szűrése [hozzárendelések](active-directory-coreapps-assign-user-azure-portal.md) vagy [Attribútumalapú helyezése hatókörszűrőkkel](active-directory-saas-scoping-filters.md).
+3. Amikor egy felhasználó található hozzá kell rendelni vagy hatókör történő üzembe helyezéséhez, a szolgáltatás lekérdezi a célrendszeren egy egyező felhasználó használja a kijelölt [attribútumok megfelelő](active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-properties).
+4. Ha egyező felhasználó nem található a célrendszeren, létrejön a forrás rendszer által visszaadott attribútumai használatával.
+5. Ha egyező felhasználó megtalálható, frissül a forrásrendszerben által biztosított attribútumai használatával.
+6. Ha az attribútum-leképezésekhez "hivatkozás" attribútumokat tartalmaznak, a szolgáltatás további frissítések a célrendszeren létrehozhatja és összekapcsolhatja a hivatkozott objektum hajtja végre. Azt jelzi, például egy felhasználó lehet-e a célrendszeren, ami a célrendszeren létrehozott egy másik felhasználó kapcsolódik a "Manager" attribútummal.
+7. Ha a felhasználó korábban kialakítási hatókörében hatókör (beleértve a hozzá nem rendelt folyamatban) törlődik, a szolgáltatás a célrendszeren egy Update letiltja a felhasználót.
+8. Ha a felhasználó korábban hatókörében állításához le van tiltva, vagy helyreállíthatóan törölt a forrásrendszerben, a szolgáltatás letiltása a felhasználó a célrendszeren egy frissítés keresztül.
+9. Ha egy felhasználó kialakítási hatókörében korábban törölt a forrásrendszerben, a szolgáltatás törli a felhasználó a célrendszeren. Az Azure AD-felhasználók Miután bekerültek a helyreállíthatóan törölt törölt 30 nap.
+10. A növekményes szinkronizálás, amely a kiindulási pontot nyújt az ezt követő növekményes szinkronizálás végén új vízjel megőrzéséhez.
+
+>[!NOTE]
+> Igény szerint letilthatja a létrehozási, frissítési vagy törlési műveletek használatával a **céloz objektum műveletek** jelölőnégyzetek a [attribútum-leképezésekhez](active-directory-saas-customizing-attribute-mappings.md) szakasz. Frissítés közben a felhasználó letiltása logika keresztül egy attribútum-leképezés például "accountEnabled" mező is vezérlik.
+
+A létesítési szolgáltatás továbbra is futtassa végpont növekményes szinkronizálás határozatlan ideig meghatározott időközönként a [minden alkalmazásra vonatkoznak, az oktatóanyag](active-directory-saas-tutorial-list.md), amíg meg nem történik az alábbiak egyike:
+
+* A manuálisan leállították a szolgáltatást az Azure portál használatával, vagy a megfelelő Graph API-parancs segítségével 
+* Egy új kezdeti szinkronizálás aktiválódik, használja a **állapot törölje, majd indítsa újra** lehetőséget az Azure portálon, vagy a megfelelő Graph API-parancs használatával. Ez törli az összes tárolt vízjel, és hatására az összes adatforrás-objektumok újra kell kiértékelni.
+* Egy új kezdeti szinkronizálási attribútum-leképezésekhez vagy hatókörének meghatározásához szűrők változás miatt elindul. Ez is egyetlen tárolt vízjel törli, és a hatására az összes adatforrás-objektumok újra kell kiértékelni.
+* A telepítési folyamatot, a magas Hibaarány miatt (lásd alább) karanténba kerül, és négy hétnél tovább karanténban marad. Ebben az esetben a szolgáltatás automatikusan letiltásra kerül.
+
+### <a name="errors-and-retries"></a>Hibák és a próbálkozások 
+Ha egy adott felhasználó nem vehető fel, frissíteni vagy törölni a célrendszeren egy hiba miatt a célrendszeren, majd a művelet megkísérli a következő szinkronizálási ciklusban. Ha a felhasználó továbbra is sikertelen, az újbóli próbálkozások megkezdik kisebb gyakorisággal, fokozatosan méretezhetők naponta csak egy kísérlet történik. A hiba elhárításához ellenőrizze a rendszergazdák kell a [naplók](active-directory-saas-provisioning-reporting.md) a "folyamat letéti" határozza meg a legfelső szintű eseményeket okozhat, és hajtsa végre a megfelelő műveletet. Gyakori hibák a következők lehetnek:
+
+* A forrásrendszerben, amely pedig szükséges lenne a célrendszeren feltöltve attribútum nem rendelkező felhasználók
+* A forrásrendszerben nincs egyedi korlátozása a célrendszeren egy attribútum értékét, és ugyanazt az értéket rendelkező felhasználók megtalálható-e egy másik felhasználói rekordban
+
+Ezek a hibák megoldhatók a forrásrendszerben az érintett felhasználó attribútum értékének beállításával, vagy az attribútum-leképezésekhez ütközést okoz.   
+
+### <a name="quarantine"></a>Karantén
+Ha a legtöbb vagy összes hívást felé irányuló a célrendszeren következetesen (például érvénytelen rendszergazdai hitelesítő adataival gazdabuszadaptereken) hiba miatt sikertelen, majd a kiosztási feladatának "karantén" állapotba kerül. A jelzett a [összesítő jelentés kiépítés](active-directory-saas-provisioning-reporting.md), és e-mailben Ha értesítő e-mailek be lett állítva, az Azure portálon. 
+
+A karanténba helyezett, növekményes szinkronizálás gyakoriságának naponta egyszer fokozatosan csökken. 
+
+A létesítési feladat összes meghatároznak a hibát okozó hibák után törlődnek a karanténba helyezett, és a következő szinkronizálási ciklusban elindul. Ha a kiosztási feladatának karantén négy hétnél tovább marad, a létesítési feladat le van tiltva.
 
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
-**Milyen gyakran nem írható az Azure AD directory változásait a SaaS-alkalmazásokhoz?**
-
-Egy kezdeti teljes szinkronizálás befejeződése után az Azure AD kiosztása általában a szolgáltatás ellenőrzi a módosításokat 20 percenként. 
-
-A Szolgáltatottszoftver-alkalmazáshoz (például érvénytelen rendszergazdai hitelesítő adataival gazdabuszadaptereken) számos hibát ad vissza, ha majd az Azure AD fokozatosan lelassítják a hibák megoldásáig naponta egyszer akár a gyakoriságát. Ez akkor fordul elő, amikor a Azure AD-létesítési feladat "karantén" állapotba kerül, és azt jelzi, hogy ez csak a [összesítő jelentés kiépítés](active-directory-saas-provisioning-reporting.md).
 
 **Mennyi ideig tart a felhasználók létrehozásához?**
 
-Miután egy kezdeti teljes szinkronizálás befejeződött, a növekményes változásokat általában 20-40 percen belül fordulhat elő. Ha annak a könyvtárnak a legtöbb kiépítéséhez, majd azt számától függ a felhasználók és csoportok van. Teljesítmény a felhasználó felügyeleti API-t a kiépítési szolgáltatások segítségével a forrásrendszerben adatokat olvasni és írni a célrendszerbe teljesítményétől függ. 
+Teljesítmény attól függően, hogy a kiosztási feladatának működik-e egy kezdeti szinkronizálást, vagy egy növekményes szinkronizálás eltérőek lesznek.
+
+A kezdeti szinkronizálás végrehajtásához szükséges idő közvetlenül függ hány felhasználók, csoportok és csoporttagok szerepelnek a forrásrendszerben lesz. Nagyon kicsi forrásrendszerek objektumok száz percek a kezdeti szinkronizálás hajthatja végre. Több ezer vagy kombinált objektumok millióit száz forrásrendszerek azonban nagyon hosszú időt vehet igénybe.
+
+Növekményes szinkronizálás szükséges idő az adott szinkronizálási ciklust észlelt megváltozása függ. Ha kevesebb mint 5000 felhasználó vagy csoport tagsági változása észlelhető, ezek is gyakran szinkronizálva egy 40 perces cikluson belül. 
+
+Vegye figyelembe, hogy mind a forrás-és a függő, hogy általános teljesítményét. Néhány célrendszereket valósítja meg a kérelem sebességhatárok és a szabályozás, hogy is nagy szinkronizálási műveletek során a hatás teljesítményét, és ezekhez a rendszerekhez az összekötők kiépítés az előre elkészített Azure AD figyelembe ezt.
 
 Teljesítmény egyben lassabb, ha sok hiba van (tárolja, amely a [naplók](active-directory-saas-provisioning-reporting.md)) és a létesítési szolgáltatás állapotba került egy "karantén" állapotba kerül.
 
-**Mi az, hogy egy kezdeti teljes szinkronizálást, és Miért tart hosszabb, mint az ezt követő szinkronizálások?**
+**Hogyan javítható a teljesítmény a szinkronizálás?**
 
-Az első futtatásakor a szolgáltatás kiépítését az Azure AD egy adott alkalmazáshoz, az "pillanatfelvételt" a felhasználók (és igény szerint csoportosítja) a forráskönyvtárban. A pillanatkép lehetővé teszi, hogy a létesítési szolgáltatás adatváltások számát csökkenteni a forrás és cél API-k, és lehetővé teszi, hogy a későbbi "különbözeti" szinkronizálások hatékonyabban viselkedését. 
+A legtöbb teljesítményproblémákat fordulhat elő, csoportok és a csoporttagok sok rendszerek kezdeti szinkronizálás során.
 
-A kezdeti teljes szinkronizálást, a felhasználók gyakran kis könyvtárak percben végezheti, de nagyobb könyvtárak több óráig is eltarthat. Vállalati könyvtárak felhasználók ezreit száz a kezdeti szinkronizálás végrehajtásához a több óráig is eltarthat. Azonban a kezdeti szinkronizálás után "különbözeti" ezt követő szinkronizálások fordulhat elő, sokkal gyorsabban.
+Ha nincs szükség a szinkronizálási csoportok és a csoporttagságokat, szinkronizálási teljesítmény nagy mértékben növelhető a szerint:
+
+1. Beállítás a **kiépítési > Beállítások > hatókör** menü **összes**, hozzárendelt felhasználók és csoportok szinkronizálásakor helyett.
+2. Használjon [helyezése hatókörszűrőkkel](active-directory-saas-scoping-filters.md) kiosztása a felhasználók listájának szűrése hozzárendelések helyett.
 
 > [!NOTE]
-> Csoportokkal vagy csoporttagsággal a létesítést támogató alkalmazások esetében az engedélyezése Ez jelentős mértékben növeli a teljes szinkronizálás végrehajtásához szükséges idő. Ha nem szeretné, hogy csoporthoz tartozó nevek és a csoporttagságokat, az alkalmazás telepítéséhez, letilthatja ezt a a [attribútum-hozzárendelések](active-directory-saas-customizing-attribute-mappings.md) az üzembe helyezési konfigurációját.
+> A csoport nevét és a csoport tulajdonságai (például a ServiceNow és a Google Apps) a létesítést támogató alkalmazások letiltása, ez is csökkenti egy kezdeti szinkronizáláshoz befejezéséhez szükséges időt. Ha nem szeretné, hogy csoporthoz tartozó nevek és a csoporttagságokat, az alkalmazás telepítéséhez, letilthatja ezt a a [attribútum-hozzárendelések](active-directory-saas-customizing-attribute-mappings.md) az üzembe helyezési konfigurációját.
 
 **Hogyan követheti nyomon az aktuális üzembe helyezési feladat előrehaladásának?**
 
@@ -148,17 +204,20 @@ Tekintse meg a [létesítési jelentéskészítés – útmutató](active-direct
 
 Összes sikertelen tárolja, amely az Azure AD a naplók. További információkért lásd: a [létesítési jelentéskészítés – útmutató](active-directory-saas-provisioning-reporting.md).
 
+**Hogyan hozhat létre olyan alkalmazás, amely az üzembe helyezési szolgáltatással működik?**
+
+Lásd: [SCIM használata felhasználók és csoportok az Azure Active Directory alkalmazások automatikusan kiépítéséhez](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning).
+
 **Hogyan elküldheti a visszajelzését a mérnöki csapathoz?**
 
 Kapcsolatfelvétel keresztül a [Azure Active Directory-visszajelzési fórumon](https://feedback.azure.com/forums/169401-azure-active-directory/).
 
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
-* [Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke](active-directory-apps-index.md)
+* [SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
 * [A felhasználók átadása attribútum-leképezésekhez testreszabása](active-directory-saas-customizing-attribute-mappings.md)
 * [Attribútum-leképezésekhez kifejezések írása](active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [Helyezése Hatókörszűrőkkel felhasználói történő üzembe helyezéséhez](active-directory-saas-scoping-filters.md)
 * [SCIM használata a felhasználók és csoportok automatikus üzembe helyezésének engedélyezéséhez az Azure Active Directoryból az alkalmazásokba](active-directory-scim-provisioning.md)
-* [Alkalmazás-kiépítési értesítések](active-directory-saas-account-provisioning-notifications.md)
-* [SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
+* [Az Azure AD szinkronizálási API – áttekintés](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
 
