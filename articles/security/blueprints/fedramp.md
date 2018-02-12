@@ -1,6 +1,6 @@
 ---
-title: "Az Azure tervezetének Automation - webalkalmazások FedRAMP az"
-description: "Az Azure tervezetének Automation - webalkalmazások FedRAMP az"
+title: "Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások automatizálás"
+description: "Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások automatizálás"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: d0521d68bab8bd0b7db53a512da6d37033abd85e
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 9b605e500925e8435b15ec8055f8d8f376888aaf
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/11/2018
 ---
-# <a name="azure-blueprint-automation---web-applications-for-fedramp"></a>Az Azure tervezetének Automation - webalkalmazások FedRAMP az
+# <a name="azure-security-and-compliance-blueprint---fedramp-web-applications-automation"></a>Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások automatizálás
 
 ## <a name="overview"></a>Áttekintés
 
-A [Szövetségi kockázat és engedélyezési felügyeleti Program (FedRAMP)](https://www.fedramp.gov), egy Egyesült államokbeli kormányzati kiterjedő program, amely a biztonsági értékelést, engedélyezési és folyamatos figyelés szabványosított megközelítését ismerteti a felhő termékeket és szolgáltatások. Ez tervezetének Azure Automation - webalkalmazások FedRAMP az útmutatást egy szolgáltatási (IaaS) környezetben megfelelő-e egy egyszerű Internet felé néző webes alkalmazáshoz, a FedRAMP-kompatibilis infrastruktúra központi telepítésére vonatkozóan. Ez a megoldás automatizálja az üzembe helyezési és konfigurálási egy közös referencia-architektúrában, amelyben ügyfelek megfelel konkrét biztonsági és megfelelőségi követelmények és szolgál az ügyfelek számára a build alapjaként módon, amely tartalmazza az Azure-erőforrások és a saját megoldások konfigurálása az Azure-on. A megoldás a FedRAMP nagy alaptervből, NIST SP 800-53 alapján szabályozza egy részhalmazát valósítja meg. FedRAMP nagy követelmények és a megoldás kapcsolatos további információkért lásd: [FedRAMP magas követelmények – magas szintű áttekintés](fedramp-controls-overview.md). ***Megjegyzés: Ez a megoldás Azure Government telepíti.***
+A [Szövetségi kockázat és engedélyezési felügyeleti Program (FedRAMP)](https://www.fedramp.gov), egy Egyesült államokbeli kormányzati kiterjedő program, amely a biztonsági értékelést, engedélyezési és folyamatos figyelés szabványosított megközelítését ismerteti a felhő termékeket és szolgáltatások. Az Azure biztonsági és megfelelőségi tervezetének Automation útmutatással szolgál a központi telepítésben FedRAMP-kompatibilis infrastruktúra egy egy egyszerű Internet felé néző webes alkalmazáshoz megfelelő szolgáltató (IaaS) környezetben is. Ez a megoldás automatizálja az üzembe helyezési és konfigurálási egy közös referencia-architektúrában, amelyben ügyfelek megfelel konkrét biztonsági és megfelelőségi követelmények és szolgál az ügyfelek számára a build alapjaként módon, amely tartalmazza az Azure-erőforrások és a saját megoldások konfigurálása az Azure-on. A megoldás a FedRAMP nagy alaptervből, NIST SP 800-53 alapján szabályozza egy részhalmazát valósítja meg. FedRAMP nagy követelmények és a megoldás kapcsolatos további információkért lásd: [FedRAMP magas követelmények – magas szintű áttekintés](fedramp-controls-overview.md). ***Megjegyzés: Ez a megoldás Azure Government telepíti.***
 
 Ebbe az architektúrába célja, hogy az ügyfelek úgy, hogy az egyedi követelményeket alapjaként szolgálnak, és nem használható mint – egy termelési környezetben. Erre a környezetre módosítás nélkül az alkalmazások központi telepítése nincs teljesen teljesítik a FedRAMP nagy alapterv követelményeinek. Vegye figyelembe a következőket:
 - Ezen architektúra FedRAMP megfelelő módon használja a Azure ügyfelek alapterv.
@@ -36,17 +36,17 @@ Kattintson a [Itt](https://aka.ms/fedrampblueprintrepo) üzembe helyezési utas�
 
 ## <a name="solution-components"></a>Megoldás-összetevők
 
-Az Azure tervezetének Automation automatikusan telepíti az infrastruktúra-szolgáltatási webes alkalmazás referencia-architektúrában előre beállított biztonsági vezérlőkkel ügyfelek FedRAMP követelményeknek való megfelelés eléréséhez. A megoldás Azure Resource Manager-sablonok és az erőforrás üzembe helyezési és konfigurációs útmutató PowerShell-parancsfájlok áll. Azure tervezetének kísérő [megfelelőségi dokumentáció](#compliance-documentation) biztosított, biztonsági vezérlő öröklési Azure és a telepített erőforrások és a konfigurációkat az NIST SP 800-53 biztonsági vezérlők igazítása, ezáltal jelző gyorsított kötelezettségek szervezetek engedélyezése.
+Az Azure biztonsági és megfelelőségi tervezetének Automation automatikusan telepíti az infrastruktúra-szolgáltatási webes alkalmazás referencia-architektúrában előre beállított biztonsági vezérlőkkel ügyfelek FedRAMP követelményeknek való megfelelés eléréséhez. A megoldás Azure Resource Manager-sablonok és az erőforrás üzembe helyezési és konfigurációs útmutató PowerShell-parancsfájlok áll. Kísérő [megfelelőségi dokumentáció](#compliance-documentation) biztosított, biztonsági vezérlő öröklési Azure és a telepített erőforrások és a konfigurációkat, amely megfelel-e NIST SP 800-53 biztonsági vezérlők jelző, ezáltal engedélyezése gyorsított kötelezettségek szervezetek.
 
 ## <a name="architecture-diagram"></a>Architektúradiagram
 
 Ez a megoldás egy referencia-architektúrában, az infrastruktúra-szolgáltatási webalkalmazás egy adatbázis-háttérrendszerrel telepíti. Az architektúra egy webes réteghez, az adatok réteg, Active Directory-infrastruktúrát, Alkalmazásátjáró, és a belső terheléselosztót. A webes és adatok rétegek telepített virtuális gépek rendelkezésre állási csoportok vannak konfigurálva, és az SQL Server-példányokat a magas rendelkezésre állású AlwaysOn rendelkezésre állási csoportban vannak konfigurálva. Virtuális gépek a tartományhoz, és az Active Directory-csoportházirendek segítségével az operációs rendszer szintjén és megfelelőségi beállítások kényszerítése. A felügyeleti jumpbox (megerősített állomás) biztonságos kapcsolatot biztosít a rendszergazdák központilag telepített hozzáférését az erőforrásokhoz.
 
-![helyettesítő szöveg](images/fedramp-architectural-diagram.png?raw=true "IaaS webes alkalmazás tervezetének automation FedRAMP-kompatibilis környezetben")
+![helyettesítő szöveg](images/fedramp-architectural-diagram.png?raw=true "Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások automatizálás")
 
 A megoldás az Azure-szolgáltatásokat. Az üzembe helyezési architektúrája részleteit találhatók a [üzembe helyezési architektúrája](#deployment-architecture) szakasz.
 
-* **Az Azure virtuális gépek**
+* **Azure Virtual Machines**
     - (1) felügyeleti/megerősített (Windows Server 2016 Datacenter)
     - (2) az active Directory-tartományvezérlőhöz (Windows Server 2016 Datacenter)
     - (2) az SQL Server-fürt csomópontjának (SQL Server 2016-os Windows Server 2012 R2 rendszeren)
@@ -62,7 +62,7 @@ A megoldás az Azure-szolgáltatásokat. Az üzembe helyezési architektúrája 
     - DNS-beállítások mindkét tartományvezérlőn van beállítva
 * **Azure Load Balancer**
     - (1) SQL terheléselosztó
-* **Az Azure alkalmazás átjáró**
+* **Azure Application Gateway**
     - (1) az Alkalmazásátjáró WAF engedélyezve
       - Tűzfal-mód: megelőzése
       - Szabálykészlet: OWASP 3.0
@@ -91,7 +91,7 @@ Az alábbi szakasz részletesen fejlesztése és megvalósítása elemek.
 
 Az architektúra csökkenti a biztonsági réseket Alkalmazásátjáró webalkalmazási tűzfal (waf-ot), és a OWASP szabálykészletben engedélyezve van. További funkciók a következők:
 
-- [End a záró SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)
+- [End-to-End-SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)
 - Engedélyezése [SSL kiürítése](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-portal)
 - Tiltsa le a [TLS 1.0 és 1.1 verzió](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)
 - [Webalkalmazási tűzfal](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-overview) (WAF mód)
@@ -138,8 +138,8 @@ Az Azure Disk Encryption titkosított Windows IaaS virtuális gépek lemezeit sz
 
 [Az Operations Management Suite (OMS)](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) rendszer és felhasználói tevékenységek, valamint a rendszerállapot-részletes naplózást végez. 
 
-- **Tevékenységi naplóit:**[tevékenységi naplóit](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) Észreveheti az olyan erőforrást az előfizetésében a végrehajtott műveletek.  
-- **Diagnosztikai naplók:**[diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) minden erőforrás által kibocsátott összes naplófájlt.   Ezek a naplók tartalmazzák a Windows rendszer-eseménynaplói, az Azure storage naplókat, Key Vault-naplók és Alkalmazásátjáró hozzáférés és a tűzfalon naplókat.
+- **Tevékenységi naplóit:**[tevékenységi naplóit](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) Észreveheti az olyan erőforrást az előfizetésében a végrehajtott műveletek.
+- **Diagnosztikai naplók:**[diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) minden erőforrás által kibocsátott összes naplófájlt. Ezek a naplók tartalmazzák a Windows rendszer-eseménynaplói, az Azure storage naplókat, Key Vault-naplók és Alkalmazásátjáró hozzáférés és a tűzfalon naplókat.
 - **Napló archiválás:** Azure tevékenységi naplóit, és diagnosztikai naplók csatlakozhat az Azure Naplóelemzés szolgáltatáshoz feldolgozási, tárolására és dashboarding. Ez felhasználó által konfigurálható mentése 730 nap szervezet-specifikus megőrzési követelményeinek megfelelően.
 
 ### <a name="secrets-management"></a>Titkos kulcsok kezelése
@@ -157,7 +157,7 @@ A következő technológiákat identitás biztosítása a felügyeleti képessé
 - [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) lehetővé teszi, hogy pontosan célzott hozzáférés-kezelés az Azure-bA. Előfizetés hozzáférés korlátozódik előfizetés-rendszergazdaként, és az erőforrásokhoz való hozzáférés korlátozható a felhasználói szerepkör alapján.
 - Egy telepített IaaS Active Directory példánnyal üzembe helyezett infrastruktúra-szolgáltatási virtuális gépeknél operációsrendszer-szintű identitás-felügyeletet biztosít.
    
-### <a name="compute-resources"></a>Számítási erőforrásokat
+### <a name="compute-resources"></a>Számítási erőforrások
 
 #### <a name="web-tier"></a>Webes réteg
 
@@ -182,9 +182,9 @@ A felügyeleti jumpbox (megerősített állomás) biztonságos kapcsolatot bizto
 
 ### <a name="patch-management"></a>A javítások
 
-Ez tervezetének automatizálás által telepített Windows virtuális gépek automatikus frissítések kap a Windows Update szolgáltatás alapértelmezés szerint vannak konfigurálva. Ez a megoldás is telepíti az OMS Azure Automation-megoldást, amelyen keresztül a központi telepítést is létrehozható kiszolgálókra történő központi telepítéséhez javítások Windows szükség esetén.
+Az Azure biztonsági és megfelelőségi tervezetének automatizálás által telepített Windows virtuális gépek automatikus frissítések kap a Windows Update szolgáltatás alapértelmezés szerint vannak konfigurálva. Ez a megoldás is telepíti az OMS Azure Automation-megoldást, amelyen keresztül a központi telepítést is létrehozható kiszolgálókra történő központi telepítéséhez javítások Windows szükség esetén.
 
-### <a name="operations-management"></a>Műveletek kezelése
+### <a name="operations-management"></a>Operatív ügyek
 
 #### <a name="log-analytics"></a>Log Analytics
 
@@ -211,11 +211,11 @@ A [ügyfél feladatkörei mátrix](https://aka.ms/blueprinthighcrm) (Excel-munka
 
 ### <a name="control-implementation-matrix"></a>Ellenőrzés végrehajtása mátrix
 
-A [vezérlés megvalósítása mátrix](https://aka.ms/blueprintwacim) (Excel-munkafüzet) felsorolja a FedRAMP nagy alapkonfiguráció által igényelt összes biztonsági vezérlő. A mátrix jelöli, az egyes vezérlő (vagy ellenőrzési alrész), amely van kijelölve egy ügyfél-osztott a ügyfél feladatkörei mátrixban 1.) Ha a tervezetének Automation valósítja meg a vezérlő, illetve 2) leírását hogyan igazodik a megvalósítás a vezérlő requirement(s). Ez a tartalom is rendelkezésre áll [Itt](fedramp-controls-overview.md).
+A [vezérlés megvalósítása mátrix](https://aka.ms/blueprintwacim) (Excel-munkafüzet) felsorolja a FedRAMP nagy alapkonfiguráció által igényelt összes biztonsági vezérlő. A mátrix jelöli, az egyes vezérlő (vagy ellenőrzési alrész), amely van kijelölve egy ügyfél-osztott az ügyfél feladatkörei mátrixban, 1.) Ha a tervezetének automation valósítja meg a vezérlő, valamint (2) egy leírása hogyan végrehajtása igazodik a vezérlő requirement(s). Ez a tartalom is rendelkezésre áll [Itt](fedramp-controls-overview.md).
 
-## <a name="deploy-the-solution"></a>A megoldás üzembe helyezéséhez
+## <a name="deploy-the-solution"></a>A megoldás üzembe helyezése
 
-Ez a megoldás Azure tervezetének JSON-konfigurációs fájlok és az Azure erőforrások telepítése Azure Resource Manager API szolgáltatás által kezelt PowerShell-parancsfájlok magában foglalja. Részletes üzembe helyezési utasítások érhetők el [Itt](https://aka.ms/fedrampblueprintrepo). ***Megjegyzés: Ez a megoldás Azure Government telepíti.***
+Az Azure biztonsági és megfelelőségi tervezetének Automation JSON-konfigurációs fájlok és az Azure erőforrások telepítése Azure Resource Manager API szolgáltatás által kezelt PowerShell-parancsfájlok áll. Részletes üzembe helyezési utasítások érhetők el [Itt](https://aka.ms/fedrampblueprintrepo). ***Megjegyzés: Ez a megoldás Azure Government telepíti.***
 
 #### <a name="quickstart"></a>Első lépések
 1. Klónozza vagy letöltése [ez](https://aka.ms/fedrampblueprintrepo) GitHub-tárházban történő helyi munkaállomáson.

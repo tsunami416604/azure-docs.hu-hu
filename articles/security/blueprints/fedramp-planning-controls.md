@@ -1,6 +1,6 @@
 ---
-title: "FedRAMP Azure tervezetének Automation - tervezése"
-description: "A FedRAMP - webalkalmazások tervezése"
+title: "Az Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - tervezése"
+description: "FedRAMP webes alkalmazások Automation - tervezése"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 8e4d4f228940d08bc522aabcd6f4ab573ff231d4
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: d5e5666db71ac9f5a136c9acb448fb13bf39a853
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="planning-pl"></a>Tervezési (PL)
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-pl-2a"></a>A NIST 800-53 vezérlő PL-2.a
+ ## <a name="nist-800-53-control-pl-2a"></a>NIST 800-53 Control PL-2.a
 
 #### <a name="system-security-plan"></a>Rendszer biztonsági csomag
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-pl-2b"></a>A NIST 800-53 vezérlő PL-2.b
+ ## <a name="nist-800-53-control-pl-2b"></a>NIST 800-53 Control PL-2.b
 
 #### <a name="system-security-plan"></a>Rendszer biztonsági csomag
 

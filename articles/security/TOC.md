@@ -90,7 +90,6 @@
 ### [Az Azure-naplók integrációjának bemutatása](security-azure-log-integration-overview.md)
 #### [Ismerkedés az Azure-naplók integrációjával](security-azure-log-integration-get-started.md)
 #### [Az Azure Active Directory naplóinak integrálása](security-azure-log-integration-ad.md)
-#### [A Security Center riasztásainak integrálása](security-azure-log-integration-security-center.md)
 #### [Key Vault-naplók integrálása az Event Hubs használatával](security-azure-log-integration-keyvault-eventhub.md)
 #### [GYIK](security-azure-log-integration-faq.md)
 

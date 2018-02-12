@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako;anilmur
-ms.openlocfilehash: e18de2adc9aac585d6890dd7b43a54f1a0ca177e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: eb1cadec240dc7f6e3ac5b8932d66c3d55c76e42
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>Media Encoder prémium szintű munkafolyamat-formátumok és kodekek
 > [!NOTE]
-> Prémium szintű kódolás kérdéseket tesz fel a Microsoft.com mepd e-mail.
+> Prémium szintű kódolás kérdéseket tesz fel, e-mailben mepd@microsoft.com.
 > 
 > A jelen témakörben bemutatott Media Encoder prémium munkafolyamat media processzor Kínában nem érhető el. 
 > 
@@ -46,7 +46,7 @@ A következő szakasz a kodekeket és fájlformátumot, amely a media processzor
 * MPEG-2 Transport adatfolyamok
 * MPEG-2 Program adatfolyamok
 * MPEG-4/MP4
-* Windows Media/ASP
+* Windows Media/ASF
 * AVI (tömörítetlen 8 bit/10 bit)
 
 ### <a name="input-video-codecs"></a>A bemeneti videó kodekek
@@ -60,7 +60,7 @@ A következő szakasz a kodekeket és fájlformátumot, amely a media processzor
 
 ### <a name="input-audio-codecs"></a>Bemeneti hang kodekek
 * AES (SMPTE 331 M és 302 M, AES3-2003)
-* E Dolby®
+* Dolby® E
 * Dolby® digitális (AC3)
 * AAC (AAC-LC, AAC-HE és AAC-HEv2; akár 5.1)
 * 2. réteg MPEG
@@ -77,7 +77,7 @@ A következő szakasz a kodekeket és fájlformátumot, a media processzor kimen
 * DPP (beleértve a AS11)
 * GXF
 * MPEG-4/MP4
-* Windows Media/ASP
+* Windows Media/ASF
 * AVI (tömörítetlen 8 bit/10 bit)
 * Zökkenőmentes adatfolyam fájlformátum (PIFF 1.3)
 * MPEG-TS 

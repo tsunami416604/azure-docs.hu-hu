@@ -1,6 +1,6 @@
 ---
 title: "Készítése és a pont-pont tanúsítványok exportálása: PowerShell: Azure |} Microsoft Docs"
-description: "A cikkben található lépéseket hozzon létre egy önaláírt legfelső szintű tanúsítványt, a nyilvános kulcs exportálásának és a PowerShell-lel Windows 10 ügyféltanúsítványok előállításához."
+description: "A cikkben található lépéseket hozzon létre egy önaláírt legfelső szintű tanúsítványt, a nyilvános kulcs exportálásának és a PowerShell-lel Windows 10 vagy Windows Server 2016 ügyféltanúsítványok előállításához."
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/09/2017
 ms.author: cherylmc
-ms.openlocfilehash: be2e8fe12dee88ccf81faaa114056a29e03881bd
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: dc7031a42781d57689c067988239ff0528d8d83b
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/11/2018
 ---
-# <a name="generate-and-export-certificates-for-point-to-site-connections-using-powershell-on-windows-10"></a>Létrehozása és exportálása a tanúsítványok a PowerShell-lel Windows 10 pont – hely kapcsolatok
+# <a name="generate-and-export-certificates-for-point-to-site-connections-using-powershell-on-windows-10-or-windows-server-2016"></a>Létrehozása és exportálása a tanúsítványok a PowerShell-lel Windows 10 vagy Windows Server 2016 pont – hely kapcsolatok
 
-Pont – hely kapcsolatok tanúsítványok segítségével hitelesíti. Ez a cikk bemutatja, hogyan hozzon létre egy önaláírt legfelső szintű tanúsítványt, és a PowerShell-lel Windows 10 ügyféltanúsítványok előállításához. Ha a keresett pont-hely konfigurációs lépések, például a legfelső szintű tanúsítványok feltöltéséről válassza az "konfigurálása pont-pont" cikkekben az alábbi listából:
+Pont – hely kapcsolatok tanúsítványok segítségével hitelesíti. Ez a cikk bemutatja, hogyan hozzon létre egy önaláírt legfelső szintű tanúsítványt, és a PowerShell-lel Windows 10 vagy Windows Server 2016 ügyféltanúsítványok előállításához. Ha a keresett pont-hely konfigurációs lépések, például a legfelső szintű tanúsítványok feltöltéséről válassza az "konfigurálása pont-pont" cikkekben az alábbi listából:
 
 > [!div class="op_single_selector"]
 > * [Hozzon létre önaláírt tanúsítványokat - PowerShell](vpn-gateway-certificates-point-to-site.md)
@@ -35,15 +35,15 @@ Pont – hely kapcsolatok tanúsítványok segítségével hitelesíti. Ez a cik
 > 
 
 
-Ez a cikk a Windows 10 rendszerű számítógépre kell hajtsa végre a lépéseket. A PowerShell-parancsmagok, amelyekkel lehet tanúsítványokat létrehozni a Windows 10 operációs rendszer része, és a Windows más verziói nem működnek. A Windows 10 rendszerű számítógépeket csak akkor tanúsítványainak előállításához szükséges. Ha a tanúsítványok jönnek létre, feltöltheti ezeket, vagy telepítse őket a támogatott ügyfél operációs rendszereken. 
+Ez a cikk a Windows 10 vagy Windows Server 2016 rendszerű számítógépre kell hajtsa végre a lépéseket. A PowerShell-parancsmagok, amelyekkel lehet tanúsítványokat létrehozni az operációs rendszer része, és a Windows más verziói nem működnek. A Windows 10 vagy Windows Server 2016 számítógép csak akkor tanúsítványainak előállításához szükséges. Ha a tanúsítványok jönnek létre, feltöltheti ezeket, vagy telepítse őket a támogatott ügyfél operációs rendszereken. 
 
-Ha nincs hozzáférése a Windows 10 rendszerű számítógépeket, [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md) tanúsítványainak létrehozásához. A tanúsítványok, létrehozhat módszerek használatával is telepíthető [támogatott](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq) ügyfél operációs rendszerét.
+Ha nincs hozzáférése a Windows 10 vagy Windows Server 2016 számítógép, [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md) tanúsítványainak létrehozásához. A tanúsítványok, létrehozhat módszerek használatával is telepíthető [támogatott](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq) ügyfél operációs rendszerét.
 
 ## <a name="rootcert"></a>Hozzon létre egy önaláírt legfelső szintű tanúsítványt
 
 A New-SelfSignedCertificate parancsmag segítségével hozzon létre egy önaláírt legfelső szintű tanúsítványt. További információkért lásd: [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
 
-1. Windows 10 rendszerű számítógépeken nyisson meg egy Windows PowerShell-konzolt emelt szintű jogosultságokkal.
+1. Windows 10 vagy Windows Server 2016 rendszert futtató számítógépről nyissa meg a Windows PowerShell-konzolban emelt szintű jogosultságokkal.
 2. Az alábbi példát követve létrehozni az önaláírt legfelső szintű tanúsítványt. Az alábbi példa létrehoz egy önaláírt legfelső szintű tanúsítványt, "P2SRootCert", amely automatikusan telepíti a "Tanúsítványok-aktuális User\Personal\Certificates" nevű. A tanúsítvány megtekintéséhez nyissa meg *certmgr.msc*, vagy *kezelheti a felhasználói tanúsítványok*.
 
   ```powershell

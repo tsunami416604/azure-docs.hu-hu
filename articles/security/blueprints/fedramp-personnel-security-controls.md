@@ -1,6 +1,6 @@
 ---
-title: "FedRAMP Azure tervezetének Automation - személyzet biztonsága"
-description: "Webes alkalmazásokhoz, a FedRAMP - személyzet biztonsága"
+title: "Az Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - személyzet biztonsága"
+description: "FedRAMP webes alkalmazások Automation - személyzet biztonsága"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: ace6a78fe08d1dbabeb435d76e686ba9c61aac99
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 2b9095d0420987f9cad758e3c883a9e2b5cd60c4
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="personnel-security-ps"></a>A személyzet biztonsága (PS)
 
 > [!NOTE]
 > Ezek az intézkedések határozzák meg NIST és az Egyesült Államok Kereskedelmi Minisztériuma a NIST különleges közlemény 800-53-as verziójának 4 részeként. Tekintse meg a NIST 800-53 fordított 4 tesztelési útmutató a vezérlők és eljárásokat olvashat.
 
-## <a name="nist-800-53-control-ps-1"></a>A NIST 800-53 vezérlő PS-1
+## <a name="nist-800-53-control-ps-1"></a>NIST 800-53 Control PS-1
 
 #### <a name="personnel-security-policy-and-procedures"></a>Személyzet biztonsági házirendet, és eljárások
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-ps-2a"></a>A NIST 800-53 vezérlő PS-2.a
+ ## <a name="nist-800-53-control-ps-2a"></a>NIST 800-53 Control PS-2.a
 
 #### <a name="position-risk-designation"></a>Beosztás kockázat megnevezése
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-ps-2b"></a>A NIST 800-53 vezérlő PS-2.b
+ ## <a name="nist-800-53-control-ps-2b"></a>NIST 800-53 Control PS-2.b
 
 #### <a name="position-risk-designation"></a>Beosztás kockázat megnevezése
 
@@ -67,7 +67,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-ps-2c"></a>A NIST 800-53 vezérlő PS-2.c
+ ## <a name="nist-800-53-control-ps-2c"></a>NIST 800-53 Control PS-2.c
 
 #### <a name="position-risk-designation"></a>Beosztás kockázat megnevezése
 
@@ -81,7 +81,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-ps-3a"></a>A NIST 800-53 vezérlő PS-3.a
+ ## <a name="nist-800-53-control-ps-3a"></a>NIST 800-53 Control PS-3.a
 
 #### <a name="personnel-screening"></a>A személyzet szűrése
 
@@ -95,7 +95,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-ps-3b"></a>A NIST 800-53 vezérlő PS-3.b
+ ## <a name="nist-800-53-control-ps-3b"></a>NIST 800-53 Control PS-3.b
 
 #### <a name="personnel-screening"></a>A személyzet szűrése
 
@@ -137,7 +137,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-ps-4a"></a>A NIST 800-53 vezérlő PS-4.a
+ ## <a name="nist-800-53-control-ps-4a"></a>NIST 800-53 Control PS-4.a
 
 #### <a name="personnel-termination"></a>Személyzet megszüntetése
 
@@ -151,7 +151,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-ps-4b"></a>A NIST 800-53 vezérlő PS-4.b
+ ## <a name="nist-800-53-control-ps-4b"></a>NIST 800-53 Control PS-4.b
 
 #### <a name="personnel-termination"></a>Személyzet megszüntetése
 
@@ -193,7 +193,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-ps-4e"></a>A NIST 800-53 vezérlő PS-4.e
+ ## <a name="nist-800-53-control-ps-4e"></a>NIST 800-53 Control PS-4.e
 
 #### <a name="personnel-termination"></a>Személyzet megszüntetése
 
@@ -235,7 +235,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-ps-5a"></a>A NIST 800-53 vezérlő PS-5.a
+ ## <a name="nist-800-53-control-ps-5a"></a>NIST 800-53 Control PS-5.a
 
 #### <a name="personnel-transfer"></a>Személyzet átvitele
 
@@ -249,7 +249,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-ps-5b"></a>A NIST 800-53 vezérlő PS-5.b
+ ## <a name="nist-800-53-control-ps-5b"></a>NIST 800-53 Control PS-5.b
 
 #### <a name="personnel-transfer"></a>Személyzet átvitele
 
@@ -263,7 +263,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-ps-5c"></a>A NIST 800-53 vezérlő PS-5.c
+ ## <a name="nist-800-53-control-ps-5c"></a>NIST 800-53 Control PS-5.c
 
 #### <a name="personnel-transfer"></a>Személyzet átvitele
 
@@ -277,7 +277,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-ps-5d"></a>A NIST 800-53 vezérlő PS-5.d
+ ## <a name="nist-800-53-control-ps-5d"></a>NIST 800-53 Control PS-5.d
 
 #### <a name="personnel-transfer"></a>Személyzet átvitele
 
@@ -291,7 +291,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-ps-6a"></a>A NIST 800-53 vezérlő PS-6.a
+ ## <a name="nist-800-53-control-ps-6a"></a>NIST 800-53 Control PS-6.a
 
 #### <a name="access-agreements"></a>A hozzáférési megállapodások
 
@@ -305,7 +305,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-ps-6b"></a>A NIST 800-53 vezérlő PS-6.b
+ ## <a name="nist-800-53-control-ps-6b"></a>NIST 800-53 Control PS-6.b
 
 #### <a name="access-agreements"></a>A hozzáférési megállapodások
 
@@ -319,7 +319,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-ps-6c"></a>PS-6.c lépést NIST 800-53 vezérlő
+ ## <a name="nist-800-53-control-ps-6c"></a>NIST 800-53 Control PS-6.c
 
 #### <a name="access-agreements"></a>A hozzáférési megállapodások
 
@@ -333,7 +333,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-ps-7a"></a>A NIST 800-53 vezérlő PS-7.a
+ ## <a name="nist-800-53-control-ps-7a"></a>NIST 800-53 Control PS-7.a
 
 #### <a name="third-party-personnel-security"></a>Külső személyzet biztonsága
 
@@ -347,7 +347,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-ps-7b"></a>A NIST 800-53 vezérlő PS-7.b
+ ## <a name="nist-800-53-control-ps-7b"></a>NIST 800-53 Control PS-7.b
 
 #### <a name="third-party-personnel-security"></a>Külső személyzet biztonsága
 
@@ -361,7 +361,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-ps-7c"></a>A NIST 800-53 vezérlő PS-7.c
+ ## <a name="nist-800-53-control-ps-7c"></a>NIST 800-53 Control PS-7.c
 
 #### <a name="third-party-personnel-security"></a>Külső személyzet biztonsága
 
@@ -375,7 +375,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-ps-7d"></a>A NIST 800-53 vezérlő PS-7.d
+ ## <a name="nist-800-53-control-ps-7d"></a>NIST 800-53 Control PS-7.d
 
 #### <a name="third-party-personnel-security"></a>Külső személyzet biztonsága
 
@@ -389,7 +389,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-ps-7e"></a>A NIST 800-53 vezérlő PS-7.e
+ ## <a name="nist-800-53-control-ps-7e"></a>NIST 800-53 Control PS-7.e
 
 #### <a name="third-party-personnel-security"></a>Külső személyzet biztonsága
 
@@ -417,7 +417,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-ps-8b"></a>A NIST 800-53 vezérlő PS-8.b
+ ## <a name="nist-800-53-control-ps-8b"></a>NIST 800-53 Control PS-8.b
 
 #### <a name="personnel-sanctions"></a>Személyzet szankciók
 

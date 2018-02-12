@@ -1,6 +1,6 @@
 ---
-title: "A FedRAMP - az Incidensekre adott reakciók webalkalmazások"
-description: "A FedRAMP - az Incidensekre adott reakciók webalkalmazások"
+title: "Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - Incidensválasz"
+description: "FedRAMP webes alkalmazások Automation - Incidensválasz"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: b4db5e02bfe925c402ca19e6145c4f4c825bef54
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: bcdb2b151c4d14af59e8133bd871ef6c3c0b9f73
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="incident-response-ir"></a>Incidensválaszra (IR)
 
@@ -362,7 +362,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ### <a name="nist-800-53-control-ir-7-2a"></a>A NIST 800-53 IR-7 (2) sémaszintjén szabályozása
+ ### <a name="nist-800-53-control-ir-7-2a"></a>NIST 800-53 Control IR-7 (2).a
 
 #### <a name="incident-response-assistance--coordination-with-external-providers"></a>Incidensválasz-támogatás |} Külső szolgáltatók együtt
 

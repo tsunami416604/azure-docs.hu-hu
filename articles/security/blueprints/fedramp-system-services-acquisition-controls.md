@@ -1,6 +1,6 @@
 ---
-title: "FedRAMP Azure tervezetének Automation - rendszer és a szolgáltatások beszerzési"
-description: "Webalkalmazások FedRAMP – a rendszer és a szolgáltatások beszerzési"
+title: "Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - rendszer és a szolgáltatások beszerzési"
+description: "FedRAMP webes alkalmazások Automation - rendszer és a szolgáltatások beszerzési"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: f38f2c7069c4edd0983fd1c2a723287950ace708
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 490632a77fd9fb72bda075b996c40378a394f389
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="system-and-services-acquisition-sa"></a>Rendszer és a szolgáltatások beszerzési (SA)
 
@@ -81,7 +81,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-sa-3a"></a>A NIST 800-53 vezérlő SA-3.a
+ ## <a name="nist-800-53-control-sa-3a"></a>NIST 800-53 Control SA-3.a
 
 #### <a name="system-development-life-cycle"></a>Rendszer fejlesztési életciklus
 
@@ -95,7 +95,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-sa-3b"></a>A NIST 800-53 vezérlő SA-3.b
+ ## <a name="nist-800-53-control-sa-3b"></a>NIST 800-53 Control SA-3.b
 
 #### <a name="system-development-life-cycle"></a>Rendszer fejlesztési életciklus
 
@@ -221,7 +221,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-sa-5a"></a>A NIST 800-53 vezérlő SA-5.a
+ ## <a name="nist-800-53-control-sa-5a"></a>NIST 800-53 Control SA-5.a
 
 #### <a name="information-system-documentation"></a>Információk rendszer dokumentációjában talál.
 
@@ -235,7 +235,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-sa-5b"></a>A NIST 800-53 vezérlő SA-5.b
+ ## <a name="nist-800-53-control-sa-5b"></a>NIST 800-53 Control SA-5.b
 
 #### <a name="information-system-documentation"></a>Információk rendszer dokumentációjában talál.
 
@@ -249,7 +249,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-sa-5c"></a>A NIST 800-53 vezérlő SA-5.c
+ ## <a name="nist-800-53-control-sa-5c"></a>NIST 800-53 Control SA-5.c
 
 #### <a name="information-system-documentation"></a>Információk rendszer dokumentációjában talál.
 
@@ -263,7 +263,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-sa-5d"></a>A NIST 800-53 vezérlő SA-5.d
+ ## <a name="nist-800-53-control-sa-5d"></a>NIST 800-53 Control SA-5.d
 
 #### <a name="information-system-documentation"></a>Információk rendszer dokumentációjában talál.
 
@@ -277,7 +277,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-sa-5e"></a>A NIST 800-53 vezérlő SA-5.e
+ ## <a name="nist-800-53-control-sa-5e"></a>NIST 800-53 Control SA-5.e
 
 #### <a name="information-system-documentation"></a>Információk rendszer dokumentációjában talál.
 
@@ -291,7 +291,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-sa-8"></a>A NIST 800-53 vezérlő SA-8
+ ## <a name="nist-800-53-control-sa-8"></a>NIST 800-53 Control SA-8
 
 #### <a name="security-engineering-principles"></a>Mérnöki csapathoz rendszerbiztonsági
 
@@ -627,7 +627,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-sa-15a"></a>A NIST 800-53 vezérlő SA-15.a
+ ## <a name="nist-800-53-control-sa-15a"></a>NIST 800-53 Control SA-15.a
 
 #### <a name="development-process-standards-and-tools"></a>Platform fejlesztési folyamata, szabványok és eszközök
 
@@ -641,7 +641,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-sa-15b"></a>A NIST 800-53 vezérlő SA-15.b
+ ## <a name="nist-800-53-control-sa-15b"></a>NIST 800-53 Control SA-15.b
 
 #### <a name="development-process-standards-and-tools"></a>Platform fejlesztési folyamata, szabványok és eszközök
 

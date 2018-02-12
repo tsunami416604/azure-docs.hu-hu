@@ -1,6 +1,6 @@
 ---
-title: "FedRAMP Azure tervezetének Automation - rendszer és adatintegritást"
-description: "Webalkalmazások FedRAMP – a rendszer és adatintegritást"
+title: "Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - rendszer és adatintegritást"
+description: "FedRAMP webes alkalmazások Automation - rendszer és adatintegritást"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 1dc6805a5a1f610f06ce58bd4bd644346436294e
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 2d744032c2a35fbbedf34397861c3bb03aa39939
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="system-and-information-integrity-si"></a>Rendszer- és adatintegritást (SI)
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének telepíti az OMS Automation & vezérlő megoldást a Windows virtuális gépek ebben az architektúrában telepített frissítések állapotának nyomon követését. Az OMS-irányítópulton a frissítéskezelés csempe megjeleníti a telepített Windows-kiszolgálók hibája: korrigálás állapota. |
+| **Ügyfél** | Ez tervezetének telepíti az OMS Automation & vezérlő megoldást a Windows virtuális gépek ebben az architektúrában telepített frissítések állapotának nyomon követését. Az OMS-irányítópulton a frissítéskezelés csempe megjeleníti a telepített Windows-kiszolgálók hibája: korrigálás állapota. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -77,7 +77,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének által telepített Windows virtuális gépek automatikus frissítését a Windows Update szolgáltatás alapértelmezés szerint vannak konfigurálva. Ez a megoldás is telepíti az OMS Automation & vezérlő megoldás, amelyen keresztül a központi telepítést is létrehozható kiszolgálókra történő központi telepítéséhez javítások Windows szükség esetén. |
+| **Ügyfél** | A tervezetének által telepített Windows virtuális gépek automatikus frissítések kap a Windows Update szolgáltatás alapértelmezés szerint vannak konfigurálva. Ez a megoldás is telepíti az OMS Automation & vezérlő megoldás, amelyen keresztül a központi telepítést is létrehozható kiszolgálókra történő központi telepítéséhez javítások Windows szükség esetén. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -105,7 +105,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének telepíti az OMS Automation & vezérlő megoldást a Windows virtuális gépek ebben az architektúrában telepített frissítések állapotának nyomon követését. Az OMS-irányítópulton a frissítéskezelés csempe megjeleníti a telepített Windows-kiszolgálók hibája: korrigálás állapota. Szoftverfrissítés-telepítések kiszolgálókra történő központi telepítéséhez javítások Windows szükség esetén is létrehozható. |
+| **Ügyfél** | Ez tervezetének telepíti az OMS Automation & vezérlő megoldást a Windows virtuális gépek ebben az architektúrában telepített frissítések állapotának nyomon követését. Az OMS-irányítópulton a frissítéskezelés csempe megjeleníti a telepített Windows-kiszolgálók hibája: korrigálás állapota. Szoftverfrissítés-telepítések kiszolgálókra történő központi telepítéséhez javítások Windows szükség esetén is létrehozható. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -119,7 +119,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének telepíti az OMS Automation & vezérlő megoldást a Windows virtuális gépek ebben az architektúrában telepített frissítések állapotának nyomon követését. Minden felügyelt Windows-számítógép esetében naponta kétszer történik vizsgálat. A rendszer 15 percenként lekérdezi a Windows API utolsó frissítésének időpontját, hogy meghatározza, megváltozott-e az állapot, és ha igen, megfelelőségi vizsgálatot kezdeményez. |
+| **Ügyfél** | Ez tervezetének telepíti az OMS Automation & vezérlő megoldást a Windows virtuális gépek ebben az architektúrában telepített frissítések állapotának nyomon követését. Minden felügyelt Windows-számítógép esetében naponta kétszer történik vizsgálat. A rendszer 15 percenként lekérdezi a Windows API utolsó frissítésének időpontját, hogy meghatározza, megváltozott-e az állapot, és ha igen, megfelelőségi vizsgálatot kezdeményez. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -151,7 +151,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-si-3a"></a>A NIST 800-53 vezérlő SI-3.a
+ ## <a name="nist-800-53-control-si-3a"></a>NIST 800-53 Control SI-3.a
 
 #### <a name="malicious-code-protection"></a>Rosszindulatú kódot védelme
 
@@ -161,7 +161,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének telepíti az összes telepített Windows virtuális gép a Microsoft Antimalware virtuálisgép-bővítmény készletével megvalósított állomásalapú kártevőirtó védelmet. |
+| **Ügyfél** | Ez tervezetének telepíti az összes telepített Windows virtuális gép a Microsoft Antimalware virtuálisgép-bővítmény készletével megvalósított állomásalapú kártevőirtó védelmet. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -175,7 +175,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének telepíti az összes telepített Windows virtuális gép a Microsoft Antimalware virtuálisgép-bővítmény készletével megvalósított állomásalapú kártevőirtó védelmet. A bővítmény automatikusan frissíti a kiadásban elérhető legyen, mindkét a kártevőirtó motor és a védelmi aláírások van konfigurálva. |
+| **Ügyfél** | Ez tervezetének telepíti az összes telepített Windows virtuális gép a Microsoft Antimalware virtuálisgép-bővítmény készletével megvalósított állomásalapú kártevőirtó védelmet. A bővítmény automatikusan frissíti a kiadásban elérhető legyen, mindkét a kártevőirtó motor és a védelmi aláírások van konfigurálva. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -189,7 +189,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének telepíti az összes telepített Windows virtuális gép a Microsoft Antimalware virtuálisgép-bővítmény készletével megvalósított állomásalapú kártevőirtó védelmet. A bővítmény összetevőjére valós időben és rendszeres időközönként (hetente), automatikusan mindkét a kártevőirtó motor és a védelmi aláírások frissítése és automatikus javítási műveleteket van konfigurálva. |
+| **Ügyfél** | Ez tervezetének telepíti az összes telepített Windows virtuális gép a Microsoft Antimalware virtuálisgép-bővítmény készletével megvalósított állomásalapú kártevőirtó védelmet. A bővítmény összetevőjére valós időben és rendszeres időközönként (hetente), automatikusan mindkét a kártevőirtó motor és a védelmi aláírások frissítése és automatikus javítási műveleteket van konfigurálva. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -217,7 +217,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének telepíti az összes telepített Windows virtuális gép a Microsoft Antimalware virtuálisgép-bővítmény készletével megvalósított állomásalapú kártevőirtó védelmet. Az Azure MOBILE lehetővé teszi egy központi tekintse át a kártevőirtó megoldást az aktuális állapotát. |
+| **Ügyfél** | Ez tervezetének telepíti az összes telepített Windows virtuális gép a Microsoft Antimalware virtuálisgép-bővítmény készletével megvalósított állomásalapú kártevőirtó védelmet. Az Azure MOBILE lehetővé teszi egy központi tekintse át a kártevőirtó megoldást az aktuális állapotát. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -231,7 +231,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének telepíti az összes telepített Windows virtuális gép a Microsoft Antimalware virtuálisgép-bővítmény készletével megvalósított állomásalapú kártevőirtó védelmet. A bővítmény automatikusan frissíti a kiadásban elérhető legyen, mindkét a kártevőirtó motor és a védelmi aláírások van konfigurálva. |
+| **Ügyfél** | Ez tervezetének telepíti az összes telepített Windows virtuális gép a Microsoft Antimalware virtuálisgép-bővítmény készletével megvalósított állomásalapú kártevőirtó védelmet. A bővítmény automatikusan frissíti a kiadásban elérhető legyen, mindkét a kártevőirtó motor és a védelmi aláírások van konfigurálva. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -245,7 +245,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének telepíti az összes telepített Windows virtuális gép a Microsoft Antimalware virtuálisgép-bővítmény készletével megvalósított állomásalapú kártevőirtó védelmet. A bővítmény heurisztikus észlelés végrehajtására van konfigurálva. |
+| **Ügyfél** | Ez tervezetének telepíti az összes telepített Windows virtuális gép a Microsoft Antimalware virtuálisgép-bővítmény készletével megvalósított állomásalapú kártevőirtó védelmet. A bővítmény heurisztikus észlelés végrehajtására van konfigurálva. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -259,7 +259,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének telepíti a Naplóelemzési és az OMS biztonsági és hitelesítési megoldás. Ez a megoldás révén átfogó képet kaphat a biztonságot, a támadások és a potenciális támadások mutatók. A biztonsági és naplózási irányítópult érhetők el adatok használata telepített OMS-megoldásokkal telepített erőforrások biztonsági állapotának magas szintű betekintést nyújt. |
+| **Ügyfél** | Ez tervezetének telepíti a Naplóelemzési és az OMS biztonsági és hitelesítési megoldás. Ez a megoldás révén átfogó képet kaphat a biztonságot, a támadások és a potenciális támadások mutatók. A biztonsági és naplózási irányítópult érhetők el adatok használata telepített OMS-megoldásokkal telepített erőforrások biztonsági állapotának magas szintű betekintést nyújt. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -273,7 +273,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének telepíti az OMS biztonsági és hitelesítési megoldás. A azonosítása és hozzáférési tartományi egy irányítópultot, amelynek információk identitás rendszerállapotáról, beleértve a bejelentkezés sikertelen bejelentkezési kísérletek számát és a fiókokat, amelyeket a rendszer az aktuális száma áttekintését biztosítja. Ez az irányítópult a rendelkezésre álló információk segít a potenciális gyanús tevékenység azonosítása. |
+| **Ügyfél** | Ez tervezetének telepíti az OMS biztonsági és hitelesítési megoldás. A azonosítása és hozzáférési tartományi egy irányítópultot, amelynek információk identitás rendszerállapotáról, beleértve a bejelentkezés sikertelen bejelentkezési kísérletek számát és a fiókokat, amelyeket a rendszer az aktuális száma áttekintését biztosítja. Ez az irányítópult a rendelkezésre álló információk segít a potenciális gyanús tevékenység azonosítása. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -287,7 +287,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének telepíti a Naplóelemzési és az OMS biztonsági és hitelesítési megoldás. A biztonsági és naplózási irányítópult érhetők el adatok használata telepített OMS megoldásokkal, beleértve a virtuális gép operációs rendszer figyelési adatok betekintést telepített erőforrások biztonsági állapotának magas szintű betekintést nyújt. |
+| **Ügyfél** | Ez tervezetének telepíti a Naplóelemzési és az OMS biztonsági és hitelesítési megoldás. A biztonsági és naplózási irányítópult érhetők el adatok használata telepített OMS megoldásokkal, beleértve a virtuális gép operációs rendszer figyelési adatok betekintést telepített erőforrások biztonsági állapotának magas szintű betekintést nyújt. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -301,7 +301,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Logikai hozzáférés-vezérlés segítségével védheti az Azure tervezetének belül figyelési információit a jogosulatlan hozzáférés, módosítását és törlését. Az Azure Active Directory vezérlésről jóváhagyott logikai szerepköralapú csoporttagságok használatával. Lehet, hogy a figyelési adatok megtekintése és figyelési eszközök ezen engedélyeket igénylő felhasználók korlátozni. |
+| **Ügyfél** | Logikai hozzáférés-vezérlés segítségével védheti a tervezetének belül figyelési információit a jogosulatlan hozzáférés, módosítását és törlését. Az Azure Active Directory vezérlésről jóváhagyott logikai szerepköralapú csoporttagságok használatával. Lehet, hogy a figyelési adatok megtekintése és figyelési eszközök ezen engedélyeket igénylő felhasználók korlátozni. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -371,7 +371,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének telepíti a Naplóelemzési és a különböző OMS megoldások, biztonsági és hitelesítési megoldását is beleértve. A Naplóelemzési közel valós idejű elemzési események biztosít a telepített erőforrások között. OMS-megoldások biztonsági állapotát átfogó áttekintést nyújt a megoldás tartományok között. OMS érhetők el adatok használata telepített OMS-megoldásokkal telepített erőforrások biztonsági állapotát betekintést nyújt. OMS beállítható úgy, hogy a megadott feltételeknek megfelelő riasztásokat. |
+| **Ügyfél** | Ez tervezetének telepíti a Naplóelemzési és a különböző OMS megoldások, biztonsági és hitelesítési megoldását is beleértve. A Naplóelemzési közel valós idejű elemzési események biztosít a telepített erőforrások között. OMS-megoldások biztonsági állapotát átfogó áttekintést nyújt a megoldás tartományok között. OMS érhetők el adatok használata telepített OMS-megoldásokkal telepített erőforrások biztonsági állapotát betekintést nyújt. OMS beállítható úgy, hogy a megadott feltételeknek megfelelő riasztásokat. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -399,7 +399,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének telepíti a különböző OMS megoldások, biztonsági és hitelesítési megoldását is beleértve. A Naplóelemzési közel valós idejű elemzési események biztosít a telepített erőforrások között. OMS-megoldások biztonsági állapotát átfogó áttekintést nyújt a megoldás tartományok között. OMS beállítható úgy, hogy a megadott feltételeknek megfelelő riasztásokat. |
+| **Ügyfél** | Ez tervezetének telepíti a különböző OMS megoldások, biztonsági és hitelesítési megoldását is beleértve. A Naplóelemzési közel valós idejű elemzési események biztosít a telepített erőforrások között. OMS-megoldások biztonsági állapotát átfogó áttekintést nyújt a megoldás tartományok között. OMS beállítható úgy, hogy a megadott feltételeknek megfelelő riasztásokat. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -441,7 +441,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének telepíti a Naplóelemzési és a különböző OMS megoldások, biztonsági és hitelesítési megoldását is beleértve. OMS érhetők el adatok használata telepített OMS-megoldásokkal telepített erőforrások biztonsági állapotát betekintést nyújt. |
+| **Ügyfél** | Ez tervezetének telepíti a Naplóelemzési és a különböző OMS megoldások, biztonsági és hitelesítési megoldását is beleértve. OMS érhetők el adatok használata telepített OMS-megoldásokkal telepített erőforrások biztonsági állapotát betekintést nyújt. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -511,7 +511,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének figyelési adatait gyűjti a telepített erőforrások a gazdagép-alapú figyelési képességek adatait is beleértve. A Microsoft Monitoring Agent telepítve van az összes Windows virtuális gépek használják a Naplóelemzési és egyéb OMS-megoldások figyelési adatok gyűjtéséért felelős ügyfélfeladatot. |
+| **Ügyfél** | Ez tervezetének figyelési adatait gyűjti a telepített erőforrások a gazdagép-alapú figyelési képességek adatait is beleértve. A Microsoft Monitoring Agent telepítve van az összes Windows virtuális gépek használják a Naplóelemzési és egyéb OMS-megoldások figyelési adatok gyűjtéséért felelős ügyfélfeladatot. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -529,7 +529,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-si-5a"></a>A NIST 800-53 vezérlő SI-5.a
+ ## <a name="nist-800-53-control-si-5a"></a>NIST 800-53 Control SI-5.a
 
 #### <a name="security-alerts-advisories-and-directives"></a>Biztonsági riasztások, tanácsadók és irányelvek
 
@@ -543,7 +543,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-si-5b"></a>A NIST 800-53 vezérlő SI-5.b
+ ## <a name="nist-800-53-control-si-5b"></a>NIST 800-53 Control SI-5.b
 
 #### <a name="security-alerts-advisories-and-directives"></a>Biztonsági riasztások, tanácsadók és irányelvek
 
@@ -571,7 +571,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-si-5d"></a>A NIST 800-53 vezérlő SI-5.d
+ ## <a name="nist-800-53-control-si-5d"></a>NIST 800-53 Control SI-5.d
 
 #### <a name="security-alerts-advisories-and-directives"></a>Biztonsági riasztások, tanácsadók és irányelvek
 
@@ -599,7 +599,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-si-6a"></a>A NIST 800-53 vezérlő SI-6.a
+ ## <a name="nist-800-53-control-si-6a"></a>NIST 800-53 Control SI-6.a
 
 #### <a name="security-function-verification"></a>Biztonsági függvény ellenőrzése
 
@@ -665,7 +665,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | A virtuális gépeket az Azure tervezetének által telepített Windows operációs rendszer futtatását. Windows biztosít a valós idejű fájl sértetlenségének ellenőrzése, a védelem és a Windows vagy a Windows Resource védelem (WRP) funkció engedélyezett Windows rendszer frissítések részeként telepített core rendszer fájlok helyreállítását. |
+| **Ügyfél** | A virtuális gépek a tervezetének által telepített Windows operációs rendszert futtató. Windows biztosít a valós idejű fájl sértetlenségének ellenőrzése, a védelem és a Windows vagy a Windows Resource védelem (WRP) funkció engedélyezett Windows rendszer frissítések részeként telepített core rendszer fájlok helyreállítását. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -679,7 +679,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | A virtuális gépeket az Azure tervezetének által telepített Windows operációs rendszer futtatását. Windows biztosít a valós idejű fájl sértetlenségének ellenőrzése, a védelem és a Windows vagy a Windows Resource védelem (WRP) funkció engedélyezett Windows rendszer frissítések részeként telepített core rendszer fájlok helyreállítását. WRP lehetővé teszi a valós idejű integritás-ellenőrzése. |
+| **Ügyfél** | A virtuális gépek a tervezetének által telepített Windows operációs rendszert futtató. Windows biztosít a valós idejű fájl sértetlenségének ellenőrzése, a védelem és a Windows vagy a Windows Resource védelem (WRP) funkció engedélyezett Windows rendszer frissítések részeként telepített core rendszer fájlok helyreállítását. WRP lehetővé teszi a valós idejű integritás-ellenőrzése. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -693,7 +693,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | A virtuális gépeket az Azure tervezetének által telepített Windows operációs rendszer futtatását. Windows biztosít a valós idejű fájl sértetlenségének ellenőrzése, a védelem és a Windows vagy a Windows Resource védelem (WRP) funkció engedélyezett Windows rendszer frissítések részeként telepített core rendszer fájlok helyreállítását.  |
+| **Ügyfél** | A virtuális gépek a tervezetének által telepített Windows operációs rendszert futtató. Windows biztosít a valós idejű fájl sértetlenségének ellenőrzése, a védelem és a Windows vagy a Windows Resource védelem (WRP) funkció engedélyezett Windows rendszer frissítések részeként telepített core rendszer fájlok helyreállítását.  |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -749,7 +749,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Nincsenek telepítve az Azure tervezetének részeként levelezési kiszolgálók. |
+| **Ügyfél** | Nincsenek a tervezetének részeként levelezési kiszolgálók. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -763,7 +763,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Nincsenek telepítve az Azure tervezetének részeként levelezési kiszolgálók. |
+| **Ügyfél** | Nincsenek a tervezetének részeként levelezési kiszolgálók. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -777,7 +777,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Nincsenek telepítve az Azure tervezetének részeként levelezési kiszolgálók. |
+| **Ügyfél** | Nincsenek a tervezetének részeként levelezési kiszolgálók. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -791,7 +791,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Nincsenek telepítve az Azure tervezetének részeként levelezési kiszolgálók. |
+| **Ügyfél** | Nincsenek a tervezetének részeként levelezési kiszolgálók. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -819,7 +819,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének által telepített erőforrások kereskedelmi operációs rendszerek és alkalmazások alkalmaz. A szoftver ágazatban kialakult bevált gyakorlaton használatával győződjön meg arról, bizalmas információ nem látható a hibaüzenetekben látható. |
+| **Ügyfél** | Ez tervezetének által telepített erőforrások kereskedelmi operációs rendszerek és alkalmazások alkalmaz. A szoftver ágazatban kialakult bevált gyakorlaton használatával győződjön meg arról, bizalmas információ nem látható a hibaüzenetekben látható. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -833,7 +833,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének által telepített erőforrások kereskedelmi operációs rendszerek és alkalmazások alkalmaz. A szoftver ágazatban kialakult bevált gyakorlaton használatával adja meg a hibaüzeneteket, amelyek a használatát, az üzenetet fogadó környezetében. |
+| **Ügyfél** | Ez tervezetének által telepített erőforrások kereskedelmi operációs rendszerek és alkalmazások alkalmaz. A szoftver ágazatban kialakult bevált gyakorlaton használatával adja meg a hibaüzeneteket, amelyek a használatát, az üzenetet fogadó környezetében. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -861,5 +861,5 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | A virtuális gépeket az Azure tervezetének által telepített Windows operációs rendszer futtatását. Windows rendelkezik védelem megakadályozza a kód végrehajtása korlátozott memória helyeken: nem hajtható végre (NX), a cím terület elrendezés Véletlenszerűsítésének (ASLR) és az Adatvégrehajtás megakadályozása (DEP). |
+| **Ügyfél** | A virtuális gépek a tervezetének által telepített Windows operációs rendszert futtató. Windows rendelkezik védelem megakadályozza a kód végrehajtása korlátozott memória helyeken: nem hajtható végre (NX), a cím terület elrendezés Véletlenszerűsítésének (ASLR) és az Adatvégrehajtás megakadályozása (DEP). |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |

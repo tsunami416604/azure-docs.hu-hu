@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 10/25/2017
+ms.date: 02/08/2018
 ms.author: carlrab
-ms.openlocfilehash: a15c23683a3334328720e8ae4369b2495f9613de
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 23474539fd7db113ec4d857269056fb5061becca
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="azure-sql-database-features"></a>Az Azure SQL Database funkciói
 
@@ -35,10 +35,10 @@ Az Azure SQL Database funkcióinak körét folyamatosan bővítjük. Ezért java
 A következő táblázat az SQL Server főbb szolgáltatásokat sorolja fel, és minden adott szolgáltatással támogatja-e, és a szolgáltatásra vonatkozó további információkra mutató hivatkozás nyújt információt. A meglévő adatbázis-megoldások áttelepítése során figyelembe veendő Transact-SQL különbségekről lásd: [Transact-SQL különbségek feloldása az SQL Database-be végzett áttelepítések során](sql-database-transact-sql-information.md).
 
 
-| **SQL Server szolgáltatás** | **Az Azure SQL-adatbázis támogatott** | 
+| **SQL Server Feature** | **Az Azure SQL-adatbázis támogatott** | 
 | --- | --- |  
-| [Mindig titkosítja.](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) | Igen – lásd: [tanúsítványtároló](sql-database-always-encrypted.md) és [kulcstároló](sql-database-always-encrypted-azure-key-vault.md)|
-| [AlwaysOn rendelkezésre állási csoportok](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | Minden adatbázis magas rendelkezésre állású része. Vész-helyreállítási ismertet [az Azure SQL Database üzletmenet áttekintése](sql-database-geo-replication-overview.md) |
+| [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) | Igen – lásd: [tanúsítványtároló](sql-database-always-encrypted.md) és [kulcstároló](sql-database-always-encrypted-azure-key-vault.md)|
+| [AlwaysOn rendelkezésre állási csoportok](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | Minden adatbázis magas rendelkezésre állású része. Lásd: [magas rendelkezésre állású és az Azure SQL adatbázis](sql-database-high-availability.md). Vész-helyreállítási ismertet [az Azure SQL Database üzletmenet áttekintése](sql-database-geo-replication-overview.md) |
 | [Egy adatbázis csatolása](https://docs.microsoft.com/sql/relational-databases/databases/attach-a-database) | Nem |
 | [Alkalmazási szerepkörök](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/application-roles) | Igen |
 |[Naplózás](/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | [Igen](sql-database-auditing.md)|
@@ -73,11 +73,11 @@ A következő táblázat az SQL Server főbb szolgáltatásokat sorolja fel, és
 | [DMV-k](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) | Néhány - tekintse meg az egyes dinamikus felügyeleti nézetek |
 |[Dinamikus adatmaszkolás](/sql/relational-databases/security/dynamic-data-masking)|[Igen](sql-database-dynamic-data-masking-get-started.md)|
 | [Eseményértesítések](https://docs.microsoft.com/sql/relational-databases/service-broker/event-notifications) | Nem - látható [riasztások](sql-database-insights-alerts-portal.md) |
-| [Kifejezések](https://docs.microsoft.com/sql/t-sql/language-elements/expressions-transact-sql) |Igen |
+| [Expressions](https://docs.microsoft.com/sql/t-sql/language-elements/expressions-transact-sql) |Igen |
 | [Bővített események](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events) | Egyes - láthatnak [kiterjesztett események az SQL-adatbázis](sql-database-xevent-db-diff-from-svr.md) |
 | [Bővített tárolt eljárások](https://docs.microsoft.com/sql/relational-databases/extended-stored-procedures-programming/creating-extended-stored-procedures) | Nem |
 | [Fájlok és fájlcsoportok](https://docs.microsoft.com/sql/relational-databases/databases/database-files-and-filegroups) | Csak az elsődleges fájl csoport |
-| [A FileStream](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) | Nem |
+| [Filestream](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) | Nem |
 | [A teljes szöveges keresés](https://docs.microsoft.com/sql/relational-databases/search/full-text-search) | Külső szóhatároló nem támogatottak. |
 | [Functions](https://docs.microsoft.com/sql/t-sql/functions/functions) | Most – tekintse meg az egyes funkciók |
 | [Graph feldolgozása](/sql/relational-databases/graphs/sql-graph-overview) | Igen |
@@ -92,7 +92,7 @@ A következő táblázat az SQL Server főbb szolgáltatásokat sorolja fel, és
 | [Online indexműveleteket](https://docs.microsoft.com/sql/relational-databases/indexes/perform-index-operations-online) | Igen |
 | [Operátorok](https://docs.microsoft.com/sql/t-sql/language-elements/operators-transact-sql) | Most – tekintse meg az egyes operátorok |
 | [Időponthoz kötött adatbázis visszaállítás](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model) | Igen – lásd: [SQL-adatbázis helyreállítása](sql-database-recovery-using-backups.md#point-in-time-restore) |
-| [A Polybase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) | Nem |
+| [Polybase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) | Nem |
 | [Csoportházirend-alapú felügyelet](https://docs.microsoft.com/sql/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management) | Nem |
 | [Predikátumok](https://docs.microsoft.com/sql/t-sql/queries/predicates) | Igen |
 | [R-szolgáltatások](https://docs.microsoft.com/sql/advanced-analytics/r-services/sql-server-r-services) | Előzetes; Lásd: [What's new in gépi tanulás](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services)  |
@@ -107,13 +107,13 @@ A következő táblázat az SQL Server főbb szolgáltatásokat sorolja fel, és
 | [Set utasítás](https://docs.microsoft.com/sql/t-sql/statements/set-statements-transact-sql) | Most – tekintse meg az egyes utasítások 
 | [Térbeli](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server) | Igen |
 | [SQL Server Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) | Nem - látható [rugalmas feladatok](sql-database-elastic-jobs-getting-started.md) |
-| [Az SQL Server Analysis Services (SSAS)](https://docs.microsoft.com/sql/analysis-services/analysis-services) | Lásd: [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) |
-| [SQL Server-naplózás](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | Nem - látható [SQL Database auditing](sql-database-auditing.md) |
-| [Az SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Igen – lásd: [növekedési és shift SQL Server Integration Services munkaterhelések a felhőbe](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview) |
+| [SQL Server Analysis Services (SSAS)](https://docs.microsoft.com/sql/analysis-services/analysis-services) | Lásd: [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) |
+| [SQL Server Auditing](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | Nem - látható [SQL Database auditing](sql-database-auditing.md) |
+| [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Igen – lásd: [növekedési és shift SQL Server Integration Services munkaterhelések a felhőbe](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview) |
 | [SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | Igen |
 | [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | Nem - látható [kiterjesztett események](sql-database-xevent-db-diff-from-svr.md) |
 | [SQL Server-replikáció](https://docs.microsoft.com/sql/relational-databases/replication/sql-server-replication) | [Kizárólag tranzakciós és pillanatkép-replikációs előfizetők](sql-database-cloud-migrate.md) |
-| [Az SQL Server Reporting Services (SSRS)](https://docs.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | Nem |
+| [SQL Server Reporting Services (SSRS)](https://docs.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | Nem |
 | [Tárolt eljárások](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) | Igen |
 | [A rendszerszintű tárolt funkciók](https://docs.microsoft.com/sql/relational-databases/system-functions/system-functions-for-transact-sql) | Néhány - funkciók lásd: |
 | [A rendszerszintű tárolt eljárásokra](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/system-stored-procedures-transact-sql) | Néhány - egyéni tárolt eljárásokat lásd: |
@@ -127,7 +127,7 @@ A következő táblázat az SQL Server főbb szolgáltatásokat sorolja fel, és
 | [Windows Server feladatátvételi fürtszolgáltatás](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server) | Minden adatbázis magas rendelkezésre állású része. Vész-helyreállítási ismertet [az Azure SQL Database üzletmenet áttekintése](sql-database-geo-replication-overview.md) |
 | [XML-index](https://docs.microsoft.com/sql/t-sql/statements/create-xml-index-transact-sql) | Igen |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az Azure SQL Database szolgáltatással kapcsolatos tudnivalók: [Mi az SQL Database?](sql-database-technical-overview.md)
 - A Transact-SQL támogatásával és eltéréseivel kapcsolatos tudnivalókat lásd: [Transact-SQL különbségek feloldása az SQL Database-be végzett áttelepítések során](sql-database-transact-sql-information.md).

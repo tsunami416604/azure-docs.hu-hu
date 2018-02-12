@@ -1,6 +1,6 @@
 ---
-title: "FedRAMP Azure tervezetének Automation - fizikai és környezeti védelmi"
-description: "Webes alkalmazásokhoz, a FedRAMP – fizikai és környezeti védelmi"
+title: "Az Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - fizikai és környezeti védelmi"
+description: "FedRAMP webes alkalmazások Automation - fizikai és környezeti védelmi"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 9e9e473285f4e82e1da40b8c3d496d65733fbd45
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 792b9da0f4e5ec73c39f56a6e4805cf3c37133c4
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="physical-and-environmental-protection-pe"></a>Fizikai és környezeti védelmi (PE)
 
@@ -95,7 +95,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | A Microsoft Azure megvalósítja ezt a követelményt ügyfeleik nevében. A Microsoft Azure automatikusan letiltja a hozzáférést a hozzáférés hozzárendelése záró dátum elérésekor. Hozzáférés már nincs szükség, amikor datacenter biztonsági tisztviselő vagy felügyeleti manuálisan kérni fogja a datacenter-elérés eszközt a hozzáférés megszűnését. Emellett a Microsoft Azure eltávolítja az felesleges hozzáférési engedélyek miatt a lista áttekintése c. részében leírt felderített. |
 
 
- ## <a name="nist-800-53-control-pe-3a"></a>A NIST 800-53 vezérlő PE-3.a
+ ## <a name="nist-800-53-control-pe-3a"></a>NIST 800-53 Control PE-3.a
 
 #### <a name="physical-access-control"></a>Fizikai hozzáférés-vezérlés
 
@@ -307,7 +307,7 @@ ms.lasthandoff: 11/23/2017
 
  ## <a name="nist-800-53-control-pe-8a"></a>A NIST 800-53 vezérlő PE-8.a
 
-#### <a name="visitor-access-records"></a>Látogató Access rekordok
+#### <a name="visitor-access-records"></a>Visitor Access Records
 
 **PE-8.a** a szervezet kezeli a létesítmény, ahol a információ található a látogatói access rekordok [hozzárendelés: szervezet által meghatározott időszak].
 
@@ -321,7 +321,7 @@ ms.lasthandoff: 11/23/2017
 
  ## <a name="nist-800-53-control-pe-8b"></a>A NIST 800-53 vezérlő PE-8.b
 
-#### <a name="visitor-access-records"></a>Látogató Access rekordok
+#### <a name="visitor-access-records"></a>Visitor Access Records
 
 **PE-8.b** látogató access rekordok ellenőrzi, hogy a szervezet [hozzárendelés: szervezet által meghatározott gyakoriság].
 
@@ -347,7 +347,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | A Microsoft Azure datacenter hozzáférés rekordok jóváhagyott DCAT kérelmek formájában DCAT tart fenn. DCAT kérelmek csak a DCM-csapat jóvá. Hozzáférési szintek az adatközponton belül társítva, vagy felügyelt DCAT belül. Datacenter hozzáférés felül negyedévente vizsgálni. Azure adatközpontjaiban hozzáférésének DCAT rögzített, és későbbi esetleges vizsgálatok érhető el. Kell kísért mindig a látogatók szükségesek. Az adatközponton belül a kíséreti hozzáférés a felügyeleti rendszer, és ha szükséges a látogató adott területre a jövőbeli felülvizsgálatra is összefüggő riasztás belül kerül. Látogató hozzáférés áttekintik folyamatosan a hozzárendelt kíséreti és a vezérlő hely felügyelő zárt láncú TV és a riasztás megfigyelési rendszere keresztül. Látogatók nem kapnak hozzáférést, és kell adni a bájtméretet a kísérő személyek mindig. |
 
 
- ## <a name="nist-800-53-control-pe-9"></a>A NIST 800-53 vezérlő PE-9
+ ## <a name="nist-800-53-control-pe-9"></a>NIST 800-53 Control PE-9
 
 #### <a name="power-equipment-and-cabling"></a>Energiagazdálkodási berendezések és kábelezése
 

@@ -1,6 +1,6 @@
 ---
-title: "FedRAMP Azure tervezetének Automation - naplózás és elszámolási kötelezettségéről szóló"
-description: "Webalkalmazások FedRAMP – a naplózási és elszámolási kötelezettségéről szóló"
+title: "Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - naplózás és elszámolási kötelezettségéről szóló"
+description: "FedRAMP webes alkalmazások Automation - naplózás és elszámolási kötelezettségéről szóló"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 83ef9cbb7652bf128d7758237a8e6fbeed6c6565
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: c37d027882882c637585d745ce81111ba30f6257
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="audit-and-accountability-au"></a>Naplózási és elszámolási kötelezettségéről szóló (AU)
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének naplózási funkció Azure figyelő és a OMS Naplóelemzés szolgáltatást biztosítja. Az Azure biztosít, telepített erőforrások társított tevékenységre vonatkozó részletes naplókat. Ezek és az operációs rendszer szintű naplók Naplóelemzési által gyűjtött és az OMS-tárház tárolja. A Naplóelemzési ad eredményül a naplózási adatok a megoldás által telepített erőforrások között, és annak a felhasználói telepített webalkalmazás. |
+| **Ügyfél** | Ez tervezetének naplózási funkció Azure figyelő és a OMS Naplóelemzés szolgáltatást biztosítja. Az Azure biztosít, telepített erőforrások társított tevékenységre vonatkozó részletes naplókat. Ezek és az operációs rendszer szintű naplók Naplóelemzési által gyűjtött és az OMS-tárház tárolja. A Naplóelemzési ad eredményül a naplózási adatok a megoldás által telepített erőforrások között, és annak a felhasználói telepített webalkalmazás. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -77,7 +77,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének által naplózott eseményeket tartalmazza események bekövetkezésekor meghatározásához elegendő információt, az esemény forrását, az esemény, és más részletes információkat, amely támogatja a biztonsági események vizsgálat eredményeit. |
+| **Ügyfél** | Ez tervezetének által naplózott eseményeket tartalmazza események bekövetkezésekor meghatározásához elegendő információt, az esemény forrását, az esemény, és más részletes információkat, amely támogatja a biztonsági események vizsgálat eredményeit. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -91,7 +91,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének által naplózott eseményeket foglalja bele azokat rendszervizsgálati módban levő telepített erőforrások, az operációs rendszer szintű naplókat, az Active Directory-naplók Azure tevékenységi naplóit, és az SQL Server naplózza. Az ügyfelek kritikus igényeihez naplózandó további események is kiválaszthat. |
+| **Ügyfél** | Ez tervezetének által naplózott eseményeket közé tartoznak az Azure tevékenységi naplóit telepített erőforrások, az operációs rendszer szintű naplókat, az Active Directory-naplók ellenőrzi, és az SQL Server naplózza. Az ügyfelek kritikus igényeihez naplózandó további események is kiválaszthat. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -119,7 +119,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének Azure, a Windows Server és az SQL Server beépített naplózási képességeket támaszkodik. Ezek naplózási megoldások rögzítési naplózási rekordokat részletességgel megfelelnek ennek a vezérlőnek. |
+| **Ügyfél** | Ez tervezetének Azure, a Windows Server és az SQL Server beépített naplózási képességeket támaszkodik. Ezek naplózási megoldások rögzítési naplózási rekordokat részletességgel megfelelnek ennek a vezérlőnek. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -133,7 +133,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Azure tevékenységnapló események naplózási információk több mint 20 típusú mezőket tartalmazó részletes séma használja. Tevékenységnapló, mellett az Azure tervezetének telepíti az OMS Szolgáltatáshoz, amely támogatja az adatforrások, például Windows-naplók, Linux naplókat, Azure diagnosztikai naplók és felhasználói naplók érdekében számos Naplóelemzési megoldás.  |
+| **Ügyfél** | Azure tevékenységnapló események naplózási információk több mint 20 típusú mezőket tartalmazó részletes séma használja. Tevékenységnapló, mellett a tervezetének telepíti az OMS Szolgáltatáshoz, amely támogatja az adatforrások, például Windows-naplók, Linux naplókat, Azure diagnosztikai naplók és felhasználói naplók érdekében számos Naplóelemzési megoldás.  |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -147,7 +147,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének által telepített összes virtuális gépet a telepített Active Directory-tartományhoz csatlakozik. Minden tartományhoz csatlakozó virtuális gépek megvalósításához olyan csoportházirenddel, amely beállítható úgy, hogy az operációs rendszer szintű naplózási rendszer konfigurálásának központi kezelését. |
+| **Ügyfél** | Ez tervezetének által telepített összes virtuális gépet a telepített Active Directory-tartományhoz csatlakozik. Minden tartományhoz csatlakozó virtuális gépek megvalósításához olyan csoportházirenddel, amely beállítható úgy, hogy az operációs rendszer szintű naplózási rendszer konfigurálásának központi kezelését. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -161,11 +161,11 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének szeretné megőrizni auditálási rekordok egy évig elegendő tárolókapacitással foglal le. Összes naplózási bejegyzések gyűjti össze a Naplóelemzési, amely egy éves megőrzési van konfigurálva. |
+| **Ügyfél** | Ez tervezetének szeretné megőrizni auditálási rekordok egy évig elegendő tárolókapacitással foglal le. Összes naplózási bejegyzések gyűjti össze a Naplóelemzési, amely egy éves megőrzési van konfigurálva. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-au-5a"></a>A NIST 800-53 vezérlő AU-5.a
+ ## <a name="nist-800-53-control-au-5a"></a>NIST 800-53 Control AU-5.a
 
 #### <a name="response-to-audit-processing-failures"></a>Válasz feldolgozási hibák naplózása
 
@@ -189,7 +189,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének által üzembe helyezett erőforrás által létrehozott összes naplózási rekord Naplóelemzési által gyűjtött, és az egy évig őrzi meg. A Foglalás a naplózási rekord tárolására dinamikusan lefoglalt kapacitása elegendő biztosítása érhető el. |
+| **Ügyfél** | Ez tervezetének által üzembe helyezett erőforrás által létrehozott összes naplózási rekord Naplóelemzési által gyűjtött, és az egy évig őrzi meg. A Foglalás a naplózási rekord tárolására dinamikusan lefoglalt kapacitása elegendő biztosítása érhető el. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -203,7 +203,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének által üzembe helyezett erőforrás által létrehozott összes naplózási rekord Naplóelemzési által gyűjtött, és az egy évig őrzi meg. A Foglalás a naplózási rekord tárolására dinamikusan lefoglalt kapacitása elegendő biztosítása érhető el. |
+| **Ügyfél** | Ez tervezetének által üzembe helyezett erőforrás által létrehozott összes naplózási rekord Naplóelemzési által gyűjtött, és az egy évig őrzi meg. A Foglalás a naplózási rekord tárolására dinamikusan lefoglalt kapacitása elegendő biztosítása érhető el. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -221,7 +221,7 @@ ms.lasthandoff: 11/23/2017
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-au-6a"></a>A NIST 800-53 vezérlő AU-6.a
+ ## <a name="nist-800-53-control-au-6a"></a>NIST 800-53 Control AU-6.a
 
 #### <a name="audit-review-analysis-and-reporting"></a>Tekintse át, elemzési és jelentéskészítési naplózása
 
@@ -273,7 +273,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének valósítja meg a Naplóelemzési megoldás az OMS központosíthatja a naplózási adatokat telepített erőforrások között szervezeti situational tájékoztatási támogatása. Az ügyfelek előfordulhat, hogy kiválasztott további integrálásához Naplóelemzési más rendszerekkel. |
+| **Ügyfél** | Ez tervezetének a Naplóelemzési megoldás az OMS központosíthatja a naplózási adatokat keresztül telepített erőforrások szervezeti situational tájékoztatási támogató valósítja meg. Az ügyfelek előfordulhat, hogy kiválasztott további integrálásához Naplóelemzési más rendszerekkel. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -287,7 +287,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének a Naplóelemzési megoldás az OMS központosíthatja a naplózási adatokat telepített erőforrások, támogató központi felülvizsgálati, elemzési és jelentéskészítési valósítja meg. |
+| **Ügyfél** | Ez tervezetének a Naplóelemzési megoldás az OMS központosíthatja a naplózási adatokat telepített erőforrások, támogató központi felülvizsgálati, elemzési és jelentéskészítési valósítja meg. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -301,7 +301,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének telepíti az OMS biztonsági és hitelesítési megoldás. Ez a megoldás révén átfogó képet kaphat a biztonságot. A biztonsági és naplózási irányítópult érhetők el adatok használata telepített OMS megoldásokkal, a naplóadatok és a biztonsági rés adatait alapterv és a javítás assessment integrálása telepített erőforrások biztonsági állapotának magas szintű betekintést nyújt. |
+| **Ügyfél** | Ez tervezetének telepíti az OMS biztonsági és hitelesítési megoldás. Ez a megoldás révén átfogó képet kaphat a biztonságot. A biztonsági és naplózási irányítópult érhetők el adatok használata telepített OMS megoldásokkal, a naplóadatok és a biztonsági rés adatait alapterv és a javítás assessment integrálása telepített erőforrások biztonsági állapotának magas szintű betekintést nyújt. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -329,7 +329,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének által telepített Windows virtuális gépek valósítja meg az operációs rendszer szintű engedélyek, amelyek korlátozzák a felhasználó a tekintetben naplózási információkkal elvégezhető műveletekhez. Az Azure felhasználók vagy felhasználói csoportok rendelhet szerepköröket (például tulajdonos, közreműködő, olvasó vagy egy egyéni biztonsági szerepkört) minden olyan erőforrásnál rendelkezésre műveletek korlátozása, vagy megoldások, beleértve a Naplóelemzési telepítve.  |
+| **Ügyfél** | Ez tervezetének által telepített Windows virtuális gépek valósítja meg az operációs rendszer szintű engedélyek, amelyek korlátozzák a felhasználó a tekintetben naplózási információkkal elvégezhető műveletekhez. Az Azure felhasználók vagy felhasználói csoportok rendelhet szerepköröket (például tulajdonos, közreműködő, olvasó vagy egy egyéni biztonsági szerepkört) minden olyan erőforrásnál rendelkezésre műveletek korlátozása, vagy megoldások, beleértve a Naplóelemzési telepítve.  |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -357,7 +357,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének a Naplóelemzési megoldás az OMS valósítja meg. A Naplóelemzési által kezelt erőforrások egy központi tárházban történő adatainak begyűjtése OMS figyelési szolgáltatásokat biztosít. Az összegyűjtésüket követően az adatok használhatók riasztáshoz, elemzéshez vagy exportáláshoz. |
+| **Ügyfél** | Ez tervezetének a Naplóelemzési megoldás az OMS valósítja meg. A Naplóelemzési által kezelt erőforrások egy központi tárházban történő adatainak begyűjtése OMS figyelési szolgáltatásokat biztosít. Az összegyűjtésüket követően az adatok használhatók riasztáshoz, elemzéshez vagy exportáláshoz. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -371,7 +371,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének a Naplóelemzési megoldás az OMS valósítja meg. A Naplóelemzési által kezelt erőforrások egy központi tárházban történő adatainak begyűjtése OMS figyelési szolgáltatásokat biztosít. A tartalom és az idő rendelés az auditálási rekordok nem változnak, amikor Naplóelemzési által gyűjtött. |
+| **Ügyfél** | Ez tervezetének a Naplóelemzési megoldás az OMS valósítja meg. A Naplóelemzési által kezelt erőforrások egy központi tárházban történő adatainak begyűjtése OMS figyelési szolgáltatásokat biztosít. A tartalom és az idő rendelés az auditálási rekordok nem változnak, amikor Naplóelemzési által gyűjtött. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -385,7 +385,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének a Naplóelemzési megoldás az OMS valósítja meg. A Naplóelemzési által kezelt erőforrások egy központi tárházban történő adatainak begyűjtése OMS figyelési szolgáltatásokat biztosít. Az összegyűjtésüket követően az adatok használhatók riasztáshoz, elemzéshez vagy exportáláshoz. A Log Analytics egy hatékony lekérdezési nyelvet biztosít a tárházban tárolt adatok kinyeréséhez. |
+| **Ügyfél** | Ez tervezetének a Naplóelemzési megoldás az OMS valósítja meg. A Naplóelemzési által kezelt erőforrások egy központi tárházban történő adatainak begyűjtése OMS figyelési szolgáltatásokat biztosít. Az összegyűjtésüket követően az adatok használhatók riasztáshoz, elemzéshez vagy exportáláshoz. A Log Analytics egy hatékony lekérdezési nyelvet biztosít a tárházban tárolt adatok kinyeréséhez. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -399,7 +399,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének által üzembe helyezett erőforrás használja belső rendszerideje időbélyegek az auditálási rekordok létrehozásához. |
+| **Ügyfél** | Ez tervezetének által üzembe helyezett erőforrás használja belső rendszerideje időbélyegek az auditálási rekordok létrehozásához. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -413,7 +413,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének által üzembe helyezett erőforrás használja belső rendszerideje időbélyegek az auditálási rekordok létrehozásához. UTC időbélyeggel rögzíti. |
+| **Ügyfél** | Ez tervezetének által üzembe helyezett erőforrás használja belső rendszerideje időbélyegek az auditálási rekordok létrehozásához. UTC időbélyeggel rögzíti. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -427,7 +427,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének által üzembe helyezett erőforrás használja belső rendszerideje időbélyegek az auditálási rekordok létrehozásához. Belső rendszerideje konfigurált egy mérvadó időforrást szinkronizálni. |
+| **Ügyfél** | Ez tervezetének által üzembe helyezett erőforrás használja belső rendszerideje időbélyegek az auditálási rekordok létrehozásához. Belső rendszerideje konfigurált egy mérvadó időforrást szinkronizálni. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -441,7 +441,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének által üzembe helyezett erőforrás használja belső rendszerideje időbélyegek az auditálási rekordok létrehozásához. Belső rendszerideje konfigurált egy mérvadó időforrást szinkronizálni. |
+| **Ügyfél** | Ez tervezetének által üzembe helyezett erőforrás használja belső rendszerideje időbélyegek az auditálási rekordok létrehozásához. Belső rendszerideje konfigurált egy mérvadó időforrást szinkronizálni. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -455,7 +455,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Logikai hozzáférés-vezérlést naplózási információkat és az Azure tervezetének belül eszközöket az illetéktelen hozzáféréstől, módosítását és törlését védelmére használhatók. Az Azure Active Directory vezérlésről jóváhagyott logikai szerepköralapú csoporttagságok használatával. Naplózási adatainak megtekintéséhez, és a naplózási eszközök használata a felhasználók számára ezen engedélyeket igénylő korlátozható. |
+| **Ügyfél** | Logikai hozzáférés-vezérlést az illetéktelen hozzáféréstől, módosítását és törlését naplózási információk és eszközök belül a tervezetének védelmére használhatók. Az Azure Active Directory vezérlésről jóváhagyott logikai szerepköralapú csoporttagságok használatával. Naplózási adatainak megtekintéséhez, és a naplózási eszközök használata a felhasználók számára ezen engedélyeket igénylő korlátozható. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -469,7 +469,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének az OMS a Naplóelemzés szolgáltatás megvalósítja. Telepített virtuális gépek és az Azure diagnosztikai tárfiók csatlakoztatott adatforrások szolgáltatáshoz, és külön-külön megőrzi a forrásból. Gyűjti össze az adatokat az OMS közel valós időben. |
+| **Ügyfél** | Ez tervezetének az OMS a Naplóelemzés szolgáltatás megvalósítja. Telepített virtuális gépek és az Azure diagnosztikai tárfiók csatlakoztatott adatforrások szolgáltatáshoz, és külön-külön megőrzi a forrásból. Gyűjti össze az adatokat az OMS közel valós időben. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -483,7 +483,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének az OMS a Naplóelemzés szolgáltatás megvalósítja. Naplóelemzési biztosítja, hogy a bejövő adatok megbízható forrásból származó érvényesítésével azonosítsa a tanúsítványok és az Azure hitelesítési adatok integritását. |
+| **Ügyfél** | Ez tervezetének az OMS a Naplóelemzés szolgáltatás megvalósítja. Naplóelemzési biztosítja, hogy a bejövő adatok megbízható forrásból származó érvényesítésével azonosítsa a tanúsítványok és az Azure hitelesítési adatok integritását. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -497,7 +497,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Logikai hozzáférés-vezérlést naplózási információkat és az Azure tervezetének belül eszközöket az illetéktelen hozzáféréstől, módosítását és törlését védelmére használhatók. Az Azure Active Directory vezérlésről jóváhagyott logikai szerepköralapú csoporttagságok használatával. Naplózási adatainak megtekintéséhez, és a naplózási eszközök használata a felhasználók számára ezen engedélyeket igénylő korlátozható.
+| **Ügyfél** | Logikai hozzáférés-vezérlést az illetéktelen hozzáféréstől, módosítását és törlését naplózási információk és eszközök belül a tervezetének védelmére használhatók. Az Azure Active Directory vezérlésről jóváhagyott logikai szerepköralapú csoporttagságok használatával. Naplózási adatainak megtekintéséhez, és a naplózási eszközök használata a felhasználók számára ezen engedélyeket igénylő korlátozható.
  |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
@@ -512,7 +512,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének naplózási funkció Azure figyelő és a OMS Naplóelemzés szolgáltatást biztosítja. Az Azure biztosít, telepített erőforrások társított tevékenységre vonatkozó részletes naplókat. Ezek és az operációs rendszer szintű naplók Naplóelemzési által gyűjtött és az OMS-tárház tárolja. Ezek a naplók információkat rendszer események részletes rekordok tartalmazott, és nem megtagadás szemben biztosítanak védelmet. További a hozzáférési adatok naplózása használatával korlátozva szerepköralapú hozzáférés-vezérlés unauthored módosításának és törlésének a naplóadatok megelőzése érdekében. |
+| **Ügyfél** | Ez tervezetének naplózási funkció Azure figyelő és a OMS Naplóelemzés szolgáltatást biztosítja. Az Azure biztosít, telepített erőforrások társított tevékenységre vonatkozó részletes naplókat. Ezek és az operációs rendszer szintű naplók Naplóelemzési által gyűjtött és az OMS-tárház tárolja. Ezek a naplók információkat rendszer események részletes rekordok tartalmazott, és nem megtagadás szemben biztosítanak védelmet. További a hozzáférési adatok naplózása használatával korlátozva szerepköralapú hozzáférés-vezérlés unauthored módosításának és törlésének a naplóadatok megelőzése érdekében. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -526,7 +526,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének az OMS a Naplóelemzés szolgáltatás megvalósítja. A Naplóelemzési által kezelt erőforrások egy központi tárházban történő adatainak begyűjtése OMS figyelési szolgáltatásokat biztosít. Összegyűjtését követően az adatok / Log Analyticshez konfigurációs egy évig őrzi meg. |
+| **Ügyfél** | Ez tervezetének az OMS a Naplóelemzés szolgáltatás megvalósítja. A Naplóelemzési által kezelt erőforrások egy központi tárházban történő adatainak begyűjtése OMS figyelési szolgáltatásokat biztosít. Összegyűjtését követően az adatok / Log Analyticshez konfigurációs egy évig őrzi meg. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -540,7 +540,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének által naplózott eseményeket foglalja bele azokat rendszervizsgálati módban levő telepített erőforrások, az operációs rendszer szintű naplókat, az Active Directory-naplók Azure tevékenységi naplóit, és az SQL Server naplózza. Az ügyfelek kritikus igényeihez naplózandó további események is kiválaszthat. |
+| **Ügyfél** | Ez tervezetének által naplózott eseményeket közé tartoznak az Azure tevékenységi naplóit telepített erőforrások, az operációs rendszer szintű naplókat, az Active Directory-naplók ellenőrzi, és az SQL Server naplózza. Az ügyfelek kritikus igényeihez naplózandó további események is kiválaszthat. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -554,7 +554,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Azure-ban és a virtuális gép operációs rendszer szintű szerepköralapú hozzáférés-vezérlés használatával elérése funkciók naplózása történik. Felhasználók a megfelelő szerepkör-alapú hitelesítési eseményt kell naplózni, az Azure tervezetének által üzembe helyezett erőforrás által kiválasztott konfigurációjának konfigurálhatja. |
+| **Ügyfél** | Azure-ban és a virtuális gép operációs rendszer szintű szerepköralapú hozzáférés-vezérlés használatával elérése funkciók naplózása történik. Felhasználók a megfelelő szerepkör-alapú hitelesítési eseményt kell naplózni a tervezetének által üzembe helyezett erőforrás által kiválasztott konfigurációjának konfigurálhatja. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -568,7 +568,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének által naplózott eseményeket foglalja bele azokat rendszervizsgálati módban levő telepített erőforrások, az operációs rendszer szintű naplókat, az Active Directory-naplók Azure tevékenységi naplóit, és az SQL Server naplózza. Az ügyfelek kritikus igényeihez naplózandó további események is kiválaszthat. |
+| **Ügyfél** | Ez tervezetének által naplózott eseményeket közé tartoznak az Azure tevékenységi naplóit telepített erőforrások, az operációs rendszer szintű naplókat, az Active Directory-naplók ellenőrzi, és az SQL Server naplózza. Az ügyfelek kritikus igényeihez naplózandó további események is kiválaszthat. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -582,7 +582,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Az Azure tervezetének az OMS a Naplóelemzés szolgáltatás megvalósítja. A Naplóelemzési által kezelt erőforrások egy központi tárházban történő adatainak begyűjtése OMS figyelési szolgáltatásokat biztosít. Naplózási rekord időbélyegeket nem változnak, ezért a napló idő korrelált. |
+| **Ügyfél** | Ez tervezetének az OMS a Naplóelemzés szolgáltatás megvalósítja. A Naplóelemzési által kezelt erőforrások egy központi tárházban történő adatainak begyűjtése OMS figyelési szolgáltatásokat biztosít. Naplózási rekord időbélyegeket nem változnak, ezért a napló idő korrelált. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
@@ -596,5 +596,5 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Ügyfél** | Azure-ban és a virtuális gép operációs rendszer szintű szerepköralapú hozzáférés-vezérlés használatával elérése funkciók naplózása történik. Felhasználók a megfelelő szerepkör-alapú hitelesítési eseményt kell naplózni, az Azure tervezetének által üzembe helyezett erőforrás által kiválasztott konfigurációjának konfigurálhatja. |
+| **Ügyfél** | Azure-ban és a virtuális gép operációs rendszer szintű szerepköralapú hozzáférés-vezérlés használatával elérése funkciók naplózása történik. Felhasználók a megfelelő szerepkör-alapú hitelesítési eseményt kell naplózni a tervezetének által üzembe helyezett erőforrás által kiválasztott konfigurációjának konfigurálhatja. |
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |

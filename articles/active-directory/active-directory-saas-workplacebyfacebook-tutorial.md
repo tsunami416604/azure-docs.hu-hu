@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 6d8b3046bc242deb90f435498c79eb94420c3909
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 524319deea957809440436b3cac2b0256516923a
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workplace-by-facebook"></a>Oktatóanyag: Azure Active Directoryval integrált munkahelyi által Facebook-on
 
@@ -113,10 +113,10 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<instancename>.facebook.com`
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`https://www.facebook.com/company/<instancename>`
+    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`https://www.facebook.com/company/<instanceID>`
 
     > [!NOTE] 
-    > Ezek az értékek nincsenek tényleges. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [Facebook ügyfél-támogatási csoport által munkahelyi](https://workplace.fb.com/faq/) beolvasni ezeket az értékeket. 
+    > Ezek az értékek nincsenek tényleges. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Tekintse meg a hitelesítési lapon a megfelelő értékeket a munkahelyi vállalati irányítópult a munkahelyi Közösség számára. 
 
 4. A a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 

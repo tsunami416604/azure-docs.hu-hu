@@ -1,6 +1,6 @@
 ---
-title: "FedRAMP Azure tervezetének Automation - adathordozó védelme"
-description: "Webes alkalmazásokhoz, a FedRAMP - adathordozó védelme"
+title: "Az Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - adathordozó védelme"
+description: "FedRAMP webes alkalmazások Automation - adathordozó védelme"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 9cb33abc7ab88aaa54a77308c7863f8128f2e6c7
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 37812c2f7ee79685f9014a7999b4355e649ca6e1
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="media-protection-mp"></a>Média védelme (MP)
 
@@ -83,7 +83,7 @@ ms.lasthandoff: 11/23/2017
 
  ## <a name="nist-800-53-control-mp-4a"></a>A NIST 800-53 vezérlő MP-4.a
 
-#### <a name="media-storage"></a>Tároló adathordozó
+#### <a name="media-storage"></a>Media Storage
 
 **MP-4.a** a szervezet fizikailag vezérli, és tárolja biztonságos helyen [hozzárendelés: digitális és/vagy nem digitális media szervezet által meghatározott típusú] belül [hozzárendelés: szervezet által meghatározott szabályozott területek].
 
@@ -97,7 +97,7 @@ ms.lasthandoff: 11/23/2017
 
  ## <a name="nist-800-53-control-mp-4b"></a>A NIST 800-53 vezérlő MP-4.b
 
-#### <a name="media-storage"></a>Tároló adathordozó
+#### <a name="media-storage"></a>Media Storage
 
 **MP-4.b** a szervezet rendszer adathordozó védi, addig, amíg az adathordozót megsemmisülnek vagy berendezések technikák és eljárások megtisztított használata engedélyezett.
 

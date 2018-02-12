@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2017
 ms.author: cherylmc;ganesr
-ms.openlocfilehash: a21fdfbc4396f2b7aff50fae4ca796d8ea6a733b
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 08582d03428acb860bc304c365ffa6626ba33903
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>Létrehozásához és módosításához ExpressRoute-kapcsolatcsoportot
 > [!div class="op_single_selector"]
@@ -130,7 +130,7 @@ ExpressRoute-kapcsolatcsoportot egyes tulajdonságait módosíthatja kapcsolat b
 > [!IMPORTANT]
 > Előfordulhat, hogy újra létrehozni az ExpressRoute-kapcsolatcsoport, ha nincs elég kapacitás a meglévő porton. A kapcsolat nem frissíthető, ha nincsenek további kapacitást érhető el az adott helyhez.
 >
-> Nem csökkenti a sávszélesség az ExpressRoute-kapcsolatcsoportot megszakítása nélkül. Alacsonyabb verziójúra változtatása a sávszélesség szükséges, hogy az ExpressRoute-kapcsolatcsoport kiosztásának megszüntetése és majd építenie az új ExpressRoute-kapcsolatcsoportot.
+> Zökkenőmentesen frissítheti a sávszélesség, de nem csökkenti a sávszélesség az ExpressRoute-kapcsolatcsoportot megszakítása nélkül. Alacsonyabb verziójúra változtatása a sávszélesség szükséges, hogy az ExpressRoute-kapcsolatcsoport kiosztásának megszüntetése és majd építenie az új ExpressRoute-kapcsolatcsoportot.
 > 
 > A prémium szintű bővítmény művelet letiltása sikertelen lehet, amely nagyobb, mint mi a szabványos kör megengedett erőforrások használata.
 > 
