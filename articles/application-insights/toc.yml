@@ -192,6 +192,8 @@
               href: app-insights-usage-segmentation.md
             - name: Tölcsérek
               href: usage-funnels.md
+            - name: Hatás
+              href: app-insights-usage-impact.md
             - name: Megőrzés
               href: app-insights-usage-retention.md
             - name: Felhasználói folyamatok

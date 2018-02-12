@@ -48,6 +48,8 @@
           href: how-to-vscode-develop-azure-function.md
         - name: Azure-függvények hibakeresése
           href: how-to-vscode-debug-azure-function.md
+    - name: Adatok tárolása a peremhálózaton
+      href: sql-storage.md
     - name: Hibaelhárítás
       href: troubleshoot.md
 - name: Alapelvek

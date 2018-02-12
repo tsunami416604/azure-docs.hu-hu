@@ -28,6 +28,7 @@
 ## Felügyelt tartomány kezelése
 ### [Felügyelt tartomány kezelése](active-directory-ds-admin-guide-administer-domain.md)
 ### [DNS-kezelés felügyelt tartományon](active-directory-ds-admin-guide-administer-dns.md)
+### [A tartomány állapotának ellenőrzése](active-directory-ds-check-health.md)
 ### Biztonságos LDAP konfigurálása felügyelt tartományhoz
 #### [1. feladat: tanúsítvány beszerzése biztonságos LDAP-hoz](active-directory-ds-admin-guide-configure-secure-ldap.md)
 #### [2. feladat: a megbízható LDAP-tanúsítványának exportálása](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md)

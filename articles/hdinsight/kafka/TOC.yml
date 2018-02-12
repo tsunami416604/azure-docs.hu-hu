@@ -29,6 +29,8 @@
       href: apache-kafka-mirroring.md
     - name: Kafka-naplók elemzése
       href: apache-kafka-log-analytics-operations-management.md
+    - name: A Kafka használata az Azure Container Service-szel
+      href: apache-kafka-azure-container-services.md
     - name: Streaming folyamatok létrehozása
       items:
         - name: Kafka és Spark (strukturált stream)

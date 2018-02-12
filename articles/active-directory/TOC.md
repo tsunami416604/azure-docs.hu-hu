@@ -83,6 +83,7 @@
 #### [Licencek hozzárendelése egy csoporthoz](active-directory-licensing-group-assignment-azure-portal.md)
 #### [A csoportok licencproblémáinak azonosítása és megoldása](active-directory-licensing-group-problem-resolution-azure-portal.md)
 #### [Egyéni, licenccel rendelkező felhasználók migrálása csoportalapú licencelésre](active-directory-licensing-group-migration-azure-portal.md)
+#### [Felhasználók terméklicencek közötti migrálása](active-directory-licensing-group-product-migration.md)
 #### [További forgatókönyvek csoportalapú licenceléshez](active-directory-licensing-group-advanced.md)
 #### [Azure PowerShell-példák csoportalapú licenceléshez](active-directory-licensing-ps-examples.md)
 #### [Az Azure AD termékeinek és szolgáltatáscsomagjainak referenciája](active-directory-licensing-product-and-service-plan-reference.md)
@@ -200,8 +201,6 @@
 ##### [Összekötők](application-proxy-understand-connectors.md)
 ##### [Biztonság](application-proxy-security-considerations.md)
 ##### [Hálózatok](application-proxy-network-topology-considerations.md)
-
-
 ##### [Frissítés a TMG vagy a UAG rendszerről](application-proxy-transition-from-uag-tmg.md)
 
 #### Speciális konfigurációk
@@ -212,6 +211,8 @@
 ##### [Csendes telepítés](active-directory-application-proxy-silent-installation.md)
 ##### [Egyéni kezdőlap](application-proxy-office365-app-launcher.md)
 ##### [Beágyazott hivatkozások fordítása](application-proxy-link-translation.md)
+##### [Helyettesítő karakterek alkalmazása](active-directory-application-proxy-wildcard.md)
+
 #### Közzétételi útmutatók
 ##### [Távoli asztal](application-proxy-publish-remote-desktop.md)
 ##### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
@@ -293,8 +294,9 @@
 
 ## Identitások védelme
 ### [Feltételes hozzáférés](active-directory-conditional-access-azure-portal.md)
-#### [Vezérlők](active-directory-conditional-access-controls.md)
+#### [Feltételek](active-directory-conditional-access-conditions.md)
 #### [Helyfeltétel](active-directory-conditional-access-locations.md)
+#### [Vezérlők](active-directory-conditional-access-controls.md)
 #### [Első lépések](active-directory-conditional-access-azure-portal-get-started.md)
 #### [Ajánlott eljárások](active-directory-conditional-access-best-practices.md)
 #### [Az Office 365-szolgáltatások eszközszabályzatainak ismertetése](active-directory-conditional-access-device-policies.md)

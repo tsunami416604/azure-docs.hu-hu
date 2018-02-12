@@ -171,6 +171,7 @@
 #### [Útmutatás a Face Redactorhoz](media-services-redactor-walkthrough.md)
 ### [Feldolgozás video-miniatűrökkel](media-services-video-summarization.md)
 ### [Feldolgozás OCR-rel](media-services-video-optical-character-recognition.md)
+### [Tartalommoderátorral rendelkező folyamat](media-services-content-moderation.md)
 
 ## [Telemetria konfigurálása](media-services-telemetry-overview.md)
 ###[.NET](media-services-dotnet-telemetry.md)

@@ -64,13 +64,13 @@
 
 ## Figyelés
 ### [Felhőszolgáltatás monitorozása](cloud-services-how-to-monitor.md)
+### [Teljesítményszámlálók használata](diagnostics-performance-counters.md)
 ### [Teljesítmény tesztelése](../vs-azure-tools-performance-profiling-cloud-services.md)
 #### [Tesztelés a Visual Studio Profilerével](cloud-services-performance-testing-visual-studio-profiler.md)
 ### Diagnosztika engedélyezése
 #### [Azure PowerShell](cloud-services-diagnostics-powershell.md)
 #### [.NET](cloud-services-dotnet-diagnostics.md)
 #### [Visual Studio](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)
-### [Teljesítményszámlálók használata az Azure Diagnosticsban](cloud-services-dotnet-diagnostics-performance-counters.md)
 ### [Diagnosztikai adatok tárolása és megtekintése az Azure Storage-ban](cloud-services-dotnet-diagnostics-storage.md)
 ### [Felhőszolgáltatás követése a Diagnostics használatával](cloud-services-dotnet-diagnostics-trace-flow.md)
 ### [Diagnosztikai adatok küldése az App Insights-ba](cloud-services-dotnet-diagnostics-applicationinsights.md)

@@ -33,6 +33,10 @@
       href: activate-subs-accounts.md
     - name: Kiterjesztett metrikák hozzáadása a virtuális gépekhez
       href: azure-vm-extended-metrics.md
+    - name: Google-fiók csatlakoztatása
+      href: connect-google-account.md
+    - name: AWS-fiók csatlakoztatása
+      href: connect-aws-account.md
     - name: A Cost Management jelentéseinek használata
       href: use-reports.md
 - name: További források

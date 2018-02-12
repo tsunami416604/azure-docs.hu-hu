@@ -10,7 +10,7 @@
 
 ## Távoli figyelés (előző verzió)
 ### [Mik azok az előre konfigurált megoldások?](iot-suite-v1-what-are-preconfigured-solutions.md)
-### [Gyakori kérdések](iot-suite-v1-faq.md)
+### [GYIK](iot-suite-v1-faq.md)
 
 ### Első lépések
 #### [Első lépések az előre konfigurált megoldásokkal](iot-suite-v1-getstarted-preconfigured-solutions.md)
@@ -58,7 +58,9 @@
 ### [Hibák észlelése szabályokkal](iot-suite-remote-monitoring-automate.md)
 ### [Saját eszközök kezelése](iot-suite-remote-monitoring-manage.md)
 ### [Eszközökkel kapcsolatos problémák elhárítása](iot-suite-remote-monitoring-maintain.md)
-### [Szimulált eszközök használata](iot-suite-remote-monitoring-test.md)
+### [Az eszközmodell sémájának megismerése](iot-suite-remote-monitoring-device-schema.md)
+### [Az eszközmodell viselkedésének megismerése](iot-suite-remote-monitoring-device-behavior.md)
+### [Új szimulált eszköz létrehozása](iot-suite-remote-monitoring-test.md)
 ### [A megoldás testreszabása](iot-suite-remote-monitoring-customize.md)
 ### [Üzembe helyezés parancssori felületről](iot-suite-remote-monitoring-deploy-cli.md)
 ### Fizikai eszköz csatlakoztatása
@@ -86,14 +88,14 @@
 ## [Az IoT-környezet biztonságossá tétele](iot-suite-security-deployment.md)
 ## [Biztonság az alapoktól](securing-iot-ground-up.md)
 
-# Kapcsolódó
+# Kapcsolódó témakörök
 ## [Stream Analytics](/azure/stream-analytics/)
 ## [Event Hubs](/azure/event-hubs/)
 ## [IoT Hub](/azure/iot-hub/)
 ## [Microsoft IoT-központ](/azure/index#pivot=services&panel=iot)
 ## [Machine Learning](/azure/machine-learning/)
 
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Gyakori kérdések](iot-suite-faq.md)
 ## [Csatlakoztatott gyár – GYIK](iot-suite-faq-cf.md)

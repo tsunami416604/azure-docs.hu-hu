@@ -157,6 +157,7 @@
 #### [Azure CLI](virtual-network-manage-nsg-arm-cli.md)
 
 #### [Naplók](virtual-network-nsg-manage-log.md)
+### [Útválasztási táblázatok](manage-route-table.md)
 ### Hálózati adapterek (NIC-k)
 #### [Hálózati adapterek létrehozása, módosítása vagy törlése](virtual-network-network-interface.md)
 #### [IP-címek hozzáadása, szerkesztése vagy eltávolítása](virtual-network-network-interface-addresses.md)
@@ -177,6 +178,7 @@
 ### [Az átviteli sebesség tesztelése](virtual-network-bandwidth-testing.md)
 ### [Nem lehet törölni a virtuális hálózatokat](virtual-network-troubleshoot-cannot-delete-vnet.md)
 ### [Virtuális gépek közötti kapcsolódási problémák](virtual-network-troubleshoot-connectivity-problem-between-vms.md)
+### [PTR konfigurálása SMTP szalagcím-ellenőrzésre](create-ptr-for-smtp-service.md)
 
 # Referencia
 ## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=virtual-network)

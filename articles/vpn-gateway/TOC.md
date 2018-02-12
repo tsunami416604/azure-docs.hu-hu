@@ -34,6 +34,7 @@
 ### Pont–hely VPN-kapcsolat konfigurálása
 #### [Azure PowerShell](point-to-site-how-to-radius-ps.md)
 ### [A VPN-ügyfél konfigurációs fájljainak létrehozása és telepítése](point-to-site-vpn-client-configuration-radius.md)
+### [P2S VPN RADIUS-hitelesítés integrálása az NPS-kiszolgálóval](vpn-gateway-radiuis-mfa-nsp.md)
 
 ## Virtuális hálózatok közötti kapcsolatok konfigurálása
 ### [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)

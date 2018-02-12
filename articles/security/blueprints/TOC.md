@@ -17,8 +17,8 @@
 ### [Biztonságtechnikai képességek](../azure-security-technical-capabilities.md)
 ### [Irányítás az Azure-ban](../governance-in-azure.md)
 ### [Adattitkosítás inaktív állapotban](../azure-security-encryption-atrest.md)
-### Architektúratervek
-#### Megfelelőség – PCI DSS
+### Azure biztonsági és megfelelőségi tervek
+#### PCI DSS
 ##### [Fizetésfeldolgozás a PCI DSS előírásainak megfelelő környezetekben](payment-processing-blueprint.md)
 ##### [Követelmények áttekintése](pci-dss-requirements-overview.md)
 ##### [1. követelmény – tűzfalak](pci-dss-requirement-1-firewall.md)
@@ -33,8 +33,8 @@
 ##### [10. követelmény – monitorozás](pci-dss-requirement-10-monitoring.md)
 ##### [11. követelmény – tesztelés](pci-dss-requirement-11-testing.md)
 ##### [12. követelmény – szabályzat](pci-dss-requirement-12-policy.md)
-#### Megfelelőség – FedRAMP
-##### [Webalkalmazások FedRAMP-hoz](fedramp.md)
+#### FedRAMP
+##### [Webalkalmazások automatizálása](fedramp.md)
 ##### [Biztonsági vezérlők áttekintése](fedramp-controls-overview.md)
 ##### [Hozzáférés-vezérlés](fedramp-access-controls.md)
 ##### [Naplózás és felelősségre vonhatóság](fedramp-audit-accountability-controls.md)
@@ -53,11 +53,11 @@
 ##### [Rendszer- és kommunikációvédelem](fedramp-system-communications-protection-controls.md)
 ##### [Rendszerek és információk integritása](fedramp-system-information-integrity-controls.md)
 ##### [Rendszerek és szolgáltatások beszerzése](fedramp-system-services-acquisition-controls.md)
-#### Megfelelőség – UK-OFFICIAL
-##### [Háromszintű webalkalmazások UK-OFFICIAL-hoz](uk-official-three-tier-applications-overview.md)
+#### UK-OFFICIAL
+##### [Háromrétegű webalkalmazások automatizálása](uk-official-three-tier-applications-overview.md)
 ##### [Áttekintés](uk-official-three-tier-applications-overview.md)
 ##### [Alapelvek áttekintése](uk-official-three-tier-applications-principles-overview.md)
-#### Megfelelőség – Pénzügyi szolgáltatások
+#### Pénzügyi szolgáltatások
 ##### [Pénzügyi szolgáltatások szabályozott számítási feladatokhoz](financial-services-regulated-workloads.md)
 
 # Első lépések
@@ -93,9 +93,8 @@
 ### [Az Azure-naplók integrációjának bemutatása](../security-azure-log-integration-overview.md)
 #### [Ismerkedés az Azure-naplók integrációjával](../security-azure-log-integration-get-started.md)
 #### [Az Azure Active Directory naplóinak integrálása](../security-azure-log-integration-ad.md)
-#### [A Security Center riasztásainak integrálása](../security-azure-log-integration-security-center.md)
 #### [Key Vault-naplók integrálása az Event Hubs használatával](../security-azure-log-integration-keyvault-eventhub.md)
-#### [Gyakori kérdések](../security-azure-log-integration-faq.md)
+#### [GYIK](../security-azure-log-integration-faq.md)
 
 ## Service Fabric
 ### [Service Fabric – ajánlott eljárások](../azure-service-fabric-security-best-practices.md)
@@ -121,18 +120,18 @@
 ### [Adatok besorolása](https://gallery.technet.microsoft.com/Data-Classification-for-51252f03)
 ### [Vészhelyreállítás és magas szintű rendelkezésre állás Azure-alapú alkalmazásokhoz](../../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md?toc=%2fazure%2fsecurity%2ftoc.json)
 
-# Kapcsolódó
+# Kapcsolódó témakörök
 ## [Adatvédelmi központ](../security-microsoft-trust-center.md)
 ## [Microsoft Security Response Center](../azure-security-response-center.md)
 ## [Toll tesztelése](../azure-security-pen-testing.md)
 ## [Security Center](../../security-center/security-center-intro.md?toc=%2fazure%2fsecurity-center%2ftoc.json)
 ## [Key Vault](../../key-vault/key-vault-whatis.md)
 ## [Log Analytics](../../log-analytics/log-analytics-overview.md)
-## [Többtényezős hitelesítés](../../multi-factor-authentication/multi-factor-authentication.md)
+## [Multi-Factor Authentication](../../multi-factor-authentication/multi-factor-authentication.md)
 ## [Azure Active Directory](../../active-directory/active-directory-whatis.md)
 ## [Operations Management Suite](../../operations-management-suite/oms-security-getting-started.md)
 
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [Azure biztonsági MVP program](../azure-security-mvp.md)
 ## [Kiberbiztonsági tanácsadás](../azure-security-cyber-services.md)
@@ -152,7 +151,7 @@
 ## [Biztonsági kurzusok a Virtuális Akadémián](../security-microsoft-virtual-academy.md)
 ## [Biztonsággal kapcsolatos videók a Channel 9 blogon](../security-channel-nine.md)
 ## [Fenyegetésmodellezési eszköz](../azure-security-threat-modeling-tool.md)
-### [Első lépések](../azure-security-threat-modeling-tool-getting-started.md)
+### [Bevezetés](../azure-security-threat-modeling-tool-getting-started.md)
 ### [A funkciók áttekintése](../azure-security-threat-modeling-tool-feature-overview.md)
 ### [Fenyegetések](../azure-security-threat-modeling-tool-threats.md)
 ### [Kezelési lehetőségek](../azure-security-threat-modeling-tool-mitigations.md)
