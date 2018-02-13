@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/08/2017
+ms.date: 02/12/2018
 ms.author: larryfr
-ms.openlocfilehash: 5bab7a0646d34de3b6d71370a0fa4216845ee6a2
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: e6cc5fd3d45691dbdc004f346c10d7b4568ae9aa
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Diagnosztikai naplók elérése az Azure Data Lake Analytics
 
@@ -51,7 +51,7 @@ Diagnosztikai naplózás gyűjthet adatokat a fájlhozzáférés napló ellenőr
 
    * A __tárfiókba archív__, adja meg az adatok megőrzéséhez a napok számát.
 
-   * Kattintson a __Save__ (Mentés) gombra.
+   * Kattintson a __Mentés__gombra.
 
         > [!NOTE]
         > Ki kell választania vagy __tárfiókba archív__, __adatfolyam egy eseményközpontba__ vagy __küldeni a Naplóelemzési__ való kattintás előtt a __mentése__ jelölt gombra.
@@ -130,7 +130,7 @@ A naplózási és kérelem naplók strukturált JSON formátumban vannak.
 
 #### <a name="request-log-schema"></a>Kérelem séma
 
-| Név | Típus | Leírás |
+| Name (Név) | Típus | Leírás |
 | --- | --- | --- |
 | time |Karakterlánc |Az időbélyeg (UTC szerint) a napló |
 | resourceId |Karakterlánc |Helyezze a művelet erőforrás azonosítója |
@@ -144,13 +144,13 @@ A naplózási és kérelem naplók strukturált JSON formátumban vannak.
 
 #### <a name="request-log-properties-schema"></a>Kérelem tulajdonságok séma
 
-| Név | Típus | Leírás |
+| Name (Név) | Típus | Leírás |
 | --- | --- | --- |
 | HttpMethod |Karakterlánc |A művelethez használt HTTP-metódust. Például beolvasása. |
 | Útvonal |Karakterlánc |Az elérési út a művelet végrehajtásának ideje |
 | RequestContentLength |int |A HTTP-kérelem a tartalom hossza |
-| clientRequestId |Karakterlánc |Az azonosító, amely egyedileg azonosítja az ehhez a kérelemhez |
-| Kezdő időpont |Karakterlánc |Az a kiszolgáló fogadja a kérelem ideje |
+| ClientRequestId |Karakterlánc |Az azonosító, amely egyedileg azonosítja az ehhez a kérelemhez |
+| StartTime |Karakterlánc |Az a kiszolgáló fogadja a kérelem ideje |
 | Befejezés időpontja |Karakterlánc |Az idő, ahol a kiszolgáló által küldött választ |
 
 ### <a name="audit-logs"></a>Naplók
@@ -182,7 +182,7 @@ A naplózási és kérelem naplók strukturált JSON formátumban vannak.
 
 #### <a name="audit-log-schema"></a>Naplózási séma
 
-| Név | Típus | Leírás |
+| Name (Név) | Típus | Leírás |
 | --- | --- | --- |
 | time |Karakterlánc |Az időbélyeg (UTC szerint) a napló |
 | resourceId |Karakterlánc |Helyezze a művelet erőforrás azonosítója |
@@ -200,13 +200,13 @@ A naplózási és kérelem naplók strukturált JSON formátumban vannak.
 
 #### <a name="audit-log-properties-schema"></a>Naplózási tulajdonságai séma
 
-| Név | Típus | Leírás |
+| Name (Név) | Típus | Leírás |
 | --- | --- | --- |
 | JobId |Karakterlánc |A feladathoz rendelt azonosító |
 | Feladat neve |Karakterlánc |A feladat a megadott neve |
 | JobRunTime |Karakterlánc |A futtatókörnyezet segítségével dolgozza fel a feladatot |
 | SubmitTime |Karakterlánc |Az idő (UTC), a feladat el lett küldve |
-| Kezdő időpont |Karakterlánc |A indításakor a feladat futtatása után küldése (az UTC) |
+| StartTime |Karakterlánc |A indításakor a feladat futtatása után küldése (az UTC) |
 | Befejezés időpontja |Karakterlánc |A feladat befejezésének időpontja |
 | Párhuzamos végrehajtás |Karakterlánc |Ez a feladat kért végzett leadásakor Data Lake Analytics egységek száma |
 
@@ -217,5 +217,5 @@ A naplózási és kérelem naplók strukturált JSON formátumban vannak.
 
 Az Azure Data Lake Analytics egy minta feldolgozhatja és elemezheti a naplóadatok hogyan biztosít. A minta a található [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Az Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)

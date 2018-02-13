@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: dc11ac2ce92fe2b7d3cb51bf60c6b4bd9a5be18d
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 456e5bd722d103f10779aa0cd99bf01fdcf8a7fe
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Másolja a adatok vagy az Azure SQL Data Warehouse Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -269,14 +269,14 @@ SQL Data Warehouse PolyBase közvetlenül támogatja Azure-Blob és az Azure Dat
 
 A feltételeknek nem felel meg, ha az Azure Data Factory ellenőrzi a beállításait, és automatikusan visszaáll az adatátvitelt jelölik a BULKINSERT mechanizmus.
 
-1. **Forrás társított szolgáltatás** típusa: **AzureStorage** vagy **AzureDataLakeStore**.
+1. **Forrás társított szolgáltatás** típusa: **AzureStorage** vagy **AzureDataLakeStore** szolgáltatás egyszerű hitelesítéssel.
 2. A **bemeneti adatkészlet** típusa: **AzureBlob** vagy **AzureDataLakeStoreFile**, és írja be a format `type` tulajdonságai **OrcFormat** , **ParquetFormat**, vagy **szöveges** , a következő beállításokat:
 
-   1. `rowDelimiter`kell  **\n** .
-   2. `nullValue`értéke **üres karakterlánc** (""), vagy `treatEmptyAsNull` értéke **igaz**.
-   3. `encodingName`értéke **utf-8**, amely **alapértelmezett** érték.
+   1. `rowDelimiter` kell  **\n** .
+   2. `nullValue` értéke **üres karakterlánc** (""), vagy `treatEmptyAsNull` értéke **igaz**.
+   3. `encodingName` értéke **utf-8**, amely **alapértelmezett** érték.
    4. `escapeChar`, `quoteChar`, `firstRowAsHeader`, és `skipLineCount` nincs megadva.
-   5. `compression`lehet **tömörítés**, **GZip**, vagy **Deflate**.
+   5. `compression` lehet **tömörítés**, **GZip**, vagy **Deflate**.
 
     ```json
     "typeProperties": {

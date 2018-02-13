@@ -3,7 +3,7 @@ title: "Az Active Directory-környezet az Azure Naplóelemzés optimalizálása 
 description: "Az Active Directory állapotát ellenőrző megoldás segítségével rendszeres időközönkénti kockázat és a környezetek állapotának megállapítása."
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: 81eb41b8-eb62-4eb2-9f7b-fde5c89c9b47
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2017
-ms.author: magoedte;banders
+ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a8f6cfc678d0b6443ac1aa440941eb2b5c664564
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: f026c605b84c5f2b6420e975a06d7c02227efbd9
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-log-analytics"></a>Az Active Directory-környezet, az Active Directory állapotát ellenőrző megoldással a Naplóelemzési optimalizálása
 
@@ -41,7 +41,7 @@ Után, a megoldás felvett ellenőrzése kész, összefoglaló adatait fókuszte
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az Active Directory állapotának ellenőrzése megoldás a .NET-keretrendszer 4.5.2-es verzióját egy támogatott verziója szükséges, vagy fent telepítve a Microsoft Monitoring Agent (MMA) telepítése minden egyes számítógépen.  Az MMA ügynök System Center 2016 - Operations Manager és az Operations Manager 2012 R2 és a Naplóelemzés szolgáltatás használja. 
+* Az Active Directory állapotának ellenőrzése megoldás a .NET-keretrendszer 4.5.2-es verzióját egy támogatott verziója szükséges, vagy fent telepítve a Microsoft Monitoring Agent (MMA) telepítése minden egyes számítógépen.  Az MMA ügynök System Center 2016 - Operations Manager és az Operations Manager 2012 R2 és a Naplóelemzés szolgáltatás használja.
 * A megoldás a Windows Server 2008 és 2008 R2, Windows Server 2012 és 2012 R2 és Windows Server 2016 futtató tartományvezérlőket támogatja.
 * A Naplóelemzési munkaterület hozzáadása az Active Directory állapotát ellenőrző megoldás az Azure-portálon az Azure piactérről.  Nincs szükség további konfigurációra.
 
@@ -62,13 +62,13 @@ Az ügynök jelentéseket az Operations Manager felügyeleti csoport gyűjti az 
 
 Active Directory állapotát ellenőrző gyűjti az adatokat, hogy engedélyezte-ügynök használatával az alábbi forrásokból:
 
-- Beállításjegyzék 
-- LDAP 
+- Beállításjegyzék
+- LDAP
 - .NET-keretrendszer
-- Eseménynapló 
+- Eseménynapló
 - Active Directory Service interfaces (ADSI)
 - Windows PowerShell
-- Fájladatok 
+- Fájladatok
 - A Windows Management Instrumentation (WMI)
 - A DCDIAG eszköz API
 - Fájlreplikációs szolgáltatás (NTFRS) tartozó API
@@ -93,7 +93,7 @@ Minden ajánlást a súlyozási arányában a teljes pontszám minden fókusz te
 
 **Rendelkezésre állás és üzleti folytonosság** -fókusz itt megtekinthető a szolgáltatás rendelkezésre állása, a rugalmasság, az infrastruktúra és az üzleti védelmét javaslatok.
 
-**Teljesítmény és méretezhetőség** -e fókuszba területen látható ajánlásokat a szervezet informatikai infrastruktúrájának nő, győződjön meg arról, hogy az informatikai környezet megfelel az aktuális teljesítménykövetelményeknek, és képes reagálni a infrastruktúrához.
+**Teljesítmény és méretezhetőség** -e fókuszba területen látható ajánlásokat a szervezet informatikai infrastruktúrájának nő, győződjön meg arról, hogy az informatikai környezettől aktuális teljesítménykövetelményeknek megfelel-e, és képes válaszolni infrastruktúra módosítása szüksége van.
 
 **Áttelepítés és a telepítés frissítéséhez** -e fókuszba területen látható ajánlásokat frissítéséhez, telepítse át, és Active Directory telepítése a meglévő infrastruktúra.
 
@@ -109,7 +109,7 @@ Az összesített megfelelőségi értékelése az infrastruktúrát, és a-felt�
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Az egy fókuszban terület javaslatok megtekintése és a szükséges javítási műveletek
 3. Kattintson a **áttekintése** a Naplóelemzési munkaterület az Azure portálon csempéjén.
-4. A a **áttekintése** lapján kattintson a **Active Directory állapotát ellenőrző** csempére. 
+4. A a **áttekintése** lapján kattintson a **Active Directory állapotát ellenőrző** csempére.
 5. Az a **állapotának ellenőrzése** lapon. Ellenőrizze az összefoglaló információkat a fókusz terület paneleken egyikében, majd kattintson egy adott fókusz területre javaslatok megtekintéséhez.
 6. A fókusz terület lapok egyikén tekintheti meg a környezetnek a rangsorolt ajánlásokat. Kattintson az ajánlás **érintett objektumok** miért a javaslatokkal kapcsolatos részletek megtekintéséhez.<br><br> ![kép ajánlások állapotának ellenőrzése](./media/log-analytics-ad-assessment/ad-healthcheck-dashboard-02.png)
 7. Az ajánlott javítási műveletek hajthatók végre **javasolt műveletek**. A cikk intéztek, ha újabb értékelések azt jelzi, hogy a javasolt műveletek vették, és a megfelelőségi pontszám növeli. Javított elemek jelennek meg **átadott objektumok**.
@@ -133,7 +133,7 @@ Ha figyelmen kívül hagyása kívánt ajánlásokat, létrehozhat egy szövegf�
 2. Illessze be, vagy adjon meg minden egyes javaslat, amelyet az Naplóelemzési figyelmen kívül hagyása külön sorban, és mentse és zárja be a fájlt a RecommendationId.
 3. Helyezze el a fájlt a következő mappában található minden olyan számítógépen Naplóelemzési figyelmen kívül hagyja a javaslatok, ahová.
    * A Microsoft Monitoring-ügynökkel rendelkező számítógépek (közvetlenül vagy az Operations Manager keresztül csatlakozik) - *SystemDrive*: \Program Files\Microsoft figyelés Agent\Agent
-   * Az Operations Manager 2012 R2 felügyeleti kiszolgálón - *SystemDrive*: System Center 2012 R2\Operations Manager\Server \Program Files\Microsoft 
+   * Az Operations Manager 2012 R2 felügyeleti kiszolgálón - *SystemDrive*: System Center 2012 R2\Operations Manager\Server \Program Files\Microsoft
    * Az Operations Manager 2016 felügyeleti kiszolgálón - *SystemDrive*: System Center 2016\Operations Manager\Server \Program Files\Microsoft
 
 ### <a name="to-verify-that-recommendations-are-ignored"></a>Győződjön meg arról, hogy javaslatokat figyelmen kívül hagyja a

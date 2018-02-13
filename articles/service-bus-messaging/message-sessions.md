@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: sethm
-ms.openlocfilehash: 7e5b42e2244b52b06c55e7a6ca30ba1657b1a532
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 7a594e5951f6e90c9151fbaf231675d6ed091d1f
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>Üzenet-munkamenetek: az első, először ki (FIFO) 
 
@@ -72,6 +72,8 @@ A munkamenet-állapot konstrukció lehetővé teszi, hogy a üzenet munkameneten
 A Service Bus szempontjából üzenet munkamenet állapota nem átlátszó bináris objektum, amely egy üzenet, amely a Service Bus szabványos 256 KB, és a Service Bus prémium 1 MB méretű adat tárolására képes. A munkamenet viszonyítva feldolgozási állapotát lehessen vonni a munkamenet-állapot belül, vagy bizonyos tárolási helye vagy az adatbázis-rekord, amely tárolja ezeket az információkat a munkamenet-állapot mutathat.
 
 A munkamenet-állapot kezelésére szolgáló API-k [SetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate#Microsoft_ServiceBus_Messaging_MessageSession_SetState_System_IO_Stream_) és [GetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.getstate#Microsoft_ServiceBus_Messaging_MessageSession_GetState), található meg a [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) a C# és Java API-k objektum. A munkamenet, amelyekről korábban nem munkamenet-állapot beállítása értéket ad vissza egy **null** hivatkozást **GetState**. A korábban beállított munkamenet-állapot törlése történik a [SetState(null)](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate#Microsoft_ServiceBus_Messaging_MessageSession_SetState_System_IO_Stream_).
+
+Vegye figyelembe, hogy a munkamenet-állapot maradnak, amíg nem törlődik (visszaadó **null**), akkor is, ha a munkamenet üzeneteit minden felhasználni.
 
 Az összes meglévő távoli üzenetsor vagy előfizetés számba vehetők a **SessionBrowser** Java API-ban és a metódus [GetMessageSessions](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions#Microsoft_ServiceBus_Messaging_QueueClient_GetMessageSessions) a a [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) és [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient) a .NET-ügyfél.
 

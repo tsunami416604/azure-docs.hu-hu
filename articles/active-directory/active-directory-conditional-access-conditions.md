@@ -16,17 +16,17 @@ ms.workload: identity
 ms.date: 02/09/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: bb2124613ccc467f3c560e92bdf760420410267c
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 2415a2c2c0143b4abeb8ec1ecab379a204456874
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="conditions-in-azure-active-directory-conditional-access"></a>Az Azure Active Directory feltételes hozzáférési feltételek 
 
 A [Azure Active Directory (Azure AD) feltételes hozzáférés](active-directory-conditional-access-azure-portal.md), szabályozhatja a hogyan engedéllyel rendelkező felhasználók hozzáférést a felhőalapú alkalmazásokat. A feltételes hozzáférési szabályzatot a válasz ("Ehhez") okának indítására, a házirend ("Amikor ez történik,") megadása. 
 
-![vezérlő](./media/active-directory-conditional-access-conditions/10.png)
+![Vezérlés](./media/active-directory-conditional-access-conditions/10.png)
 
 
 A feltételes hozzáférés a környezetben:
@@ -36,7 +36,7 @@ A feltételes hozzáférés a környezetben:
 
 A feltételek és a hozzáférés-vezérlést kombinációja a feltételes hozzáférési házirend jelöli.
 
-![vezérlő](./media/active-directory-conditional-access-conditions/61.png)
+![Vezérlés](./media/active-directory-conditional-access-conditions/61.png)
 
 Ez a cikk áttekintést nyújt a feltételeket és azok hogyan használhatók a feltételes hozzáférési házirendben. 
 
@@ -45,13 +45,13 @@ Ez a cikk áttekintést nyújt a feltételeket és azok hogyan használhatók a 
 
 A felhasználók és csoportok feltétele egy feltételes hozzáférési házirendben kötelező. A házirend, vagy válassza ki is **minden felhasználó** , vagy válasszon adott felhasználókat és csoportokat.
 
-![vezérlő](./media/active-directory-conditional-access-conditions/02.png)
+![Vezérlés](./media/active-directory-conditional-access-conditions/02.png)
 
 Ha bejelöli:
 
 - **Minden felhasználó**, a házirend vonatkozik, a címtárban szereplő összes felhasználó. Ez magában foglalja a vendégfelhasználók számára.
 
-- **Válassza ki a felhasználók és csoportok**, egy célcsoport kijelölésével az adott felhasználócsoportokhoz, például minden tagját a HR részleg, amikor bejelentkeznek az HR-alkalmazásba. 
+- **Válassza ki a felhasználók és csoportok**, egy célcsoport kijelölésével az adott felhasználócsoportokhoz. Például kiválaszthatja egy csoportot, amely tartalmazza a HR osztály összes tagja, ha egy felhő alkalmazásként HR alkalmazást. 
 
 - Egy csoport lehet bármilyen típusú csoport az Azure AD, beleértve a dinamikus vagy hozzárendelt biztonsági és terjesztési csoportok.
 
@@ -67,7 +67,7 @@ A cloud app a webhelyek vagy szolgáltatást. Ez magában foglalja az Azure-Prox
 
 A felhőalapú alkalmazások feltétele egy feltételes hozzáférési házirendben kötelező. A házirend, vagy válassza ki is **összes felhőalapú alkalmazások** , vagy válasszon adott alkalmazásokra.
 
-![vezérlő](./media/active-directory-conditional-access-conditions/03.png)
+![Vezérlés](./media/active-directory-conditional-access-conditions/03.png)
 
 Választhat:
 
@@ -89,8 +89,8 @@ Ez a feltétel használatához rendelkeznie kell [Azure Active Directory Identit
  
 Ez a feltétel gyakori alkalmazási esetei házirendek, amelyek:
 
-- A a felhasználók bejelentkezési nagy kockázattal potenciálisan feldolgozásától a felhőalkalmazások hozzáférését blokkolja. 
-- Egy közepes bejelentkezési kockázat rendelkező felhasználók a többtényezős hitelesítést igényel. Többtényezős hitelesítés kényszerítése biztosíthat további abban, hogy, hogy a bejelentkezés végzi el egy olyan fiók jogos tulajdonosa.
+- A felhasználók bejelentkezési nagy kockázattal potenciálisan feldolgozásától a felhőalkalmazások hozzáférését blokkolja. 
+- Többtényezős hitelesítés megkövetelése a közepes bejelentkezési kockázata a felhasználók számára. Többtényezős hitelesítés kényszerítése biztosíthat további abban, hogy, hogy a bejelentkezés végzi el egy olyan fiók jogos tulajdonosa.
 
 További információkért lásd a [kockázatos bejelentkezésekkel](active-directory-identityprotection.md#risky-sign-ins) foglalkozó részt.  
 
@@ -99,7 +99,7 @@ További információkért lásd a [kockázatos bejelentkezésekkel](active-dire
 Az eszköz platformjától jellemzőek, az eszközön futó operációs rendszer. Az Azure AD az eszköz, például a felhasználói ügynök által biztosított információk alapján azonosítja a platform. Mivel ezek az információk nem ellenőrzött, javasoljuk, hogy minden platform látták el, blokkolja a hozzáférést, igénylő Intune szabályzatoknak való megfelelőségét, vagy az eszköz tartományhoz csatlakoztatott lehet igénylő házirenddel rendelkezhetnek a. Alapértelmezés szerint a rendszer összes eszközplatformra házirend vonatkozik. 
 
 
-![Feltételek](./media/active-directory-conditional-access-conditions/02.png)
+![Feltételek](./media/active-directory-conditional-access-conditions/24.png)
 
 A támogatott eszközplatformok teljes listáját lásd: [eszköz platform feltétel](active-directory-conditional-access-technical-reference.md#device-platform-condition).
 
@@ -111,7 +111,7 @@ Egy gyakori használati eset, ez az állapot értéke egy házirendet, amely kor
 
 A helyek lehetősége van a ahol kapcsolódási kísérlet kezdeményezték alapuló feltételeinek megadása. 
      
-![Feltételek](./media/active-directory-conditional-access-conditions/03.png)
+![Feltételek](./media/active-directory-conditional-access-conditions/25.png)
 
 Ez a feltétel gyakori alkalmazási esetei házirendek, amelyek:
 

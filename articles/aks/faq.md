@@ -8,11 +8,11 @@ ms.service: container-service
 ms.topic: article
 ms.date: 2/01/2018
 ms.author: nepeters
-ms.openlocfilehash: 2b78479c257930669729a7781b3893b3e2064bab
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 73c49510512c9148f4fee98423b14770fa8602b9
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="frequently-asked-questions-about-azure-container-service-aks"></a>Gyakori kérdések kapcsolatos Azure tároló szolgáltatás (AKS)
 
@@ -50,7 +50,15 @@ Csomópont automatikus skálázás nem támogatott, de a programba. Vessen egy p
 
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>Két erőforráscsoport miért jönnek létre az AKS? 
 
-A második erőforráscsoport egy automatikusan létrehozott telepítését bemutató AKS társított összes erőforrás könnyen törlésre.
+Minden Azure tároló szolgáltatás (AKS) fürt két erőforráscsoport tartalmazza. Az első hozta létre, és csak a AKS erőforrást tartalmaz. A második erőforráscsoport automatikus telepítése során létrehozott, és tartalmazza az összes fürt infrastrukturális erőforrások virtuális gépeket, például hálózati és tárolási erőforrásokat. Ez az erőforráscsoport könnyen erőforrás karbantartása jön létre. 
+
+Az automatikusan létrehozott erőforráscsoport hasonló névvel rendelkezik:
+
+```
+MC_myResourceGRoup_myAKSCluster_eastus
+```
+
+A storage-fiókok vagy fenntartott nyilvános IP-cím például Kubernetes fürt használni kívánt Azure-erőforrások hozzáadásakor ezeket az erőforrásokat kell létrehozni az automatikus létrehozott erőforráscsoport.   
 
 ## <a name="is-azure-key-vault-integrated-with-aks"></a>AKS szolgáltatással integrált Azure Key Vault? 
 

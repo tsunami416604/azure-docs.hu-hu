@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2017
 ms.author: magoedte
-ms.openlocfilehash: 71c98a7e17472ae0aa7646b9e7fc745363546211
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 4232634f57f9650a35c40ee769cbeb0a3e009dfb
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="how-to-deploy-a-windows-hybrid-runbook-worker"></a>A Windows hibrid forgatókönyv-feldolgozók központi telepítése
 
@@ -50,14 +50,14 @@ Tekintse át a következő információkat vonatkozó a [hardver- és szoftverk�
 
 A következő lépésekkel automatizálhatja a telepítése és konfigurálása a Windows hibrid feldolgozói szerepkör.  
 
-1. Töltse le a *New-OnPremiseHybridWorker.ps1* parancsfájl a [PowerShell-galériában](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker/1.0/DisplayScript) közvetlenül a hibrid forgatókönyv-feldolgozó szerepkört futtató számítógépen vagy egy másik számítógép a környezetben, és másolja a dolgozó.  
+1. Töltse le a *New-OnPremiseHybridWorker.ps1* parancsfájl a [PowerShell-galériában](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker/) közvetlenül a hibrid forgatókönyv-feldolgozó szerepkört futtató számítógépen vagy egy másik számítógép a környezetben, és másolja a dolgozó.  
 
     A *New-OnPremiseHybridWorker.ps1* parancsfájl paraméterei a következők végrehajtása során:
 
   * *AutomationAccountName* (kötelező) – az Automation-fiók nevét.  
   * *ResourceGroupName* (kötelező) – az Automation-fiók társított az erőforráscsoport nevét.  
   * *HybridGroupName* (kötelező) – a runbookok támogató ebben a forgatókönyvben a célként megadott hibrid forgatókönyv-feldolgozó csoport nevét. 
-  *  *A SubscriptionID* (kötelező) – az Azure-előfizetési azonosítót, amely az Automation-fiók.
+  *  *A SubscriptionID* (kötelező) – az Azure-előfizetési Azonosítót, amely az Automation-fiók.
   *  *WorkspaceName* (nem kötelező) – az OMS-munkaterület nevét.  Ha nem rendelkezik az OMS-munkaterület, a parancsfájl létrehozza és konfigurálja az egyik.  
 
      > [!NOTE]
@@ -76,7 +76,7 @@ A következő lépésekkel automatizálhatja a telepítése és konfigurálása 
 
 4. Vállalja, hogy a telepítés megkezdésére **NuGet** és a hitelesítést az Azure hitelesítő adatait kéri.<br><br> ![A New-OnPremiseHybridWorker parancsprogram végrehajtása](media/automation-hybrid-runbook-worker/new-onpremisehybridworker-scriptoutput.png)
 
-5. A parancsfájl befejezése után a hibrid dolgozó csoportok panelen jelennek meg az új csoport és a tagok száma, vagy ha egy meglévő csoportot, a tagok száma növeli.  A csoportot a listából kiválaszthatja a a **hibrid dolgozó csoportok** panelhez, és válassza a **hibrid feldolgozók** csempére.  Az a **hibrid feldolgozók** panelen megjelenik a felsorolt csoport minden tagja.  
+5. A parancsfájl befejezése után a hibrid dolgozó csoportok lapon megjelenik az új csoport és a tagok száma, vagy ha egy meglévő csoportot, a tagok száma növeli.  A csoportot a listából kiválaszthatja a a **hibrid dolgozó csoportok** lapon, és válassza a **hibrid feldolgozók** csempére.  Az a **hibrid feldolgozók** lapon megjelenik a felsorolt csoport minden tagja.  
 
 ### <a name="manual-deployment"></a>Manuális telepítése 
 
@@ -113,13 +113,13 @@ Ezután futtassa a **Add-HybridRunbookWorker** parancsmag a következő szintaxi
 
     Add-HybridRunbookWorker –GroupName <String> -EndPoint <Url> -Token <String>
 
-Ez a parancsmag a szükséges adatokat kaphat a **kulcsok kezelése** panel az Azure portálon.  Nyissa meg ezt a panelt kiválasztásával a **kulcsok** parancsát a **beállítások** az Automation-fiók panelén.
+Ez a parancsmag a szükséges adatokat kaphat a **kulcsok kezelése** oldal az Azure portálon.  Nyissa meg az ezen a lapon kiválasztásával a **kulcsok** parancsát a **beállítások** lap az Automation-fiókban.
 
 ![Hibrid forgatókönyv-feldolgozó – áttekintés](media/automation-hybrid-runbook-worker/elements-panel-keys.png)
 
 * **Csoportnév** a hibrid forgatókönyv-feldolgozó csoport neve. Ha ez a csoport már létezik az automation-fiókban, az aktuális számítógépet hozzáadni.  Ha még nem létezik, majd kerül.
-* **Végpont** van a **URL-cím** mező mellett a **kulcsok kezelése** panelen.
-* **Token** van a **elsődleges elérési kulcsot** a a **kulcsok kezelése** panelen.  
+* **Végpont** van a **URL-cím** mező mellett a **kulcsok kezelése** lap.
+* **Token** van a **elsődleges elérési kulcsot** a a **kulcsok kezelése** lap.  
 
 Használja a **-Verbose** kapcsoló **Add-HybridRunbookWorker** telepítésével kapcsolatos részletes adatokat fogadhat.
 
@@ -143,12 +143,12 @@ A hibrid forgatókönyv-feldolgozó attól függ, hogy a Microsoft figyelési ü
 3. A Microsoft Monitoring Agent szolgáltatás nem fut.  
     Ha a Microsoft figyelési ügynök Windows szolgáltatás nem fut, ez megakadályozza, hogy a hibrid forgatókönyv-feldolgozó Azure Automation kommunikál.  Ellenőrizze az ügynök fut-e a következő parancs beírásával PowerShell: `get-service healthservice`.  Ha a szolgáltatás leáll, adja meg a következő parancsot a PowerShell elindítani a szolgáltatást: `start-service healthservice`.  
 
-4. Az a **alkalmazások és szolgáltatások Logs\Operations kezelője** Eseménynapló, látni esemény 4502 és EventMessage tartalmazó **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent**következő leírást: *a szolgáltatás által bemutatott tanúsítványt <wsid>. oms.opinsights.azure.com nem a Microsoft-szolgáltatásokhoz használt hitelesítésszolgáltató állította ki. Lépjen kapcsolatba a hálózati rendszergazdával, ha a proxy, amely elfogja a TLS/SSL-kommunikáció futnak. A kb3126513 jelű további információkat talál a csatlakozási problémák.*
-    Ezt okozhatja a proxy vagy a hálózati tűzfal blockking kommunikáció számára a Microsoft Azure.  Ellenőrizze, hogy a számítógép *.azure-automation.net kimenő hozzáféréssel rendelkezzen a 443-as porton.
+4. Az a **alkalmazások és szolgáltatások Logs\Operations kezelője** Eseménynapló, látni esemény 4502 és EventMessage tartalmazó **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent**következő leírást: *a szolgáltatás által bemutatott tanúsítványt \<wsid\>. oms.opinsights.azure.com nem a Microsoft-szolgáltatásokhoz használt hitelesítésszolgáltató állította ki. Lépjen kapcsolatba a hálózati rendszergazdával, ha a proxy, amely elfogja a TLS/SSL-kommunikáció futnak. A kb3126513 jelű további információkat talál a csatlakozási problémák.*
+    Ezt okozhatja a proxy vagy a hálózati tűzfal blokkolja a Microsoft Azure-kommunikációt.  Ellenőrizze, hogy a számítógép *.azure-automation.net kimenő hozzáféréssel rendelkezzen a 443-as porton.
 
 Naplók minden hibridfeldolgozó C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes, helyileg tárolja.  Ellenőrizheti, hogy vannak-e bármilyen figyelmeztetés vagy írni hibaesemények a **alkalmazások és szolgáltatások Logs\Microsoft-SMA\Operations** és **alkalmazások és szolgáltatások Logs\Operations kezelője** esemény naplózása, amelyek azt jelzi, a kapcsolattal vagy más probléma érdekében, hogy a szerepkört az Azure Automation vagy probléma befolyásolja a normál műveletek során.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Felülvizsgálati [runbookot futtatni a hibrid forgatókönyv-feldolgozó](automation-hrw-run-runbooks.md) megtudhatja, hogyan konfigurálhatja a runbook automatizálása a helyszíni adatközpontját, illetve más felhőalapú környezetben.
 * Távolítsa el a hibrid forgatókönyv-feldolgozók konfigurálásáról lásd: [eltávolítása Azure Automation hibrid forgatókönyv-feldolgozók](automation-remove-hrw.md)

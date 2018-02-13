@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: ca858408ecb258cc64645571d048de93449689d6
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: ee1a2eeeda95b03b185090841cf93c4183c5fce2
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>Biztonságos Windows önálló fürtben, X.509-tanúsítványok
 Ez a cikk ismerteti a különálló Windows fürt különböző csomópontok közötti kommunikáció biztonságossá tételére. Azt is bemutatja, hogyan hitelesítheti a fürt X.509-tanúsítványok használatával csatlakozó ügyfelek. Hitelesítési biztosítja, hogy az csak a hitelesített felhasználóknak a fürt és a központilag telepített alkalmazások elérése és felügyeleti feladatok elvégzésére. Tanúsítvány biztonsági engedélyezni kell a fürt a fürt létrehozásakor.  
@@ -48,6 +48,12 @@ Kezdő-és [a Service Fabric Windows Server csomag](service-fabric-cluster-creat
             ],
             "X509StoreName": "My"
         },
+        "ClusterCertificateIssuerStores": [
+            {
+                "IssuerCommonName": "[IssuerCommonName]",
+                "X509StoreNames" : "Root"
+            }
+        ],
         "ServerCertificate": {
             "Thumbprint": "[Thumbprint]",
             "ThumbprintSecondary": "[Thumbprint]",
@@ -62,6 +68,12 @@ Kezdő-és [a Service Fabric Windows Server csomag](service-fabric-cluster-creat
             ],
             "X509StoreName": "My"
         },
+        "ServerCertificateIssuerStores": [
+            {
+                "IssuerCommonName": "[IssuerCommonName]",
+                "X509StoreNames" : "Root"
+            }
+        ],
         "ClientCertificateThumbprints": [
             {
                 "CertificateThumbprint": "[Thumbprint]",
@@ -79,6 +91,12 @@ Kezdő-és [a Service Fabric Windows Server csomag](service-fabric-cluster-creat
                 "IsAdmin": true
             }
         ],
+        "ClientCertificateIssuerStores": [
+            {
+                "IssuerCommonName": "[IssuerCommonName]",
+                "X509StoreNames": "Root"
+            }
+        ]
         "ReverseProxyCertificate": {
             "Thumbprint": "[Thumbprint]",
             "ThumbprintSecondary": "[Thumbprint]",
@@ -110,10 +128,13 @@ A következő táblázat, amelyekre szüksége van a fürt beállítása a tanú
 | --- | --- |
 | ClusterCertificate |Egy tesztkörnyezetben ajánlott. Ez a tanúsítvány szükséges a fürt a csomópontok közötti kommunikáció biztonságossá tételére. Két különböző tanúsítványok, egy elsődleges és másodlagos, használhatja a frissítésre. Állítsa be az elsődleges tanúsítvány ujjlenyomatát a ujjlenyomat szakaszban, valamint a másodlagos ThumbprintSecondary változók. |
 | ClusterCertificateCommonNames |Az éles környezetben ajánlott. Ez a tanúsítvány szükséges a fürt a csomópontok közötti kommunikáció biztonságossá tételére. Egy vagy két fürt közös kiszolgálótanúsítvány-nevek is használhatja. Ez a tanúsítvány kibocsátójának ujjlenyomata a CertificateIssuerThumbprint felel meg. Ha a ugyanazzal a névvel több tanúsítványt használ, több kibocsátó ujjlenyomatok is megadhat.|
+| ClusterCertificateIssuerStores |Az éles környezetben ajánlott. Ez a tanúsítvány a fürt tanúsítvány kiállítója megfelel-e. Megadhatja a kibocsátó köznapi név és a megfelelő Tárolónév alatt ez a szakasz a kibocsátójának ujjlenyomata alatt ClusterCertificateCommonNames megadása helyett.  Ez megkönnyíti helyettesítő fürt kiállítói tanúsítványokat. Ha egynél több fürt tanúsítvánnyal több kiállítók adható meg. Egy üres IssuerCommonName whitelists X509StoreNames alatt megadott minden tanúsítvány megfelelő tárolókat.|
 | ServerCertificate |Egy tesztkörnyezetben ajánlott. Ezt a tanúsítványt az ügyfél áll rendelkezésre, ha csatlakozik a fürthöz. Kényelmi célokat szolgál Ha szeretné, egy tanúsítvány használható ClusterCertificate és ServerCertificate. Két különböző kiszolgálói tanúsítványok, egy elsődleges és másodlagos, használhatja a frissítésre. Állítsa be az elsődleges tanúsítvány ujjlenyomatát a ujjlenyomat szakaszban, valamint a másodlagos ThumbprintSecondary változók. |
 | ServerCertificateCommonNames |Az éles környezetben ajánlott. Ezt a tanúsítványt az ügyfél áll rendelkezésre, ha csatlakozik a fürthöz. Ez a tanúsítvány kibocsátójának ujjlenyomata a CertificateIssuerThumbprint felel meg. Ha a ugyanazzal a névvel több tanúsítványt használ, több kibocsátó ujjlenyomatok is megadhat. Kényelmi célokat szolgál Ha szeretné, egy tanúsítvány használható ClusterCertificateCommonNames és ServerCertificateCommonNames. Használhat egy vagy két kiszolgálótanúsítványok köznapi neve. |
+| ServerCertificateIssuerStores |Az éles környezetben ajánlott. Ez a tanúsítvány kiállítója és a kiszolgálói tanúsítvány felel meg. Megadhatja a kibocsátó köznapi név és a megfelelő Tárolónév alatt ez a szakasz a kibocsátójának ujjlenyomata alatt ServerCertificateCommonNames megadása helyett.  Ez megkönnyíti helyettesítő server kiállítói tanúsítványokat. Több kiállítók lehet. Ha egynél több tanúsítvány szerepel-e megadva. Egy üres IssuerCommonName whitelists X509StoreNames alatt megadott minden tanúsítvány megfelelő tárolókat.|
 | ClientCertificateThumbprints |Telepítse a tanúsítványok készletét a hitelesített ügyfelek. Akkor segítségével számos különböző ügyfél-tanúsítványok engedélyezi a hozzáférést a fürthöz használni kívánt számítógépeken telepítve van. Állítsa be a minden tanúsítvány ujjlenyomatát a CertificateThumbprint változóban. Ha IsAdmin *igaz*, az ügyfél és a tanúsítvány telepítve van-e teheti rendszergazda felügyeleti tevékenységek, a fürtön. Ha IsAdmin *hamis*, az ügyfél és a tanúsítvány a felhasználó-hozzáférési jogok, általában csak olvasható esetén engedélyezett műveletek végezhetők. A szerepkörök további információkért lásd: [szerepköralapú hozzáférés-vezérlést (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac). |
 | ClientCertificateCommonNames |Az első ügyfél tanúsítvány köznapi nevének beállítása a CertificateCommonName. A CertificateIssuerThumbprint Ez a tanúsítvány kiállítójának ujjlenyomata. Gyakori nevei és a kiállító kapcsolatos további információkért lásd: [tanúsítványok együttműködve](https://msdn.microsoft.com/library/ms731899.aspx). |
+| ClientCertificateIssuerStores |Az éles környezetben ajánlott. Ez a tanúsítvány kiállítója és az ügyféltanúsítvány (admin és a nem rendszergazdai szerepkörök) felel meg. Megadhatja a kibocsátó köznapi név és a megfelelő Tárolónév alatt ez a szakasz a kibocsátójának ujjlenyomata alatt ClientCertificateCommonNames megadása helyett.  Ez megkönnyíti az átfordulási ügyféltanúsítványokhoz kibocsátó. Több kiállítók lehet meg, ha egynél több ügyfél tanúsítvánnyal. Egy üres IssuerCommonName whitelists X509StoreNames alatt megadott minden tanúsítvány megfelelő tárolókat.|
 | ReverseProxyCertificate |Egy tesztkörnyezetben ajánlott. Ez a tanúsítvány nem kötelező lehet meg, hogy szeretné-e biztonságos a [fordított proxy](service-fabric-reverseproxy.md). Győződjön meg arról, hogy reverseProxyEndpointPort a NodeType tulajdonságok értéke van beállítva, ha a tanúsítvány használatához. |
 | ReverseProxyCertificateCommonNames |Az éles környezetben ajánlott. Ez a tanúsítvány nem kötelező lehet meg, hogy szeretné-e biztonságos a [fordított proxy](service-fabric-reverseproxy.md). Győződjön meg arról, hogy reverseProxyEndpointPort a NodeType tulajdonságok értéke van beállítva, ha a tanúsítvány használatához. |
 
@@ -123,7 +144,7 @@ A következő táblázat, amelyekre szüksége van a fürt beállítása a tanú
  {
     "name": "SampleCluster",
     "clusterConfigurationVersion": "1.0.0",
-    "apiVersion": "2016-09-26",
+    "apiVersion": "10-2017",
     "nodes": [{
         "nodeName": "vm0",
         "metadata": "Replace the localhost below with valid IP address or FQDN",
@@ -162,12 +183,21 @@ A következő táblázat, amelyekre szüksége van a fürt beállítása a tanú
                 "ClusterCertificateCommonNames": {
                   "CommonNames": [
                     {
-                      "CertificateCommonName": "myClusterCertCommonName",
-                      "CertificateIssuerThumbprint": "7c fc 91 97 13 66 8d 9f a8 ee 71 2b a2 f4 37 62 00 03 49 0d"
+                      "CertificateCommonName": "myClusterCertCommonName"
                     }
                   ],
                   "X509StoreName": "My"
                 },
+                "ClusterCertificateIssuerStores": [
+                    {
+                        "IssuerCommonName": "ClusterIssuer1",
+                        "X509StoreNames" : "Root"
+                    },
+                    {
+                        "IssuerCommonName": "ClusterIssuer2",
+                        "X509StoreNames" : "Root"
+                    }
+                ],
                 "ServerCertificateCommonNames": {
                   "CommonNames": [
                     {
@@ -221,6 +251,7 @@ A következő táblázat, amelyekre szüksége van a fürt beállítása a tanú
 
 ## <a name="certificate-rollover"></a>Tanúsítványok leváltása
 Használatakor a tanúsítvány egyszerű neve helyett egy ujjlenyomatot tanúsítványváltást konfigurációs Fürtfrissítés nem igényel. Kiállítójának ujjlenyomata frissítések győződjön meg arról, hogy az új ujjlenyomatot lista metszi a régi listájával. Először be kell elvégezni a konfiguráció frissítése az új kibocsátó ujjlenyomatok a, és telepítse az új tanúsítványok (fürt/kiszolgálótanúsítvány és kiállítói tanúsítványokat) tárolójában. A tanúsítványtároló a régi kibocsátói tanúsítvány ne legalább két órán keresztül, az új kibocsátói tanúsítvány telepítése után.
+Ha kibocsátó tárolókat használ, majd konfiguráció frissítése kell végezhető el a tanúsítványok leváltása kibocsátó. Az új kibocsátói tanúsítvány telepítése ez utóbbi lejárati dátummal megfelelő tanúsítványtárolójába, és távolítsa el a régi kibocsátói tanúsítvány néhány óra múlva.
 
 ## <a name="acquire-the-x509-certificates"></a>Szerezzen be X.509-tanúsítványokat
 A fürtön belüli kommunikáció védelméhez, először a fürtcsomópontok esetén, X.509-tanúsítványokat szerezzenek be. Továbbá a jogosult felhasználók vagy gépek fürthöz kapcsolat korlátozásához szüksége beszerzése és az ügyfél gépek tanúsítványok telepítése.

@@ -3,7 +3,7 @@ title: "Az Azure Naplóelemzés a System Center Operations Manager-környezettel
 description: "A System Center Operations Manager állapotának ellenőrzése megoldás segítségével rendszeres időközönkénti kockázat és a környezetek állapotának megállapítása."
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: tysonn
 ms.assetid: 49aad8b1-3e05-4588-956c-6fdd7715cda1
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2017
-ms.author: magoedte;banders
+ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5709de72032de9e3f7342be43260d3468b9cee66
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 86484ca2bc7dc14035f48b8f7b1514a4fc471b74
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>A környezetben a System Center Operations Manager állapotának ellenőrzése (előzetes verzió) megoldás optimalizálása
 
@@ -60,7 +60,7 @@ Az alábbi információk segítségével telepítse és konfigurálja a megoldá
 
 ## <a name="system-center-operations-manager-assessment-data-collection-details"></a>A System Center Operations Manager assessment az gyűjtemény adatait
 
-A System Center Operations Manager assessment gyűjti az adatokat az alábbi forrásokból: 
+A System Center Operations Manager assessment gyűjti az adatokat az alábbi forrásokból:
 
 * Beállításjegyzék
 * A Windows Management Instrumentation (WMI)
@@ -72,7 +72,7 @@ Adatok gyűjtése a felügyeleti kiszolgálón, és hét naponta Naplóelemzési
 
 ## <a name="operations-manager-run-as-accounts-for-log-analytics"></a>Az Operations Manager futtató fiókot a következő Naplóelemzési
 
-Napló Analytics épít munkaterhelésekhez adja meg a felügyeleti csomagok által hozzáadott értéket szolgáltatások. Egyes munkaterhelések munkaterhelés-specifikus jogosultság felügyeleti csomagok eltérő biztonsági környezetben, például a tartományi felhasználói fiókot igényel. Az Operations Manager futtató fiók konfigurálása jogosultsági szintű hitelesítő adatokkal. További információkért lásd: [futtató fiók létrehozása](https://technet.microsoft.com/library/hh321655(v=sc.12).aspx) az Operations Manager-dokumentációban. 
+Napló Analytics épít munkaterhelésekhez adja meg a felügyeleti csomagok által hozzáadott értéket szolgáltatások. Egyes munkaterhelések munkaterhelés-specifikus jogosultság felügyeleti csomagok eltérő biztonsági környezetben, például a tartományi felhasználói fiókot igényel. Az Operations Manager futtató fiók konfigurálása jogosultsági szintű hitelesítő adatokkal. További információkért lásd: [futtató fiók létrehozása](https://technet.microsoft.com/library/hh321655(v=sc.12).aspx) az Operations Manager-dokumentációban.
 
 Az alábbi információk segítségével a System Center Operations Manager állapotának ellenőrzése az Operations Manager futtató fiók beállítása.
 
@@ -82,13 +82,13 @@ A Futtatás mint fiók meg kell felelnie a következő követelményeket a folyt
 
 * Egy tartományi felhasználói fiókot, amely tagja a helyi Rendszergazdák csoport összes kiszolgálójára támogató bármilyen Operations Manager szerepkör - felügyeleti kiszolgáló, az operatív helyt adó SQL Server, az adatraktár és ACS-adatbázis, webalkalmazás-konzolhoz, és átjárókiszolgáló Reporting,.
 * A felügyeleti csoport kiszabott művelet Manager rendszergazdai szerepköréhez
-* Ha a fiók nem rendelkezik SQL-rendszergazdai jogosultságokkal, majd futtatja a [parancsfájl](#sql-script-to-grant-granular-permissions-to-the-run-as-account) a fiókot az egyes vagy az Operations Manager-adatbázisokat üzemeltető SQL Server-példány részletes engedélyt. 
+* Ha a fiók nem rendelkezik SQL-rendszergazdai jogosultságokkal, majd futtatja a [parancsfájl](#sql-script-to-grant-granular-permissions-to-the-run-as-account) a fiókot az egyes vagy az Operations Manager-adatbázisokat üzemeltető SQL Server-példány részletes engedélyt.
 
 1. Az Operations Manager konzolján válassza ki a **felügyeleti** navigációs gombra.
 2. A **futtató konfiguráció**, kattintson a **fiókok**.
 3. Az a **futtató fiók létrehozása** varázsló, a **bemutatása** kattintson **következő**.
 4. Az a **általános tulajdonságok** lapon jelölje be **Windows** a a **futtató fiók típusa:** listája.
-5. Adjon meg egy megjelenítési nevet a a **megjelenítendő név** szöveg mezőben, és opcionálisan írja be egy leírást a **leírás** mezőbe, majd kattintson a **tovább**. 
+5. Adjon meg egy megjelenítési nevet a a **megjelenítendő név** szöveg mezőben, és opcionálisan írja be egy leírást a **leírás** mezőbe, majd kattintson a **tovább**.
 6. Az a **terjesztési biztonsági** lapon jelölje be **biztonságosabb**.
 7. Kattintson a **Create** (Létrehozás) gombra.  
 
@@ -96,7 +96,7 @@ Most, hogy a futtató fiók jön létre, a felügyeleti csoport felügyeleti kis
 
 1. A **futtató konfiguráció**, **fiókok**, az eredmények ablaktáblán kattintson duplán a korábban létrehozott fiók.
 2. Az a **terjesztési** lapra, majd **Hozzáadás** a a **kijelölt számítógépek** mezőbe, majd adja hozzá a felügyeleti kiszolgáló és a fiók terjesztését.  Kattintson a **OK** kétszer gombra a módosítások mentéséhez.
-3. A **futtató konfiguráció**, kattintson a **profilok**. 
+3. A **futtató konfiguráció**, kattintson a **profilok**.
 4. Keresse meg a *SCOM Assessment profil*.
 5. A profil nevét kell megadni: *Microsoft System Center Advisor SCOM Assessment futtató profil*.
 6. Kattintson a jobb gombbal, és a tulajdonságok frissítése, és adja hozzá a legutóbb létrehozott futtató fiókot, amelyet előzőleg létrehozott.
@@ -197,7 +197,7 @@ Minden ajánlást a súlyozási arányában a teljes pontszám minden fókusz te
 
 **Rendelkezésre állás és üzleti folytonosság** -fókusz itt megtekinthető a szolgáltatás rendelkezésre állása, a rugalmasság, az infrastruktúra és az üzleti védelmét javaslatok.
 
-**Teljesítmény és méretezhetőség** -e fókuszba területen látható ajánlásokat a szervezet informatikai infrastruktúrájának nő, győződjön meg arról, hogy az informatikai környezet megfelel az aktuális teljesítménykövetelményeknek, és képes reagálni a infrastruktúrához.
+**Teljesítmény és méretezhetőség** -e fókuszba területen látható ajánlásokat a szervezet informatikai infrastruktúrájának nő, győződjön meg arról, hogy az informatikai környezettől aktuális teljesítménykövetelményeknek megfelel-e, és képes válaszolni infrastruktúra módosítása szüksége van.
 
 **Frissítés, az áttelepítés és a központi telepítés** -e fókuszba területen látható ajánlásokat frissítéséhez, telepítse át, és az SQL Server telepítéséhez a meglévő infrastruktúra.
 
@@ -216,7 +216,7 @@ Minden javaslat arról, hogy miért fontos útmutatást tartalmazza. Ez az útmu
 Az összesített megfelelőségi értékelése az infrastruktúrát, és a-feltárás javaslatok megtekintése.
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Az egy fókuszban terület javaslatok megtekintése és a szükséges javítási műveletek
-1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) címen. 
+1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) címen.
 2. Az Azure Portalon kattintson a bal alsó sarokban található **További szolgáltatások** elemre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
 3. A Naplóelemzési előfizetések ablaktáblán jelölje ki a munkaterület, és kattintson a **OMS-portálon** csempére.  
 4. Az a **áttekintése** lapján kattintson a **System Center Operations Manager állapotának ellenőrzése** csempére.

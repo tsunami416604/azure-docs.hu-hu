@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/27/2017
 ms.author: jejiang
-ms.openlocfilehash: 89e83dc02f32f6f2a781cf2e35040b29cc3d3c06
-ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
+ms.openlocfilehash: 0e2cd75845eb3613b23409b6bf1ab7d37d992275
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Az Azure HDInsight eszközök segítségével a Visual Studio Code
 
@@ -101,6 +101,26 @@ Elküldés előtt parancsfájlok a HDInsight-fürtökhöz a Visual STUDIO Code, 
     - Interaktív PySpark lekérdezések elküldése
     - Küldje el a PySpark kötegelt parancsfájlok
     - Set-konfigurációk
+
+**Ha szeretné kapcsolni a fürt**
+
+Egy normál fürt hivatkozás segítségével felügyelt Ambari felhasználónév, is hivatkozásra a biztonsági hadoop-fürthöz tartományi felhasználónevet használatával (például: user1@contoso.com).
+1. Nyissa meg a parancs palettát kiválasztásával **CTRL + SHIFT + P**, majd adja meg **HDInsight: hivatkozás egy fürt**.
+
+   ![hivatkozás fürt parancs](./media/hdinsight-for-vscode/link-cluster-command.png)
+
+2. Adja meg a HDInsight fürt URL -> felhasználónév -> bemeneti be a jelszót válasszon -> fürttípus -> azt látható sikeres info ellenőrzési át.
+   
+   ![hivatkozás fürt párbeszédpanel](./media/hdinsight-for-vscode/link-cluster-process.png)
+
+   > [!NOTE]
+   > Ha a fürt egyaránt bejelentkezett az Azure-előfizetés és a fürthöz kapcsolódó társított felhasználónevet és jelszót használunk. 
+   
+3. Megjelenik egy társított fürt paranccsal **lista fürt**. Most is elküldhetik a csatolt fürt parancsfájlt.
+
+   ![csatolt fürt](./media/hdinsight-for-vscode/linked-cluster.png)
+
+4. Is megszüntetheti a fürt által inputing **HDInsight: egy fürt leválasztása** parancs palettáról.
 
 ## <a name="list-hdinsight-clusters"></a>A HDInsight-fürtök felsorolása
 
@@ -258,6 +278,9 @@ A HDInsight Tools for Visual STUDIO Code is lehetővé teszi a Spark-fürtök in
 A Python feladat elküldése után küldésének naplók megjelennek a **kimeneti** ablak a Visual STUDIO Code. A **Spark felhasználói felület URL-cím** és **Yarn felhasználói felület URL-cím** is látható. Nyomon követheti a feladat állapotát egy webböngészőben nyissa meg az URL-címet.
 
 
+   
+
+
 ## <a name="additional-features"></a>További funkciók
 
 HDInsight Visual STUDIO Code támogatja a következő funkciókat:
@@ -288,7 +311,7 @@ HDInsight Visual STUDIO Code támogatja a következő funkciókat:
 * [Hive-adatok vizualizálása a Microsoft Power BI segítségével az Azure HDInsightban](hadoop/apache-hadoop-connect-hive-power-bi.md)
 * [Interaktív lekérdezés Hive-adatok ábrázolása a Power bi-ban az Azure HDInsight](./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).
 * [A Visual Studio Code PySpark interaktív környezet beállítása](set-up-pyspark-interactive-environment.md)
-* [Zeppelin használja az Azure HDInsight Hive-lekérdezések futtatásához](./hdinsight-connect-hive-zeppelin.md)
+* [Zeppelin használja az Azure HDInsight Hive-lekérdezések futtatásához ](./hdinsight-connect-hive-zeppelin.md)
 
 ### <a name="scenarios"></a>Forgatókönyvek
 * [Spark és BI: Interaktív adatelemzés végrehajtása a Spark on HDInsight használatával, BI-eszközökkel](spark/apache-spark-use-bi-tools.md)

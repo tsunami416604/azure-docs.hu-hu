@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: nitinme
-ms.openlocfilehash: c668dde33b3571436711c6c5e5289993a9edf1a2
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: c36d742c61fb85f1b6077dd9156d6e36b37db1e1
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-spark-applications-for-an-hdinsight-cluster"></a>Azure eszköztára Eclipse használata Spark-alkalmazások a HDInsight-fürtök létrehozása
 
@@ -69,6 +69,26 @@ Eclipse megnyitásakor a HDInsight eszközzel automatikusan észleli, hogy telep
    
    ![A fürt nevét cikkekben találhat kibontása](./media/apache-spark-eclipse-tool-plugin/view-explorer-4.png)
 
+## <a name="link-a-cluster"></a>A fürt hivatkozás
+Egy normál fürt hivatkozás segítségével felügyelt Ambari felhasználónév, is hivatkozásra a biztonsági hadoop-fürthöz tartományi felhasználónevet használatával (például: user1@contoso.com).
+1. Kattintson a **fürt hivatkozás** a **Azure Explorer**.
+
+   ![hivatkozás fürt helyi menü](./media/apache-spark-intellij-tool-plugin/link-a-cluster-context-menu.png)
+
+2. Adja meg **fürtnév**, **Tárfiók**, **Biztonságitár-kulcs**, majd válassza ki a tárolót **tároló**, legalább, adjon meg felhasználónevet és jelszó. Kattintson az OK gombra a fürt hivatkozásra.
+   
+   ![hivatkozás fürt párbeszédpanel](./media/apache-spark-eclipse-tool-plugin/link-cluster-dialog.png)
+   
+   > [!NOTE]
+   > Ha a fürt egyaránt bejelentkezett az Azure-előfizetés és a fürthöz kapcsolódó csatolt biztonságitár-kulcs, felhasználónevet és jelszót használunk.
+
+3. Láthatja, hogy a társított fürt **HDInsight** csomópont után az OK gombra kattintás, ha a bemeneti adatokat megfelelőek. Most is elküldhetik a csatolt fürthöz kérelmet.
+
+   ![csatolt fürt](./media/apache-spark-intellij-tool-plugin/linked-cluster.png)
+
+4. Is megszüntetheti a fürtöt **Azure Explorer**.
+   
+   ![a fürt megszüntetése](./media/apache-spark-intellij-tool-plugin/unlink.png)
 
 
 ## <a name="set-up-a-spark-scala-project-for-an-hdinsight-spark-cluster"></a>A Spark Scala-projektjét, amely egy HDInsight Spark-fürt beállítása
@@ -130,6 +150,7 @@ Eclipse megnyitásakor a HDInsight eszközzel automatikusan észleli, hogy telep
 6. A **Spark küldésének** lapon kell kezdenie a folyamatban lévő megjelenítése. A piros gombra kattintva leállíthatja az alkalmazás a **Spark küldésének** ablak. A naplókat, ha a (az ábrán kék mező jelölik) földgömb ikon jelöli az adott alkalmazáshoz is megtekintheti.
       
    ![Spark küldésének ablak](./media/apache-spark-eclipse-tool-plugin/create-scala-proj-4.png)
+
 
 ## <a name="access-and-manage-hdinsight-spark-clusters-by-using-hdinsight-tools-in-azure-toolkit-for-eclipse"></a>Férhessen hozzá és felügyelhesse a HDInsight Spark-fürtjei a HDInsight Tools használatával Azure eszközkészlet az eclipse-ben
 A feladat kimenetére történő hozzáféréshez, a HDInsight Tools használatával különféle műveleteket hajthat végre.

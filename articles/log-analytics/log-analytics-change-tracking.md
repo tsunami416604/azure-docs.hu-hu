@@ -3,7 +3,7 @@ title: "Az Azure Naplóelemzés változásainak követése |} Microsoft Docs"
 description: "A Naplóelemzési változáskövetési megoldás könnyebb legyen azonosítani a szoftver- és Windows-szolgáltatás módosításait a környezetében bekövetkező."
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: f8040d5d-3c89-4f0c-8520-751c00251cb7
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
-ms.author: banders
+ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 81cc7f78ef777e02b195422a81d9a9f15cb63564
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: ede3519b0b61ed20d85ea141dc6dee2505420448
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="track-software-changes-in-your-environment-with-the-change-tracking-solution"></a>A környezetben, a változáskövetési megoldás a szoftver változásainak követése
 
@@ -107,15 +107,15 @@ A következő táblázatban adatgyűjtési módszerek és egyéb hogyan adatok g
 
 | Platform | Közvetlen ügynök | Operations Manager-ügynök | Linux-ügynök | Azure Storage | Az Operations Manager szükséges? | Az Operations Manager ügynök adatait a felügyeleti csoport keresztül küldött | A gyűjtés gyakorisága |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| A Windows és Linux | &#8226; | &#8226; | &#8226; |  |  | &#8226; | 5 perc – 50 perc, a módosítás típusától függően. További információkért tekintse meg az alábbi táblázatban. |
+| Windows és Linux | &#8226; | &#8226; | &#8226; |  |  | &#8226; | 5 perc – 50 perc, a módosítás típusától függően. További információkért tekintse meg az alábbi táblázatban. |
 
 
 Az alábbi táblázat azon adatok gyűjtési gyakoriságát.
 
-| **típusának módosítása** | **gyakoriság** | **Does****ügynök****küldése, ha eltérés?**  |
+| **Változás típusa** | **frequency** | **Does****ügynök****küldése, ha eltérés?**  |
 | --- | --- | --- |
-| A Windows beállításjegyzékben | 50 perc | Nem |
-| Windows-fájl | 30 perc | Igen. Ha nincs változás 24 órában, pillanatképet küld el. |
+| A Windows beállításjegyzékben | 50 minutes | Nem |
+| Windows file | 30 perc | Igen. Ha nincs változás 24 órában, pillanatképet küld el. |
 | Linux-fájl | 15 perc | Igen. Ha nincs változás 24 órában, pillanatképet küld el. |
 | Windows-szolgáltatások | 30 perc | Igen, ha módosítások találhatók 30 percenként. 24 óránként pillanatképet küld, függetlenül attól, módosítsa. Igen, a pillanatkép még küldött amennyiben nem módosult. |
 | Linux-démonok | 5 perc | Igen. Ha nincs változás 24 órában, pillanatképet küld el. |
@@ -128,35 +128,35 @@ A Naplóelemzési hajt végre a Windows beállításjegyzék figyelését és k�
 
 - HKEY\_helyi\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Startup
     - Figyelők parancsfájlok, amelyek indítási parancsot.
-- HKEY\_helyi\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown
+- HKEY\_LOCAL\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown
     - Figyelők futtatott parancsfájlok, leállításkor.
-- HKEY\_helyi\_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run
+- HKEY\_LOCAL\_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run
     - Mielőtt a felhasználó bejelentkezik a Windows fiókjukhoz betöltött kulcsokat figyeli. A kulcs szolgál 64 bites számítógépeken futó 32 bites program.
 - HKEY\_helyi\_MACHINE\SOFTWARE\Microsoft\Active Setup\Installed összetevők
     - Nyomon követi az alkalmazásbeállítások módosításait.
-- HKEY\_helyi\_MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers
+- HKEY\_LOCAL\_MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers
     - Figyelők közös autostart bejegyzéseit, amelyek közvetlenül a Windows Intézőt, és általában futtatási-folyamat az Explorer.exe környezet igénybe vételét.
-- HKEY\_helyi\_MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers
+- HKEY\_LOCAL\_MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers
     - Figyelők közös autostart bejegyzéseit, amelyek közvetlenül a Windows Intézőt, és általában futtatási-folyamat az Explorer.exe környezet igénybe vételét.
-- HKEY\_helyi\_MACHINE\Software\Classes\Directory\Background\ShellEx\ContextMenuHandlers
+- HKEY\_LOCAL\_MACHINE\Software\Classes\Directory\Background\ShellEx\ContextMenuHandlers
     - Figyelők közös autostart bejegyzéseit, amelyek közvetlenül a Windows Intézőt, és általában futtatási-folyamat az Explorer.exe környezet igénybe vételét.
-- HKEY\_helyi\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers
+- HKEY\_LOCAL\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers
     - Figyeli a ikon kezelő regisztrációs átfedő.
-- HKEY\_helyi\_MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers
+- HKEY\_LOCAL\_MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers
     - Figyeli a ikon átfedő 64 bites számítógépeken futó 32 bites program kezelő regisztrálása.
 - HKEY\_helyi\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\Browser segédobjektuma
     - Új böngésző segítő objektum beépülők az Internet Explorer figyeli. Használja a Document Object Model (DOM) az aktuális lap eléréséhez és a navigáció.
-- HKEY\_helyi\_MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Browser segédobjektuma
+- HKEY\_LOCAL\_MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects
     - Új böngésző segítő objektum beépülők az Internet Explorer figyeli. A Document Object Model (DOM) az aktuális lap eléréséhez és navigáció a 64 bites számítógépeken futó 32 bites program használja.
-- HKEY\_helyi\_MACHINE\Software\Microsoft\Internet Explorer\Extensions
+- HKEY\_LOCAL\_MACHINE\Software\Microsoft\Internet Explorer\Extensions
     - Új Internet Explorer-bővítmények, például egyéni eszköz menük és az egyéni gombok figyeli.
-- HKEY\_helyi\_MACHINE\Software\Wow6432Node\Microsoft\Internet Explorer\Extensions
+- HKEY\_LOCAL\_MACHINE\Software\Wow6432Node\Microsoft\Internet Explorer\Extensions
     - Új Internet Explorer-bővítmények, például egyéni eszköz menük és 64 bites számítógépeken futó 32 bites program egyéni eszköztár gombjai figyeli.
 - HKEY\_helyi\_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Drivers32
     - A 32 bites illesztőprogramok wavemapper, wave1 és wave2, msacm.imaadpcm, .msadpcm, .msgsm610 és vidc társított figyeli. Hasonló a rendszer [illesztőprogramok] szakasza. INI-fájl.
 - HKEY\_helyi\_MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32
     - Figyelők a 32-bites illesztőprogramok társított wavemapper, wave1 és wave2, msacm.imaadpcm, .msadpcm, .msgsm610 és a 64 bites számítógépeken futó 32 bites program vidc. Hasonló a rendszer [illesztőprogramok] szakasza. INI-fájl.
-- HKEY\_helyi\_MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls
+- HKEY\_LOCAL\_MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls
     - Figyeli a lista ismert vagy a gyakran használt rendszer DLL-EK; a rendszer megakadályozza, hogy a személyek gyenge Alkalmazásengedélyek directory kihasználva ejtésével rendszer DLL-ek trójai faló verzióiban.
 - HKEY\_helyi\_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify
     - Figyeli a rendszeresemény-értesítéseket kaphat Winlogon, az interaktív bejelentkezési támogatási modell a Windows operációs rendszerhez a csomagok listájában.
@@ -185,5 +185,5 @@ Megtekintheti a módosításai az infrastruktúrát, és a-feltárás részletei
 2. A a **módosítása követési** irányítópult, ellenőrizze az összefoglaló információkat a módosítás típus paneleken valamelyikével, és kattintson a egyet a vele kapcsolatos részletes információk megtekintése a **naplófájl-keresési** lap.
 3. A naplófájl-keresési lapok egyikén tekintheti eredmények idő, illetve részletes leírást és a keresési korábbi naplók. Az eredmények szűkítéséhez értékkorlátozással is szűrhet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Használjon [Log Analytics-e jelentkezni a keresések](log-analytics-log-searches.md) részletes változáskövetési adatok megtekintéséhez.

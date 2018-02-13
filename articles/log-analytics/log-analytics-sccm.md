@@ -3,7 +3,7 @@ title: "Adatforrások csatlakoztatása a Configuration Manager szolgáltatáshoz
 description: "Ez a cikk bemutatja a csatlakoztatása a Configuration Manager szolgáltatáshoz, és indítsa el az adatok elemzése lépéseket."
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: f2298bd7-18d7-4371-b24a-7f9f15f06d66
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
-ms.author: banders
-ms.openlocfilehash: 7acf0cbd4f4cba885e6cc91dfe3cb68306a3649a
-ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
+ms.author: magoedte
+ms.openlocfilehash: 5acf2ad27a55684a8cb42ed646c54d1ec91a5625
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>Adatforrások csatlakoztatása a Configuration Manager szolgáltatáshoz
 Csatlakozhat a System Center Configuration Manager az OMS szolgáltatáshoz szinkronizálási eszköz gyűjtemény adatait. Így az adatok a Configuration Manager hierarchiából OMS érhető el.
@@ -53,7 +53,7 @@ Az alábbi eljárás biztosítja az OMS hozzáférő Azure-portálon. Pontosabba
    ![OMS](./media/log-analytics-sccm/sccm-azure01.png)
 3. A **OMS-munkaterület**, adja meg a következő adatokat, és kattintson a **OK**.
 
-   * **OMS-munkaterület**
+   * **OMS Workspace**
    * **Előfizetés**
    * **Erőforráscsoport**
    * **Hely**
@@ -73,12 +73,12 @@ Az alábbi eljárás biztosítja az OMS hozzáférő Azure-portálon. Pontosabba
 8. A **hozzáférés hozzáadása**, kattintson a **Szerepkörválasztás**, majd válassza ki a **közreműködő** szerepkör.  
    ![szerepkör kiválasztása](./media/log-analytics-sccm/sccm-azure05.png)  
 9. Kattintson a **felhasználók hozzáadása az**válassza ki a Configuration Manager felhasználói **válasszon**, és kattintson a **OK**.  
-   ![felhasználók hozzáadása](./media/log-analytics-sccm/sccm-azure06.png)  
+   ![Felhasználók hozzáadása](./media/log-analytics-sccm/sccm-azure06.png)  
 
 ## <a name="add-an-oms-connection-to-configuration-manager"></a>Az OMS-kapcsolat hozzáadása a Configuration Managerhez
 Ahhoz, hogy az OMS-kapcsolat hozzáadása, a Configuration Manager környezetet kell rendelkeznie a [szolgáltatáskapcsolódási pont](https://technet.microsoft.com/library/mt627781.aspx) online módot.
 
-1. Az a **felügyeleti** munkaterület a Configuration Manager, válassza ki **OMS összekötő**. Ekkor megnyílik a **OMS kapcsolat varázsló**. Válassza ki **következő**.
+1. Az a **felügyeleti** munkaterület a Configuration Manager, válassza ki **OMS összekötő**. Ekkor megnyílik a **OMS kapcsolat varázsló**. Kattintson a **Tovább** gombra.
 2. Az a **általános** képernyőjén ellenőrizze, hogy elvégezte-e az alábbi műveleteket, és, hogy az egyes elemekről részletek rendelkezik, majd válassza ki, **következő**.
 
    1. Az Azure portálon, a webalkalmazás és/vagy webes API-alkalmazás néven már regisztrált a Configuration Manager, és hogy rendelkezik a [a regisztrációt az ügyfél-azonosító](../active-directory/active-directory-integrating-applications.md).

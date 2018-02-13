@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/17/2017
+ms.date: 02/12/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fb6937cc0fc744d6e3a783d77b2a16b6fc09f3bf
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 796a455ffb906a47ab4ac9ae069537b0d7a31156
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Az Azure Cosmos DB .NET SDK API-SQL: Töltse le és a kibocsátási megjegyzések
 > [!div class="op_single_selector"]
@@ -43,9 +43,9 @@ ms.lasthandoff: 12/18/2017
 
 <tr><td>**API-JÁNAK dokumentációja**</td><td>[.NET API-referenciadokumentáció](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)</td></tr>
 
-<tr><td>**Példák**</td><td>[.NET-Kódminták](sql-api-dotnet-samples.md)</td></tr>
+<tr><td>**Minták**</td><td>[.NET-Kódminták](sql-api-dotnet-samples.md)</td></tr>
 
-<tr><td>**Első lépések**</td><td>[Ismerkedés az Azure Cosmos DB .NET SDK-val](sql-api-get-started.md)</td></tr>
+<tr><td>Első lépések</td><td>[Ismerkedés az Azure Cosmos DB .NET SDK-val](sql-api-get-started.md)</td></tr>
 
 <tr><td>**Webes alkalmazás oktatóanyag**</td><td>[Webalkalmazás fejlesztése a Azure Cosmos DB](sql-api-dotnet-application.md)</td></tr>
 
@@ -53,6 +53,14 @@ ms.lasthandoff: 12/18/2017
 </table></br>
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+### <a name="a-name12011201"></a><a name="1.20.1"/>1.20.1
+
+* Rögzített regressziós ahol FeedOptions.MaxItemCount = -1 egy System.ArithmeticException kivételt okozott: méretet a rendszer negatív.
+* Egy új ToString() függvényét QueryMetrics hozzá.
+* A gyűjtemények olvasása a partíció statisztikai adatainak kitéve.
+* ChangeFeedOptions hozzáadott PartitionKey tulajdonság.
+* Kisebb hibajavítások.
+
 ### <a name="a-name11911191"></a><a name="1.19.1"/>1.19.1
 
 * Hozzáadja a meghatározhatja, hogy a dokumentumok egyedi indexet a DocumentCollection UniqueKeyPolicy tulajdonság használatával.
@@ -277,6 +285,7 @@ A szolgáltatás bármely Azure Cosmos DB kivont SDK használatával kérelmeket
 
 | Verzió | Kiadás dátuma | Kivezetési dátum |
 | --- | --- | --- |
+| [1.20.1](#1.20.1) |2018. február 05. |--- |
 | [1.19.1](#1.19.1) |2017. november 16. |--- |
 | [1.19.0](#1.19.0) |2017. november 10. |--- |
 | [1.18.1](#1.18.1) |2017. november 07. |--- |
@@ -324,6 +333,6 @@ A szolgáltatás bármely Azure Cosmos DB kivont SDK használatával kérelmeket
 ## <a name="faq"></a>GYIK
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 A Cosmos DB kapcsolatos további információkért lásd: [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapján. 
 

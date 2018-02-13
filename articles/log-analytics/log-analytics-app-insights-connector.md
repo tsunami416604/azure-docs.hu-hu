@@ -3,7 +3,7 @@ title: "Az alkalmazásadatok Azure Application Insights megtekintése |} Microso
 description: "Az Application Insights-összekötő megoldás segítségével teljesítménnyel kapcsolatos problémák diagnosztizálásához és megérteni a felhasználók mit az alkalmazással, ha a figyelt az Application insights szolgáltatással."
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: 49280cad-3526-43e1-a365-c6a3bf66db52
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: banders
-ms.openlocfilehash: 49a78faa98bd7eb3da16dc069f65ef39b5e092af
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.author: magoedte
+ms.openlocfilehash: bf3259909a84e1e1f5325ff4e39d5c10f1abc831
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/13/2018
 ---
-# <a name="application-insights-connector-management-solution-preview"></a>Application Insights-összekötő felügyeleti megoldás (előzetes verzió) 
+# <a name="application-insights-connector-management-solution-preview"></a>Application Insights-összekötő felügyeleti megoldás (előzetes verzió)
 
 ![Application Insights szimbólum](./media/log-analytics-app-insights-connector/app-insights-connector-symbol.png)
 
@@ -88,9 +88,9 @@ Az irányítópult tartalmaz a paneleken a táblázatban látható. Minden egyes
 
 | **Oszlop** | **Leírás** |
 | --- | --- |
-| Alkalmazások – alkalmazások száma | Az alkalmazások számát mutatja az alkalmazás-erőforrásokat. Is megjeleníti az alkalmazás nevét és minden, az alkalmazás rekordok száma. Kattintson a napló keresése futtatásához<code>Type=ApplicationInsights &#124; measure sum(SampledCount) by ApplicationName</code> <br><br>  Kattintson az alkalmazás nevét, az alkalmazás, amely tartalmazza az alkalmazás rekordok száma állomás, telemetriai típus szerint rekordok és minden adat (az elmúlt nap során alapján) típus szerint a napló keresés futtatásához. |
-| Adatmennyiség – küldő adatokat tároló | A számítógépen, amely adatokat küldenek a számát mutatja. A számítógépen és minden állomás számára rekordok száma is tartalmazza. Kattintson a napló keresése futtatásához<code>Type=ApplicationInsights &#124; measure sum(SampledCount) by Host</code> <br><br> Kattintson a napló keressen rá a fogadó alkalmazás rekordok száma állomás, telemetriai típus szerint rekordok és minden adat (az elmúlt nap során alapján) típus szerint megjelenítő futtatásához a számítógép neve. |
-| Rendelkezésre állás – eredmények webtesztben. | A perecdiagram webteszteredmények, sikeres, vagy sikertelen jelző jeleníti meg. Kattintson a diagram futtatásához napló keresése<code>Type=ApplicationInsights TelemetryType=Availability &#124; measure sum(SampledCount) by AvailabilityResult</code> <br><br> Az eredményben műveletek és az összes tesztre vonatkozóan hibák száma. Azt az elmúlt percben forgalom minden webalkalmazások jelennek meg. Kattintson a napló keresés sikertelen webteszt részletes adatait megjelenítő megtekintéséhez egy alkalmazásnevet. |
+| Alkalmazások – alkalmazások száma | Az alkalmazások számát mutatja az alkalmazás-erőforrásokat. Is megjeleníti az alkalmazás nevét és minden, az alkalmazás rekordok száma. Kattintson a napló keresése futtatásához <code>Type=ApplicationInsights &#124; measure sum(SampledCount) by ApplicationName</code> <br><br>  Kattintson az alkalmazás nevét, az alkalmazás, amely tartalmazza az alkalmazás rekordok száma állomás, telemetriai típus szerint rekordok és minden adat (az elmúlt nap során alapján) típus szerint a napló keresés futtatásához. |
+| Adatmennyiség – küldő adatokat tároló | A számítógépen, amely adatokat küldenek a számát mutatja. A számítógépen és minden állomás számára rekordok száma is tartalmazza. Kattintson a napló keresése futtatásához <code>Type=ApplicationInsights &#124; measure sum(SampledCount) by Host</code> <br><br> Kattintson a napló keressen rá a fogadó alkalmazás rekordok száma állomás, telemetriai típus szerint rekordok és minden adat (az elmúlt nap során alapján) típus szerint megjelenítő futtatásához a számítógép neve. |
+| Rendelkezésre állás – eredmények webtesztben. | A perecdiagram webteszteredmények, sikeres, vagy sikertelen jelző jeleníti meg. Kattintson a diagram futtatásához napló keresése <code>Type=ApplicationInsights TelemetryType=Availability &#124; measure sum(SampledCount) by AvailabilityResult</code> <br><br> Az eredményben műveletek és az összes tesztre vonatkozóan hibák száma. Azt az elmúlt percben forgalom minden webalkalmazások jelennek meg. Kattintson a napló keresés sikertelen webteszt részletes adatait megjelenítő megtekintéséhez egy alkalmazásnevet. |
 | Kiszolgálói kérelmek – kérések száma óránként | A kiszolgáló kérelem a különböző alkalmazások óránként sor diagramot ábrázol. Egy sort a diagramon az első 3 alkalmazások pontnál kérelmek fogadásának ideje megtekintéséhez mutasson. A fogadó kérések és a kérelmek száma a kijelölt időszak alkalmazások listáját is tartalmazza. <br><br>Kattintson a diagramot úgy, hogy a naplóban keresse meg futtatni <code>Type=ApplicationInsights TelemetryType=Request &#124; measure sum(SampledCount) by ApplicationName interval 1hour</code> , amely a kiszolgálói kérelmek óránként, a különböző alkalmazások részletesebb vonaldiagram jeleníti meg. <br><br> Egy alkalmazás futtatásához a naplóban keresse meg a listában kattintson <code>Type=ApplicationInsights  ApplicationName=yourapplicationname  TelemetryType=Request</code> , amely listáját jeleníti meg a kéréseket, a diagramok kérelmek ideje és kérelem időtartama alatt és a kérelem listája válaszkódot.   |
 | Hiba – sikertelen kérések száma óránként | A hibás alkalmazást kérelmek óránként sor diagramot ábrázol. A diagram a sikertelen kérelmek egy pont a legfontosabb 3 alkalmazást időben mutasson. A sikertelen kérelmek száma az egyes alkalmazások listáját is tartalmazza. Kattintson a napló keresése futtatásához a diagram <code>Type=ApplicationInsights TelemetryType=Request  RequestSuccess = false &#124; measure sum(SampledCount) by ApplicationName interval 1hour</code> , amely bemutatja, hogy a hibás alkalmazást kérelmek részletesebb vonaldiagram. <br><br>Futtassa a naplóban keresse meg a lista elemeire <code>Type=ApplicationInsights ApplicationName=yourapplicationname TelemetryType=Request  RequestSuccess=false</code> , hogy megjelenítése sikertelen kérelmek, a diagramok sikertelen kérelmek ideje és kérelem időtartam és a sikertelen kérelmek válaszkódot listáját. |
 | Kivételek – a kivételek száma óránként | Kivételek száma óránként sor diagramot ábrázol. A diagram a kivételeket a ponton a legfontosabb 3 alkalmazást időben mutasson. Az egyes kivételek száma az alkalmazások listáját is tartalmazza. Kattintson a napló keresése futtatásához a diagram <code>Type=ApplicationInsights TelemetryType=Exception &#124; measure sum(SampledCount) by ApplicationName interval 1hour</code> kivételek részletesebb hivatkozás diagramot ábrázol, amely. <br><br>Futtassa a naplóban keresse meg a lista elemeire <code>Type=ApplicationInsights  ApplicationName=yourapplicationname TelemetryType=Exception</code> , amelyek kivételek, időt és a sikertelen kérelmek keresztül kivételekhez diagramok és a kivétel típusainak listáját listáját tartalmazza.  |

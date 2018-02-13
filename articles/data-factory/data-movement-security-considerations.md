@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: abnarain
-ms.openlocfilehash: 7bd08a838bef504e41f7aa63516a1b54ba497441
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 898e6914a427b2e8864d97a7188eb718811ce263
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Az Azure Data Factory - adatátvitelt jelölik a kapcsolódó biztonsági szempontok
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -56,9 +56,6 @@ Ez a cikk a Microsoft biztonsági szempontok a következő két adatelérési mo
 - Hitelesítő adatok tárolása az Azure Key Vaultban 
 
    A hitelesítő adatokat tároló adatok tárolásához választhat [Azure Key Vault](https://azure.microsoft.com/services/key-vault/), hagyja meg az Azure Data Factory ennek lekéréséhez tevékenység végrehajtása közben. További információkért lásd: [tároló-hitelesítő adatok az Azure Key Vault](store-credentials-in-key-vault.md).
-
-   > [!NOTE]
-   > Jelenleg csak [Dynamics összekötő](connector-dynamics-crm-office-365.md) támogatja ezt a szolgáltatást. 
 
 ### <a name="data-encryption-in-transit"></a>Adattitkosítás átvitel közben
 Ha a felhő adattár támogatja a HTTPS vagy a TLS, adat-előállítóban adatátviteli szolgáltatások közötti minden adatátvitel és felhőalapú adattároló HTTPS- vagy TLS biztonságos csatornán keresztül.

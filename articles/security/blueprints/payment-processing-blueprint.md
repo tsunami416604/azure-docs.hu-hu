@@ -1,6 +1,6 @@
 ---
-title: "Fizetés feldolgozása szerkezeti terve PCI DSS-kompatibilis környezetben"
-description: "PCI DSS követelmény"
+title: "Az Azure biztonsági és megfelelőségi tervezetének - környezetek PCI DSS-kompatibilis fizetés feldolgozása"
+description: "Az Azure biztonsági és megfelelőségi tervezetének - környezetek PCI DSS-kompatibilis fizetés feldolgozása"
 services: security
 documentationcenter: na
 author: simorjay
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/29/2017
+ms.date: 02/09/2018
 ms.author: frasim
-ms.openlocfilehash: 7f85c8b0377e57f08044bac41dbddbbedb7a4f55
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 3e97862091e6ea334f2437bd8424b79952f41bf4
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 02/13/2018
 ---
-# <a name="azure-blueprint-automation-payment-processing-for-pci-dss-compliant-environments"></a>Az Azure tervezetének Automation: Fizetési PCI DSS-kompatibilis környezetek számára történő feldolgozásakor.
+# <a name="azure-security-and-compliance-blueprint---pci-dss-compliant-payment-processing-environments"></a>Az Azure biztonsági és megfelelőségi tervezetének - környezetek PCI DSS-kompatibilis fizetés feldolgozása
 
 ## <a name="overview"></a>Áttekintés
 
@@ -43,7 +43,7 @@ A legalapvetőbb architektúra a következő összetevőkből áll:
 - **A központi telepítési sablonok**. Ebben a felállásban [Azure Resource Manager-sablonok](/azure/azure-resource-manager/resource-group-overview#template-deployment) automatikusan központi telepítésével a architektúra összetevői a Microsoft Azure konfigurációs paraméterek megadásával a telepítés során.
 - **Automatikus központi telepítési parancsfájlok**. Ezek a parancsfájlok segítségével a végpont megoldás üzembe helyezéséhez. A parancsfájlok foglalják magukban:
     - A házirendmodul-telepítésének és [globális rendszergazda](/azure/active-directory/active-directory-assign-admin-roles-azure-portal) telepítési parancsfájl használatával telepítse, és győződjön meg arról, hogy a szükséges PowerShell-modulok és a globális rendszergazdai szerepkörök helyesen vannak konfigurálva.
-    - Telepítés PowerShell-parancsfájl használata a végpont megoldás, .zip fájlt és egy előre elkészített bemutató webalkalmazás tartalmazó .bacpac fájlba keresztül megadott [SQL adatbázis minta](https://github.com/Microsoft/azure-sql-security-sample). a tartalom. Ez a megoldás forráskódját készen áll a felülvizsgálatra [fizetés feldolgozása tervezetének kód tárház][code-repo]. 
+    - Telepítés PowerShell-parancsfájl használata a végpont megoldás, .zip fájlt és egy előre elkészített bemutató webalkalmazás tartalmazó .bacpac fájlba keresztül megadott [SQL adatbázis minta](https://github.com/Microsoft/azure-sql-security-sample). a tartalom. Ez a megoldás forráskódját készen áll a felülvizsgálatra [ tervezetének kód tárház][code-repo]. 
 
 ## <a name="architectural-diagram"></a>Architekturális diagramja
 
@@ -66,7 +66,7 @@ A rendszergazda olyan megoldás, amely gyorsan telepíthető a kitűzött célok
 
 A legalapvetőbb architektúra a következő fiktív elemekkel célja:
 
-Tartomány hely`contosowebstore.com`
+Tartomány hely `contosowebstore.com`
 
 Felhasználói szerepkörök bemutatják a használati eset, és adja meg a felhasználói felület betekintést.
 
@@ -111,8 +111,6 @@ Edna Benson a recepciós és üzleti kezelő. Győződjön meg arról, hogy ügy
 - Edna módosíthatja a felhasználói adatokat.
 - Edna felülírhatják, vagy cserélje le a hitelkártya száma, lejárati és egyéb CVV információkat.
 
-> A Contoso webes tároló, a felhasználó, automatikusan a **Edna** felhasználótól a telepített környezet képességeinek tesztelése.
-
 ### <a name="contoso-webstore---estimated-pricing"></a>Contoso webes tároló - becsült díjszabása
 
 A legalapvetőbb architektúra és példa-webalkalmazást egy havi díj struktúra és figyelembe kell venni a megoldás osztályozás óránként használati költségekkel rendelkeznek. Ezek a költségek használatával megbecsülhető a [Azure költségszámítás Számológép](https://azure.microsoft.com/pricing/calculator/). Től szeptember 2017, ez a megoldás becsült havi költsége van ~ $2500 Ez magában foglalja a $1000/mo használati költség ASE 2-es verzió. Ezek a költségek a használat mennyisége alapján változhatnak, és van változhatnak. Az ügyfél a becsült havi költségek kiszámításához időpontban a központi telepítés pontosabb becslést háruló. 
@@ -121,7 +119,7 @@ Ebben a megoldásban használt Azure-szolgáltatásokat. Az üzembe helyezési a
 
 >- Application Gateway
 >- Azure Active Directory
->- Az App Service-környezet v2
+>- App Service Environment v2
 >- OMS szolgáltatáshoz
 >- Azure Key Vault
 >- Network Security Groups (Hálózati biztonsági csoportok)
@@ -151,7 +149,7 @@ Az alábbi szakasz részletesen fejlesztése és megvalósítása elemek.
 
 A legalapvetőbb architektúra csökkenti a biztonsági réseket Alkalmazásátjáró webalkalmazási tűzfal (waf-ot), és a OWASP szabálykészletben engedélyezve van. További funkciók a következők:
 
-- [End a záró SSL](/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)
+- [End-to-End-SSL](/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)
 - Engedélyezése [SSL kiürítése](/azure/application-gateway/application-gateway-ssl-portal)
 - Tiltsa le a [TLS 1.0 és 1.1 verzió](/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)
 - [Webalkalmazási tűzfal](/azure/application-gateway/application-gateway-webapplicationfirewall-overview) (WAF mód)
@@ -180,7 +178,7 @@ Az NSG-k, amelyek mindegyikének adott portokról és protokollokról megnyitott
 #### <a name="subnets"></a>Alhálózatok
  Ellenőrizze, hogy az egyes alhálózatokon társítva a megfelelő NSG-e.
 
-#### <a name="custom-domain-ssl-certificates"></a>Az egyéni tartomány SSL-tanúsítványok
+#### <a name="custom-domain-ssl-certificates"></a>Custom domain SSL certificates
  HTTPS-forgalom engedélyezve van, az egyéni tartomány SSL-tanúsítványt használ.
 
 ### <a name="data-at-rest"></a>Inaktív adat
@@ -207,8 +205,8 @@ Az Azure SQL Database-példányt használja a következő adatbázis biztonsági
 
 [Az Operations Management Suite (OMS)](/azure/operations-management-suite/) is adja meg a Contoso webes tároló az összes rendszer és a felhasználói tevékenység kiterjedt naplózás, kártya tulajdonosát adatok naplózását tartalmazza. Módosítások tekintse át, és pontossága ellenőrizni. 
 
-- **Tevékenységi naplóit:**[tevékenységi naplóit](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) Észreveheti az olyan erőforrást az előfizetésében a végrehajtott műveletek.
-- **Diagnosztikai naplók:**[diagnosztikai naplók](/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) minden erőforrás által kibocsátott összes naplófájlt. Ezek a naplók tartalmazzák a Windows rendszer-eseménynaplói, a Azure Blob storage, a táblák és a várólista naplókat.
+- **Tevékenységi naplóit:**[tevékenységi naplóit](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) Észreveheti az olyan erőforrást az előfizetésében a végrehajtott műveletek.  
+- **Diagnosztikai naplók:**[diagnosztikai naplók](/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) minden erőforrás által kibocsátott összes naplófájlt.   Ezek a naplók tartalmazzák a Windows rendszer-eseménynaplói, a Azure Blob storage, a táblák és a várólista naplókat.
 - **Tűzfal naplók:** az Alkalmazásátjáró biztosít teljes diagnosztikai és a naplók eléréséhez. Az Application Gateway-erőforrásokra, amelyekre engedélyezve WAF érhetők el naplók tűzfal.
 - **Napló archiválás:** összes diagnosztikai naplók írni egy központosított és titkosított Azure storage-fiókjához megadott megőrzési időtartam (2 nap) archiválási vannak konfigurálva. Naplók majd kezelését, tárolását és dashboarding Azure Naplóelemzés csatlakozik. [Naplófájl Analytics](https://azure.microsoft.com/services/log-analytics) egy OMS-szolgáltatás, amely összegyűjti és elemzi a felhőben lévő erőforrások által létrehozott adatok segítségével és a helyszíni környezetben.
 
@@ -357,7 +355,7 @@ Erősen ajánlott, hogy egy tisztán PowerShell üzembe helyezéséhez használh
     
 ## <a name="threat-model"></a>Fenyegetések modellezése
 
-Egy adatfolyam-diagram (DFD) és a Contoso webes tároló a minta fenyegetések modellezése [fizetés feldolgozása tervezetének fenyegetések modellezése](https://aka.ms/pciblueprintthreatmodel).
+Egy adatfolyam-diagram (DFD) és a Contoso webes tároló a minta fenyegetések modellezése [tervezetének fenyegetések modellezése](https://aka.ms/pciblueprintthreatmodel).
 
 ![](images/pci-threat-model.png)
 
@@ -373,7 +371,7 @@ A megoldás Coalfire Systems, Inc. (PCI DSS minősített biztonsági vizsgáztat
 
 ## <a name="disclaimer-and-acknowledgements"></a>Jogi nyilatkozat és a nyugtázás
 
-*2017. szeptember*
+2017. szeptember
 
 - Ez a dokumentum csak tájékoztatási célokat szolgál. A MICROSOFT ÉS AVYAN ELLENŐRIZZE NINCS SEMMILYEN KIFEJEZETT KIFEJEZETT, VÉLELMEZETT VAGY FELELŐSSÉGET A JELEN DOKUMENTUMBAN SZEREPLŐ INFORMÁCIÓK. Ez a dokumentum biztosított ",-van." Információk és nézetek ebben a dokumentumban, beleértve az URL-CÍMEK és más internetes webhelyet, értesítés nélkül változhatnak. Ez a dokumentum olvasásakor az ügyfelek az alkalmazást saját felelősségére használja.  
 - Ez a dokumentum nem biztosít semmilyen jogot semmilyen Microsoft vagy Avyan termék vagy a megoldások található szellemi tulajdonhoz rendelkező ügyfelek.  

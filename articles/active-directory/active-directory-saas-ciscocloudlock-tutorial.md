@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 02/09/2018
 ms.author: jeedes
-ms.openlocfilehash: 6baa680a83f381daeb8a31014f276a1d52ffa07a
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: d6961eb760544ac078fdd6ed0d7c0c4d750a8b9f
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-cloudlock"></a>Oktatóanyag: Azure Active Directoryval integrált Cisco Cloudlock
 
@@ -106,9 +106,17 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Cisco Cloudlock tartomány és az URL-címeket az egyszeri bejelentkezés információk](./media/active-directory-saas-ciscocloudlock-tutorial/tutorial_ciscocloudlock_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmezőhöz URL-címet írja be:`https://platform.cloudlock.com`
+    a. Az a **bejelentkezési URL-cím** szövegmezőhöz URL-címet írja be:
+    | |
+    |--|
+    | `https://platform.cloudlock.com` |
+    | `https://app.cloudlock.com` |
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`https://platform.cloudlock.com/gate/saml/sso/<subdomain>`
+    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: 
+    | |
+    |--|
+    | `https://platform.cloudlock.com/gate/saml/sso/<subdomain>` |
+    | `https://app.cloudlock.com/gate/saml/sso/<subdomain>` |
 
     > [!NOTE] 
     > Az azonosító értéke nincs valós. Frissítse az értéket a tényleges azonosítóval. Ügyfél [Cisco Cloudlock ügyfél-támogatási csoport](mailto:support@cloudlock.com) az értéket be kell olvasni. 

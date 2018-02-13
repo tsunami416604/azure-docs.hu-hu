@@ -3,7 +3,7 @@ title: "Az SQL Server-környezet az Azure Naplóelemzés optimalizálása |} Mic
 description: "Az Azure Naplóelemzés használhatja az SQL állapotának ellenőrzése megoldás rendszeres időközönkénti a kockázat és a környezetek állapotának felmérésére."
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: e297eb57-1718-4cfe-a241-b9e84b2c42ac
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
-ms.author: magoedte;banders
+ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 71caf0e1d58107376888ae454713703d845101eb
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 5da04e9479ebd6cec886a8c5ca38d040aec2758d
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>A Naplóelemzési az SQL Server állapotának ellenőrzése megoldás SQL környezetében optimalizálása
 
@@ -43,7 +43,7 @@ Után, a megoldás felvett értékelését fejezhető be, összefoglaló adatait
 
 * Az SQL állapotának ellenőrzése megoldás, amely rendelkezik a Microsoft Monitoring Agent (MMA) telepítése minden egyes számítógépen telepített .NET-keretrendszer 4 támogatott verziója szükséges.  Az MMA ügynök System Center 2016 - Operations Manager és az Operations Manager 2012 R2 és a Naplóelemzés szolgáltatás használja.  
 * A megoldás az SQL Server 2016, 2012 vagy 2014 verziót támogatja.
-* A Naplóelemzési munkaterület az SQL állapotának ellenőrzése megoldás felvétele az Azure-portálon az Azure piactérről.  A megoldás telepítéséhez rendszergazdaként vagy az Azure-előfizetésben közreműködői kell lennie. 
+* A Naplóelemzési munkaterület az SQL állapotának ellenőrzése megoldás felvétele az Azure-portálon az Azure piactérről.  A megoldás telepítéséhez rendszergazdaként vagy az Azure-előfizetésben közreműködői kell lennie.
 
   > [!NOTE]
   > A megoldás hozzáadása után a AdvisorAssessment.exe fájl kerül kiszolgálók ügynökkel. Konfigurációs adatok olvasása és elküldheti a Naplóelemzés szolgáltatás feldolgozásra a felhőben. A fogadott adatokhoz logika vonatkozik, és a felhőszolgáltatás-adatait rögzíti.
@@ -61,12 +61,12 @@ Az ügynököt az SQL Server, az Operations Manager felügyeleti csoport jelent�
 Ha az SQL Server az Operations Manager által figyelt, akkor konfigurálása egy Operations Manager futtató fiókja. Lásd: [Operations Manager futtató fiókok a Naplóelemzési](#operations-manager-run-as-accounts-for-log-analytics) alább olvashat.
 
 ## <a name="sql-health-check-data-collection-details"></a>Az gyűjtemény adatait SQL állapotának ellenőrzése
-SQL állapotának ellenőrzése gyűjti az adatokat, hogy engedélyezte-ügynök használatával az alábbi forrásokból: 
+SQL állapotának ellenőrzése gyűjti az adatokat, hogy engedélyezte-ügynök használatával az alábbi forrásokból:
 
-* A Windows Management Instrumentation (WMI) 
-* Beállításjegyzék 
+* A Windows Management Instrumentation (WMI)
+* Beállításjegyzék
 * Teljesítményszámlálók
-* SQL Server dinamikus felügyeleti eredmények megtekintése 
+* SQL Server dinamikus felügyeleti eredmények megtekintése
 
 Adatok gyűjtése az SQL-kiszolgálón, és hét naponta Naplóelemzési továbbítja.
 
@@ -144,13 +144,13 @@ Minden ajánlást a súlyozási arányában a teljes pontszám minden fókusz te
 
 **Rendelkezésre állás és üzleti folytonosság** -fókusz itt megtekinthető a szolgáltatás rendelkezésre állása, a rugalmasság, az infrastruktúra és az üzleti védelmét javaslatok.
 
-**Teljesítmény és méretezhetőség** -e fókuszba területen látható ajánlásokat a szervezet informatikai infrastruktúrájának nő, győződjön meg arról, hogy az informatikai környezet megfelel az aktuális teljesítménykövetelményeknek, és képes reagálni a infrastruktúrához.
+**Teljesítmény és méretezhetőség** -e fókuszba területen látható ajánlásokat a szervezet informatikai infrastruktúrájának nő, győződjön meg arról, hogy az informatikai környezettől aktuális teljesítménykövetelményeknek megfelel-e, és képes válaszolni infrastruktúra módosítása szüksége van.
 
 **Áttelepítés és a telepítés frissítéséhez** -e fókuszba területen látható ajánlásokat frissítéséhez, telepítse át, és az SQL Server telepítéséhez a meglévő infrastruktúra.
 
 **Műveletek és -figyelő** -e fókuszba területen látható az IT-üzemeltetők egyszerűsítésére, megvalósítása megelőző karbantartási és teljesítmény maximalizálása érdekében ajánlott.
 
-**Változás- és konfigurációkezelés** -e fókuszba területen látható ajánlások a napi tevékenységek védje, biztosítására, hogy módosításokat nem negatív hatással vannak az infrastruktúra Változáskezelő eljárások, létrehozásához, és nyomon követése és naplózása rendszerkonfigurációk.
+**Változás- és konfigurációkezelés** -e fókuszba területen látható ajánlások a napi tevékenységek védje, biztosítására, hogy módosításokat nem negatív hatással vannak az infrastruktúra Változáskezelő eljárások, létrehozásához, és nyomon követése és naplózása rendszer-konfigurációkat.
 
 ### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>Kell megcéloznia 100 %-os pontozása minden fókusz területen?
 Nem feltétlenül. Az ajánlások a Tudásbázis és a Microsoft szakemberei által ügyfél látogatások ezer keresztül szerzett tapasztalatok alapulnak. Azonban nincs két kiszolgáló infrastruktúrák megegyeznek, és előfordulhat, hogy több vagy kevesebb kapcsolódik, konkrét javaslatokért. Például bizonyos biztonsági javaslatok kevésbé fontos, ha a virtuális gépek nem érhetők el az Internet lehet. Egyes rendelkezésre állási javaslatok lehet kevésbé alacsony prioritást ad hoc adatgyűjtés és a reporting Services. Lehet, hogy egy összetett üzleti fontos problémák kevésbé fontos, hogy a kezdeti. Érdemes lehet azonosítani a fókusz a prioritások, és keresse meg, hogy a pontszámokat változnak az idők.
@@ -163,10 +163,10 @@ Egy értékelési megoldás a Naplóelemzési használata előtt rendelkeznie ke
 Az összesített megfelelőségi értékelése az infrastruktúrát, és a-feltárás javaslatok megtekintése.
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Az egy fókuszban terület javaslatok megtekintése és a szükséges javítási műveletek
-1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) címen. 
+1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) címen.
 2. Az Azure Portalon kattintson a bal alsó sarokban található **További szolgáltatások** elemre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
 3. A Naplóelemzési előfizetések ablaktáblán jelölje ki a munkaterület, és kattintson a **áttekintése** csempére.  
-4. Az a **áttekintése** lapján kattintson a **SQL állapotának ellenőrzése** csempére. 
+4. Az a **áttekintése** lapján kattintson a **SQL állapotának ellenőrzése** csempére.
 5. Az a **állapotának ellenőrzése** lapon. Ellenőrizze az összefoglaló információkat a fókusz terület paneleken egyikében, majd kattintson egy adott fókusz területre javaslatok megtekintéséhez.
 6. A fókusz terület lapok egyikén tekintheti meg a környezetnek a rangsorolt ajánlásokat. Kattintson az ajánlás **érintett objektumok** miért a javaslatokkal kapcsolatos részletek megtekintéséhez.<br><br> ![kép ajánlások SQL állapotának ellenőrzése](./media/log-analytics-sql-assessment/sql-healthcheck-dashboard-02.png)<br>
 7. Az ajánlott javítási műveletek hajthatók végre **javasolt műveletek**. A cikk intéztek, újabb értékelések fog jegyezze fel, az elvégzett műveletek, és a megfelelőségi pontszám növeli. Javított elemek jelennek meg **átadott objektumok**.

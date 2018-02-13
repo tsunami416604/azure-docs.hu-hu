@@ -107,6 +107,7 @@
 #### [.NET-háttérrendszer/Node.js-eszköz](iot-hub-csharp-node-device-management-get-started.md)
 #### [.NET-háttérrendszer/.NET-eszköz](iot-hub-csharp-csharp-device-management-get-started.md)
 #### [Java-háttérrendszer/Java-eszköz](iot-hub-java-java-device-management-getstarted.md)
+#### [Python-háttérrendszer/Python-eszköz](iot-hub-python-python-device-management-get-started.md)
 ### Az ikertulajdonságok használata
 #### [Node.js-háttérrendszer/Node.js-eszköz](iot-hub-node-node-twin-how-to-configure.md)
 #### [.NET-háttérrendszer/Node.js-eszköz](iot-hub-csharp-node-twin-how-to-configure.md)

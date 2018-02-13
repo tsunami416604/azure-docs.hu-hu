@@ -13,14 +13,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 02/12/2018
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 303a36fc966cd92399de92b4d52f75c114b75781
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: c3bd28316e3d2e7596021d6964594002d47d160a
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="tunable-data-consistency-levels-in-azure-cosmos-db"></a>Az Azure Cosmos Adatbázisba hangolható konzisztencia szintek
 Azure Cosmos-adatbázis úgy van kialakítva egészen az alapoktól fel a globális terjesztési szem előtt az összes adatmodell. Előre jelezhető késés garanciák és több jól meghatározott laza konzisztencia modellek tervezték. Jelenleg az Azure Cosmos DB biztosít öt konzisztenciaszintek: erős, kötött elavulás, munkamenet, egységes előtag, és végleges. Kötött elavulás, munkamenet, egységes előtag és végleges biztosan néven "laza konzisztencia modellek" azok adjon meg kevesebb konzisztencia erős, mint amely a legtöbb rendelkezésre állású egységes modellje. 
@@ -110,30 +110,34 @@ A Cosmos DB fiókját az adatbázis-fiókra, amely az összes gyűjteményt (és
 ## <a name="consistency-levels-for-queries"></a>A lekérdezések konzisztenciaszintek
 Alapértelmezés szerint a felhasználó által definiált erőforrások a lekérdezések konzisztenciaszint megegyezik a konzisztenciaszint olvasása. Alapértelmezés szerint az index frissítése szinkron módon minden insert, replace vagy a Cosmos DB tárolóhoz elem törlése. Ez lehetővé teszi, hogy a konzisztencia szinttel azonos pont olvasások tiszteletben lekérdezések. Míg Azure Cosmos DB írási optimalizált, és írási műveletek, a szinkron index karbantartási és a kiszolgáló konzisztens lekérdezések tartós köteteket támogatja, egyes gyűjtemények indexét lazily frissítésére is konfigurálhat. További Lusta indexelő a írási hanghatások és ideális tömeges adatfeldolgozást forgatókönyvek esetén, ha egy munkaterhelés elsősorban olvasási műveleteket.  
 
-| Az indexelő mód | Olvassa be | Lekérdezések |
+| Az indexelő mód | Olvasások | Lekérdezések |
 | --- | --- | --- |
 | A CONSISTENT (alapértelmezett) |Válassza ki az erős, kötött elavulási, munkamenet, egységes előtag, vagy végleges |Válassza ki az erős, kötött elavulás, munkamenet, vagy végleges |
 | Lassú |Válassza ki az erős, kötött elavulási, munkamenet, egységes előtag, vagy végleges |Végleges |
-| None |Válassza ki az erős, kötött elavulási, munkamenet, egységes előtag, vagy végleges |Nem alkalmazható |
+| Nincs |Válassza ki az erős, kötött elavulási, munkamenet, egységes előtag, vagy végleges |Nem alkalmazható |
 
 Mint az olvasási kéréseket csökkenthető a konzisztenciaszint minden API-ban meghatározott lekérdezési kérelem.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="consistency-levels-for-the-mongodb-api"></a>A MongoDB API konzisztenciaszintek
+
+Azure Cosmos-adatbázis jelenleg két konzisztencia beállításokkal, erős és végleges, 3.4-es verziójú MongoDB valósítja meg. Mivel Azure Cosmos DB multi-api, a konzisztencia beállítások a fiók szintjén és a konzisztencia kényszerítése minden API vezérli.  MongoDB 3.6, amíg nincs egy munkamenet-konzisztencia fogalma, ha a MongoDB API-fiók használata a munkamenet-konzisztencia, a konzisztencia van vissza a végleges MongoDB API-k használata esetén. Fiók MongoDB API-a-saját-olvasható garancia van szüksége, ha a fiók alapértelmezett konzisztencia szintje meg erős, vagy a kötött elavulási.
+
+## <a name="next-steps"></a>További lépések
 Ha azt szeretné, további elolvasása konzisztenciaszintek és kompromisszumot elvégzéséhez, a következőket javasoljuk:
 
 * Doug Terry. A replikált adatok konzisztencia viszonylag baseball (videó) keresztül.   
-  [https://www.YouTube.com/Watch?v=gluIh8zd26I](https://www.youtube.com/watch?v=gluIh8zd26I)
+  [https://www.youtube.com/watch?v=gluIh8zd26I](https://www.youtube.com/watch?v=gluIh8zd26I)
 * Doug Terry. A replikált adatok konzisztencia viszonylag baseball keresztül.   
-  [http://Research.microsoft.com/Pubs/157411/ConsistencyAndBaseballReport.PDF](http://research.microsoft.com/pubs/157411/ConsistencyAndBaseballReport.pdf)
+  [http://research.microsoft.com/pubs/157411/ConsistencyAndBaseballReport.pdf](http://research.microsoft.com/pubs/157411/ConsistencyAndBaseballReport.pdf)
 * Doug Terry. Munkamenet garanciák gyengén konzisztens replikált adatok.   
-  [http://DL.ACM.org/CITATION.cfm?ID=383631](http://dl.acm.org/citation.cfm?id=383631)
+  [http://dl.acm.org/citation.cfm?id=383631](http://dl.acm.org/citation.cfm?id=383631)
 * Daniel Abadi. Konzisztencia mellékhatásokkal Modern elosztott adatbázis rendszerek kialakításában: CAP csak a szövegegység része ".   
-  [http://Computer.org/CSDL/mags/Co/2012/02/mco2012020037-ABS.HTML](http://computer.org/csdl/mags/co/2012/02/mco2012020037-abs.html)
+  [http://computer.org/csdl/mags/co/2012/02/mco2012020037-abs.html](http://computer.org/csdl/mags/co/2012/02/mco2012020037-abs.html)
 * Peter Bailis, Shivaram Venkataraman, Michael J. tw, Joseph M. Hellerstein, adatmegőrzési Stoica. Probabilisztikus kötött elavulási (PBS) a gyakorlati részleges határozatképességére.   
-  [http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.PDF](http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
+  [http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf](http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
 * Wernernek Vogels. Végső konzisztens - javított változat.    
-  [http://allthingsdistributed.com/2008/12/eventually_consistent.HTML](http://allthingsdistributed.com/2008/12/eventually_consistent.html)
+  [http://allthingsdistributed.com/2008/12/eventually_consistent.html](http://allthingsdistributed.com/2008/12/eventually_consistent.html)
 * MONi Naor, Avishai gyapjú, a betöltés, a kapacitás és kvórum rendszerek, a számítástechnikai, v.27 n.2, p.423 447, 1998. április SIAM napló rendelkezésre állását.
-  [http://epubs.Siam.org/DOI/ABS/10.1137/S0097539795281232](http://epubs.siam.org/doi/abs/10.1137/S0097539795281232)
-* Sebastian Burckhardt, Chris Dern, Macanal Musuvathi, Roy Tan, Line-up: a teljes és automatikus linearizability-ellenőrző eljárás a 2010-es ACM SIGPLAN konferencia programozási nyelv tervezési és megvalósítási, június 05-10-es, 2010, Toronto, Ontario, Kanada [doi > 10.1145/1806596.1806634] [http://dl.acm.org/citation.cfm?id=1806634](http://dl.acm.org/citation.cfm?id=1806634)
-* Peter Bailis, Shivaram Venkataraman, Michael J. tw, Joseph M. Hellerstein adatmegőrzési Stoica Probabilistically kötött elavulási gyakorlati részleges határozatképességére, a VLDB dotációs, még az v.5 n.8, p.776 787, 2012 áprilisi eljárásai az [http://dl.acm.org/citation.cfm?id=2212359](http://dl.acm.org/citation.cfm?id=2212359)
+  [http://epubs.siam.org/doi/abs/10.1137/S0097539795281232](http://epubs.siam.org/doi/abs/10.1137/S0097539795281232)
+* Sebastian Burckhardt, Chris Dern, Macanal Musuvathi, Roy Tan, Line-up: a teljes és automatikus linearizability-ellenőrző eljárás programozási nyelv tervezési és megvalósítási, június 05-10-es, 2010, Toronto, Ontario, 2010-es ACM SIGPLAN konferencia Kanadában [doi > 10.1145/1806596.1806634] [http://dl.acm.org/citation.cfm?id=1806634](http://dl.acm.org/citation.cfm?id=1806634)
+* Peter Bailis, Shivaram Venkataraman, Michael J. tw, Joseph M. Hellerstein adatmegőrzési Stoica Probabilistically kötött elavulási gyakorlati részleges határozatképességére, a VLDB dotációs, még az v.5 n.8, p.776 787, 2012 áprilisi eljárásai az [http:// DL.ACM.org/CITATION.cfm?ID=2212359](http://dl.acm.org/citation.cfm?id=2212359)
