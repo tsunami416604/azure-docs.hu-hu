@@ -1,8 +1,6 @@
-- name: A Machine Learning előzetes verziójú funkciói
+- name: Azure Machine Learning-szolgáltatások (előzetes verzió)
   href: preview/index.yml
-- name: Machine Learning Studio
-  href: studio/index.md
+- name: Azure Machine Learning Studio
+  href: studio/index.yml
 - name: Adatelemzési virtuális gép
-  href: data-science-virtual-machine/overview.md
-- name: Csoportos adatelemzési folyamat
-  href: team-data-science-process/overview.md
+  href: data-science-virtual-machine/index.yml
