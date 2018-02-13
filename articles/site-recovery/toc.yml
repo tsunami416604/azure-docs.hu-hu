@@ -54,35 +54,37 @@
         - name: AWS-példányok áttelepítése az Azure-ba
           href: tutorial-migrate-aws-to-azure.md
         - name: Azure-beli virtuális gépek migrálása másik régióba
-          href: tutorial-migrate-azure-to-azure.md
+          href: azure-to-azure-tutorial-migrate.md
 - name: Alapelvek
   items:
-    - name: Azure-ról Azure-ra architektúra
-      href: concepts-azure-to-azure-architecture.md
-    - name: VMware-ről Azure-ra architektúra
-      href: concepts-vmware-to-azure-architecture.md
-    - name: Hyper-V-ről Azure-ra architektúra
-      href: concepts-hyper-v-to-azure-architecture.md
-    - name: Fizikairól Azure-ra architektúra
-      href: concepts-physical-to-azure-architecture.md
-    - name: Hyper-V-ről másodlagos helyre architektúra
-      href: concepts-hyper-v-to-secondary-architecture.md
-    - name: Azure-ról Azure-ra támogatási mátrix
-      href: site-recovery-support-matrix-azure-to-azure.md
-    - name: VMware-ről Azure-ra támogatási mátrix
-      href: support-matrix-vmware-to-azure.md
-    - name: Hyper-V-ről Azure-ra támogatási mátrix
-      href: support-matrix-hyper-v-to-azure.md
-    - name: Helyszíniről Azure-ra támogatási mátrix
-      href: site-recovery-support-matrix-to-azure.md
-    - name: Helyszíniről másodlagos helyre támogatási mátrix
-      href: site-recovery-support-matrix-to-sec-site.md
-    - name: A feladat-visszavétel típusai
-      href: concepts-types-of-failback.md
-    - name: Számítási feladatok vészhelyreállítása
-      href: site-recovery-workload.md
-    - name: Migrálás az Azure-ba
-      href: site-recovery-migrate-to-azure.md
+    - name: Architektúra
+      items:
+        - name: Azure-ról Azure-ra architektúra
+          href: azure-to-azure-architecture.md
+        - name: VMware-ről Azure-ra architektúra
+          href: concepts-vmware-to-azure-architecture.md
+        - name: Hyper-V-ről Azure-ra architektúra
+          href: concepts-hyper-v-to-azure-architecture.md
+        - name: Fizikairól Azure-ra architektúra
+          href: concepts-physical-to-azure-architecture.md
+        - name: Hyper-V-ről másodlagos helyre architektúra
+          href: concepts-hyper-v-to-secondary-architecture.md
+    - name: Támogatási követelmények – mátrix
+      items:
+        - name: Azure-ról Azure-ra támogatási mátrix
+          href: azure-to-azure-support-matrix.md
+        - name: VMware-ről Azure-ra támogatási mátrix
+          href: support-matrix-vmware-to-azure.md
+        - name: Hyper-V-ről Azure-ra támogatási mátrix
+          href: support-matrix-hyper-v-to-azure.md
+        - name: Helyszíniről Azure-ra támogatási mátrix
+          href: site-recovery-support-matrix-to-azure.md
+        - name: Helyszíniről másodlagos helyre támogatási mátrix
+          href: site-recovery-support-matrix-to-sec-site.md
+        - name: Számítási feladatok vészhelyreállítása
+          href: site-recovery-workload.md
+        - name: Migrálás az Azure-ba
+          href: site-recovery-migrate-to-azure.md
     - name: Szerepköralapú hozzáférési engedélyek
       href: site-recovery-role-based-linked-access-control.md
     - name: GYIK
@@ -92,9 +94,9 @@
     - name: Hálózat
       items:
         - name: Hálózat beállítása az Azure-beli virtuális gépek vészhelyreállításához (előzetes verzió)
-          href: site-recovery-azure-to-azure-networking-guidance.md
+          href: azure-to-azure-about-networking.md
         - name: Hálózatleképezés beállítása az Azure-beli virtuális gépek vészhelyreállításához (előzetes verzió)
-          href: site-recovery-network-mapping-azure-to-azure.md
+          href: azure-to-azure-network-mapping.md
         - name: IP-cím megőrzése az Azure-beli virtuális gépek vészhelyreállításához (előzetes verzió)
           href: site-recovery-retain-ip-azure-vm-failover.md
         - name: Hálózatleképezés előkészítése Hyper-V rendszerű virtuális gépek Azure-ba történő replikálásához
@@ -108,7 +110,7 @@
     - name: Vészhelyreállítás
       items:
         - name: Azure-beli virtuális gépek vészhelyreállítása az Azure-ba való migrálás után
-          href: site-recovery-azure-to-azure-after-migration.md
+          href: azure-to-azure-replicate-after-migration.md
         - name: Fizikai kiszolgálók vészhelyreállítása az Azure-ba
           href: tutorial-physical-to-azure.md
         - name: Hyper-V virtuális gépek replikálása másodlagos helyre
@@ -142,7 +144,7 @@
         - name: Gépek ismételt védelme feladatátvétel után
           items:
             - name: Ismételt védelem – Egy másodlagos Azure-régióról egy elsődlegesre
-              href: site-recovery-how-to-reprotect-azure-to-azure.md
+              href: azure-to-azure-how-to-reprotect.md
             - name: Ismételt védelem – Azure-ból helyszíni rendszerbe
               href: site-recovery-how-to-reprotect.md
         - name: Feladat-visszavétel az Azure-ból
@@ -153,6 +155,12 @@
               href: site-recovery-failback-from-azure-to-hyper-v.md
         - name: Linux rendszerű fő célkiszolgáló beállítása feladat-visszavételhez
           href: site-recovery-how-to-install-linux-master-target.md
+    - name: Migrate (Áttelepítés)
+      items:
+        - name: A migrálás ismertetése
+          href: site-recovery-migrate-to-azure.md
+        - name: Azure-beli virtuális gépek replikálása egy másik régióba való migrálás után
+          href: azure-to-azure-replicate-after-migration.md
     - name: Kapacitás és méretezés
       items:
         - name: Kapacitás megtervezése a VMware Azure-ba történő replikálásához
@@ -210,7 +218,7 @@
         - name: A replikáció engedélyezése
           items:
             - name: Azure-ról Azure-ba történő replikálás engedélyezése
-              href: site-recovery-replicate-azure-to-azure.md
+              href: azure-to-azure-how-to-enable-replication.md
             - name: VMware-ről Azure-ba történő replikálás engedélyezése
               href: site-recovery-replicate-vmware-to-azure.md
         - name: A VMware-hez készült mobilitási szolgáltatás üzembe helyezése
@@ -272,7 +280,7 @@
     - name: Monitorozás és hibaelhárítás
       items:
         - name: Az Azure-ból Azure-ba végzett replikálás problémái
-          href: site-recovery-azure-to-azure-troubleshoot-errors.md
+          href: azure-to-azure-troubleshoot-errors.md
         - name: A helyszínről az Azure-ba történő replikálás problémái
           href: site-recovery-vmware-to-azure-protection-troubleshoot.md
         - name: Mobilitási szolgáltatással kapcsolatos problémák

@@ -37,6 +37,8 @@
   items:
     - name: Fürtműveletek
       items:
+        - name: AKS-fürt létrehozása
+          href: create-cluster.md
         - name: AKS-fürt méretezése
           href: scale-cluster.md
         - name: AKS-fürt frissítése
@@ -45,10 +47,14 @@
           href: delete-cluster.md
     - name: Adatkötetek konfigurálása
       items:
-        - name: Azure-lemezek – tartós kötet
+        - name: Azure Disks
           href: azure-disks-dynamic-pv.md
-        - name: Azure Files – Tartós kötet
+        - name: Azure Files
           href: azure-files-dynamic-pv.md
+    - name: Hálózatkezelés konfigurálása
+      items:
+        - name: Statikus IP-cím
+          href: static-ip.md
     - name: Biztonság és hitelesítés
       items:
         - name: Egyszerű szolgáltatás létrehozása

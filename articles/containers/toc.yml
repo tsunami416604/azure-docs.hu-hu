@@ -51,12 +51,12 @@
           href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-containers-overview'
         - name: Útmutató
           items:
-            - name: Docker-gazdagép létrehozása
-              href: 'https://docs.microsoft.com/azure/virtual-machines/linux/dockerextension'
-            - name: A Docker Machine használata
-              href: 'https://docs.microsoft.com/azure/virtual-machines/linux/docker-machine'
-            - name: A Docker Compose használata
-              href: 'https://docs.microsoft.com/azure/virtual-machines/linux/docker-compose-quickstart'
+            - name: Tárolóalkalmazás létrehozása Windowson
+              href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers'
+            - name: Tárolóalkalmazás létrehozása Linuxon
+              href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers-linux'
+            - name: Meglévő .NET-alkalmazás tárolóba helyezése
+              href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-host-app-in-a-container'
     - name: Windows-tárolók
       href: 'https://docs.microsoft.com/azure/virtual-machines/windows/overview'
       items:
@@ -64,7 +64,7 @@
           href: 'https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server'
         - name: A Windows-tárolók
           href: 'https://docs.microsoft.com/virtualization/windowscontainers/about/index'
-    - name: Hivatkozás
+    - name: Referencia
       items:
         - name: Azure Container Instances (az container)
           href: 'https://docs.microsoft.com/cli/azure/container'

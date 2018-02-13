@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Az Azure Machine Learning dokumentációja (előzetes verzió)"
+title: "Azure Machine Learning-szolgáltatások (előzetes verzió) dokumentációja"
 metadata:
-  title: "Az Azure Machine Learning dokumentációja (előnézet)"
-  meta.description: Learn how to use Azure Machine Learning public preview features.
+  title: "Azure Machine Learning-szolgáltatások (előzetes verzió) dokumentációja"
+  meta.description: Learn how to use Azure Machine Learning services (preview).
   services: machine-learning
   author: garyericson
   manager: jhubbard
@@ -11,27 +11,24 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09/06/2017
+  ms.date: 01/18/2018
   ms.author: garye
-  ms.openlocfilehash: 98d106418472f66b8e5fe5d887eb8e75f5ce4a1b
-  ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+  ms.openlocfilehash: b5f55848e81b6faf2c8e2ab21ea32ee134e730bf
+  ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 01/23/2018
+  ms.lasthandoff: 02/13/2018
 abstract:
-  description: "Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan hozhat létre és helyezhet üzembe modelleket. Az Azure Machine Learning előnézeti funkciói révén gépi tanulási és AI modelleket felügyelhet, hozhat létre és helyezhet üzembe bármely Python-eszköz és könyvtár használatával. Számos különféle adat- és számítási szolgáltatást használhat az Azure-ban adatai tárolására és feldolgozására."
+  description: "Az Azure Machine Learning-szolgáltatások (előzetes verzió) használatával gépi tanulási és AI-modelleket hozhat létre, helyezhet üzembe és kezelhet bármilyen Python-eszközzel és -kódtárral használatával. Számos különféle adat- és számítási szolgáltatást használhat az Azure-ban adatai tárolására és feldolgozására."
 sections:
 - title: "5 perces gyors útmutatók"
   items:
   - type: paragraph
     text: "Az első Machine Learning projekt létrehozása"
   - type: list
-    style: icon48
+    style: unordered
     items:
-    - image:
-        src: /azure/machine-learning/media/index/i_machine-learning.svg
-      text: "Telepítés és létrehozás"
-      href: quickstart-installation
+    - html: "<a href=\"quickstart-installation.md\">Telepítés és létrehozás</a>"
 - title: "Részletes útmutatók"
   items:
   - type: paragraph
@@ -39,10 +36,28 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"tutorial-classifying-iris-part-1\">Útmutató a Machine Learning-szolgáltatások (előzetes verzió) alapjairól</a>"
+    - html: "<a href=\"tutorial-classifying-iris-part-1\">A Machine Learning-szolgáltatások (előzetes verzió) alapjainak ismertetése</a>"
     - html: "<a href=\"tutorial-classifying-iris-part-2\">A Machine Learning Workbench használata modell létrehozásához az Iris flower adatkészlettel</a>"
     - html: "<a href=\"tutorial-classifying-iris-part-3\">Ismerje meg a Machine Learning modellek üzembe helyezésének módját</a>"
     - html: "<a href=\"tutorial-bikeshare-dataprep\">Az Azure Machine Learning Workbench használata haladó adatelőkészítéshez</a>"
+- title: "További Azure Machine Learning-technológiák"
+  items:
+  - type: paragraph
+    text: "Az Azure Machine Learningben elérhető további technológiák:"
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: Azure Machine Learning Studio
+      href: /azure/machine-learning/studio/
+      image:
+        src: media/index/machine-learning-studio.svg
+        href: /azure/machine-learning/studio/
+    - title: "Adatelemzési virtuális gép"
+      href: /azure/machine-learning/data-science-virtual-machine/
+      image:
+        src: media/index/virtual-machines.svg
+        href: /azure/machine-learning/data-science-virtual-machine/
 - title: Referencia
   items:
   - type: list
