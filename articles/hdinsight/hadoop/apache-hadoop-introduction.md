@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/13/2017
 ms.author: cgronlun
-ms.openlocfilehash: c53c4eba6d46c03bbfc6bb316ae4e505abb7b781
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: 369d4444e52083c689441548dcfab70fe49ab346
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="introduction-to-azure-hdinsight-and-the-hadoop-and-spark-technology-stack"></a>Az Azure HDInsight, valamint a Hadoop- és Spark-technológiák bemutatása
 Ez a cikk az Azure HDInsight szolgáltatást mutatja be. Az Azure HDInsight egy teljes mértékben felügyelt, teljes körű, nyílt forráskódú elemzési szolgáltatás vállalatok részére. Használhat olyan nyílt forráskódú keretrendszereket, mint a Hadoop, a Spark, a Hive, az LLAP, a Kafka, a Storm, az R stb. 
@@ -54,7 +54,7 @@ Ez a szakasz felsorolja az Azure HDInsight képességeit.
 |Biztonságos és megfelelő    | Az [Azure Virtual Network](../hdinsight-extend-hadoop-virtual-network.md), a [titkosítás](../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md) és az [Azure Active Directoryval való integráció](../domain-joined/apache-domain-joined-introduction.md) segítségével a HDInsight lehetővé teszi a vállalati adategységek védelmét. A HDInsight továbbá megfelel a legnépszerűbb iparági és kormányzati [megfelelőségi szabványoknak](https://azure.microsoft.com/overview/trusted-cloud).        |
 |Figyelés    | Az Azure HDInsight az [Azure Log Analytics](../hdinsight-hadoop-oms-log-analytics-tutorial.md) integrálásával egyetlen felületen teszi lehetővé az összes fürt monitorozását.        |
 |Globális rendelkezésre állás | A HDInsight több  [régióban](https://azure.microsoft.com/regions/services/)  érhető el, mint bármelyik másik big data-elemzési ajánlat. Az Azure HDInsight elérhető az Azure Governmentben, Kínában, és Németországban is, így megfelelhet a vállalati igényeknek a főbb szuverén területeken. |  
-|Hatékonyság     |  Az Azure HDInsight számos hatékony eszközt biztosít a Hadoop és a Spark használatához a választott fejlesztési környezetben. Ez a fejlesztési környezet lehet a [Visual Studio](apache-hadoop-visual-studio-tools-get-started.md), az [Eclipse](../spark/apache-spark-eclipse-tool-plugin.md) vagy az [IntelliJ](../spark/apache-spark-intellij-tool-plugin.md) a Scala, a Python, az R, a Java és a .NET támogatásához. Az adatelemzők is együttműködhetnek olyan népszerű notebookok használatával, mint a [Jupyter](../spark/apache-spark-jupyter-notebook-kernels.md) vagy a [Zeppelin](../spark/apache-spark-zeppelin-notebook.md).    |
+|Termelékenység     |  Az Azure HDInsight számos hatékony eszközt biztosít a Hadoop és a Spark használatához a választott fejlesztési környezetben. Ez a fejlesztési környezet lehet a [Visual Studio](apache-hadoop-visual-studio-tools-get-started.md), az [Eclipse](../spark/apache-spark-eclipse-tool-plugin.md) vagy az [IntelliJ](../spark/apache-spark-intellij-tool-plugin.md) a Scala, a Python, az R, a Java és a .NET támogatásához. Az adatelemzők is együttműködhetnek olyan népszerű notebookok használatával, mint a [Jupyter](../spark/apache-spark-jupyter-notebook-kernels.md) vagy a [Zeppelin](../spark/apache-spark-zeppelin-notebook.md).    |
 |Bővíthetőség     |  A HDInsight-fürtöket bővítheti telepített összetevőkkel (Hue, Presto stb.) [szkriptműveletek](../hdinsight-hadoop-customize-cluster-linux.md) használatával, [élcsomópontok felvételével](../hdinsight-apps-use-edge-node.md) vagy [más big data minősítéssel rendelkező alkalmazások integrálásával](../hdinsight-apps-install-applications.md). A HDInsight [egykattintásos](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) üzembe helyezéssel biztosít zökkenőmentes integrációt a legnépszerűbb big data-megoldásokkal.|
 
 ## <a name="scenarios-for-using-hdinsight"></a>A HDInsight használatára vonatkozó forgatókönyvek
@@ -89,7 +89,7 @@ A HDInsight segítségével kiterjesztheti a meglévő helyszíni big data-infra
 
 ![HDInsight-architektúra: Hibrid](./media/apache-hadoop-introduction/hdinsight-architecture-hybrid.png)
 
-## <a name="overview"></a>Fürttípusok a HDInsightban
+## <a name="cluster-types-in-hdinsight"></a>Fürttípusok a HDInsightban
 A HDInsight adott fürttípusokat és fürttestreszabási képességeket is tartalmaz, például lehetővé teszi összetevők, segédprogramok és nyelvek hozzáadását.
 
 ### <a name="spark-kafka-interactive-query-hbase-customized-and-other-cluster-types"></a>Spark, Kafka, interaktív lekérdezés, HBase, egyéni és egyéb fürttípusok

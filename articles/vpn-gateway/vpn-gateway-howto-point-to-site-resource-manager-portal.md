@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/17/2018
+ms.date: 02/02/2018
 ms.author: cherylmc
-ms.openlocfilehash: 39129572ac9908429dc9b9ef64930e896afc355f
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 8cc387fafb2771577b55f57f79cc8b3a6ee8cfa9
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Pont–hely kapcsolat konfigurálása virtuális hálózathoz az Azure natív tanúsítványalapú hitelesítésének használatával: Azure Portal
 
@@ -41,7 +41,7 @@ A kapcsolódó ügyfelek az alábbi hitelesítési módszereket használhatják:
 
 Ez a cikk bemutatja, hogyan állíthat be hitelesítést pont–hely konfigurációkhoz az Azure natív tanúsítványalapú hitelesítésével. Ha a RADIUS használatával szeretné hitelesíteni a csatlakozó ügyfeleket, tekintse meg a [Pont–hely kapcsolat RADIUS-hitelesítéssel](point-to-site-how-to-radius-ps.md) című részt.
 
-![Számítógép csatlakoztatása Azure-beli virtuális hálózathoz – pont-hely kapcsolati diagram](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/p2snativeps.png)
+![Számítógép csatlakoztatása Azure-beli virtuális hálózathoz – pont-hely kapcsolati diagram](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/p2snativeportal.png)
 
 A pont–hely kapcsolatok nem igényelnek VPN-eszközt vagy nyilvános IP-címet. Pont–hely kapcsolat esetén SSTP (Secure Socket Tunneling Protocol) vagy IKEv2-protokoll használatával jön létre a VPN-kapcsolat.
 
@@ -113,12 +113,12 @@ A tanúsítványokat az Azure a virtuális hálózathoz pont–hely VPN-kapcsola
 
 ## <a name="addresspool"></a>6. Az ügyfélcímkészlet hozzáadása
 
-Az ügyfélcímkészlet megadott magánhálózati IP-címek tartománya. A pont–hely VPN-kapcsolattal csatlakozó ügyfelek ebből a tartományból kapnak IP-címet. Olyan magánhálózati IP-címtartományt használjon, amely nincs átfedésben azzal a helyszíni hellyel, amelyről csatlakozik, vagy azzal a virtuális hálózattal, amelyhez csatlakozik.
+Az ügyfélcímkészlet megadott magánhálózati IP-címek tartománya. A pont–hely VPN-kapcsolattal csatlakozó ügyfelek ebből a tartományból kapnak dinamikusan IP-címet. Olyan magánhálózati IP-címtartományt használjon, amely nincs átfedésben azzal a helyszíni hellyel, amelyről csatlakozik, vagy azzal a virtuális hálózattal, amelyhez csatlakozik.
 
 1. Miután létrehozta a virtuális hálózati átjárót, navigáljon a virtuális hálózati átjáró lapjának **Beállítások** részéhez. A **Beállítások** részben kattintson a **Pont–hely konfiguráció** elemre a **Pont–hely konfiguráció** lap megnyitásához.
 
   ![Pont–hely lap](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/gatewayblade.png)
-2. A **Pont-hely konfiguráció** lapon törölheti az automatikusan kitöltött tartományt, majd hozzáadhatja a használni kívánt magánhálózati IP-címtartományt. Kattintson a **Mentés** gombra a beállítás érvényesítéséhez és mentéséhez.
+2. A **Pont-hely konfiguráció** lapon törölheti az automatikusan kitöltött tartományt, majd hozzáadhatja a használni kívánt magánhálózati IP-címtartományt. A VPN-ügyfelek dinamikusan kapnak egy IP-címet a megadott tartományból. Kattintson a **Mentés** gombra a beállítás érvényesítéséhez és mentéséhez.
 
   ![Ügyfélcímkészlet](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/ipaddresspool.png)
 

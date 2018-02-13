@@ -12,23 +12,23 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/15/2017
+ms.date: 01/31/2018
 ms.author: anithaa
 ms.custom: 
-ms.openlocfilehash: 7b5675dacd1d9effd73f3bc51ea4efc0ea6be029
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 61859e86f38e4666be01f218922ce00c698de960
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="virtual-network-service-endpoints-preview"></a>Virtuális hálózati szolgáltatásvégpontok (előzetes verzió)
+# <a name="virtual-network-service-endpoints"></a>Virtuális hálózati szolgáltatásvégpontok
 
 A virtuális hálózatok (VNet) szolgáltatásvégpontjai egy közvetlen kapcsolaton keresztül kiterjesztik a virtuális hálózat magáncímterét és a VNet identitását az Azure-szolgáltatásokra. A végpontok segítségével biztosíthatja, hogy kritikus fontosságú Azure-szolgáltatási erőforrásai csak a virtuális hálózatain legyenek elérhetőek. A VNet felől az Azure-szolgáltatás felé irányuló forgalom mindig a Microsoft Azure gerinchálózatán halad át.
 
-Ez a szolgáltatás előzetes verzióban érhető el a következő Azure-szolgáltatásokhoz és -régiókhoz:
+Ez a szolgáltatás a következő Azure-szolgáltatásokhoz és -régiókhoz érhető el:
 
-- **Azure Storage**: Az Azure nyilvános felhő összes régiója.
-- **Azure SQL**: Az Azure nyilvános felhő összes régiója.
+- **Azure Storage**: Általánosan elérhető. Az Azure nyilvános felhő és az Azure Government minden régiója.
+- **Azure SQL**: Előzetes verzióban érhető el. Az Azure nyilvános felhő összes régiója.
 
 Az előzetes verzióval kapcsolatos legfrissebb értesítésekért tekintse meg az [Azure virtuális hálózati frissítésekkel kapcsolatos](https://azure.microsoft.com/updates/?product=virtual-network) oldalát.
 
@@ -66,7 +66,7 @@ A szolgáltatásvégpontok az alábbi előnyöket nyújtják:
 ### <a name="configuration"></a>Konfiguráció
 
 - A szolgáltatásvégpontokat a virtuális hálózatok alhálózatain konfiguráljuk. A végpontok bármilyen típusú számítási példányokkal működnek, ha azok az adott alhálózaton belül futnak.
-- Egy alhálózatról egy adott szolgáltatáshoz csak egy szolgáltatásvégpontot lehet engedélyezni. A támogatott Azure-szolgáltatásokhoz (például az Azure Storage-hez vagy az Azure SQL Database-hez) egy alhálózaton több szolgáltatásvégpont is konfigurálható.
+- A támogatott Azure-szolgáltatásokhoz (például az Azure Storage-hez vagy az Azure SQL Database-hez) egy alhálózaton több szolgáltatásvégpont is konfigurálható.
 - A virtuális hálózatoknak és az Azure-szolgáltatási erőforrásnak ugyanabban a régióban kell lenniük. A GRS- és RA-GRS Azure Storage-fiókok használata esetén az elsődleges fióknak és a virtuális hálózatnak ugyanabban a régióban kell lennie.
 - Az a virtuális hálózat, ahol a végpont konfigurálva van, lehet az Azure-szolgáltatási erőforrással egyazon előfizetésben, de egy másikban is. A végpontok beállításához és az Azure-szolgáltatások biztosításához szükséges engedélyekkel kapcsolatos további információkért lásd a [kiépítést](#Provisioning) ismertető szakaszt.
 - A támogatott szolgáltatások esetében a szolgáltatásvégpontokat használó virtuális hálózatokhoz biztosíthat új vagy meglévő erőforrásokat is.
@@ -106,7 +106,7 @@ A szolgáltatásvégpontok a virtuális hálózatokon külön-külön konfigurá
 
 További információk a [beépített szerepkörökről](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és a bizonyos engedélyek [egyéni szerepkörökhöz](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) való hozzárendeléséről.
 
-A virtuális hálózatok és az Azure-szolgáltatási erőforrások tartozhatnak ugyanahhoz az előfizetéshez, de különböző előfizetésekhez is. Ha a virtuális hálózat és az Azure-szolgáltatási erőforrások különböző előfizetésekhez tartoznak, akkor az erőforrásoknak ugyanahhoz az Active Directory- (AD-) bérlőhöz kell tartozniuk az előzetes verzió használata során. 
+A virtuális hálózatok és az Azure-szolgáltatási erőforrások tartozhatnak ugyanahhoz az előfizetéshez, de különböző előfizetésekhez is. Ha a virtuális hálózat és az Azure-szolgáltatási erőforrások különböző előfizetésekhez tartoznak, akkor az erőforrásoknak ugyanahhoz az Active Directory- (AD-) bérlőhöz kell tartozniuk. 
 
 ## <a name="pricing-and-limits"></a>Díjszabás és korlátok
 
