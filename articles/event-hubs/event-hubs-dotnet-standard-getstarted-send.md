@@ -1,6 +1,6 @@
 ---
-title: "Események küldése az Azure Event Hubs használatával a .NET-szabvány |} Microsoft Docs"
-description: "Események küldése az Event Hubs .NET-szabvány az első lépések"
+title: "Események küldése az Azure Event Hubsba a .NET Standard használatával | Microsoft Docs"
+description: "Események küldése az Event Hubsba a .NET Standardban – első lépések"
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
@@ -9,53 +9,53 @@ editor:
 ms.assetid: 
 ms.service: event-hubs
 ms.devlang: na
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/10/2017
+ms.date: 02/01/2018
 ms.author: sethm
-ms.openlocfilehash: 5cf01580b53b551064a46282b9005ade6afe9604
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
-ms.translationtype: MT
+ms.openlocfilehash: f59f88d47bfcb3e761f509a3d87c6d068f44e0db
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/03/2018
 ---
-# <a name="get-started-sending-messages-to-azure-event-hubs-in-net-standard"></a>Ismerkedés az Azure Event Hubs a .NET-szabvány üzenetküldésre
+# <a name="get-started-sending-messages-to-azure-event-hubs-in-net-standard"></a>Üzenetek küldése az Azure Event Hubsba a .NET Standardban – első lépések
 
 > [!NOTE]
-> Ez a minta érhető el a [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender).
+> Ez a minta elérhető a [GitHubon](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender).
 
-Ez az oktatóanyag bemutatja, hogyan írhat egy olyan konzolalkalmazást a .NET Core által küldött üzenetek készleteit az eseményközpontba. Futtathatja a [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender) megoldás,-, váltja fel a `EhConnectionString` és `EhEntityPath` a event hub értékű karakterláncokat. Vagy a lépésekkel ebben az oktatóanyagban saját.
+Ez az oktatóanyag bemutatja, hogyan írhat olyan .NET Core-konzolalkalmazást, amely egy üzenetkészletet küld el egy eseményközpontba. A [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender)-megoldást futtathatja a jelenlegi állapotában, ha lecseréli az `EhConnectionString` és `EhEntityPath` karakterláncot az eseményközpontja értékeire. Vagy létrehozhatja a saját megoldását is az oktatóanyag lépései alapján.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [A Microsoft Visual Studio 2015-öt vagy 2017](http://www.visualstudio.com). A példák a Visual Studio 2017 oktatóanyag használja, de a Visual Studio 2015-öt is támogatott.
-* [A .NET core Visual Studio 2015-öt vagy 2017 eszközök](http://www.microsoft.com/net/core).
+* [Microsoft Visual Studio 2015 vagy 2017](http://www.visualstudio.com). Az oktatóanyag példái a Visual Studio 2017-et használják, de a Visual Studio 2015 is támogatott.
+* [.NET Core Visual Studio 2015- vagy 2017-eszközök](http://www.microsoft.com/net/core).
 * Azure-előfizetés.
-* Az event hub névtér.
+* Eseményközpont-névtér.
 
-Üzenetek küldése egy eseményközpontot, a írása C# konzolalkalmazást a Visual Studio használjuk.
+Ez az oktatóanyag a Visual Studióval ír egy C#-konzolalkalmazást az üzenetek eseményközpontba való küldéséhez.
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Event Hubs-névtér és eseményközpont létrehozása
 
-Az első lépés az, hogy használja a [Azure-portálon](https://portal.azure.com) hub eseménytípushoz névtér létrehozása, és szerezze be a felügyeleti hitelesítő adatokat az alkalmazásban az event hubs folytatott kommunikációhoz szükséges. A névtér és az eseményközpontok létrehozásához kövesse a [Ez a cikk](event-hubs-create.md), majd folytassa a következő lépéseket.
+Első lépésként az [Azure Portalon](https://portal.azure.com) hozzon létre egy eseményközpont típusú névteret, és szerezze be az alkalmazása és az eseményközpont közötti kommunikációhoz szükséges felügyeleti hitelesítő adatokat. A névtér és az eseményközpont létrehozásához kövesse az [ebben a cikkben](event-hubs-create.md) látható eljárást, majd folytassa a következő lépésekkel.
 
 ## <a name="create-a-console-application"></a>Konzolalkalmazás létrehozása
 
-Indítsa el a Visual Studiót. Kattintson a **File** (Fájl) menüben a **New** (Új), majd a **Project** (Projekt) elemre. A .NET Core Konzolalkalmazás létrehozása.
+Indítsa el a Visual Studiót. Kattintson a **File** (Fájl) menüben a **New** (Új), majd a **Project** (Projekt) elemre. Hozzon létre egy .NET Core-konzolalkalmazást.
 
 ![Új projekt][1]
 
 ## <a name="add-the-event-hubs-nuget-package"></a>Az Event Hubs NuGet-csomag hozzáadása
 
-Adja hozzá a [ `Microsoft.Azure.EventHubs` ](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) .NET-szabvány library NuGet-csomagot a projekthez az alábbiak szerint: 
+A következő lépésekkel adja hozzá a [`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) .NET Standard kódtár NuGet-csomagot a projekthez: 
 
 1. Kattintson a jobb gombbal az újonnan létrehozott projektre, és válassza a **Manage Nuget Packages** (NuGet-csomagok kezelése) lehetőséget.
-2. Kattintson a **Tallózás** fülre, majd keresse meg a "Microsoft.Azure.EventHubs", és válassza ki a **Microsoft.Azure.EventHubs** csomag. Kattintson a **Telepítés** gombra a telepítés befejezéséhez, majd zárja be a párbeszédpanelt.
+2. Kattintson a **Tallózás** fülre, keressen rá a „Microsoft.Azure.EventHubs” kifejezésre, majd válassza ki a **Microsoft.Azure.EventHubs** csomagot. Kattintson a **Telepítés** gombra a telepítés befejezéséhez, majd zárja be a párbeszédpanelt.
 
-## <a name="write-some-code-to-send-messages-to-the-event-hub"></a>Kódírást az üzenetek küldése az event hubs
+## <a name="write-some-code-to-send-messages-to-the-event-hub"></a>Írjon egy kódrészletet az üzenetek eseményközpontba való elküldéséhez
 
-1. Adja hozzá az alábbi `using` utasításokat a Program.cs fájl elejéhez.
+1. Adja hozzá az alábbi `using` utasításokat a Program.cs fájl elejéhez:
 
     ```csharp
     using Microsoft.Azure.EventHubs;
@@ -63,7 +63,7 @@ Adja hozzá a [ `Microsoft.Azure.EventHubs` ](https://www.nuget.org/packages/Mic
     using System.Threading.Tasks;
     ```
 
-2. Adja hozzá a állandók a `Program` osztály az Event Hubs kapcsolati karakterlánc és egyéb entitások elérési utat (egyéni esemény központ neve). Cserélje le a helyőrzőket zárójelek közé a megfelelő értékeket az eseményközpont létrehozásakor beszerzett. Győződjön meg arról, hogy a `{Event Hubs connection string}` a névtérszintű kapcsolati karakterláncot, és nem a event hub-karakterlánc. 
+2. Adjon állandókat a `Program` osztályhoz az Event Hubs kapcsolati karakterláncával és entitásútvonalával (egyéni eseményközpontnév). Cserélje le a zárójelben lévő helyőrzőket az eseményközpont létrehozásakor beszerzett megfelelő értékekre. Győződjön meg arról, hogy az `{Event Hubs connection string}` a névtérszintű kapcsolati karakterlánc, és nem az eseményközpont karakterlánca. 
 
     ```csharp
     private static EventHubClient eventHubClient;
@@ -71,14 +71,14 @@ Adja hozzá a [ `Microsoft.Azure.EventHubs` ](https://www.nuget.org/packages/Mic
     private const string EhEntityPath = "{Event Hub path/name}";
     ```
 
-3. Nevű új módszer `MainAsync` számára a `Program` osztály, az alábbiak szerint:
+3. Adjon hozzá egy új, `MainAsync` nevű metódust a `Program` osztályhoz az alábbiak szerint.
 
     ```csharp
     private static async Task MainAsync(string[] args)
     {
         // Creates an EventHubsConnectionStringBuilder object from the connection string, and sets the EntityPath.
-        // Typically, the connection string should have the entity path in it, but for the sake of this simple scenario
-        // we are using the connection string from the namespace.
+        // Typically, the connection string should have the entity path in it, but this simple scenario
+        // uses the connection string from the namespace.
         var connectionStringBuilder = new EventHubsConnectionStringBuilder(EhConnectionString)
         {
             EntityPath = EhEntityPath
@@ -95,7 +95,7 @@ Adja hozzá a [ `Microsoft.Azure.EventHubs` ](https://www.nuget.org/packages/Mic
     }
     ```
 
-4. Nevű új módszer `SendMessagesToEventHub` számára a `Program` osztály, az alábbiak szerint:
+4. Adjon hozzá egy új, `SendMessagesToEventHub` nevű metódust a `Program` osztályhoz az alábbiak szerint.
 
     ```csharp
     // Creates an event hub client and sends 100 messages to the event hub.
@@ -121,7 +121,7 @@ Adja hozzá a [ `Microsoft.Azure.EventHubs` ](https://www.nuget.org/packages/Mic
     }
     ```
 
-5. Adja hozzá a következő kódot a `Main` metódust a `Program` osztály.
+5. Adja hozzá a következő kódsort a `Main` metódushoz a `Program` osztályban:
 
     ```csharp
     MainAsync(args).GetAwaiter().GetResult();
@@ -151,8 +151,8 @@ Adja hozzá a [ `Microsoft.Azure.EventHubs` ](https://www.nuget.org/packages/Mic
             private static async Task MainAsync(string[] args)
             {
                 // Creates an EventHubsConnectionStringBuilder object from the connection string, and sets the EntityPath.
-                // Typically, the connection string should have the entity path in it, but for the sake of this simple scenario
-                // we are using the connection string from the namespace.
+                // Typically, the connection string should have the entity path in it, but this simple scenario
+                // uses the connection string from the namespace.
                 var connectionStringBuilder = new EventHubsConnectionStringBuilder(EhConnectionString)
                 {
                     EntityPath = EhEntityPath
@@ -197,10 +197,10 @@ Adja hozzá a [ `Microsoft.Azure.EventHubs` ](https://www.nuget.org/packages/Mic
 
 Gratulálunk! Üzeneteket küldött egy eseményközpontba.
 
-## <a name="next-steps"></a>Következő lépések
-Az alábbi webhelyeken további információt talál az Event Hubsról:
+## <a name="next-steps"></a>További lépések
+Az alábbi hivatkozásokon talál további információt az Event Hubsról:
 
-* [Események fogadása az Event Hubs](event-hubs-dotnet-standard-getstarted-receive-eph.md)
+* [Események fogadása az Event Hubsról](event-hubs-dotnet-standard-getstarted-receive-eph.md)
 * [Event Hubs – áttekintés](event-hubs-what-is-event-hubs.md)
 * [Eseményközpont létrehozása](event-hubs-create.md)
 * [Event Hubs – gyakori kérdések](event-hubs-faq.md)

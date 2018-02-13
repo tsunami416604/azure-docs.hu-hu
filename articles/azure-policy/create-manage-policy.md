@@ -1,6 +1,6 @@
 ---
-title: "Azure-házirend segítségével kényszeríteni a szervezeti megfelelőségi szabályzatok létrehozása és kezelése |} Microsoft Docs"
-description: "Azure házirend segítségével szabványok kényszerítése, szabályozási megfelelőségi és naplózási követelményeknek, kapcsolatos költségek szabályozását, biztosítja az egységességet biztonsági és teljesítménynövelő és vállalati széles tervezési alapelvek ugyanazok."
+title: "Az Azure Policy használata szabályzatok létrehozásához és kezeléséhez a vállalati megfelelőségi szabályzatok kikényszerítéséhez | Microsoft Docs"
+description: "Az Azure Policy szabványok kikényszerítésére, előírt megfelelőségi és naplózási követelmények teljesítésére, költségek szabályozására, a konzisztens biztonság és teljesítmény fenntartására és az egész vállalatra kiterjedő tervezési alapelvek meghatározására használható."
 services: azure-policy
 keywords: 
 author: bandersmsft
@@ -9,78 +9,78 @@ ms.date: 01/18/2018
 ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: d6a588e1d8a20ffba555461cf98009f3894ed761
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
-ms.translationtype: MT
+ms.openlocfilehash: a3d47abcbf41133b9bc7194fd97f9b66a70003ff
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/03/2018
 ---
-# <a name="create-and-manage-policies-to-enforce-compliance"></a>Kényszeríteni a megfelelőségi szabályzatok létrehozása és kezelése
+# <a name="create-and-manage-policies-to-enforce-compliance"></a>Szabályzatok létrehozása és kezelése a megfelelőség kikényszerítése céljából
 
-Az Azure-ban a szabályzatok létrehozása és kezelése megértése fontos megfelel a vállalati szabványoknak és a szolgáltatásszint-szerződések marad. Ebben az oktatóanyagban elsajátíthatja, célú Azure-házirend létrehozása, hozzárendelése és házirendek, mint a szervezeten belüli kezeléséhez kapcsolódó gyakori feladatokat:
+Fontos megismernie, hogy hogyan hozhat létre és kezelhet szabályzatokat az Azure-ban annak érdekében, hogy megfeleljen a vállalati szabványoknak és a szolgáltatói szerződéseknek. Ez az oktatóanyag bemutatja, hogyan használhatja az Azure Policyt a vállalaton belüli szabályzatok létrehozásához, hozzárendeléséhez és kezeléséhez kapcsolódó gyakori feladatok elvégzésére, például a következőkre:
 
 > [!div class="checklist"]
-> * Egy házirendet hoz létre a jövőben erőforrások feltételt érvényesítését
-> * Létrehozni és hozzárendelni egy kezdeményezésére definíciója erőforrások több megfelelőségi követéséről
-> * Nem megfelelő, vagy az elutasított resource megoldásához
-> * Egy új házirend megvalósítása a szervezeten belül
+> * Szabályzat hozzárendelése egy, a jövőben létrehozandó erőforrásokra vonatkozó feltétel kikényszerítésére
+> * Kezdeményezési definíció létrehozása és hozzárendelése több erőforrás megfelelőségének nyomon követése céljából
+> * Nem megfelelő vagy elutasított erőforrás feloldása
+> * Új szabályzat megvalósítása a vállalaton belül
 
-Ha szeretné a házirendet a meglévő erőforrások aktuális megfelelőségi állapotának azonosítására, a gyors üzembe helyezés cikkek ismerteti, hogyan. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha szeretne hozzárendelni egy szabályzatot a meglévő erőforrások aktuális megfelelőségi állapotának azonosításához, a rövid útmutató cikkei ismertetik ennek módját. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="assign-a-policy"></a>A házirend kijelölése
+## <a name="assign-a-policy"></a>Szabályzat hozzárendelése
 
-Az első lépés betartása Azure házirend, hogy rendelje hozzá a házirend-definíció. Házirend-definíció határozza meg, milyen feltétel, a házirend kényszerítve van, és a végrehajtandó műveletet. Ebben a példában hozzárendelése nevű beépített házirend-definíció *szükséges SQL Server verziója 12.0*, kényszeríteni a feltétel, hogy az összes SQL Server-adatbázis megfelelőségének v12.0 kell lennie.
+A megfelelőség Azure Policy használatával történő kikényszerítésének első lépése egy szabályzatdefiníció hozzárendelése. A szabályzatdefiníció határozza meg, hogy milyen feltétel teljesülése esetében lesz kikényszerítve a szabályzat, illetve milyen művelet lesz végrehajtva. Ebben a példában rendeljen hozzá egy *Az SQL Server 12.0-ás verziójának megkövetelése* nevű beépített szabályzatdefiníciót. Ezzel kikényszeríti azt a feltételt, hogy minden SQL Server-adatbázisnak 12.0-ás verziójúnak kell lennie ahhoz, hogy megfelelő legyen.
 
-1. Indítsa el az Azure szolgáltatás az Azure portálon keres, majd válassza **házirend** a bal oldali ablaktáblán.
+1. Indítsa el az Azure Policy szolgáltatást az Azure Portalon. Ehhez keresse meg, majd válassza ki a **Szabályzat** elemet a bal oldali panelen.
 
    ![Szabályzat keresése](media/assign-policy-definition/search-policy.png)
 
-2. Válassza ki a **Hozzárendelések** elemet az Azure Policy webhely bal oldali panelén. Olyan házirendet, amely belül egy adott hatókörhöz van hozzárendelve.
+2. Válassza ki a **Hozzárendelések** elemet az Azure Policy webhely bal oldali panelén. A hozzárendelés egy olyan szabályzat, amely egy adott hatókörön belül érvényes.
 3. Válassza a **Szabályzat hozzárendelése** lehetőséget a **Hozzárendelések** panel tetején.
 
    ![Szabályzatdefiníció hozzárendelése](media/create-manage-policy/select-assign-policy.png)
 
-4. A **Szabályzat hozzárendelése** oldalon kattintson a ![Szabályzatdefiníció gombra](media/assign-policy-definition/definitions-button.png) a **Szabályzat** mező mellett az elérhető definíciók listájának megnyitásához. Szűrheti a házirend-definíció **típus** való *beépített* összes megtekintése és azok leírásai.
+4. A **Szabályzat hozzárendelése** oldalon kattintson a ![Szabályzatdefiníció gombra](media/assign-policy-definition/definitions-button.png) a **Szabályzat** mező mellett az elérhető definíciók listájának megnyitásához. A szabályzatdefiníció **Típus** tulajdonságát szűrheti *Beépített* érték alapján az összes megtekintéséhez és leírásaik elolvasásához.
 
    ![Elérhető szabályzatdefiníciók megnyitása](media/create-manage-policy/open-policy-definitions.png)
 
-5. Válassza ki **szükséges SQL Server verzió 12.0**. Ha azonnal nem található, írja be a **szükséges SQL Server verziója 12.0** azokat a keresési mezőbe, majd nyomja le az ENTER BILLENTYŰT.
+5. Válassza az **Az SQL Server 12.0-ás verziójának megkövetelése** lehetőséget. Ha azonnal nem találja, írja be az **Az SQL Server 12.0-ás verziójának megkövetelése** kifejezést a keresőmezőbe, majd nyomja le az ENTER billentyűt.
 
-   ![Keresse meg a házirend](media/create-manage-policy/select-available-definition.png)
+   ![Szabályzat megkeresése](media/create-manage-policy/select-available-definition.png)
 
-6. A megjelenő **neve** automatikusan ki van töltve, de ez módosítható. Ebben a példában a használjon *szükséges SQL Server verziója 12.0*. Ha szeretné hozzáadhat egy **Leírást**. A leírás előírja, hogyan biztosítja a házirend-hozzárendelést, ebben a környezetben létrehozott összes SQL-kiszolgálók adatait 12.0 verziója.
+6. A megjelenő **Név** mezőt automatikusan kitölti a rendszer, de ezt módosíthatja. Ebben a példában használja az *Az SQL Server 12.0-ás verziójának megkövetelése* nevet. Ha szeretné hozzáadhat egy **Leírást**. A leírás információt nyújt arról, hogyan biztosítja ez a szabályzat-hozzárendelés azt, hogy a környezetben létrehozott minden SQL-kiszolgáló 12.0-ás verziójú legyen.
 
 7. Módosítsa a tarifacsomagot a **Standard** szintre, hogy a szabályzat kiterjedjen a meglévő erőforrásokra.
 
-   Az Azure Policy-ban két tarifacsomag létezik – *Ingyenes* és *Standard*. Az Ingyenes szinten csak a jövőbeli erőforrások esetében kényszeríthet szabályzatokat, míg a Standard szinten már meglévő erőforrások esetében is, hogy jobban átlássa a megfelelőségi állapotot. Azure házirend jelenleg előzetes verzióban érhető, mert nincs még egy kiadott árképzési modellt, így Ön nem kap egy számlázási kiválasztásának *szabványos*. A díjszabással kapcsolatos további információkért tekintse meg a következőt: [Azure Policy díjszabás](https://azure.microsoft.com/pricing/details/azure-policy).
+   Az Azure Policy-ban két tarifacsomag létezik – *Ingyenes* és *Standard*. Az Ingyenes szinten csak a jövőbeli erőforrások esetében kényszeríthet szabályzatokat, míg a Standard szinten már meglévő erőforrások esetében is, hogy jobban átlássa a megfelelőségi állapotot. Mivel az Azure Policy előzetes verzióban érhető el, még nincs kibocsátott díjszabási modell, ezért nem fog számlát kapni a *Standard* szint kiválasztásakor. A díjszabással kapcsolatos további információkért tekintse meg a következőt: [Azure Policy díjszabás](https://azure.microsoft.com/pricing/details/azure-policy).
 
-8. Válassza ki a **hatókör** -előfizetés (vagy erőforráscsoport) korábban regisztrált. A hatókör határozza meg, hogy a szabályzat-hozzárendelés milyen erőforrások vagy erőforráscsoportok esetében lesz kényszerítve. Ez egyetlen előfizetéstől teljes erőforráscsoportokig terjedhet.
+8. Válassza ki a **Hatókört** – az előzőleg regisztrált előfizetést (vagy erőforráscsoportot). A hatókör határozza meg, hogy a szabályzat-hozzárendelés milyen erőforrások vagy erőforráscsoportok esetében lesz kényszerítve. Ez egyetlen előfizetéstől teljes erőforráscsoportokig terjedhet.
 
-   Ez a példa a **Azure Analytics kapacitás fejlesztői** előfizetés. Az előfizetés eltérnek.
+   Ebben a példában az **Azure Analytics Capacity Dev** előfizetést használjuk. Saját előfizetése ettől eltérhet.
 
 10. Válassza a **Hozzárendelés** elemet.
 
-## <a name="implement-a-new-custom-policy"></a>Egy új egyéni házirend megvalósítása
+## <a name="implement-a-new-custom-policy"></a>Új egyéni szabályzat megvalósítása
 
-Most, hogy a beépített házirend-definíció hozzárendelt, megteheti több Azure-házirendnek. Ezután hozzon létre egy új egyéni házirend költségek biztosításával, amely a környezetben létrehozott virtuális gépek a G sorozat nem lehet menteni. Így minden alkalommal, amikor a szervezet felhasználó próbál hozzon létre virtuális Gépet a G sorozatban a kérelmet a rendszer megtagadja.
+Most, hogy hozzárendelt egy beépített szabályzatdefiníciót, még többet végezhet el az Azure Policyvel. Következő lépésként hozzon létre egy új egyéni szabályzatot a költségek csökkentéséhez, amely megszabja, hogy a környezetben létrehozott virtuális gépek nem lehetnek G sorozatúak. Így valahányszor a cég egy felhasználója megpróbál létrehozni egy G sorozatú virtuális gépet, a rendszer megtagadja a kérelmet.
 
-1. Válassza ki **Definition** alatt **szerzői műveletek** a bal oldali ablaktáblán.
+1. A bal oldali panel **Létrehozás** területén válassza a **Definíció** lehetőséget.
 
-   ![A szerzői definíciót](media/create-manage-policy/definition-under-authoring.png)
+   ![Definíció elem a létrehozás területen](media/create-manage-policy/definition-under-authoring.png)
 
-2. Válassza ki **+ házirend-definíció**.
-3. Írja be a következőket:
+2. Válassza a **+ Szabályzatdefiníció** lehetőséget.
+3. Adja meg a következőket:
 
-   - A házirend - definíció neve *szükséges VM kisebb, mint a G adatsorozat termékváltozatok*
-   - Leírja, hogy milyen a házirend-definíció az célja, hogy nincs – a házirend-definíció kényszeríti annak engedélyezése, ebben a hatókörben létrehozott összes virtuális gép rendelkezik-e termékváltozatok kisebb, mint a költségek csökkentése a G adatsorozat.
-   - Az előfizetés, ahol a házirend-definíció van. Ebben az esetben a házirend-definíció található **Advisor Analytics kapacitás fejlesztői**. Az előfizetési lista eltérnek.
-   - Válassza a meglévő beállítások, vagy hozzon létre új kategóriát a házirend-definíció.
-   - Másolja az alábbi json-kódot, és módosítsa az igényeinek:
-      - A házirend-paraméterek.
-      - A szabályok/Házirendfeltételek, ebben az esetben – G adatsorozat egyenlő méretű Termékváltozat-méretét
-      - A házirend hatása ebben az esetben – **Megtagadás**.
+   - A szabályzatdefiníció neve – *A G sorozat alatti termékváltozat megkövetelése a virtuális gépek esetében*
+   - A szabályzatdefiníciók céljának leírása – Ez a szabályzatdefiníció kikényszeríti, hogy az ebben a hatókörben létrehozott minden virtuális gép termékváltozata a G sorozat alatti legyen a költségek csökkentése érdekében.
+   - Az előfizetés, amelyben a szabályzatdefiníció található. Ebben az esetben a szabályzatdefiníció az **Advisor Analytics Capacity Dev** helyen található. Saját előfizetéseinek listája ettől eltérhet.
+   - Válasszon a meglévő lehetőségek közül, vagy hozzon létre egy új kategóriát ehhez a szabályzatdefinícióhoz.
+   - Másolja az alábbi JSON-kódot, és frissítse az igényeinek megfelelően az alábbiakkal:
+      - A szabályzat paraméterei.
+      - A szabályzat szabályai/feltételei, ebben az esetben: a virtuális gép termékváltozata megegyezik a G sorozattal
+      - A szabályzat hatása, ebben az esetben: **Megtagadás**.
 
-    Ez mit a json hasonlóan kell kinéznie. A módosított kód beillesztése az Azure-portálon.
+    A JSON-kódnak így kell kinéznie. Illessze be a módosított kódot az Azure Portalra.
 
     ```json
 {
@@ -104,22 +104,22 @@ Most, hogy a beépített házirend-definíció hozzárendelt, megteheti több Az
 }
     ```
 
-    Értékét a *tulajdonság mezőben* házirendben szabálynak kell lennie a következők egyikét: neve, típusa, hely, címkék vagy alias. Például: `"Microsoft.Compute/VirtualMachines/Size"`.
+    A szabályzat szabályában a *mezőtulajdonság* értékének a következők egyikének kell lennie: Név, Típus, Hely, Címkék vagy alias. Például: `"Microsoft.Compute/VirtualMachines/Size"`.
 
-    További példákért json-kód megtekintéséhez olvassa el a [sablonok Azure házirend](json-samples.md) cikk.
+    További JSON-mintakódok megtekintéséhez olvassa el a [Sablonok az Azure Policyhez](json-samples.md) című cikket.
 
 4. Kattintson a **Mentés** gombra.
 
-## <a name="create-a-policy-definition-with-rest-api"></a>Házirend-definíció létrehozása REST API-hoz
+## <a name="create-a-policy-definition-with-rest-api"></a>Szabályzatdefiníció létrehozása REST API-val
 
-Létrehozhat egy házirendet a REST API-t házirend-definíciók. A REST API lehetővé teszi létrehozása és törlése a házirend-definíciók és meglévő definíciók adatainak beolvasása.
-Házirend-definíció létrehozásához használja a következő példát:
+Létrehozhat egy szabályzatot a szabályzatdefiníciókhoz tartozó REST API-val. A REST API lehetővé teszi a szabályzatdefiníciók létrehozását és törlését, valamint a meglévő definíciók információinak lekérését.
+Szabályzatdefiníció létrehozásához használja a következő példát:
 
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.authorization/policydefinitions/{policyDefinitionName}?api-version={api-version}
 
 ```
-Az alábbi példához hasonló egy kérelemtörzset a következők:
+Használjon az alábbi példában láthatóhoz hasonló kéréstörzset:
 
 ```
 {
@@ -151,13 +151,13 @@ Az alábbi példához hasonló egy kérelemtörzset a következők:
 }
 ```
 
-## <a name="create-a-policy-definition-with-powershell"></a>Házirend-definíció létrehozása a PowerShell használatával
+## <a name="create-a-policy-definition-with-powershell"></a>Szabályzatdefiníció létrehozása a PowerShell használatával
 
-A PowerShell-példa folytatása előtt győződjön meg arról, hogy a legújabb Azure PowerShell telepítése. Házirend-paraméterek 3.6.0 verzióban lettek hozzáadva. Ha egy korábbi, a példák, hibaüzenetet jelzi, hogy a paraméter nem található.
+A PowerShell-példára való továbblépés előtt győződjön meg arról, hogy telepítette az Azure PowerShell legújabb verzióját. A szabályzatparaméterek a 3.6.0-ás verzióban lettek hozzáadva. Ha egy korábbi verzióval rendelkezik, a példák hibaüzenetet adnak vissza, amely tájékoztatja, hogy a paraméter nem található.
 
-A szabályzat definíciója használatával hozhat létre a `New-AzureRmPolicyDefinition` parancsmag.
+Szabályzatdefiníciót a `New-AzureRmPolicyDefinition` parancsmag használatával is létrehozhat.
 
-Házirend-definíció létrehozása fájlból, adja át az elérési út a fájlhoz. Külső fájlra használja az alábbi példa:
+Szabályzatdefiníció fájlból történő létrehozásához adja meg a fájl elérési útját. Külső fájl esetében használja az alábbi példát:
 
 ```
 $definition = New-AzureRmPolicyDefinition `
@@ -166,7 +166,7 @@ $definition = New-AzureRmPolicyDefinition `
     -Policy 'https://raw.githubusercontent.com/Azure/azure-policy-samples/master/samples/Storage/storage-account-access-tier/azurepolicy.rules.json'
 ```
 
-Egy helyi fájl használható használja a következő példát:
+Helyi fájl esetében használja a következő példát:
 
 ```
 $definition = New-AzureRmPolicyDefinition `
@@ -175,7 +175,7 @@ $definition = New-AzureRmPolicyDefinition `
     -Policy "c:\policies\coolAccessTier.json"
 ```
 
-Egy beágyazott szabály létrehozásához a házirend-definíció, használja a következő példát:
+Beágyazott szabállyal rendelkező szabályzatdefiníció létrehozásához használja a következő példát:
 
 ```
 $definition = New-AzureRmPolicyDefinition -Name denyCoolTiering -Description "Deny cool access tiering for storage" -Policy '{
@@ -203,8 +203,8 @@ $definition = New-AzureRmPolicyDefinition -Name denyCoolTiering -Description "De
 }'
 ```
 
-A kimeneti tárolja egy `$definition` objektum, amely házirend-hozzárendelés során használatos.
-Az alábbi példakód létrehozza a házirend-definíció paramétereket tartalmaz:
+A kimenetet egy `$definition` objektumban tárolja a rendszer, amely a szabályzat-hozzárendelés során használatos.
+Az alábbi példában paramétereket tartalmazó szabályzatdefiníciót hozunk létre:
 
 ```
 $policy = '{
@@ -241,15 +241,15 @@ $parameters = '{
 $definition = New-AzureRmPolicyDefinition -Name storageLocations -Description "Policy to specify locations for storage accounts." -Policy $policy -Parameter $parameters
 ```
 
-## <a name="view-policy-definitions"></a>Házirend-definíciók megtekintése
+## <a name="view-policy-definitions"></a>Szabályzatdefiníciók megtekintése
 
-Az előfizetés az összes házirend-definíciók, használja a következő parancsot:
+Az előfizetés összes szabályzatdefiníciójának megtekintéséhez használja az alábbi parancsot:
 
 ```
 Get-AzureRmPolicyDefinition
 ```
 
-Összes elérhető, házirend-beállítást, többek között beépített házirendek adja vissza. Minden egyes házirend eredmény abban az esetben a következő formátumban:
+Visszaadja az összes elérhető szabályzatdefiníciót, köztük a beépített szabályzatokat is. Minden szabályzat az alábbi formátumban lesz visszaadva:
 
 ```
 Name               : e56962a6-4747-49cd-b67b-bf8b01975c4c
@@ -262,10 +262,10 @@ Properties         : @{displayName=Allowed locations; policyType=BuiltIn; descri
 PolicyDefinitionId : /providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c
 ```
 
-## <a name="create-a-policy-definition-with-azure-cli"></a>Házirend-definíció létrehozása az Azure parancssori felülettel
+## <a name="create-a-policy-definition-with-azure-cli"></a>Szabályzatdefiníció létrehozása az Azure CLI használatával
 
-A házirend-definíció a házirend-definíció parancs az Azure parancssori felület használatával hozhat létre.
-Egy beágyazott szabály létrehozásához a házirend-definíció, használja a következő példát:
+A szabályzatdefiníció paranccsal az Azure CLI használatával is létrehozhat egy szabályzatdefiníciót.
+Beágyazott szabállyal rendelkező szabályzatdefiníció létrehozásához használja a következő példát:
 
 ```
 az policy definition create --name denyCoolTiering --description "Deny cool access tiering for storage" --rules '{
@@ -293,15 +293,15 @@ az policy definition create --name denyCoolTiering --description "Deny cool acce
 }'
 ```
 
-## <a name="view-policy-definitions"></a>Házirend-definíciók megtekintése
+## <a name="view-policy-definitions"></a>Szabályzatdefiníciók megtekintése
 
-Az előfizetés az összes házirend-definíciók, használja a következő parancsot:
+Az előfizetés összes szabályzatdefiníciójának megtekintéséhez használja az alábbi parancsot:
 
 ```
 az policy definition list
 ```
 
-Összes elérhető, házirend-beállítást, többek között beépített házirendek adja vissza. Minden egyes házirend eredmény abban az esetben a következő formátumban:
+Visszaadja az összes elérhető szabályzatdefiníciót, köztük a beépített szabályzatokat is. Minden szabályzat az alábbi formátumban lesz visszaadva:
 
 ```
 {                                                            
@@ -324,87 +324,87 @@ az policy definition list
 }
 ```
 
-## <a name="create-and-assign-an-initiative-definition"></a>Létrehozni és hozzárendelni egy kezdeményezésére definíciója
+## <a name="create-and-assign-an-initiative-definition"></a>Kezdeményezési definíció létrehozása és hozzárendelése
 
-Kezdeményezésére definition egy átfogó cél eléréséhez több házirend-definíciók csoportosíthatja. Győződjön meg arról, hogy az erőforrás-definícióban hatókörén belül maradnak megfelel a házirend-definíciók a kezdeményezésére definícióját alkotó egy kezdeményezésére definition hoz létre.  Tekintse meg a [Azure házirendek – áttekintés](./azure-policy-introduction.md) kezdeményezésére definíciók további információt.
+A kezdeményezési definícióval több szabályzatdefiníciót csoportosíthat egy átfogó cél eléréséhez. Létrehozhat egy kezdeményezési definíciót annak biztosítása érdekében, hogy a definíció hatókörén belüli erőforrások megfelelők maradjanak a kezdeményezési definíciót alkotó szabályzatdefinícióknak.  További információt a kezdeményezési definíciókról az [Azure Policy – áttekintés](./azure-policy-introduction.md) című részben talál.
 
-### <a name="create-an-initiative-definition"></a>Hozzon létre egy kezdeményezésére definíciója
+### <a name="create-an-initiative-definition"></a>Kezdeményezési definíció létrehozása
 
-1. Válassza ki **definíciók** alatt **szerzői műveletek** a bal oldali ablaktáblán.
+1. A bal oldali panel **Létrehozás** területén válassza a **Definíciók** lehetőséget.
 
-   ![Válassza ki a definíciók](media/create-manage-policy/select-definitions.png)
+   ![Definíciók kiválasztása](media/create-manage-policy/select-definitions.png)
 
-2. Válassza ki **kezdeményezésére Definition** az oldal tetején, ez a beállítás szükséges, hogy a **kezdeményezésére Definition** űrlap.
-3. Adja meg a név és leírás kezdeményezésére.
+2. A lap tetején válassza a **Kezdeményezési definíció** lehetőséget. Ekkor megnyílik a **Kezdeményezési definíció** űrlap.
+3. Adja meg a kezdeményezés nevét és leírását.
 
-   Ebben a példában gondoskodjon arról, hogy erőforrásokat az beszerzése biztonságos házirend-definíciók. Igen, a kezdeményező neve lenne **beolvasása biztonságos**, és a leírás lenne: **e kezdeményezés kezelésére tartozó erőforrások biztonságossá tétele az összes házirend-definíciók létrehozása**.
+   Ebben a példában győződjön meg arról, hogy az erőforrások megfelelnek a biztonságossá tételről szóló szabályzatdefinícióknak. Tehát a kezdeményezés neve **Biztonságossá tétel** lesz, a leírás pedig a következő: **Ez a kezdeményezés az erőforrások biztosításához kapcsolódó szabályzatdefiníciók kezelésére lett létrehozva**.
 
    ![Kezdeményezési definíció](media/create-manage-policy/initiative-definition.png)
 
-4. Tallózzon a listája **definíciók** válassza ki a házirend definíciójában található szeretné, hogy kezdeményezésére hozzá. Az a **beolvasása biztonságos** kezdeményezésére **Hozzáadás** a következő házirend-definíciók a beépített:
-   - SQL Server verziója 12.0 megkövetelése
-   - A Security Center nem védett webalkalmazások figyeléséhez.
-   - A figyelő megengedő hálózaton keresztül a Security Center.
-   - A figyelő lehetséges alkalmazás engedélyezése a biztonsági központban.
-   - A figyelő a virtuális gépek lemezei a biztonsági központban titkosítás nélkül.
+4. Tekintse át az **Elérhető definíciók** listáját, és válassza ki azt a szabályzatdefiníciót (vagy definíciókat), amelyet hozzá szeretne adni a kezdeményezéshez. A **Biztonságossá tétel** kezdeményezéshez adja hozzá az alábbi beépített szabályzatdefiníciókat a **Hozzáadás** lehetőséggel.
+   - Az SQL Server 12.0-ás verziójának megkövetelése
+   - Nem védett webalkalmazások monitorozása a Security Centerben.
+   - Megengedő hálózat monitorozása a Security Centerben
+   - Alkalmazások lehetséges engedélyezési listáinak monitorozása a Security Centerben.
+   - Titkosítatlan virtuálisgép-lemezek monitorozása a Security Centerben.
 
-   ![Kezdeményezésére definíciók](media/create-manage-policy/initiative-definition-2.png)
+   ![Kezdeményezési definíciók](media/create-manage-policy/initiative-definition-2.png)
 
-   A listáról a házirend-definíciók kiválasztása után megjelenik e **házirendek és a paraméterek**, a fenti ábrán látható módon.
+   Miután kiválasztotta a listáról a szabályzatdefiníciókat, azok a **Szabályzatok és paraméterek** területen jelennek meg, ahogy a fenti képen látható.
 
-5. Használjon **Definiálás helye** tárolja a definíció előfizetés kiválasztásához. Kattintson a **Mentés** gombra.
+5. Használja a **Definíció helye** lehetőséget a definíciót tároló előfizetés kiválasztásához. Kattintson a **Mentés** gombra.
 
-### <a name="assign-an-initiative-definition"></a>Rendelje hozzá egy kezdeményezésére definíciója
+### <a name="assign-an-initiative-definition"></a>Kezdeményezési definíció hozzárendelése
 
-1. Lépjen a **definíciók** lap **szerzői műveletek**.
-2. Keresse meg a **beolvasása biztonságos** létrehozott kezdeményezésére definíciója.
-3. A kezdeményezésére definíciót, majd válassza ki és **hozzárendelése**.
+1. Lépjen a **Létrehozás** terület **Definíciók** lapjára.
+2. Keresse meg az Ön által létrehozott **Biztonságossá tétel** kezdeményezési definíciót.
+3. Válassza ki a kezdeményezési definíciót, majd kattintson a **Hozzárendelés** gombra.
 
-   ![Rendelje hozzá a definíció](media/create-manage-policy/assign-definition.png)
+   ![Definíció hozzárendelése](media/create-manage-policy/assign-definition.png)
 
-4. Töltse ki a **hozzárendelés** képernyőn írja be a következő példa adatokat. A saját információt is használhatja.
-   - Name: biztonságos-hozzárendelést kapnak
-   - Leírás: A kezdeményezésére hozzárendelés megfelelő csoportját, a házirend-definíciók kényszeríteni a **Azure Advisor kapacitás fejlesztői** előfizetés.
-   - IP-címek: Standard
-   - Alkalmazza a hozzárendelt helyének hatókör: **Azure Advisor kapacitás fejlesztői**. Választhatja a saját előfizetésbe és erőforráscsoportba csoport.
+4. Töltse ki a **Hozzárendelés** űrlapot a következő példaadatok megadásával. A saját adatait is használhatja.
+   - Név: Biztonságossá tétel hozzárendelése
+   - Leírás: Ez a kezdeményezési hozzárendelés a jelen szabályzatdefiníció-csoport az **Azure Advisor Capacity Dev** előfizetésben való kikényszerítésére lett létrehozva.
+   - Tarifacsomag: Standard
+   - A hatókör, amelyben a hozzárendelést alkalmazni szeretné: **Azure Advisor Capacity Dev**. Választhat saját előfizetést és erőforráscsoportot.
 
 5. Válassza a **Hozzárendelés** elemet.
 
-## <a name="resolve-a-non-compliant-or-denied-resource"></a>Nem megfelelő, vagy az elutasított resource megoldásához
+## <a name="exempt-a-non-compliant-or-denied-resource-using-exclusion"></a>Nem megfelelő vagy elutasított erőforrás mentesítése Kizárás használatával
 
-Követően a fenti példában a házirend-definíció szükséges az SQL server verziója 12.0 hozzárendelése után egy SQL server különböző verziójával szeretné beolvasni megtagadva. Ebben a szakaszban, végezze el a visszautasított kísérlete hozzon létre egy másik verziót az SQL server kivételként kérésével megoldása. A kizárási lényegében megakadályozza, hogy a házirendek kikényszerítése. Kivételként alkalmazhat egy erőforráscsoportot, vagy az egyes erőforrásokra kizárási szűkítheti.
+A fenti példát követve, miután hozzárendelte a szabályzatdefiníciót az SQL Server 12.0-ás verziójának megköveteléséhez, egy eltérő verziójú SQL-kiszolgáló létrehozását a rendszer elutasítja. Ez a szakasz egy eltérő verziójú SQL-kiszolgáló létrehozására tett elutasított kísérlet kizárás kérelmezésével történő feloldásán vezeti végig. A kizárás lényegében a szabályzat kikényszerítését akadályozza meg. A kizárás alkalmazható erőforráscsoportra, vagy leszűkíthető egyéni erőforrásokra is.
 
 1. Válassza ki a **Hozzárendelések** elemet a bal oldali panelen.
-2. Tallózzon az összes házirend-hozzárendelést, és nyissa meg a *szükséges SQL Server verziója 12.0* hozzárendelés.
-3. **Válassza ki** kivételként az erőforráscsoportok, ahol próbál létrehozni az SQL server erőforrásokra. Ebben a példában Microsoft.Sql/servers/databases kizárása: *azuremetrictest/testdb* és *azuremetrictest/testdb2*.
+2. Tallózzon az összes szabályzat-hozzárendelés között, majd nyissa meg az *Az SQL Server 12.0-ás verziójának megkövetelése* hozzárendelést.
+3. **Válasszon ki** egy kizárást az abban az erőforráscsoportokban található erőforrásokhoz, amelyben az SQL-kiszolgálót próbálja létrehozni. Ebben a példában zárja ki a Microsoft.Sql/servers/databases: *azuremetrictest/testdb* és az *azuremetrictest/testdb2* erőforrást.
 
-   ![Kizárási kérése](media/create-manage-policy/request-exclusion.png)
+   ![Kizárás kérelmezése](media/create-manage-policy/request-exclusion.png)
 
-   Elutasított erőforrás tudta feloldani más módokon tartalmazza: a házirendhez társított, ha egy erős indoklását kellene létrehozni az SQL-kiszolgáló, és közvetlenül a házirend szerkesztése, ha rendelkezik hozzáféréssel rendelkezik az ügyfél a elérése.
+   Egyéb lehetőségek az elutasított erőforrás feloldására: Lépjen kapcsolatba a szabályzathoz tartozó kapcsolattartóval, ha megalapozott indoka van az SQL-kiszolgáló létrehozására, vagy közvetlenül módosítsa a szabályzatot, ha rendelkezik hozzáféréssel.
 
-4. Kattintson a **hozzárendelése**.
+4. Kattintson a **Hozzárendelés** gombra.
 
-Ebben a szakaszban irányuló kísérlet egy kivételt a erőforrások kérésével hozzon létre egy SQL server verziójával 12.0, szolgáltatásmegtagadásos feloldva.
+Ebben a szakaszban feloldotta a 12.0-ás verziójú SQL Server létrehozására tett kísérlet elutasítását az erőforrások kizárásának kérelmezésével.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha azt tervezi, folytassa a következő útmutatókból dolgozni, nem megszüntetése a jelen útmutató létrejött erőforrásokat. Ha nem szeretné folytatni, használja az alábbi lépéseket a hozzárendelések vagy a fenti létrehozott definíciók törléséhez:
+Ha azt tervezi, hogy az ezt követő oktatóanyagokkal dolgozik tovább, akkor ne törölje az ebben az útmutatóban létrehozott erőforrásokat. Ha nem folytatja a munkát, akkor a következő lépésekkel törölheti a fent létrehozott hozzárendeléseket vagy definíciókat:
 
-1. Válassza ki **definíciók** (vagy **hozzárendelések** Ha hozzárendelés törölni kívánt) a bal oldali ablaktáblán.
-2. Keresse meg a új kezdeményezés, vagy a házirend definition (vagy a hozzárendelés) most létrehozott.
-3. Válassza ki a definíciót vagy a hozzárendelés végén a három pontot, majd **definíció törlése** (vagy **hozzárendelés törlése**).
+1. Válassza a **Definíciók** (vagy ha hozzárendelést próbál meg törölni, a **Hozzárendelések**) lehetőséget a bal oldali panelen.
+2. Keresse meg az imént létrehozott új kezdeményezést vagy szabályzatdefiníciót (vagy hozzárendelést).
+3. Kattintson a definíció vagy a szabályzat végén található három pontra, majd a **Definíció törlése** (vagy a **Hozzárendelés törlése**) gombra.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban hogy sikeresen valósítható meg a következő:
+Ebben az oktatóanyagban sikeresen elvégezte a következőket:
 
 > [!div class="checklist"]
-> * Egy házirend érvényesítését hoz létre a jövőben erőforrásokra vonatkozó feltétel
-> * Létrehozott, és rendelje hozzá egy kezdeményezésére definíciója erőforrások több megfelelőségi nyomon követésére
-> * Nem megfelelő, vagy az elutasított erőforrás feloldva
-> * Egy új házirendet megvalósítása a szervezeten belül
+> * Hozzárendelt egy szabályzatot egy, a jövőben létrehozandó erőforrásokra vonatkozó feltétel kikényszerítésére
+> * Létrehozott és hozzárendelt egy kezdeményezési definíciót több erőforrás megfelelőségének nyomon követése céljából
+> * Feloldott egy nem megfelelő vagy elutasított erőforrást
+> * Megvalósított egy új szabályzatot a vállalaton belül
 
-További információt a házirend-definíciók struktúrák, tekintse meg a cikk:
+A szabályzatdefiníciók szerkezetéről szóló további információkért lásd az alábbi cikket:
 
 > [!div class="nextstepaction"]
-> [Az Azure házirend szerkezete](policy-definition.md)
+> [Azure szabályzatdefiníciók struktúrája](policy-definition.md)

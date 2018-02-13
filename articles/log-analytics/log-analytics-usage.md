@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/21/2017
+ms.date: 02/01/2018
 ms.author: magoedte
-ms.openlocfilehash: 9a4709f298131722e9c473a19f7eee0aebf7e1e6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d873fe37ba2c4e851df35b9d5afe69b4adbf001c
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Az adathasználat elemzése a Log Analyticsben
-A Log Analytics információkat biztosít a gyűjtött adatok mennyiségéről, valamint arról, hogy mely számítógépek küldték az adatokat és milyen típusú adatokat küldtek.  A **Log Analytics használati** irányítópultján megtekintheti, hogy mennyi adatot küld a rendszer a Log Analytics szolgáltatásnak. Az irányítópult megjeleníti, hogy az egyes megoldások mennyi adatot gyűjtenek össze, és a számítógépek mennyi adatot küldenek.
+A Log Analytics információkat biztosít a gyűjtött adatok mennyiségéről, valamint arról, hogy mely rendszerek küldték az adatokat és milyen típusú adatokat küldtek.  A **Log Analytics használati** irányítópultján megtekintheti, hogy mennyi adatot küld a rendszer a Log Analytics szolgáltatásnak. Az irányítópult megjeleníti, hogy az egyes megoldások mennyi adatot gyűjtenek össze, és a számítógépek mennyi adatot küldenek.
 
 ## <a name="understand-the-usage-dashboard"></a>A használati irányítópult bemutatása
 A **Log Analytics-használat** irányítópult az alábbi információkat jeleníti meg:
@@ -37,24 +37,18 @@ A **Log Analytics-használat** irányítópult az alábbi információkat jelen�
     - Insight- és Analytics-csomópontok
     - Automation and Control-csomópontok
     - Biztonsági csomópontok
-- Teljesítmény
-    - Az adatok gyűjtésével és indexelésével eltelt idő
 - Lekérdezések listája
 
 ![A Használat irányítópult](./media/log-analytics-usage/usage-dashboard01.png)
 
 ### <a name="to-work-with-usage-data"></a>A használati adatok használata
-1. Ha még nem tette meg, jelentkezzen be az [Azure Portalra](https://portal.azure.com) Azure-előfizetésével.
-2. A **központi** menüben kattintson a **További szolgáltatások** elemre, majd az erőforrások listájába írja be a következőt: **Log Analytics**. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Kattintson a **Log Analytics** elemre.  
-    ![Azure-központ](./media/log-analytics-usage/hub.png)
-3. A **Log Analytics** irányítópultja megjeleníti a munkaterületek listáját. Jelöljön ki egy munkaterületet.
-4. A *munkaterületek* irányítópultján kattintson a **Log Analytics-használat** elemre.
-5. A **Log Analytics-használat** irányítópulton kattintson az **Idő: Elmúlt 24 óra** elemre az időintervallum módosításához.  
-    ![időintervallum](./media/log-analytics-usage/time.png)
-6. Tekintse meg a kívánt területeket megjelenítő használatikategória-paneleket. Válasszon ki egy panelt, majd kattintson az egyik elemére további részletek megtekintéséhez a [naplókeresésben](log-analytics-log-searches.md).  
-    ![példa adathasználati panelre](./media/log-analytics-usage/blade.png)
-7. A Naplók keresése irányítópulton tekintse meg a keresés eredményeit.  
-    ![példa használati panelre a naplókeresésben](./media/log-analytics-usage/usage-log-search.png)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. Az Azure Portalon kattintson a bal alsó sarokban található **További szolgáltatások** elemre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.<br><br> ![Azure Portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
+3. A Log Analytics-munkaterületek listájában válasszon ki egy munkaterületet.
+4. A bal oldali panelen található listában válassza ki a **Log Analytics-használat** lehetőséget.
+5. A **Log Analytics-használat** irányítópulton kattintson az **Idő: Elmúlt 24 óra** elemre az időintervallum módosításához.<br><br> ![időintervallum](./media/log-analytics-usage/time.png)<br><br>
+6. Tekintse meg a kívánt területeket megjelenítő használatikategória-paneleket. Válasszon ki egy panelt, majd kattintson az egyik elemére további részletek megtekintéséhez a [naplókeresésben](log-analytics-log-searches.md).<br><br> ![példa adathasználati panelre](./media/log-analytics-usage/blade.png)<br><br>
+7. A Naplók keresése irányítópulton tekintse meg a keresés eredményeit.<br><br> ![példa használati panelre a naplókeresésben](./media/log-analytics-usage/usage-log-search.png)
 
 ## <a name="create-an-alert-when-data-collection-is-higher-than-expected"></a>Riasztás létrehozása, amikor az adatgyűjtés szintje a vártnál magasabb
 Ez a szakasz ismerteti, hogyan hozhat létre riasztást, ha:
@@ -63,20 +57,20 @@ Ez a szakasz ismerteti, hogyan hozhat létre riasztást, ha:
 
 A Log Analytics[-riasztások](log-analytics-alerts-creating.md) keresési lekérdezéseket használnak. A következő lekérdezés akkor ad vissza eredményt, ha több mint 100 GB adat lett összegyűjtve az elmúlt 24 órában:
 
-`Type=Usage QuantityUnit=MBytes IsBillable=true | measure sum(div(Quantity,1024)) as DataGB by Type | where DataGB > 100`
+`union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`
 
 A következő lekérdezés egy egyszerű képlettel előrejelzi, mikor fog a rendszer egy nap alatt több mint 100 GB adatot küldeni: 
 
-`Type=Usage QuantityUnit=MBytes IsBillable=true | measure sum(div(mul(Quantity,8),1024)) as EstimatedGB by Type | where EstimatedGB > 100`
+`union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type | where EstimatedGB > 100`
 
 Ha más adatmennyiségre szeretne riasztást beállítani, módosítsa a lekérdezésekben a 100 értéket arra a GB mennyiségre, amely esetén riasztást szeretne kapni.
 
 A [riasztási szabályok létrehozásával kapcsolatos](log-analytics-alerts-creating.md#create-an-alert-rule) szakaszban leírt lépéseket követve beállíthatja, hogy értesítést kapjon, ha az adatgyűjtés szintje a vártnál magasabb.
 
-Az első lekérdezéshez tartozó riasztás létrehozásakor – amikor több mint 100 GB adat lett összegyűjtve 24 órán belül, állítsa be a következőket:
-- A **Név** legyen *Több mint 100 GB adatmennyiség 24 órán belül*
-- A **Súlyosság** legyen *Figyelmeztetés*
-- A **Keresési lekérdezés** legyen a következő: `Type=Usage QuantityUnit=MBytes IsBillable=true | measure sum(div(Quantity,1024)) as DataGB by Type | where DataGB > 100`
+Az első lekérdezéshez tartozó riasztás létrehozásakor – amikor több mint 100 GB adat lett összegyűjtve 24 órán belül, állítsa be a következőket:  
+- A **Név** legyen *Több mint 100 GB adatmennyiség 24 órán belül*  
+- A **Súlyosság** legyen *Figyelmeztetés*  
+- A **Keresési lekérdezés** legyen a következő: `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`   
 - Az **Időtartomány** legyen *24 óra*.
 - A **Riasztási időköz** legyen egy óra, mivel a használati adatok csak óránként egyszer frissülnek.
 - A **Riasztások létrehozása a következő alapján:** értéke legyen az *eredmények száma*
@@ -87,7 +81,7 @@ A [műveletek a riasztási szabályokhoz adásával kapcsolatos](log-analytics-a
 A második lekérdezéshez tartozó riasztás létrehozásakor – amikor több mint 100 GB adat összegyűjtése várható 24 órán belül, állítsa be a következőket:
 - A **Név** legyen *Több mint 100 GB várható adatmennyiség 24 órán belül*
 - A **Súlyosság** legyen *Figyelmeztetés*
-- A **Keresési lekérdezés** legyen a következő: `Type=Usage QuantityUnit=MBytes IsBillable=true | measure sum(div(mul(Quantity,8),1024)) as EstimatedGB by Type | where EstimatedGB > 100`
+- A **Keresési lekérdezés** legyen a következő: `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type | where EstimatedGB > 100`
 - Az **Időtartomány** legyen *3 óra*.
 - A **Riasztási időköz** legyen egy óra, mivel a használati adatok csak óránként egyszer frissülnek.
 - A **Riasztások létrehozása a következő alapján:** értéke legyen az *eredmények száma*
@@ -115,33 +109,29 @@ Ezen a két diagramon megjelenik az összes adat. Néhány adat számlázható, 
 
 Tekintse meg az *Adatmennyiség az idő függvényében* diagramot. Azon megoldások és adattípusok megtekintéséhez, amelyek a legtöbb adatot küldik egy adott számítógép esetében kattintson a számítógép nevére. Kattintson a listában szereplő első számítógép nevére.
 
-A következő képernyőképen az látható, hogy a *Log Management / Perf* adattípus küldi a legtöbb adatot a számítógép esetében. 
-
-![adatmennyiség egy számítógép esetében](./media/log-analytics-usage/log-analytics-usage-data-volume-computer.png)
+A következő képernyőképen az látható, hogy a *Log Management / Perf* adattípus küldi a legtöbb adatot a számítógép esetében.<br><br> ![adatmennyiség egy számítógép esetében](./media/log-analytics-usage/log-analytics-usage-data-volume-computer.png)<br><br>
 
 Ezután lépjen vissza a *Használat* irányítópultra, és tekintse meg az *Adatmennyiség megoldásonként* diagramot. Azon a számítógépek megtekintéséhez, amelyek a legtöbb adatot küldik egy megoldás esetében, kattintson a listában szereplő megoldás nevére. Kattintson a listában szereplő első megoldás nevére. 
 
-A következő képernyőkép megerősíti, hogy az *acmetomcat* számítógép küldi a legtöbb adatot a naplókezelési megoldás esetében.
-
-![adatmennyiség egy megoldás esetében](./media/log-analytics-usage/log-analytics-usage-data-volume-solution.png)
+A következő képernyőkép megerősíti, hogy az *acmetomcat* számítógép küldi a legtöbb adatot a naplókezelési megoldás esetében.<br><br> ![adatmennyiség egy megoldás esetében](./media/log-analytics-usage/log-analytics-usage-data-volume-solution.png)<br><br>
 
 Szükség esetén végezzen további elemzést a megoldásokban vagy adattípusokban található nagy mennyiségek azonosításához. Példák a lekérdezésekre:
 
 + **Biztonsági** megoldás
-  - `Type=SecurityEvent | measure count() by EventID`
+  - `SecurityEvent | summarize AggregatedValue = count() by EventID`
 + **Naplókezelési** megoldás
-  - `Type=Usage Solution=LogManagement IsBillable=true | measure count() by DataType`
+  - `Usage | where Solution == "LogManagement" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | summarize AggregatedValue = count() by DataType`
 + **Perf** adattípus
-  - `Type=Perf | measure count() by CounterPath`
-  - `Type=Perf | measure count() by CounterName`
+  - `Perf | summarize AggregatedValue = count() by CounterPath`
+  - `Perf | summarize AggregatedValue = count() by CounterName`
 + **Esemény** adattípus
-  - `Type=Event | measure count() by EventID`
-  - `Type=Event | measure count() by EventLog, EventLevelName`
+  - `Event | summarize AggregatedValue = count() by EventID`
+  - `Event | summarize AggregatedValue = count() by EventLog, EventLevelName`
 + **Rendszernapló** adattípus
-  - `Type=Syslog | measure count() by Facility, SeverityLevel`
-  - `Type=Syslog | measure count() by ProcessName`
+  - `Syslog | summarize AggregatedValue = count() by Facility, SeverityLevel`
+  - `Syslog | summarize AggregatedValue = count() by ProcessName`
 + **AzureDiagnostics** adattípus
-  - `Type=AzureDiagnostics | measure count() by ResourceProvider, ResourceId`
+  - `AzureDiagnostics | summarize AggregatedValue = count() by ResourceProvider, ResourceId`
 
 A következő lépésekkel csökkentheti a gyűjtött naplók mennyiségét:
 
@@ -155,20 +145,31 @@ A következő lépésekkel csökkentheti a gyűjtött naplók mennyiségét:
 | Megoldásadatok olyan számítógépekről, amelyeknek nincs szükségük a megoldásra | A [megoldáscélzási](../operations-management-suite/operations-management-suite-solution-targeting.md) funkcióval megadhatja, hogy csak a szükséges számítógépcsoportoktól gyűjtsön adatokat. |
 
 ### <a name="check-if-there-are-more-nodes-than-expected"></a>Annak ellenőrzése, hogy a vártnál több csomópont küld-e adatokat
-Ha a *csomópontonkénti (OMS)* tarifacsomagban van, akkor a díjszabás a használt csomópontok és megoldások számán alapul. A használat adatait megjelenítő irányítópult *Ajánlatok* szakaszában tekintheti meg, hogy az egyes ajánlatok csomópontjaiból mennyi van használatban.
-
-![A Használat irányítópult](./media/log-analytics-usage/log-analytics-usage-offerings.png)
+Ha a *csomópontonkénti (OMS)* tarifacsomagban van, akkor a díjszabás a használt csomópontok és megoldások számán alapul. A használat adatait megjelenítő irányítópult *Ajánlatok* szakaszában tekintheti meg, hogy az egyes ajánlatok csomópontjaiból mennyi van használatban.<br><br> ![használati irányítópult](./media/log-analytics-usage/log-analytics-usage-offerings.png)<br><br>
 
 Kattintson **Az összes megjelenítése...** lehetőségre a kiválasztott ajánlat adatait elküldő számítógépek teljes listájának megtekintéséhez.
 
 A [megoldáscélzási](../operations-management-suite/operations-management-suite-solution-targeting.md) funkcióval megadhatja, hogy csak a szükséges számítógépcsoportoktól gyűjtsön adatokat.
 
+## <a name="check-if-there-is-ingestion-latency"></a>Annak ellenőrzése, hogy van-e adatbetöltési késés
+A Log Analytics esetében várható késé tapasztalható a begyűjtött adatok betöltésekor.  Az adatok indexelése és kereshetősége közötti abszolút idő kiszámíthatatlan lehet. Korábban elérhető volt az irányítópulton az adatok gyűjtéséhez és indexeléséhez szükséges időt mutató teljesítménydiagram, de az új lekérdezési nyelv bevezetésével ideiglenesen eltávolítottuk ezt a diagramot.  Amíg nem adunk ki az adatfeldolgozás késleltetésére vonatkozó frissített mérőszámokat, átmeneti megoldásként az alábbi lekérdezés használható az egyes adattípusok késésének megbecsülésére.  
 
-## <a name="next-steps"></a>Következő lépések
+    search *
+    | where TimeGenerated > ago(8h)
+    | summarize max(TimeGenerated) by Type
+    | extend LatencyInMinutes = round((now() - max_TimeGenerated)/1m,2)
+    | project Type, LatencyInMinutes
+    | sort by LatencyInMinutes desc
+
+> [!NOTE]
+> A betöltési késés lekérdezése nem jeleníti meg késési előzményeket, és kizárólag az aktuális időre vonatkozó eredményeket adja vissza.  A *TimeGenerated* értékét az Általános sémanaplók esetében az ügynöknél, az Egyéni naplók esetében pedig gyűjtési végpontnál tölti ki a rendszer.  
+>
+
+## <a name="next-steps"></a>További lépések
 * A keresési nyelv használatával kapcsolatban tekintse meg a [Log Analytics naplókeresési funkciójával](log-analytics-log-searches.md) kapcsolatos cikket. A keresési lekérdezésekkel további elemzéseket végezhet a használati adatokon.
 * A [riasztási szabályok létrehozásával kapcsolatos](log-analytics-alerts-creating.md#create-an-alert-rule) szakaszban leírt lépéseket követve beállíthatja, hogy értesítést kapjon, ha teljesül egy keresési feltétel
 * A [megoldáscélzással](../operations-management-suite/operations-management-suite-solution-targeting.md) megadhatja, hogy a rendszer csak a szükséges számítógépcsoportoktól gyűjtsön adatokat
-* Válassza a [gyakori vagy minimális biztonsági események](https://blogs.technet.microsoft.com/msoms/2016/11/08/filter-the-security-events-the-oms-security-collects/) lehetőséget
+* Hatékony biztonságiesemény-gyűjtési szabályzat konfigurálásához tekintse meg az [Azure Security Center szűrési szabályzatai](../security-center/security-center-enable-data-collection.md) című cikket
 * A [teljesítményszámlálók konfigurációjának](log-analytics-data-sources-performance-counters.md) módosítása
-* Az [eseménynaplók konfigurációjának](log-analytics-data-sources-windows-events.md) módosítása
-* A [rendszernapló konfigurációjának](log-analytics-data-sources-syslog.md) módosítása
+* Az eseménygyűjtési beállítások módosításához tekintse meg az [eseménynaplók konfigurációját](log-analytics-data-sources-windows-events.md) leíró szakaszt.
+* A rendszernapló-gyűjtési beállítások módosításához tekintse meg a [rendszernaplók konfigurációját](log-analytics-data-sources-syslog.md) leíró szakaszt.

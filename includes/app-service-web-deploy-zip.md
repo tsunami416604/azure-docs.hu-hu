@@ -1,9 +1,23 @@
-## <a name="deploy-uploaded-zip-file"></a>Feltöltött ZIP-fájl üzembe helyezése
+---
+title: "fájl belefoglalása"
+description: "fájl belefoglalása"
+services: app-service
+author: cephalin
+ms.service: app-service
+ms.topic: include
+ms.date: 02/02/2018
+ms.author: cephalin
+ms.custom: include file
+ms.openlocfilehash: 917f8cc4a22199351614d101f1300b80052ee9a9
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 02/03/2018
+---
+## <a name="deploy-zip-file"></a>ZIP-fájl telepítése
 
-A Cloud Shellben helyezze üzembe a feltöltött ZIP-fájlt a webalkalmazásban az [`az webapp deployment source config-zip`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az_webapp_deployment_source_config_zip) paranccsal. Győződjön meg arról, hogy az *\<app_name>* helyett a webalkalmazása neve szerepel.
+A böngészőjében lépjen a következő helyre: `https://<app_name>.scm.azurewebsites.net/ZipDeploy`.
 
-```azurecli-interactive
-az webapp deployment source config-zip --resource-group myResouceGroup --name <app_name> --src clouddrive/myAppFiles.zip
-```
+A webhelyen a fájlkezelő területre húzva töltse fel a [ZIP-fájl létrehozása a projekthez](#create-a-project-zip-file) szakaszban létrehozott ZIP-fájlt.
 
-Ez a parancs üzembe helyezi a ZIP-fájlban szereplő fájlokat és könyvtárakat az alapértelmezett App Service-alkalmazásmappában (`\home\site\wwwroot`), majd újraindítja az alkalmazást. Ha további egyéni kiépítési folyamatok vannak megadva, azokat is futtatja.
+Ha a telepítés folyamatban van, a jobb felső sarokban megjelenik az állapotot százalékban kifejező ikon. A lap fájlkezelő terület alatti részén megjelennek a művelethez tartozó részletes üzenetek is. Amikor elkészült, az utolsó telepítési üzenet a következő: `Deployment successful`.

@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/15/2017
+ms.date: 01/31/2018
 ms.author: anithaa
 ms.custom: 
-ms.openlocfilehash: c9c23462f80533a224c3c2ac3658b9630f1798f9
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: e2242851d51dee56679231b9f34c8b474ba6578d
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="configure-virtual-network-service-endpoints"></a>Virtuális hálózati szolgáltatásvégpontok konfigurálása
 
@@ -67,7 +67,7 @@ Jelentkezzen be az Azure-ba az Azure-fiókjával. Ha nincs Azure-fiókja, regisz
 
 Beállítás | Érték
 ------- | -----
-Név    | myVNet
+Name (Név)    | myVNet
 Címtér | 10.0.0.0/16
 Alhálózat neve|mySubnet
 Alhálózati címtartomány|10.0.0.0/24
@@ -75,7 +75,7 @@ Erőforráscsoport|Hagyja bejelölve az Új létrehozása lehetőséget, majd ad
 Hely|Bármely támogatott régió, pl.: Kelet-Ausztrália
 Előfizetés|Válassza ki előfizetését.
 __Szolgáltatásvégpontok__|Engedélyezve
-__Szolgáltatások__ | Válasszon az elérhető szolgáltatások közül egyet, vagy akár mindet. Az előzetes verzióban a támogatott szolgáltatások a __„Microsoft.Storage” és a „Microsoft.Sql”__.
+__Szolgáltatások__ | Válasszon az elérhető szolgáltatások közül egyet, vagy akár mindet. Támogatott szolgáltatások: __„Microsoft.Storage” és „Microsoft.Sql”__.
 
 Válasszon szolgáltatásokat a végpontokhoz: ![Szolgáltatásvégpontok szolgáltatásainak kiválasztása](media/virtual-network-service-endpoints-portal/vnet-create-flow-services.png)
 
@@ -136,7 +136,7 @@ Get-AzureRmVirtualNetworkAvailableEndpointService -location eastus
 ```
 
 Kimenet: 
-Név | ID (Azonosító) | Típus
+Name (Név) | ID (Azonosító) | Típus
 -----|----|-------
 Microsoft.Storage|/subscriptions/xxxx-xxx-xxx/providers/Microsoft.Network/virtualNetworkEndpointServices/Microsoft.Storage|Microsoft.Network/virtualNetworkEndpointServices
 Microsoft.Sql|/subscriptions/xxxx-xxx-xxx/providers/Microsoft.Network/virtualNetworkEndpointServices/Microsoft.Sql|Microsoft.Network/virtualNetworkEndpointServices
@@ -387,9 +387,9 @@ Ahhoz, hogy egy felhasználó Azure-szolgáltatási erőforrásokat rendelhessen
 
 További információk a [beépített szerepkörökről](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles) és a bizonyos engedélyek [egyéni szerepkörökhöz](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles) való hozzárendeléséről.
 
-A virtuális hálózatok és az Azure-szolgáltatási erőforrások tartozhatnak egyazon előfizetéshez, vagy különböző előfizetésekhez is. Ha különböző előfizetésekhez tartoznak, akkor az erőforrásoknak ugyanahhoz az Active Directory- (AD-) bérlőhöz kell tartozniuk az előzetes verzió használata során.
+A virtuális hálózatok és az Azure-szolgáltatási erőforrások tartozhatnak egyazon előfizetéshez, vagy különböző előfizetésekhez is. Ha különböző előfizetésekhez tartoznak, akkor az erőforrásoknak ugyanahhoz az Active Directory- (AD-) bérlőhöz kell tartozniuk.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha további útmutatásra van szüksége a szolgáltatási erőforrások virtuális hálózatoknak való biztosításával kapcsolatban, olvassa el az alábbi cikkeket:
 

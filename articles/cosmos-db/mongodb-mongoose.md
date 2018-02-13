@@ -1,6 +1,6 @@
 ---
-title: "A Mongoose keretrendszer használata Azure Cosmos DB |} Microsoft Docs"
-description: "Megtudhatja, hogyan Node.js Mongoose alkalmazás csatlakoztatása az Azure Cosmos-Adatbázishoz"
+title: "A Mongoose-keretrendszer használata Azure Cosmos DB-vel | Microsoft Docs"
+description: "Megtudhatja, hogyan csatlakoztathat egy Node.js Mongoose alkalmazást az Azure Cosmos DB-hez"
 services: cosmos-db
 documentationcenter: 
 author: romitgirdhar
@@ -14,15 +14,15 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 01/08/2018
 ms.author: rogirdh
-ms.openlocfilehash: 9878936b5dd76730633dec16b1c3a3eaac78e95a
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
-ms.translationtype: MT
+ms.openlocfilehash: fb6db6555171b65767a715c6b4c8ff37f42c94ef
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="azure-cosmos-db-using-the-mongoose-framework-with-azure-cosmos-db"></a>Az Azure Cosmos DB: A Mongoose keretrendszer használata Azure Cosmos DB
+# <a name="azure-cosmos-db-using-the-mongoose-framework-with-azure-cosmos-db"></a>Azure Cosmos DB: A Mongoose-keretrendszer használata Azure Cosmos DB-vel
 
-Ez az oktatóanyag bemutatja, hogyan kell használni a [Mongoose keretrendszer](http://mongoosejs.com/) adatokat az Adatbázisba az Azure Cosmos tárolásakor. A MongoDB API-t az Azure Cosmos DB, a forgatókönyv használjuk. Azok az Ön ismeri Mongoose node.js mongodb objektum modellezési keretrendszere, és az alkalmazás adatok egyszerű feladat, a séma-alapú megoldást kínál.
+Ez az oktatóanyag bemutatja, hogyan kell használni adatok az Azure Cosmos DB-ben való tárolása esetében a [Mongoose-keretrendszert](http://mongoosejs.com/). Ebben a bemutatóban a MongoDB API-t használjuk az Azure Cosmos DB-hez. Ha nem ismerné, a Mongoose egy objektummodellezési keretrendszer a MongoDB-hez Node.js-ben, és egyszerű, sémaalapú megoldást biztosít az alkalmazásadatok modellezéséhez.
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket.
 
@@ -36,43 +36,43 @@ Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-sz
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB-fiók létrehozása
 
-Hozzunk létre egy Azure Cosmos DB-fiókot. Ha már rendelkezik egy használni kívánt fiókot, ugorjon előre [a Node.js-alkalmazás beállítása](#SetupNode). Ha az Azure Cosmos DB Emulator használ, kövesse a [Azure Cosmos DB emulátor](local-emulator.md) az emulátor beállítását, és ugorjon előre [a Node.js-alkalmazás beállítása](#SetupNode).
+Hozzunk létre egy Azure Cosmos DB-fiókot. Ha már rendelkezik egy használni kívánt fiókkal, folytassa [A Node.js-alkalmazás beállítása](#SetupNode) című lépéssel. Ha az Azure Cosmos DB Emulatort használja, kövesse az [Azure Cosmos DB Emulatornál](local-emulator.md) leírt lépéseket az emulátor beállításához, majd ugorjon előre [A Node.js-alkalmazás beállítása](#SetupNode) című lépésre.
 
 [!INCLUDE [cosmos-db-create-dbaccount-mongodb](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
 
 ## <a name="set-up-your-nodejs-application"></a>A Node.js-alkalmazás beállítása
 
 >[!Note]
-> Ha szeretné a forgatókönyv csak a mintakódot helyett telepítő magának az alkalmazásnak, klónozza a [minta](https://github.com/Azure-Samples/Mongoose_CosmosDB) ebben az oktatóanyagban használt, és a Node.js Mongoose alkalmazás az Azure Cosmos-adatbázis létrehozása.
+> Ha nem szeretné beállítani magát az alkalmazást, csak a mintakódon szeretne végighaladni, klónozza az oktatóanyaghoz használt [mintát](https://github.com/Azure-Samples/Mongoose_CosmosDB), és hozza létre a Node.js Mongoose alkalmazást az Azure Cosmos DB-ben.
 
-1. Node.js-alkalmazás létrehozása a kiválasztott mappában, a következő parancsot egy csomópont parancssorban.
+1. Node.js-alkalmazás létrehozásához a kiválasztott mappában futtassa az alábbi parancsot egy csomópont parancssorban.
 
     ```npm init```
 
-    A kérdések megválaszolása és készen áll a projekthez.
+    Válaszoljon a kérdésekre, és a projekt indulásra kész.
 
-1. Új fájl hozzáadása a mappát, és adjon neki nevet ```index.js```.
-1. Telepítse a szükséges csomagokat egyikével a ```npm install``` beállítások:
-    * Mongoose:```npm install mongoose --save```
-    * Dotenv (Ha azt szeretné, a titkos kulcsok .env fájlból történő betöltése):```npm install dotenv --save```
-    
+1. Vegyen fel a mappába egy új fájlt, és adja neki az ```index.js``` nevet.
+1. Telepítse a szükséges csomagokat az egyik ```npm install``` lehetőséggel:
+    * Mongoose: ```npm install mongoose --save```
+    * Dotenv (ha a titkos kulcsokat egy .env fájlból szeretné betölteni): ```npm install dotenv --save```
+
     >[!Note]
-    > A ```--save``` jelzőt a package.json fájlt ad hozzá a függőség.
+    > A ```--save``` jelző hozzáadja a függőséget a package.json fájlhoz.
 
-1. Importálja a függőségeket a index.js fájlban.
+1. Importálja a függőségeket az index.js fájljába.
     ```JavaScript
     var mongoose = require('mongoose');
     var env = require('dotenv').load();    //Use the .env file to load the variables
     ```
 
-1. A Cosmos DB kapcsolati karakterláncot és a Cosmos adatbázis nevét a ```.env``` fájlt.
+1. Vegye fel a Cosmos DB kapcsolati karakterláncát és a Cosmos DB-nevet a ```.env``` fájlba.
 
     ```JavaScript
     COSMOSDB_CONNSTR={Your MongoDB Connection String Here}
     COSMOSDB_DBNAME={Your DB Name Here}
     ```
 
-1. Csatlakozás Azure Cosmos DB index.js végén ad hozzá a következő kódot a Mongoose keretrendszer használatával.
+1. Csatlakozzon az Azure Cosmos DB-hez a Mongoose-keretrendszerrel, ehhez vegye fel az alábbi kódot az index.js végéhez.
     ```JavaScript
     mongoose.connect(process.env.COSMOSDB_CONNSTR+process.env.COSMOSDB_DBNAME+"?ssl=true&replicaSet=globaldb"); //Creates a new DB, if it doesn't already exist
 
@@ -83,27 +83,27 @@ Hozzunk létre egy Azure Cosmos DB-fiókot. Ha már rendelkezik egy használni k
     });
     ```
     >[!Note]
-    > Itt a környezeti változók betöltött process.env használatával. {variableName} a "dotenv" npm csomag segítségével.
+    > Itt a környezeti változók a process.env{variableName} segítségével, a „dotenv” npm-csomaggal tölthetők be.
 
-    Miután csatlakozott az Azure Cosmos Adatbázishoz, a Mongoose most elindíthatja a hálózatiobjektum-modelljei beállítása.
-    
-## <a name="caveats-to-using-mongoose-with-azure-cosmos-db"></a>A Mongoose segítségével Azure Cosmos DB figyelmeztetések
+    Ha már csatlakozott az Azure Cosmos DB-hez, elkezdheti az objektummodellek beállítását a Mongoose-ban.
 
-Minden modell hoz létre Mongoose alatt a magában foglalja az új MongoDB gyűjteményt hoz létre. Azonban megadott Azure Cosmos DB gyűjteményre számlázási modelljét, nem lehet lépjen, a leginkább költséghatékony módja Ha több objektum modellek, amelyek ritkán fel van töltve.
+## <a name="caveats-to-using-mongoose-with-azure-cosmos-db"></a>A Mongoose Azure Cosmos DB-vel való használatával kapcsolatos figyelmeztetések
 
-Ez a forgatókönyv mindkét modellre vonatkozik. Oktatóanyag a következőket először ismerteti a forgatókönyv a egy típusú gyűjteményenként adatok tárolására. Ez az a Mongoose defacto viselkedését.
+A Mongoose minden létrehozott modellhez létrehoz egy új MongoDB-gyűjteményt a háttérben. Figyelembe véve ugyanakkor az Azure Cosmos DB gyűjteményenként számlázó számlázási modelljét, ez nem igazán költséghatékony megoldás, ha több, ritkásan feltöltött objektummodellje van.
 
-Mongoose is rendelkezik egy fogalom nevű [Discriminators](http://mongoosejs.com/docs/discriminators.html). Discriminators egy séma öröklési mechanizmus. Ezek lehetővé teszik több modellek fölött ugyanaz a mögöttes MongoDB gyűjtemény átfedő sémával rendelkezik.
+Ez a bemutató mindkét modellre vonatkozik. Először a gyűjteményenként egy adattípust tárolását mutatjuk be. Ez a Mongoose tényleges viselkedése.
 
-A különböző adatmodellekben ugyanaz a gyűjtemény tárolja, és segítségével egy szűrési záradékot időben lekérik a csak a szükséges adatokat.
+A Mongoose alkalmaz egy [diszkriminátor](http://mongoosejs.com/docs/discriminators.html) nevű koncepciót. A diszkriminátorok sémaöröklési mechanizmusok. Lehetővé teszik, hogy egy alapul szolgáló MongoDB-gyűjteményre több modell épüljön átfedő sémákkal.
 
-### <a name="one-collection-per-object-model"></a>Egy gyűjtemény / hálózatiobjektum-modellje
+A különböző adatmodelleket tárolhatja ugyanabban a gyűjteményben, majd a lekérdezés időpontjában alkalmazhat egy szűrőfeltételt, hogy csak a szükséges adatokat kérje le.
 
-A Mongoose alapértelmezés lesz MongoDB-gyűjtemény létrehozása minden alkalommal, amikor egy objektum modell létrehozása. Ez a szakasz ismerteti, hogyan Azure Cosmos DB a MongoDB-vel ennek érdekében. Ez az Azure Cosmos DB esetén ajánlott nagy mennyiségű adat objektum modellek rendelkezik. Ez az alapértelmezett modell működő mongoose bővítményt, úgy, akkor előfordulhat, hogy ismernie kell, ha jártas a mongoose bővítményt.
+### <a name="one-collection-per-object-model"></a>Objektummodellenként egy gyűjtemény
 
-1. Nyissa meg a ```index.js``` újra.
+A Mongoose alapértelmezés szerint létrehoz egy MongoDB-gyűjteményt minden alkalommal, amikor létrehoz egy objektummodellt. Ez a szakasz ismerteti, hogyan érhető ez el a MongoDB-vel az Azure Cosmos DB-ben. Ezt a módszert akkor ajánlott használni az Azure Cosmos DB-nél, ha nagy adatmennyiséget kezelő objektummodellei vannak. Ez a Mongoose-ban az alapértelmezett működési modell, tehát ha ismeri a Mongoose-t, akkor lehet, hogy már ismeri ezt a modellt.
 
-1. A "Termékcsalád" séma-definíció létrehozása.
+1. Nyissa meg újra az ```index.js``` fájlt.
+
+1. Hozzon létre egy sémadefiníciót a „Family” (Család) elemhez.
 
     ```JavaScript
     const Family = mongoose.model('Family', new mongoose.Schema({
@@ -130,7 +130,7 @@ A Mongoose alapértelmezés lesz MongoDB-gyűjtemény létrehozása minden alkal
     }));
     ```
 
-1. Az objektum létrehozása "Termékcsalád".
+1. Hozzon létre egy objektumot a „Family” (Család) elemhez.
 
     ```JavaScript
     const family = new Family({
@@ -150,7 +150,7 @@ A Mongoose alapértelmezés lesz MongoDB-gyűjtemény létrehozása minden alkal
     });
     ```
 
-1. Végezetül most mentse az objektumot az Azure Cosmos-Adatbázishoz. Ezzel létrehoz egy gyűjteményt a magában foglalja az alatt.
+1. Végül mentse el az objektumot az Azure Cosmos DB-ben. Ezzel létrehoz egy gyűjteményt a háttérben.
 
     ```JavaScript
     family.save((err, saveFamily) => {
@@ -158,8 +158,8 @@ A Mongoose alapértelmezés lesz MongoDB-gyűjtemény létrehozása minden alkal
     });
     ```
 
-1. Most hozzon létre egy másik sémájának és objektumformátumának. Ez alkalommal, hozzon létre egyet a családok előfordulhat, hogy érdeklődik "szabadsága célhoz".
-    1. Csakúgy, mint a legutóbbi hozzon létre a rendszer
+1. Most hozzon létre egy másik sémát és objektumot. Ez alkalommal hozzon létre egy „Vacation Destinations” (Nyaralási úticélok) elemet a családokat esetlegesen érdeklő célpontokhoz.
+    1. Hozza létre a sémát, akárcsak a legutóbb
     ```JavaScript
     const VacationDestinations = mongoose.model('VacationDestinations', new mongoose.Schema({
         name: String,
@@ -167,7 +167,7 @@ A Mongoose alapértelmezés lesz MongoDB-gyűjtemény létrehozása minden alkal
     }));
     ```
 
-    1. Hozzon létre egy minta-objektumot (adhat hozzá több objektumot a sémát), és mentse azt.
+    1. Hozzon létre egy mintaobjektumot (ehhez a sémához több objektumot is hozzáadhat), majd mentse azt.
     ```JavaScript
     const vacaySpot = new VacationDestinations({
         name: "Honolulu",
@@ -179,11 +179,11 @@ A Mongoose alapértelmezés lesz MongoDB-gyűjtemény létrehozása minden alkal
     });
     ```
 
-1. Most is be az Azure portálon, az Azure Cosmos Adatbázisba létrehozott két gyűjtemény észlel.
+1. Ha most belép az Azure Portalra, láthatja, hogy két gyűjtemény jött létre az Azure Cosmos DB-ben.
 
-    ![NODE.js-oktatóanyag – képernyőfelvétel az Azure portálról, egy Azure Cosmos DB fiókot megjelenítő nevű gyűjtemény kiemelésével – Node-adatbázis][alldata]
+    ![Node.js-oktatóanyag – Képernyőfelvétel az Azure Portalról, amely egy Azure Cosmos DB-fiókot jelenít meg több kiemelt nevű gyűjteménnyel – Node-adatbázis][mutiple-coll]
 
-1. Végezetül most beolvasni az adatokat az Azure Cosmos-Adatbázisból. Mivel az alapértelmezett Mongoose üzemi modell használunk, olvasási ugyanazok, mint bármely más Mongoose az olvasási műveletek.
+1. Végezetül olvassa be az adatokat az Azure Cosmos DB-ből. Mivel az alapértelmezett Mongoose működési modellt használjuk, az olvasások megegyeznek bármely más Mongoose olvasással.
 
     ```JavaScript
     Family.find({ 'children.gender' : "male"}, function(err, foundFamily){
@@ -191,13 +191,13 @@ A Mongoose alapértelmezés lesz MongoDB-gyűjtemény létrehozása minden alkal
     });
     ```
 
-### <a name="using-mongoose-discriminators-to-store-data-in-a-single-collection"></a>Mongoose discriminators használatával egyetlen gyűjteményben található adatok tárolásához
+### <a name="using-mongoose-discriminators-to-store-data-in-a-single-collection"></a>Adatok tárolása egyetlen gyűjteményben Mongoose diszkriminátorok használatával
 
-Ezt a módszert használjuk [Mongoose Discriminators](http://mongoosejs.com/docs/discriminators.html) optimalizálásához Azure Cosmos DB gyűjteményt költségek. Discriminators engedélyezi annak meghatározását egy ezeknek "kulcs", így tárolásához, megkülönböztetéséhez, és különböző hálózatiobjektum-modelljei szűrni.
+Ennél a módszernél a [Mongoose diszkriminátorok](http://mongoosejs.com/docs/discriminators.html) segítségével optimalizáljuk az egyes Azure Cosmos DB-gyűjtemények költségét. A diszkriminátorok lehetővé teszik egy megkülönböztető „kulcs” meghatározását, amely segítségével tárolhatja, megkülönböztetheti és szűrheti a különböző objektummodelleket.
 
-Itt létrehozhatunk egy alapobjektum modellhez tartozó, "Családhoz" és "VacationDestinations" Hozzáadás bővítményként a alap modell és ezeknek kulcs megadása.
+Itt létrehozunk egy alapszintű objektummodellt, meghatározunk egy megkülönböztető kulcsot, majd felvesszük az alapszintű modell kiterjesztéseként a „Family” (Család) és a „VacationDestinations” (Nyaralási úti célok) sémát.
 
-1. Most az alapszintű konfigurációs beállítása, és adja meg a Diszkriminátor kulcshoz.
+1. Állítsuk be az alapszintű konfigurációt, és határozzuk meg a diszkriminátorkulcsot.
 
     ```JavaScript
     const baseConfig = {
@@ -206,13 +206,13 @@ Itt létrehozhatunk egy alapobjektum modellhez tartozó, "Családhoz" és "Vacat
     };
     ```
 
-1. A következő is határozza meg a közös hálózatiobjektum-modellje
+1. Ezután határozzuk meg a közös objektummodellt
 
     ```JavaScript
     const commonModel = mongoose.model('Common', new mongoose.Schema({}, baseConfig));
     ```
 
-1. Most meghatároztuk a "Családhoz" modell. Itt láthatja, hogy használjuk ```commonModel.discriminator``` helyett ```mongoose.model```. Emellett azt is visszaigazolása az alapszintű konfigurációs mongoose séma. Igen, itt, a discriminatorKey van ```FamilyType```.
+1. Most meghatározzuk a „Family” (Család) modellt. Vegye észre, hogy a ```mongoose.model``` helyett a ```commonModel.discriminator``` elemet használjuk. Ezen felül hozzáadjuk az alapszintű konfigurációt is a Mongoose sémához. Itt a discriminatorKey (diszkriminátorkulcs) tehát ```FamilyType```.
 
     ```JavaScript
     const Family_common = commonModel.discriminator('FamilyType', new     mongoose.Schema({
@@ -239,7 +239,7 @@ Itt létrehozhatunk egy alapobjektum modellhez tartozó, "Családhoz" és "Vacat
     }, baseConfig));
     ```
 
-1. Hasonlóképpen adjuk hozzá egy másik séma, "VacationDestinations" most. Itt a DiscriminatorKey van ```VacationDestinationsType```.
+1. Vegyük fel ugyanígy a másik sémát, ez alkalommal a „VacationDestinations” (Nyaralási úti célok) nevűt. A discriminatorKey (diszkriminátorkulcs) itt ```VacationDestinationsType```.
 
     ```JavaScript
     const Vacation_common = commonModel.discriminator('VacationDestinationsType', new mongoose.Schema({
@@ -248,8 +248,8 @@ Itt létrehozhatunk egy alapobjektum modellhez tartozó, "Családhoz" és "Vacat
     }, baseConfig));
     ```
 
-1. Végezetül tegyük a modell-objektumokat hozzon létre, és mentse.
-    1. Adjunk objektum(ok) "Családhoz" mintának.
+1. Végezetül hozzunk létre objektumokat a modellhez, majd mentsük azt.
+    1. Vegyünk fel objektumo(ka)t a „Family” (Család) modellhez.
     ```JavaScript
     const family_common = new Family_common({
         lastName: "Volum",
@@ -272,7 +272,7 @@ Itt létrehozhatunk egy alapobjektum modellhez tartozó, "Családhoz" és "Vacat
     });
     ```
 
-    1. A következő most objektumok hozzáadása a "VacationDestinations" modellhez, és mentse azt.
+    1. Ezután vegyünk fel objektumo(ka)t a „VacationDestinations” (Nyaralási úti cél) modellhez, majd mentsük azt.
     ```JavaScript
     const vacay_common = new Vacation_common({
         name: "Honolulu",
@@ -284,13 +284,13 @@ Itt létrehozhatunk egy alapobjektum modellhez tartozó, "Családhoz" és "Vacat
     });
     ```
 
-1. Most, ha vissza az Azure-portálon, bizonyára észrevette, hogy rendelkezik-e hívása csak egy gyűjtemény ```alldata``` "Családhoz" és a "VacationDestinations" adatokkal.
+1. Ha most visszatér az Azure Portalra, láthatja, hogy egyetlen gyűjteménye van ```alldata``` néven, amelyben a „Family” (Család) és a „VacationDestinations” (Nyaralási úti célok) adatai is szerepelnek.
 
-    ![NODE.js-oktatóanyag – képernyőfelvétel az Azure portálról, egy Azure Cosmos DB fiókot megjelenítő nevű gyűjtemény kiemelésével – Node-adatbázis][mutiple-coll]
+    ![Node.js-oktatóanyag – Képernyőfelvétel az Azure Portalról, amely egy Azure Cosmos DB-fiókot jelenít meg a kiemelt nevű gyűjteménnyel – Node-adatbázis][alldata]
 
-1. Továbbá figyelje meg, hogy minden objektum rendelkezik-e egy másik attribútum néven ```__type```, amely megkülönböztetni a két különböző objektum modell segítségével.
+1. Azt is észreveheti, hogy minden objektum rendelkezik egy másik, ```__type``` nevű attribútummal, amely segít megkülönböztetni a két különböző objektummodellt.
 
-1. Végezetül most olvassa el az Azure Cosmos DB-ben tárolt adatok. Mongoose gondoskodik a modellen alapuló adatok szűréséhez. Úgy hogy nincs másik adatok olvasásakor. Csak adja meg a modell (ebben az esetben ```Family_common```) és a "DiscriminatorKey" szűrés Mongoose kezeli.
+1. Végezetül most olvassuk be az Azure Cosmos DB-ben tárolt adatokat. A Mongoose gondoskodik a modellen alapuló adatok szűréséről. Így semmit sem kell másképp csinálnia az adatok olvasásakor. Csak adja meg a modellt (ebben az esetben: ```Family_common```), és a Mongoose kezeli a szűrést a „DiscriminatorKey” alapján.
 
     ```JavaScript
     Family_common.find({ 'children.gender' : "male"}, function(err, foundFamily){
@@ -298,7 +298,7 @@ Itt létrehozhatunk egy alapobjektum modellhez tartozó, "Családhoz" és "Vacat
     });
     ```
 
-Ahogy látja, akkor egyszerűen dolgozhat Mongoose discriminators. Ezért, ha egy alkalmazás, amely a Mongoose keretrendszert használja, ez az oktatóanyag lehetővé teszik a az alkalmazás, és fut-e a MongoDB API-t az Azure Cosmos-adatbázis anélkül, hogy túl sok változás az.
+Amint láthatja, a Mongoose diszkriminátorok könnyen használhatók. Így ha az alkalmazása Mongoose-keretrendszert használ, ez az oktatóanyag segíthet, hogy komolyabb módosítások nélkül beüzemelje az alkalmazást az Azure Cosmos DB MongoDB API-ján.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -306,7 +306,7 @@ Ahogy látja, akkor egyszerűen dolgozhat Mongoose discriminators. Ezért, ha eg
 
 ## <a name="next-steps"></a>További lépések
 
-További tudnivalók a MongoDB műveletek, operátorok, fázisból áll, parancsokat és az Azure Cosmos DB MongoDB API támogatja a beállítások [MongoDB API támogatja a MongoDB-szolgáltatások és szintaxis](mongodb-feature-support.md).
+További tudnivalók az Azure Cosmos DB MongoDB API által támogatott MongoDB-műveletekről, operátorokról, fázisokról, parancsokról: [A MongoDB API támogatása a MongoDB szolgáltatásaihoz és szintaxisához](mongodb-feature-support.md).
 
 [alldata]: ./media/mongodb-mongoose/mongo-collections-alldata.png
 [mutiple-coll]: ./media/mongodb-mongoose/mongo-mutliple-collections.png

@@ -9,13 +9,13 @@ editor: spelluru
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: hero-article
-ms.date: 01/16/2018
+ms.date: 02/01/2018
 ms.author: jingwang
-ms.openlocfilehash: 0973a7ae8316d413244367f5407a89d1ba809847
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: f17dc18825c929a75169875594c7b1a13ba1f6d7
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Adat-előállító létrehozása az Azure Data Factory felhasználói felületén
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
@@ -133,7 +133,7 @@ A társított szolgáltatás beállításainál megadta a forrásadatokat tartal
 
    c. Adja meg az **OutputDataset** nevet.
 
-   d. Adja meg az **adftutorial/output** mappát. A másolási tevékenység létrehozza a kimeneti mappát, ha az még nem létezik.
+   d. Adja meg az **adftutorial/output** mappát. Ha a **kimeneti** mappa nem létezik, a másolási tevékenység létrehozza futásidőben.
 
    e. Adja meg a következő fájlnevet: `@CONCAT(pipeline().RunId, '.txt')`. 
    
@@ -180,7 +180,7 @@ Ebben a lépésben elvégzi a folyamat tesztfuttatását a Data Factoryban tört
 ## <a name="trigger-the-pipeline-manually"></a>A folyamat manuális aktiválása
 A feladat részeként entitásokat (társított szolgáltatásokat, adatkészleteket és folyamatokat) helyez üzembe az Azure Data Factoryban. Ezután manuálisan fogja aktiválni a folyamat futtatását. Egy [másik oktatóanyagban](tutorial-copy-data-portal.md?#configure-code-repository) leírt módon közzé is teheti ezeket az entitásokat saját Visual Studio Team Services Git-adattárában.
 
-1. A folyamat aktiválása előtt közzé kell tennie az entitásokat a Data Factory számára. A közzétételhez a bal oldali ablaktáblán kattintson a **Közzététel** elemre. 
+1. A folyamat aktiválása előtt közzé kell tennie az entitásokat a Data Factory számára. A közzétételhez a bal oldali ablaktáblán kattintson az **Összes közzététele** elemre. 
 
    ![Közzététel gomb](./media/quickstart-create-data-factory-portal/publish-button.png)
 2. A folyamat manuális aktiválásához kattintson az **Aktiválás** elemre az eszköztáron, majd válassza az **Aktiválás most** lehetőséget. 
@@ -224,9 +224,9 @@ Az oktatóanyagnak ez a feladata nem kötelező. A folyamat rendszeres időköz�
 5. Tekintse át a figyelmeztető üzenetet, és kattintson a **Befejezés** gombra.
 
    ![Figyelmeztetés és „Befejezés” gomb](./media/quickstart-create-data-factory-portal/new-trigger-finish.png)
-6. Kattintson a **Közzététel** gombra a Data Factory módosításainak közzétételéhez. 
+6. Kattintson az **Összes közzététele** gombra a Data Factory módosításainak közzétételéhez. 
 
-   ![Közzététel gomb](./media/quickstart-create-data-factory-portal/publish-2.png)
+   ![Közzététel gomb](./media/quickstart-create-data-factory-portal/publish-button.png)
 8. Váltson a bal oldali **Monitorozás** lapra. A lista frissítéséhez kattintson a **Frissítés** gombra. Láthatja, hogy a folyamat percenként fut a közzététel időpontja és a befejezés időpontja között. 
 
    Figyelje meg az **Aktiválva a következő alapján** oszlop értékeit. A manuális eseményindító-futtatás egy korábban elvégzett lépésből (**Aktiválás most**) származik. 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 424a5ec49018e969edbf90c374a9da7e1d22395d
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 8b5211e9c932221c6b6134e7e0627f4d7f964123
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Adatok másolása az Azure Blobból az Azure SQL Database-be az Azure Data Factory segítségével
 Ebben az oktatóanyagban az Azure Data Factory felhasználói felületének használatával hoz létre egy adat-előállítót. Az adat-előállító folyamata adatokat másol az Azure Blob Storage-ból az Azure SQL Database-be. Az oktatóanyagban szereplő konfigurációs minta fájlalapú adattárból relációs adattárba való másolásra vonatkozik. A forrásként és fogadóként támogatott adattárak listája a [támogatott adattárakat tartalmazó](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban található.
@@ -144,10 +144,7 @@ Ebben az oktatóanyagban először létrehoz egy folyamatot, majd létrehoz tár
 9. Az alul található **Tulajdonságok** ablak **Általános** lapján a **Név** mezőbe írja a **SourceBlobDataset** értéket.
 
     ![Adatkészlet neve](./media/tutorial-copy-data-portal/dataset-name.png)
-10. Váltson a **Kapcsolat** lapra a Tulajdonságok ablakban.   
-
-    ![Kapcsolat lap](./media/tutorial-copy-data-portal/source-dataset-connection-tab.png)
-11. Kattintson az **+ Új** elemre a **Társított szolgáltatások** szövegbeviteli mező mellett. Egy társított szolgáltatás egy adattárat vagy számítási erőforrást kapcsol az adat-előállítóhoz. Ebben az esetben létrehoz egy Azure Storage-beli társított szolgáltatást, amely az Azure-tárfiókot társítja az adat-előállítóhoz. A társított szolgáltatás azon kapcsolatadatokkal rendelkezik, amelyeket a Data Factory-szolgáltatások használnak futtatáskor a Blob Storage-hoz való kapcsolódáshoz. Az adatkészlet megadja a forrásadatokat tartalmazó tárolót, mappát és fájlt (ez utóbbi nem kötelező). 
+10. Váltson a **Kapcsolat** lapra a Tulajdonságok ablakban. Kattintson az **+ Új** elemre a **Társított szolgáltatások** szövegbeviteli mező mellett. Egy társított szolgáltatás egy adattárat vagy számítási erőforrást kapcsol az adat-előállítóhoz. Ebben az esetben létrehoz egy Azure Storage-beli társított szolgáltatást, amely az Azure-tárfiókot társítja az adat-előállítóhoz. A társított szolgáltatás azon kapcsolatadatokkal rendelkezik, amelyeket a Data Factory-szolgáltatások használnak futtatáskor a Blob Storage-hoz való kapcsolódáshoz. Az adatkészlet megadja a forrásadatokat tartalmazó tárolót, mappát és fájlt (ez utóbbi nem kötelező). 
 
     ![Új társított szolgáltatás gomb](./media/tutorial-copy-data-portal/source-dataset-new-linked-service-button.png)
 12. Az **Új társított szolgáltatás** ablakban végezze el az alábbi lépéseket: 
@@ -283,7 +280,7 @@ Elvégezheti a folyamat próbafuttatását, mielőtt összetevőket (társított
 2. Ellenőrizze, hogy a forrásfájl adatai bekerültek-e a cél SQL-adatbázisba. 
 
     ![SQL-kimenet ellenőrzése](./media/tutorial-copy-data-portal/verify-sql-output.png)
-3. A bal oldali ablaktáblán kattintson a **Közzététel** gombra. Ez a művelet közzéteszi a létrehozott entitásokat (társított szolgáltatások, adatkészletek és folyamatok) az Azure Data Factoryban.
+3. A bal oldali ablaktáblán kattintson az **Összes közzététele** gombra. Ez a művelet közzéteszi a létrehozott entitásokat (társított szolgáltatások, adatkészletek és folyamatok) az Azure Data Factoryban.
 
     ![Közzététel gomb](./media/tutorial-copy-data-portal/publish-button.png)
 4. Várjon, amíg megjelenik a **Sikeres közzététel** üzenet. Az értesítési üzenetek megtekintéséhez kattintson a bal oldali oldalsáv **Értesítések megjelenítése** lapjára. Az **X** gombra kattintva zárja be az értesítések ablakát.
@@ -343,7 +340,7 @@ Ha nem szeretne a VSTS-kódtárral dolgozni, kihagyhatja ezt a lépést, és fol
 ## <a name="trigger-the-pipeline-manually"></a>A folyamat manuális aktiválása
 Ebben a lépésben manuálisan fogja aktiválni az előző lépésben közzétett folyamatot. 
 
-1. Kattintson az **Aktiválás** gombra az eszköztáron, majd az **Aktiválás most** elemre. 
+1. Kattintson az **Aktiválás** gombra az eszköztáron, majd az **Aktiválás most** elemre. A **Folyamatfuttatás** lapon kattintson a **Befejezés** elemre.  
 
     ![Aktiválás most menü](./media/tutorial-copy-data-portal/trigger-now-menu.png)
 2. Váltson a bal oldali **Monitorozás** lapra. Itt láthat egy manuális eseményindító által aktivált folyamatfuttatást. A Műveletek oszlopban található hivatkozások használatával megtekintheti a tevékenységek részleteit, és újra futtathatja a folyamatot.
@@ -386,10 +383,10 @@ Ebben az ütemezésben egy ütemezési eseményindítót fog létrehozni a folya
 6. Az **Eseményindító futtatási paraméterei** oldalon tekintse át a figyelmeztető üzenetet, majd kattintson a **Befejezés** elemre. A jelen példában található folyamat nem használ paramétereket. 
 
     ![Folyamat paraméterei](./media/tutorial-copy-data-portal/trigger-pipeline-parameters.png)
-7. Kattintson a **Közzététel** gombra a módosítások az adattárban történő közzétételéhez. Az eseményindító nem aktiválódik, amíg a közzététel sikeresen be nem fejeződik. 
+7. Kattintson a **Szinkronizálás** elemre a saját ágban végzett módosítások master ággal való szinkronizálásához. Alapértelmezés szerint a **Módosítások közzététele a szinkronizálás után** beállítás be van jelölve. Ezért ha bejelöli **Szinkronizálás** beállítást, a program a frissített entitásokat is közzéteszi az Azure Data Factory szolgáltatásba a master ágról. Az eseményindító nem aktiválódik, amíg a közzététel sikeresen be nem fejeződik.
 
-    ![Eseményindító közzététele](./media/tutorial-copy-data-portal/publish-trigger.png) 
-8. Váltson a bal oldali **Figyelés** lapra az aktivált folyamatfuttatások megtekintéséhez. 
+    ![Eseményindító közzététele](./media/tutorial-copy-data-portal/sync-your-changes-with-trigger.png) 
+9. Váltson a bal oldali **Figyelés** lapra az aktivált folyamatfuttatások megtekintéséhez. 
 
     ![Aktivált folyamatfuttatások](./media/tutorial-copy-data-portal/triggered-pipeline-runs.png)    
 9. Ha váltani szeretne a folyamatfuttatások nézetéről az eseményindító-futtatások nézetére, kattintson a Folyamatfuttatások elemre, és válassza ki az Eseményindító-futtatások lehetőséget.
