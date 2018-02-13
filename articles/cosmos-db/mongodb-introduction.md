@@ -13,17 +13,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2017
+ms.date: 02/12/2018
 ms.author: anhoh
-ms.openlocfilehash: d39ca60438ce5f49ed411eded22583438706dc8c
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 50a7b645749284b952e5fe5e37475f0760184845
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="introduction-to-azure-cosmos-db-api-for-mongodb"></a>Bevezetés az Azure Cosmos DB: API-t a mongodb-Protokolltámogatással
 
-Az [Azure Cosmos DB](../cosmos-db/introduction.md) a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása az alapvető fontosságú alkalmazásokhoz. Az Azure Cosmos DB az [iparág legjobb szolgáltatásiszint-szerződései](https://azure.microsoft.com/support/legal/sla/cosmos-db/) által biztosított [teljes körű, globális terjesztést](distribute-data-globally.md) kínál, valamint [a teljesítmény és a tárterület rugalmas méretezését](partition-data.md) világszerte, az esetek 99%-ában egyszámjegyű ezredmásodperces késéseket, [öt jól meghatározott konzisztenciaszintet](consistency-levels.md) és garantált magas rendelkezésre állást. Az Azure Cosmos DB [automatikusan indexeli az adatokat](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) anélkül, hogy a felhasználónak sémákat és indexeket kellene kezelnie. Többmodelles szolgáltatás, amely támogatja a dokumentumokat, a kulcs-értékeket, a diagramokat és az oszlopos adatmodelleket. 
+Az [Azure Cosmos DB](../cosmos-db/introduction.md) a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása az alapvető fontosságú alkalmazásokhoz. Az Azure Cosmos DB biztosít [kulcsrakész globális terjesztési](distribute-data-globally.md), [átviteli sebesség és tárterület a rugalmas méretezést](partition-data.md) világszerte, egyjegyű ezredmásodperces késések fordulnak elő a 99th PERCENTILIS és garantált magas rendelkezésre állás érdekében minden biztonsági mentés által [iparágvezető SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/). Az Azure Cosmos DB [automatikusan indexeli az adatokat](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) anélkül, hogy a felhasználónak sémákat és indexeket kellene kezelnie. Többmodelles szolgáltatás, amely támogatja a dokumentumokat, a kulcs-értékeket, a diagramokat és az oszlopos adatmodelleket. 
 
 ![Az Azure Cosmos DB: MongoDB API](./media/mongodb-introduction/cosmosdb-mongodb.png) 
 
@@ -39,7 +39,12 @@ Az Azure Cosmos DB adatbázisok alkalmas adattárként írt [MongoDB](https://do
 
 **Egyetlen kiszolgálóból álló felügyeleti**: nem kell kezelni, a méretezés a MongoDB-adatbázisok. Azure Cosmos-adatbázis egy teljes körűen felügyelt szolgáltatás, amely azt jelenti, hogy nem kell kezelniük bármilyen infrastruktúra vagy a virtuális gépek saját kezűleg. Az Azure Cosmos DB érhető el a 30 + [Azure-régiókat](https://azure.microsoft.com/regions/services/).
 
-**Aprólékosan beállítható konzisztenciaszintek:** Öt jól meghatározott konzisztenciaszint közül választhat a konzisztencia és a teljesítmény közötti optimális kompromisszum elérése érdekében. A lekérdezések és olvasási műveletek esetében az Azure Cosmos DB öt különböző konzisztenciaszintet kínál: erős, kötött elavulás, munkamenet, konzisztens előtag és végleges. Ezek a részletes, jól meghatározott konzisztenciaszintek lehetővé teszik, hogy ésszerű kompromisszumot alakítson ki a konzisztencia, a rendelkezésre állás és a késleltetés között. További információk: [A rendelkezésre állás és a teljesítmény maximalizálása a konzisztenciaszintek használatával](consistency-levels.md).
+**Aprólékosan beállítható konzisztenciaszintek:** Azure Cosmos DB jelenleg két konzisztencia beállításokkal, erős és végleges, 3.4-es verziójú MongoDB valósítja meg. Mivel Azure Cosmos DB multi-api, a konzisztencia beállítások a fiók szintjén és a konzisztencia kényszerítése minden API vezérli. MongoDB 3.6, amíg nincs egy munkamenet-konzisztencia fogalma, ha a MongoDB API-fiók használata a munkamenet-konzisztencia, a konzisztencia van vissza a végleges MongoDB API-k használata esetén. Fiók MongoDB API-a-saját-olvasható garancia van szüksége, ha a fiók alapértelmezett konzisztencia szintje meg erős, vagy a kötött elavulási. További információk: [A rendelkezésre állás és a teljesítmény maximalizálása a konzisztenciaszintek használatával](consistency-levels.md).
+
+| Az Azure Cosmos DB alapértelmezett konzisztencia szint |   Mongo API (3.4) |
+|---|---|
+|Munkamenet| Végleges |
+| Erős | Erős |
 
 **Az automatikus indexeléshez**: alapértelmezés szerint Azure Cosmos DB automatikusan indexeli az összes tulajdonságainak belül dokumentumok a MongoDB adatbázis- és nem várt vagy igényel semmilyen sémát, illetve másodlagos indexek létrehozását. Emellett az egyedi index funkció lehetővé teszi, hogy a dokumentum mező, amelyek már az Azure Cosmos Adatbázisba Automatikus indexelés egyediségi megkötés.
 

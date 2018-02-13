@@ -1,5 +1,5 @@
 - name: A Machine Learning Studio dokumentációja
-  href: index.md
+  href: index.yml
 - name: Áttekintés
   expanded: true
   items:

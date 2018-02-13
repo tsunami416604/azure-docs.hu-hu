@@ -1,6 +1,6 @@
 ---
-title: "Az Azure tervezetének Automation - szabályozott munkaterhelések pénzügyi szolgáltatásokat"
-description: "Pénzügyi szabályozott munkaterhelések szerkezeti terve"
+title: "Azure biztonsági és megfelelőségi tervezetének - FFIEC pénzügyi szabályozott munkaterhelések"
+description: "Azure biztonsági és megfelelőségi tervezetének - FFIEC pénzügyi szabályozott munkaterhelések"
 services: security
 documentationcenter: na
 author: simorjay
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/29/2017
+ms.date: 02/09/2018
 ms.author: frasim
-ms.openlocfilehash: 19e26c16866dada8dcff04a520ce4c208d67c365
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: a1167f56f595f905c6338868806351345c06b91a
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 02/13/2018
 ---
-# <a name="azure-blueprint-automation-financial-services-blueprint-for-regulated-workloads"></a>Az Azure tervezetének Automation: Pénzügyi szerkezeti szabályozott munkaterhelések terve
+# <a name="azure-security-and-compliance-blueprint---ffiec-financial-services-regulated-workloads"></a>Azure biztonsági és megfelelőségi tervezetének - FFIEC pénzügyi szabályozott munkaterhelések
 
 ## <a name="overview"></a>Áttekintés
 
-Pénzügyi szolgáltatások szerkezeti terve szabályozott munkaterhelések segítségével telepítsen egy biztonságos és a megfelelő platform, a felhőben bizalmas adatainak platformszolgáltatási webalkalmazás. Szerkezeti terve automatizált parancsfájlokat és útmutatást, amely egy egyszerű referencia-architektúrában és, amely egyszerűbbé teszi a Microsoft Azure-megoldások bevezetését megjelenítve áll. Ez tervezetének mutatja be egy végpont megoldás a terheket és a felhőben történő telepítésének csökkentésére keresést szervezetek igényeinek.
+Az Azure biztonsági és megfelelőségi tervezetének - FFIEC pénzügyi szolgáltatások Regulated munkaterhelések segít a biztonságos és a megfelelő platform telepítése egy platformszolgáltatási webalkalmazásként való kezelése a felhőben található bizalmas adatok kezelésére terveztek. Szerkezeti terve automatizált parancsfájlokat és útmutatást, amely egy egyszerű referencia-architektúrában és, amely egyszerűbbé teszi a Microsoft Azure-megoldások bevezetését megjelenítve áll. Ez tervezetének mutatja be egy végpont megoldás a terheket és a felhőben történő telepítésének csökkentésére keresést szervezetek igényeinek.
 
 Ez tervezetének beállítása szerint a American Intézet a urakat például - SOC 1, SOC 2, a fizetési kártya Industry Data Security Standards szabvány Tanács DSS 3.2-es és a FFIEC szigorú kompatibilis szabványok követelményeinek teljesítéséhez célja a gyűjtemény, tárolási és a bizalmas pénzügyi adatok lekérését. A megfelelő kezelését az ilyen adatok biztonságos, megfelelő, többrétegű környezetben pénzügyi adatokat kezelő megoldás üzembe helyezésével mutatja be. A megoldás egy-végpontok PaaS Azure-alapú megoldás van telepítve. 
 
@@ -52,7 +52,7 @@ Az architektúra a következő összetevőkből áll, és az Azure PCI DSS megfe
 
 Szerkezeti terve az alábbi címek az alábbi használati eset.
 
-> Ez a forgatókönyv azt mutatja be, hogyan egy fiktív webes tároló áthelyezése egy PaaS bizalmas adatokat a felhőalapú Azure-alapú megoldás. A megoldást kezelési és alapszintű felhasználói adatok és a kijelölt bizalmas adatok gyűjteménye mutatja be. Ez a munkahelyi alapszik, az Azure tervezetének Automation: fizetés feldolgozása fizetési kártya feldolgozásra PCI DSS-kompatibilis környezetben. További információ a munkahelyi kibővítve a ["Tekintse át és útmutatást a megvalósítás"](https://aka.ms/pciblueprintprocessingoverview) papír biztosít a PCI DSS-kompatibilis környezetben áttekintése.
+> Ez a forgatókönyv azt mutatja be, hogyan egy fiktív webes tároló áthelyezése egy PaaS bizalmas adatokat a felhőalapú Azure-alapú megoldás. A megoldást kezelési és alapszintű felhasználói adatok és a kijelölt bizalmas adatok gyűjteménye mutatja be. Ez a munkahelyi alapszik, az Azure biztonsági és megfelelőségi tervezetének - környezetek PCI DSS-kompatibilis fizetés feldolgozásakor. További információ a munkahelyi kibővítve a ["Tekintse át és útmutatást a megvalósítás"](https://aka.ms/pciblueprintprocessingoverview) papír biztosít a PCI DSS-kompatibilis környezetben áttekintése.
 
 ### <a name="use-case"></a>Használati eset
 Egy kis webes tároló nevű *Contoso webes tároló* áthelyezheti a felhő tájékoztatást tartalmazó pénzügyi adatok. 
@@ -65,7 +65,7 @@ A rendszergazda a Contoso webes tároló olyan megoldás, amely gyorsan telepít
 
 A legalapvetőbb architektúra a következő fiktív elemekkel célja:
 
-Tartomány hely`contosowebstore.com`
+Tartomány hely `contosowebstore.com`
 
 Felhasználói szerepkörök bemutatják a használati eset, és adja meg a felhasználói felület betekintést alkalmazzák.
 
@@ -111,7 +111,7 @@ Edna Benson a recepciós és üzleti kezelő. Győződjön meg arról, hogy ügy
 - Edna felülírhatnak-e pénzügyi adatokat.
 - Edna fiók nem szűretlen pénzügyi információk megtekintése.
 
-> A Contoso webes tároló, a felhasználó, automatikusan a **Edna** felhasználótól a telepített környezet képességeinek tesztelése.
+
 
 ### <a name="contoso-webstore---estimated-pricing"></a>Contoso webes tároló - becsült díjszabása
 
@@ -121,7 +121,7 @@ Ebben a megoldásban használt Azure-szolgáltatásokat. Az üzembe helyezési a
 
 >- Application Gateway
 >- Azure Active Directory
->- Az App Service-környezet v2
+>- App Service Environment v2
 >- OMS szolgáltatáshoz
 >- Azure Key Vault
 >- Network Security Groups (Hálózati biztonsági csoportok)
@@ -151,7 +151,7 @@ Az alábbi szakasz részletesen fejlesztése és megvalósítása elemek.
 
 A legalapvetőbb architektúra csökkenti a biztonsági rések Alkalmazásátjáró használata webalkalmazási tűzfal (waf-ot), és az engedélyezett OWASP szabálykészletben kockázatát. További funkciók a következők:
 
-- [End a záró SSL](/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)
+- [End-to-End-SSL](/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)
 - [SSL-kiszervezés](/azure/application-gateway/application-gateway-ssl-portal) engedélyezve
 - [A TLS 1.0 és 1.1](/azure/application-gateway/application-gateway-end-to-end-ssl-powershell) le van tiltva
 - [Webalkalmazási tűzfal](/azure/application-gateway/application-gateway-webapplicationfirewall-overview) (WAF mód)
@@ -172,7 +172,7 @@ A hálózati réteg mindegyikén dedikált hálózati biztonsági csoport (NSG):
 - Egy NSG-t felügyeleti jumpbox (megerősített gazdagép)
 - Egy NSG-t az app service Environment-környezet
 
-Az NSG-k, amelyek mindegyikének adott portok és protokollok a biztonságos és a megfelelő műveletet, a megoldás számára. További információkért lásd: [PCI útmutatást - hálózati biztonsági csoportok](#network-security-groups).
+Az NSG-k, amelyek mindegyikének adott portok és protokollok a biztonságos és a megfelelő műveletet, a megoldás számára. 
 
 Ezenkívül a következő konfigurációk engedélyezve vannak az egyes NSG:
 
@@ -183,7 +183,7 @@ Ezenkívül a következő konfigurációk engedélyezve vannak az egyes NSG:
 #### <a name="subnets"></a>Alhálózatok
  Ellenőrizze, hogy az egyes alhálózatokon társítva a megfelelő NSG-e.
 
-#### <a name="custom-domain-ssl-certificates"></a>Az egyéni tartomány SSL-tanúsítványok
+#### <a name="custom-domain-ssl-certificates"></a>Custom domain SSL certificates
  HTTPS-forgalom engedélyezve van, az egyéni tartomány SSL-tanúsítványt használ.
 
 ### <a name="data-at-rest"></a>Inaktív adat
@@ -305,7 +305,7 @@ Alapértelmezett telepítési célja, hogy a megfelelő és biztonságos konfigu
 
 ## <a name="deploy-the-solution"></a>A megoldás üzembe helyezése
 
-A megoldás telepítéséhez összetevők érhetők el a [fizetés feldolgozása tervezetének kód tárház][code-repo]. A központi telepítés a legalapvetőbb architektúra keresztül Microsoft PowerShell v5 több lépésre van szükség. A webhelyhez való kapcsolódás, (például contoso.com) egy egyéni tartománynevet kell megadnia. Ez adott meg a `-customHostName` váltani a 2. További információkért lásd: [vásároljon egy egyéni tartománynevet, az Azure Web Apps](/azure/app-service-web/custom-dns-web-site-buydomains-web-app). Egy egyéni tartománynevet nem sikeres telepítéséhez és futtatásához szükséges, de nem lehet kapcsolódni a webhelyhez bemutatási célokra.
+A megoldás telepítéséhez összetevők érhetők el a [tervezetének kód tárház][code-repo]. A központi telepítés a legalapvetőbb architektúra keresztül Microsoft PowerShell v5 több lépésre van szükség. A webhelyhez való kapcsolódás, (például contoso.com) egy egyéni tartománynevet kell megadnia. Ez adott meg a `-customHostName` váltani a 2. További információkért lásd: [vásároljon egy egyéni tartománynevet, az Azure Web Apps](/azure/app-service-web/custom-dns-web-site-buydomains-web-app). Egy egyéni tartománynevet nem sikeres telepítéséhez és futtatásához szükséges, de nem lehet kapcsolódni a webhelyhez bemutatási célokra.
 
 A parancsfájlok tartományi felhasználók hozzáadása az Azure AD-bérlő megadott. A Microsoft javasolja létrehozása egy új Azure AD bérlői kívánja használni, mint egy tesztet.
 
@@ -361,7 +361,7 @@ A Microsoft ajánlja, hogy egy tisztán PowerShell üzembe helyezéséhez haszn�
     
 ## <a name="threat-model"></a>Fenyegetések modellezése
 
-Egy adatfolyam-diagram (DFD) és a Contoso webes tároló a minta fenyegetések modellezése [fizetés feldolgozása tervezetének fenyegetések modellezése](https://aka.ms/pciblueprintthreatmodel).
+Egy adatfolyam-diagram (DFD) és a Contoso webes tároló a minta fenyegetések modellezése [tervezetének fenyegetések modellezése](https://aka.ms/pciblueprintthreatmodel).
 
 ![](images/pci-threat-model.png)
 
@@ -375,7 +375,7 @@ Egy adatfolyam-diagram (DFD) és a Contoso webes tároló a minta fenyegetések 
 
 ## <a name="disclaimer-and-acknowledgments"></a>Jogi nyilatkozat és a nyugtázások
 
-*2017. szeptember*
+2017. szeptember
 
 - Ez a dokumentum csak tájékoztatási célokat szolgál. A MICROSOFT ÉS AVYAN ELLENŐRIZZE NINCS SEMMILYEN KIFEJEZETT KIFEJEZETT, VÉLELMEZETT VAGY FELELŐSSÉGET A JELEN DOKUMENTUMBAN SZEREPLŐ INFORMÁCIÓK. Ez a dokumentum biztosított ",-van." Információk és nézetek ebben a dokumentumban, beleértve az URL-CÍMEK és más internetes webhelyet, értesítés nélkül változhatnak. Ez a dokumentum olvasásakor az ügyfelek az alkalmazást saját felelősségére használja.  
 - Ez a dokumentum nem biztosít semmilyen jogot semmilyen Microsoft vagy Avyan termék vagy a megoldások található szellemi tulajdonhoz rendelkező ügyfelek.  

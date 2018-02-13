@@ -14,35 +14,40 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/08/2018
 ms.author: larryfr
-ms.openlocfilehash: 8074797e2d37f98cc3b219dbf3e51f558bbee8c7
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 53342e11476a307bb6af356eb40fe51928041822
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="use-azure-container-services-with-kafka-on-hdinsight"></a>Azure-tárolót Services használata a HDInsight Kafka
 
-Ismerje meg, hogyan használható Azure tároló szolgáltatás (AKS) Kafka HDInsight-fürt.
+Ismerje meg, hogyan használható Azure tároló szolgáltatás (AKS) Kafka HDInsight-fürt. A jelen dokumentumban leírt lépések AKS tárolt Node.js-alkalmazás használatával Kafka való kapcsolat ellenőrzésére. Ez az alkalmazás használja a [kafka-csomópont](https://www.npmjs.com/package/kafka-node) csomag Kafka folytatott kommunikációhoz. Használja [Socket.io](https://socket.io/) az esemény üzenetküldési a böngészőalapú ügyfél és a háttér-AKS üzemeltetett között.
 
 Az [Apache Kafka](https://kafka.apache.org) egy nyílt forráskódú elosztott streamelési platform streamadatfolyamatok és -alkalmazások létrehozásához. Az Azure Tárolószolgáltatás az üzemeltetett Kubernetes környezethez kezeli, és teszi gyorsan és egyszerűen indexelése alkalmazások központi telepítése. Egy Azure virtuális hálózatot használ, a két szolgáltatást is elérheti.
 
-> [!IMPORTANT]
-> Jelen dokumentum céljából feltételezzük, hogy jártas létrehozása és használata az Azure-szolgáltatásokat:
->
-> * Kafka on HDInsight
-> * Azure Container Service
-> * Azure virtuális hálózatok
->
-> Ez a dokumentum is feltételezi, hogy rendelkezik telefonon a [Azure tárolószolgáltatások oktatóanyag](../../aks/tutorial-kubernetes-prepare-app.md). Ebben az oktatóanyagban létrehoz egy tároló szolgáltatást, egy Kubernetes fürtöt, a tároló beállításjegyzék hoz létre, és konfigurálja a `kubectl` segédprogram.
-
 > [!NOTE]
-> A jelen dokumentumban leírt lépések AKS tárolt Node.js-alkalmazás használatával Kafka való kapcsolat ellenőrzésére. Ez az alkalmazás használja a [kafka-csomópont](https://www.npmjs.com/package/kafka-node) csomag Kafka folytatott kommunikációhoz. Használja [Socket.io](https://socket.io/) az esemény üzenetküldési a böngészőalapú ügyfél és a háttér-AKS üzemeltetett között.
+> A jelen dokumentum elsősorban a tárolószolgáltatások Azure hdinsight Kafka kommunikálni engedélyezéséhez szükséges lépéseket. A példa magát a csak alapvető, annak bemutatásához, hogy működik-e a konfigurációs Kafka ügyfél.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+* [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+* Azure-előfizetés
+
+Jelen dokumentum céljából feltételezzük, hogy jártas létrehozása és használata az Azure-szolgáltatásokat:
+
+* Kafka on HDInsight
+* Azure Container Service
+* Azure virtuális hálózatok
+
+Ez a dokumentum is feltételezi, hogy rendelkezik telefonon a [Azure tárolószolgáltatások oktatóanyag](../../aks/tutorial-kubernetes-prepare-app.md). Ebben az oktatóanyagban létrehoz egy tároló szolgáltatást, egy Kubernetes fürtöt, a tároló beállításjegyzék hoz létre, és konfigurálja a `kubectl` segédprogram.
 
 ## <a name="architecture"></a>Architektúra
 
 ### <a name="network-topology"></a>Hálózati topológia
 
-HDInsight és AKS is használják az Azure virtuális hálózat egy tárolót a számítási erőforrásokat. HDInsight és AKS közötti kommunikáció engedélyezéséhez engedélyeznie kell a hálózatok közötti kommunikációt. A jelen dokumentumban leírt lépések használja a virtuális hálózati társviszony-létesítés a hálózatokhoz. A társviszony-létesítés további információkért lásd: a [virtuális hálózati társviszony-létesítés](../../virtual-network/virtual-network-peering-overview.md) dokumentum.
+HDInsight és AKS is használják az Azure virtuális hálózat egy tárolót a számítási erőforrásokat. HDInsight és AKS közötti kommunikáció engedélyezéséhez engedélyeznie kell a hálózatok közötti kommunikációt. A jelen dokumentumban leírt lépések használja a virtuális hálózati társviszony-létesítés a hálózatokhoz. Más kapcsolatok, például VPN, is működnek. A társviszony-létesítés további információkért lásd: a [virtuális hálózati társviszony-létesítés](../../virtual-network/virtual-network-peering-overview.md) dokumentum.
+
 
 A következő ábra szemlélteti a hálózati topológia itt:
 
@@ -51,11 +56,6 @@ A következő ábra szemlélteti a hálózati topológia itt:
 > [!IMPORTANT]
 > Névfeloldás nem engedélyezett a peered hálózatok között, így az IP-címzés használatos. Alapértelmezés szerint a HDInsight Kafka állomásnév helyett IP-címek vissza, ha az ügyfelek van konfigurálva. A jelen dokumentumban leírt lépések módosításához az IP-címet használ Kafka hirdetési helyette.
 
-## <a name="prerequisites"></a>Előfeltételek
-
-* [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-* Azure-előfizetés
-
 ## <a name="create-an-azure-container-service-aks"></a>Hozzon létre egy Azure Tárolószolgáltatás (AKS)
 
 Ha még nem rendelkezik egy AKS fürthöz, a következő dokumentumokat segítségével megtudhatja, hogyan hozzon létre egyet:
@@ -63,7 +63,10 @@ Ha még nem rendelkezik egy AKS fürthöz, a következő dokumentumokat segíts�
 * [Fürt üzembe helyezése Azure tároló szolgáltatás (AKS) - portál](../../aks/kubernetes-walkthrough-portal.md)
 * [Fürt üzembe helyezése Azure tároló szolgáltatás (AKS) - parancssori felület](../../aks/kubernetes-walkthrough.md)
 
-## <a name="configure-the-virtual-networks"></a>Virtuális hálózatok konfigurálása
+> [!NOTE]
+> AKS a telepítés során létrehoz egy virtuális hálózatot. Ezen a hálózaton nincsenek társviszonyban, hogy a HDInsight a következő szakaszban létrehozott.
+
+## <a name="configure-virtual-network-peering"></a>Konfigurálja a virtuális hálózati társviszony-létesítés
 
 1. Az a [Azure-portálon](https://portal.azure.com), jelölje be __erőforráscsoportok__, majd keresse meg a virtuális hálózat a AKS fürt tartalmazó erőforráscsoportot. Az erőforráscsoport neve `MC_<resourcegroup>_<akscluster>_<location>`. A `resourcegroup` és `akscluster` bezár a rendszer a fürthöz létrehozott erőforráscsoport nevét, és a fürt nevét. A `location` az a hely, amely a fürt sikeresen létrehozva.
 

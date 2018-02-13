@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/17/2017
+ms.date: 02/12/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f8e3e0e8868c05188d9d6cb26fe6c2bd2891c17d
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: c62ea8efe56186a2f3ee934823b4ea03775037b0
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB .NET Core SDK API-SQL: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -43,9 +43,9 @@ ms.lasthandoff: 12/18/2017
 
 <tr><td>**API-JÁNAK dokumentációja**</td><td>[.NET API-referenciadokumentáció](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)</td></tr>
 
-<tr><td>**Példák**</td><td>[.NET-Kódminták](sql-api-dotnet-samples.md)</td></tr>
+<tr><td>**Minták**</td><td>[.NET-Kódminták](sql-api-dotnet-samples.md)</td></tr>
 
-<tr><td>**Első lépések**</td><td>[Ismerkedés az Azure Cosmos DB .NET Core-SDK-val](sql-api-dotnetcore-get-started.md)</td></tr>
+<tr><td>Első lépések</td><td>[Ismerkedés az Azure Cosmos DB .NET Core-SDK-val](sql-api-dotnetcore-get-started.md)</td></tr>
 
 <tr><td>**Webes alkalmazás oktatóanyag**</td><td>[Webalkalmazás fejlesztése a Azure Cosmos DB](sql-api-dotnet-application.md)</td></tr>
 
@@ -58,6 +58,14 @@ Az Azure Cosmos DB .NET Core SDK legújabb verziójával szolgáltatásparitást
 
 > [!NOTE] 
 > Az Azure Cosmos DB .NET Core SDK még nem kompatibilis az univerzális Windows Platform (UWP-) alkalmazásokat. Ha érdekli a .NET Core-SDK-t támogató UWP-alkalmazások, e-mailek küldése [ askcosmosdb@microsoft.com ](mailto:askcosmosdb@microsoft.com).
+
+### <a name="a-name180181"></a><a name="1.8.0"/>1.8.1
+
+* Rögzített regressziós ahol FeedOptions.MaxItemCount = -1 egy System.ArithmeticException kivételt okozott: méretet a rendszer negatív.
+* Egy új ToString() függvényét QueryMetrics hozzá.
+* A gyűjtemények olvasása a partíció statisztikai adatainak kitéve.
+* ChangeFeedOptions hozzáadott PartitionKey tulajdonság.
+* Kisebb hibajavítások.
 
 ### <a name="a-name171171"></a><a name="1.7.1"/>1.7.1
  
@@ -141,7 +149,7 @@ Az Azure Cosmos DB .NET Core SDK legújabb verziójával szolgáltatásparitást
 
 Az Azure Cosmos DB .NET Core SDK lehetővé teszi összeállítását gyors és platformfüggetlen [ASP.NET Core](https://www.asp.net/core) és [.NET Core](https://www.microsoft.com/net/core#windows) Windows, Mac és Linux futtatni. Az Azure Cosmos DB .NET Core SDK legújabb kiadása van teljesen [Xamarin](https://www.xamarin.com) kompatibilis és monó (Linux), iOS és Android alkalmazások összeállításához kell használni.  
 
-### <a name="a-name010-preview010-preview"></a><a name="0.1.0-preview"/>0.1.0-Preview
+### <a name="a-name010-preview010-preview"></a><a name="0.1.0-preview"/>0.1.0-preview
 
 Az Azure Cosmos DB .NET Core Preview SDK lehetővé teszi összeállítását gyors és platformfüggetlen [ASP.NET Core](https://www.asp.net/core) és [.NET Core](https://www.microsoft.com/net/core#windows) Windows, Mac és Linux futtatni.
 
@@ -157,6 +165,7 @@ Ha az SDK-val kapcsolatos kérdése van, továbbá hogy [StackOverflow](http://s
 
 | Verzió | Kiadás dátuma | Kivezetési dátum |
 | --- | --- | --- |
+| [1.8.1](#1.8.1) |2018. február 05. |--- |
 | [1.7.1](#1.7.1) |2017. november 16. |--- |
 | [1.7.0](#1.7.0) |2017. november 10. |--- |
 | [1.6.0](#1.6.0) |2017. október 17. |--- |
@@ -174,7 +183,7 @@ Ha az SDK-val kapcsolatos kérdése van, továbbá hogy [StackOverflow](http://s
 | [1.1.1](#1.1.1) |2017. március 14. |--- |
 | [1.1.0](#1.1.0) |2017. február 16. |--- |
 | [1.0.0](#1.0.0) |2016. december 21. |--- |
-| [0.1.0-Preview](#0.1.0-preview) |2016. november 15. |2016. december 31. |
+| [0.1.0-preview](#0.1.0-preview) |2016. november 15. |2016. december 31. |
 
 ## <a name="see-also"></a>Lásd még:
 A Cosmos DB kapcsolatos további információkért lásd: [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapján. 

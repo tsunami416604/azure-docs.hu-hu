@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/10/2017
+ms.date: 02/12/2018
 ms.author: larryfr
-ms.openlocfilehash: d7e4e064a451831c7cf0753064522d0a0b4f5d63
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 8534fefc863a6cb04c43e81a4bea459844e58d91
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-spark-on-hdinsight"></a>A Spark on HDInsight az Application Insights telemetria naplóinak elemzése
 
@@ -50,7 +50,7 @@ A következő diagram azt ábrázolja, ebben a példában a service-architektúr
 
 ![a blob storage az Application Insights áramló adatok jelennek meg, majd a Spark on HDInsight által feldolgozott diagramja](./media/apache-spark-analyze-application-insight-logs/appinsightshdinsight.png)
 
-### <a name="azure-storage"></a>Azure Storage
+### <a name="azure-storage"></a>Azure Storage tárterület
 
 Az Application Insights beállítható úgy, hogy folyamatosan telemetriai adatainak exportálása blobokat. HDInsight majd elolvashatják a blobok tárolt adatokat. Vannak azonban olyan követelményekkel, amelyeket kell követnie:
 
@@ -365,7 +365,7 @@ Az Azure Storage-fiók hozzáadása egy meglévő fürthöz, olvassa el a a [adj
         ...
         +---------+
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További példák a Spark használata adatokhoz és szolgáltatásokhoz az Azure-ban tekintse meg a következő dokumentumokat:
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/31/2018
 ms.author: sethm
-ms.openlocfilehash: be702f0b08ce14012db9da10d874031c7a5a562b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: aba53fcadb9cefa70afc175dd02e4723eb6e5f5d
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Ajánlott eljárások használatával a Service Bus üzenetkezelés teljesítménnyel kapcsolatos fejlesztések
 
@@ -111,7 +111,12 @@ Kötegelés nem befolyásolja a számlázható üzenetkezelési műveletek szám
 
 ## <a name="batching-store-access"></a>Kötegelési áruházhoz való hozzáférés
 
-A várólista, a témakör és előfizetés átviteli sebesség növelése érdekében a Service Bus több üzenetet kötegek, a belső tárolójába írásakor. Ha engedélyezve van, az üzenetsor vagy témakör, a üzeneteket írna a tárolóba kötegelni lesz. Ha engedélyezve van a várólista vagy előfizetés, a üzenetek törlése a tárolóból kötegelni lesz. Egy entitás kötegelt áruházhoz való hozzáférés engedélyezve van, ha a Service Bus késlelteti tároló írási művelet kapcsolatban, hogy az entitás legfeljebb 20 MS által. Ez az időtartam alatt során felmerülő további tárolási műveletek kerülnek a kötegelt. Tároló hozzáférés csak befolyásolja kötegelni **küldése** és **Complete** műveletekkel; fogadási műveletek nem érinti. Kötegelt áruházhoz való hozzáférés entitás tulajdonság értéke. Kötegelt áruházhoz való hozzáférés engedélyezése az összes entitások közötti kötegelés következik be.
+A várólista, a témakör és előfizetés átviteli sebesség növelése érdekében a Service Bus több üzenetet kötegek, a belső tárolójába írásakor. Ha engedélyezve van, az üzenetsor vagy témakör, a üzeneteket írna a tárolóba kötegelni lesz. Ha engedélyezve van a várólista vagy előfizetés, a üzenetek törlése a tárolóból kötegelni lesz. Egy entitás kötegelt áruházhoz való hozzáférés engedélyezve van, ha a Service Bus késlelteti tároló írási művelet kapcsolatban, hogy az entitás legfeljebb 20 MS által. 
+
+> [!NOTE]
+> Nem áll fenn az elveszett üzenetek kötegelés, még akkor is, ha hiba történik a Service Bus egy 20ms kötegelési időköz végén. 
+
+Ez az időtartam alatt során felmerülő további tárolási műveletek kerülnek a kötegelt. Tároló hozzáférés csak befolyásolja kötegelni **küldése** és **Complete** műveletekkel; fogadási műveletek nem érinti. Kötegelt áruházhoz való hozzáférés entitás tulajdonság értéke. Kötegelt áruházhoz való hozzáférés engedélyezése az összes entitások közötti kötegelés következik be.
 
 Amikor egy új várólistát, üzenettémakört vagy előfizetést hoz létre, az alapértelmezés szerint engedélyezve van a kötegelt áruházhoz való hozzáférés. A kötegelt áruházhoz való hozzáférés letiltásához állítsa be a [EnableBatchedOperations] [ EnableBatchedOperations] tulajdonságot **hamis** az entitás létrehozása előtt. Példa:
 

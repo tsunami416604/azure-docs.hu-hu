@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/31/2018
 ms.author: ancav
-ms.openlocfilehash: bc25f58070d8871a92df249a2d48f27de0bc9498
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 97dca282bd7bbf00ce1d03899f6de0444a41163a
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure-figyelő támogatott metrikák
 Azure figyelő többféleképpen is kommunikál a metrikákat, többek között a diagramkészítési őket a portálon, a hozzájuk férni a REST API-n keresztül, vagy a őket lekérdezése a PowerShell vagy a parancssori felület. Alatt érhető el teljes listáját és az összes metrikák jelenleg Azure figyelő metrika folyamat.
@@ -861,7 +861,7 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|QueryDuration|Lekérdezés időtartama|Darabszám|Átlag|Utolsó intervallum időtartama DAX-lekérdezés|Nincs dimenzió|
+|QueryDuration|Lekérdezés időtartama|Ezredmásodperc|Átlag|Utolsó intervallum időtartama DAX-lekérdezés|Nincs dimenzió|
 |QueryPoolJobQueueLength|Szálak: Lekérdezés készlet feladat várólistájának hossza|Darabszám|Átlag|A lekérdezés szálkészlet sorban lévő feladatok száma.|Nincs dimenzió|
 
 ## <a name="microsoftrelaynamespaces"></a>Microsoft.Relay/namespaces

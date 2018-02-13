@@ -3,7 +3,7 @@ title: "Összegyűjti és elemzi az Azure tevékenységi naplóit a Log Analytic
 description: "Az Azure tevékenységi naplóit megoldás segítségével elemezheti és az összes Azure-előfizetések az Azure tevékenységnapló keresést."
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: dbac4c73-0058-4191-a906-e59aca8e2ee0
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2018
-ms.author: banders
-ms.openlocfilehash: bfe1ad012d126b3522b79a6ccecfe03b2b86f7b5
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: magoedte
+ms.openlocfilehash: c13890862c058701268c07d032d6d990c659287a
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Összegyűjti és elemzi az Azure tevékenység Log Analytics-naplók
 
@@ -88,7 +88,7 @@ Kattintson a **Azure tevékenységi naplóit** csempére kattintva nyissa meg a 
 
 Tevékenység naplóadatokat csak akkor jelenik meg *után* a tevékenységi naplóit, hogy a megoldás lépjen, adatai nem tekinthetők meg addig konfigurálását.
 
-| Blade | Leírás |
+| Panel | Leírás |
 | --- | --- |
 | Az Azure tevékenység naplóbejegyzések | Azure tevékenység naplóbejegyzés felső sáv diagramot ábrázol, amely a kijelölt időtartományban rekord összegek és a felső 10 tevékenység hívók listáját jeleníti meg. Kattintson a napló keresése futtatásához a sávdiagram <code>AzureActivity</code>. Egy hívó elemet ad vissza, a cikk összes tevékenység naplóbejegyzések napló keresés futtatásához kattintson. |
 | Tevékenységi naplóit állapot szerint | A perecdiagram a kijelölt időtartományban Azure napló állapota látható. Is listáját jeleníti meg az első tíz állapot rekordok listáját. Kattintson a napló keresése futtatásához a diagram <code>AzureActivity &#124; summarize AggregatedValue = count() by ActivityStatus</code>. Kattintson egy állapot elemet ad vissza az összes tevékenység naplóbejegyzések állapot rekord napló keresés futtatásához. |

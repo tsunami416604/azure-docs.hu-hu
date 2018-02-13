@@ -3,7 +3,7 @@ title: "A Naplóelemzési Azure SQL elemzési megoldások |} Microsoft Docs"
 description: "Az Azure SQL elemzési megoldások kezelheti az Azure SQL Database adatbázisok."
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: b2712749-1ded-40c4-b211-abc51cc65171
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
-ms.author: magoedte;banders
-ms.openlocfilehash: 2a363f663677eb7078b7ae06fde374cdbe083fd5
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: magoedte
+ms.openlocfilehash: 3a87e491e43c141d0afb08aa455c0d9682828ea1
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview-in-log-analytics"></a>Azure SQL adatbázis Azure SQL elemzés (előzetes verzió) Naplóelemzési figyelése
 
@@ -31,7 +31,7 @@ Jelenleg ez preview megoldás legfeljebb 150 000 Azure SQL-adatbázisok és 5000
 Az Azure SQL elemzési megoldás, mások számára elérhető Naplóelemzési, például segítségével megfigyelheti és az Azure-erőforrások értesítéseket állapotával kapcsolatos – ebben az esetben az Azure SQL Database. A Microsoft Azure SQL Database egy méretezhető relációs adatbázis-szolgáltatás, amely az Azure felhőben futó alkalmazások ismerős SQL-kiszolgáló-szerű képességeket biztosít. A Naplóelemzési segítségével gyűjtése, összefüggéseket és strukturált és strukturálatlan adatok megjelenítése.
 
 Az Azure SQL elemzési megoldás használatával gyakorlati áttekintés és a jellemző használati forgatókönyvei tekintse meg a beágyazott videó:
-          
+
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Get-Intelligent-Insights-for-Improving-Azure-SQL-Database-Performance/player]
 >
 
@@ -47,7 +47,7 @@ Az alábbi táblázat áttekintést nyújt az ebben a megoldásban támogatott �
 | [Linux-ügynökök](log-analytics-linux-agents.md) | Nem | Közvetlen Linux-ügynökök nem használják a megoldás. |
 | [SCOM felügyeleti csoport](log-analytics-om-agents.md) | Nem | Közvetlen kapcsolat az SCOM-ügynököt a szolgáltatáshoz a megoldás nem használja. |
 | [Azure Storage-fiók](log-analytics-azure-storage.md) | Nem | A Naplóelemzési nem beolvasni az adatokat egy tárfiókot. |
-| [Azure Diagnostics](log-analytics-azure-storage.md) | Igen | Azure metrika és naplózási adatok közvetlenül az Azure Log Analytics érkezik. |
+| [Azure Diagnostics](log-analytics-azure-storage.md) | Igen | Azure metrika és naplózási adatok küldése a Naplóelemzési közvetlenül az Azure-ban. |
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -63,11 +63,11 @@ A következő lépésekkel adja hozzá az Azure SQL elemzési megoldások a munk
 2. Az Azure portálon kattintson **új** (a + szimbólumra), majd válassza az erőforrások listájához, **figyelés + felügyeleti**.  
     ![Felügyelet és kezelés](./media/log-analytics-azure-sql/monitoring-management.png)
 3. Az a **figyelés + felügyeleti** listában kattintson **láthatja az összes**.
-4. Az a **ajánlott** listában, kattintson **további** , majd új listájában keresse meg **Azure SQL elemzés (előzetes verzió)** meg és jelölje ki.  
+4. Az a **ajánlott** listában, kattintson **további**, majd új listájában keresse meg **Azure SQL elemzés (előzetes verzió)** meg és jelölje ki.  
     ![Az Azure SQL elemzési megoldások](./media/log-analytics-azure-sql/azure-sql-solution-portal.png)
-5. Az a **Azure SQL elemzés (előzetes verzió)** panelen kattintson a **létrehozása**.  
+5. Az a **Azure SQL elemzés (előzetes verzió)** területen kattintson a **létrehozása**.  
     ![Létrehozás](./media/log-analytics-azure-sql/portal-create.png)
-6. Az a **hozzon létre új megoldás** panelen, válassza ki, amely hozzá szeretné adni, hogy a munkaterület, és kattintson **létrehozása**.  
+6. Az a **hozzon létre új megoldás** területen, válassza ki, amely hozzá szeretné adni, hogy a munkaterület, és kattintson **létrehozása**.  
     ![munkaterület felvétele](./media/log-analytics-azure-sql/add-to-workspace.png)
 
 
@@ -97,15 +97,15 @@ A megoldás a munkaterülethez való hozzáadásakor az Azure SQL elemzés csemp
 
 ### <a name="viewing-azure-sql-analytics-data"></a>Azure SQL analitikai adatok megtekintése
 
-Kattintson a **Azure SQL elemzés** csempére kattintva nyissa meg az Azure SQL-elemzések irányítópultján. Az irányítópult különböző szempontok szerint keresztül figyelt összes adatbázis áttekintését tartalmazza. Különböző szempontok szerint működjön engedélyeznie kell megfelelő metrikák vagy naplók az Azure Naplóelemzés munkaterületet közzétett az SQL-erőforrások. 
+Kattintson a **Azure SQL elemzés** csempére kattintva nyissa meg az Azure SQL-elemzések irányítópultján. Az irányítópult különböző szempontok szerint keresztül figyelt összes adatbázis áttekintését tartalmazza. Különböző szempontok szerint működjön engedélyeznie kell megfelelő metrikák vagy naplók az Azure Naplóelemzés munkaterületet közzétett az SQL-erőforrások.
 
 ![Az Azure SQL elemzés áttekintése](./media/log-analytics-azure-sql/azure-sql-sol-overview.png)
 
-Az adott perspektíva kiválasztásával a csempéket, részletes jelentés megnyitása. A terv a kijelölt jelentés részletezés meg van nyitva.
+Az adott perspektíva kiválasztásával a csempéket, részletes jelentés megnyitása. A perspektíva kijelölése után a részletes jelentés meg van nyitva.
 
 ![Az Azure SQL elemzés időtúllépések](./media/log-analytics-azure-sql/azure-sql-sol-timeouts.png)
 
-Minden szempontból ezekkel az előfizetés, a kiszolgáló, a rugalmas készlet és az adatbázis szintje biztosít. Emellett minden szempontból perspektíva adott jelentés a jobb oldali látható. A részletezés előfizetés, a kiszolgáló, a készlet vagy az adatbázis kiválasztásával a listából továbbra is működik.
+Minden szempontból ezekkel az előfizetés, a kiszolgáló, a rugalmas készlet és az adatbázis szintje biztosít. Emellett minden perspektíva látható perspektívát a jelentés az adott jobb. A részletezés előfizetés, a kiszolgáló, a készlet vagy az adatbázis listáról továbbra is.
 
 | Perspektíva | Leírás |
 | --- | --- |
@@ -134,7 +134,7 @@ Rugalmas készletek és adatbázisokat is rendelkezzen a saját konkrét jelent�
 
 ### <a name="query-reports"></a>Lekérdezés-jelentések
 
-Lekérdezés időtartam és a lekérdezés vár perspektíva hozhatók lekérdezés jelentés használatával lekérdezés teljesítményét. Ez a jelentés a lekérdezési teljesítmény hasonlítja különböző adatbázist, és megkönnyíti a rögzítési ponthoz az adatbázisok, hajtsa végre a kijelölt lekérdezés jól és azokat, amelyek lassú.
+A lekérdezés időtartam és a lekérdezés vár perspektívák hozhatók lekérdezés jelentés használatával lekérdezés teljesítményét. Ez a jelentés a lekérdezési teljesítmény hasonlítja különböző adatbázist, és megkönnyíti a rögzítési ponthoz az adatbázisok, hajtsa végre a kijelölt lekérdezés jól és azokat, amelyek lassú.
 
 ![Azure SQL Analytics Queries](./media/log-analytics-azure-sql/azure-sql-sol-queries.png)
 
@@ -168,7 +168,7 @@ A riasztás-alapú lekérdezések segítségével az Azure SQL Database és a ru
 5. Kattintson a napló keresési **riasztási**.  
 ![riasztás létrehozása, a keresés](./media/log-analytics-azure-sql/create-alert01.png)
 6. Az a **riasztási szabály hozzáadása** lapján konfigurálja a megfelelő tulajdonságokat és a meghatározott küszöbértékeket, majd kattintson **mentése**.  
-![riasztási szabály hozzáadása](./media/log-analytics-azure-sql/create-alert02.png)
+![Riasztási szabály hozzáadása](./media/log-analytics-azure-sql/create-alert02.png)
 
 ## <a name="next-steps"></a>További lépések
 

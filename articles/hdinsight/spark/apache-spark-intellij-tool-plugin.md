@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/25/2017
 ms.author: maxluk,jejiang
-ms.openlocfilehash: 77c7163b896c2b364039ea6c669ee70cf8be4d9e
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 077805cedb7895c8c59b650b3ec691244168a9f5
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>Az IntelliJ Azure eszköztára használata Spark-alkalmazások a HDInsight-fürtök létrehozása
 
@@ -69,6 +69,27 @@ A telepítési utasításokért lásd: [Azure eszközkészlet telepítése az In
    
     ![Egy bővített fürtnév csomópont](./media/apache-spark-intellij-tool-plugin/view-explorer-4.png)
 
+## <a name="link-a-cluster"></a>A fürt hivatkozás
+Egy normál fürt hivatkozás segítségével felügyelt Ambari felhasználónév, is hivatkozásra a biztonsági hadoop-fürthöz tartományi felhasználónevet használatával (például: user1@contoso.com). 
+1. Kattintson a **fürt hivatkozás** a **Azure Explorer**.
+
+   ![hivatkozás fürt helyi menü](./media/apache-spark-intellij-tool-plugin/link-a-cluster-context-menu.png)
+
+2. Adja meg **fürtnév**, **Tárfiók**, **Biztonságitár-kulcs**, majd válassza ki a tárolót **tároló**, legalább, adjon meg felhasználónevet és jelszó. Ellenőrizze a felhasználónevet és jelszót, ha a hitelesítési hiba.
+   
+   ![hivatkozás fürt párbeszédpanel](./media/apache-spark-intellij-tool-plugin/link-a-cluster-dialog.png)
+
+   > [!NOTE]
+   > Ha a fürt egyaránt bejelentkezett az Azure-előfizetés és a fürthöz kapcsolódó csatolt biztonságitár-kulcs, felhasználónevet és jelszót használunk. 
+   
+3. Láthatja, hogy a társított fürt **HDInsight** csomópont, ha a bemeneti adatokat megfelelőek. Most is elküldhetik a csatolt fürthöz kérelmet.
+
+   ![csatolt fürt](./media/apache-spark-intellij-tool-plugin/linked-cluster.png)
+
+4. Is megszüntetheti a fürtöt **Azure Explorer**.
+   
+   ![a fürt megszüntetése](./media/apache-spark-intellij-tool-plugin/unlink.png)
+
 ## <a name="run-a-spark-scala-application-on-an-hdinsight-spark-cluster"></a>Futtassa a Spark Scala-alkalmazások HDInsight Spark-fürt
 
 1. Indítsa el az IntelliJ IDEA, és ezután a projekt létrehozásához. Az a **új projekt** párbeszédpanelen tegye a következőket: 
@@ -82,7 +103,7 @@ A telepítési utasításokért lásd: [Azure eszközkészlet telepítése az In
 
     ![Az új projekt párbeszédpanel](./media/apache-spark-intellij-tool-plugin/create-hdi-scala-app.png)
 
-2. Válassza ki **következő**.
+2. Kattintson a **Tovább** gombra.
 
 3. A Scala-projekt létrehozása varázsló automatikusan észleli, hogy telepítette-e a Scala beépülő modult. Válassza ki **telepítése**.
 
@@ -164,12 +185,14 @@ A telepítési utasításokért lásd: [Azure eszközkészlet telepítése az In
 
    c. A **Spark küldésének** fülre az ablak alján kell kezdenie a folyamatban lévő megjelenítése. Az alkalmazás a piros gombra kattintva is leállíthatja a **Spark küldésének** ablak.
       
-      ![A Spark küldésének ablak](./media/apache-spark-intellij-tool-plugin/hdi-spark-app-result.png)
+     ![A Spark küldésének ablak](./media/apache-spark-intellij-tool-plugin/hdi-spark-app-result.png)
       
       A feladat kimenetére elérésére, lásd: a "hozzáférés és a HDInsight Spark-fürtök kezelése az intellij-t Azure eszközkészlet használatával" című szakaszban ebben a cikkben található.
 
 ## <a name="debug-spark-applications-locally-or-remotely-on-an-hdinsight-cluster"></a>A Spark-alkalmazások hibakeresését helyileg vagy távolról a HDInsight-fürtök 
-Javasoljuk továbbá egy másik módszer a Spark alkalmazás fürtre elküldése. A paraméterek beállításával is teheti a **Futtatás/Debug konfigurációk** IDE. További információkért lásd: [Spark-alkalmazások hibakeresését helyileg vagy távolról az Azure-eszközkészlet a HDInsight-fürtök az SSH-n keresztül IntelliJ](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh).
+Javasoljuk továbbá egy másik módszer a Spark alkalmazás fürtre elküldése. Ehhez állítsa be a paraméterek a **Futtatás/Debug konfigurációk** IDE. További információkért lásd: [Spark-alkalmazások hibakeresését helyileg vagy távolról az Azure-eszközkészlet a HDInsight-fürtök az SSH-n keresztül IntelliJ](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh).
+
+
 
 ## <a name="access-and-manage-hdinsight-spark-clusters-by-using-azure-toolkit-for-intellij"></a>Férhessen hozzá és felügyelhesse a HDInsight Spark-fürtjei IntelliJ Azure eszközkészlet használatával
 Az intellij-t Azure eszközkészlet használatával különféle műveleteket hajthat végre.
@@ -182,6 +205,8 @@ Az intellij-t Azure eszközkészlet használatával különféle műveleteket ha
 2. A jobb oldali ablaktáblában a **Spark feladat megtekintése** lap megjeleníti a fürtön futó összes alkalmazást. Válassza ki, amelynek meg szeretné tekinteni a további részleteket az alkalmazás nevét.
 
     ![Alkalmazás adatai](./media/apache-spark-intellij-tool-plugin/view-job-logs.png)
+    >Megjegyzés
+    >
 
 3. Alapszintű futó feladat adatainak megjelenítéséhez vigye a feladat ábra. A szakaszok grafikon és információt, amely minden feladatot hoz létre megtekintéséhez válasszon ki egy csomópontot a feladat ábra a.
 

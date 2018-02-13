@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: mahender
-ms.openlocfilehash: 608f5ec2fb4b8fa374778cb4f506f1d25eb7642b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 01f845e0cb987eb4e4e9baa62478d3ff6991fb7e
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="azure-functions-http-and-webhook-bindings"></a>Az Azure Functions HTTP és a webhook kötések
 
@@ -383,11 +383,11 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-| **típusa** | n/a| Szükséges – kell állítani `httpTrigger`. |
+| **Típusa** | n/a| Szükséges – kell állítani `httpTrigger`. |
 | **direction** | n/a| Szükséges – kell állítani `in`. |
 | **name** | n/a| Kötelező – a kérelem vagy kérelemtörzset függvény a kódban használt változó neve. |
 | <a name="http-auth"></a>**authLevel** |  **AuthLevel** |Meghatározza, hogy mi kulcsok, ha van ilyen kell jelen lennie ahhoz, hogy a függvény meghívása a kérésre. A jogosultsági szintet a következő értékek egyike lehet: <ul><li><code>anonymous</code>&mdash;Nincs API-kulcsot meg kell adni.</li><li><code>function</code>&mdash;Funkcióspecifikus API-kulcs megadása kötelező. Ez az az alapértelmezett érték, ha nincs megadva.</li><li><code>admin</code>&mdash;A fő kulcsot meg kell adni.</li></ul> További információkért lásd: a szakasz [engedélyezési kulcsok](#authorization-keys). |
-| **módszerek** |**Módszerek** | A tömb, amelyre a függvény válaszol a HTTP-metódus. Ha nincs megadva, a függvény válaszol-e a HTTP-metódus. Lásd: [testre szabhatja a http-végpont](#trigger---customize-the-http-endpoint). |
+| **Módszerek** |**Módszerek** | A tömb, amelyre a függvény válaszol a HTTP-metódus. Ha nincs megadva, a függvény válaszol-e a HTTP-metódus. Lásd: [testre szabhatja a http-végpont](#trigger---customize-the-http-endpoint). |
 | **útvonal** | **Útvonal** | Meghatározza az útvonalsablonhoz szabályozása, amelyhez a kérés URL-címeket, a függvény válaszol. Az alapértelmezett érték, ha nincs megadva `<functionname>`. További információkért lásd: [testre szabhatja a http-végpont](#customize-the-http-endpoint). |
 | **webHookType** | **WebHookType** |Konfigurálja a HTTP-eseményindítóval járhasson el egy [webhook](https://en.wikipedia.org/wiki/Webhook) fogadójának a megadott szolgáltatón. Ne állítsa be a `methods` tulajdonságot, ha a tulajdonság értékét. A webhook típus a következő értékek egyike lehet:<ul><li><code>genericJson</code>&mdash;Egy általános célú webhook végpont logika egy adott szolgáltató nélkül. Ez a beállítás megtiltja kérelmek Ha csak a HTTP-n keresztül, POST, hogy az a `application/json` tartalomtípus.</li><li><code>github</code>&mdash;A függvény válaszol-e a [GitHub webhook](https://developer.github.com/webhooks/). Ne használja a _authLevel_ GitHub webhook tulajdonságot. További információkért lásd a GitHub webhook című cikkben.</li><li><code>slack</code>&mdash;A függvény válaszol-e a [Slack-webhookok](https://api.slack.com/outgoing-webhooks). Ne használja a _authLevel_ Slack webhookok tulajdonságot. További információkért lásd: a Slack webhookok című cikkben.</li></ul>|
 
@@ -494,6 +494,9 @@ Alapértelmezés szerint az összes függvény útvonal előtagként *api*. Is t
 
 HTTP-eseményindítók lehetővé teszik, hogy a nagyobb biztonság kulcsok használatára. Egy normál HTTP-eseményindítóval ezek API-kulcs, a kulcs szerepel a kérelem igénylő használhatja. Webhook kulcsok segítségével többféle módon, attól függően, hogy a szolgáltató támogatja a kérelmek engedélyezheti.
 
+> [!NOTE]
+> Amikor helyileg futó függvények, engedélyezési le van tiltva, függetlenül a `authLevel` beállított `function.json`. Amint az Azure Functions közzéteszi a `authLevel` azonnal érvénybe lép.
+
 Kulcsok részeként a függvény alkalmazást az Azure-ban tároljuk, és inaktív titkosított. A kulcsok megtekintéséhez újakat hozhat létre, vagy kulcsok állni új értékek váltson a függvényt a portálon, és válassza ki a "Kezelése." 
 
 A kulcsok két típusa van:
@@ -559,7 +562,7 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 |Tulajdonság  |Leírás  |
 |---------|---------|
-| **típusa** |meg kell `http`. |
+| **Típusa** |meg kell `http`. |
 | **direction** | meg kell `out`. |
 |**name** | A változó nevét, a válasz függvény kódban használt. |
 

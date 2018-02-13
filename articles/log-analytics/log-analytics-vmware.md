@@ -3,7 +3,7 @@ title: "A Naplóelemzési VMware figyelésére szolgáló megoldás |} Microsoft
 description: "További tudnivalók a VMware figyelésére szolgáló megoldás hogyan segíthet naplóinak kezeléséhez és az ESXi-gazdagépek figyelésére."
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: 16516639-cc1e-465c-a22f-022f3be297f1
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
-ms.author: banders
-ms.openlocfilehash: 4af3651ce3d45837166248684d78ab4df95f524c
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: magoedte
+ms.openlocfilehash: f54d24659ad13aa02462938711482326c5bf763c
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>A Naplóelemzési megoldás VMware figyelése (előzetes verzió)
 
@@ -44,8 +44,8 @@ Hozzon létre egy Linux operációs rendszer virtuális gép összes syslog-adat
 ### <a name="configure-syslog-collection"></a>Syslog gyűjtemény konfigurálása
 1. A VSphere syslog-továbbító beállítása. Syslog-továbbító beállítása segítségével részletes információkért lásd: [syslog konfigurálása ESXi 5.x és 6.0 (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322). Ugrás a **ESXi-állomáson konfigurációs** > **szoftver** > **speciális beállítások** > **Syslog**.
    ![vsphereconfig](./media/log-analytics-vmware/vsphere1.png)  
-2. Az a *Syslog.global.logHost* mezőben, adja hozzá a Linux-kiszolgálóra és a portszám *1514*. Például `tcp://hostname:1514` vagy`tcp://123.456.789.101:1514`
-3. A syslog ESXi állomás tűzfal megnyitásához. **ESXi-gazdagép-konfigurálás** > **szoftver** > **biztonsági profil** > **tűzfal** , és nyissa meg **tulajdonságok**.  
+2. Az a *Syslog.global.logHost* mezőben, adja hozzá a Linux-kiszolgálóra és a portszám *1514*. Például `tcp://hostname:1514` vagy `tcp://123.456.789.101:1514`
+3. A syslog ESXi állomás tűzfal megnyitásához. **A gazdagép-konfigurálás ESXi** > **szoftver** > **biztonsági profil** > **tűzfal** , és nyissa meg a **Tulajdonságok**.  
 
     ![vspherefw](./media/log-analytics-vmware/vsphere2.png)  
 
@@ -183,20 +183,20 @@ Több oka is lehet:
 
 * Az ESXi-állomáson, nem megfelelően küldését adatokat a virtuális gép futó omsagent. Hajtsa végre a következő lépéseket:
 
-  1. Győződjön meg arról, hogy jelentkezzen be az ssh használatával ESXi-állomáson, és futtassa a következő parancsot:`nc -z ipaddressofVM 1514`
+  1. Győződjön meg arról, hogy jelentkezzen be az ssh használatával ESXi-állomáson, és futtassa a következő parancsot: `nc -z ipaddressofVM 1514`
 
       Ha ez nem sikeres, a speciális konfigurációs beállítások vSphere valószínűleg nem szünteti meg. Lásd: [syslog gyűjtemény konfigurálása](#configure-syslog-collection) az ESXi-állomáson, a syslog-továbbítási beállításával kapcsolatos információk.
-  2. Ha syslog port kapcsolat sikeres, de még nem lát adatokat, majd töltse be újra az ESXi-állomáson syslog használatával ssh a következő parancsot:` esxcli system syslog reload`
+  2. Ha syslog port kapcsolat sikeres, de még nem lát adatokat, majd töltse be újra az ESXi-állomáson syslog használatával ssh a következő parancsot: ` esxcli system syslog reload`
 * Az OMS-ügynököt a virtuális gép helytelenül van beállítva. Ennek teszteléséhez a következő lépésekkel:
 
-  1. A port 1514 Naplóelemzési figyeli. Győződjön meg arról, hogy meg nyitva, futtassa a következő parancsot:`netstat -a | grep 1514`
+  1. A port 1514 Naplóelemzési figyeli. Győződjön meg arról, hogy meg nyitva, futtassa a következő parancsot: `netstat -a | grep 1514`
   2. Megtekintheti az port `1514/tcp` megnyitásához. Ha nem így tesz, győződjön meg arról, hogy a omsagent megfelelően van-e telepítve. Ha nem látja a portinformációkat, majd a syslog-portjára nincs megnyitva a virtuális Gépen.
 
-    a. Győződjön meg arról, hogy fut-e az OMS-ügynököt használatával `ps -ef | grep oms`. Ha nem fut, a folyamat elindításához futtassa a parancsot` sudo /opt/microsoft/omsagent/bin/service_control start`
+    a. Győződjön meg arról, hogy fut-e az OMS-ügynököt használatával `ps -ef | grep oms`. Ha nem fut, a folyamat elindításához futtassa a parancsot ` sudo /opt/microsoft/omsagent/bin/service_control start`
 
     b. Nyissa meg az `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf` fájlt.
 
-    c. Győződjön meg arról, hogy a megfelelő felhasználói és a tárolócsoport-beállítás érvényes, hasonló:`-rw-r--r-- 1 omsagent omiusers 677 Sep 20 16:46 vmware_esxi.conf`
+    c. Győződjön meg arról, hogy a megfelelő felhasználói és a tárolócsoport-beállítás érvényes, hasonló: `-rw-r--r-- 1 omsagent omiusers 677 Sep 20 16:46 vmware_esxi.conf`
 
     d. Ha a fájl nem létezik, vagy a felhasználó és csoport beállítás nem megfelelő, intézkedéseket által [egy Linux-kiszolgálót elő kell készíteni](#prepare-a-linux-server).
 

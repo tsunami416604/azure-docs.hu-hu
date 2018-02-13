@@ -16,11 +16,11 @@ ms.date: 08/15/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: 1141245739f86a482bb0b5f550fd3b89d1213ce1
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 9b156f80ae2b52ea7cb07bcb2c047d35d07b9154
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>A VPN-infrastruktúra integrálása az Azure MFA bővítményével a hálózati házirend-kiszolgáló az Azure-bA
 
@@ -93,7 +93,7 @@ Ez a szakasz részletesen az előfeltételeket, amelyeket az MFA integrálható 
 * Windows Server szoftver
 * Szalagtárak
 * Azure Active Directory (Azure AD) szinkronizálása megtörtént-e a helyszíni Active Directory 
-* Az Azure Active Directory GUID azonosítója
+* Azure Active Directory GUID ID
 
 ### <a name="vpn-infrastructure"></a>VPN-infrastruktúra
 Ez a cikk feltételezi, hogy rendelkezik-e egy működő VPN-infrastruktúra, amely Microsoft Windows Server 2016 használja, és, hogy a VPN-kiszolgáló nincs beállítva a továbbítási kapcsolat kérelmekre egy RADIUS-kiszolgáló. A cikk a VPN-infrastruktúra központi RADIUS-kiszolgáló használatára konfigurálja.
@@ -106,7 +106,7 @@ Hálózati házirend- és elérési szolgáltatások a RADIUS-kiszolgáló és a
 
 A hálózati házirend- és elérési szolgáltatások szerepkör telepítésével kapcsolatos információk szolgáltatás Windows Server 2012 vagy újabb, lásd: [a NAP állapotházirend-kiszolgáló telepítése](https://technet.microsoft.com/library/dd296890.aspx). A HÁLÓZATVÉDELEM elavult a Windows Server 2016. Ajánlott eljárások a hálózati házirend-kiszolgáló, beleértve a hálózati házirend-kiszolgáló telepítése tartományvezérlőn, az ajánlás leírását lásd: [gyakorlati tanácsok a hálózati házirend-kiszolgálójának](https://technet.microsoft.com/library/cc771746).
 
-### <a name="azure-mfa-license"></a>Az Azure MFA-licenc
+### <a name="azure-mfa-license"></a>Azure MFA License
 
 Egy licencre szükség az Azure multi-factor Authentication, és az Azure AD Premium, nagyvállalati mobilitási + biztonsági vagy a multi-factor Authentication különálló licenc keresztül érhető el. Fogyasztás alapján licenceinek többek között az Azure MFA felhasználónként vagy a hitelesítési licencek nem kompatibilisek-e a hálózati házirend-kiszolgáló bővítményt. További információkért lásd: [beolvasásával Azure multi-factor Authentication](multi-factor-authentication-versions-plans.md). Tesztelési célokra használható a próba-előfizetést.
 
@@ -129,7 +129,7 @@ A hálózati házirend-kiszolgáló kiterjesztés használatára, a helyszíni f
 
 További információ az Azure AD Connect: [integrálása a helyszíni címtárakat az Azure Active Directoryval](../active-directory/connect/active-directory-aadconnect.md). 
 
-### <a name="azure-active-directory-guid-id"></a>Az Azure Active Directory GUID azonosítója 
+### <a name="azure-active-directory-guid-id"></a>Azure Active Directory GUID ID 
 
 Az NPS-bővítményének telepítése kell tudni, hogy az Azure Active Directory GUID-azonosítója. A GUID-azonosítója az Azure Active Directory-kereséshez utasításokat a következő szakaszban.
 
@@ -186,7 +186,7 @@ Használhatja a szabványos (varázsló-alapú) vagy speciális konfigurációs 
 
     ![A felhasználói csoportok meg ablak](./media/nps-extension-vpn/image7.png)
 
-9. Válassza ki **következő**.
+9. Kattintson a **Tovább** gombra.
 
 10. Az a **adjon meg IP-szűrők** ablakban válassza ki **következő**.
 
@@ -376,7 +376,7 @@ A parancsfájl használatát, adja meg az Azure Active Directory rendszergazdai 
 
 1. A Windows PowerShell futtatása rendszergazdaként.
 
-2. A PowerShell parancssorába írja be a **cd c:\Program Files\Microsoft\AzureMfa\Config**, majd válassza ki az ENTER billentyűt.
+2. A PowerShell parancssorába írja be a **cd "c:\Program Files\Microsoft\AzureMfa\Config"**, majd válassza ki az ENTER billentyűt.
 
 3. A következő parancs parancssorba írja be a **.\AzureMfsNpsExtnConfigSetup.ps1**, majd válassza ki az ENTER billentyűt. A parancsfájl ellenőrzi, hogy telepítve van-e az Azure AD PowerShell modult. Ha nincs telepítve, a parancsfájl telepíti a modult.
  
@@ -398,7 +398,7 @@ A parancsfájl használatát, adja meg az Azure Active Directory rendszergazdai 
 
 6. Indítsa újra a kiszolgálót.
 
-### <a name="verify-the-configuration"></a>Ellenőrizze
+### <a name="verify-the-configuration"></a>A konfiguráció ellenőrzése
 A konfiguráció ellenőrzése a VPN-kiszolgáló egy új VPN-kapcsolatot kell létesítenie. Miután sikeresen beírt hitelesítő adatait az elsődleges hitelesítéshez, a VPN-kapcsolatot vár a másodlagos hitelesítés sikeres, a kapcsolat létrejötte előtt alább látható módon. 
 
 ![A Windows VPN-beállítások ablak](./media/nps-extension-vpn/image42.png)
@@ -449,7 +449,7 @@ Ezekben a naplófájlokban szereplő bejegyzések nehezen értelmezhetők, kivé
 
 További hibaelhárítási ehhez használhatja például a Wireshark protokollelemző vagy [Microsoft Message Analyzert](https://technet.microsoft.com/library/jj649776.aspx). Wireshark az alábbi ábrán a RADIUS-üzenetek a VPN-kiszolgáló és a hálózati házirend-kiszolgáló között.
 
-![Microsoft Message Analyzert](./media/nps-extension-vpn/image50.png)
+![Microsoft Message Analyzer](./media/nps-extension-vpn/image50.png)
 
 További információkért lásd: [a meglévő hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure multi-factor Authentication](multi-factor-authentication-nps-extension.md). 
 

@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2018
+ms.date: 02/09/2018
 ms.author: magoedte
-ms.openlocfilehash: a17418142fb5f52a93d7a56cb2e6e6e97a250002
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 2e4daebf18d5edeba92bc14d5a4f699fbd2d94ce
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Kezelését és karbantartását a Log Analyticshez ügynök Windows és Linux rendszerekhez
 
-A Windows vagy Linux-ügynök Naplóelemzési a kezdeti telepítés után szükség lehet konfigurálja újra a helyzettől függően az ügynök, vagy ha elérte a használatból való kivonást szakasza életciklus eltávolítja azt a számítógépről.  A szokásos karbantartási feladatok manuálisan, illetve az automation, ami csökkenti a működési hiba és a is könnyedén kezelhető.
+A Windows vagy Linux-ügynök Naplóelemzési a kezdeti telepítés után szükség lehet konfigurálja újra az ügynököt, vagy ha elérte a használatból való kivonást szakasza életciklus eltávolítja azt a számítógépről.  A szokásos karbantartási feladatok manuálisan, illetve az automation, ami csökkenti a működési hiba és a is könnyedén kezelhető.
 
 ## <a name="adding-or-removing-a-workspace"></a>Hozzáadásával vagy eltávolításával a munkaterület 
 
@@ -111,7 +111,7 @@ $healthServiceSettings.SetProxyInfo($ProxyDomainName, $ProxyUserName, $cred.GetN
 ```  
 
 ### <a name="linux-agent"></a>Linux-ügynök
-Hajtsa végre az alábbi lépéseket, ha a Linux rendszerű számítógépek kell kommunikációja áthaladjon a proxykiszolgáló vagy az OMS átjáró szolgáltatáshoz.  A proxykonfiguráció értékének szintaxisa a következő: `[protocol://][user:password@]proxyhost[:port]`.  A *proxyhost* tulajdonság a proxykiszolgáló IP-címet vagy egy teljesen minősített tartománynevét fogad el.
+Hajtsa végre az alábbi lépéseket, ha a Linux rendszerű számítógépek kell kommunikációja áthaladjon a proxykiszolgáló vagy az OMS átjáró szolgáltatáshoz.  A proxykonfiguráció értékének szintaxisa a következő: `[protocol://][user:password@]proxyhost[:port]`.  A *proxyhost* tulajdonság a proxykiszolgáló teljes tartománynevét vagy IP-címét fogadja el.
 
 1. Szerkessze az `/etc/opt/microsoft/omsagent/proxy.conf` fájlt a következő parancsok futtatásával, és módosítsa az értékeket a saját konkrét beállításaira.
 
@@ -148,12 +148,9 @@ Az ügynök a letöltött fájl csomag egy önálló telepítő IExpress létre.
 3. Írja be a parancssorba `%WinDir%\System32\msiexec.exe /x <Path>:\MOMAgent.msi /qb`.  
 
 ### <a name="linux-agent"></a>Linux-ügynök
-Az ügynök eltávolításához hajtsa végre az alábbi lépéseket.
+Az ügynök eltávolításához futtassa a következő parancsot a Linux rendszerű számítógépen.  A *--kiürítése* argumentum teljesen eltávolítja az ügynököt és konfigurációja.
 
-1. Töltse le a linuxos ügynök [univerzális parancsfájlját](https://github.com/Microsoft/OMS-Agent-for-Linux/releases) a számítógépre.
-2. Futtassa a csomag .sh fájlját a *--purge* argumentummal a számítógépen, ami teljesen eltávolítja az ügynököt és annak konfigurációját.
-
-    `sudo sh ./omsagent-<version>.universal.x64.sh --purge`
+   `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh --purge`
 
 ## <a name="configure-agent-to-report-to-an-operations-manager-management-group"></a>Hogy az Operations Manager felügyeleti csoport konfigurálása
 
@@ -174,9 +171,9 @@ Hajtsa végre a következő lépésekkel állíthatja be az OMS ügynök a Windo
 ### <a name="linux-agent"></a>Linux-ügynök
 Hajtsa végre a következő lépésekkel állíthatja be az OMS-ügynököt, hogy egy System Center Operations Manager felügyeleti csoport linuxos. 
 
-1. A fájl szerkesztése`/etc/opt/omi/conf/omiserver.conf`
-2. Győződjön meg arról, hogy a kezdődő `httpsport=` határozza meg az 1270-es port. Például:`httpsport=1270`
-3. Indítsa újra az OMI-kiszolgálón:`sudo /opt/omi/bin/service_control restart`
+1. A fájl szerkesztése `/etc/opt/omi/conf/omiserver.conf`
+2. Győződjön meg arról, hogy a kezdődő `httpsport=` határozza meg az 1270-es port. Például: `httpsport=1270`
+3. Indítsa újra az OMI-kiszolgálón: `sudo /opt/omi/bin/service_control restart`
 
 ## <a name="next-steps"></a>További lépések
 

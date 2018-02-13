@@ -1,4 +1,5 @@
 - name: Adatelemzési virtuális gép dokumentációja
+  href: index.yml
   items: null
 - name: Áttekintés
   expanded: true
@@ -46,7 +47,7 @@
       href: dsvm-data-platforms.md
     - name: Minták és útmutatók
       href: dsvm-samples-and-walkthroughs.md
-- name: Erőforrások
+- name: További források
   items:
     - name: Blog
       href: 'https://blogs.technet.microsoft.com/machinelearning/tag/dsvm/'
