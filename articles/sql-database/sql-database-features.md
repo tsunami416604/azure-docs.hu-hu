@@ -1,6 +1,6 @@
 ---
-title: "Az Azure SQL Database funkcióinak áttekintése | Microsoft Docs"
-description: "Ez az oldal áttekintést nyújt az Azure SQL Database logikai kiszolgálóiról és adatbázisairól, valamint funkciótámogatási mátrixot is tartalmaz, hivatkozásokkal az egyes felsorolt funkcióhoz."
+title: "Az Azure SQL-adatbázis szolgáltatások összehasonlítása |} Microsoft Docs"
+description: "Ez a cikk az SQL Server és az Azure SQL Database funkcióit hasonlítja össze, és a különbségeket mutatja."
 services: sql-database
 documentationcenter: na
 author: CarlRabeler
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 02/08/2018
 ms.author: carlrab
-ms.openlocfilehash: 23474539fd7db113ec4d857269056fb5061becca
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: dc9a7fa0a7fa0e029f71510cc516496ed12a6274
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 02/13/2018
 ---
-# <a name="azure-sql-database-features"></a>Az Azure SQL Database funkciói
+# <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Szolgáltatások összehasonlítása: Azure SQL Database és SQL Server 
 
 Az Azure SQL-adatbázis egy közös kódbázis osztja meg az SQL Server és az adatbázis szintjén támogatja a legtöbb a szolgáltatást. Azure SQL Database és SQL Server közötti fő funkció különbségek vannak a példány szintjén. 
 

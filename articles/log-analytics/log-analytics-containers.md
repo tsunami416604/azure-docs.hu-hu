@@ -3,7 +3,7 @@ title: "Tároló figyelés megoldás az Azure Naplóelemzés |} Microsoft Docs"
 description: "A tároló figyelésére szolgáló megoldás a Log Analyticshez segít megtekintése és kezelése a Docker és a Windows tároló állomások egyetlen helyen megvalósítható."
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: e1e4b52b-92d5-4bfa-8a09-ff8c6b5a9f78
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/06/2017
-ms.author: magoedte;banders
-ms.openlocfilehash: a4b2407f392ed35968c9a6c8eeeb49c0c3cfe10e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: magoedte
+ms.openlocfilehash: b3f78f6cc89a3d4bf8712c339f66b5d50f373919
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>A Naplóelemzési tároló figyelés megoldás
 
@@ -356,7 +356,7 @@ Ha szeretné omsagent DaemonSets létrehozása, vagy a titkos kulcsok nélkül.
         KEY:    88 bytes
         ```
 
-    5. A omsagent futó démon-készlet létrehozása``` sudo kubectl create -f omsagent-ds-secrets.yaml ```
+    5. A omsagent futó démon-készlet létrehozása ``` sudo kubectl create -f omsagent-ds-secrets.yaml ```
 
 2. Győződjön meg arról, hogy az OMS-ügynök DaemonSet fut, a következőhöz hasonló:
 
@@ -400,10 +400,10 @@ A Windows Kubernetes egy parancsfájllal hozott létre a titkos kulcsok yam fáj
         ```
         #> sudo bash ./secret-gen.sh
         ```
-    3. A omsagent futó démon-készlet létrehozása``` kubectl create -f omsagentsecret.yaml ```
+    3. A omsagent futó démon-készlet létrehozása ``` kubectl create -f omsagentsecret.yaml ```
     4. Ellenőrzéséhez futtassa az alábbi parancsot:
-    
-        ``` 
+
+        ```
         root@ubuntu16-13db:~# kubectl get secrets
         ```
 
@@ -418,16 +418,16 @@ A Windows Kubernetes egy parancsfájllal hozott létre a titkos kulcsok yam fáj
         Namespace:      default
         Labels:         <none>
         Annotations:    <none>
-    
+
         Type:   Opaque
-    
+
         Data
         ====
         WSID:   36 bytes
-        KEY:    88 bytes 
+        KEY:    88 bytes
         ```
 
-    5. A omsagent futó démon-készlet létrehozása```kubectl create -f ws-omsagent-de-secrets.yaml```
+    5. A omsagent futó démon-készlet létrehozása ```kubectl create -f ws-omsagent-de-secrets.yaml```
 
 2. Győződjön meg arról, hogy az OMS-ügynök DaemonSet fut, a következőhöz hasonló:
 
@@ -437,12 +437,12 @@ A Windows Kubernetes egy parancsfájllal hozott létre a titkos kulcsok yam fáj
     omsagent   1         1         <none>          1h
     ```
 
-3. A munkavégző csomóponton, amely Windows fut, az ügynök telepítéséhez kövesse a szakasz [telepítése és konfigurálása a Windows tároló gazdagépek](#install-and-configure-windows-container-hosts). 
+3. A munkavégző csomóponton, amely Windows fut, az ügynök telepítéséhez kövesse a szakasz [telepítése és konfigurálása a Windows tároló gazdagépek](#install-and-configure-windows-container-hosts).
 
-#### <a name="use-helm-to-deploy-oms-agent-on-linux-kubernetes"></a>Helm használata a Linux Kubernetes OMS-ügynök telepítése 
+#### <a name="use-helm-to-deploy-oms-agent-on-linux-kubernetes"></a>Helm használata a Linux Kubernetes OMS-ügynök telepítése
 A következő lépésekkel OMS-ügynök telepítése Linux Kubernetes környezetben helm használatához.
 
-1. A omsagent futó démon-készlet létrehozása```helm install --name omsagent --set omsagent.secret.wsid=<WSID>,omsagent.secret.key=<KEY> stable/msoms```
+1. A omsagent futó démon-készlet létrehozása ```helm install --name omsagent --set omsagent.secret.wsid=<WSID>,omsagent.secret.key=<KEY> stable/msoms```
 2. Az eredményeket az alábbihoz hasonlóan fog kinézni:
 
     ```
@@ -602,12 +602,12 @@ A Naplóelemzési jelöli meg a tárolóban **sikertelen** Ha egy nem nulla kil�
 
 ### <a name="to-find-failed-containers"></a>Nem sikerült tárolók kereséséhez
 1. Kattintson a **tároló** területen.  
-   ![tárolók állapota](./media/log-analytics-containers/containers-status.png)
+   ![Tárolók állapota](./media/log-analytics-containers/containers-status.png)
 2. Naplófájl-keresési megnyílik, és a tárolók, az alábbihoz hasonló állapotát jeleníti meg.  
    ![tárolók állapota](./media/log-analytics-containers/containers-log-search.png)
 3. Ezután kattintson a további információk megjelenítéséhez sikertelen tárolók összesített értékét. Bontsa ki a **megjelenítése további** megtekintéséhez a lemezkép-azonosítót.  
    ![nem sikerült tárolók](./media/log-analytics-containers/containers-state-failed.png)  
-4. Ezután írja be a következőt a keresési lekérdezés. `Type=ContainerInventory <ImageID>`a kép, például a lemezkép mérete és a leállított és sikertelen csomópontképek száma kapcsolatos részletek megtekintéséhez.  
+4. Ezután írja be a következőt a keresési lekérdezés. `Type=ContainerInventory <ImageID>` a kép, például a lemezkép mérete és a leállított és sikertelen csomópontképek száma kapcsolatos részletek megtekintéséhez.  
    ![nem sikerült tárolók](./media/log-analytics-containers/containers-failed04.png)
 
 ## <a name="search-logs-for-container-data"></a>Keresési naplókat a további adatai
@@ -625,7 +625,7 @@ Ha egy adott hiba elhárításához van, hogy hol lépett fel a környezetben se
 
 
 ### <a name="to-search-logs-for-container-data"></a>Keresés a naplókat a további adatai
-* Válassza ki, hogy tudja, hogy a képfájl nemrég sikertelen volt, és a hibanaplók keresése. Indítsa el a tároló neve, amelyen fut. a lemezkép keresése a **ContainerInventory** keresési. Például keresése`Type=ContainerInventory ubuntu Failed`  
+* Válassza ki, hogy tudja, hogy a képfájl nemrég sikertelen volt, és a hibanaplók keresése. Indítsa el a tároló neve, amelyen fut. a lemezkép keresése a **ContainerInventory** keresési. Például keresése `Type=ContainerInventory ubuntu Failed`  
     ![Ubuntu tárolók keresése](./media/log-analytics-containers/search-ubuntu.png)
 
   A tároló neve **neve**, majd keresse meg a lesznek a naplók. Ebben a példában ez `Type=ContainerLog cranky_stonebreaker`.
