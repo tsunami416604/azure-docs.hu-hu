@@ -10,17 +10,17 @@ ms.date: 01/02/2018
 ms.author: seanmck
 ms.custom: mvc
 ms.openlocfilehash: be502e6aef39ee4ed8cfc1f8926cb556dc1defb1
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="mount-an-azure-file-share-with-azure-container-instances"></a>Azure-tároló osztályt az Azure fájlmegosztások csatlakoztatása
 
 Alapértelmezés szerint Azure tároló példányok állapot nélküli alkalmazások. Ha a tároló összeomlik, vagy leállítja, annak teljes állapota elvész. Állapot élettartama meghaladja a tároló megőrizni, a kötet csatlakoztatnia kell külső áruházban. Ez a cikk bemutatja, hogyan használható Azure tároló osztályt egy Azure fájlmegosztás csatlakoztatásához.
 
 > [!NOTE]
-> Az Azure fájlmegosztások csatlakoztatása korlátozódik jelenleg Linux tárolók. Dolgozunk ennek érdekében minden funkció Windows tárolók, amíg a jelenlegi platform különbségek található [kvótái és az Azure-tároló példányok régiónkénti elérhetőség](container-instances-quotas.md).
+> Az Azure fájlmegosztások csatlakoztatása korlátozódik jelenleg Linux tárolók. Arra törekszünk, hogy idővel az összes funkció elérhető legyen a Windows-tárolókon is. Az egyes platformok közötti aktuális eltérésekről a [Azure Container Instances-kvóták és -régiók rendelkezésre állása](container-instances-quotas.md) részben tájékozódhat.
 
 ## <a name="create-an-azure-file-share"></a>Az Azure-fájlmegosztás létrehozása
 
