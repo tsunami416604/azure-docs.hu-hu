@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: db7daf61fa80854c17b58252d7d6cb30c329dfb1
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 3273f435cb65411c85e3a22369682d51e7a12baf
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>A Microsoft Azure verem használható MySQL-adatbázisok
 
@@ -88,7 +88,7 @@ A system fiók következő jogosultságokkal kell rendelkeznie:
 
     - Csak egyetlen tanúsítványfájlt a DependencyFilesLocalPath szerepel.
     
-    - A fájl neve nem tartalmazhat speciális karaktereket.
+    - A fájl neve nem tartalmazhat különleges karaktereket vagy szóköz.
 
 
 5. Nyissa meg a **új** emelt szintű (felügyeleti) PowerShell-konzolban. Majd váltson arra a könyvtárra, amelybe kibontotta a fájlokat. Egy új ablak segítségével a rendszer helytelen PowerShell-modul, amely már be van töltve az esetlegesen felmerülő problémák elkerülése érdekében.
@@ -174,7 +174,7 @@ Ezeket a paramétereket is megadhat a parancssorban. Ha nem, vagy bármely param
 | **MaxRetryCount** | Ennyiszer azt szeretné, majd ismételje meg minden egyes művelet, ha hiba történik.| 2 |
 | **RetryDuration** | Az időkorlát másodpercben az újrapróbálkozások között. | 120 |
 | **Eltávolítás** | Eltávolítja az erőforrás-szolgáltató és minden kapcsolódó erőforrások (lásd az alábbi megjegyzések). | Nem |
-| **DebugMode** | Megakadályozza az automatikus tisztítás hiba esetén. | Nem |
+| DebugMode | Megakadályozza az automatikus tisztítás hiba esetén. | Nem |
 | **AcceptLicense** | Fogadja el a GPL licenc adatait kérő felület kihagyja.  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) | |
 
 
@@ -337,7 +337,7 @@ Ezeket a paramétereket is megadhat a parancssorban. Ha ezt elmulasztja, vagy b�
 | **MaxRetryCount** | Ennyiszer azt szeretné, majd ismételje meg minden egyes művelet, ha hiba történik.| 2 |
 | **RetryDuration** | Az időkorlát másodpercben az újrapróbálkozások között. | 120 |
 | **Eltávolítás** | Távolítsa el az erőforrás-szolgáltatót és minden kapcsolódó erőforrások (lásd az alábbi megjegyzések). | Nem |
-| **DebugMode** | Megakadályozza az automatikus tisztítás hiba esetén. | Nem |
+| DebugMode | Megakadályozza az automatikus tisztítás hiba esetén. | Nem |
 | **AcceptLicense** | Fogadja el a GPL licenc adatait kérő felület kihagyja.  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) | |
 
 ## <a name="remove-the-mysql-resource-provider-adapter"></a>A MySQL erőforrás-szolgáltató adapter eltávolítása
