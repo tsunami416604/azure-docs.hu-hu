@@ -4,9 +4,7 @@
 
 * N sorozatú virtuális gépek csak a Resource Manager üzembe helyezési modellel is telepíthető.
 
-* Az Azure-portált használja, a, az N-sorozatú virtuális gép létrehozásakor a **alapjai** panelen válassza a **VM lemeztípus** a **HDD**. Az elérhető N sorozatnak megfelelő méretűre, kiválaszthatja a a **mérete** panelen kattintson a **összes**.
-
-* NC és portok HV virtuális gépek nem támogatják, amely a prémium szintű Azure storage által támogatott virtuális gépek lemezei.
+* N sorozatú virtuális gépek nem egyezik a támogatják a lemezek Azure tárolási típusát. NC és portok HV virtuális gépek csak támogatja a virtuális gépek lemezei, amelyekről által a szabványos lemez tárolási (HDD). NCv2 ND és NCv3 (előzetes) virtuális gépek csak támogató virtuális gép lemeze, amely a prémium szintű lemez tárolási (SSD) által támogatott.
 
 * Ha azt szeretné, csak néhány N sorozatú virtuális gépek telepítéséhez, fontolja meg a használatalapú előfizetés vagy egyéb beszerzési lehetőségek. Amennyiben [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) használ, csak korlátozott számú számítási magot használhat az Azure-ban.
 
