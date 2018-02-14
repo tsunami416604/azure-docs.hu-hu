@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2017
 ms.author: giladm
-ms.openlocfilehash: 9be945493cf013f472566a2c7a1dda05fd9b0ca9
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 791761e33e0daa470668e268e5392a4b9361a1bd
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
 Az Azure SQL database naplózási nyomon követi az adatbázis-események, mind az írás őket naplózási jelentkezzen be az Azure storage-fiók. A naplózás is:
@@ -39,8 +39,10 @@ SQL-adatbázis a naplózás is használhatja:
 
 Konfigurálhatja a kategóriák, különböző típusú naplózás leírtak szerint a [az adatbázis naplózásának beállítása](#subheading-2) szakasz.
 
-Naplók az Azure-előfizetéshez az Azure Blob Storage tárolóban kerülnek.
-
+> [!IMPORTANT]
+> Naplók írt **hozzáfűző Blobok** egy Azure Blob Storage az Azure-előfizetése.
+>
+> **VNet a tárolási** jelenleg **nem támogatott**.
 
 ## <a id="subheading-8"></a>Adja meg a kiszolgálói szintű és adatbázis-szintű naplózási házirend
 
@@ -80,7 +82,7 @@ Az alábbi szakasz ismerteti az Azure portál használatával naplózási beáll
    >A legtöbbet hozhatja ki a naplózási jelentések sablonok, ugyanazt a tárfiókot használja az összes naplózott adatbázisok.
 
     <a id="storage-screenshot"></a>![Navigációs ablaktábla][4]
-6. Ha szeretné testre szabni a naplózott eseményeket, ehhez PowerShell vagy a REST API használatával. 
+6. Ha szeretné testre szabni a naplózott eseményeket, ehhez PowerShell vagy a REST API használatával.
 7. A naplózási beállítások konfigurálása után az új fenyegetés észlelési szolgáltatás, és konfigurálja a biztonsági riasztások e-maileket. Fenyegetésészlelés használatakor kapni proaktív riasztások a adatbázist érintő rendellenes tevékenységeket, amely azt jelzi, hogy a esetleges biztonsági fenyegetéseket jelezhetnek. További információkért lásd: [Ismerkedés a fenyegetésészlelés](sql-database-threat-detection-get-started.md).
 8. Kattintson a **Save** (Mentés) gombra.
 
