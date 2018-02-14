@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: aa4608d37b06db88819e6175dcf8f94a7e13f04a
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: cef7fc282edc7396a0f26dab98ea7f1087315b23
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="find-data-using-log-searches-in-log-analytics"></a>Napló keresések használatát Naplóelemzési adatok megkeresése
 
@@ -39,7 +39,7 @@ Azt a lesz egyszerű, gyakorlati példák kezdődnie, és majd kialakítható ra
 Miután megismerte a keresési technikák ismeri, tekintse át a [Naplóelemzési keresési hivatkozás jelentkezzen](log-analytics-search-reference.md).
 
 ## <a name="use-basic-filters"></a>Basic-szűrők használata
-Először hozzá kell tudnia kell, hogy a Keresés az első része lekérdezéséhez minden "|}" függőleges vonal karaktert, mindig van olyan *szűrő*. Az eltolásokat tekintheti, mint a TSQL--WHERE záradék meghatározza, hogy *mi* való lekérésére kívül a og Naplóelemzési munkaterület adatok részhalmazát. A Keresés az adattárban tárgya nagy mértékben a kívánt adatokat kinyerési, ezért ezt a természetes, hogy a lekérdezés a WHERE záradékban kellene kezdődnie jellemzőinek megadása.
+Először hozzá kell tudnia kell, hogy a Keresés az első része lekérdezéséhez minden "|}" függőleges vonal karaktert, mindig van olyan *szűrő*. Az eltolásokat tekintheti, mint a TSQL--WHERE záradék meghatározza, hogy *mi* való lekérésére kívül a Naplóelemzési munkaterület adatok részhalmazát. A Keresés az adattárban tárgya nagy mértékben a kívánt adatokat kinyerési, ezért ezt a természetes, hogy a lekérdezés a WHERE záradékban kellene kezdődnie jellemzőinek megadása.
 
 Használhatja a legalapvetőbb szűrők a következők *kulcsszavak*, például az "error" vagy "timeout" vagy a számítógép nevét. Ezek a lekérdezéstípusok egyszerű általában különböző alakzatok belül az azonos eredményhalmaz adja vissza. Ennek az az oka Naplóelemzési rendelkezik különböző *típusok* az adatok a rendszerben.
 
@@ -62,13 +62,13 @@ Igen, ha a típus = telj rekordok rendelkezik egy "CounterName" nevű mező, maj
 Adja meg csak a teljesítményadatokat a teljesítményszámláló nevének "kihasználtsága (%) esetén.
 
 ### <a name="to-search-for-processor-time-performance-data"></a>Processzor teljesítményének időadatok keresése
-* Írja be a keresőmezőbe lekérdezés`Type=Perf CounterName="% Processor Time"`
+* Írja be a keresőmezőbe lekérdezés `Type=Perf CounterName="% Processor Time"`
 
 Is pontosabban, és használjon **InstanceName = _ "Összesen"** a lekérdezés, amely Windows teljesítményszámláló. Igény szerint kiválaszthatja egy dimenzió, és egy másik **mezőérték:**. A szűrő automatikusan hozzáadódik a lekérdezés sávon a szűrőnek. Az alábbi ábrán látható. Jelzi, hogy hol hozzáadásához kattintson **InstanceName: "_Total"** semmit beírása nélkül a lekérdezéshez.
 
 ![keresési dimenzió](./media/log-analytics-log-searches/oms-search-facet.png)
 
-A lekérdezés most válik.`Type=Perf CounterName="% Processor Time" InstanceName="_Total"`
+A lekérdezés most válik. `Type=Perf CounterName="% Processor Time" InstanceName="_Total"`
 
 Ebben a példában, nem kell megadnia **típus = telj** Ez az eredmény eléréséhez. Mivel a CounterName és példánynév mező csak létezik típusú rekordok = teljesítmény, a lekérdezés nem adott vissza a hosszabb, előző egy azonos:
 
@@ -82,7 +82,7 @@ Például a lekérdezés `Type=Event EventLog="Windows PowerShell"` azonos `Type
 
 Az implicit és operátor explicit módon a NOT operátor használatával egyszerűen visszirányú. Példa:
 
-`Type:Event NOT(EventLog:"Windows PowerShell")`vagy azzal egyenértékű `Type=Event EventLog!="Windows PowerShell"` összes esemény visszaadásának további naplófájlokat, amelyek nem a Windows PowerShell-naplót.
+`Type:Event NOT(EventLog:"Windows PowerShell")` vagy azzal egyenértékű `Type=Event EventLog!="Windows PowerShell"` összes esemény visszaadásának további naplófájlokat, amelyek nem a Windows PowerShell-naplót.
 
 Vagy más logikai operátor használhatja például a "Vagy". A következő lekérdezés adja vissza, amelynek az Eseménynapló rendszer vagy alkalmazás vagy rögzíti.
 
@@ -168,7 +168,7 @@ EventLog=System TimeGenerated>NOW-24HOURS
 
 
 #### <a name="to-search-using-a-boolean-operator"></a>Egy logikai operátorral kereséséhez
-* Írja be a keresőmezőbe lekérdezés`EventLog=System TimeGenerated>NOW-24HOURS`  
+* Írja be a keresőmezőbe lekérdezés `EventLog=System TimeGenerated>NOW-24HOURS`  
     ![a logikai keresése](./media/log-analytics-log-searches/oms-search-boolean.png)
 
 Bár grafikusan szabályozhatja az időtartam alatt, és a legtöbb alkalommal érdemes lehet megtenni, amely, számos előnnyel jár idő szűrő közvetlenül a lekérdezés is beleértve. Például a nagyszerű ahol felülbírálhatja mindegyik mozaiknál idő függetlenül attól, hogy az irányítópultok a *globális* idő választó az irányítópult-oldalon. További információkért lásd: [idő kérdések irányítópulton](http://cloudadministrator.wordpress.com/2014/10/19/system-center-advisor-restarted-time-matters-in-dashboard-part-6/).
@@ -254,7 +254,7 @@ Type=Event EventID=600 | Top 1
 
 
 #### <a name="to-search-using-top"></a>A keresés felső használatával
-* Írja be a keresőmezőbe lekérdezés`Type=Event EventID=600 | Top 1`   
+* Írja be a keresőmezőbe lekérdezés `Type=Event EventID=600 | Top 1`   
     ![keresés felső](./media/log-analytics-log-searches/oms-search-top.png)
 
 A fenti ábrán vannak 358 ezer rekordokat EventID = 600. A mezőket, facets és a bal oldali szűrők mindig információkat jelenít meg az adott eredmények *által a szűrő része* a lekérdezés, mielőtt bármilyen függőleges vonal része. A **eredmények** ablaktáblán csak eredményt adja vissza a legutóbbi 1, mert a példaparancs alakú, és át legyenek-e az eredményeket.
@@ -309,7 +309,7 @@ Type=Event | Measure count() by EventID | Select EventID | Sort EventID asc
 ```
 
 #### <a name="to-search-using-measure-count"></a>A keresés használatával mérték száma
-* Írja be a keresőmezőbe lekérdezés`Type=Event | Measure count() by EventID`
+* Írja be a keresőmezőbe lekérdezés `Type=Event | Measure count() by EventID`
 * Hozzáfűzendő `| Select EventID` a lekérdezés végéhez.
 * Végezetül hozzáfűzése `| Sort EventID asc` a lekérdezés végéhez.
 
