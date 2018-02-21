@@ -17,8 +17,9 @@
 ### [Biztonságtechnikai képességek](azure-security-technical-capabilities.md)
 ### [Irányítás az Azure-ban](governance-in-azure.md)
 ### [Adattitkosítás inaktív állapotban](azure-security-encryption-atrest.md)
-### Architektúratervek
-#### [Megfelelőség – PCI DSS](./blueprints/payment-processing-blueprint.md)
+### Azure biztonsági és megfelelőségi tervek
+#### PCI DSS
+##### [Fizetésfeldolgozás a PCI DSS előírásainak megfelelő környezetekben](./blueprints/payment-processing-blueprint.md)
 ##### [Követelmények áttekintése](./blueprints/pci-dss-requirements-overview.md)
 ##### [1. követelmény – tűzfalak](./blueprints/pci-dss-requirement-1-firewall.md)
 ##### [2. követelmény – jelszavak](./blueprints/pci-dss-requirement-2-password.md)
@@ -32,7 +33,8 @@
 ##### [10. követelmény – monitorozás](./blueprints/pci-dss-requirement-10-monitoring.md)
 ##### [11. követelmény – tesztelés](./blueprints/pci-dss-requirement-11-testing.md)
 ##### [12. követelmény – szabályzat](./blueprints/pci-dss-requirement-12-policy.md)
-#### [Megfelelőség – FedRAMP ](./blueprints/fedramp.md)
+#### FedRAMP
+##### [Webalkalmazások automatizálása](./blueprints/fedramp.md)
 ##### [Biztonsági vezérlők áttekintése](./blueprints/fedramp-controls-overview.md)
 ##### [Hozzáférés-vezérlés](./blueprints/fedramp-access-controls.md)
 ##### [Naplózás és felelősségre vonhatóság](./blueprints/fedramp-audit-accountability-controls.md)
@@ -51,10 +53,11 @@
 ##### [Rendszer- és kommunikációvédelem](./blueprints/fedramp-system-communications-protection-controls.md)
 ##### [Rendszerek és információk integritása](./blueprints/fedramp-system-information-integrity-controls.md)
 ##### [Rendszerek és szolgáltatások beszerzése](./blueprints/fedramp-system-services-acquisition-controls.md)
-#### [Megfelelőség – UK-OFFICIAL](./blueprints/uk-official-three-tier-applications-overview.md)
+#### UK-OFFICIAL
+##### [Háromrétegű webalkalmazások automatizálása](./blueprints/uk-official-three-tier-applications-overview.md)
 ##### [Áttekintés](./blueprints/uk-official-three-tier-applications-overview.md)
 ##### [Alapelvek áttekintése](./blueprints/uk-official-three-tier-applications-principles-overview.md)
-#### Megfelelőség – Pénzügyi szolgáltatások
+#### Pénzügyi szolgáltatások
 ##### [Pénzügyi szolgáltatások szabályozott számítási feladatokhoz](./blueprints/financial-services-regulated-workloads.md)
 
 # Első lépések

@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: wesmc
-ms.openlocfilehash: 6577d4ae0f248ac234b2506a6adba04afde5ffce
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: aee7352ce6f8dd854ce0c6c61c5485fb9a35bb23
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Az Azure Functions az Azure Event Hubs kötései
 
@@ -49,7 +49,7 @@ Ha a függvény első engedélyezve van, nincs csak 1 példánya a függvényt. 
 
 * **Adja hozzá a 1 további függvény példány** -Azure Functions méretezési programot határozza meg, hogy Function_0 rendelkezik-e a további üzeneteket, mint amennyi feldolgozására, így létrejön egy új példányát, Function_1,. Az Event Hubs észleli, hogy új EPH példány üzenet olvasása közben. Az Event Hubs fogják terheléselosztásának a partíciókat a EPH példányok, például partíciók 0-4 Function_0 vannak rendelve, és partíciók 5 – 9 Function_1 vannak rendelve. 
 
-* **Adja hozzá N több működéséhez példányok** -Azure Functions méretezési logika határozza meg, hogy az Function_0, és Function_1 is rendelkezik, mint azok képes több üzenetet. Akkor lesz skálázva újra a Function_2... N, ahol N nagyobb, mint az Event Hubs paritions. Az Event Hubs betölti a partíciók egyensúlyba Function_0... 9 példányok.
+* **Adja hozzá N több működéséhez példányok** -Azure Functions méretezési logika határozza meg, hogy az Function_0, és Function_1 is rendelkezik, mint azok képes több üzenetet. Akkor lesz skálázva újra Function_2... N, ahol N nagyobb, mint az Event Hubs partíciók számára. Az Event Hubs betölti a partíciók egyensúlyba Function_0... 9 példányok.
 
 Az Azure Functions jelenleg egyedi méretezés logika arra, hogy N nagyobb, mint a partíciók száma. Erre azért van szükség, győződjön meg arról, hogy mindig példánya van EPH rendelkezésére gyorsan zárolni a partíciót tartalmaz, a többi példánytól elérhetővé válnak. Felhasználók csak van szó, az erőforrások használható, ha a függvény példány végrehajtása során, és nem a túlzott kiosztása felszámított.
 
@@ -219,7 +219,7 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**típusa** | n/a | meg kell `eventHubTrigger`. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon.|
+|**Típusa** | n/a | meg kell `eventHubTrigger`. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon.|
 |**direction** | n/a | meg kell `in`. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon. |
 |**name** | n/a | Esemény-elem funkciókódot jelölő neve. | 
 |**path** |**EventHubName** | Az event hubs neve. | 
@@ -392,7 +392,7 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**típusa** | n/a | "Az eventHub" értékre kell állítani. |
+|**Típusa** | n/a | "Az eventHub" értékre kell állítani. |
 |**direction** | n/a | "Ki" értékre kell állítani. Ez a paraméter értéke automatikusan kötésének létrehozásakor az Azure portálon. |
 |**name** | n/a | A változó nevét, amely jelöli az esemény függvény kódban használt. | 
 |**path** |**EventHubName** | Az event hubs neve. | 
@@ -404,7 +404,7 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 A C# és C# a parancsfájlt, használatával üzeneteket metódusparaméter például `out string paramName`. A C# parancsfájl `paramName` érték szerepel a `name` tulajdonsága *function.json*. Több üzenetet írni használható `ICollector<string>` vagy `IAsyncCollector<string>` helyett `out string`.
 
-A JavaScript, hozzáférhet a kimeneti esemény a `context.bindings.<name>`. `<name>`az érték szerepel a `name` tulajdonsága *function.json*.
+A JavaScript, hozzáférhet a kimeneti esemény a `context.bindings.<name>`. `<name>` az érték szerepel a `name` tulajdonsága *function.json*.
 
 ## <a name="exceptions-and-return-codes"></a>Kivételeket és a visszatérési kódok
 

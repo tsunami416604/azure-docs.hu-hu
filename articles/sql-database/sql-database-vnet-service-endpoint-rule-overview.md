@@ -4,7 +4,7 @@ description: "Egy alhálózat megjelölése egy virtuális hálózati végpontot
 services: sql-database
 documentationcenter: 
 author: MightyPen
-manager: jhubbard
+manager: craigg
 editor: 
 tags: 
 ms.assetid: 
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: On Demand
-ms.date: 02/05/2018
+ms.date: 02/13/2018
 ms.reviewer: genemi
 ms.author: dmalik
-ms.openlocfilehash: 90c9aeac46240466bc28cf4c32bb5ff7ef443455
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
-ms.translationtype: MT
+ms.openlocfilehash: 95e5b2fafa20e636957aacb10dbdf9e1fd02cf8f
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Virtuális hálózati szolgáltatás végpontok és szabályok az Azure SQL Database használata
 
@@ -144,6 +144,12 @@ Az Azure SQL Database a virtuális hálózati szabályok funkció rendelkezik a 
     - [Webhelyek (közötti S2S) virtuális magánhálózati (VPN)][vpn-gateway-indexmd-608y]
     - A helyszíni keresztül [ExpressRoute][expressroute-indexmd-744v]
 
+#### <a name="considerations-when-using-service-endpoints"></a>Végpontok használatának szempontjai
+Végpontok használata az Azure SQL Database, tekintse át a következőket kell figyelembe venni:
+
+- **Az Azure SQL adatbázis nyilvános IP-címek kimenő szükség**: Azure SQL adatbázis IP engedélyezi a csatlakozást a hálózati biztonsági csoportokkal (NSG-k) kell megnyitni. Ehhez a NSG [szolgáltatás címkék](../virtual-network/security-overview.md#service-tags) az Azure SQL Database.
+- **PostgreSQL és MySQL az Azure-adatbázis nem támogatottak**: végpontok nem támogatottak az Azure Database PostgreSQL vagy MySQL. Az SQL Database szolgáltatás végpontok engedélyezésére megszakítja a kapcsolatot, hogy ezekre a szolgáltatásokra. A megoldás tudunk a; Lépjen kapcsolatba a  *dmalik@microsoft.com* .
+
 #### <a name="expressroute"></a>ExpressRoute
 
 Ha a hálózat csatlakozik-e az Azure-hálózat használata [ExpressRoute][expressroute-indexmd-744v], a kapcsolatok a Microsoft Edge két nyilvános IP-címek van konfigurálva. A két IP-címek vannak való kapcsolódáshoz használt Microsoft Services, például Azure Storage Azure nyilvános társviszony-létesítés használatával.
@@ -171,6 +177,8 @@ Az Azure SQL adatbázis lekérdezés-szerkesztő a rendszer az Azure virtuális 
 #### <a name="table-auditing"></a>Tábla naplózás
 Jelenleg két módja van az SQL-adatbázis naplózásának engedélyezéséhez. Tábla naplózás meghiúsul, miután Szolgáltatásvégpontok engedélyezte az Azure SQL-kiszolgálón. Itt megoldás, hogy a Blobnaplózási funkció.
 
+#### <a name="impact-on-data-sync"></a>Adatszinkronizálás gyakorolt hatás
+Az Azure SQLDB rendelkezik az adatszinkronizálás funkciója, amely kapcsolódik az adatbázisokat Azure IP-címek használatával. Végpontok használatakor valószínű, hogy Ön ki fog kapcsolni **összes Azure-szolgáltatások engedélyezése** a logikai kiszolgálóhoz való hozzáférést. Ezzel megszünteti a adatszinkronizálás szolgáltatást.
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>Virtuális hálózat Szolgáltatásvégpontok használata az Azure storage hatása
 
@@ -178,7 +186,7 @@ Az Azure Storage ugyanaz a funkció, amely lehetővé teszi, hogy korlátozza a 
 Ha a szolgáltatás használatához egy tárfiókot, az Azure SQL-kiszolgáló által használt választja, a problémák futtathatja. Ezután egy lista és vitafórum által befolyásolt Azure SQLDB funkcióját.
 
 #### <a name="azure-sqldw-polybase"></a>Azure SQLDW PolyBase
-A PolyBase gyakran használják az adatok betöltése az Azure SQLDW a Storage-fiókok. A Storage-fiók, amely adatokat tölt be korlátozza a hozzáférést csak VNet-alhálózatokat, ha megszakad a fiók és a PolyBase közötti kapcsolatot.
+A PolyBase gyakran használják az adatok betöltése az Azure SQLDW a Storage-fiókok. A Storage-fiók, amely adatokat tölt be korlátozza a hozzáférést csak VNet-alhálózatokat, ha megszakad a fiók és a PolyBase közötti kapcsolatot. Nincs; Ez a megoldás Lépjen kapcsolatba a  *dmalik@microsoft.com*  további információt.
 
 #### <a name="azure-sqldb-blob-auditing"></a>Azure SQLDB Blob Auditing
 A saját tárfiók blobnaplózási funkció leküldi naplókat. Ha ezt a tárfiókot használ a BBI szolgáltatás végpontok Azure SQLDB a tárolási fiók kapcsolat megszakad.

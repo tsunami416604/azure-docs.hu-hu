@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: On Demand
-ms.date: 02/07/2017
-ms.author: sashan;carlrab
-ms.openlocfilehash: da463bcaf91321b65c8ad1067e457b88c8dcd58f
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.date: 02/12/2018
+ms.author: carlrab
+ms.openlocfilehash: 4efa053afd26bde208441c4b841c5d02142a2d18
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="sql-database-faq"></a>SQL Database GYIK
 
@@ -30,7 +30,7 @@ Az SQL-adatbázis aktuális verziója 12-es verzió. Verzió V11 eltávolított�
 Garantáljuk ügyfeleinknek, hogy különálló vagy elasztikus alap-, standard vagy prémium szintű Microsoft Azure SQL Database szolgáltatásuk az idő legalább 99,99%-ában kapcsolódni fog internetes átjárónkhoz. További információkért lásd: [SLA](http://azure.microsoft.com/support/legal/sla/).
 
 ## <a name="how-do-i-reset-the-password-for-the-server-admin"></a>Hogyan a kiszolgáló rendszergazdai jelszavának visszaállítása?
-Az a [Azure-portálon](https://portal.azure.com) kattintson **SQL Server-kiszolgálók**, válassza ki a kiszolgálót a listából, és kattintson a **jelszó alaphelyzetbe állítása**.
+Az a [Azure-portálon](https://portal.azure.com), kattintson a **SQL Server-kiszolgálók**, válassza ki a kiszolgálót a listából, és kattintson a **jelszó alaphelyzetbe állítása**.
 
 ## <a name="how-do-i-manage-databases-and-logins"></a>Hogyan kezelhető adatbázisok és bejelentkezések?
 Lásd: [adatbázisok és bejelentkezések kezelése](sql-database-manage-logins.md).
@@ -44,7 +44,7 @@ SQL-adatbázis váltók a egy előre jelezhető óránkénti arány alapján min
 ## <a name="what-if-a-single-database-is-active-for-less-than-an-hour-or-uses-a-higher-service-tier-for-less-than-an-hour"></a>Mi történik, ha egy önálló adatbázis aktív kisebb, mint egy óráig vagy magasabb szolgáltatásréteg kisebb, mint egy óráig használ?
 Minden órában a legmagasabb szolgáltatásszint létezik adatbázis + használati vagy hogy az adatbázis aktív kisebb, mint egy óráig függetlenül, hogy órán belül alkalmazott teljesítményszintet kell fizetni. Például ha egy önálló adatbázis létrehozása, és törölje azt 5 percen belül a számlázási egy adatbázis óra díjat tükrözi. 
 
-Példák
+Példák:
 
 * Ha egy alapszintű adatbázis létrehozása, majd azonnal frissítsen, Standard szintű, S1 van szó, a standard szintű, S1 díj az első egy óra.
 * Ha rendszerről egy adatbázis Basic a Premium 10:00 órakor és reggel 1:35 frissítés befejezése a következő napon van szó, az 1:00 órakor kezdődő prémium díj 
@@ -53,7 +53,7 @@ Példák
 ## <a name="how-does-elastic-pool-usage-show-up-on-my-bill-and-what-happens-when-i-change-edtus-per-pool"></a>Hogyan nem rugalmas készlet használati jelennek meg a számlázási és mi történik, amikor módosíthatók készletenként felhasználható edtu-k?
 A rugalmas készlet díja megjelenítése be a számlázási, rugalmas dtu-i (edtu-k) a készletenként felhasználható edtu-k mezőben látható lépésekben [az árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/sql-database/). Nincs a rugalmas adatbázis-díjmentes. A készlet létezik az a legnagyobb edtu-ra, függetlenül a használati vagy a készlet volt-e aktív kisebb, mint egy óráig óránként kell fizetni. 
 
-Példák
+Példák:
 
 * Ha egy Standard rugalmas készletet hoz létre a 200 edtu-k szerint 18, öt adatbázisok hozzáadása a készlethez van szó, a 200 edtu-k az egész órát 11 órakor kezdődő a nap további része.
 * Naponta 2, reggel 5:05 adatbázis 1 50 edtu-k fel kezdődik, és állandó napon keresztül tárolja. Adatbázisok 2 – 5 ingadozik 0 és 80 edtu-k között. A nap folyamán öt más adatbázisokhoz, napjainkat különböző edtu-k használó hozzáadása. 2 nap terhelve, 200 eDTU teljes napi. 
@@ -76,17 +76,17 @@ Az edtu-inak száma és a szolgáltatási szintek ismertetése: [SQL Database be
 Önálló adatbázisok használatával ellentétben [aktív georeplikáció](sql-database-geo-replication-overview.md) rugalmas adatbázisok nem közvetlen hatást számlázási.  Csak az edtu-inak kiépítve a készletek (alkalmazáskészlet elsődleges és másodlagos készlet) van szó
 
 ## <a name="how-does-the-use-of-the-auditing-feature-impact-my-bill"></a>Milyen hatással van a számlára a naplózási funkció használata?
-A SQL Database szolgáltatásba: nincs további naplózás beépített költségeket, és készen áll a Basic, Standard, Premium és prémium RS adatbázisok. Azonban a naplók tárolásához, a naplózási szolgáltatás által használt, egy Azure Storage-fiókot, és a táblák és az Azure Storage üzenetsorokat díjakat alapján a napló méretét.
+A SQL Database szolgáltatásba: nincs további naplózás beépített költségeket, és készen áll a Basic, Standard és Premium adatbázisok. Azonban a naplók tárolásához, a naplózási szolgáltatás által használt, egy Azure Storage-fiókot, és a táblák és az Azure Storage üzenetsorokat díjakat alapján a napló méretét.
 
 ## <a name="how-do-i-find-the-right-service-tier-and-performance-level-for-single-databases-and-elastic-pools"></a>Hogyan találhatom a jobb szolgáltatási és teljesítményszintet szint önálló adatbázisok és rugalmas készletek?
-Nincsenek elérhető néhány eszközök. 
+Nincsenek elérhető néhány eszközök: 
 
 * A helyszíni adatbázisokhoz, a [DTU méretezési advisor](http://dtucalculator.azurewebsites.net/) javasoljuk az adatbázisok és a szükséges dtu-inak száma és a rugalmas adatbáziskészletek értékeléséhez.
 * Ha egy önálló adatbázis volna rendelkezésre áll a készletbe, Azure intelligens motor rugalmas készletek javasolja, ha azt látja, hogy egy korábbi használati mintát, amely szükségessé teszi. Lásd: [figyelése és kezelése az Azure-portálon a rugalmas készletekben](sql-database-elastic-pool-manage-portal.md). Számításokat végezni a saját kezűleg kapcsolatos részletekért lásd: [rugalmas készletek ára és teljesítménye szempontjai](sql-database-elastic-pool.md)
 * Kell-e tárcsázni egy önálló adatbázis felfelé vagy lefelé, olvassa el [az önálló adatbázisok teljesítményének útmutatást](sql-database-performance-guidance.md).
 
 ## <a name="how-often-can-i-change-the-service-tier-or-performance-level-of-a-single-database"></a>Milyen gyakran módosíthatom a szolgáltatási szint vagy a teljesítmény szint egyetlen adatbázisra?
-Módosíthatja a szolgáltatási réteg (között a Basic, Standard, Premium és prémium RS) vagy a teljesítményszintjének belül egy szolgáltatási réteg (például s2 S1) gyakran, ahányat csak szeretne. Korábbi adatbázisokhoz módosíthatja a szolgáltatási szint vagy a teljesítmény szint összesen négy alkalommal egy 24 órás időszakban.
+Módosíthatja a szolgáltatási réteg (között a Basic, Standard és Premium) vagy a teljesítményszintjének belül egy szolgáltatási réteg (például s2 S1) gyakran, ahányat csak szeretne. Korábbi adatbázisokhoz módosíthatja a szolgáltatási szint vagy a teljesítmény szint összesen négy alkalommal egy 24 órás időszakban.
 
 ## <a name="how-often-can-i-adjust-the-edtus-per-pool"></a>Milyen gyakran módosíthatja az edtu-k készletenként?
 Olyan gyakran ahányat csak szeretne.
@@ -101,7 +101,7 @@ Egy adatbázis a szolgáltatási szint módosítása, és mindkét készlet áth
 Biztonságimásolat-tároláshoz pedig a tárhely, az automatikus adatbázis biztonsági mentése, a használt társított [pontot-a--visszaállítás egy korábbi időpontra](sql-database-recovery-using-backups.md#point-in-time-restore) és [georedundáns helyreállítás](sql-database-recovery-using-backups.md#geo-restore). A Microsoft Azure SQL Database által biztosított biztonsági tárhelyet a teljes adatbázistárhely legfeljebb 200%-áig lehet igénybe venni többletköltség nélkül. Például ha egy szabványos DB példány kiosztott DB méretű 250 GB-os, rendelkezésre álló 500 GB-os biztonsági mentési tároló használatáért nem kell külön fizetni. Ha az adatbázis meghaladja a megadott biztonsági mentési tárolót, ha szeretné csökkenteni a megőrzési időszakot lépjen kapcsolatba az Azure támogatási szolgálatának vagy standard írásvédett földrajzilag redundáns tárolás (RA-GRS) díj számlázva extra biztonságimásolat-tároláshoz kell fizetnie. RA-GRS számlázási további információkért lásd: Storage Díjszabásának részleteit.
 
 ## <a name="im-moving-from-webbusiness-to-the-new-service-tiers-what-do-i-need-to-know"></a>I vagyok áthelyezése Web vagy Business az új szolgáltatási szinteket, mit kell tudnia?
-Az Azure SQL Web és Business adatbázisokat most kivezettük. A Basic, Standard, Premium, prémium szintű RS és rugalmas rétegek cserélje le a leköszönő Web és Business adatbázisokat. 
+Az Azure SQL Web és Business adatbázisokat most kivezettük. A Basic, Standard, és a Premium és rugalmas rétegek cserélje le a leköszönő Web és Business adatbázisokat. 
 
 ## <a name="what-is-an-expected-replication-lag-when-geo-replicating-a-database-between-two-regions-within-the-same-azure-geography"></a>Mi az, hogy egy várt replikációs késés földrajzi replikálása esetén egy adatbázis belül az azonos Azure geográfiai két régiók között?
 Azt jelenleg támogatják az RPO öt másodpercenként, és a replikációs késés kisebb, hogy amikor a földrajzi másodlagos az Azure-ban üzemeltetett-e ajánlott párosított régió és ugyanazt a szolgáltatási rétegben.
@@ -119,7 +119,7 @@ A földrajzi másodlagos aszinkron replikájának és azt nem az elsődleges tel
 A valós idejű replikációs késés az elsődleges adatbázis és a földrajzi-másodlagos egy DMV keresztül elérhetővé kell tenni. További információkért lásd: [sys.dm_geo_replication_link_status](https://msdn.microsoft.com/library/mt575504.aspx).
 
 ## <a name="to-move-a-database-to-a-different-server-in-the-same-subscription"></a>Adatbázis áthelyezése egy másik kiszolgálóra ugyanabban az előfizetésben
-* Az a [Azure-portálon](https://portal.azure.com), kattintson a **SQL-adatbázisok**, válasszon ki egy adatbázist a listából, és kattintson a **másolási**. Lásd: [Azure SQL-adatbázis másolása](sql-database-copy.md) további részletek.
+Az a [Azure-portálon](https://portal.azure.com), kattintson a **SQL-adatbázisok**, válasszon ki egy adatbázist a listából, és kattintson a **másolási**. Lásd: [Azure SQL-adatbázis másolása](sql-database-copy.md) további részletek.
 
 ## <a name="to-move-a-database-between-subscriptions"></a>Az előfizetések közötti adatbázis áthelyezése
-* Az a [Azure-portálon](https://portal.azure.com), kattintson a **SQL Server-kiszolgálók** , és válassza ki a kiszolgálót, amelyen az adatbázist a listán. Kattintson a **áthelyezése**, majd válassza ki az áthelyezni kívánt erőforrásokat és áthelyezése az előfizetés és.
+Az a [Azure-portálon](https://portal.azure.com), kattintson a **SQL Server-kiszolgálók** , és válassza ki a kiszolgálót, amelyen az adatbázist a listán. Kattintson a **áthelyezése**, majd válassza ki az áthelyezni kívánt erőforrásokat és áthelyezése az előfizetés és.

@@ -4,7 +4,7 @@ description: "Megtudhatja, hogyan előzetes betöltése Azure CDN-végpont gyors
 services: cdn
 documentationcenter: 
 author: dksimpson
-manager: erikre
+manager: akucer
 editor: 
 ms.assetid: 5ea3eba5-1335-413e-9af3-3918ce608a83
 ms.service: cdn
@@ -12,23 +12,21 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2018
+ms.date: 02/12/2018
 ms.author: mazha
-ms.openlocfilehash: acd6eae12ff338c64cc8879aa8c27b226e3d2f84
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: e00205ddcaab277029d7185d0158a64818d0d49b
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>Eszközök előzetes betöltése Azure CDN-végponton
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
 
-Alapértelmezés szerint eszközök csak akkor, amikor erre felkérést kapnak lettek gyorsítótárazva. Ennek eredményeképpen az első kérésre minden régióban is tovább tart, mint későbbi kérelmeket. A az oka, mert a peremhálózati kiszolgáló még nem gyorsítótárba helyezték a tartalmat, és továbbítja a kérelmet az eredeti kiszolgálóra kell. Tartalom előzetes betöltése, elkerülheti a találati első késés.
-
-Mellett jobb felhasználói élményt biztosít, a gyorsítótárazott eszközök előzetes betöltése is csökkentheti a forráskiszolgáló hálózati forgalmat.
+Alapértelmezés szerint csak akkor, ha a kért folyamatban eszközök gyorsítótárba kerüljenek. A peremhálózati kiszolgáló még nem gyorsítótárba helyezték a tartalmat, és továbbítja a kérelmet az eredeti kiszolgálóra kell, mert az első kérésre minden régióban is tovább tart, mint későbbi kérelmeket. Az első találati késleltetés elkerülése érdekében eszközök előzetes betöltése a. Mellett jobb felhasználói élményt biztosít, a gyorsítótárazott eszközök előzetes betöltése csökkentheti a forráskiszolgáló hálózati forgalmat.
 
 > [!NOTE]
-> Eszközök előzetes betöltése esetén hasznos nagy események vagy a tartalmat, hogy a felhasználók számára, például egy új movie kiadás vagy szoftverfrissítés nagy számú egyidejűleg elérhetővé válnak.
+> Eszközök előzetes betöltése esetén hasznos nagy események vagy a tartalmat, amely egyszerre sok felhasználó, például egy új movie kiadás vagy szoftverfrissítés elérhetővé válik.
 > 
 > 
 
@@ -48,13 +46,13 @@ Ez az oktatóanyag bemutatja, hogyan előzetes betöltését a gyorsítótárazo
 4. A **Tartalomelérési utat**, írja be a betölteni kívánt minden egyes eszköz elérési útját (például `/pictures/kitten.png`).
    
    > [!TIP]
-   > További **Tartalomelérési utat** szövegmezők jelenik meg, hogy több eszközök listájának összeállítása meg szöveg megadásával elindítása után. Eszközök törlése a listából, kattintson a három ponttal (…) gombra, majd jelölje ki **törlése**.
+   > Írja be a szöveget, további elindítása után **Tartalomelérési utat** szövegmezőkben lehetővé teszi több eszközök listájának összeállítása fog megjelenni. Eszközök törlése a listából, kattintson a három ponttal (…) gombra, majd jelölje ki **törlése**.
    > 
    > Minden tartalom elérési útnak kell lennie egy relatív URL-címet, amely megfelel a következő [reguláris kifejezések](https://msdn.microsoft.com/library/az24scfc.aspx):  
-   > - Betölteni egy egyetlen fájl elérési útja: `@"^(?:\/[a-zA-Z0-9-_.%=\u0020]+)+$"`;  
-   > - A lekérdezési karakterlánc egyetlen fájl betöltése:`@"^(?:\?[-_a-zA-Z0-9\/%:;=!,.\+'&\u0020]*)?$";` 
+   > - Betölteni egy egyetlen fájl elérési útja: `^(?:\/[a-zA-Z0-9-_.%=\u0020]+)+$`  
+   > - A lekérdezési karakterlánc egyetlen fájl betöltése: `^(?:\?[-_a-zA-Z0-9\/%:;=!,.\+'&\u0020]*)?$` 
    > 
-   > Minden eszköz a saját elérési utat kell rendelkeznie. Nincs előre betöltése eszközök helyettesítő funkció sem.
+   > Minden eszköz rendelkeznie kell a saját elérési utat, mert nincs előre betöltése eszközök helyettesítő funkció sem.
    > 
    > 
    
@@ -63,7 +61,7 @@ Ez az oktatóanyag bemutatja, hogyan előzetes betöltését a gyorsítótárazo
    
 
 > [!NOTE]
-> CDN-profil percenként 10 vonatkozó korlátozása van. 50 egyidejű elérési utat egy időben lehet feldolgozni. Mindegyik elérési útból útvonal-hossza legfeljebb 1024 karakterből állhat.
+> Maximális száma 10 terhelésigényét percenként CDN-profilt, és 50 egyidejű elérési utat egy időben dolgozhatók fel. Mindegyik elérési útból útvonal-hossza legfeljebb 1024 karakterből állhat.
 > 
 > 
 

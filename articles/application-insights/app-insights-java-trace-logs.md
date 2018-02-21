@@ -11,23 +11,20 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2016
+ms.date: 02/12/2018
 ms.author: mbullwin
-ms.openlocfilehash: 6e441c9cbd15bb1528ea8e8a781f90900af90cf2
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: ef813ec3f9f654fb3786fba4135a04e403928e9a
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Az Application Insights nyomkövetési naplók Java felfedezés
 Ha a Log4J vagy a Logback használata (1.2-es verzió vagy 2.0-s) a nyomkövetés, akkor a nyomkövetési naplók megtekintése az Application Insights ahol vizsgálatát, és keresse meg őket automatikusan elküldi.
 
 ## <a name="install-the-java-sdk"></a>Telepítse a Java SDK
 
-Telepítés [Javához készült Application Insights SDK][java], ha még nem tette meg, amely.
-
-(Ha nem kívánja nyomon követni a HTTP-kérelmekre, akkor kihagyhatja a .xml konfigurációs fájlt a legtöbb, de legalább tartalmaznia kell a `InstrumentationKey` elemet. Is `new TelemetryClient()` inicializálni az SDK-t.)
-
+Kövesse az utasításokat a telepítendő [Javához készült Application Insights SDK][java], ha még nem tette meg, amely.
 
 ## <a name="add-logging-libraries-to-your-project"></a>Naplózási kódtárak hozzáadása a projekthez
 *Válassza ki a projektnek megfelelő módszert.*
@@ -50,7 +47,7 @@ Ezt követően frissítse a Projektfüggőségek lekérni a bináris fájlok let
     </dependencies>
 ```
 
-*Log4J 2.0-s verzió*
+*Log4J v2.0*
 
 ```XML
 
@@ -63,7 +60,7 @@ Ezt követően frissítse a Projektfüggőségek lekérni a bináris fájlok let
     </dependencies>
 ```
 
-*Log4J 1.2-es verzió*
+*Log4J v1.2*
 
 ```XML
 
@@ -88,26 +85,27 @@ Ezt követően frissítse a Projektfüggőségek lekérni a bináris fájlok let
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-logback', version: '1.0.+'
 ```
 
-**Log4J 2.0-s verzió**
+**Log4J v2.0**
 
 ```
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j2', version: '1.0.+'
 ```
 
-**Log4J 1.2-es verzió**
+**Log4J v1.2**
 
 ```
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j1_2', version: '1.0.+'
 ```
 
 #### <a name="otherwise-"></a>Egyéb esetben...
-Töltse le, majd bontsa ki a megfelelő naplóírót a megfelelő könyvtár hozzáadása a projekthez:
+Kövesse az útmutatást, manuálisan telepítse az Application Insights Java SDK, töltse le a jar (miután jogokért Maven központi lapon kattintson a "jar" hivatkozásra letöltési szakaszban) megfelelő naplóírói, és a letöltött naplóírói jar hozzáadása a projekthez.
 
-| Naplózó | Letöltés | Részletes ismertetés |
+| Logger | Letöltés | Részletes ismertetés |
 | --- | --- | --- |
-| Logback |[SDK-val Logback naplóírói](https://aka.ms/xt62a4) |applicationinsights-naplózás-logback |
-| Log4J 2.0-s verzió |[SDK-val Log4J v2 naplóírói](https://aka.ms/qypznq) |applicationinsights-naplózás-log4j2 |
-| Log4j 1.2-es verzió |[SDK-val Log4J 1.2-es verzió naplóírói](https://aka.ms/ky9cbo) |applicationinsights-naplózás-log4j1_2 |
+| Logback |[Logback naplóírói Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-logback%22) |applicationinsights-logging-logback |
+| Log4J v2.0 |[Log4J v2 naplóírói Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j2%22) |applicationinsights-logging-log4j2 |
+| Log4j v1.2 |[Log4J 1.2-es verzió naplóírói Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |applicationinsights-logging-log4j1_2 |
+
 
 ## <a name="add-the-appender-to-your-logging-framework"></a>A naplóíró hozzáadása a naplózási keretrendszer
 Nyomok első elindításához a Log4J vagy a Logback konfigurációs fájl a megfelelő kódrészletét egyesítése: 
@@ -124,11 +122,11 @@ Nyomok első elindításához a Log4J vagy a Logback konfigurációs fájl a meg
     </root>
 ```
 
-*Log4J 2.0-s verzió*
+*Log4J v2.0*
 
 ```XML
 
-    <Configuration packages="com.microsoft.applicationinsights.Log4j">
+    <Configuration packages="com.microsoft.applicationinsights.log4j.v2">
       <Appenders>
         <ApplicationInsightsAppender name="aiAppender" />
       </Appenders>
@@ -140,7 +138,7 @@ Nyomok első elindításához a Log4J vagy a Logback konfigurációs fájl a meg
     </Configuration>
 ```
 
-*Log4J 1.2-es verzió*
+*Log4J v1.2*
 
 ```XML
 
@@ -158,9 +156,11 @@ Az Application Insights appenders hivatkozható, azonban bármely konfigurált n
 ## <a name="explore-your-traces-in-the-application-insights-portal"></a>Megismerkedhet a nyomkövetések az Application Insights-portálon
 Most, hogy konfigurálta az Application Insights nyomkövetési adatokat küldeni a projekthez, tekintheti meg és keressen a nyomkövetések az Application Insights-portálon a [keresési] [ diagnostic] panelen.
 
+Kivételek küldött keresztül figyelő szoftverek Kivételtelemetria, a portál fog megjelenni.
+
 ![Az Application Insights portál nyissa meg a keresési](./media/app-insights-java-trace-logs/10-diagnostics.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Diagnosztikai keresése][diagnostic]
 
 <!--Link references-->

@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: alekseys
-ms.openlocfilehash: 007b530cd7a14f063ae4f86d18daa9742c6655c2
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: e955aa1c3985e540246d964b4dce88d15fb85949
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="mongodb-api-support-for-mongodb-features-and-syntax"></a>MongoDB-szolgáltatások és szintaxis MongoDB API támogatása
 
-Azure Cosmos-adatbázis egy Microsoft globálisan elosztott több modellre adatbázis szolgáltatás. Az adatbázis MongoDB API bármely, a nyílt forráskódú MongoDB ügyfél keresztül kommunikálhat [illesztőprogramok](https://docs.mongodb.org/ecosystem/drivers). A MongoDB API lehetővé teszi, hogy a meglévő ügyfél-illesztőprogramok használata a MongoDB való tartva [hozzá kell fűznie protokoll](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol).
+Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Az adatbázis MongoDB API bármely, a nyílt forráskódú MongoDB ügyfél keresztül kommunikálhat [illesztőprogramok](https://docs.mongodb.org/ecosystem/drivers). A MongoDB API lehetővé teszi, hogy a meglévő ügyfél-illesztőprogramok használata a MongoDB való tartva [hozzá kell fűznie protokoll](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol).
 
 Az Azure Cosmos DB MongoDB API használatával a MongoDB API-k által használt, az Azure Cosmos DB vállalati funkciók előnyeit élvezheti: [globális terjesztési](distribute-data-globally.md), [automatikus horizontális](partition-data.md), rendelkezésre állás és a késés garanciák, automatikus minden mező, a többi, valamint biztonsági mentés és még sok más titkosítási indexelése.
 
@@ -37,7 +37,7 @@ Azure Cosmos-adatbázis a következő adatbázis-parancsokat az összes fiókot 
 
 ### <a name="query-and-write-operation-commands"></a>Lekérdezés és az írási művelet parancsok
 - törlés
-- keresés
+- Keresés
 - findAndModify
 - getLastError
 - getMore
@@ -46,7 +46,7 @@ Azure Cosmos-adatbázis a következő adatbázis-parancsokat az összes fiókot 
 
 ### <a name="authentication-commands"></a>Hitelesítési parancsok
 - kijelentkezés
-- hitelesítés
+- authenticate
 - getnonce
 
 ### <a name="administration-commands"></a>Felügyeleti parancsok
@@ -58,8 +58,8 @@ Azure Cosmos-adatbázis a következő adatbázis-parancsokat az összes fiókot 
 - createIndexes
 - listIndexes
 - dropIndexes
-- ConnectionStatus
-- újraindexelése
+- connectionStatus
+- reIndex
 
 ### <a name="diagnostics-commands"></a>Diagnosztika parancsok
 - buildInfo
@@ -76,7 +76,7 @@ Azure Cosmos-adatbázis a következő adatbázis-parancsokat az összes fiókot 
 Azure Cosmos DB összesítési csővezeték nyilvános előzetes verziójában támogatja. Tekintse meg a [Azure blog](https://aka.ms/mongodb-aggregation) útmutatást a nyilvános előzetes bevezetni.
 
 ### <a name="aggregation-commands"></a>Összesítési parancsok
-- Összesítés
+- aggregate
 - darab
 - Különböző
 
@@ -237,6 +237,33 @@ $Regex lekérdezésekben balra rögzített kifejezések index keresés engedély
 Ha egy szükséges belefoglalni a "$" vagy "|}", legjobb, ha két (vagy több) regex lekérdezések létrehozása. Ha például adott a következő eredeti lekérdezés: ```find({x:{$regex: /^abc$/})```, kell módosítani az alábbiak szerint: ```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})```.
 Az első részt az index használatával korlátozza a keresési verziótól kezdve a dokumentumok ^ abc, a második rész fog egyezni a pontos bejegyzéseket. A sáv operátor "|} ' úgy működik, mint egy"vagy"függvény – a lekérdezés ```find({x:{$regex: /^abc|^def/})``` megegyezik a dokumentumok whin melyik mezőt"x"értékkel rendelkezik, amely a"abc"vagy"def"szóval kezdődik. Az index használatára, javasoljuk a lekérdezés felosztása két különböző lekérdezéseket a $vagy üzemeltető tartományhoz való: ```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })```.
 
+### <a name="update-operators"></a>Frissítés operátorok
+
+#### <a name="field-update-operators"></a>A mező frissítés operátorok
+- $inc
+- $mul
+- $rename
+- $setOnInsert
+- $set
+- vonja $
+- $min
+- $max
+- $currentDate
+
+#### <a name="array-update-operators"></a>A tömb frissítés operátorok
+- $addToSet
+- $pop
+- $pullAll
+- $pull (Megjegyzés: a feltétellel $pull nem támogatott)
+- $pushAll
+- $push
+- minden egyes $
+- $slice
+- $sort
+- $position
+
+#### <a name="bitwise-update-operator"></a>Bitenkénti frissítés operátor
+- $bit
 
 ### <a name="geospatial-operators"></a>A földrajzi operátorok
 
@@ -272,7 +299,7 @@ Következő módszer használható:
 
 Módszer | Példa | Megjegyzések 
 --- | --- | --- |
-Cursor.sort() | ```cursor.sort({ "Elevation": -1 })``` | Dokumentumok rendezési kulcs nélkül nem adja vissza
+cursor.sort() | ```cursor.sort({ "Elevation": -1 })``` | Dokumentumok rendezési kulcs nélkül nem adja vissza
 
 ## <a name="unique-indexes"></a>Egyedi indexek
 
@@ -292,11 +319,11 @@ Azure Cosmos-adatbázis még nem támogatja a felhasználók és szerepkörök. 
 
 Azure Cosmos-adatbázis automatikus, natív replikáció a lehető legalacsonyabb rétegek támogatja. A működési elvet ki van bővítve kimenő alacsony késésű, globális replikációs eléréséhez. Azure Cosmos-adatbázis nem támogatja a manuális replikációs parancsokat.
 
-## <a name="sharding"></a>Horizontális
+## <a name="sharding"></a>Sharding
 
 Azure Cosmos-adatbázis automatikus, kiszolgálóoldali horizontális támogatja. Azure Cosmos-adatbázis nem támogatja a manuális horizontális parancsokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan [Studio 3T használja](mongodb-mongochef.md) egy API-t a MongoDB-adatbázist.
 - Megtudhatja, hogyan [Robo 3T használja](mongodb-robomongo.md) egy API-t a MongoDB-adatbázist.

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: anhoh
-ms.openlocfilehash: 50a7b645749284b952e5fe5e37475f0760184845
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: ffca8f4518361e8c5447d7bb7ed6022eb0e96a4a
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="introduction-to-azure-cosmos-db-api-for-mongodb"></a>Bevezetés az Azure Cosmos DB: API-t a mongodb-Protokolltámogatással
 
@@ -43,7 +43,10 @@ Az Azure Cosmos DB adatbázisok alkalmas adattárként írt [MongoDB](https://do
 
 | Az Azure Cosmos DB alapértelmezett konzisztencia szint |   Mongo API (3.4) |
 |---|---|
-|Munkamenet| Végleges |
+|Végleges| Végleges |
+|Konzisztens előtag| A megfelelő sorrendben végleges |
+|Munkamenet| A megfelelő sorrendben végleges |
+|Kötött elavulás| Erős |
 | Erős | Erős |
 
 **Az automatikus indexeléshez**: alapértelmezés szerint Azure Cosmos DB automatikusan indexeli az összes tulajdonságainak belül dokumentumok a MongoDB adatbázis- és nem várt vagy igényel semmilyen sémát, illetve másodlagos indexek létrehozását. Emellett az egyedi index funkció lehetővé teszi, hogy a dokumentum mező, amelyek már az Azure Cosmos Adatbázisba Automatikus indexelés egyediségi megkötés.

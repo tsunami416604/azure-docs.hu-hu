@@ -17,6 +17,7 @@
 #### [Engedélyek az azureiotsuite.com webhelyen](iot-suite-v1-permissions.md)
 #### [A távoli figyelési megoldás bemutatója](iot-suite-v1-remote-monitoring-sample-walkthrough.md)
 #### [A Raspberry Pi csatlakoztatása](iot-suite-v1-raspberry-pi-kit-get-started.md)
+#### [Az MXChip IoT DevKit csatlakoztatása](../iot-hub/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring.md)
 ##### C használata
 ###### [Szimulált adatok](iot-suite-v1-raspberry-pi-kit-c-get-started-simulator.md)
 ###### [Valódi érzékelők használata](iot-suite-v1-raspberry-pi-kit-c-get-started-basic.md)
@@ -76,7 +77,7 @@
 ## Csatlakoztatott gyár
 ### [Átjáró telepítése csatlakoztatott factoryhoz](iot-suite-connected-factory-gateway-deployment.md)
 ### [Csatlakoztatott factory testreszabása](iot-suite-connected-factory-customize.md)
-### [Az OPC-kiadó használata a csatlakoztatott factoryhoz](iot-suite-connected-factory-publisher.md)
+### [Az OPC-kiadó használata a csatlakoztatott factoryhoz](https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md)
 ### [Csatlakoztatott gyár konfigurálása](iot-suite-connected-factory-configure.md)
 ## [Engedélyek az azureiotsuite.com webhelyen](iot-suite-permissions.md)
 

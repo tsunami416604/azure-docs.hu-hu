@@ -2,49 +2,51 @@
 title: "A részletes learning a prediktív karbantartási valós forgatókönyv - Azure |} Microsoft Docs"
 description: "Ismerje meg, hogyan replikáljon az oktatóanyag részletes learning a prediktív karbantartási az Azure Machine Learning munkaterület."
 services: machine-learning
-author: FrancescaLazzeri
-ms.author: Lazzeri
+author: ehrlinger
+ms.author: jehrling
 manager: ireiter
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
-ms.custom: 
+ms.custom: mvc
 ms.devlang: 
 ms.topic: article
 ms.date: 11/22/2017
-ms.openlocfilehash: a55209256c29fa62cc2da72f9653fbc7fc0e7c54
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 7d4fe98b5c45767fb06391218e80789fc0c96a3b
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/14/2018
 ---
-# <a name="deep-learning-for-predictive-maintenance-real-world-scenarios"></a>A részletes learning a prediktív karbantartási valós forgatókönyv
+# <a name="deep-learning-for-predictive-maintenance-real-world-scenario"></a>Learning a prediktív karbantartási valós forgatókönyvvel mély.
 
-A részletes tanulási egyike a legnépszerűbb trendjeinek a gépi tanulás. Részletes tanulási számos mezők és alkalmazások, beleértve a driverless autók, beszéd- és képfájlok felismerés, robotics és pénzügyi használatban van. A részletes tanulási algoritmusok készleteiből állnak, amelyek a agy (biológiai Neurális hálózatokat), és a gépi tanulás alakja van ösztönző. Kognitív kutatók általában tekintse meg a részletes tanulási mint mesterséges Neurális hálózatokat (ANNs).
+A részletes tanulási a gépi tanulási alkalmazásokkal való számos területen, például a legnépszerűbb trendeket egyike:
+- driverless autók és robotics
+- beszéd- és képfájlok felismerés
+- pénzügyi előrejelzés.
 
-A prediktív karbantartási egyben népszerű. A prediktív karbantartás számos különböző módszer úgy tervezték, annak meghatározásához, a készülék állapota, és előre jelezni, amikor karbantartási végre kell hajtani. Néhány gyakori használati módjai prediktív karbantartási a következők: előrejelzés, vizsgálata (probléma alapvető okát), tárhelyhiba-észlelés, hiba besorolásának és ajánlás megoldás vagy karbantartást végeznek műveleteket a meghibásodás után.
+Is ismert, mély Neurális hálózatokat (DNN), ezek a módszerek vannak ösztönző által az egyes idegsejtek csoportjának viselkedését az agy (biológiai Neurális hálózatokat) belül.
 
-A prediktív karbantartási forgatókönyvben adatgyűjtés időszakosan berendezések állapotának figyelése. A cél, hogy keresse meg, amelyek segítségével előre jelezni, és végső soron megelőzheti a hibák mintákat. Használatával [hosszú rövid távú memória (LSTM)](http://colah.github.io/posts/2015-08-Understanding-LSTMs/) hálózatok egy különösen tetszetős prediktív karbantartási módszert tanulási mélyen. LSTM hálózatok megfelelőek, feladatütemezések alapján. Adatsorozat időadatok segítségével vissza nézze meg hosszabb időszakokra, hiba mintázatok észlelését.
+A nem ütemezett berendezések állásidő hatását hátrányos bármely vállalati lehet. Nagyon fontos a mező berendezések futtatja a kihasználtsági és a teljesítmény maximalizálása érdekében, és költséges, nem ütemezett állásidő minimalizálása érdekében hagyja. Korai problémákat azonosítása segíthet korlátozott karbantartási erőforrásokat költséghatékony és minőségének javítása és ellátási lánc folyamatokat. 
 
-Az oktatóanyag azt egy LSTM hálózat az adatkészlet és a következő témakörben ismertetett forgatókönyv építése [prediktív karbantartási](https://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Template-3). A hálózati repülőgép motorok hasznos élettartama előrejelzése használjuk. A sablon előre jelezni, amikor egy repülőgép alrendszeren sikertelen lesz, a jövőben szimulált repülőgép érzékelő értékeket használja. Az előrejelzés használ, karbantartási is előre meg kell terveznie, probléma megelőzése érdekében.
+A prediktív karbantartási (óra) stratégia machine learning módszerek alapján határozza meg a feltétel berendezések megelőző jelleggel karbantartás káros gépek teljesítménye elkerülése érdekében. PM adatok, a gép állapotát, figyelheti folyamatosan gyűjti elemzések mintáról olvashat, amelyek segítségével előre jelezni hibák találhatók. [Hosszú rövid távú memória (LSTM)](http://colah.github.io/posts/2015-08-Understanding-LSTMs/) hálózatok az ezt a beállítást, mert az a célja, hogy megtudjuk az adatok sorozatok vonzó.
 
-Ez az oktatóanyag használja a [Keras](https://keras.io/) mély könyvtárban, és a Microsoft kognitív eszközkészlet [CNTK](https://docs.microsoft.com/cognitive-toolkit/Using-CNTK-with-Keras) háttéradatbázisként.
+## <a name="link-to-the-gallery-github-repository"></a>A gyűjtemény GitHub-tárházban csatolása
 
-A nyilvános GitHub-tárházban, amely rendelkezik a mintákat a jelen oktatóanyag jelenleg [https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance).
+Az alábbiakban látható a hivatkozásra kattintva a nyilvános GitHub-tárházban probléma jelentések és a hozzájárulások: [https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) 
 
 ## <a name="use-case-overview"></a>Használja az eset áttekintése
 
-Ez az oktatóanyag szimulált repülőgép motor Futtatás-hiba esemény szemléltetési a prediktív karbantartási folyamat modellezési bemutatásához. 
+Ez az oktatóanyag szimulált repülőgép motor Futtatás-hiba esemény szemléltetési a prediktív karbantartási folyamat modellezési bemutatásához. A forgatókönyv közzétett [prediktív karbantartás](https://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Template-3)
 
-Az itt leírt modellezési adatok implicit feltételezése a, hogy az eszköz rendelkezik-e a továbblépés teljesítménycsökkenést minta. A minta az eszköz érzékelő mérések is megjelenik. Az eszköz érzékelő értékek időbeli megvizsgálásával a gépi tanulási algoritmus megtudhatja, az érzékelő értékek érzékelő értékek változásait, és a korábbi hibák közötti kapcsolat. Ez a kapcsolat előre jelezni jövőbeli hibák szolgál. 
+Ez a beállítás fő feltételezése a motor fokozatosan csökkentett teljesítményű az élettartama során. A teljesítménycsökkenés motor érzékelő mérések érzékelhető. PM kísérli meg a modell változásait érzékelő értékeiről és a korábbi hibák közötti kapcsolat. A modell is majd előre jelezni, mikor és motor sikertelen lehet a jövőben érzékelő mérések aktuális állapotán alapuló korlátozásához.
 
-Javasoljuk, hogy az adatformátum vizsgálja meg, és végezze el a sablon minden három lépést, a mintaadatok cserélje a saját dátum előtt.
+Ebben a forgatókönyvben egy LSTM hálózatot előre jelezni fennmaradó élettartama (Szabályainak) repülőgép motorok korábbi érzékelő értékek használatával hoz létre. Használatával [Keras](https://keras.io/) rendelkező [Tensorflow](https://www.tensorflow.org/) mély tanulási egy számítási motor keretegyezménynek, a forgatókönyv betanítja a LSTM egy motorok és egy nem látható motor-készletet a hálózati teszteléséhez vannak beállítva.
 
 ## <a name="prerequisites"></a>Előfeltételek
-
 - Egy [Azure-fiók](https://azure.microsoft.com/free/) (az ingyenes próbaverzió érhetők el).
 - Az Azure Machine Learning munkaterület, egy munkaterület létrehozása.
-- A modell operationalization: az Azure Machine Learning Operationalization, egy helyi központi telepítési környezettel, állítsa be, és egy [Azure Machine Learning modell felügyeleti fiók](https://docs.microsoft.com/azure/machine-learning/preview/model-management-overview).
+- A modell operationalization: az Azure Machine Learning Operationalization, egy helyi központi telepítési környezettel, állítsa be, és egy [Azure Machine Learning modell felügyeleti fiók](model-management-overview.md).
 
 ## <a name="create-a-new-workbench-project"></a>Új munkaterület-projekt létrehozása
 
@@ -53,38 +55,53 @@ Hozzon létre egy új projektet ebben a példában egy sablon segítségével:
 1. Nyissa meg a gépi tanulási munkaterületet.
 2. Az a **projektek** lapon jelölje be  **+** , majd válassza ki **új projekt**.
 3. Az a **új projekt létrehozása** ablak, írja be az új projekt adatait.
-4. Az a **keresési Projektsablonjai** keresési mezőbe, írja be **prediktív karbantartási**, majd válassza ki a sablont.
-5. Kattintson a **Létrehozás** gombra.
+4. Az a **keresési Projektsablonjai** keresési mezőbe, írja be a "Prediktív karbantartási", és válassza ki a **mély Learning a prediktív karbantartási forgatókönyvben** sablont.
+5. Kattintson a **létrehozása** gomb
 
 ## <a name="prepare-the-notebook-server-computation-target"></a>Készítse elő a notebook server számítási cél
 
-A helyi számítógépen, a Machine Learning-munkaterület a **fájl** menüben válassza **nyissa meg a parancssort** vagy **nyitott PowerShell**. A parancssori ablakban, a beállítás, az Ön által hajtsa végre a következő parancsokat:
+A helyi gépén, futtatását a AML munkaterület `File` menüben válassza a `Open Command Prompt` vagy `Open PowerShell CLI`. A parancssori felület lehetővé teszi az Azure-szolgáltatások használata a `az` parancsok. Az Azure-fiókjával a parancs első, bejelentkezés:
 
-`az ml experiment prepare --target docker --run-configuration docker`
+```
+az login
+``` 
 
-Javasoljuk, hogy a notebook kiszolgálón futó DS4_V2 szabványos [adatok tudományos virtuális gép (DSVM) Linux (Ubuntu)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu). Miután a DSVM van konfigurálva, a következő parancsokat a Docker képek készítésére való:
+Ez a parancs egy használni kívánt hitelesítési kulcs biztosít a `https:\\aka.ms\devicelogin` URL-CÍMÉT. A parancssori felület megvárja, amíg az eszköz bejelentkezési művelet értéket ad vissza, és bizonyos csatlakozási információkat nyújt. Mellett, ha egy helyi [docker](https://www.docker.com/get-docker) telepíteni, készítse elő a helyi számítási környezetet az alábbi parancsokkal:
 
-`az ml computetarget attach remotedocker --name [connection_name] --address [VM_IP_address] --username [VM_username] --password [VM_password]`
+```
+az ml experiment prepare --target docker --run-configuration docker
+```
 
-`az ml experiment prepare --target [connection_name] --run-configuration [connection_name]`
+Érdemes futtatni egy [adatok tudományos virtuális gép Linux (Ubuntu)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) memóriát és lemezterületet követelményeket. Miután beállította a DSVM, készítse elő a távoli docker környezet az alábbi két parancsot:
 
-Az előkészített Docker-lemezképekkel nyissa meg a Jupyter notebook kiszolgáló. Nyissa meg a Jupyter notebook kiszolgáló, vagy keresse fel a Machine Learning-munkaterület **notebookok** lapon, vagy egy webböngésző-alapú kiszolgáló indítása:`az ml notebook start`
+```
+az ml computetarget attach remotedocker --name [Connection_Name] --address [VM_IP_Address] --username [VM_Username] --password [VM_UserPassword]
+```
 
-Notebookok a Jupyter környezetben a kódjának könyvtárában tárolódnak. Futtassa ezen notebookok egymás után, számozott, Code\1_data_ingestion_and_preparation.ipynb kezdve.
+Miután csatlakozott a távoli docker-tároló, készítse elő a DSVM docker számítási környezet használatával: 
 
-Válassza ki a [projektnév] _Template [connection_name] értéket, majd válassza ki a rendszermag **beállítása Kernel**.
+```
+az ml experiment prepare --target [Connection_Name] --run-configuration [Connection_Name]
+```
+
+A docker számítási környezet készített, nyissa meg a Jupyter notebook kiszolgáló, vagy a AML munkaterület notebookok lapon belül, vagy a webböngésző-alapú kiszolgáló indítása: 
+```
+az ml notebook start
+```
+
+A példa notebookok tárolódnak a `Code` könyvtár. A notebookok be vannak állítva futtatásához egymás után, az első indítása (`Code\1_data_ingestion.ipynb`) notebookot. Minden notebook megnyitásakor, jelölje be a számítási kernel kéri. Válassza ki a `[Project_Name]_Template [Connection_Name]` kernel a korábban konfigurált DSVM végrehajtásához.
 
 ## <a name="data-description"></a>Adatok leírása
 
-A sablon három adatkészletek, fájljaiban PM_train.txt, PM_test.txt és PM_truth.txt bemeneteként használja.
+A sablon által három adatkészletek bemeneteként, fájljaiban **PM_train.txt**, **PM_test.txt**, és **PM_truth.txt**. 
 
 -  **Adatok**: A repülőgép motor Futtatás-hiba adatait. A tanítási adatokat (PM_train.txt) áll több, multivariate idősorozatban, rendelkező *ciklus* , időegységét. Minden egyes 21 érzékelő értékeket tartalmazza. 
 
-    Feltételezhető, hogy minden a time series ugyanolyan típusú másik motor hozható létre. Minden egyes motor feltételezett, hogy különböző mértékben kezdeti elhasználódását és a gyártási variation elindításához. Ez az információ nem ismeri fel a felhasználót. 
+    - Minden egyes adatsorok ugyanolyan típusú másik motort jönnek létre. Minden egyes motor kezdeti elhasználódását és néhány egyedi gyártási variation különböző fokú kezdődik. Ez az információ nem ismeri fel a felhasználót. 
 
-    A szimulált ezeket az adatokat a motor feltételezett, hogy minden a time series elején megfelelően működik. Az adatsorozat működési ciklusok során egy bizonyos ponton kezd kezdődik. A teljesítménycsökkenés megfelelően, és a nagyságrendet növekszik. 
+    - A szimulált ezeket az adatokat a motor feltételezett, hogy minden a time series elején megfelelően működik. Az adatsorozat működési ciklusok során egy bizonyos ponton kezd kezdődik. A teljesítménycsökkenés megfelelően, és a nagyságrendet növekszik. 
 
-    Egy előre meghatározott küszöbérték elérése után a motor nem biztonságos további művelet tekinthető. Az utolsó ciklus az egyes adatsorok a hiba pont a megfelelő motor tekinthető meg.
+    - Egy előre meghatározott küszöbérték elérése után a motor nem biztonságos további művelet tekinthető. Az utolsó ciklus minden idősorozat motor hiba pont.
 
 -   **Adatok tesztelésére**: a motor működési adatokat, a repülőgép rögzített hibaesemények nélkül. A Tesztadatok (PM_test.txt) rendelkezik a betanítási adatok, ugyanazon adatok séma. Az egyetlen különbség az, hogy az adatok nem jelzi a hiba esetén (a legutóbbi időszakban does *nem* határoz meg a hiba pont). Nem ismert hány további ciklusok Ez a motor tarthat, mielőtt sikertelen.
 
@@ -92,44 +109,49 @@ A sablon három adatkészletek, fájljaiban PM_train.txt, PM_test.txt és PM_tru
 
 ## <a name="scenario-structure"></a>A forgatókönyv struktúra
 
-A forgatókönyv esetében a tartalom érhető el a [GitHub-tárházban] (https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance). 
-
-A tárházban található [fontos] (https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance/blob/master/README.md) fájlt a folyamatok, az adatokat, létrehozása és a modell végrehajtott előkészítésétől ismerteti. A három Jupyter notebookok a tárházban található [kódot] (https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance/tree/master/Code) mappában érhetők el. 
-
-A következő azt írják le a részletes forgatókönyv munkafolyamat.
+A forgatókönyv munkafolyamat meg van osztva a három lépést, a Jupyter notebookok egyes végre. Minden notebook hoz létre a következő jegyzetfüzetekben használatra helyileg megőrzött adatösszetevők: 
 
 ### <a name="task-1-data-ingestion-and-preparation"></a>1. feladat: Adatfeldolgozást és előkészítése
 
-Az adatok adatfeldolgozást Jupyter Notebook Code/1_data_ingestion_and_preparation.ipnyb a három bemeneti adatkészletek Pandas dataframe formátumra tölti be. Ezután előkészíti az adatokat a modellezési, és néhány előzetes adatábrázolási does. Majd PySpark formátumra alakítja át és a következő modellezési feladata használható az Azure-előfizetéshez az Azure Blob storage tárolók tárolja az adatokat.
+Az adatok adatfeldolgozást Jupyter Notebook `Code/1_data_ingestion_and_preparation.ipnyb` három bemeneti adatkészletek betölti a Pandas adatok keretformátum. Ezután előkészíti az adatokat a modellezési, és amelyen néhány előzetes adatábrázolási. Az adatkészletek tárolása helyi a compute környezethez a modell épület notebook használható.
 
 ### <a name="task-2-model-building-and-evaluation"></a>2. feladat: Modell létrehozásának és kiértékelése
 
-A modell épület Jupyter Notebook Code/2_model_building_and_evaluation.ipnyb olvasások a PySpark a vonat, és tesztelje a blobtárolóból adatkészletek. Ezt követően egy LSTM hálózati képzési adatkészletek épül. A TesztKészlet a modell teljesítményének mérése történik. Az eredményül kapott modell szerializált és használja a operationalization feladat a helyi számítási környezetben tárolja.
+A modell épület Jupyter Notebook `Code/2_model_building_and_evaluation.ipnyb` tanítási és tesztelési adatkészletek beolvasása a lemezről, és összeállít egy LSTM hálózati a tanítási adathalmazt. A TesztKészlet a modell teljesítményének mérése történik. Az eredményül kapott modell szerializált és használja a operationalization feladat a helyi számítási környezetben tárolja.
 
 ### <a name="task-3-operationalization"></a>3. feladat: Operationalization
 
-A Jupyter Notebook a Code/3_operationalization.ipnyb operationalization hozhat létre funkciók és sémában, amely szükséges a modell egy Azure-kiszolgálón futó webes szolgáltatás hívása a tárolt modellt használ. A notebook teszteli a Funkciók, és ezután üzenet pillanatok alatt (tömöríti) a operationalization eszközök azokat egy .zip fájl.
+A Jupyter Notebook operationalization a `Code/3_operationalization.ipnyb` hozhat létre funkciók és egy Azure-kiszolgálón futó webes szolgáltatás hívása a modell sémája a tárolt modellt használ. A notebook teszteli a Funkciók, és majd tömöríti az eszközök a `LSTM_o16n.zip` fájlt, amely be van töltve, a központi telepítés az Azure storage tárolója.
 
-A zip-fájl tartalmazza ezeket a fájlokat:
+A `LSTM_o16n.zip` telepítési fájl a következő összetevőket tartalmazza:
 
-- **modellstm.JSON**: A definíciós fájl központi telepítéshez. 
-- **lstmscore.PY**: A **init()** és **run()** függvények, amelyek az Azure web service igényel.
-- **lstm.Model**: A modell definition könyvtár.
+- `webservices_conda.yaml` határozza meg a központi telepítés célja a LSTM modell futtatásához szükséges python-csomagokat.  
+- `service_schema.json` Meghatározza a LSTM modell által várt Adatséma.     
+- `lstmscore.py` a funkciók pontszám új adatok futtatja a központi telepítés célja határozza meg.    
+- `modellstm.json` Meghatározza a LSTM architektúra. A lstmscore.py funkciók olvassa el a architektúra súlyúakét pedig a modell inicializálni.
+- `modellstm.h5` Meghatározza a modell súlyt.
+- `test_service.py` Egy teszt parancsfájlt, amely a központi telepítés végpont meghívja a teszt rekordok. 
+- `PM_test_files.pkl` A `test_service.py` származó adatok korábbi motor beolvassa a `PM_test_files.pkl` fájlt, és a webservice küld vissza a motor hiba valószínűség LSTM elég ciklusainak.
 
-A notebook teszteli a Funkciók, a model definition használatával, mielőtt azt a operationalization eszközök központi telepítési csomagok. A telepítési utasításokat a notebook végén érhetők el.
-
+A notebook teszteli a Funkciók, a model definition használata előtt a operationalization eszközök központi telepítési csomagok azt. És teszteléséhez a webservice vonatkozó utasítások megtalálhatók végén a `Code/3_operationalization.ipnyb` notebookot.
 
 ## <a name="conclusion"></a>Összegzés
 
-Ez az oktatóanyag, amely csak egy adatforrás (érzékelő értékek) használatával előrejelzéseket készítsen egy egyszerű forgatókönyv használja. A speciális prediktív karbantartási forgatókönyvben például a [prediktív karbantartási modellezési R kalauz](https://gallery.cortanaintelligence.com/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1), sok adatforrást szüksége lehet. Más adatforrások korábbi karbantartási rekordokat, a hibanaplókat és a gép és az operátorral szolgáltatások közé tartozik. További adatforrások szükség lehet a kezelés, mély tanulási hálózatok használt különböző típusú. Fontos továbbá a modelleket a megfelelő paramétereket a finomhangolásához például a az ablak. 
-
-Ebben a forgatókönyvben vonatkozó részeinek szerkesztheti, és próbálja meg különböző probléma forgatókönyvek, például a leírt a [prediktív karbantartási modellezési útmutató](https://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Modelling-Guide-1), amely magában foglalja a több más adatforrásokhoz.
+Ez az oktatóanyag egy egyszerű forgatókönyv előrejelzéseket készítsen a érzékelő értékekkel használja. Speciális forgatókönyveit Prediktív karbantartási, például a [prediktív karbantartási modellezési R kalauz](https://gallery.cortanaintelligence.com/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1), használhatja a sok adatforrások, például a korábbi karbantartási rekordokat, a hibanaplókat, és számítógép-szolgáltatásokat. További adatforrások mély tanulási használható különböző kezelést igényelhet.
 
 
 ## <a name="references"></a>Referencia
 
-- [A prediktív karbantartási megoldás sablon](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-analytics-playbook-predictive-maintenance)
-- [A prediktív karbantartási Fenyegetésmodellezési útmutatója](https://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Modelling-Guide-1)
-- [Python kalauz modellezési prediktív karbantartás](https://gallery.cortanaintelligence.com/Notebook/Predictive-Maintenance-Modelling-Guide-Python-Notebook-1)
-- [A prediktív karbantartási PySpark használatával](https://gallery.cortanaintelligence.com/Tutorial/Predictive-Maintenance-using-PySpark)
+Nincsenek a különböző platformokon elérhető egyéb prediktív karbantartási eset példák:
 
+* [A prediktív karbantartási megoldás sablon](https://docs.microsoft.com/azure/machine-learning/cortana-analytics-playbook-predictive-maintenance)
+* [A prediktív karbantartási Fenyegetésmodellezési útmutatója](https://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Modelling-Guide-1)
+* [A prediktív karbantartási modellezési útmutató SQL R Services segítségével](https://gallery.cortanaintelligence.com/Tutorial/Predictive-Maintenance-Modeling-Guide-using-SQL-R-Services-1)
+* [Python kalauz modellezési prediktív karbantartás](https://gallery.cortanaintelligence.com/Notebook/Predictive-Maintenance-Modelling-Guide-Python-Notebook-1)
+* [A prediktív karbantartási PySpark használatával](https://gallery.cortanaintelligence.com/Tutorial/Predictive-Maintenance-using-PySpark)
+
+* [A prediktív karbantartási valós forgatókönyvvel](https://docs.microsoft.com/en-us/azure/machine-learning/preview/scenario-predictive-maintenance)
+
+## <a name="next-steps"></a>További lépések
+
+Nincsenek elérhető az Azure Machine Learning-munkaterületen, a termék további funkciókat fogunk bemutatni, sok más példaforgatókönyvek. 

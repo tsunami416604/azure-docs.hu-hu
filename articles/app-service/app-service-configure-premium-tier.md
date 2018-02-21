@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: cephalin
-ms.openlocfilehash: 92cc8d8b0f67dde95ea2e3fc2f0f083bd8ac8aab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 76897173d9fdfffe7139e7c5648ad0efb1c05b97
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>Az Azure App Service-PremiumV2 szint konfigurálása
 
-Az új **PremiumV2** biztosít IP-címek [Dv2 sorozatú virtuális gépek](../virtual-machines/windows/sizes-general.md#dv2-series) gyorsabb processzorok, a SSD-re és a dupla memória-core arány képest **szabványos** réteg. Ebből a cikkből megismerheti, hogyan hozzon létre egy alkalmazást a **PremiumV2** szintjüket, vagy egy alkalmazás növelheti **PremiumV2** réteg.
+Az új **PremiumV2** IP-címek lehetővé teszi az gyorsabb processzorok, SSD-re és a meglévő tarifacsomagok megduplázódik memória-core aránya. A teljesítmény előnyösebb kevesebb példányt az alkalmazások futtatásával lehetett költségtakarékosabb munkavégzésben. Ebből a cikkből megismerheti, hogyan hozzon létre egy alkalmazást a **PremiumV2** szintjüket, vagy egy alkalmazás növelheti **PremiumV2** réteg.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -33,7 +33,7 @@ Webes alkalmazás növelni készül **PremiumV2**, telepíteni kell egy webalkal
 
 ## <a name="premiumv2-availability"></a>PremiumV2 rendelkezésre állása
 
-A PremiumV2 réteg érhető el jelenleg az App Service _Windows_ csak. Linux-tárolók még nem támogatott.
+A PremiumV2 réteg érhető el jelenleg az App Service _Windows_ csak. Linux-tárolók még nem támogatottak.
 
 PremiumV2 már elérhető az Azure-régiók és az egyre növekvő. Ha az elérhető az adott régióban, a következő parancsot az Azure parancssori felület a [Azure Cloud rendszerhéj](../cloud-shell/overview.md):
 
@@ -56,7 +56,7 @@ Válasszon egyet a a **PremiumV2** , és kattintson **válasszon**.
 ![](media/app-service-configure-premium-tier/pick-premium-tier.png)
 
 > [!IMPORTANT] 
-> Ha nem látja **P1V2**, **P2V2**, és **P3V2** regisztrációja, mivel a beállításokat, vagy **PremiumV2** nem áll rendelkezésre a választott régió vagy áll a Linux App Service-csomag, amely nem támogatja a konfigurálása **PremiumV2**.
+> Ha nem lát **P1V2**, **P2V2**, és **P3V2** regisztrációja, mivel a beállításokat, vagy **PremiumV2** nem érhető el az adott régióban választott, vagy Ön a Linux App Service-csomag, amely nem támogatja a konfigurálása **PremiumV2**.
 
 ## <a name="scale-up-an-existing-app-to-premiumv2-tier"></a>Vertikális felskálázás PremiumV2 réteghez egy meglévő alkalmazáshoz
 
@@ -74,7 +74,7 @@ Válasszon egyet a a **PremiumV2** méretét, majd kattintson a **válasszon**.
 
 ![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
-Ha a művelet sikeresen befejeződött, az alkalmazásban – áttekintés oldalra jeleníti meg, hogy mostantól az egy **PremiumV2** réteg.
+Ha a művelet sikeresen befejeződött, az alkalmazásban – áttekintés oldalra jeleníti meg, hogy mostantól egy **PremiumV2** réteg.
 
 ![](media/app-service-configure-premium-tier/finished.png)
 
@@ -82,13 +82,13 @@ Ha a művelet sikeresen befejeződött, az alkalmazásban – áttekintés oldal
 
 Egy App Service-csomagok nem vertikális felskálázás PremiumV2 csomagra. A méretezett művelet olyan hibaüzenetet ad, ha az alkalmazás egy új App Service-csomag szükséges.
 
-Hozzon létre egy _Windows_ azonos régióban és erőforrás tartozik, mint a meglévő App Service-alkalmazás az App Service-csomag. Kövesse a [hozzon létre egy alkalmazást PremiumV2 réteg](#create) állítsa be **PremiumV2** réteg. Szükség esetén ugyanazt a kibővített konfigurációt használja, a meglévő App Service-csomag (száma példányok, automatikus skálázás és így tovább).
+Hozzon létre egy _Windows_ azonos régióban és erőforrás tartozik, mint a meglévő App Service-alkalmazás az App Service-csomag. Kövesse a [hozzon létre egy alkalmazást PremiumV2 réteg](#create) állítsa be **PremiumV2** réteg. Ha azt szeretné, ugyanazt a kibővített konfigurációt használja, a meglévő App Service-csomag (száma példányok, automatikus skálázás és így tovább).
 
 Nyissa meg újra az App Service alkalmazás oldalát. Válassza ki az App Service bal oldali navigációs sáv **módosítás App Service-csomag**.
 
 ![](media/app-service-configure-premium-tier/change-plan.png)
 
-Válassza ki az imént létrehozott App Service-csomag.
+Válassza ki a létrehozott App Service-csomag.
 
 ![](media/app-service-configure-premium-tier/select-plan.png)
 
@@ -98,16 +98,16 @@ Miután befejeződött a műveletet, az alkalmazás fut-e **PremiumV2** réteg.
 
 ## <a name="scale-up-from-an-unsupported-region"></a>Egy nem támogatott régióban méretezése
 
-Ha az alkalmazás fut egy régióban ahol **PremiumV2** van még nem érhető el, áthelyezheti az alkalmazás egy másik régióban előnyeit **PremiumV2**. Erre két lehetősége van:
+Ha az alkalmazás fut egy régióban ahol **PremiumV2** nem érhető el, még az alkalmazás áthelyezheti egy másik régióban előnyeit **PremiumV2**. Erre két lehetősége van:
 
 - Új alkalmazás létrehozása **PremiumV2** tervezze meg, majd telepítse újra az alkalmazás kódjában. Kövesse a [hozzon létre egy alkalmazást PremiumV2 réteg](#create) állítsa be **PremiumV2** réteg. Szükség esetén ugyanazt a kibővített konfigurációt használja, a meglévő App Service-csomag (száma példányok, automatikus skálázás és így tovább).
 - Ha az alkalmazás már fut egy meglévő **prémium** réteg, akkor átmásolhatja az alkalmazás az összes alkalmazás beállításait, a kapcsolati karakterláncok és a központi telepítés konfigurálása.
 
     ![](media/app-service-configure-premium-tier/clone-app.png)
 
-    Az a **Klónozott alkalmazás** lapon létrehozhat egy új App Service-csomagot, és adja meg a beállításokat, amelyet szeretne klónozza a régióban.
+    Az a **Klónozott alkalmazás** lapon is létrehozhat az App Service-csomag a régióban, és adja meg a beállításokat, klónozni szeretne.
 
-## <a name="automate-with-scripts"></a>Parancsfájlok automatizálásához
+## <a name="automate-with-scripts"></a>Automatizálás szkriptekkel
 
 Automatizálható az alkalmazás létrehozása a **PremiumV2** réteg parancsfájlok használata a [Azure CLI](/cli/azure/install-azure-cli) vagy [Azure PowerShell](/powershell/azure/overview).
 

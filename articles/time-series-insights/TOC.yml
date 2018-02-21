@@ -16,6 +16,8 @@
       href: time-series-insights-explorer.md
     - name: A szabályozás csökkentése
       href: time-series-insights-environment-mitigate-latency.md
+    - name: Az adatmegőrzés ismertetése
+      href: time-series-insights-concepts-retention.md
     - name: Diagnosztika és hibaelhárítás
       href: time-series-insights-diagnose-and-solve-problems.md
     - name: Fejlesztés
@@ -38,6 +40,8 @@
       href: time-series-insights-how-to-add-an-event-source-eventhub.md
     - name: Csatlakozás az IoT Hubhoz
       href: time-series-insights-how-to-add-an-event-source-iothub.md
+    - name: Az adatmegőrzés konfigurálása
+      href: time-series-insights-how-to-configure-retention.md
     - name: Referencia-adatkészlet létrehozása
       href: time-series-insights-add-reference-data-set.md
     - name: Események küldése

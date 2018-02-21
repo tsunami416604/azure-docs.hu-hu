@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: ed06b869f1c8fb98d8b70693723b1a0fee3605fc
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
-ms.translationtype: MT
+ms.openlocfilehash: 5dd762cffbca909c5f682a16c86ef5a86f4860de
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="api-management-access-restriction-policies"></a>Az API Management hozzáférés szoftverkorlátozó házirendek
 Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [házirendek az API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
   
-##  <a name="AccessRestrictionPolicies"></a>Hozzáférés a szoftverkorlátozó házirendek  
+##  <a name="AccessRestrictionPolicies"></a> Hozzáférés a szoftverkorlátozó házirendek  
   
 -   [Ellenőrizze a HTTP-fejléc](api-management-access-restriction-policies.md#CheckHTTPHeader) -érvénybe lépteti a létezését és/vagy a HTTP-fejléc értékét.  
 -   [Előfizetési határértéket hívás arányt a](api-management-access-restriction-policies.md#LimitCallRate) -megakadályozza, hogy API-használati napra hívás arány / előfizetés alapon korlátozásával.  
@@ -33,7 +33,7 @@ Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozz
 -   [Set memóriahasználati kvóta kulcs által](#SetUsageQuotaByKey) -lehetővé teszi egy megújítható vagy élettartama hívás mennyiségi és/vagy a sávszélesség kvótát, egy kulcs alapon érvényesítését.  
 -   [Ellenőrizze a JWT](api-management-access-restriction-policies.md#ValidateJWT) -érvénybe lépteti a létezését és a jwt-t vagy a megadott HTTP-fejléc, vagy a megadott lekérdezési paraméter kinyert érvényességét.  
   
-##  <a name="CheckHTTPHeader"></a>Ellenőrizze a HTTP-fejléc  
+##  <a name="CheckHTTPHeader"></a> Ellenőrizze a HTTP-fejléc  
  Használja a `check-header` házirend kényszerítéséhez, hogy egy kérelem rendelkezik-e a megadott HTTP-fejléc. Meg nem kötelezően ellenőrizze, hogy a fejléc vannak-e egy adott érték vagy az engedélyezett értéktartományon tartomány ellenőrzése. Ha az ellenőrzés sikertelen, a HTTP kód és a hiba állapotüzenetet a szabályzat által megadott értéket, és a házirend kérelem feldolgozása leáll.  
   
 ### <a name="policy-statement"></a>Házirendutasítás  
@@ -76,7 +76,7 @@ Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozz
   
 -   **Házirend hatókörök:** globális, termék, API-művelet  
   
-##  <a name="LimitCallRate"></a>Előfizetés hívás arányt a korlát  
+##  <a name="LimitCallRate"></a> Előfizetés hívás arányt a korlát  
  A `rate-limit` házirend megakadályozza, hogy egy előfizetés alapon API használati igényeiben jelentkező, ha egy megadott számára egy megadott időszak hívás sebessége korlátozza. Ez a házirend kiváltásakor a hívó kap egy `429 Too Many Requests` válasz állapotkódja.  
   
 > [!IMPORTANT]
@@ -131,7 +131,7 @@ Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozz
   
 -   **Házirend hatókörök:** termék  
   
-##  <a name="LimitCallRateByKey"></a>Korlát hívás arányt a kulcs  
+##  <a name="LimitCallRateByKey"></a> Korlát hívás arányt a kulcs  
  A `rate-limit-by-key` házirend miatt egy kulcs alapon API használati igényeiben jelentkező, ha egy megadott számára egy megadott időszak hívás sebessége korlátozza. A kulcs egy tetszőleges karakterlánc értéke lehet, és általában valósul meg a házirend-kifejezés használatával. Választható növekmény feltétel adhatók meg, hogy mely kérelmek kell számolni, a határérték felé számolnak. Ez a házirend kiváltásakor a hívó kap egy `429 Too Many Requests` válasz állapotkódja.  
   
  További tudnivalók és példák ezt a házirendet, lásd: [speciális kérelmet az Azure API Management-szabályozás](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/).  
@@ -189,7 +189,7 @@ Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozz
   
 -   **Házirend hatókörök:** globális, termék, API-művelet  
   
-##  <a name="RestrictCallerIPs"></a>A hívó IP-címek korlátozása  
+##  <a name="RestrictCallerIPs"></a> A hívó IP-címek korlátozása  
  A `ip-filter` házirend szűrők (engedélyezi vagy megtagadja) hívásait bizonyos IP-címeket és/vagy címtartományokat.  
   
 ### <a name="policy-statement"></a>Házirendutasítás  
@@ -231,7 +231,7 @@ Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozz
 -   **Házirend szakaszok:** bejövő  
 -   **Házirend hatókörök:** globális, termék, API-művelet  
   
-##  <a name="SetUsageQuota"></a>Set memóriahasználati kvóta-előfizetéssel  
+##  <a name="SetUsageQuota"></a> Set memóriahasználati kvóta-előfizetéssel  
  A `quota` házirend érvénybe lépteti a megújítható vagy élettartama hívás mennyiségi és/vagy a sávszélesség kvóta, egy előfizetés alapon.  
   
 > [!IMPORTANT]
@@ -286,7 +286,7 @@ Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozz
 -   **Házirend szakaszok:** bejövő  
 -   **Házirend hatókörök:** termék  
   
-##  <a name="SetUsageQuotaByKey"></a>Set memóriahasználati kvóta gombot  
+##  <a name="SetUsageQuotaByKey"></a> Set memóriahasználati kvóta gombot  
  A `quota-by-key` házirend érvénybe lépteti a megújítható vagy élettartama hívás mennyiségi és/vagy a sávszélesség kvóta, egy kulcs alapon. A kulcs egy tetszőleges karakterlánc értéke lehet, és általában valósul meg a házirend-kifejezés használatával. Választható növekmény feltétel adhatók meg, hogy mely kérelmek kell számolni, a kvóta felé.  
   
  További tudnivalók és példák ezt a házirendet, lásd: [speciális kérelmet az Azure API Management-szabályozás](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/).  
@@ -346,11 +346,11 @@ Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozz
 -   **Házirend szakaszok:** bejövő  
 -   **Házirend hatókörök:** globális, termék, API-művelet  
   
-##  <a name="ValidateJWT"></a>JWT ellenőrzése  
+##  <a name="ValidateJWT"></a> JWT ellenőrzése  
  A `validate-jwt` házirend érvénybe lépteti a meglétét, és a jwt-t érvényességét kinyert vagy egy meghatározott HTTP-fejléc vagy a megadott lekérdezési paraméter.  
   
 > [!IMPORTANT]
->  A `validate-jwt` házirend megköveteli, hogy a `exp` regisztrált nincs inlcuded a JWT jogkivonat, kivéve, ha `require-expiration-time` attribútum van megadva, és beállítása `false`.  
+>  A `validate-jwt` házirend megköveteli, hogy a `exp` regisztrált jogcím megtalálható a JWT jogkivonat, kivéve, ha `require-expiration-time` attribútum van megadva, és beállítása `false`.  
 > A `validate-jwt` házirend HS256 és RS256 aláírási algoritmust támogat. HS256 a kulcsot meg kell adni a base64-kódolású képernyőn a szabályzaton belüli beágyazott. A kulcs RS256 keresztül nyitott azonosító konfigurációs végpontok biztosításához rendelkezik.  
   
 ### <a name="policy-statement"></a>Házirendutasítás  
@@ -502,7 +502,7 @@ Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozz
 |failed-validation-httpcode|HTTP-állapotkód vissza, ha a jwt-t nem teljesíti az ellenőrző.|Nem|401|  
 |fejléc-neve|A HTTP-fejlécnek a tokent tároló neve.|Vagy `header-name` vagy `query-paremeter-name` megadott; de nem mindkettőn keresztül kell lennie.|–|  
 |id|A `id` attribútuma a `key` elem lehetővé teszi a karakterláncot, amely elleni megfeleltetésének `kid` tudja meg a megfelelő kulcsot az aláírás-ellenőrzés használata (ha van ilyen) a jogkivonat jogcímek.|Nem|–|  
-|Egyezés|A `match` attribútuma a `claim` elem meghatározza, hogy a házirend minden jogcím értékét kell a jogkivonat az érvényesítés sikeres szerepel. Lehetséges értékek:<br /><br /> -                          `all`– a szabályzat minden jogcím értékét a jogkivonat az érvényesítés sikeres jelen kell lennie.<br /><br /> -                          `any`-legalább egy jogcím értékét a jogkivonat az érvényesítés sikeres jelen kell lennie.|Nem|összes|  
+|Egyezés|A `match` attribútuma a `claim` elem meghatározza, hogy a házirend minden jogcím értékét kell a jogkivonat az érvényesítés sikeres szerepel. Lehetséges értékek:<br /><br /> -                          `all` – a szabályzat minden jogcím értékét a jogkivonat az érvényesítés sikeres jelen kell lennie.<br /><br /> -                          `any` -legalább egy jogcím értékét a jogkivonat az érvényesítés sikeres jelen kell lennie.|Nem|összes|  
 |lekérdezés-paremeter-neve|Neve az a következő lekérdezésparaméter a tokent tároló.|Vagy `header-name` vagy `query-paremeter-name` megadott; de nem mindkettőn keresztül kell lennie.|–|  
 |igényelnek-lejárati-idő|Logikai érték. Meghatározza, hogy szükséges-e egy lejárati jogcímet a tokenben.|Nem|igaz|
 |szükséges rendszer|A token neve sémáját, pl. "Tulajdonos". Az attribútum van beállítva, ha a házirend biztosítja, hogy a megadott séma szerepel az engedélyezési fejléc értéke.|Nem|–|

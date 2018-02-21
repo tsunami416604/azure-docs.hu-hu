@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 01/08/2018
+ms.date: 02/10/2018
 ms.author: owend
-ms.openlocfilehash: 9b81e011d3e1ed23465bbd554a0c7376b432b585
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: ecc95181f61f556b18fa820617ea5ad0636c7a4b
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="azure-analysis-services---adventure-works-tutorial"></a>Azure Analysis Services – Adventure Works-oktatóanyag
 
@@ -50,7 +50,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
   
 -   Egy Azure Analysis Services-kiszolgáló. Regisztráljon az [Azure Analysis Services ingyenes próbaverziójára](https://azure.microsoft.com/services/analysis-services/), és [hozzon létre egy kiszolgálót](../analysis-services-create-server.md). 
 
--   Egy [Azure SQL Data Warehouse](../../sql-data-warehouse/create-data-warehouse-portal.md) adattárház, amely rendelkezik az **AdventureWorksDW mintaadatbázissal** vagy egy SQL Server Data Warehouse, [Adventure Works mintaadatbázissal](http://go.microsoft.com/fwlink/?LinkID=335807).
+-   Egy [Azure SQL Data Warehouse](../../sql-data-warehouse/create-data-warehouse-portal.md) adattárház, amely rendelkezik az **AdventureWorksDW mintaadatbázissal** vagy egy SQL Server Data Warehouse, [Adventure Works mintaadatbázissal](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks).
 
     **Fontos:** Ha egy helyszíni SQL Server Data Warehouse adattárházba telepíti a mintaadatbázist, és egy Azure Analysis Services-kiszolgálón helyezi üzembe a modellt, akkor szükség van egy [helyszíni adatátjáróra](../analysis-services-gateway.md).
 

@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 09/19/2017
 ms.author: kumud
 ms.custom: 
-ms.openlocfilehash: 7f4088cf4470b1f9fa22c4ec83a9f92657032734
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: c8b345cd973b8cd939ad111132f1afdadae9f2b7
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>Valós felhasználói mérések küldése az Azure Traffic Manager weblapjainak használata
 
@@ -65,7 +65,7 @@ Ha beszerezte a RUM kulcsot, a következő lépéssel hoz a másolt JavaScript b
 
     **3. ábra: A beágyazott valós felhasználói mérések JavaScript egyszerű HTML**
 
-3.  A HTML-fájl mentése
+3.  Mentse a HTML-fájlba, valamint a gazdagép egy webkiszolgálót a csatlakoztatva az internethez. 
 4. Ez a lap megjelenítése egy webböngészőben, amikor legközelebb letölti a hivatkozott JavaScript, és a parancsfájl hajtja végre a mérési és jelentéskészítési műveletek.
 
 

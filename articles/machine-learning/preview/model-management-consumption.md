@@ -10,16 +10,16 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
-ms.openlocfilehash: 64141afe421ace44fe71c04f8a2fba48144633c9
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 120611f98c97fa4c5bfa2a44aece47f246d9ec57
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="consuming-web-services"></a>Webszolgáltatások felhasználása
-Miután telepít egy modell valós idejű webszolgáltatásként, elküldi a adatok, és előrejelzéseket beolvasása számos különböző rendszerek és alkalmazások. A valós idejű webszolgáltatás közzétesz egy REST API előrejelzéseket kapcsolódnak. A webszolgáltatás lekérni egy vagy több előrejelzéseket, jelenleg egy vagy több sor formátumban adatokat küldhet.
+Miután telepít egy modell valós idejű webszolgáltatásként, elküldi a adatok, és előrejelzéseket beolvasása számos különböző rendszerek és alkalmazások. A valós idejű webszolgáltatás közzétesz egy REST API előrejelzéseket kapcsolódnak. A webszolgáltatás egy vagy több előrejelzéseket egyszerre beolvasandó egyetlen vagy több sor formátumú adatokat küldhet.
 
-Az a [Azure Machine Learning webszolgáltatás](https://docs.microsoft.com/azure/machine-learning/preview/model-management-service-deploy), külső alkalmazás szinkron módon kommunikál a prediktív modell azáltal, hogy a HTTP POST híváson a szolgáltatás URL-CÍMÉT. Ahhoz, hogy egy webes szolgáltatás hívása, az ügyfélalkalmazás kell meghatároznia az API-kulcsot, amely jön létre, amikor előrejelzéshez telepíti, és a kérelem adatai üzembe a POST kérés törzsében.
+Az a [Azure Machine Learning webszolgáltatás](model-management-service-deploy.md), külső alkalmazás szinkron módon kommunikál a prediktív modell azáltal, hogy a HTTP POST híváson a szolgáltatás URL-CÍMÉT. Ahhoz, hogy egy webes szolgáltatás hívása, az ügyfélalkalmazás kell meghatároznia az API-kulcsot, amely jön létre, amikor előrejelzéshez telepíti, és a kérelem adatai üzembe a POST kérés törzsében.
 
 Ne feledje, hogy API-kulcsokat csak a fürt telepítési módban érhető el. Helyi webszolgáltatások nincs kulcsok.
 
@@ -29,7 +29,7 @@ Az Azure Machine Learning webszolgáltatások is telepíthető, a felhő alapú 
 Az Azure Machine Learning CLI és API biztosítja a létrehozására és kezelésére kényelmes parancsok számítási környezeteket szolgáltatás üzembe helyezése a ```az ml env``` lehetőséget. 
 
 ## <a name="list-deployed-services-and-images"></a>Lista telepített szolgáltatások és a képeket
-A jelenleg telepített szolgáltatások és a Docker képek CLI paranccsal listázhatja ```az ml service list realtime -o table```. Vegye figyelembe, hogy ez a parancs mindig működik az aktuális számítási környezet környezetében, és nem mutat, amely a telepített szolgáltatások értéke nem lehet az aktuális környezetben. Környezet használatának beállításához ```az ml env set```. 
+A jelenleg telepített szolgáltatások és a Docker képek CLI paranccsal listázhatja ```az ml service list realtime -o table```. Vegye figyelembe, hogy ez a parancs mindig működik az aktuális számítási környezet környezetében. Azt nem mutat, amely a telepített szolgáltatások értéke nem lehet az aktuális környezetben. Környezet használatának beállításához ```az ml env set```. 
 
 ## <a name="get-service-information"></a>Szolgáltatás adatai beolvasása
 A webszolgáltatás sikeres telepítése után a következő paranccsal beolvasni a szolgáltatás URL-CÍMÉT és egyéb adatait a szolgáltatás-végpont meghívása. 
@@ -38,9 +38,9 @@ A webszolgáltatás sikeres telepítése után a következő paranccsal beolvasn
 az ml service usage realtime -i <service name>
 ```
 
-Ez a parancs nyomtat a szolgáltatás URL-címe, szükséges kérelemfejléc, swagger URL-cím és a szolgáltatás hívása, ha a szolgáltatás API-séma a központi telepítéskor kapott a mintaadatok ki.
+Ez a parancs megjeleníti a szolgáltatás URL-címe, szükséges kérelemfejléc, swagger URL-cím és a szolgáltatás hívása, ha a szolgáltatás API-séma a központi telepítéskor kapott a mintaadatok.
 
-A szolgáltatás a CLI-ről egy HTTP requst összeállítása a bemeneti adatokat tartalmazó minta CLI parancs beírásával nélkül lehet tesztelni:
+A szolgáltatás a CLI-ről, a HTTP-lekérdezés létrehozása a bemeneti adatokat tartalmazó minta CLI parancs beírásával nélkül lehet tesztelni:
 
 ```
 az ml service run realtime -i <service name> -d "Your input data"
@@ -55,13 +55,13 @@ az ml service keys realtime -i <web service id>
 HTTP-kérelem létrehozásakor a billentyűvel hitelesítési fejlécéhez: "Engedélyezés": "tulajdonosi <key>"
 
 ## <a name="get-the-service-swagger-description"></a>Szolgáltatásleírás a Swagger
-Ha a szolgáltatás API-séma lett megadva a végpont teszi ki a Swagger-dokumentum, ```http://<ip>/api/v1/service/<service name>/swagger.json```. A Swagger-dokumentum automatikusan a szolgáltatásügyfél létrehozása és a szükséges bemeneti adatok és egyéb adatait a szolgáltatás használható.
+Ha a szolgáltatás API-séma, a szolgáltatási végpont teszi ki a Swagger-dokumentum, ```http://<ip>/api/v1/service/<service name>/swagger.json```. A Swagger-dokumentum automatikusan a szolgáltatásügyfél létrehozása és a szükséges bemeneti adatok és egyéb adatait a szolgáltatás használható.
 
 ## <a name="get-service-logs"></a>Szolgáltatás-naplófájlok
 A szolgáltatás viselkedésének megértése és a problémák diagnosztizálásához, számos módon a szolgáltatásnaplók beolvasása:
 - Parancssori felület parancs ```az ml service logs realtime -i <service id>```. Ez a parancs a fürt és a helyi módok működik.
 - A szolgáltatás naplózási engedélyezve volt a központi telepítés, a service naplóit is kapnak AppInsight. A parancssori felület parancs ```az ml service usage realtime -i <service id>``` AppInsight URL-CÍMÉT jeleníti meg. Vegye figyelembe, hogy később, a AppInsight naplók által a 2 – 5 perc.
-- Fürt naplók megtekinthetők, amely csatlakozik, ha úgy állítja be az aktuális fürtözött környezetben Kubernetes konzollal```az ml env set```
+- Fürt naplók megtekinthetők, amely csatlakozik, ha úgy állítja be az aktuális fürtözött környezetben Kubernetes konzollal ```az ml env set```
 - Helyi docker naplók helyben fut a szolgáltatás esetén a docker-motor naplók keresztül érhetők el.
 
 ## <a name="call-the-service-using-c"></a>Meghívja a szolgáltatást használó C#

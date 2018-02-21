@@ -88,7 +88,7 @@
     - name: Képzési terv
       href: 'https://azure.microsoft.com/documentation/learning-paths/iot-hub/'
     - name: MSDN-fórum
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureiothub'
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=iotedge'
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/iot-hub/'
     - name: Díjkalkulátor

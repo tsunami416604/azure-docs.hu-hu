@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2016
 ms.author: cephalin
-ms.openlocfilehash: 248b96cc97367ca2cb3fd82c9824d43dfee43c0a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f6244e3f739424be169f1ea117500159bd5e4254
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="scale-up-an-app-in-azure"></a>Vertikális felskálázás egy alkalmazást az Azure-ban
 
 > [!NOTE]
-> Az új **PremiumV2** réteg lehetővé teszi az SSD-tárolóba, a gyorsabb processzorok és a memória-core arány duplán, mint a meglévő árképzési tiers. Méretezési legfeljebb **PremiumV2** réteg című [az App Service konfigurálása PremiumV2 réteg](app-service-configure-premium-tier.md).
+> Az új **PremiumV2** réteg gyorsabb CPU, SSD-tárolón, lehetővé teszi, valamint a meglévő árképzési szinteket a memória-core aránya megduplázódik. A teljesítmény előnyösebb kevesebb példányt az alkalmazások futtatásával lehetett költségtakarékosabb munkavégzésben. Méretezési legfeljebb **PremiumV2** réteg című [az App Service konfigurálása PremiumV2 réteg](app-service-configure-premium-tier.md).
 >
 
 Ez a cikk bemutatja, hogyan alkalmazás skálázása az Azure App Service-ben. Két munkafolyamatok méretezési, bővített fel és kibővítési, és ez a cikk azt ismerteti, a munkafolyamat felskálázott.
 
 * [Vertikális felskálázás](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): több Processzor, memória, lemezterület és extra funkciók, például dedikált virtuális gépek (VM), egyedi tartományok és tanúsítványok, előkészítési tárhelyek, automatikus skálázás és több beolvasása. Vertikális felskálázás az alkalmazáshoz tartozó App Service-csomag tarifacsomagját módosításával.
 * [Horizontális felskálázás](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): növelje az alkalmazást futtató Virtuálisgép-példányok számát.
-  Ki lehet terjeszteni akár 20 példányokhoz, attól függően, hogy a tarifacsomagot. [App Service Environment-környezetek](environment/intro.md) a **elszigetelt** réteg tovább növeli a kibővíthető 100 példányára. Kiterjesztésére vonatkozó további információkért lásd: [méretezése példányszám manuális vagy automatikus](../monitoring-and-diagnostics/insights-how-to-scale.md). Nincs megtudhatja, hogyan kell az automatikus skálázást, amely a méretezési példányok száma alapján automatikusan előre meghatározott szabályok és ütemezések.
+  Ki lehet terjeszteni akár 20 példányokhoz, attól függően, hogy a tarifacsomagot. [App Service Environment-környezetek](environment/intro.md) a **elszigetelt** réteg tovább növeli a kibővíthető 100 példányára. Kiterjesztésére vonatkozó további információkért lásd: [méretezése példányszám manuális vagy automatikus](../monitoring-and-diagnostics/insights-how-to-scale.md). Itt megtudhatja, hogyan kell az automatikus skálázást, amely a méretezési példányok száma alapján automatikusan előre meghatározott szabályok és ütemezések.
 
 A skálázási beállításokat másodpercre csak alkalmazásához, és hatással lévő összes alkalmazásra a [App Service-csomag](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
-Nem kell módosítania kell a kódot, vagy telepítse újra az alkalmazást.
+Nem igénylik, hogy módosítania kell a kódot, vagy telepítse újra az alkalmazást.
 
 A díjszabás és az App Service-csomagokról szolgáltatásokkal kapcsolatos további információkért lásd: [App Service díjszabás](https://azure.microsoft.com/pricing/details/web-sites/).  
 
@@ -57,7 +57,7 @@ A díjszabás és az App Service-csomagokról szolgáltatásokkal kapcsolatos to
 <a name="ScalingSQLServer"></a>
 
 ## <a name="scale-related-resources"></a>Kapcsolódó erőforrások méretezése
-Ha az alkalmazás egyéb szolgáltatások, például az Azure SQL Database vagy az Azure Storage függ külön-külön is növelheti ezeket az erőforrásokat. Ezeket az erőforrásokat nem kezeli az App Service-csomag.
+Ha az alkalmazás egyéb szolgáltatások, például az Azure SQL Database vagy az Azure Storage függ külön-külön is növelheti ezeket az erőforrásokat. Ezeket az erőforrásokat az App Service-csomag nem felügyel.
 
 1. A **Essentials**, kattintson a **erőforráscsoport** hivatkozásra.
    
@@ -82,14 +82,9 @@ Ha az alkalmazás egyéb szolgáltatások, például az Azure SQL Database vagy 
 Részletes információk, például az egyes tarifacsomagok Virtuálisgép-méretek: [App Service díjszabás](https://azure.microsoft.com/pricing/details/web-sites/).
 Az egy táblázatot szolgáltatásra vonatkozó korlátozások, kvóták és korlátozások és támogatott szolgáltatás minden egyes rétegben, [App Service limits](../azure-subscription-service-limits.md#app-service-limits).
 
-> [!NOTE]
-> Ismerkedés az Azure App Service szolgáltatásban, az az Azure-fiók regisztrálása előtt szeretné, ha Ugrás [App Service kipróbálása](https://azure.microsoft.com/try/app-service/) ahol azonnal létrehozhat egy rövid élettartamú alapszintű webalkalmazást az App Service-ben. Nincs bankkártyára szükséges találhatók és nem jár kötelezettségekkel.
-> 
-> 
-
 <a name="Next Steps"></a>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Árképzési, támogatást és szolgáltatásiszint-szerződés kapcsolatos információkért látogasson el a következőket:
   
     [Adatátvitel díjszabása](https://azure.microsoft.com/pricing/details/data-transfers/)

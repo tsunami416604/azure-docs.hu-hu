@@ -1,10 +1,10 @@
 ---
 title: "Klasszikus virtuális hálózatok csatlakoztatása Azure Resource Manager Vnetek: portál |} Microsoft Docs"
-description: "Útmutató klasszikus virtuális hálózatokat és erőforrás-kezelő Vnetek VPN-átjáró és a portál használatával közötti VPN-kapcsolat létrehozása"
+description: "Klasszikus virtuális hálózatokat és erőforrás-kezelő Vnetek VPN-átjáró és a portál használatával közötti VPN-kapcsolat létrehozása"
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: timlt
+manager: jpconnock
 editor: 
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 5a90498c-4520-4bd3-a833-ad85924ecaf9
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/27/2017
+ms.date: 02/13/2018
 ms.author: cherylmc
-ms.openlocfilehash: 8fd058d74d00ecc980d295ee6bd9680ff832f891
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 40a380a04088e948a7e81625963a5915980764c3
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Virtuális hálózatok csatlakoztatása a különböző üzembe helyezési modellel, a portál használatával
 
@@ -33,7 +33,7 @@ Ez a cikk bemutatja, hogyan csatlakozzon a hagyományos Vneteket erőforrás-kez
 
 A klasszikus virtuális hálózat csatlakozik egy erőforrás-kezelő virtuális hálózat hasonlít egy Vnetet csatlakozik egy helyszíni hely. Mindkét kapcsolattípus egy VPN-átjárót használ a biztonságos alagút IPsec/IKE használatával való kialakításához. Létrehozhat, amelyek különböző előfizetésekhez és különböző régiókban Vnetek közötti kapcsolat. A helyszíni hálózatokhoz való csatlakozás már rendelkező Vnetek mindaddig, amíg az átjáró, amely a konfigurálva a dinamikus- vagy útválasztó-alapú is csatlakoztathatja. A virtuális hálózatok közötti kapcsolatokról további információt a cikk végén, a [Virtuális hálózatok közötti kapcsolat – gyakori kérdések](#faq) című részben talál. 
 
-Ha a Vnetek ugyanabban a régióban, érdemes lehet helyette megfontolandó csatlakoztatja őket a Vnetben társviszony-létesítés használatával. A virtuális hálózatok közötti társviszony nem használ VPN-átjárót. További információ: [Társviszony létesítése virtuális hálózatok között](../virtual-network/virtual-network-peering-overview.md). 
+Ha még nincs a virtuális hálózati átjáró, és nem szeretne létrehozni egyet, érdemes lehet helyette figyelembe kell venni a Vnetben társviszony-létesítés használatával Vnetek kapcsolódás. A virtuális hálózatok közötti társviszony nem használ VPN-átjárót. További információ: [Társviszony létesítése virtuális hálózatok között](../virtual-network/virtual-network-peering-overview.md).
 
 ### <a name="before"></a>Előkészületek
 
@@ -95,7 +95,7 @@ Ha a klasszikus virtuális hálózat nem rendelkezik, és ezeket a lépéseket e
 
 Ha már van egy virtuális hálózat VPN-átjáróval, győződjön meg arról, hogy az átjáró dinamikus. Ha statikus, először törölnie kell a VPN-átjáró a folytatás előtt [konfigurálja a hely](#local).
 
-1. Nyissa meg a [Azure-portálon](https://ms.portal.azure.com) és jelentkezzen be az Azure-fiókjával.
+1. Nyissa meg az [Azure Portalt](https://ms.portal.azure.com), majd jelentkezzen be az Azure-fiókjával.
 2. Kattintson a **+ hozzon létre egy erőforrást** "New" lapjának megnyitásához.
 3. A "Keresése a piactéren" mezőben írja be a "Virtuális hálózat". Ha ehelyett hálózatkezelés virtuális hálózat ->, létrehozhat egy klasszikus virtuális hálózat nem fog.
 4. Keresse meg a "Virtuális hálózat" a visszaadott listából, és kattintson arra a virtuális hálózat lap megnyitásához. 
@@ -196,16 +196,16 @@ Ebben a szakaszban cserélje le a helyőrző IP-cím erőforrás-kezelő VPN át
 2. Kattintson a virtuális hálózat lap **áttekintése**.
 3. Az a **VPN-kapcsolatok** területen kattintson az ábra a helyi webhely nevét.
 
-    ![VPN-kapcsolatok](./media/vpn-gateway-connect-different-deployment-models-portal/vpnconnections.png "VPN-kapcsolatok")
+  ![VPN-kapcsolatok](./media/vpn-gateway-connect-different-deployment-models-portal/vpnconnections.png "VPN-kapcsolatok")
 4. Az a **telephelyek közötti VPN-kapcsolatok** lapján kattintson a hely nevét.
 
-    ![Site-name](./media/vpn-gateway-connect-different-deployment-models-portal/sitetosite3.png "helyi webhely neve")
+  ![Site-name](./media/vpn-gateway-connect-different-deployment-models-portal/sitetosite3.png "helyi webhely neve")
 5. A helyi kapcsolat lapján kattintson a megnyitni a helyi webhely nevét a **helyi** lap.
 
-    ![Nyissa meg helyi-webhelyeken](./media/vpn-gateway-connect-different-deployment-models-portal/openlocal.png "helyi webhely megnyitása")
+  ![Nyissa meg helyi-webhelyeken](./media/vpn-gateway-connect-different-deployment-models-portal/openlocal.png "helyi webhely megnyitása")
 6. Az a **helyi** lapon, hogy lecseréli a **VPN-átjáró IP-címet** az erőforrás-kezelő átjáró IP-címmel.
 
-    ![Ip-átjárócím](./media/vpn-gateway-connect-different-deployment-models-portal/gwipaddress.png "átjáró IP-címe")
+  ![Ip-átjárócím](./media/vpn-gateway-connect-different-deployment-models-portal/gwipaddress.png "átjáró IP-címe")
 7. Kattintson a **OK** az IP-címének frissítése.
 
 ## <a name="RMtoclassic"></a>A szakasz 4 - erőforrás-kezelő klasszikus kapcsolat létrehozása
@@ -223,34 +223,46 @@ Ezeket a lépéseket konfigurálja a kapcsolat a Resource Manager virtuális há
 9. Hozzon létre egy **megosztott kulcs**. Ez a kulcs csatlakozási folyamat, amely a Resource Manager virtuális hálózatba hoz létre a klasszikus virtuális hálózatot is használatban van. A kulcs létrehozása, vagy egy alkotják. A jelen példában használjuk "abc123", de lehet (és kell) használhat összetettebb.
 10. Kattintson a **OK** a VPN-kapcsolat létrehozásához.
 
-##<a name="classictoRM"></a>Szakasz 5 – klasszikus – Resource Manager-kapcsolat létrehozása
+## <a name="classictoRM"></a>Szakasz 5 – klasszikus – Resource Manager-kapcsolat létrehozása
 
 Ezeket a lépéseket a klasszikus virtuális hálózatot a kapcsolat és a Resource Manager virtuális hálózaton konfigurálja. Ezeket a lépéseket igényelnek a PowerShell. Ez a kapcsolat nem hozható létre a portálon. Győződjön meg arról, hogy már letöltötte és telepítette a klasszikus (SM) és az erőforrás-kezelő (RM) PowerShell-parancsmagok.
 
 ### <a name="1-connect-to-your-azure-account"></a>1. Csatlakozás az Azure-fiókhoz
 
-Nyissa meg a PowerShell-konzolt emelt szintű jogosultságokkal, és jelentkezzen be az Azure-fiókjával. A következő parancsmag kéri a bejelentkezési hitelesítő adatok az Azure-fiók. A bejelentkezés után a fiók beállításait, hogy elérhetők az Azure PowerShell letöltése.
+Nyissa meg a PowerShell-konzolt emelt szintű jogosultságokkal, és jelentkezzen be az Azure-fiókjával. A bejelentkezés után a fiók beállításait, hogy elérhetők az Azure PowerShell letöltése. A következő parancsmag bekéri a bejelentkezési hitelesítő adatok a Resource Manager üzembe helyezési modellel Azure fiókja:
 
 ```powershell
 Login-AzureRmAccount
 ```
-   
-Az Azure-előfizetések listájának lekérdezése, ha egynél több előfizetéssel rendelkezik.
+
+Olvassa be az Azure-előfizetések listáját.
 
 ```powershell
 Get-AzureRmSubscription
 ```
 
-Válassza ki a használni kívánt előfizetést. 
+Ha egynél több előfizetéssel rendelkezik, adja meg a használni kívánt előfizetést.
 
 ```powershell
 Select-AzureRmSubscription -SubscriptionName "Name of subscription"
 ```
 
-Adja hozzá az Azure a fiókot a klasszikus PowerShell-parancsmagokkal (SM). Ehhez használhatja a következő parancsot:
+Ezután jelentkezzen be a klasszikus PowerShell-parancsmagokkal (kezelő). A következő paranccsal adja hozzá az Azure-fiókjával a klasszikus üzembe helyezési modell:
 
 ```powershell
 Add-AzureAccount
+```
+
+Az előfizetések listájának lekérése. Ez a lépés hozzáadása a szolgáltatás parancsmagokat, attól függően, hogy az Azure-moduljának telepítésekor lehet szükség.
+
+```powershell
+Get-AzureSubscription
+```
+
+Ha egynél több előfizetéssel rendelkezik, adja meg a használni kívánt előfizetést.
+
+```powershell
+Select-AzureSubscription -SubscriptionName "Name of subscription"
 ```
 
 ### <a name="2-view-the-network-configuration-file-values"></a>2. A hálózati konfigurációs fájl értékeinek megtekintése

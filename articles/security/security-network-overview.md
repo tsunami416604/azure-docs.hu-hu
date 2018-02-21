@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: cefc15e7df0dabd9229196d0175dcf6546a6ebce
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: d3ce4d5c6766c41fe32164ebfe623ea8c06b58f9
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="azure-network-security-overview"></a>Az Azure biztonsági áttekintése
 A Microsoft Azure tartalmazza az alkalmazás és szolgáltatás hálózati kapcsolati követelményeinek támogatására robusztus hálózati infrastruktúrát. Helyszíni között, az Azure-ban lévő erőforrások közötti hálózati kapcsolatot, és Azure üzemeltetett erőforrásokhoz, és hogy, és az internetről és az Azure.
@@ -37,11 +37,11 @@ Azure biztonsági áttekintése cikkben elsősorban az alábbi területeken:
 
 
 ## <a name="azure-networking"></a>Azure-hálózatok
-Virtuális gépek hálózati kapcsolattal kell. Ez a követelmény kielégítése érdekében az Azure-nak egy Azure virtuális hálózatra kell csatlakoztatni a virtuális gépek. Egy Azure virtuális hálózatra egy logikai szerkezet, a fizikai Azure hálózati háló platformra épül. Minden logikai Azure Virtual Network el különítve a többi Azure virtuális hálózatok. Ezzel a megoldással biztosítja, hogy a hálózati forgalmat a központi telepítés nem érhető el más Microsoft Azure-ügyfelek.
+Virtuális gépek hálózati kapcsolattal kell. Ez a követelmény kielégítése érdekében az Azure-nak egy Azure virtuális hálózatra kell csatlakoztatni a virtuális gépek. Egy Azure virtuális hálózatra egy logikai szerkezet, a fizikai Azure hálózati háló platformra épül. Minden logikai Azure Virtual Network el különítve a többi Azure virtuális hálózatok. Ez segít, győződjön meg arról, hogy a központi telepítés hálózati forgalom nem elérhető más Microsoft Azure-ügyfelek.
 
 További információ:
 
-* [Virtual Network áttekintése](../virtual-network/virtual-networks-overview.md)
+* [A Virtual Network áttekintése](../virtual-network/virtual-networks-overview.md)
 
 
 ## <a name="network-access-control"></a>Hálózati hozzáférés-vezérlés
@@ -217,7 +217,7 @@ A belső névfeloldást két lehetőség közül választhat:
 
 További információ:
 
-* [Virtual Network áttekintése](../virtual-network/virtual-networks-overview.md)
+* [A Virtual Network áttekintése](../virtual-network/virtual-networks-overview.md)
 * [Egy virtuális hálózatot (VNet) által használt DNS-kiszolgálók kezelése](../virtual-network/virtual-network-manage-network.md#dns-servers)
 
 A külső DNS-feloldás két lehetőség közül választhat:
@@ -249,7 +249,7 @@ További információ:
 
 Azure közül választhat a kulcsfontosságú terület korai észlelési képességeket biztosít, figyelés és gyűjtése, és tekintse át a hálózati forgalom.
 
-### <a name="azure-network-watcher"></a>Az Azure hálózati figyelőt
+### <a name="azure-network-watcher"></a>Azure Network Watcher
 Azure hálózati figyelőt tartalmaz számos képességeket kínál, amelyek segítenek a hibaelhárításban, valamint a adjon meg egy teljesen új eszközöket a biztonsági problémákat azonosítása.
 
 [Biztonsági csoport megtekintése ](/network-watcher/network-watcher-security-group-view-overview.md) elősegíti a naplózás és a biztonsági megfelelőség virtuális gépek és összehasonlítása az alapkonfigurációk házirendeket, a virtuális gépek mindegyikének hatékony szabályokra a szervezet által meghatározott programozott naplózás végrehajtásához használható. Ez segít azonosítani a konfigurációs eltéréseket.
@@ -272,7 +272,7 @@ Azure Security Center segítségével optimalizálása és figyelheti a hálóza
 
 További információ:
 
-* [Azure Security Center bemutatása](../security-center/security-center-intro.md)
+* [Az Azure Security Center bemutatása](../security-center/security-center-intro.md)
 
 
 ### <a name="logging"></a>Naplózás

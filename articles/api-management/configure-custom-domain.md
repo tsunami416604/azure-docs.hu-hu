@@ -11,15 +11,18 @@ ms.workload: integration
 ms.topic: article
 ms.date: 12/14/2017
 ms.author: apimpm
-ms.openlocfilehash: 0f1c9e8e8298647721f16962d3f6756c74f8c8ef
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 96e233a26af95d4373323867046ca01fe1304608
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="configure-a-custom-domain-name"></a>Egyéni tartománynév konfigurálása 
 
 API-felügyeleti (APIM) példányt hoz létre, amikor Azure hozzárendeli egy altartomány azure-api.net, (például `apim-service-name.azure-api.net`). Azonban Ön is elérhetővé teheti a saját tartománynevét, például a használó APIM végpontok **contoso.com**. Az oktatóanyag bemutatja, hogyan képezheti végpontok Azure API Management-példány által elérhetővé tett egy meglévő egyéni DNS-névvel.
+
+> [!WARNING]
+> Az ügyfelek, akik kíván használni a tanúsítvány rögzítését, melyekkel biztonságosabbá teheti az alkalmazások kell használnia egy egyéni tartománynevet > és a tanúsítvány kezelnek, amelyek nem az alapértelmezett tanúsítvány. PIN-kód az alapértelmezett tanúsítvány ügyfelek inkább lesz > erős függőség véve nem szabályozzák, a tanúsítvány tulajdonságainak, ez nem ajánlott.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

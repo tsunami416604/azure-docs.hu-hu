@@ -1,10 +1,10 @@
 ---
 title: "Hozzon létre és Azure tanúsítványhitelesítés P2S VPN ügyfél konfigurációs fájljainak telepítése: PowerShell: Azure |} Microsoft Docs"
-description: "Ez a cikk segít létrehozni, és telepítheti a VPN-ügyfél konfigurációs fájlok tanúsítvány alapú hitelesítést használó pont – hely kapcsolatok."
+description: "Hozzon létre, és a Windows és Mac OS X VPN-ügyfél konfigurációs fájljainak telepítése P2S-alapú hitelesítés."
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: timlt
+manager: jpconnock
 editor: 
 tags: azure-resource-manager
 ms.assetid: 
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/06/2018
+ms.date: 02/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: 8c27cbaa27dbafbba4a6124680c3e6e83cbcbab8
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: b18e01a780f6371ecae3298a6f3f41949090b9e8
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/14/2018
 ---
-# <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Hozzon létre és VPN-ügyfél konfigurációs fájljai natív Azure tanúsítvány P2S hitelesítési konfigurációk telepítése
+# <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-point-to-site-configurations"></a>Hozzon létre és telepíthető a VPN ügyfél-konfigurációs fájlok natív Azure tanúsítvány hitelesítési pont-pont konfigurációk
 
 VPN-ügyfél konfigurációs fájlokat a zip-fájl tartalmazza. Konfigurációs fájlokat adja meg a natív Windows vagy Mac IKEv2 VPN-ügyfelek natív Azure Tanúsítványalapú hitelesítés használatára, pont-pont kapcsolatokon keresztül csatlakozni a virtuális hálózat szükséges beállításokat.
 
@@ -91,7 +91,7 @@ Kattintson a **Hozzáadás** importálásához.
     >[!NOTE]
     >Ehhez kattintson duplán a tanúsítványra lehet, hogy nem jelennek meg a **Hozzáadás** párbeszédpanelen, de a tanúsítvány a megfelelő tárolóban van telepítve. A tanúsítvány a bejelentkezési kulcsláncban a tanúsítványok kategóriához tartozó ellenőrizheti.
   
-2. Győződjön meg arról, hogy telepítette-e a legfelső szintű tanúsítvány, amely P2S-beállítások konfigurálása, során az Azure-bA feltöltött által kibocsátott ügyféltanúsítványt. Ez eltér az előző lépésben telepített VPNServerRoot. Az ügyféltanúsítvány-hitelesítésre használják, és szükséges. További információ a tanúsítványok létrehozása: [tanúsítványok előállításához](vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert). Ügyfél-tanúsítvány telepítésével kapcsolatos információkért lásd: [telepíthet ügyféltanúsítványt](point-to-site-how-to-vpn-client-install-azure-cert.md).
+2. Győződjön meg arról, hogy telepítette-e a legfelső szintű tanúsítvány P2S-beállítások konfigurálása, során az Azure-bA feltöltött által kibocsátott ügyféltanúsítványt. Ez eltér az előző lépésben telepített VPNServerRoot. Az ügyféltanúsítvány-hitelesítésre használják, és szükséges. További információ a tanúsítványok létrehozása: [tanúsítványok előállításához](vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert). Ügyfél-tanúsítvány telepítésével kapcsolatos információkért lásd: [telepíthet ügyféltanúsítványt](point-to-site-how-to-vpn-client-install-azure-cert.md).
 3. Nyissa meg a **hálózati** párbeszédpanel **hálózati beállítások** kattintson **"+"** egy új VPN-ügyfél kapcsolati profil a P2S kapcsolat az Azure virtuális hálózat létrehozásához.
 
   A **felület** értéke 'VPN' és **VPN-típus** értéke "IKEv2". Adja meg a profil nevét a **szolgáltatásnév** mezőben, majd kattintson az **létrehozása** a VPN-ügyfél-csatlakozási profil létrehozásához.
@@ -117,3 +117,5 @@ Kattintson a **Hozzáadás** importálásához.
 ## <a name="next-steps"></a>További lépések
 
 Térjen vissza a cikkhez [végezze el a P2S konfigurálását](vpn-gateway-howto-point-to-site-rm-ps.md).
+
+P2S hibaelhárítási információkért [Azure hibaelhárítási pont – hely kapcsolatok](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md).

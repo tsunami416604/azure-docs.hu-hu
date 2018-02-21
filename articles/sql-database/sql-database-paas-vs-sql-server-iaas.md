@@ -14,13 +14,13 @@ ms.workload: Active
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.devlang: na
 ms.topic: article
-ms.date: 02/01/2017
+ms.date: 02/12/2018
 ms.author: carlrab
-ms.openlocfilehash: 436166fcb0fa9103c6b702b63d93a0b222d536d0
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 4a0fbb2a1f468493e5b22b12518be42fdd9d5ce6
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="choose-a-cloud-sql-server-option-azure-sql-paas-database-or-sql-server-on-azure-vms-iaas"></a>Felhőalapú SQL Server-verzió választása: Azure SQL Database (PaaS) adatbázis vagy az Azure virtuális gépeken futó SQL Server (IaaS)
 Az Azure két lehetőséget biztosít SQL Server számítási feladatok a Microsoft Azure-ban történő üzemeltetésére:
@@ -80,7 +80,7 @@ Az adatbázisok üzemeltetési módjának kiválasztását általában a rendelk
 #### <a name="billing-and-licensing-basics"></a>A számlázás és a licencelés alapjai
 Az **SQL Database** értékesítése szolgáltatásként történik az ügyfelek számára, nem pedig licenccel.  Az [Azure virtuális gépeken futó SQL Server](../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md) mellé jár egy percalapon fizetendő licenc is. Ha már rendelkezik egy licenccel, azt is használhatja.  
 
-Az **SQL Database** jelenleg többféle szolgáltatáscsomagban kapható, amelyek esetében a választott szolgáltatás- és teljesítményszinten alapuló rögzített óradíjat kell fizetni. Emellett a kimenő internetes forgalom számlázása a normál [adatátviteli díjszabások](https://azure.microsoft.com/pricing/details/data-transfers/) szerint történik. Az Alapszintű, a Standard, a Prémium és a Prémium RS csomag és a hozzá választható különböző teljesítményszintek az alkalmazás maximális terhelése esetén is megbízhatóan képesek működni. Az alkalmazás változó sebességigényét követve akár válthat is a szolgáltatás- és teljesítményszintek között. Amennyiben az adatbázisban sok tranzakció zajlik, illetve nagyszámú egyidejű felhasználót kell kiszolgálnia, javasoljuk, hogy válassza a Prémium szolgáltatásszintet. Az aktuálisan választható szolgáltatásszintekkel kapcsolatos további információkért lásd: [Azure SQL Database Service Tiers](sql-database-service-tiers.md) (Az Azure SQL Database szolgáltatáscsomagjai). Létrehozhat [rugalmas készleteket](sql-database-elastic-pool.md) a nagy teljesítményű erőforrások adatbázispéldányok közötti megosztásához is.
+Az **SQL Database** jelenleg többféle szolgáltatáscsomagban kapható, amelyek esetében a választott szolgáltatás- és teljesítményszinten alapuló rögzített óradíjat kell fizetni. Emellett a kimenő internetes forgalom számlázása a normál [adatátviteli díjszabások](https://azure.microsoft.com/pricing/details/data-transfers/) szerint történik. Az Alapszintű, a Standard és a Prémium csomag és a hozzá választható különböző teljesítményszintek az alkalmazás maximális terhelése esetén is megbízhatóan képesek működni. Az alkalmazás változó sebességigényét követve akár válthat is a szolgáltatás- és teljesítményszintek között. Amennyiben az adatbázisban sok tranzakció zajlik, illetve nagyszámú egyidejű felhasználót kell kiszolgálnia, javasoljuk, hogy válassza a Prémium szolgáltatásszintet. Az aktuálisan választható szolgáltatásszintekkel kapcsolatos további információkért lásd: [Azure SQL Database Service Tiers](sql-database-service-tiers.md) (Az Azure SQL Database szolgáltatáscsomagjai). Létrehozhat [rugalmas készleteket](sql-database-elastic-pool.md) a nagy teljesítményű erőforrások adatbázispéldányok közötti megosztásához is.
 
 Az **SQL Database** használata esetén az adatbázis automatikus konfigurálásáért, javításáért és frissítéséért a Microsoft felel, így Önnek kevesebbet kell adminisztrációra költenie. Ezenfelül a [beépített biztonsági mentési](sql-database-automated-backups.md) funkciókkal is jelentős költségmegtakarítást érhet el, különösen, ha nagyszámú adatbázist használ.
 
@@ -118,7 +118,7 @@ Az **Azure virtuális gépeken futó SQL Server** használata esetén teljes mé
 ### <a name="service-level-agreement-sla"></a>Szolgáltatói szerződés (SLA)
 Számos számítástechnikai osztály számára elsődleges prioritást jelent a szolgáltatói szerződésben (SLA) vállalt üzemidő biztosítása. Ebben a részben áttekintjük, hogy milyen  SLA vonatkozik az egyes adatbázis-üzemeltetési megoldásokra.
 
-Az **SQL Database** Alapszintű, Standard, Prémium és Prémium RS szolgáltatáscsomagja esetében a Microsoft 99,99%-os SLA-elérhetőséget garantál. További információk: [SLA a következőhöz: SQL-adatbázis](https://azure.microsoft.com/support/legal/sla/sql-database/). Az SQL Database szolgáltatáscsomagjaival és az általuk támogatott üzletmenet-folytonossági csomagokkal kapcsolatban lásd: [Service Tiers](sql-database-service-tiers.md) (Szolgáltatáscsomagok).
+Az **SQL Database** Alapszintű, Standard és Prémium szolgáltatáscsomagja esetében a Microsoft 99,99%-os SLA-elérhetőséget garantál. További információk: [SLA a következőhöz: SQL-adatbázis](https://azure.microsoft.com/support/legal/sla/sql-database/). Az SQL Database szolgáltatáscsomagjaival és az általuk támogatott üzletmenet-folytonossági csomagokkal kapcsolatban lásd: [Service Tiers](sql-database-service-tiers.md) (Szolgáltatáscsomagok).
 
 Az **Azure virtuális gépeken futó SQL Server** esetében a Microsoft 99,95%-os SLA-elérhetőséget garantál, amely kizárólag a virtuális gépre vonatkozik. Ez az SLA nem érvényes a virtuális gépen futó folyamatokra (például az SQL Serverre), ezenfelül legalább két, rendelkezésre állási csoportba rendezett virtuálisgép-példány futtatása is szükséges hozzá. A legfrissebb információkért lásd: [SLA a következőhöz: Virtuális gépek](https://azure.microsoft.com/support/legal/sla/virtual-machines/). A virtuális gépeken üzemeltetett adatbázisok magas rendelkezésre állása érdekében használja az SQL Server által biztosított magas rendelkezésre állási funkciók egyikét, például az [AlwaysOn rendelkezésre állási csoportokat](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx). A támogatott magas rendelkezésre állási lehetőségek valamelyikének használata nem biztosít további SLA-t, de lehetővé teszi az adatbázis 99,99% fölötti rendelkezésre állásának elérését.
 
@@ -127,7 +127,7 @@ Az **SQL Database** ideális megoldás az olyan felhőalapú alkalmazásokhoz, a
 
 Az **Azure virtuális gépeken futó SQL Server** tökéletes megoldás, ha meglévő vagy új alkalmazásainak nagy méretű vagy egymáshoz kapcsolódó adatbázisokra van szüksége, vagy a Windows vagy az SQL Server összes funkciójához hozzá kell férnie. Akkor is érdemes ezt a verziót választani, ha meglévő helyszíni alkalmazásokat és adatbázisokat szeretne változtatás nélkül az Azure-ra áttelepíteni. Mivel így nincs szükség a prezentációs, alkalmazási és adatréteg módosítására, időt és pénzt takarít meg, amit nem kell meglévő termékeinek egy új architektúrára való áthelyezésére fordítania. Ehelyett termékeinek az Azure-ra történő áttelepítésére, illetve az Azure-platformon való működéshez esetleg szükséges teljesítményoptimalizálásra összpontosíthat. További információk: [Performance Best Practices for SQL Server on Azure Virtual Machines](../virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md) (Teljesítményre vonatkozó ajánlott eljárások az Azure Virtual Machines szolgáltatásban futtatott SQL Server esetében).
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Ebben a cikkben bemutattuk az SQL Database-t és az Azure virtuális gépeken futó SQL Servert, és szót ejtettünk azokról az üzleti szempontokról, amelyek hatással lehetnek választására. Az alábbiakban a megfontolásra érdemes tényeket foglaljuk össze:
 
 Válassza az **Azure SQL Database-t**, ha:
@@ -140,7 +140,7 @@ Válassza az **Azure virtuális gépeken futó SQL Servert**, ha:
 * Meglévő helyszíni alkalmazásokat használni kívánt áttelepítése vagy kiterjesztése a felhőbe, vagy ha azt szeretné, ha 4 TB-nál nagyobb vállalati alkalmazásokat szeretne összeállítani. Ez a megoldás 100%-os SQL-kompatibilitást, nagy adatbázis-kapacitást, az SQL Server és a Windows teljes körű irányítását, és biztonságos helyszíni bújtatást biztosít. Ez a verzió a lehető legalacsonyabbra csökkenti a meglévő alkalmazások fejlesztési és átalakítási költségeit.
 * Meglévő számítógépes erőforrások használatával Ön irányíthatja a frissítéseket, a biztonsági mentéseket és az adatbázisok magas rendelkezésre állását. Megjegyzendő, hogy egyes automatizált funkciók jelentősen leegyszerűsítik ezeket a műveleteket. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Tekintse meg [az első Azure SQL Database-adatbázissal](sql-database-get-started-portal.md) foglalkozó témakört, hogy megismerkedhessen az SQL Database használatának első lépéseivel.
 * [SQL Database – Díjszabás](https://azure.microsoft.com/pricing/details/sql-database/).
 * Az Azure virtuális gépeken futó SQL Server használatának megkezdésével kapcsolatban lásd: [Provision a SQL Server virtual machine in Azure](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md) (SQL Servert futtató virtuális gép létrehozása az Azure-ban).

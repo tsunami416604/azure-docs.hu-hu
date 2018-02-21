@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: bradsev;
-ms.openlocfilehash: 1ad4e8c117f93f2f085c01fae2a5ab38cdd10d2f
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 7f3bf3bb5743bfb64489188d1016fb18d4967f79
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Tudományos feladatok végrehajtása: feltárása, a modellezési és a központi telepítés
 
@@ -25,10 +25,10 @@ Jellemző adatok tudományos feladatok közé tartozik, az adatok feltárása, m
 
 - [Azure Machine Learning](../preview/index.yml)
 - [SQL-kiszolgáló az ML-szolgáltatások](https://docs.microsoft.com/sql/advanced-analytics/r/r-services#in-database-analytics-with-sql-server)
-- [A Microsoft Machine Learning-kiszolgáló](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
+- [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
 
 
-## 1. <a name='DataQualityReportUtility-1'></a>Feltárása 
+## 1. <a name='DataQualityReportUtility-1'></a> Feltárása 
 
 Egy adatok tudósok végezheti feltárására és az sokféleképpen reporting: függvénytár vagy csomag elérhető a Python (például matplotlib) vagy r (ggplot vagy például rácsszerkezetű). Adatszakértőkön testre szabhatja az ilyen kódot, hogy az adott forgatókönyveket adatok feltárása igényeinek. Eltérőek a strukturált adatok kezelésével funkciókra van szüksége, amely a strukturálatlan adatok, például szöveget vagy képeket. 
 
@@ -43,7 +43,7 @@ A markdown-alapú R vagy Python notebook alapú segédprogram értékelje ki és
 Ilyenkor az eszközt csak akkor működik a memóriában adatkeretek. Az adatkészlet vizsgálják paramétereket egy YAM fájl szükséges. További információkért lásd: [TDSP adatok tudományos segédprogramok IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/DataReport-Utils).
 
 
-## 2. <a name='ModelingUtility-2'></a>Modellezési
+## 2. <a name='ModelingUtility-2'></a> Modellezési
 
 Számos eszközök gazdag és a különböző nyelveken tanítási modell csomagjai vannak. Adatszakértőkön kell szabadon használhatja, amelyet Melyik néhányat a meglévők közül, amíg a teljesítménnyel kapcsolatos szempontok pontosság és a késés kapcsolódó üzleti teljesülnek, a Feladatkezelő esetek és éles forgatókönyvek használja.
 
@@ -63,8 +63,8 @@ Egy YAM fájl használatával adja meg:
 - az adatok milyen része képzési használja, és milyen arányban teszteléshez
 - Futtassa mely algoritmusokat 
 - a modell optimalizálásához paraméterek kiválasztása:
-    - kereszt-ellenőrzési 
-    - rendszerindítása
+    - cross-validation 
+    - bootstrapping
     - a kereszt-ellenőrzési modellrészt
 - a hyper-paraméter állandóként állítja be, minden egyes algoritmushoz. 
 
@@ -78,9 +78,9 @@ Után több modellek készített, általában regisztrációja és kezelése a m
 1. [Az Azure Machine Learning - modell felügyeleti szolgáltatás](../preview/index.yml)
 2. [A MIT ModelDB](https://mitdbg.github.io/modeldb/) 
 3. [SQL-seerver modell felügyeleti rendszert](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
-4. [A Microsoft Machine Learning-kiszolgáló](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
+4. [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
-## 3. <a name='Deployment-3'></a>Központi telepítés
+## 3. <a name='Deployment-3'></a>központi telepítés
 
 Éles környezet lehetővé teszi, hogy a modell aktív szerepet játszanak üzleti. Egy telepített modell által használható üzleti döntéseket hozhat.
 
@@ -88,9 +88,9 @@ Után több modellek készített, általában regisztrációja és kezelése a m
 Nincsenek különböző szempontok és platformokat a modellek üzembe helyezésre. Íme néhány lehetőség:
 
 
-- [Az Azure Machine Learning modell telepítése](https://docs.microsoft.com/azure/machine-learning/preview/model-management-overview)
+- [Az Azure Machine Learning modell telepítése](../preview/model-management-overview.md)
 - [Központi telepítési modell SQL-kiszolgálón](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
-- [A Microsoft Machine Learning-kiszolgáló](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
+- [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
 >
 >
@@ -105,7 +105,7 @@ Megjegyzés: a központi telepítés Azure Machine Learning Studio használatáv
 Ha több modellek éles környezetben, ez hasznos lehet a végrehajtásához [A / B tesztelés](https://en.wikipedia.org/wiki/A/B_testing) teljesítmény modell összehasonlítására. 
 
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Adatok tudományos projektek előrehaladását úgy követheti nyomon](track-progress.md) bemutatja, hogyan egy adatok tudósok nyomon követheti a adatok tudományos projekt.
  

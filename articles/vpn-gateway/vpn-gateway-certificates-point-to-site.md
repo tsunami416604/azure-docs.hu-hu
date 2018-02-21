@@ -1,10 +1,10 @@
 ---
 title: "Készítése és a pont-pont tanúsítványok exportálása: PowerShell: Azure |} Microsoft Docs"
-description: "A cikkben található lépéseket hozzon létre egy önaláírt legfelső szintű tanúsítványt, a nyilvános kulcs exportálásának és a PowerShell-lel Windows 10 vagy Windows Server 2016 ügyféltanúsítványok előállításához."
+description: "Hozzon létre egy önaláírt legfelső szintű tanúsítványt, exportálja a nyilvános kulcsot, és a PowerShell-lel Windows 10 vagy Windows Server 2016 ügyféltanúsítványok előállításához."
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: timlt
+manager: jpconnock
 editor: 
 tags: azure-resource-manager
 ms.assetid: 27b99f7c-50dc-4f88-8a6e-d60080819a43
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/09/2017
+ms.date: 02/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: dc7031a42781d57689c067988239ff0528d8d83b
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 5e041de12105770a16e43b5ff4f918a1eba92b2a
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-powershell-on-windows-10-or-windows-server-2016"></a>Létrehozása és exportálása a tanúsítványok a PowerShell-lel Windows 10 vagy Windows Server 2016 pont – hely kapcsolatok
 
@@ -137,3 +137,5 @@ A pont-hely konfigurációs folytatásához.
 
 * A **erőforrás-kezelő** telepítési modell lépéseket lásd: [konfigurálása P2S natív Azure-alapú hitelesítést használó](vpn-gateway-howto-point-to-site-resource-manager-portal.md). 
 * A **klasszikus** telepítési modell lépéseket lásd: [egy virtuális hálózat (klasszikus) pont – hely típusú VPN-kapcsolat konfigurálva](vpn-gateway-howto-point-to-site-classic-azure-portal.md).
+
+P2S hibaelhárítási információkat lásd: [Azure hibaelhárítási pont – hely kapcsolatok](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md).
