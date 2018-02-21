@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 12/14/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 2cebe6dd35e2a20738e2766447451ee32807eb4d
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 02118533c4ab552f81157f644bb794e68fbc4ce3
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="secure-a-web-server-with-ssl-certificates-on-a-linux-virtual-machine-in-azure"></a>Webkiszolgáló védelme SSL-tanúsítványokkal Linux rendszerű virtuális gépen az Azure-ban
 A webkiszolgálók védelméhez egy Secure Sockets Layer- (SSL-) tanúsítvánnyal titkosítható a webes adatforgalom. Ezek az SSL-tanúsítványok az Azure Key Vaultban tárolhatók, és lehetővé teszik a tanúsítványok biztonságos üzembe helyezését a Linux rendszerű virtuális gépeken az Azure-ban. Ezen oktatóanyag segítségével megtanulhatja a következőket:
@@ -43,13 +43,13 @@ Beépített tanúsítványokat tartalmazó egyéni virtuális gép rendszerkép 
 
 
 ## <a name="create-an-azure-key-vault"></a>Azure Key Vault létrehozása;
-Mielőtt létrehozhatna egy Key Vaultot és a tanúsítványokat, létre kell hoznia egy erőforráscsoportot az [az group create](/cli/azure/group#create) paranccsal. A következő példában létrehozunk egy *myResourceGroupSecureWeb* nevű erőforráscsoportot az *eastus* helyen:
+Mielőtt létrehozhatna egy Key Vaultot és a tanúsítványokat, létre kell hoznia egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. A következő példában létrehozunk egy *myResourceGroupSecureWeb* nevű erőforráscsoportot az *eastus* helyen:
 
 ```azurecli-interactive 
 az group create --name myResourceGroupSecureWeb --location eastus
 ```
 
-Ezután hozzon létre egy Key Vaultot az [az keyvault create](/cli/azure/keyvault#create) paranccsal, és engedélyezze a használatát a virtuális gépek üzembe helyezésekor. Mindegyik Key Vaultnak egyedi névvel kell rendelkeznie, amely csak kisbetűkből állhat. Cserélje le a *<mykeyvault>* nevet a következő példában a saját egyedi Key Vault-névvel:
+Ezután hozzon létre egy Key Vaultot az [az keyvault create](/cli/azure/keyvault#az_keyvault_create) paranccsal, és engedélyezze a használatát a virtuális gépek üzembe helyezésekor. Mindegyik Key Vaultnak egyedi névvel kell rendelkeznie, amely csak kisbetűkből állhat. Cserélje le a *<mykeyvault>* nevet a következő példában a saját egyedi Key Vault-névvel:
 
 ```azurecli-interactive 
 keyvault_name=<mykeyvault>
@@ -70,7 +70,7 @@ az keyvault certificate create \
 ```
 
 ### <a name="prepare-a-certificate-for-use-with-a-vm"></a>Tanúsítvány előkészítése virtuális géppel való használatra
-Ha a virtuális gép létrehozása alatt szeretné használni a tanúsítványt, szerezze be a tanúsítvány azonosítóját az [az keyvault secret list-versions](/cli/azure/keyvault/secret#list-versions) paranccsal. Alakítsa át a tanúsítványt az [az vm format-secret](/cli/azure/vm#format-secret) paranccsal. A következő példa ezen parancsok kimenetét ezekhez változókhoz rendeli, hogy könnyen használhatók legyenek a következő lépésekben:
+Ha a virtuális gép létrehozása alatt szeretné használni a tanúsítványt, szerezze be a tanúsítvány azonosítóját az [az keyvault secret list-versions](/cli/azure/keyvault/secret#az_keyvault_secret_list_versions) paranccsal. Alakítsa át a tanúsítványt az [az vm format-secret](/cli/azure/vm#az_vm_format_secret) paranccsal. A következő példa ezen parancsok kimenetét ezekhez változókhoz rendeli, hogy könnyen használhatók legyenek a következő lépésekben:
 
 ```azurecli-interactive 
 secret=$(az keyvault secret list-versions \
@@ -110,7 +110,7 @@ runcmd:
 ```
 
 ### <a name="create-a-secure-vm"></a>Biztonságos virtuális gép létrehozása
-Most hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#create) paranccsal. A tanúsítványadatokat a `--secrets` paraméterrel szúrhatja be a Key Vaultból. Alkalmazza a cloud-init konfigurációt a `--custom-data` paraméterrel:
+Most hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az_vm_create) paranccsal. A tanúsítványadatokat a `--secrets` paraméterrel szúrhatja be a Key Vaultból. Alkalmazza a cloud-init konfigurációt a `--custom-data` paraméterrel:
 
 ```azurecli-interactive 
 az vm create \
@@ -125,7 +125,7 @@ az vm create \
 
 A virtuális gép létrehozása, a csomagok telepítése és az alkalmazás elindítása néhány percig tart. A virtuális gép létrehozása után jegyezze fel az Azure CLI által megjelenített `publicIpAddress` értéket. Ezzel a címmel érhető el a hely egy webböngészőben.
 
-Ahhoz, hogy a biztonságos webes adatforgalom elérje a virtuális gépét, nyissa meg az internetről a 443-as portot az [az vm open-port](/cli/azure/vm#open-port) paranccsal:
+Ahhoz, hogy a biztonságos webes adatforgalom elérje a virtuális gépét, nyissa meg az internetről a 443-as portot az [az vm open-port](/cli/azure/vm#az_vm_open_port) paranccsal:
 
 ```azurecli-interactive 
 az vm open-port \

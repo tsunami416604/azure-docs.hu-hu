@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/5/2018
 ms.author: subramar
-ms.openlocfilehash: 3c59ad25294fe88f6145b6e55bb498cd958dbca2
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: b39a5790e5a2ef5483428842b537e0189f5f2b32
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>A fejlesztőkörnyezet előkészítése Linuxon
 > [!div class="op_single_selector"]
@@ -143,10 +143,12 @@ A Service Fabric olyan szerkezetkialakító eszközöket biztosít, amelyek seg�
 
 1. A node.js és az NPM telepítése a gépre
 
+Ubuntu
   ```bash
   sudo apt-get install npm
   sudo apt install nodejs-legacy
   ```
+
 2. A [Yeoman](http://yeoman.io/) sablongenerátor telepítése a gépre az NPM-ből
 
   ```bash
@@ -169,7 +171,7 @@ Telepítse az [Ubuntu rendszerre készült .NET Core 2.0 SDK-t](https://www.micr
 
 A Service Fabric-szolgáltatások Java használatával történő létrehozásához telepítse a JDK 1.8-at és a Gradle-t az összeállítási feladatok futtatásához. Az Open JDK 1.8 és a Gradle az alábbi kódrészlettel telepíthető. A Service Fabric Java-kódtárakat a Mavenből kéri le a rendszer.
 
-  ```bash
+ ```bash
   sudo apt-get install openjdk-8-jdk-headless
   sudo apt-get install gradle
   ```

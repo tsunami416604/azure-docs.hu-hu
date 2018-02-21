@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 6dc92640f1ff46bac25c11fe246deed514030d9b
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 9d7469035205f066091f6ca87f7199208706170c
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-a-windows-virtual-machine-with-the-azure-cli"></a>Windowsos virtuális gép létrehozása az Azure parancssori felülettel
 
@@ -36,7 +36,7 @@ Ha a CLI helyi telepítését és használatát választja, akkor ehhez a gyors�
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
 
 A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
 
@@ -71,7 +71,7 @@ A virtuális gép létrehozása után az Azure CLI az alábbi példához hasonl�
 
 ## <a name="open-port-80-for-web-traffic"></a>A 80-as port megnyitása a webes adatforgalom számára 
 
-Alapértelmezés szerint kizárólag RDP-kapcsolatok engedélyezettek az Azure-ban üzembe helyezett, Windows rendszerű virtuális gépeken. Ha ez a virtuális gép webkiszolgáló lesz, meg kell nyitnia a 80-as portot az internet irányából. A kívánt port megnyitásához használja az [az vm open-port](/cli/azure/vm#open-port) parancsot.  
+Alapértelmezés szerint kizárólag RDP-kapcsolatok engedélyezettek az Azure-ban üzembe helyezett, Windows rendszerű virtuális gépeken. Ha ez a virtuális gép webkiszolgáló lesz, meg kell nyitnia a 80-as portot az internet irányából. A kívánt port megnyitásához használja az [az vm open-port](/cli/azure/vm#az_vm_open_port) parancsot.  
  
  ```azurecli-interactive  
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM
@@ -102,13 +102,13 @@ Miután az IIS telepítve lett, és a 80-as port meg van nyitva a virtuális gé
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, a [az group delete](/cli/azure/group#delete) paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
+Ha már nincs rá szükség, a [az group delete](/cli/azure/group#az_group_delete) paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban üzembe helyezett egy egyszerű virtuális gépet, egy hálózati biztonsági csoport szabályát, valamint telepített egy webkiszolgálót. Ha bővebb információra van szüksége az Azure-alapú virtuális gépekkel kapcsolatban, lépjen tovább a Windows rendszerű virtuális gépekről szóló oktatóanyagra.
 

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/18/2017
 ms.author: jgao
-ms.openlocfilehash: fe2b84aac718ff5eddd4d73b5dc2120362952c1e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fbd4f1ae5eeec971a378c41761508629e530887c
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli-20"></a>Az Azure Data Lake Analytics használatának első lépései az Azure parancssori felületének 2.0-s verziójával
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -133,7 +133,7 @@ Ez a U-SQL-parancsfájl beolvassa a forrásadatfájlt az **Extractors.Tsv()** se
 
 Ne módosítsa az elérési utat, kivéve, ha átmásolja a forrásfájlt egy másik helyre.  A Data Lake Analytics létrehozza a kimeneti mappát, ha az még nem létezik.
 
-Egyszerűbb relatív útvonalakat használni az alapértelmezett Data Lake Store-fiókokban tárolt fájlokhoz. De használhat abszolút elérési utakat is.  Példa:
+Egyszerűbb relatív útvonalakat használni az alapértelmezett Data Lake Store-fiókokban tárolt fájlokhoz. De használhat abszolút elérési utakat is.  Például:
 
 ```
 adl://<Data LakeStorageAccountName>.azuredatalakestore.net:443/Samples/Data/SearchLog.tsv
@@ -158,7 +158,7 @@ Feladatok elküldéséhez használja a következő szintaxist.
 az dla job submit --account "<Data Lake Analytics Account Name>" --job-name "<Job Name>" --script "<Script Path and Name>"
 ```
 
-Példa:
+Például:
 
 ```
 az dla job submit --account "myadlaaccount" --job-name "myadlajob" --script @"C:\DLA\myscript.txt"
@@ -183,16 +183,16 @@ az dla job cancel --account "<Data Lake Analytics Account Name>" --job-identity 
 A feladat befejezése után az alábbi parancsok segítségével listázhatja ki a kimeneti fájlokat, és töltheti le a fájlokat:
 
 ```
-az dls fs list --account "<Data Lake Store Account Name>" --source-path "/Output" --destination-path "<Destintion>"
+az dls fs list --account "<Data Lake Store Account Name>" --source-path "/Output" --destination-path "<Destination>"
 az dls fs preview --account "<Data Lake Store Account Name>" --path "/Output/SearchLog-from-Data-Lake.csv"
 az dls fs preview --account "<Data Lake Store Account Name>" --path "/Output/SearchLog-from-Data-Lake.csv" --length 128 --offset 0
-az dls fs downlod --account "<Data Lake Store Account Name>" --source-path "/Output/SearchLog-from-Data-Lake.csv" --destintion-path "<Destination Path and File Name>"
+az dls fs download --account "<Data Lake Store Account Name>" --source-path "/Output/SearchLog-from-Data-Lake.csv" --destination-path "<Destination Path and File Name>"
 ```
 
-Példa:
+Például:
 
 ```
-az dls fs downlod --account "myadlsaccount" --source-path "/Output/SearchLog-from-Data-Lake.csv" --destintion-path "C:\DLA\myfile.csv"
+az dls fs download --account "myadlsaccount" --source-path "/Output/SearchLog-from-Data-Lake.csv" --destination-path "C:\DLA\myfile.csv"
 ```
 
 ## <a name="pipelines-and-recurrences"></a>Folyamatok és ismétlődések
@@ -215,7 +215,7 @@ az dla job recurrence list --account "<Data Lake Analytics Account Name>"
 az dla job recurrence show --account "<Data Lake Analytics Account Name>" --recurrence-identity "<Recurrence ID>"
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A Data Lake Analytics parancssori felületének 2.0-s verziójával foglalkozó referenciadokumentum megtekintéséhez lásd: [Data Lake Analytics](https://docs.microsoft.com/cli/azure/dla).
 * A Data Lake Store parancssori felületének 2.0-s verziójával foglalkozó referenciadokumentum megtekintéséhez lásd: [Data Lake Store](https://docs.microsoft.com/cli/azure/dls).
