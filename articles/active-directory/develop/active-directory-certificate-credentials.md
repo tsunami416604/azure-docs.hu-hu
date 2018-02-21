@@ -41,7 +41,7 @@ A helyességi feltétel kiszámításához, érdemes lehet a több valamelyikév
 
 | Paraméter |  Megjegyzés |
 | --- | --- | --- |
-| `aud` | A célközönség: Kell  **https://login.microsoftonline.com/*tenant_Id*  /oauth2/token ** |
+| `aud` | A célközönség: Kell **https://login.microsoftonline.com/*tenant_Id*/oauth2/token** |
 | `exp` | Lejárat dátuma: a dátum, amikor a jogkivonat érvényessége lejár. Az idő másodpercben 1970. január 1. a ki (1970-01-01T0:0:0Z) UTC, amíg a token érvényességi lejárati idejének.|
 | `iss` | Kibocsátó: a client_id (az ügyfélszolgáltatás alkalmazásazonosító) kell lennie. |
 | `jti` | GUID-ja: a JWT azonosító |

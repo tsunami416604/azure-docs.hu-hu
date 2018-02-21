@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 66dee639ddb1f59199af2905bcd7b1d87a62289c
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 8a595ead7da8dfa5544903bd698bfdff40555eb9
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Fejlesztési infrastruktúra létrehozása egy Azure-beli Linux rendszerű virtuális gépen a Jenkins, a GitHub és a Docker használatával
 Az alkalmazás fejlesztésének létrehozási és tesztelési fázisának automatizálásához használhat egy folyamatos integrációs és fejlesztési (CI/CD) folyamatot. Ebben az oktatóanyagban létrehozhat egy CI/CD folyamatot egy Azure-beli virtuális gépen, továbbá megismerkedhet a következőkkel is:
@@ -68,13 +68,13 @@ runcmd:
   - service jenkins restart
 ```
 
-Mielőtt létrehozhatna egy virtuális gépet, létre kell hoznia egy erőforráscsoportot az [az group create](/cli/azure/group#create) paranccsal. A következő példában létrehozunk egy *myResourceGroupJenkins* nevű erőforráscsoportot az *eastus* helyen:
+Mielőtt létrehozhatna egy virtuális gépet, létre kell hoznia egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. A következő példában létrehozunk egy *myResourceGroupJenkins* nevű erőforráscsoportot az *eastus* helyen:
 
 ```azurecli-interactive 
 az group create --name myResourceGroupJenkins --location eastus
 ```
 
-Most hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#create) paranccsal. Használja a `--custom-data` paramétert a cloud-init konfigurációs fájl megadásához. Adja meg a *cloud-init-jenkins.txt* teljes elérési útját, ha az aktuális munkakönyvtáron kívülre mentette.
+Most hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az_vm_create) paranccsal. Használja a `--custom-data` paramétert a cloud-init konfigurációs fájl megadásához. Adja meg a *cloud-init-jenkins.txt* teljes elérési útját, ha az aktuális munkakönyvtáron kívülre mentette.
 
 ```azurecli-interactive 
 az vm create --resource-group myResourceGroupJenkins \
@@ -87,7 +87,7 @@ az vm create --resource-group myResourceGroupJenkins \
 
 A virtuális gép létrehozása és konfigurálása néhány percig tart.
 
-A virtuális gép felé irányuló webes forgalom engedélyezéséhez használja az [az vm open-port](/cli/azure/vm#open-port) parancsot a *8080*-as port megnyitásához a Jenkins forgalma előtt, és az *1337*-es port megnyitásához a Node.js-alkalmazás előtt, amelyet egy mintaalkalmazás futtatásához használunk:
+A virtuális gép felé irányuló webes forgalom engedélyezéséhez használja az [az vm open-port](/cli/azure/vm#az_vm_open_port) parancsot a *8080*-as port megnyitásához a Jenkins forgalma előtt, és az *1337*-es port megnyitásához a Node.js-alkalmazás előtt, amelyet egy mintaalkalmazás futtatásához használunk:
 
 ```azurecli-interactive 
 az vm open-port --resource-group myResourceGroupJenkins --name myVM --port 8080 --priority 1001

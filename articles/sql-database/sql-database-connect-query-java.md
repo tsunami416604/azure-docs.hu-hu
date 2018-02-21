@@ -15,11 +15,11 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 07/11/2017
 ms.author: andrela
-ms.openlocfilehash: 994705b0a9c7ca850c357a5810f1edb1618098d6
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: ddf0f0be0acd86f3a2c3e241cbf8ebc81301bc21
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="use-java-to-query-an-azure-sql-database"></a>Java használata Azure SQL Database-adatbázis lekérdezéséhez
 
@@ -57,7 +57,7 @@ A rövid útmutató végrehajtásához győződjön meg arról, hogy megfelel az
    <dependency>
        <groupId>com.microsoft.sqlserver</groupId>
        <artifactId>mssql-jdbc</artifactId>
-       <version>6.2.1.jre8</version>
+       <version>6.2.2.jre8</version>
    </dependency>
    ```
 
@@ -144,7 +144,7 @@ A rövid útmutató végrehajtásához győződjön meg arról, hogy megfelel az
 2. Győződjön meg arról, hogy a parancssori felület visszaadta az első 20 sort, majd zárja be az alkalmazásablakot.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Az első SQL Database-adatbázis megtervezése](sql-database-design-first-database.md)
 - [Microsoft JDBC-illesztőprogram SQL Serverhez](https://github.com/microsoft/mssql-jdbc)
 - [Problémák jelentése/kérdések](https://github.com/microsoft/mssql-jdbc/issues)

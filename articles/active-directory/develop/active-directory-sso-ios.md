@@ -294,7 +294,7 @@ például: *msauth://code/x-msauth-mytestiosapp%3A%2F%2Fcom.myapp.mytestapp*
 #### <a name="step-4-ios9-add-a-configuration-parameter-to-your-app"></a>4. lépés: iOS9: egy konfigurációs paraméter hozzáadása az alkalmazáshoz
 Adal-t használ – canOpenURL: Ellenőrizze, hogy ha az ügynök telepítve van-e az eszközön. Az iOS 9-es Apple zárolva mi is kereshet séma egy alkalmazáskészletet. "Msauth" hozzáadása az info.plist részében szüksége lesz a `info.plist file`.
 
-<key>Info.plist</key> <array> <string>msauth</string></array>
+<key>LSApplicationQueriesSchemes</key> <array> <string>msauth</string></array>
 
 ### <a name="youve-configured-sso"></a>Egyszeri bejelentkezés konfigurálása!
 Most már a Microsoft Identity SDK automatikusan is fájlmegosztási hitelesítő adatokat az alkalmazások között és a broker meghívni, ha az megtalálható az eszközükön.
