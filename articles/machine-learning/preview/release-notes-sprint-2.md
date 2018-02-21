@@ -10,22 +10,22 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 12/04/2017
-ms.openlocfilehash: 6fede727a36b0f3243975bf23df2ef53baf1b15c
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 630e6e22bb41c777a043a7e6580239e254db9f1f
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="sprint-2---december-2017"></a>Sprint 2 – 2017. december 
 
 #### <a name="version-number-01171115263"></a>Verziószám: 0.1.1711.15263
 
->Ez hogyan lehetséges [verziószámának](https://docs.microsoft.com/azure/machine-learning/preview/known-issues-and-troubleshooting-guide).
+>Ez hogyan lehetséges [verziószámának](known-issues-and-troubleshooting-guide.md).
 
 Üdvözli az Azure Machine Learning-munkaterület harmadik frissítésére. A frissítés a munkaterület-alkalmazást, a parancssori felület (CLI) és a háttér-szolgáltatásaihoz tartalmaz fejlesztéseket. Köszönjük, hogy túlságosan azok küldését a smiles és frowns. A következő frissítéseket számos visszajelzése közvetlen eredményeként történik. 
 
 ## <a name="notable-new-features"></a>Fontos új szolgáltatások
-- [SQL Server és az Azure SQL Database adatforrásként támogatása](https://docs.microsoft.com/azure/machine-learning/preview/data-prep-appendix2-supported-data-sources#types) 
+- [SQL Server és az Azure SQL Database adatforrásként támogatása](data-prep-appendix2-supported-data-sources.md#types) 
 - [A részletes Learning Spark és GPU-támogatás MMLSpark használatával](https://github.com/Azure/mmlspark/blob/master/docs/gpu-setup.md)
 - [Az összes AML tároló kompatibilisek Azure IoT peremeszközök (nem szükséges további lépések) telepítésekor](http://aka.ms/aml-iot-edge-blog)
 - Regisztrált modellhez lista és a részletek nézetek elérhető Azure-portálon
@@ -56,7 +56,7 @@ Az alábbiakban az Azure Machine Learning a sprint a minden összetevő terület
 
 - Közben ajánló edge-re történő tekintse át a "oszlop származnia példa alapján" átalakítása a teljesítménnyel kapcsolatos fejlesztések
 
-- [SQL Server és az Azure SQL Database adatforrásként támogatása](https://docs.microsoft.com/azure/machine-learning/preview/data-prep-appendix2-supported-data-sources#types) 
+- [SQL Server és az Azure SQL Database adatforrásként támogatása](data-prep-appendix2-supported-data-sources.md#types) 
 
 ![Egy új SQL server-adatforrás létrehozása képe](media/release-notes-sprint-2/sql-server-data-source.png)
 
@@ -83,7 +83,7 @@ Mostantól létrehozhat és hozzáférni a remotedocker vagy a fürt számítás
 
 - Készítse elő a számítási célként, és a végrehajtási használni és az Azure ML munkaterület fogja használni ezt a kulcsot a hitelesítéshez.  
 
-Számítási célok létrehozásáról további információk: [Azure Machine Learning kísérletezhet szolgáltatás konfigurálása](https://docs.microsoft.com/azure/machine-learning/preview/experimentation-service-configuration)
+Számítási célok létrehozásáról további információk: [Azure Machine Learning kísérletezhet szolgáltatás konfigurálása](experimentation-service-configuration.md)
 
 ### <a name="visual-studio-tools-for-ai"></a>Visual Studio Tools for AI
 - Támogatása az [AI Visual Studio eszközök](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vstoolsai-vs2017). 
@@ -115,5 +115,5 @@ Számítási célok létrehozásáról további információk: [Azure Machine Le
 ## <a name="breaking-changes"></a>MÓDOSÍTÁSOK MEGSZAKÍTÁSA
 - Előléptetni a `--type` kapcsoló `az ml computetarget attach` egy alárendelt parancs. 
 
-    - `az ml computetarget attach --type remotedocker`most már`az ml computetarget attach remotedocker`
-    - `az ml computetarget attach --type cluster`most már`az ml computetarget attach cluster`
+    - `az ml computetarget attach --type remotedocker` most már `az ml computetarget attach remotedocker`
+    - `az ml computetarget attach --type cluster` most már `az ml computetarget attach cluster`

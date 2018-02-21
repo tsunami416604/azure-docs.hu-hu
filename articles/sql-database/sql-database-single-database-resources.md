@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: On Demand
-ms.date: 12/14/2017
+ms.date: 02/12/2018
 ms.author: carlrab
-ms.openlocfilehash: 0f88b09c342c1849a5c61fdb5dc048d7cbadc83b
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: 2c179c3b0704a6e88d718ba9f102e71c0ee1d6ef
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="manage-resources-for-a-single-database-in-azure-sql-database"></a>Az Azure SQL-adatbázis egy adatbázis-erőforrások kezelése
 
@@ -53,7 +53,7 @@ PowerShell-parancsmagok segítségével, vagy módosítsa a Azure SQL-adatbázis
 |[Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase)|Egy vagy több adatbázis beolvasása|
 |[Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase)|Az adatbázis tulajdonságainak megadása, vagy a meglévő adatbázis áthelyezése rugalmas készletbe. Tegyük fel például, a **MaxSizeBytes** tulajdonság beállítása az adatbázis maximális méretét.|
 |[Get-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/get-azurermsqldatabaseactivity)|Adatbázis-művelet állapotát olvassa be. |
-|[STOP-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/stop-azurermsqldatabaseactivity)|Az aszinkron frissítése a művelet visszavonja.|
+|[Stop-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/stop-azurermsqldatabaseactivity)|Az aszinkron frissítése a művelet visszavonja.|
 
 
 > [!TIP]
@@ -85,7 +85,7 @@ Beállítása vagy módosítása az Azure SQL-adatbázisok a szolgáltatási szi
 | --- | --- |
 |[ADATBÁZIS (az Azure SQL Database) létrehozása](/sql/t-sql/statements/create-database-azure-sql-database)|Egy új adatbázist hoz létre. Kell csatlakoznia a főadatbázison való futtatásával hozzon létre egy új adatbázist.|
 | [Az ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) |Azure SQL-adatbázis módosítása. |
-|[sys.database_service_objectives (az Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Egy Azure SQL database vagy az Azure SQL Data Warehouse esetében adja vissza a edition (szolgáltatási réteg), a szolgáltatási cél (IP-címek) és a rugalmas készlet nevét. Ha be van jelentkezve a főadatbázishoz egy Azure SQL adatbázis-kiszolgáló, az összes adatbázis ad vissza adatokat. Az Azure SQL Data Warehouse kell csatlakoznia a fő adatbázist.|
+|[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Egy Azure SQL database vagy az Azure SQL Data Warehouse esetében adja vissza a edition (szolgáltatási réteg), a szolgáltatási cél (IP-címek) és a rugalmas készlet nevét. Ha be van jelentkezve a főadatbázishoz egy Azure SQL adatbázis-kiszolgáló, az összes adatbázis ad vissza adatokat. Az Azure SQL Data Warehouse kell csatlakoznia a fő adatbázist.|
 |[sys.database_usage (az Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-usage-azure-sql-database)|Felsorolja a száma, típusa és az Azure SQL Database-kiszolgálón lévő adatbázis időtartama.|
 
 A következő példa bemutatja az adatbázis maximális méretét az ALTER DATABASE parancs használatával a következőre változik:
@@ -113,7 +113,7 @@ Beállítása vagy módosítása az Azure SQL-adatbázisok szolgáltatási szint
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További tudnivalók a szolgáltatási szinteket, teljesítményszintjeivel és tárolási összegek, lásd: [szolgáltatásszintek](sql-database-service-tiers.md).
 - További tudnivalók a rugalmas készletek című [rugalmas készletek](sql-database-elastic-pool.md).

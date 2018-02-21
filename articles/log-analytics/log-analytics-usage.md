@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/01/2018
+ms.date: 02/13/2018
 ms.author: magoedte
-ms.openlocfilehash: d873fe37ba2c4e851df35b9d5afe69b4adbf001c
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 9125f3db8929a41f49ff3ae53de9f3a71f5bf051
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Az adathasználat elemzése a Log Analyticsben
 A Log Analytics információkat biztosít a gyűjtött adatok mennyiségéről, valamint arról, hogy mely rendszerek küldték az adatokat és milyen típusú adatokat küldtek.  A **Log Analytics használati** irányítópultján megtekintheti, hogy mennyi adatot küld a rendszer a Log Analytics szolgáltatásnak. Az irányítópult megjeleníti, hogy az egyes megoldások mennyi adatot gyűjtenek össze, és a számítógépek mennyi adatot küldenek.
@@ -36,7 +36,9 @@ A **Log Analytics-használat** irányítópult az alábbi információkat jelen�
 - Ajánlatok
     - Insight- és Analytics-csomópontok
     - Automation and Control-csomópontok
-    - Biztonsági csomópontok
+    - Biztonsági csomópontok  
+- Teljesítmény
+    - Az adatok gyűjtésével és indexelésével eltelt idő  
 - Lekérdezések listája
 
 ![A Használat irányítópult](./media/log-analytics-usage/usage-dashboard01.png)
@@ -151,19 +153,6 @@ Kattintson **Az összes megjelenítése...** lehetőségre a kiválasztott aján
 
 A [megoldáscélzási](../operations-management-suite/operations-management-suite-solution-targeting.md) funkcióval megadhatja, hogy csak a szükséges számítógépcsoportoktól gyűjtsön adatokat.
 
-## <a name="check-if-there-is-ingestion-latency"></a>Annak ellenőrzése, hogy van-e adatbetöltési késés
-A Log Analytics esetében várható késé tapasztalható a begyűjtött adatok betöltésekor.  Az adatok indexelése és kereshetősége közötti abszolút idő kiszámíthatatlan lehet. Korábban elérhető volt az irányítópulton az adatok gyűjtéséhez és indexeléséhez szükséges időt mutató teljesítménydiagram, de az új lekérdezési nyelv bevezetésével ideiglenesen eltávolítottuk ezt a diagramot.  Amíg nem adunk ki az adatfeldolgozás késleltetésére vonatkozó frissített mérőszámokat, átmeneti megoldásként az alábbi lekérdezés használható az egyes adattípusok késésének megbecsülésére.  
-
-    search *
-    | where TimeGenerated > ago(8h)
-    | summarize max(TimeGenerated) by Type
-    | extend LatencyInMinutes = round((now() - max_TimeGenerated)/1m,2)
-    | project Type, LatencyInMinutes
-    | sort by LatencyInMinutes desc
-
-> [!NOTE]
-> A betöltési késés lekérdezése nem jeleníti meg késési előzményeket, és kizárólag az aktuális időre vonatkozó eredményeket adja vissza.  A *TimeGenerated* értékét az Általános sémanaplók esetében az ügynöknél, az Egyéni naplók esetében pedig gyűjtési végpontnál tölti ki a rendszer.  
->
 
 ## <a name="next-steps"></a>További lépések
 * A keresési nyelv használatával kapcsolatban tekintse meg a [Log Analytics naplókeresési funkciójával](log-analytics-log-searches.md) kapcsolatos cikket. A keresési lekérdezésekkel további elemzéseket végezhet a használati adatokon.

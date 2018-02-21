@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 11/02/2017
 ms.author: sethm
-ms.openlocfilehash: 77bb769a094c2a619c0c75363e23ae3ee561c1e4
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: fe13de5f83fe18a85f8d46d0eee039159e1a60e9
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="net-on-premisescloud-hybrid-application-using-azure-wcf-relay"></a>Helyszíni/felhőbeli .NET-hibridalkalmazás az Azure WCF Relay használatával
 
@@ -231,7 +231,7 @@ Ebben a szakaszban egy egyszerű ASP.NET-alkalmazást fog létrehozni, amely meg
     ![][18]
 
 7. A **New ASP.NET Web Application** (Új ASP.NET-webalkalmazás) párbeszédpanelen kattintson az **OK** gombra az MVC-alkalmazás létrehozásához.
-8. Most az Azure-erőforrásokat kell konfigurálnia az új webalkalmazáshoz. Kövesse a [cikk Közzététel az Azure platformon szakaszában](../app-service/app-service-web-get-started-dotnet.md#publish-to-azure) található lépéseket. Ezután térjen vissza ehhez az oktatóanyaghoz, és folytassa a következő lépéssel.
+8. Most az Azure-erőforrásokat kell konfigurálnia az új webalkalmazáshoz. Kövesse a [cikk Közzététel az Azure platformon szakaszában](../app-service/app-service-web-get-started-dotnet-framework.md#publish-to-azure) található lépéseket. Ezután térjen vissza ehhez az oktatóanyaghoz, és folytassa a következő lépéssel.
 10. A Megoldáskezelőben kattintson a jobb gombbal a **Models** (Modellek) elemre, kattintson az **Add** (Hozzáadás) parancsra, majd kattintson a **Class** (Osztály) elemre. A **Name** (Név) mezőbe írja be a **Product.cs** nevet. Ezután kattintson az **Add** (Hozzáadás) gombra.
 
     ![][17]
@@ -451,7 +451,7 @@ Mielőtt futtatná az alkalmazást a felhőben, győződjön meg arról, hogy a 
 
     ![][38]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Azure Relay szolgáltatásól a következő forrásanyagokban találhat további információkat:  
 

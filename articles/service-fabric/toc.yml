@@ -93,6 +93,8 @@
         - name: Reliable Services
           href: service-fabric-reliable-services-introduction.md
           items:
+            - name: Replika és példány életciklusa
+              href: service-fabric-concepts-replica-lifecycle.md
             - name: 'A Reliable Services életciklusa – C#'
               href: service-fabric-reliable-services-lifecycle.md
             - name: A Reliable Services életciklusa – Java
@@ -144,8 +146,6 @@
           href: service-fabric-concepts-scalability.md
         - name: A szolgáltatások rendelkezésre állása
           href: service-fabric-availability-services.md
-        - name: Replika és példány életciklusa
-          href: service-fabric-concepts-replica-lifecycle.md
         - name: Reconfiguration
           href: service-fabric-concepts-reconfiguration.md
         - name: A szolgáltatások közötti kommunikáció

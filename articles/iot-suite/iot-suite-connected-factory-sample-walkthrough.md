@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 88fe50460baf8b7180da113b33a03120f39cf44f
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 10497097bfda36a0a8a2b6b677ac26394217d8b4
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="connected-factory-preconfigured-solution-walkthrough"></a>Előre konfigurált csatlakoztatott gyár megoldás – bemutató
 
@@ -57,7 +57,7 @@ A megoldás webalkalmazásba integrált OPC UA-ügyféllel is rendelkezik, amely
 
 ## <a name="simulation"></a>Szimuláció
 
-A gyártósorok szimulált állomásokból és szimulált gyártási végrehajtó rendszerekből (MES) állnak. A szimulált eszközök és az OPC kiadói modul az OPC Foundation által kiadott [OPC UA .NET standardon][lnk-OPC-UA-NET-Standard] alapul.
+A gyártósorok szimulált állomásokból és szimulált gyártási végrehajtó rendszerekből (MES) állnak. A szimulált eszközök és az OPC-publikációs modul az OPC Foundation által kiadott [OPC UA .NET standardon][lnk-OPC-UA-NET-Standard] alapul.
 
 Az OPC Proxy és az OPC Publisher modulként van megvalósítva az [Azure IoT Edge][lnk-Azure-IoT-Gateway] alapján. Mindegyik szimulált gyártósorhoz kijelölt átjáró van csatlakoztatva.
 
@@ -227,13 +227,13 @@ Az előre konfigurált megoldás részeként üzembe helyezett webalkalmazás in
 > [!NOTE]
 > A csatlakoztatott gyár webalkalmazásán belüli OPC UA-kiszolgáló és OPC UA-verem esetén az OPC–proxy kommunikáció átlátszó, és a hitelesítésre és titkosításra vonatkozó összes OPC UA biztonsági funkció érvényben van.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Folytassa az IoT Suite megismerését az alábbi cikkek elolvasásával:
 
 * [Engedélyek az azureiotsuite.com webhelyen][lnk-permissions]
 * [Átjáró üzembe helyezése Windows vagy Linux rendszeren az előre konfigurált csatlakoztatott gyár megoldáshoz](iot-suite-connected-factory-gateway-deployment.md)
-* [OPC-közzétevő referenciamegvalósítása](iot-suite-connected-factory-publisher.md).
+* [OPC-közzétevő referenciamegvalósítása](https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md).
 
 [connected-factory-logical]:media/iot-suite-connected-factory-walkthrough/cf-logical-architecture.png
 

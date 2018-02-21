@@ -1,3 +1,26 @@
+---
+title: "A Stream Analytics: Valós idejű csalások felderítéséhez |} Microsoft Docs"
+description: "Útmutató a valós idejű csalások észlelése megoldás létrehozása a Stream Analytics. Egy eseményközpont használható a valós idejű esemény feldolgozása."
+keywords: "anomáliadetektálás, a csalások felderítéséhez, a valós idejű anomáliadetektálás"
+services: stream-analytics
+documentationcenter: 
+author: SnehaGunda
+manager: jhubbard
+editor: cgronlun
+ms.assetid: c10dd53f-d17a-4268-a561-cb500a8c04eb
+ms.service: stream-analytics
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: data-services
+ms.date: 03/28/2017
+ms.author: sngun
+ms.openlocfilehash: cc581142ca2c75bbee80f9d980c4984b4863a6cf
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 02/14/2018
+---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Az Azure Stream Analytics első lépéseiben: valós idejű csalások felderítése
 
 Ez az oktatóanyag illusztrálja végpont Azure Stream Analytics segítségével. Az alábbiak végrehajtásának módját ismerheti meg: 
@@ -126,7 +149,7 @@ Mielőtt elkezdené a TelcoGenerator alkalmazást, akkor konfigurálja úgy, hog
 
 A valós idejű csalások észlelése alkalmazásban használt kulcsmezők a következő:
 
-|**Rekord**|**Meghatározása**|
+|**Record**|Meghatározása|
 |----------|--------------|
 |`CallrecTime`|A hívás időbélyegzőjét kezdési időpontja. |
 |`SwitchNum`|A telefon kapcsoló használatával kapcsolódni a hívást. Az ebben a példában a kapcsolók a következők karakterláncok, amelyek megfelelnek a származási (Egyesült Államok, Kína, UK, Németország vagy Ausztrália). |
@@ -385,7 +408,7 @@ Azonban ha elkészült, és nincs szükség a létrehozott erőforrások, törö
 
 Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag a következő továbbra is:
 

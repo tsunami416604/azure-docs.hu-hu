@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: daden
-ms.openlocfilehash: f2482c7a47c72d192f26f3d8d9b9249af53da25d
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: c8e023d68ec2c7e40675f985d3e13b0714cec8ea
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="server-workload-forecasting-on-terabytes-of-data"></a>A több terabájtnyi adatot feldolgozó kiszolgálói számítási feladatok előrejelzése
 
@@ -51,7 +51,7 @@ Ez a példa futtatásához az Előfeltételek a következők:
 * Windows 10 (a példában szereplő utasításokat általában azonosak macOS rendszerekhez).
 * Egy adatok tudományos virtuális gép (DSVM) Linux (Ubuntu), lehetőleg USA keleti régiójában, ahol az adatok megkeresi a rendszerhez. Megadhat egy Ubuntu DSVM következő [ezeket az utasításokat](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro). Azt is láthatja, [a gyors üzembe helyezés](https://ms.portal.azure.com/#create/microsoft-ads.linux-data-science-vm-ubuntulinuxdsvmubuntu). Legalább 8 maggal és 32 GB memóriát a virtuális gép használatát javasoljuk. 
 
-Kövesse a [utasítás](https://docs.microsoft.com/azure/machine-learning/preview/known-issues-and-troubleshooting-guide#remove-vm-execution-error-no-tty-present) a virtuális Gépre jelszó nélküli sudoer hozzáférésének engedélyezésére vonatkozó AML munkaterületet.  Ha szeretné használni [SSH-alapú hitelesítés létrehozásáért és a virtuális gép AML munkaterület](https://docs.microsoft.com/azure/machine-learning/preview/experimentation-service-configuration#using-ssh-key-based-authentication-for-creating-and-using-compute-targets). Ebben a példában a jelszót a virtuális gép eléréséhez használjuk.  A következő tábla mentése a későbbi lépésekben DSVM információval:
+Kövesse a [utasítás](known-issues-and-troubleshooting-guide.md#remove-vm-execution-error-no-tty-present) a virtuális Gépre jelszó nélküli sudoer hozzáférésének engedélyezésére vonatkozó AML munkaterületet.  Ha szeretné használni [SSH-alapú hitelesítés létrehozásáért és a virtuális gép AML munkaterület](experimentation-service-configuration.md#using-ssh-key-based-authentication-for-creating-and-using-compute-targets). Ebben a példában a jelszót a virtuális gép eléréséhez használjuk.  A következő tábla mentése a későbbi lépésekben DSVM információval:
 
  Mező neve| Érték |  
  |------------|------|
@@ -71,7 +71,7 @@ DSVM IP-cím | xxx|
  Jelszó   | xxx|
 
 
-* Egy Azure Storage-fiókot. Követésével [ezeket az utasításokat](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) kattintva létrehozhat egyet. Is, hozzon létre két titkos blob tárolók nevében `fullmodel` és `onemonthmodel` az ezt a tárfiókot. A tárfiók tevékenységgel menthetők a köztes számítási eredmények és a gépi tanulási modellek. A tárfiók nevét és a hozzáférési kulcsot próbálhatja ki az ebben a példában van szüksége. A következő tábla mentése a későbbi lépésekben az Azure storage-fiók információval:
+* Egy Azure Storage-fiók. Követésével [ezeket az utasításokat](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) kattintva létrehozhat egyet. Is, hozzon létre két titkos blob tárolók nevében `fullmodel` és `onemonthmodel` az ezt a tárfiókot. A tárfiók tevékenységgel menthetők a köztes számítási eredmények és a gépi tanulási modellek. A tárfiók nevét és a hozzáférési kulcsot próbálhatja ki az ebben a példában van szüksége. A következő tábla mentése a későbbi lépésekben az Azure storage-fiók információval:
 
  Mező neve| Érték |  
  |------------|------|
@@ -186,7 +186,7 @@ Az első argumentum `configFilename`, ahol tárolni a Blob storage-információk
 
 | Mező | Típus | Leírás |
 |-----------|------|-------------|
-| StorageAccount | Karakterlánc | Az Azure Storage-fiók neve |
+| storageAccount | Karakterlánc | Az Azure Storage-fiók neve |
 | storageContainer | Karakterlánc | A köztes eredmények tárolásához Azure Storage-fiók tároló |
 | StorageKey tulajdonságát | Karakterlánc |Az Azure tárfiók_elérési_kulcsa |
 | dataFile|Karakterlánc | Adatforrásfájlokat  |
@@ -225,7 +225,7 @@ A projekt környezet előkészítése a következő futtatásával:
 ```az ml experiment prepare -c dockerdsvm```
 
 
-A `PrepareEnvironment` true értéke esetén Machine Learning-munkaterület a futtatási környezetet hoz létre, amikor a feladat elküldése. `Config/conda_dependencies.yml`és `Config/dsvm_spark_dependencies.yml` a futtatási környezetet kell tartalmaznia. E két YMAL fájl szerkesztésével a Conda függőségeket, a Spark-konfiguráció és a külső függőségei bármikor módosíthatja. Ebben a példában a hozzáadott `azure-storage` és `azure-ml-api-sdk` a további Python-csomag `Config/conda_dependencies.yml`. Is hozzáadtunk `spark.default.parallelism`, `spark.executor.instances`, és `spark.executor.cores` a `Config/dsvm_spark_dependencies.yml`. 
+A `PrepareEnvironment` true értéke esetén Machine Learning-munkaterület a futtatási környezetet hoz létre, amikor a feladat elküldése. `Config/conda_dependencies.yml` és `Config/dsvm_spark_dependencies.yml` a futtatási környezetet kell tartalmaznia. E két YMAL fájl szerkesztésével a Conda függőségeket, a Spark-konfiguráció és a külső függőségei bármikor módosíthatja. Ebben a példában a hozzáadott `azure-storage` és `azure-ml-api-sdk` a további Python-csomag `Config/conda_dependencies.yml`. Is hozzáadtunk `spark.default.parallelism`, `spark.executor.instances`, és `spark.executor.cores` a `Config/dsvm_spark_dependencies.yml`. 
 
 #####  <a name="2-data-preparation-and-feature-engineering-on-dsvm-docker"></a>2. Adatok előkészítése, a szolgáltatás fejlesztés a DSVM Docker
 
@@ -330,7 +330,7 @@ Keresse meg a munkaterületet üzemeltető jobb oldalsó sáv a **futtatása** m
 
 Ebben a szakaszban azok a modell webszolgáltatásként az előző lépésekben létrehozott. Is megismerheti, hogyan használható a webszolgáltatás terhelés előrejelzése. Gép nyelvi operationalization parancssori felületen (CLIs) használja a kód és a függőségek Docker képként csomagot, és közzéteheti a modell indexelése webszolgáltatásként.
 
-Futtassa a CLIs használhatja a Machine Learning-munkaterület a parancssorba.  Futtathatja a CLIs Ubuntu Linux követve a [a telepítési útmutató](https://github.com/Azure/Machine-Learning-Operationalization/blob/master/documentation/install-on-ubuntu-linux.md). 
+Futtassa a CLIs használhatja a Machine Learning-munkaterület a parancssorba.  Futtathatja a CLIs Ubuntu Linux követve a [a telepítési útmutató](./deployment-setup-configuration.md#using-the-cli). 
 
 > [!NOTE]
 > Cserélje le minden argumentum változó a következő parancsokat az összes tényleges értékek. Ez a szakasz befejezéséhez készül a 40 percet vesz igénybe.
@@ -416,7 +416,7 @@ Válasszon ki egy egyedi karakterlánc operationalization környezeti legyen. "[
 
 8. A webszolgáltatás méretezni. 
 
-   További információkért lásd: [operationalization meg az Azure Tárolószolgáltatás-fürt méretezése](https://github.com/Azure/Machine-Learning-Operationalization/blob/master/documentation/how-to-scale.md).
+   További információkért lásd: [operationalization meg az Azure Tárolószolgáltatás-fürt méretezése](how-to-scale-clusters.md).
  
 
 ## <a name="next-steps"></a>További lépések

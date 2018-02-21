@@ -1,10 +1,10 @@
 ---
 title: "Hozzon létre és P2S RADIUS kapcsolatok VPN ügyfél konfigurációs fájljainak telepítése: PowerShell: Azure |} Microsoft Docs"
-description: "Ez a cikk segít a pont – hely kapcsolatok RADIUS-hitelesítést használó VPN ügyfél-konfigurációs fájl létrehozása."
+description: "Windows, Mac OS X és Linux VPN-ügyfél konfigurációs fájlok RADIUS-hitelesítést használó kapcsolatok létrehozása."
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: timlt
+manager: jpconnock
 editor: 
 tags: azure-resource-manager
 ms.assetid: 
@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/05/2018
+ms.date: 02/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: fb83bda50535dc002120ee4621cd4c8df71c141c
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: ce914d2fd0472855ad7a17bf64ae43a76ceb5743
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>Hozzon létre és telepítse a VPN-ügyfél konfigurációs fájlok P2S RADIUS-hitelesítés
 
-Pont-pont keresztül kapcsolódik a virtuális hálózat, az ügyféleszközt, amelyen meg csatlakoztatni fog konfigurálni kell. A RADIUS-kiszolgáló több hitelesítési beállítások itt: felhasználónév/jelszó-hitelesítés, tanúsítvány alapú hitelesítést, valamint más hitelesítési típusok. A VPN-ügyfél konfigurációja nem azonos az egyes hitelesítési. A VPN-ügyfél konfigurálásához használja a szükséges beállításokat tartalmazó ügyfél-konfigurációs fájlok. Ez a cikk segítséget nyújt a létrehozása és telepítése a RADIUS hitelesítési típushoz, amely a használni kívánt VPN-konfiguráció.
+Pont-pont keresztül kapcsolódik a virtuális hálózat, az ügyféleszközt, amelyen meg csatlakoztatni fog konfigurálni kell. A Windows, Mac OS x és Linux rendszerű ügyféleszközök P2S VPN-kapcsolatokat hozhat létre. Ha a RADIUS-hitelesítést használ, több hitelesítési lehetőség áll rendelkezésre: felhasználónév/jelszó-hitelesítés, tanúsítvány alapú hitelesítést, valamint más hitelesítési típusok. A VPN-ügyfél konfigurációja nem azonos az egyes hitelesítési. A VPN-ügyfél konfigurálásához használja a szükséges beállításokat tartalmazó ügyfél-konfigurációs fájlok. Ez a cikk segítséget nyújt a létrehozása és telepítése a RADIUS hitelesítési típushoz, amely a használni kívánt VPN-konfiguráció.
 
-### <a name="workflow"></a>Munkafolyamat
+A konfigurációs munkafolyamat P2S RADIUS-hitelesítés a következőképpen történik:
 
 1. [Állítsa be az Azure VPN gateway p2s-kapcsolatokhoz tartozó](point-to-site-how-to-radius-ps.md).
 2. [Állítsa be a RADIUS-kiszolgáló hitelesítési](point-to-site-how-to-radius-ps.md#radius). 
@@ -36,6 +36,8 @@ Pont-pont keresztül kapcsolódik a virtuális hálózat, az ügyféleszközt, a
 >Ha a pont – hely típusú VPN-konfiguráció módosításainak a VPN-ügyfél konfigurációs profil, például a VPN-protokoll típusát vagy a hitelesítési típus létrehozása után Ön hozza létre és telepíthet egy új VPN-ügyfél konfigurációja a felhasználói eszközökön.
 >
 >
+
+Ez a cikk a részeket használatához először döntse el, használni kívánt hitelesítési típustól: felhasználónév/jelszó, tanúsítvány vagy egyéb típusú hitelesítés. Az egyes szakaszokon belül vannak a Windows, Mac OS X és Linux (korlátozott lépéseket rendelkezésre) lépések.
 
 ## <a name="adeap"></a>Felhasználónév/jelszó-hitelesítés
 
@@ -121,7 +123,7 @@ A következő lépésekkel konfigurálhatja a natív Windows VPN-ügyfél eseté
 
 Az alábbi utasítások alapján létrehozott Ubuntu 17.0.4 strongSwan 5.5.1 használatával. Tényleges képernyők, amelyekhez a Linux és strongSwan verziójától függően eltérő lehet.
 
-1. Nyissa meg a **Terminálszolgáltatások** telepítendő **strongSwan** és a hálózatkezelő, a következő parancs futtatásával. Ha a "libcharon-extra-beépülő modulok" vonatkozó hibaüzenetet kap, akkor cserélje le a "strongswan-beépülő modul – eap-mschapv2".
+1. Nyissa meg a **Terminálszolgáltatások** telepítendő **strongSwan** és a hálózatkezelő, a példában a parancs futtatásával. Ha a "libcharon-extra-beépülő modulok" vonatkozó hibaüzenetet kap, akkor cserélje le a "strongswan-beépülő modul – eap-mschapv2".
 
   ```Terminal
   sudo apt-get install strongswan libcharon-extra-plugins moreutils iptables-persistent network-manager-strongswan
@@ -251,3 +253,5 @@ Egy másik hitelesítési típus (például OTP), és nem felhasználónév/jels
 ## <a name="next-steps"></a>További lépések
 
 Térjen vissza a cikkhez [végezze el a P2S konfigurálását](point-to-site-how-to-radius-ps.md).
+
+P2S hibaelhárítási információkért [Azure hibaelhárítási pont – hely kapcsolatok](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md).

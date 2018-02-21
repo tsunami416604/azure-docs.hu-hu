@@ -67,8 +67,10 @@
           href: kubernetes-helm.md
         - name: Alkalmazások fejlesztése a Draft használatával
           href: kubernetes-draft.md
-        - name: Integrálás az Azure-ral az OSBA használatával
+        - name: Open Service Broker for Azure
           href: integrate-azure.md
+        - name: Folyamatos üzembe helyezés a Jenkinsben
+          href: jenkins-continuous-deployment.md
     - name: A Kubernetes alapjai
       items:
         - name: A Kubernetes-irányítópult használata

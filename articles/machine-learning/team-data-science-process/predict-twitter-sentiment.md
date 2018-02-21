@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: bradsev;
-ms.openlocfilehash: df1124ddb436f0cfeec8f4ed9728fa15278b9325
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 9bae3971f438659c121bfc18a23746a016e5ef97
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="predict-twitter-sentiment-with-word-embeddings-by-using-the-team-data-science-process"></a>A word beágyazásokat Twitter sentiment előrejelzése az Team tudományos folyamat használatával
 
@@ -129,9 +129,9 @@ A színátmenetes kiemelése modell SSWE szolgáltatással rendelkező nyújtja 
 
 Az utolsó lépés a képzett véleményeket előrejelzési modell webszolgáltatásba az Azure Tárolószolgáltatásban fürt központi telepítése. A minta SSWE beágyazási algoritmus átmenetes kiemelése modellt használ a betanított modell. A operationalization környezet rendelkezései Docker és Kubernetes a fürt avatkozzon webszolgáltatás, az alábbi ábrán látható módon: 
 
-![Kubernetes irányítópult](./media/predict-twitter-sentiment/kubernetes-dashboard.PNG)
+![Kubernetes dashboard](./media/predict-twitter-sentiment/kubernetes-dashboard.PNG)
 
-A operationalization folyamatáról további információk: [üzembe helyezése az Azure Machine Learning modell webszolgáltatásként](https://docs.microsoft.com/azure/machine-learning/preview/model-management-service-deploy).
+A operationalization folyamatáról további információk: [üzembe helyezése az Azure Machine Learning modell webszolgáltatásként](../preview/model-management-service-deploy.md).
 
 ## <a name="conclusion"></a>Összegzés
 
@@ -140,11 +140,11 @@ Ebben a cikkben megismerte a Word2Vec és a céggel kapcsolatos véleményeket-s
 
 ## <a name="references"></a>Referencia
 
-* [Team tudományos folyamata](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview) 
+* [Csoportos adatelemzési folyamat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview) 
 * [Az Azure Machine Learning Team adatok tudományos folyamat (TDSP) használata](https://aka.ms/how-to-use-tdsp-in-aml)
 * [Az Azure Machine Learninghez TDSP projektsablonjai](https://aka.ms/tdspamlgithubrepo)
-* [Az Azure Machine Learning-munkaterület](https://docs.microsoft.com/azure/machine-learning/preview/)
+* [Azure Machine Learning Workbench](../preview/index.yml)
 * [USA bevétel adatkészlet UCI ML tárházból](https://archive.ics.uci.edu/ml/datasets/adult)
-* [Orvosbiológiai entitás felismerés TDSP sablonok segítségével](https://docs.microsoft.com/azure/machine-learning/preview/scenario-tdsp-biomedical-recognition)
+* [Orvosbiológiai entitás felismerés TDSP sablonok segítségével](../preview/scenario-tdsp-biomedical-recognition.md)
 * [Mikolov, Tomas, és mások. "Szavak és kifejezések és azok Compositionality ábrázolásai elosztott. Kiadásokban a Neurális adatfeldolgozó rendszerek." 2013.](https://arxiv.org/abs/1310.4546)
-* [Tang, Duyu, és mások. "A tanulási véleményeket-specifikus Word beágyazás Twitter véleményeket besorolási." HOZZÁFÉRÉS-VEZÉRLÉSI LISTA (1). 2014.](http://www.aclweb.org/anthology/P14-1146)
+* [Tang, Duyu, és mások. "A tanulási véleményeket-specifikus Word beágyazás Twitter véleményeket besorolási." ACL (1). 2014.](http://www.aclweb.org/anthology/P14-1146)

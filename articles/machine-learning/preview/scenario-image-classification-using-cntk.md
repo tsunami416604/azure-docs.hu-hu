@@ -11,11 +11,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 10/17/2017
-ms.openlocfilehash: 53d182d84c8f28c7b4055780a5b41df00fdc8583
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: c3ad1cf8651858a2cb1fdadc2beed4e5c7bef56c
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="image-classification-using-azure-machine-learning-workbench"></a>Kép besorolás használata az Azure Machine Learning-munkaterület
 
@@ -54,7 +54,7 @@ Ez a példa futtatásához az Előfeltételek a következők:
 4. Egy dedikált GPU nincs szükség a SVM képzési végrehajtása részében 1, azonban szükség van a 2. rész ismertetett DNN finomítása. Ha nem rendelkezik egy erős GPU, szeretné, hogy a több Feldolgozóegységekkel betanítása, vagy egy Windows-számítógép nem rendelkezik, fontolja meg Azure mély tanulási virtuális gépek használata a Windows operációs rendszerrel. Lásd: [Itt](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning) egy 1 kattintással telepítési útmutató. Amennyiben telepített, csatlakoztassa a virtuális Gépet egy távoli asztali kapcsolaton keresztül, munkaterület nincs telepítése és a virtuális gépről helyi hajtható végre a kódot.
 5. Például OpenCV különböző Python függvénytárak telepítve kell lennie. Kattintson a *nyissa meg a parancssort* a a *fájl* menü a munkaterületet üzemeltető futtatja a következő parancsokat a függőségek telepítése:  
     - `pip install https://cntk.ai/PythonWheel/GPU/cntk-2.2-cp35-cp35m-win_amd64.whl`  
-    - `pip install opencv_python-3.3.1-cp35-cp35m-win_amd64.whl`után a OpenCV kerék letöltésére http://www.lfd.uci.edu/~gohlke/pythonlibs/ (a pontos fájl nevét és verzióját módosítható)
+    - `pip install opencv_python-3.3.1-cp35-cp35m-win_amd64.whl` után a OpenCV kerék letöltésére http://www.lfd.uci.edu/~gohlke/pythonlibs/ (a pontos fájl nevét és verzióját módosítható)
     - `conda install pillow`
     - `pip install -U numpy`
     - `pip install bqplot`
@@ -81,7 +81,7 @@ Ezeket a lépéseket hajtja végre a lent látható módon szerkezetének hoz l�
 
   Mappa| Leírás
   ---|---
-  aml_config /|                           Az Azure Machine Learning-munkaterület konfigurációs fájlokat tartalmazó könyvtárat
+  aml_config/|                           Az Azure Machine Learning-munkaterület konfigurációs fájlokat tartalmazó könyvtárat
   szalagtárak /|                              Minden Python és a Jupyter súgófunkciókat tartalmazó könyvtár
   notebookok /|                              Az összes jegyzetfüzet tartalmazó könyvtár
   erőforrások /|                              Minden erőforrás (a példa url módon képek) tartalmazó könyvtár
@@ -193,7 +193,7 @@ Végezetül a notebook `showResults.py` Görgessen végig a teszt képek és jel
 ### <a name="step-6-deployment"></a>6. lépés: központi telepítés
 `Scripts: 6_callWebservice.py, deploymain.py. Notebook: deploy.ipynb`
 
-A betanított rendszer mostantól a REST API tehetők közzé. Központi telepítés esetén, tekintse meg a notebook a `deploy.ipynb`, és az Azure Machine Learning-munkaterület belül funkció alapján (ne felejtse el a projekt helyi kernel "PROJEKTNÉV helyi" névvel kernel állítja). További információ a kiváló telepítési szakasza a [IRIS oktatóanyag](https://docs.microsoft.com/azure/machine-learning/preview/tutorial-classifying-iris-part-3) további központi telepítéshez kapcsolódó információk.
+A betanított rendszer mostantól a REST API tehetők közzé. Központi telepítés esetén, tekintse meg a notebook a `deploy.ipynb`, és az Azure Machine Learning-munkaterület belül funkció alapján (ne felejtse el a projekt helyi kernel "PROJEKTNÉV helyi" névvel kernel állítja). További információ a kiváló telepítési szakasza a [IRIS oktatóanyag](tutorial-classifying-iris-part-3.md) további központi telepítéshez kapcsolódó információk.
 
 Amennyiben telepített, a webes szolgáltatás hívása a parancsfájllal `6_callWebservice.py`. Vegye figyelembe, hogy a webszolgáltatás IP-címe (helyi vagy a felhőbe) kell először be kell állítani a parancsfájlban. A notebook `deploy.ipynb` ismerteti az IP-cím kereséséhez.
 
@@ -228,7 +228,7 @@ Amint az alábbi ábra is látható, a megadott adatkészlet DNN pontosítás ha
 
 ### <a name="run-history-tracking"></a>Az előzmények követésének futtatása
 
-Az előzmények az egyes futtatása összehasonlítás két vagy több fut, amelyek az Azure-on Azure Machine Learning-munkaterület tárolókat is hét egymástól. Ennek a magyarázatát részletesen a [Iris oktatóanyag](https://docs.microsoft.com/azure/machine-learning/preview/tutorial-classifying-iris-part-2). Is szemlélteti, ahol azt összehasonlítja két frissítési kísérletei során a parancsfájl alábbi képernyőfelvételnek `5_evaluate.py`, vagy DNN pontosítás használatával Ez azt jelenti, hogy `classifier = "dnn"`(futtatási szám 148) vagy SVM betanítása Ez azt jelenti, hogy `classifier = "svm"` (futtatási szám 150).
+Az előzmények az egyes futtatása összehasonlítás két vagy több fut, amelyek az Azure-on Azure Machine Learning-munkaterület tárolókat is hét egymástól. Ennek a magyarázatát részletesen a [Iris oktatóanyag](tutorial-classifying-iris-part-2.md). Is szemlélteti, ahol azt összehasonlítja két frissítési kísérletei során a parancsfájl alábbi képernyőfelvételnek `5_evaluate.py`, vagy DNN pontosítás használatával Ez azt jelenti, hogy `classifier = "dnn"`(futtatási szám 148) vagy SVM betanítása Ez azt jelenti, hogy `classifier = "svm"` (futtatási szám 150).
 
 Az első a képernyőfelvételen látható DNN pontosítás SVM képzési minden osztály-nál nagyobb pontosság vezet. A második képernyőfelvételen látható összes metrikát követett, beleértve a osztályozó volt. A nyomkövetési végezheti el a parancsfájl `5_evaluate.py` az Azure Machine Learning-munkaterület naplózó meghívásával. Emellett a parancsfájl ROC görbe és zavart mátrix is menti a *kimenete* mappát. Ez *kimenete* mappa különleges abban, hogy a benne lévő tartalom is követi nyomon a munkaterületet üzemeltető előzmények funkció, és ezért a kimeneti fájlok érhető el tetszőleges időpontban, függetlenül attól, hogy helyi másolatot felül lett írva.
 

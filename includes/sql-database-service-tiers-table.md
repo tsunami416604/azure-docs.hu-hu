@@ -52,22 +52,10 @@ sql-database-single-database-resources.md
 | Egyidejű munkamenetek maximális száma | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
 |||||||
 
-### <a name="premium-rs-service-tier"></a>Prémium szintű RS szolgáltatási rétegben 
-| **Teljesítményszint szükséges** | **PRS1** | **PRS2** | **PRS4** | **PRS6** |
-| :--- |---:|---:|---:|---:|---:|---:|
-| DTU-k maximális száma | 125 | 250 | 500 | 1000 |
-| Belefoglalt tárhely (GB) | 500 | 500 | 500 | 500 |
-| Maximális tárolási lehetőségek (GB) * | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 |
-| Memóriában tárolt OLTP-k maximális tárterülete (GB) | 1 | 2 | 4 | 8 |
-| Maximális párhuzamos munkavállalók (kérelmek)| 200 | 400 | 800 | 1600 |
-| Egyidejű bejelentkezések maximális száma | 200 | 400 | 800 | 1600 |
-| Egyidejű munkamenetek maximális száma | 30000 | 30000 | 30000 | 30000 |
-|||||||
-
 > [!IMPORTANT]
 > \* A szolgáltatási keretbe foglaltnál nagyobb tárterületek előzetes verzióban érhetők el, és extra költségek vonatkoznak rájuk. Részletes információ: [SQL Database – Díjszabás](https://azure.microsoft.com/pricing/details/sql-database/). 
 >
->\*Prémium szint több, mint 1 TB-nyi tárhelyre érhető el jelenleg a következő régiókban: Kelet-Ausztrália, Ausztrália délkeleti, Dél-Brazília, Kanada központi, Kanada keleti régiója, USA középső RÉGIÓJA, Franciaország központi, Németország központi, kelet-japán, Nyugat-japán, koreai központi Észak-USA középső RÉGIÓJA, Észak-Európa, USA déli középső RÉGIÓJA, Délkelet-Ázsia, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, USA East2, USA nyugati régiója, USA – (kormányzati) Virginia és Nyugat-Európa. Lásd: [P11–P15 – Aktuális korlátozások](../articles/sql-database/sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+>\* Az 1 TB tárhelyméretet meghaladó prémium szintű készletek jelenleg a következő régiókban érhetők el: Kelet-Ausztrália, Délkelet-Ausztrália, Dél-Brazília, Közép-Kanada, Kelet-Kanada, USA középső régiója, Közép-Franciaország, Közép-Németország, Kelet-Japán, Nyugat-Japán, Korea középső régiója, USA északi középső régiója, Észak-Európa, USA déli középső régiója, Délkelet-Ázsia, az Egyesült Királyság déli régiója, az Egyesült Királyság nyugati régiója, USA keleti régiója 2, USA nyugati régiója, USA-beli államigazgatás – Virginia, és Nyugat-Európa. Lásd: [P11–P15 – Aktuális korlátozások](../articles/sql-database/sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 > 
->\*\*Maximális Dtu adatbázisonkénti indítása, 200 dtu-inak száma és az annál magasabb a Standard még csak előzetes verziójúak.
+>\*\* Maximális Dtu adatbázisonkénti indítása, 200 dtu-inak száma és az annál magasabb a Standard még csak előzetes verziójúak.
 >

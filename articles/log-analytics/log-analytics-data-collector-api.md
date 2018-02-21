@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: bwren
-ms.openlocfilehash: 88d9c4b23eb676743c004c0d1b3ab45f6cd66055
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 5c6f2b35b48988af533612cb48da8fe79a838cf6
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>Adatokat küldeni a Log Analyticshez a HTTP adatait gyűjtője API-t (nyilvános előzetes verzió)
 Ez a cikk bemutatja, hogyan használja a HTTP adatok adatgyűjtő API REST API-ügyfél Naplóelemzési adatküldéshez.  Bemutatja, hogyan lehet a parancsfájl vagy az alkalmazás által összegyűjtött adatok formázása, adja hozzá a kérelem és a kérésre Naplóelemzési engedélyezve van.  A példák PowerShell, a C# és Python.
@@ -49,7 +49,7 @@ A HTTP-adatokat gyűjtő API használatához hozzon létre egy POST kérést, am
 ### <a name="request-uri-parameters"></a>A kérelem URI-paraméterei
 | Paraméter | Leírás |
 |:--- |:--- |
-| CustomerID |A Microsoft Operations Management Suite-munkaterülettel egyedi azonosítója. |
+| CustomerID |A Naplóelemzési munkaterület egyedi azonosítója. |
 | Erőforrás |Az API-erőforrás neve: / api/logs. |
 | API-verzió |A kérelem használandó API verziója. Ez jelenleg 2016-04-01. |
 
@@ -70,7 +70,7 @@ Az engedélyezési fejléc formátuma a következő:
 Authorization: SharedKey <WorkspaceID>:<Signature>
 ```
 
-*WorkspaceID* az Operations Management Suite-munkaterülettel egyedi azonosítója. *Aláírás* van egy [kivonat-alapú üzenethitelesítési kód (HMAC)](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) , a kérelem összeállított és majd számított használatával a [SHA-256 algoritmus](https://msdn.microsoft.com/library/system.security.cryptography.sha256.aspx). Majd hogy kódolása Base64 kódolással.
+*WorkspaceID* a Naplóelemzési munkaterület egyedi azonosítója. *Aláírás* van egy [kivonat-alapú üzenethitelesítési kód (HMAC)](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) , a kérelem összeállított és majd számított használatával a [SHA-256 algoritmus](https://msdn.microsoft.com/library/system.security.cryptography.sha256.aspx). Majd hogy kódolása Base64 kódolással.
 
 Ezt a formátumot használja kódolására a **SharedKey** aláírás-karakterlánc:
 
@@ -188,7 +188,7 @@ Ez a táblázat felsorolja a szolgáltatás esetleg vissza állapotkódokat telj
 | 403 |Tiltott |InvalidAuthorization |A szolgáltatás nem tudta hitelesíteni a kérelmet. Győződjön meg arról, hogy a munkaterület azonosítója és a kapcsolat kulcs érvényesek. |
 | 404 |Nem található | | A megadott URL-cím érvénytelen, vagy a kérelem túl nagy. |
 | 429 |Túl sok kérelem | | A szolgáltatás problémát nagyszámú fiókja adatait. Próbálkozzon újra később a kérelmet. |
-| 500 |Belső kiszolgálóhiba |UnspecifiedError |A szolgáltatás belső hibát észlelt. Próbálja megismételni a kérelmet. |
+| 500 |Belső kiszolgálóhiba. |UnspecifiedError |A szolgáltatás belső hibát észlelt. Próbálja megismételni a kérelmet. |
 | 503 |A szolgáltatás nem érhető el |ServiceUnavailable |A szolgáltatás jelenleg nem érhető el a kérelmek fogadására. Próbálja megismételni a kérést. |
 
 ## <a name="query-data"></a>Adatok lekérdezése
@@ -204,7 +204,8 @@ A következő szakaszokban lévő látni fogja, hogy hogyan szeretné elküldeni
 
 Minden egyes minta hajtsa végre ezeket a lépéseket, a változók beállítása hitelesítési fejlécéhez:
 
-1. Az Operations Management Suite portálját, válassza ki a **beállítások** csempére, majd válassza ki a **csatlakoztatott források** fülre.
+1. Az Azure portálon keresse meg a Naplóelemzési munkaterület.
+2. Válassza ki **speciális beállítások** , majd **csatlakoztatott adatforrások**.
 2. Jobb oldalán **munkaterület azonosítója**, válassza a Másolás ikonra, és illessze be az azonosító az értékeként a **ügyfél azonosítója** változó.
 3. Jobb oldalán **elsődleges kulcs**, válassza a Másolás ikonra, és illessze be az azonosító az értékeként a **megosztott kulcsos** változó.
 
@@ -311,7 +312,7 @@ namespace OIAPIExample
         // An example JSON object, with key/value pairs
         static string json = @"[{""DemoField1"":""DemoValue1"",""DemoField2"":""DemoValue2""},{""DemoField3"":""DemoValue3"",""DemoField4"":""DemoValue4""}]";
 
-        // Update customerId to your Operations Management Suite workspace ID
+        // Update customerId to your Log Analytics workspace ID
         static string customerId = "xxxxxxxx-xxx-xxx-xxx-xxxxxxxxxxxx";
 
         // For sharedKey, use either the primary or the secondary Connected Sources client authentication key   
@@ -389,7 +390,7 @@ import hashlib
 import hmac
 import base64
 
-# Update the customer ID to your Operations Management Suite workspace ID
+# Update the customer ID to your Log Analytics workspace ID
 customer_id = 'xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 
 # For the shared key, use either the primary or the secondary Connected Sources client authentication key   

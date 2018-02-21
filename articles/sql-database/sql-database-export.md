@@ -15,11 +15,11 @@ ms.author: carlrab
 ms.workload: Active
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.openlocfilehash: 227e171880ec3f59875ea792465f68c75a4a5fa8
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 86f6e3b8ef9567437320c83f6bf6e38b8ac2d9f8
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Azure SQL-adatbázis BACPAC fájlba exportálása
 
@@ -88,15 +88,15 @@ $exportStatus = Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $e
 [Console]::Write("Exporting")
 while ($exportStatus.Status -eq "InProgress")
 {
-    $exportStatus = Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $exportRequest.OperationStatusLink
-    [Console]::Write(".")
     Start-Sleep -s 10
+    $exportStatus = Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $exportRequest.OperationStatusLink
+    [Console]::Write(".")   
 }
 [Console]::WriteLine("")
 $exportStatus
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Egy Azure SQL-adatbázis biztonsági másolatának hosszú távú biztonsági másolatok megőrzésének ahelyett, hogy archív célokra adatbázis exportálja, lásd: [hosszú távú biztonsági másolatok megőrzésének](sql-database-long-term-retention.md).
 - További információ a BACPAC-fájlokkal végzett migrálásról az SQL Server ügyféltanácsadói csapat blogján: [Migrálás SQL Serverről az Azure SQL Database-re BACPAC-fájlokkal](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).

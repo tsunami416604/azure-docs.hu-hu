@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: On Demand
-ms.date: 02/09/2017
+ms.date: 02/12/2018
 ms.author: carlrab
-ms.openlocfilehash: 5dc245a29a9106156c207ed7394f8bb289db729e
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 0a7bce49a73d60785f09f270894afc4037661e10
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="tuning-performance-in-azure-sql-database"></a>Az Azure SQL-adatbázis teljesítményének hangolása
 
@@ -34,7 +34,7 @@ Ezek a kézi módszert, mert később szüksége lesz, hogy mit [szolgáltatáss
 
 ## <a name="increasing-performance-tier-of-your-database"></a>Az adatbázis teljesítményének szintjének növelése
 
-Az Azure SQL Database kínál négy [szolgáltatásszintek](sql-database-service-tiers.md) , amelyek közül választhat: Basic, Standard, Premium és prémium RS (teljesítményének mérése történik az adatbázis-átviteli egységek, vagy [dtu-k](sql-database-what-is-a-dtu.md). Egyes szolgáltatásszinteken szigorúan elkülöníti az erőforrásokat, hogy használható-e az SQL-adatbázis, és biztosítja, hogy a szolgáltatási szint kiszámítható teljesítményt. Ebben a cikkben szereplő útmutatást, amelyek segítségével válassza ki a szolgáltatási rétegben, az alkalmazás fel. Azt is ismertetik, hogy az alkalmazás úgy hasznosíthatja a legjobban az Azure SQL Database észlelheti.
+Az Azure SQL Database kínál négy [szolgáltatásszintek](sql-database-service-tiers.md) , amelyek közül választhat: Basic, Standard és Premium (teljesítményének mérése történik az adatbázis-átviteli egységek, vagy [dtu-k](sql-database-what-is-a-dtu.md). Egyes szolgáltatásszinteken szigorúan elkülöníti az erőforrásokat, hogy használható-e az SQL-adatbázis, és biztosítja, hogy a szolgáltatási szint kiszámítható teljesítményt. Ebben a cikkben szereplő útmutatást, amelyek segítségével válassza ki a szolgáltatási rétegben, az alkalmazás fel. Azt is ismertetik, hogy az alkalmazás úgy hasznosíthatja a legjobban az Azure SQL Database észlelheti.
 
 > [!NOTE]
 > Ez a cikk foglalkozik, a teljesítmény útmutatást az önálló adatbázisok Azure SQL-adatbázisban. Rugalmas készletek kapcsolódó teljesítmény útmutatóért lásd: [rugalmas készletek ára és teljesítménye szempontjai](sql-database-elastic-pool-guidance.md). Vegye figyelembe azonban, hogy ebben a cikkben szereplő hangolási javaslatok alkalmazása az adatbázisok rugalmas készlethez, és beállíthatja hasonló teljesítmény előnyök.
@@ -49,7 +49,6 @@ Az Azure SQL Database kínál négy [szolgáltatásszintek](sql-database-service
   * **Magas csúcsterhelés**. Olyan alkalmazás, amely jelentős Processzor, memória, vagy bemeneti/kimeneti (I/O) a művelet elvégzéséhez szükséges egy dedikált, nagy teljesítményű szintet igényel. Például egy adatbázis-művelet ismert felhasználásához, több processzormag hosszú ideig a prémium szolgáltatásszintet jelöltségét ellenőrző.
   * **Sok egyidejű kérés**. Egyes adatbázis-alkalmazások például szolgáltatás sok egyidejű kérés, amikor a szolgáltató egy webhely, amely rendelkezik egy nagy forgalma. Basic és Standard szolgáltatásszintek korlátozza az adatbázisonként egyidejű kérelmek számát. Több kapcsolatot igénylő alkalmazások kellene válasszon egy megfelelő foglalási méret kezeléséhez szükséges kérelmek maximális számát.
   * **Kis késés**. Egyes alkalmazások szükséges minimális időben választ az adatbázisból biztosításához. Egy adott tárolt eljárás hívása esetén, egy szélesebb körű felhasználói művelet részeként, lehetséges, hogy egy legfeljebb 20 ezredmásodpercben, az idő 99 %-át egy adott hívás visszatérési követelménnyel. Ez az alkalmazástípus a prémium szolgáltatásszintet, győződjön meg arról, hogy rendelkezésre áll-e a szükséges számítási teljesítményt előnyeivel.
-* **Prémium szintű RS**: A prémium szintű RS réteg végzi a legnagyobb rendelkezésre állást biztosítja, hogy nem igénylő IO-igényes munkaterhelések. Például nagy teljesítményű munkaterhelések, vagy egy analitikai munkaterhelés, ahol az adatbázis nincs rekord, a rendszer.
 
 A szolgáltatási szint, amelyekre szüksége van az SQL-adatbázis a maximális Adatbetöltési követelményeinek minden erőforrás dimenzió függ. Egyes alkalmazások egyetlen trivial méretű használata, de más erőforrások jelentős követelmények vonatkoznak.
 
@@ -276,7 +275,7 @@ Egyes alkalmazások írási igényű. Néha egy adatbázis teljes i/o-terhelése
 ### <a name="application-tier-caching"></a>Alkalmazás szintű gyorsítótárazása
 Egyes adatbázis-alkalmazások olvasási műveleteket munkaterhelésekkel rendelkeznek. Rétegek gyorsítótárazás csökkentheti az adatbázis terhelését, és előfordulhat, hogy lehetséges csökkentése az Azure SQL Database segítségével adatbázis támogatásához szükséges teljesítményszint szükséges. A [Azure Redis Cache](https://azure.microsoft.com/services/cache/), ha egy olvasási műveleteket végez, érheti el az adatokat többször (vagy lehet, hogy minden alkalmazás szintű machine konfigurációjától függően), majd helyezze el az adatok az SQL-adatbázis kívül. Ez az adatbázis-terhelésnek (Processzor- és olvasási i/o-) csökkentheti, de nincs hatással lévő tranzakciós konzisztencia, mivel előfordulhat, hogy az adatok olvasása a gyorsítótárból szinkronban az adatbázis adatai. Bár számos alkalmazás bizonyos fokú inkonzisztenciát elfogadható, hogy igaz nem munkaterhelések. Egy alkalmazás szintű gyorsítótárazási stratégia megvalósítása előtt, teljes mértékben ismernie kell bármely alkalmazás követelményeinek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Szolgáltatásrétegeiben használt funkciókkal kapcsolatos további információkért lásd: [SQL Database beállításai és teljesítménye](sql-database-service-tiers.md)
 * További információ a rugalmas készletek: [Mi az Azure rugalmas készletek?](sql-database-elastic-pool.md)
 * Teljesítmény és a rugalmas készletek kapcsolatos információkért lásd: [mikor érdemes figyelembe venni a rugalmas készlethez](sql-database-elastic-pool-guidance.md)

@@ -13,11 +13,11 @@ ms.devlang: powershell
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: jingwang
-ms.openlocfilehash: ee7da3bc4579ad5415977e42ad48e9e06a7e4253
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
-ms.translationtype: MT
+ms.openlocfilehash: 39d60592c7fcbc937dc9f86e4c8b6962a51fd6ef
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Egy SSIS-csomagot, a tárolt eljárási tevékenység az Azure Data Factory meghívása
 Ez a cikk ismerteti, hogyan lehet meghívni egy SSIS-csomagot az Azure Data Factory-folyamat a tárolt eljárási tevékenység használatával. 
@@ -76,7 +76,7 @@ Ebben a lépésben használatával a Data Factory felhasználói felületén hoz
 1. A get elindított oldalon kattintson **létrehozási folyamat**: 
 
     ![Első lépések lap](./media/how-to-invoke-ssis-package-stored-procedure-activity/get-started-page.png)
-2. Az a **tevékenységek** eszközkészlet, bontsa ki a **SQL-adatbázis**, és az egérrel **tárolt eljárás** tevékenység a csővezeték-Tervező felületére. 
+2. Az a **tevékenységek** eszközkészlet, bontsa ki a **általános**, és az egérrel **tárolt eljárás** tevékenység a csővezeték-Tervező felületére. 
 
     ![Fogd és vidd tárolt eljárási tevékenység](./media/how-to-invoke-ssis-package-stored-procedure-activity/drag-drop-sproc-activity.png)
 3. A tárolt eljárás tevékenység tulajdonságai ablakban váltson a **SQL fiók** fülre, majd **+ új**. Kapcsolatot hoz létre az Azure SQL Database, amely futtatja az SSIS-katalógusban (adatbázis SSIDB). 
@@ -95,11 +95,12 @@ Ebben a lépésben használatával a Data Factory felhasználói felületén hoz
         ![Azure SQL Database társított szolgáltatás](./media/how-to-invoke-ssis-package-stored-procedure-activity/azure-sql-database-linked-service-settings.png)
 5. A Tulajdonságok ablakban váltson a **tárolt eljárás** a lap a **SQL fiók** lapot, és hajtsa végre a következő lépéseket: 
 
-    1. Az a **tárolt eljárás neve** mezőbe írjon be `sp_executesql`. 
-    2. Kattintson a **+ új** a a **tárolt eljárás paramétereit** szakasz. 
-    3. A **neve** adja meg a paraméter **utasításban**. 
-    4. A **típus** adja meg a paraméter **karakterlánc**. 
-    5. A **érték** a paraméter adja meg a következő SQL-lekérdezést:
+    1. Válassza a **Szerkesztés** elemet. 
+    2. Az a **tárolt eljárás neve** mezőbe írjon be `sp_executesql`. 
+    3. Kattintson a **+ új** a a **tárolt eljárás paramétereit** szakasz. 
+    4. A **neve** adja meg a paraméter **utasításban**. 
+    5. A **típus** adja meg a paraméter **karakterlánc**. 
+    6. A **érték** a paraméter adja meg a következő SQL-lekérdezést:
 
         Az SQL-lekérdezést, adja meg a megfelelő értékeket a **mappa_neve**, **projektnév**, és **csomag_neve** paraméterek. 
 
@@ -121,7 +122,8 @@ Ebben a szakaszban indít folyamatot futtató, és megfigyeli azt.
 1. Futtassa egy folyamat indításához kattintson **eseményindító** az eszköztáron, és kattintson **aktiválhatja most**. 
 
     ![Aktiválás most](./media/how-to-invoke-ssis-package-stored-procedure-activity/trigger-now.png)
-2. Váltson a bal oldali **Monitorozás** lapra. A Futtatás futószalag és egyéb információk (például futtassa Kezdés időpontja) mellett állapota látható. A nézet frissítéséhez kattintson a **Frissítés** parancsra.
+2. Az a **folyamat futtatása** ablakban válassza ki **Befejezés**. 
+3. Váltson a bal oldali **Monitorozás** lapra. A Futtatás futószalag és egyéb információk (például futtassa Kezdés időpontja) mellett állapota látható. A nézet frissítéséhez kattintson a **Frissítés** parancsra.
 
     ![Folyamatfuttatások](./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png)
 3. Kattintson az **Actions** (Műveletek) oszlopban található **View Activity Runs** (Tevékenységfuttatások megtekintése) hivatkozásra. Futtassa az adatcsatorna esetében van (a tárolt eljárási tevékenység) csak egy tevékenység csak egy tevékenység megjelenik.

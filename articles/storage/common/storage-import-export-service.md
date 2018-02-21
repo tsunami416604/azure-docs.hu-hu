@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2017
 ms.author: muralikk
-ms.openlocfilehash: 37860425460496c5fc2451713d1d3ec58ac9106d
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
-ms.translationtype: MT
+ms.openlocfilehash: 56cc2a82e7957e677f96c638f7e3e903a3b717e1
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>Az adatok átviteléhez az Azure Storage a Microsoft Azure Import/Export szolgáltatás használata
 Ebben a cikkben azt részletes útmutatást nyújtanak az Azure Import/Export szolgáltatás használatával biztonságos átvitelére a nagy mennyiségű adatok Azure Blob storage és Azure fájlok által az Azure adatközpontba szállítási lemezmeghajtókat. Ez a szolgáltatás adatok átviteléhez az Azure storage merevlemez-meghajtók és a helyszíni helyek szállítás is használható. A SATA egyetlen lemezmeghajtó adatait vagy Azure Blob storage-vagy Azure fájlok importálhatók. 
@@ -299,7 +299,7 @@ Amikor Ön Azure-meghajtóval, a szállítási szolgáltatói fizetett szállít
 
 **Tranzakciós költségek**
 
-Nincsenek nem tranzakciós költségek adatok importálása az Azure Storage. A szabványos kilépő költségek is alkalmazható, ha adatait a Blob-tároló exportálja. Tranzakciós költségek a további részletekért lásd: [adatátviteli díjszabás.](https://azure.microsoft.com/pricing/details/data-transfers/)
+Nincsenek nem tranzakciós költségek mellett standard tárolási tranzakciós költségeket adatok importálása az Azure Storage. A szabványos kilépő költségek is alkalmazható, ha adatait a Blob-tároló exportálja. Tranzakciós költségek a további részletekért lásd: [adatátviteli díjszabás.](https://azure.microsoft.com/pricing/details/data-transfers/)
 
 
 

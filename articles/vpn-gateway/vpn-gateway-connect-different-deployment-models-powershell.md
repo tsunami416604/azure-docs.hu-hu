@@ -1,10 +1,10 @@
 ---
 title: "Klasszikus virtuális hálózatok csatlakoztatása Azure Resource Manager Vnetek: PowerShell |} Microsoft Docs"
-description: "Útmutató klasszikus virtuális hálózatokat és erőforrás-kezelő Vnetek VPN-átjáró és a PowerShell használatával közötti VPN-kapcsolat létrehozása"
+description: "Klasszikus virtuális hálózatokat és erőforrás-kezelő Vnetek VPN-átjáró és a PowerShell használatával közötti VPN-kapcsolat létrehozása."
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: timlt
+manager: jpconnock
 editor: 
 tags: azure-service-management,azure-resource-manager
 ms.assetid: f17c3bf0-5cc9-4629-9928-1b72d0c9340b
@@ -13,19 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/21/2017
+ms.date: 02/13/2018
 ms.author: cherylmc
-ms.openlocfilehash: da5bddba3a1fad74b2ee08fd2f34d1b01c7345c8
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: a3afd89a928854a1b03bfd4c5645ea12dbb638fc
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>Különböző üzemi modellekből származó virtuális hálózatok összekapcsolása a PowerShell-lel
 
-
-
-Ez a cikk bemutatja, hogyan csatlakozzon a hagyományos Vneteket erőforrás-kezelő Vnetek engedélyezi a különálló üzembe helyezési modellel egymással kommunikálni található erőforrásokhoz. A cikkben található lépéseket használhatja a PowerShell, de ez a konfiguráció a listáról a cikk kiválasztásával az Azure portál használatával is létrehozhat.
+Ez a cikk segít az erőforrás-kezelő Vnetek engedélyezi a különálló üzembe helyezési modellel egymással kommunikálni található erőforrásokhoz a hagyományos Vneteket csatlakozni. A cikkben található lépéseket használhatja a PowerShell, de ez a konfiguráció a listáról a cikk kiválasztásával az Azure portál használatával is létrehozhat.
 
 > [!div class="op_single_selector"]
 > * [Portal](vpn-gateway-connect-different-deployment-models-portal.md)
@@ -35,7 +33,7 @@ Ez a cikk bemutatja, hogyan csatlakozzon a hagyományos Vneteket erőforrás-kez
 
 A klasszikus virtuális hálózat csatlakozik egy erőforrás-kezelő virtuális hálózat hasonlít egy Vnetet csatlakozik egy helyszíni hely. Mindkét kapcsolattípus egy VPN-átjárót használ a biztonságos alagút IPsec/IKE használatával való kialakításához. Létrehozhat, amelyek különböző előfizetésekhez és különböző régiókban Vnetek közötti kapcsolat. A helyszíni hálózatokhoz való csatlakozás már rendelkező Vnetek mindaddig, amíg az átjáró, amely a konfigurálva a dinamikus- vagy útválasztó-alapú is csatlakoztathatja. A virtuális hálózatok közötti kapcsolatokról további információt a cikk végén, a [Virtuális hálózatok közötti kapcsolat – gyakori kérdések](#faq) című részben talál. 
 
-Ha a Vnetek ugyanabban a régióban, érdemes lehet helyette megfontolandó csatlakoztatja őket a Vnetben társviszony-létesítés használatával. A virtuális hálózatok közötti társviszony nem használ VPN-átjárót. További információ: [Társviszony létesítése virtuális hálózatok között](../virtual-network/virtual-network-peering-overview.md). 
+Ha még nincs a virtuális hálózati átjáró, és nem szeretne létrehozni egyet, érdemes lehet helyette figyelembe kell venni a Vnetben társviszony-létesítés használatával Vnetek kapcsolódás. A virtuális hálózatok közötti társviszony nem használ VPN-átjárót. További információ: [Társviszony létesítése virtuális hálózatok között](../virtual-network/virtual-network-peering-overview.md).
 
 ## <a name="before"></a>Előkészületek
 
@@ -76,10 +74,22 @@ A virtuális hálózati átjáró neve = RMGateway <br>
 
 ## <a name="createsmgw"></a>1. szakasz - a klasszikus virtuális hálózat konfigurálása
 ### <a name="1-download-your-network-configuration-file"></a>1. A hálózati konfigurációs fájl letöltése
-1. Jelentkezzen be az Azure-fiókjával a PowerShell-konzolban, emelt szintű jogosultságokkal. A következő parancsmag kéri a bejelentkezési hitelesítő adatok az Azure-fiók. A bejelentkezés után letölti a fiók beállításait, hogy elérhetők legyenek az Azure PowerShell számára. A Service Manager PowerShell-parancsmagok segítségével végezze el ezt a konfiguráció részét.
+1. Jelentkezzen be az Azure-fiókjával a PowerShell-konzolban, emelt szintű jogosultságokkal. A következő parancsmag kéri a bejelentkezési hitelesítő adatok az Azure-fiók. A bejelentkezés után letölti a fiók beállításait, hogy elérhetők legyenek az Azure PowerShell számára. A klasszikus Service Management (SM) Azure PowerShell-parancsmagok használhatók ebben a szakaszban.
 
   ```powershell
   Add-AzureAccount
+  ```
+
+  Az Azure-előfizetéshez beolvasása.
+
+  ```powershell
+  Get-AzureSubscription
+  ```
+
+  Ha egynél több előfizetéssel rendelkezik, akkor válassza ki azt, amelyiket használni szeretné.
+
+  ```powershell
+  Select-AzureSubscription -SubscriptionName "Name of subscription"
   ```
 2. Az Azure-hálózat konfigurációs fájl exportálása a következő parancs futtatásával. Módosíthatja a fájlt egy másik helyre, szükség esetén helyét.
 
@@ -169,13 +179,13 @@ Az erőforrás-kezelő vnet VPN-átjáró létrehozásához kövesse az alábbi 
   Login-AzureRmAccount
   ``` 
    
-  Az Azure-előfizetések listájának lekérdezése, ha egynél több előfizetéssel rendelkezik.
+  Olvassa be az Azure-előfizetések listáját.
 
   ```powershell
   Get-AzureRmSubscription
   ```
    
-  Válassza ki a használni kívánt előfizetést.
+  Ha egynél több előfizetéssel rendelkezik, adja meg a használni kívánt előfizetést.
 
   ```powershell
   Select-AzureRmSubscription -SubscriptionName "Name of subscription"
@@ -308,4 +318,3 @@ Az átjárók közötti kapcsolat létrehozása a PowerShell szükséges. Szüks
 ## <a name="faq"></a>Virtuális hálózatok közötti kapcsolat – gyakori kérdések
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
-

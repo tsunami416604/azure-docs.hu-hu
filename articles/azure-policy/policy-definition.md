@@ -9,11 +9,11 @@ ms.date: 01/17/2018
 ms.topic: article
 ms.service: azure-policy
 ms.custom: 
-ms.openlocfilehash: 49efef62b873ba3c688023248f6940d85c33e248
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: ffff4a663b64342142f42a662905a290044e2dfb
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -262,6 +262,7 @@ Egy erőforrás típusára vonatkozó tulajdonságokat eléréséhez használt t
 | Microsoft.Compute/virtualMachines/imageVersion | Állítsa be a platformlemezképet vagy a Piactéri lemezképhez a virtuális gép létrehozásához használt verzióját. |
 | Microsoft.Compute/virtualMachines/osDisk.Uri | Állítsa be a virtuális merevlemez URI azonosítója. |
 | Microsoft.Compute/virtualMachines/sku.name | A virtuális gép méretének beállítása. |
+| Microsoft.Compute/virtualMachines/availabilitySet.id | Beállítja a rendelkezésre állási csoport a virtuális gép azonosítója. |
 
 **Microsoft.Compute/virtualMachines/extensions**
 
@@ -332,6 +333,7 @@ Egy erőforrás típusára vonatkozó tulajdonságokat eléréséhez használt t
 | Microsoft.Storage/storageAccounts/enableFileEncryption | Állítsa be, hogy a szolgáltatás titkosítja az adatokat, a fájl storage szolgáltatásban tárolt. |
 | Microsoft.Storage/storageAccounts/sku.name | Állítsa be a termékváltozat. |
 | Microsoft.Storage/storageAccounts/supportsHttpsTrafficOnly | Beállítása, hogy a csak https-forgalom tároló szolgáltatást. |
+| Microsoft.Storage/storageAccounts/networkAcls.virtualNetworkRules[*].id | Ellenőrizze, hogy engedélyezve van-e a virtuális hálózati szolgáltatási végpont. |
 
 ## <a name="initiatives"></a>Kezdeményezések
 

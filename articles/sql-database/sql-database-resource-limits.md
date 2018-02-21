@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 01/29/2018
+ms.date: 02/12/2018
 ms.author: carlrab
-ms.openlocfilehash: 531b162f2c3d6165c3ca8a54a5822bc10e7c0eff
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
-ms.translationtype: MT
+ms.openlocfilehash: 9f443c6e93f894f49ee2f82787be2025f74ed720
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="azure-sql-database-resource-limits"></a>Az Azure SQL Database erőforrás korlátok
 
@@ -53,7 +53,7 @@ A teljes felskálázási folyamat időtartama az adatbázis a módosítás előt
 
 * Ha frissíti a szolgáltatási szint vagy a teljesítmény a magasabb, az adatbázis maximális méretét nem növekszik, hacsak Ön kifejezetten megad egy nagyobb méretű (maxsize).
 * Egy adatbázis megállapításában, a használt adatbázis-terület kisebb, mint a megengedett maximális méret a célként megadott szolgáltatás és teljesítményszintet szinten kell lennie. 
-* Amikor alacsonyabb verziójúra változtatása a **prémium** vagy **prémium RS** való a **szabványos** réteg, egy extra storage költséget akkor használható, ha mindkét (1) az adatbázis maximális méretét támogatott a cél teljesítményszintjét, és (2) a maximális méret meghaladja a cél teljesítményszintjét belefoglalt tárolási összegét. Például ha 500 GB maximális mérettel P1 adatbázis való S3 van downsized, majd egy – megnövelt tárhely költség érvényes óta S3 támogatja 500 GB-os maximális méretét, és a belefoglalt mennyisége csak 250 GB. Igen a megnövelt tárhely mérete 500 GB – 250 GB = 250 GB. Az árképzés további tárhelyet, lásd: [SQL Database – díjszabás](https://azure.microsoft.com/pricing/details/sql-database/). Ha a tényleges használt lemezterület mérete kisebb, mint a belefoglalt mennyisége, majd ez kapcsolódik további költség elkerülhető az adatbázis maximális méretét csökkentve a belefoglalt legkevesebb. 
+* Amikor alacsonyabb verziójúra változtatása a **prémium** számára a **szabványos** réteg, egy extra storage költséget akkor használható, ha mind a cél teljesítményszintjét támogatott (1) az adatbázis maximális méretét, és (2) a maximális mérete meghaladja a a cél teljesítményszintjét belefoglalt tárolási mennyisége. Például ha 500 GB maximális mérettel P1 adatbázis való S3 van downsized, majd egy – megnövelt tárhely költség érvényes óta S3 támogatja 500 GB-os maximális méretét, és a belefoglalt mennyisége csak 250 GB. Igen a megnövelt tárhely mérete 500 GB – 250 GB = 250 GB. Az árképzés további tárhelyet, lásd: [SQL Database – díjszabás](https://azure.microsoft.com/pricing/details/sql-database/). Ha a tényleges használt lemezterület mérete kisebb, mint a belefoglalt mennyisége, majd ez kapcsolódik további költség elkerülhető az adatbázis maximális méretét csökkentve a belefoglalt legkevesebb. 
 * Ha az adatbázis frissítése [georeplikáció](sql-database-geo-replication-portal.md) engedélyezve van, frissítse a másodlagos adatbázisok a kívánt teljesítményt réteghez csak azután frissítse az elsődleges adatbázis (általános útmutatást). Egy másik alkalmazásra történő verziófrissítés a másodlagos adatbázist frissíti először szükség.
 * Amikor alacsonyabb verziójúra változtatása adatbázis [georeplikáció](sql-database-geo-replication-portal.md) engedélyezve van, alacsonyabb a kívánt teljesítményt réteghez elsődleges adatbázisainak előtt alacsonyabb verziójúra változtatása a másodlagos adatbázis (általános útmutatást). Visszaminősítése másik kiadásra, az elsődleges adatbázis visszaminősítése először szükség.
 * A visszaállítási szolgáltatásajánlatok eltérőek a különböző szolgáltatásszintek esetében. Ha alacsonyabb verzióra való visszatérést meg, hogy a **alapvető** réteg, alacsonyabb biztonsági mentés megőrzési idővel van – lásd [Azure SQL adatbázis biztonsági másolatait](sql-database-automated-backups.md).
@@ -111,6 +111,10 @@ Akkor növelheti vagy csökkentheti a számára egy rugalmas készlet igények e
 - Módosítsa a minimális Edtu / adatbázis vagy a maximális edtu-k adatbázisonkénti időtartamot általában öt perc vagy kisebb.
 - Ha Edtu downsizing, használt készlet mérete kisebb, mint a megengedett maximális méret a célként megadott szolgáltatás réteg és a készlet edtu / kell lennie.
 - Edtu rescaling, amikor egy extra tárolási költségű érvényes, ha a készlet (1) a tároló maximális mérete támogatja-e a célként megadott készlethez, és (2) a tároló maximális mérete meghaladja a célkészlettel a belefoglalt tárolási. Például ha egy 100 100 GB maximális mérettel szabványos készlet edtu-ra van downsized egy 50 szabványos készlet edtu-k számára, majd egy – megnövelt tárhely költség érvényes mert célkészlettel támogatja a maximális mérete 100 GB-nál, és a belefoglalt mennyisége csak 50 GB. Igen a megnövelt tárhely mérete 100 GB – 50 GB = 50 GB. Az árképzés további tárhelyet, lásd: [SQL Database – díjszabás](https://azure.microsoft.com/pricing/details/sql-database/). Ha a tényleges használt lemezterület mérete kisebb, mint a belefoglalt mennyisége, majd ez kapcsolódik további költség elkerülhető az adatbázis maximális méretét csökkentve a belefoglalt legkevesebb. 
+
+## <a name="what-is-the-maximum-number-of-servers-and-databases"></a>Mi az, hogy a kiszolgálók és adatbázisok maximális számát?
+
+A kiszolgálók régiónként előfizetésenként maximális száma: 21. Adatbázis kiszolgálónként legfeljebb 5000. Ezek a ideiglenes korlátoknak a meghatározott kísérlettel alapján hasznos méretelemzés, logikai fő telemetriai gyűjtemény elemzés és néhány egyéb szempontjait. Kérhet meghaladja ezt a korlátot, feltéve belül a DTU-kvótáról maradhat. Adatbázisok és a kiszolgálók száma nagyra nő, a problémát, amellyel alkalmával statisztikák erőforrásgyűjtemény logikai master és felügyeleti műveletek versengés. Ezek a problémák nincsenek végzetes; késés mértékben.
 
 ## <a name="what-happens-when-database-and-elastic-pool-resource-limits-are-reached"></a>Mi történik az adatbázis és a rugalmas készlet erőforrás korlátok elérése után?
 

@@ -1,6 +1,6 @@
 ---
 title: "Azure metrika riasztások konfigurálása webhookokkal |} Microsoft Docs"
-description: "A más-Azure rendszerekkel Azure riasztások átirányítása."
+description: "Útmutató: Azure riasztásokat az egyéb, az-Azure rendszerek átirányítása."
 author: johnkemnetz
 manager: carmonm
 editor: 
@@ -14,29 +14,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2017
 ms.author: johnkem
-ms.openlocfilehash: 06ec1263046f7878871de628b6a0ac25682b2f83
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 049803e7701c68559103d9b1fa5dfacf820d0548
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="configure-a-webhook-on-an-azure-metric-alert"></a>A webhook Azure metrika riasztás konfigurálása
-Webhook lehetővé teszik a más rendszerekkel utófeldolgozási vagy egyéni műveletek az Azure riasztási értesítések továbbításához. A riasztás olyan webhook segítségével szolgáltatásokról, amelyek SMS küldése, hibák naplózása, értesítés keresztül Csevegés/üzenetküldési szolgáltatásokban csoport vagy más műveletek többféle irányítja. Ez a cikk ismerteti, hogyan lehet beállítani a webhook a Azure metrika riasztást, és a tartalom a HTTP POST az olyan webhook néz. A telepítő és a séma (riasztás események), Azure tevékenységnapló riasztás [helyette látja ezt a lapot](insights-auditlog-to-webhook-email.md).
+Webhook használhatja az Azure riasztási értesítések továbbításához a más rendszerekkel utófeldolgozási vagy egyéni műveletek. A riasztás olyan webhook segítségével szolgáltatások által küldött SMS-üzenetek, bejelentkezési hibák értesíteni a Csevegés vagy az üzenetkezelési szolgáltatások révén, vagy a különböző műveleteknél csoport irányítja. 
 
-Azure riasztások HTTP POST riasztási tartalmát JSON formátumot, egy webhook URI, amely a riasztás létrehozásakor adja meg az alábbi meghatározott séma. Ezt az URI érvényes HTTP vagy HTTPS-végpont kell lennie. Azure visszaküldés kérelmenként egy bejegyzést, egy riasztás aktiválásakor.
+A cikkből megtudhatja, hogyan lehet beállítani a webhook a Azure metrika riasztást. Azt is bemutatja, mi a hasznos a HTTP POST egy webhook a következőhöz hasonló. A telepítő és a séma egy Azure tevékenység napló riasztás (riasztás események), lásd: [hívható meg olyan webhook Azure tevékenység napló riasztást](insights-auditlog-to-webhook-email.md).
 
-## <a name="configuring-webhooks-via-the-portal"></a>Webhookok beállításáról a portálon
-Adja hozzá, vagy frissítse a webhook URI a Create/Update riasztások képernyőjén a a [portal](https://portal.azure.com/).
+Azure riasztásokat küldhet HTTP POST riasztási tartalma JSON formátumban a olyan webhook URI, amely a riasztás létrehozásakor adja meg. A sémát a cikk későbbi részében. Az URI érvényes HTTP vagy HTTPS-végpont kell lennie. Azure visszaküldés kérelmenként egy bejegyzést, egy riasztás aktiválásakor.
 
-![Riasztási szabály felvétele](./media/insights-webhooks-alerts/Alertwebhook.png)
+## <a name="configure-webhooks-via-the-azure-portal"></a>Konfigurálása webhookokkal az Azure-portálon
+Hozzáadása vagy frissítése a webhook URI, az a [Azure-portálon](https://portal.azure.com/), és **Create/Update riasztások**.
 
-Riasztást küldje el a webhook URI használatával is konfigurálhatja a [Azure PowerShell-parancsmagok](insights-powershell-samples.md#create-metric-alerts), [platformfüggetlen parancssori felület](insights-cli-samples.md#work-with-alerts), vagy [Azure figyelő REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx).
+![Egy riasztási szabály ablak hozzáadása](./media/insights-webhooks-alerts/Alertwebhook.png)
 
-## <a name="authenticating-the-webhook"></a>A webhook hitelesítése
-A webhook jogkivonat-alapú engedélyezési használatával képes hitelesíteni. A webhook URI-t menti jogkivonat-azonosítóval, pl. `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`
+Beállíthatja úgy is riasztást küldje el a webhook URI használatával [Azure PowerShell-parancsmagok](insights-powershell-samples.md#create-metric-alerts), egy [platformfüggetlen parancssori felület](insights-cli-samples.md#work-with-alerts), vagy [Azure figyelő REST API-k](https://msdn.microsoft.com/library/azure/dn933805.aspx).
+
+## <a name="authenticate-the-webhook"></a>A webhook hitelesítéséhez
+A webhook jogkivonat-alapú engedélyezési használatával képes hitelesíteni. A webhook URI mentik egy token. Például:`https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`
 
 ## <a name="payload-schema"></a>Hasznos séma
-A POST műveletet tartalmaz, a következő JSON-adattartalmat és az összes metrika-alapú értesítések séma.
+A POST műveletet tartalmaz, a következő JSON-adattartalmat és a séma összes metrika-alapú riasztásokhoz:
 
 ```JSON
 {
@@ -77,38 +79,38 @@ A POST műveletet tartalmaz, a következő JSON-adattartalmat és az összes met
 
 | Mező | Kötelező | Rögzített értékhalmazt | Megjegyzések |
 |:--- |:--- |:--- |:--- |
-| status |I |"Aktív", "Megoldott" |A állította ki a feltételek alapján riasztás állapota. |
+| status |I |Aktivált, feloldva |A megadott feltételek alapján a riasztás állapota beállítva. |
 | A környezetben |I | |A riasztás környezetét. |
 | időbélyeg |I | |Az az idő, amelyen a riasztás működésbe lépett. |
-| id |I | |Minden riasztási szabály van egyedi azonosítója. |
+| id |I | |Minden riasztási szabály egyedi rendelkezik. |
 | név |I | |A riasztás nevét. |
 | leírás |I | |A riasztás leírása. |
-| conditionType |I |"Metrika", az "Event" |A riasztások két típusok támogatottak. Egy mérték feltétel alapján, a másik a műveletnaplóban esemény alapján. Ez az érték segítségével ellenőrizheti, ha a riasztás alapján esemény vagy mértéket. |
-| feltétel |I | |Az adott mezők kereséséhez a conditionType alapján. |
-| metricName |a metrika riasztások | |Meghatározza, hogy a szabály figyeli metrika neve. |
-| metricUnit |a metrika riasztások |"Bytes", "BytesPerSecond", "Count", "CountPerSecond", "Percent", "Seconds" |Az egység a mérték megengedett. [Engedélyezett értékek az itt felsorolt](https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx). |
-| metricValue |a metrika riasztások | |A metrika a riasztást kiváltó aktuális értékét. |
-| Küszöbérték |a metrika riasztások | |A küszöbérték, amelyen a riasztás aktiválva van. |
-| windowSize |a metrika riasztások | |Az időtartam, amely alapján a küszöbérték értesítési tevékenység figyelésére használható. 5 perc és 1 nap között kell lennie. ISO 8601 időtartama formátumban. |
-| timeAggregation |a metrika riasztások |"Average", "Last", "Maximum", "Minimum", "None", "Total" |A gyűjtött adatok hogyan időbeli használható együtt. Alapértelmezett érték átlaga. [Engedélyezett értékek az itt felsorolt](https://msdn.microsoft.com/library/microsoft.azure.insights.models.aggregationtype.aspx). |
-| Operátor |a metrika riasztások | |Az operátor összehasonlíthatja az aktuális metrika adatokat a beállított küszöbértéket. |
-| subscriptionId |I | |Azure subscription ID. |
+| conditionType |I |A metrika esemény |A riasztások két típusok támogatottak: metrika és az esemény. Metrika riasztások metrika feltétel alapulnak. Miatti riasztás a műveletnaplóban esemény alapulnak. Ezt az értéket használatával ellenőrizze, hogy a riasztás metrika vagy esemény alapján-e. |
+| feltétel |I | |Ellenőrizze, hogy az adott mezők alapján a **conditionType** érték. |
+| metricName |A metrika riasztások | |Meghatározza, hogy a szabály figyeli metrika neve. |
+| metricUnit |A metrika riasztások |Bájt, BytesPerSecond, Count, CountPerSecond, százalék, másodpercben |Az egység a mérték megengedett. Lásd: [engedélyezett értékek](https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx). |
+| metricValue |A metrika riasztások | |A metrika a riasztást kiváltó aktuális értékét. |
+| Küszöbérték |A metrika riasztások | |A küszöbérték, amelyen a riasztás aktiválva van. |
+| windowSize |A metrika riasztások | |Mennyi ideig használt riasztási figyelése alapján a küszöbértéket. Az érték 5 perc és 1 nap között kell lennie. Az érték az ISO 8601 időtartama formátumúnak kell lennie. |
+| timeAggregation |A metrika riasztások |Átlagos, Last, maximális, minimális, None, teljes |A gyűjtött adatok hogyan időbeli használható együtt. Alapértelmezett érték átlaga. Lásd: [engedélyezett értékek](https://msdn.microsoft.com/library/microsoft.azure.insights.models.aggregationtype.aspx). |
+| Operátor |A metrika riasztások | |Az operátort, amelynek segítségével összehasonlíthatja az aktuális metrika adatokat a beállított küszöbértéket. |
+| subscriptionId |I | |Az Azure előfizetés-azonosító. |
 | resourceGroupName |I | |Az érintett erőforrás az erőforráscsoport neve. |
-| resourceName |I | |Az érintett erőforrás erőforrás nevét. |
-| resourceType |I | |Az érintett erőforrás erőforrás típusát. |
-| resourceId |I | |Erőforrás-azonosító az érintett erőforrás. |
-| resourceRegion |I | |A régióban vagy az érintett erőforrás helye. |
-| portalLink |I | |A portál erőforrás összefoglalás lapon mutató közvetlen hivatkozást. |
-| properties |N |Optional |Állítsa be a `<Key, Value>` párok (azaz `Dictionary<String, String>`), amely tartalmazza az esemény részleteit. A Tulajdonságok mező kitöltése nem kötelező. Egy munkafolyamatban egyéni felhasználói felületén vagy a Logic app-alapú felhasználók kulcs és-értékek, amelyek átadhatók a tartalom keresztül adhat meg. Az alternatív átadandó egyéni tulajdonságok vissza a webhook módja a webhook URI-ját magát (lekérdezési paraméterek) keresztül |
+| resourceName |I | |Az érintett erőforrás erőforrás neve. |
+| resourceType |I | |Az érintett erőforrás erőforrás típusa. |
+| resourceId |I | |Az erőforrás-azonosító az érintett erőforrás. |
+| resourceRegion |I | |A régió vagy az érintett erőforrás helye. |
+| portalLink |I | |A portál erőforrás összefoglaló lap egy közvetlen hivatkozást. |
+| properties |N |Optional |Kulcs/érték párok csoportja, amely rendelkezik az esemény részleteit. Például: `Dictionary<String, String>`. A Tulajdonságok mező kitöltése nem kötelező. Egy egyéni felhasználói felületén vagy a logic app-alapú munkafolyamat felhasználók kulcs/érték párok, amelyek átadhatók a tartalom keresztül adhat meg. Egy másik átadandó egyéni tulajdonságok vissza a webhook módja a webhook URI-JÁT magát (lekérdezési paraméterek) keresztül. |
 
 > [!NOTE]
-> A Tulajdonságok mező csak akkor állítható használatával a [Azure figyelő REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx).
+> Beállíthatja a **tulajdonságok** mező csak használatával [Azure figyelő REST API-k](https://msdn.microsoft.com/library/azure/dn933805.aspx).
 >
 >
 
 ## <a name="next-steps"></a>További lépések
-* További tudnivalók Azure riasztások és a videó webhookok [PagerDuty integrálni Azure riasztások](http://go.microsoft.com/fwlink/?LinkId=627080)
-* [Azure Automation-parancsfájlok (Runbookok) végrehajtása Azure riasztások](http://go.microsoft.com/fwlink/?LinkId=627081)
-* [Logikai alkalmazás segítségével Twilio keresztül SMS küldése az Azure-riasztás alapján](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)
-* [Használja a logikai alkalmazás közzététele a Slack üzenet küldése az Azure-riasztás alapján](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)
-* [Üzenet küldése az Azure Queue az Azure-riasztás alapján a Logic App használatával](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)
+* További tudnivalók Azure riasztások és a videó webhookok [PagerDuty integrálni Azure riasztások](http://go.microsoft.com/fwlink/?LinkId=627080).
+* Megtudhatja, hogyan [hajtható végre az Azure Automation-parancsfájlok (runbookok) Azure riasztások](http://go.microsoft.com/fwlink/?LinkId=627081).
+* Megtudhatja, hogyan [logikai alkalmazás segítségével Twilio keresztül egy SMS-üzenet küldése az Azure-riasztás alapján](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app).
+* Megtudhatja, hogyan [használja a logikai alkalmazás közzététele a Slack üzenet küldése az Azure-riasztás alapján](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app).
+* Megtudhatja, hogyan [logikai alkalmazás használható az Azure-riasztás alapján egy Azure-üzenetsorba való üzenetküldéshez](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app).

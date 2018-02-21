@@ -117,12 +117,11 @@
 ### [A számítási feladatok elemzése](analyze-your-workload.md)
 
 ## Horizontális felskálázás
-### [Számítások kezelése – REST API](sql-data-warehouse-manage-compute-rest-api.md)
+
 ### [Számítási szintek automatizálása](manage-compute-with-azure-functions.md)
 
 
 # Referencia
-
 
 ## T-SQL
 ### [Teljes referencia](https://docs.microsoft.com/sql/t-sql/language-reference/)
@@ -130,6 +129,7 @@
 ### [Az SQL DW utasításai](sql-data-warehouse-reference-tsql-statements.md)
 ## [Rendszernézetek](sql-data-warehouse-reference-tsql-system-views.md)
 ## [PowerShell-parancsmagok](sql-data-warehouse-reference-powershell-cmdlets.md)
+## [REST API-k](sql-data-warehouse-manage-compute-rest-api.md)
 
 # További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=databases)
