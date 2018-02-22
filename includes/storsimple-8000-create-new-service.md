@@ -5,7 +5,7 @@
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) a Microsoft-fiók hitelesítő adataival.
 
-2. Az Azure Portalon kattintson a **+** elemre, majd a piactéren az **Összes megjelenítése** gombra.
+2. Az Azure portálon kattintson **hozzon létre egy erőforrást** majd a piactéren **láthatja az összes**.
 
     ![StorSimple-eszközkezelő létrehozása](./media/storsimple-8000-create-new-service/createssdevman1.png)
 

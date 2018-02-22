@@ -1,4 +1,4 @@
-Gyorsítótár létrehozásához jelentkezzen be az [Azure Portalra](https://portal.azure.com), és kattintson az **Új** > **Adatbázisok** > **Redis Cache** lehetőségre.
+A gyorsítótár létrehozásához először bejelentkezik a [Azure-portálon](https://portal.azure.com), és kattintson a **hozzon létre egy erőforrást** > **adatbázisok** > **Redis Cache** .
 
 > [!NOTE]
 > Ha nincs Azure-fiókja, [ingyenesen nyithat egyet](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero) mindössze pár perc alatt.
@@ -16,12 +16,12 @@ Gyorsítótár létrehozásához jelentkezzen be az [Azure Portalra](https://por
 > 
 > 
 
-Az **Új Redis Cache-gyorsítótár** panelen adja meg a gyorsítótár kívánt beállításait.
+A **új Redis Cache**, adja meg a gyorsítótár kívánt beállításait.
 
 ![Gyorsítótár létrehozása](media/redis-cache-create/redis-cache-cache-create.png) 
 
 * A **DNS-név** mezőben adja meg a gyorsítótár végpontjához használandó egyedi nevet. A gyorsítótár nevének 1 és 63 karakter közötti karakterláncnak kell lennie, és kizárólag számokat, betűket és a `-` karaktert tartalmazhatja. A gyorsítótár neve nem kezdődhet a `-` karakterrel, és az egymást követő `-` karakterek nem érvényesek.
-* Az **Előfizetés** mezőben válassza ki a gyorsítótárhoz használni kívánt Azure-előfizetést. Ha a fiókja csak egyetlen előfizetéssel rendelkezik, ez lesz automatikusan kiválasztva, és az **Előfizetés** legördülő lista nem jelenik meg.
+* Az **Előfizetés** mezőben válassza ki a gyorsítótárhoz használni kívánt Azure-előfizetést. Ha a fiókja csak egyetlen előfizetéssel rendelkezik, a rendszer automatikusan kiválasztja, és a **előfizetés** legördülő lista nem jelenik meg.
 * Az **Erőforráscsoport** listából válasszon ki vagy hozzon létre egy erőforráscsoportot a gyorsítótárhoz. További információk: [Using Resource groups to manage your Azure resources](../articles/azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez). 
 * A **Hely** beállítás segítségével megadhatja a földrajzi helyet, ahol a gyorsítótárat üzemeltetni kívánja. A legjobb teljesítmény érdekében a Microsoft határozottan javasolja, hogy a gyorsítótárat ugyanabban a régióban hozza létre, mint ahol ügyfélalkalmazás található.
 * A **Tarifacsomag** listából válassza ki a kívánt gyorsítótárméretet és -funkciókat.

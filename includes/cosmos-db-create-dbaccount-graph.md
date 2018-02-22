@@ -1,6 +1,6 @@
 1. Egy új böngészőablakban, jelentkezzen be a [Azure-portálon](https://portal.azure.com/).
 
-2. Kattintson a **új** > **adatbázisok** > **Azure Cosmos DB**.
+2. Kattintson a **hozzon létre egy erőforrást** > **adatbázisok** > **Azure Cosmos DB**.
    
    ![Az Azure portál "Adatbázis" ablak](./media/cosmos-db-create-dbaccount-graph/create-nosql-db-databases-json-tutorial-1.png)
 

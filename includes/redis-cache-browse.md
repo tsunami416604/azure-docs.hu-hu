@@ -1,8 +1,8 @@
-A gyorsítótárak az [Azure Portalon](https://portal.azure.com) érhetők el a **Tallózás** panelen.
+Gyorsítótárak érhetők el a [Azure-portálon](https://portal.azure.com) a **minden szolgáltatás**.
 
 ![Azure Redis Cache – Tallózás panel](media/redis-cache-browse/redis-cache-browse.png)
 
-A gyorsítótárak megtekintéséhez kattintson a **További szolgáltatások > Redis Cache-gyorsítótárak** elemre. Ha nemrég tallózott egy Redis-gyorsítótárra, a **Redis Cache-gyorsítótárak** elemet megtalálhatja közvetlenül a listáról, a **További szolgáltatások** elemre kattintás nélkül is.
+A gyorsítótárak megtekintéséhez kattintson **minden szolgáltatás** keresse meg a **Redis Cache-gyorsítótárak**. 
 
 Válassza ki a kívánt gyorsítótárat a beállítások megtekintéséhez és konfigurálásához.
 
