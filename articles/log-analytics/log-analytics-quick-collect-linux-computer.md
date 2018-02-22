@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 01/23/2018
+ms.date: 02/11/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 839fc3a326dca8b60c6750231b06d2369c3de2fc
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 804d9df37b5c89501200fc4e233108c09cce9262
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/13/2018
 ---
-# <a name="collect-data-from-linux-computers-hosted-in-your-environment"></a>Adatok gyűjtése saját környezetben futtatott linuxos számítógépekről
+# <a name="collect-data-from-linux-computer-hosted-in-your-environment"></a>Adatok gyűjtése saját környezetben futtatott linuxos számítógépről
 Az [Azure Log Analytics](log-analytics-overview.md) közvetlenül tud adatokat gyűjteni az Ön környezetében található fizikai vagy virtuális Linux-gépekről és egyéb erőforrásokról egy adattárba, részletes elemzés és összehasonlítás céljából.  Ez a rövid útmutató bemutatja, hogyan konfigurálhatja a Linux rendszerű számítógépekről történő adatgyűjtést néhány egyszerű lépésben.  Azure-beli linuxos virtuális gépek esetén lásd [az Azure-beli virtuális gépekről történő adatgyűjtést](log-analytics-quick-collect-azurevm.md) ismertető cikket.  
 
-A Linux-ügynök telepítésének hálózati és rendszerkövetelményeivel kapcsolatban lásd a [környezet adatainak az Azure Log Analytics használatával való gyűjtésével foglalkozó szakaszt](log-analytics-concept-hybrid.md#prerequisites).
+A Linux-ügynök telepítésének hálózati és rendszerkövetelményeivel kapcsolatban tekintse át [a Linux operációs rendszer előfeltételeit](log-analytics-concept-hybrid.md#prerequisites).
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -61,30 +61,33 @@ Az alábbi lépésekkel konfigurálhatóak az ügynök beállításai a Log Anal
 >[!NOTE]
 >A Linuxhoz készült OMS-ügynököt nem lehet úgy konfigurálni, hogy egynél több Log Analytics-munkaterületre is jelentsen.  
 
-1. A linuxos számítógép a Log Analyticshez való csatlakoztatásának konfigurálásához futtassa az alábbi parancsot, és adja meg a korábban kimásolt munkaterület-azonosítót és elsődleges kulcsot.  A parancs letölti az ügynököt, majd az ellenőrzőösszeg érvényesítése után telepíti azt. 
+Ha a Linux rendszerű számítógépnek proxykiszolgálón keresztül kell kommunikálnia a Log Analytics szolgáltatással, a proxykonfiguráció a parancssorban a `-p [protocol://][user:password@]proxyhost[:port]` záradékkal adható meg.  A *proxyhost* tulajdonság a proxykiszolgáló teljes tartománynevét vagy IP-címét fogadja el. 
+
+Például:`https://user01:password@proxy01.contoso.com:30443`
+
+1. A linuxos számítógép a Log Analyticshez való csatlakoztatásának konfigurálásához futtassa az alábbi parancsot, és adja meg a korábban kimásolt munkaterület-azonosítót és elsődleges kulcsot.  A következő parancs letölti, majd az ellenőrzőösszeg érvényesítése után telepíti az ügynököt. 
     
     ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
     ```
 
-2. A linuxos számítógép az Azure Government felhőben futó Log Analyticshez való csatlakoztatásának konfigurálásához futtassa az alábbi parancsot, és adja meg a korábban kimásolt munkaterület-azonosítót és elsődleges kulcsot.  A parancs letölti az ügynököt, majd az ellenőrzőösszeg érvényesítése után telepíti azt. 
+    A következő parancs a `-p` proxyparaméter mellett példaszintaxist is tartalmaz.
+
+   ```
+    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -p [protocol://][user:password@]proxyhost[:port] -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
+    ```
+
+2. A linuxos számítógép az Azure Government felhőben futó Log Analyticshez való csatlakoztatásának konfigurálásához futtassa az alábbi parancsot, és adja meg a korábban kimásolt munkaterület-azonosítót és elsődleges kulcsot.  A következő parancs letölti, majd az ellenőrzőösszeg érvényesítése után telepíti az ügynököt. 
 
     ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY> -d opinsights.azure.us
     ``` 
 
-## <a name="configure-agent-to-communicate-with-a-proxy-server"></a>Az ügynök konfigurálása proxykiszolgálókkal folytatott kommunikációhoz
+    A következő parancs a `-p` proxyparaméter mellett példaszintaxist is tartalmaz.
 
-A következő lépéseket akkor hajtsa végre, ha a linuxos számítógépeinek egy proxykiszolgálón keresztül kell kommunikálniuk a Log Analyticsszel.  A proxykonfiguráció értékének szintaxisa a következő: `[protocol://][user:password@]proxyhost[:port]`.  A *proxyhost* tulajdonság a proxykiszolgáló teljes tartománynevét vagy IP-címét fogadja el.    
-
-1. Szerkessze az `/etc/opt/microsoft/omsagent/proxy.conf` fájlt a következő parancsok futtatásával, és módosítsa az értékeket a saját konkrét beállításaira.
-
+   ```
+    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -p [protocol://][user:password@]proxyhost[:port] -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY> -d opinsights.azure.us
     ```
-    proxyconf="https://proxyuser:proxypassword@proxyserver01:30443"
-    sudo echo $proxyconf >>/etc/opt/microsoft/omsagent/proxy.conf
-    sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/proxy.conf 
-    ```
-
 2. Indítsa újra az ügynököt a következő parancs futtatásával: 
 
     ```
@@ -99,7 +102,7 @@ A Log Analytics képes az események gyűjtésére a Linux rendszernaplójából
 3. A táblában törölje a **Tájékoztatás**, az **Értesítés** és a **Hibakeresés** súlyossági szint jelölését. 
 4. A konfiguráció mentéséhez kattintson az oldal tetején található **Mentés** parancsra.
 5. Válassza a **Linuxos teljesítményadatok** elemet a teljesítményszámláló-adatok gyűjtésének egy Linux rendszerű gépen történő engedélyezéséhez. 
-6. Amikor először konfigurálja egy új Log Analytics-munkaterület Linux-teljesítményszámlálóit, akkor több gyakran használt számlálót is gyorsan létrehozhat. Ezek mindegyike mellett egy jelölőnégyzet található.<br><br> ![Alapértelmezett Linux-teljesítményszámlálók kiválasztva](media/log-analytics-quick-collect-azurevm/linux-perfcounters-default.png).<br><br> Kattintson **A kijelölt teljesítményszámlálók felvétele** elemre.  A rendszer hozzáadja a kiválasztott számlálókat, és mindegyikhez beállít egy tíz másodperces mintagyűjtési időszakot.  
+6. Amikor először konfigurálja egy új Log Analytics-munkaterület Linux-teljesítményszámlálóit, akkor több gyakran használt számlálót is gyorsan létrehozhat. Ezek mindegyike mellett egy jelölőnégyzet található.<br><br> ![Alapértelmezett Windows-teljesítményszámlálók kiválasztva](media/log-analytics-quick-collect-azurevm/linux-perfcounters-default.png)<br> Kattintson **A kijelölt teljesítményszámlálók felvétele** elemre.  A rendszer hozzáadja a kiválasztott számlálókat, és mindegyikhez beállít egy tíz másodperces mintagyűjtési időszakot.  
 7. A konfiguráció mentéséhez kattintson az oldal tetején található **Mentés** parancsra.
 
 ## <a name="view-data-collected"></a>Összegyűjtött adatok megtekintése
@@ -111,12 +114,9 @@ Most, hogy engedélyezte az adatgyűjtést, futtasson le egy egyszerű naplóbel
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ha már nincs rá szükség, eltávolíthatja az ügynököt a linuxos számítógépről, és törölheti a Log Analytics-munkaterületet.  
 
-Az ügynök eltávolításához hajtsa végre az alábbi lépéseket.
+Az ügynök eltávolításához futtassa az alábbi parancsot a Linux rendszerű számítógépen.  A *--purge* argumentum teljesen eltávolítja az ügynököt és annak konfigurációját.
 
-1. Töltse le a linuxos ügynök [univerzális parancsfájlját](https://github.com/Microsoft/OMS-Agent-for-Linux/releases) a számítógépre.
-2. Futtassa a csomag .sh fájlját a *--purge* argumentummal a számítógépen, ami teljesen eltávolítja az ügynököt és annak konfigurációját.
-
-    `sudo sh ./omsagent-<version>.universal.x64.sh --purge`
+   `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh --purge`
 
 A munkaterület törléséhez válassza ki a korábban létrehozott Log Analytics-munkaterületet, és az erőforrás oldalán kattintson a **Törlés** parancsra.<br><br> ![Log Analytics-erőforrás törlése](media/log-analytics-quick-collect-azurevm/log-analytics-portal-delete-resource.png)
 

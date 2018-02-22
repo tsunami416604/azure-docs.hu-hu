@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/09/2017
 ms.author: juliako
-ms.openlocfilehash: 29cf8e68de5e15e2b570fa2f546d8644c5cf57b1
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: d19f48d99d0be9d2702060be04cf29a30290a001
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-the-azure-portal"></a>Élő streamelés az Azure Media Services segítségével, többszörös átviteli sebességű streamek Azure Portallal való létrehozásához
 > [!div class="op_single_selector"]
-> * [Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
+> * [Portál](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 > * [REST API](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
@@ -39,7 +39,7 @@ Ez az oktatóanyag bemutatja, hogyan hozzon létre egy egyszeres sávszélesség
 A leggyakrabban használt streamelési alkalmazások kialakításához általában az alábbi lépések szükségesek.
 
 > [!NOTE]
-> Jelenleg az élő stream maximális javasolt időtartama 8 óra. Ha hosszabb időtartamon át szeretné működtetni a csatornát, forduljon „amslived”-hez a Microsoft.com oldalon.
+> Jelenleg az élő események maximálisan ajánlott időtartama 8 óra. Ha ennél tovább futó csatornára van szüksége, lépjen velünk kapcsolatba az amslived@microsoft.com e-mail-címen.
 > 
 > 
 
@@ -56,7 +56,7 @@ A leggyakrabban használt streamelési alkalmazások kialakításához általáb
 5. Hozzon létre egy eseményt/programot (ezzel egy objektumot is létrehoz). 
 6. Tegye közzé az eseményt (ezzel létrehozza a kapcsolódó objektumhoz tartozó OnDemand-lokátort is).    
 7. Amikor készen áll a streamelésre és az archiválásra, indítsa el az eseményt.
-8. Ha kívánja, a kódolólónak küldött jelzéssel hirdetést is elindíthat. A hirdetés bekerül a kimenő streambe.
+8. További lehetőségként jelzést adhat a valós idejű kódolónak egy hirdetés elindítására. A hirdetés bekerül a kimenő streambe.
 9. Amikor le szeretné állítani az esemény streamelését és archiválását, állítsa le az eseményt.
 10. Törölje az eseményt (és ha szeretné, törölje az objektumot is).   
 
@@ -75,8 +75,8 @@ Az oktatóanyag elvégzésének a következők a feltételei.
 
 * Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. 
   További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-* Egy Media Services-fiók szükséges. A Media Services-fiók létrehozásával kapcsolatban lásd: [Create Account](media-services-portal-create-account.md) (Fiók létrehozása).
-* Egy webkamera és egy egyszeres sávszélességű élő stream továbbítására alkalmas kódoló.
+* Egy Media Services-fiók. A Media Services-fiók létrehozásával kapcsolatban lásd: [Create Account](media-services-portal-create-account.md) (Fiók létrehozása).
+* Egy webkamera és egy egyféle sávszélességű élő adatfolyamot küldő kódoló.
 
 ## <a name="create-a-channel"></a>Csatorna létrehozása
 1. Az [Azure-portálon](https://portal.azure.com/) kattintson a Media Services elemre, majd Media Services-fiókja nevére.
@@ -193,7 +193,7 @@ Az objektumok kezeléséhez válassza a **Setting** (Beállítás) elemet, majd 
 ![Objektumok](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-assets.png)
 
 ## <a name="considerations"></a>Megfontolandó szempontok
-* Jelenleg az élő események maximálisan ajánlott időtartama 8 óra. Ha egy ennél tovább futó csatornára van szüksége, lépjen velünk kapcsolatba az amslived@Microsoft.com e-mail címen.
+* Jelenleg az élő események maximálisan ajánlott időtartama 8 óra. Ha ennél tovább futó csatornára van szüksége, lépjen velünk kapcsolatba az amslived@microsoft.com e-mail-címen.
 * Győződjön meg arról, hogy a tartalomstreameléshez használt streamvégpont **Fut** állapotban van.
 
 ## <a name="next-step"></a>Következő lépés

@@ -2,24 +2,18 @@
 title: "Azure rövid útmutató – Objektumok áthelyezése az Azure Blob-tárolókra és -tárolókról Node.js használatával| Microsoft Docs"
 description: "Gyors áttekintést kaphat arról, hogyan továbbíthat objektumokat az Azure Blob-tárolókra és -tárolókról a Node.js használatával"
 services: storage
-documentationcenter: storage
-author: georgewallace
-manager: timlt
-editor: tysonn
-ms.assetid: 
+author: tamram
+manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 10/30/2017
-ms.author: gwallace
-ms.openlocfilehash: dd4d3abf082767c40760d020c0997b365452e769
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.date: 02/06/2018
+ms.author: tamram
+ms.openlocfilehash: 07845d0e1917c00dbd6098ef2bfbd9dcbbf2f97b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="transfer-objects-tofrom-azure-blob-storage-using-nodejs"></a>Objektumok áthelyezése az Azure Blob-tárolókra és -tárolókról a Node.js használatával
 
@@ -99,7 +93,7 @@ Sample finished running. When you hit <ENTER> key, the temporary files will be d
 
 A folytatás előtt ellenőrizze a két fájlt a Dokumentumok mappában. Ha megnyitja őket, láthatja, hogy megegyeznek.
 
-Az [Azure Storage Explorert](http://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) vagy egy ahhoz hasonló eszközt is használhat a fájl megtekintéséhez a Blob-tárolóban. Az Azure Storage Explorer egy ingyenes, platformfüggetlen eszköz, amellyel elérheti a tárfiókjával kapcsolatos információkat.
+Az [Azure Storage Explorert](http://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) vagy egy ahhoz hasonló eszközt is használhat, ha szeretné a fájlt megtekinteni a blobtárolóban. Az Azure Storage Explorer egy ingyenes, platformfüggetlen eszköz, amellyel elérheti a tárfiókjával kapcsolatos információkat.
 
 A fájlok ellenőrzése után nyomja le bármelyik billentyűt a bemutató befejezéséhez és a tesztfájlok törléséhez. Most, hogy tudja, hogy működik a minta, nyissa meg az index.js fájlt, és tekintse meg a kódot. 
 
@@ -109,9 +103,9 @@ A következőkben áttekintjük a mintakódot, és értelmezzük, hogyan működ
 
 ### <a name="get-references-to-the-storage-objects"></a>Referenciák beszerzése a tárolóobjektumokhoz
 
-Az első teendő a referencia létrehozása a Blob-tároló hozzáféréséhez és kezeléshez használt `BlobService` objektumhoz. Ezek az objektumok egymásra épülnek – mindegyiket a listában utánuk következő használja.
+Az első lépésben létre kell hozni a referenciát a **BlobService** objektumhoz, amelyet a blobtároló eléréséhez és kezeléséhez használ. Ezek az objektumok egymásra épülnek – mindegyiket a listában utánuk következő használja.
 
-* Hozza létre a **[BlobService](/nodejs/api/azure-storage/blobservice?view=azure-node-2.2.0#azure_storage_BlobService__ctor)** objektum példányát, amely a tárfiókja Blob szolgáltatására mutat.
+* Hozza létre a [BlobService](/nodejs/api/azure-storage/blobservice?view=azure-node-2.2.0#azure_storage_BlobService__ctor) objektum példányát, amely a tárfiókja Blob szolgáltatására mutat.
 
 * Hozzon létre egy új tárolót, majd állítsa be annak engedélyeit úgy, hogy a blobok nyilvánosak és mindössze egy URL-címmel elérhetőek legyenek. A tároló neve a **quickstartcontainer-** szöveggel kezdődik.
 
@@ -192,11 +186,11 @@ console.log('6. Deleting block Blob\n');
         fs.unlinkSync(DOWNLOADED_FILE_PATH);
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ennek a rövid útmutatónak a segítségével megtanulta, hogyan vihetők át fájlok egy helyi lemez és az Azure Blob Storage között a Node.js használatával. Ha bővebb információra van szüksége a Blob Storage használatával kapcsolatban, lépjen tovább a Blob Storage használati útmutatójára.
 
 > [!div class="nextstepaction"]
 > [Blob Storage-műveletek használati útmutatója](storage-nodejs-how-to-use-blob-storage.md)
 
-További információk a Storage Explorerről és a blobokról: [Azure Blob Storage-erőforrások kezelése a Storage Explorer használatával](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Az Azure Storage Node.js-referenciájáért lásd: [azure-storage csomag](https://docs.microsoft.com/javascript/api/azure-storage/?view=azure-node-latest).

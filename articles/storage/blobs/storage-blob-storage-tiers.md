@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/11/2017
 ms.author: kuhussai
-ms.openlocfilehash: be84f68a044a73673e991f04c7fe36a7787b9c3c
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: a4dc2ba7a356c26b75f5c9b519940b32f6763fa4
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-storage-tiers"></a>Azure Blob Storage: A gyakori és ritka elérésű, valamint az archív tárolási szintek
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure Storage három tárolási szintet kínál a Blob-objektumok tárolásához, hogy adatait a legköltséghatékonyabb módon tárolhassa a használat függvényében. Az Azure **tárolási rétege gyakran használt adatokhoz** a gyakran használt adatok tárolására van optimalizálva. Az Azure **ritka elérésű tárolási szintje** a ritkábban használt adatok legkevesebb 30 napi tárolására van optimalizálva. Az Azure **archív tárolási szintje** az alig használt adatok legkevesebb 180 napi, rugalmas (órákban mért) késési követelményekkel rendelkező tárolására van optimalizálva. Az archív tárolási szint csak a blobok szintjén érhető el, a tárfiók szintjén nem. A ritkán használt adatok tárolási rétegében lévő adatok esetében ugyan alacsonyabb rendelkezésre állás is elegendő lehet, azonban továbbra is magas tartósság és a gyakran használt adatokkal egyező hozzáférési idő és teljesítmény szükséges. A ritkán használt adatok esetében a valamelyest alacsonyabb rendelkezésre állási szolgáltatási szintek és a gyakran használt adatokhoz képest magasabb hozzáférési költségek elfogadható kompromisszumot jelentenek az alacsonyabb tárolási költségek ellenében. Az archív tárolás offline, és ez jár a legalacsonyabb tárolási, de ezzel párhuzamosan a legmagasabb hozzáférési költségekkel.
+Az Azure Storage három tárolási szintet kínál a Blob-objektumok tárolásához, hogy adatait a legköltséghatékonyabb módon tárolhassa a használat függvényében. Az Azure **gyakori elérésű tárolási szintje** a gyakran használt adatok tárolására van optimalizálva. Az Azure **ritka elérésű tárolási szintje** a ritkábban használt adatok legkevesebb 30 napi tárolására van optimalizálva. Az Azure **archív tárolási szintje** az alig használt adatok legkevesebb 180 napi, rugalmas (órákban mért) késési követelményekkel rendelkező tárolására van optimalizálva. Az archív tárolási szint csak a blobok szintjén érhető el, a tárfiók szintjén nem. A ritka elérésű tárolási szinten lévő adatok esetében ugyan alacsonyabb rendelkezésre állás is elegendő lehet, azonban továbbra is magas tartósság és a gyakran használt adatokkal egyező hozzáférési idő és teljesítmény szükséges. A ritkán használt adatok esetében a valamelyest alacsonyabb rendelkezésre állási szolgáltatási szintek és a gyakran használt adatokhoz képest magasabb hozzáférési költségek elfogadható kompromisszumot jelentenek az alacsonyabb tárolási költségek ellenében. Az archív tárolás offline, és ez jár a legalacsonyabb tárolási, de ezzel párhuzamosan a legmagasabb hozzáférési költségekkel. A fiók szintjén csak a gyakori és a ritka elérésű tárolási szintet (nem archív) lehet beállítani. Az objektumok szintjén mindhárom szintet be lehet állítani.
 
 Napjainkban a felhőben tárolt adatok mennyisége exponenciálisan nő. A növekvő tárolási szükségletek költségeinek kezelése érdekében hasznos lehet az adatokat olyan attribútumok alapján szervezni, mint a hozzáférés gyakorisága vagy a tervezett megőrzési időtartam, így optimalizálhatók a költségek. A felhőben tárolt adatok az előállítás, a feldolgozás és a hozzáférés tekintetében különbözőek lehetnek az élettartamuk során. Egyes adatokat aktívan használnak és módosítanak teljes élettartamuk során. Egyes adatokat élettartamuk korai szakaszában sokat használnak, az adatok életkorának növekedésével azonban a hozzáférések mennyisége drasztikusan csökken. Egyes adatok pedig inaktívan a felhőben maradnak, és a tárolást követően csak nagyon ritkán használják őket, ha használják őket egyáltalán.
 
@@ -38,14 +38,14 @@ A Blob Storage- és GPv2-fiókokban fiókszinten elérhető a **Hozzáférési s
 
 ## <a name="hot-access-tier"></a>Gyakran használt adatok hozzáférési szintje
 
-Egy gyakran használt tároló tárolási költsége magasabb, mint a ritkán használt vagy archív tárolóké, de ennek a legalacsonyabb a hozzáférési költsége. Példa használati forgatókönyvek a gyakran használt adatok tárolási rétegéhez:
+Egy gyakran használt tároló tárolási költsége magasabb, mint a ritkán használt vagy archív tárolóké, de ennek a legalacsonyabb a hozzáférési költsége. Példa használati forgatókönyvek a gyakori elérésű tárolási szinthez:
 
 * Adatok, amelyeket aktívan használnak, vagy amelyekhez várhatóan gyakran szeretnének hozzáférni (olvasás vagy írás formájában).
-* A feldolgozásra és a későbbiekben a ritkán használt adatok tárolási rétegébe való áttelepítésre előkészített adatok.
+* A feldolgozásra és a későbbiekben a ritka elérésű tárolási szintre való áttelepítésre előkészített adatok.
 
 ## <a name="cool-access-tier"></a>Ritkán használt adatok hozzáférési szintje
 
-A ritka elérésű tárolási szint tárolási költsége alacsonyabb, a hozzáférési költsége viszont magasabb, mint a gyakori elérésű szintté. Ezen a szinten olyan adatokat érdemes tárolni, amelyek legalább 30 napig maradnak a ritka elérésű szinten. Példa használati forgatókönyvek a ritkán használt adatok tárolási rétegéhez:
+A ritka elérésű tárolási szint tárolási költsége alacsonyabb, a hozzáférési költsége viszont magasabb, mint a gyakori elérésű szinté. Ezen a szinten olyan adatokat érdemes tárolni, amelyek legalább 30 napig maradnak a ritka elérésű szinten. Példa használati forgatókönyvek a ritka elérésű tárolási szinthez:
 
 * Rövid távú biztonsági mentési és vészhelyreállítási adatkészletek.
 * Régebbi, már csak ritkán megtekintett médiatartalmak, amelyek elérésére igény esetén azonban azonnal szükség van.
@@ -55,27 +55,27 @@ A ritka elérésű tárolási szint tárolási költsége alacsonyabb, a hozzáf
 
 Az archív tároló a gyakran és a ritkán használt adatok tárolásához képest a legalacsonyabb tárolási költségekkel, viszont magasabb adatlekérési költségekkel rendelkezik. Ezen a szinten olyan adatokat érdemes tárolni, amelyek legalább 180 napig maradnak az archív szinten, és amelyeknél nem okoz gondot a lekérés több órás késése.
 
-Az archív tárolóban lévő blobok offline állapotban vannak, nem olvashatók (az online állapotban lévő és hozzáférhető metaadatok kivételével), nem másolhatók, valamint nem írhatók felül és nem módosíthatók. Az archív tárolóban lévő blobokról pillanatképek sem készíthetők. A törlés, listázás, a blobtulajdonságok/metaadatok lekérése vagy a blob tárolási rétegének módosítása azonban elvégezhető.
+Az archív tárolóban lévő blobok offline állapotban vannak, nem olvashatók (az online állapotban lévő és hozzáférhető metaadatok kivételével), nem másolhatók, valamint nem írhatók felül és nem módosíthatók. Az archív tárolóban lévő blobokról pillanatképek sem készíthetők. A törlés, listázás, a blobtulajdonságok/metaadatok lekérése vagy a blob tárolási szintjének módosítása azonban elvégezhető.
 
-Példa használati forgatókönyvek az archív adatok tárolási rétegéhez:
+Példa használati forgatókönyvek az archív tárolási szinthez:
 
-* Hosszú távú biztonsági mentési, archiválási és vészhelyreállítási adatkészletek.
+* Hosszú távú biztonsági mentések, másodlagos biztonsági mentések és archiválási adatkészletek
 * Eredeti (nyers) adatok, amelyeket a végső használható formába való feldolgozásukat követően is meg kell őrizni. (*Például* nyers médiafájlok a más formátumba való átkódolásukat követően)
 * Megfelelőségi és archiválási adatok, amelyeket hosszú ideig kell tárolni, azonban nagyon ritkán kell hozzáférni. (*Például* biztonsági kamerák felvételei, egészségügyi intézmények régi röntgen-/MRI-felvételei, pénzügyi szolgáltatók ügyfélszolgálati hívásainak hangfelvételei és átiratai)
 
 ### <a name="blob-rehydration"></a>Blob rehidratálása
-Az archív tárolóban lévő adatok olvasásához előbb módosítania kell a blob rétegét a gyakran vagy ritkán használt adatok tárolási rétegére. Ezt a folyamatot rehidratálásnak nevezik, és akár 15 órát is igénybe vehet. Erősen ajánlott a nagy méretű blobok használata az optimális teljesítmény érdekében. Több kis méretű blob egyidejűleg történő rehidratálása további időt vehet igénybe.
+Az archív tárolóban lévő adatok olvasásához előbb módosítania kell a blob szintjét a gyakran vagy ritkán használt adatok tárolási szintjére. Ezt a folyamatot rehidratálásnak nevezik, és akár 15 órát is igénybe vehet. Erősen ajánlott a nagy méretű blobok használata az optimális teljesítmény érdekében. Több kis méretű blob egyidejűleg történő rehidratálása további időt vehet igénybe.
 
-A rehidratálás során a blob **Archív állapot** tulajdonságának ellenőrzésével bizonyosodhat meg arról, hogy a szint módosítása befejeződött-e. Az állapot a célrétegtől függően „rehydrate-pending-to-hot” (rehidratálás-folyamatban-a-gyakran-használt-rétegbe) vagy „rehydrate-pending-to-cool” (rehidratálás-folyamatban-a-ritkán-használt-rétegbe) lehet. A folyamat befejeztével a „archív állapot” tulajdonság törlődik, és a „hozzáférési szint” tulajdonság mutatja, hogy az új szint a gyakran vagy a ritkán használt szint-e.  
+A rehidratálás során a blob **Archív állapot** tulajdonságának ellenőrzésével bizonyosodhat meg arról, hogy a szint módosítása befejeződött-e. Az állapot a célszinttől függően „rehydrate-pending-to-hot” (rehidratálás-folyamatban-a-gyakoriba) vagy „rehydrate-pending-to-cool” (rehidratálás-folyamatban-a-ritkába) lehet. A folyamat befejeztével a „archív állapot” tulajdonság törlődik, és a „hozzáférési szint” tulajdonság mutatja, hogy az új szint a gyakran vagy a ritkán használt szint-e.  
 
 ## <a name="blob-level-tiering"></a>Blobszintű rétegezés
 
-A blobszintű rétegezés segítségével az adatok szintje egyetlen művelet, a [Blobszint beállítása](/rest/api/storageservices/set-blob-tier) használatával módosítható az egyes objektumok szintjén. A blobok hozzáférési szintje a használati forgatókönyvek változásával könnyen állítható a gyakran és ritkán használt, valamint az archív rétegek közt anélkül, hogy az adatokat át kellene helyezni egyik fiókból a másikba. Az archív blobok rehidratálásától eltekintve, ami több órát is igénybe vehet, a szintváltások azonnal megtörténnek. Az utolsó blobszint-módosítás időpontja a **Hozzáférési szint utolsó módosítása** blobtulajdonságon keresztül érhető el. Ha egy blob az archív szinten van, előfordulhat, hogy nem felülírható, ezért ugyanennek a blobnak a feltöltése nem engedélyezett ebben a forgatókönyvben. A gyakran használt és a ritkán használt adatokat tároló szint felülírható egy blobhoz, és ebben az esetben az új blob örökli a felülírt régi blob szintjét.
+A blobszintű rétegezés segítségével az adatok szintje egyetlen művelet, a [Blobszint beállítása](/rest/api/storageservices/set-blob-tier) használatával módosítható az egyes objektumok szintjén. A blobok hozzáférési szintje a használati forgatókönyvek változásával könnyen állítható a gyakran és ritkán használt, valamint az archív szintek között anélkül, hogy az adatokat át kellene helyezni egyik fiókból a másikba. Az archív blobok rehidratálásától eltekintve, ami több órát is igénybe vehet, a szintváltások azonnal megtörténnek. Az utolsó blobszint-módosítás időpontja a **Hozzáférési szint utolsó módosítása** blobtulajdonságon keresztül érhető el. Ha egy blob az archív szinten van, előfordulhat, hogy nem felülírható, ezért ugyanennek a blobnak a feltöltése nem engedélyezett ebben a forgatókönyvben. A gyakran használt és a ritkán használt adatokat tároló szint felülírható egy blobhoz, és ebben az esetben az új blob örökli a felülírt régi blob szintjét.
 
-Egy adott fiók tartalmazhat blobokat egyszerre akár mindhárom rétegben is. Azok a blobok, amelyekhez nincs kifejezetten hozzárendelve szint, a fiók hozzáférési szintjének beállítását veszik át. Ha a hozzáférési szint a fióktól vette a beállításait, a **Hozzáférési szint következtetett** blobtulajdonság beállítása „true”, és a blob **Hozzáférési szint** blobtulajdonság megfelel a fiókszintjének. Az Azure Portalon a hozzáférési szint hozott tulajdonsága a blob hozzáférési szintjével együtt jelenik meg (például Gyakori (következtetett) vagy Ritka (következtetett)).
+Egy adott fiók tartalmazhat blobokat egyszerre akár mindhárom szinten is. Azok a blobok, amelyekhez nincs kifejezetten hozzárendelve szint, a fiók hozzáférési szintjének beállítását veszik át. Ha a hozzáférési szint a fióktól vette a beállításait, a **Hozzáférési szint következtetett** blobtulajdonság beállítása „true”, és a blob **Hozzáférési szint** blobtulajdonság megfelel a fiókszintjének. Az Azure Portalon a hozzáférési szint hozott tulajdonsága a blob hozzáférési szintjével együtt jelenik meg (például Gyakori (következtetett) vagy Ritka (következtetett)).
 
 > [!NOTE]
-> Az archív tárolás és a blobszintű rétegezés csak a blokkblobokat támogatja. A pillanatképeket tartalmazó blokkblob szintjét sem módosíthatja.
+> Az archív tárolás és a blobszintű rétegezés csak a blokkblobokat támogatja. A pillanatképeket tartalmazó blokkblob szintje sem módosítható.
 
 ### <a name="blob-level-tiering-billing"></a>Blobszintű rétegezési számlázás
 
@@ -83,15 +83,15 @@ Ha egy blob egy ritkábban használt szintre kerül (Gyakori elérésű->Ritka e
 
 Ha átváltja a fiókszintet gyakori elérésűről ritka elérésűre, csak a GPv2-fiókok esetében lesznek díjkötelesek a beállított szinttel nem rendelkező blobok esetében végrehajtott írási műveletek (10.000 műveletenként). Ez a Blob Storage-fiókok esetében díjmentes. Ha Blob Storage- vagy GPv2-fiókját ritka elérésűről gyakori elérésűre módosítja, az olvasási műveletek (10.000 műveletenként) és adatlekérések (GB-onként) esetében díjat számolunk fel. A ritka elérésű vagy archív szintről áthelyezett blobok esetében korai törlésre vonatkozó díjak lehetnek érvényesek.
 
-### <a name="cool-and-archive-early-deletion-effective-february-1-2018"></a>Korai törlés ritka elérésű és archív tárolók esetében (érvénybe lépés: 2018. február 1.)
+### <a name="cool-and-archive-early-deletion-effective-march-1-2018"></a>Korai törlés a ritka elérésű és az archív tárolási szint esetében (érvénybe lépés: 2018. március 1.)
 
 A GB-alapú és havi díjak mellett minden, a ritka elérésű szintre áthelyezett blobra (csak GPv2-fiókok esetében) 30 napos ritka elérésű korai törlési időszak, az archív szintre áthelyezett blobokra pedig 180 napos archív korai törlési időszak vonatkozik. A díj számlázása időarányosan történik. Ha például áthelyez egy blobot az archív szintre, majd 45 nap után törli vagy áthelyezi azt a gyakori elérésű szintre, 135 (180 mínusz 45) napnyi archív tárolásnak megfelelő korai törlési díjat számolunk fel.
 
-## <a name="comparison-of-the-storage-tiers"></a>A tárolási rétegek összehasonlítása
+## <a name="comparison-of-the-storage-tiers"></a>A tárolási szintek összehasonlítása
 
 Az alábbi táblázat a gyakori és ritka elérésű, valamint archív tárolási szintet hasonlítja össze.
 
-| | **Gyakran használt adatok tárolási rétege** | **Ritkán használt adatok tárolási rétege** | **Archív tárolási szint**
+| | **Gyakori elérésű tárolási szint** | **Ritka elérésű tárolási szint** | **Archív tárolási szint**
 | ---- | ----- | ----- | ----- |
 | **Rendelkezésre állás** | 99.9% | 99% | N/A |
 | **Rendelkezésre állás** <br> **(RA-GRS olvasások)**| 99.99% | 99.9% | N/A |
@@ -119,7 +119,7 @@ Ebben a szakaszban a következő forgatókönyveket mutatjuk be az Azure Portal 
 
 3. A Beállítások panelen kattintson a **Konfiguráció** elemre a fiók konfigurációjának megtekintéséhez és/vagy megváltoztatásához.
 
-4. Válassza ki az igényeinek megfelelő tárolási réteget: a **Hozzáférési szint** beállításnál válassza a **Ritka** vagy a **Gyakori** lehetőséget.
+4. Válassza ki az igényeinek megfelelő tárolási szintet: a **Hozzáférési szint** beállításnál válassza a **Ritka** vagy a **Gyakori** lehetőséget.
 
 5. Kattintson a panel tetején lévő Mentés elemre.
 
@@ -157,11 +157,11 @@ Nem. Csak a gyakori és ritka elérésű tárolási szint állítható be a fió
 
 A gyakori és ritka elérésű tárolási szint, illetve a blobszintű rétegezés minden régióban elérhető. Az archív tárolási szint eleinte csak bizonyos régiókban lesz elérhető. A teljes listát a [Régiónként elérhető Azure-termékek](https://azure.microsoft.com/regions/services/) című részben tekintheti meg.
 
-**A gyakran használt adatok tárolási rétegében és a ritkán használt adatok tárolási rétegében eltérően viselkednek a blobok?**
+**A gyakori elérésű tárolási szinten és a ritka elérésű tárolási szinten eltérően viselkednek a blobok?**
 
 A gyakori elérésű tárolási szinten a blobok ugyanolyan késéssel rendelkeznek, mint a GPv1-, GPv2- és Blob Storage-fiókok esetében. A ritka elérésű tárolási szinten a blobok hasonló késéssel rendelkeznek (ezredmásodpercben), mint a GPv1-, GPv2- és Blob Storage-fiókok esetében. Az archív tárolási szinten lévő blobok esetében több óra késés tapasztalható GPv1-, GPv2- és Blob Storage-fiókok esetében.
 
-A ritkán használt adatok tárolási rétegében a blobok rendelkezésre állási szolgáltatási szintje (SLA) kissé alacsonyabb, mint a gyakran használt adatok tárolási rétegében. További információkért lásd: [SLA a következőhöz: Storage](https://azure.microsoft.com/support/legal/sla/storage/v1_2/).
+A ritka elérésű tárolási szinten a blobok rendelkezésre állási szolgáltatási szintje (SLA) kissé alacsonyabb, mint a gyakori elérésű tárolási szinten. További információkért lásd: [SLA a következőhöz: Storage](https://azure.microsoft.com/support/legal/sla/storage/v1_2/).
 
 **A műveletek megegyeznek a gyakori és a ritka elérésű, valamint az archív tárolási szint esetében?**
 
@@ -169,7 +169,7 @@ Igen. A gyakori és a ritka elérésű szint esetében minden művelet teljesen 
 
 **Amikor az archív tárolási szintről rehidratálok egy blobot a gyakori vagy ritka elérésű szintre, honnan tudom, hogy befejeződött-e a rehidratálás?**
 
-A rehidratálás során a blobtulajdonságok lekérése művelettel kérdezheti le az **archív állapot** attribútumot, amelynek segítségével ellenőrizheti, hogy befejeződött-e a szintváltás. Az állapot a célrétegtől függően „rehydrate-pending-to-hot” (rehidratálás-folyamatban-a-gyakran-használt-rétegbe) vagy „rehydrate-pending-to-cool” (rehidratálás-folyamatban-a-ritkán-használt-rétegbe) lehet. A folyamat befejeztével a „archív állapot” tulajdonság törlődik, és a „hozzáférési szint” tulajdonság mutatja, hogy az új szint a gyakran vagy a ritkán használt szint-e.  
+A rehidratálás során a blobtulajdonságok lekérése művelettel kérdezheti le az **archív állapot** attribútumot, amelynek segítségével ellenőrizheti, hogy befejeződött-e a szintváltás. Az állapot a célszinttől függően „rehydrate-pending-to-hot” (rehidratálás-folyamatban-a-gyakoriba) vagy „rehydrate-pending-to-cool” (rehidratálás-folyamatban-a-ritkába) lehet. A folyamat befejeztével a „archív állapot” tulajdonság törlődik, és a „hozzáférési szint” tulajdonság mutatja, hogy az új szint a gyakran vagy a ritkán használt szint-e.  
 
 **Egy blob szintjének beállítása után mikor kezdődik a megfelelő díjak alapján történő számlázás?**
 
@@ -177,7 +177,7 @@ Minden blob számlázása a **Hozzáférési szint** blobtulajdonságban megjel�
 
 **Hogyan állapíthatom meg, hogy egy blob ritka elérésű vagy archív tárolási szintről való törlése vagy áthelyezése során van-e korai törlési díj?**
 
-Minden blob, amelyet a ritka elérésű (csak GPv2 fiókok esetében) vagy archív tárolási szintről töröl vagy helyez át az arra vonatkozó 30, illetve 180 nap letelte előtt, a korai törléseknek megfelelő, időarányos költségeket von maga után (érvényes: 2018. február 1-től). Azt, hogy egy blob mennyi ideje van a ritka elérésű vagy archív tárolási szinten, a **Hozzáférési szint módosításának ideje** blobtulajdonság ellenőrzésével állapíthatja meg, amely megadja az utolsó szintmódosítás időbélyegét. További részletekért lásd: [Korai törlés ritka elérésű vagy archív szint esetében](#cool-and-archive-early-deletion).
+Minden blob, amelyet a ritka elérésű (csak GPv2 fiókok esetében) vagy archív tárolási szintről töröl vagy helyez át az arra vonatkozó 30, illetve 180 nap letelte előtt, a korai törléseknek megfelelő, időarányos költségeket von maga után (érvényes: 2018. március 1-től). Azt, hogy egy blob mennyi ideje van a ritka elérésű vagy archív tárolási szinten, a **Hozzáférési szint módosításának ideje** blobtulajdonság ellenőrzésével állapíthatja meg, amely megadja az utolsó szintmódosítás időbélyegét. További részletekért lásd: [Korai törlés ritka elérésű vagy archív szint esetében](#cool-and-archive-early-deletion).
 
 **Melyik Azure-eszközök és SDK-k támogatják a blobszintű rétegezést és az archív tárolási szintet?**
 

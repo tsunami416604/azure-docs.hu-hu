@@ -1,6 +1,6 @@
 ---
-title: "Rendelkezésre állási készletek oktatóanyag Windows virtuális gépek Azure-ban |} Microsoft Docs"
-description: "További tudnivalók a rendelkezésre állási csoportok Windows virtuális gépek Azure-ban."
+title: "Rendelkezésre állási csoportokra vonatkozó oktatóanyag Azure-beli Windows virtuális gépekhez | Microsoft Docs"
+description: "Tudnivalók az Azure-beli Windows virtuális gépek rendelkezésre állási csoportjaival kapcsolatban."
 documentationcenter: 
 services: virtual-machines-windows
 author: cynthn
@@ -12,41 +12,43 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
-ms.topic: article
-ms.date: 10/05/2017
+ms.topic: tutorial
+ms.date: 02/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2345b434a51b768793c2dea4587dc0a49ab35b70
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
-ms.translationtype: MT
+ms.openlocfilehash: b8577a02f0c9396b64af986950fddaa1e00925ec
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 02/14/2018
 ---
-# <a name="how-to-use-availability-sets"></a>Rendelkezésre állási készletek használata
+# <a name="how-to-use-availability-sets"></a>A rendelkezésre állási csoportok használata
 
-Ebben az oktatóanyagban elsajátíthatja a rendelkezésre állása és megbízhatósága szempontjából a virtuális gép megoldások Azure-ban egy rendelkezésre állási készletek nevű képesség növelésére. Rendelkezésre állási készletek győződjön meg arról, hogy a virtuális gépek Azure-on telepít egy fürt csomópontja több elkülönített hardver különböző pontjain. Ez biztosítja, hogy az Azure hardveres vagy szoftveres hiba akkor fordul elő, ha csak a virtuális gépek alárendelt meghatározott érintett ezzel és, hogy a teljes megoldás továbbra is elérhető, és működik. 
+Ebben az oktatóanyagban megtanulhatja, hogyan növelheti Azure-beli virtuálisgép-megoldásai rendelkezésre állását és megbízhatóságát a rendelkezésre állási csoportok elnevezésű képesség használatával. A rendelkezésre állási csoportok biztosítják, hogy az Azure-ban üzembe helyezett virtuális gépek több elkülönített hardvercsomópont között legyenek elosztva a fürtben. Ezáltal biztosítható, hogy ha hardveres vagy szoftveres hiba fordul elő az Azure-ban, az a virtuális gépeknek csak egy részhalmazát érintse, és a teljes megoldás továbbra is elérhető és működőképes maradjon. 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Rendelkezésre állási csoport létrehozása
-> * Hozzon létre egy virtuális gép rendelkezésre állási csoportba
-> * Ellenőrizze a rendelkezésre álló Virtuálisgép-méretek
+> * Virtuális gép létrehozása rendelkezésre állási csoportban
+> * Elérhető virtuálisgép-méretek ellenőrzése
 > * Az Azure Advisor ellenőrzése
 
-Az oktatóanyaghoz az Azure PowerShell-modul 3.6-os vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: ` Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket.
+[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
+
+Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az Azure PowerShell-modul 5.3-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral. 
 
 ## <a name="availability-set-overview"></a>Rendelkezésre állási csoport – áttekintés
 
-Rendelkezésre állási csoport egy olyan logikai jellegű csoportosítását képességgel, győződjön meg arról, hogy a Virtuálisgép-erőforrások helyezi-e benne el különítve egymástól belül egy Azure-adatközpontban telepítésekor használhatja az Azure-ban. Azure biztosítja, hogy a virtuális gépek elhelyezésekor belül egy rendelkezésre állási készlet több fizikai kiszolgálón futtassa, például rackszekrények, a tárolási egység és a hálózati kapcsolók számítási. A hardver- vagy Azure szoftver hiba akkor fordul elő, ha a virtuális gépek csak egy részhalmazát érintett, és az alkalmazás általános mentése marad, és továbbra is fennáll, az ügyfelek számára elérhető legyen. Rendelkezésre állási csoportok egy alapvető funkció is, ha a használni kívánt megbízható felhőalapú megoldásokat.
+A rendelkezésre állási csoport egy logikai csoportosítási funkció, amelyet az Azure-ban használva biztosíthatja, hogy a csoportba helyezett virtuálisgép-erőforrások egymástól elkülönítve legyenek üzembe helyezve az Azure-adatközpontokban. Az Azure biztosítja, hogy a rendelkezésre állási csoportba helyezett virtuális gépek több fizikai kiszolgálón, számítási rackszekrényen, tárolási egységben és hálózati kapcsolón fussanak. Ha hardveres vagy Azure-beli szoftveres hiba lép fel, az a virtuális gépeknek csak egy részhalmazát érinti, a teljes alkalmazás azonban tovább üzemel, és továbbra is elérhető marad az ügyfelek számára. A rendelkezésre állási csoport egy alapvető funkció, ha megbízható felhőalapú megoldásokat kíván létrehozni.
 
-Mérlegeljük, ahol például 4 előtér-webkiszolgáló, és 2 háttér-virtuális gép egy adatbázist az tipikus Virtuálisgép-alapú megoldás. Az Azure-szeretné a virtuális gépek telepítése előtt határozza meg a két rendelkezésre állási csoportok: rendelkezésre állási csoporthoz a webes réteghez és egy rendelkezésre állási készletét, az adatbázis-rétegből. Amikor létrehoz egy új virtuális Gépet, majd megadhatja a rendelkezésre állási csoportot paraméterként az VM létrehozása parancs, és az Azure automatikusan biztosítja, hogy a virtuális gépeket hoz létre belül a rendelkezésre álló készlet több fizikai hardver-erőforrások között vannak elszigetelt. Ha a fizikai hardverrel, az egyik webkiszolgálón vagy adatbázis-kiszolgáló virtuális gépeken futó probléma van, akkor tudja, hogy a webkiszolgáló és az adatbázis virtuális gépek más példánya futhat, mert másik hardveren.
+Vegyünk például egy tipikus virtuálisgép-alapú megoldást négy előtérbeli webkiszolgálóval és két háttérbeli virtuális géppel, amelyek egy adatbázist futtatnak. Az Azure-ban két rendelkezésre állási csoportot érdemes meghatározni a virtuális gépek üzembe helyezése előtt: egy rendelkezésre állási csoportot a webes szint, egyet pedig az adatbázisszint számára. Amikor létrehoz egy új virtuális gépet, megadhatja a rendelkezésre állási csoportot paraméterként az „az vm create” parancsban. Ekkor az Azure automatikusan biztosítja, hogy a rendelkezésre állási csoportban létrehozott virtuális gépek el legyenek különítve több fizikai hardvererőforráson. Ha a fizikai hardver, amelyen az egyik webes vagy adatbázis-kiszolgáló virtuális gép üzemel, meghibásodik, biztos lehet abban, hogy a webes és az adatbázis-kiszolgáló virtuális gép többi példánya tovább üzemel, mivel azok más hardveren találhatók.
 
-Rendelkezésre állási készletek használata során megbízható, VM-alapú megoldások Azure-ban telepíteni szeretné.
+Használjon rendelkezésre állási csoportokat, ha megbízható VM-alapú megoldásokat szeretne üzembe helyezni az Azure-ban.
 
 ## <a name="create-an-availability-set"></a>Rendelkezésre állási csoport létrehozása
 
-Rendelkezésre állási készlet használatával hozhat létre [New-AzureRmAvailabilitySet](/powershell/module/azurerm.compute/new-azurermavailabilityset). Ebben a példában mindkét, frissítés és a tartalék tartományok számának hivatott *2* esetében a rendelkezésre állási csoportot elnevezett *myAvailabilitySet* a a *myResourceGroupAvailability* erőforráscsoportot.
+Rendelkezésre állási csoportot a [New-AzureRmAvailabilitySet](/powershell/module/azurerm.compute/new-azurermavailabilityset) paranccsal hozhat létre. Ebben a példában a frissítési és a tartalék tartományok számát egyaránt *2*-re állítjuk a *myResourceGroupAvailability* erőforráscsoport *myAvailabilitySet* nevű rendelkezésre állási csoportja esetében.
 
 Hozzon létre egy erőforráscsoportot.
 
@@ -54,157 +56,83 @@ Hozzon létre egy erőforráscsoportot.
 New-AzureRmResourceGroup -Name myResourceGroupAvailability -Location EastUS
 ```
 
-Hozzon létre egy felügyelt rendelkezésre állási segítségével [New-AzureRmAvailabilitySet](/powershell/module/azurerm.compute/new-azurermavailabilityset) rendelkező a **- sku igazítva** paraméter.
+Hozzon létre egy felügyelt rendelkezésre állási csoportot a [New-AzureRmAvailabilitySet](/powershell/module/azurerm.compute/new-azurermavailabilityset) paranccsal, az `-sku aligned` paraméterrel.
 
 ```azurepowershell-interactive
 New-AzureRmAvailabilitySet `
-   -Location EastUS `
-   -Name myAvailabilitySet `
-   -ResourceGroupName myResourceGroupAvailability `
-   -sku aligned `
+   -Location "EastUS" `
+   -Name "myAvailabilitySet" `
+   -ResourceGroupName "myResourceGroupAvailability" `
+   -Sku aligned `
    -PlatformFaultDomainCount 2 `
    -PlatformUpdateDomainCount 2
 ```
 
-## <a name="create-vms-inside-an-availability-set"></a>Hozzon létre virtuális gépek rendelkezésre állási csoportok belül
+## <a name="create-vms-inside-an-availability-set"></a>Virtuális gépek létrehozása rendelkezésre állási csoportban
+A virtuális gépeket a rendelkezésre állási csoportban kell létrehozni, hogy azok biztosan megfelelően legyenek elosztva a hardveren. Meglévő virtuális gépet nem adhat hozzá rendelkezésre állási csoporthoz annak létrejötte után. 
 
-Virtuális gépek a rendelkezésre állási készletét, győződjön meg arról, hogy a hardver megfelelően vannak elosztva a belül kell létrehoznia. Rendelkezésre állási készlet létrehozása után nem lehet hozzáadni egy meglévő virtuális Gépre. 
+Az egy adott helyen lévő hardver több frissítési és a tartalék tartományra van osztva. A **frissítési tartomány** virtuális gépek és mögöttes fizikai hardverelemek csoportja, amelyek egyszerre indíthatók újra. Az egyazon **tartalék tartományba** tartozó virtuális gépek közös tárolóval, valamint közös áramforrással és hálózati kapcsolóval rendelkeznek. 
 
-A hardver egy helyen több frissítési tartományt és a tartalék tartományok tagolódik. Egy **frissítési tartomány** egy csoport a virtuális gépek és a mögöttes fizikai hardver, amely egy időben újra kell indítani. Virtuális gépek ugyanazon **tartalék tartomány** közös tárolási, valamint egy közös forrás- és hálózati kikapcsolás megosztani. 
+Ha a [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) paranccsal hoz létre virtuális gépet, az `-AvailabilitySetName` paraméterrel adhatja meg a rendelkezésre állási csoport nevét.
 
-Amikor hoz létre egy virtuális gép konfigurációs használatával [New-AzureRMVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig) használja a `-AvailabilitySetId` paraméterrel adhatja meg a rendelkezésre állási csoport azonosítója.
-
-Hozzon létre két virtuális gépek [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) a rendelkezésre állási csoport.
+Először a [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) paranccsal állítsa be a virtuális gép rendszergazdai felhasználónevét és jelszavát:
 
 ```azurepowershell-interactive
-$availabilitySet = Get-AzureRmAvailabilitySet `
-    -ResourceGroupName myResourceGroupAvailability `
-    -Name myAvailabilitySet
-
-$cred = Get-Credential -Message "Enter a username and password for the virtual machine."
-
-$subnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
-    -Name mySubnet `
-    -AddressPrefix 192.168.1.0/24
-$vnet = New-AzureRmVirtualNetwork `
-    -ResourceGroupName myResourceGroupAvailability `
-    -Location EastUS `
-    -Name myVnet `
-    -AddressPrefix 192.168.0.0/16 `
-    -Subnet $subnetConfig
-    
-$nsgRuleRDP = New-AzureRmNetworkSecurityRuleConfig `
-    -Name myNetworkSecurityGroupRuleRDP `
-    -Protocol Tcp `
-    -Direction Inbound `
-    -Priority 1000 `
-    -SourceAddressPrefix * `
-    -SourcePortRange * `
-    -DestinationAddressPrefix * `
-    -DestinationPortRange 3389 `
-    -Access Allow
-
-$nsg = New-AzureRmNetworkSecurityGroup `
-    -Location eastus `
-    -Name myNetworkSecurityGroup `
-    -ResourceGroupName myResourceGroupAvailability `
-    -SecurityRules $nsgRuleRDP
-    
-# Apply the network security group to a subnet
-Set-AzureRmVirtualNetworkSubnetConfig `
-    -VirtualNetwork $vnet `
-    -Name mySubnet `
-    -NetworkSecurityGroup $nsg `
-    -AddressPrefix 192.168.1.0/24
-
-# Update the virtual network
-Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
-
-for ($i=1; $i -le 2; $i++)
-{
-   $pip = New-AzureRmPublicIpAddress `
-        -ResourceGroupName myResourceGroupAvailability `
-        -Location EastUS `
-        -Name "mypublicdns$(Get-Random)" `
-        -AllocationMethod Static `
-        -IdleTimeoutInMinutes 4
-
-   $nic = New-AzureRmNetworkInterface `
-        -Name myNic$i `
-        -ResourceGroupName myResourceGroupAvailability `
-        -Location EastUS `
-        -SubnetId $vnet.Subnets[0].Id `
-        -PublicIpAddressId $pip.Id `
-        -NetworkSecurityGroupId $nsg.Id
-
-   # Here is where we specify the availability set
-   $vm = New-AzureRmVMConfig `
-        -VMName myVM$i `
-        -VMSize Standard_D1 `
-        -AvailabilitySetId $availabilitySet.Id
-
-   $vm = Set-AzureRmVMOperatingSystem `
-        -ComputerName myVM$i `
-        -Credential $cred `
-        -VM $vm `
-        -Windows `
-        -EnableAutoUpdate `
-        -ProvisionVMAgent
-   $vm = Set-AzureRmVMSourceImage `
-        -VM $vm `
-        -PublisherName MicrosoftWindowsServer `
-        -Offer WindowsServer `
-        -Skus 2016-Datacenter `
-        -Version latest
-   $vm = Set-AzureRmVMOSDisk `
-        -VM $vm `
-        -Name myOsDisk$i `
-        -DiskSizeInGB 128 `
-        -CreateOption FromImage `
-        -Caching ReadWrite
-   $vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
-   New-AzureRmVM `
-        -ResourceGroupName myResourceGroupAvailability `
-        -Location EastUS `
-        -VM $vm
-}
-
+$cred = Get-Credential
 ```
 
-Hozzon létre, és mindkét virtuális gépek néhány percet vesz igénybe. Ha elkészült, akkor kell két virtuális gép a mögöttes hardver pontjain. 
+Most hozzon létre két virtuális gépet a [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) paranccsal a rendelkezésre állási csoportban.
 
-Ha megnézi a rendelkezésre állási csoportot a portálon a erőforráscsoportok > myResourceGroupAvailability > myAvailabilitySet, tekintse meg a virtuális gépeket a 2 tartalék elosztott hogyan és tartományok frissíteni kell.
+```azurepowershell-interactive
+for ($i=1; $i -le 2; $i++)
+{
+    New-AzureRmVm `
+        -ResourceGroupName "myResourceGroupAvailability" `
+        -Name "myVM$i" `
+        -Location "East US" `
+        -VirtualNetworkName "myVnet" `
+        -SubnetName "mySubnet" `
+        -SecurityGroupName "myNetworkSecurityGroup" `
+        -PublicIpAddressName "myPublicIpAddress$i" `
+        -AvailabilitySetName "myAvailabilitySet" `
+        -Credential $cred
+}
+```
 
-![Rendelkezésre állási csoportban, a portálon](./media/tutorial-availability-sets/fd-ud.png)
+Az `-AsJob` paraméter háttérfeladatként létrehozza a virtuális gépet, így használni tudja a PowerShell-parancssorokat. A háttérfeladatok részleteit a `Job` parancsmaggal tekintheti meg. A két virtuális gép létrehozása és konfigurálása néhány percet vesz igénybe. Ha befejeződött, két virtuális géppel rendelkezik majd elosztva a mögöttes hardveren. 
 
-## <a name="check-for-available-vm-sizes"></a>Ellenőrizze az elérhető Virtuálisgép-méretek 
+Ha megtekinti a rendelkezésre állási csoportot a portálon az Erőforráscsoportok > myResourceGroupAvailability > myAvailabilitySet pont alatt, láthatja, hogy a virtuális gépek hogyan oszlanak el a két tartalék és frissítési tartományban.
 
-A rendelkezésre állási csoportot később adhat hozzá további virtuális gépek, de milyen Virtuálisgép-méretek állnak rendelkezésre a hardver tudnia kell. Használjon [Get-AzureRMVMSize](/powershell/module/azurerm.compute/get-azurermvmsize) listázza az összes hardveren elérhető méretek fürtön a rendelkezésre állási csoport számára.
+![Rendelkezésre állási csoport a portálon](./media/tutorial-availability-sets/fd-ud.png)
+
+## <a name="check-for-available-vm-sizes"></a>Elérhető virtuálisgép-méretek ellenőrzése 
+
+A rendelkezésre állási csoportot később további virtuális gépekkel bővítheti, azonban tudnia kell, milyen virtuálisgép-méretek érhetők el a hardveren. A [Get-AzureRMVMSize](/powershell/module/azurerm.compute/get-azurermvmsize) paranccsal listázhatja a rendelkezésre állási csoport hardverfürtjén elérhető összes méretet.
 
 ```azurepowershell-interactive
 Get-AzureRmVMSize `
-   -AvailabilitySetName myAvailabilitySet `
-   -ResourceGroupName myResourceGroupAvailability  
+   -ResourceGroupName "myResourceGroupAvailability" `
+   -AvailabilitySetName "myAvailabilitySet"
 ```
 
 ## <a name="check-azure-advisor"></a>Az Azure Advisor ellenőrzése 
 
-Azure Advisor segítségével a virtuális gépek rendelkezésre állásának javítása érdekében módjairól további információért. Azure Advisor segít kövesse az ajánlott eljárások az Azure-környezetekhez optimalizálása érdekében. Az erőforrás-konfigurációhoz és használat telemetriai adatai elemzi, és az, amelyek javítják a költséghatékonyság, a teljesítmény, a magas rendelkezésre állású és az Azure-erőforrások biztonsági megoldások javasolja.
+Az Azure Advisor használatával is kaphat további tanácsokat a virtuális gépek rendelkezésre állásának javítására vonatkozóan. Az Azure Advisor segít alkalmazni az Azure-környezetek optimalizálására vonatkozó ajánlott eljárásokat. Az Advisor elemzi az erőforrások konfiguráció- és használattelemetriáját, és megoldási javaslatokat tesz, amelyek segítségével javítható az Azure-erőforrások költséghatékonysága, teljesítménye, rendelkezésre állása és biztonsága.
 
-Jelentkezzen be a [Azure-portálon](https://portal.azure.com), jelölje be **további szolgáltatások**, és írja be **Advisor**. Az Advisor irányítópulton megjelenített személyre szabott javaslatok a kijelölt előfizetésben. További információkért lásd: [Ismerkedés az Azure Advisor](../../advisor/advisor-get-started.md).
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com), válassza a **További szolgáltatások** lehetőséget, és írja be az **Advisor** kifejezést. Az Advisor irányítópult személyre szabott javaslatokat jelenít meg a kiválasztott előfizetésre vonatkozóan. További információért lásd [az Azure Advisor használatának első lépéseit](../../advisor/advisor-get-started.md).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Rendelkezésre állási csoport létrehozása
-> * Hozzon létre egy virtuális gép rendelkezésre állási csoportba
-> * Ellenőrizze a rendelkezésre álló Virtuálisgép-méretek
+> * Virtuális gép létrehozása rendelkezésre állási csoportban
+> * Elérhető virtuálisgép-méretek ellenőrzése
 > * Az Azure Advisor ellenőrzése
 
-Virtuálisgép-méretezési csoportok olvashat a következő oktatóanyag továbblépés.
+Folytassa a következő oktatóanyaggal, amely a virtuálisgép-méretezési csoportokat ismerteti.
 
 > [!div class="nextstepaction"]
 > [Virtuálisgép-méretezési csoport létrehozása](tutorial-create-vmss.md)

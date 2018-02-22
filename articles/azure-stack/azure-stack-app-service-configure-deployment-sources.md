@@ -3,8 +3,8 @@ title: "Központi telepítés forrásainak konfigurálása az Azure-veremben alk
 description: "Hogyan szolgáltatás-rendszergazda számára állíthat be (Git, GitHub, BitBucket, DropBox és a OneDrive) központi telepítés forrásból veremben Azure App Service"
 services: azure-stack
 documentationcenter: 
-author: apwestgarth
-manager: stefsch
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 
 ms.service: azure-stack
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
-ms.author: anwestg
-ms.openlocfilehash: e73a607a7f8ad948ab821b0aeda164418509f076
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.author: brenduns
+ms.reviewer: anwestg
+ms.openlocfilehash: 310bea356ac611a92d9e3899da5d4fb19c50e94e
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-deployment-sources"></a>Központi telepítés forrásának konfigurálása
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*

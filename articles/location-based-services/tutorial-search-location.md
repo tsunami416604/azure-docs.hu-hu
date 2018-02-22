@@ -12,13 +12,13 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 8da7d9112c9527945ab4b524625603faa84cf00d
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 791992028d11633fc20f55ae1a34e7fcd442bf3a
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="search-nearby-point-of-interest-using-azure-location-based-services"></a>Közeli hasznos helyek keresése az Azure Location Based Services használatával
+# <a name="search-nearby-points-of-interest-using-azure-location-based-services"></a>Közeli hasznos helyek keresése az Azure Location Based Services használatával
 
 Ez az oktatóanyag azt mutatja be, hogyan állatható be egy fiók az Azure Location Based Services használatához, majd hogyan használhatók a megadott API-k egy hasznos hely kereséséhez. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -30,7 +30,7 @@ Ez az oktatóanyag azt mutatja be, hogyan állatható be egy fiók az Azure Loca
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
-# <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
+## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 <a id="createaccount"></a>

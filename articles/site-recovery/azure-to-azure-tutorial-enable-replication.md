@@ -1,182 +1,179 @@
 ---
-title: "Beállítása a vészhelyreállítás Azure virtuális gépek egy másodlagos Azure-régió, az Azure Site Recovery (előzetes verzió)"
-description: "Megtudhatja, hogyan állíthat be vészhelyreállítás Azure virtuális gépek egy másik Azure-régió, az Azure Site Recovery szolgáltatással."
+title: "Azure-beli virtuális gépek másodlagos Azure-régióba történő vészhelyreállításának beállítása az Azure Site Recovery használatával (előzetes verzió)"
+description: "Megismerheti, hogyan állíthatja be az Azure-beli virtuális gépek egy másik Azure-régióba történő vészhelyreállítását az Azure Site Recovery szolgáltatással."
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 12/08/2017
+ms.topic: tutorial
+ms.date: 02/07/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 3db1ead1f1a8b83cc47f53b915ed54bb78db7ab3
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
-ms.translationtype: MT
+ms.openlocfilehash: 9d8d5f1019b1db255c7aa6937c6d3eebed363378
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region-preview"></a>Beállítása a vészhelyreállítás Azure virtuális gépek egy másodlagos Azure-régiót (előzetes verzió)
+# <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region-preview"></a>Azure-beli virtuális gépek másodlagos Azure-régióba történő vészhelyreállításának beállítása (előzetes verzió)
 
-A [Azure Site Recovery](site-recovery-overview.md) szolgáltatás vész-helyreállítási stratégiát infrastruktúrája azzal segíti a kezelése és koordinálása replikációjának, feladatátvételének és feladat-visszavétel a helyszíni gépeket, és az Azure virtuális gépek (VM).
+Az [Azure Site Recovery](site-recovery-overview.md) szolgáltatás a helyszíni számítógépek és az Azure-beli virtuális gépek replikálásának, feladatátvételének és feladat-visszavételének kezelésével és irányításával járul hozzá a vészhelyreállítási stratégia megvalósításához.
 
-Az oktatóanyag bemutatja, hogyan állíthat be egy másodlagos Azure régióra vész-helyreállítási Azure virtuális gépek. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag bemutatja, hogyan állíthat be vészhelyreállítást egy másodlagos Azure-régióba az Azure-beli virtuális gépek számára. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Recovery Services-tároló létrehozása
-> * Ellenőrizze a célként megadott erőforrás-beállítások
-> * Virtuális gépek kimenő hozzáférés beállítása
-> * A virtuális gépek replikálásának engedélyezése
+> * A célerőforrások beállításainak ellenőrzése.
+> * Virtuális gépek kimenő hozzáférésének beállítása.
+> * Virtuális gép replikálásának engedélyezése
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez:
 
-- Győződjön meg arról, hogy tudomásul veszi a [forgatókönyv architektúrája és összetevői](concepts-azure-to-azure-architecture.md).
-- Tekintse át a [igényeinek támogatására](site-recovery-support-matrix-azure-to-azure.md) lévő valamennyi összetevőnél.
+- Ismernie kell a [forgatókönyv-architektúrát és az összetevőket](concepts-azure-to-azure-architecture.md).
+- Minden összetevőre vonatkozóan tekintse át a [támogatási követelményeket](site-recovery-support-matrix-azure-to-azure.md).
 
 ## <a name="create-a-vault"></a>Tároló létrehozása
 
-A tároló létrehozása minden régióban, kivéve a forrás-régió.
+A forrásrégió kivételével bármelyik régióban létrehozhat tárolót.
 
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com) > **Recovery Services** szolgáltatásba.
 2. Kattintson az **Új** > **Felügyelet és kezelés** > **Backup és Site Recovery** lehetőségre.
-3. A **Név** mezőben adja meg a tárolót azonosító rövid nevet. Ha egynél több előfizetéssel rendelkezik, jelölje ki a megfelelő.
-4. Hozzon létre egy erőforráscsoportot, vagy válasszon egy meglévőt. Válassza ki a kívánt Azure-régiót. A támogatott régiók megtekintéséhez olvassa el az [Azure Site Recovery – Díjszabás](https://azure.microsoft.com/pricing/details/site-recovery/) című cikknek a földrajzi elérhetőséggel foglalkozó részét.
-5. Gyors hozzáférést a tárolóhoz az irányítópultról, kattintson a **rögzítés az irányítópulton** majd **létrehozása**.
+3. A **Név** mezőben adja meg a tárolót azonosító rövid nevet. Ha egynél több előfizetéssel rendelkezik, válassza ki ezek közül a megfelelőt.
+4. Hozzon létre egy erőforráscsoportot, vagy válasszon ki egy meglévőt. Válassza ki a kívánt Azure-régiót. A támogatott régiók megtekintéséhez olvassa el az [Azure Site Recovery – Díjszabás](https://azure.microsoft.com/pricing/details/site-recovery/) című cikknek a földrajzi elérhetőséggel foglalkozó részét.
+5. Ha gyors hozzáférést szeretne a tárolóhoz az irányítópultról, kattintson a **Rögzítés az irányítópulton**, majd a **Létrehozás** gombra.
 
    ![Új tároló](./media/azure-to-azure-tutorial-enable-replication/new-vault-settings.png)
 
-   Az új tároló hozzáadódik a **irányítópult** alatt **összes erőforrás**, majd a fő **Recovery Services-tárolók** lap.
+   Az új tároló megjelenik az **Irányítópult** **Minden erőforrás** részében, illetve a központi **Recovery Services-tárolók** oldalon.
 
-## <a name="verify-target-resources"></a>Ellenőrizze a tároló erőforrásait
+## <a name="verify-target-resources"></a>Célerőforrások ellenőrzése
 
-1. Győződjön meg arról, hogy az Azure-előfizetéshez lehetővé teszi a virtuális gépek létrehozásához használt vész-helyreállítási cél régióban. A szükséges kvóta engedélyezéséhez forduljon a támogatási szolgálathoz.
+1. Győződjön meg arról, hogy Azure-előfizetése lehetővé teszi-e virtuális gépek létrehozását a vészhelyreállításhoz használni kívánt célrégióban. A szükséges kvóta engedélyezéséhez vegye fel a kapcsolatot az ügyfélszolgálattal.
 
-2. Ellenőrizze, hogy az előfizetés virtuális gépek támogatásához van szükség, amelyek megfelelnek a forrás virtuális gépeknek elegendő erőforrással rendelkezik. A Site Recovery szerzi méretének vagy a legközelebbi a cél virtuális gép mérete.
+2. Ellenőrizze, hogy előfizetése rendelkezik-e a megfelelő erőforrásokkal a forrásként szolgáló virtuális gépeknek megfelelő méretű virtuális gépek támogatásához. A cél virtuális gép esetében a Site Recovery a méretben legközelebb állót fogja választani.
 
 ## <a name="configure-outbound-network-connectivity"></a>Kimenő hálózati kapcsolat konfigurálása
 
-A Site Recovery számára a várt módon működik kell néhány módosítást a kimenő hálózati kapcsolatot, a replikálni kívánt virtuális gépek.
+A Site Recovery megfelelő működése érdekében végre kell hajtani néhány módosítást a kimenő hálózati kapcsolatot illetően a replikálni kívánt virtuális gépeken.
 
-- A Site Recovery hitelesítési proxypontok vezérlő hálózati kapcsolat nem támogatja.
-- Ha egy hitelesítési proxy, nem engedélyezhető.
+- A Site Recovery nem támogatja hitelesítési proxy használatát a hálózati kapcsolatok szabályozásához.
+- Ha rendelkezik hitelesítési proxyval, a replikáció nem engedélyezhető.
 
 ### <a name="outbound-connectivity-for-urls"></a>Kimenő kapcsolat URL-címek esetén
 
-Ha egy URL-alapú tűzfal proxy vezérlésére kimenő kapcsolatok használata esetén a következő URL-Site Recovery által használt hozzá lehessen férni.
+Ha URL-alapú tűzfalproxyt használ a kimenő kapcsolat szabályozásához, biztosítania kell a hozzáférést a Site Recovery által használt alábbi URL-címekhez.
 
-| **URL-CÍME** | **Részletek** |
+| **URL-cím** | **Részletek** |
 | ------- | ----------- |
-| *.blob.core.windows.net | Lehetővé teszi a virtuális gép lehet írni a gyorsítótár tárfiók a forrás régióban. |
-| login.microsoftonline.com | A hitelesítési és engedélyezési biztosít a Site Recovery szolgáltatás URL-címeit. |
-| *.hypervrecoverymanager.windowsazure.com | Lehetővé teszi, hogy a virtuális Gépet, a Site Recovery szolgáltatással való kommunikációra. |
-| *. servicebus.windows.net | Lehetővé teszi, hogy a VM írása a Site Recovery figyelése és a diagnosztikai adatokat. |
+| *.blob.core.windows.net | Lehetővé teszi az adatok írását a virtuális gépről a forrásrégió gyorsítótárjának tárfiókjába. |
+| login.microsoftonline.com | Hitelesítést és engedélyezést biztosít a Site Recovery szolgáltatás URL-címeihez. |
+| *.hypervrecoverymanager.windowsazure.com | Lehetővé teszi a virtuális gép és a Site Recovery szolgáltatás közötti kommunikációt. |
+| *.servicebus.windows.net | Lehetővé teszi a virtuális gép számára a Site Recovery monitorozási és diagnosztikai adatainak írását. |
 
-### <a name="outbound-connectivity-for-ip-address-ranges"></a>Kimenő kapcsolódás az IP-címtartományok
+### <a name="outbound-connectivity-for-ip-address-ranges"></a>Kimenő kapcsolat az IP-címtartományokhoz
 
-Ha bármely IP-alapú tűzfal, a proxy vagy az NSG-szabályok segítségével szabályozhatja a kimenő kapcsolat, a következő IP-címtartományok kell szerepel az engedélyezési listán. Töltse le a tartományok listáját az alábbi hivatkozások:
+Ha a kimenő kapcsolatot bármilyen IP-alapú tűzfal, proxy vagy NSG-szabályok szabályozzák, a következő IP-címtartományoknak szerepelnie kell az engedélyezési listán. A tartományok listája az alábbi hivatkozásokat követve tölthető le:
 
-  - [A Microsoft Azure Datacenter IP-címtartományok](http://www.microsoft.com/en-us/download/details.aspx?id=41653)
-  - [A Windows Azure Datacenter IP-címtartományok Németországban](http://www.microsoft.com/en-us/download/details.aspx?id=54770)
-  - [A Windows Azure Datacenter IP-címtartományok Kínában](http://www.microsoft.com/en-us/download/details.aspx?id=42064)
+  - [A Microsoft Azure adatközpont IP-tartományai](http://www.microsoft.com/en-us/download/details.aspx?id=41653)
+  - [A Microsoft Azure adatközpont IP-tartományai Németországban](http://www.microsoft.com/en-us/download/details.aspx?id=54770)
+  - [A Microsoft Azure adatközpont IP-tartományai Kínában](http://www.microsoft.com/en-us/download/details.aspx?id=42064)
   - [Office 365 URL-címek és IP-címtartományok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)
-  - [Webhely-helyreállítási szolgáltatási végpont IP-címek](https://aka.ms/site-recovery-public-ips)
+  - [Site Recovery-szolgáltatásvégpontok IP-címei](https://aka.ms/site-recovery-public-ips)
 
-A listák segítségével konfigurálhatja a hálózati hozzáférés-vezérlést a hálózaton. Ezzel [parancsfájl](https://gallery.technet.microsoft.com/Azure-Recovery-script-to-0c950702) szükséges NSG-szabályok létrehozásához.
+A listák segítségével konfigurálhatja a hálózati hozzáférés-vezérlést a hálózaton. Ezzel a [szkripttel](https://gallery.technet.microsoft.com/Azure-Recovery-script-to-0c950702) hozhatja létre a szükséges NSG-szabályokat.
 
-## <a name="verify-azure-vm-certificates"></a>Azure virtuális gép tanúsítványok ellenőrzése
+## <a name="verify-azure-vm-certificates"></a>Azure-beli virtuális gép tanúsítványainak ellenőrzése
 
-Ellenőrizze, hogy a legújabb legfelső szintű tanúsítványokat Windows vagy Linux replikálni kívánt virtuális gépeket. Ha nem a legújabb legfelső szintű tanúsítványok, a virtuális gép nem lehet regisztrálni a Site Recovery szolgáltatásban, kellő biztonsági korlátozások.
+Ellenőrizze, hogy a legújabb főtanúsítványok mindegyike megtalálható-e a replikálni kívánt Windows vagy Linux rendszerű virtuális gépeken. Ha a legújabb főtanúsítványok nem találhatók, a virtuális gépet biztonsági okokból nem lehet regisztrálni a Site Recovery szolgáltatásban.
 
-- Windows virtuális gépek, a legújabb Windows frissítések telepítése a virtuális Gépen, így a megbízható legfelső szintű tanúsítványok a számítógépen. Leválasztott környezet esetén hajtsa végre a szabványos Windows Update és a szervezet tanúsítvány frissítés folyamatait.
+- A Windows rendszerű virtuális gépek esetében az összes új Windows-frissítést telepíteni kell a virtuális gépen, így a megbízható főtanúsítványok mindegyike megtalálható lesz a számítógépen. Leválasztott környezet esetén hajtsa végre a vállalat szabványos Windows Update- és tanúsítványfrissítési folyamatait.
 
-- Linux virtuális gépekhez kövesse az útmutatást, a Linux terjesztő, a virtuális Gépre a legújabb megbízható legfelső szintű tanúsítványok és a visszavont tanúsítványok listájának eléréséhez által biztosított.
+- Linux rendszerű virtuális gépek esetében kövesse a Linux-terjesztőtől származó útmutatást a legújabb megbízható főtanúsítványok és a visszavont tanúsítványok listájának lekéréséhez a virtuális gépen.
 
 ## <a name="set-permissions-on-the-account"></a>A fiók engedélyeinek beállítása
 
-Az Azure Site Recovery három beépített szerepkörök, amelyekkel szabályozhatja a Site Recovery felügyeleti műveleteket biztosít.
+Az Azure Site Recovery három beépített szerepkört biztosít a Site Recovery felügyeleti műveleteinek szabályozásához.
 
-- **Hely helyreállítási közreműködői** -ezt a szerepkört minden Azure Site Recovery-műveleteket a Recovery Services-tároló kezeléséhez szükséges engedéllyel rendelkezik. Ezzel a szerepkörrel rendelkező felhasználók azonban nem létrehozása vagy Recovery Services-tároló törlése vagy más felhasználók hozzáférési jogosultságokat rendelhet hozzá. Ezt a szerepkört olyan vész helyreállítási rendszergazdák számára, akik engedélyezheti és vészhelyreállítás az alkalmazások vagy a teljes szervezet számára.
+- **Site Recovery-közreműködő** – Ez a szerepkör minden olyan engedéllyel rendelkezik, amelyek az Azure Site Recovery-műveletek Recovery Services-tárolókban történő kezeléséhez szükségesek. Az ezzel a szerepkörrel rendelkező felhasználók nem hozhatnak létre, illetve nem törölhetnek Recovery Services-tárolókat, és nem adhatnak hozzáférési jogokat más felhasználóknak. Ez a szerepkör az olyan vész-helyreállítási rendszergazdák számára a leginkább megfelelő, akik az összes alkalmazásra vagy az egész vállalatra vonatkozóan engedélyezhetik és felügyelhetik a vészhelyreállítást.
 
-- **Helyreállítási operátor hely** -ehhez a szerepkörhöz van engedélye végrehajtására és a feladatátvétel és a feladat-visszavétel operations manager. A felhasználói szerephez nem tudja engedélyezni vagy tiltsa le a replikációt, hozzon létre vagy tárolók törlése, új infrastruktúra regisztrálja, vagy más felhasználók hozzáférési jogosultságokat rendelhet hozzá. A szerepkör a virtuális gépek vagy alkalmazásokat, amikor arra utasította az alkalmazástulajdonosok és a rendszergazdák által a feladatátvétel vész helyreállítási kezelők a legalkalmasabb. POST a katasztrófa feloldását, a vész-Helyreállítási operátor is lássa el újból védelemmel és a feladat-visszavételt a virtuális gépek.
+- **Site Recovery-operátor** – Ez a szerepkör a feladatátvétel és feladat-visszavétel végrehajtásához és felügyeletéhez szükséges engedélyekkel rendelkezik. Az ezzel a szerepkörrel rendelkező felhasználók nem engedélyezhetik vagy tilthatják le a replikációt, nem hozhatnak létre, illetve nem törölhetnek tárolókat, nem regisztrálhatnak új infrastruktúrát, és nem adhatnak hozzáférési jogokat más felhasználóknak. Ez a szerepkör az olyan vész-helyreállítási operátorok számára a leginkább megfelelő, akik le tudják bonyolítani a feladatátvételt a virtuális gépek vagy alkalmazások tekintetében, ha az alkalmazások tulajdonosaitól vagy a rendszergazdáktól erre vonatkozó utasítást kapnak. A vészhelyzet elhárítása után a vész-helyreállítási operátor gondoskodhat a virtuális gépek újbóli védelmének és feladat-visszavételének biztosításáról.
 
-- **Helyreállítási olvasó hely** – Ez a szerepkör jogosult összes Site Recovery felügyeleti műveleteinek megtekintéséhez. Ezt a szerepkört olyan egy informatikai felügyeleti vezető, akik védelmi aktuális állapotának figyelése és támogatási jegyek ablakába.
+- **Site Recovery-olvasó** – Ez a szerepkör a Site Recovery összes felügyeleti műveletének a megtekintésére rendelkezik engedélyekkel. Ez a szerepkör olyan informatikai felügyeleti vezető számára a leginkább megfelelő, aki monitorozhatja az aktuális biztonság állapotát, és támogatási jegyeket hoz létre.
 
-A további [beépített Azure RBAC-szerepkörök](../active-directory/role-based-access-built-in-roles.md)
+További információ az [Azure beépített RBAC-szerepköreivel](../active-directory/role-based-access-built-in-roles.md) kapcsolatban.
 
 ## <a name="enable-replication"></a>A replikáció engedélyezése
 
-### <a name="select-the-source"></a>A forrás kiválasztása
+### <a name="select-the-source"></a>Forrás kiválasztása
 
-1. A Recovery Services-tárolók, kattintson a tároló neve > **+ replikálás**.
-2. A **forrás**, jelölje be **Azure - előzetes**.
-3. A **adatforrásról**, válasszon ki forrást az Azure-régió, ahol a virtuális gépek futnak.
-4. Válassza ki a **Azure virtuális gép üzembe helyezési modellel** virtuális gépek: **erőforrás-kezelő** vagy **klasszikus**.
-5. Válassza ki a **forrás-erőforráscsoporton** erőforrás-kezelő virtuális gépekhez, vagy **felhőalapú szolgáltatás** klasszikus virtuális gépekhez.
+1. A Recovery Services-tárolók között kattintson a tároló nevére, majd a **+Replikálás** elemre.
+2. A **Forrás** esetében válassza az **Azure – ELŐZETES VERZIÓ** lehetőséget.
+3. A **Forrás helye** értékeként válassza ki azt az Azure-régiót, ahol az adott virtuális gépek éppen futnak.
+4. Válassza ki **az Azure-beli virtuális gép üzembe helyezési modelljét** a virtuális gépek számára: **Resource Manager-alapú** vagy **Klasszikus**.
+5. A Resource Managert használó virtuális gépek esetében válassza ki **a forrásként szolgáló erőforráscsoportot**, a klasszikus virtuális gépek esetében pedig a **felhőszolgáltatást**.
 6. Kattintson az **OK** gombra a beállítások mentéséhez.
 
-### <a name="select-the-vms"></a>Válassza ki a virtuális gépek
+### <a name="select-the-vms"></a>A virtuális gépek kiválasztása
 
-A Site Recovery lekéri az előfizetés és az erőforrás/felhőszolgáltatás társított virtuális gépek listáját.
+A Site Recovery lekéri az előfizetéshez és az erőforráscsoporthoz/felhőszolgáltatáshoz társított virtuális gépek listáját.
 
-1. A **virtuális gépek**, válassza ki a replikálni kívánt virtuális gépeket.
+1. A **Virtuális gépek** menüben jelölje ki a replikálni kívánt virtuális gépeket.
 2. Kattintson az **OK** gombra.
 
 ### <a name="configure-replication-settings"></a>Replikációs beállítások konfigurálása
 
-A Site Recovery alapértelmezett beállításait és a cél régió replikációs házirendet hoz létre. Módosíthatja a beállításokat a követelmények alapján.
+A Site Recovery létrehozza a célrégióra vonatkozó alapértelmezett beállításokat és replikációs szabályzatot. A beállításokat igény szerint módosíthatja.
 
-1. Kattintson a **beállítások** a cél- és a replikációs beállítások megtekintéséhez.
-2. Az alapértelmezett tároló beállításainak a felülbírálásához **Testreszabás** melletti **erőforráscsoport, hálózati, tárolási és rendelkezésre állási készletek**.
+1. A célra és a replikációra vonatkozó beállítások megtekintéséhez kattintson a **Beállítások** elemre.
+2. Az alapértelmezett célbeállítások felülbírálásához kattintson a **Testreszabás** elemre az **Erőforráscsoport, hálózat, tárolás és rendelkezésre állási készletek** mellett.
 
   ![Beállítások konfigurálása](./media/azure-to-azure-tutorial-enable-replication/settings.png)
 
 
-- **Célhelye**: vész-helyreállítási cél régióját. Azt javasoljuk, hogy a célhely megegyezik-e a Site Recovery-tároló helyét.
+- **Célhely**: A vészhelyreállításhoz használt célrégió. Javasoljuk, hogy a célhely és a Site Recovery-tároló helye ugyanaz legyen.
 
-- **Célként megadott erőforráscsoportja**: az erőforráscsoport a cél régióban, amely tárolja az Azure virtuális gépek a feladatátvételt követően. Alapértelmezés szerint a Site Recovery a cél régióban, az "automatikus" utótaggal rendelkező egy új erőforráscsoportot hoz létre.
+- **Cél erőforráscsoport**: A célrégió azon erőforráscsoportja, ahol a feladatátvételt követően az Azure-beli virtuális gépek találhatók. Alapértelmezés szerint a Site Recovery létrehoz egy „asr” utótaggal rendelkező új erőforráscsoportot a célrégióban.
 
-- **Cél virtuális hálózati**: a cél régióban, hogy virtuális gépek a feladatátvétel után a hálózaton.
-  Alapértelmezés szerint a Site Recovery hoz létre egy új virtuális hálózat (és alhálózatok) az "automatikus" utótaggal rendelkező cél régióban.
+- **Cél virtuális hálózat**: Az a hálózat a célrégióban, ahol a virtuális gépek találhatók a feladatátvétel után.
+  Alapértelmezés szerint a Site Recovery létrehoz egy „asr” utótaggal rendelkező új virtuális hálózatot (és alhálózatokat) a célrégióban.
 
-- **Storage-fiókok gyorsítótár**: a Site Recovery storage-fiókot használ a forrás régióban. Változások a forrás virtuális gépek ezt a fiókot a célhelyre replikáció előtt kell küldeni.
+- **Gyorsítótár tárfiókjai**: A Site Recovery tárfiókot használ a forrásrégióban. A forrás virtuális gépekre vonatkozó módosítások ebbe a fiókba érkeznek a célhelyre történő replikáció előtt.
 
-- **Storage-fiókok cél**: alapértelmezés szerint a Site Recovery hoz létre egy új tárfiókot mappába történő tükrözésének a forrás virtuális gép tárfiók cél régióban.
+- **Cél tárfiókok**: Alapértelmezés szerint a Site Recovery új tárfiókot hoz létre a célrégióban a forrás virtuális gép tárfiókjának tükrözéséhez.
 
-- **Rendelkezésre állási készletek cél**: alapértelmezés szerint a Site Recovery hoz létre egy új rendelkezésre állási csoportban, a "automatikus" utótaggal rendelkező cél régióban. Rendelkezésre állási csoportok csak virtuális gépek részei egy készlet a forrás régióban adhat hozzá.
+- **Cél rendelkezésre állási csoportok**: Alapértelmezés szerint a Site Recovery létrehoz egy új rendelkezésre állási csoportot a célrégióban az „asr” utótaggal. Rendelkezésre állási csoportot csak vehet fel, ha a virtuális gépek egy csoport részei a forrásrégióban.
 
-Az alapértelmezett replikációs házirend-beállítások felülbírálásához **Testreszabás** melletti **replikációs házirend**.  
+Az alapértelmezett replikációsszabályzat-beállítások felülbírálásához kattintson a **Replikációs szabályzat** melletti **Testreszabás** elemre.  
 
-- **Replikációs házirend neve**: a házirend nevét.
+- **Replikációs szabályzat neve**: A szabályzat neve.
 
-- **Helyreállítási pontok megőrzésének ideje**: alapértelmezés szerint a Site Recovery helyreállítási pontok tartja 24 órán át. Beállíthatja, hogy egy 1 és 72 óra közötti értéket.
+- **Helyreállítási pont megőrzése**: Alapértelmezés szerint a Site Recovery 24 óráig őrzi meg a helyreállítási pontokat. 1 és 72 óra közötti értéket konfigurálhat.
 
-- **Alkalmazáskonzisztens pillanatkép gyakorisága**: alapértelmezés szerint a Site Recovery pillanatfelvételt egy alkalmazáskonzisztens 4 óránként. Beállíthatja, hogy bármely érték 1 és 12 óra között. Alkalmazáskonzisztens pillanatkép a virtuális Gépen belül az alkalmazásadatok pont időponthoz kötött pillanatképet. Kötet árnyékmásolata szolgáltatás (VSS) biztosítja, hogy a virtuális Gépen lévő alkalmazás konzisztens állapotban legyenek a pillanatkép készítésének időpontjában.
+- **Alkalmazáskonzisztens pillanatkép gyakorisága**: Alapértelmezés szerint a Site Recovery 4 óránként készít egy alkalmazáskonzisztens pillanatképet. 1 és 12 óra közötti értéket konfigurálhat. Az alkalmazáskonzisztens pillanatkép a virtuális gépen található alkalmazásadatok időponthoz kötött pillanatképe. A kötet árnyékmásolata szolgáltatás (VSS) biztosítja, hogy a virtuális gépen található alkalmazás konzisztens állapotban legyen a pillanatkép készítésekor.
 
-- **Replikációs csoport**: Ha az alkalmazás virtuális Gépre kiterjedő konzisztencia virtuális gépek között van szüksége, létrehozhat egy replikációs csoport azok számára, virtuális gépek. Alapértelmezés szerint a kijelölt virtuális gépek részei valamelyik replikációs csoport.
+- **Replikációs csoport**: Ha az alkalmazásnak több virtuális gépre kiterjedően konzisztensnek kell lennie, létrehozhat egy replikációs csoport az érintett virtuális gépek számára. Alapértelmezés szerint a kijelölt virtuális gépek nem részei semmilyen replikációs csoportnak sem.
 
-  Kattintson a **Testreszabás** melletti **replikációs házirend** , és válassza **Igen** annak a virtuális gépek több virtuális Gépre kiterjedő konzisztencia replikációs csoport része. Hozzon létre egy új replikációs csoportot, vagy adjon meg egy meglévő replikációs csoportot. Válassza ki a virtuális gépeket, a replikációs csoportot, majd kattintson a részeként **OK**.
-
-> [!IMPORTANT]
-  A replikációs csoport összes gép lesz megosztva összeomlik miattuk konzisztens és alkalmazáskonzisztens helyreállítási pontokat, ha a feladatátvételt. Lehetővé teszi több virtuális Gépre kiterjedő konzisztencia befolyásolhatja a teljesítményt a munkaterhelés, és csak akkor, ha a gép ugyanaz az alkalmazás fut, és több gép közötti konzisztenciára van szükség.
+  Kattintson a **Replikációs szabályzat** melletti **Testreszabás** elemre, majd a több virtuális gépre kiterjedő konzisztencia esetében az **Igen** lehetőségre, hogy a virtuális gépek egy replikációs csoportba kerüljenek. Hozzon létre egy új replikációs csoportot, vagy használjon egy már meglévőt. Jelölje ki a replikációs csoport részévé tenni kívánt virtuális gépeket, majd kattintson az **OK** gombra.
 
 > [!IMPORTANT]
-  Ha engedélyezi a virtuális Gépre kiterjedő konzisztencia, a replikációs csoport gépek kommunikálhatnak egymással 20004 porton keresztül. Ellenőrizze, hogy nem blokkolja-e a belső kommunikáció 20004 porton keresztül a virtuális gépek közötti tűzfal készüléket. Ha azt szeretné, hogy a Linux virtuális gépek a replikációs csoport részeként, győződjön meg arról, a kimenő adatforgalmat a port 20004 manuálisan megnyitott állapotokban az adott Linux verzió útmutatást.
+  A feladatátvételkor a replikációs csoportba tartozó összes gép megosztott összeomlás-konzisztens és alkalmazáskonzisztens helyreállítási pontokkal rendelkezik majd. A több virtuális gépre kiterjedő konzisztencia hatással lehet a számítási feladatok teljesítményére, és csak akkor javasolt a használata, ha a gépeken ugyanaz a számítási feladat fut, és több gép közötti konzisztenciára van szükség.
 
-### <a name="track-replication-status"></a>Replikáció állapotának nyomon követése
+> [!IMPORTANT]
+  Ha engedélyezte a több virtuális gépre kiterjedő konzisztenciát, a replikációs csoportban található gépek a 20004-es porton kommunikálnak egymással. Ellenőrizze, hogy nem blokkolja-e tűzfal a virtuális gépek között a 20004-es porton keresztül zajló belső kommunikációt. Ha Linux rendszerű virtuális gépeket szeretne egy replikációs csoport részévé tenni, győződjön meg arról, hogy a 20004-es port esetében a kimenő adatforgalom manuális megnyitása megtörtént-e az adott Linux-verzió útmutatásainak megfelelően.
 
-1. A **beállítások**, kattintson a **frissítése** a legfrissebb állapotának beolvasása.
+### <a name="track-replication-status"></a>A replikáció állapotának nyomon követése
 
-2. Előrehaladásának nyomon követheti a **engedélyezni a védelmet** feladat **beállítások** > **feladatok** > **Site Recovery-feladatok**.
+1. Az aktuális állapot megtekintéséhez kattintson a **Beállítások** menü **Frissítés** elemére.
 
-3. A **beállítások** > **replikált elemek**, megtekintheti az állapotát, a virtuális gépek és a kezdeti replikáció folyamatban van. Kattintson a virtuális gépek a részletekbe menően tárhatják fel annak beállításait.
+2. A **Védelem engedélyezése** feladat előrehaladását a **Beállítások**>**Feladatok**>**Site Recovery-feladatok** menüpontban követheti nyomon.
+
+3. A **Beállítások** > **Replikált elemek** pontban tekintheti meg a virtuális gépek és a kezdeti replikáció folyamatának állapotát. A beállítások részleteinek megjelenítéséhez kattintson az adott virtuális gépre.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban a vész-helyreállítási egy Azure virtuális gép konfigurálta. Következő lépés, hogy tesztelje a konfigurációt.
+Ebben az oktatóanyagban egy Azure-beli virtuális gép vészhelyreállítását konfigurálta. A következő lépés a konfiguráció tesztelése.
 
 > [!div class="nextstepaction"]
 > [Vészhelyreállítási próba végrehajtása](azure-to-azure-tutorial-dr-drill.md)

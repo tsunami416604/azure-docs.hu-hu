@@ -1,13 +1,13 @@
 ---
-title: "Csomag és a Service Fabric-tárolók alkalmazás központi telepítése |} Microsoft Docs"
-description: "Útmutató az Azure Service Fabric-alkalmazás használatával Yeoman definícióját létrehozásához, és az alkalmazás becsomagolása."
+title: "Service Fabric-tárolóalkalmazás csomagolása és üzembe helyezése | Microsoft Docs"
+description: "A cikk azt ismerteti, hogyan hozhat létre egy Azure Service Fabric-alkalmazásdefiníciót a Yeoman használatával, és hogyan csomagolhatja be az alkalmazást."
 services: service-fabric
 documentationcenter: 
 author: suhuruli
 manager: timlt
 editor: suhuruli
 tags: servicefabric
-keywords: "Docker, tárolók, mikroszolgáltatások létrehozására, a Service Fabric, Azure"
+keywords: "Docker, tárolók, mikroszolgáltatások, Service Fabric, Azure"
 ms.assetid: 
 ms.service: service-fabric
 ms.topic: tutorial
@@ -16,43 +16,43 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: caa7f58860c4540fa6914b1c0f0cfcba437468fa
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
-ms.translationtype: MT
+ms.openlocfilehash: eb838903802de5a04084a60924fc52d988180c11
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="package-and-deploy-containers-as-a-service-fabric-application"></a>Csomag és a Service Fabric-alkalmazásként tároló üzembe helyezése
+# <a name="package-and-deploy-containers-as-a-service-fabric-application"></a>Tárolók csomagolása és üzembe helyezése Service Fabric-alkalmazásként
 
-Ez az oktatóanyag egy sorozat két részre. Ebben az oktatóanyagban egy sablon készítő eszközzel (Yeoman) használja a Service Fabric definíciót készítéséhez. Ez az alkalmazás ezután használható a Service Fabric – tárolók üzembe helyezése. Ezen oktatóanyag segítségével megtanulhatja a következőket: 
+Ez az oktatóanyag egy sorozat második része. Az oktatóanyag azt ismerteti, hogyan lehet létrehozni Service Fabric-alkalmazásdefiníciót egy sablonkészítő eszközzel (Yeoman). Az alkalmazással ezután tárolókat helyezhet üzembe a Service Fabric rendszerében. Ezen oktatóanyag segítségével megtanulhatja a következőket: 
 
 > [!div class="checklist"]
-> * Yeoman telepítése  
-> * Hozzon létre egy alkalmazáscsomagot, Yeoman használatával
-> * Adja meg az alkalmazáscsomag tárolók való használatra beállításait
+> * A Yeoman telepítése  
+> * Alkalmazáscsomag létrehozása a Yeoman használatával
+> * Az alkalmazáscsomag beállításainak konfigurálása a tárolókkal való használathoz
 > * Az alkalmazás létrehozása  
-> * Telepítheti és futtathatja az alkalmazást 
-> * Az alkalmazás törlése
+> * Az alkalmazás üzembe helyezése és futtatása 
+> * Az alkalmazás fölösleges elemeinek az eltávolítása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A tároló képek leküldött létrehozott Azure-tároló beállításjegyzék [1. rész](service-fabric-tutorial-create-container-images.md) az oktatóanyagban szereplő is használ.
-- Linux-fejlesztési környezet [beállítása](service-fabric-tutorial-create-container-images.md).
+- Az Azure Container Registrybe leküldött, az oktatóanyag-sorozat [1. részében](service-fabric-tutorial-create-container-images.md) létrehozott tárolórendszerképek.
+- [Beállított](service-fabric-tutorial-create-container-images.md) Linux fejlesztési környezet.
 
-## <a name="install-yeoman"></a>Yeoman telepítése
-A Service fabric állványok eszközöket Yeoman használó alkalmazások létrehozása sablon generátor biztosít. Kövesse az alábbi lépéseket, hogy a Yeoman sablon generátor. 
+## <a name="install-yeoman"></a>A Yeoman telepítése
+A Service Fabric olyan szerkezetkialakító eszközöket biztosít, amelyekkel alkalmazásokat hozhat létre a terminálról a Yeoman sablongenerátor használatával. Az alábbi lépések végrehajtásával ellenőrizze, hogy rendelkezik-e Yeoman sablongenerátorral. 
 
-1. Nodejs és NPM telepítse a számítógépre. Vegye figyelembe, hogy, Mac OS x-felhasználók kell használnia a package manager Homebrew
+1. Telepítse a node.js és az NPM eszközt a gépre. Vegye figyelembe, hogy a Mac OSX-felhasználóknak a Homebrew csomagkezelőt kell használniuk.
 
     ```bash
     sudo apt-get install npm && sudo apt install nodejs-legacy
     ```
-2. Yeoman telepítése sablon generátor NPM a számítógépen 
+2. Telepítse a Yeoman sablongenerátort a gépre az NPM-ből. 
 
     ```bash
     sudo npm install -g yo
     ```
-3. A Service Fabric Yeoman tároló generátor telepítése
+3. Telepítse a Service Fabric Yeoman tárológenerátort.
 
     ```bash 
     sudo npm install -g generator-azuresfcontainer
@@ -60,18 +60,18 @@ A Service fabric állványok eszközöket Yeoman használó alkalmazások létre
 
 ## <a name="package-a-docker-image-container-with-yeoman"></a>Docker-rendszerképtároló becsomagolása a Yeomannal
 
-1. A Service Fabric-tároló létrehozása alkalmazás, a klónozott tárház "tároló-oktatóanyag" könyvtárban a következő parancsot.
+1. Service Fabric-tárolóalkalmazás létrehozásához futtassa a következő parancsot a klónozott adattár „container-tutorial” könyvtárában.
 
     ```bash
     yo azuresfcontainer
     ```
-2. Adja meg az "TestContainer" az alkalmazás neve
-3. Adja meg az "azurevotefront" a szolgáltatás neve.
-4. Adja meg például a tároló lemezképének elérési útja ACR az előtér - tárház "\<acrName >.azurecr.io / azure-szavazat-első: 1-es verzió". A \<acrName > mező, amelyet az előző oktatóanyag használt értékeként azonosnak kell lennie.
-5. Nyomja le az ENTER billentyűt, hogy a parancsok szakasz üres.
-6. Adjon meg egy példányszámot, 1.
+2. Adja meg a „TestContainer” nevet az alkalmazás neveként.
+3. Adja meg az „azurevotefront” nevet az alkalmazásszolgáltatás neveként.
+4. Adja meg az előtérbeli adattár tárolórendszerkép-útvonalát az ACR-ben – például „\<acrName>.azurecr.io/azure-vote-front:v1”. Az \<acrName > mezőnek egyeznie kell az előző oktatóanyagban használt értékkel.
+5. Nyomja le az Enter billentyűt, hogy a Parancsok szakasz üres maradjon.
+6. A példányszám legyen 1.
 
-A következő példa a bemeneti és kimeneti való futtatásának a yo parancsot:
+A yo parancs futtatásának bemenete és kimenete az alábbiak szerint fog kinézni:
 
 ```bash
 ? Name your application TestContainer
@@ -87,16 +87,16 @@ A következő példa a bemeneti és kimeneti való futtatásának a yo parancsot
    create TestContainer/uninstall.sh
 ```
 
-Egy másik tárolószolgáltatás Yeoman már létrehozott alkalmazáshoz való hozzáadásához hajtsa végre az alábbi lépéseket:
+Ha egy másik tárolószolgáltatást szeretne hozzáadni a Yeoman használatával már létrehozott alkalmazáshoz, hajtsa végre az alábbi lépéseket:
 
-1. Módosítsa a könyvtárat egy szintet a **TestContainer** címtár, például *. / TestContainer*
+1. Módosítsa a könyvtár első szintjét a **TestContainer** könyvtárra, például *./TestContainer*
 2. Futtassa a `yo azuresfcontainer:AddService` parancsot. 
-3. A azurevoteback szolgáltatás neve
-4. Adja meg a tároló kép elérési Redis - "alpine: redis'
-5. Nyomja le az ENTER billentyűt, hogy a parancsok szakasz üres
-6. Adja meg az „1” példányszámát.
+3. Adja a szolgáltatásnak az „azurevoteback” nevet.
+4. Adja meg a Redis tárolórendszerkép-útvonalát: „alpine:redis”.
+5. Nyomja le az Enter billentyűt, hogy a Parancsok szakasz üres maradjon.
+6. A példányszám legyen „1”.
 
-A bejegyzések hozzáadásához használja a szolgáltatás összes látható:
+A használt szolgáltatás hozzáadásának bejegyzései:
 
 ```bash
 ? Name of the application service: azurevoteback
@@ -108,30 +108,30 @@ A bejegyzések hozzáadásához használja a szolgáltatás összes látható:
    create TestContainer/azurevotebackPkg/code/Dummy.txt
 ```
 
-Ez az oktatóanyag a hátralévő dolgozunk ennek az **TestContainer** könyvtár. Például *./TestContainer/TestContainer*. A könyvtár tartalmának az alábbinak kell lennie.
+Az oktatóanyag fennmaradó részében a **TestContainer** könyvtárban fogunk dolgozni. Például: *./TestContainer/TestContainer*. A könyvtár tartalmának az alábbinak kell lennie.
 ```bash
 $ ls
 ApplicationManifest.xml azurevotefrontPkg azurevotebackPkg
 ```
 
-## <a name="configure-the-application-manifest-with-credentials-for-azure-container-registry"></a>Az alkalmazás jegyzékében hitelesítő adatokkal rendelkező Azure tároló beállításjegyzék konfigurálása
-A Service Fabric való lekérésére a tároló képek Azure tároló beállításjegyzékből, adja meg a hitelesítő adatokat kell a **ApplicationManifest.xml**. 
+## <a name="configure-the-application-manifest-with-credentials-for-azure-container-registry"></a>Az alkalmazásjegyzék konfigurálása az Azure Container Registry hitelesítő adataival
+Ahhoz, hogy a Service Fabric le tudja kérni a tárolórendszerképeket az Azure Container Registryből, meg kell adnia a hitelesítő adatokat az **ApplicationManifest.xml** fájlban. 
 
-Jelentkezzen be a ACR példányát. Használja a **az acr bejelentkezési** parancs használatával végrehajtani a műveletet. Adjon meg egyedi név, a tároló beállításjegyzék létrehozásakor.
+Jelentkezzen be az ACR-példányba. Használja az **az acr login** parancsot a művelet befejezéséhez. Adja meg a tárolóregisztrációs adatbázis egyedi nevét, amelyet a létrehozásakor adott meg.
 
 ```bash
 az acr login --name <acrName>
 ```
 
-A parancs visszaadja a **sikeres bejelentkezés** üzenet amint befejeződött.
+A parancs a **Bejelentkezés sikeres** üzenetet adja vissza, ha befejeződött.
 
-Ezután futtassa a következő parancs használatával beszerezheti a jelszót a tároló beállításjegyzék. Ezt a jelszót használják a Service Fabric ACR való lekérésére a tároló lemezképeket a hitelesítéséhez.
+Ezután futtassa a következő parancsot a tárolóregisztrációs adatbázis jelszavának lekéréséhez. A Service Fabric ezt a jelszót használja ahhoz, hogy hitelesíteni tudjon az ACR-rel, és le tudja kérni a tárolórendszerképeket.
 
 ```bash
 az acr credential show -n <acrName> --query passwords[0].value
 ```
 
-Az a **ApplicationManifest.xml**, a kódrészletet alatt adja hozzá a **ServiceManifestImport** elem az előtér-szolgáltatás. Helyezze be a **acrName** a a **AccountName** mező, és a jelszót, az előző parancs által visszaadott szolgál a **jelszó** mező. Teljes **ApplicationManifest.xml** valósul meg ez a dokumentum végén. 
+Az **ApplicationManifest.xml** fájlban adja a kódrészletet a kezelőfelületi szolgáltatás **ServiceManifestImport** eleméhez. Illessze be az **acrName** nevét az **AccountName** mezőbe. A rendszer a **Jelszó** mezőben az előző parancs által visszaadott jelszót használja. A dokumentum végén talál egy teljes **ApplicationManifest.xml** fájlt. 
 
 ```xml
 <Policies>
@@ -140,11 +140,11 @@ Az a **ApplicationManifest.xml**, a kódrészletet alatt adja hozzá a **Service
   </ContainerHostPolicies>
 </Policies>
 ```
-## <a name="configure-communication-and-container-port-to-host-port-mapping"></a>A kommunikáció és a tárolóport–gazdagépport hozzárendelés konfigurálása
+## <a name="configure-communication-and-container-port-to-host-port-mapping"></a>A kommunikációs port és a tárolóport–gazdagépport hozzárendelés konfigurálása
 
 ### <a name="configure-communication-port"></a>Kommunikációs port konfigurálása
 
-Konfiguráljon egy olyan HTTP-végpontot, amelyen az ügyfelek kommunikálhatnak a szolgáltatással. Nyissa meg a *./TestContainer/azurevotefrontPkg/ServiceManifest.xml* fájlt, és egy végpont erőforrás deklarálja a **ServiceManifest** elemet.  Adja hozzá a protokoll, a port és a név adatokat. A szolgáltatás ebben az oktatóanyagban 80-as porton figyel. Az alábbi kódrészletben alatt helyezkedik el, a *ServiceManifest* az erőforrás-címke.
+Konfiguráljon egy olyan HTTP-végpontot, amelyen az ügyfelek kommunikálhatnak a szolgáltatással. Nyissa meg a *./TestContainer/azurevotefrontPkg/ServiceManifest.xml* fájlt, és adjon meg egy végponterőforrást a **ServiceManifest** elemben.  Adja hozzá a protokoll, a port és a név adatokat. Ebben az oktatóanyagban a szolgáltatás a 80-as portot figyeli. Az alábbi kódrészlet a *ServiceManifest* címke alá kerül az erőforrásban.
   
 ```xml
 <Resources>
@@ -158,7 +158,7 @@ Konfiguráljon egy olyan HTTP-végpontot, amelyen az ügyfelek kommunikálhatnak
 
 ```
   
-Hasonlóképpen módosítsa a háttérszolgáltatáshoz Service Manifest. Nyissa meg a *./TestContainer/azurevotebackPkg/ServiceManifest.xml* és egy végpont erőforrás deklarálja a **ServiceManifest** elemet. Ebben az oktatóanyagban a redis alapértelmezett 6379 megmarad. Az alábbi kódrészletben alatt helyezkedik el, a *ServiceManifest* az erőforrás-címke.
+A háttérszolgáltatás szolgáltatásjegyzékét is módosítsa. Nyissa meg a *./TestContainer/azurevotebackPkg/ServiceManifest.xml* fájlt, és adjon meg egy végponterőforrást a **ServiceManifest** elemben. Ebben az oktatóanyagban megmarad a Redis alapértelmezett 6379-es értéke. Az alábbi kódrészlet a *ServiceManifest* címke alá kerül az erőforrásban.
 
 ```xml
 <Resources>
@@ -170,10 +170,10 @@ Hasonlóképpen módosítsa a háttérszolgáltatáshoz Service Manifest. Nyissa
   </Endpoints>
 </Resources>
 ```
-Így a **UriScheme**automatikusan regisztrálja a tároló végpont a Service Fabric-szolgáltatás felderítése a. A teljes ServiceManifest.xml példafájlja a háttérszolgáltatáshoz példaként, ez a cikk végén valósul meg. 
+Az **UriScheme** megadásával a tároló végpontja automatikusan regisztrálva lesz a Service Fabric elnevezési szolgáltatásban, így felderíthető lesz. A cikk végén talál egy például szolgáló teljes ServiceManifest.xml fájlt a háttérszolgáltatáshoz. 
 
-### <a name="map-container-ports-to-a-service"></a>Tároló leképezik a szolgáltatáshoz
-Ahhoz, hogy teszi közzé a tárolók a fürtben, azt is kell létrehoznia a "ApplicationManifest.xml" port kötést. A **PortBinding** házirend hivatkozik a **végpontok** a meghatározott a **ServiceManifest.xml** fájlokat. Ezeket a végpontokat bejövő kérelmek tároló portok nyitva, és amelyet itt beolvasása leképezve. Az a **ApplicationManifest.xml** fájlt, az alábbi kódot a végpontok port a 80-as és 6379 kötődni. Teljes **ApplicationManifest.xml** érhető el ez a dokumentum végén. 
+### <a name="map-container-ports-to-a-service"></a>Tárolóportok leképezése egy szolgáltatáshoz
+Ahhoz, hogy elérhetővé tegye a tárolókat a fürt számára, egy portkötést is létre kell hoznia az „ApplicationManifest.xml” fájlban. A **PortBinding** szabályzat a **ServiceManifest.xml** fájlokban meghatározott **végpontokra** hivatkozik. Az ezen végpontokra érkező kérések az itt megnyitott és lekötött tárolóportokra lesznek leképezve. Az **ApplicationManifest.xml** fájlban adja meg a következő kódot, hogy a 80-as és a 6379-es portot a végpontokhoz kösse. A dokumentum végén talál egy teljes **ApplicationManifest.xml** fájlt. 
   
 ```xml
 <ContainerHostPolicies CodePackageRef="Code">
@@ -187,9 +187,9 @@ Ahhoz, hogy teszi közzé a tárolók a fürtben, azt is kell létrehoznia a "Ap
 </ContainerHostPolicies>
 ```
 
-### <a name="add-a-dns-name-to-the-backend-service"></a>A DNS-név felvétele a háttérszolgáltatáshoz
+### <a name="add-a-dns-name-to-the-backend-service"></a>DNS-név hozzáadása a háttérszolgáltatáshoz
   
-A Service Fabric által a háttérszolgáltatáshoz a DNS-név hozzárendelni, a nevének kell megadni: a **ApplicationManifest.xml**. Adja hozzá a **ServiceDnsName** attribútumot a **szolgáltatás** elem látható módon: 
+Ahhoz, hogy a Service Fabric ezt a DNS-nevet a háttérszolgáltatáshoz rendelje, meg kell adni a nevet az **ApplicationManifest.xml** fájlban. Adja a **ServiceDnsName** attribútumot a **Service** elemhez az itt látható módon: 
   
 ```xml
 <Service Name="azurevoteback" ServiceDnsName="redisbackend.testapp">
@@ -199,13 +199,13 @@ A Service Fabric által a háttérszolgáltatáshoz a DNS-név hozzárendelni, a
 </Service>
 ```
 
-Az előtér-szolgáltatás beolvassa a környezeti változó tudni, hogy a Redis-példány DNS-nevét. A környezeti változó már definiálva van a Dockerfile a Docker-lemezkép létrehozásához használt, és semmilyen műveletet meg kell itt kell venni.
+A kezelőfelületi szolgáltatás beolvas egy környezeti változót, hogy megtudja a Redis-példány DNS-nevét. Ez a környezeti változó már meg van határozva a Docker-rendszerkép létrehozásához használt Docker-fájlban, így külön műveletet nem kell elvégezni.
   
 ```Dockerfile
 ENV REDIS redisbackend.testapp
 ```
   
-A következő kódrészletet mutatja be, hogy az előtér-Python kódját hogyan szerzi be a környezeti változó a Dockerfile ismertetett. Nincs művelet kell itt kell venni. 
+A következő kódrészletet bemutatja, hogyan szerzi be az előtérbeli Python-kód a Docker-fájlban leírt környezeti változót. Ehhez nem kell külön műveletet elvégezni. 
 
 ```python
 # Get DNS Name
@@ -215,46 +215,54 @@ redis_server = os.environ['REDIS']
 r = redis.StrictRedis(host=redis_server, port=6379, db=0)
 ```
 
-Ezen a ponton az oktatóanyagban a sablon egy szolgáltatáscsomag alkalmazáshoz érhető el egy fürt üzembe helyezése. Az ezt követő oktatóanyag az alkalmazás telepítve van, és a Service Fabric-fürt futtatásakor.
+Az oktatóanyag ezen pontján üzembe lehet helyezni egy szolgáltatáscsomag-alkalmazás sablonját a fürtön. A következő oktatóanyagban ezt az alkalmazást fogjuk üzembe helyezni és futtatni egy Service Fabric-fürtben.
 
-## <a name="create-a-service-fabric-cluster"></a>A Service Fabric-fürt létrehozása
-Az alkalmazás Azure-fürtön történő üzembe helyezéséhez használhat egy saját vagy egy nyilvános fürtöt is.
+## <a name="create-a-service-fabric-cluster"></a>Service Fabric-fürt létrehozása
+Az alkalmazás Azure-fürtön történő üzembe helyezéséhez hozzon létre egy saját fürtöt.
 
-A nyilvános fürtök ingyenes, korlátozott időtartamú Azure Service Fabric-fürtök. A Service Fabric csapat, ahol a további tudnivalók a platform bárki és alkalmazások telepítése üzemeltet. A nyilvános fürt eléréséhez [kövesse az alábbi utasításokat](http://aka.ms/tryservicefabric). 
+A nyilvános fürtök ingyenes, korlátozott időtartamú Azure Service Fabric-fürtök. Ezeket a Service Fabric csapata üzemelteti, és bárki üzembe helyezhet rajtuk alkalmazásokat, illetve megismerkedhet a platform használatával. A nyilvános fürt eléréséhez [kövesse az alábbi utasításokat](http://aka.ms/tryservicefabric). 
+
+Ha kezelési műveleteket szeretne végrehajtani a biztonságos fél fürtjén, használhatja a Service Fabric Explorert, a parancssori felületet vagy a Powershellt. A Service Fabric Explorer használatához le kell töltenie a PFX-fájlt a nyilvános fürt webhelyéről, és importálnia kell a tanúsítványt a tanúsítványtárolóba (Windows vagy Mac) vagy a böngészőbe (Ubuntu). A nyilvános fürtből származó önaláírt tanúsítványoknak nincs jelszavuk. 
+
+Ha kezelési műveleteket szeretne végrehajtani a Powershell-lel vagy a parancssori felületről, szüksége lesz a következőkre: PFX (Powershell) vagy PEM (parancssori felület). A PFX-fájlok PEM-fájlokká történő konvertálásához használja a következő parancsot:  
+
+```bash
+openssl pkcs12 -in party-cluster-1277863181-client-cert.pfx -out party-cluster-1277863181-client-cert.pem -nodes -passin pass:
+```
 
 További információk saját fürtök létrehozásáról: [Service Fabric-fürt létrehozása az Azure-on](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
 
-## <a name="build-and-deploy-the-application-to-the-cluster"></a>Hozza létre és telepítse központilag az alkalmazást a fürthöz
-Az Azure-fürttel a Service Fabric parancssori felület használatával telepítheti az alkalmazást. Ha a Service Fabric parancssori felület nem települ a számítógépre, kövesse az utasításokat [Itt](service-fabric-get-started-linux.md#set-up-the-service-fabric-cli) a telepítéshez. 
+## <a name="build-and-deploy-the-application-to-the-cluster"></a>Az alkalmazás felépítése és üzembe helyezése a fürtön
+A Service Fabric parancssori felületével helyezheti üzembe az alkalmazást az Azure-fürtben. Ha a Service Fabric parancssori felülete nincs telepítve a gépre, kövesse az [itt](service-fabric-get-started-linux.md#set-up-the-service-fabric-cli) található utasításokat a telepítéséhez. 
 
-Csatlakozzon az Azure Service Fabric-fürthöz. Cserélje le a helyőrző végpont az Ön által. A végpont egy teljes URL-címet az alábbihoz hasonló kell lennie.
+Csatlakozzon az Azure Service Fabric-fürthöz. Cserélje le a helyőrző végpontot a sajátjára. A végpontnak az alábbihoz hasonló teljes URL-címnek kell lennie.
 
 ```bash
-sfctl cluster select --endpoint <http://lin4hjim3l4.westus.cloudapp.azure.com:19080>
+sfctl cluster select --endpoint https://linh1x87d1d.westus.cloudapp.azure.com:19080 --pem party-cluster-1277863181-client-cert.pem --no-verify
 ```
 
-A megadott telepítési parancsfájl használata a **TestContainer** directory másolja az alkalmazáscsomagot a fürt lemezképtárolóhoz, az alkalmazástípus regisztrálása és az alkalmazás egy példányának létrehozásakor.
+Használja a **TestContainer** könyvtárban megadott telepítési szkriptet, hogy az alkalmazáscsomagot a fürt lemezképtárolójába másolja, regisztrálja az alkalmazás típusát, és hozza létre az alkalmazás egy példányát.
 
 ```bash
 ./install.sh
 ```
 
-Nyisson meg egy böngészőt, és keresse meg a Service Fabric Explorerben talál a következő http://lin4hjim3l4.westus.cloudapp.azure.com:19080/Explorer. Bontsa ki az alkalmazások csomópontot, és vegye figyelembe, hogy nincs-e az alkalmazás típusának bejegyzése és egy másik példány.
+Nyisson meg egy böngészőt, és keresse fel a Service Fabric Explorert a http://lin4hjim3l4.westus.cloudapp.azure.com:19080/Explorer címen. Bontsa ki az alkalmazások csomópontját, és figyelje meg, hogy megjelenik benne egy bejegyzés az alkalmazás típusához, egy másik pedig a példányhoz.
 
 ![Service Fabric Explorer][sfx]
 
-Ahhoz, hogy a futó alkalmazás csatlakozzon, nyisson meg egy webböngészőt, és nyissa meg a fürt URL-cím - például http://lin0823ryf2he.cloudapp.azure.com:80. A webes felhasználói felület Voting alkalmazási kell megjelennie.
+Ha a futó alkalmazáshoz szeretne csatlakozni, nyisson meg egy webböngészőt, és lépjen a fürt URL-címére – például a http://lin0823ryf2he.cloudapp.azure.com:80 címre. A webes felhasználói felületen a szavazóalkalmazásnak kell megjelennie.
 
-![votingapp][votingapp]
+![szavazóalkalmazás][votingapp]
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
-Használja a sablonban megadott eltávolítási szkriptet az alkalmazáspéldánynak a fürtről történő törléséhez, és törölje az alkalmazástípus regisztrációját. Ennek a parancsnak a példány karbantartása egy ideig, és a "install.sh" utasítás nem futtatható közvetlenül után ezt a parancsfájlt. 
+Használja a sablonban megadott eltávolítási szkriptet az alkalmazáspéldánynak a fürtről történő törléséhez, és törölje az alkalmazástípus regisztrációját. A parancsnak némi időre van szüksége, hogy kiürítse a példányt, ezért az „install.sh” parancs nem futtatható azonnal a szkript után. 
 
 ```bash
 ./uninstall.sh
 ```
 
-## <a name="examples-of-completed-manifests"></a>Befejezett jegyzékfájlokban példák
+## <a name="examples-of-completed-manifests"></a>Példák teljes jegyzékfájlokra
 
 ### <a name="applicationmanifestxml"></a>ApplicationManifest.xml
 ```xml
@@ -292,7 +300,7 @@ Használja a sablonban megadott eltávolítási szkriptet az alkalmazáspéldán
 </ApplicationManifest>
 ```
 
-### <a name="front-end-servicemanifestxml"></a>Előtér-ServiceManifest.xml 
+### <a name="front-end-servicemanifestxml"></a>Front-end ServiceManifest.xml 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ServiceManifest Name="azurevotefrontPkg" Version="1.0.0"
@@ -359,20 +367,20 @@ Használja a sablonban megadott eltávolítási szkriptet az alkalmazáspéldán
 ```
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban több tároló volt csomagolja a rendszer a Service Fabric-alkalmazás Yeoman használatával. Ez az alkalmazás ezután központilag telepített és futtassa a Service Fabric-fürt. A következő lépéseket hajtotta végre:
+Ebben az oktatóanyagban több tárolót csomagolt egy Service Fabric-alkalmazásba a Yeoman használatával, majd az alkalmazást üzembe helyezte és futtatta egy Service Fabric-fürtön. A következő lépéseket hajtotta végre:
 
 > [!div class="checklist"]
-> * Yeoman telepítése  
-> * Hozzon létre egy alkalmazáscsomagot, Yeoman használatával
-> * Adja meg az alkalmazáscsomag tárolók való használatra beállításait
+> * A Yeoman telepítése  
+> * Alkalmazáscsomag létrehozása a Yeoman használatával
+> * Az alkalmazáscsomag beállításainak konfigurálása a tárolókkal való használathoz
 > * Az alkalmazás létrehozása  
-> * Telepítheti és futtathatja az alkalmazást 
-> * Az alkalmazás törlése
+> * Az alkalmazás üzembe helyezése és futtatása 
+> * Az alkalmazás fölösleges elemeinek az eltávolítása
 
-A következő oktatóanyag feladatátvételi és annak az alkalmazásnak a Service Fabric skálázás továbblépés.
+Folytassa a következő oktatóanyaggal, amely az alkalmazás feladatátvételét és méretezését ismerteti a Service Fabricben.
 
 > [!div class="nextstepaction"]
-> [További tudnivalók a feladatátvétel és az alkalmazások méretezése](service-fabric-tutorial-containers-failover.md)
+> [Tudnivalók az alkalmazások feladatátvételéről és méretezéséről](service-fabric-tutorial-containers-failover.md)
 
 [votingapp]: ./media/service-fabric-tutorial-deploy-run-containers/votingapp.png
 [sfx]: ./media/service-fabric-tutorial-deploy-run-containers/containerspackagetutorialsfx.png

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/10/2018
 ms.author: jingwang
-ms.openlocfilehash: 6aa5d4aa032ef4dc3583bf76b9c451874b74f9a6
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 5f0703a3cb2ce912bfc042d0717ad8d921ec43e3
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Táblák tömeges másolása az Azure Data Factory használatával
 Ez az oktatóanyag azt mutatja be, hogyan lehet **táblákat másolni az Azure SQL Database-ből az Azure SQL Data Warehouse-ba**. A minta egyéb másolási forgatókönyvek esetén is alkalmazható. Például táblák másolására az SQL Serverről/Oracle-ből az Azure SQL Database-be/Data Warehouse-ba/Azure Blobba, vagy különböző elérési utak másolására a Blobból Azure SQL Database-táblákba.
@@ -74,6 +74,7 @@ Az SQL Database és az SQL Data Warehouse esetében is engedélyezze az SQL Ser
 3. A **Tűzfalbeállítások** lapon kattintson a **BE** kapcsolóra az **Azure-szolgáltatások hozzáférésének engedélyezése** beállítás mellett.
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
+1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
 1. Kattintson az **Új** elemre, majd az **Adatok + analitika**, végül a **Data Factory** elemre. 
    
    ![New (Új)->DataFactory](./media/tutorial-bulk-copy-portal/new-azure-data-factory-menu.png)
@@ -286,7 +287,7 @@ Ez a folyamat két lépést hajt végre:
 2. A Tulajdonságok ablakban módosítsa a folyamat nevét a következőre a **GetTableListAndTriggerCopyData** értékre. 
 
     ![Folyamat neve](./media/tutorial-bulk-copy-portal/second-pipeline-name.png)
-3. A **Tevékenységek** eszközkészletben bontsa ki az **SQL Database** elemet, húzza a **Keresési** tevékenységet a folyamat tervezőfelületére, és tegye a következőket:
+3. A **Tevékenységek** eszközkészletben bontsa ki az **Általános** elemet, húzza a **Keresés** tevékenységet a folyamat tervezőfelületére, és tegye a következőket:
 
     1. A **Név** mezőbe írja be a **LookupTableList** nevet. 
     2. A **Leírásnál** adja meg a következőt: **A táblalista lekérése az Azure SQL Database-ből**.
@@ -322,7 +323,7 @@ Ez a folyamat két lépést hajt végre:
 8. A folyamat érvényesítéséhez kattintson az **Érvényesítés** elemre az eszköztáron. Ellenőrizze, hogy nincs-e érvényesítési hiba. A **Folyamatérvényesítési jelentés** bezárásához kattintson a **>>** jelre.
 
     ![Második folyamat – érvényesítési jelentés](./media/tutorial-bulk-copy-portal/second-pipeline-validation-report.png)
-9. Ha közzé szeretne tenni entitásokat (adatkészleteket, folyamatokat stb.) a Data Factory szolgáltatásban, kattintson a **Közzététel** elemre. Várja meg, amíg befejeződik a közzétételi folyamat. 
+9. Ha közzé szeretne tenni entitásokat (adathalmazokat, folyamatokat stb.) a Data Factory szolgáltatásban, kattintson az **Összes közzététele** elemre. Várja meg, amíg befejeződik a közzétételi folyamat. 
 
     ![Közzététel gomb](./media/tutorial-bulk-copy-portal/publish.png)
 

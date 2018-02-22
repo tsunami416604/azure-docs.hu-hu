@@ -3,8 +3,8 @@ title: "Egy egyéni Piactéri elemet közzététele az Azure-vermet (felhő üze
 description: "Azure verem kezelőként útmutató egy egyéni Piactéri elemet közzététele az Azure-készletben."
 services: azure-stack
 documentationcenter: 
-author: ErikjeMS
-manager: byronr
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 60871cbb-eed2-433c-a76d-d605c7aec06c
 ms.service: azure-stack
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
-ms.author: erikje
-ms.openlocfilehash: 7b5f976eb2d51eb86761a2bd0be6adb45ca87681
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: brenduns
+ms.reviewer: jeffgo
+ms.openlocfilehash: c791708e11b7e9e8bbe046f06233d948d4632c90
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="the-azure-stack-marketplace-overview"></a>Az Azure verem piactér – áttekintés
 
@@ -32,7 +33,7 @@ A piactér megnyitásához kattintson **új**.
 
 ![](media/azure-stack-publish-custom-marketplace-item/image1.png)
 
-## <a name="marketplace-items"></a>Piactéri elemek
+## <a name="marketplace-items"></a>Marketplace-elemek
 Egy Azure verem piactér elem egy szolgáltatás, alkalmazás vagy erőforrás, a felhasználók által töltse le és használja. Minden Azure verem Piactéri elemek minden felhasználó számára láthatók.
 
 Minden piactér elemnek:
@@ -43,6 +44,6 @@ Minden piactér elemnek:
 
 Minden elem a piactér közzétett használja az Azure Katalóguscsomagban (azpkg) formátumban. Központi telepítés, illetve runtime jelöléssel erőforrások hozzáadása (például a kódot, a szoftver- vagy virtuálisgép-rendszerképek zip-fájlok) Azure verem külön-külön, ne a Piactéri elemet részeként. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Hozzon létre, és tegye közzé a Piactéri elemet](azure-stack-create-and-publish-marketplace-item.md)
 

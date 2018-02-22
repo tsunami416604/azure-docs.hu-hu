@@ -1,18 +1,22 @@
 ---
-title: "Azure-készletben elérhetővé virtuálisgép-méretezési csoportok"
-description: "Ismerje meg, hogy a felhő rendszergazdájának adhat hozzá virtuálisgép-méretezési verem Azure piactérről"
+title: "Ellenőrizze virtulálisgép-skálázási készletekben Azure verem használható |} Microsoft Docs"
+description: "Ismerje meg, hogy a felhő üzemeltetője adhat hozzá virtuálisgép-méretezési verem Azure piactérről"
 services: azure-stack
-author: anjayajodha
+author: brenduns
+manager: femila
+editor: 
+ms.assetid: 
 ms.service: azure-stack
 ms.topic: article
 ms.date: 9/25/2017
-ms.author: anajod
+ms.author: brenduns
+ms.reviewer: anajod
 keywords: 
-ms.openlocfilehash: 31aeb963bdf4fd32712bc6f29f64060ec1c77cb8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6e4c1145b8ff4665024b4532cf9cc9ac6a0a24a1
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>Azure-készletben elérhetővé virtuálisgép-méretezési csoportok
 
@@ -47,7 +51,7 @@ Azure-veremben a virtuálisgép-méretezési csoportok nem támogatják az autom
 
 A következő PowerShell parancsfájlt a rendszerkörnyezetnek szerkesztése, és futtassa a virtuálisgép-méretezési beállítása az Azure-verem piactér hozzáadása. 
 
-``$User``az a fiók a felügyeleti portál kapcsolódni. Például: serviceadmin@contoso.onmicrosoft.com.
+``$User`` az a fiók a felügyeleti portál kapcsolódni. Például: serviceadmin@contoso.onmicrosoft.com.
 
 ```
 $Arm = "https://adminmanagement.local.azurestack.external"
@@ -80,6 +84,6 @@ Távolítsa el a virtuális gépek méretezési készlet gyűjteményelem, és f
 > A gyűjteményelem azonnal nem lehet eltávolítani. Szükség lehet többször is frissítenie a portál a piactérről eltávolítása előtt.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Gyakori kérdések az Azure-verem](azure-stack-faq.md)
 

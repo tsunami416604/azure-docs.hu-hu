@@ -13,11 +13,11 @@ ms.devlang:
 ms.topic: hero-article
 ms.date: 01/29/2018
 ms.author: spelluru
-ms.openlocfilehash: 9e0b0efdf28e6d8b99d1cdf702dd0698ad87da7b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: abb5fd4953709198f6071bbdd4a1dc86900f0183
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="provision-an-azure-ssis-integration-runtime-by-using-the-azure-data-factory-ui"></a>Azure-SSIS integrációs modul üzembe helyezése az Azure Data Factory felhasználói felületén
 Ez az oktatóanyag azt ismerteti, hogyan lehet üzembe helyezni egy Azure-SSIS integrációs modul (Integration Runtime, IR) modult az Azure Data Factoryban az Azure Portal felületén. Ezután az SQL Server Data Tools vagy az SQL Server Management Studio használatával üzembe helyezhet SQL Server Integration Services- (SSIS-) csomagokat ebben az Azure-beli modulban. Elméleti információk az Azure-SSIS integrációs modulokról: [Azure-SSIS integrációs modul](concepts-integration-runtime.md#azure-ssis-integration-runtime).
@@ -26,7 +26,7 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
 > * Adat-előállító létrehozása
-> * Azure-SSIS integrációs modul létrehozása és elindítása.
+> * Azure SSIS integrációs modul üzembe helyezése.
 
 > [!NOTE]
 > Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. Ha a Data Factory szolgáltatás általánosan elérhető 1. verzióját használja, tekintse meg [a Data Factory 1. verziójának dokumentációját](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
@@ -41,8 +41,9 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
  
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).    
-2. Kattintson az **Új** elemre a bal oldali menüben, majd az **Adatok + analitika**, végül a **Data Factory** elemre. 
+1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
+2. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).    
+3. Kattintson az **Új** elemre a bal oldali menüben, majd az **Adatok + analitika**, végül a **Data Factory** elemre. 
    
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/tutorial-create-azure-ssis-runtime-portal/new-data-factory-menu.png)
 3. Az **Új data factory** lapon, a **Név** mezőben adja meg a **MyAzureSsisDataFactory** értéket. 
@@ -69,7 +70,7 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 11. A létrehozás befejezése után megjelenik az **Adat-előállító** lap.
    
    ![Az adat-előállító kezdőlapja](./media/tutorial-create-azure-ssis-runtime-portal/data-factory-home-page.png)
-12. A Data Factory felhasználói felületének új lapon való megnyitásához válassza a **Monitor & Manage** csempét. 
+12. A Data Factory felhasználói felületének új lapon való megnyitásához válassza az **Author & Monitor** (Létrehozás és monitorozás) csempét. 
 
 ## <a name="provision-an-azure-ssis-integration-runtime"></a>Azure SSIS integrációs modul üzembe helyezése
 
@@ -160,7 +161,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Adat-előállító létrehozása
-> * Azure-SSIS integrációs modul létrehozása és elindítása.
+> * Azure SSIS integrációs modul üzembe helyezése.
 
 Az adatok helyszíni rendszerből a felhőre való másolásának megismeréséhez folytassa a következő oktatóanyaggal: 
 

@@ -1,55 +1,58 @@
 ---
-title: "Írásvédett redundáns tárolás az Azure-ban elérésével hiba szimulálása |} Microsoft Docs"
-description: "Írásvédett georedundáns tárolás elérésével hiba szimulálása"
+title: "Írásvédett redundáns tárolók elérése során fellépő hiba szimulálása az Azure-ban | Microsoft Docs"
+description: "Írásvédett georedundáns tárolók elérése során fellépő hiba szimulálása"
 services: storage
-documentationcenter: 
-author: georgewallace
+author: ruthogunnnaike
 manager: jeconnoc
-editor: 
 ms.service: storage
-ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: csharp
+ms.devlang: 
 ms.topic: tutorial
-ms.date: 12/05/2017
-ms.author: gwallace
-ms.custom: mvc
-ms.openlocfilehash: 151e875bd72598b0b788d68eee7fb186fca86f46
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
-ms.translationtype: MT
+ms.date: 12/23/2017
+ms.author: v-ruogun
+ms.openlocfilehash: 9ebf773cf39d832416dce820e67201c21a679296
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/13/2018
 ---
-# <a name="simulate-a-failure-in-accessing-read-access-redundant-storage"></a>Írásvédett redundáns tárolás elérésével hiba szimulálása
+# <a name="simulate-a-failure-in-accessing-read-access-redundant-storage"></a>Írásvédett redundáns tárolók elérése során fellépő hiba szimulálása
 
-Ez az oktatóanyag a két egy sorozat része. Ebben az oktatóanyagban meg el egy hibás válasz Fiddler irányuló kérelmek esetén a [írásvédett georedundáns](../common/storage-redundancy.md#read-access-geo-redundant-storage) storage-fiók (RA-GRS) segítségével szimulálhatja hibát, és az alkalmazást a másodlagos végponti olvasni.
+Ez az oktatóanyag egy sorozat második része.  Ebben az oktatóanyagban [Fiddlert](#simulate-a-failure-with-fiddler) vagy [statikus útválasztást](#simulate-a-failure-with-an-invalid-static-route) használhat az [írásvédett georedundáns](../common/storage-redundancy.md#read-access-geo-redundant-storage) (RA-GRS) tárfiók elsődleges végpontjába érkező kérések hibájának szimulálásához, hogy az alkalmazás a másodlagos végpontból végezzen beolvasást.
 
-![A forgatókönyv-alkalmazás](media/storage-simulate-failure-ragrs-account-app/scenario.png)
+![Forgatókönyv alkalmazása](media/storage-simulate-failure-ragrs-account-app/scenario.png)
 
-A második rész a sorozat, megismerheti, hogyan:
+Az oktatóanyag teljesítéséhez el kell végeznie az előző tárolási oktatóanyagot, amely [az alkalmazásadatok magas rendelkezésre állásának biztosítását ismerteti az Azure Storage használatával][previous-tutorial].
+
+A sorozat második részében az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Futtassa, és az alkalmazás felfüggesztése
-> * Hiba szimulálása
-> * Elsődleges végpont visszaállítás szimulálása
+> * Az alkalmazás futtatása és szüneteltetése
+> * Hiba szimulálása [Fiddlerrel](#simulate-a-failure-with-fiddler) vagy [érvénytelen statikus útvonallal](#simulate-a-failure-with-an-invalid-static-route) 
+> * Elsődleges végpont visszaállításának szimulálása
+
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez:
+Hiba szimulálása a Fiddler segítségével: 
 
-* Töltse le és telepítse [Fiddler](https://www.telerik.com/download/fiddler)
+* A Fiddler letöltése és [telepítése](https://www.telerik.com/download/fiddler)
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-Az oktatóanyag teljesítéséhez végrehajtotta az előző tárolási oktatóanyag: [legyen az alkalmazás adataihoz az Azure storage magas rendelkezésre állású][previous-tutorial].
+## <a name="simulate-a-failure-with-fiddler"></a>Hiba szimulálása a Fiddlerrel
 
-## <a name="launch-fiddler"></a>Indítsa el a fiddler
+Ha a Fiddlerrel szeretne hibát szimulálni, ahhoz az RA-GRS tárfiók elsődleges végpontjába érkező kérésekre hibás választ szúr be.
 
-Nyissa meg Fiddler, válassza ki **szabályok** és **testreszabása szabályok**.
+Kövesse az alábbi lépéseket, ha a Fiddler használatával szeretné a hibát szimulálni, és az elsődleges végpontot visszaállítani.
 
-![Testre szabhatja a Fiddler szabályok](media/storage-simulate-failure-ragrs-account-app/figure1.png)
+### <a name="launch-fiddler"></a>A Fiddler elindítása
 
-A Fiddler ScriptEditor ábrázoló elindítja a **SampleRules.js** fájlt. Ez a fájl segítségével testre szabhatja a Fiddler. Illessze be a következő példakód a a `OnBeforeResponse` függvény. Az új kódot annak érdekében, hogy a létrehozott logikai nincs megvalósítva azonnal megjegyzésként szerepel. Válassza ki a befejezést **fájl** és **mentése** menti a módosításokat.
+Nyissa meg a Fiddlert, és válassza a **Rules** (Szabályok), majd a **Cutomize Rules** (Szabályok testreszabása) lehetőséget.
+
+![Fiddler-szabályok testreszabása](media/storage-simulate-failure-ragrs-account-app/figure1.png)
+
+Elindul a Fiddler ScriptEditor a **SampleRules.js** fájllal. Ezzel a fájllal szabható testre a Fiddler. Illessze be a következő kódmintát az `OnBeforeResponse` függvénybe. Az új kód megjegyzésként szerepel, hogy az általa létrehozott logika ne legyen azonnal implementálva. Ha végzett, válassza a **File** (Fájl), majd a **Save** (Mentés) lehetőséget a módosítások mentéséhez.
 
 ```javascript
     /*
@@ -67,17 +70,23 @@ A Fiddler ScriptEditor ábrázoló elindítja a **SampleRules.js** fájlt. Ez a 
     */
 ```
 
-![Illessze be az egyéni szabály](media/storage-simulate-failure-ragrs-account-app/figure2.png)
+![Testreszabott szabály beillesztése](media/storage-simulate-failure-ragrs-account-app/figure2.png)
 
-## <a name="start-and-pause-the-application"></a>Indítsa el, és az alkalmazás felfüggesztése
+### <a name="start-and-pause-the-application"></a>Az alkalmazás elindítása és szüneteltetése
 
-A Visual Studio, nyomja le a **F5** , vagy válasszon **Start** az alkalmazás hibakeresését végzi el. Az alkalmazás az elsődleges végpont a olvasásakor megkezdése után nyomja le az **egyik billentyűre** a konzolablakban felfüggeszti az alkalmazást.
+Futtassa az alkalmazást az IDE-ben vagy egy szövegszerkesztőben. Miután az alkalmazás elkezd olvasni az elsődleges végpontból, nyomja le az **egyik billentyűt** a konzolablakban az alkalmazás szüneteltetéséhez.
 
-## <a name="simulate-failure"></a>Hiba szimulálása
+### <a name="simulate-failure"></a>Hibaszimuláció
 
-Az alkalmazással felfüggesztve most állítsa vissza az egyéni szabály mentettük a Fiddler egy előző lépést. Ez a kód minta keresni kezdi a RA-GRS-tárfiókot kérelmek, és hogy az elérési út tartalmazza-e a lemezkép nevét `HelloWorld`, adja vissza, válaszkód `503 - Service Unavailable`.
+Most, hogy az alkalmazás szüneteltetve van, törölheti a megjegyzésjelölőket a Fiddlerben az előző lépésben mentett egyéni szabályból. A kódminta megkeresi az RA-GRS tárfiókba érkezett kéréseket, és ha az elérési út tartalmazza a rendszerkép nevét (`HelloWorld`), a következő válaszkódot adja vissza: `503 - Service Unavailable`.
 
-Navigáljon a Fiddler, és válassza ki **szabályok** -> **testreszabása szabályok...** .  Állítsa vissza a következő sorokat ki, hogy lecseréli `STORAGEACCOUNTNAME` a tárfiók nevével. Válassza ki **fájl** -> **mentése** menti a módosításokat.
+Lépjen a Fiddlerre, és válassza a **Rules** -> **Customize Rules** (Szabályok > Szabályok testreszabása) lehetőséget.  Törölje a megjegyzésjelölőt a következő soroknál, és cserélje le a `STORAGEACCOUNTNAME` értékét a tárfiók nevére. A módosítások mentéséhez válassza a **File** -> **Save** (Fájl > Mentés) lehetőséget. 
+
+> [!NOTE]
+> Ha Linuxon futtatja a mintaalkalmazást, újra kell indítania a Fiddlert a **CustomRule.js** fájl minden szerkesztésekor, hogy a Fiddler telepíthesse az egyéni logikát. 
+> 
+> 
+
 
 ```javascript
          if ((oSession.hostname == "STORAGEACCOUNTNAME.blob.core.windows.net")
@@ -86,40 +95,93 @@ Navigáljon a Fiddler, és válassza ki **szabályok** -> **testreszabása szab�
          }
 ```
 
-Az alkalmazás folytatásához nyomja le az **egyik billentyűre** .
+Az alkalmazás folytatásához nyomja le az **egyik billentyűt**.
 
-Miután elindul az alkalmazás fut újra, a kérelmeket az elsődleges végpont veszik át a sikertelen. Az alkalmazás csatlakozni próbál az elsődleges végpont 5 alkalommal. Után a hiba küszöbértékét, az öt kísérletek a másodlagos csak olvasható végpontról mindent lekér a lemezképet. Után az alkalmazás sikeresen átveszi a kép 20 alkalommal a másodlagos végponti, az alkalmazás megkísérli az elsődleges végponthoz kapcsolódni. Ha az elsődleges végpont még nem érhető el, az alkalmazás folytatja a másodlagos végponti olvasásakor. Ez a minta a [áramköri megszakító](https://docs.microsoft.com/azure/architecture/patterns/circuit-breaker) az előző oktatóanyag leírtak mintában.
+Miután újra elindult az alkalmazás, az elsődleges végpontra érkező kérések meghiúsulnak. Az alkalmazás ötször próbál meg újracsatlakozni az elsődleges végponthoz. Az öt kísérlet után a másodlagos írásvédett végpontról kéri le a rendszerképet. Miután az alkalmazás 20-szor sikeresen lekéri a rendszerképet a másodlagos végpontról, az alkalmazás megkísérel csatlakozni az elsődleges végponthoz. Ha az elsődleges végpont továbbra sem érhető el, az alkalmazás folytatja a másodlagos végpontból való olvasást. Ez a minta az előző oktatóanyagban ismertetett [áramköri-megszakítós](https://docs.microsoft.com/azure/architecture/patterns/circuit-breaker) minta.
 
-![Illessze be az egyéni szabály](media/storage-simulate-failure-ragrs-account-app/figure3.png)
+![Testreszabott szabály beillesztése](media/storage-simulate-failure-ragrs-account-app/figure3.png)
 
-## <a name="simulate-primary-endpoint-restoration"></a>Elsődleges végpont visszaállítás szimulálása
+### <a name="simulate-primary-endpoint-restoration"></a>Elsődleges végpont visszaállításának szimulálása
 
-A Fiddler egyéni szabályt, állítsa be az előző lépésben az elsődleges végpont a kérelem sikertelen lesz. Ahhoz, hogy szimulálása az elsődleges végpont újra működik, szúrjon logika eltávolítása a `503` hiba.
+Az előző lépésben beállított egyéni Fiddler-szabálykészlettel az elsődleges végpontra érkező kérések meghiúsulnak. Az elsődleges végpont működésének ismételt szimulálása érdekében eltávolítja az `503`-as hibát beszúró logikát.
 
-Az alkalmazás szüneteltethető, nyomja le az **egyik billentyűre**.
+Az alkalmazás szüneteltetéséhez nyomja le **valamelyik billentyűt**.
 
-### <a name="remove-the-custom-rule"></a>Az egyéni szabály eltávolítása
+Lépjen a Fiddlerre, és válassza a **Rules** (Szabályok), majd a **Customize Rules** (Szabályok testreszabása) lehetőséget.  Tegye megjegyzésbe, vagy távolítsa el az egyéni logikát az `OnBeforeResponse` függvényben, hogy csak az alapértelmezett függvény maradjon aktív. Válassza a **File** (Fájl), majd a **Save** (Mentés) lehetőséget a módosítások mentéséhez.
 
-Navigáljon a Fiddler, és válassza ki **szabályok** és **testreszabása szabályok...** .  Comment, vagy távolítsa el az egyéni logika a `OnBeforeResponse` függvény, hagyja az alapértelmezett függvény. Válassza ki **fájl** és **mentése** menti a módosításokat.
+![Testreszabott szabály eltávolítása](media/storage-simulate-failure-ragrs-account-app/figure5.png)
 
-![Egyéni szabály eltávolítása](media/storage-simulate-failure-ragrs-account-app/figure5.png)
-
-Amikor végzett, nyomja le az **egyik billentyűre** folytatni az alkalmazást. Az alkalmazás továbbra is az elsődleges végpont a olvasásakor, amíg a találatok száma a 999 olvasási.
+Amikor végzett, nyomja le az **egyik billentyűt** az alkalmazás folytatásához. Az alkalmazás 999 beolvasásig folytatja az elsődleges végpontból való olvasást.
 
 ![Alkalmazás folytatása](media/storage-simulate-failure-ragrs-account-app/figure4.png)
 
+
+## <a name="simulate-a-failure-with-an-invalid-static-route"></a>Hiba szimulálása érvénytelen statikus útvonallal 
+Létrehozhatja az [írásvédett georedundáns](../common/storage-redundancy.md#read-access-geo-redundant-storage) (RA-GRS) tárfiók elsődleges végpontjába érkező összes kérés egy érvénytelen statikus útvonalát. Ebben az oktatóanyagban a helyi gazdagép a tárfiókba érkező kérések útválasztására szolgáló átjáró. Ha a helyi gazdagépet használja átjáróként, a tárfiók elsődleges végpontjára érkező összes kérés visszatér a gazdagépre, ami hibához vezet. Kövesse az alábbi lépéseket, ha az érvénytelen statikus útvonal használatával szeretné a hibát szimulálni, és az elsődleges végpontot visszaállítani. 
+
+### <a name="start-and-pause-the-application"></a>Az alkalmazás elindítása és szüneteltetése
+
+Futtassa az alkalmazást az IDE-ben vagy egy szövegszerkesztőben. Miután az alkalmazás elkezd olvasni az elsődleges végpontból, nyomja le az **egyik billentyűt** a konzolablakban az alkalmazás szüneteltetéséhez. 
+
+### <a name="simulate-failure"></a>Hibaszimuláció
+
+Amikor az alkalmazás szüneteltetve van, indítson el egy Windows-parancssort rendszergazdaként, vagy futtasson egy Linux-terminált root felhasználóként. A tárfiók elsődleges végponttartományával kapcsolatos adatokért írja be a következő parancsot egy parancssorba vagy terminálba.
+
+```
+nslookup STORAGEACCOUNTNAME.blob.core.windows.net
+``` 
+ Cserélje le a `STORAGEACCOUNTNAME` kifejezést a tárfiókja nevére. A későbbi lépésekhez másolja a tárfiók IP-címét egy szövegszerkesztőbe. A helyi gazdagép IP-címének lekéréséhez írja be az `ipconfig` parancsot a Windows-parancssorba vagy az `ifconfig` parancsot a Linux-terminálba. 
+
+Egy célgazdagép statikus útvonalának hozzáadásához írja be a következő parancsot egy Windows-parancssorba vagy Linux-terminálba. 
+
+
+# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+
+  route add <destination_ip> gw <gateway_ip>
+
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+
+  route add <destination_ip> <gateway_ip>
+
+---
+ 
+Cserélje le a `<destination_ip>` kifejezést a tárfiók IP-címére, illetve a `<gateway_ip>` kifejezést a helyi gazdagép IP-címére. Az alkalmazás folytatásához nyomja le az **egyik billentyűt**.
+
+Miután újra elindult az alkalmazás, az elsődleges végpontra érkező kérések meghiúsulnak. Az alkalmazás ötször próbál meg újracsatlakozni az elsődleges végponthoz. Az öt kísérlet után a másodlagos írásvédett végpontról kéri le a rendszerképet. Miután az alkalmazás 20-szor sikeresen lekéri a rendszerképet a másodlagos végpontról, az alkalmazás megkísérel csatlakozni az elsődleges végponthoz. Ha az elsődleges végpont továbbra sem érhető el, az alkalmazás folytatja a másodlagos végpontból való olvasást. Ez a minta az előző oktatóanyagban ismertetett [áramköri-megszakítós](/azure/architecture/patterns/circuit-breaker.md) minta.
+
+### <a name="simulate-primary-endpoint-restoration"></a>Elsődleges végpont visszaállításának szimulálása
+
+Az elsődleges végpont működésének ismételt szimulálása érdekében törölje az elsődleges végpont statikus útvonalát az útválasztási táblából. Ez lehetővé teszi, hogy az elsődleges végpont az alapértelmezett átjárón keresztül legyen irányítva. 
+
+Egy célgazdagép statikus útvonalának törléséhez írja be a következő parancsot egy Windows-parancssorba vagy Linux-terminálba. 
+ 
+# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+
+route del <destination_ip> gw <gateway_ip>
+
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+
+route delete <destination_ip> <gateway_ip>
+
+---
+
+Nyomja le az **egyik billentyűt** az alkalmazás folytatásához. Az alkalmazás 999 beolvasásig folytatja az elsődleges végpontból való olvasást.
+
+![Alkalmazás folytatása](media/storage-simulate-failure-ragrs-account-app/figure4.png)
+
+
 ## <a name="next-steps"></a>További lépések
 
-Az adatsorozat két részén megismerte szimulálva írásvédett georedundáns tárolás például hogyan teszteléséhez hiba:
+A sorozat második részében megismerte az írásvédett georedundáns tárolók tesztelésére szolgáló hibaszimulálást, többek között a következőket:
 
 > [!div class="checklist"]
-> * Futtassa, és az alkalmazás felfüggesztése
-> * Hiba szimulálása
-> * Elsődleges végpont visszaállítás szimulálása
+> * Az alkalmazás futtatása és szüneteltetése
+> * Hiba szimulálása [Fiddlerrel](#simulate-a-failure-with-fiddler) vagy [érvénytelen statikus útvonallal](#simulate-a-failure-with-an-invalid-static-route) 
+> * Elsődleges végpont visszaállításának szimulálása
 
-Kövesse a hivatkozásra kattintva megtekintheti az előre elkészített tárolási minták.
+Kövesse ezt a hivatkozást az előre felépített tárolóminták megtekintéséhez.
 
 > [!div class="nextstepaction"]
-> [Az Azure storage parancsfájl minták](storage-samples-blobs-cli.md)
+> [Azure Storage-szkriptminták](storage-samples-blobs-cli.md)
 
 [previous-tutorial]: storage-create-geo-redundant-storage.md

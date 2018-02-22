@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/03/2018
+ms.date: 02/06/2018
 ms.author: yurid
-ms.openlocfilehash: 04f2dd3dcaa44a243cb9620ab8192e15aae82a01
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 608947ec4a94cad276e34e8d3457f05b06d04ad6
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="security-health-monitoring-in-azure-security-center"></a>Biztonsági állapotfigyelés az Azure Security Centerben
 Ez a cikk az Azure Security Center figyelési funkcióknak használatához nyújt segítséget a szabályzatoknak való megfelelés ellenőrzése érdekében.
@@ -87,6 +87,13 @@ A javaslat részleteinek megtekintéséhez kattintson a hiányzó frissítés ne
 > [!NOTE]
 > Itt ugyanazok a biztonsági javaslatok láthatók, mint a **Javaslatok** lehetőség esetében. A javaslatok alkalmazásával kapcsolatban további információkat talál a következő cikkben: [A biztonsági javaslatok alkalmazása az Azure Security Centerben](security-center-recommendations.md). Ez nem csupán a virtuális gépekre vonatkozik, hanem az összes olyan erőforrásra és számítógépre, amely szerepel az **Erőforrás állapota** csempén.
 >
+
+#### <a name="unmonitored-vms"></a>Nem monitorozott virtuális gépek
+A Security Center nem monitorozza a virtuális gépeket, ha azok nem futtatják a Microsoft Monitoring Agent bővítményt. Előfordulhat, hogy egy virtuális gépre már telepítve van egy helyi ügynök, például a közvetlen OMS-ügynök vagy az SCOM-ügynök. A rendszer az ilyen ügynökökkel rendelkező virtuális gépeket nem monitorozottként azonosítja, mert ezeknek az ügynököknek a Security Center nem biztosít teljes körű támogatást. A Security Center összes funkciójának legteljesebb kihasználása érdekében szükség van a Microsoft Monitoring Agent bővítményre.
+
+A bővítményt a már telepített helyi ügynök mellett is telepítheti a nem monitorozott virtuális gépre. A két ügynök konfigurációja legyen megegyező, és ugyanahhoz a munkaterülethez csatlakoztassa őket. Ez lehetővé teszi, hogy a Security Center interakcióba léphessen a Microsoft Monitoring Agent bővítménnyel, és adatokat gyűjtsön.  [A virtuálisgép-bővítmény engedélyezésével](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) foglalkozó témakörben találja a Microsoft Monitoring Agent bővítmény telepítésével kapcsolatos utasításokat.
+
+[A Monitoring Agent állapotproblémái](security-center-troubleshooting-guide.md#monitoring-agent-health-issues) szakaszban többet is megtudhat arról, hogy a Security Center miért nem tudja sikeresen monitorozni az automatikus üzembe helyezésre inicializált virtuális gépeket és számítógépeket.
 
 #### <a name="vms--computers-section"></a>Virtuális gépek és számítógépek szakasz
 A virtuális gépekre és számítógépekre vonatkozó szakaszban áttekintheti az összes virtuális gépet és számítógépet, valamint a rájuk vonatkozó javaslatokat. Ahogy az alábbi képernyőfelvételen is látható, minden oszlop egy javaslatcsoportot képvisel:

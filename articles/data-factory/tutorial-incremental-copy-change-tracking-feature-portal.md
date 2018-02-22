@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/12/2018
 ms.author: jingwang
-ms.openlocfilehash: 93df74da6e9db1bd03885179cd3917205ab3b4ee
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: ddc299d0a292ba17624aa3d0617e420a82f2abf3
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Adatok növekményes betöltése az Azure SQL Database-ből az Azure Blob Storage-ba változáskövetési adatok használatával 
 Az oktatóanyag során egy Azure-beli adat-előállítót hoz létre egy olyan folyamattal, amely változásadatokat tölt be a forrás Azure SQL Database-ben lévő **változáskövetési** adatok alapján egy Azure Blob Storage-be.  
@@ -151,6 +151,7 @@ Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
+1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
 1. Kattintson az **Új** elemre, majd az **Adatok + analitika**, végül a **Data Factory** elemre. 
    
    ![New (Új)->DataFactory](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-azure-data-factory-menu.png)
@@ -360,7 +361,7 @@ Ebben a lépésben a következő tevékenységeket tartalmazó folyamatot fog l�
 2. Megjelenik egy új, a folyamat konfigurálására szolgáló lap. A folyamat fanézetben is megjelenik. A **Tulajdonságok** ablakban módosítsa a folyamat nevét a következőre: **IncrementalCopyPipeline**.
 
     ![Folyamat neve](./media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-pipeline-name.png)
-3. A **Tevékenységek** eszközkészletben bontsa ki az **SQL Database** elemet, és húzza a **Keresés** tevékenységet a folyamat tervezőfelületére. Állítsa a tevékenység nevét a következőre: **LookupLastChangeTrackingVersionActivity**. Ez a tevékenység a **table_store_ChangeTracking_version** táblában tárolt utolsó másolási művelet során használt változáskövetési verziót kapja meg.
+3. A **Tevékenységek** eszközkészletben bontsa ki az **Általános** elemet, és húzza a **Keresés** tevékenységet a folyamat tervezőfelületére. Állítsa a tevékenység nevét a következőre: **LookupLastChangeTrackingVersionActivity**. Ez a tevékenység a **table_store_ChangeTracking_version** táblában tárolt utolsó másolási művelet során használt változáskövetési verziót kapja meg.
 
     ![Keresési tevékenység – név](./media/tutorial-incremental-copy-change-tracking-feature-portal/first-lookup-activity-name.png)
 4. Váltson a **Beállítások**  lapra a  **tulajdonságok** ablakában, és válassza a **ChangeTrackingDataset** elemet a **Forrásadatkészlet** mezőnél. 
@@ -408,12 +409,13 @@ Ebben a lépésben a következő tevékenységeket tartalmazó folyamatot fog l�
     ![Tárolt eljárási tevékenység – SQL-fiók](./media/tutorial-incremental-copy-change-tracking-feature-portal/sql-account-tab.png)
 13. Váltson a **Tárolt eljárás** lapra, és végezze el az alábbi lépéseket: 
 
-    1. A **tárolt eljárás neve** legyen **Update_ChangeTracking_Version**.  
-    2. A **Tárolt eljárás paraméterei** szakaszban használja az **+ Új** gombot a következő két paraméter hozzáadásához:
+    1. A **tárolt eljárás neveként** válassza az **Update_ChangeTracking_Version** lehetőséget.  
+    2. Válassza az **Importálási paraméter** lehetőséget. 
+    3. A **tárolt eljárás paramétereinél** adja meg az alábbi értékeket a paraméterekhez: 
 
         | Name (Név) | Típus | Érték | 
         | ---- | ---- | ----- | 
-        | CurrentTrackingVersion | INT64 | @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion} | 
+        | CurrentTrackingVersion | Int64 | @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion} | 
         | TableName | Karakterlánc | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} | 
     
         ![Tárolt eljárási tevékenység – Paraméterek](./media/tutorial-incremental-copy-change-tracking-feature-portal/stored-procedure-parameters.png)
@@ -423,14 +425,15 @@ Ebben a lépésben a következő tevékenységeket tartalmazó folyamatot fog l�
 15. Kattintson az **Érvényesítés** elemre az eszköztáron. Ellenőrizze, hogy nincs-e érvényesítési hiba. A **>>** gombra kattintva zárja be a **folyamatérvényesítési jelentés** ablakát. 
 
     ![Érvényesítés gomb](./media/tutorial-incremental-copy-change-tracking-feature-portal/validate-button.png)
-16.  Az entitásokat (társított szolgáltatásokat, adatkészleteket és folyamatokat) a **Közzététel** gombra kattintva teheti közzé a Data Factory szolgáltatásban. Várjon, amíg megjelenik a **Sikeres közzététel** üzenet. 
+16.  Az entitásokat (társított szolgáltatásokat, adatkészleteket és folyamatokat) az **Összes közzététele** gombra kattintva teheti közzé a Data Factory szolgáltatásban. Várjon, amíg megjelenik a **Sikeres közzététel** üzenet. 
 
         ![Közzététel gomb](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button-2.png)    
 
 ### <a name="run-the-incremental-copy-pipeline"></a>A növekményes másolási folyamat futtatása
-Kattintson az **Aktiválás** gombra a folyamat eszköztárán, majd az **Aktiválás most** elemre. 
+1. Kattintson az **Aktiválás** gombra a folyamat eszköztárán, majd az **Aktiválás most** elemre. 
 
-![Aktiválás most menü](./media/tutorial-incremental-copy-change-tracking-feature-portal/trigger-now-menu-2.png)
+    ![Aktiválás most menü](./media/tutorial-incremental-copy-change-tracking-feature-portal/trigger-now-menu-2.png)
+2. A **Folyamatfuttatás** ablakban kattintson a **Befejezés** gombra.
 
 ### <a name="monitor-the-incremental-copy-pipeline"></a>A növekményes másolási folyamat figyelése
 1. Kattintson a bal oldali **Monitorozás** lapra. Ekkor a folyamat futtatása és állapota megjelenik a listában. A lista frissítéséhez kattintson a **Refresh** (Frissítés) elemre. A **Műveletek** oszlop hivatkozásai lehetővé teszik, hogy megtekintse a folyamat futtatásához társított tevékenységfuttatásokat, és hogy újra futtassa a folyamatot. 

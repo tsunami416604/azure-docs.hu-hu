@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: ff26d3ae159320f8c726b37eb0c68e6c5f2c2cc3
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: edde9d8c6fe070e5323cf63d222c7cd6a8983e8a
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Adatok növekményes betöltése egy Azure SQL Database-adatbázisból egy Azure Blob Storage-tárolóba
 Az oktatóanyag során egy Azure adat-előállítót hoz majd létre egy olyan folyamattal, amely módosított adatokat tölt be egy Azure SQL-adatbázisban lévő táblából egy Azure Blob Storage-tárolóba. 
@@ -154,6 +154,7 @@ END
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
+1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
 1. Kattintson az **Új** elemre, majd az **Adatok + analitika**, végül a **Data Factory** elemre. 
    
    ![New (Új)->DataFactory](./media/tutorial-incremental-copy-portal/new-azure-data-factory-menu.png)
@@ -192,7 +193,7 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
 3. A folyamat **tulajdonságait** tartalmazó ablak **általános** lapján adja meg az **IncrementalCopyPipeline** nevet. 
 
    ![Folyamat neve](./media/tutorial-incremental-copy-portal/pipeline-name.png)
-4. Adja meg az első keresési tevékenységet a régi küszöbérték lekéréséhez. A **Tevékenységek** eszközkészletben bontsa ki az **SQL Database** elemet, és húzza a **Keresés** tevékenységet a folyamat tervezőfelületére. Változtassa a tevékenység nevét a következőre: **LookupOldWaterMarkActivity**.
+4. Adja meg az első keresési tevékenységet a régi küszöbérték lekéréséhez. A **Tevékenységek** eszközkészletben bontsa ki az **Általános** elemet, és húzza a **Keresés** tevékenységet a folyamat tervezőfelületére. Változtassa a tevékenység nevét a következőre: **LookupOldWaterMarkActivity**.
 
    ![Első keresési tevékenység – név](./media/tutorial-incremental-copy-portal/first-lookup-name.png)
 5. Váltson a **Beállítások** lapra, és a **Forrásadatkészlet** elemnél kattintson az **+ Új** gombra. Ebben a lépésben egy olyan adatkészletet hoz létre, amely a **küszöbértékek táblájában** található adatokat jelöli. Ez a tábla tartalmazza az előző másolási művelet során használt régi küszöbértéket. 
@@ -224,7 +225,7 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
 11. A folyamatszerkesztőt úgy érheti el, ha a fenti folyamat fülre vagy a bal oldali fanézetben a folyamat nevére kattint. A **keresési** tevékenység tulajdonságainak lapján ellenőrizze, hogy a **WatermarkDataset** lehetőség van-e kiválasztva a **Forrásadatkészlet** mezőnél. 
 
     ![Folyamat – régi küszöbérték adatkészlete](./media/tutorial-incremental-copy-portal/pipeline-old-watermark-dataset-selected.png)
-12. A **tevékenységek** eszközkészletében bontsa ki az **SQL Database** elemet, húzzon egy másik **keresési** tevékenységet a folyamat tervezőfelületére, és a tulajdonságok ablakának **általános** lapján állítsa a nevet a következőre: **LookupNewWaterMarkActivity**. Ez a keresési tevékenység a célhelyre átmásolandó forrásadatokat tartalmazó táblából kap új küszöbértéket. 
+12. A **tevékenységek** eszközkészletében bontsa ki az **Általános** elemet, húzzon egy másik **keresési** tevékenységet a folyamat tervezőfelületére, és a tulajdonságok ablakának **Általános** lapján állítsa a nevet a következőre: **LookupNewWaterMarkActivity**. Ez a keresési tevékenység a célhelyre átmásolandó forrásadatokat tartalmazó táblából kap új küszöbértéket. 
 
     ![Második keresési tevékenység – név](./media/tutorial-incremental-copy-portal/second-lookup-activity-name.png)
 13. A második **keresési** tevékenység tulajdonságainak ablakában váltson a **Beállítások** lapra, majd kattintson az **Új** gombra. Így létrehoz egy, az új küszöbértéket (LastModifyTime maximális értéke) tartalmazó táblára mutató adatkészletet. 
@@ -295,7 +296,7 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
 
         ![Fogadó adatkészlet – kapcsolat beállításai](./media/tutorial-incremental-copy-portal/sink-dataset-connection-settings.png)
 28. A **folyamatszerkesztőt** úgy érheti el, ha a fenti folyamat fülre vagy a bal oldali fanézetben a folyamat nevére kattint. 
-29. A **Tevékenységek** eszközkészletben bontsa ki az **SQL Database** elemet, és húzza a **tárolt eljárási** tevékenységet a **Tevékenységek** eszközkészletből a folyamat tervezőfelületére. **Kapcsolja** a **másolási** tevékenység zöld (sikeres) kimenetét a **tárolt eljárási** tevékenységhez. 
+29. A **tevékenységek** eszközkészletében bontsa ki az **Általános** elemet, és húzza a **tárolt eljárási** tevékenységet a **tevékenységek** eszközkészletéből a folyamat tervezőfelületére. **Kapcsolja** a **másolási** tevékenység zöld (sikeres) kimenetét a **tárolt eljárási** tevékenységhez. 
     
     ![Másolási tevékenység – forrás](./media/tutorial-incremental-copy-portal/connect-copy-to-stored-procedure-activity.png)
 24. Válassza ki a **tárolt eljárási tevékenységet** a folyamattervezőben, és változtassa meg a nevét a következőre: **StoredProceduretoWriteWatermarkActivity**. 
@@ -306,26 +307,27 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
     ![Tárolt eljárási tevékenység – SQL-fiók](./media/tutorial-incremental-copy-portal/sp-activity-sql-account-settings.png)
 26. Váltson a **Tárolt eljárás** lapra, és végezze el az alábbi lépéseket: 
 
-    1. Az **sp_write_watermark** értéket adja meg a **tárolt eljárás neveként**. 
-    2. A tárolt eljárás paraméterértékeinek megadásához kattintson az **+ Új** gombra a **Tárolt eljárás paraméterei** részben, és írja be a következő értékeket: 
+    1. A **tárolt eljárás neveként** válassza az **sp_write_watermark** lehetőséget. 
+    2. A tárolt eljárás paraméterértékeinek megadásához kattintson a **Paraméter importálása** gombra, és adja meg az alábbi értékeket a paraméterekhez: 
 
-        | Name (Név) | Típus | Érték | 
+        | Név | Típus | Érték | 
         | ---- | ---- | ----- | 
-        | LastModifiedtime | dátum/idő | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
+        | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | Karakterlánc | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
 
     ![Tárolt eljárási tevékenység – tárolt eljárás beállításai](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)
 27. A folyamat beállításainak érvényesítéséhez kattintson az **Érvényesítés** gombra az eszköztáron. Ellenőrizze, hogy nincs-e érvényesítési hiba. A **folyamatérvényesítési jelentés** ablakának bezárásához kattintson a >> gombra.   
 
     ![Folyamat érvényesítése](./media/tutorial-incremental-copy-portal/validate-pipeline.png)
-28. Az entitásokat (társított szolgáltatásokat, adatkészleteket és folyamatokat) a **Közzététel** gombra kattintva teheti közzé az Azure Data Factory szolgáltatásban. Várjon, amíg megjelenik a sikeres közzétételt jelző üzenet. 
+28. Az entitásokat (társított szolgáltatásokat, adatkészleteket és folyamatokat) az **Összes közzététele** elem kiválasztásával teheti közzé az Azure Data Factory szolgáltatásban. Várjon, amíg megjelenik a sikeres közzétételt jelző üzenet. 
 
     ![Közzététel gomb](./media/tutorial-incremental-copy-portal/publish-button.png)
 
 ## <a name="trigger-a-pipeline-run"></a>Folyamat futtatásának aktiválása
-Kattintson az **Aktiválás** gombra az eszköztáron, majd az **Aktiválás most** elemre. 
+1. Kattintson az **Aktiválás** gombra az eszköztáron, majd az **Aktiválás most** elemre. 
 
-![Aktiválás most gomb](./media/tutorial-incremental-copy-portal/trigger-now.png)
+    ![Aktiválás most gomb](./media/tutorial-incremental-copy-portal/trigger-now.png)
+2. A **Folyamatfuttatás** ablakban kattintson a **Befejezés** gombra. 
 
 ## <a name="monitor-the-pipeline-run"></a>A folyamat futásának monitorozása
 

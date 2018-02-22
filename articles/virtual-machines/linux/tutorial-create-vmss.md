@@ -1,6 +1,6 @@
 ---
-title: "Hozzon létre egy virtuálisgép-méretezési csoportok Linux az Azure-ban |} Microsoft Docs"
-description: "A Linux virtuális gépet egy virtuálisgép-méretezési csoport segítségével egy magas rendelkezésre állású alkalmazás létrehozását és telepítését"
+title: "Virtuálisgép-méretezési csoport létrehozása Linux rendszerhez az Azure-ban | Microsoft Docs"
+description: "Magas rendelkezésre állású alkalmazás létrehozása és üzembe helyezése Linux rendszerű virtuális gépeken virtuálisgép-méretezési csoport használatával"
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: iainfoulds
@@ -15,42 +15,42 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 12/15/2017
 ms.author: iainfou
-ms.openlocfilehash: 8703d0c06f2507cc3c21d4280d887a8772145a28
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
-ms.translationtype: MT
+ms.openlocfilehash: 263983017e08dcc9a8e614c159ef5afaaf1d924e
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux"></a>Hozzon létre egy virtuálisgép-méretezési és magas rendelkezésre állású Linux alkalmazás telepítése
-A virtuálisgép-méretezési csoport lehetővé teszi, telepítéséhez és kezeléséhez azonos, az automatikus skálázást virtuális gépek halmazát jelenti. A méretezési csoportban lévő virtuális gépek száma manuálisan méretezhető, vagy szabályokat definiálhat, például a Processzor, memória igény szerint vagy a hálózati forgalom erőforrás-használat alapján automatikus skálázást. Ebben az oktatóanyagban telepít egy virtuálisgép-méretezési beállítása az Azure-ban. Az alábbiak végrehajtásának módját ismerheti meg:
+# <a name="create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux"></a>Virtuálisgép-méretezési csoport létrehozása és magas rendelkezésre állású alkalmazás üzembe helyezése Linuxon
+A virtuálisgép-méretezési csoportok segítségével azonos, automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti. A méretezési csoportban lévő virtuális gépek számát skálázhatja manuálisan, vagy megadhat automatikus skálázási szabályokat is az erőforrás-használat (például processzorhasználat, memóriaigény vagy hálózati forgalom) alapján. Ebben az oktatóanyagban egy virtuálisgép-méretezési csoportot fog létrehozni az Azure-ban. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> * Felhő inicializálás segítségével méretezési-alkalmazás létrehozása
-> * Hozzon létre egy virtuálisgép-méretezési csoport
-> * Növeli vagy csökkenti a méretezési csoportban lévő példányok száma
+> * Skálázható alkalmazás létrehozása a cloud-init használatával
+> * Virtuálisgép-méretezési csoport létrehozása
+> * Példányok számának növelése vagy csökkentése méretezési csoportokban
 > * Automatikus skálázási szabályok létrehozása
-> * Kapcsolatinformáció méretezési készlet példányok megtekintése
-> * Méretezési csoportban lévő adatok lemez használata
+> * Méretezésicsoport-példányok kapcsolatinformációinak megtekintése
+> * Adatlemezek használata méretezési csoportokban
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Telepítése és a parancssori felület helyileg használata mellett dönt, ha ez az oktatóanyag van szükség, hogy futnak-e az Azure parancssori felület 2.0.22 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.22-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
 
-## <a name="scale-set-overview"></a>Méretezési készlet – áttekintés
-A virtuálisgép-méretezési csoport lehetővé teszi, telepítéséhez és kezeléséhez azonos, az automatikus skálázást virtuális gépek halmazát jelenti. Virtuális gépek méretezési csoportban lévő egy vagy több hiba és a frissítési tartományok programot elosztott *elhelyezési csoportok*. Ezek a csoportok hasonló módon konfigurált virtuális gépek, hasonló [rendelkezésre állási készletek](tutorial-availability-sets.md).
+## <a name="scale-set-overview"></a>Méretezési csoport – áttekintés
+A virtuálisgép-méretezési csoportok segítségével azonos, automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti. A méretezési csoporton belüli virtuális gépek egy vagy több *elhelyezési csoportban* vannak elosztva a logikai meghibásodási és frissítési tartományok között. Ezek a csoportok a [rendelkezésre állási csoportokhoz](tutorial-availability-sets.md) hasonlóan azonos módon konfigurált virtuális gépekből állnak.
 
-Virtuális gépek méretezési csoportban lévő igény szerint jönnek létre. Megadhatja az automatikus skálázási szabályok, hogy hogyan és mikor virtuális gépek hozzáadásakor vagy eltávolításakor a méretezési készlet. Ezek a szabályok is elindítható a metrikák például CPU betöltése, a memória használata vagy a hálózati forgalom alapján.
+A virtuális gépek a méretezési csoportban igény szerint jönnek létre. Az automatikus skálázási szabályok megadásával beállíthatja, hogyan és mikor szeretne a virtuális gépeket hozzáadni vagy eltávolítani a méretezési csoportban. Ezek a szabályok a processzorterheléshez, a memóriahasználathoz és a hálózati forgalomhoz hasonló mérőszámok alapján aktiválhatók.
 
-Skálázási készletekben legfeljebb 1000 virtuális gépek támogatása, ha az Azure platformon lemezképet használ. Olyan munkaterhelések esetén jelentős telepítés vagy a virtuális gép testreszabása követelmények, érdemes lehet [hozzon létre egy egyéni Virtuálisgép-lemezkép](tutorial-custom-images.md). 300 virtuális gépek egy méretezési állítható be, ha egyéni lemezkép használatával hozhat létre.
+A méretezési csoportok legfeljebb 1000 virtuális gépek támogatására képesek, ha Azure platformrendszerképet használnak. A jelentős telepítési követelményekkel rendelkező, illetve a virtuális gépek jelentős testreszabását igénylő számítási feladatok esetén [egyéni rendszerkép létrehozására lehet szükség a virtuális gépekhez](tutorial-custom-images.md). Egyéni rendszerkép használatakor egy méretezési csoportban legfeljebb 300 virtuális gépet hozhat létre.
 
 
-## <a name="create-an-app-to-scale"></a>Méretezési-alkalmazás létrehozása
-Az éles környezetben való használathoz, érdemes lehet [hozzon létre egy egyéni Virtuálisgép-lemezkép](tutorial-custom-images.md) , amely tartalmazza az alkalmazás telepítését és konfigurálását. A jelen oktatóanyag esetében lehetővé teszi, hogy gyorsan megtekintheti a méretezési művelet a készletben lévő első rendszerindító virtuális gépek testreszabása.
+## <a name="create-an-app-to-scale"></a>Skálázható alkalmazás létrehozása
+Éles környezetben szüksége lehet olyan [egyéni rendszerkép létrehozására a virtuális gépekhez](tutorial-custom-images.md), amely tartalmazza az üzembe helyezett és konfigurált alkalmazást. Ebben az oktatóanyagban elvégezzük a virtuális gépek testreszabását az első rendszerindításkor, hogy megfigyelhessük a méretezési csoport működését.
 
-Az előző oktatóanyagban megtanulta [első indításakor Linux virtuális gépek testreszabása](tutorial-automate-vm-deployment.md) a felhő inicializálás. Az azonos felhő inicializálás konfigurációs fájl segítségével NGINX telepítheti és futtathatja egy egyszerű "Hello, World" Node.js alkalmazást. 
+Egy korábbi oktatóanyagban megismerkedett azzal, hogy a [Linux virtuális gépek az első rendszerindításkor hogyan szabhatók testre](tutorial-automate-vm-deployment.md) a cloud-init használatával. Ugyanezzel a cloud-init konfigurációs fájllal telepítheti az NGINX-et, és futtathat egy egyszerű „Hello World” Node.js-alkalmazást. 
 
-Hozzon létre egy fájlt az aktuális rendszerhéjban *felhő-init.txt* , majd illessze be a következő konfigurációt. A felhő rendszerhéj nem a helyi számítógépen hozzon létre például a fájlt. Adja meg `sensible-editor cloud-init.txt` hozza létre a fájlt, és elérhető szerkesztők listájának megtekintéséhez. Győződjön meg arról, hogy az egész felhő inicializálás fájl megfelelően lett lemásolva különösen az első sor:
+Az aktuális parancshéjban hozzon létre egy *cloud-init.txt* nevű fájlt, és illessze bele a következő konfigurációt. Például hozza létre a fájlt a Cloud Shellben, és ne a helyi gépén. Írja be a `sensible-editor cloud-init.txt` parancsot a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. Ügyeljen arra, hogy megfelelően másolja ki a teljes cloud-init-fájlt, különösen az első sort:
 
 ```yaml
 #cloud-config
@@ -95,14 +95,14 @@ runcmd:
 ```
 
 
-## <a name="create-a-scale-set"></a>Méretezési készlet létrehozása
-A méretezési csoport létrehozása előtt hozzon létre egy erőforráscsoportot, a [az csoport létrehozása](/cli/azure/group#create). Az alábbi példa létrehoz egy erőforráscsoportot *myResourceGroupScaleSet* a a *eastus* helye:
+## <a name="create-a-scale-set"></a>Méretezési csoport létrehozása
+Mielőtt létrehozhatna egy méretezési csoportot, létre kell hoznia egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. A következő példában létrehozunk egy *myResourceGroupScaleSet* nevű erőforráscsoportot az *eastus* helyen:
 
 ```azurecli-interactive 
 az group create --name myResourceGroupScaleSet --location eastus
 ```
 
-Most hozzon létre egy virtuálisgép-méretezési állítható be [az vmss létrehozása](/cli/azure/vmss#create). Az alábbi példakód létrehozza a méretezési készletben elnevezett *myScaleSet*, a felhő inicializálás fájlt használja a virtuális gép testreszabása és SSH-kulcsokat generál, ha azok nem léteznek:
+Most hozzon létre egy virtuálisgép-méretezési csoportot az [az vmss create](/cli/azure/vmss#az_vmss_create) paranccsal. A következő példa létrehoz egy *myScaleSet* nevű méretezési csoportot, a cloud-init fájl használatával elvégzi a virtuális gép testreszabását, valamint SSH-kulcsokat hoz létre, amennyiben azok még nem léteznek:
 
 ```azurecli-interactive 
 az vmss create \
@@ -115,13 +115,13 @@ az vmss create \
   --generate-ssh-keys
 ```
 
-Hozza létre és konfigurálja a méretezési készlet erőforrások és a virtuális gépek néhány percet vesz igénybe. Nincsenek háttérfeladatok, hogy végezze el az Azure parancssori felület visszatér a parancssorba. Elképzelhető, hogy egy másik néhány percet, mielőtt hozzáférhetne az alkalmazáshoz.
+A méretezési csoport erőforrásainak és virtuális gépeinek létrehozása és konfigurálása néhány percet vesz igénybe. Néhány háttérfeladat azután is tovább fut, hogy az Azure CLI visszairányítja Önt a parancssorhoz. Eltarthat még néhány percig, amíg hozzáférhet az alkalmazáshoz.
 
 
-## <a name="allow-web-traffic"></a>Webalkalmazás-kezelési forgalom engedélyezése
-A terheléselosztó a virtuálisgép-méretezési csoport részeként automatikusan lett létrehozva. A load balancer egy meghatározott virtuális gépeket használ a load balancer szabályok készletét forgalom elosztása. Load balancer fogalmak és a következő oktatóanyag konfigurálásával kapcsolatos részletesebb [hogyan virtuális gépek terhelést elosztani az Azure-ban](tutorial-load-balancer.md).
+## <a name="allow-web-traffic"></a>Webforgalom engedélyezése
+A terheléselosztó a virtuálisgép-méretezési csoport részeként automatikusan lett létrehozva. A terheléselosztó a terheléselosztó szabályait használó meghatározott virtuális gépek készletében osztja szét a forgalmat. A terheléselosztó alapelveivel és konfigurálásával kapcsolatban bővebben a következő, [Virtuális gépek terheléselosztása az Azure-ban](tutorial-load-balancer.md) című oktatóanyagban ismerkedhet meg.
 
-A webes alkalmazás eléréséhez forgalom engedélyezéséhez hozzon létre egy szabály [az hálózati terheléselosztó szabály létrehozása](/cli/azure/network/lb/rule#create). Az alábbi példa létrehoz egy nevű szabályt *myLoadBalancerRuleWeb*:
+Annak érdekében, hogy a forgalom elérhesse a webalkalmazást, hozzon létre egy szabályt az [az network lb rule create](/cli/azure/network/lb/rule#az_network_lb_rule_create) paranccsal. Az alábbi példa egy *myLoadBalancerRuleWeb* nevű szabályt hoz létre:
 
 ```azurecli-interactive 
 az network lb rule create \
@@ -136,7 +136,7 @@ az network lb rule create \
 ```
 
 ## <a name="test-your-app"></a>Az alkalmazás tesztelése
-Az Node.js alkalmazás megtekintése a weben, szerezze be a terheléselosztó a nyilvános IP-címe [az hálózati nyilvános ip-megjelenítése](/cli/azure/network/public-ip#show). Az alábbi példa beolvassa az IP-címek *myScaleSetLBPublicIP* hozza létre a méretezési részeként:
+Ha működés közben szeretné megtekinteni a Node.js-alkalmazást a weben, kérje le a terheléselosztó nyilvános IP-címét az [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) paranccsal. A következő példa a *myScaleSetLBPublicIP* a méretezési csoport részeként létrehozott IP-címét kéri le:
 
 ```azurecli-interactive 
 az network public-ip show \
@@ -146,18 +146,18 @@ az network public-ip show \
     --output tsv
 ```
 
-Adja meg a nyilvános IP-címet egy webböngészőben. Az alkalmazás megjelenik, beleértve az állomásnevet, a virtuális gép, amelyek a terheléselosztó felé irányuló forgalom:
+Írja be a nyilvános IP-címet egy webböngészőbe. Ekkor megjelenik az alkalmazás, és tartalmazza annak a virtuális gépnek a nevét, amelyhez a terheléselosztó forgalmat irányított:
 
-![Futó Node.js-alkalmazás](./media/tutorial-create-vmss/running-nodejs-app.png)
+![Node.js-alkalmazás futtatása](./media/tutorial-create-vmss/running-nodejs-app.png)
 
-Tekintse meg a méretezési készletben működés közben, akkor is kényszerített frissítési a webböngészőt a terheléselosztó forgalom szét az alkalmazást futtató összes virtuális gép.
+Ha kíváncsi a méretezési csoport működésére, kényszerítse a webböngésző frissítését, és tekintse meg, miként osztja el a terheléselosztó a forgalmat az alkalmazást futtató összes virtuális gép között.
 
 
 ## <a name="management-tasks"></a>Felügyeleti feladatok
-A méretezési életciklusa során szükség lehet egy vagy több felügyeleti feladatok futtatásához. Emellett érdemes lehet különböző életciklus-feladatokat automatizáló parancsfájlokat hozhatnak létre. Az Azure CLI 2.0 e feladatok elvégzéséhez gyors lehetőséget kínál. Az alábbiakban néhány gyakori feladatot.
+A méretezési csoport életciklusa során egy vagy több felügyeleti feladat futtatására lehet szükség. Emellett előfordulhat, hogy különféle szkripteket is érdemes létrehozni az életciklus-feladatok automatizálására. Az Azure CLI 2.0 gyors módszert kínál e feladatok elvégzéséhez. Lássunk néhány gyakori feladatot.
 
-### <a name="view-vms-in-a-scale-set"></a>Nézet virtuális gépek méretezési csoportban lévő
-A méretezési csoportban lévő rendszert futtató virtuális gépek listájának megtekintéséhez használja [az vmss-példányokat](/cli/azure/vmss#list-instances) az alábbiak szerint:
+### <a name="view-vms-in-a-scale-set"></a>Virtuális gépek megtekintése egy méretezési csoportban
+A méretezési csoportban futó virtuális gépek listájának megjelenítéséhez használja az [az vmss list-instances](/cli/azure/vmss#az_vmss_list_instances) parancsot az alábbi módon:
 
 ```azurecli-interactive 
 az vmss list-instances \
@@ -176,8 +176,8 @@ A kimenet a következő példához hasonló:
 ```
 
 
-### <a name="increase-or-decrease-vm-instances"></a>Növeli vagy csökkenti a Virtuálisgép-példányok
-Már van egy méretezési csoportban lévő példányok száma, használja a [az vmss megjelenítése](/cli/azure/vmss#show) és a lekérdezés *sku.capacity*:
+### <a name="increase-or-decrease-vm-instances"></a>Virtuális gépek példányszámának növelése vagy csökkentése
+A méretezési csoportban jelenleg futó példányok számának megtekintéséhez használja az [az vmss show](/cli/azure/vmss#az_vmss_show) parancsot, és állítsa be az *sku.capacity* lekérdezést:
 
 ```azurecli-interactive 
 az vmss show \
@@ -187,7 +187,7 @@ az vmss show \
     --output table
 ```
 
-Ezután manuálisan növeléséhez vagy csökkentéséhez tegye a következőket a méretezési készletben rendelkező virtuális gépek [az vmss méretezési](/cli/azure/vmss#scale). Az alábbi példában a virtuális gépek számát beállítja a méretezés beállítása *3*:
+Ezt követően az [az vmss scale](/cli/azure/vmss#az_vmss_scale) parancs használatával manuálisan növelheti vagy csökkentheti a méretezési csoportban futó virtuális gépek számát. Az alábbi példában a méretezési csoport virtuális gépeinek számát *3*-ra állítjuk:
 
 ```azurecli-interactive 
 az vmss scale \
@@ -198,7 +198,7 @@ az vmss scale \
 
 
 ### <a name="configure-autoscale-rules"></a>Automatikus skálázási szabályok konfigurálása
-Helyett a példányok száma manuálisan a skálázási skálázás beállítása, megadhatja az automatikus skálázási szabályok. Ezek a szabályok a méretezési csoportban lévő példányok figyelése, és ennek megfelelően metrikák és adhat meg küszöbértékek alapján válaszol. Az alábbi példa méretezi a példányok száma, egy esetén az átlagos CPU-terhelést, nagyobb, mint 60 % egy 5 perces időszakon át. Az átlagos CPU-terhelést, majd alá esik 30 % egy 5 perces időszakon át, ha a példány méretezése a egy példánya. Az előfizetés-azonosító segítségével hozhatók létre az erőforrás URI-azonosítók a különböző bővített set összetevőket. Ezek a szabályok létrehozásához [létrehozása az automatikus skálázás-figyelőbeállítások](/cli/azure/monitor/autoscale-settings#create), másolja és illessze be a következő parancs automatikus skálázási profil:
+A méretezési csoportban futó példányok számának manuális beállítása helyett automatikus skálázási szabályokat adhat meg. Ezek a szabályok figyelik a méretezési csoportban futó példányokat, és az Ön által megadott mérőszámok, illetve küszöbértékek alapján lépnek működésbe. Az alábbi példában a szabály eggyel növeli a példányok számát, amikor az átlagos processzorhasználat 5 percnél hosszabb ideig meghaladja a 60%-ot. Ha az átlagos processzorhasználat 5 percnél hosszabb ideig 30% alá csökken, a szabály eggyel csökkenti a példányok számát. Az előfizetés azonosítója segítségével hozhatók létre a méretezési csoport különböző összetevőihez tartozó erőforrás URI-k. A szabályok létrehozásához használja az [az monitor autoscale-settings create](/cli/azure/monitor/autoscale-settings#az_monitor_autoscale_settings_create) parancsot, és másolja, majd illessze be a következő automatikus skálázási parancsprofilt:
 
 ```azurecli-interactive 
 sub=$(az account show --query id -o tsv)
@@ -267,11 +267,11 @@ az monitor autoscale-settings create \
     }'
 ```
 
-Az automatikus skálázási profil újból, hozzon létre egy (JavaScript Object Notation) JSON-fájlt és adja át, hogy a `az monitor autoscale-settings create` parancsot a `--parameters @autoscale.json` paraméter. További tervezési információk használatára az automatikus skálázás: [automatikus skálázás gyakorlati tanácsok](/azure/architecture/best-practices/auto-scaling).
+Az automatikus skálázási profil ismételt használatához hozzon létre egy (JavaScript Object Notation) JSON-fájlt és adja az `az monitor autoscale-settings create` parancsnak a `--parameters @autoscale.json` paraméterrel. Az automatikus skálázás tervezésével kapcsolatban bővebben az [automatikus skálázás ajánlott eljárásait](/azure/architecture/best-practices/auto-scaling) ismertető cikkben tájékozódhat.
 
 
-### <a name="get-connection-info"></a>Kapcsolat-adatok beolvasása
-A virtuális gépek a méretezési csoportok kapcsolati információ beszerzéséhez használja [az vmss lista--kapcsolat-példányadatait](/cli/azure/vmss#list-instance-connection-info). Ez a parancs kimenetében a nyilvános IP-cím és port az egyes virtuális gépekhez, amely lehetővé teszi, hogy csatlakozzon SSH:
+### <a name="get-connection-info"></a>Kapcsolati adatok lekérése
+A méretezési csoportokban futó virtuális gépek kapcsolati adatainak beszerzéséhez használja az [az vmss list-instance-connection-info](/cli/azure/vmss#az_vmss_list_instance_connection_info) parancsot. Ez a parancs az SSH-val történő kapcsolódást engedélyező összes virtuális gép nyilvános IP-címét és portját adja vissza:
 
 ```azurecli-interactive 
 az vmss list-instance-connection-info \
@@ -280,11 +280,11 @@ az vmss list-instance-connection-info \
 ```
 
 
-## <a name="use-data-disks-with-scale-sets"></a>Az adatlemezek használata méretezési csoportok
-Hozzon létre, és adatlemezek használata méretezési készlet. Egy korábbi oktatóanyagban megtanulta, hogyan [kezelése Azure lemezek](tutorial-manage-disks.md) , amely ismerteti az ajánlott eljárásokról és a teljesítménnyel kapcsolatos fejlesztések az operációsrendszer-lemezképet, hanem az adatlemezek alkalmazások készítéséhez.
+## <a name="use-data-disks-with-scale-sets"></a>Adatlemezek használata méretezési csoportokkal
+A méretezési csoportokkal adatlemezeket is létrehozhat és használhat. Egy korábbi oktatóanyagban megismerkedett az [Azure-lemezek kezelésével](tutorial-manage-disks.md). Az oktatóanyag az operációs rendszert tároló lemeztől eltérő adatlemezeken található alkalmazások létrehozására vonatkozó ajánlott eljárások és teljesítménnyel kapcsolatos fejlesztések bemutatását tartalmazta.
 
-### <a name="create-scale-set-with-data-disks"></a>Adatlemezekkel rendelkező méretezési készlet létrehozása
-Hozzon létre egy méretezési és adatlemezt csatolni, adja hozzá a `--data-disk-sizes-gb` paramétert a [az vmss létrehozása](/cli/azure/vmss#create) parancsot. Az alábbi példakód létrehozza a skála állítható be *50*Gb adatlemezek csatolva minden példány:
+### <a name="create-scale-set-with-data-disks"></a>Adatlemezekkel rendelkező méretezési csoport létrehozása
+Méretezési csoport létrehozásához és adatlemezek csatlakoztatásához adja hozzá a `--data-disk-sizes-gb` paramétert az [az vmss create](/cli/azure/vmss#az_vmss_create) parancshoz. Az alábbi példában egy *50* GB-os adatlemezekkel rendelkező méretezési csoportot hozunk létre:
 
 ```azurecli-interactive 
 az vmss create \
@@ -298,10 +298,10 @@ az vmss create \
     --data-disk-sizes-gb 50
 ```
 
-Ha példányok egy méretezési eltávolították, a mellékelt adatok lemezek is törlődnek.
+Ha a rendszer eltávolít egy példányt a méretezési csoportból, akkor az ahhoz csatlakoztatott adatlemezek is el lesznek távolítva.
 
-### <a name="add-data-disks"></a>Adatlemez hozzáadása
-A méretezési csoportban lévő példányok adhat hozzá adatlemezt, [az vmss lemez csatolása](/cli/azure/vmss/disk#attach). A következő példa egy *50*-példányokhoz Gb lemezterület:
+### <a name="add-data-disks"></a>Adatlemezek hozzáadása
+Ha szeretne hozzáadni egy adatlemezt a méretezési csoport példányaihoz, használja az [az vmss disk attach](/cli/azure/vmss/disk#az_vmss_disk_attach) parancsot. Az alábbi példában minden egyes példányhoz hozzáadunk egy *50* GB-os lemezt:
 
 ```azurecli-interactive 
 az vmss disk attach \
@@ -311,8 +311,8 @@ az vmss disk attach \
     --lun 2
 ```
 
-### <a name="detach-data-disks"></a>Adatlemez leválasztása
-A méretezési csoportban lévő példányokhoz adatlemezt eltávolításához használja [az vmss lemez leválasztása](/cli/azure/vmss/disk#detach). A következő példában eltávolítjuk a LUN azonosítójú adatlemeze *2* az egyes példányok:
+### <a name="detach-data-disks"></a>Adatlemezek leválasztása
+Ha szeretne eltávolítani egy adatlemezt a méretezési csoport példányairól, használja az [az vmss disk detach](/cli/azure/vmss/disk#az_vmss_disk_detach) parancsot. A következő példában eltávolítjuk a *2* LUN-számú adatlemezt:
 
 ```azurecli-interactive 
 az vmss disk detach \
@@ -323,17 +323,17 @@ az vmss disk detach \
 
 
 ## <a name="next-steps"></a>További lépések
-Ebben az oktatóanyagban létre egy virtuálisgép-méretezési készlet. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Ebben az oktatóanyagban létrehozott egy virtuálisgép-méretezési csoportot. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Felhő inicializálás segítségével méretezési-alkalmazás létrehozása
-> * Hozzon létre egy virtuálisgép-méretezési csoport
-> * Növeli vagy csökkenti a méretezési csoportban lévő példányok száma
+> * Skálázható alkalmazás létrehozása a cloud-init használatával
+> * Virtuálisgép-méretezési csoport létrehozása
+> * Példányok számának növelése vagy csökkentése méretezési csoportokban
 > * Automatikus skálázási szabályok létrehozása
-> * Kapcsolatinformáció méretezési készlet példányok megtekintése
-> * Méretezési csoportban lévő adatok lemez használata
+> * Méretezésicsoport-példányok kapcsolatinformációinak megtekintése
+> * Adatlemezek használata méretezési csoportokban
 
-A következő oktatóanyag további információt a hálózati terheléselosztást a virtuális gépek fogalmak továbblépés.
+Folytassa a következő oktatóanyaggal, amely a virtuális gépekre vonatkozó terheléselosztási alapelveket ismerteti.
 
 > [!div class="nextstepaction"]
-> [Virtuális gépek terhelést elosztani](tutorial-load-balancer.md)
+> [Virtuális gépek terheléselosztása](tutorial-load-balancer.md)

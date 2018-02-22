@@ -3,8 +3,8 @@ title: "Azure-készletben ajánlatok delegálása |} Microsoft Docs"
 description: "Megtudhatja, hogyan helyezze más személyek ajánlatok létrehozása és a felhasználók regisztráljanak az Ön feladata."
 services: azure-stack
 documentationcenter: 
-author: AlfredoPizzirani
-manager: byronr
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 157f0207-bddc-42e5-8351-197ec23f9d46
 ms.service: azure-stack
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
-ms.author: alfredop
-ms.openlocfilehash: 1a1f2789076b610ee557bde5981a331c55cc1c95
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.author: brenduns
+ms.reviewer: alfredop
+ms.openlocfilehash: 06690d5251954b204b28928b3fe670669000aa7c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="delegate-offers-in-azure-stack"></a>Ajánlat delegálása az Azure Stackben
 
@@ -149,6 +150,6 @@ Többrétegű delegálása lehetővé teszi, hogy a delegálása egyéb entitás
 
 Több rétegből álló ajánlat delegálás létrehozásához, a meghatalmazott szolgáltató pedig gazdakiszolgálója ajánlatot a következő szolgáltató. A folyamat megegyezik a delegált szolgáltató, akkor az Azure-verem operátorhoz (lásd: [Azure verem operátor hoz létre a delegált ajánlat](#cloud-operator-creates-the-delegated-offer)).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [A virtuális gép kiépítése](azure-stack-provision-vm.md)
 

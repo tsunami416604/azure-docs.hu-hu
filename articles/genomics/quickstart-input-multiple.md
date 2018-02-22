@@ -10,18 +10,20 @@ ms.author: grhuynh
 ms.service: microsoft-genomics
 ms.workload: genomics
 ms.topic: quickstart
-ms.date: 12/07/2017
-ms.openlocfilehash: d410516f807b7914e15bed1fb93ee58d3e340d1e
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.date: 02/05/2018
+ms.openlocfilehash: 7aeb4d5ad939cefcf8300b78b4afcc9d91ca0624
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="submit-a-workflow-using-multiple-inputs-from-the-same-sample"></a>Munkafolyamat elküldése azonos mintából származó több bemenet használatával
 
-Ez a rövid útmutató ismerteti, hogyan lehet elküldeni egy munkafolyamatot a Microsoft Genomics szolgáltatásba, ha a bemenet több, **egyazon mintából származó** FASTQ- vagy BAM-fájlból áll. Ne feledje azonban, hogy FASTQ- és BAM-fájlokat **nem** küldhet egyszerre.
+Ez a rövid útmutató ismerteti, hogyan lehet elküldeni egy munkafolyamatot a Microsoft Genomics szolgáltatásba, ha a bemenet több, **egyazon mintából származó** FASTQ- vagy BAM-fájlból áll. Ha például **egyazon mintát** a sorrendvezérlő több sávjában futtatja, a sorrendvezérlő FASTQ-fájlpárokat ad vissza kimenetként minden egyes sávhoz. Ahelyett, hogy összefűzné ezeket a FASTQ-fájlokat az illesztés és a variánskeresés előtt, közvetlenül elküldheti ezeket a bemeneteket az `msgen` ügyfélnek. Az `msgen` ügyfél kimenete **egyetlen** fájlkészlet lesz, köztük egy .bam, .bai és .vcf fájl. 
 
-Ez a témakör feltételezi, hogy már telepítette és futtatta az `msgen` klienst, továbbá megismerkedett az Azure Storage használatával. Ha sikeresen elküldte a munkafolyamatot a rendelkezésre álló mintaadatokkal, készen áll a rövid útmutató folytatására. 
+Ne feledje azonban, hogy FASTQ- és BAM-fájlokat **nem** küldhet egyszerre. Emellett ügyeljen rá, hogy **nem** küldhet több FASTQ- vagy BAM-fájlt, amelyek több személytől származnak. 
+
+Ez a cikk feltételezi, hogy már telepítette és futtatta az `msgen` ügyfelet, és megismerkedett az Azure Storage használatával. Ha sikeresen elküldte a munkafolyamatot a rendelkezésre álló mintaadatokkal, készen áll a rövid útmutató folytatására. 
 
 
 ## <a name="multiple-bam-files"></a>Több BAM-fájl
@@ -32,7 +34,7 @@ Tegyük fel, hogy a bemenet több BAM-fájlból áll (*reads.bam*, *additional_r
 
 ### <a name="submit-your-job-to-the-msgen-client"></a>Feladat elküldése az `msgen`-ügyfélnek 
 
-Egyszerre több BAM-fájlt is elküldhet, ha megadj a fájlok neveit az --input-blob-name-1 argumentumban. Ne feledje, hogy minden fájlnak egyazon mintából kell származnia, a sorrendjük azonban nem számít. Az alábbiakban parancssorból történő küldésre láthat példát a Windows és a Unix rendszerben, valamint egy konfigurációs fájl használatával. A sortörések az átláthatóság érdekében lettek hozzáadva:
+Egyszerre több BAM-fájlt is elküldhet, ha megadj a fájlok neveit az --input-blob-name-1 argumentumban. Ne feledje, hogy minden fájlnak egyazon mintából kell származnia, a sorrendjük azonban nem számít. A következő részben parancssorból történő küldésre láthat példát Windows és Unix rendszerben, valamint egy konfigurációs fájl használatával. A sortörések az átláthatóság érdekében lettek hozzáadva:
 
 
 Windows esetén:
@@ -97,7 +99,7 @@ Tegyük fel, hogy a bemenet több párosított FASTQ-fájlból áll: *reads_1.fq
 
 A párosított FASTQ-fájloknak nem csupán egyazon mintából kell származniuk, de együtt is kell feldolgozni azokat.  A fájlok sorrendje számít, ha argumentumként kerülnek az --input-blob-name-1 és --input-blob-name-2 argumentumokba. 
 
-Az alábbiakban parancssorból történő küldésre láthat példát a Windows és a Unix rendszerben, valamint egy konfigurációs fájl használatával. A sortörések az átláthatóság érdekében lettek hozzáadva:
+A következő részben parancssorból történő küldésre láthat példát Windows és Unix rendszerben, valamint egy konfigurációs fájl használatával. A sortörések az átláthatóság érdekében lettek hozzáadva:
 
 
 Windows esetén:
@@ -154,5 +156,5 @@ output_storage_account_container: outputs
 
 Küldje el a `config.txt` fájlt a következő hívással: `msgen submit -f config.txt`
 
-## <a name="next-steps"></a>Következő lépések
-Ebben a cikkben egyszerre több BAM-fájlt vagy párosított FASTQ-fájlt töltött fel az Azure Storage-ba, valamint elküldött egy munkafolyamatot a Microsoft Genomics szolgáltatásba az `msgen` Python-kliensen keresztül. A munkafolyamatok elküldésével, illetve a Microsoft Genomics szolgáltatásban használható egyéb parancsokkal kapcsolatos további információkért tekintse meg a [Gyakori kérdések](frequently-asked-questions-genomics.md) szakaszt. 
+## <a name="next-steps"></a>További lépések
+Ebben a cikkben egyszerre több BAM-fájlt vagy párosított FASTQ-fájlt töltött fel az Azure Storage-ba, valamint elküldött egy munkafolyamatot a Microsoft Genomics szolgáltatásba az `msgen` Python-kliensen keresztül. A munkafolyamatok elküldésével, illetve a Microsoft Genomics szolgáltatásban használható egyéb parancsokkal kapcsolatos további információkért tekintse meg a [gyakori kérdéseket](frequently-asked-questions-genomics.md). 

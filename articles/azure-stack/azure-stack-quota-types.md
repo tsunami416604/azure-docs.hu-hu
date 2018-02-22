@@ -3,8 +3,8 @@ title: "Kvóta típusa Azure verem |} Microsoft Docs"
 description: "Tekintse át a szolgáltatásokat és erőforrásokat a Azure verem használható különböző kvóta típusok."
 services: azure-stack
 documentationcenter: 
-author: ErikjeMS
-manager: byronr
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 
 ms.service: azure-stack
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 8/23/2017
-ms.author: erikje
-ms.openlocfilehash: d9bb048ece32bf5b34e05d7459488aa0f24d0d44
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.author: brenduns
+ms.reviewer: 
+ms.openlocfilehash: da4105fa88848b14e5d5d0289859cfd0f85c8fee
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="quota-types-in-azure-stack"></a>Azure verem kvóta típusa
 
@@ -61,7 +62,7 @@ ms.lasthandoff: 10/25/2017
 2. Válassza ki a szolgáltatást, amely a megtekinteni kívánt kvótát.
 3. Kattintson a **kvóták**, és válassza ki a megtekinteni kívánt kvótát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Ismerje meg a csomagok, ajánlatokat, és tájékozódhat a kvóták.](azure-stack-plan-offer-quota-overview.md)
 
 [Kvóták létrehozása terv létrehozása közben.](azure-stack-create-plan.md)

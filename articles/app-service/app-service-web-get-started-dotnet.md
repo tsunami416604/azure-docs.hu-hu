@@ -1,6 +1,6 @@
 ---
 title: "ASP.NET Core-webalkalmazás létrehozása az Azure-ban | Microsoft Docs"
-description: "Az alapértelmezett ASP.NET-webalkalmazás üzembe helyezésével megtudhatja, hogy miként futtathat webalkalmazásokat az Azure App Service-ben."
+description: "Az alapértelmezett ASP.NET Core-webalkalmazás üzembe helyezésével megtudhatja, hogy miként futtathat webalkalmazásokat az Azure App Service-ben."
 services: app-service\web
 documentationcenter: 
 author: cephalin
@@ -12,26 +12,24 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 06/14/2017
+ms.date: 02/05/2018
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 698f23507da0707a4612f8d33fe7e2995429f361
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: a7f098b6c66109cb5cafbcb19e463daa15a65b59
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>ASP.NET Core-webalkalmazás létrehozása az Azure-ban
 
 > [!NOTE]
 > Ebben a cikkben egy alkalmazást helyezünk üzembe a Windowson futó App Service-ben. A _Linuxon_ futó App Service-ben való üzembe helyezéssel kapcsolatban lásd: [.NET Core-webalkalmazás létrehozása Linuxon futó App Service-ben](./containers/quickstart-dotnetcore.md).
 >
+> Ha az ASP.NET-keretrendszer alkalmazásaira vonatkozó lépéseket keresi, tekintse meg az [ASP.NET-keretrendszer webalkalmazásainak az Azure-ban történő létrehozását](app-service-web-get-started-dotnet-framework.md) ismertető szakaszt. 
+>
 
 Az [Azure Web Apps](app-service-web-overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás.  Ez a gyorsútmutató az ASP.NET Core-webalkalmazás Azure Web Apps szolgáltatásban történő üzembe helyezésén vezeti végig. Az oktatóanyag végére egy olyan erőforráscsoport lesz elérhető, amely egy App Service-csomagból és egy üzembe helyezett webalkalmazással rendelkező Azure webalkalmazásból áll.
-
-> [!NOTE]
-> Ha szeretne többet megtudni az ASP.NET keretrendszerben működő webalkalmazások létrehozásáról és üzembe helyezéséről, az erre vonatkozó cikket [itt](app-service-web-get-started-dotnet-framework.md) érheti el. 
->
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -51,7 +49,7 @@ Hozzon létre egy projektet a Visual Studióban a **File > New > Project** (Fáj
 
 A **New Project** (Új projekt) párbeszédpanelen válassza a **Visual C# > Web > ASP.NET Core Web Application** (Visual C# > Web > ASP.NET Core-webalkalmazás) lehetőséget.
 
-Nevezze el az alkalmazást _myFirstAzureWebApp_ néven, majd kattintson az **OK** gombra.
+Nevezze el az alkalmazást _myFirstAzureWebApp_ néven, válassza az **Új Git-adattár létrehozása** elemet, majd kattintson az **OK** gombra.
    
 ![A New Project (Új projekt) párbeszédpanel](./media/app-service-web-get-started-dotnet/new-project.png)
 
@@ -69,68 +67,82 @@ A menüből válassza a **Debug > Start without Debugging** (Hibakeresés > Ind�
 
 ![Az alkalmazás futtatása helyileg](./media/app-service-web-get-started-dotnet/razor-web-app-running-locally.png)
 
-## <a name="publish-to-azure"></a>Közzététel az Azure platformon
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-A **Solution Explorer** (Megoldáskezelő) lapon kattintson a jobb gombbal a **myFirstAzureWebApp** projektre, és válassza a **Publish** (Közzététel) elemet.
+[!INCLUDE [Configure deployment user](../../includes/configure-deployment-user.md)] 
 
-![Közzététel a Megoldáskezelőből](./media/app-service-web-get-started-dotnet/right-click-publish.png)
+[!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group.md)] 
 
-Győződjön meg arról, hogy a **Microsoft Azure App Service** van kiválasztva, és kattintson a **Publish** (Közzététel) elemre.
+[!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan.md)] 
 
-![Közzététel a projekt áttekintő oldaláról](./media/app-service-web-get-started-dotnet/publish-to-app-service.png)
+[!INCLUDE [Create web app](../../includes/app-service-web-create-web-app.md)] 
 
-Ez megnyitja a **Create App Service** (App Service létrehozása) párbeszédpanelt, amelynek segítségével létrehozhatja az összes, az ASP.NET Core-webalkalmazás Azure-ban történő futtatásához szükséges Azure-erőforrást.
+![Üres webalkalmazás oldal](media/app-service-web-get-started-html/app-service-web-service-created.png)
 
-## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
+## <a name="push-to-azure-from-visual-studio"></a>Leküldéses üzenet küldése a Visual Studióból az Azure-ra
 
-A **Create App Service** (App Service létrehozása) párbeszédpanelen kattintson az **Add an account** (Fiók hozzáadása) gombra, majd jelentkezzen be az Azure-előfizetésébe. Ha már bejelentkezett, válassza ki a kívánt előfizetést tartalmazó fiókot a legördülő listából.
+A Visual Studio **View** (Nézet) menüjében kattintson a **Team Explorer** lehetőségre. Megjelenik a **Team Explorer**.
 
-> [!NOTE]
-> Ha már be van jelentkezve, akkor még ne válassza a **Create** (Létrehozás) lehetőséget.
->
->
-   
-![Bejelentkezés az Azure-ba](./media/app-service-web-get-started-dotnet/sign-in-azure.png)
+A **Home** (Kezdőlap) nézetben kattintson a **Settings** > **Repository Settings** (Beállítások > Adattár beállításai) lehetőségre.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+![A Team Explorer kezdőlap nézete](./media/app-service-web-get-started-dotnet/team-explorer.png)
 
-[!INCLUDE [resource group intro text](../../includes/resource-group.md)]
+A **Repository Settings** (Adattár beállításai) **Remotes** (Távoliak) területén válassza az **Add** (Hozzáadás) lehetőséget. Megjelenik az **Add Remote** (Távoli hozzáadása) párbeszédpanel.
 
-Az **Erőforráscsoport** mellett válassza az **Új** elemet.
+Állítsa a **Name** (Név) mezőt _Azure_ értékre, majd állítsa a **Fetch** (Beolvasás) mezőt a [webalkalmazás létrehozásakor](#create-a-web-app) mentett URL-címre. Kattintson a **Save** (Mentés) gombra.
 
-Nevezze el a **myResourceGroup** erőforráscsoportot, majd kattintson az **OK** gombra.
+![A Team Explorer kezdőlap nézete](./media/app-service-web-get-started-dotnet/team-explorer-set-remote.png)
 
-## <a name="create-an-app-service-plan"></a>App Service-csomag létrehozása
+Ez a beállítás megegyezik a következő Git-paranccsal: `git remote add Azure <URL>`.
 
-[!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
+Kattintson a felül található **Home** (Kezdőlap) gombra.
 
-Az **App Service Plan** (App Service-csomag) mellett válassza a **New** (Új) elemet. 
+Válassza a **Settings** > **Global Settings** (Beállítások > Globális beállítások) lehetőséget. Győződjön meg arról, hogy be van állítva a név és az e-mail-cím. Szükség esetén válassza az **Update** (Frissítés) lehetőséget.
 
-A **Configure App Service Plan** (App Service-csomag konfigurálása) párbeszédpanelen a képernyőképet követve használja a táblázatban szereplő beállításokat.
+A Visual Studio a projekt létrehozásakor már véglegesítette az összes fájlt a Git-adattárban. Most csak le kell küldenie a fájlokat az Azure-ba.
 
-![App Service-csomag létrehozása](./media/app-service-web-get-started-dotnet/configure-app-service-plan.png)
+Kattintson a felül található **Home** (Kezdőlap) gombra. Válassza a **Sync** > **Actions** > **Open Command Prompt** (Szinkronizálás > Műveletek > Parancssor megnyitása) lehetőséget. 
 
-| Beállítás | Ajánlott érték | Leírás |
-|-|-|-|
-|App Service-csomag| myAppServicePlan | Az App Service-csomag neve. |
-| Hely | Nyugat-Európa | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
-| Méret | Ingyenes | A [tarifacsomag](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) meghatározza az üzemeltetési funkciókat. |
+Írja be a következő parancsot a parancssori ablakba, és amikor a rendszer kéri, írja be az üzembehelyezési jelszót:
 
-Kattintson az **OK** gombra.
+```
+git push Azure master
+```
 
-## <a name="create-and-publish-the-web-app"></a>A webapp létrehozása és közzététele
+A parancs futtatása eltarthat néhány percig. Futtatás közben a parancs a következő példához hasonló információkat jelenít meg:
 
-A **Web App Name** (Webalkalmazás neve) mezőben adjon meg egy egyedi nevet az alkalmazáshoz (érvényes karakterek: `a-z`, `0-9` és `-`) vagy fogadja el az automatikusan létrehozott egyedi nevet. A webalkalmazás URL-címe `http://<app_name>.azurewebsites.net`, amelyben a `<app_name>` a webalkalmazás neve.
+```
+Counting objects: 4, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 349 bytes | 349.00 KiB/s, done.
+Total 4 (delta 3), reused 0 (delta 0)
+remote: Updating branch 'master'.
+remote: Updating submodules.
+remote: Preparing deployment for commit id '9e20345e9c'.
+remote: Generating deployment script.
+remote: Project file path: .\myFirstAzureWebApp\myFirstAzureWebApp.csproj
+remote: Solution file path: .\myFirstAzureWebApp.sln
+remote: Generated deployment script files
+remote: Running deployment command...
+remote: Handling ASP.NET Core Web Application deployment.
+remote:   Restoring packages for D:\home\site\repository\myFirstAzureWebApp\myFirstAzureWebApp.csproj...
+remote:   Restoring packages for D:\home\site\repository\myFirstAzureWebApp\myFirstAzureWebApp.csproj...
+...
+remote: Finished successfully.
+remote: Running post deployment command(s)...
+remote: Deployment successful.
+To https://<app_name>.scm.azurewebsites.net/<app_name>.git
+ * [new branch]      master -> master
+```
 
-A **Create** (Létrehozás) gombra kattintva hozzákezdhet az Azure-erőforrások létrehozásához.
+## <a name="browse-to-the-app"></a>Az alkalmazás megkeresése tallózással
 
-![A webapp nevének konfigurálása](./media/app-service-web-get-started-dotnet/web-app-name.png)
+Keresse fel a böngészőben az Azure-webalkalmazás URL-címét: `http://<app_name>.azurewebsites.net`.
 
-Miután a varázsló befejeződött, közzéteszi az ASP.NET Core-webalkalmazást az Azure-ban, majd elindítja azt az alapértelmezett böngészőben.
+Az oldal Azure App Service webalkalmazásként fut.
 
 ![Közzétett ASP.NET-webapp az Azure-ban](./media/app-service-web-get-started-dotnet/web-app-running-live.png)
-
-A [létrehozás és közzététel lépésben](#create-and-publish-the-web-app) megadott webalkalmazás neve lesz az URL-előtag `http://<app_name>.azurewebsites.net` formátumban.
 
 Gratulálunk, az ASP.NET Core-webalkalmazás most már elérhető az Azure App Service-ben.
 
@@ -147,11 +159,15 @@ Keresse meg a `<div id="myCarousel" class="carousel slide" data-ride="carousel" 
 </div>
 ```
 
-Az Azure-beli ismételt üzembe helyezéshez kattintson a jobb gombbal a **myFirstAzureWebApp** projektre a **Solution Explorer** (Megoldáskezelő) lapon, és válassza a **Publish** (Közzététel) elemet.
+A **Solution Explorer** (Megoldáskezelő) felületén kattintson a jobb gombbal a _Pages/Index.cshtml_ fájlra, és kattintson a **Commit** (Véglegesítés) elemre. Adjon meg egy véglegesítési üzenetet a módosításhoz, és kattintson a **Commit All** (Összes véglegesítése) elemre.
 
-A közzétételi oldalon válassza a **Publish** (Közzététel) elemet.
+A parancssori ablakban küldje le a kódmódosításokat az Azure-ba.
 
-Miután a közzététel befejeződött, a Visual Studio tallózza a webalkalmazás URL-címét.
+```bash
+git push Azure master
+```
+
+Az üzembe helyezés befejezése keresse fel ismét a következő címet: `http://<app_name>.azurewebsites.net`.
 
 ![Frissített ASP.NET-webapp az Azure-ban](./media/app-service-web-get-started-dotnet/web-app-running-live-updated.png)
 
@@ -165,7 +181,7 @@ A baloldali menüben válassza az **App Services** lehetőséget, majd az Azure-
 
 Megtekintheti a webalkalmazás Áttekintés oldalát. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a tallózás, leállítás, elindítás, újraindítás és törlés. 
 
-![Az App Service panel az Azure Portalon](./media/app-service-web-get-started-dotnet/web-app-blade.png)
+![Az App Service lap az Azure Portalon](./media/app-service-web-get-started-dotnet/web-app-blade.png)
 
 A bal oldali menü az alkalmazás konfigurálásához biztosít különböző oldalakat. 
 

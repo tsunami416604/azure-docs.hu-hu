@@ -1,6 +1,6 @@
 ---
-title: "Alkalmazásadatok legyen az Azure-ban magas rendelkezésre állású |} Microsoft Docs"
-description: "Az alkalmazásadatok magas rendelkezésre állásúvá írásvédett georedundáns tárolás használata"
+title: "Alkalmazásadatok magas rendelkezésre állásának biztosítása az Azure-ban | Microsoft Docs"
+description: "Írásvédett georedundáns tárolás használata az alkalmazásadatok magas rendelkezésre állásának biztosításához"
 services: storage
 documentationcenter: 
 author: georgewallace
@@ -9,39 +9,48 @@ editor:
 ms.service: storage
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: csharp
+ms.devlang: 
 ms.topic: tutorial
-ms.date: 11/15/2017
+ms.date: 12/23/2017
 ms.author: gwallace
 ms.custom: mvc
-ms.openlocfilehash: 63ca91c2eadf7b003427e9716d99621fca1b1a19
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
-ms.translationtype: MT
+ms.openlocfilehash: 612d6db6dff569c0ccbda1c88f7ef1c37e98cd47
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/13/2018
 ---
-# <a name="make-your-application-data-highly-available-with-azure-storage"></a>Ellenőrizze az alkalmazás adataihoz az Azure storage magas rendelkezésre állású
+# <a name="make-your-application-data-highly-available-with-azure-storage"></a>Az alkalmazásadatok magas rendelkezésre állásának biztosítása az Azure Storage használatával
 
-Ez az oktatóanyag egy sorozat része. Az oktatóanyag bemutatja, hogyan végezheti el az alkalmazás adataihoz az Azure-ban magas rendelkezésre állású. Amikor végzett, lehetősége van a .NET core-Konzolalkalmazás, amely feltölti és egy blobot lekéri a [írásvédett georedundáns](../common/storage-redundancy.md#read-access-geo-redundant-storage) (RA-GRS) storage-fiók. RA-GRS működik az elsődleges tranzakciók replikálni a másodlagos régióba. A replikációs folyamatot garantálja, hogy idővel konzisztenssé a másodlagos régióba adatai. Az alkalmazás használja a [áramköri megszakító](https://docs.microsoft.com/azure/architecture/patterns/circuit-breaker) mintáját, és megállapítsa, melyik végponthoz kapcsolódni. Az alkalmazás másodlagos végponti vált, ha hiba szimulálják.
+Ez az oktatóanyag egy sorozat első része, amely azt ismerteti, hogyan biztosítható az alkalmazásadatok magas rendelkezésre állása az Azure-ban. Az oktatóanyagban egy konzolalkalmazást hoz majd létre, amely egy blobot tölt fel és kér le egy [írásvédett georedundáns](../common/storage-redundancy.md#read-access-geo-redundant-storage) (RA-GRS) tárfiókba. Az RA-GRS úgy működik, hogy az elsődleges régióból a másodlagosba replikálja a tranzakciókat. A replikációs folyamat garantálja a másodlagos régió adatainak végső konzisztenciáját. Az alkalmazás az [áramköri megszakító](/azure/architecture/patterns/circuit-breaker) mintával határozza meg, hogy melyik végponthoz kapcsolódjon. Az alkalmazás a másodlagos végpontra vált, ha szimulált hibát tapasztal.
 
-A rész az adatsorozatok megismerheti, hogyan:
+A sorozat első részében a következőkkel ismerkedhet meg:
 
 > [!div class="checklist"]
 > * Create a storage account
 > * A minta letöltése
 > * A kapcsolati karakterlánc beállítása
-> * Futtassa a konzolalkalmazást
+> * A konzolalkalmazás futtatása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez:
-
+ 
+# <a name="net-tabdotnet"></a>[.NET] (#tab/dotnet)
 * Telepítse a [Visual Studio 2017](https://www.visualstudio.com/downloads/) szoftvert a következő számítási feladatokkal:
   - **Azure-fejlesztés**
 
-  ![Azure fejlesztési (a webes & felhő)](media/storage-create-geo-redundant-storage/workloads.png)
+  ![Azure-fejlesztés (a Web és felhőszolgáltatások alatt)](media/storage-create-geo-redundant-storage/workloads.png)
 
-* Töltse le és telepítse [Fiddler](https://www.telerik.com/download/fiddler)
+* (Választható) A [Fiddler](https://www.telerik.com/download/fiddler) letöltése és telepítése
+ 
+# <a name="python-tabpython"></a>[Python] (#tab/python) 
+
+* Telepítse a [Pythont](https://www.python.org/downloads/).
+* A [Pythonhoz készült Azure Storage SDK](storage-python-how-to-use-blob-storage.md#download-and-install-azure-storage-sdk-for-python) letöltése és telepítése
+* (Választható) A [Fiddler](https://www.telerik.com/download/fiddler) letöltése és telepítése
+
+---
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -51,70 +60,95 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 ## <a name="create-a-storage-account"></a>Create a storage account
 
-A storage-fiók egy egyedi névteret tárolhatja és érheti el az Azure storage-adatobjektumok biztosít.
+A tárfiók egy egyedi névteret biztosít az Azure Storage-adatobjektumok tárolásához és hozzáféréséhez.
 
-Kövesse az alábbi lépéseket írásvédett georedundáns tárolás-fiók létrehozása:
+Kövesse az alábbi lépéseket egy írásvédett georedundáns tárfiók létrehozásához:
 
-1. Válassza ki a **új** gomb az Azure portál bal felső sarkában található.
+1. Kattintson az Azure Portal bal felső sarkában található **Új** gombra.
 
-2. Válassza ki **tárolási** a a **új** lapon, és válassza ki **tárfiók - blob, a fájl, a tábla, a várólista** alatt **kiemelt**.
-3. Töltse ki a tárolási fiók űrlapot a következő információkat, ahogy az alábbi kép, és válassza ki az **létrehozása**:
+2. Az **Új** oldalon válassza a **Tároló** elemet, majd a **Tárfiók – blob, fájl, tábla, üzenetsor** lehetőséget a **Kiemelt** területen.
+3. Töltse ki a tárfiók űrlapját a következő adatokkal az alábbi képen látható módon, és kattintson a **Létrehozás** elemre:
 
    | Beállítás       | Ajánlott érték | Leírás |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Name (Név)** | mystorageaccount | A tárfiók egyedi érték |
-   | **Telepítési modell** | Resource Manager  | Erőforrás-kezelő tartalmazza a legújabb funkciókat.|
-   | **Fiók típusa** | Általános célú | További részletek a fiókok típusával: [storage-fiókok típusai](../common/storage-introduction.md#types-of-storage-accounts) |
-   | **Teljesítmény** | Standard | Standard elegendő-e a példa. |
-   | **Replikáció**| Írásvédett georedundáns tárolás (RA-GRS) | Ez a minta működéséhez szükség. |
-   |**Szükséges biztonságos átvitele** | Letiltva| Biztonságos átvitele nincs szükség ehhez a forgatókönyvhöz. |
-   |**Előfizetés** | Az előfizetés |Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.windowsazure.com/Subscriptions) ismertető cikket. |
-   |**Erőforráscsoport** | myResourceGroup |Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket. |
-   |**Hely** | USA keleti régiója | A hely kiválasztásához. |
+   | **Name (Név)** | mystorageaccount | A tárfiók egyedi neve |
+   | **Üzemi modell** | Resource Manager  | A Resource Manager a legújabb funkciókat kínálja.|
+   | **Fióktípus** | Általános célú | A fiókok típusaival kapcsolatos információkért lásd [a tárfiókok típusait](../common/storage-introduction.md#types-of-storage-accounts) |
+   | **Teljesítmény** | Standard | A példaforgatókönyvhöz a standard teljesítmény elegendő. |
+   | **Replikáció**| Írásvédett georedundáns tárolás (RA-GRS) | Ez szükséges a minta működéséhez. |
+   |**Biztonságos átvitelre van szükség** | Letiltva| A biztonságos átvitel nem szükséges ehhez a forgatókönyvhöz. |
+   |**Előfizetés** | az Ön előfizetése |Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.windowsazure.com/Subscriptions) ismertető cikket. |
+   |**ResourceGroup** | myResourceGroup |Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket. |
+   |**Hely** | USA keleti régiója | Válassza ki a helyet. |
 
-![Storage-fiók létrehozása](media/storage-create-geo-redundant-storage/figure1.png)
+![tárfiók létrehozása](media/storage-create-geo-redundant-storage/figure1.png)
 
 ## <a name="download-the-sample"></a>A minta letöltése
 
-[A minta-projekt letöltése](https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs/archive/master.zip).
+# <a name="net-tabdotnet"></a>[.NET] (#tab/dotnet)
 
-Extract (csomagolja ki) a storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs.zip fájlt.
-A minta-projekt tartalmazza egy konzolalkalmazást.
+[Töltse le a mintaprojektet](https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs/archive/master.zip), és bontsa ki (csomagolja ki) a storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs.zip fájlt. A [git](https://git-scm.com/) használatával is letöltheti az alkalmazás egy másolatát a fejlesztői környezetbe. A mintaprojekt tartalmaz egy konzolalkalmazást.
+
+```bash
+git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs.git 
+```
+# <a name="python-tabpython"></a>[Python] (#tab/python) 
+
+[Töltse le a mintaprojektet](https://github.com/Azure-Samples/storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs/archive/master.zip), és bontsa ki (csomagolja ki) a storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs.zip fájlt. A [git](https://git-scm.com/) használatával is letöltheti az alkalmazás egy másolatát a fejlesztői környezetbe. A mintaprojekt tartalmaz egy egyszerű Python-alkalmazást.
+
+```bash
+git clone https://github.com/Azure-Samples/storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs.git
+```
+---
+
 
 ## <a name="set-the-connection-string"></a>A kapcsolati karakterlánc beállítása
 
-Az alkalmazásban meg kell adnia a tárfiókjához tartozó kapcsolati karakterláncot. Javasoljuk, hogy ez belül egy környezeti változó a kapcsolati karakterlánc tárolni a helyi számítógépen, amelyen az alkalmazást. Kövesse az alábbi példák attól függően, hogy a környezeti változó létrehozása az operációs rendszer egyik.
+Az alkalmazásban meg kell adnia a tárfiókjához tartozó kapcsolati karakterláncot. Javasoljuk, hogy ezt a kapcsolati karakterláncot egy környezeti változóban tárolja az alkalmazást futtató helyi gépen. A környezeti változó létrehozásához kövesse az alábbi példák egyikét az operációs rendszerének megfelelően.
 
-Az Azure portálon lépjen a tárfiókhoz. Válassza ki **hívóbetűk** alatt **beállítások** tárfiókba. Másolás a **kapcsolati karakterlánc** az az elsődleges vagy másodlagos kulcsot. Cserélje le \<yourconnectionstring\> a tényleges kapcsolattal karakterlánc a következő parancsok egyikét futtatja az operációs rendszer alapján. Ez a parancs a helyi számítógép egy környezeti változó menti. A Windows, a környezeti változó nincs elérhető töltse be újra a **parancssor** vagy rendszerhéj használ. Cserélje le  **\<storageConnectionString\>**  a következő mintában:
+Az Azure Portalon lépjen a tárfiókra. Válassza a **Hozzáférési kulcsok** lehetőséget a tárfiók **Beállítások** területén. Másolja ki az elsődleges vagy a másodlagos kulcs **kapcsolati karakterláncát**. Cserélje le a \<yourconnectionstring\> kifejezést a tényleges kapcsolati karakterláncra. Ehhez futtassa a következő parancsok közül az operációs rendszerének megfelelőt. A parancs egy környezeti változót ment a helyi számítógépen. Windows rendszerben a környezeti változó nem érhető el, amíg újra be nem tölti a **parancssort** vagy a rendszerhéjat, amelyet használ. Cserélje le a **\<storageConnectionString\>** kifejezést a következő mintában:
 
-### <a name="linux"></a>Linux
+# <a name="linux-tablinux"></a>[Linux] (#tab/linux) 
+export storageconnectionstring=\<yourconnectionstring\> 
 
-```bash
-export storageconnectionstring=<yourconnectionstring>
-```
+# <a name="windows-tabwindows"></a>[Windows] (#tab/windows) 
+setx storageconnectionstring "\<yourconnectionstring\>"
 
-### <a name="windows"></a>Windows
+---
 
-```cmd
-setx storageconnectionstring "<yourconnectionstring>"
-```
 
-![alkalmazás-konfigurációs fájl](media/storage-create-geo-redundant-storage/figure2.png)
+## <a name="run-the-console-application"></a>A konzolalkalmazás futtatása
 
-## <a name="run-the-console-application"></a>Futtassa a konzolalkalmazást
+# <a name="net-tabdotnet"></a>[.NET] (#tab/dotnet)
+A Visual Studióban nyomja le az **F5** billentyűt, vagy kattintson a **Start** gombra az alkalmazás hibakeresésének indításához. A Visual Studio automatikusan helyreállítja a hiányzó NuGet-csomagokat, ha konfigurálva vannak. További információ: [Csomagok telepítése és újratelepítése csomag-visszaállítással](https://docs.microsoft.com/nuget/consume-packages/package-restore#package-restore-overview).
 
-A Visual Studio, nyomja le a **F5** , vagy válasszon **Start** az alkalmazás hibakeresését végzi el. A Visual studio automatikusan hiányzik a NuGet-csomagok visszaállítások Ha konfigurálva, látogasson el a [telepítése és újratelepítése csomag visszaállításával csomagok](https://docs.microsoft.com/nuget/consume-packages/package-restore#package-restore-overview) további.
+Megnyílik a konzolablak, és az alkalmazás futni kezd. Az alkalmazás feltölti a **HelloWorld.png** képet a megoldásból a tárfiókra. Az alkalmazás ellenőrzi, hogy a kép replikálása valóban megtörtént-e a másodlagos RA-GRS-végpontra. Ezután elkezdi letölteni a képet legfeljebb 999 alkalommal. Minden egyes olvasást egy **P** vagy egy **S** karakter jelöl, ahol a **P** az elsődleges végpontot, az **S** a másodlagos végpontot jelenti.
 
-A konzolablakban elindul, és megkezdi az alkalmazás futtatása. Az alkalmazás feltöltését a **HelloWorld.png** lemezképét a megoldás a tárfiókhoz. Az alkalmazás ellenőrzi, hogy a kép biztosításához replikálása megtörtént-e a másodlagos RA-GRS-végpontot. Majd megkezdi a lemezkép letöltése legfeljebb 999 alkalommal. Minden egyes által képviselt egy **P** vagy egy **S**. Ha **P** jelöli az elsődleges végpont és **S** a másodlagos végpontot jelenti.
+![Futó konzolalkalmazás](media/storage-create-geo-redundant-storage/figure3.png)
 
-![Konzolalkalmazás fut](media/storage-create-geo-redundant-storage/figure3.png)
+A mintakód a `Program.cs` fájlban található `RunCircuitBreakerAsync` művelettel letölt egy képet a tárfiókból a [DownloadToFileAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob.downloadtofileasync?view=azure-dotnet) metódus segítségével. A letöltés előtt meg kell határozni egy [OperationContext](/dotnet/api/microsoft.windowsazure.storage.operationcontext?view=azure-dotnet) környezetet. A műveleti környezet határozza meg az eseménykezelőket, amelyek a letöltés sikeres befejezésekor vagy a sikertelen letöltés utáni újrapróbálkozásokkal aktiválódnak.
 
-Példakód a `RunCircuitBreakerAsync` a feladat a `Program.cs` fájllal a tárolási fiók a lemezkép letöltése a [DownloadToFileAsync](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadtofileasync?view=azure-dotnet) metódust. A letöltés előtt egy [OperationContext](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.operationcontext?view=azure-dotnet) van definiálva. A műveletkörnyezetet határozza meg az esemény kezelők, a letöltés végeztével sikeresen, vagy ha a letöltés sikertelen, és újra próbálkozik.
+# <a name="python-tabpython"></a>[Python] (#tab/python) 
+Az alkalmazás terminálon vagy parancssorban való futtatásához lépjen a **circuitbreaker.py** könyvtárra, majd írja be a `python circuitbreaker.py` parancsot. Az alkalmazás feltölti a **HelloWorld.png** képet a megoldásból a tárfiókra. Az alkalmazás ellenőrzi, hogy a kép replikálása valóban megtörtént-e a másodlagos RA-GRS-végpontra. Ezután elkezdi letölteni a képet legfeljebb 999 alkalommal. Minden egyes olvasást egy **P** vagy egy **S** karakter jelöl, ahol a **P** az elsődleges végpontot, az **S** a másodlagos végpontot jelenti.
 
-### <a name="retry-event-handler"></a>Ismételje meg a eseménykezelő
+![Futó konzolalkalmazás](media/storage-create-geo-redundant-storage/figure3.png)
 
-A `OperationContextRetrying` eseménykezelő nevezzük, amikor a lemezkép letöltése sikertelen, és állítsa be, majd ismételje meg. Ha eléri a maximális számú újrapróbálkozást, az alkalmazásban definiált, a [LocationMode](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.locationmode?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_LocationMode) a kérelem változott `SecondaryOnly`. Ez a beállítás kényszeríti az alkalmazást, a lemezkép letöltése a másodlagos végponti kísérletet. Ez a konfiguráció csökkenti a lemezképet kérik, mint az elsődleges végpont nem a rendszer ismét megkísérli határozatlan ideig szükséges idő.
+A mintakód a `circuitbreaker.py` fájlban található `run_circuit_breaker` metódussal letölt egy képet a tárfiókból a [get_blob_to_path](https://azure.github.io/azure-storage-python/ref/azure.storage.blob.baseblobservice.html) metódus segítségével. 
 
+A Storage-objektum újrapróbálkozási függvénye lineáris újrapróbálkozási szabályzatra van beállítva. Az újrapróbálkozási függvény határozza meg, hogy egy kérelmet újra kell-e próbálni, valamint megadja, hogy hány másodpercnyi várakozás után történjen az újrapróbálkozás. A **retry\_to\_secondary** paramétert állítsa true (igaz) értékre, ha a kérelmet a másodlagos végponton kell újra megkísérelni, amennyiben az elsődleges végpontra irányuló első kérelem sikertelen lenne. A mintaalkalmazásban az egyéni újrapróbálkozási szabályzat a Storage-objektum `retry_callback` függvényében van definiálva.
+ 
+A letöltés előtt meg kell határozni a Service objektum [retry_callback](https://docs.microsoft.com/en-us/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) és [response_callback](https://docs.microsoft.com/en-us/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) függvényét. Ezek a függvények határozzák meg az eseménykezelőket, amelyek a letöltés sikeres befejezésekor vagy a sikertelen letöltés utáni újrapróbálkozásokkal aktiválódnak.  
+
+---
+
+### <a name="retry-event-handler"></a>Újrapróbálkozási eseménykezelő
+
+# <a name="net-tabdotnet"></a>[.NET] (#tab/dotnet)
+
+A rendszer akkor hívja meg az `OperationContextRetrying` eseménykezelőt, ha a kép letöltése meghiúsult, és újrapróbálkozásra van beállítva. Ha a rendszer elérte a próbálkozások alkalmazásban definiált maximális számát, a kérelem [LocationMode](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.locationmode?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_LocationMode) paramétere `SecondaryOnly` értékre változik. Ez a beállítás kényszeríti az alkalmazást, hogy a másodlagos végpontról kísérelje meg letölteni a képet. Ezzel a konfigurációval csökkenthető a kép lekérési ideje, mivel a rendszer nem próbálja vég nélkül elérni az elsődleges végpontot.
+
+A mintakód a `Program.cs` fájlban található `RunCircuitBreakerAsync` művelettel letölt egy képet a tárfiókból a [DownloadToFileAsync](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadtofileasync?view=azure-dotnet) metódus segítségével. A letöltés előtt meg kell határozni egy [OperationContext](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.operationcontext?view=azure-dotnet) környezetet. A műveleti környezet határozza meg az eseménykezelőket, amelyek a letöltés sikeres befejezésekor vagy a sikertelen letöltés utáni újrapróbálkozásokkal aktiválódnak.
+ 
 ```csharp
 private static void OperationContextRetrying(object sender, RequestEventArgs e)
 {
@@ -139,10 +173,37 @@ private static void OperationContextRetrying(object sender, RequestEventArgs e)
 }
 ```
 
-### <a name="request-completed-event-handler"></a>A kérelem befejeződött eseménykezelő
+# <a name="python-tabpython"></a>[Python] (#tab/python) 
+A rendszer akkor hívja meg az `retry_callback` eseménykezelőt, ha a kép letöltése meghiúsult, és újrapróbálkozásra van beállítva. Ha a rendszer elérte a próbálkozások alkalmazásban definiált maximális számát, a kérelem [LocationMode](https://docs.microsoft.com/en-us/python/api/azure.storage.common.models.locationmode?view=azure-python) paramétere `SECONDARY` értékre változik. Ez a beállítás kényszeríti az alkalmazást, hogy a másodlagos végpontról kísérelje meg letölteni a képet. Ezzel a konfigurációval csökkenthető a kép lekérési ideje, mivel a rendszer nem próbálja vég nélkül elérni az elsődleges végpontot.  
 
-A `OperationContextRequestCompleted` eseménykezelő nevezik, ha a lemezkép letöltése sikeres volt. Ha az alkalmazás nem használja a másodlagos végponti, az alkalmazás továbbra is használni ezt a végpontot, legfeljebb 20 alkalommal. 20 alkalommal, az alkalmazás beállítása után a [LocationMode](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.locationmode?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_LocationMode) vissza `PrimaryThenSecondary` és az elsődleges végpont újrapróbálja a telepítést. Ha a kérelem sikeres, az alkalmazás továbbra is az elsődleges végpont olvasni.
+```python
+def retry_callback(retry_context):
+    global retry_count
+    retry_count = retry_context.count
+    sys.stdout.write("\nRetrying event because of failure reading the primary. RetryCount= {0}".format(retry_count))
+    sys.stdout.flush()
 
+    # Check if we have more than n-retries in which case switch to secondary
+    if retry_count >= retry_threshold:
+
+        # Check to see if we can fail over to secondary.
+        if blob_client.location_mode != LocationMode.SECONDARY:
+            blob_client.location_mode = LocationMode.SECONDARY
+            retry_count = 0
+        else:
+            raise Exception("Both primary and secondary are unreachable. "
+                            "Check your application's network connection.")
+```
+
+---
+
+
+### <a name="request-completed-event-handler"></a>Befejezett kérelem eseménykezelő
+ 
+# <a name="net-tabdotnet"></a>[.NET] (#tab/dotnet)
+
+A rendszer akkor hívja meg az `OperationContextRequestCompleted` eseménykezelőt, ha a kép letöltése sikerült. Ha az alkalmazás a másodlagos végpontot használja, továbbra is ezt a végpontot használja majd legfeljebb 20 alkalommal. A 20. alkalom után az alkalmazás visszaállítja a [LocationMode](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.locationmode?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_LocationMode) paramétert `PrimaryThenSecondary` értékre, és az elsődleges végponton próbálkozik újra. Ha a kérelem sikeres, az alkalmazás továbbra is az elsődleges végpontról végzi a beolvasást.
+ 
 ```csharp
 private static void OperationContextRequestCompleted(object sender, RequestEventArgs e)
 {
@@ -160,17 +221,36 @@ private static void OperationContextRequestCompleted(object sender, RequestEvent
 }
 ```
 
+# <a name="python-tabpython"></a>[Python] (#tab/python) 
+
+A rendszer akkor hívja meg az `response_callback` eseménykezelőt, ha a kép letöltése sikerült. Ha az alkalmazás a másodlagos végpontot használja, továbbra is ezt a végpontot használja majd legfeljebb 20 alkalommal. A 20. alkalom után az alkalmazás visszaállítja a [LocationMode](https://docs.microsoft.com/en-us/python/api/azure.storage.common.models.locationmode?view=azure-python) paramétert `PRIMARY` értékre, és az elsődleges végponton próbálkozik újra. Ha a kérelem sikeres, az alkalmazás továbbra is az elsődleges végpontról végzi a beolvasást.
+
+```python
+def response_callback(response):
+    global secondary_read_count
+    if blob_client.location_mode == LocationMode.SECONDARY:
+
+        # You're reading the secondary. Let it read the secondary [secondaryThreshold] times,
+        # then switch back to the primary and see if it is available now.
+        secondary_read_count += 1
+        if secondary_read_count >= secondary_threshold:
+            blob_client.location_mode = LocationMode.PRIMARY
+            secondary_read_count = 0
+```
+
+---
+
 ## <a name="next-steps"></a>További lépések
 
-Az adatsorozat egyik részében megismerte és magas rendelkezésre állású tárfiókokkal RA-GRS, például az alkalmazás:
+A sorozat első részében megtudta, hogyan biztosítható az alkalmazások magas rendelkezésre állása az RA-GRS-tárfiókok használatával:
 
 > [!div class="checklist"]
 > * Create a storage account
 > * A minta letöltése
 > * A kapcsolati karakterlánc beállítása
-> * Futtassa a konzolalkalmazást
+> * A konzolalkalmazás futtatása
 
-Előzetes a sorozat Útmutató: hiba szimulálása és annak kikényszerítéséhez, az alkalmazás használata a másodlagos RA-GRS-végpont két részét.
+Folytassa a sorozat második részével, ha szeretné megismerni, hogyan szimulálhat hibákat és kényszerítheti az alkalmazást, hogy a másodlagos RA-GRS-végpontot használja.
 
 > [!div class="nextstepaction"]
-> [Az elsődleges tárolási kapcsolat hibája miatt szimulálása](storage-simulate-failure-ragrs-account-app.md)
+> [Az elsődleges tárolóvégpont kapcsolati hibájának szimulálása](storage-simulate-failure-ragrs-account-app.md)

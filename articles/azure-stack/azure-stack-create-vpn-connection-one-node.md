@@ -3,8 +3,8 @@ title: "Különböző Azure verem szoftverfejlesztői készlet környezetekben k
 description: "Lépésről lépésre, amely egycsomópontos Azure verem szoftverfejlesztői készlet két környezet közötti pont-pont VPN-kapcsolat létrehozásához használja a felhő rendszergazdájához."
 services: azure-stack
 documentationcenter: 
-author: ScottNapolitan
-manager: darmour
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 3f1b4e02-dbab-46a3-8e11-a777722120ec
 ms.service: azure-stack
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 7/10/2017
-ms.author: scottnap
-ms.openlocfilehash: fa2a940620e06521fa110fa13dcbc3050635a502
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: brenduns
+ms.reviewer: scottnap
+ms.openlocfilehash: 886d56169c5500c9175b7ddc43edfc29c5142fbb
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>Különböző Azure verem szoftverfejlesztői készlet környezetekben két virtuális hálózat közötti pont-pont VPN-kapcsolat létrehozása
 ## <a name="overview"></a>Áttekintés
@@ -52,7 +53,7 @@ A következő táblázat összefoglalja a hálózati konfigurációt a mindkét 
 |---------|---------|---------|
 |Virtuális hálózat neve     |VNET-01|VNET-02 |
 |Virtuális hálózat címtere |10.0.10.0/23|10.0.20.0/23|
-|Alhálózat neve     |Alhálózat-01|Alhálózat-02|
+|Alhálózat neve     |Subnet-01|Subnet-02|
 |Alhálózati címtartomány|10.0.10.0/24 |10.0.20.0/24 |
 |Átjáró alhálózata     |10.0.11.0/24|10.0.21.0/24|
 |Külső BGPNAT cím     |         |         |
@@ -365,4 +366,4 @@ Ha szeretné tudni, hogy mennyi adatot továbbítja a helyek kapcsolaton kereszt
 2. Nyissa meg a **összes erőforrás**, majd válassza ki a **POC2-POC1** kapcsolat. **Kapcsolatok** jelenik meg.
 4. Az a **kapcsolat** panelen, a statisztikája **adatok** és **kimenő adatforgalmat** jelennek meg. Az alábbi képernyőképen a nagy mennyiségű rendelnek a további fájlok átvitele. Néhány nullától eltérő értéket kell megjelennie.
    
-    ![Adatok és kimenő](media/azure-stack-create-vpn-connection-one-node-tp2/image20.png)
+    ![Bejövő és kimenő adatforgalom](media/azure-stack-create-vpn-connection-one-node-tp2/image20.png)

@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Service Fabric-fürt méretezése |} Microsoft Docs"
-description: "Ismerje meg gyorsan a Service Fabric-fürt méretezése."
+title: "Azure Service Fabric-fürt skálázása| Microsoft Docs"
+description: "A dokumentum ismerteti a Service Fabric-fürtök gyors skálázásának módját."
 services: service-fabric
 documentationcenter: .net
 author: Thraka
@@ -12,43 +12,43 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/24/2017
+ms.date: 02/06/2018
 ms.author: adegeo
 ms.custom: mvc
-ms.openlocfilehash: 63b4747164959b0e95f6d3f1908d1fd265589a98
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
-ms.translationtype: MT
+ms.openlocfilehash: bbbb31687ab0980d62b35d627c4b1708b7ae8288
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 02/13/2018
 ---
-# <a name="scale-a-service-fabric-cluster"></a>A Service Fabric-fürt méretezése
+# <a name="scale-a-service-fabric-cluster"></a>Service Fabric-fürt skálázása
 
-Ez az oktatóanyag kettőnél több, és bemutatja, hogyan és a meglévő fürt méretezése. Amikor végzett, akkor a fürt méretezése és a bal oldali átvevő erőforrásokat újraépítése.
+Ez az oktatóanyag egy sorozat második része, amely a meglévő fürtök horizontális fel- és leskálázásának módját mutatja be. Az oktatóanyag végére elsajátíthatja a fürtök skálázásának és a hátramaradt erőforrások eltávolításának módját.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Olvassa el a fürt csomópontok száma
-> * Adja hozzá a fürtcsomópontok (bővített)
-> * Távolítsa el a fürt csomópontjai (skála)
+> * A fürtcsomópontok számának olvasása
+> * Fürtcsomópontok hozzáadása (horizontális felskálázás)
+> * Fürtcsomópontok eltávolítása (horizontális leskálázás)
 
-Az oktatóanyag adatsorozat elsajátíthatja, hogyan:
+Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
-> * Hozzon létre egy biztonságos [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) vagy [Linux-fürt](service-fabric-tutorial-create-vnet-and-linux-cluster.md) Azure-sablon használatával
-> * Bejövő vagy kimenő fürt méretezése
-> * [A futtatókörnyezet egy fürt frissítése](service-fabric-tutorial-upgrade-cluster.md)
-> * [A Service Fabric az API Management központi telepítését](service-fabric-tutorial-deploy-api-management.md)
+> * Biztonságos [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) vagy [Linux-fürt](service-fabric-tutorial-create-vnet-and-linux-cluster.md) létrehozása az Azure-ban sablon használatával
+> * Fürt horizontális fel- és leskálázása
+> * [Fürt futtatókörnyezetének frissítése](service-fabric-tutorial-upgrade-cluster.md)
+> * [Az API Management üzembe helyezése a Service Fabrickel](service-fabric-tutorial-deploy-api-management.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez az oktatóanyag elkezdéséhez:
-- Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-- Telepítse a [Azure Powershell 4.1-es vagy újabb verziója](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) vagy [Azure CLI 2.0](/cli/azure/install-azure-cli).
-- Hozzon létre egy biztonságos [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) vagy [Linux-fürt](service-fabric-tutorial-create-vnet-and-linux-cluster.md) az Azure-on
-- Ha telepít egy Windows-fürt, a Windows környezet beállítása. Telepítés [Visual Studio 2017](http://www.visualstudio.com) és a **Azure fejlesztési**, **ASP.NET és a webes fejlesztési**, és **.NET Core platformfüggetlen fejlesztésekhez**munkaterhelések.  Hozzon létre egy [.NET fejlesztőkörnyezet](service-fabric-get-started.md).
-- Ha a Linux-fürt központi telepítése, állítsa be a Java-fejlesztőkörnyezet a [Linux](service-fabric-get-started-linux.md) vagy [MacOS](service-fabric-get-started-mac.md).  Telepítse a [háló CLI szolgáltatás](service-fabric-cli.md). 
+Az oktatóanyag elkezdése előtt:
+- Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Telepítse az [Azure PowerShell-modul 4.1-es vagy újabb verzióját](https://docs.microsoft.com/powershell/azure/install-azurerm-ps), vagy az [Azure CLI 2.0-ás verzióját](/cli/azure/install-azure-cli).
+- Biztonságos [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) vagy [Linux-fürt](service-fabric-tutorial-create-vnet-and-linux-cluster.md) létrehozása az Azure-ban
+- Ha Windows-fürtöt telepít, állítson be egy Windows fejlesztési környezetet. Telepítse a [Visual Studio 2017](http://www.visualstudio.com) szoftvert, valamint az **Azure-fejlesztési**, **ASP.NET- és webes fejlesztési**, továbbá a **.NET Core platformfüggetlen fejlesztési** számítási feladatokat.  Ezután hozzon létre egy [.NET fejlesztési környezet](service-fabric-get-started.md).
+- Ha Linux-fürtöt telepít, állítson be Java fejlesztési környezetet [Linux](service-fabric-get-started-linux.md) vagy [MacOS](service-fabric-get-started-mac.md) operációs rendszeren.  Telepítse a [Service Fabric parancssori felületet](service-fabric-cli.md). 
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
-Az Azure-fiókjába történő bejelentkezéshez jelölje ki az előfizetését, Azure parancsok végrehajtása előtt.
+Azure-parancsok végrehajtása előtt jelentkezzen be az Azure-fiókjába, és válassza ki az előfizetését.
 
 ```powershell
 Login-AzureRmAccount
@@ -63,9 +63,9 @@ az account set --subscription <guid>
 
 ## <a name="connect-to-the-cluster"></a>Csatlakozás a fürthöz
 
-Sikeres végrehajtásához az oktatóanyag ezen része, akkor csatlakoztatni kell a Service Fabric-fürt és a virtuálisgép-méretezési csoport (a fürt üzemeltető). A virtuálisgép-méretezési csoport, amelyen az Azure Service Fabric Azure-erőforrás.
+Az oktatóanyag ezen részének sikeres elvégzéséhez a Service Fabric-fürthöz és a virtuálisgép-méretezési csoporthoz (amelyen a fürt üzemel) is csatlakoznia kell. A virtuálisgép-méretezési csoport az az Azure-erőforrás, amelyen az Azure Service Fabric fut az Azure-ban.
 
-Egy fürt való csatlakozáskor lekérdezhető információt. A fürt segítségével megtudhatja, milyen csomópontokkal kapcsolatos a fürt tudomást. A fürthöz a következő kódrészlet használja ugyanazt a tanúsítványt, amely az adatsorozat első részében szereplő létrejött. Ellenőrizze, hogy beállította a `$endpoint` és `$thumbprint` változókat, az értékek.
+Ha csatlakozik egy fürthöz, adatokat kérdezhet le róla. A fürtről megtudhatja, hogy milyen csomópontok létezéséről tud. A fürthöz való csatlakozást megvalósító következő kódrészlet a sorozat első részében létrehozott tanúsítványt használja. Ne felejtse a saját értékeit megadni az `$endpoint` és a `$thumbprint` változóhoz.
 
 ```powershell
 $endpoint = "<mycluster>.southcentralus.cloudapp.azure.com:19000"
@@ -85,20 +85,20 @@ sfctl cluster select --endpoint https://aztestcluster.southcentralus.cloudapp.az
 --pem ./aztestcluster201709151446.pem --no-verify
 ```
 
-Most, hogy csatlakozott, a parancs segítségével a fürt minden csomópont állapotának beolvasása. A PowerShell környezethez, használja a `Get-ServiceFabricClusterHealth` parancsot, és a **sfctl** használja a "parancsot.
+Miután csatlakozott, egy parancs használatával lekérheti a fürt egyes csomópontjainak állapotát. A PowerShell esetében használja a `Get-ServiceFabricClusterHealth`, az **sfctl** esetében pedig az `sfctl cluster select` parancsot.
 
 ## <a name="scale-out"></a>Horizontális felskálázás
 
-Amikor kiterjesztése, hozzáadhat további virtuálisgép-példányok a méretezési. Ezek a példányok a Service Fabric használó csomópontok válik. A Service Fabric tudja, amikor a méretezési (kiterjesztése) által hozzáadott több példánya van-e, és automatikusan reagál. A következő kód jogosultságot kap a skála szerint nevét, és növeli a **kapacitás** a skála 1 állítja be.
+A horizontális felskálázás során további virtuálisgép-példányokat ad a méretezési csoporthoz. Ezek a példányok lesznek a Service Fabric által használt csomópontok. A Service Fabric tudja, ha a méretezési csoport új példányokkal bővül (felskálázással), és automatikusan ennek megfelelően jár el. A következő kód név alapján megkeres egy méretezési csoportot, és 1-gyel növeli a **kapacitását**.
 
 ```powershell
 $scaleset = Get-AzureRmVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm
 $scaleset.Sku.Capacity += 1
 
-Update-AzureRmVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm -VirtualMachineScaleSet $scaleset
+Update-AzureRmVmss -ResourceGroupName $scaleset.ResourceGroupName -VMScaleSetName $scaleset.Name -VirtualMachineScaleSet $scaleset
 ```
 
-Ez a kód a kapacitás 6 állítja be.
+Ez a kód 6-ra állítja a kapacitást.
 
 ```azurecli
 # Get the name of the node with
@@ -108,46 +108,47 @@ az vmss list-instances -n nt1vm -g sfclustertutorialgroup --query [*].name
 az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 6
 ```
 
-## <a name="scale-in"></a>A méretezési
+## <a name="scale-in"></a>Horizontális leskálázás
 
-A méretezés megegyezik a kiterjesztése, azzal a különbséggel alsó használhatja **kapacitás** érték. A méretezési csoportban lévő méretezni, akkor távolítsa el virtuálisgép-példányok a méretezési készlet. Általában a Service Fabric tudnak Mi történt, és szerinte csomópontja elveszett. A Service Fabric majd jelentést készít a fürt állapota nem kifogástalan. Ha szeretné megakadályozni, hogy rossz állapotban, akkor tájékoztatnia kell a service fabric, hogy a csomópont eltűnnek a várt.
+A leskálázás ugyanúgy működik, mint a felskálázás, azzal a különbséggel, hogy itt csökken a **kapacitás** értéke. A méretezési csoport horizontális leskálázásakor virtuálisgép-példányokat töröl a méretezési csoportból. A Service Fabric általában nem tudja, hogy mi történt, és azt gondolja, hogy valamelyik csomópont hiányzik. A Service Fabric ekkor a fürt hibás állapotát jelzi. Ha szeretné elkerülni ezt, tájékoztatnia kell a Service Fabricet, hogy a csomópont eltűnése várható.
 
-### <a name="remove-the-service-fabric-node"></a>Távolítsa el a service fabric-csomópont
+### <a name="remove-the-service-fabric-node"></a>A Service Fabric-csomópont eltávolítása
 
 > [!NOTE]
-> Ez a rész csak vonatkozik a *bronz* tartóssági szint. Tartóssági kapcsolatos további információkért lásd: [Service Fabric-fürt kapacitástervezés][durability].
+> Ez a rész kizárólag a *Bronz* tartóssági szintre vonatkozik. A tartóssággal kapcsolatos további információ: [Service Fabric-fürtök kapacitástervezése][durability].
 
-Amikor egy virtuálisgép-méretezési csoportban lévő méretezni, a méretezési készletben (a legtöbb esetben) eltávolítja az utolsó létrehozott virtuálisgép-példányt. Ezért kell a megfelelő, legutóbbi létrehozása a service fabric-csomópont található. Az utolsó csomópont található a legnagyobbnak ellenőrzésével `NodeInstanceId` a service fabric-csomópontokon a tulajdonság értéke. Rendezési szempont a csomópont alatt példakódok példány, és térjen vissza a példányt a legnagyobb értékű azonosító adatait. 
+A virtuálisgép-méretezési csoportok horizontális leskálázásakor a méretezési csoport (a legtöbb esetben) a legutoljára létrehozott virtuálisgép-példányt távolítja el. Így tehát meg kell keresnie az utoljára létrehozott, egyező Service Fabric-csomópontot. Az utolsó csomópont azonosításához a legnagyobb értékű `NodeInstanceId` tulajdonságot kell keresnie egyes Service Fabric-csomópontokon. Az alábbi példakód ezen tulajdonság alapján rendezi a csomópontpéldányokat, és visszaadja a legnagyobb azonosítóértékkel rendelkező példány adatait. 
 
 ```powershell
-Get-ServiceFabricNode | Sort-Object NodeInstanceId -Descending | Select-Object -First 1
+Get-ServiceFabricNode | Sort-Object { $_.NodeName.Substring($_.NodeName.LastIndexOf('_') + 1) } -Descending | Select-Object -First 1
 ```
 
 ```azurecli
-`sfctl node list --query "sort_by(items[*], &instanceId)[-1]"`
+sfctl node list --query "sort_by(items[*], &name)[-1]"
 ```
 
-A service fabric-fürt tudnia kell, hogy ez a csomópont fog eltávolítani. Kell venni a három lépésben történik:
+A Service Fabric-fürtnek értesülnie kell róla, hogy ez a csomópont el lesz távolítva. Három lépést kell végrehajtania:
 
-1. Tiltsa le a csomóponton, úgy, hogy az már nem egy replikálja az adatokat.  
-PowerShell:`Disable-ServiceFabricNode`  
-sfcli:`sfctl node disable`
+1. Tiltsa le a csomópontot, hogy ezentúl ne replikálja az adatokat.  
+PowerShell: `Disable-ServiceFabricNode`  
+sfcli: `sfctl node disable`
 
-2. Állítsa le a kiszolgálót, hogy a service fabric-futtatókörnyezet szabályszerűen leáll, és az alkalmazás lekérdezi a megszakítási kérelmet.  
-PowerShell:`Start-ServiceFabricNodeTransition -Stop`  
-sfcli:`sfctl node transition --node-transition-type Stop`
+2. Állítsa le a csomópontot, hogy a Service Fabric-futtatókörnyezet szabályszerűen álljon le, és az alkalmazás kapjon egy megszakítási kérelmet.  
+PowerShell: `Start-ServiceFabricNodeTransition -Stop`  
+sfcli: `sfctl node transition --node-transition-type Stop`
 
-2. Távolítsa el a csomópontot a fürtből.  
-PowerShell:`Remove-ServiceFabricNodeState`  
-sfcli:`sfctl node remove-state`
+2. Távolítsa el a csomópontot a fürtről.  
+PowerShell: `Remove-ServiceFabricNodeState`  
+sfcli: `sfctl node remove-state`
 
-Miután a fenti három lépést a csomópont alkalmaztak, akkor eltávolíthatja a méretezési. Bármely tartóssági szint mellett használata [bronz][durability], ezeket a lépéseket, ha a méretezési példányt eltávolítják a történik.
+A fenti három lépés alkalmazása után a csomópont eltávolítható a méretezési csoportból. A [Bronzon][durability] kívül bármely más tartóssági szint használata esetén a rendszer automatikusan végrehajtja ezeket a lépéseket a méretezési csoport adott példányának eltávolításakor.
 
-A következő kódrészletet lekérdezi az utolsó létrehozott csomópont, letiltja, leáll, és eltávolítja a csomópontot a fürtből.
+A következő kódrészlet lekérdezi az utolsó létrehozott csomópontot, majd letiltja, leállítja, és eltávolítja a fürtről.
 
 ```powershell
+#### After you've connected.....
 # Get the node that was created last
-$node = Get-ServiceFabricNode | Sort-Object NodeInstanceId -Descending | Select-Object -First 1
+$node = Get-ServiceFabricNode | Sort-Object { $_.NodeName.Substring($_.NodeName.LastIndexOf('_') + 1) } -Descending | Select-Object -First 1
 
 # Node details for the disable/stop process
 $nodename = $node.NodeName
@@ -202,7 +203,7 @@ else
 }
 ```
 
-Az a **sfctl** alatt kódját, a következő parancs segítségével beolvasása a **csomópontnév** és **csomópont példányazonosító** értékek az elmúlt által létrehozott csomópont:`sfctl node list --query "sort_by(items[*], &instanceId)[-1].[instanceId,name]"`
+Az alábbi **sfctl** kódban a következő parancs kéri le a legutóbb létrehozott csomópont **node-name** értékét: `sfctl node list --query "sort_by(items[*], &name)[-1].name"`
 
 ```azurecli
 # Inform the node that it is going to be removed
@@ -216,19 +217,19 @@ sfctl node remove-state --node-name _nt1vm_5
 ```
 
 > [!TIP]
-> Használja a következő **sfctl** lekérdezések minden lépés állapotának ellenőrzése
+> A következő **sfctl**-lekérdezésekkel ellenőrizheti az egyes lépések állapotát
 >
-> **Az inaktiválást állapotának ellenőrzése**  
-> `sfctl node list --query "sort_by(items[*], &instanceId)[-1].nodeDeactivationInfo"`
+> **Inaktiválási állapot ellenőrzése**  
+> `sfctl node list --query "sort_by(items[*], &name)[-1].nodeDeactivationInfo"`
 >
-> **Leállítási állapotának ellenőrzése**  
-> `sfctl node list --query "sort_by(items[*], &instanceId)[-1].isStopped"`
+> **Leállítási állapot ellenőrzése**  
+> `sfctl node list --query "sort_by(items[*], &name)[-1].isStopped"`
 >
 
 
-### <a name="scale-in-the-scale-set"></a>A méretezési csoportban lévő méretezése
+### <a name="scale-in-the-scale-set"></a>A méretezési csoport horizontális leskálázása
 
-Most, hogy a service fabric-csomópont eltávolították a fürtből, a virtuálisgép-méretezési csoport is méretezhető. Az alábbi példában a méretezési készlet kapacitásának 1 csökken.
+Most, hogy a Service Fabric-csomópont el lett távolítva a fürtből, a virtuálisgép-méretezési csoport leskálázható. Az alábbi példa 1-gyel csökkenti a méretezési csoport kapacitását.
 
 ```powershell
 $scaleset = Get-AzureRmVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm
@@ -237,7 +238,7 @@ $scaleset.Sku.Capacity -= 1
 Update-AzureRmVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm -VirtualMachineScaleSet $scaleset
 ```
 
-Ez a kód a kapacitás 5 állítja be.
+Ez a kód a kapacitást 5-re állítja.
 
 ```azurecli
 # Get the name of the node with
@@ -248,18 +249,18 @@ az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 5
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Olvassa el a fürt csomópontok száma
-> * Adja hozzá a fürtcsomópontok (bővített)
-> * Távolítsa el a fürt csomópontjai (skála)
+> * A fürtcsomópontok számának olvasása
+> * Fürtcsomópontok hozzáadása (horizontális felskálázás)
+> * Fürtcsomópontok eltávolítása (horizontális leskálázás)
 
 
-A következő előzetes az alábbi oktatóanyag megtudhatja, hogyan lehet frissíteni a futtatókörnyezet egy fürt.
+Folytassa a következő oktatóanyaggal, amelyben megismerheti, hogyan frissíthetők a fürtök futtatókörnyezetei.
 > [!div class="nextstepaction"]
-> [A futtatókörnyezet egy fürt frissítése](service-fabric-tutorial-upgrade-cluster.md)
+> [Fürt futtatókörnyezetének frissítése](service-fabric-tutorial-upgrade-cluster.md)
 
 [durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster

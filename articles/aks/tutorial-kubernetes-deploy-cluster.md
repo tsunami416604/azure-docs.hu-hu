@@ -1,6 +1,6 @@
 ---
-title: "Kubernetes az Azure útmutató - fürt központi telepítése"
-description: "AKS oktatóanyag - fürt központi telepítése"
+title: "Azure-on futó Kubernetes oktatóanyag – Fürtök üzembe helyezése"
+description: "AKS-oktatóanyag – Fürtök üzembe helyezése"
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,51 +9,51 @@ ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 2c2318d9a5f72800f9cfbd430dca448fd1e5746f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
-ms.translationtype: MT
+ms.openlocfilehash: e0d5bd57a40fca837ead42e691e1fa0c802dc013
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="deploy-an-azure-container-service-aks-cluster"></a>Az Azure-tároló szolgáltatás (AKS) fürt központi telepítése
+# <a name="deploy-an-azure-container-service-aks-cluster"></a>Azure Container Service- (AKS-) fürt üzembe helyezése
 
-A Kubernetes tárolóalapú alkalmazásokhoz kínál elosztott platformot. Teljes AKS készen áll a Kubernetes éles fürt üzembe, akkor egyszerűen és gyorsan. Ebben az oktatóanyagban nyolc, három része a Kubernetes fürt AKS van telepítve. Befejeződött a lépések az alábbiak:
+A Kubernetes tárolóalapú alkalmazásokhoz kínál elosztott platformot. Az AKS-sel egyszerűen és gyorsan építhető ki egy éles üzemre kész Kubernetes-fürt. Ebben az oktatóanyagban, amely egy nyolcrészes sorozat harmadik része, egy Kubernetes-fürtöt helyezünk üzembe az AKS-ben. Ennek lépései az alábbiak:
 
 > [!div class="checklist"]
-> * Egy Kubernetes AKS fürt telepítése
-> * A Kubernetes CLI (kubectl) telepítése
-> * Kubectl konfigurálása
+> * Kubernetes AKS-fürt üzembe helyezése
+> * A Kubernetes parancssori felület (kubectl) telepítése
+> * A kubectl konfigurálása
 
-A következő útmutatókból az Azure szavazattal alkalmazás központi telepítése a fürt, méretezhető, frissítése, és az Operations Management Suite a Kubernetes fürt figyelésére van beállítva.
+Az ezt követő oktatóanyagokban üzembe helyezzük majd az Azure Vote alkalmazást a fürtön, méretezzük, frissítjük, majd konfiguráljuk az Operations Management Suite szolgáltatást a Kubernetes-fürt monitorozására.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Az előző oktatóanyagokat a tároló-lemezkép létrejött, de feltöltött egy Azure-tároló beállításjegyzék-példányon. Ha nem volna ezeket a lépéseket, és szeretné követéséhez, vissza [oktatóanyag 1 – létrehozás tároló képek][aks-tutorial-prepare-app].
+Az előző oktatóanyagokban létrehoztunk egy tárolórendszerképet, és feltöltöttük egy Azure Container Registry-példányra. Ha ezeket a lépéseket még nem hajtotta végre, és szeretné követni az oktatóanyagot, lépjen vissza az [1. oktatóanyag – Tárolórendszerképek létrehozása][aks-tutorial-prepare-app] részhez.
 
-## <a name="enabling-aks-preview-for-your-azure-subscription"></a>Azure-előfizetése AKS előzetes engedélyezése
-AKS jelenleg előzetes verzióban érhető, amíg a szolgáltatás jelzőt előfizetéséhez új fürtök létrehozása szükséges. Ez a szolgáltatás tetszőleges számú előfizetések, amelyek használni szeretné a kérheti. Használja a `az provider register` parancs futtatásával regisztrálja a AKS szolgáltatót:
+## <a name="enabling-aks-preview-for-your-azure-subscription"></a>AKS előzetes verziójának engedélyezése az Azure-előfizetéshez
+Amíg az AKS előzetes verziójú, az új fürtök létrehozásához szolgáltatásjelzőre van szükség az előfizetésén. Ezt a szolgáltatást annyi előfizetésen kérheti, amennyin használni szeretné. Az `az provider register` paranccsal regisztrálja az AKS-szolgáltatót:
 
 ```azurecli-interactive
 az provider register -n Microsoft.ContainerService
 ```
 
-A regisztrálás után most már készen áll a AKS Kubernetes fürt létrehozása.
+A regisztrálás után készen áll egy Kubernetes-fürt létrehozására az AKS-sel.
 
 ## <a name="create-kubernetes-cluster"></a>Kubernetes-fürt létrehozása
 
-Az alábbi példakód létrehozza a fürt nevű `myK8sCluster` nevű erőforráscsoportban `myResourceGroup`. Ez az erőforráscsoport jött létre a [az oktatóanyag előző][aks-tutorial-prepare-acr].
+A következő példában létrehozunk egy `myAKSCluster` nevű fürtöt egy `myResourceGroup` nevű erőforráscsoportban. Az erőforráscsoportot [az előző oktatóanyagban][aks-tutorial-prepare-acr] hoztuk létre.
 
 ```azurecli
-az aks create --resource-group myResourceGroup --name myK8sCluster --node-count 1 --generate-ssh-keys
+az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --generate-ssh-keys
 ```
 
-Pár perc múlva a telepítés befejeződik, és értéket ad vissza json formátumú AKS nyújt tájékoztatást.
+Néhány perc múlva befejeződik az üzembe helyezés, és a rendszer visszaadja az AKS-beli üzembe helyezéssel kapcsolatos adatokat JSON formátumban.
 
 ## <a name="install-the-kubectl-cli"></a>A kubectl parancssori felület telepítése
 
-Az Kubernetes fürthöz csatlakoztatja az ügyfélszámítógépről, használja a [kubectl][kubectl], a Kubernetes parancssori ügyfél.
+Ahhoz, hogy csatlakozni tudjon a Kubernetes-fürthöz az ügyfélszámítógépről, használja a Kubernetes [kubectl][kubectl] nevű parancssori ügyfelét.
 
-Ha az Azure CloudShellt használja, a kubectl már telepítve van. Ha szeretné helyileg telepíteni, futtassa a következő parancsot:
+Ha az Azure CloudShellt használja, a kubectl már telepítve van. A helyi telepítéséhez futtassa a következő parancsot:
 
 ```azurecli
 az aks install-cli
@@ -61,13 +61,13 @@ az aks install-cli
 
 ## <a name="connect-with-kubectl"></a>Kapcsolódás a kubectl parancssori ügyfélhez
 
-A Kubernetes fürthöz való kapcsolódás kubectl konfigurálásához futtassa a következő parancsot:
+A kubectl a Kubernetes-fürthöz való csatlakozásra konfigurálásához futtassa a következő parancsot:
 
 ```azurecli
-az aks get-credentials --resource-group=myResourceGroup --name=myK8sCluster
+az aks get-credentials --resource-group=myResourceGroup --name=myAKSCluster
 ```
 
-Ellenőrizze a kapcsolatot a fürthöz, futtassa a [kubectl beolvasása csomópontok] [ kubectl-get] parancsot.
+A fürthöz való csatlakozás ellenőrzéséhez futtassa a [kubectl get nodes][kubectl-get] parancsot.
 
 ```azurecli
 kubectl get nodes
@@ -77,24 +77,24 @@ Kimenet:
 
 ```
 NAME                          STATUS    AGE       VERSION
-k8s-myk8scluster-36346190-0   Ready     49m       v1.7.7
+k8s-myAKSCluster-36346190-0   Ready     49m       v1.7.7
 ```
 
-Oktatóanyag befejezése után következő rendelkezik készen áll a munkaterhelések AKS fürttel. A következő útmutatókból egy több tároló alkalmazás üzemel a fürthöz, horizontálisan, frissítése, és figyeli.
+Az oktatóanyag elvégzésével rendelkezésére áll majd egy számítási feladatok végrehajtására kész AKS-fürt. Az ezt követő oktatóanyagokban egy többtárolós alkalmazást helyezünk üzembe a fürtön, majd elvégezzük annak horizontális skálázását, frissítését és monitorozását.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban Kubernetes fürt AKS lett telepítve. A következő lépéseket hajtotta végre:
+Ebben az oktatóanyagban egy Kubernetes-fürtöt helyeztünk üzembe az AKS-ben. A következő lépéseket hajtotta végre:
 
 > [!div class="checklist"]
-> * Kubernetes AKS fürt telepítése
-> * A Kubernetes CLI (kubectl) telepítése
-> * Konfigurált kubectl
+> * Üzembe helyezett egy Kubernetes AKS-fürtöt
+> * Telepítette a Kubernetes parancssori felületet (kubectl)
+> * Konfigurálta a kubectl parancssori felületet
 
-Továbblépés a következő oktatóanyag fürtben futó alkalmazás megismeréséhez.
+Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan futtathatók alkalmazások a fürtön.
 
 > [!div class="nextstepaction"]
-> [Kubernetes az alkalmazás központi telepítése][aks-tutorial-deploy-app]
+> [Alkalmazások üzembe helyezése a Kubernetesben][aks-tutorial-deploy-app]
 
 <!-- LINKS - external -->
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
