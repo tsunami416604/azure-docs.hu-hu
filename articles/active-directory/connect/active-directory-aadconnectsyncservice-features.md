@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: e939c6a53a1154b23431581e789605d83e849fe2
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: b716e553f7c4c11f6d566b43d771217fdf4b3a93
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Az Azure AD Connect szinkronizálási szolgáltatások
 Az Azure AD Connect szinkronizálási szolgáltatás két részből áll:
@@ -28,7 +28,7 @@ Az Azure AD Connect szinkronizálási szolgáltatás két részből áll:
 
 Ez a témakör azt ismerteti, hogyan a következő funkcióit a **az Azure AD Connect szinkronizálási szolgáltatás** munka, és hogyan konfigurálhatja azokat a Windows PowerShell használatával.
 
-Ezek a beállítások szerint úgy vannak konfigurálva a [Active Directory modul Windows Powershellhez készült Azure](http://aka.ms/aadposh). Külön letölteni és telepíteni azt az Azure AD Connect. Rendszerben az ebben a témakörben a parancsmagokat a [2016. március kiadásban (build 9031.1)](http://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx#Version_9031_1). Ha ebben a témakörben a parancsmagokat nem rendelkezik, vagy nem tud létrehozni ugyanazt az eredményt, majd győződjön meg arról, a legújabb verzióját futtatják.
+Ezek a beállítások szerint úgy vannak konfigurálva a [Active Directory modul Windows Powershellhez készült Azure](https://aka.ms/aadposh). Külön letölteni és telepíteni azt az Azure AD Connect. Rendszerben az ebben a témakörben a parancsmagokat a [2016. március kiadásban (build 9031.1)](http://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx#Version_9031_1). Ha ebben a témakörben a parancsmagokat nem rendelkezik, vagy nem tud létrehozni ugyanazt az eredményt, majd győződjön meg arról, a legújabb verzióját futtatják.
 
 Az Azure AD-címtár konfiguráció megtekintéséhez futtassa `Get-MsolDirSyncFeatures`.  
 ![Get-MsolDirSyncFeatures result](./media/active-directory-aadconnectsyncservice-features/getmsoldirsyncfeatures.png)

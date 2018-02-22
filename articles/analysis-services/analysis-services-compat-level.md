@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 02/14/2018
 ms.author: owend
-ms.openlocfilehash: 41bf697cd1d91ea0ba56ed6fad0e5b9c442ecec2
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: a07514c7734f3cd4be1e11a984151abb8ee3f23d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="compatibility-level-for-analysis-services-tabular-models"></a>Az Analysis Services rendszerbeli táblázatos modellek kompatibilitási szintjének
 
@@ -53,6 +53,6 @@ A legfrissebb kompatibilitási szintet a 1 400. Ez a szint az SQL Server 2017 An
   
  Ez a tulajdonság meghatározza a legmagasabb szintű kompatibilitási egy adatbázist, amely a kiszolgálón (kivéve az előzetes verzió) fog futni. A támogatott kompatibilitási szintje nem módosítható.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
   [A modell létrehozása Azure-portálon](analysis-services-create-model-portal.md)   
   [Analysis Services kezelése](analysis-services-manage.md)  

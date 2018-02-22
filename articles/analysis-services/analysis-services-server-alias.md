@@ -12,15 +12,15 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 02/14/2018
 ms.author: owend
-ms.openlocfilehash: a947dde1551c653faa54f088c1712c41c7657aa0
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: e0119580c4128ffd237127a62e29dac34297da5d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="alias-server-names"></a>Másodlagos kiszolgálók nevei
+# <a name="alias-server-names"></a>Alias server names
 
 A kiszolgáló neve alias használatával a felhasználók kapcsolódhatnak az Azure Analysis Services-kiszolgáló egy rövidebb a *alias* helyett a kiszolgáló nevét. Egy ügyfélalkalmazás kapcsolódáskor az alias egy végpont használatával van megadva a **hivatkozás: / /** protokoll formátumban. A végpont használata esetén csatlakozhassanak majd a tényleges kiszolgáló nevét adja vissza.
 
@@ -39,7 +39,7 @@ Ha egy ügyfél, a másodlagos kiszolgáló nevét is meg kell adni használatá
 
 ![A Power BI Desktop-kapcsolat](media/analysis-services-alias/aas-alias-connect-pbid.png)
 
-## <a name="create-an-alias"></a>-Alias létrehozása
+## <a name="create-an-alias"></a>Alias létrehozása
 
 Hozzon létre egy alias végpontot, használhatja bármelyik módszert, amely egy érvényes Azure Analysis Services-kiszolgáló nevét adja vissza. Például egy fájl az Azure Blob Storage valós kiszolgálót tartalmazó mutató hivatkozás neve, vagy hozzon létre és ASP.NET Web Forms keretrendszerre alkalmazás közzététele.
 
@@ -58,7 +58,7 @@ protected void Page_Load(object sender, EventArgs e)
 }
 ```
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 [Ügyfél-függvénytárak](analysis-services-data-providers.md)   
 [Csatlakoztassa a Power BI Desktop](analysis-services-connect-pbi.md)

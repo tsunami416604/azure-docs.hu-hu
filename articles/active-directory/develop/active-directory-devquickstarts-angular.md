@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d46f04a3e9fdb1beaf11c769ecdd7b807c5f817f
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: 51734f5b39e9ca8af65048f2a7efd5c61cd53204
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-ad-angularjs-getting-started"></a>Ismerkedés az Azure AD AngularJS
 
@@ -48,7 +48,7 @@ Ahhoz, hogy az alkalmazás hitelesíti a felhasználókat, és a jogkivonatok le
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Ha be van jelentkezve több könyvtárak, szükség lehet annak érdekében, hogy a megfelelő könyvtárban megtekintésekor. Ehhez a felső eszköztáron kattintson a fiókját. Az a **Directory** menüben válassza ki az Azure AD-bérlőt, ahová az alkalmazás regisztrálásához.
-3. Kattintson a **több szolgáltatások** a bal oldali ablaktáblán, és válassza a **Azure Active Directory**.
+3. Kattintson a **minden szolgáltatás** a bal oldali ablaktáblán, és válassza a **Azure Active Directory**.
 4. Kattintson a **App regisztrációk**, majd válassza ki **Hozzáadás**.
 5. Kövesse az utasításokat, és hozzon létre egy új webalkalmazás és/vagy webes API:
   * **Név** az alkalmazás a felhasználók számára ismerteti.
@@ -78,8 +78,8 @@ Kezdje az adal.js hozzáadása a TodoSPA projekt a Csomagkezelő konzol segíts�
 
 ### <a name="configure-the-back-end-server"></a>A háttér-kiszolgáló konfigurálása
 A egyoldalas alkalmazások háttér-való tegye lista API-t fogadni a böngészőből a háttér kell konfigurációs adatait az alkalmazás regisztrálása. A TodoSPA projektben nyissa meg a `web.config`. Cserélje le az értékeket az elemek a `<appSettings>` szakaszban az Azure portálon használt értékeknek megfelelően. A kód minden alkalommal ADAL hivatkozik ezeket az értékeket.
-  * `ida:Tenant`az Azure AD bérlője – például a contoso.onmicrosoft.com tartomány.
-  * `ida:Audience`az ügyfél-Azonosítót, az alkalmazás a portálról másolt van.
+  * `ida:Tenant` az Azure AD bérlője – például a contoso.onmicrosoft.com tartomány.
+  * `ida:Audience` az ügyfél-Azonosítót, az alkalmazás a portálról másolt van.
 
 ## <a name="step-3-use-adal-to-help-secure-pages-in-the-single-page-app"></a>3. lépés: Használja az alkalmazás biztonságos lapja segítségével ADAL
 Adal.js jól integrálható az AngularJS útvonal és a HTTP-szolgáltatók, az alkalmazás egyoldalas segíthet a biztonságos egyéni nézeteket.

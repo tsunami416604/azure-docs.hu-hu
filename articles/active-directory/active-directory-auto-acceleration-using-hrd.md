@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: it-pro
 ms.date: 11/09/2017
 ms.author: billmath
-ms.openlocfilehash: e2e6e5c40dc4a9f67f94c45f8394512db3f777f5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: deaa52a062eb01450f760324e01e520fcbe894e1
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-sign-in-auto-acceleration-for-an-application-by-using-a-home-realm-discovery-policy"></a>Bejelentkezési automatikus-gyorsítás az alkalmazás konfigurálása Hitelesítőtartományának feltárási házirendek használatával
 
@@ -35,7 +35,7 @@ A felhasználó hitelesítését a következő helyek valamelyikén kell venni l
 
 -  A helyszíni identitásszolgáltató például az Active Directory összevonási szolgáltatások (AD FS).
 
-## <a name="auto-acceleration"></a>Automatikus-gyorsulás 
+## <a name="auto-acceleration"></a>Auto-acceleration 
 Egyes szervezetek konfigurálása az Azure Active Directory-bérlő egy másik IdP, például az AD FS felhasználói hitelesítés összevonni kívánt.  
 
 Ezekben az esetekben amikor a felhasználó bejelentkezhet egy alkalmazásba, először először jelenjenek meg ezek az az Azure AD bejelentkezési oldalára. Az egyszerű Felhasználónevük beírt, miután azok majd kerül a kiállító terjesztési hely bejelentkezési oldal. Bizonyos körülmények között a rendszergazdák előfordulhat, hogy szeretné, hogy át tudja irányítani a felhasználók számára a bejelentkezési lapon, ha azok most jelentkezik be bizonyos alkalmazásokat. 
@@ -83,9 +83,9 @@ A bejelentkezési automatikus-gyorsítás beállítása egy alkalmazás három l
 
 1. Az automatikus-gyorsítás HRD házirend létrehozása.
 
-2. A szolgáltatás tagot, amelyhez csatolni a szabályzat keresése.
+2. A szolgáltatás egyszerű, amelyhez csatolni a szabályzat keresése.
 
-3. A szabályzat csatolása a szolgáltatás elvet. Házirendek előfordulhat, hogy létrehozott egy bérlőt, de nem rendelkeznek hatással, amíg egy entitás vannak csatolva. 
+3. A szabályzat csatolása az egyszerű szolgáltatásnév. Házirendek előfordulhat, hogy létrehozott egy bérlőt, de nem rendelkeznek hatással, amíg egy entitás vannak csatolva. 
 
 Egy HRD házirend csatlakoztatható egy egyszerű szolgáltatást, és egyszerre csak egy HRD házirend egy adott entitás aktív lehet.  
 
@@ -170,12 +170,12 @@ Get-AzureADPolicy
 ```
 
 
-Miután egy HRD házirend automatikus-gyorsító engedélyezéséhez hozzá lehet rendelni több alkalmazás szolgáltatás alapelveket.
+Miután egy HRD házirend automatikus-gyorsító engedélyezéséhez hozzá lehet rendelni a több alkalmazás szolgáltatásnevekről.
 
 #### <a name="step-2-locate-the-service-principal-to-which-to-assign-the-policy"></a>2. lépés:, Keresse meg a szolgáltatás egyszerű, amelyhez a házirend kijelölése  
 Van szüksége a **ObjectID** a szolgáltatás rendszerbiztonsági tagot, amelyhez hozzá szeretné a házirendet. Többféleképpen is található a **ObjectID** szolgáltatás rendszerbiztonsági tagot.    
 
-A portál is használhatja, vagy lekérheti [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). Ön is végrehajthatja a [Graph Explorer eszköz](https://graphexplorer.cloudapp.net/) és a szervezet szolgáltatásnevekről megtekintéséhez jelentkezzen be az Azure AD-fiókot. PowerShell használ, mert a szolgáltatás alapelvek és azok azonosítók listázására használható a get-AzureADServicePrincipal parancsmag.
+A portál is használhatja, vagy lekérheti [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). Ön is végrehajthatja a [Graph Explorer eszköz](https://graphexplorer.cloudapp.net/) és a szervezet szolgáltatásnevekről megtekintéséhez jelentkezzen be az Azure AD-fiókot. PowerShell használ, mert a get-AzureADServicePrincipal parancsmag segítségével kilistázhatja a szolgáltatásnevekről és azonosítók.
 
 #### <a name="step-3-assign-the-policy-to-your-service-principal"></a>3. lépés: A házirend hozzárendelése az egyszerű szolgáltatásnév  
 Miután a **ObjectID** , az egyszerű szolgáltatás, amelynek automatikus-gyorsítás konfigurálni szeretné az alkalmazás, a következő parancsot. Ez a parancs a HRD-házirendet, amely a 2. lépésben megkeresett egyszerű az 1. lépésben létrehozott társítja.
@@ -226,7 +226,7 @@ Remove-AzureADApplicationPolicy -ObjectId <ObjectId of the Service Principal>  -
 ``` powershell
 Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of the Policy>
 ```
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Az Azure AD hitelesítési működésével kapcsolatos további információkért lásd: [hitelesítési forgatókönyvek az Azure AD](develop/active-directory-authentication-scenarios.md).
 - A felhasználó egyszeri bejelentkezést kapcsolatos további információkért lásd: [alkalmazások elérése és az egyszeri bejelentkezés az Azure Active Directoryval](active-directory-enterprise-apps-manage-sso.md).
 - Látogasson el a [Active Directory fejlesztői útmutatója](develop/active-directory-developers-guide.md) minden fejlesztéssel kapcsolatos tartalom áttekintését.

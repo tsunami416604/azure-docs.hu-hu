@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: curtand
 ms.reviewer: vincesm
-ms.openlocfilehash: 83d23323f050f670680499ecb428c07c94096418
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 880eaedcba2c0cdfe057ddb2460cf6a19bf8298e
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="default-user-permissions-in-azure-active-directory"></a>Alapértelmezett felhasználói engedélyek az Azure Active Directoryban
 
@@ -59,7 +59,7 @@ Regisztrálása (létrehozás) alkalmazások | Ezt a beállítást nem megakadá
 Rendszergazdák és a Vendég meghívó a szerepkörben levő felhasználók kérhetnek a vendégek | Ezt a beállítást nem a minden felhasználó hívja fel a vendégek nem. Tekintse meg az alapértelmezett tag felhasználók engedélyeinek konfigurálásához. További információkért lásd: [alkalmazások, engedélyek és az Azure Active Directoryban hozzájárulási](active-directory-apps-permissions-consent.md).
 Tagok kérhetnek a vendégek | Beállítás a nem a felhasználó hívja fel a vendégek nem. Globális rendszergazdák, a felhasználó a rendszergazdák és a Vendég Inviters is a vendégek meghívott. További információkért lásd: [alkalmazások, engedélyek és az Azure Active Directoryban hozzájárulási](active-directory-apps-permissions-consent.md).
 Az Azure AD felügyeleti portálhoz való hozzáférés korlátozása | Ezt a beállítást nem felhasználók nem tudnak hozzáférni az Azure Active Directory portálon.
-Olvasás a más felhasználók | További információkért lásd: [alkalmazások, engedélyek és az Azure Active Directoryban hozzájárulási](active-directory-apps-permissions-consent.md).
+Olvasás a más felhasználók | A beállítás csak akkor érhető el a PowerShell. $False értékre állítja megakadályozza, hogy az összes nem rendszergazda felhasználói információkért olvasva a könyvtárból. Ez nem akadályozza meg a olvasási felhasználói információkért az egyéb Microsoft-szolgáltatásokat, például az Exchange online-hoz. Célja, hogy ez a beállítás a különleges körülmények között, és a $false értékre ez nem ajánlott beállítás.
 
 ## <a name="object-ownership"></a>Objektum tulajdonjogának
 

@@ -14,15 +14,15 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 01/31/2018
 ms.author: elbutter;barbkess
-ms.openlocfilehash: cbe2f2d17f309e01e831aa9ee31e01e044896d10
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 6b86042ed6b95ba49fa2089ba36b1dbe9a61cc40
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-the-azure-portal"></a>Gyors üzembe helyezés: Méretezési számítási az Azure SQL Data Warehouse az Azure-portálon
 
-Az Azure-portálon az Azure SQL Data Warehouse számítás méretezése. A jobb teljesítmény számítási kibővítési vagy skálája vissza számítási költségek csökkentése érdekében. 
+Az Azure-portálon az Azure SQL Data Warehouse számítás méretezése. [Horizontális felskálázás számítási](sql-data-warehouse-manage-compute-overview.md) jobb teljesítményt vagy skálája biztonsági számítási költségek csökkentése érdekében. 
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
@@ -34,7 +34,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 Amely már, vagy használjon adatraktár méretezheti [gyors üzembe helyezés: hozzon létre, és csatlakozzon - portál](create-data-warehouse-portal.md) nevű data warehouse létrehozása az **mySampleDataWarehouse**.  A gyors üzembe helyezés méretezi **mySampleDataWarehouse**.
 
-## <a name="scale-compute"></a>Skála számítási
+## <a name="scale-compute"></a>Számítások méretezése
 
 Az SQL Data Warehouse növelheti vagy csökkentheti a számítási erőforrásokat adattárházegységek beállításával. A [létrehozása és a Connect - portál](create-data-warehouse-portal.md) létrehozott **mySampleDataWarehouse** és 400 dwu-k inicializálása azt. Az alábbi lépéseket, állítsa be a dwu-k a **mySampleDataWarehouse**.
 

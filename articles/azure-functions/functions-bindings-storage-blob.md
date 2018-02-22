@@ -13,13 +13,13 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 10/27/2017
+ms.date: 02/12/2018
 ms.author: glenga
-ms.openlocfilehash: 120a65a271291b75661d7d070cbd4a7222edd18a
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 9294d19ea78a2b9cf4282d627eddd16e6588d3ee
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Az Azure Functions az Azure Blob storage kötések
 
@@ -204,7 +204,7 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**típusa** | n/a | meg kell `blobTrigger`. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon.|
+|**Típusa** | n/a | meg kell `blobTrigger`. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon.|
 |**direction** | n/a | meg kell `in`. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon. A kivételeket jeleztük a [használati](#trigger---usage) szakasz. |
 |**name** | n/a | A blob függvény kódban jelölő neve. | 
 |**path** | **BlobPath** |A tároló figyelésére.  Lehetséges, hogy egy [blob mintát](#trigger-blob-name-patterns). | 
@@ -220,20 +220,29 @@ C# és C# a parancsfájlt, nyissa meg a blobadatokat metódusparaméter használ
 * `TextReader`
 * `Byte[]`
 * `string`
-* `ICloudBlob`("inout" kötés irányban szükséges *function.json*)
-* `CloudBlockBlob`("inout" kötés irányban szükséges *function.json*)
-* `CloudPageBlob`("inout" kötés irányban szükséges *function.json*)
-* `CloudAppendBlob`("inout" kötés irányban szükséges *function.json*)
+* `ICloudBlob` ("inout" kötés irányban szükséges *function.json*)
+* `CloudBlockBlob` ("inout" kötés irányban szükséges *function.json*)
+* `CloudPageBlob` ("inout" kötés irányban szükséges *function.json*)
+* `CloudAppendBlob` ("inout" kötés irányban szükséges *function.json*)
 
 Amint, néhány, a következő típusú szükséges egy `inout` irányban kötés *function.json*. Ebben az irányban nem támogatja a szokásos szerkesztő az Azure portálon, így a speciális szerkesztő kell használni.
 
-Szöveges BLOB várható, ha kell kötni a `string` típusa. Ez csak akkor javasolt, ha a blob mérete kisebb, mint a teljes blob tartalmát a memóriába betöltött. Általában célszerű használni egy `Stream` vagy `CloudBlockBlob` típusa.
+Szöveges BLOB várható, ha kell kötni a `string` típusa. Ez csak akkor javasolt, ha a blob mérete kisebb, mint a teljes blob tartalmát a memóriába betöltött. Általában célszerű használni egy `Stream` vagy `CloudBlockBlob` típusa. További információkért lásd: [egyidejűség-és memóriahasználatát](#trigger---concurrency-and-memory-usage) című cikkben.
 
 JavaScript, nyissa meg a bemeneti blob adatok `context.bindings.<name>`.
 
 ## <a name="trigger---blob-name-patterns"></a>Eseményindító - blob neve minták
 
-A blob neve mintát is megadhat a `path` tulajdonság *function.json* vagy a `BlobTrigger` attribútum konstruktora. A minta lehet egy [szűrőt, vagy kötési kifejezés](functions-triggers-bindings.md#binding-expressions-and-patterns).
+A blob neve mintát is megadhat a `path` tulajdonság *function.json* vagy a `BlobTrigger` attribútum konstruktora. A minta lehet egy [szűrőt, vagy kötési kifejezés](functions-triggers-bindings.md#binding-expressions-and-patterns). A következő szakaszok példákat biztosítanak.
+
+### <a name="get-file-name-and-extension"></a>Get-fájl nevét és kiterjesztését
+
+A következő példa bemutatja, hogyan lehet kötést létrehozni a blob-fájl neve és a bővítmény külön-külön:
+
+```json
+"path": "input/{blobname}.{blobextension}",
+```
+Ha a blob neve *eredeti-Blob1.txt*, értékét a `blobname` és `blobextension` változók a funkciókódot *eredeti-Blob1* és *txt*.
 
 ### <a name="filter-on-blob-name"></a>A blob neve szűrése
 
@@ -262,15 +271,6 @@ A fájlnevekben kapcsos zárójelek kereséséhez escape a zárójelek két zár
 ```
 
 Ha a blob neve *{20140101}-soundfile.mp3*, a `name` változó a funkciókódot érték *soundfile.mp3*. 
-
-### <a name="get-file-name-and-extension"></a>Get-fájl nevét és kiterjesztését
-
-A következő példa bemutatja, hogyan lehet kötést létrehozni a blob-fájl neve és a bővítmény külön-külön:
-
-```json
-"path": "input/{blobname}.{blobextension}",
-```
-Ha a blob neve *eredeti-Blob1.txt*, értékét a `blobname` és `blobextension` változók a funkciókódot *eredeti-Blob1* és *txt*.
 
 ## <a name="trigger---metadata"></a>Eseményindító - metaadatok
 
@@ -309,6 +309,14 @@ Minden 5 próbálkozás sikertelen lesz, ha az Azure Functions ad hozzá egy üz
 * ContainerName
 * BlobName
 * ETag (például egy blob verziójának azonosítója: "0x8D1DC6E70A277EF")
+
+## <a name="trigger---concurrency-and-memory-usage"></a>Eseményindító - feldolgozási és a memóriahasználat
+
+A blob eseményindító várólista belső használja, így maximális száma párhuzamos függvény meghívásához vezérli a [host.json várólisták konfiguráció](functions-host-json.md#queues). Az alapértelmezett beállításokat 24 indítások való egyidejű korlátozza. Ezt a határt külön vonatkozik minden funkció, amely egy blob eseményindítót használ.
+
+[A felhasználási terv](functions-scale.md#how-the-consumption-plan-works) egy függvény alkalmazást egy virtuális gépen (VM) 1,5 GB memória korlátozza. Memória használt egyes párhuzamosan végrehajtott függvény példányai és a funkciók futtatókörnyezet magát. Ha egy blob-eseményindítóval aktivált függvény a teljes blob betölti a memóriába, használja a függvény csak a blobok maximális memória: 24 * blob maximális mérete. Például egy függvény alkalmazás három blob-eseményindítókkal aktivált függvényeket és az alapértelmezett beállításokkal rendelkezik maximális száma-VM egyidejűségi beállítása pedig 3 * 24 = 72 függvény meghívásához.
+
+JavaScript-funkcióként a teljes blob betölti a memóriába, és C# funkciók hajtsa végre, ha Ön kötődni `string`.
 
 ## <a name="trigger---polling-for-large-containers"></a>Eseményindító - konténerek lekérdezése
 
@@ -479,7 +487,7 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**típusa** | n/a | meg kell `blob`. |
+|**Típusa** | n/a | meg kell `blob`. |
 |**direction** | n/a | meg kell `in`. A kivételeket jeleztük a [használati](#input---usage) szakasz. |
 |**name** | n/a | A blob függvény kódban jelölő neve.|
 |**path** |**BlobPath** | A blob elérési útja. | 
@@ -498,10 +506,10 @@ C# osztálykönyvtárakhoz és C# a parancsfájlt, nyissa meg a blob metóduspar
 * `Stream`
 * `CloudBlobContainer`
 * `CloudBlobDirectory`
-* `ICloudBlob`("inout" kötés irányban szükséges *function.json*)
-* `CloudBlockBlob`("inout" kötés irányban szükséges *function.json*)
-* `CloudPageBlob`("inout" kötés irányban szükséges *function.json*)
-* `CloudAppendBlob`("inout" kötés irányban szükséges *function.json*)
+* `ICloudBlob` ("inout" kötés irányban szükséges *function.json*)
+* `CloudBlockBlob` ("inout" kötés irányban szükséges *function.json*)
+* `CloudPageBlob` ("inout" kötés irányban szükséges *function.json*)
+* `CloudAppendBlob` ("inout" kötés irányban szükséges *function.json*)
 
 Amint, néhány, a következő típusú szükséges egy `inout` irányban kötés *function.json*. Ebben az irányban nem támogatja a szokásos szerkesztő az Azure portálon, így a speciális szerkesztő kell használni.
 
@@ -690,7 +698,7 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**típusa** | n/a | meg kell `blob`. |
+|**Típusa** | n/a | meg kell `blob`. |
 |**direction** | n/a | Meg kell `out` egy kimeneti kötés. A kivételeket jeleztük a [használati](#output---usage) szakasz. |
 |**name** | n/a | A blob függvény kódban jelölő neve.  Beállítása `$return` hivatkozni, a függvény visszatérési értéke.|
 |**path** |**BlobPath** | A blob elérési útja. | 
@@ -710,10 +718,10 @@ C# osztálykönyvtárakhoz és C# a parancsfájlt, nyissa meg a blob metóduspar
 * `Stream`
 * `CloudBlobContainer`
 * `CloudBlobDirectory`
-* `ICloudBlob`("inout" kötés irányban szükséges *function.json*)
-* `CloudBlockBlob`("inout" kötés irányban szükséges *function.json*)
-* `CloudPageBlob`("inout" kötés irányban szükséges *function.json*)
-* `CloudAppendBlob`("inout" kötés irányban szükséges *function.json*)
+* `ICloudBlob` ("inout" kötés irányban szükséges *function.json*)
+* `CloudBlockBlob` ("inout" kötés irányban szükséges *function.json*)
+* `CloudPageBlob` ("inout" kötés irányban szükséges *function.json*)
+* `CloudAppendBlob` ("inout" kötés irányban szükséges *function.json*)
 
 Amint, néhány, a következő típusú szükséges egy `inout` irányban kötés *function.json*. Ebben az irányban nem támogatja a szokásos szerkesztő az Azure portálon, így a speciális szerkesztő kell használni.
 

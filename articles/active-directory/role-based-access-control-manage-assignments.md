@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/04/2017
 ms.author: rolyon
-ms.openlocfilehash: e893aeeabf6a34707fbfe6576293a9e0726dd975
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 7794d25e9111a4c2dbe822f9618d0acdfb69a2d2
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="view-access-assignments-for-users-and-groups-in-the-azure-portal"></a>A felhasználók és csoportok az Azure portálon access-hozzárendelések megtekintése
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ További információért arról, hogy hogyan [az Azure-előfizetés erőforrás
 ## <a name="view-access-assignments"></a>Hozzáférés-hozzárendelések megtekintése
 A hozzáférés-hozzárendeléseinek egyetlen felhasználó vagy csoport kereséséhez indítsa el az Azure Active Directoryban a [Azure-portálon](http://portal.azure.com).
 
-1. Válassza ki **az Azure Active Directory**. Ha ezt a beállítást nem a navigációs listája látható, válassza ki a **több szolgáltatások** majd görgessen lefelé a Keresés **Azure Active Directory**.
+1. Válassza ki **az Azure Active Directory**. Ha ezt a beállítást nem a navigációs listája látható, válassza ki a **minden szolgáltatás** majd görgessen lefelé a Keresés **Azure Active Directory**.
 2. Válassza ki **felhasználók és csoportok**, majd **minden felhasználó** vagy **összes csoport**. Ehhez a példához azt összpontosítani egyéni felhasználók számára is.
     ![Kezelheti a felhasználókat és csoportokat az Azure Active Directory – képernyőkép](./media/role-based-access-control-manage-assignments/rbac_users_groups.png)
 3. Keresse meg a felhasználói név vagy felhasználónév.

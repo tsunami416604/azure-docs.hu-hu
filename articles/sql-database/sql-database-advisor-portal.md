@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 07/05/2017
 ms.author: sstein
-ms.openlocfilehash: 2b725c60dbcb9737b00ffd5fb43273b26dda1ea8
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: fe76be59d6ee09049ed8c1343d1a91e42646c262
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Keresse meg és teljesítmény javaslatok alkalmazása
 
@@ -27,12 +27,12 @@ Használhatja az Azure portálon található teljesítmény javaslatokat is opti
 
 ## <a name="viewing-recommendations"></a>Javaslatok megtekintése
 
-Megtekintheti és teljesítmény ajánlások érvényesek, kell a megfelelő [szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-what-is.md) engedélyek az Azure-ban. **Olvasó**, **SQL DB Contributor** engedélyekre van szükség a javaslatok, megtekintése és **tulajdonos**, **SQL DB Contributor** végre semmilyen műveletet; hozzon létre vagy dobjon el indexeket és indexlétrehozás megszakítását jogosultságokra van szükség.
+Megtekintheti és teljesítmény ajánlások érvényesek, kell a megfelelő [szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-what-is.md) engedélyek az Azure-ban. **Olvasó**, **SQL DB Contributor** engedélyekre van szükség a javaslatok, megtekintése és **tulajdonos**, **SQL DB Contributor** engedélyek szükségesek végre semmilyen műveletet; Hozzon létre vagy dobjon el indexeket, és indexlétrehozás megszakítását.
 
 Azure-portál teljesítménye javaslatok kereséséhez tegye a következőket:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Nyissa meg a **további szolgáltatások** > **SQL-adatbázisok**, és válassza ki az adatbázist.
+2. Nyissa meg a **minden szolgáltatás** > **SQL-adatbázisok**, és válassza ki az adatbázist.
 3. Navigáljon a **teljesítmény ajánlás** megtekintése a kijelölt adatbázishoz rendelkezésre álló ajánlott.
 
 Teljesítmény javaslatok hasonlít az alábbi ábrán látható egy táblázatban láthatók:

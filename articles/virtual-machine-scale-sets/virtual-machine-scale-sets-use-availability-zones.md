@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: iainfou
-ms.openlocfilehash: 397afc28b5f4c4f7f84afde13b6d031d83aaced4
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 2de214f604469025a8a4accde44359fea0ded7e9
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones-preview"></a>A rendelkezésre állási zónák (előzetes verzió) használó virtuálisgép-méretezési csoport létrehozása
 A datacenter-szintű meghibásodásával szembeni védelemhez a virtuálisgép-méretezési csoportok, a méretezési készlet rendelkezésre állásának zónák is létrehozhat. Azure-régiók, amely támogatja a rendelkezésre állási zónák legalább három különálló zónákra, mindegyiket a saját független a forrás-, hálózati és hűtési kapcsolja. További információkért lásd: [rendelkezésre állási zónák áttekintése](../availability-zones/az-overview.md).
@@ -30,13 +30,7 @@ A datacenter-szintű meghibásodásával szembeni védelemhez a virtuálisgép-m
 ## <a name="single-zone-and-zone-redundant-scale-sets"></a>Single-zóna és a zónaredundáns méretezési csoportok
 Amikor telepít egy virtuálisgép-méretezési csoport, dönthet úgy, egy rendelkezésre állási zóna régióban, illetve több zóna.
 
-A skála egy ugyanabban a zónában, vezérelt melyik zónába e Virtuálisgép-példányok futnak, és a méretezési felügyelt és csak a zónán belül autoscales létrehozásakor. Az alábbi ábra bemutatja, hogyan hozhat létre több single-zóna méretezési például beállítja a zónaredundáns terheléselosztót osztja el a forgalmat:
-
-![Single-zóna méretezési zónaredundáns terheléselosztó központi telepítése](media/virtual-machine-scale-sets-use-availability-zones/zonal-vmss.png)
-
-Zónaredundáns méretezési lehetővé teszi több zóna kiterjedő egyetlen méretezési készlet létrehozása. Virtuálisgép-példány létrehozásához szükségesek, alapértelmezés szerint ezek egyenletesen elosztását zónák között. Megzavarná a zónák telefonszámaira jöjjön létre, a méretezési készlet nem automatikusan horizontális felskálázás növelhető a kapacitása. Célszerű lehet a CPU és memória-használata alapján automatikus skálázási szabályok konfigurálása. Az automatikus skálázási szabályok lehetővé tenné a méretezési készletben válaszolni veszhetnek el, hogy egy zónát a Virtuálisgép-példány, a fennmaradó működési zónák új példányok kiterjesztése. Az alábbi ábrán egy egyetlen méretezési több zóna keresztül telepített példáját mutatja be:
-
-![Zonal redundáns méretezés állítsa be a központi telepítés és a terheléselosztó](media/virtual-machine-scale-sets-use-availability-zones/zone-redundant-vmss.png)
+A skála egy ugyanabban a zónában, vezérelt melyik zónába e Virtuálisgép-példányok futnak, és a méretezési felügyelt és csak a zónán belül autoscales létrehozásakor. Zónaredundáns méretezési lehetővé teszi több zóna kiterjedő egyetlen méretezési készlet létrehozása. Virtuálisgép-példány létrehozásához szükségesek, alapértelmezés szerint ezek egyenletesen elosztását zónák között. Megzavarná a zónák telefonszámaira jöjjön létre, a méretezési készlet nem automatikusan horizontális felskálázás növelhető a kapacitása. Célszerű lehet a CPU és memória-használata alapján automatikus skálázási szabályok konfigurálása. Az automatikus skálázási szabályok lehetővé tenné a méretezési készletben válaszolni veszhetnek el, hogy egy zónát a Virtuálisgép-példány, a fennmaradó működési zónák új példányok kiterjesztése.
 
 Rendelkezésre állási zónák használatára, a méretezési létre kell hozni egy [támogatott Azure-régiót](../availability-zones/az-overview.md#regions-that-support-availability-zones). Szükség [tekintse meg a rendelkezésre állási zónák regisztrálható](http://aka.ms/azenroll). Létrehozhat egy méretezési csoport, amely a rendelkezésre állási zónák használja az alábbi módszerek egyikével:
 

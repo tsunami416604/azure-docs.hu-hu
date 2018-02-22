@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: amberb
-ms.openlocfilehash: 27ff6c92904a0b32cd4a37c8b1930adc121a7231
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8bc63091dfba822f9839f61dd12c212154ba695d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="check-usage-of-free-services-included-with-your-azure-free-account"></a>Ellenőrizze használatát, az ingyenes Azure-fiókot az ingyenes szolgáltatásokat 
 
@@ -28,7 +28,7 @@ Van nem szó, a szabad az szolgáltatásait ingyenes Azure-fiókot, kivéve, ha 
 
 1.  Jelentkezzen be az [Azure portálra]( http://portal.azure.com).
 
-2.  Válassza ki a bal oldali navigációs alsó, **további szolgáltatások**.
+2.  A bal oldali navigációs területen válassza ki a **minden szolgáltatás**.
 
 3.  Válassza ki **előfizetések**.
 
@@ -63,7 +63,7 @@ Van nem szó, a szabad az szolgáltatásait ingyenes Azure-fiókot, kivéve, ha 
 
 A használati fájl az Azure-előfizetéshez tartozó részletes információkat tartalmaz. Azure Account Center a havi és a napi használat fájl is letölthető. Töltse le a használati fájlt, és megismerheti a szükséges hozzáférést, lásd: [számla beolvasása és a használati](billing-download-azure-invoice-daily-usage-date.md). A használati fájlban oszlopok, lásd: [a a használati feltételek megismeréséhez](billing-understand-your-usage.md). 
 
-A használati fájl is ingyenes és fizetős szolgáltatások használati adatait tartalmazza. Ingyenes szolgáltatás mérőszámok kellene **szabad** hozzáfűzi a mérési nevének végén. Szabad mérőszámok, nyissa meg a fájlt az excel-és szűrő a **mérő kategória oszlop** szöveget tartalmazó cellák **- szabad** (szöveges szűrési &rarr; Contains szűrő)&nbsp;
+A használati fájl is ingyenes és fizetős szolgáltatások használati adatait tartalmazza. Ingyenes szolgáltatás mérőszámok kellene **szabad** hozzáfűzi a mérési nevének végén. Szabad mérőszámok, nyissa meg a fájlt az excel-és szűrő a **mérő kategória oszlop** szöveget tartalmazó cellák **- szabad** (szöveges szűrési &rarr; Contains szűrő) &nbsp;
 
 ![Az ingyenes szolgáltatásokhoz használatát bemutató képernyőkép](./media/billing-check-usage-of-free-services/free-services-usage-csv.png)
 

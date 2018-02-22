@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: 099e3c259f0b63e4376847727eb8e185aeb37380
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: f4a1562983ffa68dbd6586a2ae3a569f766387b5
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-virtual-network-classic-with-multiple-subnets"></a>Hozzon létre egy virtuális hálózat (klasszikus), több alhálózattal
 
@@ -39,10 +39,10 @@ Létrehozhat egy virtuális hálózat (klasszikus) használatával a [Azure-port
 ## <a name="portal"></a>Portál
 
 1. A böngészőben, válassza a [Azure-portálon](https://portal.azure.com). Jelentkezzen be a [Azure-fiók](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account). Ha nincs Azure-fiókja, regisztráljon egy [ingyenes próbaverzióra](https://azure.microsoft.com/offers/ms-azr-0044p).
-2. Kattintson a **+ új** a portálon.
-3. Adja meg *virtuális hálózati* a a **keresése a piactéren** tetején lévő mezőbe a **új** panel, amely akkor jelenik meg.  Kattintson a **virtuális hálózati** amikor megjelenik a keresési eredmények között.
-4. Válassza ki **klasszikus** a a **telepítési modell kiválasztása** párbeszédpanel a **virtuális hálózati** panel, amely akkor jelenik meg, majd kattintson **létrehozása**. 
-5. Adja meg a következő értékeket a a **virtuális hálózat létrehozása (klasszikus)** panel megnyitásához, és kattintson **létrehozása**:
+2. Kattintson a **hozzon létre egy erőforrást** a portálon.
+3. Adja meg *virtuális hálózati* a a **keresése a piactéren** tetején lévő mezőbe a **új** ablaktábla akkor jelenik meg. Kattintson a **virtuális hálózati** amikor megjelenik a keresési eredmények között.
+4. Válassza ki **klasszikus** a a **telepítési modell kiválasztása** párbeszédpanel a **virtuális hálózati** ablaktábla akkor jelenik meg, majd kattintson **létrehozása**. 
+5. Adja meg a következő értékeket a a **virtuális hálózat létrehozása (klasszikus)** majd rákattinthat **létrehozása**:
 
     |Beállítás|Érték|
     |---|---|
@@ -55,13 +55,13 @@ Létrehozhat egy virtuális hálózat (klasszikus) használatával a [Azure-port
 
     Ha most ismerkedik az Azure-ba, további információ [erőforráscsoportok](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group), [előfizetések](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription), és [helyek](https://azure.microsoft.com/regions) (más néven *régiók*).
 4. A portál csak egy alhálózat is létrehozhat, ha a virtuális hálózat létrehozása. Ebben az oktatóanyagban létrehoz egy második alhálózatot a virtuális hálózat létrehozása után. Később létrehozhat az internetről elérhető erőforrások a **nyilvános** alhálózat. Is létrehozhat, amelyek nem érhetők el az interneten lévő erőforrásokat a **titkos** alhálózat. A második alhálózat létrehozásához adja meg a **myVnet** a a **keresési erőforrások** be az oldal tetején. Kattintson a **myVnet** amikor megjelenik a keresési eredmények között.
-5. Kattintson a **alhálózatok** (a a **beállítások** szakaszban) a a **virtuális hálózat létrehozása (klasszikus)** panel, amely akkor jelenik meg.
-6. Kattintson a **+ Hozzáadás** a a **myVnet - alhálózatok** panel, amely akkor jelenik meg.
-7. Adja meg **titkos** a **neve** a a **alhálózat hozzáadása** panelen. Adja meg **10.0.1.0/24** a **-címtartományt**.  Kattintson az **OK** gombra.
-8. Az a **myVnet - alhálózatok** panelen megtekintheti a **nyilvános** és **titkos** létrehozott alhálózatokat.
+5. Kattintson a **alhálózatok** (a a **beállítások** szakaszban) a a **virtuális hálózat létrehozása (klasszikus)** megjelenő panelen.
+6. Kattintson a **+ Hozzáadás** a a **myVnet - alhálózatok** ablaktábla akkor jelenik meg.
+7. Adja meg **titkos** a **neve** a a **alhálózat hozzáadása** ablaktáblán. Adja meg **10.0.1.0/24** a **-címtartományt**.  Kattintson az **OK** gombra.
+8. A a **myVnet - alhálózatok** panelen megtekintheti a **nyilvános** és **titkos** létrehozott alhálózatokat.
 9. **Nem kötelező**: Ez az oktatóanyag befejezése után előfordulhat, hogy törölni kívánja az erőforrásokat, amelyek hozott létre, így használati költségek:
-    - Kattintson a **áttekintése** a a **myVnet** panelen.
-    - Kattintson a **törlése** ikonra a **myVnet** panelen.
+    - Kattintson a **áttekintése** a a **myVnet** ablaktáblán.
+    - Kattintson a **törlése** ikonra a **myVnet** ablaktáblán.
     - A törlés megerősítéséhez kattintson **Igen** a a **virtuális hálózati Delete** mezőbe.
 
 ## <a name="azure-cli"></a>Azure CLI

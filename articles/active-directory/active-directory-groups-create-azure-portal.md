@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/04/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1be9947c43c70b7248201b9f470fb3cf5a11519e
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 656e0e16167a73ef3c3eab21d6896f5fc280e375
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-group-and-add-members-in-azure-active-directory"></a>Hozzon létre egy csoportot, és tagokat vehet az Azure Active Directoryban
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ Ez a cikk azt ismerteti, hogyan hozhat létre és tölthet egy új csoportot az 
 
 ## <a name="how-do-i-create-a-group"></a>Hogyan hozható létre csoport?
 1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com) egy olyan fiókkal, amely a címtár globális rendszergazdája.
-2. Válassza ki **további szolgáltatások**, adja meg **felhasználók és csoportok** a szövegmezőbe, majd válassza ki azt a **Enter**.
+2. Válassza ki **minden szolgáltatás**, adja meg **felhasználók és csoportok** a szövegmezőbe, majd válassza ki azt a **Enter**.
 
    ![Nyitó felhasználók kezelése](./media/active-directory-groups-create-azure-portal/search-user-management.png)
 3. Az a **felhasználók és csoportok** panelen válassza **összes csoport**.

@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 02/14/2018
 ms.author: owend
-ms.openlocfilehash: 53e946bba6bbd882e78b51ee8d222ab0d3ec056a
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 38bad0641d97028b435e05458d597bda378a8363
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="manage-database-roles-and-users"></a>Adatbázis-szerepkörök és a felhasználók kezelése
 
@@ -48,11 +48,11 @@ Amikor létrehoz egy táblázatos modell projektet, szerepköröket hozhat létr
   
     |Engedély|Leírás|  
     |----------------|-----------------|  
-    |**Egyik sem**|A tagok nem módosítható a modellsémát, és nem tudja lekérdezni az adatokat.|  
+    |Egyik sem|A tagok nem módosítható a modellsémát, és nem tudja lekérdezni az adatokat.|  
     |**Olvasás**|Tagok lekérdezheti adatokat (sorszűrőket alapján), de nem módosíthatja a modellsémát.|  
     |**Olvasás és a folyamat**|Tagok lekérdezheti adatokat (a sorszintű szűrők) és futtatási folyamat és a folyamat minden műveleteket, de nem módosítható a modellsémát.|  
     |**Folyamat**|Tagok folyamat és a folyamat minden műveletek is futtatható. A modell sémája nem módosítható és nem tudja lekérdezni az adatokat.|  
-    |**Rendszergazda**|Tagok modellsémát módosíthatja, és minden adat lekérdezése.|   
+    |Rendszergazda|Tagok modellsémát módosíthatja, és minden adat lekérdezése.|   
   
 5.  Ha a szerepkör létrehozása rendelkezik olvasási vagy olvasási és a folyamat engedélyt adhat hozzá sorszűrőket DAX-képlet használatával. Kattintson a **sorszűrőket** lapra, majd válasszon egy táblázatot, majd kattintson a **DAX-szűrő** mezőben, és írja be egy DAX-képletet.
   
@@ -138,15 +138,15 @@ A megadott sorok és a kapcsolódó sorok sorszűrőket alkalmazni. Egy tábláz
   
 |Tábla|DAX-kifejezés|  
 |-----------|--------------------|  
-|Régió|= Régió [Ország] = "USA"|  
+|Régió|=Region[Country]=”USA”|  
 |ProductCategory|= ProductCategory [Name] = "Kerékpárt"|  
-|Tranzakciók|= Tranzakciók [év] = 2016|  
+|Tranzakciók|=Transactions[Year]=2016|  
   
  A nettó hatása az tagok sornyi adatot, ha az ügyfél az USA, a termék kategóriáját kerékpárt, és az év 2016 lekérdezheti. Felhasználók kívül az USA tranzakciók, amelyek nincsenek kerékpárt vagy tranzakciók nem 2016 kivéve, ha egy másik szerepkör, amely engedélyt ad a tranzakciók nem tudja lekérdezni.
   
  A szűrővel *=FALSE()*, hogy megtagadja a hozzáférést a teljes táblázat összes sorát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
   [Kiszolgáló-rendszergazdák kezelése](analysis-services-server-admins.md)   
   [A PowerShell segítségével az Azure Analysis Services kezelése](analysis-services-powershell.md)  
   [Táblázatos modell Scripting (TMSL) nyelvi referencia](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)

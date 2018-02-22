@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: bb1dc88164aa7971427984b5956e00b1d343cab7
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: aec49b108c21b97646e622c47bf69728a81d6d33
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-remove-a-users-access-to-an-application"></a>A felhasználó hozzáférést egy alkalmazáshoz eltávolítása
 
-Ez a cikk segítenek megérteni, hogyan távolíthatja el egy felhasználó hozzáférést egy alkalmazáshoz.
+Ez a cikk segítségével megismerheti, hogyan távolíthatja el egy felhasználó hozzáférést egy alkalmazáshoz.
 
 ## <a name="i-want-to-remove-a-specific-users-or-groups-assignment-to-an-application"></a>Egy alkalmazás egy adott felhasználó vagy csoport-hozzárendelés eltávolítása
 
@@ -35,21 +35,21 @@ Minden felhasználói bejelentkezések alkalmazáshoz való letiltásához köve
 
 A **alkalmazás törlése**, kövesse az alábbi utasításokat:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazda** vagy **Co-rendszergazda segítségét.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazda** vagy **Co-rendszergazda segítségét.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
-4.  Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
+4.  Kattintson a **vállalati alkalmazások** Azure Active Directory bal oldali navigációs menüjében.
 
 5.  Kattintson a **összes alkalmazás** az alkalmazások listájának megtekintéséhez.
 
-   * Ha azt szeretné, hogy itt megjelennek az alkalmazás nem látja, használja a **szűrő** vezérlő tetején a **összes alkalmazások listáját** és állítsa be a **megjelenítése** lehetőséggel **összes alkalmazást.**
+   * Ha azt szeretné, hogy itt megjelennek az alkalmazás nem látja, használja a **szűrő** vezérlő tetején a **összes alkalmazások listáját** és állítsa be a **megjelenítése** lehetőséggel **összes Alkalmazások.**
 
 6.  Válassza ki a törölni kívánt alkalmazást.
 
-7.  Ha az alkalmazás betölt, kattintson **törlése** ikonra a felső alkalmazás **áttekintése** panelen.
+7.  Ha az alkalmazás betölt, kattintson **törlése** ikonra a felső alkalmazás **áttekintése** ablaktáblán.
 
 ## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>Szeretném tiltani az összes jövőbeni felhasználói hozzájárulás műveletek bármely alkalmazás
 
@@ -57,9 +57,9 @@ Felhasználói hozzájárulás letiltása, az a teljes címtár megakadályozhat
 
 A **tiltsa le a teljes címtár minden jövőbeni felhasználói hozzájárulás műveletei**, kövesse az alábbi utasításokat:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
@@ -70,5 +70,5 @@ A **tiltsa le a teljes címtár minden jövőbeni felhasználói hozzájárulás
 6.  Tiltsa le az összes jövőbeni felhasználói hozzájárulás műveletek úgy, hogy a **felhasználók is engedélyezi, hogy az alkalmazások hozzáférjenek az adataikhoz** kapcsolót **nem** , és kattintson a **mentése** gombra.
 
 
-# <a name="next-steps"></a>Következő lépések
+# <a name="next-steps"></a>További lépések
 [Az alkalmazásokhoz való hozzáférés kezelése](active-directory-managing-access-to-apps.md)

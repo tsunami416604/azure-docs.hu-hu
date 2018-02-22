@@ -11,71 +11,61 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2017
+ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 6f2fd5e4c1a51fe9d1652c9970bcd8d76b25ab60
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 501210c3fab2659deb9594e1bbd9aa51912187e9
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Az Azure API Management felhasználói fiókok kezelése
 Az API Management fejlesztők akkor teszi közzé az API Management használata API-k felhasználók. Ez az útmutató bemutatja, hogyan hozhat létre, és a fejlesztők meghívása a az API-k és termékek használatára, hogy elérhetővé számukra az API Management-példánnyal. A felhasználói fiókok kezelése programozott módon információkért lásd: a [felhasználói entitás](https://msdn.microsoft.com/library/azure/dn776330.aspx) dokumentációjában találhatók a [API Management REST](https://msdn.microsoft.com/library/azure/dn776326.aspx) hivatkozás.
 
-## <a name="create-developer"></a>Hozzon létre egy új fejlesztő
-Hozzon létre egy új fejlesztő, kattintson a **Publisher portal** az Azure portálon az API Management szolgáltatás. Ezzel továbblép az API Management közzétevő portáljára. Ha még nem hozott létre az API Management szolgáltatáspéldány, lásd: [hozzon létre egy API-kezelés szolgáltatás példányt][Create an API Management service instance].
+## <a name="prerequisites"></a>Előfeltételek
 
-![Közzétevő portál][api-management-management-console]
+Ez a cikk feladat-: [hozzon létre egy Azure API Management példányt](get-started-create-service-instance.md).
 
-Kattintson a **felhasználók** a a **API Management** a bal oldali menüben, majd **felhasználó hozzáadása**.
+[!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-![Fejlesztői létrehozása][api-management-create-developer]
+## <a name="create-developer"> </a>Hozzon létre egy új fejlesztő
 
-Adja meg a **E-mail**, **jelszó**, és **neve** a új fejlesztői, majd kattintson a **mentése**.
+Új felhasználó hozzáadásához kövesse a jelen szakaszban szereplő lépéseket:
 
-![Fejlesztői létrehozása][api-management-add-new-user]
+1. Válassza ki a **felhasználók** lap bal oldalán a képernyőn.
+2. Nyomja le az **+ Hozzáadás**.
+3. Adja meg a felhasználó megfelelő információkat.
+4. Nyomja meg az **Add** (Hozzáadás) gombot.
 
-Alapértelmezés szerint az újonnan létrehozott fejlesztői fiókok vannak **aktív**, és a társított a **fejlesztők** csoport.
+    ![Új felhasználó hozzáadása](./media/api-management-howto-create-or-invite-developers/api-management-create-developer.png)
 
-![Új fejlesztői][api-management-new-developer]
+Alapértelmezés szerint az újonnan létrehozott fejlesztői fiókok vannak **aktív**, és a társított a **fejlesztők** csoport. A fejlesztői fiókok egy **aktív** állapota az API-kat, amelyeknél az előfizetések összes eléréséhez használható. Az újonnan létrehozott fejlesztői társítandó további csoportokat, lásd: [csoportok társítása fejlesztők][How to associate groups with developers].
 
-A fejlesztői fiókok egy **aktív** állapota az API-kat, amelyeknél az előfizetések összes eléréséhez használható. Az újonnan létrehozott fejlesztői társítandó további csoportokat, lásd: [csoportok társítása fejlesztők][How to associate groups with developers].
+## <a name="invite-developer"> </a>Egy fejlesztő meghívása
+Meghívni egy fejlesztő, kövesse a jelen szakaszban szereplő lépéseket:
 
-## <a name="invite-developer"></a>Egy fejlesztő meghívása
-Egy fejlesztő, kattintson a **felhasználók** a a **API Management** a bal oldali menüben, majd **hívhat meg felhasználói**.
-
-![Fejlesztői meghívása][api-management-invite-developer]
-
-Adja meg a fejlesztői név és e-mail címét, és kattintson a **meghívása**.
-
-![Fejlesztői meghívása][api-management-invite-developer-window]
+1. Válassza ki a **felhasználók** lap bal oldalán a képernyőn.
+2. Nyomja le az **+ meghívása**.
 
 Egy megerősítő üzenet jelenik meg, de az újonnan meghívott fejlesztői nem szerepelnek a listán csak azok elfogadja a meghívót. 
-
-![Jóváhagyás meghívása][api-management-invite-developer-confirmation]
 
 Amikor egy fejlesztő felkérik, egy e-mailt küld a fejlesztőnek. Ez az e-mail sablon használatával jön létre, és testre szabható. További információkért lásd: [konfigurálás e-mail sablonok][Configure email templates].
 
 Ha elfogadja a meghívót, a fiók aktívvá válik.
 
-## <a name="block-developer"></a> Inaktiválja vagy újraaktiválásához fejlesztői fiók létrehozása
-Alapértelmezés szerint az újonnan létrehozott vagy a meghívott fejlesztői fiókok vannak **aktív**. Fejlesztői fiók létrehozása inaktiválásához kattintson **blokk**. Letiltott fejlesztői fiók létrehozása újraaktiválásához kattintson **aktiválás**. Letiltott fejlesztői fiók létrehozása nem a fejlesztői portálján érheti el és bármely API-k hívása. A felhasználói fiók törléséhez kattintson **törlése**.
+## <a name="block-developer"> </a> Fejlesztői fiók létrehozása újraaktiválása és inaktiválása
 
-![Blokk fejlesztői][api-management-new-developer]
+Alapértelmezés szerint az újonnan létrehozott vagy a meghívott fejlesztői fiókok vannak **aktív**. Fejlesztői fiók létrehozása inaktiválásához kattintson **blokk**. Letiltott fejlesztői fiók létrehozása újraaktiválásához kattintson **aktiválás**. Letiltott fejlesztői fiók létrehozása a nem fér hozzá a fejlesztői portálján, vagy minden API-k hívása. A felhasználói fiók törléséhez kattintson **törlése**.
+
+Felhasználó letiltása, kövesse az alábbi lépéseket.
+
+1. Válassza ki a **felhasználók** lap bal oldalán a képernyőn.
+2. Kattintson a letiltani kívánt felhasználó.
+3. Nyomja le az **blokk**.
 
 ## <a name="reset-a-user-password"></a>Felhasználói jelszó alaphelyzetbe állítása
-A felhasználói fiók jelszavának alaphelyzetbe állításához kattintson a fiók nevét.
-
-![Új jelszó létrehozása][api-management-view-developer]
-
-Kattintson a **jelszó-átállítási** elküld egy hivatkozást a felhasználót, hogy a jelszó alaphelyzetbe állítása.
-
-![Új jelszó létrehozása][api-management-reset-password]
 
 Felhasználói fiókok programozott módon dolgozni, tekintse meg a [felhasználói entitás](https://msdn.microsoft.com/library/azure/dn776330.aspx) dokumentációjában találhatók a [API Management REST](https://msdn.microsoft.com/library/azure/dn776326.aspx) hivatkozás. A felhasználói fiók jelszavának visszaállítása egy adott értékre, használhatja a [egy felhasználó frissítéséhez](https://msdn.microsoft.com/library/azure/dn776330.aspx#UpdateUser) műveletet, és adja meg a kívánt jelszót.
-
-## <a name="pending-verification"></a>Függőben lévő ellenőrzési
-![Függőben lévő ellenőrzési][api-management-pending-verification]
 
 ## <a name="next-steps"></a>Következő lépések
 A fejlesztői fiók létrehozása után szerepkörökhöz társítandó, és előfizetni termékek és API-kat. További információkért lásd: [létrehozásáról és-csoportok használata][How to create and use groups].

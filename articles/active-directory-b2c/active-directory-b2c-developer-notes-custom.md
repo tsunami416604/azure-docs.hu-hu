@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 10/13/2017
 ms.author: joroja
-ms.openlocfilehash: 064ccec58406e08ae68320b59fcf2a96952a41ee
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7f65ad324e1bf0887ea293254621466a2f1ddaff
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="release-notes-for-azure-active-directory-b2c-custom-policy-public-preview"></a>Az Azure Active Directory B2C egyéni házirend nyilvános előzetes kibocsátási megjegyzései
 Az egyéni házirend szolgáltatáskészlet már elérhető az összes Azure Active Directory B2C előzetes verzióját nyilvános értékelésre (az Azure AD B2C) ügyfelek. E szolgáltatáskészlet speciális identitás fejlesztők a legösszetettebb identitáskezelési megoldások kialakításának irányul.  
@@ -60,16 +60,16 @@ Teljes mértékben kihasználják a nyilvános előzetes verzióhoz, javasoljuk,
 ## <a name="features-by-stage-and-known-issues"></a>Szolgáltatások szakasz és ismert problémák
 Egyéni házirend/identitás élmény keretrendszer képességek folyamatos és gyors fejlesztés alatt áll.  Ebben a táblában funkciók/összetevő rendelkezésre állása index.
 
-Kérdéseit felteheti a Stack Overflow [aka.ms/aadb2cso](http://aka.ms/aadb2cso)
+Kérdéseit felteheti a Stack Overflow [https://aka.ms/aadb2cso](https://aka.ms/aadb2cso)
 
 
 ### <a name="identity-providers-tokens-protocols"></a>Identitás-szolgáltatók jogkivonatokat, protokollok
 Külső összetevőket és alkalmazások rendelkező csatolók
 
-| Szolgáltatás | Fejlesztői | Előnézet | FE | Megjegyzések |
+| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
 |---------------------------------------------|-------------|---------|----|-------|
 | IDP-OpenIDConnect |  | x |  | például Google + |
-| AZ OAUTH2-IDP |  | x |  | Ha például a Facebook-on  |
+| IDP-OAUTH2 |  | x |  | Ha például a Facebook-on  |
 | IDP-OAUTH1 |  | x |  | például a Twitter |
 | IDP-SAML |  | x |  | például Salesforce, az AD FS |
 | IDP-WSFED | x |  |  |  |
@@ -83,7 +83,7 @@ Külső összetevőket és alkalmazások rendelkező csatolók
 ### <a name="component-support"></a>Összetevő támogatása
 
 
-| Szolgáltatás | Fejlesztői | Előnézet | FE | Megjegyzések |
+| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
 |-------------------------------------------|-------------|---------|----|-------|
 | Azure Multi Factor Authentication |  | x |  |  |
 | Az Azure Active Directory helyi könyvtár |  | x |  |  |
@@ -94,12 +94,12 @@ Külső összetevőket és alkalmazások rendelkező csatolók
 
 ### <a name="content-definition"></a>Tartalom meghatározása
 
-| Szolgáltatás | Fejlesztői | Előnézet | FE | Megjegyzések |
+| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
 |-----------------------------------------------------------------------------|-------------|---------|----|-------|
 |   Hibalap, api.error |  | x |  |  |
 |   IDP kiválasztása lapon, a api.idpselections |  | x |  |  |
 |   Előfizetési, IDP telepítendő api.idpselections.signup |  | x |  |  |
-|   Elfelejtett jelszó, api.localaccountpasswordreset |  | x |  |  |
+|   Forgot Password, api.localaccountpasswordreset |  | x |  |  |
 |   Helyi fiók bejelentkezhet, api.localaccountsignin |  | x |  |  |
 |   Helyi fiók előfizetési, api.localaccountsignup |  | x |  |  |
 |   Többtényezős hitelesítés lap, api.phonefactor |  | x |  |  |
@@ -109,7 +109,7 @@ Külső összetevőket és alkalmazások rendelkező csatolók
 
 
 ### <a name="app-ief-integration"></a>Alkalmazás-IEF integráció
-| Szolgáltatás | Fejlesztői | Előnézet | FE | Megjegyzések |
+| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
 |--------------------------------------------------|-------------|---------|----|-------------------------------------------------|
 | Lekérdezési karakterlánc paraméter id_token_hint | x |  |  |  |
 | Lekérdezési karakterlánc paraméter domain_hint |  | x |  | rendelkezésre álló jogcímként, átadhatók IDP |
@@ -120,7 +120,7 @@ Külső összetevőket és alkalmazások rendelkező csatolók
 
 ### <a name="session-management"></a>Munkamenet-kezelés
 
-| Szolgáltatás | Fejlesztői | Előnézet | FE | Megjegyzések |
+| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
 |---------------------------------|-------------|---------|----|-------|
 | Egyszeri bejelentkezési munkamenet-szolgáltató |  | x |  |  |
 | Külső bejelentkezési munkamenet-szolgáltató |  | x |  |  |
@@ -128,20 +128,20 @@ Külső összetevőket és alkalmazások rendelkező csatolók
 
 
 ### <a name="security"></a>Biztonság
-| Szolgáltatás | Fejlesztői | Előnézet | FE | Megjegyzések |
+| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
 |---------------------------------------------|-------------|---------|----|-------|
 | Házirend kulcsok létrehozása, manuális, feltöltése |  | x |  |  |
 | Házirend kulcsok - RSA/Cert, titkos kulcsok |  | x |  |  |
 
 
 ### <a name="developer-interface"></a>Fejlesztői felület
-| Szolgáltatás | Fejlesztői | Előnézet | FE | Megjegyzések |
+| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
 |---------------------------------------------|-------------|---------|----|-------|
-| Az Azure portál – IEF UX |  | x |  |  |
+| Azure Portal-IEF UX |  | x |  |  |
 | Application Insights UserJourney naplók  |  | x |  |  |
 | Application Insights-eseménynaplók |x|  |  |  |
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Ismerkedés az egyéni házirendek](active-directory-b2c-get-started-custom.md).

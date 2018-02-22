@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
 ms.author: v-craic
-ms.openlocfilehash: 27a80ddb110ba47bf9c1284aa48d2f3af1a87145
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: c940f5646bc7845db7b774d7ada40b8105534d69
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-powershell"></a>Töltse fel a VHD-fájlt a tesztlabor a tárfiók PowerShell használatával
 
@@ -32,7 +32,7 @@ A következő lépések végigvezetik a VHD-fájl feltöltése a PowerShell hasz
 
 1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Válassza a **További szolgáltatások**, majd a **DevTest Labs** elemet a listából.
+1. Válassza ki **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából.
 
 1. Válassza ki a kívánt labor labs listájának megtekintéséhez.  
 

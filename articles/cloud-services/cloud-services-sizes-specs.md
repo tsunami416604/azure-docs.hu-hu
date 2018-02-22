@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 07/18/2017
 ms.author: adegeo
-ms.openlocfilehash: 7bef7643a989caee846f8235e024deb482f4b0a0
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 542632dc61f1acecd8ca8ac45fb29bfa6aa839c2
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="sizes-for-cloud-services"></a>A Felhőszolgáltatások mérete
 Ez a témakör ismerteti az elérhető méretek és a felhőalapú szolgáltatás szerepkörpéldányokat (webes és feldolgozói szerepkörök) beállításokat. Telepítési szempontok kell ügyelnie, ha tervezi, hogy használja ezeket az erőforrásokat is biztosít. Minden méretét helyezett Azonosítóval rendelkezik a [szolgáltatásdefiníciós fájl](cloud-services-model-and-package.md#csdef). Egyes árak érhetők el a [Cloud Services díjszabása](https://azure.microsoft.com/pricing/details/cloud-services/) lap.
@@ -59,7 +59,7 @@ A fogalom, az Azure számítási egység (ACU) lehetővé teszik az Azure termé
 | Termékváltozat-család | ACU/mag |
 | --- | --- |
 | [ExtraSmall](#a-series) |50 |
-| [Kis ExtraLarge](#a-series) |100 |
+| [Small-ExtraLarge](#a-series) |100 |
 | [A5-7](#a-series) |100 |
 | [A8-A11](#a-series) |225* |
 | [A v2](#av2-series) |100 |
@@ -97,8 +97,8 @@ További tudnivalókat és szempontokat, ezek mérete használatáról, tekintse
 
 | Méret            | Processzormagok | Memória: GiB  | Helyi merevlemez: GiB       | Hálózati adapterek max. száma/hálózati sávszélesség |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
-| A8 *             |8          | 56           | 1817                 | 2/magas |
-| A9-ES *             |16         | 112          | 1817                 | 4/nagyon magas |
+| A8*             |8          | 56           | 1817                 | 2/magas |
+| A9*             |16         | 112          | 1817                 | 4/nagyon magas |
 | A10             |8          | 56           | 1817                 | 2/magas |
 | A11             |16         | 112          | 1817                 | 4/nagyon magas |
 
@@ -147,23 +147,23 @@ További tudnivalókat és szempontokat, ezek mérete használatáról, tekintse
 
 | Méret            | Processzormagok | Memória: GiB   | Helyi SSD: GiB       | Hálózati adapterek max. száma/hálózati sávszélesség |
 |---------------- | --------- | ------------- | -------------------- | ---------------------------- |
-| Standard_D2_v3  | 2         | 8             | 16                   | 2/közepes |
-| Standard_D4_v3  | 4         | 16            | 32                   | 2/magas |
-| Standard_D8_v3  | 8         | 32            | 64                   | 4/magas |
-| Standard_D16_v3 | 16        | 64            | 128                  | 8/rendkívül magas |
-| Standard_D32_v3 | 32        | 128           | 256                  | 8/rendkívül magas |
-| Standard_D64_v3 | 64        | 256           | 512                  | 8/rendkívül magas |
+| Standard_D2_v3  | 2         | 8             | 50                   | 2/közepes |
+| Standard_D4_v3  | 4         | 16            | 100                  | 2/magas |
+| Standard_D8_v3  | 8         | 32            | 200                  | 4/magas |
+| Standard_D16_v3 | 16        | 64            | 400                  | 8/rendkívül magas |
+| Standard_D32_v3 | 32        | 128           | 800                  | 8/rendkívül magas |
+| Standard_D64_v3 | 64        | 256           | 1600                 | 8/rendkívül magas |
 
 ## <a name="ev3-series"></a>Ev3-sorozat
 
 | Méret            | Processzormagok | Memória: GiB   | Helyi SSD: GiB       | Hálózati adapterek max. száma/hálózati sávszélesség |
 |---------------- | --------- | ------------- | -------------------- | ---------------------------- |
-| Standard_E2_v3  | 2         | 16            | 32                   | 2/közepes |
-| Standard_E4_v3  | 4         | 32            | 64                   | 2/magas |
-| Standard_E8_v3  | 8         | 64            | 128                  | 4/magas |
-| Standard_E16_v3 | 16        | 128           | 256                  | 8/rendkívül magas |
-| Standard_E32_v3 | 32        | 256           | 512                  | 8/rendkívül magas |
-| Standard_E64_v3 | 64        | 432           | 864                  | 8/rendkívül magas |
+| Standard_E2_v3  | 2         | 16            | 50                   | 2/közepes |
+| Standard_E4_v3  | 4         | 32            | 100                  | 2/magas |
+| Standard_E8_v3  | 8         | 64            | 200                  | 4/magas |
+| Standard_E16_v3 | 16        | 128           | 400                  | 8/rendkívül magas |
+| Standard_E32_v3 | 32        | 256           | 800                  | 8/rendkívül magas |
+| Standard_E64_v3 | 64        | 432           | 1600                 | 8/rendkívül magas |
 
 
 ## <a name="g-series"></a>G-sorozat

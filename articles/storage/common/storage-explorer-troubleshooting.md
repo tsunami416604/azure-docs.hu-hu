@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/08/2017
 ms.author: delhan
-ms.openlocfilehash: 3187939fa813f941c2fe12a359df474a6c487c71
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 2f62de428d1915b1e070350a2837f24c3486f8c7
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Az Azure Tártallózó hibaelhárítási útmutató
 
-A Microsoft Azure Tártallózó (előzetes verzió) egy különálló alkalmazás, amelynek segítségével egyszerűen dolgozhat Azure Storage-adatokkal Windows, a macOS és a Linux. Az alkalmazás képes csatlakozni Storage-fiókok Azure, állami felhők és Azure verem működtetnek.
+A Microsoft Azure Tártallózó (előzetes verzió) egy különálló alkalmazás, amelynek segítségével egyszerűen dolgozhat Azure Storage-adatokkal Windows, a macOS és a Linux. Az alkalmazás Azure nemzeti felhők és Azure verem üzemeltetett Storage-fiókok is elérheti.
 
 Ez az útmutató a megoldások a Tártallózó tapasztalt gyakori problémákat foglalja össze.
 
@@ -59,7 +59,7 @@ Amikor Tártallózó egyik hibát észlel, azt már nem tudja, hogy a fogadott �
 
 6. Nyissa meg a Tártallózót, kattintson a **szerkesztése** > **SSL-tanúsítványok** > **importálási tanúsítványok**, és majd a fájlkiválasztóval található, válassza ki, majd nyissa meg a létrehozott .cer kiterjesztésű fájlokat.
 
-Ha nem talál meg minden önaláírt tanúsítványokat használ a fenti lépéseket, kapcsolatfelvétel a visszajelzés eszközzel további segítséget itt találhat.
+Ha nem találja az előző lépéseket követve bármely önaláírt tanúsítványokat, kapcsolatfelvétel a visszajelzés eszközzel további segítséget itt találhat.
 
 ### <a name="unable-to-retrieve-subscriptions"></a>Nem sikerült beolvasni az előfizetések
 
@@ -73,7 +73,7 @@ Ha nem tudja beolvasni az előfizetések sikeres bejelentkezés után, kövesse 
 
 - Próbálja meg eltávolítani, és olvasása a következő fiók.
 
-- Próbálja meg a következő fájlok eltávolítása a gyökérkönyvtár (Ez azt jelenti, hogy C:\Users\ContosoUser), majd újra adja hozzá a fiókhoz:
+- Próbálja meg a következő fájlok eltávolítása a gyökérkönyvtár (Ez azt jelenti, hogy C:\Users\ContosoUser), majd olvasása a következő fiók:
 
     - .adalcache
 
@@ -83,7 +83,7 @@ Ha nem tudja beolvasni az előfizetések sikeres bejelentkezés után, kövesse 
 
 - Tekintse meg a fejlesztői eszközök konzol (az F12 billentyű megnyomásával) hibaüzeneteket a bejelentkezés során:
 
-![Fejlesztői eszközök](./media/storage-explorer-troubleshooting/4022501_en_2.png)
+![fejlesztői eszközök](./media/storage-explorer-troubleshooting/4022501_en_2.png)
 
 ### <a name="unable-to-see-the-authentication-page"></a>Nem sikerült a hitelesítés oldal jelenik meg
 
@@ -113,10 +113,10 @@ Ha nem tudja eltávolítani egy fiókot, vagy az újrahitelesítés elemre hivat
 
     - /Felhasználók/ < sajat_nev >/Library/Applicaiton támogatási/StorageExplorer Mac rendszerre
 
-    - Linux ~/.config/StorageExplorer
+    - ~/.config/StorageExplorer for Linux
 
 > [!NOTE]
->  Adja meg újra a hitelesítő adatokat, ha törli ezeket a fájlokat kell.
+>  Ha ezeket a fájlokat töröl, szüksége lesz jelentkezzen be újra a a fiókjait.
 
 ## <a name="proxy-issues"></a>Proxy problémák
 
@@ -173,15 +173,23 @@ Ha a szolgáltatás egy SAS URL-cím segítségével, és ezt a hibát tapasztal
 
 - Ha a hozzáférési házirendek az SAS URL-cím alapú, győződjön meg arról, hogy a házirend nincs visszavonva.
 
-Ha a véletlenül egy SAS URL-cím érvénytelen csatolja, és nem választható le, kövesse az alábbi lépéseket:
+Ha véletlenül egy SAS URL-cím érvénytelen keresztül kapcsolódik, és nem választható le, kövesse az alábbi lépéseket:
 1.  A Tártallózó futtatásakor nyomja le az F12 billentyűt a fejlesztői eszközök ablak megnyitásához.
 2.  Kattintson az alkalmazás fülre, majd kattintson a helyi tároló > file:// a bal oldali fában.
-3.  A szolgáltatás típusa a problematikus SAS URI-társított kulcs található. Például ha a hibás SAS URI blob-tároló, keresse meg a "StorageExplorer_AddStorageServiceSAS_v1_blob" nevű kulcsot.
+3.  A szolgáltatás típusa a problematikus SAS URI-társított kulcs található. Ha a hibás SAS URI blob-tároló, keresse meg például a kulcs nevű `StorageExplorer_AddStorageServiceSAS_v1_blob`.
 4.  A kulcs értékének kell egy JSON-tömb. A hibás URI-azonosítóhoz tartozó objektum található, és távolítsa el.
 5.  Töltse be újra a Tártallózó Ctrl + R billentyűkombinációt.
 
+## <a name="linux-dependencies"></a>Linux-függőségek
 
-## <a name="next-steps"></a>Következő lépések
+A Linux disztribúciókkal eltérő Ubuntu 16.04 szükség lehet manuálisan kell telepítenie néhány függősége. Általában a következő csomagok szükségesek:
+* libgconf-2-4
+* libsecret
+* Naprakész ÖET
+
+Attól függően, hogy a distro lehet többi csomagot, telepítenie kell. A Tártallózó [kibocsátási megjegyzések](https://go.microsoft.com/fwlink/?LinkId=838275&clcid=0x409) néhány disztribúciókkal az adott lépést tartalmaznak.
+
+## <a name="next-steps"></a>További lépések
 
 Ha a megoldások egyike sem működik, az Ön, küldje el a problémát a visszajelzés eszközzel együtt az e-maileket, és annyi információkhoz juthat a problémáról, néven akkor is, így elküldhetjük Önnek a probléma.
 

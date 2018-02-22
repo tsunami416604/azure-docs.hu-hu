@@ -4,7 +4,7 @@ description: "Ez a cikk Azure virtuális gépeken futó SQL Server rendelkezésr
 services: virtual-machines
 documentationCenter: na
 authors: MikeRayMSFT
-manager: jhubbard
+manager: craigg
 editor: monicar
 tags: azure-service-management
 ms.assetid: 601eebb1-fc2c-4f5b-9c05-0e6ffd0e5334
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/13/2017
 ms.author: mikeray
-ms.openlocfilehash: 2cbb9ff3b2d13996b1b8dc64aa833807c264c877
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4a531fb87d9cd2743138ba7a027bdf0d132b9747
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>SQL Server Always On rendelkezésre állási csoportok az Azure virtuális gépeken bemutatása #
 
@@ -47,6 +47,6 @@ Is létrehozhat a virtuális gépek saját kezűleg a sablon nélkül. Először
 
 - [Hozzon létre mindig a rendelkezésre állási csoport rendelkezésre állás és vészhelyreállítás javítása érdekében](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [SQL-kiszolgáló mindig konfigurálása az Azure virtuális gépeken különböző régiókban rendelkezésre állási csoporton](virtual-machines-windows-portal-sql-availability-group-dr.md).

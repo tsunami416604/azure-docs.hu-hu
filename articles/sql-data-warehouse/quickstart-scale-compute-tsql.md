@@ -14,15 +14,15 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 01/31/2018
 ms.author: elbutter;barbkess
-ms.openlocfilehash: 9d6ecd53fc034fd7014b17c98f1c5a99088723fe
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: f984f9b348f589e20cb8a4b68578ddef84d8292d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-using-t-sql"></a>Gyors üzembe helyezés: Méretezési számítási az Azure SQL Data Warehouse T-SQL használatával
 
-Skála számítási az Azure SQL Data Warehouse T-SQL és az SQL Server Management Studio (SSMS) használatával. A jobb teljesítmény számítási kibővítési vagy skálája vissza számítási költségek csökkentése érdekében. 
+Skála számítási az Azure SQL Data Warehouse T-SQL és az SQL Server Management Studio (SSMS) használatával. [Horizontális felskálázás számítási](sql-data-warehouse-manage-compute-overview.md) jobb teljesítményt vagy skálája biztonsági számítási költségek csökkentése érdekében. 
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
@@ -87,7 +87,7 @@ Az adatraktár az aktuális adattárházegységek megtekintése:
     ![Nézet aktuális dwu-k](media/quickstart-scale-compute-tsql/view-current-dwu.png)
 
 
-## <a name="scale-compute"></a>Skála számítási
+## <a name="scale-compute"></a>Számítások méretezése
 Az SQL Data Warehouse növelheti vagy csökkentheti a számítási erőforrásokat adattárházegységek beállításával. A [létrehozása és a Connect - portál](create-data-warehouse-portal.md) létrehozott **mySampleDataWarehouse** és 400 dwu-k inicializálása azt. Az alábbi lépéseket, állítsa be a dwu-k a **mySampleDataWarehouse**.
 
 Adattárházegységek módosítása:

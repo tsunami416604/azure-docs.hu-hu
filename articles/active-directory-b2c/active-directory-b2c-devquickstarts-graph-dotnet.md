@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: parakhj
-ms.openlocfilehash: 33df6c4255d4ca672e65237c8be45b3f0bc7864e
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: dd84a8da348d0d534ba19a3d61970ec0d8c66cc8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Az Azure AD B2C: Használja az Azure AD Graph API
 
@@ -45,7 +45,7 @@ Miután a B2C-bérlő elkészült, az alkalmazás használatával regisztrálnia
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza ki az Azure AD B2C-bérlő fiókja kiválasztja az oldal jobb felső sarkában.
-3. A bal oldali navigációs ablaktábláján válassza **több szolgáltatások**, kattintson a **App regisztrációk**, és kattintson a **hozzáadása**.
+3. A bal oldali navigációs ablaktábláján válassza **minden szolgáltatás**, kattintson a **App regisztrációk**, és kattintson a **hozzáadása**.
 4. Kövesse az utasításokat az új alkalmazás létrehozásához. 
     1. Válassza ki **Web App / API** az alkalmazás típusa.    
     2. Adjon meg **bármely átirányítási URI** (pl. https://B2CGraphAPI), mert nincs megfelelő ehhez a példához.  
@@ -128,7 +128,7 @@ A B2CGraphClient használatához nyisson meg egy `cmd` Windows parancsot a paran
 Ez megjeleníti minden egyes parancsnál rövid leírása. Minden alkalommal, amikor aktiválják az alábbi parancsok egyikét `B2CGraphClient` egy kérést küld az Azure AD Graph API-t.
 
 ### <a name="get-an-access-token"></a>Hozzáférési jogkivonat lekérése
-Bármely kérelem a Graph API olyan hozzáférési jogkivonatot igényel a hitelesítéshez. `B2CGraphClient`a hozzáférési jogkivonatok szerezni a nyílt forráskódú Active Directory Authentication Library (ADAL) használja. ADAL egyszerűbbé teszi a token beszerzési biztosító egyszerű API-t, és néhány fontos részleteket, például a gyorsítótár hozzáférési jogkivonatok figyelembe vételével. Adal-t használó lekérni a jogkivonatokat, azonban nincs. Jogkivonatok HTTP-kérelmek létrehozásával is beszerezheti.
+Bármely kérelem a Graph API olyan hozzáférési jogkivonatot igényel a hitelesítéshez. `B2CGraphClient` a hozzáférési jogkivonatok szerezni a nyílt forráskódú Active Directory Authentication Library (ADAL) használja. ADAL egyszerűbbé teszi a token beszerzési biztosító egyszerű API-t, és néhány fontos részleteket, például a gyorsítótár hozzáférési jogkivonatok figyelembe vételével. Adal-t használó lekérni a jogkivonatokat, azonban nincs. Jogkivonatok HTTP-kérelmek létrehozásával is beszerezheti.
 
 > [!NOTE]
 > A fenti ADAL v2 ahhoz, hogy kommunikálhasson a Graph API-t használ.  Ahhoz, hogy az Azure AD Graph API-val használható hozzáférési jogkivonatok lekérésére ADAL v2 és v3 kell használnia.
@@ -357,7 +357,7 @@ Használhatja a teljes nevet, például a `extension_55dc0861f9a44eb999e0a8a8722
 > B2C Update-User <object-id-of-user> <path-to-json-file>
 ```
 
-A `B2CGraphClient`, programozott módon kezelje a B2C bérlő felhasználók szolgáltatás-alkalmazással. `B2CGraphClient`saját alkalmazás identitását használja az Azure AD Graph API felé történő hitelesítésre. Egy ügyfélkulcsot a jogkivonatok is megkapja. Mivel használhatja ezt a funkciót az alkalmazásba, ne felejtse néhány fő szempontot B2C-alkalmazásokhoz:
+A `B2CGraphClient`, programozott módon kezelje a B2C bérlő felhasználók szolgáltatás-alkalmazással. `B2CGraphClient` saját alkalmazás identitását használja az Azure AD Graph API felé történő hitelesítésre. Egy ügyfélkulcsot a jogkivonatok is megkapja. Mivel használhatja ezt a funkciót az alkalmazásba, ne felejtse néhány fő szempontot B2C-alkalmazásokhoz:
 
 * Adja meg az alkalmazás a bérlő a megfelelő engedélyeket kell.
 * Most kell használnia az adal-t (nem MSAL) jogkivonatot beolvasni. (Ön is is küldhet közvetlen, szalagtár használata nélkül.)

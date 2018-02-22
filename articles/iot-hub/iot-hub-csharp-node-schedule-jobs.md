@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/10/2017
 ms.author: juanpere
-ms.openlocfilehash: e6795f09e275f9fcd38000d48710560244abc11d
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: bbc548ff7394ebdf158d8040eb8e188de951be2c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="schedule-and-broadcast-jobs-netnodejs"></a>Ütemezés és a feladatok (.NET/Node.js)
 
@@ -80,6 +80,7 @@ Ebben a szakaszban egy .NET-Konzolalkalmazás (használatával C#) használó fe
 1. Adja hozzá a következő `using` utasítást, ha az alapértelmezett utasításokban még nincs letöltve.
 
     ```csharp
+    using System.Threading;
     using System.Threading.Tasks;
     ```
 
@@ -163,7 +164,7 @@ Ebben a szakaszban egy .NET-Konzolalkalmazás (használatával C#) használó fe
     Console.ReadLine();
     ```
 
-1. A Solution Explorerben nyissa meg a **állítsa be indítási projektek...**  , és győződjön meg arról, hogy a **művelet** a **ScheduleJob** projekt **Start**. A megoldás felépítéséhez.
+1. A Solution Explorerben nyissa meg a **állítsa be indítási projektek...**  , és győződjön meg arról, hogy a **művelet** a **ScheduleJob** projekt **Start**. Hozza létre a megoldást.
 
 ## <a name="create-a-simulated-device-app"></a>Szimulált eszközalkalmazás létrehozása
 
@@ -251,7 +252,7 @@ Most már készen áll az alkalmazások futtatására.
 
     ![Az alkalmazások ütemezett feladatok futtatása][img-schedulejobs]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy feladat ütemezése a közvetlen módszer egy eszköz és a két eszköz tulajdonságok frissítése használt.
 

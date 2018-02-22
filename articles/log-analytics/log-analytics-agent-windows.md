@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2017
 ms.author: magoedte
-ms.openlocfilehash: 35e271f943901091041f7b1e9fad6cb9cd46df5b
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 87513ef82b5f754669a3a21dd736ecab6fb26fba
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Windows számítógépek csatlakoztatása a Log Analytics szolgáltatás az Azure-ban
 
@@ -33,12 +33,12 @@ Az ügynök az alábbi módszerek egyikének használatával telepíthetők. A l
 * PowerShell-parancsfájlt.
 * Resource Manager-sablon virtuális gépek helyszíni Windows Azure-készletben.  
 
-A Windows-ügynök telepítése a hálózati és a rendszer követelmények megértése érdekében tekintse át a [adatokat gyűjteni a környezet az Azure Naplóelemzés](log-analytics-concept-hybrid.md#prerequisites).
+A Windows-ügynök telepítésének hálózati és rendszerkövetelményeivel kapcsolatban lásd a [környezet adatainak az Azure Log Analytics használatával való gyűjtésével foglalkozó szakaszt](log-analytics-concept-hybrid.md#prerequisites).
 
 ## <a name="obtain-workspace-id-and-key"></a>A munkaterület-azonosító és -kulcs lekérése
 A Windowshoz készült Microsoft Monitoring Agent telepítése előtt szüksége lesz a Log Analytics-munkaterület azonosítójára és kulcsára.  Szükség az egyes telepítési módszerek megfelelően konfigurálni az ügynököt, és képes sikeresen kommunikálni a Naplóelemzési szolgáltatással a telepítés során.  
 
-1. Az Azure Portalon kattintson a bal alsó sarokban található **További szolgáltatások** elemre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
+1. Az Azure portálon kattintson **minden szolgáltatás**. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
 2. A Naplóelemzési munkaterület, jelölje ki az ügynök konfigurálásáról jelenteni szeretné a munkaterületen.
 3. Válassza ki a **Speciális beállítások** elemet.<br><br> ![A Log Analytics speciális beállításai](media/log-analytics-quick-collect-azurevm/log-analytics-advanced-settings-01.png)<br><br>  
 4. Válassza ki a **Csatlakoztatott források**, majd a **Windowsos kiszolgálók** elemet.   
@@ -160,7 +160,7 @@ A számítógépről a **Vezérlőpult**, keresse meg az elemet **Microsoft Moni
 
 Egyszerű napló keresést az Azure portálon is elvégezheti.  
 
-1. Az Azure Portalon kattintson a bal alsó sarokban található **További szolgáltatások** elemre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.  
+1. Az Azure portálon kattintson **minden szolgáltatás**. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.  
 2. A Naplóelemzési munkaterület lapon jelölje be a cél munkaterülettől, és válassza a **naplófájl-keresési** csempére. 
 2. A naplófájl-keresési panelen, a lekérdezés mező be a következőt:  
 
@@ -173,6 +173,6 @@ Egyszerű napló keresést az Azure portálon is elvégezheti.
 
 A keresési eredmények visszaadott meg kell jelennie a szívverés rögzíti a számítógép jelző van csatlakoztatva, és a szolgáltatás jelentése.   
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Felülvizsgálati [kezelése és karbantartása a Log Analyticshez ügynök a Windows és Linux](log-analytics-agent-manage.md) a gépeken telepítési életciklus során kezelésére, az ügynök kapcsolatban további tudnivalókat.  

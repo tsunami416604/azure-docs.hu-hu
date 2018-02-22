@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
 ms.author: v-craic
-ms.openlocfilehash: 11a9d03e62c674c4311c74f78e4cb2e709940941
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 596a38371925e9489a5d0dc0bd56a28ad97e80da
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-azcopy"></a>AzCopy segítségével tesztlabor a tárfiók VHD-fájl feltöltése
 
@@ -38,7 +38,7 @@ A következő lépések végigvezetik a VHD-fájl feltöltése a Azure DevTest L
 
 1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Válassza a **További szolgáltatások**, majd a **DevTest Labs** elemet a listából.
+1. Válassza ki **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából.
 
 1. Válassza ki a kívánt labor labs listájának megtekintéséhez.  
 

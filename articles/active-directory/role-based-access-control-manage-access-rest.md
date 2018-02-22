@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: rolyon
-ms.openlocfilehash: d449b53d348471275cea3c7129245569e2151864
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: ba25340e41cefe2b7847a39a6c9182cd0fc057d3
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="manage-role-based-access-control-with-the-rest-api"></a>A REST API szerepköralapú hozzáférés-vezérlés kezelése
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.lasthandoff: 02/09/2018
 > * [Azure CLI](role-based-access-control-manage-access-azure-cli.md)
 > * [REST API](role-based-access-control-manage-access-rest.md)
 
-Szerepköralapú hozzáférés-vezérlés (RBAC) az Azure portálon, és az Azure Resource Manager API segítségével kezelhetők az előfizetés és a minden részletre kiterjedő szinten erőforrásokhoz való hozzáférését. Ez a szolgáltatás egyes szerepkörök hozzárendelése el egy adott hatókörhöz szerint engedélyezheti a hozzáférést az Active Directory felhasználók, csoportok vagy szolgáltatásnevekről.
+A szerepköralapú hozzáférés-vezérlés (RBAC), definiált felhasználók, csoportok és szolgáltatásnevekről hozzáférést egy adott hatókörhöz szerepkörök hozzárendelése. Ez a cikk ismerteti a REST API-hozzáférés kezelése.
 
 ## <a name="list-all-role-assignments"></a>Az összes szerepkör-hozzárendelések felsorolása
 Megjeleníti a megadott hatókör és subscopes szerepkör-hozzárendelések.
@@ -48,9 +48,9 @@ Az URI belül győződjön testre szabhatja a kérelem a következő helyettesí
 2. Cserélje le *{api-version}* a 2015-07-01.
 3. Cserélje le *{szűrő}* azzal a feltétellel, amelyet meg kíván alkalmazni a szerepkör-hozzárendelés csoportlista szűréséhez:
 
-   * Szerepkör-hozzárendelések csak a megadott hatókör, a nem az a szerepkör-hozzárendelések subscopes, beleértve a listában:`atScope()`    
-   * Egy adott felhasználó, csoport vagy alkalmazás szerepkör-hozzárendelések listában:`principalId%20eq%20'{objectId of user, group, or service principal}'`  
-   * Egy adott felhasználó, például csoportokból örökölt szerepkör-hozzárendelések lista |}`assignedTo('{objectId of user}')`
+   * Szerepkör-hozzárendelések csak a megadott hatókör, a nem az a szerepkör-hozzárendelések subscopes, beleértve a listában: `atScope()`    
+   * Egy adott felhasználó, csoport vagy alkalmazás szerepkör-hozzárendelések listában: `principalId%20eq%20'{objectId of user, group, or service principal}'`  
+   * Egy adott felhasználó, például csoportokból örökölt szerepkör-hozzárendelések lista |} `assignedTo('{objectId of user}')`
 
 ### <a name="response"></a>Válasz
 Állapotkód: 200
@@ -153,7 +153,7 @@ A kérelem törzsében adja meg az értékeket a következő formátumban:
 
 | Elem neve | Szükséges | Típus | Leírás |
 | --- | --- | --- | --- |
-| roleDefinitionId |Igen |Karakterlánc |A szerepkör azonosítóját. Az azonosító formátuma:`{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id-guid}` |
+| roleDefinitionId |Igen |Karakterlánc |A szerepkör azonosítóját. Az azonosító formátuma: `{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id-guid}` |
 | principalId |Igen |Karakterlánc |objectId az Azure AD rendszerbiztonsági tag (felhasználó, csoport vagy egyszerű szolgáltatásneve), amely a szerepkör hozzá van rendelve. |
 
 ### <a name="response"></a>Válasz
@@ -238,8 +238,8 @@ Az URI belül győződjön testre szabhatja a kérelem a következő helyettesí
 2. Cserélje le *{api-version}* a 2015-07-01.
 3. Cserélje le *{szűrő}* azzal a feltétellel, akkor a szerepkörök szűréséhez alkalmazni kíván:
 
-   * Lista szerepkörökhöz rendelhető hozzá a megadott hatókörben és bármely gyermek hatóköréhez tartozó:`atScopeAndBelow()`
-   * Keresse meg egy szerepkör használatával pontos megjelenített név: `roleName%20eq%20'{role-display-name}'`. Az URL-kódolású képernyőn a pontos megjelenített névbe, a szerepkör. Például`$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'` |
+   * Lista szerepkörökhöz rendelhető hozzá a megadott hatókörben és bármely gyermek hatóköréhez tartozó: `atScopeAndBelow()`
+   * Keresse meg egy szerepkör használatával pontos megjelenített név: `roleName%20eq%20'{role-display-name}'`. Az URL-kódolású képernyőn a pontos megjelenített névbe, a szerepkör. Például `$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'` |
 
 ### <a name="response"></a>Válasz
 Állapotkód: 200

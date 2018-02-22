@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/10/2017
 ms.author: bhanupr
-ms.openlocfilehash: 77478616eae27828a57a36dc0aaf3884e80ce403
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 08795e6aafc6ccb43bad59189676a8680c03c966
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-domain-joined-hdinsight-clusters-using-azure-active-directory-domain-services"></a>Tartományhoz csatlakozó HDInsight-fürtök Azure Active Directory tartományi szolgáltatások konfigurálása
 
@@ -36,9 +36,11 @@ Ebből a cikkből megismerheti, hogyan konfigurálhatja egy Azure Active Directo
 Hozzon létre egy Azure Active Directory tartományi szolgáltatások HDInsight-fürtök létrehozása előtt kell. Az Azure ad létrehozásához lásd: [engedélyezése Azure Active Directory tartományi szolgáltatások az Azure portál használatával](../../active-directory-domain-services/active-directory-ds-getting-started.md). 
 
 > [!NOTE]
-> A bérlői rendszergazdák csak a jogosult tartományi szolgáltatások létrehozására. Ha az alapértelmezett tároló Azure Data Lake tároló-(ADLS-) használata a HDInsight, majd győződjön meg arról, az alapértelmezett Azure AD bérlője ADLS legyen, mint a tartomány a HDInsight-fürthöz. 
+> A bérlői rendszergazdák csak a jogosult tartományi szolgáltatások létrehozására. Ha az alapértelmezett tároló Azure Data Lake tároló-(ADLS-) használata a HDInsight, majd győződjön meg arról, az alapértelmezett Azure AD bérlője ADLS legyen, mint a tartomány a HDInsight-fürthöz. Ehhez állítsa be az Azure Data Lake Store működéséhez a multi-factor authentication kell olyan felhasználóknál, akik hozzáférhetnek a fürt le kell tiltani.
 
 Után van megadva a tartományi szolgáltatások, a szolgáltatás-fiók létrehozásához szüksége a **az Azure AD-tartományvezérlő rendszergazdák** csoport hozhat létre a HDInsight-fürthöz. A fiók globális rendszergazdának kell lennie az Azure ad-val.
+
+Biztonságos LDAP Azure AD tartományi szolgáltatások felügyelt tartomány számára engedélyezni kell. Engedélyezheti a biztonságos LDAP [konfigurálása biztonságos LDAP (LDAPS) egy Azure AD tartományi szolgáltatások által felügyelt tartomány](../../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md).
 
 ## <a name="create-a-domain-joined-hdinsight-cluster"></a>Tartományhoz csatlakozó HDInsight-fürt létrehozása
 

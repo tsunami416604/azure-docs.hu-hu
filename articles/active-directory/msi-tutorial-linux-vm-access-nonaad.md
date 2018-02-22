@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 0e9eba9baeec00f13880ba6b32d87be8e5872bc8
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: bd2f251e97248497592b40128dcc03db5d6eba7a
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>Az Azure Key Vault eléréséhez használja egy Linux virtuális gép felügyelt szolgáltatás Identity (MSI) 
 
@@ -45,7 +45,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 Ebben az oktatóanyagban létrehozhatunk egy új Linux virtuális Gépet. A meglévő virtuális MSI is engedélyezheti.
 
-1. Kattintson az Azure Portal bal felső sarkában található **Új** gombra.
+1. Kattintson a **hozzon létre egy erőforrást** gomb az Azure portál bal felső sarkában található.
 2. Válassza a **Számítás**, majd az **Ubuntu Server 16.04 LTS** elemet.
 3. Adja meg a virtuális gép adatait. A **hitelesítési típus**, jelölje be **nyilvános SSH-kulcs** vagy **jelszó**. A létrehozott hitelesítő adatok lehetővé teszik-e jelentkezni a virtuális gép.
 
@@ -77,7 +77,7 @@ MSI-fájl használata a kódban való hitelesítésre szolgáló erőforrásokat
 
 Először igazolnia kell a kulcstároló létrehozásához, és a virtuális gép identitásának hozzáférést biztosítson a Key Vault.   
 
-1. Válassza ki a bal oldali navigációs sáv felső **+ új** majd **biztonság + identitás szakaszában** majd **Key Vault**.  
+1. A bal oldali navigációs sáv felső részén válassza ki a **hozzon létre egy erőforrást** > **biztonság + identitás szakaszában** > **Key Vault**.  
 2. Adjon meg egy **neve** az új Key vault. 
 3. Keresse meg a Key Vault azonos előfizetésbe és erőforráscsoportba tartozik, mint a korábban létrehozott virtuális Gépet. 
 4. Válassza ki **hozzáférési házirendek** kattintson **új hozzáadása**. 

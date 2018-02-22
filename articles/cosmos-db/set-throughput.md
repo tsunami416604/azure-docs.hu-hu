@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: mimig
-ms.openlocfilehash: 8797910651c54baa3529b015d4195cf2a5c06ece
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: afbb3392a4726ea067bf19c117792b866d9e79f3
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="set-throughput-for-azure-cosmos-db-containers"></a>Az Azure Cosmos DB tárolókat átviteli beállítása
 
@@ -49,7 +49,7 @@ A következő táblázat felsorolja a rendelkezésre álló tárolók az átvite
 ## <a name="to-set-the-throughput-by-using-the-azure-portal"></a>Az átviteli sebesség beállítása az Azure-portál használatával
 
 1. Egy új ablakban nyissa meg a [Azure-portálon](https://portal.azure.com).
-2. A bal oldali sávon kattintson **Azure Cosmos DB**, vagy kattintson a **több szolgáltatások** alsó, majd görgessen a **adatbázisok**, és kattintson a **Azure Cosmos DB**.
+2. A bal oldali sávon kattintson **Azure Cosmos DB**, vagy kattintson a **minden szolgáltatás** alsó, majd görgessen a **adatbázisok**, és kattintson a **Azure Cosmos DB**.
 3. Válassza ki a Cosmos DB fiókját.
 4. Kattintson az új ablakban **adatkezelő** a navigációs menü.
 5. Az új ablakban bontsa ki az adatbázis és a tároló majd **skála & beállítások**.

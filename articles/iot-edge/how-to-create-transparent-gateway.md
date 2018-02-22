@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 12/04/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: c3621cb860339499089ebdf3c3581faf770f1fe3
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 0ea4d8ec51211f1208083d3f93c3c100dc54e6b0
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-an-iot-edge-device-that-acts-as-a-transparent-gateway---preview"></a>Hozzon létre egy IoT peremhálózati eszköz, amely átlátszó átjáróként – előzetes
 
@@ -63,7 +63,7 @@ Használhatja a Powershell sample és Bash parancsfájlok ismertetett [Hitelesí
 
 1. A Microsoft Azure IoT SDK-k és a szalagtárak klónozza a Githubról C-hez:
 
-   ```
+   ```cmd/sh
    git clone -b modules-preview https://github.com/Azure/azure-iot-sdk-c.git 
    ```
 
@@ -75,7 +75,7 @@ Használhatja a Powershell sample és Bash parancsfájlok ismertetett [Hitelesí
 
 Az új eszköz-tanúsítvány létrehozásához:
 
-   ```
+   ```bash
    ./certGen.sh create_edge_device_certificate myGateway
    ```
 
@@ -83,14 +83,14 @@ Az új eszköz-tanúsítvány létrehozásához:
  
 Az a `certs` directory, a teljes lánc eszköz nyilvános kulcsának eléréséhez a következő parancsot:
 
-   ```
+   ```bash
    cat ./new-edge-device.cert.pem ./azure-iot-test-only.intermediate.cert.pem ./azure-iot-test-only.root.ca.cert.pem > ./new-edge-device-full-chain.cert.pem
    ```
 
 ### <a name="powershell"></a>PowerShell
 
 Az új eszköz-tanúsítvány létrehozásához: 
-   ```
+   ```powershell
    New-CACertsEdgeDevice myGateway
    ```
 
@@ -115,7 +115,7 @@ Az eszköz és a tanúsítvány az IoT-Edge futásidejű információt tartalmaz
  
 A Linux a Bash kimeneti használatával:
 
-   ```
+   ```bash
    sudo iotedgectl setup --connection-string {device connection string}
         --edge-hostname {gateway hostname, e.g. mygateway.contoso.com}
         --device-ca-cert-file {full path}/certs/new-edge-device.cert.pem
@@ -126,7 +126,7 @@ A Linux a Bash kimeneti használatával:
 
 A Windows PowerShell kimenete használatával:
 
-   ```
+   ```powershell
    iotedgectl setup --connection-string {device connection string}
         --edge-hostname {gateway hostname, e.g. mygateway.contoso.com}
         --device-ca-cert-file {full path}/certs/new-edge-device.cert.pem
@@ -135,15 +135,11 @@ A Windows PowerShell kimenete használatával:
         --owner-ca-cert-file {full path}/RootCA.pem
    ```
 
-Alapértelmezés szerint a mintaparancsfájlok számára ne adja egy jelszót a titkos kulcs. Ha egy jelszót, adja hozzá a következő paramétert:
-
-   ```
-   --device-ca-passphrase {passphrase}
-   ```
+Alapértelmezés szerint a mintaparancsfájlok számára ne adja egy jelszót a titkos kulcs. Ha egy jelszót, adja hozzá a következő paramétert: `--device-ca-passphrase {passphrase}`.
 
 A parancsfájl kérni fogja, meg kell adnia egy jelszót a peremhálózati ügynök tanúsítványt. Ez a parancs után indítsa újra az IoT-Edge futásidejű:
 
-   ```
+   ```cmd/sh
    iotedgectl restart
    ```
 
@@ -155,7 +151,7 @@ Először egy alsóbb rétegbeli alkalmazást rendelkezik megbízzanak a **IoT h
 
 Például a .NET-alkalmazásokban, adhat hozzá a következő kódrészletet a hitelesítés a PEM-formátumba elérési útját `certPath`. Attól függően, hogy melyik verzióját használja a parancsfájl elérési hivatkozik, vagy `certs/azure-iot-test-only.root.ca.cert.pem` (Bash) vagy `RootCA.pem` (Powershell).
 
-   ```
+   ```csharp
    using System.Security.Cryptography.X509Certificates;
    
    ...

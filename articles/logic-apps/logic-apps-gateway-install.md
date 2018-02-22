@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 09/14/2017
 ms.author: LADocs; millopis; estfan
-ms.openlocfilehash: b3c1e2afadea91f010c3e4b43206b6d30a75ec38
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e061f24f3160de82548c4debf6da5821318ad2fb
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="install-the-on-premises-data-gateway-for-azure-logic-apps"></a>Az a helyszíni átjáró telepítése az Azure Logic Apps
 
-A logic apps a helyszíni adatforrások eléréséhez, telepítse és állítsa be az a helyszíni átjáró. Az átjáró működik, amely gyors adatátvitel és a titkosítás a helyszínen és a logic Apps alkalmazások közötti hídként. Az átjáró továbbítja a titkosított csatornákon keresztül az Azure Service Bus helyszíni forrásból származó adatokat. Az összes forgalom származik, az átjáró ügynök biztonságos kimenő forgalmát. További információ [az átjáró működése](#gateway-cloud-service).
+A logic apps a helyszíni adatforrások eléréséhez, akkor telepítse és állítsa be az a helyszíni átjáró. Az átjáró működik, amely gyors adatátvitel és a titkosítás a helyszínen és a logic Apps alkalmazások közötti hídként. Az átjáró továbbítja a titkosított csatornákon keresztül az Azure Service Bus helyszíni forrásból származó adatokat. Az összes forgalom származik, az átjáró ügynök biztonságos kimenő forgalmát. További információ [az átjáró működése](#gateway-cloud-service).
 
 Az átjáró a helyszíni e adatforrásokkal létesített kapcsolatokat is támogatja:
 
@@ -35,8 +35,8 @@ Az átjáró a helyszíni e adatforrásokkal létesített kapcsolatokat is támo
 *   MySQL
 *   Oracle Database
 *   PostgreSQL
-*   SAP-alkalmazáskiszolgáló 
-*   SAP üzenet kiszolgáló
+*   SAP alkalmazáskiszolgáló 
+*   SAP üzenetkiszolgáló
 *   SharePoint
 *   SQL Server
 *   Teradata
@@ -54,18 +54,18 @@ Az átjáró más szolgáltatásokkal való használatával kapcsolatos informá
 
 ## <a name="requirements"></a>Követelmények
 
-**Minimális**:
+**Minimum**
 
 * .NET 4.5 keretrendszer
 * 64 bites Windows 7 vagy Windows Server 2008 R2 (vagy újabb)
 
-**Ajánlott**:
+Ajánlott
 
 * 8 mag Processzor
 * 8 GB memória
 * 64 bites Windows 2012 R2 (vagy újabb)
 
-**Fontos tudnivalók találhatók**:
+**Fontos tudnivalók találhatók**
 
 * Az a helyszíni átjáró telepítése csak a helyi számítógépen.
 Az átjáró nem telepíthet tartományvezérlőre.
@@ -75,12 +75,12 @@ Az átjáró nem telepíthet tartományvezérlőre.
 
 * Az átjáró nem telepíthető olyan számítógépre, amelyen kikapcsolja, alvó állapotba vagy nem csatlakozik az internethez, mivel az átjáró nem fut ilyen körülmények. Emellett átjáró teljesítménye csökkenhet, vezeték nélküli hálózaton keresztül.
 
-* A telepítés során be kell jelentkeznie a egy [munkahelyi vagy iskolai fiók](https://docs.microsoft.com/azure/active-directory/sign-up-organization) , amely az Azure Active Directory (Azure AD), nem Microsoft-fiók felügyeli.
+* A telepítés során, hogy jelentkezzen be egy [munkahelyi vagy iskolai fiók](https://docs.microsoft.com/azure/active-directory/sign-up-organization) , amely az Azure Active Directory (Azure AD), nem Microsoft-fiók felügyeli.
 
   > [!TIP]
   > Ha szeretné használni a Microsoft-fiókkal, amely a Visual Studio MSDN-előfizetés, először rendelkezik [hozzon létre egy könyvtárat (bérlői) az Azure Active Directoryban](../active-directory/develop/active-directory-howto-tenant.md) a Microsoft-fiókot, vagy használja az alapértelmezett mappát. Jelszóval rendelkező felhasználó hozzáadása a könyvtárat, majd a felhasználói hozzáférést az előfizetéséhez. Ezután bejelentkezhet átjáró telepítéskor a felhasználónévvel és jelszóval.
 
-  Kell használnia ugyanazzal a munkahelyi vagy iskolai fiók később az Azure-portálon létrehozásakor, és rendelje hozzá az átjáró telepítése egy átjáró-erőforráshoz. Az átjáró-erőforráshoz, majd válassza ki, ha a kapcsolatot a Logic Apps alkalmazást és a helyszíni adatforrás között. [Miért kell használni az Azure AD munkahelyi vagy iskolai fiókkal?](#why-azure-work-school-account)
+  Kell használni a ugyanazzal a munkahelyi vagy iskolai fiók később az Azure-portálon létrehozásakor, és rendelje hozzá az átjáró telepítése egy átjáró-erőforráshoz. Az átjáró-erőforráshoz, majd válassza ki, ha a kapcsolatot a Logic Apps alkalmazást és a helyszíni adatforrás között. [Miért kell használni az Azure AD munkahelyi vagy iskolai fiókkal?](#why-azure-work-school-account)
 
   > [!TIP]
   > Ha regisztrált az Office 365 ajánlat, és nem adja meg a tényleges munkahelyi e-mail címét, a bejelentkezési címe nézhet jeff@contoso.onmicrosoft.com. 
@@ -93,7 +93,7 @@ Az átjáró nem telepíthet tartományvezérlőre.
 
 ## <a name="install-the-data-gateway"></a>Az adatátjáró telepítése
 
-1.  [Töltse le és futtassa az átjáró telepítőt a helyi számítógép](http://go.microsoft.com/fwlink/?LinkID=820931&clcid=0x409).
+1. [Töltse le és futtassa az átjáró telepítőt a helyi számítógép](http://go.microsoft.com/fwlink/?LinkID=820931&clcid=0x409).
 
 2. Tekintse át és fogadja el a használati feltételei és adatvédelmi nyilatkozata.
 
@@ -197,7 +197,7 @@ PingReplyDetails (RTT) : 0 ms
 TcpTestSucceeded       : True
 ```
 
-Ha **TcpTestSucceeded** értéke nem **igaz**, előfordulhat, hogy blokkolja tűzfal. Ha azt szeretné, hogy átfogó, helyettesítse a **számítógépnév** és **Port** értékek alatt szereplő értékekkel [portok konfigurálása](#configure-ports) ebben a témakörben.
+Ha **TcpTestSucceeded** értéke nem **igaz**, előfordulhat, hogy blokkolja tűzfal. Ha azt szeretné, hogy átfogó, helyettesítse a **számítógépnév** és **Port** értékek alatt szereplő értékekkel [portok konfigurálása](#configure-ports) ebben a cikkben.
 
 A tűzfal is megakadályozhatja, hogy az Azure Service Bus által az Azure adatközpontjaiban kapcsolatok. Ez a forgatókönyv akkor fordul elő, ha jóváhagyja (feloldása) azokat az adott régióban adatközpontok összes IP-címet. Azon IP-címek [beolvasása az Azure IP-címek listája itt](https://www.microsoft.com/download/details.aspx?id=41653).
 
@@ -205,20 +205,22 @@ A tűzfal is megakadályozhatja, hogy az Azure Service Bus által az Azure adatk
 
 Az átjáró egy kimenő kapcsolatot hoz [Azure Service Bus](https://azure.microsoft.com/services/service-bus/) és kimenő portok folytat: TCP 443-as (alapértelmezett), 5671, 5672, 9350 – 9354-es. Az átjáró nincs szükség a bejövő portra. További információ [Azure Service Bus vagy hibrid megoldások](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md).
 
-| TARTOMÁNYNEVEK | KIMENŐ PORTOK | LEÍRÁS |
-| --- | --- | --- |
-| *. analysis.windows.net | 443 | HTTPS | 
-| *. login.windows.net | 443 | HTTPS | 
-| *. servicebus.windows.net | 5671-5672 | Speciális üzenetsor-kezelési protokoll (AMQP) | 
-| *. servicebus.windows.net | 443, 9350-9354 | A Service Bus Relay (a 443-as kér a hozzáférés-vezérlés jogkivonat beszerzése) TCP-n keresztül figyelői | 
-| *. frontend.clouddatahub.net | 443 | HTTPS | 
-| *. core.windows.net | 443 | HTTPS | 
+| Tartománynevek | Kimenő portok | Leírás |
+| ------------ | -------------- | ----------- |
+| *.analysis.windows.net | 443 | HTTPS | 
+| *.login.windows.net | 443 | HTTPS | 
+| *.servicebus.windows.net | 5671-5672 | Speciális üzenetsor-kezelési protokoll (AMQP) | 
+| *.servicebus.windows.net | 443, 9350-9354 | A Service Bus Relay (a 443-as kér a hozzáférés-vezérlés jogkivonat beszerzése) TCP-n keresztül figyelői | 
+| *.frontend.clouddatahub.net | 443 | HTTPS | 
+| *.core.windows.net | 443 | HTTPS | 
 | login.microsoftonline.com | 443 | HTTPS | 
-| *. msftncsi.com | 443 | Internet kapcsolat tesztelése, ha az átjáró nem érhető el a Power BI szolgáltatás segítségével. | 
+| *.msftncsi.com | 443 | Internet kapcsolat tesztelése, ha az átjáró nem érhető el a Power BI szolgáltatás segítségével. | 
+||||
 
 Ha a tartományok helyett IP-címek jóváhagyása, töltse le és használja a [Microsoft Azure Datacenter IP-címtartományok lista](https://www.microsoft.com/download/details.aspx?id=41653). Bizonyos esetekben az Azure Service Bus-kapcsolatokat válnak, teljes tartománynevek helyett IP-címet.
 
 <a name="gateway-cloud-service"></a>
+
 ## <a name="how-does-the-data-gateway-work"></a>Hogyan működik az átjáró?
 
 Az átjáró elősegíti a Logic Apps alkalmazást, az átjáró felhőalapú szolgáltatás és a helyszíni adatforrás között gyors és biztonságos kommunikációt. 
@@ -240,6 +242,7 @@ Ezért amikor a felhasználó, a felhőben kommunikál a helyszíni adatforrásh
 6. Az eredményeket az adatforrásból kerülnek vissza az átjáró, majd az átjáró felhőszolgáltatáshoz. Az átjáró felhőszolgáltatáshoz majd értékeket használja.
 
 <a name="faq"></a>
+
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
 ### <a name="general"></a>Általános kérdések
@@ -252,7 +255,7 @@ Ezért amikor a felhasználó, a felhőben kommunikál a helyszíni adatforrásh
 
 <a name="why-azure-work-school-account"></a>
 
-**A Q**: Miért kell I használja egy Azure munkahelyi vagy iskolai fiókkal bejelentkezni? <br/>
+**A Q**: Miért van a használja az Azure munkahelyi vagy iskolai fiókkal bejelentkezni? <br/>
 **A**: csak használja az Azure munkahelyi vagy iskolai fiókkal, az a helyszíni átjáró telepítésekor. A bejelentkezési fiók egy Azure Active Directory (Azure AD) által felügyelt bérlői tárolja. Általában az Azure AD-fiókot egyszerű felhasználónév (UPN) felel meg az e-mail cím.
 
 **A Q**: a hitelesítő adataimat tároló? <br/>
@@ -278,7 +281,7 @@ A külső eszköz Azure sebesség teszt alkalmazás segítségével fel tudja m�
 **A**: A szolgáltatások, az átjáró Power BI Enterprise Gateway szolgáltatás neve.
 
 **A Q**: Azure Active Directory-fiókkal az átjáró Windows-szolgáltatás futtatható? <br/>
-**A**: nem. A Windows-szolgáltatás egy érvényes Windows-fiókkal kell rendelkeznie. Alapértelmezés szerint a szolgáltatás fut a szolgáltatás SID NT SERVICE\PBIEgwService.
+**A**: nem. A Windows-szolgáltatás elemhez meg kell adni egy érvényes Windows-fiókot. Alapértelmezés szerint a szolgáltatás fut a szolgáltatás SID NT SERVICE\PBIEgwService.
 
 ### <a name="high-availability-and-disaster-recovery"></a>Magas rendelkezésre állás és vészhelyreállítás
 
@@ -289,7 +292,7 @@ A külső eszköz Azure sebesség teszt alkalmazás segítségével fel tudja m�
 **A**: A helyreállítási kulcs biztosítja az áttelepítéshez, vagy az átjáró beállításainak katasztrófa utáni helyreállításhoz.
 
 **A Q**: vannak-e bármilyen tervek engedélyezése az átjáró magas rendelkezésre állás elérésére? <br/>
-**A**: ezek a forgatókönyvek a programba, de még nincs ütemterv.
+**A**: összekötők támogatja a magas rendelkezésre állás elérésére, például a fájlrendszer összekötő és egyebek módja. További információkért lásd: [a helyszíni adatok átjáró fürtök magas rendelkezésre állású](https://docs.microsoft.com/power-bi/service-gateway-high-availability-clusters).
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -301,7 +304,7 @@ A külső eszköz Azure sebesség teszt alkalmazás segítségével fel tudja m�
 Is megtekintheti, hogy az adatforrás rendelkezik a nyomkövetési lekérdezések eszközök. Például használhatja bővített eseményektől vagy SQL Profiler az SQL Server és az Analysis Services.
 
 **A Q**: hol találhatók az átjáró naplói? <br/>
-**A**: eszközök lásd a témakör későbbi részében.
+**A**: eszközök tekintse meg a cikk későbbi részében.
 
 ### <a name="update-to-the-latest-version"></a>Frissítés a legújabb verzióra
 
@@ -337,7 +340,7 @@ Az adatkezelési átjáró, a PowerBIGateway naplókat alatt található **alkal
 
 [Fiddler](http://www.telerik.com/fiddler) van egy ingyenes eszközt, amely figyeli a HTTP-forgalom Telerik. Ilyen típusú adatforgalom a Power BI szolgáltatással, az ügyfélszámítógépen való tekintheti meg. Ez a szolgáltatás előfordulhat, hogy a hibák és egyéb kapcsolódó információk megjelenítése
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
     
 * [A helyszíni adatokhoz csatlakozva a logic Apps alkalmazásokból](../logic-apps/logic-apps-gateway-connection.md)
 * [Vállalati integrációs szolgáltatások](../logic-apps/logic-apps-enterprise-integration-overview.md)

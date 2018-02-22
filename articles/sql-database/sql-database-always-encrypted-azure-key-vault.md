@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: sstein
-ms.openlocfilehash: 0f26ce26b8b33274291c115ae136d124d79ed349
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: ca4566ced525f0cb732afc15d96d9ef73fd8cff5
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-azure-key-vault"></a>Mindig titkosítja: Az SQL-adatbázis bizalmas adatok védelmét, és a titkosítási kulcsok tárolása az Azure Key Vault
 
@@ -79,7 +79,7 @@ A következő parancsfájl futtatásával gyorsan létrehozhat egy kulcstartót.
 
 ## <a name="create-a-blank-sql-database"></a>Üres SQL-adatbázis létrehozása
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Ugrás a **új** > **adatok + tárolás** > **SQL-adatbázis**.
+2. Ugrás a **hozzon létre egy erőforrást** > **adatbázisok** > **SQL-adatbázis**.
 3. Hozzon létre egy **üres** nevű adatbázis **klinikán** egy új vagy meglévő kiszolgálóra. Az Azure portálon adatbázis létrehozásával kapcsolatos részletes utasításokat lásd: [az első Azure SQL-adatbázis](sql-database-get-started-portal.md).
    
     ![Hozzon létre egy üres adatbázist](./media/sql-database-always-encrypted-azure-key-vault/create-database.png)
@@ -91,7 +91,7 @@ Szüksége lesz a kapcsolati karakterlánc az oktatóanyag későbbi részében,
    
     ![Másolja a kapcsolati karakterláncot](./media/sql-database-always-encrypted-azure-key-vault/connection-strings.png)
 
-## <a name="connect-to-the-database-with-ssms"></a>Kapcsolódni az adatbázishoz ssms alkalmazásával
+## <a name="connect-to-the-database-with-ssms"></a>Kapcsolódás az adatbázishoz SSMS segítségével
 Nyissa meg a szolgáltatáshoz az SSMS, és csatlakozzon a kiszolgálóhoz, az egészségügyi ellátó intézmény adatbázissal.
 
 1. Nyissa meg a szolgáltatáshoz az SSMS. (Ugrás **Connect** > **adatbázismotor** megnyitásához a **kapcsolódás a kiszolgálóhoz** ablakot, ha nem, akkor a megnyitott.)

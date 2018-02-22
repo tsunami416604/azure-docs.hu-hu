@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: seohack1
-ms.openlocfilehash: afa609d7b47f3c743f5d3bfd4011e09c762ccbd1
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 686cc2a94af729e6f872c334a6e5fda947d43725
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="password-management-frequently-asked-questions"></a>A jelszókezelés gyakran ismételt kérdések
 
@@ -40,7 +40,7 @@ Ez a GYIK a következő szakaszok oszlik:
 
 * **K: a felhasználók regisztrálhatják saját jelszó alaphelyzetbe állítása adatokat?**
 
-  > **V:** Igen. Mindaddig, amíg engedélyezve van a jelszó alaphelyzetbe állítása, és azok licencét, felhasználók lépjen a jelszó-visszaállítási portál (http://aka.ms/ssprsetup) regisztrálása a hitelesítési adatokat. A felhasználók is regisztrálhatják a hozzáférési Panel (http://myapps.microsoft.com) keresztül. A hozzáférési Panel keresztül regisztrálásához szükséges a profilkép megadásához válassza **profil**, majd válassza ki a **regisztrálhatnak a jelszóváltoztatásra** lehetőséget.
+  > **V:** Igen. Mindaddig, amíg engedélyezve van a jelszó alaphelyzetbe állítása, és azok licencét, felhasználók lépjen a jelszó-visszaállítási portál (https://aka.ms/ssprsetup) regisztrálása a hitelesítési adatokat. A felhasználók is regisztrálhatják a hozzáférési Panel (http://myapps.microsoft.com) keresztül. A hozzáférési Panel keresztül regisztrálásához szükséges a profilkép megadásához válassza **profil**, majd válassza ki a **regisztrálhatnak a jelszóváltoztatásra** lehetőséget.
   >
   >
 * **K: Ha engedélyezhető a jelszó alaphelyzetbe állítása egy csoport, és úgy dönt, hogy engedélyezze a Mindenki a felhasználók szükség regisztrálja újra?**
@@ -180,7 +180,7 @@ Ez a GYIK a következő szakaszok oszlik:
   >
 * **K:, ha a felhasználó regisztrálva van a több maximális kérdések alaphelyzetbe kell állítani, hogy miként kell a biztonsági kérdések kijelölni alaphelyzetbe állítása során?**
 
-  > **V:** *N* biztonsági kérdések számát véletlenszerűen kiválasztott felhasználó regisztrálva van, ahol kérdések száma kívül *N* mutatja meg, hogy be van állítva a  **Számos kérdés alaphelyzetbe kell állítani** lehetőséget. Például ha egy felhasználó által regisztrált öt biztonsági kérdéseket, de csak három szükséges a jelszó alaphelyzetbe állítása, három öt kérdéseket a rendszer véletlenszerűen választja ki és jelennek meg, alaphelyzetbe állítása. Kérdés beütés, elkerülésére, ha a felhasználó élvezheti a kérdésekre adott válaszai nem megfelelő a tanúsítványkiválasztási folyamat elindul keresztül.
+  > **V:** *N* biztonsági kérdések számát véletlenszerűen kiválasztott felhasználó regisztrálva van, ahol kérdések száma kívül *N* mutatja meg, hogy be van állítva a **száma a kérdések alaphelyzetbe kell állítani** lehetőséget. Például ha egy felhasználó által regisztrált öt biztonsági kérdéseket, de csak három szükséges a jelszó alaphelyzetbe állítása, három öt kérdéseket a rendszer véletlenszerűen választja ki és jelennek meg, alaphelyzetbe állítása. Kérdés beütés, elkerülésére, ha a felhasználó élvezheti a kérdésekre adott válaszai nem megfelelő a tanúsítványkiválasztási folyamat elindul keresztül.
   >
   >
 * **K: mennyi ideig van az e-mailek és SMS egyszeri PIN-kódok érvényes?**

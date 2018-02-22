@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 02/14/2017
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: 8bd8a72653699df4f4953053d61c16e30a2a101d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a524e1f9d739b42cd63de82291d98ff8c59f2f5f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-activate-or-deactivate-roles-in-azure-ad-privileged-identity-management"></a>Aktiválása vagy inaktiválása szerepkörök az Azure AD Privileged Identity Management
 Az Azure Active Directory (AD) Privileged Identity Management egyszerűbbé teszi a hogyan kezelhetik a vállalatok számára az erőforrások az Azure AD és más Microsoft online szolgáltatások, például az Office 365-öt vagy a Microsoft Intune privilegizált hozzáférést.  
@@ -33,7 +33,7 @@ Az Azure AD Privileged Identity Management alkalmazást használja a [Azure-port
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Jelölje be az Azure-portálon, és válassza ki a könyvtárat, ahol meg fog jobb felső sarokban a felhasználónevére működik.
-3. Válassza a **További szolgáltatások** lehetőséget, és a Szűrők szövegmezővel keresse meg az **Azure AD Privileged Identity Management** alkalmazást.
+3. Válassza ki **minden szolgáltatás** , és keresse meg a Szűrő mezőbe segítségével **Azure AD Privileged Identity Management**.
 4. Jelölje be a **Rögzítés az irányítópulton** jelölőnégyzetet, majd kattintson a **Létrehozás** gombra. Megnyílik a Privileged Identity Management alkalmazás.
 
 ## <a name="activate-a-role"></a>A szerepkör aktiválása
@@ -67,7 +67,7 @@ Abban az esetben, ha nincs szüksége, amelyhez jóváhagyás szükséges szerep
 
    ![Megszakítja a függőben lévő kérelem képernyőképe][4]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha szeretné használni az Azure AD Privileged Identity Management többet, az alábbi hivatkozások rendelkezik további információt.
 
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]

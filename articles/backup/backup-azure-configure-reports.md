@@ -15,11 +15,11 @@ ms.workload: storage-backup-recovery
 ms.date: 11/10/2017
 ms.author: pajosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 40433df5ebe90aec3a9294f2c5a6083c4567b161
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: e32e84eacee3a43b948b0a4b4177ab956b34ca3c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-jelentések konfigurálása
 Ez a cikk beszél lépéseket jelentések konfigurálása az Azure Backup használatával Recovery Services-tároló, és ezek a jelentések használata a Power BI eléréséhez. A lépések elvégzése után közvetlenül nyissa meg a jelentéseket a Power bi-ba, testreszabása és jelentések létrehozása. 
@@ -38,7 +38,7 @@ Ez a cikk beszél lépéseket jelentések konfigurálása az Azure Backup haszn�
 
 ## <a name="configure-storage-account-for-reports"></a>Tárfiók jelentések konfigurálása
 A következő lépésekkel konfigurálhatja a tárfiók recovery services-tároló Azure-portál használatával. Ez az egyszeri, és ha konfigurálva van a tárfiók, nyissa meg a Power BI tartalomcsomag megtekintése, és kihasználhatják a jelentések és közvetlenül.
-1. Ha már rendelkezik nyissa meg a Recovery Services-tároló, folytassa a következő lépéssel. Ha nincs megnyitva egy Recovery Services-tároló, de az Azure portál igen, a központi menüben kattintson a **Tallózás** elemre.
+1. Ha már rendelkezik nyissa meg a Recovery Services-tároló, folytassa a következő lépéssel. Ha Ön nem rendelkezik a Recovery Services-tároló nyissa meg, de az Azure portálon, kattintson a **minden szolgáltatás**.
 
    * Az erőforrások listájába írja be a következőt: **Recovery Services**.
    * Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Amikor meglátja a **Recovery Services-tárolót**, kattintson rá.
@@ -80,7 +80,7 @@ A következő lépésekkel konfigurálhatja a tárfiók recovery services-tárol
 ## <a name="view-reports-in-power-bi"></a>Jelentések megtekintése a Power bi-ban 
 Tárfiók konfigurálása jelent a recovery services-tároló használatával, miután vesz igénybe a jelentési adatok körülbelül 24 óra áramló elindításához. A storage-fiók beállítása 24 óra múlva tegye a következőket a Power BI-jelentések megtekintéséhez:
 1. [Jelentkezzen be a](https://powerbi.microsoft.com/landing/signin/) Power bi-bA.
-2. Kattintson a **adatok beolvasása** , és kattintson a Get **szolgáltatások** tartalomtárban csomag. Az említett lépésekkel [tartalomcsomag eléréséhez a Power BI-dokumentáció](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-packs-services/).
+2. Kattintson a **adatok beolvasása** kattintson **beolvasása** alatt **szolgáltatások** tartalomtárban csomag. Az említett lépésekkel [tartalomcsomag eléréséhez a Power BI-dokumentáció](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-packs-services/).
 
      ![A tartalomcsomag importálása](./media/backup-azure-configure-reports/content-pack-import.png)
 3. Típus **Azure biztonsági mentés** keresősávban, és kattintson a **most töltse le innen**.
@@ -88,7 +88,7 @@ Tárfiók konfigurálása jelent a recovery services-tároló használatával, m
       ![A tartalomcsomag beolvasása](./media/backup-azure-configure-reports/content-pack-get.png)
 4. Adja meg a fenti 5. lépésben beállított a tárfiók nevét, és kattintson a **következő** gombra.
 
-    ![Adja meg a tárfiók neve](./media/backup-azure-configure-reports/content-pack-storage-account-name.png)    
+    ![A tárfiók nevének megadása](./media/backup-azure-configure-reports/content-pack-storage-account-name.png)    
 5. Adja meg a tárfiók hívóbetűjét a tárfiókhoz. Is [megtekintése és másolása a tárelérési kulcsok](../storage/common/storage-create-storage-account.md#manage-your-storage-account) lépjen a tárfiókhoz Azure-portálon. 
 
      ![Adja meg a storage-fiók](./media/backup-azure-configure-reports/content-pack-storage-account-key.png) <br/>
@@ -148,12 +148,12 @@ Tárfiók konfigurálása jelent a recovery services-tároló használatával, m
    Igen, különböző tárolók kereszt-tároló-jelentéseket szeretne megjeleníteni a tárfiókon is konfigurálhatók. A tárolók ugyanazt a tárfiókot is, előfizetések is konfigurálhatók. Ezután használhatja ezt a tárfiókot Azure biztonsági mentés a tartalomcsomag a Power bi-ban való kapcsolódás során a jelentések megtekintéséhez. A kiválasztott tárolási fiók azonban és recovery services-tárolónak ugyanabban a régióban kell lennie.
    
 ## <a name="troubleshooting-errors"></a>Kapcsolatos hibák elhárítása
-| Hiba legutolsó részletes adatai | Megoldás: |
+| Hiba részletei | Megoldás: |
 | --- | --- |
-| Biztonsági mentés a jelentéseknél a storage-fiók beállítása után **Tárfiók** továbbra is mutatja **nincs konfigurálva**. | Ha a tárfiók sikeresen konfigurálta, a jelentéskészítési adatok a erdőtől áramolnak annak ellenére, hogy a probléma. A probléma megoldásához keresse fel az Azure portál > több szolgáltatások > diagnosztikai beállítások > RS tároló > beállítás szerkesztése. Törli a korábban konfigurált beállítást, és hozzon létre egy új beállítás azonos paneljén. Most, állítsa be a mezőt **neve** való **szolgáltatás**. Ez a beállított tárfiókot kell megjelennie. |
+| Biztonsági mentés a jelentéseknél a storage-fiók beállítása után **Tárfiók** továbbra is mutatja **nincs konfigurálva**. | Ha a tárfiók sikeresen konfigurálta, a jelentéskészítési adatok a erdőtől áramolnak annak ellenére, hogy a probléma. A probléma megoldásához keresse fel az Azure portál > minden szolgáltatások > diagnosztikai beállítások > RS tároló > beállítás szerkesztése. Törli a korábban konfigurált beállítást, és hozzon létre egy új beállítás azonos paneljén. Most, állítsa be a mezőt **neve** való **szolgáltatás**. Ez a beállított tárfiókot kell megjelennie. |
 |Azure biztonsági mentés importálása után content pack a Power bi-ban, a hiba **404-tároló nem található** ki. | Javasolt ebben a dokumentumban meg kell várni a jelentések Recovery Services-tároló megfelelően láthatók a Power bi-ban való beállítása után 24 óra. Ha megpróbál hozzáférni a jelentések előtt 24 óra, mivel teljes adatok még nem található érvényes jelentések megjelenítéséhez elérhetővé válik a hiba. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy a tárfiók és az importált Azure Backup-tartalomcsomag van beállítva, a következő lépésre, ezek a jelentések testreszabása és jelentések létrehozásához használja a jelentési adatokat az adatmodellbe. További részletekért tekintse meg a következő cikkekben talál.
 
 * [Adatmodell reporting Azure Backup segítségével](backup-azure-reports-data-model.md)

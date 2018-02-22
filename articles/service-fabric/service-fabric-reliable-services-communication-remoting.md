@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: df4a86e3de87daad22646672f278c7f3226660c6
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 3bdd271eff6f6ea5b337d148f661c7eada429991
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="service-remoting-with-reliable-services"></a>A távelérés szolgáltatás megbízható szolgáltatásokkal
 Azon szolgáltatások vannak társítva, egy adott kommunikációs protokollt vagy a veremben, mint például a WebAPI, a Windows Communication Foundation (WCF) vagy más, nem a Reliable Services keretrendszer lehetővé teszi a távoli eljáráshívás szolgáltatásokhoz a távoli eljáráshívás beállítása gyorsan és egyszerűen.
@@ -30,7 +30,7 @@ A szolgáltatás távoli eljáráshívás beállítása két egyszerű lépésbe
 2. A szolgáltatás egy távoli eljáráshívás figyelő használja. RemotingListener van egy `ICommunicationListener` megvalósítása, amely távoli eljáráshívási képességeket biztosít. A `Microsoft.ServiceFabric.Services.Remoting.Runtime` névtér tartalmaz egy kiterjesztésmetódus`CreateServiceRemotingListener` mind az állapotmentes és állapotalapú szolgáltatások, amelyek segítségével az alapértelmezett távelérési átviteli protokollal távoli eljáráshívási figyelő létrehozása.
 
 >[!NOTE]
->A `Remoting` névtér NuGet-csomagként külön néven érhető el`Microsoft.ServiceFabric.Services.Remoting`
+>A `Remoting` névtér NuGet-csomagként külön néven érhető el `Microsoft.ServiceFabric.Services.Remoting`
 
 A következő állapotmentes szolgáltatások például egy távoli eljáráshívással működik a "Hello, World" beolvasandó egyetlen metódus közzététele.
 
@@ -59,7 +59,7 @@ class MyService : StatelessService, IMyService
 
     protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
     {
-        return new[] { new ServiceInstanceListener(context =>            this.CreateServiceRemotingListener(context)) };
+        return new[] { new ServiceInstanceListener(context => this.CreateServiceRemotingListener(context)) };
     }
 }
 ```
@@ -84,7 +84,7 @@ A távoli eljáráshívás keretrendszer tölti ki az ügyfél a szolgáltatás 
 ## <a name="service-proxy-lifetime"></a>Szolgáltatási Proxy élettartamát
 ServiceProxy létrehozása egy egyszerűsített művelet, így a felhasználók hozhatnak létre tetszőleges számú van szükségük. Szolgáltatási Proxy példányok újrafelhasználható, amíg a felhasználók szükség lenne rá. A távoli eljáráshívás kivételt jelez, ha felhasználók továbbra is felhasználhatja a proxy-példányt. Minden egyes ServiceProxy a hálózaton keresztül üzenetek küldéséhez használt kommunikációs ügyfél tartalmazza. Közben, hogy a távoli hívásokat, azt belső ellenőrizze, hogy ha a kommunikációs ügyfél esetében érvényes. Az adott eredménye alapján, most újra létrehozzuk a kommunikációs ügyfél szükség esetén. Ezért ha kivétel történik, felhasználóknak nem kell újból `ServiceProxy` transzparens módon történik, mert.
 
-### <a name="serviceproxyfactory-lifetime"></a>ServiceProxyFactory élettartama
+### <a name="serviceproxyfactory-lifetime"></a>ServiceProxyFactory Lifetime
 [ServiceProxyFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) van olyan adat-előállítóval, amely különböző távoli eljáráshívási felületek proxy létrehozza. Ha az API-t használja `ServiceProxy.Create` proxy létrehozására, majd a keretrendszer ServiceProxy egypéldányos létrehozza.
 Akkor célszerű manuálisan létrehozhat egyet az felül kell bírálni [IServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.iserviceremotingclientfactory) tulajdonságait.
 Létrehozása során drága. ServiceProxyFactory kommunikációs ügyfél belső gyorsítótárában megtalálhatók.
@@ -146,7 +146,7 @@ Az alábbiakban a lépést kell végrehajtania.
   </Resources>
   ```
 
-2. Használjon [távoli eljáráshívás V2Listener](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotingistener?view=azure-dotnet). Alapértelmezés szerint használt szolgáltatási végpont erőforrás név "ServiceEndpointV2" és a Service Manifest definiálni kell.
+2. Használjon [távoli eljáráshívás V2Listener](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotingListener?view=azure-dotnet). Alapértelmezés szerint használt szolgáltatási végpont erőforrás név "ServiceEndpointV2" és a Service Manifest definiálni kell.
 
   ```csharp
   protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -387,7 +387,7 @@ Példa a távoli eljáráshívás V2 Json-szerializálás használja.
             });
   ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Webes API-t a Reliable Services OWIN](service-fabric-reliable-services-communication-webapi.md)
 * [WCF-kommunikáció a Reliable Services](service-fabric-reliable-services-communication-wcf.md)
 * [A Reliable Services kommunikáció biztonságához](service-fabric-reliable-services-secure-communication.md)

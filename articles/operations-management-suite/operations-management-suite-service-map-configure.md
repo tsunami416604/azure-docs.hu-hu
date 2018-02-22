@@ -1,6 +1,6 @@
 ---
-title: "Szolgáltatástérkép konfigurálja az Operations Management Suite |} Microsoft Docs"
-description: "Szolgáltatástérkép egy Operations Management Suite megoldás, amely automatikusan észleli a Windows és Linux rendszerek alkalmazás-összetevők, és leképezi a szolgáltatások közötti kommunikáció. Ez a cikk a Service Map telepítése a környezetben, és használja azt a különféle forgatókönyvekhez, amik részletesen."
+title: "Szolgáltatástérkép konfigurálása az Azure-ban |} Microsoft Docs"
+description: "A Service Map az Azure egyik megoldása, amely automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Ez a cikk a Service Map telepítése a környezetben, és használja azt a különféle forgatókönyvekhez, amik részletesen."
 services: operations-management-suite
 documentationcenter: 
 author: daveirwin1
@@ -14,55 +14,55 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: 1be3dd5718f940c784d22dbafb75c217dddecb9b
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: d535c738943b4fea81798b6fc2eedc60ae6be41f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="configure-service-map-in-operations-management-suite"></a>Az Operations Management Suite a Szolgáltatástérkép konfigurálása
+# <a name="configure-service-map-in-azure"></a>Szolgáltatástérkép konfigurálása az Azure-ban
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Használhatja a kiszolgálók megtekintéséhez, módon úgy gondolja, hogy azok--összekapcsolt rendszerekhez, hogy a kritikus szolgáltatásokhoz. Szolgáltatástérkép kiszolgálók, folyamatok és portok közötti kapcsolatok között nincs konfigurációjával kapcsolatban egy ügynök telepítése nem szükséges bármely TCP-csatlakoztatott architektúra jeleníti meg.
 
-Ez a cikk ismerteti a Service Map és bevezetése az ügynökök konfigurálása részleteit. Szolgáltatástérkép használatával kapcsolatos információkért lásd: [használhatja a Service Map megoldást az Operations Management Suite](operations-management-suite-service-map.md).
+Ez a cikk ismerteti a Service Map és bevezetése az ügynökök konfigurálása részleteit. Szolgáltatástérkép használatával kapcsolatos információkért lásd: [használhatja a Service Map megoldást az Azure-ban](operations-management-suite-service-map.md).
 
 ## <a name="dependency-agent-downloads"></a>A függőségi ügynök letöltése
 | Fájl | Operációs rendszer | Verzió | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.4.0 | 13CE5E232311010A6E63B21615F669C63B5DF450F26F7BA092F951E924656611 |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.4.0 | A8913CA5308A0ED2EAEAC6E1E374B62E0EA4F8A941C560F63E89EBC3F8971D38  |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.4.1 | 0DCCE16495E7A3254A5FE1B5EADE66110984C3BE799A1FAAD7D119F23614592E |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.4.1 | 1E4ED4CA5940BEA462FC7CAEDF4DF1C7F92C927DE6D538C4DC61DCFDFFAB1A0B  |
 
 
 ## <a name="connected-sources"></a>Összekapcsolt források
-Szolgáltatástérkép az adatok lekérése a Microsoft függőségi ügynök. A függőségi ügynök az OMS-ügynököt az Operations Management Suite kapcsolatai függ. Ez azt jelenti, hogy a kiszolgálónak rendelkeznie kell az OMS-ügynököt telepítette és konfigurálta az első, majd a függőségi ügynök telepíthető. A következő táblázat ismerteti a Service Map megoldás támogatja a csatlakoztatott forrásból.
+Szolgáltatástérkép az adatok lekérése a Microsoft függőségi ügynök. A függőségi ügynök attól függ, hogy az OMS-ügynököt a kapcsolatok szolgáltatáshoz. Ez azt jelenti, hogy a kiszolgálónak rendelkeznie kell az OMS-ügynököt telepítette és konfigurálta az első, majd a függőségi ügynök telepíthető. A következő táblázat ismerteti a Service Map megoldás támogatja a csatlakoztatott forrásból.
 
 | Csatlakoztatott forrás | Támogatott | Leírás |
 |:--|:--|:--|
 | Windows-ügynökök | Igen | Szolgáltatástérkép elemzi és Windows-ügynök számítógépekről gyűjt adatokat. <br><br>Kívül a [OMS-ügynököt](../log-analytics/log-analytics-windows-agent.md), Windows-ügynökök szükséges a Microsoft függőségi ügynök. Tekintse meg a [támogatott operációs rendszerek](#supported-operating-systems) operációs rendszerek teljes listáját. |
 | Linux-ügynökök | Igen | Szolgáltatástérkép elemzi, és a Linux-ügynök számítógépekről gyűjt adatokat. <br><br>Kívül a [OMS-ügynököt](../log-analytics/log-analytics-linux-agents.md), Linux-ügynököt a Microsoft függőségi ügynök szükséges. Tekintse meg a [támogatott operációs rendszerek](#supported-operating-systems) operációs rendszerek teljes listáját. |
-| System Center Operations Manage felügyeleti csoport | Igen | Szolgáltatástérkép elemzi, és összegyűjti az adatokat a Windows és Linux-ügynökök a csatlakoztatott [System Center Operations Manager felügyeleti csoport](../log-analytics/log-analytics-om-agents.md). <br><br>Az Operations Management Suite a System Center Operations Manager ügynök számítógépről közvetlen kapcsolatra szükség. Az Operations Management Suite tárházba adat továbbítódik a felügyeleti csoportból.|
+| System Center Operations Manage felügyeleti csoport | Igen | Szolgáltatástérkép elemzi, és összegyűjti az adatokat a Windows és Linux-ügynökök a csatlakoztatott [System Center Operations Manager felügyeleti csoport](../log-analytics/log-analytics-om-agents.md). <br><br>Naplóelemzési a System Center Operations Manager ügynök számítógépről közvetlen kapcsolatra szükség. A Naplóelemzési munkaterületet adat továbbítódik a felügyeleti csoportból.|
 | Azure Storage-fiók | Nem | Szolgáltatástérkép adatokat gyűjt a ügynök számítógépekről, nincsenek adatok, az Azure Storage-ból gyűjtését. |
 
 Szolgáltatástérkép csak 64 bites platformokat támogatja.
 
-A Windows, a Microsoft Monitoring Agent (MMA) segítségével a System Center Operations Manager, mind az Operations Management Suite gyűjtse össze és küldése figyelési adatok. (Ez az ügynök neve a System Center Operations Manager ügynök, OMS-ügynököt, Log Analytics Agent, MMA vagy közvetlen ügynök, attól függően, hogy a környezetben.) A System Center Operations Manager és az Operations Management Suite adja meg a MMA különböző out-kiszállítási verzióit. Ezen verziói egyes jelenthetik-e a System Center Operations Manager Operations Management Suite, vagy mindkettőt.  
+A Windows, a Microsoft Monitoring Agent (MMA) segítségével a System Center Operations Manager és a Naplóelemzési gyűjtse össze és küldése figyelési adatok. (Ez az ügynök neve a System Center Operations Manager ügynök, OMS-ügynököt, Log Analytics Agent, MMA vagy közvetlen ügynök, attól függően, hogy a környezetben.) A System Center Operations Manager és a Naplóelemzési adja meg a MMA különböző out-kiszállítási verzióit. Ezen verziói egyes jelenthetik-e a System Center Operations Manager Naplóelemzési, vagy mindkettőt.  
 
-A Linux-, Linux összegyűjti és figyelése az Operations Management Suite adatokat küld az OMS-ügynököt. Szolgáltatástérkép használhatja a kiszolgálókon közvetlen OMS-ügynököt vagy Operations Management Suite System Center Operations Manager felügyeleti csoportok keresztül csatlakozó kiszolgálókon.  
+A Linux-, Linux összegyűjti és figyelési adatok szolgáltatáshoz küld az OMS-ügynököt. Szolgáltatástérkép kiszolgálókon közvetlen OMS-ügynök, vagy a System Center Operations Manager felügyeleti csoportok keresztül Naplóelemzési csatolt kiszolgálók használható.  
 
-Ebben a cikkben kifejezés összes ügynököt – hogy Linux vagy a Windows, hogy egy System Center Operations Manager felügyeleti csoport vagy közvetlenül az Operations Management Suite –, a "OMS-ügynököt." A megadott központi telepítés nevét, az ügynök csak akkor, ha szükség van a környezetben fogjuk használni.
+Ebben a cikkben kifejezés összes ügynököt – hogy Linux vagy a Windows, hogy egy System Center Operations Manager felügyeleti csoport vagy közvetlenül Naplóelemzési –, a "OMS-ügynököt." A megadott központi telepítés nevét, az ügynök csak akkor, ha szükség van a környezetben fogjuk használni.
 
-A Service Map ügynök nem továbbít adatokat saját magát, és nem igényel módosításokat tűzfalak vagy portok. A szolgáltatás a térképen mindig adatátvitel által az OMS-ügynököt az Operations Management Suite, vagy közvetlenül az OMS-átjárón keresztül.
+A Service Map ügynök nem továbbít adatokat saját magát, és nem igényel módosításokat tűzfalak vagy portok. A Service Map adatai mindig átkerülnek az OMS-ügynök szolgáltatáshoz, vagy közvetlenül az OMS-átjárón keresztül.
 
 ![Szolgáltatástérkép ügynökök](media/oms-service-map/agents.png)
 
-Ha egy felügyeleti csoporthoz csatlakoztatott Operations Management Suite a System Center Operations Manager-ügyfél:
+Ha egy System Center Operations Manager-ügyfél Naplóelemzési csatlakoztatott felügyeleti csoport:
 
-- Ha a System Center Operations Manager-ügynökök hozzáférhessenek az internethez való kapcsolódáshoz az Operations Management Suite, nincs szükség semmilyen további konfigurációra.  
-- Ha a System Center Operations Manager-ügynökök az interneten keresztül nem tud hozzáférni az Operations Management Suite, kell együttműködni a System Center Operations Manager az OMS-átjáró konfigurálása.
+- Ha a System Center Operations Manager-ügynökök hozzáférjenek az internetes Log Analyticshez való csatlakozáshoz, nincs szükség semmilyen további konfigurációra.  
+- Ha a System Center Operations Manager-ügynökök az interneten keresztül nem tud hozzáférni a Naplóelemzési, kell együttműködni a System Center Operations Manager az OMS-átjáró konfigurálása.
   
-Ha a közvetlen OMS-ügynököt használ, akkor az OMS-ügynököt magát az Operations Management Suite vagy az OMS-átjáró konfigurálása. Az OMS-átjáró tölthető le: a [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=52666).
+Ha közvetlen OMS-ügynököt használ, akkor az OMS-ügynököt maga Naplóelemzési vagy az OMS-átjáró konfigurálása. Az OMS-átjáró tölthető le: a [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=52666).
 
 ### <a name="management-packs"></a>Felügyeleti csomagok
-Az Operations Management Suite-munkaterülethez a Szolgáltatástérkép aktiválásakor 300 KB-os felügyeleti csomag futó Windows-kiszolgálók érkezik. Ha a System Center Operations Manager ügynököt használ egy [csatlakoztatott felügyeleti csoport](../log-analytics/log-analytics-om-agents.md), a Service Map felügyeleti csomag a System Center Operations Manager telepítése. Ha az ügynököt közvetlenül csatlakoztatott, az Operations Management Suite nyújt a felügyeleti csomag.
+Amikor a Szolgáltatástérkép aktiválva van a Naplóelemzési munkaterület, 300 KB-os felügyeleti csomag futó Windows-kiszolgálók elküldi. Ha a System Center Operations Manager ügynököt használ egy [csatlakoztatott felügyeleti csoport](../log-analytics/log-analytics-om-agents.md), a Service Map felügyeleti csomag a System Center Operations Manager telepítése. Ha az ügynököt közvetlenül csatlakoztatott, Log Analyticshez nyújt a felügyeleti csomag.
 
 A felügyeleti csomag neve Microsoft.IntelligencePacks.ApplicationDependencyMonitor. %ProgramFiles%\Microsoft figyelés Agent\Agent\Health szolgáltatás State\Management Packs\ írás. A felügyeleti csomagot használó adatforrás-e % Program files%\Microsoft figyelés Agent\Agent\Health szolgáltatás State\Resources\<AutoGeneratedID > \Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll.
 
@@ -147,7 +147,7 @@ Az Azure PowerShell Virtuálisgép-bővítmény telepítéséhez használhatja a
 # Deploy the Dependency Agent to every VM in a Resource Group
 #
 
-$version = "9.1"
+$version = "9.3"
 $ExtPublisher = "Microsoft.Azure.Monitoring.DependencyAgent"
 $OsExtensionMap = @{ "Windows" = "DependencyAgentWindows"; "Linux" = "DependencyAgentLinux" }
 $rmgroup = "<Your Resource Group Here>"
@@ -180,7 +180,7 @@ Győződjön meg arról, hogy még egyszerűbb a a függőségi ügynök van a v
 "properties": {
     "publisher": "Microsoft.Azure.Monitoring.DependencyAgent",
     "type": "DependencyAgentWindows",
-    "typeHandlerVersion": "9.1",
+    "typeHandlerVersion": "9.3",
     "autoUpgradeMinorVersion": true
 }
 
@@ -267,11 +267,11 @@ Ha a függőségi ügynök telepítése sikeres volt, de nem jelenik meg a kiszo
 
 * A rendszer a [ingyenes tarifacsomag Operations Management Suite/Log Analyticshez](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers)? Az ingyenes csomagban lehetővé teszi, hogy legfeljebb öt egyedi Szolgáltatástérkép kiszolgálók. További kiszolgálók nem jelenik meg a Service Map, még akkor is, ha az előző öt már nem küld adatokat.
 
-* A küldő kiszolgálónapló és teljesítményadatok az Operations Management Suite? Nyissa meg a keresési napló, és futtassa a következő lekérdezést a számítógép: 
+* A küldő kiszolgálónapló és teljesítményadatok van a Naplóelemzési? Nyissa meg a keresési napló, és futtassa a következő lekérdezést a számítógép: 
 
         * Computer="<your computer name here>" | measure count() by Type
         
-  Kapott események számos az eredmények között? Az elmúlt adatai? Ha igen, az OMS-ügynököt megfelelően működik-e és az Operations Management Suite szolgáltatással folytatott kommunikáció. Ha nem, nézze meg az OMS-ügynököt a kiszolgálón: [OMS ügynök a Windows hibaelhárítási](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues) vagy [OMS-ügynököt a Linux hibaelhárítási](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md).
+  Kapott események számos az eredmények között? Az elmúlt adatai? Ha igen, az OMS-ügynököt megfelelően működik-e és Naplóelemzési kommunikál. Ha nem, nézze meg az OMS-ügynököt a kiszolgálón: [OMS ügynök a Windows hibaelhárítási](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues) vagy [OMS-ügynököt a Linux hibaelhárítási](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md).
 
 #### <a name="server-appears-in-service-map-but-has-no-processes"></a>Kiszolgáló megjelenik a Szolgáltatástérkép, de nincs folyamat
 Ha a kiszolgáló a Service Map látja, de nincs adatainak feldolgozása vagy kapcsolat van, ez azt jelzi, hogy a függőségi ügynök telepítve és fut, de a kernel-illesztőprogram nem töltődött be. 

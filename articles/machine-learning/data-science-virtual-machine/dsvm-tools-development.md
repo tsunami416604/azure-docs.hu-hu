@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: b6a333d075e0391adca4f37bbff8918391a22fde
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6aef0fbe44e19b515c2bc10c0e7c38fabac10dae
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="development-tools-on-the-data-science-virtual-machine"></a>Az adatok tudományos virtuális gép Fejlesztőeszközök
 
@@ -42,16 +42,25 @@ A tudományos virtuális gép (DSVM) által számos népszerű eszközök és ID
 | Támogatott DSVM verziók      | Windows, Linux     |
 | A gyakori felhasználási      | Kód szerkesztése és a Git integráció   |
 | Hogyan használja az / futtatni?      | Asztali parancsikonra (`C:\Program Files (x86)\Microsoft VS Code\Code.exe`) a Windows, a asztali parancsikonjára vagy a Terminálszolgáltatások (`code`) a Linux    |
-| A DSVM a kapcsolódó eszközök      |     A Visual Studio 2017, Rstudióból, Juno  |
+| A DSVM a kapcsolódó eszközök      |     Visual Studio 2017, RStudio, Juno  |
 
 ## <a name="rstudio--desktop"></a>Rstudióból asztali 
 |    |           |
 | ------------- | ------------- |
-| Mi ez?   | Ügyfél IDE-R nyelvhez    |
+| Mi ez?   | Az R IDE ügyfél    |
 | Támogatott DSVM verziók      | Windows, Linux      |
 | A gyakori felhasználási      |  R fejlesztési     |
 | Hogyan használja az / futtatni?      | Asztali parancsikonra (`C:\Program Files\RStudio\bin\rstudio.exe`) a Windows asztali parancsikonra (`/usr/bin/rstudio`) Linux rendszeren      |
 | A DSVM a kapcsolódó eszközök      |   A Visual Studio 2017, a Visual Studio Code, Juno      |
+
+## <a name="rstudio--server"></a>RStudio  Server 
+|    |           |
+| ------------- | ------------- |
+| Mi ez?   | Az R webes IDE    |
+| Támogatott DSVM verziók      | Linux      |
+| A gyakori felhasználási      |  R fejlesztési     |
+| Hogyan használja az / futtatni?      | Engedélyezze a szolgáltatást a _systemctl rstudióból-kiszolgáló engedélyezése_, majd indítsa el a szolgáltatást, amely _systemctl rstudióból-kiszolgáló indítása_. Ezután bejelentkezhet Rstudióból kiszolgálóra http://your-vm-ip:8787 címen.       |
+| A DSVM a kapcsolódó eszközök      |   A Visual Studio 2017, a Visual Studio Code, Rstudióból asztali      |
 
 ## <a name="juno"></a>Juno 
 |    |           |

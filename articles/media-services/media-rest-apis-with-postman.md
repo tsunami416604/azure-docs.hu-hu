@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/04/2017
 ms.author: juliako
-ms.openlocfilehash: a24b73a93bddbeb5b56ddfdf604fa99faccea442
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 72b110cac8d4945c958d760ff98e2da2f2796b62
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="configure-postman-for-media-services-rest-api-calls"></a>A Media Services REST API-hívások Postman konfigurálása
 
@@ -33,7 +33,7 @@ A környezet és a gyűjtemény cikkeket, amelyek bemutatják, hogyan különbö
 
 ## <a name="configure-the-environment"></a>A környezet konfigurálása 
 
-1. Hozzon létre egy .JSON kiterjesztésű fájlt, amely tartalmazza a környezeti változók AMS oktatóanyagok szerepel. A fájl neve **AzureMediaServices.postman_environment.json**. Nyissa meg a fájlt, és illessze be a kódot, amely meghatározza a Postman környezet [a kód listaelem](postman-environment.md). 
+1. Hozzon létre egy .JSON kiterjesztésű fájlt, amely tartalmazza a környezeti változók AMS oktatóanyagok szerepel. A fájl neve (például **AzureMediaServices.postman_environment.json**). Nyissa meg a fájlt, és illessze be a kódot, amely meghatározza a Postman környezet [a kód listaelem](postman-environment.md). 
 2. Nyissa meg a **Postman**.
 3. A képernyő jobb, jelölje ki a **kezelése környezet** lehetőséget.
 
@@ -48,7 +48,7 @@ A környezet és a gyűjtemény cikkeket, amelyek bemutatják, hogyan különbö
 
 ## <a name="configure-the-collection"></a>A gyűjtemény konfigurálásához
 
-1. Hozzon létre egy .JSON kiterjesztésű fájlt, amely tartalmazza a **Postman** , amelyek szükségesek ahhoz, hogy a fájl feltöltése a Media Services összes műveletet tartalmazó gyűjtemény. A fájl neve **AzureMediaServicesOperations.postman_collection.json**. Nyissa meg a fájlt, és illessze be a kódot, amely meghatározza a **Postman** gyűjteményben [a kód listaelem](postman-collection.md).
+1. Hozzon létre egy .JSON kiterjesztésű fájlt, amely tartalmazza a **Postman** , amelyek szükségesek ahhoz, hogy a fájl feltöltése a Media Services összes műveletet tartalmazó gyűjtemény. A fájl neve (például **AzureMediaServicesOperations.postman_collection.json**). Nyissa meg a fájlt, és illessze be a kódot, amely meghatározza a **Postman** gyűjteményben [a kód listaelem](postman-collection.md).
 2. Kattintson a **importálása** a gyűjtemény fájl importálásához.
 3. Válassza ki a **AzureMediaServicesOperations.postman_collection.json** fájlt.
 

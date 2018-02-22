@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro;seohack1
-ms.openlocfilehash: 8799931f6233f0f18b56bea39e3cbcbbf51274e9
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 0cf26846a8f42238de09727a03dc6b50dff746b6
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Az önkiszolgáló jelszó-változtatási az Azure AD részletes bemutatója
 
@@ -78,7 +78,7 @@ Alapértelmezés szerint csak a felhő attribútumok irodai telefon és mobiltel
 
 Felhasználók csak jelszó is visszaállítása, ha a hitelesítési módszereket, amelyek a rendszergazda engedélyezte, és megköveteli az adatok.
 
-Ha a felhasználók nem szeretné, hogy a címtárban a mobiltelefonszám, de továbbra is szeretnék használni szeretné a jelszó alaphelyzetbe állítása, a rendszergazdák nem kitölti azt a könyvtárban. Felhasználók majd fel kell töltenie a **hitelesítéshez megadott telefonját** keresztül attribútumot a [jelszó-változtatási regisztrációs portálra](http://aka.ms/ssprsetup). A rendszergazdák láthatják ezeket az információkat a profil, de nem máshol lesz közzétéve.
+Ha a felhasználók nem szeretné, hogy a címtárban a mobiltelefonszám, de továbbra is szeretnék használni szeretné a jelszó alaphelyzetbe állítása, a rendszergazdák nem kitölti azt a könyvtárban. Felhasználók majd fel kell töltenie a **hitelesítéshez megadott telefonját** keresztül attribútumot a [jelszó-változtatási regisztrációs portálra](https://aka.ms/ssprsetup). A rendszergazdák láthatják ezeket az információkat a profil, de nem máshol lesz közzétéve.
 
 ### <a name="the-number-of-authentication-methods-required"></a>Hitelesítési módszer szükséges száma
 
@@ -180,7 +180,7 @@ Ahhoz, hogy ezt a beállítást, a felhasználó, aki engedélyezve van a jelsz�
 * Összevont alkalmazásokhoz
 * Azure AD használatával egyéni alkalmazások
 
-Ha regisztrációs igénylő le van tiltva, a felhasználók továbbra is futtathatja manuálisan regisztrálhatják az elérhetőségét. Vagy keresse fel a következőkre [http://aka.ms/ssprsetup](http://aka.ms/ssprsetup) vagy válassza ki a **regisztrálása jelszóváltoztatásra** hivatkozásra a **profil** a hozzáférési Panel lapján.
+Ha regisztrációs igénylő le van tiltva, a felhasználók továbbra is futtathatja manuálisan regisztrálhatják az elérhetőségét. Vagy keresse fel a következőkre [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) vagy válassza ki a **regisztrálása jelszóváltoztatásra** hivatkozásra a **profil** a hozzáférési Panel lapján.
 
 > [!NOTE]
 > Felhasználók kiválasztásával esetben elvetheti a jelszó-visszaállítási portál **Mégse** vagy zárja be az ablakot. Azonban meg kell regisztrálni a minden egyes bejelentkezéskor mindaddig, amíg a regisztrálást.

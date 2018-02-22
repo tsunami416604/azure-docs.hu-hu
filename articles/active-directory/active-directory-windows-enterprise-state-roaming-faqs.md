@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2017
 ms.author: markvi
-ms.openlocfilehash: 054705e802867fda666c80217396db197c60f50e
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 0aac3a9d3595ea0e761ba14070bf7cff4d4b264c
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="settings-and-data-roaming-faq"></a>Beállítások és adatroaming GYIK
 Ez a témakör néhány rendszergazdák rendelkezhet beállításait, valamint az alkalmazás adatszinkronizálás kérdésekre ad választ.
@@ -80,7 +80,7 @@ Ha több Azure AD különböző fiókok Azure AD bérlőre ugyanarra az eszközr
 ## <a name="what-are-the-roaming-settings-options-for-existing-windows-desktop-applications"></a>Mik a meglévő Windows asztali alkalmazások központi beállítások lehetőségei?
 Csak az univerzális Windows-alkalmazások központi működik. Nincsenek elérhető egy meglévő Windows asztali alkalmazások a roaming engedélyezésének két lehetőség közül választhat:
 
-* A [asztali híd](http://aka.ms/desktopbridge) segítséget nyújt a meglévő Windows asztali alkalmazások kerüljön a univerzális Windows Platform. Itt minimális kódmódosítással lesz szükség az Azure AD alkalmazásadat-barangolás előnyeit. Az asztal híd biztosít az alkalmazások app identitást, amely engedélyezéséhez alkalmazásadat-barangolás meglévő asztali alkalmazások esetén van szükség.
+* A [asztali híd](https://aka.ms/desktopbridge) segítséget nyújt a meglévő Windows asztali alkalmazások kerüljön a univerzális Windows Platform. Itt minimális kódmódosítással lesz szükség az Azure AD alkalmazásadat-barangolás előnyeit. Az asztal híd biztosít az alkalmazások app identitást, amely engedélyezéséhez alkalmazásadat-barangolás meglévő asztali alkalmazások esetén van szükség.
 * [Felhasználói élmény Virtualization (UE-V)](https://technet.microsoft.com/library/dn458947.aspx) segítségével hozzon létre egy meglévő Windows asztali alkalmazások egyéni beállítások sablont, és engedélyezte a Win32-alkalmazások központi. Ezzel a beállítással kell az alkalmazás fejlesztőjének az alkalmazás módosításához. UE-V a helyszíni Active Directory központi az ügyfelek, akik a Microsoft Desktop Optimization Pack korlátozódik.
 
 A rendszergazdák konfigurálhatják UE-V számára a Windows asztali alkalmazások adatainak a Windows operációs rendszer beállításainak és univerzális alkalmazások adatainak keresztül központi módosításával [UE-V csoportházirendek](https://technet.microsoft.com/itpro/mdop/uev-v2/configuring-ue-v-2x-with-group-policy-objects-both-uevv2), többek között a következőket:

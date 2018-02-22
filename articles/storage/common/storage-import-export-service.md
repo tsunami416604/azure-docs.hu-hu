@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2017
 ms.author: muralikk
-ms.openlocfilehash: 56cc2a82e7957e677f96c638f7e3e903a3b717e1
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
-ms.translationtype: HT
+ms.openlocfilehash: 0c34b7ce028ef0fae77322513f62557fa9f9929c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>Az adatok átviteléhez az Azure Storage a Microsoft Azure Import/Export szolgáltatás használata
 Ebben a cikkben azt részletes útmutatást nyújtanak az Azure Import/Export szolgáltatás használatával biztonságos átvitelére a nagy mennyiségű adatok Azure Blob storage és Azure fájlok által az Azure adatközpontba szállítási lemezmeghajtókat. Ez a szolgáltatás adatok átviteléhez az Azure storage merevlemez-meghajtók és a helyszíni helyek szállítás is használható. A SATA egyetlen lemezmeghajtó adatait vagy Azure Blob storage-vagy Azure fájlok importálhatók. 
@@ -87,7 +87,7 @@ Forgatókönyvek például használhatja ezt a szolgáltatást:
 Ebben a szakaszban látható a szolgáltatás használatához szükséges előfeltételeket. Alaposan olvassa át őket a meghajtók, mielőtt.
 
 ### <a name="storage-account"></a>Tárfiók
-Meglévő Azure-előfizetés és az Import/Export szolgáltatás használata egy vagy több storage-fiókokat kell rendelkeznie. Minden feladat adatátvitel vagy a csak egy tárfiókot is használható. Más szóval egy egyetlen importálási/exportálási feladatok nem terjedhetnek ki több tárfiókok között. Új tárfiók létrehozásával kapcsolatos további információkért lásd: [a Storage-fiók létrehozása](storage-create-storage-account.md#create-a-storage-account).
+Meglévő Azure-előfizetés és az Import/Export szolgáltatás használata egy vagy több storage-fiókokat kell rendelkeznie. Az Azure Import/Export csak klasszikus, a Blob Storage-fiókok és a általános célú v1 tárfiókok támogatja. Minden feladat adatátvitel vagy a csak egy tárfiókot is használható. Más szóval egy egyetlen importálási/exportálási feladatok nem terjedhetnek ki több tárfiókok között. Új tárfiók létrehozásával kapcsolatos további információkért lásd: [a Storage-fiók létrehozása](storage-create-storage-account.md#create-a-storage-account).
 
 ### <a name="data-types"></a>Adattípusok
 Azure Import/Export szolgáltatás segítségével az adatok másolása **blokk** blobokat, **lap** blobot, vagy **fájlok**. Viszont csak akkor exportálható **blokk** blobokat, **lap** blobok vagy **Append** BLOB az Azure storage-ban Ez a szolgáltatás. A szolgáltatás támogatja az Azure storage Azure fájlok csak importálása. Azure-fájlok exportálása jelenleg nem támogatott.

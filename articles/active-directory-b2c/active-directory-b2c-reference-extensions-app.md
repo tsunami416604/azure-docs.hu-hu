@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 9/06/2017
 ms.author: parja
-ms.openlocfilehash: b28a1bb6287a0e30eda21d9a7c03abbf14b5d8d9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 450a7a5051cdbd6a3c8105a06fd3ebae10d5388e
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-ad-b2c-extensions-app"></a>Az Azure AD B2C: Bővítmények alkalmazás
 
@@ -31,7 +31,7 @@ Az Azure AD B2C-címtárban jön létre, amikor egy alkalmazás nevű `b2c-exten
 
 Annak ellenőrzéséhez, hogy a b2c-bővítmények-alkalmazás jelen:
 
-1. Az Azure AD B2C-bérlő belül kattintson a **további szolgáltatások** a bal oldali navigációs menü.
+1. Az Azure AD B2C-bérlő belül kattintson a **minden szolgáltatás** a bal oldali navigációs menü.
 1. Keresse meg, és nyissa meg a **App regisztrációk**.
 1. Keressen olyan alkalmazás, amelynek kezdődik **b2c-bővítmények-alkalmazás**
 

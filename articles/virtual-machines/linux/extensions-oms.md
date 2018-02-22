@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/26/2017
+ms.date: 02/15/2018
 ms.author: danis
-ms.openlocfilehash: 8aa29dfb46a1aafb9e7b713456e1006af423a2b2
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: fea3e992c70d286695691d837c746522f6a5ebb3
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="oms-virtual-machine-extension-for-linux"></a>Linux OMS virtuálisgép-bővítmény
 
 ## <a name="overview"></a>Áttekintés
 
-Az Operations Management Suite (OMS) figyelési riasztási és riasztási szervizelési képességeket biztosít a felhő között és a helyszíni eszközök. Az OMS-ügynököt Linux virtuálisgép-bővítmény közzétett és a Microsoft támogatja. A bővítmény, az OMS-ügynököt telepít Azure virtuális gépeken, és regisztrálja a virtuális gépek be egy meglévő OMS-munkaterület. Ez a dokumentum részletesen a támogatott platformok, a konfigurációk és a Linux virtuálisgép-bővítmény OMS vonatkozó telepítési lehetőségeket.
+A Naplóelemzési figyelési riasztási és riasztási szervizelési képességeket biztosít a felhő között és a helyszíni eszközök. Az OMS-ügynököt Linux virtuálisgép-bővítmény közzétett és a Microsoft támogatja. A bővítmény, az OMS-ügynököt telepít Azure virtuális gépeken, és regisztrálja a virtuális gépek be egy meglévő Naplóelemzési munkaterület. Ez a dokumentum részletesen a támogatott platformok, a konfigurációk és a Linux virtuálisgép-bővítmény OMS vonatkozó telepítési lehetőségeket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -42,9 +42,19 @@ Az OMS-ügynököt bővítmény futtatható a Linux terjesztéseket ellen.
 | Ubuntu | 12.04 LTS, 14.04 LTS, 15.04, 15.10, 16.04 LTS |
 | SUSE Linux Enterprise Server | 11 és 12 |
 
+A következő táblázat az OMS-VM verziójának leképezéseket bővítményt, és az OMS-ügynököt csomagot minden egyes kiadásához. A kibocsátási megjegyzések az OMS-ügynök csomag verziószámát mutató hivatkozás szerepel.  
+
+| OMS Linux virtuális gép kiterjesztés verziója | OMS-ügynököt csomag verziója | 
+|--------------------------------|--------------------------|
+| 1.4.59.1 | [1.4.3-174](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.3-174)|
+| 1.4.58.7 | [14.2-125](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.2-125)|
+| 1.4.56.5 | [1.4.2-124](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.2-124)|
+| 1.4.55.4 | [1.4.1-123](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.1-123)|
+| 1.4.45.3 | [1.4.1-45](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.1-45)|
+
 ### <a name="azure-security-center"></a>Azure Security Center
 
-Az Azure Security Center automatikusan látja el az OMS-ügynököt, és azt az alapértelmezett naplóelemzési munkaterület az Azure-előfizetés csatlakozik. Ha az Azure Security Center használ, ne futtassa végig a lépéseken, ebben a dokumentumban. Ezzel felülírja a konfigurált munkaterület és a break a kapcsolat az Azure Security Center.
+Az Azure Security Center automatikusan látja el az OMS-ügynököt, és csatlakozik a egy alapértelmezett Naplóelemzési munkaterület ASC hozta létre az Azure-előfizetésben. Ha az Azure Security Center használ, ne futtassa végig a lépéseken, ebben a dokumentumban. Ezzel felülírja a konfigurált munkaterületet, és megszakítja a kapcsolatot az Azure Security Center.
 
 ### <a name="internet-connectivity"></a>Internetkapcsolat
 
@@ -52,7 +62,7 @@ Az OMS-ügynököt bővítmény Linux megköveteli, hogy a cél virtuális gép 
 
 ## <a name="extension-schema"></a>A séma kiterjesztése
 
-A következő JSON jeleníti meg az OMS-ügynököt bővítmény sémáját. A bővítmény szükséges a munkaterület azonosítója és a cél OMS-munkaterület; kulcsát Ezeket az értékeket az OMS-portálon található. A munkaterület-kulcs bizalmas adatokat kell kezelni, mert azt egy védett beállítás konfigurációban kell tárolni. Az Azure Virtuálisgép-bővítmény védett beállítás adatokat titkosít, és csak visszafejti a cél virtuális gépen. Vegye figyelembe, hogy **workspaceId** és **workspaceKey** -és nagybetűk.
+A következő JSON jeleníti meg az OMS-ügynököt bővítmény sémáját. A bővítmény szükséges a munkaterület azonosítója és a cél a Naplóelemzési munkaterület; kulcsát Ezek az értékek lehetnek [a Naplóelemzési munkaterület található](../../log-analytics/log-analytics-quick-collect-linux-computer.md#obtain-workspace-id-and-key) az Azure portálon. A munkaterület-kulcs bizalmas adatokat kell kezelni, mert azt egy védett beállítás konfigurációban kell tárolni. Az Azure Virtuálisgép-bővítmény védett beállítás adatokat titkosít, és csak visszafejti a cél virtuális gépen. Vegye figyelembe, hogy **workspaceId** és **workspaceKey** -és nagybetűk.
 
 ```json
 {
@@ -79,23 +89,23 @@ A következő JSON jeleníti meg az OMS-ügynököt bővítmény sémáját. A b
 
 ### <a name="property-values"></a>A tulajdonság értékek
 
-| Név | Érték / – példa |
+| Name (Név) | Érték / – példa |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
-| Közzétevő | Microsoft.EnterpriseCloud.Monitoring |
+| publisher | Microsoft.EnterpriseCloud.Monitoring |
 | type | OmsAgentForLinux |
 | typeHandlerVersion | 1.4 |
-| workspaceId (például) | 6f680a37-00c6-41C7-a93f-1437e3462574 |
-| workspaceKey (például) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI + rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ == |
+| workspaceId (e.g) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
+| workspaceKey (például) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
 
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 
-Az Azure Virtuálisgép-bővítmények az Azure Resource Manager-sablonok is telepíthető. Sablonok bevezetése az OMS-be például a feladás egy vagy több központi telepítési beállításokra van szükség egy vagy több virtuális gépek telepítése során ideális. Az OMS-ügynök Virtuálisgép-bővítmény tartalmazó minta Resource Manager sablon megtalálható a [Azure Quick Start gyűjtemény](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm). 
+Az Azure Virtuálisgép-bővítmények az Azure Resource Manager-sablonok is telepíthető. Sablonok is épp ezért tökéletes választás, ha egy vagy több feladás egy vagy több konfigurációs szolgáltatáshoz bevezetési például igénylő virtuális gépek telepítése. Az OMS-ügynök Virtuálisgép-bővítmény tartalmazó minta Resource Manager sablon megtalálható a [Azure Quick Start gyűjtemény](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm). 
 
 A JSON-konfiguráció a virtuálisgép-bővítmény a virtuálisgép-erőforrás ágyazhatók egymásba, vagy elhelyezve, a gyökér vagy a legfelső szintű erőforrás-kezelő JSON-sablon. A JSON-konfiguráció elhelyezési erőforrás nevét és típusát. értéke befolyásolja. További információkért lásd: [nevét és típusát gyermekerőforrásait beállítása](../../azure-resource-manager/resource-manager-templates-resources.md#child-resources). 
 
-Az alábbi példa azt feltételezi, hogy a virtuálisgép-erőforrást az OMS-bővítmény van beágyazva. A bővítmény erőforrás beágyazási, amikor bekerül a JSON a `"resources": []` objektum a virtuális gép.
+Az alábbi példa azt feltételezi, hogy a virtuális gépi bővítményt a virtuálisgép-erőforrás van beágyazva. A bővítmény erőforrás beágyazási, amikor bekerül a JSON a `"resources": []` objektum a virtuális gép.
 
 ```json
 {
@@ -147,7 +157,7 @@ A bővítmény JSON elhelyezésekor a sablon gyökerében, az erőforrás nevét
 
 ## <a name="azure-cli-deployment"></a>Az Azure CLI-telepítés
 
-Az Azure CLI segítségével az OMS-ügynök Virtuálisgép-bővítmény telepítése egy meglévő virtuális gépre. Cserélje le az OMS-kulcsot és az OMS-azonosító az OMS-munkaterület szerintiek. 
+Az Azure CLI segítségével az OMS-ügynök Virtuálisgép-bővítmény telepítése egy meglévő virtuális gépre. Cserélje le a *workspaceId* és *workspaceKey* származó Naplóelemzési munkaterületet. 
 
 ```azurecli
 az vm extension set \
@@ -177,16 +187,16 @@ A következő fájl kerül a bővítmény végrehajtás kimenetének:
 
 ### <a name="error-codes-and-their-meanings"></a>Hibakódok és azok jelentését
 
-| Hibakód: | Jelentése | Lehetséges művelet |
+| Hibakód | Jelentése | Lehetséges művelet |
 | :---: | --- | --- |
-| 10 | Virtuális gép már csatlakoztatva van egy OMS-munkaterület | A virtuális gép csatlakozik a bővítmény sémában megadott munkaterület, stopOnMultipleConnections értéke HAMIS, a nyilvános beállításai, vagy távolítsa el ezt a tulajdonságot. Ez a virtuális gép lekérdezi számlázva után az egyes munkaterületeken van csatlakoztatva. |
+| 10 | Virtuális gép már csatlakoztatva van a Naplóelemzési munkaterület | A virtuális gép csatlakozik a bővítmény sémában megadott munkaterület, stopOnMultipleConnections értéke HAMIS, a nyilvános beállításai, vagy távolítsa el ezt a tulajdonságot. Ez a virtuális gép lekérdezi számlázva után az egyes munkaterületeken van csatlakoztatva. |
 | 11 | A bővítmény megadott Érvénytelen konfiguráció | Kövesse a fenti példákban beállítása a telepítéshez szükséges minden tulajdonság értékével. |
 | 12 | A dpkg package manager zárolva van | Győződjön meg arról, hogy minden dpkg frissítési műveletek a számítógépen végzett, és próbálkozzon újra. |
 | 20 | Túl korán nevű engedélyezése | [Az Azure Linux ügynök frissítése](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) az elérhető legújabb verzióra. |
 | 51 | Ezt a bővítményt a virtuális gép operációs rendszer nem támogatott | |
 | 55 | Nem lehet kapcsolódni a Microsoft Operations Management Suite szolgáltatással | Ellenőrizze, hogy a rendszernek van-e Internet-hozzáféréssel, vagy adtak meg, hogy érvényes HTTP-proxy. Ezenkívül ellenőrizze a helyességét a munkaterület azonosítóját. |
 
-További hibaelhárítási információért található meg a [OMS-ügynök-az-Linux hibaelhárítási útmutatója](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#).
+További hibaelhárítási információért található meg a [OMS-ügynök-az-Linux hibaelhárítási útmutatója](../../log-analytics/log-analytics-azure-vmext-troubleshoot.md).
 
 ### <a name="support"></a>Támogatás
 

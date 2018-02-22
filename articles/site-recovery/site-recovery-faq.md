@@ -6,13 +6,13 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 02/18/2018
 ms.author: raynew
-ms.openlocfilehash: 578ce5d4e661e74003440836304f16579d292d06
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 1a7d57c1f1f84e7ce3b931c2911ae7394b066f8d
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Azure Site Recovery: gyakori kérdések (GYIK)
 A cikk az Azure Site Recovery kapcsolatos gyakran ismételt kérdések tartalmaz. Ha kérdése van a cikk elolvasása után, az fel őket a [Azure Recovery Services fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
@@ -163,7 +163,7 @@ Automatizálható, képes használni a helyszíni Orchestratort vagy az Operatio
 Igen, a másik helyre történő helyreállítást használható feladat-visszavételi egy másik gazdagépen az Azure-ból. További információk a beállítások az alábbi hivatkozások VMware és a Hyper-V virtuális gépek.
 
 * [A VMware virtuális gépek](concepts-types-of-failback.md#alternate-location-recovery-alr)
-* [A Hyper-V virtuális gépek](site-recovery-failback-from-azure-to-hyper-v.md#perform-failback)
+* [A Hyper-V virtuális gépek](hyper-v-azure-failback.md#perform-failback)
 
 ## <a name="service-providers"></a>Szolgáltatók
 ### <a name="im-a-service-provider-does-site-recovery-work-for-dedicated-and-shared-infrastructure-models"></a>Szolgáltató vagyok. Működik a Site Recovery dedikált és megosztott infrastruktúra-modellekkel?

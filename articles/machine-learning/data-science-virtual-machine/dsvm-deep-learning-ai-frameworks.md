@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: c6dba433536e07970ad5ce338e33b5d19f4532b2
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 89a8cde0dbb7fe7ccfbb6d068411aaf5488c532f
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>Mély tanulás és mesterségesintelligencia-keretrendszerek
 A [adatok tudományos virtuális gép](http://aka.ms/dsvm) (DSVM) és a [mély tanulási VM](http://aka.ms/dsvm/deeplearning) mély tanulási keretrendszerek mesterséges intelligencia (AI) alkalmazások a prediktív elemzés érdekében számos támogat, és kognitív képességei többek között a lemezkép és a nyelvi ismertetése. 
@@ -67,7 +67,7 @@ Az alábbiak a tanulási keretrendszerek a DSVM elérhető összes mély.
 |    |           |
 | ------------- | ------------- |
 | Mi ez?   | A részletes oktatási keretrendszer      |
-| Támogatott DSVM kiadás      | Linux     |
+| Támogatott DSVM kiadás      | Ubuntu     |
 | Hogyan van azt konfigurált / a DSVM telepítve?  | Caffe telepítve van-e `/opt/caffe`.    |
 | Minták mutató hivatkozások      | Minták szerepelnek `/opt/caffe/examples`.      |
 | A DSVM a kapcsolódó eszközök      | Caffe2      |
@@ -87,7 +87,7 @@ Egy új böngészőablakban nyílik meg a minta notebookok.
 |    |           |
 | ------------- | ------------- |
 | Mi ez?   | A részletes oktatási keretrendszer      |
-| Támogatott DSVM kiadás      | Linux     |
+| Támogatott DSVM kiadás      | Ubuntu     |
 | Hogyan van azt konfigurált / a DSVM telepítve?  | Caffe2 telepítve van-e `/opt/caffe2`. Python 2.7 is érhető el (_legfelső szintű_) conda környezetben.     |
 | Minták mutató hivatkozások      | A minta Jupyter notebookok tartoznak.     |
 | A DSVM a kapcsolódó eszközök      | Caffe      |
@@ -114,7 +114,7 @@ A terminálon aktiválja a Python kívánt verziót (_legfelső szintű_ vagy _p
 |    |           |
 | ------------- | ------------- |
 | Mi ez?   | A részletes tanulási keretrendszere, amely H2O      |
-| Támogatott DSVM kiadás      | Linux     |
+| Támogatott DSVM kiadás      | Ubuntu     |
 | Hogyan van azt konfigurált / a DSVM telepítve?  | A részletes vízjel telepítve van-e `/dsvm/tools/deep_water`.   |
 | Minták mutató hivatkozások      | Minták a mély vízjel kiszolgálón keresztül érhetők el.      |
 | A DSVM a kapcsolódó eszközök      | H2O, készült vízjel      |
@@ -145,7 +145,7 @@ Majd nyisson meg egy böngészőt, és kapcsolódjon `http://localhost:54321`.
 |    |           |
 | ------------- | ------------- |
 | Mi ez?   | A mélyhivatkozással NVIDIA rendszer learning a gyors a mély tanulási modellek betanítása      |
-| Támogatott DSVM kiadás      | Linux     |
+| Támogatott DSVM kiadás      | Ubuntu     |
 | Hogyan van azt konfigurált / a DSVM telepítve?  | SZÁMJEGYEK telepítve van-e `/dsvm/tools/DIGITS` érhető el, és egy szolgáltatás nevű _számjegyek_.   |
 ### <a name="how-to-use--run-it"></a>Hogyan használja az / futtatni?  
 
@@ -173,7 +173,7 @@ A szolgáltatás elindításához körülbelül egy percig tart. Indítson el eg
 |    |           |
 | ------------- | ------------- |
 | Mi ez?   | A részletes oktatási keretrendszer      |
-| Támogatott DSVM kiadás      | Linux     |
+| Támogatott DSVM kiadás      | Ubuntu     |
 | Hogyan van azt konfigurált / a DSVM telepítve?  | Theano telepítve van a Python 2.7-es (_legfelső szintű_), valamint a Python 3.5 (_py35_) környezetben.   |
 | A DSVM a kapcsolódó eszközök      | Keras      |
 | Hogyan használja az / futtatni?    | A terminálon a Python-verzió (legfelső szintű vagy py35), futtassa a python, majd importálása theano aktiválása. A Jupyter válassza ki a Python 2.7 vagy 3.5-ös kernel, majd importálja a theano.  |
@@ -185,7 +185,42 @@ A szolgáltatás elindításához körülbelül egy percig tart. Indítson el eg
 |    |           |
 | ------------- | ------------- |
 | Mi ez?   | A részletes oktatási keretrendszer      |
-| Támogatott DSVM kiadás      | Linux     |
+| Támogatott DSVM kiadás      | Ubuntu     |
 | Hogyan van azt konfigurált / a DSVM telepítve?  | Torch telepítve van-e `/dsvm/tools/torch`. PyTorch telepítve van a Python 2.7-es (_legfelső szintű_), valamint a Python 3.5 (_py35_) környezetben.   |
 | Minták mutató hivatkozások      | Torch minták találhatók `/dsvm/samples/torch`. PyTorch minták találhatók `/dsvm/samples/pytorch`.      |
 
+
+## <a name="pytorch"></a>PyTorch
+
+|    |           |
+| ------------- | ------------- |
+| Mi ez?   | A részletes oktatási keretrendszer      |
+| Támogatott DSVM kiadás      | Linux     |
+| Hogyan van azt konfigurált / a DSVM telepítve?  | PyTorch telepítve van-e a Python 3.5-ös (_py35_) környezetben.   |
+| Minták mutató hivatkozások      | Minta Jupyter notebookok tartoznak, és minták /dsvm/samples/pytorch is található.      |
+| A DSVM a kapcsolódó eszközök      | Torch      |
+
+### <a name="how-to-use--run-it"></a>Hogyan használja az / futtatni?  
+
+Futtassa a terminálon _python_, majd importálja a torch. A Jupyter válassza ki a Python 3.5 kernel, majd importálja a torch.
+
+
+## <a name="mxnet-model-server"></a>MXNet Model Server
+
+|    |           |
+| ------------- | ------------- |
+| Mi ez?   | A kiszolgáló HTTP-végpontokról MXNet és ONNX modellek létrehozásához      |
+| Támogatott DSVM kiadás      | Linux     |
+| Hogyan van azt konfigurált / a DSVM telepítve?  | _mxnet-modell-kiszolgáló_ érhető el a terminálon.   |
+| Minták mutató hivatkozások      | Naprakész mintákat keressen az [MXNet modell kiszolgáló lap](https://github.com/awslabs/mxnet-model-server).    |
+| A DSVM a kapcsolódó eszközök      | MXNet      |
+
+## <a name="tensorflow-serving"></a>TensorFlow szolgál
+
+|    |           |
+| ------------- | ------------- |
+| Mi ez?   | A kiszolgáló TensorFlow modell inferencing futtatásához      |
+| Támogatott DSVM kiadás      | Linux     |
+| Hogyan van azt konfigurált / a DSVM telepítve?  | _tensorflow_model_server_ érhető el a terminálon.   |
+| Minták mutató hivatkozások      | Minták érhetők el [online](https://www.tensorflow.org/serving/).      |
+| A DSVM a kapcsolódó eszközök      | TensorFlow      |

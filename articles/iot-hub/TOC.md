@@ -87,6 +87,7 @@
 #### [.NET](iot-hub-csharp-csharp-file-upload.md)
 #### [Java](iot-hub-java-java-file-upload.md)
 #### [Node.js](iot-hub-node-node-file-upload.md)
+#### [Python](iot-hub-python-python-file-upload.md)
 ### Ikereszközök – első lépések
 #### [Node.js-háttérrendszer/Node.js-eszköz](iot-hub-node-node-twin-getstarted.md)
 #### [.NET-háttérrendszer/Node.js-eszköz](iot-hub-csharp-node-twin-getstarted.md)
@@ -110,15 +111,19 @@
 #### [.NET-háttérrendszer/Node.js-eszköz](iot-hub-csharp-node-twin-how-to-configure.md)
 #### [.NET-háttérrendszer/.NET-eszköz](iot-hub-csharp-csharp-twin-how-to-configure.md)
 #### [Java-háttérrendszer/Java-eszköz](iot-hub-java-java-twin-how-to-configure.md)
+#### [Python-háttérrendszer/Python-eszköz](iot-hub-python-python-twin-how-to-configure.md)
 ### Eszközfeladatok használata az eszköz belső vezérlőprogramjának frissítéséhez
 #### [Node-háttérrendszer/Node-eszköz](iot-hub-node-node-firmware-update.md)
 #### [.NET-háttérrendszer/Node.js-eszköz](iot-hub-csharp-node-firmware-update.md)
 #### [.NET-háttérrendszer/.NET-eszköz](iot-hub-csharp-csharp-firmware-update.md)
 #### [Java-háttérrendszer/Java-eszköz](iot-hub-java-java-firmware-update.md)
+#### [Python-háttérrendszer/Python-eszköz](iot-hub-python-python-firmware-update.md)
 ### Feladatok ütemezése és szórása
 #### [Node.js-háttérrendszer/Node.js-eszköz](iot-hub-node-node-schedule-jobs.md)
 #### [.NET-háttérrendszer/Node.js-eszköz](iot-hub-csharp-node-schedule-jobs.md)
-#### [Java](iot-hub-java-java-schedule-jobs.md)
+#### [.NET-háttérrendszer/.NET-eszköz](iot-hub-csharp-csharp-schedule-jobs.md)
+#### [Java-háttérrendszer/Java-eszköz](iot-hub-java-java-schedule-jobs.md)
+#### [Python-háttérrendszer/Python-eszköz](iot-hub-python-python-schedule-jobs.md)
 
 ## Kezelés
 ### IoT Hub létrehozása 

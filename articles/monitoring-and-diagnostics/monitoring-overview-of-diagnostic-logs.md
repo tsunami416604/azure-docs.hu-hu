@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2017
 ms.author: johnkem; magoedte
-ms.openlocfilehash: d59abde29fc7b73a799e5bf3659b02f824b693de
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: df20e174abb9960ad378221008ac7261fd0582f1
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Gyűjtése és felhasználása az Azure-erőforrások naplóadatait
 
@@ -163,7 +163,7 @@ Győződjön meg arról, hogy az erőforrások vannak beállítva a diagnosztika
 
 ![Diagnosztikai naplók panelen a portálon](./media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-nav.png)
 
-Lehet, hogy kattintson a "További szolgáltatás" a figyelő szakaszban találja.
+Lehet, hogy kattintson "Az összes szolgáltatás" a figyelő szakaszban találja.
 
 Itt megtekintheti és összes erőforrást, amely támogatja a diagnosztikai beállításokat, hogy azok rendelkeznek-e engedélyezve diagnosztikai szűréséhez. Lásd: is lebontva, ha több beállítások erőforrás van beállítva, és ellenőrizze, melyik tárfiók, az Event Hubs névtér és/vagy adatok halad a Naplóelemzési munkaterület.
 
@@ -174,7 +174,7 @@ Megjeleníti egy diagnosztikai beállítás hozzáadása a diagnosztikai beáll�
 ## <a name="supported-services-categories-and-schemas-for-resource-diagnostic-logs"></a>Támogatott szolgáltatások, a kategóriák és a sémák erőforrás diagnosztikai naplók
 [Ebben a cikkben találhat](monitoring-diagnostic-logs-schema.md) támogatott szolgáltatások és a napló kategóriák és a szolgáltatások által használt sémák teljes listáját.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Adatfolyam-erőforrás diagnosztikai naplók **Event Hubs**](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 * [A Azure REST API használatával erőforrás diagnosztikai beállításainak módosítása](https://msdn.microsoft.com/library/azure/dn931931.aspx)

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 5dd762cffbca909c5f682a16c86ef5a86f4860de
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
-ms.translationtype: HT
+ms.openlocfilehash: 11cc5841d2f804f0d120dddda226bf05a0612607
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="api-management-access-restriction-policies"></a>Az API Management hozzáférés szoftverkorlátozó házirendek
 Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [házirendek az API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -500,7 +500,7 @@ Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozz
 |óraeltérés|TimeSpan érték. Adja meg a várt közötti maximális eltérést a jogkivonat kiállítójának rendszerideje és az API Management-példány használatával.|Nem|0 másodperc|  
 |failed-validation-error-message|A HTTP-válasz törzsében adja vissza, ha a jwt-t nem felel meg az érvényesítési hibaüzenet. Ez az üzenet rendelkeznie kell a megfelelő escape-karaktersorozatot különleges karaktereket.|Nem|Alapértelmezett hibaüzenetet függ az érvényesítési hibát, például "JWT nem található."|  
 |failed-validation-httpcode|HTTP-állapotkód vissza, ha a jwt-t nem teljesíti az ellenőrző.|Nem|401|  
-|fejléc-neve|A HTTP-fejlécnek a tokent tároló neve.|Vagy `header-name` vagy `query-paremeter-name` megadott; de nem mindkettőn keresztül kell lennie.|–|  
+|fejléc-neve|A HTTP-fejlécnek a tokent tároló neve.|Vagy `header-name` vagy `query-parameter-name` megadott; de nem mindkettőn keresztül kell lennie.|–|  
 |id|A `id` attribútuma a `key` elem lehetővé teszi a karakterláncot, amely elleni megfeleltetésének `kid` tudja meg a megfelelő kulcsot az aláírás-ellenőrzés használata (ha van ilyen) a jogkivonat jogcímek.|Nem|–|  
 |Egyezés|A `match` attribútuma a `claim` elem meghatározza, hogy a házirend minden jogcím értékét kell a jogkivonat az érvényesítés sikeres szerepel. Lehetséges értékek:<br /><br /> -                          `all` – a szabályzat minden jogcím értékét a jogkivonat az érvényesítés sikeres jelen kell lennie.<br /><br /> -                          `any` -legalább egy jogcím értékét a jogkivonat az érvényesítés sikeres jelen kell lennie.|Nem|összes|  
 |lekérdezés-paremeter-neve|Neve az a következő lekérdezésparaméter a tokent tároló.|Vagy `header-name` vagy `query-paremeter-name` megadott; de nem mindkettőn keresztül kell lennie.|–|  
@@ -508,7 +508,7 @@ Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozz
 |szükséges rendszer|A token neve sémáját, pl. "Tulajdonos". Az attribútum van beállítva, ha a házirend biztosítja, hogy a megadott séma szerepel az engedélyezési fejléc értéke.|Nem|–|
 |require-signed-tokens|Logikai érték. Megadja, hogy egy jogkivonatot kell aláírni.|Nem|igaz|  
 |Elválasztó|Karakterlánc. Meghatározza az elválasztó (pl. ",") értékek beolvasása a többértékű jogcím használandó.|Nem|–| 
-|url|Azonosító konfigurációs végponti URL-cím megnyitása ahol nyitott azonosító konfigurációs metaadatok érhető el. Az Azure Active Directory használata a következő URL-cím: `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` a directory-bérlő neve, pl. és `contoso.onmicrosoft.com`.|Igen|–|  
+|url|Azonosító konfigurációs végponti URL-cím megnyitása ahol nyitott azonosító konfigurációs metaadatok érhető el. A válasz meg kell felelnie a specifikációk, meghatározott URL-címen:`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`.  Az Azure Active Directory használata a következő URL-cím: `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` a directory-bérlő neve, pl. és `contoso.onmicrosoft.com`.|Igen|–|  
   
 ### <a name="usage"></a>Használat  
  Ez a házirend használható a következő házirend [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  

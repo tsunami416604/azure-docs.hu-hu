@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: LADocs; divswa
-ms.openlocfilehash: c1a1a5530c19d39a8e37d122235c8340caa88570
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 4bb003afd757faac675a9af8599a781247717a64
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="perform-advanced-json-transformations-with-a-liquid-template"></a>Hajtsa végre a speciális JSON átalakítások folyékony sablonnal
 
@@ -110,7 +110,46 @@ Ebből a cikkből megtudhatja, hogyan az folyékony térkép vagy a sablont, ame
 
 A logikai alkalmazáshoz a JSON-bevitelben utáni [Postman](https://www.getpostman.com/postman) vagy hasonló eszköz. A Logic Apps alkalmazást az átalakítani kívánt JSON-kimenetét ebben a példában néz ki:
   
-![Példa a kimenetre](./media/logic-apps-enterprise-integration-liquid-transform/example-output.png)
+![Példa a kimenetre](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontojson.png)
+
+## <a name="more-liquid-action-examples"></a>További folyékony művelet példák
+Folyadék csak JSON átalakítások nem korlátozódik. Az alábbiakban más elérhető átalakítási műveletek folyadék használó.
+
+* Átalakítás JSON szöveg
+  
+  Itt az ebben a példában használt folyékony sablon:
+   
+   ``` json
+   {{content.firstName | Append: ' ' | Append: content.lastName}}
+   ```
+   Az alábbiakban a minta bemeneti és kimeneti:
+  
+   ![Példa a kimenetre JSON szöveg](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontotext.png)
+
+* Átalakítás JSON XML
+  
+  Itt az ebben a példában használt folyékony sablon:
+   
+   ``` json
+   [{% JSONArrayFor item in content -%}
+        {{item}}
+    {% endJSONArrayFor -%}]
+   ```
+   Az alábbiakban a minta bemeneti és kimeneti:
+
+   ![Példa a kimenetre JSON XML](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltojson.png)
+
+* Átalakítás XML szöveg
+  
+  Itt az ebben a példában használt folyékony sablon:
+
+   ``` json
+   {{content.firstName | Append: ' ' | Append: content.lastName}}
+   ```
+
+   Az alábbiakban a minta bemeneti és kimeneti:
+
+   ![Egy példa a kimenetre XML szöveg](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltotext.png)
 
 ## <a name="next-steps"></a>További lépések
 

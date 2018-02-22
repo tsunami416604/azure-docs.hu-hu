@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 02/14/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 4291d765bec94ca1edd50b8df0c414524f29fba2
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 6fcf360df6da36919c251bef0a8214deba6b5605
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Alkalmazásproxy problémák és hibaüzenetek hibaelhárítása
 Ha hiba történik, a közzétett alkalmazás eléréséhez, vagy az alkalmazás-közzététel, ellenőrizze a megjelenítéséhez, ha a Microsoft Azure AD-alkalmazásproxy megfelelően működik-e a következő beállításokat:
@@ -68,7 +68,7 @@ Ez a táblázat ismerteti a gyakori hibákat, és konfigurálja a Kerberos érke
 | 13016 – az azure AD nem olvashatók be a következőt, mert nincs UPN a biztonsági jogkivonatot, vagy a hozzáférés cookie-ban van a Kerberos jegyet a felhasználó nevében. | Az STS-konfigurációval probléma merül fel. Hárítsa el a UPN jogcím konfigurálása az STS. |
 | 13019 – az azure AD a következő általános API-hiba miatt nem olvashatók be a Kerberos jegyet a felhasználó nevében. | Ez az esemény jelezheti, hogy az Azure AD közötti helytelen konfiguráció és a tartományvezérlő kiszolgálót vagy mindkét gépen dátumával és időpontjával konfigurációs problémát. A tartományvezérlő visszautasította a Kerberos-jegy hozta létre az Azure AD. Győződjön meg arról, hogy az Azure AD és a háttérkiszolgáló alkalmazás konfigurációja helytelen, különösen az SPN konfigurációs. Ellenőrizze, hogy az Azure AD tartományhoz, a tartományvezérlő győződjön meg arról, hogy a tartományvezérlő megbízhatósági kapcsolatot hoz létre az Azure ad-vel azonos tartományhoz. Győződjön meg arról, hogy az Azure ad-val dátumával és időpontjával konfigurációs és a tartományvezérlő szinkronizálja a rendszer. |
 | 13020 – az azure AD nem olvashatók be a következőt, mert a háttérkiszolgáló SPN neve nincs megadva a Kerberos jegyet a felhasználó nevében. | Ez az esemény jelezheti, hogy az Azure AD közötti helytelen konfiguráció és a tartományvezérlő kiszolgálót vagy mindkét gépen dátumával és időpontjával konfigurációs problémát. A tartományvezérlő visszautasította a Kerberos-jegy hozta létre az Azure AD. Győződjön meg arról, hogy az Azure AD és a háttérkiszolgáló alkalmazás konfigurációja helytelen, különösen az SPN konfigurációs. Ellenőrizze, hogy az Azure AD tartományhoz, a tartományvezérlő győződjön meg arról, hogy a tartományvezérlő megbízhatósági kapcsolatot hoz létre az Azure ad-vel azonos tartományhoz. Győződjön meg arról, hogy az Azure ad-val dátumával és időpontjával konfigurációs és a tartományvezérlő szinkronizálja a rendszer. |
-| 13022 – az azure AD nem lehet hitelesíteni a felhasználót, mert a háttérkiszolgáló válaszol-e egy HTTP 401 hiba: a Kerberos hitelesítési kísérleteket. | Ez az esemény jelezheti, hogy az Azure AD közötti helytelen konfiguráció és a háttérkiszolgáló, vagy mindkét gépen dátumával és időpontjával konfigurációs problémát. A háttérkiszolgáló elutasította az Azure AD által létrehozott Kerberos jegyet. Győződjön meg arról, hogy az Azure AD és a háttér-alkalmazáskiszolgáló megfelelően van konfigurálva. Győződjön meg arról, hogy az Azure ad-val dátumával és időpontjával konfigurációs és a háttérkiszolgáló alkalmazás szinkronizálja a rendszer. |
+| 13022 – az azure AD nem lehet hitelesíteni a felhasználót, mert a háttérkiszolgáló válaszol-e egy HTTP 401 hiba: a Kerberos hitelesítési kísérleteket. | Ez az esemény jelezheti, hogy az Azure AD közötti helytelen konfiguráció és a háttérkiszolgáló, vagy mindkét gépen dátumával és időpontjával konfigurációs problémát. A háttérkiszolgáló elutasította az Azure AD által létrehozott Kerberos jegyet. Győződjön meg arról, hogy az Azure AD és a háttér-alkalmazáskiszolgáló megfelelően van konfigurálva. Győződjön meg arról, hogy az Azure ad-val dátumával és időpontjával konfigurációs és a háttérkiszolgáló alkalmazás szinkronizálja a rendszer. További információkért lásd: [hibaelhárítása Kerberos által korlátozott delegálás konfigurációi alkalmazásproxy](application-proxy-back-end-kerberos-constrained-delegation-how-to.md).  |
 
 ## <a name="end-user-errors"></a>A végfelhasználói hibák
 

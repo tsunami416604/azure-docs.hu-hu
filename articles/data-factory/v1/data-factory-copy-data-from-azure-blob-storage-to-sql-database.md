@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/22/2018
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 41ead775c8ce1919d8c3813b58c8a4d648c8bc64
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: e166e73ba45e229d8049738fa4a79f5dc117d806
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Oktatóanyag: Adatok másolása Blob-tároló az SQL Database Data Factory használatával
 > [!div class="op_single_selector"]
@@ -56,7 +56,7 @@ Ez az oktatóanyag megkezdése előtt rendelkeznie kell a következő előfelté
 A fiók nevét és a fiók kulcsát az Azure storage-fiók, ez az oktatóanyag elvégzéséhez szükséges. Jegyezze fel **fióknév** és **fiókkulcs** az Azure-tárfiókot.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
-2. Kattintson a **további szolgáltatások** a bal oldali menüre, majd válassza a **Tárfiókok**.
+2. Kattintson a **minden szolgáltatás** a bal oldali menüre, majd válassza a **Tárfiókok**.
 
     ![Tallózás - Storage-fiókok](media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/browse-storage-accounts.png)
 3. Az a **Tárfiókok** panelen válassza a **Azure storage-fiók** ebben az oktatóanyagban használni kívánt.
@@ -70,7 +70,7 @@ A fiók nevét és a fiók kulcsát az Azure storage-fiók, ez az oktatóanyag e
 ## <a name="collect-sql-server-database-user-names"></a>SQL server, az adatbázis, a felhasználói neveket gyűjtése
 Azure SQL server, az adatbázis és a felhasználó az oktatóanyag elvégzéséhez nevei van szüksége. Jegyezze fel a neveket **server**, **adatbázis**, és **felhasználói** az Azure SQL adatbázishoz.
 
-1. Az a **Azure-portálon**, kattintson a **további szolgáltatások** a bal oldalon válassza ki **SQL-adatbázisok**.
+1. Az a **Azure-portálon**, kattintson a **minden szolgáltatás** a bal oldalon válassza ki **SQL-adatbázisok**.
 2. Az a **SQL adatbázisok panel**, jelölje be a **adatbázis** ebben az oktatóanyagban használni kívánt. Jegyezze fel a **adatbázisnév**.  
 3. Az a **SQL-adatbázis** panelen kattintson a **tulajdonságok** alatt **beállítások**.
 4. Jegyezze fel a értékeinek **kiszolgálónév** és **kiszolgáló-rendszergazdai bejelentkezés**.
@@ -79,7 +79,7 @@ Azure SQL server, az adatbázis és a felhasználó az oktatóanyag elvégzésé
 ## <a name="allow-azure-services-to-access-sql-server"></a>SQL-kiszolgálóhoz való hozzáféréshez Azure-szolgáltatások engedélyezése
 Győződjön meg arról, hogy **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** beállítás kikapcsolt **ON** az Azure SQL-kiszolgáló, hogy a Data Factory szolgáltatás hozzá tud férni az Azure SQL-kiszolgálót. A beállítás ellenőrzéséhez és bekapcsolásához hajtsa végre a következő lépéseket:
 
-1. Kattintson a **További szolgáltatások** hubra a bal oldalon, majd az **SQL-kiszolgálók** elemre.
+1. Kattintson a **minden szolgáltatás** a bal oldalon, majd kattintson a központ **SQL Server-kiszolgálók**.
 2. Válassza ki a kiszolgálót, és kattintson a **BEÁLLÍTÁSOK** területen a **Tűzfal** elemre.
 3. A **Tűzfalbeállítások** panelen kattintson a **BE** kapcsolóra az **Azure-szolgáltatások hozzáférésének engedélyezése** beállítás mellett.
 4. Zárja be a paneleken kattintva **X**.

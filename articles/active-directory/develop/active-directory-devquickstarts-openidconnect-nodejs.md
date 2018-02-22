@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: a0079c1f4265e1c2564b85247cf5f5e0289799db
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: 0a3bbfe32bde0cd3971450f5a9a909dcf8b5d793
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-ad-nodejs-web-app-getting-started"></a>Ismerkedés az Azure AD Node.js webalkalmazás
 Jelen példában használjuk a Passport:
@@ -48,14 +48,14 @@ Az elkészült alkalmazást is megtalálja, valamint az oktatóanyag végén.
 
 2. A lap felső menüben válassza ki a fiókját. Az a **Directory** menüben válassza ki, hol szeretné az alkalmazás regisztrálása az Active Directory-bérlő.
 
-3. Válassza ki **több szolgáltatások** a bal oldalán a képernyő, és válassza a menü **Azure Active Directory**.
+3. Válassza ki **minden szolgáltatás** a bal oldalán a képernyő, és válassza a menü **Azure Active Directory**.
 
 4. Válassza ki **App regisztrációk**, majd válassza ki **Hozzáadás**.
 
 5. Kövesse a megjelenő utasításokat hozzon létre egy **webalkalmazás** és/vagy **WebAPI**.
   * A **neve** az alkalmazás az alkalmazás a felhasználók számára ismerteti.
 
-  * A **bejelentkezési URL-cím** az alkalmazás alap URL-címe.  A vázat alapértelmezett érték a "return http://localhost: 3000/auth/openid nyelvhez.
+  * A **bejelentkezési URL-cím** az alkalmazás alap URL-címe.  A vázat alapértelmezett érték a `http://localhost:3000/auth/openid/return`.
 
 6. Miután regisztrálta, az Azure AD rendeli hozzá az alkalmazás egy egyedi azonosítót. Ez az érték kell a következő szakaszokban, ezért másolja az alkalmazás oldalról.
 7. Az a **beállítások** -> **tulajdonságok** az alkalmazás lapján frissítse a App ID URI. A **App ID URI** az alkalmazás egyedi azonosítója. Az egyezmény a formátumának a használatára `https://<tenant-domain>/<app-name>`, például: `https://contoso.onmicrosoft.com/my-first-aad-app`.
@@ -252,7 +252,7 @@ Az előző kód készít minden olyan felhasználó, hogy a kiszolgáló hiteles
 
 
 ## <a name="step-4-use-passport-to-issue-sign-in-and-sign-out-requests-to-azure-ad"></a>4. lépés: Használatát a Passport való be- és kijelentkezési kérések kiállítása az Azure AD
-Az alkalmazás megfelelően konfigurálva van az endpoint OpenID Connect hitelesítési protokoll használatával kommunikálnak.  `passport-azure-ad`rendelkezik az összes adat hitelesítési üzenetek létrehozásával, ellenőrzése az Azure ad-jogkivonatok és karbantartása a felhasználói munkamenetek végrehajtott fontos. Összes fennmaradó jogosultságot ad a felhasználók bejelentkezés és kijelentkezés, és a bejelentkezett felhasználókkal kapcsolatos további információk összegyűjtéséhez.
+Az alkalmazás megfelelően konfigurálva van az endpoint OpenID Connect hitelesítési protokoll használatával kommunikálnak.  `passport-azure-ad` rendelkezik az összes adat hitelesítési üzenetek létrehozásával, ellenőrzése az Azure ad-jogkivonatok és karbantartása a felhasználói munkamenetek végrehajtott fontos. Összes fennmaradó jogosultságot ad a felhasználók bejelentkezés és kijelentkezés, és a bejelentkezett felhasználókkal kapcsolatos további információk összegyűjtéséhez.
 
 1. Első lépésként adjuk hozzá az alapértelmezett, bejelentkezési, fiókkal, és kijelentkezési metódusokat az `app.js` fájlt:
 

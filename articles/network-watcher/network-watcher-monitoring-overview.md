@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
-ms.openlocfilehash: eecb20d4a53478471c238018d8fbd5a5f9cb79d8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b8a8e0653221af126ea137b1450ce27c29791ae3
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-network-monitoring-overview"></a>Azure-hálózat – áttekintés
 
@@ -46,7 +46,7 @@ Hálózati figyelőt jelenleg a következő képességekkel rendelkezik:
 * **[Virtuális hálózati átjáró és a kapcsolat hibaelhárítási](network-watcher-troubleshoot-manage-rest.md)**  -lehetővé teszi a virtuális hálózati átjárók és kapcsolatok hibáinak elhárítása.
 * **[Előfizetési korlátozásait a hálózati](#network-subscription-limits)**  -lehetővé teszi a hálózati erőforrás-használati korlátozások megtekintéséhez.
 * **[Diagnosztikai naplófájl konfigurálása](#diagnostic-logs)**  – engedélyezheti vagy tilthatja le a diagnosztikai naplókat a hálózati erőforrások az erőforráscsoportban egytáblás biztosít.
-* **[A kapcsolat (előzetes verzió)](network-watcher-connectivity-overview.md)**  -egy közvetlen TCP-kapcsolatot a virtuális gép egy adott végpont létrehozásának lehetősége ellenőrzi.
+* **[Kapcsolat elhárítása](network-watcher-connectivity-overview.md)**  -egy közvetlen TCP-kapcsolatot a virtuális gép egy adott végpont Azure környezetben növelést létrehozásának lehetősége ellenőrzi.
 
 ### <a name="role-based-access-control-rbac-in-network-watcher"></a>Szerepköralapú hozzáférés-vezérlés (RBAC) hálózati figyelőt
 
@@ -114,7 +114,7 @@ A hibaelhárítási panelen, a portál élményt biztosítja a hálózati erőfo
 
 A hálózati erőforrás állapotának rendszeres időközönként valósul meg. Ilyen erőforrások többek között a VPN-átjáró és a VPN-alagúton. Erőforrás állapota a következő helyen érhető el az Azure portálon. Erőforrás állapota kapcsolatos további információkért látogasson el a [erőforrás állapotának áttekintése](../resource-health/resource-health-overview.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Hálózati figyelőt megismerését követően megtanulhatja:
 

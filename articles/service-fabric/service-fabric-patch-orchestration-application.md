@@ -12,19 +12,25 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 5/9/2017
+ms.date: 1/16/2018
 ms.author: nachandr
-ms.openlocfilehash: 13c11902e275d1023e474d717800b3a36a6b31f2
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: bb3afdd3afa81664589f738945a63d20013d5291
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>A Windows operációs rendszer a Service Fabric-fürt javítás
 
+> [!div class="op_single_selector"]
+> * [Windows](service-fabric-patch-orchestration-application.md)
+> * [Linux](service-fabric-patch-orchestration-application-linux.md)
+>
+>
+
 A javítás vezénylési alkalmazása az Azure Service Fabric-alkalmazás, amely automatizálja az operációs rendszer javítását a Service Fabric-fürt leállítása nélkül.
 
-A javítás vezénylési alkalmazást az alábbi előnyöket nyújtja:
+A javítás vezénylési alkalmazást a következő szolgáltatásokat biztosítja:
 
 - **Operációs rendszer automatikus frissítés telepítése**. Az operációs rendszer frissítéseinek automatikusan letöltődjön és települjön. Fürtcsomópont újraindítása van szükség esetén a fürt leállítása nélkül.
 
@@ -61,15 +67,15 @@ A javítás vezénylési alkalmazásnak van szüksége. a javítás manager szol
 Azure-fürtöket helyez az ezüst tartóssági szint a repair-kezelő szolgáltatás alapértelmezés szerint engedélyezve van. Az Azure-fürtöket helyez az arany tartóssági szint esetleg, vagy nem rendelkezik a repair-kezelő szolgáltatás engedélyezve van, attól függően, hogy ezek a fürt létrehozásakor volt. Az Azure-fürtöket helyez a bronz tartóssági szint, alapértelmezés szerint nem rendelkeznek a repair-kezelő szolgáltatás engedélyezve van. Ha a szolgáltatás már engedélyezve van, megtekintheti a Service Fabric Explorer rendszer szolgáltatások szakaszának futnak.
 
 ##### <a name="azure-portal"></a>Azure Portal
-Azure-portálon manager javítást engedélyezheti a fürt beállítása során. Válassza ki **Manager javítást tartalmaz** lehetőség alatt **a szolgáltatások hozzáadása** fürtkonfiguráció időpontjában.
+Azure-portálon manager javítást engedélyezheti a fürt beállítása során. Válassza ki **Manager javítást tartalmaz** lehetőség alatt **bővítményeire** fürtkonfiguráció időpontjában.
 ![Az engedélyezés Manager javítást kép Azure-portálon](media/service-fabric-patch-orchestration-application/EnableRepairManager.png)
 
-##### <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
-Másik lehetőségként használhatja a [Azure Resource Manager sablon](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) ahhoz, hogy a javítási manager szolgáltatás a meglévő és új Service Fabric-fürtök. Szerezze be a sablon a fürt, amely számára telepíteni kívánja. A minta-sablonok, vagy hozzon létre egy egyéni erőforrás-kezelő sablont. 
+##### <a name="azure-resource-manager-deployment-model"></a>Az Azure Resource Manager telepítési modell
+Másik lehetőségként használhatja a [Azure Resource Manager üzembe helyezési modellben](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) ahhoz, hogy a javítási manager szolgáltatás a meglévő és új Service Fabric-fürtök. Szerezze be a sablon a fürt, amely számára telepíteni kívánja. A minta-sablonok, vagy hozzon létre egy egyéni Azure Resource Manager telepítési modell sablont. 
 
-Ahhoz, hogy a javítási manager szolgáltatás használ [Azure Resource Manager sablon](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm):
+Ahhoz, hogy a javítási manager szolgáltatás használ [Azure Resource Manager telepítési modell sablon](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm):
 
-1. Először ellenőrizze, hogy a `apiversion` értéke `2017-07-01-preview` a a `Microsoft.ServiceFabric/clusters` erőforrás, ahogy az az alábbi kódrészletet. Ha nem egyezik, akkor frissítenie kell a `apiVersion` értékre `2017-07-01-preview`:
+1. Először ellenőrizze, hogy a `apiversion` értéke `2017-07-01-preview` a a `Microsoft.ServiceFabric/clusters` erőforrás. Ha nem egyezik, akkor frissítenie kell a `apiVersion` értékre `2017-07-01-preview` vagy magasabb:
 
     ```json
     {
@@ -136,18 +142,18 @@ Töltse le az alkalmazást a [letöltése hivatkozásra](https://go.microsoft.co
 
 A javítás vezénylési alkalmazás viselkedése beállítható úgy, hogy az igényeinek. Az alapértelmezett érték felülírására történő alkalmazás paraméterében alkalmazás létrehozása vagy frissítése során. Alkalmazás paraméterek megadásával megadható `ApplicationParameter` számára a `Start-ServiceFabricApplicationUpgrade` vagy `New-ServiceFabricApplication` parancsmagok.
 
-|**A paraméter**        |**Típus**                          | **Részletek**|
+|**Parameter**        |**Típus**                          | **Részletek**|
 |:-|-|-|
 |MaxResultsToCache    |Hosszú                              | A Windows Update eredmények, amelyek gyorsítótárazza maximális száma. <br>Alapértelmezett érték 3000 feltéve, hogy a: <br> -Csomópontok száma 20. <br> -A csomópont havonta történik frissítések száma: öt. <br> -Művelet eredmények száma 10 is lehet. <br> -Az elmúlt három hónap eredmények kell tárolni. |
 |TaskApprovalPolicy   |Enum <br> {NodeWise, UpgradeDomainWise}                          |TaskApprovalPolicy azt jelzi, hogy a házirendet, amely a Windows-frissítések telepítése a Service Fabric-fürt csomópontjai között a koordinátor-szolgáltatás által használandó.<br>                         Engedélyezett értékek a következők: <br>                                                           <b>NodeWise</b>. A Windows Update telepítve egy csomópont egyszerre. <br>                                                           <b>UpgradeDomainWise</b>. Windows Update telepítve egy frissítési tartományt egyszerre. (A maximumot, a frissítési tartományokhoz tartozó összes számítógépen lépjen a Windows Update.)
 |LogsDiskQuotaInMB   |Hosszú  <br> (Alapértelmezett: 1024)               |Javítás vezénylési alkalmazás maximális mérete (MB), amely helyileg őrizhető csomópontján naplózza.
-| WUQuery               | Karakterlánc<br>(Alapértelmezett: "IsInstalled = 0")                | Lekérdezés, amely a Windows-frissítéseket. További információkért lásd: [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
-| InstallWindowsOSOnlyUpdates | logikai érték <br> (alapértelmezett: igaz)                 | Ez a jelző lehetővé teszi, hogy a Windows operációs rendszer frissítések telepítését.            |
-| WUOperationTimeOutInMinutes | int <br>(Alapértelmezett: 90).                   | Megadja azt az időtartamot, a Windows Update művelet (keresési vagy letöltése vagy telepítése). Ha a művelet nem végzi el a megadott időkorláton belül, megszakadt.       |
-| WURescheduleCount     | int <br> (Alapértelmezett: 5).                  | Maximális száma a szolgáltatás reschedules a Windows update, abban az esetben, ha egy művelet hiba folyamatosan fennáll.          |
-| WURescheduleTimeInMinutes | int <br>(Alapértelmezett: 30). | Az időköz, ahol a a szolgáltatás a Windows update reschedules, abban az esetben, ha hiba továbbra is fennáll. |
-| WUFrequency           | Vesszővel elválasztott karakterlánc (alapértelmezett: "Heti, szerda, 7:00:00")     | A Windows-frissítések telepítésével kapcsolatos gyakoriságát. A formátum és a lehetséges értékek a következők: <br>– Havonta, NN ÓÓ: pp:, például havi, 5, 12: 22:32. <br> -Hetente, nap, formátumban, például hetente, kedd, 12:22:32.  <br> -Napi, óó: pp:, ha például naponta, 12:22:32.  <br> -Nincs azt jelzi, hogy a Windows Update nem végezhető el.  <br><br> Ne feledje, hogy az összes idő (UTC).|
-| AcceptWindowsUpdateEula | logikai érték <br>(Alapértelmezett: igaz) | Ez a jelző beállításával az alkalmazás Windows Update végfelhasználói licenc a gép a tulajdonos nevében fogad el.              |
+| WUQuery               | karakterlánc<br>(Alapértelmezett: "IsInstalled = 0")                | Lekérdezés, amely a Windows-frissítéseket. További információkért lásd: [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
+| InstallWindowsOSOnlyUpdates | Logikai <br> (alapértelmezett: igaz)                 | Ez a jelző lehetővé teszi, hogy a Windows operációs rendszer frissítések telepítését.            |
+| WUOperationTimeOutInMinutes | Int <br>(Alapértelmezett: 90).                   | Megadja azt az időtartamot, a Windows Update művelet (keresési vagy letöltése vagy telepítése). Ha a művelet nem végzi el a megadott időkorláton belül, megszakadt.       |
+| WURescheduleCount     | Int <br> (Alapértelmezett: 5).                  | Maximális száma a szolgáltatás reschedules a Windows update, abban az esetben, ha egy művelet hiba folyamatosan fennáll.          |
+| WURescheduleTimeInMinutes | Int <br>(Alapértelmezett: 30). | Az időköz, ahol a a szolgáltatás a Windows update reschedules, abban az esetben, ha hiba továbbra is fennáll. |
+| WUFrequency           | Vesszővel elválasztott karakterlánc (alapértelmezett: "Heti, szerda, 7:00:00")     | A Windows-frissítések telepítésével kapcsolatos gyakoriságát. A formátum és a lehetséges értékek a következők: <br>– Havonta, NN ÓÓ: pp:, például havi, 5, 12: 22:32. <br> -Hetente, nap, formátumban, például hetente, kedd, 12:22:32.  <br> -Napi, óó: pp:, ha például naponta, 12:22:32.  <br> -Nincs azt jelzi, hogy a Windows Update nem végezhető el.  <br><br> Vegye figyelembe, hogy hányszor UTC formátumban.|
+| AcceptWindowsUpdateEula | Logikai <br>(Alapértelmezett: igaz) | Ez a jelző beállításával az alkalmazás Windows Update végfelhasználói licenc a gép a tulajdonos nevében fogad el.              |
 
 > [!TIP]
 > Ha azt szeretné, azonnal megtörténjen-e a Windows Update, `WUFrequency` relatív az alkalmazás telepítési idejét. Tegyük fel, hogy öt csomópontból tesztet a fürt, és tervezze meg az alkalmazás központi telepítése a következő körülbelül 5:00 PM UTC. Ha azt feltételezi, hogy az alkalmazás frissítése vagy a központi telepítési 30 percig tart a lehető, állítsa be a WUFrequency "Naponta, 17:30:00."
@@ -216,9 +222,9 @@ A JSON mezőjének az alábbiakban található.
 
 Mező | Értékek | Részletek
 -- | -- | --
-Operationresult adatokat a | 0 - sikeres<br> 1 – sikeres volt, a hibák<br> 2 – nem sikerült<br> 3 - megszakítva<br> 4 - megszakadt az időkorlát | Azt jelzi, hogy általános műveletet (jellemzően egy vagy több frissítés telepítését) eredményét.
+OperationResult | 0 - sikeres<br> 1 – sikeres volt, a hibák<br> 2 – nem sikerült<br> 3 - megszakítva<br> 4 - megszakadt az időkorlát | Azt jelzi, hogy általános műveletet (jellemzően egy vagy több frissítés telepítését) eredményét.
 ResultCode | Ugyanaz, mint az operationresult adatokat a | Ez a mező egy egyedi frissítés telepítési művelet eredményét jelzi.
-Művelettípus | 1 - telepítés<br> 0 - keresés, és töltse le.| A csak művelettípus alapértelmezés szerint az eredmények között kellene látható egy telepítés.
+OperationType | 1 - telepítés<br> 0 - keresés, és töltse le.| A csak művelettípus, amelyek akkor jelennek meg az eredmények alapértelmezés szerint egy telepítés.
 WindowsUpdateQuery | Alapértelmezett érték "IsInstalled = 0" |A Windows update frissítések kereséséhez használt lekérdezés. További információkért lásd: [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
 RebootRequired | igaz – volt szükség újraindításra<br> hamis - nem volt szükség újraindításra | Azt jelzi, ha újraindítás szükséges a frissítések telepítésének befejezéséhez.
 
@@ -246,7 +252,7 @@ Ahhoz, hogy a fürt fordított proxy, kövesse a lépéseket [fordított proxy a
 
 Javítás vezénylési app naplókat a rendszer a Service Fabric-futtatókörnyezet naplók részeként gyűjti.
 
-Abban az esetben, ha szeretné rögzíteni a naplók diagnosztikai eszköz/folyamat a kiválasztott keresztül. Javítás vezénylési alkalmazás által rögzített szolgáltató alatt események keresztül bejelentkezési azonosítóhoz tartozó [eventsource](https://docs.microsoft.com/dotnet/api/system.diagnostics.tracing.eventsource?view=netframework-4.5.1)
+Abban az esetben, ha szeretné rögzíteni a naplók diagnosztikai eszköz/folyamat a kiválasztott keresztül. Javítás vezénylési alkalmazás használ rögzített szolgáltató azonosítók alatt keresztül események naplózása [eventsource](https://docs.microsoft.com/dotnet/api/system.diagnostics.tracing.eventsource?view=netframework-4.5.1)
 
 - e39b723c-590c-4090-abb0-11e3e6616346
 - fc0028ff-bfdc-499f-80dc-ed922c52c5e9
@@ -300,14 +306,14 @@ Q. **Miért több fürtjére kiterjedő javítását valóban túl sokáig futta
 A. Az idő a javítás vezénylési alkalmazás szükséges alapvetően a következő tényezőktől függ:
 
 - A házirend a koordinátor szolgáltatást. 
-  - Az alapértelmezett házirend `NodeWise`, egyszerre csak egy csomópont javítását eredményez. Különösen a nagyobb fürtök esetében azt javasoljuk, hogy használja a `UpgradeDomainWise` házirend több fürtjére kiterjedő gyorsabb javítását eléréséhez.
+  - Az alapértelmezett házirend `NodeWise`, egyszerre csak egy csomópont javítását eredményez. Különösen, ha egy nagyobb fürt, azt javasoljuk, hogy használja a `UpgradeDomainWise` házirend több fürtjére kiterjedő gyorsabb javítását eléréséhez.
 - A letöltés és telepítés elérhető frissítések száma. 
 - Töltse le és telepítse a frissítéshez szükséges átlagos időtartam amely nem lehet hosszabb néhány óra múlva.
 - A virtuális gép és a hálózati sávszélesség teljesítményét.
 
-Q. **Miért látom néhány frissítést, a Windows Update eredmények REST API használatával, de nem a Windows Update előzmények alapján a számítógépen?**
+Q. **Miért látom néhány frissítést, a Windows Update eredmények REST API-n keresztül, de nem a számítógépen a Windows Update előzmények alapján?**
 
-A. Egyes frissítéseket kell ellenőrizni kell a megfelelő frissítési/javítás az előzményekben. Például a Windows Defender frissítések nem jelennek meg a Windows Server 2016-os Windows Update előzmények.
+A. Egyes frissítéseket csak a megfelelő frissítési/javítás előzmények jelennek meg. Például a Windows Defender frissítések nem jelennek meg a Windows Server 2016-os Windows Update előzmények.
 
 ## <a name="disclaimers"></a>Felelősséget kizáró nyilatkozatok
 

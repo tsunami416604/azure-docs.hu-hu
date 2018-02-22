@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2017
 ms.author: v-craic
-ms.openlocfilehash: 2921356f848739d602807236006f9867eaa2a4e4
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 348952626e13b9ac73ca2ec8e101bf02e416dc9b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Adja hozzá a tulajdonosok és a felhasználók a Azure DevTest Labs szolgáltatásban
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -64,7 +64,7 @@ Tulajdonosa és a felhasználók az Azure-portálon a labor szintjén adhatók m
 A következő lépések végigvezetik egy tulajdonos vagy a felhasználó hozzáadása egy laborhoz a Azure DevTest Labs szolgáltatásban:
 
 1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
-2. Válassza a **További szolgáltatások**, majd a **DevTest Labs** elemet a listából.
+2. Válassza ki **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából.
 3. Válassza ki a kívánt labor labs listájának megtekintéséhez.
 4. A labor paneljén válassza **konfigurációs**. 
 5. Az a **konfigurációs** panelen válassza **felhasználók**.
@@ -118,7 +118,7 @@ A labor panel az keresztül labor adhat hozzá további tulajdonosai a [Azure-po
 Tulajdonosa hozzá Azure-előfizetéssel, kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
-2. Válassza ki **több szolgáltatások**, majd válassza ki **előfizetések** a listából.
+2. Válassza ki **minden szolgáltatás**, majd válassza ki **előfizetések** a listából.
 3. Válassza ki a kívánt előfizetést.
 4. Válassza ki **hozzáférés** ikonra. 
    

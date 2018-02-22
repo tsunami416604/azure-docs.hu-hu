@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 01/02/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e48e0e256306707ca7fde3636a4215b235fa2eb7
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 4246ecfa50176400c54cd80857e25675290e7170
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>SAP HANA (nagy példányok) – áttekintés és az Azure-architektúra
 
@@ -74,7 +74,7 @@ Nincsenek további források a Microsoft Azure nyilvános felhőjében SAP alkal
 
 - [SAP megoldások segítségével a Microsoft Azure virtuális gépeken](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-## <a name="certification"></a>Minősítés
+## <a name="certification"></a>Tanúsítvány
 
 A NetWeaver hitelesítő mellett SAP egy SAP Hana SAP HANA támogatásához egyes infrastrukturális, például az Azure infrastruktúra-szolgáltatási speciális hitelesítő van szükség.
 
@@ -134,24 +134,22 @@ Től július 2017 SAP HANA Azure (nagy példányok) érhető el Azure régiók a
 
 | SAP-megoldás | CPU | Memory (Memória) | Tárolás | Rendelkezésre állás |
 | --- | --- | --- | --- | --- |
-| Az OLAP-re optimalizált: FF/4HANA, az SAP BW Programhoz<br /> vagy SAP HANA általános OLAP-munkaterhelés | Az Azure S72 SAP HANA<br /> – 2 x Intel® Xeon® processzor E7-8890 v3<br /> A Processzormagok 36 és 72 CPU szálak |  768 GB |  3 TB | Elérhető |
-| --- | Az Azure S144 SAP HANA<br /> – 4 x Intel® Xeon® processzor E7-8890 v3<br /> A Processzormagok 72 és 144 CPU szálak |  1,5 TB |  6 TB | Nem érhető el többé |
-| --- | Az Azure S192 SAP HANA<br /> – 4 x Intel® Xeon® processzor E7-8890 v4<br /> A Processzormagok 96 és 192 CPU szálak |  2.0 TB |  8 TB | Elérhető |
-| --- | Az Azure S384 SAP HANA<br /> – 8 x Intel® Xeon® processzor E7-8890 v4<br /> A Processzormagok 192 és 384 CPU szálak |  4.0 TB |  16 TB | Készen áll a sorrendje |
-| Az OLTP optimalizált: SAP Business csomag<br /> SAP HANA vagy az S/4HANA (OLTP)<br /> általános OLTP | Az Azure S72m SAP HANA<br /> – 2 x Intel® Xeon® processzor E7-8890 v3<br /> A Processzormagok 36 és 72 CPU szálak |  1,5 TB |  6 TB | Elérhető |
-|---| Az Azure S144m SAP HANA<br /> – 4 x Intel® Xeon® processzor E7-8890 v3<br /> A Processzormagok 72 és 144 CPU szálak |  3.0 TB |  12 TB | Nem érhető el többé |
-|---| Az Azure S192m SAP HANA<br /> – 4 x Intel® Xeon® processzor E7-8890 v4<br /> A Processzormagok 96 és 192 CPU szálak  |  4.0 TB |  16 TB | Elérhető |
-|---| Az Azure S384m SAP HANA<br /> – 8 x Intel® Xeon® processzor E7-8890 v4<br /> A Processzormagok 192 és 384 CPU szálak |  6.0 TB |  18 TB | Készen áll a sorrendje |
-|---| Az Azure S384xm SAP HANA<br /> – 8 x Intel® Xeon® processzor E7-8890 v4<br /> A Processzormagok 192 és 384 CPU szálak |  8.0 TB |  22 TB |  Készen áll a sorrendje |
-|---| Az Azure S576 SAP HANA<br /> – 12 x Intel® Xeon® processzor E7-8890 v4<br /> A Processzormagok 288 és 576 CPU szálak |  12.0 TB |  28 TB | Készen áll a sorrendje |
-|---| Az Azure S768 SAP HANA<br /> – 16 x Intel® Xeon® processzor E7-8890 v4<br /> A Processzormagok 384 és 768 CPU szálak |  16,0 TB |  36 TB | Készen áll a sorrendje |
-|---| Az Azure S960 SAP HANA<br /> – 20 x Intel® Xeon® processzor E7-8890 v4<br /> 480 Processzormagok és 960 CPU szálak |  20.0 TB |  46 TB | Készen áll a sorrendje |
+| Az OLAP-re optimalizált: FF/4HANA, az SAP BW Programhoz<br /> vagy SAP HANA általános OLAP-munkaterhelés | Az Azure S72 SAP HANA<br /> – 2 x Intel® Xeon® Processor E7-8890 v3<br /> A Processzormagok 36 és 72 CPU szálak |  768 GB |  3 TB | Elérhető |
+| --- | Az Azure S144 SAP HANA<br /> – 4 x Intel® Xeon® Processor E7-8890 v3<br /> A Processzormagok 72 és 144 CPU szálak |  1,5 TB |  6 TB | Nem érhető el többé |
+| --- | Az Azure S192 SAP HANA<br /> – 4 x Intel® Xeon® Processor E7-8890 v4<br /> A Processzormagok 96 és 192 CPU szálak |  2.0 TB |  8 TB | Elérhető |
+| --- | Az Azure S384 SAP HANA<br /> – 8 x Intel® Xeon® Processor E7-8890 v4<br /> A Processzormagok 192 és 384 CPU szálak |  4.0 TB |  16 TB | Elérhető |
+| Az OLTP optimalizált: SAP Business csomag<br /> SAP HANA vagy az S/4HANA (OLTP)<br /> általános OLTP | Az Azure S72m SAP HANA<br /> – 2 x Intel® Xeon® Processor E7-8890 v3<br /> A Processzormagok 36 és 72 CPU szálak |  1,5 TB |  6 TB | Elérhető |
+|---| Az Azure S144m SAP HANA<br /> – 4 x Intel® Xeon® Processor E7-8890 v3<br /> A Processzormagok 72 és 144 CPU szálak |  3.0 TB |  12 TB | Nem érhető el többé |
+|---| Az Azure S192m SAP HANA<br /> – 4 x Intel® Xeon® Processor E7-8890 v4<br /> A Processzormagok 96 és 192 CPU szálak  |  4.0 TB |  16 TB | Elérhető |
+|---| Az Azure S384m SAP HANA<br /> – 8 x Intel® Xeon® Processor E7-8890 v4<br /> A Processzormagok 192 és 384 CPU szálak |  6.0 TB |  18 TB | Elérhető |
+|---| Az Azure S384xm SAP HANA<br /> – 8 x Intel® Xeon® Processor E7-8890 v4<br /> A Processzormagok 192 és 384 CPU szálak |  8.0 TB |  22 TB |  Elérhető |
+|---| Az Azure S576 SAP HANA<br /> – 12 x Intel® Xeon® Processor E7-8890 v4<br /> A Processzormagok 288 és 576 CPU szálak |  12.0 TB |  28 TB | Elérhető |
+|---| Az Azure S768 SAP HANA<br /> – 16 x Intel® Xeon® Processor E7-8890 v4<br /> A Processzormagok 384 és 768 CPU szálak |  16.0 TB |  36 TB | Elérhető |
+|---| Az Azure S960 SAP HANA<br /> – 20 x Intel® Xeon® Processor E7-8890 v4<br /> 480 Processzormagok és 960 CPU szálak |  20.0 TB |  46 TB | Elérhető |
 
 - A Processzormagok = Processzormagok nem-többszálú a processzorok, a kiszolgáló egység összegére összege.
 - CPU szálak CPU-magokat többszálú a processzorok, a kiszolgáló egység összegére által biztosított számítási szálak számának összege, azaz =. Minden egység alapértelmezés szerint a Hyper-Threading használatára vannak konfigurálva.
 
-
-A különböző konfigurációkat fenti állnak rendelkezésre, vagy "SE ajánlja többé" hivatkozott [SAP támogatási Megjegyzés #2316233 – a Microsoft Azure (nagy példányok) SAP HANA](https://launchpad.support.sap.com/#/notes/2316233/E). A konfigurációk, "Készen áll a sorrend" jelű hamarosan megkeresi az SAP Megjegyzés beléptetése. Azonban ezen példány termékváltozatok által rendelhető már a hat különböző Azure-régiók a HANA nagy példány szolgáltatás nem érhető el.
 
 A kiválasztott konfigurációkkal munkaterhelés, a Processzor-erőforrások és a kívánt memória függenek. Az OLTP-munkaterhelés OLAP munkaterhelések az SKU optimalizált használandó lehetőség. 
 
@@ -267,7 +265,7 @@ Memóriára vonatkozó követelményeknek Hana növekednek adatmennyiség növek
 
 Ez a lista állítja össze a SAP HANA futtatásához Azure (nagyobb példány).
 
-**A Microsoft Azure:**
+**Microsoft Azure:**
 
 - Azure-előfizetéssel, amely az Azure (nagy példányok) SAP HANA lehet társítani.
 - Microsoft Premier szintű támogatási szerződése. Lásd: [SAP támogatási Megjegyzés #2015553 – a Microsoft Azure SAP: támogatás Előfeltételek](https://launchpad.support.sap.com/#/notes/2015553) Azure-beli SAP kapcsolatos részletes információkat. HANA nagy példány egységek 384 és több processzort használ, ki is kell terjesztenie a Premier szintű támogatási szerződése Azure gyors válasz (ARR) tartalmazza.
@@ -277,7 +275,7 @@ Ez a lista állítja össze a SAP HANA futtatásához Azure (nagyobb példány).
 
 - Az Azure-bA helyszíni közötti Azure ExpressRoute: csatlakozni a helyszíni adatközpontját Azure, ügyeljen arra, hogy az internetszolgáltató által biztosított legalább 1 GB/s kapcsolat sorrendben. 
 
-**Operációs rendszer:**
+Operációs rendszer:
 
 - Licencek az SUSE Linux Enterprise Server 12 SAP-alkalmazásokból.
 
@@ -335,9 +333,9 @@ Lásd az alábbi táblázatban a Foglalás tekintetében. A táblázat a külön
 | S192 | 4608 GB | 1024 GB | 1536 GB | 1024 GB |
 | S192m | 11,520 GB | 1536 GB | 1792 GB | 1536 GB |
 | S384 | 11,520 GB | 1536 GB | 1792 GB | 1536 GB |
-| S384m | 12 000 GB | 2050 GB | 2050 GB | 2040 GB |
-| S384xm | 16 000 GB | 2050 GB | 2050 GB | 2040 GB |
-| S576 | 20 000 GB | 3100 GB | 2050 GB | 3100 GB |
+| S384m | 12,000 GB | 2050 GB | 2050 GB | 2040 GB |
+| S384xm | 16,000 GB | 2050 GB | 2050 GB | 2040 GB |
+| S576 | 20,000 GB | 3100 GB | 2050 GB | 3100 GB |
 | S768 | 28 000 GB | 3100 GB | 2050 GB | 3100 GB |
 | S960 | 36,000 GB | 4100 GB | 2050 GB | 4100 GB |
 
@@ -348,7 +346,7 @@ Ha tovább HANA nagy példány SKU, néhány példa a lehetséges osztás darab 
 
 | Memória partíció GB-ban | Hana/adatok | Hana/napló | Hana/megosztott | Hana/naplómásolat |
 | --- | --- | --- | --- | --- |
-| 256 | 400 GB | 160 GB | 304-ES GB | 160 GB |
+| 256 | 400 GB | 160 GB | 304 GB | 160 GB |
 | 512 | 768 GB | 384 GB | 512 GB | 384 GB |
 | 768 | 1280 GB | 512 GB | 768 GB | 512 GB |
 | 1024 | 1792 GB | 640 GB | 1024 GB | 640 GB |

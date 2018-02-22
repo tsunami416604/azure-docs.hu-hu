@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 7173c87dec980130992438954650227c16ad7292
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: d4e76c85af7a9b90867d91a6290c4f4deea19a75
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="more-details-about-features-in-preview"></a>További információt az előzetes funkciók
 Ez a témakör ismerteti, hogyan jelenleg előzetes funkciók használni.
@@ -26,7 +26,7 @@ Ez a témakör ismerteti, hogyan jelenleg előzetes funkciók használni.
 ## <a name="group-writeback"></a>Group writeback (Csoportvisszaíró)
 A csoportok visszaírásához választható funkciók a beállítás lehetővé teszi a visszaírási **Office 365-csoportok** telepített Exchange az erdőhöz. Ez az egy csoportot, amely mindig értékűre a felhőben. Ha a helyszíni Exchange-hez, majd írhat vissza ezeket a csoportokat a helyszínen, a felhasználók egy helyszíni Exchange postaládával küldhet és fogadhat e-mailek ezekből a csoportokból.
 
-További információ az Office 365-csoportokat és a használatukat található [Itt](http://aka.ms/O365g).
+További információ az Office 365-csoportokat és a használatukat található [Itt](https://aka.ms/O365g).
 
 Az Office 365-csoportok egy jelenik meg a helyszíni terjesztési csoport Active Directory tartományi Szolgáltatásokban. A helyszíni Exchange server Exchange 2013-as összesítő frissítés 8 (2015. márciusi jelent) vagy az Exchange 2016 ismeri fel ezt az új csoporttípus kell lennie.
 

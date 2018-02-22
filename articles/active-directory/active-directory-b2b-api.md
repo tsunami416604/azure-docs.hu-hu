@@ -15,15 +15,15 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 04/11/2017
 ms.author: sasubram
-ms.openlocfilehash: 9e1dcd38e7c05a234e4b8d7a6190770d813a227f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 06de162a82fa096780b4d7faa79ca1c91f9202fa
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Az Azure Active Directory B2B együttműködés API és a Testreszabás
 
-Adja meg, hogy szeretné-e a meghívó folyamat oly módon, amely a legjobban a vállalatuk testreszabása sok ügyfél volt. Az API-val most, hogy elvégezhető. [https://Developer.microsoft.com/Graph/docs/API-Reference/V1.0/Resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)
+Adja meg, hogy szeretné-e a meghívó folyamat oly módon, amely a legjobban a vállalatuk testreszabása sok ügyfél volt. Az API-val most, hogy elvégezhető. [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)
 
 ## <a name="capabilities-of-the-invitation-api"></a>Az API-t meghívó képességei
 Az API-t a következő szolgáltatásokat biztosítja:
@@ -77,7 +77,7 @@ Az API-t a következő hitelesítési módok is futtatható:
 Ebben a módban személy, aki segítségével API igényeinek a engedélye B2B meghívókat kell létrehozni.
 
 ### <a name="app-only-mode"></a>Egyetlen módja
-Alkalmazás csak a környezetben a sikeres a meghívót a User.ReadWrite.All vagy Directory.ReadWrite.All hatókört kell az alkalmazást.
+Alkalmazás csak a környezetben a sikeres meghívó User.Invite.All hatóköre kell az alkalmazást.
 
 További információkért lásd: https://graph.microsoft.io/docs/authorization/permission_scopes
 
@@ -98,7 +98,7 @@ A következő beállításokat is használhatja:
 
 Is megtekintheti a meghívó API-hivatkozás [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg az Azure AD B2B együttműködés további cikkeit:
 

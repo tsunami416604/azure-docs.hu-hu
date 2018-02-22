@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/04/2017
 ms.author: xshi
-ms.openlocfilehash: 5419f0fb86f2a7b051ffc7fda17c74cf15178a6b
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: f6b334dbc9903d0080b74052062de7564aa4a993
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="save-iot-hub-messages-that-contain-sensor-data-to-your-azure-blob-storage"></a>Az IoT hub üzeneteket, amelyek tartalmazzák az érzékelők adataiból, hogy az Azure blob storage mentése
 
@@ -45,7 +45,7 @@ Megismerheti az Azure-tárfiók és az IoT hub üzenetek tárolásához a blob S
 
 ## <a name="create-an-azure-storage-account"></a>Azure-tárfiók létrehozása
 
-1. Az a [Azure-portálon](https://portal.azure.com/), kattintson a **új** > **tárolási** > **tárfiók**  >   **Hozzon létre**.
+1. Az a [Azure-portálon](https://portal.azure.com/), kattintson a **hozzon létre egy erőforrást** > **tárolási** > **tárfiók**  >  **Létrehozása**.
 
 2. Adja meg a tárfiók szükséges adatokat:
 
@@ -98,7 +98,7 @@ Kattintson a **Hozzáadás** a útvonalak panelről, és adjon meg egy nevet az 
 
    Az IoT hub blobtárolóba naplózza az eszközről küldött üzenetek kell megjelennie.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Sikeresen létrehozta az Azure storage-fiók és irányított üzenetek IoT-központ a blob storage-fiókhoz tartozó tárolót.
 

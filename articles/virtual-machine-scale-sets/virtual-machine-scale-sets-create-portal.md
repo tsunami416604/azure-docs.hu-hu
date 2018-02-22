@@ -1,7 +1,7 @@
 ---
 title: "Egy virtuálisgép-méretezési készlet létrehozása az Azure portálon |} Microsoft Docs"
 description: "Ismerje meg, hogyan hozhat létre gyorsan egy virtuálisgép-méretezési az Azure-portálon"
-keywords: "Virtuálisgép-méretezési csoportok"
+keywords: "virtuálisgép-méretezési csoportok"
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: iainfoulds
@@ -17,11 +17,11 @@ ms.topic: article
 ms.date: 12/19/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a501a852a317ec7d087904c3a675ebefce1bece0
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: ae41149bf507e30dc5281fd60a9d6f77d2023293
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Egy virtuálisgép-méretezési készlet létrehozása az Azure portálon
 A virtuálisgép-méretezési csoportok segítségével azonos, automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti. A méretezési csoportban lévő virtuális gépek számát skálázhatja manuálisan, vagy megadhat automatikus skálázási szabályokat is az erőforrás-használat (például processzorhasználat, memóriaigény vagy hálózati forgalom) alapján. Első lépések cikkben hozzon létre egy virtuálisgép-méretezési beállítása az Azure portálon. Is létrehozhat egy méretezési állítható be a [Azure CLI 2.0](virtual-machine-scale-sets-create-cli.md) vagy [Azure PowerShell](virtual-machine-scale-sets-create-powershell.md).
@@ -36,7 +36,7 @@ Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
 ## <a name="create-virtual-machine-scale-set"></a>Virtuálisgép-méretezési csoport létrehozása
 A skála állítható be egy Windows Server vagy Linux-lemezképbe RHEL, CentOS, Ubuntu vagy SLES például telepítheti.
 
-1. Kattintson az Azure Portal bal felső sarkában található **Új** gombra.
+1. Kattintson a **hozzon létre egy erőforrást** az Azure portál bal felső sarokban.
 2. Keresse meg *méretezési*, válassza a **virtuálisgép-méretezési csoport**, majd jelölje be **létrehozása**.
 3. Írjon be egy nevet a méretezési, például *myScaleSet*.
 4. Válassza ki a kívánt operációs rendszer típusa, például a *Windows Server 2016 Datacenter*.
@@ -65,8 +65,8 @@ Ezen NAT megtekintéséhez a szabályok és a skála-kapcsolódási információ
 
 A méretezési készletben, ezek a NAT-szabályok használata a virtuális gépek kapcsolódhat. Minden egyes Virtuálisgép-példány egy IP-célcím és a TCP-port értékének sorolja fel. Például, ha a cél IP-cím *104.42.1.19* és a TCP-port *50001*, csatlakozik a Virtuálisgép-példány az alábbiak szerint:
 
-- A Windows-méretezési csoport kapcsolódjon a virtuális gép RDP-példány a`104.42.1.19:50001`
-- A Linux-méretezési csoport kapcsolódjon a virtuális gép SSH-példány a`ssh azureuser@104.42.1.19 -p 50001`
+- A Windows-méretezési csoport kapcsolódjon a virtuális gép RDP-példány a `104.42.1.19:50001`
+- A Linux-méretezési csoport kapcsolódjon a virtuális gép SSH-példány a `ssh azureuser@104.42.1.19 -p 50001`
 
 Amikor a rendszer kéri, adja meg a hitelesítő adatokat adja meg az előző lépésben a méretezési csoport létrehozásakor. A méretezési készlet példányai is, amely hatással lehet a normál virtuális gépek normál. A központi telepítéséről és az alkalmazások a méretezési készlet példányán fusson további információkért lásd: [a virtuálisgép-méretezési csoportok az alkalmazás központi telepítése](virtual-machine-scale-sets-deploy-app.md)
 

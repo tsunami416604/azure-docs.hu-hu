@@ -3,8 +3,8 @@ title: "Cloud Services Azure diagnostics (.NET) használata |} Microsoft Docs"
 description: "Az Azure diagnostics használatával az adatok gyűjtését a hibakeresést, méri a teljesítményt, figyelés, forgalom elemzése és további Azure Felhőszolgáltatások."
 services: cloud-services
 documentationcenter: .net
-author: rboucher
-manager: jwhit
+author: thraka
+manager: timlt
 editor: 
 ms.assetid: 89623a0e-4e78-4b67-a446-7d19a35a44be
 ms.service: cloud-services
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/22/2017
-ms.author: robb
-ms.openlocfilehash: 333d2f26ce043a167fb84858c8327cb39e868ffa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: adegeo
+ms.openlocfilehash: a8d6b16fa363062e06d48bfc5af2ca37697d5cd8
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Azure Cloud Services Azure Diagnostics engedélyezése
 Lásd: [Azure Diagnostics áttekintése](../azure-diagnostics.md) az Azure Diagnostics háttérként.
@@ -195,7 +195,7 @@ A diagnosztika konfigurációs fájl határozza meg a diagnosztikai konfiguráci
 ## <a name="troubleshooting"></a>Hibaelhárítás
 Ha gondja támad, lásd: [hibaelhárítási Azure Diagnostics](../azure-diagnostics-troubleshooting.md) segítséget a gyakori problémák megoldásához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [A kapcsolódó Azure virtuális gép diagnosztikai cikkek megtekintéséhez](../monitoring-and-diagnostics/azure-diagnostics.md#cloud-services-using-azure-diagnostics) kapcsolatos problémák elhárítása a gyűjtött adatok módosításához vagy kapcsolatos további diagnosztikai általában.
 
 [EventSource Class]: http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx

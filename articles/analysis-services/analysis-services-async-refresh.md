@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 12/18/2017
+ms.date: 02/14/2018
 ms.author: owend
-ms.openlocfilehash: 06d807b83f700c675c6979998dd8f74372a4845f
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 1f31c05554db16d604a9825ef9b1317a0f281456
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>A REST API aszinkron frissítés
 Bármely programozási nyelv, amely támogatja a REST-hívások segítségével az Azure Analysis Services rendszerbeli táblázatos modellek aszinkron adatfrissítési műveleteket végezheti el. Ez magában foglalja a lekérdezés kibővített írásvédett replikák szinkronizálását. 
@@ -101,7 +101,7 @@ Paraméterek megadása nem kötelező. Az alapértelmezett vonatkozik.
 
 |Name (Név)  |Típus  |Leírás  |Alapértelmezett  |
 |---------|---------|---------|---------|
-|Típus     |  Enum       |  A végrehajtandó feldolgozástípust típusa. A típusok összhangban legyenek a TMSL [a frissítési parancs](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl) típusok: full, clearValues, kiszámításához, dataOnly, automatikus, hozzáadását és töredezettségmentesítése.       |   Automatikus      |
+|Típus     |  Enum       |  A végrehajtandó feldolgozástípust típusa. A típusok összhangban legyenek a TMSL [a frissítési parancs](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl) típusok: full, clearValues, kiszámításához, dataOnly, automatikus, hozzáadását és töredezettségmentesítése.       |   automatic      |
 |CommitMode     |  Enum       |  Határozza meg, ha objektumok véglegesített kötegekben telepítse, vagy csak akkor, ha teljes lesz. Módok közé tartozik: alapértelmezés szerint tranzakciós, partialBatch.  |  tranzakciós       |
 |MaxParallelism     |   Int      |  A párhuzamos feldolgozás parancsok futtatására szálak maximális számát határozza meg. Ez a MaxParallelism tulajdonsággal állítható be a TMSL igazítva [parancs feladatütemezési](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/sequence-command-tmsl) vagy más módszerrel.       | 10        |
 |a retryCount    |    Int     |   Azt jelzi, hogy hányszor, mielőtt hibát jelentene próbálkozik újra a műveletet.      |     0    |
@@ -112,7 +112,7 @@ CommitMode partialBatch megegyezik. Szolgál, amely során egy kezdeti betölté
 > [!NOTE]
 > Írásának időpontjában a Köteg mérete MaxParallelism értékét, de ez az érték módosítása sikerült.
 
-## <a name="get-refreshesrefreshid"></a>GET /refreshes/\<refreshId >
+## <a name="get-refreshesrefreshid"></a>GET /refreshes/\<refreshId>
 
 A frissítési művelet állapotának ellenőrzéséhez használja a GET-műveletet a frissítés azonosítóját. Íme egy példa az adott válasz törzse. Ha a művelet van folyamatban, **esetbejegyzések** állapot ad vissza.
 
@@ -162,11 +162,11 @@ Egy modell korábbi frissítési műveletek listájának megtekintéséhez haszn
 ]
 ```
 
-## <a name="delete-refreshesrefreshid"></a>TÖRLÉS /refreshes/\<refreshId >
+## <a name="delete-refreshesrefreshid"></a>DELETE /refreshes/\<refreshId>
 
 Egy folyamatban lévő frissítés megszakítására használja a DELETE művelet a frissítés azonosítóját.
 
-## <a name="post-sync"></a>POST/Sync
+## <a name="post-sync"></a>POST /sync
 
 Kellene végrehajtani a frissítési műveletek, akkor szükség lehet az új adatok szinkronizálása a lekérdezés kibővített replikáit. Egy modell synchronize művelet elvégzésére, használja a/Sync függvény a POST műveletet. A hely egy fejléc a következő a válasz tartalmazza a szinkronizálási művelet azonosítója.
 
@@ -208,7 +208,7 @@ A kódminta használható interaktív bejelentkezés, a felhasználónév/jelsz�
 
 Az űrlap-hitelesítés szükséges, az Azure-alkalmazások hozható létre a szükséges API jogosultságait. 
 
-1.  Az Azure portálon kattintson **új** > **Azure Active Directory** > **App regisztrációk** > **új alkalmazás regisztrálása**.
+1.  Az Azure portálon kattintson **hozzon létre egy erőforrást** > **Azure Active Directory** > **App regisztrációk**  >   **Új alkalmazás regisztrációja**.
 
     ![Új alkalmazás regisztrációja](./media/analysis-services-async-refresh/aas-async-app-reg.png)
 

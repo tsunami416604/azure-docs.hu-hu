@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: 
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 12/29/2017
+ms.date: 02/14/2018
 ms.author: owend
-ms.openlocfilehash: 02c25de980b399812676285ad3f87f60af93265f
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: cadd47d2e5f490f82846ea562803fcd60f5405a7
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="setup-diagnostic-logging"></a>Diagnosztikai naplózás beállítása
 
@@ -38,7 +38,7 @@ Kiválasztása **motor** naplózza az összes [Xevent](https://docs.microsoft.co
 
 |Az XEvent kategóriák |esemény neve  |
 |---------|---------|
-|Biztonsági naplózás    |   Naplózási bejelentkezés      |
+|Biztonsági naplózás    |   Audit Login      |
 |Biztonsági naplózás    |   Kijelentkezési naplózása      |
 |Biztonsági naplózás    |   Naplózási kiszolgáló indítása és leállítása      |
 |Folyamatban lévő jelentések     |   Folyamatban van a jelentés kezdő      |
@@ -83,12 +83,12 @@ A metrika-kategória naplózza az azonos [kiszolgálói metrikák](analysis-serv
 
     ![Az Azure-portálon az Azure Cosmos DB diagnosztikai naplózás bekapcsolása](./media/analysis-services-logging/aas-logging-turn-on-diagnostics.png)
 
-2. A **diagnosztikai beállítások**, tegye a következőket: 
+2. A **diagnosztikai beállítások**, adja meg a következő beállításokat: 
 
     * **Név**. Adjon meg egy nevet, a naplók létrehozásához.
 
-    * **Archív tárfiókba**. Használja ezt a beállítást, meglévő tárfiókot csatlakozni kell. Lásd: [hozzon létre egy tárfiókot](../storage/common/storage-create-storage-account.md). Kövesse az utasításokat egy erőforrás-kezelő, általános célú fiók létrehozásához. Ezután térjen vissza erre a lapra, jelölje be a tárfiók a portálon. Az újonnan létrehozott tárfiók megjelenik a legördülő menü néhány percig is eltarthat.
-    * **Az eseményközpontok felé adatfolyam**. Használja ezt a beállítást, egy meglévő Eseményközpont névtér és esemény-központot csatlakozni kell. Az Event Hubs névtér létrehozásához lásd: [hozzon létre egy Event Hubs névtér és egy eseményközpontot, az Azure portál használatával](../event-hubs/event-hubs-create.md). Térjen vissza erre az oldalra a portálon, és válassza ki az Event Hubs-névteret és a házirend nevét.
+    * **Archív tárfiókba**. Használja ezt a beállítást, meglévő tárfiókot csatlakozni kell. Lásd: [hozzon létre egy tárfiókot](../storage/common/storage-create-storage-account.md). Kövesse az utasításokat egy erőforrás-kezelő, általános célú fiók létrehozásához, majd válassza ki a tárfiók vissza ezt a lapot a portálon. Az újonnan létrehozott tárfiók megjelenik a legördülő menü néhány percig is eltarthat.
+    * **Az eseményközpontok felé adatfolyam**. Használja ezt a beállítást, egy meglévő Eseményközpont névtér és esemény-központot csatlakozni kell. További tudnivalókért lásd: [hozzon létre egy Event Hubs névtér és egy eseményközpontot, az Azure portál használatával](../event-hubs/event-hubs-create.md). Térjen vissza erre az oldalra a portálon, és válassza ki az Event Hubs-névteret és a házirend nevét.
     * **Naplóelemzési küldése**. Használja ezt a beállítást, vagy használjon meglévő munkaterülethez vagy hozzon létre egy új Naplóelemzési munkaterület lépéseit követve [hozzon létre egy új munkaterületet](../log-analytics/log-analytics-quick-collect-azurevm.md#create-a-workspace) a portálon. A naplók megtekintése a Naplóelemzési további információkért lásd: [Naplóelemzési a naplók megtekintése](#view-in-loganalytics).
 
     * **Motor**. Ezt a beállítást Xevent bejelentkezni. Ha egy tárfiókkal van archiválás, válassza a diagnosztikai naplók megőrzési időtartama. Nincsenek autodeleted naplói a megőrzési időszak lejárta után.
@@ -171,7 +171,7 @@ A **típus**, kattintson a **AzureDiagnostics**, és kattintson a **alkalmaz**. 
 
 Kattintson a **EventClass\_s** vagy az esemény nevét és a Naplóelemzési egyik továbbra is hozhat létre lekérdezést. Győződjön meg arról, a lekérdezések későbbi használatra menti.
 
-Győződjön meg arról, kipróbálni az Operations Management Suite, amely biztosít egy webhely speciális lekérdezés dashboarding és riasztási képességek Naplóelemzési adatokon.
+Győződjön meg arról, hogy egy webhely nyújt bővített lekérdezés, dashboarding és riasztási képességek Log Analytics-adatok az Operations Management Suite.
 
 ### <a name="queries"></a>Lekérdezések
 

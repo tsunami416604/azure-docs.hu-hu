@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: Active
-ms.date: 11/20/2017
+ms.date: 02/13/2018
 ms.author: carlrab
-ms.openlocfilehash: 06eb02e408b95176ca99ca391b437a3751876fac
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 81b61d59e63924e4af5befe4cbd638be98b385e6
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Automatikus adatbázis biztonsági mentését használó Azure SQL-adatbázis helyreállítása
 SQL-adatbázis biztosítja ezeket a beállításokat, az adatbázis helyreállítási használatával [adatbázis biztonsági másolatait automatikus](sql-database-automated-backups.md) és [hosszú távú megőrzési a biztonsági másolatok](sql-database-long-term-retention.md). Egy adatbázis biztonsági másolatát arra állíthatja vissza:
@@ -34,7 +34,7 @@ SQL-adatbázis biztosítja ezeket a beállításokat, az adatbázis helyreállí
 
 A visszaállított adatbázis költséget egy – megnövelt tárhely áll, az alábbi feltételek: 
 - Ha az adatbázis maximális méretét 500 GB-nál nagyobb helyreállítása P11 – P15 S4-S12 vagy P1 – P6.
-- Vissza P1 – P6 vagy PRS1 – PRS6 S4-S12 számára, ha az adatbázis maximális mérete 250 GB-nál nagyobb.
+- Ha az adatbázis maximális mérete 250 GB-nál nagyobb helyreállítása P1 – P6 S4-S12 számára.
 
 A felesleges költségek az az oka a visszaállított adatbázis maximális mérete nagyobb, mint a tárolókapacitást a teljesítményszintet része, és bármely fent a belefoglalt összeg kiépített – megnövelt tárhely extra fel van töltve.  Megnövelt tárhely díjszabása, tekintse meg a [árképzést ismertető oldalra SQL-adatbázis](https://azure.microsoft.com/pricing/details/sql-database/).  Ha a tényleges használt lemezterület mérete kisebb, mint a tároló tartalmazza, majd ez kapcsolódik további költség elkerülhető az adatbázis maximális méretét csökkentve a belefoglalt legkevesebb. További információ az adatbázis tárterületet, és az adatbázis maximális méretének módosítása: [egyetlen adatbázis erőforrás korlátok](sql-database-resource-limits.md#single-database-storage-sizes-and-performance-levels).  
 

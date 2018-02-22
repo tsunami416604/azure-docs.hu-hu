@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2017
 ms.author: tomfitz
-ms.openlocfilehash: ea91fdd58dd3b5c118fe390afe1eb355e3c26570
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 39680d4e70cc47cfa119b3a46e8d51ea87fa618d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure Portallal
 
@@ -47,7 +47,7 @@ Ez a témakör bemutatja, hogyan használja a [Azure-portálon](https://portal.a
 
 Miután létrehozott egy erőforráscsoport, a piactérről erőforrások telepítheti azt. A piactér előre definiált megoldást nyújt a gyakori forgatókönyvek.
 
-1. A telepítés elindításához válassza ki a **új**.
+1. A telepítés elindításához válassza ki a **hozzon létre egy erőforrást**.
 
    ![Új erőforrás](./media/resource-group-template-deploy-portal/new-resources.png)
 
@@ -73,13 +73,13 @@ Miután létrehozott egy erőforráscsoport, a piactérről erőforrások telep�
 
 1. Az erőforrások való telepítése után adhat hozzá további erőforrásokat az erőforráscsoport kiválasztásával **Hozzáadás**.
 
-   ![Erőforrás hozzáadása](./media/resource-group-template-deploy-portal/add-resource.png)
+   ![Erőforrás felvétele](./media/resource-group-template-deploy-portal/add-resource.png)
 
 ## <a name="deploy-resources-from-custom-template"></a>Az egyéni sablont az erőforrások telepítése
 
 Ha szeretné a központi telepítés hajtható végre, de nem használja a sablonok a piactéren, létrehozhat egy egyéni sablont, amely meghatározza a megoldás infrastruktúráját. Sablonok létrehozásával kapcsolatos további tudnivalókért lásd: [megérteni a felépítését és Azure Resource Manager-sablonok szintaxisát](resource-group-authoring-templates.md).
 
-1. Egy egyéni sablon a portálon keresztül történő üzembe helyezéséhez válassza **új**, keresse meg a **sablon-üzembehelyezés** mindaddig, amíg a lehetőségek közül választhat.
+1. Egy egyéni sablon a portálon keresztül történő üzembe helyezéséhez válassza **hozzon létre egy erőforrást**, keresse meg a **sablon-üzembehelyezés** mindaddig, amíg a lehetőségek közül választhat.
 
    ![keresési sablon-üzembehelyezés](./media/resource-group-template-deploy-portal/search-template.png)
 
@@ -97,7 +97,7 @@ Ha szeretné a központi telepítés hajtható végre, de nem használja a sablo
 
 1. Manuálisan szerkessze a JSON-szintaxis, vagy válasszon ki egy előre elkészített sablon a [gyorsindítási galéria-sablon](https://azure.microsoft.com/resources/templates/). Ebben a cikkben használhatja azonban a **erőforrás hozzáadása** lehetőséget.
 
-   ![sablon szerkesztése](./media/resource-group-template-deploy-portal/select-add-resource.png)
+   ![Sablon szerkesztése](./media/resource-group-template-deploy-portal/select-add-resource.png)
 
 1. Válassza ki **tárfiók** , és adjon meg egy nevet. Amikor befejeződött az értékek biztosítása, válassza ki a **OK**.
 
@@ -105,7 +105,7 @@ Ha szeretné a központi telepítés hajtható végre, de nem használja a sablo
 
 1. A szerkesztő JSON automatikusan hozzáadja az erőforrástípus. Figyelje meg, hogy tartalmazza-e egy paramétert definiáló tárfióknak a típusa. Kattintson a **Mentés** gombra.
 
-   ![sablon megjelenítése](./media/resource-group-template-deploy-portal/show-json.png)
+   ![Sablon megjelenítése](./media/resource-group-template-deploy-portal/show-json.png)
 
 1. Most lehetősége van telepíteni az erőforrásokat a sablonban definiált. Központi telepítése, fogadja el a használati feltételeket, és válassza ki **beszerzési**.
 
@@ -131,7 +131,7 @@ A portál lehetővé teszi egy sablon mentése az Azure-fiókjával, és telepí
 
    ![mentett sablon üzembe helyezése](./media/resource-group-template-deploy-portal/deploy-saved-template.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Naplók megtekintése: [naplózási műveletek a Resource Manager](resource-group-audit.md).
 * Telepítési hibák elhárításához lásd: [üzembe helyezési műveleteinek megtekintése](resource-manager-deployment-operations.md).
 * Egy központi telepítés vagy az erőforráscsoport a sablon lekéréséhez lásd: [Azure Resource Manager sablon exportálása létező erőforrásokból](resource-manager-export-template.md).

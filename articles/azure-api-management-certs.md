@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: adegeo
-ms.openlocfilehash: e74a3e918a7c7426c743447e23ede9938ce3f63e
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: a865290602f64335e8b7cbfadf00d83234ae812d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="upload-an-azure-service-management-certificate"></a>Azure-szolgáltatások felügyeleti tanúsítvány feltöltése
 Felügyeleti tanúsítványok hitelesítik magukat az Azure által biztosított klasszikus üzembe helyezési modellel teszik lehetővé. Számos programok telepítése és eszközök (például a Visual Studio vagy az Azure SDK-val) és a különböző Azure-szolgáltatások telepítési automatizálására használható ezeket a tanúsítványokat. 
@@ -38,7 +38,7 @@ Is [Azure Active Directory](https://azure.microsoft.com/en-us/services/active-di
 Ha elvégezte a felügyeleti tanúsítvány létrehozása, (.cer-fájl csak a nyilvános kulcs) feltöltheti a portált. Ha a tanúsítvány áll rendelkezésre a portálon, bárki, aki egyező tanúsítványt (titkos kulcs) csatlakozzon a felügyeleti API-n keresztül, és a társított előfizetés erőforrásokhoz férnek hozzá.
 
 1. Jelentkezzen be az [Azure portálra](http://portal.azure.com).
-2. Kattintson a **további szolgáltatások** alsó Azure-szolgáltatások listája, majd válassza **előfizetések** a a _általános_ szolgáltatási csoport.
+2. Kattintson a **minden szolgáltatás** alsó Azure-szolgáltatások listája, majd válassza **előfizetések** a a _általános_ szolgáltatási csoport.
 
     ![Előfizetés menü](./media/azure-api-management-certs/subscriptions_menu.png)
 

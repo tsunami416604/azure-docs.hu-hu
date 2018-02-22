@@ -12,36 +12,61 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/29/2018
+ms.date: 02/20/2018
 ms.author: mimig
-ms.openlocfilehash: b8f92953634f9294805521d8b925ed67d121a17d
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0d76e3bea8b3d24c4232c699354320f6b873722e
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Az Azure Cosmos DB diagnosztikai naplózás
 
-Miután lépéseket egy vagy több Azure Cosmos DB adatbázist használ, érdemes lehet figyelni hogyan és mikor érhetők el az adatbázisok. Azure Cosmos DB diagnosztikai naplózás lehetővé téve a figyelést. Diagnosztikai naplózás engedélyezésével, elküldheti a naplófájlokat [Azure Storage](https://azure.microsoft.com/services/storage/), adatfolyamként küldje el azokat [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), és/vagy exportálja őket [Naplóelemzési](https://azure.microsoft.com/services/log-analytics/), amely része[ Az Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite).
+Miután lépéseket egy vagy több Azure Cosmos DB adatbázist használ, érdemes lehet figyelni hogyan és mikor érhetők el az adatbázisok. Ez a cikk áttekintést nyújt az összes elérhető naplók az Azure platformon, akkor azt ismerteti, hogyan ellenőrzési célból segítségével diagnosztikai naplózás engedélyezése [Azure Storage](https://azure.microsoft.com/services/storage/), adatfolyamként küldje el azokat [Azure Event Hubs ](https://azure.microsoft.com/services/event-hubs/), és/vagy exportálja őket [Naplóelemzési](https://azure.microsoft.com/services/log-analytics/), amely része [Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite).
+
+## <a name="logs-available-in-azure"></a>Az Azure-ban elérhető naplók
+
+Mielőtt azt bejutni figyelése Azure Cosmos DB fiókját, lehetővé teszi, hogy naplózásának és figyelésének kapcsolatos néhány dolog tisztázása. Nincsenek naplók az Azure platformon különböző típusait. Nincsenek [Azure tevékenységi naplóit](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs), [Azure diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs), [metrikák](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics), események, a szívverés-figyelés, a műveleti naplói, stb. Nincsenek naplók formátum. A naplók teljes listáját megtekintheti [Azure Naplóelemzés](https://azure.microsoft.com/en-us/services/log-analytics/) az Azure portálon. 
+
+A következő kép bemutatja a különböző Azure elérhető naplók.
+
+![Különböző Azure naplói](./media/logging/azurelogging.png)
+
+A vitafórum lehetővé teszi, hogy Azure tevékenység Azure Diagnotic és metrikákat helyezi a hangsúlyt. Így Mi az a különbség a három naplók? 
+
+### <a name="azure-activity-log"></a>Azure tevékenységnapló
+
+Az Azure tevékenységnapló egy előfizetési napló, amely történt az Azure-előfizetés szintű események betekintést nyújt. A műveletnapló vezérlő-vezérlősík események a felügyeleti kategória az előfizetések a jelentések. A tevékenység-naplót használó, meghatározhatja a "mi, ki, és mikor" az esetleges írási műveleteket (PUT, POST, Törlés) végzett az erőforrást az előfizetésében. A művelet és az egyéb kapcsolódó tulajdonságainak állapotának értelmezni is lehet. 
+
+A műveletnapló eltér a diagnosztikai naplókat. Tevékenységi naplóit biztosítanak kívülről erőforráson műveleteire vonatkozó adatokat (a "vezérlő vezérlősík"). Azure Cosmos DB környezetében a vezérlő vezérlősík műveletek közé tartozik egy részénél létrehozása gyűjtemény, listázása, törlési kulcsok, lista adatbázis, stb. Diagnosztikai naplók az erőforrás által kibocsátott, és adja meg (az "adatok vezérlősík") erőforrás működésével kapcsolatos adatokat. Az adatok vezérlősík diagnosztikai naplófájl példák némelyike lesz törlése, insert, readfeed művelet, stb.
+
+Lehet, hogy sokkal részletesebb jellegű tevékenységi naplóit (vezérlő vezérlősík műveletek), a teljes e-mail címet is beleértve a hívó, hívó IP-cím, erőforrás nevét, a művelet neve és TenantId, stb. A műveletnapló több tartalmaz [kategóriák](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-activity-log-schema) adatok. Az ezekben a kategóriákban sémákra teljes részletekért lásd: [Azure tevékenységnapló esemény séma](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-activity-log-schema).  Azonban diagnosztikai naplók nem korlátozó ideiglenesek, személyazonosításra alkalmas adatok gyakran tisztító belőlük. Igen előfordulhat, hogy a hívó IP-címét, de a rendszer eltávolítja az utolsó octent.
+
+### <a name="azure-metrics"></a>Az Azure metrikák
+
+[Az Azure metrikák](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-metrics), Azure telemetriai adatok (más néven teljesítményszámlálók) az Azure erőforrások által kibocsátott legfontosabb típusa. Metrikák lehetővé teszik a teljesítményt, tárolási, konzisztencia, rendelkezésre állási és a késés az Azure Cosmos DB-erőforrások vonatkozó információk megtekintése. További információ: [figyelés és az Azure Cosmos DB a metrikák hibakeresés](use-metrics.md).
+
+### <a name="azure-diagnostic-logs"></a>Az Azure diagnosztikai naplók
+
+Az Azure diagnosztikai naplók erőforrás által kibocsátott naplók és nyújtanak részletes, gyakori adatokat erőforrás a művelet. Ezek a naplók tartalmának erőforrástípusok szerint változik. Erőforrás-szintű diagnosztikai naplók is eltérnek a vendég operációs rendszer szintű diagnosztikai naplókat. Vendég operációs rendszer diagnosztikai naplók, ezeket a virtuális gépek belül futó ügynök által gyűjtött vagy egyéb támogatott erőforrástípus. Erőforrás-szintű diagnosztikai naplók nem rögzítése és ügynök erőforrás-specifikus adatait az Azure platformon, igényelnek, amíg a vendég operációs rendszer szintű diagnosztikai naplók rögzítése az operációs rendszer és a virtuális gépen futó alkalmazások adatait.
 
 ![Diagnosztikai naplózás tárolási, az Event Hubs vagy az Operations Management Suite Naplóelemzési keresztül](./media/logging/azure-cosmos-db-logging-overview.png)
 
-Ez az oktatóanyag segítségével Ismerkedés az Azure Cosmos DB az Azure-portálon, a parancssori felület vagy a PowerShell-naplózás.
-
-## <a name="what-is-logged"></a>Mi kerül?
+### <a name="what-is-logged-by-azure-diagnostic-logs"></a>Mi az Azure diagnosztikai naplók által naplózott?
 
 * Az összes hitelesített háttér kérések (TCP/REST), minden API-k között naplózása, amely magában foglalja a hozzáférési engedélyeket, rendszerhibákból vagy hibás kérésekből adótó sikertelen kérelmeket. Támogatja a felhasználó által kezdeményezett diagramot, Cassandra, és tábla API-kérelmek még nem állnak rendelkezésre.
 * Maga az adatbázis, amely magában foglalja a CRUD-műveleteknek a dokumentumok, tárolók és adatbázisok műveleteket.
 * Műveletek a kulcsait, többek között létrehozása, módosítása vagy törlése a kulcsokat.
 * A 401-es választ eredményező, nem hitelesített kérelmek. Ilyenek például azok a kérelmek, amelyek nem rendelkeznek tulajdonosi jogkivonattal, helytelen formátumúak vagy lejártak, vagy érvénytelen a jogkivonatuk.
 
-## <a name="prerequisites"></a>Előfeltételek
-Az oktatóanyag elvégzéséhez a következőket kell rendelkeznie:
+<a id="#turn-on"></a>
+## <a name="turn-on-logging-in-the-azure-portal"></a>Kapcsolja be a naplózás az Azure-portálon
+
+Diagnosztikai naplózás engedélyezése, rendelkeznie kell a következőket:
 
 * Egy meglévő Azure Cosmos DB fiók, adatbázis, és a tároló. Ezek az erőforrások létrehozásának, lásd: [az Azure portál használatával adatbázisfiók létrehozása](create-sql-api-dotnet.md#create-a-database-account), [CLI minták](cli-samples.md), vagy [PowerShell-példák](powershell-samples.md).
 
-<a id="#turn-on"></a>
-## <a name="turn-on-logging-in-the-azure-portal"></a>Kapcsolja be a naplózás az Azure-portálon
+Az Azure portálon diagnosztikai naplózás engedélyezése, tegye a következőket:
 
 1. Az a [Azure-portálon](https://portal.azure.com), az Azure Cosmos DB a fiókot, kattintson a **diagnosztikai naplók** a bal oldali navigációs, majd **a diagnosztika bekapcsolásához**.
 
@@ -98,7 +123,7 @@ Ezek a paraméterek ahhoz, hogy több kimenet beállításai kombinálhatja.
 
 ## <a name="turn-on-logging-using-powershell"></a>Kapcsolja be a naplózás a PowerShell használatával
 
-Kapcsolja be a naplózás a PowerShell használatával, van szüksége az Azure Powershell legalább 1.0.1-es verziója.
+Diagnosztikai naplózás PowerShell-lel bekapcsolásához van szüksége az Azure Powershell legalább 1.0.1-es verziója.
 
 Az Azure PowerShell telepítésérről és az Azure-előfizetéssel való társításáról további információt [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása) című cikkben találhat.
 
@@ -233,7 +258,7 @@ Name              : resourceId=/SUBSCRIPTIONS/<subscription-ID>/RESOURCEGROUPS/C
 /MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/CONTOSOCOSMOSDB/y=2017/m=09/d=28/h=19/m=00/PT1H.json
 ```
 
-Mivel a kimenetből látható, a blobok az alábbi elnevezési:`resourceId=/SUBSCRIPTIONS/<subscription-ID>/RESOURCEGROUPS/<resource group name>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<Database Account Name>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json`
+Mivel a kimenetből látható, a blobok az alábbi elnevezési: `resourceId=/SUBSCRIPTIONS/<subscription-ID>/RESOURCEGROUPS/<resource group name>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<Database Account Name>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json`
 
 A dátum- és időértékek az UTC hivatkozási időzónát használják.
 
@@ -285,8 +310,8 @@ A blobok egyenkénti letöltéséhez használjon helyettesítő elemeket. Példa
 
 Továbbá:
 
-* Az adatbázis erőforrás diagnosztikai beállítások állapotának lekérdezése:`Get-AzureRmDiagnosticSetting -ResourceId $account.ResourceId`
-* A naplózás letiltása **DataPlaneRequests** az adatbázis-fiók erőforrás kategória:`Set-AzureRmDiagnosticSetting -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $false -Categories DataPlaneRequests`
+* Az adatbázis erőforrás diagnosztikai beállítások állapotának lekérdezése: `Get-AzureRmDiagnosticSetting -ResourceId $account.ResourceId`
+* A naplózás letiltása **DataPlaneRequests** az adatbázis-fiók erőforrás kategória: `Set-AzureRmDiagnosticSetting -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $false -Categories DataPlaneRequests`
 
 
 A BLOB visszaadott minden ezeket a lekérdezéseket tárolni, formázott JSON blob, az alábbi kódban látható módon. 
@@ -315,7 +340,7 @@ Minden JSON BLOB adatokkal kapcsolatos további tudnivalókért lásd: [az Azure
 
 ## <a name="managing-your-logs"></a>A naplók kezelése
 
-Naplók elérhetővé válnak a fiókjában két órát a óta, az Azure Cosmos DB művelet történt. A tárfiók naplófájljait Önnek kell kezelnie:
+Diagnosztikai naplók elérhetővé válnak a fiókjában két órát a óta, az Azure Cosmos DB művelet történt. A tárfiók naplófájljait Önnek kell kezelnie:
 
 * Az Azure szabványos hozzáférés-vezérlési módszereivel korlátozhatja a naplókhoz való hozzáférést, így megvédheti azokat.
 * Törölje azokat a naplókat, amelyeket nem kíván megőrizni a tárfiókban.
@@ -325,7 +350,7 @@ Naplók elérhetővé válnak a fiókjában két órát a óta, az Azure Cosmos 
 <a id="#view-in-loganalytics"></a>
 ## <a name="view-logs-in-log-analytics"></a>A Naplóelemzési naplók megtekintése
 
-Ha bejelölte a **küldeni a Naplóelemzési** beállítást, ha bekapcsolta a naplózást, a gyűjtemény diagnosztikai adatokat továbbíthatja a rendszer Naplóelemzési két órán belül. Ez azt jelenti, hogy ha Naplóelemzési naplózás bekapcsolása után tekinti meg, akkor nem látható adatokat. Csak két óra várakozás után próbálja újra. 
+Ha bejelölte a **küldeni a Naplóelemzési** lehetőséget, ha bekapcsolta a diagnosztikai naplózás diagnosztikai adatokat a gyűjteményből továbbíthatja a rendszer Naplóelemzési két órán belül. Ez azt jelenti, hogy ha Naplóelemzési naplózás bekapcsolása után tekinti meg, akkor nem látható adatokat. Csak két óra várakozás után próbálja újra. 
 
 A naplók megtekintése, előtt érdemes, ha a munkaterületet frissítve lett az új Naplóelemzési lekérdezési nyelv használatával ellenőrizheti, hogy. Ennek ellenőrzéséhez nyissa meg a [Azure-portálon](https://portal.azure.com), kattintson a **Naplóelemzési** bal oldalán, majd válassza ki a munkaterület neve a következő ábrán látható módon. A **OMS-munkaterület** lap is megjelenik, a következő ábrán látható módon.
 

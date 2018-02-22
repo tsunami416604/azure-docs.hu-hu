@@ -3,8 +3,8 @@ title: "A Visual Studio Azure verem sablonok telepítése |} Microsoft Docs"
 description: "Útmutató a Visual Studio Azure verem sablonok telepítése."
 services: azure-stack
 documentationcenter: 
-author: HeathL17
-manager: byronr
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 628da2ae-64cc-42e0-b8b7-a6a3724cb974
 ms.service: azure-stack
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
-ms.author: helaw
-ms.openlocfilehash: 8fc32dc50d96d202dfc982cbdc52d8e479c3a3eb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: brenduns
+ms.reviewer: 
+ms.openlocfilehash: ecefa8c3695aad0593516cb9ad8812216e163192
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="deploy-templates-in-azure-stack-using-visual-studio"></a>A Visual Studio használatával Azure verem sablonok telepítése
 
@@ -39,7 +40,7 @@ Visual Studio használatával telepítése Azure Resource Manager-sablonok az Az
 11. Az a **erőforráscsoport helye** listára, válassza ki azt a helyet, majd **telepítés**.
 12. Az a **paraméterek szerkesztése** párbeszédpanelen adja meg az értékeket a paraméterek (amelyek eltérőek lehetnek a sablon függően), és kattintson a **mentése**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Sablonok üzembe helyezése a parancssorral](azure-stack-deploy-template-command-line.md)
 
 [Az Azure-verem sablonok fejlesztése](azure-stack-develop-templates.md)

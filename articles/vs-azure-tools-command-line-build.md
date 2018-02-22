@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/05/2017
 ms.author: kraigb
-ms.openlocfilehash: 5fe910e2757dd5ec783538e23e7f52e2f5725b39
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1004f7d6938b4038df7681dc7f7551db2e988e61
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="building-azure-projects-from-the-command-line"></a>A parancssorból Azure projektek felépítése
 A Microsoft Build motor (MSBuild) használata, amelyen nincs telepítve a Visual Studio build-laborkörnyezetekben termékek hozhat létre. MSBuild bővíthető és teljes mértékben támogatja a Microsoft project fájlok XML formátumot használ. Az MSBuild formátumát használva leírhatja elemeket kell egy vagy több platformon, és konfigurációk készült.
@@ -35,6 +35,5 @@ Alapértelmezés szerint minden Azure-projekt helyi (hibakereséshez) buildek ki
 
 Szeretne másik könyvtár a tárolt csomag- és konfigurációs fájljait használja, ha az elérési útjának beállítása használatával a `/p:PublishDir=Directory\` beállítást, többek között a záró perjelet elválasztó.
 
-## <a name="next-steps"></a>Következő lépések
-Miután összeállította a csomagot, telepítheti az Azure-bA. Ez az oktatóanyag bemutatja, hogyan folyamat automatizálásához, lásd: [Azure felhőszolgáltatások folyamatos kézbesítési](./cloud-services/cloud-services-dotnet-continuous-delivery.md).
-
+## <a name="next-steps"></a>További lépések
+Miután összeállította a csomagot, telepítheti az Azure-bA.

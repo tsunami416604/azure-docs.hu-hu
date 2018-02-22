@@ -14,11 +14,11 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 04/29/2016
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 8f6b9a9293dc149586e6e5fd55028170ea825b07
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 77771f1e690bdfb59d42989a34068634f35f845d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="develop-an-on-premises-virtual-machine-image-for-the-azure-marketplace"></a>A helyszíni virtuálisgép-lemezkép kialakított az Azure piactéren
 Határozottan javasoljuk, hogy a távoli asztal protokoll használatával fejlesztése az Azure virtuális merevlemezeket (VHD) közvetlenül a felhőben. Azonban ha kell, akkor lehet töltse le a virtuális Merevlemezt és fejleszthetők a helyszíni infrastruktúra használatával.  
@@ -75,7 +75,7 @@ Az Azure portál használata mellett is használhatja a [mentés-AzureVhd](http:
         Save-AzureVhd –Source <storageURIOfVhd> `
         -LocalFilePath <diskLocationOnWorkstation> `
         -StorageKey <keyForStorageAccount>
-Például mentés-AzureVhd-forrás "https://baseimagevm.blob.core.windows.net/vhds/BaseImageVM-6820cq00-BaseImageVM-os-1411003770191.vhd" - LocalFilePath "C:\Users\Administrator\Desktop\baseimagevm.vhd" - StorageKey tulajdonságát<String>
+For example, Save-AzureVhd -Source “https://baseimagevm.blob.core.windows.net/vhds/BaseImageVM-6820cq00-BaseImageVM-os-1411003770191.vhd” -LocalFilePath “C:\Users\Administrator\Desktop\baseimagevm.vhd” -StorageKey <String>
 
 > [!NOTE]
 > **Mentés-AzureVhd** is rendelkezik egy **NumberOfThreads** lehetőség, amely segítségével növelheti a párhuzamosságot a rendelkezésre álló sávszélesség ajánlott használhatják a letöltés.
@@ -92,7 +92,7 @@ Hozzon létre egy tárfiókot, használhatja a [Microsoft Azure-portálon](https
 
 **A storage-fiók létrehozása a Microsoft Azure-portálon**
 
-1. Kattintson az **Új** lehetőségre.
+1. Kattintson a **hozzon létre egy erőforrást**.
 2. Válassza ki **tárolási**.
 3. Töltse ki a tárfiók nevét, és válassza ki a helyet.
    
@@ -143,9 +143,9 @@ Használja a [Add-AzureVhd](http://msdn.microsoft.com/library/dn495173.aspx) par
         Add-AzureVhd –Destination “http://mystorageaccount.blob.core.windows.net/containername/vmsku.vhd” -LocalFilePath “C:\Users\Administrator\Desktop\vmsku.vhd”
 
 ### <a name="upload-a-vhd-by-using-the-command-line-tool-for-mac-and-linux"></a>A virtuális merevlemez feltöltéséhez a parancssori eszközzel a Mac és Linux
-Az a [Linux parancssori eszköz](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2), használja a következő: azure virtuálisgép-lemezkép létrehozása <image name> --hely <Location of the data center> – operációs rendszer Linux<LocationOfLocalVHD>
+Az a [Linux parancssori eszköz](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2), használja a következő: azure virtuálisgép-lemezkép létrehozása <image name> --hely <Location of the data center> – operációs rendszer Linux <LocationOfLocalVHD>
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Hozzon létre egy virtuálisgép-lemezkép a piactér](marketplace-publishing-vm-image-creation.md)
 * [Azure PowerShell telepítése](marketplace-publishing-powershell-setup.md)
 

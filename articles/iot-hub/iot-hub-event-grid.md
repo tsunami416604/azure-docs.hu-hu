@@ -10,13 +10,13 @@ ms.service: iot-hub
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2018
+ms.date: 02/14/2018
 ms.author: kgremban
-ms.openlocfilehash: 096fcce979bd488a0fe9dead2b1232a057d0ae02
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 6123039ba5eeb720e0ca590fa69af915da91367c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions---preview"></a>Az IoT-központ események reagálnak műveleteket - Preview esemény rács használatával
 
@@ -107,7 +107,7 @@ Az egyes tulajdonságok részletes ismertetését lásd: [Azure esemény rács e
 
 ## <a name="filter-events"></a>Események szűrése
 
-IoT Hub esemény-előfizetések szűrhetők az események esemény típusa és az eszköz neve alapján. Az esemény rács munkálatok tárgy szűrők alapján **előtag** és **utótag** megegyezik, így az előfizető kézbesíti az eseményeket egy egyező témát. 
+IoT Hub esemény-előfizetések szűrhetők az események esemény típusa és az eszköz neve alapján. Az esemény rács munkálatok tárgy szűrők alapján **előtag** és **utótag** megegyezik. A szűrő egy `AND` operátor szerinti szűrése, így az előfizető kézbesíti az eseményeket egy témát, amelyek megfelelnek az előtag és az utótag. 
 
 Az IoT-események tárgya formátumot használja:
 

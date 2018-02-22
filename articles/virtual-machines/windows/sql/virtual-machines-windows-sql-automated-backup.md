@@ -4,7 +4,7 @@ description: "Ismerteti az automatikus biztonsági mentés szolgáltatás az SQL
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
-manager: jhubbard
+manager: craigg
 editor: 
 tags: azure-resource-manager
 ms.assetid: bdc63fd1-db49-4e76-87d5-b5c6a890e53c
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/05/2018
 ms.author: jroth
-ms.openlocfilehash: 281aac8229c55cde1f36857a8f1042aa08f7e372
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: e7e4aab3a4c4f1ccca6868134ec0b829cb7af2f2
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>Automatikus biztonsági mentés SQL Server 2014 virtuális gépek (erőforrás-kezelő)
 
@@ -42,7 +42,7 @@ Automatikus biztonsági mentés használja, fontolja meg a következő előfelt�
 
 **SQL Server verziójához/kiadásához**:
 
-- Az SQL Server 2014 Standard
+- SQL Server 2014 Standard
 - SQL Server 2014 Enterprise
 
 > [!IMPORTANT]
@@ -138,7 +138,7 @@ Set-AzureRmVMSqlServerExtension -VMName $vmname `
 > [!IMPORTANT]
 > Ha a kiterjesztés már nincs telepítve, a bővítmény telepítése újraindítja az SQL Server szolgáltatást.
 
-### <a id="verifysettings"></a>Aktuális beállításainak ellenőrzése
+### <a id="verifysettings"></a> Aktuális beállításainak ellenőrzése
 
 Ha engedélyezte az automatikus biztonsági mentés kiépítése során, a PowerShell használatával ellenőrizze az aktuális konfigurációját. Futtassa a **Get-AzureRmVMSqlServerExtension** parancsot, és vizsgálja meg a **AutoBackupSettings** tulajdonság:
 

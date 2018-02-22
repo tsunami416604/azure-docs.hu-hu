@@ -14,11 +14,11 @@ ms.tgt_pltfrm:
 ms.workload: identity
 ms.date: 12/19/2017
 ms.author: skwan
-ms.openlocfilehash: b28f5c7c90783c5abd933b50ddb9631739b8f421
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 72e1d5250de214c063a970f5761105b2329ccf7f
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/22/2018
 ---
 #  <a name="managed-service-identity-msi-for-azure-resources"></a>Szolgáltatás-identitás (MSI) felügyelt Azure-erőforrások
 
@@ -87,12 +87,12 @@ A következő szolgáltatásokat támogatja az Azure AD-alapú hitelesítés, é
 
 | Szolgáltatás | Erőforrás-azonosító | status | Dátum | Hozzáférés hozzárendelése |
 | ------- | ----------- | ------ | ---- | ------------- |
-| Azure Resource Manager | https://management.azure.com/ | Elérhető | 2017. szeptember | [Azure Portal](msi-howto-assign-access-portal.md) <br>[PowerShell](msi-howto-assign-access-powershell.md) <br>[Azure CLI](msi-howto-assign-access-CLI.md) |
-| Azure Key Vault | https://vault.azure.net/ | Elérhető | 2017. szeptember | |
-| Azure Data Lake | https://datalake.azure.net/ | Elérhető | 2017. szeptember | |
-| Azure SQL | https://database.windows.net/ | Elérhető | 2017. október | |
-| Azure Event Hubs | https://eventhubs.azure.net/ | Elérhető | 2017. december | |
-| Azure Service Bus | https://servicebus.azure.net/ | Elérhető | 2017. december | |
+| Azure Resource Manager | https://management.azure.com | Elérhető | 2017. szeptember | [Azure Portal](msi-howto-assign-access-portal.md) <br>[PowerShell](msi-howto-assign-access-powershell.md) <br>[Azure CLI](msi-howto-assign-access-CLI.md) |
+| Azure Key Vault | https://vault.azure.net | Elérhető | 2017. szeptember | |
+| Azure Data Lake | https://datalake.azure.net | Elérhető | 2017. szeptember | |
+| Azure SQL | https://database.windows.net | Elérhető | 2017. október | |
+| Azure Event Hubs | https://eventhubs.azure.net | Elérhető | 2017. december | |
+| Azure Service Bus | https://servicebus.azure.net | Elérhető | 2017. december | |
 
 ## <a name="how-much-does-managed-service-identity-cost"></a>Milyen mértékű nem felügyelt Szolgáltatásidentitás költség?
 

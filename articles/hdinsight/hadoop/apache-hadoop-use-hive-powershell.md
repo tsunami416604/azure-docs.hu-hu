@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/27/2017
+ms.date: 01/26/2018
 ms.author: larryfr
-ms.openlocfilehash: 95bfab18a6a8a9ad9eb547179a3205ae4b186213
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: fbd5ad2aedf0c3022e702a63f8e3d12735b41313
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="run-hive-queries-using-powershell"></a>PowerShell-lel Hive-lekérdezések futtatása
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -30,38 +30,38 @@ Ez a dokumentum az Azure PowerShell használatával az Azure-erőforráscsoport 
 > [!NOTE]
 > Ez a dokumentum nem biztosít a HiveQL utasításokat a példákban használt mire részletes leírását. Az ebben a példában használt HiveQL információkért lásd: [használata a hdinsight Hadoop Hive](hdinsight-use-hive.md).
 
-**Előfeltételek**
+## <a name="prerequisites"></a>Előfeltételek
 
-* **Egy Azure HDInsight fürt**: nem számít, hogy a fürt Windows vagy Linux-alapú.
+* A Linux-alapú Hadoop a HDInsight fürt 3.4 vagy újabb verziója.
 
   > [!IMPORTANT]
   > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-* **Munkaállomás Azure PowerShell-lel**.
+* Az Azure PowerShell ügyfél.
 
 [!INCLUDE [upgrade-powershell](../../../includes/hdinsight-use-latest-powershell.md)]
 
-## <a name="run-hive-queries-using-azure-powershell"></a>Az Azure PowerShell Hive-lekérdezések futtatása
+## <a name="run-a-hive-query"></a>Hive-lekérdezések futtatása
 
 Az Azure PowerShell biztosít *parancsmagok* , amelyek lehetővé teszik, hogy távolról ugyanúgy futtathatják a HDInsight Hive-lekérdezéseket. Belső, a parancsmagok hívások REST való [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) a HDInsight-fürtre.
 
 A következő parancsmagok használhatók egy távoli HDInsight-fürtöt a Hive-lekérdezések futtatásakor:
 
-* **Adja hozzá-AzureRmAccount**: Azure PowerShell hitelesíti az Azure-előfizetéshez.
-* **Új AzureRmHDInsightHiveJobDefinition**: létrehoz egy *definition feladat* a megadott HiveQL utasítás használatával.
-* **Start-AzureRmHDInsightJob**: a feladat definíciójához küld HDInsight, és elindítja a feladatot. A *feladat* objektumot ad vissza.
-* **Várjon, amíg-AzureRmHDInsightJob**: a feladat állapotának ellenőrzése a feladatobjektum használja. Arra vár, amíg a feladat befejeződik, vagy a várakozási ideje lejár.
-* **Get-AzureRmHDInsightJobOutput**: a feladat kimenetének beolvasása.
-* **Invoke-AzureRmHDInsightHiveJob**: HiveQL utasítás futtatásához használt. Ez a parancsmag blokkolja a lekérdezés befejeződött, majd az eredményeket ad vissza.
-* **Használjon-AzureRmHDInsightCluster**: a jelenlegi fürthöz való használatra beállítja a **Invoke-AzureRmHDInsightHiveJob** parancs.
+* `Add-AzureRmAccount`: Az Azure-előfizetések az Azure PowerShell hitelesíti.
+* `New-AzureRmHDInsightHiveJobDefinition`: Létrehoz egy *definition feladat* a megadott HiveQL utasítás használatával.
+* `Start-AzureRmHDInsightJob`: A feladat definíciójához küld HDInsight, és elindítja a feladatot. A *feladat* objektumot ad vissza.
+* `Wait-AzureRmHDInsightJob`: A feladatobjektum használja a feladat állapotának ellenőrzéséhez. Arra vár, amíg a feladat befejeződik, vagy a várakozási ideje lejár.
+* `Get-AzureRmHDInsightJobOutput`: A feladat eredményének lekérdezésére használja.
+* `Invoke-AzureRmHDInsightHiveJob`: A HiveQL utasítás futtatásához használt. Ez a parancsmag blokkolja a lekérdezés befejeződött, majd az eredményeket ad vissza.
+* `Use-AzureRmHDInsightCluster`: A jelenlegi fürthöz való használatra beállítja a `Invoke-AzureRmHDInsightHiveJob` parancsot.
 
 A következő lépések bemutatják, hogyan lehet ezeket a parancsmagokat használja a feladat futtatásához a HDInsight fürt:
 
-1. Egy szerkesztővel, az alábbi kód, Mentés **hivejob.ps1**.
+1. Egy szerkesztővel, az alábbi kód, Mentés `hivejob.ps1`.
 
     [!code-powershell[main](../../../powershell_scripts/hdinsight/use-hive/use-hive.ps1?range=5-42)]
 
-2. Nyisson meg egy új **Azure PowerShell** parancssort. Módosítsa a könyvtárat, hol található a **hivejob.ps1** fájlt, majd futtassa a parancsfájlt a következő paranccsal:
+2. Nyisson meg egy új **Azure PowerShell** parancssort. Módosítsa a könyvtárat, hol található a `hivejob.ps1` fájlt, majd futtassa a parancsfájlt a következő paranccsal:
 
         .\hivejob.ps1
 
@@ -74,7 +74,7 @@ A következő lépések bemutatják, hogyan lehet ezeket a parancsmagokat haszn�
         2012-02-03      18:55:54        SampleClass1    [ERROR] incorrect       id
         2012-02-03      19:25:27        SampleClass4    [ERROR] incorrect       id
 
-4. A korábbiak **Invoke-struktúra** segítségével futtassa a lekérdezést, és a válaszra. A következő parancsfájl segítségével tekintse meg az Invoke-struktúra működése:
+4. A korábbiak `Invoke-Hive` segítségével futtassa a lekérdezést, és a válaszra. A következő parancsfájl segítségével tekintse meg az Invoke-struktúra működése:
 
     [!code-powershell[main](../../../powershell_scripts/hdinsight/use-hive/use-hive.ps1?range=50-71)]
 
@@ -85,7 +85,7 @@ A következő lépések bemutatják, hogyan lehet ezeket a parancsmagokat haszn�
         2012-02-03    19:25:27    SampleClass4    [ERROR]    incorrect    id
 
    > [!NOTE]
-   > Hosszabb HiveQL lekérdezések esetén használhatja az Azure PowerShell **ide-karakterláncok** parancsmag vagy a HiveQL parancsfájlok. Az alábbi kódrészletben láthatja, hogyan használható a **Invoke-struktúra** parancsmag HiveQL parancsfájl futtatásához. Fel kell tölteni a HiveQL-parancsfájlt, a wasb: / /.
+   > Hosszabb HiveQL lekérdezések esetén használhatja az Azure PowerShell **ide-karakterláncok** parancsmag vagy a HiveQL parancsfájlok. Az alábbi kódrészletben láthatja, hogyan használható a `Invoke-Hive` parancsmag HiveQL parancsfájl futtatásához. Fel kell tölteni a HiveQL-parancsfájlt, a wasb: / /.
    >
    > `Invoke-AzureRmHDInsightHiveJob -File "wasb://<ContainerName>@<StorageAccountName>/<Path>/query.hql"`
    >
@@ -93,7 +93,7 @@ A következő lépések bemutatják, hogyan lehet ezeket a parancsmagokat haszn�
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha nem áll rendelkezésre információ ad vissza, ha a feladat befejeződik, tekintse meg a hibanaplókat. Hiba történt a feladat információinak megtekintése, adja hozzá a következő végének a **hivejob.ps1** fájl, mentse, majd futtassa újból.
+Ha nem áll rendelkezésre információ ad vissza, ha a feladat befejeződik, tekintse meg a hibanaplókat. Hiba történt a feladat információinak megtekintése, adja hozzá a következő végének a `hivejob.ps1` fájl, mentse, majd futtassa újból.
 
 ```powershell
 # Print the output of the Hive job.
@@ -106,11 +106,11 @@ Get-AzureRmHDInsightJobOutput `
 
 Ez a parancsmag STDERR feladat feldolgozása során írt olyan információkat ad vissza.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ahogy látja, Azure PowerShell könnyedén futtathat Hive-lekérdezéseket a HDInsight-fürtöt, figyelheti a feladat állapotát és a kimeneti beolvasása.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Általános információk a hdinsight Hive:
 

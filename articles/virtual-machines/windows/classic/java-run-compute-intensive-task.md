@@ -15,11 +15,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-ms.openlocfilehash: 76997f2e31f3edd6260b2ae19631236bc1c0c1b6
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: ccccdf58fbb84605bc5dff29d870b373134f1f97
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-run-a-compute-intensive-task-in-java-on-a-virtual-machine"></a>Számításigényes feladat Javában történő futtatása virtuális gépen
 > [!IMPORTANT] 
@@ -52,7 +52,7 @@ A Java-alkalmazások figyelése a számítási-igényes tevékenység példát a
 
 ## <a name="to-create-a-virtual-machine"></a>Virtuális gép létrehozása
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-2. Kattintson a **új**, kattintson a **számítási**, kattintson a **virtuális gép**, és kattintson a **a gyűjtemény**.
+2. Kattintson a **hozzon létre egy erőforrást**, kattintson a **számítási**, kattintson a **virtuális gép**, és kattintson a **a gyűjtemény**.
 3. Az a **virtuális gép lemezképét válasszon** párbeszédpanelen jelölje ki **JDK 7 a Windows Server 2012**.
    Vegye figyelembe, hogy **JDK 6 Windows Server 2012** áll rendelkezésre, amennyiben örökölt alkalmazásokat, amelyek még nincsenek JDK 7 futtathatja.
 4. Kattintson a **Tovább** gombra.

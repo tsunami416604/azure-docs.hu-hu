@@ -16,24 +16,24 @@ ms.date: 08/28/2017
 ms.author: curtand
 ms.reviewer: asteen
 ms.custom: it-pro
-ms.openlocfilehash: fd933ee33212007a58903b607055f437cc9206fd
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5bcde742690e57d9195725fba524ee64cc691b30
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="view-all-the-enterprise-apps-that-i-can-manage-in-azure-active-directory"></a>Az Azure Active Directoryban is kezelhető az összes vállalati alkalmazást megtekintése
-Kezelheti a vállalati alkalmazások az Azure Active Directory (Azure AD). Ez magában foglalja, megtekintés, alkalmazásokat, kezelheti, hozzárendelése felhasználókat és csoportokat egy alkalmazáshoz, az alkalmazás például az alkalmazás neve/embléma tulajdonságok karbantartása és, hogy a felhasználók nem lehet bejelentkezni, még akkor is letiltása a kérelmet.
+Kezelheti a vállalati alkalmazások az Azure Active Directory (Azure AD). Az alkalmazások kezelése, felhasználók vagy csoportok hozzárendelése egy alkalmazást, az alkalmazás például az alkalmazás neve/embléma tulajdonságok kezelése, és még akkor is, hogy a felhasználók nem lehet bejelentkezni, tiltsa le az alkalmazás tekintheti meg.
 
 ## <a name="how-do-i-view-all-my-apps"></a>Hogyan tekinthetem meg az alkalmazások?
 1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com) egy olyan fiókkal, amely a címtár globális rendszergazdája.
-2. Válassza ki **további szolgáltatások**, adja meg **Azure Active Directory** a szövegmezőbe, majd válassza ki azt a **Enter**.
-3. Az a **Azure Active Directory -** ***directoryname*** (Ez azt jelenti, hogy az Azure AD panelen a kezelt könyvtár) panelen válassza ki **vállalati alkalmazások**.
+2. Válassza ki **minden szolgáltatás**, adja meg **Azure Active Directory** a szövegmezőbe, majd válassza ki azt a **Enter**.
+3. Az a **Azure Active Directory -** ***directoryname*** (Ez azt jelenti, hogy az Azure AD ablaktáblán a kezelt könyvtár) ablaktáblán válassza ki **vállalati alkalmazások**.
 
     ![Vállalati alkalmazások megnyitásakor](./media/active-directory-coreapps-view-azure-portal/open-enterprise-apps.png)
-4. Az a **vállalati alkalmazások** panelen válassza **összes alkalmazás**. Ezen a panelen kiválaszthatja alkalmazásokat kezeléséhez, a megjelenített oszlopok sorrendjének megváltoztatásához vagy található (például csak a letiltott alkalmazások) kívánt alkalmazást a tulajdonságlista szűréséhez.
+4. Az a **vállalati alkalmazások** ablaktáblán válassza előbb **összes alkalmazás**. Ezen az ablaktáblán kiválaszthat alkalmazásokat kezeléséhez, a megjelenített oszlopok sorrendjének megváltoztatásához vagy található (például csak a letiltott alkalmazások) kívánt alkalmazást a tulajdonságlista szűréséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](active-directory-coreapps-assign-user-azure-portal.md)
 * [Egy felhasználó vagy csoport-hozzárendelés eltávolítása a vállalati alkalmazások](active-directory-coreapps-remove-assignment-azure-portal.md)
 * [Tiltsa le a felhasználói bejelentkezéseket a vállalati alkalmazás](active-directory-coreapps-disable-app-azure-portal.md)

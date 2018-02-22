@@ -16,11 +16,11 @@ ms.date: 07/20/2017
 ms.author: billmath
 ms.custom: aaddev
 ms.reviewer: anchitn
-ms.openlocfilehash: 19cd4ae8dc0ca3efa4eca51e5a6ba102338b4ef9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: eaf9e7088c8c88140ea690c13ff7e0c7026b8f86
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-public-preview"></a>Konfigurálható jogkivonat élettartamát az Azure Active Directoryban (nyilvános előzetes verzió)
 Megadhat egy Azure Active Directory (Azure AD) által kiállított jogkivonat élettartamát. A szervezet jogkivonat élettartamát a szervezet összes alkalmazást, egy több-bérlős (több szervezet) alkalmazáshoz, vagy egy adott szolgáltatás egyszerű állíthatja be.
@@ -70,14 +70,14 @@ Egy házirend használatával adja meg, miután az első munkamenet-azonosító 
 A jogkivonatok élettartama házirend a csoportházirend-objektum, amely tartalmazza a jogkivonatok élettartama szabályok típusú. A házirend tulajdonságainak segítségével szabályozhatja a megadott jogkivonat élettartamát. Ha nincs házirend van beállítva, a rendszer az alapértelmezett élettartam érték érvénybe lépteti.
 
 ### <a name="configurable-token-lifetime-properties"></a>A jogkivonatok élettartama konfigurálható tulajdonságai
-| Tulajdonság | Házirend tulajdonság karakterlánc | Érint | Alapértelmezett | Minimum | Maximum |
+| Tulajdonság | Házirend tulajdonság karakterlánc | Érint | Alapértelmezett | Minimális | Maximum |
 | --- | --- | --- | --- | --- | --- |
 | Hozzáférés a jogkivonatok élettartama |AccessTokenLifetime |Hozzáférési jogkivonatok, azonosító-jogkivonatokat, egy SAML2 jogkivonatok |1 óra |10 perc |1 nap |
-| Frissítse a Token maximális tétlenség ideje |MaxInactiveTime |Frissítési jogkivonatok |14 napja |10 perc |90 nap |
-| Single-tényező frissítési jogkivonat maximális életkora |MaxAgeSingleFactor |Frissítési jogkivonatok (a felhasználók számára) |Amíg visszavonása |10 perc |Amíg visszavont<sup>1</sup> |
-| Multi-factor Authentication frissítési jogkivonat maximális életkora |MaxAgeMultiFactor |Frissítési jogkivonatok (a felhasználók számára) |Amíg visszavonása |10 perc |Amíg visszavont<sup>1</sup> |
-| Single-tényező munkamenet Token maximális életkora |MaxAgeSessionSingleFactor<sup>2</sup> |Munkamenet-jogkivonatok (állandó és nem állandó) |Amíg visszavonása |10 perc |Amíg visszavont<sup>1</sup> |
-| Multi-factor Authentication munkamenet Token maximális életkora |MaxAgeSessionMultiFactor<sup>3</sup> |Munkamenet-jogkivonatok (állandó és nem állandó) |Amíg visszavonása |10 perc |Amíg visszavont<sup>1</sup> |
+| Frissítse a Token maximális tétlenség ideje |MaxInactiveTime |Frissítési jogkivonatok |90 nap |10 perc |90 nap |
+| Single-tényező frissítési jogkivonat maximális életkora |MaxAgeSingleFactor |Frissítési jogkivonatok (a felhasználók számára) |Until-revoked |10 perc |Until-revoked<sup>1</sup> |
+| Multi-factor Authentication frissítési jogkivonat maximális életkora |MaxAgeMultiFactor |Frissítési jogkivonatok (a felhasználók számára) |Until-revoked |10 perc |Until-revoked<sup>1</sup> |
+| Single-tényező munkamenet Token maximális életkora |MaxAgeSessionSingleFactor<sup>2</sup> |Munkamenet-jogkivonatok (állandó és nem állandó) |Until-revoked |10 perc |Until-revoked<sup>1</sup> |
+| Multi-factor Authentication munkamenet Token maximális életkora |MaxAgeSessionMultiFactor<sup>3</sup> |Munkamenet-jogkivonatok (állandó és nem állandó) |Until-revoked |10 perc |Until-revoked<sup>1</sup> |
 
 * <sup>1</sup>365 nap a maximális hosszúságát, hogy ezek az attribútumok állítható be.
 * <sup>2</sup>Ha **MaxAgeSessionSingleFactor** nincs beállítva, ez az érték szükséges a **MaxAgeSingleFactor** érték. Ha sem a paraméter értéke, a tulajdonság az alapértelmezett érték (amíg visszavont) vesz igénybe.
@@ -88,7 +88,7 @@ A jogkivonatok élettartama házirend a csoportházirend-objektum, amely tartalm
 | --- | --- | --- |
 | Frissítse a Token maximális életkora (összevont rendelkező felhasználók számára megfelelő visszavonási információ kiadott<sup>1</sup>) |Frissítési jogkivonatok (összevont rendelkező felhasználók számára megfelelő visszavonási információ kiadott<sup>1</sup>) |12 óra |
 | Frissítse a Token maximális tétlenség ideje (bizalmas ügyfelek ki) |Frissítési jogkivonatok (bizalmas ügyfelek ki) |90 nap |
-| Frissítse a Token maximális életkora (bizalmas ügyfelek ki) |Frissítési jogkivonatok (bizalmas ügyfelek ki) |Amíg visszavonása |
+| Frissítse a Token maximális életkora (bizalmas ügyfelek ki) |Frissítési jogkivonatok (bizalmas ügyfelek ki) |Until-revoked |
 
 * <sup>1</sup>külső felhasználók, akik a megfelelő visszavonási információk közé tartozik a szinkronizált "LastPasswordChangeTimestamp" attribútum nem rendelkező felhasználók. Ezek a felhasználók kapnak e rövid maximális életkora, mert aad-ben nem tudja ellenőrizni, mikor érdemes visszavonni egy régi hitelesítő adatok (például egy jelszót, amely módosult) vannak társítva, és kell látogasson vissza több gyakran annak érdekében, hogy a felhasználó és a kapcsolódó jogkivonatok továbbra is a helyes állandó jogkivonatok. A felhasználói élmény javítása érdekében a bérlői rendszergazda biztosítania kell, hogy azok szinkronizálását végzi a "LastPasswordChangeTimestamp" attribútumot (Ez a user objektum Powershell használatával vagy állítható AADSync keresztül).
 
@@ -172,7 +172,7 @@ A felhasználók hitelesítést gyakrabban csökkenti a maximális életkora ké
 A felhasználók hitelesítést gyakrabban csökkenti a maximális életkora kényszeríti. Mert minősül, hogy kevésbé biztonságos, mint a multi-factor authentication hitelesítést, azt javasoljuk, hogy egy érték, amely egyenlő vagy kisebb, mint a multi-factor Authentication munkamenet Token maximális életkora tulajdonság állítani ezt a tulajdonságot.
 
 ### <a name="multi-factor-session-token-max-age"></a>Multi-factor Authentication munkamenet Token maximális életkora
-**Karakterlánc:** MaxAgeSessionMultiFactor
+**String:** MaxAgeSessionMultiFactor
 
 **Érinti:** munkamenet jogkivonatok (állandó és nem állandó)
 
@@ -355,7 +355,7 @@ Ebben a példában néhány házirendek, megtudhatja, hogyan működik, a priori
 
 Az alábbi parancsmagok segítségével kezelheti a házirendeket.
 
-#### <a name="new-azureadpolicy"></a>Új AzureADPolicy
+#### <a name="new-azureadpolicy"></a>New-AzureADPolicy
 
 Létrehoz egy új házirendet.
 
@@ -369,7 +369,7 @@ New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -Is
 | <code>&#8209;DisplayName</code> |A név karakterláncának részlete házirend. |`-DisplayName "MyTokenPolicy"` |
 | <code>&#8209;IsOrganizationDefault</code> |Igaz értéke esetén a szervezet alapértelmezett házirend állítja be a házirendet. Ha hamis, nincs hatása. |`-IsOrganizationDefault $true` |
 | <code>&#8209;Type</code> |Házirend típusa. A jogkivonat élettartamát mindig használja az "TokenLifetimePolicy." | `-Type "TokenLifetimePolicy"` |
-| <code>&#8209;AlternativeIdentifier</code>[Választható] |Beállítja a házirend alternatív azonosítója. |`-AlternativeIdentifier "myAltId"` |
+| <code>&#8209;AlternativeIdentifier</code> [Választható] |Beállítja a házirend alternatív azonosítója. |`-AlternativeIdentifier "myAltId"` |
 
 </br></br>
 
@@ -382,7 +382,7 @@ Get-AzureADPolicy
 
 | Paraméterek | Leírás | Példa |
 | --- | --- | --- |
-| <code>&#8209;Id</code>[Választható] |**Objektumazonosító (Id)** a kívánt házirendet. |`-Id <ObjectId of Policy>` |
+| <code>&#8209;Id</code> [Választható] |**Objektumazonosító (Id)** a kívánt házirendet. |`-Id <ObjectId of Policy>` |
 
 </br></br>
 
@@ -410,10 +410,10 @@ Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
 | --- | --- | --- |
 | <code>&#8209;Id</code> |**Objektumazonosító (Id)** a kívánt házirendet. |`-Id <ObjectId of Policy>` |
 | <code>&#8209;DisplayName</code> |A név karakterláncának részlete házirend. |`-DisplayName "MyTokenPolicy"` |
-| <code>&#8209;Definition</code>[Választható] |A szabályzat előírásainak tartalmazó stringified JSON tömbje. |`-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
-| <code>&#8209;IsOrganizationDefault</code>[Választható] |Igaz értéke esetén a szervezet alapértelmezett házirend állítja be a házirendet. Ha hamis, nincs hatása. |`-IsOrganizationDefault $true` |
-| <code>&#8209;Type</code>[Választható] |Házirend típusa. A jogkivonat élettartamát mindig használja az "TokenLifetimePolicy." |`-Type "TokenLifetimePolicy"` |
-| <code>&#8209;AlternativeIdentifier</code>[Választható] |Beállítja a házirend alternatív azonosítója. |`-AlternativeIdentifier "myAltId"` |
+| <code>&#8209;Definition</code> [Választható] |A szabályzat előírásainak tartalmazó stringified JSON tömbje. |`-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
+| <code>&#8209;IsOrganizationDefault</code> [Választható] |Igaz értéke esetén a szervezet alapértelmezett házirend állítja be a házirendet. Ha hamis, nincs hatása. |`-IsOrganizationDefault $true` |
+| <code>&#8209;Type</code> [Választható] |Házirend típusa. A jogkivonat élettartamát mindig használja az "TokenLifetimePolicy." |`-Type "TokenLifetimePolicy"` |
+| <code>&#8209;AlternativeIdentifier</code> [Választható] |Beállítja a házirend alternatív azonosítója. |`-AlternativeIdentifier "myAltId"` |
 
 </br></br>
 
@@ -433,7 +433,7 @@ A megadott házirend törlése.
 ### <a name="application-policies"></a>Alkalmazás-házirendek
 A következő parancsmagokat használhatja az alkalmazás-házirendek.</br></br>
 
-#### <a name="add-azureadapplicationpolicy"></a>Adja hozzá AzureADApplicationPolicy
+#### <a name="add-azureadapplicationpolicy"></a>Add-AzureADApplicationPolicy
 A megadott házirend alkalmazásokra mutató hivatkozások.
 
 ```PowerShell
@@ -477,7 +477,7 @@ Remove-AzureADApplicationPolicy -Id <ObjectId of Application> -PolicyId <ObjectI
 ### <a name="service-principal-policies"></a>Szolgáltatásnév-házirendek
 Szolgáltatás egyszerű házirendjei a következő parancsmag használható.
 
-#### <a name="add-azureadserviceprincipalpolicy"></a>Adja hozzá AzureADServicePrincipalPolicy
+#### <a name="add-azureadserviceprincipalpolicy"></a>Add-AzureADServicePrincipalPolicy
 A megadott házirend csatol egy egyszerű szolgáltatást.
 
 ```PowerShell

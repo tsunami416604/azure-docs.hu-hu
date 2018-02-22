@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 7562e43f58f303ea34a08b8b9e056a0c3d0c10d0
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 378330149aebc1936846472a522631308fe3eb80
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>Hibaelhárítás az Azure fájlszinkronizálás (előzetes verzió)
 Sync szolgáltatás használatával Azure fájl (előzetes verzió) központosítása fájlmegosztások a szervezet Azure fájlokban, ugyanakkor változatlanul megőrizze a rugalmasság, a teljesítmény és a kompatibilitási egy helyszíni fájlkiszolgáló. Azure fájlszinkronizálás átalakítja a Windows Server az Azure fájlmegosztás gyors gyorsítótárába. Minden protokoll, amely a Windows Server helyileg, az adatok eléréséhez használhatja, többek között a ftps-t, SMB és NFS. Akkor is annyi gyorsítótárak világszerte szükség szerint.
@@ -43,6 +43,10 @@ Tekintse át a telepítési hiba okának megállapításához installer.log.
 > [!Note]  
 > Az ügynök telepítése sikertelen lesz, ha a számítógép be van állítva a Microsoft Update segítségével, és nem fut a Windows Update szolgáltatás.
 
+<a id="agent-installation-on-DC"></a>**Az ügynök telepítése sikertelen lesz, az Active Directory tartományvezérlőn lévő** próbálja, és a sync-ügynök telepítése egy Active Directory tartományvezérlőn, ahol a PDC-szerepkör tulajdonosával van-e a Windows Server 2008R2 operációsrendszer-verzió alatt, ha a probléma esetleg kattint ahol a szinkronizálás ügynök telepítése sikertelen lesz.
+
+Oldja meg, az elsődleges tartományvezérlő szerepkör átvitele egy másik tartomány a tartományvezérlő futó Windows Server 2012 R2 rendszerben vagy újabb, majd szinkronizáló telepítése.
+
 <a id="agent-installation-websitename-failure"></a>**Az ügynök telepítése sikertelen, és ez a hiba: "Tároló szinkronizálási ügynök varázsló megszakadt"**  
 A probléma akkor fordulhat elő, ha az IIS-webhely alapértelmezett neve megváltozott. A probléma megoldásához nevezze át az IIS alapértelmezett webhelye mint a "Default Web Site", majd próbálja megismételni a telepítést. A problémát egy jövőbeli frissítéssel, az ügynök javítja. 
 
@@ -51,6 +55,8 @@ Ha a kiszolgáló nem szerepel a **regisztrálva kiszolgálók** egy tárolási 
 1. Jelentkezzen be a regisztrálni kívánt kiszolgálóra.
 2. Nyissa meg a Fájlkezelőt, és keresse meg a tároló szinkronizálási Ügynöktelepítési könyvtár (az alapértelmezett hely: C:\Program Files\Azure\StorageSyncAgent). 
 3. Futtassa a ServerRegistration.exe, és fejezze be a varázslót a tároló szinkronizálási szolgáltatás regisztrálni a kiszolgálót.
+
+
 
 <a id="server-already-registered"></a>**Kiszolgáló regisztrálása Azure fájl Sync-ügynök telepítése közben a következő üzenet jelenik meg: "a kiszolgáló már regisztrálva van"** 
 
@@ -95,9 +101,7 @@ Felhő-végpont létrehozása, a felhasználói fiókot a következő Microsoft 
 
 A következő beépített szerepkörök rendelkezik a szükséges Microsoft Authorization engedélyekkel:  
 * Tulajdonos
-* Felhasználói hozzáférés rendszergazdája
-
-Annak megállapítása, hogy a felhasználói fiók szerepkör rendelkezik-e a szükséges engedélyekkel:  
+* Felhasználói hozzáférés adminisztrátora annak meghatározásához, hogy a felhasználói fiók szerepkör rendelkezik-e a szükséges engedélyekkel:  
 1. Válassza ki az Azure-portálon **erőforráscsoportok**.
 2. Az erőforráscsoport, ahol a tárfiók, majd válassza ki és **hozzáférés-vezérlés (IAM)**.
 3. Válassza ki a **szerepkör** (például a tulajdonos vagy közreműködő) a felhasználói fiókjához.
@@ -105,11 +109,24 @@ Annak megállapítása, hogy a felhasználói fiók szerepkör rendelkezik-e a s
     * **Szerepkör-hozzárendelés** kell **olvasási** és **írási** engedélyek.
     * **Szerepkör-definíció** kell **olvasási** és **írási** engedélyek.
 
-<a id="server-endpoint-createjobfailed"></a>**Kiszolgáló-végpont létrehozása sikertelen, hiba: "MgmtServerJobFailed" (hibakód:-2134375898)**                                                                                                                           
+<a id="server-endpoint-createjobfailed"></a>**Kiszolgáló-végpont létrehozása sikertelen, hiba: "MgmtServerJobFailed" (hibakód:-2134375898)**                                                                                                                    
 Ez a probléma akkor fordul elő, ha a kiszolgáló végpont elérési útja a rendszerkötet és a felhő rétegezéséhez engedélyezve van. Felhő rétegezéséhez nem támogatott a rendszerköteten. Kiszolgáló-végpont létrehozása a rendszerköteten, tiltsa le a felhő rétegezéséhez, amikor a kiszolgáló-végpont létrehozása.
 
 <a id="server-endpoint-deletejobexpired"></a>**Kiszolgáló-végpont törlése sikertelen, hiba: "MgmtServerJobExpired"**                
 Ez a probléma akkor fordul elő, ha a kiszolgáló offline állapotban, vagy nem rendelkezik hálózati kapcsolattal. Ha a kiszolgáló már nem érhető el, akkor szüntesse meg a kiszolgáló a portálon, amely törli a kiszolgáló végpontok. A kiszolgáló végpontok törléséhez kövesse a ismertetett [a kiszolgáló regisztrációját az Azure fájlszinkronizálás](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service).
+
+<a id="server-endpoint-provisioningfailed"></a>**Nem sikerült server endpoint Tulajdonságok lapjának megnyitásához, vagy frissíteni a felhő rétegzési házirendet**
+
+A probléma akkor fordulhat elő, ha a kiszolgáló végpont egy ügynökfelügyeleti művelet sikertelen. Ha a kiszolgáló végpont tulajdonságai lap nem nyitható meg az Azure-portálon, a kiszolgáló PowerShell-parancsok használatával server végpont frissítése lehet, hogy probléma elhárításához. 
+
+```PowerShell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
+# Get the server endpoint id based on the server endpoint DisplayName property
+Get-AzureRmStorageSyncServerEndpoint -SubscriptionId mysubguid -ResourceGroupName myrgname -StorageSyncServiceName storagesvcname -SyncGroupName mysyncgroup
+
+# Update the free space percent policy for the server endpoint
+Set-AzureRmStorageSyncServerEndpoint -Id serverendpointid -CloudTiering true -VolumeFreeSpacePercent 60
+```
 
 ## <a name="sync"></a>Sync
 <a id="afs-change-detection"></a>**Ha egy fájl létrehozott közvetlenül a saját Azure fájlmegosztások SMB protokollon keresztül vagy a portálon keresztül, mennyi ideig tart a fájl szinkronizálása a szinkronizálási csoport kiszolgálójára?**  
