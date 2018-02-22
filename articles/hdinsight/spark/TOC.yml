@@ -95,8 +95,6 @@
           href: apache-spark-streaming-overview.md
         - name: Magas rendelkezésre állású Spark streamelési feladatok létrehozása a YARN-ban
           href: apache-spark-streaming-high-availability.md
-        - name: Streamelési események feldolgozása
-          href: apache-spark-eventhub-streaming.md
         - name: Strukturált streamelés az Event Hubs használatával
           href: apache-spark-eventhub-structured-streaming.md
         - name: Strukturált streamelés a Kafkával

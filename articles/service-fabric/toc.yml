@@ -529,7 +529,11 @@
         - name: Csatlakozás biztonságos fürthöz
           href: service-fabric-connect-to-secure-cluster.md
         - name: Fürtcsomópontok javítása
-          href: service-fabric-patch-orchestration-application.md
+          items:
+            - name: Windows
+              href: service-fabric-patch-orchestration-application.md
+            - name: Linux
+              href: service-fabric-patch-orchestration-application-linux.md
     - name: Megfigyelés és diagnosztika
       items:
         - name: OMS
@@ -599,7 +603,7 @@
     - name: Képzési terv
       href: 'https://azure.microsoft.com/documentation/learning-paths/service-fabric/'
     - name: MSDN fórum
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureServiceFabric'
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureServiceFabric'
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/service-fabric/'
     - name: Díjkalkulátor

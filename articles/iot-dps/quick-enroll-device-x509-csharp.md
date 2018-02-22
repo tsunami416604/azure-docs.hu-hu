@@ -12,17 +12,16 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: d74c8a0d84b0f67a456c4e32700d14bbef545b72
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 62b699e3f41fbb6fdaa0f07d7c9e0a18acd0dfc7
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="enroll-x509-devices-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>X.509-eszközök regisztrációja az IoT Hub Device Provisioning Service-be a C# szolgáltatásoldali SDK-val
-> [!div class="op_single_selector"]
-> * [Java](quick-enroll-device-x509-java.md)
-> * [C#](quick-enroll-device-x509-csharp.md)
-> * [Node.js](quick-enroll-device-x509-node.md)
+
+[!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
+
 
 Ezek a lépések bemutatják, hogyan hozhat létre programozott módon regisztrációs csoportot egy köztes vagy fő hitelesítésszolgáltatói X.509-tanúsítványhoz a [C# szolgáltatásoldali SDK](https://github.com/Azure/azure-iot-sdk-csharp) és egy C# .NET Core-mintaalkalmazás használatával. Egy regisztrációs csoport a tanúsítványláncukban ugyanazon aláíró tanúsítvánnyal rendelkező eszközök kiépítési szolgáltatáshoz való hozzáférését szabályozza. További tudnivalókért lásd: [Eszközök kiépítési szolgáltatáshoz való hozzáférésének szabályozása X.509-tanúsítványokkal](./concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates). További információ az X.509-tanúsítványon alapuló nyilvánoskulcs-infrastruktúra (PKI) az Azure IoT Hubbal és a Device Provisioning Service-szel való használatáról: [X.509 hitelesítésszolgáltatói tanúsítványok biztonsági áttekintése](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-x509ca-overview). Bár a cikkben ismertetett lépések Windows és Linux rendszerű gépeken egyaránt alkalmazhatók, ez a cikk egy Windows rendszerű fejlesztési számítógépet használ.
 
