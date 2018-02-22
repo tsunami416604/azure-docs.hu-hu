@@ -5,18 +5,18 @@ services: location-based-services
 keywords: 
 author: dsk-2015
 ms.author: dkshir
-ms.date: 11/28/2017
+ms.date: 02/05/2017
 ms.topic: overview
 ms.service: location-based-services
 documentationcenter: 
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 6871f174eb9bae57d9b4767520d0fb2d8d9631d3
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 9e6236f7d69556d7636962c98886d9f9508445ac
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="an-introduction-to-azure-location-based-services-preview"></a>Az Azure Location Based Services (előzetes verzió) bemutatása
 Az Azure Location Based Services olyan térinformatikai szolgáltatások portfóliója, amelyek elérhetővé teszik a térképek, a keresés, az útválasztás, a forgalom és az időzónák API-jainak elérését. Az Azure OneAPI kompatibilis szolgáltatásainak portfóliója lehetővé teszi, hogy ismerős fejlesztői eszközökkel gyorsan fejlesszen és méretezzen olyan megoldásokat, amelyek helyadatokat tesznek elérhetővé az Azure-megoldásokban. Az Azure Location Based Services a webes és mobilalkalmazások földrajzi kontextusának biztosításához szükséges, friss térképadatokat használó, hatékony térinformatikai funkciókat biztosít minden iparág fejlesztői számára. Az Azure Location Based Services egy Azure One API-kompatibilis REST API-készlet, amely webalapú JavaScript-vezérlővel rendelkezik a rendkívül egyszerű, rugalmas és különböző médiumokon elérhető fejlesztés érdekében. 
@@ -65,7 +65,8 @@ Az Azure Location Based Services a mobilitás jegyében készült, valamint kül
 
 Az Azure Location Based Services egy kulcsalapú hitelesítési sémát használ, így a szolgáltatások eléréséhez csupán létre kell hozni egy Azure Location Based Services-fiókot az [Azure Portal](http://portal.azure.com) használatával. A fiókhoz két előre létrehozott kulcs is jár. Használja ezen kulcsok egyikét az Azure Location Based Services szolgáltatás felé küldött kérésekben a helyalapú szolgáltatások közvetlenül az alkalmazásokba való integrálásának megkezdéséhez.
 
-**Kapcsolat a Bing Térképek alkalmazással** – Vegye figyelembe, hogy a jelen dokumentumban ismertetett Azure Location Based Services szolgáltatások nem azonosak a Bing Térképek alkalmazás szolgáltatásaival.  Bár számos funkciójuk megegyezik, ezek a szolgáltatások különbözőek, és nem kapcsolódnak egymáshoz.  Ennek az új, külön kezelt Azure-szolgáltatásnak az elérthetősége nem érinti a Bing Térképek termék által biztosított szolgáltatásokat és ütemterveket.
+## <a name="relationship-with-bing-maps"></a>Kapcsolat a Bing Térképek szolgáltatással
+Az ebben a dokumentumban ismertetett Azure Location Based Services szolgáltatások nem azonosak a Bing Térképek szolgáltatásaival.  Bár számos funkciójuk megegyezik, ezek a szolgáltatások különbözőek, és nem kapcsolódnak egymáshoz.  Ennek az új, külön kezelt Azure-szolgáltatásnak az elérthetősége nem érinti a Bing Térképek termék által biztosított szolgáltatásokat és ütemterveket.
 
 A Microsoft célja ezzel az, hogy választási lehetőséget biztosítson a fejlesztői közösség számára a helymeghatározási szolgáltatások körében.  Az alábbiakban néhány rövid fejlesztői útmutató olvasható közre a különféle felhasználási esetekben és ügyfélkapcsolati helyzetekben használatos szolgáltatásokról.  Vegye figyelembe, hogy ez az útmutató jelenleg csak a nyilvános előzetes verzióban elérhető Azure LBS-re vonatkozik, és frissíteni fogjuk, amikor a termék 2018 folyamán később elérhetővé válik.
 
@@ -79,7 +80,7 @@ A Microsoft célja ezzel az, hogy választási lehetőséget biztosítson a fejl
 | Térképtartalom | Normál felszíni térképek elegendőek | Műholdas, légi és utcai képek is szükségesek |
 | Alapul szolgáló térkép forrása | A TomTom-térképadatokat részesíti előnyben | A HERE-térképadatokat részesíti előnyben |
 
-Regisztráljon [Azure Location Based Services-fiókot még ma!](http://aka.ms/azurelbsportal)
+Regisztráljon [Azure Location Based Services-fiókot még ma](http://aka.ms/azurelbsportal)!
 
 ## <a name="next-steps"></a>További lépések
 

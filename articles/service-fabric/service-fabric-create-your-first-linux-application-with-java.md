@@ -12,13 +12,13 @@ ms.devlang: java
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/19/2018
+ms.date: 01/27/2018
 ms.author: ryanwi
-ms.openlocfilehash: afa7f569853df15a5d52e38f476665e34781acfd
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: abbcb246ada9974e53c677eed37a1ab9ce48d6c5
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Az első Java Service Fabric Reliable Actors-alkalmazás létrehozása Linuxon
 > [!div class="op_single_selector"]
@@ -31,24 +31,12 @@ ms.lasthandoff: 01/20/2018
 Ezzel a rövid útmutatóval csupán néhány perc alatt létrehozhatja első Azure Service Fabric Java-alkalmazását egy Linux-fejlesztőkörnyezetben.  Az oktatóanyag végére egy egyszerű Java egyszolgáltatásos alkalmazás lesz elérhető a helyi fejlesztési fürtön.  
 
 ## <a name="prerequisites"></a>Előfeltételek
-Mielőtt hozzáfogna, telepítse a Service Fabric SDK-t és a Service Fabric parancssori felületet, és állítson be egy fejlesztési fürtöt a saját [Linux-fejlesztőkörnyezetében](service-fabric-get-started-linux.md). Amennyiben a Mac OS X rendszert használja, [beállíthat egy Linux-fejlesztőkörnyezetet egy virtuális gépen a Vagrant használatával](service-fabric-get-started-mac.md).
+Mielőtt hozzáfogna, telepítse a Service Fabric SDK-t, a Service Fabric parancssori felületet, a Yeomant, majd állítsa be a Java fejlesztőkörnyezetet, valamint egy fejlesztési fürtöt a saját [Linux-fejlesztőkörnyezetében](service-fabric-get-started-linux.md). Amennyiben a Mac OS X rendszert használja, [beállíthat egy Mac-fejlesztőkörnyezetet a Docker használatával](service-fabric-get-started-mac.md).
 
 Telepítse a [Service Fabric parancssori felületet](service-fabric-cli.md) is.
 
 ### <a name="install-and-set-up-the-generators-for-java"></a>A Java generátorainak telepítése és beállítása
-A Service Fabric olyan szerkezetkialakító eszközöket biztosít, amelyekkel Service Fabric Java-alkalmazásokat hozhat létre a terminálról a Yeoman sablongenerátor használatával. Az alábbi lépések végrehajtásával biztosíthatja, hogy a Service Fabric Yeoman sablongenerátor elérhető legyen a gépen lévő Java használatához.
-1. A node.js és az NPM telepítése a gépre
-
-  ```bash
-  sudo apt-get install npm
-  sudo apt install nodejs-legacy
-  ```
-2. A [Yeoman](http://yeoman.io/) sablongenerátor telepítése a gépre az NPM-ből
-
-  ```bash
-  sudo npm install -g yo
-  ```
-3. A Service Fabric Yeoman Java-alkalmazásgenerátor telepítése az NPM-ből
+A Service Fabric olyan szerkezetkialakító eszközöket biztosít, amelyekkel Service Fabric Java-alkalmazásokat hozhat létre a terminálról a Yeoman sablongenerátor használatával.  Ha a Yeoman még nincs telepítve, a beállításával kapcsolatos utasításokért lásd: [Service Fabric – Első lépések a Linuxszal](service-fabric-get-started-linux.md#set-up-yeoman-generators-for-containers-and-guest-executables). Futtassa az alábbi parancsot a Javához készült Service Fabric Yeoman sablongenerátor telepítéséhez.
 
   ```bash
   sudo npm install -g generator-azuresfjava
@@ -199,12 +187,7 @@ public static void main(String[] args) throws Exception {
 
 ## <a name="build-the-application"></a>Az alkalmazás létrehozása
 A Service Fabric Yeoman-sablonok tartalmaznak egy [Gradle](https://gradle.org/) felépítési szkriptet, amelyet felhasználhat az alkalmazás terminálból történő létrehozásához.
-A Service Fabric Java-függőségeit a Mavenből kéri le a rendszer. A Service Fabric Java-alkalmazások létrehozásához és szerkesztéséhez mindenképp telepítenie kell a JDK-t és a Gradle-t. Ha a JDK (openjdk-8-jdk) és a Gradle még nincs telepítve, a következő kód futtatásával telepítheti őket –
-
-  ```bash
-  sudo apt-get install openjdk-8-jdk-headless
-  sudo apt-get install gradle
-  ```
+A Service Fabric Java-függőségeit a Mavenből kéri le a rendszer. A Service Fabric Java-alkalmazások létrehozásához és szerkesztéséhez mindenképp telepítenie kell a JDK-t és a Gradle-t. Ha a JDK és a Gradle még nincsenek telepítve, a telepítésükkel kapcsolatos utasításokért lásd: [Service Fabric – Első lépések a Linuxszal](service-fabric-get-started-linux.md#set-up-java-development).
 
 Az alkalmazás felépítéséhez és becsomagolásához futtassa a következő parancsot:
 
@@ -347,9 +330,6 @@ A natív Service Fabric-futtatókörnyezettel kommunikáló Service Fabric rends
       compile 'com.microsoft.servicefabric:sf-preview:0.12.0'
   }
   ```
-
-## <a name="migrating-old-service-fabric-java-applications-to-be-used-with-maven"></a>A Mavennel használni kívánt régi Service Fabric Java-alkalmazások migrálása
-Nemrégiben áthelyeztük a Service Fabric Java-kódtárakat a Service Fabric Java SDK-ból a Mavenen futó adattárba. A Yeomannel vagy az Eclipse-szel létrehozott új alkalmazások a legfrissebb projekteket hozzák létre (amelyek képesek együttműködni a Mavennel), a meglévő állapotmentes vagy aktor Service Fabric Java-alkalmazások pedig, amelyek korábban a Service Fabric Java SDK-t használták, frissíthetők a Mavenben található Service Fabric Java-függőségek használatára. Kövesse az [itt](service-fabric-migrate-old-javaapp-to-use-maven.md) felsorolt lépéseket, ha biztosítani kívánja, hogy a régebbi alkalmazásaik együttműködjenek a Mavennel.
 
 ## <a name="next-steps"></a>További lépések
 

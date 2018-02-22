@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: de48d61af0e8056a749715343ef821cfc35cb93d
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 2b1e3fa7fa57d92dbc3a33af20ed258d674e1625
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Elágaztatási és láncolási tevékenységek a Data Factory-folyamatokban
 Ebben az oktatóanyagban egy olyan adat-előállító folyamatot hoz létre, amely bemutat néhány folyamvezérlési funkciót. A folyamat egy egyszerű másolást hajt végre egy Azure Blob Storage-beli tárolóból egy másik tárolóba, amely ugyanazon tárfiókban található. Ha a másolási tevékenység sikeres, a folyamat egy e-mailt küld a sikeres műveletről, amelyben szerepelnek a sikeres másolási művelet részletei (például az írt adatok mennyisége). Ha a másolási tevékenység sikertelen, a folyamat egy e-mailt küld a sikertelen műveletről, amelyben szerepelnek a sikertelen másolás részletei (például a hibaüzenet). Az oktatóanyag során megismerheti, hogyan adhatók át a paraméterek.
@@ -129,6 +129,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
+1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
 1. Kattintson az **Új** elemre, majd az **Adatok + analitika**, végül a **Data Factory** elemre. 
    
    ![New (Új)->DataFactory](./media/tutorial-control-flow-portal/new-azure-data-factory-menu.png)
@@ -241,8 +242,7 @@ Ebben a lépésben egy másolási tevékenységgel és két webes tevékenységg
         - Data Factory Name – Az átadott érték: `@{pipeline().DataFactory}`. Ez egy rendszerváltozó, amely lehetővé teszi a megfelelő adat-előállító nevének elérését. A rendszerváltozók listáját lásd a [rendszerváltozókkal](control-flow-system-variables.md) kapcsolatos cikkben.
         - Pipeline Name – Az átadott érték: `@{pipeline().Pipeline}`. Ez szintén egy rendszerváltozó, amely lehetővé teszi a megfelelő folyamat nevének elérését. 
         - Receiver – Az átadott érték: "@pipeline().parameters.receiver"). Hozzáfér a folyamat paramétereihez.
-    6. A **Beállítások** képernyő a következő képhez hasonlóan néz ki: 
-
+    
         ![Az első webes tevékenység beállításai](./media/tutorial-control-flow-portal/web-activity1-settings.png)         
 19. Kapcsolja össze a **Másolás** tevékenységet a **Webes** tevékenységgel úgy, hogy a másolási tevékenység melletti zöld gombot a webes tevékenységre húzza. 
 
@@ -266,8 +266,7 @@ Ebben a lépésben egy másolási tevékenységgel és két webes tevékenységg
             "receiver": "@pipeline().parameters.receiver"
         }
         ```
-    6. A **Beállítások** képernyő a következő képhez hasonlóan néz ki: 
-    
+
         ![A második webes tevékenység beállításai](./media/tutorial-control-flow-portal/web-activity2-settings.png)         
 22. Válassza ki a **Másolás** tevékenységet a folyamattervezőben, kattintson a **+->** gombra, majd válassza a **Hiba** lehetőséget.  
 
@@ -278,7 +277,7 @@ Ebben a lépésben egy másolási tevékenységgel és két webes tevékenységg
 24. A folyamat érvényesítéséhez kattintson a **Érvényesítés** gombra az eszköztáron. Zárja be a **Folyamatérvényesítés kimenete** ablakot a **>>** gombra kattintva.
 
     ![Folyamat érvényesítése](./media/tutorial-control-flow-portal/validate-pipeline.png)
-24. Ha közzé szeretné tenni az entitásokat (adatkészleteket, folyamatokat stb.) a Data Factory szolgáltatásban, kattintson a **Közzététel** elemre. Várjon, amíg megjelenik a **Sikeres közzététel** üzenet.
+24. Ha közzé szeretné tenni az entitásokat (adatkészleteket, folyamatokat stb.) a Data Factory szolgáltatásban, válassza az **Összes közzététele** elemet. Várjon, amíg megjelenik a **Sikeres közzététel** üzenet.
 
     ![Közzététel](./media/tutorial-control-flow-portal/publish-button.png)
  

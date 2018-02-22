@@ -1,6 +1,6 @@
 ---
-title: "Az Azure útmutató - fürt frissítése Kubernetes"
-description: "Az Azure útmutató - fürt frissítése Kubernetes"
+title: "Azure-on futó Kubernetes oktatóanyag – Fürtök frissítése"
+description: "Azure-on futó Kubernetes oktatóanyag – Fürtök frissítése"
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,39 +9,39 @@ ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 5fd9a1890c1940cdd4e79cc32e0b3984edd043e8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
-ms.translationtype: MT
+ms.openlocfilehash: d82232d590bcc5c578ebe8ed7c85d25aebcfe097
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="upgrade-kubernetes-in-azure-container-service-aks"></a>Az Azure Tárolószolgáltatásban (AKS) Kubernetes frissítése
+# <a name="upgrade-kubernetes-in-azure-container-service-aks"></a>A Kubernetes frissítése az Azure Container Service (AKS) szolgáltatásban
 
-Az Azure-tároló szolgáltatás (AKS) fürt frissítése az Azure parancssori felület használatával. A frissítési folyamat során Kubernetes csomópontra van közé tartoznak gondosan [cordoned és merül le] [ kubernetes-drain] minimalizálása érdekében a legkisebb mértékű akadályozása érdekében a futó alkalmazások.
+Az Azure Container Service- (AKS-) fürt frissíthető az Azure CLI segítségével. A frissítési folyamat során a Kubernetes-csomópontok megfelelően [el vannak szigetelve és ki vannak ürítve][kubernetes-drain], hogy minimális hatással legyenek a futó alkalmazásokra.
 
-Ebben az oktatóanyagban nyolc nyolc része, Kubernetes fürt frissítésekor. Feladatokat, a következők:
+Ebben az oktatóanyagban, amely egy nyolcrészes sorozat nyolcadik része, egy Kubernetes-fürtöt frissítünk. A következő feladatokat fogjuk végrehajtani:
 
 > [!div class="checklist"]
-> * Azonosítsa az aktuális és az elérhető Kubernetes verziója
-> * Frissítse a Kubernetes csomópontokat
-> * A sikeres frissítéshez ellenőrzése
+> * Az aktuális és az elérhető Kubernetes-verzió azonosítása
+> * A Kubernetes-csomópontok frissítése
+> * A frissítés sikerességének ellenőrzése
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Az előző oktatóanyagok egy tároló lemezképet, az Azure-tároló beállításjegyzék feltöltött lemezkép és a létrehozott Kubernetes fürt alkalmazás lett csomagolva. Az alkalmazás ezután futtatták a Kubernetes fürtön.
+Az előző oktatóanyagokban egy alkalmazást csomagoltunk egy tárolórendszerképbe, a rendszerképet feltöltöttük az Azure Container Registrybe, és létrehoztunk egy Kubernetes-fürtöt. Az alkalmazást ezután a Kubernetes-fürtön futtattuk.
 
-Ha nem volna ezeket a lépéseket, és szeretné követéséhez, térjen vissza a [oktatóanyag 1 – létrehozás tároló képek][aks-tutorial-prepare-app].
+Ha ezeket a lépéseket még nem hajtotta végre, de szeretne velünk tartani, lépjen vissza az [1. oktatóanyag – Tárolórendszerképek létrehozása][aks-tutorial-prepare-app] részhez.
 
 
-## <a name="get-cluster-versions"></a>Fürt verziók beolvasása
+## <a name="get-cluster-versions"></a>A fürtverziók lekérése
 
 A fürtök frissítése előtt az `az aks get-versions` parancs használatával ellenőrizze, hogy mely Kubernetes-kiadások frissíthetők.
 
 ```azurecli-interactive
-az aks get-versions --name myK8sCluster --resource-group myResourceGroup --output table
+az aks get-versions --name myAKSCluster --resource-group myResourceGroup --output table
 ```
 
-Itt láthatja, hogy az aktuális csomópont verziója `1.7.7` és verzió `1.7.9`, `1.8.1`, és `1.8.2` érhetők el.
+Itt láthatja, hogy a csomópont aktuális verziója `1.7.7`, és hogy az `1.7.9`-es, a `1.8.1`-es és a `1.8.2`-es verzió érhető el.
 
 ```
 Name     ResourceGroup    MasterVersion    MasterUpgrades       NodePoolVersion     NodePoolUpgrades
@@ -49,21 +49,21 @@ Name     ResourceGroup    MasterVersion    MasterUpgrades       NodePoolVersion 
 default  myAKSCluster     1.7.7            1.8.2, 1.7.9, 1.8.1  1.7.7               1.8.2, 1.7.9, 1.8.1
 ```
 
-## <a name="upgrade-cluster"></a>A frissítési fürt
+## <a name="upgrade-cluster"></a>A fürt frissítése
 
-Használja a `az aks upgrade` parancs futtatásával frissítse a fürtcsomópontokat. Az alábbi példák a fürt frissíti a verzióra `1.8.2`.
+A fürtcsomópontok az `az aks upgrade` paranccsal frissíthetőek. Az alábbi példákban az `1.8.2`-es verzióra frissítjük a fürtöt.
 
 ```azurecli-interactive
-az aks upgrade --name myK8sCluster --resource-group myResourceGroup --kubernetes-version 1.8.2
+az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.8.2
 ```
 
 Kimenet:
 
 ```json
 {
-  "id": "/subscriptions/4f48eeae-9347-40c5-897b-46af1b8811ec/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myK8sCluster",
+  "id": "/subscriptions/<Subscription ID>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
   "location": "eastus",
-  "name": "myK8sCluster",
+  "name": "myAKSCluster",
   "properties": {
     "accessProfiles": {
       "clusterAdmin": {
@@ -78,7 +78,7 @@ Kimenet:
         "count": 1,
         "dnsPrefix": null,
         "fqdn": null,
-        "name": "myK8sCluster",
+        "name": "myAKSCluster",
         "osDiskSizeGb": null,
         "osType": "Linux",
         "ports": null,
@@ -113,12 +113,12 @@ Kimenet:
 }
 ```
 
-## <a name="validate-upgrade"></a>Frissítésének ellenőrzése
+## <a name="validate-upgrade"></a>A frissítés ellenőrzése
 
 Most az `az aks show` paranccsal ellenőrizheti, hogy sikerült-e a frissítés.
 
 ```azurecli-interactive
-az aks show --name myK8sCluster --resource-group myResourceGroup --output table
+az aks show --name myAKSCluster --resource-group myResourceGroup --output table
 ```
 
 Kimenet:
@@ -126,22 +126,22 @@ Kimenet:
 ```json
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
 ------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------------------------
-myK8sCluster  eastus     myResourceGroup  1.8.2                Succeeded            myk8sclust-myresourcegroup-3762d8-2f6ca801.hcp.eastus.azmk8s.io
+myAKSCluster  eastus     myResourceGroup  1.8.2                Succeeded            myk8sclust-myresourcegroup-3762d8-2f6ca801.hcp.eastus.azmk8s.io
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban Kubernetes AKS fürt frissítése. Befejeződtek a következő feladatokat:
+Ebben az oktatóanyagban frissítettük a Kubernetest egy AKS-fürtben. A következő feladatokat hajtottuk végre:
 
 > [!div class="checklist"]
-> * Azonosítsa az aktuális és az elérhető Kubernetes verziója
-> * Frissítse a Kubernetes csomópontokat
-> * A sikeres frissítéshez ellenőrzése
+> * Az aktuális és az elérhető Kubernetes-verzió azonosítása
+> * A Kubernetes-csomópontok frissítése
+> * A frissítés sikerességének ellenőrzése
 
-Kattintson erre a hivatkozásra AKS tájékozódhat.
+Az AKS-sel kapcsolatos további információkat erre a hivatkozásra kattintva érhet el.
 
 > [!div class="nextstepaction"]
-> [AKS áttekintése][aks-intro]
+> [Az AKS áttekintése][aks-intro]
 
 <!-- LINKS - external -->
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/

@@ -12,13 +12,13 @@ ms.devlang: csharp
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 9/19/2017
+ms.date: 1/27/2018
 ms.author: subramar
-ms.openlocfilehash: e18dcad73486ab7610c53c269fbc81de73b5147e
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 7a7bda1b2bab05459e4266f7bac0d32ea4093c8b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>Az első Azure Service Fabric-alkalmazás létrehozása
 > [!div class="op_single_selector"]
@@ -40,10 +40,18 @@ A Service Fabric olyan szerkezetkialakító eszközöket biztosít, amelyek seg�
 
 1. A node.js és az NPM telepítése a gépre
 
-  ```bash
-  sudo apt-get install npm
-  sudo apt install nodejs-legacy
-  ```
+   Ubuntu
+   ```bash
+   sudo apt-get install npm
+   sudo apt install nodejs-legacy
+   ```
+
+   Red Hat Enterprise Linux 7.4 (Service Fabric előzetes verzió támogatása)
+   ```bash
+   sudo yum install nodejs
+   sudo yum install npm
+   ```
+
 2. A [Yeoman](http://yeoman.io/) sablongenerátor telepítése a gépre az NPM-ből
 
   ```bash
@@ -119,12 +127,7 @@ Ha egy másik szolgáltatást szeretne hozzáadni a `yo` használatával már l�
 1. Lépjen a meglevő alkalmazás gyökérkönyvtárába.  Például `cd ~/YeomanSamples/MyApplication`, ha a `MyApplication` a Yeoman által létrehozott alkalmazás.
 2. Futtassa a `yo azuresfcsharp:AddService` parancsot.
 
-## <a name="migrating-from-projectjson-to-csproj"></a>project.json migrálása .csproj-ra
-1. A 'dotnet migrate' parancs a projekt gyökérkönyvtárában futtatva a teljes project.json-t átmigrálja csproj formátumra.
-2. A projektfájlokban ennek megfelelően frissíti a csproj-fájlokra mutató hivatkozásokat.
-3. A projekt-fájlok neveit átírja csproj fájlokká a build.sh fájlban.
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Service Fabric-fürtök használata a Service Fabric parancssori felületén](service-fabric-cli.md)
 * A [Service Fabric támogatási lehetőségeinek](service-fabric-support.md) ismertetése

@@ -12,15 +12,15 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: bfc31553c32ac4dbfde55aa30b33025b579f6139
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 09022648c03ffa12aa3b060e5094c40ea5c3d61e
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="launch-a-demo-interactive-map-search-using-azure-location-based-services-preview"></a>Bemutató interaktív térképes keresés indítása az Azure Location Based Services (előzetes verzió) használatával
 
-Ez a cikk bemutatja az Azure Location Based Services (előzetes verzió, röviden: LBS) képességeit egy interaktív keresésen keresztül az Azure Maps szolgáltatásban. Azt is ismerteti, hogyan hozhat létre saját LBS-fiókot, szerezheti be a fiók kulcsát, és használhatja azt a bemutató webalkalmazásban. 
+Ez a cikk bemutatja az Azure Location Based Services (LBS) képességeit egy interaktív keresésen keresztül az Azure Maps szolgáltatásban. Azt is ismerteti, hogyan hozhat létre saját LBS-fiókot, szerezheti be a fiók kulcsát, és használhatja azt a bemutató webalkalmazásban. 
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -34,7 +34,7 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 1. Kattintson az [Azure Portal](https://portal.azure.com) bal felső sarkában az **Erőforrás létrehozása** gombra.
 2. A *Keresés a piactéren* mezőbe írja be: **location based services**.
 3. Az *Eredmények* közül válassza az **Azure Location Based Services (előzetes verzió)** elemet. Kattintson a térkép alatt megjelenő **Létrehozás** gombra. 
-4. A **Location Based Services-fiók létrehozása** lapon adja meg az új fiók *nevét*, válassza ki a használandó *előfizetést*, és adja meg egy új vagy egy meglévő *erőforráscsoport* nevét. Válassza ki az erőforráscsoport helyét, fogadja el az *Előzetes verzió feltételeit*, majd kattintson a **Létrehozás** gombra.
+4. A **Location Based Services-fiók létrehozása** lapon adja meg az új fiók *nevét*, válassza ki a használni kívánt *előfizetést*, és adja meg egy új vagy egy meglévő *erőforráscsoport* nevét. Válassza ki az erőforráscsoport helyét, fogadja el az *Előzetes verzió feltételeit*, majd kattintson a **Létrehozás** gombra.
 
     ![Location Based Services-fiók létrehozása a portálon](./media/quick-demo-map-app/create-lbs-account.png)
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/31/2018
 ms.author: jeffgilb
 ms.reviewer: ppacent
-ms.openlocfilehash: 75a8f521135757ceb99cb0086f331c35827e4800
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: d96e2e6767ca01c8c16403a8846e3ab9d16796bc
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Az Azure verem nyilvános kulcsokra épülő infrastruktúrát tanúsítványkövetelmények
 Azure verem van egy nyilvános infrastruktúra-hálózaton kívülről hozzáférhető nyilvános IP-címtartományból egy kis készletét a verem Azure-szolgáltatások, és esetleg a bérlői virtuális gépek használatával. Azure verem központi telepítése során a megfelelő DNS-neveit Azure verem nyilvános infrastruktúra végpontokkal PKI-tanúsítványok szükségesek. Ez a cikk nyújt tájékoztatást:
@@ -33,7 +33,7 @@ Azure verem van egy nyilvános infrastruktúra-hálózaton kívülről hozzáfé
 ## <a name="certificate-requirements"></a>Tanúsítványkövetelmények
 Az alábbi lista a tanúsítvány Azure verem telepítéséhez szükséges követelményeket ismerteti: 
 - Tanúsítványok vagy egy belső hitelesítésszolgáltatótól, vagy a nyilvános hitelesítésszolgáltatótól kell kiállítania. Egy nyilvános hitelesítésszolgáltató használata, akkor az alap operációs rendszer lemezképét a Microsoft megbízható legfelső szintű hitelesítésszolgáltatói Program részeként kell szerepelnie. A teljes listáját itt találja: https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca 
-- A tanúsítványt a tulajdonos alternatív nevére (SAN) mezőben minden neve szóközt kiterjedő egyetlen helyettesítő tanúsítvány lehet. Azt is megteheti például a tároló és a kulcstároló, amennyiben azok szükségesek végpontok helyettesítő karakterek használatával az egyes tanúsítványokat is használhat. 
+- A tanúsítványt a tulajdonos alternatív nevére (SAN) mezőben minden neve szóközt kiterjedő egyetlen helyettesítő tanúsítvány lehet. Azt is megteheti például acs és a kulcstároló, amennyiben azok szükségesek végpontok helyettesítő karakterek használatával az egyes tanúsítványokat is használhat. 
 - A tanúsítvány-aláírási algoritmus nem lehet SHA1, erősebb kell lennie. 
 - A tanúsítvány formátumban kell lennie PFX, mint a nyilvános és titkos kulcsok szükségesek az Azure-verem telepítéséhez. 
 - A tanúsítvány pfx-fájlok rendelkeznie érték "Digitális aláírás" és "KeyEncipherment" a "Kulcshasználat" mezőben.

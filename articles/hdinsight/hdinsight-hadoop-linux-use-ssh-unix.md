@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/10/2017
+ms.date: 02/07/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 23621c418663ee5b4ed83ab989663a882e7000bd
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 1a1fbac1eb4c529ea89f0f4c72b3317718ac45ea
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="connect-to-hdinsight-hadoop-using-ssh"></a>Csatlakozás a HDInsighthoz (Hadoop) SSH-val
 
@@ -62,6 +62,8 @@ A Microsoft Windows alapértelmezés szerint nem telepít SSH-ügyfelet. Az `ssh
     > Ha az `ssh` és az `scp` parancsok a funkció engedélyezése után sem érhetők el a PowerShellben, jelentkezzen ki, majd jelentkezzen be újra.
 
 * [Windows 10-en futó Ubuntu Bash-környezet](https://msdn.microsoft.com/commandline/wsl/about): Az `ssh` és az `scp` parancs a Windows rendszeren futó Bash parancssorából érhető el.
+
+* [OpenSSH-ügyfél (béta)](https://blogs.msdn.microsoft.com/powershell/2017/12/15/using-the-openssh-beta-in-windows-10-fall-creators-update-and-windows-server-1709/): Ez egy, a Windows 10 Fall Creators Update-ben bevezetett választható szolgáltatás.
 
 * [Azure Cloud Shell](../cloud-shell/quickstart.md): A Cloud Shell Bash-környezetet biztosít a böngészőben, továbbá lehetővé teszi az `ssh`, az `scp`, és egyéb gyakori Linux-parancsok használatát.
 
@@ -244,7 +246,7 @@ scp sshuser@clustername-ssh.azurehdinsight.net:test.txt .
 >
 > * [Az Azure Data Lake Store-t használó HDInsight](hdinsight-hadoop-use-data-lake-store.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [SSH-alagútkezelés használata a HDInsighttal](hdinsight-linux-ambari-ssh-tunnel.md)
 * [Virtuális hálózat használata a HDInsighttal](hdinsight-extend-hadoop-virtual-network.md)

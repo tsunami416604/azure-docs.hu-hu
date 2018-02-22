@@ -3,8 +3,8 @@ title: "Hozzon létre, és tegye közzé a Piactéri elemet Azure verem |} Micro
 description: "Hozzon létre, és tegye közzé a Piactéri elemet Azure-készletben."
 services: azure-stack
 documentationcenter: 
-author: ErikjeMS
-manager: byronr
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 77e5f60c-a86e-4d54-aa8d-288e9a889386
 ms.service: azure-stack
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2017
-ms.author: erikje
-ms.openlocfilehash: 64203ce186665aada98fbe8daed971164a650399
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: brenduns
+ms.reviewer: jeffgo
+ms.openlocfilehash: 5ac91dac3cb446abaf07492d8b6ec8aa0c120ef4
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>Piactéri termék létrehozása és közzététele
 
@@ -79,7 +80,7 @@ ms.lasthandoff: 10/11/2017
    
    | Paraméter | Leírás |
    | --- | --- |
-   | Előfizetés-azonosító |Felügyeleti előfizetés-azonosító. Ez a PowerShell használatával kérheti le. Ha inkább a portál eléréséhez, nyissa meg a szolgáltató előfizetés, és másolja az előfizetés-azonosító. |
+   | SubscriptionID |Felügyeleti előfizetés-azonosító. Ez a PowerShell használatával kérheti le. Ha inkább a portál eléréséhez, nyissa meg a szolgáltató előfizetés, és másolja az előfizetés-azonosító. |
    | GalleryItemUri |A gyűjtemény csomagot, amely már fel lett töltve tárolási URI BLOB. |
    | Apiversion |Állítja be **2015-04-01**. |
 4. Navigáljon a portálon. A Piactéri elemet a portálon--operátor vagy a felhasználó láthatja.
@@ -100,32 +101,32 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="reference-marketplace-item-manifestjson"></a>– Referencia: Piactér-elem manifest.json
 ### <a name="identity-information"></a>Azonosító adatok
-| Név | Szükséges | Típus | Korlátozások | Leírás |
+| Name (Név) | Szükséges | Típus | Korlátozások | Leírás |
 | --- | --- | --- | --- | --- |
-| Név |X |Karakterlánc |[A-Za-z0-9] + | |
-| Közzétevő |X |Karakterlánc |[A-Za-z0-9] + | |
+| Name (Név) |X |Karakterlánc |[A-Za-z0-9]+ | |
+| Közzétevő |X |Karakterlánc |[A-Za-z0-9]+ | |
 | Verzió |X |Karakterlánc |[SemVer v2](http://semver.org/) | |
 
 ### <a name="metadata"></a>Metaadatok
-| Név | Szükséges | Típus | Korlátozások | Leírás |
+| Name (Név) | Szükséges | Típus | Korlátozások | Leírás |
 | --- | --- | --- | --- | --- |
-| displayName |X |Karakterlánc |A javaslat 80 karakter |A portál nem jelenik meg az elem neve szabályosan Ha hosszabb 80 karakternél. |
+| DisplayName |X |Karakterlánc |A javaslat 80 karakter |A portál nem jelenik meg az elem neve szabályosan Ha hosszabb 80 karakternél. |
 | PublisherDisplayName |X |Karakterlánc |A javaslat 30 karakternél |A portál nem jelenik meg a kiadó nevét szabályosan ha 30 karakternél hosszabb. |
 | PublisherLegalName |X |Karakterlánc |Legfeljebb 256 karakter hosszú lehet | |
-| Összefoglalás |X |Karakterlánc |60 és 100 karakter | |
+| Összegzés |X |Karakterlánc |60 és 100 karakter | |
 | LongSummary |X |Karakterlánc |140 és 256 karakter |Még nincs Azure-készletben. |
 | Leírás |X |[HTML](https://auxdocs.azurewebsites.net/en-us/documentation/articles/gallery-metadata#html-sanitization) |500 – 5000 karakter | |
 
 ### <a name="images"></a>Képek
 A piactér az alábbi ikonok:
 
-| Név | Szélessége | Magassága | Megjegyzések |
+| Name (Név) | Szélessége | Magassága | Megjegyzések |
 | --- | --- | --- | --- |
-| Széles |255 képpont |115 képpont |Mindig szükséges. |
-| Nagy |115 képpont |115 képpont |Mindig szükséges. |
-| Közepes |90 képpont |90 képpont |Mindig szükséges. |
-| Kicsi |40 képpont |40 képpont |Mindig szükséges. |
-| Képernyőfelvétel |533 képpont |32 képpont |Optional |
+| Széles |255 px |115 px |Mindig szükséges. |
+| Nagy |115 px |115 px |Mindig szükséges. |
+| Közepes |90 px |90 px |Mindig szükséges. |
+| Kicsi |40 px |40 px |Mindig szükséges. |
+| Képernyőfelvétel |533 px |32 px |Optional |
 
 ### <a name="categories"></a>Kategóriák
 Minden egyes Piactéri elemet kell címkézését egy kategóriát, amely azonosítja a portál felhasználói felületi elem helyére. Azure verem a meglévő kategóriák közül választhat (számítási, adatok + tárolás, stb.), vagy válasszon egy újat.
@@ -133,17 +134,17 @@ Minden egyes Piactéri elemet kell címkézését egy kategóriát, amely azonos
 ### <a name="links"></a>Hivatkozások
 Minden egyes Piactéri elemet tartalmazhat különböző, a tartalmakra mutató hivatkozásokat tartalmaz. A hivatkozások vannak megadva a nevek és URI-azonosítók listáját.
 
-| Név | Szükséges | Típus | Korlátozások | Leírás |
+| Name (Név) | Szükséges | Típus | Korlátozások | Leírás |
 | --- | --- | --- | --- | --- |
-| displayName |X |Karakterlánc |Legfeljebb 64 karakter hosszú lehet | |
-| URI |X |URI | | |
+| DisplayName |X |Karakterlánc |Legfeljebb 64 karakter hosszú lehet | |
+| Uri |X |URI | | |
 
 ### <a name="additional-properties"></a>További tulajdonságok
 A fenti metaadatok mellett piactér szerzők biztosíthat egyéni kulcs/érték pár adatokat a következő formában:
 
-| Név | Szükséges | Típus | Korlátozások | Leírás |
+| Name (Név) | Szükséges | Típus | Korlátozások | Leírás |
 | --- | --- | --- | --- | --- |
-| displayName |X |Karakterlánc |Legfeljebb 25 karakter hosszú lehet | |
+| DisplayName |X |Karakterlánc |Legfeljebb 25 karakter hosszú lehet | |
 | Érték |X |Karakterlánc |Legfeljebb 30 karakterből | |
 
 ### <a name="html-sanitization"></a>HTML tisztítási

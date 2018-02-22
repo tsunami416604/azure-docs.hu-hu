@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/20/2018
 ms.author: jingwang
-ms.openlocfilehash: c79bce401b0f1d67d7955f4c97a5dfac5008be0d
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 11dedc8866fcc0239fd4a34b7ed73af34c6d5a4e
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Adatok növekményes betöltése az SQL Server több táblájából egy Azure SQL-adatbázisba
 Az oktatóanyag során egy Azure-beli adat-előállítót hoz létre egy olyan folyamattal, amely változásadatokat tölt be egy helyszíni SQL Server több táblájából egy Azure SQL Database-be.    
@@ -135,7 +135,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
     ```
 
-### <a name="create-another-table-in-the-sql-database-to-store-the-high-watermark-value"></a>Egy másik tábla létrehozása az SQL-adatbázisban a felső küszöbértékek tárolására
+### <a name="create-another-table-in-the-azure-sql-database-to-store-the-high-watermark-value"></a>Egy másik tábla létrehozása az Azure SQL Database-ben a felső küszöbértékek tárolására
 1. Futtassa a következő SQL-parancsot az SQL-adatbázison egy `watermarktable` nevű, a küszöbértékek tárolására szolgáló tábla létrehozásához: 
     
     ```sql
@@ -157,7 +157,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
     
     ```
 
-### <a name="create-a-stored-procedure-in-the-sql-database"></a>Tárolt eljárás létrehozása az SQL-adatbázisban 
+### <a name="create-a-stored-procedure-in-the-azure-sql-database"></a>Tárolt eljárás létrehozása az Azure SQL Database-ben 
 
 Az alábbi parancs futtatásával hozzon létre egy tárolt eljárást az SQL-adatbázisban. Ez a tárolt eljárás minden folyamatfuttatás után frissíti a küszöbértéket. 
 
@@ -175,7 +175,7 @@ END
 
 ```
 
-### <a name="create-data-types-and-additional-stored-procedures"></a>Adattípusok és további tárolt eljárások létrehozása
+### <a name="create-data-types-and-additional-stored-procedures-in-azure-sql-database"></a>Adattípusok és további tárolt eljárások létrehozása az Azure SQL Database-ben
 Az alábbi lekérdezés futtatásával hozzon létre két tárolt eljárást és két adattípust az SQL-adatbázisban. Ezek összevonják a forrástáblák adatait a céltáblákba.
 
 ```sql
@@ -228,6 +228,7 @@ END
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
+1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
 1. Kattintson az **Új** elemre, majd az **Adatok + analitika**, végül a **Data Factory** elemre. 
    
    ![New (Új)->DataFactory](./media/tutorial-incremental-copy-multiple-tables-portal/new-azure-data-factory-menu.png)
@@ -422,7 +423,7 @@ A folyamat táblanevek listáját használja paraméterként. A ForEach tevéken
     3. A paraméter **típusaként** válassza az **Object** (Objektum) lehetőséget.
 
     ![Folyamat paraméterei](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-parameters.png) 
-4. Húzza a **ForEach** tevékenységet az **Activities** (Tevékenységek) eszközkészletből a folyamat tervezőfelületére. A **Properties** (Tulajdonságok) ablak **General** (Általános) lapján az **IterateSQLTables** értéket adja meg. 
+4. A **tevékenységek** eszközkészletében bontsa ki az **Ismétlés és feltételek** elemet, és húzza a **ForEach** tevékenységet a folyamat tervezőfelületére. A **Properties** (Tulajdonságok) ablak **General** (Általános) lapján az **IterateSQLTables** értéket adja meg. 
 
     ![ForEach tevékenység – név](./media/tutorial-incremental-copy-multiple-tables-portal/foreach-name.png)
 5. Váltson a **Settings** (Beállítások) lapra a **Properties** (Tulajdonságok) ablakban és adja meg a `@pipeline().parameters.tableList` értéket az **Items** (Elemek) értékeként. A ForEach tevékenység végighalad egy táblalistán, és végrehajtja a növekményes másolási műveletet. 
@@ -431,7 +432,7 @@ A folyamat táblanevek listáját használja paraméterként. A ForEach tevéken
 6. Válassza ki a **ForEach** tevékenységet a folyamatban, ha még nincs kiválasztva. Kattintson az **Edit** (Szerkesztés) gombra (ceruza ikon).
 
     ![ForEach tevékenység – szerkesztés](./media/tutorial-incremental-copy-multiple-tables-portal/edit-foreach.png)
-7. Húzza a **Lookup** (Keresés) tevékenységet az **Activities** (Tevékenységek) eszközkészletből, és írja be a **LookupOldWaterMarkActivity** **nevet**.
+7. A **tevékenységek** eszközkészletében bontsa ki az **Általános** elemet, húzza a **keresési** tevékenységet a folyamat tervezőfelületére, és a **Név** mezőbe írja be a **LookupOldWaterMarkActivity** kifejezést.
 
     ![Első keresési tevékenység – név](./media/tutorial-incremental-copy-multiple-tables-portal/first-lookup-name.png)
 8. Váltson a **Beállítások** lapra a **tulajdonságok** ablakában, és hajtsa végre a következő lépéseket: 
@@ -497,12 +498,13 @@ A folyamat táblanevek listáját használja paraméterként. A ForEach tevéken
     ![Tárolt eljárási tevékenység – SQL-fiók](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sql-account.png)
 19. Váltson a **Tárolt eljárás** lapra, és végezze el az alábbi lépéseket:
 
-    1. Az `sp_write_watermark` értéket adja meg a **tárolt eljárás neveként**. 
-    2. Használja a **New** (Új) gombot a következő paraméterek hozzáadásához: 
+    1. A **tárolt eljárás neveként** válassza az `sp_write_watermark` lehetőséget. 
+    2. Válassza az **Importálási paraméter** lehetőséget. 
+    3. Adja meg a következő értékeket a paraméterekhez: 
 
-        | Name (Név) | Típus | Érték | 
+        | Név | Típus | Érték | 
         | ---- | ---- | ----- |
-        | LastModifiedtime | dátum/idő | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
+        | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
         | TableName | Karakterlánc | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
         ![Tárolt eljárási tevékenység – tárolt eljárás beállításai](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)

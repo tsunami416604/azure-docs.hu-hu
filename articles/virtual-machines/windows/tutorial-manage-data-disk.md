@@ -1,141 +1,175 @@
 ---
-title: "Az az Azure PowerShell Azure lemezek kezelése |} Microsoft Docs"
-description: "Útmutató – az az Azure PowerShell Azure lemezek kezelése"
+title: "Azure-lemezek kezelése az Azure PowerShell-lel | Microsoft Docs"
+description: "Útmutató – Azure-lemezek kezelése az Azure PowerShell-lel"
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: neilpeterson
-manager: timlt
+author: iainfoulds
+manager: jeconnoc
 editor: tysonn
-tags: azure-service-management
+tags: azure-resource-manager
 ms.assetid: 
 ms.service: virtual-machines-windows
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 05/02/2017
-ms.author: nepeters
+ms.date: 02/09/2018
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 58c8ba2682cc9cc8f2089d2a70cc95a03079832e
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
-ms.translationtype: MT
+ms.openlocfilehash: ea38fe599960db42c518603b59a60a920d1f1daf
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 02/14/2018
 ---
-# <a name="manage-azure-disks-with-powershell"></a>Azure-lemezeket a PowerShell-lel kezelése
+# <a name="manage-azure-disks-with-powershell"></a>Azure-lemezek kezelése a PowerShell-lel
 
-Az Azure virtuális gépek lemez használata a virtuális gépek operációs rendszer, az alkalmazások és az adatok tárolására. Virtuális gép létrehozásakor fontos válasszon ki egy lemez méretét és a konfiguráció megfelelő a várt munkaterhelés. Ez az oktatóanyag ismerteti, központi telepítésére és felügyeletére a virtuális gépek lemezei. További tudnivalók:
+Az Azure-beli virtuális gépek lemezeket használnak a virtuális gépek operációs rendszereinek, alkalmazásainak és adatainak tárolására. Virtuális gép létrehozásakor fontos szempont, hogy a számítási feladatok jelentette várható terhelésnek megfelelő lemezméretet és konfigurációt válasszon ki. Ez az oktatóanyag a virtuálisgép-lemezek üzembe helyezését és kezelését mutatja be. Az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Az operációs rendszer és a ideiglenes lemezek
+> * Operációsrendszer-lemezek és ideiglenes lemezek
 > * Adatlemezek
-> * Standard és Premium lemezek
-> * Lemez teljesítménye
-> * Csatlakoztatása és adatlemezek előkészítése
+> * Standard és Prémium lemezek
+> * Lemezek teljesítménye
+> * Adatlemezek csatolása és előkészítése
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az Azure PowerShell-modul 3.6-os vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: ` Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral. 
+Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az Azure PowerShell-modul 5.3-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral. 
 
-## <a name="default-azure-disks"></a>Azure-lemezeket alapértelmezett
+## <a name="default-azure-disks"></a>Alapértelmezett Azure-lemezek
 
-Egy Azure virtuális gép létrehozásakor a rendszer automatikusan csatolja két lemez a virtuális gép az. 
+Egy Azure-beli virtuális gép létrehozásakor a rendszer két lemezt automatikusan a virtuális géphez csatol. 
 
-**Operációsrendszer-lemez** -operációs rendszer lemezek is kell méretezni, legfeljebb 4 terabájt, és a virtuális gépek operációs rendszert futtatja.  Az operációs rendszer lemezének hozzá van rendelve egy meghajtóbetűjelét *c:* alapértelmezés szerint. A lemez az operációs rendszer lemezének konfigurációját gyorsítótárazása az operációs rendszer teljesítményének van optimalizálva. Az operációs rendszer lemezének **nem kell** alkalmazások vagy az adatok tárolására szolgál. Az alkalmazások és adatok használja az adatlemezt, amely a cikk későbbi részében részleteit.
+**Operációsrendszer-lemez** – Az operációsrendszer-lemezek akár 4 terabájt méretűek is lehetnek, és a virtuális gépek operációs rendszerei találhatók rajtuk.  Az operációs rendszert futtató lemezhez alapértelmezés szerint a *c:* meghajtóbetűjel van hozzárendelve. Az operációsrendszer-lemez gyorsítótárazási konfigurációja az operációs rendszer teljesítményéhez van optimizálva. Az operációsrendszer-lemez **nem** üzemeltethet alkalmazásokat, és nem tárolhat adatokat. Alkalmazásokhoz és adatokhoz használjon adatlemezeket, amelyekről később lesz szó.
 
-**Ideiglenes lemez** -ideiglenes lemezek található SSD-meghajtó használatát a virtuális gépként Azure ugyanazon a gazdagépen. Ideiglenes lemezek magas performant és műveletek, például a ideiglenes adatfeldolgozási használható. Azonban a virtuális gép új gazdagépre helyezik át, ha eltávolítják egy ideiglenes lemezen tárolt adatokat. Az ideiglenes lemez mérete határozza meg a Virtuálisgép-méretet. Ideiglenes lemezek vannak hozzárendelve a meghajtóbetűjel *d:* alapértelmezés szerint.
+**Ideiglenes lemez** – Az ideiglenes lemezek olyan tartós állapotú meghajtót (SSD-t) használnak, amely ugyanazon az Azure-gazdagépen található, mint a virtuális gép. Az ideiglenes lemezek nagy teljesítményűek és olyan műveletekhez használhatók, mint például az ideiglenes adatfeldolgozás. Ha azonban a virtuális gépet egy új gazdagépre költöztetik, az ideiglenes lemezen tárolt adatokat a rendszer eltávolítja. Az ideiglenes lemez méretét a virtuális gép mérete határozza meg. Az ideiglenes lemezekhez alapértelmezés szerint a *d:* meghajtóbetűjel van hozzárendelve.
 
-### <a name="temporary-disk-sizes"></a>Ideiglenes mérete
+### <a name="temporary-disk-sizes"></a>Ideiglenes lemezek méretei
 
-| Típus | Virtuális gép mérete | Maximális ideiglenes lemez (GB) |
+| Típus | Gyakori méretek | Ideiglenes lemez max. mérete (GiB) |
 |----|----|----|
-| [Általános célú](sizes-general.md) | A-D sorozat része | 800 |
-| [Számításra optimalizált](sizes-compute.md) | F sorozat | 800 |
-| [Memóriaoptimalizált](../virtual-machines-windows-sizes-memory.md) | D és G sorozat | 6144 |
-| [Tárolásra optimalizált](../virtual-machines-windows-sizes-storage.md) | L sorozat | 5630 |
+| [Általános célú](sizes-general.md) | A, B és D sorozat | 1600 |
+| [Számításra optimalizált](sizes-compute.md) | F sorozat | 576 |
+| [Memóriaoptimalizált](sizes-memory.md) | D, E, G és M sorozat | 6144 |
+| [Tárolásra optimalizált](sizes-storage.md) | L sorozat | 5630 |
 | [GPU](sizes-gpu.md) | N sorozat | 1440 |
-| [Magas teljesítmény](sizes-hpc.md) | A és H sorozat | 2000 |
+| [Nagy teljesítmény](sizes-hpc.md) | A és H sorozat | 2000 |
 
-## <a name="azure-data-disks"></a>Az Azure data lemezek
+## <a name="azure-data-disks"></a>Azure-adatlemezek
 
-További adatlemezt felvehető alkalmazások telepítése és adatok tárolására. Az adatlemezek minden helyzetben, ahol van szükség az adatok tartósságát és rugalmas tárolási kell használni. Minden adat lemez 1 terabájtnál maximális kapacitása nem. A virtuális gép mérete határozza meg, hány adatlemezek csatolható a virtuális gépek. Minden virtuális gép vCPU, a két adatlemezek kapcsolható ki. 
+További adatlemezeket adhat hozzá, amelyekre alkalmazásokat telepíthet és amelyeken adatokat tárolhat. Az adatlemezeket akkor érdemes használni, ha tartós és rugalmas adattárolásra van szükség. Az egyes adatlemezek kapacitása maximum 4 terabájt lehet. A virtuális gép mérete határozza meg, hány adatlemez csatolható a virtuális géphez. A virtuális gépek minden vCPU-jához két adatlemez csatolható. 
 
-### <a name="max-data-disks-per-vm"></a>Maximális adatlemezek virtuális gépenként
+### <a name="max-data-disks-per-vm"></a>Adatlemezek max. száma virtuális gépenként
 
-| Típus | Virtuális gép mérete | Maximális adatlemezek virtuális gépenként |
+| Típus | Gyakori méretek | Adatlemezek max. száma virtuális gépenként |
 |----|----|----|
-| [Általános célú](sizes-general.md) | A-D sorozat része | 32 |
-| [Számításra optimalizált](sizes-compute.md) | F sorozat | 32 |
-| [Memóriaoptimalizált](../virtual-machines-windows-sizes-memory.md) | D és G sorozat | 64 |
-| [Tárolásra optimalizált](../virtual-machines-windows-sizes-storage.md) | L sorozat | 64 |
-| [GPU](sizes-gpu.md) | N sorozat | 48 |
-| [Magas teljesítmény](sizes-hpc.md) | A és H sorozat | 32 |
+| [Általános célú](sizes-general.md) | A, B és D sorozat | 64 |
+| [Számításra optimalizált](sizes-compute.md) | F sorozat | 64 |
+| [Memóriaoptimalizált](sizes-memory.md) | D, E, G és M sorozat | 64 |
+| [Tárolásra optimalizált](sizes-storage.md) | L sorozat | 64 |
+| [GPU](sizes-gpu.md) | N sorozat | 64 |
+| [Nagy teljesítmény](sizes-hpc.md) | A és H sorozat | 64 |
 
-## <a name="vm-disk-types"></a>Virtuális gép lemeztípusok
+## <a name="vm-disk-types"></a>Virtuálisgép-lemezek típusai
 
-Azure két lemez biztosít.
+Az Azure két lemeztípust kínál.
 
-### <a name="standard-disk"></a>Standard méretű lemez
+### <a name="standard-disk"></a>Standard lemez
 
-A merevlemez-meghajtókra épülő Standard Storage költséghatékony tárolási megoldás, amely emellett jó teljesítményt nyújt. Standard lemezek ideális, ha a költséghatékony fejlesztői és munkaterhelés teszteléséhez.
+A merevlemez-meghajtókra épülő Standard Storage költséghatékony tárolási megoldás, amely emellett jó teljesítményt nyújt. A standard lemezek ideális megoldást jelentenek költséghatékony fejlesztési és tesztelési számítási feladatokhoz.
 
-### <a name="premium-disk"></a>Prémium szintű lemez
+### <a name="premium-disk"></a>Prémium lemez
 
-Premium lemezek SSD-alapú nagy teljesítményű, alacsony késésű lemez üzemelnek. Tökéletes éles munkaterhelést futtató virtuális gépekhez. Prémium szintű Storage támogatja a DS-méretek, DSv2-méretek, GS sorozatnak és FS sorozatú virtuális gépeket. Prémium szintű lemezekhez helyen öt típusa (P10, P20, P30, P40, P50), és a lemez mérete a lemez típusát határozza meg. Ha választja, a lemez méretét az érték felfelé kerekíti a következő típusra. Például, ha a mérete 128 GB alá a lemez típusát és fog esni P10, 129 512 P20, 512 P30, 2TB és P50 P40 4 TB-os. 
+A prémium lemezek SSD-alapú, nagy teljesítményű, kis késleltetésű lemezek. Az éles számítási feladatokat futtató virtuális gépek esetén érdemes a használatuk mellett dönteni. A Premium Storage támogatja a DS, a DSv2, a GS és az FS sorozatú virtuális gépeket. A prémium lemezeknek öt típusa van (P10, P20, P30, P40, P50), és a lemez mérete határozza meg a lemez típusát. Lemezméret kiválasztásakor az értéket felfelé kerekíti a rendszer a következő típusra. Ha például a lemez mérete kisebb 128 GB-nál, a lemez típusa P10. 129 GB és 512 GB között a lemez típusa P20 lesz.
 
-### <a name="premium-disk-performance"></a>Prémium szintű lemez teljesítménye
+### <a name="premium-disk-performance"></a>Prémium szintű lemezek teljesítménye
 
-|Prémium szintű storage lemeztípus | P10 | P20 | P30 |
-| --- | --- | --- | --- |
-| A lemezméret (kerek mentése) | 128 GB | 512 GB | 1024 GB (1 TB) |
-| IOPS-érték lemezenként | 500 | 2,300 | 5,000 |
-Adattovábbítás lemezenként | 100 MB/s | 150 MB/s | 200 MB/s |
+|Prémium szintű tárolólemezek típusai | P4 | P6 | P10 | P20 | P30 | P40 | P50 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Lemezméret (felfelé kerekítés) | 32 GB | 64 GB | 128 GB | 512 GB | 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) |
+| Lemezenkénti maximális IOPS-érték | 120 | 240 | 500 | 2300 | 5000 | 7500 | 7500 |
+Adattovábbítás lemezenként | 25 MB/s | 50 MB/s | 100 MB/s | 150 MB/s | 200 MB/s | 250 MB/s | 250 MB/s |
 
-A fenti táblázat azonosítja a maximális iops-érték lemezenként, magasabb szintű teljesítmény szerint több adatlemezek szétosztott érhető el. Például a 64 adatlemezek Standard_GS5 virtuális géphez csatlakoztatható. Ha ezeknek a lemezeknek mindegyikének, egy P30 mérete, 80000 IOPS maximális érhető el. A virtuális gép maximális iops-értéket részletes információkért lásd: [VM meg kell adnia, és méretének](./sizes.md).
+Míg a fenti táblázatban a lemezenkénti maximális IOPS-érték látható, nagyobb teljesítmény is elérhető több adatlemez összevonásával. Például a Standard_GS5 virtuális géphez 64 adatlemez csatolható. Ha ezen lemezek mindegyike P30-ra van méretezve, maximum 80 000-es IOPS-érték érhető el. A virtuális gépenkénti maximális IOPS-értékről szóló részletes információkért lásd a [virtuális gépek típusait és méreteit](./sizes.md) ismertető cikket.
 
-## <a name="create-and-attach-disks"></a>Hozzon létre, és csatlakoztassa a lemezeket
+## <a name="create-and-attach-disks"></a>Lemezek létrehozása és csatolása
 
-A példa az oktatóanyag elvégzéséhez rendelkeznie kell egy meglévő virtuális gépet. Ha szükséges, ez [parancsfájl minta](../scripts/virtual-machines-windows-powershell-sample-create-vm.md) hozhat létre egyet. Az oktatóanyag lépéseinek működő cseréje esetén a az erőforráscsoportot és a virtuális gép nevét, amennyiben szükséges.
+Az oktatóanyagban található példa elvégzéséhez szüksége lesz egy meglévő virtuális gépre. Ha szükséges, hozzon létre egy virtuális gépet az alábbi parancsokkal.
 
-A kezdeti konfiguráció létrehozása [New-AzureRmDiskConfig](/powershell/module/azurerm.compute/new-azurermdiskconfig). A következő példa konfigurál egy lemezt, amely 128 GB-nál.
+A virtuális gép rendszergazdai fiókjának felhasználónevét és jelszavát állítsa be a [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) paranccsal:
 
 ```azurepowershell-interactive
-$diskConfig = New-AzureRmDiskConfig -Location EastUS -CreateOption Empty -DiskSizeGB 128
+$cred = Get-Credential
 ```
 
-Az adatok lemez létrehozása a [New-AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk) parancsot.
+Hozza létre a virtuális gépet a [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) parancsmaggal.
 
 ```azurepowershell-interactive
-$dataDisk = New-AzureRmDisk -ResourceGroupName myResourceGroup -DiskName myDataDisk -Disk $diskConfig
+New-AzureRmVm `
+    -ResourceGroupName "myResourceGroupDisk" `
+    -Name "myVM" `
+    -Location "East US" `
+    -VirtualNetworkName "myVnet" `
+    -SubnetName "mySubnet" `
+    -SecurityGroupName "myNetworkSecurityGroup" `
+    -PublicIpAddressName "myPublicIpAddress" `
+    -Credential $cred `
+    -AsJob
 ```
 
-A virtuális gépet, amely hozzá szeretné adni a adatlemez az beszerzése a [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) parancsot.
+Az `-AsJob` paraméter háttérfeladatként létrehozza a virtuális gépet, így használni tudja a PowerShell-parancssorokat. A háttérfeladatok részleteit a `Job` parancsmaggal tekintheti meg.
+
+Hozza létre a kezdeti konfigurációt a [New-AzureRmDiskConfig](/powershell/module/azurerm.compute/new-azurermdiskconfig) paranccsal. A következő példa egy 128 GB méretű lemezt konfigurál.
 
 ```azurepowershell-interactive
-$vm = Get-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM
+$diskConfig = New-AzureRmDiskConfig `
+    -Location "EastUS" `
+    -CreateOption Empty `
+    -DiskSizeGB 128
 ```
 
-Az adatok lemez hozzáadása a virtuálisgép-konfigurációnak a [Add-AzureRmVMDataDisk](/powershell/module/azurerm.compute/add-azurermvmdatadisk) parancsot.
+Hozza létre az adatlemezt a [New-AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk) paranccsal.
 
 ```azurepowershell-interactive
-$vm = Add-AzureRmVMDataDisk -VM $vm -Name myDataDisk -CreateOption Attach -ManagedDiskId $dataDisk.Id -Lun 1
+$dataDisk = New-AzureRmDisk `
+    -ResourceGroupName "myResourceGroupDisk" `
+    -DiskName "myDataDisk" `
+    -Disk $diskConfig
 ```
 
-A virtuális gép frissítése a [frissítés-AzureRmVM](/powershell/module/azurerm.compute/add-azurermvmdatadisk) parancsot.
+A [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) paranccsal kérje le a virtuális gépet, amelyhez hozzá szeretné adni az adatlemezt.
 
 ```azurepowershell-interactive
-Update-AzureRmVM -ResourceGroupName myResourceGroup -VM $vm
+$vm = Get-AzureRmVM -ResourceGroupName "myResourceGroupDisk" -Name "myVM"
 ```
 
-## <a name="prepare-data-disks"></a>Az adatlemezek előkészítése
-
-Ha egy lemezt a virtuális géphez van csatolva, az operációs rendszer kell megadni a lemez használata. A következő példa bemutatja, hogyan kézzel konfigurálásához az első lemezt a virtuális gép hozzá. Ez a folyamat használatával is automatizálhatók a [egyéni parancsprogramok futtatására szolgáló bővítmény](./tutorial-automate-vm-deployment.md).
-
-### <a name="manual-configuration"></a>Kézi konfigurálás
-
-A virtuális gép RDP-kapcsolat létrehozásához. Nyissa meg a PowerShell és a parancsfájl futtatásával.
+Adja hozzá az adatlemezt a virtuálisgép-konfigurációhoz az [Add-AzureRmVMDataDisk](/powershell/module/azurerm.compute/add-azurermvmdatadisk) paranccsal.
 
 ```azurepowershell-interactive
+$vm = Add-AzureRmVMDataDisk `
+    -VM $vm `
+    -Name "myDataDisk" `
+    -CreateOption Attach `
+    -ManagedDiskId $dataDisk.Id `
+    -Lun 1
+```
+
+Frissítse a virtuális gépet az [Update-AzureRmVM](/powershell/module/azurerm.compute/add-azurermvmdatadisk) paranccsal.
+
+```azurepowershell-interactive
+Update-AzureRmVM -ResourceGroupName "myResourceGroupDisk" -VM $vm
+```
+
+## <a name="prepare-data-disks"></a>Adatlemezek előkészítése
+
+Miután hozzácsatolt egy lemezt a virtuális géphez, az operációs rendszert konfigurálni kell a lemez használatához. Az alábbi példa bemutatja, hogyan konfigurálhatja manuálisan a virtuális géphez elsőként hozzáadott lemezt. Ez a folyamat is automatizálható az [egyéni szkriptbővítmény](./tutorial-automate-vm-deployment.md) használatával.
+
+### <a name="manual-configuration"></a>Manuális konfigurálás
+
+Hozzon léte egy RDP-kapcsolatot a virtuális géppel. Nyissa meg a PowerShellt, és futtassa ezt a szkriptet.
+
+```azurepowershell
 Get-Disk | Where partitionstyle -eq 'raw' | `
 Initialize-Disk -PartitionStyle MBR -PassThru | `
 New-Partition -AssignDriveLetter -UseMaximumSize | `
@@ -144,16 +178,16 @@ Format-Volume -FileSystem NTFS -NewFileSystemLabel "myDataDisk" -Confirm:$false
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóprogramban megismerte méretű lemezek témakörök, mint:
+Ebben az oktatóanyagban a virtuálisgép-lemezekkel kapcsolatos témakörökkel ismerkedett meg, például:
 
 > [!div class="checklist"]
-> * Az operációs rendszer és a ideiglenes lemezek
+> * Operációsrendszer-lemezek és ideiglenes lemezek
 > * Adatlemezek
-> * Standard és Premium lemezek
-> * Lemez teljesítménye
-> * Csatlakoztatása és adatlemezek előkészítése
+> * Standard és Prémium lemezek
+> * Lemezek teljesítménye
+> * Adatlemezek csatolása és előkészítése
 
-Továbblépés a következő oktatóanyag automatizálása a Virtuálisgép-konfiguráció megismeréséhez.
+Folytassa a következő oktatóanyaggal, amely a virtuális gép konfigurálásának automatizálását ismerteti.
 
 > [!div class="nextstepaction"]
 > [Virtuálisgép-konfiguráció létrehozása](./tutorial-automate-vm-deployment.md)

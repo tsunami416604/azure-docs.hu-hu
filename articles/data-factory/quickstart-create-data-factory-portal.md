@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.topic: hero-article
 ms.date: 02/01/2018
 ms.author: jingwang
-ms.openlocfilehash: f17dc18825c929a75169875594c7b1a13ba1f6d7
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: 7065b0b6e0576238e3b32fdbf7ac43b7fc2ae9e6
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Adat-előállító létrehozása az Azure Data Factory felhasználói felületén
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
@@ -38,8 +38,9 @@ A következő videó megtekintése segíthet az Azure Data Factory felhasználó
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
-1. Nyissa meg az [Azure Portal](https://portal.azure.com). 
-2. Kattintson az **Új** elemre a bal oldali menüben, majd az **Adatok + analitika**, végül a **Data Factory** elemre. 
+1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
+2. Nyissa meg az [Azure Portal](https://portal.azure.com). 
+3. Kattintson az **Új** elemre a bal oldali menüben, majd az **Adatok + analitika**, végül a **Data Factory** elemre. 
    
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 2. Az **Új data factory** lap **Név** mezőjében adja meg az **ADFTutorialDataFactory** értéket. 
@@ -65,9 +66,9 @@ A következő videó megtekintése segíthet az Azure Data Factory felhasználó
 8. Az irányítópulton megjelenő csempén a **Adat-előállító üzembe helyezése** állapotleírás látható: 
 
    ![„Adat-előállító üzembe helyezése” csempe](media//quickstart-create-data-factory-portal/deploying-data-factory.png)
-9. A létrehozás befejezése után megjelenik a **Data Factory** lap. Az Azure Data Factory felhasználói felületi (UI) alkalmazás külön lapon történő elindításához kattintson a **Létrehozás és monitorozás** csempére.
+9. A létrehozás befejezése után megjelenik a **Data Factory** lap. Az Azure Data Factory felhasználói felületi (UI) alkalmazás külön lapon történő elindításához kattintson a **Tartalomkészítés és monitorozás** csempére.
    
-   ![Az adat-előállító kezdőlapja a „Létrehozás és monitorozás” csempével](./media/quickstart-create-data-factory-portal/data-factory-home-page.png)
+   ![Az adat-előállító kezdőlapja a „Tartalomkészítés és monitorozás” csempével](./media/quickstart-create-data-factory-portal/data-factory-home-page.png)
 10. Az **Első lépések** lapon váltson a **Szerkesztés** lapra a bal oldali ablaktáblán. 
 
     ![„Első lépések” lap](./media/quickstart-create-data-factory-portal/get-started-page.png)

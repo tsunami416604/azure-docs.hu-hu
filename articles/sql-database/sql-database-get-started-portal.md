@@ -14,13 +14,13 @@ ms.workload: Active
 ms.tgt_pltfrm: portal
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 01/29/2018
-ms.author: ninarn
-ms.openlocfilehash: 63a16df5f36bba4ffb97529100b878f0a1591127
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.date: 02/12/2018
+ms.author: carlrab
+ms.openlocfilehash: 7a57593825f816a03b59f6c5228243670f1e9e9e
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="create-an-azure-sql-database-in-the-azure-portal"></a>Azure SQL Database létrehozása az Azure Portalon
 
@@ -84,7 +84,7 @@ Kövesse az alábbi lépéseket az Adventure Works LT mintaadatokat tartalmazó 
    >\* Az 1 TB tárhelyméretet meghaladó prémium szintű készletek jelenleg a következő régiókban érhetők el: Kelet-Ausztrália, Délkelet-Ausztrália, Dél-Brazília, Közép-Kanada, Kelet-Kanada, USA középső régiója, Közép-Franciaország, Közép-Németország, Kelet-Japán, Nyugat-Japán, Korea középső régiója, USA északi középső régiója, Észak-Európa, USA déli középső régiója, Délkelet-Ázsia, az Egyesült Királyság déli régiója, az Egyesült Királyság nyugati régiója, USA keleti régiója 2, USA nyugati régiója, USA-beli államigazgatás – Virginia, és Nyugat-Európa. Lásd: [P11–P15 – Aktuális korlátozások](sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
    >
 
-7. Ezen gyors üzembe helyezési útmutatóban válassza a **Standard** szolgáltatásszintet, majd a csúszkával állítson be **100 DTU (S3)** egységet, illetve **400** GB tárhelyet.
+7. Ezen gyors üzembehelyezési útmutatóban válassza a **Standard** szolgáltatásszintet, majd a csúszkával állítson be **10 DTU (S0)** egységet, illetve **1** GB tárhelyet.
 
    ![adatbázis létrehozása-s1](./media/sql-database-get-started-portal/create-database-s1.png)
 
@@ -138,17 +138,13 @@ Mostantól csatlakozhat az SQL Database-kiszolgálóhoz és annak adatbázisaiho
 
 Most, miután létrehozott egy mintaadatbázist az Azure-ban, az Azure Portalon található beépített lekérdezési eszközzel ellenőrizzük, hogy tud-e csatlakozni az adatbázishoz, és le tudja-e kérdezni az adatokat.
 
-1. Az adatbázishoz tartozó SQL Database oldalon keresse meg az **Adatkezelő (előzetes verzió)** elemet a bal oldali menüben, és kattintson rá.
+1. Az adatbázishoz tartozó SQL Database oldalon kattintson a **Lekérdezésszerkesztő (előzetes verzió)** elemre a bal oldali menüben, majd kattintson a **Bejelentkezés** gombra.
 
-   ![lekérdezésszerkesztő keresése](./media/sql-database-get-started-portal/find-query-editor.PNG)
+   ![bejelentkezés](./media/sql-database-get-started-portal/query-editor-login.png)
 
-2. Kattintson a **Bejelentkezés** elemre, tekintse át a bejelentkezési információkat, majd kattintson az **OK** gombra, hogy SQL Server-hitelesítéssel és a kiszolgáló korábban létrehozott rendszergazdai bejelentkezési nevével és jelszavával jelentkezzen be.
+2. Válassza az SQL Server-hitelesítést, adja meg a szükséges bejelentkezési adatokat, és kattintson az **OK** gombra a bejelentkezéshez.
 
-   ![bejelentkezés](./media/sql-database-get-started-portal/login-menu.png)
-
-3. A bejelentkezéshez kattintson az **OK** gombra.
-
-4. Miután hitelesítette magát a **kiszolgáló rendszergazdájaként**, írja be a következő lekérdezést a lekérdezésszerkesztő panelén.
+3. Miután hitelesítette magát a **kiszolgáló rendszergazdájaként**, írja be a következő lekérdezést a lekérdezésszerkesztő panelén.
 
    ```sql
    SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName
@@ -157,11 +153,11 @@ Most, miután létrehozott egy mintaadatbázist az Azure-ban, az Azure Portalon 
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-5. Kattintson a **Futtatás** gombra, majd tekintse át a lekérdezési eredményeket az **Eredmények** ablaktáblán.
+4. Kattintson a **Futtatás** gombra, majd tekintse át a lekérdezési eredményeket az **Eredmények** ablaktáblán.
 
    ![lekérdezésszerkesztő: eredmények](./media/sql-database-get-started-portal/query-editor-results.png)
 
-6. Zárja be a **Adatkezelő** oldalt, és kattintson az **OK** gombra a nem mentett szerkesztések elvetéséhez.
+5. Zárja be a **Adatkezelő** oldalt, és kattintson az **OK** gombra a nem mentett szerkesztések elvetéséhez.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

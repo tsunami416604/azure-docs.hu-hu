@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: b55d186aba49e91bab6814da2380a372f61f39cb
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 082b410c9375dbdfa7f95ccd4c176e7384dad0d7
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="getting-started"></a>A Mobile Apps az Azure App Service-ben
 Az Azure App Service egy teljes körűen felügyelt [platformszolgáltatás](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) professzionális fejlesztők számára. A szolgáltatás számos lehetőséget kínál webes, mobil- és integrációs feladatokhoz. 
@@ -38,21 +38,21 @@ A Mobile Apps szolgáltatás a következő feladatok elvégzésére alkalmas:
 ## <a name="mobile-apps-features"></a>A Mobile Apps funkciói
 A felhőalapú mobilalkalmazások fejlesztéséhez fontos funkciók a következők:
 
-* **Hitelesítés és engedélyezés** – Folyamatosan bővülő identitásszolgáltatók listájából (az Azure Active Directory vállalati hitelesítési megoldását is beleértve), illetve olyan közösségi szolgáltatók közül választhat, mint a Facebook, a Google, a Twitter és a Microsoft-fiókok. A Mobile Apps minden szolgáltató számára OAuth 2.0 protokoll szerinti engedélyezést biztosít. Integrálhatja az identitásszolgáltatók különféle speciális funkciókat biztosító SDK-it is.
+* **Hitelesítés és engedélyezés** – Az identitásszolgáltatók (az Azure Active Directory vállalati hitelesítési megoldását is beleértve), illetve olyan közösségi szolgáltatók támogatása, mint a Facebook, a Google, a Twitter és a Microsoft-fiókok. A Mobile Apps minden szolgáltató számára OAuth 2.0 protokoll szerinti engedélyezést biztosít. Integrálhatja az identitásszolgáltatók különféle speciális funkciókat biztosító SDK-it is.
 
-    Részletesebben is tájékozódhat [hitelesítési szolgáltatások] kapcsolatban.
+    Részletesebben is tájékozódhat a [hitelesítési szolgáltatásokról].
 
 * **Adatelérés** – A Mobile Apps egy mobilbarát, az Azure SQL Database-hez vagy egy helyszíni SQL-kiszolgálóhoz csatolt, OData v3 rendszerű adatforrást biztosít. Mivel a szolgáltatás alapjául entitás-keretrendszer is használható, könnyen integrálható más NoSQL- és SQL-adatszolgáltatókkal, köztük az [Azure Table Storage] rendszerrel, a MongoDB-vel, az [Azure Cosmos DB]-vel, illetve olyan SaaS API-szolgáltatókkal, mint az Office 365 és a Salesforce.com.
 
-* **Kapcsolat nélküli szinkronizálás** – Ügyfél SDK-ink megkönnyítik a kapcsolat nélküli adatkészleteket használó, hatékony és rugalmas mobilalkalmazások készítését. Az adatkészletek automatikusan, támogatott ütközésfeloldási megoldásokkal szinkronizálhatók a háttéradatokkal.
+* **Kapcsolat nélküli szinkronizálás** – Az ügyfél SDK-k megkönnyítik a kapcsolat nélküli adathalmazokat használó, hatékony és rugalmas mobilalkalmazások készítését. Az adatkészletek automatikusan, támogatott ütközésfeloldási megoldásokkal szinkronizálhatók a háttéradatokkal.
 
-  Részletesebben is tájékozódhat [az adatokkal kapcsolatos funkciókkal] kapcsolatban.
+  Részletesebben is tájékozódhat [az adatokkal kapcsolatos funkciókról].
 
-* **Leküldéses értesítések** – Ügyfél SDK-ink tökéletesen integrálhatók az Azure Notification Hubs regisztrációs szolgáltatásaival, lehetővé téve a leküldéses értesítések több millió felhasználónak egyszerre történő elküldését.
+* **Leküldéses értesítések** – Az ügyfél SDK-k tökéletesen integrálhatók az Azure Notification Hubs regisztrációs szolgáltatásaival, így több millió felhasználónak egyszerre küldhetők leküldéses értesítések.
 
-  Részletesebben is tájékozódhat [leküldéses értesítési szolgáltatások] kapcsolatban.
+  Részletesebben is tájékozódhat a [leküldéses értesítési szolgáltatásokról].
 
-* **Ügyfél SDK-k** – Ügyfél SDK-ink választékából mind a natív fejlesztésekhez ([iOS], [Android] és [Windows]), mind a platformfüggetlen fejlesztésekhez ([Xamarin.iOS és Xamarin.Android], [Xamarin.Forms]) és hibrid alkalmazásfejlesztésekhez ([Apache Cordova]) talál megfelelőt. Minden ügyfél SDK MIT licenccel érhető el, és nyílt forráskódú.
+* **Ügyfél SDK-k** – Ügyfél SDK-ink választékából mind a natív fejlesztésekhez ([iOS], [Android] és [Windows]), mind a platformfüggetlen fejlesztésekhez ([Xamarin.iOS, Xamarin.Android], [Xamarin.Forms]) és hibrid alkalmazásfejlesztésekhez ([Apache Cordova]) talál megfelelőt. Minden ügyfél SDK MIT licenccel érhető el, és nyílt forráskódú.
 
 ## <a name="azure-app-service-features"></a>Azure App Service-szolgáltatások.
 A mobilos webhelyek számára hasznos platformfunkciók a következők:
@@ -65,7 +65,7 @@ A mobilos webhelyek számára hasznos platformfunkciók a következők:
 
   További tudnivalók az [átmeneti környezet] kapcsolatban.
 
-* **Folyamatos telepítés** – Az App Service integrálható a gyakran használt forráskezelési (SCM) rendszerekkel, így automatikusan telepítheti háttéralkalmazásának új verzióit az SCM-rendszer egyik ágára való leküldés révén.
+* **Folyamatos üzembe helyezés** – Az App Service integrálható a gyakran használt _forráskezelési_ (SCM) rendszerekkel, így könnyedén üzembe helyezheti háttéralkalmazásának új verzióit.
 
   Részletesebben is tájékozódhat a [telepítési lehetőségek](../app-service/app-service-deploy-local-git.md) kapcsolatban.
 
@@ -73,7 +73,7 @@ A mobilos webhelyek számára hasznos platformfunkciók a következők:
 
   Részletesebben is tájékozódhat a [hibrid kapcsolatok], a [virtuális hálózatokkal] és az [ExpressRoute]-tal kapcsolatban.
 
-* **Elkülönített és dedikált környezetek** – Az App Service egy teljesen elkülönített és dedikált környezetben futtatható, az Azure App Service-alkalmazások biztonságos, nagy méretekben történő futtatása érdekében. Ez a környezet ideális a nagy skálázást, elkülönített vagy biztonságos hálózati hozzáférést igénylő alkalmazások és szolgáltatások számára.
+* **Elkülönített és dedikált környezetek** – Az Azure App Service-alkalmazások biztonságos futtatása érdekében az App Service egy teljesen elkülönített, dedikált környezetben futtatható. Ez a környezet ideális a nagy skálázást, elkülönített vagy biztonságos hálózati hozzáférést igénylő alkalmazások és szolgáltatások számára.
 
   Részletesebben is tájékozódhat az [App Service-környezetek] kapcsolatban.
 
@@ -89,13 +89,13 @@ Az Azure App Service platformmal kapcsolatos további tudnivalókért lásd az [
 [Első lépések]: app-service-mobile-ios-get-started.md
 [Azure Table Storage]:../cosmos-db/table-storage-how-to-use-dotnet.md
 [Azure Cosmos DB]: ../cosmos-db/sql-api-get-started.md
-[hitelesítési szolgáltatások]: ./app-service-mobile-auth.md
-[az adatokkal kapcsolatos funkciókkal]: ./app-service-mobile-offline-data-sync.md
-[leküldéses értesítési szolgáltatások]: ../notification-hubs/notification-hubs-push-notification-overview.md
+[hitelesítési szolgáltatásokról]: ./app-service-mobile-auth.md
+[az adatokkal kapcsolatos funkciókról]: ./app-service-mobile-offline-data-sync.md
+[leküldéses értesítési szolgáltatásokról]: ../notification-hubs/notification-hubs-push-notification-overview.md
 [iOS]: ./app-service-mobile-ios-how-to-use-client-library.md
 [Android]: ./app-service-mobile-android-how-to-use-client-library.md
 [Windows]: ./app-service-mobile-dotnet-how-to-use-client-library.md
-[Xamarin.iOS és Xamarin.Android]: ./app-service-mobile-dotnet-how-to-use-client-library.md
+[Xamarin.iOS, Xamarin.Android]: ./app-service-mobile-dotnet-how-to-use-client-library.md
 [Xamarin.Forms]: ./app-service-mobile-xamarin-forms-get-started.md
 [Apache Cordova]: ./app-service-mobile-cordova-how-to-use-client-library.md
 [automatikus skálázásról]: ../app-service/web-sites-scale.md

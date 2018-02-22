@@ -3,8 +3,8 @@ title: "Az Azure piactéren elemek Azure verem |} Microsoft Docs"
 description: "Ezek az Azure piactéren elemek Azure verem használható."
 services: azure-stack
 documentationcenter: 
-author: JeffGoldner
-manager: bradleyb
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 
 ms.service: azure-stack
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2018
-ms.author: JeffGoldner
-ms.openlocfilehash: a23b5ff4dc8b0cf18e529d9cdc9925ea7fcedba0
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.author: brenduns
+ms.reviewer: jeffgo
+ms.openlocfilehash: bfc55a305fd0099af5cc2bb394420e547d2703bc
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure verem használható az Azure piactéren elemek
 
@@ -30,14 +31,14 @@ Tanácsos ezek letöltése, amikor csak szüksége van a Virtuálisgép-bővítm
 
 |  | Elem neve | Leírás | Közzétevő | Operációs rendszer típusa |
 | --- | --- | --- | --- | --- |
-|![](media/azure-stack-marketplace-azure-items/cse.png) | [SQL IaaS-bővítmény](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)| <b>Töltse le a Windows Piactéri elemet bármely SQL Server telepítéséhez a bővítmény - Erre azért szükség.</b> | Microsoft | Windows |
-|![](media/azure-stack-marketplace-azure-items/cse.png) | [Egyéni parancsprogramok futtatására szolgáló bővítmény](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/extensions-customscript)| <b>Töltse le a frissítés a beépített Windows-verzió az egyéni parancsfájl kiterjesztése a.</b> | Microsoft | Windows |
-|![](media/azure-stack-marketplace-azure-items/dsc.png) | [PowerShell DSC-bővítményt](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-dsc-overview)| <b>A frissítés letöltése a PowerShell DSC-bővítményt a beépített verziójára.</b> | Microsoft | Windows |
-| ![](media/azure-stack-marketplace-azure-items/cse.png) | [A Microsoft Antimalware-bővítmény](https://docs.microsoft.com/en-us/azure/security/azure-security-antimalware)| Az Azure-hoz a Microsoft Antimalware egy olyan single-ügynök megoldás az alkalmazások és a bérlői környezetekben, emberi beavatkozás nélkül a háttérben futnak. | Microsoft | Windows |
+|![](media/azure-stack-marketplace-azure-items/cse.png) | [ SQL IaaS-bővítmény ](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)| <b>Töltse le a Windows Piactéri elemet bármely SQL Server telepítéséhez a bővítmény - Erre azért szükség.</b> | Microsoft | Windows |
+|![](media/azure-stack-marketplace-azure-items/cse.png) | [ Egyéni parancsprogramok futtatására szolgáló bővítmény ](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/extensions-customscript)| <b>Töltse le a frissítés a beépített Windows-verzió az egyéni parancsfájl kiterjesztése a.</b> | Microsoft | Windows |
+|![](media/azure-stack-marketplace-azure-items/dsc.png) | [ PowerShell DSC-bővítményt ](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-dsc-overview)| <b>A frissítés letöltése a PowerShell DSC-bővítményt a beépített verziójára.</b> | Microsoft | Windows |
+| ![](media/azure-stack-marketplace-azure-items/cse.png) | [ A Microsoft Antimalware-bővítmény ](https://docs.microsoft.com/en-us/azure/security/azure-security-antimalware)| Az Azure-hoz a Microsoft Antimalware egy olyan single-ügynök megoldás az alkalmazások és a bérlői környezetekben, emberi beavatkozás nélkül a háttérben futnak. | Microsoft | Windows |
 | ![](media/azure-stack-marketplace-azure-items/dockerextension.png) | [Docker](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft.docker-arm) | A Linux virtuális gépek docker-kiterjesztés. | Microsoft | Linux |
-| ![](media/azure-stack-marketplace-azure-items/cse.png) | [Linux virtuális gép hozzáférés](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/)| <b>A frissítés letöltéséhez a vmaccess bővítmény beépített verziója Linux-bővítmény. Ez azért fontos, ha a Debian Linux virtuális gépek használatát tervezi.</b> | Microsoft | Linux |
-| ![](media/azure-stack-marketplace-azure-items/acronis.png) | [Linux Acronis biztonsági mentés kiterjesztése](https://azuremarketplace.microsoft.com/marketplace/apps/Acronis.acronis-backup-lin-arm) | A Microsoft Azure Acronis biztonsági mentés kiterjesztése a Acronis biztonsági mentés termékcsalád data protection részét képezi. | Nemzetközi GmbH Acronis. | Linux |
-| ![](media/azure-stack-marketplace-azure-items/acronis.png) | [A Windows Acronis biztonsági mentés bővítmény](https://azuremarketplace.microsoft.com/marketplace/apps/Acronis.acronis-backup-win-arm) | A Microsoft Azure Acronis biztonsági mentés kiterjesztése a Acronis biztonsági mentés termékcsalád data protection részét képezi. | Nemzetközi GmbH Acronis. | Windows |
+| ![](media/azure-stack-marketplace-azure-items/cse.png) | [ Linux virtuális gép hozzáférés ](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/)| <b>A frissítés letöltéséhez a vmaccess bővítmény beépített verziója Linux-bővítmény. Ez azért fontos, ha a Debian Linux virtuális gépek használatát tervezi.</b> | Microsoft | Linux |
+| ![](media/azure-stack-marketplace-azure-items/acronis.png) | [ Linux Acronis biztonsági mentés kiterjesztése ](https://azuremarketplace.microsoft.com/marketplace/apps/Acronis.acronis-backup-lin-arm) | A Microsoft Azure Acronis biztonsági mentés kiterjesztése a Acronis biztonsági mentés termékcsalád data protection részét képezi. | Nemzetközi GmbH Acronis. | Linux |
+| ![](media/azure-stack-marketplace-azure-items/acronis.png) | [ A Windows Acronis biztonsági mentés bővítmény ](https://azuremarketplace.microsoft.com/marketplace/apps/Acronis.acronis-backup-win-arm) | A Microsoft Azure Acronis biztonsági mentés kiterjesztése a Acronis biztonsági mentés termékcsalád data protection részét képezi. | Nemzetközi GmbH Acronis. | Windows |
 
 ## <a name="microsoft-virtual-machine-images-and-solution-templates"></a>Virtuálisgép-rendszerképek a Microsoft és a megoldás sablonok
 
@@ -70,9 +71,9 @@ A Microsoft Azure verem támogatja a következő Azure piactér virtuális gépe
 | ![](media/azure-stack-marketplace-azure-items/sql.png) | [SQL Server 2017 Express SUSE Linux Enterprise Server (SLES) 12 SP2](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonSLES12SP2) | SQL Server 2016 SP1 szabad express verzió. | Microsoft + SUSE |
 | ![](media/azure-stack-marketplace-azure-items/sql.png) | [SUSE Linux Enterprise Server (SLES) 12 SQL Server 2017 Enterprise SP2](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.Microsoft.SQLServer2017EnterpriseonSLES12SP2) | Adatbázis platform intelligens, létfontosságú alkalmazások számára. | Microsoft + SUSE |
 | ![](media/azure-stack-marketplace-azure-items/sql.png) | [SQL Server 2017 Web SUSE Linux Enterprise Server (SLES) 12 SP2](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.Microsoft.SQLServer2017WebonSLES12SP2) | Adatbázis platform intelligens, létfontosságú alkalmazások számára. | Microsoft + SUSE |
-| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft gépi tanulási a Windows Server 2016 9.2.1 kiszolgáló](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.MicrosoftMachineLearningServer921onWindowsServer2016) | Microsoft gépi tanulási 9.2.1 kiszolgáló a Windows Server 2016. | Microsoft |
-| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft gépi tanulási a 9.2.1 Ubuntu 16.04 Server](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.MicrosoftMachineLearningServer921onUbuntu1604) | Microsoft gépi tanulási Ubuntu 16.04 9.2.1 kiszolgálón. | Microsoft + kanonikus |
-| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft gépi tanulási a CentOS Linux 7.2 9.2.1 kiszolgáló](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.MicrosoftMachineLearningServer921onCentOSLinux72) | Microsoft gépi tanulási Server 9.2.1 CentOS Linux 7.2. | Microsoft + Rogue Wave |
+| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft gépi tanulási a Windows Server 2016 9.2.1 kiszolgáló ](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.MicrosoftMachineLearningServer921onWindowsServer2016) | Microsoft gépi tanulási 9.2.1 kiszolgáló a Windows Server 2016. | Microsoft |
+| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft gépi tanulási a 9.2.1 Ubuntu 16.04 Server ](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.MicrosoftMachineLearningServer921onUbuntu1604) | Microsoft gépi tanulási Ubuntu 16.04 9.2.1 kiszolgálón. | Microsoft + kanonikus |
+| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft gépi tanulási a CentOS Linux 7.2 9.2.1 kiszolgáló ](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.MicrosoftMachineLearningServer921onCentOSLinux72) | Microsoft gépi tanulási Server 9.2.1 CentOS Linux 7.2. | Microsoft + Rogue Wave |
 
 
 ## <a name="linux-distributions"></a>Linux-Disztribúciók
@@ -85,7 +86,7 @@ A Microsoft Azure verem támogatja a következő Azure piactér virtuális gépe
 | ![](media/azure-stack-marketplace-azure-items/roguewave.png) | [CentOS-alapú 6.9.](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased69) | Ehhez a terjesztéshez, a Linux CentOS alapul, és a rosszindulatú Wave szoftver biztosítja. | Az engedélyezetlen Wave szoftver (korábbi nevén OpenLogic)  |
 | ![](media/azure-stack-marketplace-azure-items/roguewave.png) | [7.4 centOS-alapú](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased74) | Ehhez a terjesztéshez, a Linux CentOS alapul, és a rosszindulatú Wave szoftver biztosítja. | Az engedélyezetlen Wave szoftver (korábbi nevén OpenLogic) |
 | ![](media/azure-stack-marketplace-azure-items/roguewave.png) | [7.4-LVM centOS-alapú](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased74LVM) | Ehhez a terjesztéshez, a Linux CentOS alapul, és a rosszindulatú Wave szoftver biztosítja. | Az engedélyezetlen Wave szoftver (korábbi nevén OpenLogic) |
-| ![](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 12 SP3 (SAJÁT)](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SUSELinuxEnterpriseServer12SP3BringYourOwnSubscription) | SUSE Linux Enterprise Server 12 SP3. | SUSE |
+| ![](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 12 SP3 (SAJÁT) ](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SUSELinuxEnterpriseServer12SP3BringYourOwnSubscription) | SUSE Linux Enterprise Server 12 SP3. | SUSE |
 
 ## <a name="third-party-byol-free-and-trial-images-and-solution-templates"></a>Harmadik féltől származó BYOL, szabad és próbaidő képek és Solution Templates
 
@@ -209,5 +210,5 @@ A Microsoft Azure verem támogatja a következő Azure piactér virtuális gépe
 | ![](media/azure-stack-marketplace-azure-items/kemp.png) | [LoadMaster terhelés terheléselosztó LÉPETT tartalom kapcsoló](https://azuremarketplace.microsoft.com/marketplace/apps/kemptech.vlm-azure) | 4 – 7. rétegbeli alkalmazás kézbesítési vezérlő (LÉPETT) terheléselosztó tartalom kapcsoló és a Traffic Manager. | KEMP technológiák Inc. |
 | ![](media/azure-stack-marketplace-azure-items/noobaa.png) | [NooBaa hibrid AWS S3 compatibe - Community Edition](https://azuremarketplace.microsoft.com/marketplace/apps/noobaa.noobaa-hybrid-s3-archive-05) | S3-kompatibilis tárolási szolgáltatás helyezkednek nyilvános és helyszíni erőforrások kapacitás. | NooBaa |
 | ![](media/azure-stack-marketplace-azure-items/puppet.png) | [Puppet Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2) | Puppet vállalati segítségével automatizálhatja az Azure-verem infrastruktúra teljes életciklusát. <b>Töltse le mindkét Puppet Piactéri elemek.</b> | Puppet |
-| ![](media/azure-stack-marketplace-azure-items/suse.png) | [SUSE Manager 3.0 Proxy (saját)](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SUSEManager30ProxyBringYourOwnSubscription) | Legjobb minőségű nyissa meg a forrás infrastruktúra kezelése. | SUSE |
-| ![](media/azure-stack-marketplace-azure-items/zerodown.png) | [ZeroDown szoftvereket eszköz](https://azuremarketplace.microsoft.com/marketplace/apps/zerodown_software.zerodown-software-tool-7_1) | ZeroDown szoftver eszköz v7.1 - áttelepítése + magas rendelkezésre ÁLLÁSÚ. | ZeroDown szoftver |
+| ![](media/azure-stack-marketplace-azure-items/suse.png) | [SUSE Manager 3.0 Proxy (saját) ](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SUSEManager30ProxyBringYourOwnSubscription) | Legjobb minőségű nyissa meg a forrás infrastruktúra kezelése. | SUSE |
+| ![](media/azure-stack-marketplace-azure-items/zerodown.png) | [ZeroDown szoftvereket eszköz ](https://azuremarketplace.microsoft.com/marketplace/apps/zerodown_software.zerodown-software-tool-7_1) | ZeroDown szoftver eszköz v7.1 - áttelepítése + magas rendelkezésre ÁLLÁSÚ. | ZeroDown szoftver |

@@ -3,8 +3,8 @@ title: "Szolgáltatások és-Azure verem fogalmak |} Microsoft Docs"
 description: "A legfontosabb funkcióira és Azure verem fogalmak megismerése."
 services: azure-stack
 documentationcenter: 
-author: Heathl17
-manager: byronr
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 09ca32b7-0e81-4a27-a6cc-0ba90441d097
 ms.service: azure-stack
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
-ms.author: helaw
-ms.openlocfilehash: fd16748e1369b8abcab38ce1945f72c681c344b8
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.author: brenduns
+ms.reviewer: 
+ms.openlocfilehash: b252d3d52c9bf3825ae2b443065e007dda141b24
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>A legfontosabb jellemzők és Azure verem fogalmak
 
@@ -43,7 +44,7 @@ Az Azure verem használja vagy az Azure Active Directory (AAD), vagy az Active D
 ### <a name="azure-active-directory"></a>Azure Active Directory
 Az Azure Active Directory a Microsoft felhőalapú, több-bérlős identitásszolgáltató.  A legtöbb hibrid forgatókönyvek az Azure Active Directoryt használva identity.
 
-### <a name="active-directory-federation-services"></a>Az Active Directory összevonási szolgáltatások
+### <a name="active-directory-federation-services"></a>Active Directory összevonási szolgáltatások
 Előfordulhat, hogy szeretne használni az Active Directory összevonási szolgáltatások (AD FS) az Azure-verem leválasztott telepítéséhez.  Az Azure-vermet, erőforrás-szolgáltatók és más alkalmazások működnek hasonlóan az AD FS-sel, az Azure Active Directoryban. Azure verem saját AD FS és az Active Directory példány és egy Active Directory Graph API-t tartalmaz. Az Azure verem szoftverfejlesztői készlet a következő AD FS-forgatókönyveket teszi lehetővé:
 
 - Jelentkezzen be a központi telepítés Active Directory összevonási szolgáltatások használatával.
@@ -143,6 +144,6 @@ A fejlesztési buildek a következő előnyöket nyújtják:
 - Új funkciók
 - Egyéb fejlesztések
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Az Azure verem telepítésének előfeltételei](azure-stack-deploy.md)
 

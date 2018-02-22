@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 12/13/2017
 ms.author: barbkess
-ms.openlocfilehash: 80974f7660696887783e97b674e2d9921fe2feac
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 277766c22e25945fb314aa51017a72f415cbab46
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="best-practices-for-loading-data-into-azure-sql-data-warehouse"></a>Az adatok Azure SQL Data Warehouse-ba való betöltésének ajánlott eljárásai
 Javaslatok és teljesítményoptimalizálás az adatok betöltéséhez az Azure SQL Data Warehouse-ba 
@@ -120,15 +120,19 @@ Biztonsági szempontból érdemes rendszeresen módosítani a Blob Storage hozz�
 
 Az Azure Storage-fiók kulcsainak rotálása:
 
-1. Hozzon létre egy második adatbázishoz kötődő hitelesítőadat-egységet másodlagos tárelérési kulccsal.
-2. Hozzon létre egy második külső adatforrást az új hitelesítőadatok alapján.
-3. Törölje, majd hozza létre a külső táblá(ka)t, hogy az új külső adatforrásokra mutassanak. 
+Adja ki az [ALTER DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/alter-database-scoped-credential-transact-sql.md) parancsot minden olyan tárfiókhoz, amelynek módosult a kulcsa.
 
-A külső táblák új adatforrásba való migrálása után hajtsa végre a következő karbantartási feladatokat:
+Példa:
 
-1. Vesse el az első külső adatforrást.
-2. Törölje az elsődleges tárelérési kulcs alapján készült, első adatbázishoz kötődő hitelesítő adatokat.
-3. Jelentkezzen be az Azure-ba, és hozza létre újra az elsődleges hozzáférési kulcsot, hogy készen álljon a következő rotálásra.
+Létrejön az eredeti kulcs
+
+CREATE DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SECRET = 'key1' 
+
+A kulcs rotálása az 1. kulcsból a 2. kulcsba
+
+ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SECRET = 'key2' 
+
+A mögöttes külső adatforrásokban nem kell más módosítást elvégezni.
 
 
 ## <a name="next-steps"></a>További lépések

@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 08/09/2017
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: cb9d20bcb4b863736229bb920f5d4615b2c28c94
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 91d4398589707e8007c4b93639ddb568e39f51a7
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="deploy-an-application-to-a-party-cluster-in-azure"></a>Alkalmazás üzembe helyezése nyilvános fürtön az Azure-ban
 Ez az oktatóanyag a sorozat második része, amely az Azure Service Fabric-alkalmazások nyilvános fürtön történő üzembe helyezésének módját ismerteti az Azure-ban.
@@ -59,14 +59,33 @@ Ha szeretné, nyilvános fürt helyett használhat saját fürtöt.  Az ASP.NET 
 > [!NOTE]
 > A nyilvános fürtök nem biztonságosak, ezért az alkalmazásokat és az azokban megadott adatokat mások is láthatják. Ne helyezzen üzembe semmi olyat, amit nem szeretne nyilvánosságra hozni. A részletekért olvassa át a Használati feltételeket.
 
+Jelentkezzen be, és [csatlakozzon egy Windows-fürthöz](http://aka.ms/tryservicefabric). A **PFX** hivatkozásra kattintva töltse le a PFX-tanúsítványt a számítógépre. A tanúsítványra és a **Kapcsolati végpont** értékére a következő lépésekben szükség lesz.
+
+![PFX és kapcsolati végpont](./media/service-fabric-quickstart-containers/party-cluster-cert.png)
+
+Egy Windows-számítógépen telepítse a PFX-et a *CurrentUser\My* tanúsítványtárolóba.
+
+```powershell
+PS C:\mycertificates> Import-PfxCertificate -FilePath .\party-cluster-873689604-client-cert.pfx -CertStoreLocation Cert:
+\CurrentUser\My
+
+
+  PSParentPath: Microsoft.PowerShell.Security\Certificate::CurrentUser\My
+
+Thumbprint                                Subject
+----------                                -------
+3B138D84C077C292579BA35E4410634E164075CD  CN=zwin7fh14scd.westus.cloudapp.azure.com
+```
+
+
 ## <a name="deploy-the-app-to-the-azure"></a>Az alkalmazás üzembe helyezése az Azure-ban
 Az alkalmazást a létrehozása után közvetlenül a Visual Studióból telepítheti a fürtben.
 
-1. A Megoldáskezelőben kattintson a jobb gombbal a **Voting** (Szavazás) elemre, majd válassza a **Publish** (Közzététel) lehetőséget.
+1. A Megoldáskezelőben kattintson a jobb gombbal a **Voting** (Szavazás) elemre, majd válassza a **Publish** (Közzététel) lehetőséget. 
 
-    ![Publish (Közzététel) párbeszédpanel](./media/service-fabric-tutorial-deploy-app-to-party-cluster/publish-app.png)
+    ![Publish (Közzététel) párbeszédpanel](./media/service-fabric-quickstart-containers/publish-app.png)
 
-2. A **Connection Endpoint** (Kapcsolati végpont) mezőbe írja be a nyilvános fürt kapcsolati végpontját, majd kattintson a **Publish** (Közzététel) parancsra.
+2. Másolja be a **Kapcsolati végpont** értékét a nyilvános fürt lapjáról a **Connection Endpoint** (Kapcsolati végpont) mezőbe. Például: `zwin7fh14scd.westus.cloudapp.azure.com:19000`. Kattintson az **Advanced Connection Parameters** (Speciális kapcsolati paraméterek) lehetőségre, és töltse ki a következő információkat.  A *FindValue* és *ServerCertThumbprint* értékeknek egyezniük kell az előző lépésben telepített tanúsítvány ujjlenyomatával. Kattintson a **Publish** (Közzététel) gombra. 
 
     Miután a közzététel befejeződött, egy böngészőből kérést küldhet az alkalmazáshoz.
 
@@ -81,9 +100,9 @@ A Service Fabric Explorer egy grafikus felhasználói felület, amely a Service 
 
 Az alkalmazás eltávolítása a nyilvános fürtből:
 
-1. Lépjen a Service Fabric Explorerhez a nyilvános fürt regisztrációs oldalán található hivatkozással. Például: http://win1kw5649s.westus.cloudapp.azure.com:19080/Explorer/index.html.
+1. Lépjen a Service Fabric Explorerhez a nyilvános fürt regisztrációs oldalán található hivatkozással. Például: https://win1kw5649s.westus.cloudapp.azure.com:19080/Explorer/index.html.
 
-2. A Service Fabric Explorerben keresse meg a **fabric://Voting** csomópontot a bal oldali fastruktúrában.
+2. A Service Fabric Explorerben keresse meg a **fabric:/Voting** csomópontot a bal oldali fastruktúrában.
 
 3. Kattintson az **Action** (Műveletek) gombra a jobb oldalon található **Essentials** (Alapvető szolgáltatások) ablaktáblán, és válassza a **Delete Application** (Alkalmazás törlése) lehetőséget. Erősítse meg az alkalmazáspéldány törlését. Ezzel eltávolítja a fürtön futó alkalmazáspéldányt.
 

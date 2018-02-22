@@ -6,14 +6,14 @@ author: neilpeterson
 manager: timlt
 ms.service: container-registry
 ms.topic: quickstart
-ms.date: 10/08/2017
+ms.date: 02/12/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: c7d74395b1c8b386ce190906aa5b63b48c1bb1bf
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 80b5055dee35cd6efe62ee949c05aef386a3ba14
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="create-an-azure-container-registry-using-powershell"></a>Azure Container Registry létrehozása a PowerShell-lel
 
@@ -21,7 +21,7 @@ Az Azure Container Registry egy felügyelt Docker-tárolóregisztrációs adatb�
 
 Ehhez a rövid útmutatóhoz az Azure PowerShell-modul 3.6-os vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket.
 
-A Dockert is telepítenie kell helyileg. A Docker csomagokat biztosít, amelyekkel a Docker egyszerűen konfigurálható bármely [Mac](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) vagy [Linux](https://docs.docker.com/engine/installation/#supported-platforms) rendszeren.
+A Dockert is telepítenie kell helyileg. A Docker csomagokat biztosít, amelyekkel a Docker egyszerűen konfigurálható bármely [Mac][docker-mac], [Windows][docker-windows] vagy [Linux][docker-linux] rendszeren.
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
@@ -57,13 +57,13 @@ A tárolórendszerképek mozgatásához először be kell jelentkeznie az ACR-p�
 $creds = Get-AzureRmContainerRegistryCredential -Registry $registry
 ```
 
-Ezután a [docker login](https://docs.docker.com/engine/reference/commandline/login/) paranccsal jelentkezzen be az ACR-példányba.
+Ezután a [docker login][docker-login] paranccsal jelentkezzen be az ACR-példányba.
 
 ```bash
 docker login $registry.LoginServer -u $creds.Username -p $creds.Password
 ```
 
-A parancs a „Bejelentkezés sikeres” üzenetet adja vissza, ha befejeződött.
+A parancs a `Login Succeeded` üzenetet adja vissza, ha befejeződött. Előfordulhat, hogy megjelenik egy biztonsági figyelmeztetés, amely a `--password-stdin` paraméter használatát javasolja. Bár a paraméter használatát a cikk nem tárgyalja, javasoljuk, kövesse ezt az ajánlott eljárást. További információkért tekintse át a [docker login][docker-login] parancs leírását.
 
 ## <a name="push-image-to-acr"></a>Rendszerkép leküldése az ACR-be
 
@@ -79,13 +79,13 @@ A rendszerképet fel kell címkézni az ACR bejelentkezési kiszolgálójának n
 Get-AzureRmContainerRegistry | Select Loginserver
 ```
 
-Címkézze fel a rendszerképet a [docker tag](https://docs.docker.com/engine/reference/commandline/tag/) parancs használatával. Helyettesítse be az *acrLoginServer* helyére az ACR-példány bejelentkezési kiszolgálójának nevét.
+Címkézze fel a rendszerképet a [docker tag][docker-tag] parancs használatával. Helyettesítse be az *acrLoginServer* helyére az ACR-példány bejelentkezési kiszolgálójának nevét.
 
 ```bash
 docker tag microsoft/aci-helloworld <acrLoginServer>/aci-helloworld:v1
 ```
 
-Végül a [docker push](https://docs.docker.com/engine/reference/commandline/push/) paranccsal küldje le a rendszerképeket az ACR-példányba. Helyettesítse be az *acrLoginServer* helyére az ACR-példány bejelentkezési kiszolgálójának nevét.
+Végül a [docker push][docker-push] paranccsal küldje le a rendszerképeket az ACR-példányba. Helyettesítse be az *acrLoginServer* helyére az ACR-példány bejelentkezési kiszolgálójának nevét.
 
 ```bash
 docker push <acrLoginServer>/aci-helloworld:v1
@@ -105,3 +105,11 @@ Ebben a rövid útmutatóban létrehozott egy Azure-beli tároló-beállításje
 
 > [!div class="nextstepaction"]
 > [Az Azure Container Instances oktatóanyaga](../container-instances/container-instances-tutorial-prepare-app.md)
+
+<!-- LINKS - external -->
+[docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms
+[docker-login]: https://docs.docker.com/engine/reference/commandline/login/
+[docker-mac]: https://docs.docker.com/docker-for-mac/
+[docker-push]: https://docs.docker.com/engine/reference/commandline/push/
+[docker-tag]: https://docs.docker.com/engine/reference/commandline/tag/
+[docker-windows]: https://docs.docker.com/docker-for-windows/

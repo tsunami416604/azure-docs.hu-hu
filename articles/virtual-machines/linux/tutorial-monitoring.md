@@ -1,6 +1,6 @@
 ---
-title: "Figyelheti és frissítheti a Linux virtuális gépek Azure-ban |} Microsoft Docs"
-description: "Útmutató a rendszerindítási diagnosztika és a metrikák felügyeletéhez és kezeléséhez a csomag frissítéseinek egy Linux virtuális gép az Azure-ban"
+title: "Linux rendszerű virtuális gépek monitorozása és frissítése az Azure-ban | Microsoft Docs"
+description: "Tudnivalók Linux rendszerű virtuális gépek Azure-beli rendszerindítási diagnosztikájának és teljesítménymetrikáinak monitorozásáról, valamint csomagfrissítéseinek felügyeletéről"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: davidmu1
@@ -16,40 +16,40 @@ ms.workload: infrastructure
 ms.date: 05/08/2017
 ms.author: davidmu
 ms.custom: mvc
-ms.openlocfilehash: cde484dd59ec6e2821678766726c02362222d496
-ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
-ms.translationtype: MT
+ms.openlocfilehash: 230ce6a6b33e63bcced5f520b57b63ef4ed05448
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="how-to-monitor-and-update-a-linux-virtual-machine-in-azure"></a>Hogyan figyelheti és frissítheti a Linux virtuális gép az Azure-ban
+# <a name="how-to-monitor-and-update-a-linux-virtual-machine-in-azure"></a>Linux rendszerű virtuális gépek monitorozása és frissítése az Azure-ban
 
-Annak érdekében, hogy megfelelően fut a virtuális gépek (VM) az Azure-ban, tekintse át a rendszerindítási diagnosztika, metrikák és a csomag frissítések kezelése. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Annak érdekében, hogy az Azure-beli virtuális gépek megfelelően működjenek, áttekintheti a rendszerindítási diagnosztikát és a teljesítménymetrikákat, és felügyelheti a csomagfrissítéseket. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Rendszerindítási diagnosztika a virtuális Gépre engedélyezése
+> * Rendszerindítási diagnosztika engedélyezése a virtuális gépen
 > * Rendszerindítási diagnosztika megtekintése
-> * Gazdagép-metrikák megtekintése
-> * A virtuális Gépre diagnosztika bővítmény engedélyezése
-> * Nézet VM metrikák
-> * A diagnosztikai mérőszámok alapján figyelmeztetések létrehozása
-> * Csomag frissítések kezelése
-> * Speciális figyelés beállítása
+> * Gazdagép metrikáinak megtekintése
+> * Diagnosztikai bővítmény engedélyezése a virtuális gépen
+> * Virtuálisgép-metrikák megtekintése
+> * Riasztások létrehozása diagnosztikai metrikák alapján
+> * Csomagfrissítések felügyelete
+> * Speciális monitorozás beállítása
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Telepítése és a parancssori felület helyileg használata mellett dönt, ha ez az oktatóanyag van szükség, hogy futnak-e az Azure parancssori felület 2.0.4 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
 
 ## <a name="create-vm"></a>Virtuális gép létrehozása
 
-Diagnosztikai és a művelet metrikák megtekintéséhez szüksége van egy virtuális Gépet. Először hozzon létre egy erőforráscsoportot a [az csoport létrehozása](/cli/azure/group#create). Az alábbi példa létrehoz egy erőforráscsoportot *myResourceGroupMonitor* a a *eastus* helyét.
+A diagnosztika és a metrikák működés közbeni megtekintéséhez egy virtuális gépre van szükség. Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. A következő példában létrehozunk egy *myResourceGroupMonitor* nevű erőforráscsoportot az *eastus* helyen.
 
 ```azurecli-interactive 
 az group create --name myResourceGroupMonitor --location eastus
 ```
 
-Most létrehozza a virtuális gép és [az virtuális gép létrehozása](https://docs.microsoft.com/cli/azure/vm#az_vm_create). Az alábbi példakód létrehozza a virtuális gépek nevű *myVM*:
+Most hozzon létre egy virtuális gépet az [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) paranccsal. Az alábbi példában egy *myVM* nevű virtuális gépet hozunk létre:
 
 ```azurecli-interactive 
 az vm create \
@@ -62,9 +62,9 @@ az vm create \
 
 ## <a name="enable-boot-diagnostics"></a>Rendszerindítási diagnosztika engedélyezése
 
-Linux virtuális gépek a rendszerindítás, a rendszerindítási diagnosztikai bővítmény rendszerindító kimeneti rögzíti és azt az Azure storage tárolja. Ezeket az adatokat a virtuális gép rendszerindító probléma megoldásához használható. Rendszerindítási diagnosztika nem automatikusan engedélyezve vannak az Azure parancssori felület használatával Linux virtuális gép létrehozásakor.
+A Linux rendszerű virtuális gépek rendszerindítójaként működő rendszerindítási diagnosztikai bővítmény rögzíti a rendszerindítás kimeneti adatait, és az Azure Storage-ben tárolja azokat. Ezek az adatok a virtuális gépek rendszerindítási problémáinak hibaelhárításához használhatóak. Ha a Linux rendszerű virtuális gépet az Azure CLI-vel hozza létre, a rendszerindítási diagnosztika nincs automatikusan engedélyezve.
 
-Ahhoz, hogy a rendszerindítási diagnosztika, egy tárfiókot kell létrehozni rendszerindító naplók tárolásához. Storage-fiókok 3 és 24 karakter között lehet globálisan egyedi névvel kell rendelkeznie, és csak számokat és kisbetűket tartalmazhat. A storage-fiók létrehozása a [az storage-fiók létrehozása](/cli/azure/storage/account#create) parancsot. Ebben a példában a véletlenszerű karakterlánc egyedi tárfióknév létrehozására szolgál. 
+Ahhoz, hogy a rendszerindítási diagnosztikát engedélyezni lehessen, tárfiókot kell létrehozni a rendszerindítási naplók tárolásához. A tárfiókoknak globálisan egyedi névvel kell rendelkezniük, amelynek hossza 3–24 karakter lehet, továbbá csak számokat és kisbetűket tartalmazhat. Az [az storage account create](/cli/azure/storage/account#az_storage_account_create) paranccsal hozzon létre egy tárfiókot. Ebben a példában az egyedi tárfióknév létrehozásához véletlenszerű karakterláncot használunk. 
 
 ```azurecli-interactive 
 storageacct=mydiagdata$RANDOM
@@ -76,13 +76,13 @@ az storage account create \
   --location eastus
 ```
 
-Ha engedélyezve van a rendszerindítási diagnosztika, az URI-t a blob storage tárolóban van szükség. A következő parancsot a tárfiók ezt az URI vissza lekérdezi. Az URI azonosítóját tárolja a változók nevében *bloburi*, amellyel a következő lépésben.
+A rendszerindítási diagnosztika engedélyezéséhez szükség van a Blob Storage-tároló URI-jére. A tárfiókok lekérdezésekor a következő lekérdezési parancsok adják vissza ezt az URI-t. Ezt az URI értéket a *bloburi* változóban tárolja a rendszer. A változóra a következő lépésben lesz szükség.
 
 ```azurecli-interactive 
 bloburi=$(az storage account show --resource-group myResourceGroupMonitor --name $storageacct --query 'primaryEndpoints.blob' -o tsv)
 ```
 
-Most már engedélyezheti a rendszerindítási diagnosztika a [az virtuális gép rendszerindítási-diagnosztika engedélyezése](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics#az_vm_boot_diagnostics_enable). A `--storage` értéke a blob URI gyűjti az előző lépésben.
+Most már engedélyezheti a rendszerindítási diagnosztikát az [az vm boot-diagnostics enable](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics#az_vm_boot_diagnostics_enable) paranccsal. A `--storage` érték az előző lépésben lekért blob URI.
 
 ```azurecli-interactive 
 az vm boot-diagnostics enable \
@@ -94,155 +94,155 @@ az vm boot-diagnostics enable \
 
 ## <a name="view-boot-diagnostics"></a>Rendszerindítási diagnosztika megtekintése
 
-Rendszerindítási diagnosztika, ha engedélyezve vannak minden alkalommal, állítsa le és indítsa el a virtuális Gépet, a rendszerindítási folyamat információ íródik naplófájlba. Ehhez a példához, először a virtuális Géphez a felszabadítani a [az virtuális gép felszabadítása](/cli/azure/vm#deallocate) parancsot a következőképpen:
+Ha a rendszerindítási diagnosztika engedélyezve van, a rendszer a virtuális gép minden egyes elindításakor és leállításakor egy naplófájlba írja a rendszerindítási folyamat adatait. Ebben a példában először szabadítsa fel a virtuális gépet az [az vm deallocate](/cli/azure/vm#az_vm_deallocate) paranccsal a következőképpen:
 
 ```azurecli-interactive 
 az vm deallocate --resource-group myResourceGroupMonitor --name myVM
 ```
 
-Most indítsa el a virtuális Géphez a a [az vm indítása]( /cli/azure/vm#stop) parancsot a következőképpen:
+Most indítsa el a virtuális gépet az [az vm start]( /cli/azure/vm#az_vm_stop) paranccsal a következő módon:
 
 ```azurecli-interactive 
 az vm start --resource-group myResourceGroupMonitor --name myVM
 ```
 
-Kaphat a rendszerindítási diagnosztikai adatok *myVM* rendelkező a [az virtuális gép rendszerindítási-diagnosztika get-rendszerindítási-naplófájl](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics#az_vm_boot_diagnostics_get_boot_log) parancsot a következőképpen:
+A *myVM* virtuális gép rendszerindítási diagnosztikai adatait az [az vm boot-diagnostics get-boot-log](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics#az_vm_boot_diagnostics_get_boot_log) paranccsal kérheti le a következő módon:
 
 ```azurecli-interactive 
 az vm boot-diagnostics get-boot-log --resource-group myResourceGroupMonitor --name myVM
 ```
 
 
-## <a name="view-host-metrics"></a>Gazdagép-metrikák megtekintése
+## <a name="view-host-metrics"></a>Gazdagép metrikáinak megtekintése
 
-A Linux virtuális gépek dedikált-állomással rendelkezik, amely hatással van az Azure-ban. Metrikák automatikusan összegyűjtött ahhoz, hogy a gazdagép és tekintheti meg az Azure-portálon az alábbiak szerint:
+A Linux rendszerű virtuális gépek egy dedikált gazdagéppel interaktálnak az Azure-ban. A rendszer automatikusan gyűjti a gazdagép metrikáit, amelyek a következőképpen tekinthetők meg az Azure Portalon:
 
-1. Az Azure portálon kattintson **erőforráscsoportok**, jelölje be **myResourceGroupMonitor**, majd válassza ki **myVM** erőforrás listájában.
-1. Hogyan működik-e a gazdagép VM megtekintéséhez kattintson **metrikák** a virtuális gép panelen, majd válassza ki valamelyik a *[állomás]* mérőszámok alapján **elérhető**.
+1. Az Azure Portalon kattintson az **Erőforráscsoportok** lehetőségre, és válassza ki a **myResourceGroupMonitor**, majd a **myVM** elemet az erőforrások listájából.
+1. A virtuális gazdagép teljesítményének megtekintéséhez kattintson a **Metrikák** elemre a virtuális gép paneljén, majd válassza ki valamelyik *[Gazdagép]* metrikát a **Rendelkezésre álló metrikák** területen.
 
-    ![Gazdagép-metrikák megtekintése](./media/tutorial-monitoring/monitor-host-metrics.png)
+    ![Gazdagép metrikáinak megtekintése](./media/tutorial-monitoring/monitor-host-metrics.png)
 
 
-## <a name="install-diagnostics-extension"></a>Diagnosztika-kiterjesztés telepítése
+## <a name="install-diagnostics-extension"></a>A diagnosztikai bővítmény telepítése
 
 > [!IMPORTANT]
-> Ez a dokumentum ismerteti a Linux diagnosztikai bővítményt, amely elavult 2.3 verzióját. 2.3 verziója lesz támogatott 2018. június 30-ig.
+> Ez a dokumentum a Linux diagnosztikai bővítmény 2.3-as verzióját ismerteti, amely már elavult. A 2.3-as verzió támogatása 2018. június 30-tól megszűnik.
 >
-> A Linux diagnosztikai bővítmény 3.0-s verziója a helyette engedélyezhető. További információkért lásd: [dokumentációjában](./diagnostic-extension.md).
+> Ettől az időponttól kezdve a Linux diagnosztikai bővítmény 3.0-s verziója engedélyezhető a rendszeren. További információkat [a dokumentációban](./diagnostic-extension.md) talál.
 
-Az alapvető gazdagép metrikák érhetők el, de a részletes és a Virtuálisgép-specifikus metrikák megtekintéséhez telepítenie kell az Azure diagnostics bővítményt a virtuális Gépen. Az Azure diagnostics bővítmény lehetővé teszi, hogy további figyelési és diagnosztikai adatokat beolvasni a virtuális gépről. Megtekintheti a metrikák és riasztások alapján hogyan hajtja végre a virtuális gép létrehozása. A diagnosztikai bővítmény telepítve van az Azure portálon keresztül az alábbiak szerint:
+Az alapvető gazdagépmetrikák elérhetőek, de a részletesebb és a virtuálisgép-specifikus metrikák megtekintéséhez telepíteni kell az Azure diagnosztikai bővítményét a virtuális gépen. Az Azure diagnosztikai bővítményének segítségével további monitorozási és diagnosztikai adatok kérdezhetők le a virtuális gépről. Megtekintheti ezeket a teljesítménymetrikákat, és a virtuális gép teljesítményétől függő riasztásokat hozhat létre. A diagnosztikai bővítmény telepítését az Azure Portalon végezheti el a következő módon:
 
-1. Az Azure portálon kattintson **erőforráscsoportok**, jelölje be **myResourceGroup**, majd válassza ki **myVM** erőforrás listájában.
-1. Kattintson a **diagnosztikai beállítások**. A lista azt mutatja, hogy *rendszerindítási diagnosztika* már engedélyezve van az előző szakaszából. Jelölje be a jelölőnégyzetet a *alapvető metrikák*.
-1. Az a *tárfiók* szakaszban, keresse meg és jelölje ki a *mydiagdata [1234]* az előző szakaszban létrehozott fiók.
+1. Az Azure Portalon kattintson az **Erőforráscsoportok** lehetőségre, és válassza ki a **myResourceGroup**, majd a **myVM** elemet az erőforrások listájából.
+1. Kattintson a **Diagnosztikai beállítások** lehetőségre. A listából látható, hogy a *rendszerindítási diagnosztika* az előző szakaszban már engedélyezve lett. Jelölje be az *Alapmetrikák* jelölőnégyzetet.
+1. A *Tárfiók* szakaszban keresse meg és jelölje ki az előző szakaszban létrehozott *mydiagdata[1234]* fiókot.
 1. Kattintson a **Mentés** gombra.
 
-    ![Nézet diagnosztikai metrikák](./media/tutorial-monitoring/enable-diagnostics-extension.png)
+    ![Diagnosztikai metrikák megtekintése](./media/tutorial-monitoring/enable-diagnostics-extension.png)
 
 
-## <a name="view-vm-metrics"></a>Nézet VM metrikák
+## <a name="view-vm-metrics"></a>Virtuálisgép-metrikák megtekintése
 
-A virtuális gép mérni, hogy megtekinthetők-e a gazdagép VM metrikák azonos módon tekintheti meg:
+A virtuális gép metrikái ugyanúgy tekinthetők meg, mint korábban a virtuális gazdagép metrikái:
 
-1. Az Azure portálon kattintson **erőforráscsoportok**, jelölje be **myResourceGroup**, majd válassza ki **myVM** erőforrás listájában.
-1. Hogyan működik-e a virtuális gép megtekintéséhez kattintson **metrikák** a virtuális gép panelen, majd válassza ki a diagnosztika mérőszámok alapján bármelyikét **elérhető**.
+1. Az Azure Portalon kattintson az **Erőforráscsoportok** lehetőségre, és válassza ki a **myResourceGroup**, majd a **myVM** elemet az erőforrások listájából.
+1. A virtuális gép teljesítményének nyomon követéséhez kattintson a **Metrikák** elemre a virtuális gép paneljén, majd válassza ki valamelyik diagnosztikai metrikát a **Rendelkezésre álló metrikák** területen.
 
-    ![Nézet VM metrikák](./media/tutorial-monitoring/monitor-vm-metrics.png)
+    ![Virtuálisgép-metrikák megtekintése](./media/tutorial-monitoring/monitor-vm-metrics.png)
 
 
 ## <a name="create-alerts"></a>Riasztások létrehozása
 
-Riasztások adott mérőszámok alapján hozhat létre. Riasztások értesíti, amikor az átlagos CPU-használat meghaladja az egy bizonyos küszöb vagy a rendelkezésre álló szabad lemezterületet alá csökken egy adott értékre, például használható. Riasztások jelennek meg az Azure portálon, vagy e-mailben küldhetők el. Riasztás generálása Azure Automation-forgatókönyveket vagy Azure Logic Apps is elindítható.
+Létrehozhat megadott teljesítménymetrikákon alapuló riasztásokat. A riasztások segítségével értesülhet például arról, ha az átlagos processzorhasználat meghalad egy bizonyos küszöbértéket vagy a rendelkezésre álló szabad lemezterület egy adott érték alá csökken. A riasztások megjeleníthetők az Azure Portalon vagy elküldhetők e-mailben. A létrehozott riasztásokra adott válaszként aktiválhatók Azure Automation-runbookok vagy Azure Logic Apps-alkalmazások.
 
-A következő példa az átlagos processzorhasználat riasztást hoz létre.
+A következő példában az átlagos processzorhasználat alapján hozunk létre riasztást.
 
-1. Az Azure portálon kattintson **erőforráscsoportok**, jelölje be **myResourceGroup**, majd válassza ki **myVM** erőforrás listájában.
-2. Kattintson a **riasztási szabályok** virtuális gép paneljén kattintson a **metrika riasztás hozzáadása** a riasztások panel tetején.
-4. Adjon meg egy **neve** a riasztás például *myAlertRule*
-5. Riasztást vált ki, ha processzor 1.0 meghaladja 5 percig, hagyja a többi alapértelmezett kiválasztva.
-6. Szükség esetén jelölje be a *E-mail-tulajdonosok, közreműködőknek és olvasóknak* e-mail értesítést küldeni. Az alapértelmezett művelet is értesítést megjeleníteni a portálon.
+1. Az Azure Portalon kattintson az **Erőforráscsoportok** lehetőségre, és válassza ki a **myResourceGroup**, majd a **myVM** elemet az erőforrások listájából.
+2. Kattintson a **Riasztási szabályok** elemre a virtuális gép paneljén, majd a **Metrikariasztás hozzáadása** lehetőségre a riasztási panel felső részén.
+4. Adjon meg egy **nevet** a riasztás számára, például *myAlertRule*
+5. Ha szeretne riasztást aktiválni, amikor a processzorhasználat 5 percig meghaladja az 1,0 értéket, hagyja változatlanul az összes többi alapértelmezett beállítást.
+6. E-mail-értesítés küldéséhez jelölje be az *E-mail küldése a tulajdonosoknak, közreműködőknek és olvasóknak* jelölőnégyzetet. Az alapértelmezett művelet az értesítés megjelenítése a portálon.
 7. Kattintson az **OK** gombra.
 
-## <a name="manage-package-updates"></a>Csomag frissítések kezelése
+## <a name="manage-package-updates"></a>Csomagfrissítések felügyelete
 
-Frissítéskezelés használatával kezelheti csomag frissítések és javítások a Azure Linux virtuális gépekhez. Közvetlenül a virtuális gépről, gyorsan mérje fel a rendelkezésre álló frissítések állapotát, kötelező frissítések telepítésének ütemezése, és tekintse át a központi telepítési eredmények ellenőrzése a frissítések alkalmazása sikeresen megtörtént a virtuális géphez.
+Az Update management megoldással felügyelheti az Azure-beli Linux rendszerű virtuális gépek csomagfrissítéseit és javításait. A virtuális gépről gyorsan felmérheti az elérhető frissítések állapotát, ütemezheti a szükséges frissítések telepítését, és áttekintheti a telepítési eredményeket, hogy ellenőrizze, sikeres volt-e a frissítések telepítése a virtuális gépen.
 
 Díjszabási információkért tekintse meg az [Automation Update Management-díjszabását](https://azure.microsoft.com/pricing/details/automation/) ismertető cikket.
 
-### <a name="enable-update-management-preview"></a>Engedélyezze frissítéskezelésről (előzetes verzió)
+### <a name="enable-update-management-preview"></a>Az Update management (előzetes verzió) engedélyezése
 
-A virtuális gép frissítéskezelés engedélyezése
+Az Update management engedélyezése a virtuális géphez
 
-1. A képernyő bal oldalán kattintson **virtuális gépek**.
-1. A listában jelölje ki a virtuális gépek.
-1. A virtuális gép képernyőn a a **műveletek** kattintson **frissítéskezelés**. A **engedélyezze frissítéskezelésről** képernyőn megnyílik.
+1. A képernyő bal oldalán válassza a **Virtuális gépek** elemet.
+1. Válasszon ki egy virtuális gépet a listából.
+1. A virtuális gép képernyőjének **Műveletek** szakaszában kattintson a **Frissítéskezelés** elemre. Ekkor megnyílik **Az Update Management engedélyezése** képernyő.
 
 A rendszer ellenőrzi, hogy az Update Management engedélyezve van-e a virtuális gépen. A rendszer eközben azt is ellenőrzi, hogy létezik-e Log Analytics-munkaterület és egy csatlakoztatott Automation-fiók, valamint hogy a megoldás már jelen van-e a munkaterületen.
 
-A Naplóelemzési munkaterület funkciókat és szolgáltatásokat, például a frissítéskezelés által generált adatok összegyűjtésére szolgál. A munkaterület egyetlen központi helyet biztosít a több forrásból származó adatok áttekintéséhez és elemzéséhez. A virtuális gépeken, amelyek a frissítés szükséges további művelet végrehajtásához Azure Automation futtatását teszi-szkriptek használatát a virtuális gépek, többek között letöltéséhez, és alkalmazza a frissítéseket.
+A Log Analytics-munkaterület az Update Management, valamint a hasonló funkciók és szolgáltatások által létrehozott adatok gyűjtésére szolgál. A munkaterület egyetlen központi helyet biztosít a több forrásból származó adatok áttekintéséhez és elemzéséhez. A frissítést igénylő virtuális gépeken további műveletek elvégzése érdekében az Azure Automation-szkriptek futtatását is lehetővé teszi a virtuális gépeken (pl. letöltés és frissítések alkalmazása).
 
 Az ellenőrzési folyamat arra is kiterjed, hogy a virtuális gépen működik-e a Microsoft Monitoring Agent (MMA) és egy hibrid feldolgozó. Ez az ügynök kommunikál a virtuális géppel, továbbá begyűjti a frissítési állapottal kapcsolatos információkat. 
 
-Ha az előfeltételek nem teljesülnek, a megoldás lehetővé teszi lehetővé teszi egy fejléc jelenik meg.
+Ha az előfeltételek nem teljesülnek, egy szalagcím jelenik meg, amelyen engedélyezheti a megoldást.
 
 ![Az Update Management felvételének konfigurációs szalagcíme](./media/tutorial-monitoring/manage-updates-onboard-solution-banner.png)
 
-A megoldás engedélyezéséhez kattintson a szalagcímre. Ha az ellenőrzés után nem található a következő előfeltételek bármelyike található, akkor automatikusan megkapja:
+A megoldás engedélyezéséhez kattintson a szalagcímre. Ha az ellenőrzést követően az alábbi előfeltételek bármelyike hiányzik, a rendszer automatikusan hozzáadja azt:
 
 * [Log Analytics](../../log-analytics/log-analytics-overview.md)-munkaterület
 * [Automatizálás](../../automation/automation-offering-get-started.md)
 * Engedélyezett [hibrid runbook-feldolgozó](../../automation/automation-hybrid-runbook-worker.md) a virtuális gépen
 
-A **engedélyezze Frissítéskezelésről** képernyőn megnyílik. Adja meg a beállításokat, és kattintson a **engedélyezése**.
+Ekkor megnyílik **Az Update Management engedélyezése** képernyő. Adja meg a beállításokat, és kattintson az **Engedélyezés** gombra.
 
-![Frissítés felügyeleti megoldás engedélyezése](./media/tutorial-monitoring/manage-updates-update-enable.png)
+![Az Update Management megoldás engedélyezése](./media/tutorial-monitoring/manage-updates-update-enable.png)
 
-A megoldás engedélyezése akár 15 percig is eltarthat, és ebben az időszakban, akkor nem zárja be a böngészőablakot. A megoldás engedélyezése után a virtuális Gépen a Csomagkezelő a hiányzó frissítésekkel kapcsolatos információk szolgáltatáshoz zajlik.
+A megoldás engedélyezése akár 15 percet is igénybe vehet. Ez idő alatt ne zárja be a böngészőablakot. A megoldás engedélyezését követően a virtuális gép hiányzó frissítéseivel kapcsolatos adatok elkezdenek beérkezni a csomagkezelőből a Log Analytics szolgáltatásba.
 Az adatok legalább 30 perc és legfeljebb 6 óra múlva állnak készen az elemzésre.
 
 ### <a name="view-update-assessment"></a>A frissítésfelmérés megtekintése
 
-Miután a **frissítéskezelés** megoldás engedélyezve van, a **frissítéskezelés** képernyő jelenik meg. A **Hiányzó frissítések** lapon a hiányzó frissítések listája látható.
+Az **Update management** megoldás engedélyezését követően megjelenik a **Frissítéskezelés** képernyő. A **Hiányzó frissítések** lapon a hiányzó frissítések listája látható.
 
 ![Frissítés állapotának megtekintése](./media/tutorial-monitoring/manage-updates-view-status-linux.png)
 
 ### <a name="schedule-an-update-deployment"></a>Frissítéstelepítés ütemezése
 
-Frissítések telepítéséhez a központi telepítés utáni a kiadási ütemezés és a karbantartási időszak ütemezése.
+A frissítések telepítéséhez ütemezzen egy olyan telepítést, amely megfelel a kiadási ütemtervnek és a karbantartási időszaknak.
 
-A virtuális Gépet egy új központi telepítésének ütemezése kattintva **ütemezés központi telepítésének** tetején a **frissítéskezelés** képernyő. Az **Új frissítéstelepítés** képernyőn adja meg a következő információkat:
+Ütemezzen egy új frissítéstelepítést a virtuális géphez. Ehhez kattintson a **Frissítéskezelés** képernyő felső részén található **Frissítések központi telepítésének ütemezése** elemre. Az **Új frissítéstelepítés** képernyőn adja meg a következő információkat:
 
 * **Név** – Adjon meg egy egyedi nevet a frissítéstelepítés azonosításához.
-* **Frissítések kizárandó** – válassza ezt a csomagot kell zárni a frissítés adja meg.
+* **Kihagyandó frissítések** – Válassza ezt a lehetőséget a frissítésből kizárni kívánt csomagok neveinek megadásához.
 * **Ütemezési beállítások** – Elfogadhatja az alapértelmezett időpontot, amely a 30 perccel az aktuális idő utáni időpont, vagy megadhat egy másik időpontot. Azt is megadhatja, hogy a telepítés egyszer történjen meg, vagy ismétlődjön. Ha ismétlődő ütemezést szeretne beállítani, az Ismétlődés alatt kattintson az Ismétlődő lehetőségre.
 
   ![A frissítés ütemezés beállításai képernyője](./media/tutorial-monitoring/manage-updates-schedule-linux.png)
 
-* **Karbantartási időszak (perc)** – Adja meg azt az időtartamot, amelyen belül szeretné, hogy a frissítés telepítése megtörténjen.  Ez segít a módosítások a megadott karbantartási időszakon belül el kell végezni. 
+* **Karbantartási időszak (perc)** – Adja meg azt az időtartamot, amelyen belül szeretné, hogy a frissítés telepítése megtörténjen.  Ez biztosítja, hogy a módosítások a megadott karbantartási időszakban menjenek végbe. 
 
 Ha befejezte az ütemezés konfigurálását, kattintson a **Létrehozás** gombra. Ezután visszalép az állapot-irányítópultra.
-Figyelje meg, hogy a **ütemezett** táblázat mutatja a központi telepítési ütemezés létrehozott.
+Ekkor az **Ütemezett** táblázatban már látható az Ön által létrehozott telepítésütemezés.
 
 > [!WARNING]
-> A virtuális gép automatikusan újraindul frissítések települnek, ha a karbantartási időszakban elegendő idő után.
+> A virtuális gép automatikusan újraindul frissítések telepítése után, ha a karbantartási időszakban még elegendő idő áll erre rendelkezésre.
 
-Frissítéskezelés a virtuális Gépet a meglévő Csomagkezelő csomagok használja.
+Az Update management a virtuális gép meglévő csomagkezelőjét használja a csomagok telepítéséhez.
 
 ### <a name="view-results-of-an-update-deployment"></a>Frissítéstelepítés eredményeinek megtekintése
 
 Miután az ütemezett telepítés elindult, a **Frissítéskezelés** képernyő **Frissítéstelepítések** lapján láthatóvá válik a telepítés állapota.
 Ha éppen fut, az állapota **Folyamatban**. Ha sikeresen befejeződik, **Sikeres** állapotúra változik.
-Ha hiba történik a központi telepítésben lévő egy vagy több frissítésekkel, az állapot értéke **sikertelen**.
+Ha a telepítésben lévő frissítések közül egy vagy több meghiúsul, annak az állapota **Sikertelen**.
 Ha rákattint a befejezett frissítéstelepítésre, megjelenik az adott frissítéstelepítés irányítópultja.
 
 ![Adott telepítés frissítéstelepítési állapot-irányítópultja](./media/tutorial-monitoring/manage-updates-view-results.png)
 
-A **frissítésének elmulasztása az** csempe a frissítések és a virtuális gép telepítési eredmények száma összegzését.
+A **Frissítés eredményei** csempe összesíti a frissítések teljes számát és az adott virtuális gépre vonatkozó telepítési eredményeket.
 A jobb oldali táblázat az egyes frissítések részletes áttekintését és a telepítés eredményét tartalmazza, amely a következők egyike lehet:
 
 * **Nem lett megkísérelve** – a frissítés nem lett telepítve, mert a megadott karbantartási időszak alapján nem lett volna rá elég idő.
-* **Sikeres** – a frissítés sikeresen letöltötte és telepítette a virtuális Gépen
-* **Nem sikerült** – a frissítés letöltése vagy telepítése a virtuális gépen nem sikerült.
+* **Sikeres** – a frissítés sikeresen le lett töltve és telepítve lett a virtuális gépen.
+* **Sikertelen** – a frissítés virtuális gépre történő letöltése vagy telepítése nem sikerült.
 
 Kattintson a **Minden napló** csempére a telepítés által létrehozott összes naplóbejegyzés megtekintéséhez.
 
@@ -252,9 +252,9 @@ Kattintson a **Hibák** csempére a telepítés közben felmerülő hibák rész
 
 ## <a name="advanced-monitoring"></a>Speciális figyelés 
 
-Fejlettebb, figyelés, a virtuális gép segítségével teheti [Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview). Ha még nem tette meg, akkor regisztrálhatnak az egy [ingyenes próbaverzió](https://www.microsoft.com/en-us/cloud-platform/operations-management-suite-trial) az Operations Management Suite szolgáltatásban.
+Az [Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) használatával fejlettebb virtuálisgép-monitorozási megoldásokat is alkalmazhat. Regisztráljon az Operations Management Suite [ingyenes próbaverziójára](https://www.microsoft.com/en-us/cloud-platform/operations-management-suite-trial), ha még nem tette meg.
 
-Ha rendelkezik az OMS-portállal, találja a kulcsát és a munkaterület azonosítóját a beállítások panelen. A név felülírandó < munkaterület-kulcs > és < munkaterület-azonosítója > az OMS Szolgáltatáshoz tartozó értékeket a munkaterületet, és ezután használhatja **az virtuálisgép-bővítmény készlet** az OMS-bővítmény hozzáadása a virtuális Gépet:
+Ha rendelkezik hozzáféréssel az OMS-portálhoz, a Beállítások panelen találja a munkaterület kulcsát és azonosítóját. Cserélje le a <workspace-key> és a <workspace-id> helyőrzőt az OMS-munkaterületről származó adatokra, majd az **az vm extension set** paranccsal adja hozzá az OMS-bővítményt a virtuális géphez:
 
 ```azurecli-interactive 
 az vm extension set \
@@ -267,25 +267,25 @@ az vm extension set \
   --settings '{"workspaceId": "<workspace-id>"}'
 ```
 
-Az OMS-portálon naplófájl-keresési paneljén láthatja *myVM* például az alábbi ábrán is látható:
+Az OMS-portál naplókeresési paneljén ekkor meg kell jelennie a *myVM* elemnek, ahogyan az az alábbi képen is látható:
 
 ![OMS panel](./media/tutorial-monitoring/tutorial-monitor-oms.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban konfigurálhatók, tekintse át, és a virtuális gépek frissítések kezelhetők. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Ebben az oktatóanyagban egy virtuális gép konfigurálását, áttekintését és frissítéseinek felügyeletét végezte el. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Rendszerindítási diagnosztika a virtuális Gépre engedélyezése
+> * Rendszerindítási diagnosztika engedélyezése a virtuális gépen
 > * Rendszerindítási diagnosztika megtekintése
-> * Gazdagép-metrikák megtekintése
-> * A virtuális Gépre diagnosztika bővítmény engedélyezése
-> * Nézet VM metrikák
-> * A diagnosztikai mérőszámok alapján figyelmeztetések létrehozása
-> * Csomag frissítések kezelése
-> * Speciális figyelés beállítása
+> * Gazdagép metrikáinak megtekintése
+> * Diagnosztikai bővítmény engedélyezése a virtuális gépen
+> * Virtuálisgép-metrikák megtekintése
+> * Riasztások létrehozása diagnosztikai metrikák alapján
+> * Csomagfrissítések felügyelete
+> * Speciális monitorozás beállítása
 
-A következő oktatóanyag az Azure Security Centerrel kapcsolatos további továbblépés.
+Folytassa a következő oktatóanyaggal, amely az Azure Security Center használatát ismerteti.
 
 > [!div class="nextstepaction"]
 > [A virtuális gépek biztonságának kezelése](./tutorial-azure-security.md)

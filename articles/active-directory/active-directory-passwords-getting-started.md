@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro;seohack1
-ms.openlocfilehash: 88123cead40968ebf7327b81f94233529f97aa2f
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 34a6722fdd06cf0b198320e551daccc21956dc69
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="azure-ad-self-service-password-reset-rapid-deployment"></a>Az Azure AD-beli önkiszolgáló jelszómódosítás gyors üzembe helyezése
 
@@ -33,7 +33,7 @@ Ez az útmutató feltételezi, hogy már rendelkezik egy Azure Active Directory-
 
 ## <a name="enable-sspr-for-your-azure-ad-tenant"></a>Az SSPR engedélyezése az Azure AD-bérlő számára
 
-1. A meglévő Azure AD-bérlőjében válassza ki a **Jelszó átállítása** lehetőséget.
+1. A meglévő Azure AD-bérlőjében, az **Azure Portalon** **Azure Active Directory** területén válassza az **Új jelszó kérése** lehetőséget.
 
 2. A **Tulajdonságok** képernyő **Önkiszolgáló jelszóátállítás engedélyezve** lehetőségnél válassza a következők egyikét:
    * **Senki**: Senki nem használhatja az SSPR funkciót.

@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: tutorial
 ms.date: 11/29/2017
-ms.openlocfilehash: 12cbd7d9682e70fc5bc65b2eda5b8eddf6bbb7f0
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: ab0c10b2eeaa4388ef9b4dab90b99b37fa32df74
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="classify-iris-part-3-deploy-a-model"></a>Írisz osztályozása, 3. rész: Modell üzembe helyezése
 Az Azure Machine Learning-szolgáltatások (előzetes verzió) az adatszakértők számára létrehozott átfogó, integrált és fejlett adatelemzési megoldás. Az adatszakértők a használatával az adatok előkészítését, a kísérletek kidolgozását és a modellek felhőszinten való üzembe helyezését hajthatják végre.
@@ -198,7 +198,7 @@ Most már készen áll a valós idejű webszolgáltatás létrehozására.
    * `-n`: Az alkalmazás neve, csak kisbetűkből állhat.
    * `-f`: A pontozó szkript fájlneve
    * `--model-file`: A modellfájl. Ebben az esetben ez a model.pkl pickle-fájl.
-   * `-r`: A modell típusa. Ebben az esetben ez a Python-modell.
+   * `-r`: A modell futtatókörnyezete. Ebben az esetben ez a Python-modell. Az érvényes futtatókörnyezetek a `python` és a `spark-py`.
    * `--collect-model-data true`: Ez engedélyezi az adatgyűjtést.
    * `-c`: A további csomagokat tartalmazó Conda-függőségfájl elérési útja.
 

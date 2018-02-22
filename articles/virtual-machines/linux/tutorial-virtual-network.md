@@ -1,6 +1,6 @@
 ---
-title: "Az Azure virtuális hálózatok és a Linux virtuális gépek |} Microsoft Docs"
-description: "Az oktatóanyag - kezelése az Azure virtuális hálózatok és a Linux virtuális gépek az Azure parancssori felület"
+title: "Azure virtuális hálózatok és Linux virtuális gépek | Microsoft Docs"
+description: "Oktatóanyag – Azure virtuális hálózatok és Linux virtuális gépek kezelése az Azure CLI-vel"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: neilpeterson
@@ -16,51 +16,51 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 0e7f4308290a14e592cf1739fa5b0b3360d7c68b
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
-ms.translationtype: MT
+ms.openlocfilehash: cce0cebc4a31cd78dd7c0c73424e1b674134d360
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="manage-azure-virtual-networks-and-linux-virtual-machines-with-the-azure-cli"></a>Egy Azure virtuális hálózatot és a Linux virtuális gépek az Azure parancssori felület kezelése
+# <a name="manage-azure-virtual-networks-and-linux-virtual-machines-with-the-azure-cli"></a>Azure virtuális hálózatok és Linux virtuális gépek kezelése az Azure CLI-vel
 
-Az Azure virtuális gépek Azure hálózatkezelés belső és külső hálózati kommunikációhoz használni. Ez az oktatóanyag végigvezeti a két virtuális gép telepítése és konfigurálása ezen a virtuális gépek Azure hálózatkezelés. Ebben az oktatóanyagban szereplő példák feltételezik, hogy, hogy a virtuális gépeket üzemeltető egy adatbázis-háttér webalkalmazás azonban egy alkalmazás nincs telepítve az oktatóanyag. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az Azure-beli virtuális gépek Azure hálózatkezelést használnak a belső és külső hálózati kommunikációhoz. Ez az oktatóanyag végigvezeti két virtuális gép telepítésén és az Azure hálózatkezelés konfigurálásán ezen virtuális gépekhez. Az oktatóanyagban szereplő példák feltételezik, hogy a virtuális gépek üzemeltetnek egy webalkalmazást egy adatbázis-alapú háttérrendszerrel, de az oktatóanyag során nem telepítünk ilyen alkalmazást. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Hozzon létre egy virtuális hálózat és alhálózat
+> * Virtuális hálózat és alhálózat létrehozása
 > * Hozzon létre egy nyilvános IP-címet
-> * Előtér-virtuális gép létrehozása
+> * Előtérbeli virtuális gép létrehozása
 > * Biztonságos hálózati adatforgalom
-> * Háttér-virtuális gép létrehozása
+> * Háttérbeli virtuális gép létrehozása
 
-Az oktatóanyag végrehajtása során létrehozott ezeket az erőforrásokat látható:
+Az oktatóanyag végrehajtása során a következő erőforrások jönnek létre:
 
-![Két alhálózat virtuális hálózat](./media/tutorial-virtual-network/networktutorial.png)
+![Virtuális hálózat két alhálózattal](./media/tutorial-virtual-network/networktutorial.png)
 
-- *myVNet* – a virtuális hálózat, amely a virtuális gépek használatával kommunikálnak egymással, és az interneten.
-- *myFrontendSubnet* – az alhálózati *myVNet* az előtér-erőforrások használják.
-- *myPublicIPAddress* -használt nyilvános IP-cím elérésére *myFrontendVM* az internetről.
-- *myFrontentNic* -által használt hálózati illesztőt *myFrontendVM* kommunikálni *myBackendVM*.
-- *myFrontendVM* – az internet közötti kommunikációra használja a virtuális gép és *myBackendVM*.
-- *myBackendNSG* – a hálózati biztonsági csoportot, amely a közötti kommunikáció a *myFrontendVM* és *myBackendVM*.
-- *myBackendSubnet* -a társított alhálózati *myBackendNSG* és a háttér-erőforrások használják.
-- *myBackendNic* -által használt hálózati illesztőt *myBackendVM* kommunikálni *myFrontendVM*.
-- *myBackendVM* -port a 22-es és 3306 való kommunikációra használja a virtuális gépi *myFrontendVM*.
+- *myVNet* – Az a virtuális hálózat, amely segítségével a virtuális gépek kommunikálnak egymással és az internettel.
+- *myFrontendSubnet* – A *myVNet* előtérbeli erőforrásai által használt alhálózat.
+- *myPublicIPAddress* – Az internet felől a *myFrontendVM* elérésére használt nyilvános IP-cím.
+- *myFrontentNic* – A *myFrontendVM* által a *myBackendVM* virtuális géppel való kommunikációra használt hálózati adapter.
+- *myFrontendVM* – Az internet és a *myBackendVM* közötti kommunikációra használt virtuális gép.
+- *myBackendNSG* – A *myFrontendVM* és a *myBackendVM* közti kommunikációt szabályozó hálózati biztonsági csoport.
+- *myBackendSubnet* – *myBackendNSG* csoporthoz társított, és a háttérbeli erőforrások által használt alhálózat.
+- *myBackendNic* – A *myBackendVM* által *myFrontendVM* virtuális géppel való kommunikációra használt hálózati adapter.
+- *myBackendVM* – A *myFrontendVM* virtuális géppel a 22-es és 3306-os porton keresztül kommunikáló virtuális gép.
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Telepítése és a parancssori felület helyileg használata mellett dönt, ha ez az oktatóanyag van szükség, hogy futnak-e az Azure parancssori felület 2.0.4 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
 
-## <a name="vm-networking-overview"></a>VM-hálózat – áttekintés
+## <a name="vm-networking-overview"></a>Virtuális gépek hálózatkezelése – áttekintés
 
-Egy Azure virtuális hálózatot a virtuális gépek, az internetes és más Azure-szolgáltatások például az Azure SQL-adatbázis között a biztonságos hálózati kapcsolatok engedélyezése. Virtuális hálózatok logikai szegmensekben – ún alhálózatok osztható. Alhálózatok folyamatábrán hálózati és biztonsági határaként szolgálnak. A virtuális gép telepítésekor általában tartalmazza a virtuális hálózati adaptert, alhálózat van csatolva.
+Az Azure virtuális hálózatok biztonságos hálózati kapcsolatokat tesznek lehetővé virtuális gépek, az internet és más Azure-szolgáltatások (pl. az Azure SQL Database-adatbázis) között. A virtuális hálózatok alhálózatnak nevezett logikai szegmensekre oszthatók. Az alhálózatok segítségével szabályozható a hálózati forgalom, valamint biztonsági határként is használhatók. Egy virtuális géphez a telepítéskor általában egy virtuális hálózati adapter tartozik, amely egy alhálózathoz csatlakozik.
 
-## <a name="create-a-virtual-network-and-subnet"></a>Hozzon létre egy virtuális hálózat és alhálózat
+## <a name="create-a-virtual-network-and-subnet"></a>Virtuális hálózat és alhálózat létrehozása
 
-Ebben az oktatóanyagban egy virtuális hálózaton, két alhálózattal jön létre. A webalkalmazás üzemeltetéséhez előtér-alhálózatot, és egy adatbázis-kiszolgálót futtató háttér-alhálózatot.
+Ebben az oktatóanyagban egy virtuális hálózatot hozunk létre két alhálózattal, egy előtérbeli alhálózatot egy webalkalmazás üzemeltetéséhez, és egy háttérbeli alhálózatot egy adatbázis-kiszolgáló üzemeltetéséhez.
 
-Virtuális hálózat létrehozása előtt hozzon létre egy erőforráscsoportot, a [az csoport létrehozása](/cli/azure/group#create). Az alábbi példa létrehoz egy erőforráscsoportot *myRGNetwork* eastus a helyen.
+A virtuális hálózat létrehozása előtt létre kell hoznia egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. A következő példa létrehoz egy *myRGNetwork* nevű erőforráscsoportot az eastus helyen.
 
 ```azurecli-interactive 
 az group create --name myRGNetwork --location eastus
@@ -68,7 +68,7 @@ az group create --name myRGNetwork --location eastus
 
 ### <a name="create-virtual-network"></a>Virtuális hálózat létrehozása
 
-Használja a [az hálózati vnet létrehozása](/cli/azure/network/vnet#create) parancs futtatásával hozzon létre egy virtuális hálózatot. Ebben a példában a hálózati neve *mvVNet* , és egy címelőtagot *10.0.0.0/16*. Egy alhálózat is létrejön, melynek a neve *myFrontendSubnet* és a előtaggal *10.0.1.0/24*. Az oktatóanyag későbbi részében egy előtér-VM a alhálózathoz csatlakozik. 
+Hozzon létre egy virtuális hálózatot az [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) paranccsal. Ebben a példában a hálózat neve *mvVNet*, és egy *10.0.0.0/16* címelőtagot kap. Létrejön egy alhálózat is *myFrontendSubnet* néven, *10.0.1.0/24* előtaggal. Az oktatóanyag későbbi részében ehhez az alhálózathoz egy előtérbeli virtuális gép csatlakozik. 
 
 ```azurecli-interactive 
 az network vnet create \
@@ -79,9 +79,9 @@ az network vnet create \
   --subnet-prefix 10.0.1.0/24
 ```
 
-### <a name="create-subnet"></a>Hozzon létre az alhálózatot
+### <a name="create-subnet"></a>Alhálózat létrehozása
 
-Egy új alhálózatot hozzá lett adva a virtuális hálózat a [az alhálózaton virtuális hálózat létrehozása](/cli/azure/network/vnet/subnet#create) parancsot. Ebben a példában az alhálózat neve *myBackendSubnet* , és egy címelőtagot *10.0.2.0/24*. Ez az alhálózat összes háttérszolgáltatások használatos.
+Az [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) paranccsal hozzáadunk egy új alhálózatot a virtuális hálózathoz. Ebben a példában az alhálózat neve *myBackendSubnet*, és a *10.0.2.0/24* címelőtagot kapja. A rendszer ezt az alhálózatot használja minden háttérbeli szolgáltatáshoz.
 
 ```azurecli-interactive 
 az network vnet subnet create \
@@ -91,49 +91,49 @@ az network vnet subnet create \
   --address-prefix 10.0.2.0/24
 ```
 
-Ezen a ponton a hálózati létrehozott és szegmentált két alhálózat, egy az előtér-szolgáltatásokat, és egy másikat a háttér-szolgáltatásaihoz. A következő szakaszban virtuális gépek létrehozása és ezek alhálózatok csatlakozik.
+Ekkorra létrehoztunk egy hálózatot, és két alhálózatra osztottuk, amelyek közül az egyik az előtérbeli szolgáltatásokhoz, a másik a háttérbeli szolgáltatásokhoz tartozik. A következő szakaszban a virtuális gépeket hozzuk létre, majd csatlakoztatjuk azokat az alhálózatokhoz.
 
 ## <a name="create-a-public-ip-address"></a>Hozzon létre egy nyilvános IP-címet
 
-A nyilvános IP-cím lehetővé teszi, hogy az Azure-erőforrások elérhetővé az interneten. A kiosztási módszer a nyilvános IP-címet, dinamikus vagy statikus konfigurálhatók. Alapértelmezés szerint egy nyilvános IP-cím dinamikusan történik. Dinamikus IP-címek van kiadva, ha egy virtuális gép felszabadítása. Ennek következtében az IP-cím módosítása bármely, amely tartalmazza a virtuális gép felszabadítás művelet során.
+A nyilvános IP-cím lehetővé teszi, hogy az Azure-erőforrások elérhetők legyenek az interneten. A nyilvános IP-cím kiosztási módszere konfigurálható dinamikusnak vagy statikusnak. Alapértelmezés szerint a rendszer dinamikusan osztja ki a nyilvános IP-címeket. A dinamikus IP-címek az egyes virtuális gépek felszabadításakor felszabadulnak. Ennek következtében az IP-cím minden, virtuálisgép-felszabadítást is tartalmazó művelet során módosul.
 
-A kiosztási módszer statikus, amely biztosítja, hogy az IP-cím egy megszüntetett állapot esetén egy virtuális géphez hozzárendelt maradnak állítható be. A statikusan lefoglalt IP-cím használata esetén nem adható meg az IP-címet saját magát. Ehelyett az történik a rendelkezésre álló címek készletét.
+A kiosztási módszer átállítható statikusra. Ez biztosítja, hogy a virtuális géphez hozzárendelve maradjon az IP-cím felszabadított állapotában is. A statikusan kiosztott IP-cím használata esetén nem adható meg az IP-cím. Ehelyett a rendszer osztja ki az IP-címet az elérhető címek készletéből.
 
 ```azurecli-interactive
 az network public-ip create --resource-group myRGNetwork --name myPublicIPAddress
 ```
 
-A virtuális gép létrehozásakor a [az virtuális gép létrehozása](/cli/azure/vm#create) parancs, az alapértelmezett nyilvános IP-cím címkiosztási módszerét dinamikus. Használatával egy virtuális gép létrehozásakor a [az virtuális gép létrehozása](/cli/azure/vm#create) paranccsal, tartalmazza a `--public-ip-address-allocation static` argumentum egy statikus nyilvános IP-címet hozzárendelni. Ez a művelet nem mutatja be ebben az oktatóanyagban azonban a következő szakaszban a dinamikusan kiosztott IP-címet egy statikusan lefoglalt címet változik. 
+Amikor az [az vm create](/cli/azure/vm#az_vm_create) paranccsal létrehoz egy virtuális gépet, az IP-cím-kiosztási módszer alapértelmezés szerint dinamikus. Ha az [az vm create](/cli/azure/vm#az_vm_create) hoz létre virtuális gépet, a `--public-ip-address-allocation static` argumentum szerepeltetésével rendelhet statikus IP-cím a virtuális géphez. Ezt a műveletet nincs ismertetjük ebben az oktatóanyagban, de a következő szakaszban bemutatjuk a dinamikusan kiosztott IP-cím statikusan kiosztott címre módosításának módját. 
 
-### <a name="change-allocation-method"></a>Elosztási módszer váltása
+### <a name="change-allocation-method"></a>A kiosztási módszer módosítása
 
-Az IP-cím címkiosztási módszerét használatával módosíthatók a [az hálózati nyilvános ip-frissítés](/cli/azure/network/public-ip#update) parancsot. Ebben a példában az IP-cím címkiosztási módszerét az előtér virtuális gép statikus értékre változott.
+Az IP-cím-kiosztási módszer az [az network public-ip update](/cli/azure/network/public-ip#az_network_public_ip_update) paranccsal módosítható. Ebben a példában az előtérbeli virtuális gép IP-cím-kiosztási módszerét módosítottuk statikusra.
 
-Első lépésként felszabadítani a virtuális Gépet.
+Először szabadítsa fel a virtuális gépet.
 
 ```azurecli-interactive 
 az vm deallocate --resource-group myRGNetwork --name myFrontendVM
 ```
 
-Használja a [az hálózati nyilvános ip-frissítés](/cli/azure/network/public-ip#update) parancs foglalási módjának frissítésére. Ebben az esetben a `--allocation-method` állítják be *statikus*.
+Frissítse a kiosztási módszert az [az network public-ip update](/cli/azure/network/public-ip#az_network_public_ip_update) paranccsal. Ebben az esetben az `--allocation-method` beállítása *static* (statikus) lesz.
 
 ```azurecli-interactive 
 az network public-ip update --resource-group myRGNetwork --name myPublicIPAddress --allocation-method static
 ```
 
-Indítsa el a virtuális Gépet.
+Indítsa el a virtuális gépet.
 
 ```azurecli-interactive 
 az vm start --resource-group myRGNetwork --name myFrontendVM --no-wait
 ```
 
-### <a name="no-public-ip-address"></a>Nyilvános IP-cím
+### <a name="no-public-ip-address"></a>Nincs nyilvános IP-cím
 
-Gyakran egy virtuális Gépet nem kell elérhetőnek kell lennie az interneten keresztül. Egy virtuális gép, egy nyilvános IP-cím nélküli létrehozásához használja a `--public-ip-address ""` dupla idézőjelek között egy üres számú argumentum. Ez a konfiguráció bemutatott az oktatóanyag későbbi részében.
+Gyakran előfordul, hogy egy virtuális gépnek nem kell elérhetőnek lennie az interneten. Ha nyilvános IP-cím nélkül szeretne létrehozni egy virtuális gépet, a `--public-ip-address ""` argumentumban egy üres idézőjelpárt szerepeltessen. Az oktatóanyag későbbi részében bemutatjuk ezt a konfigurációt.
 
-## <a name="create-a-front-end-vm"></a>Előtér-virtuális gép létrehozása
+## <a name="create-a-front-end-vm"></a>Előtérbeli virtuális gép létrehozása
 
-Használja a [az virtuális gép létrehozása](/cli/azure/vm#create) parancsot nevű virtuális gép létrehozásához *myFrontendVM* használatával *myPublicIPAddress*.
+Az [az vm create](/cli/azure/vm#az_vm_create) paranccsal hozzon létre egy *myPublicIPAddress* IP-címet használó *myFrontendVM* nevű virtuális gépet.
 
 ```azurecli-interactive 
 az vm create \
@@ -149,35 +149,35 @@ az vm create \
 
 ## <a name="secure-network-traffic"></a>Biztonságos hálózati adatforgalom
 
-A hálózati biztonsági csoport (NSG) egy biztonsági szabályokból álló listát tartalmaz, amelyek engedélyezik vagy megtagadják a hálózati forgalmat az Azure-alapú virtuális hálózatokhoz (VNet-ekhez) csatlakozó erőforrásoknak. Lehet, hogy az NSG-k társított alhálózat vagy az egyes hálózati adapterek. Amikor egy NSG-t egy adott hálózati csatoló kapcsolódik, csak a kapcsolódó virtuális gép vonatkozik. Ha az NSG-t hozzárendelik egy alhálózathoz, a szabályok érvényesek lesznek az alhálózathoz csatlakozó összes erőforrásra. 
+A hálózati biztonsági csoport (NSG) egy biztonsági szabályokból álló listát tartalmaz, amelyek engedélyezik vagy megtagadják a hálózati forgalmat az Azure-alapú virtuális hálózatokhoz (VNet-ekhez) csatlakozó erőforrásoknak. Az NSG-k társíthatók alhálózatokhoz vagy egyedi hálózati adapterekhez. Amikor egy NSG-t egy hálózati adapterhez társít, az csak a társított virtuális gépre vonatkozik. Ha az NSG-t hozzárendelik egy alhálózathoz, a szabályok érvényesek lesznek az alhálózathoz csatlakozó összes erőforrásra. 
 
-### <a name="network-security-group-rules"></a>Hálózatbiztonságicsoport-szabályok
+### <a name="network-security-group-rules"></a>Hálózat biztonsági csoportok szabályai
 
-NSG-szabályok határozza meg, amelyben forgalom engedélyezett vagy megtagadott hálózati portok. A szabályok lehetnek forrás és cél IP-címtartományok, hogy az egyes rendszerek vagy az alhálózatok közötti forgalmat szabályozott. NSG-szabályok terjednie a prioritással (1 – és 4096). Szabályok prioritási sorrendben értékeli ki a rendszer. A 100 prioritással kiértékeli előtt szabály 200 prioritással.
+Az NSG-szabályok határozzák meg azokat a hálózatkezelési portokat, amelyeken engedélyezett vagy tiltott a forgalom. A szabályok között szerepelhetnek forrás és cél IP-címtartományok, így szabályozható az adatforgalom adott rendszerek vagy alhálózatok között. Az NSG-szabályok között megadható a prioritás is (1–4096). A szabályokat a rendszer prioritás szerinti sorrendben értékeli. A 100-as prioritású szabályt a rendszer a 200-as prioritású szabály előtt ellenőrzi.
 
 Minden NSG tartalmaz egy alapértelmezett szabálykészletet. Az alapértelmezett szabályokat nem lehet törölni, de mivel a legalacsonyabb prioritást rendelték hozzájuk, a létrehozott szabályok felülbírálhatják azokat.
 
-Az NSG-ket az alapértelmezett szabályok a következők:
+Az alapértelmezett NSG-szabályok a következők:
 
-- **Virtuális hálózati** - származó forgalmat, és a befejezési egy virtuális hálózat bejövő és kimenő irányban is.
-- **Internet** – a kimenő forgalom engedélyezve van, de a bejövő forgalmat blokkol.
-- **Terheléselosztó** -engedélyezése Azure terheléselosztó számára, hogy megvizsgálja a virtuális gépek és a szerepkörpéldányok állapotát. Ha nem használ elosztott terhelésű készlet, ez a szabály lehet felülbírálni.
+- **Virtuális hálózat** – A virtuális hálózatból kiinduló és oda érkező forgalom a bejövő és kimenő irányban is engedélyezve van.
+- **Internet** – A kimenő forgalom engedélyezett, de a bejövő forgalom le van tiltva.
+- **Terheléselosztó** – Engedélyezi az Azure terheléselosztója számára, hogy megvizsgálja a virtuális gépek és a szerepkörpéldányok állapotát. Ha nem terheléselosztásos készletet használ, ezt a szabályt felül lehet bírálni.
 
 ### <a name="create-network-security-groups"></a>Hálózati biztonsági csoportok létrehozása
 
-Hálózati biztonsági csoport is létrehozható az azonos időpontban egy virtuális gép használata a [az virtuális gép létrehozása](/cli/azure/vm#create) parancsot. Ennek során, amikor az NSG tartozik a virtuális gépek hálózati illesztő és az NSG-szabályok automatikusan létrehozott forgalmat engedélyezi a port *22* forrásból. Ez az oktatóanyag során korábban küldje el az előtér-NSG lett automatikus létrehozása a az előtér virtuális Géphez. Az NSG-szabályok is 22-es port számára létrehozott automatikus volt. 
+A virtuális gép létrehozásával egy időben létrehozható egy hálózati biztonsági csoport is az [az vm create](/cli/azure/vm#az_vm_create) paranccsal. Ebben a folyamatban az NSG-t a rendszer a virtuális gép hálózati adapteréhez társítja, és automatikusan létrejön egy NSG-szabály, amely a *22*-es porton keresztül bármilyen forrásból engedélyezi az adatforgalmat. Az oktatóanyag egy korábbi szakaszában az előtérbeli virtuális gép létrehozásakor automatikusan létrejött az előtérbeli NSG is. Automatikusan létrejött egy NSG-szabály is a 22-es porthoz. 
 
-Bizonyos esetekben hasznos lehet egy NSG-t, például amikor alapértelmezett SSH szabályokat nem lehet létrehozni, vagy amikor az NSG-t kell csatlakoztatni egy alhálózat előre létrehozásához. 
+Bizonyos esetekben érdemes lehet előre létrehozni egy NSG-t, például amikor nem akarjuk, hogy létrejöjjenek alapértelmezett SSH-szabályok, vagy amikor az NSG-t egy alhálózathoz akarjuk csatolni. 
 
-Használja a [az hálózati nsg létrehozása](/cli/azure/network/nsg#create) parancsot a hálózati biztonsági csoport létrehozásához.
+Hozzon létre egy hálózati biztonsági csoportot az [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) paranccsal.
 
 ```azurecli-interactive 
 az network nsg create --resource-group myRGNetwork --name myBackendNSG
 ```
 
-Helyett a hálózati illesztő NSG társítása, hozzárendelnek egy alhálózathoz. Ebben a konfigurációban a virtuális gép alhálózathoz csatolt örökli az NSG-szabályok.
+Az NSG nem egy hálózati adapterhez lesz csatolva, hanem egy alhálózathoz. Ebben a konfigurációban az alhálózathoz csatolt összes virtuális gép örökli az NSG-szabályokat.
 
-Frissítse a meglévő nevű alhálózat *myBackendSubnet* rendelkező új NSG.
+Frissítse a meglévő *myBackendSubnet* nevű alhálózatot az új NSG-vel.
 
 ```azurecli-interactive 
 az network vnet subnet update \
@@ -187,11 +187,11 @@ az network vnet subnet update \
   --network-security-group myBackendNSG
 ```
 
-### <a name="secure-incoming-traffic"></a>Biztonságos bejövő forgalom
+### <a name="secure-incoming-traffic"></a>Bejövő adatforgalom biztosítása
 
-Az előtér virtuális gép létrehozása után az NSG-szabály létrehozási 22-es portot a bejövő adatforgalom engedélyezésére. Ez a szabály lehetővé teszi, hogy a virtuális gép SSH-kapcsolatok. Ebben a példában a forgalmat is engedélyezni kell a porton *80*. Ez a konfiguráció lehetővé teszi, hogy egy webes alkalmazás érhető el a virtuális Gépen.
+Az előtérbeli virtuális gép létrehozásakor létrejön egy NSG-szabály, amely engedélyezi a bejövő forgalmat a 22-es porton. Ez a szabály engedélyezi az SSH-kapcsolatokat a virtuális gép számára. Ebben a példában a forgalmat a *80*-as porton is engedélyezni kell. Ez a konfiguráció lehetővé teszi egy webalkalmazás elérését a virtuális gépen.
 
-Használja a [az hálózati nsg-szabály létrehozása](/cli/azure/network/nsg/rule#create) parancs futtatásával hozzon létre egy szabályt port *80*.
+Hozzon létre egy szabályt a *80*-as porthoz az [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) paranccsal.
 
 ```azurecli-interactive 
 az network nsg rule create \
@@ -208,17 +208,17 @@ az network nsg rule create \
   --destination-port-range 80
 ```
 
-Az előtér virtuális gép csak az elérhető porton *22* és port *80*. A hálózati biztonsági csoport összes egyéb bejövő forgalom blokkolva van. Az NSG-szabályok konfigurációi megjelenítéséhez hasznos lehet. Térjen vissza a az NSG-konfiguráció a [az hálózati szabálylistában](/cli/azure/network/nsg/rule#list) parancsot. 
+Az előtérbeli virtuális gép csak a *22*-es és a *80*-as porton érhető el. A hálózati biztonsági csoport minden egyéb adatforgalmat blokkol. Hasznos lehet az NSG-szabályok konfigurációinak megjelenítése. Az NSG-szabály konfigurációját az [az network rule list](/cli/azure/network/nsg/rule#az_network_nsg_rule_list) paranccsal kérheti le. 
 
 ```azurecli-interactive 
 az network nsg rule list --resource-group myRGNetwork --nsg-name myFrontendNSG --output table
 ```
 
-### <a name="secure-vm-to-vm-traffic"></a>Virtuális gép biztonságos a virtuális gépek forgalma
+### <a name="secure-vm-to-vm-traffic"></a>Virtuális gépek közötti kapcsolat biztosítása
 
-Virtuális gépek közötti hálózati biztonsági csoportszabályok is alkalmazhat. Az ebben a példában az előtér-VM a háttér-VM porton kommunikálnia kell *22* és *3306*. Ez a konfiguráció lehetővé teszi, hogy az SSH-kapcsolatok az előtér virtuális gépről, és is lehetővé teszi egy alkalmazás az előtér virtuális gépen egy háttér-beli MySQL database kommunikálni. Az összes többi forgalom le kell tiltani az előtér- és virtuális gépek között.
+A hálózati biztonsági csoport szabályai virtuális gépek közötti forgalomra is vonatkozhatnak. Ebben a példában az előtérbeli virtuális gépnek a *22*-es és a *3306*-os porton kell kommunikálnia a háttérbeli virtuális géppel. Ez a konfiguráció engedélyezi az SSH-kapcsolatokat az előtér virtuális gépről, és azt is lehetővé teszi, hogy az előtérbeli virtuális gép egy alkalmazása kommunikáljon egy háttérbeli MySQL-adatbázissal. Az összes többi forgalmat le kell tiltani az előtérbeli és a háttérbeli virtuális gépek között.
 
-Használja a [az hálózati nsg-szabály létrehozása](/cli/azure/network/nsg/rule#create) parancs futtatásával hozzon létre egy szabályt a 22-es portot. Figyelje meg, hogy a `--source-address-prefix` argumentum meghatározza a érték *10.0.1.0/24*. Ez a konfiguráció biztosítja, hogy az csak az előtér-alhálózatból forgalom engedélyezve van-e az NSG keresztül.
+Hozzon létre egy szabályt a 22-es porthoz az [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) paranccsal. Figyelje meg, hogy a `--source-address-prefix` argumentum *10.0.1.0/24* értéket határoz meg. Ez a konfiguráció biztosítja, hogy csak az előtérbeli alhálózatból érkező adatforgalom haladjon át az NSG-n.
 
 ```azurecli-interactive 
 az network nsg rule create \
@@ -235,7 +235,7 @@ az network nsg rule create \
   --destination-port-range "22"
 ```
 
-Most adja hozzá egy forgalomra vonatkozó szabály MySQL 3306 porton.
+Most adjon hozzá egy, a 3306-os porton folyó MySQL-adatforgalomra vonatkozó szabályt.
 
 ```azurecli-interactive 
 az network nsg rule create \
@@ -252,7 +252,7 @@ az network nsg rule create \
   --destination-port-range "3306"
 ```
 
-Végül mivel az NSG-k egy alapértelmezett szabály, amely lehetővé teszi az ugyanazon virtuális gépek közötti összes forgalom, egy szabály hozható létre a háttér-NSG-ket minden forgalom blokkolása. Figyelje meg, itt, amely a `--priority` értéket kap *300*, amely alacsonyabb, hogy az NSG-t és a MySQL szabályok. Ez a konfiguráció biztosítja, hogy SSH és a MySQL-forgalom továbbra is engedélyezett az NSG keresztül.
+Végül, mivel az NSG-k egy alapértelmezett szabálya szerint minden azonos virtuális hálózaton lévő virtuális gép közötti adatforgalom engedélyezett, létrehozható egy szabály a háttérbeli NSG-khez, hogy blokkoljanak minden forgalmat. Figyelje meg, hogy a `--priority` értéke itt *300*, ami alacsonyabb az NSG- és a MySQL-szabályokénál is. Ez a konfiguráció biztosítja, hogy az SSH- és a MySQL-forgalom továbbra is áthaladhasson az NSG-n.
 
 ```azurecli-interactive 
 az network nsg rule create \
@@ -269,9 +269,9 @@ az network nsg rule create \
   --destination-port-range "*"
 ```
 
-## <a name="create-back-end-vm"></a>Háttér-virtuális gép létrehozása
+## <a name="create-back-end-vm"></a>Háttérbeli virtuális gép létrehozása
 
-Most hozzon létre egy virtuális gép, amely csatolva van a *myBackendSubnet*. Figyelje meg, hogy a `--nsg` argumentum értéke üres dupla idézőjelek között. Az NSG nem kell létrehozni a virtuális Gépet. A háttér-alhálózathoz, az előre létrehozott háttér-NSG védi a virtuális Géphez van csatolva. Az NSG-t a virtuális gép vonatkozik. Emellett az információkban, amely a `--public-ip-address` argumentum értéke üres dupla idézőjelek között. Ez a konfiguráció nélkül egy nyilvános IP-cím egy virtuális Gépet hoz létre. 
+Most hozzon létre egy, a *myBackendSubnet* hálózathoz csatolt virtuális gépet. Figyelje meg, hogy az `--nsg` argumentum értéke egy üres idézőjelpár. A virtuális géppel együtt nem kell létrehozni NSG-t. A virtuális gépet a rendszer a háttérbeli alhálózathoz csatolja, amelyet az előre létrehozott háttérbeli NSG véd. Ez az NSG vonatkozik a virtuális gépre. Azt is figyelje meg, hogy az `--public-ip-address` argumentum értéke egy üres idézőjelpár. Ez a konfiguráció nyilvános IP-cím nélkül hoz létre egy virtuális gépet. 
 
 ```azurecli-interactive 
 az vm create \
@@ -285,7 +285,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-A háttér-virtuális gép csak az elérhető porton *22* és port *3306* az előtér-alhálózatból. A hálózati biztonsági csoport összes egyéb bejövő forgalom blokkolva van. Az NSG-szabályok konfigurációi megjelenítéséhez hasznos lehet. Térjen vissza a az NSG-konfiguráció a [az hálózati szabálylistában](/cli/azure/network/nsg/rule#list) parancsot. 
+A háttérbeli virtuális gép csak a *22*-es és a *3306*-os porton keresztül érhető el az előtérbeli alhálózatból. A hálózati biztonsági csoport minden egyéb adatforgalmat blokkol. Hasznos lehet az NSG-szabályok konfigurációinak megjelenítése. Az NSG-szabály konfigurációját az [az network rule list](/cli/azure/network/nsg/rule#az_network_nsg_rule_list) paranccsal kérheti le. 
 
 ```azurecli-interactive 
 az network nsg rule list --resource-group myRGNetwork --nsg-name myBackendNSG --output table
@@ -293,16 +293,16 @@ az network nsg rule list --resource-group myRGNetwork --nsg-name myBackendNSG --
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban létre és a védett virtuális gépek kapcsolatos Azure-hálózatok. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Ebben az oktatóanyagban virtuális gépekhez csatolva hozta létre és biztosította az Azure-hálózatokat. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Hozzon létre egy virtuális hálózat és alhálózat
+> * Virtuális hálózat és alhálózat létrehozása
 > * Hozzon létre egy nyilvános IP-címet
-> * Előtér-virtuális gép létrehozása
+> * Előtérbeli virtuális gép létrehozása
 > * Biztonságos hálózati adatforgalom
-> * Háttér-virtuális gép létrehozása
+> * Háttérbeli virtuális gép létrehozása
 
-Előzetes tájékozódhat az adatvédelem az Azure backup segítségével virtuális gépeket a következő oktatóanyagot. 
+Folytassa a következő oktatóanyaggal, amely a virtuális gépeken lévő adatok Azure biztonsági mentéssel való biztosítását ismerteti. 
 
 > [!div class="nextstepaction"]
-> [Készítsen biztonsági másolatot a Linux virtuális gépek Azure-ban](./tutorial-backup-vms.md)
+> [Linux rendszerű virtuális gépek biztonsági mentése az Azure-ban](./tutorial-backup-vms.md)

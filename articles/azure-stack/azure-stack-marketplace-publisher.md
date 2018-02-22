@@ -3,8 +3,8 @@ title: "A piactér eszközkészlet segítségével létrehozása és közzétét
 description: "Útmutató: a közzétételi eszközkészlet létrehozhat Piactéri elemek"
 services: azure-stack
 documentationcenter: 
-author: HeathL17
-manager: ByronR
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 
 ms.service: azure-stack
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 7/14/2017
-ms.author: helaw
-ms.openlocfilehash: 5b2c04d2cbc06e1572dc2e40712f6cf9d886aa1e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: brenduns
+ms.reviewer: jeffgo
+ms.openlocfilehash: 61ee3296429f9641643f1c9268ae89e3691fcfa1
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 #  <a name="add-marketplace-items-using-publishing-tool"></a>Adja hozzá a közzétételi eszközzel Piactéri elemek
 Tartalom hozzáadása a [Azure verem piactér](azure-stack-marketplace.md) elérhetővé teszi a megoldás az Ön és a központi telepítés a bérlők számára.  A piactér eszközkészlet Azure piactér csomagok (.azpkg) fájlok, az infrastruktúra-szolgáltatási Azure Resource Manager-sablonok vagy Virtuálisgép-bővítmények alapján hoz létre.  Használhatja a piactér eszközkészlet .azpkg fájlok, akár a eszközzel létrehozott segítségével közzétételét [manuális](azure-stack-create-and-publish-marketplace-item.md) lépéseket.  Ez a témakör végigvezeti Önt az eszköz letöltése, a Virtuálisgép-sablonok alapján piactér elem létrehozása és közzététele majd, hogy az elem a veremben Azure piactér.     
@@ -72,7 +73,7 @@ Ebben a szakaszban közzéteszi a Piactéri elemet az Azure-verem piactéren.
     
     |Mező|Leírás|
     |-----|-----|
-    | Szolgáltatás-rendszergazda neve | Szolgáltatás-rendszergazdai fiókjával.  Példa:ServiceAdmin@mydomain.onmicrosoft.com |
+    | Szolgáltatás-rendszergazda neve | Szolgáltatás-rendszergazdai fiókjával.  Példa:  ServiceAdmin@mydomain.onmicrosoft.com |
     | Jelszó | Szolgáltatás-rendszergazdai fiók jelszavát. |
     | API-végpont | Azure verem Azure Resource Manager-végpont.  Példa: management.local.azurestack.external |
 2.  Kattintson a **közzététel** és a közzétételi napló jelenik meg.
@@ -86,12 +87,12 @@ A piactér Toolkit tartalmaz egy *solution.parameters.ps1* segítségével hozzo
 
 
 ## <a name="support-files"></a>Támogatási fájlok
-| Leírás | Minta |
+| Leírás | Sample |
 | ----- | ----- |
-| 40 x 40 .png ikon | ![](./media/azure-stack-marketplace-publisher/image1.png) |
-| 90 x 90 .png ikon | ![](./media/azure-stack-marketplace-publisher/image2.png) |
-| 115 x 115 .png ikon | ![](./media/azure-stack-marketplace-publisher/image3.png) |
-| 255 x 115 .png ikon | ![](./media/azure-stack-marketplace-publisher/image4.png) |
+| 40x40 .png icon | ![](./media/azure-stack-marketplace-publisher/image1.png) |
+| 90x90 .png icon | ![](./media/azure-stack-marketplace-publisher/image2.png) |
+| 115x115 .png icon | ![](./media/azure-stack-marketplace-publisher/image3.png) |
+| 255x115 .png icon | ![](./media/azure-stack-marketplace-publisher/image4.png) |
 | 533 x 324 .png miniatűr | ![](./media/azure-stack-marketplace-publisher/image5.png) |
 
 

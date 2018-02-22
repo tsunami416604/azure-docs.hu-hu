@@ -7,14 +7,14 @@ author: vhorne
 manager: byronr
 ms.service: azure-stack
 ms.topic: quickstart
-ms.date: 09/25/2017
+ms.date: 12/11/2017
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: a97372002052570ccad2bb8bc442eb0dd1ca76d9
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
-ms.translationtype: MT
+ms.openlocfilehash: 1e1732f48de9f95e669d0282d120e48b5fe5f0ef
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-the-azure-stack-portal"></a>Linux virtuális gép létrehozása az Azure-verem portállal
 
@@ -59,7 +59,7 @@ Jelentkezzen be a verem Azure portálra. A cím az Azure-verem portál függ, ho
 
 ## <a name="create-the-virtual-machine"></a>A virtuális gép létrehozása
 
-1. Kattintson a **új** gomb a verem Azure portál bal felső sarkában található.
+1. Kattintson a **hozzon létre egy erőforrást** a verem Azure portál bal felső sarokban.
 
 2. Válassza a **Számítás**, majd az **Ubuntu Server 16.04 LTS** elemet.
 3. Kattintson a **Create** (Létrehozás) gombra.
@@ -119,7 +119,7 @@ A hálózati biztonsági csoport (NSG) feladata a bejövő és kimenő forgalom 
 1. A virtuális gépen **áttekintése** lapján kattintson a nevét a **erőforráscsoport**.
 2. Válassza ki a **hálózati biztonsági csoport** a virtuális géphez. A hálózati biztonsági csoport a **Típus** oszlop segítségével azonosítható. 
 3. A bal oldali menü alatti **beállítások**, kattintson a **bejövő biztonsági szabályok**.
-4. Kattintson az **Add** (Hozzáadás) parancsra.
+4. Kattintson a **Hozzáadás** parancsra.
 5. A **Név** mezőbe írja be a **http** karakterláncot. Ügyeljen rá, hogy a **Porttartomány** értéke 80, a **Művelet** értéke pedig **Engedélyezés** legyen. 
 6. Kattintson az **OK** gombra.
 
@@ -137,7 +137,7 @@ Nyisson meg egy webböngészőt, és keresse meg a ```http://<public IP address>
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást. Ehhez a virtuális gép lapon jelölje ki az erőforráscsoportot, majd kattintson **törlése**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A gyors üzembe helyezési már telepített egy egyszerű Linux virtuális gép hálózati biztonsági csoport szabályt, és a webkiszolgálón telepítve. További információt a verem Azure virtuális gépek, továbbra is [szempontok a virtuális gépek Azure-készletben](azure-stack-vm-considerations.md).
 

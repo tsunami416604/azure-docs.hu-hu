@@ -1,6 +1,6 @@
 ---
-title: "Az Azure-ban első indításakor Linux virtuális gép testreszabása |} Microsoft Docs"
-description: "Megtudhatja, hogyan használható felhőalapú inicializálás és Key Vault customze Linux virtuális gépek indulnak az Azure-ban először"
+title: "Linux rendszerű virtuális gép testreszabása az első rendszerindításkor az Azure-ban | Microsoft Docs"
+description: "Ismerje meg, hogyan szabhatja testre a Linux rendszerű virtuális gépeket a cloud-init és a Key Vault segítségével az első Azure-ban való indításkor"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,49 +16,49 @@ ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 83773e513ee2c92da733df05cd17dda2940a28cd
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
-ms.translationtype: MT
+ms.openlocfilehash: 79d87b5d332597f2c0faf3c585eee49aba3e03bc
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="how-to-customize-a-linux-virtual-machine-on-first-boot"></a>Az első rendszerindító Linux virtuális gépek testreszabása
-Egy korábbi oktatóanyagban megtanulta, hogyan telepítse a virtuális gép (VM), és manuálisan SSH NGINX. Virtuális gépek gyors és egységes módon létrehozásához valamilyen automatizált művelettel általában van szükség. Általános gyakorlatként javasolt első indításakor a virtuális gépek testreszabása, hogy használja [felhő inicializálás](https://cloudinit.readthedocs.io). Ezen oktatóanyag segítségével megtanulhatja a következőket:
+# <a name="how-to-customize-a-linux-virtual-machine-on-first-boot"></a>Linux rendszerű virtuális gép testreszabása az első rendszerindításkor
+Egy korábbi oktatóanyagból megtudhatta, hogyan csatlakozhat SSH-val a virtuális gépekhez, és hogyan telepítheti manuálisan az NGINX-et. A virtuális gépek gyors és következetes létrehozásához általában valamilyen automatizálásra van szükség. A virtuális gépek első rendszerindításkor való testreszabásának általánosan használt megközelítése a [cloud-init](https://cloudinit.readthedocs.io) használata. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
-> * Felhő inicializálás konfigurációs fájl létrehozása
-> * A felhő inicializálás fájlt használó virtuális gép létrehozása
-> * Egy futó Node.js-alkalmazás megtekintése a virtuális gép létrehozása után
-> * Key Vault használatával biztonságosan tárolni a tanúsítványokat
-> * Automatizálhatja a biztonságos telepítéseket NGINX felhő inicializálás
+> * Cloud-init konfigurációs fájl létrehozása
+> * Cloud-init-fájlt használó virtuális gép létrehozása
+> * Futó Node.js-alkalmazás megtekintése a virtuális gép létrehozása után
+> * A Key Vault használata a tanúsítványok biztonságos tárolására
+> * Az NGINX biztonságos telepítéseinek automatizálása a cloud-init használatával
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Telepítése és a parancssori felület helyileg használata mellett dönt, ha ez az oktatóanyag van szükség, hogy futnak-e az Azure parancssori felület 2.0.4 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).  
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).  
 
 
 
 ## <a name="cloud-init-overview"></a>A cloud-init áttekintése
-[Felhő inicializálás](https://cloudinit.readthedocs.io) Linux virtuális gép testreszabása, először elinduló széles körben használt módszer. Felhő inicializálás használhatja csomagok és a fájlok írási, vagy a felhasználók és biztonsági beállításainak. Felhő inicializálás során a rendszerindítási folyamat fut, mert nincsenek további lépéseket vagy a konfiguráció alkalmazásához szükséges ügynökök.
+A [cloud-init](https://cloudinit.readthedocs.io) egy széles körben használt módszer a Linux rendszerű virtuális gépek első indításkor való testreszabásához. A cloud-init használatával csomagokat telepíthet és fájlokat írhat, vagy beállíthatja a felhasználókat és a biztonságot. Mivel a cloud-init a kezdeti rendszerindítás során fut, nincs szükség további lépésekre vagy ügynökökre a konfiguráció alkalmazásához.
 
-Felhő inicializálás terjesztéseket is használható. Például, hogy ne használjon **apt-get-telepítés** vagy **yum telepítése** csomag telepítéséhez. Helyette megadhatja a telepítendő csomagok listája. Felhő inicializálás automatikusan használja a natív csomag felügyeleti eszköz a distro választja.
+A cloud-init különböző disztribúciókon is működik. Például nem kell az **apt-get install** vagy a **yum install** használatával telepítenie a csomagokat. Ehelyett megadhatja a telepítendő csomagok listáját. A cloud-init automatikusan a natív csomagkezelő eszközt használja a kiválasztott disztribúcióhoz.
 
-A Microsoft a partnerekkel együttműködve az beszerzése felhő inicializálás tartalmazza, és működik-e az Azure biztosít lemezképeket a dolgozik. Az alábbi táblázat ismerteti a jelenlegi felhő inicializálás elérhetőségét Azure platformon lemezképek:
+A partnereinkkel dolgozunk rajta, hogy egyre több általuk biztosított Azure-rendszerkép tartalmazza a cloud-init eszközt. Az alábbi táblázat a cloud-init jelenlegi elérhetőségét ismerteti az Azure-platformrendszerképeken:
 
 | Alias | Közzétevő | Ajánlat | SKU | Verzió |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| UbuntuLTS |Canonical |UbuntuServer |16.04-ES LTS VERZIÓ |legújabb |
+| UbuntuLTS |Canonical |UbuntuServer |16.04-LTS |legújabb |
 | UbuntuLTS |Canonical |UbuntuServer |14.04.5-LTS |legújabb |
 | CoreOS |CoreOS |CoreOS |Stable |legújabb |
-| | OpenLogic | CentOS | 7-KONFIGURÁCIÓELEM | legújabb |
-| | RedHat | RHEL | 7-NYERS-KONFIGURÁCIÓELEM | legújabb
+| | OpenLogic | CentOS | 7-CI | legújabb |
+| | RedHat | RHEL | 7-RAW-CI | legújabb
 
 
-## <a name="create-cloud-init-config-file"></a>Felhő inicializálás konfigurációs fájl létrehozása
-Tekintse meg a műveletet a felhő inicializálás, hozzon létre, amely NGINX telepíthető és futtatható egy egyszerű "Hello World" Node.js-alkalmazás. A következő felhő inicializálás konfigurációs telepíti a szükséges csomagokat, létrehoz egy Node.js-alkalmazást, majd inicializálni és elindul az alkalmazás.
+## <a name="create-cloud-init-config-file"></a>Cloud-init konfigurációs fájl létrehozása
+A cloud-init működés közbeni megtekintéséhez hozzon létre egy virtuális gépet, amely telepíti az NGINX-et, és egy egyszerű „Hello World” Node.js-alkalmazást futtat. Az alábbi cloud-init konfiguráció telepíti a szükséges csomagokat, létrehoz egy Node.js-alkalmazást, majd inicializálja és elindítja azt.
 
-Hozzon létre egy fájlt az aktuális rendszerhéjban *felhő-init.txt* , majd illessze be a következő konfigurációt. A felhő rendszerhéj nem a helyi számítógépen hozzon létre például a fájlt. A szerkesztő kívánja használata. Adja meg `sensible-editor cloud-init.txt` hozza létre a fájlt, és elérhető szerkesztők listájának megtekintéséhez. Győződjön meg arról, hogy az egész felhő inicializálás fájl megfelelően lett lemásolva különösen az első sor:
+Az aktuális parancshéjban hozzon létre egy *cloud-init.txt* nevű fájlt, és illessze bele a következő konfigurációt. Például hozza létre a fájlt a Cloud Shellben, és ne a helyi gépén. Bármelyik szerkesztőt használhatja. Írja be a `sensible-editor cloud-init.txt` parancsot a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. Ügyeljen arra, hogy megfelelően másolja ki a teljes cloud-init-fájlt, különösen az első sort:
 
 ```yaml
 #cloud-config
@@ -102,16 +102,16 @@ runcmd:
   - nodejs index.js
 ```
 
-Felhő inicializálás konfigurációs beállításokkal kapcsolatos további információkért lásd: [felhő inicializálás config példák](https://cloudinit.readthedocs.io/en/latest/topics/examples.html).
+További információk a cloud-init konfigurációs beállításairól: [cloud-init példakonfigurációk](https://cloudinit.readthedocs.io/en/latest/topics/examples.html).
 
 ## <a name="create-virtual-machine"></a>Virtuális gép létrehozása
-A virtuális gépek létrehozása előtt hozzon létre egy erőforráscsoportot, a [az csoport létrehozása](/cli/azure/group#create). Az alábbi példa létrehoz egy erőforráscsoportot *myResourceGroupAutomate* a a *eastus* helye:
+Mielőtt létrehozhatna egy virtuális gépet, létre kell hoznia egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. A következő példa egy *myResourceGroupAutomate* nevű erőforráscsoportot hoz létre az *eastus* helyen:
 
 ```azurecli-interactive 
 az group create --name myResourceGroupAutomate --location eastus
 ```
 
-Most létrehozza a virtuális gép és [az virtuális gép létrehozása](/cli/azure/vm#create). Használja a `--custom-data` paraméter felelt meg a felhő inicializálás konfigurációs fájlban. A teljes elérési útját adja meg a *felhő-init.txt* config Ha mentette a fájlt a jelenlegi munkakönyvtár kívül. Az alábbi példakód létrehozza a virtuális gépek nevű *myAutomatedVM*:
+Most hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az_vm_create) paranccsal. Használja a `--custom-data` paramétert a cloud-init konfigurációs fájl megadásához. Adja meg a *cloud-init.txt* konfiguráció teljes elérési útját, ha az aktuális munkakönyvtáron kívülre mentette. Az alábbi példa egy *myAutomatedVM* nevű virtuális gépet hoz létre:
 
 ```azurecli-interactive 
 az vm create \
@@ -123,34 +123,34 @@ az vm create \
     --custom-data cloud-init.txt
 ```
 
-A virtuális Gépet létrehozni, a csomagok telepítése és az alkalmazás elindításához néhány percet vesz igénybe. Nincsenek háttérfeladatok, hogy végezze el az Azure parancssori felület visszatér a parancssorba. Elképzelhető, hogy egy másik néhány percet, mielőtt hozzáférhetne az alkalmazáshoz. A virtuális gép létrehozása, tekintse meg a `publicIpAddress` megjeleníti azokat az Azure parancssori felület. Ezt a címet a webböngésző segítségével Node.js-alkalmazás eléréséhez használt.
+A virtuális gép létrehozása, a csomagok telepítése és az alkalmazás elindítása néhány percig tart. Néhány háttérfeladat azután is tovább fut, hogy az Azure CLI visszairányítja Önt a parancssorhoz. Eltarthat még néhány percig, amíg hozzáférhet az alkalmazáshoz. A virtuális gép létrehozása után jegyezze fel az Azure CLI által megjelenített `publicIpAddress` értéket. Ezzel a címmel érheti el a Node.js-alkalmazást a webböngészőn keresztül.
 
-A virtuális gép elérni kívánt webes forgalom engedélyezéséhez nyissa meg a port 80 az internetről a [az vm-port megnyitása](/cli/azure/vm#open-port):
+Ahhoz, hogy a webes adatforgalom elérje a virtuális gépét, nyissa meg az internetről a 80-as portot az [az vm open-port](/cli/azure/vm#az_vm_open_port) paranccsal:
 
 ```azurecli-interactive 
 az vm open-port --port 80 --resource-group myResourceGroupAutomate --name myVM
 ```
 
-## <a name="test-web-app"></a>Vizsgálati a webes alkalmazás
-Most nyisson meg egy webböngészőt, és írja be *http://<publicIpAddress>*  a böngésző címsorába. Adja meg a saját nyilvános IP-címet a virtuális gép folyamatot létrehozni. A Node.js-alkalmazás az alábbi példában látható módon jelennek meg:
+## <a name="test-web-app"></a>Webalkalmazás tesztelése
+Most nyisson meg egy webböngészőt, és írja be a *http://<publicIpAddress>* címet a címsorba. Adja meg a saját nyilvános IP-címét, amelyet a virtuális gép létrehozásakor kapott. A Node.js-alkalmazás a következő példához hasonlóan jelenik meg:
 
-![Futó NGINX-hely megtekintése](./media/tutorial-automate-vm-deployment/nginx.png)
+![Futó NGINX-webhely megtekintése](./media/tutorial-automate-vm-deployment/nginx.png)
 
 
-## <a name="inject-certificates-from-key-vault"></a>A tanúsítványokat a Key Vault beszúrása
-A választható szakasz bemutatja, hogyan lehet biztonságosan tanúsítványok tárolása az Azure Key Vault és szúrjon azokat a virtuális gép üzembe helyezése során. Ahelyett, hogy az egy egyéni lemezképet, amely tartalmazza a tanúsítványok bővíthetőség-a, ez a folyamat biztosítja, hogy a legfrissebb tanúsítványok vannak beszúrta egy virtuális géphez első indításakor. A folyamat során a tanúsítvány soha ne hagyja el az Azure platformon, vagy fel van fedve egy parancsfájl, a parancssori előzmények vagy a sablonban.
+## <a name="inject-certificates-from-key-vault"></a>Tanúsítványok beszúrása a Key Vaultból
+Ez az opcionális szakasz bemutatja, hogyan tárolhatja biztonságosan a tanúsítványokat az Azure Key Vaultban, és hogyan szúrhatja be azokat a virtuális gép üzembe helyezése során. A beépített tanúsítványokat tartalmazó egyéni rendszerképek használata helyett ez a folyamat biztosítja, hogy a legnaprakészebb tanúsítványok legyenek beszúrva a virtuális gépbe az első rendszerindításkor. A folyamat során a tanúsítvány egyszer sem hagyja el az Azure platformot, és nem jelenik meg a szkriptekben, a parancssori előzményekben és a sablonokban.
 
-Az Azure Key Vault megvédi a titkosítási kulcsok és titkos kulcsokat, például a tanúsítványok vagy jelszavakat. Key Vault segít a egyszerűsíthető a kulcskezelési folyamatot, és lehetővé teszi a hozzáférést, és az adatok titkosításához használt kulcsok irányítást tarthat fenn. Ez a forgatókönyv bemutat néhány olyan Key Vault fogalmat történő létrehozásáról és használatáról a tanúsítvány, azonban nem Key Vault használatával teljes körű áttekintése.
+Az Azure Key Vault megvédi a titkosítási kulcsokat és titkos kódokat, például a tanúsítványokat és jelszavakat. A Key Vault leegyszerűsíti a kulcskezelési folyamatot, valamint lehetővé teszi az adatok titkosításához használt kulcsok feletti teljes körű felügyeletet. Ez a forgatókönyv bemutat néhány, a tanúsítványok létrehozásával és használatával kapcsolatos Key Vault-fogalmat, viszont nem nyújt teljes körű áttekintést a Key Vault használatáról.
 
-A következő lépések bemutatják, hogyan zajlik:
+A következő lépések bemutatják, hogyan végezheti el a következőket:
 
-- Egy Azure-tároló létrehozása
-- Hozza létre, vagy a Key Vault tanúsítvány feltöltése
-- Egy virtuális géphez a szúrjon tanúsítvány titkos kulcs létrehozása
-- Hozzon létre egy virtuális Gépet, és a tanúsítvány beszúrása
+- Azure Key Vault létrehozása;
+- tanúsítvány létrehozása vagy feltöltése a Key Vaultba;
+- Titkos kulcs létrehozása a tanúsítványból, majd beszúrása a virtuális gépbe
+- Virtuális gép létrehozása, és a tanúsítvány beszúrása
 
-### <a name="create-an-azure-key-vault"></a>Egy Azure-tároló létrehozása
-Először hozzon létre egy rendelkező Key Vaultból [az keyvault létrehozása](/cli/azure/keyvault#create) és engedélyezi azt használja a virtuális gépek telepítésekor. Minden Key Vault szükséges egy egyedi nevet, és minden kisbetű kell lennie. Cserélje le *mykeyvault* az alábbi példában a saját egyedi kulcstároló nevével:
+### <a name="create-an-azure-key-vault"></a>Azure Key Vault létrehozása;
+Először hozzon létre egy Key Vaultot az [az keyvault create](/cli/azure/keyvault#az_keyvault_create) paranccsal, és engedélyezze a használatát a virtuális gépek üzembe helyezésekor. Mindegyik Key Vaultnak egyedi névvel kell rendelkeznie, amely csak kisbetűkből állhat. Cserélje le a *mykeyvault* nevet a következő példában a saját egyedi Key Vault-névre:
 
 ```azurecli-interactive 
 keyvault_name=mykeyvault
@@ -160,8 +160,8 @@ az keyvault create \
     --enabled-for-deployment
 ```
 
-### <a name="generate-certificate-and-store-in-key-vault"></a>Tanúsítvány jön létre, és tárolja a Key Vault
-Az éles környezetben való használathoz, importálnia kell a egy érvényes tanúsítvány megbízható-szolgáltató által aláírt [az keyvault tanúsítvány importálása](/cli/azure/keyvault/certificate#import). Ebben az oktatóanyagban a következő példa bemutatja, hogyan hozhat létre egy önaláírt tanúsítványt [az keyvault tanúsítvány létrehozása](/cli/azure/keyvault/certificate#create) , amely használja az alapértelmezett házirend:
+### <a name="generate-certificate-and-store-in-key-vault"></a>Tanúsítvány létrehozása és tárolása a Key Vaultban
+Éles környezetben importálnia kell egy megbízható szolgáltató által aláírt érvényes tanúsítványt az [az keyvault certificate import](/cli/azure/keyvault/certificate#az_keyvault_certificate_import) paranccsal. Ebben az oktatóanyagban a következő példa mutatja be, hogyan hozhat létre olyan önaláírt tanúsítványt az [az keyvault certificate create](/cli/azure/keyvault/certificate#az_keyvault_certificate_create) paranccsal, amely az alapértelmezett tanúsítványszabályzatot használja:
 
 ```azurecli-interactive 
 az keyvault certificate create \
@@ -171,8 +171,8 @@ az keyvault certificate create \
 ```
 
 
-### <a name="prepare-certificate-for-use-with-vm"></a>Készítse elő a tanúsítvány használható a virtuális Géphez
-A tanúsítvány használatára során a virtuális Gépet létrehozni folyamatot, a tanúsítvány az azonosítóhoz [az keyvault lista-verzióját](/cli/azure/keyvault/secret#list-versions). A virtuális gép kell bizonyos formátumát el azt a rendszerindító, így alakítsa át a tanúsítványt a tanúsítvány [az vm formátum-secret](/cli/azure/vm#format-secret). A következő példa a parancsok kimenetéből rendel változók könnyű használatra a következő lépésekben:
+### <a name="prepare-certificate-for-use-with-vm"></a>Tanúsítvány előkészítése virtuális géppel való használatra
+Ha a virtuális gép létrehozása alatt szeretné használni a tanúsítványt, szerezze be a tanúsítvány azonosítóját az [az keyvault secret list-versions](/cli/azure/keyvault/secret#az_keyvault_secret_list_versions) paranccsal. A virtuális gép csak egy bizonyos formátumú tanúsítványt képes beszúrni a rendszerindításkor, ezért alakítsa át a tanúsítványt az [az vm format-secret](/cli/azure/vm#az_vm_format_secret) paranccsal. A következő példa ezen parancsok kimenetét ezekhez változókhoz rendeli, hogy könnyen használhatók legyenek a következő lépésekben:
 
 ```azurecli-interactive 
 secret=$(az keyvault secret list-versions \
@@ -183,10 +183,10 @@ vm_secret=$(az vm format-secret --secret "$secret")
 ```
 
 
-### <a name="create-cloud-init-config-to-secure-nginx"></a>Felhő inicializálás config NGINX biztonságos létrehozása
-Ha hoz létre egy virtuális Gépet, a tanúsítványok és kulcsok tárolása a a védett */var/lib/waagent/* könyvtár. A tanúsítvány felvétele a virtuális gép és konfigurálás NGINX automatizálása, egy frissített felhő inicializálás config az előző példából is használhat.
+### <a name="create-cloud-init-config-to-secure-nginx"></a>Cloud-init konfiguráció létrehozása az NGINX védelméhez
+Virtuális gép létrehozásakor a tanúsítványokat és a kulcsokat a védett */var/lib/waagent/* könyvtár tárolja. A tanúsítvány virtuális géphez való hozzáadásának automatizálásához és az NGINX konfigurálásához használhat egy frissített cloud-init konfigurációt az előző példából.
 
-Hozzon létre egy fájlt *felhő-init-secured.txt* , majd illessze be a következő konfigurációt. Újra Ha a felhő rendszerhéj használata esetén hozzon létre a felhő inicializálás konfigurációs fájl vannak, és nem a helyi számítógépen. Használjon `sensible-editor cloud-init-secured.txt` hozza létre a fájlt, és elérhető szerkesztők listájának megtekintéséhez. Győződjön meg arról, hogy az egész felhő inicializálás fájl megfelelően lett lemásolva különösen az első sor:
+Hozzon létre egy *cloud-init-secured.txt* nevű fájlt, és illessze be a következő konfigurációt. Ha a Cloud Shellt használja, ott hozza létre a cloud-init konfigurációs fájlt, ne a helyi számítógépen. Használja a `sensible-editor cloud-init-secured.txt` parancsot a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. Ügyeljen arra, hogy megfelelően másolja ki a teljes cloud-init-fájlt, különösen az első sort:
 
 ```yaml
 #cloud-config
@@ -238,7 +238,7 @@ runcmd:
 ```
 
 ### <a name="create-secure-vm"></a>Biztonságos virtuális gép létrehozása
-Most létrehozza a virtuális gép és [az virtuális gép létrehozása](/cli/azure/vm#create). A tanúsítvány adatainak van beszúrta a rendelkező Key Vaultból a `--secrets` paraméter. Az előző példában szemléltetett is adja meg a felhő inicializálás config rendelkező a `--custom-data` paraméter:
+Most hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az_vm_create) paranccsal. A tanúsítványadatokat a `--secrets` paraméterrel szúrhatja be a Key Vaultból. A cloud-init konfigurációt az előző példához hasonlóan itt is a `--custom-data` paraméterrel adhatja meg:
 
 ```azurecli-interactive 
 az vm create \
@@ -251,9 +251,9 @@ az vm create \
     --secrets "$vm_secret"
 ```
 
-A virtuális Gépet létrehozni, a csomagok telepítése és az alkalmazás elindításához néhány percet vesz igénybe. Nincsenek háttérfeladatok, hogy végezze el az Azure parancssori felület visszatér a parancssorba. Elképzelhető, hogy egy másik néhány percet, mielőtt hozzáférhetne az alkalmazáshoz. A virtuális gép létrehozása, tekintse meg a `publicIpAddress` megjeleníti azokat az Azure parancssori felület. Ezt a címet a webböngésző segítségével Node.js-alkalmazás eléréséhez használt.
+A virtuális gép létrehozása, a csomagok telepítése és az alkalmazás elindítása néhány percig tart. Néhány háttérfeladat azután is tovább fut, hogy az Azure CLI visszairányítja Önt a parancssorhoz. Eltarthat még néhány percig, amíg hozzáférhet az alkalmazáshoz. A virtuális gép létrehozása után jegyezze fel az Azure CLI által megjelenített `publicIpAddress` értéket. Ezzel a címmel érheti el a Node.js-alkalmazást a webböngészőn keresztül.
 
-Biztonságos webes forgalom a virtuális gép eléréséhez engedélyezéséhez nyissa meg a port 443-as porton az internetről a [az vm-port megnyitása](/cli/azure/vm#open-port):
+Ahhoz, hogy a biztonságos webes adatforgalom elérje a virtuális gépét, nyissa meg az internetről a 443-as portot az [az vm open-port](/cli/azure/vm#az_vm_open_port) paranccsal:
 
 ```azurecli-interactive 
 az vm open-port \
@@ -262,27 +262,27 @@ az vm open-port \
     --port 443
 ```
 
-### <a name="test-secure-web-app"></a>Biztonságos webes alkalmazás tesztelése
-Most nyisson meg egy webböngészőt, és írja be *https://<publicIpAddress>*  a böngésző címsorába. Adja meg a saját nyilvános IP-címet a virtuális gép folyamatot létrehozni. Fogadja el a biztonsági figyelmeztetést, ha önaláírt tanúsítványt használt:
+### <a name="test-secure-web-app"></a>A biztonságos webalkalmazás tesztelése
+Most nyisson meg egy webböngészőt, és írhatja be a *https://<publicIpAddress>* címet a címsorba. Adja meg a saját nyilvános IP-címét, amelyet a virtuális gép létrehozásakor kapott. Fogadja el a biztonsági figyelmeztetést, ha önaláírt tanúsítványt használt:
 
-![Fogadja el a webes böngésző biztonsági figyelmeztetés](./media/tutorial-automate-vm-deployment/browser-warning.png)
+![Webböngésző biztonsági figyelmeztetésének elfogadása](./media/tutorial-automate-vm-deployment/browser-warning.png)
 
-A biztonságos NGINX hely és a Node.js alkalmazás ezután megjelenik az alábbi példában látható módon:
+Ekkor a biztonságos NGINX-webhely és a Node.js-alkalmazás a következő példához hasonlóan jelennek meg:
 
-![Futó biztonságos NGINX webhely megtekintése](./media/tutorial-automate-vm-deployment/secured-nginx.png)
+![Futó biztonságos NGINX-webhely megtekintése](./media/tutorial-automate-vm-deployment/secured-nginx.png)
 
 
-## <a name="next-steps"></a>Következő lépések
-Ebben az oktatóanyagban a virtuális gépek a felhő inicializálás első rendszerindítás konfigurálta. Megismerte, hogyan végezheti el az alábbi műveleteket:
+## <a name="next-steps"></a>További lépések
+Ebben az oktatóanyagban virtuális gépeket konfigurált az első rendszerindításkor a cloud-init használatával. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Felhő inicializálás konfigurációs fájl létrehozása
-> * A felhő inicializálás fájlt használó virtuális gép létrehozása
-> * Egy futó Node.js-alkalmazás megtekintése a virtuális gép létrehozása után
-> * Key Vault használatával biztonságosan tárolni a tanúsítványokat
-> * Automatizálhatja a biztonságos telepítéseket NGINX felhő inicializálás
+> * Cloud-init konfigurációs fájl létrehozása
+> * Cloud-init-fájlt használó virtuális gép létrehozása
+> * Futó Node.js-alkalmazás megtekintése a virtuális gép létrehozása után
+> * A Key Vault használata a tanúsítványok biztonságos tárolására
+> * Az NGINX biztonságos telepítéseinek automatizálása a cloud-init használatával
 
-Továbblépés a következő oktatóanyag áttekintésével megismerheti, hogyan hozza létre egyéni Virtuálisgép-lemezképeket.
+Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan hozhat létre egyéni virtuálisgép-rendszerképeket.
 
 > [!div class="nextstepaction"]
 > [Egyéni virtuálisgép-rendszerképek létrehozása](./tutorial-custom-images.md)

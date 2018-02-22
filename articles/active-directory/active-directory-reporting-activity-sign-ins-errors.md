@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/31/2017
+ms.date: 02/09/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 183e11bed0d2399ffa714bc544f88eb359647b9a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1e5d477aa74d3d0588e33363888d84e860d4b2f8
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Bejelentkezési tevékenységre vonatkozó jelentések hibakódjai az Azure Active Directory portálon
 
@@ -38,9 +38,7 @@ A **[Bejelentkezések](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveD
 
 ![Bejelentkezési tevékenység](./media/active-directory-reporting-activity-sign-ins-errors/61.png "Sign-in activity")
 
-
 A bejelentkezési jelentésben megjelenítheti az összes sikertelen bejelentkezést. Ehhez válassza a **Sikertelen** elemet a **Bejelentkezési állapot** mezőben.
-
 
 ![Bejelentkezési tevékenység](./media/active-directory-reporting-activity-sign-ins-errors/06.png "Sign-in activity")
 
@@ -56,51 +54,52 @@ A következő szakasz az összes lehetséges hiba és a kapcsolódó leírások 
 
 ## <a name="error-codes"></a>Hibakódok
 
-| Hiba| Leírás |
-| --- | --- |
-| 50001| Az X nevű egyszerű szolgáltatás nem található az Y nevű bérlőben. Ez akkor történhet, ha az alkalmazást nem a bérlő rendszergazdája telepítette. Vagy az egyszerű erőforrás nem található a címtárban, vagy érvénytelen.|
-| 50008| Hiányzik a SAML helyességi feltétel, vagy rosszul van konfigurálva a jogkivonatban.|
-| 50011| A válaszcím hiányzik, rosszul van konfigurálva, vagy nem egyezik az alkalmazáshoz konfigurált válaszcímekkel.|
-| 50012| A felhasználó csalást jelentett a többtényezős hitelesítés során.|
-| 50053| A fiók zárolva van, mert a felhasználó túl sokszor próbált meg bejelentkezni helytelen felhasználói azonosítóval vagy jelszóval.|
-| 50054| Régi jelszót használt a hitelesítéshez.|
-| 50055| Érvénytelen jelszó, lejárt jelszót írt be.|
-| 50057| A felhasználói fiók le van tiltva.|
-| 50058| Nem található információ a felhasználó identitásáról a megadott hitelesítő adatokban vagy a felhasználó nem található a bérlőben vagy csendes bejelentkezési kérést küldtek, de nem jelentkezett be felhasználó vagy a szolgáltatás nem tudta hitelesíteni a felhasználót.|
-| 50074| A felhasználó nem adott jó választ az MFA-kérdésre.|
-| 50079| A felhasználónak kéttényezős hitelesítést kell igényelnie.|
-| 50126| Érvénytelen felhasználónév vagy jelszó, vagy érvénytelen helyszíni felhasználónév vagy jelszó.|
-| 50131| Különböző feltételes hozzáférési hibákban használatos. Például rossz Windows-eszközállapot, a kérés gyanús tevékenység miatt blokkolva, a hozzáférési szabályzattal és a biztonsági szabályzattal kapcsolatos döntések.|
-| 50133| A jelszó lejárta vagy nemrégi módosítása miatt a munkamenet érvénytelen.|
-| 50144| A felhasználó Active Directory jelszava lejárt.|
-| 65001| Az X alkalmazás nem rendelkezik engedéllyel az Y alkalmazás eléréséhez, vagy az engedély vissza lett vonva. Vagy: a felhasználó vagy a rendszergazda nem egyezett bele az alkalmazás X azonosítóval való használatába. Küldjön egy interaktív engedélyezési kérést ehhez a felhasználóhoz és erőforráshoz. Vagy: a felhasználó vagy a rendszergazda nem egyezett bele az alkalmazás X azonosítóval való használatába. Küldjön egy engedélyezési kérést a bérlő rendszergazdájának, hogy az Y alkalmazás nevében végezzen tevékenységet a Z erőforráson.|
-| 65005| Az alkalmazás által igényelt erőforrás-hozzáférési lista nem tartalmaz az erőforrás által felderíthető alkalmazásokat, vagy az ügyfélalkalmazás olyan erőforrás hozzáférését kérte, amely nincs meghatározva a szükséges erőforrás-hozzáférési listán, vagy a Graph szolgáltatás rossz kérést adott vissza, vagy az erőforrás nem található.|
-| 70001| Az X nevű alkalmazás nem található az Y nevű bérlőben. Ez akkor történhet, ha az alkalmazást nem a bérlő rendszergazdája telepítette, vagy nem fogadta el egy felhasználó sem a bérlőben. Elképzelhető, hogy rossz bérlőhöz küldte a hitelesítési kérést.|
-| 80001| A hitelesítési ügynök nem tudott csatlakozni az Active Directory-hoz.|
-| 80002| A hitelesítési ügynök jelszó-érvényesítési kérése túllépte az időkorlátot.|
-| 80003| A hitelesítési ügynök érvénytelen választ kapott.|
-| 80004| A bejelentkezési kérésben helytelen egyszerű felhasználónevet (UPN-t) használtak.|
-| 80005| Hitelesítési ügynök: hiba történt.|
-| 80007| A hitelesítési ügynök nem tudta ellenőrizni a felhasználó jelszavát.|
-| 80010| A hitelesítési ügynök nem tudta visszafejteni a jelszót.|
-| 80011| A hitelesítési ügynök nem tudta lekérni a visszafejtési kulcsot.|
-| 81001| A felhasználó Kerberos-jegye túl nagy.|
-| 81002| Nem érvényesíthető a felhasználó Kerberos-jegye.|
-| 81003| Nem érvényesíthető a felhasználó Kerberos-jegye.|
-| 81004| A Kerberos-hitelesítési kísérlet meghiúsult.|
-| 81008| Nem érvényesíthető a felhasználó Kerberos-jegye.|
-| 81009| Nem érvényesíthető a felhasználó Kerberos-jegye.|
-| 81010| A zavartalan egyszeri bejelentkezés meghiúsult, mert a felhasználó Kerberos-jegye lejárt vagy érvénytelen.|
-| 81011| Nem található a felhasználói objektum a felhasználó Kerberos-jegyének információi alapján.|
-| 81012| Az Azure AD-ba bejelentkezni próbáló felhasználó különbözik az eszközbe jelentkezett felhasználótól.|
-| 81013| Nem található a felhasználói objektum a felhasználó Kerberos-jegyének információi alapján.|
-| 90014| Különböző esetekben használatos, amikor egy várt mező nincs jelen a hitelesítő adatokban.|
-| 90093| A kéréshez a rendszer tiltott hibakódú gráfot adott vissza.|
+|Hiba|Leírás|
+|---|---|
+|50001|Az X nevű egyszerű szolgáltatás nem található az Y nevű bérlőben. Ez akkor történhet, ha az alkalmazást nem a bérlő rendszergazdája telepítette. Vagy az egyszerű erőforrás nem található a címtárban, vagy érvénytelen.|
+|50008|Hiányzik a SAML helyességi feltétel, vagy rosszul van konfigurálva a jogkivonatban.|
+|50011|A válaszcím hiányzik, rosszul van konfigurálva, vagy nem egyezik az alkalmazáshoz konfigurált válaszcímekkel.|
+|50012|A felhasználó csalást jelentett a többtényezős hitelesítés során.|
+|50053|A fiók zárolva van, mert a felhasználó túl sokszor próbált meg bejelentkezni helytelen felhasználói azonosítóval vagy jelszóval.|
+|50054|Régi jelszót használt a hitelesítéshez.|
+|50055|Érvénytelen jelszó, lejárt jelszót írt be.|
+|50057|A felhasználói fiók le van tiltva.|
+|50058|Nem található információ a felhasználó identitásáról a megadott hitelesítő adatokban vagy a felhasználó nem található a bérlőben vagy csendes bejelentkezési kérést küldtek, de nem jelentkezett be felhasználó vagy a szolgáltatás nem tudta hitelesíteni a felhasználót.|
+|50074|A felhasználó nem adott jó választ az MFA-kérdésre.|
+|50079|A felhasználónak kéttényezős hitelesítést kell igényelnie.|
+|50089|A folyamattoken érvényesítése sikertelen volt, mert a folyamattoken lejárt.|
+|50097|Az eszköz nincs hitelesítve.|
+|50105|A bejelentkezett felhasználó nincs az alkalmazás szerepköréhez rendelve.|
+|50126|Érvénytelen felhasználónév vagy jelszó, vagy érvénytelen helyszíni felhasználónév vagy jelszó.|
+|50131|Különböző feltételes hozzáférési hibákban használatos. Például rossz Windows-eszközállapot, a kérés gyanús tevékenység miatt blokkolva, a hozzáférési szabályzattal és a biztonsági szabályzattal kapcsolatos döntések.|
+|50133|A jelszó lejárta vagy nemrégi módosítása miatt a munkamenet érvénytelen.|
+|50144|A felhasználó Active Directory jelszava lejárt.|
+|65001|Az X alkalmazás nem rendelkezik engedéllyel az Y alkalmazás eléréséhez, vagy az engedély vissza lett vonva. Vagy: a felhasználó vagy a rendszergazda nem egyezett bele az alkalmazás X azonosítóval való használatába. Küldjön egy interaktív engedélyezési kérést ehhez a felhasználóhoz és erőforráshoz. Vagy: a felhasználó vagy a rendszergazda nem egyezett bele az alkalmazás X azonosítóval való használatába. Küldjön egy engedélyezési kérést a bérlő rendszergazdájának, hogy az Y alkalmazás nevében végezzen tevékenységet a Z erőforráson.|
+|65005|Az alkalmazás által igényelt erőforrás-hozzáférési lista nem tartalmaz az erőforrás által felderíthető alkalmazásokat, vagy az ügyfélalkalmazás olyan erőforrás hozzáférését kérte, amely nincs meghatározva a szükséges erőforrás-hozzáférési listán, vagy a Graph szolgáltatás rossz kérést adott vissza, vagy az erőforrás nem található.|
+|70001|Az X nevű alkalmazás nem található az Y nevű bérlőben. Ez akkor történhet, ha az alkalmazást nem a bérlő rendszergazdája telepítette, vagy nem fogadta el egy felhasználó sem a bérlőben. Elképzelhető, hogy rossz bérlőhöz küldte a hitelesítési kérést.|
+|80001|A hitelesítési ügynök nem tudott csatlakozni az Active Directory-hoz.|
+|80002|A hitelesítési ügynök jelszó-érvényesítési kérése túllépte az időkorlátot.|
+|80003|A hitelesítési ügynök érvénytelen választ kapott.|
+|80004|A bejelentkezési kérésben helytelen egyszerű felhasználónevet (UPN-t) használtak.|
+|80005|Hitelesítési ügynök: hiba történt.|
+|80007|A hitelesítési ügynök nem tudta ellenőrizni a felhasználó jelszavát.|
+|80010|A hitelesítési ügynök nem tudta visszafejteni a jelszót.|
+|80011|A hitelesítési ügynök nem tudta lekérni a visszafejtési kulcsot.|
+|81001|A felhasználó Kerberos-jegye túl nagy.|
+|81002|Nem érvényesíthető a felhasználó Kerberos-jegye.|
+|81003|Nem érvényesíthető a felhasználó Kerberos-jegye.|
+|81004|A Kerberos-hitelesítési kísérlet meghiúsult.|
+|81008|Nem érvényesíthető a felhasználó Kerberos-jegye.|
+|81009|Nem érvényesíthető a felhasználó Kerberos-jegye.|
+|81010|A zavartalan egyszeri bejelentkezés meghiúsult, mert a felhasználó Kerberos-jegye lejárt vagy érvénytelen.|
+|81011|Nem található a felhasználói objektum a felhasználó Kerberos-jegyének információi alapján.|
+|81012|Az Azure AD-ba bejelentkezni próbáló felhasználó különbözik az eszközbe jelentkezett felhasználótól.|
+|81013|Nem található a felhasználói objektum a felhasználó Kerberos-jegyének információi alapján.|
+|90014|Különböző esetekben használatos, amikor egy várt mező nincs jelen a hitelesítő adatokban.|
+|90093|A kéréshez a rendszer tiltott hibakódú gráfot adott vissza.|
 
 
 
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További részletekért lásd: [Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon](active-directory-reporting-activity-sign-ins.md).
-

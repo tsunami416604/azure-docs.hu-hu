@@ -3,8 +3,8 @@ title: "Az Azure verem terv, ajánlat, kvóta és előfizetés áttekintése |} 
 description: "Felhő operátorként kívánt Azure verem terveket, ajánlatokat, kvóták és előfizetések ismertetése."
 services: azure-stack
 documentationcenter: 
-author: ErikjeMS
-manager: byronr
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 3dc92e5c-c004-49db-9a94-783f1f798b98
 ms.service: azure-stack
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 8/22/2017
-ms.author: erikje
-ms.openlocfilehash: 083ca2f0a06625810d2f90a682ba0b3110032e60
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: brenduns
+ms.reviewer: 
+ms.openlocfilehash: 7c395dfcdfcd509d8b32028badd1c1310ea67657
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="plan-offer-quota-and-subscription-overview"></a>Csomag, ajánlat, kvóta és előfizetés áttekintése
 
@@ -51,11 +52,11 @@ Kezeléséhez nyújt segítséget a felhő kapacitása, válassza ki, vagy hozzo
 
 Kvóták régió konfigurálhatja. Például egy tervet tartalmazó terület A számítási szolgáltatásai eredményezhet. a kvóta két virtuális gép, 4 GB RAM és 10 CPU-magokat. A csomagban Azure verem, csak egy régió tartozik (nevű *helyi*) érhető el.
 
-### <a name="base-plan"></a>Referenciaterv
+### <a name="base-plan"></a>Alapcsomag
 
 Az ajánlat létrehozásakor a szolgáltatás-rendszergazda tartalmazhat egy referenciaterv. E alap tervek szerepelnek alapértelmezés szerint, amikor a felhasználó adott ajánlatra. Amikor a felhasználó, hozzáférhetnek az e alap terveket (megfelelő kvótával) megadott összes erőforrás-szolgáltató.
 
-### <a name="add-on-plans"></a>Bővítmény tervek
+### <a name="add-on-plans"></a>Kiegészítő csomagok
 
 Nem kötelező bővítmény tervek ajánlatot is felvehető. Az előfizetés alapértelmezés szerint nem szerepelnek a bővítmény tervek. Bővítmény tervek további terveket (kvóták), amely az előfizető adhat hozzá az előfizetések ajánlatot érhető el. Például kínálhat egy referenciaterv próbaverziójára korlátozott erőforrásokkal, és nagyobb mértékű erőforrásokkal bővítmény tervének az ügyfelek, akik úgy dönt, hogy elfogadja a szolgáltatást.
 
@@ -75,6 +76,6 @@ Az előfizetés egy, a felhasználók miként csatlakoznak a ajánlatokat. Ha eg
 
 Az alapértelmezett szolgáltató előfizetés automatikusan létrejön a Azure verem csomag telepítésekor. Ez az előfizetés kezelése az Azure-vermet, további erőforrás-szolgáltatók telepítéséhez és tervek és a felhasználók ajánlatok létrehozása használható. A biztonsági és licencelési okok azt nem használandó felhasználói munkaterhelések és alkalmazások futtatásához. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Csomag létrehozása](azure-stack-create-plan.md)

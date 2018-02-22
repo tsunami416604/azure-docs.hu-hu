@@ -1,6 +1,6 @@
 ---
-title: "Az Azure-ban fejlesztési virtuális gépen ElasticSearch telepítése"
-description: "Az oktatóanyag - telepítés a rugalmas készlet alakzatot Linux virtuális gép az Azure-ban fejlesztési"
+title: "Az ElasticSearch telepítése egy fejlesztési virtuális gépre Azure-ban"
+description: "Oktatóanyag – Az Elastic Stack telepítése egy fejlesztési célú linuxos virtuális gépre az Azure-ban"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: rloutlaw
@@ -13,34 +13,34 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 10/11/2017
 ms.author: routlaw
-ms.openlocfilehash: 5b0b51504478cc0d501a89760ccd60808a69ccbd
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
-ms.translationtype: MT
+ms.openlocfilehash: 7941e557dfbb71df7c2d55608c4a14c026535db8
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="install-the-elastic-stack-on-an-azure-vm"></a>A rugalmas készlet telepítése egy Azure virtuális gépen
+# <a name="install-the-elastic-stack-on-an-azure-vm"></a>Az Elastic Stack telepítése egy Azure-beli virtuális gépen
 
-Ez a cikk bemutatja, hogyan telepítése [Elasticsearch](https://www.elastic.co/products/elasticsearch), [Logstash](https://www.elastic.co/products/logstash), és [Kibana](https://www.elastic.co/products/kibana), az Ubuntu virtuális gép az Azure-ban. A rugalmas tartozó művelet megtekintéséhez opcionálisan is Kibana csatlakozhat, és a naplózási adatok egy minta dolgozni. 
+Ez a cikk ismerteti az [Elasticsearch](https://www.elastic.co/products/elasticsearch), a [Logstash](https://www.elastic.co/products/logstash) és a [Kibana](https://www.elastic.co/products/kibana) egy Ubuntu rendszerű virtuális gépre történő telepítését az Azure-ban. Ha szeretné működés közben megtekinteni az Elastic Stacket, lehetősége van csatlakozni a Kibanához, és használhatja a mintául szolgáló naplózási adatokat. 
 
 Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
-> * Ubuntu virtuális gép létrehozása az Azure erőforrás-csoportban
-> * Elasticsearch Logstash és Kibana telepítése a virtuális gépen
-> * A minta adatokat küldeni a Logstash Elasticsearch 
-> * Nyissa meg a portok és a Kibana konzolon adatok használata
+> * Ubuntus virtuális gép létrehozása egy Azure-erőforráscsoportban
+> * Az Elasticsearch, a Logstash és a Kibana telepítése a virtuális gépre
+> * Mintaadatok elküldése az Elasticsearch számára a Logstash használatával 
+> * Portok megnyitása és adatok használata a Kibana-konzolon
 
 
- A központi telepítés alkalmas alapvető fejlesztése a a rugalmas készlet. A rugalmas verem, beleértve az éles környezetbe, ajánlásokat bővebben lásd: a [rugalmas dokumentáció](https://www.elastic.co/guide/index.html) és a [Azure architektúra Center](/azure/architecture/elasticsearch/).
+ Az üzemelő példány alkalmas az Elastic Stackkel végzett alapszintű fejlesztésre. További információt az Elastic Stackről – beleértve az éles környezetre vonatkozó javaslatokat – az [Elastic dokumentációjában](https://www.elastic.co/guide/index.html) és az [Azure Architecture Centerben](/azure/architecture/elasticsearch/) talál.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Telepítése és a parancssori felület helyileg használata mellett dönt, ha ez az oktatóanyag van szükség, hogy futnak-e az Azure parancssori felület 2.0.4 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
 
 A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
 
@@ -50,7 +50,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
-Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#create) paranccsal. 
+Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az_vm_create) paranccsal. 
 
 Az alábbi példa egy *myVM* nevű virtuális gépet és SSH-kulcsokat hoz létre, ha azok még nem léteznek a kulcsok alapméretezett helyén. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.  
 
@@ -80,58 +80,58 @@ A virtuális gép létrehozása után az Azure CLI az alábbi példához hasonl�
 
 ## <a name="ssh-into-your-vm"></a>Bejelentkezés a virtuális gépre SSH-val
 
-Ha a nyilvános IP-címet a virtuális gép már nem tudja, futtassa a [az nyilvános ip-lista](/cli/azure/network/public-ip#list) parancs:
+Ha még nem ismeri a virtuális gépéhez tartozó nyilvános IP-címet, futtassa az [az network public-ip list](/cli/azure/network/public-ip#az_network_public_ip_list) parancsot:
 
 ```azurecli-interactive
 az network public-ip list --resource-group myResourceGroup --query [].ipAddress
 ```
 
-Használja az alábbi parancsot egy SSH-munkamenet létrehozásához a virtuális géphez. Helyettesítse be a megfelelő nyilvános IP-címet a virtuális gép. Ebben a példában az IP-cím van *40.68.254.142*.
+Használja az alábbi parancsot egy SSH-munkamenet létrehozásához a virtuális géphez. Helyettesítse be a virtuális gépe tényleges nyilvános IP-címét. Ebben a példában az IP-cím a következő: *40.68.254.142*.
 
 ```bash
 ssh azureuser@40.68.254.142
 ```
 
-## <a name="install-the-elastic-stack"></a>A rugalmas készlet telepítése
+## <a name="install-the-elastic-stack"></a>Az Elastic Stack telepítése
 
-A Elasticsearch aláírási kulcs importálása, és a rugalmas csomag összetevőtárházat tartalmazza APT adatforrások listája frissítése:
+Importálja az Elasticsearch-aláírókulcsot, és frissítse az APT-források listáját, hogy szerepeljen benne az Elastic csomagtára:
 
 ```bash
 wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
 echo "deb https://artifacts.elastic.co/packages/5.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-5.x.list
 ```
 
-A virtuális Gépen a Java virtuális telepítse és konfigurálja a változó a JAVA_HOME esetén szükség a rugalmas készlet összetevők futtatásához.
+Telepítse a Java Virtualt a virtuális gépen, és konfigurálja a JAVA_HOME változót – ez az Elastic Stack-összetevők futtatásához szükséges.
 
 ```bash
 sudo apt update && sudo apt install openjdk-8-jre-headless
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 ```
 
-Ubuntu csomag adatforrások frissítése és Elasticsearch, Kibana és Logstash telepítése a következő parancsok futtatásával.
+Futtassa az alábbi parancsokat az ubuntus csomagforrások frissítéséhez, és az Elasticsearch, a Kibana és a Logstash telepítéséhez.
 
 ```bash
 sudo apt update && sudo apt install elasticsearch kibana logstash   
 ```
 
 > [!NOTE]
-> Részletes telepítési utasításokat, beleértve a directory elrendezések és a kezdeti konfigurációs karbantartása [rugalmas tartozó dokumentáció](https://www.elastic.co/guide/en/elastic-stack/current/installing-elastic-stack.html)
+> A részletes telepítési utasításokat, beleértve a mappastruktúrát és a kezdeti konfigurációt az [Elastic dokumentációjában](https://www.elastic.co/guide/en/elastic-stack/current/installing-elastic-stack.html) találja.
 
-## <a name="start-elasticsearch"></a>Indítsa el a Elasticsearch 
+## <a name="start-elasticsearch"></a>Az Elasticsearch indítása 
 
-Indítsa el a Elasticsearch a virtuális gépen a következő paranccsal:
+Az Elasticsearch a virtuális gépen való indításához használja az alábbi parancsot:
 
 ```bash
 sudo systemctl start elasticsearch.service
 ```
 
-Ez a parancs nem kimenetet hoz létre, ezért ellenőrizze, hogy Elasticsearch ennek a virtuális gép fut-e `curl` parancs:
+Ez a parancs nem hoz létre kimenetet, ezért ellenőrizze ezzel a `curl`-paranccsal, hogy az Elasticsearch fut-e a virtuális gépen:
 
 ```bash
 curl -XGET 'localhost:9200/'
 ```
 
-Ha Elasticsearch fut, a következőhöz hasonló kimenetnek jelenik meg:
+Ha az Elasticsearch fut, az alábbihoz hasonló kimenet jelenik meg:
 
 ```json
 {
@@ -149,21 +149,21 @@ Ha Elasticsearch fut, a következőhöz hasonló kimenetnek jelenik meg:
 }
 ```
 
-## <a name="start-logstash-and-add-data-to-elasticsearch"></a>Indítsa el a Logstash és Elasticsearch adatok hozzáadása
+## <a name="start-logstash-and-add-data-to-elasticsearch"></a>A Logstash indítása és adatok hozzáadása az Elasticsearchhöz
 
-Indítsa el a Logstash a következő paranccsal:
+Indítsa el a Logstasht a következő paranccsal:
 
 ```bash 
 sudo systemctl start logstash.service
 ```
 
-Próbálja Logstash győződjön meg arról, hogy helyesen működik interaktív módban:
+Tesztelje a Logstasht interaktív módban, hogy meggyőződhessen a helyes működéséről:
 
 ```bash
 sudo /usr/share/logstash/bin/logstash -e 'input { stdin { } } output { stdout {} }'
 ```
 
-Ez az alapszintű logstash [csővezeték](https://www.elastic.co/guide/en/logstash/5.6/pipeline.html) , amely echók szabványos bemeneti normál a kimenetbe. 
+Ez egy alapszintű logstash-[folyamat](https://www.elastic.co/guide/en/logstash/5.6/pipeline.html), amely a standard bemenetet egy standard kimenetbe adja vissza. 
 
 ```output
 The stdin plugin is now waiting for input:
@@ -171,7 +171,7 @@ hello azure
 2017-10-11T20:01:08.904Z myVM hello azure
 ```
 
-A kernel-üzenetek továbbítása a virtuális gép Elasticsearch Logstash beállítása. Hozzon létre egy új fájlt egy üres nevű Directory `vm-syslog-logstash.conf` és illessze be a következő Logstash konfigurációt:
+Állítsa be a Logstasht úgy, hogy továbbítsa a kernelüzeneteket erről a virtuális gépről az Elasticsearchre. Hozzon létre egy új fájlt egy üres, `vm-syslog-logstash.conf` nevű könyvtárban, és illessze be az alábbi Logstash-konfigurációt:
 
 ```Logstash
 input {
@@ -197,48 +197,48 @@ output {
 }
 ```
 
-Ez a konfiguráció tesztelése, és a syslog-adatot küldeni Elasticsearch:
+Tesztelje ezt a konfigurációt, és küldje a rendszernaplóadatokat az Elasticsearchbe:
 
 ```bash
 sudo /usr/share/logstash/bin/logstash -f vm-syslog-logstash.conf
 ```
 
-A rendszernapló-bejegyzések a terminálon annál a Elasticsearch küldött látni. Használjon `CTRL+C` kattintva lépjen ki a Logstash, amennyiben az elküldött adatokat.
+A rendszernapló-bejegyzések a terminálon úgy jelennek meg, ahogy a rendszer elküldte őket az Elasticsearchbe. Az adatok elküldése után lépjen ki a Logstashből a `CTRL+C` használatával.
 
-## <a name="start-kibana-and-visualize-the-data-in-elasticsearch"></a>Indítsa el a Kibana és Elasticsearch adatok megjelenítéséhez
+## <a name="start-kibana-and-visualize-the-data-in-elasticsearch"></a>A Kibana indítása és az adatok megjelenítése az Elasticsearchben
 
-Szerkesztés `/etc/kibana/kibana.yml` , és módosítsa az IP-cím Kibana figyeli, hogy hozzáférhessen a webböngészőben.
+Szerkessze az `/etc/kibana/kibana.yml` fájlt, és módosítsa a Kibana által figyelt IP-címet, hogy hozzá tudjon férni a böngészőből.
 
 ```bash
 server.host:"0.0.0.0"
 ```
 
-Indítsa el a Kibana a következő paranccsal:
+Indítsa el a Kibanát a következő paranccsal:
 
 ```bash
 sudo systemctl start kibana.service
 ```
 
-Nyissa meg a portot 5601 való távoli hozzáférés lehetővé tételéhez a Kibana konzol az Azure parancssori felületen:
+Nyissa meg az 5601-es portot az Azure CLI-ről, hogy távolról is hozzá lehessen férni a Kibana-konzolhoz:
 
 ```azurecli-interactive
 az vm open-port --port 5601 --resource-group myResourceGroup --name myVM
 ```
 
-Nyissa meg a Kibana konzolt, és válassza ki **létrehozása** egy alapértelmezett index syslog Elasticsearch korábban küldött adatok alapján történő létrehozásához. 
+Nyissa meg a Kibana-konzolt, és a **Create** (Létrehozás) elemet választva hozzon létre egy alapértelmezett indexet az Elasticsearchbe korábban elküldött rendszernaplóadatok alapján. 
 
-![Keresse meg a Kibana Syslog-események](media/elasticsearch-install/kibana-index.png)
+![Rendszernapló-események tallózása a Kibanában](media/elasticsearch-install/kibana-index.png)
 
-Válassza ki **felderítési** a keresés Kibana konzolon keresse meg, és a syslog-események át.
+A Kibana-konzolon a **Discover** (Felderítés) elemet választva kereshet és tallózhat a rendszernapló-események között, és szűrheti is őket.
 
-![Keresse meg a Kibana Syslog-események](media/elasticsearch-install/kibana-search-filter.png)
+![Rendszernapló-események tallózása a Kibanában](media/elasticsearch-install/kibana-search-filter.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban a rugalmas készlet telepítette az Azure-ban fejlesztési. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Ebben az oktatóanyagban telepítette az Elastic Stacket egy fejlesztési célú virtuális gépre az Azure-ban. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Ubuntu virtuális gép létrehozása az Azure erőforrás-csoportban
-> * Elasticsearch Logstash és Kibana telepítése a virtuális gépen
-> * Elasticsearch Logstash a mintaadatok küldése 
-> * Nyissa meg a portok és a Kibana konzolon adatok használata
+> * Ubuntus virtuális gép létrehozása egy Azure-erőforráscsoportban
+> * Az Elasticsearch, a Logstash és a Kibana telepítése a virtuális gépre
+> * Mintaadatok elküldése az Elasticsearch számára a Logstashből 
+> * Portok megnyitása és adatok használata a Kibana-konzolon
