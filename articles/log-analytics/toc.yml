@@ -39,6 +39,8 @@
       href: log-analytics-faq.md
     - name: Adathasználat
       href: log-analytics-usage.md
+    - name: Adatbiztonság
+      href: log-analytics-data-security.md
     - name: Hozzáférés kezelése
       href: log-analytics-manage-access.md
     - name: Hibrid környezek figyelése

@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 11/01/2017
+ms.date: 02/14/2018
 ms.author: owend
 ms.custom: mvc
-ms.openlocfilehash: 2db167fd746b53e234aac3dbe2e5b76b56737e24
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 99798af8cb0a2b13f2c3c3808222113656a5a388
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-an-azure-analysis-services-server-by-using-powershell"></a>Azure Analysis Services-kiszolgáló létrehozása a PowerShell használatával
 
@@ -76,7 +76,7 @@ A kiszolgálót az előfizetéséből a [Remove-AzureRmAnalysisServicesServer](/
 Remove-AzureRmAnalysisServicesServer -Name "myServer" -ResourceGroupName "myResourceGroup"
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Az Azure Analysis Services kezelése a PowerShell-lel](analysis-services-powershell.md)   
 [Modell üzembe helyezése SSDT-ről](analysis-services-deploy.md)   
 [Modell létrehozása az Azure Portalon](analysis-services-create-model-portal.md)

@@ -20,13 +20,10 @@
 #### [A Blob Storage és a kapcsolódó szolgáltatások](../visual-studio/vs-storage-cloud-services-getting-started-blobs.md)
 #### [A Queue Storage és a kapcsolódó szolgáltatások](../visual-studio/vs-storage-cloud-services-getting-started-queues.md)
 #### [A Table Storage és a kapcsolódó szolgáltatások](../visual-studio/vs-storage-cloud-services-getting-started-tables.md)
-### Csomagok konfigurálása folyamatos fejlesztéshez és üzembe helyezéshez
-#### [TFS és Team Build](cloud-services-dotnet-continuous-delivery.md)
 ### [Szerepkör adatforgalmi szabályainak konfigurálása](cloud-services-enable-communication-role-instances.md)
 ### [Cloud Service-életciklusesemények kezelése](cloud-services-role-lifecycle-dotnet.md)
 ### [Socket.io (Node.js)](cloud-services-nodejs-chat-app-socketio.md)
 ### [Telefonhívás indítása Twilióról (.NET)](../partner-twilio-cloud-services-dotnet-phone-call-web-role.md)
-### [New Relic](../store-new-relic-cloud-services-dotnet-application-performance-management.md)
 
 ### Indítási feladatok konfigurálása
 #### [Indítási feladatok létrehozása](cloud-services-startup-tasks.md)
@@ -73,11 +70,9 @@
 #### [Visual Studio](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)
 ### [Diagnosztikai adatok tárolása és megtekintése az Azure Storage-ban](cloud-services-dotnet-diagnostics-storage.md)
 ### [Felhőszolgáltatás követése a Diagnostics használatával](cloud-services-dotnet-diagnostics-trace-flow.md)
-### [Diagnosztikai adatok küldése az App Insights-ba](cloud-services-dotnet-diagnostics-applicationinsights.md)
 
 ## Hibaelhárítás
 ### Hibakeresés 
-#### [A folyamatos teljesítés közbeni távoli hibakeresés engedélyezése](cloud-services-virtual-machines-dotnet-continuous-delivery-remote-debugging.md)
 #### [Felhőszolgáltatás beállításai](../vs-azure-tools-debugging-cloud-services-overview.md)
 #### [Helyi felhőszolgáltatás a Visual Studióban](../vs-azure-tools-debug-cloud-services-virtual-machines.md)
 #### [Közzétett felhőszolgáltatás a Visual Studióban](../vs-azure-tools-intellitrace-debug-published-cloud-services.md)
